@@ -135,6 +135,31 @@ def test_fetch_html_events_fails_soft(mock_get):
 
 
 @patch("fetchers.requests.get")
+def test_fetch_html_events_accepts_custom_keywords(mock_get):
+    # Village news uses this scraper too, tuned with news-flavored keywords
+    # instead of the events default - "Board Meeting Notice" wouldn't match
+    # the default keyword set's "class"/"camp"/"concert" style terms.
+    html = (
+        '<a href="/news/board-meeting-notice">Board Meeting Notice</a>'
+        '<a href="/about">About Us</a>'
+    )
+    mock_get.return_value = _mock_response(html)
+    items = fetch_html_events(
+        "https://example.org/news", keywords=["news", "board", "meeting", "notice"]
+    )
+    titles = {i["title"] for i in items}
+    assert titles == {"Board Meeting Notice"}
+
+
+@patch("fetchers.requests.get")
+def test_fetch_html_events_falls_back_to_default_keywords_when_none_given(mock_get):
+    mock_get.return_value = _mock_response(SAMPLE_HTML)
+    items = fetch_html_events("https://example.org/events", keywords=None)
+    titles = {i["title"] for i in items}
+    assert "Summer Concert Series" in titles
+
+
+@patch("fetchers.requests.get")
 def test_fetch_html_events_prefers_event_detail_links_over_nav(mock_get):
     # Regression test: the first production run of this scraper against
     # mppl.org/events/ returned only nav labels like "All Events" and

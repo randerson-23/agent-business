@@ -48,7 +48,7 @@ def fetch_all_sources(sources_cfg: dict) -> list[dict]:
             items = []
         else:
             logger.info("Fetching %s (%s)", source["name"], source["type"])
-            items = fetcher(source["url"])
+            items = fetcher(source["url"], keywords=source.get("keywords"))
             logger.info("  -> %d item(s)", len(items))
         blocks.append({"section": source["section"], "events": items})
     return blocks
