@@ -1,0 +1,41 @@
+# Public data sources for the 60056 Weekly digest.
+#
+# NOTE: This build environment's outbound network is restricted, so these
+# feed URLs are the best-known/documented endpoints for each organization's
+# public site as of 2026-08. Before the first real production run, verify
+# each `url` against the live site (view page source for a <link rel="alternate"
+# type="application/rss+xml"> tag, or the site's own "Subscribe/RSS" link) —
+# takes about 10 minutes total. The pipeline fails soft: a broken source is
+# skipped and logged, it never breaks the whole digest build.
+
+sources:
+  - name: "Village of Mount Prospect — News"
+    type: rss
+    url: "https://www.mountprospect.org/RSSFeed.aspx?ModID=1&CID=Village-News-1"
+    section: "Village News"
+    enabled: true
+
+  - name: "Mount Prospect Public Library — Events"
+    type: html_events
+    url: "https://mppl.org/events/"
+    section: "Library Events"
+    enabled: true
+
+  - name: "Mount Prospect Park District — Events"
+    type: ics
+    url: "https://www.mppd.org/calendar.ics"
+    section: "Park District Events"
+    enabled: true
+
+# Evergreen, always-available local info used as a fallback so the digest
+# never ships empty even if every live source above fails to fetch.
+evergreen:
+  - title: "Mount Prospect Public Library"
+    detail: "125 S Emerson St. Story times, teen programs, and free museum passes."
+    url: "https://mppl.org/"
+  - title: "Mount Prospect Park District"
+    detail: "Rec programs, pools, and parks across the village."
+    url: "https://www.mppd.org/"
+  - title: "Village of Mount Prospect"
+    detail: "Village board meetings, permits, and community announcements."
+    url: "https://www.mountprospect.org/"
