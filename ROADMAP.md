@@ -135,22 +135,26 @@ API called during `build_digest.py`, cached to stay within rate limits.
 Worth doing once regions multiply enough that "which specific event is
 closest" actually matters more than "which town is closest."
 
-### Phase 9 — SEO plan + domain name (not started)
+### Phase 9 — SEO plan + domain name (technical slice ✅ done, PR #10; domain still open)
 Requested 2026-08-26.
 
-SEO technical tasks (in-repo, no human needed, can ship incrementally):
-- Open Graph + Twitter Card meta tags per page (ties into Phase 7's OG
-  image) so shared links preview well on social/messaging apps.
-- `robots.txt` + a generated `sitemap.xml` (region pages + hub), produced
+SEO technical tasks — done (PR #10):
+- ✅ Open Graph + Twitter Card *text* meta tags (image still pending, see
+  Phase 7's notes — needs a real image asset).
+- ✅ `robots.txt` + generated `sitemap.xml` (region pages + hub), produced
   by `build_digest.py` alongside the HTML.
-- JSON-LD structured data (`schema.org/Event`) on each event card — the
-  single highest-leverage SEO move for a site like this, since it makes
-  events eligible for Google's event rich results.
-- Canonical URLs — revisit once a real domain exists (currently served
-  from a GitHub Pages subpath, `randerson-23.github.io/agent-business/`).
-- Keep Core Web Vitals fast as the redesign (Phase 7) adds weight: no JS
-  framework, defer/inline appropriately, optimize any images before they
-  ship.
+- ✅ JSON-LD structured data (`schema.org/Event`) on every fetched event —
+  the single highest-leverage SEO move for a site like this, makes events
+  eligible for Google's event rich results. Not yet validated against
+  Google's actual Rich Results Test with live data (worth doing once real
+  events are flowing through both regions).
+- ✅ Canonical `<link>` tags on both page types, driven by one
+  `SITE_BASE_URL` constant in `build_digest.py` — currently the GitHub
+  Pages URL, update it in one place once a real domain is registered.
+- Core Web Vitals: still no JS framework, nothing added that should hurt
+  this — not separately measured/verified yet.
+
+Still open (needs a human):
 
 Domain name candidates (research only — I can't register a domain myself,
 that's a paid human action; availability below is **unverified**, check a
