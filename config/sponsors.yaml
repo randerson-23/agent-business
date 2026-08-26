@@ -1,0 +1,18 @@
+# This week's sponsor rotation.
+#
+# Each entry is one week's featured local-business sponsor slot (see
+# BUSINESS_PLAN.md / SPONSOR_KIT.md for pricing). `active` marks the entry
+# to feature in the next digest build; leave everything else as history.
+#
+# When there is no paying sponsor yet, `active: none` shows a small
+# "sponsor this spot" house ad instead — the pipeline always has something
+# reasonable to render.
+
+active: none
+
+house_ad:
+  title: "Sponsor this spot"
+  detail: "Reach 60056 families every week. Local businesses only — see SPONSOR_KIT.md."
+  url: "https://github.com/randerson-23/agent-business/blob/main/SPONSOR_KIT.md"
+
+history: []
