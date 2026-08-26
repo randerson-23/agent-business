@@ -1,18 +1,18 @@
-# This week's sponsor rotation.
+# Sponsor rotation, keyed by region id (must match a `region.id` in
+# config/regions/*.yaml). See BUSINESS_PLAN.md / SPONSOR_KIT.md for pricing.
 #
-# Each entry is one week's featured local-business sponsor slot (see
-# BUSINESS_PLAN.md / SPONSOR_KIT.md for pricing). `active` marks the entry
-# to feature in the next digest build; leave everything else as history.
-#
-# When there is no paying sponsor yet, `active: none` shows a small
-# "sponsor this spot" house ad instead — the pipeline always has something
-# reasonable to render.
+# For each region: `active` marks the entry (by id) to feature in the next
+# build; leave everything else as history. `active: none` shows the
+# region's own house_ad if set, otherwise default_house_ad below — the
+# pipeline always has something reasonable to render.
 
-active: none
-
-house_ad:
+default_house_ad:
   title: "Sponsor this spot"
-  detail: "Reach 60056 families every week. Local businesses only — see SPONSOR_KIT.md."
+  detail: "Reach local families every week. Local businesses only — see SPONSOR_KIT.md."
   url: "https://github.com/randerson-23/agent-business/blob/main/SPONSOR_KIT.md"
 
-history: []
+regions:
+  mount-prospect-60056:
+    active: none
+    house_ad: null
+    history: []

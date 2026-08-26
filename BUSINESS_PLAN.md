@@ -1,5 +1,13 @@
 # Business Plan — 60056 (Mount Prospect, IL)
 
+> **2026-08-26 update**: the direction expanded from a single ZIP digest
+> into a multi-ZIP weekend/trip-planner site (locals planning a weekend,
+> visitors planning a trip across a few nearby towns), with tag-based
+> filtering (kid-friendly, dog-friendly, free, indoor/outdoor, ...) and
+> at-a-glance event cards. The rationale and phased plan for that live in
+> [`ROADMAP.md`](ROADMAP.md); everything below is the original plan this
+> grew out of and is still accurate for the 60056 region specifically.
+
 ## Constraints driving the choice
 
 - Full-time job + two small children → **near-zero ongoing weekly time**.
@@ -107,7 +115,7 @@ One steady $175/month sponsor already covers years of hosting and any tooling.
 - Public feed URLs for the village/library/park district need to be
   confirmed against the live sites (this build environment's outbound network
   is restricted to a small allowlist, so exact feed URLs are configured in
-  `config/sources.yaml` for a human — or a future session with fuller network
+  `config/regions/*.yaml` for a human — or a future session with fuller network
   access — to verify/update in ~10 minutes). The pipeline is written to fail
   soft: any one source failing to fetch does not break the digest.
 - No personal data is collected in v1 (no signup form yet), so there's no

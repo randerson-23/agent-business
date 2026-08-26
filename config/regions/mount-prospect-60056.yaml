@@ -1,18 +1,30 @@
-# Public data sources for the 60056 Weekly digest.
+# Region config for Mount Prospect, IL (ZIP 60056).
 #
-# Status as of 2026-08-26 (see live output at docs/index.html on main):
+# Every file in config/regions/ is loaded and rendered independently by
+# scripts/build_digest.py, then listed together on the hub page — this is
+# the template for adding more ZIP codes later (see ROADMAP.md Phase 5).
+#
+# Status as of 2026-08-26 (see live output on main):
 #   - Village News:         Switched from a guessed RSS URL (never found -
 #     the CivicPlus "list all RSS feed" page doesn't expose a plain link,
 #     it needs a category picked first) to scraping the real news listing
 #     page directly, same approach as the library. Not yet confirmed
 #     against a live run.
-#   - Library Events:       VERIFIED working - see comment below.
+#   - Library Events:       VERIFIED working.
 #   - Park District Events: URL corrected to the real Tribe Events ICS
 #     export; webcal:// scheme now handled by fetchers.py. Not yet
 #     confirmed against a live run since the fix.
 #
 # The pipeline fails soft either way: a broken source is skipped and
 # logged, it never breaks the whole digest build.
+
+region:
+  id: "mount-prospect-60056"
+  name: "Mount Prospect"
+  zip: "60056"
+  state: "IL"
+  timezone: "America/Chicago"
+  tagline: "Village news, library events, and park district programs."
 
 sources:
   - name: "Village of Mount Prospect — News"
@@ -45,9 +57,12 @@ evergreen:
   - title: "Mount Prospect Public Library"
     detail: "125 S Emerson St. Story times, teen programs, and free museum passes."
     url: "https://mppl.org/"
+    tags: ["indoor", "kid_friendly", "free"]
   - title: "Mount Prospect Park District"
     detail: "Rec programs, pools, and parks across the village."
     url: "https://www.mppd.org/"
+    tags: ["outdoor", "kid_friendly"]
   - title: "Village of Mount Prospect"
     detail: "Village board meetings, permits, and community announcements."
     url: "https://www.mountprospect.org/"
+    tags: []

@@ -1,4 +1,4 @@
-name: Build weekly digest
+name: Build region digests
 
 on:
   schedule:
@@ -39,12 +39,12 @@ jobs:
 
       - name: Commit generated site
         run: |
-          git config user.name "60056-weekly-bot"
+          git config user.name "local-planner-bot"
           git config user.email "actions@users.noreply.github.com"
           git add docs/
           if git diff --cached --quiet; then
             echo "No changes to commit."
           else
-            git commit -m "Auto-build weekly digest [skip ci]"
+            git commit -m "Auto-build region digests [skip ci]"
             git push
           fi
