@@ -20,32 +20,32 @@ to `docs/`, but GitHub Pages itself has to be turned on once by hand.
 ## 2. Verify feed sources (~10 min, optional but recommended)
 
 This was built in a sandboxed environment with restricted outbound network
-access, so most of `config/sources.yaml` started as best-guess URLs. Status
-as of the last check-in:
+access, so most of `config/regions/mount-prospect-60056.yaml`'s `sources`
+started as best-guess URLs. Status as of the last check-in:
 
 - **Village News** — the CivicPlus "list all RSS feed" page doesn't expose
   a plain findable link (neither the build nor a human browsing it could
   find one), so this source no longer uses RSS. It now scrapes
   `mountprospect.org/services/news` directly for news links, same approach
   as the library. Not yet confirmed against a live run — after the next
-  scheduled build, check `docs/index.html`'s "Village News" section. If
+  scheduled build, check the "Village News" section on the live site. If
   it's still empty, the page's actual link structure may need a tweak in
   `fetch_html_events`'s keyword list or link pattern in `scripts/fetchers.py`.
 - **Library Events** — confirmed working (pulls from `mppl.libnet.info`).
 - **Park District Events** — URL and `webcal://` scheme handling fixed;
   should be live after the next scheduled build. Worth a spot-check.
 
-To verify or fix a source yourself: open the URL in `sources.yaml` in a
-browser, confirm it loads real content without needing JavaScript, then run
-`python scripts/build_digest.py` locally and open `docs/index.html` to see
-what the fetcher actually extracted.
+To verify or fix a source yourself: open the `url` from the region's YAML
+file in a browser, confirm it loads real content without needing
+JavaScript, then run `python scripts/build_digest.py` locally and open
+`docs/<region-id>/index.html` to see what the fetcher actually extracted.
 
 ## 3. First sponsor outreach (~ongoing, a few min/week)
 
 - [ ] Pick 3 local businesses from `SPONSOR_KIT.md`'s target list.
 - [ ] Send the cold-intro email from `OUTREACH_TEMPLATES.md`.
-- [ ] When one confirms, add an entry to `config/sponsors.yaml` under
-      `history` and set `active` to its `id`.
+- [ ] When one confirms, add an entry under that region's `history` in
+      `config/sponsors.yaml` and set the region's `active` to its `id`.
 
 ## Ongoing time cost
 
