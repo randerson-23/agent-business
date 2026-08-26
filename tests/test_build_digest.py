@@ -54,6 +54,24 @@ def test_format_event_date_handles_none():
     assert build_digest.format_event_date(None) is None
 
 
+def test_parse_event_date_iso_parses_rfc822():
+    iso = build_digest.parse_event_date_iso("Mon, 24 Aug 2026 12:00:00 GMT")
+    assert iso.startswith("2026-08-24")
+
+
+def test_parse_event_date_iso_parses_ics_datetime():
+    iso = build_digest.parse_event_date_iso("20260901T100000Z")
+    assert iso.startswith("2026-09-01")
+
+
+def test_parse_event_date_iso_returns_none_when_unparseable():
+    assert build_digest.parse_event_date_iso("sometime next week") is None
+
+
+def test_parse_event_date_iso_handles_none():
+    assert build_digest.parse_event_date_iso(None) is None
+
+
 def test_truncate_short_text_unchanged():
     assert build_digest.truncate("short text") == "short text"
 
@@ -120,3 +138,74 @@ def test_render_hub_page_lists_regions():
 def test_render_hub_page_handles_no_regions():
     html = build_digest.render_hub_page([], [], datetime.now(timezone.utc))
     assert "No regions configured yet" in html
+
+
+def test_render_region_page_includes_canonical_link():
+    html = build_digest.render_region_page({"region": REGION}, [], {"title": "", "detail": "", "url": ""}, [], datetime.now(timezone.utc))
+    assert 'rel="canonical" href="https://randerson-23.github.io/agent-business/mount-prospect-60056/"' in html
+
+
+def test_render_hub_page_includes_canonical_link():
+    html = build_digest.render_hub_page([], [], datetime.now(timezone.utc))
+    assert 'rel="canonical" href="https://randerson-23.github.io/agent-business/"' in html
+
+
+def test_build_event_json_ld_returns_none_for_no_events():
+    assert build_digest.build_event_json_ld(REGION, [{"section": "News", "events": []}]) is None
+
+
+def test_build_event_json_ld_produces_valid_json_with_expected_fields():
+    import json as _json
+
+    blocks = [
+        {
+            "section": "Park District Events",
+            "events": [
+                {
+                    "title": "Fishing Derby",
+                    "detail": "Grab your gear.",
+                    "url": "https://example.org/fishing",
+                    "date_iso": "2026-09-19T10:00:00",
+                }
+            ],
+        }
+    ]
+    result = build_digest.build_event_json_ld(REGION, blocks)
+    payload = _json.loads(result)
+    assert payload["@context"] == "https://schema.org"
+    event = payload["@graph"][0]
+    assert event["@type"] == "Event"
+    assert event["name"] == "Fishing Derby"
+    assert event["startDate"] == "2026-09-19T10:00:00"
+    assert event["location"]["address"]["postalCode"] == "60056"
+
+
+def test_build_event_json_ld_escapes_script_close_tag():
+    blocks = [
+        {
+            "section": "News",
+            "events": [
+                {"title": "Weird</script>Title", "detail": "", "url": "https://x/", "date_iso": None}
+            ],
+        }
+    ]
+    result = build_digest.build_event_json_ld(REGION, blocks)
+    assert "</script>" not in result
+
+
+def test_build_event_json_ld_skips_events_missing_title_or_url():
+    blocks = [{"section": "News", "events": [{"title": "", "url": "https://x/", "detail": ""}]}]
+    assert build_digest.build_event_json_ld(REGION, blocks) is None
+
+
+def test_build_sitemap_xml_lists_hub_and_region_urls():
+    summaries = [{**REGION, "event_count": 1, "path": "mount-prospect-60056/"}]
+    xml = build_digest.build_sitemap_xml(summaries, datetime.now(timezone.utc))
+    assert "<loc>https://randerson-23.github.io/agent-business/</loc>" in xml
+    assert "<loc>https://randerson-23.github.io/agent-business/mount-prospect-60056/</loc>" in xml
+
+
+def test_build_robots_txt_references_sitemap():
+    robots = build_digest.build_robots_txt()
+    assert "Sitemap: https://randerson-23.github.io/agent-business/sitemap.xml" in robots
+    assert "Allow: /" in robots
