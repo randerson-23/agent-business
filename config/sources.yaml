@@ -23,7 +23,7 @@ sources:
 
   - name: "Mount Prospect Park District — Events"
     type: ics
-    url: "https://www.mppd.org/calendar.ics"
+    url: "webcal://www.mppd.org/?post_type=tribe_events&ical=1&eventDisplay=list"
     section: "Park District Events"
     enabled: true
 
