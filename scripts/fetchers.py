@@ -23,6 +23,23 @@ USER_AGENT = "60056Weekly/1.0 (+https://github.com/randerson-23/agent-business)"
 MAX_ITEMS_PER_SOURCE = 6
 
 
+def _unescape_ics_text(value: str) -> str:
+    """Unescape RFC 5545 TEXT values (SUMMARY/DESCRIPTION).
+
+    ICS exports escape commas, semicolons, backslashes, and encode
+    newlines as the two literal characters `\\n` - left as-is, these show
+    up verbatim as "\\n" in rendered cards instead of a line break/space.
+    """
+    unescaped = (
+        value.replace("\\n", " ")
+        .replace("\\N", " ")
+        .replace("\\,", ",")
+        .replace("\\;", ";")
+        .replace("\\\\", "\\")
+    )
+    return " ".join(unescaped.split())
+
+
 def _get(url: str) -> requests.Response:
     resp = requests.get(
         url,
@@ -87,9 +104,9 @@ def fetch_ics(url: str, limit: int = MAX_ITEMS_PER_SOURCE, **_ignored) -> list[d
                     events.append(current)
                 current = {}
             elif line.startswith("SUMMARY:"):
-                current["title"] = line[len("SUMMARY:"):].strip()
+                current["title"] = _unescape_ics_text(line[len("SUMMARY:"):].strip())
             elif line.startswith("DESCRIPTION:"):
-                current["detail"] = line[len("DESCRIPTION:"):].strip()
+                current["detail"] = _unescape_ics_text(line[len("DESCRIPTION:"):].strip())
             elif line.startswith("URL:"):
                 current["url"] = line[len("URL:"):].strip()
             elif line.startswith("DTSTART"):

@@ -109,6 +109,7 @@ def fetch_region_sections(region_cfg: dict) -> list[dict]:
                     "url": item.get("url", ""),
                     "date": format_event_date(item.get("date")),
                     "tags": tags,
+                    "tag_badges": [{"id": t, **tag_display(t)} for t in tags],
                 }
             )
         blocks.append({"section": source["section"], "events": events})
@@ -121,7 +122,9 @@ def prepare_evergreen(region_cfg: dict) -> list[dict]:
         tags = item.get("tags")
         if tags is None:
             tags = infer_tags(item.get("title", ""), item.get("detail", ""))
-        prepared.append({**item, "tags": tags})
+        prepared.append(
+            {**item, "tags": tags, "tag_badges": [{"id": t, **tag_display(t)} for t in tags]}
+        )
     return prepared
 
 
