@@ -3,36 +3,42 @@
 Everything else runs automatically once these are done. Total time: ~15
 minutes.
 
-## 1. Verify feed URLs (~10 min)
+## 1. Enable GitHub Pages (~3 min) — do this first
+
+A 404 on `https://randerson-23.github.io/agent-business/` almost always
+means this step hasn't been done yet — the build workflow commits the site
+to `docs/`, but GitHub Pages itself has to be turned on once by hand.
+
+- [ ] In the repo: **Settings → Pages**. Under "Build and deployment," set
+      **Source: Deploy from a branch**, **Branch: `main`**, folder
+      **`/docs`**, then Save.
+- [ ] Wait a minute or two, then reload
+      `https://randerson-23.github.io/agent-business/`.
+- [ ] If it's still 404 after ~5 minutes, check the **Actions** tab for a
+      failed `pages build and deployment` run and open its log.
+
+## 2. Verify feed sources (~10 min, optional but recommended)
 
 This was built in a sandboxed environment with restricted outbound network
-access, so the URLs in `config/sources.yaml` are best-known/documented
-endpoints, not verified live. From a normal browser:
+access, so most of `config/sources.yaml` started as best-guess URLs. Status
+as of the last check-in:
 
-- [ ] Visit https://www.mountprospect.org/services/news and find the actual
-      RSS link (look for an RSS icon or "Subscribe" link; view page source
-      and search for `RSSFeed.aspx` or `<link rel="alternate"
-      type="application/rss+xml">`). Update `sources.yaml` → "Village of
-      Mount Prospect — News" `url`.
-- [ ] Visit https://mppl.org/events/ and confirm the events listing loads
-      without requiring JavaScript for the first page of results (the
-      `html_events` fetcher does a plain HTTP GET, no JS execution). If it
-      doesn't work, check whether mppl.org (Communico/LibNet) exposes an
-      RSS/ICS export instead and switch the source `type` accordingly.
-- [ ] Visit https://www.mppd.org/ and find their calendar's iCalendar (.ics)
-      export link (usually a "Subscribe"/"Export" button on the calendar
-      page). Update `sources.yaml` → "Mount Prospect Park District —
-      Events" `url`.
-- [ ] Run `python scripts/build_digest.py` locally and open
-      `docs/index.html` in a browser to confirm real content shows up (not
-      just the evergreen fallback section).
+- **Village News** — the CivicPlus "list all RSS feed" page doesn't expose
+  a plain findable link (neither the build nor a human browsing it could
+  find one), so this source no longer uses RSS. It now scrapes
+  `mountprospect.org/services/news` directly for news links, same approach
+  as the library. Not yet confirmed against a live run — after the next
+  scheduled build, check `docs/index.html`'s "Village News" section. If
+  it's still empty, the page's actual link structure may need a tweak in
+  `fetch_html_events`'s keyword list or link pattern in `scripts/fetchers.py`.
+- **Library Events** — confirmed working (pulls from `mppl.libnet.info`).
+- **Park District Events** — URL and `webcal://` scheme handling fixed;
+  should be live after the next scheduled build. Worth a spot-check.
 
-## 2. Enable GitHub Pages (~3 min)
-
-- [ ] In the repo settings → **Pages**, set source to **Deploy from a
-      branch**, branch `main`, folder `/docs`.
-- [ ] After the first successful `build-digest` workflow run, the site will
-      be live at `https://randerson-23.github.io/agent-business/`.
+To verify or fix a source yourself: open the URL in `sources.yaml` in a
+browser, confirm it loads real content without needing JavaScript, then run
+`python scripts/build_digest.py` locally and open `docs/index.html` to see
+what the fetcher actually extracted.
 
 ## 3. First sponsor outreach (~ongoing, a few min/week)
 

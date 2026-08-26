@@ -33,7 +33,7 @@ def _get(url: str) -> requests.Response:
     return resp
 
 
-def fetch_rss(url: str, limit: int = MAX_ITEMS_PER_SOURCE) -> list[dict]:
+def fetch_rss(url: str, limit: int = MAX_ITEMS_PER_SOURCE, **_ignored) -> list[dict]:
     """Parse a standard RSS 2.0 feed using only the stdlib XML parser."""
     try:
         resp = _get(url)
@@ -60,7 +60,7 @@ def fetch_rss(url: str, limit: int = MAX_ITEMS_PER_SOURCE) -> list[dict]:
         return []
 
 
-def fetch_ics(url: str, limit: int = MAX_ITEMS_PER_SOURCE) -> list[dict]:
+def fetch_ics(url: str, limit: int = MAX_ITEMS_PER_SOURCE, **_ignored) -> list[dict]:
     """Minimal ICS (iCalendar) VEVENT parser, upcoming events only.
 
     Deliberately dependency-free: handles the common single-line
@@ -175,12 +175,24 @@ _NAV_LINK_DENYLIST = {
 # over keyword guessing whenever it's present.
 _EVENT_DETAIL_PATH = re.compile(r"/event/\d+")
 
+DEFAULT_KEYWORDS = ("event", "story", "class", "program", "camp", "concert", "market", "festival")
 
-def fetch_html_events(url: str, limit: int = MAX_ITEMS_PER_SOURCE) -> list[dict]:
-    """Best-effort scrape of an events listing page for link text.
 
-    Intentionally conservative: if the page needs JavaScript to render
-    events (common for calendar widgets), this returns [] and the digest
+def fetch_html_events(
+    url: str,
+    limit: int = MAX_ITEMS_PER_SOURCE,
+    keywords: tuple[str, ...] | list[str] | None = None,
+    **_ignored,
+) -> list[dict]:
+    """Best-effort scrape of a listing page for relevant link text.
+
+    Despite the name (kept for backward-compat config), this works for any
+    "list of links to detail pages" page, not just events - e.g. a village
+    news listing. Pass `keywords` to tune relevance per-source instead of
+    hardcoding one keyword set for every kind of listing page.
+
+    Intentionally conservative: if the page needs JavaScript to render its
+    content (common for calendar widgets), this returns [] and the digest
     falls back to evergreen content for that section instead of guessing.
     """
     try:
@@ -201,12 +213,12 @@ def fetch_html_events(url: str, limit: int = MAX_ITEMS_PER_SOURCE) -> list[dict]
             return deduped[:limit]
 
         # Fallback: crude keyword relevance filter, minus known nav labels.
-        keywords = ("event", "story", "class", "program", "camp", "concert", "market", "festival")
+        active_keywords = tuple(keywords) if keywords else DEFAULT_KEYWORDS
         candidates = [
             r
             for r in parser.results
             if r["title"].lower() not in _NAV_LINK_DENYLIST
-            and any(k in r["title"].lower() for k in keywords)
+            and any(k in r["title"].lower() for k in active_keywords)
         ]
         return candidates[:limit]
     except Exception as exc:  # noqa: BLE001 - fail soft by design
