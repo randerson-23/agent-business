@@ -119,6 +119,25 @@ def test_fetch_ics_normalizes_webcal_scheme(mock_get):
 
 
 @patch("fetchers.requests.get")
+def test_fetch_ics_unescapes_text(mock_get):
+    # Regression test: a real production run showed literal "\n" and "\,"
+    # characters leaking into rendered card text - RFC 5545 TEXT values
+    # escape newlines/commas/semicolons, and the parser wasn't undoing it.
+    ics = (
+        "BEGIN:VCALENDAR\n"
+        "BEGIN:VEVENT\n"
+        "SUMMARY:Barks and Brews 2: Electric Boogaloo\n"
+        "DTSTART:20990901T100000Z\n"
+        "DESCRIPTION:Ages 18+\\, 21+ after 6pm.\\nBring your own leash.\n"
+        "END:VEVENT\n"
+        "END:VCALENDAR\n"
+    )
+    mock_get.return_value = _mock_response(ics)
+    items = fetch_ics("https://example.org/cal.ics")
+    assert items[0]["detail"] == "Ages 18+, 21+ after 6pm. Bring your own leash."
+
+
+@patch("fetchers.requests.get")
 def test_fetch_html_events_filters_relevant_links(mock_get):
     mock_get.return_value = _mock_response(SAMPLE_HTML)
     items = fetch_html_events("https://example.org/events")

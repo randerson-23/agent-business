@@ -27,16 +27,19 @@ TAG_KEYWORDS: dict[str, tuple[str, ...]] = {
     "art_culture": ("art", "museum", "gallery", "concert", "music", "theater", "theatre", "exhibit"),
 }
 
-# Display metadata for rendering filter chips/badges - label + emoji, kept
-# separate from the matching keywords above so wording can change freely.
+# Display metadata for rendering filter chips/badges - label, emoji, and a
+# `hue` naming one of the badge color variants defined in the page CSS
+# (--hue-<name> custom properties), kept separate from the matching
+# keywords above so wording/styling can change freely without touching
+# the inference logic.
 TAG_DISPLAY: dict[str, dict[str, str]] = {
-    "kid_friendly": {"label": "Kid-friendly", "emoji": "🧒"},
-    "dog_friendly": {"label": "Dog-friendly", "emoji": "🐕"},
-    "free": {"label": "Free", "emoji": "💵"},
-    "indoor": {"label": "Indoor", "emoji": "🏠"},
-    "outdoor": {"label": "Outdoor", "emoji": "🌳"},
-    "food": {"label": "Food & drink", "emoji": "🍽️"},
-    "art_culture": {"label": "Arts & culture", "emoji": "🎨"},
+    "kid_friendly": {"label": "Kid-friendly", "emoji": "🧒", "hue": "pink"},
+    "dog_friendly": {"label": "Dog-friendly", "emoji": "🐕", "hue": "amber"},
+    "free": {"label": "Free", "emoji": "💵", "hue": "green"},
+    "indoor": {"label": "Indoor", "emoji": "🏠", "hue": "blue"},
+    "outdoor": {"label": "Outdoor", "emoji": "🌳", "hue": "teal"},
+    "food": {"label": "Food & drink", "emoji": "🍽️", "hue": "orange"},
+    "art_culture": {"label": "Arts & culture", "emoji": "🎨", "hue": "purple"},
 }
 
 
@@ -60,4 +63,6 @@ def tag_display(tag_id: str) -> dict[str, str]:
     """Display metadata for a tag id, with a safe fallback for unknown tags
     (e.g. a manually curated tag in config that isn't in TAG_DISPLAY yet).
     """
-    return TAG_DISPLAY.get(tag_id, {"label": tag_id.replace("_", " ").title(), "emoji": "🏷️"})
+    return TAG_DISPLAY.get(
+        tag_id, {"label": tag_id.replace("_", " ").title(), "emoji": "🏷️", "hue": "gray"}
+    )

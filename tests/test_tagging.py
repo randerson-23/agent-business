@@ -41,9 +41,11 @@ def test_tag_display_known_tag():
     display = tag_display("dog_friendly")
     assert display["label"] == "Dog-friendly"
     assert display["emoji"]
+    assert display["hue"] == "amber"
 
 
 def test_tag_display_unknown_tag_has_safe_fallback():
     display = tag_display("wheelchair_accessible")
     assert display["label"] == "Wheelchair Accessible"
     assert display["emoji"]
+    assert display["hue"] == "gray"
