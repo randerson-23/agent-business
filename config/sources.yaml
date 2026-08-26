@@ -1,12 +1,16 @@
 # Public data sources for the 60056 Weekly digest.
 #
-# NOTE: This build environment's outbound network is restricted, so these
-# feed URLs are the best-known/documented endpoints for each organization's
-# public site as of 2026-08. Before the first real production run, verify
-# each `url` against the live site (view page source for a <link rel="alternate"
-# type="application/rss+xml"> tag, or the site's own "Subscribe/RSS" link) —
-# takes about 10 minutes total. The pipeline fails soft: a broken source is
-# skipped and logged, it never breaks the whole digest build.
+# Status as of 2026-08-26 (see live output at docs/index.html on main):
+#   - Village News (RSS):  NOT YET VERIFIED. The build sandbox's outbound
+#     network is restricted, so this ModID/CID guess hasn't been confirmed
+#     against the live site. Still returns zero items in production.
+#   - Library Events:      VERIFIED working - see comment below.
+#   - Park District Events: URL corrected to the real Tribe Events ICS
+#     export (was a placeholder .ics path); webcal:// scheme now handled
+#     by fetchers.py. Should start returning real events on the next run.
+#
+# The pipeline fails soft either way: a broken source is skipped and
+# logged, it never breaks the whole digest build.
 
 sources:
   - name: "Village of Mount Prospect — News"
@@ -17,7 +21,11 @@ sources:
 
   - name: "Mount Prospect Public Library — Events"
     type: html_events
-    url: "https://mppl.org/events/"
+    # mppl.org/events/ is a marketing page with only nav links (no real
+    # events). The library's actual event listing runs on Communico at
+    # mppl.libnet.info, where each event links to /event/<id> - fetchers.py
+    # prefers those links when present. Confirmed 2026-08-26.
+    url: "https://mppl.libnet.info/events"
     section: "Library Events"
     enabled: true
 

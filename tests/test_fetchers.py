@@ -47,6 +47,22 @@ SAMPLE_HTML = """
 </body></html>
 """
 
+# Mirrors the real structure observed on mppl.libnet.info/events (Communico):
+# top nav links to section pages, plus real per-event detail links.
+COMMUNICO_STYLE_HTML = """
+<html><body>
+<nav>
+<a href="https://mppl.libnet.info/events">All Events</a>
+<a href="/special-events">Special Events</a>
+<a href="https://mppl.org/events/reading-programs/">Reading and Activity Programs</a>
+</nav>
+<main>
+<a href="/event/9687452">Library Closed</a>
+<a href="/event/13719077">Developmental Playgroup</a>
+</main>
+</body></html>
+"""
+
 
 def _mock_response(text: str = "", content: bytes | None = None):
     resp = Mock()
@@ -92,6 +108,17 @@ def test_fetch_ics_fails_soft(mock_get):
 
 
 @patch("fetchers.requests.get")
+def test_fetch_ics_normalizes_webcal_scheme(mock_get):
+    # requests has no adapter for webcal:// - it must be rewritten to
+    # https:// before being handed to requests.get, or every subscribe-only
+    # calendar export (the common case) silently fetches nothing forever.
+    mock_get.return_value = _mock_response(SAMPLE_ICS)
+    fetch_ics("webcal://example.org/cal.ics")
+    called_url = mock_get.call_args[0][0]
+    assert called_url == "https://example.org/cal.ics"
+
+
+@patch("fetchers.requests.get")
 def test_fetch_html_events_filters_relevant_links(mock_get):
     mock_get.return_value = _mock_response(SAMPLE_HTML)
     items = fetch_html_events("https://example.org/events")
@@ -105,3 +132,29 @@ def test_fetch_html_events_filters_relevant_links(mock_get):
 def test_fetch_html_events_fails_soft(mock_get):
     mock_get.side_effect = RuntimeError("boom")
     assert fetch_html_events("https://example.org/events") == []
+
+
+@patch("fetchers.requests.get")
+def test_fetch_html_events_prefers_event_detail_links_over_nav(mock_get):
+    # Regression test: the first production run of this scraper against
+    # mppl.org/events/ returned only nav labels like "All Events" and
+    # "Special Events" because they matched the keyword filter - never any
+    # real events. Communico's /event/<id> links are the reliable signal.
+    mock_get.return_value = _mock_response(COMMUNICO_STYLE_HTML)
+    items = fetch_html_events("https://mppl.libnet.info/events")
+    titles = {i["title"] for i in items}
+    assert titles == {"Library Closed", "Developmental Playgroup"}
+    assert "All Events" not in titles
+    assert "Special Events" not in titles
+    assert "Reading and Activity Programs" not in titles
+
+
+@patch("fetchers.requests.get")
+def test_fetch_html_events_denylists_known_nav_labels_in_fallback(mock_get):
+    # When no /event/<id> links exist at all, the keyword fallback must
+    # still not resurrect known nav boilerplate.
+    html = '<a href="/special-events">Special Events</a><a href="/x">Craft Camp Signup</a>'
+    mock_get.return_value = _mock_response(html)
+    items = fetch_html_events("https://example.org/events")
+    titles = {i["title"] for i in items}
+    assert titles == {"Craft Camp Signup"}

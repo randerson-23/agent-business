@@ -9,6 +9,7 @@ back instead of a crash, so one broken source never breaks the digest build.
 from __future__ import annotations
 
 import logging
+import re
 import xml.etree.ElementTree as ET
 from datetime import datetime, timezone
 from html.parser import HTMLParser
@@ -66,6 +67,12 @@ def fetch_ics(url: str, limit: int = MAX_ITEMS_PER_SOURCE) -> list[dict]:
     SUMMARY/DTSTART/URL fields that most municipal calendar exports use.
     """
     try:
+        # `webcal://` is a hint for calendar apps to subscribe, not a real
+        # transport - every ICS export that publishes it also serves the
+        # same file over https. requests has no adapter for webcal://, so
+        # translate it or every fetch here silently no-ops.
+        if url.startswith("webcal://"):
+            url = "https://" + url[len("webcal://"):]
         resp = _get(url)
         text = resp.text
         events = []
@@ -149,6 +156,26 @@ class _EventLinkExtractor(HTMLParser):
             self._in_link = False
 
 
+# Static nav/menu labels that keep showing up as false positives on library
+# and park district listing pages - these are section links, not events.
+_NAV_LINK_DENYLIST = {
+    "all events",
+    "special events",
+    "reading and activity programs",
+    "presenters/program proposal",
+    "youth events",
+    "adult events",
+    "teen events",
+    "virtual events",
+    "south branch",
+}
+
+# Communico (the platform behind mppl.libnet.info and many other library
+# sites) links each real event to /event/<numeric id>. Prefer that signal
+# over keyword guessing whenever it's present.
+_EVENT_DETAIL_PATH = re.compile(r"/event/\d+")
+
+
 def fetch_html_events(url: str, limit: int = MAX_ITEMS_PER_SOURCE) -> list[dict]:
     """Best-effort scrape of an events listing page for link text.
 
@@ -160,10 +187,26 @@ def fetch_html_events(url: str, limit: int = MAX_ITEMS_PER_SOURCE) -> list[dict]
         resp = _get(url)
         parser = _EventLinkExtractor()
         parser.feed(resp.text)
-        # crude relevance filter: keep links whose text looks event-ish
+
+        # Strongest signal first: individual event detail-page links.
+        detail_links = [r for r in parser.results if _EVENT_DETAIL_PATH.search(r["url"])]
+        if detail_links:
+            # de-dupe by url, preserve order
+            seen = set()
+            deduped = []
+            for r in detail_links:
+                if r["url"] not in seen:
+                    seen.add(r["url"])
+                    deduped.append(r)
+            return deduped[:limit]
+
+        # Fallback: crude keyword relevance filter, minus known nav labels.
         keywords = ("event", "story", "class", "program", "camp", "concert", "market", "festival")
         candidates = [
-            r for r in parser.results if any(k in r["title"].lower() for k in keywords)
+            r
+            for r in parser.results
+            if r["title"].lower() not in _NAV_LINK_DENYLIST
+            and any(k in r["title"].lower() for k in keywords)
         ]
         return candidates[:limit]
     except Exception as exc:  # noqa: BLE001 - fail soft by design
