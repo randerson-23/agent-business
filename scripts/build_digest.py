@@ -92,7 +92,11 @@ def fetch_region_sections(region_cfg: dict) -> list[dict]:
             raw_items = []
         else:
             logger.info("Fetching %s (%s)", source["name"], source["type"])
-            raw_items = fetcher(source["url"], keywords=source.get("keywords"))
+            raw_items = fetcher(
+                source["url"],
+                keywords=source.get("keywords"),
+                detail_link_pattern=source.get("detail_link_pattern"),
+            )
             logger.info("  -> %d item(s)", len(raw_items))
 
         events = []

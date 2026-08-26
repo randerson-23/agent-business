@@ -152,6 +152,24 @@ def test_fetch_html_events_accepts_custom_keywords(mock_get):
 
 
 @patch("fetchers.requests.get")
+def test_fetch_html_events_uses_custom_detail_link_pattern(mock_get):
+    # vah.com (Village of Arlington Heights) links each real news item to
+    # news_detail_T<n>_R<n>.php - a per-source override so this doesn't
+    # have to guess with keywords once the real link structure is known.
+    html = (
+        '<a href="/news_detail_T13_R565.php">Music with the Mayor</a>'
+        '<a href="/newslist.php">News List</a>'
+        '<a href="/about.php">About the Village</a>'
+    )
+    mock_get.return_value = _mock_response(html)
+    items = fetch_html_events(
+        "https://example.org/newslist.php", detail_link_pattern=r"news_detail_T\d+_R\d+\.php"
+    )
+    titles = {i["title"] for i in items}
+    assert titles == {"Music with the Mayor"}
+
+
+@patch("fetchers.requests.get")
 def test_fetch_html_events_falls_back_to_default_keywords_when_none_given(mock_get):
     mock_get.return_value = _mock_response(SAMPLE_HTML)
     items = fetch_html_events("https://example.org/events", keywords=None)
