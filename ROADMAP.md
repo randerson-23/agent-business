@@ -73,37 +73,34 @@ What's left is actually selling into each region — see `SPONSOR_KIT.md` /
 `OUTREACH_TEMPLATES.md`, which are per-business-owner outreach, outside
 what this loop can automate.
 
-### Phase 7 — Visual redesign: look modern enough to pitch sponsors (not started, high priority)
+### Phase 7 — Visual redesign: look modern enough to pitch sponsors (first slice ✅ done, PR #8)
 Feedback (2026-08-26): the current card/badge design (Phase 4) reads flat
 and dated — "more like a Craigslist site." Sponsors won't take a media kit
-seriously if the site looks like a classifieds board, so this jumps ahead
-of the other Phase 7 candidates below.
+seriously if the site looks like a classifieds board, so this jumped ahead
+of the other Phase 7 candidates.
 
-Concrete directions (not all required for a first pass — ship in slices):
-- Typographic hierarchy: bring in one distinctive heading/display font
-  (Google Fonts, real `<link>` — this is a normal website, not a sandboxed
-  artifact, so no CDN restriction applies here) layered over the existing
-  system-font body text, with a proper fallback stack.
-- Elevation & depth: real card shadows and a hover lift, refined spacing/
-  radius scale — right now cards are just a thin border, which reads flat.
-- A real hero band on the hub page and each region page: gradient or
-  subtle pattern background, larger headline, maybe a small inline SVG
-  motif (skyline/map-pin) instead of plain text on the flat page background.
-- Iconography: emoji tag badges (Phase 3) render inconsistently across
-  OS/browsers and look unpolished at this scale — consider a small
-  consistent inline-SVG icon set instead, or at least pair emoji with more
-  refined pill/chip styling.
-- A simple logo/wordmark and a real favicon (currently none) — ties into
-  Phase 9's domain/brand work, do them together if convenient.
-- Open Graph image + meta tags so shared links preview well (also an SEO
-  item, see Phase 9).
-- Explicit mobile pass: the sticky filter bar and card grid need to hold
-  up on a phone, since "checking what's on this weekend" is a mobile use
-  case first.
-Acceptance: a before/after screenshot comparison (Playwright is available
-in this environment for local rendering/screenshots) before calling this
-phase done — "looks more modern" is subjective, so get a visual to judge
-it by rather than just shipping CSS changes blind.
+Shipped in the first slice (PR #8):
+- ✅ Typography: Fraunces (headings) + Inter (body) via Google Fonts.
+- ✅ Elevation: real card shadows + hover lift, refined spacing/radius.
+- ✅ Hero band (gradient + inline-SVG map-pin mark) on hub + region pages.
+- ✅ Color: tag badges now use per-tag `hue` (see `tagging.TAG_DISPLAY`)
+  instead of one flat green for every tag.
+- ✅ Favicon (inline SVG data URI, same pin mark).
+- ✅ Open Graph + Twitter Card *text* meta tags (title/description).
+- ✅ Mobile pass verified with a Playwright screenshot at 390px.
+- ✅ Bonus fix found along the way: ICS text wasn't RFC 5545-unescaped,
+  so literal `\n`/`\,` were leaking into card text in production.
+
+Still open from the original wish list (do later, not blocking):
+- Open Graph **image** (needs an actual image asset — text-only OG tags
+  shipped for now; ties to Phase 9 once there's a real domain/brand to
+  design one around).
+- A logo/wordmark beyond the generic pin mark — deliberately deferred
+  since Phase 9's name/domain choice isn't made yet and a wordmark should
+  match the eventual name, not be redone later.
+- Consider a proper inline-SVG icon set instead of emoji tag badges, if
+  emoji rendering ever looks off on a real device (untested outside this
+  sandbox's Chromium render).
 
 ### Phase 8 — Distance from the user, per event (not started)
 Requested 2026-08-26: show how far away each event/region is from the
