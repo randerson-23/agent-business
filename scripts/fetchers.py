@@ -171,8 +171,12 @@ _NAV_LINK_DENYLIST = {
 }
 
 # Communico (the platform behind mppl.libnet.info and many other library
-# sites) links each real event to /event/<numeric id>. Prefer that signal
-# over keyword guessing whenever it's present.
+# sites) links each real event to /event/<numeric id>. This is the default
+# "detail link" signal - preferred over keyword guessing whenever present.
+# A source can override it via `detail_link_pattern` in config once its
+# real link structure is known (e.g. vah.com's `news_detail_T\d+_R\d+\.php`),
+# instead of relying on the keyword fallback until someone notices it's
+# picking up nav links.
 _EVENT_DETAIL_PATH = re.compile(r"/event/\d+")
 
 DEFAULT_KEYWORDS = ("event", "story", "class", "program", "camp", "concert", "market", "festival")
@@ -182,6 +186,7 @@ def fetch_html_events(
     url: str,
     limit: int = MAX_ITEMS_PER_SOURCE,
     keywords: tuple[str, ...] | list[str] | None = None,
+    detail_link_pattern: str | None = None,
     **_ignored,
 ) -> list[dict]:
     """Best-effort scrape of a listing page for relevant link text.
@@ -189,7 +194,9 @@ def fetch_html_events(
     Despite the name (kept for backward-compat config), this works for any
     "list of links to detail pages" page, not just events - e.g. a village
     news listing. Pass `keywords` to tune relevance per-source instead of
-    hardcoding one keyword set for every kind of listing page.
+    hardcoding one keyword set for every kind of listing page, and pass
+    `detail_link_pattern` (a regex string matched against each link's href)
+    once you know the site's real per-item URL structure.
 
     Intentionally conservative: if the page needs JavaScript to render its
     content (common for calendar widgets), this returns [] and the digest
@@ -200,8 +207,9 @@ def fetch_html_events(
         parser = _EventLinkExtractor()
         parser.feed(resp.text)
 
-        # Strongest signal first: individual event detail-page links.
-        detail_links = [r for r in parser.results if _EVENT_DETAIL_PATH.search(r["url"])]
+        # Strongest signal first: individual detail-page links.
+        pattern = re.compile(detail_link_pattern) if detail_link_pattern else _EVENT_DETAIL_PATH
+        detail_links = [r for r in parser.results if pattern.search(r["url"])]
         if detail_links:
             # de-dupe by url, preserve order
             seen = set()

@@ -1,0 +1,68 @@
+# Region config for Arlington Heights, IL (ZIP 60005) — the second region,
+# added to prove the multi-region architecture generalizes (ROADMAP.md
+# Phase 5). A short drive from Mount Prospect, fits the "plan a weekend
+# nearby" story.
+#
+# Status as of 2026-08-26 (not yet confirmed against a live build — this
+# build environment's outbound network is restricted, same caveat as the
+# first region):
+#   - Village News: vah.com (Village of Arlington Heights) links each real
+#     news item to a `news_detail_T<n>_R<n>.php` URL (confirmed via search
+#     results, e.g. vah.com/news_detail_T13_R565.php) - used as
+#     detail_link_pattern so this should work on the first real run,
+#     unlike Mount Prospect's village news which took two iterations.
+#   - Library Events: AHML (ahml.info/attend/events) - platform/link
+#     structure unconfirmed, using keyword fallback like Mount Prospect's
+#     library did before its real structure was found. May need a
+#     detail_link_pattern added once we see real output.
+#   - Park District Events: ahpd.org runs on the same "Tribe Events"
+#     WordPress plugin as Mount Prospect's park district (confirmed by its
+#     /events/tag/.../YYYY-MM/ URL structure), so the same ICS export query
+#     pattern is used - higher confidence than a blind guess.
+#
+# The pipeline fails soft either way: a broken source is skipped and
+# logged, it never breaks the whole digest build.
+
+region:
+  id: "arlington-heights-60005"
+  name: "Arlington Heights"
+  zip: "60005"
+  state: "IL"
+  timezone: "America/Chicago"
+  tagline: "Village news, library events, and park district programs — a short drive from Mount Prospect."
+
+sources:
+  - name: "Village of Arlington Heights — News"
+    type: html_events
+    url: "https://www.vah.com/newslist.php"
+    detail_link_pattern: "news_detail_T\\d+_R\\d+\\.php"
+    keywords: ["news", "press release", "mayor", "board", "meeting", "notice", "advisory", "alert"]
+    section: "Village News"
+    enabled: true
+
+  - name: "Arlington Heights Memorial Library — Events"
+    type: html_events
+    url: "https://www.ahml.info/attend/events"
+    keywords: ["event", "class", "program", "story", "camp", "concert", "workshop", "book"]
+    section: "Library Events"
+    enabled: true
+
+  - name: "Arlington Heights Park District — Events"
+    type: ics
+    url: "webcal://www.ahpd.org/events/?post_type=tribe_events&ical=1&eventDisplay=list"
+    section: "Park District Events"
+    enabled: true
+
+evergreen:
+  - title: "Arlington Heights Memorial Library"
+    detail: "500 N. Dunton Ave. Makerspace classes, culinary classes, and programs for all ages."
+    url: "https://www.ahml.info/"
+    tags: ["indoor", "kid_friendly", "free"]
+  - title: "Arlington Heights Park District"
+    detail: "Parks, pools, and Lake Arlington across the village."
+    url: "https://www.ahpd.org/"
+    tags: ["outdoor", "kid_friendly"]
+  - title: "Village of Arlington Heights"
+    detail: "Village board meetings, permits, and community announcements."
+    url: "https://www.vah.com/"
+    tags: []
