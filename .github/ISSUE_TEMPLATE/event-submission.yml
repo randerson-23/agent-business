@@ -1,0 +1,53 @@
+name: Submit a local event
+description: Add an event, program, or ongoing activity to a region's page.
+title: "[Event] "
+labels: ["event-submission"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for helping keep the digest useful! A person reviews every
+        submission before it goes live — this opens a pull request, it
+        doesn't publish automatically. Straightforward, on-topic
+        submissions are usually merged within a few days.
+  - type: dropdown
+    id: region
+    attributes:
+      label: Region
+      description: Which town/ZIP is this for?
+      options:
+        - "Mount Prospect (60056)"
+        - "Arlington Heights (60005)"
+    validations:
+      required: true
+  - type: input
+    id: title
+    attributes:
+      label: Event or program name
+      placeholder: "Fall Craft Fair"
+    validations:
+      required: true
+  - type: textarea
+    id: detail
+    attributes:
+      label: Short description
+      description: One or two sentences — what it is, where, and any cost.
+      placeholder: "Handmade crafts and local vendors at Melas Park. Free admission."
+    validations:
+      required: true
+  - type: input
+    id: url
+    attributes:
+      label: Link
+      description: A page with more details (the organizer's site, a village/library/park district page, etc).
+      placeholder: "https://example.org/fall-craft-fair"
+    validations:
+      required: true
+  - type: input
+    id: date
+    attributes:
+      label: Date (optional)
+      description: Leave blank for an ongoing/recurring activity instead of a one-time event.
+      placeholder: "Sept 20, 2026, or leave blank"
+    validations:
+      required: false

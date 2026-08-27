@@ -1,0 +1,92 @@
+name: Event submission
+
+# Turns a community "Submit a local event" Issue Form (see
+# .github/ISSUE_TEMPLATE/event-submission.yml) into a pull request adding
+# the entry to the target region's config/regions/*.yaml. Never merges
+# anything itself - a public submission form is spam/abuse-prone, so a
+# person always reviews the PR before it goes live (ROADMAP.md Phase 11
+# #13). tests.yml already runs on every PR, including this one, so a
+# malformed region file also fails CI before a human even looks at it.
+
+on:
+  issues:
+    types: [opened, edited]
+
+permissions:
+  contents: write
+  issues: write
+  pull-requests: write
+
+jobs:
+  submit:
+    # Issue Forms with `labels: ["event-submission"]` apply this label at
+    # creation - gates this workflow to submissions from that form only,
+    # not any hand-created issue that happens to fire `issues: opened`.
+    if: contains(github.event.issue.labels.*.name, 'event-submission')
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Parse submission and update region file
+        id: parse
+        env:
+          ISSUE_BODY: ${{ github.event.issue.body }}
+        run: |
+          set +e
+          python scripts/parse_event_submission.py >> "$GITHUB_OUTPUT"
+          echo "exit_code=$?" >> "$GITHUB_OUTPUT"
+
+      - name: Comment and stop on a submission that couldn't be parsed
+        if: steps.parse.outputs.exit_code != '0'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const reason = `${{ steps.parse.outputs.SUBMISSION_ERROR }}`;
+            await github.rest.issues.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number,
+              body: "Thanks for the submission! I couldn't turn this into a page entry automatically" +
+                (reason ? `: ${reason}` : ".") +
+                "\n\nA person will take a look — or edit the issue to fix it and this will retry automatically.",
+            });
+
+      - name: Open a pull request for review
+        if: steps.parse.outputs.exit_code == '0'
+        id: pr
+        uses: peter-evans/create-pull-request@v6
+        with:
+          commit-message: "Add community-submitted event: ${{ steps.parse.outputs.EVENT_TITLE }}"
+          branch: "event-submission/${{ github.event.issue.number }}"
+          title: "Community submission: ${{ steps.parse.outputs.EVENT_TITLE }}"
+          body: |
+            Opened automatically from #${{ github.event.issue.number }}.
+
+            **This is unreviewed, publicly-submitted content — read it before merging.**
+
+            - Region file: `${{ steps.parse.outputs.REGION_FILE }}`
+            - Suggested date (not added to the file — evergreen entries don't carry one; add it as a real dated source instead if this is worth tracking as a specific one-time event): ${{ steps.parse.outputs.EVENT_DATE }}
+
+            Merging this closes #${{ github.event.issue.number }}.
+
+            Closes #${{ github.event.issue.number }}
+          labels: event-submission
+
+      - name: Comment with the PR link
+        if: steps.parse.outputs.exit_code == '0'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            await github.rest.issues.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number,
+              body: `Thanks! Opened ${{ steps.pr.outputs.pull-request-url }} for review — it goes live once a person merges it.`,
+            });
