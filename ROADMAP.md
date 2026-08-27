@@ -743,8 +743,21 @@ Angles reviewed this pass:
     Playwright screenshot (open/closed states, light/dark) and confirmed
     the guides index and main region page don't get the block (only
     actual guide pages do, where it's genuinely relevant).
-    **Still open**: a consistent-entity-naming audit across pages - left
-    for a follow-up slice, lower urgency than the FAQPage piece.
+    **Entity-naming audit done in PR #49.** Found a real inconsistency,
+    not a hypothetical one: every page's `<title>` and `og:title` said
+    "Weekend & Trip Planner" - except region pages (the most numerous
+    page type on the whole site: every region's main/today/weekend/
+    free/guides/directory view), whose `page_title` was independently
+    computed in `build_digest.py` and said the shortened "Weekend
+    Planner" instead. Two different strings for what should read as one
+    entity to a search/AI crawler. Fixed by introducing a single
+    `SITE_NAME` constant and using it everywhere a page names its own
+    publisher, instead of each call site spelling it out separately.
+    Also added `og:site_name` (previously present nowhere) to all four
+    templates, and an `isPartOf` link on every region page's `WebPage`
+    JSON-LD pointing at a canonical `WebSite` entity - stating "these
+    pages belong to the same site" directly instead of leaving a
+    crawler to infer it purely from repeated title-string matches.
     **The strategic point worth stating out loud:** content updated
     within 30 days earns ~3.2× more AI citations, and this site rebuilds
     itself every week (see item 28). Automated freshness is a structural
@@ -826,6 +839,25 @@ Angles reviewed this pass:
     zero items on every page. Exactly the outcome this item was for: a real
     performance issue this project had been shipping unnoticed, caught by
     CI instead of a reader's slow connection.
+    **A second real problem, found in PR #49 - the budget's own noise
+    floor, not a page regression.** `numberOfRuns: 1` meant every
+    assertion ran on a single Lighthouse sample, and Total Blocking Time
+    turned out to swing wildly run-to-run on GitHub's shared runners even
+    with zero relevant code changes: PR #45's reverted animation measured
+    1144ms then 324.5ms on identical code; PR #49 - which touched the hub
+    page with nothing but a static `<meta>` tag and a JSON-LD field, no
+    JS at all - measured 727.7ms then 275.5ms on two runs of the literal
+    same commit. A 200ms budget on a single noisy sample was going to
+    fail real, unrelated PRs indefinitely. Fixed the actual root cause
+    rather than loosening the threshold to paper over it: `numberOfRuns`
+    raised from 1 to 3, which is Lighthouse CI's own documented fix for
+    exactly this - it takes the *median* of three runs for every
+    assertion instead of trusting one sample, filtering out the kind of
+    outlier that produced the 1144ms and 727.7ms readings above while
+    still catching a real, sustained regression. Costs roughly 3x the CI
+    minutes for this one step; worth it since a budget nobody trusts
+    (because it fails PRs that didn't cause the failure) gets ignored or
+    disabled, which defeats the entire point of item 26.
 
 #### P3 (new)
 
