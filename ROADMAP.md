@@ -484,16 +484,25 @@ Competitors reviewed this pass:
     a shareable link is a natural follow-up if it turns out people want to
     hand a whole itinerary to someone else rather than each import it.
 
-15. **Birthday-party venues + kids' classes guides.** Chicago Parent runs
-    "39 great places to have your child's next birthday party"; Chicago
-    Kids and Macaroni KID both keep standing party/camp/classes
-    directories as flagship inventory. For a ZIP with $102K median income
-    and this many young families, "birthday party places near me" is the
-    highest commercial-intent evergreen query available here — and party
-    venues, entertainers and tutoring centers are precisely the businesses
-    with budget for a recurring listing. Mostly a content/config slice:
-    the guides machinery (item 5) and directory machinery (item 6) are
-    both already shipped.
+15. ✅ done (PR #39) — **Birthday-party venues + kids' classes guides.**
+    A second `guides:` entry per region, `birthday-parties-and-kids-
+    classes` — the guides machinery (item 5) already generalized to
+    multiple guides per region, so this needed zero Python/template
+    changes, exactly the "content/config slice" this item predicted.
+    Four items per region: Park District birthday-party rentals, Park
+    District kids' classes/camps, Library kids' programs — same civic-
+    source-only discipline as the fall guide (no invented prices, times,
+    or private venue names; a family finds those on the linked page,
+    where they're actually kept current) — plus a fourth item linking to
+    the region's own `/directory/` page for "local party venues,
+    entertainers & tutoring centers." That last one is the honest answer
+    to this item's own observation that those are exactly the businesses
+    with budget for a recurring listing: the directory starts empty and
+    fills in as real businesses join (see item 6), which beats guessing
+    names that may not exist or may be wrong. Verified with a Playwright
+    screenshot of the real generated guide page, and confirmed the
+    directory cross-link, sitemap entries, and tray-star button all wire
+    up correctly.
 
 #### P2 (new)
 

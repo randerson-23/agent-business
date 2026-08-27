@@ -96,3 +96,26 @@ guides:
         detail: "The Village posts that year's official trick-or-treat hours and other fall community notices on its news page each October."
         url: "https://www.vah.com/newslist.php"
         tags: ["kid_friendly", "free"]
+
+  # ROADMAP.md Phase 11 #15 - see the Mount Prospect config for the
+  # rationale; same civic-source-only discipline here.
+  - slug: "birthday-parties-and-kids-classes"
+    title: "Birthday Parties & Kids' Classes"
+    summary: "Where Arlington Heights families look for party venues, rec classes, and enrichment programs — the small set of standing civic options, plus local businesses as they join the directory below."
+    items:
+      - title: "Birthday parties & rentals — Arlington Heights Park District"
+        detail: "Pool parties, gym space, and themed party packages through the Park District — check current pricing, room availability, and booking windows."
+        url: "https://www.ahpd.org/"
+        tags: ["kid_friendly"]
+      - title: "Kids' classes & camps — Arlington Heights Park District"
+        detail: "Swim lessons, sports, dance, and seasonal camps for all ages — browse the current program guide for schedules and registration."
+        url: "https://www.ahpd.org/"
+        tags: ["kid_friendly"]
+      - title: "Kids' programs — Arlington Heights Memorial Library"
+        detail: "Free storytimes, makerspace classes, and craft programs for kids and teens — no registration fee."
+        url: "https://www.ahml.info/"
+        tags: ["indoor", "kid_friendly", "free"]
+      - title: "Local party venues, entertainers & tutoring centers"
+        detail: "Private businesses appear here as they join the local directory — see what's currently listed."
+        url: "https://randerson-23.github.io/agent-business/arlington-heights-60005/directory/"
+        tags: ["kid_friendly"]
