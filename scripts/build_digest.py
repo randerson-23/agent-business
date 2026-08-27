@@ -16,9 +16,10 @@ from __future__ import annotations
 import json
 import logging
 import sys
-from datetime import datetime, timezone
+from datetime import datetime, timedelta, timezone
 from email.utils import parsedate_to_datetime
 from pathlib import Path
+from urllib.parse import quote, urlencode
 
 import yaml
 from jinja2 import Environment, FileSystemLoader
@@ -108,7 +109,66 @@ def truncate(text: str, max_len: int = DETAIL_MAX_LEN) -> str:
     return text[: max_len - 1].rsplit(" ", 1)[0] + "…"
 
 
+def _ics_escape(text: str) -> str:
+    """Inverse of fetchers._unescape_ics_text - escape TEXT values per
+    RFC 5545 before writing them into an .ics file we generate."""
+    return (
+        (text or "")
+        .replace("\\", "\\\\")
+        .replace(",", "\\,")
+        .replace(";", "\\;")
+        .replace("\n", "\\n")
+    )
+
+
+def build_ics_data_uri(event: dict) -> str | None:
+    """A downloadable "add to calendar" link for an event with a
+    machine-readable start date, as a data: URI - no extra output file
+    needed, works with a plain <a download> link. Assumes a 1-hour
+    duration since sources rarely give an explicit end time; that's an
+    approximation stated nowhere as fact, just a usable default.
+    """
+    if not event.get("date_iso"):
+        return None
+    start_dt = datetime.fromisoformat(event["date_iso"])
+    end_dt = start_dt + timedelta(hours=1)
+    lines = [
+        "BEGIN:VCALENDAR",
+        "VERSION:2.0",
+        "PRODID:-//Weekend Trip Planner//EN",
+        "BEGIN:VEVENT",
+        f"DTSTART:{start_dt.strftime('%Y%m%dT%H%M%S')}",
+        f"DTEND:{end_dt.strftime('%Y%m%dT%H%M%S')}",
+        f"SUMMARY:{_ics_escape(event.get('title', ''))}",
+    ]
+    if event.get("detail"):
+        lines.append(f"DESCRIPTION:{_ics_escape(event['detail'])}")
+    if event.get("url"):
+        lines.append(f"URL:{event['url']}")
+    lines += ["END:VEVENT", "END:VCALENDAR", ""]
+    return "data:text/calendar;charset=utf-8," + quote("\r\n".join(lines))
+
+
+def build_google_calendar_url(event: dict, location: str) -> str | None:
+    """A "add to Google Calendar" link - same 1-hour-duration assumption
+    as build_ics_data_uri, for the same reason.
+    """
+    if not event.get("date_iso"):
+        return None
+    start_dt = datetime.fromisoformat(event["date_iso"])
+    end_dt = start_dt + timedelta(hours=1)
+    params = {
+        "action": "TEMPLATE",
+        "text": event.get("title", ""),
+        "dates": f"{start_dt.strftime('%Y%m%dT%H%M%S')}/{end_dt.strftime('%Y%m%dT%H%M%S')}",
+        "details": event.get("detail", ""),
+        "location": location,
+    }
+    return "https://www.google.com/calendar/render?" + urlencode(params)
+
+
 def fetch_region_sections(region_cfg: dict) -> list[dict]:
+    region_name = region_cfg["region"]["name"]
     blocks = []
     for source in region_cfg.get("sources", []):
         if not source.get("enabled", True):
@@ -129,17 +189,18 @@ def fetch_region_sections(region_cfg: dict) -> list[dict]:
         events = []
         for item in raw_items:
             tags = infer_tags(item.get("title", ""), item.get("detail", ""), source["section"])
-            events.append(
-                {
-                    "title": item.get("title", ""),
-                    "detail": truncate(item.get("detail", "")),
-                    "url": item.get("url", ""),
-                    "date": format_event_date(item.get("date")),
-                    "date_iso": parse_event_date_iso(item.get("date")),
-                    "tags": tags,
-                    "tag_badges": [{"id": t, **tag_display(t)} for t in tags],
-                }
-            )
+            event = {
+                "title": item.get("title", ""),
+                "detail": truncate(item.get("detail", "")),
+                "url": item.get("url", ""),
+                "date": format_event_date(item.get("date")),
+                "date_iso": parse_event_date_iso(item.get("date")),
+                "tags": tags,
+                "tag_badges": [{"id": t, **tag_display(t)} for t in tags],
+            }
+            event["ics_href"] = build_ics_data_uri(event)
+            event["google_calendar_url"] = build_google_calendar_url(event, region_name)
+            events.append(event)
         blocks.append({"section": source["section"], "events": events})
     return blocks
 
