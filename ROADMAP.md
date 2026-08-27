@@ -234,15 +234,16 @@ weekend is. That is the moat, and the site should say so out loud (a one-line
    Assumes a 1-hour duration (stated as an assumption, not fact) since
    sources rarely give an explicit end time.
 
-3. **Self-serve sponsor checkout (`/sponsor` page).** 6AM City's core lesson:
-   they automated ad sales because chasing $50 local orders by hand doesn't
-   pay for the hours. Replace "email me for the media kit" with a real page:
-   pricing table, live per-region availability ("Week of Sep 8 — open"), and
-   a Stripe Payment Link. `config/sponsors.yaml` already has the structure to
-   render availability from. This is the single biggest lever on the
-   near-zero-weekly-hours constraint in `BUSINESS_PLAN.md` — everything else
-   on this list is automated already; sponsor sales is the one manual step
-   left.
+3. ✅ mostly done (PR #23) — **Self-serve sponsor page (`/sponsor`).**
+   Real page with pricing table + live per-region availability ("Open this
+   week" / "Sponsored by X"), replacing "email me for the media kit". CTA
+   opens a prefilled GitHub issue inquiry instead of a Stripe Payment
+   Link. **Two things not done, both need a human**: (a) an actual Stripe
+   account + Payment Link for real self-serve checkout — currently the
+   inquiry still gets confirmed/invoiced manually; (b) a real multi-week
+   availability calendar ("Week of Sep 8 — open") — `config/sponsors.yaml`
+   only tracks one current slot per region today, not a dated schedule;
+   worth building once there's an actual sponsor to schedule around.
 
 #### P2
 
