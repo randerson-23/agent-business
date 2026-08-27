@@ -107,6 +107,44 @@
     font-weight: 700;
     margin-top: 4px;
   }
+  .region-card .distance {
+    font-size: 12.5px;
+    color: var(--accent-2);
+    font-weight: 700;
+  }
+
+  .distance-bar {
+    background: var(--card);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-sm);
+    padding: 16px 20px;
+    margin-bottom: 18px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px;
+    font-size: 13.5px;
+  }
+  .distance-bar button {
+    font: inherit;
+    font-weight: 600;
+    color: #fff;
+    background: var(--accent);
+    border: none;
+    border-radius: 999px;
+    padding: 8px 16px;
+    cursor: pointer;
+  }
+  .distance-bar button:hover { background: var(--accent-soft); }
+  .distance-bar input[type="text"] {
+    font: inherit;
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    padding: 7px 12px;
+    width: 90px;
+  }
+  .distance-bar .note { color: var(--muted); font-size: 12px; flex-basis: 100%; }
+  .distance-bar .status { color: var(--accent); font-weight: 600; }
 
   .empty-state {
     text-align: center;
@@ -152,13 +190,22 @@
 
   <div class="wrap">
   {% if region_summaries %}
-  <div class="region-grid">
+  <div class="distance-bar" id="distance-bar">
+    <button type="button" id="use-location">📍 Show distance from me</button>
+    <span>or</span>
+    <input type="text" id="zip-input" placeholder="ZIP code" inputmode="numeric" maxlength="5">
+    <button type="button" id="use-zip">Go</button>
+    <span class="status" id="distance-status"></span>
+    <span class="note">Calculated in your browser only — your location is never sent anywhere.</span>
+  </div>
+  <div class="region-grid" id="region-grid">
     {% for r in region_summaries %}
-    <a class="region-card" href="{{ r.path }}">
+    <a class="region-card" href="{{ r.path }}" data-lat="{{ r.lat }}" data-lon="{{ r.lon }}">
       <span class="zip">{{ r.zip }} · {{ r.state }}</span>
       <h2>{{ r.name }}</h2>
       <p>{{ r.tagline }}</p>
       <span class="count">{{ r.event_count }} live update{{ 's' if r.event_count != 1 else '' }} this week</span>
+      <span class="distance" data-distance-label></span>
     </a>
     {% endfor %}
   </div>
@@ -172,5 +219,89 @@
     <br>Generated {{ generated_at }}.
   </footer>
   </div>
+
+<script>
+(function () {
+  var grid = document.getElementById("region-grid");
+  if (!grid) return;
+  var cards = Array.prototype.slice.call(grid.querySelectorAll(".region-card[data-lat]"));
+  var statusEl = document.getElementById("distance-status");
+  var useLocationBtn = document.getElementById("use-location");
+  var useZipBtn = document.getElementById("use-zip");
+  var zipInput = document.getElementById("zip-input");
+
+  // Rough town-center coordinates for nearby ZIPs, for the manual-entry
+  // fallback when geolocation is denied/unavailable. Approximate on
+  // purpose - good enough to rank nearby towns, not turn-by-turn grade.
+  var ZIP_COORDS = {
+    "60056": [42.0666, -87.9373], "60005": [42.0883, -87.9806],
+    "60004": [42.1067, -87.9806], "60008": [42.0839, -88.0173],
+    "60016": [42.0334, -87.8834], "60018": [42.0089, -87.8895],
+    "60067": [42.1103, -88.0342], "60074": [42.1367, -88.0384],
+    "60193": [42.0334, -88.0834], "60195": [42.0611, -88.0834],
+    "60007": [42.0039, -87.9773]
+  };
+
+  function haversineMiles(lat1, lon1, lat2, lon2) {
+    var toRad = function (d) { return (d * Math.PI) / 180; };
+    var R = 3958.8; // Earth radius in miles
+    var dLat = toRad(lat2 - lat1);
+    var dLon = toRad(lon2 - lon1);
+    var a = Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+      Math.cos(toRad(lat1)) * Math.cos(toRad(lat2)) *
+      Math.sin(dLon / 2) * Math.sin(dLon / 2);
+    return R * (2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a)));
+  }
+
+  function applyDistances(originLat, originLon) {
+    cards.forEach(function (card) {
+      var lat = parseFloat(card.getAttribute("data-lat"));
+      var lon = parseFloat(card.getAttribute("data-lon"));
+      if (isNaN(lat) || isNaN(lon)) return;
+      var miles = haversineMiles(originLat, originLon, lat, lon);
+      card.setAttribute("data-miles", miles);
+      var label = card.querySelector("[data-distance-label]");
+      if (label) label.textContent = "≈ " + miles.toFixed(1) + " mi away";
+    });
+    cards.sort(function (a, b) {
+      return parseFloat(a.getAttribute("data-miles")) - parseFloat(b.getAttribute("data-miles"));
+    });
+    cards.forEach(function (card) { grid.appendChild(card); });
+  }
+
+  if (useLocationBtn) {
+    useLocationBtn.addEventListener("click", function () {
+      if (!navigator.geolocation) {
+        statusEl.textContent = "Location isn't available in this browser — try a ZIP instead.";
+        return;
+      }
+      statusEl.textContent = "Locating…";
+      navigator.geolocation.getCurrentPosition(
+        function (pos) {
+          applyDistances(pos.coords.latitude, pos.coords.longitude);
+          statusEl.textContent = "Sorted by distance from you.";
+        },
+        function () {
+          statusEl.textContent = "Location wasn't shared — try a ZIP instead.";
+        },
+        { timeout: 8000 }
+      );
+    });
+  }
+
+  if (useZipBtn && zipInput) {
+    useZipBtn.addEventListener("click", function () {
+      var zip = zipInput.value.trim();
+      var coords = ZIP_COORDS[zip];
+      if (!coords) {
+        statusEl.textContent = "Don't recognize that ZIP yet — try Show distance from me instead.";
+        return;
+      }
+      applyDistances(coords[0], coords[1]);
+      statusEl.textContent = "Sorted by distance from " + zip + " (approximate).";
+    });
+  }
+})();
+</script>
 </body>
 </html>

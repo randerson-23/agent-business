@@ -5,7 +5,15 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "scripts"))
 import build_digest  # noqa: E402
 
-REGION = {"id": "mount-prospect-60056", "name": "Mount Prospect", "zip": "60056", "state": "IL", "tagline": "Test region."}
+REGION = {
+    "id": "mount-prospect-60056",
+    "name": "Mount Prospect",
+    "zip": "60056",
+    "state": "IL",
+    "tagline": "Test region.",
+    "lat": 42.0666,
+    "lon": -87.9373,
+}
 
 
 def test_resolve_sponsor_falls_back_to_default_house_ad():
@@ -133,6 +141,13 @@ def test_render_hub_page_lists_regions():
     assert "Mount Prospect" in html
     assert "mount-prospect-60056/" in html
     assert "3 live update" in html
+
+
+def test_render_hub_page_includes_region_coordinates_for_distance_feature():
+    summaries = [{**REGION, "event_count": 3, "path": "mount-prospect-60056/"}]
+    html = build_digest.render_hub_page([], summaries, datetime.now(timezone.utc))
+    assert 'data-lat="42.0666"' in html
+    assert 'data-lon="-87.9373"' in html
 
 
 def test_render_hub_page_handles_no_regions():

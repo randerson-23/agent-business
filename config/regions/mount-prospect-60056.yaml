@@ -25,6 +25,11 @@ region:
   state: "IL"
   timezone: "America/Chicago"
   tagline: "Village news, library events, and park district programs."
+  # Village Hall coordinates (50 S Emerson St) - a region-level
+  # approximation for the "distance from you" feature (ROADMAP.md
+  # Phase 8), not a specific venue's address.
+  lat: 42.0666
+  lon: -87.9373
 
 sources:
   - name: "Village of Mount Prospect — News"
