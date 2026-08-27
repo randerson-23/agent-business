@@ -2,7 +2,7 @@
   "ci": {
     "collect": {
       "staticDistDir": "docs",
-      "numberOfRuns": 1,
+      "numberOfRuns": 3,
       "url": [
         "/index.html",
         "/mount-prospect-60056/index.html",

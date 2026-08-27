@@ -839,6 +839,25 @@ Angles reviewed this pass:
     zero items on every page. Exactly the outcome this item was for: a real
     performance issue this project had been shipping unnoticed, caught by
     CI instead of a reader's slow connection.
+    **A second real problem, found in PR #49 - the budget's own noise
+    floor, not a page regression.** `numberOfRuns: 1` meant every
+    assertion ran on a single Lighthouse sample, and Total Blocking Time
+    turned out to swing wildly run-to-run on GitHub's shared runners even
+    with zero relevant code changes: PR #45's reverted animation measured
+    1144ms then 324.5ms on identical code; PR #49 - which touched the hub
+    page with nothing but a static `<meta>` tag and a JSON-LD field, no
+    JS at all - measured 727.7ms then 275.5ms on two runs of the literal
+    same commit. A 200ms budget on a single noisy sample was going to
+    fail real, unrelated PRs indefinitely. Fixed the actual root cause
+    rather than loosening the threshold to paper over it: `numberOfRuns`
+    raised from 1 to 3, which is Lighthouse CI's own documented fix for
+    exactly this - it takes the *median* of three runs for every
+    assertion instead of trusting one sample, filtering out the kind of
+    outlier that produced the 1144ms and 727.7ms readings above while
+    still catching a real, sustained regression. Costs roughly 3x the CI
+    minutes for this one step; worth it since a budget nobody trusts
+    (because it fails PRs that didn't cause the failure) gets ignored or
+    disabled, which defeats the entire point of item 26.
 
 #### P3 (new)
 
