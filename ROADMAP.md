@@ -645,16 +645,22 @@ Angles reviewed this pass:
     the strongest moat in the whole business, and right now it's an
     accident rather than a strategy.
 
-23. **Analytics — the first number every sponsor will ask for.** The
-    self-serve sponsor page shipped in item 3, but there is nothing to
-    put in it: traffic is currently unknown, which makes the price a
-    guess and the pitch unprovable. GoatCounter is a ~1KB cookie-free
-    script needing no consent banner, with a free hosted tier — the right
-    size here. Gate it behind a config flag exactly like the Buttondown
-    embed in item 12, add a privacy line matching the existing
-    geolocation note, and once real data exists, surface a rolling
-    "≈N readers/month" on `/sponsor`. **Blocks nothing technically and
-    unblocks the entire monetization story.**
+23. ✅ done (PR #41) — **Analytics — the first number every sponsor will
+    ask for.** `config/analytics.yaml` holds a `goatcounter_code`, gated
+    exactly like the Buttondown embed in item 12 - unset by default (real
+    account creation is a human action this loop can't do), so no script
+    is embedded and nothing is tracked until a real code is set.
+    `load_analytics_config()` in `build_digest.py` derives the
+    `configured` flag; wired into **all four page templates** (hub,
+    region, weekend hub, sponsor), each getting the ~1KB async
+    `data-goatcounter` script plus a footer privacy line ("no personal
+    data collected") once configured. Verified both states: the real
+    unconfigured build emits the script nowhere (checked all four page
+    types), and a mocked configured code renders the correct script tag
+    on all four. **Not yet done, left for once there's real data**:
+    surfacing a rolling "≈N readers/month" on `/sponsor` - that's real
+    numbers this loop can't fabricate, so it waits for an actual
+    GoatCounter account and some traffic.
 
 #### P2 (new)
 

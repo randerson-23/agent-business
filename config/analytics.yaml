@@ -1,0 +1,15 @@
+# Privacy-first, cookie-free analytics (ROADMAP.md Phase 11 #23) - a
+# GoatCounter (goatcounter.com) site code. GoatCounter needs a real,
+# human-created account (free donation-supported hosted tier); this repo
+# can't sign up for one on its own, same as Buttondown for the newsletter
+# and Stripe for the sponsor page. This file starts unconfigured, so no
+# script is embedded and nothing is tracked until a real code is set here
+# - once it is, every page gets the same ~1KB async script with zero
+# other code changes needed.
+#
+# GoatCounter needs no cookie-consent banner under GDPR/ePrivacy (no
+# cookies, no cross-site tracking, no personal data retained) - the
+# footer note only appears once this is actually configured, so the site
+# never claims a privacy practice it isn't following.
+
+goatcounter_code: null

@@ -312,6 +312,29 @@ def test_load_newsletter_config_defaults_headline_and_detail():
     assert result["detail"] == ""
 
 
+def test_load_analytics_config_unconfigured_without_code():
+    result = build_digest.load_analytics_config({"goatcounter_code": None})
+    assert result["configured"] is False
+    assert result["goatcounter_code"] == ""
+
+
+def test_load_analytics_config_unconfigured_with_blank_code():
+    result = build_digest.load_analytics_config({"goatcounter_code": "   "})
+    assert result["configured"] is False
+
+
+def test_load_analytics_config_configured_with_real_code():
+    result = build_digest.load_analytics_config({"goatcounter_code": "weekendplanner"})
+    assert result["configured"] is True
+    assert result["goatcounter_code"] == "weekendplanner"
+
+
+def test_load_analytics_config_handles_missing_key():
+    result = build_digest.load_analytics_config({})
+    assert result["configured"] is False
+    assert result["goatcounter_code"] == ""
+
+
 def test_haversine_miles_known_distance():
     # Mount Prospect (60056) to Arlington Heights (60005) village centers -
     # real-world distance is a few miles, sanity-checked against a rough

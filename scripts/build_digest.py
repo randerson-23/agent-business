@@ -81,6 +81,18 @@ def load_newsletter_config(newsletter_cfg: dict) -> dict:
     }
 
 
+def load_analytics_config(analytics_cfg: dict) -> dict:
+    """Privacy-first analytics context (ROADMAP.md Phase 11 #23) - a
+    GoatCounter site code that only gets a tracking script embedded once
+    a real account's code is configured; unconfigured means no script at
+    all, not a broken one. See config/analytics.yaml for why: signing up
+    for a hosted analytics account is a human action this repo can't do
+    on its own, same pattern as load_newsletter_config() above.
+    """
+    code = (analytics_cfg.get("goatcounter_code") or "").strip()
+    return {"configured": bool(code), "goatcounter_code": code}
+
+
 # Formats seen in the wild beyond RFC 822 (pubDate) and RFC 5545 (ICS),
 # most likely to show up if a source's `date` field is ever hand-set in
 # config or a future fetcher extracts human-readable text ("Sat, Sep 6" /
@@ -385,7 +397,9 @@ def build_sponsor_availability(sponsors_cfg: dict, region_summaries: list[dict])
     return availability
 
 
-def render_sponsor_page(availability: list[dict], now: datetime) -> str:
+def render_sponsor_page(
+    availability: list[dict], now: datetime, analytics: dict | None = None
+) -> str:
     env = Environment(loader=FileSystemLoader(str(TEMPLATES_DIR)), autoescape=True)
     template = env.get_template("sponsor.html.j2")
     return template.render(
@@ -394,6 +408,7 @@ def render_sponsor_page(availability: list[dict], now: datetime) -> str:
         generated_at=now.strftime("%Y-%m-%d %H:%M UTC"),
         canonical_url=SITE_BASE_URL + "sponsor/",
         hub_url=SITE_BASE_URL,
+        analytics=analytics,
     )
 
 
@@ -516,6 +531,7 @@ def render_region_page(
     weather: list[dict] | None = None,
     newsletter: dict | None = None,
     editors_pick: dict | None = None,
+    analytics: dict | None = None,
 ) -> str:
     env = Environment(loader=FileSystemLoader(str(TEMPLATES_DIR)), autoescape=True)
     template = env.get_template("region.html.j2")
@@ -554,6 +570,7 @@ def render_region_page(
         weather=weather,
         newsletter=newsletter,
         editors_pick=editors_pick,
+        analytics=analytics,
     )
 
 
@@ -618,7 +635,11 @@ def build_region_map(region_summaries: list[dict]) -> dict | None:
 
 
 def render_hub_page(
-    regions: list[dict], region_summaries: list[dict], now: datetime, newsletter: dict | None = None
+    regions: list[dict],
+    region_summaries: list[dict],
+    now: datetime,
+    newsletter: dict | None = None,
+    analytics: dict | None = None,
 ) -> str:
     env = Environment(loader=FileSystemLoader(str(TEMPLATES_DIR)), autoescape=True)
     template = env.get_template("hub.html.j2")
@@ -628,10 +649,13 @@ def render_hub_page(
         canonical_url=SITE_BASE_URL,
         newsletter=newsletter,
         region_map=build_region_map(region_summaries),
+        analytics=analytics,
     )
 
 
-def render_weekend_hub_page(region_sections: list[dict], date_range: str, now: datetime) -> str:
+def render_weekend_hub_page(
+    region_sections: list[dict], date_range: str, now: datetime, analytics: dict | None = None
+) -> str:
     """The hub-level 'This weekend near you' page: weekend events merged
     across every region, grouped by region so it's still clear where each
     one is. Deferred out of the per-region date-scoped-views slice to keep
@@ -645,6 +669,7 @@ def render_weekend_hub_page(region_sections: list[dict], date_range: str, now: d
         generated_at=now.strftime("%Y-%m-%d %H:%M UTC"),
         canonical_url=SITE_BASE_URL + "this-weekend/",
         hub_url=SITE_BASE_URL,
+        analytics=analytics,
     )
 
 
@@ -773,6 +798,7 @@ def filter_free_items(blocks: list[dict], evergreen: list[dict]) -> list[dict]:
 def main() -> None:
     sponsors_cfg = load_yaml(CONFIG_DIR / "sponsors.yaml")
     newsletter = load_newsletter_config(load_yaml(CONFIG_DIR / "newsletter.yaml"))
+    analytics = load_analytics_config(load_yaml(CONFIG_DIR / "analytics.yaml"))
     regions = load_regions()
     now = datetime.now(timezone.utc)
 
@@ -810,6 +836,7 @@ def main() -> None:
             guides_url=guides_url,
             directory_url=directory_url,
             newsletter=newsletter,
+            analytics=analytics,
             editors_pick=editors_pick,
         )
 
@@ -875,6 +902,7 @@ def main() -> None:
                 directory_url=directory_url,
                 weather=weekend_weather if slug == "this-weekend" else None,
                 newsletter=newsletter,
+                analytics=analytics,
             )
             view_dir = region_dir / slug
             view_dir.mkdir(parents=True, exist_ok=True)
@@ -897,6 +925,7 @@ def main() -> None:
                     guides_url=guides_url,
                     directory_url=directory_url,
                     newsletter=newsletter,
+                    analytics=analytics,
                 )
                 guide_dir = region_dir / "guides" / guide["slug"]
                 guide_dir.mkdir(parents=True, exist_ok=True)
@@ -929,6 +958,7 @@ def main() -> None:
                 guides_url=guides_url,
                 directory_url=directory_url,
                 newsletter=newsletter,
+                analytics=analytics,
             )
             guides_index_dir = region_dir / "guides"
             guides_index_dir.mkdir(parents=True, exist_ok=True)
@@ -951,6 +981,7 @@ def main() -> None:
             guides_url=guides_url,
             directory_url=directory_url,
             newsletter=newsletter,
+            analytics=analytics,
         )
         directory_dir = region_dir / "directory"
         directory_dir.mkdir(parents=True, exist_ok=True)
@@ -972,18 +1003,18 @@ def main() -> None:
             }
         )
 
-    hub_html = render_hub_page(regions, region_summaries, now, newsletter)
+    hub_html = render_hub_page(regions, region_summaries, now, newsletter, analytics)
     (OUTPUT_DIR / "index.html").write_text(hub_html, encoding="utf-8")
     logger.info("Wrote %s", OUTPUT_DIR / "index.html")
 
-    weekend_hub_html = render_weekend_hub_page(hub_weekend_sections, hub_weekend_date_range or "", now)
+    weekend_hub_html = render_weekend_hub_page(hub_weekend_sections, hub_weekend_date_range or "", now, analytics)
     weekend_hub_dir = OUTPUT_DIR / "this-weekend"
     weekend_hub_dir.mkdir(parents=True, exist_ok=True)
     (weekend_hub_dir / "index.html").write_text(weekend_hub_html, encoding="utf-8")
     logger.info("Wrote %s (%d region section%s)", weekend_hub_dir / "index.html", len(hub_weekend_sections), "" if len(hub_weekend_sections) == 1 else "s")
 
     sponsor_availability = build_sponsor_availability(sponsors_cfg, region_summaries)
-    sponsor_html = render_sponsor_page(sponsor_availability, now)
+    sponsor_html = render_sponsor_page(sponsor_availability, now, analytics)
     sponsor_dir = OUTPUT_DIR / "sponsor"
     sponsor_dir.mkdir(parents=True, exist_ok=True)
     (sponsor_dir / "index.html").write_text(sponsor_html, encoding="utf-8")
