@@ -30,6 +30,23 @@
     --shadow-sm: 0 1px 2px rgba(23,35,28,.06), 0 1px 1px rgba(23,35,28,.05);
     --shadow-md: 0 10px 28px -10px rgba(23,35,28,.20), 0 2px 6px rgba(23,35,28,.06);
     --shadow-lift: 0 16px 36px -12px rgba(23,35,28,.28), 0 3px 8px rgba(23,35,28,.08);
+    --callout-gradient: linear-gradient(135deg, #fff7ec, #fff);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #121c17;
+      --card: #1b2620;
+      --ink: #eef2ee;
+      --muted: #9db3a8;
+      --accent: #57b98a;
+      --accent-soft: #237549;
+      --accent-2: #f0975a;
+      --border: #2c3a32;
+      --shadow-sm: 0 1px 2px rgba(0,0,0,.35), 0 1px 1px rgba(0,0,0,.25);
+      --shadow-md: 0 10px 28px -10px rgba(0,0,0,.55), 0 2px 6px rgba(0,0,0,.35);
+      --shadow-lift: 0 16px 36px -12px rgba(0,0,0,.65), 0 3px 8px rgba(0,0,0,.4);
+      --callout-gradient: linear-gradient(135deg, #2a2318, #1b2620);
+    }
   }
   * { box-sizing: border-box; }
   body {
@@ -116,7 +133,7 @@
   .weekend-callout {
     display: block;
     text-align: center;
-    background: linear-gradient(135deg, #fff7ec, #fff);
+    background: var(--callout-gradient);
     border: 1px solid var(--border);
     border-left: 4px solid var(--accent-2);
     border-radius: var(--radius-lg);
@@ -146,13 +163,13 @@
     font: inherit;
     font-weight: 600;
     color: #fff;
-    background: var(--accent);
+    background: var(--accent-soft);
     border: none;
     border-radius: 999px;
     padding: 8px 16px;
     cursor: pointer;
   }
-  .distance-bar button:hover { background: var(--accent-soft); }
+  .distance-bar button:hover { filter: brightness(1.15); }
   .distance-bar input[type="text"] {
     font: inherit;
     border: 1px solid var(--border);

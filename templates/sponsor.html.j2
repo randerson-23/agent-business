@@ -30,6 +30,25 @@
     --shadow-sm: 0 1px 2px rgba(23,35,28,.06), 0 1px 1px rgba(23,35,28,.05);
     --shadow-md: 0 10px 28px -10px rgba(23,35,28,.20), 0 2px 6px rgba(23,35,28,.06);
     --shadow-lift: 0 16px 36px -12px rgba(23,35,28,.28), 0 3px 8px rgba(23,35,28,.08);
+    --status-open-bg: #e2f3e7;   --status-open-ink: #1f6b3c;
+    --status-booked-bg: #eef0ee; --status-booked-ink: #4a534d;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #121c17;
+      --card: #1b2620;
+      --ink: #eef2ee;
+      --muted: #9db3a8;
+      --accent: #57b98a;
+      --accent-soft: #237549;
+      --accent-2: #f0975a;
+      --border: #2c3a32;
+      --shadow-sm: 0 1px 2px rgba(0,0,0,.35), 0 1px 1px rgba(0,0,0,.25);
+      --shadow-md: 0 10px 28px -10px rgba(0,0,0,.55), 0 2px 6px rgba(0,0,0,.35);
+      --shadow-lift: 0 16px 36px -12px rgba(0,0,0,.65), 0 3px 8px rgba(0,0,0,.4);
+      --status-open-bg: #1d3a26;   --status-open-ink: #8fe0ad;
+      --status-booked-bg: #2c332e; --status-booked-ink: #b8c2bc;
+    }
   }
   * { box-sizing: border-box; }
   body {
@@ -88,12 +107,12 @@
   .availability-row .region a { color: var(--ink); text-decoration: none; }
   .availability-row .region a:hover { color: var(--accent); }
   .status { font-size: 13px; font-weight: 700; padding: 4px 12px; border-radius: 999px; }
-  .status.open { background: var(--hue-green-bg, #e2f3e7); color: var(--hue-green-ink, #1f6b3c); }
-  .status.booked { background: var(--hue-gray-bg, #eef0ee); color: var(--hue-gray-ink, #4a534d); }
+  .status.open { background: var(--status-open-bg); color: var(--status-open-ink); }
+  .status.booked { background: var(--status-booked-bg); color: var(--status-booked-ink); }
 
   .cta {
     display: inline-block;
-    background: var(--accent);
+    background: var(--accent-soft);
     color: #fff;
     font-weight: 700;
     text-decoration: none;
@@ -101,7 +120,7 @@
     border-radius: 999px;
     box-shadow: var(--shadow-sm);
   }
-  .cta:hover { background: var(--accent-soft); }
+  .cta:hover { filter: brightness(1.15); }
 
   .note { color: var(--muted); font-size: 13px; }
 
