@@ -247,6 +247,67 @@ def resolve_sponsor(sponsors_cfg: dict, region_id: str) -> dict:
     return region_sponsor_cfg.get("house_ad") or default_house_ad
 
 
+# Keep in sync with SPONSOR_KIT.md's "Placements & pricing" table - that
+# file is the canonical human-facing writeup, this is the same numbers
+# rendered as a live page. Duplicated rather than shared from one data
+# file since it's three rows that change rarely; not worth a shared
+# pricing config for that.
+SPONSOR_TIERS = [
+    {
+        "name": "Featured Sponsor",
+        "price": "$50/week or $175/month",
+        "detail": "Top-of-page banner with your business name, a 2-sentence blurb, and a link, on that week's issue for one region.",
+    },
+    {
+        "name": "Community Partner",
+        "price": "$30/month",
+        "detail": "Smaller logo + link in the footer of every issue that month.",
+    },
+    {
+        "name": "Event Promo",
+        "price": "$20 one-time",
+        "detail": "Your single event or announcement boosted to the top of \"This Week.\"",
+    },
+]
+
+
+def build_sponsor_availability(sponsors_cfg: dict, region_summaries: list[dict]) -> list[dict]:
+    """Current sponsor status per region, for the live /sponsor page.
+
+    v1 shows *this week's* status only ("Sponsored by X" / "Open"), not a
+    multi-week calendar - config/sponsors.yaml has one active slot per
+    region today, not a dated schedule of future weeks. A real rolling
+    calendar is a bigger data-model change, left for when there's an
+    actual sponsor to schedule around.
+    """
+    availability = []
+    for r in region_summaries:
+        sponsor = resolve_sponsor(sponsors_cfg, r["id"])
+        region_cfg = sponsors_cfg.get("regions", {}).get(r["id"], {})
+        is_booked = bool(region_cfg.get("active") and region_cfg["active"] != "none")
+        availability.append(
+            {
+                "region_name": r["name"],
+                "region_url": SITE_BASE_URL + r["id"] + "/",
+                "booked": is_booked,
+                "sponsor_title": sponsor.get("title") if is_booked else None,
+            }
+        )
+    return availability
+
+
+def render_sponsor_page(availability: list[dict], now: datetime) -> str:
+    env = Environment(loader=FileSystemLoader(str(TEMPLATES_DIR)), autoescape=True)
+    template = env.get_template("sponsor.html.j2")
+    return template.render(
+        tiers=SPONSOR_TIERS,
+        availability=availability,
+        generated_at=now.strftime("%Y-%m-%d %H:%M UTC"),
+        canonical_url=SITE_BASE_URL + "sponsor/",
+        hub_url=SITE_BASE_URL,
+    )
+
+
 def all_tags_present(*blocks_and_evergreen: list[dict]) -> list[dict]:
     """Collect every distinct tag actually in use, for the filter bar -
     no point rendering a filter chip for a tag nothing on the page has.
@@ -379,7 +440,7 @@ def render_weekend_hub_page(region_sections: list[dict], date_range: str, now: d
 
 def build_sitemap_xml(region_summaries: list[dict], now: datetime) -> str:
     lastmod = now.strftime("%Y-%m-%d")
-    urls = [SITE_BASE_URL, SITE_BASE_URL + "this-weekend/"]
+    urls = [SITE_BASE_URL, SITE_BASE_URL + "this-weekend/", SITE_BASE_URL + "sponsor/"]
     for r in region_summaries:
         base = SITE_BASE_URL + r["path"]
         urls += [base, base + "this-weekend/", base + "today/", base + "free/"]
@@ -584,6 +645,13 @@ def main() -> None:
     weekend_hub_dir.mkdir(parents=True, exist_ok=True)
     (weekend_hub_dir / "index.html").write_text(weekend_hub_html, encoding="utf-8")
     logger.info("Wrote %s (%d region section%s)", weekend_hub_dir / "index.html", len(hub_weekend_sections), "" if len(hub_weekend_sections) == 1 else "s")
+
+    sponsor_availability = build_sponsor_availability(sponsors_cfg, region_summaries)
+    sponsor_html = render_sponsor_page(sponsor_availability, now)
+    sponsor_dir = OUTPUT_DIR / "sponsor"
+    sponsor_dir.mkdir(parents=True, exist_ok=True)
+    (sponsor_dir / "index.html").write_text(sponsor_html, encoding="utf-8")
+    logger.info("Wrote %s", sponsor_dir / "index.html")
 
     (OUTPUT_DIR / "sitemap.xml").write_text(build_sitemap_xml(region_summaries, now), encoding="utf-8")
     (OUTPUT_DIR / "robots.txt").write_text(build_robots_txt(), encoding="utf-8")

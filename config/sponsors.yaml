@@ -1,15 +1,21 @@
 # Sponsor rotation, keyed by region id (must match a `region.id` in
-# config/regions/*.yaml). See BUSINESS_PLAN.md / SPONSOR_KIT.md for pricing.
+# config/regions/*.yaml). See BUSINESS_PLAN.md / SPONSOR_KIT.md for pricing
+# background, or the live /sponsor/ page (built from SPONSOR_TIERS in
+# scripts/build_digest.py) for the version a sponsor actually sees.
 #
 # For each region: `active` marks the entry (by id) to feature in the next
 # build; leave everything else as history. `active: none` shows the
 # region's own house_ad if set, otherwise default_house_ad below — the
 # pipeline always has something reasonable to render.
+#
+# default_house_ad.url below should track SITE_BASE_URL in
+# scripts/build_digest.py - update both together once a real domain is
+# registered (ROADMAP.md Phase 9).
 
 default_house_ad:
   title: "Sponsor this spot"
-  detail: "Reach local families every week. Local businesses only — see SPONSOR_KIT.md."
-  url: "https://github.com/randerson-23/agent-business/blob/main/SPONSOR_KIT.md"
+  detail: "Reach local families every week. Local businesses only — see pricing and availability."
+  url: "https://randerson-23.github.io/agent-business/sponsor/"
 
 regions:
   mount-prospect-60056:
