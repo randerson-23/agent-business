@@ -1,3 +1,4 @@
+import json
 import sys
 from datetime import date, datetime, timezone
 from pathlib import Path
@@ -808,3 +809,74 @@ def test_build_robots_txt_references_sitemap():
     robots = build_digest.build_robots_txt()
     assert "Sitemap: https://randerson-23.github.io/agent-business/sitemap.xml" in robots
     assert "Allow: /" in robots
+
+
+def test_build_robots_txt_explicitly_allows_ai_crawlers():
+    robots = build_digest.build_robots_txt()
+    for bot in ("GPTBot", "ClaudeBot", "PerplexityBot", "Google-Extended"):
+        assert f"User-agent: {bot}" in robots
+    # Every named crawler must be paired with its own Allow, not just
+    # inherit the wildcard block textually above it.
+    lines = robots.splitlines()
+    for i, line in enumerate(lines):
+        if line == "User-agent: GPTBot":
+            assert lines[i + 1] == "Allow: /"
+
+
+def test_build_llms_txt_lists_regions_and_weekend_links():
+    summaries = [
+        {"name": "Mount Prospect", "zip": "60056", "tagline": "Village news.", "path": "mount-prospect-60056/", "guides": []},
+        {"name": "Arlington Heights", "zip": "60005", "tagline": "Village news too.", "path": "arlington-heights-60005/", "guides": []},
+    ]
+    result = build_digest.build_llms_txt(summaries)
+    assert result.startswith("# Weekend & Trip Planner")
+    assert "[Mount Prospect (60056)](https://randerson-23.github.io/agent-business/mount-prospect-60056/)" in result
+    assert "[Mount Prospect — this weekend](https://randerson-23.github.io/agent-business/mount-prospect-60056/this-weekend/)" in result
+    assert "## Sponsorship" in result
+
+
+def test_build_llms_txt_includes_guides_when_present():
+    summaries = [
+        {
+            "name": "Mount Prospect",
+            "zip": "60056",
+            "tagline": "Village news.",
+            "path": "mount-prospect-60056/",
+            "guides": [{"slug": "fall-family-guide", "title": "Fall Family Guide"}],
+        }
+    ]
+    result = build_digest.build_llms_txt(summaries)
+    assert "## Guides" in result
+    assert "[Fall Family Guide — Mount Prospect](https://randerson-23.github.io/agent-business/mount-prospect-60056/guides/fall-family-guide/)" in result
+
+
+def test_build_llms_txt_omits_guides_section_when_none_exist():
+    summaries = [{"name": "Mount Prospect", "zip": "60056", "tagline": "x", "path": "mount-prospect-60056/", "guides": []}]
+    result = build_digest.build_llms_txt(summaries)
+    assert "## Guides" not in result
+
+
+def test_build_answer_block_mentions_region_name_and_zip():
+    region = {"name": "Mount Prospect", "zip": "60056", "state": "IL", "tagline": "Village news, library events, and park district programs."}
+    result = build_digest.build_answer_block(region)
+    assert "Mount Prospect" in result
+    assert "60056" in result
+    word_count = len(result.split())
+    assert 30 <= word_count <= 70
+
+
+def test_build_freshness_json_ld_is_valid_json_with_date_modified():
+    region = {"name": "Mount Prospect"}
+    now = datetime(2026, 8, 27, 12, 0, 0, tzinfo=timezone.utc)
+    result = build_digest.build_freshness_json_ld(region, "https://example.org/mount-prospect-60056/", now)
+    parsed = json.loads(result)
+    assert parsed["@type"] == "WebPage"
+    assert parsed["url"] == "https://example.org/mount-prospect-60056/"
+    assert parsed["dateModified"] == now.isoformat()
+
+
+def test_build_freshness_json_ld_escapes_script_close_tag():
+    region = {"name": "Mount Prospect </script><script>alert(1)"}
+    now = datetime(2026, 8, 27, tzinfo=timezone.utc)
+    result = build_digest.build_freshness_json_ld(region, "https://example.org/", now)
+    assert "</script>" not in result

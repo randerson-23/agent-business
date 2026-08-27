@@ -135,6 +135,8 @@
   .view-nav a:hover { color: var(--accent); border-color: var(--accent); }
   .view-nav a.active { color: #fff; background: var(--accent-soft); border-color: var(--accent-soft); }
 
+  .answer-block { color: var(--muted); font-size: 14px; line-height: 1.6; margin: 4px 0 18px; max-width: 640px; }
+
   .weather-bar {
     display: flex;
     flex-wrap: wrap;
@@ -463,6 +465,8 @@
     {% if directory_url %}<a href="{{ directory_url }}"{% if nav_current == "directory" %} class="active"{% endif %}>Directory</a>{% endif %}
   </nav>
 
+  {% if answer_block %}<p class="answer-block">{{ answer_block }}</p>{% endif %}
+
   {% if weather %}
   <div class="weather-bar">
     {% for day in weather %}
@@ -623,6 +627,7 @@
 {% if event_json_ld %}
 <script type="application/ld+json">{{ event_json_ld|safe }}</script>
 {% endif %}
+<script type="application/ld+json">{{ freshness_json_ld|safe }}</script>
 <script>
 (function () {
   var activeTags = new Set();

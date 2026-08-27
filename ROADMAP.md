@@ -627,23 +627,37 @@ Angles reviewed this pass:
 
 #### P1 (new)
 
-22. **Get cited by AI search (GEO), as a deliberate strategy.** Under 10%
-    of AI-cited sources rank in Google's top 10 for the same query, so the
-    Phase 9 SEO work does **not** buy this channel — and AI Overviews now
-    trigger on roughly half of all queries. Concretely: a hand-written
-    `llms.txt`; an AI-crawler-aware `robots.txt` that *explicitly* allows
-    GPTBot / ClaudeBot / PerplexityBot / Google-Extended rather than
-    leaving it unstated; a 40–60 word answer block at the top of each
-    region and guide page (literally answering "What's happening in Mount
-    Prospect this weekend?"); `FAQPage` schema on the guides; and
-    consistent entity naming across pages.
-    **The strategic point worth stating out loud:** content updated within
-    30 days earns ~3.2× more AI citations, and this site rebuilds itself
-    every week. Automated freshness is a structural advantage over every
-    hand-written competitor guide — Time Out's "54 Best Things to Do"
-    piece decays the moment it's published; this doesn't. That is arguably
-    the strongest moat in the whole business, and right now it's an
-    accident rather than a strategy.
+22. ⚠️ first slice done (PR #42) — **Get cited by AI search (GEO), as a
+    deliberate strategy.** Under 10% of AI-cited sources rank in Google's
+    top 10 for the same query, so the Phase 9 SEO work does **not** buy
+    this channel — and AI Overviews now trigger on roughly half of all
+    queries.
+    Shipped: `build_llms_txt()` generates `/llms.txt` at build time
+    (llmstxt.org convention) from the same `region_summaries` the sitemap
+    uses, so it can't drift out of sync the way a hand-written one would
+    — lists every region, the merged + per-region "this weekend" views,
+    every guide, and the sponsor page. `robots.txt` now explicitly names
+    GPTBot / ChatGPT-User / OAI-SearchBot / ClaudeBot / Claude-Web /
+    anthropic-ai / PerplexityBot / Perplexity-User / Google-Extended /
+    CCBot with their own `Allow: /` blocks, rather than leaving AI
+    crawler access implicit in the wildcard rule. A genuine ~40-60 word
+    answer block (`build_answer_block()`) now sits at the top of each
+    region's **main** page (not repeated on every subpage, to avoid
+    looking like boilerplate) - deliberately generic/accurate rather than
+    citing specific event counts, since a wrong specific in an AI's
+    cached copy is worse than a true generality. Item 28's freshness
+    signal (below) shipped alongside this, since it's the same strategic
+    bet.
+    **Still open**: `FAQPage` schema on the guides (needs real Q&A
+    content design, not just a mechanical addition) and a consistent-
+    entity-naming audit across pages - left for a follow-up slice.
+    **The strategic point worth stating out loud:** content updated
+    within 30 days earns ~3.2× more AI citations, and this site rebuilds
+    itself every week (see item 28). Automated freshness is a structural
+    advantage over every hand-written competitor guide — Time Out's "54
+    Best Things to Do" piece decays the moment it's published; this
+    doesn't. That is arguably the strongest moat in the whole business,
+    and until this PR it was an accident rather than a strategy.
 
 23. ✅ done (PR #41) — **Analytics — the first number every sponsor will
     ask for.** `config/analytics.yaml` holds a `goatcounter_code`, gated
@@ -695,10 +709,15 @@ Angles reviewed this pass:
     sponsor slot at zero marginal cost. Des Plaines (60016), Palatine
     (60067) or Elk Grove Village (60007).
 
-28. **Visible freshness signals.** A human-readable "Updated <date>" plus
-    `dateModified` in the JSON-LD. Trivial to add, and it's the exact
-    signal both AI citation and human trust key on — the cheapest possible
-    down-payment on item 22.
+28. ✅ done (PR #42), shipped alongside item 22 — **Visible freshness
+    signals.** The human-readable "Generated {date}" footer line already
+    existed on every page; new is `build_freshness_json_ld()`, a
+    `WebPage` node carrying `dateModified` (the build timestamp),
+    independent of `build_event_json_ld`'s Event graph so it's present
+    even on a page with zero currently-dated events. Deliberately its own
+    `<script>` block rather than folded into the Event graph, since the
+    two have different truthiness (an empty Event graph is legitimately
+    `None`; a page's freshness is never nothing).
 
 **Re-rank:** item 4 (datetime normalization, still ⚠️ partial) should move
 up. It was originally justified by Google event rich results; item 22 makes

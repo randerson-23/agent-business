@@ -466,6 +466,42 @@ def all_tags_present(*blocks_and_evergreen: list[dict]) -> list[dict]:
     return [{"id": t, **tag_display(t)} for t in sorted(seen)]
 
 
+def build_answer_block(region: dict) -> str:
+    """A short, plain-language paragraph literally answering "what is
+    this page" (ROADMAP.md Phase 11 #22 - GEO). AI answer engines cite
+    pages that state their own purpose in ~40-60 words near the top,
+    separately from meta descriptions (which they don't reliably read).
+    Deliberately generic/accurate rather than citing specific event
+    counts or dates - those go stale the moment an AI's cached copy is a
+    day old, and a wrong specific is worse than a true generality.
+    """
+    return (
+        f"{region['name']} ({region['zip']}), {region['state']}: {region['tagline']} "
+        f"This page rebuilds automatically, usually several times a week, "
+        f"and links directly to the official village, library, and park "
+        f"district sources for full details on any listing."
+    )
+
+
+def build_freshness_json_ld(region: dict, canonical_url: str, now: datetime) -> str:
+    """A minimal WebPage node carrying `dateModified` (ROADMAP.md Phase
+    11 #28) - a freshness signal both AI citation and human trust key on;
+    content updated within 30 days earns roughly 3.2x more AI citations
+    per the research behind item 22, and this site rebuilds weekly at
+    minimum. Deliberately independent of build_event_json_ld's Event
+    graph below (which is None when nothing has a resolved date) - a
+    page's freshness is worth signaling even with zero dated events.
+    """
+    payload = {
+        "@context": "https://schema.org",
+        "@type": "WebPage",
+        "name": f"{region['name']} — Weekend Planner",
+        "url": canonical_url,
+        "dateModified": now.isoformat(),
+    }
+    return json.dumps(payload, ensure_ascii=False).replace("</", "<\\/")
+
+
 def build_event_json_ld(region: dict, blocks: list[dict]) -> str | None:
     """schema.org/Event structured data for fetched events that have a
     real date (not the evergreen resource listings, and not an
@@ -532,12 +568,14 @@ def render_region_page(
     newsletter: dict | None = None,
     editors_pick: dict | None = None,
     analytics: dict | None = None,
+    answer_block: str | None = None,
 ) -> str:
     env = Environment(loader=FileSystemLoader(str(TEMPLATES_DIR)), autoescape=True)
     template = env.get_template("region.html.j2")
     all_events_flat = [e for b in blocks for e in b["events"]] + evergreen
     region = region_cfg["region"]
     region_base_url = SITE_BASE_URL + region["id"] + "/"
+    canonical_url = region_base_url + canonical_suffix
     # Distinct <title>/description per view (not just per region) so
     # search engines don't see four near-duplicate pages - the whole
     # point of shipping linkable date/price-scoped views in the first
@@ -553,8 +591,10 @@ def render_region_page(
         blocks=blocks,
         evergreen=evergreen,
         available_tags=all_tags_present(all_events_flat),
-        canonical_url=region_base_url + canonical_suffix,
+        canonical_url=canonical_url,
         event_json_ld=build_event_json_ld(region, blocks),
+        freshness_json_ld=build_freshness_json_ld(region, canonical_url, now),
+        answer_block=answer_block,
         heading=heading,
         subheading=subheading,
         empty_message=empty_message,
@@ -693,8 +733,63 @@ def build_sitemap_xml(region_summaries: list[dict], now: datetime) -> str:
     )
 
 
+def build_llms_txt(region_summaries: list[dict]) -> str:
+    """llms.txt (llmstxt.org convention, ROADMAP.md Phase 11 #22 - GEO):
+    a plain-language map of the site for an AI agent/crawler to read
+    directly, generated at build time from the same region_summaries the
+    sitemap uses - so it can never drift out of sync with what's actually
+    live the way a hand-written one would.
+    """
+    lines = [
+        "# Weekend & Trip Planner",
+        "",
+        "> A hyperlocal weekend/trip planner for Chicago-area ZIP codes. "
+        "Aggregates village news, public library events, and park "
+        "district programs per town, rebuilt automatically (usually "
+        "multiple times a week), so it stays current without a human "
+        "keeping it that way.",
+        "",
+        "## Regions",
+    ]
+    for r in region_summaries:
+        base = SITE_BASE_URL + r["path"]
+        lines.append(f"- [{r['name']} ({r['zip']})]({base}): {r['tagline']}")
+    lines += ["", "## This weekend", f"- [Across every region]({SITE_BASE_URL}this-weekend/)"]
+    for r in region_summaries:
+        base = SITE_BASE_URL + r["path"]
+        lines.append(f"- [{r['name']} — this weekend]({base}this-weekend/)")
+    guide_lines = [
+        f"- [{g['title']} — {r['name']}]({SITE_BASE_URL}{r['path']}guides/{g['slug']}/)"
+        for r in region_summaries
+        for g in r.get("guides", [])
+    ]
+    if guide_lines:
+        lines += ["", "## Guides"] + guide_lines
+    lines += ["", "## Sponsorship", f"- [Sponsor a region]({SITE_BASE_URL}sponsor/)"]
+    return "\n".join(lines) + "\n"
+
+
+# AI crawlers worth naming explicitly (ROADMAP.md Phase 11 #22 - GEO).
+# `Allow: /` under `User-agent: *` already covers these; naming them is a
+# deliberate signal, not a behavior change - fewer than 10% of sources
+# cited by AI answer engines rank in Google's organic top 10 for the same
+# query, so leaving crawler access unstated costs a channel the existing
+# SEO work (Phase 9) doesn't buy on its own.
+_AI_CRAWLERS = (
+    "GPTBot", "ChatGPT-User", "OAI-SearchBot",  # OpenAI
+    "ClaudeBot", "Claude-Web", "anthropic-ai",  # Anthropic
+    "PerplexityBot", "Perplexity-User",  # Perplexity
+    "Google-Extended",  # Google Gemini / AI Overviews training+grounding
+    "CCBot",  # Common Crawl, widely used to train/ground other models
+)
+
+
 def build_robots_txt() -> str:
-    return f"User-agent: *\nAllow: /\nSitemap: {SITE_BASE_URL}sitemap.xml\n"
+    lines = ["User-agent: *", "Allow: /", ""]
+    for bot in _AI_CRAWLERS:
+        lines += [f"User-agent: {bot}", "Allow: /", ""]
+    lines.append(f"Sitemap: {SITE_BASE_URL}sitemap.xml")
+    return "\n".join(lines) + "\n"
 
 
 def structured_date_coverage(blocks: list[dict]) -> tuple[int, int]:
@@ -838,6 +933,7 @@ def main() -> None:
             newsletter=newsletter,
             analytics=analytics,
             editors_pick=editors_pick,
+            answer_block=build_answer_block(region),
         )
 
         region_dir = OUTPUT_DIR / region_id
@@ -1000,6 +1096,7 @@ def main() -> None:
                 "event_count": event_count,
                 "path": f"{region_id}/",
                 "guide_slugs": [g["slug"] for g in guides],
+                "guides": [{"slug": g["slug"], "title": g["title"]} for g in guides],
             }
         )
 
@@ -1022,7 +1119,8 @@ def main() -> None:
 
     (OUTPUT_DIR / "sitemap.xml").write_text(build_sitemap_xml(region_summaries, now), encoding="utf-8")
     (OUTPUT_DIR / "robots.txt").write_text(build_robots_txt(), encoding="utf-8")
-    logger.info("Wrote sitemap.xml and robots.txt")
+    (OUTPUT_DIR / "llms.txt").write_text(build_llms_txt(region_summaries), encoding="utf-8")
+    logger.info("Wrote sitemap.xml, robots.txt, and llms.txt")
     if total_events:
         logger.info(
             "TOTAL structured-date coverage: %d/%d events (%.0f%%) have a machine-readable start date",
