@@ -15,13 +15,26 @@ jobs:
         with:
           python-version: "3.11"
 
-      - name: Install dependencies
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Install Python dependencies
         run: |
           pip install -r requirements.txt
           pip install pytest
+
+      - name: Install Lighthouse CI
+        run: npm ci
 
       - name: Run test suite
         run: python -m pytest tests/ -q
 
       - name: Build digest (smoke test)
         run: python scripts/build_digest.py
+
+      - name: Check inline JS budget
+        run: python scripts/check_perf_budget.py
+
+      - name: Lighthouse CI — performance budget (LCP, CLS, TBT)
+        run: npx lhci autorun

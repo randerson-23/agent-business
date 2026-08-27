@@ -1,0 +1,8 @@
+{
+  "name": "agent-business",
+  "private": true,
+  "description": "Lighthouse CI tooling for the Weekend & Trip Planner static site. The site itself is plain HTML/CSS/JS with no build step — this exists only to run performance budgets in CI.",
+  "devDependencies": {
+    "@lhci/cli": "^0.15.1"
+  }
+}
