@@ -15,7 +15,13 @@
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='46' fill='%231f4d3a'/%3E%3Cpath d='M50 22c-13 0-24 10-24 24 0 18 24 36 24 36s24-18 24-36c0-14-11-24-24-24z' fill='white'/%3E%3Ccircle cx='50' cy='45' r='10' fill='%231f4d3a'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<!-- Non-render-blocking font load: paint with the fallback stack immediately,
+     swap to the web font once it's fetched, instead of blocking first paint
+     on a round trip to fonts.googleapis.com (real measured LCP impact on a
+     cold connection was ~300ms - see ROADMAP.md Phase 11 #26). -->
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+<noscript><link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"></noscript>
 <style>
   /* Native cross-document View Transitions (ROADMAP.md Phase 11 #20) -
      an unknown at-rule to any browser without support, so this is a
@@ -871,7 +877,7 @@
   <footer>
     Local business? See the
     <a href="https://randerson-23.github.io/agent-business/sponsor/">sponsor page</a>.
-    <br>Generated 2026-08-27 19:59 UTC.
+    <br>Generated 2026-08-27 21:12 UTC.
     
   </footer>
 </div>
@@ -895,7 +901,7 @@
 
 <script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "Event", "name": "Touch-A-Truck", "url": "https://www.ahpd.org/event/touch-a-truck-2/", "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode", "location": {"@type": "Place", "name": "Arlington Heights", "address": {"@type": "PostalAddress", "addressRegion": "IL", "postalCode": "60005", "addressCountry": "US"}}, "description": "This FREE event is perfect for families to play outside, meet with local businesses and Touch-A-Truck. This event is a great opportunity for your child to see…", "startDate": "2026-09-12T09:30:00"}, {"@type": "Event", "name": "Heritage Fest", "url": "https://www.ahpd.org/event/heritage-fest-2026/", "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode", "location": {"@type": "Place", "name": "Arlington Heights", "address": {"@type": "PostalAddress", "addressRegion": "IL", "postalCode": "60005", "addressCountry": "US"}}, "description": "Explore the cultural diversity within our community and enjoy a variety of exhibits, demonstrations and live performances. Presented by the AH Park District,…", "startDate": "2026-09-19T09:00:00"}, {"@type": "Event", "name": "Arlington Heights Park Foundation Golf Classic", "url": "https://www.ahpd.org/event/arlington-heights-park-foundation-golf-classic/", "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode", "location": {"@type": "Place", "name": "Arlington Heights", "address": {"@type": "PostalAddress", "addressRegion": "IL", "postalCode": "60005", "addressCountry": "US"}}, "description": "The Arlington Heights Park Foundation welcomes all golfers to join us at Arlington Lakes Golf Club! Join us for a four-person scramble competition for a good…", "startDate": "2026-09-24T09:00:00"}, {"@type": "Event", "name": "Speakeasy at the Museum", "url": "https://www.ahpd.org/event/speakeasy-at-the-museum/", "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode", "location": {"@type": "Place", "name": "Arlington Heights", "address": {"@type": "PostalAddress", "addressRegion": "IL", "postalCode": "60005", "addressCountry": "US"}}, "description": "Step back in time to the Roaring Twenties at our exclusive Speakeasy Night! Enjoy two Prohibition Era themed cocktails (alcohol and non-alcohol options…", "startDate": "2026-09-25T19:00:00"}, {"@type": "Event", "name": "Autumn Harvest", "url": "https://www.ahpd.org/event/autumn-harvest-2026/", "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode", "location": {"@type": "Place", "name": "Arlington Heights", "address": {"@type": "PostalAddress", "addressRegion": "IL", "postalCode": "60005", "addressCountry": "US"}}, "description": "Don’t miss fall family fun with crafts, games, hayrides, a scarecrow building contest, live music and entertainment, and food available for purchase from…", "startDate": "2026-10-10T11:00:00"}, {"@type": "Event", "name": "AHPD Senior Art Show", "url": "https://www.ahpd.org/event/ahpd-senior-art-show/", "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode", "location": {"@type": "Place", "name": "Arlington Heights", "address": {"@type": "PostalAddress", "addressRegion": "IL", "postalCode": "60005", "addressCountry": "US"}}, "description": "Take in an evening of art and enjoyment! Peruse AHPD adult students’ creations at the annual Art Show. Visual art, fiber arts and woodcraft will be on display…", "startDate": "2026-10-14T16:00:00"}]}</script>
 
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebPage", "name": "Arlington Heights — Weekend Planner", "url": "https://randerson-23.github.io/agent-business/arlington-heights-60005/", "dateModified": "2026-08-27T19:59:04.793925+00:00"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebPage", "name": "Arlington Heights — Weekend Planner", "url": "https://randerson-23.github.io/agent-business/arlington-heights-60005/", "dateModified": "2026-08-27T21:12:38.199094+00:00"}</script>
 <script>
 (function () {
   var activeTags = new Set();

@@ -15,7 +15,13 @@
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='46' fill='%231f4d3a'/%3E%3Cpath d='M50 22c-13 0-24 10-24 24 0 18 24 36 24 36s24-18 24-36c0-14-11-24-24-24z' fill='white'/%3E%3Ccircle cx='50' cy='45' r='10' fill='%231f4d3a'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<!-- Non-render-blocking font load: paint with the fallback stack immediately,
+     swap to the web font once it's fetched, instead of blocking first paint
+     on a round trip to fonts.googleapis.com (real measured LCP impact on a
+     cold connection was ~300ms - see ROADMAP.md Phase 11 #26). -->
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+<noscript><link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"></noscript>
 <style>
   /* Native cross-document View Transitions (ROADMAP.md Phase 11 #20) -
      an unknown at-rule to any browser without support, so this is a
@@ -582,7 +588,7 @@
   <footer>
     Local business? See the
     <a href="https://randerson-23.github.io/agent-business/sponsor/">sponsor page</a>.
-    <br>Generated 2026-08-27 19:59 UTC.
+    <br>Generated 2026-08-27 21:12 UTC.
     
   </footer>
 </div>
@@ -604,7 +610,7 @@
 </div>
 
 
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebPage", "name": "Arlington Heights — Weekend Planner", "url": "https://randerson-23.github.io/agent-business/arlington-heights-60005/guides/birthday-parties-and-kids-classes/", "dateModified": "2026-08-27T19:59:04.793925+00:00"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebPage", "name": "Arlington Heights — Weekend Planner", "url": "https://randerson-23.github.io/agent-business/arlington-heights-60005/guides/birthday-parties-and-kids-classes/", "dateModified": "2026-08-27T21:12:38.199094+00:00"}</script>
 <script>
 (function () {
   var activeTags = new Set();
