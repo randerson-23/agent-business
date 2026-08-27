@@ -71,3 +71,26 @@ evergreen:
     detail: "Village board meetings, permits, and community announcements."
     url: "https://www.mountprospect.org/"
     tags: []
+
+# Seasonal/evergreen guides (ROADMAP.md Phase 11 #5) - grouped, linkable
+# pages that don't expire every Monday the way a dated event listing does.
+# Sourced from the same civic feeds as the weekly digest, not invented
+# venue-specific claims (no fabricated hours/dates - those change yearly
+# and belong on the official page, which is what these link to).
+guides:
+  - slug: "fall-family-guide"
+    title: "Fall Family Guide"
+    summary: "A living guide to fall in Mount Prospect — seasonal park district programs, library fall programming, and where the Village posts official trick-or-treat hours. Pulls from the same civic sources as the weekly digest, organized by season instead of by week."
+    items:
+      - title: "Fall & Halloween programs — Mount Prospect Park District"
+        detail: "Pumpkin-themed drop-ins, fall break camps, and seasonal rec programs. Dates and registration change every year — check the current program guide."
+        url: "https://www.mppd.org/"
+        tags: ["outdoor", "kid_friendly"]
+      - title: "Fall storytimes & programs — Mount Prospect Public Library"
+        detail: "Seasonal storytimes, teen fall programs, and free museum passes — a solid pick for a rainy fall Saturday."
+        url: "https://mppl.org/"
+        tags: ["indoor", "kid_friendly", "free"]
+      - title: "Official trick-or-treat hours & fall notices"
+        detail: "The Village posts that year's official trick-or-treat hours and other fall community notices on its news page each October."
+        url: "https://www.mountprospect.org/services/news"
+        tags: ["kid_friendly", "free"]

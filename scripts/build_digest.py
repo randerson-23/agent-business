@@ -234,6 +234,34 @@ def prepare_evergreen(region_cfg: dict) -> list[dict]:
     return prepared
 
 
+def prepare_guides(region_cfg: dict) -> list[dict]:
+    """Seasonal/evergreen guides (ROADMAP.md Phase 11 #5) - a `guides:` list
+    in region YAML, same shape as `evergreen` but grouped into named,
+    linkable pages (e.g. "Fall Family Guide") instead of one flat section.
+    Doesn't expire every Monday the way a dated event listing does, which
+    is the point: it's the placement local sponsors most want to be inside.
+    """
+    prepared = []
+    for guide in region_cfg.get("guides", []):
+        items = []
+        for item in guide.get("items", []):
+            tags = item.get("tags")
+            if tags is None:
+                tags = infer_tags(item.get("title", ""), item.get("detail", ""))
+            items.append(
+                {**item, "tags": tags, "tag_badges": [{"id": t, **tag_display(t)} for t in tags]}
+            )
+        prepared.append(
+            {
+                "slug": guide["slug"],
+                "title": guide["title"],
+                "summary": guide.get("summary", ""),
+                "items": items,
+            }
+        )
+    return prepared
+
+
 def resolve_sponsor(sponsors_cfg: dict, region_id: str) -> dict:
     default_house_ad = sponsors_cfg.get(
         "default_house_ad", {"title": "Sponsor this spot", "detail": "", "url": ""}
@@ -377,6 +405,7 @@ def render_region_page(
     empty_message: str | None = None,
     nav_current: str = "all",
     canonical_suffix: str = "",
+    guides_url: str | None = None,
 ) -> str:
     env = Environment(loader=FileSystemLoader(str(TEMPLATES_DIR)), autoescape=True)
     template = env.get_template("region.html.j2")
@@ -408,6 +437,7 @@ def render_region_page(
         page_title=page_title,
         page_description=page_description,
         hub_url=SITE_BASE_URL,
+        guides_url=guides_url,
     )
 
 
@@ -444,6 +474,9 @@ def build_sitemap_xml(region_summaries: list[dict], now: datetime) -> str:
     for r in region_summaries:
         base = SITE_BASE_URL + r["path"]
         urls += [base, base + "this-weekend/", base + "today/", base + "free/"]
+        if r.get("guide_slugs"):
+            urls.append(base + "guides/")
+            urls += [base + f"guides/{slug}/" for slug in r["guide_slugs"]]
     entries = "\n".join(
         f"  <url>\n    <loc>{u}</loc>\n    <lastmod>{lastmod}</lastmod>\n  </url>" for u in urls
     )
@@ -555,9 +588,11 @@ def main() -> None:
 
         blocks = fetch_region_sections(region_cfg)
         evergreen = prepare_evergreen(region_cfg)
+        guides = prepare_guides(region_cfg)
         sponsor = resolve_sponsor(sponsors_cfg, region_id)
+        guides_url = SITE_BASE_URL + region_id + "/guides/" if guides else None
 
-        html = render_region_page(region_cfg, blocks, sponsor, evergreen, now)
+        html = render_region_page(region_cfg, blocks, sponsor, evergreen, now, guides_url=guides_url)
 
         region_dir = OUTPUT_DIR / region_id
         region_dir.mkdir(parents=True, exist_ok=True)
@@ -616,11 +651,62 @@ def main() -> None:
                 empty_message=empty_message,
                 nav_current=nav_current,
                 canonical_suffix=f"{slug}/",
+                guides_url=guides_url,
             )
             view_dir = region_dir / slug
             view_dir.mkdir(parents=True, exist_ok=True)
             (view_dir / "index.html").write_text(view_html, encoding="utf-8")
             logger.info("Wrote %s (%d item%s)", view_dir / "index.html", len(items), "" if len(items) == 1 else "s")
+
+        if guides:
+            for guide in guides:
+                guide_html = render_region_page(
+                    region_cfg,
+                    [{"section": "What's inside", "events": guide["items"]}],
+                    sponsor,
+                    [],
+                    now,
+                    heading=guide["title"],
+                    subheading=guide["summary"],
+                    empty_message="Nothing in this guide yet.",
+                    nav_current="guides",
+                    canonical_suffix=f"guides/{guide['slug']}/",
+                    guides_url=guides_url,
+                )
+                guide_dir = region_dir / "guides" / guide["slug"]
+                guide_dir.mkdir(parents=True, exist_ok=True)
+                (guide_dir / "index.html").write_text(guide_html, encoding="utf-8")
+                logger.info("Wrote %s", guide_dir / "index.html")
+
+            guide_index_items = [
+                {
+                    "title": g["title"],
+                    "detail": g["summary"],
+                    "url": guides_url + g["slug"] + "/",
+                    "date": None,
+                    "tags": [],
+                    "tag_badges": [],
+                    "ics_href": None,
+                }
+                for g in guides
+            ]
+            guides_index_html = render_region_page(
+                region_cfg,
+                [{"section": "Guides", "events": guide_index_items}],
+                sponsor,
+                [],
+                now,
+                heading=f"Guides for {region['name']}",
+                subheading="Curated, evergreen guides that don't expire every Monday.",
+                empty_message="No guides yet.",
+                nav_current="guides",
+                canonical_suffix="guides/",
+                guides_url=guides_url,
+            )
+            guides_index_dir = region_dir / "guides"
+            guides_index_dir.mkdir(parents=True, exist_ok=True)
+            (guides_index_dir / "index.html").write_text(guides_index_html, encoding="utf-8")
+            logger.info("Wrote %s (%d guide%s)", guides_index_dir / "index.html", len(guides), "" if len(guides) == 1 else "s")
 
         event_count = sum(len(b["events"]) for b in blocks)
         dated, total = structured_date_coverage(blocks)
@@ -633,6 +719,7 @@ def main() -> None:
                 **region,
                 "event_count": event_count,
                 "path": f"{region_id}/",
+                "guide_slugs": [g["slug"] for g in guides],
             }
         )
 
