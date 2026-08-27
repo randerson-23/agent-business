@@ -331,9 +331,12 @@ weekend is. That is the moat, and the site should say so out loud (a one-line
    grid-column: span 1; } }`. Verified again after the fix, plus light/dark
    and desktop/mobile combinations, plus the distance-sort JS still
    reorders only the region tiles (weekend/stat tiles stay put) with no
-   console errors, plus the new `lighthouserc.json` budget from item 26
-   still passes (LCP ~790ms, CLS 0 — the scroll-reveal transform doesn't
-   trigger layout).
+   console errors. **A second real regression — item 26's own budget
+   caught it on GitHub's actual runner, not in local testing** — is the
+   fuller story behind item 19: the scroll-reveal's original opacity
+   animation genuinely pushed hub-page LCP to 2.87s (over the 2.5s
+   budget), fixed by dropping opacity from that animation entirely. See
+   item 19 for the full account.
 
 9. **Superseded by item 19** — see below (pure-CSS scroll-reveal replaced
    the `IntersectionObserver` approach this item originally proposed).
@@ -593,29 +596,48 @@ Competitors reviewed this pass:
 #### P3 (new) — the "modern and impressive" goal, 2026 CSS edition
 
 19. ✅ done (PR #45), shipped with items 8 and 21 — **Do item 9 in pure CSS
-    instead.** `.bento-tile` (hub page) now fades and slides in via
-    `animation-timeline: view()` + `animation-range: entry 0% cover 30%` —
-    no `IntersectionObserver`, no scroll listener, no JS at all. Gated
-    behind `@supports (animation-timeline: view())` (an unsupported browser
-    just renders every tile normally-visible, nothing to fall back to) and
+    instead.** `.bento-tile` (hub page) slides in via `animation-timeline:
+    view()` + `animation-range: entry 0% cover 30%` — no
+    `IntersectionObserver`, no scroll listener, no JS at all. Gated behind
+    `@supports (animation-timeline: view())` (an unsupported browser just
+    renders every tile normally-visible, nothing to fall back to) and
     `prefers-reduced-motion: no-preference`.
-    **Verified the part that's easy to get wrong**: whether a tile already
-    inside the viewport on first paint (no scroll needed) starts visible or
-    requires a scroll gesture first. Checked via `getComputedStyle().opacity`
-    in Playwright at two viewport heights — a tile still below the fold on
-    load correctly starts at `opacity: 0`, and the *same* tile placed within
-    a tall-enough initial viewport correctly resolves to `opacity: 1` before
-    any scroll happens, because the browser evaluates view-timeline progress
-    from current scroll geometry at first paint, not from a scroll delta.
-    Confirms this can't ship content invisible-by-default above the fold.
-    One caveat, tooling-only: Playwright/CDP's full-page screenshot mode
-    doesn't fire real scroll events for off-screen content, so it captured
-    every below-the-fold tile as blank — a capture-tool artifact (confirmed
-    by comparing against `scrollIntoView()` + a normal viewport screenshot,
-    which renders correctly), not a real-user bug; worth remembering if a
-    future full-page-screenshot tool or crawler ever needs a true render of
-    this page, since scroll-tied CSS animation can look broken to it even
-    when it isn't.
+    **Real LCP regression caught by item 26's own CI budget, not by local
+    testing**: the first version animated `opacity: 0 → 1` alongside the
+    slide, verified locally (including that an already-on-screen tile
+    resolves to `opacity: 1` immediately at first paint, no scroll needed -
+    see below). That local verification used this sandbox's blocked
+    network, where the hero's own text always wins LCP well before any
+    bento tile could even be a candidate - not representative of real
+    network/CPU throttling. On GitHub's actual runner, item 26's Lighthouse
+    check failed for real: hub-page LCP hit 2.87s against the 2.5s budget,
+    specifically and only on the page this PR touched. Root cause: per the
+    LCP spec, an element's recorded paint time is *not* its first-existing
+    frame but the moment it becomes non-transparent - so if the real
+    largest-paint candidate ever lands inside a `.bento-tile`, an
+    opacity-based reveal genuinely defers its LCP timestamp, and that's
+    exactly the kind of thing that only shows up under real network
+    conditions. **Fixed by dropping opacity from the animation entirely** -
+    only `transform: translateY()` animates now, so every tile is fully
+    painted and LCP-eligible the instant it exists, regardless of scroll
+    position; confirmed via `getComputedStyle().opacity` staying `1` before
+    and after scrolling. Keeps the motion, removes the entire risk category
+    instead of guessing at which element was the real candidate.
+    **Verified separately, still true**: whether a tile already inside the
+    viewport on first paint (no scroll needed) starts visible or requires a
+    scroll gesture first - checked via `getComputedStyle().opacity` in
+    Playwright at two viewport heights before the opacity animation was
+    removed; a tile still below the fold on load correctly started at
+    `opacity: 0`, and the same tile placed within a tall-enough initial
+    viewport correctly resolved to `opacity: 1` before any scroll happened.
+    Kept here as a record of the mechanism, now moot for LCP purposes since
+    opacity no longer animates at all.
+    One caveat, tooling-only, also still true: Playwright/CDP's full-page
+    screenshot mode doesn't fire real scroll events for off-screen content,
+    so an opacity-based reveal captured every below-the-fold tile as blank
+    in that specific capture mode - a capture-tool artifact, not a
+    real-user bug, worth remembering for any *future* scroll-tied opacity
+    animation even though this one no longer uses opacity.
 
 20. ✅ done (PR #35) — **View Transitions on navigation.** `@view-transition
     { navigation: auto; }` added to all four page templates (hub, region,
