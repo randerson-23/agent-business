@@ -205,7 +205,11 @@
   <footer>
     Curious what the digest looks like? <a href="{{ hub_url }}">See a live region</a>.
     <br>Generated {{ generated_at }}.
+    {% if analytics and analytics.configured %}<br>Traffic is tracked with privacy-first, cookie-free analytics — ask for current numbers.{% endif %}
   </footer>
 </div>
+{% if analytics and analytics.configured %}
+<script data-goatcounter="https://{{ analytics.goatcounter_code }}.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+{% endif %}
 </body>
 </html>

@@ -394,6 +394,7 @@
     Want your ZIP added, or want to sponsor a region?
     <a href="sponsor/">See pricing &amp; availability</a>.
     <br>Generated {{ generated_at }}.
+    {% if analytics and analytics.configured %}<br>Visits counted with privacy-first, cookie-free analytics — no personal data collected.{% endif %}
   </footer>
   </div>
 
@@ -480,5 +481,8 @@
   }
 })();
 </script>
+{% if analytics and analytics.configured %}
+<script data-goatcounter="https://{{ analytics.goatcounter_code }}.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+{% endif %}
 </body>
 </html>
