@@ -121,6 +121,33 @@
   .view-nav a:hover { color: var(--accent); border-color: var(--accent); }
   .view-nav a.active { color: #fff; background: var(--accent-soft); border-color: var(--accent-soft); }
 
+  .weather-bar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin: 0 0 18px;
+  }
+  .weather-day {
+    background: var(--card);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-sm);
+    padding: 10px 14px;
+    display: flex;
+    align-items: baseline;
+    gap: 7px;
+    font-size: 13px;
+  }
+  .weather-day .wx-emoji { font-size: 16px; }
+  .weather-day .wx-name { font-weight: 700; }
+  .weather-day .wx-temp { color: var(--ink); }
+  .weather-day .wx-label { color: var(--muted); }
+  .wx-note {
+    flex-basis: 100%;
+    color: var(--accent-2-text);
+    font-size: 12.5px;
+    font-weight: 600;
+  }
+
   .sponsor {
     position: relative;
     background: var(--card);
@@ -293,6 +320,8 @@
     <a href="https://randerson-23.github.io/agent-business/mount-prospect-60056/directory/" class="active">Directory</a>
   </nav>
 
+  
+
   <div class="sponsor">
     <div class="label">This Week's Sponsor</div>
     <h3>Sponsor this spot</h3>
@@ -315,7 +344,7 @@
   <footer>
     Local business? See the
     <a href="https://randerson-23.github.io/agent-business/sponsor/">sponsor page</a>.
-    <br>Generated 2026-08-27 08:57 UTC.
+    <br>Generated 2026-08-27 09:57 UTC.
   </footer>
 </div>
 
