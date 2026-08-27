@@ -286,6 +286,70 @@ def test_load_newsletter_config_defaults_headline_and_detail():
     assert result["detail"] == ""
 
 
+def test_select_editors_pick_returns_none_with_no_candidates():
+    region_cfg = {"region": {"id": "x"}}
+    assert build_digest.select_editors_pick(region_cfg, [], []) is None
+
+
+def test_select_editors_pick_prefers_soonest_dated_item():
+    region_cfg = {"region": {"id": "x"}}
+    blocks = [
+        {
+            "section": "Events",
+            "events": [
+                {"title": "Later Event", "url": "https://x/later", "date_iso": "2026-09-10T10:00:00", "tags": []},
+                {"title": "Sooner Event", "url": "https://x/sooner", "date_iso": "2026-08-29T10:00:00", "tags": []},
+            ],
+        }
+    ]
+    pick = build_digest.select_editors_pick(region_cfg, blocks, [])
+    assert pick["title"] == "Sooner Event"
+
+
+def test_select_editors_pick_dated_beats_evergreen():
+    region_cfg = {"region": {"id": "x"}}
+    blocks = [{"section": "Events", "events": [{"title": "Dated Event", "url": "https://x/dated", "date_iso": "2026-08-29T10:00:00", "tags": []}]}]
+    evergreen = [{"title": "Library", "url": "https://x/library", "tags": []}]
+    pick = build_digest.select_editors_pick(region_cfg, blocks, evergreen)
+    assert pick["title"] == "Dated Event"
+
+
+def test_select_editors_pick_breaks_ties_with_free_and_kid_friendly():
+    region_cfg = {"region": {"id": "x"}}
+    blocks = [
+        {
+            "section": "Events",
+            "events": [
+                {"title": "Plain", "url": "https://x/plain", "date_iso": "2026-08-29T10:00:00", "tags": []},
+                {"title": "Free + Kid", "url": "https://x/free-kid", "date_iso": "2026-08-29T10:00:00", "tags": ["free", "kid_friendly"]},
+            ],
+        }
+    ]
+    pick = build_digest.select_editors_pick(region_cfg, blocks, [])
+    assert pick["title"] == "Free + Kid"
+
+
+def test_select_editors_pick_honors_override_url():
+    region_cfg = {"region": {"id": "x", "editors_pick_url": "https://x/library"}}
+    blocks = [{"section": "Events", "events": [{"title": "Dated Event", "url": "https://x/dated", "date_iso": "2026-08-29T10:00:00", "tags": []}]}]
+    evergreen = [{"title": "Library", "url": "https://x/library", "tags": []}]
+    pick = build_digest.select_editors_pick(region_cfg, blocks, evergreen)
+    assert pick["title"] == "Library"
+
+
+def test_select_editors_pick_falls_back_when_override_url_not_found():
+    region_cfg = {"region": {"id": "x", "editors_pick_url": "https://x/nonexistent"}}
+    blocks = [{"section": "Events", "events": [{"title": "Dated Event", "url": "https://x/dated", "date_iso": "2026-08-29T10:00:00", "tags": []}]}]
+    pick = build_digest.select_editors_pick(region_cfg, blocks, [])
+    assert pick["title"] == "Dated Event"
+
+
+def test_select_editors_pick_ignores_items_missing_title_or_url():
+    region_cfg = {"region": {"id": "x"}}
+    blocks = [{"section": "Events", "events": [{"title": "", "url": "https://x/a", "tags": []}, {"title": "No URL", "url": "", "tags": []}]}]
+    assert build_digest.select_editors_pick(region_cfg, blocks, []) is None
+
+
 def test_build_weekend_weather_returns_empty_without_coordinates():
     region = {"name": "Nowhere", "timezone": "America/Chicago"}
     result = build_digest.build_weekend_weather(region, date(2026, 8, 29), date(2026, 8, 30))

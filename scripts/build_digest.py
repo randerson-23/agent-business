@@ -387,6 +387,49 @@ def render_sponsor_page(availability: list[dict], now: datetime) -> str:
     )
 
 
+def select_editors_pick(region_cfg: dict, blocks: list[dict], evergreen: list[dict]) -> dict | None:
+    """One pinned "Editor's Pick" per region (ROADMAP.md Phase 11 #16) -
+    makes the page read as edited rather than purely generated, and it's
+    the highest-value adjacency on the page to sell a sponsor next to.
+
+    `region.editors_pick_url` in config/regions/<id>.yaml can force a
+    specific item (matched by its `url`) - falls through to the heuristic
+    below if unset, or if the configured URL doesn't match anything in
+    this build (a source can disappear or an evergreen entry's URL can
+    change; a stale override should never crash the build, just get
+    ignored with a warning).
+
+    Heuristic: soonest dated item wins first (a "this weekend" pick beats
+    an evergreen resource every time it's available); free and
+    kid-friendly break ties, since those are this audience's two biggest
+    filters. Returns None only when the region has nothing at all to
+    pick from.
+    """
+    candidates = [e for b in blocks for e in b["events"]] + evergreen
+    candidates = [c for c in candidates if c.get("title") and c.get("url")]
+    if not candidates:
+        return None
+
+    override_url = (region_cfg["region"].get("editors_pick_url") or "").strip()
+    if override_url:
+        for item in candidates:
+            if item["url"] == override_url:
+                return item
+        logger.warning(
+            "editors_pick_url %r not found among %s's items this build - falling back to heuristic",
+            override_url, region_cfg["region"]["id"],
+        )
+
+    def sort_key(item: dict) -> tuple:
+        has_date = item.get("date_iso") is not None
+        date_key = item["date_iso"] if has_date else "9999"
+        tags = item.get("tags", [])
+        tag_bonus = -(("free" in tags) + ("kid_friendly" in tags))
+        return (not has_date, date_key, tag_bonus)
+
+    return sorted(candidates, key=sort_key)[0]
+
+
 def all_tags_present(*blocks_and_evergreen: list[dict]) -> list[dict]:
     """Collect every distinct tag actually in use, for the filter bar -
     no point rendering a filter chip for a tag nothing on the page has.
@@ -462,6 +505,7 @@ def render_region_page(
     directory_url: str | None = None,
     weather: list[dict] | None = None,
     newsletter: dict | None = None,
+    editors_pick: dict | None = None,
 ) -> str:
     env = Environment(loader=FileSystemLoader(str(TEMPLATES_DIR)), autoescape=True)
     template = env.get_template("region.html.j2")
@@ -499,6 +543,7 @@ def render_region_page(
         directory_url=directory_url,
         weather=weather,
         newsletter=newsletter,
+        editors_pick=editors_pick,
     )
 
 
@@ -683,6 +728,7 @@ def main() -> None:
         # first listed business, so the page is worth linking to before
         # there's any real content in it.
         directory_url = SITE_BASE_URL + region_id + "/directory/"
+        editors_pick = select_editors_pick(region_cfg, blocks, evergreen)
 
         html = render_region_page(
             region_cfg,
@@ -693,6 +739,7 @@ def main() -> None:
             guides_url=guides_url,
             directory_url=directory_url,
             newsletter=newsletter,
+            editors_pick=editors_pick,
         )
 
         region_dir = OUTPUT_DIR / region_id
