@@ -354,10 +354,25 @@ weekend is. That is the moat, and the site should say so out loud (a one-line
       elements, not click-handler `<div>`s, so no change was needed there
       beyond the focus ring.
 
-11. **Weather on the weekend view** — Open-Meteo is free and needs no API
-    key. The indoor/outdoor tag only becomes genuinely useful next to
-    Saturday's forecast, and "38° and raining — here are 9 indoor picks" is
-    the kind of touch that gets a site shared.
+11. ✅ done (PR #30) — **Weather on the weekend view.** `fetch_weather()`
+    in `fetchers.py` calls Open-Meteo (free, no API key/account) for a
+    ~10-day daily forecast, same fail-soft contract as every other
+    fetcher — a weather outage just omits the block, never breaks the
+    build. `build_weekend_weather()` in `build_digest.py` matches
+    Saturday/Sunday **by date string**, not list position, so an
+    unexpected response shape can't mismatch a day. Wired into each
+    region's `/this-weekend/` page only (not the merged hub-level weekend
+    page, to keep this slice contained — a natural next step, same data
+    already computed per-region in `main()`). Shows high/low °F,
+    condition + emoji (mapped from Open-Meteo's WMO weather codes), and
+    precip % per day; when either day has meaningful precipitation, a note
+    points at the Indoor filter chip. **Caveat worth knowing**: this only
+    refreshes when the site rebuilds (weekly per `build-digest.yml`'s
+    cron, more often while this hourly loop is actively shipping other
+    changes that also touch `scripts/`/`templates/`/`config/`) — a
+    forecast baked in on Monday for the coming Saturday is a few-day-out
+    forecast, not live weather. Acceptable for "should I plan something
+    indoor" at a glance; not sold as minute-fresh.
 
 12. **Email capture.** The entire competitive set (Macaroni KID, 6AM City,
     Axios Local, Patch) is newsletter-first, because the list is the asset

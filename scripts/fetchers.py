@@ -251,6 +251,101 @@ def fetch_html_events(
         return []
 
 
+# WMO weather interpretation codes (the scheme Open-Meteo's `daily.weathercode`
+# uses) mapped to a short label/emoji/is_precip flag. Codes not in this table
+# (shouldn't happen per Open-Meteo's docs, but fail soft either way) render
+# with an empty label rather than crashing the build.
+WEATHER_CODES: dict[int, tuple[str, str, bool]] = {
+    0: ("Clear sky", "☀️", False),
+    1: ("Mostly clear", "\U0001f324️", False),
+    2: ("Partly cloudy", "⛅", False),
+    3: ("Overcast", "☁️", False),
+    45: ("Fog", "\U0001f32b️", False),
+    48: ("Fog", "\U0001f32b️", False),
+    51: ("Light drizzle", "\U0001f326️", True),
+    53: ("Drizzle", "\U0001f326️", True),
+    55: ("Heavy drizzle", "\U0001f327️", True),
+    56: ("Freezing drizzle", "\U0001f327️", True),
+    57: ("Freezing drizzle", "\U0001f327️", True),
+    61: ("Light rain", "\U0001f326️", True),
+    63: ("Rain", "\U0001f327️", True),
+    65: ("Heavy rain", "\U0001f327️", True),
+    66: ("Freezing rain", "\U0001f328️", True),
+    67: ("Freezing rain", "\U0001f328️", True),
+    71: ("Light snow", "\U0001f328️", True),
+    73: ("Snow", "\U0001f328️", True),
+    75: ("Heavy snow", "❄️", True),
+    77: ("Snow grains", "❄️", True),
+    80: ("Rain showers", "\U0001f326️", True),
+    81: ("Rain showers", "\U0001f327️", True),
+    82: ("Violent rain showers", "\U0001f327️", True),
+    85: ("Snow showers", "\U0001f328️", True),
+    86: ("Snow showers", "❄️", True),
+    95: ("Thunderstorm", "⛈️", True),
+    96: ("Thunderstorm w/ hail", "⛈️", True),
+    99: ("Thunderstorm w/ hail", "⛈️", True),
+}
+
+
+def fetch_weather(lat: float, lon: float, timezone_name: str = "America/Chicago") -> list[dict]:
+    """Best-effort daily forecast from Open-Meteo (free, no API key, no
+    account setup) - same fail-soft philosophy as every other fetcher here:
+    a weather outage never blocks the digest build, the weekend view just
+    omits the forecast block.
+
+    Returns a list of dicts (one per forecast day, ~10 days ahead):
+        {date, high_f, low_f, precip_percent, label, emoji, is_precip}
+    Callers match by `date` (an ISO date string) rather than by list
+    position, so a response with days in an unexpected order/count never
+    mismatches a day's actual date.
+    """
+    try:
+        resp = requests.get(
+            "https://api.open-meteo.com/v1/forecast",
+            params={
+                "latitude": lat,
+                "longitude": lon,
+                "daily": "temperature_2m_max,temperature_2m_min,precipitation_probability_max,weathercode",
+                "temperature_unit": "fahrenheit",
+                "timezone": timezone_name,
+                "forecast_days": 10,
+            },
+            timeout=REQUEST_TIMEOUT,
+            headers={"User-Agent": USER_AGENT},
+        )
+        resp.raise_for_status()
+        daily = resp.json().get("daily", {})
+        dates = daily.get("time", [])
+        highs = daily.get("temperature_2m_max", [])
+        lows = daily.get("temperature_2m_min", [])
+        precip = daily.get("precipitation_probability_max", [])
+        codes = daily.get("weathercode", [])
+
+        def _round_or_none(values, i):
+            value = values[i] if i < len(values) else None
+            return round(value) if value is not None else None
+
+        days = []
+        for i, date_str in enumerate(dates):
+            code = codes[i] if i < len(codes) else None
+            label, emoji, is_precip = WEATHER_CODES.get(code, ("", "", False))
+            days.append(
+                {
+                    "date": date_str,
+                    "high_f": _round_or_none(highs, i),
+                    "low_f": _round_or_none(lows, i),
+                    "precip_percent": _round_or_none(precip, i),
+                    "label": label,
+                    "emoji": emoji,
+                    "is_precip": is_precip,
+                }
+            )
+        return days
+    except Exception as exc:  # noqa: BLE001 - fail soft by design
+        logger.warning("Weather fetch failed for (%s, %s): %s", lat, lon, exc)
+        return []
+
+
 FETCHERS = {
     "rss": fetch_rss,
     "ics": fetch_ics,

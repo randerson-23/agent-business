@@ -26,7 +26,7 @@ import yaml
 from jinja2 import Environment, FileSystemLoader
 
 sys.path.insert(0, str(Path(__file__).parent))
-from fetchers import FETCHERS  # noqa: E402
+from fetchers import FETCHERS, fetch_weather  # noqa: E402
 from tagging import infer_tags, tag_display  # noqa: E402
 
 logging.basicConfig(level=logging.INFO, format="%(levelname)s %(name)s: %(message)s")
@@ -442,6 +442,7 @@ def render_region_page(
     canonical_suffix: str = "",
     guides_url: str | None = None,
     directory_url: str | None = None,
+    weather: list[dict] | None = None,
 ) -> str:
     env = Environment(loader=FileSystemLoader(str(TEMPLATES_DIR)), autoescape=True)
     template = env.get_template("region.html.j2")
@@ -477,6 +478,7 @@ def render_region_page(
         hub_url=SITE_BASE_URL,
         guides_url=guides_url,
         directory_url=directory_url,
+        weather=weather,
     )
 
 
@@ -577,6 +579,27 @@ def weekend_dates(local_date: date) -> tuple[date, date]:
     return monday + timedelta(days=5), monday + timedelta(days=6)
 
 
+def build_weekend_weather(region: dict, saturday: date, sunday: date) -> list[dict]:
+    """Saturday/Sunday forecast for a region's /this-weekend/ page
+    (ROADMAP.md Phase 11 #11) - the indoor/outdoor tag only becomes
+    genuinely useful next to the actual forecast. Matched by date, not by
+    list position (see fetch_weather's docstring), and returns [] rather
+    than a guess when a region has no lat/lon or the fetch fails - same
+    fail-soft rule as every other data source in this build.
+    """
+    lat, lon = region.get("lat"), region.get("lon")
+    if lat is None or lon is None:
+        return []
+    forecast = fetch_weather(lat, lon, region.get("timezone", "America/Chicago"))
+    by_date = {d["date"]: d for d in forecast}
+    days = []
+    for target in (saturday, sunday):
+        day = by_date.get(target.isoformat())
+        if day:
+            days.append({"day_name": target.strftime("%A"), **day})
+    return days
+
+
 def filter_events_by_dates(blocks: list[dict], target_dates: set[date]) -> list[dict]:
     """Flatten every fetched event across sections down to the ones whose
     date falls on one of target_dates. Events without a resolved
@@ -649,6 +672,7 @@ def main() -> None:
         local_today = region_local_date(region, now)
         saturday, sunday = weekend_dates(local_today)
         weekend_events = filter_events_by_dates(blocks, {saturday, sunday})
+        weekend_weather = build_weekend_weather(region, saturday, sunday)
         weekend_date_range = format_date_range(saturday, sunday)
         if hub_weekend_date_range is None:
             hub_weekend_date_range = weekend_date_range  # regions share a timezone today
@@ -700,6 +724,7 @@ def main() -> None:
                 canonical_suffix=f"{slug}/",
                 guides_url=guides_url,
                 directory_url=directory_url,
+                weather=weekend_weather if slug == "this-weekend" else None,
             )
             view_dir = region_dir / slug
             view_dir.mkdir(parents=True, exist_ok=True)
