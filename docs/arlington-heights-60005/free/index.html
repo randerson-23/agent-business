@@ -220,6 +220,7 @@
     gap: 14px;
   }
   .card {
+    position: relative;
     background: var(--card);
     border-radius: var(--radius-lg);
     box-shadow: var(--shadow-sm);
@@ -231,6 +232,20 @@
   }
   .card:hover { transform: translateY(-3px); box-shadow: var(--shadow-lift); }
   .card.hidden { display: none; }
+  .tray-star {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: none;
+    border: none;
+    font-size: 19px;
+    line-height: 1;
+    cursor: pointer;
+    color: var(--muted);
+    padding: 2px;
+  }
+  .tray-star:hover { color: var(--accent-2-text); }
+  .tray-star[aria-pressed="true"] { color: var(--accent-2-text); }
   .card .date {
     color: var(--accent-2-text);
     font-size: 12px;
@@ -238,7 +253,7 @@
     letter-spacing: 0.02em;
     text-transform: uppercase;
   }
-  .card h3 { margin: 0; font-size: 16px; font-weight: 600; line-height: 1.35; }
+  .card h3 { margin: 0; padding-right: 24px; font-size: 16px; font-weight: 600; line-height: 1.35; }
   .card h3 a { color: var(--ink); text-decoration: none; }
   .card h3 a:hover { color: var(--accent); }
   .card p.detail { margin: 0; color: var(--muted); font-size: 13.5px; }
@@ -323,6 +338,52 @@
   }
   footer a { color: var(--accent); font-weight: 600; }
 
+  .tray-widget { position: fixed; right: 18px; bottom: 18px; z-index: 20; }
+  .tray-toggle {
+    font: inherit;
+    font-weight: 700;
+    color: #fff;
+    background: var(--accent-soft);
+    border: none;
+    border-radius: 999px;
+    padding: 12px 18px;
+    box-shadow: var(--shadow-lift);
+    cursor: pointer;
+  }
+  .tray-toggle:hover { filter: brightness(1.15); }
+  .tray-panel {
+    position: absolute;
+    right: 0;
+    bottom: 56px;
+    width: 300px;
+    max-height: 60vh;
+    overflow-y: auto;
+    background: var(--card);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-lift);
+    padding: 14px 16px;
+  }
+  .tray-panel-head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px; }
+  .tray-panel-close { background: none; border: none; font-size: 15px; cursor: pointer; color: var(--muted); }
+  .tray-items { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 8px; }
+  .tray-item { display: flex; justify-content: space-between; align-items: flex-start; gap: 8px; font-size: 13px; border-bottom: 1px solid var(--border); padding-bottom: 8px; }
+  .tray-item:last-child { border-bottom: none; padding-bottom: 0; }
+  .tray-item a { color: var(--ink); text-decoration: none; font-weight: 600; }
+  .tray-item a:hover { color: var(--accent); }
+  .tray-item-meta { color: var(--muted); font-size: 11.5px; }
+  .tray-item-remove { background: none; border: none; color: var(--muted); cursor: pointer; font-size: 15px; flex-shrink: 0; }
+  .tray-item-remove:hover { color: var(--accent-2-text); }
+  .tray-actions { display: flex; gap: 8px; margin-top: 10px; }
+  .tray-actions button { font: inherit; font-weight: 600; border-radius: 999px; padding: 7px 12px; cursor: pointer; font-size: 12.5px; }
+  #tray-export { background: var(--accent-soft); color: #fff; border: none; }
+  #tray-export:hover { filter: brightness(1.15); }
+  #tray-clear { background: transparent; border: 1px solid var(--border); color: var(--muted); }
+  .tray-note { margin: 10px 0 0; color: var(--muted); font-size: 11px; }
+  .tray-empty { color: var(--muted); font-size: 13px; font-style: italic; }
+  @media (max-width: 480px) {
+    .tray-panel { width: calc(100vw - 36px); right: -8px; }
+  }
+
   @media (max-width: 480px) {
     .hero h1 { font-size: 27px; }
     .wrap { padding: 0 14px 48px; }
@@ -398,7 +459,9 @@
     
       <div class="card-grid">
       
+      
       <div class="card" data-tags="free,kid_friendly,outdoor">
+        <button type="button" class="tray-star" data-item='{"date": "Sep 12", "date_iso": "2026-09-12T09:30:00", "detail": "This FREE event is perfect for families to play outside, meet with local businesses and Touch-A-Truck. This event is a great opportunity for your child to see\u2026", "id": "https://www.ahpd.org/event/touch-a-truck-2/", "region_name": "Arlington Heights", "region_url": "https://randerson-23.github.io/agent-business/arlington-heights-60005/", "title": "Touch-A-Truck", "url": "https://www.ahpd.org/event/touch-a-truck-2/"}' aria-pressed="false" aria-label="Add Touch-A-Truck to My Weekend">☆</button>
         <div class="date">Sep 12</div>
         <h3><a href="https://www.ahpd.org/event/touch-a-truck-2/">Touch-A-Truck</a></h3>
         <p class="detail">This FREE event is perfect for families to play outside, meet with local businesses and Touch-A-Truck. This event is a great opportunity for your child to see…</p>
@@ -415,7 +478,9 @@
         
       </div>
       
+      
       <div class="card" data-tags="art_culture,free,kid_friendly,outdoor">
+        <button type="button" class="tray-star" data-item='{"date": "Oct 14", "date_iso": "2026-10-14T16:00:00", "detail": "Take in an evening of art and enjoyment! Peruse AHPD adult students\u2019 creations at the annual Art Show. Visual art, fiber arts and woodcraft will be on display\u2026", "id": "https://www.ahpd.org/event/ahpd-senior-art-show/", "region_name": "Arlington Heights", "region_url": "https://randerson-23.github.io/agent-business/arlington-heights-60005/", "title": "AHPD Senior Art Show", "url": "https://www.ahpd.org/event/ahpd-senior-art-show/"}' aria-pressed="false" aria-label="Add AHPD Senior Art Show to My Weekend">☆</button>
         <div class="date">Oct 14</div>
         <h3><a href="https://www.ahpd.org/event/ahpd-senior-art-show/">AHPD Senior Art Show</a></h3>
         <p class="detail">Take in an evening of art and enjoyment! Peruse AHPD adult students’ creations at the annual Art Show. Visual art, fiber arts and woodcraft will be on display…</p>
@@ -432,7 +497,9 @@
         
       </div>
       
+      
       <div class="card" data-tags="indoor,kid_friendly,free">
+        <button type="button" class="tray-star" data-item='{"date": null, "date_iso": null, "detail": "500 N. Dunton Ave. Makerspace classes, culinary classes, and programs for all ages.", "id": "https://www.ahml.info/", "region_name": "Arlington Heights", "region_url": "https://randerson-23.github.io/agent-business/arlington-heights-60005/", "title": "Arlington Heights Memorial Library", "url": "https://www.ahml.info/"}' aria-pressed="false" aria-label="Add Arlington Heights Memorial Library to My Weekend">☆</button>
         
         <h3><a href="https://www.ahml.info/">Arlington Heights Memorial Library</a></h3>
         <p class="detail">500 N. Dunton Ave. Makerspace classes, culinary classes, and programs for all ages.</p>
@@ -465,8 +532,24 @@
   <footer>
     Local business? See the
     <a href="https://randerson-23.github.io/agent-business/sponsor/">sponsor page</a>.
-    <br>Generated 2026-08-27 11:58 UTC.
+    <br>Generated 2026-08-27 13:02 UTC.
   </footer>
+</div>
+
+<div id="tray-widget" class="tray-widget" hidden>
+  <button type="button" id="tray-toggle" class="tray-toggle">🧭 My Weekend (<span id="tray-count">0</span>)</button>
+  <div id="tray-panel" class="tray-panel" hidden>
+    <div class="tray-panel-head">
+      <strong>My Weekend</strong>
+      <button type="button" id="tray-panel-close" class="tray-panel-close" aria-label="Close">✕</button>
+    </div>
+    <ul id="tray-items" class="tray-items"></ul>
+    <div class="tray-actions">
+      <button type="button" id="tray-export">📅 Export all to calendar</button>
+      <button type="button" id="tray-clear">Clear</button>
+    </div>
+    <p class="tray-note">Saved in this browser only — never sent anywhere.</p>
+  </div>
 </div>
 
 
@@ -513,6 +596,157 @@
       apply();
     });
   }
+})();
+</script>
+<script>
+(function () {
+  // "Build my weekend" itinerary tray (ROADMAP.md Phase 11 #14) - a
+  // localStorage-persisted list a reader builds by starring cards, with
+  // a merged .ics export. No accounts, no backend: the same key is used
+  // on every page of the site (same origin), so the tray follows a
+  // reader across regions - exactly the "trip across a few nearby towns"
+  // use case in the vision, working entirely client-side.
+  var STORAGE_KEY = "weekendPlannerTray";
+  var widget = document.getElementById("tray-widget");
+  var stars = document.querySelectorAll(".tray-star[data-item]");
+  if (!widget || !stars.length) return;
+
+  var toggleBtn = document.getElementById("tray-toggle");
+  var panel = document.getElementById("tray-panel");
+  var closeBtn = document.getElementById("tray-panel-close");
+  var countEl = document.getElementById("tray-count");
+  var itemsEl = document.getElementById("tray-items");
+  var exportBtn = document.getElementById("tray-export");
+  var clearBtn = document.getElementById("tray-clear");
+
+  function load() {
+    try {
+      var raw = localStorage.getItem(STORAGE_KEY);
+      return raw ? JSON.parse(raw) : [];
+    } catch (e) {
+      return [];
+    }
+  }
+
+  function save(items) {
+    try {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(items));
+    } catch (e) {
+      /* storage unavailable (private mode, quota) - tray just won't persist */
+    }
+  }
+
+  var tray = load();
+
+  function render() {
+    widget.hidden = false;
+    countEl.textContent = tray.length;
+    itemsEl.innerHTML = "";
+    if (!tray.length) {
+      itemsEl.innerHTML = '<li class="tray-empty">Nothing saved yet — click \u2606 on any card.</li>';
+    } else {
+      tray.forEach(function (item) {
+        var li = document.createElement("li");
+        li.className = "tray-item";
+        var meta = [item.region_name, item.date].filter(Boolean).join(" \u00b7 ");
+        var titleEl = item.url ? '<a href="' + item.url + '">' + item.title + '</a>' : '<span>' + item.title + '</span>';
+        li.innerHTML =
+          '<span>' + titleEl + '<div class="tray-item-meta"></div></span>' +
+          '<button type="button" class="tray-item-remove" data-id="' + encodeURIComponent(item.id) + '" aria-label="Remove ' + item.title + '">\u2715</button>';
+        li.querySelector(".tray-item-meta").textContent = meta;
+        itemsEl.appendChild(li);
+      });
+    }
+    itemsEl.querySelectorAll(".tray-item-remove").forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        var id = decodeURIComponent(btn.getAttribute("data-id"));
+        tray = tray.filter(function (i) { return i.id !== id; });
+        save(tray);
+        syncStars();
+        render();
+      });
+    });
+  }
+
+  function syncStars() {
+    var ids = tray.map(function (i) { return i.id; });
+    stars.forEach(function (btn) {
+      var item;
+      try { item = JSON.parse(btn.getAttribute("data-item")); } catch (e) { return; }
+      var starred = ids.indexOf(item.id) !== -1;
+      btn.setAttribute("aria-pressed", String(starred));
+      btn.textContent = starred ? "\u2605" : "\u2606";
+    });
+  }
+
+  stars.forEach(function (btn) {
+    btn.addEventListener("click", function () {
+      var item;
+      try { item = JSON.parse(btn.getAttribute("data-item")); } catch (e) { return; }
+      var idx = -1;
+      for (var i = 0; i < tray.length; i++) { if (tray[i].id === item.id) { idx = i; break; } }
+      if (idx === -1) { tray.push(item); } else { tray.splice(idx, 1); }
+      save(tray);
+      syncStars();
+      render();
+    });
+  });
+
+  if (toggleBtn) {
+    toggleBtn.addEventListener("click", function () { panel.hidden = !panel.hidden; });
+  }
+  if (closeBtn) {
+    closeBtn.addEventListener("click", function () { panel.hidden = true; });
+  }
+  if (clearBtn) {
+    clearBtn.addEventListener("click", function () {
+      tray = [];
+      save(tray);
+      syncStars();
+      render();
+    });
+  }
+  if (exportBtn) {
+    exportBtn.addEventListener("click", function () {
+      if (!tray.length) return;
+      function pad(n) { return String(n).length < 2 ? "0" + n : String(n); }
+      function formatIcsDate(d) {
+        return d.getFullYear() + pad(d.getMonth() + 1) + pad(d.getDate()) + "T" + pad(d.getHours()) + pad(d.getMinutes()) + pad(d.getSeconds());
+      }
+      function icsEscape(text) {
+        return String(text).replace(/\\/g, "\\\\").replace(/,/g, "\\,").replace(/;/g, "\\;").replace(/\n/g, "\\n");
+      }
+      var lines = ["BEGIN:VCALENDAR", "VERSION:2.0", "PRODID:-//Weekend Trip Planner//EN"];
+      tray.forEach(function (item) {
+        lines.push("BEGIN:VEVENT");
+        if (item.date_iso) {
+          var start = new Date(item.date_iso);
+          if (!isNaN(start.getTime())) {
+            var end = new Date(start.getTime() + 60 * 60 * 1000);
+            lines.push("DTSTART:" + formatIcsDate(start));
+            lines.push("DTEND:" + formatIcsDate(end));
+          }
+        }
+        lines.push("SUMMARY:" + icsEscape(item.title));
+        if (item.detail) lines.push("DESCRIPTION:" + icsEscape(item.detail));
+        if (item.url) lines.push("URL:" + item.url);
+        lines.push("END:VEVENT");
+      });
+      lines.push("END:VCALENDAR");
+      var blob = new Blob([lines.join("\r\n")], { type: "text/calendar;charset=utf-8" });
+      var url = URL.createObjectURL(blob);
+      var a = document.createElement("a");
+      a.href = url;
+      a.download = "my-weekend.ics";
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+    });
+  }
+
+  syncStars();
+  render();
 })();
 </script>
 </body>
