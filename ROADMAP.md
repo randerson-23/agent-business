@@ -606,6 +606,100 @@ there is a real place to send a business owner — and the first question
 any of them will ask is how many people this reaches. Promote it ahead of
 items 8 and 9.
 
+#### Research pass 2026-08-27 (third pass)
+
+State of play: 19 of the first 21 items are done, and **nothing above P3
+was left open**. The site now has most of what the competitive set has —
+date-scoped views, calendar export, an itinerary tray, guides, a
+directory, a map, weather, dark mode, view transitions. So this pass
+deliberately stops asking "what feature is missing" and asks the two
+questions that actually decide whether this makes money: **can it be
+found, and can it prove an audience?**
+
+Angles reviewed this pass:
+
+| Angle | Finding | Worth stealing |
+|---|---|---|
+| **AI search / GEO** | Fewer than 10% of sources cited by ChatGPT, Gemini and Copilot rank in Google's organic top 10 for the same query; AI Overviews now fire on ~48% of tracked queries | AI citation is a *separate channel with separate rules* — not a byproduct of the SEO already done in Phase 9 |
+| **Newsletter economics** | 2026 benchmarks: 20–30% open average, 40%+ excellent; recommendation networks grow newsletters ~2.75× faster; publishers who recommend others are 32× more likely to be recommended back | Send Tue–Thu; cross-recommendation is the cheapest growth lever there is |
+| **Privacy-first analytics** | GoatCounter: ~1KB script, cookie-free, no consent banner needed under GDPR/ePrivacy, free donation-supported hosted tier. Plausible CE for self-hosting later | Right-sized for a static site with zero ops budget |
+| **Core Web Vitals 2026** | LCP ≤2.5s, INP ≤200ms, CLS ≤0.1 at p75. INP is field-only — Lighthouse's Total Blocking Time is the accepted lab proxy | Budgets enforced in CI, so regressions fail the build instead of failing readers |
+
+#### P1 (new)
+
+22. **Get cited by AI search (GEO), as a deliberate strategy.** Under 10%
+    of AI-cited sources rank in Google's top 10 for the same query, so the
+    Phase 9 SEO work does **not** buy this channel — and AI Overviews now
+    trigger on roughly half of all queries. Concretely: a hand-written
+    `llms.txt`; an AI-crawler-aware `robots.txt` that *explicitly* allows
+    GPTBot / ClaudeBot / PerplexityBot / Google-Extended rather than
+    leaving it unstated; a 40–60 word answer block at the top of each
+    region and guide page (literally answering "What's happening in Mount
+    Prospect this weekend?"); `FAQPage` schema on the guides; and
+    consistent entity naming across pages.
+    **The strategic point worth stating out loud:** content updated within
+    30 days earns ~3.2× more AI citations, and this site rebuilds itself
+    every week. Automated freshness is a structural advantage over every
+    hand-written competitor guide — Time Out's "54 Best Things to Do"
+    piece decays the moment it's published; this doesn't. That is arguably
+    the strongest moat in the whole business, and right now it's an
+    accident rather than a strategy.
+
+23. **Analytics — the first number every sponsor will ask for.** The
+    self-serve sponsor page shipped in item 3, but there is nothing to
+    put in it: traffic is currently unknown, which makes the price a
+    guess and the pitch unprovable. GoatCounter is a ~1KB cookie-free
+    script needing no consent banner, with a free hosted tier — the right
+    size here. Gate it behind a config flag exactly like the Buttondown
+    embed in item 12, add a privacy line matching the existing
+    geolocation note, and once real data exists, surface a rolling
+    "≈N readers/month" on `/sponsor`. **Blocks nothing technically and
+    unblocks the entire monetization story.**
+
+#### P2 (new)
+
+24. **Actually send the newsletter.** Item 12 captures addresses; nothing
+    mails them, so the list is currently an asset earning zero. Buttondown's
+    API plus the existing weekly build is the whole product Macaroni KID
+    and 6AM City monetize. Send Tuesday–Thursday (highest engagement), and
+    judge it against 2026 benchmarks — 20–30% open is average, 40%+
+    excellent. Those same numbers belong in `SPONSOR_KIT.md`, since an
+    open rate is a stronger sponsor argument than a subscriber count.
+
+25. **Newsletter cross-recommendations.** Newsletters in recommendation
+    networks grow about 2.75× faster, and publishers who recommend others
+    are 32× more likely to be recommended back. A small "other local
+    newsletters we like" block plus reciprocal listings with nearby-suburb
+    publishers costs nothing per week and compounds. Depends on item 24.
+
+26. **Performance budget in CI.** The site has quietly accumulated real
+    JavaScript — filters, distance sort, itinerary tray, weather, map,
+    view transitions — and none of it has ever been measured. Add
+    Lighthouse CI to the existing tests workflow with a JS-bytes cap and
+    thresholds at the 2026 bar (LCP ≤2.5s, CLS ≤0.1, TBT as the lab proxy
+    for INP ≤200ms), so the *next* feature fails the build instead of
+    quietly degrading the site. This is insurance on everything shipped in
+    PRs #15–#39, and it matters more now than any single new feature.
+
+#### P3 (new)
+
+27. **Third region — now worth more than when Phase 10 parked it.**
+    Distance sort (Phase 8), the hub map (item 17) and the guides (items
+    5 and 15) all get better with more towns, and each region is another
+    sponsor slot at zero marginal cost. Des Plaines (60016), Palatine
+    (60067) or Elk Grove Village (60007).
+
+28. **Visible freshness signals.** A human-readable "Updated <date>" plus
+    `dateModified` in the JSON-LD. Trivial to add, and it's the exact
+    signal both AI citation and human trust key on — the cheapest possible
+    down-payment on item 22.
+
+**Re-rank:** item 4 (datetime normalization, still ⚠️ partial) should move
+up. It was originally justified by Google event rich results; item 22 makes
+it matter twice over, since an event an AI can't read a start time from is
+an event it won't cite. It is now the oldest unfinished thing blocking the
+newest priority.
+
 ## Working agreements for autonomous iteration
 
 - Cadence is hourly (the platform's durable scheduler has a 1-hour floor;
