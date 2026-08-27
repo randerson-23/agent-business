@@ -277,6 +277,42 @@
     outline-offset: 2px;
   }
 
+  .newsletter {
+    background: var(--card);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-sm);
+    padding: 20px 24px;
+    margin-top: 30px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 14px;
+  }
+  .newsletter form { display: contents; }
+  .newsletter-copy strong { font-size: 15px; }
+  .newsletter-copy p { margin: 3px 0 0; color: var(--muted); font-size: 13.5px; }
+  .newsletter-pending { font-style: italic; }
+  .newsletter-form-row { display: flex; gap: 8px; flex-wrap: wrap; }
+  .newsletter-form-row input[type="email"] {
+    font: inherit;
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    padding: 8px 14px;
+    min-width: 200px;
+  }
+  .newsletter-form-row button {
+    font: inherit;
+    font-weight: 600;
+    color: #fff;
+    background: var(--accent-soft);
+    border: none;
+    border-radius: 999px;
+    padding: 8px 18px;
+    cursor: pointer;
+  }
+  .newsletter-form-row button:hover { filter: brightness(1.15); }
+
   footer {
     text-align: center;
     color: var(--muted);
@@ -401,6 +437,29 @@
     {% endfor %}
     </div>
   </section>
+  {% endif %}
+
+  {% if newsletter %}
+  <div class="newsletter">
+    {% if newsletter.configured %}
+    <form action="https://buttondown.com/api/emails/embed-subscribe/{{ newsletter.buttondown_username }}" method="post" target="popupwindow" onsubmit="window.open('https://buttondown.com/{{ newsletter.buttondown_username }}', 'popupwindow')">
+      <div class="newsletter-copy">
+        <strong>{{ newsletter.headline }}</strong>
+        <p>{{ newsletter.detail }}</p>
+      </div>
+      <div class="newsletter-form-row">
+        <label class="sr-only" for="bd-email">Email address</label>
+        <input type="email" name="email" id="bd-email" placeholder="you@example.com" required>
+        <button type="submit">Subscribe</button>
+      </div>
+    </form>
+    {% else %}
+    <div class="newsletter-copy">
+      <strong>{{ newsletter.headline }}</strong>
+      <p>{{ newsletter.detail }} <span class="newsletter-pending">(Signup coming soon.)</span></p>
+    </div>
+    {% endif %}
+  </div>
   {% endif %}
 
   <footer>

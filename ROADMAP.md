@@ -374,13 +374,30 @@ weekend is. That is the moat, and the site should say so out loud (a one-line
     forecast, not live weather. Acceptable for "should I plan something
     indoor" at a glance; not sold as minute-fresh.
 
-12. **Email capture.** The entire competitive set (Macaroni KID, 6AM City,
-    Axios Local, Patch) is newsletter-first, because the list is the asset
-    and the site is the funnel. A static-site-compatible embed (Buttondown
-    free tier) costs nothing, and a real subscriber count roughly multiplies
-    what a sponsor slot is worth. `BUSINESS_PLAN.md` already parks this as
-    step 7 — the competitive research says pull it forward, it's the number
-    a sponsor asks for first.
+12. ✅ done (PR #33) — **Email capture.** Followed the second research
+    pass's re-rank (promoted ahead of items 8/9 as "the number a sponsor
+    asks for first" now that the sponsor page has somewhere to send a
+    business owner). Same config-gated pattern as the sponsor page and
+    business directory: `config/newsletter.yaml` holds a `buttondown_
+    username`, a headline, and detail text; `load_newsletter_config()` in
+    `build_digest.py` derives a `configured` flag from whether a real
+    username is set. Signing up for Buttondown (or any email service) is
+    a human/paid action this loop can't do on its own, same as Stripe for
+    the sponsor page — so the file ships **unconfigured** and the hub +
+    every region page show the real headline/detail with an honest
+    "Signup coming soon" message instead of a form posting to nowhere.
+    The moment a real account exists and the username is set, the same
+    block on the same pages switches to Buttondown's documented embed
+    form (`<form action="https://buttondown.com/api/emails/embed-
+    subscribe/{username}">`) with zero other code changes. Verified both
+    states render correctly with a mocked-config Playwright screenshot
+    (configured state) alongside the real unconfigured build output.
+    **Not yet done, deliberately scoped out of this slice**: the merged
+    hub-level weekend page and the sponsor page itself don't show the
+    block yet (natural follow-ups, same pattern); once there's a real
+    subscriber count, `SPONSOR_KIT.md`/the sponsor page copy should cite
+    it (item 18's "recommendation, not an ad" reframe is a good place to
+    fold that in).
 
 13. ✅ done (PR #31) — **User-submitted events** (Patch's model — let the
     community supply the content). `.github/ISSUE_TEMPLATE/

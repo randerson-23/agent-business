@@ -1,0 +1,14 @@
+# Email capture (ROADMAP.md Phase 11 #12) - a Buttondown (buttondown.com)
+# free-tier embed. Buttondown needs a real, human-created account; this
+# repo can't sign up for one on its own, so this file starts unconfigured
+# and the site shows an honest "coming soon" message instead of a broken
+# form. Once a real account exists, set `buttondown_username` below to
+# activate the live signup form on the hub and region pages - no other
+# code changes needed.
+#
+# headline/detail are shown either way (with or without a working form),
+# so they're worth keeping accurate regardless of signup status.
+
+buttondown_username: null
+headline: "Get it in your inbox"
+detail: "The weekly digest, emailed once a week. No spam, unsubscribe anytime."
