@@ -453,16 +453,36 @@ Competitors reviewed this pass:
 
 #### P1 (new)
 
-14. **"Build my weekend" — a client-side itinerary tray.** Choose Chicago,
-    Wanderlog and Pilot Plans all organize around collecting picks into a
-    plan; it is *the* defining trip-planner feature, and this site is
-    literally named one but can't do it. Let a reader star events into a
-    tray, persist it in `localStorage`, then export the whole set as one
-    `.ics` or copy a share URL with the selection encoded in the hash.
-    Builds directly on the add-to-calendar work from item 2, and it's the
-    first feature that makes the *multi-ZIP* promise real — a tray that
-    spans towns is exactly the "weekend across a few nearby towns" use
-    case in the vision. No backend, no accounts, no owner time.
+14. ✅ done (PR #34) — **"Build my weekend" — a client-side itinerary
+    tray.** A ☆ button on every event/evergreen/guide card (region page's
+    every view, plus the merged cross-region weekend page) toggles it into
+    a `localStorage`-persisted tray, no backend or accounts. A floating
+    "🧭 My Weekend (N)" widget (bottom-right, every page that has cards)
+    lists what's saved with per-item remove, a Clear button, and "Export
+    all to calendar" — one merged `.ics` built client-side (same 1-hour-
+    duration assumption as the existing single-event export). Because the
+    same `localStorage` key is used on every page (same origin), a tray
+    built on one region's page still shows correctly on another region's
+    page or the merged weekend page — the first feature that makes the
+    *multi-ZIP* "trip across a few nearby towns" promise in the vision
+    real, not just aspirational copy.
+    **Real bug caught before shipping**: the star button's `data-item`
+    attribute embeds each item as JSON via Jinja's `tojson` filter, which
+    HTML-escapes `<`, `>`, `&`, and `'` for safe embedding — but leaves
+    literal `"` characters as-is (required JSON syntax). The first version
+    used `data-item="{{ ... }}"` (double-quoted), which broke the HTML
+    attribute the instant real JSON double quotes appeared - confirmed by
+    inspecting the actual build output, not assumed. Fixed by switching
+    the attribute delimiter to single quotes (`data-item='{{ ... }}'`),
+    which `tojson`'s escaping is specifically designed to be safe inside.
+    Verified end-to-end with Playwright: star persists across a reload,
+    remove/clear work and resync the card's star glyph, and the exported
+    `.ics` is well-formed (dated and undated items both handled).
+    Deferred, not done: the "copy a share URL with the selection encoded
+    in the hash" idea from this item's original wording — `.ics` export
+    alone covers the primary use case (get it into your calendar app);
+    a shareable link is a natural follow-up if it turns out people want to
+    hand a whole itinerary to someone else rather than each import it.
 
 15. **Birthday-party venues + kids' classes guides.** Chicago Parent runs
     "39 great places to have your child's next birthday party"; Chicago
