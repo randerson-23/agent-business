@@ -80,6 +80,40 @@ def test_parse_event_date_iso_handles_none():
     assert build_digest.parse_event_date_iso(None) is None
 
 
+def test_parse_event_date_iso_parses_weekday_month_day_year():
+    assert build_digest.parse_event_date_iso("Sat, Sep 6, 2026").startswith("2026-09-06")
+
+
+def test_parse_event_date_iso_parses_full_month_name():
+    assert build_digest.parse_event_date_iso("September 6, 2026").startswith("2026-09-06")
+
+
+def test_parse_event_date_iso_parses_slash_date():
+    assert build_digest.parse_event_date_iso("9/6/2026").startswith("2026-09-06")
+
+
+def test_format_event_date_parses_slash_date():
+    assert build_digest.format_event_date("9/6/2026") == "Sep 6"
+
+
+def test_structured_date_coverage_counts_dated_and_total():
+    blocks = [
+        {
+            "section": "A",
+            "events": [
+                {"title": "x", "date_iso": "2026-09-06T00:00:00"},
+                {"title": "y", "date_iso": None},
+                {"title": "z", "date_iso": "2026-09-07T00:00:00"},
+            ],
+        }
+    ]
+    assert build_digest.structured_date_coverage(blocks) == (2, 3)
+
+
+def test_structured_date_coverage_handles_no_events():
+    assert build_digest.structured_date_coverage([{"section": "A", "events": []}]) == (0, 0)
+
+
 def test_truncate_short_text_unchanged():
     assert build_digest.truncate("short text") == "short text"
 
