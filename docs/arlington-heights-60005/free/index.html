@@ -41,6 +41,30 @@
     --hue-purple-bg: #f1e7fb; --hue-purple-ink: #6b2fa3;
     --hue-gray-bg: #eef0ee;   --hue-gray-ink: #4a534d;
   }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #121c17;
+      --card: #1b2620;
+      --ink: #eef2ee;
+      --muted: #9db3a8;
+      --accent: #57b98a;
+      --accent-soft: #237549;
+      --accent-2: #f0975a;
+      --border: #2c3a32;
+      --shadow-sm: 0 1px 2px rgba(0,0,0,.35), 0 1px 1px rgba(0,0,0,.25);
+      --shadow-md: 0 10px 28px -10px rgba(0,0,0,.55), 0 2px 6px rgba(0,0,0,.35);
+      --shadow-lift: 0 16px 36px -12px rgba(0,0,0,.65), 0 3px 8px rgba(0,0,0,.4);
+
+      --hue-pink-bg: #4a2233;   --hue-pink-ink: #f5a8c4;
+      --hue-amber-bg: #4a3814;  --hue-amber-ink: #f5cf8a;
+      --hue-green-bg: #1d3a26;  --hue-green-ink: #8fe0ad;
+      --hue-blue-bg: #1c2d47;   --hue-blue-ink: #9dc2f5;
+      --hue-teal-bg: #1a3a35;   --hue-teal-ink: #8de0d1;
+      --hue-orange-bg: #4a2c14; --hue-orange-ink: #f5b880;
+      --hue-purple-bg: #33234a; --hue-purple-ink: #d0aaf5;
+      --hue-gray-bg: #2c332e;   --hue-gray-ink: #b8c2bc;
+    }
+  }
   * { box-sizing: border-box; }
   body {
     margin: 0;
@@ -90,7 +114,7 @@
     border: 1px solid var(--border);
   }
   .view-nav a:hover { color: var(--accent); border-color: var(--accent); }
-  .view-nav a.active { color: #fff; background: var(--accent); border-color: var(--accent); }
+  .view-nav a.active { color: #fff; background: var(--accent-soft); border-color: var(--accent-soft); }
 
   .sponsor {
     position: relative;
@@ -142,9 +166,9 @@
   }
   .filter-chip:hover { transform: translateY(-1px); box-shadow: var(--shadow-md); }
   .filter-chip[aria-pressed="true"] {
-    background: var(--accent);
+    background: var(--accent-soft);
     color: #fff;
-    border-color: var(--accent);
+    border-color: var(--accent-soft);
   }
   .filter-chip.clear { background: transparent; border-style: dashed; box-shadow: none; display: none; }
   .filter-chip.clear.visible { display: inline-flex; }
@@ -245,6 +269,7 @@
     <a href="https://randerson-23.github.io/agent-business/arlington-heights-60005/this-weekend/">This weekend</a>
     <a href="https://randerson-23.github.io/agent-business/arlington-heights-60005/today/">Today</a>
     <a href="https://randerson-23.github.io/agent-business/arlington-heights-60005/free/" class="active">Free</a>
+    <a href="https://randerson-23.github.io/agent-business/arlington-heights-60005/guides/">Guides</a>
   </nav>
 
   <div class="sponsor">
@@ -255,10 +280,6 @@
 
   
   <div class="filter-bar" role="group" aria-label="Filter events">
-    
-    <button type="button" class="filter-chip" data-tag="art_culture" aria-pressed="false">
-      <span aria-hidden="true">🎨</span>Arts &amp; culture
-    </button>
     
     <button type="button" class="filter-chip" data-tag="free" aria-pressed="false">
       <span aria-hidden="true">💵</span>Free
@@ -272,10 +293,6 @@
       <span aria-hidden="true">🧒</span>Kid-friendly
     </button>
     
-    <button type="button" class="filter-chip" data-tag="outdoor" aria-pressed="false">
-      <span aria-hidden="true">🌳</span>Outdoor
-    </button>
-    
     <button type="button" class="filter-chip clear" id="clear-filters">Clear filters</button>
   </div>
   
@@ -285,40 +302,6 @@
     <h2>Free things to do in Arlington Heights</h2>
     
       <div class="card-grid">
-      
-      <div class="card" data-tags="free,kid_friendly,outdoor">
-        <div class="date">Sep 12</div>
-        <h3><a href="https://www.ahpd.org/event/touch-a-truck-2/">Touch-A-Truck</a></h3>
-        <p class="detail">This FREE event is perfect for families to play outside, meet with local businesses and Touch-A-Truck. This event is a great opportunity for your child to see…</p>
-        
-        <div class="tag-row">
-          <span class="tag-badge" style="background: var(--hue-green-bg); color: var(--hue-green-ink);">💵 Free</span><span class="tag-badge" style="background: var(--hue-pink-bg); color: var(--hue-pink-ink);">🧒 Kid-friendly</span><span class="tag-badge" style="background: var(--hue-teal-bg); color: var(--hue-teal-ink);">🌳 Outdoor</span>
-        </div>
-        
-        
-        <div class="cal-row">
-          <a href="data:text/calendar;charset=utf-8,BEGIN%3AVCALENDAR%0D%0AVERSION%3A2.0%0D%0APRODID%3A-//Weekend%20Trip%20Planner//EN%0D%0ABEGIN%3AVEVENT%0D%0ADTSTART%3A20260912T093000%0D%0ADTEND%3A20260912T103000%0D%0ASUMMARY%3ATouch-A-Truck%0D%0ADESCRIPTION%3AThis%20FREE%20event%20is%20perfect%20for%20families%20to%20play%20outside%5C%2C%20meet%20with%20local%20businesses%20and%20Touch-A-Truck.%20This%20event%20is%20a%20great%20opportunity%20for%20your%20child%20to%20see%E2%80%A6%0D%0AURL%3Ahttps%3A//www.ahpd.org/event/touch-a-truck-2/%0D%0AEND%3AVEVENT%0D%0AEND%3AVCALENDAR%0D%0A" download="event.ics">📅 Add to calendar</a>
-          <a href="https://www.google.com/calendar/render?action=TEMPLATE&amp;text=Touch-A-Truck&amp;dates=20260912T093000%2F20260912T103000&amp;details=This+FREE+event+is+perfect+for+families+to+play+outside%2C+meet+with+local+businesses+and+Touch-A-Truck.+This+event+is+a+great+opportunity+for+your+child+to+see%E2%80%A6&amp;location=Arlington+Heights" target="_blank" rel="noopener">Google Calendar</a>
-        </div>
-        
-      </div>
-      
-      <div class="card" data-tags="art_culture,free,kid_friendly,outdoor">
-        <div class="date">Oct 14</div>
-        <h3><a href="https://www.ahpd.org/event/ahpd-senior-art-show/">AHPD Senior Art Show</a></h3>
-        <p class="detail">Take in an evening of art and enjoyment! Peruse AHPD adult students’ creations at the annual Art Show. Visual art, fiber arts and woodcraft will be on display…</p>
-        
-        <div class="tag-row">
-          <span class="tag-badge" style="background: var(--hue-purple-bg); color: var(--hue-purple-ink);">🎨 Arts &amp; culture</span><span class="tag-badge" style="background: var(--hue-green-bg); color: var(--hue-green-ink);">💵 Free</span><span class="tag-badge" style="background: var(--hue-pink-bg); color: var(--hue-pink-ink);">🧒 Kid-friendly</span><span class="tag-badge" style="background: var(--hue-teal-bg); color: var(--hue-teal-ink);">🌳 Outdoor</span>
-        </div>
-        
-        
-        <div class="cal-row">
-          <a href="data:text/calendar;charset=utf-8,BEGIN%3AVCALENDAR%0D%0AVERSION%3A2.0%0D%0APRODID%3A-//Weekend%20Trip%20Planner//EN%0D%0ABEGIN%3AVEVENT%0D%0ADTSTART%3A20261014T160000%0D%0ADTEND%3A20261014T170000%0D%0ASUMMARY%3AAHPD%20Senior%20Art%20Show%0D%0ADESCRIPTION%3ATake%20in%20an%20evening%20of%20art%20and%20enjoyment%21%20Peruse%20AHPD%20adult%20students%E2%80%99%20creations%20at%20the%20annual%20Art%20Show.%20Visual%20art%5C%2C%20fiber%20arts%20and%20woodcraft%20will%20be%20on%20display%E2%80%A6%0D%0AURL%3Ahttps%3A//www.ahpd.org/event/ahpd-senior-art-show/%0D%0AEND%3AVEVENT%0D%0AEND%3AVCALENDAR%0D%0A" download="event.ics">📅 Add to calendar</a>
-          <a href="https://www.google.com/calendar/render?action=TEMPLATE&amp;text=AHPD+Senior+Art+Show&amp;dates=20261014T160000%2F20261014T170000&amp;details=Take+in+an+evening+of+art+and+enjoyment%21+Peruse+AHPD+adult+students%E2%80%99+creations+at+the+annual+Art+Show.+Visual+art%2C+fiber+arts+and+woodcraft+will+be+on+display%E2%80%A6&amp;location=Arlington+Heights" target="_blank" rel="noopener">Google Calendar</a>
-        </div>
-        
-      </div>
       
       <div class="card" data-tags="indoor,kid_friendly,free">
         
@@ -342,12 +325,10 @@
   <footer>
     Local business? See the
     <a href="https://randerson-23.github.io/agent-business/sponsor/">sponsor page</a>.
-    <br>Generated 2026-08-27 05:57 UTC.
+    <br>Generated 2026-08-27 07:07 UTC.
   </footer>
 </div>
 
-
-<script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "Event", "name": "Touch-A-Truck", "url": "https://www.ahpd.org/event/touch-a-truck-2/", "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode", "location": {"@type": "Place", "name": "Arlington Heights", "address": {"@type": "PostalAddress", "addressRegion": "IL", "postalCode": "60005", "addressCountry": "US"}}, "description": "This FREE event is perfect for families to play outside, meet with local businesses and Touch-A-Truck. This event is a great opportunity for your child to see…", "startDate": "2026-09-12T09:30:00"}, {"@type": "Event", "name": "AHPD Senior Art Show", "url": "https://www.ahpd.org/event/ahpd-senior-art-show/", "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode", "location": {"@type": "Place", "name": "Arlington Heights", "address": {"@type": "PostalAddress", "addressRegion": "IL", "postalCode": "60005", "addressCountry": "US"}}, "description": "Take in an evening of art and enjoyment! Peruse AHPD adult students’ creations at the annual Art Show. Visual art, fiber arts and woodcraft will be on display…", "startDate": "2026-10-14T16:00:00"}]}</script>
 
 <script>
 (function () {
