@@ -645,7 +645,7 @@ Angles reviewed this pass:
     the strongest moat in the whole business, and right now it's an
     accident rather than a strategy.
 
-23. ✅ done (PR #40) — **Analytics — the first number every sponsor will
+23. ✅ done (PR #41) — **Analytics — the first number every sponsor will
     ask for.** `config/analytics.yaml` holds a `goatcounter_code`, gated
     exactly like the Buttondown embed in item 12 - unset by default (real
     account creation is a human action this loop can't do), so no script
