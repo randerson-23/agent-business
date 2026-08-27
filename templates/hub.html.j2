@@ -200,32 +200,6 @@
     .region-card p { font-size: 14.5px; }
   }
 
-  /* Scroll-reveal (ROADMAP.md Phase 11 #9/#19): tied to each tile's own
-     scroll-into-view progress via animation-timeline, no JS/observer at
-     all. @supports keeps browsers without it on a plain, always-visible
-     render - nothing to fall back to, nothing that can break. */
-  @supports (animation-timeline: view()) {
-    @media (prefers-reduced-motion: no-preference) {
-      .bento-tile {
-        animation: bento-reveal linear both;
-        animation-timeline: view();
-        animation-range: entry 0% cover 30%;
-      }
-      /* transform only, never opacity: a tile is fully painted and LCP-
-         eligible the instant it exists, wherever it lands on scroll -
-         only its position animates. An opacity-based reveal measured
-         genuinely worse real LCP in CI (2.87s vs. a 2.5s budget) on
-         whichever tile Lighthouse's real network/throttling made the
-         largest paint candidate, something this sandbox's blocked-network
-         testing couldn't reproduce since every page painted well before
-         any tile could even be a candidate there. */
-      @keyframes bento-reveal {
-        from { transform: translateY(16px); }
-        to { transform: translateY(0); }
-      }
-    }
-  }
-
   .map-card {
     background: var(--card);
     border-radius: var(--radius-lg);

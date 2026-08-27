@@ -310,7 +310,8 @@ weekend is. That is the moat, and the site should say so out loud (a one-line
 
 #### P3 — design polish (the "modern and impressive" goal)
 
-8. ✅ done (PR #45), shipped with items 19 and 21 — **Bento-grid hub layout
+8. ✅ done (PR #45), shipped with item 21 (item 19 shipped in the same PR,
+   then reverted in it — see below) — **Bento-grid hub layout
    + a "This weekend at a glance" block.** The hub's `region-grid` is now a
    `.bento-grid`: a big weekend tile (`grid-column: span 2`, links to
    `/this-weekend/`, shows the date range and total weekend event count)
@@ -335,11 +336,22 @@ weekend is. That is the moat, and the site should say so out loud (a one-line
    caught it on GitHub's actual runner, not in local testing** — is the
    fuller story behind item 19: the scroll-reveal's original opacity
    animation genuinely pushed hub-page LCP to 2.87s (over the 2.5s
-   budget), fixed by dropping opacity from that animation entirely. See
-   item 19 for the full account.
+   budget), fixed by dropping opacity from that animation entirely — but
+   even that fix then failed on Total Blocking Time, so the scroll-reveal
+   animation was removed from this page altogether. Bento-grid layout and
+   container queries both stayed and pass every budget on their own. See
+   item 19 for the full account of what was tried and why it didn't ship.
 
-9. **Superseded by item 19** — see below (pure-CSS scroll-reveal replaced
-   the `IntersectionObserver` approach this item originally proposed).
+9. **Still open.** Item 19 tried replacing this with pure CSS
+   (`animation-timeline: view()`) and had to revert it — real TBT cost
+   under Lighthouse's CPU throttling, not a flake (see item 19's writeup).
+   The original `IntersectionObserver` + CSS transitions approach this
+   item proposed is untried and may not carry the same cost (it doesn't
+   require the browser to continuously track scroll-linked animation
+   progress the way `animation-timeline: view()` does) — worth actually
+   attempting before assuming scroll-reveal is off the table entirely for
+   this site, but budget real CI verification time for it, not just local
+   testing, given what item 19 just cost.
 
 10. ✅ done (PR #29) — **Accessibility pass.**
     - Contrast audit (computed WCAG relative-luminance contrast for every
@@ -595,49 +607,42 @@ Competitors reviewed this pass:
 
 #### P3 (new) — the "modern and impressive" goal, 2026 CSS edition
 
-19. ✅ done (PR #45), shipped with items 8 and 21 — **Do item 9 in pure CSS
-    instead.** `.bento-tile` (hub page) slides in via `animation-timeline:
-    view()` + `animation-range: entry 0% cover 30%` — no
-    `IntersectionObserver`, no scroll listener, no JS at all. Gated behind
-    `@supports (animation-timeline: view())` (an unsupported browser just
-    renders every tile normally-visible, nothing to fall back to) and
-    `prefers-reduced-motion: no-preference`.
-    **Real LCP regression caught by item 26's own CI budget, not by local
-    testing**: the first version animated `opacity: 0 → 1` alongside the
-    slide, verified locally (including that an already-on-screen tile
-    resolves to `opacity: 1` immediately at first paint, no scroll needed -
-    see below). That local verification used this sandbox's blocked
-    network, where the hero's own text always wins LCP well before any
-    bento tile could even be a candidate - not representative of real
-    network/CPU throttling. On GitHub's actual runner, item 26's Lighthouse
-    check failed for real: hub-page LCP hit 2.87s against the 2.5s budget,
-    specifically and only on the page this PR touched. Root cause: per the
-    LCP spec, an element's recorded paint time is *not* its first-existing
-    frame but the moment it becomes non-transparent - so if the real
-    largest-paint candidate ever lands inside a `.bento-tile`, an
-    opacity-based reveal genuinely defers its LCP timestamp, and that's
-    exactly the kind of thing that only shows up under real network
-    conditions. **Fixed by dropping opacity from the animation entirely** -
-    only `transform: translateY()` animates now, so every tile is fully
-    painted and LCP-eligible the instant it exists, regardless of scroll
-    position; confirmed via `getComputedStyle().opacity` staying `1` before
-    and after scrolling. Keeps the motion, removes the entire risk category
-    instead of guessing at which element was the real candidate.
-    **Verified separately, still true**: whether a tile already inside the
-    viewport on first paint (no scroll needed) starts visible or requires a
-    scroll gesture first - checked via `getComputedStyle().opacity` in
-    Playwright at two viewport heights before the opacity animation was
-    removed; a tile still below the fold on load correctly started at
-    `opacity: 0`, and the same tile placed within a tall-enough initial
-    viewport correctly resolved to `opacity: 1` before any scroll happened.
-    Kept here as a record of the mechanism, now moot for LCP purposes since
-    opacity no longer animates at all.
-    One caveat, tooling-only, also still true: Playwright/CDP's full-page
-    screenshot mode doesn't fire real scroll events for off-screen content,
-    so an opacity-based reveal captured every below-the-fold tile as blank
-    in that specific capture mode - a capture-tool artifact, not a
-    real-user bug, worth remembering for any *future* scroll-tied opacity
-    animation even though this one no longer uses opacity.
+19. ❌ tried in PR #45, reverted in the same PR — **Do item 9 in pure CSS
+    instead.** Shipped `.bento-tile` (hub page) sliding in via
+    `animation-timeline: view()`, then pulled it back out after item 26's
+    own CI budget caught two real, separate problems with it on GitHub's
+    actual runner - neither reproducible in this sandbox's blocked-network
+    testing, both worth recording so nobody re-tries the same approach
+    without knowing why it failed:
+    1. **LCP regression.** The first version animated `opacity: 0 → 1`
+       alongside the slide. Per the LCP spec, an element's recorded paint
+       time is the moment it becomes non-transparent, not when it first
+       exists - so when the real largest-paint candidate on a real network
+       landed inside a `.bento-tile`, the reveal genuinely deferred its LCP
+       timestamp to 2.87s against the 2.5s budget. Fixed by dropping
+       opacity from the animation (`transform: translateY()` only) -
+       confirmed every tile stays at `opacity: 1` regardless of scroll
+       position, removing that entire risk category.
+    2. **TBT regression, which killed the feature.** Even the opacity-free
+       version failed CI on Total Blocking Time - 1144ms on the first run,
+       324.5ms on one confirming re-run (the >3x swing between two runs of
+       identical code confirms TBT is a genuinely noisy lab metric here,
+       but a real floor still sat above the 200ms budget both times, so
+       this wasn't pure noise). Most likely cause: `animation-timeline:
+       view()` requires the browser to keep recalculating scroll-linked
+       animation progress, and Lighthouse's simulated 4x CPU throttling
+       amplifies that into real measured main-thread blocking time. Rather
+       than guess at a third speculative fix, removed the scroll-reveal
+       animation entirely and kept the parts of this PR that don't carry
+       this cost - the bento-grid layout (item 8) and the container query
+       (item 21), both confirmed to still pass every budget afterward.
+    **Net position**: pure-CSS scroll-driven animation
+    (`animation-timeline: view()`) is real and works, but is not free on
+    a CPU-throttled lab run, and this specific page didn't have enough
+    performance headroom to absorb it once real network/CPU conditions
+    were in play. A future attempt should budget for that up front (e.g.
+    only on a page with more LCP/TBT headroom already measured) rather
+    than assume "no JS" means "no cost."
 
 20. ✅ done (PR #35) — **View Transitions on navigation.** `@view-transition
     { navigation: auto; }` added to all four page templates (hub, region,
@@ -650,7 +655,9 @@ Competitors reviewed this pass:
     supports the underlying API (`'startViewTransition' in document`).
     5 lines of real CSS per page, no router, no framework, no JS.
 
-21. ✅ done (PR #45), shipped with items 8 and 19 — **Container queries for
+21. ✅ done (PR #45), shipped with item 8 (item 19 shipped alongside these
+    two in the same PR, then had to be reverted — see item 19) —
+    **Container queries for
     the card component.** Every `.bento-tile` (hub page, includes region
     cards) is now `container-type: inline-size`, and `.region-card` grows
     its heading/body font at `@container (min-width: 340px)` — a real
