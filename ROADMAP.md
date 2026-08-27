@@ -342,16 +342,23 @@ weekend is. That is the moat, and the site should say so out loud (a one-line
    container queries both stayed and pass every budget on their own. See
    item 19 for the full account of what was tried and why it didn't ship.
 
-9. **Still open.** Item 19 tried replacing this with pure CSS
-   (`animation-timeline: view()`) and had to revert it — real TBT cost
-   under Lighthouse's CPU throttling, not a flake (see item 19's writeup).
-   The original `IntersectionObserver` + CSS transitions approach this
-   item proposed is untried and may not carry the same cost (it doesn't
-   require the browser to continuously track scroll-linked animation
-   progress the way `animation-timeline: view()` does) — worth actually
-   attempting before assuming scroll-reveal is off the table entirely for
-   this site, but budget real CI verification time for it, not just local
-   testing, given what item 19 just cost.
+9. ⏳ implemented, verifying in CI (PR #47) — the original
+   `IntersectionObserver` approach this item proposed, after item 19's
+   pure-CSS attempt (`animation-timeline: view()`) had to be reverted for
+   real Total Blocking Time cost. Deliberately more conservative than
+   attempt 1: one observer callback per `.bento-tile`, immediately
+   `unobserve()`d after it fires (bounded, one-time work per tile, not a
+   continuous per-frame recalculation), `transform` only - never
+   `opacity`, so the LCP-deferral bug from item 19's first version can't
+   recur regardless of timing. Locally confirmed: `opacity` stays `1` at
+   every point (checked via `getComputedStyle`), a tile already on-screen
+   at load reveals without needing a scroll gesture, a tile below the fold
+   correctly waits for one, and `npx lhci autorun` passes on all four
+   budgeted pages. **Given what attempt 1 cost, this entry stays
+   provisional until the real GitHub Actions run confirms it** - local
+   sandbox testing already looked clean once before and still failed on
+   the actual runner, so "passes locally" alone doesn't get marked ✅ here
+   again. Update this entry once CI actually confirms it (or reverts it).
 
 10. ✅ done (PR #29) — **Accessibility pass.**
     - Contrast audit (computed WCAG relative-luminance contrast for every

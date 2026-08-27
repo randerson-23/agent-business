@@ -146,6 +146,21 @@
     container-type: inline-size;
   }
   .bento-tile:hover { transform: translateY(-4px); box-shadow: var(--shadow-lift); }
+  /* Scroll-reveal (ROADMAP.md Phase 11 #9), attempt 2: an
+     IntersectionObserver toggles this class once per tile instead of
+     animation-timeline: view()'s continuous per-frame scroll-linked
+     recalculation, which measurably cost real Total Blocking Time under
+     Lighthouse's CPU throttling and got reverted (see item 19's writeup).
+     transform only, never opacity - an opacity-based reveal genuinely
+     deferred a tile's recorded LCP timestamp last time; a tile is fully
+     painted and LCP-eligible immediately regardless of this class. */
+  @media (prefers-reduced-motion: no-preference) {
+    .bento-tile.js-reveal-ready { transform: translateY(16px); transition: transform .4s ease, box-shadow .15s ease; }
+    .bento-tile.js-reveal-ready.js-revealed { transform: translateY(0); }
+    /* Keep the existing hover lift working once a tile has settled -
+       otherwise the reveal rule's higher specificity would suppress it. */
+    .bento-tile.js-reveal-ready.js-revealed:hover { transform: translateY(-4px); }
+  }
   .bento-weekend {
     grid-column: span 2;
     background: var(--callout-gradient);
@@ -520,6 +535,32 @@
       statusEl.textContent = "Sorted by distance from " + zip + " (approximate).";
     });
   }
+})();
+</script>
+<script>
+(function () {
+  // Scroll-reveal via IntersectionObserver (ROADMAP.md Phase 11 #9) - one
+  // observer callback per tile, unobserved immediately after, instead of
+  // continuously recalculating scroll-linked progress every frame the way
+  // animation-timeline: view() did (reverted - see item 19's writeup for
+  // the real Total Blocking Time cost that approach had in CI). Guarded
+  // on the same feature/preference checks as everything else here.
+  if (!("IntersectionObserver" in window)) return;
+  if (window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+  var tiles = Array.prototype.slice.call(document.querySelectorAll(".bento-tile"));
+  if (!tiles.length) return;
+  tiles.forEach(function (tile) { tile.classList.add("js-reveal-ready"); });
+  var observer = new IntersectionObserver(
+    function (entries) {
+      entries.forEach(function (entry) {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add("js-revealed");
+        observer.unobserve(entry.target);
+      });
+    },
+    { rootMargin: "0px 0px -10% 0px", threshold: 0.1 }
+  );
+  tiles.forEach(function (tile) { observer.observe(tile); });
 })();
 </script>
 {% if analytics and analytics.configured %}
