@@ -542,16 +542,27 @@ Competitors reviewed this pass:
     naturally with item 8's still-undone bento layout for a bigger visual
     treatment once there's a real reason to invest in one.
 
-18. **Recast the sponsor slot as a recommendation, not an ad.** Nextdoor's
-    numbers: 79% of neighbors acted on a local recommendation they saw
-    there, 81% within days, out-ranking conventional business directories
-    for local trust. The sponsor block currently reads like an ad unit.
-    Rewriting it — and the pitch in `SPONSOR_KIT.md` /
-    `OUTREACH_TEMPLATES.md` — around recommendation language, with a
-    one-line "why we picked them", is a pure-copy change that should lift
-    both reader response and sponsor renewal. Cite the Nextdoor stats in
-    the media kit; they are the argument for why a local slot outperforms
-    a display ad.
+18. ✅ done (PR #38) — **Recast the sponsor slot as a recommendation, not
+    an ad.** Not quite the "pure-copy change" this item expected — the
+    honesty requirement meant the house ad (no real sponsor booked) can
+    never say "we recommend them," since nothing has actually been
+    recommended yet. So `resolve_sponsor()` now tags its result with
+    `is_active_sponsor` (true only for a real paying entry, never the
+    house-ad fallback), and `region.html.j2`'s sponsor box branches on it:
+    a real sponsor gets "💚 Local Recommendation" framing plus an optional
+    one-line `why` field (new, optional, in a sponsor's `config/
+    sponsors.yaml` history entry — e.g. "they sponsor the Little League
+    team"); the empty slot still honestly says "Sponsor This Spot."
+    `sponsor.html.j2`'s pitch, `SPONSOR_KIT.md`, and `OUTREACH_TEMPLATES.md`
+    (also fixed along the way: still said "60056 Weekly," the pre-pivot
+    single-region name) now lead with the Nextdoor stats (79% acted on a
+    recommendation, 81% within days) as the actual argument for why this
+    format beats a banner ad, and the inquiry flow now asks for the "why"
+    line up front. Verified both states (empty slot, and a mocked real
+    sponsor with a `why` line) render correctly with Playwright — the
+    honest branch was worth checking as carefully as the recommendation
+    one, since a fake "we recommend them" on an unsold slot would have
+    undercut the entire point of this rewrite.
 
 #### P3 (new) — the "modern and impressive" goal, 2026 CSS edition
 

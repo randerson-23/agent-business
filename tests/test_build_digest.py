@@ -24,12 +24,14 @@ def test_resolve_sponsor_falls_back_to_default_house_ad():
     }
     sponsor = build_digest.resolve_sponsor(cfg, "mount-prospect-60056")
     assert sponsor["title"] == "Sponsor this spot"
+    assert sponsor["is_active_sponsor"] is False
 
 
 def test_resolve_sponsor_falls_back_for_unconfigured_region():
     cfg = {"default_house_ad": {"title": "Sponsor this spot", "detail": "", "url": ""}, "regions": {}}
     sponsor = build_digest.resolve_sponsor(cfg, "some-new-region")
     assert sponsor["title"] == "Sponsor this spot"
+    assert sponsor["is_active_sponsor"] is False
 
 
 def test_resolve_sponsor_finds_active_entry():
@@ -45,6 +47,30 @@ def test_resolve_sponsor_finds_active_entry():
     }
     sponsor = build_digest.resolve_sponsor(cfg, "mount-prospect-60056")
     assert sponsor["title"] == "Acme Dentistry"
+    assert sponsor["is_active_sponsor"] is True
+
+
+def test_resolve_sponsor_passes_through_optional_why_field():
+    cfg = {
+        "default_house_ad": {"title": "house", "detail": "", "url": ""},
+        "regions": {
+            "mount-prospect-60056": {
+                "active": "acme-2026-09-01",
+                "house_ad": None,
+                "history": [
+                    {
+                        "id": "acme-2026-09-01",
+                        "title": "Acme Dentistry",
+                        "detail": "",
+                        "url": "",
+                        "why": "Gentle with kids, and they sponsor the Little League team.",
+                    }
+                ],
+            }
+        },
+    }
+    sponsor = build_digest.resolve_sponsor(cfg, "mount-prospect-60056")
+    assert sponsor["why"] == "Gentle with kids, and they sponsor the Little League team."
 
 
 def test_build_sponsor_availability_marks_open_region():
