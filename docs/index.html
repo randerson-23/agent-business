@@ -116,12 +116,18 @@
 
   .wrap { max-width: 960px; margin: -56px auto 0; padding: 0 20px 64px; position: relative; }
 
-  .region-grid {
+  /* Bento grid (ROADMAP.md Phase 11 #8): asymmetric blocks instead of a
+     uniform card grid - a big "this weekend" tile and a stat tile anchor
+     the layout, region tiles fill the rest. auto-fill/auto-flow let it
+     degrade to a single column on narrow viewports without a media query. */
+  .bento-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-    gap: 18px;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    grid-auto-rows: minmax(120px, auto);
+    gap: 16px;
+    margin-bottom: 18px;
   }
-  .region-card {
+  .bento-tile {
     background: var(--card);
     border-radius: var(--radius-lg);
     box-shadow: var(--shadow-md);
@@ -131,9 +137,41 @@
     display: flex;
     flex-direction: column;
     gap: 7px;
+    justify-content: center;
     transition: transform .15s ease, box-shadow .15s ease;
+    /* Lets a tile's own contents respond to the width the grid track
+       actually gives it (see @container rules below) rather than only
+       the viewport - the same tile is much wider with 2 regions than
+       with 5 (ROADMAP.md Phase 11 #21). */
+    container-type: inline-size;
   }
-  .region-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lift); }
+  .bento-tile:hover { transform: translateY(-4px); box-shadow: var(--shadow-lift); }
+  .bento-weekend {
+    grid-column: span 2;
+    background: var(--callout-gradient);
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--accent-2);
+    justify-content: flex-start;
+  }
+  /* At narrow widths the grid has room for exactly one real 220px track,
+     but "span 2" still demands two - forcing a second, unusably narrow
+     implicit column that squeezes whatever lands in it (real bug, caught
+     with a real screenshot, not assumed). Below that width, stop spanning. */
+  @media (max-width: 560px) {
+    .bento-weekend { grid-column: span 1; }
+  }
+  .bento-weekend .bento-kicker {
+    font-weight: 700;
+    font-size: 12.5px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--accent-2-text);
+  }
+  .bento-weekend h2 { margin: 2px 0 0; font-size: 24px; font-weight: 600; }
+  .bento-weekend p { margin: 0; color: var(--accent); font-weight: 700; font-size: 14.5px; }
+  .bento-stat { align-items: center; text-align: center; background: var(--accent-soft); color: #fff; }
+  .bento-stat-number { font-family: 'Fraunces', Georgia, serif; font-size: 40px; font-weight: 600; line-height: 1; }
+  .bento-stat-label { font-size: 12.5px; color: rgba(255,255,255,.9); }
   .region-card .zip {
     color: var(--accent-2-text);
     font-weight: 700;
@@ -154,23 +192,13 @@
     color: var(--accent-2-text);
     font-weight: 700;
   }
-
-  .weekend-callout {
-    display: block;
-    text-align: center;
-    background: var(--callout-gradient);
-    border: 1px solid var(--border);
-    border-left: 4px solid var(--accent-2);
-    border-radius: var(--radius-lg);
-    box-shadow: var(--shadow-sm);
-    padding: 14px 20px;
-    margin-bottom: 18px;
-    color: var(--accent);
-    font-weight: 700;
-    font-size: 14.5px;
-    text-decoration: none;
+  /* A region tile only gets this wide when there are few enough regions
+     for the grid to hand it extra room - a real example of item 21's
+     "one card adapts to whichever column it lands in", not decoration. */
+  @container (min-width: 340px) {
+    .region-card h2 { font-size: 25px; }
+    .region-card p { font-size: 14.5px; }
   }
-  .weekend-callout:hover { box-shadow: var(--shadow-md); }
 
   .map-card {
     background: var(--card);
@@ -330,8 +358,6 @@
 
   <div class="wrap">
   
-  <a class="weekend-callout" href="this-weekend/">📅 See what's happening this weekend, across every region &rarr;</a>
-
   
   <div class="map-card">
     <svg viewBox="0 0 320 220" role="img" aria-label="Map showing the relative location of every covered town">
@@ -363,21 +389,30 @@
     <span class="status" id="distance-status" aria-live="polite"></span>
     <span class="note">Calculated in your browser only — your location is never sent anywhere.</span>
   </div>
-  <div class="region-grid" id="region-grid">
+  <div class="bento-grid" id="region-grid">
+    <a class="bento-tile bento-weekend" href="this-weekend/">
+      <span class="bento-kicker">📅 This weekend</span>
+      <h2>Aug 29–30</h2>
+      <p>0 things happening across every region &rarr;</p>
+    </a>
+    <div class="bento-tile bento-stat">
+      <span class="bento-stat-number">2</span>
+      <span class="bento-stat-label">towns · 13 live updates this week</span>
+    </div>
     
-    <a class="region-card" href="arlington-heights-60005/" data-lat="42.0883" data-lon="-87.9806">
+    <a class="bento-tile region-card" href="arlington-heights-60005/" data-lat="42.0883" data-lon="-87.9806">
       <span class="zip">60005 · IL</span>
       <h2>Arlington Heights</h2>
       <p>Village news, library events, and park district programs — a short drive from Mount Prospect.</p>
-      <span class="count">18 live updates this week</span>
+      <span class="count">12 live updates this week</span>
       <span class="distance" data-distance-label></span>
     </a>
     
-    <a class="region-card" href="mount-prospect-60056/" data-lat="42.0666" data-lon="-87.9373">
+    <a class="bento-tile region-card" href="mount-prospect-60056/" data-lat="42.0666" data-lon="-87.9373">
       <span class="zip">60056 · IL</span>
       <h2>Mount Prospect</h2>
       <p>Village news, library events, and park district programs.</p>
-      <span class="count">7 live updates this week</span>
+      <span class="count">1 live update this week</span>
       <span class="distance" data-distance-label></span>
     </a>
     
@@ -398,7 +433,7 @@
   <footer>
     Want your ZIP added, or want to sponsor a region?
     <a href="sponsor/">See pricing &amp; availability</a>.
-    <br>Generated 2026-08-27 21:12 UTC.
+    <br>Generated 2026-08-27 21:48 UTC.
     
   </footer>
   </div>
