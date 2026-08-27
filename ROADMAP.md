@@ -720,6 +720,18 @@ Angles reviewed this pass:
     make the assertion pass. **Note for future changes**: `npm ci` needs
     `package-lock.json` kept in sync — regenerate with
     `npm install --package-lock-only` if `package.json` ever changes.
+    **This budget caught a real regression on its very first CI run**: the
+    sandbox's blocked network couldn't reproduce it (Google Fonts just
+    failed outright there), but on GitHub's actual runner the synchronous
+    `<link rel="stylesheet">` to `fonts.googleapis.com` genuinely blocked
+    first paint, pushing LCP to ~2.7-2.8s on all four checked pages -
+    over budget. Fixed with the standard preload+swap pattern (paint with
+    the existing fallback font stack immediately, swap to the web font once
+    it loads, `<noscript>` fallback for JS-off) on all four templates,
+    confirmed by re-checking that `render-blocking-resources` now reports
+    zero items on every page. Exactly the outcome this item was for: a real
+    performance issue this project had been shipping unnoticed, caught by
+    CI instead of a reader's slow connection.
 
 #### P3 (new)
 
