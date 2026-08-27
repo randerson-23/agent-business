@@ -332,6 +332,26 @@ def test_render_hub_page_handles_no_regions():
     assert "No regions configured yet" in html
 
 
+def test_render_weekend_hub_page_groups_events_by_region():
+    sections = [
+        {
+            "region_name": "Mount Prospect",
+            "region_url": "https://randerson-23.github.io/agent-business/mount-prospect-60056/",
+            "events": [{"title": "Fishing Derby", "url": "https://x/", "detail": "", "date": "Sep 19", "tags": []}],
+        }
+    ]
+    html = build_digest.render_weekend_hub_page(sections, "Sep 19–20", datetime.now(timezone.utc))
+    assert "Mount Prospect" in html
+    assert "Fishing Derby" in html
+    assert "Sep 19–20" in html
+    assert 'href="https://randerson-23.github.io/agent-business/mount-prospect-60056/"' in html
+
+
+def test_render_weekend_hub_page_handles_no_events_anywhere():
+    html = build_digest.render_weekend_hub_page([], "Sep 19–20", datetime.now(timezone.utc))
+    assert "Nothing dated for this weekend yet across any region" in html
+
+
 def test_render_region_page_includes_canonical_link():
     html = build_digest.render_region_page({"region": REGION}, [], {"title": "", "detail": "", "url": ""}, [], datetime.now(timezone.utc))
     assert 'rel="canonical" href="https://randerson-23.github.io/agent-business/mount-prospect-60056/"' in html
@@ -422,6 +442,12 @@ def test_build_sitemap_xml_lists_hub_and_region_urls():
     xml = build_digest.build_sitemap_xml(summaries, datetime.now(timezone.utc))
     assert "<loc>https://randerson-23.github.io/agent-business/</loc>" in xml
     assert "<loc>https://randerson-23.github.io/agent-business/mount-prospect-60056/</loc>" in xml
+
+
+def test_build_sitemap_xml_includes_weekend_hub_url():
+    summaries = [{**REGION, "event_count": 1, "path": "mount-prospect-60056/"}]
+    xml = build_digest.build_sitemap_xml(summaries, datetime.now(timezone.utc))
+    assert "<loc>https://randerson-23.github.io/agent-business/this-weekend/</loc>" in xml
 
 
 def test_build_robots_txt_references_sitemap():

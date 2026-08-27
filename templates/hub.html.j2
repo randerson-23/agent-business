@@ -113,6 +113,23 @@
     font-weight: 700;
   }
 
+  .weekend-callout {
+    display: block;
+    text-align: center;
+    background: linear-gradient(135deg, #fff7ec, #fff);
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--accent-2);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-sm);
+    padding: 14px 20px;
+    margin-bottom: 18px;
+    color: var(--accent);
+    font-weight: 700;
+    font-size: 14.5px;
+    text-decoration: none;
+  }
+  .weekend-callout:hover { box-shadow: var(--shadow-md); }
+
   .distance-bar {
     background: var(--card);
     border-radius: var(--radius-lg);
@@ -190,6 +207,7 @@
 
   <div class="wrap">
   {% if region_summaries %}
+  <a class="weekend-callout" href="this-weekend/">📅 See what's happening this weekend, across every region &rarr;</a>
   <div class="distance-bar" id="distance-bar">
     <button type="button" id="use-location">📍 Show distance from me</button>
     <span>or</span>
