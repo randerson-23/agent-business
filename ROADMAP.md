@@ -276,10 +276,15 @@ weekend is. That is the moat, and the site should say so out loud (a one-line
    gives that tier a permanent page instead of a footer logo that scrolls
    past — easier to sell and easier to renew.
 
-7. **Dark mode via `prefers-color-scheme`.** 2026 baseline expectation
-   (~70% of modern sites ship it). The palette is already CSS-custom-property
-   driven in both templates, so this is a token block, not a redesign — one
-   of the cheapest "looks modern" wins on the list.
+7. ✅ done (PR #25) — **Dark mode via `prefers-color-scheme`.** Full dark
+   token block on all four page templates (hub, region, weekend hub,
+   sponsor), system-preference only, no manual toggle. Along the way,
+   fixed a real WCAG AA contrast failure (white text on the brightened
+   dark accent was 2.41:1, needed 4.5:1) by giving filled-pill
+   backgrounds their own tuned token instead of reusing the text/link
+   accent color for both jobs — worth remembering for any future color
+   token added: check contrast in both directions (text-on-bg vs
+   white-on-fill), not just one.
 
 #### P3 — design polish (the "modern and impressive" goal)
 
