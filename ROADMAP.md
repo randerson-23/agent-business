@@ -743,8 +743,21 @@ Angles reviewed this pass:
     Playwright screenshot (open/closed states, light/dark) and confirmed
     the guides index and main region page don't get the block (only
     actual guide pages do, where it's genuinely relevant).
-    **Still open**: a consistent-entity-naming audit across pages - left
-    for a follow-up slice, lower urgency than the FAQPage piece.
+    **Entity-naming audit done in PR #49.** Found a real inconsistency,
+    not a hypothetical one: every page's `<title>` and `og:title` said
+    "Weekend & Trip Planner" - except region pages (the most numerous
+    page type on the whole site: every region's main/today/weekend/
+    free/guides/directory view), whose `page_title` was independently
+    computed in `build_digest.py` and said the shortened "Weekend
+    Planner" instead. Two different strings for what should read as one
+    entity to a search/AI crawler. Fixed by introducing a single
+    `SITE_NAME` constant and using it everywhere a page names its own
+    publisher, instead of each call site spelling it out separately.
+    Also added `og:site_name` (previously present nowhere) to all four
+    templates, and an `isPartOf` link on every region page's `WebPage`
+    JSON-LD pointing at a canonical `WebSite` entity - stating "these
+    pages belong to the same site" directly instead of leaving a
+    crawler to infer it purely from repeated title-string matches.
     **The strategic point worth stating out loud:** content updated
     within 30 days earns ~3.2× more AI citations, and this site rebuilds
     itself every week (see item 28). Automated freshness is a structural

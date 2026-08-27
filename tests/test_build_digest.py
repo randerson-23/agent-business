@@ -581,7 +581,7 @@ def test_render_region_page_heading_and_subheading_overrides():
     assert "<h1>This weekend in Mount Prospect</h1>" in html
     assert "Aug 29–30" in html
     assert "<h1>What's happening in Mount Prospect</h1>" not in html
-    assert "<title>This weekend in Mount Prospect — Weekend Planner</title>" in html
+    assert "<title>This weekend in Mount Prospect — Weekend &amp; Trip Planner</title>" in html
     assert 'content="Aug 29–30"' in html
 
 
@@ -880,6 +880,33 @@ def test_build_freshness_json_ld_escapes_script_close_tag():
     now = datetime(2026, 8, 27, tzinfo=timezone.utc)
     result = build_digest.build_freshness_json_ld(region, "https://example.org/", now)
     assert "</script>" not in result
+
+
+def test_build_freshness_json_ld_names_the_site_consistently():
+    # Entity-naming audit (ROADMAP.md Phase 11 #22 follow-up): every page
+    # should name the site the same way, and link back to one canonical
+    # WebSite entity rather than leaving identity to be inferred.
+    region = {"name": "Mount Prospect"}
+    now = datetime(2026, 8, 27, tzinfo=timezone.utc)
+    result = build_digest.build_freshness_json_ld(region, "https://example.org/mount-prospect-60056/", now)
+    parsed = json.loads(result)
+    assert parsed["name"] == f"Mount Prospect — {build_digest.SITE_NAME}"
+    assert parsed["isPartOf"] == {
+        "@type": "WebSite",
+        "name": build_digest.SITE_NAME,
+        "url": build_digest.SITE_BASE_URL,
+    }
+
+
+def test_render_region_page_title_uses_canonical_site_name():
+    # Regression guard for the bug this audit found: region pages
+    # independently built a shortened "Weekend Planner" title while every
+    # other page said "Weekend & Trip Planner" - one entity, two strings.
+    html = build_digest.render_region_page(
+        {"region": REGION}, [], {"title": "", "detail": "", "url": ""}, [], datetime.now(timezone.utc),
+    )
+    assert build_digest.SITE_NAME in html
+    assert "Weekend Planner<" not in html
 
 
 def test_build_guide_faq_returns_four_real_questions():

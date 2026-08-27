@@ -46,6 +46,15 @@ DETAIL_MAX_LEN = 160
 # else in the pipeline depends on the domain.
 SITE_BASE_URL = "https://randerson-23.github.io/agent-business/"
 
+# The one canonical name for this site, used everywhere a page names its
+# own publisher - <title>, og:title, and every WebPage's schema.org name.
+# Before this constant existed, region pages independently built a
+# shortened "{region} — Weekend Planner" title while every other page
+# said "Weekend & Trip Planner" - two different strings for what should
+# read as one entity to a search/AI crawler (ROADMAP.md Phase 11 #22
+# follow-up, entity-naming audit).
+SITE_NAME = "Weekend & Trip Planner"
+
 
 def load_yaml(path: Path) -> dict:
     with path.open("r", encoding="utf-8") as f:
@@ -560,13 +569,20 @@ def build_freshness_json_ld(region: dict, canonical_url: str, now: datetime) -> 
     minimum. Deliberately independent of build_event_json_ld's Event
     graph below (which is None when nothing has a resolved date) - a
     page's freshness is worth signaling even with zero dated events.
+
+    `isPartOf` links every region page's WebPage node back to one
+    consistent WebSite entity (SITE_NAME) - entity-naming audit,
+    ROADMAP.md Phase 11 #22 follow-up. Without it, a search/AI crawler
+    has to infer "these are all the same site" purely from repeated
+    title-string matches; this states it directly.
     """
     payload = {
         "@context": "https://schema.org",
         "@type": "WebPage",
-        "name": f"{region['name']} — Weekend Planner",
+        "name": f"{region['name']} — {SITE_NAME}",
         "url": canonical_url,
         "dateModified": now.isoformat(),
+        "isPartOf": {"@type": "WebSite", "name": SITE_NAME, "url": SITE_BASE_URL},
     }
     return json.dumps(payload, ensure_ascii=False).replace("</", "<\\/")
 
@@ -652,7 +668,7 @@ def render_region_page(
     # point of shipping linkable date/price-scoped views in the first
     # place. Computed here rather than with string concatenation in the
     # template, which gets unreadable fast once quotes have to nest.
-    page_title = f"{heading} — Weekend Planner" if heading else f"{region['name']} ({region['zip']}) — Weekend Planner"
+    page_title = f"{heading} — {SITE_NAME}" if heading else f"{region['name']} ({region['zip']}) — {SITE_NAME}"
     page_description = subheading or f"What's happening in {region['name']}, {region['state']} ({region['zip']}): {region['tagline']}"
     return template.render(
         region=region,
