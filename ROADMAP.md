@@ -382,10 +382,40 @@ weekend is. That is the moat, and the site should say so out loud (a one-line
     step 7 — the competitive research says pull it forward, it's the number
     a sponsor asks for first.
 
-13. **User-submitted events** (Patch's model — let the community supply the
-    content). A GitHub Issue Form template → a small workflow that opens a PR
-    adding the entry to a region's `evergreen`/curated list, so the owner's
-    involvement stays at "merge or don't."
+13. ✅ done (PR #31) — **User-submitted events** (Patch's model — let the
+    community supply the content). `.github/ISSUE_TEMPLATE/
+    event-submission.yml` is a GitHub Issue Form (region dropdown, title,
+    description, link, optional date). `.github/workflows/
+    event-submission.yml` parses it and opens a PR — **never merges
+    anything itself**: a public submission form is spam/abuse-prone, so a
+    person always reviews before it goes live, exactly the "owner's
+    involvement stays at merge or don't" framing this item asked for.
+    `scripts/parse_event_submission.py` does the actual work, split into
+    two independently-tested pure functions: `parse_issue_body()` (text
+    parsing) and `insert_evergreen_entry()` (a **targeted text splice**
+    into the region file, not a `yaml.safe_load`/`yaml.safe_dump` round
+    trip — the region files carry extensive hand-written comments a round
+    trip would silently discard; verified with a diff against the real
+    Mount Prospect file that the insertion touches only the 3 new lines).
+    The submitted text still goes through `yaml.safe_dump` rather than
+    string interpolation, so a title/detail/url containing a quote or
+    colon can't corrupt the file. Tags are deliberately left unset on the
+    new entry — `prepare_evergreen()` already infers them at build time,
+    so a submitted entry gets the same auto-tagging a fetched event would,
+    no new code needed. A submitted date isn't written into the entry
+    (evergreen items have no date field in this schema); it's surfaced in
+    the PR description instead for the human reviewer to act on.
+    `tests.yml` already runs on every PR including this one, so a
+    malformed region file also fails CI before a human looks at it.
+    **Unverified**: the live GitHub → Issue Form → workflow → PR flow
+    itself — this sandbox can't fire a real `issues.opened` webhook, so
+    only the parsing/insertion logic (13 unit tests) and a real dry run
+    against a scratch copy of the actual region file are verified.
+    **Known limitation, accepted rather than solved here**: nothing rate-
+    limits or screens who can open a submission (any GitHub user, if the
+    repo is public) — worst case is spam PRs sitting unmerged, since
+    nothing auto-publishes, but a quality/abuse gate is future work if
+    that turns out to matter in practice.
 
 ## Working agreements for autonomous iteration
 
