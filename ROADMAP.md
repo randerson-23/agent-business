@@ -417,6 +417,105 @@ weekend is. That is the moat, and the site should say so out loud (a one-line
     nothing auto-publishes, but a quality/abuse gate is future work if
     that turns out to matter in practice.
 
+#### Research pass 2026-08-27 (second pass)
+
+Pace note: the build loop cleared **10 of the first 13 items inside a day**
+(PRs #15–#31), leaving only items 8, 9 and 12 open. The backlog empties
+faster than a 6-hourly research cadence refills it — if that holds, this
+loop should generate deeper batches, and the owner may want the research
+cadence raised.
+
+Competitors reviewed this pass:
+
+| Site | What it is | Worth stealing |
+|---|---|---|
+| **Time Out Chicago** | Editorial city guide, "54 Best Things to Do Right Now" | Curation *as* the product — standardized listings, star ratings, an "editors chose this" voice; plus a weekly-refreshed interactive map of picks |
+| **Choose Chicago / Wanderlog / Pilot Plans** | Destination + trip-planning tools | The itinerary builder is the defining trip-planner feature — pick things, collect them, map them, share them |
+| **Nextdoor** | Neighborhood social network | Local *recommendation* beats local *advertisement*: 79% of neighbors acted on a recommendation seen there, 81% within days, ranked above conventional directories |
+| **Chicago Parent / Chicago Kids** | Chicagoland parenting hubs since 1984/1999 | Standing high-intent directories — birthday party venues ("39 great places"), summer camp guides, kids' classes — as their flagship ad inventory |
+
+#### P1 (new)
+
+14. **"Build my weekend" — a client-side itinerary tray.** Choose Chicago,
+    Wanderlog and Pilot Plans all organize around collecting picks into a
+    plan; it is *the* defining trip-planner feature, and this site is
+    literally named one but can't do it. Let a reader star events into a
+    tray, persist it in `localStorage`, then export the whole set as one
+    `.ics` or copy a share URL with the selection encoded in the hash.
+    Builds directly on the add-to-calendar work from item 2, and it's the
+    first feature that makes the *multi-ZIP* promise real — a tray that
+    spans towns is exactly the "weekend across a few nearby towns" use
+    case in the vision. No backend, no accounts, no owner time.
+
+15. **Birthday-party venues + kids' classes guides.** Chicago Parent runs
+    "39 great places to have your child's next birthday party"; Chicago
+    Kids and Macaroni KID both keep standing party/camp/classes
+    directories as flagship inventory. For a ZIP with $102K median income
+    and this many young families, "birthday party places near me" is the
+    highest commercial-intent evergreen query available here — and party
+    venues, entertainers and tutoring centers are precisely the businesses
+    with budget for a recurring listing. Mostly a content/config slice:
+    the guides machinery (item 5) and directory machinery (item 6) are
+    both already shipped.
+
+#### P2 (new)
+
+16. **Editor's pick per region.** Time Out's entire brand is "we chose
+    this for you" — standardized listings plus star ratings, not a dump of
+    everything. One pinned "Pick of the week" card per region, chosen
+    heuristically (soonest + free + kid-friendly scores highest) with an
+    optional YAML override, makes the page read as *edited* rather than
+    *generated*. It's also the most valuable adjacency on the page to sell
+    a sponsor next to.
+
+17. **Map view.** Time Out shipped an interactive map of its picks,
+    refreshed weekly. Per-event pins need the geocoding parked in Phase
+    8's "later" note, but a **region-level** map works today from the
+    lat/lon already in config. Start with an inline-SVG map of the covered
+    towns on the hub — no tile provider, no JS library, no API key, no
+    rate limit — as the visual centerpiece the hub currently lacks. Pairs
+    naturally with item 8's bento layout.
+
+18. **Recast the sponsor slot as a recommendation, not an ad.** Nextdoor's
+    numbers: 79% of neighbors acted on a local recommendation they saw
+    there, 81% within days, out-ranking conventional business directories
+    for local trust. The sponsor block currently reads like an ad unit.
+    Rewriting it — and the pitch in `SPONSOR_KIT.md` /
+    `OUTREACH_TEMPLATES.md` — around recommendation language, with a
+    one-line "why we picked them", is a pure-copy change that should lift
+    both reader response and sponsor renewal. Cite the Nextdoor stats in
+    the media kit; they are the argument for why a local slot outperforms
+    a display ad.
+
+#### P3 (new) — the "modern and impressive" goal, 2026 CSS edition
+
+19. **Do item 9 in pure CSS instead.** `animation-timeline: view()` ties
+    keyframes directly to an element's viewport progress with no scroll
+    listeners and no JavaScript at all, and it's broadly supported now.
+    Strictly better than the `IntersectionObserver` approach item 9
+    originally proposed — **supersedes it**; `prefers-reduced-motion` still
+    applies.
+
+20. **View Transitions on hub → region navigation.** Now cross-browser,
+    and it works on plain multi-page static sites via
+    `@view-transition { navigation: auto; }` — a handful of CSS lines, no
+    router, no framework, that make navigation feel like an app instead of
+    a page load. Highest impressiveness-per-line item on this whole list,
+    and precisely the "modern" signal the sponsor pitch trades on.
+
+21. **Container queries for the card component.** At universal support and
+    "just use them" maturity in 2026. Cards currently size off the
+    viewport; container queries let one card adapt to whichever column it
+    lands in — which starts to matter the moment item 8's bento layout
+    puts cards into differently-sized slots. Do this *with* item 8, not
+    before it.
+
+**Re-rank:** item 12 (email capture) is now the most valuable *open* item
+from the first batch. The self-serve sponsor page shipped in item 3, so
+there is a real place to send a business owner — and the first question
+any of them will ask is how many people this reaches. Promote it ahead of
+items 8 and 9.
+
 ## Working agreements for autonomous iteration
 
 - Cadence is hourly (the platform's durable scheduler has a 1-hour floor;
