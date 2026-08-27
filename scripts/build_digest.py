@@ -275,6 +275,39 @@ def resolve_sponsor(sponsors_cfg: dict, region_id: str) -> dict:
     return region_sponsor_cfg.get("house_ad") or default_house_ad
 
 
+def build_business_directory(sponsors_cfg: dict, region_id: str) -> list[dict]:
+    """Permanent per-region business directory (ROADMAP.md Phase 11 #6) -
+    built from `history` entries in config/sponsors.yaml that opted in with
+    `directory: true`. This is what makes the Community Partner tier worth
+    more than a footer logo that scrolls past: a business keeps its
+    listing here even after its sponsored week/month ends, as long as it
+    was ever a paying sponsor. No entries exist yet (no sponsor has signed
+    up) - that's a fact about the business today, not something to fake
+    with invented local businesses, so an empty list here is the honest
+    and expected state until the first real sponsor.
+    """
+    region_sponsor_cfg = sponsors_cfg.get("regions", {}).get(region_id, {})
+    directory = []
+    for entry in region_sponsor_cfg.get("history", []):
+        if not entry.get("directory"):
+            continue
+        detail = entry.get("detail", "")
+        if entry.get("category"):
+            detail = f"{entry['category']} — {detail}" if detail else entry["category"]
+        directory.append(
+            {
+                "title": entry.get("title", ""),
+                "detail": detail,
+                "url": entry.get("url", ""),
+                "date": None,
+                "tags": [],
+                "tag_badges": [],
+                "ics_href": None,
+            }
+        )
+    return directory
+
+
 # Keep in sync with SPONSOR_KIT.md's "Placements & pricing" table - that
 # file is the canonical human-facing writeup, this is the same numbers
 # rendered as a live page. Duplicated rather than shared from one data
@@ -403,9 +436,12 @@ def render_region_page(
     heading: str | None = None,
     subheading: str | None = None,
     empty_message: str | None = None,
+    empty_cta_url: str | None = None,
+    empty_cta_label: str | None = None,
     nav_current: str = "all",
     canonical_suffix: str = "",
     guides_url: str | None = None,
+    directory_url: str | None = None,
 ) -> str:
     env = Environment(loader=FileSystemLoader(str(TEMPLATES_DIR)), autoescape=True)
     template = env.get_template("region.html.j2")
@@ -432,12 +468,15 @@ def render_region_page(
         heading=heading,
         subheading=subheading,
         empty_message=empty_message,
+        empty_cta_url=empty_cta_url,
+        empty_cta_label=empty_cta_label,
         nav_current=nav_current,
         region_base_url=region_base_url,
         page_title=page_title,
         page_description=page_description,
         hub_url=SITE_BASE_URL,
         guides_url=guides_url,
+        directory_url=directory_url,
     )
 
 
@@ -473,7 +512,7 @@ def build_sitemap_xml(region_summaries: list[dict], now: datetime) -> str:
     urls = [SITE_BASE_URL, SITE_BASE_URL + "this-weekend/", SITE_BASE_URL + "sponsor/"]
     for r in region_summaries:
         base = SITE_BASE_URL + r["path"]
-        urls += [base, base + "this-weekend/", base + "today/", base + "free/"]
+        urls += [base, base + "this-weekend/", base + "today/", base + "free/", base + "directory/"]
         if r.get("guide_slugs"):
             urls.append(base + "guides/")
             urls += [base + f"guides/{slug}/" for slug in r["guide_slugs"]]
@@ -589,10 +628,18 @@ def main() -> None:
         blocks = fetch_region_sections(region_cfg)
         evergreen = prepare_evergreen(region_cfg)
         guides = prepare_guides(region_cfg)
+        directory = build_business_directory(sponsors_cfg, region_id)
         sponsor = resolve_sponsor(sponsors_cfg, region_id)
         guides_url = SITE_BASE_URL + region_id + "/guides/" if guides else None
+        # Always present (not gated on directory being non-empty, unlike
+        # guides_url) - the empty state itself is a CTA to become the
+        # first listed business, so the page is worth linking to before
+        # there's any real content in it.
+        directory_url = SITE_BASE_URL + region_id + "/directory/"
 
-        html = render_region_page(region_cfg, blocks, sponsor, evergreen, now, guides_url=guides_url)
+        html = render_region_page(
+            region_cfg, blocks, sponsor, evergreen, now, guides_url=guides_url, directory_url=directory_url
+        )
 
         region_dir = OUTPUT_DIR / region_id
         region_dir.mkdir(parents=True, exist_ok=True)
@@ -652,6 +699,7 @@ def main() -> None:
                 nav_current=nav_current,
                 canonical_suffix=f"{slug}/",
                 guides_url=guides_url,
+                directory_url=directory_url,
             )
             view_dir = region_dir / slug
             view_dir.mkdir(parents=True, exist_ok=True)
@@ -672,6 +720,7 @@ def main() -> None:
                     nav_current="guides",
                     canonical_suffix=f"guides/{guide['slug']}/",
                     guides_url=guides_url,
+                    directory_url=directory_url,
                 )
                 guide_dir = region_dir / "guides" / guide["slug"]
                 guide_dir.mkdir(parents=True, exist_ok=True)
@@ -702,11 +751,33 @@ def main() -> None:
                 nav_current="guides",
                 canonical_suffix="guides/",
                 guides_url=guides_url,
+                directory_url=directory_url,
             )
             guides_index_dir = region_dir / "guides"
             guides_index_dir.mkdir(parents=True, exist_ok=True)
             (guides_index_dir / "index.html").write_text(guides_index_html, encoding="utf-8")
             logger.info("Wrote %s (%d guide%s)", guides_index_dir / "index.html", len(guides), "" if len(guides) == 1 else "s")
+
+        directory_html = render_region_page(
+            region_cfg,
+            [{"section": "Local Business Directory", "events": directory}],
+            sponsor,
+            [],
+            now,
+            heading=f"Local Business Directory — {region['name']}",
+            subheading="Permanent listings for Community Partner sponsors — a lasting spot, not a footer logo that scrolls past.",
+            empty_message="No businesses listed yet. Community Partner sponsors get a permanent spot here.",
+            empty_cta_url=SITE_BASE_URL + "sponsor/",
+            empty_cta_label="Be the first →",
+            nav_current="directory",
+            canonical_suffix="directory/",
+            guides_url=guides_url,
+            directory_url=directory_url,
+        )
+        directory_dir = region_dir / "directory"
+        directory_dir.mkdir(parents=True, exist_ok=True)
+        (directory_dir / "index.html").write_text(directory_html, encoding="utf-8")
+        logger.info("Wrote %s (%d listing%s)", directory_dir / "index.html", len(directory), "" if len(directory) == 1 else "s")
 
         event_count = sum(len(b["events"]) for b in blocks)
         dated, total = structured_date_coverage(blocks)

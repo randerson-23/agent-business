@@ -11,6 +11,14 @@
 # default_house_ad.url below should track SITE_BASE_URL in
 # scripts/build_digest.py - update both together once a real domain is
 # registered (ROADMAP.md Phase 9).
+#
+# Business directory (ROADMAP.md Phase 11 #6): a history entry with
+# `directory: true` gets a permanent listing on that region's
+# /directory/ page, even after its sponsored week/month ends - this is
+# what makes the Community Partner tier worth more than a footer logo.
+# Optional `category` (e.g. "Restaurant") is prefixed onto the listing's
+# detail text. Set `directory: true` the first time a real business signs
+# up for any tier and wants to stay listed.
 
 default_house_ad:
   title: "Sponsor this spot"

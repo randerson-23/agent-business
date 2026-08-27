@@ -216,6 +216,50 @@ def test_prepare_guides_returns_empty_list_when_no_guides_configured():
     assert build_digest.prepare_guides({}) == []
 
 
+def test_build_business_directory_empty_when_no_history():
+    cfg = {"regions": {"mount-prospect-60056": {"active": "none", "house_ad": None, "history": []}}}
+    assert build_digest.build_business_directory(cfg, "mount-prospect-60056") == []
+
+
+def test_build_business_directory_excludes_entries_not_opted_in():
+    cfg = {
+        "regions": {
+            "mount-prospect-60056": {
+                "active": "none",
+                "house_ad": None,
+                "history": [{"id": "x", "title": "Acme", "detail": "", "url": ""}],
+            }
+        }
+    }
+    assert build_digest.build_business_directory(cfg, "mount-prospect-60056") == []
+
+
+def test_build_business_directory_includes_opted_in_entries_with_category():
+    cfg = {
+        "regions": {
+            "mount-prospect-60056": {
+                "active": "none",
+                "house_ad": None,
+                "history": [
+                    {
+                        "id": "acme-2026-09-01",
+                        "title": "Acme Dentistry",
+                        "detail": "Family dentistry on Main St.",
+                        "url": "https://acme.example/",
+                        "category": "Dentist",
+                        "directory": True,
+                    }
+                ],
+            }
+        }
+    }
+    result = build_digest.build_business_directory(cfg, "mount-prospect-60056")
+    assert len(result) == 1
+    assert result[0]["title"] == "Acme Dentistry"
+    assert result[0]["detail"] == "Dentist — Family dentistry on Main St."
+    assert result[0]["url"] == "https://acme.example/"
+
+
 def test_build_ics_data_uri_returns_none_without_date():
     assert build_digest.build_ics_data_uri({"title": "x", "date_iso": None}) is None
 
