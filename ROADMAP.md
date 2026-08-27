@@ -225,11 +225,11 @@ weekend is. That is the moat, and the site should say so out loud (a one-line
    near you" that merges all regions. Biggest single SEO + UX win available,
    and it finally makes the site's name literal. Depends on item 4.
 
-2. **"Add to calendar" on every event card** — an `.ics` download plus a
-   Google Calendar link. ICS is already being parsed on the way in, so the
-   data is there; this is the highest-value-per-line-of-code item on the
-   list. Turns a card from something you read into something you act on,
-   which is the "enough info in the card" design goal taken one step further.
+2. ✅ done (PR #15) — **"Add to calendar" on every event card**: `.ics`
+   download (as a `data:` URI, no extra output file) plus a Google
+   Calendar quick-add link, for every event with a machine-readable date.
+   Assumes a 1-hour duration (stated as an assumption, not fact) since
+   sources rarely give an explicit end time.
 
 3. **Self-serve sponsor checkout (`/sponsor` page).** 6AM City's core lesson:
    they automated ad sales because chasing $50 local orders by hand doesn't
