@@ -374,7 +374,7 @@ weekend is. That is the moat, and the site should say so out loud (a one-line
     forecast, not live weather. Acceptable for "should I plan something
     indoor" at a glance; not sold as minute-fresh.
 
-12. ✅ done (PR #32) — **Email capture.** Followed the second research
+12. ✅ done (PR #33) — **Email capture.** Followed the second research
     pass's re-rank (promoted ahead of items 8/9 as "the number a sponsor
     asks for first" now that the sponsor page has somewhere to send a
     business owner). Same config-gated pattern as the sponsor page and
