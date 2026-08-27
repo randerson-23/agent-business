@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>This Weekend Near You — Weekend &amp; Trip Planner</title>
+<meta name="description" content="Everything with a known date this weekend (Aug 29–30), across every region — one page for planning a trip nearby.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="This Weekend Near You — Weekend &amp; Trip Planner">
+<meta property="og:description" content="Everything with a known date this weekend (Aug 29–30), across every region.">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="This Weekend Near You — Weekend &amp; Trip Planner">
+<meta name="twitter:description" content="Everything with a known date this weekend (Aug 29–30), across every region.">
+<link rel="canonical" href="https://randerson-23.github.io/agent-business/this-weekend/">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='46' fill='%231f4d3a'/%3E%3Cpath d='M50 22c-13 0-24 10-24 24 0 18 24 36 24 36s24-18 24-36c0-14-11-24-24-24z' fill='white'/%3E%3Ccircle cx='50' cy='45' r='10' fill='%231f4d3a'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #f7f4ee;
+    --card: #ffffff;
+    --ink: #17231c;
+    --muted: #5c6b63;
+    --accent: #1f4d3a;
+    --accent-soft: #2f6b4f;
+    --accent-2: #d9772e;
+    --border: #e6e1d6;
+    --radius-lg: 18px;
+    --shadow-sm: 0 1px 2px rgba(23,35,28,.06), 0 1px 1px rgba(23,35,28,.05);
+    --shadow-md: 0 10px 28px -10px rgba(23,35,28,.20), 0 2px 6px rgba(23,35,28,.06);
+    --shadow-lift: 0 16px 36px -12px rgba(23,35,28,.28), 0 3px 8px rgba(23,35,28,.08);
+
+    --hue-pink-bg: #fde7ef;   --hue-pink-ink: #a3275a;
+    --hue-amber-bg: #fdf0d8;  --hue-amber-ink: #92600a;
+    --hue-green-bg: #e2f3e7;  --hue-green-ink: #1f6b3c;
+    --hue-blue-bg: #e5eefc;   --hue-blue-ink: #1d4f9e;
+    --hue-teal-bg: #e0f3f0;   --hue-teal-ink: #147364;
+    --hue-orange-bg: #fdeadb; --hue-orange-ink: #a3480a;
+    --hue-purple-bg: #f1e7fb; --hue-purple-ink: #6b2fa3;
+    --hue-gray-bg: #eef0ee;   --hue-gray-ink: #4a534d;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+  }
+  h1, h2 { font-family: 'Fraunces', Georgia, 'Times New Roman', serif; }
+  .wrap { max-width: 960px; margin: 0 auto; padding: 0 20px 64px; }
+
+  .hero {
+    background: linear-gradient(135deg, var(--accent) 0%, var(--accent-soft) 60%, #4a8a68 100%);
+    color: #fff;
+    padding: 26px 20px 44px;
+    margin-bottom: -24px;
+  }
+  .hero-inner { max-width: 960px; margin: 0 auto; }
+  a.back { color: rgba(255,255,255,.82); text-decoration: none; font-size: 13px; font-weight: 500; }
+  a.back:hover { color: #fff; }
+  .brand-mark { display: inline-flex; align-items: center; gap: 8px; margin: 18px 0 8px; }
+  .brand-mark svg { width: 22px; height: 22px; flex-shrink: 0; }
+  .kicker { font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; font-size: 12px; color: rgba(255,255,255,.85); }
+  .hero h1 { margin: 4px 0 8px; font-size: 34px; font-weight: 600; color: #fff; }
+  .hero .sub { color: rgba(255,255,255,.88); font-size: 15.5px; max-width: 620px; }
+
+  section.block { margin: 30px 0; }
+  section.block h2 {
+    font-size: 20px;
+    font-weight: 600;
+    margin: 0 0 4px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid var(--border);
+  }
+  section.block .region-link { font-size: 13px; font-weight: 600; color: var(--accent); text-decoration: none; }
+  section.block .region-link:hover { text-decoration: underline; }
+
+  .card-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 14px; margin-top: 14px; }
+  .card {
+    background: var(--card);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-sm);
+    padding: 16px 18px;
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+    transition: transform .15s ease, box-shadow .15s ease;
+  }
+  .card:hover { transform: translateY(-3px); box-shadow: var(--shadow-lift); }
+  .card .date { color: var(--accent-2); font-size: 12px; font-weight: 700; letter-spacing: 0.02em; text-transform: uppercase; }
+  .card h3 { margin: 0; font-size: 16px; font-weight: 600; line-height: 1.35; }
+  .card h3 a { color: var(--ink); text-decoration: none; }
+  .card h3 a:hover { color: var(--accent); }
+  .card p.detail { margin: 0; color: var(--muted); font-size: 13.5px; }
+  .tag-row { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 3px; }
+  .tag-badge { font-size: 11.5px; font-weight: 600; border-radius: 999px; padding: 3px 10px 3px 8px; display: inline-flex; align-items: center; gap: 3px; }
+  .cal-row { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 4px; }
+  .cal-row a { font-size: 12.5px; font-weight: 600; color: var(--accent); text-decoration: none; }
+  .cal-row a:hover { text-decoration: underline; }
+
+  .empty-state { text-align: center; color: var(--muted); padding: 40px 0; background: var(--card); border-radius: var(--radius-lg); box-shadow: var(--shadow-sm); margin-top: 24px; }
+
+  footer { text-align: center; color: var(--muted); font-size: 12.5px; margin-top: 44px; border-top: 1px solid var(--border); padding-top: 18px; }
+  footer a { color: var(--accent); font-weight: 600; }
+
+  @media (max-width: 480px) {
+    .hero h1 { font-size: 27px; }
+    .wrap { padding: 0 14px 48px; }
+  }
+</style>
+</head>
+<body>
+<div class="hero">
+  <div class="hero-inner">
+    <a class="back" href="https://randerson-23.github.io/agent-business/">&larr; All regions</a>
+    <div class="brand-mark">
+      <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <circle cx="50" cy="50" r="48" fill="rgba(255,255,255,.16)"/>
+        <path d="M50 24c-12 0-22 9-22 22 0 16 22 34 22 34s22-18 22-34c0-13-10-22-22-22z" fill="#fff"/>
+        <circle cx="50" cy="46" r="9" fill="var(--accent)"/>
+      </svg>
+      <span class="kicker">Weekend &amp; Trip Planner</span>
+    </div>
+    <h1>This Weekend Near You</h1>
+    <div class="sub">Aug 29–30 — everything with a known date, across every region.</div>
+  </div>
+</div>
+
+<div class="wrap">
+  
+    <div class="empty-state">Nothing dated for this weekend yet across any region — check back, or browse a region's full page.</div>
+  
+
+  <footer>
+    Want your ZIP added, or want to sponsor a region?
+    <a href="https://github.com/randerson-23/agent-business/blob/main/SPONSOR_KIT.md">See the sponsor kit</a>.
+    <br>Generated 2026-08-27 04:57 UTC.
+  </footer>
+</div>
+</body>
+</html>
