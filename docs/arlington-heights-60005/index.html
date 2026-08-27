@@ -162,6 +162,37 @@
     font-weight: 600;
   }
 
+  .editors-pick {
+    position: relative;
+    background: var(--card);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
+    padding: 18px 20px;
+    margin: 0 0 14px;
+    border-left: 4px solid var(--accent);
+  }
+  .editors-pick .label {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--accent);
+    font-weight: 700;
+    margin-bottom: 4px;
+  }
+  .editors-pick h3 { margin: 0 0 4px; font-size: 17px; font-weight: 600; padding-right: 24px; }
+  .editors-pick h3 a { color: var(--ink); text-decoration: none; }
+  .editors-pick h3 a:hover { color: var(--accent); }
+  .editors-pick .date {
+    color: var(--accent-2-text);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+  .editors-pick p { margin: 0; color: var(--muted); font-size: 14px; }
+  .editors-pick .tag-row { margin-top: 8px; }
+
   .sponsor {
     position: relative;
     background: var(--card);
@@ -431,6 +462,22 @@
     <a href="https://randerson-23.github.io/agent-business/arlington-heights-60005/directory/">Directory</a>
   </nav>
 
+  
+
+  
+  
+  <div class="editors-pick">
+    <button type="button" class="tray-star" data-item='{"date": "Sep 12", "date_iso": "2026-09-12T09:30:00", "detail": "This FREE event is perfect for families to play outside, meet with local businesses and Touch-A-Truck. This event is a great opportunity for your child to see\u2026", "id": "https://www.ahpd.org/event/touch-a-truck-2/", "region_name": "Arlington Heights", "region_url": "https://randerson-23.github.io/agent-business/arlington-heights-60005/", "title": "Touch-A-Truck", "url": "https://www.ahpd.org/event/touch-a-truck-2/"}' aria-pressed="false" aria-label="Add Touch-A-Truck to My Weekend">☆</button>
+    <div class="label">✏️ Editor's Pick</div>
+    <h3><a href="https://www.ahpd.org/event/touch-a-truck-2/">Touch-A-Truck</a></h3>
+    <div class="date">Sep 12</div>
+    <p>This FREE event is perfect for families to play outside, meet with local businesses and Touch-A-Truck. This event is a great opportunity for your child to see…</p>
+    
+    <div class="tag-row">
+      <span class="tag-badge" style="background: var(--hue-green-bg); color: var(--hue-green-ink);">💵 Free</span><span class="tag-badge" style="background: var(--hue-pink-bg); color: var(--hue-pink-ink);">🧒 Kid-friendly</span><span class="tag-badge" style="background: var(--hue-teal-bg); color: var(--hue-teal-ink);">🌳 Outdoor</span>
+    </div>
+    
+  </div>
   
 
   <div class="sponsor">
@@ -817,7 +864,7 @@
   <footer>
     Local business? See the
     <a href="https://randerson-23.github.io/agent-business/sponsor/">sponsor page</a>.
-    <br>Generated 2026-08-27 13:54 UTC.
+    <br>Generated 2026-08-27 14:57 UTC.
   </footer>
 </div>
 
