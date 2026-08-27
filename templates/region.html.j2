@@ -213,6 +213,7 @@
   .sponsor h3 { margin: 0 0 4px; font-size: 17px; font-weight: 600; }
   .sponsor p { margin: 0; color: var(--muted); font-size: 14px; }
   .sponsor a { color: var(--accent-2-text); text-decoration: none; font-weight: 600; }
+  .sponsor .why { margin: 0 0 4px; color: var(--ink); font-size: 13.5px; font-style: italic; }
 
   .filter-bar {
     position: sticky;
@@ -495,9 +496,16 @@
   {% endif %}
 
   <div class="sponsor">
-    <div class="label">This Week's Sponsor</div>
+    {% if sponsor.is_active_sponsor %}
+    <div class="label">💚 Local Recommendation</div>
+    <h3>{{ sponsor.title }}</h3>
+    {% if sponsor.why %}<p class="why">{{ sponsor.why }}</p>{% endif %}
+    <p>{{ sponsor.detail }} {% if sponsor.url %}<a href="{{ sponsor.url }}">Learn more &rarr;</a>{% endif %}</p>
+    {% else %}
+    <div class="label">Sponsor This Spot</div>
     <h3>{{ sponsor.title }}</h3>
     <p>{{ sponsor.detail }} {% if sponsor.url %}<a href="{{ sponsor.url }}">Learn more &rarr;</a>{% endif %}</p>
+    {% endif %}
   </div>
 
   {% if available_tags %}

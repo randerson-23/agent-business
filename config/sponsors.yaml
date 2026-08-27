@@ -19,6 +19,12 @@
 # Optional `category` (e.g. "Restaurant") is prefixed onto the listing's
 # detail text. Set `directory: true` the first time a real business signs
 # up for any tier and wants to stay listed.
+#
+# Recommendation framing (ROADMAP.md Phase 11 #18): a history entry that
+# is the region's `active` sponsor renders with "Local Recommendation"
+# framing instead of ad-unit language, plus its optional one-line `why`
+# ("why we recommend you") shown above `detail`. The house ad (unset
+# `active`) never gets this framing - only a real paying sponsor.
 
 default_house_ad:
   title: "Sponsor this spot"

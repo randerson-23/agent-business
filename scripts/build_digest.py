@@ -282,6 +282,14 @@ def prepare_guides(region_cfg: dict) -> list[dict]:
 
 
 def resolve_sponsor(sponsors_cfg: dict, region_id: str) -> dict:
+    """The active sponsor (or house ad fallback) for a region, tagged with
+    `is_active_sponsor` - the region page's sponsor box only uses
+    recommendation framing ("Local Recommendation", the optional `why`
+    line) for a real paying sponsor, never for the house ad. Nothing has
+    actually been recommended yet when the slot is empty, and pretending
+    otherwise would undercut the whole point of item 18's rewrite: a
+    recommendation reads as trustworthy specifically because it's genuine.
+    """
     default_house_ad = sponsors_cfg.get(
         "default_house_ad", {"title": "Sponsor this spot", "detail": "", "url": ""}
     )
@@ -290,8 +298,9 @@ def resolve_sponsor(sponsors_cfg: dict, region_id: str) -> dict:
     if active_id and active_id != "none":
         for entry in region_sponsor_cfg.get("history", []):
             if entry.get("id") == active_id:
-                return entry
-    return region_sponsor_cfg.get("house_ad") or default_house_ad
+                return {**entry, "is_active_sponsor": True}
+    house_ad = region_sponsor_cfg.get("house_ad") or default_house_ad
+    return {**house_ad, "is_active_sponsor": False}
 
 
 def build_business_directory(sponsors_cfg: dict, region_id: str) -> list[dict]:
