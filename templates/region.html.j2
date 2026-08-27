@@ -169,6 +169,14 @@
   .card h3 a:hover { color: var(--accent); }
   .card p.detail { margin: 0; color: var(--muted); font-size: 13.5px; }
   .tag-row { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 3px; }
+  .cal-row { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 4px; }
+  .cal-row a {
+    font-size: 12.5px;
+    font-weight: 600;
+    color: var(--accent);
+    text-decoration: none;
+  }
+  .cal-row a:hover { text-decoration: underline; }
   .tag-badge {
     font-size: 11.5px;
     font-weight: 600;
@@ -244,6 +252,12 @@
         {% if item.tag_badges %}
         <div class="tag-row">
           {% for tag in item.tag_badges %}<span class="tag-badge" style="background: var(--hue-{{ tag.hue }}-bg); color: var(--hue-{{ tag.hue }}-ink);">{{ tag.emoji }} {{ tag.label }}</span>{% endfor %}
+        </div>
+        {% endif %}
+        {% if item.ics_href %}
+        <div class="cal-row">
+          <a href="{{ item.ics_href }}" download="event.ics">📅 Add to calendar</a>
+          <a href="{{ item.google_calendar_url }}" target="_blank" rel="noopener">Google Calendar</a>
         </div>
         {% endif %}
       </div>

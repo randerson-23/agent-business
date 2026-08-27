@@ -104,6 +104,61 @@ def test_prepare_evergreen_infers_tags_when_absent():
     assert "dog_friendly" in result[0]["tags"]
 
 
+def test_build_ics_data_uri_returns_none_without_date():
+    assert build_digest.build_ics_data_uri({"title": "x", "date_iso": None}) is None
+
+
+def test_build_ics_data_uri_contains_essential_fields():
+    from urllib.parse import unquote
+
+    event = {"title": "Fishing Derby", "detail": "Bring your gear.", "url": "https://x/1", "date_iso": "2026-09-19T10:00:00"}
+    uri = build_digest.build_ics_data_uri(event)
+    assert uri.startswith("data:text/calendar;charset=utf-8,")
+    decoded = unquote(uri.split(",", 1)[1])
+    assert "BEGIN:VEVENT" in decoded
+    assert "SUMMARY:Fishing Derby" in decoded
+    assert "DTSTART:20260919T100000" in decoded
+    assert "DTEND:20260919T110000" in decoded
+    assert "URL:https://x/1" in decoded
+
+
+def test_build_ics_data_uri_escapes_commas_and_newlines():
+    from urllib.parse import unquote
+
+    event = {"title": "Ages 5, up\nBring water", "detail": "", "url": "", "date_iso": "2026-09-19T10:00:00"}
+    uri = build_digest.build_ics_data_uri(event)
+    decoded = unquote(uri.split(",", 1)[1])
+    assert "SUMMARY:Ages 5\\, up\\nBring water" in decoded
+
+
+def test_build_google_calendar_url_returns_none_without_date():
+    assert build_digest.build_google_calendar_url({"title": "x", "date_iso": None}, "Mount Prospect") is None
+
+
+def test_build_google_calendar_url_has_expected_params():
+    event = {"title": "Fishing Derby", "detail": "Bring gear", "date_iso": "2026-09-19T10:00:00"}
+    url = build_digest.build_google_calendar_url(event, "Mount Prospect")
+    assert url.startswith("https://www.google.com/calendar/render?")
+    assert "action=TEMPLATE" in url
+    assert "dates=20260919T100000%2F20260919T110000" in url
+    assert "location=Mount+Prospect" in url
+
+
+def test_fetch_region_sections_attaches_calendar_links(monkeypatch):
+    def fake_fetcher(url, **kwargs):
+        return [{"title": "Fishing Derby", "detail": "x", "url": "https://x/1", "date": "20990901T100000Z"}]
+
+    monkeypatch.setitem(build_digest.FETCHERS, "ics", fake_fetcher)
+    region_cfg = {
+        "region": REGION,
+        "sources": [{"name": "Park", "type": "ics", "url": "https://x/cal.ics", "section": "Events", "enabled": True}],
+    }
+    blocks = build_digest.fetch_region_sections(region_cfg)
+    event = blocks[0]["events"][0]
+    assert event["ics_href"].startswith("data:text/calendar")
+    assert "location=Mount+Prospect" in event["google_calendar_url"]
+
+
 def test_render_region_page_produces_html_even_with_empty_sources():
     blocks = [{"section": "Village News", "events": []}]
     sponsor = {"title": "Sponsor this spot", "detail": "", "url": ""}
