@@ -282,10 +282,21 @@ weekend is. That is the moat, and the site should say so out loud (a one-line
    `guides:` list, no new code needed, just YAML content once there's a
    real season/occasion to write one for.
 
-6. **Local business directory per region.** Both Patch and Macaroni KID run
-   one. It's the natural home for the $30/month Community Partner tier and
-   gives that tier a permanent page instead of a footer logo that scrolls
-   past — easier to sell and easier to renew.
+6. ✅ first slice done (PR #28) — **Local business directory per region.**
+   `/<region>/directory/` (always in the nav, unlike Guides which only
+   appears once a region has one). Driven by `config/sponsors.yaml`
+   `history` entries opted in with `directory: true` (optionally
+   `category`) — `build_business_directory()` in `build_digest.py`. This
+   is what makes the $30/month Community Partner tier worth more than a
+   footer logo that scrolls past: a business keeps its listing here after
+   its sponsored week/month ends, as long as it was ever a paying sponsor.
+   **No businesses are listed yet** — no sponsor has signed up (see Phase
+   6's still-open note), so an empty directory is the honest, expected
+   state right now, not a bug. The empty page isn't wasted, though: it
+   renders its own CTA ("Be the first →" linking to `/sponsor/`) instead
+   of a generic "nothing here." The moment `config/sponsors.yaml` gets its
+   first real `directory: true` entry, this page starts working with zero
+   further code changes.
 
 7. ✅ done (PR #25) — **Dark mode via `prefers-color-scheme`.** Full dark
    token block on all four page templates (hub, region, weekend hub,

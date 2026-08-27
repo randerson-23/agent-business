@@ -229,6 +229,7 @@
     gap: 3px;
   }
   .empty { color: var(--muted); font-size: 14px; font-style: italic; }
+  .empty a { color: var(--accent); font-weight: 600; font-style: normal; }
 
   footer {
     text-align: center;
@@ -270,6 +271,7 @@
     <a href="{{ region_base_url }}today/"{% if nav_current == "today" %} class="active"{% endif %}>Today</a>
     <a href="{{ region_base_url }}free/"{% if nav_current == "free" %} class="active"{% endif %}>Free</a>
     {% if guides_url %}<a href="{{ guides_url }}"{% if nav_current == "guides" %} class="active"{% endif %}>Guides</a>{% endif %}
+    {% if directory_url %}<a href="{{ directory_url }}"{% if nav_current == "directory" %} class="active"{% endif %}>Directory</a>{% endif %}
   </nav>
 
   <div class="sponsor">
@@ -314,7 +316,7 @@
       {% endfor %}
       </div>
     {% else %}
-      <p class="empty">{{ empty_message or "No live updates fetched this week — check back or visit the source directly." }}</p>
+      <p class="empty">{{ empty_message or "No live updates fetched this week — check back or visit the source directly." }}{% if empty_cta_url %} <a href="{{ empty_cta_url }}">{{ empty_cta_label or "Learn more" }}</a>{% endif %}</p>
     {% endif %}
   </section>
   {% endfor %}
