@@ -16,10 +16,11 @@ from __future__ import annotations
 import json
 import logging
 import sys
-from datetime import datetime, timedelta, timezone
+from datetime import date, datetime, timedelta, timezone
 from email.utils import parsedate_to_datetime
 from pathlib import Path
 from urllib.parse import quote, urlencode
+from zoneinfo import ZoneInfo
 
 import yaml
 from jinja2 import Environment, FileSystemLoader
@@ -258,17 +259,20 @@ def all_tags_present(*blocks_and_evergreen: list[dict]) -> list[dict]:
 
 
 def build_event_json_ld(region: dict, blocks: list[dict]) -> str | None:
-    """schema.org/Event structured data for the fetched events (not the
-    evergreen resource listings - those aren't dated events, so Event
-    schema doesn't fit them). Returns None when there's nothing to embed
-    rather than emitting an empty, pointless script block.
+    """schema.org/Event structured data for fetched events that have a
+    real date (not the evergreen resource listings, and not an
+    undated item - an "Event" with no date isn't a meaningful event,
+    and some of these blocks are filtered views like /free that merge
+    evergreen entries in alongside real events; date_iso is what tells
+    them apart here). Returns None when there's nothing to embed rather
+    than emitting an empty, pointless script block.
 
     Location is region-level (town + state + zip), not per-venue - we
     don't have structured addresses from the fetchers today. That's an
     honest approximation, not a precise one; schema.org doesn't require
     more precision than the data actually supports.
     """
-    events = [e for b in blocks for e in b["events"] if e.get("title") and e.get("url")]
+    events = [e for b in blocks for e in b["events"] if e.get("title") and e.get("url") and e.get("date_iso")]
     if not events:
         return None
     graph = []
@@ -300,11 +304,31 @@ def build_event_json_ld(region: dict, blocks: list[dict]) -> str | None:
     return json.dumps(payload, ensure_ascii=False).replace("</", "<\\/")
 
 
-def render_region_page(region_cfg: dict, blocks: list[dict], sponsor: dict, evergreen: list[dict], now: datetime) -> str:
+def render_region_page(
+    region_cfg: dict,
+    blocks: list[dict],
+    sponsor: dict,
+    evergreen: list[dict],
+    now: datetime,
+    *,
+    heading: str | None = None,
+    subheading: str | None = None,
+    empty_message: str | None = None,
+    nav_current: str = "all",
+    canonical_suffix: str = "",
+) -> str:
     env = Environment(loader=FileSystemLoader(str(TEMPLATES_DIR)), autoescape=True)
     template = env.get_template("region.html.j2")
     all_events_flat = [e for b in blocks for e in b["events"]] + evergreen
     region = region_cfg["region"]
+    region_base_url = SITE_BASE_URL + region["id"] + "/"
+    # Distinct <title>/description per view (not just per region) so
+    # search engines don't see four near-duplicate pages - the whole
+    # point of shipping linkable date/price-scoped views in the first
+    # place. Computed here rather than with string concatenation in the
+    # template, which gets unreadable fast once quotes have to nest.
+    page_title = f"{heading} — Weekend Planner" if heading else f"{region['name']} ({region['zip']}) — Weekend Planner"
+    page_description = subheading or f"What's happening in {region['name']}, {region['state']} ({region['zip']}): {region['tagline']}"
     return template.render(
         region=region,
         issue_date=now.strftime("%B %d, %Y"),
@@ -313,8 +337,16 @@ def render_region_page(region_cfg: dict, blocks: list[dict], sponsor: dict, ever
         blocks=blocks,
         evergreen=evergreen,
         available_tags=all_tags_present(all_events_flat),
-        canonical_url=SITE_BASE_URL + region["id"] + "/",
+        canonical_url=region_base_url + canonical_suffix,
         event_json_ld=build_event_json_ld(region, blocks),
+        heading=heading,
+        subheading=subheading,
+        empty_message=empty_message,
+        nav_current=nav_current,
+        region_base_url=region_base_url,
+        page_title=page_title,
+        page_description=page_description,
+        hub_url=SITE_BASE_URL,
     )
 
 
@@ -330,7 +362,10 @@ def render_hub_page(regions: list[dict], region_summaries: list[dict], now: date
 
 def build_sitemap_xml(region_summaries: list[dict], now: datetime) -> str:
     lastmod = now.strftime("%Y-%m-%d")
-    urls = [SITE_BASE_URL] + [SITE_BASE_URL + r["path"] for r in region_summaries]
+    urls = [SITE_BASE_URL]
+    for r in region_summaries:
+        base = SITE_BASE_URL + r["path"]
+        urls += [base, base + "this-weekend/", base + "today/", base + "free/"]
     entries = "\n".join(
         f"  <url>\n    <loc>{u}</loc>\n    <lastmod>{lastmod}</lastmod>\n  </url>" for u in urls
     )
@@ -355,6 +390,72 @@ def structured_date_coverage(blocks: list[dict]) -> tuple[int, int]:
     events = [e for b in blocks for e in b["events"]]
     dated = sum(1 for e in events if e.get("date_iso"))
     return dated, len(events)
+
+
+def region_local_date(region: dict, now_utc: datetime) -> date:
+    """"Today" in a region's own timezone, not the build server's -
+    matters for what counts as "today"/"this weekend" near midnight.
+    Falls back to the UTC date if the configured timezone is missing or
+    invalid rather than failing the whole build over it.
+    """
+    tz_name = region.get("timezone")
+    if tz_name:
+        try:
+            return now_utc.astimezone(ZoneInfo(tz_name)).date()
+        except Exception:
+            logger.warning("Invalid timezone %r for region %s, using UTC", tz_name, region.get("id"))
+    return now_utc.date()
+
+
+def format_date_range(start: date, end: date) -> str:
+    """"Aug 29–30" when both dates share a month, "Aug 29–Sep 1" when
+    they don't - avoids the redundant "Aug 29–Aug 30" a naive per-date
+    format would produce.
+    """
+    if start.month == end.month:
+        return f"{start.strftime('%b %-d')}–{end.day}"
+    return f"{start.strftime('%b %-d')}–{end.strftime('%b %-d')}"
+
+
+def weekend_dates(local_date: date) -> tuple[date, date]:
+    """The Saturday/Sunday of the calendar week (Mon-Sun) containing
+    local_date - correct whether local_date is itself a weekday (the
+    upcoming weekend) or already Saturday/Sunday (this weekend, in
+    progress).
+    """
+    monday = local_date - timedelta(days=local_date.weekday())
+    return monday + timedelta(days=5), monday + timedelta(days=6)
+
+
+def filter_events_by_dates(blocks: list[dict], target_dates: set[date]) -> list[dict]:
+    """Flatten every fetched event across sections down to the ones whose
+    date falls on one of target_dates. Events without a resolved
+    date_iso are silently excluded here (not an error - they just can't
+    be placed on a specific day) rather than guessed into a bucket.
+    """
+    matched = []
+    for block in blocks:
+        for event in block["events"]:
+            iso = event.get("date_iso")
+            if not iso:
+                continue
+            try:
+                event_date = datetime.fromisoformat(iso).date()
+            except ValueError:
+                continue
+            if event_date in target_dates:
+                matched.append(event)
+    return matched
+
+
+def filter_free_items(blocks: list[dict], evergreen: list[dict]) -> list[dict]:
+    """Every fetched event and evergreen entry tagged 'free', regardless
+    of whether it has a resolved date - unlike the weekend/today views,
+    "is this free" doesn't depend on knowing when it happens.
+    """
+    matched = [e for b in blocks for e in b["events"] if "free" in e.get("tags", [])]
+    matched += [e for e in evergreen if "free" in e.get("tags", [])]
+    return matched
 
 
 def main() -> None:
@@ -382,6 +483,52 @@ def main() -> None:
         region_dir.mkdir(parents=True, exist_ok=True)
         (region_dir / "index.html").write_text(html, encoding="utf-8")
         logger.info("Wrote %s", region_dir / "index.html")
+
+        local_today = region_local_date(region, now)
+        saturday, sunday = weekend_dates(local_today)
+        views = [
+            (
+                "this-weekend",
+                filter_events_by_dates(blocks, {saturday, sunday}),
+                f"This weekend in {region['name']}",
+                f"{format_date_range(saturday, sunday)} — everything with a known date in this range.",
+                "weekend",
+                "Nothing dated for this weekend yet — check back, or see all events.",
+            ),
+            (
+                "today",
+                filter_events_by_dates(blocks, {local_today}),
+                f"Today in {region['name']}",
+                f"{local_today.strftime('%A, %B %-d')} — everything happening today.",
+                "today",
+                "Nothing dated for today yet — check back, or see all events.",
+            ),
+            (
+                "free",
+                filter_free_items(blocks, evergreen),
+                f"Free things to do in {region['name']}",
+                "Everything tagged free, any date.",
+                "free",
+                "Nothing tagged free yet — check back, or see all events.",
+            ),
+        ]
+        for slug, items, heading, subheading, nav_current, empty_message in views:
+            view_html = render_region_page(
+                region_cfg,
+                [{"section": heading, "events": items}],
+                sponsor,
+                [],
+                now,
+                heading=heading,
+                subheading=subheading,
+                empty_message=empty_message,
+                nav_current=nav_current,
+                canonical_suffix=f"{slug}/",
+            )
+            view_dir = region_dir / slug
+            view_dir.mkdir(parents=True, exist_ok=True)
+            (view_dir / "index.html").write_text(view_html, encoding="utf-8")
+            logger.info("Wrote %s (%d item%s)", view_dir / "index.html", len(items), "" if len(items) == 1 else "s")
 
         event_count = sum(len(b["events"]) for b in blocks)
         dated, total = structured_date_coverage(blocks)

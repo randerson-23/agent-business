@@ -1,5 +1,5 @@
 import sys
-from datetime import datetime, timezone
+from datetime import date, datetime, timezone
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "scripts"))
@@ -224,6 +224,94 @@ def test_render_region_page_lists_fetched_events_and_tags():
     assert 'data-tag="free"' in html
 
 
+def test_render_region_page_heading_and_subheading_overrides():
+    html = build_digest.render_region_page(
+        {"region": REGION}, [], {"title": "", "detail": "", "url": ""}, [], datetime.now(timezone.utc),
+        heading="This weekend in Mount Prospect", subheading="Aug 29–30",
+    )
+    assert "<h1>This weekend in Mount Prospect</h1>" in html
+    assert "Aug 29–30" in html
+    assert "<h1>What's happening in Mount Prospect</h1>" not in html
+    assert "<title>This weekend in Mount Prospect — Weekend Planner</title>" in html
+    assert 'content="Aug 29–30"' in html
+
+
+def test_render_region_page_empty_message_override():
+    blocks = [{"section": "This Weekend", "events": []}]
+    html = build_digest.render_region_page(
+        {"region": REGION}, blocks, {"title": "", "detail": "", "url": ""}, [], datetime.now(timezone.utc),
+        empty_message="Nothing dated for this weekend yet.",
+    )
+    assert "Nothing dated for this weekend yet." in html
+
+
+def test_render_region_page_hides_evergreen_section_when_empty():
+    html = build_digest.render_region_page(
+        {"region": REGION}, [], {"title": "", "detail": "", "url": ""}, [], datetime.now(timezone.utc)
+    )
+    assert "Around Mount Prospect" not in html
+
+
+def test_render_region_page_view_nav_marks_active_view():
+    html = build_digest.render_region_page(
+        {"region": REGION}, [], {"title": "", "detail": "", "url": ""}, [], datetime.now(timezone.utc),
+        nav_current="free",
+    )
+    assert '<a href="https://randerson-23.github.io/agent-business/mount-prospect-60056/free/" class="active">Free</a>' in html
+
+
+def test_region_local_date_uses_region_timezone():
+    # noon UTC is still the same calendar day in America/Chicago (UTC-5/6)
+    now_utc = datetime(2026, 8, 27, 12, 0, tzinfo=timezone.utc)
+    assert build_digest.region_local_date(REGION, now_utc) == date(2026, 8, 27)
+
+
+def test_region_local_date_falls_back_to_utc_on_bad_timezone():
+    now_utc = datetime(2026, 8, 27, 12, 0, tzinfo=timezone.utc)
+    bad_region = {**REGION, "timezone": "Not/AZone"}
+    assert build_digest.region_local_date(bad_region, now_utc) == date(2026, 8, 27)
+
+
+def test_weekend_dates_from_a_weekday_returns_upcoming_saturday_sunday():
+    tuesday = date(2026, 8, 25)  # confirmed Tuesday
+    assert build_digest.weekend_dates(tuesday) == (date(2026, 8, 29), date(2026, 8, 30))
+
+
+def test_weekend_dates_from_saturday_returns_same_weekend():
+    saturday = date(2026, 8, 29)
+    assert build_digest.weekend_dates(saturday) == (date(2026, 8, 29), date(2026, 8, 30))
+
+
+def test_format_date_range_same_month():
+    assert build_digest.format_date_range(date(2026, 8, 29), date(2026, 8, 30)) == "Aug 29–30"
+
+
+def test_format_date_range_different_months():
+    assert build_digest.format_date_range(date(2026, 8, 31), date(2026, 9, 1)) == "Aug 31–Sep 1"
+
+
+def test_filter_events_by_dates_matches_only_target_dates():
+    blocks = [
+        {
+            "section": "A",
+            "events": [
+                {"title": "x", "date_iso": "2026-08-29T10:00:00"},
+                {"title": "y", "date_iso": "2026-09-01T10:00:00"},
+                {"title": "z", "date_iso": None},
+            ],
+        }
+    ]
+    matched = build_digest.filter_events_by_dates(blocks, {date(2026, 8, 29)})
+    assert [e["title"] for e in matched] == ["x"]
+
+
+def test_filter_free_items_merges_events_and_evergreen():
+    blocks = [{"section": "A", "events": [{"title": "Fair", "tags": ["free"]}, {"title": "Gala", "tags": []}]}]
+    evergreen = [{"title": "Library", "tags": ["free"]}, {"title": "Village Hall", "tags": []}]
+    matched = build_digest.filter_free_items(blocks, evergreen)
+    assert {e["title"] for e in matched} == {"Fair", "Library"}
+
+
 def test_render_hub_page_lists_regions():
     summaries = [{**REGION, "event_count": 3, "path": "mount-prospect-60056/"}]
     html = build_digest.render_hub_page([], summaries, datetime.now(timezone.utc))
@@ -289,12 +377,39 @@ def test_build_event_json_ld_escapes_script_close_tag():
         {
             "section": "News",
             "events": [
-                {"title": "Weird</script>Title", "detail": "", "url": "https://x/", "date_iso": None}
+                {
+                    "title": "Weird</script>Title",
+                    "detail": "",
+                    "url": "https://x/",
+                    "date_iso": "2026-09-19T10:00:00",
+                }
             ],
         }
     ]
     result = build_digest.build_event_json_ld(REGION, blocks)
     assert "</script>" not in result
+
+
+def test_build_event_json_ld_excludes_undated_items():
+    # /free merges evergreen entries (never dated) into the same
+    # events list as real fetched events - undated items must not show
+    # up as schema.org Events, which requires a real startDate to mean
+    # anything.
+    blocks = [
+        {
+            "section": "Free",
+            "events": [
+                {"title": "Library", "detail": "", "url": "https://x/", "date_iso": None},
+                {"title": "Fishing Derby", "detail": "", "url": "https://x/2", "date_iso": "2026-09-19T10:00:00"},
+            ],
+        }
+    ]
+    result = build_digest.build_event_json_ld(REGION, blocks)
+    import json as _json
+
+    payload = _json.loads(result)
+    names = [e["name"] for e in payload["@graph"]]
+    assert names == ["Fishing Derby"]
 
 
 def test_build_event_json_ld_skips_events_missing_title_or_url():

@@ -3,14 +3,14 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>{{ region.name }} ({{ region.zip }}) — Weekend Planner</title>
-<meta name="description" content="What's happening in {{ region.name }}, {{ region.state }} ({{ region.zip }}): {{ region.tagline }}">
+<title>{{ page_title }}</title>
+<meta name="description" content="{{ page_description }}">
 <meta property="og:type" content="website">
-<meta property="og:title" content="{{ region.name }} ({{ region.zip }}) — Weekend Planner">
-<meta property="og:description" content="{{ region.tagline }}">
+<meta property="og:title" content="{{ page_title }}">
+<meta property="og:description" content="{{ page_description }}">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="{{ region.name }} ({{ region.zip }}) — Weekend Planner">
-<meta name="twitter:description" content="{{ region.tagline }}">
+<meta name="twitter:title" content="{{ page_title }}">
+<meta name="twitter:description" content="{{ page_description }}">
 <link rel="canonical" href="{{ canonical_url }}">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='46' fill='%231f4d3a'/%3E%3Cpath d='M50 22c-13 0-24 10-24 24 0 18 24 36 24 36s24-18 24-36c0-14-11-24-24-24z' fill='white'/%3E%3Ccircle cx='50' cy='45' r='10' fill='%231f4d3a'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -73,6 +73,24 @@
   }
   .hero h1 { margin: 4px 0 8px; font-size: 34px; font-weight: 600; color: #fff; }
   .hero .sub { color: rgba(255,255,255,.88); font-size: 15.5px; max-width: 620px; }
+
+  .view-nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin: 18px 0 6px;
+  }
+  .view-nav a {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--muted);
+    text-decoration: none;
+    padding: 6px 12px;
+    border-radius: 999px;
+    border: 1px solid var(--border);
+  }
+  .view-nav a:hover { color: var(--accent); border-color: var(--accent); }
+  .view-nav a.active { color: #fff; background: var(--accent); border-color: var(--accent); }
 
   .sponsor {
     position: relative;
@@ -207,7 +225,7 @@
 <body>
 <div class="hero">
   <div class="hero-inner">
-    <a class="back" href="../">&larr; All regions</a>
+    <a class="back" href="{{ hub_url }}">&larr; All regions</a>
     <div class="brand-mark">
       <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
         <circle cx="50" cy="50" r="48" fill="rgba(255,255,255,.16)"/>
@@ -216,12 +234,19 @@
       </svg>
       <span class="kicker">{{ region.name }} · {{ region.zip }}</span>
     </div>
-    <h1>What's happening in {{ region.name }}</h1>
-    <div class="sub">Issue for {{ issue_date }} — {{ region.tagline }}</div>
+    <h1>{{ heading or "What's happening in " ~ region.name }}</h1>
+    <div class="sub">{{ subheading or ("Issue for " ~ issue_date ~ " — " ~ region.tagline) }}</div>
   </div>
 </div>
 
 <div class="wrap">
+  <nav class="view-nav" aria-label="Filter by date or price">
+    <a href="{{ region_base_url }}"{% if nav_current == "all" %} class="active"{% endif %}>All events</a>
+    <a href="{{ region_base_url }}this-weekend/"{% if nav_current == "weekend" %} class="active"{% endif %}>This weekend</a>
+    <a href="{{ region_base_url }}today/"{% if nav_current == "today" %} class="active"{% endif %}>Today</a>
+    <a href="{{ region_base_url }}free/"{% if nav_current == "free" %} class="active"{% endif %}>Free</a>
+  </nav>
+
   <div class="sponsor">
     <div class="label">This Week's Sponsor</div>
     <h3>{{ sponsor.title }}</h3>
@@ -264,11 +289,12 @@
       {% endfor %}
       </div>
     {% else %}
-      <p class="empty">No live updates fetched this week — check back or visit the source directly.</p>
+      <p class="empty">{{ empty_message or "No live updates fetched this week — check back or visit the source directly." }}</p>
     {% endif %}
   </section>
   {% endfor %}
 
+  {% if evergreen %}
   <section class="block">
     <h2>Around {{ region.name }}</h2>
     <div class="card-grid">
@@ -285,6 +311,7 @@
     {% endfor %}
     </div>
   </section>
+  {% endif %}
 
   <footer>
     Local business? See the
