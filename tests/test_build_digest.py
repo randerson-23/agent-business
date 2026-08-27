@@ -46,6 +46,47 @@ def test_resolve_sponsor_finds_active_entry():
     assert sponsor["title"] == "Acme Dentistry"
 
 
+def test_build_sponsor_availability_marks_open_region():
+    cfg = {
+        "default_house_ad": {"title": "Sponsor this spot", "detail": "", "url": ""},
+        "regions": {"mount-prospect-60056": {"active": "none", "house_ad": None, "history": []}},
+    }
+    summaries = [{**REGION, "event_count": 0, "path": "mount-prospect-60056/"}]
+    availability = build_digest.build_sponsor_availability(cfg, summaries)
+    assert availability[0]["booked"] is False
+    assert availability[0]["sponsor_title"] is None
+
+
+def test_build_sponsor_availability_marks_booked_region():
+    cfg = {
+        "default_house_ad": {"title": "house", "detail": "", "url": ""},
+        "regions": {
+            "mount-prospect-60056": {
+                "active": "acme-2026-09-01",
+                "house_ad": None,
+                "history": [{"id": "acme-2026-09-01", "title": "Acme Dentistry", "detail": "", "url": ""}],
+            }
+        },
+    }
+    summaries = [{**REGION, "event_count": 0, "path": "mount-prospect-60056/"}]
+    availability = build_digest.build_sponsor_availability(cfg, summaries)
+    assert availability[0]["booked"] is True
+    assert availability[0]["sponsor_title"] == "Acme Dentistry"
+
+
+def test_render_sponsor_page_shows_tiers_and_availability():
+    availability = [
+        {"region_name": "Mount Prospect", "region_url": "https://x/mount-prospect-60056/", "booked": False, "sponsor_title": None},
+        {"region_name": "Arlington Heights", "region_url": "https://x/arlington-heights-60005/", "booked": True, "sponsor_title": "Acme Dentistry"},
+    ]
+    html = build_digest.render_sponsor_page(availability, datetime.now(timezone.utc))
+    assert "Featured Sponsor" in html
+    assert "Community Partner" in html
+    assert "Open this week" in html
+    assert "Sponsored by Acme Dentistry" in html
+    assert "issues/new" in html
+
+
 def test_format_event_date_parses_rfc822():
     assert build_digest.format_event_date("Mon, 24 Aug 2026 12:00:00 GMT") == "Aug 24"
 
@@ -448,6 +489,12 @@ def test_build_sitemap_xml_includes_weekend_hub_url():
     summaries = [{**REGION, "event_count": 1, "path": "mount-prospect-60056/"}]
     xml = build_digest.build_sitemap_xml(summaries, datetime.now(timezone.utc))
     assert "<loc>https://randerson-23.github.io/agent-business/this-weekend/</loc>" in xml
+
+
+def test_build_sitemap_xml_includes_sponsor_url():
+    summaries = [{**REGION, "event_count": 1, "path": "mount-prospect-60056/"}]
+    xml = build_digest.build_sitemap_xml(summaries, datetime.now(timezone.utc))
+    assert "<loc>https://randerson-23.github.io/agent-business/sponsor/</loc>" in xml
 
 
 def test_build_robots_txt_references_sitemap():

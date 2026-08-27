@@ -1,18 +1,24 @@
-# 60056 Weekly — Sponsor Media Kit
+# Sponsor Media Kit — Weekend & Trip Planner
 
-*A weekly digest of Mount Prospect, IL village news, library events, and
-park district programs — for local families in ZIP 60056.*
+*A weekly digest of village news, library events, and park district
+programs — currently live for Mount Prospect (60056) and Arlington
+Heights (60005), IL, with more ZIPs planned.*
 
-## Why sponsor 60056 Weekly
+**Live pricing and real-time per-region availability:**
+https://randerson-23.github.io/agent-business/sponsor/
 
-- **Hyperlocal, opt-in audience.** Every reader lives in or near Mount
-  Prospect. No wasted impressions.
-- **Affluent, family-dense ZIP.** 60056 median household income is ~$102K
-  (above the national median), 47% hold a bachelor's degree or higher, and
-  the area skews toward married households with kids — a strong match for
-  family services, healthcare, home services, and local retail.
-- **One sponsor per week.** Your business is the *only* paid placement in
-  that issue — no banner-blindness, no competing ads on the page.
+## Why sponsor
+
+- **Hyperlocal, opt-in audience.** Every reader is specifically looking at
+  the region you sponsor. No wasted impressions.
+- **Affluent, family-dense ZIPs.** Both 60056 (Mount Prospect) and 60005
+  (Arlington Heights) run ~$100K median household income, well above the
+  national median, with a strong skew toward married households with
+  kids — a good match for family services, healthcare, home services, and
+  local retail.
+- **One sponsor per region per week.** Your business is the *only* paid
+  placement on that region's issue — no banner-blindness, no competing ads
+  on the page.
 - **Simple, honest reach.** We publish weekly and report actual pageviews
   for your issue on request. No inflated "impressions."
 
@@ -29,20 +35,22 @@ month-to-month, cancel anytime.
 
 ## Who this is for
 
-Local, independently owned businesses serving Mount Prospect families:
-pediatric/family dentists, tutoring and enrichment programs, ice cream and
-bakery shops, real estate agents, home services (HVAC, landscaping),
-pediatricians and family medicine, kids' activity providers (gymnastics,
-swim, martial arts), local restaurants.
+Local, independently owned businesses serving families in Mount Prospect
+or Arlington Heights: pediatric/family dentists, tutoring and enrichment
+programs, ice cream and bakery shops, real estate agents, home services
+(HVAC, landscaping), pediatricians and family medicine, kids' activity
+providers (gymnastics, swim, martial arts), local restaurants.
 
 ## How it works
 
-1. You reply to our outreach email or contact us directly.
-2. We confirm your week and collect your blurb, logo/link, and payment.
+1. Open a sponsor inquiry (link above) or reply to our outreach email.
+2. We confirm your region and week and collect your blurb, logo/link, and
+   payment.
 3. Your spot goes live automatically in that week's issue — no design work
    needed on your end.
 
 ## Contact
 
-Reply to the outreach email you received, or open an issue on this
+Open a sponsor inquiry from the live pricing page above, reply to the
+outreach email you received, or open an issue directly on this
 repository: https://github.com/randerson-23/agent-business
