@@ -321,12 +321,38 @@ weekend is. That is the moat, and the site should say so out loud (a one-line
    no framework, no measurable Core Web Vitals cost. The cheapest available
    difference between "a static page" and "a designed site" on first scroll.
 
-10. **Accessibility pass.** Cited across 2026 design guidance as credibility
-    rather than compliance. Concretely here: visible focus rings on the
-    filter chips (currently `aria-pressed` buttons with no focus style),
-    contrast audit of `--muted` (#5c6b63) and the tag badge hues on white,
-    keyboard operability of the distance bar, and an `aria-live` region so
-    filter results are announced.
+10. ✅ done (PR #29) — **Accessibility pass.**
+    - Contrast audit (computed WCAG relative-luminance contrast for every
+      token pair, not eyeballed): `--muted` and all 8 tag-badge hue pairs
+      already passed 4.5:1 in both themes. Found one real failure:
+      `--accent-2` (#d9772e) as small text (card dates, sponsor label,
+      tier price, zip/distance labels) was only 2.9:1 on `--bg` in light
+      mode — below AA. Fixed the same way as the dark-mode accent fix in
+      item 7: split it into a separately-tuned `--accent-2-text` (#a95c23,
+      4.5–5.0:1) for text, keeping `--accent-2` for non-text accents
+      (border-left decoration) where contrast rules don't apply. Dark
+      mode's accent-2 already passed (7.7:1), so `--accent-2-text` equals
+      `--accent-2` there.
+    - Visible focus rings: `:focus-visible { outline: 2px solid
+      var(--accent); outline-offset: 2px; }` on all four templates, so
+      focus is guaranteed legible against the site's own palette instead
+      of relying on the browser's default (which isn't tuned for dark
+      backgrounds or filled pill buttons). Verified visible via a
+      Playwright keyboard-tab screenshot.
+    - `aria-live="polite"` region in `region.html.j2` announcing filter
+      results ("Showing 2 of 9 items.") when filter chips are toggled —
+      verified the text actually updates on click, not just present in
+      markup.
+    - `aria-live="polite"` on the hub's `#distance-status` span, so the
+      "Locating…" / "Sorted by distance from you." messages reach screen
+      reader users (previously visual-only).
+    - Added a visually-hidden `<label>` for the manual ZIP `<input>` on
+      the hub (previously placeholder-only, which isn't a reliable label
+      for assistive tech).
+    - Distance-bar keyboard operability: already fine — the geolocation
+      button, ZIP input, and "Go" button are native `<button>`/`<input>`
+      elements, not click-handler `<div>`s, so no change was needed there
+      beyond the focus ring.
 
 11. **Weather on the weekend view** — Open-Meteo is free and needs no API
     key. The indoor/outdoor tag only becomes genuinely useful next to
