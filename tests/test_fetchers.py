@@ -5,7 +5,7 @@ from unittest.mock import Mock, patch
 import pytest
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "scripts"))
-from fetchers import fetch_html_events, fetch_ics, fetch_rss  # noqa: E402
+from fetchers import fetch_html_events, fetch_ics, fetch_rss, fetch_weather  # noqa: E402
 
 SAMPLE_RSS = """<?xml version="1.0"?>
 <rss version="2.0"><channel>
@@ -220,3 +220,58 @@ def test_fetch_html_events_denylists_known_nav_labels_in_fallback(mock_get):
     items = fetch_html_events("https://example.org/events")
     titles = {i["title"] for i in items}
     assert titles == {"Craft Camp Signup"}
+
+
+def _mock_weather_response(daily: dict):
+    resp = Mock()
+    resp.raise_for_status = Mock()
+    resp.json = Mock(return_value={"daily": daily})
+    return resp
+
+
+@patch("fetchers.requests.get")
+def test_fetch_weather_parses_daily_forecast(mock_get):
+    mock_get.return_value = _mock_weather_response(
+        {
+            "time": ["2026-08-29", "2026-08-30"],
+            "temperature_2m_max": [81.4, 76.2],
+            "temperature_2m_min": [64.9, 61.1],
+            "precipitation_probability_max": [10, 70],
+            "weathercode": [1, 61],
+        }
+    )
+    days = fetch_weather(42.0666, -87.9373)
+    assert len(days) == 2
+    assert days[0] == {
+        "date": "2026-08-29",
+        "high_f": 81,
+        "low_f": 65,
+        "precip_percent": 10,
+        "label": "Mostly clear",
+        "emoji": "\U0001f324️",
+        "is_precip": False,
+    }
+    assert days[1]["label"] == "Light rain"
+    assert days[1]["is_precip"] is True
+
+
+@patch("fetchers.requests.get")
+def test_fetch_weather_fails_soft_on_error(mock_get):
+    mock_get.side_effect = RuntimeError("boom")
+    assert fetch_weather(42.0666, -87.9373) == []
+
+
+@patch("fetchers.requests.get")
+def test_fetch_weather_unknown_code_gets_empty_label_not_a_crash(mock_get):
+    mock_get.return_value = _mock_weather_response(
+        {
+            "time": ["2026-08-29"],
+            "temperature_2m_max": [81.4],
+            "temperature_2m_min": [64.9],
+            "precipitation_probability_max": [10],
+            "weathercode": [999],
+        }
+    )
+    days = fetch_weather(42.0666, -87.9373)
+    assert days[0]["label"] == ""
+    assert days[0]["is_precip"] is False

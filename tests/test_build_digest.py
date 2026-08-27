@@ -1,6 +1,7 @@
 import sys
 from datetime import date, datetime, timezone
 from pathlib import Path
+from unittest.mock import patch
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "scripts"))
 import build_digest  # noqa: E402
@@ -258,6 +259,41 @@ def test_build_business_directory_includes_opted_in_entries_with_category():
     assert result[0]["title"] == "Acme Dentistry"
     assert result[0]["detail"] == "Dentist — Family dentistry on Main St."
     assert result[0]["url"] == "https://acme.example/"
+
+
+def test_build_weekend_weather_returns_empty_without_coordinates():
+    region = {"name": "Nowhere", "timezone": "America/Chicago"}
+    result = build_digest.build_weekend_weather(region, date(2026, 8, 29), date(2026, 8, 30))
+    assert result == []
+
+
+@patch("build_digest.fetch_weather")
+def test_build_weekend_weather_matches_by_date_not_position(mock_fetch):
+    # Response includes extra/unrelated days before the target weekend -
+    # matching must key off the date string, not list position.
+    mock_fetch.return_value = [
+        {"date": "2026-08-27", "high_f": 90, "low_f": 70, "precip_percent": 0, "label": "Clear sky", "emoji": "☀️", "is_precip": False},
+        {"date": "2026-08-29", "high_f": 81, "low_f": 65, "precip_percent": 10, "label": "Mostly clear", "emoji": "🌤️", "is_precip": False},
+        {"date": "2026-08-30", "high_f": 76, "low_f": 61, "precip_percent": 70, "label": "Light rain", "emoji": "🌦️", "is_precip": True},
+    ]
+    region = {"lat": 42.0666, "lon": -87.9373, "timezone": "America/Chicago"}
+    result = build_digest.build_weekend_weather(region, date(2026, 8, 29), date(2026, 8, 30))
+    assert len(result) == 2
+    assert result[0]["day_name"] == "Saturday"
+    assert result[0]["high_f"] == 81
+    assert result[1]["day_name"] == "Sunday"
+    assert result[1]["is_precip"] is True
+
+
+@patch("build_digest.fetch_weather")
+def test_build_weekend_weather_omits_days_missing_from_forecast(mock_fetch):
+    mock_fetch.return_value = [
+        {"date": "2026-08-29", "high_f": 81, "low_f": 65, "precip_percent": 10, "label": "Mostly clear", "emoji": "🌤️", "is_precip": False},
+    ]
+    region = {"lat": 42.0666, "lon": -87.9373, "timezone": "America/Chicago"}
+    result = build_digest.build_weekend_weather(region, date(2026, 8, 29), date(2026, 8, 30))
+    assert len(result) == 1
+    assert result[0]["day_name"] == "Saturday"
 
 
 def test_build_ics_data_uri_returns_none_without_date():

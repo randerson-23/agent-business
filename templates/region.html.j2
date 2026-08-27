@@ -121,6 +121,33 @@
   .view-nav a:hover { color: var(--accent); border-color: var(--accent); }
   .view-nav a.active { color: #fff; background: var(--accent-soft); border-color: var(--accent-soft); }
 
+  .weather-bar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin: 0 0 18px;
+  }
+  .weather-day {
+    background: var(--card);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-sm);
+    padding: 10px 14px;
+    display: flex;
+    align-items: baseline;
+    gap: 7px;
+    font-size: 13px;
+  }
+  .weather-day .wx-emoji { font-size: 16px; }
+  .weather-day .wx-name { font-weight: 700; }
+  .weather-day .wx-temp { color: var(--ink); }
+  .weather-day .wx-label { color: var(--muted); }
+  .wx-note {
+    flex-basis: 100%;
+    color: var(--accent-2-text);
+    font-size: 12.5px;
+    font-weight: 600;
+  }
+
   .sponsor {
     position: relative;
     background: var(--card);
@@ -292,6 +319,22 @@
     {% if guides_url %}<a href="{{ guides_url }}"{% if nav_current == "guides" %} class="active"{% endif %}>Guides</a>{% endif %}
     {% if directory_url %}<a href="{{ directory_url }}"{% if nav_current == "directory" %} class="active"{% endif %}>Directory</a>{% endif %}
   </nav>
+
+  {% if weather %}
+  <div class="weather-bar">
+    {% for day in weather %}
+    <div class="weather-day">
+      <span class="wx-emoji" aria-hidden="true">{{ day.emoji }}</span>
+      <span class="wx-name">{{ day.day_name }}</span>
+      <span class="wx-temp">{% if day.high_f is not none %}{{ day.high_f }}&deg;{% endif %}{% if day.low_f is not none %} / {{ day.low_f }}&deg;{% endif %}</span>
+      <span class="wx-label">{{ day.label }}{% if day.precip_percent is not none %} &middot; {{ day.precip_percent }}% precip{% endif %}</span>
+    </div>
+    {% endfor %}
+    {% if weather|selectattr("is_precip")|list %}
+    <div class="wx-note">Rain (or worse) in the forecast — the Indoor filter below can help plan around it.</div>
+    {% endif %}
+  </div>
+  {% endif %}
 
   <div class="sponsor">
     <div class="label">This Week's Sponsor</div>
