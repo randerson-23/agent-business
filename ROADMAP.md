@@ -102,30 +102,27 @@ Still open from the original wish list (do later, not blocking):
   emoji rendering ever looks off on a real device (untested outside this
   sandbox's Chromium render).
 
-### Phase 8 — Distance from the user, per event (not started)
+### Phase 8 — Distance from the user, per event (region-level v1 ✅ done, PR #12)
 Requested 2026-08-26: show how far away each event/region is from the
 person viewing the site.
 
-Approach (v1, region-level — the honest starting point given the data we
+Shipped (v1, region-level — the honest starting point given the data we
 actually have):
-- Add lat/lon to each region's config (village-center coordinates are easy
-  to source and good enough for a first version; individual events don't
-  have structured addresses from the fetchers today, so per-venue distance
-  isn't available yet without a geocoding step — see "later" below).
-- Client-side only (this stays a static site, no server to do this work):
-  use the browser Geolocation API to get the viewer's position, compute
-  straight-line (haversine) distance to each region's center in plain JS,
-  and show it on the hub page's region cards (e.g. "~4 mi away"), with an
-  option to sort regions nearest-first.
-- Graceful fallback for denied/unavailable geolocation: a manual "enter
-  your ZIP" input that maps to a rough lat/lon (even a small hardcoded
-  table of nearby ZIPs would do for v1) rather than just hiding the
-  feature.
-- Be upfront in the UI that it's regional distance, not per-venue, until
-  the "later" item below lands — don't overclaim precision.
-- Privacy note: compute entirely in the browser, never send the viewer's
-  location anywhere (there's no backend to send it to) — worth a line in
-  the UI so people trust the feature.
+- ✅ Village-center lat/lon added to each region's config.
+- ✅ Client-side only: a "Show distance from me" button (browser
+  Geolocation API) computes straight-line (haversine) distance to each
+  region's center in plain JS, shown on the hub page's region cards
+  ("≈4.5 mi away") and re-sorts them nearest-first.
+- ✅ Manual-ZIP fallback for denied/unavailable geolocation (a small
+  hardcoded table of nearby Chicago NW-suburb ZIPs).
+- ✅ Privacy note in the UI: computed entirely in the browser, never sent
+  anywhere.
+- Verified with Playwright (manual-ZIP path, and the denial path via an
+  explicit denied-permission browser context — a plain click hangs in
+  this sandbox because file:// isn't a secure context for Geolocation
+  and headless has no UI for the native prompt; GitHub Pages serves over
+  https, where it resolves normally). Not yet checked in a real browser
+  on the live site — worth a manual click-through once convenient.
 
 Later (bigger lift, not this phase): per-event distance would need actual
 venue coordinates, which means geocoding addresses extracted from event
@@ -177,7 +174,7 @@ picks otherwise. Once a name is chosen and registered: point it at GitHub
 Pages via a custom domain (repo Settings → Pages → Custom domain), which
 also needs a DNS change only the domain owner can make.
 
-### Phase 10 — Later / parking lot (pick from here once 7-9 are done)
+### Phase 10 — Later / parking lot (7-9's first slices are done — pick from here next)
 - A third region, to keep validating the architecture holds (e.g. Des
   Plaines, Elk Grove Village, or Schaumburg — all near 60056/60005). Also
   gives Phase 8's distance/sort feature more to actually sort.
