@@ -342,23 +342,28 @@ weekend is. That is the moat, and the site should say so out loud (a one-line
    container queries both stayed and pass every budget on their own. See
    item 19 for the full account of what was tried and why it didn't ship.
 
-9. ⏳ implemented, verifying in CI (PR #47) — the original
-   `IntersectionObserver` approach this item proposed, after item 19's
-   pure-CSS attempt (`animation-timeline: view()`) had to be reverted for
-   real Total Blocking Time cost. Deliberately more conservative than
-   attempt 1: one observer callback per `.bento-tile`, immediately
-   `unobserve()`d after it fires (bounded, one-time work per tile, not a
-   continuous per-frame recalculation), `transform` only - never
-   `opacity`, so the LCP-deferral bug from item 19's first version can't
-   recur regardless of timing. Locally confirmed: `opacity` stays `1` at
-   every point (checked via `getComputedStyle`), a tile already on-screen
-   at load reveals without needing a scroll gesture, a tile below the fold
-   correctly waits for one, and `npx lhci autorun` passes on all four
-   budgeted pages. **Given what attempt 1 cost, this entry stays
-   provisional until the real GitHub Actions run confirms it** - local
-   sandbox testing already looked clean once before and still failed on
-   the actual runner, so "passes locally" alone doesn't get marked ✅ here
-   again. Update this entry once CI actually confirms it (or reverts it).
+9. ✅ done (PR #47), confirmed by real CI on the first push, not just
+   locally — the original `IntersectionObserver` approach this item
+   proposed, after item 19's pure-CSS attempt (`animation-timeline:
+   view()`) had to be reverted for real Total Blocking Time cost.
+   Deliberately more conservative than attempt 1: one observer callback
+   per `.bento-tile`, immediately `unobserve()`d after it fires (bounded,
+   one-time work per tile, not a continuous per-frame recalculation),
+   `transform` only - never `opacity`, so the LCP-deferral bug from item
+   19's first version can't recur regardless of timing. Locally confirmed
+   before pushing: `opacity` stays `1` at every point (checked via
+   `getComputedStyle`), a tile already on-screen at load reveals without
+   needing a scroll gesture, a tile below the fold correctly waits for
+   one. Given attempt 1 also passed local testing before failing for real
+   on GitHub's runner, this one was deliberately not marked done until
+   the real CI run on PR #47 came back green - which it did, on the first
+   push, no re-work needed. **Worth remembering for the next motion
+   feature on this site**: the difference between the two attempts wasn't
+   the visual effect (both did the same slide-in), it was the mechanism -
+   `IntersectionObserver` with `unobserve()` is bounded one-time work,
+   while `animation-timeline: view()` is continuous per-frame
+   recalculation that Lighthouse's CPU throttling amplifies into real
+   measured cost. Prefer the observer pattern here going forward.
 
 10. ✅ done (PR #29) — **Accessibility pass.**
     - Contrast audit (computed WCAG relative-luminance contrast for every
