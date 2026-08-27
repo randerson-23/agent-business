@@ -717,9 +717,22 @@ Angles reviewed this pass:
     cached copy is worse than a true generality. Item 28's freshness
     signal (below) shipped alongside this, since it's the same strategic
     bet.
-    **Still open**: `FAQPage` schema on the guides (needs real Q&A
-    content design, not just a mechanical addition) and a consistent-
-    entity-naming audit across pages - left for a follow-up slice.
+    **`FAQPage` schema done in PR #46.** `build_guide_faq()` in
+    `build_digest.py` generates four real, honest Q&A pairs about how the
+    site itself works (update cadence, coverage limits, the weekend view,
+    how to submit an event or inquire as a sponsor) - deliberately not
+    fabricated facts about specific venues, hours, or prices, matching
+    every other GEO item's discipline. Rendered as real, visible
+    `<details>/<summary>` HTML (no JS) on each guide page, with the exact
+    same answer text embedded in matching `FAQPage` JSON-LD - Google's own
+    guidance treats a mismatch, or hidden-only FAQ markup, as unreliable,
+    so `build_faq_json_ld()` takes the same list the template renders
+    rather than a second hand-written copy. Verified with a real
+    Playwright screenshot (open/closed states, light/dark) and confirmed
+    the guides index and main region page don't get the block (only
+    actual guide pages do, where it's genuinely relevant).
+    **Still open**: a consistent-entity-naming audit across pages - left
+    for a follow-up slice, lower urgency than the FAQPage piece.
     **The strategic point worth stating out loud:** content updated
     within 30 days earns ~3.2× more AI citations, and this site rebuilds
     itself every week (see item 28). Automated freshness is a structural
