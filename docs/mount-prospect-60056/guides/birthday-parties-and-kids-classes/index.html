@@ -346,6 +346,24 @@
     outline-offset: 2px;
   }
 
+  .faq { margin: 24px 0; }
+  .faq h2 { font-size: 18px; font-weight: 600; margin: 0 0 10px; }
+  .faq-item {
+    background: var(--card);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-sm);
+    padding: 12px 16px;
+    margin-bottom: 8px;
+  }
+  .faq-item summary {
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 14.5px;
+  }
+  .faq-item summary::-webkit-details-marker { color: var(--accent); }
+  .faq-item p { margin: 8px 0 0; color: var(--muted); font-size: 13.5px; line-height: 1.6; }
+  .faq-item p a { color: var(--accent); font-weight: 600; }
+
   .newsletter {
     background: var(--card);
     border-radius: var(--radius-lg);
@@ -575,6 +593,33 @@
   
 
   
+  <section class="faq">
+    <h2>Frequently asked questions</h2>
+    
+    <details class="faq-item">
+      <summary>How current is this guide?</summary>
+      <p>It's regenerated automatically from the village, library, and park district's own listings, typically several times a week - not a one-time write-up that goes stale.</p>
+    </details>
+    
+    <details class="faq-item">
+      <summary>Is this every event or business, or just what&#39;s listed here?</summary>
+      <p>Only what the linked public sources publish. For full details, hours, or anything not listed here, check the official page each item links to.</p>
+    </details>
+    
+    <details class="faq-item">
+      <summary>How do I see what&#39;s happening in Mount Prospect this specific weekend?</summary>
+      <p>See the <a href="https://randerson-23.github.io/agent-business/mount-prospect-60056/this-weekend/">weekend view</a>, which only shows items with a known date in the coming Saturday-Sunday.</p>
+    </details>
+    
+    <details class="faq-item">
+      <summary>Can I add an event, or suggest a business for the directory?</summary>
+      <p>Yes - <a href="https://github.com/randerson-23/agent-business/issues/new?template=event-submission.yml">submit an event</a> and a person reviews it before it goes live, or a business owner can <a href="https://randerson-23.github.io/agent-business/sponsor/">inquire about a listing</a>.</p>
+    </details>
+    
+  </section>
+  
+
+  
   <div class="newsletter">
     
     <div class="newsletter-copy">
@@ -588,7 +633,7 @@
   <footer>
     Local business? See the
     <a href="https://randerson-23.github.io/agent-business/sponsor/">sponsor page</a>.
-    <br>Generated 2026-08-27 21:48 UTC.
+    <br>Generated 2026-08-27 21:57 UTC.
     
   </footer>
 </div>
@@ -610,7 +655,10 @@
 </div>
 
 
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebPage", "name": "Mount Prospect — Weekend Planner", "url": "https://randerson-23.github.io/agent-business/mount-prospect-60056/guides/birthday-parties-and-kids-classes/", "dateModified": "2026-08-27T21:48:28.298357+00:00"}</script>
+
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "How current is this guide?", "acceptedAnswer": {"@type": "Answer", "text": "It's regenerated automatically from the village, library, and park district's own listings, typically several times a week - not a one-time write-up that goes stale."}}, {"@type": "Question", "name": "Is this every event or business, or just what's listed here?", "acceptedAnswer": {"@type": "Answer", "text": "Only what the linked public sources publish. For full details, hours, or anything not listed here, check the official page each item links to."}}, {"@type": "Question", "name": "How do I see what's happening in Mount Prospect this specific weekend?", "acceptedAnswer": {"@type": "Answer", "text": "See the <a href=\"https://randerson-23.github.io/agent-business/mount-prospect-60056/this-weekend/\">weekend view<\/a>, which only shows items with a known date in the coming Saturday-Sunday."}}, {"@type": "Question", "name": "Can I add an event, or suggest a business for the directory?", "acceptedAnswer": {"@type": "Answer", "text": "Yes - <a href=\"https://github.com/randerson-23/agent-business/issues/new?template=event-submission.yml\">submit an event<\/a> and a person reviews it before it goes live, or a business owner can <a href=\"https://randerson-23.github.io/agent-business/sponsor/\">inquire about a listing<\/a>."}}]}</script>
+
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebPage", "name": "Mount Prospect — Weekend Planner", "url": "https://randerson-23.github.io/agent-business/mount-prospect-60056/guides/birthday-parties-and-kids-classes/", "dateModified": "2026-08-27T21:57:32.657756+00:00"}</script>
 <script>
 (function () {
   var activeTags = new Set();
