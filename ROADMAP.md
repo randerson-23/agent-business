@@ -310,16 +310,48 @@ weekend is. That is the moat, and the site should say so out loud (a one-line
 
 #### P3 — design polish (the "modern and impressive" goal)
 
-8. **Bento-grid hub layout + a "This weekend at a glance" block.** Bento
-   grids are the dominant 2026 editorial layout; the hub's uniform 3-up card
-   grid reads generic next to one. Asymmetric blocks — a big "this weekend"
-   tile, smaller region tiles, a stat tile ("3 towns · 58 events this week") —
-   would make the hub look designed rather than generated.
+8. ✅ done (PR #45), shipped with item 21 (item 19 shipped in the same PR,
+   then reverted in it — see below) — **Bento-grid hub layout
+   + a "This weekend at a glance" block.** The hub's `region-grid` is now a
+   `.bento-grid`: a big weekend tile (`grid-column: span 2`, links to
+   `/this-weekend/`, shows the date range and total weekend event count)
+   plus a stat tile ("N towns · M live updates this week", real numbers from
+   `main()`'s existing per-region totals — no new fetch needed) sit above
+   the region tiles, which kept their existing card styling. New
+   `render_hub_page(..., stats=hub_stats)` param carries `region_count`,
+   `event_count`, `weekend_count`, `weekend_date_range`, computed once in
+   `main()` from data already gathered for other pages.
+   **Real bug caught and fixed before shipping, not by code review**: at
+   narrow (mobile) widths, the grid has room for exactly one real 220px
+   track, but the weekend tile's `grid-column: span 2` still demanded two —
+   CSS grid satisfies that by creating a second, unusably narrow *implicit*
+   column, and whatever auto-flowed into it (a region card) rendered
+   squeezed to a handful of pixels wide with character-by-character text
+   wrap. Caught with an actual Playwright screenshot at 390px width, not
+   assumed; fixed with `@media (max-width: 560px) { .bento-weekend {
+   grid-column: span 1; } }`. Verified again after the fix, plus light/dark
+   and desktop/mobile combinations, plus the distance-sort JS still
+   reorders only the region tiles (weekend/stat tiles stay put) with no
+   console errors. **A second real regression — item 26's own budget
+   caught it on GitHub's actual runner, not in local testing** — is the
+   fuller story behind item 19: the scroll-reveal's original opacity
+   animation genuinely pushed hub-page LCP to 2.87s (over the 2.5s
+   budget), fixed by dropping opacity from that animation entirely — but
+   even that fix then failed on Total Blocking Time, so the scroll-reveal
+   animation was removed from this page altogether. Bento-grid layout and
+   container queries both stayed and pass every budget on their own. See
+   item 19 for the full account of what was tried and why it didn't ship.
 
-9. **Scroll-reveal motion** via `IntersectionObserver` + CSS transitions,
-   gated on `prefers-reduced-motion`. Hardware-accelerated properties only,
-   no framework, no measurable Core Web Vitals cost. The cheapest available
-   difference between "a static page" and "a designed site" on first scroll.
+9. **Still open.** Item 19 tried replacing this with pure CSS
+   (`animation-timeline: view()`) and had to revert it — real TBT cost
+   under Lighthouse's CPU throttling, not a flake (see item 19's writeup).
+   The original `IntersectionObserver` + CSS transitions approach this
+   item proposed is untried and may not carry the same cost (it doesn't
+   require the browser to continuously track scroll-linked animation
+   progress the way `animation-timeline: view()` does) — worth actually
+   attempting before assuming scroll-reveal is off the table entirely for
+   this site, but budget real CI verification time for it, not just local
+   testing, given what item 19 just cost.
 
 10. ✅ done (PR #29) — **Accessibility pass.**
     - Contrast audit (computed WCAG relative-luminance contrast for every
@@ -575,12 +607,42 @@ Competitors reviewed this pass:
 
 #### P3 (new) — the "modern and impressive" goal, 2026 CSS edition
 
-19. **Do item 9 in pure CSS instead.** `animation-timeline: view()` ties
-    keyframes directly to an element's viewport progress with no scroll
-    listeners and no JavaScript at all, and it's broadly supported now.
-    Strictly better than the `IntersectionObserver` approach item 9
-    originally proposed — **supersedes it**; `prefers-reduced-motion` still
-    applies.
+19. ❌ tried in PR #45, reverted in the same PR — **Do item 9 in pure CSS
+    instead.** Shipped `.bento-tile` (hub page) sliding in via
+    `animation-timeline: view()`, then pulled it back out after item 26's
+    own CI budget caught two real, separate problems with it on GitHub's
+    actual runner - neither reproducible in this sandbox's blocked-network
+    testing, both worth recording so nobody re-tries the same approach
+    without knowing why it failed:
+    1. **LCP regression.** The first version animated `opacity: 0 → 1`
+       alongside the slide. Per the LCP spec, an element's recorded paint
+       time is the moment it becomes non-transparent, not when it first
+       exists - so when the real largest-paint candidate on a real network
+       landed inside a `.bento-tile`, the reveal genuinely deferred its LCP
+       timestamp to 2.87s against the 2.5s budget. Fixed by dropping
+       opacity from the animation (`transform: translateY()` only) -
+       confirmed every tile stays at `opacity: 1` regardless of scroll
+       position, removing that entire risk category.
+    2. **TBT regression, which killed the feature.** Even the opacity-free
+       version failed CI on Total Blocking Time - 1144ms on the first run,
+       324.5ms on one confirming re-run (the >3x swing between two runs of
+       identical code confirms TBT is a genuinely noisy lab metric here,
+       but a real floor still sat above the 200ms budget both times, so
+       this wasn't pure noise). Most likely cause: `animation-timeline:
+       view()` requires the browser to keep recalculating scroll-linked
+       animation progress, and Lighthouse's simulated 4x CPU throttling
+       amplifies that into real measured main-thread blocking time. Rather
+       than guess at a third speculative fix, removed the scroll-reveal
+       animation entirely and kept the parts of this PR that don't carry
+       this cost - the bento-grid layout (item 8) and the container query
+       (item 21), both confirmed to still pass every budget afterward.
+    **Net position**: pure-CSS scroll-driven animation
+    (`animation-timeline: view()`) is real and works, but is not free on
+    a CPU-throttled lab run, and this specific page didn't have enough
+    performance headroom to absorb it once real network/CPU conditions
+    were in play. A future attempt should budget for that up front (e.g.
+    only on a page with more LCP/TBT headroom already measured) rather
+    than assume "no JS" means "no cost."
 
 20. ✅ done (PR #35) — **View Transitions on navigation.** `@view-transition
     { navigation: auto; }` added to all four page templates (hub, region,
@@ -593,12 +655,19 @@ Competitors reviewed this pass:
     supports the underlying API (`'startViewTransition' in document`).
     5 lines of real CSS per page, no router, no framework, no JS.
 
-21. **Container queries for the card component.** At universal support and
-    "just use them" maturity in 2026. Cards currently size off the
-    viewport; container queries let one card adapt to whichever column it
-    lands in — which starts to matter the moment item 8's bento layout
-    puts cards into differently-sized slots. Do this *with* item 8, not
-    before it.
+21. ✅ done (PR #45), shipped with item 8 (item 19 shipped alongside these
+    two in the same PR, then had to be reverted — see item 19) —
+    **Container queries for
+    the card component.** Every `.bento-tile` (hub page, includes region
+    cards) is now `container-type: inline-size`, and `.region-card` grows
+    its heading/body font at `@container (min-width: 340px)` — a real
+    example of "one card adapts to whichever column it lands in," not
+    decoration: a region tile only crosses that width when the grid has
+    few enough regions to hand it extra room, exactly the scenario item 8
+    creates. Scoped to the hub's region cards for this slice, matching
+    where the bento layout actually varies a tile's width today; the same
+    pattern is available to extend to the region-page event cards
+    whenever those sit in a non-uniform layout too.
 
 **Re-rank:** item 12 (email capture) is now the most valuable *open* item
 from the first batch. The self-serve sponsor page shipped in item 3, so

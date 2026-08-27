@@ -680,6 +680,7 @@ def render_hub_page(
     now: datetime,
     newsletter: dict | None = None,
     analytics: dict | None = None,
+    stats: dict | None = None,
 ) -> str:
     env = Environment(loader=FileSystemLoader(str(TEMPLATES_DIR)), autoescape=True)
     template = env.get_template("hub.html.j2")
@@ -690,6 +691,7 @@ def render_hub_page(
         newsletter=newsletter,
         region_map=build_region_map(region_summaries),
         analytics=analytics,
+        stats=stats,
     )
 
 
@@ -1100,7 +1102,13 @@ def main() -> None:
             }
         )
 
-    hub_html = render_hub_page(regions, region_summaries, now, newsletter, analytics)
+    hub_stats = {
+        "region_count": len(region_summaries),
+        "event_count": total_events,
+        "weekend_count": sum(len(s["events"]) for s in hub_weekend_sections),
+        "weekend_date_range": hub_weekend_date_range or "",
+    }
+    hub_html = render_hub_page(regions, region_summaries, now, newsletter, analytics, stats=hub_stats)
     (OUTPUT_DIR / "index.html").write_text(hub_html, encoding="utf-8")
     logger.info("Wrote %s", OUTPUT_DIR / "index.html")
 
