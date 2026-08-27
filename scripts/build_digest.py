@@ -15,6 +15,7 @@ from __future__ import annotations
 
 import json
 import logging
+import math
 import sys
 from datetime import date, datetime, timedelta, timezone
 from email.utils import parsedate_to_datetime
@@ -547,6 +548,66 @@ def render_region_page(
     )
 
 
+def _haversine_miles(lat1: float, lon1: float, lat2: float, lon2: float) -> float:
+    """Great-circle distance in miles - region-to-region distance is fixed
+    (unlike the client-side "distance from you" feature), so it's safe to
+    compute once at build time and bake the result into the page.
+    """
+    r = 3958.8
+    phi1, phi2 = math.radians(lat1), math.radians(lat2)
+    dphi = math.radians(lat2 - lat1)
+    dlambda = math.radians(lon2 - lon1)
+    a = math.sin(dphi / 2) ** 2 + math.cos(phi1) * math.cos(phi2) * math.sin(dlambda / 2) ** 2
+    return r * 2 * math.atan2(math.sqrt(a), math.sqrt(1 - a))
+
+
+def build_region_map(region_summaries: list[dict]) -> dict | None:
+    """Region-level inline-SVG map for the hub (ROADMAP.md Phase 11 #17) -
+    a simple equirectangular projection of each region's lat/lon (already
+    in config for the "distance from you" feature) onto a small canvas.
+    Not a real map - good enough to show relative position/spacing
+    between covered towns without a tile provider, API key, JS library,
+    or rate limit. Needs at least 2 regions with real coordinates to mean
+    anything; returns None otherwise so the hub omits the block instead
+    of drawing a single dot.
+    """
+    points = [r for r in region_summaries if r.get("lat") is not None and r.get("lon") is not None]
+    if len(points) < 2:
+        return None
+
+    lats = [p["lat"] for p in points]
+    lons = [p["lon"] for p in points]
+    lat_min, lat_max = min(lats), max(lats)
+    lon_min, lon_max = min(lons), max(lons)
+    # Guard divide-by-zero if every region happens to share a lat or lon.
+    lat_span = max(lat_max - lat_min, 0.01)
+    lon_span = max(lon_max - lon_min, 0.01)
+
+    width, height, pad = 320, 220, 55
+    pins = []
+    for p in points:
+        x = pad + (p["lon"] - lon_min) / lon_span * (width - 2 * pad)
+        # Invert: higher latitude (further north) draws higher on screen.
+        y = pad + (lat_max - p["lat"]) / lat_span * (height - 2 * pad)
+        pins.append({"name": p["name"], "path": p["path"], "x": round(x, 1), "y": round(y, 1)})
+
+    lines = []
+    for i in range(len(points)):
+        for j in range(i + 1, len(points)):
+            miles = _haversine_miles(points[i]["lat"], points[i]["lon"], points[j]["lat"], points[j]["lon"])
+            lines.append(
+                {
+                    "x1": pins[i]["x"], "y1": pins[i]["y"],
+                    "x2": pins[j]["x"], "y2": pins[j]["y"],
+                    "mid_x": round((pins[i]["x"] + pins[j]["x"]) / 2, 1),
+                    "mid_y": round((pins[i]["y"] + pins[j]["y"]) / 2, 1),
+                    "miles": round(miles, 1),
+                }
+            )
+
+    return {"width": width, "height": height, "pins": pins, "lines": lines}
+
+
 def render_hub_page(
     regions: list[dict], region_summaries: list[dict], now: datetime, newsletter: dict | None = None
 ) -> str:
@@ -557,6 +618,7 @@ def render_hub_page(
         region_summaries=region_summaries,
         canonical_url=SITE_BASE_URL,
         newsletter=newsletter,
+        region_map=build_region_map(region_summaries),
     )
 
 
