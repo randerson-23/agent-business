@@ -286,6 +286,58 @@ def test_load_newsletter_config_defaults_headline_and_detail():
     assert result["detail"] == ""
 
 
+def test_haversine_miles_known_distance():
+    # Mount Prospect (60056) to Arlington Heights (60005) village centers -
+    # real-world distance is a few miles, sanity-checked against a rough
+    # known value rather than pinned to floating-point precision.
+    miles = build_digest._haversine_miles(42.0666, -87.9373, 42.0883, -87.9806)
+    assert 2.5 < miles < 4.0
+
+
+def test_haversine_miles_zero_for_same_point():
+    assert build_digest._haversine_miles(42.0, -88.0, 42.0, -88.0) == 0
+
+
+def test_build_region_map_returns_none_with_fewer_than_two_regions():
+    assert build_digest.build_region_map([]) is None
+    assert build_digest.build_region_map([{"name": "A", "lat": 42.0, "lon": -88.0, "path": "a/"}]) is None
+
+
+def test_build_region_map_returns_none_when_coordinates_missing():
+    summaries = [
+        {"name": "A", "lat": 42.0, "lon": -88.0, "path": "a/"},
+        {"name": "B", "lat": None, "lon": None, "path": "b/"},
+    ]
+    assert build_digest.build_region_map(summaries) is None
+
+
+def test_build_region_map_produces_a_pin_per_region_and_one_line():
+    summaries = [
+        {"name": "Mount Prospect", "lat": 42.0666, "lon": -87.9373, "path": "mount-prospect-60056/"},
+        {"name": "Arlington Heights", "lat": 42.0883, "lon": -87.9806, "path": "arlington-heights-60005/"},
+    ]
+    result = build_digest.build_region_map(summaries)
+    assert result is not None
+    assert len(result["pins"]) == 2
+    assert len(result["lines"]) == 1
+    names = {p["name"] for p in result["pins"]}
+    assert names == {"Mount Prospect", "Arlington Heights"}
+    assert result["lines"][0]["miles"] > 0
+    for pin in result["pins"]:
+        assert 0 <= pin["x"] <= result["width"]
+        assert 0 <= pin["y"] <= result["height"]
+
+
+def test_build_region_map_handles_identical_coordinates_without_crashing():
+    summaries = [
+        {"name": "A", "lat": 42.0, "lon": -88.0, "path": "a/"},
+        {"name": "B", "lat": 42.0, "lon": -88.0, "path": "b/"},
+    ]
+    result = build_digest.build_region_map(summaries)
+    assert result is not None
+    assert len(result["pins"]) == 2
+
+
 def test_select_editors_pick_returns_none_with_no_candidates():
     region_cfg = {"region": {"id": "x"}}
     assert build_digest.select_editors_pick(region_cfg, [], []) is None

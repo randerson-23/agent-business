@@ -166,6 +166,37 @@
   }
   .weekend-callout:hover { box-shadow: var(--shadow-md); }
 
+  .map-card {
+    background: var(--card);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-sm);
+    padding: 14px 18px 8px;
+    margin-bottom: 18px;
+  }
+  .map-card svg {
+    width: 100%;
+    height: auto;
+    display: block;
+    /* SVG root clips to the viewBox by default - the pin labels are
+       wider than the padding reserved for them (a long region name at
+       text-anchor="middle" extends well past its pin's x position), so
+       without this a label near an edge gets cut off mid-word. */
+    overflow: visible;
+  }
+  .map-line { stroke: var(--border); stroke-width: 1.5; stroke-dasharray: 4 3; }
+  .map-line-label { font-size: 9px; fill: var(--muted); font-family: 'Inter', sans-serif; }
+  .map-pin { fill: var(--accent-soft); stroke: var(--card); stroke-width: 2; }
+  .map-pin-label {
+    font-size: 11px;
+    font-weight: 700;
+    fill: var(--ink);
+    font-family: 'Inter', sans-serif;
+  }
+  .map-card a { text-decoration: none; }
+  .map-card a:hover .map-pin { fill: var(--accent); }
+  .map-card a:hover .map-pin-label { fill: var(--accent); }
+  .map-card a:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+
   .distance-bar {
     background: var(--card);
     border-radius: var(--radius-lg);
@@ -294,6 +325,24 @@
   <div class="wrap">
   {% if region_summaries %}
   <a class="weekend-callout" href="this-weekend/">📅 See what's happening this weekend, across every region &rarr;</a>
+
+  {% if region_map %}
+  <div class="map-card">
+    <svg viewBox="0 0 {{ region_map.width }} {{ region_map.height }}" role="img" aria-label="Map showing the relative location of every covered town">
+      {% for line in region_map.lines %}
+      <line x1="{{ line.x1 }}" y1="{{ line.y1 }}" x2="{{ line.x2 }}" y2="{{ line.y2 }}" class="map-line" />
+      <text x="{{ line.mid_x }}" y="{{ line.mid_y - 6 }}" class="map-line-label" text-anchor="middle">{{ line.miles }} mi</text>
+      {% endfor %}
+      {% for pin in region_map.pins %}
+      <a href="{{ pin.path }}">
+        <text x="{{ pin.x }}" y="{{ pin.y - 14 }}" class="map-pin-label" text-anchor="middle">{{ pin.name }}</text>
+        <circle cx="{{ pin.x }}" cy="{{ pin.y }}" r="7" class="map-pin" />
+      </a>
+      {% endfor %}
+    </svg>
+  </div>
+  {% endif %}
+
   <div class="distance-bar" id="distance-bar">
     <button type="button" id="use-location">📍 Show distance from me</button>
     <span>or</span>

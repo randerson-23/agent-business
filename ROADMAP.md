@@ -518,13 +518,29 @@ Competitors reviewed this pass:
     override-found, override-missing-falls-back, no-candidates,
     missing-title-or-url-excluded).
 
-17. **Map view.** Time Out shipped an interactive map of its picks,
-    refreshed weekly. Per-event pins need the geocoding parked in Phase
-    8's "later" note, but a **region-level** map works today from the
-    lat/lon already in config. Start with an inline-SVG map of the covered
-    towns on the hub — no tile provider, no JS library, no API key, no
-    rate limit — as the visual centerpiece the hub currently lacks. Pairs
-    naturally with item 8's bento layout.
+17. ✅ region-level slice done (PR #37) — **Map view.** `build_region_map()`
+    in `build_digest.py`: a simple equirectangular projection of each
+    region's lat/lon (already in config) onto a small SVG canvas — no
+    tile provider, JS library, API key, or rate limit. A dashed line
+    between regions is labeled with the real great-circle distance
+    (`_haversine_miles()`, computed once at build time since region-to-
+    region distance is fixed, unlike the client-side "distance from you"
+    feature). Pins link to their region page. Rendered as the visual
+    centerpiece near the top of the hub, right after the weekend callout.
+    Returns `None` (hub omits the block) with fewer than 2 regions with
+    real coordinates, so it never draws one meaningless dot.
+    **Real bug caught and fixed before shipping**: SVG roots clip to their
+    `viewBox` by default, and a region name at `text-anchor="middle"`
+    extends well past its pin's x position — the first version clipped
+    "Arlington Heights" mid-word at the card edge, caught by actually
+    screenshotting the real build output rather than trusting the code.
+    Fixed with `overflow: visible` on the `<svg>` plus more generous
+    padding. Verified pin links work, keyboard focus reaches them, and
+    both light and dark mode render correctly, all via Playwright.
+    **Per-event pins** (vs. this region-level slice) still need the
+    geocoding parked in Phase 8's "later" note — unstarted, and pairs
+    naturally with item 8's still-undone bento layout for a bigger visual
+    treatment once there's a real reason to invest in one.
 
 18. **Recast the sponsor slot as a recommendation, not an ad.** Nextdoor's
     numbers: 79% of neighbors acted on a local recommendation they saw
