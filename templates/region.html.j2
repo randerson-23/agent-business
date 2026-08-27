@@ -162,6 +162,37 @@
     font-weight: 600;
   }
 
+  .editors-pick {
+    position: relative;
+    background: var(--card);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
+    padding: 18px 20px;
+    margin: 0 0 14px;
+    border-left: 4px solid var(--accent);
+  }
+  .editors-pick .label {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--accent);
+    font-weight: 700;
+    margin-bottom: 4px;
+  }
+  .editors-pick h3 { margin: 0 0 4px; font-size: 17px; font-weight: 600; padding-right: 24px; }
+  .editors-pick h3 a { color: var(--ink); text-decoration: none; }
+  .editors-pick h3 a:hover { color: var(--accent); }
+  .editors-pick .date {
+    color: var(--accent-2-text);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+  .editors-pick p { margin: 0; color: var(--muted); font-size: 14px; }
+  .editors-pick .tag-row { margin-top: 8px; }
+
   .sponsor {
     position: relative;
     background: var(--card);
@@ -443,6 +474,22 @@
     {% endfor %}
     {% if weather|selectattr("is_precip")|list %}
     <div class="wx-note">Rain (or worse) in the forecast — the Indoor filter below can help plan around it.</div>
+    {% endif %}
+  </div>
+  {% endif %}
+
+  {% if editors_pick %}
+  {% set tray_item = {"id": editors_pick.url or editors_pick.title, "title": editors_pick.title, "url": editors_pick.url or "", "date": editors_pick.date or None, "date_iso": editors_pick.date_iso or None, "detail": editors_pick.detail or "", "region_name": region.name, "region_url": region_base_url} %}
+  <div class="editors-pick">
+    <button type="button" class="tray-star" data-item='{{ tray_item | tojson }}' aria-pressed="false" aria-label="Add {{ editors_pick.title }} to My Weekend">☆</button>
+    <div class="label">✏️ Editor's Pick</div>
+    <h3>{% if editors_pick.url %}<a href="{{ editors_pick.url }}">{{ editors_pick.title }}</a>{% else %}{{ editors_pick.title }}{% endif %}</h3>
+    {% if editors_pick.date %}<div class="date">{{ editors_pick.date }}</div>{% endif %}
+    {% if editors_pick.detail %}<p>{{ editors_pick.detail }}</p>{% endif %}
+    {% if editors_pick.tag_badges %}
+    <div class="tag-row">
+      {% for tag in editors_pick.tag_badges %}<span class="tag-badge" style="background: var(--hue-{{ tag.hue }}-bg); color: var(--hue-{{ tag.hue }}-ink);">{{ tag.emoji }} {{ tag.label }}</span>{% endfor %}
+    </div>
     {% endif %}
   </div>
   {% endif %}

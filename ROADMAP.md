@@ -497,13 +497,26 @@ Competitors reviewed this pass:
 
 #### P2 (new)
 
-16. **Editor's pick per region.** Time Out's entire brand is "we chose
-    this for you" — standardized listings plus star ratings, not a dump of
-    everything. One pinned "Pick of the week" card per region, chosen
-    heuristically (soonest + free + kid-friendly scores highest) with an
-    optional YAML override, makes the page read as *edited* rather than
-    *generated*. It's also the most valuable adjacency on the page to sell
-    a sponsor next to.
+16. ✅ done (PR #36) — **Editor's pick per region.** `select_editors_pick()`
+    in `build_digest.py`: soonest dated item wins first (across both
+    fetched events and evergreen entries), free + kid-friendly break ties
+    — exactly the heuristic this item asked for. `region.editors_pick_url`
+    in `config/regions/<id>.yaml` (documented, commented-out by default in
+    both region files) overrides the heuristic with a specific item by
+    URL; a stale/unmatched override logs a warning and falls back to the
+    heuristic rather than crashing the build. Rendered as a pinned card on
+    the region's main page only (not the date-scoped/guides/directory
+    subpages, so it reads as a genuine pick rather than boilerplate),
+    placed **directly above the sponsor box** — literal adjacency, per
+    this item's own reasoning that it's "the most valuable adjacency on
+    the page to sell a sponsor next to." Styled with the site's green
+    `--accent` (vs. the sponsor box's orange `--accent-2`) so editorial
+    and paid content stay visually distinct. Also gets a tray-star button
+    for consistency with item 14's itinerary feature — verified with
+    Playwright that starring it updates the tray correctly. 7 new tests
+    cover the heuristic (soonest-wins, dated-beats-evergreen, tie-breaking,
+    override-found, override-missing-falls-back, no-candidates,
+    missing-title-or-url-excluded).
 
 17. **Map view.** Time Out shipped an interactive map of its picks,
     refreshed weekly. Per-event pins need the geocoding parked in Phase

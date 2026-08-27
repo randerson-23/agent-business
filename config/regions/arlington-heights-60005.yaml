@@ -35,6 +35,11 @@ region:
   # Phase 8), not a specific venue's address.
   lat: 42.0883
   lon: -87.9806
+  # Optional: force the /region/ page's "Editor's Pick" card to a specific
+  # item by its exact `url` (ROADMAP.md Phase 11 #16). Unset by default -
+  # the heuristic (soonest dated item, ties broken by free/kid-friendly)
+  # picks automatically otherwise. Uncomment and set to override:
+  # editors_pick_url: "https://www.ahml.info/"
 
 sources:
   - name: "Village of Arlington Heights — News"
