@@ -243,14 +243,22 @@ weekend is. That is the moat, and the site should say so out loud (a one-line
 
 #### P2
 
-4. **Real datetime normalization + a structured-data coverage stat.**
-   `parse_iso_datetime` in `build_digest.py` handles RFC-2822 and ICS
-   formats, and correctly returns `None` rather than guessing — but HTML-
-   scraped listings ("Sat, Sep 6 · 10:00 AM") fall through, and an Event
-   without `startDate` is not eligible for Google's event rich results at
-   all. Extend the parser for common human formats and print a coverage line
-   at build time (`42/58 events have machine-readable start dates`) so
-   regressions are visible. Unblocks item 1.
+4. ⚠️ partially done (PR #17) — **Real datetime normalization + a
+   structured-data coverage stat.** `_try_parse_date` (renamed from
+   `parse_event_date_iso`'s inline logic) now handles RFC 822/ICS plus
+   several common human-readable formats, and `structured_date_coverage()`
+   logs `N/M events have a machine-readable start date` per region and as
+   a build total. **Still blocking item 1**: `fetch_html_events` in
+   `fetchers.py` doesn't extract a date at all today — only RSS/ICS
+   sources populate `date` — so the broadened parser has nothing to parse
+   for HTML-scraped events yet. Real fix needs either fetching each
+   event's detail page or parsing text near each link in the surrounding
+   DOM; both need real fetched HTML to design against rather than a
+   blind guess (this sandbox's network is blocked). Next research-loop
+   pass: if you can reach a live source, note what a real scraped
+   `<a>` tag's surrounding HTML actually looks like (e.g. a sibling
+   `<span class="date">`) so this can be finished with real structure
+   instead of another guess.
 
 5. **Seasonal guides** (`guides:` list in region YAML → generated pages).
    Macaroni KID's most-monetized format: summer camps, where kids eat free,
