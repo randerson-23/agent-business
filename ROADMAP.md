@@ -310,16 +310,33 @@ weekend is. That is the moat, and the site should say so out loud (a one-line
 
 #### P3 — design polish (the "modern and impressive" goal)
 
-8. **Bento-grid hub layout + a "This weekend at a glance" block.** Bento
-   grids are the dominant 2026 editorial layout; the hub's uniform 3-up card
-   grid reads generic next to one. Asymmetric blocks — a big "this weekend"
-   tile, smaller region tiles, a stat tile ("3 towns · 58 events this week") —
-   would make the hub look designed rather than generated.
+8. ✅ done (PR #45), shipped with items 19 and 21 — **Bento-grid hub layout
+   + a "This weekend at a glance" block.** The hub's `region-grid` is now a
+   `.bento-grid`: a big weekend tile (`grid-column: span 2`, links to
+   `/this-weekend/`, shows the date range and total weekend event count)
+   plus a stat tile ("N towns · M live updates this week", real numbers from
+   `main()`'s existing per-region totals — no new fetch needed) sit above
+   the region tiles, which kept their existing card styling. New
+   `render_hub_page(..., stats=hub_stats)` param carries `region_count`,
+   `event_count`, `weekend_count`, `weekend_date_range`, computed once in
+   `main()` from data already gathered for other pages.
+   **Real bug caught and fixed before shipping, not by code review**: at
+   narrow (mobile) widths, the grid has room for exactly one real 220px
+   track, but the weekend tile's `grid-column: span 2` still demanded two —
+   CSS grid satisfies that by creating a second, unusably narrow *implicit*
+   column, and whatever auto-flowed into it (a region card) rendered
+   squeezed to a handful of pixels wide with character-by-character text
+   wrap. Caught with an actual Playwright screenshot at 390px width, not
+   assumed; fixed with `@media (max-width: 560px) { .bento-weekend {
+   grid-column: span 1; } }`. Verified again after the fix, plus light/dark
+   and desktop/mobile combinations, plus the distance-sort JS still
+   reorders only the region tiles (weekend/stat tiles stay put) with no
+   console errors, plus the new `lighthouserc.json` budget from item 26
+   still passes (LCP ~790ms, CLS 0 — the scroll-reveal transform doesn't
+   trigger layout).
 
-9. **Scroll-reveal motion** via `IntersectionObserver` + CSS transitions,
-   gated on `prefers-reduced-motion`. Hardware-accelerated properties only,
-   no framework, no measurable Core Web Vitals cost. The cheapest available
-   difference between "a static page" and "a designed site" on first scroll.
+9. **Superseded by item 19** — see below (pure-CSS scroll-reveal replaced
+   the `IntersectionObserver` approach this item originally proposed).
 
 10. ✅ done (PR #29) — **Accessibility pass.**
     - Contrast audit (computed WCAG relative-luminance contrast for every
@@ -575,12 +592,30 @@ Competitors reviewed this pass:
 
 #### P3 (new) — the "modern and impressive" goal, 2026 CSS edition
 
-19. **Do item 9 in pure CSS instead.** `animation-timeline: view()` ties
-    keyframes directly to an element's viewport progress with no scroll
-    listeners and no JavaScript at all, and it's broadly supported now.
-    Strictly better than the `IntersectionObserver` approach item 9
-    originally proposed — **supersedes it**; `prefers-reduced-motion` still
-    applies.
+19. ✅ done (PR #45), shipped with items 8 and 21 — **Do item 9 in pure CSS
+    instead.** `.bento-tile` (hub page) now fades and slides in via
+    `animation-timeline: view()` + `animation-range: entry 0% cover 30%` —
+    no `IntersectionObserver`, no scroll listener, no JS at all. Gated
+    behind `@supports (animation-timeline: view())` (an unsupported browser
+    just renders every tile normally-visible, nothing to fall back to) and
+    `prefers-reduced-motion: no-preference`.
+    **Verified the part that's easy to get wrong**: whether a tile already
+    inside the viewport on first paint (no scroll needed) starts visible or
+    requires a scroll gesture first. Checked via `getComputedStyle().opacity`
+    in Playwright at two viewport heights — a tile still below the fold on
+    load correctly starts at `opacity: 0`, and the *same* tile placed within
+    a tall-enough initial viewport correctly resolves to `opacity: 1` before
+    any scroll happens, because the browser evaluates view-timeline progress
+    from current scroll geometry at first paint, not from a scroll delta.
+    Confirms this can't ship content invisible-by-default above the fold.
+    One caveat, tooling-only: Playwright/CDP's full-page screenshot mode
+    doesn't fire real scroll events for off-screen content, so it captured
+    every below-the-fold tile as blank — a capture-tool artifact (confirmed
+    by comparing against `scrollIntoView()` + a normal viewport screenshot,
+    which renders correctly), not a real-user bug; worth remembering if a
+    future full-page-screenshot tool or crawler ever needs a true render of
+    this page, since scroll-tied CSS animation can look broken to it even
+    when it isn't.
 
 20. ✅ done (PR #35) — **View Transitions on navigation.** `@view-transition
     { navigation: auto; }` added to all four page templates (hub, region,
@@ -593,12 +628,17 @@ Competitors reviewed this pass:
     supports the underlying API (`'startViewTransition' in document`).
     5 lines of real CSS per page, no router, no framework, no JS.
 
-21. **Container queries for the card component.** At universal support and
-    "just use them" maturity in 2026. Cards currently size off the
-    viewport; container queries let one card adapt to whichever column it
-    lands in — which starts to matter the moment item 8's bento layout
-    puts cards into differently-sized slots. Do this *with* item 8, not
-    before it.
+21. ✅ done (PR #45), shipped with items 8 and 19 — **Container queries for
+    the card component.** Every `.bento-tile` (hub page, includes region
+    cards) is now `container-type: inline-size`, and `.region-card` grows
+    its heading/body font at `@container (min-width: 340px)` — a real
+    example of "one card adapts to whichever column it lands in," not
+    decoration: a region tile only crosses that width when the grid has
+    few enough regions to hand it extra room, exactly the scenario item 8
+    creates. Scoped to the hub's region cards for this slice, matching
+    where the bento layout actually varies a tile's width today; the same
+    pattern is available to extend to the region-page event cards
+    whenever those sit in a non-uniform layout too.
 
 **Re-rank:** item 12 (email capture) is now the most valuable *open* item
 from the first batch. The self-serve sponsor page shipped in item 3, so
