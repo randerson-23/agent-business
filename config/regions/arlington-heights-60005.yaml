@@ -71,3 +71,23 @@ evergreen:
     detail: "Village board meetings, permits, and community announcements."
     url: "https://www.vah.com/"
     tags: []
+
+# Seasonal/evergreen guides (ROADMAP.md Phase 11 #5) - see the Mount
+# Prospect config for the rationale; same civic-source-only approach here.
+guides:
+  - slug: "fall-family-guide"
+    title: "Fall Family Guide"
+    summary: "A living guide to fall in Arlington Heights — seasonal park district programs, library fall programming, and where the Village posts official trick-or-treat hours. Pulls from the same civic sources as the weekly digest, organized by season instead of by week."
+    items:
+      - title: "Fall & Halloween programs — Arlington Heights Park District"
+        detail: "Pumpkin-themed drop-ins, fall break camps, and seasonal rec programs. Dates and registration change every year — check the current program guide."
+        url: "https://www.ahpd.org/"
+        tags: ["outdoor", "kid_friendly"]
+      - title: "Fall programs — Arlington Heights Memorial Library"
+        detail: "Seasonal makerspace classes, storytimes, and programs for all ages — a solid pick for a rainy fall Saturday."
+        url: "https://www.ahml.info/"
+        tags: ["indoor", "kid_friendly", "free"]
+      - title: "Official trick-or-treat hours & fall notices"
+        detail: "The Village posts that year's official trick-or-treat hours and other fall community notices on its news page each October."
+        url: "https://www.vah.com/newslist.php"
+        tags: ["kid_friendly", "free"]

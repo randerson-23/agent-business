@@ -179,6 +179,43 @@ def test_prepare_evergreen_infers_tags_when_absent():
     assert "dog_friendly" in result[0]["tags"]
 
 
+def test_prepare_guides_uses_explicit_tags_when_present():
+    region_cfg = {
+        "guides": [
+            {
+                "slug": "fall-guide",
+                "title": "Fall Guide",
+                "summary": "Fall stuff.",
+                "items": [{"title": "Library", "detail": "Books.", "url": "https://x/", "tags": ["indoor"]}],
+            }
+        ]
+    }
+    result = build_digest.prepare_guides(region_cfg)
+    assert len(result) == 1
+    assert result[0]["slug"] == "fall-guide"
+    assert result[0]["title"] == "Fall Guide"
+    assert result[0]["items"][0]["tags"] == ["indoor"]
+    assert result[0]["items"][0]["tag_badges"][0]["id"] == "indoor"
+
+
+def test_prepare_guides_infers_tags_when_absent():
+    region_cfg = {
+        "guides": [
+            {
+                "slug": "fall-guide",
+                "title": "Fall Guide",
+                "items": [{"title": "Dog Park", "detail": "Off-leash area for pups.", "url": "https://x/"}],
+            }
+        ]
+    }
+    result = build_digest.prepare_guides(region_cfg)
+    assert "dog_friendly" in result[0]["items"][0]["tags"]
+
+
+def test_prepare_guides_returns_empty_list_when_no_guides_configured():
+    assert build_digest.prepare_guides({}) == []
+
+
 def test_build_ics_data_uri_returns_none_without_date():
     assert build_digest.build_ics_data_uri({"title": "x", "date_iso": None}) is None
 

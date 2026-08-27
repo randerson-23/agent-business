@@ -264,12 +264,23 @@ weekend is. That is the moat, and the site should say so out loud (a one-line
    `<span class="date">`) so this can be finished with real structure
    instead of another guess.
 
-5. **Seasonal guides** (`guides:` list in region YAML → generated pages).
-   Macaroni KID's most-monetized format: summer camps, where kids eat free,
-   Halloween trick-or-treat hours, holiday light displays, pool/splash-pad
-   hours. Evergreen SEO that doesn't expire every Monday, and it's the
-   placement local sponsors most want to be inside. Fits the existing
-   `evergreen` data model closely.
+5. ✅ first slice done (PR #27) — **Seasonal guides** (`guides:` list in
+   region YAML → generated pages). Each region config now has a `guides:`
+   list (same shape as `evergreen`, grouped into named pages instead of one
+   flat section). Each guide gets its own linkable page
+   (`/<region>/guides/<slug>/`) plus a per-region guides index
+   (`/<region>/guides/`), reusing `region.html.j2` so it inherits filters,
+   dark mode, and the card layout for free. A "Guides" nav pill appears on
+   every region view once a region has at least one guide. Both regions
+   ship a real "Fall Family Guide" — sourced only from the same civic feeds
+   as the weekly digest (park district / library / village), deliberately
+   not inventing venue-specific hours or dates since those change yearly
+   and belong on the official page the guide links to. Sitemap updated to
+   include guide pages. **Not yet done**: only one guide (fall) exists per
+   region — Macaroni KID's other formats (where-kids-eat-free, holiday
+   lights, pool/splash-pad hours) are natural next entries in the same
+   `guides:` list, no new code needed, just YAML content once there's a
+   real season/occasion to write one for.
 
 6. **Local business directory per region.** Both Patch and Macaroni KID run
    one. It's the natural home for the $30/month Community Partner tier and
