@@ -99,3 +99,33 @@ guides:
         detail: "The Village posts that year's official trick-or-treat hours and other fall community notices on its news page each October."
         url: "https://www.mountprospect.org/services/news"
         tags: ["kid_friendly", "free"]
+
+  # ROADMAP.md Phase 11 #15 - highest commercial-intent evergreen query
+  # for a family-dense ZIP. Same civic-source-only discipline as the fall
+  # guide above: park district rentals/classes and library programs are
+  # real, standing services, not invented specifics (no made-up prices,
+  # times, or private venue names - a family finds those on the linked
+  # page, where they're actually kept current). The directory link is the
+  # real answer for private party venues/entertainers/tutoring centers -
+  # it starts empty (see config/sponsors.yaml) and fills in as local
+  # businesses actually sign up, which is more honest than guessing names.
+  - slug: "birthday-parties-and-kids-classes"
+    title: "Birthday Parties & Kids' Classes"
+    summary: "Where Mount Prospect families look for party venues, rec classes, and enrichment programs — the small set of standing civic options, plus local businesses as they join the directory below."
+    items:
+      - title: "Birthday parties & rentals — Mount Prospect Park District"
+        detail: "Pool parties, gym space, and themed party packages through the Park District — check current pricing, room availability, and booking windows."
+        url: "https://www.mppd.org/"
+        tags: ["kid_friendly"]
+      - title: "Kids' classes & camps — Mount Prospect Park District"
+        detail: "Swim lessons, sports, dance, and seasonal camps for all ages — browse the current program guide for schedules and registration."
+        url: "https://www.mppd.org/"
+        tags: ["kid_friendly"]
+      - title: "Kids' programs — Mount Prospect Public Library"
+        detail: "Free storytimes, STEM programs, and craft classes for kids and teens — no registration fee."
+        url: "https://mppl.org/"
+        tags: ["indoor", "kid_friendly", "free"]
+      - title: "Local party venues, entertainers & tutoring centers"
+        detail: "Private businesses appear here as they join the local directory — see what's currently listed."
+        url: "https://randerson-23.github.io/agent-business/mount-prospect-60056/directory/"
+        tags: ["kid_friendly"]
