@@ -533,12 +533,16 @@ Competitors reviewed this pass:
     originally proposed — **supersedes it**; `prefers-reduced-motion` still
     applies.
 
-20. **View Transitions on hub → region navigation.** Now cross-browser,
-    and it works on plain multi-page static sites via
-    `@view-transition { navigation: auto; }` — a handful of CSS lines, no
-    router, no framework, that make navigation feel like an app instead of
-    a page load. Highest impressiveness-per-line item on this whole list,
-    and precisely the "modern" signal the sponsor pitch trades on.
+20. ✅ done (PR #35) — **View Transitions on navigation.** `@view-transition
+    { navigation: auto; }` added to all four page templates (hub, region,
+    weekend hub, sponsor), plus a `prefers-reduced-motion` override that
+    turns the transition animation off for anyone who's asked for that.
+    Genuinely zero-risk: an unknown CSS at-rule is simply ignored per
+    spec, so browsers without support get a plain page load exactly as
+    before — confirmed no console/page errors and no visual regression
+    with a Playwright render, and confirmed the bundled Chromium actually
+    supports the underlying API (`'startViewTransition' in document`).
+    5 lines of real CSS per page, no router, no framework, no JS.
 
 21. **Container queries for the card component.** At universal support and
     "just use them" maturity in 2026. Cards currently size off the

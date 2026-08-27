@@ -17,6 +17,20 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
+  /* Native cross-document View Transitions (ROADMAP.md Phase 11 #20) -
+     an unknown at-rule to any browser without support, so this is a
+     zero-risk progressive enhancement: nothing to fall back to, nothing
+     that can break, just a plain page load where it isn't understood. */
+  @view-transition {
+    navigation: auto;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    ::view-transition-group(*),
+    ::view-transition-old(*),
+    ::view-transition-new(*) {
+      animation: none !important;
+    }
+  }
   :root {
     --bg: #f7f4ee;
     --card: #ffffff;
