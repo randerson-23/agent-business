@@ -261,6 +261,31 @@ def test_build_business_directory_includes_opted_in_entries_with_category():
     assert result[0]["url"] == "https://acme.example/"
 
 
+def test_load_newsletter_config_unconfigured_without_username():
+    result = build_digest.load_newsletter_config({"buttondown_username": None, "headline": "Sign up"})
+    assert result["configured"] is False
+    assert result["buttondown_username"] == ""
+    assert result["headline"] == "Sign up"
+
+
+def test_load_newsletter_config_unconfigured_with_blank_username():
+    result = build_digest.load_newsletter_config({"buttondown_username": "   "})
+    assert result["configured"] is False
+
+
+def test_load_newsletter_config_configured_with_real_username():
+    result = build_digest.load_newsletter_config({"buttondown_username": "weekendplanner"})
+    assert result["configured"] is True
+    assert result["buttondown_username"] == "weekendplanner"
+
+
+def test_load_newsletter_config_defaults_headline_and_detail():
+    result = build_digest.load_newsletter_config({})
+    assert result["configured"] is False
+    assert result["headline"]
+    assert result["detail"] == ""
+
+
 def test_build_weekend_weather_returns_empty_without_coordinates():
     region = {"name": "Nowhere", "timezone": "America/Chicago"}
     result = build_digest.build_weekend_weather(region, date(2026, 8, 29), date(2026, 8, 30))

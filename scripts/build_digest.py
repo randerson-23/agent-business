@@ -62,6 +62,24 @@ def load_regions() -> list[dict]:
     return regions
 
 
+def load_newsletter_config(newsletter_cfg: dict) -> dict:
+    """Email capture context (ROADMAP.md Phase 11 #12) - a Buttondown
+    embed that only renders a live signup form once a real account's
+    username is configured; otherwise the page shows the same headline/
+    detail with an honest "coming soon" message instead of a form that
+    would post to nothing. See config/newsletter.yaml for why: signing up
+    for an email service is a human/paid action this repo can't do on its
+    own, same as Stripe for the sponsor page.
+    """
+    username = (newsletter_cfg.get("buttondown_username") or "").strip()
+    return {
+        "configured": bool(username),
+        "buttondown_username": username,
+        "headline": newsletter_cfg.get("headline") or "Get it in your inbox",
+        "detail": newsletter_cfg.get("detail") or "",
+    }
+
+
 # Formats seen in the wild beyond RFC 822 (pubDate) and RFC 5545 (ICS),
 # most likely to show up if a source's `date` field is ever hand-set in
 # config or a future fetcher extracts human-readable text ("Sat, Sep 6" /
@@ -443,6 +461,7 @@ def render_region_page(
     guides_url: str | None = None,
     directory_url: str | None = None,
     weather: list[dict] | None = None,
+    newsletter: dict | None = None,
 ) -> str:
     env = Environment(loader=FileSystemLoader(str(TEMPLATES_DIR)), autoescape=True)
     template = env.get_template("region.html.j2")
@@ -479,16 +498,20 @@ def render_region_page(
         guides_url=guides_url,
         directory_url=directory_url,
         weather=weather,
+        newsletter=newsletter,
     )
 
 
-def render_hub_page(regions: list[dict], region_summaries: list[dict], now: datetime) -> str:
+def render_hub_page(
+    regions: list[dict], region_summaries: list[dict], now: datetime, newsletter: dict | None = None
+) -> str:
     env = Environment(loader=FileSystemLoader(str(TEMPLATES_DIR)), autoescape=True)
     template = env.get_template("hub.html.j2")
     return template.render(
         generated_at=now.strftime("%Y-%m-%d %H:%M UTC"),
         region_summaries=region_summaries,
         canonical_url=SITE_BASE_URL,
+        newsletter=newsletter,
     )
 
 
@@ -633,6 +656,7 @@ def filter_free_items(blocks: list[dict], evergreen: list[dict]) -> list[dict]:
 
 def main() -> None:
     sponsors_cfg = load_yaml(CONFIG_DIR / "sponsors.yaml")
+    newsletter = load_newsletter_config(load_yaml(CONFIG_DIR / "newsletter.yaml"))
     regions = load_regions()
     now = datetime.now(timezone.utc)
 
@@ -661,7 +685,14 @@ def main() -> None:
         directory_url = SITE_BASE_URL + region_id + "/directory/"
 
         html = render_region_page(
-            region_cfg, blocks, sponsor, evergreen, now, guides_url=guides_url, directory_url=directory_url
+            region_cfg,
+            blocks,
+            sponsor,
+            evergreen,
+            now,
+            guides_url=guides_url,
+            directory_url=directory_url,
+            newsletter=newsletter,
         )
 
         region_dir = OUTPUT_DIR / region_id
@@ -725,6 +756,7 @@ def main() -> None:
                 guides_url=guides_url,
                 directory_url=directory_url,
                 weather=weekend_weather if slug == "this-weekend" else None,
+                newsletter=newsletter,
             )
             view_dir = region_dir / slug
             view_dir.mkdir(parents=True, exist_ok=True)
@@ -746,6 +778,7 @@ def main() -> None:
                     canonical_suffix=f"guides/{guide['slug']}/",
                     guides_url=guides_url,
                     directory_url=directory_url,
+                    newsletter=newsletter,
                 )
                 guide_dir = region_dir / "guides" / guide["slug"]
                 guide_dir.mkdir(parents=True, exist_ok=True)
@@ -777,6 +810,7 @@ def main() -> None:
                 canonical_suffix="guides/",
                 guides_url=guides_url,
                 directory_url=directory_url,
+                newsletter=newsletter,
             )
             guides_index_dir = region_dir / "guides"
             guides_index_dir.mkdir(parents=True, exist_ok=True)
@@ -798,6 +832,7 @@ def main() -> None:
             canonical_suffix="directory/",
             guides_url=guides_url,
             directory_url=directory_url,
+            newsletter=newsletter,
         )
         directory_dir = region_dir / "directory"
         directory_dir.mkdir(parents=True, exist_ok=True)
@@ -819,7 +854,7 @@ def main() -> None:
             }
         )
 
-    hub_html = render_hub_page(regions, region_summaries, now)
+    hub_html = render_hub_page(regions, region_summaries, now, newsletter)
     (OUTPUT_DIR / "index.html").write_text(hub_html, encoding="utf-8")
     logger.info("Wrote %s", OUTPUT_DIR / "index.html")
 
