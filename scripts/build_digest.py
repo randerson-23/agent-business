@@ -61,45 +61,61 @@ def load_regions() -> list[dict]:
     return regions
 
 
-def format_event_date(raw: str | None) -> str | None:
-    """Best-effort: turn an RSS pubDate or ICS DTSTART into "Aug 28" style
-    display text. Falls back to the raw string (or None) if it can't be
-    parsed - a card with an odd raw date string is still useful; one that
-    silently drops the date isn't.
+# Formats seen in the wild beyond RFC 822 (pubDate) and RFC 5545 (ICS),
+# most likely to show up if a source's `date` field is ever hand-set in
+# config or a future fetcher extracts human-readable text ("Sat, Sep 6" /
+# "September 6, 2026" / "9/6/2026") instead of a structured value. Tried
+# in order; first match wins.
+_EXTRA_DATE_FORMATS = (
+    "%Y%m%dT%H%M%SZ", "%Y%m%dT%H%M%S", "%Y%m%d",
+    "%a, %b %d, %Y", "%a, %b %d %Y",
+    "%B %d, %Y", "%b %d, %Y",
+    "%m/%d/%Y", "%m/%d/%y",
+)
+
+
+def _try_parse_date(raw: str | None) -> datetime | None:
+    """Best-effort parse of whatever date string a source hands us, tried
+    against RFC 822 (RSS pubDate) first, then a fixed list of other
+    formats seen in the wild. Returns None rather than guessing when
+    nothing matches - callers decide what "no date" means for their
+    output (a display fallback vs. omitting structured data).
     """
     if not raw:
         return None
     try:
-        return parsedate_to_datetime(raw).strftime("%b %-d")
+        return parsedate_to_datetime(raw)
     except (TypeError, ValueError):
         pass
-    for fmt in ("%Y%m%dT%H%M%SZ", "%Y%m%dT%H%M%S", "%Y%m%d"):
+    for fmt in _EXTRA_DATE_FORMATS:
         try:
-            return datetime.strptime(raw, fmt).strftime("%b %-d")
-        except ValueError:
-            continue
-    return raw
-
-
-def parse_event_date_iso(raw: str | None) -> str | None:
-    """Best-effort: turn an RSS pubDate or ICS DTSTART into an ISO 8601
-    string for schema.org/Event structured data (which wants a real
-    machine-readable date, unlike the "Aug 28" display text above).
-    Returns None rather than a guess when the raw value can't be parsed -
-    omitting startDate from structured data is valid; a wrong one isn't.
-    """
-    if not raw:
-        return None
-    try:
-        return parsedate_to_datetime(raw).isoformat()
-    except (TypeError, ValueError):
-        pass
-    for fmt in ("%Y%m%dT%H%M%SZ", "%Y%m%dT%H%M%S", "%Y%m%d"):
-        try:
-            return datetime.strptime(raw, fmt).isoformat()
+            return datetime.strptime(raw, fmt)
         except ValueError:
             continue
     return None
+
+
+def format_event_date(raw: str | None) -> str | None:
+    """Best-effort: turn a raw date string into "Aug 28" style display
+    text. Falls back to the raw string (or None) if it can't be parsed -
+    a card with an odd raw date string is still useful; one that silently
+    drops the date isn't.
+    """
+    if not raw:
+        return None
+    parsed = _try_parse_date(raw)
+    return parsed.strftime("%b %-d") if parsed else raw
+
+
+def parse_event_date_iso(raw: str | None) -> str | None:
+    """Best-effort: turn a raw date string into an ISO 8601 string for
+    schema.org/Event structured data (which wants a real machine-readable
+    date, unlike the "Aug 28" display text above). Returns None rather
+    than a guess when the raw value can't be parsed - omitting startDate
+    from structured data is valid; a wrong one isn't.
+    """
+    parsed = _try_parse_date(raw)
+    return parsed.isoformat() if parsed else None
 
 
 def truncate(text: str, max_len: int = DETAIL_MAX_LEN) -> str:
@@ -330,6 +346,17 @@ def build_robots_txt() -> str:
     return f"User-agent: *\nAllow: /\nSitemap: {SITE_BASE_URL}sitemap.xml\n"
 
 
+def structured_date_coverage(blocks: list[dict]) -> tuple[int, int]:
+    """(events with a machine-readable date, total events) - an event
+    without date_iso is invisible to schema.org/Event rich results and
+    can't be added to a calendar, so this is worth watching for silent
+    regressions as sources change, not just a one-time check.
+    """
+    events = [e for b in blocks for e in b["events"]]
+    dated = sum(1 for e in events if e.get("date_iso"))
+    return dated, len(events)
+
+
 def main() -> None:
     sponsors_cfg = load_yaml(CONFIG_DIR / "sponsors.yaml")
     regions = load_regions()
@@ -339,6 +366,7 @@ def main() -> None:
     (OUTPUT_DIR / ".nojekyll").touch()
 
     region_summaries = []
+    total_dated, total_events = 0, 0
     for region_cfg in regions:
         region = region_cfg["region"]
         region_id = region["id"]
@@ -356,6 +384,11 @@ def main() -> None:
         logger.info("Wrote %s", region_dir / "index.html")
 
         event_count = sum(len(b["events"]) for b in blocks)
+        dated, total = structured_date_coverage(blocks)
+        total_dated += dated
+        total_events += total
+        if total:
+            logger.info("  Structured-date coverage: %d/%d events have a machine-readable start date", dated, total)
         region_summaries.append(
             {
                 **region,
@@ -371,6 +404,11 @@ def main() -> None:
     (OUTPUT_DIR / "sitemap.xml").write_text(build_sitemap_xml(region_summaries, now), encoding="utf-8")
     (OUTPUT_DIR / "robots.txt").write_text(build_robots_txt(), encoding="utf-8")
     logger.info("Wrote sitemap.xml and robots.txt")
+    if total_events:
+        logger.info(
+            "TOTAL structured-date coverage: %d/%d events (%.0f%%) have a machine-readable start date",
+            total_dated, total_events, 100 * total_dated / total_events,
+        )
 
 
 if __name__ == "__main__":
