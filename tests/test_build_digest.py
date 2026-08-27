@@ -880,3 +880,38 @@ def test_build_freshness_json_ld_escapes_script_close_tag():
     now = datetime(2026, 8, 27, tzinfo=timezone.utc)
     result = build_digest.build_freshness_json_ld(region, "https://example.org/", now)
     assert "</script>" not in result
+
+
+def test_build_guide_faq_returns_four_real_questions():
+    region = {"name": "Mount Prospect", "zip": "60056", "state": "IL"}
+    faq = build_digest.build_guide_faq(region, "https://example.org/mount-prospect-60056/")
+    assert len(faq) == 4
+    for item in faq:
+        assert item["question"].strip()
+        assert item["answer"].strip()
+
+
+def test_build_guide_faq_links_point_at_the_regions_own_pages():
+    region = {"name": "Mount Prospect", "zip": "60056", "state": "IL"}
+    faq = build_digest.build_guide_faq(region, "https://example.org/mount-prospect-60056/")
+    weekend_answer = next(i["answer"] for i in faq if "weekend" in i["question"].lower())
+    assert "https://example.org/mount-prospect-60056/this-weekend/" in weekend_answer
+
+
+def test_build_faq_json_ld_matches_visible_answer_text():
+    faq = [{"question": "Q1?", "answer": "A1 with a <a href=\"https://example.org/\">link</a>."}]
+    result = build_digest.build_faq_json_ld(faq)
+    parsed = json.loads(result)
+    assert parsed["@type"] == "FAQPage"
+    entity = parsed["mainEntity"][0]
+    assert entity["name"] == "Q1?"
+    # The JSON-LD answer text must be the exact same string rendered
+    # visibly on the page - Google's FAQPage guidance treats a mismatch,
+    # or hidden-only answer text, as unreliable.
+    assert entity["acceptedAnswer"]["text"] == faq[0]["answer"]
+
+
+def test_build_faq_json_ld_escapes_script_close_tag():
+    faq = [{"question": "Q</script><script>alert(1)", "answer": "A"}]
+    result = build_digest.build_faq_json_ld(faq)
+    assert "</script>" not in result

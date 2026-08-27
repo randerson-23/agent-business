@@ -346,6 +346,24 @@
     outline-offset: 2px;
   }
 
+  .faq { margin: 24px 0; }
+  .faq h2 { font-size: 18px; font-weight: 600; margin: 0 0 10px; }
+  .faq-item {
+    background: var(--card);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-sm);
+    padding: 12px 16px;
+    margin-bottom: 8px;
+  }
+  .faq-item summary {
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 14.5px;
+  }
+  .faq-item summary::-webkit-details-marker { color: var(--accent); }
+  .faq-item p { margin: 8px 0 0; color: var(--muted); font-size: 13.5px; line-height: 1.6; }
+  .faq-item p a { color: var(--accent); font-weight: 600; }
+
   .newsletter {
     background: var(--card);
     border-radius: var(--radius-lg);
@@ -583,6 +601,18 @@
   </section>
   {% endif %}
 
+  {% if faq %}
+  <section class="faq">
+    <h2>Frequently asked questions</h2>
+    {% for item in faq %}
+    <details class="faq-item">
+      <summary>{{ item.question }}</summary>
+      <p>{{ item.answer|safe }}</p>
+    </details>
+    {% endfor %}
+  </section>
+  {% endif %}
+
   {% if newsletter %}
   <div class="newsletter">
     {% if newsletter.configured %}
@@ -632,6 +662,9 @@
 
 {% if event_json_ld %}
 <script type="application/ld+json">{{ event_json_ld|safe }}</script>
+{% endif %}
+{% if faq_json_ld %}
+<script type="application/ld+json">{{ faq_json_ld|safe }}</script>
 {% endif %}
 <script type="application/ld+json">{{ freshness_json_ld|safe }}</script>
 <script>

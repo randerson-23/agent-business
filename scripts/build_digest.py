@@ -483,6 +483,75 @@ def build_answer_block(region: dict) -> str:
     )
 
 
+def build_guide_faq(region: dict, region_base_url: str) -> list[dict]:
+    """Real, honest FAQ content for a guide page (ROADMAP.md Phase 11 #22
+    follow-up) - about how the site itself works, not fabricated facts
+    about specific venues, hours, or prices. FAQPage schema requires the
+    answer text to also be visible on the page (Google's own guidance),
+    so this list is rendered as real HTML in region.html.j2 and the exact
+    same text is what build_faq_json_ld() embeds - never two versions of
+    the same answer that could drift apart.
+    """
+    weekend_url = region_base_url + "this-weekend/"
+    submit_url = "https://github.com/randerson-23/agent-business/issues/new?template=event-submission.yml"
+    sponsor_url = SITE_BASE_URL + "sponsor/"
+    return [
+        {
+            "question": "How current is this guide?",
+            "answer": (
+                "It's regenerated automatically from the village, library, "
+                "and park district's own listings, typically several times "
+                "a week - not a one-time write-up that goes stale."
+            ),
+        },
+        {
+            "question": "Is this every event or business, or just what's listed here?",
+            "answer": (
+                "Only what the linked public sources publish. For full "
+                "details, hours, or anything not listed here, check the "
+                "official page each item links to."
+            ),
+        },
+        {
+            "question": f"How do I see what's happening in {region['name']} this specific weekend?",
+            "answer": (
+                f'See the <a href="{weekend_url}">weekend view</a>, which '
+                f"only shows items with a known date in the coming "
+                f"Saturday-Sunday."
+            ),
+        },
+        {
+            "question": "Can I add an event, or suggest a business for the directory?",
+            "answer": (
+                f'Yes - <a href="{submit_url}">submit an event</a> and a '
+                f"person reviews it before it goes live, or a business "
+                f'owner can <a href="{sponsor_url}">inquire about a listing</a>.'
+            ),
+        },
+    ]
+
+
+def build_faq_json_ld(faq_items: list[dict]) -> str:
+    """schema.org/FAQPage structured data for build_guide_faq()'s items.
+    Answer text here must exactly match what's rendered visibly on the
+    page - Google's FAQPage guidance treats hidden-only FAQ markup as
+    unreliable, so this is never the only place the Q&A exists.
+    """
+    payload = {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {
+                "@type": "Question",
+                "name": item["question"],
+                "acceptedAnswer": {"@type": "Answer", "text": item["answer"]},
+            }
+            for item in faq_items
+        ],
+    }
+    return json.dumps(payload, ensure_ascii=False).replace("</", "<\\/")
+
+
 def build_freshness_json_ld(region: dict, canonical_url: str, now: datetime) -> str:
     """A minimal WebPage node carrying `dateModified` (ROADMAP.md Phase
     11 #28) - a freshness signal both AI citation and human trust key on;
@@ -569,6 +638,7 @@ def render_region_page(
     editors_pick: dict | None = None,
     analytics: dict | None = None,
     answer_block: str | None = None,
+    include_faq: bool = False,
 ) -> str:
     env = Environment(loader=FileSystemLoader(str(TEMPLATES_DIR)), autoescape=True)
     template = env.get_template("region.html.j2")
@@ -576,6 +646,7 @@ def render_region_page(
     region = region_cfg["region"]
     region_base_url = SITE_BASE_URL + region["id"] + "/"
     canonical_url = region_base_url + canonical_suffix
+    faq = build_guide_faq(region, region_base_url) if include_faq else None
     # Distinct <title>/description per view (not just per region) so
     # search engines don't see four near-duplicate pages - the whole
     # point of shipping linkable date/price-scoped views in the first
@@ -595,6 +666,8 @@ def render_region_page(
         event_json_ld=build_event_json_ld(region, blocks),
         freshness_json_ld=build_freshness_json_ld(region, canonical_url, now),
         answer_block=answer_block,
+        faq=faq,
+        faq_json_ld=build_faq_json_ld(faq) if faq else None,
         heading=heading,
         subheading=subheading,
         empty_message=empty_message,
@@ -1024,6 +1097,7 @@ def main() -> None:
                     directory_url=directory_url,
                     newsletter=newsletter,
                     analytics=analytics,
+                    include_faq=True,
                 )
                 guide_dir = region_dir / "guides" / guide["slug"]
                 guide_dir.mkdir(parents=True, exist_ok=True)
