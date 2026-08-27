@@ -692,14 +692,34 @@ Angles reviewed this pass:
     newsletters we like" block plus reciprocal listings with nearby-suburb
     publishers costs nothing per week and compounds. Depends on item 24.
 
-26. **Performance budget in CI.** The site has quietly accumulated real
-    JavaScript — filters, distance sort, itinerary tray, weather, map,
-    view transitions — and none of it has ever been measured. Add
-    Lighthouse CI to the existing tests workflow with a JS-bytes cap and
-    thresholds at the 2026 bar (LCP ≤2.5s, CLS ≤0.1, TBT as the lab proxy
-    for INP ≤200ms), so the *next* feature fails the build instead of
-    quietly degrading the site. This is insurance on everything shipped in
-    PRs #15–#39, and it matters more now than any single new feature.
+26. ✅ done (PR #43) — **Performance budget in CI.** `.github/workflows/
+    tests.yml` now runs Lighthouse CI (`@lhci/cli`, new `package.json` +
+    lockfile, `lighthouserc.json` at repo root) against the built `docs/`
+    output on every PR and push to main, asserting the exact 2026 bar this
+    item named — LCP ≤2.5s, CLS ≤0.1, TBT ≤200ms (the lab proxy for INP) —
+    as hard `error`-level assertions, so a regression fails the build
+    instead of quietly shipping. Checked against four representative pages
+    (hub, a region's main view, that region's `/this-weekend/`, and
+    `/sponsor/`) via `staticDistDir`, no external hosting needed. A
+    separate `scripts/check_perf_budget.py` covers the JS-bytes cap half of
+    this item as a plain Python check (12KB inline-JS-per-page budget, real
+    pages currently peak at 7.1KB on the tray-widget-heavy region views) —
+    kept out of Lighthouse's own `resource-summary` audit because every
+    script on this site is inline, not a separate request, so that audit
+    can't see it; JSON-LD `<script>` blocks are explicitly excluded since
+    they're data, not code. 5 new unit tests for the byte-counting logic.
+    **Verified for real, not assumed**: ran the entire pipeline locally
+    exactly as CI will — `npm ci`, `pytest` (141 passed), a real build,
+    the budget check, and `npx lhci autorun` — using this sandbox's bundled
+    Playwright Chromium as a stand-in for the runner's preinstalled Chrome
+    (GitHub-hosted `ubuntu-latest` ships Chrome already, so the checked-in
+    config has no hardcoded `chromePath`; that override was local-only).
+    Real measured numbers under this sandbox's degraded network (Google
+    Fonts blocked, inflating Speed Index) still came back LCP ~1.4s, CLS 0,
+    TBT 0 on every page — comfortable headroom, not a number invented to
+    make the assertion pass. **Note for future changes**: `npm ci` needs
+    `package-lock.json` kept in sync — regenerate with
+    `npm install --package-lock-only` if `package.json` ever changes.
 
 #### P3 (new)
 
