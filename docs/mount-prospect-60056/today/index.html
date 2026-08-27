@@ -25,6 +25,10 @@
     --accent: #1f4d3a;
     --accent-soft: #2f6b4f;
     --accent-2: #d9772e;
+    /* Darker than --accent-2 - #d9772e is only 2.9:1 on --bg, below WCAG
+       AA's 4.5:1 for text this small. Use for text; --accent-2 stays for
+       non-text accents (borders) where contrast rules don't apply. */
+    --accent-2-text: #a95c23;
     --border: #e6e1d6;
     --radius-lg: 18px;
     --radius-md: 12px;
@@ -50,6 +54,7 @@
       --accent: #57b98a;
       --accent-soft: #237549;
       --accent-2: #f0975a;
+      --accent-2-text: #f0975a;
       --border: #2c3a32;
       --shadow-sm: 0 1px 2px rgba(0,0,0,.35), 0 1px 1px rgba(0,0,0,.25);
       --shadow-md: 0 10px 28px -10px rgba(0,0,0,.55), 0 2px 6px rgba(0,0,0,.35);
@@ -129,13 +134,13 @@
     font-size: 11px;
     text-transform: uppercase;
     letter-spacing: 0.06em;
-    color: var(--accent-2);
+    color: var(--accent-2-text);
     font-weight: 700;
     margin-bottom: 4px;
   }
   .sponsor h3 { margin: 0 0 4px; font-size: 17px; font-weight: 600; }
   .sponsor p { margin: 0; color: var(--muted); font-size: 14px; }
-  .sponsor a { color: var(--accent-2); text-decoration: none; font-weight: 600; }
+  .sponsor a { color: var(--accent-2-text); text-decoration: none; font-weight: 600; }
 
   .filter-bar {
     position: sticky;
@@ -200,7 +205,7 @@
   .card:hover { transform: translateY(-3px); box-shadow: var(--shadow-lift); }
   .card.hidden { display: none; }
   .card .date {
-    color: var(--accent-2);
+    color: var(--accent-2-text);
     font-size: 12px;
     font-weight: 700;
     letter-spacing: 0.02em;
@@ -230,6 +235,20 @@
   }
   .empty { color: var(--muted); font-size: 14px; font-style: italic; }
   .empty a { color: var(--accent); font-weight: 600; font-style: normal; }
+
+  .sr-only {
+    position: absolute;
+    width: 1px; height: 1px;
+    padding: 0; margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+  a:focus-visible, button:focus-visible, input:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+  }
 
   footer {
     text-align: center;
@@ -296,7 +315,7 @@
   <footer>
     Local business? See the
     <a href="https://randerson-23.github.io/agent-business/sponsor/">sponsor page</a>.
-    <br>Generated 2026-08-27 07:55 UTC.
+    <br>Generated 2026-08-27 08:57 UTC.
   </footer>
 </div>
 
@@ -307,14 +326,22 @@
   var chips = document.querySelectorAll(".filter-chip[data-tag]");
   var cards = document.querySelectorAll(".card[data-tags]");
   var clearBtn = document.getElementById("clear-filters");
+  var filterStatus = document.getElementById("filter-status");
 
   function apply() {
+    var shownCount = 0;
     cards.forEach(function (card) {
       var tags = (card.getAttribute("data-tags") || "").split(",").filter(Boolean);
       var visible = activeTags.size === 0 || tags.some(function (t) { return activeTags.has(t); });
       card.classList.toggle("hidden", !visible);
+      if (visible) shownCount++;
     });
     if (clearBtn) clearBtn.classList.toggle("visible", activeTags.size > 0);
+    if (filterStatus && cards.length) {
+      filterStatus.textContent = activeTags.size === 0
+        ? "Showing all " + cards.length + " items."
+        : "Showing " + shownCount + " of " + cards.length + " items.";
+    }
   }
 
   chips.forEach(function (chip) {

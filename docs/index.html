@@ -25,6 +25,10 @@
     --accent: #1f4d3a;
     --accent-soft: #2f6b4f;
     --accent-2: #d9772e;
+    /* Darker than --accent-2 - #d9772e is only 2.9:1 on --bg, below WCAG
+       AA's 4.5:1 for text this small. Use for text; --accent-2 stays for
+       non-text accents (borders) where contrast rules don't apply. */
+    --accent-2-text: #a95c23;
     --border: #e6e1d6;
     --radius-lg: 18px;
     --shadow-sm: 0 1px 2px rgba(23,35,28,.06), 0 1px 1px rgba(23,35,28,.05);
@@ -41,6 +45,7 @@
       --accent: #57b98a;
       --accent-soft: #237549;
       --accent-2: #f0975a;
+      --accent-2-text: #f0975a;
       --border: #2c3a32;
       --shadow-sm: 0 1px 2px rgba(0,0,0,.35), 0 1px 1px rgba(0,0,0,.25);
       --shadow-md: 0 10px 28px -10px rgba(0,0,0,.55), 0 2px 6px rgba(0,0,0,.35);
@@ -110,7 +115,7 @@
   }
   .region-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lift); }
   .region-card .zip {
-    color: var(--accent-2);
+    color: var(--accent-2-text);
     font-weight: 700;
     font-size: 12.5px;
     text-transform: uppercase;
@@ -126,7 +131,7 @@
   }
   .region-card .distance {
     font-size: 12.5px;
-    color: var(--accent-2);
+    color: var(--accent-2-text);
     font-weight: 700;
   }
 
@@ -189,6 +194,20 @@
     box-shadow: var(--shadow-sm);
   }
 
+  a:focus-visible, button:focus-visible, input:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+  }
+  .sr-only {
+    position: absolute;
+    width: 1px; height: 1px;
+    padding: 0; margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+
   footer {
     text-align: center;
     color: var(--muted);
@@ -228,9 +247,10 @@
   <div class="distance-bar" id="distance-bar">
     <button type="button" id="use-location">📍 Show distance from me</button>
     <span>or</span>
+    <label class="sr-only" for="zip-input">ZIP code</label>
     <input type="text" id="zip-input" placeholder="ZIP code" inputmode="numeric" maxlength="5">
     <button type="button" id="use-zip">Go</button>
-    <span class="status" id="distance-status"></span>
+    <span class="status" id="distance-status" aria-live="polite"></span>
     <span class="note">Calculated in your browser only — your location is never sent anywhere.</span>
   </div>
   <div class="region-grid" id="region-grid">
@@ -239,7 +259,7 @@
       <span class="zip">60005 · IL</span>
       <h2>Arlington Heights</h2>
       <p>Village news, library events, and park district programs — a short drive from Mount Prospect.</p>
-      <span class="count">12 live updates this week</span>
+      <span class="count">18 live updates this week</span>
       <span class="distance" data-distance-label></span>
     </a>
     
@@ -247,7 +267,7 @@
       <span class="zip">60056 · IL</span>
       <h2>Mount Prospect</h2>
       <p>Village news, library events, and park district programs.</p>
-      <span class="count">1 live update this week</span>
+      <span class="count">7 live updates this week</span>
       <span class="distance" data-distance-label></span>
     </a>
     
@@ -257,7 +277,7 @@
   <footer>
     Want your ZIP added, or want to sponsor a region?
     <a href="sponsor/">See pricing &amp; availability</a>.
-    <br>Generated 2026-08-27 07:55 UTC.
+    <br>Generated 2026-08-27 08:57 UTC.
   </footer>
   </div>
 
