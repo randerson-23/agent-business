@@ -360,9 +360,26 @@ def render_hub_page(regions: list[dict], region_summaries: list[dict], now: date
     )
 
 
+def render_weekend_hub_page(region_sections: list[dict], date_range: str, now: datetime) -> str:
+    """The hub-level 'This weekend near you' page: weekend events merged
+    across every region, grouped by region so it's still clear where each
+    one is. Deferred out of the per-region date-scoped-views slice to keep
+    that one shippable; picked up here as the natural follow-up.
+    """
+    env = Environment(loader=FileSystemLoader(str(TEMPLATES_DIR)), autoescape=True)
+    template = env.get_template("weekend_hub.html.j2")
+    return template.render(
+        region_sections=region_sections,
+        date_range=date_range,
+        generated_at=now.strftime("%Y-%m-%d %H:%M UTC"),
+        canonical_url=SITE_BASE_URL + "this-weekend/",
+        hub_url=SITE_BASE_URL,
+    )
+
+
 def build_sitemap_xml(region_summaries: list[dict], now: datetime) -> str:
     lastmod = now.strftime("%Y-%m-%d")
-    urls = [SITE_BASE_URL]
+    urls = [SITE_BASE_URL, SITE_BASE_URL + "this-weekend/"]
     for r in region_summaries:
         base = SITE_BASE_URL + r["path"]
         urls += [base, base + "this-weekend/", base + "today/", base + "free/"]
@@ -467,6 +484,8 @@ def main() -> None:
     (OUTPUT_DIR / ".nojekyll").touch()
 
     region_summaries = []
+    hub_weekend_sections = []
+    hub_weekend_date_range = None
     total_dated, total_events = 0, 0
     for region_cfg in regions:
         region = region_cfg["region"]
@@ -486,12 +505,24 @@ def main() -> None:
 
         local_today = region_local_date(region, now)
         saturday, sunday = weekend_dates(local_today)
+        weekend_events = filter_events_by_dates(blocks, {saturday, sunday})
+        weekend_date_range = format_date_range(saturday, sunday)
+        if hub_weekend_date_range is None:
+            hub_weekend_date_range = weekend_date_range  # regions share a timezone today
+        if weekend_events:
+            hub_weekend_sections.append(
+                {
+                    "region_name": region["name"],
+                    "region_url": SITE_BASE_URL + region_id + "/",
+                    "events": weekend_events,
+                }
+            )
         views = [
             (
                 "this-weekend",
-                filter_events_by_dates(blocks, {saturday, sunday}),
+                weekend_events,
                 f"This weekend in {region['name']}",
-                f"{format_date_range(saturday, sunday)} — everything with a known date in this range.",
+                f"{weekend_date_range} — everything with a known date in this range.",
                 "weekend",
                 "Nothing dated for this weekend yet — check back, or see all events.",
             ),
@@ -547,6 +578,12 @@ def main() -> None:
     hub_html = render_hub_page(regions, region_summaries, now)
     (OUTPUT_DIR / "index.html").write_text(hub_html, encoding="utf-8")
     logger.info("Wrote %s", OUTPUT_DIR / "index.html")
+
+    weekend_hub_html = render_weekend_hub_page(hub_weekend_sections, hub_weekend_date_range or "", now)
+    weekend_hub_dir = OUTPUT_DIR / "this-weekend"
+    weekend_hub_dir.mkdir(parents=True, exist_ok=True)
+    (weekend_hub_dir / "index.html").write_text(weekend_hub_html, encoding="utf-8")
+    logger.info("Wrote %s (%d region section%s)", weekend_hub_dir / "index.html", len(hub_weekend_sections), "" if len(hub_weekend_sections) == 1 else "s")
 
     (OUTPUT_DIR / "sitemap.xml").write_text(build_sitemap_xml(region_summaries, now), encoding="utf-8")
     (OUTPUT_DIR / "robots.txt").write_text(build_robots_txt(), encoding="utf-8")
