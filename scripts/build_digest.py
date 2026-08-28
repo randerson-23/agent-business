@@ -108,7 +108,7 @@ def load_analytics_config(analytics_cfg: dict) -> dict:
 # "September 6, 2026" / "9/6/2026") instead of a structured value. Tried
 # in order; first match wins.
 _EXTRA_DATE_FORMATS = (
-    "%Y%m%dT%H%M%SZ", "%Y%m%dT%H%M%S", "%Y%m%d",
+    "%Y%m%dT%H%M%SZ", "%Y%m%dT%H%M%S", "%Y%m%d", "%Y-%m-%d",
     "%a, %b %d, %Y", "%a, %b %d %Y",
     "%B %d, %Y", "%b %d, %Y",
     "%m/%d/%Y", "%m/%d/%y",

@@ -247,22 +247,25 @@ weekend is. That is the moat, and the site should say so out loud (a one-line
 
 #### P2
 
-4. ⚠️ partially done (PR #17) — **Real datetime normalization + a
-   structured-data coverage stat.** `_try_parse_date` (renamed from
-   `parse_event_date_iso`'s inline logic) now handles RFC 822/ICS plus
-   several common human-readable formats, and `structured_date_coverage()`
-   logs `N/M events have a machine-readable start date` per region and as
-   a build total. **Still blocking item 1**: `fetch_html_events` in
-   `fetchers.py` doesn't extract a date at all today — only RSS/ICS
-   sources populate `date` — so the broadened parser has nothing to parse
-   for HTML-scraped events yet. Real fix needs either fetching each
-   event's detail page or parsing text near each link in the surrounding
-   DOM; both need real fetched HTML to design against rather than a
-   blind guess (this sandbox's network is blocked). Next research-loop
-   pass: if you can reach a live source, note what a real scraped
-   `<a>` tag's surrounding HTML actually looks like (e.g. a sibling
-   `<span class="date">`) so this can be finished with real structure
-   instead of another guess.
+4. ⚠️ partially done (PR #17, extended 2026-08-28) — **Real datetime
+   normalization + a structured-data coverage stat.** `_try_parse_date`
+   (renamed from `parse_event_date_iso`'s inline logic) now handles RFC
+   822/ICS plus several common human-readable formats (`%Y-%m-%d` added
+   this session), and `structured_date_coverage()` logs `N/M events have a
+   machine-readable start date` per region and as a build total.
+   **`fetch_html_events` now extracts a date for one real, confirmed
+   shape**: the AHML page source the owner supplied this session showed
+   each day's `<td>` stamped with `data-date="YYYY-MM-DD"` (a common
+   calendar-grid-widget pattern) - `fetchers._nearby_data_date()` finds
+   the nearest such attribute preceding a matched event link in the raw
+   HTML (the flat link extractor has no DOM/ancestor context to see which
+   day cell a link sits inside), purely additive so sources without that
+   attribute are unaffected. **Still not general**: Mount Prospect's
+   Calendar source has no `data-date` - its day cells carry the date only
+   as text inside `aria-label="Scheduled events, Saturday, September 12,
+   2026"`, which would need a separate, more fragile phrase-parsing
+   regex; not attempted yet, needs another real sample to design against
+   rather than guessing at aria-label phrasing variations.
 
 5. ✅ first slice done (PR #27) — **Seasonal guides** (`guides:` list in
    region YAML → generated pages). Each region config now has a `guides:`
