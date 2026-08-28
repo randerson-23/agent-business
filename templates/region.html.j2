@@ -529,7 +529,7 @@
     <div class="label">💚 Local Recommendation</div>
     <h3>{{ sponsor.title }}</h3>
     {% if sponsor.why %}<p class="why">{{ sponsor.why }}</p>{% endif %}
-    <p>{{ sponsor.detail }} {% if sponsor.url %}<a href="{{ sponsor.url }}">Learn more &rarr;</a>{% endif %}</p>
+    <p>{{ sponsor.detail }} {% if sponsor.url %}<a href="{{ sponsor.url }}"{% if analytics and analytics.configured %} data-goatcounter-click="sponsor-click-{{ region.id }}"{% endif %}>Learn more &rarr;</a>{% endif %}</p>
     {% else %}
     <div class="label">Sponsor This Spot</div>
     <h3>{{ sponsor.title }}</h3>
