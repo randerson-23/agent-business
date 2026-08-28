@@ -189,6 +189,32 @@ def test_fetch_html_events_uses_custom_detail_link_pattern(mock_get):
 
 
 @patch("fetchers.requests.get")
+def test_fetch_html_events_ahml_drupal_calendar_uses_reservation_link_pattern(mock_get):
+    # AHML (ahml.info/attend/events) runs a Drupal calendar (Views +
+    # Calendar module). Each real event's <h4 class="event_title"> links to
+    # its modal detail view at /scheduling/reservation/<id> - confirmed
+    # 2026-08-28 from real page source. Nav/filter links on the same page
+    # don't match that pattern and must be excluded.
+    html = (
+        '<td class="single-day past"><div class="inner"><div class="item">'
+        '<h4 class="event_title">'
+        '<a class="use-ajax" href="/scheduling/reservation/218675">'
+        "Senior Services &amp; the Senior Center at the Farmer's Market</a>"
+        "</h4></div></div></td>"
+        '<a href="/attend/events">All Events</a>'
+        '<a href="/attend/events?type=story">Story Times</a>'
+    )
+    mock_get.return_value = _mock_response(html)
+    items = fetch_html_events(
+        "https://www.ahml.info/attend/events", detail_link_pattern=r"scheduling/reservation/\d+"
+    )
+    titles = {i["title"] for i in items}
+    assert titles == {"Senior Services & the Senior Center at the Farmer's Market"}
+    assert "All Events" not in titles
+    assert "Story Times" not in titles
+
+
+@patch("fetchers.requests.get")
 def test_fetch_html_events_falls_back_to_default_keywords_when_none_given(mock_get):
     mock_get.return_value = _mock_response(SAMPLE_HTML)
     items = fetch_html_events("https://example.org/events", keywords=None)
