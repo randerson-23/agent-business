@@ -11,10 +11,10 @@
 #     results, e.g. vah.com/news_detail_T13_R565.php) - used as
 #     detail_link_pattern so this should work on the first real run,
 #     unlike Mount Prospect's village news which took two iterations.
-#   - Library Events: AHML (ahml.info/attend/events) - platform/link
-#     structure unconfirmed, using keyword fallback like Mount Prospect's
-#     library did before its real structure was found. May need a
-#     detail_link_pattern added once we see real output.
+#   - Library Events: AHML (ahml.info/attend/events) runs a Drupal calendar;
+#     confirmed 2026-08-28 that each event links to
+#     /scheduling/reservation/<id>, now used as detail_link_pattern instead
+#     of the generic keyword fallback.
 #   - Park District Events: ahpd.org runs on the same "Tribe Events"
 #     WordPress plugin as Mount Prospect's park district (confirmed by its
 #     /events/tag/.../YYYY-MM/ URL structure), so the same ICS export query
@@ -53,6 +53,14 @@ sources:
   - name: "Arlington Heights Memorial Library — Events"
     type: html_events
     url: "https://www.ahml.info/attend/events"
+    # AHML runs a Drupal calendar (Views + Calendar module). Every real
+    # event's title links to its modal detail view at
+    # /scheduling/reservation/<numeric id> (confirmed 2026-08-28 from a
+    # copied event link and page source: an <h4 class="event_title"> with
+    # <a class="use-ajax" href="/scheduling/reservation/218675">). Using
+    # that as detail_link_pattern, same fix that corrected Mount
+    # Prospect's library and Arlington Heights' own village news source.
+    detail_link_pattern: "scheduling/reservation/\\d+"
     keywords: ["event", "class", "program", "story", "camp", "concert", "workshop", "book"]
     section: "Library Events"
     enabled: true
