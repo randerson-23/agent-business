@@ -1138,14 +1138,26 @@ features, or the build cadence needs to rise.
     found so far, and since it is the Village's own, the right posture is
     to aggregate and credit it, not to try to outrank it.
 
-42. **Seasonal circuit guides — farmers markets, Oktoberfest, restaurant
-    weeks.** WBEZ, the Sun-Times, WTTW and Secret Chicago all publish
-    annual suburban farmers-market guides, so the format is proven and
-    competitive at metro scale — but none of them work at ZIP granularity,
-    which is exactly the gap this site occupies. A concrete near-term hook
-    exists: Downtown Mount Prospect's Oktoberfest & Fall Festival, Sept
-    18–19 2026. Feeds the guides machinery already built in items 5 and 15,
-    so this is content and config rather than new code.
+42. ✅ done (Mount Prospect). **Seasonal circuit guides — farmers markets,
+    Oktoberfest, restaurant weeks.** WBEZ, the Sun-Times, WTTW and Secret
+    Chicago all publish annual suburban farmers-market guides, so the
+    format is proven and competitive at metro scale — but none of them
+    work at ZIP granularity, which is exactly the gap this site occupies.
+    Added a "Seasonal Circuit Guide" to Mount Prospect covering the
+    downtown fall festival (linked to `mpdowntown.com`, the merchants
+    association's own site), the Village-run farmers market/seasonal
+    events (linked to the Village Calendar source added this session),
+    and Park District seasonal programming. Deliberately didn't repeat the
+    research pass's specific "Sept 18–19 2026" date claim in the guide
+    itself — a wrong specific date is worse than none, and the whole point
+    of linking to the organizers' own pages is that they're where that
+    year's real schedule actually lives, same discipline as the fall
+    family and birthday-party guides. **Arlington Heights doesn't have
+    this guide yet** — its equivalent of `mpdowntown.com` (a downtown
+    merchants body) hasn't been confirmed to exist or found, so nothing
+    was invented for it; add it once a real link surfaces, the same way
+    AHML's and the Village's real link structures got confirmed this
+    session.
 
 ## Working agreements for autonomous iteration
 

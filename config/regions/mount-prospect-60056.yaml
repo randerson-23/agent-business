@@ -161,3 +161,24 @@ guides:
         detail: "Private businesses appear here as they join the local directory — see what's currently listed."
         url: "https://randerson-23.github.io/agent-business/mount-prospect-60056/directory/"
         tags: ["kid_friendly"]
+
+  # ROADMAP.md Phase 11 #42 - the recurring seasonal happenings families
+  # ask about year after year. Same discipline as the guides above: no
+  # invented dates (a wrong specific date is worse than no date), just
+  # real, standing pages where that year's actual schedule lives.
+  - slug: "seasonal-circuit-guide"
+    title: "Seasonal Circuit Guide"
+    summary: "The recurring seasonal happenings Mount Prospect families ask about year after year — the downtown fall festival, farmers market season, and Park District seasonal programming. Links to the real organizers' own pages, where each year's exact dates actually get posted."
+    items:
+      - title: "Downtown Mount Prospect Oktoberfest & Fall Festival"
+        detail: "Downtown Mount Prospect's annual fall festival, hosted by the Downtown Merchants — dates and details are announced on their own site each year."
+        url: "https://mpdowntown.com/"
+        tags: ["outdoor"]
+      - title: "Village-run seasonal events & farmers market"
+        detail: "The Village's calendar posts each year's seasonal community events, including the downtown farmers market when it's in season — check for the current schedule."
+        url: "https://www.mountprospect.org/services/calendar"
+        tags: ["outdoor", "free"]
+      - title: "Seasonal programs — Mount Prospect Park District"
+        detail: "The Park District runs its own seasonal programming and community events year-round — browse the current program guide for what's on."
+        url: "https://www.mppd.org/"
+        tags: ["outdoor", "kid_friendly"]
