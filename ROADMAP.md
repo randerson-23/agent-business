@@ -1071,6 +1071,74 @@ produces evidence for that conversation.
     owner's time budget works at all — subscribers demand support, refunds
     and churn handling; sponsors don't. The site stays free to readers.
 
+#### Research pass 2026-08-28 (sixth pass)
+
+This pass ran the periodic SERP re-check instead of hunting new features,
+and it turned up the most important finding since the moat note in the
+third pass — plus two local players six passes of research had missed.
+
+**Process note first:** the open backlog went from 8 items to 10 across
+this cycle. Research is outpacing implementation. Until it drains, passes
+should stay small and diagnostic (like this one) rather than adding
+features, or the build cadence needs to rise.
+
+| Angle | Finding | Consequence |
+|---|---|---|
+| **SERP re-check** (target query: "things to do in Mount Prospect IL this weekend") | Results are Eventbrite, TripAdvisor, Meetup, Groupon, AllEvents, plus `experiencemountprospect.org` and `mpdowntown.com`. **This site appears nowhere** | Everything shipped in Phase 9 and items 22/28 is compounding into an address with no domain behind it |
+| **`mpdowntown.com`** — Mount Prospect Downtown Merchants | An *association* whose members are precisely the target member businesses | Sell once to the association instead of fifty times to its members |
+| **`experiencemountprospect.org`** — the Village's own tourism site | The closest thing to a direct competitor found in six passes, and it belongs to the Village | Both a competitor to read and a source to fetch |
+| **Seasonal circuits** | WBEZ, Sun-Times, WTTW and Secret Chicago all run annual suburban farmers-market guides; none at ZIP granularity. Downtown Oktoberfest & Fall Festival is Sept 18–19, 2026 | Proven guide format, unoccupied at the local level |
+
+#### P1 (new)
+
+39. **The site is invisible, and the fix needs Ryan, not the build loop.**
+    The target query returns seven other results and none of them are this
+    site. **Stated honestly:** a web-search sample is not a definitive
+    Google SERP, and a site this young would not rank yet regardless — so
+    treat this as a strong signal, not proof. But the structural cause is
+    not in doubt: the site still lives on a `github.io` path, and Phase 9's
+    domain decision has sat open and unresolved since the first day. Every
+    SEO and GEO item shipped since — canonical tags, sitemap, JSON-LD,
+    `llms.txt`, entity naming, freshness signals — is accruing to an
+    address that nobody will link to, cite, or take seriously in a sponsor
+    pitch. **This is the single blocking action only the owner can take:**
+    pick a domain from the Phase 9 shortlist, register it, and point Pages
+    at it. Until that happens, further SEO work has sharply diminishing
+    returns, and this item should stay at the top of the list as a standing
+    reminder.
+
+40. **Pitch the Downtown Merchants Association, not businesses one at a
+    time.** `mpdowntown.com` is the Mount Prospect Downtown Merchants — an
+    organised body whose membership *is* the target customer list for the
+    annual memberships shipped in PR #50. One conversation with an
+    association could place many memberships; the current plan is fifty
+    individual cold emails. For an owner with 30–60 minutes a month, this
+    is the highest-leverage sales motion available, and it is the kind of
+    thing no amount of site polish substitutes for. Add an
+    association-pitch template to `OUTREACH_TEMPLATES.md` alongside the
+    per-business ones. Arlington Heights has an equivalent body; assume
+    every region does.
+
+#### P2 (new)
+
+41. **Add `experiencemountprospect.org` and `mpdowntown.com` as sources.**
+    Two live, local, currently-unfetched event feeds — the Village's own
+    tourism site and the downtown merchants' events page. A straight
+    extension of `config/regions/mount-prospect-60056.yaml`, fail-soft like
+    every other source. Worth noting the competitive angle too: the
+    Village's tourism site is the nearest thing to a direct competitor
+    found so far, and since it is the Village's own, the right posture is
+    to aggregate and credit it, not to try to outrank it.
+
+42. **Seasonal circuit guides — farmers markets, Oktoberfest, restaurant
+    weeks.** WBEZ, the Sun-Times, WTTW and Secret Chicago all publish
+    annual suburban farmers-market guides, so the format is proven and
+    competitive at metro scale — but none of them work at ZIP granularity,
+    which is exactly the gap this site occupies. A concrete near-term hook
+    exists: Downtown Mount Prospect's Oktoberfest & Fall Festival, Sept
+    18–19 2026. Feeds the guides machinery already built in items 5 and 15,
+    so this is content and config rather than new code.
+
 ## Working agreements for autonomous iteration
 
 - Cadence is hourly (the platform's durable scheduler has a 1-hour floor;
