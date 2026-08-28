@@ -110,3 +110,35 @@ Worth a short call to see if it fits how you're already budgeting for
 Thanks,
 [Your name]
 Weekend & Trip Planner — https://randerson-23.github.io/agent-business/
+
+## 6. Downtown merchants association pitch
+
+Subject: A membership offer for [Association Name] members
+
+Hi [Contact Name],
+
+I run Weekend & Trip Planner, a free weekly digest of what's happening
+in [region] — village news, library events, and Park District programs,
+read by local families every week. Rather than reach out to your member
+businesses one at a time, I wanted to bring this to [Association Name]
+directly, since your membership is close to exactly who the site
+already reaches families for.
+
+The offer: any current [Association Name] member who signs up for an
+Annual Partner membership ($1,200/year normally) in [month/window] gets
+[15]% off. Every member who joins gets a permanent listing on the
+region's business directory page and a spotlight placement inside a
+seasonal guide — those aren't exclusive, so as many members as want in
+can all have them at once. One honest caveat worth being upfront about:
+the front-page "Local Recommendation" placement itself is a single
+rotating slot per region, not something every member gets
+simultaneously — happy to talk through how that works for a group of
+sign-ups.
+
+I can put together a one-pager or do a five-minute rundown at an
+upcoming meeting, whichever's easier — no obligation, and happy to send
+a sample issue first.
+
+Thanks,
+[Your name]
+Weekend & Trip Planner — https://randerson-23.github.io/agent-business/

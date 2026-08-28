@@ -1107,17 +1107,25 @@ features, or the build cadence needs to rise.
     returns, and this item should stay at the top of the list as a standing
     reminder.
 
-40. **Pitch the Downtown Merchants Association, not businesses one at a
-    time.** `mpdowntown.com` is the Mount Prospect Downtown Merchants — an
-    organised body whose membership *is* the target customer list for the
-    annual memberships shipped in PR #50. One conversation with an
+40. ✅ done. **Pitch the Downtown Merchants Association, not businesses one
+    at a time.** `mpdowntown.com` is the Mount Prospect Downtown Merchants —
+    an organised body whose membership *is* the target customer list for
+    the annual memberships shipped in PR #50. One conversation with an
     association could place many memberships; the current plan is fifty
     individual cold emails. For an owner with 30–60 minutes a month, this
     is the highest-leverage sales motion available, and it is the kind of
-    thing no amount of site polish substitutes for. Add an
-    association-pitch template to `OUTREACH_TEMPLATES.md` alongside the
-    per-business ones. Arlington Heights has an equivalent body; assume
-    every region does.
+    thing no amount of site polish substitutes for. Added Template #6,
+    "Downtown merchants association pitch," to `OUTREACH_TEMPLATES.md`
+    alongside the per-business ones: it frames a group discount (default
+    15% off Annual Partner, `[month/window]`-bounded), is explicit that the
+    directory listing and guide spotlight are non-exclusive (every joining
+    member gets both at once) while the front-page rotating recommendation
+    slot stays a single per-region seat, and offers a one-pager or a
+    five-minute meeting rundown as the low-friction next step. Written
+    generically (`[Association Name]`, `[region]`) so it applies to
+    Arlington Heights' equivalent body too, not just Mount Prospect's —
+    every region is assumed to have one. This is a sales-copy change only;
+    no code or template logic touched.
 
 #### P2 (new)
 
