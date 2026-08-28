@@ -883,6 +883,93 @@ it matter twice over, since an event an AI can't read a start time from is
 an event it won't cite. It is now the oldest unfinished thing blocking the
 newest priority.
 
+#### Research pass 2026-08-28 (fourth pass)
+
+This pass went looking for the closest *business* analogue rather than more
+features, and found one. The finding is about pricing structure, not UI.
+
+First, a correction owed from the third pass: item 19 (pure-CSS
+`animation-timeline: view()`) was **wrong**, and item 26's CI budget caught
+it on GitHub's real runner — an LCP regression and then a fatal TBT
+regression, neither reproducible in the sandbox. That is the perf budget
+paying for itself in its first week, and the standing lesson is that any
+change whose cost only shows up on a real network stays gated behind it.
+
+| Angle | Finding | Worth stealing |
+|---|---|---|
+| **Family Focus Media** (Main Line Parent / Philadelphia Family / Bucks County Parent, est. 2010) | The closest analogue to this business that exists. Monetizes via annual **memberships**, explicitly to reduce "dependence on advertising dollars". Members get a profile page, directory listing, spotlight inside guides, SEO backlinks, social promotion, priority event coverage | The whole pricing model — and every one of those member benefits is a feature this site already shipped |
+| **Real-estate agents as a sponsor category** | Agents budget **$500–$1,500/month** to "farm" a ~400-home neighborhood across direct mail, digital and event sponsorship. The stated goal is to be seen as *the* local authority | A category whose budget is 3–8× the current top price, wanting exactly what a town events guide confers |
+| **Weekend-newsletter send timing** | Both Main Line Parent and Philadelphia Family send their weekend planner **Thursday afternoon** | Sharpens open item 24 from "Tue–Thu" to a specific slot two independent analogues converged on |
+| **School / youth-sports calendars** | Districts publish academic calendars, early dismissals and game schedules publicly; no local competitor aggregates them | A data source, not a feature — and a genuine gap |
+| **2026 premium design direction** | Sophisticated serif + warm champagne-toned neutrals; the high-contrast 2022–23 era is softening; transitions that never call attention to themselves; 60fps or don't ship | A palette pass, gated behind item 26 |
+
+#### P1 (new)
+
+29. **Reprice around annual memberships, not weekly ad slots.** Family
+    Focus Media has run this exact business for 15 years and sells
+    *memberships* — a profile page, a directory listing, a spotlight inside
+    the guides, SEO backlinks, priority event coverage. Every one of those
+    already exists here: the sponsor page (item 3), the guides (items 5 and
+    15), the directory (item 6). Only the packaging is missing.
+    **Why this is the highest-leverage item on the board:** a membership
+    renews once a year; a weekly sponsor slot must be re-sold roughly fifty
+    times a year. `BUSINESS_PLAN.md` budgets 30–60 minutes a month for
+    sponsor work, and the current weekly-slot model quietly breaks that
+    promise the moment it succeeds. Restructure `SPONSOR_KIT.md` and the
+    `/sponsor` page around an annual membership with the weekly slot as an
+    add-on, not the core product.
+
+30. **Add a real-estate tier, and raise the ceiling.** Agents run
+    $500–$1,500/month neighborhood farming budgets, and hyperlocal
+    marketing's explicit purpose is to make one agent *the* local
+    authority — which is what a permanent, exclusive position on the
+    town's events guide confers better than a postcard does. Current
+    pricing tops out at $175/month, i.e. 12–30% of one agent's monthly
+    budget for a single neighborhood. Add a region-exclusive premium tier
+    priced for that category, and pitch it honestly: hyperlocal ROI for
+    agents is low in year one and high in year three, so the offer is
+    *presence and authority*, not leads. Depends on item 29 for the
+    packaging.
+
+#### P2 (new)
+
+31. **Send the weekend email Thursday afternoon.** A refinement of open
+    item 24, not a replacement. Both Main Line Parent and Philadelphia
+    Family send their weekend planner Thursday PM — two independent
+    analogues converging on the same slot is a stronger signal than the
+    generic Tue–Thu benchmark from the third pass. Ship item 24 with a
+    Thursday-afternoon send.
+
+32. **School district and youth-sports calendars as a data source.** This
+    is a gap rather than a feature to copy: no local competitor aggregates
+    them, and for a family suburb the school calendar — early dismissals,
+    no-school days, concerts, games — is a large share of what a parent's
+    week actually contains. Would add sources to `config/regions/*.yaml`
+    for District 57 and Township High School District 214.
+    **Verify before shipping:** confirm each district publishes a calendar
+    feed intended for public syndication, and keep it fail-soft like every
+    other source. Strengthens the civic-feed moat that already separates
+    this site from Eventbrite and AllEvents.
+
+#### P3 (new)
+
+33. **Local-group distribution, in the low-effort form only.** The
+    analogues all run companion Facebook communities, and local parent
+    groups are where "what's happening this weekend?" actually gets asked.
+    A managed community is squarely against the near-zero-time constraint,
+    so do **not** build one. The version that fits: auto-generate a short,
+    copy-pasteable weekly summary block the owner can drop into an existing
+    group in thirty seconds. Distribution without moderation duty.
+
+34. **A considered palette pass.** 2026's premium direction is
+    sophisticated serif with warm, champagne-toned neutrals — softer than
+    the high-contrast era — plus transitions that never announce
+    themselves. The Fraunces/Inter pairing already fits; the current
+    cool-green palette is the part that reads a generation older. Worth a
+    deliberate pass, **gated behind item 26's CI budget** — see the item 19
+    postmortem above for why anything touching paint or motion now earns
+    that gate.
+
 ## Working agreements for autonomous iteration
 
 - Cadence is hourly (the platform's durable scheduler has a 1-hour floor;
