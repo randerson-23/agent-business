@@ -505,12 +505,48 @@
   </div>
 
   
+  <div class="filter-bar" role="group" aria-label="Filter events">
+    
+    <button type="button" class="filter-chip" data-tag="art_culture" aria-pressed="false">
+      <span aria-hidden="true">🎨</span>Arts &amp; culture
+    </button>
+    
+    <button type="button" class="filter-chip" data-tag="indoor" aria-pressed="false">
+      <span aria-hidden="true">🏠</span>Indoor
+    </button>
+    
+    <button type="button" class="filter-chip clear" id="clear-filters">Clear filters</button>
+  </div>
+  <div class="sr-only" id="filter-status" aria-live="polite"></div>
+  
 
   
   <section class="block">
     <h2>Today in Mount Prospect</h2>
     
-      <p class="empty">Nothing dated for today yet — check back, or see all events.</p>
+      <div class="card-grid">
+      
+      
+      <div class="card" data-tags="art_culture,indoor">
+        <button type="button" class="tray-star" data-item='{"date": "Aug 28", "date_iso": "2026-08-28T16:00:00+00:00", "detail": "Friday, August 28 2026 4:00pm - 6:30pm \n Join us for an early viewing of Tiny Art Show submissions and enjoy light refreshments!", "id": "https://mppl.libnet.info/event/15872923", "region_name": "Mount Prospect", "region_url": "https://randerson-23.github.io/agent-business/mount-prospect-60056/", "title": "Tiny Art Show: Sneak Preview Party", "url": "https://mppl.libnet.info/event/15872923"}' aria-pressed="false" aria-label="Add Tiny Art Show: Sneak Preview Party to My Weekend">☆</button>
+        <div class="date">Aug 28</div>
+        <h3><a href="https://mppl.libnet.info/event/15872923">Tiny Art Show: Sneak Preview Party</a></h3>
+        <p class="detail">Friday, August 28 2026 4:00pm - 6:30pm 
+ Join us for an early viewing of Tiny Art Show submissions and enjoy light refreshments!</p>
+        
+        <div class="tag-row">
+          <span class="tag-badge" style="background: var(--hue-purple-bg); color: var(--hue-purple-ink);">🎨 Arts &amp; culture</span><span class="tag-badge" style="background: var(--hue-blue-bg); color: var(--hue-blue-ink);">🏠 Indoor</span>
+        </div>
+        
+        
+        <div class="cal-row">
+          <a href="data:text/calendar;charset=utf-8,BEGIN%3AVCALENDAR%0D%0AVERSION%3A2.0%0D%0APRODID%3A-//Weekend%20Trip%20Planner//EN%0D%0ABEGIN%3AVEVENT%0D%0ADTSTART%3A20260828T160000%0D%0ADTEND%3A20260828T170000%0D%0ASUMMARY%3ATiny%20Art%20Show%3A%20Sneak%20Preview%20Party%0D%0ADESCRIPTION%3AFriday%5C%2C%20August%2028%202026%204%3A00pm%20-%206%3A30pm%20%5Cn%20Join%20us%20for%20an%20early%20viewing%20of%20Tiny%20Art%20Show%20submissions%20and%20enjoy%20light%20refreshments%21%0D%0AURL%3Ahttps%3A//mppl.libnet.info/event/15872923%0D%0AEND%3AVEVENT%0D%0AEND%3AVCALENDAR%0D%0A" download="event.ics">📅 Add to calendar</a>
+          <a href="https://www.google.com/calendar/render?action=TEMPLATE&amp;text=Tiny+Art+Show%3A+Sneak+Preview+Party&amp;dates=20260828T160000%2F20260828T170000&amp;details=Friday%2C+August+28+2026+4%3A00pm+-+6%3A30pm+%0A+Join+us+for+an+early+viewing+of+Tiny+Art+Show+submissions+and+enjoy+light+refreshments%21&amp;location=Mount+Prospect" target="_blank" rel="noopener">Google Calendar</a>
+        </div>
+        
+      </div>
+      
+      </div>
     
   </section>
   
@@ -533,7 +569,7 @@
   <footer>
     Local business? See the
     <a href="https://randerson-23.github.io/agent-business/sponsor/">sponsor page</a>.
-    <br>Generated 2026-08-28 06:58 UTC.
+    <br>Generated 2026-08-28 13:22 UTC.
     
     <br><a href="https://randerson-23.github.io/agent-business/mount-prospect-60056/weekly-summary.txt">Copy this week's summary</a> — a plain-text block ready to paste into a local group.
   </footer>
@@ -556,8 +592,10 @@
 </div>
 
 
+<script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "Event", "name": "Tiny Art Show: Sneak Preview Party", "url": "https://mppl.libnet.info/event/15872923", "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode", "location": {"@type": "Place", "name": "Mount Prospect", "address": {"@type": "PostalAddress", "addressRegion": "IL", "postalCode": "60056", "addressCountry": "US"}}, "description": "Friday, August 28 2026 4:00pm - 6:30pm \n Join us for an early viewing of Tiny Art Show submissions and enjoy light refreshments!", "startDate": "2026-08-28T16:00:00+00:00"}]}</script>
 
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebPage", "name": "Mount Prospect — Weekend & Trip Planner", "url": "https://randerson-23.github.io/agent-business/mount-prospect-60056/today/", "dateModified": "2026-08-28T06:58:56.607018+00:00", "isPartOf": {"@type": "WebSite", "name": "Weekend & Trip Planner", "url": "https://randerson-23.github.io/agent-business/"}}</script>
+
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebPage", "name": "Mount Prospect — Weekend & Trip Planner", "url": "https://randerson-23.github.io/agent-business/mount-prospect-60056/today/", "dateModified": "2026-08-28T13:22:58.160719+00:00", "isPartOf": {"@type": "WebSite", "name": "Weekend & Trip Planner", "url": "https://randerson-23.github.io/agent-business/"}}</script>
 <script>
 (function () {
   var activeTags = new Set();
