@@ -949,6 +949,24 @@ def test_render_region_page_title_uses_canonical_site_name():
     assert "Weekend Planner<" not in html
 
 
+def test_render_region_page_instruments_sponsor_click_when_analytics_configured():
+    sponsor = {"title": "Acme Dentistry", "detail": "Gentle with kids.", "url": "https://acme.example/", "is_active_sponsor": True}
+    html = build_digest.render_region_page(
+        {"region": REGION}, [], sponsor, [], datetime.now(timezone.utc),
+        analytics={"configured": True, "goatcounter_code": "example"},
+    )
+    assert 'data-goatcounter-click="sponsor-click-mount-prospect-60056"' in html
+
+
+def test_render_region_page_omits_sponsor_click_tracking_when_analytics_unconfigured():
+    sponsor = {"title": "Acme Dentistry", "detail": "Gentle with kids.", "url": "https://acme.example/", "is_active_sponsor": True}
+    html = build_digest.render_region_page(
+        {"region": REGION}, [], sponsor, [], datetime.now(timezone.utc),
+        analytics={"configured": False, "goatcounter_code": None},
+    )
+    assert "data-goatcounter-click" not in html
+
+
 def test_build_guide_faq_returns_four_real_questions():
     region = {"name": "Mount Prospect", "zip": "60056", "state": "IL"}
     faq = build_digest.build_guide_faq(region, "https://example.org/mount-prospect-60056/")
