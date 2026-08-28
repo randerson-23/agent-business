@@ -4,12 +4,15 @@
 # scripts/build_digest.py, then listed together on the hub page — this is
 # the template for adding more ZIP codes later (see ROADMAP.md Phase 5).
 #
-# Status as of 2026-08-26 (see live output on main):
+# Status as of 2026-08-28 (see live output on main):
 #   - Village News:         Switched from a guessed RSS URL (never found -
 #     the CivicPlus "list all RSS feed" page doesn't expose a plain link,
 #     it needs a category picked first) to scraping the real news listing
 #     page directly, same approach as the library. Not yet confirmed
 #     against a live run.
+#   - Village Events:       New 2026-08-28. The footer RSS icon isn't a
+#     real public feed, so this scrapes the Calendar page directly with a
+#     confirmed detail_link_pattern. Not yet confirmed against a live run.
 #   - Library Events:       Switched 2026-08-28 to the library's real RSS
 #     feed (found by the site owner) instead of HTML scraping. Not yet
 #     confirmed against a live run.
@@ -45,6 +48,21 @@ sources:
     # Tuned for news-listing link text instead of the events default.
     keywords: ["news", "board", "meeting", "closure", "closed", "notice", "advisory", "alert", "update"]
     section: "Village News"
+    enabled: true
+
+  - name: "Village of Mount Prospect — Calendar"
+    type: html_events
+    # The site's footer RSS icon isn't a real public feed (it's tied to the
+    # eNotification subscription system, not a plain URL) - this scrapes
+    # the actual Calendar page instead. Confirmed 2026-08-28 from a real
+    # event link and page source the owner supplied: the Village runs a
+    # Vision Internet-style CMS where every calendar event links to
+    # /Home/Components/Calendar/Event/<event id>/<section navid>, e.g.
+    # /Home/Components/Calendar/Event/27357/1044 (1044 = the Calendar
+    # section's own navid, confirmed against the site's nav menu markup).
+    url: "https://www.mountprospect.org/services/calendar"
+    detail_link_pattern: "Home/Components/Calendar/Event/\\d+/\\d+"
+    section: "Village Events"
     enabled: true
 
   - name: "Mount Prospect Public Library — Events"

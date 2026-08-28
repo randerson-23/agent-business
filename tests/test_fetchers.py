@@ -215,6 +215,36 @@ def test_fetch_html_events_ahml_drupal_calendar_uses_reservation_link_pattern(mo
 
 
 @patch("fetchers.requests.get")
+def test_fetch_html_events_mount_prospect_calendar_uses_event_link_pattern(mock_get):
+    # mountprospect.org (Village of Mount Prospect) runs a Vision
+    # Internet-style CMS calendar; each real event links to
+    # /Home/Components/Calendar/Event/<event id>/<section navid> - e.g.
+    # /Home/Components/Calendar/Event/27357/1044 - confirmed 2026-08-28
+    # from a real event link and page source the site owner supplied. The
+    # site's main nav links (unrelated /Home/... paths) must not match.
+    html = (
+        '<td class="calendar_weekendday calendar_day_with_items">'
+        '<div class="calendar_items"><div class="calendar_item">'
+        '<span class="calendar_eventtime">9:00 AM</span>'
+        '<a class="calendar_eventlink" '
+        'href="/Home/Components/Calendar/Event/27357/1044?curm=9&amp;cury=2026" '
+        'title="Coffee with Council">Coffee with Council</a>'
+        "</div></div></td>"
+        '<a href="/services/calendar">Village Calendar</a>'
+        '<a href="/home">Village Home Page</a>'
+    )
+    mock_get.return_value = _mock_response(html)
+    items = fetch_html_events(
+        "https://www.mountprospect.org/services/calendar",
+        detail_link_pattern=r"Home/Components/Calendar/Event/\d+/\d+",
+    )
+    titles = {i["title"] for i in items}
+    assert titles == {"Coffee with Council"}
+    assert "Village Calendar" not in titles
+    assert "Village Home Page" not in titles
+
+
+@patch("fetchers.requests.get")
 def test_fetch_html_events_falls_back_to_default_keywords_when_none_given(mock_get):
     mock_get.return_value = _mock_response(SAMPLE_HTML)
     items = fetch_html_events("https://example.org/events", keywords=None)
