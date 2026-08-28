@@ -221,7 +221,10 @@
     border-radius: var(--radius-lg);
     box-shadow: var(--shadow-sm);
     padding: 14px 18px 8px;
-    margin-bottom: 18px;
+    margin: 0 auto 18px;
+    /* ~1/4 the .wrap's 960px max-width; min() keeps it from overflowing
+       narrow viewports instead of needing a separate mobile override. */
+    max-width: min(240px, 100%);
   }
   .map-card svg {
     width: 100%;
@@ -449,7 +452,7 @@
   <footer>
     Want your ZIP added, or want to sponsor a region?
     <a href="sponsor/">See pricing &amp; availability</a>.
-    <br>Generated 2026-08-28 18:58 UTC.
+    <br>Generated 2026-08-28 20:16 UTC.
     
   </footer>
   </div>
