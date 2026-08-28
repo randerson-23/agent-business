@@ -725,7 +725,7 @@ def test_render_hub_page_includes_canonical_link():
 
 
 def test_build_event_json_ld_returns_none_for_no_events():
-    assert build_digest.build_event_json_ld(REGION, [{"section": "News", "events": []}]) is None
+    assert build_digest.build_event_json_ld([{"section": "News", "events": []}]) is None
 
 
 def test_build_event_json_ld_produces_valid_json_with_expected_fields():
@@ -744,14 +744,38 @@ def test_build_event_json_ld_produces_valid_json_with_expected_fields():
             ],
         }
     ]
-    result = build_digest.build_event_json_ld(REGION, blocks)
+    result = build_digest.build_event_json_ld(blocks)
     payload = _json.loads(result)
     assert payload["@context"] == "https://schema.org"
     event = payload["@graph"][0]
     assert event["@type"] == "Event"
     assert event["name"] == "Fishing Derby"
     assert event["startDate"] == "2026-09-19T10:00:00"
-    assert event["location"]["address"]["postalCode"] == "60056"
+
+
+def test_build_event_json_ld_omits_location_without_a_real_venue():
+    # ROADMAP.md's seventh research pass: region-level location (town
+    # centre) used to be emitted as an approximation. Once AI systems
+    # cross-reference schema against live sources, an event at a specific
+    # venue marked up with the town centre reads as wrong, not
+    # approximate - so no venue data means no location claim at all.
+    blocks = [
+        {
+            "section": "Park District Events",
+            "events": [
+                {
+                    "title": "Fishing Derby",
+                    "detail": "",
+                    "url": "https://example.org/fishing",
+                    "date_iso": "2026-09-19T10:00:00",
+                }
+            ],
+        }
+    ]
+    import json as _json
+
+    payload = _json.loads(build_digest.build_event_json_ld(blocks))
+    assert "location" not in payload["@graph"][0]
 
 
 def test_build_event_json_ld_escapes_script_close_tag():
@@ -768,7 +792,7 @@ def test_build_event_json_ld_escapes_script_close_tag():
             ],
         }
     ]
-    result = build_digest.build_event_json_ld(REGION, blocks)
+    result = build_digest.build_event_json_ld(blocks)
     assert "</script>" not in result
 
 
@@ -786,7 +810,7 @@ def test_build_event_json_ld_excludes_undated_items():
             ],
         }
     ]
-    result = build_digest.build_event_json_ld(REGION, blocks)
+    result = build_digest.build_event_json_ld(blocks)
     import json as _json
 
     payload = _json.loads(result)
@@ -796,7 +820,7 @@ def test_build_event_json_ld_excludes_undated_items():
 
 def test_build_event_json_ld_skips_events_missing_title_or_url():
     blocks = [{"section": "News", "events": [{"title": "", "url": "https://x/", "detail": ""}]}]
-    assert build_digest.build_event_json_ld(REGION, blocks) is None
+    assert build_digest.build_event_json_ld(blocks) is None
 
 
 def test_build_sitemap_xml_lists_hub_and_region_urls():

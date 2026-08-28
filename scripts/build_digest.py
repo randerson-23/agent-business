@@ -611,7 +611,7 @@ def build_freshness_json_ld(region: dict, canonical_url: str, now: datetime) -> 
     return json.dumps(payload, ensure_ascii=False).replace("</", "<\\/")
 
 
-def build_event_json_ld(region: dict, blocks: list[dict]) -> str | None:
+def build_event_json_ld(blocks: list[dict]) -> str | None:
     """schema.org/Event structured data for fetched events that have a
     real date (not the evergreen resource listings, and not an
     undated item - an "Event" with no date isn't a meaningful event,
@@ -620,10 +620,17 @@ def build_event_json_ld(region: dict, blocks: list[dict]) -> str | None:
     them apart here). Returns None when there's nothing to embed rather
     than emitting an empty, pointless script block.
 
-    Location is region-level (town + state + zip), not per-venue - we
-    don't have structured addresses from the fetchers today. That's an
-    honest approximation, not a precise one; schema.org doesn't require
-    more precision than the data actually supports.
+    No `location` is emitted: we don't have structured per-venue addresses
+    from the fetchers, only the region (town + state + zip). Region-level
+    location used to be emitted as an honest approximation - fine while
+    the worst case was "less precise than it could be." ROADMAP.md's
+    seventh research pass flagged that this stops being sound once AI
+    systems cross-reference schema claims against live sources: an event
+    at a specific venue, marked up with the town centre as its location,
+    reads as *wrong* rather than *approximate*. A missing property costs
+    a rich-result opportunity; a false one costs trust - so this omits
+    location entirely rather than asserting one it can't back up. Revisit
+    once real per-venue addresses exist (Phase 8's parked geocoding note).
     """
     events = [e for b in blocks for e in b["events"] if e.get("title") and e.get("url") and e.get("date_iso")]
     if not events:
@@ -635,16 +642,6 @@ def build_event_json_ld(region: dict, blocks: list[dict]) -> str | None:
             "name": e["title"],
             "url": e["url"],
             "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-            "location": {
-                "@type": "Place",
-                "name": region["name"],
-                "address": {
-                    "@type": "PostalAddress",
-                    "addressRegion": region["state"],
-                    "postalCode": region["zip"],
-                    "addressCountry": "US",
-                },
-            },
         }
         if e.get("detail"):
             entry["description"] = e["detail"]
@@ -703,7 +700,7 @@ def render_region_page(
         evergreen=evergreen,
         available_tags=all_tags_present(all_events_flat),
         canonical_url=canonical_url,
-        event_json_ld=build_event_json_ld(region, blocks),
+        event_json_ld=build_event_json_ld(blocks),
         freshness_json_ld=build_freshness_json_ld(region, canonical_url, now),
         answer_block=answer_block,
         faq=faq,
