@@ -516,6 +516,22 @@ def build_answer_block(region: dict) -> str:
     )
 
 
+def build_region_map_embed_url(region: dict) -> str | None:
+    """A free, keyless Google Maps iframe embed centered on the region's
+    coordinates - real streets, pan/zoom, no API key or Google Cloud
+    billing account required. This is the classic `maps.google.com/maps?
+    q=...&output=embed` format countless small-business "find us" pages
+    use, distinct from the Maps Embed/JavaScript APIs that do require a
+    key. Confident this still works from training knowledge, not
+    confirmed live - this sandbox has no network access to Google.
+    Returns None when a region has no lat/lon rather than guessing one.
+    """
+    lat, lon = region.get("lat"), region.get("lon")
+    if lat is None or lon is None:
+        return None
+    return f"https://maps.google.com/maps?q={lat},{lon}&z=14&output=embed"
+
+
 def build_guide_faq(region: dict, region_base_url: str) -> list[dict]:
     """Real, honest FAQ content for a guide page (ROADMAP.md Phase 11 #22
     follow-up) - about how the site itself works, not fabricated facts
@@ -676,6 +692,7 @@ def render_region_page(
     analytics: dict | None = None,
     answer_block: str | None = None,
     include_faq: bool = False,
+    map_embed_url: str | None = None,
 ) -> str:
     env = Environment(loader=FileSystemLoader(str(TEMPLATES_DIR)), autoescape=True)
     template = env.get_template("region.html.j2")
@@ -703,6 +720,7 @@ def render_region_page(
         event_json_ld=build_event_json_ld(blocks),
         freshness_json_ld=build_freshness_json_ld(region, canonical_url, now),
         answer_block=answer_block,
+        map_embed_url=map_embed_url,
         faq=faq,
         faq_json_ld=build_faq_json_ld(faq) if faq else None,
         heading=heading,
@@ -1077,6 +1095,7 @@ def main() -> None:
             analytics=analytics,
             editors_pick=editors_pick,
             answer_block=build_answer_block(region),
+            map_embed_url=build_region_map_embed_url(region),
         )
 
         region_dir = OUTPUT_DIR / region_id
