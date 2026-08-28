@@ -25,6 +25,28 @@ TAG_KEYWORDS: dict[str, tuple[str, ...]] = {
     ),
     "food": ("food", "tasting", "restaurant", "brewery", "bakery", "farmers market"),
     "art_culture": ("art", "museum", "gallery", "concert", "music", "theater", "theatre", "exhibit"),
+    # Age bands, orthogonal to kid_friendly (which stays the broad 0-17
+    # umbrella) - ROADMAP.md Phase 11 #45. "Kid-friendly" spans a 17-year
+    # range; Red Tricycle's flagship improvement on acquisition by
+    # Tinybeans was personalizing by a child's actual age, not just a
+    # blanket "family" flag. A single event can match more than one band
+    # (rare but real, e.g. a mixed-age storytime) - not deduplicated,
+    # same as every other tag here.
+    "toddler": ("toddler", "baby", "babies", "infant", "little ones", "ages 0-2", "ages 1-3", "ages 2-3"),
+    "elementary": (
+        "elementary", "school age", "school-age", "kindergarten", "grade school",
+        "ages 5-10", "ages 6-10", "grades k-5",
+    ),
+    "teen": (
+        # Bare "teen"/"tween" are padded with spaces, same trick as
+        # "free" above - unpadded they're substrings of number words
+        # (thir-TEEN, four-TEEN, be-TWEEN), a real false-positive risk
+        # any event description mentioning a headcount would hit. Their
+        # plural/derived forms don't have this problem (no word ends in
+        # "-teens" or "-tweens"), so those stay unpadded.
+        " teen ", "teens", "teenager", " tween ", "tweens", "middle school",
+        "high school", "young adult", "grades 6-12",
+    ),
 }
 
 # Display metadata for rendering filter chips/badges - label, emoji, and a
@@ -40,6 +62,9 @@ TAG_DISPLAY: dict[str, dict[str, str]] = {
     "outdoor": {"label": "Outdoor", "emoji": "🌳", "hue": "teal"},
     "food": {"label": "Food & drink", "emoji": "🍽️", "hue": "orange"},
     "art_culture": {"label": "Arts & culture", "emoji": "🎨", "hue": "purple"},
+    "toddler": {"label": "Toddler", "emoji": "👶", "hue": "lime"},
+    "elementary": {"label": "Elementary age", "emoji": "🎒", "hue": "cyan"},
+    "teen": {"label": "Teen", "emoji": "🧑", "hue": "indigo"},
 }
 
 

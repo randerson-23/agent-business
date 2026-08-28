@@ -37,11 +37,40 @@ def test_infer_tags_is_case_insensitive_and_sorted():
     assert "kid_friendly" in tags
 
 
+def test_infer_tags_toddler_age_band():
+    tags = infer_tags("Baby & Me Playgroup", "For infants and toddlers ages 0-2.")
+    assert "toddler" in tags
+
+
+def test_infer_tags_elementary_age_band():
+    tags = infer_tags("Elementary STEM Club", "For school age kids in kindergarten through grade 5.")
+    assert "elementary" in tags
+
+
+def test_infer_tags_teen_age_band():
+    tags = infer_tags("Teen Game Night", "Open to middle school and high school students.")
+    assert "teen" in tags
+
+
+def test_infer_tags_teen_does_not_false_positive_on_number_words():
+    # "teen"/"tween" are substrings of number words (thirTEEN, fourTEEN,
+    # beTWEEN) - a headcount in a description shouldn't tag an event as
+    # teen-oriented.
+    tags = infer_tags("Volunteer Cleanup Day", "Thirteen volunteers showed up between 9 and 11am.")
+    assert "teen" not in tags
+
+
 def test_tag_display_known_tag():
     display = tag_display("dog_friendly")
     assert display["label"] == "Dog-friendly"
     assert display["emoji"]
     assert display["hue"] == "amber"
+
+
+def test_tag_display_age_band_tags():
+    assert tag_display("toddler")["hue"] == "lime"
+    assert tag_display("elementary")["hue"] == "cyan"
+    assert tag_display("teen")["hue"] == "indigo"
 
 
 def test_tag_display_unknown_tag_has_safe_fallback():
