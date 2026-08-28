@@ -1176,6 +1176,68 @@ features, or the build cadence needs to rise.
     AHML's and the Village's real link structures got confirmed this
     session.
 
+#### Research pass 2026-08-28 (seventh pass)
+
+Twelve items were open when this ran, so the bar for adding anything was
+high. Three cleared it — two of them **corrections to work already
+shipped**, which is the kind of finding this loop exists to catch.
+
+| Angle | Finding | Consequence |
+|---|---|---|
+| **Google structured-data changes** | Google discontinued FAQ rich results on **2026-05-07**, following HowTo. Event schema still requires name + startDate + physical location; online-only events remain ineligible | The stated justification for PR #46's FAQPage work no longer holds |
+| **Schema accuracy under AI** | In late 2026 AI systems begin cross-referencing schema claims against live sources and **penalising** inaccurate schema rather than ignoring it | The Event `location` approximation changes from harmless to risky |
+| **Red Tricycle / Tinybeans** | Not a cautionary tale — Red Tricycle reached 20M+ monthly users and sold for **$6.5M in 2020**. On consolidation into Tinybeans in 2021, the headline change was personalisation by **children's ages**, location and interests | Local family discovery is a proven, acquirable asset; age is the axis the category leader converged on |
+
+#### P1 (new)
+
+43. **FAQPage schema no longer earns rich results — correct item 22's
+    rationale.** Google discontinued FAQ rich results on 2026-05-07, after
+    the earlier HowTo removal, on the grounds that both created clutter
+    without helping users. PR #46 shipped `build_guide_faq()` and
+    `build_faq_json_ld()` on the explicit rationale of rich-result
+    eligibility, and that rationale is now dead.
+    **Not a request to rip it out:** structured data still feeds AI parsing
+    and E-E-A-T signals, so the markup may still earn its keep — it just
+    earns it for a different reason. What matters is that the roadmap stops
+    carrying a false justification, and that **no further FAQPage work is
+    done for SERP reasons**. Update item 22's notes to say so.
+
+44. **Schema accuracy is becoming a liability, not just a missed
+    opportunity.** `build_event_json_ld()` emits a region-level `location`
+    — town, state, ZIP — rather than the actual venue, documented in the
+    source as an honest approximation because the fetchers don't expose
+    structured addresses. That reasoning was sound when the worst case was
+    "less precise than it could be." It stops being sound once AI systems
+    cross-reference schema against live sources and penalise mismatches:
+    an event at a specific venue, marked up with the town centre, reads as
+    *wrong* rather than *approximate*. Two honest fixes, in order of
+    effort: omit `location` entirely where the venue is unknown (valid
+    schema, no false claim), or finish the geocoding parked in Phase 8's
+    "later" note. Prefer omission — a missing property costs a rich-result
+    opportunity; a false one may soon cost trust.
+
+#### P2 (new)
+
+45. **Age-banded tags: toddler / elementary / teen.** Red Tricycle was the
+    largest parenting brand in local discovery — 20M+ monthly users, sold
+    for $6.5M — and when Tinybeans absorbed it, the flagship improvement
+    was personalisation by children's ages. That is a strong signal about
+    what actually helps a parent. Today "kid-friendly" is a single bucket
+    spanning a seventeen-year range: a toddler storytime and a high-school
+    battle of the bands both carry it, and they are almost never relevant
+    to the same reader. Extend `tagging.py` with age bands using the same
+    keyword-heuristic, fail-soft approach as the existing tags ("storytime",
+    "ages 3–5", "teen", "middle school" are all strong signals), and let
+    curated entries set them explicitly in YAML. Cheap, and it sharpens the
+    filter that matters most to this site's core audience.
+
+**Validation note, worth recording for `BUSINESS_PLAN.md`:** the research
+kept implicitly treating this category as unproven. It isn't. Red Tricycle
+started in 2010 as one founder's side project and sold for $6.5M in 2020,
+and Family Focus Media (fourth pass) has run the same model profitably
+since 2010. The thesis is sound; execution and distribution are the
+variables.
+
 ## Working agreements for autonomous iteration
 
 - Cadence is hourly (the platform's durable scheduler has a 1-hour floor;
