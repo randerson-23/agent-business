@@ -1005,14 +1005,38 @@ change whose cost only shows up on a real network stays gated behind it.
     taken on. 4 new unit tests cover the dated/evergreen-fallback/empty
     paths and the 6-event cap.
 
-34. **A considered palette pass.** 2026's premium direction is
-    sophisticated serif with warm, champagne-toned neutrals — softer than
-    the high-contrast era — plus transitions that never announce
-    themselves. The Fraunces/Inter pairing already fits; the current
-    cool-green palette is the part that reads a generation older. Worth a
-    deliberate pass, **gated behind item 26's CI budget** — see the item 19
-    postmortem above for why anything touching paint or motion now earns
-    that gate.
+34. ✅ done (owner-directed, 2026-08-28) — **A considered palette pass.**
+    2026's premium direction is sophisticated serif with warm,
+    champagne-toned neutrals — softer than the high-contrast era — plus
+    transitions that never announce themselves. The Fraunces/Inter pairing
+    already fit; the cool-green palette was the part that read a
+    generation older. This was explicitly held for the owner's direction
+    rather than decided autonomously (a brand/taste call, not an
+    engineering one) — asked, and the owner chose the recommended full
+    repaint now.
+    Kept green as the core accent (it's still a green-pin business,
+    already live) but warmed and muted the hue rather than replacing the
+    family — light-mode accent moved from a cool forest `#1f4d3a` to a
+    warm sage-olive `#526b3f`; `--accent-2`'s orange, already warm-toned,
+    only needed a small deepening (`#d9772e` → `#c17a3d`) to fit. Base
+    neutrals moved from a cool off-white/near-black-green (`--bg #f7f4ee`,
+    `--ink #17231c`) to warm champagne/dark-brown (`--bg #f6efe1`, `--ink
+    #2b2318`); dark mode mirrored the same warm shift (`--bg #121c17` →
+    `#1c1710`, etc). All four templates share identical `:root` tokens, so
+    one consistent edit updated every page. Every ink/bg, muted/bg, and
+    white-on-accent-background pairing was verified against the real WCAG
+    relative-luminance formula (not eyeballed) before landing — all clear
+    AA's 4.5:1 for text, matching the accessibility work already shipped
+    in item 31; the deliberately-decorative hero gradient's brightest
+    point stays at ~3.6:1, same level the original design already
+    accepted there for large/bold heading text (WCAG's large-text
+    threshold is 3:1). Deliberately left the categorical tag/status hue
+    system (`--hue-*`, `--status-*` — free/indoor/outdoor/kid-friendly
+    badges, sponsor availability) untouched: those are functional
+    color-coding, not brand identity, and already read fine against the
+    new warm background in real screenshots. Verified in both light and
+    dark mode, on all four page templates, with real Playwright
+    screenshots before shipping.
 
 #### Research pass 2026-08-28 (fifth pass)
 
