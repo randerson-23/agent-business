@@ -760,6 +760,16 @@ Angles reviewed this pass:
     Playwright screenshot (open/closed states, light/dark) and confirmed
     the guides index and main region page don't get the block (only
     actual guide pages do, where it's genuinely relevant).
+    **Correction (seventh research pass, 2026-08-28):** the paragraph
+    above framed `FAQPage` schema as pursuing Google rich-result
+    eligibility - that stopped being true when Google discontinued FAQ
+    rich results on 2026-05-07, after already dropping HowTo results.
+    This is not a request to remove the markup: it still feeds AI
+    parsing and E-E-A-T signals, consistent with this whole item's GEO
+    strategy, so it earns its keep for a different reason than
+    originally stated. The correction is only that no further FAQPage
+    work should be justified by SERP rich-result eligibility going
+    forward - that door is closed.
     **Entity-naming audit done in PR #49.** Found a real inconsistency,
     not a hypothetical one: every page's `<title>` and `og:title` said
     "Weekend & Trip Planner" - except region pages (the most numerous
@@ -1190,31 +1200,35 @@ shipped**, which is the kind of finding this loop exists to catch.
 
 #### P1 (new)
 
-43. **FAQPage schema no longer earns rich results — correct item 22's
-    rationale.** Google discontinued FAQ rich results on 2026-05-07, after
-    the earlier HowTo removal, on the grounds that both created clutter
-    without helping users. PR #46 shipped `build_guide_faq()` and
+43. ✅ done — **FAQPage schema no longer earns rich results — correct item
+    22's rationale.** Google discontinued FAQ rich results on 2026-05-07,
+    after the earlier HowTo removal, on the grounds that both created
+    clutter without helping users. PR #46 shipped `build_guide_faq()` and
     `build_faq_json_ld()` on the explicit rationale of rich-result
     eligibility, and that rationale is now dead.
     **Not a request to rip it out:** structured data still feeds AI parsing
     and E-E-A-T signals, so the markup may still earn its keep — it just
-    earns it for a different reason. What matters is that the roadmap stops
-    carrying a false justification, and that **no further FAQPage work is
-    done for SERP reasons**. Update item 22's notes to say so.
+    earns it for a different reason. Item 22's notes now carry a
+    correction paragraph saying so, so the roadmap stops repeating a dead
+    justification.
 
-44. **Schema accuracy is becoming a liability, not just a missed
-    opportunity.** `build_event_json_ld()` emits a region-level `location`
-    — town, state, ZIP — rather than the actual venue, documented in the
-    source as an honest approximation because the fetchers don't expose
-    structured addresses. That reasoning was sound when the worst case was
-    "less precise than it could be." It stops being sound once AI systems
-    cross-reference schema against live sources and penalise mismatches:
-    an event at a specific venue, marked up with the town centre, reads as
-    *wrong* rather than *approximate*. Two honest fixes, in order of
-    effort: omit `location` entirely where the venue is unknown (valid
-    schema, no false claim), or finish the geocoding parked in Phase 8's
-    "later" note. Prefer omission — a missing property costs a rich-result
-    opportunity; a false one may soon cost trust.
+44. ✅ done — **Schema accuracy is becoming a liability, not just a missed
+    opportunity.** `build_event_json_ld()` emitted a region-level
+    `location` — town, state, ZIP — rather than the actual venue,
+    documented in the source as an honest approximation because the
+    fetchers don't expose structured addresses. That reasoning was sound
+    when the worst case was "less precise than it could be." It stops
+    being sound once AI systems cross-reference schema against live
+    sources and penalise mismatches: an event at a specific venue, marked
+    up with the town centre, reads as *wrong* rather than *approximate*.
+    Took the cheaper of the two honest fixes: `location` is now omitted
+    entirely (no source in this codebase provides a real per-venue
+    address, so "unknown venue" is every event's actual state, not a rare
+    exception). The unused `region` parameter was dropped from the
+    function's signature along with it. Finishing Phase 8's parked
+    geocoding note would let this be reinstated with real addresses
+    someday; not attempted here since that needs live network access this
+    sandbox doesn't have.
 
 #### P2 (new)
 
