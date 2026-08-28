@@ -218,15 +218,20 @@ weekend is. That is the moat, and the site should say so out loud (a one-line
 
 #### P1 — highest leverage, do these first
 
-1. ✅ done (PR #19, hub-level fast-follow PR #21) — **Date-scoped,
-   linkable views: `/this-weekend`, `/today`, `/free`.** Each region has
-   three extra static pages, distinct `<title>`/description per view, and
-   a small nav row. `docs/this-weekend/` merges every region's weekend
+1. ✅ done (PR #19, hub-level fast-follow PR #21; widened to include Friday
+   2026-08-28 per the owner's explicit request) — **Date-scoped, linkable
+   views: `/this-weekend`, `/today`, `/free`.** Each region has three
+   extra static pages, distinct `<title>`/description per view, and a
+   small nav row. `docs/this-weekend/` merges every region's weekend
    events into one page (grouped by region, regions with nothing dated
    simply omitted), linked from the hub via a callout banner. Scoped to
-   events with a resolved `date_iso` (currently the ICS-sourced Park
-   District events only — see item 4's note, still unresolved for
-   HTML-scraped sources).
+   events with a resolved `date_iso` (item 4 closed the HTML-scraped-source
+   gap this note used to flag). `weekend_dates()` now returns
+   Friday/Saturday/Sunday (was Sat/Sun only) - most people's weekend
+   starts Friday evening after work, not Saturday morning. Weather,
+   `filter_events_by_dates`, the date-range display, and the FAQ's
+   "Friday-Sunday" copy all updated to match; `format_date_range` needed
+   no change since it already took any two dates.
 
 2. ✅ done (PR #15) — **"Add to calendar" on every event card**: `.ics`
    download (as a `data:` URI, no extra output file) plus a Google

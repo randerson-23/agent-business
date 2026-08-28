@@ -550,7 +550,7 @@ def build_guide_faq(region: dict, region_base_url: str) -> list[dict]:
             "answer": (
                 f'See the <a href="{weekend_url}">weekend view</a>, which '
                 f"only shows items with a known date in the coming "
-                f"Saturday-Sunday."
+                f"Friday-Sunday."
             ),
         },
         {
@@ -973,18 +973,19 @@ def build_weekly_summary_txt(
     return "\n".join(lines) + "\n"
 
 
-def weekend_dates(local_date: date) -> tuple[date, date]:
-    """The Saturday/Sunday of the calendar week (Mon-Sun) containing
+def weekend_dates(local_date: date) -> tuple[date, date, date]:
+    """The Friday/Saturday/Sunday of the calendar week (Mon-Sun) containing
     local_date - correct whether local_date is itself a weekday (the
-    upcoming weekend) or already Saturday/Sunday (this weekend, in
-    progress).
+    upcoming weekend) or already Fri/Sat/Sun (this weekend, in progress).
+    Friday's included because most people's weekend starts Friday evening
+    after work, not Saturday morning.
     """
     monday = local_date - timedelta(days=local_date.weekday())
-    return monday + timedelta(days=5), monday + timedelta(days=6)
+    return monday + timedelta(days=4), monday + timedelta(days=5), monday + timedelta(days=6)
 
 
-def build_weekend_weather(region: dict, saturday: date, sunday: date) -> list[dict]:
-    """Saturday/Sunday forecast for a region's /this-weekend/ page
+def build_weekend_weather(region: dict, friday: date, saturday: date, sunday: date) -> list[dict]:
+    """Friday/Saturday/Sunday forecast for a region's /this-weekend/ page
     (ROADMAP.md Phase 11 #11) - the indoor/outdoor tag only becomes
     genuinely useful next to the actual forecast. Matched by date, not by
     list position (see fetch_weather's docstring), and returns [] rather
@@ -997,7 +998,7 @@ def build_weekend_weather(region: dict, saturday: date, sunday: date) -> list[di
     forecast = fetch_weather(lat, lon, region.get("timezone", "America/Chicago"))
     by_date = {d["date"]: d for d in forecast}
     days = []
-    for target in (saturday, sunday):
+    for target in (friday, saturday, sunday):
         day = by_date.get(target.isoformat())
         if day:
             days.append({"day_name": target.strftime("%A"), **day})
@@ -1087,10 +1088,10 @@ def main() -> None:
         logger.info("Wrote %s", region_dir / "index.html")
 
         local_today = region_local_date(region, now)
-        saturday, sunday = weekend_dates(local_today)
-        weekend_events = filter_events_by_dates(blocks, {saturday, sunday})
-        weekend_weather = build_weekend_weather(region, saturday, sunday)
-        weekend_date_range = format_date_range(saturday, sunday)
+        friday, saturday, sunday = weekend_dates(local_today)
+        weekend_events = filter_events_by_dates(blocks, {friday, saturday, sunday})
+        weekend_weather = build_weekend_weather(region, friday, saturday, sunday)
+        weekend_date_range = format_date_range(friday, sunday)
         if hub_weekend_date_range is None:
             hub_weekend_date_range = weekend_date_range  # regions share a timezone today
 

@@ -464,7 +464,7 @@ def test_select_editors_pick_ignores_items_missing_title_or_url():
 
 def test_build_weekend_weather_returns_empty_without_coordinates():
     region = {"name": "Nowhere", "timezone": "America/Chicago"}
-    result = build_digest.build_weekend_weather(region, date(2026, 8, 29), date(2026, 8, 30))
+    result = build_digest.build_weekend_weather(region, date(2026, 8, 28), date(2026, 8, 29), date(2026, 8, 30))
     assert result == []
 
 
@@ -474,16 +474,19 @@ def test_build_weekend_weather_matches_by_date_not_position(mock_fetch):
     # matching must key off the date string, not list position.
     mock_fetch.return_value = [
         {"date": "2026-08-27", "high_f": 90, "low_f": 70, "precip_percent": 0, "label": "Clear sky", "emoji": "☀️", "is_precip": False},
+        {"date": "2026-08-28", "high_f": 84, "low_f": 68, "precip_percent": 5, "label": "Clear sky", "emoji": "☀️", "is_precip": False},
         {"date": "2026-08-29", "high_f": 81, "low_f": 65, "precip_percent": 10, "label": "Mostly clear", "emoji": "🌤️", "is_precip": False},
         {"date": "2026-08-30", "high_f": 76, "low_f": 61, "precip_percent": 70, "label": "Light rain", "emoji": "🌦️", "is_precip": True},
     ]
     region = {"lat": 42.0666, "lon": -87.9373, "timezone": "America/Chicago"}
-    result = build_digest.build_weekend_weather(region, date(2026, 8, 29), date(2026, 8, 30))
-    assert len(result) == 2
-    assert result[0]["day_name"] == "Saturday"
-    assert result[0]["high_f"] == 81
-    assert result[1]["day_name"] == "Sunday"
-    assert result[1]["is_precip"] is True
+    result = build_digest.build_weekend_weather(region, date(2026, 8, 28), date(2026, 8, 29), date(2026, 8, 30))
+    assert len(result) == 3
+    assert result[0]["day_name"] == "Friday"
+    assert result[0]["high_f"] == 84
+    assert result[1]["day_name"] == "Saturday"
+    assert result[1]["high_f"] == 81
+    assert result[2]["day_name"] == "Sunday"
+    assert result[2]["is_precip"] is True
 
 
 @patch("build_digest.fetch_weather")
@@ -492,7 +495,7 @@ def test_build_weekend_weather_omits_days_missing_from_forecast(mock_fetch):
         {"date": "2026-08-29", "high_f": 81, "low_f": 65, "precip_percent": 10, "label": "Mostly clear", "emoji": "🌤️", "is_precip": False},
     ]
     region = {"lat": 42.0666, "lon": -87.9373, "timezone": "America/Chicago"}
-    result = build_digest.build_weekend_weather(region, date(2026, 8, 29), date(2026, 8, 30))
+    result = build_digest.build_weekend_weather(region, date(2026, 8, 28), date(2026, 8, 29), date(2026, 8, 30))
     assert len(result) == 1
     assert result[0]["day_name"] == "Saturday"
 
@@ -631,14 +634,14 @@ def test_region_local_date_falls_back_to_utc_on_bad_timezone():
     assert build_digest.region_local_date(bad_region, now_utc) == date(2026, 8, 27)
 
 
-def test_weekend_dates_from_a_weekday_returns_upcoming_saturday_sunday():
+def test_weekend_dates_from_a_weekday_returns_upcoming_friday_saturday_sunday():
     tuesday = date(2026, 8, 25)  # confirmed Tuesday
-    assert build_digest.weekend_dates(tuesday) == (date(2026, 8, 29), date(2026, 8, 30))
+    assert build_digest.weekend_dates(tuesday) == (date(2026, 8, 28), date(2026, 8, 29), date(2026, 8, 30))
 
 
 def test_weekend_dates_from_saturday_returns_same_weekend():
     saturday = date(2026, 8, 29)
-    assert build_digest.weekend_dates(saturday) == (date(2026, 8, 29), date(2026, 8, 30))
+    assert build_digest.weekend_dates(saturday) == (date(2026, 8, 28), date(2026, 8, 29), date(2026, 8, 30))
 
 
 def test_format_date_range_same_month():
