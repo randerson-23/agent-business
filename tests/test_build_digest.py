@@ -108,8 +108,8 @@ def test_render_sponsor_page_shows_tiers_and_availability():
         {"region_name": "Arlington Heights", "region_url": "https://x/arlington-heights-60005/", "booked": True, "sponsor_title": "Acme Dentistry"},
     ]
     html = build_digest.render_sponsor_page(availability, datetime.now(timezone.utc))
-    assert "Featured Sponsor" in html
-    assert "Community Partner" in html
+    assert "Annual Partner" in html
+    assert "Neighborhood Authority" in html
     assert "Open this week" in html
     assert "Sponsored by Acme Dentistry" in html
     assert "issues/new" in html

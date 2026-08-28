@@ -32,21 +32,29 @@ and specific beats generic ad copy.
   national median, with a strong skew toward married households with
   kids — a good match for family services, healthcare, home services, and
   local retail.
-- **One business per region per week.** No banner-blindness, no competing
-  ads on the page — just the one recommendation.
+- **One business per region, at any tier.** No banner-blindness, no
+  competing ads on the page — just the one recommendation, whether it's
+  held for a week or a year.
 - **Simple, honest reach.** We publish weekly and report actual pageviews
   for your issue on request. No inflated "impressions."
 
 ## Placements & pricing
 
+**Annual Partner is the flagship membership** — a permanent listing, a
+guide placement, and a live SEO backlink that work for you all year
+instead of needing to be re-sold every week. Prefer to start smaller?
+Weekly Spot and Event Promo get the same recommendation on a shorter
+commitment.
+
 | Placement | Price | Details |
 |---|---|---|
-| **Featured Sponsor** | $50 / week, or $175 / month (4 weeks) | Top-of-page banner with your business name, a 2-sentence blurb, and a link, on that week's issue. |
-| **Community Partner** | $30 / month | Smaller logo + link in the footer of every issue that month. |
+| **Annual Partner** | $1,200 / year | A permanent listing on the region's business directory, a spotlight placement inside one relevant seasonal guide, a live SEO backlink, and priority consideration for Editor's Pick. |
+| **Neighborhood Authority** | $5,000 / year, one business per region | Everything in Annual Partner, held exclusively for your region year-round. Built for real estate and other locally-budgeted categories after neighborhood-level presence, not just leads. |
+| **Weekly Spot** | $50 / week, or $175 / month (4 weeks) | Top-of-page banner with your business name, a 2-sentence blurb, and a link, on that week's issue. Not ready for a year? Start here. |
 | **Event Promo** | $20 one-time | Your single event or announcement boosted to the top of "This Week." |
 
-Payment: Venmo/Zelle/check, invoiced monthly. No long-term contract —
-month-to-month, cancel anytime.
+Payment: Venmo/Zelle/check. Annual and month-to-month options — no
+long-term contract on Weekly Spot or Event Promo, cancel anytime.
 
 ## Who this is for
 
@@ -59,10 +67,12 @@ providers (gymnastics, swim, martial arts), local restaurants.
 ## How it works
 
 1. Open a sponsor inquiry (link above) or reply to our outreach email.
-2. We confirm your region and week and collect your blurb, logo/link, a
+2. We confirm your region and tier and collect your blurb, logo/link, a
    one-line "why we recommend you," and payment.
-3. Your spot goes live automatically in that week's issue, framed as a
-   recommendation — no design work needed on your end.
+3. Your spot goes live automatically, framed as a recommendation — no
+   design work needed on your end. Annual Partner and Neighborhood
+   Authority also get their directory listing and guide placement set up
+   at the same time.
 
 ## Contact
 

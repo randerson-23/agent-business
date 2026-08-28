@@ -359,19 +359,43 @@ def build_business_directory(sponsors_cfg: dict, region_id: str) -> list[dict]:
 
 # Keep in sync with SPONSOR_KIT.md's "Placements & pricing" table - that
 # file is the canonical human-facing writeup, this is the same numbers
-# rendered as a live page. Duplicated rather than shared from one data
-# file since it's three rows that change rarely; not worth a shared
-# pricing config for that.
+# rendered as a live page.
+#
+# Repriced around annual memberships, not weekly ad slots (ROADMAP.md
+# Phase 11 #29): a membership renews once a year instead of needing to
+# be re-sold roughly fifty times, which is what actually keeps sponsor
+# work inside BUSINESS_PLAN.md's 30-60-minutes-a-month budget as this
+# scales past one sponsor. Every membership benefit below already exists
+# in the product - directory listing (item 6), guide placement (items 5
+# and 15), the site's own SEO work (Phase 9, item 22) - only the pricing
+# packaging changed, no new code.
+#
+# All four tiers compete for the same one `active` slot per region (see
+# resolve_sponsor()), so "Neighborhood Authority" exclusivity isn't a new
+# mechanic - a single active-sponsor slot already guarantees no one else
+# shares it while a business holds it, at any tier.
+#
+# Annual Partner priced below 7 months of the old top monthly rate
+# ($175 x 12 = $2,100/yr) as a real incentive to commit annually, not a
+# token discount. Neighborhood Authority is priced at the low end of the
+# $500-1,500/month real-estate "farming" budget range this tier targets
+# (ROADMAP.md Phase 11 #30) - deliberately introductory for an unproven,
+# brand-new premium product, with room to raise it once it has sold.
 SPONSOR_TIERS = [
     {
-        "name": "Featured Sponsor",
-        "price": "$50/week or $175/month",
-        "detail": "Top-of-page banner with your business name, a 2-sentence blurb, and a link, on that week's issue for one region.",
+        "name": "Annual Partner",
+        "price": "$1,200/year",
+        "detail": "A permanent business directory listing, a spotlight placement inside one relevant seasonal guide, a live SEO backlink, and priority consideration for Editor's Pick — the flagship membership.",
     },
     {
-        "name": "Community Partner",
-        "price": "$30/month",
-        "detail": "Smaller logo + link in the footer of every issue that month.",
+        "name": "Neighborhood Authority",
+        "price": "$5,000/year, one business per region",
+        "detail": "Everything in Annual Partner, held exclusively for your region year-round — built for real estate and other locally-budgeted categories seeking neighborhood-level presence, not just leads.",
+    },
+    {
+        "name": "Weekly Spot",
+        "price": "$50/week or $175/month",
+        "detail": "Not ready for a year? The same top-of-page recommendation, available week-to-week or month-to-month.",
     },
     {
         "name": "Event Promo",

@@ -14,8 +14,9 @@
 #
 # Business directory (ROADMAP.md Phase 11 #6): a history entry with
 # `directory: true` gets a permanent listing on that region's
-# /directory/ page, even after its sponsored week/month ends - this is
-# what makes the Community Partner tier worth more than a footer logo.
+# /directory/ page, even after its sponsored slot ends - this permanent
+# listing is one of the core Annual Partner / Neighborhood Authority
+# membership benefits (Phase 11 #29), not just a footer logo.
 # Optional `category` (e.g. "Restaurant") is prefixed onto the listing's
 # detail text. Set `directory: true` the first time a real business signs
 # up for any tier and wants to stay listed.
