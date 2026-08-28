@@ -247,25 +247,34 @@ weekend is. That is the moat, and the site should say so out loud (a one-line
 
 #### P2
 
-4. ⚠️ partially done (PR #17, extended 2026-08-28) — **Real datetime
-   normalization + a structured-data coverage stat.** `_try_parse_date`
-   (renamed from `parse_event_date_iso`'s inline logic) now handles RFC
-   822/ICS plus several common human-readable formats (`%Y-%m-%d` added
-   this session), and `structured_date_coverage()` logs `N/M events have a
+4. ✅ done (PR #17, extended 2026-08-28) — **Real datetime normalization +
+   a structured-data coverage stat.** `_try_parse_date` (renamed from
+   `parse_event_date_iso`'s inline logic) now handles RFC 822/ICS plus
+   several common human-readable formats (`%Y-%m-%d` added this session),
+   and `structured_date_coverage()` logs `N/M events have a
    machine-readable start date` per region and as a build total.
-   **`fetch_html_events` now extracts a date for one real, confirmed
-   shape**: the AHML page source the owner supplied this session showed
-   each day's `<td>` stamped with `data-date="YYYY-MM-DD"` (a common
-   calendar-grid-widget pattern) - `fetchers._nearby_data_date()` finds
-   the nearest such attribute preceding a matched event link in the raw
-   HTML (the flat link extractor has no DOM/ancestor context to see which
-   day cell a link sits inside), purely additive so sources without that
-   attribute are unaffected. **Still not general**: Mount Prospect's
-   Calendar source has no `data-date` - its day cells carry the date only
-   as text inside `aria-label="Scheduled events, Saturday, September 12,
-   2026"`, which would need a separate, more fragile phrase-parsing
-   regex; not attempted yet, needs another real sample to design against
-   rather than guessing at aria-label phrasing variations.
+   `fetch_html_events` now extracts a date via `fetchers._nearby_date_hint()`,
+   which tries two real, confirmed calendar-grid shapes in order of
+   confidence: AHML's Drupal calendar stamps each day's `<td>` with
+   `data-date="YYYY-MM-DD"`; Mount Prospect's Vision Internet-style
+   Calendar has no such attribute, but its day cells carry an accessible
+   `aria-label="Scheduled events, Saturday, September 12, 2026"` that
+   parses via the existing `%B %d, %Y` format. Both signals are found by
+   searching the raw HTML text near a matched link's href rather than
+   modifying the flat link extractor's parsing logic (which every other
+   source depends on) to track DOM ancestry - purely additive, so sources
+   without either signal are unaffected. **Caught one real bug while
+   adding the second signal**: `_EventLinkExtractor` (an `HTMLParser`)
+   decodes `&amp;` to `&` in attribute values, but the raw HTML text
+   being searched still has it escaped, so `html.find(href)` silently
+   failed for any link with a query string - which is *every* Mount
+   Prospect calendar link (`?curm=X&cury=Y`). Would have meant a 100%
+   miss rate in production, caught by the new aria-label test before
+   shipping, not after. The aria-label pattern is based on a single
+   confirmed sample; if a differently-phrased one turns up later, loosen
+   the regex rather than guess now - same fail-soft default as
+   everything else here (a phrasing that doesn't match just produces no
+   date, never a wrong one).
 
 5. ✅ first slice done (PR #27) — **Seasonal guides** (`guides:` list in
    region YAML → generated pages). Each region config now has a `guides:`
