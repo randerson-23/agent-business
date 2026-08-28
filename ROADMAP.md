@@ -962,13 +962,21 @@ change whose cost only shows up on a real network stays gated behind it.
 
 #### P3 (new)
 
-33. **Local-group distribution, in the low-effort form only.** The
-    analogues all run companion Facebook communities, and local parent
-    groups are where "what's happening this weekend?" actually gets asked.
-    A managed community is squarely against the near-zero-time constraint,
-    so do **not** build one. The version that fits: auto-generate a short,
-    copy-pasteable weekly summary block the owner can drop into an existing
-    group in thirty seconds. Distribution without moderation duty.
+33. ✅ done (PR #51) — **Local-group distribution, in the low-effort form
+    only.** No managed community was built (that's a real ongoing-time
+    commitment, squarely against the near-zero-time constraint this item
+    itself ruled out). Instead, `build_weekly_summary_txt()` generates a
+    real, plain-text `/<region>/weekly-summary.txt` at every build — up
+    to 6 real dated weekend events, or up to 3 real `free`-tagged
+    evergreen highlights when nothing's dated yet, or an honest "nothing
+    dated yet" line when there's truly nothing - never an invented event
+    to fill space, same discipline as every other view on this site. A
+    low-key footer link ("Copy this week's summary") on every region page
+    makes it discoverable without turning it into a reader-facing
+    feature it isn't meant to be. Grab the URL, select-all, paste into an
+    existing local Facebook group - thirty seconds, no moderation duty
+    taken on. 4 new unit tests cover the dated/evergreen-fallback/empty
+    paths and the 6-event cap.
 
 34. **A considered palette pass.** 2026's premium direction is
     sophisticated serif with warm, champagne-toned neutrals — softer than

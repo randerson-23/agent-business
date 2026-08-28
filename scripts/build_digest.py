@@ -943,6 +943,36 @@ def format_date_range(start: date, end: date) -> str:
     return f"{start.strftime('%b %-d')}–{end.strftime('%b %-d')}"
 
 
+def build_weekly_summary_txt(
+    region: dict, weekend_events: list[dict], evergreen: list[dict], region_url: str, weekend_date_range: str
+) -> str:
+    """A short, plain-text block the owner can paste into an existing
+    local Facebook group in about thirty seconds (ROADMAP.md Phase 11
+    #33) - distribution without taking on a managed community's
+    moderation duty, which the near-zero-owner-time constraint rules out.
+    Built from the same real, already-fetched data every other view
+    uses - never invents an event to fill space. Honest empty state when
+    nothing's dated this weekend, same philosophy as every other view.
+    """
+    lines = [f"What's happening in {region['name']} this weekend ({weekend_date_range}):", ""]
+    if weekend_events:
+        for event in weekend_events[:6]:
+            prefix = f"{event['date']} — " if event.get("date") else ""
+            lines.append(f"- {prefix}{event['title']}")
+    else:
+        highlights = [e for e in evergreen if "free" in e.get("tags", [])][:3]
+        if highlights:
+            lines.append("Nothing new dated for this weekend yet, but a few things worth knowing about:")
+            for item in highlights:
+                lines.append(f"- {item['title']}")
+        else:
+            lines.append("Nothing dated for this weekend yet - the full guide has what's coming up.")
+    lines.append("")
+    lines.append(f"See everything: {region_url}")
+    lines.append("(Updated automatically, several times a week.)")
+    return "\n".join(lines) + "\n"
+
+
 def weekend_dates(local_date: date) -> tuple[date, date]:
     """The Saturday/Sunday of the calendar week (Mon-Sun) containing
     local_date - correct whether local_date is itself a weekday (the
@@ -1063,6 +1093,12 @@ def main() -> None:
         weekend_date_range = format_date_range(saturday, sunday)
         if hub_weekend_date_range is None:
             hub_weekend_date_range = weekend_date_range  # regions share a timezone today
+
+        weekly_summary_txt = build_weekly_summary_txt(
+            region, weekend_events, evergreen, SITE_BASE_URL + region_id + "/", weekend_date_range
+        )
+        (region_dir / "weekly-summary.txt").write_text(weekly_summary_txt, encoding="utf-8")
+        logger.info("Wrote %s", region_dir / "weekly-summary.txt")
         if weekend_events:
             hub_weekend_sections.append(
                 {

@@ -882,6 +882,46 @@ def test_build_freshness_json_ld_escapes_script_close_tag():
     assert "</script>" not in result
 
 
+def test_build_weekly_summary_txt_lists_dated_weekend_events():
+    region = {"name": "Mount Prospect"}
+    events = [
+        {"title": "Fall Fest", "date": "Aug 29", "url": "https://x/1"},
+        {"title": "Story Time", "date": "Aug 30", "url": "https://x/2"},
+    ]
+    result = build_digest.build_weekly_summary_txt(
+        region, events, [], "https://example.org/mount-prospect-60056/", "Aug 29–30"
+    )
+    assert "Mount Prospect" in result
+    assert "Aug 29–30" in result
+    assert "- Aug 29 — Fall Fest" in result
+    assert "- Aug 30 — Story Time" in result
+    assert result.endswith("https://example.org/mount-prospect-60056/\n(Updated automatically, several times a week.)\n")
+
+
+def test_build_weekly_summary_txt_caps_at_six_events():
+    region = {"name": "Mount Prospect"}
+    events = [{"title": f"Event {i}", "date": "Aug 29", "url": "https://x"} for i in range(10)]
+    result = build_digest.build_weekly_summary_txt(region, events, [], "https://x/", "Aug 29–30")
+    assert result.count("- Aug 29") == 6
+
+
+def test_build_weekly_summary_txt_falls_back_to_free_evergreen_when_nothing_dated():
+    region = {"name": "Mount Prospect"}
+    evergreen = [
+        {"title": "Library Passes", "tags": ["free"]},
+        {"title": "Paid Class", "tags": []},
+    ]
+    result = build_digest.build_weekly_summary_txt(region, [], evergreen, "https://x/", "Aug 29–30")
+    assert "- Library Passes" in result
+    assert "Paid Class" not in result
+
+
+def test_build_weekly_summary_txt_honest_empty_state():
+    region = {"name": "Mount Prospect"}
+    result = build_digest.build_weekly_summary_txt(region, [], [], "https://x/", "Aug 29–30")
+    assert "Nothing dated for this weekend yet" in result
+
+
 def test_build_freshness_json_ld_names_the_site_consistently():
     # Entity-naming audit (ROADMAP.md Phase 11 #22 follow-up): every page
     # should name the site the same way, and link back to one canonical
