@@ -10,7 +10,9 @@
 #     it needs a category picked first) to scraping the real news listing
 #     page directly, same approach as the library. Not yet confirmed
 #     against a live run.
-#   - Library Events:       VERIFIED working.
+#   - Library Events:       Switched 2026-08-28 to the library's real RSS
+#     feed (found by the site owner) instead of HTML scraping. Not yet
+#     confirmed against a live run.
 #   - Park District Events: URL corrected to the real Tribe Events ICS
 #     export; webcal:// scheme now handled by fetchers.py. Not yet
 #     confirmed against a live run since the fix.
@@ -46,12 +48,24 @@ sources:
     enabled: true
 
   - name: "Mount Prospect Public Library — Events"
-    type: html_events
+    type: rss
     # mppl.org/events/ is a marketing page with only nav links (no real
-    # events). The library's actual event listing runs on Communico at
-    # mppl.libnet.info, where each event links to /event/<id> - fetchers.py
-    # prefers those links when present. Confirmed 2026-08-26.
-    url: "https://mppl.libnet.info/events"
+    # events), so this was previously scraped as html_events from
+    # mppl.libnet.info/events. Switched 2026-08-28 to the library's actual
+    # RSS export (Communico "feeds" endpoint) - a structured feed is more
+    # reliable than HTML scraping when one's available.
+    #
+    # The `data` param is base64 of a plain JSON filters object, e.g.
+    # {"feedType":"rss","filters":{"location":["all"],"ages":["all"],
+    # "types":["all"],"tags":[],"term":"","days":30}} - readable and
+    # re-encodable, not a signed/opaque token. The link as first found had
+    # "days":1 (today only), which would leave this section empty most
+    # days on a weekly digest; widened to "days":30 here so it actually
+    # covers a useful window, matching the unbounded-then-capped-at-6
+    # behavior of the other sources. Not yet confirmed against a live run
+    # (this sandbox can't reach mppl.libnet.info); will be verified by the
+    # next real build in CI/deploy, which has real network access.
+    url: "https://mppl.libnet.info/feeds?data=eyJmZWVkVHlwZSI6InJzcyIsImZpbHRlcnMiOnsibG9jYXRpb24iOlsiYWxsIl0sImFnZXMiOlsiYWxsIl0sInR5cGVzIjpbImFsbCJdLCJ0YWdzIjpbXSwidGVybSI6IiIsImRheXMiOjMwfX0="
     section: "Library Events"
     enabled: true
 
