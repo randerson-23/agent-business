@@ -377,32 +377,6 @@
 
   <div class="wrap">
   {% if region_summaries %}
-  {% if region_map %}
-  <div class="map-card">
-    <svg viewBox="0 0 {{ region_map.width }} {{ region_map.height }}" role="img" aria-label="Map showing the relative location of every covered town">
-      {% for line in region_map.lines %}
-      <line x1="{{ line.x1 }}" y1="{{ line.y1 }}" x2="{{ line.x2 }}" y2="{{ line.y2 }}" class="map-line" />
-      <text x="{{ line.mid_x }}" y="{{ line.mid_y - 6 }}" class="map-line-label" text-anchor="middle">{{ line.miles }} mi</text>
-      {% endfor %}
-      {% for pin in region_map.pins %}
-      <a href="{{ pin.path }}">
-        <text x="{{ pin.x }}" y="{{ pin.y - 14 }}" class="map-pin-label" text-anchor="middle">{{ pin.name }}</text>
-        <circle cx="{{ pin.x }}" cy="{{ pin.y }}" r="7" class="map-pin" />
-      </a>
-      {% endfor %}
-    </svg>
-  </div>
-  {% endif %}
-
-  <div class="distance-bar" id="distance-bar">
-    <button type="button" id="use-location">📍 Show distance from me</button>
-    <span>or</span>
-    <label class="sr-only" for="zip-input">ZIP code</label>
-    <input type="text" id="zip-input" placeholder="ZIP code" inputmode="numeric" maxlength="5">
-    <button type="button" id="use-zip">Go</button>
-    <span class="status" id="distance-status" aria-live="polite"></span>
-    <span class="note">Calculated in your browser only — your location is never sent anywhere.</span>
-  </div>
   <div class="bento-grid" id="region-grid">
     <a class="bento-tile bento-weekend" href="this-weekend/">
       <span class="bento-kicker">📅 This weekend</span>
@@ -423,6 +397,33 @@
     </a>
     {% endfor %}
   </div>
+
+  <div class="distance-bar" id="distance-bar">
+    <button type="button" id="use-location">📍 Show distance from me</button>
+    <span>or</span>
+    <label class="sr-only" for="zip-input">ZIP code</label>
+    <input type="text" id="zip-input" placeholder="ZIP code" inputmode="numeric" maxlength="5">
+    <button type="button" id="use-zip">Go</button>
+    <span class="status" id="distance-status" aria-live="polite"></span>
+    <span class="note">Calculated in your browser only — your location is never sent anywhere.</span>
+  </div>
+
+  {% if region_map %}
+  <div class="map-card">
+    <svg viewBox="0 0 {{ region_map.width }} {{ region_map.height }}" role="img" aria-label="Map showing the relative location of every covered town">
+      {% for line in region_map.lines %}
+      <line x1="{{ line.x1 }}" y1="{{ line.y1 }}" x2="{{ line.x2 }}" y2="{{ line.y2 }}" class="map-line" />
+      <text x="{{ line.mid_x }}" y="{{ line.mid_y - 6 }}" class="map-line-label" text-anchor="middle">{{ line.miles }} mi</text>
+      {% endfor %}
+      {% for pin in region_map.pins %}
+      <a href="{{ pin.path }}">
+        <text x="{{ pin.x }}" y="{{ pin.y - 14 }}" class="map-pin-label" text-anchor="middle">{{ pin.name }}</text>
+        <circle cx="{{ pin.x }}" cy="{{ pin.y }}" r="7" class="map-pin" />
+      </a>
+      {% endfor %}
+    </svg>
+  </div>
+  {% endif %}
   {% else %}
   <div class="empty-state">No regions configured yet.</div>
   {% endif %}

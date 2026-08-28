@@ -902,6 +902,16 @@ def test_build_answer_block_mentions_region_name_and_zip():
     assert 30 <= word_count <= 70
 
 
+def test_build_region_map_embed_url_uses_region_coordinates():
+    region = {"lat": 42.0666, "lon": -87.9373}
+    result = build_digest.build_region_map_embed_url(region)
+    assert result == "https://maps.google.com/maps?q=42.0666,-87.9373&z=14&output=embed"
+
+
+def test_build_region_map_embed_url_returns_none_without_coordinates():
+    assert build_digest.build_region_map_embed_url({"name": "Nowhere"}) is None
+
+
 def test_build_freshness_json_ld_is_valid_json_with_date_modified():
     region = {"name": "Mount Prospect"}
     now = datetime(2026, 8, 27, 12, 0, 0, tzinfo=timezone.utc)
