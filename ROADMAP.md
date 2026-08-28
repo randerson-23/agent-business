@@ -905,31 +905,40 @@ change whose cost only shows up on a real network stays gated behind it.
 
 #### P1 (new)
 
-29. **Reprice around annual memberships, not weekly ad slots.** Family
-    Focus Media has run this exact business for 15 years and sells
-    *memberships* — a profile page, a directory listing, a spotlight inside
-    the guides, SEO backlinks, priority event coverage. Every one of those
-    already exists here: the sponsor page (item 3), the guides (items 5 and
-    15), the directory (item 6). Only the packaging is missing.
-    **Why this is the highest-leverage item on the board:** a membership
-    renews once a year; a weekly sponsor slot must be re-sold roughly fifty
-    times a year. `BUSINESS_PLAN.md` budgets 30–60 minutes a month for
-    sponsor work, and the current weekly-slot model quietly breaks that
-    promise the moment it succeeds. Restructure `SPONSOR_KIT.md` and the
-    `/sponsor` page around an annual membership with the weekly slot as an
-    add-on, not the core product.
+29. ✅ done (PR #50), shipped with item 30 — **Reprice around annual
+    memberships, not weekly ad slots.** `SPONSOR_TIERS` in
+    `build_digest.py` restructured around a new **Annual Partner**
+    ($1,200/year) as the flagship: permanent directory listing (item 6),
+    a spotlight placement inside one seasonal guide (items 5/15), a live
+    SEO backlink, and priority Editor's Pick consideration (item 16) —
+    every benefit already existed in the product, only the packaging
+    changed, zero new code. The old weekly slot survives as **Weekly
+    Spot** ($50/week or $175/month), now framed as the lower-commitment
+    add-on rather than the headline product, matching this item's
+    instruction exactly. `SPONSOR_KIT.md`, `/sponsor`,
+    `OUTREACH_TEMPLATES.md`, and `BUSINESS_PLAN.md`'s own pricing table
+    all updated together so nothing quotes stale tier names or prices.
+    Annual Partner priced below 7 months of the old top monthly rate
+    ($175 × 12 = $2,100/yr) as a real incentive to commit, not a token
+    discount — reasoning kept inline as a code comment next to
+    `SPONSOR_TIERS` for whoever revisits pricing next.
 
-30. **Add a real-estate tier, and raise the ceiling.** Agents run
-    $500–$1,500/month neighborhood farming budgets, and hyperlocal
-    marketing's explicit purpose is to make one agent *the* local
-    authority — which is what a permanent, exclusive position on the
-    town's events guide confers better than a postcard does. Current
-    pricing tops out at $175/month, i.e. 12–30% of one agent's monthly
-    budget for a single neighborhood. Add a region-exclusive premium tier
-    priced for that category, and pitch it honestly: hyperlocal ROI for
-    agents is low in year one and high in year three, so the offer is
-    *presence and authority*, not leads. Depends on item 29 for the
-    packaging.
+30. ✅ done (PR #50), shipped with item 29 — **Add a real-estate tier, and
+    raise the ceiling.** New **Neighborhood Authority** tier
+    ($5,000/year, one business per region) — priced at the low end of
+    the $500–1,500/month "neighborhood farming" budget category this
+    item named, deliberately introductory for an unproven, brand-new
+    premium product with room to raise it once it has actually sold.
+    Region exclusivity needed no new code: every tier already competes
+    for the same single `active` sponsor slot per region
+    (`resolve_sponsor()`), so "held exclusively" was already true the
+    moment a business buys any tier — only the pricing/copy needed to
+    say so. Pitched honestly per this item's own instruction (presence
+    and authority, not leads, low year-one ROI) in a new dedicated
+    outreach template (`OUTREACH_TEMPLATES.md` #5) rather than folding
+    real-estate messaging into the generic cold-intro template, since
+    the sales conversation is genuinely different from every other
+    category this site targets.
 
 #### P2 (new)
 

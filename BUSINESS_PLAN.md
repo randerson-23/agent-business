@@ -81,14 +81,23 @@ residents, pulling from public feeds:
 
 ### Monetization
 
+Repriced around annual memberships, not weekly ad slots (ROADMAP.md
+Phase 11 #29 — a fourth-pass research finding: the closest real business
+analogue, a 15-year-old hyperlocal-newsletter network, monetizes this
+exact way specifically to reduce how often a sponsor needs re-selling).
+A membership renews once a year instead of needing roughly fifty
+re-sells, which is what actually keeps sponsor work inside the 30-60
+minutes/month budget below as this scales past one sponsor.
+
 | Tier | Price | What they get |
 |---|---|---|
-| Featured Sponsor (1 slot/week) | $50/week or $175/month | Top banner + 2-sentence blurb + link on that week's digest |
-| Community Partner (ongoing) | $30/month | Logo + link in the digest footer every week |
-| One-off event promo | $20 | A single event/announcement boosted to the top of "This Week" |
+| Annual Partner | $1,200/year | Permanent directory listing + a seasonal-guide spotlight + a live SEO backlink + priority Editor's Pick consideration |
+| Neighborhood Authority (1/region) | $5,000/year | Everything in Annual Partner, held exclusively for the region year-round — priced for the real-estate "neighborhood farming" budget category ($500-1,500/month) |
+| Weekly Spot (1 slot/region) | $50/week or $175/month | Top banner + 2-sentence blurb + link, week-to-week |
+| Event Promo | $20 one-time | A single event/announcement boosted to the top of "This Week" |
 
 Break-even is trivial: hosting is free (GitHub Pages), the only cost is time.
-One steady $175/month sponsor already covers years of hosting and any tooling.
+One Annual Partner already covers years of hosting and any tooling.
 
 ### Time budget
 
