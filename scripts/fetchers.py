@@ -208,14 +208,36 @@ DEFAULT_KEYWORDS = ("event", "story", "class", "program", "camp", "concert", "ma
 # before this existed.
 _DATA_DATE_ATTR = re.compile(r'data-date="(\d{4}-\d{2}-\d{2})"')
 
+# Vision Internet-style calendar widgets (e.g. mountprospect.org's Calendar
+# module - confirmed 2026-08-28 from real page source) have no data-date
+# attribute; the only date signal is an accessible aria-label on the day
+# cell like 'Scheduled events, Saturday, September 12, 2026'. Based on a
+# single confirmed sample - if a differently-phrased real one turns up
+# later, loosen this rather than guess now. Same fail-soft default as
+# everything else: a phrasing that doesn't match this pattern just
+# doesn't produce a date, it never mis-parses one.
+_ARIA_LABEL_DATE = re.compile(r'aria-label="Scheduled events, [A-Za-z]+, ([A-Za-z]+ \d{1,2}, \d{4})"')
 
-def _nearby_data_date(html: str, href: str, window: int = 800) -> str | None:
+
+def _nearby_date_hint(html: str, href: str, window: int = 800) -> str | None:
+    """Best-effort: find a date signal shortly before a link's href in the
+    raw HTML, trying known calendar-grid patterns in order of confidence.
+    """
     idx = html.find(href)
+    if idx == -1:
+        # _EventLinkExtractor (an HTMLParser) decodes entities in attribute
+        # values (e.g. &amp; -> &, common in query strings like MP's
+        # calendar links), but the raw source below still has them
+        # escaped - retry with the escaped form before giving up.
+        idx = html.find(href.replace("&", "&amp;"))
     if idx == -1:
         return None
     preceding = html[max(0, idx - window) : idx]
-    matches = _DATA_DATE_ATTR.findall(preceding)
-    return matches[-1] if matches else None
+    data_date_matches = _DATA_DATE_ATTR.findall(preceding)
+    if data_date_matches:
+        return data_date_matches[-1]
+    aria_matches = _ARIA_LABEL_DATE.findall(preceding)
+    return aria_matches[-1] if aria_matches else None
 
 
 def fetch_html_events(
@@ -254,7 +276,7 @@ def fetch_html_events(
                 if r["url"] not in seen:
                     seen.add(r["url"])
                     if not r.get("date"):
-                        r["date"] = _nearby_data_date(resp.text, r["url"])
+                        r["date"] = _nearby_date_hint(resp.text, r["url"])
                     deduped.append(r)
             return deduped[:limit]
 

@@ -278,6 +278,32 @@ def test_fetch_html_events_mount_prospect_calendar_uses_event_link_pattern(mock_
 
 
 @patch("fetchers.requests.get")
+def test_fetch_html_events_mount_prospect_calendar_extracts_aria_label_date(mock_get):
+    # mountprospect.org's Calendar has no data-date attribute (unlike
+    # AHML's Drupal calendar) - its only date signal is the day cell's
+    # accessible aria-label, e.g.
+    # aria-label="Scheduled events, Saturday, September 12, 2026" -
+    # confirmed 2026-08-28 from real page source.
+    html = (
+        '<td class="calendar_weekendday calendar_day_with_items" style="width: 14%;" '
+        'aria-label="Scheduled events, Saturday, September 12, 2026" aria-expanded="false">'
+        '<span class="calendar_day_value" aria-hidden="true">12</span>'
+        '<div class="calendar_items"><div class="calendar_item">'
+        '<span class="calendar_eventtime">9:00 AM</span>'
+        '<a class="calendar_eventlink" '
+        'href="/Home/Components/Calendar/Event/27357/1044?curm=9&amp;cury=2026" '
+        'title="Coffee with Council">Coffee with Council</a>'
+        "</div></div></td>"
+    )
+    mock_get.return_value = _mock_response(html)
+    items = fetch_html_events(
+        "https://www.mountprospect.org/services/calendar",
+        detail_link_pattern=r"Home/Components/Calendar/Event/\d+/\d+",
+    )
+    assert items[0]["date"] == "September 12, 2026"
+
+
+@patch("fetchers.requests.get")
 def test_fetch_html_events_falls_back_to_default_keywords_when_none_given(mock_get):
     mock_get.return_value = _mock_response(SAMPLE_HTML)
     items = fetch_html_events("https://example.org/events", keywords=None)
