@@ -1256,18 +1256,37 @@ shipped**, which is the kind of finding this loop exists to catch.
 
 #### P2 (new)
 
-45. **Age-banded tags: toddler / elementary / teen.** Red Tricycle was the
-    largest parenting brand in local discovery — 20M+ monthly users, sold
-    for $6.5M — and when Tinybeans absorbed it, the flagship improvement
-    was personalisation by children's ages. That is a strong signal about
-    what actually helps a parent. Today "kid-friendly" is a single bucket
-    spanning a seventeen-year range: a toddler storytime and a high-school
-    battle of the bands both carry it, and they are almost never relevant
-    to the same reader. Extend `tagging.py` with age bands using the same
-    keyword-heuristic, fail-soft approach as the existing tags ("storytime",
-    "ages 3–5", "teen", "middle school" are all strong signals), and let
-    curated entries set them explicitly in YAML. Cheap, and it sharpens the
-    filter that matters most to this site's core audience.
+45. ✅ done — **Age-banded tags: toddler / elementary / teen.** Red
+    Tricycle was the largest parenting brand in local discovery — 20M+
+    monthly users, sold for $6.5M — and when Tinybeans absorbed it, the
+    flagship improvement was personalisation by children's ages. Today
+    "kid-friendly" is a single bucket spanning a seventeen-year range; a
+    toddler storytime and a high-school battle of the bands both carried
+    it, and they're almost never relevant to the same reader.
+    Three new orthogonal tags (`toddler`, `elementary`, `teen`) added to
+    `tagging.py`'s existing keyword-heuristic, fail-soft `infer_tags()` -
+    same mechanism as `kid_friendly`/`dog_friendly`, not a new system.
+    **A real false-positive caught before shipping**: bare "teen"/"tween"
+    are substrings of number words (thir**teen**, four**teen**,
+    be**tween**) - an event description mentioning a headcount would have
+    mis-tagged. Fixed with the same space-padding trick `free` already
+    used for the same class of problem (` teen `, ` tween `); their
+    plural/derived forms (`teens`, `tweens`, `teenager`) don't have this
+    problem and stay unpadded. Caught by a dedicated regression test, not
+    just noticed by inspection.
+    Three new badge hues added (`lime`/`toddler`, `cyan`/`elementary`,
+    `indigo`/`teen`) rather than reusing existing ones - two different-
+    meaning badges sharing a color would be confusing on a card that
+    carries both (e.g. a "teen art class" showing indigo `teen` next to
+    what would've been an identically-colored purple `art_culture`).
+    Every new light/dark ink-on-bg pairing verified against the real WCAG
+    formula before landing (one, light-mode lime, needed darkening from
+    4.38:1 to 5.48:1 to clear AA). Applied the `teen` tag to two evergreen
+    library entries (Mount Prospect and Arlington Heights) whose own
+    existing detail text already said "kids and teens" - not a new claim,
+    just tagging what was already truthfully there. Verified end-to-end
+    with a real Playwright screenshot of the rendered badge before
+    shipping.
 
 **Validation note, worth recording for `BUSINESS_PLAN.md`:** the research
 kept implicitly treating this category as unproven. It isn't. Red Tricycle

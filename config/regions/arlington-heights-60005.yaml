@@ -122,7 +122,7 @@ guides:
       - title: "Kids' programs — Arlington Heights Memorial Library"
         detail: "Free storytimes, makerspace classes, and craft programs for kids and teens — no registration fee."
         url: "https://www.ahml.info/"
-        tags: ["indoor", "kid_friendly", "free"]
+        tags: ["indoor", "kid_friendly", "free", "teen"]
       - title: "Local party venues, entertainers & tutoring centers"
         detail: "Private businesses appear here as they join the local directory — see what's currently listed."
         url: "https://randerson-23.github.io/agent-business/arlington-heights-60005/directory/"
