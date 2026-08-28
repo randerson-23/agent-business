@@ -31,7 +31,10 @@ started as best-guess URLs. Status as of the last check-in:
   scheduled build, check the "Village News" section on the live site. If
   it's still empty, the page's actual link structure may need a tweak in
   `fetch_html_events`'s keyword list or link pattern in `scripts/fetchers.py`.
-- **Library Events** — confirmed working (pulls from `mppl.libnet.info`).
+- **Library Events** — switched 2026-08-28 from HTML scraping to the
+  library's real RSS feed (`mppl.libnet.info/feeds?data=...`), found by
+  the site owner. Not yet confirmed against a live run — check the
+  "Library Events" section after the next scheduled build.
 - **Park District Events** — URL and `webcal://` scheme handling fixed;
   should be live after the next scheduled build. Worth a spot-check.
 
