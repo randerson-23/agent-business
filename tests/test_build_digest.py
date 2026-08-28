@@ -165,6 +165,16 @@ def test_format_event_date_parses_slash_date():
     assert build_digest.format_event_date("9/6/2026") == "Sep 6"
 
 
+def test_parse_event_date_iso_parses_iso_date():
+    # The format fetchers._nearby_data_date extracts from calendar-grid
+    # data-date="YYYY-MM-DD" attributes (e.g. AHML's Drupal calendar).
+    assert build_digest.parse_event_date_iso("2026-08-15").startswith("2026-08-15")
+
+
+def test_format_event_date_parses_iso_date():
+    assert build_digest.format_event_date("2026-08-15") == "Aug 15"
+
+
 def test_structured_date_coverage_counts_dated_and_total():
     blocks = [
         {

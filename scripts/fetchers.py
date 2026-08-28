@@ -198,6 +198,25 @@ _EVENT_DETAIL_PATH = re.compile(r"/event/\d+")
 
 DEFAULT_KEYWORDS = ("event", "story", "class", "program", "camp", "concert", "market", "festival")
 
+# Calendar-grid widgets (e.g. AHML's Drupal calendar - confirmed 2026-08-28
+# from real page source) commonly stamp each day's <td> with a
+# `data-date="YYYY-MM-DD"` attribute. _EventLinkExtractor below is a flat
+# HTMLParser with no DOM/ancestor context, so it can't see "which day cell
+# is this link inside" - this regex-over-raw-text approach finds the
+# nearest such attribute preceding a given link's href instead. Purely
+# additive: sources without this attribute just get date=None, same as
+# before this existed.
+_DATA_DATE_ATTR = re.compile(r'data-date="(\d{4}-\d{2}-\d{2})"')
+
+
+def _nearby_data_date(html: str, href: str, window: int = 800) -> str | None:
+    idx = html.find(href)
+    if idx == -1:
+        return None
+    preceding = html[max(0, idx - window) : idx]
+    matches = _DATA_DATE_ATTR.findall(preceding)
+    return matches[-1] if matches else None
+
 
 def fetch_html_events(
     url: str,
@@ -234,6 +253,8 @@ def fetch_html_events(
             for r in detail_links:
                 if r["url"] not in seen:
                     seen.add(r["url"])
+                    if not r.get("date"):
+                        r["date"] = _nearby_data_date(resp.text, r["url"])
                     deduped.append(r)
             return deduped[:limit]
 

@@ -215,6 +215,39 @@ def test_fetch_html_events_ahml_drupal_calendar_uses_reservation_link_pattern(mo
 
 
 @patch("fetchers.requests.get")
+def test_fetch_html_events_extracts_nearby_data_date_attribute(mock_get):
+    # AHML's Drupal calendar stamps each day's <td> with
+    # data-date="YYYY-MM-DD" (confirmed 2026-08-28 from real page source),
+    # a real per-event date signal the link extractor otherwise has no way
+    # to see (it's a flat parser with no DOM/ancestor context). Mirrors the
+    # real markup shape: data-date on the enclosing day cell, several
+    # nested divs, then the event link deep inside.
+    html = (
+        '<td id="calendar-2026-08-15-0" data-date="2026-08-15" '
+        'data-day-of-month="15" headers="Saturday" class="single-day past">'
+        '<div class="inner"><div class="item"><div class="view-item">'
+        '<div class="calendar monthview">'
+        '<div class="calendar.218675.field_start_time.0.0 contents">'
+        '<span class="mobile-day-of-month">15</span>'
+        '<h4 class="event_title">'
+        '<time datetime="2026-08-15T14:00:00Z">09:00:00</time>'
+        '<a class="use-ajax" href="/scheduling/reservation/218675">'
+        "Senior Services &amp; the Senior Center at the Farmer's Market</a>"
+        "</h4></div></div></div></div></div></td>"
+        # A different day's cell shouldn't leak its date onto this event.
+        '<td data-date="2026-08-16"><a href="/scheduling/reservation/218900">'
+        "Sunday Storytime</a></td>"
+    )
+    mock_get.return_value = _mock_response(html)
+    items = fetch_html_events(
+        "https://www.ahml.info/attend/events", detail_link_pattern=r"scheduling/reservation/\d+"
+    )
+    by_title = {i["title"]: i["date"] for i in items}
+    assert by_title["Senior Services & the Senior Center at the Farmer's Market"] == "2026-08-15"
+    assert by_title["Sunday Storytime"] == "2026-08-16"
+
+
+@patch("fetchers.requests.get")
 def test_fetch_html_events_mount_prospect_calendar_uses_event_link_pattern(mock_get):
     # mountprospect.org (Village of Mount Prospect) runs a Vision
     # Internet-style CMS calendar; each real event links to
