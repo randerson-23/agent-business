@@ -377,37 +377,6 @@
 
   <div class="wrap">
   
-  
-  <div class="map-card">
-    <svg viewBox="0 0 320 220" role="img" aria-label="Map showing the relative location of every covered town">
-      
-      <line x1="55.0" y1="55.0" x2="265.0" y2="165.0" class="map-line" />
-      <text x="160.0" y="104.0" class="map-line-label" text-anchor="middle">2.7 mi</text>
-      
-      
-      <a href="arlington-heights-60005/">
-        <text x="55.0" y="41.0" class="map-pin-label" text-anchor="middle">Arlington Heights</text>
-        <circle cx="55.0" cy="55.0" r="7" class="map-pin" />
-      </a>
-      
-      <a href="mount-prospect-60056/">
-        <text x="265.0" y="151.0" class="map-pin-label" text-anchor="middle">Mount Prospect</text>
-        <circle cx="265.0" cy="165.0" r="7" class="map-pin" />
-      </a>
-      
-    </svg>
-  </div>
-  
-
-  <div class="distance-bar" id="distance-bar">
-    <button type="button" id="use-location">📍 Show distance from me</button>
-    <span>or</span>
-    <label class="sr-only" for="zip-input">ZIP code</label>
-    <input type="text" id="zip-input" placeholder="ZIP code" inputmode="numeric" maxlength="5">
-    <button type="button" id="use-zip">Go</button>
-    <span class="status" id="distance-status" aria-live="polite"></span>
-    <span class="note">Calculated in your browser only — your location is never sent anywhere.</span>
-  </div>
   <div class="bento-grid" id="region-grid">
     <a class="bento-tile bento-weekend" href="this-weekend/">
       <span class="bento-kicker">📅 This weekend</span>
@@ -436,6 +405,38 @@
     </a>
     
   </div>
+
+  <div class="distance-bar" id="distance-bar">
+    <button type="button" id="use-location">📍 Show distance from me</button>
+    <span>or</span>
+    <label class="sr-only" for="zip-input">ZIP code</label>
+    <input type="text" id="zip-input" placeholder="ZIP code" inputmode="numeric" maxlength="5">
+    <button type="button" id="use-zip">Go</button>
+    <span class="status" id="distance-status" aria-live="polite"></span>
+    <span class="note">Calculated in your browser only — your location is never sent anywhere.</span>
+  </div>
+
+  
+  <div class="map-card">
+    <svg viewBox="0 0 320 220" role="img" aria-label="Map showing the relative location of every covered town">
+      
+      <line x1="55.0" y1="55.0" x2="265.0" y2="165.0" class="map-line" />
+      <text x="160.0" y="104.0" class="map-line-label" text-anchor="middle">2.7 mi</text>
+      
+      
+      <a href="arlington-heights-60005/">
+        <text x="55.0" y="41.0" class="map-pin-label" text-anchor="middle">Arlington Heights</text>
+        <circle cx="55.0" cy="55.0" r="7" class="map-pin" />
+      </a>
+      
+      <a href="mount-prospect-60056/">
+        <text x="265.0" y="151.0" class="map-pin-label" text-anchor="middle">Mount Prospect</text>
+        <circle cx="265.0" cy="165.0" r="7" class="map-pin" />
+      </a>
+      
+    </svg>
+  </div>
+  
   
 
   
@@ -452,7 +453,7 @@
   <footer>
     Want your ZIP added, or want to sponsor a region?
     <a href="sponsor/">See pricing &amp; availability</a>.
-    <br>Generated 2026-08-28 20:16 UTC.
+    <br>Generated 2026-08-28 20:34 UTC.
     
   </footer>
   </div>
