@@ -65,6 +65,9 @@
     --hue-orange-bg: #fdeadb; --hue-orange-ink: #a3480a;
     --hue-purple-bg: #f1e7fb; --hue-purple-ink: #6b2fa3;
     --hue-gray-bg: #eef0ee;   --hue-gray-ink: #4a534d;
+    --hue-lime-bg: #eef5d6;   --hue-lime-ink: #4f6a15;
+    --hue-cyan-bg: #dff3f5;   --hue-cyan-ink: #0e6e78;
+    --hue-indigo-bg: #e6e5fb; --hue-indigo-ink: #4338a8;
   }
   @media (prefers-color-scheme: dark) {
     :root {
@@ -89,6 +92,9 @@
       --hue-orange-bg: #4a2c14; --hue-orange-ink: #f5b880;
       --hue-purple-bg: #33234a; --hue-purple-ink: #d0aaf5;
       --hue-gray-bg: #2c332e;   --hue-gray-ink: #b8c2bc;
+      --hue-lime-bg: #3a4a1a;   --hue-lime-ink: #d4e896;
+      --hue-cyan-bg: #1a3a3d;   --hue-cyan-ink: #8de8ef;
+      --hue-indigo-bg: #2e2a5c; --hue-indigo-ink: #c3bdf5;
     }
   }
   * { box-sizing: border-box; }
@@ -529,6 +535,10 @@
       <span aria-hidden="true">🧒</span>Kid-friendly
     </button>
     
+    <button type="button" class="filter-chip" data-tag="teen" aria-pressed="false">
+      <span aria-hidden="true">🧑</span>Teen
+    </button>
+    
     <button type="button" class="filter-chip clear" id="clear-filters">Clear filters</button>
   </div>
   <div class="sr-only" id="filter-status" aria-live="polite"></div>
@@ -569,14 +579,14 @@
       </div>
       
       
-      <div class="card" data-tags="indoor,kid_friendly,free">
+      <div class="card" data-tags="indoor,kid_friendly,free,teen">
         <button type="button" class="tray-star" data-item='{"date": null, "date_iso": null, "detail": "Free storytimes, makerspace classes, and craft programs for kids and teens \u2014 no registration fee.", "id": "https://www.ahml.info/", "region_name": "Arlington Heights", "region_url": "https://randerson-23.github.io/agent-business/arlington-heights-60005/", "title": "Kids\u0027 programs \u2014 Arlington Heights Memorial Library", "url": "https://www.ahml.info/"}' aria-pressed="false" aria-label="Add Kids&#39; programs — Arlington Heights Memorial Library to My Weekend">☆</button>
         
         <h3><a href="https://www.ahml.info/">Kids&#39; programs — Arlington Heights Memorial Library</a></h3>
         <p class="detail">Free storytimes, makerspace classes, and craft programs for kids and teens — no registration fee.</p>
         
         <div class="tag-row">
-          <span class="tag-badge" style="background: var(--hue-blue-bg); color: var(--hue-blue-ink);">🏠 Indoor</span><span class="tag-badge" style="background: var(--hue-pink-bg); color: var(--hue-pink-ink);">🧒 Kid-friendly</span><span class="tag-badge" style="background: var(--hue-green-bg); color: var(--hue-green-ink);">💵 Free</span>
+          <span class="tag-badge" style="background: var(--hue-blue-bg); color: var(--hue-blue-ink);">🏠 Indoor</span><span class="tag-badge" style="background: var(--hue-pink-bg); color: var(--hue-pink-ink);">🧒 Kid-friendly</span><span class="tag-badge" style="background: var(--hue-green-bg); color: var(--hue-green-ink);">💵 Free</span><span class="tag-badge" style="background: var(--hue-indigo-bg); color: var(--hue-indigo-ink);">🧑 Teen</span>
         </div>
         
         
@@ -644,7 +654,7 @@
   <footer>
     Local business? See the
     <a href="https://randerson-23.github.io/agent-business/sponsor/">sponsor page</a>.
-    <br>Generated 2026-08-28 21:00 UTC.
+    <br>Generated 2026-08-28 22:00 UTC.
     
     <br><a href="https://randerson-23.github.io/agent-business/arlington-heights-60005/weekly-summary.txt">Copy this week's summary</a> — a plain-text block ready to paste into a local group.
   </footer>
@@ -670,7 +680,7 @@
 
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "How current is this guide?", "acceptedAnswer": {"@type": "Answer", "text": "It's regenerated automatically from the village, library, and park district's own listings, typically several times a week - not a one-time write-up that goes stale."}}, {"@type": "Question", "name": "Is this every event or business, or just what's listed here?", "acceptedAnswer": {"@type": "Answer", "text": "Only what the linked public sources publish. For full details, hours, or anything not listed here, check the official page each item links to."}}, {"@type": "Question", "name": "How do I see what's happening in Arlington Heights this specific weekend?", "acceptedAnswer": {"@type": "Answer", "text": "See the <a href=\"https://randerson-23.github.io/agent-business/arlington-heights-60005/this-weekend/\">weekend view<\/a>, which only shows items with a known date in the coming Friday-Sunday."}}, {"@type": "Question", "name": "Can I add an event, or suggest a business for the directory?", "acceptedAnswer": {"@type": "Answer", "text": "Yes - <a href=\"https://github.com/randerson-23/agent-business/issues/new?template=event-submission.yml\">submit an event<\/a> and a person reviews it before it goes live, or a business owner can <a href=\"https://randerson-23.github.io/agent-business/sponsor/\">inquire about a listing<\/a>."}}]}</script>
 
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebPage", "name": "Arlington Heights — Weekend & Trip Planner", "url": "https://randerson-23.github.io/agent-business/arlington-heights-60005/guides/birthday-parties-and-kids-classes/", "dateModified": "2026-08-28T21:00:33.401006+00:00", "isPartOf": {"@type": "WebSite", "name": "Weekend & Trip Planner", "url": "https://randerson-23.github.io/agent-business/"}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebPage", "name": "Arlington Heights — Weekend & Trip Planner", "url": "https://randerson-23.github.io/agent-business/arlington-heights-60005/guides/birthday-parties-and-kids-classes/", "dateModified": "2026-08-28T22:00:51.090025+00:00", "isPartOf": {"@type": "WebSite", "name": "Weekend & Trip Planner", "url": "https://randerson-23.github.io/agent-business/"}}</script>
 <script>
 (function () {
   var activeTags = new Set();
