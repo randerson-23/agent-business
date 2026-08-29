@@ -1608,6 +1608,13 @@ followed the risk rather than the feature list. Both items below are
   before committing.
 - Never hand-commit `docs/` output — run `git restore docs/` and remove any
   newly-created `docs/<region-id>/` directories before staging.
+- Same for `data/source_health.json` (item 51) — always `git restore` it
+  after a local build in this sandbox, never stage it. This sandbox's
+  network is blocked, so every source fetches 0 here; against the real
+  trailing history from actual GitHub Actions runs, that reads as every
+  source dying at once and `build_digest.py` will legitimately exit 1 -
+  correct behavior, but committing that run's health file would poison
+  the real history with a sandbox-only false mass-regression.
 - Don't add speculative complexity ahead of an actual phase — this is a
   real small business, not a demo.
 - Phase 11 is the idea queue, not a spec. Items there are researched
