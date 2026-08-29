@@ -13,10 +13,15 @@
 #     name), not just blocked. No confident replacement guess exists yet;
 #     left as-is since it fails soft either way and a wrong guess here
 #     costs nothing but an empty section.
-#   - Library Events: palatinelibrary.org returns **403 Forbidden** - the
-#     domain itself resolves and responds (unlike the Village News
-#     failure above), it's just blocking this fetcher's request, same
-#     pattern as Mount Prospect's blocked sources.
+#   - Library Events: palatinelibrary.org returned a **403 Forbidden** on
+#     that first run - but two later real builds (13:01 UTC the same day,
+#     and again since) both returned 6 real items via the keyword
+#     fallback, so that 403 was transient (a momentary block or rate
+#     limit), not a standing one like Mount Prospect's. One returned link
+#     (`/events/upcoming?program_types[..]=..`) looks like the real
+#     events-calendar path - worth pointing `url` there directly and
+#     adding a `detail_link_pattern` once a real per-event URL shape is
+#     confirmed, same upgrade already done for Des Plaines Park District.
 #   - Park District Events: palatineparks.org **CONFIRMED to resolve** and
 #     returned 6 real items (e.g. "Summer Camps", "Festival of Cultures",
 #     "Calendar of Events") via the keyword fallback - real, useful
@@ -59,8 +64,13 @@ sources:
 
   - name: "Palatine Public Library District — Events"
     type: html_events
-    # Unconfirmed guess (see header note).
-    url: "https://www.palatinelibrary.org/events"
+    # Confirmed live 2026-08-29 (see header note) - /events already
+    # returns 6 real items via keyword fallback, one of which
+    # (/events/upcoming?program_types[..]=..) points at a real filtered
+    # events-calendar view. Pointed url at the unfiltered /events/upcoming
+    # page itself on that evidence, still no detail_link_pattern until a
+    # real per-event URL shape is confirmed.
+    url: "https://www.palatinelibrary.org/events/upcoming"
     keywords: ["event", "class", "program", "story", "camp", "concert", "workshop", "book"]
     section: "Library Events"
     enabled: true
