@@ -666,6 +666,10 @@ def test_load_source_health_returns_empty_dict_on_corrupt_json(tmp_path, monkeyp
 
 
 def test_render_region_page_produces_html_even_with_empty_sources():
+    # On the main page (nav_current="all", the default - real call sites
+    # for every other view always pass their own nav_current), an empty
+    # section is omitted entirely rather than printed as an apology
+    # (ROADMAP.md Phase 11 #54) - the evergreen content leads instead.
     blocks = [{"section": "Village News", "events": []}]
     sponsor = {"title": "Sponsor this spot", "detail": "", "url": ""}
     evergreen = [{"title": "Library", "detail": "Books.", "url": "https://mppl.org/", "tags": ["indoor"]}]
@@ -674,9 +678,10 @@ def test_render_region_page_produces_html_even_with_empty_sources():
         region_cfg, blocks, sponsor, evergreen, datetime.now(timezone.utc)
     )
     assert "Mount Prospect" in html
-    assert "Village News" in html
-    assert "No live updates fetched this week" in html
+    assert "Village News" not in html
+    assert "No live updates fetched this week" not in html
     assert "Library" in html
+    assert "quiet week" in html
 
 
 def test_render_region_page_lists_fetched_events_and_tags():
@@ -709,12 +714,78 @@ def test_render_region_page_heading_and_subheading_overrides():
 
 
 def test_render_region_page_empty_message_override():
+    # A filtered single-block view (weekend/today/free) always passes its
+    # own nav_current in real call sites - it keeps its heading and
+    # custom empty message even when empty, unlike the main page's
+    # omit-and-lead-with-evergreen behavior (ROADMAP.md Phase 11 #54).
     blocks = [{"section": "This Weekend", "events": []}]
     html = build_digest.render_region_page(
         {"region": REGION}, blocks, {"title": "", "detail": "", "url": ""}, [], datetime.now(timezone.utc),
         empty_message="Nothing dated for this weekend yet.",
+        nav_current="weekend",
     )
+    assert "This Weekend" in html
     assert "Nothing dated for this weekend yet." in html
+
+
+def test_render_region_page_omits_empty_sections_but_keeps_populated_ones():
+    blocks = [
+        {"section": "Village News", "events": []},
+        {
+            "section": "Library Events",
+            "events": [{"title": "Storytime", "detail": "", "url": "https://x/1", "date": "Aug 24", "tags": []}],
+        },
+        {"section": "Park District Events", "events": []},
+    ]
+    sponsor = {"title": "Sponsor this spot", "detail": "", "url": ""}
+    html = build_digest.render_region_page(
+        {"region": REGION}, blocks, sponsor, [], datetime.now(timezone.utc)
+    )
+    assert "Village News" not in html
+    assert "Park District Events" not in html
+    assert "Library Events" in html
+    assert "Storytime" in html
+    # At least one real section has content, so this isn't the "quiet
+    # week, lead with evergreen" case.
+    assert "quiet week" not in html
+
+
+def test_render_region_page_shows_map_with_a_link_not_an_iframe():
+    # ROADMAP.md Phase 11 #53: the original iframe + reveal-on-load design
+    # was dropped after testing showed an iframe's load event fires even
+    # when navigation is blocked - it never actually caught a failure. The
+    # reliable inline SVG is the map now; a plain outbound link sits next
+    # to it, never an iframe that can silently look fine while broken.
+    region_map = {
+        "width": 320,
+        "height": 220,
+        "pins": [{"name": "Arlington Heights", "path": "arlington-heights-60005/", "x": 50.0, "y": 60.0}],
+        "lines": [],
+    }
+    html = build_digest.render_region_page(
+        {"region": REGION}, [], {"title": "", "detail": "", "url": ""}, [], datetime.now(timezone.utc),
+        map_link_url="https://www.google.com/maps/search/?api=1&query=1,2",
+        region_map=region_map,
+    )
+    assert 'class="map-fallback"' in html
+    assert "Arlington Heights" in html
+    assert 'class="map-link"' in html
+    assert "<iframe" not in html
+
+
+def test_render_region_page_map_fallback_alone_when_no_link_url():
+    region_map = {
+        "width": 320,
+        "height": 220,
+        "pins": [{"name": "Arlington Heights", "path": "arlington-heights-60005/", "x": 50.0, "y": 60.0}],
+        "lines": [],
+    }
+    html = build_digest.render_region_page(
+        {"region": REGION}, [], {"title": "", "detail": "", "url": ""}, [], datetime.now(timezone.utc),
+        region_map=region_map,
+    )
+    assert 'class="map-fallback"' in html
+    assert 'class="map-link"' not in html
 
 
 def test_render_region_page_hides_evergreen_section_when_empty():
@@ -1012,14 +1083,14 @@ def test_build_answer_block_mentions_region_name_and_zip():
     assert 30 <= word_count <= 70
 
 
-def test_build_region_map_embed_url_uses_region_coordinates():
+def test_build_region_map_link_url_uses_region_coordinates():
     region = {"lat": 42.0666, "lon": -87.9373}
-    result = build_digest.build_region_map_embed_url(region)
-    assert result == "https://maps.google.com/maps?q=42.0666,-87.9373&z=14&output=embed"
+    result = build_digest.build_region_map_link_url(region)
+    assert result == "https://www.google.com/maps/search/?api=1&query=42.0666,-87.9373"
 
 
-def test_build_region_map_embed_url_returns_none_without_coordinates():
-    assert build_digest.build_region_map_embed_url({"name": "Nowhere"}) is None
+def test_build_region_map_link_url_returns_none_without_coordinates():
+    assert build_digest.build_region_map_link_url({"name": "Nowhere"}) is None
 
 
 def test_build_freshness_json_ld_is_valid_json_with_date_modified():

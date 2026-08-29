@@ -1614,39 +1614,64 @@ produces exactly this rendering in production, so everything below stands.
 
 #### P1 (new)
 
-53. **The Google Maps embed fails loudly, above the fold, with no
-    fallback.** On a region page the embed from PR #63 renders as a
-    ~700×250px grey box with a broken-file icon, sitting between the intro
-    paragraph and the Editor's Pick — the single largest element on the
-    page, and it is a failure state. It fails here because the sandbox
-    blocks the request, but the same box appears for any visitor whose
-    network blocks Google, whose extensions block the frame, or if the
-    embed is ever rate-limited or key-gated. There is no `onerror`
-    handling and nothing degrades.
-    Fix, in order: give it a fallback — **the inline-SVG region map from
-    item 17 already exists and needs no third party**, so render that
-    underneath and only reveal the Google embed on successful load; add
-    `loading="lazy"`; and give the container a fixed aspect ratio so a
-    failure collapses to something intentional rather than a broken
-    rectangle. A sponsor evaluating a $5,000/yr placement will see this
-    box before they see anything else on the page.
+53. ✅ done, redesigned from the original ask. **The Google Maps embed
+    fails loudly, above the fold, with no fallback.** On a region page the
+    embed from PR #63 renders as a ~700×250px grey box with a broken-file
+    icon, sitting between the intro paragraph and the Editor's Pick — the
+    single largest element on the page, and it is a failure state.
+    The original ask was: render the inline-SVG region map (item 17)
+    underneath, reveal the Google embed only on successful `load`. Built
+    that first, then tested it against the real generated site with
+    Playwright before shipping - and it does not work. Confirmed directly:
+    in this sandbox, where the request is proxy-blocked, the iframe's
+    `load` event still fired, revealing the exact broken box the fallback
+    was built to hide. The reason is structural, not a bug in this
+    implementation: an iframe's `load` event fires once navigation
+    *completes*, including to a blocked/error page, and cross-origin
+    restrictions mean the parent document can't inspect what actually
+    loaded to tell real content from a failure.
+    Shipped instead: the reliable inline-SVG map (item 17's
+    `build_region_map()`, now reused for a **single region's own page**,
+    not just the hub) is the map now, full stop - fixed aspect ratio,
+    always renders, no third party, nothing that can fail. A small "View
+    on Google Maps ↗" pill link (`build_region_map_link_url()`, a plain
+    `google.com/maps/search` URL, not an iframe embed) sits in the
+    corner for real streets/zoom - it either opens a real map when
+    clicked or it doesn't, with no false-positive "looks fine" state in
+    between. Verified with Playwright at 1280px and 390px, light and
+    dark: no more broken box, and the map reused across all four regions
+    for the first time doubles as a second "nearby towns" visual (item
+    52's cross-links are the text version of the same idea).
 
-54. **Empty sections must collapse, not print six apologies.** A region
-    page currently renders every configured section unconditionally, so
-    when sources return nothing the reader gets six consecutive headings —
-    Village News, Village Events, Library Events, Park District Events,
-    Things To Do, Downtown Events — each followed by the identical italic
-    line "No live updates fetched this week." The tag filter bar sits
-    above them filtering nothing, and the **"Sponsor this spot" card sits
-    directly above the whole run**, which is the worst possible adjacency.
-    Meanwhile "Around Mount Prospect", which *does* have content, is
+54. ✅ done. **Empty sections must collapse, not print six apologies.** A
+    region page rendered every configured section unconditionally, so
+    when sources returned nothing the reader got six consecutive
+    headings — Village News, Village Events, Library Events, Park District
+    Events, Things To Do, Downtown Events — each followed by the identical
+    italic line "No live updates fetched this week." The tag filter bar
+    sat above them filtering nothing, and the **"Sponsor this spot" card
+    sat directly above the whole run**, the worst possible adjacency.
+    Meanwhile "Around Mount Prospect", which *does* have content, was
     pushed to the bottom.
-    Three changes, none large: **omit** a section entirely when it has no
-    items rather than printing a placeholder; **order sections by whether
-    they have content**, so anything populated leads; and when a page has
-    no fetched events at all, lead with the evergreen and guides content
-    that always exists, with at most one quiet line explaining the week is
-    light. The site must never look dead — it is the thing being sold.
+    Shipped on the main region page only (`nav_current == "all"` - every
+    other view already passes its own `nav_current` and keeps its
+    existing single heading + tailored empty message, which is correct
+    there: a reader on `/this-weekend/` asking "what's on this weekend"
+    should hear "nothing yet," not get evergreen content substituted in):
+    a section with no events is omitted entirely rather than printed as a
+    placeholder; when *no* section on the page has anything, the
+    evergreen content (wrapped in a new `evergreen_section()` macro so it
+    can render in either position without duplicating markup) leads,
+    preceded by one quiet line ("It's a quiet week for live updates —
+    here's what's always worth checking in {region}"). Verified with
+    Playwright: no more apology pile-up, "Around {region}" now leads
+    immediately after the tag filter bar exactly when it's the only real
+    content on the page.
+    **Found in passing, not fixed here (belongs with item 56):** at
+    390px, the floating "My Weekend (0)" pill overlaps the sponsor card's
+    text, obscuring it - the same class of positioning bug item 56
+    already flagged at 1280px, just a different manifestation. Left for
+    item 56's pass rather than scope-creeping this one.
 
 #### P2 (new)
 
@@ -1689,6 +1714,10 @@ produces exactly this rendering in production, so everything below stands.
     production on both page types** — an unfinished-looking line on the
     exact pages used to pitch sponsors. Hide the block until the signup
     actually works.
+    **Same pill, a second manifestation (found shipping item 54):** at
+    390px the floating pill doesn't just clip an edge, it overlaps and
+    obscures the "Sponsor this spot" card's body text - a positioning fix
+    here needs to hold across widths, not just the one already reported.
 
 ## Working agreements for autonomous iteration
 

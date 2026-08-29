@@ -574,20 +574,35 @@ def build_answer_block(region: dict) -> str:
     )
 
 
-def build_region_map_embed_url(region: dict) -> str | None:
-    """A free, keyless Google Maps iframe embed centered on the region's
+def build_region_map_link_url(region: dict) -> str | None:
+    """A plain, clickable Google Maps link centered on the region's
     coordinates - real streets, pan/zoom, no API key or Google Cloud
-    billing account required. This is the classic `maps.google.com/maps?
-    q=...&output=embed` format countless small-business "find us" pages
-    use, distinct from the Maps Embed/JavaScript APIs that do require a
-    key. Confident this still works from training knowledge, not
-    confirmed live - this sandbox has no network access to Google.
+    billing account required.
+
+    This used to be an `<iframe>` embed (`maps.google.com/maps?
+    q=...&output=embed`) with a client-side "reveal on successful load"
+    fallback (ROADMAP.md Phase 11 #53's original ask). Built and tested
+    that against the real generated site with Playwright before shipping
+    it, per this project's own discipline of verifying rather than
+    assuming - and it doesn't work: an iframe's `load` event fires once
+    the browser finishes navigating the frame *at all*, including to an
+    error/blocked page, which is indistinguishable from a real map from
+    the parent document (cross-origin, so its content can't be
+    inspected). Confirmed directly: in this sandbox, where the request is
+    proxy-blocked, the iframe still reported `loaded`, revealing the
+    exact broken box the fallback was built to prevent - the fix didn't
+    fix anything.
+    A plain outbound link has no such failure mode: it either opens a
+    real map when clicked or it doesn't, with no false-positive
+    "looks fine" state in between. The reliable inline-SVG region map
+    (item 17, `build_region_map`) is the primary visual now; this is a
+    small link next to it, not the page's largest element.
     Returns None when a region has no lat/lon rather than guessing one.
     """
     lat, lon = region.get("lat"), region.get("lon")
     if lat is None or lon is None:
         return None
-    return f"https://maps.google.com/maps?q={lat},{lon}&z=14&output=embed"
+    return f"https://www.google.com/maps/search/?api=1&query={lat},{lon}"
 
 
 def build_guide_faq(region: dict, region_base_url: str) -> list[dict]:
@@ -750,8 +765,9 @@ def render_region_page(
     analytics: dict | None = None,
     answer_block: str | None = None,
     include_faq: bool = False,
-    map_embed_url: str | None = None,
+    map_link_url: str | None = None,
     nearby_regions: list[dict] | None = None,
+    region_map: dict | None = None,
 ) -> str:
     env = Environment(loader=FileSystemLoader(str(TEMPLATES_DIR)), autoescape=True)
     template = env.get_template("region.html.j2")
@@ -779,8 +795,9 @@ def render_region_page(
         event_json_ld=build_event_json_ld(blocks),
         freshness_json_ld=build_freshness_json_ld(region, canonical_url, now),
         answer_block=answer_block,
-        map_embed_url=map_embed_url,
+        map_link_url=map_link_url,
         nearby_regions=nearby_regions,
+        region_map=region_map,
         faq=faq,
         faq_json_ld=build_faq_json_ld(faq) if faq else None,
         heading=heading,
@@ -1164,7 +1181,13 @@ def main() -> None:
     # every *other* region's coordinates, including ones not yet reached
     # in the loop.
     all_regions_meta = [
-        {"id": r["region"]["id"], "name": r["region"]["name"], "lat": r["region"].get("lat"), "lon": r["region"].get("lon")}
+        {
+            "id": r["region"]["id"],
+            "name": r["region"]["name"],
+            "lat": r["region"].get("lat"),
+            "lon": r["region"].get("lon"),
+            "path": r["region"]["id"] + "/",
+        }
         for r in regions
     ]
     region_summaries = []
@@ -1201,8 +1224,9 @@ def main() -> None:
             analytics=analytics,
             editors_pick=editors_pick,
             answer_block=build_answer_block(region),
-            map_embed_url=build_region_map_embed_url(region),
+            map_link_url=build_region_map_link_url(region),
             nearby_regions=build_nearby_regions(region, all_regions_meta),
+            region_map=build_region_map(all_regions_meta),
         )
 
         region_dir = OUTPUT_DIR / region_id
