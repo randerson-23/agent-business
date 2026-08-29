@@ -1498,6 +1498,18 @@ still builds and serves real content either way — the point of recording
 this isn't to fix everything at once, it's to stop guessing blind about
 sources this exact evidence has already settled.
 
+**Follow-up, same day:** acted on the one finding with a clear, low-risk
+fix. Des Plaines Park District's real event linked to
+`dpparks.org/event/13491/`, which matches `fetchers.py`'s *default*
+detail-link pattern (`/event/\d+`) with no config override needed.
+Switched that source's `url` from `dppd.org/events` to
+`dpparks.org/events` directly, betting that the real listing page
+surfaces more than the one item `dppd.org` incidentally linked to.
+Evergreen/guide links still point at `dppd.org` (the confirmed-resolving
+domain) since there's only one data point suggesting `dpparks.org` is the
+canonical site, not enough to redirect human-facing links too. Next real
+build's log is the check for whether this paid off.
+
 ## Working agreements for autonomous iteration
 
 - Cadence is hourly (the platform's durable scheduler has a 1-hour floor;

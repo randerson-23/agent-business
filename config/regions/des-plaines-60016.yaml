@@ -23,12 +23,15 @@
 #     the returned links. Worth pointing `url` at that subdomain directly
 #     once its real listing-page structure is confirmed.
 #   - Park District Events: dppd.org **CONFIRMED to resolve** and returned
-#     1 real item, a dated "Live at the Lake" concert - though its own
-#     detail link points to `dpparks.org`, suggesting dppd.org may be a
-#     secondary/legacy domain that links out to the Park District's real
-#     site for individual events. Left as-is since it's already producing
-#     real results; a `detail_link_pattern` targeting dpparks.org/event/
-#     links would likely surface more once that's confirmed.
+#     1 real item, a dated "Live at the Lake" concert - but its own detail
+#     link pointed to `dpparks.org/event/13491/`, matching fetchers.py's
+#     default `/event/\d+` detail-link pattern exactly. Acted on this
+#     same session: source `url` switched to dpparks.org/events directly
+#     (see the source block below) on the bet that fetching the real
+#     events listing page there surfaces more than the one item dppd.org
+#     incidentally linked to. Not yet re-verified against a live run since
+#     the switch - next hour's real build will show whether the guess at
+#     dpparks.org's own /events path pays off.
 #
 # The pipeline fails soft either way: a broken source is skipped and
 # logged, it never breaks the whole digest build - if any of the three
@@ -75,11 +78,17 @@ sources:
 
   - name: "Des Plaines Park District — Events"
     type: html_events
-    # Unconfirmed guess (see header note) - deliberately html_events, not
-    # ics, since no calendar-platform export URL has been confirmed here
-    # the way Mount Prospect's and Arlington Heights' Park District ICS
-    # feeds were.
-    url: "https://www.dppd.org/events"
+    # Pointed directly at dpparks.org 2026-08-29, based on real evidence
+    # (see header note): the previous dppd.org/events source already
+    # returned one real dated event whose own detail link was
+    # dpparks.org/event/13491/ - matching the default detail-link pattern
+    # (/event/\d+) fetchers.py already applies with no config needed. If
+    # dpparks.org runs a real events listing at this path, this should
+    # surface more than the one item dppd.org's page incidentally linked
+    # to. Still html_events, not ics, since no calendar export URL has
+    # been confirmed. Fails soft to 0 items (same as before) if this
+    # guess at the listing-page path is wrong.
+    url: "https://www.dpparks.org/events"
     keywords: ["event", "class", "program", "camp", "swim", "sport", "concert", "festival"]
     section: "Park District Events"
     enabled: true
