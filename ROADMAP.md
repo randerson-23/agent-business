@@ -1567,21 +1567,34 @@ followed the risk rather than the feature list. Both items below are
 
 #### P2 (new)
 
-52. **Cross-link nearby regions from each region page.** Multi-location
-    best practice is hub → all locations, each location → hub, *and*
-    cross-links between nearby locations. This site does the first two and
-    not the third: a region page's only navigation is "← All regions", so
-    a reader in Mount Prospect who wants to see what is on in Arlington
-    Heights has to return to the hub and guess which town is close.
-    Add a "Nearby" strip to each region page — "Arlington Heights ≈4 mi ·
-    Des Plaines ≈5 mi · Palatine ≈6 mi" — computed **at build time** from
-    the village-centre lat/lon already sitting in each region config; the
-    haversine is already written in the hub's JS and can move server-side.
-    Two payoffs: it distributes internal link equity across the region
-    pages instead of pooling it all at the hub (which matters the moment
-    item 39 gives those links a real domain), and it is the first feature
-    that actually makes the Vision's "string a few nearby towns together"
-    navigable rather than aspirational.
+52. ✅ done. **Cross-link nearby regions from each region page.**
+    Multi-location best practice is hub → all locations, each location →
+    hub, *and* cross-links between nearby locations. This site did the
+    first two and not the third: a region page's only navigation was
+    "← All regions", so a reader in Mount Prospect who wanted to see what
+    is on in Arlington Heights had to return to the hub and guess which
+    town is close.
+    Shipped exactly as scoped: a "Nearby" strip on each region's main page
+    — e.g. Mount Prospect's reads "Arlington Heights ≈2.7 mi · Des Plaines
+    ≈3.6 mi · Palatine ≈5.8 mi" — computed **at build time**
+    (`build_nearby_regions()`) from the village-centre lat/lon already
+    sitting in each region config, reusing `_haversine_miles()` (already
+    written for the hub map, item 17) rather than porting the hub's
+    client-side JS version server-side. A static `all_regions_meta` list
+    is built once before the per-region fetch loop in `main()`, since a
+    region's own nearby-strip needs every *other* region's coordinates,
+    including ones the loop hasn't reached yet. Real, crawlable `<a>`
+    links (not client-side JS, unlike the hub's own "distance from me"),
+    so this genuinely distributes internal link equity across region
+    pages instead of pooling it all at the hub - the actual payoff once
+    item 39 gives those links a real domain. Scoped to each region's main
+    page only (not every filtered view/guide/directory page), matching
+    where `answer_block` and `map_embed_url` already draw that same line.
+    Returns `[]` (template omits the block) with fewer than 2 regions
+    total or missing coordinates, same "don't draw something meaningless"
+    discipline as `build_region_map`. Verified with a real Playwright
+    screenshot (light + dark) showing all three other regions correctly
+    sorted nearest-first with real, distinct mileages.
 
 ## Working agreements for autonomous iteration
 
