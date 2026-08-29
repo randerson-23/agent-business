@@ -117,16 +117,38 @@
 
   .wrap { max-width: 960px; margin: -56px auto 0; padding: 0 20px 64px; position: relative; }
 
-  /* Bento grid (ROADMAP.md Phase 11 #8): asymmetric blocks instead of a
-     uniform card grid - a big "this weekend" tile and a stat tile anchor
-     the layout, region tiles fill the rest. auto-fill/auto-flow let it
-     degrade to a single column on narrow viewports without a media query. */
+  /* Bento grid (ROADMAP.md Phase 11 #8): the "this weekend" callout and
+     the stat tile, and only those two - region cards used to share this
+     same fluid auto-fill grid, which stranded a lone last-row card next
+     to an empty gap at 4 regions (recurring at 5/7/8); they now live in
+     their own .region-grid below (ROADMAP.md Phase 11 #56), so this grid
+     only ever has exactly 2 children and can be a plain fixed 2-column
+     layout - no span math needed to keep them proportioned. */
   .bento-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    grid-template-columns: 2fr 1fr;
     grid-auto-rows: minmax(120px, auto);
     gap: 16px;
     margin-bottom: 18px;
+  }
+  @media (max-width: 560px) {
+    .bento-grid { grid-template-columns: 1fr; }
+  }
+  /* Region cards: a separate flex-wrap grid, not CSS grid - grid only
+     collapses a column TRACK with zero items anywhere in the whole
+     grid, not one merely unused in one row, so it can't stretch a lone
+     last-row card to fill the gap beside it (confirmed by trying
+     grid's auto-fit first and screenshotting the still-stranded card).
+     Flexbox distributes flex-grow space per line independently, so a
+     lone last-row card genuinely stretches to fill its row instead. */
+  .region-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin-bottom: 18px;
+  }
+  .region-grid .region-card {
+    flex: 1 1 220px;
   }
   .bento-tile {
     background: var(--card);
@@ -163,18 +185,10 @@
     .bento-tile.js-reveal-ready.js-revealed:hover { transform: translateY(-4px); }
   }
   .bento-weekend {
-    grid-column: span 2;
     background: var(--callout-gradient);
     border: 1px solid var(--border);
     border-left: 4px solid var(--accent-2);
     justify-content: flex-start;
-  }
-  /* At narrow widths the grid has room for exactly one real 220px track,
-     but "span 2" still demands two - forcing a second, unusably narrow
-     implicit column that squeezes whatever lands in it (real bug, caught
-     with a real screenshot, not assumed). Below that width, stop spanning. */
-  @media (max-width: 560px) {
-    .bento-weekend { grid-column: span 1; }
   }
   .bento-weekend .bento-kicker {
     font-weight: 700;
@@ -220,11 +234,16 @@
     background: var(--card);
     border-radius: var(--radius-lg);
     box-shadow: var(--shadow-sm);
-    padding: 14px 18px 8px;
-    margin: 0 auto 18px;
-    /* ~1/4 the .wrap's 960px max-width; min() keeps it from overflowing
-       narrow viewports instead of needing a separate mobile override. */
-    max-width: min(240px, 100%);
+    padding: 18px 24px 14px;
+    margin: 0 0 18px;
+    /* Was a ~240px thumbnail with unreadable pin labels, the smallest
+       thing on the page despite being the most distinctive visual asset
+       (ROADMAP.md Phase 11 #56). ~2x that now. Not full .wrap width:
+       tried that first and it overlapped the pin labels, which are a
+       fixed px size baked into build_region_map()'s small viewBox and
+       scale up with the container - confirmed by screenshotting that
+       attempt. min() still guards narrow viewports. */
+    max-width: min(480px, 100%);
   }
   .map-card svg {
     width: 100%;
@@ -307,7 +326,6 @@
   .newsletter form { display: contents; }
   .newsletter-copy strong { font-size: 15px; }
   .newsletter-copy p { margin: 3px 0 0; color: var(--muted); font-size: 13.5px; }
-  .newsletter-pending { font-style: italic; }
   .newsletter-form-row { display: flex; gap: 8px; flex-wrap: wrap; }
   .newsletter-form-row input[type="email"] {
     font: inherit;
@@ -377,51 +395,9 @@
 
   <div class="wrap">
   
-  <div class="bento-grid" id="region-grid">
-    <a class="bento-tile bento-weekend" href="this-weekend/">
-      <span class="bento-kicker">📅 This weekend</span>
-      <h2>Aug 28–30</h2>
-      <p>0 things happening across every region &rarr;</p>
-    </a>
-    <div class="bento-tile bento-stat">
-      <span class="bento-stat-number">4</span>
-      <span class="bento-stat-label">towns · 34 live updates this week</span>
-    </div>
-    
-    <a class="bento-tile region-card" href="arlington-heights-60005/" data-lat="42.0883" data-lon="-87.9806">
-      <span class="zip">60005 · IL</span>
-      <h2>Arlington Heights</h2>
-      <p>Village news, library events, and park district programs — a short drive from Mount Prospect.</p>
-      <span class="count">12 live updates this week</span>
-      <span class="distance" data-distance-label></span>
-    </a>
-    
-    <a class="bento-tile region-card" href="des-plaines-60016/" data-lat="42.0334" data-lon="-87.8834">
-      <span class="zip">60016 · IL</span>
-      <h2>Des Plaines</h2>
-      <p>City news, library events, and park district programs — just north of O&#39;Hare.</p>
-      <span class="count">4 live updates this week</span>
-      <span class="distance" data-distance-label></span>
-    </a>
-    
-    <a class="bento-tile region-card" href="mount-prospect-60056/" data-lat="42.0666" data-lon="-87.9373">
-      <span class="zip">60056 · IL</span>
-      <h2>Mount Prospect</h2>
-      <p>Village news, library events, and park district programs.</p>
-      <span class="count">6 live updates this week</span>
-      <span class="distance" data-distance-label></span>
-    </a>
-    
-    <a class="bento-tile region-card" href="palatine-60067/" data-lat="42.1103" data-lon="-88.0342">
-      <span class="zip">60067 · IL</span>
-      <h2>Palatine</h2>
-      <p>Village news, library events, and park district programs — northwest of Mount Prospect.</p>
-      <span class="count">12 live updates this week</span>
-      <span class="distance" data-distance-label></span>
-    </a>
-    
-  </div>
-
+  <!-- Distance-from-me and the map both exist to help pick a region -
+       they used to sit below the region grid, after the choice was
+       already made (ROADMAP.md Phase 11 #56). Lead with them instead. -->
   <div class="distance-bar" id="distance-bar">
     <button type="button" id="use-location">📍 Show distance from me</button>
     <span>or</span>
@@ -478,23 +454,73 @@
     </svg>
   </div>
   
+
+  <div class="bento-grid">
+    <a class="bento-tile bento-weekend" href="this-weekend/">
+      <span class="bento-kicker">📅 This weekend</span>
+      <h2>Aug 28–30</h2>
+      <p>0 things happening across every region &rarr;</p>
+    </a>
+    <div class="bento-tile bento-stat">
+      <span class="bento-stat-number">4</span>
+      <span class="bento-stat-label">towns · 47 live updates this week</span>
+    </div>
+  </div>
+
+  <!-- A separate flex-wrap grid, not part of .bento-grid above: with CSS
+       grid, a lone region card left in the last row (4 regions in a
+       3-column grid, and this recurs at 5/7/8) sits next to a stranded
+       empty gap - grid only collapses a column TRACK that has zero
+       items anywhere in the whole grid, not one that's merely unused in
+       one row, so auto-fit couldn't fix this despite first looking like
+       the right tool (confirmed by screenshotting that attempt, no
+       change). Flexbox distributes flex-grow space per line
+       independently, so a lone last-row card genuinely stretches to
+       fill its row instead (ROADMAP.md Phase 11 #56). -->
+  <div class="region-grid" id="region-grid">
+    
+    <a class="bento-tile region-card" href="arlington-heights-60005/" data-lat="42.0883" data-lon="-87.9806">
+      <span class="zip">60005 · IL</span>
+      <h2>Arlington Heights</h2>
+      <p>Village news, library events, and park district programs — a short drive from Mount Prospect.</p>
+      <span class="count">18 live updates this week</span>
+      <span class="distance" data-distance-label></span>
+    </a>
+    
+    <a class="bento-tile region-card" href="des-plaines-60016/" data-lat="42.0334" data-lon="-87.8834">
+      <span class="zip">60016 · IL</span>
+      <h2>Des Plaines</h2>
+      <p>City news, library events, and park district programs — just north of O&#39;Hare.</p>
+      <span class="count">5 live updates this week</span>
+      <span class="distance" data-distance-label></span>
+    </a>
+    
+    <a class="bento-tile region-card" href="mount-prospect-60056/" data-lat="42.0666" data-lon="-87.9373">
+      <span class="zip">60056 · IL</span>
+      <h2>Mount Prospect</h2>
+      <p>Village news, library events, and park district programs.</p>
+      <span class="count">12 live updates this week</span>
+      <span class="distance" data-distance-label></span>
+    </a>
+    
+    <a class="bento-tile region-card" href="palatine-60067/" data-lat="42.1103" data-lon="-88.0342">
+      <span class="zip">60067 · IL</span>
+      <h2>Palatine</h2>
+      <p>Village news, library events, and park district programs — northwest of Mount Prospect.</p>
+      <span class="count">12 live updates this week</span>
+      <span class="distance" data-distance-label></span>
+    </a>
+    
+  </div>
   
 
   
-  <div class="newsletter">
-    
-    <div class="newsletter-copy">
-      <strong>Get it in your inbox</strong>
-      <p>The weekly digest, emailed once a week. No spam, unsubscribe anytime. <span class="newsletter-pending">(Signup coming soon.)</span></p>
-    </div>
-    
-  </div>
   
 
   <footer>
     Want your ZIP added, or want to sponsor a region?
     <a href="sponsor/">See pricing &amp; availability</a>.
-    <br>Generated 2026-08-29 20:01 UTC.
+    <br>Generated 2026-08-29 21:10 UTC.
     
   </footer>
   </div>

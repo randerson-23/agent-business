@@ -107,7 +107,12 @@
     -webkit-font-smoothing: antialiased;
   }
   h1, h2, h3 { font-family: 'Fraunces', Georgia, 'Times New Roman', serif; }
-  .wrap { max-width: 960px; margin: 0 auto; padding: 0 20px 64px; }
+  /* Bottom padding reserves room for the fixed "My Weekend" pill (see
+     .tray-widget below) so it never sits directly over the last card's
+     text - confirmed happening at 390px, obscuring a card's tag badges
+     (ROADMAP.md Phase 11 #56). Applies at every width, not just mobile,
+     since the pill is fixed-position regardless of viewport. */
+  .wrap { max-width: 960px; margin: 0 auto; padding: 0 20px 96px; }
 
   .hero {
     background: linear-gradient(135deg, var(--accent) 0%, var(--accent-soft) 60%, #749058 100%);
@@ -449,7 +454,6 @@
   .newsletter form { display: contents; }
   .newsletter-copy strong { font-size: 15px; }
   .newsletter-copy p { margin: 3px 0 0; color: var(--muted); font-size: 13.5px; }
-  .newsletter-pending { font-style: italic; }
   .newsletter-form-row { display: flex; gap: 8px; flex-wrap: wrap; }
   .newsletter-form-row input[type="email"] {
     font: inherit;
@@ -528,7 +532,7 @@
 
   @media (max-width: 480px) {
     .hero h1 { font-size: 27px; }
-    .wrap { padding: 0 14px 48px; }
+    .wrap { padding: 0 14px 88px; }
   }
 </style>
 </head>
@@ -580,6 +584,14 @@
   
   <div class="filter-bar" role="group" aria-label="Filter events">
     
+    <button type="button" class="filter-chip" data-tag="dog_friendly" aria-pressed="false">
+      <span aria-hidden="true">🐕</span>Dog-friendly
+    </button>
+    
+    <button type="button" class="filter-chip" data-tag="food" aria-pressed="false">
+      <span aria-hidden="true">🍽️</span>Food &amp; drink
+    </button>
+    
     <button type="button" class="filter-chip" data-tag="free" aria-pressed="false">
       <span aria-hidden="true">💵</span>Free
     </button>
@@ -590,6 +602,14 @@
     
     <button type="button" class="filter-chip" data-tag="kid_friendly" aria-pressed="false">
       <span aria-hidden="true">🧒</span>Kid-friendly
+    </button>
+    
+    <button type="button" class="filter-chip" data-tag="outdoor" aria-pressed="false">
+      <span aria-hidden="true">🌳</span>Outdoor
+    </button>
+    
+    <button type="button" class="filter-chip" data-tag="toddler" aria-pressed="false">
+      <span aria-hidden="true">👶</span>Toddler
     </button>
     
     <button type="button" class="filter-chip clear" id="clear-filters">Clear filters</button>
@@ -607,6 +627,25 @@
       <h2>Free things to do in Mount Prospect</h2>
       
         <div class="card-grid">
+        
+        
+        <div class="card" data-tags="dog_friendly,food,free,kid_friendly,outdoor,toddler">
+          <button type="button" class="tray-star" data-item='{"date": "Sep 20", "date_iso": "2026-09-20T11:00:00", "detail": "Barks and Brews 2: Electric Boogaloo Visit Friendship Park Conservatory for the second annual Barks and Brews event featuring The Buddy Foundation. Stop by\u2026", "id": "https://www.mppd.org/event/barks-and-brews-2-electric-boogaloo/", "region_name": "Mount Prospect", "region_url": "https://randerson-23.github.io/agent-business/mount-prospect-60056/", "title": "Barks and Brews 2: Electric Boogaloo", "url": "https://www.mppd.org/event/barks-and-brews-2-electric-boogaloo/"}' aria-pressed="false" aria-label="Add Barks and Brews 2: Electric Boogaloo to My Weekend">☆</button>
+          <div class="date">Sep 20</div>
+          <h3><a href="https://www.mppd.org/event/barks-and-brews-2-electric-boogaloo/">Barks and Brews 2: Electric Boogaloo</a></h3>
+          <p class="detail">Barks and Brews 2: Electric Boogaloo Visit Friendship Park Conservatory for the second annual Barks and Brews event featuring The Buddy Foundation. Stop by…</p>
+          
+          <div class="tag-row">
+            <span class="tag-badge" style="background: var(--hue-amber-bg); color: var(--hue-amber-ink);">🐕 Dog-friendly</span><span class="tag-badge" style="background: var(--hue-orange-bg); color: var(--hue-orange-ink);">🍽️ Food &amp; drink</span><span class="tag-badge" style="background: var(--hue-green-bg); color: var(--hue-green-ink);">💵 Free</span><span class="tag-badge" style="background: var(--hue-pink-bg); color: var(--hue-pink-ink);">🧒 Kid-friendly</span><span class="tag-badge" style="background: var(--hue-teal-bg); color: var(--hue-teal-ink);">🌳 Outdoor</span><span class="tag-badge" style="background: var(--hue-lime-bg); color: var(--hue-lime-ink);">👶 Toddler</span>
+          </div>
+          
+          
+          <div class="cal-row">
+            <a href="data:text/calendar;charset=utf-8,BEGIN%3AVCALENDAR%0D%0AVERSION%3A2.0%0D%0APRODID%3A-//Weekend%20Trip%20Planner//EN%0D%0ABEGIN%3AVEVENT%0D%0ADTSTART%3A20260920T110000%0D%0ADTEND%3A20260920T120000%0D%0ASUMMARY%3ABarks%20and%20Brews%202%3A%20Electric%20Boogaloo%0D%0ADESCRIPTION%3ABarks%20and%20Brews%202%3A%20Electric%20Boogaloo%20Visit%20Friendship%20Park%20Conservatory%20for%20the%20second%20annual%20Barks%20and%20Brews%20event%20featuring%20The%20Buddy%20Foundation.%20Stop%20by%E2%80%A6%0D%0AURL%3Ahttps%3A//www.mppd.org/event/barks-and-brews-2-electric-boogaloo/%0D%0AEND%3AVEVENT%0D%0AEND%3AVCALENDAR%0D%0A" download="event.ics">📅 Add to calendar</a>
+            <a href="https://www.google.com/calendar/render?action=TEMPLATE&amp;text=Barks+and+Brews+2%3A+Electric+Boogaloo&amp;dates=20260920T110000%2F20260920T120000&amp;details=Barks+and+Brews+2%3A+Electric+Boogaloo+Visit+Friendship+Park+Conservatory+for+the+second+annual+Barks+and+Brews+event+featuring+The+Buddy+Foundation.+Stop+by%E2%80%A6&amp;location=Mount+Prospect" target="_blank" rel="noopener">Google Calendar</a>
+          </div>
+          
+        </div>
         
         
         <div class="card" data-tags="indoor,kid_friendly,free">
@@ -639,20 +678,12 @@
   
 
   
-  <div class="newsletter">
-    
-    <div class="newsletter-copy">
-      <strong>Get it in your inbox</strong>
-      <p>The weekly digest, emailed once a week. No spam, unsubscribe anytime. <span class="newsletter-pending">(Signup coming soon.)</span></p>
-    </div>
-    
-  </div>
   
 
   <footer>
     Local business? See the
     <a href="https://randerson-23.github.io/agent-business/sponsor/">sponsor page</a>.
-    <br>Generated 2026-08-29 20:01 UTC.
+    <br>Generated 2026-08-29 21:10 UTC.
     
     <br><a href="https://randerson-23.github.io/agent-business/mount-prospect-60056/weekly-summary.txt">Copy this week's summary</a> — a plain-text block ready to paste into a local group.
   </footer>
@@ -675,8 +706,10 @@
 </div>
 
 
+<script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "Event", "name": "Barks and Brews 2: Electric Boogaloo", "url": "https://www.mppd.org/event/barks-and-brews-2-electric-boogaloo/", "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode", "description": "Barks and Brews 2: Electric Boogaloo Visit Friendship Park Conservatory for the second annual Barks and Brews event featuring The Buddy Foundation. Stop by…", "startDate": "2026-09-20T11:00:00"}]}</script>
 
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebPage", "name": "Mount Prospect — Weekend & Trip Planner", "url": "https://randerson-23.github.io/agent-business/mount-prospect-60056/free/", "dateModified": "2026-08-29T20:01:24.586386+00:00", "isPartOf": {"@type": "WebSite", "name": "Weekend & Trip Planner", "url": "https://randerson-23.github.io/agent-business/"}}</script>
+
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebPage", "name": "Mount Prospect — Weekend & Trip Planner", "url": "https://randerson-23.github.io/agent-business/mount-prospect-60056/free/", "dateModified": "2026-08-29T21:10:37.168016+00:00", "isPartOf": {"@type": "WebSite", "name": "Weekend & Trip Planner", "url": "https://randerson-23.github.io/agent-business/"}}</script>
 <script>
 (function () {
   var activeTags = new Set();

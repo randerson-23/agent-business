@@ -107,7 +107,12 @@
     -webkit-font-smoothing: antialiased;
   }
   h1, h2, h3 { font-family: 'Fraunces', Georgia, 'Times New Roman', serif; }
-  .wrap { max-width: 960px; margin: 0 auto; padding: 0 20px 64px; }
+  /* Bottom padding reserves room for the fixed "My Weekend" pill (see
+     .tray-widget below) so it never sits directly over the last card's
+     text - confirmed happening at 390px, obscuring a card's tag badges
+     (ROADMAP.md Phase 11 #56). Applies at every width, not just mobile,
+     since the pill is fixed-position regardless of viewport. */
+  .wrap { max-width: 960px; margin: 0 auto; padding: 0 20px 96px; }
 
   .hero {
     background: linear-gradient(135deg, var(--accent) 0%, var(--accent-soft) 60%, #749058 100%);
@@ -449,7 +454,6 @@
   .newsletter form { display: contents; }
   .newsletter-copy strong { font-size: 15px; }
   .newsletter-copy p { margin: 3px 0 0; color: var(--muted); font-size: 13.5px; }
-  .newsletter-pending { font-style: italic; }
   .newsletter-form-row { display: flex; gap: 8px; flex-wrap: wrap; }
   .newsletter-form-row input[type="email"] {
     font: inherit;
@@ -528,7 +532,7 @@
 
   @media (max-width: 480px) {
     .hero h1 { font-size: 27px; }
-    .wrap { padding: 0 14px 48px; }
+    .wrap { padding: 0 14px 88px; }
   }
 </style>
 </head>
@@ -565,27 +569,6 @@
 
   
 
-  
-  <div class="weather-bar">
-    
-    <div class="weather-day">
-      <span class="wx-emoji" aria-hidden="true">☁️</span>
-      <span class="wx-name">Saturday</span>
-      <span class="wx-temp">84&deg; / 64&deg;</span>
-      <span class="wx-label">Overcast &middot; 11% precip</span>
-    </div>
-    
-    <div class="weather-day">
-      <span class="wx-emoji" aria-hidden="true">🌧️</span>
-      <span class="wx-name">Sunday</span>
-      <span class="wx-temp">83&deg; / 70&deg;</span>
-      <span class="wx-label">Heavy drizzle &middot; 33% precip</span>
-    </div>
-    
-    
-    <div class="wx-note">Rain (or worse) in the forecast — the Indoor filter below can help plan around it.</div>
-    
-  </div>
   
 
   
@@ -626,20 +609,12 @@
   
 
   
-  <div class="newsletter">
-    
-    <div class="newsletter-copy">
-      <strong>Get it in your inbox</strong>
-      <p>The weekly digest, emailed once a week. No spam, unsubscribe anytime. <span class="newsletter-pending">(Signup coming soon.)</span></p>
-    </div>
-    
-  </div>
   
 
   <footer>
     Local business? See the
     <a href="https://randerson-23.github.io/agent-business/sponsor/">sponsor page</a>.
-    <br>Generated 2026-08-29 20:01 UTC.
+    <br>Generated 2026-08-29 21:10 UTC.
     
     <br><a href="https://randerson-23.github.io/agent-business/mount-prospect-60056/weekly-summary.txt">Copy this week's summary</a> — a plain-text block ready to paste into a local group.
   </footer>
@@ -663,7 +638,7 @@
 
 
 
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebPage", "name": "Mount Prospect — Weekend & Trip Planner", "url": "https://randerson-23.github.io/agent-business/mount-prospect-60056/this-weekend/", "dateModified": "2026-08-29T20:01:24.586386+00:00", "isPartOf": {"@type": "WebSite", "name": "Weekend & Trip Planner", "url": "https://randerson-23.github.io/agent-business/"}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebPage", "name": "Mount Prospect — Weekend & Trip Planner", "url": "https://randerson-23.github.io/agent-business/mount-prospect-60056/this-weekend/", "dateModified": "2026-08-29T21:10:37.168016+00:00", "isPartOf": {"@type": "WebSite", "name": "Weekend & Trip Planner", "url": "https://randerson-23.github.io/agent-business/"}}</script>
 <script>
 (function () {
   var activeTags = new Set();
