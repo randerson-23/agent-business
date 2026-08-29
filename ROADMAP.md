@@ -1381,6 +1381,67 @@ something already on the list.
     The flow should run the other direction, as item 41 proposes: fetch
     locally, credit the source. Don't revisit.
 
+#### Research pass 2026-08-29 (ninth pass)
+
+`BUSINESS_PLAN.md` has been updated with the membership tiers from the
+fourth pass — Annual Partner at $1,200/yr, Neighborhood Authority at
+$5,000/yr — so the research → roadmap → plan loop is now closing properly.
+
+**Re-rank first, because the shape of the backlog matters more than
+anything below:** of eleven open items, **six are the newsletter cluster
+(24, 25, 31, 36, 37, 47), and every one of them is blocked behind item 39 —
+registering a domain, which only Ryan can do.** The build loop should not
+sit idle waiting on that. Both items below are deliberately chosen to be
+unblocked, and item 49 in particular should be picked up ahead of anything
+in the newsletter block.
+
+| Angle | Finding | Consequence |
+|---|---|---|
+| **6AM City's seed-market model** | 400+ local newsletters "built and sent by AI, untouched by humans", launched in towns as small as **20,000 people** for "pennies a day", profitable at roughly $1 CPC and a couple of clicks, monetised through a self-service ad platform | The architecture here already is that model; the plan has implicitly chosen the opposite strategy without saying so |
+| **New-mover marketing** | New movers spend **$9,000–$10,000+ in their first year** on furniture, appliances and home services. Welcome Wagon exists solely to reach them; one welcome guide was funded by a National Association of Realtors grant | The single highest-value content type for the $5,000/yr real-estate tier just added |
+
+#### P1 (new)
+
+49. **A "New to town" newcomer guide per region.** This is the content the
+    Neighborhood Authority tier exists to sponsor, and it is unblocked
+    today. New movers spend $9,000–$10,000+ in their first year on
+    furniture, appliances and home services, which is why Welcome Wagon is
+    a whole business and why realtor associations fund welcome guides
+    outright. What newcomers actually want is well documented: village
+    services and utility hookups, school registration, library card, park
+    district sign-up, refuse and recycling day, vehicle stickers — plus the
+    softer "where do I take a toddler on a Saturday" material this site
+    already holds in its evergreen entries and guides.
+    Concretely: a `newcomer` guide type reusing the machinery from items 5
+    and 15, one per region. It is evergreen (no weekly decay), it is the
+    natural landing page for anyone searching "moving to Mount Prospect",
+    and it gives the most expensive tier something specific to be inside.
+    **Highest-value unblocked item on the board.**
+
+#### P2 (new)
+
+50. **Choose the scale strategy deliberately — few regions sold well, or
+    many regions monetised thinly.** 6AM City runs 400+ markets with AI
+    sending the newsletters untouched, viable in towns of 20,000, earning
+    "dollars at best" per market per day and profitable anyway because
+    there are hundreds of them. This site's architecture *is* that model —
+    the marginal cost of region four is one YAML file, as Des Plaines just
+    demonstrated in PR #67.
+    The business plan has implicitly chosen the opposite: few regions, sold
+    well, $1,200–$5,000/yr memberships, high-touch. That is very likely
+    right for an owner with 30–60 minutes a month, because the thin model
+    depends on programmatic and self-service ad infrastructure that does
+    not exist here. But the choice should be **stated rather than drifted
+    into**, because it decides whether adding regions five through ten is
+    the main growth lever or a distraction.
+    The honest middle: keep monetising few regions deeply, but keep adding
+    neighbouring towns anyway — they cost almost nothing, they make the
+    "trip across a few nearby towns" promise in the Vision real, and they
+    widen the surface that starts earning the moment a domain exists.
+    **Caveat worth respecting:** each new region is another set of feed
+    URLs nobody has verified, so growth should stay gated on the fetchers
+    failing soft, which they do.
+
 ## Working agreements for autonomous iteration
 
 - Cadence is hourly (the platform's durable scheduler has a 1-hour floor;
