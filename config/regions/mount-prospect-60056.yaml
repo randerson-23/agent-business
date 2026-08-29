@@ -30,6 +30,13 @@
 #     keywords, or the real events live at a different path. Worth a
 #     `detail_link_pattern` once a real one is found, same as every other
 #     source that started this way.
+#   - School District 57 — Calendar (added 2026-08-29, ROADMAP.md Phase 11
+#     #32): URL found via web search of d57.org's own iCalInfo page, not
+#     yet confirmed by a live fetch (unconfirmed guess, same category as
+#     Experience Mount Prospect above) - watch the next real build's logs.
+#     District 214 (the shared high school district) was researched too
+#     but has no discoverable public ICS feed, only PDF calendars - not
+#     added rather than guessing a URL with nothing behind it.
 #
 # The pipeline fails soft either way: a broken source is skipped and
 # logged, it never breaks the whole digest build.
@@ -102,6 +109,19 @@ sources:
     type: ics
     url: "webcal://www.mppd.org/?post_type=tribe_events&ical=1&eventDisplay=list"
     section: "Park District Events"
+    enabled: true
+
+  - name: "Mount Prospect School District 57 — Calendar"
+    type: ics
+    # ROADMAP.md Phase 11 #32: the district-wide export from D57's own
+    # iCalInfo page (found via web search 2026-08-29, not yet confirmed
+    # by a live fetch - this sandbox's own network is proxy-blocked for
+    # arbitrary domains too, same as every source here). Early dismissals,
+    # no-school days, and concerts are a real gap no local competitor
+    # covers; will self-correct from the next real GitHub Actions build's
+    # logs if the path is wrong, same as every other source on this site.
+    url: "webcal://www.d57.org/ical/Mount_Prospect_School_District_57_export.ics"
+    section: "School Calendar"
     enabled: true
 
   - name: "Experience Mount Prospect — Events"
