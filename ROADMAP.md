@@ -1596,6 +1596,100 @@ followed the risk rather than the feature list. Both items below are
     screenshot (light + dark) showing all three other regions correctly
     sorted nearest-first with real, distinct mileages.
 
+#### Research pass 2026-08-29 (eleventh pass)
+
+Both tenth-pass items shipped within hours (PRs #74, #75) — and the health
+check immediately earned its keep, catching real source problems in #76 and
+#77. Unblocked work was thinning, so this pass did what ten passes of web
+search never did: **built the site and looked at it**, at 1280px and 390px,
+via Playwright against the real generated `docs/`.
+
+That found two defects worth more than any trend article.
+
+**Read the empty state carefully before reacting to it.** In this sandbox
+every external fetch is proxy-blocked, so the local build renders zero
+events everywhere. The zeros are an artefact. **The way the page *handles*
+zero is not** — a genuinely quiet week, a holiday, or one dead scraper
+produces exactly this rendering in production, so everything below stands.
+
+#### P1 (new)
+
+53. **The Google Maps embed fails loudly, above the fold, with no
+    fallback.** On a region page the embed from PR #63 renders as a
+    ~700×250px grey box with a broken-file icon, sitting between the intro
+    paragraph and the Editor's Pick — the single largest element on the
+    page, and it is a failure state. It fails here because the sandbox
+    blocks the request, but the same box appears for any visitor whose
+    network blocks Google, whose extensions block the frame, or if the
+    embed is ever rate-limited or key-gated. There is no `onerror`
+    handling and nothing degrades.
+    Fix, in order: give it a fallback — **the inline-SVG region map from
+    item 17 already exists and needs no third party**, so render that
+    underneath and only reveal the Google embed on successful load; add
+    `loading="lazy"`; and give the container a fixed aspect ratio so a
+    failure collapses to something intentional rather than a broken
+    rectangle. A sponsor evaluating a $5,000/yr placement will see this
+    box before they see anything else on the page.
+
+54. **Empty sections must collapse, not print six apologies.** A region
+    page currently renders every configured section unconditionally, so
+    when sources return nothing the reader gets six consecutive headings —
+    Village News, Village Events, Library Events, Park District Events,
+    Things To Do, Downtown Events — each followed by the identical italic
+    line "No live updates fetched this week." The tag filter bar sits
+    above them filtering nothing, and the **"Sponsor this spot" card sits
+    directly above the whole run**, which is the worst possible adjacency.
+    Meanwhile "Around Mount Prospect", which *does* have content, is
+    pushed to the bottom.
+    Three changes, none large: **omit** a section entirely when it has no
+    items rather than printing a placeholder; **order sections by whether
+    they have content**, so anything populated leads; and when a page has
+    no fetched events at all, lead with the evergreen and guides content
+    that always exists, with at most one quiet line explaining the week is
+    light. The site must never look dead — it is the thing being sold.
+
+#### P2 (new)
+
+55. **The health check can't tell "couldn't reach it" from "reached it and
+    parsed nothing" — and it breaks local verification.** Item 51 shipped
+    well (the `if: always()` guard in `build-digest.yml` correctly keeps a
+    regression from withholding the site, which is exactly right and
+    should not be undone). Two refinements it needs:
+    First, `build_digest.py` now `sys.exit(1)`s on any zero-against-history
+    source. In this sandbox **every** source is proxy-blocked, so the
+    build loop's own required verification step — `python
+    scripts/build_digest.py` — now exits non-zero on every single run,
+    reporting nine regressions that are pure environment. That trains the
+    loop to ignore health errors, which destroys the feature.
+    Second, and the root of it: a 403, a timeout and a silently-broken CSS
+    selector all produce the same empty list, because the fetchers are
+    fail-soft by design. Have the fetchers report *why* they returned zero
+    — transport error versus fetched-and-parsed-zero — and let only the
+    latter count as a health regression. A transport error is a softer,
+    separate signal, and a run where *every* source fails transport is
+    obviously a network problem, not fifteen simultaneous redesigns.
+
+#### P3 (new)
+
+56. **Hub layout: an orphan card, a buried map, and help offered after the
+    choice.** Four regions in a three-column grid leaves Palatine alone on
+    its own row beside a large gap, and this recurs at 5, 7 and 8 regions.
+    The "This weekend" and stat tiles above sit in a two-column row of
+    unequal visual weight that reads as misalignment rather than a bento.
+    More substantively, the ordering is backwards: the region cards come
+    first, and *then* the "Show distance from me" bar and the map — the two
+    things whose entire job is to help a reader choose which region to
+    click. Move both above the grid, and let the region grid use a
+    column count that does not strand a final card. The map in particular
+    is currently a ~230px thumbnail with unreadable labels, floating in
+    whitespace; it is the most distinctive visual asset on the site and
+    the smallest thing on the page.
+    Also visible and easy: the floating "My Weekend (0)" pill clips the
+    right edge at 1280px, and **"(Signup coming soon.)" is shipping to
+    production on both page types** — an unfinished-looking line on the
+    exact pages used to pitch sponsors. Hide the block until the signup
+    actually works.
+
 ## Working agreements for autonomous iteration
 
 - Cadence is hourly (the platform's durable scheduler has a 1-hour floor;
