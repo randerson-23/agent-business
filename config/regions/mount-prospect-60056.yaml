@@ -213,3 +213,37 @@ guides:
         detail: "The Park District runs its own seasonal programming and community events year-round — browse the current program guide for what's on."
         url: "https://www.mppd.org/"
         tags: ["outdoor", "kid_friendly"]
+
+  # ROADMAP.md Phase 11 #49 (ninth research pass, 2026-08-29) - the
+  # newcomer guide, flagged as the highest-value unblocked item on the
+  # board. Same civic-source-only discipline as every other guide: real
+  # standing pages, no invented registration steps, fees, or deadlines
+  # (those change and belong on the official page, which is what this
+  # links to). School registration deliberately has no url - Illinois
+  # suburbs are typically split across separate school districts by home
+  # address rather than village boundaries, and no specific district site
+  # has been confirmed here, so this states the true general fact instead
+  # of guessing a link.
+  - slug: "new-to-town"
+    title: "New to Town"
+    summary: "The practical first-week checklist for anyone new to Mount Prospect — utilities and vehicle stickers, a library card, Park District registration, and where school-district boundaries actually come from. Pulls from the same civic sources as the weekly digest, organized for someone who just moved in rather than someone browsing this week's events."
+    items:
+      - title: "Village services, utilities & vehicle stickers"
+        detail: "Water service, refuse & recycling pickup, and Village vehicle sticker requirements are typically set up directly with the Village — check current requirements and any new-resident forms on its site."
+        url: "https://www.mountprospect.org/"
+        tags: []
+      - title: "Get a Mount Prospect Public Library card"
+        detail: "A free library card is one of the fastest ways to feel settled in — story times, museum passes, and programs for all ages once you're in the system."
+        url: "https://mppl.org/"
+        tags: ["indoor", "kid_friendly", "free"]
+      - title: "Register for Mount Prospect Park District programs"
+        detail: "Most residents set up one household account, then register for pools, rec classes, and seasonal programs individually — browse the current program guide to get started."
+        url: "https://www.mppd.org/"
+        tags: ["outdoor", "kid_friendly"]
+      - title: "Find your school district"
+        detail: "Illinois suburbs are typically served by separate elementary and high school districts assigned by home address, not by village boundaries — check with the specific district for your new address rather than assuming it matches a neighbor's."
+        tags: []
+      - title: "Explore downtown & what's nearby"
+        detail: "The Downtown Merchants and the Village's own tourism site are a good starting point for shops, restaurants, and things to do within walking distance of most of the village."
+        url: "https://mpdowntown.com/"
+        tags: []

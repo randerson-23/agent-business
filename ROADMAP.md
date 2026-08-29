@@ -1402,21 +1402,33 @@ in the newsletter block.
 
 #### P1 (new)
 
-49. **A "New to town" newcomer guide per region.** This is the content the
-    Neighborhood Authority tier exists to sponsor, and it is unblocked
-    today. New movers spend $9,000–$10,000+ in their first year on
+49. ✅ done. **A "New to town" newcomer guide per region.** This is the
+    content the Neighborhood Authority tier exists to sponsor, and it was
+    unblocked. New movers spend $9,000–$10,000+ in their first year on
     furniture, appliances and home services, which is why Welcome Wagon is
     a whole business and why realtor associations fund welcome guides
-    outright. What newcomers actually want is well documented: village
-    services and utility hookups, school registration, library card, park
-    district sign-up, refuse and recycling day, vehicle stickers — plus the
-    softer "where do I take a toddler on a Saturday" material this site
-    already holds in its evergreen entries and guides.
-    Concretely: a `newcomer` guide type reusing the machinery from items 5
-    and 15, one per region. It is evergreen (no weekly decay), it is the
-    natural landing page for anyone searching "moving to Mount Prospect",
-    and it gives the most expensive tier something specific to be inside.
-    **Highest-value unblocked item on the board.**
+    outright.
+    Shipped: a `new-to-town` guide added to all three regions' `guides:`
+    list — no new code, purely config, exactly like item 27's third
+    region turned out to be. Five items each: Village/City services +
+    utilities + vehicle stickers, a library card, Park District
+    registration, "find your school district," and (Mount Prospect only,
+    since it's the only region with a confirmed downtown/tourism source)
+    a downtown/nearby pointer. All five link only to domains already
+    established in that region's own config — no new URLs invented for
+    this guide specifically. **"Find your school district" deliberately
+    has no url**: Illinois suburbs are typically split into separate
+    school districts by home address rather than village boundaries, and
+    no specific district site has been confirmed for any of the three
+    regions, so this states the true general fact rather than guessing a
+    link — confirmed safe (renders as plain text, not a broken link) by
+    reading `region.html.j2`'s card template, which already guards every
+    guide-item link with `{% if item.url %}`, and confirmed with a real
+    Playwright screenshot (light + dark) that it renders correctly and
+    that `build_event_json_ld` never touches guide items regardless
+    (it only includes items with `date_iso`, which guides never set).
+    It is evergreen (no weekly decay) and the natural landing page for
+    anyone searching "moving to Mount Prospect."
 
 #### P2 (new)
 

@@ -132,3 +132,28 @@ guides:
         detail: "Private businesses appear here as they join the local directory — see what's currently listed."
         url: "https://randerson-23.github.io/agent-business/des-plaines-60016/directory/"
         tags: ["kid_friendly"]
+
+  # ROADMAP.md Phase 11 #49 (ninth research pass, 2026-08-29) - see the
+  # Mount Prospect config for the rationale; same civic-source-only
+  # discipline and same reason school registration has no url. Links reuse
+  # the same unconfirmed City/library/park district domains already
+  # flagged at the top of this file, not fresh guesses.
+  - slug: "new-to-town"
+    title: "New to Town"
+    summary: "The practical first-week checklist for anyone new to Des Plaines — utilities and vehicle stickers, a library card, Park District registration, and where school-district boundaries actually come from. Pulls from the same civic sources as the weekly digest, organized for someone who just moved in rather than someone browsing this week's events."
+    items:
+      - title: "City services, utilities & vehicle stickers"
+        detail: "Water service, refuse & recycling pickup, and vehicle sticker requirements are typically set up directly with the City — check current requirements and any new-resident forms on its site."
+        url: "https://www.desplaines.org/"
+        tags: []
+      - title: "Get a Des Plaines Public Library card"
+        detail: "A free library card is one of the fastest ways to feel settled in — story times and programs for all ages once you're in the system."
+        url: "https://www.dppl.org/"
+        tags: ["indoor", "kid_friendly", "free"]
+      - title: "Register for Des Plaines Park District programs"
+        detail: "Most residents set up one household account, then register for pools, rec classes, and seasonal programs individually — browse the current program guide to get started."
+        url: "https://www.dppd.org/"
+        tags: ["outdoor", "kid_friendly"]
+      - title: "Find your school district"
+        detail: "Illinois suburbs are typically served by separate elementary and high school districts assigned by home address, not by municipal boundaries — check with the specific district for your new address rather than assuming it matches a neighbor's."
+        tags: []
