@@ -555,6 +555,71 @@ def test_fetch_region_sections_attaches_calendar_links(monkeypatch):
     assert "location=Mount+Prospect" in event["google_calendar_url"]
 
 
+def test_fetch_region_sections_records_source_health(monkeypatch):
+    def fake_fetcher(url, **kwargs):
+        return [{"title": "A", "detail": "x", "url": "https://x/1", "date": None}]
+
+    monkeypatch.setitem(build_digest.FETCHERS, "ics", fake_fetcher)
+    region_cfg = {
+        "region": REGION,
+        "sources": [{"name": "Park", "type": "ics", "url": "https://x/cal.ics", "section": "Events", "enabled": True}],
+    }
+    health = {}
+    build_digest.fetch_region_sections(region_cfg, health=health)
+    assert health["mount-prospect-60056:Park"] == [1]
+
+
+def test_update_source_health_appends_and_caps_history():
+    health = {}
+    for count in range(build_digest.SOURCE_HEALTH_HISTORY_LEN + 3):
+        build_digest.update_source_health(health, "region:Source", count)
+    history = health["region:Source"]
+    assert len(history) == build_digest.SOURCE_HEALTH_HISTORY_LEN
+    # Oldest entries dropped, most recent kept.
+    assert history[-1] == build_digest.SOURCE_HEALTH_HISTORY_LEN + 2
+
+
+def test_detect_source_regressions_flags_a_source_that_died():
+    health = {"region:Library": [6, 6, 5, 6, 0]}
+    assert build_digest.detect_source_regressions(health) == ["region:Library"]
+
+
+def test_detect_source_regressions_ignores_a_source_that_always_returns_zero():
+    # An unconfirmed/blocked source (e.g. a 403) legitimately stays at 0 -
+    # its own trailing median is 0, so a current 0 is not a regression.
+    health = {"region:UnconfirmedSource": [0, 0, 0, 0]}
+    assert build_digest.detect_source_regressions(health) == []
+
+
+def test_detect_source_regressions_ignores_a_source_with_too_little_history():
+    health = {"region:NewSource": [0]}
+    assert build_digest.detect_source_regressions(health) == []
+
+
+def test_detect_source_regressions_ignores_a_source_still_returning_events():
+    health = {"region:Healthy": [5, 6, 4, 5, 5]}
+    assert build_digest.detect_source_regressions(health) == []
+
+
+def test_save_and_load_source_health_round_trip(tmp_path, monkeypatch):
+    monkeypatch.setattr(build_digest, "SOURCE_HEALTH_PATH", tmp_path / "source_health.json")
+    health = {"region:Source": [1, 2, 3]}
+    build_digest.save_source_health(health)
+    assert build_digest.load_source_health() == health
+
+
+def test_load_source_health_returns_empty_dict_when_missing(tmp_path, monkeypatch):
+    monkeypatch.setattr(build_digest, "SOURCE_HEALTH_PATH", tmp_path / "does-not-exist.json")
+    assert build_digest.load_source_health() == {}
+
+
+def test_load_source_health_returns_empty_dict_on_corrupt_json(tmp_path, monkeypatch):
+    path = tmp_path / "source_health.json"
+    path.write_text("{not valid json", encoding="utf-8")
+    monkeypatch.setattr(build_digest, "SOURCE_HEALTH_PATH", path)
+    assert build_digest.load_source_health() == {}
+
+
 def test_render_region_page_produces_html_even_with_empty_sources():
     blocks = [{"section": "Village News", "events": []}]
     sponsor = {"title": "Sponsor this spot", "detail": "", "url": ""}

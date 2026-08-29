@@ -1525,24 +1525,40 @@ followed the risk rather than the feature list. Both items below are
 
 #### P1 (new)
 
-51. **Nothing would tell us if a source silently died — and the data *is*
-    the product.** `config/regions/*.yaml` now carries **15 sources across
-    four regions**, every one a fail-soft scrape of a small municipal site
-    that can be redesigned without warning. Fail-soft is the right
-    behaviour for uptime and exactly the wrong behaviour for detection: a
-    source that starts returning zero events yields an empty section, a
-    green build, clean logs, and no signal to anyone. The research names
-    this precisely — jobs that finish on schedule while quietly delivering
-    nothing, and selector degradation that writes blanks without raising
-    errors.
-    Concretely, and cheaply: `build_digest.py` already knows the event
-    count per source. Persist a `data/source_health.json` alongside the
-    `docs/` output CI already commits, then on each build compare every
-    source's count against its own trailing median and **fail the workflow
-    when a source that normally yields N drops to zero**. GitHub emails the
-    owner on a failed Action at no cost, so this needs no new service, no
-    new subscription, and no recurring attention — it only speaks when
-    something is actually broken.
+51. ✅ done. **Nothing would tell us if a source silently died — and the
+    data *is* the product.** `config/regions/*.yaml` now carries **15
+    sources across four regions**, every one a fail-soft scrape of a small
+    municipal site that can be redesigned without warning. Fail-soft is
+    the right behaviour for uptime and exactly the wrong behaviour for
+    detection: a source that starts returning zero events yields an empty
+    section, a green build, clean logs, and no signal to anyone. The
+    research names this precisely — jobs that finish on schedule while
+    quietly delivering nothing, and selector degradation that writes
+    blanks without raising errors.
+    Shipped exactly as scoped: `fetch_region_sections()` now records each
+    source's item count into a `region_id:source_name`-keyed history dict
+    (`update_source_health()`), capped at the last 10 builds
+    (`SOURCE_HEALTH_HISTORY_LEN`). `detect_source_regressions()` flags any
+    source whose *current* count is 0 while its *trailing* median (every
+    prior count, current excluded) is positive — deliberately leaves alone
+    a source whose own median is already 0 (an unconfirmed guess, or one
+    of the real 403-blocked sources this session's field note already
+    documented), since that's a normal, already-known state, not a new
+    death. `main()` persists the history to `data/source_health.json`
+    (created fresh on its first real run - nothing to seed by hand) after
+    every other file is written, then calls `sys.exit(1)` if any
+    regression was found. `.github/workflows/build-digest.yml`'s commit
+    step gained `if: always()` and now stages `data/source_health.json`
+    alongside `docs/`, so a regression changes only the job's own
+    conclusion (failure → GitHub emails the owner at no cost) — it never
+    withholds the site update or the health history itself.
+    Verified the full path, not just the unit tests: manually seeded a
+    source's history with real prior counts, re-ran `build_digest.py`
+    against this sandbox's always-zero fetches, and confirmed exit code 1
+    plus the exact log line naming the regressed source - and confirmed
+    `docs/` was still fully written despite the non-zero exit, so the
+    "don't withhold good output" design actually holds and isn't just
+    argued for.
     **The business case, not just the engineering one:** a region page with
     no events is worse than no page at all. It is a broken promise to a
     reader and an active embarrassment in front of a $5,000/yr

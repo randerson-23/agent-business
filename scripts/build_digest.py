@@ -16,6 +16,7 @@ from __future__ import annotations
 import json
 import logging
 import math
+import statistics
 import sys
 from datetime import date, datetime, timedelta, timezone
 from email.utils import parsedate_to_datetime
@@ -38,6 +39,8 @@ CONFIG_DIR = ROOT / "config"
 REGIONS_DIR = CONFIG_DIR / "regions"
 TEMPLATES_DIR = ROOT / "templates"
 OUTPUT_DIR = ROOT / "docs"
+SOURCE_HEALTH_PATH = ROOT / "data" / "source_health.json"
+SOURCE_HEALTH_HISTORY_LEN = 10
 
 DETAIL_MAX_LEN = 160
 
@@ -224,7 +227,60 @@ def build_google_calendar_url(event: dict, location: str) -> str | None:
     return "https://www.google.com/calendar/render?" + urlencode(params)
 
 
-def fetch_region_sections(region_cfg: dict) -> list[dict]:
+def load_source_health() -> dict:
+    """Per-source event-count history (ROADMAP.md Phase 11 #51).
+
+    A small, committed JSON file (alongside docs/, which CI already
+    commits) tracking each source's last few fetch counts. The reason it
+    exists: every source here is fail-soft by design (a broken scrape
+    yields an empty section, never a crash), which is exactly right for
+    uptime and exactly wrong for noticing a source has silently died - a
+    green build with clean logs looks identical whether a source is
+    genuinely returning nothing this week or its selector broke months
+    ago. Comparing each run's count against that source's own trailing
+    history (detect_source_regressions) is what actually catches that,
+    cheaply, with no new service or subscription.
+    """
+    if SOURCE_HEALTH_PATH.exists():
+        try:
+            return json.loads(SOURCE_HEALTH_PATH.read_text(encoding="utf-8"))
+        except (json.JSONDecodeError, OSError) as exc:
+            logger.warning("Could not read %s, starting fresh: %s", SOURCE_HEALTH_PATH, exc)
+    return {}
+
+
+def update_source_health(health: dict, source_key: str, count: int) -> None:
+    history = health.setdefault(source_key, [])
+    history.append(count)
+    del history[:-SOURCE_HEALTH_HISTORY_LEN]
+
+
+def detect_source_regressions(health: dict) -> list[str]:
+    """Source keys whose latest count is 0 despite a positive trailing
+    median - the actual "this used to work and just died" signal, as
+    opposed to a source that has always legitimately returned 0 (e.g. an
+    unconfirmed guess still waiting on a real URL), which this correctly
+    leaves alone since its own median is already 0.
+    """
+    regressions = []
+    for key, history in sorted(health.items()):
+        if len(history) < 2:
+            continue
+        *prior, current = history
+        if current == 0 and statistics.median(prior) > 0:
+            regressions.append(key)
+    return regressions
+
+
+def save_source_health(health: dict) -> None:
+    SOURCE_HEALTH_PATH.parent.mkdir(parents=True, exist_ok=True)
+    SOURCE_HEALTH_PATH.write_text(
+        json.dumps(health, indent=2, sort_keys=True) + "\n", encoding="utf-8"
+    )
+
+
+def fetch_region_sections(region_cfg: dict, health: dict | None = None) -> list[dict]:
+    region_id = region_cfg["region"]["id"]
     region_name = region_cfg["region"]["name"]
     blocks = []
     for source in region_cfg.get("sources", []):
@@ -242,6 +298,8 @@ def fetch_region_sections(region_cfg: dict) -> list[dict]:
                 detail_link_pattern=source.get("detail_link_pattern"),
             )
             logger.info("  -> %d item(s)", len(raw_items))
+            if health is not None:
+                update_source_health(health, f"{region_id}:{source['name']}", len(raw_items))
 
         events = []
         for item in raw_items:
@@ -1061,6 +1119,7 @@ def main() -> None:
     OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
     (OUTPUT_DIR / ".nojekyll").touch()
 
+    source_health = load_source_health()
     region_summaries = []
     hub_weekend_sections = []
     hub_weekend_date_range = None
@@ -1070,7 +1129,7 @@ def main() -> None:
         region_id = region["id"]
         logger.info("=== Building region: %s (%s) ===", region["name"], region_id)
 
-        blocks = fetch_region_sections(region_cfg)
+        blocks = fetch_region_sections(region_cfg, health=source_health)
         evergreen = prepare_evergreen(region_cfg)
         guides = prepare_guides(region_cfg)
         directory = build_business_directory(sponsors_cfg, region_id)
@@ -1301,6 +1360,27 @@ def main() -> None:
             "TOTAL structured-date coverage: %d/%d events (%.0f%%) have a machine-readable start date",
             total_dated, total_events, 100 * total_dated / total_events,
         )
+
+    save_source_health(source_health)
+    regressions = detect_source_regressions(source_health)
+    if regressions:
+        # Deliberately fails the build *after* every other file above is
+        # already written to disk (ROADMAP.md Phase 11 #51) - the
+        # workflow's commit step still runs with `if: always()` so the
+        # site keeps publishing and source_health.json keeps accumulating
+        # real history either way. What actually changes is the job's own
+        # conclusion: a real GitHub Actions failure, which GitHub emails
+        # the owner about at no cost and with no new service to run. That
+        # alert is the point - a source that normally returns real events
+        # and just returned zero is a silent scraper death, not a normal
+        # fail-soft empty section (which this never flags: a source whose
+        # own trailing median is already 0 is left alone).
+        for key in regressions:
+            logger.error(
+                "Source health regression: %s just returned 0 items despite a positive trailing history - likely a silently broken scraper, not a normal empty week.",
+                key,
+            )
+        sys.exit(1)
 
 
 if __name__ == "__main__":

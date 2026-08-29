@@ -37,11 +37,20 @@ jobs:
       - name: Build digest
         run: python scripts/build_digest.py
 
+      # ROADMAP.md Phase 11 #51: build_digest.py exits non-zero when a
+      # source's fetch count silently drops to 0 despite a positive
+      # trailing history - a likely-dead scraper, not a normal empty
+      # week. `if: always()` keeps this step (and the site it publishes)
+      # running even then, so the only thing a regression changes is this
+      # job's own conclusion (failure -> GitHub emails the owner at no
+      # cost) - it never withholds otherwise-good output or the health
+      # history data/source_health.json needs to keep accumulating.
       - name: Commit generated site
+        if: always()
         run: |
           git config user.name "local-planner-bot"
           git config user.email "actions@users.noreply.github.com"
-          git add docs/
+          git add docs/ data/source_health.json
           if git diff --cached --quiet; then
             echo "No changes to commit."
           else
