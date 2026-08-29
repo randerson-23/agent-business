@@ -297,8 +297,22 @@ def fetch_region_sections(region_cfg: dict, health: dict | None = None) -> list[
                 keywords=source.get("keywords"),
                 detail_link_pattern=source.get("detail_link_pattern"),
             )
-            logger.info("  -> %d item(s)", len(raw_items))
-            if health is not None:
+            # A fetcher returns None on a transport/parse failure (network
+            # error, non-2xx status) versus a real [] (reached the page,
+            # found nothing) - see fetchers.py's docstrings (ROADMAP.md
+            # Phase 11 #55). Only the latter is meaningful health signal:
+            # a 403 or a timeout means the scraper never got a chance to
+            # work, so it's skipped from history entirely rather than
+            # recorded as a 0 that looks identical to a genuinely dead
+            # scraper.
+            transport_failed = raw_items is None
+            raw_items = raw_items or []
+            logger.info(
+                "  -> %d item(s)%s",
+                len(raw_items),
+                " (transport error - not counted for health)" if transport_failed else "",
+            )
+            if health is not None and not transport_failed:
                 update_source_health(health, f"{region_id}:{source['name']}", len(raw_items))
 
         events = []

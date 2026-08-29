@@ -83,14 +83,16 @@ def test_fetch_rss_parses_items(mock_get):
 
 @patch("fetchers.requests.get")
 def test_fetch_rss_fails_soft_on_error(mock_get):
+    # None (not []) signals a transport failure - ROADMAP.md Phase 11 #55,
+    # distinct from a real [] (fetched fine, found nothing).
     mock_get.side_effect = RuntimeError("boom")
-    assert fetch_rss("https://example.org/rss") == []
+    assert fetch_rss("https://example.org/rss") is None
 
 
 @patch("fetchers.requests.get")
 def test_fetch_rss_fails_soft_on_bad_xml(mock_get):
     mock_get.return_value = _mock_response("<not valid xml")
-    assert fetch_rss("https://example.org/rss") == []
+    assert fetch_rss("https://example.org/rss") is None
 
 
 @patch("fetchers.requests.get")
@@ -104,7 +106,7 @@ def test_fetch_ics_filters_past_events(mock_get):
 @patch("fetchers.requests.get")
 def test_fetch_ics_fails_soft(mock_get):
     mock_get.side_effect = RuntimeError("boom")
-    assert fetch_ics("https://example.org/cal.ics") == []
+    assert fetch_ics("https://example.org/cal.ics") is None
 
 
 @patch("fetchers.requests.get")
@@ -150,7 +152,7 @@ def test_fetch_html_events_filters_relevant_links(mock_get):
 @patch("fetchers.requests.get")
 def test_fetch_html_events_fails_soft(mock_get):
     mock_get.side_effect = RuntimeError("boom")
-    assert fetch_html_events("https://example.org/events") == []
+    assert fetch_html_events("https://example.org/events") is None
 
 
 @patch("fetchers.requests.get")
@@ -335,6 +337,19 @@ def test_fetch_html_events_denylists_known_nav_labels_in_fallback(mock_get):
     items = fetch_html_events("https://example.org/events")
     titles = {i["title"] for i in items}
     assert titles == {"Craft Camp Signup"}
+
+
+@patch("fetchers.requests.get")
+def test_fetch_html_events_returns_real_empty_list_when_nothing_matches(mock_get):
+    # ROADMAP.md Phase 11 #55: a page that's reached successfully but has
+    # no matching links returns a real [] - distinct from None (transport
+    # failure). This is the "genuinely quiet week" case, not a broken
+    # scraper, and must count as real health signal.
+    html = '<a href="/about">About Us</a><a href="/staff">Our Staff</a>'
+    mock_get.return_value = _mock_response(html)
+    items = fetch_html_events("https://example.org/events")
+    assert items == []
+    assert items is not None
 
 
 def _mock_weather_response(daily: dict):
