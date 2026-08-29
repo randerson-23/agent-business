@@ -1180,14 +1180,24 @@ features, or the build cadence needs to rise.
 
 #### P2 (new)
 
-41. **Add `experiencemountprospect.org` and `mpdowntown.com` as sources.**
-    Two live, local, currently-unfetched event feeds — the Village's own
-    tourism site and the downtown merchants' events page. A straight
-    extension of `config/regions/mount-prospect-60056.yaml`, fail-soft like
-    every other source. Worth noting the competitive angle too: the
-    Village's tourism site is the nearest thing to a direct competitor
-    found so far, and since it is the Village's own, the right posture is
-    to aggregate and credit it, not to try to outrank it.
+41. ✅ done. **Add `experiencemountprospect.org` and `mpdowntown.com` as
+    sources.** Two live, local, currently-unfetched event feeds — the
+    Village's own tourism site and the downtown merchants' events page.
+    Added as two new `html_events` sources ("Things To Do" and "Downtown
+    Events") in `config/regions/mount-prospect-60056.yaml`, fail-soft like
+    every other source. URLs (`experiencemountprospect.org/events/` and
+    `mpdowntown.com/events/`) are a best guess at each site's events
+    listing page, same unconfirmed starting point every other source here
+    began from — no `detail_link_pattern` set yet, so this relies on the
+    keyword fallback until a real link structure is confirmed the way
+    Village News, the library, and vah.com's were. Worth noting the
+    competitive angle too: the Village's tourism site is the nearest thing
+    to a direct competitor found so far, and since it is the Village's
+    own, the right posture is to aggregate and credit it, not to try to
+    outrank it. Not extended to Arlington Heights — no equivalent tourism
+    site or downtown merchants body has been confirmed to exist for it,
+    same reasoning item 42 already recorded for its Seasonal Circuit
+    Guide; add one if a real link surfaces.
 
 42. ✅ done (Mount Prospect). **Seasonal circuit guides — farmers markets,
     Oktoberfest, restaurant weeks.** WBEZ, the Sun-Times, WTTW and Secret
