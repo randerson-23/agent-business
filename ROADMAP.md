@@ -1510,6 +1510,63 @@ domain) since there's only one data point suggesting `dpparks.org` is the
 canonical site, not enough to redirect human-facing links too. Next real
 build's log is the check for whether this paid off.
 
+#### Research pass 2026-08-29 (tenth pass)
+
+Regions doubled this cycle — Des Plaines (PR #67) and Palatine (PR #70)
+joined Mount Prospect and Arlington Heights, and the scale strategy from
+item 50 was stated in PR #69. That changes the risk profile, and this pass
+followed the risk rather than the feature list. Both items below are
+**unblocked** — the newsletter cluster is still waiting on item 39.
+
+| Angle | Finding | Consequence |
+|---|---|---|
+| **Silent scraper failure** | Scrapers "finish on schedule with clean logs while quietly delivering nothing of value". Selector degradation captures fields as blanks so error logging stays quiet. The fix is **trend comparison across runs**, not point-in-time validation — plus canary runs and row-count/null-rate checks | There are now 15 sources across 4 regions, every one fail-soft, and nothing would tell us if one died |
+| **Multi-location IA** | Standard guidance is hub → all locations, each location → hub, **and cross-link nearby locations** | Region pages currently link only back to the hub, so the "trip across nearby towns" promise isn't actually navigable |
+
+#### P1 (new)
+
+51. **Nothing would tell us if a source silently died — and the data *is*
+    the product.** `config/regions/*.yaml` now carries **15 sources across
+    four regions**, every one a fail-soft scrape of a small municipal site
+    that can be redesigned without warning. Fail-soft is the right
+    behaviour for uptime and exactly the wrong behaviour for detection: a
+    source that starts returning zero events yields an empty section, a
+    green build, clean logs, and no signal to anyone. The research names
+    this precisely — jobs that finish on schedule while quietly delivering
+    nothing, and selector degradation that writes blanks without raising
+    errors.
+    Concretely, and cheaply: `build_digest.py` already knows the event
+    count per source. Persist a `data/source_health.json` alongside the
+    `docs/` output CI already commits, then on each build compare every
+    source's count against its own trailing median and **fail the workflow
+    when a source that normally yields N drops to zero**. GitHub emails the
+    owner on a failed Action at no cost, so this needs no new service, no
+    new subscription, and no recurring attention — it only speaks when
+    something is actually broken.
+    **The business case, not just the engineering one:** a region page with
+    no events is worse than no page at all. It is a broken promise to a
+    reader and an active embarrassment in front of a $5,000/yr
+    Neighborhood Authority sponsor whose logo sits on it. This risk scales
+    linearly with regions, and regions just doubled.
+
+#### P2 (new)
+
+52. **Cross-link nearby regions from each region page.** Multi-location
+    best practice is hub → all locations, each location → hub, *and*
+    cross-links between nearby locations. This site does the first two and
+    not the third: a region page's only navigation is "← All regions", so
+    a reader in Mount Prospect who wants to see what is on in Arlington
+    Heights has to return to the hub and guess which town is close.
+    Add a "Nearby" strip to each region page — "Arlington Heights ≈4 mi ·
+    Des Plaines ≈5 mi · Palatine ≈6 mi" — computed **at build time** from
+    the village-centre lat/lon already sitting in each region config; the
+    haversine is already written in the hub's JS and can move server-side.
+    Two payoffs: it distributes internal link equity across the region
+    pages instead of pooling it all at the hub (which matters the moment
+    item 39 gives those links a real domain), and it is the first feature
+    that actually makes the Vision's "string a few nearby towns together"
+    navigable rather than aspirational.
+
 ## Working agreements for autonomous iteration
 
 - Cadence is hourly (the platform's durable scheduler has a 1-hour floor;
