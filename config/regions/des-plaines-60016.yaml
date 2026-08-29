@@ -5,22 +5,30 @@
 # distance from me" manual-entry fallback), which meant its coordinates
 # were already vetted rather than a fresh guess.
 #
-# Status as of 2026-08-29 (added by the build loop, NOT yet confirmed
-# against a live run — this build environment's outbound network is
-# restricted, same caveat every other region here started with):
-#   - City of Des Plaines, Des Plaines Public Library, and Des Plaines
-#     Park District domains (desplaines.org, dppl.org, dppd.org) are a
-#     best-effort guess from training knowledge, following the same
-#     naming convention already confirmed for Mount Prospect (mppd.org)
-#     and Arlington Heights (ahpd.org) - not verified live. Listing-page
-#     paths (/news, /events) are a plausible guess, not a confirmed link
-#     structure, and no `detail_link_pattern` is set - this deliberately
-#     relies on the generic keyword fallback (same posture as the two
-#     sources added to Mount Prospect this session for item 41) rather
-#     than inventing a specific per-item URL pattern with false
-#     confidence. Every source here is html_events for the same reason:
-#     no calendar-platform ICS export URL has been confirmed, unlike
-#     Mount Prospect/Arlington Heights' Park District sources.
+# Status as of 2026-08-29 (confirmed against the real GitHub Actions build
+# on main, run 33246555815, 09:54 UTC - read directly from its job log,
+# not inferred from generated HTML):
+#   - City News: desplaines.org/news actively **failed the connection**
+#     ("Connection reset by peer"), not a 404/403 - a real signal this
+#     exact host+path combination is wrong (parked domain, DNS
+#     misconfiguration, or a server actively refusing the request),
+#     different from Mount Prospect's 403s where the domain is right but
+#     blocked. No confident replacement guess exists yet; left as-is since
+#     it fails soft either way.
+#   - Library Events: desplaines.org's sibling domain dppl.org
+#     **CONFIRMED to resolve** and returned 3 items - but they're generic
+#     nav links ("My events", "Book groups", "Computer classes") from the
+#     keyword fallback, not real dated events; the actual calendar looks
+#     to live on a separate `calendar.dppl.org` subdomain based on one of
+#     the returned links. Worth pointing `url` at that subdomain directly
+#     once its real listing-page structure is confirmed.
+#   - Park District Events: dppd.org **CONFIRMED to resolve** and returned
+#     1 real item, a dated "Live at the Lake" concert - though its own
+#     detail link points to `dpparks.org`, suggesting dppd.org may be a
+#     secondary/legacy domain that links out to the Park District's real
+#     site for individual events. Left as-is since it's already producing
+#     real results; a `detail_link_pattern` targeting dpparks.org/event/
+#     links would likely surface more once that's confirmed.
 #
 # The pipeline fails soft either way: a broken source is skipped and
 # logged, it never breaks the whole digest build - if any of the three

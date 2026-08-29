@@ -3,18 +3,25 @@
 # existing regions deeply, but keep adding neighboring towns anyway since
 # each one costs almost nothing.
 #
-# Status as of 2026-08-29 (added by the build loop, NOT yet confirmed
-# against a live run — this build environment's outbound network is
-# restricted, same caveat every other region here started with):
-#   - Village of Palatine (palatineil.gov), Palatine Public Library
-#     District (palatinelibrary.org), and Palatine Park District
-#     (palatineparks.org) domains are a best-effort guess from training
-#     knowledge, not verified live. Listing-page paths (/news, /events)
-#     are a plausible guess, not a confirmed link structure, and no
-#     `detail_link_pattern` is set - relies on the generic keyword
-#     fallback, same posture as Des Plaines' sources. All three sources
-#     are html_events for the same reason Des Plaines' are: no
-#     calendar-platform ICS export URL has been confirmed here.
+# Status as of 2026-08-29 (confirmed against the real GitHub Actions build
+# on main, run 33246555815, 09:54 UTC - read directly from its job log,
+# just hours after this region was added, not inferred from generated
+# HTML):
+#   - Village News: palatineil.gov **failed with a TLS/SSL error**
+#     ("TLSV1_UNRECOGNIZED_NAME") rather than a 403/404 - a strong signal
+#     this exact hostname is wrong (no valid HTTPS host answers to that
+#     name), not just blocked. No confident replacement guess exists yet;
+#     left as-is since it fails soft either way and a wrong guess here
+#     costs nothing but an empty section.
+#   - Library Events: palatinelibrary.org returns **403 Forbidden** - the
+#     domain itself resolves and responds (unlike the Village News
+#     failure above), it's just blocking this fetcher's request, same
+#     pattern as Mount Prospect's blocked sources.
+#   - Park District Events: palatineparks.org **CONFIRMED to resolve** and
+#     returned 6 real items (e.g. "Summer Camps", "Festival of Cultures",
+#     "Calendar of Events") via the keyword fallback - real, useful
+#     Park District links, though not yet matched via a
+#     `detail_link_pattern` to individual dated events specifically.
 #
 # The pipeline fails soft either way: a broken source is skipped and
 # logged, it never breaks the whole digest build - if any of the three
