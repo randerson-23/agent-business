@@ -16,12 +16,15 @@
 #     blocked. No confident replacement guess exists yet; left as-is since
 #     it fails soft either way.
 #   - Library Events: desplaines.org's sibling domain dppl.org
-#     **CONFIRMED to resolve** and returned 3 items - but they're generic
-#     nav links ("My events", "Book groups", "Computer classes") from the
-#     keyword fallback, not real dated events; the actual calendar looks
-#     to live on a separate `calendar.dppl.org` subdomain based on one of
-#     the returned links. Worth pointing `url` at that subdomain directly
-#     once its real listing-page structure is confirmed.
+#     **CONFIRMED to resolve** and returned 3 items, stable across three
+#     builds - but they're generic nav links ("My events", "Book groups",
+#     "Computer classes") from the keyword fallback, not real dated
+#     events. Acted on this same session: source `url` switched to
+#     `calendar.dppl.org` directly, the subdomain one of those links
+#     pointed at - the same "library calendar lives on its own platform
+#     subdomain" shape already confirmed for Mount Prospect
+#     (mppl.libnet.info). Not yet re-verified against a live run since the
+#     switch.
 #   - Park District Events: dppd.org **CONFIRMED to resolve** and returned
 #     1 real item, a dated "Live at the Lake" concert - but its own detail
 #     link pointed to `dpparks.org/event/13491/`, matching fetchers.py's
@@ -70,8 +73,14 @@ sources:
 
   - name: "Des Plaines Public Library — Events"
     type: html_events
-    # Unconfirmed guess (see header note).
-    url: "https://www.dppl.org/events"
+    # Pointed at calendar.dppl.org 2026-08-29, based on real evidence: the
+    # previous dppl.org/events source returned a "My events" link to
+    # https://calendar.dppl.org/myevents - a distinct subdomain, the same
+    # "library calendar lives on its own platform subdomain" shape
+    # mppl.libnet.info (Mount Prospect) already confirmed. Root path only
+    # (no confirmed listing-page path yet); still relies on the keyword
+    # fallback, still html_events since no ICS/RSS export is confirmed.
+    url: "https://calendar.dppl.org/"
     keywords: ["event", "class", "program", "story", "camp", "concert", "workshop", "book"]
     section: "Library Events"
     enabled: true
