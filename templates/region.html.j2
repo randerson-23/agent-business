@@ -151,12 +151,57 @@
   .answer-block { color: var(--muted); font-size: 14px; line-height: 1.6; margin: 4px 0 18px; max-width: 640px; }
 
   .map-embed {
+    position: relative;
     border-radius: var(--radius-lg);
     box-shadow: var(--shadow-sm);
     overflow: hidden;
     margin: 0 0 18px;
+    /* Fixed aspect ratio (ROADMAP.md Phase 11 #53) so this reliable
+       inline SVG - no third party, nothing that can fail to load - is
+       the page's real map, not a fallback waiting behind a failure-prone
+       iframe. See build_region_map_link_url()'s docstring for why the
+       original "iframe with reveal-on-load" design was dropped: tested
+       against the real build, and an iframe's load event fires even when
+       navigation is blocked, so it never actually caught the failure it
+       was built to hide. */
+    aspect-ratio: 960 / 260;
+    background: var(--card);
   }
-  .map-embed iframe { display: block; width: 100%; height: 260px; border: 0; }
+  .map-fallback {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 16px 20px;
+  }
+  .map-fallback svg { width: 100%; height: 100%; overflow: visible; }
+  .map-fallback .map-line { stroke: var(--border); stroke-width: 1.5; stroke-dasharray: 4 3; }
+  .map-fallback .map-line-label { font-size: 10px; fill: var(--muted); font-family: 'Inter', sans-serif; }
+  .map-fallback .map-pin { fill: var(--accent-soft); stroke: var(--card); stroke-width: 2; }
+  .map-fallback .map-pin-label { font-size: 12px; font-weight: 700; fill: var(--ink); font-family: 'Inter', sans-serif; }
+  .map-fallback a { text-decoration: none; }
+  .map-fallback a:hover .map-pin { fill: var(--accent); }
+  .map-fallback a:hover .map-pin-label { fill: var(--accent); }
+  .map-fallback a:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+  .map-link {
+    position: absolute;
+    right: 12px;
+    bottom: 12px;
+    background: var(--card);
+    color: var(--accent-2-text);
+    font-size: 12.5px;
+    font-weight: 600;
+    text-decoration: none;
+    padding: 6px 12px;
+    border-radius: 999px;
+    box-shadow: var(--shadow-sm);
+    border: 1px solid var(--border);
+  }
+  .map-link:hover { color: var(--accent); border-color: var(--accent); }
+  .map-link:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+  .quiet-note { color: var(--muted); font-size: 14px; font-style: italic; margin: 0 0 14px; }
 
   .nearby-strip { margin: 0 0 24px; font-size: 14px; color: var(--muted); }
   .nearby-strip strong { color: var(--ink); font-weight: 600; margin-right: 6px; }
@@ -488,6 +533,42 @@
 </style>
 </head>
 <body>
+{% macro region_map_svg() %}
+<svg viewBox="0 0 {{ region_map.width }} {{ region_map.height }}" role="img" aria-label="Map showing {{ region.name }}'s location relative to nearby towns">
+  {% for line in region_map.lines %}
+  <line x1="{{ line.x1 }}" y1="{{ line.y1 }}" x2="{{ line.x2 }}" y2="{{ line.y2 }}" class="map-line" />
+  <text x="{{ line.mid_x }}" y="{{ line.mid_y - 6 }}" class="map-line-label" text-anchor="middle">{{ line.miles }} mi</text>
+  {% endfor %}
+  {% for pin in region_map.pins %}
+  <a href="{{ hub_url }}{{ pin.path }}">
+    <text x="{{ pin.x }}" y="{{ pin.y - 14 }}" class="map-pin-label" text-anchor="middle">{{ pin.name }}</text>
+    <circle cx="{{ pin.x }}" cy="{{ pin.y }}" r="7" class="map-pin" />
+  </a>
+  {% endfor %}
+</svg>
+{% endmacro %}
+{% macro evergreen_section() %}
+{% if evergreen %}
+<section class="block">
+  <h2>Around {{ region.name }}</h2>
+  <div class="card-grid">
+  {% for item in evergreen %}
+  {% set tray_item = {"id": item.url or item.title, "title": item.title, "url": item.url or "", "date": None, "date_iso": None, "detail": item.detail or "", "region_name": region.name, "region_url": region_base_url} %}
+  <div class="card" data-tags="{{ item.tags|join(',') }}">
+    <button type="button" class="tray-star" data-item='{{ tray_item | tojson }}' aria-pressed="false" aria-label="Add {{ item.title }} to My Weekend">☆</button>
+    <h3><a href="{{ item.url }}">{{ item.title }}</a></h3>
+    <p class="detail">{{ item.detail }}</p>
+    {% if item.tag_badges %}
+    <div class="tag-row">
+      {% for tag in item.tag_badges %}<span class="tag-badge" style="background: var(--hue-{{ tag.hue }}-bg); color: var(--hue-{{ tag.hue }}-ink);">{{ tag.emoji }} {{ tag.label }}</span>{% endfor %}
+    </div>
+    {% endif %}
+  </div>
+  {% endfor %}
+  </div>
+</section>
+{% endif %}
+{% endmacro %}
 <div class="hero">
   <div class="hero-inner">
     <a class="back" href="{{ hub_url }}">&larr; All regions</a>
@@ -516,9 +597,14 @@
 
   {% if answer_block %}<p class="answer-block">{{ answer_block }}</p>{% endif %}
 
-  {% if map_embed_url %}
+  {% if region_map %}
   <div class="map-embed">
-    <iframe src="{{ map_embed_url }}" title="Map of {{ region.name }}, {{ region.state }}" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+    <div class="map-fallback">
+      {{ region_map_svg() }}
+    </div>
+    {% if map_link_url %}
+    <a class="map-link" href="{{ map_link_url }}" target="_blank" rel="noopener">View on Google Maps &#8599;</a>
+    {% endif %}
   </div>
   {% endif %}
 
@@ -579,57 +665,49 @@
   <div class="sr-only" id="filter-status" aria-live="polite"></div>
   {% endif %}
 
+  {% set any_events = blocks|selectattr("events")|list %}
+
+  {% if nav_current == "all" and not any_events %}
+  {% if evergreen %}<p class="quiet-note">It's a quiet week for live updates — here's what's always worth checking in {{ region.name }}.</p>{% endif %}
+  {{ evergreen_section() }}
+  {% endif %}
+
   {% for block in blocks %}
-  <section class="block">
-    <h2>{{ block.section }}</h2>
-    {% if block.events %}
-      <div class="card-grid">
-      {% for item in block.events %}
-      {% set tray_item = {"id": item.url or item.title, "title": item.title, "url": item.url or "", "date": item.date or None, "date_iso": item.date_iso or None, "detail": item.detail or "", "region_name": region.name, "region_url": region_base_url} %}
-      <div class="card" data-tags="{{ item.tags|join(',') }}">
-        <button type="button" class="tray-star" data-item='{{ tray_item | tojson }}' aria-pressed="false" aria-label="Add {{ item.title }} to My Weekend">☆</button>
-        {% if item.date %}<div class="date">{{ item.date }}</div>{% endif %}
-        <h3>{% if item.url %}<a href="{{ item.url }}">{{ item.title }}</a>{% else %}{{ item.title }}{% endif %}</h3>
-        {% if item.detail %}<p class="detail">{{ item.detail }}</p>{% endif %}
-        {% if item.tag_badges %}
-        <div class="tag-row">
-          {% for tag in item.tag_badges %}<span class="tag-badge" style="background: var(--hue-{{ tag.hue }}-bg); color: var(--hue-{{ tag.hue }}-ink);">{{ tag.emoji }} {{ tag.label }}</span>{% endfor %}
+    {% if block.events or nav_current != "all" %}
+    <section class="block">
+      <h2>{{ block.section }}</h2>
+      {% if block.events %}
+        <div class="card-grid">
+        {% for item in block.events %}
+        {% set tray_item = {"id": item.url or item.title, "title": item.title, "url": item.url or "", "date": item.date or None, "date_iso": item.date_iso or None, "detail": item.detail or "", "region_name": region.name, "region_url": region_base_url} %}
+        <div class="card" data-tags="{{ item.tags|join(',') }}">
+          <button type="button" class="tray-star" data-item='{{ tray_item | tojson }}' aria-pressed="false" aria-label="Add {{ item.title }} to My Weekend">☆</button>
+          {% if item.date %}<div class="date">{{ item.date }}</div>{% endif %}
+          <h3>{% if item.url %}<a href="{{ item.url }}">{{ item.title }}</a>{% else %}{{ item.title }}{% endif %}</h3>
+          {% if item.detail %}<p class="detail">{{ item.detail }}</p>{% endif %}
+          {% if item.tag_badges %}
+          <div class="tag-row">
+            {% for tag in item.tag_badges %}<span class="tag-badge" style="background: var(--hue-{{ tag.hue }}-bg); color: var(--hue-{{ tag.hue }}-ink);">{{ tag.emoji }} {{ tag.label }}</span>{% endfor %}
+          </div>
+          {% endif %}
+          {% if item.ics_href %}
+          <div class="cal-row">
+            <a href="{{ item.ics_href }}" download="event.ics">📅 Add to calendar</a>
+            <a href="{{ item.google_calendar_url }}" target="_blank" rel="noopener">Google Calendar</a>
+          </div>
+          {% endif %}
         </div>
-        {% endif %}
-        {% if item.ics_href %}
-        <div class="cal-row">
-          <a href="{{ item.ics_href }}" download="event.ics">📅 Add to calendar</a>
-          <a href="{{ item.google_calendar_url }}" target="_blank" rel="noopener">Google Calendar</a>
+        {% endfor %}
         </div>
-        {% endif %}
-      </div>
-      {% endfor %}
-      </div>
-    {% else %}
-      <p class="empty">{{ empty_message or "No live updates fetched this week — check back or visit the source directly." }}{% if empty_cta_url %} <a href="{{ empty_cta_url }}">{{ empty_cta_label or "Learn more" }}</a>{% endif %}</p>
+      {% else %}
+        <p class="empty">{{ empty_message or "No live updates fetched this week — check back or visit the source directly." }}{% if empty_cta_url %} <a href="{{ empty_cta_url }}">{{ empty_cta_label or "Learn more" }}</a>{% endif %}</p>
+      {% endif %}
+    </section>
     {% endif %}
-  </section>
   {% endfor %}
 
-  {% if evergreen %}
-  <section class="block">
-    <h2>Around {{ region.name }}</h2>
-    <div class="card-grid">
-    {% for item in evergreen %}
-    {% set tray_item = {"id": item.url or item.title, "title": item.title, "url": item.url or "", "date": None, "date_iso": None, "detail": item.detail or "", "region_name": region.name, "region_url": region_base_url} %}
-    <div class="card" data-tags="{{ item.tags|join(',') }}">
-      <button type="button" class="tray-star" data-item='{{ tray_item | tojson }}' aria-pressed="false" aria-label="Add {{ item.title }} to My Weekend">☆</button>
-      <h3><a href="{{ item.url }}">{{ item.title }}</a></h3>
-      <p class="detail">{{ item.detail }}</p>
-      {% if item.tag_badges %}
-      <div class="tag-row">
-        {% for tag in item.tag_badges %}<span class="tag-badge" style="background: var(--hue-{{ tag.hue }}-bg); color: var(--hue-{{ tag.hue }}-ink);">{{ tag.emoji }} {{ tag.label }}</span>{% endfor %}
-      </div>
-      {% endif %}
-    </div>
-    {% endfor %}
-    </div>
-  </section>
+  {% if not (nav_current == "all" and not any_events) %}
+  {{ evergreen_section() }}
   {% endif %}
 
   {% if faq %}
