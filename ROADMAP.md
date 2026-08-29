@@ -1432,8 +1432,8 @@ in the newsletter block.
 
 #### P2 (new)
 
-50. **Choose the scale strategy deliberately — few regions sold well, or
-    many regions monetised thinly.** 6AM City runs 400+ markets with AI
+50. ✅ done. **Choose the scale strategy deliberately — few regions sold
+    well, or many regions monetised thinly.** 6AM City runs 400+ markets with AI
     sending the newsletters untouched, viable in towns of 20,000, earning
     "dollars at best" per market per day and profitable anyway because
     there are hundreds of them. This site's architecture *is* that model —
@@ -1453,6 +1453,13 @@ in the newsletter block.
     **Caveat worth respecting:** each new region is another set of feed
     URLs nobody has verified, so growth should stay gated on the fetchers
     failing soft, which they do.
+    Shipped: recorded as a real decision in `BUSINESS_PLAN.md`'s new
+    "Scale strategy" section, in the same place item 29's monetization
+    finding got incorporated - not left implicit in this roadmap alone.
+    States the "honest middle" above as the actual chosen policy, not
+    just a suggestion, so future sessions (this loop included) treat
+    adding a fourth-plus region as expected, ongoing work rather than a
+    question to keep re-raising.
 
 ## Working agreements for autonomous iteration
 

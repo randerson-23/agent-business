@@ -117,7 +117,29 @@ One Annual Partner already covers years of hosting and any tooling.
 6. First 3 real sponsor outreach emails sent manually (outside this repo)
 7. Optional: email delivery (e.g. Buttondown/Mailchimp free tier) once there
    is a subscriber list worth mailing
-8. Optional: expand to neighboring ZIPs (60004, 60005) once 60056 is proven
+8. ✅ Expanded beyond 60056 — Arlington Heights (60005, ROADMAP.md Phase 5)
+   and Des Plaines (60016, ROADMAP.md Phase 11 #27) — proving the
+   multi-region architecture holds at effectively zero marginal code cost
+   per region (one YAML config file).
+
+### Scale strategy
+
+Stated deliberately rather than drifted into (ROADMAP.md Phase 11 #50, a
+ninth-pass finding): this architecture *could* run 6AM City's model —
+hundreds of thin-margin markets, newsletters sent untouched by a human,
+viable in towns as small as 20,000 people. The plan instead chooses the
+opposite on purpose — **few regions, sold well**, at the $1,200-$5,000/yr
+tiers above — because the thin-margin model depends on self-service ad
+infrastructure this project doesn't have, and high-touch annual
+memberships are what actually fit a 30-60 minutes/month owner.
+The honest middle, not an either/or: keep monetizing the current regions
+deeply, but keep adding neighboring towns anyway, since each one costs
+almost nothing, makes the "trip across a few nearby towns" promise in
+ROADMAP.md's Vision real, and widens the surface that starts earning the
+moment a domain exists (item 39). The only real gate on growth is that
+every new region's feed URLs start unverified — acceptable because the
+pipeline's fail-soft design (evergreen fallback per source) already
+covers that.
 
 ### Risks / notes
 
