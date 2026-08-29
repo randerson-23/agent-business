@@ -824,6 +824,28 @@ def test_render_region_page_view_nav_marks_active_view():
     assert '<a href="https://randerson-23.github.io/agent-business/mount-prospect-60056/free/" class="active">Free</a>' in html
 
 
+def test_render_region_page_omits_newsletter_when_not_configured():
+    # ROADMAP.md Phase 11 #56: same fix as the hub page - "(Signup coming
+    # soon.)" was shipping to production on a page used to pitch sponsors.
+    newsletter = {"configured": False, "headline": "Get it in your inbox", "detail": "Weekly.", "buttondown_username": ""}
+    html = build_digest.render_region_page(
+        {"region": REGION}, [], {"title": "", "detail": "", "url": ""}, [], datetime.now(timezone.utc),
+        newsletter=newsletter,
+    )
+    assert '<div class="newsletter">' not in html
+    assert "Signup coming soon" not in html
+
+
+def test_render_region_page_shows_newsletter_form_when_configured():
+    newsletter = {"configured": True, "headline": "Get it in your inbox", "detail": "Weekly.", "buttondown_username": "planner"}
+    html = build_digest.render_region_page(
+        {"region": REGION}, [], {"title": "", "detail": "", "url": ""}, [], datetime.now(timezone.utc),
+        newsletter=newsletter,
+    )
+    assert 'buttondown.com/api/emails/embed-subscribe/planner' in html
+    assert "Signup coming soon" not in html
+
+
 def test_region_local_date_uses_region_timezone():
     # noon UTC is still the same calendar day in America/Chicago (UTC-5/6)
     now_utc = datetime(2026, 8, 27, 12, 0, tzinfo=timezone.utc)
@@ -894,6 +916,39 @@ def test_render_hub_page_includes_region_coordinates_for_distance_feature():
 def test_render_hub_page_handles_no_regions():
     html = build_digest.render_hub_page([], [], datetime.now(timezone.utc))
     assert "No regions configured yet" in html
+
+
+def test_render_hub_page_separates_region_cards_from_bento_grid():
+    # ROADMAP.md Phase 11 #56: region cards used to share a CSS grid with
+    # the "this weekend"/stat tiles, which stranded a lone last-row card
+    # next to an empty gap (grid only collapses a track with zero items
+    # anywhere in the grid, not one merely unused in one row). They now
+    # live in their own flex-wrap .region-grid, which can actually
+    # stretch a lone last card to fill its row.
+    summaries = [{**REGION, "event_count": 3, "path": "mount-prospect-60056/"}]
+    html = build_digest.render_hub_page([], summaries, datetime.now(timezone.utc))
+    assert '<div class="bento-grid">' in html
+    assert '<div class="region-grid" id="region-grid">' in html
+    assert html.index('<div class="region-grid" id="region-grid">') > html.index('<div class="bento-grid">')
+
+
+def test_render_hub_page_omits_newsletter_when_not_configured():
+    # ROADMAP.md Phase 11 #56: "(Signup coming soon.)" was shipping to
+    # production on the exact pages used to pitch sponsors, reading as
+    # unfinished. Hide the block entirely until signup actually works
+    # instead of showing a pending state.
+    newsletter = {"configured": False, "headline": "Get it in your inbox", "detail": "Weekly.", "buttondown_username": ""}
+    html = build_digest.render_hub_page([], [], datetime.now(timezone.utc), newsletter=newsletter)
+    assert '<div class="newsletter">' not in html
+    assert "Signup coming soon" not in html
+    assert "Get it in your inbox" not in html
+
+
+def test_render_hub_page_shows_newsletter_form_when_configured():
+    newsletter = {"configured": True, "headline": "Get it in your inbox", "detail": "Weekly.", "buttondown_username": "planner"}
+    html = build_digest.render_hub_page([], [], datetime.now(timezone.utc), newsletter=newsletter)
+    assert 'buttondown.com/api/emails/embed-subscribe/planner' in html
+    assert "Signup coming soon" not in html
 
 
 def test_render_weekend_hub_page_groups_events_by_region():

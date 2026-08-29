@@ -107,7 +107,12 @@
     -webkit-font-smoothing: antialiased;
   }
   h1, h2, h3 { font-family: 'Fraunces', Georgia, 'Times New Roman', serif; }
-  .wrap { max-width: 960px; margin: 0 auto; padding: 0 20px 64px; }
+  /* Bottom padding reserves room for the fixed "My Weekend" pill (see
+     .tray-widget below) so it never sits directly over the last card's
+     text - confirmed happening at 390px, obscuring a card's tag badges
+     (ROADMAP.md Phase 11 #56). Applies at every width, not just mobile,
+     since the pill is fixed-position regardless of viewport. */
+  .wrap { max-width: 960px; margin: 0 auto; padding: 0 20px 96px; }
 
   .hero {
     background: linear-gradient(135deg, var(--accent) 0%, var(--accent-soft) 60%, #749058 100%);
@@ -449,7 +454,6 @@
   .newsletter form { display: contents; }
   .newsletter-copy strong { font-size: 15px; }
   .newsletter-copy p { margin: 3px 0 0; color: var(--muted); font-size: 13.5px; }
-  .newsletter-pending { font-style: italic; }
   .newsletter-form-row { display: flex; gap: 8px; flex-wrap: wrap; }
   .newsletter-form-row input[type="email"] {
     font: inherit;
@@ -528,7 +532,7 @@
 
   @media (max-width: 480px) {
     .hero h1 { font-size: 27px; }
-    .wrap { padding: 0 14px 48px; }
+    .wrap { padding: 0 14px 88px; }
   }
 </style>
 </head>
@@ -729,9 +733,10 @@
   </p>
   {% endif %}
 
-  {% if newsletter %}
+  {# Only render once signup actually works - see hub.html.j2 for the
+     same fix and rationale (ROADMAP.md Phase 11 #56). #}
+  {% if newsletter and newsletter.configured %}
   <div class="newsletter">
-    {% if newsletter.configured %}
     <form action="https://buttondown.com/api/emails/embed-subscribe/{{ newsletter.buttondown_username }}" method="post" target="popupwindow" onsubmit="window.open('https://buttondown.com/{{ newsletter.buttondown_username }}', 'popupwindow')">
       <div class="newsletter-copy">
         <strong>{{ newsletter.headline }}</strong>
@@ -743,12 +748,6 @@
         <button type="submit">Subscribe</button>
       </div>
     </form>
-    {% else %}
-    <div class="newsletter-copy">
-      <strong>{{ newsletter.headline }}</strong>
-      <p>{{ newsletter.detail }} <span class="newsletter-pending">(Signup coming soon.)</span></p>
-    </div>
-    {% endif %}
   </div>
   {% endif %}
 
