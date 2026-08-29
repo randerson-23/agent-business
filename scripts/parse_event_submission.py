@@ -42,6 +42,7 @@ REGION_LABEL_TO_ID = {
     "Mount Prospect (60056)": "mount-prospect-60056",
     "Arlington Heights (60005)": "arlington-heights-60005",
     "Des Plaines (60016)": "des-plaines-60016",
+    "Palatine (60067)": "palatine-60067",
 }
 
 _FIELD_LABELS = {

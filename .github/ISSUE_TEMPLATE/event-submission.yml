@@ -19,6 +19,7 @@ body:
         - "Mount Prospect (60056)"
         - "Arlington Heights (60005)"
         - "Des Plaines (60016)"
+        - "Palatine (60067)"
     validations:
       required: true
   - type: input

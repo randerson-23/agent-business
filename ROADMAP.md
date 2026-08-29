@@ -1460,6 +1460,15 @@ in the newsletter block.
     just a suggestion, so future sessions (this loop included) treat
     adding a fourth-plus region as expected, ongoing work rather than a
     question to keep re-raising.
+    Acted on immediately: Palatine (60067) added as
+    `config/regions/palatine-60067.yaml`, the fourth region and the next
+    name on item 27's original shortlist (Des Plaines, Palatine, Elk
+    Grove Village) — same unconfirmed-domain, fail-soft posture as every
+    region before it, same three guides (fall, birthday/kids'-classes,
+    new-to-town per item 49) shipped from day one instead of backfilled
+    later. Verified with pytest, a full digest build, and a Playwright
+    screenshot of the hub page confirming all four regions render and the
+    distance-comparison map correctly plots all four.
 
 ## Working agreements for autonomous iteration
 
