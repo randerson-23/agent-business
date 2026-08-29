@@ -992,26 +992,25 @@ change whose cost only shows up on a real network stays gated behind it.
     generic Tue–Thu benchmark from the third pass. Ship item 24 with a
     Thursday-afternoon send.
 
-32. ⚠️ first slice done (Mount Prospect / District 57 only). **School
-    district and youth-sports calendars as a data source.** Real gap, not
-    a feature to copy: no local competitor aggregates them, and for a
-    family suburb the school calendar — early dismissals, no-school days,
-    concerts, games — is a large share of what a parent's week actually
-    contains.
+32. ✅ first slice confirmed working (Mount Prospect / District 57 only).
+    **School district and youth-sports calendars as a data source.** Real
+    gap, not a feature to copy: no local competitor aggregates them, and
+    for a family suburb the school calendar — early dismissals, no-school
+    days, concerts, games — is a large share of what a parent's week
+    actually contains.
     This sandbox's own network is proxy-blocked for arbitrary domains
     (same as every other source), but `WebSearch` isn't - used it instead
     of guessing blind, and it surfaced a real, specific district-wide
     export URL from D57's own iCalInfo page:
     `webcal://www.d57.org/ical/Mount_Prospect_School_District_57_export.ics`.
     Added as a new `ics` source (`config/regions/mount-prospect-60056.yaml`,
-    section "School Calendar") - not yet confirmed by a live fetch
-    (WebSearch returns indexed/summarized content, not a verified fetch,
-    and `WebFetch` is itself blocked for this domain in this sandbox), so
-    it's in the same "unconfirmed guess" category as a couple of this
-    region's other sources, and will self-correct from the next real
-    GitHub Actions build's logs if the path is wrong - same discipline as
-    every other source here, just one step short of the usual
-    log-confirmed bar since there was no live traffic to check yet.
+    section "School Calendar"), shipped as an unconfirmed guess since
+    WebSearch returns indexed/summarized content, not a verified fetch,
+    and `WebFetch` is itself blocked for this domain in this sandbox.
+    **Confirmed the very next real build** (run 33277287829, 21:55 UTC,
+    read from its job log): `Fetching Mount Prospect School District 57 —
+    Calendar (ics)` → `-> 6 item(s)` - 6 real dated events, first try, no
+    correction needed.
     Township High School District 214 (the shared high school district)
     was researched too but has no discoverable public ICS feed, only PDF
     calendars - not added rather than shipping a guessed URL with no real

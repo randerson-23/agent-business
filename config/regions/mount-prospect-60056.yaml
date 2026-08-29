@@ -4,9 +4,9 @@
 # scripts/build_digest.py, then listed together on the hub page — this is
 # the template for adding more ZIP codes later (see ROADMAP.md Phase 5).
 #
-# Status as of 2026-08-29 (confirmed against the real GitHub Actions build
-# on main, run 33246555815, 09:54 UTC - read directly from its job log,
-# not inferred from generated HTML):
+# Status as of 2026-08-29 (confirmed against real GitHub Actions build job
+# logs, not inferred from generated HTML - runs 33246555815 09:54 UTC and
+# 33277287829 21:55 UTC):
 #   - Village News & Village Events: both mountprospect.org/services/news
 #     and .../calendar return **403 Forbidden**, not a connection/DNS
 #     failure - the URLs are almost certainly right, but the Village's
@@ -30,13 +30,14 @@
 #     keywords, or the real events live at a different path. Worth a
 #     `detail_link_pattern` once a real one is found, same as every other
 #     source that started this way.
-#   - School District 57 — Calendar (added 2026-08-29, ROADMAP.md Phase 11
-#     #32): URL found via web search of d57.org's own iCalInfo page, not
-#     yet confirmed by a live fetch (unconfirmed guess, same category as
-#     Experience Mount Prospect above) - watch the next real build's logs.
-#     District 214 (the shared high school district) was researched too
-#     but has no discoverable public ICS feed, only PDF calendars - not
-#     added rather than guessing a URL with nothing behind it.
+#   - School District 57 — Calendar: CONFIRMED — added 2026-08-29 from a
+#     URL found via web search of d57.org's own iCalInfo page (ROADMAP.md
+#     Phase 11 #32), and the very next real build (run 33277287829)
+#     returned 6 real dated items from it - the search-found URL was
+#     right on the first try. District 214 (the shared high school
+#     district) was researched too but has no discoverable public ICS
+#     feed, only PDF calendars - not added rather than guessing a URL
+#     with nothing behind it.
 #
 # The pipeline fails soft either way: a broken source is skipped and
 # logged, it never breaks the whole digest build.
