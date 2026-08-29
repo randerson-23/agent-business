@@ -751,6 +751,7 @@ def render_region_page(
     answer_block: str | None = None,
     include_faq: bool = False,
     map_embed_url: str | None = None,
+    nearby_regions: list[dict] | None = None,
 ) -> str:
     env = Environment(loader=FileSystemLoader(str(TEMPLATES_DIR)), autoescape=True)
     template = env.get_template("region.html.j2")
@@ -779,6 +780,7 @@ def render_region_page(
         freshness_json_ld=build_freshness_json_ld(region, canonical_url, now),
         answer_block=answer_block,
         map_embed_url=map_embed_url,
+        nearby_regions=nearby_regions,
         faq=faq,
         faq_json_ld=build_faq_json_ld(faq) if faq else None,
         heading=heading,
@@ -858,6 +860,42 @@ def build_region_map(region_summaries: list[dict]) -> dict | None:
             )
 
     return {"width": width, "height": height, "pins": pins, "lines": lines}
+
+
+def build_nearby_regions(current: dict, all_regions: list[dict], limit: int = 3) -> list[dict]:
+    """Distances from one region to every other region, nearest first
+    (ROADMAP.md Phase 11 #52). Multi-location IA best practice is hub ->
+    all locations, each location -> hub, *and* cross-links between nearby
+    locations - this site already had the first two; a region page's only
+    navigation was "back to the hub", so a reader in one town had to
+    return to the hub and guess which one was close. Computed once here
+    at build time (region-to-region distance is fixed, unlike the
+    client-side "distance from you" feature) using the same haversine
+    already used for the hub map, then baked into the page as plain
+    links - real, crawlable internal links, not client-side JS, which is
+    also what actually distributes link equity across region pages
+    instead of pooling it all at the hub.
+    Returns [] (template omits the block) with fewer than 2 regions
+    total, or if a region is missing real coordinates - same "don't draw
+    something meaningless" discipline as build_region_map.
+    """
+    if current.get("lat") is None or current.get("lon") is None:
+        return []
+    others = [
+        r
+        for r in all_regions
+        if r["id"] != current["id"] and r.get("lat") is not None and r.get("lon") is not None
+    ]
+    if not others:
+        return []
+    with_distance = [
+        (r, _haversine_miles(current["lat"], current["lon"], r["lat"], r["lon"])) for r in others
+    ]
+    with_distance.sort(key=lambda pair: pair[1])
+    return [
+        {"name": r["name"], "path": f"{r['id']}/", "miles": round(miles, 1)}
+        for r, miles in with_distance[:limit]
+    ]
 
 
 def render_hub_page(
@@ -1120,6 +1158,15 @@ def main() -> None:
     (OUTPUT_DIR / ".nojekyll").touch()
 
     source_health = load_source_health()
+    # Static config (id/name/lat/lon), independent of fetch results, so
+    # it's safe to build once before the fetch loop below - every
+    # region's own nearby-regions strip (ROADMAP.md Phase 11 #52) needs
+    # every *other* region's coordinates, including ones not yet reached
+    # in the loop.
+    all_regions_meta = [
+        {"id": r["region"]["id"], "name": r["region"]["name"], "lat": r["region"].get("lat"), "lon": r["region"].get("lon")}
+        for r in regions
+    ]
     region_summaries = []
     hub_weekend_sections = []
     hub_weekend_date_range = None
@@ -1155,6 +1202,7 @@ def main() -> None:
             editors_pick=editors_pick,
             answer_block=build_answer_block(region),
             map_embed_url=build_region_map_embed_url(region),
+            nearby_regions=build_nearby_regions(region, all_regions_meta),
         )
 
         region_dir = OUTPUT_DIR / region_id

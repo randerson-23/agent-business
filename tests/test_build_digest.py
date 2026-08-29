@@ -398,6 +398,51 @@ def test_build_region_map_handles_identical_coordinates_without_crashing():
     assert len(result["pins"]) == 2
 
 
+def test_build_nearby_regions_sorts_nearest_first_and_excludes_self():
+    current = {"id": "mount-prospect-60056", "lat": 42.0666, "lon": -87.9373}
+    all_regions = [
+        current,
+        {"id": "arlington-heights-60005", "name": "Arlington Heights", "lat": 42.0883, "lon": -87.9806},
+        {"id": "des-plaines-60016", "name": "Des Plaines", "lat": 42.0334, "lon": -87.8834},
+        {"id": "palatine-60067", "name": "Palatine", "lat": 42.1103, "lon": -88.0342},
+    ]
+    result = build_digest.build_nearby_regions(current, all_regions)
+    assert [r["name"] for r in result] == ["Arlington Heights", "Des Plaines", "Palatine"]
+    assert all(r["miles"] > 0 for r in result)
+    assert result[0]["path"] == "arlington-heights-60005/"
+
+
+def test_build_nearby_regions_respects_limit():
+    current = {"id": "a", "lat": 42.0, "lon": -88.0}
+    all_regions = [current] + [
+        {"id": str(i), "name": f"Region {i}", "lat": 42.0 + i * 0.01, "lon": -88.0} for i in range(5)
+    ]
+    result = build_digest.build_nearby_regions(current, all_regions, limit=2)
+    assert len(result) == 2
+
+
+def test_build_nearby_regions_returns_empty_with_fewer_than_two_regions():
+    current = {"id": "a", "lat": 42.0, "lon": -88.0}
+    assert build_digest.build_nearby_regions(current, [current]) == []
+
+
+def test_build_nearby_regions_returns_empty_when_current_missing_coordinates():
+    current = {"id": "a", "lat": None, "lon": None}
+    all_regions = [current, {"id": "b", "name": "B", "lat": 42.0, "lon": -88.0}]
+    assert build_digest.build_nearby_regions(current, all_regions) == []
+
+
+def test_build_nearby_regions_skips_others_missing_coordinates():
+    current = {"id": "a", "lat": 42.0, "lon": -88.0}
+    all_regions = [
+        current,
+        {"id": "b", "name": "B", "lat": None, "lon": None},
+        {"id": "c", "name": "C", "lat": 42.01, "lon": -88.0},
+    ]
+    result = build_digest.build_nearby_regions(current, all_regions)
+    assert [r["name"] for r in result] == ["C"]
+
+
 def test_select_editors_pick_returns_none_with_no_candidates():
     region_cfg = {"region": {"id": "x"}}
     assert build_digest.select_editors_pick(region_cfg, [], []) is None
