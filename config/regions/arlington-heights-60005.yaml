@@ -3,22 +3,23 @@
 # Phase 5). A short drive from Mount Prospect, fits the "plan a weekend
 # nearby" story.
 #
-# Status as of 2026-08-26 (not yet confirmed against a live build — this
-# build environment's outbound network is restricted, same caveat as the
-# first region):
-#   - Village News: vah.com (Village of Arlington Heights) links each real
-#     news item to a `news_detail_T<n>_R<n>.php` URL (confirmed via search
-#     results, e.g. vah.com/news_detail_T13_R565.php) - used as
-#     detail_link_pattern so this should work on the first real run,
-#     unlike Mount Prospect's village news which took two iterations.
-#   - Library Events: AHML (ahml.info/attend/events) runs a Drupal calendar;
-#     confirmed 2026-08-28 that each event links to
-#     /scheduling/reservation/<id>, now used as detail_link_pattern instead
-#     of the generic keyword fallback.
-#   - Park District Events: ahpd.org runs on the same "Tribe Events"
-#     WordPress plugin as Mount Prospect's park district (confirmed by its
-#     /events/tag/.../YYYY-MM/ URL structure), so the same ICS export query
-#     pattern is used - higher confidence than a blind guess.
+# Status as of 2026-08-29 (confirmed against the real GitHub Actions build
+# on main, run 33246555815, 09:54 UTC - read directly from its job log,
+# not inferred from generated HTML):
+#   - Village News: vah.com resolves and returns 6 item(s), but they're
+#     real Village links picked up by the *keyword fallback*
+#     ("Village Board", "Board Meetings Online", "Boards & Commissions"),
+#     not the `news_detail_T<n>_R<n>.php` detail_link_pattern below - that
+#     pattern matched zero links on this run. Not broken (every link shown
+#     is a real, working Village page), just less precise than "news"
+#     implies; worth tightening once a real news_detail_ link is confirmed
+#     live again, or the section renamed if the pattern never fires.
+#   - Library Events: CONFIRMED — ahml.info returned 6 real items via the
+#     detail_link_pattern below (/scheduling/reservation/<id> links, e.g.
+#     "Beginning ESL", "LEGO Club").
+#   - Park District Events: CONFIRMED — ahpd.org's ICS export returned 6
+#     real dated events (e.g. "Touch-A-Truck" 2026-09-12, "Heritage Fest"
+#     2026-09-19), each with a real ahpd.org/event/... URL.
 #
 # The pipeline fails soft either way: a broken source is skipped and
 # logged, it never breaks the whole digest build.

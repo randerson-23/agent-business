@@ -4,31 +4,32 @@
 # scripts/build_digest.py, then listed together on the hub page — this is
 # the template for adding more ZIP codes later (see ROADMAP.md Phase 5).
 #
-# Status as of 2026-08-28 (see live output on main):
-#   - Village News:         Switched from a guessed RSS URL (never found -
-#     the CivicPlus "list all RSS feed" page doesn't expose a plain link,
-#     it needs a category picked first) to scraping the real news listing
-#     page directly, same approach as the library. Not yet confirmed
-#     against a live run.
-#   - Village Events:       New 2026-08-28. The footer RSS icon isn't a
-#     real public feed, so this scrapes the Calendar page directly with a
-#     confirmed detail_link_pattern. Not yet confirmed against a live run.
-#   - Library Events:       Switched 2026-08-28 to the library's real RSS
-#     feed (found by the site owner) instead of HTML scraping. Not yet
-#     confirmed against a live run.
-#   - Park District Events: URL corrected to the real Tribe Events ICS
-#     export; webcal:// scheme now handled by fetchers.py. Not yet
-#     confirmed against a live run since the fix.
-#   - Tourism Site / Downtown Events: Added 2026-08-29 (ROADMAP.md item
-#     41) — experiencemountprospect.org (the Village's own tourism site)
-#     and mpdowntown.com (the downtown merchants association, already
-#     linked from the seasonal-circuit guide) as two more live sources.
-#     URLs are a best guess at each site's events listing page, not yet
-#     confirmed against a live run — same starting point every other
-#     source here began from. No detail_link_pattern set until a real
-#     one is confirmed; falls back to keyword-filtered link scraping,
-#     same as any other unconfirmed html_events source. Fails soft to
-#     the evergreen fallback if either guess is wrong.
+# Status as of 2026-08-29 (confirmed against the real GitHub Actions build
+# on main, run 33246555815, 09:54 UTC - read directly from its job log,
+# not inferred from generated HTML):
+#   - Village News & Village Events: both mountprospect.org/services/news
+#     and .../calendar return **403 Forbidden**, not a connection/DNS
+#     failure - the URLs are almost certainly right, but the Village's
+#     site is actively blocking this fetcher's plain `requests` User-Agent
+#     (a WAF or bot-detection rule, not a wrong path). Different category
+#     from an unconfirmed guess: this one likely can't be fixed by trying
+#     another URL, it needs a different fetch approach (a browser-like
+#     User-Agent, or accepting this source may never work with a simple
+#     scraper) if it's ever worth revisiting - not attempted here since
+#     it's speculative and the section already fails soft to evergreen.
+#   - Library Events: CONFIRMED — mppl.libnet.info's RSS feed returned 6
+#     real items (e.g. "Crafts-to-Go Kits", "Tiny Art Show 2026").
+#   - Park District Events: CONFIRMED — mppd.org's ICS export returned 6
+#     real dated events (e.g. "Garden Walk and Bouquet Build", "Native
+#     Plant Sale").
+#   - Experience Mount Prospect: same 403 Forbidden pattern as the Village
+#     sources above - domain responds, request is blocked.
+#   - Downtown Mount Prospect: mpdowntown.com/events/ returns 200 with 0
+#     matching items (no fetch error) - the page is reachable, it just
+#     doesn't currently expose any link whose text matches the configured
+#     keywords, or the real events live at a different path. Worth a
+#     `detail_link_pattern` once a real one is found, same as every other
+#     source that started this way.
 #
 # The pipeline fails soft either way: a broken source is skipped and
 # logged, it never breaks the whole digest build.

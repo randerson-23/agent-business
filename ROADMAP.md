@@ -1470,6 +1470,34 @@ in the newsletter block.
     screenshot of the hub page confirming all four regions render and the
     distance-comparison map correctly plots all four.
 
+#### Field note 2026-08-29: first real confirmation of live fetch status
+
+Every region config's "not yet confirmed against a live run" caveat has
+been repeated since Phase 5 because this sandbox's own network is
+blocked. It was never checked against what the real GitHub Actions build
+(which has real network access) actually logs — until now. Read
+`build-digest.yml` run 33246555815's job log directly (09:54 UTC), not
+generated HTML, and updated all four region configs' header comments with
+the precise, dated result per source. The shape of it:
+
+| Region | Confirmed working | Blocked (403, real domain) | Wrong domain (connection/SSL error) |
+|---|---|---|---|
+| Mount Prospect | Library (mppl.libnet.info), Park District (mppd.org) | Village News, Village Calendar, Experience Mount Prospect | — |
+| Arlington Heights | Library, Park District (both real) — Village News resolves but only via keyword fallback | — | — |
+| Des Plaines | Library (dppl.org), Park District (dppd.org) — both real, low-precision matches | — | City News (desplaines.org — connection reset) |
+| Palatine | Park District (palatineparks.org) | Library (palatinelibrary.org) | Village News (palatineil.gov — TLS error, wrong hostname) |
+
+Two real, previously-unknown facts worth remembering: (1) `mountprospect.org`
+and `experiencemountprospect.org` actively 403 this fetcher's plain
+`requests` User-Agent — the URLs are very likely right, this needs a
+different fetch approach (not more URL guessing) if it's ever worth
+revisiting; (2) `palatineil.gov` is very likely the wrong hostname
+entirely (TLS handshake fails, not a 403/404) — no confident replacement
+guessed yet, left as-is since it fails soft regardless. Every region
+still builds and serves real content either way — the point of recording
+this isn't to fix everything at once, it's to stop guessing blind about
+sources this exact evidence has already settled.
+
 ## Working agreements for autonomous iteration
 
 - Cadence is hourly (the platform's durable scheduler has a 1-hour floor;
