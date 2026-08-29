@@ -888,11 +888,27 @@ Angles reviewed this pass:
 
 #### P3 (new)
 
-27. **Third region — now worth more than when Phase 10 parked it.**
-    Distance sort (Phase 8), the hub map (item 17) and the guides (items
-    5 and 15) all get better with more towns, and each region is another
-    sponsor slot at zero marginal cost. Des Plaines (60016), Palatine
-    (60067) or Elk Grove Village (60007).
+27. ✅ done (not yet verified live) — **Third region — now worth more than
+    when Phase 10 parked it.** Distance sort (Phase 8), the hub map (item
+    17) and the guides (items 5 and 15) all get better with more towns,
+    and each region is another sponsor slot at zero marginal cost. Added
+    Des Plaines (60016) as `config/regions/des-plaines-60016.yaml` — the
+    first of the three shortlisted candidates (Des Plaines, Palatine, Elk
+    Grove Village), picked because 60016 was already present in
+    `templates/hub.html.j2`'s `ZIP_COORDS` table, so its coordinates were
+    already vetted rather than a fresh guess. All three source domains
+    (desplaines.org, dppl.org, dppd.org) and listing-page paths are a
+    best-effort guess from training knowledge — same starting point every
+    region here began from — not yet confirmed against a live build;
+    Playwright screenshots confirm the hub and region pages render
+    correctly with the expected "no live updates fetched" fallback state,
+    same as any other unconfirmed source. Also updated the two other
+    places a region list is hardcoded: `parse_event_submission.py`'s
+    `REGION_LABEL_TO_ID` map and the event-submission Issue Form's region
+    dropdown. Arlington Heights doesn't get the same downtown-merchants /
+    tourism-site sources item 41 added to Mount Prospect, and neither does
+    Des Plaines — no equivalent has been confirmed to exist for either,
+    same reasoning item 42 already recorded.
 
 28. ✅ done (PR #42), shipped alongside item 22 — **Visible freshness
     signals.** The human-readable "Generated {date}" footer line already
