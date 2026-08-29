@@ -1,0 +1,148 @@
+# Region config for Palatine, IL (ZIP 60067) — the fourth region, added
+# per ROADMAP.md item 50's stated scale strategy: keep monetizing the
+# existing regions deeply, but keep adding neighboring towns anyway since
+# each one costs almost nothing.
+#
+# Status as of 2026-08-29 (added by the build loop, NOT yet confirmed
+# against a live run — this build environment's outbound network is
+# restricted, same caveat every other region here started with):
+#   - Village of Palatine (palatineil.gov), Palatine Public Library
+#     District (palatinelibrary.org), and Palatine Park District
+#     (palatineparks.org) domains are a best-effort guess from training
+#     knowledge, not verified live. Listing-page paths (/news, /events)
+#     are a plausible guess, not a confirmed link structure, and no
+#     `detail_link_pattern` is set - relies on the generic keyword
+#     fallback, same posture as Des Plaines' sources. All three sources
+#     are html_events for the same reason Des Plaines' are: no
+#     calendar-platform ICS export URL has been confirmed here.
+#
+# The pipeline fails soft either way: a broken source is skipped and
+# logged, it never breaks the whole digest build - if any of the three
+# domains above turn out to be wrong, this region simply falls back to
+# the evergreen entries below until a real link surfaces.
+
+region:
+  id: "palatine-60067"
+  name: "Palatine"
+  zip: "60067"
+  state: "IL"
+  timezone: "America/Chicago"
+  tagline: "Village news, library events, and park district programs — northwest of Mount Prospect."
+  # Reused from templates/hub.html.j2's existing ZIP_COORDS table (already
+  # present there for the "distance from me" nearby-ZIP fallback before
+  # this region existed) rather than a fresh guess - a rough town-center
+  # approximation, not a specific venue's address.
+  lat: 42.1103
+  lon: -88.0342
+  # Optional: force the /region/ page's "Editor's Pick" card to a specific
+  # item by its exact `url` (ROADMAP.md Phase 11 #16). Unset by default -
+  # the heuristic (soonest dated item, ties broken by free/kid-friendly)
+  # picks automatically otherwise. Uncomment and set to override:
+  # editors_pick_url: "https://www.palatinelibrary.org/"
+
+sources:
+  - name: "Village of Palatine — News"
+    type: html_events
+    # Unconfirmed guess (see header note) - relies on the keyword fallback
+    # rather than an invented detail_link_pattern.
+    url: "https://www.palatineil.gov/news"
+    keywords: ["news", "press release", "mayor", "council", "meeting", "notice", "advisory", "alert", "closure"]
+    section: "Village News"
+    enabled: true
+
+  - name: "Palatine Public Library District — Events"
+    type: html_events
+    # Unconfirmed guess (see header note).
+    url: "https://www.palatinelibrary.org/events"
+    keywords: ["event", "class", "program", "story", "camp", "concert", "workshop", "book"]
+    section: "Library Events"
+    enabled: true
+
+  - name: "Palatine Park District — Events"
+    type: html_events
+    # Unconfirmed guess (see header note) - deliberately html_events, not
+    # ics, since no calendar-platform export URL has been confirmed here.
+    url: "https://www.palatineparks.org/events"
+    keywords: ["event", "class", "program", "camp", "swim", "sport", "concert", "festival"]
+    section: "Park District Events"
+    enabled: true
+
+evergreen:
+  - title: "Palatine Public Library District"
+    detail: "Story times, programs, and museum passes for Palatine residents."
+    url: "https://www.palatinelibrary.org/"
+    tags: ["indoor", "kid_friendly", "free"]
+  - title: "Palatine Park District"
+    detail: "Parks, pools, and rec programs across the village."
+    url: "https://www.palatineparks.org/"
+    tags: ["outdoor", "kid_friendly"]
+  - title: "Village of Palatine"
+    detail: "Village council meetings, permits, and community announcements."
+    url: "https://www.palatineil.gov/"
+    tags: []
+
+# Seasonal/evergreen guides (ROADMAP.md Phase 11 #5) - see the Mount
+# Prospect config for the rationale; same civic-source-only approach here.
+guides:
+  - slug: "fall-family-guide"
+    title: "Fall Family Guide"
+    summary: "A living guide to fall in Palatine — seasonal park district programs, library fall programming, and where the Village posts official trick-or-treat hours. Pulls from the same civic sources as the weekly digest, organized by season instead of by week."
+    items:
+      - title: "Fall & Halloween programs — Palatine Park District"
+        detail: "Pumpkin-themed drop-ins, fall break camps, and seasonal rec programs. Dates and registration change every year — check the current program guide."
+        url: "https://www.palatineparks.org/"
+        tags: ["outdoor", "kid_friendly"]
+      - title: "Fall programs — Palatine Public Library District"
+        detail: "Seasonal storytimes and programs for all ages — a solid pick for a rainy fall Saturday."
+        url: "https://www.palatinelibrary.org/"
+        tags: ["indoor", "kid_friendly", "free"]
+      - title: "Official trick-or-treat hours & fall notices"
+        detail: "The Village posts that year's official trick-or-treat hours and other fall community notices on its news page each October."
+        url: "https://www.palatineil.gov/news"
+        tags: ["kid_friendly", "free"]
+
+  # ROADMAP.md Phase 11 #15 - see the Mount Prospect config for the
+  # rationale; same civic-source-only discipline here.
+  - slug: "birthday-parties-and-kids-classes"
+    title: "Birthday Parties & Kids' Classes"
+    summary: "Where Palatine families look for party venues, rec classes, and enrichment programs — the small set of standing civic options, plus local businesses as they join the directory below."
+    items:
+      - title: "Birthday parties & rentals — Palatine Park District"
+        detail: "Pool parties, gym space, and themed party packages through the Park District — check current pricing, room availability, and booking windows."
+        url: "https://www.palatineparks.org/"
+        tags: ["kid_friendly"]
+      - title: "Kids' classes & camps — Palatine Park District"
+        detail: "Swim lessons, sports, dance, and seasonal camps for all ages — browse the current program guide for schedules and registration."
+        url: "https://www.palatineparks.org/"
+        tags: ["kid_friendly"]
+      - title: "Kids' programs — Palatine Public Library District"
+        detail: "Storytimes and craft programs for kids — check the current schedule for ages and registration."
+        url: "https://www.palatinelibrary.org/"
+        tags: ["indoor", "kid_friendly", "free"]
+      - title: "Local party venues, entertainers & tutoring centers"
+        detail: "Private businesses appear here as they join the local directory — see what's currently listed."
+        url: "https://randerson-23.github.io/agent-business/palatine-60067/directory/"
+        tags: ["kid_friendly"]
+
+  # ROADMAP.md Phase 11 #49 (ninth research pass) - see the Mount Prospect
+  # config for the rationale; same civic-source-only discipline and same
+  # reason school registration has no url.
+  - slug: "new-to-town"
+    title: "New to Town"
+    summary: "The practical first-week checklist for anyone new to Palatine — utilities and vehicle stickers, a library card, Park District registration, and where school-district boundaries actually come from. Pulls from the same civic sources as the weekly digest, organized for someone who just moved in rather than someone browsing this week's events."
+    items:
+      - title: "Village services, utilities & vehicle stickers"
+        detail: "Water service, refuse & recycling pickup, and Village vehicle sticker requirements are typically set up directly with the Village — check current requirements and any new-resident forms on its site."
+        url: "https://www.palatineil.gov/"
+        tags: []
+      - title: "Get a Palatine Public Library District card"
+        detail: "A free library card is one of the fastest ways to feel settled in — story times and programs for all ages once you're in the system."
+        url: "https://www.palatinelibrary.org/"
+        tags: ["indoor", "kid_friendly", "free"]
+      - title: "Register for Palatine Park District programs"
+        detail: "Most residents set up one household account, then register for pools, rec classes, and seasonal programs individually — browse the current program guide to get started."
+        url: "https://www.palatineparks.org/"
+        tags: ["outdoor", "kid_friendly"]
+      - title: "Find your school district"
+        detail: "Illinois suburbs are typically served by separate elementary and high school districts assigned by home address, not by village boundaries — check with the specific district for your new address rather than assuming it matches a neighbor's."
+        tags: []
