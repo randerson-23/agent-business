@@ -1,0 +1,134 @@
+# Region config for Des Plaines, IL (ZIP 60016) — the third region
+# (ROADMAP.md item 27), picked from the shortlist item 27 recorded (Des
+# Plaines, Palatine, or Elk Grove Village) because its ZIP was already
+# present in templates/hub.html.j2's ZIP_COORDS table (used for the "show
+# distance from me" manual-entry fallback), which meant its coordinates
+# were already vetted rather than a fresh guess.
+#
+# Status as of 2026-08-29 (added by the build loop, NOT yet confirmed
+# against a live run — this build environment's outbound network is
+# restricted, same caveat every other region here started with):
+#   - City of Des Plaines, Des Plaines Public Library, and Des Plaines
+#     Park District domains (desplaines.org, dppl.org, dppd.org) are a
+#     best-effort guess from training knowledge, following the same
+#     naming convention already confirmed for Mount Prospect (mppd.org)
+#     and Arlington Heights (ahpd.org) - not verified live. Listing-page
+#     paths (/news, /events) are a plausible guess, not a confirmed link
+#     structure, and no `detail_link_pattern` is set - this deliberately
+#     relies on the generic keyword fallback (same posture as the two
+#     sources added to Mount Prospect this session for item 41) rather
+#     than inventing a specific per-item URL pattern with false
+#     confidence. Every source here is html_events for the same reason:
+#     no calendar-platform ICS export URL has been confirmed, unlike
+#     Mount Prospect/Arlington Heights' Park District sources.
+#
+# The pipeline fails soft either way: a broken source is skipped and
+# logged, it never breaks the whole digest build - if any of the three
+# domains above turn out to be wrong, this region simply falls back to
+# the evergreen entries below until a real link surfaces (same recovery
+# path Mount Prospect's and Arlington Heights' sources went through).
+
+region:
+  id: "des-plaines-60016"
+  name: "Des Plaines"
+  zip: "60016"
+  state: "IL"
+  timezone: "America/Chicago"
+  tagline: "City news, library events, and park district programs — just north of O'Hare."
+  # Reused from templates/hub.html.j2's existing ZIP_COORDS table (already
+  # present there for the "distance from me" nearby-ZIP fallback before
+  # this region existed) rather than a fresh guess - a rough town-center
+  # approximation, not a specific venue's address.
+  lat: 42.0334
+  lon: -87.8834
+  # Optional: force the /region/ page's "Editor's Pick" card to a specific
+  # item by its exact `url` (ROADMAP.md Phase 11 #16). Unset by default -
+  # the heuristic (soonest dated item, ties broken by free/kid-friendly)
+  # picks automatically otherwise. Uncomment and set to override:
+  # editors_pick_url: "https://www.dppl.org/"
+
+sources:
+  - name: "City of Des Plaines — News"
+    type: html_events
+    # Unconfirmed guess (see header note) - relies on the keyword fallback
+    # rather than an invented detail_link_pattern.
+    url: "https://www.desplaines.org/news"
+    keywords: ["news", "press release", "mayor", "council", "meeting", "notice", "advisory", "alert", "closure"]
+    section: "City News"
+    enabled: true
+
+  - name: "Des Plaines Public Library — Events"
+    type: html_events
+    # Unconfirmed guess (see header note).
+    url: "https://www.dppl.org/events"
+    keywords: ["event", "class", "program", "story", "camp", "concert", "workshop", "book"]
+    section: "Library Events"
+    enabled: true
+
+  - name: "Des Plaines Park District — Events"
+    type: html_events
+    # Unconfirmed guess (see header note) - deliberately html_events, not
+    # ics, since no calendar-platform export URL has been confirmed here
+    # the way Mount Prospect's and Arlington Heights' Park District ICS
+    # feeds were.
+    url: "https://www.dppd.org/events"
+    keywords: ["event", "class", "program", "camp", "swim", "sport", "concert", "festival"]
+    section: "Park District Events"
+    enabled: true
+
+evergreen:
+  - title: "Des Plaines Public Library"
+    detail: "Story times, programs, and museum passes for Des Plaines residents."
+    url: "https://www.dppl.org/"
+    tags: ["indoor", "kid_friendly", "free"]
+  - title: "Des Plaines Park District"
+    detail: "Parks, pools, and rec programs across the city."
+    url: "https://www.dppd.org/"
+    tags: ["outdoor", "kid_friendly"]
+  - title: "City of Des Plaines"
+    detail: "City council meetings, permits, and community announcements."
+    url: "https://www.desplaines.org/"
+    tags: []
+
+# Seasonal/evergreen guides (ROADMAP.md Phase 11 #5) - see the Mount
+# Prospect config for the rationale; same civic-source-only approach here.
+guides:
+  - slug: "fall-family-guide"
+    title: "Fall Family Guide"
+    summary: "A living guide to fall in Des Plaines — seasonal park district programs, library fall programming, and where the City posts official trick-or-treat hours. Pulls from the same civic sources as the weekly digest, organized by season instead of by week."
+    items:
+      - title: "Fall & Halloween programs — Des Plaines Park District"
+        detail: "Pumpkin-themed drop-ins, fall break camps, and seasonal rec programs. Dates and registration change every year — check the current program guide."
+        url: "https://www.dppd.org/"
+        tags: ["outdoor", "kid_friendly"]
+      - title: "Fall programs — Des Plaines Public Library"
+        detail: "Seasonal storytimes and programs for all ages — a solid pick for a rainy fall Saturday."
+        url: "https://www.dppl.org/"
+        tags: ["indoor", "kid_friendly", "free"]
+      - title: "Official trick-or-treat hours & fall notices"
+        detail: "The City posts that year's official trick-or-treat hours and other fall community notices on its news page each October."
+        url: "https://www.desplaines.org/news"
+        tags: ["kid_friendly", "free"]
+
+  # ROADMAP.md Phase 11 #15 - see the Mount Prospect config for the
+  # rationale; same civic-source-only discipline here.
+  - slug: "birthday-parties-and-kids-classes"
+    title: "Birthday Parties & Kids' Classes"
+    summary: "Where Des Plaines families look for party venues, rec classes, and enrichment programs — the small set of standing civic options, plus local businesses as they join the directory below."
+    items:
+      - title: "Birthday parties & rentals — Des Plaines Park District"
+        detail: "Pool parties, gym space, and themed party packages through the Park District — check current pricing, room availability, and booking windows."
+        url: "https://www.dppd.org/"
+        tags: ["kid_friendly"]
+      - title: "Kids' classes & camps — Des Plaines Park District"
+        detail: "Swim lessons, sports, dance, and seasonal camps for all ages — browse the current program guide for schedules and registration."
+        url: "https://www.dppd.org/"
+        tags: ["kid_friendly"]
+      - title: "Kids' programs — Des Plaines Public Library"
+        detail: "Storytimes and craft programs for kids — check the current schedule for ages and registration."
+        url: "https://www.dppl.org/"
+        tags: ["indoor", "kid_friendly", "free"]
+      - title: "Local party venues, entertainers & tutoring centers"
+        detail: "Private businesses appear here as they join the local directory — see what's currently listed."
+        url: "https://randerson-23.github.io/agent-business/des-plaines-60016/directory/"
+        tags: ["kid_friendly"]

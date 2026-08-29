@@ -41,6 +41,7 @@ REGIONS_DIR = ROOT / "config" / "regions"
 REGION_LABEL_TO_ID = {
     "Mount Prospect (60056)": "mount-prospect-60056",
     "Arlington Heights (60005)": "arlington-heights-60005",
+    "Des Plaines (60016)": "des-plaines-60016",
 }
 
 _FIELD_LABELS = {
