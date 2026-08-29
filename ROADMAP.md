@@ -1675,24 +1675,42 @@ produces exactly this rendering in production, so everything below stands.
 
 #### P2 (new)
 
-55. **The health check can't tell "couldn't reach it" from "reached it and
-    parsed nothing" — and it breaks local verification.** Item 51 shipped
-    well (the `if: always()` guard in `build-digest.yml` correctly keeps a
-    regression from withholding the site, which is exactly right and
-    should not be undone). Two refinements it needs:
-    First, `build_digest.py` now `sys.exit(1)`s on any zero-against-history
-    source. In this sandbox **every** source is proxy-blocked, so the
-    build loop's own required verification step — `python
-    scripts/build_digest.py` — now exits non-zero on every single run,
-    reporting nine regressions that are pure environment. That trains the
-    loop to ignore health errors, which destroys the feature.
-    Second, and the root of it: a 403, a timeout and a silently-broken CSS
-    selector all produce the same empty list, because the fetchers are
-    fail-soft by design. Have the fetchers report *why* they returned zero
-    — transport error versus fetched-and-parsed-zero — and let only the
-    latter count as a health regression. A transport error is a softer,
-    separate signal, and a run where *every* source fails transport is
-    obviously a network problem, not fifteen simultaneous redesigns.
+55. ✅ done. **The health check can't tell "couldn't reach it" from "reached
+    it and parsed nothing."** Item 51's own next real production run
+    proved this wasn't a hypothetical: run `33269892878`
+    (2026-08-29T19:03:52Z, job `99146378591`) failed with
+    `WARNING fetchers: HTML events fetch failed for
+    https://www.palatinelibrary.org/events/upcoming: 403 Client Error:
+    Forbidden` immediately followed by `ERROR build_digest: Source health
+    regression: palatine-60067:Palatine Public Library District — Events
+    just returned 0 items despite a positive trailing history` — a
+    transient 403, not a dead scraper (real history around it was
+    `[0, 6, 6, 6, 0]`).
+    Fix: `fetch_rss`, `fetch_ics` and `fetch_html_events` in
+    `fetchers.py` now return `None` (not `[]`) on a caught
+    transport/parse exception, distinct from a real `[]` (page reached,
+    nothing matched). `fetch_weather` is untouched — it was never part of
+    source-health tracking. `fetch_region_sections()` in `build_digest.py`
+    treats `None` as `transport_failed`: it's still rendered as an empty
+    section like any other, but it's skipped from
+    `update_source_health()` entirely rather than recorded as a `0`, so a
+    transient block can no longer manufacture a false regression. This
+    also fixes the loop's own local verification pain: in this sandbox
+    every source is proxy-blocked, so `python scripts/build_digest.py`
+    now correctly logs each as `(transport error - not counted for
+    health)` and no longer reports nine false regressions on every run.
+    One nuance confirmed by re-running the build locally after the fix
+    and inspecting `data/source_health.json`: Palatine's history was
+    still `[0, 6, 6, 6, 0]` and `build_digest.py` still exited 1 flagging
+    it — correctly. The trailing `0` is the real entry from the pre-fix
+    production run; the fix stops *new* transport failures from being
+    recorded, but can't retroactively erase a bad data point that was
+    already committed before the fix existed. That's expected, not a
+    residual bug: it self-clears the next time Palatine's site responds
+    and a real value (zero or non-zero) gets appended in its place. Until
+    then the source will keep reading as regressed, which is arguably
+    correct — the loop genuinely doesn't yet know whether that source has
+    recovered.
 
 #### P3 (new)
 

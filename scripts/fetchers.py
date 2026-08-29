@@ -3,8 +3,17 @@
 Each fetch_* function returns a list of dicts with keys:
     title, detail, url, date (optional, ISO string or None)
 
-Any network/parsing error is caught and logged; callers get an empty list
-back instead of a crash, so one broken source never breaks the digest build.
+Any network/parsing error is caught and logged; callers never see a crash,
+so one broken source never breaks the digest build. The event/news fetchers
+(fetch_rss, fetch_ics, fetch_html_events) return `None` on that caught
+failure rather than `[]`, distinct from a real `[]` (the fetch succeeded
+and genuinely found nothing) - ROADMAP.md Phase 11 #55: a 403 or a timeout
+is a different, softer signal than "worked, found zero," and build_digest.py's
+source-health tracking (item 51) needs that distinction to avoid flagging a
+transient block as a dead scraper. Every caller still treats `None` the
+same as `[]` for rendering purposes - only the health tracker cares.
+fetch_weather is unaffected (still `[]` on failure); it isn't part of
+source-health tracking.
 """
 from __future__ import annotations
 
@@ -50,8 +59,19 @@ def _get(url: str) -> requests.Response:
     return resp
 
 
-def fetch_rss(url: str, limit: int = MAX_ITEMS_PER_SOURCE, **_ignored) -> list[dict]:
-    """Parse a standard RSS 2.0 feed using only the stdlib XML parser."""
+def fetch_rss(url: str, limit: int = MAX_ITEMS_PER_SOURCE, **_ignored) -> list[dict] | None:
+    """Parse a standard RSS 2.0 feed using only the stdlib XML parser.
+
+    Returns `None` on a transport/parse failure (network error, bad XML) -
+    distinct from a real `[]`, which means the fetch succeeded and simply
+    found nothing (ROADMAP.md Phase 11 #55). A 403, a timeout, and a
+    silently-broken feed all used to collapse into the same empty list,
+    which is exactly right for the digest build (never crash, never show
+    a wrong page) and exactly wrong for source-health tracking (a
+    transient block looks identical to a source that's actually died).
+    Callers that just want events still treat `None` as `[]`; only the
+    health tracker in build_digest.py cares about the distinction.
+    """
     try:
         resp = _get(url)
         root = ET.fromstring(resp.content)
@@ -74,14 +94,18 @@ def fetch_rss(url: str, limit: int = MAX_ITEMS_PER_SOURCE, **_ignored) -> list[d
         return items
     except Exception as exc:  # noqa: BLE001 - fail soft by design
         logger.warning("RSS fetch failed for %s: %s", url, exc)
-        return []
+        return None
 
 
-def fetch_ics(url: str, limit: int = MAX_ITEMS_PER_SOURCE, **_ignored) -> list[dict]:
+def fetch_ics(url: str, limit: int = MAX_ITEMS_PER_SOURCE, **_ignored) -> list[dict] | None:
     """Minimal ICS (iCalendar) VEVENT parser, upcoming events only.
 
     Deliberately dependency-free: handles the common single-line
     SUMMARY/DTSTART/URL fields that most municipal calendar exports use.
+
+    Returns `None` on a transport/parse failure, distinct from a real
+    `[]` (fetched fine, nothing upcoming) - see fetch_rss's docstring for
+    why (ROADMAP.md Phase 11 #55).
     """
     try:
         # `webcal://` is a hint for calendar apps to subscribe, not a real
@@ -136,7 +160,7 @@ def fetch_ics(url: str, limit: int = MAX_ITEMS_PER_SOURCE, **_ignored) -> list[d
         return upcoming[:limit]
     except Exception as exc:  # noqa: BLE001 - fail soft by design
         logger.warning("ICS fetch failed for %s: %s", url, exc)
-        return []
+        return None
 
 
 class _EventLinkExtractor(HTMLParser):
@@ -246,7 +270,7 @@ def fetch_html_events(
     keywords: tuple[str, ...] | list[str] | None = None,
     detail_link_pattern: str | None = None,
     **_ignored,
-) -> list[dict]:
+) -> list[dict] | None:
     """Best-effort scrape of a listing page for relevant link text.
 
     Despite the name (kept for backward-compat config), this works for any
@@ -257,8 +281,13 @@ def fetch_html_events(
     once you know the site's real per-item URL structure.
 
     Intentionally conservative: if the page needs JavaScript to render its
-    content (common for calendar widgets), this returns [] and the digest
-    falls back to evergreen content for that section instead of guessing.
+    content (common for calendar widgets), this returns a real `[]` (page
+    reached, nothing matched) and the digest falls back to evergreen
+    content for that section instead of guessing. A transport/parse
+    failure (network error, non-2xx status, timeout) returns `None`
+    instead - distinct from that real `[]` (ROADMAP.md Phase 11 #55): a
+    403 or a timeout means the scraper never got a chance to work, which
+    is a different, softer signal than "worked, found nothing."
     """
     try:
         resp = _get(url)
@@ -291,7 +320,7 @@ def fetch_html_events(
         return candidates[:limit]
     except Exception as exc:  # noqa: BLE001 - fail soft by design
         logger.warning("HTML events fetch failed for %s: %s", url, exc)
-        return []
+        return None
 
 
 # WMO weather interpretation codes (the scheme Open-Meteo's `daily.weathercode`

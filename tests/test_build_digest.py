@@ -614,6 +614,27 @@ def test_fetch_region_sections_records_source_health(monkeypatch):
     assert health["mount-prospect-60056:Park"] == [1]
 
 
+def test_fetch_region_sections_skips_health_recording_on_transport_failure(monkeypatch):
+    # ROADMAP.md Phase 11 #55: a fetcher returning None (a real transport
+    # failure - 403, timeout, connection reset) must not be recorded as a
+    # 0 in source health, since that's indistinguishable from a source
+    # that actually died and would produce a false regression alert the
+    # next time it succeeds. Seed history with a real prior success so a
+    # skip (not a 0) is the only way this test can pass.
+    def fake_fetcher(url, **kwargs):
+        return None
+
+    monkeypatch.setitem(build_digest.FETCHERS, "ics", fake_fetcher)
+    region_cfg = {
+        "region": REGION,
+        "sources": [{"name": "Park", "type": "ics", "url": "https://x/cal.ics", "section": "Events", "enabled": True}],
+    }
+    health = {"mount-prospect-60056:Park": [6, 6]}
+    blocks = build_digest.fetch_region_sections(region_cfg, health=health)
+    assert health["mount-prospect-60056:Park"] == [6, 6]
+    assert blocks[0]["events"] == []
+
+
 def test_update_source_health_appends_and_caps_history():
     health = {}
     for count in range(build_digest.SOURCE_HEALTH_HISTORY_LEN + 3):
