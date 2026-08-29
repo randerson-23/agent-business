@@ -19,6 +19,16 @@
 #   - Park District Events: URL corrected to the real Tribe Events ICS
 #     export; webcal:// scheme now handled by fetchers.py. Not yet
 #     confirmed against a live run since the fix.
+#   - Tourism Site / Downtown Events: Added 2026-08-29 (ROADMAP.md item
+#     41) — experiencemountprospect.org (the Village's own tourism site)
+#     and mpdowntown.com (the downtown merchants association, already
+#     linked from the seasonal-circuit guide) as two more live sources.
+#     URLs are a best guess at each site's events listing page, not yet
+#     confirmed against a live run — same starting point every other
+#     source here began from. No detail_link_pattern set until a real
+#     one is confirmed; falls back to keyword-filtered link scraping,
+#     same as any other unconfirmed html_events source. Fails soft to
+#     the evergreen fallback if either guess is wrong.
 #
 # The pipeline fails soft either way: a broken source is skipped and
 # logged, it never breaks the whole digest build.
@@ -91,6 +101,27 @@ sources:
     type: ics
     url: "webcal://www.mppd.org/?post_type=tribe_events&ical=1&eventDisplay=list"
     section: "Park District Events"
+    enabled: true
+
+  - name: "Experience Mount Prospect — Events"
+    type: html_events
+    # The Village's own tourism site. URL is a best guess at its events
+    # listing page (unconfirmed - see header note); no detail_link_pattern
+    # yet, so this relies on the keyword fallback until a real link
+    # structure is confirmed the way the other sources' were.
+    url: "https://www.experiencemountprospect.org/events/"
+    keywords: ["event", "festival", "concert", "market", "tour", "shop", "dine", "things to do"]
+    section: "Things To Do"
+    enabled: true
+
+  - name: "Downtown Mount Prospect — Events"
+    type: html_events
+    # The downtown merchants association (already linked as a plain URL
+    # from the Seasonal Circuit Guide). Same unconfirmed-URL caveat as
+    # above.
+    url: "https://mpdowntown.com/events/"
+    keywords: ["event", "festival", "concert", "market", "sale", "sidewalk", "oktoberfest"]
+    section: "Downtown Events"
     enabled: true
 
 # Evergreen, always-available local info used as a fallback so the digest
