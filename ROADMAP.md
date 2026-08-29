@@ -1295,6 +1295,66 @@ and Family Focus Media (fourth pass) has run the same model profitably
 since 2010. The thesis is sound; execution and distribution are the
 variables.
 
+#### Research pass 2026-08-29 (eighth pass)
+
+The newsletter cluster (items 24, 31, 36, 37) is the largest untouched
+block in the backlog, so this pass researched what actually happens when a
+site like this sends its first email. The answer changes the priority of
+something already on the list.
+
+| Angle | Finding | Consequence |
+|---|---|---|
+| **Bulk-sender rules, 2026** | Gmail, Yahoo and Microsoft all require SPF, DKIM **and** DMARC. One-click unsubscribe via `List-Unsubscribe` + `List-Unsubscribe-Post` (RFC 8058), honoured within two days. Spam complaints under 0.3%, ideally 0.1% — and recovery from a breach is slow | You cannot authenticate mail without a domain you control, so item 39 blocks the newsletter too |
+| **Event syndication** (Eventbrite → Bandsintown, AllEvents' 40,000 cities) | The mechanism exists and is genuinely frictionless for event *owners* | Not applicable here, and worth recording as such — see item 48 |
+
+#### P1 (new)
+
+46. **The unregistered domain blocks the newsletter too — item 39 is now
+    two workstreams deep.** The sixth pass framed the missing domain as a
+    findability and credibility problem. It is also a hard technical
+    prerequisite for items 24, 31, 36 and 37: Gmail, Yahoo and Microsoft
+    now require SPF, DKIM and DMARC on bulk mail, and **none of those can
+    be published without a domain under the owner's control.** Sending the
+    weekend email from a provider's shared subdomain, unauthenticated, is
+    a direct route to the spam folder — and a newsletter that lands in
+    spam is worse than no newsletter, because the list is spent and the
+    complaint history follows the sender.
+    Item 39 therefore stops being "important for growth" and becomes
+    **the single blocker on two separate workstreams**. It remains the one
+    thing the build loop cannot do; it needs Ryan to register a name from
+    the Phase 9 shortlist.
+
+#### P2 (new)
+
+47. **Deliverability checklist — a gate on items 24 and 31, not a
+    feature.** Before any first send, the following must be true, and
+    whoever implements the newsletter should treat this as acceptance
+    criteria rather than nice-to-have: SPF, DKIM and DMARC all published
+    (`p=none` is an accepted starting posture, with the expectation of
+    progressing toward `quarantine` or `reject`); one-click unsubscribe
+    implemented as `List-Unsubscribe` **and** `List-Unsubscribe-Post`
+    headers per RFC 8058, working without requiring a login and honoured
+    within two days; spam-complaint rate held under 0.3% and ideally under
+    0.1%; TLS in transit; valid forward and reverse DNS on the sending IPs.
+    A managed provider (Buttondown or beehiiv — see item 37) handles nearly
+    all of this **only once the sending domain is authenticated with it**,
+    which routes straight back through item 46 to item 39. Sequence is:
+    domain → authentication → provider → first send.
+
+#### Recorded as skipped
+
+48. **skipped — syndicating our listings out to Eventbrite / AllEvents /
+    Bandsintown.** The mechanism is real and tempting: publishing to
+    Eventbrite auto-distributes music events to Bandsintown's fan base,
+    and AllEvents spans 40,000 cities. It is still wrong here, for a
+    reason that won't change. This site **aggregates** events run by the
+    Village, the library, the park district and the downtown merchants —
+    they are not ours to republish onto commercial platforms under our own
+    submission, and doing so would feed listings straight to the
+    competitors currently outranking us in the sixth pass's SERP check.
+    The flow should run the other direction, as item 41 proposes: fetch
+    locally, credit the source. Don't revisit.
+
 ## Working agreements for autonomous iteration
 
 - Cadence is hourly (the platform's durable scheduler has a 1-hour floor;
