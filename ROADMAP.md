@@ -992,16 +992,32 @@ change whose cost only shows up on a real network stays gated behind it.
     generic Tue–Thu benchmark from the third pass. Ship item 24 with a
     Thursday-afternoon send.
 
-32. **School district and youth-sports calendars as a data source.** This
-    is a gap rather than a feature to copy: no local competitor aggregates
-    them, and for a family suburb the school calendar — early dismissals,
-    no-school days, concerts, games — is a large share of what a parent's
-    week actually contains. Would add sources to `config/regions/*.yaml`
-    for District 57 and Township High School District 214.
-    **Verify before shipping:** confirm each district publishes a calendar
-    feed intended for public syndication, and keep it fail-soft like every
-    other source. Strengthens the civic-feed moat that already separates
-    this site from Eventbrite and AllEvents.
+32. ⚠️ first slice done (Mount Prospect / District 57 only). **School
+    district and youth-sports calendars as a data source.** Real gap, not
+    a feature to copy: no local competitor aggregates them, and for a
+    family suburb the school calendar — early dismissals, no-school days,
+    concerts, games — is a large share of what a parent's week actually
+    contains.
+    This sandbox's own network is proxy-blocked for arbitrary domains
+    (same as every other source), but `WebSearch` isn't - used it instead
+    of guessing blind, and it surfaced a real, specific district-wide
+    export URL from D57's own iCalInfo page:
+    `webcal://www.d57.org/ical/Mount_Prospect_School_District_57_export.ics`.
+    Added as a new `ics` source (`config/regions/mount-prospect-60056.yaml`,
+    section "School Calendar") - not yet confirmed by a live fetch
+    (WebSearch returns indexed/summarized content, not a verified fetch,
+    and `WebFetch` is itself blocked for this domain in this sandbox), so
+    it's in the same "unconfirmed guess" category as a couple of this
+    region's other sources, and will self-correct from the next real
+    GitHub Actions build's logs if the path is wrong - same discipline as
+    every other source here, just one step short of the usual
+    log-confirmed bar since there was no live traffic to check yet.
+    Township High School District 214 (the shared high school district)
+    was researched too but has no discoverable public ICS feed, only PDF
+    calendars - not added rather than shipping a guessed URL with no real
+    evidence behind it at all. Same treatment needed for Arlington
+    Heights, Des Plaines, and Palatine's own districts - not done this
+    pass, deliberately scoped to one region to keep this verifiable.
 
 #### P3 (new)
 
