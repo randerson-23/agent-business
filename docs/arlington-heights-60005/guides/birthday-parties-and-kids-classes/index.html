@@ -151,12 +151,57 @@
   .answer-block { color: var(--muted); font-size: 14px; line-height: 1.6; margin: 4px 0 18px; max-width: 640px; }
 
   .map-embed {
+    position: relative;
     border-radius: var(--radius-lg);
     box-shadow: var(--shadow-sm);
     overflow: hidden;
     margin: 0 0 18px;
+    /* Fixed aspect ratio (ROADMAP.md Phase 11 #53) so this reliable
+       inline SVG - no third party, nothing that can fail to load - is
+       the page's real map, not a fallback waiting behind a failure-prone
+       iframe. See build_region_map_link_url()'s docstring for why the
+       original "iframe with reveal-on-load" design was dropped: tested
+       against the real build, and an iframe's load event fires even when
+       navigation is blocked, so it never actually caught the failure it
+       was built to hide. */
+    aspect-ratio: 960 / 260;
+    background: var(--card);
   }
-  .map-embed iframe { display: block; width: 100%; height: 260px; border: 0; }
+  .map-fallback {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 16px 20px;
+  }
+  .map-fallback svg { width: 100%; height: 100%; overflow: visible; }
+  .map-fallback .map-line { stroke: var(--border); stroke-width: 1.5; stroke-dasharray: 4 3; }
+  .map-fallback .map-line-label { font-size: 10px; fill: var(--muted); font-family: 'Inter', sans-serif; }
+  .map-fallback .map-pin { fill: var(--accent-soft); stroke: var(--card); stroke-width: 2; }
+  .map-fallback .map-pin-label { font-size: 12px; font-weight: 700; fill: var(--ink); font-family: 'Inter', sans-serif; }
+  .map-fallback a { text-decoration: none; }
+  .map-fallback a:hover .map-pin { fill: var(--accent); }
+  .map-fallback a:hover .map-pin-label { fill: var(--accent); }
+  .map-fallback a:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+  .map-link {
+    position: absolute;
+    right: 12px;
+    bottom: 12px;
+    background: var(--card);
+    color: var(--accent-2-text);
+    font-size: 12.5px;
+    font-weight: 600;
+    text-decoration: none;
+    padding: 6px 12px;
+    border-radius: 999px;
+    box-shadow: var(--shadow-sm);
+    border: 1px solid var(--border);
+  }
+  .map-link:hover { color: var(--accent); border-color: var(--accent); }
+  .map-link:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+  .quiet-note { color: var(--muted); font-size: 14px; font-style: italic; margin: 0 0 14px; }
 
   .nearby-strip { margin: 0 0 24px; font-size: 14px; color: var(--muted); }
   .nearby-strip strong { color: var(--ink); font-weight: 600; margin-right: 6px; }
@@ -488,6 +533,8 @@
 </style>
 </head>
 <body>
+
+
 <div class="hero">
   <div class="hero-inner">
     <a class="back" href="https://randerson-23.github.io/agent-business/">&larr; All regions</a>
@@ -555,71 +602,81 @@
   
 
   
-  <section class="block">
-    <h2>What&#39;s inside</h2>
-    
-      <div class="card-grid">
-      
-      
-      <div class="card" data-tags="kid_friendly">
-        <button type="button" class="tray-star" data-item='{"date": null, "date_iso": null, "detail": "Pool parties, gym space, and themed party packages through the Park District \u2014 check current pricing, room availability, and booking windows.", "id": "https://www.ahpd.org/", "region_name": "Arlington Heights", "region_url": "https://randerson-23.github.io/agent-business/arlington-heights-60005/", "title": "Birthday parties \u0026 rentals \u2014 Arlington Heights Park District", "url": "https://www.ahpd.org/"}' aria-pressed="false" aria-label="Add Birthday parties &amp; rentals — Arlington Heights Park District to My Weekend">☆</button>
-        
-        <h3><a href="https://www.ahpd.org/">Birthday parties &amp; rentals — Arlington Heights Park District</a></h3>
-        <p class="detail">Pool parties, gym space, and themed party packages through the Park District — check current pricing, room availability, and booking windows.</p>
-        
-        <div class="tag-row">
-          <span class="tag-badge" style="background: var(--hue-pink-bg); color: var(--hue-pink-ink);">🧒 Kid-friendly</span>
-        </div>
-        
-        
-      </div>
-      
-      
-      <div class="card" data-tags="kid_friendly">
-        <button type="button" class="tray-star" data-item='{"date": null, "date_iso": null, "detail": "Swim lessons, sports, dance, and seasonal camps for all ages \u2014 browse the current program guide for schedules and registration.", "id": "https://www.ahpd.org/", "region_name": "Arlington Heights", "region_url": "https://randerson-23.github.io/agent-business/arlington-heights-60005/", "title": "Kids\u0027 classes \u0026 camps \u2014 Arlington Heights Park District", "url": "https://www.ahpd.org/"}' aria-pressed="false" aria-label="Add Kids&#39; classes &amp; camps — Arlington Heights Park District to My Weekend">☆</button>
-        
-        <h3><a href="https://www.ahpd.org/">Kids&#39; classes &amp; camps — Arlington Heights Park District</a></h3>
-        <p class="detail">Swim lessons, sports, dance, and seasonal camps for all ages — browse the current program guide for schedules and registration.</p>
-        
-        <div class="tag-row">
-          <span class="tag-badge" style="background: var(--hue-pink-bg); color: var(--hue-pink-ink);">🧒 Kid-friendly</span>
-        </div>
-        
-        
-      </div>
-      
-      
-      <div class="card" data-tags="indoor,kid_friendly,free,teen">
-        <button type="button" class="tray-star" data-item='{"date": null, "date_iso": null, "detail": "Free storytimes, makerspace classes, and craft programs for kids and teens \u2014 no registration fee.", "id": "https://www.ahml.info/", "region_name": "Arlington Heights", "region_url": "https://randerson-23.github.io/agent-business/arlington-heights-60005/", "title": "Kids\u0027 programs \u2014 Arlington Heights Memorial Library", "url": "https://www.ahml.info/"}' aria-pressed="false" aria-label="Add Kids&#39; programs — Arlington Heights Memorial Library to My Weekend">☆</button>
-        
-        <h3><a href="https://www.ahml.info/">Kids&#39; programs — Arlington Heights Memorial Library</a></h3>
-        <p class="detail">Free storytimes, makerspace classes, and craft programs for kids and teens — no registration fee.</p>
-        
-        <div class="tag-row">
-          <span class="tag-badge" style="background: var(--hue-blue-bg); color: var(--hue-blue-ink);">🏠 Indoor</span><span class="tag-badge" style="background: var(--hue-pink-bg); color: var(--hue-pink-ink);">🧒 Kid-friendly</span><span class="tag-badge" style="background: var(--hue-green-bg); color: var(--hue-green-ink);">💵 Free</span><span class="tag-badge" style="background: var(--hue-indigo-bg); color: var(--hue-indigo-ink);">🧑 Teen</span>
-        </div>
-        
-        
-      </div>
-      
-      
-      <div class="card" data-tags="kid_friendly">
-        <button type="button" class="tray-star" data-item='{"date": null, "date_iso": null, "detail": "Private businesses appear here as they join the local directory \u2014 see what\u0027s currently listed.", "id": "https://randerson-23.github.io/agent-business/arlington-heights-60005/directory/", "region_name": "Arlington Heights", "region_url": "https://randerson-23.github.io/agent-business/arlington-heights-60005/", "title": "Local party venues, entertainers \u0026 tutoring centers", "url": "https://randerson-23.github.io/agent-business/arlington-heights-60005/directory/"}' aria-pressed="false" aria-label="Add Local party venues, entertainers &amp; tutoring centers to My Weekend">☆</button>
-        
-        <h3><a href="https://randerson-23.github.io/agent-business/arlington-heights-60005/directory/">Local party venues, entertainers &amp; tutoring centers</a></h3>
-        <p class="detail">Private businesses appear here as they join the local directory — see what&#39;s currently listed.</p>
-        
-        <div class="tag-row">
-          <span class="tag-badge" style="background: var(--hue-pink-bg); color: var(--hue-pink-ink);">🧒 Kid-friendly</span>
-        </div>
-        
-        
-      </div>
-      
-      </div>
-    
-  </section>
+
   
+
+  
+    
+    <section class="block">
+      <h2>What&#39;s inside</h2>
+      
+        <div class="card-grid">
+        
+        
+        <div class="card" data-tags="kid_friendly">
+          <button type="button" class="tray-star" data-item='{"date": null, "date_iso": null, "detail": "Pool parties, gym space, and themed party packages through the Park District \u2014 check current pricing, room availability, and booking windows.", "id": "https://www.ahpd.org/", "region_name": "Arlington Heights", "region_url": "https://randerson-23.github.io/agent-business/arlington-heights-60005/", "title": "Birthday parties \u0026 rentals \u2014 Arlington Heights Park District", "url": "https://www.ahpd.org/"}' aria-pressed="false" aria-label="Add Birthday parties &amp; rentals — Arlington Heights Park District to My Weekend">☆</button>
+          
+          <h3><a href="https://www.ahpd.org/">Birthday parties &amp; rentals — Arlington Heights Park District</a></h3>
+          <p class="detail">Pool parties, gym space, and themed party packages through the Park District — check current pricing, room availability, and booking windows.</p>
+          
+          <div class="tag-row">
+            <span class="tag-badge" style="background: var(--hue-pink-bg); color: var(--hue-pink-ink);">🧒 Kid-friendly</span>
+          </div>
+          
+          
+        </div>
+        
+        
+        <div class="card" data-tags="kid_friendly">
+          <button type="button" class="tray-star" data-item='{"date": null, "date_iso": null, "detail": "Swim lessons, sports, dance, and seasonal camps for all ages \u2014 browse the current program guide for schedules and registration.", "id": "https://www.ahpd.org/", "region_name": "Arlington Heights", "region_url": "https://randerson-23.github.io/agent-business/arlington-heights-60005/", "title": "Kids\u0027 classes \u0026 camps \u2014 Arlington Heights Park District", "url": "https://www.ahpd.org/"}' aria-pressed="false" aria-label="Add Kids&#39; classes &amp; camps — Arlington Heights Park District to My Weekend">☆</button>
+          
+          <h3><a href="https://www.ahpd.org/">Kids&#39; classes &amp; camps — Arlington Heights Park District</a></h3>
+          <p class="detail">Swim lessons, sports, dance, and seasonal camps for all ages — browse the current program guide for schedules and registration.</p>
+          
+          <div class="tag-row">
+            <span class="tag-badge" style="background: var(--hue-pink-bg); color: var(--hue-pink-ink);">🧒 Kid-friendly</span>
+          </div>
+          
+          
+        </div>
+        
+        
+        <div class="card" data-tags="indoor,kid_friendly,free,teen">
+          <button type="button" class="tray-star" data-item='{"date": null, "date_iso": null, "detail": "Free storytimes, makerspace classes, and craft programs for kids and teens \u2014 no registration fee.", "id": "https://www.ahml.info/", "region_name": "Arlington Heights", "region_url": "https://randerson-23.github.io/agent-business/arlington-heights-60005/", "title": "Kids\u0027 programs \u2014 Arlington Heights Memorial Library", "url": "https://www.ahml.info/"}' aria-pressed="false" aria-label="Add Kids&#39; programs — Arlington Heights Memorial Library to My Weekend">☆</button>
+          
+          <h3><a href="https://www.ahml.info/">Kids&#39; programs — Arlington Heights Memorial Library</a></h3>
+          <p class="detail">Free storytimes, makerspace classes, and craft programs for kids and teens — no registration fee.</p>
+          
+          <div class="tag-row">
+            <span class="tag-badge" style="background: var(--hue-blue-bg); color: var(--hue-blue-ink);">🏠 Indoor</span><span class="tag-badge" style="background: var(--hue-pink-bg); color: var(--hue-pink-ink);">🧒 Kid-friendly</span><span class="tag-badge" style="background: var(--hue-green-bg); color: var(--hue-green-ink);">💵 Free</span><span class="tag-badge" style="background: var(--hue-indigo-bg); color: var(--hue-indigo-ink);">🧑 Teen</span>
+          </div>
+          
+          
+        </div>
+        
+        
+        <div class="card" data-tags="kid_friendly">
+          <button type="button" class="tray-star" data-item='{"date": null, "date_iso": null, "detail": "Private businesses appear here as they join the local directory \u2014 see what\u0027s currently listed.", "id": "https://randerson-23.github.io/agent-business/arlington-heights-60005/directory/", "region_name": "Arlington Heights", "region_url": "https://randerson-23.github.io/agent-business/arlington-heights-60005/", "title": "Local party venues, entertainers \u0026 tutoring centers", "url": "https://randerson-23.github.io/agent-business/arlington-heights-60005/directory/"}' aria-pressed="false" aria-label="Add Local party venues, entertainers &amp; tutoring centers to My Weekend">☆</button>
+          
+          <h3><a href="https://randerson-23.github.io/agent-business/arlington-heights-60005/directory/">Local party venues, entertainers &amp; tutoring centers</a></h3>
+          <p class="detail">Private businesses appear here as they join the local directory — see what&#39;s currently listed.</p>
+          
+          <div class="tag-row">
+            <span class="tag-badge" style="background: var(--hue-pink-bg); color: var(--hue-pink-ink);">🧒 Kid-friendly</span>
+          </div>
+          
+          
+        </div>
+        
+        </div>
+      
+    </section>
+    
+  
+
+  
+  
+
 
   
 
@@ -666,7 +723,7 @@
   <footer>
     Local business? See the
     <a href="https://randerson-23.github.io/agent-business/sponsor/">sponsor page</a>.
-    <br>Generated 2026-08-29 14:53 UTC.
+    <br>Generated 2026-08-29 19:04 UTC.
     
     <br><a href="https://randerson-23.github.io/agent-business/arlington-heights-60005/weekly-summary.txt">Copy this week's summary</a> — a plain-text block ready to paste into a local group.
   </footer>
@@ -692,7 +749,7 @@
 
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "How current is this guide?", "acceptedAnswer": {"@type": "Answer", "text": "It's regenerated automatically from the village, library, and park district's own listings, typically several times a week - not a one-time write-up that goes stale."}}, {"@type": "Question", "name": "Is this every event or business, or just what's listed here?", "acceptedAnswer": {"@type": "Answer", "text": "Only what the linked public sources publish. For full details, hours, or anything not listed here, check the official page each item links to."}}, {"@type": "Question", "name": "How do I see what's happening in Arlington Heights this specific weekend?", "acceptedAnswer": {"@type": "Answer", "text": "See the <a href=\"https://randerson-23.github.io/agent-business/arlington-heights-60005/this-weekend/\">weekend view<\/a>, which only shows items with a known date in the coming Friday-Sunday."}}, {"@type": "Question", "name": "Can I add an event, or suggest a business for the directory?", "acceptedAnswer": {"@type": "Answer", "text": "Yes - <a href=\"https://github.com/randerson-23/agent-business/issues/new?template=event-submission.yml\">submit an event<\/a> and a person reviews it before it goes live, or a business owner can <a href=\"https://randerson-23.github.io/agent-business/sponsor/\">inquire about a listing<\/a>."}}]}</script>
 
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebPage", "name": "Arlington Heights — Weekend & Trip Planner", "url": "https://randerson-23.github.io/agent-business/arlington-heights-60005/guides/birthday-parties-and-kids-classes/", "dateModified": "2026-08-29T14:53:46.038622+00:00", "isPartOf": {"@type": "WebSite", "name": "Weekend & Trip Planner", "url": "https://randerson-23.github.io/agent-business/"}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebPage", "name": "Arlington Heights — Weekend & Trip Planner", "url": "https://randerson-23.github.io/agent-business/arlington-heights-60005/guides/birthday-parties-and-kids-classes/", "dateModified": "2026-08-29T19:04:06.538911+00:00", "isPartOf": {"@type": "WebSite", "name": "Weekend & Trip Planner", "url": "https://randerson-23.github.io/agent-business/"}}</script>
 <script>
 (function () {
   var activeTags = new Set();

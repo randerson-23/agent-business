@@ -151,12 +151,57 @@
   .answer-block { color: var(--muted); font-size: 14px; line-height: 1.6; margin: 4px 0 18px; max-width: 640px; }
 
   .map-embed {
+    position: relative;
     border-radius: var(--radius-lg);
     box-shadow: var(--shadow-sm);
     overflow: hidden;
     margin: 0 0 18px;
+    /* Fixed aspect ratio (ROADMAP.md Phase 11 #53) so this reliable
+       inline SVG - no third party, nothing that can fail to load - is
+       the page's real map, not a fallback waiting behind a failure-prone
+       iframe. See build_region_map_link_url()'s docstring for why the
+       original "iframe with reveal-on-load" design was dropped: tested
+       against the real build, and an iframe's load event fires even when
+       navigation is blocked, so it never actually caught the failure it
+       was built to hide. */
+    aspect-ratio: 960 / 260;
+    background: var(--card);
   }
-  .map-embed iframe { display: block; width: 100%; height: 260px; border: 0; }
+  .map-fallback {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 16px 20px;
+  }
+  .map-fallback svg { width: 100%; height: 100%; overflow: visible; }
+  .map-fallback .map-line { stroke: var(--border); stroke-width: 1.5; stroke-dasharray: 4 3; }
+  .map-fallback .map-line-label { font-size: 10px; fill: var(--muted); font-family: 'Inter', sans-serif; }
+  .map-fallback .map-pin { fill: var(--accent-soft); stroke: var(--card); stroke-width: 2; }
+  .map-fallback .map-pin-label { font-size: 12px; font-weight: 700; fill: var(--ink); font-family: 'Inter', sans-serif; }
+  .map-fallback a { text-decoration: none; }
+  .map-fallback a:hover .map-pin { fill: var(--accent); }
+  .map-fallback a:hover .map-pin-label { fill: var(--accent); }
+  .map-fallback a:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+  .map-link {
+    position: absolute;
+    right: 12px;
+    bottom: 12px;
+    background: var(--card);
+    color: var(--accent-2-text);
+    font-size: 12.5px;
+    font-weight: 600;
+    text-decoration: none;
+    padding: 6px 12px;
+    border-radius: 999px;
+    box-shadow: var(--shadow-sm);
+    border: 1px solid var(--border);
+  }
+  .map-link:hover { color: var(--accent); border-color: var(--accent); }
+  .map-link:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+  .quiet-note { color: var(--muted); font-size: 14px; font-style: italic; margin: 0 0 14px; }
 
   .nearby-strip { margin: 0 0 24px; font-size: 14px; color: var(--muted); }
   .nearby-strip strong { color: var(--ink); font-weight: 600; margin-right: 6px; }
@@ -488,6 +533,8 @@
 </style>
 </head>
 <body>
+
+
 <div class="hero">
   <div class="hero-inner">
     <a class="back" href="https://randerson-23.github.io/agent-business/">&larr; All regions</a>
@@ -567,48 +614,58 @@
   
 
   
-  <section class="block">
-    <h2>Free things to do in Mount Prospect</h2>
-    
-      <div class="card-grid">
-      
-      
-      <div class="card" data-tags="dog_friendly,food,free,kid_friendly,outdoor,toddler">
-        <button type="button" class="tray-star" data-item='{"date": "Sep 20", "date_iso": "2026-09-20T11:00:00", "detail": "Barks and Brews 2: Electric Boogaloo Visit Friendship Park Conservatory for the second annual Barks and Brews event featuring The Buddy Foundation. Stop by\u2026", "id": "https://www.mppd.org/event/barks-and-brews-2-electric-boogaloo/", "region_name": "Mount Prospect", "region_url": "https://randerson-23.github.io/agent-business/mount-prospect-60056/", "title": "Barks and Brews 2: Electric Boogaloo", "url": "https://www.mppd.org/event/barks-and-brews-2-electric-boogaloo/"}' aria-pressed="false" aria-label="Add Barks and Brews 2: Electric Boogaloo to My Weekend">☆</button>
-        <div class="date">Sep 20</div>
-        <h3><a href="https://www.mppd.org/event/barks-and-brews-2-electric-boogaloo/">Barks and Brews 2: Electric Boogaloo</a></h3>
-        <p class="detail">Barks and Brews 2: Electric Boogaloo Visit Friendship Park Conservatory for the second annual Barks and Brews event featuring The Buddy Foundation. Stop by…</p>
-        
-        <div class="tag-row">
-          <span class="tag-badge" style="background: var(--hue-amber-bg); color: var(--hue-amber-ink);">🐕 Dog-friendly</span><span class="tag-badge" style="background: var(--hue-orange-bg); color: var(--hue-orange-ink);">🍽️ Food &amp; drink</span><span class="tag-badge" style="background: var(--hue-green-bg); color: var(--hue-green-ink);">💵 Free</span><span class="tag-badge" style="background: var(--hue-pink-bg); color: var(--hue-pink-ink);">🧒 Kid-friendly</span><span class="tag-badge" style="background: var(--hue-teal-bg); color: var(--hue-teal-ink);">🌳 Outdoor</span><span class="tag-badge" style="background: var(--hue-lime-bg); color: var(--hue-lime-ink);">👶 Toddler</span>
-        </div>
-        
-        
-        <div class="cal-row">
-          <a href="data:text/calendar;charset=utf-8,BEGIN%3AVCALENDAR%0D%0AVERSION%3A2.0%0D%0APRODID%3A-//Weekend%20Trip%20Planner//EN%0D%0ABEGIN%3AVEVENT%0D%0ADTSTART%3A20260920T110000%0D%0ADTEND%3A20260920T120000%0D%0ASUMMARY%3ABarks%20and%20Brews%202%3A%20Electric%20Boogaloo%0D%0ADESCRIPTION%3ABarks%20and%20Brews%202%3A%20Electric%20Boogaloo%20Visit%20Friendship%20Park%20Conservatory%20for%20the%20second%20annual%20Barks%20and%20Brews%20event%20featuring%20The%20Buddy%20Foundation.%20Stop%20by%E2%80%A6%0D%0AURL%3Ahttps%3A//www.mppd.org/event/barks-and-brews-2-electric-boogaloo/%0D%0AEND%3AVEVENT%0D%0AEND%3AVCALENDAR%0D%0A" download="event.ics">📅 Add to calendar</a>
-          <a href="https://www.google.com/calendar/render?action=TEMPLATE&amp;text=Barks+and+Brews+2%3A+Electric+Boogaloo&amp;dates=20260920T110000%2F20260920T120000&amp;details=Barks+and+Brews+2%3A+Electric+Boogaloo+Visit+Friendship+Park+Conservatory+for+the+second+annual+Barks+and+Brews+event+featuring+The+Buddy+Foundation.+Stop+by%E2%80%A6&amp;location=Mount+Prospect" target="_blank" rel="noopener">Google Calendar</a>
-        </div>
-        
-      </div>
-      
-      
-      <div class="card" data-tags="indoor,kid_friendly,free">
-        <button type="button" class="tray-star" data-item='{"date": null, "date_iso": null, "detail": "125 S Emerson St. Story times, teen programs, and free museum passes.", "id": "https://mppl.org/", "region_name": "Mount Prospect", "region_url": "https://randerson-23.github.io/agent-business/mount-prospect-60056/", "title": "Mount Prospect Public Library", "url": "https://mppl.org/"}' aria-pressed="false" aria-label="Add Mount Prospect Public Library to My Weekend">☆</button>
-        
-        <h3><a href="https://mppl.org/">Mount Prospect Public Library</a></h3>
-        <p class="detail">125 S Emerson St. Story times, teen programs, and free museum passes.</p>
-        
-        <div class="tag-row">
-          <span class="tag-badge" style="background: var(--hue-blue-bg); color: var(--hue-blue-ink);">🏠 Indoor</span><span class="tag-badge" style="background: var(--hue-pink-bg); color: var(--hue-pink-ink);">🧒 Kid-friendly</span><span class="tag-badge" style="background: var(--hue-green-bg); color: var(--hue-green-ink);">💵 Free</span>
-        </div>
-        
-        
-      </div>
-      
-      </div>
-    
-  </section>
+
   
+
+  
+    
+    <section class="block">
+      <h2>Free things to do in Mount Prospect</h2>
+      
+        <div class="card-grid">
+        
+        
+        <div class="card" data-tags="dog_friendly,food,free,kid_friendly,outdoor,toddler">
+          <button type="button" class="tray-star" data-item='{"date": "Sep 20", "date_iso": "2026-09-20T11:00:00", "detail": "Barks and Brews 2: Electric Boogaloo Visit Friendship Park Conservatory for the second annual Barks and Brews event featuring The Buddy Foundation. Stop by\u2026", "id": "https://www.mppd.org/event/barks-and-brews-2-electric-boogaloo/", "region_name": "Mount Prospect", "region_url": "https://randerson-23.github.io/agent-business/mount-prospect-60056/", "title": "Barks and Brews 2: Electric Boogaloo", "url": "https://www.mppd.org/event/barks-and-brews-2-electric-boogaloo/"}' aria-pressed="false" aria-label="Add Barks and Brews 2: Electric Boogaloo to My Weekend">☆</button>
+          <div class="date">Sep 20</div>
+          <h3><a href="https://www.mppd.org/event/barks-and-brews-2-electric-boogaloo/">Barks and Brews 2: Electric Boogaloo</a></h3>
+          <p class="detail">Barks and Brews 2: Electric Boogaloo Visit Friendship Park Conservatory for the second annual Barks and Brews event featuring The Buddy Foundation. Stop by…</p>
+          
+          <div class="tag-row">
+            <span class="tag-badge" style="background: var(--hue-amber-bg); color: var(--hue-amber-ink);">🐕 Dog-friendly</span><span class="tag-badge" style="background: var(--hue-orange-bg); color: var(--hue-orange-ink);">🍽️ Food &amp; drink</span><span class="tag-badge" style="background: var(--hue-green-bg); color: var(--hue-green-ink);">💵 Free</span><span class="tag-badge" style="background: var(--hue-pink-bg); color: var(--hue-pink-ink);">🧒 Kid-friendly</span><span class="tag-badge" style="background: var(--hue-teal-bg); color: var(--hue-teal-ink);">🌳 Outdoor</span><span class="tag-badge" style="background: var(--hue-lime-bg); color: var(--hue-lime-ink);">👶 Toddler</span>
+          </div>
+          
+          
+          <div class="cal-row">
+            <a href="data:text/calendar;charset=utf-8,BEGIN%3AVCALENDAR%0D%0AVERSION%3A2.0%0D%0APRODID%3A-//Weekend%20Trip%20Planner//EN%0D%0ABEGIN%3AVEVENT%0D%0ADTSTART%3A20260920T110000%0D%0ADTEND%3A20260920T120000%0D%0ASUMMARY%3ABarks%20and%20Brews%202%3A%20Electric%20Boogaloo%0D%0ADESCRIPTION%3ABarks%20and%20Brews%202%3A%20Electric%20Boogaloo%20Visit%20Friendship%20Park%20Conservatory%20for%20the%20second%20annual%20Barks%20and%20Brews%20event%20featuring%20The%20Buddy%20Foundation.%20Stop%20by%E2%80%A6%0D%0AURL%3Ahttps%3A//www.mppd.org/event/barks-and-brews-2-electric-boogaloo/%0D%0AEND%3AVEVENT%0D%0AEND%3AVCALENDAR%0D%0A" download="event.ics">📅 Add to calendar</a>
+            <a href="https://www.google.com/calendar/render?action=TEMPLATE&amp;text=Barks+and+Brews+2%3A+Electric+Boogaloo&amp;dates=20260920T110000%2F20260920T120000&amp;details=Barks+and+Brews+2%3A+Electric+Boogaloo+Visit+Friendship+Park+Conservatory+for+the+second+annual+Barks+and+Brews+event+featuring+The+Buddy+Foundation.+Stop+by%E2%80%A6&amp;location=Mount+Prospect" target="_blank" rel="noopener">Google Calendar</a>
+          </div>
+          
+        </div>
+        
+        
+        <div class="card" data-tags="indoor,kid_friendly,free">
+          <button type="button" class="tray-star" data-item='{"date": null, "date_iso": null, "detail": "125 S Emerson St. Story times, teen programs, and free museum passes.", "id": "https://mppl.org/", "region_name": "Mount Prospect", "region_url": "https://randerson-23.github.io/agent-business/mount-prospect-60056/", "title": "Mount Prospect Public Library", "url": "https://mppl.org/"}' aria-pressed="false" aria-label="Add Mount Prospect Public Library to My Weekend">☆</button>
+          
+          <h3><a href="https://mppl.org/">Mount Prospect Public Library</a></h3>
+          <p class="detail">125 S Emerson St. Story times, teen programs, and free museum passes.</p>
+          
+          <div class="tag-row">
+            <span class="tag-badge" style="background: var(--hue-blue-bg); color: var(--hue-blue-ink);">🏠 Indoor</span><span class="tag-badge" style="background: var(--hue-pink-bg); color: var(--hue-pink-ink);">🧒 Kid-friendly</span><span class="tag-badge" style="background: var(--hue-green-bg); color: var(--hue-green-ink);">💵 Free</span>
+          </div>
+          
+          
+        </div>
+        
+        </div>
+      
+    </section>
+    
+  
+
+  
+  
+
 
   
 
@@ -630,7 +687,7 @@
   <footer>
     Local business? See the
     <a href="https://randerson-23.github.io/agent-business/sponsor/">sponsor page</a>.
-    <br>Generated 2026-08-29 14:53 UTC.
+    <br>Generated 2026-08-29 19:04 UTC.
     
     <br><a href="https://randerson-23.github.io/agent-business/mount-prospect-60056/weekly-summary.txt">Copy this week's summary</a> — a plain-text block ready to paste into a local group.
   </footer>
@@ -656,7 +713,7 @@
 <script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "Event", "name": "Barks and Brews 2: Electric Boogaloo", "url": "https://www.mppd.org/event/barks-and-brews-2-electric-boogaloo/", "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode", "description": "Barks and Brews 2: Electric Boogaloo Visit Friendship Park Conservatory for the second annual Barks and Brews event featuring The Buddy Foundation. Stop by…", "startDate": "2026-09-20T11:00:00"}]}</script>
 
 
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebPage", "name": "Mount Prospect — Weekend & Trip Planner", "url": "https://randerson-23.github.io/agent-business/mount-prospect-60056/free/", "dateModified": "2026-08-29T14:53:46.038622+00:00", "isPartOf": {"@type": "WebSite", "name": "Weekend & Trip Planner", "url": "https://randerson-23.github.io/agent-business/"}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebPage", "name": "Mount Prospect — Weekend & Trip Planner", "url": "https://randerson-23.github.io/agent-business/mount-prospect-60056/free/", "dateModified": "2026-08-29T19:04:06.538911+00:00", "isPartOf": {"@type": "WebSite", "name": "Weekend & Trip Planner", "url": "https://randerson-23.github.io/agent-business/"}}</script>
 <script>
 (function () {
   var activeTags = new Set();

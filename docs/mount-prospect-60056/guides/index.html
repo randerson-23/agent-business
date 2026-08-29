@@ -151,12 +151,57 @@
   .answer-block { color: var(--muted); font-size: 14px; line-height: 1.6; margin: 4px 0 18px; max-width: 640px; }
 
   .map-embed {
+    position: relative;
     border-radius: var(--radius-lg);
     box-shadow: var(--shadow-sm);
     overflow: hidden;
     margin: 0 0 18px;
+    /* Fixed aspect ratio (ROADMAP.md Phase 11 #53) so this reliable
+       inline SVG - no third party, nothing that can fail to load - is
+       the page's real map, not a fallback waiting behind a failure-prone
+       iframe. See build_region_map_link_url()'s docstring for why the
+       original "iframe with reveal-on-load" design was dropped: tested
+       against the real build, and an iframe's load event fires even when
+       navigation is blocked, so it never actually caught the failure it
+       was built to hide. */
+    aspect-ratio: 960 / 260;
+    background: var(--card);
   }
-  .map-embed iframe { display: block; width: 100%; height: 260px; border: 0; }
+  .map-fallback {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 16px 20px;
+  }
+  .map-fallback svg { width: 100%; height: 100%; overflow: visible; }
+  .map-fallback .map-line { stroke: var(--border); stroke-width: 1.5; stroke-dasharray: 4 3; }
+  .map-fallback .map-line-label { font-size: 10px; fill: var(--muted); font-family: 'Inter', sans-serif; }
+  .map-fallback .map-pin { fill: var(--accent-soft); stroke: var(--card); stroke-width: 2; }
+  .map-fallback .map-pin-label { font-size: 12px; font-weight: 700; fill: var(--ink); font-family: 'Inter', sans-serif; }
+  .map-fallback a { text-decoration: none; }
+  .map-fallback a:hover .map-pin { fill: var(--accent); }
+  .map-fallback a:hover .map-pin-label { fill: var(--accent); }
+  .map-fallback a:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+  .map-link {
+    position: absolute;
+    right: 12px;
+    bottom: 12px;
+    background: var(--card);
+    color: var(--accent-2-text);
+    font-size: 12.5px;
+    font-weight: 600;
+    text-decoration: none;
+    padding: 6px 12px;
+    border-radius: 999px;
+    box-shadow: var(--shadow-sm);
+    border: 1px solid var(--border);
+  }
+  .map-link:hover { color: var(--accent); border-color: var(--accent); }
+  .map-link:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+  .quiet-note { color: var(--muted); font-size: 14px; font-style: italic; margin: 0 0 14px; }
 
   .nearby-strip { margin: 0 0 24px; font-size: 14px; color: var(--muted); }
   .nearby-strip strong { color: var(--ink); font-weight: 600; margin-right: 6px; }
@@ -488,6 +533,8 @@
 </style>
 </head>
 <body>
+
+
 <div class="hero">
   <div class="hero-inner">
     <a class="back" href="https://randerson-23.github.io/agent-business/">&larr; All regions</a>
@@ -533,55 +580,65 @@
   
 
   
-  <section class="block">
-    <h2>Guides</h2>
-    
-      <div class="card-grid">
-      
-      
-      <div class="card" data-tags="">
-        <button type="button" class="tray-star" data-item='{"date": null, "date_iso": null, "detail": "A living guide to fall in Mount Prospect \u2014 seasonal park district programs, library fall programming, and where the Village posts official trick-or-treat hours. Pulls from the same civic sources as the weekly digest, organized by season instead of by week.", "id": "https://randerson-23.github.io/agent-business/mount-prospect-60056/guides/fall-family-guide/", "region_name": "Mount Prospect", "region_url": "https://randerson-23.github.io/agent-business/mount-prospect-60056/", "title": "Fall Family Guide", "url": "https://randerson-23.github.io/agent-business/mount-prospect-60056/guides/fall-family-guide/"}' aria-pressed="false" aria-label="Add Fall Family Guide to My Weekend">☆</button>
-        
-        <h3><a href="https://randerson-23.github.io/agent-business/mount-prospect-60056/guides/fall-family-guide/">Fall Family Guide</a></h3>
-        <p class="detail">A living guide to fall in Mount Prospect — seasonal park district programs, library fall programming, and where the Village posts official trick-or-treat hours. Pulls from the same civic sources as the weekly digest, organized by season instead of by week.</p>
-        
-        
-      </div>
-      
-      
-      <div class="card" data-tags="">
-        <button type="button" class="tray-star" data-item='{"date": null, "date_iso": null, "detail": "Where Mount Prospect families look for party venues, rec classes, and enrichment programs \u2014 the small set of standing civic options, plus local businesses as they join the directory below.", "id": "https://randerson-23.github.io/agent-business/mount-prospect-60056/guides/birthday-parties-and-kids-classes/", "region_name": "Mount Prospect", "region_url": "https://randerson-23.github.io/agent-business/mount-prospect-60056/", "title": "Birthday Parties \u0026 Kids\u0027 Classes", "url": "https://randerson-23.github.io/agent-business/mount-prospect-60056/guides/birthday-parties-and-kids-classes/"}' aria-pressed="false" aria-label="Add Birthday Parties &amp; Kids&#39; Classes to My Weekend">☆</button>
-        
-        <h3><a href="https://randerson-23.github.io/agent-business/mount-prospect-60056/guides/birthday-parties-and-kids-classes/">Birthday Parties &amp; Kids&#39; Classes</a></h3>
-        <p class="detail">Where Mount Prospect families look for party venues, rec classes, and enrichment programs — the small set of standing civic options, plus local businesses as they join the directory below.</p>
-        
-        
-      </div>
-      
-      
-      <div class="card" data-tags="">
-        <button type="button" class="tray-star" data-item='{"date": null, "date_iso": null, "detail": "The recurring seasonal happenings Mount Prospect families ask about year after year \u2014 the downtown fall festival, farmers market season, and Park District seasonal programming. Links to the real organizers\u0027 own pages, where each year\u0027s exact dates actually get posted.", "id": "https://randerson-23.github.io/agent-business/mount-prospect-60056/guides/seasonal-circuit-guide/", "region_name": "Mount Prospect", "region_url": "https://randerson-23.github.io/agent-business/mount-prospect-60056/", "title": "Seasonal Circuit Guide", "url": "https://randerson-23.github.io/agent-business/mount-prospect-60056/guides/seasonal-circuit-guide/"}' aria-pressed="false" aria-label="Add Seasonal Circuit Guide to My Weekend">☆</button>
-        
-        <h3><a href="https://randerson-23.github.io/agent-business/mount-prospect-60056/guides/seasonal-circuit-guide/">Seasonal Circuit Guide</a></h3>
-        <p class="detail">The recurring seasonal happenings Mount Prospect families ask about year after year — the downtown fall festival, farmers market season, and Park District seasonal programming. Links to the real organizers&#39; own pages, where each year&#39;s exact dates actually get posted.</p>
-        
-        
-      </div>
-      
-      
-      <div class="card" data-tags="">
-        <button type="button" class="tray-star" data-item='{"date": null, "date_iso": null, "detail": "The practical first-week checklist for anyone new to Mount Prospect \u2014 utilities and vehicle stickers, a library card, Park District registration, and where school-district boundaries actually come from. Pulls from the same civic sources as the weekly digest, organized for someone who just moved in rather than someone browsing this week\u0027s events.", "id": "https://randerson-23.github.io/agent-business/mount-prospect-60056/guides/new-to-town/", "region_name": "Mount Prospect", "region_url": "https://randerson-23.github.io/agent-business/mount-prospect-60056/", "title": "New to Town", "url": "https://randerson-23.github.io/agent-business/mount-prospect-60056/guides/new-to-town/"}' aria-pressed="false" aria-label="Add New to Town to My Weekend">☆</button>
-        
-        <h3><a href="https://randerson-23.github.io/agent-business/mount-prospect-60056/guides/new-to-town/">New to Town</a></h3>
-        <p class="detail">The practical first-week checklist for anyone new to Mount Prospect — utilities and vehicle stickers, a library card, Park District registration, and where school-district boundaries actually come from. Pulls from the same civic sources as the weekly digest, organized for someone who just moved in rather than someone browsing this week&#39;s events.</p>
-        
-        
-      </div>
-      
-      </div>
-    
-  </section>
+
   
+
+  
+    
+    <section class="block">
+      <h2>Guides</h2>
+      
+        <div class="card-grid">
+        
+        
+        <div class="card" data-tags="">
+          <button type="button" class="tray-star" data-item='{"date": null, "date_iso": null, "detail": "A living guide to fall in Mount Prospect \u2014 seasonal park district programs, library fall programming, and where the Village posts official trick-or-treat hours. Pulls from the same civic sources as the weekly digest, organized by season instead of by week.", "id": "https://randerson-23.github.io/agent-business/mount-prospect-60056/guides/fall-family-guide/", "region_name": "Mount Prospect", "region_url": "https://randerson-23.github.io/agent-business/mount-prospect-60056/", "title": "Fall Family Guide", "url": "https://randerson-23.github.io/agent-business/mount-prospect-60056/guides/fall-family-guide/"}' aria-pressed="false" aria-label="Add Fall Family Guide to My Weekend">☆</button>
+          
+          <h3><a href="https://randerson-23.github.io/agent-business/mount-prospect-60056/guides/fall-family-guide/">Fall Family Guide</a></h3>
+          <p class="detail">A living guide to fall in Mount Prospect — seasonal park district programs, library fall programming, and where the Village posts official trick-or-treat hours. Pulls from the same civic sources as the weekly digest, organized by season instead of by week.</p>
+          
+          
+        </div>
+        
+        
+        <div class="card" data-tags="">
+          <button type="button" class="tray-star" data-item='{"date": null, "date_iso": null, "detail": "Where Mount Prospect families look for party venues, rec classes, and enrichment programs \u2014 the small set of standing civic options, plus local businesses as they join the directory below.", "id": "https://randerson-23.github.io/agent-business/mount-prospect-60056/guides/birthday-parties-and-kids-classes/", "region_name": "Mount Prospect", "region_url": "https://randerson-23.github.io/agent-business/mount-prospect-60056/", "title": "Birthday Parties \u0026 Kids\u0027 Classes", "url": "https://randerson-23.github.io/agent-business/mount-prospect-60056/guides/birthday-parties-and-kids-classes/"}' aria-pressed="false" aria-label="Add Birthday Parties &amp; Kids&#39; Classes to My Weekend">☆</button>
+          
+          <h3><a href="https://randerson-23.github.io/agent-business/mount-prospect-60056/guides/birthday-parties-and-kids-classes/">Birthday Parties &amp; Kids&#39; Classes</a></h3>
+          <p class="detail">Where Mount Prospect families look for party venues, rec classes, and enrichment programs — the small set of standing civic options, plus local businesses as they join the directory below.</p>
+          
+          
+        </div>
+        
+        
+        <div class="card" data-tags="">
+          <button type="button" class="tray-star" data-item='{"date": null, "date_iso": null, "detail": "The recurring seasonal happenings Mount Prospect families ask about year after year \u2014 the downtown fall festival, farmers market season, and Park District seasonal programming. Links to the real organizers\u0027 own pages, where each year\u0027s exact dates actually get posted.", "id": "https://randerson-23.github.io/agent-business/mount-prospect-60056/guides/seasonal-circuit-guide/", "region_name": "Mount Prospect", "region_url": "https://randerson-23.github.io/agent-business/mount-prospect-60056/", "title": "Seasonal Circuit Guide", "url": "https://randerson-23.github.io/agent-business/mount-prospect-60056/guides/seasonal-circuit-guide/"}' aria-pressed="false" aria-label="Add Seasonal Circuit Guide to My Weekend">☆</button>
+          
+          <h3><a href="https://randerson-23.github.io/agent-business/mount-prospect-60056/guides/seasonal-circuit-guide/">Seasonal Circuit Guide</a></h3>
+          <p class="detail">The recurring seasonal happenings Mount Prospect families ask about year after year — the downtown fall festival, farmers market season, and Park District seasonal programming. Links to the real organizers&#39; own pages, where each year&#39;s exact dates actually get posted.</p>
+          
+          
+        </div>
+        
+        
+        <div class="card" data-tags="">
+          <button type="button" class="tray-star" data-item='{"date": null, "date_iso": null, "detail": "The practical first-week checklist for anyone new to Mount Prospect \u2014 utilities and vehicle stickers, a library card, Park District registration, and where school-district boundaries actually come from. Pulls from the same civic sources as the weekly digest, organized for someone who just moved in rather than someone browsing this week\u0027s events.", "id": "https://randerson-23.github.io/agent-business/mount-prospect-60056/guides/new-to-town/", "region_name": "Mount Prospect", "region_url": "https://randerson-23.github.io/agent-business/mount-prospect-60056/", "title": "New to Town", "url": "https://randerson-23.github.io/agent-business/mount-prospect-60056/guides/new-to-town/"}' aria-pressed="false" aria-label="Add New to Town to My Weekend">☆</button>
+          
+          <h3><a href="https://randerson-23.github.io/agent-business/mount-prospect-60056/guides/new-to-town/">New to Town</a></h3>
+          <p class="detail">The practical first-week checklist for anyone new to Mount Prospect — utilities and vehicle stickers, a library card, Park District registration, and where school-district boundaries actually come from. Pulls from the same civic sources as the weekly digest, organized for someone who just moved in rather than someone browsing this week&#39;s events.</p>
+          
+          
+        </div>
+        
+        </div>
+      
+    </section>
+    
+  
+
+  
+  
+
 
   
 
@@ -603,7 +660,7 @@
   <footer>
     Local business? See the
     <a href="https://randerson-23.github.io/agent-business/sponsor/">sponsor page</a>.
-    <br>Generated 2026-08-29 14:53 UTC.
+    <br>Generated 2026-08-29 19:04 UTC.
     
     <br><a href="https://randerson-23.github.io/agent-business/mount-prospect-60056/weekly-summary.txt">Copy this week's summary</a> — a plain-text block ready to paste into a local group.
   </footer>
@@ -627,7 +684,7 @@
 
 
 
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebPage", "name": "Mount Prospect — Weekend & Trip Planner", "url": "https://randerson-23.github.io/agent-business/mount-prospect-60056/guides/", "dateModified": "2026-08-29T14:53:46.038622+00:00", "isPartOf": {"@type": "WebSite", "name": "Weekend & Trip Planner", "url": "https://randerson-23.github.io/agent-business/"}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebPage", "name": "Mount Prospect — Weekend & Trip Planner", "url": "https://randerson-23.github.io/agent-business/mount-prospect-60056/guides/", "dateModified": "2026-08-29T19:04:06.538911+00:00", "isPartOf": {"@type": "WebSite", "name": "Weekend & Trip Planner", "url": "https://randerson-23.github.io/agent-business/"}}</script>
 <script>
 (function () {
   var activeTags = new Set();

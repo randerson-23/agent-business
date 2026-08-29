@@ -151,12 +151,57 @@
   .answer-block { color: var(--muted); font-size: 14px; line-height: 1.6; margin: 4px 0 18px; max-width: 640px; }
 
   .map-embed {
+    position: relative;
     border-radius: var(--radius-lg);
     box-shadow: var(--shadow-sm);
     overflow: hidden;
     margin: 0 0 18px;
+    /* Fixed aspect ratio (ROADMAP.md Phase 11 #53) so this reliable
+       inline SVG - no third party, nothing that can fail to load - is
+       the page's real map, not a fallback waiting behind a failure-prone
+       iframe. See build_region_map_link_url()'s docstring for why the
+       original "iframe with reveal-on-load" design was dropped: tested
+       against the real build, and an iframe's load event fires even when
+       navigation is blocked, so it never actually caught the failure it
+       was built to hide. */
+    aspect-ratio: 960 / 260;
+    background: var(--card);
   }
-  .map-embed iframe { display: block; width: 100%; height: 260px; border: 0; }
+  .map-fallback {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 16px 20px;
+  }
+  .map-fallback svg { width: 100%; height: 100%; overflow: visible; }
+  .map-fallback .map-line { stroke: var(--border); stroke-width: 1.5; stroke-dasharray: 4 3; }
+  .map-fallback .map-line-label { font-size: 10px; fill: var(--muted); font-family: 'Inter', sans-serif; }
+  .map-fallback .map-pin { fill: var(--accent-soft); stroke: var(--card); stroke-width: 2; }
+  .map-fallback .map-pin-label { font-size: 12px; font-weight: 700; fill: var(--ink); font-family: 'Inter', sans-serif; }
+  .map-fallback a { text-decoration: none; }
+  .map-fallback a:hover .map-pin { fill: var(--accent); }
+  .map-fallback a:hover .map-pin-label { fill: var(--accent); }
+  .map-fallback a:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+  .map-link {
+    position: absolute;
+    right: 12px;
+    bottom: 12px;
+    background: var(--card);
+    color: var(--accent-2-text);
+    font-size: 12.5px;
+    font-weight: 600;
+    text-decoration: none;
+    padding: 6px 12px;
+    border-radius: 999px;
+    box-shadow: var(--shadow-sm);
+    border: 1px solid var(--border);
+  }
+  .map-link:hover { color: var(--accent); border-color: var(--accent); }
+  .map-link:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+  .quiet-note { color: var(--muted); font-size: 14px; font-style: italic; margin: 0 0 14px; }
 
   .nearby-strip { margin: 0 0 24px; font-size: 14px; color: var(--muted); }
   .nearby-strip strong { color: var(--ink); font-weight: 600; margin-right: 6px; }
@@ -488,6 +533,8 @@
 </style>
 </head>
 <body>
+
+
 <div class="hero">
   <div class="hero-inner">
     <a class="back" href="https://randerson-23.github.io/agent-business/">&larr; All regions</a>
@@ -551,57 +598,67 @@
   
 
   
-  <section class="block">
-    <h2>What&#39;s inside</h2>
-    
-      <div class="card-grid">
-      
-      
-      <div class="card" data-tags="outdoor">
-        <button type="button" class="tray-star" data-item='{"date": null, "date_iso": null, "detail": "Downtown Mount Prospect\u0027s annual fall festival, hosted by the Downtown Merchants \u2014 dates and details are announced on their own site each year.", "id": "https://mpdowntown.com/", "region_name": "Mount Prospect", "region_url": "https://randerson-23.github.io/agent-business/mount-prospect-60056/", "title": "Downtown Mount Prospect Oktoberfest \u0026 Fall Festival", "url": "https://mpdowntown.com/"}' aria-pressed="false" aria-label="Add Downtown Mount Prospect Oktoberfest &amp; Fall Festival to My Weekend">☆</button>
-        
-        <h3><a href="https://mpdowntown.com/">Downtown Mount Prospect Oktoberfest &amp; Fall Festival</a></h3>
-        <p class="detail">Downtown Mount Prospect&#39;s annual fall festival, hosted by the Downtown Merchants — dates and details are announced on their own site each year.</p>
-        
-        <div class="tag-row">
-          <span class="tag-badge" style="background: var(--hue-teal-bg); color: var(--hue-teal-ink);">🌳 Outdoor</span>
-        </div>
-        
-        
-      </div>
-      
-      
-      <div class="card" data-tags="outdoor,free">
-        <button type="button" class="tray-star" data-item='{"date": null, "date_iso": null, "detail": "The Village\u0027s calendar posts each year\u0027s seasonal community events, including the downtown farmers market when it\u0027s in season \u2014 check for the current schedule.", "id": "https://www.mountprospect.org/services/calendar", "region_name": "Mount Prospect", "region_url": "https://randerson-23.github.io/agent-business/mount-prospect-60056/", "title": "Village-run seasonal events \u0026 farmers market", "url": "https://www.mountprospect.org/services/calendar"}' aria-pressed="false" aria-label="Add Village-run seasonal events &amp; farmers market to My Weekend">☆</button>
-        
-        <h3><a href="https://www.mountprospect.org/services/calendar">Village-run seasonal events &amp; farmers market</a></h3>
-        <p class="detail">The Village&#39;s calendar posts each year&#39;s seasonal community events, including the downtown farmers market when it&#39;s in season — check for the current schedule.</p>
-        
-        <div class="tag-row">
-          <span class="tag-badge" style="background: var(--hue-teal-bg); color: var(--hue-teal-ink);">🌳 Outdoor</span><span class="tag-badge" style="background: var(--hue-green-bg); color: var(--hue-green-ink);">💵 Free</span>
-        </div>
-        
-        
-      </div>
-      
-      
-      <div class="card" data-tags="outdoor,kid_friendly">
-        <button type="button" class="tray-star" data-item='{"date": null, "date_iso": null, "detail": "The Park District runs its own seasonal programming and community events year-round \u2014 browse the current program guide for what\u0027s on.", "id": "https://www.mppd.org/", "region_name": "Mount Prospect", "region_url": "https://randerson-23.github.io/agent-business/mount-prospect-60056/", "title": "Seasonal programs \u2014 Mount Prospect Park District", "url": "https://www.mppd.org/"}' aria-pressed="false" aria-label="Add Seasonal programs — Mount Prospect Park District to My Weekend">☆</button>
-        
-        <h3><a href="https://www.mppd.org/">Seasonal programs — Mount Prospect Park District</a></h3>
-        <p class="detail">The Park District runs its own seasonal programming and community events year-round — browse the current program guide for what&#39;s on.</p>
-        
-        <div class="tag-row">
-          <span class="tag-badge" style="background: var(--hue-teal-bg); color: var(--hue-teal-ink);">🌳 Outdoor</span><span class="tag-badge" style="background: var(--hue-pink-bg); color: var(--hue-pink-ink);">🧒 Kid-friendly</span>
-        </div>
-        
-        
-      </div>
-      
-      </div>
-    
-  </section>
+
   
+
+  
+    
+    <section class="block">
+      <h2>What&#39;s inside</h2>
+      
+        <div class="card-grid">
+        
+        
+        <div class="card" data-tags="outdoor">
+          <button type="button" class="tray-star" data-item='{"date": null, "date_iso": null, "detail": "Downtown Mount Prospect\u0027s annual fall festival, hosted by the Downtown Merchants \u2014 dates and details are announced on their own site each year.", "id": "https://mpdowntown.com/", "region_name": "Mount Prospect", "region_url": "https://randerson-23.github.io/agent-business/mount-prospect-60056/", "title": "Downtown Mount Prospect Oktoberfest \u0026 Fall Festival", "url": "https://mpdowntown.com/"}' aria-pressed="false" aria-label="Add Downtown Mount Prospect Oktoberfest &amp; Fall Festival to My Weekend">☆</button>
+          
+          <h3><a href="https://mpdowntown.com/">Downtown Mount Prospect Oktoberfest &amp; Fall Festival</a></h3>
+          <p class="detail">Downtown Mount Prospect&#39;s annual fall festival, hosted by the Downtown Merchants — dates and details are announced on their own site each year.</p>
+          
+          <div class="tag-row">
+            <span class="tag-badge" style="background: var(--hue-teal-bg); color: var(--hue-teal-ink);">🌳 Outdoor</span>
+          </div>
+          
+          
+        </div>
+        
+        
+        <div class="card" data-tags="outdoor,free">
+          <button type="button" class="tray-star" data-item='{"date": null, "date_iso": null, "detail": "The Village\u0027s calendar posts each year\u0027s seasonal community events, including the downtown farmers market when it\u0027s in season \u2014 check for the current schedule.", "id": "https://www.mountprospect.org/services/calendar", "region_name": "Mount Prospect", "region_url": "https://randerson-23.github.io/agent-business/mount-prospect-60056/", "title": "Village-run seasonal events \u0026 farmers market", "url": "https://www.mountprospect.org/services/calendar"}' aria-pressed="false" aria-label="Add Village-run seasonal events &amp; farmers market to My Weekend">☆</button>
+          
+          <h3><a href="https://www.mountprospect.org/services/calendar">Village-run seasonal events &amp; farmers market</a></h3>
+          <p class="detail">The Village&#39;s calendar posts each year&#39;s seasonal community events, including the downtown farmers market when it&#39;s in season — check for the current schedule.</p>
+          
+          <div class="tag-row">
+            <span class="tag-badge" style="background: var(--hue-teal-bg); color: var(--hue-teal-ink);">🌳 Outdoor</span><span class="tag-badge" style="background: var(--hue-green-bg); color: var(--hue-green-ink);">💵 Free</span>
+          </div>
+          
+          
+        </div>
+        
+        
+        <div class="card" data-tags="outdoor,kid_friendly">
+          <button type="button" class="tray-star" data-item='{"date": null, "date_iso": null, "detail": "The Park District runs its own seasonal programming and community events year-round \u2014 browse the current program guide for what\u0027s on.", "id": "https://www.mppd.org/", "region_name": "Mount Prospect", "region_url": "https://randerson-23.github.io/agent-business/mount-prospect-60056/", "title": "Seasonal programs \u2014 Mount Prospect Park District", "url": "https://www.mppd.org/"}' aria-pressed="false" aria-label="Add Seasonal programs — Mount Prospect Park District to My Weekend">☆</button>
+          
+          <h3><a href="https://www.mppd.org/">Seasonal programs — Mount Prospect Park District</a></h3>
+          <p class="detail">The Park District runs its own seasonal programming and community events year-round — browse the current program guide for what&#39;s on.</p>
+          
+          <div class="tag-row">
+            <span class="tag-badge" style="background: var(--hue-teal-bg); color: var(--hue-teal-ink);">🌳 Outdoor</span><span class="tag-badge" style="background: var(--hue-pink-bg); color: var(--hue-pink-ink);">🧒 Kid-friendly</span>
+          </div>
+          
+          
+        </div>
+        
+        </div>
+      
+    </section>
+    
+  
+
+  
+  
+
 
   
 
@@ -648,7 +705,7 @@
   <footer>
     Local business? See the
     <a href="https://randerson-23.github.io/agent-business/sponsor/">sponsor page</a>.
-    <br>Generated 2026-08-29 14:53 UTC.
+    <br>Generated 2026-08-29 19:04 UTC.
     
     <br><a href="https://randerson-23.github.io/agent-business/mount-prospect-60056/weekly-summary.txt">Copy this week's summary</a> — a plain-text block ready to paste into a local group.
   </footer>
@@ -674,7 +731,7 @@
 
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "How current is this guide?", "acceptedAnswer": {"@type": "Answer", "text": "It's regenerated automatically from the village, library, and park district's own listings, typically several times a week - not a one-time write-up that goes stale."}}, {"@type": "Question", "name": "Is this every event or business, or just what's listed here?", "acceptedAnswer": {"@type": "Answer", "text": "Only what the linked public sources publish. For full details, hours, or anything not listed here, check the official page each item links to."}}, {"@type": "Question", "name": "How do I see what's happening in Mount Prospect this specific weekend?", "acceptedAnswer": {"@type": "Answer", "text": "See the <a href=\"https://randerson-23.github.io/agent-business/mount-prospect-60056/this-weekend/\">weekend view<\/a>, which only shows items with a known date in the coming Friday-Sunday."}}, {"@type": "Question", "name": "Can I add an event, or suggest a business for the directory?", "acceptedAnswer": {"@type": "Answer", "text": "Yes - <a href=\"https://github.com/randerson-23/agent-business/issues/new?template=event-submission.yml\">submit an event<\/a> and a person reviews it before it goes live, or a business owner can <a href=\"https://randerson-23.github.io/agent-business/sponsor/\">inquire about a listing<\/a>."}}]}</script>
 
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebPage", "name": "Mount Prospect — Weekend & Trip Planner", "url": "https://randerson-23.github.io/agent-business/mount-prospect-60056/guides/seasonal-circuit-guide/", "dateModified": "2026-08-29T14:53:46.038622+00:00", "isPartOf": {"@type": "WebSite", "name": "Weekend & Trip Planner", "url": "https://randerson-23.github.io/agent-business/"}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebPage", "name": "Mount Prospect — Weekend & Trip Planner", "url": "https://randerson-23.github.io/agent-business/mount-prospect-60056/guides/seasonal-circuit-guide/", "dateModified": "2026-08-29T19:04:06.538911+00:00", "isPartOf": {"@type": "WebSite", "name": "Weekend & Trip Planner", "url": "https://randerson-23.github.io/agent-business/"}}</script>
 <script>
 (function () {
   var activeTags = new Set();
