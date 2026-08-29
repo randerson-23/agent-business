@@ -117,16 +117,38 @@
 
   .wrap { max-width: 960px; margin: -56px auto 0; padding: 0 20px 64px; position: relative; }
 
-  /* Bento grid (ROADMAP.md Phase 11 #8): asymmetric blocks instead of a
-     uniform card grid - a big "this weekend" tile and a stat tile anchor
-     the layout, region tiles fill the rest. auto-fill/auto-flow let it
-     degrade to a single column on narrow viewports without a media query. */
+  /* Bento grid (ROADMAP.md Phase 11 #8): the "this weekend" callout and
+     the stat tile, and only those two - region cards used to share this
+     same fluid auto-fill grid, which stranded a lone last-row card next
+     to an empty gap at 4 regions (recurring at 5/7/8); they now live in
+     their own .region-grid below (ROADMAP.md Phase 11 #56), so this grid
+     only ever has exactly 2 children and can be a plain fixed 2-column
+     layout - no span math needed to keep them proportioned. */
   .bento-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    grid-template-columns: 2fr 1fr;
     grid-auto-rows: minmax(120px, auto);
     gap: 16px;
     margin-bottom: 18px;
+  }
+  @media (max-width: 560px) {
+    .bento-grid { grid-template-columns: 1fr; }
+  }
+  /* Region cards: a separate flex-wrap grid, not CSS grid - grid only
+     collapses a column TRACK with zero items anywhere in the whole
+     grid, not one merely unused in one row, so it can't stretch a lone
+     last-row card to fill the gap beside it (confirmed by trying
+     grid's auto-fit first and screenshotting the still-stranded card).
+     Flexbox distributes flex-grow space per line independently, so a
+     lone last-row card genuinely stretches to fill its row instead. */
+  .region-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin-bottom: 18px;
+  }
+  .region-grid .region-card {
+    flex: 1 1 220px;
   }
   .bento-tile {
     background: var(--card);
@@ -163,18 +185,10 @@
     .bento-tile.js-reveal-ready.js-revealed:hover { transform: translateY(-4px); }
   }
   .bento-weekend {
-    grid-column: span 2;
     background: var(--callout-gradient);
     border: 1px solid var(--border);
     border-left: 4px solid var(--accent-2);
     justify-content: flex-start;
-  }
-  /* At narrow widths the grid has room for exactly one real 220px track,
-     but "span 2" still demands two - forcing a second, unusably narrow
-     implicit column that squeezes whatever lands in it (real bug, caught
-     with a real screenshot, not assumed). Below that width, stop spanning. */
-  @media (max-width: 560px) {
-    .bento-weekend { grid-column: span 1; }
   }
   .bento-weekend .bento-kicker {
     font-weight: 700;
@@ -220,11 +234,16 @@
     background: var(--card);
     border-radius: var(--radius-lg);
     box-shadow: var(--shadow-sm);
-    padding: 14px 18px 8px;
-    margin: 0 auto 18px;
-    /* ~1/4 the .wrap's 960px max-width; min() keeps it from overflowing
-       narrow viewports instead of needing a separate mobile override. */
-    max-width: min(240px, 100%);
+    padding: 18px 24px 14px;
+    margin: 0 0 18px;
+    /* Was a ~240px thumbnail with unreadable pin labels, the smallest
+       thing on the page despite being the most distinctive visual asset
+       (ROADMAP.md Phase 11 #56). ~2x that now. Not full .wrap width:
+       tried that first and it overlapped the pin labels, which are a
+       fixed px size baked into build_region_map()'s small viewBox and
+       scale up with the container - confirmed by screenshotting that
+       attempt. min() still guards narrow viewports. */
+    max-width: min(480px, 100%);
   }
   .map-card svg {
     width: 100%;
@@ -307,7 +326,6 @@
   .newsletter form { display: contents; }
   .newsletter-copy strong { font-size: 15px; }
   .newsletter-copy p { margin: 3px 0 0; color: var(--muted); font-size: 13.5px; }
-  .newsletter-pending { font-style: italic; }
   .newsletter-form-row { display: flex; gap: 8px; flex-wrap: wrap; }
   .newsletter-form-row input[type="email"] {
     font: inherit;
@@ -377,27 +395,9 @@
 
   <div class="wrap">
   {% if region_summaries %}
-  <div class="bento-grid" id="region-grid">
-    <a class="bento-tile bento-weekend" href="this-weekend/">
-      <span class="bento-kicker">📅 This weekend</span>
-      <h2>{{ stats.weekend_date_range }}</h2>
-      <p>{{ stats.weekend_count }} thing{{ 's' if stats.weekend_count != 1 else '' }} happening across every region &rarr;</p>
-    </a>
-    <div class="bento-tile bento-stat">
-      <span class="bento-stat-number">{{ stats.region_count }}</span>
-      <span class="bento-stat-label">town{{ 's' if stats.region_count != 1 else '' }} · {{ stats.event_count }} live update{{ 's' if stats.event_count != 1 else '' }} this week</span>
-    </div>
-    {% for r in region_summaries %}
-    <a class="bento-tile region-card" href="{{ r.path }}" data-lat="{{ r.lat }}" data-lon="{{ r.lon }}">
-      <span class="zip">{{ r.zip }} · {{ r.state }}</span>
-      <h2>{{ r.name }}</h2>
-      <p>{{ r.tagline }}</p>
-      <span class="count">{{ r.event_count }} live update{{ 's' if r.event_count != 1 else '' }} this week</span>
-      <span class="distance" data-distance-label></span>
-    </a>
-    {% endfor %}
-  </div>
-
+  <!-- Distance-from-me and the map both exist to help pick a region -
+       they used to sit below the region grid, after the choice was
+       already made (ROADMAP.md Phase 11 #56). Lead with them instead. -->
   <div class="distance-bar" id="distance-bar">
     <button type="button" id="use-location">📍 Show distance from me</button>
     <span>or</span>
@@ -424,13 +424,50 @@
     </svg>
   </div>
   {% endif %}
+
+  <div class="bento-grid">
+    <a class="bento-tile bento-weekend" href="this-weekend/">
+      <span class="bento-kicker">📅 This weekend</span>
+      <h2>{{ stats.weekend_date_range }}</h2>
+      <p>{{ stats.weekend_count }} thing{{ 's' if stats.weekend_count != 1 else '' }} happening across every region &rarr;</p>
+    </a>
+    <div class="bento-tile bento-stat">
+      <span class="bento-stat-number">{{ stats.region_count }}</span>
+      <span class="bento-stat-label">town{{ 's' if stats.region_count != 1 else '' }} · {{ stats.event_count }} live update{{ 's' if stats.event_count != 1 else '' }} this week</span>
+    </div>
+  </div>
+
+  <!-- A separate flex-wrap grid, not part of .bento-grid above: with CSS
+       grid, a lone region card left in the last row (4 regions in a
+       3-column grid, and this recurs at 5/7/8) sits next to a stranded
+       empty gap - grid only collapses a column TRACK that has zero
+       items anywhere in the whole grid, not one that's merely unused in
+       one row, so auto-fit couldn't fix this despite first looking like
+       the right tool (confirmed by screenshotting that attempt, no
+       change). Flexbox distributes flex-grow space per line
+       independently, so a lone last-row card genuinely stretches to
+       fill its row instead (ROADMAP.md Phase 11 #56). -->
+  <div class="region-grid" id="region-grid">
+    {% for r in region_summaries %}
+    <a class="bento-tile region-card" href="{{ r.path }}" data-lat="{{ r.lat }}" data-lon="{{ r.lon }}">
+      <span class="zip">{{ r.zip }} · {{ r.state }}</span>
+      <h2>{{ r.name }}</h2>
+      <p>{{ r.tagline }}</p>
+      <span class="count">{{ r.event_count }} live update{{ 's' if r.event_count != 1 else '' }} this week</span>
+      <span class="distance" data-distance-label></span>
+    </a>
+    {% endfor %}
+  </div>
   {% else %}
   <div class="empty-state">No regions configured yet.</div>
   {% endif %}
 
-  {% if newsletter %}
+  {# Only render once signup actually works - showing "(Signup coming
+     soon.)" on production pages used to pitch sponsors read as
+     unfinished (ROADMAP.md Phase 11 #56). Structurally blocked on
+     domain registration; see ROADMAP.md's newsletter cluster. #}
+  {% if newsletter and newsletter.configured %}
   <div class="newsletter">
-    {% if newsletter.configured %}
     <form action="https://buttondown.com/api/emails/embed-subscribe/{{ newsletter.buttondown_username }}" method="post" target="popupwindow" onsubmit="window.open('https://buttondown.com/{{ newsletter.buttondown_username }}', 'popupwindow')">
       <div class="newsletter-copy">
         <strong>{{ newsletter.headline }}</strong>
@@ -442,12 +479,6 @@
         <button type="submit">Subscribe</button>
       </div>
     </form>
-    {% else %}
-    <div class="newsletter-copy">
-      <strong>{{ newsletter.headline }}</strong>
-      <p>{{ newsletter.detail }} <span class="newsletter-pending">(Signup coming soon.)</span></p>
-    </div>
-    {% endif %}
   </div>
   {% endif %}
 

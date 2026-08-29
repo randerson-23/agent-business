@@ -1714,28 +1714,56 @@ produces exactly this rendering in production, so everything below stands.
 
 #### P3 (new)
 
-56. **Hub layout: an orphan card, a buried map, and help offered after the
-    choice.** Four regions in a three-column grid leaves Palatine alone on
-    its own row beside a large gap, and this recurs at 5, 7 and 8 regions.
-    The "This weekend" and stat tiles above sit in a two-column row of
-    unequal visual weight that reads as misalignment rather than a bento.
-    More substantively, the ordering is backwards: the region cards come
-    first, and *then* the "Show distance from me" bar and the map — the two
-    things whose entire job is to help a reader choose which region to
-    click. Move both above the grid, and let the region grid use a
-    column count that does not strand a final card. The map in particular
-    is currently a ~230px thumbnail with unreadable labels, floating in
-    whitespace; it is the most distinctive visual asset on the site and
-    the smallest thing on the page.
-    Also visible and easy: the floating "My Weekend (0)" pill clips the
-    right edge at 1280px, and **"(Signup coming soon.)" is shipping to
-    production on both page types** — an unfinished-looking line on the
-    exact pages used to pitch sponsors. Hide the block until the signup
-    actually works.
-    **Same pill, a second manifestation (found shipping item 54):** at
-    390px the floating pill doesn't just clip an edge, it overlaps and
-    obscures the "Sponsor this spot" card's body text - a positioning fix
-    here needs to hold across widths, not just the one already reported.
+56. ✅ done. **Hub layout: an orphan card, a buried map, and help offered
+    after the choice.** Four regions in a three-column grid left Palatine
+    alone on its own row beside a large gap, recurring at 5, 7 and 8
+    regions. Root cause: region cards shared one CSS grid with the
+    "This weekend"/stat tiles. First attempt was `auto-fill` →
+    `auto-fit` on that grid, on the assumption an unfilled trailing
+    track would collapse - screenshotted it and the card was still
+    stranded, because grid only collapses a column *track* with zero
+    items anywhere in the whole grid, not one that's merely unused in
+    one row (tracks 2 and 3 have content in the earlier rows, so they
+    never collapse). Fixed by giving region cards their own flex-wrap
+    container (`.region-grid`, separate from `.bento-grid`, which now
+    only ever holds the weekend + stat tiles as a plain fixed 2-column
+    layout): flexbox distributes `flex-grow` space per *line*
+    independently, so a lone last-row card genuinely stretches to fill
+    its row - confirmed with a screenshot, Palatine now spans full width
+    instead of sitting next to a gap.
+    The map moved above the region grid, alongside the "Show distance
+    from me" bar (both exist to help *pick* a region, and used to render
+    after the choice was already made). Its container grew from a
+    ~240px thumbnail to `min(480px, 100%)` - tried full `.wrap` width
+    first, screenshotted it, and the pin labels (a fixed px size baked
+    into `build_region_map()`'s small viewBox) scaled up right along
+    with the container and started overlapping each other. 480px was
+    the point that's a real, legible size increase without triggering
+    that.
+    "(Signup coming soon.)" no longer ships to production: the
+    newsletter block only renders at all when `newsletter.configured`
+    is true (hub and region pages both), instead of showing a permanent
+    pending state on the exact pages used to pitch sponsors. Currently
+    structurally blocked on domain registration either way (the
+    newsletter cluster), so this just means the block is invisible
+    until that's unblocked, not broken-looking in the meantime.
+    The floating "My Weekend" pill's overlap with card content (found
+    shipping item 54, at 390px over the "Sponsor this spot" card) turned
+    out to be partly a red herring: Playwright's full-page screenshot
+    mode freezes a `position: fixed` element at a single point in the
+    composite image, which is *not* what a real scrolling user sees - a
+    scroll-to-bottom check with a real (non-full-page) viewport
+    screenshot showed the pill sitting harmlessly below the footer, not
+    over any card. It's a real concern for the very end of the page,
+    though, since the last card sits nearest the fixed pill's screen
+    position once scrolled fully down - `.wrap`'s bottom padding grew
+    (64px/48px → 96px/88px) on region and weekend-hub pages so there's
+    always reserved clearance there, at every width, confirmed by
+    re-checking the same scroll-to-bottom viewport screenshot after the
+    change. The originally-reported "clips the right edge at 1280px"
+    didn't reproduce in this pass (measured the pill's real bounding
+    rect - fits with the intended 18px margin) and needs a fresh repro
+    if it resurfaces.
 
 ## Working agreements for autonomous iteration
 

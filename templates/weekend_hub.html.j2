@@ -106,7 +106,10 @@
     -webkit-font-smoothing: antialiased;
   }
   h1, h2 { font-family: 'Fraunces', Georgia, 'Times New Roman', serif; }
-  .wrap { max-width: 960px; margin: 0 auto; padding: 0 20px 64px; }
+  /* Bottom padding reserves room for the fixed "My Weekend" pill (see
+     .tray-widget below) - same fix as region.html.j2 (ROADMAP.md Phase
+     11 #56). */
+  .wrap { max-width: 960px; margin: 0 auto; padding: 0 20px 96px; }
 
   .hero {
     background: linear-gradient(135deg, var(--accent) 0%, var(--accent-soft) 60%, #749058 100%);
@@ -225,7 +228,7 @@
   @media (max-width: 480px) {
     .tray-panel { width: calc(100vw - 36px); right: -8px; }
     .hero h1 { font-size: 27px; }
-    .wrap { padding: 0 14px 48px; }
+    .wrap { padding: 0 14px 88px; }
   }
 </style>
 </head>
