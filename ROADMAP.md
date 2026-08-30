@@ -1780,6 +1780,80 @@ produces exactly this rendering in production, so everything below stands.
     rect - fits with the intended 18px margin) and needs a fresh repro
     if it resurfaces.
 
+#### Research pass 2026-08-30 (twelfth pass)
+
+Every eleventh-pass item shipped (PRs #78, #79, #80) plus the school
+calendars (#81, #82), and the fixes hold up under inspection: empty
+sections now collapse to one graceful line, the map has a working
+inline-SVG fallback with a "View on Google Maps" link, and
+`build_digest.py` exits 0 in the sandbox again instead of crying wolf.
+
+Unblocked work is nearly exhausted — only items 22 and 35 remain, both
+partial — so this pass inspected the surface never yet examined: **the
+`/sponsor` page, where the money actually happens**, plus a real 390px
+mobile render. Two of the four findings are on the revenue path.
+
+#### P1 (new)
+
+57. **The sponsor CTA sends a local dentist to GitHub.** Verified in the
+    generated HTML: the page's single call to action, "Open a sponsor
+    inquiry →", links to
+    `github.com/randerson-23/agent-business/issues/new?title=Sponsor%20inquiry…`.
+    To buy a $5,000/year placement, a realtor or an ice-cream shop owner
+    must create a GitHub account and file an issue in a developer bug
+    tracker. This is the **only** conversion point in the entire business,
+    and it is gated behind infrastructure the target customer has never
+    heard of and will not sign up for.
+    Replace it with a `mailto:` carrying the same prefilled fields —
+    business name, region, tier, why we should recommend you — which works
+    on every device with zero new infrastructure and costs the owner
+    nothing. A simple hosted form (Tally, Google Forms) is the better
+    second step. Keep the GitHub issue if it is useful internally, but it
+    must never be the public CTA. **This is the highest-value fix
+    available anywhere in the project right now**: everything else
+    improves the odds of a sponsor wanting to buy, and this is the step
+    where a sponsor who already wants to buy gives up.
+
+58. **The money page states no audience numbers at all.** `/sponsor` asks
+    $1,200–$5,000/year and never says how many people will see the
+    placement. Analytics shipped in item 23 and sponsor-link click
+    tracking in item 35, so the data exists or is accumulating — none of
+    it reaches the page that needs it. The fifth pass found this stated
+    bluntly in the industry research: without evidence, pricing power and
+    renewal rates both fall.
+    Add a modest, build-time-generated stat line: monthly readers, regions
+    covered, events indexed this week, sponsor-link clicks last month —
+    framed "since <date>" so early numbers read as a trajectory rather
+    than a shortfall. **Honest small numbers beat no numbers**; silence on
+    a pricing page reads worse than modesty, because the reader assumes
+    the worst and has no way to check.
+
+#### P2 (new)
+
+59. **Sponsor tiers: an orphan card and a price order that goes
+    nowhere.** Four tiers in a three-column grid strand "Event Promo"
+    alone on row two — the same defect class fixed on the hub in PR #80,
+    recurring on the page that matters most. The order is also
+    $1,200/yr → $5,000/yr → $50/wk → $20 one-time, which is neither
+    ascending nor descending and gives the reader no ladder to climb.
+    Order by commitment, visually mark one tier as recommended (Annual
+    Partner is the flagship per the copy above it), and pick a column
+    count that doesn't strand the final card at any tier count.
+
+60. **On mobile, the "My Weekend" pill sits on top of the sponsor card.**
+    At 390px the floating "My Weekend (0)" chip overlaps the "Sponsor this
+    spot" block and obscures the pricing sentence mid-line. The single
+    monetised element on the page is partly covered by a floating UI chip,
+    on the viewport where most local readers actually are. Fix by giving
+    the sponsor card a higher stacking order, moving the pill to the
+    bottom-left, or — best — **hiding the pill entirely until the tray has
+    at least one item**, since "My Weekend (0)" earns no space at all.
+
+**Worth recording as working:** PR #78's empty-state handling is a genuine
+improvement — one quiet italic line and an immediate pivot to evergreen
+content, instead of six identical apologies. The map fallback behaves
+exactly as intended when the embed can't load.
+
 ## Working agreements for autonomous iteration
 
 - Cadence is hourly (the platform's durable scheduler has a 1-hour floor;
