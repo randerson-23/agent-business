@@ -50,6 +50,13 @@
        AA's 4.5:1 for text this small. Use for text; --accent-2 stays for
        non-text accents (borders) where contrast rules don't apply. */
     --accent-2-text: #96581f;
+    /* For a solid accent-2 FILL with white text on top (the "Recommended"
+       tier badge) - a different use case from --accent-2-text (dark text
+       on a light background), so it needs its own value: --accent-2-text
+       itself is only 3.4:1 with white text on it, still below AA's 4.5:1
+       for text this small. Found and fixed by a real axe-core audit
+       (ROADMAP.md Phase 11 #62). */
+    --accent-2-strong: #96581f;
     --border: #e6dcc8;
     --radius-lg: 18px;
     --shadow-sm: 0 1px 2px rgba(43,35,24,.06), 0 1px 1px rgba(43,35,24,.05);
@@ -68,6 +75,10 @@
       --accent-soft: #5c7a45;
       --accent-2: #e0975a;
       --accent-2-text: #e0975a;
+      /* Darker than --accent-2 (which is bright in dark mode, correct
+         for text-on-dark-bg use) - white text on --accent-2 itself is
+         only 2.4:1 here, below AA's 4.5:1. */
+      --accent-2-strong: #8f5419;
       --border: #3a3226;
       --shadow-sm: 0 1px 2px rgba(0,0,0,.35), 0 1px 1px rgba(0,0,0,.25);
       --shadow-md: 0 10px 28px -10px rgba(0,0,0,.55), 0 2px 6px rgba(0,0,0,.35);
@@ -123,7 +134,7 @@
   .tier.recommended { border: 2px solid var(--accent-2); position: relative; }
   .tier-badge {
     display: inline-block;
-    background: var(--accent-2);
+    background: var(--accent-2-strong);
     color: #fff;
     font-size: 11px;
     font-weight: 700;
@@ -197,16 +208,19 @@
 </style>
 </head>
 <body>
-<div class="hero">
+<!-- header, not div (ROADMAP.md Phase 11 #62, found by a real axe-core
+     audit): everything in the hero previously sat outside any landmark. -->
+<header class="hero">
   <div class="hero-inner">
     <a class="back" href="https://randerson-23.github.io/agent-business/">&larr; All regions</a>
     <span class="kicker">Sponsor a region</span>
     <h1>Be the local recommendation, not another ad</h1>
     <div class="sub">One business per region at a time — a genuine "we like them" placement, not a banner competing with ten other banners. Membership options from a single week to a full year.</div>
   </div>
-</div>
+</header>
 
 <div class="wrap">
+  <main>
   
   <p class="stat-line">
     <span><strong>4</strong> regions covered</span>
@@ -297,10 +311,11 @@
     <p>Open an inquiry and we'll follow up to confirm your tier and region, collect your blurb/logo and a one-line "why we recommend you," and set up payment — no design work needed on your end.</p>
     <a class="cta" href="https://github.com/randerson-23/agent-business/issues/new?title=Sponsor%20inquiry&amp;body=Business%20name%3A%20%0ARegion%28s%29%20of%20interest%3A%20%0APreferred%20tier%3A%20%0APreferred%20week%20%28if%20any%29%3A%20%0AWhy%20should%20we%20recommend%20you%20%28one%20sentence%29%3A%20">Open a sponsor inquiry &rarr;</a>
   </section>
+  </main>
 
   <footer>
     Curious what the digest looks like? <a href="https://randerson-23.github.io/agent-business/">See a live region</a>.
-    <br>Generated 2026-08-30 02:03 UTC.
+    <br>Generated 2026-08-30 06:08 UTC.
     
   </footer>
 </div>

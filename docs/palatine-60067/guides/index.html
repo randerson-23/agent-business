@@ -262,9 +262,13 @@
     font-weight: 700;
     margin-bottom: 4px;
   }
-  .editors-pick h3 { margin: 0 0 4px; font-size: 17px; font-weight: 600; padding-right: 24px; }
-  .editors-pick h3 a { color: var(--ink); text-decoration: none; }
-  .editors-pick h3 a:hover { color: var(--accent); }
+  /* h2, not h3 (ROADMAP.md Phase 11 #62, found by a real axe-core
+     audit): this card is a standalone top-level block, not nested
+     inside any h2-titled section the way an event card inside "Around
+     {region}" is - h3 here skipped a level straight from the page's h1. */
+  .editors-pick h2 { margin: 0 0 4px; font-size: 17px; font-weight: 600; padding-right: 24px; }
+  .editors-pick h2 a { color: var(--ink); text-decoration: none; }
+  .editors-pick h2 a:hover { color: var(--accent); }
   .editors-pick .date {
     color: var(--accent-2-text);
     font-size: 12px;
@@ -293,7 +297,8 @@
     font-weight: 700;
     margin-bottom: 4px;
   }
-  .sponsor h3 { margin: 0 0 4px; font-size: 17px; font-weight: 600; }
+  /* h2, not h3 - same reasoning as .editors-pick above. */
+  .sponsor h2 { margin: 0 0 4px; font-size: 17px; font-weight: 600; }
   .sponsor p { margin: 0; color: var(--muted); font-size: 14px; }
   .sponsor a { color: var(--accent-2-text); text-decoration: none; font-weight: 600; }
   .sponsor .why { margin: 0 0 4px; color: var(--ink); font-size: 13.5px; font-style: italic; }
@@ -550,7 +555,9 @@
 <body>
 
 
-<div class="hero">
+<!-- header, not div (ROADMAP.md Phase 11 #62, found by a real axe-core
+     audit): everything in the hero previously sat outside any landmark. -->
+<header class="hero">
   <div class="hero-inner">
     <a class="back" href="https://randerson-23.github.io/agent-business/">&larr; All regions</a>
     <div class="brand-mark">
@@ -564,9 +571,10 @@
     <h1>Guides for Palatine</h1>
     <div class="sub">Curated, evergreen guides that don&#39;t expire every Monday.</div>
   </div>
-</div>
+</header>
 
 <div class="wrap">
+  <main>
   <nav class="view-nav" aria-label="Filter by date or price">
     <a href="https://randerson-23.github.io/agent-business/palatine-60067/">All events</a>
     <a href="https://randerson-23.github.io/agent-business/palatine-60067/this-weekend/">This weekend</a>
@@ -587,7 +595,7 @@
   <div class="sponsor">
     
     <div class="label">Sponsor This Spot</div>
-    <h3>Sponsor this spot</h3>
+    <h2>Sponsor this spot</h2>
     <p>Reach local families every week. Local businesses only — see pricing and availability. <a href="https://randerson-23.github.io/agent-business/sponsor/">Learn more &rarr;</a></p>
     
   </div>
@@ -653,11 +661,12 @@
 
   
   
+  </main>
 
   <footer>
     Local business? See the
     <a href="https://randerson-23.github.io/agent-business/sponsor/">sponsor page</a>.
-    <br>Generated 2026-08-30 02:03 UTC.
+    <br>Generated 2026-08-30 06:08 UTC.
     
     <br><a href="https://randerson-23.github.io/agent-business/palatine-60067/weekly-summary.txt">Copy this week's summary</a> — a plain-text block ready to paste into a local group.
   </footer>
@@ -681,7 +690,7 @@
 
 
 
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebPage", "name": "Palatine — Weekend & Trip Planner", "url": "https://randerson-23.github.io/agent-business/palatine-60067/guides/", "dateModified": "2026-08-30T02:03:11.636528+00:00", "isPartOf": {"@type": "WebSite", "name": "Weekend & Trip Planner", "url": "https://randerson-23.github.io/agent-business/"}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebPage", "name": "Palatine — Weekend & Trip Planner", "url": "https://randerson-23.github.io/agent-business/palatine-60067/guides/", "dateModified": "2026-08-30T06:08:05.084073+00:00", "isPartOf": {"@type": "WebSite", "name": "Weekend & Trip Planner", "url": "https://randerson-23.github.io/agent-business/"}}</script>
 <script>
 (function () {
   var activeTags = new Set();

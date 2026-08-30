@@ -262,9 +262,13 @@
     font-weight: 700;
     margin-bottom: 4px;
   }
-  .editors-pick h3 { margin: 0 0 4px; font-size: 17px; font-weight: 600; padding-right: 24px; }
-  .editors-pick h3 a { color: var(--ink); text-decoration: none; }
-  .editors-pick h3 a:hover { color: var(--accent); }
+  /* h2, not h3 (ROADMAP.md Phase 11 #62, found by a real axe-core
+     audit): this card is a standalone top-level block, not nested
+     inside any h2-titled section the way an event card inside "Around
+     {region}" is - h3 here skipped a level straight from the page's h1. */
+  .editors-pick h2 { margin: 0 0 4px; font-size: 17px; font-weight: 600; padding-right: 24px; }
+  .editors-pick h2 a { color: var(--ink); text-decoration: none; }
+  .editors-pick h2 a:hover { color: var(--accent); }
   .editors-pick .date {
     color: var(--accent-2-text);
     font-size: 12px;
@@ -293,7 +297,8 @@
     font-weight: 700;
     margin-bottom: 4px;
   }
-  .sponsor h3 { margin: 0 0 4px; font-size: 17px; font-weight: 600; }
+  /* h2, not h3 - same reasoning as .editors-pick above. */
+  .sponsor h2 { margin: 0 0 4px; font-size: 17px; font-weight: 600; }
   .sponsor p { margin: 0; color: var(--muted); font-size: 14px; }
   .sponsor a { color: var(--accent-2-text); text-decoration: none; font-weight: 600; }
   .sponsor .why { margin: 0 0 4px; color: var(--ink); font-size: 13.5px; font-style: italic; }
@@ -550,7 +555,9 @@
 <body>
 
 
-<div class="hero">
+<!-- header, not div (ROADMAP.md Phase 11 #62, found by a real axe-core
+     audit): everything in the hero previously sat outside any landmark. -->
+<header class="hero">
   <div class="hero-inner">
     <a class="back" href="https://randerson-23.github.io/agent-business/">&larr; All regions</a>
     <div class="brand-mark">
@@ -564,9 +571,10 @@
     <h1>What&#39;s happening in Arlington Heights</h1>
     <div class="sub">Issue for August 30, 2026 — Village news, library events, and park district programs — a short drive from Mount Prospect.</div>
   </div>
-</div>
+</header>
 
 <div class="wrap">
+  <main>
   <nav class="view-nav" aria-label="Filter by date or price">
     <a href="https://randerson-23.github.io/agent-business/arlington-heights-60005/" class="active">All events</a>
     <a href="https://randerson-23.github.io/agent-business/arlington-heights-60005/this-weekend/">This weekend</a>
@@ -582,7 +590,14 @@
   <div class="map-embed">
     <div class="map-fallback">
       
-<svg viewBox="0 0 320 220" role="img" aria-label="Map showing Arlington Heights's location relative to nearby towns">
+<!-- role="img" removed (ROADMAP.md Phase 11 #62, found by a real
+     axe-core audit): it told assistive tech this was one static image
+     while the SVG contains real <a> links to nearby regions - axe
+     flags nested interactive controls inside an img-role element, and
+     in practice a screen reader would announce one picture and never
+     expose the links inside it. Each pin's own <a> gets an explicit
+     aria-label instead. -->
+<svg viewBox="0 0 320 220">
   
   <line x1="129.6" y1="86.5" x2="265.0" y2="165.0" class="map-line" />
   <text x="197.3" y="119.8" class="map-line-label" text-anchor="middle">6.3 mi</text>
@@ -603,22 +618,22 @@
   <text x="122.5" y="80.2" class="map-line-label" text-anchor="middle">5.8 mi</text>
   
   
-  <a href="https://randerson-23.github.io/agent-business/arlington-heights-60005/">
+  <a href="https://randerson-23.github.io/agent-business/arlington-heights-60005/" aria-label="Arlington Heights">
     <text x="129.6" y="72.5" class="map-pin-label" text-anchor="middle">Arlington Heights</text>
     <circle cx="129.6" cy="86.5" r="7" class="map-pin" />
   </a>
   
-  <a href="https://randerson-23.github.io/agent-business/des-plaines-60016/">
+  <a href="https://randerson-23.github.io/agent-business/des-plaines-60016/" aria-label="Des Plaines">
     <text x="265.0" y="151.0" class="map-pin-label" text-anchor="middle">Des Plaines</text>
     <circle cx="265.0" cy="165.0" r="7" class="map-pin" />
   </a>
   
-  <a href="https://randerson-23.github.io/agent-business/mount-prospect-60056/">
+  <a href="https://randerson-23.github.io/agent-business/mount-prospect-60056/" aria-label="Mount Prospect">
     <text x="189.9" y="103.5" class="map-pin-label" text-anchor="middle">Mount Prospect</text>
     <circle cx="189.9" cy="117.5" r="7" class="map-pin" />
   </a>
   
-  <a href="https://randerson-23.github.io/agent-business/palatine-60067/">
+  <a href="https://randerson-23.github.io/agent-business/palatine-60067/" aria-label="Palatine">
     <text x="55.0" y="41.0" class="map-pin-label" text-anchor="middle">Palatine</text>
     <circle cx="55.0" cy="55.0" r="7" class="map-pin" />
   </a>
@@ -639,7 +654,7 @@
   <div class="editors-pick">
     <button type="button" class="tray-star" data-item='{"date": "Aug 1", "date_iso": "2026-08-01T00:00:00", "detail": "", "id": "/scheduling/reservation/221902", "region_name": "Arlington Heights", "region_url": "https://randerson-23.github.io/agent-business/arlington-heights-60005/", "title": "Beginning ESL", "url": "/scheduling/reservation/221902"}' aria-pressed="false" aria-label="Add Beginning ESL to My Weekend">☆</button>
     <div class="label">✏️ Editor's Pick</div>
-    <h3><a href="/scheduling/reservation/221902">Beginning ESL</a></h3>
+    <h2><a href="/scheduling/reservation/221902">Beginning ESL</a></h2>
     <div class="date">Aug 1</div>
     
     
@@ -653,7 +668,7 @@
   <div class="sponsor">
     
     <div class="label">Sponsor This Spot</div>
-    <h3>Sponsor this spot</h3>
+    <h2>Sponsor this spot</h2>
     <p>Reach local families every week. Local businesses only — see pricing and availability. <a href="https://randerson-23.github.io/agent-business/sponsor/">Learn more &rarr;</a></p>
     
   </div>
@@ -1057,11 +1072,12 @@
 
   
   
+  </main>
 
   <footer>
     Local business? See the
     <a href="https://randerson-23.github.io/agent-business/sponsor/">sponsor page</a>.
-    <br>Generated 2026-08-30 02:03 UTC.
+    <br>Generated 2026-08-30 06:08 UTC.
     
     <br><a href="https://randerson-23.github.io/agent-business/arlington-heights-60005/weekly-summary.txt">Copy this week's summary</a> — a plain-text block ready to paste into a local group.
   </footer>
@@ -1087,7 +1103,7 @@
 <script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "Event", "name": "Beginning ESL", "url": "/scheduling/reservation/221902", "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode", "startDate": "2026-08-01T00:00:00"}, {"@type": "Event", "name": "Beginning Computing with Windows 11", "url": "/scheduling/reservation/216346", "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode", "startDate": "2026-08-03T00:00:00"}, {"@type": "Event", "name": "Touch-A-Truck", "url": "https://www.ahpd.org/event/touch-a-truck-2/", "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode", "description": "This FREE event is perfect for families to play outside, meet with local businesses and Touch-A-Truck. This event is a great opportunity for your child to see…", "startDate": "2026-09-12T09:30:00"}, {"@type": "Event", "name": "Heritage Fest", "url": "https://www.ahpd.org/event/heritage-fest-2026/", "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode", "description": "Explore the cultural diversity within our community and enjoy a variety of exhibits, demonstrations and live performances. Presented by the AH Park District,…", "startDate": "2026-09-19T09:00:00"}, {"@type": "Event", "name": "Arlington Heights Park Foundation Golf Classic", "url": "https://www.ahpd.org/event/arlington-heights-park-foundation-golf-classic/", "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode", "description": "The Arlington Heights Park Foundation welcomes all golfers to join us at Arlington Lakes Golf Club! Join us for a four-person scramble competition for a good…", "startDate": "2026-09-24T09:00:00"}, {"@type": "Event", "name": "Speakeasy at the Museum", "url": "https://www.ahpd.org/event/speakeasy-at-the-museum/", "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode", "description": "Step back in time to the Roaring Twenties at our exclusive Speakeasy Night! Enjoy two Prohibition Era themed cocktails (alcohol and non-alcohol options…", "startDate": "2026-09-25T19:00:00"}, {"@type": "Event", "name": "Autumn Harvest", "url": "https://www.ahpd.org/event/autumn-harvest-2026/", "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode", "description": "Don’t miss fall family fun with crafts, games, hayrides, a scarecrow building contest, live music and entertainment, and food available for purchase from…", "startDate": "2026-10-10T11:00:00"}, {"@type": "Event", "name": "AHPD Senior Art Show", "url": "https://www.ahpd.org/event/ahpd-senior-art-show/", "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode", "description": "Take in an evening of art and enjoyment! Peruse AHPD adult students’ creations at the annual Art Show. Visual art, fiber arts and woodcraft will be on display…", "startDate": "2026-10-14T16:00:00"}]}</script>
 
 
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebPage", "name": "Arlington Heights — Weekend & Trip Planner", "url": "https://randerson-23.github.io/agent-business/arlington-heights-60005/", "dateModified": "2026-08-30T02:03:11.636528+00:00", "isPartOf": {"@type": "WebSite", "name": "Weekend & Trip Planner", "url": "https://randerson-23.github.io/agent-business/"}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebPage", "name": "Arlington Heights — Weekend & Trip Planner", "url": "https://randerson-23.github.io/agent-business/arlington-heights-60005/", "dateModified": "2026-08-30T06:08:05.084073+00:00", "isPartOf": {"@type": "WebSite", "name": "Weekend & Trip Planner", "url": "https://randerson-23.github.io/agent-business/"}}</script>
 <script>
 (function () {
   var activeTags = new Set();

@@ -262,9 +262,13 @@
     font-weight: 700;
     margin-bottom: 4px;
   }
-  .editors-pick h3 { margin: 0 0 4px; font-size: 17px; font-weight: 600; padding-right: 24px; }
-  .editors-pick h3 a { color: var(--ink); text-decoration: none; }
-  .editors-pick h3 a:hover { color: var(--accent); }
+  /* h2, not h3 (ROADMAP.md Phase 11 #62, found by a real axe-core
+     audit): this card is a standalone top-level block, not nested
+     inside any h2-titled section the way an event card inside "Around
+     {region}" is - h3 here skipped a level straight from the page's h1. */
+  .editors-pick h2 { margin: 0 0 4px; font-size: 17px; font-weight: 600; padding-right: 24px; }
+  .editors-pick h2 a { color: var(--ink); text-decoration: none; }
+  .editors-pick h2 a:hover { color: var(--accent); }
   .editors-pick .date {
     color: var(--accent-2-text);
     font-size: 12px;
@@ -293,7 +297,8 @@
     font-weight: 700;
     margin-bottom: 4px;
   }
-  .sponsor h3 { margin: 0 0 4px; font-size: 17px; font-weight: 600; }
+  /* h2, not h3 - same reasoning as .editors-pick above. */
+  .sponsor h2 { margin: 0 0 4px; font-size: 17px; font-weight: 600; }
   .sponsor p { margin: 0; color: var(--muted); font-size: 14px; }
   .sponsor a { color: var(--accent-2-text); text-decoration: none; font-weight: 600; }
   .sponsor .why { margin: 0 0 4px; color: var(--ink); font-size: 13.5px; font-style: italic; }
@@ -550,7 +555,9 @@
 <body>
 
 
-<div class="hero">
+<!-- header, not div (ROADMAP.md Phase 11 #62, found by a real axe-core
+     audit): everything in the hero previously sat outside any landmark. -->
+<header class="hero">
   <div class="hero-inner">
     <a class="back" href="https://randerson-23.github.io/agent-business/">&larr; All regions</a>
     <div class="brand-mark">
@@ -564,9 +571,10 @@
     <h1>What&#39;s happening in Mount Prospect</h1>
     <div class="sub">Issue for August 30, 2026 — Village news, library events, and park district programs.</div>
   </div>
-</div>
+</header>
 
 <div class="wrap">
+  <main>
   <nav class="view-nav" aria-label="Filter by date or price">
     <a href="https://randerson-23.github.io/agent-business/mount-prospect-60056/" class="active">All events</a>
     <a href="https://randerson-23.github.io/agent-business/mount-prospect-60056/this-weekend/">This weekend</a>
@@ -582,7 +590,14 @@
   <div class="map-embed">
     <div class="map-fallback">
       
-<svg viewBox="0 0 320 220" role="img" aria-label="Map showing Mount Prospect's location relative to nearby towns">
+<!-- role="img" removed (ROADMAP.md Phase 11 #62, found by a real
+     axe-core audit): it told assistive tech this was one static image
+     while the SVG contains real <a> links to nearby regions - axe
+     flags nested interactive controls inside an img-role element, and
+     in practice a screen reader would announce one picture and never
+     expose the links inside it. Each pin's own <a> gets an explicit
+     aria-label instead. -->
+<svg viewBox="0 0 320 220">
   
   <line x1="129.6" y1="86.5" x2="265.0" y2="165.0" class="map-line" />
   <text x="197.3" y="119.8" class="map-line-label" text-anchor="middle">6.3 mi</text>
@@ -603,22 +618,22 @@
   <text x="122.5" y="80.2" class="map-line-label" text-anchor="middle">5.8 mi</text>
   
   
-  <a href="https://randerson-23.github.io/agent-business/arlington-heights-60005/">
+  <a href="https://randerson-23.github.io/agent-business/arlington-heights-60005/" aria-label="Arlington Heights">
     <text x="129.6" y="72.5" class="map-pin-label" text-anchor="middle">Arlington Heights</text>
     <circle cx="129.6" cy="86.5" r="7" class="map-pin" />
   </a>
   
-  <a href="https://randerson-23.github.io/agent-business/des-plaines-60016/">
+  <a href="https://randerson-23.github.io/agent-business/des-plaines-60016/" aria-label="Des Plaines">
     <text x="265.0" y="151.0" class="map-pin-label" text-anchor="middle">Des Plaines</text>
     <circle cx="265.0" cy="165.0" r="7" class="map-pin" />
   </a>
   
-  <a href="https://randerson-23.github.io/agent-business/mount-prospect-60056/">
+  <a href="https://randerson-23.github.io/agent-business/mount-prospect-60056/" aria-label="Mount Prospect">
     <text x="189.9" y="103.5" class="map-pin-label" text-anchor="middle">Mount Prospect</text>
     <circle cx="189.9" cy="117.5" r="7" class="map-pin" />
   </a>
   
-  <a href="https://randerson-23.github.io/agent-business/palatine-60067/">
+  <a href="https://randerson-23.github.io/agent-business/palatine-60067/" aria-label="Palatine">
     <text x="55.0" y="41.0" class="map-pin-label" text-anchor="middle">Palatine</text>
     <circle cx="55.0" cy="55.0" r="7" class="map-pin" />
   </a>
@@ -639,7 +654,7 @@
   <div class="editors-pick">
     <button type="button" class="tray-star" data-item='{"date": "Sep 1", "date_iso": "2026-09-01T00:00:00+00:00", "detail": "Tuesday, September 01 2026 12:00am - 11:59pm \n Stop by the Youth desk and pick up a fun DIY craft to make at home!", "id": "https://mppl.libnet.info/event/14829262", "region_name": "Mount Prospect", "region_url": "https://randerson-23.github.io/agent-business/mount-prospect-60056/", "title": "Crafts-to-Go Kits", "url": "https://mppl.libnet.info/event/14829262"}' aria-pressed="false" aria-label="Add Crafts-to-Go Kits to My Weekend">☆</button>
     <div class="label">✏️ Editor's Pick</div>
-    <h3><a href="https://mppl.libnet.info/event/14829262">Crafts-to-Go Kits</a></h3>
+    <h2><a href="https://mppl.libnet.info/event/14829262">Crafts-to-Go Kits</a></h2>
     <div class="date">Sep 1</div>
     <p>Tuesday, September 01 2026 12:00am - 11:59pm 
  Stop by the Youth desk and pick up a fun DIY craft to make at home!</p>
@@ -654,7 +669,7 @@
   <div class="sponsor">
     
     <div class="label">Sponsor This Spot</div>
-    <h3>Sponsor this spot</h3>
+    <h2>Sponsor this spot</h2>
     <p>Reach local families every week. Local businesses only — see pricing and availability. <a href="https://randerson-23.github.io/agent-business/sponsor/">Learn more &rarr;</a></p>
     
   </div>
@@ -1126,11 +1141,12 @@
 
   
   
+  </main>
 
   <footer>
     Local business? See the
     <a href="https://randerson-23.github.io/agent-business/sponsor/">sponsor page</a>.
-    <br>Generated 2026-08-30 02:03 UTC.
+    <br>Generated 2026-08-30 06:08 UTC.
     
     <br><a href="https://randerson-23.github.io/agent-business/mount-prospect-60056/weekly-summary.txt">Copy this week's summary</a> — a plain-text block ready to paste into a local group.
   </footer>
@@ -1156,7 +1172,7 @@
 <script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "Event", "name": "Crafts-to-Go Kits", "url": "https://mppl.libnet.info/event/14829262", "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode", "description": "Tuesday, September 01 2026 12:00am - 11:59pm \n Stop by the Youth desk and pick up a fun DIY craft to make at home!", "startDate": "2026-09-01T00:00:00+00:00"}, {"@type": "Event", "name": "Tiny Art Show 2026", "url": "https://mppl.libnet.info/event/16011482", "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode", "description": "Tuesday, September 01 2026 12:00am - 11:59pm \n Stop by the Main Library and South Branch to see amazing miniature artwork created by community members from…", "startDate": "2026-09-01T00:00:00+00:00"}, {"@type": "Event", "name": "Adult BookFix: Featuring Food or Cooking", "url": "https://mppl.libnet.info/event/16473056", "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode", "description": "Tuesday, September 01 2026 12:00am - 11:59pm \n Looking for your next read? Want a suggestion that fits a category in our year-round Book Bingo? We've got you…", "startDate": "2026-09-01T00:00:00+00:00"}, {"@type": "Event", "name": "Play and Learn", "url": "https://mppl.libnet.info/event/16440795", "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode", "description": "Tuesday, September 01 2026 11:30am - 12:15pm \n Join us each week for storytime, sing-alongs, and developmental play experiences that encourage learning…", "startDate": "2026-09-01T11:30:00+00:00"}, {"@type": "Event", "name": "Drop-In Tech Help", "url": "https://mppl.libnet.info/event/14755864", "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode", "description": "Tuesday, September 01 2026 2:00pm - 3:00pm \n Stop in and bring your questions about technology-related subjects such as smartphones, computers, email,…", "startDate": "2026-09-01T14:00:00+00:00"}, {"@type": "Event", "name": "Dungeons & Dragons", "url": "https://mppl.libnet.info/event/16529403", "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode", "description": "Tuesday, September 01 2026 4:00pm - 6:00pm \n Join us on an epic adventure and form a new heroic party to save the day!", "startDate": "2026-09-01T16:00:00+00:00"}, {"@type": "Event", "name": "Garden Walk and Bouquet Build", "url": "https://www.mppd.org/event/garden-walk-and-bouquet-build/", "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode", "description": "Garden Walk and Bouquet Build (Ages 18+) You won’t believe how many common garden annuals and native perennials can be used for cut flower bouquets. Walk with…", "startDate": "2026-09-09T17:45:00"}, {"@type": "Event", "name": "Native Plant Sale", "url": "https://www.mppd.org/event/native-plant-sale/", "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode", "description": "Native Plant Sale Hundreds of Plants. 15+ Varieties to Choose From.", "startDate": "2026-09-12T10:00:00"}, {"@type": "Event", "name": "Park Board Meeting", "url": "https://www.mppd.org/event/park-board-meeting-43/", "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode", "description": "Join the discussion – Public welcome! Meeting Agenda Meeting Packet", "startDate": "2026-09-16T18:30:00"}, {"@type": "Event", "name": "Mt. Melas Jr. Adventure Run", "url": "https://www.mppd.org/event/mt-melas-jr-adventure-run-4/", "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode", "description": "Mt. Melas Jr. Adventure Run (Ages 5-12) Test your limits with this fun and challenging 1.5 mile adventure run featuring hill elevation and grass and concrete…", "startDate": "2026-09-18T16:30:00"}, {"@type": "Event", "name": "Fishing Derby", "url": "https://www.mppd.org/event/fishing-derby-4/", "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode", "description": "Fishing Derby (Ages 3-16) Grab your gear and make your way to Clearwater Park for a morning of family fishing! Test your skills and maybe even land a “big…", "startDate": "2026-09-19T08:00:00"}, {"@type": "Event", "name": "Barks and Brews 2: Electric Boogaloo", "url": "https://www.mppd.org/event/barks-and-brews-2-electric-boogaloo/", "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode", "description": "Barks and Brews 2: Electric Boogaloo Visit Friendship Park Conservatory for the second annual Barks and Brews event featuring The Buddy Foundation. Stop by…", "startDate": "2026-09-20T11:00:00"}]}</script>
 
 
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebPage", "name": "Mount Prospect — Weekend & Trip Planner", "url": "https://randerson-23.github.io/agent-business/mount-prospect-60056/", "dateModified": "2026-08-30T02:03:11.636528+00:00", "isPartOf": {"@type": "WebSite", "name": "Weekend & Trip Planner", "url": "https://randerson-23.github.io/agent-business/"}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebPage", "name": "Mount Prospect — Weekend & Trip Planner", "url": "https://randerson-23.github.io/agent-business/mount-prospect-60056/", "dateModified": "2026-08-30T06:08:05.084073+00:00", "isPartOf": {"@type": "WebSite", "name": "Weekend & Trip Planner", "url": "https://randerson-23.github.io/agent-business/"}}</script>
 <script>
 (function () {
   var activeTags = new Set();
