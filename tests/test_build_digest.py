@@ -115,6 +115,50 @@ def test_render_sponsor_page_shows_tiers_and_availability():
     assert "issues/new" in html
 
 
+def test_build_sponsor_cta_url_falls_back_to_github_issue_when_unconfigured():
+    # ROADMAP.md Phase 11 #57: never guess or invent an owner contact
+    # address - fall back to the (worse, but never dead) GitHub issue.
+    url = build_digest.build_sponsor_cta_url(None)
+    assert url.startswith("https://github.com/randerson-23/agent-business/issues/new?")
+    assert "Sponsor+inquiry" not in url and "Sponsor%20inquiry" in url
+
+
+def test_build_sponsor_cta_url_prefers_mailto_when_configured():
+    url = build_digest.build_sponsor_cta_url("owner@example.com")
+    assert url.startswith("mailto:owner@example.com?")
+    assert "subject=Sponsor%20inquiry" in url
+    # mailto: (RFC 6068) needs %20 for spaces, not urlencode's default '+'
+    # - a mail client's subject/body would show literal '+' characters.
+    assert "+" not in url
+
+
+def test_render_sponsor_page_uses_mailto_cta_when_contact_email_configured():
+    html = build_digest.render_sponsor_page(
+        [], datetime.now(timezone.utc), contact_email="owner@example.com"
+    )
+    assert 'href="mailto:owner@example.com?' in html
+    assert "issues/new" not in html
+
+
+def test_render_sponsor_page_marks_annual_partner_recommended():
+    html = build_digest.render_sponsor_page([], datetime.now(timezone.utc))
+    assert 'class="tier recommended"' in html
+    assert "Recommended" in html
+
+
+def test_render_sponsor_page_shows_stat_line_when_stats_given():
+    stats = {"region_count": 4, "event_count": 12, "since": "Aug 26, 2026"}
+    html = build_digest.render_sponsor_page([], datetime.now(timezone.utc), stats=stats)
+    assert "4</strong> region" in html
+    assert "12</strong> live update" in html
+    assert "running since Aug 26, 2026" in html
+
+
+def test_render_sponsor_page_omits_stat_line_when_no_stats():
+    html = build_digest.render_sponsor_page([], datetime.now(timezone.utc))
+    assert '<p class="stat-line">' not in html
+
+
 def test_format_event_date_parses_rfc822():
     assert build_digest.format_event_date("Mon, 24 Aug 2026 12:00:00 GMT") == "Aug 24"
 

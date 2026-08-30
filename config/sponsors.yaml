@@ -27,6 +27,18 @@
 # ("why we recommend you") shown above `detail`. The house ad (unset
 # `active`) never gets this framing - only a real paying sponsor.
 
+# ROADMAP.md Phase 11 #57: the /sponsor page's only conversion point
+# ("Open a sponsor inquiry") used to hardcode a link to a GitHub "New
+# issue" form - to buy a $1,200-5,000/year placement, a real local
+# business owner had to create a GitHub account and file an issue in a
+# developer bug tracker. Set this to a real inbox to switch the CTA to a
+# mailto: with the same prefilled fields (see build_sponsor_cta_url() in
+# scripts/build_digest.py). Left unset deliberately - this is Ryan's own
+# contact address, not something the build loop should guess or invent;
+# it falls back to the GitHub issue (worse, but never a dead link) until
+# set. Same treatment as config/newsletter.yaml's buttondown_username.
+contact_email: ""
+
 default_house_ad:
   title: "Sponsor this spot"
   detail: "Reach local families every week. Local businesses only — see pricing and availability."

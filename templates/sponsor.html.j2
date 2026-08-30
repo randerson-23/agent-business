@@ -104,8 +104,15 @@
   section.block { margin: 30px 0; }
   section.block h2 { font-size: 20px; font-weight: 600; margin: 0 0 14px; padding-bottom: 8px; border-bottom: 2px solid var(--border); }
 
-  .tier-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px; }
+  /* flex-wrap, not CSS grid (ROADMAP.md Phase 11 #59): four tiers in a
+     three-column grid stranded "Event Promo" alone on row two, same
+     defect class fixed on the hub in PR #80. Grid only collapses a
+     column track with zero items anywhere in the whole grid, not one
+     merely unused in one row - flexbox distributes flex-grow space per
+     row independently, so a lone last-row card stretches to fill it. */
+  .tier-grid { display: flex; flex-wrap: wrap; gap: 14px; }
   .tier {
+    flex: 1 1 220px;
     background: var(--card);
     border-radius: var(--radius-lg);
     box-shadow: var(--shadow-sm);
@@ -113,9 +120,42 @@
     transition: transform .15s ease, box-shadow .15s ease;
   }
   .tier:hover { transform: translateY(-3px); box-shadow: var(--shadow-lift); }
+  .tier.recommended { border: 2px solid var(--accent-2); position: relative; }
+  .tier-badge {
+    display: inline-block;
+    background: var(--accent-2);
+    color: #fff;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    padding: 2px 9px;
+    border-radius: 999px;
+    margin-bottom: 6px;
+  }
   .tier h3 { margin: 0 0 4px; font-size: 16px; font-weight: 600; }
   .tier .price { color: var(--accent-2-text); font-weight: 700; font-size: 14px; margin-bottom: 8px; }
   .tier p.detail { margin: 0; color: var(--muted); font-size: 13.5px; }
+
+  /* A plain-text line here sits in .hero's -24px bottom margin (pulls
+     the next sibling up to overlap the hero), same trick every other
+     first-in-.wrap element already gets away with by being a card with
+     its own background - this needs one too, or the text blends into
+     the hero/body color transition (real bug, caught with a screenshot,
+     not assumed). */
+  .stat-line {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px 18px;
+    background: var(--card);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-sm);
+    padding: 12px 18px;
+    color: var(--muted);
+    font-size: 13px;
+    margin: 0 0 20px;
+  }
+  .stat-line strong { color: var(--ink); }
 
   .availability-list { display: flex; flex-direction: column; gap: 10px; }
   .availability-row {
@@ -167,6 +207,13 @@
 </div>
 
 <div class="wrap">
+  {% if stats %}
+  <p class="stat-line">
+    <span><strong>{{ stats.region_count }}</strong> region{{ 's' if stats.region_count != 1 else '' }} covered</span>
+    <span><strong>{{ stats.event_count }}</strong> live update{{ 's' if stats.event_count != 1 else '' }} indexed this week</span>
+    <span>running since {{ stats.since }}</span>
+  </p>
+  {% endif %}
   <section class="block">
     <h2>Why a recommendation beats an ad</h2>
     <p>Nextdoor found that 79% of neighbors acted on a local recommendation they saw there, 81% of them within days — local recommendations consistently out-rank conventional business directories and ads for trust. That's the model here: your placement reads as "here's a local business worth knowing," not a banner. One business holds a region's slot at a time — whether for a week or a year — so readers see exactly one recommendation, never a wall of ads.</p>
@@ -177,7 +224,8 @@
     <p style="color: var(--muted); font-size: 13.5px; margin: 0 0 14px;">Annual Partner is the flagship option — a permanent listing, guide placement, and SEO backlink that work for you year-round instead of needing to be renewed every week. Prefer to start smaller? Weekly Spot and Event Promo get you the same recommendation on a shorter commitment.</p>
     <div class="tier-grid">
       {% for tier in tiers %}
-      <div class="tier">
+      <div class="tier{{ ' recommended' if tier.recommended else '' }}">
+        {% if tier.recommended %}<span class="tier-badge">Recommended</span><br>{% endif %}
         <h3>{{ tier.name }}</h3>
         <div class="price">{{ tier.price }}</div>
         <p class="detail">{{ tier.detail }}</p>
@@ -207,7 +255,7 @@
   <section class="block">
     <h2>Get started</h2>
     <p>Open an inquiry and we'll follow up to confirm your tier and region, collect your blurb/logo and a one-line "why we recommend you," and set up payment — no design work needed on your end.</p>
-    <a class="cta" href="https://github.com/randerson-23/agent-business/issues/new?title=Sponsor%20inquiry&body=Business%20name%3A%20%0ARegion(s)%20of%20interest%3A%20%0APreferred%20tier%3A%20%0APreferred%20week%20(if%20any)%3A%20%0AWhy%20should%20we%20recommend%20you%20(one%20sentence)%3A%20">Open a sponsor inquiry &rarr;</a>
+    <a class="cta" href="{{ cta_url }}">Open a sponsor inquiry &rarr;</a>
   </section>
 
   <footer>

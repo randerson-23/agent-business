@@ -49,6 +49,12 @@ DETAIL_MAX_LEN = 160
 # else in the pipeline depends on the domain.
 SITE_BASE_URL = "https://randerson-23.github.io/agent-business/"
 
+# The site's real first launch (PR #1, 2026-08-26) - used for the honest
+# "running since" line on /sponsor (ROADMAP.md Phase 11 #58). Fixed, not
+# derived from git log at build time, so it can't silently drift if
+# history is ever rewritten.
+LAUNCH_DATE = date(2026, 8, 26)
+
 # The one canonical name for this site, used everywhere a page names its
 # own publisher - <title>, og:title, and every WebPage's schema.org name.
 # Before this constant existed, region pages independently built a
@@ -453,16 +459,16 @@ def build_business_directory(sponsors_cfg: dict, region_id: str) -> list[dict]:
 # $500-1,500/month real-estate "farming" budget range this tier targets
 # (ROADMAP.md Phase 11 #30) - deliberately introductory for an unproven,
 # brand-new premium product, with room to raise it once it has sold.
+#
+# Ordered by commitment, low to high (ROADMAP.md Phase 11 #59) - the
+# previous order ($1,200/yr, $5,000/yr, $50/wk, $20) climbed no ladder a
+# reader could follow. Annual Partner is flagged `recommended` per the
+# copy above the grid calling it "the flagship option."
 SPONSOR_TIERS = [
     {
-        "name": "Annual Partner",
-        "price": "$1,200/year",
-        "detail": "A permanent business directory listing, a spotlight placement inside one relevant seasonal guide, a live SEO backlink, and priority consideration for Editor's Pick — the flagship membership.",
-    },
-    {
-        "name": "Neighborhood Authority",
-        "price": "$5,000/year, one business per region",
-        "detail": "Everything in Annual Partner, held exclusively for your region year-round — built for real estate and other locally-budgeted categories seeking neighborhood-level presence, not just leads.",
+        "name": "Event Promo",
+        "price": "$20 one-time",
+        "detail": "Your single event or announcement boosted to the top of \"This Week.\"",
     },
     {
         "name": "Weekly Spot",
@@ -470,11 +476,52 @@ SPONSOR_TIERS = [
         "detail": "Not ready for a year? The same top-of-page recommendation, available week-to-week or month-to-month.",
     },
     {
-        "name": "Event Promo",
-        "price": "$20 one-time",
-        "detail": "Your single event or announcement boosted to the top of \"This Week.\"",
+        "name": "Annual Partner",
+        "price": "$1,200/year",
+        "detail": "A permanent business directory listing, a spotlight placement inside one relevant seasonal guide, a live SEO backlink, and priority consideration for Editor's Pick — the flagship membership.",
+        "recommended": True,
+    },
+    {
+        "name": "Neighborhood Authority",
+        "price": "$5,000/year, one business per region",
+        "detail": "Everything in Annual Partner, held exclusively for your region year-round — built for real estate and other locally-budgeted categories seeking neighborhood-level presence, not just leads.",
     },
 ]
+
+
+SPONSOR_INQUIRY_FIELDS = (
+    "Business name: \n"
+    "Region(s) of interest: \n"
+    "Preferred tier: \n"
+    "Preferred week (if any): \n"
+    "Why should we recommend you (one sentence): "
+)
+
+
+def build_sponsor_cta_url(contact_email: str | None) -> str:
+    """The sponsor page's only conversion point (ROADMAP.md Phase 11 #57).
+
+    This used to be a hardcoded link to a GitHub "New issue" form - to buy
+    a $1,200-5,000/year placement, a realtor or an ice-cream shop owner
+    had to create a GitHub account and file an issue in a developer bug
+    tracker. Real evidence this was actually broken, not just unpolished:
+    it's the *only* conversion point in the entire business.
+
+    Prefers a real `mailto:` to `contact_email` (config/sponsors.yaml)
+    with the same prefilled fields the GitHub issue used to collect, once
+    a real contact address is configured - deliberately never defaults to
+    guessing one. Falls back to the GitHub issue only when unconfigured,
+    same as before, so the page never has a dead link either way.
+    """
+    # quote_via=quote: mailto: URIs (RFC 6068) need %20 for spaces, not
+    # urlencode's default '+' (an application/x-www-form-urlencoded
+    # convention a mail client's subject/body won't understand). Using it
+    # for the GitHub fallback too is harmless - GitHub accepts %20 fine.
+    if contact_email:
+        params = urlencode({"subject": "Sponsor inquiry", "body": SPONSOR_INQUIRY_FIELDS}, quote_via=quote)
+        return f"mailto:{contact_email}?{params}"
+    params = urlencode({"title": "Sponsor inquiry", "body": SPONSOR_INQUIRY_FIELDS}, quote_via=quote)
+    return f"https://github.com/randerson-23/agent-business/issues/new?{params}"
 
 
 def build_sponsor_availability(sponsors_cfg: dict, region_summaries: list[dict]) -> list[dict]:
@@ -503,7 +550,11 @@ def build_sponsor_availability(sponsors_cfg: dict, region_summaries: list[dict])
 
 
 def render_sponsor_page(
-    availability: list[dict], now: datetime, analytics: dict | None = None
+    availability: list[dict],
+    now: datetime,
+    analytics: dict | None = None,
+    contact_email: str | None = None,
+    stats: dict | None = None,
 ) -> str:
     env = Environment(loader=FileSystemLoader(str(TEMPLATES_DIR)), autoescape=True)
     template = env.get_template("sponsor.html.j2")
@@ -514,6 +565,8 @@ def render_sponsor_page(
         canonical_url=SITE_BASE_URL + "sponsor/",
         hub_url=SITE_BASE_URL,
         analytics=analytics,
+        cta_url=build_sponsor_cta_url(contact_email),
+        stats=stats,
     )
 
 
@@ -1431,7 +1484,18 @@ def main() -> None:
     logger.info("Wrote %s (%d region section%s)", weekend_hub_dir / "index.html", len(hub_weekend_sections), "" if len(hub_weekend_sections) == 1 else "s")
 
     sponsor_availability = build_sponsor_availability(sponsors_cfg, region_summaries)
-    sponsor_html = render_sponsor_page(sponsor_availability, now, analytics)
+    sponsor_stats = {
+        "region_count": len(region_summaries),
+        "event_count": total_events,
+        "since": LAUNCH_DATE.strftime("%b %-d, %Y"),
+    }
+    sponsor_html = render_sponsor_page(
+        sponsor_availability,
+        now,
+        analytics,
+        contact_email=(sponsors_cfg.get("contact_email") or "").strip() or None,
+        stats=sponsor_stats,
+    )
     sponsor_dir = OUTPUT_DIR / "sponsor"
     sponsor_dir.mkdir(parents=True, exist_ok=True)
     (sponsor_dir / "index.html").write_text(sponsor_html, encoding="utf-8")

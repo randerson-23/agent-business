@@ -1795,59 +1795,84 @@ mobile render. Two of the four findings are on the revenue path.
 
 #### P1 (new)
 
-57. **The sponsor CTA sends a local dentist to GitHub.** Verified in the
-    generated HTML: the page's single call to action, "Open a sponsor
-    inquiry →", links to
-    `github.com/randerson-23/agent-business/issues/new?title=Sponsor%20inquiry…`.
-    To buy a $5,000/year placement, a realtor or an ice-cream shop owner
-    must create a GitHub account and file an issue in a developer bug
-    tracker. This is the **only** conversion point in the entire business,
-    and it is gated behind infrastructure the target customer has never
-    heard of and will not sign up for.
-    Replace it with a `mailto:` carrying the same prefilled fields —
-    business name, region, tier, why we should recommend you — which works
-    on every device with zero new infrastructure and costs the owner
-    nothing. A simple hosted form (Tally, Google Forms) is the better
-    second step. Keep the GitHub issue if it is useful internally, but it
-    must never be the public CTA. **This is the highest-value fix
-    available anywhere in the project right now**: everything else
-    improves the odds of a sponsor wanting to buy, and this is the step
-    where a sponsor who already wants to buy gives up.
+57. ⚠️ infrastructure shipped, blocked on Ryan's real contact address.
+    **The sponsor CTA sends a local dentist to GitHub.** Confirmed exactly
+    as reported: the page's single call to action linked to a GitHub "New
+    issue" form, so buying a placement meant a realtor or an ice-cream
+    shop owner creating a GitHub account and filing an issue in a
+    developer bug tracker — the only conversion point in the business,
+    gated behind infrastructure the target customer would never sign up
+    for.
+    `build_sponsor_cta_url()` in `build_digest.py` now builds a `mailto:`
+    with the same prefilled fields (business name, region, tier, why we
+    should recommend you) whenever `config/sponsors.yaml`'s new
+    `contact_email` is set, correctly percent-encoded for RFC 6068 (a
+    first draft used `urlencode()`'s default `+`-for-space, which a mail
+    client's subject/body shows as literal `+` characters, not spaces —
+    caught before shipping, fixed with `quote_via=quote`). Deliberately
+    **not** activated with a guessed or invented address: this is Ryan's
+    own contact info, not something the build loop should choose, so
+    `contact_email` ships unset and the CTA keeps falling back to the
+    GitHub issue (worse, but never a dead link) until he sets it — same
+    treatment as `newsletter.yaml`'s `buttondown_username`. One line in
+    `config/sponsors.yaml` activates it. A hosted form (Tally, Google
+    Forms) is still the better second step whenever there's a moment to
+    set one up, but isn't something this loop can create on its own
+    either.
 
-58. **The money page states no audience numbers at all.** `/sponsor` asks
-    $1,200–$5,000/year and never says how many people will see the
-    placement. Analytics shipped in item 23 and sponsor-link click
-    tracking in item 35, so the data exists or is accumulating — none of
-    it reaches the page that needs it. The fifth pass found this stated
-    bluntly in the industry research: without evidence, pricing power and
-    renewal rates both fall.
-    Add a modest, build-time-generated stat line: monthly readers, regions
-    covered, events indexed this week, sponsor-link clicks last month —
-    framed "since <date>" so early numbers read as a trajectory rather
-    than a shortfall. **Honest small numbers beat no numbers**; silence on
-    a pricing page reads worse than modesty, because the reader assumes
-    the worst and has no way to check.
+58. ✅ done, with an honesty caveat. **The money page states no audience
+    numbers at all.** Confirmed: `/sponsor` asked $1,200–$5,000/year and
+    never said how many people would see the placement.
+    Added a stat line — regions covered, live updates indexed this week,
+    "running since Aug 26, 2026" — computed from the same real counts the
+    hub page already shows, reusing `total_events`/`region_summaries`
+    already computed in `main()` rather than tracking anything new.
+    **What this does not do**, and the original ask wanted: "monthly
+    readers" and "sponsor-link clicks last month" aren't shown, because
+    neither exists as real accumulated data anywhere in the pipeline yet
+    — GoatCounter analytics (item 23) is a client-side tracking script
+    with no build-time API integration reading numbers back, and sponsor
+    click tracking (item 35) fires client-side events with nothing
+    persisting them. Inventing plausible-looking numbers for either would
+    be exactly the fabrication this project has consistently refused to
+    do elsewhere (source health, weekly summaries, editor's picks). A
+    real version of those two needs either a GoatCounter API call at
+    build time or a click-log file accumulated the way
+    `source_health.json` already is — left as real, separate future work,
+    not done here.
 
 #### P2 (new)
 
-59. **Sponsor tiers: an orphan card and a price order that goes
-    nowhere.** Four tiers in a three-column grid strand "Event Promo"
-    alone on row two — the same defect class fixed on the hub in PR #80,
-    recurring on the page that matters most. The order is also
-    $1,200/yr → $5,000/yr → $50/wk → $20 one-time, which is neither
-    ascending nor descending and gives the reader no ladder to climb.
-    Order by commitment, visually mark one tier as recommended (Annual
-    Partner is the flagship per the copy above it), and pick a column
-    count that doesn't strand the final card at any tier count.
+59. ✅ done. **Sponsor tiers: an orphan card and a price order that went
+    nowhere.** Confirmed: four tiers in a CSS grid stranded "Event Promo"
+    alone on row two, same defect class as the hub (PR #80), and the
+    order ($1,200/yr → $5,000/yr → $50/wk → $20 one-time) climbed no
+    ladder.
+    Reordered low-to-high commitment (Event Promo → Weekly Spot → Annual
+    Partner → Neighborhood Authority) and flagged Annual Partner
+    `recommended` (a badge + accent border) — it's already called "the
+    flagship option" in the copy above the grid, so this makes the
+    recommendation visible, not just stated. `.tier-grid` switched from
+    CSS grid to the same flex-wrap-with-`flex-grow` pattern PR #80 used
+    for the hub's region cards, for the same reason: grid only collapses
+    a column track with zero items in the *entire* grid, not one merely
+    unused in one row, so it can't stretch a lone last-row card the way
+    flexbox's per-line grow distribution does. `SPONSOR_KIT.md`'s pricing
+    table (the human-facing sales doc `SPONSOR_TIERS` is meant to stay in
+    sync with) reordered the same way.
 
-60. **On mobile, the "My Weekend" pill sits on top of the sponsor card.**
-    At 390px the floating "My Weekend (0)" chip overlaps the "Sponsor this
-    spot" block and obscures the pricing sentence mid-line. The single
-    monetised element on the page is partly covered by a floating UI chip,
-    on the viewport where most local readers actually are. Fix by giving
-    the sponsor card a higher stacking order, moving the pill to the
-    bottom-left, or — best — **hiding the pill entirely until the tray has
-    at least one item**, since "My Weekend (0)" earns no space at all.
+60. ✅ done. **On mobile, the "My Weekend" pill sat on top of the sponsor
+    card.** Confirmed: at 390px the floating "My Weekend (0)" chip
+    overlapped the "Sponsor this spot" block's pricing sentence — the
+    single monetized element on the page partly covered by a floating UI
+    chip earning no value at 0 items.
+    Took the roadmap's own suggested best option: the tray widget (in
+    both `region.html.j2` and `weekend_hub.html.j2` — the same widget is
+    duplicated in each) now stays `hidden` until `tray.length` is at
+    least 1, instead of unconditionally showing "(0)" the moment JS runs.
+    Star buttons on each card stay independently visible and clickable
+    regardless, so saving the first item still works exactly as before —
+    only the empty floating chip is gone.
 
 **Worth recording as working:** PR #78's empty-state handling is a genuine
 improvement — one quiet italic line and an immediate pivot to evergreen
