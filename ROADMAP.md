@@ -1904,6 +1904,48 @@ exactly as intended when the embed can't load.
     (each region's weekend section is its own grid) - fixed there too,
     on the same reasoning, before it had a chance to show up for real.
 
+62. ✅ done. **A real automated accessibility audit (axe-core), not just a
+    manual pass.** Item 31 (Phase 11 P3#10) was a manual accessibility
+    pass; this session's unblocked work was otherwise exhausted, so
+    this hour ran the real thing - `axe-core` via Playwright (installed
+    from PyPI, which is reachable even though this sandbox's general
+    network egress is blocked) against the hub, a region page, the
+    sponsor page, and a guide. It found 5 real, fixable violation types,
+    all now confirmed at **0 violations** across 8 page types
+    (hub/region/sponsor/guide/weekend-hub/free/directory/guides-index)
+    after the fix, verified with a second audit run, not assumed:
+    - **`landmark-one-main`, `region`** (every page): no page had a
+      `<main>` landmark, and the hero banner sat in no landmark at all.
+      Added `<main>` around each page's primary content and changed the
+      hero `<div>` to `<header>` (all 4 templates: `hub.html.j2`,
+      `region.html.j2`, `sponsor.html.j2`, `weekend_hub.html.j2`).
+    - **`nested-interactive`** (hub and region maps): the inline-SVG
+      region map's `role="img"` told assistive tech "this is one static
+      picture" while the SVG contains real `<a>` links to each region -
+      a screen reader would announce one image and never expose the
+      links inside it. Removed `role`/`aria-label` from the `<svg>`,
+      added an explicit `aria-label` to each pin's own `<a>` instead
+      (`hub.html.j2` and `region.html.j2`'s `region_map_svg()` macro).
+    - **`color-contrast`** (hub's stat label, sponsor's new "Recommended"
+      badge from item 59): `rgba(255,255,255,.9)` on `--accent-soft` was
+      4.4:1, and white on `--accent-2` was 3.4:1 light / 2.4:1 dark -
+      both below AA's 4.5:1 for text this small. Fixed the stat label to
+      opaque white (4.99:1 light, 4.86:1 dark) and added a new
+      `--accent-2-strong` token specifically for white-text-on-solid-fill
+      use (`#96581f` light, `#8f5419` dark - both ≥6:1), distinct from
+      `--accent-2-text` which exists for the opposite pairing (dark text
+      on a light background) and doesn't work for this one.
+    - **`heading-order`** (region and guide pages): the Editor's Pick
+      and Sponsor cards' `<h3>` sat directly under the page's `<h1>`
+      with no `<h2>` in between, unlike an event card's `<h3>` which is
+      correctly nested inside a `<h2>`-titled section. Both are
+      standalone top-level blocks, not sub-items of a section, so
+      promoted to `<h2>` instead.
+    Confirms item 31's manual pass caught the obvious things but missed
+    real, mechanically-detectable issues a proper tool catches in
+    seconds - worth treating as complementary, not either/or, going
+    forward.
+
 ## Working agreements for autonomous iteration
 
 - Cadence is hourly (the platform's durable scheduler has a 1-hour floor;
