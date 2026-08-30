@@ -3,6 +3,17 @@
 # existing regions deeply, but keep adding neighboring towns anyway since
 # each one costs almost nothing.
 #
+# Status as of 2026-08-30 (fourteenth research pass, ROADMAP.md item 63
+# follow-up): the TLS error below wasn't a blocked/misconfigured host -
+# it's the wrong domain entirely, same shape as the Des Plaines bug found
+# earlier this same pass. WebSearch confirms the Village's real site is
+# **palatine.il.us**, not palatineil.gov - that ".gov" hostname simply
+# doesn't answer for the real Village. Source `url` switched below to
+# https://www.palatine.il.us/CivicAlerts.aspx (the real "News Flash"
+# list, confirmed via WebSearch), still relying on the keyword fallback
+# since no individual news-item URL shape has been confirmed yet. Not yet
+# re-verified against a live build since the switch.
+#
 # Status as of 2026-08-29 (confirmed against the real GitHub Actions build
 # on main, run 33246555815, 09:54 UTC - read directly from its job log,
 # just hours after this region was added, not inferred from generated
@@ -10,9 +21,8 @@
 #   - Village News: palatineil.gov **failed with a TLS/SSL error**
 #     ("TLSV1_UNRECOGNIZED_NAME") rather than a 403/404 - a strong signal
 #     this exact hostname is wrong (no valid HTTPS host answers to that
-#     name), not just blocked. No confident replacement guess exists yet;
-#     left as-is since it fails soft either way and a wrong guess here
-#     costs nothing but an empty section.
+#     name), not just blocked. Root cause found 2026-08-30: wrong domain,
+#     see above.
 #   - Library Events: palatinelibrary.org returned a **403 Forbidden** on
 #     that first run - but two later real builds (13:01 UTC the same day,
 #     and again since) both returned 6 real items via the keyword
@@ -55,9 +65,12 @@ region:
 sources:
   - name: "Village of Palatine — News"
     type: html_events
-    # Unconfirmed guess (see header note) - relies on the keyword fallback
-    # rather than an invented detail_link_pattern.
-    url: "https://www.palatineil.gov/news"
+    # Fixed 2026-08-30 (see header note): the Village's real domain is
+    # palatine.il.us, not palatineil.gov - confirmed via WebSearch against
+    # the Village's own site. Still relies on the keyword fallback rather
+    # than an invented detail_link_pattern (no individual news-item URL
+    # shape confirmed yet).
+    url: "https://www.palatine.il.us/CivicAlerts.aspx"
     keywords: ["news", "press release", "mayor", "council", "meeting", "notice", "advisory", "alert", "closure"]
     section: "Village News"
     enabled: true
@@ -95,7 +108,7 @@ evergreen:
     tags: ["outdoor", "kid_friendly"]
   - title: "Village of Palatine"
     detail: "Village council meetings, permits, and community announcements."
-    url: "https://www.palatineil.gov/"
+    url: "https://www.palatine.il.us/"
     tags: []
 
 # Seasonal/evergreen guides (ROADMAP.md Phase 11 #5) - see the Mount
@@ -115,7 +128,7 @@ guides:
         tags: ["indoor", "kid_friendly", "free"]
       - title: "Official trick-or-treat hours & fall notices"
         detail: "The Village posts that year's official trick-or-treat hours and other fall community notices on its news page each October."
-        url: "https://www.palatineil.gov/news"
+        url: "https://www.palatine.il.us/CivicAlerts.aspx"
         tags: ["kid_friendly", "free"]
 
   # ROADMAP.md Phase 11 #15 - see the Mount Prospect config for the
@@ -141,25 +154,45 @@ guides:
         url: "https://randerson-23.github.io/agent-business/palatine-60067/directory/"
         tags: ["kid_friendly"]
 
-  # ROADMAP.md Phase 11 #49 (ninth research pass) - see the Mount Prospect
-  # config for the rationale; same civic-source-only discipline and same
-  # reason school registration has no url.
+  # ROADMAP.md Phase 11 #49 (ninth research pass) built this guide hedged
+  # and unsourced, pointed at the wrong Village domain; #63 (fourteenth
+  # research pass, 2026-08-30) replaced it with WebSearch-sourced real
+  # facts, same treatment already applied to Mount Prospect (PR #86),
+  # Arlington Heights (PR #87), and Des Plaines (PR #88) - see those
+  # configs' comments for the full rationale. Every fact and link below is
+  # sourced, not guessed; verify against the linked page before treating a
+  # number as current.
+  #
+  # Real finding, not assumed: Palatine eliminated its own vehicle sticker
+  # program in 2022 (Daily Herald: "Palatine eliminates vehicle sticker
+  # requirement") - the earliest of the four regions built so far
+  # (Des Plaines 2020, Palatine 2022, Mount Prospect and Arlington
+  # Heights both 2024). The pattern now holds 4 for 4 regions checked.
+  # Also found in the same research pass: the Village's real domain is
+  # palatine.il.us, not palatineil.gov (see the source block above) - this
+  # guide's Village link was silently pointing at the wrong domain the
+  # whole time, same bug shape as Des Plaines'.
   - slug: "new-to-town"
     title: "New to Town"
-    summary: "The practical first-week checklist for anyone new to Palatine — utilities and vehicle stickers, a library card, Park District registration, and where school-district boundaries actually come from. Pulls from the same civic sources as the weekly digest, organized for someone who just moved in rather than someone browsing this week's events."
+    summary: "The practical first-week checklist for anyone new to Palatine — utilities and refuse/recycling, a library card, Park District registration, and which school districts actually serve your address. Pulls from the same civic sources as the weekly digest, organized for someone who just moved in rather than someone browsing this week's events."
     items:
-      - title: "Village services, utilities & vehicle stickers"
-        detail: "Water service, refuse & recycling pickup, and Village vehicle sticker requirements are typically set up directly with the Village — check current requirements and any new-resident forms on its site."
-        url: "https://www.palatineil.gov/"
+      - title: "Village services, utilities, refuse & recycling"
+        detail: "There's no vehicle sticker to buy — Palatine eliminated its program in 2022, saving households an average of $75. Water/sewer is billed bi-monthly by the Village (Utility Billing, 847-359-9082); refuse, recycling, and yard waste (April-November) are collected weekly by Groot — put everything at the curb by 6:30 a.m. on your collection day."
+        url: "https://www.palatine.il.us/667/New-Residents"
         tags: []
       - title: "Get a Palatine Public Library District card"
-        detail: "A free library card is one of the fastest ways to feel settled in — story times and programs for all ages once you're in the system."
-        url: "https://www.palatinelibrary.org/"
+        detail: "Bring one photo ID showing your current address within the District, or two forms of ID (one with a photo) if your address isn't current on either. Kids under 14 need a parent or guardian along. Non-residents can buy a full-service card for an annual fee — contact Member Services (ext. 125) to calculate it."
+        url: "https://www.palatinelibrary.org/about/library-cards"
         tags: ["indoor", "kid_friendly", "free"]
       - title: "Register for Palatine Park District programs"
         detail: "Most residents set up one household account, then register for pools, rec classes, and seasonal programs individually — browse the current program guide to get started."
         url: "https://www.palatineparks.org/"
         tags: ["outdoor", "kid_friendly"]
-      - title: "Find your school district"
-        detail: "Illinois suburbs are typically served by separate elementary and high school districts assigned by home address, not by village boundaries — check with the specific district for your new address rather than assuming it matches a neighbor's."
+      - title: "Community Consolidated School District 15 (elementary & middle school)"
+        detail: "CCSD 15 is the third-largest elementary district in Illinois, covering all or part of seven towns (Palatine, Rolling Meadows, Hoffman Estates, Inverness, South Barrington, Arlington Heights, and Schaumburg) — confirm your specific address, since boundaries cross village lines. District office: (847) 963-3000."
+        url: "https://www.ccsd15.net/registration"
+        tags: []
+      - title: "Township High School District 211 (high school)"
+        detail: "William Fremd High School is Palatine's own, one of five D211 high schools serving Hoffman Estates, Inverness, Palatine, Schaumburg, and parts of several other northwest suburbs — confirm by address rather than assuming, since D211 territory overlaps with towns like Arlington Heights that mostly belong to a different high school district."
+        url: "https://adc.d211.org/"
         tags: []

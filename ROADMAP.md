@@ -1976,8 +1976,8 @@ notes there. The guide is a different story.
 
 #### P1 (new)
 
-63. ⚠️ done for Mount Prospect, Arlington Heights, and Des Plaines;
-    Palatine not yet done.
+63. ✅ done for all four regions: Mount Prospect, Arlington Heights, Des
+    Plaines, and Palatine.
     **The guides contain no facts.** Confirmed, with one correction: the
     "no links at all" claim was only half right — 4 of the original 5
     cards already had a real `url` (verified in the generated HTML), just
@@ -2056,11 +2056,36 @@ notes there. The guide is a different story.
     "confirm by address" discipline as Arlington Heights' guide, since
     Des Plaines' district boundaries are genuinely more fragmented than
     the other two regions'.
-    **Still not done**: Palatine's own "New to Town" guide - same
-    reasoning as before, real follow-up, not forgotten. Worth
-    specifically checking whether Palatine also eliminated a vehicle
-    sticker program, given the pattern now holds for 3 of 3 regions
-    checked.
+    **Real follow-up, done the same research pass**: Palatine got the
+    same treatment, closing out this item for all four regions. The
+    vehicle-sticker pattern now holds 4 for 4: Palatine eliminated its
+    own program in 2022 (Daily Herald), the earliest of the four
+    (Des Plaines 2020, Palatine 2022, Mount Prospect and Arlington
+    Heights both 2024). It also surfaced the same domain bug found in
+    Des Plaines' config, independently: `config/regions/palatine-60067.yaml`'s
+    Village News source and every guide/evergreen link pointed at
+    `palatineil.gov`, a hostname that has never resolved (the original
+    ninth-pass build log recorded a TLS `TLSV1_UNRECOGNIZED_NAME` error
+    on it, never root-caused). The real Village domain is
+    `palatine.il.us`, confirmed via WebSearch, with a real "News Flash"
+    list at `palatine.il.us/CivicAlerts.aspx` and a real "New Residents"
+    page at `palatine.il.us/667/New-Residents`. Every `palatineil.gov`
+    reference in that config was switched to the correct domain. The
+    guide's school-district cards also got real names/links: Community
+    Consolidated School District 15 (elementary/middle, the
+    third-largest in Illinois, spanning seven towns including Arlington
+    Heights) feeding into Township High School District 211's William
+    Fremd High School, with the same "confirm by address" note as the
+    other three regions' guides, since D211's and D15's boundaries don't
+    line up with village lines either.
+    **Two real domain bugs found via this same research technique in one
+    day (Des Plaines' `desplaines.org`, Palatine's `palatineil.gov`) is
+    worth registering as a pattern**: every remaining region's civic
+    source URLs are worth a WebSearch cross-check the next time that
+    region comes up for any reason, not just its guide content - a wrong
+    domain fails soft (skipped, logged) so it's invisible unless someone
+    actually reads the build log's warnings, which is exactly how both of
+    these sat unnoticed since each region was added.
 
 #### P2 (new)
 
