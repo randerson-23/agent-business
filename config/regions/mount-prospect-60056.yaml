@@ -236,36 +236,57 @@ guides:
         url: "https://www.mppd.org/"
         tags: ["outdoor", "kid_friendly"]
 
-  # ROADMAP.md Phase 11 #49 (ninth research pass, 2026-08-29) - the
-  # newcomer guide, flagged as the highest-value unblocked item on the
-  # board. Same civic-source-only discipline as every other guide: real
-  # standing pages, no invented registration steps, fees, or deadlines
-  # (those change and belong on the official page, which is what this
-  # links to). School registration deliberately has no url - Illinois
-  # suburbs are typically split across separate school districts by home
-  # address rather than village boundaries, and no specific district site
-  # has been confirmed here, so this states the true general fact instead
-  # of guessing a link.
+  # ROADMAP.md Phase 11 #49 (ninth research pass) built this guide;
+  # #63 (thirteenth research pass, 2026-08-30) found it had hedged into
+  # near-uselessness - "typically", "a good starting point", no links on
+  # half the cards, and one flatly wrong fact (village vehicle stickers,
+  # eliminated in the 2024 budget - a levy cut and ~$250/household
+  # savings, reported by the Daily Herald and Journal & Topics; still
+  # findable on stale mountprospect.org news pages from 2018-2020, so a
+  # newcomer searching on their own could easily land on the wrong
+  # answer). Same civic-source-only discipline as every other guide - no
+  # invented fees or deadlines - but "no specific district site
+  # confirmed" turned out to be solvable, not a hard limit: WebSearch
+  # found real official pages for everything below (this sandbox's own
+  # network can't reach arbitrary domains, same as every fetcher source,
+  # but WebSearch isn't subject to that block - the same technique that
+  # found item 32's real D57 calendar URL). Each fact and link here is
+  # sourced, not guessed; verify against the linked page before treating
+  # a fee or phone number as current, same as any secondhand civic
+  # information. The school-district card split in two (#63): D57 and
+  # D214 are separate real districts with separate real sites, not one
+  # generic "check your district" hedge - naming and linking each is the
+  # whole ask. Same for downtown/tourism: two real configured sources
+  # (PR #66), two real links, not one card silently dropping the other.
   - slug: "new-to-town"
     title: "New to Town"
-    summary: "The practical first-week checklist for anyone new to Mount Prospect — utilities and vehicle stickers, a library card, Park District registration, and where school-district boundaries actually come from. Pulls from the same civic sources as the weekly digest, organized for someone who just moved in rather than someone browsing this week's events."
+    summary: "The practical first-week checklist for anyone new to Mount Prospect — utilities and refuse/recycling, a library card, Park District registration, and which school districts actually serve your address. Pulls from the same civic sources as the weekly digest, organized for someone who just moved in rather than someone browsing this week's events."
     items:
-      - title: "Village services, utilities & vehicle stickers"
-        detail: "Water service, refuse & recycling pickup, and Village vehicle sticker requirements are typically set up directly with the Village — check current requirements and any new-resident forms on its site."
-        url: "https://www.mountprospect.org/"
+      - title: "Village services, utilities, refuse & recycling"
+        detail: "Water is billed by the Village; refuse and recycling go out in the green and blue wheeled carts every home gets (35/65/95-gallon sizes), billed with your water bill or quarterly without Village water service. The vehicle sticker program was eliminated in the 2024 budget, so that's one less errand than older guides mention. Questions: Public Works, (847) 870-5640."
+        url: "https://www.mountprospect.org/community/new-resident-information"
         tags: []
       - title: "Get a Mount Prospect Public Library card"
-        detail: "A free library card is one of the fastest ways to feel settled in — story times, museum passes, and programs for all ages once you're in the system."
-        url: "https://mppl.org/"
+        detail: "Free to anyone living within Village limits — bring ID showing your current name and address to the Main Library or South Branch. A card for anyone under 18 needs a parent or guardian's signature. Circulation desk: (847) 590-3624."
+        url: "https://mppl.org/books-movies-more/get-a-library-card-online/"
         tags: ["indoor", "kid_friendly", "free"]
       - title: "Register for Mount Prospect Park District programs"
         detail: "Most residents set up one household account, then register for pools, rec classes, and seasonal programs individually — browse the current program guide to get started."
         url: "https://www.mppd.org/"
         tags: ["outdoor", "kid_friendly"]
-      - title: "Find your school district"
-        detail: "Illinois suburbs are typically served by separate elementary and high school districts assigned by home address, not by village boundaries — check with the specific district for your new address rather than assuming it matches a neighbor's."
+      - title: "Mount Prospect School District 57 (elementary & middle school)"
+        detail: "Most of the village's elementary and middle schools are part of District 57 — confirm your specific address, since school boundaries don't always follow village lines."
+        url: "https://www.d57.org/"
         tags: []
-      - title: "Explore downtown & what's nearby"
-        detail: "The Downtown Merchants and the Village's own tourism site are a good starting point for shops, restaurants, and things to do within walking distance of most of the village."
+      - title: "Township High School District 214 (high school)"
+        detail: "Prospect High School, Mount Prospect's own, is part of District 214, which also serves several neighboring towns — again, confirm by address rather than assuming."
+        url: "https://www.d214.org/"
+        tags: []
+      - title: "Downtown Mount Prospect — shops, dining & events"
+        detail: "The Downtown Merchants cover shops, restaurants, and events within walking distance of most of the village and the Metra station."
         url: "https://mpdowntown.com/"
+        tags: []
+      - title: "Experience Mount Prospect — the Village's visitor site"
+        detail: "The Village's own tourism site rounds out things to do and see nearby, beyond downtown."
+        url: "https://www.experiencemountprospect.org/"
         tags: []

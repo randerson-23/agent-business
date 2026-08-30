@@ -711,7 +711,13 @@
         {% for item in block.events %}
         {% set tray_item = {"id": item.url or item.title, "title": item.title, "url": item.url or "", "date": item.date or None, "date_iso": item.date_iso or None, "detail": item.detail or "", "region_name": region.name, "region_url": region_base_url} %}
         <div class="card" data-tags="{{ item.tags|join(',') }}">
+          {% if nav_current != "guides" %}
+          <!-- ROADMAP.md Phase 11 #63: My Weekend is for dated events -
+               offering to add "Find your school district" or a guide's
+               own title to it made no sense, since guide items and the
+               guide index have nothing to do with weekend planning. -->
           <button type="button" class="tray-star" data-item='{{ tray_item | tojson }}' aria-pressed="false" aria-label="Add {{ item.title }} to My Weekend">☆</button>
+          {% endif %}
           {% if item.date %}<div class="date">{{ item.date }}</div>{% endif %}
           <h3>{% if item.url %}<a href="{{ item.url }}">{{ item.title }}</a>{% else %}{{ item.title }}{% endif %}</h3>
           {% if item.detail %}<p class="detail">{{ item.detail }}</p>{% endif %}
