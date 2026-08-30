@@ -37,11 +37,15 @@
 #     "Calendar of Events") via the keyword fallback - real, useful
 #     Park District links, though not yet matched via a
 #     `detail_link_pattern` to individual dated events specifically.
+#   - School Calendar (District 15 & District 211): added 2026-08-30
+#     (fourteenth research pass, ROADMAP.md item 32 follow-up) - two real
+#     URLs found via web search, not yet confirmed by a live fetch. See
+#     the source blocks below for the full rationale.
 #
 # The pipeline fails soft either way: a broken source is skipped and
-# logged, it never breaks the whole digest build - if any of the three
-# domains above turn out to be wrong, this region simply falls back to
-# the evergreen entries below until a real link surfaces.
+# logged, it never breaks the whole digest build - if any of the domains
+# above turn out to be wrong, this region simply falls back to the
+# evergreen entries below until a real link surfaces.
 
 region:
   id: "palatine-60067"
@@ -95,6 +99,36 @@ sources:
     url: "https://www.palatineparks.org/events"
     keywords: ["event", "class", "program", "camp", "swim", "sport", "concert", "festival"]
     section: "Park District Events"
+    enabled: true
+
+  - name: "Community Consolidated School District 15 — Calendar"
+    type: ics
+    # ROADMAP.md Phase 11 #32 follow-up (fourteenth research pass,
+    # 2026-08-30): same "school calendars as a data source" treatment
+    # already confirmed working for Mount Prospect's District 57, and
+    # just added for Arlington Heights' District 25 (see those configs'
+    # comments) - found via web search of ccsd15.net's own "ICal Feed"
+    # page, a real indexed page at this exact URL, same
+    # `site/handlers/icalfeed.ashx?MIID=<id>` pattern D25 uses (same CMS
+    # platform, not a copy-guess - each MIID was found independently).
+    # Not yet confirmed by a live fetch (this sandbox's own network is
+    # proxy-blocked too).
+    url: "webcal://www.ccsd15.net/site/handlers/icalfeed.ashx?MIID=5415"
+    section: "School Calendar"
+    enabled: true
+
+  - name: "Township High School District 211 — Calendar"
+    type: rss
+    # Companion to the CCSD15 source above: D211 (the shared high school
+    # district) has no icalfeed.ashx-style export, but web search found a
+    # real "Subscribe to RSS" page on adc.d211.org with this exact feed
+    # URL - a genuine finding, not the PDF-only dead end District 214 was
+    # for Mount Prospect and Arlington Heights. build_digest.py's `rss`
+    # source type (already used for Mount Prospect's library) applies
+    # here since this is a standard RSS export, not ICS. Not yet
+    # confirmed by a live fetch.
+    url: "https://adc.d211.org/site/RSS.aspx?DomainID=4&ModuleInstanceID=9762&PageID=1&PMIID=9953"
+    section: "School Calendar"
     enabled: true
 
 evergreen:

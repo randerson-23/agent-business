@@ -1030,6 +1030,31 @@ change whose cost only shows up on a real network stays gated behind it.
     evidence behind it at all. Same treatment needed for Arlington
     Heights, Des Plaines, and Palatine's own districts - not done this
     pass, deliberately scoped to one region to keep this verifiable.
+    **Real follow-up (fourteenth research pass, 2026-08-30)**: extended to
+    two more regions. Arlington Heights' District 25 got a real
+    `webcal://www.sd25.org/site/handlers/icalfeed.ashx?MIID=569` source,
+    found via web search of the district's own "ICal Feed" page - same
+    "found, not guessed" discipline as D57's. Palatine got two: District
+    15's `webcal://www.ccsd15.net/site/handlers/icalfeed.ashx?MIID=5415`
+    (same `icalfeed.ashx?MIID=` pattern as D25, same CMS platform, but a
+    separately-found, real MIID - not a copy-guess), and District 211's
+    `https://adc.d211.org/site/RSS.aspx?DomainID=4&ModuleInstanceID=9762&PageID=1&PMIID=9953`
+    - a genuine find for the shared high school district, unlike
+    Mount Prospect's and Arlington Heights' D214 (PDF-only, no feed).
+    Added as `type: rss` since it's a standard RSS export, not ICS -
+    `build_digest.py` already supports both types (`rss` was already used
+    for Mount Prospect's library). None of the four new sources has been
+    confirmed by a live fetch yet (this sandbox's network is blocked for
+    every source, same as always) - that confirmation will come from the
+    next real GitHub Actions build's job log, same as D57's did.
+    **Still not done**: Des Plaines' District 62 (elementary/middle) and
+    Maine Township High School District 207 - both researched this pass,
+    neither had a discoverable district-wide feed URL surface via web
+    search (D62's school pages mention "Subscribe to Google Calendar" and
+    RSS options per-school, not district-wide; Maine207's calendar pages
+    mention a "Subscribe to Calendar" option with no URL indexed). Not
+    guessing a URL with nothing behind it, same discipline as D214 - real,
+    undropped follow-up if a future pass turns up a real URL.
 
 #### P3 (new)
 
@@ -2086,6 +2111,13 @@ notes there. The guide is a different story.
     domain fails soft (skipped, logged) so it's invisible unless someone
     actually reads the build log's warnings, which is exactly how both of
     these sat unnoticed since each region was added.
+    **Acted on that pattern the very next hour**: WebSearch-verified
+    Mount Prospect's (`mountprospect.org`) and Arlington Heights'
+    (`vah.com`) own Village domains against their real sites - both
+    checked out clean, no bug to fix. Worth recording as a real negative
+    result, not a gap: those two regions' persistent 403s and TLS errors
+    in past build logs are genuine blocking/misconfiguration on the
+    correct host, not the wrong-domain bug Des Plaines and Palatine had.
 
 #### P2 (new)
 
