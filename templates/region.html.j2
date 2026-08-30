@@ -262,9 +262,13 @@
     font-weight: 700;
     margin-bottom: 4px;
   }
-  .editors-pick h3 { margin: 0 0 4px; font-size: 17px; font-weight: 600; padding-right: 24px; }
-  .editors-pick h3 a { color: var(--ink); text-decoration: none; }
-  .editors-pick h3 a:hover { color: var(--accent); }
+  /* h2, not h3 (ROADMAP.md Phase 11 #62, found by a real axe-core
+     audit): this card is a standalone top-level block, not nested
+     inside any h2-titled section the way an event card inside "Around
+     {region}" is - h3 here skipped a level straight from the page's h1. */
+  .editors-pick h2 { margin: 0 0 4px; font-size: 17px; font-weight: 600; padding-right: 24px; }
+  .editors-pick h2 a { color: var(--ink); text-decoration: none; }
+  .editors-pick h2 a:hover { color: var(--accent); }
   .editors-pick .date {
     color: var(--accent-2-text);
     font-size: 12px;
@@ -293,7 +297,8 @@
     font-weight: 700;
     margin-bottom: 4px;
   }
-  .sponsor h3 { margin: 0 0 4px; font-size: 17px; font-weight: 600; }
+  /* h2, not h3 - same reasoning as .editors-pick above. */
+  .sponsor h2 { margin: 0 0 4px; font-size: 17px; font-weight: 600; }
   .sponsor p { margin: 0; color: var(--muted); font-size: 14px; }
   .sponsor a { color: var(--accent-2-text); text-decoration: none; font-weight: 600; }
   .sponsor .why { margin: 0 0 4px; color: var(--ink); font-size: 13.5px; font-style: italic; }
@@ -549,13 +554,20 @@
 </head>
 <body>
 {% macro region_map_svg() %}
-<svg viewBox="0 0 {{ region_map.width }} {{ region_map.height }}" role="img" aria-label="Map showing {{ region.name }}'s location relative to nearby towns">
+<!-- role="img" removed (ROADMAP.md Phase 11 #62, found by a real
+     axe-core audit): it told assistive tech this was one static image
+     while the SVG contains real <a> links to nearby regions - axe
+     flags nested interactive controls inside an img-role element, and
+     in practice a screen reader would announce one picture and never
+     expose the links inside it. Each pin's own <a> gets an explicit
+     aria-label instead. -->
+<svg viewBox="0 0 {{ region_map.width }} {{ region_map.height }}">
   {% for line in region_map.lines %}
   <line x1="{{ line.x1 }}" y1="{{ line.y1 }}" x2="{{ line.x2 }}" y2="{{ line.y2 }}" class="map-line" />
   <text x="{{ line.mid_x }}" y="{{ line.mid_y - 6 }}" class="map-line-label" text-anchor="middle">{{ line.miles }} mi</text>
   {% endfor %}
   {% for pin in region_map.pins %}
-  <a href="{{ hub_url }}{{ pin.path }}">
+  <a href="{{ hub_url }}{{ pin.path }}" aria-label="{{ pin.name }}">
     <text x="{{ pin.x }}" y="{{ pin.y - 14 }}" class="map-pin-label" text-anchor="middle">{{ pin.name }}</text>
     <circle cx="{{ pin.x }}" cy="{{ pin.y }}" r="7" class="map-pin" />
   </a>
@@ -584,7 +596,9 @@
 </section>
 {% endif %}
 {% endmacro %}
-<div class="hero">
+<!-- header, not div (ROADMAP.md Phase 11 #62, found by a real axe-core
+     audit): everything in the hero previously sat outside any landmark. -->
+<header class="hero">
   <div class="hero-inner">
     <a class="back" href="{{ hub_url }}">&larr; All regions</a>
     <div class="brand-mark">
@@ -598,9 +612,10 @@
     <h1>{{ heading or "What's happening in " ~ region.name }}</h1>
     <div class="sub">{{ subheading or ("Issue for " ~ issue_date ~ " — " ~ region.tagline) }}</div>
   </div>
-</div>
+</header>
 
 <div class="wrap">
+  <main>
   <nav class="view-nav" aria-label="Filter by date or price">
     <a href="{{ region_base_url }}"{% if nav_current == "all" %} class="active"{% endif %}>All events</a>
     <a href="{{ region_base_url }}this-weekend/"{% if nav_current == "weekend" %} class="active"{% endif %}>This weekend</a>
@@ -644,7 +659,7 @@
   <div class="editors-pick">
     <button type="button" class="tray-star" data-item='{{ tray_item | tojson }}' aria-pressed="false" aria-label="Add {{ editors_pick.title }} to My Weekend">☆</button>
     <div class="label">✏️ Editor's Pick</div>
-    <h3>{% if editors_pick.url %}<a href="{{ editors_pick.url }}">{{ editors_pick.title }}</a>{% else %}{{ editors_pick.title }}{% endif %}</h3>
+    <h2>{% if editors_pick.url %}<a href="{{ editors_pick.url }}">{{ editors_pick.title }}</a>{% else %}{{ editors_pick.title }}{% endif %}</h2>
     {% if editors_pick.date %}<div class="date">{{ editors_pick.date }}</div>{% endif %}
     {% if editors_pick.detail %}<p>{{ editors_pick.detail }}</p>{% endif %}
     {% if editors_pick.tag_badges %}
@@ -658,12 +673,12 @@
   <div class="sponsor">
     {% if sponsor.is_active_sponsor %}
     <div class="label">💚 Local Recommendation</div>
-    <h3>{{ sponsor.title }}</h3>
+    <h2>{{ sponsor.title }}</h2>
     {% if sponsor.why %}<p class="why">{{ sponsor.why }}</p>{% endif %}
     <p>{{ sponsor.detail }} {% if sponsor.url %}<a href="{{ sponsor.url }}"{% if analytics and analytics.configured %} data-goatcounter-click="sponsor-click-{{ region.id }}"{% endif %}>Learn more &rarr;</a>{% endif %}</p>
     {% else %}
     <div class="label">Sponsor This Spot</div>
-    <h3>{{ sponsor.title }}</h3>
+    <h2>{{ sponsor.title }}</h2>
     <p>{{ sponsor.detail }} {% if sponsor.url %}<a href="{{ sponsor.url }}">Learn more &rarr;</a>{% endif %}</p>
     {% endif %}
   </div>
@@ -761,6 +776,7 @@
     </form>
   </div>
   {% endif %}
+  </main>
 
   <footer>
     Local business? See the

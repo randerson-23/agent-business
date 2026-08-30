@@ -237,7 +237,9 @@
 </style>
 </head>
 <body>
-<div class="hero">
+<!-- header, not div (ROADMAP.md Phase 11 #62, found by a real axe-core
+     audit): everything in the hero previously sat outside any landmark. -->
+<header class="hero">
   <div class="hero-inner">
     <a class="back" href="{{ hub_url }}">&larr; All regions</a>
     <div class="brand-mark">
@@ -251,9 +253,10 @@
     <h1>This Weekend Near You</h1>
     <div class="sub">{{ date_range }} — everything with a known date, across every region.</div>
   </div>
-</div>
+</header>
 
 <div class="wrap">
+  <main>
   {% if region_sections %}
     {% for section in region_sections %}
     <section class="block">
@@ -285,6 +288,7 @@
   {% else %}
     <div class="empty-state">Nothing dated for this weekend yet across any region — check back, or browse a region's full page.</div>
   {% endif %}
+  </main>
 
   <footer>
     Want your ZIP added, or want to sponsor a region?

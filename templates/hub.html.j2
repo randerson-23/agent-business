@@ -201,7 +201,10 @@
   .bento-weekend p { margin: 0; color: var(--accent); font-weight: 700; font-size: 14.5px; }
   .bento-stat { align-items: center; text-align: center; background: var(--accent-soft); color: #fff; }
   .bento-stat-number { font-family: 'Fraunces', Georgia, serif; font-size: 40px; font-weight: 600; line-height: 1; }
-  .bento-stat-label { font-size: 12.5px; color: rgba(255,255,255,.9); }
+  /* Opaque white, not rgba(255,255,255,.9) - the translucent version was
+     only 4.4:1 against --accent-soft, below AA's 4.5:1 for text this
+     small. Found by a real axe-core audit (ROADMAP.md Phase 11 #62). */
+  .bento-stat-label { font-size: 12.5px; color: #fff; }
   .region-card .zip {
     color: var(--accent-2-text);
     font-weight: 700;
@@ -378,7 +381,10 @@
 </style>
 </head>
 <body>
-  <div class="hero">
+  <!-- header, not div (ROADMAP.md Phase 11 #62, found by a real axe-core
+       audit): everything in the hero previously sat outside any
+       landmark - <main> only wraps the content below it. -->
+  <header class="hero">
     <div class="hero-inner">
       <div class="brand-mark">
         <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
@@ -391,9 +397,10 @@
       <h1>Pick a place</h1>
       <div class="sub">Local news and events by ZIP code — updated automatically, so you can plan a weekend at home or a trip nearby.</div>
     </div>
-  </div>
+  </header>
 
   <div class="wrap">
+  <main>
   {% if region_summaries %}
   <!-- Distance-from-me and the map both exist to help pick a region -
        they used to sit below the region grid, after the choice was
@@ -410,13 +417,22 @@
 
   {% if region_map %}
   <div class="map-card">
-    <svg viewBox="0 0 {{ region_map.width }} {{ region_map.height }}" role="img" aria-label="Map showing the relative location of every covered town">
+    <!-- role="img" here was wrong (ROADMAP.md Phase 11 #62, found by a
+         real axe-core audit): it declares "this is a single
+         non-interactive image" to assistive tech while the SVG contains
+         real <a> links to each region - axe correctly flags nested
+         interactive controls inside an img-role element, and in
+         practice it means a screen reader announces this as one static
+         picture and never exposes the links inside it. Removed the
+         role/aria-label; each pin's own <a> already gets its accessible
+         name from the region-name <text> it wraps. -->
+    <svg viewBox="0 0 {{ region_map.width }} {{ region_map.height }}">
       {% for line in region_map.lines %}
       <line x1="{{ line.x1 }}" y1="{{ line.y1 }}" x2="{{ line.x2 }}" y2="{{ line.y2 }}" class="map-line" />
       <text x="{{ line.mid_x }}" y="{{ line.mid_y - 6 }}" class="map-line-label" text-anchor="middle">{{ line.miles }} mi</text>
       {% endfor %}
       {% for pin in region_map.pins %}
-      <a href="{{ pin.path }}">
+      <a href="{{ pin.path }}" aria-label="{{ pin.name }}">
         <text x="{{ pin.x }}" y="{{ pin.y - 14 }}" class="map-pin-label" text-anchor="middle">{{ pin.name }}</text>
         <circle cx="{{ pin.x }}" cy="{{ pin.y }}" r="7" class="map-pin" />
       </a>
@@ -481,6 +497,7 @@
     </form>
   </div>
   {% endif %}
+  </main>
 
   <footer>
     Want your ZIP added, or want to sponsor a region?
