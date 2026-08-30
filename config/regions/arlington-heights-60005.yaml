@@ -20,6 +20,10 @@
 #   - Park District Events: CONFIRMED — ahpd.org's ICS export returned 6
 #     real dated events (e.g. "Touch-A-Truck" 2026-09-12, "Heritage Fest"
 #     2026-09-19), each with a real ahpd.org/event/... URL.
+#   - School Calendar (District 25): added 2026-08-30 (fourteenth research
+#     pass, ROADMAP.md item 32 follow-up) - a real URL found via web
+#     search, not yet confirmed by a live fetch. See the source block
+#     below for the full rationale.
 #
 # The pipeline fails soft either way: a broken source is skipped and
 # logged, it never breaks the whole digest build.
@@ -70,6 +74,23 @@ sources:
     type: ics
     url: "webcal://www.ahpd.org/events/?post_type=tribe_events&ical=1&eventDisplay=list"
     section: "Park District Events"
+    enabled: true
+
+  - name: "Arlington Heights School District 25 — Calendar"
+    type: ics
+    # ROADMAP.md Phase 11 #32 follow-up (fourteenth research pass,
+    # 2026-08-30): same "school calendars as a data source" treatment
+    # already confirmed working for Mount Prospect's District 57 (see
+    # that config's comment). Found via web search of sd25.org's own
+    # "ICal Feed" page - a real, indexed page at this exact URL, not an
+    # invented pattern - and not yet confirmed by a live fetch (this
+    # sandbox's own network is proxy-blocked too, same as every source
+    # here). Township High School District 214 (the shared high school
+    # district) was already researched for Mount Prospect and has no
+    # discoverable public ICS feed, only PDF calendars - not re-checked
+    # here since that finding is district-wide, not region-specific.
+    url: "webcal://www.sd25.org/site/handlers/icalfeed.ashx?MIID=569"
+    section: "School Calendar"
     enabled: true
 
 evergreen:
