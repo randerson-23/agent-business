@@ -343,13 +343,24 @@
     border-bottom: 2px solid var(--border);
   }
 
+  /* flex-wrap, not CSS grid (ROADMAP.md Phase 11 #61): this grid is
+     reused for every event listing, the evergreen section, guides, and
+     the directory - a lone last-row card (4 items in a 3-column grid,
+     seen for real on both the guides index and a guide's own "What's
+     inside" list) stranded next to an empty gap, the same defect class
+     already fixed on the hub (PR #80) and sponsor tiers (PR #83). Grid
+     only collapses a column track with zero items in the *entire*
+     grid, not one merely unused in one row - flexbox distributes
+     flex-grow space per row independently, so a lone last-row card
+     stretches to fill it instead. */
   .card-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    display: flex;
+    flex-wrap: wrap;
     gap: 14px;
   }
   .card {
     position: relative;
+    flex: 1 1 260px;
     background: var(--card);
     border-radius: var(--radius-lg);
     box-shadow: var(--shadow-sm);
@@ -1050,7 +1061,7 @@
   <footer>
     Local business? See the
     <a href="https://randerson-23.github.io/agent-business/sponsor/">sponsor page</a>.
-    <br>Generated 2026-08-30 01:04 UTC.
+    <br>Generated 2026-08-30 02:03 UTC.
     
     <br><a href="https://randerson-23.github.io/agent-business/arlington-heights-60005/weekly-summary.txt">Copy this week's summary</a> — a plain-text block ready to paste into a local group.
   </footer>
@@ -1076,7 +1087,7 @@
 <script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "Event", "name": "Beginning ESL", "url": "/scheduling/reservation/221902", "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode", "startDate": "2026-08-01T00:00:00"}, {"@type": "Event", "name": "Beginning Computing with Windows 11", "url": "/scheduling/reservation/216346", "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode", "startDate": "2026-08-03T00:00:00"}, {"@type": "Event", "name": "Touch-A-Truck", "url": "https://www.ahpd.org/event/touch-a-truck-2/", "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode", "description": "This FREE event is perfect for families to play outside, meet with local businesses and Touch-A-Truck. This event is a great opportunity for your child to see…", "startDate": "2026-09-12T09:30:00"}, {"@type": "Event", "name": "Heritage Fest", "url": "https://www.ahpd.org/event/heritage-fest-2026/", "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode", "description": "Explore the cultural diversity within our community and enjoy a variety of exhibits, demonstrations and live performances. Presented by the AH Park District,…", "startDate": "2026-09-19T09:00:00"}, {"@type": "Event", "name": "Arlington Heights Park Foundation Golf Classic", "url": "https://www.ahpd.org/event/arlington-heights-park-foundation-golf-classic/", "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode", "description": "The Arlington Heights Park Foundation welcomes all golfers to join us at Arlington Lakes Golf Club! Join us for a four-person scramble competition for a good…", "startDate": "2026-09-24T09:00:00"}, {"@type": "Event", "name": "Speakeasy at the Museum", "url": "https://www.ahpd.org/event/speakeasy-at-the-museum/", "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode", "description": "Step back in time to the Roaring Twenties at our exclusive Speakeasy Night! Enjoy two Prohibition Era themed cocktails (alcohol and non-alcohol options…", "startDate": "2026-09-25T19:00:00"}, {"@type": "Event", "name": "Autumn Harvest", "url": "https://www.ahpd.org/event/autumn-harvest-2026/", "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode", "description": "Don’t miss fall family fun with crafts, games, hayrides, a scarecrow building contest, live music and entertainment, and food available for purchase from…", "startDate": "2026-10-10T11:00:00"}, {"@type": "Event", "name": "AHPD Senior Art Show", "url": "https://www.ahpd.org/event/ahpd-senior-art-show/", "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode", "description": "Take in an evening of art and enjoyment! Peruse AHPD adult students’ creations at the annual Art Show. Visual art, fiber arts and woodcraft will be on display…", "startDate": "2026-10-14T16:00:00"}]}</script>
 
 
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebPage", "name": "Arlington Heights — Weekend & Trip Planner", "url": "https://randerson-23.github.io/agent-business/arlington-heights-60005/", "dateModified": "2026-08-30T01:04:25.240094+00:00", "isPartOf": {"@type": "WebSite", "name": "Weekend & Trip Planner", "url": "https://randerson-23.github.io/agent-business/"}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebPage", "name": "Arlington Heights — Weekend & Trip Planner", "url": "https://randerson-23.github.io/agent-business/arlington-heights-60005/", "dateModified": "2026-08-30T02:03:11.636528+00:00", "isPartOf": {"@type": "WebSite", "name": "Weekend & Trip Planner", "url": "https://randerson-23.github.io/agent-business/"}}</script>
 <script>
 (function () {
   var activeTags = new Set();

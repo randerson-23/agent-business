@@ -343,13 +343,24 @@
     border-bottom: 2px solid var(--border);
   }
 
+  /* flex-wrap, not CSS grid (ROADMAP.md Phase 11 #61): this grid is
+     reused for every event listing, the evergreen section, guides, and
+     the directory - a lone last-row card (4 items in a 3-column grid,
+     seen for real on both the guides index and a guide's own "What's
+     inside" list) stranded next to an empty gap, the same defect class
+     already fixed on the hub (PR #80) and sponsor tiers (PR #83). Grid
+     only collapses a column track with zero items in the *entire*
+     grid, not one merely unused in one row - flexbox distributes
+     flex-grow space per row independently, so a lone last-row card
+     stretches to fill it instead. */
   .card-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    display: flex;
+    flex-wrap: wrap;
     gap: 14px;
   }
   .card {
     position: relative;
+    flex: 1 1 260px;
     background: var(--card);
     border-radius: var(--radius-lg);
     box-shadow: var(--shadow-sm);
@@ -705,7 +716,7 @@
   <footer>
     Local business? See the
     <a href="https://randerson-23.github.io/agent-business/sponsor/">sponsor page</a>.
-    <br>Generated 2026-08-30 01:04 UTC.
+    <br>Generated 2026-08-30 02:03 UTC.
     
     <br><a href="https://randerson-23.github.io/agent-business/palatine-60067/weekly-summary.txt">Copy this week's summary</a> — a plain-text block ready to paste into a local group.
   </footer>
@@ -731,7 +742,7 @@
 
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "How current is this guide?", "acceptedAnswer": {"@type": "Answer", "text": "It's regenerated automatically from the village, library, and park district's own listings, typically several times a week - not a one-time write-up that goes stale."}}, {"@type": "Question", "name": "Is this every event or business, or just what's listed here?", "acceptedAnswer": {"@type": "Answer", "text": "Only what the linked public sources publish. For full details, hours, or anything not listed here, check the official page each item links to."}}, {"@type": "Question", "name": "How do I see what's happening in Palatine this specific weekend?", "acceptedAnswer": {"@type": "Answer", "text": "See the <a href=\"https://randerson-23.github.io/agent-business/palatine-60067/this-weekend/\">weekend view<\/a>, which only shows items with a known date in the coming Friday-Sunday."}}, {"@type": "Question", "name": "Can I add an event, or suggest a business for the directory?", "acceptedAnswer": {"@type": "Answer", "text": "Yes - <a href=\"https://github.com/randerson-23/agent-business/issues/new?template=event-submission.yml\">submit an event<\/a> and a person reviews it before it goes live, or a business owner can <a href=\"https://randerson-23.github.io/agent-business/sponsor/\">inquire about a listing<\/a>."}}]}</script>
 
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebPage", "name": "Palatine — Weekend & Trip Planner", "url": "https://randerson-23.github.io/agent-business/palatine-60067/guides/fall-family-guide/", "dateModified": "2026-08-30T01:04:25.240094+00:00", "isPartOf": {"@type": "WebSite", "name": "Weekend & Trip Planner", "url": "https://randerson-23.github.io/agent-business/"}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebPage", "name": "Palatine — Weekend & Trip Planner", "url": "https://randerson-23.github.io/agent-business/palatine-60067/guides/fall-family-guide/", "dateModified": "2026-08-30T02:03:11.636528+00:00", "isPartOf": {"@type": "WebSite", "name": "Weekend & Trip Planner", "url": "https://randerson-23.github.io/agent-business/"}}</script>
 <script>
 (function () {
   var activeTags = new Set();

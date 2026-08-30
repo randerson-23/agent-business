@@ -343,13 +343,24 @@
     border-bottom: 2px solid var(--border);
   }
 
+  /* flex-wrap, not CSS grid (ROADMAP.md Phase 11 #61): this grid is
+     reused for every event listing, the evergreen section, guides, and
+     the directory - a lone last-row card (4 items in a 3-column grid,
+     seen for real on both the guides index and a guide's own "What's
+     inside" list) stranded next to an empty gap, the same defect class
+     already fixed on the hub (PR #80) and sponsor tiers (PR #83). Grid
+     only collapses a column track with zero items in the *entire*
+     grid, not one merely unused in one row - flexbox distributes
+     flex-grow space per row independently, so a lone last-row card
+     stretches to fill it instead. */
   .card-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    display: flex;
+    flex-wrap: wrap;
     gap: 14px;
   }
   .card {
     position: relative;
+    flex: 1 1 260px;
     background: var(--card);
     border-radius: var(--radius-lg);
     box-shadow: var(--shadow-sm);
@@ -614,7 +625,7 @@
   <footer>
     Local business? See the
     <a href="https://randerson-23.github.io/agent-business/sponsor/">sponsor page</a>.
-    <br>Generated 2026-08-30 01:04 UTC.
+    <br>Generated 2026-08-30 02:03 UTC.
     
     <br><a href="https://randerson-23.github.io/agent-business/mount-prospect-60056/weekly-summary.txt">Copy this week's summary</a> — a plain-text block ready to paste into a local group.
   </footer>
@@ -638,7 +649,7 @@
 
 
 
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebPage", "name": "Mount Prospect — Weekend & Trip Planner", "url": "https://randerson-23.github.io/agent-business/mount-prospect-60056/today/", "dateModified": "2026-08-30T01:04:25.240094+00:00", "isPartOf": {"@type": "WebSite", "name": "Weekend & Trip Planner", "url": "https://randerson-23.github.io/agent-business/"}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebPage", "name": "Mount Prospect — Weekend & Trip Planner", "url": "https://randerson-23.github.io/agent-business/mount-prospect-60056/today/", "dateModified": "2026-08-30T02:03:11.636528+00:00", "isPartOf": {"@type": "WebSite", "name": "Weekend & Trip Planner", "url": "https://randerson-23.github.io/agent-business/"}}</script>
 <script>
 (function () {
   var activeTags = new Set();
