@@ -1946,6 +1946,84 @@ exactly as intended when the embed can't load.
     seconds - worth treating as complementary, not either/or, going
     forward.
 
+#### Research pass 2026-08-30 (thirteenth pass)
+
+All twelfth-pass items shipped in PR #83, and the build loop has started
+finding its own work (#84's orphan grids, #85's five real axe-core
+violations) — a good sign. Item 57 was handled with unusually good
+judgment: the `mailto:` infrastructure shipped but was **deliberately left
+inactive rather than inventing Ryan's email address**. That is the right
+call and should not be second-guessed.
+
+This pass inspected the GEO artefacts and the flagship guide. The GEO work
+is genuinely good — `llms.txt` is well-structured with regions, weekend
+views, guides and sponsorship; `robots.txt` explicitly allows GPTBot,
+ClaudeBot, PerplexityBot, OAI-SearchBot, Google-Extended and CCBot. No
+notes there. The guide is a different story.
+
+#### P1 (new)
+
+63. **The guides contain no facts.** "New to Town" — the flagship content
+    for the $5,000/yr Neighborhood Authority tier, and the intended
+    landing page for "moving to Mount Prospect" — is five cards that each
+    describe a thing existing and then tell the reader to go find it:
+    *"Water service, refuse & recycling pickup, and Village vehicle sticker
+    requirements are typically set up directly with the Village — check
+    current requirements and any new-resident forms on its site."* No
+    link, no deadline, no fee, no phone number. *"Illinois suburbs are
+    typically served by separate elementary and high school districts
+    assigned by home address"* — while PR #81 just added **District 57's
+    calendar as a source**, so the build already knows the district's name
+    and doesn't say it. *"The Downtown Merchants and the Village's own
+    tourism site are a good starting point"* — both are configured sources
+    from PR #66, and neither is linked.
+    The hedging words give it away: *typically*, *most residents*, *a good
+    starting point*. **The cards do not even carry links**, though every
+    event card on the site does.
+    A newcomer guide's entire value is specifics — the vehicle sticker
+    deadline and fee, what proof of residency a library card needs, which
+    district serves which addresses, which day refuse is collected. This
+    also matters for citation: the seventh pass found AI systems now
+    cross-reference claims against live sources, and hedged non-claims give
+    them nothing to verify or quote. At minimum, **every guide card should
+    link to the specific source page it is describing** — those URLs are
+    already sitting in `config/regions/*.yaml`. Naming the real district,
+    the real fee and the real deadline is what would make it worth the
+    tier it is meant to sell.
+    Smaller, same page: the save-star on a guide card offers to add "Find
+    your school district" to *My Weekend*, which makes no sense — the tray
+    is for events.
+
+#### P2 (new)
+
+64. **Consolidate what needs Ryan into one block at the top of Phase 11.**
+    Three separate items now block on one person and are scattered across
+    ~1,700 lines: item 39/46 (register a domain — gates findability *and*
+    the entire six-item newsletter cluster, since SPF/DKIM/DMARC cannot
+    exist without it), item 57 (set `contact_email` in
+    `config/sponsors.yaml` — one line, and it unbreaks the only conversion
+    point in the business), and the `buttondown_username` in
+    `newsletter.yaml`. Each is a minutes-long action with outsized
+    consequences, and none is discoverable without reading the whole file.
+    Put a short "Needs Ryan" list at the top of Phase 11: the action, the
+    one-line reason, and what it unblocks. The loop's output is only
+    useful if the human's five available minutes land on the right thing.
+
+65. **Everything currently points at `github.io`, and the citations are
+    accruing there.** `llms.txt`, `sitemap.xml`, every canonical tag and
+    every cross-region link resolves to
+    `randerson-23.github.io/agent-business/`. That is one constant to
+    change (Phase 9 built it that way, correctly). The cost is not the
+    edit — it is that the third pass's finding cuts both ways: content
+    refreshed within 30 days earns ~3.2× more AI citations, so this site
+    is **actively accruing citations, links and crawl history to an
+    address it intends to abandon**. GitHub Pages will redirect, but the
+    AI citation corpora and `llms.txt` caches that item 22 targets have no
+    guarantee of re-crawling promptly. Every week of delay compounds a
+    migration cost that is currently near zero. Not a new task — evidence
+    that item 39 gets more expensive to defer, and it belongs in item 64's
+    list with that framing.
+
 ## Working agreements for autonomous iteration
 
 - Cadence is hourly (the platform's durable scheduler has a 1-hour floor;
