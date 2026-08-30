@@ -867,7 +867,11 @@
   var tray = load();
 
   function render() {
-    widget.hidden = false;
+    // ROADMAP.md Phase 11 #60: "My Weekend (0)" used to show unconditionally
+    // once JS ran, earning screen space (and on mobile, covering the
+    // sponsor card's pricing sentence) for a tray with nothing in it yet.
+    // Stay hidden until there's at least one saved item.
+    widget.hidden = tray.length === 0;
     countEl.textContent = tray.length;
     itemsEl.innerHTML = "";
     if (!tray.length) {

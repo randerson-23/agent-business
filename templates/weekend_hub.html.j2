@@ -344,7 +344,11 @@
   var tray = load();
 
   function render() {
-    widget.hidden = false;
+    // ROADMAP.md Phase 11 #60: same fix as region.html.j2 - stay hidden
+    // until there's at least one saved item, instead of showing
+    // "My Weekend (0)" unconditionally and earning screen space for
+    // nothing.
+    widget.hidden = tray.length === 0;
     countEl.textContent = tray.length;
     itemsEl.innerHTML = "";
     if (!tray.length) {

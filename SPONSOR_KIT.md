@@ -48,10 +48,10 @@ commitment.
 
 | Placement | Price | Details |
 |---|---|---|
-| **Annual Partner** | $1,200 / year | A permanent listing on the region's business directory, a spotlight placement inside one relevant seasonal guide, a live SEO backlink, and priority consideration for Editor's Pick. |
-| **Neighborhood Authority** | $5,000 / year, one business per region | Everything in Annual Partner, held exclusively for your region year-round. Built for real estate and other locally-budgeted categories after neighborhood-level presence, not just leads. |
-| **Weekly Spot** | $50 / week, or $175 / month (4 weeks) | Top-of-page banner with your business name, a 2-sentence blurb, and a link, on that week's issue. Not ready for a year? Start here. |
 | **Event Promo** | $20 one-time | Your single event or announcement boosted to the top of "This Week." |
+| **Weekly Spot** | $50 / week, or $175 / month (4 weeks) | Top-of-page banner with your business name, a 2-sentence blurb, and a link, on that week's issue. Not ready for a year? Start here. |
+| **Annual Partner** ⭐ recommended | $1,200 / year | A permanent listing on the region's business directory, a spotlight placement inside one relevant seasonal guide, a live SEO backlink, and priority consideration for Editor's Pick. |
+| **Neighborhood Authority** | $5,000 / year, one business per region | Everything in Annual Partner, held exclusively for your region year-round. Built for real estate and other locally-budgeted categories after neighborhood-level presence, not just leads. |
 
 Payment: Venmo/Zelle/check. Annual and month-to-month options — no
 long-term contract on Weekly Spot or Event Promo, cancel anytime.
