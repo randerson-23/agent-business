@@ -198,6 +198,19 @@ have nothing pressing, pick the highest unclaimed `P1` item below. Mark items
 `✅ done (PR #N)` in place rather than deleting them, so the research loop
 doesn't re-suggest something already shipped.
 
+#### Needs Ryan (thirteenth research pass, #64)
+
+Three items block on one person, each a minutes-long action with outsized
+consequences, and none was discoverable without reading the whole file.
+Consolidated here so the human's next few available minutes land on the
+right thing, instead of being scattered across ~2,000 lines.
+
+| Action | One line why | Unblocks |
+|---|---|---|
+| Register a domain (item 39/46) | Everything - `llms.txt`, `sitemap.xml`, every canonical tag and cross-region link - resolves to `randerson-23.github.io/agent-business/` today. GitHub Pages will redirect once a real domain exists, but AI citation corpora and `llms.txt` caches have no guarantee of re-crawling promptly, so **every week of delay compounds a migration cost that's currently near zero** (item 65). Also gates SPF/DKIM/DMARC, so it's a hard prerequisite for the entire six-item newsletter cluster (24/25/31/36/37/46/47), not just findability. |
+| Set `contact_email:` in `config/sponsors.yaml` | One line. The sponsor page's only conversion point currently falls back to a GitHub "New issue" form (item 57) - a real local business owner won't sign up for that to buy a $1,200-5,000/year placement. Deliberately left unset by the build loop rather than guessing Ryan's address. |
+| Set `buttondown_username:` in `config/newsletter.yaml` | One line. Activates the newsletter signup form (currently hidden per item 56, correctly, rather than showing a permanent "coming soon"). Blocked on the domain above for proper email authentication first. |
+
 #### Competitors reviewed (2026-08-27)
 
 | Site | What it is | Worth stealing |
@@ -1963,66 +1976,65 @@ notes there. The guide is a different story.
 
 #### P1 (new)
 
-63. **The guides contain no facts.** "New to Town" — the flagship content
-    for the $5,000/yr Neighborhood Authority tier, and the intended
-    landing page for "moving to Mount Prospect" — is five cards that each
-    describe a thing existing and then tell the reader to go find it:
-    *"Water service, refuse & recycling pickup, and Village vehicle sticker
-    requirements are typically set up directly with the Village — check
-    current requirements and any new-resident forms on its site."* No
-    link, no deadline, no fee, no phone number. *"Illinois suburbs are
-    typically served by separate elementary and high school districts
-    assigned by home address"* — while PR #81 just added **District 57's
-    calendar as a source**, so the build already knows the district's name
-    and doesn't say it. *"The Downtown Merchants and the Village's own
-    tourism site are a good starting point"* — both are configured sources
-    from PR #66, and neither is linked.
-    The hedging words give it away: *typically*, *most residents*, *a good
-    starting point*. **The cards do not even carry links**, though every
-    event card on the site does.
-    A newcomer guide's entire value is specifics — the vehicle sticker
-    deadline and fee, what proof of residency a library card needs, which
-    district serves which addresses, which day refuse is collected. This
-    also matters for citation: the seventh pass found AI systems now
-    cross-reference claims against live sources, and hedged non-claims give
-    them nothing to verify or quote. At minimum, **every guide card should
-    link to the specific source page it is describing** — those URLs are
-    already sitting in `config/regions/*.yaml`. Naming the real district,
-    the real fee and the real deadline is what would make it worth the
-    tier it is meant to sell.
-    Smaller, same page: the save-star on a guide card offers to add "Find
-    your school district" to *My Weekend*, which makes no sense — the tray
-    is for events.
+63. ⚠️ done for Mount Prospect, the other three regions not yet done.
+    **The guides contain no facts.** Confirmed, with one correction: the
+    "no links at all" claim was only half right — 4 of the original 5
+    cards already had a real `url` (verified in the generated HTML), just
+    styled without an underline like every other card link on the site
+    (`h3 a { text-decoration: none; }`), so they read as plain text at a
+    glance. The deeper finding stood regardless: hedged, unlinked-feeling
+    prose with no real specifics.
+    "No specific district site has been confirmed" turned out to be
+    solvable, not a hard limit — `WebSearch` isn't blocked here even
+    though this sandbox's own network can't reach arbitrary domains
+    (same technique that found item 32's real D57 calendar URL), and it
+    surfaced real official pages for everything: District 57
+    (`d57.org`) and Township High School District 214 (`d214.org`, the
+    real district Prospect High School belongs to) as two separate
+    cards with real links instead of one generic hedge; the Village's
+    real "New Resident Information" page; the library's real
+    "Get a Library Card" page with its actual proof-of-residency
+    requirement and phone number; Public Works' real phone number.
+    **It also caught a real factual error before it could ship**: the
+    original card described "Village vehicle sticker requirements" as
+    current, but the program was **permanently eliminated in the 2024
+    budget** (confirmed via multiple independent local news sources —
+    Daily Herald, Journal & Topics — reporting the November 2024 vote,
+    a ~5% levy cut and ~$250/household savings). Older
+    mountprospect.org news pages from 2018-2020 about the old $45
+    fee/May 1 deadline are still findable, so a newcomer researching on
+    their own could easily land on stale information; the guide now
+    says the program was eliminated instead of citing a fee that no
+    longer applies. This is exactly why a fee or deadline was never
+    guessed here even under pressure to add "specifics" — the one time
+    a supposedly-stable civic fact was checked, it had changed.
+    Also fixed the smaller finding: the tray-star ("add to My Weekend")
+    no longer renders on guide cards or the guides index (gated on
+    `nav_current != "guides"` in `region.html.j2`'s shared card loop) -
+    a guide item or a guide's own title was never something that
+    belonged in a weekend-planning tray.
+    **Not done**: the same treatment for Arlington Heights, Des Plaines,
+    and Palatine's own "New to Town" guides - deliberately scoped to one
+    region this pass to keep the research verifiable, same discipline as
+    item 32's school-calendar rollout. Real follow-up work, not
+    forgotten.
 
 #### P2 (new)
 
-64. **Consolidate what needs Ryan into one block at the top of Phase 11.**
-    Three separate items now block on one person and are scattered across
-    ~1,700 lines: item 39/46 (register a domain — gates findability *and*
-    the entire six-item newsletter cluster, since SPF/DKIM/DMARC cannot
-    exist without it), item 57 (set `contact_email` in
-    `config/sponsors.yaml` — one line, and it unbreaks the only conversion
-    point in the business), and the `buttondown_username` in
-    `newsletter.yaml`. Each is a minutes-long action with outsized
-    consequences, and none is discoverable without reading the whole file.
-    Put a short "Needs Ryan" list at the top of Phase 11: the action, the
-    one-line reason, and what it unblocks. The loop's output is only
-    useful if the human's five available minutes land on the right thing.
+64. ✅ done. **Consolidate what needs Ryan into one block at the top of
+    Phase 11.** Added a "Needs Ryan" table right after Phase 11's intro
+    paragraph: register a domain, set `contact_email` in
+    `config/sponsors.yaml`, set `buttondown_username` in
+    `config/newsletter.yaml` — each with a one-line reason and what it
+    unblocks, including item 65's citation-migration-cost framing folded
+    into the domain row rather than kept as a separate item.
 
-65. **Everything currently points at `github.io`, and the citations are
-    accruing there.** `llms.txt`, `sitemap.xml`, every canonical tag and
-    every cross-region link resolves to
-    `randerson-23.github.io/agent-business/`. That is one constant to
-    change (Phase 9 built it that way, correctly). The cost is not the
-    edit — it is that the third pass's finding cuts both ways: content
-    refreshed within 30 days earns ~3.2× more AI citations, so this site
-    is **actively accruing citations, links and crawl history to an
-    address it intends to abandon**. GitHub Pages will redirect, but the
-    AI citation corpora and `llms.txt` caches that item 22 targets have no
-    guarantee of re-crawling promptly. Every week of delay compounds a
-    migration cost that is currently near zero. Not a new task — evidence
-    that item 39 gets more expensive to defer, and it belongs in item 64's
-    list with that framing.
+65. ✅ done (folded into item 64's table, not a separate item). **Everything
+    currently points at `github.io`, and the citations are accruing
+    there.** The finding is real and worth keeping visible, but it's a
+    reason the domain matters more each week, not a distinct task with
+    its own fix — captured as the "why" column for the domain row in
+    item 64's new table instead of its own roadmap line.
 
 ## Working agreements for autonomous iteration
 
