@@ -1976,7 +1976,7 @@ notes there. The guide is a different story.
 
 #### P1 (new)
 
-63. ⚠️ done for Mount Prospect and Arlington Heights; Des Plaines and
+63. ⚠️ done for Mount Prospect, Arlington Heights, and Des Plaines;
     Palatine not yet done.
     **The guides contain no facts.** Confirmed, with one correction: the
     "no links at all" claim was only half right — 4 of the original 5
@@ -2030,8 +2030,37 @@ notes there. The guide is a different story.
     Heights is John Hersey High School; corrected before the commit,
     same discipline as the vehicle-sticker catch, applied to my own
     draft this time rather than the source material.
-    **Still not done**: Des Plaines and Palatine's own "New to Town"
-    guides - same reasoning as before, real follow-up, not forgotten.
+    **Real follow-up, done a research pass later (fourteenth pass)**: Des
+    Plaines got the same treatment, and it paid off a third time: Des
+    Plaines eliminated its own vehicle sticker program too, back in July
+    2020 (Journal & Topics, Patch) - earlier than Mount Prospect's and
+    Arlington Heights' 2024 eliminations, extending the confirmed
+    regional pattern to three of four regions built so far. It also
+    surfaced a real, previously-invisible bug: `config/regions/des-plaines-60016.yaml`'s
+    City News source and every guide/evergreen link pointed at
+    `desplaines.org`, which doesn't resolve to the City at all (the
+    build log's "Connection reset by peer" on that source, noted back in
+    the ninth research pass, was never root-caused). The real City
+    domain is `desplainesil.gov`, confirmed via WebSearch against the
+    City's own "Access Your Government" and Media Services pages, with a
+    real news list page at `desplainesil.gov/Residents/News`. Every
+    `desplaines.org` reference in that config (the City News source, the
+    evergreen City card, the trick-or-treat guide link, and the New to
+    Town guide) was switched to the correct domain - not just a content
+    rewrite this time, a real bug fix. The new-to-town guide itself also
+    got real district names instead of a hedge: Community Consolidated
+    School District 62 (elementary/middle, `d62.org`) feeding into Maine
+    Township High School District 207's Maine West High School
+    (`maine207.org`) for most of the city, with a note that pockets fall
+    under East Maine SD 63 or Elk Grove's CCSD 59 instead - same
+    "confirm by address" discipline as Arlington Heights' guide, since
+    Des Plaines' district boundaries are genuinely more fragmented than
+    the other two regions'.
+    **Still not done**: Palatine's own "New to Town" guide - same
+    reasoning as before, real follow-up, not forgotten. Worth
+    specifically checking whether Palatine also eliminated a vehicle
+    sticker program, given the pattern now holds for 3 of 3 regions
+    checked.
 
 #### P2 (new)
 
