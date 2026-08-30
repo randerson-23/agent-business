@@ -694,7 +694,7 @@
   <footer>
     Local business? See the
     <a href="https://randerson-23.github.io/agent-business/sponsor/">sponsor page</a>.
-    <br>Generated 2026-08-29 22:54 UTC.
+    <br>Generated 2026-08-30 01:04 UTC.
     
     <br><a href="https://randerson-23.github.io/agent-business/arlington-heights-60005/weekly-summary.txt">Copy this week's summary</a> — a plain-text block ready to paste into a local group.
   </footer>
@@ -720,7 +720,7 @@
 <script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "Event", "name": "Touch-A-Truck", "url": "https://www.ahpd.org/event/touch-a-truck-2/", "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode", "description": "This FREE event is perfect for families to play outside, meet with local businesses and Touch-A-Truck. This event is a great opportunity for your child to see…", "startDate": "2026-09-12T09:30:00"}, {"@type": "Event", "name": "AHPD Senior Art Show", "url": "https://www.ahpd.org/event/ahpd-senior-art-show/", "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode", "description": "Take in an evening of art and enjoyment! Peruse AHPD adult students’ creations at the annual Art Show. Visual art, fiber arts and woodcraft will be on display…", "startDate": "2026-10-14T16:00:00"}]}</script>
 
 
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebPage", "name": "Arlington Heights — Weekend & Trip Planner", "url": "https://randerson-23.github.io/agent-business/arlington-heights-60005/free/", "dateModified": "2026-08-29T22:54:06.502749+00:00", "isPartOf": {"@type": "WebSite", "name": "Weekend & Trip Planner", "url": "https://randerson-23.github.io/agent-business/"}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebPage", "name": "Arlington Heights — Weekend & Trip Planner", "url": "https://randerson-23.github.io/agent-business/arlington-heights-60005/free/", "dateModified": "2026-08-30T01:04:25.240094+00:00", "isPartOf": {"@type": "WebSite", "name": "Weekend & Trip Planner", "url": "https://randerson-23.github.io/agent-business/"}}</script>
 <script>
 (function () {
   var activeTags = new Set();
@@ -805,7 +805,11 @@
   var tray = load();
 
   function render() {
-    widget.hidden = false;
+    // ROADMAP.md Phase 11 #60: "My Weekend (0)" used to show unconditionally
+    // once JS ran, earning screen space (and on mobile, covering the
+    // sponsor card's pricing sentence) for a tray with nothing in it yet.
+    // Stay hidden until there's at least one saved item.
+    widget.hidden = tray.length === 0;
     countEl.textContent = tray.length;
     itemsEl.innerHTML = "";
     if (!tray.length) {

@@ -648,7 +648,7 @@
   <footer>
     Local business? See the
     <a href="https://randerson-23.github.io/agent-business/sponsor/">sponsor page</a>.
-    <br>Generated 2026-08-29 22:54 UTC.
+    <br>Generated 2026-08-30 01:04 UTC.
     
     <br><a href="https://randerson-23.github.io/agent-business/palatine-60067/weekly-summary.txt">Copy this week's summary</a> — a plain-text block ready to paste into a local group.
   </footer>
@@ -672,7 +672,7 @@
 
 
 
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebPage", "name": "Palatine — Weekend & Trip Planner", "url": "https://randerson-23.github.io/agent-business/palatine-60067/free/", "dateModified": "2026-08-29T22:54:06.502749+00:00", "isPartOf": {"@type": "WebSite", "name": "Weekend & Trip Planner", "url": "https://randerson-23.github.io/agent-business/"}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebPage", "name": "Palatine — Weekend & Trip Planner", "url": "https://randerson-23.github.io/agent-business/palatine-60067/free/", "dateModified": "2026-08-30T01:04:25.240094+00:00", "isPartOf": {"@type": "WebSite", "name": "Weekend & Trip Planner", "url": "https://randerson-23.github.io/agent-business/"}}</script>
 <script>
 (function () {
   var activeTags = new Set();
@@ -757,7 +757,11 @@
   var tray = load();
 
   function render() {
-    widget.hidden = false;
+    // ROADMAP.md Phase 11 #60: "My Weekend (0)" used to show unconditionally
+    // once JS ran, earning screen space (and on mobile, covering the
+    // sponsor card's pricing sentence) for a tray with nothing in it yet.
+    // Stay hidden until there's at least one saved item.
+    widget.hidden = tray.length === 0;
     countEl.textContent = tray.length;
     itemsEl.innerHTML = "";
     if (!tray.length) {
