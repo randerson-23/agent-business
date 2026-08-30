@@ -129,25 +129,42 @@ guides:
         url: "https://randerson-23.github.io/agent-business/arlington-heights-60005/directory/"
         tags: ["kid_friendly"]
 
-  # ROADMAP.md Phase 11 #49 (ninth research pass, 2026-08-29) - see the
-  # Mount Prospect config for the rationale; same civic-source-only
-  # discipline and same reason school registration has no url.
+  # ROADMAP.md Phase 11 #49 (ninth research pass) built this guide; #63
+  # (thirteenth research pass) found Mount Prospect's version had hedged
+  # into near-uselessness and one flatly wrong fact - see that config's
+  # comment for the full rationale. Same WebSearch-sourced treatment
+  # applied here (2026-08-30): every fact and link below is sourced, not
+  # guessed. Verify against the linked page before treating a number as
+  # current, same as any secondhand civic information.
+  #
+  # Real finding, not assumed: Arlington Heights ALSO eliminated its
+  # vehicle sticker program (and dog licenses) in the 2024 budget,
+  # confirmed directly on the Village's own site
+  # (vah.com/_T13_R289.php, "Vehicle Stickers in 2024 and Beyond No
+  # Longer Required") - the same change Mount Prospect made the same
+  # year, suggesting a real regional pattern worth checking before
+  # writing Des Plaines' and Palatine's own guides.
   - slug: "new-to-town"
     title: "New to Town"
-    summary: "The practical first-week checklist for anyone new to Arlington Heights — utilities and vehicle stickers, a library card, Park District registration, and where school-district boundaries actually come from. Pulls from the same civic sources as the weekly digest, organized for someone who just moved in rather than someone browsing this week's events."
+    summary: "The practical first-week checklist for anyone new to Arlington Heights — utilities and refuse/recycling, a library card, Park District registration, and which school districts actually serve your address. Pulls from the same civic sources as the weekly digest, organized for someone who just moved in rather than someone browsing this week's events."
     items:
-      - title: "Village services, utilities & vehicle stickers"
-        detail: "Water service, refuse & recycling pickup, and Village vehicle sticker requirements are typically set up directly with the Village — check current requirements and any new-resident forms on its site."
-        url: "https://www.vah.com/"
+      - title: "Village services, utilities, refuse & recycling"
+        detail: "Water is billed by the Village every two months (Water Billing, 847-368-5520). Refuse, recycling, and yard waste go out together once a week via Groot (800-244-1977) - collection day depends which of the Village's four quadrants you're in (split by Oakton St. and Arlington Heights Rd.), so check the schedule. The vehicle sticker and dog license programs were both eliminated in the 2024 budget, so that's two less errands than older guides mention."
+        url: "https://www.vah.com/residents/new_residents.php"
         tags: []
       - title: "Get an Arlington Heights Memorial Library card"
-        detail: "A free library card is one of the fastest ways to feel settled in — story times, makerspace classes, and programs for all ages once you're in the system."
-        url: "https://www.ahml.info/"
+        detail: "Register online for temporary or full access, or bring a photo ID with your current address to the Checkout Desk for a full-service card. If your ID address isn't current, a recent utility bill, postmarked mail, lease, or tax bill also works. Resident cards don't expire while you live in the library district. Circulation: 847-392-0100."
+        url: "https://www.ahml.info/register"
         tags: ["indoor", "kid_friendly", "free"]
       - title: "Register for Arlington Heights Park District programs"
         detail: "Most residents set up one household account, then register for pools, rec classes, and seasonal programs individually — browse the current program guide to get started."
         url: "https://www.ahpd.org/"
         tags: ["outdoor", "kid_friendly"]
-      - title: "Find your school district"
-        detail: "Illinois suburbs are typically served by separate elementary and high school districts assigned by home address, not by village boundaries — check with the specific district for your new address rather than assuming it matches a neighbor's."
+      - title: "Arlington Heights School District 25 (elementary & middle school)"
+        detail: "7 elementary and 2 middle schools serve about 5,500 students — confirm your specific address, since school boundaries don't always follow village lines. District office: (847) 758-4900."
+        url: "https://www.sd25.org/Registration"
+        tags: []
+      - title: "Township High School District 214 (high school)"
+        detail: "John Hersey High School, Arlington Heights' own, is part of District 214 - the same district that serves Mount Prospect's Prospect High School and several other neighboring towns — confirm by address rather than assuming."
+        url: "https://www.d214.org/"
         tags: []

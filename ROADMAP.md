@@ -1976,7 +1976,8 @@ notes there. The guide is a different story.
 
 #### P1 (new)
 
-63. ⚠️ done for Mount Prospect, the other three regions not yet done.
+63. ⚠️ done for Mount Prospect and Arlington Heights; Des Plaines and
+    Palatine not yet done.
     **The guides contain no facts.** Confirmed, with one correction: the
     "no links at all" claim was only half right — 4 of the original 5
     cards already had a real `url` (verified in the generated HTML), just
@@ -2013,11 +2014,24 @@ notes there. The guide is a different story.
     `nav_current != "guides"` in `region.html.j2`'s shared card loop) -
     a guide item or a guide's own title was never something that
     belonged in a weekend-planning tray.
-    **Not done**: the same treatment for Arlington Heights, Des Plaines,
-    and Palatine's own "New to Town" guides - deliberately scoped to one
-    region this pass to keep the research verifiable, same discipline as
-    item 32's school-calendar rollout. Real follow-up work, not
-    forgotten.
+    **Real follow-up, done the next hour**: Arlington Heights got the
+    same treatment. Same WebSearch-sourced technique, and it directly
+    paid off twice more. First, confirmed a real regional pattern, not
+    a Mount Prospect one-off: Arlington Heights **also** eliminated its
+    vehicle sticker program *and dog licenses* in the 2024 budget,
+    confirmed directly on the Village's own site
+    (`vah.com/_T13_R289.php`) - worth checking before writing Des
+    Plaines' and Palatine's guides too, since the same change may well
+    apply there. Second, a research mistake was caught and fixed before
+    shipping: a first draft named "Rolling Meadows and Arlington high
+    schools" as District 214 schools serving Arlington Heights -
+    Arlington High School actually closed in 1984, so that would have
+    been wrong. The real currently-operating D214 school in Arlington
+    Heights is John Hersey High School; corrected before the commit,
+    same discipline as the vehicle-sticker catch, applied to my own
+    draft this time rather than the source material.
+    **Still not done**: Des Plaines and Palatine's own "New to Town"
+    guides - same reasoning as before, real follow-up, not forgotten.
 
 #### P2 (new)
 
