@@ -137,9 +137,13 @@
   section.block .region-link { font-size: 13px; font-weight: 600; color: var(--accent); text-decoration: none; }
   section.block .region-link:hover { text-decoration: underline; }
 
-  .card-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 14px; margin-top: 14px; }
+  /* flex-wrap, not CSS grid - same fix as region.html.j2's .card-grid
+     (ROADMAP.md Phase 11 #61): each region's own section here can just
+     as easily land on 4 dated events and strand the last one. */
+  .card-grid { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 14px; }
   .card {
     position: relative;
+    flex: 1 1 260px;
     background: var(--card);
     border-radius: var(--radius-lg);
     box-shadow: var(--shadow-sm);

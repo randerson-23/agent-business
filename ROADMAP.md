@@ -1879,6 +1879,31 @@ improvement — one quiet italic line and an immediate pivot to evergreen
 content, instead of six identical apologies. The map fallback behaves
 exactly as intended when the embed can't load.
 
+#### Found in passing, 2026-08-30
+
+61. ✅ done. **The orphan-card grid bug recurred on the guides index and a
+    guide's own "What's inside" list.** Not from a new research pass -
+    found while screenshotting the guides and directory pages after
+    shipping #57-60, to check whether the fix pattern used there was
+    needed anywhere else. It was: `.card-grid`, the CSS class shared by
+    every event listing, the evergreen section, guides, and the
+    directory (one class, defined once in `region.html.j2`, used at
+    every `nav_current` view), was still plain CSS grid. Four guides in
+    a three-column grid stranded "New to Town" alone on row two; four
+    items in "Birthday Parties & Kids' Classes"'s own "What's inside"
+    list stranded "Local party venues, entertainers & tutoring centers"
+    the same way - both confirmed with real screenshots before and after.
+    Same fix as the hub (PR #80) and sponsor tiers (PR #83): `.card-grid`
+    switched from CSS grid to flex-wrap with `.card { flex: 1 1 260px; }`
+    - grid only collapses a column track with zero items in the *entire*
+    grid, not one merely unused in one row, so it can't stretch a lone
+    last-row card; flexbox's per-line grow distribution can. The
+    directory page has no listings yet so the bug wasn't visible there,
+    but shares the same `.card-grid` markup and gets the fix for free.
+    `weekend_hub.html.j2` has its own separate copy of the same CSS
+    (each region's weekend section is its own grid) - fixed there too,
+    on the same reasoning, before it had a chance to show up for real.
+
 ## Working agreements for autonomous iteration
 
 - Cadence is hourly (the platform's durable scheduler has a 1-hour floor;
