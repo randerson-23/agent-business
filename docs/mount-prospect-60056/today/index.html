@@ -189,8 +189,19 @@
   .map-fallback a:hover .map-pin { fill: var(--accent); }
   .map-fallback a:hover .map-pin-label { fill: var(--accent); }
   .map-fallback a:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+  .map-frame {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+    /* Above the always-painted SVG fallback, below the Google Maps link
+       so that link stays clickable. */
+    z-index: 1;
+  }
   .map-link {
     position: absolute;
+    z-index: 2;
     right: 12px;
     bottom: 12px;
     background: var(--card);
@@ -839,7 +850,7 @@
   <footer>
     Local business? See the
     <a href="https://randerson-23.github.io/agent-business/sponsor/">sponsor page</a>.
-    <br>Generated 2026-09-15 13:55 UTC.
+    <br>Generated 2026-09-15 14:21 UTC.
     
     <br><a href="https://randerson-23.github.io/agent-business/mount-prospect-60056/weekly-summary.txt">Copy this week's summary</a> — a plain-text block ready to paste into a local group.
   </footer>
@@ -865,7 +876,7 @@
 <script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "Event", "name": "Baby Storytime", "url": "https://mppl.libnet.info/event/16291093", "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode", "description": "Tuesday, September 15 2026 9:30am - 10:00am \n A lifelong love of reading starts at birth! Join us for songs, rhymes, stories, and playtime made specially for…", "startDate": "2026-09-15T09:30:00+00:00"}, {"@type": "Event", "name": "Family Storytime", "url": "https://mppl.libnet.info/event/16290574", "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode", "description": "Tuesday, September 15 2026 10:30am - 11:00am \n Bring the whole family and join us for an interactive storytime with high-energy stories, songs, and activities.", "startDate": "2026-09-15T10:30:00+00:00"}, {"@type": "Event", "name": "Play and Learn", "url": "https://mppl.libnet.info/event/16440797", "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode", "description": "Tuesday, September 15 2026 11:30am - 12:15pm \n Join us each week for storytime, sing-alongs, and developmental play experiences that encourage learning…", "startDate": "2026-09-15T11:30:00+00:00"}, {"@type": "Event", "name": "Big Kids Storytime", "url": "https://mppl.libnet.info/event/16290729", "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode", "description": "Tuesday, September 15 2026 1:30pm - 2:15pm \n Grow into a super reader through playful books and fun with friends! This storytime is the perfect fit for…", "startDate": "2026-09-15T13:30:00+00:00"}, {"@type": "Event", "name": "Elected Officials Office Hours", "url": "https://mppl.libnet.info/event/15390261", "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode", "description": "Tuesday, September 15 2026 2:00pm - 4:00pm \n Meet privately with staff from the office of State Sen. Mark Walker.", "startDate": "2026-09-15T14:00:00+00:00"}, {"@type": "Event", "name": "League of Women Voters Voter Registration Event", "url": "https://mppl.libnet.info/event/17243570", "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode", "description": "Tuesday, September 15 2026 2:00pm - 4:00pm \n In recognition of National Voter Registration Day, the League of Women Voters will be on hand to register and…", "startDate": "2026-09-15T14:00:00+00:00"}]}</script>
 
 
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebPage", "name": "Mount Prospect — Weekend & Trip Planner", "url": "https://randerson-23.github.io/agent-business/mount-prospect-60056/today/", "dateModified": "2026-09-15T13:55:43.201765+00:00", "isPartOf": {"@type": "WebSite", "name": "Weekend & Trip Planner", "url": "https://randerson-23.github.io/agent-business/"}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebPage", "name": "Mount Prospect — Weekend & Trip Planner", "url": "https://randerson-23.github.io/agent-business/mount-prospect-60056/today/", "dateModified": "2026-09-15T14:21:24.254441+00:00", "isPartOf": {"@type": "WebSite", "name": "Weekend & Trip Planner", "url": "https://randerson-23.github.io/agent-business/"}}</script>
 <script>
 (function () {
   var activeTags = new Set();

@@ -189,8 +189,19 @@
   .map-fallback a:hover .map-pin { fill: var(--accent); }
   .map-fallback a:hover .map-pin-label { fill: var(--accent); }
   .map-fallback a:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+  .map-frame {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+    /* Above the always-painted SVG fallback, below the Google Maps link
+       so that link stays clickable. */
+    z-index: 1;
+  }
   .map-link {
     position: absolute;
+    z-index: 2;
     right: 12px;
     bottom: 12px;
     background: var(--card);
@@ -753,7 +764,7 @@
   <footer>
     Local business? See the
     <a href="https://randerson-23.github.io/agent-business/sponsor/">sponsor page</a>.
-    <br>Generated 2026-09-15 13:55 UTC.
+    <br>Generated 2026-09-15 14:21 UTC.
     
     <br><a href="https://randerson-23.github.io/agent-business/palatine-60067/weekly-summary.txt">Copy this week's summary</a> — a plain-text block ready to paste into a local group.
   </footer>
@@ -779,7 +790,7 @@
 <script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "Event", "name": "Palatine Oktoberfest (Friday)", "url": "https://palatinerotary.org/Oktoberfest.php", "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode", "description": "German beer, food & music return to Downtown Palatine. 5pm–midnight, N Smith & W Slade St. Free entry.", "startDate": "2026-09-18T00:00:00"}, {"@type": "Event", "name": "Palatine Oktoberfest — Family Day (Saturday)", "url": "https://palatinerotary.org/Oktoberfest.php", "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode", "description": "Family Day: games, crafts & entertainment plus German beer, food & music. Noon–midnight, N Smith & W Slade St. Free entry.", "startDate": "2026-09-19T00:00:00"}, {"@type": "Event", "name": "Palatine Oktoberfest (Sunday)", "url": "https://palatinerotary.org/Oktoberfest.php", "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode", "description": "German beer, food & music wind down Downtown Palatine's Oktoberfest. Noon–6pm, N Smith & W Slade St. Free entry.", "startDate": "2026-09-20T00:00:00"}]}</script>
 
 
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebPage", "name": "Palatine — Weekend & Trip Planner", "url": "https://randerson-23.github.io/agent-business/palatine-60067/free/", "dateModified": "2026-09-15T13:55:43.201765+00:00", "isPartOf": {"@type": "WebSite", "name": "Weekend & Trip Planner", "url": "https://randerson-23.github.io/agent-business/"}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebPage", "name": "Palatine — Weekend & Trip Planner", "url": "https://randerson-23.github.io/agent-business/palatine-60067/free/", "dateModified": "2026-09-15T14:21:24.254441+00:00", "isPartOf": {"@type": "WebSite", "name": "Weekend & Trip Planner", "url": "https://randerson-23.github.io/agent-business/"}}</script>
 <script>
 (function () {
   var activeTags = new Set();

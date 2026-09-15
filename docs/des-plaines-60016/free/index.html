@@ -189,8 +189,19 @@
   .map-fallback a:hover .map-pin { fill: var(--accent); }
   .map-fallback a:hover .map-pin-label { fill: var(--accent); }
   .map-fallback a:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+  .map-frame {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+    /* Above the always-painted SVG fallback, below the Google Maps link
+       so that link stays clickable. */
+    z-index: 1;
+  }
   .map-link {
     position: absolute;
+    z-index: 2;
     right: 12px;
     bottom: 12px;
     background: var(--card);
@@ -753,7 +764,7 @@
   <footer>
     Local business? See the
     <a href="https://randerson-23.github.io/agent-business/sponsor/">sponsor page</a>.
-    <br>Generated 2026-09-15 13:55 UTC.
+    <br>Generated 2026-09-15 14:21 UTC.
     
     <br><a href="https://randerson-23.github.io/agent-business/des-plaines-60016/weekly-summary.txt">Copy this week's summary</a> — a plain-text block ready to paste into a local group.
   </footer>
@@ -779,7 +790,7 @@
 <script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "Event", "name": "Des Plaines Fall Fest (Friday)", "url": "https://desplainesfallfest.org/", "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode", "description": "Carnival rides, live bands, food & drink at Lake Park. 6–11pm, 2200 Lee St. Free admission.", "startDate": "2026-09-18T00:00:00"}, {"@type": "Event", "name": "Des Plaines Fall Fest (Saturday)", "url": "https://desplainesfallfest.org/", "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode", "description": "Carnival rides, rock wall, petting zoo, food & 10 live bands at Lake Park. Noon–11pm, 2200 Lee St. Free admission.", "startDate": "2026-09-19T00:00:00"}, {"@type": "Event", "name": "Des Plaines Fall Fest (Sunday)", "url": "https://desplainesfallfest.org/", "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode", "description": "Carnival rides, rock wall, petting zoo & food wind down at Lake Park. Noon–7pm, 2200 Lee St. Free admission.", "startDate": "2026-09-20T00:00:00"}]}</script>
 
 
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebPage", "name": "Des Plaines — Weekend & Trip Planner", "url": "https://randerson-23.github.io/agent-business/des-plaines-60016/free/", "dateModified": "2026-09-15T13:55:43.201765+00:00", "isPartOf": {"@type": "WebSite", "name": "Weekend & Trip Planner", "url": "https://randerson-23.github.io/agent-business/"}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebPage", "name": "Des Plaines — Weekend & Trip Planner", "url": "https://randerson-23.github.io/agent-business/des-plaines-60016/free/", "dateModified": "2026-09-15T14:21:24.254441+00:00", "isPartOf": {"@type": "WebSite", "name": "Weekend & Trip Planner", "url": "https://randerson-23.github.io/agent-business/"}}</script>
 <script>
 (function () {
   var activeTags = new Set();
