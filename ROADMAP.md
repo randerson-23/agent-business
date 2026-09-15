@@ -2293,6 +2293,32 @@ This pass found something time-critical rather than strategic.
     exactly as designed with zero code changes. 205 tests still pass; hub
     weekend page went from 1 region section to 3.
 
+#### P3 (new)
+
+69. ✅ done. **The Porchlight rename (commit `953bd8a`) missed the .ics
+    calendar's PRODID and the sponsor-outreach templates.** Checked the
+    rename's own stated scope against the actual repo rather than
+    assuming "renamed everywhere the site names itself" covered
+    literally everything. It covered every page-facing string, but
+    missed two real, live places: the RFC 5545 `PRODID` field emitted in
+    every generated .ics file (both the server-side `build_ics_data_uri`
+    and the client-side "export my tray" JS in `region.html.j2` and
+    `weekend_hub.html.j2` - all three still said "Weekend Trip Planner"),
+    and `OUTREACH_TEMPLATES.md`, which the rename commit's own message
+    said covered "README and SPONSOR_KIT headings too" but didn't
+    actually touch. That file is real content a human would send
+    verbatim to a sponsor prospect - shipping it unrenamed would have had
+    someone email "I run Weekend & Trip Planner" days after the live
+    site started saying Porchlight.
+    Fixed both, and fixed a second real staleness spotted in the same
+    file while there: its own intro line still said "Mount Prospect
+    (60056) or Arlington Heights (60005) businesses," two regions behind
+    the site's actual four. Not a naming bug, but the same "the doc says
+    something the product no longer does" shape, caught by reading the
+    file rather than just grepping for the rename string. 211 tests
+    still pass; build exits 0 with the new PRODID confirmed in generated
+    output.
+
 ## Working agreements for autonomous iteration
 
 - Cadence is hourly (the platform's durable scheduler has a 1-hour floor;
