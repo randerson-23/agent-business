@@ -25,11 +25,12 @@
 #   - Experience Mount Prospect: same 403 Forbidden pattern as the Village
 #     sources above - domain responds, request is blocked.
 #   - Downtown Mount Prospect: mpdowntown.com/events/ returns 200 with 0
-#     matching items (no fetch error) - the page is reachable, it just
-#     doesn't currently expose any link whose text matches the configured
-#     keywords, or the real events live at a different path. Worth a
-#     `detail_link_pattern` once a real one is found, same as every other
-#     source that started this way.
+#     matching items (no fetch error). Tried a real `detail_link_pattern`
+#     and broader keywords 2026-09-15 (see that source's own comment) -
+#     confirmed still 0 the very next build. Most likely cause: the
+#     /events/ archive's link list is rendered by JavaScript, which this
+#     fetcher can't execute by design - not a keyword/pattern problem to
+#     keep tuning.
 #   - School District 57 — Calendar: CONFIRMED — added 2026-08-29 from a
 #     URL found via web search of d57.org's own iCalInfo page (ROADMAP.md
 #     Phase 11 #32), and the very next real build (run 33277287829)
@@ -138,22 +139,30 @@ sources:
 
   - name: "Downtown Mount Prospect — Events"
     type: html_events
-    # Root-caused 2026-09-15 (fifteenth research pass, ROADMAP.md item 66
-    # follow-up): this source was returning 200 with 0 items in every
-    # real build, and it was the wrong keywords all along, not a broken
-    # page. WebSearch of mpdowntown.com's own /events/ listing surfaced
-    # real, current events - "Progressive Dinner", "56 Music Fix",
-    # "Progressive Pub" - none of which contain any configured keyword
-    # ("event", "festival", "concert", "market", "sale", "sidewalk",
-    # "oktoberfest"), so the keyword fallback matched nothing even though
-    # the page has real content. Also found the real per-event URL
-    # shape: `mpdowntown.com/events/progressive-dinner-fine-dining/` - a
-    # slug under /events/, not the default `/event/\d+` numeric pattern,
-    # so it was never matching that either. Added a real
-    # `detail_link_pattern` below (takes priority over keywords once it
-    # matches anything) and broadened `keywords` as a fallback for
-    # whichever event names it doesn't cover. Not yet confirmed by a live
-    # fetch (this sandbox's own network is proxy-blocked too).
+    # 2026-09-15 (fifteenth research pass, ROADMAP.md item 66 follow-up):
+    # tried a real `detail_link_pattern` (a slug under /events/, found
+    # via WebSearch of mpdowntown.com/events/progressive-dinner-fine-
+    # dining/) plus broadened keywords, on the theory that the keyword
+    # list was just too narrow for this page's actual event names
+    # ("Progressive Dinner", "56 Music Fix", "Progressive Pub" - none
+    # matched "event"/"festival"/"concert"/etc.).
+    # CONFIRMED STILL 0 ITEMS against the very next real build (run
+    # 34997970218) - genuinely 0, not a transport error, so the fetch
+    # reached the page and found nothing either way. That rules out "wrong
+    # keywords" as the actual cause and points at something this fetcher
+    # can't fix by tuning keywords or patterns: fetch_html_events only
+    # sees the raw HTML response, and per its own docstring, a page whose
+    # link list is rendered by JavaScript (common for a WordPress events
+    # *archive* template, even when each individual event's own permalink
+    # page - the one WebSearch found indexed - is a normal static post)
+    # returns a real `[]` by design, not an error. Most likely explanation
+    # given two independent real-evidence attempts both landed on exactly
+    # 0: this page's /events/ archive view builds its list client-side.
+    # Not chasing a third guess without a way to actually inspect the
+    # rendered DOM (this sandbox's network is blocked, same as every
+    # source) - real, undropped follow-up if a headless-browser fetch
+    # path is ever added, same "don't guess with nothing behind it"
+    # discipline as District 214's PDF-only calendars.
     url: "https://mpdowntown.com/events/"
     detail_link_pattern: "/events/[a-z0-9-]+/?$"
     keywords: ["event", "festival", "concert", "market", "sale", "sidewalk", "oktoberfest", "dinner", "pub", "music", "crawl", "trolley"]
