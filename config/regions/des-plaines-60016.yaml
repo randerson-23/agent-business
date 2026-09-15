@@ -116,6 +116,32 @@ sources:
     section: "Park District Events"
     enabled: true
 
+# Known, dated, recurring annual events (ROADMAP.md Phase 11 #67/#68) -
+# see the Mount Prospect config for the full rationale. This one landed
+# with real urgency: WebSearch (2026-09-15) found Des Plaines Fall Fest,
+# the city's own annual festival at Lake Park, running THIS SAME
+# weekend, Fri-Sun Sept 18-20, 2026 - confirmed hours per day from
+# desplainesfallfest.org's own listing, not this region's own park
+# district source (dpparks.org's `/events` guess still hasn't surfaced
+# it). One entry per day since the hours differ each day. Not yet
+# confirmed by a live fetch of the linked page.
+annual_events:
+  - title: "Des Plaines Fall Fest (Friday)"
+    date: "2026-09-18"
+    detail: "Carnival rides, live bands, food & drink at Lake Park. 6–11pm, 2200 Lee St. Free admission."
+    url: "https://desplainesfallfest.org/"
+    tags: ["free", "kid_friendly", "outdoor"]
+  - title: "Des Plaines Fall Fest (Saturday)"
+    date: "2026-09-19"
+    detail: "Carnival rides, rock wall, petting zoo, food & 10 live bands at Lake Park. Noon–11pm, 2200 Lee St. Free admission."
+    url: "https://desplainesfallfest.org/"
+    tags: ["free", "kid_friendly", "outdoor"]
+  - title: "Des Plaines Fall Fest (Sunday)"
+    date: "2026-09-20"
+    detail: "Carnival rides, rock wall, petting zoo & food wind down at Lake Park. Noon–7pm, 2200 Lee St. Free admission."
+    url: "https://desplainesfallfest.org/"
+    tags: ["free", "kid_friendly", "outdoor"]
+
 evergreen:
   - title: "Des Plaines Public Library"
     detail: "Story times, programs, and museum passes for Des Plaines residents."
