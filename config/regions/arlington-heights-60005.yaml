@@ -93,6 +93,26 @@ sources:
     section: "School Calendar"
     enabled: true
 
+# Known, dated, recurring annual events (ROADMAP.md Phase 11 #67/#68) -
+# see the Mount Prospect config for the full rationale (a near-miss where
+# a marquee event was invisible on the site three days before it
+# happened). Confirmed via WebSearch 2026-09-15: Downtown Arlington
+# Heights' own Harmony Fest & Taste of Arlington Heights, its biggest
+# fall festival, runs Fri-Sat, Oct 2-3, 2026, in Harmony Park - one entry
+# per day since Friday and Saturday have different hours. Not yet
+# confirmed by a live fetch of the linked page's exact hours.
+annual_events:
+  - title: "Harmony Fest & Taste of Arlington Heights (Friday)"
+    date: "2026-10-02"
+    detail: "Free live concerts in Harmony Park plus food & drink from local restaurants. 5–11pm, Downtown Arlington Heights."
+    url: "https://downtownarlingtonheights.us/events/harmony-fest-taste-of-arlington-heights-2026"
+    tags: ["free", "outdoor"]
+  - title: "Harmony Fest & Taste of Arlington Heights (Saturday)"
+    date: "2026-10-03"
+    detail: "Free live concerts, food & drink, plus a kids' zone. 3–11pm, Downtown Arlington Heights."
+    url: "https://downtownarlingtonheights.us/events/harmony-fest-taste-of-arlington-heights-2026"
+    tags: ["free", "kid_friendly", "outdoor"]
+
 evergreen:
   - title: "Arlington Heights Memorial Library"
     detail: "500 N. Dunton Ave. Makerspace classes, culinary classes, and programs for all ages."

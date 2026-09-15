@@ -2235,6 +2235,38 @@ This pass found something time-critical rather than strategic.
     undropped follow-up: worth a WebSearch pass close to each event's
     usual season, when a current-year date is more likely to be
     published, rather than now while guessing would be the only option.
+    **Real follow-up, done the very next hour**: checked whether the
+    other three regions had the same near-miss, and two of them did -
+    with real urgency, since both events land on the *exact same
+    weekend* as Mount Prospect's Oktoberfest (Sept 18-20, 2026), and
+    neither region's own configured sources mention either one:
+    - **Des Plaines Fall Fest** (Lake Park, 2200 Lee St) - the city's own
+      annual festival, confirmed via `desplainesfallfest.org`'s own
+      listing: Fri 6-11pm, Sat noon-11pm, Sun noon-7pm. Carnival rides,
+      rock wall, petting zoo, food, and 10 live bands. Free admission.
+    - **Rotary Club of Palatine's Oktoberfest** (N Smith St & W Slade St,
+      Downtown Palatine) - confirmed via `palatinerotary.org`'s own
+      Oktoberfest page: Fri 5pm-midnight, Sat (Family Day: games, crafts,
+      kids' entertainment) noon-midnight, Sun noon-6pm. Free entry.
+    Both seeded as three `annual_events:` entries each (one per day, same
+    reasoning as Mount Prospect's two - each day's hours and programming
+    genuinely differ, Saturday most of all).
+    A third region's event is real but not this urgent: **Arlington
+    Heights' Harmony Fest & Taste of Arlington Heights**, Downtown
+    Arlington Heights' biggest fall festival, confirmed via
+    `downtownarlingtonheights.us`'s own event page for Fri-Sat, Oct 2-3,
+    2026 (Fri 5-11pm, Sat 3-11pm - free concerts in Harmony Park, food &
+    drink from local restaurants, a kids' zone Saturday). Seeded as two
+    entries even though it's over two weeks out, same discipline as
+    seeding any confirmed date rather than waiting - there's no reason to
+    let a known, real date sit unseeded until it becomes urgent too.
+    Confirmed in the real build: all three regions' events now show as
+    that region's own Editor's Pick (soonest dated item wins), Des
+    Plaines' and Palatine's both correctly appear on `/this-weekend/`
+    (region and hub-level) while Arlington Heights' correctly does not
+    (Oct 2-3 isn't this weekend) - the date-window filtering behaved
+    exactly as designed with zero code changes. 205 tests still pass; hub
+    weekend page went from 1 region section to 3.
 
 ## Working agreements for autonomous iteration
 
