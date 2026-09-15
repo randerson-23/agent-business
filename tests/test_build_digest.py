@@ -813,7 +813,7 @@ def test_render_region_page_heading_and_subheading_overrides():
     assert "<h1>This weekend in Mount Prospect</h1>" in html
     assert "Aug 29–30" in html
     assert "<h1>What's happening in Mount Prospect</h1>" not in html
-    assert "<title>This weekend in Mount Prospect — Weekend &amp; Trip Planner</title>" in html
+    assert f"<title>This weekend in Mount Prospect — {build_digest.SITE_NAME}</title>" in html
     assert 'content="Aug 29–30"' in html
 
 
@@ -1214,7 +1214,7 @@ def test_build_llms_txt_lists_regions_and_weekend_links():
         {"name": "Arlington Heights", "zip": "60005", "tagline": "Village news too.", "path": "arlington-heights-60005/", "guides": []},
     ]
     result = build_digest.build_llms_txt(summaries)
-    assert result.startswith("# Weekend & Trip Planner")
+    assert result.startswith(f"# {build_digest.SITE_NAME}")
     assert "[Mount Prospect (60056)](https://randerson-23.github.io/agent-business/mount-prospect-60056/)" in result
     assert "[Mount Prospect — this weekend](https://randerson-23.github.io/agent-business/mount-prospect-60056/this-weekend/)" in result
     assert "## Sponsorship" in result

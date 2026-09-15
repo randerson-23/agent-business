@@ -62,7 +62,7 @@ LAUNCH_DATE = date(2026, 8, 26)
 # said "Weekend & Trip Planner" - two different strings for what should
 # read as one entity to a search/AI crawler (ROADMAP.md Phase 11 #22
 # follow-up, entity-naming audit).
-SITE_NAME = "Weekend & Trip Planner"
+SITE_NAME = "Porchlight"
 
 
 def load_yaml(path: Path) -> dict:
@@ -1160,7 +1160,7 @@ def build_llms_txt(region_summaries: list[dict]) -> str:
     live the way a hand-written one would.
     """
     lines = [
-        "# Weekend & Trip Planner",
+        f"# {SITE_NAME}",
         "",
         "> A hyperlocal weekend/trip planner for Chicago-area ZIP codes. "
         "Aggregates village news, public library events, and park "
