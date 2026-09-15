@@ -2222,6 +2222,25 @@ This pass found something time-critical rather than strategic.
     whatever event names the pattern doesn't cover. Not yet confirmed by
     a live fetch (same sandbox limitation as always); that confirmation
     comes from the next real build's job log.
+    **That confirmation came back negative** (real build 34997970218,
+    the very next one): still exactly 0 items, no transport error - the
+    fetch reached the page and found nothing, same as before the fix.
+    That rules out "wrong keywords" as the actual cause, since the new
+    pattern and broader keywords didn't move the needle at all. Most
+    likely explanation, consistent with `fetch_html_events`' own
+    documented limitation: the `/events/` archive page's link list is
+    rendered by JavaScript, which a raw-HTML fetch can never see,
+    regardless of what pattern or keywords are configured - different
+    from the individual event permalink page WebSearch found indexed
+    (`.../progressive-dinner-fine-dining/`), which is presumably a normal
+    static post; it's the *archive/listing* view specifically that
+    appears to be JS-built. Not chasing a third pattern guess - same
+    "don't guess with nothing behind it" discipline as District 214's
+    PDF-only calendars - documented in the config as a real, undropped
+    follow-up if a headless-browser fetch path is ever added to this
+    pipeline. Worth remembering as a general lesson: a real detail link
+    found via WebSearch confirms a page *exists*, not that a plain HTTP
+    fetch of its parent listing page can *reach* it.
 
 67. ✅ done. **Curated annual events, with dates — the missing third
     content type.** The site has two content types: *fetched* events
