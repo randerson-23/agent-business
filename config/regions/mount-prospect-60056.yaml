@@ -177,6 +177,35 @@ sources:
     default_tags: ["free"]
     enabled: true
 
+# Known, dated, recurring annual events (ROADMAP.md Phase 11 #67/#68) -
+# the third content type alongside fetched `sources:` (best-effort,
+# scraped) and undated `evergreen:` (curated but not a "happening"). This
+# section exists because of a real near-miss: three days before it
+# happened, the Downtown Merchants' Fall Fest & Oktoberfest - the biggest
+# local event of the year - was invisible on the site. `mpdowntown.com/
+# events/` is a configured source but returns 200 with zero matching
+# items (see that source's own comment above); the real info page,
+# mpdowntown.com/oktoberfest-info/, was never configured at all.
+# Seeded 2026-08-30 (fourteenth research pass, item 66's finding) with
+# only what's confirmed - two entries, one per day, since Friday and
+# Saturday each have genuinely different programming rather than one
+# event spanning a date range. Confirmed via WebSearch of the Downtown
+# Merchants' own event page; not yet confirmed by a live fetch of that
+# page's exact hours (no automated re-check exists for a hand-entered
+# date - if this ever runs stale, it's this file that needs updating,
+# same as any other yearly civic fact).
+annual_events:
+  - title: "Oktoberfest — Fall Fest & Oktoberfest weekend"
+    date: "2026-09-18"
+    detail: "German food, drink & live music from the band Paloma. 4–11pm, Emerson St. & Busse Ave. — Downtown Merchants."
+    url: "https://mpdowntown.com/oktoberfest-info/"
+    tags: ["outdoor"]
+  - title: "Fall Festival & Oktoberfest — Fall Fest & Oktoberfest weekend"
+    date: "2026-09-19"
+    detail: "Free Fall Festival noon–4pm (special-needs hour noon–1pm) with crafts & entertainment, then Oktoberfest continues 4–11pm. Emerson & Busse."
+    url: "https://mpdowntown.com/oktoberfest-info/"
+    tags: ["free", "kid_friendly", "outdoor"]
+
 # Evergreen, always-available local info used as a fallback so the digest
 # never ships empty even if every live source above fails to fetch.
 evergreen:

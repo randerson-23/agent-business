@@ -381,6 +381,49 @@ def prepare_guides(region_cfg: dict) -> list[dict]:
     return prepared
 
 
+def prepare_annual_events(region_cfg: dict) -> dict | None:
+    """Curated annual events with real dates (ROADMAP.md Phase 11 #67) -
+    the missing third content type. `sources:` is fetched and best-effort;
+    `evergreen:` is curated but undated; neither covers a known, dated,
+    recurring event a human confirmed - a Village festival or Oktoberfest.
+    That gap is exactly how a scraper returning 200-with-nothing can
+    silently erase a marquee event (item 66's finding: Mount Prospect's
+    own Fall Fest & Oktoberfest was invisible on the site three days
+    before it happened, since `mpdowntown.com/events/` extracts zero
+    items and the dedicated info page was never a configured source).
+
+    Reuses the exact event-dict shape a fetched item gets (tags via
+    infer_tags, date_iso via parse_event_date_iso, calendar links via
+    build_ics_data_uri/build_google_calendar_url) so every downstream
+    consumer - weekend/today/free views, JSON-LD, Editor's Pick - handles
+    an `annual_events:` entry with no special-casing; it's just another
+    block. Returns None (not an empty block) when a region has none
+    configured, so the section never renders as an empty apology.
+    """
+    raw_items = region_cfg.get("annual_events", [])
+    if not raw_items:
+        return None
+    region_name = region_cfg["region"]["name"]
+    events = []
+    for item in raw_items:
+        tags = item.get("tags")
+        if tags is None:
+            tags = infer_tags(item.get("title", ""), item.get("detail", ""), "Annual Events")
+        event = {
+            "title": item.get("title", ""),
+            "detail": truncate(item.get("detail", "")),
+            "url": item.get("url", ""),
+            "date": format_event_date(item.get("date")),
+            "date_iso": parse_event_date_iso(item.get("date")),
+            "tags": tags,
+            "tag_badges": [{"id": t, **tag_display(t)} for t in tags],
+        }
+        event["ics_href"] = build_ics_data_uri(event)
+        event["google_calendar_url"] = build_google_calendar_url(event, region_name)
+        events.append(event)
+    return {"section": "Annual Events", "events": events}
+
+
 def resolve_sponsor(sponsors_cfg: dict, region_id: str) -> dict:
     """The active sponsor (or house ad fallback) for a region, tagged with
     `is_active_sponsor` - the region page's sponsor box only uses
@@ -1268,6 +1311,12 @@ def main() -> None:
         logger.info("=== Building region: %s (%s) ===", region["name"], region_id)
 
         blocks = fetch_region_sections(region_cfg, health=source_health)
+        annual_block = prepare_annual_events(region_cfg)
+        if annual_block:
+            # First, not appended: curated + dated is the highest-
+            # confidence content on the page (a human put it there
+            # deliberately), and it's often the most time-sensitive too.
+            blocks.insert(0, annual_block)
         evergreen = prepare_evergreen(region_cfg)
         guides = prepare_guides(region_cfg)
         directory = build_business_directory(sponsors_cfg, region_id)
