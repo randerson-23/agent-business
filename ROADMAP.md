@@ -2330,6 +2330,24 @@ This pass found something time-critical rather than strategic.
     (Oct 2-3 isn't this weekend) - the date-window filtering behaved
     exactly as designed with zero code changes. 205 tests still pass; hub
     weekend page went from 1 region section to 3.
+    **Real follow-up attempt, still not seeded**: re-checked Randhurst's
+    Street Fest and Halloween Fall Festival now that both are closer in
+    season, since a current-year date is more likely published now than
+    two weeks ago. Street Fest surfaced a specific claim - "Saturday,
+    June 22nd, noon-5pm," sourced from what looks like the venue's own
+    page (`randhurstvillage.com/events/5th-annual-street-fest-`) - but it
+    fails a basic sanity check: **June 22, 2026 is a Monday, not a
+    Saturday** (verified directly with Python's `datetime`, not assumed).
+    That mismatch means either the day-of-week or the date itself is
+    wrong somewhere between the venue's page and what WebSearch surfaced
+    - and `WebFetch` is blocked for this domain in this sandbox, so there
+    is no way to resolve which one from here. Per this item's own
+    standing rule, an inconsistent date is treated the same as an
+    unconfirmed one: not seeded. Halloween Fall Festival still has no
+    2026 date at all, only a 2017 one. Both remain real, undropped
+    follow-up - worth trying again nearer each event, or from an
+    environment where the venue's own page can actually be fetched and
+    read directly rather than summarized secondhand.
 
 #### P3 (new)
 
