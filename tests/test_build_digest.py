@@ -929,7 +929,7 @@ def test_render_region_page_view_nav_marks_active_view():
         {"region": REGION}, [], {"title": "", "detail": "", "url": ""}, [], datetime.now(timezone.utc),
         nav_current="free",
     )
-    assert '<a href="https://randerson-23.github.io/agent-business/mount-prospect-60056/free/" class="active">Free</a>' in html
+    assert f'<a href="{build_digest.SITE_BASE_URL}mount-prospect-60056/free/" class="active">Free</a>' in html
 
 
 def test_render_region_page_omits_newsletter_when_not_configured():
@@ -1071,7 +1071,7 @@ def test_render_weekend_hub_page_groups_events_by_region():
     sections = [
         {
             "region_name": "Mount Prospect",
-            "region_url": "https://randerson-23.github.io/agent-business/mount-prospect-60056/",
+            "region_url": f"{build_digest.SITE_BASE_URL}mount-prospect-60056/",
             "events": [{"title": "Fishing Derby", "url": "https://x/", "detail": "", "date": "Sep 19", "tags": []}],
         }
     ]
@@ -1079,7 +1079,7 @@ def test_render_weekend_hub_page_groups_events_by_region():
     assert "Mount Prospect" in html
     assert "Fishing Derby" in html
     assert "Sep 19–20" in html
-    assert 'href="https://randerson-23.github.io/agent-business/mount-prospect-60056/"' in html
+    assert f'href="{build_digest.SITE_BASE_URL}mount-prospect-60056/"' in html
 
 
 def test_render_weekend_hub_page_handles_no_events_anywhere():
@@ -1089,12 +1089,12 @@ def test_render_weekend_hub_page_handles_no_events_anywhere():
 
 def test_render_region_page_includes_canonical_link():
     html = build_digest.render_region_page({"region": REGION}, [], {"title": "", "detail": "", "url": ""}, [], datetime.now(timezone.utc))
-    assert 'rel="canonical" href="https://randerson-23.github.io/agent-business/mount-prospect-60056/"' in html
+    assert f'rel="canonical" href="{build_digest.SITE_BASE_URL}mount-prospect-60056/"' in html
 
 
 def test_render_hub_page_includes_canonical_link():
     html = build_digest.render_hub_page([], [], datetime.now(timezone.utc))
-    assert 'rel="canonical" href="https://randerson-23.github.io/agent-business/"' in html
+    assert f'rel="canonical" href="{build_digest.SITE_BASE_URL}"' in html
 
 
 def test_build_event_json_ld_returns_none_for_no_events():
@@ -1199,25 +1199,25 @@ def test_build_event_json_ld_skips_events_missing_title_or_url():
 def test_build_sitemap_xml_lists_hub_and_region_urls():
     summaries = [{**REGION, "event_count": 1, "path": "mount-prospect-60056/"}]
     xml = build_digest.build_sitemap_xml(summaries, datetime.now(timezone.utc))
-    assert "<loc>https://randerson-23.github.io/agent-business/</loc>" in xml
-    assert "<loc>https://randerson-23.github.io/agent-business/mount-prospect-60056/</loc>" in xml
+    assert f"<loc>{build_digest.SITE_BASE_URL}</loc>" in xml
+    assert f"<loc>{build_digest.SITE_BASE_URL}mount-prospect-60056/</loc>" in xml
 
 
 def test_build_sitemap_xml_includes_weekend_hub_url():
     summaries = [{**REGION, "event_count": 1, "path": "mount-prospect-60056/"}]
     xml = build_digest.build_sitemap_xml(summaries, datetime.now(timezone.utc))
-    assert "<loc>https://randerson-23.github.io/agent-business/this-weekend/</loc>" in xml
+    assert f"<loc>{build_digest.SITE_BASE_URL}this-weekend/</loc>" in xml
 
 
 def test_build_sitemap_xml_includes_sponsor_url():
     summaries = [{**REGION, "event_count": 1, "path": "mount-prospect-60056/"}]
     xml = build_digest.build_sitemap_xml(summaries, datetime.now(timezone.utc))
-    assert "<loc>https://randerson-23.github.io/agent-business/sponsor/</loc>" in xml
+    assert f"<loc>{build_digest.SITE_BASE_URL}sponsor/</loc>" in xml
 
 
 def test_build_robots_txt_references_sitemap():
     robots = build_digest.build_robots_txt()
-    assert "Sitemap: https://randerson-23.github.io/agent-business/sitemap.xml" in robots
+    assert f"Sitemap: {build_digest.SITE_BASE_URL}sitemap.xml" in robots
     assert "Allow: /" in robots
 
 
@@ -1240,8 +1240,8 @@ def test_build_llms_txt_lists_regions_and_weekend_links():
     ]
     result = build_digest.build_llms_txt(summaries)
     assert result.startswith(f"# {build_digest.SITE_NAME}")
-    assert "[Mount Prospect (60056)](https://randerson-23.github.io/agent-business/mount-prospect-60056/)" in result
-    assert "[Mount Prospect — this weekend](https://randerson-23.github.io/agent-business/mount-prospect-60056/this-weekend/)" in result
+    assert f"[Mount Prospect (60056)]({build_digest.SITE_BASE_URL}mount-prospect-60056/)" in result
+    assert f"[Mount Prospect — this weekend]({build_digest.SITE_BASE_URL}mount-prospect-60056/this-weekend/)" in result
     assert "## Sponsorship" in result
 
 
@@ -1257,7 +1257,7 @@ def test_build_llms_txt_includes_guides_when_present():
     ]
     result = build_digest.build_llms_txt(summaries)
     assert "## Guides" in result
-    assert "[Fall Family Guide — Mount Prospect](https://randerson-23.github.io/agent-business/mount-prospect-60056/guides/fall-family-guide/)" in result
+    assert f"[Fall Family Guide — Mount Prospect]({build_digest.SITE_BASE_URL}mount-prospect-60056/guides/fall-family-guide/)" in result
 
 
 def test_build_llms_txt_omits_guides_section_when_none_exist():
