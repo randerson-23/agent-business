@@ -4,7 +4,7 @@ Copy/personalize these when reaching out to local Mount Prospect (60056),
 Arlington Heights (60005), Des Plaines (60016), or Palatine (60067)
 businesses. Keep it short — busy owners skim. Live pricing and
 per-region availability:
-https://randerson-23.github.io/agent-business/sponsor/
+https://withintenmiles.com/sponsor/
 
 ## 1. Cold intro
 
@@ -30,7 +30,7 @@ true and specific always beats generic ad copy).
 
 Thanks,
 [Your name]
-Within Ten — https://randerson-23.github.io/agent-business/
+Within Ten — https://withintenmiles.com/
 
 ## 2. Follow-up (no response after ~1 week)
 
@@ -110,7 +110,7 @@ Worth a short call to see if it fits how you're already budgeting for
 
 Thanks,
 [Your name]
-Within Ten — https://randerson-23.github.io/agent-business/
+Within Ten — https://withintenmiles.com/
 
 ## 6. Downtown merchants association pitch
 
@@ -142,4 +142,4 @@ a sample issue first.
 
 Thanks,
 [Your name]
-Within Ten — https://randerson-23.github.io/agent-business/
+Within Ten — https://withintenmiles.com/

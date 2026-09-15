@@ -1,11 +1,12 @@
 # Sponsor Media Kit — Within Ten
 
 *A weekly digest of village news, library events, and park district
-programs — currently live for Mount Prospect (60056) and Arlington
-Heights (60005), IL, with more ZIPs planned.*
+programs — currently live for Mount Prospect (60056), Arlington Heights
+(60005), Des Plaines (60016), and Palatine (60067), IL, with more ZIPs
+planned.*
 
 **Live pricing and real-time per-region availability:**
-https://randerson-23.github.io/agent-business/sponsor/
+https://withintenmiles.com/sponsor/
 
 ## This is a recommendation, not an ad slot
 
@@ -27,11 +28,12 @@ and specific beats generic ad copy.
   shows outperforms banner ads for trust and action.
 - **Hyperlocal, opt-in audience.** Every reader is specifically looking at
   the region you sponsor. No wasted impressions.
-- **Affluent, family-dense ZIPs.** Both 60056 (Mount Prospect) and 60005
-  (Arlington Heights) run ~$100K median household income, well above the
-  national median, with a strong skew toward married households with
-  kids — a good match for family services, healthcare, home services, and
-  local retail.
+- **Affluent, family-dense ZIPs.** All four ZIPs run $87K-$125K median
+  household income — 60056 (Mount Prospect) ~$102K, 60005 (Arlington
+  Heights) ~$100K, 60016 (Des Plaines) ~$87K, and 60067 (Palatine)
+  ~$125K — every one above the national median (~$81K), with a strong
+  skew toward married households with kids — a good match for family
+  services, healthcare, home services, and local retail.
 - **One business per region, at any tier.** No banner-blindness, no
   competing ads on the page — just the one recommendation, whether it's
   held for a week or a year.
@@ -58,11 +60,12 @@ long-term contract on Weekly Spot or Event Promo, cancel anytime.
 
 ## Who this is for
 
-Local, independently owned businesses serving families in Mount Prospect
-or Arlington Heights: pediatric/family dentists, tutoring and enrichment
-programs, ice cream and bakery shops, real estate agents, home services
-(HVAC, landscaping), pediatricians and family medicine, kids' activity
-providers (gymnastics, swim, martial arts), local restaurants.
+Local, independently owned businesses serving families in Mount Prospect,
+Arlington Heights, Des Plaines, or Palatine: pediatric/family dentists,
+tutoring and enrichment programs, ice cream and bakery shops, real estate
+agents, home services (HVAC, landscaping), pediatricians and family
+medicine, kids' activity providers (gymnastics, swim, martial arts),
+local restaurants.
 
 ## How it works
 
