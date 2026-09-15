@@ -1434,3 +1434,44 @@ def test_fetch_region_sections_without_default_tags_is_unchanged(monkeypatch):
         }],
     }
     assert "free" not in build_digest.fetch_region_sections(region_cfg)[0]["events"][0]["tags"]
+
+
+def test_load_maps_config_defaults_to_osm():
+    cfg = build_digest.load_maps_config({})
+    assert cfg["provider"] == "osm"
+
+
+def test_load_maps_config_falls_back_when_google_key_missing():
+    # A keyless Google embed renders a grey "for development purposes
+    # only" wash, which is worse than OSM working - so fall back.
+    cfg = build_digest.load_maps_config({"provider": "google", "google_api_key": None})
+    assert cfg["provider"] == "osm"
+
+
+def test_load_maps_config_uses_google_when_key_present():
+    cfg = build_digest.load_maps_config({"provider": "google", "google_api_key": "abc123"})
+    assert cfg["provider"] == "google"
+    assert cfg["google_api_key"] == "abc123"
+
+
+def test_build_region_map_embed_url_osm_includes_bbox_and_marker():
+    url = build_digest.build_region_map_embed_url(
+        {"lat": 42.0666, "lon": -87.9373}, {"provider": "osm"}
+    )
+    assert url.startswith("https://www.openstreetmap.org/export/embed.html")
+    assert "bbox=" in url and "marker=42.0666,-87.9373" in url
+
+
+def test_build_region_map_embed_url_google_when_configured():
+    url = build_digest.build_region_map_embed_url(
+        {"lat": 42.0666, "lon": -87.9373},
+        {"provider": "google", "google_api_key": "k e y"},
+    )
+    assert url.startswith("https://www.google.com/maps/embed/v1/view")
+    # the key is percent-encoded, not interpolated raw
+    assert "key=k%20e%20y" in url
+    assert "center=42.0666,-87.9373" in url
+
+
+def test_build_region_map_embed_url_none_without_coordinates():
+    assert build_digest.build_region_map_embed_url({}, {"provider": "osm"}) is None

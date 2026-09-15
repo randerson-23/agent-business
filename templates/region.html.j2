@@ -189,8 +189,19 @@
   .map-fallback a:hover .map-pin { fill: var(--accent); }
   .map-fallback a:hover .map-pin-label { fill: var(--accent); }
   .map-fallback a:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+  .map-frame {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+    /* Above the always-painted SVG fallback, below the Google Maps link
+       so that link stays clickable. */
+    z-index: 1;
+  }
   .map-link {
     position: absolute;
+    z-index: 2;
     right: 12px;
     bottom: 12px;
     background: var(--card);
@@ -632,6 +643,20 @@
     <div class="map-fallback">
       {{ region_map_svg() }}
     </div>
+    {% if map_embed_url %}
+    {# <object>, deliberately NOT <iframe>. A blocked iframe paints the
+       browser's own opaque error page over everything behind it - that
+       is the grey broken box #53 removed the embed to avoid, and it is
+       why "reveal only on successful load" never worked (an iframe's
+       load event fires for error pages too, cross-origin, so success is
+       undetectable). <object> has native fallback semantics instead:
+       verified in this sandbox, where the request IS blocked, a failed
+       object renders nothing at all and the SVG behind it shows through,
+       while a resource that loads paints over the SVG normally. No
+       JavaScript and no load detection either way. #}
+    <object class="map-frame" type="text/html" data="{{ map_embed_url }}"
+            aria-label="Street map of {{ region.name }} and nearby towns"></object>
+    {% endif %}
     {% if map_link_url %}
     <a class="map-link" href="{{ map_link_url }}" target="_blank" rel="noopener">View on Google Maps &#8599;</a>
     {% endif %}

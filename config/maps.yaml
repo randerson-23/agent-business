@@ -1,0 +1,20 @@
+# Interactive map embed for region pages (ROADMAP.md Phase 11 #53, revisited 2026-09-15).
+#
+# The inline-SVG region map (build_region_map) is always rendered and
+# needs no third party - it is the reliable floor. This file controls the
+# *real* street map layered over it.
+#
+# provider: "osm" (default) embeds OpenStreetMap's official export embed.
+# It needs no API key and no billing account, which is why it is the
+# default: it works the moment the site is deployed, with no human setup.
+#
+# provider: "google" uses the Google Maps Embed API instead, which DOES
+# require a key from a Google Cloud project with billing enabled - a
+# human action this repo can't do on its own, same pattern as
+# analytics.yaml's GoatCounter code and newsletter.yaml's Buttondown
+# username. If provider is "google" but google_api_key is unset, the
+# build falls back to OSM rather than emitting a keyless Google URL,
+# which renders as a grey "for development purposes only" box.
+
+provider: "osm"
+google_api_key: null

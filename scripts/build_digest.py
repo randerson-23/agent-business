@@ -111,6 +111,27 @@ def load_analytics_config(analytics_cfg: dict) -> dict:
     return {"configured": bool(code), "goatcounter_code": code}
 
 
+def load_maps_config(maps_cfg: dict) -> dict:
+    """Which provider supplies the interactive street map layered over the
+    inline-SVG region map.
+
+    Defaults to OpenStreetMap's official export embed, which needs no API
+    key and no billing account - so unlike analytics.yaml and
+    newsletter.yaml, this feature is *on* out of the box rather than
+    waiting on a human to sign up for something.
+
+    Google is supported but only when a real key is present: the Maps
+    Embed API returns a grey "for development purposes only" tile wash
+    without one, which is worse than OSM working. An unset key therefore
+    falls back rather than emitting a URL known to render broken.
+    """
+    provider = (maps_cfg.get("provider") or "osm").strip().lower()
+    key = (maps_cfg.get("google_api_key") or "").strip()
+    if provider == "google" and not key:
+        provider = "osm"
+    return {"provider": provider, "google_api_key": key}
+
+
 # Formats seen in the wild beyond RFC 822 (pubDate) and RFC 5545 (ICS),
 # most likely to show up if a source's `date` field is ever hand-set in
 # config or a future fetcher extracts human-readable text ("Sat, Sep 6" /
@@ -685,6 +706,49 @@ def build_answer_block(region: dict) -> str:
     )
 
 
+def build_region_map_embed_url(region: dict, maps: dict) -> str | None:
+    """URL for the interactive street map iframe layered over the inline
+    SVG (revisits ROADMAP.md Phase 11 #53 - the owner reported on 2026-09-15 that
+    no real map was displaying on any page, which was accurate: #53 had
+    removed the embed entirely, leaving only the SVG and an outbound
+    link).
+
+    That removal was well-reasoned - an iframe's `load` event fires even
+    when navigation is blocked, so the "reveal only on successful load"
+    fallback it replaced never caught the failure it existed to hide.
+    This restores a real map while keeping that lesson: **no load
+    detection is attempted at all**. The SVG sits permanently underneath
+    at `.map-fallback`, so the honest floor is always painted; the iframe
+    simply covers it when it renders. Nothing has to guess whether a
+    cross-origin frame succeeded.
+
+    OpenStreetMap's export embed is the default because it needs no API
+    key and no billing account. Google's Maps Embed API is used instead
+    only when a real key is configured - see config/maps.yaml.
+
+    Returns None when a region has no lat/lon rather than guessing a
+    location, same as build_region_map_link_url().
+    """
+    lat, lon = region.get("lat"), region.get("lon")
+    if lat is None or lon is None:
+        return None
+    if maps.get("provider") == "google" and maps.get("google_api_key"):
+        return (
+            "https://www.google.com/maps/embed/v1/view"
+            f"?key={quote(maps['google_api_key'], safe='')}"
+            f"&center={lat},{lon}&zoom=13"
+        )
+    # A small bounding box around the village centre - roughly a 4-5 mile
+    # window at this latitude, wide enough to show the neighbouring towns
+    # this site actually covers rather than a single street corner.
+    pad_lat, pad_lon = 0.045, 0.060
+    bbox = f"{lon - pad_lon:.4f},{lat - pad_lat:.4f},{lon + pad_lon:.4f},{lat + pad_lat:.4f}"
+    return (
+        "https://www.openstreetmap.org/export/embed.html"
+        f"?bbox={quote(bbox, safe=',')}&layer=mapnik&marker={lat},{lon}"
+    )
+
+
 def build_region_map_link_url(region: dict) -> str | None:
     """A plain, clickable Google Maps link centered on the region's
     coordinates - real streets, pan/zoom, no API key or Google Cloud
@@ -877,6 +941,7 @@ def render_region_page(
     answer_block: str | None = None,
     include_faq: bool = False,
     map_link_url: str | None = None,
+    map_embed_url: str | None = None,
     nearby_regions: list[dict] | None = None,
     region_map: dict | None = None,
 ) -> str:
@@ -907,6 +972,7 @@ def render_region_page(
         freshness_json_ld=build_freshness_json_ld(region, canonical_url, now),
         answer_block=answer_block,
         map_link_url=map_link_url,
+        map_embed_url=map_embed_url,
         nearby_regions=nearby_regions,
         region_map=region_map,
         faq=faq,
@@ -1279,6 +1345,7 @@ def main() -> None:
     sponsors_cfg = load_yaml(CONFIG_DIR / "sponsors.yaml")
     newsletter = load_newsletter_config(load_yaml(CONFIG_DIR / "newsletter.yaml"))
     analytics = load_analytics_config(load_yaml(CONFIG_DIR / "analytics.yaml"))
+    maps = load_maps_config(load_yaml(CONFIG_DIR / "maps.yaml"))
     regions = load_regions()
     now = datetime.now(timezone.utc)
 
@@ -1342,6 +1409,7 @@ def main() -> None:
             editors_pick=editors_pick,
             answer_block=build_answer_block(region),
             map_link_url=build_region_map_link_url(region),
+            map_embed_url=build_region_map_embed_url(region, maps),
             nearby_regions=build_nearby_regions(region, all_regions_meta),
             region_map=build_region_map(all_regions_meta),
         )
