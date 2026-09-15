@@ -2204,6 +2204,24 @@ This pass found something time-critical rather than strategic.
     could just as easily happen again for the next marquee event - went
     straight to item 67's durable fix and seeded it (item 68) with these
     two confirmed dates. See those items below for what shipped.
+    **Real follow-up, the scraper itself fixed too**: checking the actual
+    production build log (same technique used for item 32's correction)
+    showed `mpdowntown.com/events/` is still returning 200 with 0 items
+    every single build, unrelated to Oktoberfest now being covered by
+    `annual_events:`. Root-caused it via WebSearch rather than leaving it
+    as a mystery: the page has real, current content - "Progressive
+    Dinner," "56 Music Fix," "Progressive Pub" - none of which contain
+    any of the configured keywords ("event," "festival," "concert,"
+    "market," "sale," "sidewalk," "oktoberfest"), so the keyword fallback
+    was matching nothing despite a working page. Also found the real
+    per-event URL shape - `mpdowntown.com/events/progressive-dinner-fine-
+    dining/`, a slug under `/events/`, not the default `/event/\d+`
+    numeric pattern every other source here assumes - and added it as a
+    real `detail_link_pattern`, which takes priority over keywords once
+    it matches anything. Broadened `keywords` too, as a fallback for
+    whatever event names the pattern doesn't cover. Not yet confirmed by
+    a live fetch (same sandbox limitation as always); that confirmation
+    comes from the next real build's job log.
 
 67. ✅ done. **Curated annual events, with dates — the missing third
     content type.** The site has two content types: *fetched* events

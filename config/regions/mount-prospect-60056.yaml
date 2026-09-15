@@ -138,11 +138,25 @@ sources:
 
   - name: "Downtown Mount Prospect — Events"
     type: html_events
-    # The downtown merchants association (already linked as a plain URL
-    # from the Seasonal Circuit Guide). Same unconfirmed-URL caveat as
-    # above.
+    # Root-caused 2026-09-15 (fifteenth research pass, ROADMAP.md item 66
+    # follow-up): this source was returning 200 with 0 items in every
+    # real build, and it was the wrong keywords all along, not a broken
+    # page. WebSearch of mpdowntown.com's own /events/ listing surfaced
+    # real, current events - "Progressive Dinner", "56 Music Fix",
+    # "Progressive Pub" - none of which contain any configured keyword
+    # ("event", "festival", "concert", "market", "sale", "sidewalk",
+    # "oktoberfest"), so the keyword fallback matched nothing even though
+    # the page has real content. Also found the real per-event URL
+    # shape: `mpdowntown.com/events/progressive-dinner-fine-dining/` - a
+    # slug under /events/, not the default `/event/\d+` numeric pattern,
+    # so it was never matching that either. Added a real
+    # `detail_link_pattern` below (takes priority over keywords once it
+    # matches anything) and broadened `keywords` as a fallback for
+    # whichever event names it doesn't cover. Not yet confirmed by a live
+    # fetch (this sandbox's own network is proxy-blocked too).
     url: "https://mpdowntown.com/events/"
-    keywords: ["event", "festival", "concert", "market", "sale", "sidewalk", "oktoberfest"]
+    detail_link_pattern: "/events/[a-z0-9-]+/?$"
+    keywords: ["event", "festival", "concert", "market", "sale", "sidewalk", "oktoberfest", "dinner", "pub", "music", "crawl", "trolley"]
     section: "Downtown Events"
     enabled: true
 
