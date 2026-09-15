@@ -3,14 +3,14 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Porchlight — What&#39;s on near you this weekend</title>
+<title>Within Ten — Everything worth doing, ten miles out</title>
 <meta name="description" content="Plan a weekend or a trip: local events and news across Chicago-area ZIP codes, updated automatically.">
 <meta property="og:type" content="website">
-<meta property="og:site_name" content="Porchlight">
-<meta property="og:title" content="Porchlight — What&#39;s on near you this weekend">
+<meta property="og:site_name" content="Within Ten">
+<meta property="og:title" content="Within Ten — Everything worth doing, ten miles out">
 <meta property="og:description" content="Plan a weekend or a trip: local events and news across Chicago-area ZIP codes, updated automatically.">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Porchlight — What&#39;s on near you this weekend">
+<meta name="twitter:title" content="Within Ten — Everything worth doing, ten miles out">
 <meta name="twitter:description" content="Plan a weekend or a trip: local events and news across Chicago-area ZIP codes, updated automatically.">
 <link rel="canonical" href="https://randerson-23.github.io/agent-business/">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='46' fill='%23526b3f'/%3E%3Cpath d='M50 22c-13 0-24 10-24 24 0 18 24 36 24 36s24-18 24-36c0-14-11-24-24-24z' fill='white'/%3E%3Ccircle cx='50' cy='45' r='10' fill='%23526b3f'/%3E%3C/svg%3E">
@@ -112,7 +112,18 @@
     font-size: 12.5px;
     color: rgba(255,255,255,.88);
   }
-  .hero h1 { margin: 8px 0 12px; font-size: 40px; font-weight: 600; color: #fff; }
+  .hero h1 {
+    margin: 8px 0 12px;
+    font-size: 40px;
+    font-weight: 600;
+    color: #fff;
+    /* Without this the headline breaks as "...ten miles" / "out.",
+       orphaning a two-letter word on its own line inside a 620px
+       hero-inner. Balanced wrapping evens the lines instead; unsupported
+       browsers just get the default greedy wrap, which is what shipped
+       before, so there is nothing to fall back to. */
+    text-wrap: balance;
+  }
   .hero .sub { color: rgba(255,255,255,.9); font-size: 16.5px; }
 
   .wrap { max-width: 960px; margin: -56px auto 0; padding: 0 20px 64px; position: relative; }
@@ -317,10 +328,10 @@
           <path d="M50 22c-13 0-24 10-24 24 0 18 24 36 24 36s24-18 24-36c0-14-11-24-24-24z" fill="#fff"/>
           <circle cx="50" cy="45" r="10" fill="var(--accent)"/>
         </svg>
-        <span class="kicker">Porchlight &middot; Mount Prospect &amp; nearby</span>
+        <span class="kicker">Within Ten &middot; Northwest Suburbs</span>
       </div>
-      <h1>What&#39;s on near you this weekend.</h1>
-      <div class="sub">The village, the library, the park district and the downtown merchants &mdash; in one place, refreshed on its own.</div>
+      <h1>Everything worth doing, ten miles out.</h1>
+      <div class="sub">Village news, library events and park district programs for four towns &mdash; gathered automatically, so your weekend takes five minutes to plan instead of an evening.</div>
     </div>
   </header>
 
@@ -390,7 +401,7 @@
   <footer>
     Want your ZIP added, or want to sponsor a region?
     <a href="sponsor/">See pricing &amp; availability</a>.
-    <br>Generated 2026-09-15 18:56 UTC.
+    <br>Generated 2026-09-15 19:26 UTC.
     
   </footer>
   </div>
