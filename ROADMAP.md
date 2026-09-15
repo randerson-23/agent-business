@@ -2147,10 +2147,10 @@ This pass found something time-critical rather than strategic.
 
 #### P1 (new)
 
-66. **The site will miss the biggest local event of the year, and it is
-    three days away.** The Mount Prospect Downtown Merchants' **Fall Fest
-    & Oktoberfest runs Friday–Saturday, 18–19 September 2026** at Emerson
-    Street and Busse Avenue:
+66. ✅ done. **The site will miss the biggest local event of the year, and
+    it is three days away.** The Mount Prospect Downtown Merchants' **Fall
+    Fest & Oktoberfest runs Friday–Saturday, 18–19 September 2026** at
+    Emerson Street and Busse Avenue:
     - Fri 18th, 4–11pm: Oktoberfest, German food and drink, the band
       Paloma.
     - Sat 19th, **noon–1pm: a special-needs hour**, residents of all ages
@@ -2173,43 +2173,68 @@ This pass found something time-critical rather than strategic.
     Note the special-needs hour specifically: that is exactly the kind of
     concrete, human detail a generic aggregator never carries, and it is
     the difference between a listing and a recommendation.
+    **Shipped same-day** (this loop was paused two weeks; this was the
+    first item picked up on resume, 2026-09-15, three days before the
+    event). Rather than patching the scraper - a 200-with-nothing source
+    could just as easily happen again for the next marquee event - went
+    straight to item 67's durable fix and seeded it (item 68) with these
+    two confirmed dates. See those items below for what shipped.
 
-67. **Curated annual events, with dates — the missing third content
-    type.** The site has two content types: *fetched* events (dated,
-    scraped, best-effort) and *evergreen* entries (curated, but undated —
-    venues and resources, not happenings). Nothing covers the category
-    that matters most: **known, dated, recurring annual events**.
-    That gap is why a scraper returning 200-with-nothing can silently
-    erase Oktoberfest. Fail-soft fetching is right, and item 51's health
-    check now catches a source that *dies* — but neither helps when a
-    source was never yielding the marquee event to begin with.
-    Proposal: an `annual_events:` list in each region's YAML — title,
-    date (or date range), url, detail, tags — merged into the dated event
-    stream alongside fetched items and flowing through the existing
-    weekend/today/free views, JSON-LD and calendar export for free.
-    Maintenance is genuinely near-zero: a handful of entries per town,
-    revisited once a year, which is well inside the plan's 30–60
-    minutes/month. It is also the highest-confidence content on the site,
-    since a human put it there deliberately.
+67. ✅ done. **Curated annual events, with dates — the missing third
+    content type.** The site has two content types: *fetched* events
+    (dated, scraped, best-effort) and *evergreen* entries (curated, but
+    undated — venues and resources, not happenings). Nothing covered the
+    category that matters most: **known, dated, recurring annual
+    events**. That gap is why a scraper returning 200-with-nothing could
+    silently erase Oktoberfest. Fail-soft fetching is right, and item
+    51's health check now catches a source that *dies* — but neither
+    helps when a source was never yielding the marquee event to begin
+    with.
+    Shipped as proposed: a new `annual_events:` list in `config/regions/
+    *.yaml`, and `build_digest.py`'s `prepare_annual_events()` turns each
+    entry into the *exact same event-dict shape* a fetched item gets
+    (tags via `infer_tags`, `date_iso` via `parse_event_date_iso`,
+    calendar links via the existing `build_ics_data_uri`/
+    `build_google_calendar_url`) - so it's just another block, and every
+    downstream consumer (weekend/today/free views, JSON-LD, sitemap,
+    Editor's Pick) handles it with zero special-casing. Inserted first in
+    the block list, ahead of fetched sources, since it's the
+    highest-confidence content on the page.
+    One deliberate simplification from the original proposal: a
+    multi-day event (Oktoberfest spans two days with different
+    programming each day) is modeled as **one `annual_events:` entry per
+    day**, not a `date`/`date_end` range. Friday and Saturday genuinely
+    have different content (Friday is just Oktoberfest; Saturday adds
+    the special-needs hour and the free Fall Festival), so this reads
+    better on the page too, and it needed zero changes to the existing
+    single-date machinery — no new range-overlap logic in
+    `filter_events_by_dates`, no risk introduced three days before the
+    event it exists to protect.
+    Confirmed working in the real build: Oktoberfest is now Mount
+    Prospect's Editor's Pick (soonest dated item, tag-broken ties, and
+    it wins outright), shows on the region page's new "Annual Events"
+    section (first, above the fetched sections), on `/this-weekend/`
+    (both the region and hub-level "This weekend near you" pages, since
+    today's build genuinely falls on the Tue before that Fri–Sun), on
+    `/free/` for Saturday's tagged entry, and in the region's
+    `event_json_ld`. 205 tests pass (3 new).
 
 #### P2 (new)
 
-68. **Seed the annual list with what research has already confirmed.**
-    Rather than shipping an empty mechanism: Mount Prospect Fall Fest &
-    Oktoberfest (18–19 Sept, Emerson & Busse, with the schedule above);
-    Randhurst Village Street Fest (summer, 1–5pm on Randhurst Village
-    Drive — rides, inflatables, vendor booths); Randhurst's annual
-    Halloween Fall Festival (October — pet costume parade, Stillman
-    Nature Center owls, crafts); and the Mount Prospect & Prospect
-    Heights Lions Club Cruise Night at Randhurst (summer).
-    **Do not invent the dates that research could not confirm.** The 2026
-    Randhurst Halloween and Street Fest dates are not established — the
-    only sources found are from earlier years. An entry with a wrong date
-    is worse than no entry, and the seventh pass's finding applies
-    directly: AI systems now cross-reference schema claims against live
-    sources and penalise mismatches. Ship the confirmed ones with dates,
-    and the unconfirmed ones either undated or not at all until a real
-    date is found.
+68. ✅ done, shipped in the same pass as item 67. **Seed the annual list
+    with what research has already confirmed.** Seeded exactly the two
+    entries with real, confirmed dates: Mount Prospect's Fall Fest &
+    Oktoberfest, one `annual_events:` entry per day (Fri 18th Oktoberfest
+    only; Sat 19th special-needs hour + free Fall Festival + Oktoberfest
+    continuing), both linking to the real `mpdowntown.com/
+    oktoberfest-info/` page found in item 66's research.
+    **Deliberately not seeded**, per this item's own instruction not to
+    invent unconfirmed dates: Randhurst Village Street Fest, Randhurst's
+    Halloween Fall Festival, and the Lions Club Cruise Night at Randhurst
+    — none has an established 2026 date, only prior-year sources. Real,
+    undropped follow-up: worth a WebSearch pass close to each event's
+    usual season, when a current-year date is more likely to be
+    published, rather than now while guessing would be the only option.
 
 ## Working agreements for autonomous iteration
 

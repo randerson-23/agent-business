@@ -298,6 +298,45 @@ def test_prepare_guides_returns_empty_list_when_no_guides_configured():
     assert build_digest.prepare_guides({}) == []
 
 
+def test_prepare_annual_events_returns_none_when_none_configured():
+    assert build_digest.prepare_annual_events({}) is None
+
+
+def test_prepare_annual_events_builds_full_event_shape():
+    region_cfg = {
+        "region": {"name": "Mount Prospect"},
+        "annual_events": [
+            {
+                "title": "Oktoberfest",
+                "date": "2026-09-18",
+                "detail": "German food & live music.",
+                "url": "https://mpdowntown.com/oktoberfest-info/",
+                "tags": ["outdoor"],
+            }
+        ],
+    }
+    block = build_digest.prepare_annual_events(region_cfg)
+    assert block["section"] == "Annual Events"
+    event = block["events"][0]
+    assert event["title"] == "Oktoberfest"
+    assert event["date"] == "Sep 18"
+    assert event["date_iso"] == "2026-09-18T00:00:00"
+    assert event["tags"] == ["outdoor"]
+    assert event["ics_href"] is not None
+    assert event["google_calendar_url"] is not None
+
+
+def test_prepare_annual_events_infers_tags_when_absent():
+    region_cfg = {
+        "region": {"name": "Mount Prospect"},
+        "annual_events": [
+            {"title": "Free Fall Festival", "date": "2026-09-19", "detail": "Free family event with crafts."}
+        ],
+    }
+    block = build_digest.prepare_annual_events(region_cfg)
+    assert "free" in block["events"][0]["tags"]
+
+
 def test_build_business_directory_empty_when_no_history():
     cfg = {"regions": {"mount-prospect-60056": {"active": "none", "house_ad": None, "history": []}}}
     assert build_digest.build_business_directory(cfg, "mount-prospect-60056") == []
