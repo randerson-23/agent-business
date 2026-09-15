@@ -139,7 +139,12 @@
     display: flex;
     flex-wrap: wrap;
     gap: 6px;
-    margin: 18px 0 6px;
+    /* .hero carries margin-bottom: -24px so content can ride up into the
+       green band. These pills were the first thing after it, so at 18px
+       they straddled the boundary with their top edge in the green -
+       reported 2026-09-15. 42px clears the -24px overlap and leaves 18px
+       of breathing room, putting the whole row inside the beige. */
+    margin: 42px 0 6px;
   }
   .view-nav a {
     font-size: 13px;
@@ -600,34 +605,6 @@
   
 
   
-  <div class="weather-bar">
-    
-    <div class="weather-day">
-      <span class="wx-emoji" aria-hidden="true">🌦️</span>
-      <span class="wx-name">Friday</span>
-      <span class="wx-temp">73&deg; / 66&deg;</span>
-      <span class="wx-label">Rain showers &middot; 32% precip</span>
-    </div>
-    
-    <div class="weather-day">
-      <span class="wx-emoji" aria-hidden="true">🌧️</span>
-      <span class="wx-name">Saturday</span>
-      <span class="wx-temp">77&deg; / 68&deg;</span>
-      <span class="wx-label">Rain showers &middot; 56% precip</span>
-    </div>
-    
-    <div class="weather-day">
-      <span class="wx-emoji" aria-hidden="true">🌦️</span>
-      <span class="wx-name">Sunday</span>
-      <span class="wx-temp">68&deg; / 63&deg;</span>
-      <span class="wx-label">Rain showers &middot; 56% precip</span>
-    </div>
-    
-    
-    <div class="wx-note">Rain (or worse) in the forecast — the Indoor filter below can help plan around it.</div>
-    
-  </div>
-  
 
   
 
@@ -768,7 +745,7 @@
   <footer>
     Local business? See the
     <a href="https://randerson-23.github.io/agent-business/sponsor/">sponsor page</a>.
-    <br>Generated 2026-09-15 14:21 UTC.
+    <br>Generated 2026-09-15 14:36 UTC.
     
     <br><a href="https://randerson-23.github.io/agent-business/palatine-60067/weekly-summary.txt">Copy this week's summary</a> — a plain-text block ready to paste into a local group.
   </footer>
@@ -794,7 +771,7 @@
 <script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "Event", "name": "Palatine Oktoberfest (Friday)", "url": "https://palatinerotary.org/Oktoberfest.php", "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode", "description": "German beer, food & music return to Downtown Palatine. 5pm–midnight, N Smith & W Slade St. Free entry.", "startDate": "2026-09-18T00:00:00"}, {"@type": "Event", "name": "Palatine Oktoberfest — Family Day (Saturday)", "url": "https://palatinerotary.org/Oktoberfest.php", "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode", "description": "Family Day: games, crafts & entertainment plus German beer, food & music. Noon–midnight, N Smith & W Slade St. Free entry.", "startDate": "2026-09-19T00:00:00"}, {"@type": "Event", "name": "Palatine Oktoberfest (Sunday)", "url": "https://palatinerotary.org/Oktoberfest.php", "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode", "description": "German beer, food & music wind down Downtown Palatine's Oktoberfest. Noon–6pm, N Smith & W Slade St. Free entry.", "startDate": "2026-09-20T00:00:00"}]}</script>
 
 
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebPage", "name": "Palatine — Weekend & Trip Planner", "url": "https://randerson-23.github.io/agent-business/palatine-60067/this-weekend/", "dateModified": "2026-09-15T14:21:24.254441+00:00", "isPartOf": {"@type": "WebSite", "name": "Weekend & Trip Planner", "url": "https://randerson-23.github.io/agent-business/"}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebPage", "name": "Palatine — Weekend & Trip Planner", "url": "https://randerson-23.github.io/agent-business/palatine-60067/this-weekend/", "dateModified": "2026-09-15T14:36:12.666333+00:00", "isPartOf": {"@type": "WebSite", "name": "Weekend & Trip Planner", "url": "https://randerson-23.github.io/agent-business/"}}</script>
 <script>
 (function () {
   var activeTags = new Set();
