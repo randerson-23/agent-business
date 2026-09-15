@@ -23,20 +23,23 @@ The domain was registered 2026-09-15 and the site's own code already
 points everywhere at `https://withintenmiles.com/` (canonicals, sitemap,
 `llms.txt`, every cross-region link) — `build_digest.py` also emits
 `docs/CNAME` on every build so GitHub Pages picks up the custom domain
-automatically once these two steps are done. Neither is something this
-repo can do on its own:
+automatically once these steps are done.
 
-- [ ] At the domain registrar: add a DNS record pointing
-      `withintenmiles.com` at GitHub Pages (an `A`/`ALIAS` record to
-      GitHub's Pages IPs, or a `CNAME` record if using a `www` subdomain
-      instead — see [GitHub's own custom-domain
-      docs](https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site)
-      for the current IPs and exact record type).
-- [ ] Back in **Settings → Pages**, enter `withintenmiles.com` under
-      "Custom domain" and save - GitHub verifies the DNS record and
-      provisions HTTPS automatically (can take up to 24 hours).
-- [ ] Reload `https://withintenmiles.com/` once DNS propagates; the old
-      `randerson-23.github.io` URL will redirect there automatically.
+- [x] **DNS looks done already** — a direct DNS query confirms
+      `withintenmiles.com` and `www.withintenmiles.com` both resolve to
+      GitHub Pages' four real anycast IPs (185.199.108-111.153), same as
+      the working `randerson-23.github.io`. If you already added this
+      record, no action needed here.
+- [ ] Confirm **Settings → Pages** shows `withintenmiles.com` under
+      "Custom domain" with a green checkmark (not just typed in - GitHub
+      needs to verify the DNS record and provision HTTPS, which can take
+      up to 24 hours after the record first appears).
+- [ ] Reload `https://withintenmiles.com/` in a real browser and confirm
+      it loads over HTTPS with no certificate warning. (This step can't
+      be verified by the build loop - the sandbox it runs in only allows
+      outbound requests to a small allowlist, so both this URL and
+      `randerson-23.github.io` are unreachable from there even though
+      DNS itself resolves fine.)
 
 ## 2. Verify feed sources (~10 min, optional but recommended)
 
