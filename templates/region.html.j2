@@ -139,7 +139,12 @@
     display: flex;
     flex-wrap: wrap;
     gap: 6px;
-    margin: 18px 0 6px;
+    /* .hero carries margin-bottom: -24px so content can ride up into the
+       green band. These pills were the first thing after it, so at 18px
+       they straddled the boundary with their top edge in the green -
+       reported 2026-09-15. 42px clears the -24px overlap and leaves 18px
+       of breathing room, putting the whole row inside the beige. */
+    margin: 42px 0 6px;
   }
   .view-nav a {
     font-size: 13px;

@@ -989,11 +989,19 @@ def test_render_hub_page_lists_regions():
     assert "3 live update" in html
 
 
-def test_render_hub_page_includes_region_coordinates_for_distance_feature():
+def test_render_hub_page_has_no_distance_from_me_feature():
+    """The geolocation "Show distance from me" bar was removed at the
+    owner's request on 2026-09-15, along with its ZIP fallback, its
+    per-card distance label and the coordinate attributes that only it
+    read. The build-time "Nearby: ... ~2.7 mi" strip on region pages and
+    the distances drawn on the inline SVG map are unrelated and stay.
+    """
     summaries = [{**REGION, "event_count": 3, "path": "mount-prospect-60056/"}]
     html = build_digest.render_hub_page([], summaries, datetime.now(timezone.utc))
-    assert 'data-lat="42.0666"' in html
-    assert 'data-lon="-87.9373"' in html
+    assert "Show distance from me" not in html
+    assert "haversineMiles" not in html
+    assert "data-distance-label" not in html
+    assert 'data-lat="42.0666"' not in html
 
 
 def test_render_hub_page_handles_no_regions():
@@ -1475,3 +1483,20 @@ def test_build_region_map_embed_url_google_when_configured():
 
 def test_build_region_map_embed_url_none_without_coordinates():
     assert build_digest.build_region_map_embed_url({}, {"provider": "osm"}) is None
+
+
+def test_build_hub_map_embed_url_frames_all_regions():
+    url = build_digest.build_hub_map_embed_url(
+        [{"lat": 42.0666, "lon": -87.9373}, {"lat": 42.1103, "lon": -88.0342}],
+        {"provider": "osm"},
+    )
+    assert url.startswith("https://www.openstreetmap.org/export/embed.html")
+    # bbox spans both points with margin, so it is wider than their spread
+    bbox = url.split("bbox=")[1].split("&")[0].split(",")
+    w, s, e, n = (float(v) for v in bbox)
+    assert w < -88.0342 and e > -87.9373
+    assert s < 42.0666 and n > 42.1103
+
+
+def test_build_hub_map_embed_url_none_with_one_region():
+    assert build_digest.build_hub_map_embed_url([{"lat": 42.0, "lon": -88.0}], {"provider": "osm"}) is None
