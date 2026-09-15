@@ -144,7 +144,7 @@ closest" actually matters more than "which town is closest." Not a
 justification to bring geolocation itself back, though — that was a
 direct owner call, not a build-loop finding to second-guess.
 
-### Phase 9 — SEO plan + domain name (technical slice ✅ done, PR #10; domain still open)
+### Phase 9 — SEO plan + domain name (technical slice ✅ done, PR #10; domain registered 2026-09-15, DNS/Pages setup still open — see "Needs Ryan")
 Requested 2026-08-26.
 
 SEO technical tasks — done (PR #10):
@@ -214,7 +214,7 @@ right thing, instead of being scattered across ~2,000 lines.
 | Action | One line why | Unblocks |
 |---|---|---|
 | Set `buttondown_username:` in `config/newsletter.yaml` **- most urgent, moved to the top on timing alone (item 70)** | One line, takes minutes (a free Buttondown account), and **depends on nothing else** - collecting addresses works today even though *sending* still waits on the domain below for SPF/DKIM/DMARC (items 46/47). The biggest traffic weekend of the year (Oktoberfest/Fall Fest) is three days out as of this pass; every hour this stays unset is inbound attention converting to nobody. Collect now, send later. |
-| Register a domain (item 39/46) | Everything - `llms.txt`, `sitemap.xml`, every canonical tag and cross-region link - resolves to `randerson-23.github.io/agent-business/` today. GitHub Pages will redirect once a real domain exists, but AI citation corpora and `llms.txt` caches have no guarantee of re-crawling promptly, so **every week of delay compounds a migration cost that's currently near zero** (item 65). Also gates SPF/DKIM/DMARC, so it's a hard prerequisite for the entire six-item newsletter cluster (24/25/31/36/37/46/47), not just findability. |
+| Point DNS at GitHub Pages and set the custom domain in Settings → Pages (item 39/46, domain registered 2026-09-15) | `withintenmiles.com` is registered and every canonical tag, `sitemap.xml`, `llms.txt`, cross-region link, and `docs/CNAME` already points at it (commit `baf26ae`) - the code side is fully done. **The site still doesn't serve there yet**: without a DNS record pointing the domain at GitHub Pages and the custom domain saved under Settings → Pages, `withintenmiles.com` resolves to nothing and HTTPS never provisions. Neither step can happen from this repo. See `SETUP.md` §1b for the exact two steps. Also still gates SPF/DKIM/DMARC, so it remains a hard prerequisite for the entire six-item newsletter cluster (24/25/31/36/37/46/47), not just findability. |
 | Set `contact_email:` in `config/sponsors.yaml` | One line. The sponsor page's only conversion point currently falls back to a GitHub "New issue" form (item 57) - a real local business owner won't sign up for that to buy a $1,200-5,000/year placement. Deliberately left unset by the build loop rather than guessing Ryan's address. |
 | Run a real trademark search before spending money on the domain, signage, print, or sponsor contracts (item 69) | **Reduced, not eliminated, by the 2026-09-15 pivot to "Within Ten".** The name was changed *because* WebSearch found "PORCHLIGHT" is a registered mark (reg. 6028585) held by Porchlight Book Company, which publishes a newsletter to ~60,000 readers. A search for "Within Ten"/"WithinTen" turned up **no registered mark** - a materially cleaner starting point. But a web search is not a clearance search: it does not cover common-law use, similar-sounding marks, or state registrations, and it reads a fraction of what a real search does. Still worth the small cost before money is committed. | Spending safely on a domain, signage, print, sponsor contracts |
 
@@ -1428,6 +1428,13 @@ something already on the list.
     **the single blocker on two separate workstreams**. It remains the one
     thing the build loop cannot do; it needs Ryan to register a name from
     the Phase 9 shortlist.
+    **Update 2026-09-15**: the domain itself is registered
+    (`withintenmiles.com`, commit `baf26ae`) and every canonical/sitemap/
+    `llms.txt` reference points at it - but DNS and the GitHub Pages
+    custom-domain setting are still outstanding (see the "Needs Ryan"
+    table), and SPF/DKIM/DMARC on top of that domain remain a separate,
+    not-yet-started step once it's actually serving. This item's finding
+    still holds; only the domain-registration half of it is done.
 
 #### P2 (new)
 

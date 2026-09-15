@@ -17,6 +17,27 @@ to `docs/`, but GitHub Pages itself has to be turned on once by hand.
 - [ ] If it's still 404 after ~5 minutes, check the **Actions** tab for a
       failed `pages build and deployment` run and open its log.
 
+## 1b. Point the custom domain at Pages (~5 min) — do this once withintenmiles.com is registered
+
+The domain was registered 2026-09-15 and the site's own code already
+points everywhere at `https://withintenmiles.com/` (canonicals, sitemap,
+`llms.txt`, every cross-region link) — `build_digest.py` also emits
+`docs/CNAME` on every build so GitHub Pages picks up the custom domain
+automatically once these two steps are done. Neither is something this
+repo can do on its own:
+
+- [ ] At the domain registrar: add a DNS record pointing
+      `withintenmiles.com` at GitHub Pages (an `A`/`ALIAS` record to
+      GitHub's Pages IPs, or a `CNAME` record if using a `www` subdomain
+      instead — see [GitHub's own custom-domain
+      docs](https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site)
+      for the current IPs and exact record type).
+- [ ] Back in **Settings → Pages**, enter `withintenmiles.com` under
+      "Custom domain" and save - GitHub verifies the DNS record and
+      provisions HTTPS automatically (can take up to 24 hours).
+- [ ] Reload `https://withintenmiles.com/` once DNS propagates; the old
+      `randerson-23.github.io` URL will redirect there automatically.
+
 ## 2. Verify feed sources (~10 min, optional but recommended)
 
 This was built in a sandboxed environment with restricted outbound network
