@@ -108,27 +108,31 @@ Still open from the original wish list (do later, not blocking):
   emoji rendering ever looks off on a real device (untested outside this
   sandbox's Chromium render).
 
-### Phase 8 — Distance from the user, per event (region-level v1 ✅ done, PR #12)
+### Phase 8 — Distance from the user, per event (region-level v1 shipped PR #12, geolocation removed 2026-09-15)
 Requested 2026-08-26: show how far away each event/region is from the
 person viewing the site.
 
-Shipped (v1, region-level — the honest starting point given the data we
-actually have):
-- ✅ Village-center lat/lon added to each region's config.
-- ✅ Client-side only: a "Show distance from me" button (browser
+Shipped originally (v1, region-level — the honest starting point given
+the data we actually have):
+- ✅ Village-center lat/lon added to each region's config (still in use).
+- ~~Client-side only: a "Show distance from me" button (browser
   Geolocation API) computes straight-line (haversine) distance to each
   region's center in plain JS, shown on the hub page's region cards
-  ("≈4.5 mi away") and re-sorts them nearest-first.
-- ✅ Manual-ZIP fallback for denied/unavailable geolocation (a small
-  hardcoded table of nearby Chicago NW-suburb ZIPs).
-- ✅ Privacy note in the UI: computed entirely in the browser, never sent
-  anywhere.
-- Verified with Playwright (manual-ZIP path, and the denial path via an
-  explicit denied-permission browser context — a plain click hangs in
-  this sandbox because file:// isn't a secure context for Geolocation
-  and headless has no UI for the native prompt; GitHub Pages serves over
-  https, where it resolves normally). Not yet checked in a real browser
-  on the live site — worth a manual click-through once convenient.
+  ("≈4.5 mi away") and re-sorts them nearest-first.~~
+- ~~Manual-ZIP fallback for denied/unavailable geolocation (a small
+  hardcoded table of nearby Chicago NW-suburb ZIPs).~~
+- ~~Privacy note in the UI: computed entirely in the browser, never sent
+  anywhere.~~
+
+**Removed 2026-09-15, owner-directed** (commit `862cd1c`): the geolocation
+button, its manual-ZIP fallback and hardcoded coordinate table, the
+per-card distance label, the privacy note, and the ~80-line script itself
+are all gone. Deliberately kept, because neither uses geolocation and the
+owner didn't ask for them to go: the build-time "Nearby: Arlington
+Heights ~2.7 mi" strip on region pages (server-computed from each
+region's own lat/lon, no browser permission needed) and the distances
+already drawn on the inline SVG region map. The village-center lat/lon in
+each region's config stays too, since both of those still read it.
 
 Later (bigger lift, not this phase): per-event distance would need actual
 venue coordinates, which means geocoding addresses extracted from event
@@ -136,7 +140,9 @@ listings during the build (most current sources don't expose a structured
 address at all, only a title/detail blob) — likely a free-tier geocoding
 API called during `build_digest.py`, cached to stay within rate limits.
 Worth doing once regions multiply enough that "which specific event is
-closest" actually matters more than "which town is closest."
+closest" actually matters more than "which town is closest." Not a
+justification to bring geolocation itself back, though — that was a
+direct owner call, not a build-loop finding to second-guess.
 
 ### Phase 9 — SEO plan + domain name (technical slice ✅ done, PR #10; domain still open)
 Requested 2026-08-26.
@@ -1047,6 +1053,25 @@ change whose cost only shows up on a real network stays gated behind it.
     confirmed by a live fetch yet (this sandbox's network is blocked for
     every source, same as always) - that confirmation will come from the
     next real GitHub Actions build's job log, same as D57's did.
+    **That confirmation came back negative, not positive** (real build
+    2026-09-15, run 34983302071): all three of D25's, CCSD15's, and
+    D211's new sources 404. D57's own source, added a research pass
+    earlier and confirmed working the very next build, is unaffected and
+    still returns 6 real items - this is specific to the three new
+    sources, not a platform-wide problem. Two follow-up WebSearch passes
+    per broken URL both surfaced the exact same, still-dead URLs - the
+    module instance IDs a real, indexed page pointed at have apparently
+    rotated or expired server-side since being indexed, a failure mode
+    WebSearch's own indexed-content nature can't detect ahead of a live
+    fetch. This is the honest downside of the technique that made D57's,
+    the Oktoberfest find, and the domain-bug fixes all work: it finds
+    real pages, not necessarily currently-live ones. Left all three
+    enabled (see each config's comment) since they fail soft regardless,
+    and disabling them buys nothing a 404 doesn't already give for free.
+    Not chasing a fresh MIID for either school district this pass -
+    would need a real page fetch this sandbox can't do, and repeated
+    WebSearch on the exact same query keeps returning the exact same
+    stale answer.
     **Still not done**: Des Plaines' District 62 (elementary/middle) and
     Maine Township High School District 207 - both researched this pass,
     neither had a discoverable district-wide feed URL surface via web

@@ -39,13 +39,17 @@
 #     `detail_link_pattern` to individual dated events specifically.
 #   - School Calendar (District 15 & District 211): added 2026-08-30
 #     (fourteenth research pass, ROADMAP.md item 32 follow-up) - two real
-#     URLs found via web search, not yet confirmed by a live fetch. See
-#     the source blocks below for the full rationale.
+#     URLs found via web search. CONFIRMED BROKEN 2026-09-15 against the
+#     real build (run 34983302071): both 404. See the source blocks below
+#     for the full finding - the same "real, indexed URL isn't the same
+#     as a live one" failure mode Arlington Heights' District 25 source
+#     also hit this same run, not specific to this region's sources.
 #
 # The pipeline fails soft either way: a broken source is skipped and
 # logged, it never breaks the whole digest build - if any of the domains
 # above turn out to be wrong, this region simply falls back to the
-# evergreen entries below until a real link surfaces.
+# evergreen entries below until a real link surfaces. (The Village News
+# domain fix above IS confirmed working in this same run: 2 real items.)
 
 region:
   id: "palatine-60067"
@@ -111,8 +115,14 @@ sources:
     # page, a real indexed page at this exact URL, same
     # `site/handlers/icalfeed.ashx?MIID=<id>` pattern D25 uses (same CMS
     # platform, not a copy-guess - each MIID was found independently).
-    # Not yet confirmed by a live fetch (this sandbox's own network is
-    # proxy-blocked too).
+    # CONFIRMED BROKEN 2026-09-15 against the real build (run
+    # 34983302071): 404. Same failure mode as D25's own source in
+    # Arlington Heights' config this same run - a real, indexed URL
+    # isn't the same as a live one; the module instance ID has
+    # apparently rotated or expired since being indexed, which no amount
+    # of re-searching turned up a fix for (two follow-up WebSearch passes
+    # both surfaced this identical, still-broken URL). Left enabled since
+    # it fails soft regardless.
     url: "webcal://www.ccsd15.net/site/handlers/icalfeed.ashx?MIID=5415"
     section: "School Calendar"
     enabled: true
@@ -125,8 +135,16 @@ sources:
     # URL - a genuine finding, not the PDF-only dead end District 214 was
     # for Mount Prospect and Arlington Heights. build_digest.py's `rss`
     # source type (already used for Mount Prospect's library) applies
-    # here since this is a standard RSS export, not ICS. Not yet
-    # confirmed by a live fetch.
+    # here since this is a standard RSS export, not ICS. CONFIRMED BROKEN
+    # 2026-09-15 against the real build (run 34983302071): 404, and the
+    # error message shows the query string got dropped somewhere along
+    # the way ("404 ... for url: https://adc.d211.org/site/RSS" - no
+    # params), suggesting either a redirect that lost them or a URL
+    # shape that never actually worked as a direct link, unlike D25's
+    # and CCSD15's icalfeed.ashx URLs which at least 404 on the exact
+    # URL given. WebSearch couldn't turn up a working replacement - see
+    # ROADMAP.md item 32's writeup. Left enabled since it fails soft
+    # regardless.
     url: "https://adc.d211.org/site/RSS.aspx?DomainID=4&ModuleInstanceID=9762&PageID=1&PMIID=9953"
     section: "School Calendar"
     enabled: true

@@ -21,8 +21,17 @@
 #     real dated events (e.g. "Touch-A-Truck" 2026-09-12, "Heritage Fest"
 #     2026-09-19), each with a real ahpd.org/event/... URL.
 #   - School Calendar (District 25): added 2026-08-30 (fourteenth research
-#     pass, ROADMAP.md item 32 follow-up) - a real URL found via web
-#     search, not yet confirmed by a live fetch. See the source block
+#     pass, ROADMAP.md item 32 follow-up) - a real, indexed URL found via
+#     web search, but CONFIRMED BROKEN against the real GitHub Actions
+#     build 2026-09-15 (run 34983302071): "404 Client Error: Not Found".
+#     Same URL two independent WebSearch passes both surfaced, and the
+#     page that URL sits on (sd25.org's own "ICal Feed" page) is real -
+#     the module instance ID (MIID=569) itself has apparently rotated or
+#     expired server-side since being indexed, a failure mode this
+#     research technique can't detect ahead of a live fetch. Left enabled
+#     (fails soft to 0 either way) rather than disabled; a fresh MIID
+#     would need a real page fetch to find, which this sandbox can't do
+#     and WebSearch keeps returning the same stale one. See the source block
 #     below for the full rationale.
 #
 # The pipeline fails soft either way: a broken source is skipped and
@@ -83,9 +92,12 @@ sources:
     # already confirmed working for Mount Prospect's District 57 (see
     # that config's comment). Found via web search of sd25.org's own
     # "ICal Feed" page - a real, indexed page at this exact URL, not an
-    # invented pattern - and not yet confirmed by a live fetch (this
-    # sandbox's own network is proxy-blocked too, same as every source
-    # here). Township High School District 214 (the shared high school
+    # invented pattern. CONFIRMED BROKEN 2026-09-15 against the real
+    # build (run 34983302071): 404. See the header comment above for the
+    # full finding - a real, indexed URL isn't the same as a live one,
+    # and this sandbox's blocked network can't tell the difference ahead
+    # of a real fetch. Left enabled since it fails soft regardless.
+    # Township High School District 214 (the shared high school
     # district) was already researched for Mount Prospect and has no
     # discoverable public ICS feed, only PDF calendars - not re-checked
     # here since that finding is district-wide, not region-specific.
