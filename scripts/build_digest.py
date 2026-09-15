@@ -749,47 +749,6 @@ def build_region_map_embed_url(region: dict, maps: dict) -> str | None:
     )
 
 
-def build_hub_map_embed_url(region_summaries: list[dict], maps: dict) -> str | None:
-    """Street-map embed for the hub, framed to fit every covered town
-    rather than centred on one of them.
-
-    Same <object> layering and provider rules as
-    build_region_map_embed_url(); the only difference is the viewport,
-    which is a bounding box over all regions with real coordinates plus a
-    margin so the outermost pins aren't flush against the edge.
-
-    Returns None with fewer than two located regions - a single dot needs
-    no street map, and the inline SVG already declines to draw one.
-    """
-    pts = [
-        (r["lat"], r["lon"]) for r in region_summaries
-        if r.get("lat") is not None and r.get("lon") is not None
-    ]
-    if len(pts) < 2:
-        return None
-    lats = [p[0] for p in pts]
-    lons = [p[1] for p in pts]
-    mid_lat, mid_lon = (min(lats) + max(lats)) / 2, (min(lons) + max(lons)) / 2
-    if maps.get("provider") == "google" and maps.get("google_api_key"):
-        return (
-            "https://www.google.com/maps/embed/v1/view"
-            f"?key={quote(maps['google_api_key'], safe='')}"
-            f"&center={mid_lat:.4f},{mid_lon:.4f}&zoom=11"
-        )
-    # A 25% margin on each side, floored so two near-identical points
-    # still produce a sane window rather than a degenerate box.
-    pad_lat = max((max(lats) - min(lats)) * 0.25, 0.02)
-    pad_lon = max((max(lons) - min(lons)) * 0.25, 0.03)
-    bbox = (
-        f"{min(lons) - pad_lon:.4f},{min(lats) - pad_lat:.4f},"
-        f"{max(lons) + pad_lon:.4f},{max(lats) + pad_lat:.4f}"
-    )
-    return (
-        "https://www.openstreetmap.org/export/embed.html"
-        f"?bbox={quote(bbox, safe=',')}&layer=mapnik"
-    )
-
-
 def build_region_map_link_url(region: dict) -> str | None:
     """A plain, clickable Google Maps link centered on the region's
     coordinates - real streets, pan/zoom, no API key or Google Cloud
@@ -1140,7 +1099,6 @@ def render_hub_page(
     newsletter: dict | None = None,
     analytics: dict | None = None,
     stats: dict | None = None,
-    hub_map_embed_url: str | None = None,
 ) -> str:
     env = Environment(loader=FileSystemLoader(str(TEMPLATES_DIR)), autoescape=True)
     template = env.get_template("hub.html.j2")
@@ -1149,8 +1107,6 @@ def render_hub_page(
         region_summaries=region_summaries,
         canonical_url=SITE_BASE_URL,
         newsletter=newsletter,
-        region_map=build_region_map(region_summaries),
-        map_embed_url=hub_map_embed_url,
         analytics=analytics,
         stats=stats,
     )
@@ -1634,10 +1590,7 @@ def main() -> None:
         "weekend_count": sum(len(s["events"]) for s in hub_weekend_sections),
         "weekend_date_range": hub_weekend_date_range or "",
     }
-    hub_html = render_hub_page(
-        regions, region_summaries, now, newsletter, analytics, stats=hub_stats,
-        hub_map_embed_url=build_hub_map_embed_url(region_summaries, maps),
-    )
+    hub_html = render_hub_page(regions, region_summaries, now, newsletter, analytics, stats=hub_stats)
     (OUTPUT_DIR / "index.html").write_text(hub_html, encoding="utf-8")
     logger.info("Wrote %s", OUTPUT_DIR / "index.html")
 

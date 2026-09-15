@@ -228,57 +228,6 @@
     .region-card p { font-size: 14.5px; }
   }
 
-  .map-card {
-    position: relative;
-    background: var(--card);
-    border-radius: var(--radius-lg);
-    box-shadow: var(--shadow-sm);
-    padding: 18px 24px 14px;
-    margin: 0 0 18px;
-    /* Was a ~240px thumbnail with unreadable pin labels, the smallest
-       thing on the page despite being the most distinctive visual asset
-       (ROADMAP.md Phase 11 #56). ~2x that now. Not full .wrap width:
-       tried that first and it overlapped the pin labels, which are a
-       fixed px size baked into build_region_map()'s small viewBox and
-       scale up with the container - confirmed by screenshotting that
-       attempt. min() still guards narrow viewports. */
-    max-width: min(480px, 100%);
-  }
-  .map-card svg {
-    width: 100%;
-    height: auto;
-    display: block;
-    /* SVG root clips to the viewBox by default - the pin labels are
-       wider than the padding reserved for them (a long region name at
-       text-anchor="middle" extends well past its pin's x position), so
-       without this a label near an edge gets cut off mid-word. */
-    overflow: visible;
-  }
-  .map-frame {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    border: 0;
-    z-index: 1;
-    /* Rounded here rather than clipping the card with overflow:hidden -
-       the SVG underneath relies on overflow:visible so its pin labels,
-       which extend past the viewBox, aren't cut off mid-word. */
-    border-radius: var(--radius-lg);
-  }
-  .map-line { stroke: var(--border); stroke-width: 1.5; stroke-dasharray: 4 3; }
-  .map-line-label { font-size: 9px; fill: var(--muted); font-family: 'Inter', sans-serif; }
-  .map-pin { fill: var(--accent-soft); stroke: var(--card); stroke-width: 2; }
-  .map-pin-label {
-    font-size: 11px;
-    font-weight: 700;
-    fill: var(--ink);
-    font-family: 'Inter', sans-serif;
-  }
-  .map-card a { text-decoration: none; }
-  .map-card a:hover .map-pin { fill: var(--accent); }
-  .map-card a:hover .map-pin-label { fill: var(--accent); }
-  .map-card a:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
 
 
   .empty-state {
@@ -378,43 +327,6 @@
   <div class="wrap">
   <main>
   {% if region_summaries %}
-  <!-- The map leads, before the region grid: it exists to help pick a
-       region, so it belongs above the choice (ROADMAP.md Phase 11 #56). -->
-
-  {% if region_map %}
-  <div class="map-card">
-    <!-- role="img" here was wrong (ROADMAP.md Phase 11 #62, found by a
-         real axe-core audit): it declares "this is a single
-         non-interactive image" to assistive tech while the SVG contains
-         real <a> links to each region - axe correctly flags nested
-         interactive controls inside an img-role element, and in
-         practice it means a screen reader announces this as one static
-         picture and never exposes the links inside it. Removed the
-         role/aria-label; each pin's own <a> already gets its accessible
-         name from the region-name <text> it wraps. -->
-    <svg viewBox="0 0 {{ region_map.width }} {{ region_map.height }}">
-      {% for line in region_map.lines %}
-      <line x1="{{ line.x1 }}" y1="{{ line.y1 }}" x2="{{ line.x2 }}" y2="{{ line.y2 }}" class="map-line" />
-      <text x="{{ line.mid_x }}" y="{{ line.mid_y - 6 }}" class="map-line-label" text-anchor="middle">{{ line.miles }} mi</text>
-      {% endfor %}
-      {% for pin in region_map.pins %}
-      <a href="{{ pin.path }}" aria-label="{{ pin.name }}">
-        <text x="{{ pin.x }}" y="{{ pin.y - 14 }}" class="map-pin-label" text-anchor="middle">{{ pin.name }}</text>
-        <circle cx="{{ pin.x }}" cy="{{ pin.y }}" r="7" class="map-pin" />
-      </a>
-      {% endfor %}
-    </svg>
-    {% if map_embed_url %}
-    {# <object>, not <iframe> - same reasoning as the region pages: a
-       blocked iframe paints the browser's opaque error page over the SVG
-       behind it, while a failed <object> renders nothing and lets the
-       SVG show through. Verified both directions against a real render.
-       Framed to fit every covered town, not centred on one. #}
-    <object class="map-frame" type="text/html" data="{{ map_embed_url }}"
-            aria-label="Street map of the towns covered by this site"></object>
-    {% endif %}
-  </div>
-  {% endif %}
 
   <div class="bento-grid">
     <a class="bento-tile bento-weekend" href="this-weekend/">

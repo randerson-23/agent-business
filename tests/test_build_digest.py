@@ -1483,20 +1483,3 @@ def test_build_region_map_embed_url_google_when_configured():
 
 def test_build_region_map_embed_url_none_without_coordinates():
     assert build_digest.build_region_map_embed_url({}, {"provider": "osm"}) is None
-
-
-def test_build_hub_map_embed_url_frames_all_regions():
-    url = build_digest.build_hub_map_embed_url(
-        [{"lat": 42.0666, "lon": -87.9373}, {"lat": 42.1103, "lon": -88.0342}],
-        {"provider": "osm"},
-    )
-    assert url.startswith("https://www.openstreetmap.org/export/embed.html")
-    # bbox spans both points with margin, so it is wider than their spread
-    bbox = url.split("bbox=")[1].split("&")[0].split(",")
-    w, s, e, n = (float(v) for v in bbox)
-    assert w < -88.0342 and e > -87.9373
-    assert s < 42.0666 and n > 42.1103
-
-
-def test_build_hub_map_embed_url_none_with_one_region():
-    assert build_digest.build_hub_map_embed_url([{"lat": 42.0, "lon": -88.0}], {"provider": "osm"}) is None
