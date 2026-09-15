@@ -2356,6 +2356,80 @@ This pass found something time-critical rather than strategic.
     still pass; build exits 0 with the new PRODID confirmed in generated
     output.
 
+#### Research pass 2026-09-15 (fifteenth pass)
+
+Items 66, 67 and 68 all shipped within hours of the fourteenth pass, and
+the result is verified working: `annual_events` exists, and **Oktoberfest
+now appears on both the Mount Prospect weekend view and the cross-region
+one**, with calendar export and tray star, three days before the event.
+PR #94 also caught two rename spots this loop had missed — the `.ics`
+`PRODID` and the sponsor outreach templates.
+
+Two findings below are new information the owner did not have when
+deciding; the third is a defect visible on the highest-profile listing of
+the year.
+
+#### P1 (new)
+
+69. **"PORCHLIGHT" is a registered trademark, held by a company that
+    publishes a newsletter.** When the name was chosen, the flagged risk
+    was Porchlight Music Theatre — a Chicago company, but a theatre, in a
+    different line of work. The search turns up materially more than
+    that:
+    - **Porchlight Book Company** holds a registered PORCHLIGHT mark
+      (reg. 6028585, serial 88614588) and **publishes a 20-page quarterly
+      newsletter to roughly 60,000 readers**. That is publishing to a
+      subscriber list — adjacent to what this site plans to do, not a
+      different industry.
+    - **The Porch Media Group, LLC** filed "THE PORCH CHICAGO — ONE PORCH
+      AT A TIME" for entertainment media services.
+    - Porch Light Public Relations and a 2025 PORCHLIGHT filing by
+      Porchlight Rental Service also exist.
+
+    **Stated plainly and with its limits:** this is search-result
+    evidence, not legal advice, and trademark protection is scoped by
+    registration class — a bulk bookseller's mark does not automatically
+    bar a free local events site. But "registered mark + newsletter
+    publisher" is a different risk profile from "a theatre shares the
+    word," and the owner decided on the latter.
+    What this changes, concretely: the domain should differentiate rather
+    than compete (`porchlightweekends.com`, `porchlight.town`, or a
+    two-word lockup like "Porchlight Local"), and a real trademark search
+    is worth its small cost **before** money goes into a domain, signage,
+    print or sponsor contracts — not after. Nothing needs changing on the
+    site today; the name works as it stands.
+
+70. **The single biggest traffic weekend of the year is in three days,
+    and the email capture is inert.** Oktoberfest and the Fall Festival
+    will have locals searching for exactly what this site now lists, and
+    item 12's signup block is config-gated on a Buttondown username that
+    is still unset — so the one moment with real inbound attention
+    converts nobody. The research on festival-driven audience capture is
+    unanimous and unsurprising: a marquee event is when an owned audience
+    gets built, and the list is what every sponsor conversation turns on.
+    This is a one-line owner action (`config/newsletter.yaml`), and unlike
+    the domain it does **not** depend on anything else — a free Buttondown
+    account takes minutes, and collecting addresses now works even though
+    *sending* still waits on the domain for SPF/DKIM/DMARC (items 46, 47).
+    Collect now, send later. **Add it to the "Needs Ryan" block at the top
+    of Phase 11, above the domain, purely on timing.**
+
+#### P2 (new)
+
+71. **The marquee listing's title reads badly.** The two `annual_events`
+    entries in `config/regions/mount-prospect-60056.yaml` are titled
+    "Oktoberfest — Fall Fest & Oktoberfest weekend" and "Fall Festival &
+    Oktoberfest — **Fall Fest & Oktoberfest weekend**" — the second says
+    Oktoberfest three times. The suffix is authored into the `title`
+    field, presumably to group the pair as one weekend.
+    That grouping instinct is right; concatenating it into the title is
+    not. Either drop the suffix (the detail line already carries the
+    times, the place and the organiser), or add an optional `series:`
+    field rendered as a small kicker above the title the way the Editor's
+    Pick card does — which would also let future multi-day events group
+    without repeating themselves. Worth fixing before Friday: this is the
+    most-viewed listing the site will publish all year.
+
 ## Working agreements for autonomous iteration
 
 - Cadence is hourly (the platform's durable scheduler has a 1-hour floor;
