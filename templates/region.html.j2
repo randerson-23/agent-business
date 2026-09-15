@@ -6,7 +6,7 @@
 <title>{{ page_title }}</title>
 <meta name="description" content="{{ page_description }}">
 <meta property="og:type" content="website">
-<meta property="og:site_name" content="Porchlight">
+<meta property="og:site_name" content="Within Ten">
 <meta property="og:title" content="{{ page_title }}">
 <meta property="og:description" content="{{ page_description }}">
 <meta name="twitter:card" content="summary">
@@ -1023,7 +1023,7 @@
       function icsEscape(text) {
         return String(text).replace(/\\/g, "\\\\").replace(/,/g, "\\,").replace(/;/g, "\\;").replace(/\n/g, "\\n");
       }
-      var lines = ["BEGIN:VCALENDAR", "VERSION:2.0", "PRODID:-//Porchlight//EN"];
+      var lines = ["BEGIN:VCALENDAR", "VERSION:2.0", "PRODID:-//Within Ten//EN"];
       tray.forEach(function (item) {
         lines.push("BEGIN:VEVENT");
         if (item.date_iso) {

@@ -12,7 +12,7 @@ Subject: A year-round local recommendation for [Business Name]
 
 Hi [Owner Name],
 
-I run **Porchlight**, a free weekly digest of what's
+I run **Within Ten**, a free weekly digest of what's
 happening in [Mount Prospect / Arlington Heights] — village news, library
 events, and Park District programs — read by local families every week.
 
@@ -30,7 +30,7 @@ true and specific always beats generic ad copy).
 
 Thanks,
 [Your name]
-Porchlight — https://randerson-23.github.io/agent-business/
+Within Ten — https://randerson-23.github.io/agent-business/
 
 ## 2. Follow-up (no response after ~1 week)
 
@@ -49,7 +49,7 @@ Thanks,
 
 ## 3. Booking confirmation
 
-Subject: You're confirmed — Porchlight [tier]
+Subject: You're confirmed — Within Ten [tier]
 
 Hi [Owner Name],
 
@@ -73,7 +73,7 @@ Heights] families!
 
 ## 4. Renewal check-in
 
-Subject: Want to keep [Business Name]'s spot in Porchlight?
+Subject: Want to keep [Business Name]'s spot in Within Ten?
 
 Hi [Owner Name],
 
@@ -94,7 +94,7 @@ Subject: The [region] recommendation slot, held exclusively
 Hi [Owner Name],
 
 Most local marketing budgets for a [neighborhood/town] go toward direct
-mail and one-off event sponsorships that reset every month. Porchlight's
+mail and one-off event sponsorships that reset every month. Within Ten's
 Neighborhood Authority membership ($5,000/year) works
 differently: it's the region's single recommendation slot, held
 exclusively by one business — not shared, not rotated — for a full
@@ -110,7 +110,7 @@ Worth a short call to see if it fits how you're already budgeting for
 
 Thanks,
 [Your name]
-Porchlight — https://randerson-23.github.io/agent-business/
+Within Ten — https://randerson-23.github.io/agent-business/
 
 ## 6. Downtown merchants association pitch
 
@@ -118,7 +118,7 @@ Subject: A membership offer for [Association Name] members
 
 Hi [Contact Name],
 
-I run Porchlight, a free weekly digest of what's happening
+I run Within Ten, a free weekly digest of what's happening
 in [region] — village news, library events, and Park District programs,
 read by local families every week. Rather than reach out to your member
 businesses one at a time, I wanted to bring this to [Association Name]
@@ -142,4 +142,4 @@ a sample issue first.
 
 Thanks,
 [Your name]
-Porchlight — https://randerson-23.github.io/agent-business/
+Within Ten — https://randerson-23.github.io/agent-business/

@@ -1,4 +1,4 @@
-# Sponsor Media Kit — Porchlight
+# Sponsor Media Kit — Within Ten
 
 *A weekly digest of village news, library events, and park district
 programs — currently live for Mount Prospect (60056) and Arlington

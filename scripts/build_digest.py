@@ -62,7 +62,7 @@ LAUNCH_DATE = date(2026, 8, 26)
 # said "Weekend & Trip Planner" - two different strings for what should
 # read as one entity to a search/AI crawler (ROADMAP.md Phase 11 #22
 # follow-up, entity-naming audit).
-SITE_NAME = "Porchlight"
+SITE_NAME = "Within Ten"
 
 
 def load_yaml(path: Path) -> dict:
