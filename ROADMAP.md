@@ -204,18 +204,19 @@ have nothing pressing, pick the highest unclaimed `P1` item below. Mark items
 `✅ done (PR #N)` in place rather than deleting them, so the research loop
 doesn't re-suggest something already shipped.
 
-#### Needs Ryan (thirteenth research pass, #64)
+#### Needs Ryan (fifteenth research pass, #69/#70, reordered)
 
-Three items block on one person, each a minutes-long action with outsized
+Four items block on one person, each a minutes-long action with outsized
 consequences, and none was discoverable without reading the whole file.
 Consolidated here so the human's next few available minutes land on the
 right thing, instead of being scattered across ~2,000 lines.
 
 | Action | One line why | Unblocks |
 |---|---|---|
+| Set `buttondown_username:` in `config/newsletter.yaml` **- most urgent, moved to the top on timing alone (item 70)** | One line, takes minutes (a free Buttondown account), and **depends on nothing else** - collecting addresses works today even though *sending* still waits on the domain below for SPF/DKIM/DMARC (items 46/47). The biggest traffic weekend of the year (Oktoberfest/Fall Fest) is three days out as of this pass; every hour this stays unset is inbound attention converting to nobody. Collect now, send later. |
 | Register a domain (item 39/46) | Everything - `llms.txt`, `sitemap.xml`, every canonical tag and cross-region link - resolves to `randerson-23.github.io/agent-business/` today. GitHub Pages will redirect once a real domain exists, but AI citation corpora and `llms.txt` caches have no guarantee of re-crawling promptly, so **every week of delay compounds a migration cost that's currently near zero** (item 65). Also gates SPF/DKIM/DMARC, so it's a hard prerequisite for the entire six-item newsletter cluster (24/25/31/36/37/46/47), not just findability. |
 | Set `contact_email:` in `config/sponsors.yaml` | One line. The sponsor page's only conversion point currently falls back to a GitHub "New issue" form (item 57) - a real local business owner won't sign up for that to buy a $1,200-5,000/year placement. Deliberately left unset by the build loop rather than guessing Ryan's address. |
-| Set `buttondown_username:` in `config/newsletter.yaml` | One line. Activates the newsletter signup form (currently hidden per item 56, correctly, rather than showing a permanent "coming soon"). Blocked on the domain above for proper email authentication first. |
+| Run a real trademark search before spending money on the domain, signage, print, or sponsor contracts (item 69) | WebSearch found "PORCHLIGHT" is a registered mark (reg. 6028585) held by Porchlight Book Company, which publishes a newsletter to ~60,000 readers - a different, more relevant risk profile than the Porchlight Music Theatre risk considered when the name was chosen. Search evidence, not legal advice, and marks are scoped by class - but worth a real (small-cost) search **before**, not after, money is committed. Nothing on the live site needs to change today. |
 
 #### Competitors reviewed (2026-08-27)
 
@@ -2416,19 +2417,32 @@ the year.
 
 #### P2 (new)
 
-71. **The marquee listing's title reads badly.** The two `annual_events`
-    entries in `config/regions/mount-prospect-60056.yaml` are titled
-    "Oktoberfest — Fall Fest & Oktoberfest weekend" and "Fall Festival &
-    Oktoberfest — **Fall Fest & Oktoberfest weekend**" — the second says
-    Oktoberfest three times. The suffix is authored into the `title`
-    field, presumably to group the pair as one weekend.
-    That grouping instinct is right; concatenating it into the title is
-    not. Either drop the suffix (the detail line already carries the
-    times, the place and the organiser), or add an optional `series:`
-    field rendered as a small kicker above the title the way the Editor's
-    Pick card does — which would also let future multi-day events group
-    without repeating themselves. Worth fixing before Friday: this is the
-    most-viewed listing the site will publish all year.
+71. ✅ done. **The marquee listing's title reads badly.** The two
+    `annual_events` entries in `config/regions/mount-prospect-60056.yaml`
+    were titled "Oktoberfest — Fall Fest & Oktoberfest weekend" and "Fall
+    Festival & Oktoberfest — **Fall Fest & Oktoberfest weekend**" — the
+    second said Oktoberfest three times. The suffix was authored into
+    the `title` field, presumably to group the pair as one weekend.
+    Shipped the second of the two proposed fixes (the better one, not
+    the quick one): a new optional `series:` field on `annual_events:`
+    entries, rendered as a small kicker line above the title - the exact
+    same visual treatment as the Editor's Pick card's own label
+    (`.editors-pick .label`), so it reads as one visual language rather
+    than a one-off. `prepare_annual_events()` passes `series` straight
+    through into the event dict (`None` when absent, so nothing renders
+    for a standalone annual event); the card-grid loop in both
+    `region.html.j2` and `weekend_hub.html.j2` got the same
+    `{% if item.series %}` line and matching `.series` CSS.
+    Titles simplified to just "Oktoberfest" and "Fall Festival &
+    Oktoberfest," with `series: "Fall Fest & Oktoberfest Weekend"` on
+    both - the detail line already carries the times, place and
+    organiser, so nothing is lost. Confirmed in the real generated
+    output on both the region page and the hub's cross-region weekend
+    page. Deliberately left the Editor's Pick card itself alone: its
+    title was already clean (no more repetition, since it renders the
+    same de-duplicated `title` field), and stacking a second small-caps
+    kicker next to its own "✏️ Editor's Pick" label risked clutter for a
+    defect that was already fixed. 213 tests pass (2 new); build exits 0.
 
 ## Working agreements for autonomous iteration
 

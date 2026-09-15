@@ -217,13 +217,22 @@ sources:
 # page's exact hours (no automated re-check exists for a hand-entered
 # date - if this ever runs stale, it's this file that needs updating,
 # same as any other yearly civic fact).
+# ROADMAP.md Phase 11 #71 (fifteenth research pass, 2026-09-15): the two
+# titles below used to repeat "Fall Fest & Oktoberfest weekend" as a
+# suffix so the pair read as one grouped weekend - which meant
+# "Oktoberfest" appeared three times on the second card. Replaced with
+# `series:`, rendered as a small kicker above the title (same treatment
+# as the Editor's Pick label) so the grouping shows without repeating
+# into the title text itself.
 annual_events:
-  - title: "Oktoberfest — Fall Fest & Oktoberfest weekend"
+  - title: "Oktoberfest"
+    series: "Fall Fest & Oktoberfest Weekend"
     date: "2026-09-18"
     detail: "German food, drink & live music from the band Paloma. 4–11pm, Emerson St. & Busse Ave. — Downtown Merchants."
     url: "https://mpdowntown.com/oktoberfest-info/"
     tags: ["outdoor"]
-  - title: "Fall Festival & Oktoberfest — Fall Fest & Oktoberfest weekend"
+  - title: "Fall Festival & Oktoberfest"
+    series: "Fall Fest & Oktoberfest Weekend"
     date: "2026-09-19"
     detail: "Free Fall Festival noon–4pm (special-needs hour noon–1pm) with crafts & entertainment, then Oktoberfest continues 4–11pm. Emerson & Busse."
     url: "https://mpdowntown.com/oktoberfest-info/"

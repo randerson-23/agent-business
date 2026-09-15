@@ -414,6 +414,17 @@
     letter-spacing: 0.02em;
     text-transform: uppercase;
   }
+  /* ROADMAP.md Phase 11 #71: a small kicker for annual_events entries
+     that belong to the same multi-day event (e.g. Friday and Saturday
+     of one festival), so the grouping shows without repeating it into
+     the title itself. Same treatment as .editors-pick .label. */
+  .card .series {
+    color: var(--accent);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
   .card h3 { margin: 0; padding-right: 24px; font-size: 16px; font-weight: 600; line-height: 1.35; }
   .card h3 a { color: var(--ink); text-decoration: none; }
   .card h3 a:hover { color: var(--accent); }
@@ -748,6 +759,7 @@
                guide index have nothing to do with weekend planning. -->
           <button type="button" class="tray-star" data-item='{{ tray_item | tojson }}' aria-pressed="false" aria-label="Add {{ item.title }} to My Weekend">☆</button>
           {% endif %}
+          {% if item.series %}<div class="series">{{ item.series }}</div>{% endif %}
           {% if item.date %}<div class="date">{{ item.date }}</div>{% endif %}
           <h3>{% if item.url %}<a href="{{ item.url }}">{{ item.title }}</a>{% else %}{{ item.title }}{% endif %}</h3>
           {% if item.detail %}<p class="detail">{{ item.detail }}</p>{% endif %}

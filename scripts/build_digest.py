@@ -432,6 +432,14 @@ def prepare_annual_events(region_cfg: dict) -> dict | None:
             tags = infer_tags(item.get("title", ""), item.get("detail", ""), "Annual Events")
         event = {
             "title": item.get("title", ""),
+            # ROADMAP.md Phase 11 #71: an optional small kicker for
+            # entries that are one day of the same multi-day event (e.g.
+            # Friday and Saturday of one festival), so the grouping shows
+            # above the title instead of being concatenated into it -
+            # the earlier "Oktoberfest — Fall Fest & Oktoberfest weekend"
+            # phrasing repeated the festival name three times on the
+            # card. Absent for a standalone annual event.
+            "series": item.get("series"),
             "detail": truncate(item.get("detail", "")),
             "url": item.get("url", ""),
             "date": format_event_date(item.get("date")),

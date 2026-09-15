@@ -337,6 +337,31 @@ def test_prepare_annual_events_infers_tags_when_absent():
     assert "free" in block["events"][0]["tags"]
 
 
+def test_prepare_annual_events_passes_through_series_when_present():
+    region_cfg = {
+        "region": {"name": "Mount Prospect"},
+        "annual_events": [
+            {
+                "title": "Oktoberfest",
+                "series": "Fall Fest & Oktoberfest Weekend",
+                "date": "2026-09-18",
+                "detail": "German food & live music.",
+            }
+        ],
+    }
+    block = build_digest.prepare_annual_events(region_cfg)
+    assert block["events"][0]["series"] == "Fall Fest & Oktoberfest Weekend"
+
+
+def test_prepare_annual_events_series_is_none_when_absent():
+    region_cfg = {
+        "region": {"name": "Mount Prospect"},
+        "annual_events": [{"title": "Standalone Event", "date": "2026-09-18", "detail": "A one-off."}],
+    }
+    block = build_digest.prepare_annual_events(region_cfg)
+    assert block["events"][0]["series"] is None
+
+
 def test_build_business_directory_empty_when_no_history():
     cfg = {"regions": {"mount-prospect-60056": {"active": "none", "house_ad": None, "history": []}}}
     assert build_digest.build_business_directory(cfg, "mount-prospect-60056") == []
