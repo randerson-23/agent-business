@@ -1,8 +1,9 @@
 # Sponsor Outreach Email Templates
 
-Copy/personalize these when reaching out to local Mount Prospect (60056)
-or Arlington Heights (60005) businesses. Keep it short — busy owners
-skim. Live pricing and per-region availability:
+Copy/personalize these when reaching out to local Mount Prospect (60056),
+Arlington Heights (60005), Des Plaines (60016), or Palatine (60067)
+businesses. Keep it short — busy owners skim. Live pricing and
+per-region availability:
 https://randerson-23.github.io/agent-business/sponsor/
 
 ## 1. Cold intro
@@ -11,7 +12,7 @@ Subject: A year-round local recommendation for [Business Name]
 
 Hi [Owner Name],
 
-I run **Weekend & Trip Planner**, a free weekly digest of what's
+I run **Porchlight**, a free weekly digest of what's
 happening in [Mount Prospect / Arlington Heights] — village news, library
 events, and Park District programs — read by local families every week.
 
@@ -29,7 +30,7 @@ true and specific always beats generic ad copy).
 
 Thanks,
 [Your name]
-Weekend & Trip Planner — https://randerson-23.github.io/agent-business/
+Porchlight — https://randerson-23.github.io/agent-business/
 
 ## 2. Follow-up (no response after ~1 week)
 
@@ -48,7 +49,7 @@ Thanks,
 
 ## 3. Booking confirmation
 
-Subject: You're confirmed — Weekend & Trip Planner [tier]
+Subject: You're confirmed — Porchlight [tier]
 
 Hi [Owner Name],
 
@@ -72,7 +73,7 @@ Heights] families!
 
 ## 4. Renewal check-in
 
-Subject: Want to keep [Business Name]'s spot in Weekend & Trip Planner?
+Subject: Want to keep [Business Name]'s spot in Porchlight?
 
 Hi [Owner Name],
 
@@ -93,8 +94,8 @@ Subject: The [region] recommendation slot, held exclusively
 Hi [Owner Name],
 
 Most local marketing budgets for a [neighborhood/town] go toward direct
-mail and one-off event sponsorships that reset every month. Weekend &
-Trip Planner's Neighborhood Authority membership ($5,000/year) works
+mail and one-off event sponsorships that reset every month. Porchlight's
+Neighborhood Authority membership ($5,000/year) works
 differently: it's the region's single recommendation slot, held
 exclusively by one business — not shared, not rotated — for a full
 year, alongside a permanent directory listing and a guide placement.
@@ -109,7 +110,7 @@ Worth a short call to see if it fits how you're already budgeting for
 
 Thanks,
 [Your name]
-Weekend & Trip Planner — https://randerson-23.github.io/agent-business/
+Porchlight — https://randerson-23.github.io/agent-business/
 
 ## 6. Downtown merchants association pitch
 
@@ -117,7 +118,7 @@ Subject: A membership offer for [Association Name] members
 
 Hi [Contact Name],
 
-I run Weekend & Trip Planner, a free weekly digest of what's happening
+I run Porchlight, a free weekly digest of what's happening
 in [region] — village news, library events, and Park District programs,
 read by local families every week. Rather than reach out to your member
 businesses one at a time, I wanted to bring this to [Association Name]
@@ -141,4 +142,4 @@ a sample issue first.
 
 Thanks,
 [Your name]
-Weekend & Trip Planner — https://randerson-23.github.io/agent-business/
+Porchlight — https://randerson-23.github.io/agent-business/

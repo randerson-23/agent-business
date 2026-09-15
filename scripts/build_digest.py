@@ -222,7 +222,7 @@ def build_ics_data_uri(event: dict) -> str | None:
     lines = [
         "BEGIN:VCALENDAR",
         "VERSION:2.0",
-        "PRODID:-//Weekend Trip Planner//EN",
+        f"PRODID:-//{SITE_NAME}//EN",
         "BEGIN:VEVENT",
         f"DTSTART:{start_dt.strftime('%Y%m%dT%H%M%S')}",
         f"DTEND:{end_dt.strftime('%Y%m%dT%H%M%S')}",
