@@ -228,57 +228,6 @@
     .region-card p { font-size: 14.5px; }
   }
 
-  .map-card {
-    position: relative;
-    background: var(--card);
-    border-radius: var(--radius-lg);
-    box-shadow: var(--shadow-sm);
-    padding: 18px 24px 14px;
-    margin: 0 0 18px;
-    /* Was a ~240px thumbnail with unreadable pin labels, the smallest
-       thing on the page despite being the most distinctive visual asset
-       (ROADMAP.md Phase 11 #56). ~2x that now. Not full .wrap width:
-       tried that first and it overlapped the pin labels, which are a
-       fixed px size baked into build_region_map()'s small viewBox and
-       scale up with the container - confirmed by screenshotting that
-       attempt. min() still guards narrow viewports. */
-    max-width: min(480px, 100%);
-  }
-  .map-card svg {
-    width: 100%;
-    height: auto;
-    display: block;
-    /* SVG root clips to the viewBox by default - the pin labels are
-       wider than the padding reserved for them (a long region name at
-       text-anchor="middle" extends well past its pin's x position), so
-       without this a label near an edge gets cut off mid-word. */
-    overflow: visible;
-  }
-  .map-frame {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    border: 0;
-    z-index: 1;
-    /* Rounded here rather than clipping the card with overflow:hidden -
-       the SVG underneath relies on overflow:visible so its pin labels,
-       which extend past the viewBox, aren't cut off mid-word. */
-    border-radius: var(--radius-lg);
-  }
-  .map-line { stroke: var(--border); stroke-width: 1.5; stroke-dasharray: 4 3; }
-  .map-line-label { font-size: 9px; fill: var(--muted); font-family: 'Inter', sans-serif; }
-  .map-pin { fill: var(--accent-soft); stroke: var(--card); stroke-width: 2; }
-  .map-pin-label {
-    font-size: 11px;
-    font-weight: 700;
-    fill: var(--ink);
-    font-family: 'Inter', sans-serif;
-  }
-  .map-card a { text-decoration: none; }
-  .map-card a:hover .map-pin { fill: var(--accent); }
-  .map-card a:hover .map-pin-label { fill: var(--accent); }
-  .map-card a:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
 
 
   .empty-state {
@@ -378,79 +327,16 @@
   <div class="wrap">
   <main>
   
-  <!-- The map leads, before the region grid: it exists to help pick a
-       region, so it belongs above the choice (ROADMAP.md Phase 11 #56). -->
-
-  
-  <div class="map-card">
-    <!-- role="img" here was wrong (ROADMAP.md Phase 11 #62, found by a
-         real axe-core audit): it declares "this is a single
-         non-interactive image" to assistive tech while the SVG contains
-         real <a> links to each region - axe correctly flags nested
-         interactive controls inside an img-role element, and in
-         practice it means a screen reader announces this as one static
-         picture and never exposes the links inside it. Removed the
-         role/aria-label; each pin's own <a> already gets its accessible
-         name from the region-name <text> it wraps. -->
-    <svg viewBox="0 0 320 220">
-      
-      <line x1="129.6" y1="86.5" x2="265.0" y2="165.0" class="map-line" />
-      <text x="197.3" y="119.8" class="map-line-label" text-anchor="middle">6.3 mi</text>
-      
-      <line x1="129.6" y1="86.5" x2="189.9" y2="117.5" class="map-line" />
-      <text x="159.8" y="96.0" class="map-line-label" text-anchor="middle">2.7 mi</text>
-      
-      <line x1="129.6" y1="86.5" x2="55.0" y2="55.0" class="map-line" />
-      <text x="92.3" y="64.8" class="map-line-label" text-anchor="middle">3.1 mi</text>
-      
-      <line x1="265.0" y1="165.0" x2="189.9" y2="117.5" class="map-line" />
-      <text x="227.4" y="135.2" class="map-line-label" text-anchor="middle">3.6 mi</text>
-      
-      <line x1="265.0" y1="165.0" x2="55.0" y2="55.0" class="map-line" />
-      <text x="160.0" y="104.0" class="map-line-label" text-anchor="middle">9.4 mi</text>
-      
-      <line x1="189.9" y1="117.5" x2="55.0" y2="55.0" class="map-line" />
-      <text x="122.5" y="80.2" class="map-line-label" text-anchor="middle">5.8 mi</text>
-      
-      
-      <a href="arlington-heights-60005/" aria-label="Arlington Heights">
-        <text x="129.6" y="72.5" class="map-pin-label" text-anchor="middle">Arlington Heights</text>
-        <circle cx="129.6" cy="86.5" r="7" class="map-pin" />
-      </a>
-      
-      <a href="des-plaines-60016/" aria-label="Des Plaines">
-        <text x="265.0" y="151.0" class="map-pin-label" text-anchor="middle">Des Plaines</text>
-        <circle cx="265.0" cy="165.0" r="7" class="map-pin" />
-      </a>
-      
-      <a href="mount-prospect-60056/" aria-label="Mount Prospect">
-        <text x="189.9" y="103.5" class="map-pin-label" text-anchor="middle">Mount Prospect</text>
-        <circle cx="189.9" cy="117.5" r="7" class="map-pin" />
-      </a>
-      
-      <a href="palatine-60067/" aria-label="Palatine">
-        <text x="55.0" y="41.0" class="map-pin-label" text-anchor="middle">Palatine</text>
-        <circle cx="55.0" cy="55.0" r="7" class="map-pin" />
-      </a>
-      
-    </svg>
-    
-    
-    <object class="map-frame" type="text/html" data="https://www.openstreetmap.org/export/embed.html?bbox=-88.0719,42.0134,-87.8457,42.1303&amp;layer=mapnik"
-            aria-label="Street map of the towns covered by this site"></object>
-    
-  </div>
-  
 
   <div class="bento-grid">
     <a class="bento-tile bento-weekend" href="this-weekend/">
       <span class="bento-kicker">📅 This weekend</span>
       <h2>Sep 18–20</h2>
-      <p>13 things happening across every region &rarr;</p>
+      <p>12 things happening across every region &rarr;</p>
     </a>
     <div class="bento-tile bento-stat">
       <span class="bento-stat-number">4</span>
-      <span class="bento-stat-label">towns · 72 live updates this week</span>
+      <span class="bento-stat-label">towns · 66 live updates this week</span>
     </div>
   </div>
 
@@ -470,14 +356,14 @@
       <span class="zip">60005 · IL</span>
       <h2>Arlington Heights</h2>
       <p>Village news, library events, and park district programs — a short drive from Mount Prospect.</p>
-      <span class="count">20 live updates this week</span>
+      <span class="count">14 live updates this week</span>
     </a>
     
     <a class="bento-tile region-card" href="des-plaines-60016/">
       <span class="zip">60016 · IL</span>
       <h2>Des Plaines</h2>
       <p>City news, library events, and park district programs — just north of O&#39;Hare.</p>
-      <span class="count">19 live updates this week</span>
+      <span class="count">13 live updates this week</span>
     </a>
     
     <a class="bento-tile region-card" href="mount-prospect-60056/">
@@ -491,7 +377,7 @@
       <span class="zip">60067 · IL</span>
       <h2>Palatine</h2>
       <p>Village news, library events, and park district programs — northwest of Mount Prospect.</p>
-      <span class="count">11 live updates this week</span>
+      <span class="count">17 live updates this week</span>
     </a>
     
   </div>
@@ -504,7 +390,7 @@
   <footer>
     Want your ZIP added, or want to sponsor a region?
     <a href="sponsor/">See pricing &amp; availability</a>.
-    <br>Generated 2026-09-15 14:36 UTC.
+    <br>Generated 2026-09-15 14:41 UTC.
     
   </footer>
   </div>
