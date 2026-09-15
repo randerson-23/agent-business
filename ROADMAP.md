@@ -2136,6 +2136,81 @@ notes there. The guide is a different story.
     its own fix — captured as the "why" column for the domain row in
     item 64's new table instead of its own roadmap line.
 
+#### Research pass 2026-09-15 (fourteenth pass)
+
+First pass after a two-week pause — both loops were stopped on 2026-08-30
+and resumed today. Randhurst Village landed as a Mount Prospect source in
+`ad7c846`, along with a per-source `default_tags` key so its
+reliably-free community events actually reach the Free filter.
+
+This pass found something time-critical rather than strategic.
+
+#### P1 (new)
+
+66. **The site will miss the biggest local event of the year, and it is
+    three days away.** The Mount Prospect Downtown Merchants' **Fall Fest
+    & Oktoberfest runs Friday–Saturday, 18–19 September 2026** at Emerson
+    Street and Busse Avenue:
+    - Fri 18th, 4–11pm: Oktoberfest, German food and drink, the band
+      Paloma.
+    - Sat 19th, **noon–1pm: a special-needs hour**, residents of all ages
+      with special needs encouraged to come early and beat the crowds.
+    - Sat 19th, 1–4pm: the Fall Festival — **a free family event** with
+      crafts, hands-on activities and live entertainment.
+    - Sat 19th, 4–11pm: Oktoberfest again.
+
+    The site almost certainly shows none of it. `mpdowntown.com/events/`
+    is configured but, per this region's own config header, returns **200
+    with zero matching items** — reachable, nothing extracted. A dedicated
+    `mpdowntown.com/oktoberfest-info/` page exists and is not configured
+    at all.
+    Immediate fix: add the Oktoberfest info page as a source, or find the
+    real link structure on `/events/` and give it a `detail_link_pattern`
+    the way the Village calendar got one. But the durable fix is item 67 —
+    because this will happen again with the next marquee event, and
+    "biggest weekend of the year, invisible on the weekend planner" is the
+    failure mode that would most damage the thing being sold.
+    Note the special-needs hour specifically: that is exactly the kind of
+    concrete, human detail a generic aggregator never carries, and it is
+    the difference between a listing and a recommendation.
+
+67. **Curated annual events, with dates — the missing third content
+    type.** The site has two content types: *fetched* events (dated,
+    scraped, best-effort) and *evergreen* entries (curated, but undated —
+    venues and resources, not happenings). Nothing covers the category
+    that matters most: **known, dated, recurring annual events**.
+    That gap is why a scraper returning 200-with-nothing can silently
+    erase Oktoberfest. Fail-soft fetching is right, and item 51's health
+    check now catches a source that *dies* — but neither helps when a
+    source was never yielding the marquee event to begin with.
+    Proposal: an `annual_events:` list in each region's YAML — title,
+    date (or date range), url, detail, tags — merged into the dated event
+    stream alongside fetched items and flowing through the existing
+    weekend/today/free views, JSON-LD and calendar export for free.
+    Maintenance is genuinely near-zero: a handful of entries per town,
+    revisited once a year, which is well inside the plan's 30–60
+    minutes/month. It is also the highest-confidence content on the site,
+    since a human put it there deliberately.
+
+#### P2 (new)
+
+68. **Seed the annual list with what research has already confirmed.**
+    Rather than shipping an empty mechanism: Mount Prospect Fall Fest &
+    Oktoberfest (18–19 Sept, Emerson & Busse, with the schedule above);
+    Randhurst Village Street Fest (summer, 1–5pm on Randhurst Village
+    Drive — rides, inflatables, vendor booths); Randhurst's annual
+    Halloween Fall Festival (October — pet costume parade, Stillman
+    Nature Center owls, crafts); and the Mount Prospect & Prospect
+    Heights Lions Club Cruise Night at Randhurst (summer).
+    **Do not invent the dates that research could not confirm.** The 2026
+    Randhurst Halloween and Street Fest dates are not established — the
+    only sources found are from earlier years. An entry with a wrong date
+    is worse than no entry, and the seventh pass's finding applies
+    directly: AI systems now cross-reference schema claims against live
+    sources and penalise mismatches. Ship the confirmed ones with dates,
+    and the unconfirmed ones either undated or not at all until a real
+    date is found.
+
 ## Working agreements for autonomous iteration
 
 - Cadence is hourly (the platform's durable scheduler has a 1-hour floor;
