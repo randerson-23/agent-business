@@ -29,7 +29,7 @@ from jinja2 import Environment, FileSystemLoader
 
 sys.path.insert(0, str(Path(__file__).parent))
 from fetchers import FETCHERS, fetch_weather  # noqa: E402
-from tagging import infer_tags, tag_display  # noqa: E402
+from tagging import infer_tags, merge_default_tags, tag_display  # noqa: E402
 
 logging.basicConfig(level=logging.INFO, format="%(levelname)s %(name)s: %(message)s")
 logger = logging.getLogger("build_digest")
@@ -324,6 +324,7 @@ def fetch_region_sections(region_cfg: dict, health: dict | None = None) -> list[
         events = []
         for item in raw_items:
             tags = infer_tags(item.get("title", ""), item.get("detail", ""), source["section"])
+            tags = merge_default_tags(source.get("default_tags"), tags)
             event = {
                 "title": item.get("title", ""),
                 "detail": truncate(item.get("detail", "")),

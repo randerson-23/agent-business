@@ -84,6 +84,29 @@ def infer_tags(*text_parts: str) -> list[str]:
     return sorted(matched)
 
 
+def merge_default_tags(default_tags, inferred: list[str]) -> list[str]:
+    """Merge a source-level `default_tags` list into the per-item inferred
+    tags.
+
+    Some venues' programming is uniformly one way - a shopping centre's
+    community events are free, a library's are indoor - and a per-source
+    default is more reliable than hoping each listing's wording happens to
+    contain a matching keyword. Defaults only ever *add*: they never
+    remove a tag the heuristic inferred, and the heuristic can still add
+    others on top.
+
+    Same fail-soft philosophy as the rest of this module: a non-list or
+    empty value is simply ignored rather than raising.
+    """
+    if not default_tags or not isinstance(default_tags, (list, tuple)):
+        return inferred
+    merged = list(inferred)
+    for tag in default_tags:
+        if isinstance(tag, str) and tag and tag not in merged:
+            merged.append(tag)
+    return merged
+
+
 def tag_display(tag_id: str) -> dict[str, str]:
     """Display metadata for a tag id, with a safe fallback for unknown tags
     (e.g. a manually curated tag in config that isn't in TAG_DISPLAY yet).

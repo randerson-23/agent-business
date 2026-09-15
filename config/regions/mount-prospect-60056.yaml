@@ -146,6 +146,37 @@ sources:
     section: "Downtown Events"
     enabled: true
 
+  - name: "Randhurst Village — Events"
+    type: html_events
+    # Randhurst Village, the shopping centre at Rand/Elmhurst/Kensington
+    # (the old Randhurst Mall site) - added 2026-09-15 at the owner's
+    # request. Its community programming is the reliably-free, genuinely
+    # local kind this site exists to surface: the annual Street Fest
+    # (1-5pm on Randhurst Village Drive - rides, inflatables, vendor
+    # booths), the Halloween Fall Festival (pet costume parade, Stillman
+    # Nature Center owls, crafts), and the Lions Club Cruise Night in
+    # summer. Events page URL confirmed via web search; the exact link
+    # structure is not, so this relies on the keyword fallback until a
+    # real `detail_link_pattern` is observed, same as every other source
+    # here that started unconfirmed.
+    url: "https://www.randhurstvillage.com/events"
+    keywords: ["event", "festival", "fest", "concert", "market", "santa", "trick", "halloween", "holiday", "cruise night", "kids", "family"]
+    section: "Randhurst Village"
+    # Per-source default tags, merged with (never replacing) the per-item
+    # heuristic ones. Randhurst's community events are free to attend -
+    # the owner's own local knowledge, and consistent with every listing
+    # found in research - but the listings rarely use the word "free", so
+    # the keyword tagger would miss it and they'd never surface under the
+    # /free/ view or the Free filter.
+    #
+    # Caveat worth keeping honest: this asserts "free" for everything this
+    # source returns. That holds for community programming, but a mall
+    # also hosts ticketed things, and a wrong "Free" badge is a factual
+    # claim on a public page. If Randhurst starts listing ticketed events,
+    # drop this default and let the heuristic decide per item.
+    default_tags: ["free"]
+    enabled: true
+
 # Evergreen, always-available local info used as a fallback so the digest
 # never ships empty even if every live source above fails to fetch.
 evergreen:

@@ -1348,3 +1348,50 @@ def test_build_faq_json_ld_escapes_script_close_tag():
     faq = [{"question": "Q</script><script>alert(1)", "answer": "A"}]
     result = build_digest.build_faq_json_ld(faq)
     assert "</script>" not in result
+
+
+def _stub_fetcher(items):
+    return lambda *a, **k: items
+
+
+def test_fetch_region_sections_applies_source_default_tags(monkeypatch):
+    """A source's `default_tags` reach the rendered event, merged with the
+    heuristic ones rather than replacing them.
+
+    Covers the wiring a live fetch would exercise - Randhurst Village's
+    listings rarely use the word "free", so without this the Free filter
+    and the /free/ view would never surface them.
+    """
+    monkeypatch.setitem(
+        build_digest.FETCHERS, "html_events",
+        _stub_fetcher([{"title": "Street Fest", "detail": "Rides and inflatables in the park.",
+                        "url": "https://example.test/fest", "date": None}]),
+    )
+    region_cfg = {
+        "region": {"id": "testville", "name": "Testville"},
+        "sources": [{
+            "name": "Randhurst Village — Events", "type": "html_events",
+            "url": "https://example.test/events", "section": "Randhurst Village",
+            "default_tags": ["free"], "enabled": True,
+        }],
+    }
+    tags = build_digest.fetch_region_sections(region_cfg)[0]["events"][0]["tags"]
+    assert "free" in tags, tags
+    # the heuristic still contributes on top - "park" implies outdoor
+    assert "outdoor" in tags, tags
+
+
+def test_fetch_region_sections_without_default_tags_is_unchanged(monkeypatch):
+    monkeypatch.setitem(
+        build_digest.FETCHERS, "html_events",
+        _stub_fetcher([{"title": "Ticketed Show", "detail": "A concert.",
+                        "url": "https://example.test/show", "date": None}]),
+    )
+    region_cfg = {
+        "region": {"id": "testville", "name": "Testville"},
+        "sources": [{
+            "name": "Some Venue", "type": "html_events", "url": "https://example.test/e",
+            "section": "Venue", "enabled": True,
+        }],
+    }
+    assert "free" not in build_digest.fetch_region_sections(region_cfg)[0]["events"][0]["tags"]

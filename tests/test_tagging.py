@@ -2,7 +2,7 @@ import sys
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "scripts"))
-from tagging import infer_tags, tag_display  # noqa: E402
+from tagging import infer_tags, merge_default_tags, tag_display  # noqa: E402
 
 
 def test_infer_tags_kid_and_indoor():
@@ -78,3 +78,23 @@ def test_tag_display_unknown_tag_has_safe_fallback():
     assert display["label"] == "Wheelchair Accessible"
     assert display["emoji"]
     assert display["hue"] == "gray"
+
+
+def test_merge_default_tags_adds_without_removing():
+    inferred = ["kid_friendly", "outdoor"]
+    merged = merge_default_tags(["free"], inferred)
+    assert merged == ["kid_friendly", "outdoor", "free"]
+
+
+def test_merge_default_tags_does_not_duplicate():
+    merged = merge_default_tags(["free"], ["free", "outdoor"])
+    assert merged == ["free", "outdoor"]
+
+
+def test_merge_default_tags_ignores_empty_and_bad_values():
+    # Fail-soft: a missing, empty, or wrongly-typed config value is ignored
+    # rather than raising, same as the rest of the tagging module.
+    assert merge_default_tags(None, ["outdoor"]) == ["outdoor"]
+    assert merge_default_tags([], ["outdoor"]) == ["outdoor"]
+    assert merge_default_tags("free", ["outdoor"]) == ["outdoor"]
+    assert merge_default_tags([None, "", "free"], ["outdoor"]) == ["outdoor", "free"]
