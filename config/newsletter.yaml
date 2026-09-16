@@ -1,14 +1,19 @@
 # Email capture (ROADMAP.md Phase 11 #12) - a Buttondown (buttondown.com)
 # free-tier embed. Buttondown needs a real, human-created account; this
-# repo can't sign up for one on its own, so this file starts unconfigured
-# and the site shows an honest "coming soon" message instead of a broken
-# form. Once a real account exists, set `buttondown_username` below to
-# activate the live signup form on the hub and region pages - no other
-# code changes needed.
+# repo can't sign up for one on its own, so this file shipped
+# unconfigured - the site showed an honest "coming soon" message rather
+# than a form that posted to nothing. **Configured 2026-09-16**: the live
+# signup form is now active on the hub and every region page.
+#
+# Note this only captures addresses. *Sending* is a separate job (items
+# 24/31/36/37) and needs SPF/DKIM/DMARC on withintenmiles.com first
+# (item 47) - a brand-new domain has no sending reputation, so the
+# sixteenth pass's finding applies: send early and small rather than
+# accumulating a list and blasting it.
 #
 # headline/detail are shown either way (with or without a working form),
 # so they're worth keeping accurate regardless of signup status.
 
-buttondown_username: null
+buttondown_username: "andersonryant"
 headline: "Get it in your inbox"
 detail: "The weekly digest, emailed once a week. No spam, unsubscribe anytime."
