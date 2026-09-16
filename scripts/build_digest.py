@@ -28,7 +28,7 @@ import yaml
 from jinja2 import Environment, FileSystemLoader
 
 sys.path.insert(0, str(Path(__file__).parent))
-from fetchers import FETCHERS, fetch_weather  # noqa: E402
+from fetchers import FETCHERS, fetch_weather, submit_indexnow  # noqa: E402
 from tagging import infer_tags, merge_default_tags, tag_display  # noqa: E402
 
 logging.basicConfig(level=logging.INFO, format="%(levelname)s %(name)s: %(message)s")
@@ -57,6 +57,15 @@ SITE_BASE_URL = "https://withintenmiles.com/"
 # rebuild after setup would silently drop the domain and the site would
 # fall back to github.io.
 CUSTOM_DOMAIN = "withintenmiles.com"
+
+# IndexNow key (ROADMAP.md Phase 11 #72) - not a secret, just a value that
+# has to match between this constant and the key file published at the
+# site root (docs/<key>.txt), which is how IndexNow verifies the submitter
+# actually controls the domain. Fixed rather than regenerated per build,
+# same reasoning as CUSTOM_DOMAIN: a value CI re-derives differently every
+# run would break its own verification. Any 8-128 char [A-Za-z0-9-] string
+# works; this one was generated once with `secrets.token_hex(16)`.
+INDEXNOW_KEY = "f3b7799bed06aac4295ec9134d53b014"
 
 # The site's real first launch (PR #1, 2026-08-26) - used for the honest
 # "running since" line on /sponsor (ROADMAP.md Phase 11 #58). Fixed, not
@@ -1149,8 +1158,7 @@ def render_weekend_hub_page(
     )
 
 
-def build_sitemap_xml(region_summaries: list[dict], now: datetime) -> str:
-    lastmod = now.strftime("%Y-%m-%d")
+def collect_sitemap_urls(region_summaries: list[dict]) -> list[str]:
     urls = [SITE_BASE_URL, SITE_BASE_URL + "this-weekend/", SITE_BASE_URL + "sponsor/"]
     for r in region_summaries:
         base = SITE_BASE_URL + r["path"]
@@ -1158,6 +1166,12 @@ def build_sitemap_xml(region_summaries: list[dict], now: datetime) -> str:
         if r.get("guide_slugs"):
             urls.append(base + "guides/")
             urls += [base + f"guides/{slug}/" for slug in r["guide_slugs"]]
+    return urls
+
+
+def build_sitemap_xml(region_summaries: list[dict], now: datetime) -> str:
+    lastmod = now.strftime("%Y-%m-%d")
+    urls = collect_sitemap_urls(region_summaries)
     entries = "\n".join(
         f"  <url>\n    <loc>{u}</loc>\n    <lastmod>{lastmod}</lastmod>\n  </url>" for u in urls
     )
@@ -1635,11 +1649,19 @@ def main() -> None:
     (sponsor_dir / "index.html").write_text(sponsor_html, encoding="utf-8")
     logger.info("Wrote %s", sponsor_dir / "index.html")
 
+    sitemap_urls = collect_sitemap_urls(region_summaries)
     (OUTPUT_DIR / "sitemap.xml").write_text(build_sitemap_xml(region_summaries, now), encoding="utf-8")
     (OUTPUT_DIR / "robots.txt").write_text(build_robots_txt(), encoding="utf-8")
     (OUTPUT_DIR / "llms.txt").write_text(build_llms_txt(region_summaries), encoding="utf-8")
     (OUTPUT_DIR / "CNAME").write_text(CUSTOM_DOMAIN + "\n", encoding="utf-8")
-    logger.info("Wrote sitemap.xml, robots.txt, llms.txt, and CNAME")
+    (OUTPUT_DIR / f"{INDEXNOW_KEY}.txt").write_text(INDEXNOW_KEY, encoding="utf-8")
+    logger.info("Wrote sitemap.xml, robots.txt, llms.txt, CNAME, and IndexNow key file")
+    submit_indexnow(
+        host=CUSTOM_DOMAIN,
+        key=INDEXNOW_KEY,
+        key_location=f"{SITE_BASE_URL}{INDEXNOW_KEY}.txt",
+        urls=sitemap_urls,
+    )
     if total_events:
         logger.info(
             "TOTAL structured-date coverage: %d/%d events (%.0f%%) have a machine-readable start date",
