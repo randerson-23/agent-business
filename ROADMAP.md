@@ -2469,6 +2469,89 @@ the year.
     kicker next to its own "✏️ Editor's Pick" label risked clutter for a
     defect that was already fixed. 213 tests pass (2 new); build exits 0.
 
+#### Research pass 2026-09-16 (sixteenth pass)
+
+**The domain landed.** `withintenmiles.com` was registered 2026-09-15 and
+its DNS is already live — verified from here: the apex resolves to all
+four GitHub Pages addresses and `www` to the Pages IPv6 set. Items 39 and
+46, open since the first day of the project, are closed, and with them the
+hard prerequisite on the entire newsletter cluster.
+
+*Not* verified, and worth someone loading the page: whether HTTPS actually
+serves and the certificate issued. This sandbox's proxy 403s every
+outbound request, so the DNS check is real evidence and the serving check
+simply could not be made.
+
+That changes what matters. A brand-new domain has two properties worth
+planning around: **search engines do not know it exists**, and **it has no
+sending reputation at all**.
+
+| Angle | Finding | Consequence |
+|---|---|---|
+| **New-domain indexing** | Google Search Console (DNS verification is the durable method) plus Bing Webmaster Tools, which imports straight from GSC and feeds Yahoo and DuckDuckGo. Beyond that, **IndexNow** — a keyfile plus an HTTP ping, no account — notifies Bing, Yandex and Seznam the moment content changes | Three moves cover the English-speaking web, and one of them is fully automatable |
+| **New-domain sending reputation** | A fresh domain sending production volume on day one "appears to be a spam operation and is treated accordingly." Standard guidance is a 4–8 week ramp from very low volume, with SPF/DKIM/DMARC in place *before* the first send | Argues for starting the newsletter early and tiny, not for waiting |
+
+#### P1 (new)
+
+72. **IndexNow — tell search engines the moment the site rebuilds.** This
+    site regenerates several times a week with genuinely new events, and
+    the third pass established that content refreshed within 30 days earns
+    roughly 3.2× more AI citations. That advantage only pays if crawlers
+    *know* something changed. IndexNow is the cheapest possible way to
+    tell them: a static key file at the site root and one HTTP POST listing
+    changed URLs — no account, no API key negotiation, no quota to manage.
+    Bing, Yandex and Seznam consume it, and Bing's index feeds DuckDuckGo,
+    Yahoo and ChatGPT's search.
+    It belongs inside `build_digest.py` next to the sitemap write, firing
+    once per build with the URLs that actually changed. **Zero recurring
+    owner time**, which is the constraint every item on this list is judged
+    against. Fail-soft like the fetchers: a failed ping must never break a
+    build.
+
+73. **Verify the domain in Google Search Console and Bing Webmaster Tools
+    — needs Ryan, and now finally possible.** A new domain is invisible
+    until it is announced; no amount of on-page work substitutes. DNS
+    verification is the durable method and Ryan now controls DNS, so this
+    is unblocked for the first time. Steps: verify in GSC, submit
+    `sitemap.xml` under Indexing → Sitemaps, then add the property in Bing
+    Webmaster Tools by **importing from GSC**, which skips re-verification
+    entirely. One session, maybe fifteen minutes, and it covers Google,
+    Bing, Yahoo and DuckDuckGo. **Add to the Needs Ryan block.**
+
+#### P2 (new)
+
+74. **Start the newsletter small and early — do not accumulate a list and
+    then blast it.** The warm-up research is blunt: a fresh domain that
+    starts at volume looks like a spam operation, and the usual remedy is a
+    4–8 week ramp.
+    **State the nuance honestly rather than importing the advice wholesale:**
+    most of that literature concerns *cold outreach*, and an opt-in local
+    newsletter to people who typed their own address in is a materially
+    lower-risk profile. The practical conclusion is the same, though, and
+    conveniently so — the first sends should be small, and a new site's
+    natural subscriber curve supplies that ramp for free.
+    The real consequence is a reversal of instinct: **waiting until the
+    list is "worth mailing" is actively worse than sending at twenty
+    subscribers**, because it converts a free, natural warm-up into exactly
+    the cold-start blast the guidance warns about. Ship item 24 as soon as
+    there is anyone to send to. SPF/DKIM/DMARC (item 47) still come first.
+
+75. **The Open Graph image is unblocked for the first time.** Phase 7
+    deferred it explicitly — it "ties to Phase 9 once there's a real
+    domain/brand to design one around," and as of yesterday both exist.
+    This matters more than it looks: item 33 ships a copy-pasteable
+    summary for posting into local Facebook groups, and a link post with
+    no image renders as a grey box, the lowest click-through unit in any
+    feed. The distribution feature already built is running at a handicap
+    the whole time this is missing.
+    Constraint worth flagging: crawlers need a real raster (1200×630 PNG
+    or JPG) — an SVG will not do, and there is no image tooling in the
+    pipeline today. Pillow is a single pure-Python dependency that could
+    render one per region from the existing palette and type at build
+    time, which keeps it automatic; a single hand-made default image is
+    the lower-effort alternative if adding a dependency feels heavier than
+    the problem.
+
 ## Working agreements for autonomous iteration
 
 - Cadence is hourly (the platform's durable scheduler has a 1-hour floor;
