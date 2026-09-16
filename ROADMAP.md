@@ -204,17 +204,20 @@ have nothing pressing, pick the highest unclaimed `P1` item below. Mark items
 `✅ done (PR #N)` in place rather than deleting them, so the research loop
 doesn't re-suggest something already shipped.
 
-#### Needs Ryan (fifteenth research pass, #69/#70, reordered)
+#### Needs Ryan (seventeenth pass, buttondown row closed out)
 
-Four items block on one person, each a minutes-long action with outsized
+Three items block on one person, each a minutes-long action with outsized
 consequences, and none was discoverable without reading the whole file.
 Consolidated here so the human's next few available minutes land on the
-right thing, instead of being scattered across ~2,000 lines.
+right thing, instead of being scattered across ~2,000 lines. (The
+`buttondown_username` row that used to lead this table is gone - it got
+set between passes, item 74 shipped the live signup form on 2026-09-16,
+and the config file itself now says so.)
 
 | Action | One line why | Unblocks |
 |---|---|---|
-| Set `buttondown_username:` in `config/newsletter.yaml` **- most urgent, moved to the top on timing alone (item 70)** | One line, takes minutes (a free Buttondown account), and **depends on nothing else** - collecting addresses works today even though *sending* still waits on the domain below for SPF/DKIM/DMARC (items 46/47). The biggest traffic weekend of the year (Oktoberfest/Fall Fest) is three days out as of this pass; every hour this stays unset is inbound attention converting to nobody. Collect now, send later. |
-| Confirm `withintenmiles.com` actually serves the site over HTTPS (item 39/46, domain registered 2026-09-15) | **DNS is done - correcting what this row said an hour ago.** A direct DNS query (`socket.getaddrinfo`, not a web fetch - this sandbox's egress proxy only intercepts HTTP(S), not raw DNS) shows `withintenmiles.com` and `www.withintenmiles.com` both resolving to all four of GitHub Pages' real anycast IPs (185.199.108-111.153 + matching IPv6), identical to `randerson-23.github.io`'s own resolution - the DNS record is real and correctly pointed. The `pages-build-deployment` workflow (GitHub's own, distinct from this repo's build workflow) has also succeeded on every push since, confirmed via the Actions API. What's still genuinely unconfirmed from here: whether HTTPS has finished provisioning and the custom domain field under Settings → Pages is saved - a same-hostname TLS handshake attempted from this sandbox returned this environment's own egress-proxy block page, not a real answer from GitHub, so that specific check is a dead end here. Worth an owner click-through to `https://withintenmiles.com/` to confirm the padlock; if DNS is this clean it's very likely already serving. Still gates SPF/DKIM/DMARC either way, so it remains a hard prerequisite for the entire six-item newsletter cluster (24/25/31/36/37/46/47), not just findability. |
+| Verify `withintenmiles.com` in Google Search Console + import into Bing Webmaster Tools (item 73) | DNS verification is the durable method and Ryan now controls DNS, so this is unblocked for the first time - a new domain is invisible to search until it's announced, and no amount of on-page SEO substitutes. Steps: verify in GSC, submit `sitemap.xml` under Indexing → Sitemaps, then add the property in Bing Webmaster Tools by **importing from GSC**, which skips re-verification entirely. One session, maybe fifteen minutes, covers Google, Bing, Yahoo and DuckDuckGo at once. | The entire indexing/AI-citation effort (items 22, 39, 46, 72) - IndexNow (item 72, done) tells crawlers content changed, but this is what gets the domain into their index in the first place |
+| Confirm `withintenmiles.com` actually serves the site over HTTPS (item 39/46, domain registered 2026-09-15) | **DNS is done, confirmed twice now.** A direct DNS query (`socket.getaddrinfo`, not a web fetch - this sandbox's egress proxy only intercepts HTTP(S), not raw DNS) shows `withintenmiles.com` and `www.withintenmiles.com` both resolving to all four of GitHub Pages' real anycast IPs, identical to `randerson-23.github.io`'s own resolution, and the `pages-build-deployment` workflow has succeeded on every push since. What's still genuinely unconfirmed from here: whether HTTPS has finished provisioning and the custom domain field under Settings → Pages is saved - a same-hostname TLS handshake attempted from this sandbox returned this environment's own egress-proxy block page, not a real answer from GitHub, so that specific check is a dead end here. Worth an owner click-through to confirm the padlock. Still gates SPF/DKIM/DMARC either way, so it remains a hard prerequisite for the newsletter-sending cluster (24/31/36/37/47), not just findability. |
 | Set `contact_email:` in `config/sponsors.yaml` | One line. The sponsor page's only conversion point currently falls back to a GitHub "New issue" form (item 57) - a real local business owner won't sign up for that to buy a $1,200-5,000/year placement. Deliberately left unset by the build loop rather than guessing Ryan's address. |
 | Run a real trademark search before spending money on the domain, signage, print, or sponsor contracts (item 69) | **Reduced, not eliminated, by the 2026-09-15 pivot to "Within Ten".** The name was changed *because* WebSearch found "PORCHLIGHT" is a registered mark (reg. 6028585) held by Porchlight Book Company, which publishes a newsletter to ~60,000 readers. A search for "Within Ten"/"WithinTen" turned up **no registered mark** - a materially cleaner starting point. But a web search is not a clearance search: it does not cover common-law use, similar-sounding marks, or state registrations, and it reads a fraction of what a real search does. Still worth the small cost before money is committed. | Spending safely on a domain, signage, print, sponsor contracts |
 
@@ -1182,8 +1185,8 @@ produces evidence for that conversation.
 
 #### P2 (new)
 
-36. **Build the email template from scratch — do not reuse the site
-    templates.** A gate on items 24 and 31, not a standalone feature.
+36. ✅ **DONE — Build the email template from scratch — do not reuse the
+    site templates.** A gate on items 24 and 31, not a standalone feature.
     Whoever implements the newsletter must know: Outlook (2016–2021) renders
     through Microsoft Word's engine, so no flexbox, no grid, tables for
     layout; Fraunces and Inter will not load, so system fonts only (Arial,
@@ -1192,6 +1195,29 @@ produces evidence for that conversation.
     and dark mode is three separate problems rather than one. `region.html.j2`
     violates essentially all of this. Reusing it would produce an email that
     looks correct in testing and broken in half of real inboxes.
+    Built as `templates/email_digest.html.j2` (`role="presentation"`
+    tables throughout, every color set via both a `bgcolor` attribute and
+    an inline style so no property survives an email client stripping
+    `<style>` blocks) plus `render_email_digest()` in
+    `scripts/build_digest.py`, reusing the exact same `weekend_events`/
+    `evergreen` data `build_weekly_summary_txt` already computes - never
+    invents content. `main()` writes it to `docs/<region-id>/
+    email-preview.html` every build, so it's ready to copy into
+    Buttondown's dashboard the moment sending unblocks (item 47), and easy
+    to spot-check meanwhile without waiting on that. Dark mode: rather
+    than build and ship an unverifiable per-client dark theme, every cell
+    forces an explicit light-mode color (plus `color-scheme`/
+    `supported-color-schemes` meta tags) so Gmail/Outlook.com's
+    auto-invert can't produce a broken combination - documented in the
+    template itself as a deliberate simplification, not an oversight.
+    Verified for real: a Playwright screenshot of a live per-region build
+    (Mount Prospect, which actually has weekend events dated 2026-09-18/19
+    right now) renders correctly at email width; every generated file is
+    under 6KB, nowhere near Gmail's 102KB clip threshold; and 6 new tests
+    check no `flexbox`/`grid` ever appears in the output, the sponsor
+    block only shows for a real active sponsor, and the honest
+    empty/evergreen-fallback states match `build_weekly_summary_txt`'s own
+    logic. 224 tests pass; build exits 0.
 
 37. **Decide the newsletter platform deliberately, before item 24 locks it
     in.** Item 24 currently assumes Buttondown, which was chosen for being
@@ -2531,10 +2557,10 @@ sending reputation at all**.
 
 #### P2 (new)
 
-74. **Start the newsletter small and early — do not accumulate a list and
-    then blast it.** The warm-up research is blunt: a fresh domain that
-    starts at volume looks like a spam operation, and the usual remedy is a
-    4–8 week ramp.
+74. ✅ **DONE (capture only) — Start the newsletter small and early — do
+    not accumulate a list and then blast it.** The warm-up research is
+    blunt: a fresh domain that starts at volume looks like a spam
+    operation, and the usual remedy is a 4–8 week ramp.
     **State the nuance honestly rather than importing the advice wholesale:**
     most of that literature concerns *cold outreach*, and an opt-in local
     newsletter to people who typed their own address in is a materially
@@ -2544,8 +2570,15 @@ sending reputation at all**.
     The real consequence is a reversal of instinct: **waiting until the
     list is "worth mailing" is actively worse than sending at twenty
     subscribers**, because it converts a free, natural warm-up into exactly
-    the cold-start blast the guidance warns about. Ship item 24 as soon as
-    there is anyone to send to. SPF/DKIM/DMARC (item 47) still come first.
+    the cold-start blast the guidance warns about.
+    `buttondown_username` was set 2026-09-16, so item 24's config-gated
+    embed now renders live on the hub and every region page instead of
+    "coming soon" — confirmed against the real build, form posts to the
+    current `buttondown.com/api/emails/embed-subscribe/` endpoint. This
+    is capture only: *sending* (items 24/31/36/37) still needs SPF/DKIM/
+    DMARC on withintenmiles.com first (item 47), so the list warms up for
+    free while that's pending — exactly the sequencing this item argued
+    for.
 
 75. ✅ **DONE — The Open Graph image is unblocked for the first time.**
     Phase 7 deferred it explicitly — it "ties to Phase 9 once there's a

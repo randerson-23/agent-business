@@ -1363,6 +1363,66 @@ def test_build_weekly_summary_txt_honest_empty_state():
     assert "Nothing dated for this weekend yet" in result
 
 
+def test_render_email_digest_lists_weekend_events():
+    region = {"name": "Mount Prospect"}
+    events = [{"title": "Fall Fest", "date": "Aug 29", "url": "https://x/1"}]
+    html = build_digest.render_email_digest(region, events, [], "https://x/mount-prospect-60056/", "Aug 29–30", None)
+    assert "Fall Fest" in html
+    assert "Mount Prospect" in html
+    assert "Aug 29–30" in html
+
+
+def test_render_email_digest_falls_back_to_free_evergreen_when_nothing_dated():
+    region = {"name": "Mount Prospect"}
+    evergreen = [{"title": "Library Passes", "url": "https://x/2", "tags": ["free"]}, {"title": "Paid Class", "url": "https://x/3", "tags": []}]
+    html = build_digest.render_email_digest(region, [], evergreen, "https://x/", "Aug 29–30", None)
+    assert "Library Passes" in html
+    assert "Paid Class" not in html
+
+
+def test_render_email_digest_honest_empty_state():
+    region = {"name": "Mount Prospect"}
+    html = build_digest.render_email_digest(region, [], [], "https://x/", "Aug 29–30", None)
+    assert "Nothing dated for this weekend yet" in html
+
+
+def test_render_email_digest_shows_sponsor_only_when_active():
+    region = {"name": "Mount Prospect"}
+    inactive = {"title": "Sponsor this spot", "detail": "", "url": "", "is_active_sponsor": False}
+    html = build_digest.render_email_digest(region, [], [], "https://x/", "Aug 29–30", inactive)
+    assert "LOCAL RECOMMENDATION" not in html
+
+    active = {"title": "Acme Cafe", "detail": "Coffee.", "url": "https://acme.example/", "is_active_sponsor": True}
+    html = build_digest.render_email_digest(region, [], [], "https://x/", "Aug 29–30", active)
+    assert "LOCAL RECOMMENDATION" in html
+    assert "Acme Cafe" in html
+
+
+def test_render_email_digest_uses_only_table_based_layout_no_flexbox_or_grid():
+    # ROADMAP.md Phase 11 #36's whole reason to exist: Outlook renders
+    # through Word's engine, which understands tables but not flexbox or
+    # CSS grid - so neither may ever appear in this template's output.
+    region = {"name": "Mount Prospect"}
+    html = build_digest.render_email_digest(region, [], [], "https://x/", "Aug 29–30", None)
+    assert "display:flex" not in html
+    assert "display: flex" not in html
+    assert "display:grid" not in html
+    assert "display: grid" not in html
+    assert "<table" in html
+
+
+def test_render_email_digest_stays_well_under_gmails_clipping_limit():
+    # Gmail clips anything over ~102KB of HTML and hides the CTA behind a
+    # "message clipped" notice - a real per-region digest should never be
+    # anywhere close, even with a full six-event weekend and an active
+    # sponsor block.
+    region = {"name": "Mount Prospect"}
+    events = [{"title": f"Event {i}", "date": "Aug 29", "url": "https://x/" + str(i)} for i in range(6)]
+    sponsor = {"title": "Acme Cafe", "detail": "Coffee and pastries.", "url": "https://acme.example/", "is_active_sponsor": True}
+    html = build_digest.render_email_digest(region, events, [], "https://x/", "Aug 29–30", sponsor)
+    assert len(html.encode("utf-8")) < 20_000
+
+
 def test_build_freshness_json_ld_names_the_site_consistently():
     # Entity-naming audit (ROADMAP.md Phase 11 #22 follow-up): every page
     # should name the site the same way, and link back to one canonical
