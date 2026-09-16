@@ -1543,6 +1543,16 @@ something already on the list.
     infrastructure changes. The exact record values are generated
     per-account inside Buttondown's own dashboard once the domain is
     added there - genuinely unknowable from here, and not safe to guess.
+    **Ryan added the domain and its managed-delegation NS records on
+    2026-09-16, confirmed in place** - see the "Needs Ryan" block's
+    "Nearly done, no longer blocking" note. What remains is checking
+    Buttondown's own settings show it verified (a look, not a task), and
+    the managed option itself avoided a real SPF collision this item
+    warned about: because Buttondown's records live inside a delegated
+    subdomain, the apex SPF record stays free for Cloudflare Email
+    Routing later. Not marking this item fully done - the rest of the
+    checklist (unsubscribe headers, spam-complaint monitoring) is still
+    real work for whoever implements items 24/31.
 
 #### Recorded as skipped
 
@@ -2621,15 +2631,20 @@ sending reputation at all**.
     call here — the real production build is the one that matters).
     **Zero recurring owner time.**
 
-73. **Verify the domain in Google Search Console and Bing Webmaster Tools
-    — needs Ryan, and now finally possible.** A new domain is invisible
-    until it is announced; no amount of on-page work substitutes. DNS
-    verification is the durable method and Ryan now controls DNS, so this
-    is unblocked for the first time. Steps: verify in GSC, submit
+73. ✅ **DONE (GSC half) — Verify the domain in Google Search Console and
+    Bing Webmaster Tools.** A new domain is invisible until it is
+    announced; no amount of on-page work substitutes. DNS verification
+    is the durable method and Ryan now controls DNS, so this was
+    unblocked for the first time. Steps: verify in GSC, submit
     `sitemap.xml` under Indexing → Sitemaps, then add the property in Bing
     Webmaster Tools by **importing from GSC**, which skips re-verification
-    entirely. One session, maybe fifteen minutes, and it covers Google,
-    Bing, Yahoo and DuckDuckGo. **Add to the Needs Ryan block.**
+    entirely.
+    **Ryan verified GSC and submitted the sitemap on 2026-09-16** (see
+    the "Needs Ryan" block below for the real root cause behind GSC's
+    initially-misleading error - it was the property name, not DNS).
+    The Bing-import half is quick but genuinely still open - tracked
+    under "Also worth doing, not blocking" in the same block rather than
+    duplicated here.
 
 #### P2 (new)
 
