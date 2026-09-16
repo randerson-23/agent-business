@@ -258,6 +258,8 @@ search, which item 22's whole AI-citation effort depends on.
 | **6AM City** | 400+ local newsletters, $9.5M rev, profitable in 2026 | **Self-service ad platform** — they built it because low-average-order-value local sponsors don't justify sales time. Directly targets this business's #1 constraint |
 | **Axios Local** | Local newsletter network, local-advertiser funded | Newsletter-first: the list is the asset, the site is the funnel |
 | **Patch** | Hyperlocal news + community calendar | User-submitted events, business directory, classifieds — community supplies the content |
+| **Nextdoor** (Neighborhood Sponsorship) | ZIP-exclusive "featured agent" placement sold to realtors, **$30–150/ZIP/month** | Not an events competitor — a **pricing anchor**. It is what a realtor already pays for the exact exclusivity item 95 sells |
+| **Substack** (local publishers) | Newsletter platform with a built-in reader network; **40% of new subscriptions originate inside it**, Recommendations being the main engine below 10k subs | The one growth channel Buttondown structurally cannot offer (item 96) |
 | **Eventbrite / AllEvents / Meetup** | Rank #1 for "things to do in Mount Prospect this weekend" today | They own the query — but they only list *ticketed/commercial* events |
 
 **The gap that justifies this business:** every competitor that ranks for
@@ -3342,6 +3344,166 @@ respectively, both already fixed and verified working in current code
 read later as evidence those fixes failed. Item 91's `email-send.html`
 also reduces the chance of this recurring, since a file named for sending
 invites a fresh copy each week.
+
+#### Research pass 2026-09-16 (twenty-second pass)
+
+Three angles never covered before — real estate as a *priced* sponsor
+category, Substack's network as a growth channel, and current email
+design floors — plus a periodic re-check of the target query and of the
+AI-citation assumptions item 22 was built on. That re-check produced a
+**retraction**, which is the most useful thing in this pass.
+
+Context for prioritising: the product now sends, authenticates, and lands
+in a primary inbox. Every open question has moved from "does it work" to
+"can it be found, can it prove an audience, can it keep one" — so this
+pass deliberately contains no new UI features.
+
+| Angle | Finding | Consequence |
+|---|---|---|
+| **Real estate as a sponsor category** | Average agent marketing spend is **>$14,200/yr**; a first neighborhood newsletter budgets **$400–700**; geo-targeted Meta ads **$200–400/mo** for a 1-mile radius. But **Nextdoor sells ZIP-exclusive "featured agent" placement at $30–150/ZIP/month** | The budget exists. The **$5,000/yr tier has a cheap, famous anchor sitting next to it** (item 95) |
+| **Substack's network** | **40% of all new subscriptions now originate inside Substack**, and Recommendations is the primary growth engine for publications under 10k subs | Buttondown has no equivalent. Growth here must come from press, SEO and local partnerships — by structure, not by neglect (item 96) |
+| **Local growth tactics, priced** | First 1,000 come from asking directly. Local press: 100–500 in a day (confirms the seventeenth pass). **Barter: 3–5 local businesses, and one restaurant with ~2,000 IG followers drives 100–300 subscribers in a single post** | The barter play is free, fits the time budget, and *is* sponsor prospecting (item 94) |
+| **AI Overviews, re-checked** | ~47% of US searches overall, but **only ~7% of local-intent searches** — and **15% of local *event* queries**, where they "replace the local pack". Citation is selected on **content structure, claim clarity and entity authority, not organic rank** | Item 22's premise was right in direction, overstated in size. The selection criteria are winnable by a new domain; rank is not |
+| **`llms.txt`, re-checked** | Google has **explicitly stated no Search system reads or acts on it**; no major AI provider has committed to reading it as of Q1 2026; crawlers largely are not fetching it | **Retracts half of item 22.** See item 98 |
+| **Email design floors** | **55%+ of opens are mobile**, 50% delete what is not optimised, readers give an email **~10–51 seconds**, and the stated body-copy floor is **16px** | The template ships 15px titles and 13px dates/details — under the floor (item 97) |
+| **Target query, re-checked** | Eventbrite and AllEvents still own "things to do in Mount Prospect this weekend"; `mpdowntown.com` ranks for the festival itself. Within Ten does not appear | Expected at four days old. Re-check monthly, not weekly |
+
+One incidental find worth keeping, because it is the moat in miniature:
+this weekend's Oktoberfest includes a **welcoming, inclusive hour (noon–1
+p.m.) for children with special needs and their families**. No aggregator
+carries that. It is exactly what item 87's detail lines exist to surface,
+and exactly what a ticketing platform's listing will never contain.
+
+#### P1 (new)
+
+94. **Trade a mention for a mention with 3–5 local businesses — the
+    cheapest subscriber acquisition available, and it is sponsor
+    prospecting wearing a different hat.** The tactic: offer a business a
+    mention in the newsletter in exchange for them promoting it to their
+    list or followers. One restaurant with ~2,000 Instagram followers can
+    drive **100–300 subscribers from a single post**.
+
+    Why this ranks with the press pitch rather than below it. It costs
+    nothing, takes a handful of emails (inside the 30–60 min/month
+    budget), and is **repeatable** — where the press mention is one-shot
+    (item 89), this can be run again next month with five different
+    businesses. And the conversation is the sponsor conversation: you are
+    contacting precisely the dentist, ice cream shop and tutoring centre
+    `BUSINESS_PLAN.md` names as the target sponsor list, with an opening
+    offer that costs them nothing and asks for nothing. A business that
+    has already been featured once is a materially warmer lead for the
+    $1,200 Annual Partner tier than a cold email.
+
+    Needs a template in `OUTREACH_TEMPLATES.md` — a new §8, short,
+    written for a busy owner, leading with what they get. Draftable by
+    the build loop; sending stays with Ryan. Sequence it **after** the
+    first real send, same as item 89: the pitch is "here is the thing",
+    and there needs to be a thing.
+
+95. **The $5,000 Neighborhood Authority tier needs an answer to Nextdoor,
+    or it needs repricing.** `BUSINESS_PLAN.md` prices this tier against
+    the realtor "neighborhood farming" budget of $500–1,500/month, and
+    that budget is real — average agent marketing spend is over
+    $14,200/yr. But **Nextdoor sells the same headline promise — be *the*
+    featured agent in this ZIP — for $30–150 per ZIP per month.** The
+    tier asks ~$417/month. That is 3–14× a competitor the prospect has
+    certainly heard of and probably already been pitched.
+
+    This is not an argument to drop the price. It is an argument that the
+    tier currently has **no written answer to the obvious objection**,
+    and the first realtor who asks will end the conversation. The honest
+    differences are real and none of them are in `SPONSOR_KIT.md`:
+    Nextdoor sells an ad slot beside user posts, this sells **editorial
+    placement inside content the reader opted into**; Nextdoor's audience
+    is rented and its rules can change, a subscriber list is owned; and
+    the Annual Partner benefits — permanent directory listing, seasonal
+    guide spotlight, a live SEO backlink — are assets that persist, not
+    impressions that expire.
+
+    Concretely: add a short "compared to" section to `SPONSOR_KIT.md`
+    naming Nextdoor and Meta geo-ads with their real prices, and stating
+    what this offers that neither does. Naming a competitor's lower price
+    yourself is stronger than being caught by it, and the kit currently
+    reads as though no alternative exists. Also worth stating plainly:
+    **until there is an audience number to put next to the price, no tier
+    is sellable at any price** — which is why 94 and the press pitch
+    outrank every monetisation item on this list.
+
+#### P2 (new)
+
+96. **Name the Substack trade-off out loud, then keep Buttondown.** 40%
+    of all new Substack subscriptions now originate inside its own
+    network, and Recommendations is the main growth engine for
+    publications under 10,000 subscribers. Buttondown has no network at
+    all — a subscriber arrives only if something outside the platform
+    sends them.
+
+    The recommendation is still **stay**, and it is worth writing down
+    why so this does not get re-litigated every time growth is slow. The
+    business owns its domain, its list, its HTML template and its
+    deliverability posture (`p=quarantine`, verified this afternoon);
+    Substack takes 10% of paid revenue and owns the reader relationship,
+    which is a bad trade for a business whose revenue is *local sponsor
+    memberships*, not reader subscriptions. The network would help growth
+    and hurt the actual business model.
+
+    But the consequence must be accepted rather than ignored: **this
+    newsletter has no organic growth channel.** Every subscriber comes
+    from press (one-shot), barter (item 94), SEO (slow), or paid (item
+    78). That is the whole list, it is short, and it is why items 94 and
+    77 are the top of the file. Worth a line in `BUSINESS_PLAN.md`'s
+    scale-strategy section, which currently discusses scaling regions
+    without addressing where readers come from.
+
+97. **Raise the email's body type to the 16px floor.** The template sets
+    event titles at 15px and dates, details and the footer at 13px. The
+    stated mobile floor is **16px**, 55%+ of opens are mobile, and half
+    of readers delete an email that does not read well on a phone — and
+    this is a newsletter for parents checking their phone on a Thursday
+    evening, which is the mobile case exactly.
+
+    Titles to 16px, secondary lines to 14px, footer may stay at 13px.
+    Check it does not push the six-event digest past a comfortable
+    scroll; if it does, that argues for grouping (item 90's "Also this
+    week" split already creates the structure to do it). Small, testable,
+    and it interacts with 90 and 87 — worth doing in the same pass as
+    those rather than separately, since all three change the same rows.
+
+#### P3 (new) — a retraction
+
+98. **`llms.txt` does not work, and item 22 should stop implying it
+    does.** I recommended it. The current evidence is that Google has
+    **explicitly stated no Google Search system reads or acts on
+    `llms.txt`**, that no major AI provider — OpenAI, Google, Anthropic
+    or Meta — has committed to reading it as of Q1 2026, and that AI
+    crawlers largely are not fetching it at all.
+
+    What to actually do, in order:
+
+    - **Keep the file.** `build_llms_txt()` generates it from the same
+      `region_summaries` the sitemap uses, so its marginal cost is zero
+      and it cannot drift. Deleting working, self-maintaining code to
+      make a point is worse than leaving it.
+    - **Stop counting it as progress.** Item 22 is marked "first slice
+      done" largely on its strength. That slice bought less than claimed.
+    - **Correct item 22's premise while there.** It argues from "AI
+      Overviews now trigger on roughly half of all queries" — true
+      overall (~47%), but **local** intent is ~7%, and local *event*
+      queries 15%. Still worth pursuing, at roughly a third of the
+      implied size.
+    - **Move the effort to what the same research says decides
+      citation**: content structure, claim clarity, and entity
+      authority — explicitly *not* organic rank. The site already has
+      schema.org `Event` and `FAQPage`; the gap is entity clarity
+      (consistent naming of "Within Ten" as a publisher across pages,
+      an `Organization` entity, a real About page stating who publishes
+      this and from where). That is the work item 22 should have been
+      pointing at, and it is winnable by a four-day-old domain in a way
+      that out-ranking Eventbrite is not.
+
+    The robots.txt half of item 22 — explicitly naming GPTBot,
+    ClaudeBot, OAI-SearchBot and the rest — stands. Allowing crawlers
+    that do exist is unaffected by a convention file that nothing reads.
 
 ## Working agreements for autonomous iteration
 
