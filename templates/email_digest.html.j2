@@ -158,6 +158,20 @@ LOCAL RECOMMENDATION
 {% if sponsor.detail %} — {{ sponsor.detail }}{% endif %}
 </td>
 </tr>
+{% if sponsor.spotlight %}
+<!-- Mini-interview spotlight (ROADMAP.md Phase 11 #82) - the answers
+     ARE the content, rendered verbatim in the business's own words.
+     Each question is independently optional; only answered ones show. -->
+{% if sponsor.spotlight.years_in_town %}
+<tr><td style="font-family:Arial, Helvetica, sans-serif; font-size:13px; color:#2b2318; padding-top:8px;"><em>{{ sponsor.spotlight.years_in_town }}</em></td></tr>
+{% endif %}
+{% if sponsor.spotlight.regulars_pick %}
+<tr><td style="font-family:Arial, Helvetica, sans-serif; font-size:13px; color:#2b2318; padding-top:6px;"><em>{{ sponsor.spotlight.regulars_pick }}</em></td></tr>
+{% endif %}
+{% if sponsor.spotlight.hidden_gem %}
+<tr><td style="font-family:Arial, Helvetica, sans-serif; font-size:13px; color:#2b2318; padding-top:6px;"><em>{{ sponsor.spotlight.hidden_gem }}</em></td></tr>
+{% endif %}
+{% endif %}
 </table>
 </td>
 </tr>

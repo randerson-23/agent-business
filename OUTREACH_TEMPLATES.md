@@ -63,6 +63,12 @@ finalize, could you send:
    (families you've served, what makes you the local pick), not ad copy.
 3. A link (website, booking page, or menu).
 4. A logo image, if you have one (optional — text works fine too).
+5. For the weekly email (once that starts sending) — a short spotlight
+   feature, not an ad. Answer whichever of these you like, in your own
+   words (all optional, skip any that don't fit):
+   - How long have you been in [Mount Prospect / Arlington Heights]?
+   - What's the one thing regulars always order or ask for?
+   - What's something most people don't know about [Business Name]?
 
 Payment: $[amount] via [Venmo/Zelle/check] — details below.
 
