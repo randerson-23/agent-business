@@ -3529,6 +3529,30 @@ and exactly what a ticketing platform's listing will never contain.
     and it interacts with 90 and 87 — worth doing in the same pass as
     those rather than separately, since all three change the same rows.
 
+    ✅ **DONE.** Event titles 15px→16px, event dates/details 13px→14px.
+    Applied the same floor to every other title-style and secondary-line
+    row in the template for consistency, not just the event cards the
+    item's own description named: the evergreen-highlight title link and
+    the sponsor-recommendation title link (both were 15px, same visual
+    role as an event title) went to 16px; the "Also this week"
+    informational lines and the sponsor spotlight quotes (both were
+    13px, same role as an event's date/detail) went to 14px. Left the
+    wordmark, the footer, and the small-caps eyebrow labels ("LOCAL
+    RECOMMENDATION", "ALSO THIS WEEK", "SPONSOR THIS SPOT", the
+    preview-only annotation) alone — those are deliberately small
+    kickers, not body copy, matching the item's own "footer may stay"
+    allowance. On the comfortable-scroll check: no action needed yet —
+    item 90 already ships the "Also this week" grouping this item
+    anticipated needing, and a real generated file
+    (`docs/mount-prospect-60056/email-send.html`) is still 191 lines,
+    same order of magnitude as before. One new test
+    (`test_render_email_digest_body_type_meets_the_16px_mobile_floor`)
+    asserts no `font-size:15px` survives and spot-checks the specific
+    16px/14px rows; `python -m pytest tests/ -q` → 266 passed. `python
+    scripts/build_digest.py` → real build, confirmed the generated
+    `email-send.html` contains the new sizes; `docs/` restored after
+    (no untracked stragglers this time, unlike item 91's pass).
+
 #### P3 (new) — a retraction
 
 98. **`llms.txt` does not work, and item 22 should stop implying it
