@@ -1462,6 +1462,34 @@ def test_build_email_subject_line_honest_empty_state():
     assert subject == "This weekend in Mount Prospect: what's coming up"
 
 
+def test_build_email_subject_line_skips_a_near_duplicate_second_title():
+    # ROADMAP.md Phase 11 #86: the real pair that shipped and prompted
+    # this fix - a synthetic "Event A"/"Event B" pair would pass a
+    # broken implementation, so this uses the actual colliding titles.
+    region = {"name": "Mount Prospect"}
+    events = [
+        {"title": "Oktoberfest", "date": "Sep 18", "url": "https://x/1"},
+        {"title": "Fall Festival & Oktoberfest", "date": "Sep 19", "url": "https://x/2"},
+        {"title": "Half-Day Student Attendance (Grades 1-8)", "date": "Sep 18", "url": "https://x/3"},
+    ]
+    subject = build_digest.build_email_subject_line(region, events)
+    assert subject == (
+        "This weekend in Mount Prospect: Oktoberfest, "
+        "Half-Day Student Attendance (Grades 1-8), and 1 more"
+    )
+
+
+def test_build_email_subject_line_names_only_the_first_when_everything_collides():
+    region = {"name": "Mount Prospect"}
+    events = [
+        {"title": "Oktoberfest", "date": "Sep 18", "url": "https://x/1"},
+        {"title": "Fall Festival & Oktoberfest", "date": "Sep 19", "url": "https://x/2"},
+        {"title": "Oktoberfest Weekend", "date": "Sep 19", "url": "https://x/3"},
+    ]
+    subject = build_digest.build_email_subject_line(region, events)
+    assert subject == "This weekend in Mount Prospect: Oktoberfest, and 2 more"
+
+
 def test_render_email_digest_lists_weekend_events():
     region = {"name": "Mount Prospect"}
     events = [{"title": "Fall Fest", "date": "Aug 29", "url": "https://x/1"}]
@@ -1469,6 +1497,51 @@ def test_render_email_digest_lists_weekend_events():
     assert "Fall Fest" in html
     assert "Mount Prospect" in html
     assert "Aug 29–30" in html
+
+
+def test_render_email_digest_shows_the_event_detail_line():
+    # ROADMAP.md Phase 11 #87: the row used to stop at title + date,
+    # even though detail was already fetched, truncated, and passed
+    # into this same event dict.
+    region = {"name": "Mount Prospect"}
+    events = [
+        {"title": "Fall Fest", "date": "Aug 29", "url": "https://x/1", "detail": "Live music and food trucks."}
+    ]
+    html = build_digest.render_email_digest(region, events, [], "https://x/", "Aug 29–30", None)
+    assert "Live music and food trucks." in html
+
+
+def test_render_email_digest_omits_detail_row_when_none_given():
+    region = {"name": "Mount Prospect"}
+    events = [{"title": "Fall Fest", "date": "Aug 29", "url": "https://x/1"}]
+    html = build_digest.render_email_digest(region, events, [], "https://x/", "Aug 29–30", None)
+    # No crash, no stray empty <td> content - just confirms the {% if
+    # event.detail %} guard works when the key is genuinely absent.
+    assert "Fall Fest" in html
+
+
+def test_render_email_digest_shows_house_ad_when_sponsor_is_inactive():
+    # ROADMAP.md Phase 11 #88: an unsold slot falls back to the house ad
+    # on the region page already - the email used to fall back to
+    # nothing, so the artifact most likely to reach a local business
+    # owner never mentioned the slot was for sale.
+    region = {"name": "Mount Prospect"}
+    house_ad = {
+        "title": "Sponsor this spot",
+        "detail": "Reach local families every week.",
+        "url": "https://withintenmiles.com/sponsor/",
+        "is_active_sponsor": False,
+    }
+    html = build_digest.render_email_digest(region, [], [], "https://x/", "Aug 29–30", house_ad)
+    assert "SPONSOR THIS SPOT" in html
+    assert "Reach local families every week." in html
+    assert "https://withintenmiles.com/sponsor/" in html
+
+
+def test_render_email_digest_omits_house_ad_when_sponsor_is_none():
+    region = {"name": "Mount Prospect"}
+    html = build_digest.render_email_digest(region, [], [], "https://x/", "Aug 29–30", None)
+    assert "SPONSOR THIS SPOT" not in html
 
 
 def test_render_email_digest_shows_the_subject_line_for_the_owner_to_copy():

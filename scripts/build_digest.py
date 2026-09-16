@@ -16,6 +16,7 @@ from __future__ import annotations
 import json
 import logging
 import math
+import re
 import statistics
 import sys
 from datetime import date, datetime, timedelta, timezone
@@ -1471,6 +1472,29 @@ def build_weekly_summary_txt(
     )
 
 
+_SUBJECT_LINE_STOPWORDS = {"and", "the", "a", "an", "of"}
+
+
+def _significant_tokens(title: str) -> set[str]:
+    words = re.findall(r"[a-z0-9]+", title.lower())
+    return {w for w in words if w not in _SUBJECT_LINE_STOPWORDS}
+
+
+def _is_near_duplicate_title(a: str, b: str) -> bool:
+    """Two titles that would read as "the same thing" named twice in one
+    subject line - e.g. "Oktoberfest" and "Fall Festival & Oktoberfest"
+    (ROADMAP.md Phase 11 #86, a real pair this shipped with). Neither
+    title is wrong and neither should be dropped from the digest itself
+    - this only decides which two get *named* in the subject line.
+    One title's significant words being a subset of the other's (after
+    lowercasing and dropping stopwords/"&") is close enough to collide.
+    """
+    tokens_a, tokens_b = _significant_tokens(a), _significant_tokens(b)
+    if not tokens_a or not tokens_b:
+        return False
+    return tokens_a <= tokens_b or tokens_b <= tokens_a
+
+
 def build_email_subject_line(region: dict, weekend_events: list[dict]) -> str:
     """ROADMAP.md Phase 11 #80: settle the subject-line format before
     there's a list whose open rates become a trend somebody judges,
@@ -1481,17 +1505,30 @@ def build_email_subject_line(region: dict, weekend_events: list[dict]) -> str:
     rather than inventing descriptive phrasing not grounded in the
     actual data - clarity over cleverness stays true either way, and a
     real title is never wrong the way a guessed paraphrase could be.
+
+    A selection rule, not a filter (item 86): the second title named is
+    the first one that doesn't read as a near-duplicate of the first,
+    so two real, distinct events never collapse into what looks like
+    one event named twice. If every remaining title collides, name just
+    the first and let the count carry the rest.
     """
     name = region["name"]
     titles = [e["title"] for e in weekend_events]
     if not titles:
         return f"This weekend in {name}: what's coming up"
+    first = titles[0]
     if len(titles) == 1:
-        return f"This weekend in {name}: {titles[0]}"
-    if len(titles) == 2:
-        return f"This weekend in {name}: {titles[0]} and {titles[1]}"
+        return f"This weekend in {name}: {first}"
+
+    second = next((t for t in titles[1:] if not _is_near_duplicate_title(first, t)), None)
+    if second is None:
+        remaining = len(titles) - 1
+        return f"This weekend in {name}: {first}, and {remaining} more"
+
     more = len(titles) - 2
-    return f"This weekend in {name}: {titles[0]}, {titles[1]}, and {more} more"
+    if more == 0:
+        return f"This weekend in {name}: {first} and {second}"
+    return f"This weekend in {name}: {first}, {second}, and {more} more"
 
 
 def render_email_digest(

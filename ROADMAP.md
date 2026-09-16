@@ -3016,7 +3016,7 @@ list exists whose open rates somebody is trending.
 
 #### P1 (new)
 
-86. **Dedupe near-identical titles in the email subject line.** The live
+86. ✅ **DONE — Dedupe near-identical titles in the email subject line.** The live
     subject for Mount Prospect this week is `This weekend in Mount
     Prospect: Oktoberfest and Fall Festival & Oktoberfest`. Both events
     are real and distinct, so this is not a data bug and dropping one
@@ -3038,8 +3038,22 @@ list exists whose open rates somebody is trending.
     Worth a test with the real colliding pair as the fixture: it is the
     case that actually shipped, and a synthetic `Event A`/`Event B` pair
     would pass a broken implementation.
+    Implemented exactly as prescribed: `_is_near_duplicate_title()`
+    tokenizes both titles (lowercased, `[a-z0-9]+`, stopwords/"and"
+    dropped - "&" disappears on its own since it isn't a word character)
+    and treats a subset relationship either direction as a collision;
+    `build_email_subject_line()` walks past every colliding candidate to
+    find a genuinely distinct second title, falling back to naming just
+    the first plus a count when none exists. Tested with the real
+    colliding pair from the live build (`Oktoberfest` /
+    `Fall Festival & Oktoberfest`) as the fixture, plus the
+    all-candidates-collide fallback case. Verified against a second real
+    build a day later, when Mount Prospect's weekend genuinely only had
+    those two colliding events left: it correctly produced `This weekend
+    in Mount Prospect: Oktoberfest, and 1 more` rather than naming the
+    same event twice.
 
-87. **Give email events their detail line.** Each event row in
+87. ✅ **DONE — Give email events their detail line.** Each event row in
     `templates/email_digest.html.j2` emits `event.title` and
     `event.date` and stops. `event.detail` is already fetched, already
     truncated (`truncate(item.get("detail", ""))`), already rendered on
@@ -3059,10 +3073,16 @@ list exists whose open rates somebody is trending.
     is the *index*, and has to click through for the thing that tells them
     whether to care. An email that can be judged without clicking is what
     makes the click worth it.
+    Added exactly the prescribed row - same markup shape as the `{% if
+    event.date %}` row, ~13px muted `#766a58` so the `#96581f` date stays
+    the row's one accent color, one line since `detail` is already
+    truncated upstream. Verified against a real build: the live Mount
+    Prospect digest now shows "German food, drink & live music from the
+    band Paloma..." under Oktoberfest instead of just a title and date.
 
 #### P2 (new)
 
-88. **Show the house ad in the email when there is no sponsor.** My first
+88. ✅ **DONE — Show the house ad in the email when there is no sponsor.** My first
     read of the preview was that the sponsor block was missing. It isn't —
     it is deliberately gated on `sponsor.is_active_sponsor`, and that gate
     is correct: item 18's rule is that "LOCAL RECOMMENDATION" framing is
@@ -3085,6 +3105,16 @@ list exists whose open rates somebody is trending.
     P2 and not P1 because it earns nothing until the list has readers,
     where 86 and 87 shape a habit that gets harder to change every week
     sending continues.
+    Implemented as prescribed: an `{% elif sponsor %}` branch renders the
+    house ad's real `title`/`detail`/`url` (already `default_house_ad`'s
+    "Sponsor this spot" / the real `/sponsor/` URL, no invented content)
+    in a dashed, muted card with a plain "SPONSOR THIS SPOT" label,
+    distinct from the sponsor block's `#fdf3e4` fill and "LOCAL
+    RECOMMENDATION" framing so a reader could never mistake one for the
+    other. Verified against a real build and a Playwright screenshot: 6
+    new tests across items 86-88 (the near-duplicate skip, the
+    all-collide fallback, the detail line present/absent, and the house
+    ad shown/omitted). 250 tests pass; build exits 0.
 
 #### Housekeeping
 
