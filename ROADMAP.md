@@ -3142,6 +3142,67 @@ labelled `PREVIEW ONLY`, for pasting into Buttondown's subject field.
 That is a complete review loop for a newsletter with zero subscribers,
 and nothing in the repo says so outside the template's comments.
 
+#### Research pass 2026-09-16 (twentieth pass)
+
+Two facts arrived from the owner that change sequencing, not scope.
+
+**Buttondown's free plan can send this template after all.** The paid
+"naked mode" gates pasting raw HTML *as HTML*, but markdown mode accepts
+inline HTML, which is what `email_digest.html.j2` already is. The
+constraint I was about to write up as a fork — pay, switch ESP, or
+maintain a plainer second renderer — does not exist. Nothing needs
+rebuilding and the just-finished DNS delegation stays.
+
+**A real Gmail render test is now on the record.** The template went out
+as a proper multipart message (HTML + plaintext alternative, preview
+annotation stripped) to the owner's own inbox. Worth stating what that
+does and doesn't prove: it tests *rendering*, in the client most
+subscribers use. It proves nothing about deliverability, because
+Gmail-to-self always authenticates.
+
+#### P1 (new)
+
+89. **Prove one newsletter can send before the press pitch goes out, not
+    after.** These two are being tracked independently and shouldn't be.
+    Item 77's press pitch is the highest-yield action available and the
+    file has said so for four passes — but a local-media mention is a
+    **one-shot**. It converts once, produces 100–500 signups in a day
+    (seventeenth pass), and cannot be re-run next month because the
+    newsletter got good in the meantime.
+
+    So the risk is sequencing, and it is asymmetric. Pitch first and the
+    send path isn't ready: several hundred people opt in, receive nothing
+    for a fortnight, and most are gone before the first issue — the
+    single most expensive way to acquire a dead list. Send first and pitch
+    a week later: the cost is a week.
+
+    The gap is genuinely small, which is what makes this worth saying now
+    rather than treating it as a phase. Three things, none of them
+    building:
+
+    - Confirm Buttondown shows `withintenmiles.com` verified (item 47 —
+      the records are in place and confirmed; this is a look).
+    - Send **one** real issue through Buttondown, in markdown mode, to a
+      list of one. That is the only test that exercises the whole path
+      at once: authentication, Buttondown's own rendering, the injected
+      unsubscribe footer, and inbox placement. Everything before it has
+      tested one layer.
+    - Check it landed in the inbox and not Promotions or spam. A
+      brand-new sending domain has no reputation, and the sixteenth
+      pass's finding stands: send early and small rather than
+      accumulating a list and blasting it.
+
+    Then pitch. Items 86 and 87 (subject-line dedupe, detail lines) should
+    land in the same week — they are small, and they decide what those
+    100–500 people judge the product by on day one.
+
+#### Housekeeping
+
+The trademark search (item 69) is a **spend** gate, not a launch gate. It
+blocks signage, print and sponsor contracts; it does not block the press
+pitch, the newsletter, or anything currently in flight. Worth keeping the
+distinction explicit so it doesn't accrete blocking weight it never had.
+
 ## Working agreements for autonomous iteration
 
 - Cadence is hourly (the platform's durable scheduler has a 1-hour floor;
