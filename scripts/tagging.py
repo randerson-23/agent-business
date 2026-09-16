@@ -84,6 +84,32 @@ def infer_tags(*text_parts: str) -> list[str]:
     return sorted(matched)
 
 
+# A real thing worth knowing about, but not something to plan an outing
+# around - a school half-day, a holiday trash-pickup shift, an office
+# closure (ROADMAP.md Phase 11 #90, found from a real send: the subject
+# line advertised "Half-Day Student Attendance" as if it were an event).
+# Deliberately specific phrases, not a bare "holiday" or "closing" -
+# either would misclassify a real event like a "Holiday Craft Fair" or a
+# seasonal exhibit's "closing weekend".
+INFORMATIONAL_KEYWORDS: tuple[str, ...] = (
+    "no school", "half day", "half-day", "early dismissal", "institute day",
+    "e-learning day", "remote learning day", "no refuse collection",
+    "trash pickup", "recycling pickup", "office closed", "village hall closed",
+    "closed for the holiday", "school closed", "schools closed",
+)
+
+
+def is_informational(*text_parts: str) -> bool:
+    """True for a school-closure/office-closure/no-collection notice - real
+    content the D57-style school-calendar feed is deliberately not
+    filtered out for (ROADMAP.md Phase 11's config comments call it "a
+    real gap no local competitor covers"), but which must never headline
+    a subject line or a weekend highlight the way an actual event does.
+    """
+    haystack = " " + " ".join(p for p in text_parts if p).lower() + " "
+    return any(kw in haystack for kw in INFORMATIONAL_KEYWORDS)
+
+
 def merge_default_tags(default_tags, inferred: list[str]) -> list[str]:
     """Merge a source-level `default_tags` list into the per-item inferred
     tags.

@@ -709,6 +709,59 @@ def test_fetch_region_sections_attaches_calendar_links(monkeypatch):
     assert "location=Mount+Prospect" in event["google_calendar_url"]
 
 
+def test_fetch_region_sections_marks_a_school_half_day_not_attendable(monkeypatch):
+    # ROADMAP.md Phase 11 #90: the real title from the D57 feed that
+    # shipped as a subject-line headline before this fix.
+    def fake_fetcher(url, **kwargs):
+        return [{"title": "Half-Day Student Attendance (Grades 1-8)", "detail": "", "url": "https://x/1", "date": None}]
+
+    monkeypatch.setitem(build_digest.FETCHERS, "ics", fake_fetcher)
+    region_cfg = {
+        "region": REGION,
+        "sources": [{"name": "D57", "type": "ics", "url": "https://x/cal.ics", "section": "School", "enabled": True}],
+    }
+    event = build_digest.fetch_region_sections(region_cfg)[0]["events"][0]
+    assert event["attendable"] is False
+
+
+def test_fetch_region_sections_a_real_event_is_attendable(monkeypatch):
+    def fake_fetcher(url, **kwargs):
+        return [{"title": "Fishing Derby", "detail": "x", "url": "https://x/1", "date": None}]
+
+    monkeypatch.setitem(build_digest.FETCHERS, "ics", fake_fetcher)
+    region_cfg = {
+        "region": REGION,
+        "sources": [{"name": "Park", "type": "ics", "url": "https://x/cal.ics", "section": "Events", "enabled": True}],
+    }
+    event = build_digest.fetch_region_sections(region_cfg)[0]["events"][0]
+    assert event["attendable"] is True
+
+
+def test_fetch_region_sections_source_level_informational_override(monkeypatch):
+    # A source config's `informational: true` (for a feed like D57's
+    # that's mostly closures/half-days) forces every item non-attendable
+    # regardless of wording - even a title with no matching keyword.
+    def fake_fetcher(url, **kwargs):
+        return [{"title": "District Calendar Update", "detail": "", "url": "https://x/1", "date": None}]
+
+    monkeypatch.setitem(build_digest.FETCHERS, "ics", fake_fetcher)
+    region_cfg = {
+        "region": REGION,
+        "sources": [
+            {
+                "name": "D57",
+                "type": "ics",
+                "url": "https://x/cal.ics",
+                "section": "School",
+                "enabled": True,
+                "informational": True,
+            }
+        ],
+    }
+    event = build_digest.fetch_region_sections(region_cfg)[0]["events"][0]
+    assert event["attendable"] is False
+
+
 def test_fetch_region_sections_records_source_health(monkeypatch):
     def fake_fetcher(url, **kwargs):
         return [{"title": "A", "detail": "x", "url": "https://x/1", "date": None}]
@@ -1470,13 +1523,36 @@ def test_build_email_subject_line_skips_a_near_duplicate_second_title():
     events = [
         {"title": "Oktoberfest", "date": "Sep 18", "url": "https://x/1"},
         {"title": "Fall Festival & Oktoberfest", "date": "Sep 19", "url": "https://x/2"},
-        {"title": "Half-Day Student Attendance (Grades 1-8)", "date": "Sep 18", "url": "https://x/3"},
+        {"title": "Fishing Derby", "date": "Sep 19", "url": "https://x/3"},
     ]
     subject = build_digest.build_email_subject_line(region, events)
-    assert subject == (
-        "This weekend in Mount Prospect: Oktoberfest, "
-        "Half-Day Student Attendance (Grades 1-8), and 1 more"
-    )
+    assert subject == "This weekend in Mount Prospect: Oktoberfest, Fishing Derby, and 1 more"
+
+
+def test_build_email_subject_line_never_names_an_informational_event():
+    # ROADMAP.md Phase 11 #90: the actual live bug this fixes - the real
+    # pair from item 86's test plus the real D57 title that got named in
+    # production ("This weekend in Mount Prospect: Oktoberfest, Half-Day
+    # Student Attendance (Grades 1-8), and 1 more"). With the near-dup
+    # excluded from naming and the half-day now excluded from naming
+    # entirely, only Oktoberfest is left to name and the count carries
+    # the rest - never the half-day, even though it's real content.
+    region = {"name": "Mount Prospect"}
+    events = [
+        {"title": "Oktoberfest", "date": "Sep 18", "url": "https://x/1"},
+        {"title": "Fall Festival & Oktoberfest", "date": "Sep 19", "url": "https://x/2"},
+        {"title": "Half-Day Student Attendance (Grades 1-8)", "date": "Sep 18", "url": "https://x/3", "attendable": False},
+    ]
+    subject = build_digest.build_email_subject_line(region, events)
+    assert "Half-Day" not in subject
+    assert subject == "This weekend in Mount Prospect: Oktoberfest, and 1 more"
+
+
+def test_build_email_subject_line_falls_back_when_only_informational_events_exist():
+    region = {"name": "Mount Prospect"}
+    events = [{"title": "Half-Day Student Attendance", "date": "Sep 18", "url": "https://x/1", "attendable": False}]
+    subject = build_digest.build_email_subject_line(region, events)
+    assert subject == "This weekend in Mount Prospect: what's coming up"
 
 
 def test_build_email_subject_line_names_only_the_first_when_everything_collides():
@@ -1559,6 +1635,39 @@ def test_render_email_digest_falls_back_to_free_evergreen_when_nothing_dated():
     html = build_digest.render_email_digest(region, [], evergreen, "https://x/", "Aug 29–30", None)
     assert "Library Passes" in html
     assert "Paid Class" not in html
+
+
+def test_render_email_digest_groups_informational_events_under_also_this_week():
+    # ROADMAP.md Phase 11 #90: a school half-day still belongs in the
+    # email as real content, but grouped under its own line rather than
+    # rendered as an equal-weight event card.
+    region = {"name": "Mount Prospect"}
+    events = [
+        {"title": "Fall Fest", "date": "Aug 29", "url": "https://x/1", "attendable": True},
+        {"title": "Half-Day Student Attendance", "date": "Aug 29", "url": "https://x/2", "attendable": False},
+    ]
+    html = build_digest.render_email_digest(region, events, [], "https://x/", "Aug 29–30", None)
+    assert "ALSO THIS WEEK" in html
+    assert "Half-Day Student Attendance" in html
+    # Not rendered as its own linked event card - the informational
+    # line has no <a href> for it.
+    assert '<a href="https://x/2"' not in html
+
+
+def test_render_email_digest_omits_also_this_week_when_nothing_informational():
+    region = {"name": "Mount Prospect"}
+    events = [{"title": "Fall Fest", "date": "Aug 29", "url": "https://x/1", "attendable": True}]
+    html = build_digest.render_email_digest(region, events, [], "https://x/", "Aug 29–30", None)
+    assert "ALSO THIS WEEK" not in html
+
+
+def test_render_email_digest_shows_also_this_week_even_with_no_attendable_events():
+    region = {"name": "Mount Prospect"}
+    events = [{"title": "Half-Day Student Attendance", "date": "Aug 29", "url": "https://x/1", "attendable": False}]
+    html = build_digest.render_email_digest(region, events, [], "https://x/", "Aug 29–30", None)
+    assert "ALSO THIS WEEK" in html
+    assert "Half-Day Student Attendance" in html
+    assert "Nothing dated for this weekend yet" in html
 
 
 def test_render_email_digest_honest_empty_state():

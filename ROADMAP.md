@@ -3263,6 +3263,42 @@ item 47 allows. Authentication and placement are working.
     Fall back gracefully: if a weekend has no attendable events at all,
     the existing "what's coming up" subject is already the right answer.
 
+    ✅ **DONE.** `scripts/tagging.py` gained `INFORMATIONAL_KEYWORDS` +
+    `is_informational()` (deliberately specific phrases like "half day",
+    "no refuse collection" — not bare "holiday" or "closing", which would
+    misclassify a real "Holiday Craft Fair" or an exhibit's "closing
+    weekend"). `fetch_region_sections()` now attaches an `attendable`
+    boolean to every event: `False` when the title/detail matches, or
+    unconditionally when a source sets `informational: true` (the
+    override exists but was deliberately *not* applied to D57 — that
+    feed's own config comment says it also carries real concerts, which
+    are attendable, so a blanket source-level override would have
+    misclassified those). `build_email_subject_line()` now filters to
+    attendable titles before picking, so the real regression case
+    (Oktoberfest + its near-duplicate + the half-day) resolves to `This
+    weekend in Mount Prospect: Oktoberfest, and 1 more` — verified via
+    `test_build_email_subject_line_never_names_an_informational_event`,
+    which asserts `"Half-Day" not in subject`. `render_email_digest()`
+    splits `weekend_events` into `attendable_events`/`informational_events`
+    and `templates/email_digest.html.j2` renders the latter under an
+    "ALSO THIS WEEK" line (own section whether or not there are any
+    attendable events, so the content never just disappears) rather than
+    as an equal-weight event card — no link, no date/detail rows, just
+    the title. `templates/region.html.j2` gives a non-attendable card a
+    `card-informational` class (muted fill, no hover-lift, no `My
+    Weekend` star) and an "Informational" label instead of a date kicker.
+    12 new tests added (`test_tagging.py` ×4, `test_build_digest.py` ×8);
+    `python -m pytest tests/ -q` → 262 passed; `python
+    scripts/build_digest.py` → real build, `docs/` restored after
+    (sandbox network is proxy-blocked, so no live D57 half-day fetched
+    here to show in the generated file — the subject-line/template unit
+    tests are the real evidence). Deliberately left `build_weekly_summary_txt`
+    (the Facebook-post text) untouched — item 90's own spec named three
+    surfaces (subject line, email body, region page) and the Facebook
+    post wasn't one of them; it can still list an informational item as
+    a plain bullet today, which is a real but smaller gap than the one
+    this closes, worth its own follow-up rather than scope creep here.
+
 91. **Emit a separate `email-send.html` with no preview annotation.** The
     test email went out with `PREVIEW ONLY, NOT PART OF THE EMAIL —
     SUBJECT LINE: …` rendered as the first line of body copy, above the

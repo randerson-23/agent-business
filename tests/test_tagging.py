@@ -2,7 +2,7 @@ import sys
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "scripts"))
-from tagging import infer_tags, merge_default_tags, tag_display  # noqa: E402
+from tagging import infer_tags, is_informational, merge_default_tags, tag_display  # noqa: E402
 
 
 def test_infer_tags_kid_and_indoor():
@@ -89,6 +89,30 @@ def test_merge_default_tags_adds_without_removing():
 def test_merge_default_tags_does_not_duplicate():
     merged = merge_default_tags(["free"], ["free", "outdoor"])
     assert merged == ["free", "outdoor"]
+
+
+def test_is_informational_detects_school_half_day():
+    # ROADMAP.md Phase 11 #90: the real title that shipped as a subject-
+    # line headline before this fix - a synthetic phrase would pass a
+    # broken implementation, so this uses the actual D57 title.
+    assert is_informational("Half-Day Student Attendance (Grades 1-8)", "")
+
+
+def test_is_informational_detects_office_and_collection_closures():
+    assert is_informational("Village Hall Closed for the Holiday", "")
+    assert is_informational("", "No refuse collection Monday - trash pickup delayed one day.")
+
+
+def test_is_informational_does_not_false_positive_on_a_real_event():
+    # The keywords are deliberately specific phrases, not bare "holiday"
+    # or "closing" - either would misclassify real events like these.
+    assert not is_informational("Holiday Craft Fair", "Make ornaments and cards for the season.")
+    assert not is_informational("Fall Exhibit Closing Weekend", "Last chance to see the exhibit.")
+
+
+def test_is_informational_handles_empty_and_none_text():
+    assert not is_informational("", "")
+    assert not is_informational()
 
 
 def test_merge_default_tags_ignores_empty_and_bad_values():
