@@ -20,6 +20,7 @@ import statistics
 import sys
 from datetime import date, datetime, timedelta, timezone
 from email.utils import parsedate_to_datetime
+from functools import lru_cache
 from pathlib import Path
 from urllib.parse import quote, urlencode
 from zoneinfo import ZoneInfo
@@ -1196,6 +1197,16 @@ def _wrap_og_text(draw: ImageDraw.ImageDraw, text: str, font: ImageFont.FreeType
     return lines
 
 
+@lru_cache(maxsize=None)
+def _og_font(filename: str, size: int) -> ImageFont.FreeTypeFont:
+    """Cached so build_og_images()'s one-call-per-region loop doesn't
+    re-read and re-parse the same ~1.5MB of font files from disk on every
+    region - the font objects themselves are read-only once loaded, so
+    reuse across calls is safe.
+    """
+    return ImageFont.truetype(str(FONTS_DIR / filename), size)
+
+
 def render_og_image(title: str, subtitle: str) -> Image.Image:
     """A build-time 1200x630 Open Graph image, one per region plus one
     default, rendered from the same palette as the site's own CSS so a
@@ -1209,9 +1220,9 @@ def render_og_image(title: str, subtitle: str) -> Image.Image:
     img = Image.new("RGB", (width, height), OG_BG)
     draw = ImageDraw.Draw(img)
 
-    wordmark_font = ImageFont.truetype(str(FONTS_DIR / "DejaVuSans-Bold.ttf"), 30)
-    title_font = ImageFont.truetype(str(FONTS_DIR / "DejaVuSans-Bold.ttf"), 64)
-    subtitle_font = ImageFont.truetype(str(FONTS_DIR / "DejaVuSans.ttf"), 32)
+    wordmark_font = _og_font("DejaVuSans-Bold.ttf", 30)
+    title_font = _og_font("DejaVuSans-Bold.ttf", 64)
+    subtitle_font = _og_font("DejaVuSans.ttf", 32)
 
     margin = 80
     draw.ellipse([margin, 66, margin + 26, 92], fill=OG_ACCENT)
