@@ -1215,6 +1215,27 @@ def test_build_sitemap_xml_includes_sponsor_url():
     assert f"<loc>{build_digest.SITE_BASE_URL}sponsor/</loc>" in xml
 
 
+def test_render_og_image_is_the_expected_raster_size():
+    img = build_digest.render_og_image("Mount Prospect", "What's happening — updated weekly")
+    assert img.size == (1200, 630)
+    assert img.mode == "RGB"
+
+
+def test_render_og_image_wraps_a_long_title_without_crashing():
+    img = build_digest.render_og_image(
+        "A Very Long Region Name That Would Never Fit On One Line At This Size",
+        "An equally long subtitle that also needs to wrap across more than one line of text",
+    )
+    assert img.size == (1200, 630)
+
+
+def test_build_og_images_includes_default_and_one_per_region():
+    summaries = [{**REGION, "event_count": 1, "path": "mount-prospect-60056/"}]
+    images = build_digest.build_og_images(summaries)
+    assert set(images) == {"default", "mount-prospect-60056"}
+    assert all(img.size == (1200, 630) for img in images.values())
+
+
 def test_build_robots_txt_references_sitemap():
     robots = build_digest.build_robots_txt()
     assert f"Sitemap: {build_digest.SITE_BASE_URL}sitemap.xml" in robots

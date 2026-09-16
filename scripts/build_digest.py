@@ -26,6 +26,7 @@ from zoneinfo import ZoneInfo
 
 import yaml
 from jinja2 import Environment, FileSystemLoader
+from PIL import Image, ImageDraw, ImageFont
 
 sys.path.insert(0, str(Path(__file__).parent))
 from fetchers import FETCHERS, fetch_weather, submit_indexnow  # noqa: E402
@@ -38,6 +39,7 @@ ROOT = Path(__file__).resolve().parents[1]
 CONFIG_DIR = ROOT / "config"
 REGIONS_DIR = CONFIG_DIR / "regions"
 TEMPLATES_DIR = ROOT / "templates"
+FONTS_DIR = ROOT / "assets" / "fonts"
 OUTPUT_DIR = ROOT / "docs"
 SOURCE_HEALTH_PATH = ROOT / "data" / "source_health.json"
 SOURCE_HEALTH_HISTORY_LEN = 10
@@ -658,6 +660,7 @@ def render_sponsor_page(
         analytics=analytics,
         cta_url=build_sponsor_cta_url(contact_email),
         stats=stats,
+        og_image_url=SITE_BASE_URL + "og/default.png",
     )
 
 
@@ -1019,6 +1022,7 @@ def render_region_page(
         newsletter=newsletter,
         editors_pick=editors_pick,
         analytics=analytics,
+        og_image_url=SITE_BASE_URL + "og/" + region["id"] + ".png",
     )
 
 
@@ -1135,6 +1139,7 @@ def render_hub_page(
         newsletter=newsletter,
         analytics=analytics,
         stats=stats,
+        og_image_url=SITE_BASE_URL + "og/default.png",
     )
 
 
@@ -1155,7 +1160,83 @@ def render_weekend_hub_page(
         canonical_url=SITE_BASE_URL + "this-weekend/",
         hub_url=SITE_BASE_URL,
         analytics=analytics,
+        og_image_url=SITE_BASE_URL + "og/default.png",
     )
+
+
+# Open Graph raster size crawlers actually respect (ROADMAP.md Phase 11
+# #75) - an SVG won't do here, unlike the favicon/map elsewhere on the
+# site, so this is the one place the build needs real image rendering.
+OG_IMAGE_SIZE = (1200, 630)
+
+# Mirrors :root's light-mode palette in templates/hub.html.j2 - kept as
+# plain RGB tuples here rather than re-parsed from CSS, since this is the
+# only other place in the build that needs them.
+OG_BG = (246, 239, 225)  # --bg
+OG_INK = (43, 35, 24)  # --ink
+OG_MUTED = (118, 106, 88)  # --muted
+OG_ACCENT = (82, 107, 63)  # --accent
+OG_ACCENT_2 = (193, 122, 61)  # --accent-2
+
+
+def _wrap_og_text(draw: ImageDraw.ImageDraw, text: str, font: ImageFont.FreeTypeFont, max_width: int) -> list[str]:
+    words = text.split()
+    lines: list[str] = []
+    current = ""
+    for word in words:
+        candidate = f"{current} {word}".strip()
+        if draw.textlength(candidate, font=font) <= max_width:
+            current = candidate
+        else:
+            if current:
+                lines.append(current)
+            current = word
+    if current:
+        lines.append(current)
+    return lines
+
+
+def render_og_image(title: str, subtitle: str) -> Image.Image:
+    """A build-time 1200x630 Open Graph image, one per region plus one
+    default, rendered from the same palette as the site's own CSS so a
+    link post into a local Facebook group doesn't show up as the grey box
+    a missing og:image renders as. Uses the DejaVu Sans bundled under
+    assets/fonts/ (see LICENSE-DejaVu.txt there) rather than a system font,
+    so the result doesn't depend on what happens to be installed on
+    whichever runner builds the site.
+    """
+    width, height = OG_IMAGE_SIZE
+    img = Image.new("RGB", (width, height), OG_BG)
+    draw = ImageDraw.Draw(img)
+
+    wordmark_font = ImageFont.truetype(str(FONTS_DIR / "DejaVuSans-Bold.ttf"), 30)
+    title_font = ImageFont.truetype(str(FONTS_DIR / "DejaVuSans-Bold.ttf"), 64)
+    subtitle_font = ImageFont.truetype(str(FONTS_DIR / "DejaVuSans.ttf"), 32)
+
+    margin = 80
+    draw.ellipse([margin, 66, margin + 26, 92], fill=OG_ACCENT)
+    draw.text((margin + 40, 60), "WITHIN TEN", font=wordmark_font, fill=OG_ACCENT)
+    draw.rectangle([margin, 122, margin + 90, 126], fill=OG_ACCENT_2)
+
+    y = 220
+    for line in _wrap_og_text(draw, title, title_font, width - 2 * margin)[:2]:
+        draw.text((margin, y), line, font=title_font, fill=OG_INK)
+        y += 78
+
+    y += 16
+    for line in _wrap_og_text(draw, subtitle, subtitle_font, width - 2 * margin)[:2]:
+        draw.text((margin, y), line, font=subtitle_font, fill=OG_MUTED)
+        y += 44
+
+    draw.rectangle([0, height - 14, width, height], fill=OG_ACCENT)
+    return img
+
+
+def build_og_images(region_summaries: list[dict]) -> dict[str, Image.Image]:
+    images = {"default": render_og_image(SITE_NAME, "Everything worth doing, ten miles out")}
+    for r in region_summaries:
+        images[r["id"]] = render_og_image(r["name"], f"What's happening in {r['name']} — updated weekly")
+    return images
 
 
 def collect_sitemap_urls(region_summaries: list[dict]) -> list[str]:
@@ -1656,6 +1737,12 @@ def main() -> None:
     (OUTPUT_DIR / "CNAME").write_text(CUSTOM_DOMAIN + "\n", encoding="utf-8")
     (OUTPUT_DIR / f"{INDEXNOW_KEY}.txt").write_text(INDEXNOW_KEY, encoding="utf-8")
     logger.info("Wrote sitemap.xml, robots.txt, llms.txt, CNAME, and IndexNow key file")
+    og_dir = OUTPUT_DIR / "og"
+    og_dir.mkdir(parents=True, exist_ok=True)
+    og_images = build_og_images(region_summaries)
+    for name, image in og_images.items():
+        image.save(og_dir / f"{name}.png", "PNG")
+    logger.info("Wrote %d Open Graph image(s) to %s", len(og_images), og_dir)
     submit_indexnow(
         host=CUSTOM_DOMAIN,
         key=INDEXNOW_KEY,
