@@ -33,7 +33,7 @@ from PIL import Image, ImageDraw, ImageFont
 
 sys.path.insert(0, str(Path(__file__).parent))
 from fetchers import FETCHERS, fetch_weather, submit_indexnow  # noqa: E402
-from tagging import infer_tags, merge_default_tags, tag_display  # noqa: E402
+from tagging import infer_tags, is_informational, merge_default_tags, tag_display  # noqa: E402
 
 logging.basicConfig(level=logging.INFO, format="%(levelname)s %(name)s: %(message)s")
 logger = logging.getLogger("build_digest")
@@ -369,6 +369,13 @@ def fetch_region_sections(region_cfg: dict, health: dict | None = None) -> list[
         for item in raw_items:
             tags = infer_tags(item.get("title", ""), item.get("detail", ""), source["section"])
             tags = merge_default_tags(source.get("default_tags"), tags)
+            # ROADMAP.md Phase 11 #90: a source-level `informational: true`
+            # (for a feed like D57's that's mostly closures/half-days, not
+            # events) forces every item non-attendable regardless of
+            # wording; otherwise it's inferred per-item from the title/detail.
+            attendable = not source.get("informational") and not is_informational(
+                item.get("title", ""), item.get("detail", "")
+            )
             event = {
                 "title": item.get("title", ""),
                 "detail": truncate(item.get("detail", "")),
@@ -377,6 +384,7 @@ def fetch_region_sections(region_cfg: dict, health: dict | None = None) -> list[
                 "date_iso": parse_event_date_iso(item.get("date")),
                 "tags": tags,
                 "tag_badges": [{"id": t, **tag_display(t)} for t in tags],
+                "attendable": attendable,
             }
             event["ics_href"] = build_ics_data_uri(event)
             event["google_calendar_url"] = build_google_calendar_url(event, region_name)
@@ -1511,9 +1519,16 @@ def build_email_subject_line(region: dict, weekend_events: list[dict]) -> str:
     so two real, distinct events never collapse into what looks like
     one event named twice. If every remaining title collides, name just
     the first and let the count carry the rest.
+
+    Only picks from `attendable` events (item 90, found from a real send
+    that headlined "Half-Day Student Attendance" as a weekend plan): a
+    school closure or office closure is real and worth knowing, but
+    nobody drives somewhere for one, so it must never win the subject
+    line. Falls back to the honest "what's coming up" empty state if a
+    weekend has no attendable events at all, same as having none at all.
     """
     name = region["name"]
-    titles = [e["title"] for e in weekend_events]
+    titles = [e["title"] for e in weekend_events if e.get("attendable", True)]
     if not titles:
         return f"This weekend in {name}: what's coming up"
     first = titles[0]
@@ -1551,9 +1566,16 @@ def render_email_digest(
     env = Environment(loader=FileSystemLoader(str(TEMPLATES_DIR)), autoescape=True)
     template = env.get_template("email_digest.html.j2")
     evergreen_highlights = [e for e in evergreen if "free" in e.get("tags", [])][:3]
+    # ROADMAP.md Phase 11 #90: a school half-day or office closure is real
+    # and belongs on the site, but must never be presented as a weekend
+    # event to attend - split it into its own "Also this week" line
+    # instead of interleaving it with attendable events as an equal.
+    attendable_events = [e for e in weekend_events if e.get("attendable", True)]
+    informational_events = [e for e in weekend_events if not e.get("attendable", True)]
     return template.render(
         region=region,
-        weekend_events=weekend_events,
+        weekend_events=attendable_events,
+        informational_events=informational_events,
         evergreen_highlights=evergreen_highlights,
         region_url=region_url,
         weekend_date_range=weekend_date_range,
