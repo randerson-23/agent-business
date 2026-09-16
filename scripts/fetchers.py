@@ -418,6 +418,35 @@ def fetch_weather(lat: float, lon: float, timezone_name: str = "America/Chicago"
         return []
 
 
+def submit_indexnow(host: str, key: str, key_location: str, urls: list[str]) -> bool:
+    """Tell IndexNow's single shared endpoint (ROADMAP.md Phase 11 #72) that
+    these URLs changed, so Bing, Yandex and Seznam can recrawl promptly
+    instead of waiting on their own schedule - Bing's index in turn feeds
+    DuckDuckGo, Yahoo and ChatGPT's search. No account or API key
+    negotiation: any string 8-128 chars of [A-Za-z0-9-] works as the key,
+    as long as it's also published as a plain-text file at `key_location`
+    (this repo's build already writes that file next to the sitemap).
+
+    Same fail-soft philosophy as every other network call here: a failed
+    ping is logged and swallowed, never allowed to break the build. Returns
+    True/False only for the caller's own log line, not for any control
+    flow - IndexNow is a courtesy notification, not something the build
+    depends on succeeding.
+    """
+    try:
+        resp = requests.post(
+            "https://api.indexnow.org/indexnow",
+            json={"host": host, "key": key, "keyLocation": key_location, "urlList": urls},
+            timeout=REQUEST_TIMEOUT,
+            headers={"User-Agent": USER_AGENT, "Content-Type": "application/json; charset=utf-8"},
+        )
+        resp.raise_for_status()
+        return True
+    except Exception as exc:  # noqa: BLE001 - fail soft by design
+        logger.warning("IndexNow submission failed for %d URL(s): %s", len(urls), exc)
+        return False
+
+
 FETCHERS = {
     "rss": fetch_rss,
     "ics": fetch_ics,

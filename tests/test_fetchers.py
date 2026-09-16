@@ -5,7 +5,13 @@ from unittest.mock import Mock, patch
 import pytest
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "scripts"))
-from fetchers import fetch_html_events, fetch_ics, fetch_rss, fetch_weather  # noqa: E402
+from fetchers import (  # noqa: E402
+    fetch_html_events,
+    fetch_ics,
+    fetch_rss,
+    fetch_weather,
+    submit_indexnow,
+)
 
 SAMPLE_RSS = """<?xml version="1.0"?>
 <rss version="2.0"><channel>
@@ -405,3 +411,36 @@ def test_fetch_weather_unknown_code_gets_empty_label_not_a_crash(mock_get):
     days = fetch_weather(42.0666, -87.9373)
     assert days[0]["label"] == ""
     assert days[0]["is_precip"] is False
+
+
+@patch("fetchers.requests.post")
+def test_submit_indexnow_returns_true_on_success(mock_post):
+    resp = Mock()
+    resp.raise_for_status = Mock()
+    mock_post.return_value = resp
+    ok = submit_indexnow(
+        host="withintenmiles.com",
+        key="abc123",
+        key_location="https://withintenmiles.com/abc123.txt",
+        urls=["https://withintenmiles.com/"],
+    )
+    assert ok is True
+    _, kwargs = mock_post.call_args
+    assert kwargs["json"] == {
+        "host": "withintenmiles.com",
+        "key": "abc123",
+        "keyLocation": "https://withintenmiles.com/abc123.txt",
+        "urlList": ["https://withintenmiles.com/"],
+    }
+
+
+@patch("fetchers.requests.post")
+def test_submit_indexnow_fails_soft_on_error(mock_post):
+    mock_post.side_effect = RuntimeError("boom")
+    ok = submit_indexnow(
+        host="withintenmiles.com",
+        key="abc123",
+        key_location="https://withintenmiles.com/abc123.txt",
+        urls=["https://withintenmiles.com/"],
+    )
+    assert ok is False
