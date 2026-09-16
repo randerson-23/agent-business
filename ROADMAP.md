@@ -231,6 +231,7 @@ as noise:
 
 | Action | One line why | Unblocks |
 |---|---|---|
+| **Enable Cloudflare Email Routing** on `withintenmiles.com`, forwarding `hello@` to a real inbox (item 93) | **Buttondown is already sending as `hello@withintenmiles.com` and that mailbox does not exist** — the domain publishes no MX record, confirmed by resolver query 2026-09-16. Replies currently fall back to the GitHub Pages A record, which does not answer SMTP, so they queue for 24–48h and then bounce. Free, ~5 minutes, in the Cloudflare dashboard under Email → Email Routing. Do this **before** the press pitch: a reporter who replies is the one reply that must not vanish. | Replies from subscribers, reporters and prospective sponsors |
 | **Send the local press pitch** to Journal & Topics and/or the Daily Herald (item 77, template drafted in `OUTREACH_TEMPLATES.md` §7) | **The single highest-yield action available, by a wide margin, and now the only thing standing between a working site and an audience.** A local-media mention is worth 100-500 subscribers in a day (seventeenth pass); nothing else here is close for one email's effort. Every dependency it ever had is now cleared: the domain resolves, HTTPS serves, the signup form is live, the sponsor CTA works, and Google has the sitemap. The email needs picking a real reporter and hitting send. | 100-500 real subscribers from one email |
 | Run a real trademark search before spending money on the domain, signage, print, or sponsor contracts (item 69) | **Reduced, not eliminated, by the pivot to "Within Ten".** The name was changed *because* WebSearch found "PORCHLIGHT" is a registered mark (reg. 6028585) held by a company that publishes a newsletter to ~60,000 readers. "Within Ten"/"WithinTen" turned up **no registered mark** - materially cleaner. But a web search is not a clearance search: it misses common-law use, similar-sounding marks and state registrations. Worth its small cost before money is committed, not after. | Spending safely on signage, print, sponsor contracts |
 
@@ -3202,6 +3203,145 @@ The trademark search (item 69) is a **spend** gate, not a launch gate. It
 blocks signage, print and sponsor contracts; it does not block the press
 pitch, the newsletter, or anything currently in flight. Worth keeping the
 distinction explicit so it doesn't accrete blocking weight it never had.
+
+#### Research pass 2026-09-16 (twenty-first pass)
+
+Item 89 said to send one real issue before the press pitch, because the
+first send tests layers nothing before it could. The owner sent it the
+same afternoon — through Buttondown, to a Yahoo address — and it found
+four things. This is the entire argument for item 89 in one data point:
+every one of these would have hit 100–500 press-driven subscribers
+instead.
+
+**It landed in the Yahoo primary inbox**, which is the result that
+mattered most, and DMARC is live at `p=quarantine` (verified here by
+direct resolver query) — stronger than the `p=none` starting posture
+item 47 allows. Authentication and placement are working.
+
+| Finding | Severity | Root cause |
+|---|---|---|
+| Subject line advertises **"Half-Day Student Attendance (Grades 1-8)"** | **High** | Item 86's own fix, working as written |
+| Replies to `hello@withintenmiles.com` vanish | High | No MX record on the apex |
+| Yahoo dark mode inverts the whole email into brown | Medium | The template's stated defense does not work |
+| The `PREVIEW ONLY` row was sent as email body copy | Medium | The annotation ships inside the pasteable file |
+
+#### P1 (new)
+
+90. **Events need an `attendable` / `informational` distinction, and only
+    attendable ones may headline.** The live subject line right now is
+    `This weekend in Mount Prospect: Oktoberfest, Half-Day Student
+    Attendance (Grades 1-8), and 1 more`. A school half-day is being
+    advertised as a reason to leave the house, in the most visible line
+    of text the product has.
+
+    This is item 86's fix working exactly as specified and producing a
+    worse result than the bug it replaced. Before, the near-duplicate
+    Oktoberfest pair occupied both slots and crowded the school item out;
+    the dedupe freed a slot and the next thing in the list took it. Worth
+    being precise, because it argues against the obvious patch: the D57
+    feed is **not** a mistake to filter away. `config/regions/
+    mount-prospect-60056.yaml` says no-school days are a deliberate
+    inclusion and "a real gap no local competitor" covers, and that is
+    correct — a parent planning a Friday genuinely wants to know school
+    lets out at noon.
+
+    So the fix is a **classification, not a filter**. A half-day belongs
+    on the page as context; it must never be a headline, a subject-line
+    pick, or a `My Weekend` star. Add an `attendable` boolean (inferred
+    in `scripts/tagging.py` from title patterns — no school, half day,
+    early dismissal, institute day, holiday — closing, no refuse
+    collection, and settable per-source in region YAML for feeds like
+    D57 that are mostly informational), then:
+
+    - `build_email_subject_line()` picks only from attendable events.
+    - The email body groups informational items under a short "Also this
+      week" line rather than interleaving them as equals.
+    - The region page keeps showing them, visually secondary.
+
+    Fall back gracefully: if a weekend has no attendable events at all,
+    the existing "what's coming up" subject is already the right answer.
+
+91. **Emit a separate `email-send.html` with no preview annotation.** The
+    test email went out with `PREVIEW ONLY, NOT PART OF THE EMAIL —
+    SUBJECT LINE: …` rendered as the first line of body copy, above the
+    wordmark, visible to the reader.
+
+    The annotation is mine and the intent was right — whoever previews
+    the file needs to see the exact subject to paste. The mistake is
+    where it lives: it sits inside the only artifact there is, and the
+    workflow the annotation itself describes is *select all, copy, paste
+    into Buttondown*, which ships it. A warning that is inside the thing
+    it warns about will be pasted along with it every time. That is a
+    design defect, not user error, and it will recur weekly.
+
+    Write two files per region: `email-preview.html` (annotated, for
+    reading in a browser) and `email-send.html` (byte-identical minus the
+    annotation row — the one to paste). Put the subject line in a third
+    place that cannot be pasted by accident: it is already the `<title>`,
+    so `weekly-summary.txt` gaining a `SUBJECT:` line at the top costs
+    nothing and matches that file's existing `POST`/`FIRST COMMENT`
+    convention.
+
+#### P2 (new)
+
+92. **The template's dark-mode defense does not survive Yahoo — fix it or
+    stop claiming it.** `email_digest.html.j2`'s header comment states
+    that setting every color explicitly (`bgcolor` attribute *and* inline
+    style, on every cell, plus `meta color-scheme: light`) prevents
+    clients' auto-invert from producing broken combinations. The Yahoo
+    screenshot disproves it: the cream `#fffcf5` card came through as
+    dark brown, the `#f6efe1` page background near-black, and the body
+    text inverted to near-white. It is legible but it is not the brand,
+    and the green CTA against brown is the one element that reads as a
+    mistake rather than a theme.
+
+    Yahoo, AOL and Outlook.com apply **forced** color inversion that
+    rewrites declared colors rather than honoring `color-scheme` — which
+    is why the current approach cannot work in principle, not just in
+    this test. The known handles are client-specific: `[data-ogsc]` /
+    `[data-ogsb]` attribute selectors for Outlook.com's rewriter, and a
+    `prefers-color-scheme` block for the clients that respect it.
+    Neither is universal.
+
+    The honest options are to implement those handles and accept partial
+    coverage, or to design a palette that inverts acceptably and stop
+    fighting it. Either is fine; what is not fine is the comment
+    continuing to assert a guarantee that a real client just broke.
+    Whichever is chosen, **update that comment** — it is load-bearing
+    documentation for anyone who touches this file next.
+
+93. **A `From:` address that cannot receive replies is a liability, not
+    just an inconvenience.** Buttondown sends as
+    `hello@withintenmiles.com`. Resolver queries confirm
+    `withintenmiles.com` publishes **no MX record**, so that mailbox does
+    not exist. Replies fall back to the apex A record (RFC 5321 implicit
+    MX), which points at GitHub Pages — four addresses that do not answer
+    on port 25 — so the sender queues and retries for 24–48 hours before
+    generating a bounce. Silence now, a delayed-delivery notice later.
+
+    Cloudflare Email Routing (free) publishes the MX records and forwards
+    `hello@` to a real inbox; it was discussed on 2026-09-16 and never
+    enabled. See the Needs Ryan table.
+
+    Beyond the owner missing mail, two reasons this ranks above cosmetic:
+    a reply is the **highest-value** thing a local subscriber can send —
+    it is how a resident tells you about an event no feed carries, which
+    is precisely the content moat this business claims — and major
+    mailbox providers' bulk-sender guidance expects a working reply path,
+    so a blackholed `From:` is a reputation signal on a domain that has
+    none yet.
+
+#### Housekeeping
+
+The test used a **stale copy** of the preview file, pasted before PR #115
+merged at 11:57. Its subject named both halves of the Oktoberfest
+near-duplicate and its event rows had no detail lines — items 86 and 87
+respectively, both already fixed and verified working in current code
+(`build_email_subject_line` now returns `Oktoberfest, Fishing Derby, and
+2 more` for that input). Nothing to do; recorded so the screenshot is not
+read later as evidence those fixes failed. Item 91's `email-send.html`
+also reduces the chance of this recurring, since a file named for sending
+invites a fresh copy each week.
 
 ## Working agreements for autonomous iteration
 
