@@ -3510,6 +3510,14 @@ and exactly what a ticketing platform's listing will never contain.
     first real send, same as item 89: the pitch is "here is the thing",
     and there needs to be a thing.
 
+    ✅ **DONE (draft, sending is Ryan's).** Added §8 to
+    `OUTREACH_TEMPLATES.md`: a note on cadence/sequencing (send after a
+    real issue exists, 3–5 businesses/month, repeatable unlike the press
+    pitch), then a short subject + body leading with what the business
+    gets — the mention itself — with the share-to-their-list ask framed
+    as optional, not a condition of the mention. No code changes; this
+    is copy only, so no test/build cycle to run.
+
 95. **The $5,000 Neighborhood Authority tier needs an answer to Nextdoor,
     or it needs repricing.** `BUSINESS_PLAN.md` prices this tier against
     the realtor "neighborhood farming" budget of $500–1,500/month, and
