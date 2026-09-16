@@ -89,11 +89,11 @@ def fetch_rss(url: str, limit: int = MAX_ITEMS_PER_SOURCE, **_ignored) -> list[d
                     "title": title,
                     "detail": description,
                     # RSS's own spec says <link> should already be
-                    # absolute, but urljoin is a no-op on one that already
+                    # absolute, but this is a no-op on one that already
                     # is - cheap insurance against the same relative-href
                     # bug fetch_html_events had (a page-relative link
                     # meant for that site's own domain, not this one's).
-                    "url": urljoin(url, link) if link else link,
+                    "url": _resolve_url(resp.url, link),
                     "date": pub_date,
                 }
             )
@@ -159,15 +159,19 @@ def fetch_ics(url: str, limit: int = MAX_ITEMS_PER_SOURCE, **_ignored) -> list[d
 
         upcoming = [e for e in events if is_upcoming(e)]
         upcoming.sort(key=lambda e: e.get("_sort_key") or "")
-        for e in upcoming:
+        limited = upcoming[:limit]
+        for e in limited:
             e.pop("_sort_key", None)
             e.setdefault("detail", "")
             e.setdefault("url", "")
             # Same defensive resolution as fetch_rss/fetch_html_events - a
             # no-op if the ICS export's URL field is already absolute.
-            if e["url"]:
-                e["url"] = urljoin(url, e["url"])
-        return upcoming[:limit]
+            # Resolved only after slicing to limit, and against resp.url
+            # (the URL actually served, after redirects) rather than the
+            # pre-fetch url, which would resolve against the wrong host
+            # if this source ever moves behind a redirect.
+            e["url"] = _resolve_url(resp.url, e["url"])
+        return limited
     except Exception as exc:  # noqa: BLE001 - fail soft by design
         logger.warning("ICS fetch failed for %s: %s", url, exc)
         return None
@@ -274,18 +278,29 @@ def _nearby_date_hint(html: str, href: str, window: int = 800) -> str | None:
     return aria_matches[-1] if aria_matches else None
 
 
+def _resolve_url(base_url: str, href: str) -> str:
+    """A site's own HTML/RSS/ICS often links with a page-relative href
+    (e.g. AHML's Drupal calendar: `href="/scheduling/reservation/218675"`)
+    rather than a full URL - fine for a browser rendering that page, but
+    wrong once it's copied verbatim into this site's own pages/feed,
+    where the reader's browser resolves it against *this* site's domain
+    instead. `base_url` should be `resp.url` (the URL actually served,
+    after redirects), not the pre-fetch URL passed in by config - a
+    source that 301s to a new host/path would otherwise resolve every
+    relative href against the wrong one even though the fetch succeeded.
+    A no-op when `href` is already absolute or empty.
+    """
+    return urljoin(base_url, href) if href else href
+
+
 def _resolve_urls(items: list[dict], base_url: str) -> list[dict]:
-    """A site's own HTML often links with a page-relative href (e.g. AHML's
-    Drupal calendar: `href="/scheduling/reservation/218675"`) rather than a
-    full URL - fine for a browser rendering that page, but wrong once it's
-    copied verbatim into this site's own pages/feed, where the reader's
-    browser resolves it against *this* site's domain instead. Resolved as
-    the very last step, after dedup/pattern-matching/_nearby_date_hint all
-    run against the original raw href, which is what they need to match
-    substrings in the source page's actual HTML.
+    """List version of `_resolve_url`, applied as the very last step
+    after dedup/pattern-matching/_nearby_date_hint all run against the
+    original raw href, which is what they need to match substrings in
+    the source page's actual HTML.
     """
     for item in items:
-        item["url"] = urljoin(base_url, item["url"])
+        item["url"] = _resolve_url(base_url, item["url"])
     return items
 
 
@@ -332,7 +347,7 @@ def fetch_html_events(
                     if not r.get("date"):
                         r["date"] = _nearby_date_hint(resp.text, r["url"])
                     deduped.append(r)
-            return _resolve_urls(deduped[:limit], url)
+            return _resolve_urls(deduped[:limit], resp.url)
 
         # Fallback: crude keyword relevance filter, minus known nav labels.
         active_keywords = tuple(keywords) if keywords else DEFAULT_KEYWORDS
@@ -342,7 +357,7 @@ def fetch_html_events(
             if r["title"].lower() not in _NAV_LINK_DENYLIST
             and any(k in r["title"].lower() for k in active_keywords)
         ]
-        return _resolve_urls(candidates[:limit], url)
+        return _resolve_urls(candidates[:limit], resp.url)
     except Exception as exc:  # noqa: BLE001 - fail soft by design
         logger.warning("HTML events fetch failed for %s: %s", url, exc)
         return None

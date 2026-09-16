@@ -70,11 +70,16 @@ COMMUNICO_STYLE_HTML = """
 """
 
 
-def _mock_response(text: str = "", content: bytes | None = None):
+def _mock_response(text: str = "", content: bytes | None = None, url: str = "https://example.org/"):
     resp = Mock()
     resp.raise_for_status = Mock()
     resp.text = text
     resp.content = content if content is not None else text.encode("utf-8")
+    # .url is the URL actually served, after redirects - real requests.Response
+    # behavior, used by fetchers.py to resolve relative hrefs against the
+    # right host. Defaults to a generic domain since most tests don't care
+    # about the exact resolved URL; pass url= explicitly for the ones that do.
+    resp.url = url
     return resp
 
 
@@ -97,6 +102,23 @@ def test_fetch_rss_resolves_relative_link_to_absolute(mock_get):
     mock_get.return_value = _mock_response(rss)
     items = fetch_rss("https://example.org/rss")
     assert items[0]["url"] == "https://example.org/board"
+
+
+@patch("fetchers.requests.get")
+def test_fetch_rss_resolves_relative_link_against_the_post_redirect_url(mock_get):
+    # A source that 301-redirects (moves domains, adds a trailing slash,
+    # etc.) is followed transparently by requests - resp.url reflects the
+    # final URL actually served, which is what a relative href on that
+    # page must resolve against, not the pre-redirect URL passed in by
+    # config.
+    rss = (
+        '<?xml version="1.0"?><rss><channel>'
+        "<item><title>Board Meeting Tuesday</title><link>/board</link></item>"
+        "</channel></rss>"
+    )
+    mock_get.return_value = _mock_response(rss, url="https://newsite.example.org/rss")
+    items = fetch_rss("https://oldsite.example.org/rss")
+    assert items[0]["url"] == "https://newsite.example.org/board"
 
 
 @patch("fetchers.requests.get")
@@ -155,6 +177,25 @@ def test_fetch_ics_unescapes_text(mock_get):
     mock_get.return_value = _mock_response(ics)
     items = fetch_ics("https://example.org/cal.ics")
     assert items[0]["detail"] == "Ages 18+, 21+ after 6pm. Bring your own leash."
+
+
+@patch("fetchers.requests.get")
+def test_fetch_ics_resolves_a_relative_url_field_to_absolute(mock_get):
+    # Unlike fetch_rss and fetch_html_events, this path had no coverage
+    # for a page-relative URL: field - a municipal export with
+    # "URL:/events/123" would go through this branch untested.
+    ics = (
+        "BEGIN:VCALENDAR\n"
+        "BEGIN:VEVENT\n"
+        "SUMMARY:Storytime\n"
+        "DTSTART:20990901T100000Z\n"
+        "URL:/events/123\n"
+        "END:VEVENT\n"
+        "END:VCALENDAR\n"
+    )
+    mock_get.return_value = _mock_response(ics, url="https://example.org/cal.ics")
+    items = fetch_ics("https://example.org/cal.ics")
+    assert items[0]["url"] == "https://example.org/events/123"
 
 
 @patch("fetchers.requests.get")
@@ -247,7 +288,7 @@ def test_fetch_html_events_resolves_relative_hrefs_to_absolute(mock_get):
         '<a class="use-ajax" href="/scheduling/reservation/218675">Baby Time</a>'
         "</h4>"
     )
-    mock_get.return_value = _mock_response(html)
+    mock_get.return_value = _mock_response(html, url="https://www.ahml.info/attend/events")
     items = fetch_html_events(
         "https://www.ahml.info/attend/events", detail_link_pattern=r"scheduling/reservation/\d+"
     )
@@ -260,6 +301,17 @@ def test_fetch_html_events_leaves_already_absolute_hrefs_unchanged(mock_get):
     mock_get.return_value = _mock_response(html)
     items = fetch_html_events("https://example.org/events")
     assert items[0]["url"] == "https://example.org/event/12345"
+
+
+@patch("fetchers.requests.get")
+def test_fetch_html_events_resolves_relative_href_against_the_post_redirect_url(mock_get):
+    # Same redirect-base fix as fetch_rss: a source's configured URL can
+    # 301 to a new host, and a relative href on the final page must
+    # resolve against that final URL (resp.url), not the pre-redirect one.
+    html = '<a href="/event/12345">Real Event Here Today</a>'
+    mock_get.return_value = _mock_response(html, url="https://newsite.example.org/events")
+    items = fetch_html_events("https://oldsite.example.org/events")
+    assert items[0]["url"] == "https://newsite.example.org/event/12345"
 
 
 @patch("fetchers.requests.get")
