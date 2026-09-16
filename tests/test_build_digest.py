@@ -1530,6 +1530,21 @@ def test_render_email_digest_omits_spotlight_block_when_absent():
     assert "years_in_town" not in html
 
 
+def test_render_email_digest_shows_only_the_spotlight_fields_that_were_answered():
+    # A business shouldn't have to answer all three questions to get a
+    # clean render - each field is independently optional.
+    region = {"name": "Mount Prospect"}
+    sponsor = {
+        "title": "Acme Cafe",
+        "detail": "Coffee.",
+        "url": "https://acme.example/",
+        "is_active_sponsor": True,
+        "spotlight": {"hidden_gem": "We roast our own beans on Tuesdays."},
+    }
+    html = build_digest.render_email_digest(region, [], [], "https://x/", "Aug 29–30", sponsor)
+    assert "We roast our own beans on Tuesdays." in html
+
+
 def test_render_email_digest_uses_only_table_based_layout_no_flexbox_or_grid():
     # ROADMAP.md Phase 11 #36's whole reason to exist: Outlook renders
     # through Word's engine, which understands tables but not flexbox or
