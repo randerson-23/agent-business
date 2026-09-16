@@ -7,12 +7,35 @@
   clients. Every rule below exists because of one of those constraints,
   not by habit.
 
-  Dark mode specifically: rather than build and ship an unverifiable
-  per-client dark theme, every color here is set explicitly (bgcolor
-  attribute AND inline style, on every cell) so Gmail/Outlook.com's
-  auto-invert can't produce broken unreadable combinations - this forces
-  a consistent light appearance instead. A true dark variant is real,
-  scoped-out future work, not something to fake untested.
+  Dark mode (ROADMAP.md Phase 11 #92 - revised after a real Yahoo send
+  disproved the previous claim here): every color is still set
+  explicitly (bgcolor attribute AND inline style, on every cell), which
+  is enough for any client that honors `color-scheme`/
+  `supported-color-schemes` or simply doesn't rewrite colors - Gmail
+  included. It is NOT enough for Yahoo, AOL, and Outlook.com, which
+  apply a **forced** rewrite that ignores those signals entirely; a
+  real send showed the cream card going dark brown and the green CTA
+  landing against it looking like a mistake, not a theme.
+
+  Two explicit, class-based defenses restore the light palette for the
+  clients with a documented hook: `[data-ogsc]`/`[data-ogsb]` attribute
+  selectors, which Outlook.com's rewriter adds to <body> when it force-
+  applies its own colors, and a `@media (prefers-color-scheme: dark)`
+  block for any client that acts on the media query directly rather
+  than (or in addition to) the `color-scheme` meta tag. The
+  prefers-color-scheme block is genuinely testable and was verified
+  against a real generated file with a headless Chromium render under
+  emulated dark color-scheme (ROADMAP.md #92's entry has the computed
+  colors) - not added as an automated pytest test, since that would
+  make Playwright/a browser binary a CI dependency for one template's
+  worth of coverage. The `[data-ogsc]`/`[data-ogsb]` half is not
+  independently verifiable from here at all - Outlook.com's rewriter is
+  proprietary and this sandbox cannot open a real client - so it rests
+  on documented third-party reports of the attribute names, not a
+  render this repo has confirmed. Yahoo and AOL have no documented
+  override hook as of this writing: a forced-dark render there is a
+  known, accepted gap, not a guarantee this comment used to falsely
+  make.
 
   Buttondown appends its own unsubscribe footer automatically on send -
   intentionally not duplicated here.
@@ -37,7 +60,36 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="color-scheme" content="light">
 <meta name="supported-color-schemes" content="light">
-<title>This weekend in Arlington Heights: Heritage Fest</title>
+<title>This weekend in Arlington Heights: what&#39;s coming up</title>
+<style>
+/* ROADMAP.md Phase 11 #92: forces the light palette back for the two
+   clients with a documented hook for defeating a client's own forced
+   dark-mode rewrite. Every rule repeats a color already set inline -
+   nothing new to design, just restated where these two hooks can see
+   it. !important is required: a stylesheet !important rule beats a
+   non-important inline style in the CSS cascade, which is the whole
+   mechanism this depends on. */
+[data-ogsc] .wt-bg, [data-ogsb] .wt-bg { background-color:#f6efe1 !important; }
+[data-ogsc] .wt-card, [data-ogsb] .wt-card { background-color:#fffcf5 !important; }
+[data-ogsc] .wt-card-sponsor, [data-ogsb] .wt-card-sponsor { background-color:#fdf3e4 !important; }
+[data-ogsc] .wt-cta-bg, [data-ogsb] .wt-cta-bg { background-color:#526b3f !important; }
+[data-ogsc] .wt-ink, [data-ogsb] .wt-ink { color:#2b2318 !important; }
+[data-ogsc] .wt-muted, [data-ogsb] .wt-muted { color:#766a58 !important; }
+[data-ogsc] .wt-accent, [data-ogsb] .wt-accent { color:#96581f !important; }
+[data-ogsc] .wt-brand, [data-ogsb] .wt-brand { color:#526b3f !important; }
+[data-ogsc] .wt-border, [data-ogsb] .wt-border { border-color:#e6dcc8 !important; }
+@media (prefers-color-scheme: dark) {
+  .wt-bg { background-color:#f6efe1 !important; }
+  .wt-card { background-color:#fffcf5 !important; }
+  .wt-card-sponsor { background-color:#fdf3e4 !important; }
+  .wt-cta-bg { background-color:#526b3f !important; }
+  .wt-ink { color:#2b2318 !important; }
+  .wt-muted { color:#766a58 !important; }
+  .wt-accent { color:#96581f !important; }
+  .wt-brand { color:#526b3f !important; }
+  .wt-border { border-color:#e6dcc8 !important; }
+}
+</style>
 <!--[if mso]>
 <noscript>
 <xml>
@@ -48,8 +100,8 @@
 </noscript>
 <![endif]-->
 </head>
-<body style="margin:0; padding:0; background-color:#f6efe1;" bgcolor="#f6efe1">
-<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" bgcolor="#f6efe1" style="background-color:#f6efe1;">
+<body class="wt-bg" style="margin:0; padding:0; background-color:#f6efe1;" bgcolor="#f6efe1">
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" bgcolor="#f6efe1" class="wt-bg" style="background-color:#f6efe1;">
 <tr>
 <td align="center" style="padding:24px 16px;">
 <table role="presentation" width="600" cellpadding="0" cellspacing="0" border="0" style="width:600px; max-width:600px;">
@@ -59,50 +111,37 @@
 <!-- Wordmark -->
 <tr>
 <td style="padding:0 8px 16px 8px;">
-<span style="font-family:Arial, Helvetica, sans-serif; font-size:13px; font-weight:bold; letter-spacing:1px; color:#526b3f;">WITHIN TEN</span>
+<span class="wt-brand" style="font-family:Arial, Helvetica, sans-serif; font-size:13px; font-weight:bold; letter-spacing:1px; color:#526b3f;">WITHIN TEN</span>
 </td>
 </tr>
 
 <!-- Headline -->
 <tr>
-<td bgcolor="#fffcf5" style="background-color:#fffcf5; border:1px solid #e6dcc8; border-radius:8px; padding:24px;">
+<td bgcolor="#fffcf5" class="wt-card wt-border" style="background-color:#fffcf5; border:1px solid #e6dcc8; border-radius:8px; padding:24px;">
 <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
 <tr>
-<td style="font-family:Georgia, 'Times New Roman', serif; font-size:24px; line-height:1.3; color:#2b2318; padding-bottom:6px;">
+<td class="wt-ink" style="font-family:Georgia, 'Times New Roman', serif; font-size:24px; line-height:1.3; color:#2b2318; padding-bottom:6px;">
 This weekend in Arlington Heights
 </td>
 </tr>
 <tr>
-<td style="font-family:Arial, Helvetica, sans-serif; font-size:14px; color:#766a58; padding-bottom:20px;">
+<td class="wt-muted" style="font-family:Arial, Helvetica, sans-serif; font-size:14px; color:#766a58; padding-bottom:20px;">
 Sep 18–20
 </td>
 </tr>
 
 
 
+
 <tr>
-<td style="padding:10px 0; border-top:1px solid #e6dcc8;">
-<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
-<tr>
-<td style="font-family:Arial, Helvetica, sans-serif; font-size:16px; color:#2b2318; padding-bottom:2px;">
-<a href="https://www.ahpd.org/event/heritage-fest-2026/" style="color:#2b2318; text-decoration:none; font-weight:bold;">Heritage Fest</a>
+<td class="wt-muted" style="font-family:Arial, Helvetica, sans-serif; font-size:14px; color:#766a58; padding-bottom:10px;">
+Nothing new dated for this weekend yet, but a few things worth knowing about:
 </td>
 </tr>
 
 <tr>
-<td style="font-family:Arial, Helvetica, sans-serif; font-size:14px; color:#96581f;">
-Sep 19
-</td>
-</tr>
-
-
-<tr>
-<td style="font-family:Arial, Helvetica, sans-serif; font-size:14px; color:#766a58; padding-top:2px;">
-Explore the cultural diversity within our community and enjoy a variety of exhibits, demonstrations and live performances. Presented by the AH Park District,…
-</td>
-</tr>
-
-</table>
+<td class="wt-border" style="padding:8px 0; border-top:1px solid #e6dcc8; font-family:Arial, Helvetica, sans-serif; font-size:16px;">
+<a href="https://www.ahml.info/" class="wt-ink" style="color:#2b2318; text-decoration:none; font-weight:bold;">Arlington Heights Memorial Library</a>
 </td>
 </tr>
 
@@ -118,7 +157,7 @@ Explore the cultural diversity within our community and enjoy a variety of exhib
 <td align="center" style="padding:20px 0;">
 <table role="presentation" cellpadding="0" cellspacing="0" border="0">
 <tr>
-<td bgcolor="#526b3f" style="background-color:#526b3f; border-radius:6px;">
+<td bgcolor="#526b3f" class="wt-cta-bg" style="background-color:#526b3f; border-radius:6px;">
 <a href="https://withintenmiles.com/arlington-heights-60005/" style="display:inline-block; padding:12px 28px; font-family:Arial, Helvetica, sans-serif; font-size:14px; font-weight:bold; color:#ffffff; text-decoration:none;">See everything in Arlington Heights</a>
 </td>
 </tr>
@@ -133,17 +172,17 @@ Explore the cultural diversity within our community and enjoy a variety of exhib
      plain (muted fill, no recommendation-style label, no spotlight)
      so it can never be confused with a real paying sponsor's block. -->
 <tr>
-<td bgcolor="#f6efe1" style="background-color:#f6efe1; border:1px dashed #e6dcc8; border-radius:8px; padding:18px 20px;">
+<td bgcolor="#f6efe1" class="wt-bg wt-border" style="background-color:#f6efe1; border:1px dashed #e6dcc8; border-radius:8px; padding:18px 20px;">
 <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
 <tr>
-<td style="font-family:Arial, Helvetica, sans-serif; font-size:11px; font-weight:bold; letter-spacing:0.5px; color:#766a58; padding-bottom:6px;">
+<td class="wt-muted" style="font-family:Arial, Helvetica, sans-serif; font-size:11px; font-weight:bold; letter-spacing:0.5px; color:#766a58; padding-bottom:6px;">
 SPONSOR THIS SPOT
 </td>
 </tr>
 <tr>
-<td style="font-family:Arial, Helvetica, sans-serif; font-size:14px; color:#766a58;">
+<td class="wt-muted" style="font-family:Arial, Helvetica, sans-serif; font-size:14px; color:#766a58;">
 Reach local families every week. Local businesses only — see pricing and availability.
- <a href="https://withintenmiles.com/sponsor/" style="color:#526b3f; text-decoration:none; font-weight:bold;">Learn more &rarr;</a>
+ <a href="https://withintenmiles.com/sponsor/" class="wt-brand" style="color:#526b3f; text-decoration:none; font-weight:bold;">Learn more &rarr;</a>
 </td>
 </tr>
 </table>
@@ -153,7 +192,7 @@ Reach local families every week. Local businesses only — see pricing and avail
 
 <!-- Footer -->
 <tr>
-<td align="center" style="padding:24px 8px 8px 8px; font-family:Arial, Helvetica, sans-serif; font-size:12px; color:#766a58;">
+<td align="center" class="wt-muted" style="padding:24px 8px 8px 8px; font-family:Arial, Helvetica, sans-serif; font-size:12px; color:#766a58;">
 Within Ten — local events within ten miles, updated automatically.
 </td>
 </tr>
