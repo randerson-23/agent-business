@@ -1,0 +1,161 @@
+<!--
+  ROADMAP.md Phase 11 #99 - the entity-clarity work item 22's GEO
+  strategy was missing after the item 98 correction found that AI
+  citation is decided by content structure, claim clarity, and entity
+  authority, not organic rank or a convention file (llms.txt) nothing
+  reads. This is the one page that states plainly who publishes this
+  site, why it exists, and how it's built, and the canonical page where
+  the Organization JSON-LD entity is fully defined - every other page's
+  WebSite node points back here by @id rather than re-declaring it.
+
+  Styled as its own self-contained page (same pattern as sponsor.html.j2,
+  not extending region.html.j2, which is built for region-scoped views
+  this page isn't one of).
+-->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>About — Within Ten</title>
+<meta name="description" content="Who publishes Within Ten, why it exists, and how it's built.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Within Ten">
+<meta property="og:title" content="About — Within Ten">
+<meta property="og:description" content="Who publishes Within Ten, why it exists, and how it's built.">
+<meta property="og:image" content="{{ og_image_url }}">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="About — Within Ten">
+<meta name="twitter:description" content="Who publishes Within Ten, why it exists, and how it's built.">
+<meta name="twitter:image" content="{{ og_image_url }}">
+<link rel="canonical" href="{{ canonical_url }}">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='46' fill='%23526b3f'/%3E%3Cpath d='M50 22c-13 0-24 10-24 24 0 18 24 36 24 36s24-18 24-36c0-14-11-24-24-24z' fill='white'/%3E%3Ccircle cx='50' cy='45' r='10' fill='%23526b3f'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+<noscript><link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"></noscript>
+<style>
+  @view-transition {
+    navigation: auto;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    ::view-transition-group(*),
+    ::view-transition-old(*),
+    ::view-transition-new(*) {
+      animation: none !important;
+    }
+  }
+  :root {
+    --bg: #f6efe1;
+    --card: #fffcf5;
+    --ink: #2b2318;
+    --muted: #766a58;
+    --accent: #526b3f;
+    --accent-soft: #5e7748;
+    --border: #e6dcc8;
+    --radius-lg: 18px;
+    --shadow-sm: 0 1px 2px rgba(43,35,24,.06), 0 1px 1px rgba(43,35,24,.05);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #1c1710;
+      --card: #262019;
+      --ink: #f2ead9;
+      --muted: #b8a98e;
+      --accent: #8aa66d;
+      --accent-soft: #5c7a45;
+      --border: #3a3226;
+      --shadow-sm: 0 1px 2px rgba(0,0,0,.35), 0 1px 1px rgba(0,0,0,.25);
+    }
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+  h1, h2 { font-family: 'Fraunces', Georgia, 'Times New Roman', serif; }
+  .wrap { max-width: 680px; margin: 0 auto; padding: 0 20px 64px; }
+  .hero {
+    background: linear-gradient(135deg, var(--accent) 0%, var(--accent-soft) 60%, #749058 100%);
+    color: #fff;
+    padding: 26px 20px 44px;
+    margin-bottom: -24px;
+  }
+  .hero-inner { max-width: 680px; margin: 0 auto; }
+  a.back { color: rgba(255,255,255,.82); text-decoration: none; font-size: 13px; font-weight: 500; }
+  a.back:hover { color: #fff; }
+  .kicker { font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; font-size: 12px; color: rgba(255,255,255,.85); }
+  .hero h1 { margin: 10px 0 0; font-size: 32px; font-weight: 600; color: #fff; }
+  section.block {
+    background: var(--card);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-sm);
+    padding: 22px 24px;
+    margin: 24px 0;
+  }
+  section.block:first-of-type { margin-top: 0; }
+  section.block h2 { font-size: 18px; font-weight: 600; margin: 0 0 10px; }
+  section.block p { margin: 0 0 10px; color: var(--ink); }
+  section.block p:last-child { margin-bottom: 0; }
+  section.block a { color: var(--accent); font-weight: 600; text-decoration: none; }
+  section.block a:hover { text-decoration: underline; }
+  a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+  footer { text-align: center; color: var(--muted); font-size: 12.5px; margin-top: 44px; border-top: 1px solid var(--border); padding-top: 18px; }
+  footer a { color: var(--accent); font-weight: 600; }
+</style>
+</head>
+<body>
+<header class="hero">
+  <div class="hero-inner">
+    <a class="back" href="{{ hub_url }}">&larr; All regions</a>
+    <span class="kicker">About</span>
+    <h1>Who's behind Within Ten</h1>
+  </div>
+</header>
+
+<div class="wrap">
+  <main>
+  <section class="block">
+    <h2>What this is</h2>
+    <p>Within Ten is a free, automated guide to what's happening within ten miles: village news, public library events, park district programs, and school-district calendars, pulled together per town and rebuilt automatically several times a week. Currently live for Mount Prospect (60056), Arlington Heights (60005), Des Plaines (60016), and Palatine (60067), Illinois, with more towns planned.</p>
+  </section>
+
+  <section class="block">
+    <h2>Who publishes it</h2>
+    <p>Within Ten is written and run by a local parent. It started as a way to answer one recurring question &mdash; what's actually happening around here this weekend &mdash; without spending an evening checking half a dozen different village, library, and park district calendars by hand.</p>
+  </section>
+
+  <section class="block">
+    <h2>Why it exists</h2>
+    <p>A full-time job and two small kids leave almost no time for hand-curating a weekly guide, so the whole thing had to be automated from the start rather than written by hand each week. Most "things to do this weekend" guides are written once and go stale the moment they're published; this one rebuilds itself from real sources automatically, so it stays current without anyone having to remember to update it.</p>
+  </section>
+
+  <section class="block">
+    <h2>How it's built</h2>
+    <p>Every region page is generated from the same real, publicly available village, library, park district, and school-district sources &mdash; nothing here is invented to fill space, and a source that goes quiet just means fewer listings that week, never a fabricated one. The whole site is open source; the code that builds it is public on GitHub.</p>
+  </section>
+
+  <section class="block">
+    <h2>Questions or corrections</h2>
+    <p>Have a correction, a local event to suggest, or a question about how this works? <a href="https://github.com/randerson-23/agent-business/issues/new?template=event-submission.yml">Submit it on GitHub</a>, or if you're a local business, see the <a href="{{ hub_url }}sponsor/">sponsor page</a>.</p>
+  </section>
+  </main>
+
+  <footer>
+    Curious what the digest looks like? <a href="{{ hub_url }}">See a live region</a>.
+    <br>Generated {{ generated_at }}.
+  </footer>
+</div>
+<script type="application/ld+json">{{ organization_json_ld|safe }}</script>
+{% if analytics and analytics.configured %}
+<script data-goatcounter="https://{{ analytics.goatcounter_code }}.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+{% endif %}
+</body>
+</html>

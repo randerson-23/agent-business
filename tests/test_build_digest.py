@@ -160,6 +160,35 @@ def test_render_sponsor_page_omits_stat_line_when_no_stats():
     assert '<p class="stat-line">' not in html
 
 
+def test_render_about_page_states_who_why_and_how():
+    # ROADMAP.md Phase 11 #99: the entity-clarity content itself - who
+    # publishes this, why it exists, how it's built - not just the
+    # schema.org markup.
+    html = build_digest.render_about_page(datetime.now(timezone.utc))
+    assert "local parent" in html
+    assert "Mount Prospect" in html
+    assert "automatically" in html
+    assert "sponsor/" in html
+
+
+def test_render_about_page_embeds_the_organization_json_ld():
+    html = build_digest.render_about_page(datetime.now(timezone.utc))
+    assert '"@type": "Organization"' in html
+    assert build_digest.ORGANIZATION_ID in html
+
+
+def test_render_about_page_includes_analytics_script_when_configured():
+    html = build_digest.render_about_page(
+        datetime.now(timezone.utc), analytics={"configured": True, "goatcounter_code": "example"}
+    )
+    assert "example.goatcounter.com/count" in html
+
+
+def test_render_about_page_omits_analytics_script_when_unconfigured():
+    html = build_digest.render_about_page(datetime.now(timezone.utc))
+    assert "goatcounter.com/count" not in html
+
+
 def test_format_event_date_parses_rfc822():
     assert build_digest.format_event_date("Mon, 24 Aug 2026 12:00:00 GMT") == "Aug 24"
 
@@ -1269,6 +1298,12 @@ def test_build_sitemap_xml_includes_sponsor_url():
     assert f"<loc>{build_digest.SITE_BASE_URL}sponsor/</loc>" in xml
 
 
+def test_build_sitemap_xml_includes_about_url():
+    summaries = [{**REGION, "event_count": 1, "path": "mount-prospect-60056/"}]
+    xml = build_digest.build_sitemap_xml(summaries, datetime.now(timezone.utc))
+    assert f"<loc>{build_digest.SITE_BASE_URL}about/</loc>" in xml
+
+
 def test_build_feed_xml_produces_valid_rss():
     items = [
         {"title": "Fall Fest", "url": "https://x/1", "detail": "Food & drink.", "date_iso": "2026-09-19", "region_name": "Mount Prospect"},
@@ -1358,6 +1393,7 @@ def test_build_llms_txt_lists_regions_and_weekend_links():
     assert f"[Mount Prospect (60056)]({build_digest.SITE_BASE_URL}mount-prospect-60056/)" in result
     assert f"[Mount Prospect — this weekend]({build_digest.SITE_BASE_URL}mount-prospect-60056/this-weekend/)" in result
     assert "## Sponsorship" in result
+    assert f"## About\n- [Who publishes this, and why]({build_digest.SITE_BASE_URL}about/)" in result
 
 
 def test_build_llms_txt_includes_guides_when_present():
@@ -1827,7 +1863,25 @@ def test_build_freshness_json_ld_names_the_site_consistently():
         "@type": "WebSite",
         "name": build_digest.SITE_NAME,
         "url": build_digest.SITE_BASE_URL,
+        "publisher": {"@id": build_digest.ORGANIZATION_ID},
     }
+
+
+def test_build_organization_json_ld_defines_the_referenced_entity():
+    # ROADMAP.md Phase 11 #99: the WebSite's publisher above is only a
+    # reference (@id) - this is the one place the Organization entity
+    # is fully defined, so the @id has to actually match.
+    result = build_digest.build_organization_json_ld()
+    parsed = json.loads(result)
+    assert parsed["@type"] == "Organization"
+    assert parsed["@id"] == build_digest.ORGANIZATION_ID
+    assert parsed["name"] == build_digest.SITE_NAME
+    assert parsed["url"] == build_digest.SITE_BASE_URL
+    # No fabricated logo/sameAs - neither a logo asset nor a real social
+    # profile exists yet, and inventing either breaks every other GEO
+    # item's never-fabricate-a-fact discipline.
+    assert "logo" not in parsed
+    assert "sameAs" not in parsed
 
 
 def test_render_region_page_title_uses_canonical_site_name():

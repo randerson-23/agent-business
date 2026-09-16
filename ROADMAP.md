@@ -3739,6 +3739,49 @@ and exactly what a ticketing platform's listing will never contain.
     discipline every other GEO item in this file already holds itself
     to.
 
+    ✅ **DONE.** New `templates/about.html.j2` + `render_about_page()`,
+    written to `/about/` alongside the sponsor/hub pages in the main
+    build loop. Content is exactly the four things the item asked for
+    and nothing invented beyond them: what the site is (reusing the
+    real four-ZIP list already in `SPONSOR_KIT.md`), who publishes it
+    ("a local parent," the same public self-description already used
+    in the real press-pitch template rather than a new bio), why it
+    exists (the near-zero-time constraint from `BUSINESS_PLAN.md` and
+    the same stale-guide problem item 22 already argued from), and how
+    it's built (real sources, never-invents-content, open source, with
+    a link to the actual GitHub repo). No logo, no `sameAs` - neither a
+    logo asset nor a real social profile exists, so neither is claimed.
+
+    `Organization` schema (`build_organization_json_ld()`) is defined
+    once, on this page, with a stable `@id`
+    (`ORGANIZATION_ID = SITE_BASE_URL + "about/#organization"`).
+    `build_freshness_json_ld()`'s `WebSite` node (every region page)
+    now carries `"publisher": {"@id": ORGANIZATION_ID}` instead of
+    naming the site with no publisher at all - the standard schema.org
+    pattern of referencing one entity by `@id` rather than duplicating
+    its full definition on every page. `/about/` added to
+    `collect_sitemap_urls()` (flows into both `sitemap.xml` and the
+    IndexNow submission automatically, no separate wiring needed) and
+    to `build_llms_txt()`'s own map. Linked from the footer of all four
+    page templates (hub, region, weekend hub, sponsor) - not an orphan
+    page.
+
+    7 new tests (`test_build_digest.py`); one existing test
+    (`test_build_freshness_json_ld_names_the_site_consistently`) updated
+    for the new `publisher` field. `python -m pytest tests/ -q` → 272
+    passed. `python scripts/build_digest.py` → real build; confirmed in
+    the actual generated output: `docs/about/index.html` contains the
+    real `Organization` JSON-LD with the right `@id`,
+    `docs/mount-prospect-60056/index.html`'s `WebSite.publisher`
+    references that same `@id`, `docs/sitemap.xml` and `docs/llms.txt`
+    both list `/about/`, and the IndexNow submission count went from 40
+    to 41 URLs in this build's own log line - the new page reached
+    every place a URL is supposed to reach without hand-editing any of
+    them individually. `docs/` restored and the newly-generated
+    (previously untracked) `docs/about/` directory removed before
+    committing, per the standing rule against hand-committing generated
+    output.
+
 ## Working agreements for autonomous iteration
 
 - Cadence is hourly (the platform's durable scheduler has a 1-hour floor;
