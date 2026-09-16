@@ -2547,21 +2547,34 @@ sending reputation at all**.
     the cold-start blast the guidance warns about. Ship item 24 as soon as
     there is anyone to send to. SPF/DKIM/DMARC (item 47) still come first.
 
-75. **The Open Graph image is unblocked for the first time.** Phase 7
-    deferred it explicitly — it "ties to Phase 9 once there's a real
-    domain/brand to design one around," and as of yesterday both exist.
-    This matters more than it looks: item 33 ships a copy-pasteable
-    summary for posting into local Facebook groups, and a link post with
-    no image renders as a grey box, the lowest click-through unit in any
-    feed. The distribution feature already built is running at a handicap
-    the whole time this is missing.
-    Constraint worth flagging: crawlers need a real raster (1200×630 PNG
-    or JPG) — an SVG will not do, and there is no image tooling in the
-    pipeline today. Pillow is a single pure-Python dependency that could
-    render one per region from the existing palette and type at build
-    time, which keeps it automatic; a single hand-made default image is
-    the lower-effort alternative if adding a dependency feels heavier than
-    the problem.
+75. ✅ **DONE — The Open Graph image is unblocked for the first time.**
+    Phase 7 deferred it explicitly — it "ties to Phase 9 once there's a
+    real domain/brand to design one around," and as of two days ago both
+    exist. This matters more than it looks: item 33 ships a
+    copy-pasteable summary for posting into local Facebook groups, and a
+    link post with no image renders as a grey box, the lowest
+    click-through unit in any feed. The distribution feature already
+    built was running at a handicap the whole time this was missing.
+    Implemented with Pillow (added to `requirements.txt`), which turned
+    out to install cleanly and render text correctly once bundled with
+    real font files (`assets/fonts/DejaVuSans{,-Bold}.ttf`, copied from
+    the permissively-licensed `fonts-dejavu-core` package — see
+    `assets/fonts/LICENSE-DejaVu.txt` — rather than relying on whatever
+    font happens to exist on the CI runner, which can't be verified from
+    here and would be a silent single point of failure if wrong).
+    `render_og_image()` in `scripts/build_digest.py` draws a 1200×630
+    image from the site's own CSS palette (cream background, the same
+    olive/terracotta accents, a wrapped title + subtitle); `main()` calls
+    it once per region plus one default and writes them to `docs/og/`.
+    Every template (`hub`, `region` — which covers every region
+    sub-view: weekend/today/free/guides/directory — `weekend_hub`,
+    `sponsor`) now sets `og:image`, `og:image:width/height`, and
+    `twitter:image`, and `twitter:card` is upgraded from `summary` to
+    `summary_large_image`. Verified in a real local build: all 5 images
+    render at the correct size with legible wrapped text (checked visually
+    for both a short region name and the longest one, Arlington Heights),
+    and the generated HTML for the hub, a region page, `/sponsor`, and
+    `/this-weekend` all carry the right `og:image` URL.
 
 ## Working agreements for autonomous iteration
 
