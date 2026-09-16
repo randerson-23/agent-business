@@ -2777,6 +2777,36 @@ This pass went looking at distribution.
     validity, item ordering, the title/url/date_iso filter, and the
     50-item cap.
 
+80. ✅ **DONE — Real bug found via item 79's own output: some event links
+    point at this site's domain instead of the source's.** Reading the
+    real generated `feed.xml` from the actual GitHub Actions build (not
+    this sandbox, which can't fetch anything) turned up
+    `<link>/scheduling/reservation/223808</link>` for a real Arlington
+    Heights library event - a page-relative href, correct for a browser
+    already on `ahml.info` (where the raw HTML has
+    `href="/scheduling/reservation/218675"`), but wrong once copied
+    verbatim into this site's own pages. A reader's browser resolves a
+    relative href against *this* site's domain, silently sending them to
+    `withintenmiles.com/scheduling/reservation/...` - a 404, not the real
+    library page. Checked and confirmed this wasn't new: the same broken
+    link was already live on the region page itself and inside the
+    "add to calendar" `.ics` download's `URL:` field - item 79 didn't
+    cause this, it just was the first thing to make it visible.
+    Root cause: `_EventLinkExtractor` in `scripts/fetchers.py` stored
+    each `<a href>` verbatim with no resolution against the page's own
+    URL. Fixed with a new `_resolve_urls()` helper (`urllib.parse.urljoin`)
+    applied as the *last* step in `fetch_html_events()`, after dedup,
+    `detail_link_pattern` matching and `_nearby_date_hint()` all run
+    against the original raw href - those need to match substrings in
+    the source page's actual HTML, which never had the resolved form.
+    Applied the same defensive `urljoin` to `fetch_rss`'s `<link>` and
+    `fetch_ics`'s `URL:` field too - both specs say those should already
+    be absolute, so it's a no-op there, but it closes the same bug class
+    pre-emptively for free. 3 new regression tests confirm a relative
+    AHML-style href resolves correctly, an already-absolute href is left
+    unchanged, and RSS `<link>` resolves too. 233 tests pass; build
+    exits 0.
+
 #### Housekeeping
 
 **Items 39 and 46 are stale and now marked done.** Both still read as open
