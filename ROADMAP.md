@@ -2997,6 +2997,106 @@ place to 82/83/84 (the mini-interview idea, the subject-line item, and
 the Reddit re-rank respectively) so nothing in this file points at two
 different things under one number.
 
+#### Research pass 2026-09-16 (nineteenth pass)
+
+Not a competitor pass. Ryan asked how to preview the newsletter before
+having subscribers, so this pass **read the thing the build actually
+renders** — `docs/mount-prospect-60056/email-preview.html`, from a live
+`build_digest.py` run, screenshotted at 390px — rather than reasoning
+about the template. Three findings, all from that one artifact. This is
+the cheapest review window the newsletter will ever get: every one of
+these is a five-line change now and a visible change of habit once a
+list exists whose open rates somebody is trending.
+
+| Angle | Finding | Consequence |
+|---|---|---|
+| **Rendered subject line** | `This weekend in Mount Prospect: Oktoberfest and Fall Festival & Oktoberfest` — two real, distinct events that happen to share a word, so the line reads like a stutter | Item 83 settled the *format*; the format is right and the *inputs* aren't deduped |
+| **Rendered event rows** | Title + date only. `event.detail` is fetched, truncated, and already on the region page — the email template just never emits it | The email is strictly less useful than the page it advertises |
+| **Empty sponsor slot** | The block is correctly hidden (`sponsor.is_active_sponsor` is false, and item 18's rule is that house ads never wear recommendation framing) — but unlike the region page, the email then shows *nothing at all* | Correcting my own first read: not a missing block, a missing **house ad** |
+
+#### P1 (new)
+
+86. **Dedupe near-identical titles in the email subject line.** The live
+    subject for Mount Prospect this week is `This weekend in Mount
+    Prospect: Oktoberfest and Fall Festival & Oktoberfest`. Both events
+    are real and distinct, so this is not a data bug and dropping one
+    would be wrong — the subject line just shouldn't pick two titles that
+    read as the same thing.
+
+    `build_email_subject_line()` (`scripts/build_digest.py:1474`) takes
+    `weekend_events` in order and uses `titles[0]` and `titles[1]`
+    verbatim. The fix is a selection rule, not a filter: when choosing the
+    second title to name, skip candidates whose significant tokens are a
+    subset or near-subset of the first's (case-folded, stopwords and
+    `&`/`and` dropped), and fall back to the next distinct event. If every
+    remaining title collides, name one and let the count carry the rest —
+    `This weekend in Mount Prospect: Oktoberfest, and 7 more` is honest
+    and reads cleanly. The `and {more} more` branch already exists, so
+    this is a change to which titles get chosen, not to the format item
+    83 settled.
+
+    Worth a test with the real colliding pair as the fixture: it is the
+    case that actually shipped, and a synthetic `Event A`/`Event B` pair
+    would pass a broken implementation.
+
+87. **Give email events their detail line.** Each event row in
+    `templates/email_digest.html.j2` emits `event.title` and
+    `event.date` and stops. `event.detail` is already fetched, already
+    truncated (`truncate(item.get("detail", ""))`), already rendered on
+    the region page, and already passed into this template inside the same
+    `weekend_events` dicts — the template simply never reads it.
+
+    Add one conditional row per event, matching the existing `{% if
+    event.date %}` row's markup (inline styles on every cell, no
+    flex/grid, per the template's own Outlook constraints), at ~13px in
+    the muted `#766a58` rather than the `#96581f` the date uses, so the
+    date stays the row's accent. Keep it to one line — these are already
+    truncated, but a two-line detail in a six-event digest is the
+    difference between a scannable email and a wall.
+
+    This is the single largest gap between the email and the page it
+    exists to advertise: today a subscriber gets titles and dates, which
+    is the *index*, and has to click through for the thing that tells them
+    whether to care. An email that can be judged without clicking is what
+    makes the click worth it.
+
+#### P2 (new)
+
+88. **Show the house ad in the email when there is no sponsor.** My first
+    read of the preview was that the sponsor block was missing. It isn't —
+    it is deliberately gated on `sponsor.is_active_sponsor`, and that gate
+    is correct: item 18's rule is that "LOCAL RECOMMENDATION" framing is
+    for a business that actually paid, never for an empty slot, and
+    `build_region_sponsor()` already encodes exactly that.
+
+    The gap is what happens *instead*. On the region page an unsold slot
+    falls back to the house ad (`default_house_ad`, "Sponsor this spot").
+    In the email it falls back to nothing, so the one artifact most likely
+    to be forwarded to a local business owner is the one that never
+    mentions the slot is for sale.
+
+    Add an `{% else %}` to the existing `{% if sponsor and
+    sponsor.is_active_sponsor %}` that renders the house ad in plainly
+    different clothes — no "LOCAL RECOMMENDATION" label, no spotlight
+    block, muted rather than the `#fdf3e4` sponsor fill — so the two can
+    never be confused at a glance. Link it to the sponsorship page. One
+    small honest line beats an empty space in the email a prospect reads.
+
+    P2 and not P1 because it earns nothing until the list has readers,
+    where 86 and 87 shape a habit that gets harder to change every week
+    sending continues.
+
+#### Housekeeping
+
+The preview path is worth stating plainly in the docs, because it is
+better than it looks: every build already writes
+`docs/<region-id>/email-preview.html`, which means the current newsletter
+is publicly readable at its URL with no Buttondown account, no list, and
+no send — and the file carries its own generated subject line at the top,
+labelled `PREVIEW ONLY`, for pasting into Buttondown's subject field.
+That is a complete review loop for a newsletter with zero subscribers,
+and nothing in the repo says so outside the template's comments.
+
 ## Working agreements for autonomous iteration
 
 - Cadence is hourly (the platform's durable scheduler has a 1-hour floor;
