@@ -1506,6 +1506,30 @@ def test_render_email_digest_shows_sponsor_only_when_active():
     assert "Acme Cafe" in html
 
 
+def test_render_email_digest_shows_sponsor_spotlight_answers_when_present():
+    region = {"name": "Mount Prospect"}
+    sponsor = {
+        "title": "Acme Cafe",
+        "detail": "Coffee.",
+        "url": "https://acme.example/",
+        "is_active_sponsor": True,
+        "spotlight": {
+            "years_in_town": "On Main Street since 1998.",
+            "regulars_pick": "Everyone asks for the cinnamon roll.",
+        },
+    }
+    html = build_digest.render_email_digest(region, [], [], "https://x/", "Aug 29–30", sponsor)
+    assert "On Main Street since 1998." in html
+    assert "Everyone asks for the cinnamon roll." in html
+
+
+def test_render_email_digest_omits_spotlight_block_when_absent():
+    region = {"name": "Mount Prospect"}
+    sponsor = {"title": "Acme Cafe", "detail": "Coffee.", "url": "https://acme.example/", "is_active_sponsor": True}
+    html = build_digest.render_email_digest(region, [], [], "https://x/", "Aug 29–30", sponsor)
+    assert "years_in_town" not in html
+
+
 def test_render_email_digest_uses_only_table_based_layout_no_flexbox_or_grid():
     # ROADMAP.md Phase 11 #36's whole reason to exist: Outlook renders
     # through Word's engine, which understands tables but not flexbox or

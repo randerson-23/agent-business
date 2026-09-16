@@ -2838,7 +2838,8 @@ it, so this pass researched what actually goes in the thing.
 
 #### P1 (new)
 
-82. **Make the newsletter's sponsor slot a mini-interview, not a banner.**
+82. ✅ **DONE (prep — sending itself still ships with items 24/31) — Make
+    the newsletter's sponsor slot a mini-interview, not a banner.**
     The recommended section list for local newsletters includes a business
     spotlight built around a short owner interview — which means the
     highest-value content and the monetisation are the same block. That is
@@ -2852,7 +2853,23 @@ it, so this pass researched what actually goes in the thing.
     most people don't know. **The answers are the content**, so the
     writing cost is near zero, and it produces something a business will
     actually share to their own followers, which the seventeenth pass
-    valued at 100–300 subscribers per post. Ship it with items 24/31.
+    valued at 100–300 subscribers per post.
+    Built the whole pipeline ahead of the first real sponsor, same
+    pattern as item 36: an optional `spotlight` dict (`years_in_town`,
+    `regulars_pick`, `hidden_gem`) on a sponsor's `config/sponsors.yaml`
+    history entry, documented there with the exact three questions;
+    `OUTREACH_TEMPLATES.md`'s booking-confirmation template (§3) now asks
+    for them directly, framed as optional and answered "in your own
+    words"; `email_digest.html.j2` renders each answered field verbatim
+    inside the existing "Local Recommendation" block, independently
+    optional per field so a business that only answers one question
+    still gets a clean render - never fabricated to fill an empty one.
+    No sponsor exists yet (`history: []` in every region), so this is
+    infrastructure, not a claim anything is live - verified with a
+    mocked sponsor dict via a real local build and a Playwright
+    screenshot showing all three answers rendering cleanly under a real
+    weekend's events. 4 new tests cover the present/absent cases. 240
+    tests pass; build exits 0.
 
 #### P2 (new)
 

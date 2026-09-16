@@ -26,6 +26,21 @@
 # framing instead of ad-unit language, plus its optional one-line `why`
 # ("why we recommend you") shown above `detail`. The house ad (unset
 # `active`) never gets this framing - only a real paying sponsor.
+#
+# Mini-interview spotlight (ROADMAP.md Phase 11 #82): an optional
+# `spotlight` dict on a history entry, shown in the weekly email (once
+# items 24/31 ship) as a short "in their own words" feature - the
+# highest-value newsletter content and the sponsor monetization become
+# the same block, per the eighteenth research pass. Three fixed
+# questions the owner emails the business once (see OUTREACH_TEMPLATES.md
+# §3), answered in their own words - the answers ARE the content, so
+# there's nothing to write:
+#   spotlight:
+#     years_in_town: "how long they've been here, in their words"
+#     regulars_pick: "the thing regulars order/ask for"
+#     hidden_gem: "something most people don't know about them"
+# All three optional - render only the ones actually answered. Never
+# fabricate a business's answer to fill an empty field.
 
 # ROADMAP.md Phase 11 #57: the /sponsor page's only conversion point
 # ("Open a sponsor inquiry") used to hardcode a link to a GitHub "New
