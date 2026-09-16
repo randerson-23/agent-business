@@ -143,3 +143,35 @@ a sample issue first.
 Thanks,
 [Your name]
 Within Ten — https://withintenmiles.com/
+
+## 7. Local press pitch (ROADMAP.md Phase 11 #77)
+
+Send to a reporter/editor who covers Mount Prospect, Arlington Heights,
+Des Plaines, or Palatine — **Journal & Topics** and the **Daily Herald**
+both cover this beat already. A local-media mention is the single
+highest-yield distribution action available (100–500 signups in a day,
+per the seventeenth research pass), worth far more effort than one email
+— but one email, sent, beats a better one still unsent.
+
+Subject: A free, auto-updating weekend guide for [Mount Prospect / the
+northwest suburbs] — thought this might interest you
+
+Hi [Reporter name],
+
+I'm a local parent, and I built **Within Ten**
+(https://withintenmiles.com/) — a free site that automatically pulls
+together what's happening in [Mount Prospect / Arlington Heights / Des
+Plaines / Palatine] each week: village news, library events, Park
+District programs, and school-district calendars, all in one place. No
+one else aggregates all of those together for this area, as far as I've
+found.
+
+It updates itself several times a week without any manual work on my
+end, and it's live now — [Oktoberfest and the Fall Festival] are on
+there this weekend. Happy to send more detail, a screenshot, or answer
+any questions if it's useful for a "what to do this weekend" mention or
+similar.
+
+Thanks for your time either way,
+[Your name]
+Within Ten — https://withintenmiles.com/

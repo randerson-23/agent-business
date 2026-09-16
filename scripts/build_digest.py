@@ -1380,24 +1380,39 @@ def build_weekly_summary_txt(
     Built from the same real, already-fetched data every other view
     uses - never invents an event to fill space. Honest empty state when
     nothing's dated this weekend, same philosophy as every other view.
+
+    Split into a post body and a separate first-comment block (ROADMAP.md
+    Phase 11 #76) rather than one block with the link inline - Facebook
+    has down-weighted posts containing an external link since 2017, and
+    a reply to your own post is worth roughly 27x a like, so the link
+    belongs in the first comment, not the post, and the post should end
+    on a real question rather than a parenthetical to invite exactly
+    that reply.
     """
-    lines = [f"What's happening in {region['name']} this weekend ({weekend_date_range}):", ""]
+    post_lines = [f"What's happening in {region['name']} this weekend ({weekend_date_range}):", ""]
     if weekend_events:
         for event in weekend_events[:6]:
             prefix = f"{event['date']} — " if event.get("date") else ""
-            lines.append(f"- {prefix}{event['title']}")
+            post_lines.append(f"- {prefix}{event['title']}")
     else:
         highlights = [e for e in evergreen if "free" in e.get("tags", [])][:3]
         if highlights:
-            lines.append("Nothing new dated for this weekend yet, but a few things worth knowing about:")
+            post_lines.append("Nothing new dated for this weekend yet, but a few things worth knowing about:")
             for item in highlights:
-                lines.append(f"- {item['title']}")
+                post_lines.append(f"- {item['title']}")
         else:
-            lines.append("Nothing dated for this weekend yet - the full guide has what's coming up.")
-    lines.append("")
-    lines.append(f"See everything: {region_url}")
-    lines.append("(Updated automatically, several times a week.)")
-    return "\n".join(lines) + "\n"
+            post_lines.append("Nothing dated for this weekend yet - the full guide has what's coming up.")
+    post_lines.append("")
+    post_lines.append("Anything I've missed this weekend?")
+
+    return (
+        "POST (paste this as your post - no link, so Facebook doesn't downrank it):\n\n"
+        + "\n".join(post_lines)
+        + "\n\n"
+        "FIRST COMMENT (reply to your own post with this right after - the link goes here instead):\n\n"
+        f"See everything: {region_url}\n"
+        "(Updated automatically, several times a week.)\n"
+    )
 
 
 def render_email_digest(
