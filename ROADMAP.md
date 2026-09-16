@@ -2924,6 +2924,33 @@ it, so this pass researched what actually goes in the thing.
     farming. Rank it **below** the press pitch (item 77) and the Facebook
     groups (item 33), both of which return more per minute spent.
 
+85. ✅ **DONE — Item 80's own fix had the same bug it fixed, one layer
+    down.** A `/code-review` pass over the whole of `scripts/fetchers.py`
+    (the backlog above is exhausted or Ryan-blocked, so this hour went
+    looking for real bugs instead) found that `_resolve_urls()` and the
+    inline `urljoin()` calls in `fetch_rss`/`fetch_ics` all resolved a
+    relative href against the **pre-fetch** `url` parameter, not
+    `resp.url` (the URL actually served, after redirects). A source that
+    301s - moves domains, adds a trailing slash, switches http→https -
+    would have every relative link on it silently resolved against the
+    *old* host, even though the fetch itself succeeded and nothing looked
+    wrong. Same failure shape as item 80, one layer further down the same
+    code.
+    Fixed by resolving against `resp.url` everywhere, and by collapsing
+    the three near-duplicate "resolve unless falsy" implementations
+    (`fetch_rss`'s inline conditional, `fetch_ics`'s `if e["url"]:` guard,
+    `fetch_html_events`'s `_resolve_urls`) into one shared `_resolve_url()`
+    scalar helper, so a future fix to this logic only has to land once.
+    Also moved `fetch_ics`'s resolution to *after* slicing to `limit`
+    (matching `fetch_html_events`'s existing order) rather than resolving
+    every upcoming event and discarding most of the work.
+    Real coverage gap closed too: no test exercised `fetch_ics`'s
+    relative-URL branch at all (its sample fixture's `URL:` field was
+    already absolute) - added one, plus a redirect-specific regression
+    test for each of the three fetchers, since the whole point of this
+    fix is behavior that only shows up when the served URL differs from
+    the requested one. 244 tests pass; build exits 0.
+
 #### Correction
 
 The previous pass was dated **2026-09-17** in its heading. It ran on
