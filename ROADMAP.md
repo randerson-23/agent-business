@@ -2654,7 +2654,7 @@ sending reputation at all**.
     and the generated HTML for the hub, a region page, `/sponsor`, and
     `/this-weekend` all carry the right `og:image` URL.
 
-#### Research pass 2026-09-17 (seventeenth pass)
+#### Research pass 2026-09-16 (seventeenth pass)
 
 The build loop shipped both sixteenth-pass items inside an hour (IndexNow
 in #101, build-time Open Graph images in #102) and the newsletter signup
@@ -2815,6 +2815,84 @@ true on 2026-09-15: `withintenmiles.com` is registered, DNS resolves to all
 four GitHub Pages addresses, and `SITE_BASE_URL` was migrated in `baf26ae`.
 Leaving the project's two longest-standing blockers reading as blockers
 would mislead both loops and the owner about what is actually in the way.
+
+#### Research pass 2026-09-16 (eighteenth pass)
+
+Both seventeenth-pass items shipped in #107 — the Facebook link placement
+fix and the press-pitch draft. The build loop also added a real RSS feed
+(#108) on its own initiative and, reading that feed's actual output from a
+live build, caught a genuine bug (#109): `_EventLinkExtractor` stored every
+`<a href>` verbatim, so a library event linking to
+`/scheduling/reservation/223808` resolved against **this** site instead of
+the library's. Worth being precise about blame: that predates the domain
+migration — those links were always wrong, the migration only changed
+which wrong domain they pointed at.
+
+The newsletter cluster is the last large block with nothing in front of
+it, so this pass researched what actually goes in the thing.
+
+| Angle | Finding | Consequence |
+|---|---|---|
+| **Local newsletter structure** | Recommended sections include a **local business spotlight with an owner mini-interview**. Newsletters on a predictable cadence referencing a routine moment average ~34% opens; subject lines under 20 words; clarity beats cleverness; send **Thursday evening or early Friday**, with most opens 3–7pm | The highest-value *content* section and the *monetisation* are the same thing |
+| **Local subreddits** | The 90/10 norm, 9–19 non-promotional contributions between promotional posts, mandatory disclosure, and **61% of the subreddits studied ban self-promotion outright** | Costs the one resource the business plan says the owner doesn't have |
+
+#### P1 (new)
+
+79. **Make the newsletter's sponsor slot a mini-interview, not a banner.**
+    The recommended section list for local newsletters includes a business
+    spotlight built around a short owner interview — which means the
+    highest-value content and the monetisation are the same block. That is
+    the natural extension of item 18's "recommendation, not an ad"
+    positioning into the email, and it is the strongest argument the
+    Annual Partner tier has: a member gets **a genuine feature written
+    about them**, not an impression counted for them.
+    Concretely, and within the time budget: three or four fixed questions
+    the owner emails once and the business answers in their own words —
+    how long they've been in town, the thing regulars order, something
+    most people don't know. **The answers are the content**, so the
+    writing cost is near zero, and it produces something a business will
+    actually share to their own followers, which the seventeenth pass
+    valued at 100–300 subscribers per post. Ship it with items 24/31.
+
+#### P2 (new)
+
+80. **Fix the send time and subject-line format before the first send,
+    not after.** This refines item 31 rather than replacing it: the
+    fourth pass's "Thursday afternoon" came from two analogues; the
+    broader data says **Thursday evening or early Friday**, with opens
+    concentrated 3–7pm. Either is defensible — the point is that a
+    predictable cadence tied to a routine moment is itself worth roughly
+    34% opens, so pick one and never move it.
+    Subject lines: under 20 words, clarity over cleverness, no all-caps or
+    exclamation stacking. A format that satisfies all of it:
+    *"This weekend in Mount Prospect: Oktoberfest, a free fall fest, and 6
+    more."* Names the town, leads with the specific, states the count.
+    Worth settling now because subject-line habits calcify the moment a
+    list exists and open rates become a trend somebody is judging.
+
+#### P3 (new) — a re-rank, and a recommendation against
+
+81. **Reddit is lower-yield here than it looks — don't build a strategy
+    for it.** Local subreddits rank well in Google and the audience is
+    exactly right, which makes this tempting. The rules are the problem:
+    the 90/10 norm, 9–19 genuine contributions between promotional posts,
+    disclosure required, and 61% of the subreddits in one study banning
+    self-promotion outright. That is **recurring human attention on a
+    schedule**, which is precisely what `BUSINESS_PLAN.md` says this
+    business does not have — the same reason idea #5 (a hand-written
+    newsletter) was rejected on day one.
+    The bounded version that does fit, and the only one worth doing: when
+    someone in a local sub asks what's on this weekend, answer it usefully
+    and say the site is yours. No schedule, no commitment, no karma
+    farming. Rank it **below** the press pitch (item 77) and the Facebook
+    groups (item 33), both of which return more per minute spent.
+
+#### Correction
+
+The previous pass was dated **2026-09-17** in its heading. It ran on
+**2026-09-16** at 06:33 UTC. Corrected in place — this file is the
+continuity record for two loops, and "what was known when" is most of
+what makes it useful.
 
 ## Working agreements for autonomous iteration
 
