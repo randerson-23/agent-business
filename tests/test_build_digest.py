@@ -1,5 +1,6 @@
 import json
 import sys
+import xml.etree.ElementTree as ET
 from datetime import date, datetime, timezone
 from pathlib import Path
 from unittest.mock import patch
@@ -1213,6 +1214,46 @@ def test_build_sitemap_xml_includes_sponsor_url():
     summaries = [{**REGION, "event_count": 1, "path": "mount-prospect-60056/"}]
     xml = build_digest.build_sitemap_xml(summaries, datetime.now(timezone.utc))
     assert f"<loc>{build_digest.SITE_BASE_URL}sponsor/</loc>" in xml
+
+
+def test_build_feed_xml_produces_valid_rss():
+    items = [
+        {"title": "Fall Fest", "url": "https://x/1", "detail": "Food & drink.", "date_iso": "2026-09-19", "region_name": "Mount Prospect"},
+    ]
+    xml = build_digest.build_feed_xml(items, datetime.now(timezone.utc))
+    root = ET.fromstring(xml)
+    assert root.tag == "rss"
+    channel = root.find("channel")
+    assert channel.find("title").text == "Within Ten — Upcoming Local Events"
+    item = channel.find("item")
+    assert item.find("title").text == "Mount Prospect: Fall Fest"
+    assert item.find("link").text == "https://x/1"
+    assert item.find("description").text == "Food & drink."
+
+
+def test_build_feed_xml_orders_soonest_first():
+    items = [
+        {"title": "Later", "url": "https://x/2", "detail": "", "date_iso": "2026-10-01", "region_name": "Palatine"},
+        {"title": "Sooner", "url": "https://x/1", "detail": "", "date_iso": "2026-09-19", "region_name": "Mount Prospect"},
+    ]
+    xml = build_digest.build_feed_xml(items, datetime.now(timezone.utc))
+    titles = [item.find("title").text for item in ET.fromstring(xml).find("channel").findall("item")]
+    assert titles == ["Mount Prospect: Sooner", "Palatine: Later"]
+
+
+def test_build_feed_xml_caps_at_fifty_items():
+    items = [
+        {"title": f"Event {i}", "url": f"https://x/{i}", "detail": "", "date_iso": "2026-09-19", "region_name": "Mount Prospect"}
+        for i in range(75)
+    ]
+    xml = build_digest.build_feed_xml(items, datetime.now(timezone.utc))
+    assert len(ET.fromstring(xml).find("channel").findall("item")) == 50
+
+
+def test_build_feed_xml_handles_no_items():
+    xml = build_digest.build_feed_xml([], datetime.now(timezone.utc))
+    root = ET.fromstring(xml)
+    assert root.find("channel").findall("item") == []
 
 
 def test_render_og_image_is_the_expected_raster_size():

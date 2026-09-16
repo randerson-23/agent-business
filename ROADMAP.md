@@ -2745,6 +2745,38 @@ This pass went looking at distribution.
     items 24/31 actually send — paying for subscribers and then not
     emailing them is the one way to waste the money completely.
 
+79. ✅ **DONE — A real RSS feed of the site's own upcoming events (build
+    loop's own pick, not from a research pass — the backlog above is
+    exhausted or Ryan-blocked, and this is a real, self-contained,
+    zero-dependency feature within the plan's constraints).** Distinct
+    from item 48 (correctly skipped): that was about *republishing* this
+    site's listings onto Eventbrite/AllEvents/Bandsintown, which is wrong
+    because those are aggregated events run by someone else. This is the
+    opposite direction - the site syndicating its *own* aggregated page*
+    as a feed, served from its own domain, the same way any content site
+    does. Costs nothing ongoing and feeds the same freshness/GEO strategy
+    item 22 already bets on: a feed reader, local-news aggregator, or AI
+    crawler that polls `/feed.xml` learns about new events without
+    re-scraping the whole site.
+    Honesty note baked into the design: this pipeline has no "date first
+    seen" for an event (every build re-fetches from scratch), so this
+    isn't a conventional "recently published" RSS feed - it's an
+    upcoming-events calendar feed, ordered soonest-first, with each
+    item's `<pubDate>` set to the event's own date rather than an
+    invented publish timestamp. Documented as such in the code rather
+    than pretending it's something it isn't.
+    Implemented as `build_feed_xml()` in `scripts/build_digest.py`,
+    fed by a `feed_items` list collected during the existing per-region
+    loop (only events with a real title, url and resolved `date_iso` -
+    the same filter every other structured-data feature already uses),
+    written to `docs/feed.xml`, capped at 50 items sitewide. Added
+    `<link rel="alternate" type="application/rss+xml">` autodiscovery to
+    the hub page's `<head>` and a mention in `llms.txt`. Verified against
+    a real local build: valid RSS 2.0 XML, items sorted soonest-first,
+    each carrying the real event's title/url/date. New tests cover XML
+    validity, item ordering, the title/url/date_iso filter, and the
+    50-item cap.
+
 #### Housekeeping
 
 **Items 39 and 46 are stale and now marked done.** Both still read as open

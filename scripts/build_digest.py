@@ -19,10 +19,11 @@ import math
 import statistics
 import sys
 from datetime import date, datetime, timedelta, timezone
-from email.utils import parsedate_to_datetime
+from email.utils import format_datetime, parsedate_to_datetime
 from functools import lru_cache
 from pathlib import Path
 from urllib.parse import quote, urlencode
+from xml.sax.saxutils import escape as xml_escape
 from zoneinfo import ZoneInfo
 
 import yaml
@@ -1275,6 +1276,60 @@ def build_sitemap_xml(region_summaries: list[dict], now: datetime) -> str:
     )
 
 
+FEED_MAX_ITEMS = 50
+
+
+def build_feed_xml(feed_items: list[dict], now: datetime) -> str:
+    """A real RSS 2.0 feed at /feed.xml (ROADMAP.md Phase 11 #79) - the
+    site syndicating its *own* aggregated events, not republishing onto
+    a third-party platform (that's item 48, correctly skipped for a
+    different reason). Zero-dependency distribution: a feed reader,
+    local-news aggregator, or AI crawler that polls this learns about
+    new events without re-scraping the whole site, feeding the same
+    freshness/GEO strategy item 22 already bets on.
+
+    Honesty note: this pipeline has no "date first seen" for an event -
+    every build re-fetches from scratch - so this isn't a conventional
+    "recently published" feed. It's an upcoming-events calendar feed,
+    ordered soonest-first, with each item's <pubDate> set to the event's
+    own date rather than an invented publish timestamp.
+
+    feed_items: dicts with title/url/detail/date_iso/region_name, already
+    filtered to only real events with a resolved date (same filter every
+    other structured-data feature in this file uses).
+    """
+    dated = sorted(feed_items, key=lambda e: e["date_iso"])[:FEED_MAX_ITEMS]
+    items = []
+    for e in dated:
+        pub_dt = datetime.fromisoformat(e["date_iso"])
+        if pub_dt.tzinfo is None:
+            pub_dt = pub_dt.replace(tzinfo=timezone.utc)
+        title = xml_escape(f"{e['region_name']}: {e['title']}")
+        items.append(
+            "  <item>\n"
+            f"    <title>{title}</title>\n"
+            f"    <link>{xml_escape(e['url'])}</link>\n"
+            f"    <guid isPermaLink=\"true\">{xml_escape(e['url'])}</guid>\n"
+            f"    <description>{xml_escape(e.get('detail') or '')}</description>\n"
+            f"    <pubDate>{format_datetime(pub_dt)}</pubDate>\n"
+            "  </item>"
+        )
+    return (
+        '<?xml version="1.0" encoding="UTF-8"?>\n'
+        '<rss version="2.0">\n'
+        "<channel>\n"
+        f"  <title>{SITE_NAME} — Upcoming Local Events</title>\n"
+        f"  <link>{SITE_BASE_URL}</link>\n"
+        f"  <description>Upcoming events across every {SITE_NAME} region, soonest first - "
+        "aggregated automatically from village, library, park district and school-district calendars.</description>\n"
+        f"  <lastBuildDate>{format_datetime(now)}</lastBuildDate>\n"
+        + "\n".join(items)
+        + ("\n" if items else "")
+        + "</channel>\n"
+        "</rss>\n"
+    )
+
+
 def build_llms_txt(region_summaries: list[dict]) -> str:
     """llms.txt (llmstxt.org convention, ROADMAP.md Phase 11 #22 - GEO):
     a plain-language map of the site for an AI agent/crawler to read
@@ -1308,6 +1363,7 @@ def build_llms_txt(region_summaries: list[dict]) -> str:
     if guide_lines:
         lines += ["", "## Guides"] + guide_lines
     lines += ["", "## Sponsorship", f"- [Sponsor a region]({SITE_BASE_URL}sponsor/)"]
+    lines += ["", "## Feed", f"- [RSS: upcoming events across every region]({SITE_BASE_URL}feed.xml)"]
     return "\n".join(lines) + "\n"
 
 
@@ -1538,6 +1594,7 @@ def main() -> None:
     region_summaries = []
     hub_weekend_sections = []
     hub_weekend_date_range = None
+    feed_items = []
     total_dated, total_events = 0, 0
     for region_cfg in regions:
         region = region_cfg["region"]
@@ -1551,6 +1608,12 @@ def main() -> None:
             # confidence content on the page (a human put it there
             # deliberately), and it's often the most time-sensitive too.
             blocks.insert(0, annual_block)
+        feed_items += [
+            {**e, "region_name": region["name"]}
+            for b in blocks
+            for e in b["events"]
+            if e.get("title") and e.get("url") and e.get("date_iso")
+        ]
         evergreen = prepare_evergreen(region_cfg)
         guides = prepare_guides(region_cfg)
         directory = build_business_directory(sponsors_cfg, region_id)
@@ -1798,7 +1861,8 @@ def main() -> None:
     (OUTPUT_DIR / "llms.txt").write_text(build_llms_txt(region_summaries), encoding="utf-8")
     (OUTPUT_DIR / "CNAME").write_text(CUSTOM_DOMAIN + "\n", encoding="utf-8")
     (OUTPUT_DIR / f"{INDEXNOW_KEY}.txt").write_text(INDEXNOW_KEY, encoding="utf-8")
-    logger.info("Wrote sitemap.xml, robots.txt, llms.txt, CNAME, and IndexNow key file")
+    (OUTPUT_DIR / "feed.xml").write_text(build_feed_xml(feed_items, now), encoding="utf-8")
+    logger.info("Wrote sitemap.xml, robots.txt, llms.txt, CNAME, feed.xml, and IndexNow key file")
     og_dir = OUTPUT_DIR / "og"
     og_dir.mkdir(parents=True, exist_ok=True)
     og_images = build_og_images(region_summaries)
