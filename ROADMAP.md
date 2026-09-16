@@ -204,29 +204,49 @@ have nothing pressing, pick the highest unclaimed `P1` item below. Mark items
 `✅ done (PR #N)` in place rather than deleting them, so the research loop
 doesn't re-suggest something already shipped.
 
-#### Needs Ryan (twentieth pass, contact_email row closed out)
+#### Needs Ryan (twenty-first pass — GSC verified, three rows closed)
 
-Five items block on one person, each a minutes-long action with outsized
-consequences, and none was discoverable without reading the whole file.
-Consolidated here so the human's next few available minutes land on the
-right thing, instead of being scattered across ~2,000 lines. (The
-`buttondown_username` row that used to lead this table is gone - it got
-set between passes, item 74 shipped the live signup form on 2026-09-16.
-The `contact_email:` row is gone too, for the same reason: Ryan set it
-directly on `main` on 2026-09-16, commit `d8fb8d7` - the sponsor page's
-"Open a sponsor inquiry" CTA now goes to a real inbox instead of a
-GitHub issue form. He flagged it as "for now" - a personal Gmail on a
-public page will get scraped, and swapping it for a forwarded
-`hello@withintenmiles.com` later is a one-line change, noted in the
-config file's own comment.)
+Two items block on one person. The list was six rows this morning; the
+owner cleared four of them on 2026-09-16 in a single sitting, so what
+follows is deliberately short. Closed out and removed rather than left
+as noise:
+
+- **Register a domain** — `withintenmiles.com`, 2026-09-15 (items 39/46).
+- **Confirm HTTPS serves** — padlock confirmed by the owner 2026-09-16.
+  This sandbox could never check it: a TLS handshake from here returns
+  the egress proxy's block page, not GitHub's answer.
+- **Google Search Console** (item 73) — verified 2026-09-16 and
+  `sitemap.xml` submitted successfully. Worth recording *why* it first
+  failed, because the error was misleading: the DNS TXT record was
+  correct and live the whole time (confirmed by querying both
+  authoritative Cloudflare nameservers directly, `hal.ns` and
+  `sneh.ns`), and GSC's "Could not find your domain" referred to the
+  **property name**, not the record. The property had been created
+  against the wrong URL. Waiting for propagation would never have fixed
+  it. If a future verification fails, check the property string before
+  blaming DNS.
+- **`contact_email`** (item 57) — set to a personal Gmail at the owner's
+  explicit request, framed as "for now". The sponsor CTA is a prefilled
+  `mailto:` and the GitHub-issue fallback is gone.
 
 | Action | One line why | Unblocks |
 |---|---|---|
-| Send the local press pitch to Journal & Topics and/or the Daily Herald (item 77, template drafted in `OUTREACH_TEMPLATES.md` §7) | **The single highest-yield action available right now, by a wide margin.** A local-media mention is worth 100-500 subscribers in a day (seventeenth research pass) - nothing else here comes close for one email's worth of effort. Both outlets already cover this exact beat, and the Daily Herald ran the Oktoberfest listing this project's own build used as a source. The email just needs picking a real reporter and hitting send - genuinely a human action, not a template-writing one, which is why the template already exists. | 100-500 real subscribers from one email, per the research this item is based on |
-| Verify `withintenmiles.com` in Google Search Console + import into Bing Webmaster Tools (item 73) | DNS verification is the durable method and Ryan now controls DNS, so this is unblocked for the first time - a new domain is invisible to search until it's announced, and no amount of on-page SEO substitutes. Steps: verify in GSC, submit `sitemap.xml` under Indexing → Sitemaps, then add the property in Bing Webmaster Tools by **importing from GSC**, which skips re-verification entirely. One session, maybe fifteen minutes, covers Google, Bing, Yahoo and DuckDuckGo at once. | The entire indexing/AI-citation effort (items 22, 39, 46, 72) - IndexNow (item 72, done) tells crawlers content changed, but this is what gets the domain into their index in the first place |
-| Confirm `withintenmiles.com` actually serves the site over HTTPS (item 39/46, domain registered 2026-09-15) | **DNS is done, confirmed twice now.** A direct DNS query (`socket.getaddrinfo`, not a web fetch - this sandbox's egress proxy only intercepts HTTP(S), not raw DNS) shows `withintenmiles.com` and `www.withintenmiles.com` both resolving to all four of GitHub Pages' real anycast IPs, identical to `randerson-23.github.io`'s own resolution, and the `pages-build-deployment` workflow has succeeded on every push since. What's still genuinely unconfirmed from here: whether HTTPS has finished provisioning and the custom domain field under Settings → Pages is saved - a same-hostname TLS handshake attempted from this sandbox returned this environment's own egress-proxy block page, not a real answer from GitHub, so that specific check is a dead end here. Worth an owner click-through to confirm the padlock. Still gates SPF/DKIM/DMARC either way, so it remains a hard prerequisite for the newsletter-sending cluster (24/31/36/37/47), not just findability. |
-| Add `withintenmiles.com` as Buttondown's sending domain and complete its "managed" DNS setup (item 47, verified 2026-09-16 against `docs.buttondown.com/sending-from-a-custom-domain`) | Buttondown authenticates mail (SPF/DKIM/DMARC) per-domain, and the exact records only exist once Ryan adds the domain inside Buttondown's own Settings - genuinely not something this loop can generate or guess. Buttondown recommends "managed" over "manual" for a new domain: add the two NS records it shows (delegating a subdomain to Buttondown) instead of copying individual TXT records, so Buttondown can rotate DKIM keys and sending infrastructure without Ryan touching DNS again. | Items 24/31 (actually sending) and the rest of item 47's deliverability checklist |
-| Run a real trademark search before spending money on the domain, signage, print, or sponsor contracts (item 69) | **Reduced, not eliminated, by the 2026-09-15 pivot to "Within Ten".** The name was changed *because* WebSearch found "PORCHLIGHT" is a registered mark (reg. 6028585) held by Porchlight Book Company, which publishes a newsletter to ~60,000 readers. A search for "Within Ten"/"WithinTen" turned up **no registered mark** - a materially cleaner starting point. But a web search is not a clearance search: it does not cover common-law use, similar-sounding marks, or state registrations, and it reads a fraction of what a real search does. Still worth the small cost before money is committed. | Spending safely on a domain, signage, print, sponsor contracts |
+| **Send the local press pitch** to Journal & Topics and/or the Daily Herald (item 77, template drafted in `OUTREACH_TEMPLATES.md` §7) | **The single highest-yield action available, by a wide margin, and now the only thing standing between a working site and an audience.** A local-media mention is worth 100-500 subscribers in a day (seventeenth pass); nothing else here is close for one email's effort. Every dependency it ever had is now cleared: the domain resolves, HTTPS serves, the signup form is live, the sponsor CTA works, and Google has the sitemap. The email needs picking a real reporter and hitting send. | 100-500 real subscribers from one email |
+| Run a real trademark search before spending money on the domain, signage, print, or sponsor contracts (item 69) | **Reduced, not eliminated, by the pivot to "Within Ten".** The name was changed *because* WebSearch found "PORCHLIGHT" is a registered mark (reg. 6028585) held by a company that publishes a newsletter to ~60,000 readers. "Within Ten"/"WithinTen" turned up **no registered mark** - materially cleaner. But a web search is not a clearance search: it misses common-law use, similar-sounding marks and state registrations. Worth its small cost before money is committed, not after. | Spending safely on signage, print, sponsor contracts |
+
+**Nearly done, no longer blocking:** Buttondown's sending domain (item
+47). The owner added `withintenmiles.com` and its managed-delegation NS
+records on 2026-09-16 and confirmed them in place; what remains is
+checking that Buttondown's own settings show it verified, which is a
+look rather than a task. Worth noting the managed option **avoided** the
+SPF collision this file warned about earlier: because Buttondown's
+records live inside a delegated subdomain, the apex SPF stays free for
+Cloudflare Email Routing later. No merge needed.
+
+**Also worth doing, not blocking:** import the GSC property into Bing
+Webmaster Tools (part of item 73). It skips re-verification entirely and
+covers Bing, Yahoo and DuckDuckGo - and Bing's index feeds ChatGPT
+search, which item 22's whole AI-citation effort depends on.
 
 #### Competitors reviewed (2026-08-27)
 
