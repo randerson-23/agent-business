@@ -1471,6 +1471,18 @@ def test_build_weekly_summary_txt_keeps_the_link_out_of_the_post_body():
     assert "https://example.org/mount-prospect-60056/" in comment_section
 
 
+def test_build_weekly_summary_txt_leads_with_a_subject_line():
+    # ROADMAP.md Phase 11 #91: a third, unpasteable place to find the
+    # subject line, matching this file's own POST/FIRST COMMENT
+    # convention - a label for the reader, not text to copy into
+    # Facebook.
+    region = {"name": "Mount Prospect"}
+    events = [{"title": "Fall Fest", "date": "Aug 29", "url": "https://x/1"}]
+    result = build_digest.build_weekly_summary_txt(region, events, [], "https://x/", "Aug 29–30")
+    subject = build_digest.build_email_subject_line(region, events)
+    assert result.startswith(f"SUBJECT: {subject}\n\n")
+
+
 def test_build_weekly_summary_txt_post_ends_on_a_question():
     # A reply to your own post is worth roughly 27x a like (same pass's
     # research) - the post should invite that reply, not close on a
@@ -1620,13 +1632,31 @@ def test_render_email_digest_omits_house_ad_when_sponsor_is_none():
     assert "SPONSOR THIS SPOT" not in html
 
 
-def test_render_email_digest_shows_the_subject_line_for_the_owner_to_copy():
+def test_render_email_digest_always_shows_the_subject_line_in_title():
     region = {"name": "Mount Prospect"}
     events = [{"title": "Fall Fest", "date": "Aug 29", "url": "https://x/1"}]
     html = build_digest.render_email_digest(region, events, [], "https://x/", "Aug 29–30", None)
     subject = build_digest.build_email_subject_line(region, events)
     assert f"<title>{subject}</title>" in html
-    assert subject in html.split("</title>")[1]  # also shown in the visible body, not just <title>
+
+
+def test_render_email_digest_preview_shows_subject_annotation_in_body():
+    # ROADMAP.md Phase 11 #91: the annotation only belongs in the
+    # preview file - a real send shipped it as body copy because the
+    # paste-this-whole-file workflow pastes the warning along with it.
+    region = {"name": "Mount Prospect"}
+    events = [{"title": "Fall Fest", "date": "Aug 29", "url": "https://x/1"}]
+    subject = build_digest.build_email_subject_line(region, events)
+    preview_html = build_digest.render_email_digest(region, events, [], "https://x/", "Aug 29–30", None, preview=True)
+    assert "PREVIEW ONLY" in preview_html
+    assert subject in preview_html.split("</title>")[1]
+
+
+def test_render_email_digest_send_file_omits_preview_annotation():
+    region = {"name": "Mount Prospect"}
+    events = [{"title": "Fall Fest", "date": "Aug 29", "url": "https://x/1"}]
+    send_html = build_digest.render_email_digest(region, events, [], "https://x/", "Aug 29–30", None)
+    assert "PREVIEW ONLY" not in send_html
 
 
 def test_render_email_digest_falls_back_to_free_evergreen_when_nothing_dated():

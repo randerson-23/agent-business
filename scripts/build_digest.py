@@ -1453,7 +1453,13 @@ def build_weekly_summary_txt(
     belongs in the first comment, not the post, and the post should end
     on a real question rather than a parenthetical to invite exactly
     that reply.
+
+    Leads with a `SUBJECT:` line (ROADMAP.md Phase 11 #91) matching this
+    file's own `POST`/`FIRST COMMENT` convention - a label for whoever's
+    reading, not text to paste into Facebook, same distinction that
+    landed the subject line in the wrong place in the email template.
     """
+    subject_line = f"SUBJECT: {build_email_subject_line(region, weekend_events)}\n\n"
     post_lines = [f"What's happening in {region['name']} this weekend ({weekend_date_range}):", ""]
     if weekend_events:
         for event in weekend_events[:6]:
@@ -1471,7 +1477,8 @@ def build_weekly_summary_txt(
     post_lines.append("Anything I've missed this weekend?")
 
     return (
-        "POST (paste this as your post - no link, so Facebook doesn't downrank it):\n\n"
+        subject_line
+        + "POST (paste this as your post - no link, so Facebook doesn't downrank it):\n\n"
         + "\n".join(post_lines)
         + "\n\n"
         "FIRST COMMENT (reply to your own post with this right after - the link goes here instead):\n\n"
@@ -1553,6 +1560,8 @@ def render_email_digest(
     region_url: str,
     weekend_date_range: str,
     sponsor: dict | None,
+    *,
+    preview: bool = False,
 ) -> str:
     """The actual email HTML (ROADMAP.md Phase 11 #36) - a gate on items
     24/31, not a standalone feature, since nothing sends yet without
@@ -1562,6 +1571,15 @@ def render_email_digest(
     in (especially Outlook's Word engine) don't support. Reuses the same
     already-fetched weekend_events/evergreen data as
     build_weekly_summary_txt - never invents content to fill space.
+
+    `preview=True` adds the "PREVIEW ONLY" annotation row naming the
+    subject line to paste; `preview=False` (the default, used for the
+    file that actually gets sent) omits it. ROADMAP.md Phase 11 #91: a
+    real send shipped that row as the first line of body copy, because
+    the intended workflow - select all, copy, paste into Buttondown -
+    pastes the whole file including the warning about itself. A warning
+    inside the thing it warns about gets pasted along with it every
+    time, so the two files are now byte-identical except for this row.
     """
     env = Environment(loader=FileSystemLoader(str(TEMPLATES_DIR)), autoescape=True)
     template = env.get_template("email_digest.html.j2")
@@ -1581,6 +1599,7 @@ def render_email_digest(
         weekend_date_range=weekend_date_range,
         sponsor=sponsor,
         subject_line=build_email_subject_line(region, weekend_events),
+        preview=preview,
     )
 
 
@@ -1746,10 +1765,17 @@ def main() -> None:
         (region_dir / "weekly-summary.txt").write_text(weekly_summary_txt, encoding="utf-8")
         logger.info("Wrote %s", region_dir / "weekly-summary.txt")
 
-        email_digest_html = render_email_digest(
+        email_digest_args = (
             region, weekend_events, evergreen, SITE_BASE_URL + region_id + "/", weekend_date_range, sponsor
         )
-        (region_dir / "email-preview.html").write_text(email_digest_html, encoding="utf-8")
+        # ROADMAP.md Phase 11 #91: two files, byte-identical except for
+        # the annotation row - email-send.html is the one to paste into
+        # Buttondown, email-preview.html is the one to read in a browser.
+        (region_dir / "email-send.html").write_text(render_email_digest(*email_digest_args), encoding="utf-8")
+        logger.info("Wrote %s", region_dir / "email-send.html")
+        (region_dir / "email-preview.html").write_text(
+            render_email_digest(*email_digest_args, preview=True), encoding="utf-8"
+        )
         logger.info("Wrote %s", region_dir / "email-preview.html")
         if weekend_events:
             hub_weekend_sections.append(
