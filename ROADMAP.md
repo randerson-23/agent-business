@@ -204,9 +204,9 @@ have nothing pressing, pick the highest unclaimed `P1` item below. Mark items
 `✅ done (PR #N)` in place rather than deleting them, so the research loop
 doesn't re-suggest something already shipped.
 
-#### Needs Ryan (eighteenth pass, Buttondown domain-auth row added)
+#### Needs Ryan (nineteenth pass, press-pitch row added — top on yield)
 
-Five items block on one person, each a minutes-long action with outsized
+Six items block on one person, each a minutes-long action with outsized
 consequences, and none was discoverable without reading the whole file.
 Consolidated here so the human's next few available minutes land on the
 right thing, instead of being scattered across ~2,000 lines. (The
@@ -216,6 +216,7 @@ and the config file itself now says so.)
 
 | Action | One line why | Unblocks |
 |---|---|---|
+| Send the local press pitch to Journal & Topics and/or the Daily Herald (item 77, template drafted in `OUTREACH_TEMPLATES.md` §7) | **The single highest-yield action available right now, by a wide margin.** A local-media mention is worth 100-500 subscribers in a day (seventeenth research pass) - nothing else here comes close for one email's worth of effort. Both outlets already cover this exact beat, and the Daily Herald ran the Oktoberfest listing this project's own build used as a source. The email just needs picking a real reporter and hitting send - genuinely a human action, not a template-writing one, which is why the template already exists. | 100-500 real subscribers from one email, per the research this item is based on |
 | Verify `withintenmiles.com` in Google Search Console + import into Bing Webmaster Tools (item 73) | DNS verification is the durable method and Ryan now controls DNS, so this is unblocked for the first time - a new domain is invisible to search until it's announced, and no amount of on-page SEO substitutes. Steps: verify in GSC, submit `sitemap.xml` under Indexing → Sitemaps, then add the property in Bing Webmaster Tools by **importing from GSC**, which skips re-verification entirely. One session, maybe fifteen minutes, covers Google, Bing, Yahoo and DuckDuckGo at once. | The entire indexing/AI-citation effort (items 22, 39, 46, 72) - IndexNow (item 72, done) tells crawlers content changed, but this is what gets the domain into their index in the first place |
 | Confirm `withintenmiles.com` actually serves the site over HTTPS (item 39/46, domain registered 2026-09-15) | **DNS is done, confirmed twice now.** A direct DNS query (`socket.getaddrinfo`, not a web fetch - this sandbox's egress proxy only intercepts HTTP(S), not raw DNS) shows `withintenmiles.com` and `www.withintenmiles.com` both resolving to all four of GitHub Pages' real anycast IPs, identical to `randerson-23.github.io`'s own resolution, and the `pages-build-deployment` workflow has succeeded on every push since. What's still genuinely unconfirmed from here: whether HTTPS has finished provisioning and the custom domain field under Settings → Pages is saved - a same-hostname TLS handshake attempted from this sandbox returned this environment's own egress-proxy block page, not a real answer from GitHub, so that specific check is a dead end here. Worth an owner click-through to confirm the padlock. Still gates SPF/DKIM/DMARC either way, so it remains a hard prerequisite for the newsletter-sending cluster (24/31/36/37/47), not just findability. |
 | Add `withintenmiles.com` as Buttondown's sending domain and complete its "managed" DNS setup (item 47, verified 2026-09-16 against `docs.buttondown.com/sending-from-a-custom-domain`) | Buttondown authenticates mail (SPF/DKIM/DMARC) per-domain, and the exact records only exist once Ryan adds the domain inside Buttondown's own Settings - genuinely not something this loop can generate or guess. Buttondown recommends "managed" over "manual" for a new domain: add the two NS records it shows (delegating a subdomain to Buttondown) instead of copying individual TXT records, so Buttondown can rotate DKIM keys and sending infrastructure without Ryan touching DNS again. | Items 24/31 (actually sending) and the rest of item 47's deliverability checklist |
@@ -2672,8 +2673,9 @@ This pass went looking at distribution.
 
 #### P1 (new)
 
-76. **The group-summary tool is throttled by design — verified against
-    its own output.** `docs/<region>/weekly-summary.txt` currently reads:
+76. ✅ **DONE — The group-summary tool is throttled by design — verified
+    against its own output.** `docs/<region>/weekly-summary.txt` used to
+    read:
 
         What's happening in Mount Prospect this weekend (Sep 18–20):
         - Sep 18 — Oktoberfest
@@ -2681,15 +2683,34 @@ This pass went looking at distribution.
         See everything: https://withintenmiles.com/mount-prospect-60056/
         (Updated automatically, several times a week.)
 
-    The URL sits **in the post body**, which is precisely what Facebook
-    demotes, and it closes on a parenthetical when replies are the signal
+    The URL sat **in the post body**, which is precisely what Facebook
+    demotes, and it closed on a parenthetical when replies are the signal
     that earns reach.
-    Fix: emit it as **two clearly-labelled blocks** — a post body with no
-    URL that ends on a real question ("Anything I've missed this
-    weekend?"), and a separate first-comment block containing the link.
-    Item 33 was built to make distribution cost the owner thirty seconds;
-    this is the difference between those thirty seconds working and being
-    quietly throttled. Pure string formatting, no new dependency.
+    Fixed exactly as prescribed: `build_weekly_summary_txt()` now emits
+    **two clearly-labelled blocks** - a `POST` block with no URL that
+    ends on a real question ("Anything I've missed this weekend?"), and a
+    separate `FIRST COMMENT` block containing the link. Pure string
+    formatting, no new dependency, as this item called for. Confirmed
+    against the real generated output for Mount Prospect (the same
+    region this item quoted):
+
+        POST (paste this as your post - no link, so Facebook doesn't downrank it):
+
+        What's happening in Mount Prospect this weekend (Sep 18–20):
+
+        - Sep 18 — Oktoberfest
+        - Sep 19 — Fall Festival & Oktoberfest
+
+        Anything I've missed this weekend?
+
+        FIRST COMMENT (reply to your own post with this right after - the link goes here instead):
+
+        See everything: https://withintenmiles.com/mount-prospect-60056/
+        (Updated automatically, several times a week.)
+
+    2 new tests confirm the URL never appears before the `FIRST COMMENT`
+    label and the post body always ends on the question. 226 tests pass;
+    build exits 0.
 
 77. **Pitch the local press — the highest-yield action now available, and
     it needs Ryan.** A local-media mention is worth 100–500 subscribers in
@@ -2703,9 +2724,12 @@ This pass went looking at distribution.
     suburbs that pulls together the village, library, park district and
     school-district calendars nobody else aggregates. The site is live,
     the signup works, and Oktoberfest weekend just gave it a news hook.
-    **Add to Needs Ryan.** Worth drafting the pitch email into
-    `OUTREACH_TEMPLATES.md` alongside the sponsor ones so it is a
-    copy-paste rather than a writing task.
+    ⚠️ **Template drafted, sending still needs Ryan.** Added
+    "§7. Local press pitch" to `OUTREACH_TEMPLATES.md`, following the
+    same format as the sponsor templates, naming Journal & Topics and
+    the Daily Herald specifically. Sending it - picking a real reporter,
+    personalizing it, hitting send - is a human action this loop
+    shouldn't take on its own. **Added to Needs Ryan.**
 
 #### P2 (new)
 

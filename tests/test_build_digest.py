@@ -1363,6 +1363,30 @@ def test_build_weekly_summary_txt_honest_empty_state():
     assert "Nothing dated for this weekend yet" in result
 
 
+def test_build_weekly_summary_txt_keeps_the_link_out_of_the_post_body():
+    # ROADMAP.md Phase 11 #76: Facebook down-weights posts with an
+    # external link, so the URL must live only in the first-comment
+    # block, never in the post body the owner pastes as the post itself.
+    region = {"name": "Mount Prospect"}
+    events = [{"title": "Fall Fest", "date": "Aug 29", "url": "https://x/1"}]
+    result = build_digest.build_weekly_summary_txt(
+        region, events, [], "https://example.org/mount-prospect-60056/", "Aug 29–30"
+    )
+    post_section, comment_section = result.split("FIRST COMMENT")
+    assert "https://example.org/mount-prospect-60056/" not in post_section
+    assert "https://example.org/mount-prospect-60056/" in comment_section
+
+
+def test_build_weekly_summary_txt_post_ends_on_a_question():
+    # A reply to your own post is worth roughly 27x a like (same pass's
+    # research) - the post should invite that reply, not close on a
+    # parenthetical the way the old single-block format did.
+    region = {"name": "Mount Prospect"}
+    result = build_digest.build_weekly_summary_txt(region, [], [], "https://x/", "Aug 29–30")
+    post_section = result.split("FIRST COMMENT")[0]
+    assert post_section.strip().endswith("Anything I've missed this weekend?")
+
+
 def test_render_email_digest_lists_weekend_events():
     region = {"name": "Mount Prospect"}
     events = [{"title": "Fall Fest", "date": "Aug 29", "url": "https://x/1"}]
