@@ -88,6 +88,18 @@ def test_fetch_rss_parses_items(mock_get):
 
 
 @patch("fetchers.requests.get")
+def test_fetch_rss_resolves_relative_link_to_absolute(mock_get):
+    rss = (
+        '<?xml version="1.0"?><rss><channel>'
+        "<item><title>Board Meeting Tuesday</title><link>/board</link></item>"
+        "</channel></rss>"
+    )
+    mock_get.return_value = _mock_response(rss)
+    items = fetch_rss("https://example.org/rss")
+    assert items[0]["url"] == "https://example.org/board"
+
+
+@patch("fetchers.requests.get")
 def test_fetch_rss_fails_soft_on_error(mock_get):
     # None (not []) signals a transport failure - ROADMAP.md Phase 11 #55,
     # distinct from a real [] (fetched fine, found nothing).
@@ -220,6 +232,34 @@ def test_fetch_html_events_ahml_drupal_calendar_uses_reservation_link_pattern(mo
     assert titles == {"Senior Services & the Senior Center at the Farmer's Market"}
     assert "All Events" not in titles
     assert "Story Times" not in titles
+
+
+@patch("fetchers.requests.get")
+def test_fetch_html_events_resolves_relative_hrefs_to_absolute(mock_get):
+    # Real production bug (found 2026-09-16 via the RSS feed's generated
+    # output): AHML's Drupal calendar links with a page-relative href
+    # ("/scheduling/reservation/218675"), correct for a browser on
+    # ahml.info itself, but wrong once copied verbatim into this site's
+    # own pages/feed - a reader's browser resolves it against *this*
+    # site's domain instead, silently sending them to the wrong host.
+    html = (
+        '<h4 class="event_title">'
+        '<a class="use-ajax" href="/scheduling/reservation/218675">Baby Time</a>'
+        "</h4>"
+    )
+    mock_get.return_value = _mock_response(html)
+    items = fetch_html_events(
+        "https://www.ahml.info/attend/events", detail_link_pattern=r"scheduling/reservation/\d+"
+    )
+    assert items[0]["url"] == "https://www.ahml.info/scheduling/reservation/218675"
+
+
+@patch("fetchers.requests.get")
+def test_fetch_html_events_leaves_already_absolute_hrefs_unchanged(mock_get):
+    html = '<a href="https://example.org/event/12345">Real Event Here Today</a>'
+    mock_get.return_value = _mock_response(html)
+    items = fetch_html_events("https://example.org/events")
+    assert items[0]["url"] == "https://example.org/event/12345"
 
 
 @patch("fetchers.requests.get")

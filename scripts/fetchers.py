@@ -22,6 +22,7 @@ import re
 import xml.etree.ElementTree as ET
 from datetime import datetime, timezone
 from html.parser import HTMLParser
+from urllib.parse import urljoin
 
 import requests
 
@@ -87,7 +88,12 @@ def fetch_rss(url: str, limit: int = MAX_ITEMS_PER_SOURCE, **_ignored) -> list[d
                 {
                     "title": title,
                     "detail": description,
-                    "url": link,
+                    # RSS's own spec says <link> should already be
+                    # absolute, but urljoin is a no-op on one that already
+                    # is - cheap insurance against the same relative-href
+                    # bug fetch_html_events had (a page-relative link
+                    # meant for that site's own domain, not this one's).
+                    "url": urljoin(url, link) if link else link,
                     "date": pub_date,
                 }
             )
@@ -157,6 +163,10 @@ def fetch_ics(url: str, limit: int = MAX_ITEMS_PER_SOURCE, **_ignored) -> list[d
             e.pop("_sort_key", None)
             e.setdefault("detail", "")
             e.setdefault("url", "")
+            # Same defensive resolution as fetch_rss/fetch_html_events - a
+            # no-op if the ICS export's URL field is already absolute.
+            if e["url"]:
+                e["url"] = urljoin(url, e["url"])
         return upcoming[:limit]
     except Exception as exc:  # noqa: BLE001 - fail soft by design
         logger.warning("ICS fetch failed for %s: %s", url, exc)
@@ -264,6 +274,21 @@ def _nearby_date_hint(html: str, href: str, window: int = 800) -> str | None:
     return aria_matches[-1] if aria_matches else None
 
 
+def _resolve_urls(items: list[dict], base_url: str) -> list[dict]:
+    """A site's own HTML often links with a page-relative href (e.g. AHML's
+    Drupal calendar: `href="/scheduling/reservation/218675"`) rather than a
+    full URL - fine for a browser rendering that page, but wrong once it's
+    copied verbatim into this site's own pages/feed, where the reader's
+    browser resolves it against *this* site's domain instead. Resolved as
+    the very last step, after dedup/pattern-matching/_nearby_date_hint all
+    run against the original raw href, which is what they need to match
+    substrings in the source page's actual HTML.
+    """
+    for item in items:
+        item["url"] = urljoin(base_url, item["url"])
+    return items
+
+
 def fetch_html_events(
     url: str,
     limit: int = MAX_ITEMS_PER_SOURCE,
@@ -307,7 +332,7 @@ def fetch_html_events(
                     if not r.get("date"):
                         r["date"] = _nearby_date_hint(resp.text, r["url"])
                     deduped.append(r)
-            return deduped[:limit]
+            return _resolve_urls(deduped[:limit], url)
 
         # Fallback: crude keyword relevance filter, minus known nav labels.
         active_keywords = tuple(keywords) if keywords else DEFAULT_KEYWORDS
@@ -317,7 +342,7 @@ def fetch_html_events(
             if r["title"].lower() not in _NAV_LINK_DENYLIST
             and any(k in r["title"].lower() for k in active_keywords)
         ]
-        return candidates[:limit]
+        return _resolve_urls(candidates[:limit], url)
     except Exception as exc:  # noqa: BLE001 - fail soft by design
         logger.warning("HTML events fetch failed for %s: %s", url, exc)
         return None
