@@ -48,11 +48,15 @@
 # business owner had to create a GitHub account and file an issue in a
 # developer bug tracker. Set this to a real inbox to switch the CTA to a
 # mailto: with the same prefilled fields (see build_sponsor_cta_url() in
-# scripts/build_digest.py). Left unset deliberately - this is Ryan's own
-# contact address, not something the build loop should guess or invent;
-# it falls back to the GitHub issue (worse, but never a dead link) until
-# set. Same treatment as config/newsletter.yaml's buttondown_username.
-contact_email: ""
+# scripts/build_digest.py). Set 2026-09-16 at Ryan's explicit request,
+# after being left unset deliberately - this is his own contact address,
+# not something the build loop should guess or invent.
+#
+# Stated as "for now": this is a personal Gmail published on a public
+# page, so it will be scraped. Swapping it for a forwarded
+# hello@withintenmiles.com (Cloudflare Email Routing, free) is a one-line
+# change here once that is set up - no other code touches this value.
+contact_email: "andersonryant@gmail.com"
 
 default_house_ad:
   title: "Sponsor this spot"
