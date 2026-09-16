@@ -3547,6 +3547,21 @@ and exactly what a ticketing platform's listing will never contain.
     is sellable at any price** — which is why 94 and the press pitch
     outrank every monetisation item on this list.
 
+    ✅ **DONE.** Added "Compared to Nextdoor and Meta geo-ads" to
+    `SPONSOR_KIT.md`, right after the pricing table: names Nextdoor's
+    real $30–150/month featured-agent price against this tier's
+    ~$417/month up front rather than waiting to be caught by it, then
+    three honest differences (editorial placement vs. an ad slot, an
+    owned list vs. a rented audience, persistent assets vs. expiring
+    impressions) — and one explicit non-claim, that this isn't an
+    argument the price is low. Deliberately did *not* put the roadmap's
+    other point ("no tier is sellable at any price until there's an
+    audience number") into the customer-facing kit itself — true and
+    worth stating, but it belongs in this planning document's own
+    prioritization reasoning (which is exactly where it already lives,
+    two sentences up), not in a document written to make the sale.
+    Copy only — no code changes, no test/build cycle to run.
+
 #### P2 (new)
 
 96. **Name the Substack trade-off out loud, then keep Buttondown.** 40%

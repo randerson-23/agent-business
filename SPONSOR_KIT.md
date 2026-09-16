@@ -58,6 +58,30 @@ commitment.
 Payment: Venmo/Zelle/check. Annual and month-to-month options — no
 long-term contract on Weekly Spot or Event Promo, cancel anytime.
 
+## Compared to Nextdoor and Meta geo-ads
+
+**Neighborhood Authority costs more than a Nextdoor featured-agent slot
+in the same ZIP** ($30–150/month there vs. ~$417/month here) — worth
+naming ourselves rather than waiting for a prospect to bring it up:
+
+- **Editorial placement vs. an ad slot.** Nextdoor and Meta geo-ads sell
+  a slot beside other people's posts — a reader scrolls past it the
+  same way as any ad. This sells the single "Local Recommendation" a
+  reader opted in to receive, with no other business competing for the
+  same attention that week.
+- **An owned list vs. a rented audience.** Nextdoor's and Meta's
+  audiences are rented — reach depends on their algorithm and pricing,
+  which can both change without notice. A subscriber list is owned
+  outright and doesn't disappear if a platform changes its rules.
+- **Assets that persist vs. impressions that expire.** Annual Partner
+  and Neighborhood Authority both include a permanent directory
+  listing, a seasonal guide placement, and a live SEO backlink — these
+  keep working long after the campaign budget that paid for them is
+  gone. A Nextdoor or Meta impression is spent the moment it's shown.
+
+None of this is an argument that the price is low — it isn't. It's an
+argument for what the price buys instead of a cheaper, noisier ad slot.
+
 ## Who this is for
 
 Local, independently owned businesses serving families in Mount Prospect,
