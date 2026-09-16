@@ -1587,6 +1587,38 @@ def test_render_email_digest_lists_weekend_events():
     assert "Aug 29–30" in html
 
 
+def test_render_email_digest_body_type_meets_the_16px_mobile_floor():
+    # ROADMAP.md Phase 11 #97: 55%+ of opens are mobile and the stated
+    # floor is 16px, but event titles shipped at 15px and dates/details
+    # at 13px. Titles (and title-style links like a sponsor recommendation
+    # or an evergreen highlight) are 16px; secondary lines (dates,
+    # details, informational items, sponsor spotlight quotes) are 14px.
+    # Eyebrow labels/footer/wordmark are deliberately smaller kickers,
+    # not body copy, and are unaffected.
+    region = {"name": "Mount Prospect"}
+    events = [
+        {"title": "Fall Fest", "date": "Aug 29", "url": "https://x/1", "detail": "Live music."},
+        {"title": "Half-Day Student Attendance", "date": "Aug 29", "url": "https://x/2", "attendable": False},
+    ]
+    sponsor = {
+        "title": "Acme Dentistry",
+        "url": "https://x/3",
+        "detail": "Family dentistry",
+        "is_active_sponsor": True,
+        "spotlight": {"years_in_town": "Open since 1998."},
+    }
+    html = build_digest.render_email_digest(region, events, [], "https://x/", "Aug 29–30", sponsor)
+    assert "font-size:15px" not in html
+    # The wordmark ("WITHIN TEN") deliberately stays at 13px - a brand
+    # mark, not body copy - so this checks the specific event/sponsor
+    # rows rather than asserting no 13px survives anywhere in the file.
+    assert 'font-size:16px; color:#2b2318; padding-bottom:2px;">\n<a href="https://x/1"' in html
+    assert "font-size:14px; color:#96581f;" in html  # event date
+    assert "font-size:14px; color:#766a58; padding-top:2px;" in html  # event detail
+    assert "font-size:16px; color:#2b2318;\">\n<a href=\"https://x/3\"" in html  # sponsor title link
+    assert "Open since 1998." in html
+
+
 def test_render_email_digest_shows_the_event_detail_line():
     # ROADMAP.md Phase 11 #87: the row used to stop at title + date,
     # even though detail was already fetched, truncated, and passed
