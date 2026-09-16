@@ -1229,16 +1229,27 @@ produces evidence for that conversation.
     empty/evergreen-fallback states match `build_weekly_summary_txt`'s own
     logic. 224 tests pass; build exits 0.
 
-37. **Decide the newsletter platform deliberately, before item 24 locks it
-    in.** Item 24 currently assumes Buttondown, which was chosen for being
-    static-site-friendly, not after comparison. beehiiv deserves a look for
-    one specific reason: its ad marketplace functions as a sales agent —
-    brands are matched to newsletters and the publisher accepts in one
-    click — which is the only mechanism found in five passes that could
-    reduce sponsor *selling* time toward zero, and selling is the single
-    un-automated step left in `BUSINESS_PLAN.md`. It also takes 0% of paid
-    subscriptions against Substack's 10%. This is not a recommendation to
-    switch; it is a recommendation not to default.
+37. ⚠️ **Overtaken by events — the decision got made without the
+    deliberation this item asked for.** Decide the newsletter platform
+    deliberately, before item 24 locks it in. Item 24 currently assumes
+    Buttondown, which was chosen for being static-site-friendly, not
+    after comparison. beehiiv deserves a look for one specific reason:
+    its ad marketplace functions as a sales agent — brands are matched
+    to newsletters and the publisher accepts in one click — which is the
+    only mechanism found in five passes that could reduce sponsor
+    *selling* time toward zero, and selling is the single un-automated
+    step left in `BUSINESS_PLAN.md`. It also takes 0% of paid
+    subscriptions against Substack's 10%. This was not a recommendation
+    to switch; it was a recommendation not to default.
+    **What actually happened:** Ryan set `buttondown_username` and item 74
+    shipped the live capture form on 2026-09-16, ahead of that weekend's
+    Oktoberfest/Fall Festival traffic (item 70) - the platform is now
+    locked in by a real owner action, not a build-loop default. The
+    beehiiv ad-marketplace angle is real and still worth knowing, but
+    revisiting it now would mean migrating an account and a growing list
+    for a hypothetical, not a live problem. Recording as overtaken rather
+    than done: the deliberation this item wanted never happened, timing
+    just made the question moot.
 
 #### Recorded as skipped
 
@@ -2476,20 +2487,25 @@ the year.
     print or sponsor contracts — not after. Nothing needs changing on the
     site today; the name works as it stands.
 
-70. **The single biggest traffic weekend of the year is in three days,
-    and the email capture is inert.** Oktoberfest and the Fall Festival
-    will have locals searching for exactly what this site now lists, and
-    item 12's signup block is config-gated on a Buttondown username that
-    is still unset — so the one moment with real inbound attention
-    converts nobody. The research on festival-driven audience capture is
-    unanimous and unsurprising: a marquee event is when an owned audience
-    gets built, and the list is what every sponsor conversation turns on.
+70. ✅ **DONE — The single biggest traffic weekend of the year is in three
+    days, and the email capture is inert.** Oktoberfest and the Fall
+    Festival will have locals searching for exactly what this site now
+    lists, and item 12's signup block is config-gated on a Buttondown
+    username that is still unset — so the one moment with real inbound
+    attention converts nobody. The research on festival-driven audience
+    capture is unanimous and unsurprising: a marquee event is when an
+    owned audience gets built, and the list is what every sponsor
+    conversation turns on.
     This is a one-line owner action (`config/newsletter.yaml`), and unlike
     the domain it does **not** depend on anything else — a free Buttondown
     account takes minutes, and collecting addresses now works even though
     *sending* still waits on the domain for SPF/DKIM/DMARC (items 46, 47).
-    Collect now, send later. **Add it to the "Needs Ryan" block at the top
-    of Phase 11, above the domain, purely on timing.**
+    Collect now, send later.
+    **Resolved with time to spare:** `buttondown_username` was set
+    2026-09-16 (item 74) and the live form shipped the same day — two days
+    ahead of the Sept 18-19 Oktoberfest/Fall Festival weekend this item
+    was worried about missing entirely. The urgency that justified this
+    item's own existence is gone; nothing further to do here.
 
 #### P2 (new)
 
