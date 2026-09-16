@@ -204,15 +204,21 @@ have nothing pressing, pick the highest unclaimed `P1` item below. Mark items
 `✅ done (PR #N)` in place rather than deleting them, so the research loop
 doesn't re-suggest something already shipped.
 
-#### Needs Ryan (nineteenth pass, press-pitch row added — top on yield)
+#### Needs Ryan (twentieth pass, contact_email row closed out)
 
-Six items block on one person, each a minutes-long action with outsized
+Five items block on one person, each a minutes-long action with outsized
 consequences, and none was discoverable without reading the whole file.
 Consolidated here so the human's next few available minutes land on the
 right thing, instead of being scattered across ~2,000 lines. (The
 `buttondown_username` row that used to lead this table is gone - it got
-set between passes, item 74 shipped the live signup form on 2026-09-16,
-and the config file itself now says so.)
+set between passes, item 74 shipped the live signup form on 2026-09-16.
+The `contact_email:` row is gone too, for the same reason: Ryan set it
+directly on `main` on 2026-09-16, commit `d8fb8d7` - the sponsor page's
+"Open a sponsor inquiry" CTA now goes to a real inbox instead of a
+GitHub issue form. He flagged it as "for now" - a personal Gmail on a
+public page will get scraped, and swapping it for a forwarded
+`hello@withintenmiles.com` later is a one-line change, noted in the
+config file's own comment.)
 
 | Action | One line why | Unblocks |
 |---|---|---|
@@ -220,7 +226,6 @@ and the config file itself now says so.)
 | Verify `withintenmiles.com` in Google Search Console + import into Bing Webmaster Tools (item 73) | DNS verification is the durable method and Ryan now controls DNS, so this is unblocked for the first time - a new domain is invisible to search until it's announced, and no amount of on-page SEO substitutes. Steps: verify in GSC, submit `sitemap.xml` under Indexing → Sitemaps, then add the property in Bing Webmaster Tools by **importing from GSC**, which skips re-verification entirely. One session, maybe fifteen minutes, covers Google, Bing, Yahoo and DuckDuckGo at once. | The entire indexing/AI-citation effort (items 22, 39, 46, 72) - IndexNow (item 72, done) tells crawlers content changed, but this is what gets the domain into their index in the first place |
 | Confirm `withintenmiles.com` actually serves the site over HTTPS (item 39/46, domain registered 2026-09-15) | **DNS is done, confirmed twice now.** A direct DNS query (`socket.getaddrinfo`, not a web fetch - this sandbox's egress proxy only intercepts HTTP(S), not raw DNS) shows `withintenmiles.com` and `www.withintenmiles.com` both resolving to all four of GitHub Pages' real anycast IPs, identical to `randerson-23.github.io`'s own resolution, and the `pages-build-deployment` workflow has succeeded on every push since. What's still genuinely unconfirmed from here: whether HTTPS has finished provisioning and the custom domain field under Settings → Pages is saved - a same-hostname TLS handshake attempted from this sandbox returned this environment's own egress-proxy block page, not a real answer from GitHub, so that specific check is a dead end here. Worth an owner click-through to confirm the padlock. Still gates SPF/DKIM/DMARC either way, so it remains a hard prerequisite for the newsletter-sending cluster (24/31/36/37/47), not just findability. |
 | Add `withintenmiles.com` as Buttondown's sending domain and complete its "managed" DNS setup (item 47, verified 2026-09-16 against `docs.buttondown.com/sending-from-a-custom-domain`) | Buttondown authenticates mail (SPF/DKIM/DMARC) per-domain, and the exact records only exist once Ryan adds the domain inside Buttondown's own Settings - genuinely not something this loop can generate or guess. Buttondown recommends "managed" over "manual" for a new domain: add the two NS records it shows (delegating a subdomain to Buttondown) instead of copying individual TXT records, so Buttondown can rotate DKIM keys and sending infrastructure without Ryan touching DNS again. | Items 24/31 (actually sending) and the rest of item 47's deliverability checklist |
-| Set `contact_email:` in `config/sponsors.yaml` | One line. The sponsor page's only conversion point currently falls back to a GitHub "New issue" form (item 57) - a real local business owner won't sign up for that to buy a $1,200-5,000/year placement. Deliberately left unset by the build loop rather than guessing Ryan's address. | Real sponsor sign-ups (item 57) |
 | Run a real trademark search before spending money on the domain, signage, print, or sponsor contracts (item 69) | **Reduced, not eliminated, by the 2026-09-15 pivot to "Within Ten".** The name was changed *because* WebSearch found "PORCHLIGHT" is a registered mark (reg. 6028585) held by Porchlight Book Company, which publishes a newsletter to ~60,000 readers. A search for "Within Ten"/"WithinTen" turned up **no registered mark** - a materially cleaner starting point. But a web search is not a clearance search: it does not cover common-law use, similar-sounding marks, or state registrations, and it reads a fraction of what a real search does. Still worth the small cost before money is committed. | Spending safely on a domain, signage, print, sponsor contracts |
 
 #### Competitors reviewed (2026-08-27)
@@ -1932,8 +1937,8 @@ mobile render. Two of the four findings are on the revenue path.
 
 #### P1 (new)
 
-57. ⚠️ infrastructure shipped, blocked on Ryan's real contact address.
-    **The sponsor CTA sends a local dentist to GitHub.** Confirmed exactly
+57. ✅ **DONE — the block cleared 2026-09-16.** **The sponsor CTA sends a
+    local dentist to GitHub.** Confirmed exactly
     as reported: the page's single call to action linked to a GitHub "New
     issue" form, so buying a placement meant a realtor or an ice-cream
     shop owner creating a GitHub account and filing an issue in a
@@ -1952,10 +1957,16 @@ mobile render. Two of the four findings are on the revenue path.
     `contact_email` ships unset and the CTA keeps falling back to the
     GitHub issue (worse, but never a dead link) until he sets it — same
     treatment as `newsletter.yaml`'s `buttondown_username`. One line in
-    `config/sponsors.yaml` activates it. A hosted form (Tally, Google
-    Forms) is still the better second step whenever there's a moment to
-    set one up, but isn't something this loop can create on its own
-    either.
+    `config/sponsors.yaml` activates it.
+    **Ryan set `contact_email` directly on `main` on 2026-09-16** (commit
+    `d8fb8d7`) - the mailto: CTA is live now, real inbox and all. He
+    flagged it himself as "for now": a personal Gmail on a public page
+    gets scraped, and the config file's own comment now notes that
+    swapping it for a forwarded `hello@withintenmiles.com` (Cloudflare
+    Email Routing, free) later is a one-line change, no other code
+    touches the value. A hosted form (Tally, Google Forms) is still the
+    better second step whenever there's a moment to set one up, but
+    isn't something this loop can create on its own either.
 
 58. ✅ done, with an honesty caveat. **The money page states no audience
     numbers at all.** Confirmed: `/sponsor` asked $1,200–$5,000/year and
