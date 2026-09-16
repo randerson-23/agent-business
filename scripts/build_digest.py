@@ -1471,6 +1471,29 @@ def build_weekly_summary_txt(
     )
 
 
+def build_email_subject_line(region: dict, weekend_events: list[dict]) -> str:
+    """ROADMAP.md Phase 11 #80: settle the subject-line format before
+    there's a list whose open rates become a trend somebody judges,
+    since the habit calcifies the moment sending starts. Format: name
+    the town, lead with the specific, state the count - "This weekend
+    in Mount Prospect: Oktoberfest, a free fall fest, and 6 more."
+    is the pass's own example, but real event titles are used here
+    rather than inventing descriptive phrasing not grounded in the
+    actual data - clarity over cleverness stays true either way, and a
+    real title is never wrong the way a guessed paraphrase could be.
+    """
+    name = region["name"]
+    titles = [e["title"] for e in weekend_events]
+    if not titles:
+        return f"This weekend in {name}: what's coming up"
+    if len(titles) == 1:
+        return f"This weekend in {name}: {titles[0]}"
+    if len(titles) == 2:
+        return f"This weekend in {name}: {titles[0]} and {titles[1]}"
+    more = len(titles) - 2
+    return f"This weekend in {name}: {titles[0]}, {titles[1]}, and {more} more"
+
+
 def render_email_digest(
     region: dict,
     weekend_events: list[dict],
@@ -1498,6 +1521,7 @@ def render_email_digest(
         region_url=region_url,
         weekend_date_range=weekend_date_range,
         sponsor=sponsor,
+        subject_line=build_email_subject_line(region, weekend_events),
     )
 
 

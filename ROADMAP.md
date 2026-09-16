@@ -2838,7 +2838,7 @@ it, so this pass researched what actually goes in the thing.
 
 #### P1 (new)
 
-79. **Make the newsletter's sponsor slot a mini-interview, not a banner.**
+82. **Make the newsletter's sponsor slot a mini-interview, not a banner.**
     The recommended section list for local newsletters includes a business
     spotlight built around a short owner interview — which means the
     highest-value content and the monetisation are the same block. That is
@@ -2856,23 +2856,40 @@ it, so this pass researched what actually goes in the thing.
 
 #### P2 (new)
 
-80. **Fix the send time and subject-line format before the first send,
-    not after.** This refines item 31 rather than replacing it: the
-    fourth pass's "Thursday afternoon" came from two analogues; the
-    broader data says **Thursday evening or early Friday**, with opens
-    concentrated 3–7pm. Either is defensible — the point is that a
+83. ✅ **DONE (subject-line half only — send time is a scheduling decision,
+    not code) — Fix the send time and subject-line format before the
+    first send, not after.** This refines item 31 rather than replacing
+    it: the fourth pass's "Thursday afternoon" came from two analogues;
+    the broader data says **Thursday evening or early Friday**, with
+    opens concentrated 3–7pm. Either is defensible — the point is that a
     predictable cadence tied to a routine moment is itself worth roughly
-    34% opens, so pick one and never move it.
+    34% opens, so pick one and never move it. **Send time is a real
+    scheduling decision Ryan makes when item 24 ships, not something to
+    hardcode now — left open.**
     Subject lines: under 20 words, clarity over cleverness, no all-caps or
     exclamation stacking. A format that satisfies all of it:
     *"This weekend in Mount Prospect: Oktoberfest, a free fall fest, and 6
     more."* Names the town, leads with the specific, states the count.
     Worth settling now because subject-line habits calcify the moment a
     list exists and open rates become a trend somebody is judging.
+    **Implemented as `build_email_subject_line()` in
+    `scripts/build_digest.py`**, using real event titles rather than
+    inventing descriptive phrasing like "a free fall fest" not grounded
+    in the actual data - a real title is never wrong the way a guessed
+    paraphrase could be, and clarity-over-cleverness holds either way.
+    Wired into `render_email_digest()` and shown two places in
+    `email-preview.html`: the `<title>` tag (visible in a browser tab)
+    and a clearly-labelled "PREVIEW ONLY, NOT PART OF THE EMAIL" note at
+    the top of the body, matching `weekly-summary.txt`'s own POST/FIRST
+    COMMENT label pattern - Buttondown sending is a manual step, so the
+    owner needs to actually see the exact subject to paste in. Verified
+    with a real local build and a Playwright screenshot; 6 new tests
+    cover the 0/1/2/3+ event cases and the honest empty state. 238 tests
+    pass; build exits 0.
 
 #### P3 (new) — a re-rank, and a recommendation against
 
-81. **Reddit is lower-yield here than it looks — don't build a strategy
+84. **Reddit is lower-yield here than it looks — don't build a strategy
     for it.** Local subreddits rank well in Google and the audience is
     exactly right, which makes this tempting. The rules are the problem:
     the 90/10 norm, 9–19 genuine contributions between promotional posts,
@@ -2893,6 +2910,14 @@ The previous pass was dated **2026-09-17** in its heading. It ran on
 **2026-09-16** at 06:33 UTC. Corrected in place — this file is the
 continuity record for two loops, and "what was known when" is most of
 what makes it useful.
+
+**This pass's own items 79/80/81 collided with numbers the build loop
+had already used an hour earlier** (79: the RSS feed; 80: the relative-
+URL bug fix) - the research loop numbers sequentially from what it last
+read, not knowing what the build loop shipped in between. Renumbered in
+place to 82/83/84 (the mini-interview idea, the subject-line item, and
+the Reddit re-rank respectively) so nothing in this file points at two
+different things under one number.
 
 ## Working agreements for autonomous iteration
 

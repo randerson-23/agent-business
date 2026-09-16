@@ -1428,6 +1428,40 @@ def test_build_weekly_summary_txt_post_ends_on_a_question():
     assert post_section.strip().endswith("Anything I've missed this weekend?")
 
 
+def test_build_email_subject_line_names_town_and_leads_with_specific():
+    region = {"name": "Mount Prospect"}
+    events = [
+        {"title": "Oktoberfest", "date": "Sep 18", "url": "https://x/1"},
+        {"title": "Fall Festival", "date": "Sep 19", "url": "https://x/2"},
+        {"title": "Story Time", "date": "Sep 19", "url": "https://x/3"},
+    ]
+    subject = build_digest.build_email_subject_line(region, events)
+    assert subject == "This weekend in Mount Prospect: Oktoberfest, Fall Festival, and 1 more"
+
+
+def test_build_email_subject_line_handles_exactly_two_events():
+    region = {"name": "Mount Prospect"}
+    events = [
+        {"title": "Oktoberfest", "date": "Sep 18", "url": "https://x/1"},
+        {"title": "Fall Festival", "date": "Sep 19", "url": "https://x/2"},
+    ]
+    subject = build_digest.build_email_subject_line(region, events)
+    assert subject == "This weekend in Mount Prospect: Oktoberfest and Fall Festival"
+
+
+def test_build_email_subject_line_handles_a_single_event():
+    region = {"name": "Mount Prospect"}
+    events = [{"title": "Oktoberfest", "date": "Sep 18", "url": "https://x/1"}]
+    subject = build_digest.build_email_subject_line(region, events)
+    assert subject == "This weekend in Mount Prospect: Oktoberfest"
+
+
+def test_build_email_subject_line_honest_empty_state():
+    region = {"name": "Mount Prospect"}
+    subject = build_digest.build_email_subject_line(region, [])
+    assert subject == "This weekend in Mount Prospect: what's coming up"
+
+
 def test_render_email_digest_lists_weekend_events():
     region = {"name": "Mount Prospect"}
     events = [{"title": "Fall Fest", "date": "Aug 29", "url": "https://x/1"}]
@@ -1435,6 +1469,15 @@ def test_render_email_digest_lists_weekend_events():
     assert "Fall Fest" in html
     assert "Mount Prospect" in html
     assert "Aug 29–30" in html
+
+
+def test_render_email_digest_shows_the_subject_line_for_the_owner_to_copy():
+    region = {"name": "Mount Prospect"}
+    events = [{"title": "Fall Fest", "date": "Aug 29", "url": "https://x/1"}]
+    html = build_digest.render_email_digest(region, events, [], "https://x/", "Aug 29–30", None)
+    subject = build_digest.build_email_subject_line(region, events)
+    assert f"<title>{subject}</title>" in html
+    assert subject in html.split("</title>")[1]  # also shown in the visible body, not just <title>
 
 
 def test_render_email_digest_falls_back_to_free_evergreen_when_nothing_dated():
