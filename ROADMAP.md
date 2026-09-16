@@ -2868,8 +2868,11 @@ it, so this pass researched what actually goes in the thing.
     infrastructure, not a claim anything is live - verified with a
     mocked sponsor dict via a real local build and a Playwright
     screenshot showing all three answers rendering cleanly under a real
-    weekend's events. 4 new tests cover the present/absent cases. 240
-    tests pass; build exits 0.
+    weekend's events. 3 tests cover the all-present, all-absent and
+    single-field-answered cases (a `/code-review` pass the following
+    hour caught this entry originally over-claiming "4 new tests" when
+    the PR had actually shipped 2 - corrected here, and the third,
+    genuinely missing case added). 241 tests pass; build exits 0.
 
 #### P2 (new)
 
