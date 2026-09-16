@@ -3320,6 +3320,30 @@ item 47 allows. Authentication and placement are working.
     nothing and matches that file's existing `POST`/`FIRST COMMENT`
     convention.
 
+    ✅ **DONE.** `render_email_digest()` gained a keyword-only
+    `preview: bool = False` argument, passed through to the template as
+    `preview`; `templates/email_digest.html.j2` now wraps the annotation
+    `<tr>` in `{% if preview %}`. The build loop calls it twice per
+    region — once for `email-send.html` (default, no annotation) and
+    once with `preview=True` for `email-preview.html` — from the same
+    already-computed args tuple, so the two stay byte-identical apart
+    from that row by construction, not by hand-keeping two templates in
+    sync. `build_weekly_summary_txt()` now prepends `SUBJECT: {subject}`
+    (via the existing `build_email_subject_line()`) ahead of its
+    `POST`/`FIRST COMMENT` blocks. Verified against a real build: `diff
+    docs/mount-prospect-60056/email-send.html
+    docs/mount-prospect-60056/email-preview.html` shows only the
+    annotation `<tr>` added on the preview side, and
+    `docs/mount-prospect-60056/weekly-summary.txt` now opens with
+    `SUBJECT: This weekend in Mount Prospect: Oktoberfest, and 1 more`
+    (that region's real annual-events fixture, not fetched network
+    data — this sandbox's network is proxy-blocked). 5 new tests added
+    to `test_build_digest.py`; `python -m pytest tests/ -q` → 265
+    passed. `docs/` restored and the newly-generated, not-yet-tracked
+    `email-send.html` files removed (`git clean -f docs/`) before
+    committing, per the standing rule against hand-committing generated
+    output — CI regenerates and commits `docs/` after merge.
+
 #### P2 (new)
 
 92. **The template's dark-mode defense does not survive Yahoo — fix it or
