@@ -87,6 +87,13 @@ LAUNCH_DATE = date(2026, 8, 26)
 # follow-up, entity-naming audit).
 SITE_NAME = "Within Ten"
 
+# The stable @id for the Organization entity every page's WebSite node
+# references (ROADMAP.md Phase 11 #99) - defined fully once, on the
+# About page, and pointed to by @id everywhere else rather than
+# re-declared, the standard schema.org pattern for one entity spanning
+# many pages.
+ORGANIZATION_ID = SITE_BASE_URL + "about/#organization"
+
 
 def load_yaml(path: Path) -> dict:
     with path.open("r", encoding="utf-8") as f:
@@ -653,6 +660,27 @@ def build_sponsor_availability(sponsors_cfg: dict, region_summaries: list[dict])
     return availability
 
 
+def render_about_page(now: datetime, analytics: dict | None = None) -> str:
+    """A real About page (ROADMAP.md Phase 11 #99) - the entity-clarity
+    work item 22's GEO strategy was missing: who publishes this, why it
+    exists, and how it's built, stated plainly for a reader or a
+    crawler rather than left to infer. Also the canonical page where
+    the Organization JSON-LD entity is fully defined (see
+    build_organization_json_ld) - every other page's WebSite node
+    references it by @id instead of re-declaring it.
+    """
+    env = Environment(loader=FileSystemLoader(str(TEMPLATES_DIR)), autoescape=True)
+    template = env.get_template("about.html.j2")
+    return template.render(
+        hub_url=SITE_BASE_URL,
+        canonical_url=SITE_BASE_URL + "about/",
+        generated_at=now.strftime("%Y-%m-%d %H:%M UTC"),
+        analytics=analytics,
+        og_image_url=SITE_BASE_URL + "og/default.png",
+        organization_json_ld=build_organization_json_ld(),
+    )
+
+
 def render_sponsor_page(
     availability: list[dict],
     now: datetime,
@@ -903,6 +931,12 @@ def build_freshness_json_ld(region: dict, canonical_url: str, now: datetime) -> 
     ROADMAP.md Phase 11 #22 follow-up. Without it, a search/AI crawler
     has to infer "these are all the same site" purely from repeated
     title-string matches; this states it directly.
+
+    The WebSite's `publisher` is a reference (`@id` only) to the
+    Organization entity fully defined on the About page
+    (build_organization_json_ld, item 99) - who publishes this, not
+    just what the site is called, is the entity-authority signal the
+    item 98 correction found actually decides AI citation.
     """
     payload = {
         "@context": "https://schema.org",
@@ -910,7 +944,34 @@ def build_freshness_json_ld(region: dict, canonical_url: str, now: datetime) -> 
         "name": f"{region['name']} — {SITE_NAME}",
         "url": canonical_url,
         "dateModified": now.isoformat(),
-        "isPartOf": {"@type": "WebSite", "name": SITE_NAME, "url": SITE_BASE_URL},
+        "isPartOf": {
+            "@type": "WebSite",
+            "name": SITE_NAME,
+            "url": SITE_BASE_URL,
+            "publisher": {"@id": ORGANIZATION_ID},
+        },
+    }
+    return json.dumps(payload, ensure_ascii=False).replace("</", "<\\/")
+
+
+def build_organization_json_ld() -> str:
+    """The Organization entity every other page's WebSite node points at
+    by `@id` (ROADMAP.md Phase 11 #99) - fully defined only here, on the
+    About page, matching the standard schema.org pattern for one entity
+    referenced across many pages rather than re-declared on each.
+
+    Deliberately no `logo` or `sameAs`: neither exists yet (no logo
+    asset in this repo, no real social/directory profile), and
+    inventing either would break the same never-fabricate-a-fact
+    discipline every other structured-data function in this file holds
+    itself to.
+    """
+    payload = {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "@id": ORGANIZATION_ID,
+        "name": SITE_NAME,
+        "url": SITE_BASE_URL,
     }
     return json.dumps(payload, ensure_ascii=False).replace("</", "<\\/")
 
@@ -1261,7 +1322,7 @@ def build_og_images(region_summaries: list[dict]) -> dict[str, Image.Image]:
 
 
 def collect_sitemap_urls(region_summaries: list[dict]) -> list[str]:
-    urls = [SITE_BASE_URL, SITE_BASE_URL + "this-weekend/", SITE_BASE_URL + "sponsor/"]
+    urls = [SITE_BASE_URL, SITE_BASE_URL + "this-weekend/", SITE_BASE_URL + "sponsor/", SITE_BASE_URL + "about/"]
     for r in region_summaries:
         base = SITE_BASE_URL + r["path"]
         urls += [base, base + "this-weekend/", base + "today/", base + "free/", base + "directory/"]
@@ -1372,6 +1433,7 @@ def build_llms_txt(region_summaries: list[dict]) -> str:
     if guide_lines:
         lines += ["", "## Guides"] + guide_lines
     lines += ["", "## Sponsorship", f"- [Sponsor a region]({SITE_BASE_URL}sponsor/)"]
+    lines += ["", "## About", f"- [Who publishes this, and why]({SITE_BASE_URL}about/)"]
     lines += ["", "## Feed", f"- [RSS: upcoming events across every region]({SITE_BASE_URL}feed.xml)"]
     return "\n".join(lines) + "\n"
 
@@ -1963,6 +2025,12 @@ def main() -> None:
     sponsor_dir.mkdir(parents=True, exist_ok=True)
     (sponsor_dir / "index.html").write_text(sponsor_html, encoding="utf-8")
     logger.info("Wrote %s", sponsor_dir / "index.html")
+
+    about_html = render_about_page(now, analytics)
+    about_dir = OUTPUT_DIR / "about"
+    about_dir.mkdir(parents=True, exist_ok=True)
+    (about_dir / "index.html").write_text(about_html, encoding="utf-8")
+    logger.info("Wrote %s", about_dir / "index.html")
 
     sitemap_urls = collect_sitemap_urls(region_summaries)
     (OUTPUT_DIR / "sitemap.xml").write_text(build_sitemap_xml(region_summaries, now), encoding="utf-8")
