@@ -3372,6 +3372,56 @@ item 47 allows. Authentication and placement are working.
     Whichever is chosen, **update that comment** — it is load-bearing
     documentation for anyone who touches this file next.
 
+    ✅ **DONE** (partial coverage, honestly documented). Took the first
+    option: implemented both known handles rather than redesigning a
+    palette that inverts acceptably, since restoring the *existing*
+    brand colors needs no new design work and no new untested judgment
+    call about what "acceptable" inverted colors would even look like.
+    Added a `<style>` block in `<head>` with two rule sets, each
+    restating colors already set inline (nothing new to design): a
+    `[data-ogsc]`/`[data-ogsb]` set (Outlook.com's rewriter adds these
+    attributes to `<body>` when it force-applies its own colors) and a
+    `@media (prefers-color-scheme: dark)` set, both keyed to nine new
+    `wt-*` utility classes (`wt-bg`, `wt-card`, `wt-card-sponsor`,
+    `wt-cta-bg`, `wt-ink`, `wt-muted`, `wt-accent`, `wt-brand`,
+    `wt-border`) added alongside the existing inline styles on every
+    colored element, title link, card, and border in the template.
+    `!important` is required and used throughout — a stylesheet
+    `!important` rule beats a non-important inline style in the CSS
+    cascade, which is the whole mechanism this depends on.
+
+    Verified the testable half for real rather than trusting the CSS by
+    inspection: rendered the actual generated
+    `docs/mount-prospect-60056/email-send.html` in headless Chromium
+    (Playwright, pre-installed in this sandbox) with
+    `page.emulate_media(color_scheme="dark")` and read back computed
+    styles — `body` background `rgb(246, 239, 225)` (`#f6efe1`), `.wt-
+    card` background `rgb(255, 252, 245)` (`#fffcf5`), `.wt-ink` color
+    `rgb(43, 35, 24)` (`#2b2318`), `.wt-cta-bg` background `rgb(82, 107,
+    63)` (`#526b3f`) — every one the original light value, not an
+    invert. Ran a control to rule out a false positive (Chromium simply
+    ignoring the media query rather than the rule genuinely firing):
+    changed the dark-mode rule's color to red in a scratch copy, same
+    emulation, and the computed background came back `rgb(255, 0, 0)` —
+    confirms the mechanism is live, not coincidental. Did **not** add
+    this as an automated pytest test, and said so directly in the
+    template's own comment: it would make Playwright and a browser
+    binary a CI dependency for one template's worth of coverage, which
+    is a worse trade than a manually-verified, documented check. The
+    `[data-ogsc]`/`[data-ogsb]` half has no equivalent verification and
+    the comment says so too — Outlook.com's rewriter is proprietary and
+    this sandbox cannot open a real client, so that half rests on
+    documented third-party reports of the attribute names, not a
+    confirmed render. Rewrote the header comment end to end to make
+    exactly this distinction (what's fixed for Gmail/anything honoring
+    `color-scheme`, what's mitigated-and-verified for
+    `prefers-color-scheme` clients, what's mitigated-but-unverified for
+    Outlook.com, what's still a known gap for Yahoo/AOL) rather than the
+    blanket guarantee that shipped before. `python -m pytest tests/ -q`
+    → 266 passed (unchanged - no new automated test, by the above
+    reasoning); `python scripts/build_digest.py` → real build, `docs/`
+    restored after.
+
 93. **A `From:` address that cannot receive replies is a liability, not
     just an inconvenience.** Buttondown sends as
     `hello@withintenmiles.com`. Resolver queries confirm
