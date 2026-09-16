@@ -845,6 +845,28 @@ Angles reviewed this pass:
     Best Things to Do" piece decays the moment it's published; this
     doesn't. That is arguably the strongest moat in the whole business,
     and until this PR it was an accident rather than a strategy.
+    **Correction (twenty-second research pass, item 98) — the premise
+    at the top of this item overstated its case.** "AI Overviews trigger
+    on roughly half of all queries" is true in aggregate (~47%) but
+    misleading here: **local-intent queries trigger them at ~7%, local
+    event queries at ~15%** — a third of the implied opportunity, not
+    half. Separately, and more importantly: Google has **explicitly
+    stated no Google Search system reads or acts on `llms.txt`**, no
+    major AI provider has committed to reading it as of Q1 2026, and AI
+    crawlers largely are not fetching it at all. `llms.txt` should not
+    have been counted as meaningful progress toward this item's goal —
+    it cost nothing to build (`build_llms_txt()` derives it from data
+    already computed for the sitemap, so it isn't being removed; dead
+    code that costs nothing and can't drift is harmless) but it bought
+    less citation than claimed. The `robots.txt` crawler allow-listing
+    and the `FAQPage`/`Event`/`WebSite` schema work above are unaffected
+    by this correction — allowing crawlers that do exist, and giving
+    them real structured data to read, are both real; a convention file
+    that nothing reads is the only piece that wasn't. What the same
+    research says actually decides AI citation — content structure,
+    claim clarity, and **entity authority** — is genuine remaining work,
+    not yet done here, and is spun out as item 99 below rather than
+    bundled into this correction.
 
 23. ✅ done (PR #41) — **Analytics — the first number every sponsor will
     ask for.** `config/analytics.yaml` holds a `goatcounter_code`, gated
@@ -3673,6 +3695,49 @@ and exactly what a ticketing platform's listing will never contain.
     The robots.txt half of item 22 — explicitly naming GPTBot,
     ClaudeBot, OAI-SearchBot and the rest — stands. Allowing crawlers
     that do exist is unaffected by a convention file that nothing reads.
+
+    ✅ **DONE.** Added a correction block directly inside item 22 above
+    (not a silent edit — the original text stands, with a dated
+    correction appended, matching this file's own established pattern
+    from the seventh research pass's FAQPage correction) covering the
+    first three bullets: kept `llms.txt` (already true — it's derived,
+    self-maintaining, zero marginal cost, nothing to gain by deleting
+    it), stated plainly that it shouldn't have counted as progress, and
+    corrected the ~50%-of-queries premise to the real ~7%/~15% local
+    figures. The fourth bullet — moving effort to entity clarity
+    (`Organization` schema, a real About page) — is genuine new work,
+    not a documentation fix, so it is **not** implemented in this same
+    pass: bundling a real feature into a retraction would blur which
+    part is "fixing a false claim" and which part is "shipping
+    something new." Spun out as item 99 below instead, in this pass, so
+    the concrete next step exists rather than being left as a sentence
+    inside a correction no one re-reads. Copy only in this item itself —
+    no code changes, no test/build cycle to run.
+
+99. **Add `Organization` schema and a real About page — the entity-
+    clarity work item 22 should have been pointing at.** Item 98's
+    retraction found the actual lever for AI-search citation is content
+    structure, claim clarity, and entity authority, not organic rank or
+    a convention file nothing reads. The site already has real
+    structured data (`Event`, `FAQPage`, `WebSite`) and a consistent
+    `SITE_NAME` (item 22's PR #49); what's missing is the thing that
+    tells a crawler or an AI *who* is publishing all of it and *why
+    they should trust it* — exactly the kind of signal a four-day-old
+    domain can win on a level field, unlike out-ranking Eventbrite for
+    "things to do this weekend."
+
+    Concretely: an `Organization` JSON-LD block (name, url, logo if one
+    exists, `sameAs` for any real social/directory profile) referenced
+    from each page's existing `WebSite`/`WebPage` graph via `publisher`,
+    plus a genuine About page — who runs this, why it exists, how it's
+    built (the automated-freshness story item 22 already tells is
+    itself a real trust signal, not filler) — linked from the site
+    footer/nav so it's discoverable, not an orphan page. No fabricated
+    facts: whatever the About page states about who/why has to be true
+    and sourced from what this file already knows (the owner, the
+    ZIP-based service area, the automated weekly rebuild), the same
+    discipline every other GEO item in this file already holds itself
+    to.
 
 ## Working agreements for autonomous iteration
 
