@@ -181,3 +181,33 @@ similar.
 Thanks for your time either way,
 [Your name]
 Within Ten — https://withintenmiles.com/
+
+## 8. Trade a mention for a mention (ROADMAP.md Phase 11 #94)
+
+Send to 3–5 local businesses a month — the same dentist/ice cream
+shop/tutoring centre list `BUSINESS_PLAN.md` names as the target sponsor
+list, since this warms them up for the Annual Partner pitch later. Costs
+the business nothing and asks for nothing overt, which is exactly why it
+works as a first touch: no pitch to resist, just a mention to enjoy. Run
+it again next month with five different businesses — unlike the press
+pitch (template 7), this one's repeatable. Send only after a real issue
+has gone out (item 89) — the offer is "here's what we said about you,"
+which needs a real thing to point to, not "here's what we'll say."
+
+Subject: We mentioned [Business Name] in this week's Within Ten
+
+Hi [Owner Name],
+
+I run **Within Ten**, a free weekly guide to what's happening in [Mount
+Prospect / Arlington Heights / Des Plaines / Palatine], and I gave
+[Business Name] a mention in this week's issue: [link to the
+issue/section]. No ask attached — I just think local families here
+should know about you.
+
+If you'd be open to it, a quick share to your own list or followers
+would introduce Within Ten to people who'd genuinely use it — but that's
+entirely up to you, and the mention stands either way.
+
+Thanks for what you do for this town,
+[Your name]
+Within Ten — https://withintenmiles.com/
