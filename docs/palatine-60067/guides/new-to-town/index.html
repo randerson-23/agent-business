@@ -397,6 +397,19 @@
   }
   .card:hover { transform: translateY(-3px); box-shadow: var(--shadow-lift); }
   .card.hidden { display: none; }
+  /* ROADMAP.md Phase 11 #90: a school half-day or office closure is real
+     and belongs on the page, but must read as secondary to an actual
+     event - muted fill, no lift-on-hover (there's nothing to click into
+     planning), and no star, since My Weekend is for things to attend. */
+  .card-informational { background: var(--bg); box-shadow: none; }
+  .card-informational:hover { transform: none; box-shadow: none; }
+  .card-informational .informational-label {
+    color: var(--muted);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
   .tray-star {
     position: absolute;
     top: 10px;
@@ -671,6 +684,7 @@
           
           
           
+          
           <h3><a href="https://www.palatine.il.us/667/New-Residents">Village services, utilities, refuse &amp; recycling</a></h3>
           <p class="detail">There&#39;s no vehicle sticker to buy — Palatine eliminated its program in 2022, saving households an average of $75. Water/sewer is billed bi-monthly by the Village (Utility Billing, 847-359-9082); refuse, recycling, and yard waste (April-November) are collected weekly by Groot — put everything at the curb by 6:30 a.m. on your collection day.</p>
           
@@ -679,6 +693,7 @@
         
         
         <div class="card" data-tags="indoor,kid_friendly,free">
+          
           
           
           
@@ -697,6 +712,7 @@
           
           
           
+          
           <h3><a href="https://www.palatineparks.org/">Register for Palatine Park District programs</a></h3>
           <p class="detail">Most residents set up one household account, then register for pools, rec classes, and seasonal programs individually — browse the current program guide to get started.</p>
           
@@ -712,6 +728,7 @@
           
           
           
+          
           <h3><a href="https://www.ccsd15.net/registration">Community Consolidated School District 15 (elementary &amp; middle school)</a></h3>
           <p class="detail">CCSD 15 is the third-largest elementary district in Illinois, covering all or part of seven towns (Palatine, Rolling Meadows, Hoffman Estates, Inverness, South Barrington, Arlington Heights, and Schaumburg) — confirm your specific address, since boundaries cross village lines. District office: (847) 963-3000.</p>
           
@@ -720,6 +737,7 @@
         
         
         <div class="card" data-tags="">
+          
           
           
           
@@ -791,7 +809,7 @@
   <footer>
     Local business? See the
     <a href="https://withintenmiles.com/sponsor/">sponsor page</a>.
-    <br>Generated 2026-09-16 16:57 UTC.
+    <br>Generated 2026-09-16 19:01 UTC.
     
     <br><a href="https://withintenmiles.com/palatine-60067/weekly-summary.txt">Copy this week's summary</a> — a plain-text block ready to paste into a local group.
   </footer>
@@ -817,7 +835,7 @@
 
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "How current is this guide?", "acceptedAnswer": {"@type": "Answer", "text": "It's regenerated automatically from the village, library, and park district's own listings, typically several times a week - not a one-time write-up that goes stale."}}, {"@type": "Question", "name": "Is this every event or business, or just what's listed here?", "acceptedAnswer": {"@type": "Answer", "text": "Only what the linked public sources publish. For full details, hours, or anything not listed here, check the official page each item links to."}}, {"@type": "Question", "name": "How do I see what's happening in Palatine this specific weekend?", "acceptedAnswer": {"@type": "Answer", "text": "See the <a href=\"https://withintenmiles.com/palatine-60067/this-weekend/\">weekend view<\/a>, which only shows items with a known date in the coming Friday-Sunday."}}, {"@type": "Question", "name": "Can I add an event, or suggest a business for the directory?", "acceptedAnswer": {"@type": "Answer", "text": "Yes - <a href=\"https://github.com/randerson-23/agent-business/issues/new?template=event-submission.yml\">submit an event<\/a> and a person reviews it before it goes live, or a business owner can <a href=\"https://withintenmiles.com/sponsor/\">inquire about a listing<\/a>."}}]}</script>
 
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebPage", "name": "Palatine — Within Ten", "url": "https://withintenmiles.com/palatine-60067/guides/new-to-town/", "dateModified": "2026-09-16T16:57:35.140357+00:00", "isPartOf": {"@type": "WebSite", "name": "Within Ten", "url": "https://withintenmiles.com/"}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebPage", "name": "Palatine — Within Ten", "url": "https://withintenmiles.com/palatine-60067/guides/new-to-town/", "dateModified": "2026-09-16T19:01:35.426175+00:00", "isPartOf": {"@type": "WebSite", "name": "Within Ten", "url": "https://withintenmiles.com/"}}</script>
 <script>
 (function () {
   var activeTags = new Set();

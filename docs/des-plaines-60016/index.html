@@ -397,6 +397,19 @@
   }
   .card:hover { transform: translateY(-3px); box-shadow: var(--shadow-lift); }
   .card.hidden { display: none; }
+  /* ROADMAP.md Phase 11 #90: a school half-day or office closure is real
+     and belongs on the page, but must read as secondary to an actual
+     event - muted fill, no lift-on-hover (there's nothing to click into
+     planning), and no star, since My Weekend is for things to attend. */
+  .card-informational { background: var(--bg); box-shadow: none; }
+  .card-informational:hover { transform: none; box-shadow: none; }
+  .card-informational .informational-label {
+    color: var(--muted);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
   .tray-star {
     position: absolute;
     top: 10px;
@@ -754,8 +767,11 @@
           <!-- ROADMAP.md Phase 11 #63: My Weekend is for dated events -
                offering to add "Find your school district" or a guide's
                own title to it made no sense, since guide items and the
-               guide index have nothing to do with weekend planning. -->
+               guide index have nothing to do with weekend planning.
+               #90: nor does a school half-day belong in it - it's real
+               and worth knowing, but nobody plans a weekend around one. -->
           <button type="button" class="tray-star" data-item='{"date": "Sep 18", "date_iso": "2026-09-18T00:00:00", "detail": "Carnival rides, live bands, food \u0026 drink at Lake Park. 6\u201311pm, 2200 Lee St. Free admission.", "id": "https://desplainesfallfest.org/", "region_name": "Des Plaines", "region_url": "https://withintenmiles.com/des-plaines-60016/", "title": "Des Plaines Fall Fest (Friday)", "url": "https://desplainesfallfest.org/"}' aria-pressed="false" aria-label="Add Des Plaines Fall Fest (Friday) to My Weekend">☆</button>
+          
           
           
           <div class="date">Sep 18</div>
@@ -780,8 +796,11 @@
           <!-- ROADMAP.md Phase 11 #63: My Weekend is for dated events -
                offering to add "Find your school district" or a guide's
                own title to it made no sense, since guide items and the
-               guide index have nothing to do with weekend planning. -->
+               guide index have nothing to do with weekend planning.
+               #90: nor does a school half-day belong in it - it's real
+               and worth knowing, but nobody plans a weekend around one. -->
           <button type="button" class="tray-star" data-item='{"date": "Sep 19", "date_iso": "2026-09-19T00:00:00", "detail": "Carnival rides, rock wall, petting zoo, food \u0026 10 live bands at Lake Park. Noon\u201311pm, 2200 Lee St. Free admission.", "id": "https://desplainesfallfest.org/", "region_name": "Des Plaines", "region_url": "https://withintenmiles.com/des-plaines-60016/", "title": "Des Plaines Fall Fest (Saturday)", "url": "https://desplainesfallfest.org/"}' aria-pressed="false" aria-label="Add Des Plaines Fall Fest (Saturday) to My Weekend">☆</button>
+          
           
           
           <div class="date">Sep 19</div>
@@ -806,8 +825,11 @@
           <!-- ROADMAP.md Phase 11 #63: My Weekend is for dated events -
                offering to add "Find your school district" or a guide's
                own title to it made no sense, since guide items and the
-               guide index have nothing to do with weekend planning. -->
+               guide index have nothing to do with weekend planning.
+               #90: nor does a school half-day belong in it - it's real
+               and worth knowing, but nobody plans a weekend around one. -->
           <button type="button" class="tray-star" data-item='{"date": "Sep 20", "date_iso": "2026-09-20T00:00:00", "detail": "Carnival rides, rock wall, petting zoo \u0026 food wind down at Lake Park. Noon\u20137pm, 2200 Lee St. Free admission.", "id": "https://desplainesfallfest.org/", "region_name": "Des Plaines", "region_url": "https://withintenmiles.com/des-plaines-60016/", "title": "Des Plaines Fall Fest (Sunday)", "url": "https://desplainesfallfest.org/"}' aria-pressed="false" aria-label="Add Des Plaines Fall Fest (Sunday) to My Weekend">☆</button>
+          
           
           
           <div class="date">Sep 20</div>
@@ -843,8 +865,11 @@
           <!-- ROADMAP.md Phase 11 #63: My Weekend is for dated events -
                offering to add "Find your school district" or a guide's
                own title to it made no sense, since guide items and the
-               guide index have nothing to do with weekend planning. -->
+               guide index have nothing to do with weekend planning.
+               #90: nor does a school half-day belong in it - it's real
+               and worth knowing, but nobody plans a weekend around one. -->
           <button type="button" class="tray-star" data-item='{"date": null, "date_iso": null, "detail": "", "id": "https://www.desplainesil.gov/Residents/Subscribe-to-E-News", "region_name": "Des Plaines", "region_url": "https://withintenmiles.com/des-plaines-60016/", "title": "Subscribe to E-News", "url": "https://www.desplainesil.gov/Residents/Subscribe-to-E-News"}' aria-pressed="false" aria-label="Add Subscribe to E-News to My Weekend">☆</button>
+          
           
           
           
@@ -860,8 +885,11 @@
           <!-- ROADMAP.md Phase 11 #63: My Weekend is for dated events -
                offering to add "Find your school district" or a guide's
                own title to it made no sense, since guide items and the
-               guide index have nothing to do with weekend planning. -->
+               guide index have nothing to do with weekend planning.
+               #90: nor does a school half-day belong in it - it's real
+               and worth knowing, but nobody plans a weekend around one. -->
           <button type="button" class="tray-star" data-item='{"date": null, "date_iso": null, "detail": "", "id": "https://www.desplainesil.gov/Your-Government/City-Council", "region_name": "Des Plaines", "region_url": "https://withintenmiles.com/des-plaines-60016/", "title": "City Council", "url": "https://www.desplainesil.gov/Your-Government/City-Council"}' aria-pressed="false" aria-label="Add City Council to My Weekend">☆</button>
+          
           
           
           
@@ -877,8 +905,11 @@
           <!-- ROADMAP.md Phase 11 #63: My Weekend is for dated events -
                offering to add "Find your school district" or a guide's
                own title to it made no sense, since guide items and the
-               guide index have nothing to do with weekend planning. -->
+               guide index have nothing to do with weekend planning.
+               #90: nor does a school half-day belong in it - it's real
+               and worth knowing, but nobody plans a weekend around one. -->
           <button type="button" class="tray-star" data-item='{"date": null, "date_iso": null, "detail": "", "id": "https://www.desplainesil.gov/Residents/News/Scheduled-System-Outage-\u2013-Utility-Billing-Payment-Site", "region_name": "Des Plaines", "region_url": "https://withintenmiles.com/des-plaines-60016/", "title": "Scheduled System Outage \u2013 Utility Billing Payment Site Published on September 15, 2026 The City\u2019s Utility Billing Payment Site will be temporarily unavailable due to a planned system upgrade.\u2022 Outage Begins: Wednesday, September 23 at 6:00 PM\u2022 Offline: Thursday, September 24\u2022 Expected Restoration: Friday morning, September 25If you need any assistance during this outage, please call the Finance Department at 847-391-5322 (8:30am-5pm). Tagged as: , Public Notices", "url": "https://www.desplainesil.gov/Residents/News/Scheduled-System-Outage-\u2013-Utility-Billing-Payment-Site"}' aria-pressed="false" aria-label="Add Scheduled System Outage – Utility Billing Payment Site Published on September 15, 2026 The City’s Utility Billing Payment Site will be temporarily unavailable due to a planned system upgrade.• Outage Begins: Wednesday, September 23 at 6:00 PM• Offline: Thursday, September 24• Expected Restoration: Friday morning, September 25If you need any assistance during this outage, please call the Finance Department at 847-391-5322 (8:30am-5pm). Tagged as: , Public Notices to My Weekend">☆</button>
+          
           
           
           
@@ -898,8 +929,11 @@
           <!-- ROADMAP.md Phase 11 #63: My Weekend is for dated events -
                offering to add "Find your school district" or a guide's
                own title to it made no sense, since guide items and the
-               guide index have nothing to do with weekend planning. -->
+               guide index have nothing to do with weekend planning.
+               #90: nor does a school half-day belong in it - it's real
+               and worth knowing, but nobody plans a weekend around one. -->
           <button type="button" class="tray-star" data-item='{"date": null, "date_iso": null, "detail": "", "id": "https://www.desplainesil.gov/Residents/News/Scheduled-System-Outage-\u2013-Building-Permits-Self-Service-Portal", "region_name": "Des Plaines", "region_url": "https://withintenmiles.com/des-plaines-60016/", "title": "Scheduled System Outage \u2013 Building \u0026 Permits Self Service Portal Published on September 15, 2026 The City\u2019s Building \u0026 Permits Customer Self Service Portal will be temporarily unavailable due to a planned system upgrade.\u2022 Outage Begins: Wednesday, September 23 at 6:00 PM\u2022 Offline: Thursday, September 24\u2022 Expected Restoration: Friday morning, September 25If you need any assistance during the outage, please call the Community \u0026 Economic Development Department at 847-391-5380 (8:30am-5pm). Tagged as: , Public Notices", "url": "https://www.desplainesil.gov/Residents/News/Scheduled-System-Outage-\u2013-Building-Permits-Self-Service-Portal"}' aria-pressed="false" aria-label="Add Scheduled System Outage – Building &amp; Permits Self Service Portal Published on September 15, 2026 The City’s Building &amp; Permits Customer Self Service Portal will be temporarily unavailable due to a planned system upgrade.• Outage Begins: Wednesday, September 23 at 6:00 PM• Offline: Thursday, September 24• Expected Restoration: Friday morning, September 25If you need any assistance during the outage, please call the Community &amp; Economic Development Department at 847-391-5380 (8:30am-5pm). Tagged as: , Public Notices to My Weekend">☆</button>
+          
           
           
           
@@ -919,8 +953,11 @@
           <!-- ROADMAP.md Phase 11 #63: My Weekend is for dated events -
                offering to add "Find your school district" or a guide's
                own title to it made no sense, since guide items and the
-               guide index have nothing to do with weekend planning. -->
+               guide index have nothing to do with weekend planning.
+               #90: nor does a school half-day belong in it - it's real
+               and worth knowing, but nobody plans a weekend around one. -->
           <button type="button" class="tray-star" data-item='{"date": null, "date_iso": null, "detail": "", "id": "https://www.desplainesil.gov/Residents/News/Des-Plaines-Man-Charged-with-Two-Counts-of-First-Degree-Murder", "region_name": "Des Plaines", "region_url": "https://withintenmiles.com/des-plaines-60016/", "title": "Des Plaines Man Charged with Two Counts of First-Degree Murder Published on August 13, 2026 Following a comprehensive, yearlong investigation involving extensive forensic analysis and coordination with the Cook County State\u2019s Attorney\u2019s Office, the Des Plaines Police Department announces that the following Alexander J. Hoegner has been charged with two counts of first-degree murder stemming from a shooting incident on July 23, 2025. Tagged as: , Media Releases, Public Notices", "url": "https://www.desplainesil.gov/Residents/News/Des-Plaines-Man-Charged-with-Two-Counts-of-First-Degree-Murder"}' aria-pressed="false" aria-label="Add Des Plaines Man Charged with Two Counts of First-Degree Murder Published on August 13, 2026 Following a comprehensive, yearlong investigation involving extensive forensic analysis and coordination with the Cook County State’s Attorney’s Office, the Des Plaines Police Department announces that the following Alexander J. Hoegner has been charged with two counts of first-degree murder stemming from a shooting incident on July 23, 2025. Tagged as: , Media Releases, Public Notices to My Weekend">☆</button>
+          
           
           
           
@@ -940,8 +977,11 @@
           <!-- ROADMAP.md Phase 11 #63: My Weekend is for dated events -
                offering to add "Find your school district" or a guide's
                own title to it made no sense, since guide items and the
-               guide index have nothing to do with weekend planning. -->
+               guide index have nothing to do with weekend planning.
+               #90: nor does a school half-day belong in it - it's real
+               and worth knowing, but nobody plans a weekend around one. -->
           <button type="button" class="tray-star" data-item='{"date": null, "date_iso": null, "detail": "", "id": "https://www.desplainesil.gov/Residents/News/Lee-Street-to-Close-Aug-17\u201327-for-Railroad-Crossing-Work", "region_name": "Des Plaines", "region_url": "https://withintenmiles.com/des-plaines-60016/", "title": "Lee Street to Close Aug. 17\u201327 for Railroad Crossing Work Published on August 12, 2026 Union Pacific will replace the railroad tracks and nearby pavement at the Lee Street (U.S. 14/45) crossing in downtown Des Plaines.To complete the work, Lee Street will be closed between Ellinwood Street and Miner Street from 9 a.m. Monday, Aug. 17, through 5 p.m. Thursday, Aug. 27. Tagged as: , Media Releases, Public Notices", "url": "https://www.desplainesil.gov/Residents/News/Lee-Street-to-Close-Aug-17\u201327-for-Railroad-Crossing-Work"}' aria-pressed="false" aria-label="Add Lee Street to Close Aug. 17–27 for Railroad Crossing Work Published on August 12, 2026 Union Pacific will replace the railroad tracks and nearby pavement at the Lee Street (U.S. 14/45) crossing in downtown Des Plaines.To complete the work, Lee Street will be closed between Ellinwood Street and Miner Street from 9 a.m. Monday, Aug. 17, through 5 p.m. Thursday, Aug. 27. Tagged as: , Media Releases, Public Notices to My Weekend">☆</button>
+          
           
           
           
@@ -968,8 +1008,11 @@
           <!-- ROADMAP.md Phase 11 #63: My Weekend is for dated events -
                offering to add "Find your school district" or a guide's
                own title to it made no sense, since guide items and the
-               guide index have nothing to do with weekend planning. -->
+               guide index have nothing to do with weekend planning.
+               #90: nor does a school half-day belong in it - it's real
+               and worth knowing, but nobody plans a weekend around one. -->
           <button type="button" class="tray-star" data-item='{"date": null, "date_iso": null, "detail": "", "id": "https://calendar.dppl.org/myevents", "region_name": "Des Plaines", "region_url": "https://withintenmiles.com/des-plaines-60016/", "title": "My events", "url": "https://calendar.dppl.org/myevents"}' aria-pressed="false" aria-label="Add My events to My Weekend">☆</button>
+          
           
           
           
@@ -989,8 +1032,11 @@
           <!-- ROADMAP.md Phase 11 #63: My Weekend is for dated events -
                offering to add "Find your school district" or a guide's
                own title to it made no sense, since guide items and the
-               guide index have nothing to do with weekend planning. -->
+               guide index have nothing to do with weekend planning.
+               #90: nor does a school half-day belong in it - it's real
+               and worth knowing, but nobody plans a weekend around one. -->
           <button type="button" class="tray-star" data-item='{"date": null, "date_iso": null, "detail": "", "id": "http://dppl.org/patron-services/book-groups", "region_name": "Des Plaines", "region_url": "https://withintenmiles.com/des-plaines-60016/", "title": "Book groups", "url": "http://dppl.org/patron-services/book-groups"}' aria-pressed="false" aria-label="Add Book groups to My Weekend">☆</button>
+          
           
           
           
@@ -1010,8 +1056,11 @@
           <!-- ROADMAP.md Phase 11 #63: My Weekend is for dated events -
                offering to add "Find your school district" or a guide's
                own title to it made no sense, since guide items and the
-               guide index have nothing to do with weekend planning. -->
+               guide index have nothing to do with weekend planning.
+               #90: nor does a school half-day belong in it - it's real
+               and worth knowing, but nobody plans a weekend around one. -->
           <button type="button" class="tray-star" data-item='{"date": null, "date_iso": null, "detail": "", "id": "http://dppl.org/patron-services/computer-classes", "region_name": "Des Plaines", "region_url": "https://withintenmiles.com/des-plaines-60016/", "title": "Computer classes", "url": "http://dppl.org/patron-services/computer-classes"}' aria-pressed="false" aria-label="Add Computer classes to My Weekend">☆</button>
+          
           
           
           
@@ -1031,8 +1080,11 @@
           <!-- ROADMAP.md Phase 11 #63: My Weekend is for dated events -
                offering to add "Find your school district" or a guide's
                own title to it made no sense, since guide items and the
-               guide index have nothing to do with weekend planning. -->
+               guide index have nothing to do with weekend planning.
+               #90: nor does a school half-day belong in it - it's real
+               and worth knowing, but nobody plans a weekend around one. -->
           <button type="button" class="tray-star" data-item='{"date": null, "date_iso": null, "detail": "", "id": "http://desplaines.libnet.info/events", "region_name": "Des Plaines", "region_url": "https://withintenmiles.com/des-plaines-60016/", "title": "calendar.dppl.org/events", "url": "http://desplaines.libnet.info/events"}' aria-pressed="false" aria-label="Add calendar.dppl.org/events to My Weekend">☆</button>
+          
           
           
           
@@ -1051,6 +1103,159 @@
     </section>
     
   
+    
+    <section class="block">
+      <h2>Park District Events</h2>
+      
+        <div class="card-grid">
+        
+        
+        <div class="card" data-tags="outdoor">
+          
+          <!-- ROADMAP.md Phase 11 #63: My Weekend is for dated events -
+               offering to add "Find your school district" or a guide's
+               own title to it made no sense, since guide items and the
+               guide index have nothing to do with weekend planning.
+               #90: nor does a school half-day belong in it - it's real
+               and worth knowing, but nobody plans a weekend around one. -->
+          <button type="button" class="tray-star" data-item='{"date": null, "date_iso": null, "detail": "", "id": "https://www.dpparks.org/spectrum-program-and-events-guide/", "region_name": "Des Plaines", "region_url": "https://withintenmiles.com/des-plaines-60016/", "title": "Program Guide", "url": "https://www.dpparks.org/spectrum-program-and-events-guide/"}' aria-pressed="false" aria-label="Add Program Guide to My Weekend">☆</button>
+          
+          
+          
+          
+          <h3><a href="https://www.dpparks.org/spectrum-program-and-events-guide/">Program Guide</a></h3>
+          
+          
+          <div class="tag-row">
+            <span class="tag-badge" style="background: var(--hue-teal-bg); color: var(--hue-teal-ink);">🌳 Outdoor</span>
+          </div>
+          
+          
+        </div>
+        
+        
+        <div class="card" data-tags="outdoor">
+          
+          <!-- ROADMAP.md Phase 11 #63: My Weekend is for dated events -
+               offering to add "Find your school district" or a guide's
+               own title to it made no sense, since guide items and the
+               guide index have nothing to do with weekend planning.
+               #90: nor does a school half-day belong in it - it's real
+               and worth knowing, but nobody plans a weekend around one. -->
+          <button type="button" class="tray-star" data-item='{"date": null, "date_iso": null, "detail": "", "id": "https://www.dpparks.org/events/", "region_name": "Des Plaines", "region_url": "https://withintenmiles.com/des-plaines-60016/", "title": "Programs / Event Tickets", "url": "https://www.dpparks.org/events/"}' aria-pressed="false" aria-label="Add Programs / Event Tickets to My Weekend">☆</button>
+          
+          
+          
+          
+          <h3><a href="https://www.dpparks.org/events/">Programs / Event Tickets</a></h3>
+          
+          
+          <div class="tag-row">
+            <span class="tag-badge" style="background: var(--hue-teal-bg); color: var(--hue-teal-ink);">🌳 Outdoor</span>
+          </div>
+          
+          
+        </div>
+        
+        
+        <div class="card" data-tags="outdoor">
+          
+          <!-- ROADMAP.md Phase 11 #63: My Weekend is for dated events -
+               offering to add "Find your school district" or a guide's
+               own title to it made no sense, since guide items and the
+               guide index have nothing to do with weekend planning.
+               #90: nor does a school half-day belong in it - it's real
+               and worth knowing, but nobody plans a weekend around one. -->
+          <button type="button" class="tray-star" data-item='{"date": null, "date_iso": null, "detail": "", "id": "https://www.dpparks.org/aqua-fitness/", "region_name": "Des Plaines", "region_url": "https://withintenmiles.com/des-plaines-60016/", "title": "Swim Programs/Aqua Fitness", "url": "https://www.dpparks.org/aqua-fitness/"}' aria-pressed="false" aria-label="Add Swim Programs/Aqua Fitness to My Weekend">☆</button>
+          
+          
+          
+          
+          <h3><a href="https://www.dpparks.org/aqua-fitness/">Swim Programs/Aqua Fitness</a></h3>
+          
+          
+          <div class="tag-row">
+            <span class="tag-badge" style="background: var(--hue-teal-bg); color: var(--hue-teal-ink);">🌳 Outdoor</span>
+          </div>
+          
+          
+        </div>
+        
+        
+        <div class="card" data-tags="indoor,outdoor">
+          
+          <!-- ROADMAP.md Phase 11 #63: My Weekend is for dated events -
+               offering to add "Find your school district" or a guide's
+               own title to it made no sense, since guide items and the
+               guide index have nothing to do with weekend planning.
+               #90: nor does a school half-day belong in it - it's real
+               and worth knowing, but nobody plans a weekend around one. -->
+          <button type="button" class="tray-star" data-item='{"date": null, "date_iso": null, "detail": "", "id": "https://www.dpparks.org/swim-school/", "region_name": "Des Plaines", "region_url": "https://withintenmiles.com/des-plaines-60016/", "title": "Swim School Indoor and Outdoor", "url": "https://www.dpparks.org/swim-school/"}' aria-pressed="false" aria-label="Add Swim School Indoor and Outdoor to My Weekend">☆</button>
+          
+          
+          
+          
+          <h3><a href="https://www.dpparks.org/swim-school/">Swim School Indoor and Outdoor</a></h3>
+          
+          
+          <div class="tag-row">
+            <span class="tag-badge" style="background: var(--hue-blue-bg); color: var(--hue-blue-ink);">🏠 Indoor</span><span class="tag-badge" style="background: var(--hue-teal-bg); color: var(--hue-teal-ink);">🌳 Outdoor</span>
+          </div>
+          
+          
+        </div>
+        
+        
+        <div class="card" data-tags="outdoor">
+          
+          <!-- ROADMAP.md Phase 11 #63: My Weekend is for dated events -
+               offering to add "Find your school district" or a guide's
+               own title to it made no sense, since guide items and the
+               guide index have nothing to do with weekend planning.
+               #90: nor does a school half-day belong in it - it's real
+               and worth knowing, but nobody plans a weekend around one. -->
+          <button type="button" class="tray-star" data-item='{"date": null, "date_iso": null, "detail": "", "id": "https://www.dpparks.org/warriors-swim-team/", "region_name": "Des Plaines", "region_url": "https://withintenmiles.com/des-plaines-60016/", "title": "Warriors Swim Team", "url": "https://www.dpparks.org/warriors-swim-team/"}' aria-pressed="false" aria-label="Add Warriors Swim Team to My Weekend">☆</button>
+          
+          
+          
+          
+          <h3><a href="https://www.dpparks.org/warriors-swim-team/">Warriors Swim Team</a></h3>
+          
+          
+          <div class="tag-row">
+            <span class="tag-badge" style="background: var(--hue-teal-bg); color: var(--hue-teal-ink);">🌳 Outdoor</span>
+          </div>
+          
+          
+        </div>
+        
+        
+        <div class="card" data-tags="outdoor">
+          
+          <!-- ROADMAP.md Phase 11 #63: My Weekend is for dated events -
+               offering to add "Find your school district" or a guide's
+               own title to it made no sense, since guide items and the
+               guide index have nothing to do with weekend planning.
+               #90: nor does a school half-day belong in it - it's real
+               and worth knowing, but nobody plans a weekend around one. -->
+          <button type="button" class="tray-star" data-item='{"date": null, "date_iso": null, "detail": "", "id": "https://www.dpparks.org/tritons-swim-team/", "region_name": "Des Plaines", "region_url": "https://withintenmiles.com/des-plaines-60016/", "title": "Tritons Swim Team", "url": "https://www.dpparks.org/tritons-swim-team/"}' aria-pressed="false" aria-label="Add Tritons Swim Team to My Weekend">☆</button>
+          
+          
+          
+          
+          <h3><a href="https://www.dpparks.org/tritons-swim-team/">Tritons Swim Team</a></h3>
+          
+          
+          <div class="tag-row">
+            <span class="tag-badge" style="background: var(--hue-teal-bg); color: var(--hue-teal-ink);">🌳 Outdoor</span>
+          </div>
+          
+          
+        </div>
+        
+        </div>
+      
+    </section>
     
   
 
@@ -1129,7 +1334,7 @@
   <footer>
     Local business? See the
     <a href="https://withintenmiles.com/sponsor/">sponsor page</a>.
-    <br>Generated 2026-09-16 16:57 UTC.
+    <br>Generated 2026-09-16 19:01 UTC.
     
     <br><a href="https://withintenmiles.com/des-plaines-60016/weekly-summary.txt">Copy this week's summary</a> — a plain-text block ready to paste into a local group.
   </footer>
@@ -1155,7 +1360,7 @@
 <script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "Event", "name": "Des Plaines Fall Fest (Friday)", "url": "https://desplainesfallfest.org/", "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode", "description": "Carnival rides, live bands, food & drink at Lake Park. 6–11pm, 2200 Lee St. Free admission.", "startDate": "2026-09-18T00:00:00"}, {"@type": "Event", "name": "Des Plaines Fall Fest (Saturday)", "url": "https://desplainesfallfest.org/", "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode", "description": "Carnival rides, rock wall, petting zoo, food & 10 live bands at Lake Park. Noon–11pm, 2200 Lee St. Free admission.", "startDate": "2026-09-19T00:00:00"}, {"@type": "Event", "name": "Des Plaines Fall Fest (Sunday)", "url": "https://desplainesfallfest.org/", "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode", "description": "Carnival rides, rock wall, petting zoo & food wind down at Lake Park. Noon–7pm, 2200 Lee St. Free admission.", "startDate": "2026-09-20T00:00:00"}]}</script>
 
 
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebPage", "name": "Des Plaines — Within Ten", "url": "https://withintenmiles.com/des-plaines-60016/", "dateModified": "2026-09-16T16:57:35.140357+00:00", "isPartOf": {"@type": "WebSite", "name": "Within Ten", "url": "https://withintenmiles.com/"}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebPage", "name": "Des Plaines — Within Ten", "url": "https://withintenmiles.com/des-plaines-60016/", "dateModified": "2026-09-16T19:01:35.426175+00:00", "isPartOf": {"@type": "WebSite", "name": "Within Ten", "url": "https://withintenmiles.com/"}}</script>
 <script>
 (function () {
   var activeTags = new Set();

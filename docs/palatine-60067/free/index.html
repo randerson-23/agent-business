@@ -397,6 +397,19 @@
   }
   .card:hover { transform: translateY(-3px); box-shadow: var(--shadow-lift); }
   .card.hidden { display: none; }
+  /* ROADMAP.md Phase 11 #90: a school half-day or office closure is real
+     and belongs on the page, but must read as secondary to an actual
+     event - muted fill, no lift-on-hover (there's nothing to click into
+     planning), and no star, since My Weekend is for things to attend. */
+  .card-informational { background: var(--bg); box-shadow: none; }
+  .card-informational:hover { transform: none; box-shadow: none; }
+  .card-informational .informational-label {
+    color: var(--muted);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
   .tray-star {
     position: absolute;
     top: 10px;
@@ -672,8 +685,11 @@
           <!-- ROADMAP.md Phase 11 #63: My Weekend is for dated events -
                offering to add "Find your school district" or a guide's
                own title to it made no sense, since guide items and the
-               guide index have nothing to do with weekend planning. -->
+               guide index have nothing to do with weekend planning.
+               #90: nor does a school half-day belong in it - it's real
+               and worth knowing, but nobody plans a weekend around one. -->
           <button type="button" class="tray-star" data-item='{"date": "Sep 18", "date_iso": "2026-09-18T00:00:00", "detail": "German beer, food \u0026 music return to Downtown Palatine. 5pm\u2013midnight, N Smith \u0026 W Slade St. Free entry.", "id": "https://palatinerotary.org/Oktoberfest.php", "region_name": "Palatine", "region_url": "https://withintenmiles.com/palatine-60067/", "title": "Palatine Oktoberfest (Friday)", "url": "https://palatinerotary.org/Oktoberfest.php"}' aria-pressed="false" aria-label="Add Palatine Oktoberfest (Friday) to My Weekend">☆</button>
+          
           
           
           <div class="date">Sep 18</div>
@@ -698,8 +714,11 @@
           <!-- ROADMAP.md Phase 11 #63: My Weekend is for dated events -
                offering to add "Find your school district" or a guide's
                own title to it made no sense, since guide items and the
-               guide index have nothing to do with weekend planning. -->
+               guide index have nothing to do with weekend planning.
+               #90: nor does a school half-day belong in it - it's real
+               and worth knowing, but nobody plans a weekend around one. -->
           <button type="button" class="tray-star" data-item='{"date": "Sep 19", "date_iso": "2026-09-19T00:00:00", "detail": "Family Day: games, crafts \u0026 entertainment plus German beer, food \u0026 music. Noon\u2013midnight, N Smith \u0026 W Slade St. Free entry.", "id": "https://palatinerotary.org/Oktoberfest.php", "region_name": "Palatine", "region_url": "https://withintenmiles.com/palatine-60067/", "title": "Palatine Oktoberfest \u2014 Family Day (Saturday)", "url": "https://palatinerotary.org/Oktoberfest.php"}' aria-pressed="false" aria-label="Add Palatine Oktoberfest — Family Day (Saturday) to My Weekend">☆</button>
+          
           
           
           <div class="date">Sep 19</div>
@@ -724,8 +743,11 @@
           <!-- ROADMAP.md Phase 11 #63: My Weekend is for dated events -
                offering to add "Find your school district" or a guide's
                own title to it made no sense, since guide items and the
-               guide index have nothing to do with weekend planning. -->
+               guide index have nothing to do with weekend planning.
+               #90: nor does a school half-day belong in it - it's real
+               and worth knowing, but nobody plans a weekend around one. -->
           <button type="button" class="tray-star" data-item='{"date": "Sep 20", "date_iso": "2026-09-20T00:00:00", "detail": "German beer, food \u0026 music wind down Downtown Palatine\u0027s Oktoberfest. Noon\u20136pm, N Smith \u0026 W Slade St. Free entry.", "id": "https://palatinerotary.org/Oktoberfest.php", "region_name": "Palatine", "region_url": "https://withintenmiles.com/palatine-60067/", "title": "Palatine Oktoberfest (Sunday)", "url": "https://palatinerotary.org/Oktoberfest.php"}' aria-pressed="false" aria-label="Add Palatine Oktoberfest (Sunday) to My Weekend">☆</button>
+          
           
           
           <div class="date">Sep 20</div>
@@ -750,8 +772,11 @@
           <!-- ROADMAP.md Phase 11 #63: My Weekend is for dated events -
                offering to add "Find your school district" or a guide's
                own title to it made no sense, since guide items and the
-               guide index have nothing to do with weekend planning. -->
+               guide index have nothing to do with weekend planning.
+               #90: nor does a school half-day belong in it - it's real
+               and worth knowing, but nobody plans a weekend around one. -->
           <button type="button" class="tray-star" data-item='{"date": null, "date_iso": null, "detail": "Story times, programs, and museum passes for Palatine residents.", "id": "https://www.palatinelibrary.org/", "region_name": "Palatine", "region_url": "https://withintenmiles.com/palatine-60067/", "title": "Palatine Public Library District", "url": "https://www.palatinelibrary.org/"}' aria-pressed="false" aria-label="Add Palatine Public Library District to My Weekend">☆</button>
+          
           
           
           
@@ -802,7 +827,7 @@
   <footer>
     Local business? See the
     <a href="https://withintenmiles.com/sponsor/">sponsor page</a>.
-    <br>Generated 2026-09-16 16:57 UTC.
+    <br>Generated 2026-09-16 19:01 UTC.
     
     <br><a href="https://withintenmiles.com/palatine-60067/weekly-summary.txt">Copy this week's summary</a> — a plain-text block ready to paste into a local group.
   </footer>
@@ -828,7 +853,7 @@
 <script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "Event", "name": "Palatine Oktoberfest (Friday)", "url": "https://palatinerotary.org/Oktoberfest.php", "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode", "description": "German beer, food & music return to Downtown Palatine. 5pm–midnight, N Smith & W Slade St. Free entry.", "startDate": "2026-09-18T00:00:00"}, {"@type": "Event", "name": "Palatine Oktoberfest — Family Day (Saturday)", "url": "https://palatinerotary.org/Oktoberfest.php", "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode", "description": "Family Day: games, crafts & entertainment plus German beer, food & music. Noon–midnight, N Smith & W Slade St. Free entry.", "startDate": "2026-09-19T00:00:00"}, {"@type": "Event", "name": "Palatine Oktoberfest (Sunday)", "url": "https://palatinerotary.org/Oktoberfest.php", "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode", "description": "German beer, food & music wind down Downtown Palatine's Oktoberfest. Noon–6pm, N Smith & W Slade St. Free entry.", "startDate": "2026-09-20T00:00:00"}]}</script>
 
 
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebPage", "name": "Palatine — Within Ten", "url": "https://withintenmiles.com/palatine-60067/free/", "dateModified": "2026-09-16T16:57:35.140357+00:00", "isPartOf": {"@type": "WebSite", "name": "Within Ten", "url": "https://withintenmiles.com/"}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebPage", "name": "Palatine — Within Ten", "url": "https://withintenmiles.com/palatine-60067/free/", "dateModified": "2026-09-16T19:01:35.426175+00:00", "isPartOf": {"@type": "WebSite", "name": "Within Ten", "url": "https://withintenmiles.com/"}}</script>
 <script>
 (function () {
   var activeTags = new Set();

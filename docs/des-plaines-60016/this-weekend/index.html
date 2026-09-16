@@ -397,6 +397,19 @@
   }
   .card:hover { transform: translateY(-3px); box-shadow: var(--shadow-lift); }
   .card.hidden { display: none; }
+  /* ROADMAP.md Phase 11 #90: a school half-day or office closure is real
+     and belongs on the page, but must read as secondary to an actual
+     event - muted fill, no lift-on-hover (there's nothing to click into
+     planning), and no star, since My Weekend is for things to attend. */
+  .card-informational { background: var(--bg); box-shadow: none; }
+  .card-informational:hover { transform: none; box-shadow: none; }
+  .card-informational .informational-label {
+    color: var(--muted);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
   .tray-star {
     position: absolute;
     top: 10px;
@@ -620,34 +633,6 @@
   
 
   
-  <div class="weather-bar">
-    
-    <div class="weather-day">
-      <span class="wx-emoji" aria-hidden="true">🌦️</span>
-      <span class="wx-name">Friday</span>
-      <span class="wx-temp">77&deg; / 59&deg;</span>
-      <span class="wx-label">Light drizzle &middot; 10% precip</span>
-    </div>
-    
-    <div class="weather-day">
-      <span class="wx-emoji" aria-hidden="true">⛈️</span>
-      <span class="wx-name">Saturday</span>
-      <span class="wx-temp">84&deg; / 67&deg;</span>
-      <span class="wx-label">Thunderstorm &middot; 64% precip</span>
-    </div>
-    
-    <div class="weather-day">
-      <span class="wx-emoji" aria-hidden="true">🌧️</span>
-      <span class="wx-name">Sunday</span>
-      <span class="wx-temp">70&deg; / 63&deg;</span>
-      <span class="wx-label">Violent rain showers &middot; 64% precip</span>
-    </div>
-    
-    
-    <div class="wx-note">Rain (or worse) in the forecast — the Indoor filter below can help plan around it.</div>
-    
-  </div>
-  
 
   
 
@@ -696,8 +681,11 @@
           <!-- ROADMAP.md Phase 11 #63: My Weekend is for dated events -
                offering to add "Find your school district" or a guide's
                own title to it made no sense, since guide items and the
-               guide index have nothing to do with weekend planning. -->
+               guide index have nothing to do with weekend planning.
+               #90: nor does a school half-day belong in it - it's real
+               and worth knowing, but nobody plans a weekend around one. -->
           <button type="button" class="tray-star" data-item='{"date": "Sep 18", "date_iso": "2026-09-18T00:00:00", "detail": "Carnival rides, live bands, food \u0026 drink at Lake Park. 6\u201311pm, 2200 Lee St. Free admission.", "id": "https://desplainesfallfest.org/", "region_name": "Des Plaines", "region_url": "https://withintenmiles.com/des-plaines-60016/", "title": "Des Plaines Fall Fest (Friday)", "url": "https://desplainesfallfest.org/"}' aria-pressed="false" aria-label="Add Des Plaines Fall Fest (Friday) to My Weekend">☆</button>
+          
           
           
           <div class="date">Sep 18</div>
@@ -722,8 +710,11 @@
           <!-- ROADMAP.md Phase 11 #63: My Weekend is for dated events -
                offering to add "Find your school district" or a guide's
                own title to it made no sense, since guide items and the
-               guide index have nothing to do with weekend planning. -->
+               guide index have nothing to do with weekend planning.
+               #90: nor does a school half-day belong in it - it's real
+               and worth knowing, but nobody plans a weekend around one. -->
           <button type="button" class="tray-star" data-item='{"date": "Sep 19", "date_iso": "2026-09-19T00:00:00", "detail": "Carnival rides, rock wall, petting zoo, food \u0026 10 live bands at Lake Park. Noon\u201311pm, 2200 Lee St. Free admission.", "id": "https://desplainesfallfest.org/", "region_name": "Des Plaines", "region_url": "https://withintenmiles.com/des-plaines-60016/", "title": "Des Plaines Fall Fest (Saturday)", "url": "https://desplainesfallfest.org/"}' aria-pressed="false" aria-label="Add Des Plaines Fall Fest (Saturday) to My Weekend">☆</button>
+          
           
           
           <div class="date">Sep 19</div>
@@ -748,8 +739,11 @@
           <!-- ROADMAP.md Phase 11 #63: My Weekend is for dated events -
                offering to add "Find your school district" or a guide's
                own title to it made no sense, since guide items and the
-               guide index have nothing to do with weekend planning. -->
+               guide index have nothing to do with weekend planning.
+               #90: nor does a school half-day belong in it - it's real
+               and worth knowing, but nobody plans a weekend around one. -->
           <button type="button" class="tray-star" data-item='{"date": "Sep 20", "date_iso": "2026-09-20T00:00:00", "detail": "Carnival rides, rock wall, petting zoo \u0026 food wind down at Lake Park. Noon\u20137pm, 2200 Lee St. Free admission.", "id": "https://desplainesfallfest.org/", "region_name": "Des Plaines", "region_url": "https://withintenmiles.com/des-plaines-60016/", "title": "Des Plaines Fall Fest (Sunday)", "url": "https://desplainesfallfest.org/"}' aria-pressed="false" aria-label="Add Des Plaines Fall Fest (Sunday) to My Weekend">☆</button>
+          
           
           
           <div class="date">Sep 20</div>
@@ -805,7 +799,7 @@
   <footer>
     Local business? See the
     <a href="https://withintenmiles.com/sponsor/">sponsor page</a>.
-    <br>Generated 2026-09-16 16:57 UTC.
+    <br>Generated 2026-09-16 19:01 UTC.
     
     <br><a href="https://withintenmiles.com/des-plaines-60016/weekly-summary.txt">Copy this week's summary</a> — a plain-text block ready to paste into a local group.
   </footer>
@@ -831,7 +825,7 @@
 <script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "Event", "name": "Des Plaines Fall Fest (Friday)", "url": "https://desplainesfallfest.org/", "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode", "description": "Carnival rides, live bands, food & drink at Lake Park. 6–11pm, 2200 Lee St. Free admission.", "startDate": "2026-09-18T00:00:00"}, {"@type": "Event", "name": "Des Plaines Fall Fest (Saturday)", "url": "https://desplainesfallfest.org/", "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode", "description": "Carnival rides, rock wall, petting zoo, food & 10 live bands at Lake Park. Noon–11pm, 2200 Lee St. Free admission.", "startDate": "2026-09-19T00:00:00"}, {"@type": "Event", "name": "Des Plaines Fall Fest (Sunday)", "url": "https://desplainesfallfest.org/", "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode", "description": "Carnival rides, rock wall, petting zoo & food wind down at Lake Park. Noon–7pm, 2200 Lee St. Free admission.", "startDate": "2026-09-20T00:00:00"}]}</script>
 
 
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebPage", "name": "Des Plaines — Within Ten", "url": "https://withintenmiles.com/des-plaines-60016/this-weekend/", "dateModified": "2026-09-16T16:57:35.140357+00:00", "isPartOf": {"@type": "WebSite", "name": "Within Ten", "url": "https://withintenmiles.com/"}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebPage", "name": "Des Plaines — Within Ten", "url": "https://withintenmiles.com/des-plaines-60016/this-weekend/", "dateModified": "2026-09-16T19:01:35.426175+00:00", "isPartOf": {"@type": "WebSite", "name": "Within Ten", "url": "https://withintenmiles.com/"}}</script>
 <script>
 (function () {
   var activeTags = new Set();
