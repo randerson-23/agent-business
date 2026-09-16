@@ -3588,6 +3588,18 @@ and exactly what a ticketing platform's listing will never contain.
     scale-strategy section, which currently discusses scaling regions
     without addressing where readers come from.
 
+    ✅ **DONE.** Added a new paragraph to `BUSINESS_PLAN.md`'s Scale
+    strategy section, right after the existing few-regions-sold-well
+    reasoning: names the Substack Recommendations stat, states the
+    trade-off honestly (a network would help growth and hurt the actual
+    membership-based business model), reaffirms **stay on Buttondown**
+    with the ownership reasoning already established for item 47's
+    deliverability posture, then states the accepted consequence in the
+    item's own words - no organic growth channel, four sources total,
+    which is why the press pitch and barter template outrank every
+    monetization item in the current backlog. Copy only - no code
+    changes, no test/build cycle to run.
+
 97. **Raise the email's body type to the 16px floor.** The template sets
     event titles at 15px and dates, details and the footer at 13px. The
     stated mobile floor is **16px**, 55%+ of opens are mobile, and half

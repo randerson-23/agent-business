@@ -141,6 +141,29 @@ every new region's feed URLs start unverified — acceptable because the
 pipeline's fail-soft design (evergreen fallback per source) already
 covers that.
 
+This scaling plan says nothing about where readers come from, and that
+gap needs naming rather than ignoring (ROADMAP.md Phase 11 #96, a
+twenty-second-pass finding). Substack's Recommendations network now
+originates 40% of all new subscriptions on the platform and is the main
+growth engine for publications under 10,000 subscribers — Buttondown has
+no equivalent, so a subscriber only ever arrives because something
+outside the platform sent them. The trade-off is real but the answer is
+still **stay on Buttondown**: the business owns its domain, list,
+template, and deliverability posture outright, where Substack takes 10%
+of paid revenue and owns the reader relationship — a bad trade for a
+business whose revenue is *local sponsor memberships*, not reader
+subscriptions. A network would help subscriber growth and hurt the
+actual business model.
+
+The consequence has to be accepted, not papered over: **this newsletter
+has no organic growth channel.** Every subscriber comes from press
+(one-shot), the trade-a-mention barter (repeatable, item 94), SEO
+(slow), or paid acquisition — the whole list, and it is short. That is
+exactly why the press pitch and the barter template are the top
+priority in ROADMAP.md's current backlog, ahead of every monetization
+item: none of the tiers above are sellable at a real price until there
+is a real subscriber number to put next to it.
+
 ### Risks / notes
 
 - Public feed URLs for the village/library/park district need to be
