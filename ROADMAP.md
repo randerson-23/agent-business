@@ -1284,7 +1284,9 @@ features, or the build cadence needs to rise.
 
 #### P1 (new)
 
-39. **The site is invisible, and the fix needs Ryan, not the build loop.**
+39. ✅ done (domain registered 2026-09-15, DNS live, `SITE_BASE_URL`
+    migrated in `baf26ae` — see the seventeenth pass's housekeeping note).
+    **The site is invisible, and the fix needs Ryan, not the build loop.**
     The target query returns seven other results and none of them are this
     site. **Stated honestly:** a web-search sample is not a definitive
     Google SERP, and a site this young would not rank yet regardless — so
@@ -1461,7 +1463,8 @@ something already on the list.
 
 #### P1 (new)
 
-46. **The unregistered domain blocks the newsletter too — item 39 is now
+46. ✅ done — resolved by the same domain registration as item 39.
+    **The unregistered domain blocks the newsletter too — item 39 is now
     two workstreams deep.** The sixth pass framed the missing domain as a
     findability and credibility problem. It is also a hard technical
     prerequisite for items 24, 31, 36 and 37: Gmail, Yahoo and Microsoft
@@ -2649,6 +2652,83 @@ sending reputation at all**.
     for both a short region name and the longest one, Arlington Heights),
     and the generated HTML for the hub, a region page, `/sponsor`, and
     `/this-weekend` all carry the right `og:image` URL.
+
+#### Research pass 2026-09-17 (seventeenth pass)
+
+The build loop shipped both sixteenth-pass items inside an hour (IndexNow
+in #101, build-time Open Graph images in #102) and the newsletter signup
+went live in `1c7ee86`. Independent confirmation for #102 turned up in
+this pass's research: a correct OG preview lifts click-through **2–3×**
+against a missing or broken one. That feature is already earning.
+
+With capture live and the domain resolving, the bottleneck is no longer
+features or infrastructure. It is that **nobody knows the site exists**.
+This pass went looking at distribution.
+
+| Angle | Finding | Consequence |
+|---|---|---|
+| **First-100 subscriber tactics** | Local media mention: **100–500 subscribers in a day**. Local Facebook group post: **30–100 each**, but only after two to three weeks of genuine contribution first. A local business sharing to its own followers: **100–300 from one post**. Meta geo-targeted ads: **$0.25–0.50 per subscriber** | The highest-yield action available is one email, and it is not a feature |
+| **Facebook link mechanics** | Facebook has down-weighted posts containing external links since 2017 and still did through 2026. The standard workaround is to post the body **without** the link and drop the link in your own first comment. Separately, replies are weighted roughly **27× likes** | Item 33's shipped tool is built against the algorithm, not with it |
+
+#### P1 (new)
+
+76. **The group-summary tool is throttled by design — verified against
+    its own output.** `docs/<region>/weekly-summary.txt` currently reads:
+
+        What's happening in Mount Prospect this weekend (Sep 18–20):
+        - Sep 18 — Oktoberfest
+        - Sep 19 — Fall Festival & Oktoberfest
+        See everything: https://withintenmiles.com/mount-prospect-60056/
+        (Updated automatically, several times a week.)
+
+    The URL sits **in the post body**, which is precisely what Facebook
+    demotes, and it closes on a parenthetical when replies are the signal
+    that earns reach.
+    Fix: emit it as **two clearly-labelled blocks** — a post body with no
+    URL that ends on a real question ("Anything I've missed this
+    weekend?"), and a separate first-comment block containing the link.
+    Item 33 was built to make distribution cost the owner thirty seconds;
+    this is the difference between those thirty seconds working and being
+    quietly throttled. Pure string formatting, no new dependency.
+
+77. **Pitch the local press — the highest-yield action now available, and
+    it needs Ryan.** A local-media mention is worth 100–500 subscribers in
+    a day; nothing else in the research comes close for a single email's
+    effort. Mount Prospect is covered by **Journal & Topics** and the
+    **Daily Herald**, both already surfaced in earlier passes as covering
+    this exact beat, and the Daily Herald ran the Oktoberfest listing this
+    loop used as a source.
+    The angle is true, which is what makes it pitchable: a local parent
+    built a free, automatically-updating weekend guide for four northwest
+    suburbs that pulls together the village, library, park district and
+    school-district calendars nobody else aggregates. The site is live,
+    the signup works, and Oktoberfest weekend just gave it a news hook.
+    **Add to Needs Ryan.** Worth drafting the pitch email into
+    `OUTREACH_TEMPLATES.md` alongside the sponsor ones so it is a
+    copy-paste rather than a writing task.
+
+#### P2 (new)
+
+78. **Meta geo-targeted ads — a bounded test, and the first thing here
+    that costs money.** Local targeting reportedly buys subscribers at
+    $0.25–0.50 each, so $50 is roughly 100–200 local addresses: enough to
+    answer "does anyone in these four towns actually want this" far faster
+    than organic will.
+    **Flagged honestly against the plan rather than slipped in:**
+    `BUSINESS_PLAN.md`'s break-even logic assumes zero spend, and every
+    prior item has respected that. This is a deliberate exception and the
+    owner's call, not the loop's. It is also only worth doing **after**
+    items 24/31 actually send — paying for subscribers and then not
+    emailing them is the one way to waste the money completely.
+
+#### Housekeeping
+
+**Items 39 and 46 are stale and now marked done.** Both still read as open
+and describe the site as living on a `github.io` path. That stopped being
+true on 2026-09-15: `withintenmiles.com` is registered, DNS resolves to all
+four GitHub Pages addresses, and `SITE_BASE_URL` was migrated in `baf26ae`.
+Leaving the project's two longest-standing blockers reading as blockers
+would mislead both loops and the owner about what is actually in the way.
 
 ## Working agreements for autonomous iteration
 
