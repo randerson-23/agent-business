@@ -1389,6 +1389,36 @@ def build_weekly_summary_txt(
     return "\n".join(lines) + "\n"
 
 
+def render_email_digest(
+    region: dict,
+    weekend_events: list[dict],
+    evergreen: list[dict],
+    region_url: str,
+    weekend_date_range: str,
+    sponsor: dict | None,
+) -> str:
+    """The actual email HTML (ROADMAP.md Phase 11 #36) - a gate on items
+    24/31, not a standalone feature, since nothing sends yet without
+    SPF/DKIM/DMARC (item 47). Built from scratch in templates/
+    email_digest.html.j2 rather than reusing region.html.j2, which uses
+    flexbox/grid, web fonts and CSS the mail clients this has to render
+    in (especially Outlook's Word engine) don't support. Reuses the same
+    already-fetched weekend_events/evergreen data as
+    build_weekly_summary_txt - never invents content to fill space.
+    """
+    env = Environment(loader=FileSystemLoader(str(TEMPLATES_DIR)), autoescape=True)
+    template = env.get_template("email_digest.html.j2")
+    evergreen_highlights = [e for e in evergreen if "free" in e.get("tags", [])][:3]
+    return template.render(
+        region=region,
+        weekend_events=weekend_events,
+        evergreen_highlights=evergreen_highlights,
+        region_url=region_url,
+        weekend_date_range=weekend_date_range,
+        sponsor=sponsor,
+    )
+
+
 def weekend_dates(local_date: date) -> tuple[date, date, date]:
     """The Friday/Saturday/Sunday of the calendar week (Mon-Sun) containing
     local_date - correct whether local_date is itself a weekday (the
@@ -1543,6 +1573,12 @@ def main() -> None:
         )
         (region_dir / "weekly-summary.txt").write_text(weekly_summary_txt, encoding="utf-8")
         logger.info("Wrote %s", region_dir / "weekly-summary.txt")
+
+        email_digest_html = render_email_digest(
+            region, weekend_events, evergreen, SITE_BASE_URL + region_id + "/", weekend_date_range, sponsor
+        )
+        (region_dir / "email-preview.html").write_text(email_digest_html, encoding="utf-8")
+        logger.info("Wrote %s", region_dir / "email-preview.html")
         if weekend_events:
             hub_weekend_sections.append(
                 {
