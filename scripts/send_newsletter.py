@@ -54,6 +54,14 @@ BUTTONDOWN_AUTH_SCHEME = "Token"
 # Buttondown's status for "created but not sent" vs "send this now".
 STATUS_DRAFT = "draft"
 STATUS_SEND = "about_to_send"
+# Buttondown refuses an `about_to_send` email unless this header is
+# present, deliberately: it is the interlock that stops a first API
+# experiment from mailing a real list. Their error says it is "only
+# required once per API key", but it is sent on every live send anyway -
+# tracking which keys have been blessed would be state this script has no
+# business keeping, and the header is harmless once accepted. It is NOT
+# sent for drafts, which do not need it and should not imply a send.
+LIVE_SEND_HEADER = "X-Buttondown-Live-Dangerously"
 
 API_KEY_ENV = "BUTTONDOWN_API_KEY"
 
@@ -142,12 +150,15 @@ def post_to_buttondown(subject: str, html: str, api_key: str, mode: str) -> dict
     access fails loudly on the first run instead of looking like success.
     """
     status = STATUS_SEND if mode == "send" else STATUS_DRAFT
+    headers = {
+        "Authorization": f"{BUTTONDOWN_AUTH_SCHEME} {api_key}",
+        "Content-Type": "application/json",
+    }
+    if status == STATUS_SEND:
+        headers[LIVE_SEND_HEADER] = "true"
     response = requests.post(
         BUTTONDOWN_API_URL,
-        headers={
-            "Authorization": f"{BUTTONDOWN_AUTH_SCHEME} {api_key}",
-            "Content-Type": "application/json",
-        },
+        headers=headers,
         json={"subject": subject, "body": html, "status": status},
         timeout=30,
     )

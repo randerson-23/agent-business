@@ -124,3 +124,65 @@ def test_read_built_email_combined_region_also_refuses_the_preview_annotation(tm
     )
     with pytest.raises(SendError, match="preview annotation"):
         read_built_email(COMBINED_REGION, docs_dir=tmp_path)
+
+
+class _FakeResponse:
+    def __init__(self, ok=True, status_code=200, payload=None):
+        self.ok = ok
+        self.status_code = status_code
+        self._payload = payload or {"id": "abc123"}
+        self.text = "{}"
+
+    def json(self):
+        return self._payload
+
+
+def _capture_post(monkeypatch):
+    """Record the kwargs post_to_buttondown hands to requests.post."""
+    import send_newsletter
+
+    seen = {}
+
+    def fake_post(url, **kwargs):
+        seen["url"] = url
+        seen.update(kwargs)
+        return _FakeResponse()
+
+    monkeypatch.setattr(send_newsletter.requests, "post", fake_post)
+    return seen
+
+
+def test_live_send_carries_the_buttondown_confirmation_header(monkeypatch):
+    """Buttondown rejects status='about_to_send' without this header with a
+    400 sending_requires_confirmation. A real run failed on exactly that."""
+    import send_newsletter
+
+    seen = _capture_post(monkeypatch)
+    send_newsletter.post_to_buttondown("Subj", "<p>hi</p>", "key", "send")
+    assert seen["headers"][send_newsletter.LIVE_SEND_HEADER] == "true"
+    assert seen["json"]["status"] == send_newsletter.STATUS_SEND
+
+
+def test_draft_does_not_carry_the_live_send_header(monkeypatch):
+    """A draft neither needs it nor should imply a send."""
+    import send_newsletter
+
+    seen = _capture_post(monkeypatch)
+    send_newsletter.post_to_buttondown("Subj", "<p>hi</p>", "key", "draft")
+    assert send_newsletter.LIVE_SEND_HEADER not in seen["headers"]
+    assert seen["json"]["status"] == send_newsletter.STATUS_DRAFT
+
+
+def test_api_errors_are_surfaced_verbatim(monkeypatch):
+    """The 400 that found the header requirement was only debuggable
+    because the body came through untouched."""
+    import send_newsletter
+
+    def fake_post(url, **kwargs):
+        r = _FakeResponse(ok=False, status_code=400)
+        r.text = '{"code":"sending_requires_confirmation"}'
+        return r
+
+    monkeypatch.setattr(send_newsletter.requests, "post", fake_post)
+    with pytest.raises(SendError, match="sending_requires_confirmation"):
+        send_newsletter.post_to_buttondown("S", "<p>h</p>", "key", "send")
