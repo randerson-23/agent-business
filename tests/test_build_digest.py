@@ -1772,6 +1772,19 @@ def test_build_combined_email_subject_line_falls_back_when_no_region_has_events(
     assert subject == "This week across Mount Prospect, Arlington Heights, and Des Plaines: what's coming up"
 
 
+def test_join_names_handles_an_empty_list_without_crashing():
+    # A found bug: with 0 names the old code fell through both length
+    # checks into `names[-1]`, an IndexError on an empty list. Only
+    # reachable if load_regions() ever returns zero valid region
+    # configs, but a malformed build should fail with a clear error,
+    # not crash inside string formatting.
+    assert build_digest._join_names([]) == ""
+
+
+def test_build_combined_email_subject_line_does_not_crash_on_no_sections():
+    assert build_digest.build_combined_email_subject_line([]) == "This week across : what's coming up"
+
+
 def test_build_email_subject_line_names_only_the_first_when_everything_collides():
     region = {"name": "Mount Prospect"}
     events = [

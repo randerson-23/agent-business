@@ -72,6 +72,22 @@ def test_read_built_email_returns_subject_and_html(tmp_path):
     assert "<body>" in html
 
 
+def test_read_built_email_allows_a_real_event_containing_the_shorter_phrase(tmp_path):
+    """A found bug: the old check matched the substring "PREVIEW ONLY"
+    anywhere in the file, so a real event titled with that shorter
+    phrase (e.g. a museum's own "Preview Only Weekend") would have
+    blocked a legitimate send. The actual annotation is longer and more
+    specific; only that full phrase should trip the guard."""
+    region = tmp_path / "mount-prospect-60056"
+    region.mkdir()
+    (region / "email-send.html").write_text(
+        build_email_html("This weekend in Mount Prospect", body="<p>Museum Preview Only Weekend</p>"),
+        encoding="utf-8",
+    )
+    subject, html = read_built_email("mount-prospect-60056", docs_dir=tmp_path)
+    assert subject == "This weekend in Mount Prospect"
+
+
 def test_read_built_email_missing_file_names_the_build_step(tmp_path):
     with pytest.raises(SendError, match="build_digest.py"):
         read_built_email("nope-00000", docs_dir=tmp_path)
