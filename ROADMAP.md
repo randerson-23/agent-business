@@ -4002,10 +4002,15 @@ sender on the apex later would need this re-checked rather than assumed.
 Two deliberate choices, both reversible in one line, both the owner's to
 overrule:
 
-- **`mode: draft`.** The workflow creates the email in Buttondown and
-  stops. An email cannot be unsent, this pipeline shipped a wrong subject
-  line as recently as yesterday (item 90), and the send is a human click
-  until a few weeks of drafts have looked right.
+- **`mode: draft`, overruled to `send` the same day.** It shipped on
+  draft: an email cannot be unsent and the pipeline had just shipped a
+  wrong subject line (item 90). The owner overrode it with a better fact
+  than the caution rested on — he is the only subscriber, so the blast
+  radius of a bad issue is his own inbox, and a live weekly send tests
+  more than a draft nobody judges. Worth recording that the override has
+  an expiry: the reasoning stops holding the moment the list has anyone
+  else on it, which the press pitch (item 77) or the barter play (item
+  94) could cause in a single day. Revisit before either goes out.
 - **Thursday 12:00 UTC** (07:00 CDT). The owner asked for mornings; item
   31's research puts peak opens at 3–7pm. Built as asked, with the
   alternative cron named in a comment.

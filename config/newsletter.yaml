@@ -24,11 +24,18 @@ detail: "The weekly digest, emailed once a week. No spam, unsubscribe anytime."
 # GitHub Actions workflow send-newsletter.yml runs it on a Thursday cron.
 #
 # mode: "draft" creates the email in Buttondown and stops, leaving the
-# send as a human click. "send" mails it to the list immediately. It
-# starts on "draft" deliberately - an email cannot be unsent, and this
-# pipeline has shipped a wrong subject line before (item 90 advertised a
-# school half-day as a weekend highlight). Flip to "send" once a few
-# weeks of drafts have looked right; it is a one-word change.
+# send as a human click. "send" mails it to the list immediately.
+#
+# Set to "send" on 2026-09-17 at the owner's explicit instruction. This
+# shipped on "draft" the same day, on the reasoning that an email cannot
+# be unsent and the pipeline had just shipped a wrong subject line (item
+# 90). The owner overrode it with a better fact than the caution was
+# built on: he is currently the only subscriber, so the blast radius of
+# a bad issue is his own inbox, and a live weekly send is worth more as
+# a real test than a draft nobody is judging. That reasoning stops
+# holding the moment the list has anyone else on it - the press pitch
+# (item 77) or the barter play (item 94) could do that in a day - so
+# revisit this before either goes out, not after.
 #
 # region: Buttondown's free plan is one list, so one region's digest goes
 # out. Mount Prospect is the home region and has the most sources. A
@@ -37,4 +44,4 @@ detail: "The weekly digest, emailed once a week. No spam, unsubscribe anytime."
 send:
   enabled: true
   region: "mount-prospect-60056"
-  mode: "draft"
+  mode: "send"
