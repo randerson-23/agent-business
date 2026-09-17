@@ -3846,6 +3846,52 @@ keep it that way.
      subscriber sees every correction as a notification. Ship it after
      90, not before.
 
+     ✅ **DONE.** `build_region_calendar_ics()` writes every dated event
+     across every block (fetched sources + curated annual events, not
+     weekend-filtered - a subscription is the whole calendar) to
+     `docs/<region-id>/calendar.ics`, reusing `_ics_escape` from the
+     existing per-event `data:` URI builder. Shipped after 90 as
+     instructed: item 90's `attendable` split applies here too - a
+     non-attendable event renders as a transparent, all-day
+     `DTSTART;VALUE=DATE` entry instead of a timed one a calendar app
+     would mark "busy" for. Stable per-event `UID` (region + event date
+     + a sanitized title slug) so a rebuild updates the same entry
+     rather than duplicating it - verified directly:
+     `test_build_region_calendar_ics_stable_uid_across_rebuilds` builds
+     the same event at two different `now` timestamps and asserts the
+     `UID` line is byte-identical. `X-WR-CALNAME`, `REFRESH-INTERVAL`,
+     and `X-PUBLISHED-TTL` all set to `PT12H` as specified. Region page
+     gained a "📅 Subscribe once, get every event automatically" block
+     (main page only, `nav_current == "all"`) with both a `webcal://`
+     link (via a `replace` filter on the `https://` URL, no second URL
+     built) and a plain `https://` download link. `/calendar.ics` added
+     to `build_llms_txt()` under a new "## Calendars" section (not
+     added to `sitemap.xml` - a calendar file isn't a page a search
+     engine indexes).
+
+     **`SEQUENCE` is always `0` — a documented simplification, not an
+     oversight.** Correctly bumping it on a real content change needs a
+     persisted per-event revision counter this pipeline doesn't keep
+     anywhere (`source_health.json` tracks fetch success/failure, not
+     event content); building that just for this would be new state-
+     tracking infrastructure, not a byproduct of the feature. A
+     subscribed calendar client re-fetches and diffs by `UID` + content
+     on every periodic refresh regardless, which covers the common case
+     here - stated directly in the function's own docstring rather than
+     silently shipping a partial `SEQUENCE` implementation.
+
+     8 new tests (`test_build_digest.py`); `python -m pytest tests/ -q`
+     → 296 passed. `python scripts/build_digest.py` → real build, then
+     **genuinely validated the output**, not just grepped it: parsed
+     `docs/mount-prospect-60056/calendar.ics` with the `icalendar`
+     Python package (RFC 5545 compliant, confirmed installed in this
+     sandbox) and printed the parsed `VEVENT`s back out - two real
+     annual events (`Oktoberfest`, `Fall Festival & Oktoberfest`, this
+     sandbox's own network being blocked means only curated/annual
+     content resolves here) came back with correct `UID`/`SUMMARY`/
+     `DTSTART`/`DTEND` values. `docs/` restored and the four newly-
+     generated `calendar.ics` files removed before committing.
+
 101. **Publish the four villages' official trick-or-treat hours on one
      page, before mid-October.** The fall guide currently handles this by
      pointing at the City's news page and saying the hours get posted

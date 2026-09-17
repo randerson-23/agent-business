@@ -266,6 +266,74 @@ def build_ics_data_uri(event: dict) -> str | None:
     return "data:text/calendar;charset=utf-8," + quote("\r\n".join(lines))
 
 
+def build_region_calendar_ics(region: dict, blocks: list[dict], now: datetime) -> str:
+    """A subscribable .ics feed for the whole region (ROADMAP.md Phase 11
+    #100) - the strongest retention mechanism identified: subscribe once
+    and every future event appears in the family's own calendar, with no
+    email ever needing to be opened again. Same RFC 5545 serialization
+    as the per-event data: URI above (_ics_escape), just written once
+    per build to docs/<region-id>/calendar.ics instead of inlined per
+    card, over every dated event across every source and the curated
+    annual events - not weekend-filtered, since a subscription is
+    supposed to be the whole calendar.
+
+    Applies item 90's attendable split: a non-attendable event (a
+    school half-day) is real and belongs in the feed, but as a
+    transparent, all-day entry rather than a timed one a calendar app
+    would show as "busy" for.
+
+    UID is stable across rebuilds (region + event date + a sanitized
+    slug of the title), so a re-fetch updates the same calendar entry
+    instead of duplicating it - the whole point of a subscription over
+    a one-time download. SEQUENCE is always 0: correctly bumping it on
+    a real content change needs a persisted per-event revision counter
+    this pipeline doesn't keep anywhere (source_health.json tracks
+    fetch success/failure, not event content) - building that just for
+    this would be new state-tracking infrastructure, not a byproduct of
+    the feature. A subscribed calendar client re-fetches and diffs by
+    UID + content on every refresh regardless, which covers the common
+    case here; this is a documented simplification, not a silent gap.
+    """
+    events = [e for b in blocks for e in b["events"] if e.get("date_iso") and e.get("title")]
+    calname = f"{SITE_NAME} — {region['name']}"
+    lines = [
+        "BEGIN:VCALENDAR",
+        "VERSION:2.0",
+        f"PRODID:-//{SITE_NAME}//EN",
+        "CALSCALE:GREGORIAN",
+        f"X-WR-CALNAME:{_ics_escape(calname)}",
+        "REFRESH-INTERVAL;VALUE=DURATION:PT12H",
+        "X-PUBLISHED-TTL:PT12H",
+    ]
+    stamp = now.strftime("%Y%m%dT%H%M%SZ")
+    for event in events:
+        start_dt = datetime.fromisoformat(event["date_iso"])
+        slug = re.sub(r"[^a-z0-9]+", "-", event["title"].lower()).strip("-")
+        uid = f"{region['id']}-{start_dt.date().isoformat()}-{slug}@withintenmiles.com"
+        lines += ["BEGIN:VEVENT", f"UID:{uid}", f"DTSTAMP:{stamp}", f"LAST-MODIFIED:{stamp}", "SEQUENCE:0"]
+        if event.get("attendable", True):
+            end_dt = start_dt + timedelta(hours=1)
+            lines += [
+                f"DTSTART:{start_dt.strftime('%Y%m%dT%H%M%S')}",
+                f"DTEND:{end_dt.strftime('%Y%m%dT%H%M%S')}",
+            ]
+        else:
+            end_date = start_dt.date() + timedelta(days=1)
+            lines += [
+                f"DTSTART;VALUE=DATE:{start_dt.strftime('%Y%m%d')}",
+                f"DTEND;VALUE=DATE:{end_date.strftime('%Y%m%d')}",
+                "TRANSP:TRANSPARENT",
+            ]
+        lines.append(f"SUMMARY:{_ics_escape(event['title'])}")
+        if event.get("detail"):
+            lines.append(f"DESCRIPTION:{_ics_escape(event['detail'])}")
+        if event.get("url"):
+            lines.append(f"URL:{event['url']}")
+        lines.append("END:VEVENT")
+    lines += ["END:VCALENDAR", ""]
+    return "\r\n".join(lines)
+
+
 def build_google_calendar_url(event: dict, location: str) -> str | None:
     """A "add to Google Calendar" link - same 1-hour-duration assumption
     as build_ics_data_uri, for the same reason.
@@ -1120,6 +1188,7 @@ def render_region_page(
         empty_cta_label=empty_cta_label,
         nav_current=nav_current,
         region_base_url=region_base_url,
+        calendar_ics_url=region_base_url + "calendar.ics",
         page_title=page_title,
         page_description=page_description,
         hub_url=SITE_BASE_URL,
@@ -1473,6 +1542,11 @@ def build_llms_txt(region_summaries: list[dict]) -> str:
     ]
     if guide_lines:
         lines += ["", "## Guides"] + guide_lines
+    calendar_lines = [
+        f"- [{r['name']} — subscribable calendar (.ics)]({SITE_BASE_URL}{r['path']}calendar.ics)"
+        for r in region_summaries
+    ]
+    lines += ["", "## Calendars"] + calendar_lines
     lines += ["", "## Sponsorship", f"- [Sponsor a region]({SITE_BASE_URL}sponsor/)"]
     lines += ["", "## About", f"- [Who publishes this, and why]({SITE_BASE_URL}about/)"]
     lines += ["", "## Seasonal", f"- [Trick-or-treat hours, all four towns]({SITE_BASE_URL}trick-or-treat/)"]
@@ -1865,6 +1939,10 @@ def main() -> None:
         region_dir.mkdir(parents=True, exist_ok=True)
         (region_dir / "index.html").write_text(html, encoding="utf-8")
         logger.info("Wrote %s", region_dir / "index.html")
+
+        calendar_ics = build_region_calendar_ics(region, blocks, now)
+        (region_dir / "calendar.ics").write_text(calendar_ics, encoding="utf-8")
+        logger.info("Wrote %s", region_dir / "calendar.ics")
 
         local_today = region_local_date(region, now)
         friday, saturday, sunday = weekend_dates(local_today)

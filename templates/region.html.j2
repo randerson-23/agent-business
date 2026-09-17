@@ -164,6 +164,26 @@
 
   .answer-block { color: var(--muted); font-size: 14px; line-height: 1.6; margin: 4px 0 18px; max-width: 640px; }
 
+  /* ROADMAP.md Phase 11 #100: subscribable calendar, distinct from a
+     per-event "add to calendar" (.cal-row) - one subscription covers
+     every future event, so it earns a more visible treatment than a
+     per-card link. */
+  .calendar-subscribe {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 10px 16px;
+    margin: 0 0 18px;
+    font-size: 13.5px;
+  }
+  .calendar-subscribe-label { color: var(--muted); }
+  .calendar-subscribe a { font-weight: 600; color: var(--accent); text-decoration: none; }
+  .calendar-subscribe a:hover { text-decoration: underline; }
+
   .map-embed {
     position: relative;
     border-radius: var(--radius-lg);
@@ -668,6 +688,14 @@
     {% if guides_url %}<a href="{{ guides_url }}"{% if nav_current == "guides" %} class="active"{% endif %}>Guides</a>{% endif %}
     {% if directory_url %}<a href="{{ directory_url }}"{% if nav_current == "directory" %} class="active"{% endif %}>Directory</a>{% endif %}
   </nav>
+
+  {% if nav_current == "all" and calendar_ics_url %}
+  <div class="calendar-subscribe">
+    <span class="calendar-subscribe-label">📅 Subscribe once, get every {{ region.name }} event automatically:</span>
+    <a href="{{ calendar_ics_url | replace('https://', 'webcal://') }}">Subscribe (Apple/Google Calendar)</a>
+    <a href="{{ calendar_ics_url }}">Download .ics</a>
+  </div>
+  {% endif %}
 
   {% if answer_block %}<p class="answer-block">{{ answer_block }}</p>{% endif %}
 
