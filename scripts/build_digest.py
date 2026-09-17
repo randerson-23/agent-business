@@ -530,6 +530,25 @@ def prepare_guides(region_cfg: dict) -> list[dict]:
     return prepared
 
 
+def is_trick_or_treat_season(now: datetime) -> bool:
+    """Whether a footer link to /trick-or-treat/ (item 101) earns its
+    place right now. True September through the first few days of
+    November - villages post real hours in late September/early October
+    (prepare_trick_or_treat()'s own note) and a few families still want
+    it in the days right after Halloween. False the rest of the year,
+    when the page is real but would just be a permanent link to an
+    empty "not posted yet" state - DESIGN_PRINCIPLES.md's standing
+    question (does this earn its place, or is it one more thing) says a
+    footer link that's irrelevant ten months a year does not.
+
+    A real, if minor, bug this closes: the page has been live and in
+    the sitemap since item 101 shipped, but no region or hub page ever
+    linked to it - reachable only by a search engine crawling the
+    sitemap or an AI agent reading llms.txt, not by an actual visitor.
+    """
+    return now.month in (9, 10) or (now.month == 11 and now.day <= 5)
+
+
 def prepare_trick_or_treat(region_cfg: dict) -> dict | None:
     """A region's `trick_or_treat:` block (ROADMAP.md Phase 11 #101), if
     configured - feeds the cross-region /trick-or-treat/ page. `hours`
@@ -1221,6 +1240,7 @@ def render_region_page(
         editors_pick=editors_pick,
         analytics=analytics,
         og_image_url=SITE_BASE_URL + "og/" + region["id"] + ".png",
+        trick_or_treat_in_season=is_trick_or_treat_season(now),
     )
 
 
@@ -1338,6 +1358,7 @@ def render_hub_page(
         analytics=analytics,
         stats=stats,
         og_image_url=SITE_BASE_URL + "og/default.png",
+        trick_or_treat_in_season=is_trick_or_treat_season(now),
     )
 
 

@@ -27,6 +27,30 @@ gradient-mesh backgrounds. The refined serif heading is what signals
 editorial polish; a competing visual trend on the same page would
 undercut it, not add to it.
 
+## The named referent
+
+"Restraint" is hard to argue against and equally hard to apply — an
+adjective gives a future pass nothing concrete to check a proposal
+against (ROADMAP.md Phase 11 #113). Two real showcases disagree with
+each other and make it specific:
+
+- **Godly** and **SiteInspire** are the standard this site is held to —
+  curated at a handful of sites a week, favouring craft over novelty:
+  restrained, editorial, typographically considered. That's the two
+  directions above, with a name.
+- **Awwwards** is explicitly **not** the target — it judges on
+  experimental animation, immersive storytelling, and technical
+  showcase. Both directions count as "good design"; only one is right
+  for a page a parent opens on a phone on a Thursday to find out what's
+  on this weekend.
+
+Concretely, that means: no scroll-driven animation, no immersive intro,
+nothing that delays the first event appearing on the page. This isn't
+hypothetical caution — item 19's `animation-timeline: view()` experiment
+already failed real CI on LCP and TBT once, and it arrived dressed as
+exactly the kind of modern touch an Awwwards-direction proposal looks
+like. The next one will too.
+
 ## What these rule out
 
 - A component library or CSS framework (Tailwind, Bootstrap, a design
