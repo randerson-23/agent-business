@@ -270,6 +270,8 @@ search, which item 22's whole AI-citation effort depends on.
 | **6AM City** | 400+ local newsletters, $9.5M rev, profitable in 2026 | **Self-service ad platform** — they built it because low-average-order-value local sponsors don't justify sales time. Directly targets this business's #1 constraint |
 | **Axios Local** | Local newsletter network, local-advertiser funded | Newsletter-first: the list is the asset, the site is the funnel |
 | **Patch** | Hyperlocal news + community calendar | User-submitted events, business directory, classifieds — community supplies the content |
+| **Main Line Today** (revisited) | Already cited here for the Thursday send slot. It also **produces its own Restaurant Week** — "the largest, most ambitious dining event in the region" — sold with "direct email blasts to local diners via opt-in subscriber lists" | The mature form of this business is *running* the local event, not just listing it (item 112) |
+| **Godly / SiteInspire** vs **Awwwards** | Godly is curated by a small team, 2–3 sites a week, favouring **craft over novelty — restrained, editorial, typographically considered**. Awwwards rewards experimental animation and immersive storytelling | Two different standards, and this site should be chasing exactly one of them (item 113) |
 | **Local Facebook groups** | The discovery channel for a suburban family audience. Norm is the **70/30 rule**, many groups run a designated promo day, and **asking the admin first** is the difference between a standing welcome and a blacklist | Unlike Reddit's 90/10 (item 84, rejected on time cost), this is **one conversation, not sustained participation** — it fits the budget (item 107) |
 | **Eventbrite → Bandsintown** | Eventbrite lists unlimited events free and **auto-syndicates music events to Bandsintown** | A dead end here, and worth recording as one — see item 109 |
 | **Tinybeans / Red Tricycle** | Red Tricycle published local family activity guides across major US cities; **acquired for $6.5M in 2020**, folded into Tinybeans, which wanted it for brand-advertiser access to parents | Proof the category has an exit — and that the asset bought was the **audience**, not the listings |
@@ -4451,6 +4453,143 @@ press pitch lands.
      exists: item 100's subscribable `calendar.ics`, which lets the data
      travel into readers' own calendars rather than into a competitor's
      index.
+
+#### Research pass 2026-09-17 (twenty-sixth pass)
+
+This pass opened by checking whether the first scheduled send had fired.
+It had not — and the reason turns out to be the most consequential thing
+in this file today, because it means **the newsletter does not go out
+when anyone here thinks it does.**
+
+`build-digest.yml` has had `cron: "0 12 * * 1"` — Monday 12:00 UTC — for
+weeks. Its three recorded scheduled runs:
+
+| Scheduled | Actually fired | Late by |
+|---|---|---|
+| 2026-08-31 12:00 UTC | 18:54 UTC | **6h 54m** |
+| 2026-09-07 12:00 UTC | 17:27 UTC | **5h 27m** |
+| 2026-09-14 12:00 UTC | 17:52 UTC | **5h 52m** |
+
+Three for three, never under five hours. And `send-newsletter.yml`'s
+first scheduled run, due 12:00 UTC today, had not started at 12:33.
+
+This is not this repo's bug. GitHub documents schedules as best-effort,
+delays cluster at `:00`, and 2026 reporting has them getting worse —
+hours late, sometimes dropped. The blunt version from that research:
+**GitHub Actions cron is not appropriate for time-sensitive tasks**, and
+a weekly newsletter with a researched send window is a time-sensitive
+task.
+
+| Angle | Finding | Consequence |
+|---|---|---|
+| **Actions scheduling** | Measured 5–7h delay, 3/3, in this repo. Moving off `:00` is the standard advice but explicitly "makes no difference when the backlog runs to hours" | The "7am Thursday" send actually lands early afternoon (item 110) |
+| **Dropped runs** | High load can drop a scheduled run entirely, producing **no run and therefore no failure** | `build-digest.yml`'s "failure emails the owner" safety net cannot catch a week that never ran (item 111) |
+| **Restaurant weeks** | **Chicago Northwest Restaurant Week runs Feb 27 – Mar 8**, across the Northwest suburbs — precisely these four towns. Main Line Today, already this file's model for the send slot, **produces its own** and sells it partly on "email blasts to opt-in subscriber lists" | A dated, in-territory seasonal window, and a glimpse of the mature business (item 112) |
+| **Design standards** | Godly: restrained, editorial, typographic, craft over novelty. Awwwards: experimental animation, immersive storytelling | `DESIGN_PRINCIPLES.md` says "restraint" abstractly; these give it a named referent (item 113) |
+
+#### P1 (new)
+
+110. **Let Buttondown schedule the send, so a late Actions run stops
+     mattering.** The owner asked for Thursday mornings. What actually
+     happens, on the measured evidence above, is that the job fires
+     somewhere between 17:00 and 19:00 UTC — roughly **12pm–2pm
+     Chicago** — and the variance is over ninety minutes week to week. A
+     newsletter whose send time moves by an hour and a half is one whose
+     open rate cannot be read as a trend, which undercuts item 102's
+     whole point about watching open frequency.
+
+     The fix is to stop asking GitHub to be punctual and start asking it
+     only to be *eventually* on time. Buttondown accepts a scheduled
+     status with a send time: create the email with a `publish_date` of
+     the next Thursday 07:00 CDT and let **Buttondown** hold and deliver
+     it. The workflow then only needs to run *sometime* in a multi-hour
+     window beforehand — which is exactly what GitHub reliably provides.
+     Move the cron to Wednesday at an offset minute (`37 22 * * 3`), both
+     to dodge the `:00` spike and to leave a full night of slack, and a
+     six-hour delay becomes harmless instead of defining the send time.
+
+     This also buys something the current design cannot have: a window in
+     which a bad issue can be caught. An email scheduled for Thursday
+     morning and created Wednesday night sits visible in Buttondown for
+     hours before it goes. That is a real safety margin, and it costs
+     nothing.
+
+     `send_newsletter.py` already isolates the API shape in one place, so
+     this is a status value plus a date field, and the same
+     surface-errors-verbatim posture applies — Buttondown's scheduled
+     status and date field name are unverified from this sandbox, exactly
+     like `X-Buttondown-Live-Dangerously` was, and will announce
+     themselves on the first run the same way.
+
+111. **A scheduled run that never happens is currently invisible.**
+     `build-digest.yml` carries a deliberate comment explaining that a
+     failing job emails the owner at no cost, which is a sound safety net
+     for a run that *fails*. It cannot catch the failure mode the
+     research above describes: a run that is **dropped**, producing no
+     job, no conclusion, and no email. The site would quietly serve last
+     week's events, and the newsletter would quietly not go out.
+
+     Cheap detection that fits a static site: have the build write its
+     completion timestamp into the generated output — `llms.txt` and the
+     RSS feed already carry generated-at metadata — and have the *send*
+     job refuse to mail a digest whose build timestamp is older than
+     about four days, failing loudly rather than mailing stale events.
+     That converts a silent non-event into an email the owner already
+     gets. It also protects the send independently of item 110.
+
+#### P2 (new)
+
+112. **Start the Chicago Northwest Restaurant Week guide now, and write
+     down the seasonal calendar while doing it.** Restaurant Week runs
+     **Feb 27 – Mar 8** across the Northwest suburbs — all four regions,
+     dated, annual, and exactly the kind of thing residents search for
+     and no civic feed carries.
+
+     That is five months out, which is the point. Item 101's
+     trick-or-treat page was caught roughly two weeks before its window,
+     which worked but only because someone noticed. The systematic fix is
+     a short seasonal-windows list in the repo — Halloween (late Sep),
+     holiday lights and Santa visits (Nov), Restaurant Week (Jan, for a
+     late-Feb event), summer camps (Feb–Mar), farmers markets (May) —
+     with the lead time each needs to be published and indexed *before*
+     the query peaks. Macaroni KID's seasonal guides were flagged in the
+     very first competitor review as the flagship monetisable product;
+     twenty-odd passes later they are still being discovered one at a
+     time.
+
+     The longer-range note, recorded because it reframes the business
+     rather than because it is actionable now: **Main Line Today produces
+     its own Restaurant Week**, and sells sponsorship partly on email
+     blasts to its opt-in list. This file has cited Main Line Today for
+     several passes as the model for *when to send*. It is also a model
+     for what this becomes at scale — the publisher that runs the local
+     event rather than listing it. Not for this year, and not with one
+     subscriber, but worth knowing that the analogue's endgame is
+     something other than more listings.
+
+#### P3 (new)
+
+113. **Give `DESIGN_PRINCIPLES.md` a named referent instead of an
+     adjective.** Item 103 shipped the file on the finding that the
+     failure mode for a site like this is accumulation. "Restraint" is
+     hard to argue against and equally hard to apply.
+
+     Two showcases make it concrete by disagreeing with each other.
+     **Godly** is curated by a small team at 2–3 sites a week and favours
+     craft over novelty — restrained, editorial, typographically
+     considered. **Awwwards** judges on experimental animation, immersive
+     storytelling and technical showcase. Both are "good design"; only
+     one is right for a page a parent opens on a phone on a Thursday to
+     find out what is on this weekend.
+
+     Name Godly and SiteInspire as the standard the site is held to, and
+     name the Awwwards direction as explicitly **not** the target —
+     scroll-driven animation, immersive intros, anything that delays the
+     first event appearing. That gives a future pass something specific
+     to check a proposal against, which an adjective does not. It also
+     pre-empts a predictable drift: item 19's `animation-timeline:
+     view()` experiment already failed real CI on LCP and TBT once, and
+     the next such idea will arrive dressed as modern.
 
 ## Working agreements for autonomous iteration
 
