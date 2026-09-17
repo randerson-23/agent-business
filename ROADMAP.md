@@ -4877,6 +4877,35 @@ this pass went looking.
      the line and that it names at least two venues. Volatility is the
      defect; a config field the build cannot silently drop is the fix.
 
+     ✅ DONE (2026-09-17). Rewrote each region's own `tagline` field
+     (not a new parallel field - `tagline` was already wired to exactly
+     the two places this item asked to fix, the meta description via
+     `page_description` and the on-page "Issue for [date] — ..."
+     statement in `region.html.j2`, plus two more it hadn't named: the
+     hub page's region cards and each `llms.txt` region line) rather
+     than adding a second field that would need to stay in sync with
+     it. Every named venue is one already independently sourced
+     elsewhere in that same region's config - a configured source
+     (Randhurst Village), an annual event's real location (Emerson &
+     Busse, Lake Park, Harmony Park, Downtown Palatine), or a WebSearch-
+     verified civic landmark from item 104 (the Palatine Train Station
+     farmers' market lot) - not invented for this. "Melas" and "Lions
+     Park" for Mount Prospect are exactly the two this item itself
+     already verified as real by counting them live on the page; used
+     directly rather than re-verified from this sandbox, where the
+     network is blocked anyway.
+
+     Added the drift guard exactly as specified:
+     `test_every_region_tagline_names_at_least_two_real_venues` loads
+     the real `config/regions/*.yaml` files (not fixtures) and asserts
+     each tagline both differs from the old generic sentence and names
+     at least two of a hand-curated, per-region venue list. Verified
+     against the real generated site, not just the test: `docs/index.html`'s
+     hub cards, `docs/mount-prospect-60056/index.html`'s meta
+     description and on-page "Issue for ..." line, and `docs/llms.txt`'s
+     region entries all correctly show the new venue-naming text after
+     a real `build_digest.py` run. 355 tests pass.
+
 ## Working agreements for autonomous iteration
 
 - Cadence is hourly (the platform's durable scheduler has a 1-hour floor;

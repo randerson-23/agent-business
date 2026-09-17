@@ -2497,3 +2497,37 @@ def test_build_region_map_embed_url_google_when_configured():
 
 def test_build_region_map_embed_url_none_without_coordinates():
     assert build_digest.build_region_map_embed_url({}, {"provider": "osm"}) is None
+
+
+# ROADMAP.md Phase 11 #116: each region's tagline must name at least two
+# real venues, not the generic "village news, library events, and park
+# district programs" sentence that used to name no place at all - an
+# unstable entity signal, since which venues fetched this week is an
+# accident of the calendar. Checked against the real, live config files
+# (not fixtures) - a regression here would only otherwise surface as a
+# quiet drift back to genericness, exactly the failure mode this item
+# exists to close off. The expected venues are each already a real,
+# independently-sourced entity elsewhere in that same config file
+# (a configured source, an annual event's location, or a WebSearch-
+# verified civic landmark) - not invented for this test.
+_EXPECTED_TAGLINE_VENUES = {
+    "mount-prospect-60056": ["Randhurst", "Melas", "Lions Park", "Emerson"],
+    "arlington-heights-60005": ["Harmony Park", "Lake Arlington"],
+    "des-plaines-60016": ["Lake Park", "Public Library"],
+    "palatine-60067": ["Downtown Palatine", "Train Station"],
+}
+
+
+def test_every_region_tagline_names_at_least_two_real_venues():
+    for region_cfg in build_digest.load_regions():
+        region = region_cfg["region"]
+        tagline = region["tagline"]
+        assert tagline != "Village news, library events, and park district programs.", (
+            f"{region['id']}: tagline regressed to the generic, place-less sentence"
+        )
+        expected = _EXPECTED_TAGLINE_VENUES[region["id"]]
+        matches = [v for v in expected if v in tagline]
+        assert len(matches) >= 2, (
+            f"{region['id']}: tagline {tagline!r} names fewer than 2 of the expected "
+            f"real venues {expected}"
+        )

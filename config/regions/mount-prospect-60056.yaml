@@ -49,7 +49,17 @@ region:
   zip: "60056"
   state: "IL"
   timezone: "America/Chicago"
-  tagline: "Village news, library events, and park district programs."
+  # ROADMAP.md Phase 11 #116: named real venues, not the generic
+  # "village news, library events, and park district programs" line
+  # this used to be - which named no place at all and made the meta
+  # description and AI-answer entity signal only as stable as this
+  # week's fetched events. Randhurst Village is a configured source
+  # above; Melas Park and Lions Park are real Mount Prospect Park
+  # District venues that have carried events in this digest (confirmed
+  # by the twenty-seventh research pass, not guessed here); Emerson &
+  # Busse is Oktoberfest's real downtown location per the annual_events
+  # block below.
+  tagline: "Randhurst Village, Melas Park, Lions Park, and downtown Emerson & Busse — village news, library events, and park district programs."
   # Village Hall coordinates (50 S Emerson St) - a region-level
   # approximation for the "distance from you" feature (ROADMAP.md
   # Phase 8), not a specific venue's address.
