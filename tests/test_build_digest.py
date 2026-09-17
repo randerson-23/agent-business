@@ -755,6 +755,76 @@ def test_build_google_calendar_url_returns_none_without_date():
     assert build_digest.build_google_calendar_url({"title": "x", "date_iso": None}, "Mount Prospect") is None
 
 
+def test_build_region_calendar_ics_contains_calendar_headers():
+    # ROADMAP.md Phase 11 #100: the subscribe-specific properties a
+    # one-time per-event download never needed.
+    region = {"id": "mount-prospect-60056", "name": "Mount Prospect"}
+    ics = build_digest.build_region_calendar_ics(region, [], datetime.now(timezone.utc))
+    assert ics.startswith("BEGIN:VCALENDAR\r\n")
+    assert "X-WR-CALNAME:Within Ten — Mount Prospect" in ics
+    assert "REFRESH-INTERVAL;VALUE=DURATION:PT12H" in ics
+    assert "X-PUBLISHED-TTL:PT12H" in ics
+    assert ics.endswith("END:VCALENDAR\r\n")
+
+
+def test_build_region_calendar_ics_includes_dated_events_across_blocks():
+    region = {"id": "mount-prospect-60056", "name": "Mount Prospect"}
+    blocks = [
+        {"section": "Library", "events": [{"title": "Story Time", "detail": "Books.", "url": "https://x/1", "date_iso": "2026-09-19T10:00:00", "attendable": True}]},
+        {"section": "Park District", "events": [{"title": "Fishing Derby", "url": "https://x/2", "date_iso": "2026-09-20T09:00:00", "attendable": True}]},
+    ]
+    ics = build_digest.build_region_calendar_ics(region, blocks, datetime.now(timezone.utc))
+    assert ics.count("BEGIN:VEVENT") == 2
+    assert "SUMMARY:Story Time" in ics
+    assert "SUMMARY:Fishing Derby" in ics
+    assert "DTSTART:20260919T100000" in ics
+
+
+def test_build_region_calendar_ics_omits_undated_events():
+    region = {"id": "mount-prospect-60056", "name": "Mount Prospect"}
+    blocks = [{"section": "Library", "events": [{"title": "Story Time", "url": "https://x/1", "date_iso": None}]}]
+    ics = build_digest.build_region_calendar_ics(region, blocks, datetime.now(timezone.utc))
+    assert "BEGIN:VEVENT" not in ics
+
+
+def test_build_region_calendar_ics_stable_uid_across_rebuilds():
+    # Same event, two different build timestamps (as a rebuild would
+    # produce) - the UID must not change, or a subscriber's calendar
+    # sees a duplicate every time the site rebuilds instead of an update.
+    region = {"id": "mount-prospect-60056", "name": "Mount Prospect"}
+    blocks = [{"section": "Library", "events": [{"title": "Story Time", "url": "https://x/1", "date_iso": "2026-09-19T10:00:00"}]}]
+    ics_a = build_digest.build_region_calendar_ics(region, blocks, datetime(2026, 9, 17, tzinfo=timezone.utc))
+    ics_b = build_digest.build_region_calendar_ics(region, blocks, datetime(2026, 9, 18, tzinfo=timezone.utc))
+    uid_a = next(line for line in ics_a.split("\r\n") if line.startswith("UID:"))
+    uid_b = next(line for line in ics_b.split("\r\n") if line.startswith("UID:"))
+    assert uid_a == uid_b
+
+
+def test_build_region_calendar_ics_non_attendable_event_is_transparent_all_day():
+    # ROADMAP.md Phase 11 #90 applied to #100: a school half-day belongs
+    # in the feed, but as a transparent all-day entry, not a timed one
+    # a calendar app would show as "busy" for.
+    region = {"id": "mount-prospect-60056", "name": "Mount Prospect"}
+    blocks = [
+        {
+            "section": "School",
+            "events": [
+                {"title": "Half-Day Student Attendance", "url": "https://x/1", "date_iso": "2026-09-19T00:00:00", "attendable": False}
+            ],
+        }
+    ]
+    ics = build_digest.build_region_calendar_ics(region, blocks, datetime.now(timezone.utc))
+    assert "DTSTART;VALUE=DATE:20260919" in ics
+    assert "TRANSP:TRANSPARENT" in ics
+    assert "DTSTART:20260919T" not in ics
+
+
+def test_build_llms_txt_lists_each_regions_calendar():
+    summaries = [{"name": "Mount Prospect", "zip": "60056", "tagline": "x", "path": "mount-prospect-60056/", "guides": []}]
+    result = build_digest.build_llms_txt(summaries)
+    assert f"[Mount Prospect — subscribable calendar (.ics)]({build_digest.SITE_BASE_URL}mount-prospect-60056/calendar.ics)" in result
+
+
 def test_build_google_calendar_url_has_expected_params():
     event = {"title": "Fishing Derby", "detail": "Bring gear", "date_iso": "2026-09-19T10:00:00"}
     url = build_digest.build_google_calendar_url(event, "Mount Prospect")
@@ -935,6 +1005,28 @@ def test_render_region_page_produces_html_even_with_empty_sources():
     assert "No live updates fetched this week" not in html
     assert "Library" in html
     assert "quiet week" in html
+
+
+def test_render_region_page_shows_calendar_subscribe_link_on_main_page():
+    # ROADMAP.md Phase 11 #100: shown once, on the main region page
+    # (nav_current="all", the default) - a subscription is the whole
+    # calendar, not a date-scoped view.
+    blocks = [{"section": "Village News", "events": []}]
+    sponsor = {"title": "Sponsor this spot", "detail": "", "url": ""}
+    region_cfg = {"region": REGION}
+    html = build_digest.render_region_page(region_cfg, blocks, sponsor, [], datetime.now(timezone.utc))
+    assert 'href="https://withintenmiles.com/mount-prospect-60056/calendar.ics"' in html
+    assert 'href="webcal://withintenmiles.com/mount-prospect-60056/calendar.ics"' in html
+
+
+def test_render_region_page_omits_calendar_subscribe_link_on_other_views():
+    blocks = [{"section": "Village News", "events": []}]
+    sponsor = {"title": "Sponsor this spot", "detail": "", "url": ""}
+    region_cfg = {"region": REGION}
+    html = build_digest.render_region_page(
+        region_cfg, blocks, sponsor, [], datetime.now(timezone.utc), nav_current="today"
+    )
+    assert "calendar.ics" not in html
 
 
 def test_render_region_page_lists_fetched_events_and_tags():
