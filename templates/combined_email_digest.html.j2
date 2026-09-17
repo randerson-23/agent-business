@@ -1,0 +1,200 @@
+<!--
+  ROADMAP.md Phase 11 #105 - the automated Thursday send (items 24/31)
+  only ever mailed Mount Prospect's digest, since Buttondown's free plan
+  is one undifferentiated list with no per-region segmentation. The
+  signup form is on every region page, so a subscriber from any other
+  region got the wrong town's weekend - a real defect the moment the
+  list has anyone on it besides the owner. This is the fix: one issue,
+  one short block per region, so every subscriber finds their own town
+  in the same email.
+
+  Same email-client constraints as email_digest.html.j2 (tables only,
+  system fonts, explicit colors everywhere, the [data-ogsc]/
+  prefers-color-scheme dark-mode defenses from item 92) and the same
+  preview/send split (item 91) - copied here rather than shared via
+  include, since Jinja2 has no cross-template partial mechanism this
+  project already uses, and a second self-contained file is one honest
+  duplication, not a maintenance trap, as long as both stay in sync by
+  hand when the shared styling changes.
+-->
+<!doctype html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="color-scheme" content="light">
+<meta name="supported-color-schemes" content="light">
+<title>{{ subject_line }}</title>
+<style>
+[data-ogsc] .wt-bg, [data-ogsb] .wt-bg { background-color:#f6efe1 !important; }
+[data-ogsc] .wt-card, [data-ogsb] .wt-card { background-color:#fffcf5 !important; }
+[data-ogsc] .wt-card-sponsor, [data-ogsb] .wt-card-sponsor { background-color:#fdf3e4 !important; }
+[data-ogsc] .wt-cta-bg, [data-ogsb] .wt-cta-bg { background-color:#526b3f !important; }
+[data-ogsc] .wt-ink, [data-ogsb] .wt-ink { color:#2b2318 !important; }
+[data-ogsc] .wt-muted, [data-ogsb] .wt-muted { color:#766a58 !important; }
+[data-ogsc] .wt-accent, [data-ogsb] .wt-accent { color:#96581f !important; }
+[data-ogsc] .wt-brand, [data-ogsb] .wt-brand { color:#526b3f !important; }
+[data-ogsc] .wt-border, [data-ogsb] .wt-border { border-color:#e6dcc8 !important; }
+@media (prefers-color-scheme: dark) {
+  .wt-bg { background-color:#f6efe1 !important; }
+  .wt-card { background-color:#fffcf5 !important; }
+  .wt-card-sponsor { background-color:#fdf3e4 !important; }
+  .wt-cta-bg { background-color:#526b3f !important; }
+  .wt-ink { color:#2b2318 !important; }
+  .wt-muted { color:#766a58 !important; }
+  .wt-accent { color:#96581f !important; }
+  .wt-brand { color:#526b3f !important; }
+  .wt-border { border-color:#e6dcc8 !important; }
+}
+</style>
+<!--[if mso]>
+<noscript>
+<xml>
+<o:OfficeDocumentSettings>
+<o:PixelsPerInch>96</o:PixelsPerInch>
+</o:OfficeDocumentSettings>
+</xml>
+</noscript>
+<![endif]-->
+</head>
+<body class="wt-bg" style="margin:0; padding:0; background-color:#f6efe1;" bgcolor="#f6efe1">
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" bgcolor="#f6efe1" class="wt-bg" style="background-color:#f6efe1;">
+<tr>
+<td align="center" style="padding:24px 16px;">
+<table role="presentation" width="600" cellpadding="0" cellspacing="0" border="0" style="width:600px; max-width:600px;">
+
+{% if preview %}
+<tr>
+<td class="wt-accent wt-border" style="padding:0 8px 12px 8px; font-family:Arial, Helvetica, sans-serif; font-size:12px; color:#96581f; border-bottom:1px dashed #e6dcc8;">
+PREVIEW ONLY, NOT PART OF THE EMAIL — SUBJECT LINE: {{ subject_line }}
+</td>
+</tr>
+{% endif %}
+
+<!-- Wordmark -->
+<tr>
+<td style="padding:0 8px 16px 8px;">
+<span class="wt-brand" style="font-family:Arial, Helvetica, sans-serif; font-size:13px; font-weight:bold; letter-spacing:1px; color:#526b3f;">WITHIN TEN</span>
+</td>
+</tr>
+
+<!-- Intro -->
+<tr>
+<td style="font-family:Georgia, 'Times New Roman', serif; font-size:22px; line-height:1.3; color:#2b2318; padding-bottom:6px;" class="wt-ink">
+This weekend, four towns over
+</td>
+</tr>
+<tr>
+<td class="wt-muted" style="font-family:Arial, Helvetica, sans-serif; font-size:14px; color:#766a58; padding-bottom:18px;">
+{{ weekend_date_range }}
+</td>
+</tr>
+
+{% for block in region_blocks %}
+<!-- Region block: {{ block.region_name }} -->
+<tr>
+<td bgcolor="#fffcf5" class="wt-card wt-border" style="background-color:#fffcf5; border:1px solid #e6dcc8; border-radius:8px; padding:20px; margin-bottom:16px;">
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+<tr>
+<td class="wt-ink" style="font-family:Georgia, 'Times New Roman', serif; font-size:18px; color:#2b2318; padding-bottom:10px;">
+<a href="{{ block.region_url }}" class="wt-ink" style="color:#2b2318; text-decoration:none;">{{ block.region_name }}</a>
+</td>
+</tr>
+
+{% if block.attendable_events %}
+{% for event in block.attendable_events[:4] %}
+<tr>
+<td class="wt-border" style="padding:8px 0; border-top:1px solid #e6dcc8;">
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+<tr>
+<td class="wt-ink" style="font-family:Arial, Helvetica, sans-serif; font-size:16px; color:#2b2318;">
+<a href="{{ event.url }}" class="wt-ink" style="color:#2b2318; text-decoration:none; font-weight:bold;">{{ event.title }}</a>
+</td>
+</tr>
+{% if event.date %}
+<tr>
+<td class="wt-accent" style="font-family:Arial, Helvetica, sans-serif; font-size:14px; color:#96581f;">
+{{ event.date }}
+</td>
+</tr>
+{% endif %}
+</table>
+</td>
+</tr>
+{% endfor %}
+{% if block.informational_events %}
+<tr>
+<td class="wt-accent wt-border" style="padding:8px 0 2px 0; border-top:1px solid #e6dcc8; font-family:Arial, Helvetica, sans-serif; font-size:12px; font-weight:bold; letter-spacing:0.5px; color:#96581f;">
+ALSO THIS WEEK
+</td>
+</tr>
+{% for item in block.informational_events[:2] %}
+<tr>
+<td class="wt-muted" style="font-family:Arial, Helvetica, sans-serif; font-size:14px; color:#766a58; padding-top:4px;">
+{{ item.title }}{% if item.date %} — {{ item.date }}{% endif %}
+</td>
+</tr>
+{% endfor %}
+{% endif %}
+{% elif block.evergreen_highlights %}
+<tr>
+<td class="wt-muted" style="font-family:Arial, Helvetica, sans-serif; font-size:14px; color:#766a58; padding-bottom:6px;">
+Nothing new dated for this weekend yet, but worth knowing about:
+</td>
+</tr>
+{% for item in block.evergreen_highlights %}
+<tr>
+<td class="wt-border" style="padding:6px 0; border-top:1px solid #e6dcc8; font-family:Arial, Helvetica, sans-serif; font-size:15px;">
+<a href="{{ item.url }}" class="wt-ink" style="color:#2b2318; text-decoration:none; font-weight:bold;">{{ item.title }}</a>
+</td>
+</tr>
+{% endfor %}
+{% else %}
+<tr>
+<td class="wt-muted" style="font-family:Arial, Helvetica, sans-serif; font-size:14px; color:#766a58;">
+Nothing dated for this weekend yet — the full guide has what's coming up.
+</td>
+</tr>
+{% endif %}
+
+{% if block.sponsor and block.sponsor.is_active_sponsor %}
+<tr>
+<td style="padding-top:10px;">
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+<tr>
+<td bgcolor="#fdf3e4" class="wt-card-sponsor wt-border" style="background-color:#fdf3e4; border:1px solid #e6dcc8; border-radius:6px; padding:10px 14px;">
+<span class="wt-accent" style="font-family:Arial, Helvetica, sans-serif; font-size:11px; font-weight:bold; letter-spacing:0.5px; color:#96581f;">LOCAL RECOMMENDATION —</span>
+<a href="{{ block.sponsor.url }}" class="wt-ink" style="color:#2b2318; text-decoration:none; font-weight:bold; font-family:Arial, Helvetica, sans-serif; font-size:14px;">{{ block.sponsor.title }}</a>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+{% endif %}
+
+<tr>
+<td style="padding-top:12px;">
+<a href="{{ block.region_url }}" class="wt-brand" style="color:#526b3f; text-decoration:none; font-weight:bold; font-family:Arial, Helvetica, sans-serif; font-size:13px;">See everything in {{ block.region_name }} &rarr;</a>
+</td>
+</tr>
+
+</table>
+</td>
+</tr>
+<tr><td style="padding:0 0 16px 0;"></td></tr>
+{% endfor %}
+
+<!-- Footer -->
+<tr>
+<td align="center" class="wt-muted" style="padding:8px 8px 8px 8px; font-family:Arial, Helvetica, sans-serif; font-size:12px; color:#766a58;">
+Within Ten — local events within ten miles, updated automatically.
+</td>
+</tr>
+
+</table>
+</td>
+</tr>
+</table>
+</body>
+</html>

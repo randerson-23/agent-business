@@ -37,11 +37,16 @@ detail: "The weekly digest, emailed once a week. No spam, unsubscribe anytime."
 # (item 77) or the barter play (item 94) could do that in a day - so
 # revisit this before either goes out, not after.
 #
-# region: Buttondown's free plan is one list, so one region's digest goes
-# out. Mount Prospect is the home region and has the most sources. A
-# genuine multi-region email needs a combined template that does not
-# exist yet (see ROADMAP.md item 105).
+# region: Buttondown's free plan is one list, so it can't send four
+# separate region-specific emails - it sends whichever one file
+# scripts/send_newsletter.py is told to read. Was "mount-prospect-60056"
+# only, which meant a subscriber from any other region's signup form got
+# the wrong town's weekend - a real defect, not a hypothetical one, the
+# moment the list has anyone on it besides the owner. Set to "combined"
+# on 2026-09-17 once that template shipped (ROADMAP.md item 105):
+# docs/combined-email-send.html carries a short block per region, so
+# every subscriber finds their own town in the same issue.
 send:
   enabled: true
-  region: "mount-prospect-60056"
+  region: "combined"
   mode: "send"
