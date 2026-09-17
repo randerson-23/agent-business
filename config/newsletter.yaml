@@ -28,21 +28,26 @@ detail: "One email, Thursday mornings, covering Arlington Heights, Des Plaines, 
 # Automated weekly send (ROADMAP.md Phase 11 #24/#31), added 2026-09-17 at
 # the owner's request. scripts/send_newsletter.py reads the already-built
 # docs/<region>/email-send.html and creates the email in Buttondown; the
-# GitHub Actions workflow send-newsletter.yml runs it on a Thursday cron.
+# GitHub Actions workflow send-newsletter.yml runs it on a Wednesday-night
+# cron (see that file's own comment for why it isn't Thursday morning).
 #
 # mode: "draft" creates the email in Buttondown and stops, leaving the
-# send as a human click. "send" mails it to the list immediately.
+# send as a human click. "send" mails it immediately. "schedule" creates
+# it with a future `publish_date` and lets Buttondown itself hold and
+# deliver it at the researched Thursday-07:00-Central slot.
 #
-# Set to "send" on 2026-09-17 at the owner's explicit instruction. This
-# shipped on "draft" the same day, on the reasoning that an email cannot
-# be unsent and the pipeline had just shipped a wrong subject line (item
-# 90). The owner overrode it with a better fact than the caution was
-# built on: he is currently the only subscriber, so the blast radius of
-# a bad issue is his own inbox, and a live weekly send is worth more as
-# a real test than a draft nobody is judging. That reasoning stops
-# holding the moment the list has anyone else on it - the press pitch
-# (item 77) or the barter play (item 94) could do that in a day - so
-# revisit this before either goes out, not after.
+# Set to "send" on 2026-09-17 at the owner's explicit instruction, then to
+# "schedule" the same day once item 110's research made that setting
+# actively wrong: this repo's own build-digest.yml cron history showed
+# GitHub Actions scheduled runs firing 5h27m-6h54m late, three times out
+# of three measured, and send-newsletter.yml's cron is exactly as
+# exposed. "send" mode mails the instant the (possibly hours-late) job
+# runs, so the researched Thursday-morning slot was never actually being
+# honored - "schedule" fixes that by making Buttondown, not GitHub's
+# cron, responsible for the actual delivery moment. The single-subscriber
+# reasoning that justified skipping "draft" still applies here (mode
+# controls *when*, not *whether*, so nothing about that risk changed) -
+# revisit before the list grows past the owner, same as before.
 #
 # region: Buttondown's free plan is one list, so it can't send four
 # separate region-specific emails - it sends whichever one file
@@ -56,4 +61,4 @@ detail: "One email, Thursday mornings, covering Arlington Heights, Des Plaines, 
 send:
   enabled: true
   region: "combined"
-  mode: "send"
+  mode: "schedule"

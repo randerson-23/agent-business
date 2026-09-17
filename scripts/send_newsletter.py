@@ -19,17 +19,36 @@ Two things this deliberately does NOT do:
   the exit code, and only then send.
 - **It does not decide whether to send.** `config/newsletter.yaml`'s
   `send.mode` does: `draft` creates the email in Buttondown and stops,
-  `send` mails it. It shipped on `draft` (an email cannot be unsent, and
-  this pipeline had just shipped a wrong subject line - item 90) and the
-  owner set it to `send` the same day, on the grounds that he is the only
-  subscriber. That reasoning expires when the list grows; see the comment
-  in config/newsletter.yaml.
+  `send` mails it immediately, `schedule` creates it with a future
+  `publish_date` and lets Buttondown hold and deliver it (item 110 -
+  see next paragraph for why). It shipped on `draft` (an email cannot be
+  unsent, and this pipeline had just shipped a wrong subject line - item
+  90), the owner set it to `send` the same day on the grounds that he
+  was the only subscriber, and it moved to `schedule` once item 110
+  found that reasoning didn't touch the actual problem the researched
+  Thursday-morning slot exists to solve.
+
+Why `schedule` exists (ROADMAP.md item 110): GitHub documents scheduled
+Actions runs as best-effort, and this repo's own history proved it -
+`build-digest.yml`'s weekly cron fired 5h27m to 6h54m late, three times
+out of three measured. A workflow that runs "sometime Thursday
+afternoon" cannot deliver "Thursday morning." `schedule` mode stops
+asking GitHub Actions to be punctual and asks it only to run *sometime*
+in a multi-hour window before the real target time, handing the actual
+delivery moment to Buttondown, which is designed to hold a scheduled
+send precisely. See send-newsletter.yml's cron comment for the other
+half of this: it now fires the night before.
 
 API shape note: the endpoint and field names below could not be verified
 from the build sandbox (outbound HTTP is blocked by the egress proxy), so
 they are stated once, here, rather than scattered - and any API error is
 surfaced verbatim rather than swallowed, so a wrong guess is loud and
-obvious on the first run rather than silent.
+obvious on the first run rather than silent. That applies doubly to
+`publish_date`/`STATUS_SCHEDULED` below: unlike `about_to_send` and its
+confirmation header, which were confirmed against a real API response,
+the scheduling shape is this session's best-documented guess and has
+never been tried against the live API - the first `schedule`-mode run
+is the actual test.
 """
 from __future__ import annotations
 
@@ -38,8 +57,11 @@ import logging
 import os
 import re
 import sys
+from datetime import datetime, timedelta, timezone
+from email.utils import parsedate_to_datetime
 from html import unescape
 from pathlib import Path
+from zoneinfo import ZoneInfo
 
 import requests
 import yaml
@@ -51,17 +73,38 @@ NEWSLETTER_CONFIG = REPO_ROOT / "config" / "newsletter.yaml"
 # Buttondown API v1. See the module docstring: unverified from here.
 BUTTONDOWN_API_URL = "https://api.buttondown.com/v1/emails"
 BUTTONDOWN_AUTH_SCHEME = "Token"
-# Buttondown's status for "created but not sent" vs "send this now".
+# Buttondown's status for "created but not sent" vs "send this now" vs
+# "send it, but later, at a time Buttondown itself holds" (item 110).
 STATUS_DRAFT = "draft"
 STATUS_SEND = "about_to_send"
+STATUS_SCHEDULED = "scheduled"
 # Buttondown refuses an `about_to_send` email unless this header is
 # present, deliberately: it is the interlock that stops a first API
 # experiment from mailing a real list. Their error says it is "only
 # required once per API key", but it is sent on every live send anyway -
 # tracking which keys have been blessed would be state this script has no
 # business keeping, and the header is harmless once accepted. It is NOT
-# sent for drafts, which do not need it and should not imply a send.
+# sent for drafts, which do not need it and should not imply a send. Also
+# not sent for `scheduled`: it isn't an immediate send, and this is exactly
+# the unverified-from-here guess the module docstring warns about - a real
+# 400 on the first scheduled run would say if that's wrong.
 LIVE_SEND_HEADER = "X-Buttondown-Live-Dangerously"
+
+# ROADMAP.md item 110: the researched send slot is Thursday 07:00 Central,
+# not "whenever GitHub's cron happens to fire" - this is the local weekday/
+# hour `schedule` mode targets. America/Chicago (not a fixed UTC offset) so
+# `next_thursday_morning()` gets CDT/CST right automatically across the
+# November/March transitions.
+SEND_TIMEZONE = ZoneInfo("America/Chicago")
+SEND_WEEKDAY = 3  # Monday=0 .. Thursday=3, per datetime.weekday()
+SEND_HOUR = 7
+
+# ROADMAP.md item 111: a scheduled Actions run can be silently dropped
+# under load, producing no job and no failure email - the one failure mode
+# "a failing job emails the owner" cannot catch. A `docs/feed.xml` whose
+# <lastBuildDate> is this old is the cheapest signal available that the
+# regular rebuild didn't happen, without standing up separate monitoring.
+MAX_BUILD_AGE = timedelta(days=4)
 
 API_KEY_ENV = "BUTTONDOWN_API_KEY"
 
@@ -94,8 +137,10 @@ def load_send_config(path: Path = NEWSLETTER_CONFIG) -> dict:
     send_cfg = cfg.get("send") or {}
     region = (send_cfg.get("region") or "").strip()
     mode = (send_cfg.get("mode") or STATUS_DRAFT).strip().lower()
-    if mode not in {"draft", "send"}:
-        raise SendError(f"config send.mode must be 'draft' or 'send', got {mode!r}")
+    if mode not in {"draft", "send", "schedule"}:
+        raise SendError(
+            f"config send.mode must be 'draft', 'send', or 'schedule', got {mode!r}"
+        )
     return {
         "enabled": bool(send_cfg.get("enabled")),
         "region": region,
@@ -158,12 +203,80 @@ def html_byte_size(html: str) -> int:
     return len(html.encode("utf-8"))
 
 
-def post_to_buttondown(subject: str, html: str, api_key: str, mode: str) -> dict:
+def next_thursday_morning(now: datetime) -> datetime:
+    """The next Thursday 07:00 America/Chicago at or after `now` (ROADMAP.md
+    item 110) - the researched send slot, not "whenever this happens to
+    run". `now` may be in any timezone; the comparison and the result are
+    both done in SEND_TIMEZONE so a UTC `now` a few hours after local
+    midnight doesn't get treated as still being the previous local day.
+    """
+    local_now = now.astimezone(SEND_TIMEZONE)
+    days_ahead = (SEND_WEEKDAY - local_now.weekday()) % 7
+    candidate = local_now.replace(hour=SEND_HOUR, minute=0, second=0, microsecond=0)
+    candidate += timedelta(days=days_ahead)
+    if candidate <= local_now:
+        candidate += timedelta(days=7)
+    return candidate
+
+
+def read_build_timestamp(docs_dir: Path = DOCS_DIR) -> datetime:
+    """The last real build's completion time, from `docs/feed.xml`'s
+    <lastBuildDate> (written fresh by build_digest.py's build_feed_xml()
+    on every run) - the cheapest signal available (ROADMAP.md item 111)
+    that a build actually happened recently, without standing up separate
+    monitoring for a static site.
+    """
+    path = docs_dir / "feed.xml"
+    if not path.exists():
+        raise SendError(f"No {path} - run scripts/build_digest.py first")
+    match = re.search(r"<lastBuildDate>(.*?)</lastBuildDate>", path.read_text(encoding="utf-8"))
+    if not match:
+        raise SendError(f"{path} has no <lastBuildDate> - can't confirm the build is fresh")
+    try:
+        return parsedate_to_datetime(match.group(1))
+    except (TypeError, ValueError) as exc:
+        raise SendError(f"Unparseable <lastBuildDate> in {path}: {match.group(1)!r} ({exc})")
+
+
+def assert_build_is_fresh(build_time: datetime, now: datetime, max_age: timedelta = MAX_BUILD_AGE) -> None:
+    """Refuse to mail a digest older than `max_age` (ROADMAP.md item 111).
+
+    This script always rebuilds fresh immediately before calling it (see
+    send-newsletter.yml), so under the current workflow this check should
+    never actually trip - it exists as insurance against exactly the
+    failure mode that prompted it: a scheduled Actions run silently
+    dropped rather than delayed, which produces no job and so no failure
+    email either. It cannot detect that directly (nothing runs to check
+    it), but it does catch anything that would otherwise let a stale
+    build get mailed - a future refactor that separates build and send,
+    or a manual run against a checkout whose build step didn't run as
+    expected.
+    """
+    age = now - build_time
+    if age > max_age:
+        raise SendError(
+            f"docs/feed.xml was last built {age} ago (older than {max_age}) - "
+            "refusing to mail a possibly-stale digest. Run scripts/build_digest.py "
+            "and retry, or investigate why the regular build didn't happen."
+        )
+
+
+def post_to_buttondown(
+    subject: str, html: str, api_key: str, mode: str, *, now: datetime | None = None
+) -> dict:
     """Create the email in Buttondown. Raises SendError with the API's own
     message on any non-2xx, so a wrong endpoint or a plan that gates API
     access fails loudly on the first run instead of looking like success.
     """
-    status = STATUS_SEND if mode == "send" else STATUS_DRAFT
+    payload = {"subject": subject, "body": html}
+    if mode == "send":
+        status = STATUS_SEND
+    elif mode == "schedule":
+        status = STATUS_SCHEDULED
+        payload["publish_date"] = next_thursday_morning(now or datetime.now(timezone.utc)).isoformat()
+    else:
+        status = STATUS_DRAFT
+    payload["status"] = status
     headers = {
         "Authorization": f"{BUTTONDOWN_AUTH_SCHEME} {api_key}",
         "Content-Type": "application/json",
@@ -173,7 +286,7 @@ def post_to_buttondown(subject: str, html: str, api_key: str, mode: str) -> dict
     response = requests.post(
         BUTTONDOWN_API_URL,
         headers=headers,
-        json={"subject": subject, "body": html, "status": status},
+        json=payload,
         timeout=30,
     )
     if not response.ok:
@@ -216,18 +329,32 @@ def main(argv: list[str] | None = None) -> int:
         logger.error("%s", exc)
         return 1
 
+    now = datetime.now(timezone.utc)
+    try:
+        assert_build_is_fresh(read_build_timestamp(), now)
+    except SendError as exc:
+        logger.error("%s", exc)
+        return 1
+
     # The banner comes first and names the outcome, not the setting. An
     # earlier version printed "Mode: send" directly above "Dry run - no
     # request made", which read as a successful send in the Actions log
     # and cost a real debugging cycle.
+    # `banner_verb` stays shouty for the LIVE banner; `plain_verb` is the
+    # lowercase phrasing the dry-run completion message uses - built
+    # separately rather than by calling .lower() on banner_verb, which
+    # would also mangle the ISO timestamp's "T" separator in schedule mode.
+    if cfg["mode"] == "send":
+        banner_verb, plain_verb = "SEND to every subscriber", "send"
+    elif cfg["mode"] == "schedule":
+        scheduled_for = next_thursday_morning(now).isoformat()
+        banner_verb, plain_verb = f"SCHEDULE for {scheduled_for}", f"schedule for {scheduled_for}"
+    else:
+        banner_verb, plain_verb = "create a DRAFT in Buttondown", "create the draft"
     if args.dry_run:
         logger.info("=== DRY RUN - validating only, no email will be created ===")
     else:
-        logger.info(
-            "=== LIVE: this will %s ===",
-            "SEND to every subscriber" if cfg["mode"] == "send"
-            else "create a DRAFT in Buttondown",
-        )
+        logger.info("=== LIVE: this will %s ===", banner_verb)
     html_bytes = html_byte_size(html)
     logger.info("Region:  %s", cfg["region"])
     logger.info("Subject: %s", subject)
@@ -243,7 +370,7 @@ def main(argv: list[str] | None = None) -> int:
         logger.info(
             "Dry run complete - nothing was created or sent. Re-run with the "
             "'dry run' box UNTICKED to actually %s.",
-            "send" if cfg["mode"] == "send" else "create the draft",
+            plain_verb,
         )
         return 0
 
@@ -257,7 +384,7 @@ def main(argv: list[str] | None = None) -> int:
         return 1
 
     try:
-        result = post_to_buttondown(subject, html, api_key, cfg["mode"])
+        result = post_to_buttondown(subject, html, api_key, cfg["mode"], now=now)
     except SendError as exc:
         logger.error("%s", exc)
         return 1
@@ -267,6 +394,12 @@ def main(argv: list[str] | None = None) -> int:
 
     if cfg["mode"] == "send":
         logger.info("Sent. Buttondown id: %s", result.get("id", "?"))
+    elif cfg["mode"] == "schedule":
+        logger.info(
+            "Scheduled for %s. Buttondown id: %s",
+            next_thursday_morning(now).isoformat(),
+            result.get("id", "?"),
+        )
     else:
         logger.info(
             "Draft created (id: %s). Open Buttondown and send it when it looks right.",

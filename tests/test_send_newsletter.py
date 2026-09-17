@@ -1,5 +1,8 @@
 import sys
+from datetime import datetime, timedelta, timezone
+from email.utils import format_datetime
 from pathlib import Path
+from zoneinfo import ZoneInfo
 
 import pytest
 
@@ -7,9 +10,12 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "scripts"))
 from send_newsletter import (  # noqa: E402
     COMBINED_REGION,
     SendError,
+    assert_build_is_fresh,
     extract_subject,
     html_byte_size,
     load_send_config,
+    next_thursday_morning,
+    read_build_timestamp,
     read_built_email,
 )
 
@@ -98,6 +104,12 @@ def test_load_send_config_rejects_an_unknown_mode(tmp_path):
     cfg.write_text("send:\n  enabled: true\n  mode: blast\n", encoding="utf-8")
     with pytest.raises(SendError, match="draft"):
         load_send_config(cfg)
+
+
+def test_load_send_config_accepts_schedule_mode(tmp_path):
+    cfg = tmp_path / "newsletter.yaml"
+    cfg.write_text("send:\n  enabled: true\n  region: r\n  mode: schedule\n", encoding="utf-8")
+    assert load_send_config(cfg)["mode"] == "schedule"
 
 
 def test_load_send_config_defaults_to_draft(tmp_path):
@@ -190,6 +202,23 @@ def test_draft_does_not_carry_the_live_send_header(monkeypatch):
     assert seen["json"]["status"] == send_newsletter.STATUS_DRAFT
 
 
+def test_schedule_mode_sets_scheduled_status_and_a_future_publish_date(monkeypatch):
+    """ROADMAP.md item 110: schedule mode hands the actual delivery moment
+    to Buttondown instead of GitHub Actions cron, which this repo's own
+    history showed running 5-7h late. It should not carry the live-send
+    header (that's specific to an immediate about_to_send, unverified
+    either way for scheduled - see the module docstring)."""
+    import send_newsletter
+
+    seen = _capture_post(monkeypatch)
+    now = datetime(2026, 9, 17, 15, 0, tzinfo=timezone.utc)  # a Thursday, midday UTC
+    send_newsletter.post_to_buttondown("Subj", "<p>hi</p>", "key", "schedule", now=now)
+    assert seen["json"]["status"] == send_newsletter.STATUS_SCHEDULED
+    assert send_newsletter.LIVE_SEND_HEADER not in seen["headers"]
+    scheduled_for = datetime.fromisoformat(seen["json"]["publish_date"])
+    assert scheduled_for > now
+
+
 def test_api_errors_are_surfaced_verbatim(monkeypatch):
     """The 400 that found the header requirement was only debuggable
     because the body came through untouched."""
@@ -217,3 +246,73 @@ def test_html_byte_size_counts_utf8_bytes_not_characters():
 
 def test_html_byte_size_matches_character_count_for_ascii():
     assert html_byte_size("a" * 500) == 500
+
+
+CHICAGO = ZoneInfo("America/Chicago")
+
+
+def test_next_thursday_morning_from_a_monday_lands_the_same_week():
+    now = datetime(2026, 9, 14, 12, 0, tzinfo=timezone.utc)  # Monday, 07:00 Chicago
+    result = next_thursday_morning(now)
+    assert (result.year, result.month, result.day) == (2026, 9, 17)  # that week's Thursday
+    assert result.hour == 7
+    assert result.tzinfo is not None
+
+
+def test_next_thursday_morning_before_the_hour_returns_today():
+    now = datetime(2026, 9, 17, 11, 0, tzinfo=timezone.utc)  # Thursday, 06:00 Chicago
+    result = next_thursday_morning(now)
+    assert (result.year, result.month, result.day) == (2026, 9, 17)
+
+
+def test_next_thursday_morning_after_the_hour_rolls_to_next_week():
+    now = datetime(2026, 9, 17, 13, 0, tzinfo=timezone.utc)  # Thursday, 08:00 Chicago
+    result = next_thursday_morning(now)
+    assert (result.year, result.month, result.day) == (2026, 9, 24)  # a week later
+
+
+def test_next_thursday_morning_uses_local_day_not_utc_day():
+    # 03:00 UTC Friday is still Thursday evening in Chicago (UTC-5 in
+    # September) - the found bug this guards against is computing the
+    # weekday from `now` directly instead of from the converted local
+    # time, which would see "Friday" and roll a whole week later than it
+    # should.
+    now = datetime(2026, 9, 18, 3, 0, tzinfo=timezone.utc)
+    assert now.astimezone(CHICAGO).strftime("%A") == "Thursday"
+    result = next_thursday_morning(now)
+    assert (result.year, result.month, result.day) == (2026, 9, 24)
+
+
+def test_read_build_timestamp_parses_lastbuilddate(tmp_path):
+    built_at = datetime(2026, 9, 17, 10, 30, tzinfo=timezone.utc)
+    (tmp_path / "feed.xml").write_text(
+        f"<rss><channel><lastBuildDate>{format_datetime(built_at)}</lastBuildDate></channel></rss>",
+        encoding="utf-8",
+    )
+    assert read_build_timestamp(docs_dir=tmp_path) == built_at
+
+
+def test_read_build_timestamp_missing_file_names_the_build_step(tmp_path):
+    with pytest.raises(SendError, match="build_digest.py"):
+        read_build_timestamp(docs_dir=tmp_path)
+
+
+def test_read_build_timestamp_missing_element_raises(tmp_path):
+    (tmp_path / "feed.xml").write_text("<rss><channel></channel></rss>", encoding="utf-8")
+    with pytest.raises(SendError, match="lastBuildDate"):
+        read_build_timestamp(docs_dir=tmp_path)
+
+
+def test_assert_build_is_fresh_allows_a_recent_build():
+    now = datetime(2026, 9, 17, 12, 0, tzinfo=timezone.utc)
+    build_time = now - timedelta(days=1)
+    assert_build_is_fresh(build_time, now)  # does not raise
+
+
+def test_assert_build_is_fresh_rejects_a_stale_build():
+    # ROADMAP.md item 111: the one signal available that a scheduled
+    # rebuild was silently dropped rather than merely late.
+    now = datetime(2026, 9, 17, 12, 0, tzinfo=timezone.utc)
+    build_time = now - timedelta(days=5)
+    with pytest.raises(SendError, match="docs/feed.xml"):
+        assert_build_is_fresh(build_time, now)

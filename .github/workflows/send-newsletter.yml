@@ -2,17 +2,25 @@ name: Send weekly newsletter
 
 on:
   schedule:
-    # Every Thursday 12:00 UTC — 07:00 America/Chicago during CDT, 06:00
-    # during CST. GitHub's cron is UTC-only with no DST handling, so this
-    # drifts by an hour each November and March; that is acceptable for a
-    # morning send and not worth a scheduler to fix.
+    # Wednesday 22:37 UTC (~17:37 Chicago), not Thursday morning — moved
+    # here by ROADMAP.md item 110, after this repo's own build-digest.yml
+    # cron history proved GitHub Actions scheduled runs are not
+    # punctual: three measured runs, all 5h27m–6h54m late. A cron
+    # anchored to the actual send time just mails whenever the (possibly
+    # hours-late) job happens to run, which quietly breaks the researched
+    # Thursday-morning slot (ROADMAP.md Phase 11 #31) it exists to serve.
     #
-    # Thursday is the researched slot (ROADMAP.md Phase 11 #31 — two
-    # independent local-newsletter analogues converge on it). The owner
-    # asked for mornings; the same research puts peak opens at 3–7pm, so
-    # moving this to "0 20 * * 4" is a one-line change if open rates
-    # argue for it later.
-    - cron: "0 12 * * 4"
+    # The fix: run the night before and let config/newsletter.yaml's
+    # `send.mode: "schedule"` hand the real delivery moment to
+    # Buttondown, which holds the email and sends it precisely at the
+    # `publish_date` scripts/send_newsletter.py computes (next Thursday
+    # 07:00 America/Chicago). This job only needs to run *sometime* in
+    # the several-hour window before that, which is exactly what GitHub
+    # reliably provides even when it isn't punctual - and running the
+    # night before leaves a real margin to catch a bad issue before
+    # Buttondown ever sends it. The offset minute (":37") dodges the
+    # documented delay spike clustered at ":00".
+    - cron: "37 22 * * 3"
   # Manual runs matter more than usual here: this is how the first send
   # gets tested without waiting a week.
   #
