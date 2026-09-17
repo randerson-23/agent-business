@@ -258,6 +258,8 @@ search, which item 22's whole AI-citation effort depends on.
 | **6AM City** | 400+ local newsletters, $9.5M rev, profitable in 2026 | **Self-service ad platform** — they built it because low-average-order-value local sponsors don't justify sales time. Directly targets this business's #1 constraint |
 | **Axios Local** | Local newsletter network, local-advertiser funded | Newsletter-first: the list is the asset, the site is the funnel |
 | **Patch** | Hyperlocal news + community calendar | User-submitted events, business directory, classifieds — community supplies the content |
+| **Tinybeans / Red Tricycle** | Red Tricycle published local family activity guides across major US cities; **acquired for $6.5M in 2020**, folded into Tinybeans, which wanted it for brand-advertiser access to parents | Proof the category has an exit — and that the asset bought was the **audience**, not the listings |
+| **Skylight / TeamSnap / SportsEngine** | The family-calendar surface. Skylight's $299 display ingests **any league or school calendar with a subscribe link**; youth sports has standardised on ICS subscription | Not a competitor — a **distribution channel this site does not use** (item 100) |
 | **Nextdoor** (Neighborhood Sponsorship) | ZIP-exclusive "featured agent" placement sold to realtors, **$30–150/ZIP/month** | Not an events competitor — a **pricing anchor**. It is what a realtor already pays for the exact exclusivity item 95 sells |
 | **Substack** (local publishers) | Newsletter platform with a built-in reader network; **40% of new subscriptions originate inside it**, Recommendations being the main engine below 10k subs | The one growth channel Buttondown structurally cannot offer (item 96) |
 | **Eventbrite / AllEvents / Meetup** | Rank #1 for "things to do in Mount Prospect this weekend" today | They own the query — but they only list *ticketed/commercial* events |
@@ -3781,6 +3783,165 @@ and exactly what a ticketing platform's listing will never contain.
     (previously untracked) `docs/about/` directory removed before
     committing, per the standing rule against hand-committing generated
     output.
+
+#### Research pass 2026-09-17 (twenty-third pass)
+
+The build loop cleared 92 and 94–98 overnight and added 99 off item 98's
+tail, so the open P1s are 90 and 91 (both its work) and 93 (Ryan's). With
+the backlog that thin, this is a deeper batch rather than a token one.
+
+Angles: youth-sports and family scheduling as a *surface*, the parenting-
+local category's one real exit, retention benchmarks, and a design
+re-check. No new UI features again — and item 103 exists specifically to
+keep it that way.
+
+| Angle | Finding | Consequence |
+|---|---|---|
+| **Family scheduling load** | Parents average **30.4 hrs/week** on the mental load of scheduling, **17.5 communications/week** about kids' schedules, **11.5 activities/week** per child. The products winning here **feed the calendar the family already keeps** rather than being another destination | The site emits per-event `data:` ICS downloads and **no subscribable feed** — verified, `find docs -name "*.ics"` returns nothing (item 100) |
+| **Newsletter retention** | News-vertical churn is **5.47%/month** (among the lowest of any category). Regular openers are **2× more likely to still be subscribed at 12 months**. MailerLite, across ~1.4M campaigns: **monthly to twice-weekly** is the band where opens hold without abnormal churn | The planned weekly Thursday send is **validated, not a guess** — and the metric to watch is open *frequency*, not open rate (item 102) |
+| **Category exit** | Red Tricycle — local family activity guides across US cities, i.e. this exact product — **sold for $6.5M in 2020**; the buyer wanted parent-audience access for brand advertisers | The asset is the audience. Reinforces item 96 |
+| **Seasonal monetisation** | Q4 is the strongest publisher window of the year; local businesses pay **$500–5,000/season** to sponsor community markets | The fall guide exists but **punts on the one thing everyone searches** (item 101) |
+| **Design, re-checked** | 2026 direction is typography-as-interface and **restraint**: "identify the two or three directions that fit, execute with craft, resist the rest." Refined serif headings signal editorial polish | The site already does this — Fraunces + Inter, generous whitespace. The risk is **adding**, not lacking (item 103) |
+
+#### P1 (new)
+
+100. **Publish a subscribable `calendar.ics` per region — the strongest
+     retention mechanism available, and a static file.** Today the site
+     offers a per-event "Add to calendar" `data:` URI: a one-time copy
+     that goes stale the moment anything changes and requires a fresh
+     decision per event. What it does not offer is a **subscription** —
+     one click, and every future event in that region appears in the
+     family's own calendar forever.
+
+     Why this ranks as P1 rather than a nice-to-have. Retention is the
+     open question the product has never addressed, and the numbers
+     around the target reader are stark: 30.4 hours a week of scheduling
+     load, 11.5 activities a week per child. Youth sports has already
+     standardised on ICS subscription — leagues, SportsEngine and school
+     calendars all expose subscribe links, and hardware like Skylight
+     ingests them directly. **A parent who subscribes once is retained
+     without ever opening an email**, which is the only retention channel
+     that survives a bad subject line, an inbox move, or a busy month.
+
+     It also fits this architecture better than almost anything proposed
+     here: `build_digest.py` already serialises events to RFC 5545
+     (`_ics_escape`, the per-event builder) — this is the same data
+     written to `docs/<region-id>/calendar.ics` once per build instead of
+     inlined per card. No framework, no service, nothing to maintain.
+
+     Specifics worth getting right, because a calendar feed is judged
+     harshly: stable `UID` per event (slug + date, so re-fetches update
+     rather than duplicate), `SEQUENCE` bumped on change, a sensible
+     `X-WR-CALNAME` ("Within Ten — Mount Prospect"), `REFRESH-INTERVAL`
+     and `X-PUBLISHED-TTL` of `PT12H`, and `DTSTAMP`/`LAST-MODIFIED` set.
+     Offer it as both `webcal://` (which Apple and Google follow into
+     the subscribe flow) and plain `https://`. Apply item 90's
+     `attendable` split here too — a school half-day belongs in a
+     calendar feed even more naturally than in an email, but as a
+     transparent all-day entry, not a timed event.
+
+     One honest dependency: this is only as good as the data's stability.
+     The relative-URL bug (#113) and the duplicate-title issue both
+     showed the pipeline can emit noisy records, and a calendar
+     subscriber sees every correction as a notification. Ship it after
+     90, not before.
+
+101. **Publish the four villages' official trick-or-treat hours on one
+     page, before mid-October.** The fall guide currently handles this by
+     pointing at the City's news page and saying the hours get posted
+     there each October. That is the honest thing to write when you have
+     no data — but it punts on **the single highest-volume hyperlocal
+     query of the fourth quarter**, and it is the exact query the civic-
+     feed moat was built to win.
+
+     No competitor aggregates this. Eventbrite and AllEvents list
+     ticketed events; trick-or-treat hours are a municipal announcement,
+     which is precisely the category this site claims and they ignore.
+     Four villages' hours on one page, cross-linked from each region, is
+     a page that has no competition, answers a real question, and is
+     genuinely useful to a parent deciding which town to take the kids
+     to — which is the "trip across a few nearby towns" promise made
+     concrete for the one night of the year everyone does exactly that.
+
+     Timing is the whole point: villages typically post in late September
+     or early October, the query peaks in the two weeks before the 31st,
+     and a new domain needs lead time to get indexed. **This is a
+     two-week window and it opens now.** Q4 is also the strongest
+     sponsor window of the year, which makes it the best possible page
+     to have a Halloween-relevant sponsor on.
+
+     Implementation is ordinary: four URLs into the existing `guides:`
+     structure, `Event` schema with real dates once the hours are known,
+     and the standing "check the village's page" line kept as a fallback
+     for any village that has not posted yet. Honest handling of the
+     not-yet-posted case matters more than completeness — a confidently
+     wrong trick-or-treat time is the worst error this site could make.
+
+#### P2 (new)
+
+102. **Record the cadence as validated, and put churn in the sponsor
+     kit.** Two numbers arrived that answer open questions rather than
+     raising them. MailerLite's data across roughly 1.4 million campaigns
+     puts **monthly to twice-weekly** as the band where opens and clicks
+     hold up without driving abnormal churn — so the planned weekly
+     Thursday send (items 31/83) is inside the validated zone and should
+     stop being revisited. And **News-vertical churn runs 5.47%/month**,
+     among the lowest of any category, which is the benchmark this
+     business will actually be measured against.
+
+     Two consequences. First, the retention metric to watch is **open
+     frequency, not open rate** — regular openers are 2× more likely to
+     still be subscribed at twelve months, which makes "how many people
+     open most weeks" the leading indicator and a single week's open rate
+     mostly noise. Second, `SPONSOR_KIT.md` should carry the churn
+     benchmark next to the open-rate benchmarks item 24 already put
+     there. A sponsor buying an **annual** membership is buying next
+     August's audience, not this week's, and a stated retention figure is
+     the only honest way to describe what they are getting. It is also a
+     better argument than a subscriber count, which is the one number
+     this business will be weakest on for months.
+
+103. **Write down the design principles, so the build loop stops adding.**
+     The 2026 research is unusually clear that the failure mode for a
+     site like this is accumulation: "the strongest websites will not try
+     to use twelve trends at once — identify the two or three directions
+     that fit the audience, execute those with craft, and resist the pull
+     of everything else." Typography as primary interface and generous
+     whitespace are the two directions; refined serif headings are what
+     signal editorial polish rather than template.
+
+     The site already does this. Fraunces for headings, Inter for body,
+     a beige/green palette, no framework, no motion for its own sake —
+     that is the restrained editorial direction the research describes,
+     arrived at already. So the finding is not a change; it is a
+     **defence**, and it needs writing down precisely because nothing
+     currently protects it. Eleven UI features have shipped and each one
+     was individually justified.
+
+     A short `DESIGN_PRINCIPLES.md` — the two directions, what they rule
+     out, and a standing question ("does this earn its place, or is it
+     one more thing?") — costs one file and gives every future pass
+     something to argue against. Pair it with a real constraint: **new UI
+     features need a stated reason a reader would miss them**, and
+     "competitors have it" is not one. The site already has most features
+     its competitors have; what it does not yet have is readers.
+
+#### P3 (new)
+
+104. **The seasonal-circuit guide exists in one region out of four.**
+     `config/regions/mount-prospect-60056.yaml` carries a
+     `seasonal-circuit-guide`; Arlington Heights, Des Plaines and
+     Palatine each have `fall-family-guide`,
+     `birthday-parties-and-kids-classes` and `new-to-town`, and no
+     circuit guide. Farmers markets and seasonal circuits are among the
+     most reliable recurring draws a suburb has, and they are the kind of
+     thing a resident of one town will happily drive to the next town
+     for — the cross-region promise again.
+
+     Cheap to close: YAML only, no code, following the existing
+     civic-source-only discipline the other guides observe. P3 because
+     it is breadth on something already working rather than a new
+     capability, and because item 101's Halloween window closes first.
 
 ## Working agreements for autonomous iteration
 
