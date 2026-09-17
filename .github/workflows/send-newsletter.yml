@@ -1,0 +1,57 @@
+name: Send weekly newsletter
+
+on:
+  schedule:
+    # Every Thursday 12:00 UTC — 07:00 America/Chicago during CDT, 06:00
+    # during CST. GitHub's cron is UTC-only with no DST handling, so this
+    # drifts by an hour each November and March; that is acceptable for a
+    # morning send and not worth a scheduler to fix.
+    #
+    # Thursday is the researched slot (ROADMAP.md Phase 11 #31 — two
+    # independent local-newsletter analogues converge on it). The owner
+    # asked for mornings; the same research puts peak opens at 3–7pm, so
+    # moving this to "0 20 * * 4" is a one-line change if open rates
+    # argue for it later.
+    - cron: "0 12 * * 4"
+  # Manual runs matter more than usual here: this is how the first send
+  # gets tested without waiting a week.
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: "Validate the built email and make no API call"
+        type: boolean
+        default: true
+
+permissions:
+  contents: read
+
+jobs:
+  send:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      # Built fresh rather than trusting whatever docs/ happens to hold:
+      # the build commit lands via a separate workflow on its own
+      # schedule, and mailing a stale digest is worse than not mailing.
+      # send_newsletter.py deliberately does not build, so a failure here
+      # stops the job before anything can be sent.
+      - name: Build digest
+        run: python scripts/build_digest.py
+
+      - name: Send to Buttondown
+        env:
+          BUTTONDOWN_API_KEY: ${{ secrets.BUTTONDOWN_API_KEY }}
+        run: |
+          if [ "${{ inputs.dry_run }}" = "true" ]; then
+            python scripts/send_newsletter.py --dry-run
+          else
+            python scripts/send_newsletter.py
+          fi

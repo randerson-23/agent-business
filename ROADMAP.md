@@ -231,7 +231,7 @@ as noise:
 
 | Action | One line why | Unblocks |
 |---|---|---|
-| **Enable Cloudflare Email Routing** on `withintenmiles.com`, forwarding `hello@` to a real inbox (item 93) | **Buttondown is already sending as `hello@withintenmiles.com` and that mailbox does not exist** — the domain publishes no MX record, confirmed by resolver query 2026-09-16. Replies currently fall back to the GitHub Pages A record, which does not answer SMTP, so they queue for 24–48h and then bounce. Free, ~5 minutes, in the Cloudflare dashboard under Email → Email Routing. Do this **before** the press pitch: a reporter who replies is the one reply that must not vanish. | Replies from subscribers, reporters and prospective sponsors |
+| **Add `BUTTONDOWN_API_KEY` as a repository secret** (Settings → Secrets and variables → Actions), and confirm the free plan exposes the API at all | The Thursday send workflow is built and scheduled but inert without it — it exits 1 with a message rather than sending. **Free-tier API access could not be verified from the build sandbox**, so the first manual run is also the test of whether this plan allows it | The automated weekly send |
 | **Send the local press pitch** to Journal & Topics and/or the Daily Herald (item 77, template drafted in `OUTREACH_TEMPLATES.md` §7) | **The single highest-yield action available, by a wide margin, and now the only thing standing between a working site and an audience.** A local-media mention is worth 100-500 subscribers in a day (seventeenth pass); nothing else here is close for one email's effort. Every dependency it ever had is now cleared: the domain resolves, HTTPS serves, the signup form is live, the sponsor CTA works, and Google has the sitemap. The email needs picking a real reporter and hitting send. | 100-500 real subscribers from one email |
 | Run a real trademark search before spending money on the domain, signage, print, or sponsor contracts (item 69) | **Reduced, not eliminated, by the pivot to "Within Ten".** The name was changed *because* WebSearch found "PORCHLIGHT" is a registered mark (reg. 6028585) held by a company that publishes a newsletter to ~60,000 readers. "Within Ten"/"WithinTen" turned up **no registered mark** - materially cleaner. But a web search is not a clearance search: it misses common-law use, similar-sounding marks and state registrations. Worth its small cost before money is committed, not after. | Spending safely on signage, print, sponsor contracts |
 
@@ -3942,6 +3942,69 @@ keep it that way.
      civic-source-only discipline the other guides observe. P3 because
      it is breadth on something already working rather than a new
      capability, and because item 101's Halloween window closes first.
+
+#### Research pass 2026-09-17 (twenty-fourth pass — owner-requested build)
+
+Not a research pass. The owner enabled Cloudflare Email Routing (MX now
+resolves to `route1/2/3.mx.cloudflare.net` with
+`v=spf1 include:_spf.mx.cloudflare.net ~all`, confirmed by resolver
+query — item 93 closed) and asked for an automated Thursday send, which
+was built here rather than queued: `scripts/send_newsletter.py`,
+`.github/workflows/send-newsletter.yml`, and a `send:` block in
+`config/newsletter.yaml`.
+
+The apex SPF now carries Cloudflare's include and **not** Buttondown's,
+which is correct and worth recording: Buttondown's records live in its
+delegated subdomain, DMARC is `aspf=r`, and the first real send landed in
+a Yahoo primary inbox — so alignment is carried by DKIM. Adding a second
+sender on the apex later would need this re-checked rather than assumed.
+
+Two deliberate choices, both reversible in one line, both the owner's to
+overrule:
+
+- **`mode: draft`.** The workflow creates the email in Buttondown and
+  stops. An email cannot be unsent, this pipeline shipped a wrong subject
+  line as recently as yesterday (item 90), and the send is a human click
+  until a few weeks of drafts have looked right.
+- **Thursday 12:00 UTC** (07:00 CDT). The owner asked for mornings; item
+  31's research puts peak opens at 3–7pm. Built as asked, with the
+  alternative cron named in a comment.
+
+#### P2 (new)
+
+105. **A combined multi-region email, or an honest reason there isn't
+     one.** The send workflow mails **one** region's digest — Mount
+     Prospect, the home region with the most sources — because
+     Buttondown's free plan is a single list with no segmentation, and
+     mailing four separate emails to one undifferentiated list would be
+     worse than mailing one.
+
+     But the signup form is on **every** region page. Someone who
+     subscribed from the Palatine page is currently going to receive
+     Mount Prospect's weekend, which is not what they asked for and is a
+     good way to earn an unsubscribe from the first issue. That is a real
+     defect the moment the list has anyone outside Mount Prospect on it —
+     which the press pitch (item 77) could cause in a single day.
+
+     Two honest routes, and the cheap one is probably right:
+
+     - **A combined email**: one issue, four short region blocks, each
+       with its own heading and link. The data is already merged for
+       `docs/this-weekend/`, so the template is the work, not the
+       pipeline. Longer, but every subscriber finds their town, and the
+       cross-region browse is the product's actual promise.
+     - **Per-region lists**: correct, and it needs either Buttondown tags
+       (plan-gated, unverified) or four newsletters, which multiplies the
+       owner's weekly click by four. Against the time budget.
+
+     Recommend the combined email, sequenced **before** the press pitch
+     rather than after, for the same reason item 89 sequenced the first
+     send before it: the mention converts once.
+
+     Until it ships, `config/newsletter.yaml` should say plainly that
+     non-Mount-Prospect subscribers are getting the wrong region — the
+     comment there currently explains the constraint but not the
+     consequence.
 
 ## Working agreements for autonomous iteration
 

@@ -17,3 +17,24 @@
 buttondown_username: "andersonryant"
 headline: "Get it in your inbox"
 detail: "The weekly digest, emailed once a week. No spam, unsubscribe anytime."
+
+# Automated weekly send (ROADMAP.md Phase 11 #24/#31), added 2026-09-17 at
+# the owner's request. scripts/send_newsletter.py reads the already-built
+# docs/<region>/email-send.html and creates the email in Buttondown; the
+# GitHub Actions workflow send-newsletter.yml runs it on a Thursday cron.
+#
+# mode: "draft" creates the email in Buttondown and stops, leaving the
+# send as a human click. "send" mails it to the list immediately. It
+# starts on "draft" deliberately - an email cannot be unsent, and this
+# pipeline has shipped a wrong subject line before (item 90 advertised a
+# school half-day as a weekend highlight). Flip to "send" once a few
+# weeks of drafts have looked right; it is a one-word change.
+#
+# region: Buttondown's free plan is one list, so one region's digest goes
+# out. Mount Prospect is the home region and has the most sources. A
+# genuine multi-region email needs a combined template that does not
+# exist yet (see ROADMAP.md item 105).
+send:
+  enabled: true
+  region: "mount-prospect-60056"
+  mode: "draft"
