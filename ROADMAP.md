@@ -269,6 +269,8 @@ search, which item 22's whole AI-citation effort depends on.
 | **6AM City** | 400+ local newsletters, $9.5M rev, profitable in 2026 | **Self-service ad platform** — they built it because low-average-order-value local sponsors don't justify sales time. Directly targets this business's #1 constraint |
 | **Axios Local** | Local newsletter network, local-advertiser funded | Newsletter-first: the list is the asset, the site is the funnel |
 | **Patch** | Hyperlocal news + community calendar | User-submitted events, business directory, classifieds — community supplies the content |
+| **Local Facebook groups** | The discovery channel for a suburban family audience. Norm is the **70/30 rule**, many groups run a designated promo day, and **asking the admin first** is the difference between a standing welcome and a blacklist | Unlike Reddit's 90/10 (item 84, rejected on time cost), this is **one conversation, not sustained participation** — it fits the budget (item 107) |
+| **Eventbrite → Bandsintown** | Eventbrite lists unlimited events free and **auto-syndicates music events to Bandsintown** | A dead end here, and worth recording as one — see item 109 |
 | **Tinybeans / Red Tricycle** | Red Tricycle published local family activity guides across major US cities; **acquired for $6.5M in 2020**, folded into Tinybeans, which wanted it for brand-advertiser access to parents | Proof the category has an exit — and that the asset bought was the **audience**, not the listings |
 | **Skylight / TeamSnap / SportsEngine** | The family-calendar surface. Skylight's $299 display ingests **any league or school calendar with a subscribe link**; youth sports has standardised on ICS subscription | Not a competitor — a **distribution channel this site does not use** (item 100) |
 | **Nextdoor** (Neighborhood Sponsorship) | ZIP-exclusive "featured agent" placement sold to realtors, **$30–150/ZIP/month** | Not an events competitor — a **pricing anchor**. It is what a realtor already pays for the exact exclusivity item 95 sells |
@@ -4279,6 +4281,145 @@ house-ad block actually appears four times in the real generated
 appeared zero times, and confirmed the real byte-vs-character gap
 directly against that same file. `docs/` restored after (no untracked
 stragglers this time).
+
+#### Research pass 2026-09-17 (twenty-fifth pass)
+
+The newsletter now actually sends — workflow run `35176614362`, Buttondown
+id `em_5hgyjgfytf8hws9xxpw6b0fesk`, the combined all-regions template,
+not a dry run. Every question this file has carried since the third pass
+about *whether it can mail anyone* is closed.
+
+Which changes what matters. For twenty-four passes the binding
+constraint was "can it send". It is now "what happens to the person who
+subscribes" — and the honest answer today is **up to six days of
+silence**, then a four-town email they did not quite sign up for. Both
+are cheap to fix and both get materially more expensive the moment the
+press pitch lands.
+
+| Angle | Finding | Consequence |
+|---|---|---|
+| **Welcome emails** | Average **34.79% open**, up to **4× the opens and 5× the clicks** of a standard newsletter; automated sends beat scheduled campaigns (**38%** vs. campaign baseline); a welcome *series* converts ~**4%** against ~0.87% for one-off blasts | The single highest-open email this business will ever send does not exist yet (item 106) |
+| **Local Facebook groups** | **70/30** promotional norm, designated promo days are common, and the reliable move is **asking the admin first** rather than posting and hoping | The weekly Facebook post is *already generated* (`weekly-summary.txt`). What is missing is permission and a target list (item 107) |
+| **Event syndication** | Eventbrite is free and unlimited and auto-feeds Bandsintown | Not usable here, for a reason worth writing down (item 109) |
+| **Signup copy vs. what ships** | The form on every region page promises "The weekly digest"; since item 105 it delivers all four towns | A promise mismatch introduced yesterday, on the page where expectations are set (item 108) |
+
+#### P1 (new)
+
+106. **Set up the welcome email — the highest-open message this business
+     will ever send, and it currently does not exist.** Someone who
+     subscribes on a Saturday hears nothing until Thursday. That is up to
+     six days of silence at the exact moment their interest is at its
+     peak, and it is the first impression the product makes.
+
+     The numbers are unusually lopsided: welcome emails average **34.79%
+     opens** and run up to **4× the opens and 5× the clicks** of a
+     regular newsletter, and automated sends beat scheduled campaigns on
+     both engagement and revenue. This is the cheapest engagement in
+     email marketing and the business is currently declining it.
+
+     It also fits the architecture better than almost anything: **it does
+     not need to be dynamic.** A welcome email is evergreen — what this
+     is, which four towns it covers, when it arrives (Thursday morning),
+     a link to the reader's region page, a link to the current
+     trick-or-treat page while that is seasonal, and an explicit invitation
+     to reply with an event no feed carries. That last line matters more
+     than it looks: replies now work (Cloudflare Email Routing, item 93),
+     a reply is the highest-value thing a local subscriber can send, and
+     resident-supplied events are the content moat competitors cannot
+     copy. One-time setup in Buttondown's UI, zero recurring owner time,
+     no code.
+
+     Two honest dependencies. Confirm Buttondown's free plan exposes a
+     welcome/greeting email (the API works, but that is not evidence
+     about this feature). And the one-off-vs-series finding — three
+     emails generate ~90% more orders than one — is an **e-commerce**
+     benchmark; do not port a three-part drip onto a local events
+     newsletter, where it would read as pushy. One good welcome email.
+
+107. **Ask three local Facebook group admins for permission — the channel
+     where this audience actually is, and the weekly post is already
+     written.** `build_weekly_summary_txt()` has emitted a
+     Facebook-shaped `POST` / `FIRST COMMENT` pair for every region for
+     weeks (the comment carries the link so the post itself is not
+     downranked). Nobody has ever posted one. The asset exists and is
+     idle.
+
+     Worth distinguishing this from item 84, where Reddit was **rejected**
+     on exactly this territory. Reddit's 90/10 norm requires 9–19
+     non-promotional contributions between promotional posts and 61% of
+     the relevant subreddits ban self-promotion outright — a recurring
+     cost against the one resource `BUSINESS_PLAN.md` says the owner does
+     not have. Facebook's norm is the softer **70/30**, many local groups
+     run a designated promo day, and critically the reliable path is
+     **one conversation with an admin**, not sustained participation. A
+     standing "yes, post it weekly" from three suburban group admins is a
+     fixed cost of three messages, and it is exactly the kind of thing
+     that converts for a genuinely useful free local resource.
+
+     Needs a short admin-outreach template — `OUTREACH_TEMPLATES.md` §9,
+     draftable by the build loop — that leads with the group's interest
+     rather than the newsletter's: this is a free, automatically updated
+     list of what is happening locally, here is the page, may I post it
+     weekly or would you rather post it yourself. Offering the admin the
+     option to post it themselves is worth including; it costs nothing
+     and converts a gatekeeper into a distributor.
+
+     Sequence it alongside the press pitch rather than behind it. Both
+     are the owner's to send, neither blocks the other, and unlike the
+     press mention this one is **repeatable and compounding**.
+
+#### P2 (new)
+
+108. **The signup form promises one town and now delivers four.** Every
+     region page carries "The weekly digest, emailed once a week" beside
+     that region's own events. A reader on the Palatine page reasonably
+     concludes they are subscribing to Palatine. Since item 105 shipped
+     yesterday they receive all four towns.
+
+     Item 105 was the right fix — the alternative was a Palatine
+     subscriber receiving *only* Mount Prospect, which is strictly worse.
+     But it changed what the product delivers without changing what the
+     form claims, and the form is where the expectation is set. A
+     subscriber whose first issue is not what they thought they signed up
+     for is the textbook first-issue unsubscribe, and it will arrive
+     alongside the press-pitch traffic rather than before it.
+
+     Cheap and entirely in `config/newsletter.yaml`: make the `detail`
+     name the scope plainly — one email on Thursday mornings covering
+     all four towns, with the reader's own region first. Then make the
+     combined template honour that by **ordering the reader's region
+     first** where it can be inferred, or by stating the running order
+     plainly where it cannot. Naming the breadth is also the better
+     pitch: "everything worth doing within ten miles" is the actual
+     promise the brand makes, and a four-town email delivers it where a
+     one-town email does not.
+
+#### P3 (new)
+
+109. skipped — **Syndicating events to Eventbrite/AllEvents/Bandsintown.**
+     Mechanically attractive: Eventbrite lists unlimited events free and
+     auto-syndicates music events onward to Bandsintown, and those two
+     platforms are precisely what currently outranks this site for
+     "things to do in Mount Prospect this weekend".
+
+     Rejected, and recorded rather than deleted so a later pass does not
+     re-derive it. **This site does not own the events it lists.** They
+     belong to the village, the library, the park district and the
+     downtown merchants. Submitting another organisation's event to a
+     third-party platform under this account misrepresents who is running
+     it, is against those platforms' norms, and would be a genuinely bad
+     thing to do to the civic sources this business depends on keeping
+     good relations with.
+
+     There is also a strategic objection even setting ethics aside: it
+     would hand the aggregated civic calendar — the actual moat, the
+     thing no competitor has — to the competitors currently outranking
+     the site, in a machine-readable form, for free.
+
+     The legitimate version of this idea is the reverse and already
+     exists: item 100's subscribable `calendar.ics`, which lets the data
+     travel into readers' own calendars rather than into a competitor's
+     index.
 
 ## Working agreements for autonomous iteration
 
