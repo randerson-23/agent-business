@@ -12,12 +12,13 @@ Two things this deliberately does NOT do:
   Building and sending in one process would make a partial build
   sendable; keeping them separate means the workflow can build, inspect
   the exit code, and only then send.
-- **It does not default to sending.** `mode: draft` creates the email in
-  Buttondown and stops, leaving the actual send as a human click. An
-  email cannot be unsent, and this pipeline has shipped a wrong subject
-  line before (item 90: a school half-day advertised as a weekend
-  highlight). Flip `mode` to `send` in config/newsletter.yaml once a few
-  weeks of drafts have looked right - it is a one-word change.
+- **It does not decide whether to send.** `config/newsletter.yaml`'s
+  `send.mode` does: `draft` creates the email in Buttondown and stops,
+  `send` mails it. It shipped on `draft` (an email cannot be unsent, and
+  this pipeline had just shipped a wrong subject line - item 90) and the
+  owner set it to `send` the same day, on the grounds that he is the only
+  subscriber. That reasoning expires when the list grows; see the comment
+  in config/newsletter.yaml.
 
 API shape note: the endpoint and field names below could not be verified
 from the build sandbox (outbound HTTP is blocked by the egress proxy), so
@@ -170,10 +171,22 @@ def main(argv: list[str] | None = None) -> int:
         logger.error("%s", exc)
         return 1
 
+    # The banner comes first and names the outcome, not the setting. An
+    # earlier version printed "Mode: send" directly above "Dry run - no
+    # request made", which read as a successful send in the Actions log
+    # and cost a real debugging cycle.
+    if args.dry_run:
+        logger.info("=== DRY RUN - validating only, no email will be created ===")
+    else:
+        logger.info(
+            "=== LIVE: this will %s ===",
+            "SEND to every subscriber" if cfg["mode"] == "send"
+            else "create a DRAFT in Buttondown",
+        )
     logger.info("Region:  %s", cfg["region"])
     logger.info("Subject: %s", subject)
     logger.info("Size:    %d bytes", len(html))
-    logger.info("Mode:    %s", cfg["mode"])
+    logger.info("Configured mode: %s", cfg["mode"])
 
     # Gmail clips HTML email over ~102KB. The template is ~6KB, so this is
     # a guard against a future regression, not a live concern.
@@ -181,7 +194,11 @@ def main(argv: list[str] | None = None) -> int:
         logger.warning("Email exceeds ~102KB and will be clipped by Gmail.")
 
     if args.dry_run:
-        logger.info("Dry run - no request made.")
+        logger.info(
+            "Dry run complete - nothing was created or sent. Re-run with the "
+            "'dry run' box UNTICKED to actually %s.",
+            "send" if cfg["mode"] == "send" else "create the draft",
+        )
         return 0
 
     api_key = os.environ.get(API_KEY_ENV, "").strip()

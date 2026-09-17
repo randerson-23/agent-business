@@ -15,12 +15,18 @@ on:
     - cron: "0 12 * * 4"
   # Manual runs matter more than usual here: this is how the first send
   # gets tested without waiting a week.
+  #
+  # dry_run defaults to FALSE deliberately. It shipped defaulting to true
+  # and the first manual run silently did nothing while reporting
+  # success - clicking "Run workflow" means "do the thing", and what the
+  # thing is already lives in config/newsletter.yaml's send.mode. Tick
+  # the box to validate without sending.
   workflow_dispatch:
     inputs:
       dry_run:
-        description: "Validate the built email and make no API call"
+        description: "Validate only - do NOT create or send anything"
         type: boolean
-        default: true
+        default: false
 
 permissions:
   contents: read
