@@ -4789,6 +4789,23 @@ this pass went looking.
      the schedule next, human or otherwise, and this file is where that
      history already lives.
 
+     **Self-correction, same day.** The fix above shipped with a real
+     bug: `send-newsletter.yml` had `permissions: contents: read` and
+     no commit step, so `send_newsletter.py` writing
+     `data/send_history.json` on the ephemeral runner never made it
+     back to the repo - the whole positive-record mechanism would have
+     silently done nothing in production the first time it actually
+     ran, while every local test and manual check kept passing, because
+     none of them exercised the missing commit step. Caught by
+     rereading the workflow itself rather than trusting that "tests
+     pass" meant "the fix works end to end" - the same gap that let
+     item 110's cron change eat a send in the first place. Fixed:
+     `permissions: contents: write`, and a `Commit send history` step
+     mirroring `build-digest.yml`'s own (`if: always()`, same
+     reasoning: don't let an unrelated later failure withhold a record
+     that did get written). `send-watchdog.yml` stays `contents: read`
+     - it only ever reads the file.
+
 115. **Item 100's `calendar.ics` must whitelist fields, not pass feeds
      through — decide this before it ships, not after.** The plan is to
      republish the aggregated events as a subscribable calendar. The
