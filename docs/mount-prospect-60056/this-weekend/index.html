@@ -658,24 +658,24 @@
   <div class="weather-bar">
     
     <div class="weather-day">
-      <span class="wx-emoji" aria-hidden="true">🌦️</span>
+      <span class="wx-emoji" aria-hidden="true">☁️</span>
       <span class="wx-name">Friday</span>
-      <span class="wx-temp">70&deg; / 65&deg;</span>
-      <span class="wx-label">Drizzle &middot; 10% precip</span>
+      <span class="wx-temp">69&deg; / 64&deg;</span>
+      <span class="wx-label">Overcast &middot; 26% precip</span>
     </div>
     
     <div class="weather-day">
       <span class="wx-emoji" aria-hidden="true">🌧️</span>
       <span class="wx-name">Saturday</span>
       <span class="wx-temp">67&deg; / 60&deg;</span>
-      <span class="wx-label">Rain showers &middot; 80% precip</span>
+      <span class="wx-label">Rain showers &middot; 93% precip</span>
     </div>
     
     <div class="weather-day">
       <span class="wx-emoji" aria-hidden="true">🌧️</span>
       <span class="wx-name">Sunday</span>
       <span class="wx-temp">67&deg; / 61&deg;</span>
-      <span class="wx-label">Rain showers &middot; 75% precip</span>
+      <span class="wx-label">Rain showers &middot; 71% precip</span>
     </div>
     
     
@@ -839,7 +839,7 @@
     <a href="https://withintenmiles.com/sponsor/">sponsor page</a>.
     <a href="https://withintenmiles.com/about/">About</a>.
     <a href="https://withintenmiles.com/trick-or-treat/">Trick-or-treat hours</a>.
-    <br>Generated 2026-09-17 13:58 UTC.
+    <br>Generated 2026-09-17 15:58 UTC.
     
     <br><a href="https://withintenmiles.com/mount-prospect-60056/weekly-summary.txt">Copy this week's summary</a> — a plain-text block ready to paste into a local group.
   </footer>
@@ -865,7 +865,7 @@
 <script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "Event", "name": "Oktoberfest", "url": "https://mpdowntown.com/oktoberfest-info/", "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode", "description": "German food, drink & live music from the band Paloma. 4–11pm, Emerson St. & Busse Ave. — Downtown Merchants.", "startDate": "2026-09-18T00:00:00"}, {"@type": "Event", "name": "Fall Festival & Oktoberfest", "url": "https://mpdowntown.com/oktoberfest-info/", "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode", "description": "Free Fall Festival noon–4pm (special-needs hour noon–1pm) with crafts & entertainment, then Oktoberfest continues 4–11pm. Emerson & Busse.", "startDate": "2026-09-19T00:00:00"}]}</script>
 
 
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebPage", "name": "Mount Prospect — Within Ten", "url": "https://withintenmiles.com/mount-prospect-60056/this-weekend/", "dateModified": "2026-09-17T13:58:38.150410+00:00", "isPartOf": {"@type": "WebSite", "name": "Within Ten", "url": "https://withintenmiles.com/", "publisher": {"@id": "https://withintenmiles.com/about/#organization"}}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebPage", "name": "Mount Prospect — Within Ten", "url": "https://withintenmiles.com/mount-prospect-60056/this-weekend/", "dateModified": "2026-09-17T15:58:01.675247+00:00", "isPartOf": {"@type": "WebSite", "name": "Within Ten", "url": "https://withintenmiles.com/", "publisher": {"@id": "https://withintenmiles.com/about/#organization"}}}</script>
 <script>
 (function () {
   var activeTags = new Set();
@@ -964,11 +964,38 @@
         var li = document.createElement("li");
         li.className = "tray-item";
         var meta = [item.region_name, item.date].filter(Boolean).join(" \u00b7 ");
-        var titleEl = item.url ? '<a href="' + item.url + '">' + item.title + '</a>' : '<span>' + item.title + '</span>';
-        li.innerHTML =
-          '<span>' + titleEl + '<div class="tray-item-meta"></div></span>' +
-          '<button type="button" class="tray-item-remove" data-id="' + encodeURIComponent(item.id) + '" aria-label="Remove ' + item.title + '">\u2715</button>';
-        li.querySelector(".tray-item-meta").textContent = meta;
+
+        // Built with DOM methods, not innerHTML string concatenation - a
+        // found bug. item.* comes from event data ultimately sourced
+        // from external RSS/ICS/HTML feeds this site doesn't control
+        // (village news, library, park district), and the old code
+        // spliced item.title/item.url straight into an HTML string. Any
+        // of those fields containing HTML-significant characters would
+        // have executed as markup once assigned to .innerHTML.
+        // textContent/setAttribute never parse their argument as
+        // markup, closing that off regardless of what the field
+        // contains - the same reasoning as icsEscape() a few lines
+        // below, just for HTML instead of ICS syntax.
+        var titleWrap = document.createElement("span");
+        var isHttpUrl = typeof item.url === "string" && /^https?:\/\//.test(item.url);
+        var titleEl = document.createElement(isHttpUrl ? "a" : "span");
+        if (isHttpUrl) titleEl.href = item.url;
+        titleEl.textContent = item.title;
+        titleWrap.appendChild(titleEl);
+        var metaEl = document.createElement("div");
+        metaEl.className = "tray-item-meta";
+        metaEl.textContent = meta;
+        titleWrap.appendChild(metaEl);
+
+        var removeBtn = document.createElement("button");
+        removeBtn.type = "button";
+        removeBtn.className = "tray-item-remove";
+        removeBtn.setAttribute("data-id", encodeURIComponent(item.id));
+        removeBtn.setAttribute("aria-label", "Remove " + item.title);
+        removeBtn.textContent = "\u2715";
+
+        li.appendChild(titleWrap);
+        li.appendChild(removeBtn);
         itemsEl.appendChild(li);
       });
     }
