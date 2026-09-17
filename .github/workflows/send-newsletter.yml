@@ -37,7 +37,7 @@ on:
         default: false
 
 permissions:
-  contents: read
+  contents: write
 
 jobs:
   send:
@@ -68,4 +68,28 @@ jobs:
             python scripts/send_newsletter.py --dry-run
           else
             python scripts/send_newsletter.py
+          fi
+
+      # ROADMAP.md item 114's fix only works if this runs: send_newsletter.py
+      # writes data/send_history.json to *this runner's* local checkout on
+      # a real send, but the runner and everything on it is discarded the
+      # moment the job ends. Without pushing it back, the whole positive-
+      # record mechanism silently does nothing in production, no matter
+      # how correct the Python is - a gap this workflow shipped with
+      # (permissions: contents: read, no commit step) and this closes.
+      # `if: always()`, same reasoning as build-digest.yml's own commit
+      # step: don't let an unrelated later failure withhold a record that
+      # did get written. Dry runs write nothing (verified separately), so
+      # the diff-check below naturally no-ops on those.
+      - name: Commit send history
+        if: always()
+        run: |
+          git config user.name "local-planner-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add data/send_history.json
+          if git diff --cached --quiet; then
+            echo "No changes to commit."
+          else
+            git commit -m "Record newsletter send [skip ci]"
+            git push
           fi
