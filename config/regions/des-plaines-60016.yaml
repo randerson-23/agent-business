@@ -220,6 +220,31 @@ guides:
   # the same research pass: the City's real domain is desplainesil.gov,
   # not desplaines.org (see the source block above) - this guide's City
   # link was silently pointing at the wrong domain the whole time.
+  # ROADMAP.md Phase 11 #104: matches the Mount Prospect config's own
+  # seasonal-circuit-guide - same civic-source-only discipline.
+  # WebSearch (2026-09-17) found real, current City pages for Fall Fest
+  # and Taste of Des Plaines under the City's own "City Sponsored
+  # Events" hub; deliberately does NOT include a farmers market entry -
+  # search results on one were conflicting (a stale "ended in 2016"
+  # report alongside directories still listing it active), and this
+  # guide's own discipline is never asserting an unconfirmed fact.
+  - slug: "seasonal-circuit-guide"
+    title: "Seasonal Circuit Guide"
+    summary: "The recurring seasonal happenings Des Plaines families ask about year after year — Fall Fest, Taste of Des Plaines, and Park District seasonal programming. Links to the City's own pages, where each year's exact dates actually get posted."
+    items:
+      - title: "City Sponsored Events — Des Plaines"
+        detail: "The City's own events hub for its recurring festivals, including Fall Fest at Lake Park each fall - dates and details are announced there each year."
+        url: "https://www.desplainesil.gov/access-your-government/city-departments/media-services/city-sponsored-events"
+        tags: ["outdoor", "free"]
+      - title: "Taste of Des Plaines"
+        detail: "The City's recurring summer food festival - check the City's page for the current year's dates and vendors."
+        url: "https://www.desplainesil.gov/access-your-government/city-departments/media-services/city-sponsored-events/taste-of-des-plaines"
+        tags: ["outdoor", "food"]
+      - title: "Seasonal programs — Des Plaines Park District"
+        detail: "The Park District runs its own seasonal programming and community events year-round - browse the current program guide for what's on."
+        url: "https://www.dppd.org/"
+        tags: ["outdoor", "kid_friendly"]
+
   - slug: "new-to-town"
     title: "New to Town"
     summary: "The practical first-week checklist for anyone new to Des Plaines — utilities and refuse/recycling, a library card, Park District registration, and which school districts actually serve your address. Pulls from the same civic sources as the weekly digest, organized for someone who just moved in rather than someone browsing this week's events."

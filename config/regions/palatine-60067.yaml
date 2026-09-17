@@ -257,6 +257,30 @@ guides:
   # palatine.il.us, not palatineil.gov (see the source block above) - this
   # guide's Village link was silently pointing at the wrong domain the
   # whole time, same bug shape as Des Plaines'.
+  # ROADMAP.md Phase 11 #104: matches the Mount Prospect config's own
+  # seasonal-circuit-guide - same civic-source-only discipline.
+  # WebSearch (2026-09-17) confirmed the Palatine Farmers' Market's
+  # real, stable page (palatine.il.us/663/Farmers-Market - a permanent
+  # slug, not one of the site's transient per-event calendar links) and
+  # the Rotary Club of Palatine as Oktoberfest's real organizer (already
+  # used for this year's dated entries in annual_events above).
+  - slug: "seasonal-circuit-guide"
+    title: "Seasonal Circuit Guide"
+    summary: "The recurring seasonal happenings Palatine families ask about year after year — the downtown Oktoberfest, the year-round farmers market, and Park District seasonal programming. Links to the real organizers' own pages, where each year's exact dates actually get posted."
+    items:
+      - title: "Palatine Oktoberfest — Rotary Club of Palatine"
+        detail: "Downtown Palatine's annual Oktoberfest, hosted by the Rotary Club of Palatine - dates and details are announced on their own site each year."
+        url: "https://palatinerotary.org/"
+        tags: ["outdoor", "free"]
+      - title: "Palatine Farmers' Market"
+        detail: "A summer and winter farmers' market at the Palatine Train Station lot, run by the Sister Cities Association of Palatine - check the Village's page for the current season's hours."
+        url: "https://www.palatine.il.us/663/Farmers-Market"
+        tags: ["outdoor", "food"]
+      - title: "Seasonal programs — Palatine Park District"
+        detail: "The Park District runs its own seasonal programming and community events year-round - browse the current program guide for what's on."
+        url: "https://www.palatineparks.org/"
+        tags: ["outdoor", "kid_friendly"]
+
   - slug: "new-to-town"
     title: "New to Town"
     summary: "The practical first-week checklist for anyone new to Palatine — utilities and refuse/recycling, a library card, Park District registration, and which school districts actually serve your address. Pulls from the same civic sources as the weekly digest, organized for someone who just moved in rather than someone browsing this week's events."
