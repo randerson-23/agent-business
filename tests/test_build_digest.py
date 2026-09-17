@@ -328,6 +328,47 @@ def test_prepare_guides_returns_empty_list_when_no_guides_configured():
     assert build_digest.prepare_guides({}) == []
 
 
+def test_prepare_trick_or_treat_returns_none_when_unconfigured():
+    assert build_digest.prepare_trick_or_treat({}) is None
+
+
+def test_prepare_trick_or_treat_honest_when_hours_not_yet_posted():
+    # ROADMAP.md Phase 11 #101: `hours: null` in region YAML - the real
+    # state for every region as of this pass, since villages post in
+    # late Sept/early Oct - must come back as None, never a guess.
+    region_cfg = {"trick_or_treat": {"url": "https://x/news", "hours": None}}
+    result = build_digest.prepare_trick_or_treat(region_cfg)
+    assert result == {"url": "https://x/news", "hours": None}
+
+
+def test_prepare_trick_or_treat_passes_through_real_hours_once_posted():
+    region_cfg = {"trick_or_treat": {"url": "https://x/news", "hours": "3:00-7:00 PM, Saturday, October 31"}}
+    result = build_digest.prepare_trick_or_treat(region_cfg)
+    assert result["hours"] == "3:00-7:00 PM, Saturday, October 31"
+
+
+def test_render_trick_or_treat_page_shows_not_posted_state():
+    entries = [{"region_name": "Mount Prospect", "region_url": "https://x/mount-prospect-60056/", "url": "https://x/village-news", "hours": None}]
+    html = build_digest.render_trick_or_treat_page(entries, datetime.now(timezone.utc))
+    assert "Mount Prospect" in html
+    assert "Not yet posted" in html
+    assert 'href="https://x/village-news"' in html
+
+
+def test_render_trick_or_treat_page_shows_real_hours_once_posted():
+    entries = [
+        {
+            "region_name": "Mount Prospect",
+            "region_url": "https://x/mount-prospect-60056/",
+            "url": "https://x/village-news",
+            "hours": "3:00-7:00 PM, Saturday, October 31",
+        }
+    ]
+    html = build_digest.render_trick_or_treat_page(entries, datetime.now(timezone.utc))
+    assert "3:00-7:00 PM, Saturday, October 31" in html
+    assert "Not yet posted" not in html
+
+
 def test_prepare_annual_events_returns_none_when_none_configured():
     assert build_digest.prepare_annual_events({}) is None
 
@@ -1302,6 +1343,12 @@ def test_build_sitemap_xml_includes_about_url():
     summaries = [{**REGION, "event_count": 1, "path": "mount-prospect-60056/"}]
     xml = build_digest.build_sitemap_xml(summaries, datetime.now(timezone.utc))
     assert f"<loc>{build_digest.SITE_BASE_URL}about/</loc>" in xml
+
+
+def test_build_sitemap_xml_includes_trick_or_treat_url():
+    summaries = [{**REGION, "event_count": 1, "path": "mount-prospect-60056/"}]
+    xml = build_digest.build_sitemap_xml(summaries, datetime.now(timezone.utc))
+    assert f"<loc>{build_digest.SITE_BASE_URL}trick-or-treat/</loc>" in xml
 
 
 def test_build_feed_xml_produces_valid_rss():
