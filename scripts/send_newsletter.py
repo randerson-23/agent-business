@@ -136,7 +136,11 @@ def read_built_email(region_id: str, docs_dir: Path = DOCS_DIR) -> tuple[str, st
             f"No built email at {path} - run scripts/build_digest.py first"
         )
     html = path.read_text(encoding="utf-8")
-    if "PREVIEW ONLY" in html:
+    # The exact annotation text both templates emit, not just "PREVIEW
+    # ONLY" - a real event title/detail containing that shorter phrase
+    # (e.g. a museum's own "Preview Only Weekend") would otherwise block
+    # a legitimate send with a misleading error.
+    if "PREVIEW ONLY, NOT PART OF THE EMAIL" in html:
         # Item 91's whole point. If this ever trips, email-send.html has
         # regressed into being a copy of email-preview.html and would
         # send the annotation as body copy.

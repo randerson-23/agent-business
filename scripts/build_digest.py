@@ -1797,6 +1797,8 @@ def _join_names(names: list[str]) -> str:
     this file since every other list of names here is either a single
     region or already formatted per-item.
     """
+    if not names:
+        return ""
     if len(names) == 1:
         return names[0]
     if len(names) == 2:

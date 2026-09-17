@@ -1,0 +1,34 @@
+{# ROADMAP.md Phase 11 #92, shared by email_digest.html.j2 and
+   combined_email_digest.html.j2 (originally duplicated by hand between
+   them - both {% include %} this file now, via the same
+   FileSystemLoader Environment scripts/build_digest.py already
+   constructs for every render_* function, so a future palette change
+   only needs to happen once).
+
+   Forces the light palette back for the two clients with a documented
+   hook for defeating a client's own forced dark-mode rewrite. Every
+   rule repeats a color already set inline - nothing new to design,
+   just restated where these two hooks can see it. !important is
+   required: a stylesheet !important rule beats a non-important inline
+   style in the CSS cascade, which is the whole mechanism this depends
+   on. #}
+[data-ogsc] .wt-bg, [data-ogsb] .wt-bg { background-color:#f6efe1 !important; }
+[data-ogsc] .wt-card, [data-ogsb] .wt-card { background-color:#fffcf5 !important; }
+[data-ogsc] .wt-card-sponsor, [data-ogsb] .wt-card-sponsor { background-color:#fdf3e4 !important; }
+[data-ogsc] .wt-cta-bg, [data-ogsb] .wt-cta-bg { background-color:#526b3f !important; }
+[data-ogsc] .wt-ink, [data-ogsb] .wt-ink { color:#2b2318 !important; }
+[data-ogsc] .wt-muted, [data-ogsb] .wt-muted { color:#766a58 !important; }
+[data-ogsc] .wt-accent, [data-ogsb] .wt-accent { color:#96581f !important; }
+[data-ogsc] .wt-brand, [data-ogsb] .wt-brand { color:#526b3f !important; }
+[data-ogsc] .wt-border, [data-ogsb] .wt-border { border-color:#e6dcc8 !important; }
+@media (prefers-color-scheme: dark) {
+  .wt-bg { background-color:#f6efe1 !important; }
+  .wt-card { background-color:#fffcf5 !important; }
+  .wt-card-sponsor { background-color:#fdf3e4 !important; }
+  .wt-cta-bg { background-color:#526b3f !important; }
+  .wt-ink { color:#2b2318 !important; }
+  .wt-muted { color:#766a58 !important; }
+  .wt-accent { color:#96581f !important; }
+  .wt-brand { color:#526b3f !important; }
+  .wt-border { border-color:#e6dcc8 !important; }
+}
