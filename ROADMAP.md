@@ -271,6 +271,7 @@ search, which item 22's whole AI-citation effort depends on.
 | **6AM City** | 400+ local newsletters, $9.5M rev, profitable in 2026 | **Self-service ad platform** — they built it because low-average-order-value local sponsors don't justify sales time. Directly targets this business's #1 constraint |
 | **Axios Local** | Local newsletter network, local-advertiser funded | Newsletter-first: the list is the asset, the site is the funnel |
 | **Patch** | Hyperlocal news + community calendar | User-submitted events, business directory, classifieds — community supplies the content |
+| **Public ICS feeds** (as a *source*) | A feed can carry more than titles — descriptions, locations, organiser notes — and a public subscription link is unauthenticated, so whatever it exposes is readable by anyone with the URL | Item 100 would **republish** consumed feeds. Whitelist fields rather than pass through (item 115) |
 | **Main Line Today** (revisited) | Already cited here for the Thursday send slot. It also **produces its own Restaurant Week** — "the largest, most ambitious dining event in the region" — sold with "direct email blasts to local diners via opt-in subscriber lists" | The mature form of this business is *running* the local event, not just listing it (item 112) |
 | **Godly / SiteInspire** vs **Awwwards** | Godly is curated by a small team, 2–3 sites a week, favouring **craft over novelty — restrained, editorial, typographically considered**. Awwwards rewards experimental animation and immersive storytelling | Two different standards, and this site should be chasing exactly one of them (item 113) |
 | **Local Facebook groups** | The discovery channel for a suburban family audience. Norm is the **70/30 rule**, many groups run a designated promo day, and **asking the admin first** is the difference between a standing welcome and a blacklist | Unlike Reddit's 90/10 (item 84, rejected on time cost), this is **one conversation, not sustained participation** — it fits the budget (item 107) |
@@ -4686,6 +4687,133 @@ task.
      immersive intro, nothing that delays the first event appearing) and
      the item 19 precedent as evidence this isn't hypothetical caution.
      Docs-only change; 331 tests still pass, no build affected.
+
+#### Research pass 2026-09-17 (twenty-seventh pass)
+
+**Today's newsletter never went out.** Not late — never. The previous
+pass predicted it would land early afternoon; that was wrong, and the
+reason is worth the space because it is a trap this repo will fall into
+again.
+
+| Time (UTC) | What happened |
+|---|---|
+| ~02:00 | `cron: "0 12 * * 4"` pushed to `main` |
+| 12:00 | Scheduled fire time — **no run recorded** |
+| 13:01 | Item 110 shipped, replacing it with `cron: "37 22 * * 3"` |
+| 18:33 | `send-newsletter.yml` schedule-event runs: **total_count 0** |
+
+Two explanations fit, and the honest position is that this pass cannot
+distinguish them: either the 12:00 run was sitting in GitHub's backlog
+(consistent with the measured 5–7h delays) and was **discarded when the
+workflow's cron changed out from under it at 13:01**, or a newly-added
+cron had not activated yet and the first occurrence was simply skipped.
+Both are documented GitHub behaviours.
+
+Either way the lesson is the same and it is uncomfortable: **the fix for
+unreliable scheduling ate the send it was meant to protect**, and nothing
+anywhere reported a problem. No run, no failure, no email — exactly the
+blind spot item 111 described, arriving the same day it was filed. The
+next send is now Wednesday 2026-09-23 22:37 UTC. That is a **six-day
+gap** in a weekly newsletter, and the only reason it is known is that
+this pass went looking.
+
+| Angle | Finding | Consequence |
+|---|---|---|
+| **Changing a cron** | Editing a scheduled workflow's cron drops occurrences pending under the old one; a newly-added cron may also skip its first fire | Schedule changes need a manual run to cover the gap (item 114) |
+| **ICS feeds as a source** | Feeds can carry descriptions, locations and organiser notes beyond what a site displays, and a public subscription URL is unauthenticated | Item 100 must whitelist fields, not pass through (item 115) |
+| **Local event SEO** | Ranking pages reinforce geography with **neighbourhood, landmark and venue names**, not just the town | This site's venue mentions are a **byproduct of whichever events fetched this week** (item 116) |
+
+#### P1 (new)
+
+114. **Nothing confirms a send happened, so a missed week is invisible.**
+     Item 111 proposed a staleness guard on the *build* timestamp, which
+     is the right instinct aimed at the wrong artifact. Today proves the
+     gap is on the other side: the build ran fine all day; it was the
+     **send** that silently did not occur, and no guard on freshness
+     would have caught it, because there was no send job in which to run
+     a guard.
+
+     What is missing is a positive record. On every successful send,
+     append to `data/send_history.json`: timestamp, subject line, the
+     Buttondown id returned, and the region/mode. That file is small,
+     diffable, committed like `data/source_health.json` already is, and
+     it answers three questions nothing currently can — did this week go
+     out, when did it actually go out (item 110's whole premise), and
+     how many issues have shipped. The last one stops being trivia the
+     moment a sponsor conversation starts: "we have published N
+     consecutive weekly issues" is a claim, and right now it could not be
+     substantiated from the repo.
+
+     Pair it with the cheap alarm: a second scheduled workflow, on a
+     different day and an offset minute, that fails if the newest entry
+     is more than nine days old. A failing job emails the owner — the
+     same mechanism `build-digest.yml` already relies on, pointed at the
+     failure mode that actually occurred.
+
+     And an operational rule worth writing into the workflow comment:
+     **after changing the cron, trigger a manual run.** The schedule
+     change is exactly when a fire gets dropped, and that is precisely
+     when nobody is watching for it.
+
+115. **Item 100's `calendar.ics` must whitelist fields, not pass feeds
+     through — decide this before it ships, not after.** The plan is to
+     republish the aggregated events as a subscribable calendar. The
+     inputs are other organisations' ICS feeds: District 57, the park
+     district, the library.
+
+     A consumed feed can carry materially more than the title this site
+     displays — full descriptions, room-level locations, organiser or
+     contact names, internal notes. The site's HTML only ever renders the
+     truncated fields it chose, so none of that is visible today. A
+     naive `calendar.ics` that forwards the parsed event wholesale would
+     publish all of it, at a **public, unauthenticated URL** that anyone
+     can subscribe to and read in full.
+
+     Nothing here is a leak of anything secret — these are public feeds.
+     But "public on the district's own calendar page" and "republished
+     by a commercial aggregator in a form anyone can subscribe to" are
+     not the same thing, and this business depends on staying welcome
+     with exactly these civic sources. The rule should be explicit and
+     narrow: emit only `SUMMARY`, `DTSTART`, `DTEND`, `LOCATION`, `URL`
+     and a stable `UID`, built from the same truncated fields the page
+     already shows, and **never** copy through `DESCRIPTION`,
+     `ATTENDEE`, `ORGANIZER` or `X-` properties from the source. Include
+     the source link in `URL` so the feed drives traffic back rather than
+     substituting for it — the attribution norm this site already
+     follows in HTML.
+
+#### P2 (new)
+
+116. **The site's geographic signal is as volatile as this week's event
+     list.** Local event pages rank on naming neighbourhoods, landmarks
+     and venues, not just the town. Counting on the live Mount Prospect
+     page: "Randhurst" appears 5 times, "Busse" 9, "Emerson" 11 —
+     and "Melas" and "Lions Park" zero, despite both being real Mount
+     Prospect venues that have carried events in this very digest.
+
+     The mentions that exist are **accidents of what fetched this week**.
+     Next Thursday the fixtures change and Randhurst may vanish
+     entirely. That is an unstable entity signal for a domain trying to
+     establish that it is *about* Mount Prospect, and it is exactly the
+     kind of thing item 98's retraction said to redirect the AI-citation
+     effort toward — entity clarity, which is winnable, rather than
+     out-ranking Eventbrite, which is not.
+
+     The `<meta name="description">` is currently "Village news, library
+     events, and park district programs" — true, generic, and naming no
+     place at all. Fix both halves together, since they are the same
+     sentence: give each region a short, stable, hand-written line in its
+     YAML naming its actual places (Randhurst Village, Melas Park, Lions
+     Park, downtown Emerson & Busse, the library, the park district), use
+     it as the meta description, and render it as the one-line "what's in
+     here" statement above the listings. That statement was recommended
+     in the **first** competitor review, has never shipped, and is the
+     rare change that serves a human reader and a crawler with the same
+     words.
+
+     Guard it against drift: a test asserting each region config carries
+     the line and that it names at least two venues. Volatility is the
+     defect; a config field the build cannot silently drop is the fix.
 
 ## Working agreements for autonomous iteration
 
