@@ -211,3 +211,44 @@ entirely up to you, and the mention stands either way.
 Thanks for what you do for this town,
 [Your name]
 Within Ten — https://withintenmiles.com/
+
+## 9. Facebook local group admin — permission to post weekly (ROADMAP.md Phase 11 #107)
+
+Send to the admin of a [Mount Prospect / Arlington Heights / Des Plaines
+/ Palatine] community Facebook group — the channel where this audience
+already spends time, distinct from item 84's Reddit pitch (rejected:
+Reddit's 90/10 self-promotion norm makes sustained participation a
+recurring cost this business can't spend). Facebook's norm is the
+softer 70/30, many local groups run a designated promo day, and the
+reliable path here is one conversation with the admin, not sustained
+participation — a standing "yes" is a fixed cost of three messages sent
+to three admins. `build_weekly_summary_txt()` already writes a
+Facebook-shaped `POST` / `FIRST COMMENT` pair for every region; this
+template is what gets permission to actually use it. Send only after a
+real issue exists to point to (same reasoning as template 8).
+
+Leads with the group's own interest, not the newsletter's, and offers
+the admin the easier option — posting it themselves — since that costs
+nothing and turns a gatekeeper into a distributor.
+
+Subject: Weekly local events list for the group — free, always current
+
+Hi [Admin name],
+
+I run **Within Ten**, a free site that automatically pulls together
+what's happening in [Mount Prospect / Arlington Heights / Des Plaines /
+Palatine] each week — village news, library events, Park District
+programs, and school calendars, all in one place: [link to region page].
+
+I'd love to share it with the group once a week, since it's exactly the
+"what's going on this weekend" question that comes up here a lot. Happy
+to post it myself if that's alright with you, or if you'd rather post it
+yourself (or have someone else do it), I'll send you the short
+post-plus-link version every week — whatever's easiest for you and the
+group's rules.
+
+Either way, thanks for running this group — it's a great resource for
+the town.
+
+[Your name]
+Within Ten — https://withintenmiles.com/

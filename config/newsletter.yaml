@@ -16,7 +16,14 @@
 
 buttondown_username: "andersonryant"
 headline: "Get it in your inbox"
-detail: "The weekly digest, emailed once a week. No spam, unsubscribe anytime."
+# ROADMAP.md Phase 11 #108: this used to say "the weekly digest", singular,
+# which was a promise the signup form couldn't keep once item 105 made
+# every send the combined, all-four-towns issue - Buttondown's free plan
+# has no per-region segmentation, so there's no way to detect which town a
+# given subscriber is in and put it first. The fix is to say what actually
+# ships: one email, one fixed order (same as load_regions()'s alphabetical
+# sort in scripts/build_digest.py), named plainly instead of implied.
+detail: "One email, Thursday mornings, covering Arlington Heights, Des Plaines, Mount Prospect, and Palatine. No spam, unsubscribe anytime."
 
 # Automated weekly send (ROADMAP.md Phase 11 #24/#31), added 2026-09-17 at
 # the owner's request. scripts/send_newsletter.py reads the already-built

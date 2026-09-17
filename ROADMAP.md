@@ -245,6 +245,7 @@ the required header and the next run succeeded.)
 |---|---|---|
 | **Send the local press pitch** to Journal & Topics and/or the Daily Herald (item 77, template drafted in `OUTREACH_TEMPLATES.md` §7) | **The single highest-yield action available, by a wide margin, and now the only thing standing between a working site and an audience.** A local-media mention is worth 100-500 subscribers in a day (seventeenth pass); nothing else here is close for one email's effort. Every dependency it ever had is now cleared: the domain resolves, HTTPS serves, the signup form is live, the sponsor CTA works, Google has the sitemap, and the automated send is now proven end-to-end with a real successful live send (see above) - a reporter who signs up gets a real, working weekly email, not a hypothetical one. The email needs picking a real reporter and hitting send. | 100-500 real subscribers from one email |
 | Run a real trademark search before spending money on the domain, signage, print, or sponsor contracts (item 69) | **Reduced, not eliminated, by the pivot to "Within Ten".** The name was changed *because* WebSearch found "PORCHLIGHT" is a registered mark (reg. 6028585) held by a company that publishes a newsletter to ~60,000 readers. "Within Ten"/"WithinTen" turned up **no registered mark** - materially cleaner. But a web search is not a clearance search: it misses common-law use, similar-sounding marks and state registrations. Worth its small cost before money is committed, not after. | Spending safely on signage, print, sponsor contracts |
+| **Set up the welcome email** in Buttondown's UI (item 106) | One-time, no-code, and the highest-open message this business will ever send (welcome emails average 34.79% opens, up to 4x a regular issue's) — but it needs a human in Buttondown's dashboard; there is no API surface for it to build against from here. Two things worth checking/writing before turning it on: confirm the free plan actually exposes a welcome/greeting email (unverified — the sending API working is not evidence about this separate feature), and write **one** good welcome email, not an e-commerce-style three-part drip — this is a local newsletter, not a cart-abandonment flow. | The highest-engagement touchpoint currently going unsent |
 
 **Nearly done, no longer blocking:** Buttondown's sending domain (item
 47). The owner added `withintenmiles.com` and its managed-delegation NS
@@ -4368,6 +4369,15 @@ press pitch lands.
      are the owner's to send, neither blocks the other, and unlike the
      press mention this one is **repeatable and compounding**.
 
+     ✅ **DONE (draft, sending is Ryan's).** Added §9 to
+     `OUTREACH_TEMPLATES.md`: leads with the group's own interest (a
+     free, always-current local events list), offers the admin the
+     option to post it themselves instead of granting posting rights,
+     and notes the 70/30-vs-Reddit's-90/10 distinction from item 84 so
+     a later pass doesn't re-litigate why this channel is different.
+     Sending to the three admins stays with the owner. No code changes;
+     copy only, so no test/build cycle to run.
+
 #### P2 (new)
 
 108. **The signup form promises one town and now delivers four.** Every
@@ -4393,6 +4403,27 @@ press pitch lands.
      pitch: "everything worth doing within ten miles" is the actual
      promise the brand makes, and a four-town email delivers it where a
      one-town email does not.
+
+     ✅ DONE (2026-09-17). Checked feasibility first: ordering the
+     reader's own region first needs to know which town the reader is
+     in, and item 105 already established that Buttondown's free-plan
+     form has no per-region segmentation — every signup lands on the
+     same undifferentiated list regardless of which region page it came
+     from. So only the fallback applies: state the running order
+     plainly instead of inferring it. `config/newsletter.yaml`'s
+     `detail` now reads "One email, Thursday mornings, covering
+     Arlington Heights, Des Plaines, Mount Prospect, and Palatine." —
+     naming the scope (all four towns) and the fixed order, which
+     matches `load_regions()`'s alphabetical sort in
+     `scripts/build_digest.py` (the same order the combined email
+     itself already renders blocks in), so the promise and the product
+     agree. Added a comment at `load_regions()` documenting why that
+     order is the one named in the config, so a later change to the
+     sort doesn't silently break the claim. Verified against the real
+     generated `docs/index.html` and `docs/mount-prospect-60056/index.html`
+     that the new copy renders on both the hub and a region page.
+     314 tests still pass; no test changes needed since this is
+     copy + a comment, not new behavior.
 
 #### P3 (new)
 

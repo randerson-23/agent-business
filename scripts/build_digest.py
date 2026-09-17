@@ -101,6 +101,16 @@ def load_yaml(path: Path) -> dict:
 
 
 def load_regions() -> list[dict]:
+    # `sorted()` makes the order deterministic (alphabetical by filename:
+    # Arlington Heights, Des Plaines, Mount Prospect, Palatine) rather than
+    # filesystem-listing order, which matters beyond cosmetics since
+    # 2026-09-17: item 108 found the combined email's signup form can't
+    # tell which town a subscriber is in (no per-region segmentation on
+    # Buttondown's free plan - the same constraint item 105 hit), so
+    # "the reader's own region first" isn't implementable. The fallback is
+    # a fixed, statable order - this one - named in
+    # config/newsletter.yaml's `detail` field so the promise matches what
+    # actually ships.
     regions = []
     for path in sorted(REGIONS_DIR.glob("*.yaml")):
         cfg = load_yaml(path)
