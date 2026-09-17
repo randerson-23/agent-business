@@ -4923,6 +4923,44 @@ this pass went looking.
      region entries all correctly show the new venue-naming text after
      a real `build_digest.py` run. 355 tests pass.
 
+117. ✅ DONE (2026-09-17). **Dependabot's first batch — 9 version-update
+     PRs, all merged.** `.github/dependabot.yml` (added this same day)
+     opened PRs #146–#154 within hours: three GitHub Actions bumps
+     (`setup-python` 5→7, `github-script` 7→9, `create-pull-request`
+     6→8), one more Actions bump found alongside them (`checkout` 4→7,
+     PR #154) plus four pip lower-bound bumps (`pillow` →12.3.0,
+     `setup-node` 4→7, `jinja2` →3.1.6, `pyyaml` →6.0.3, `requests`
+     →2.34.2). Checked each one's "Tests" GitHub Actions run actually
+     passed on its head SHA via `actions_list`/CI status before merging
+     — not just "Dependabot opened it" — and specifically re-verified
+     that PR #150's target, `actions/setup-node`, is a genuine dependency
+     (`tests.yml` uses it for `npm ci` / `npx lhci autorun`, the
+     Lighthouse CI performance-budget check) rather than a stray
+     leftover, before merging it. Squash-merged all 9 with no human
+     review, per this file's working agreement.
+
+     Two of the nine (#151 pyyaml, #153 requests) returned a `405
+     Pull Request has merge conflicts` error on first merge attempt,
+     right after #149 and #152 had each just changed the same
+     `requirements.txt` line context. Rather than manually rebasing a
+     bot-owned branch, re-checked each PR minutes later: both now
+     reported `mergeable_state: "unstable"` (checks running, not a real
+     conflict) and merged cleanly on retry — GitHub's own mergeability
+     computation lagging behind the base branch update, not an actual
+     content conflict. Worth remembering: a `405` on a Dependabot PR
+     right after a sibling PR touching the same file merged is worth a
+     short retry before assuming a real conflict needs resolving.
+
+     After all 9 merged, reset the local branch onto the new `origin/main`,
+     reinstalled `requirements.txt` (`--ignore-installed PyYAML`, since
+     this sandbox's PyYAML is Debian-managed and plain `pip install`
+     can't uninstall it), and reran the full suite against the bumped
+     versions: 355 tests pass, and a real `build_digest.py` run
+     completes with exit 0 (the sandbox's proxy blocks every external
+     fetcher host here regardless of dependency versions, so those
+     warnings are pre-existing sandbox noise, not a regression from the
+     bumps).
+
 ## Working agreements for autonomous iteration
 
 - Cadence is hourly (the platform's durable scheduler has a 1-hour floor;
