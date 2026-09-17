@@ -9,13 +9,38 @@
   in the same email.
 
   Same email-client constraints as email_digest.html.j2 (tables only,
-  system fonts, explicit colors everywhere, the [data-ogsc]/
-  prefers-color-scheme dark-mode defenses from item 92) and the same
-  preview/send split (item 91) - copied here rather than shared via
-  include, since Jinja2 has no cross-template partial mechanism this
-  project already uses, and a second self-contained file is one honest
-  duplication, not a maintenance trap, as long as both stay in sync by
-  hand when the shared styling changes.
+  system fonts, explicit colors everywhere) and the same preview/send
+  split (item 91). The dark-mode CSS (item 92) is the one piece
+  actually shared, via 
+[data-ogsc] .wt-bg, [data-ogsb] .wt-bg { background-color:#f6efe1 !important; }
+[data-ogsc] .wt-card, [data-ogsb] .wt-card { background-color:#fffcf5 !important; }
+[data-ogsc] .wt-card-sponsor, [data-ogsb] .wt-card-sponsor { background-color:#fdf3e4 !important; }
+[data-ogsc] .wt-cta-bg, [data-ogsb] .wt-cta-bg { background-color:#526b3f !important; }
+[data-ogsc] .wt-ink, [data-ogsb] .wt-ink { color:#2b2318 !important; }
+[data-ogsc] .wt-muted, [data-ogsb] .wt-muted { color:#766a58 !important; }
+[data-ogsc] .wt-accent, [data-ogsb] .wt-accent { color:#96581f !important; }
+[data-ogsc] .wt-brand, [data-ogsb] .wt-brand { color:#526b3f !important; }
+[data-ogsc] .wt-border, [data-ogsb] .wt-border { border-color:#e6dcc8 !important; }
+@media (prefers-color-scheme: dark) {
+  .wt-bg { background-color:#f6efe1 !important; }
+  .wt-card { background-color:#fffcf5 !important; }
+  .wt-card-sponsor { background-color:#fdf3e4 !important; }
+  .wt-cta-bg { background-color:#526b3f !important; }
+  .wt-ink { color:#2b2318 !important; }
+  .wt-muted { color:#766a58 !important; }
+  .wt-accent { color:#96581f !important; }
+  .wt-brand { color:#526b3f !important; }
+  .wt-border { border-color:#e6dcc8 !important; }
+} below -
+  a code-review pass found the two copies had drifted apart in comments
+  (though not in the rules themselves) and that "Jinja2 has no
+  cross-template partial mechanism" was simply wrong: both templates
+  already render through the same FileSystemLoader Environment in
+  scripts/build_digest.py, so an include resolves fine. Everything else
+  below stays a second self-contained file rather than a shared
+  fragment - the table markup differs enough (one region block that
+  repeats vs. one flat body) that forcing it through shared partials
+  would cost more in indirection than it saves in duplication.
 -->
 <!doctype html>
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
@@ -27,6 +52,7 @@
 <meta name="supported-color-schemes" content="light">
 <title>This weekend across Arlington Heights, Des Plaines, Mount Prospect, and Palatine</title>
 <style>
+
 [data-ogsc] .wt-bg, [data-ogsb] .wt-bg { background-color:#f6efe1 !important; }
 [data-ogsc] .wt-card, [data-ogsb] .wt-card { background-color:#fffcf5 !important; }
 [data-ogsc] .wt-card-sponsor, [data-ogsb] .wt-card-sponsor { background-color:#fdf3e4 !important; }

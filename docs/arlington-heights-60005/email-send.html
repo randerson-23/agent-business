@@ -62,13 +62,7 @@
 <meta name="supported-color-schemes" content="light">
 <title>This weekend in Arlington Heights: Heritage Fest</title>
 <style>
-/* ROADMAP.md Phase 11 #92: forces the light palette back for the two
-   clients with a documented hook for defeating a client's own forced
-   dark-mode rewrite. Every rule repeats a color already set inline -
-   nothing new to design, just restated where these two hooks can see
-   it. !important is required: a stylesheet !important rule beats a
-   non-important inline style in the CSS cascade, which is the whole
-   mechanism this depends on. */
+
 [data-ogsc] .wt-bg, [data-ogsb] .wt-bg { background-color:#f6efe1 !important; }
 [data-ogsc] .wt-card, [data-ogsb] .wt-card { background-color:#fffcf5 !important; }
 [data-ogsc] .wt-card-sponsor, [data-ogsb] .wt-card-sponsor { background-color:#fdf3e4 !important; }
