@@ -1006,11 +1006,38 @@
         var li = document.createElement("li");
         li.className = "tray-item";
         var meta = [item.region_name, item.date].filter(Boolean).join(" \u00b7 ");
-        var titleEl = item.url ? '<a href="' + item.url + '">' + item.title + '</a>' : '<span>' + item.title + '</span>';
-        li.innerHTML =
-          '<span>' + titleEl + '<div class="tray-item-meta"></div></span>' +
-          '<button type="button" class="tray-item-remove" data-id="' + encodeURIComponent(item.id) + '" aria-label="Remove ' + item.title + '">\u2715</button>';
-        li.querySelector(".tray-item-meta").textContent = meta;
+
+        // Built with DOM methods, not innerHTML string concatenation - a
+        // found bug. item.* comes from event data ultimately sourced
+        // from external RSS/ICS/HTML feeds this site doesn't control
+        // (village news, library, park district), and the old code
+        // spliced item.title/item.url straight into an HTML string. Any
+        // of those fields containing HTML-significant characters would
+        // have executed as markup once assigned to .innerHTML.
+        // textContent/setAttribute never parse their argument as
+        // markup, closing that off regardless of what the field
+        // contains - the same reasoning as icsEscape() a few lines
+        // below, just for HTML instead of ICS syntax.
+        var titleWrap = document.createElement("span");
+        var isHttpUrl = typeof item.url === "string" && /^https?:\/\//.test(item.url);
+        var titleEl = document.createElement(isHttpUrl ? "a" : "span");
+        if (isHttpUrl) titleEl.href = item.url;
+        titleEl.textContent = item.title;
+        titleWrap.appendChild(titleEl);
+        var metaEl = document.createElement("div");
+        metaEl.className = "tray-item-meta";
+        metaEl.textContent = meta;
+        titleWrap.appendChild(metaEl);
+
+        var removeBtn = document.createElement("button");
+        removeBtn.type = "button";
+        removeBtn.className = "tray-item-remove";
+        removeBtn.setAttribute("data-id", encodeURIComponent(item.id));
+        removeBtn.setAttribute("aria-label", "Remove " + item.title);
+        removeBtn.textContent = "\u2715";
+
+        li.appendChild(titleWrap);
+        li.appendChild(removeBtn);
         itemsEl.appendChild(li);
       });
     }

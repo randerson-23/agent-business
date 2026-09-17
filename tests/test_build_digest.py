@@ -1363,6 +1363,40 @@ def test_render_weekend_hub_page_handles_no_events_anywhere():
     assert "Nothing dated for this weekend yet across any region" in html
 
 
+def _assert_tray_render_uses_safe_dom_methods(html: str):
+    """A found bug: the itinerary tray's JS used to build each item's DOM
+    by splicing item.title/item.url straight into an HTML string
+    (`'<a href="' + item.url + '">' + item.title + '</a>'`) and assigning
+    it via .innerHTML. item.* is event data ultimately sourced from
+    external RSS/ICS/HTML feeds this site doesn't control - any
+    HTML-significant character in a title or url would have executed as
+    markup. Verified live with a headless Chromium render (a malicious
+    title containing `<img onerror=...>` and a `javascript:` url neither
+    executed nor produced a live element - not automated here, same
+    reasoning as item 92's dark-mode verification: it would make
+    Playwright a CI dependency for one script's worth of coverage). This
+    guards the fix by asserting the vulnerable concatenation pattern is
+    gone and the safe DOM-construction pattern replaced it.
+    """
+    assert "'<a href=\"' + item.url" not in html
+    assert "+ item.title + '</a>'" not in html
+    assert "titleEl.textContent = item.title" in html
+    assert 'removeBtn.setAttribute("aria-label", "Remove " + item.title)' in html
+
+
+def test_render_region_page_tray_uses_safe_dom_methods_not_innerhtml_concat():
+    blocks = [{"section": "Village News", "events": []}]
+    sponsor = {"title": "Sponsor this spot", "detail": "", "url": ""}
+    region_cfg = {"region": REGION}
+    html = build_digest.render_region_page(region_cfg, blocks, sponsor, [], datetime.now(timezone.utc))
+    _assert_tray_render_uses_safe_dom_methods(html)
+
+
+def test_render_weekend_hub_page_tray_uses_safe_dom_methods_not_innerhtml_concat():
+    html = build_digest.render_weekend_hub_page([], "Sep 19–20", datetime.now(timezone.utc))
+    _assert_tray_render_uses_safe_dom_methods(html)
+
+
 def test_render_region_page_includes_canonical_link():
     html = build_digest.render_region_page({"region": REGION}, [], {"title": "", "detail": "", "url": ""}, [], datetime.now(timezone.utc))
     assert f'rel="canonical" href="{build_digest.SITE_BASE_URL}mount-prospect-60056/"' in html
