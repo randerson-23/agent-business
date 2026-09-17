@@ -57,7 +57,13 @@ region:
   zip: "60067"
   state: "IL"
   timezone: "America/Chicago"
-  tagline: "Village news, library events, and park district programs — northwest of Mount Prospect."
+  # ROADMAP.md Phase 11 #116: named real venues (Downtown Palatine at
+  # N Smith & W Slade St hosts Oktoberfest; the Palatine Train Station
+  # lot hosts the Sister Cities Association's farmers' market, both
+  # confirmed via item 104's WebSearch), not a generic sentence naming
+  # no place - see the mount-prospect config's own comment on this
+  # item for the full rationale.
+  tagline: "Downtown Palatine and the Palatine Train Station farmers' market lot — village news, library events, and park district programs, northwest of Mount Prospect."
   # Reused from templates/hub.html.j2's existing ZIP_COORDS table (already
   # present there for the "distance from me" nearby-ZIP fallback before
   # this region existed) rather than a fresh guess - a rough town-center

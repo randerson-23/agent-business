@@ -43,7 +43,12 @@ region:
   zip: "60005"
   state: "IL"
   timezone: "America/Chicago"
-  tagline: "Village news, library events, and park district programs — a short drive from Mount Prospect."
+  # ROADMAP.md Phase 11 #116: named real venues (Harmony Park hosts
+  # Harmony Fest & Taste of Arlington Heights below; Lake Arlington is
+  # the Park District's own named lake), not a generic sentence naming
+  # no place - see the mount-prospect config's own comment on this
+  # item for the full rationale.
+  tagline: "Harmony Park, Lake Arlington, and the Arlington Heights Memorial Library — village news, library events, and park district programs, a short drive from Mount Prospect."
   # Village Hall coordinates (33 S Arlington Heights Rd) - a region-level
   # approximation for the "distance from you" feature (ROADMAP.md
   # Phase 8), not a specific venue's address.
