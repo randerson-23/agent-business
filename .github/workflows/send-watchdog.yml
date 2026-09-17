@@ -1,0 +1,51 @@
+name: Send watchdog
+
+# ROADMAP.md Phase 11 #114. build-digest.yml's own comment already
+# explains the mechanism this reuses: a failing job emails the owner at
+# no cost. That covers a run that *fails*. It does not cover a run that
+# never happens - exactly what occurred the day this item was filed:
+# item 110's own cron change silently ate the occurrence it was meant to
+# protect, and nothing noticed, because there was no send job in which a
+# guard could run. This workflow is a second, independent job whose only
+# purpose is to notice that on send-newsletter.yml's behalf.
+#
+# scripts/check_send_history.py does the actual check against
+# data/send_history.json (written by send_newsletter.py on every real
+# success) and fails loudly if the newest real delivery is missing or
+# more than nine days old.
+
+on:
+  schedule:
+    # Sunday 15:13 UTC - a different day and a different offset minute
+    # than both build-digest.yml (Monday 12:00 UTC) and send-newsletter.yml
+    # (Wednesday 22:37 UTC), deliberately: a watchdog sharing a schedule
+    # with the thing it watches would miss exactly the failure mode that
+    # motivated it (a schedule change eating an occurrence). Three days
+    # after a normal Thursday send, so a missed send is caught with
+    # about a week of margin before the next one is due, not silently
+    # carried for a full cycle.
+    - cron: "13 15 * * 0"
+  workflow_dispatch: {}
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      # check_send_history.py imports send_newsletter.py for
+      # load_send_history()/DELIVERY_MODES, which imports requests and
+      # yaml at module scope - needed even though this check itself
+      # makes no network call.
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Check the newsletter has actually gone out recently
+        run: python scripts/check_send_history.py

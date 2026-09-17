@@ -809,6 +809,44 @@ def test_build_region_calendar_ics_stable_uid_across_rebuilds():
     assert uid_a == uid_b
 
 
+def test_build_region_calendar_ics_never_emits_organizer_attendee_or_x_properties():
+    # ROADMAP.md Phase 11 #115: even if a future change to the event
+    # dict's shape started carrying extra fields (organizer, attendee,
+    # location, or an x_* key), this function must not become a
+    # passthrough for them - it only emits the fields it's explicitly
+    # coded to. This is the second half of the same guard as
+    # fetchers.py's test_fetch_ics_never_captures_organizer_attendee_or_x_properties,
+    # which checks that those fields never even reach this function's
+    # input in the first place.
+    region = {"id": "mount-prospect-60056", "name": "Mount Prospect"}
+    blocks = [
+        {
+            "section": "Library",
+            "events": [
+                {
+                    "title": "Storytime",
+                    "detail": "Family storytime.",
+                    "url": "https://x/1",
+                    "date_iso": "2026-09-19T10:00:00",
+                    "attendable": True,
+                    "organizer": "Jane Doe <jane@example.org>",
+                    "attendee": "John Smith <john@example.org>",
+                    "location": "Room 204B, private staff entrance",
+                    "x_internal_notes": "Confidential setup instructions",
+                }
+            ],
+        }
+    ]
+    ics = build_digest.build_region_calendar_ics(region, blocks, datetime.now(timezone.utc))
+    assert "ORGANIZER" not in ics
+    assert "ATTENDEE" not in ics
+    assert "LOCATION" not in ics
+    assert "X-INTERNAL" not in ics
+    assert "Jane Doe" not in ics
+    assert "private staff entrance" not in ics
+    assert "Confidential" not in ics
+
+
 def test_build_region_calendar_ics_non_attendable_event_is_transparent_all_day():
     # ROADMAP.md Phase 11 #90 applied to #100: a school half-day belongs
     # in the feed, but as a transparent all-day entry, not a timed one

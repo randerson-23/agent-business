@@ -199,6 +199,34 @@ def test_fetch_ics_resolves_a_relative_url_field_to_absolute(mock_get):
 
 
 @patch("fetchers.requests.get")
+def test_fetch_ics_never_captures_organizer_attendee_or_x_properties(mock_get):
+    # ROADMAP.md Phase 11 #115: a subscribed calendar.ics republishes
+    # this parser's output at a public, unauthenticated URL - a source
+    # feed can carry ORGANIZER/ATTENDEE/LOCATION/X- properties beyond
+    # what the site ever displays, and the only reason those can't leak
+    # into calendar.ics is that this parser never puts them in the
+    # event dict in the first place. Verifying that at the source,
+    # rather than only at build_region_calendar_ics's output, since a
+    # future field this parser starts capturing would need a matching
+    # decision there, not an assumption it's already covered.
+    ics = (
+        "BEGIN:VCALENDAR\n"
+        "BEGIN:VEVENT\n"
+        "SUMMARY:Storytime\n"
+        "DTSTART:20990901T100000Z\n"
+        "ORGANIZER;CN=Jane Doe:mailto:jane@example.org\n"
+        "ATTENDEE;CN=John Smith:mailto:john@example.org\n"
+        "LOCATION:Room 204B, private staff entrance\n"
+        "X-INTERNAL-NOTES:Confidential setup instructions\n"
+        "END:VEVENT\n"
+        "END:VCALENDAR\n"
+    )
+    mock_get.return_value = _mock_response(ics)
+    items = fetch_ics("https://example.org/cal.ics")
+    assert set(items[0].keys()) == {"title", "detail", "url", "date"}
+
+
+@patch("fetchers.requests.get")
 def test_fetch_html_events_filters_relevant_links(mock_get):
     mock_get.return_value = _mock_response(SAMPLE_HTML)
     items = fetch_html_events("https://example.org/events")
