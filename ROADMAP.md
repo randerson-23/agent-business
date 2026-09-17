@@ -3877,6 +3877,46 @@ keep it that way.
      not-yet-posted case matters more than completeness — a confidently
      wrong trick-or-treat time is the worst error this site could make.
 
+     ✅ **DONE** (shell shipped now, real hours still pending - as
+     expected on 2026-09-17). Each region's YAML gained a structured
+     `trick_or_treat: {url, hours}` block (`hours: null` for all four
+     right now - no village has posted yet, which is the honestly
+     correct state this early). New `templates/trick_or_treat.html.j2` +
+     `render_trick_or_treat_page()`, written to `/trick-or-treat/`:
+     one row per town, showing the real hours in place once `hours` is
+     set, or "Not yet posted for this year — check the village's page"
+     linking to that village's real news/notices URL (already verified
+     in each region's fall-guide entry, reused rather than re-derived)
+     until then. Each region's fall-family-guide "Official trick-or-
+     treat hours" item now links to this combined page instead of
+     straight to the village source - the "cross-linked from each
+     region" the item asked for - and the new page itself still links
+     out to each village's real source as the fallback.
+     `/trick-or-treat/` added to `collect_sitemap_urls()` (flows to both
+     `sitemap.xml` and IndexNow automatically) and to `build_llms_txt()`.
+
+     **`Event` schema deliberately deferred, not shipped partial.** The
+     item asked for "Event schema with real dates once the hours are
+     known," but `hours` is a free-text string
+     (e.g. "3:00–7:00 PM, Saturday, October 31") - parsing that into a
+     machine-readable date reliably enough to trust in structured data
+     is its own small problem, not a byproduct of this one. Once a real
+     village posts real hours, that's the moment to add a proper
+     `date`/`start_time`/`end_time` field and generate `Event` JSON-LD
+     from those, rather than regex-guessing a free-text string now for
+     data that doesn't exist yet.
+
+     6 new tests (`test_build_digest.py`); `python -m pytest tests/ -q`
+     → 288 passed. `python scripts/build_digest.py` → real build;
+     confirmed in the actual generated output: `docs/trick-or-treat/
+     index.html` lists all four towns in the honest not-posted state,
+     `docs/sitemap.xml` and `docs/llms.txt` both list the new URL, the
+     IndexNow submission count went from 41 to 42 URLs in the build
+     log, and `docs/mount-prospect-60056/guides/fall-family-guide/
+     index.html`'s trick-or-treat item links to `/trick-or-treat/` as
+     intended. `docs/` restored and the newly-generated `docs/trick-or-
+     treat/` directory removed before committing.
+
 #### P2 (new)
 
 102. **Record the cadence as validated, and put churn in the sponsor

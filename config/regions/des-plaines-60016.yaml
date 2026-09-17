@@ -156,6 +156,12 @@ evergreen:
     url: "https://www.desplainesil.gov/"
     tags: []
 
+# Structured trick-or-treat data (ROADMAP.md Phase 11 #101) - see the
+# Mount Prospect config for the rationale.
+trick_or_treat:
+  url: "https://www.desplainesil.gov/Residents/News"
+  hours: null
+
 # Seasonal/evergreen guides (ROADMAP.md Phase 11 #5) - see the Mount
 # Prospect config for the rationale; same civic-source-only approach here.
 guides:
@@ -171,9 +177,9 @@ guides:
         detail: "Seasonal storytimes and programs for all ages — a solid pick for a rainy fall Saturday."
         url: "https://www.dppl.org/"
         tags: ["indoor", "kid_friendly", "free"]
-      - title: "Official trick-or-treat hours & fall notices"
-        detail: "The City posts that year's official trick-or-treat hours and other fall community notices on its news page each October."
-        url: "https://www.desplainesil.gov/Residents/News"
+      - title: "Official trick-or-treat hours — all four towns"
+        detail: "Combined trick-or-treat hours for Mount Prospect, Arlington Heights, Des Plaines, and Palatine, updated automatically as each village posts them."
+        url: "https://withintenmiles.com/trick-or-treat/"
         tags: ["kid_friendly", "free"]
 
   # ROADMAP.md Phase 11 #15 - see the Mount Prospect config for the

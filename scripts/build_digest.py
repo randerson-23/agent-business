@@ -440,6 +440,41 @@ def prepare_guides(region_cfg: dict) -> list[dict]:
     return prepared
 
 
+def prepare_trick_or_treat(region_cfg: dict) -> dict | None:
+    """A region's `trick_or_treat:` block (ROADMAP.md Phase 11 #101), if
+    configured - feeds the cross-region /trick-or-treat/ page. `hours`
+    is None until the village actually posts it (typically late Sept/
+    early Oct); the page shows the honest "not yet posted" state until
+    then rather than a guessed time, same discipline as every other
+    civic source in this file.
+    """
+    tot = region_cfg.get("trick_or_treat")
+    if not tot or not isinstance(tot, dict) or not tot.get("url"):
+        return None
+    return {"url": tot["url"], "hours": (tot.get("hours") or "").strip() or None}
+
+
+def render_trick_or_treat_page(entries: list[dict], now: datetime, analytics: dict | None = None) -> str:
+    """The cross-region trick-or-treat hours page (ROADMAP.md Phase 11
+    #101) - the single highest-volume hyperlocal query of Q4, and one no
+    competitor aggregates (Eventbrite/AllEvents list ticketed events;
+    this is a municipal announcement). Villages post in late Sept/early
+    Oct, so this ships now, honestly empty of real hours, for indexing
+    lead time - the two-week query spike before the 31st is the reason
+    this can't wait until hours actually exist.
+    """
+    env = Environment(loader=FileSystemLoader(str(TEMPLATES_DIR)), autoescape=True)
+    template = env.get_template("trick_or_treat.html.j2")
+    return template.render(
+        entries=entries,
+        hub_url=SITE_BASE_URL,
+        canonical_url=SITE_BASE_URL + "trick-or-treat/",
+        generated_at=now.strftime("%Y-%m-%d %H:%M UTC"),
+        analytics=analytics,
+        og_image_url=SITE_BASE_URL + "og/default.png",
+    )
+
+
 def prepare_annual_events(region_cfg: dict) -> dict | None:
     """Curated annual events with real dates (ROADMAP.md Phase 11 #67) -
     the missing third content type. `sources:` is fetched and best-effort;
@@ -1322,7 +1357,13 @@ def build_og_images(region_summaries: list[dict]) -> dict[str, Image.Image]:
 
 
 def collect_sitemap_urls(region_summaries: list[dict]) -> list[str]:
-    urls = [SITE_BASE_URL, SITE_BASE_URL + "this-weekend/", SITE_BASE_URL + "sponsor/", SITE_BASE_URL + "about/"]
+    urls = [
+        SITE_BASE_URL,
+        SITE_BASE_URL + "this-weekend/",
+        SITE_BASE_URL + "sponsor/",
+        SITE_BASE_URL + "about/",
+        SITE_BASE_URL + "trick-or-treat/",
+    ]
     for r in region_summaries:
         base = SITE_BASE_URL + r["path"]
         urls += [base, base + "this-weekend/", base + "today/", base + "free/", base + "directory/"]
@@ -1434,6 +1475,7 @@ def build_llms_txt(region_summaries: list[dict]) -> str:
         lines += ["", "## Guides"] + guide_lines
     lines += ["", "## Sponsorship", f"- [Sponsor a region]({SITE_BASE_URL}sponsor/)"]
     lines += ["", "## About", f"- [Who publishes this, and why]({SITE_BASE_URL}about/)"]
+    lines += ["", "## Seasonal", f"- [Trick-or-treat hours, all four towns]({SITE_BASE_URL}trick-or-treat/)"]
     lines += ["", "## Feed", f"- [RSS: upcoming events across every region]({SITE_BASE_URL}feed.xml)"]
     return "\n".join(lines) + "\n"
 
@@ -1759,11 +1801,22 @@ def main() -> None:
     hub_weekend_sections = []
     hub_weekend_date_range = None
     feed_items = []
+    trick_or_treat_entries = []
     total_dated, total_events = 0, 0
     for region_cfg in regions:
         region = region_cfg["region"]
         region_id = region["id"]
         logger.info("=== Building region: %s (%s) ===", region["name"], region_id)
+
+        trick_or_treat = prepare_trick_or_treat(region_cfg)
+        if trick_or_treat:
+            trick_or_treat_entries.append(
+                {
+                    "region_name": region["name"],
+                    "region_url": SITE_BASE_URL + region_id + "/",
+                    **trick_or_treat,
+                }
+            )
 
         blocks = fetch_region_sections(region_cfg, health=source_health)
         annual_block = prepare_annual_events(region_cfg)
@@ -2031,6 +2084,12 @@ def main() -> None:
     about_dir.mkdir(parents=True, exist_ok=True)
     (about_dir / "index.html").write_text(about_html, encoding="utf-8")
     logger.info("Wrote %s", about_dir / "index.html")
+
+    trick_or_treat_html = render_trick_or_treat_page(trick_or_treat_entries, now, analytics)
+    trick_or_treat_dir = OUTPUT_DIR / "trick-or-treat"
+    trick_or_treat_dir.mkdir(parents=True, exist_ok=True)
+    (trick_or_treat_dir / "index.html").write_text(trick_or_treat_html, encoding="utf-8")
+    logger.info("Wrote %s", trick_or_treat_dir / "index.html")
 
     sitemap_urls = collect_sitemap_urls(region_summaries)
     (OUTPUT_DIR / "sitemap.xml").write_text(build_sitemap_xml(region_summaries, now), encoding="utf-8")
