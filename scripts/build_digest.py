@@ -1781,6 +1781,78 @@ def render_email_digest(
     )
 
 
+def _join_names(names: list[str]) -> str:
+    """"X", "X and Y", or "X, Y, and Z" - natural-language joining for the
+    combined email's subject line and headline, used nowhere else in
+    this file since every other list of names here is either a single
+    region or already formatted per-item.
+    """
+    if len(names) == 1:
+        return names[0]
+    if len(names) == 2:
+        return f"{names[0]} and {names[1]}"
+    return ", ".join(names[:-1]) + f", and {names[-1]}"
+
+
+def build_combined_email_subject_line(sections: list[dict]) -> str:
+    """ROADMAP.md Phase 11 #105: one subject line for every region, since
+    Buttondown's free-plan list has no per-region segmentation and every
+    subscriber receives the same issue. Names every region that has at
+    least one attendable event this weekend (item 90's split still
+    applies - a school half-day never earns a region its mention here
+    either); falls back to naming every covered region with the same
+    honest "what's coming up" framing as the single-region version if
+    none of them do.
+    """
+    with_events = [s["region_name"] for s in sections if any(e.get("attendable", True) for e in s["weekend_events"])]
+    if with_events:
+        return f"This weekend across {_join_names(with_events)}"
+    return f"This week across {_join_names([s['region_name'] for s in sections])}: what's coming up"
+
+
+def render_combined_email_digest(sections: list[dict], weekend_date_range: str, now: datetime, *, preview: bool = False) -> str:
+    """The combined, all-regions email (ROADMAP.md Phase 11 #105) - the
+    signup form is on every region page, but the automated send (item
+    24/31) only ever mailed Mount Prospect's digest, since Buttondown's
+    free plan is one undifferentiated list. A subscriber from any other
+    region got the wrong town's weekend, a real defect the moment the
+    list has anyone on it besides the owner.
+
+    `sections` is the same per-region shape `main()` already builds for
+    `hub_weekend_sections` (region_name/region_url/weekend_events), with
+    each entry additionally carrying that region's own `evergreen` and
+    `sponsor` - the data is already computed once per region in the main
+    loop, so this only needs the same numbers routed to a second
+    template rather than fetched or computed twice.
+
+    Same `preview` split as render_email_digest (item 91): `False` (the
+    default, used for the file that actually gets sent) omits the
+    "PREVIEW ONLY" annotation row.
+    """
+    env = Environment(loader=FileSystemLoader(str(TEMPLATES_DIR)), autoescape=True)
+    template = env.get_template("combined_email_digest.html.j2")
+    region_blocks = []
+    for s in sections:
+        weekend_events = s["weekend_events"]
+        evergreen_highlights = [e for e in s.get("evergreen", []) if "free" in e.get("tags", [])][:3]
+        region_blocks.append(
+            {
+                "region_name": s["region_name"],
+                "region_url": s["region_url"],
+                "attendable_events": [e for e in weekend_events if e.get("attendable", True)],
+                "informational_events": [e for e in weekend_events if not e.get("attendable", True)],
+                "evergreen_highlights": evergreen_highlights,
+                "sponsor": s.get("sponsor"),
+            }
+        )
+    return template.render(
+        region_blocks=region_blocks,
+        weekend_date_range=weekend_date_range,
+        subject_line=build_combined_email_subject_line(sections),
+        preview=preview,
+    )
+
+
 def weekend_dates(local_date: date) -> tuple[date, date, date]:
     """The Friday/Saturday/Sunday of the calendar week (Mon-Sun) containing
     local_date - correct whether local_date is itself a weekday (the
@@ -1876,6 +1948,7 @@ def main() -> None:
     hub_weekend_date_range = None
     feed_items = []
     trick_or_treat_entries = []
+    combined_email_sections = []
     total_dated, total_events = 0, 0
     for region_cfg in regions:
         region = region_cfg["region"]
@@ -1978,6 +2051,20 @@ def main() -> None:
                     "events": weekend_events,
                 }
             )
+        # Unconditional, unlike hub_weekend_sections above: the combined
+        # email (item 105) always shows every region, even one with
+        # nothing dated this weekend, so every subscriber finds their
+        # town in the same issue rather than four subscriber-specific
+        # ones Buttondown's free plan can't send anyway.
+        combined_email_sections.append(
+            {
+                "region_name": region["name"],
+                "region_url": SITE_BASE_URL + region_id + "/",
+                "weekend_events": weekend_events,
+                "evergreen": evergreen,
+                "sponsor": sponsor,
+            }
+        )
         views = [
             (
                 "this-weekend",
@@ -2138,6 +2225,21 @@ def main() -> None:
     weekend_hub_dir.mkdir(parents=True, exist_ok=True)
     (weekend_hub_dir / "index.html").write_text(weekend_hub_html, encoding="utf-8")
     logger.info("Wrote %s (%d region section%s)", weekend_hub_dir / "index.html", len(hub_weekend_sections), "" if len(hub_weekend_sections) == 1 else "s")
+
+    # ROADMAP.md Phase 11 #105: the actual file scripts/send_newsletter.py
+    # reads and mails - every region in one issue, since Buttondown's
+    # free-plan list has no per-region segmentation to send four separate
+    # ones to. Same email-send/email-preview split as the single-region
+    # digest (item 91).
+    combined_email_args = (combined_email_sections, hub_weekend_date_range or "", now)
+    (OUTPUT_DIR / "combined-email-send.html").write_text(
+        render_combined_email_digest(*combined_email_args), encoding="utf-8"
+    )
+    logger.info("Wrote %s", OUTPUT_DIR / "combined-email-send.html")
+    (OUTPUT_DIR / "combined-email-preview.html").write_text(
+        render_combined_email_digest(*combined_email_args, preview=True), encoding="utf-8"
+    )
+    logger.info("Wrote %s", OUTPUT_DIR / "combined-email-preview.html")
 
     sponsor_availability = build_sponsor_availability(sponsors_cfg, region_summaries)
     sponsor_stats = {

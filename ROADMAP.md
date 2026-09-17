@@ -4097,6 +4097,60 @@ overrule:
      comment there currently explains the constraint but not the
      consequence.
 
+     ✅ **DONE — and this closes a live gap, not a theoretical one.**
+     Picked up ahead of items 102-104 because `send.mode` is now `"send"`
+     (the owner's own 2026-09-17 instruction, made when he was the only
+     subscriber) with the explicit instruction to "revisit this before
+     [the press pitch or the barter play] goes out, not after" — both
+     of which have shipped templates ready to go. Waiting for either to
+     actually go out first would have meant fixing this after a real
+     subscriber had already received the wrong region's email once.
+
+     Took the recommended route: `render_combined_email_digest()` +
+     `templates/combined_email_digest.html.j2`, one issue with a short
+     block per region (heading linking to that region, up to 4
+     attendable events, item 90's "Also this week" grouping for
+     informational ones, that region's own active sponsor if any, a
+     "See everything in X" link). Every region appears every week, even
+     one with nothing dated (falls back to its own free evergreen
+     highlights, then an honest empty state) - "every subscriber finds
+     their town" from the item's own reasoning, taken literally.
+     `build_combined_email_subject_line()` names every region with an
+     attendable event this weekend (`_join_names()` for natural "X, Y,
+     and Z" phrasing), falling back to naming every covered region with
+     the same "what's coming up" honesty as the single-region version
+     if none have one. The per-region data (`weekend_events`,
+     `evergreen`, `sponsor`) was already computed once per region in
+     `main()`'s existing loop for other outputs - collected into a new
+     `combined_email_sections` list alongside the existing
+     `hub_weekend_sections`, not fetched or computed twice.
+
+     `scripts/send_newsletter.py` gained a `COMBINED_REGION = "combined"`
+     sentinel: `send.region: "combined"` reads
+     `docs/combined-email-send.html` instead of one region's own file.
+     **Set `config/newsletter.yaml`'s `send.region` to `"combined"`
+     in this same change** - implementing the template without pointing
+     the live sender at it would leave the actual defect unfixed. Left
+     `send.mode: "send"` exactly as the owner set it; this only changes
+     *which* content a send carries, not whether one happens.
+
+     14 new tests across `test_build_digest.py` and
+     `test_send_newsletter.py`; `python -m pytest tests/ -q` → 306
+     passed. `python scripts/build_digest.py` → real build; the
+     generated `docs/combined-email-send.html` correctly lists all four
+     regions (Arlington Heights, Des Plaines, Mount Prospect, Palatine)
+     with the real subject `This weekend across Des Plaines, Mount
+     Prospect, and Palatine` (Arlington Heights had nothing dated this
+     particular build); `diff` against `docs/combined-email-preview.html`
+     shows only the one annotation block added, same pattern as item 91.
+     Then ran the actual send script for real: `python
+     scripts/send_newsletter.py --dry-run` against that real generated
+     file printed `Region: combined` / the correct subject / a real byte
+     size, and made no network call - genuine evidence the wiring works
+     end to end, not just that the template renders. `docs/` restored
+     and the two newly-generated combined-email files removed before
+     committing.
+
 ## Working agreements for autonomous iteration
 
 - Cadence is hourly (the platform's durable scheduler has a 1-hour floor;

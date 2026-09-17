@@ -4,7 +4,12 @@
 Reads the already-built `docs/<region-id>/email-send.html` - item 91's
 annotation-free artifact, which exists precisely so an automated paste
 can't ship the "PREVIEW ONLY" row the way a human copy-paste once did -
-and creates an email in Buttondown from it.
+and creates an email in Buttondown from it. `send.region: "combined"`
+reads `docs/combined-email-send.html` instead - the all-regions issue
+(item 105), the fix for a real defect: Buttondown's free-plan list has
+no per-region segmentation, so mailing one region's digest meant every
+subscriber from every OTHER region's signup form got the wrong town's
+weekend.
 
 Two things this deliberately does NOT do:
 
@@ -51,6 +56,15 @@ STATUS_DRAFT = "draft"
 STATUS_SEND = "about_to_send"
 
 API_KEY_ENV = "BUTTONDOWN_API_KEY"
+
+# ROADMAP.md Phase 11 #105: `send.region: "combined"` in
+# config/newsletter.yaml selects the all-regions issue
+# (docs/combined-email-send.html) instead of one region's own digest -
+# the fix for a real defect, not a hypothetical one: the signup form is
+# on every region page, but the send only ever mailed Mount Prospect's,
+# so anyone who subscribed from another region's page got the wrong
+# town's weekend.
+COMBINED_REGION = "combined"
 
 logger = logging.getLogger("send_newsletter")
 
@@ -101,8 +115,14 @@ def extract_subject(html: str) -> str:
 
 
 def read_built_email(region_id: str, docs_dir: Path = DOCS_DIR) -> tuple[str, str]:
-    """Return (subject, html) from the region's built email-send.html."""
-    path = docs_dir / region_id / "email-send.html"
+    """Return (subject, html) from the built email-send.html - the
+    combined, all-regions issue when `region_id` is the `COMBINED_REGION`
+    sentinel, one region's own digest otherwise.
+    """
+    if region_id == COMBINED_REGION:
+        path = docs_dir / "combined-email-send.html"
+    else:
+        path = docs_dir / region_id / "email-send.html"
     if not path.exists():
         raise SendError(
             f"No built email at {path} - run scripts/build_digest.py first"

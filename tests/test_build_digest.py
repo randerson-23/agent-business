@@ -1742,6 +1742,36 @@ def test_build_email_subject_line_falls_back_when_only_informational_events_exis
     assert subject == "This weekend in Mount Prospect: what's coming up"
 
 
+def test_build_combined_email_subject_line_names_regions_with_events():
+    # ROADMAP.md Phase 11 #105: one subject line for every region, since
+    # Buttondown's free-plan list has no per-region segmentation.
+    sections = [
+        {"region_name": "Mount Prospect", "weekend_events": [{"title": "Oktoberfest", "attendable": True}]},
+        {"region_name": "Arlington Heights", "weekend_events": [{"title": "Harvest Fest", "attendable": True}]},
+    ]
+    subject = build_digest.build_combined_email_subject_line(sections)
+    assert subject == "This weekend across Mount Prospect and Arlington Heights"
+
+
+def test_build_combined_email_subject_line_excludes_regions_with_no_attendable_events():
+    sections = [
+        {"region_name": "Mount Prospect", "weekend_events": [{"title": "Oktoberfest", "attendable": True}]},
+        {"region_name": "Arlington Heights", "weekend_events": [{"title": "Half-Day", "attendable": False}]},
+    ]
+    subject = build_digest.build_combined_email_subject_line(sections)
+    assert subject == "This weekend across Mount Prospect"
+
+
+def test_build_combined_email_subject_line_falls_back_when_no_region_has_events():
+    sections = [
+        {"region_name": "Mount Prospect", "weekend_events": []},
+        {"region_name": "Arlington Heights", "weekend_events": []},
+        {"region_name": "Des Plaines", "weekend_events": []},
+    ]
+    subject = build_digest.build_combined_email_subject_line(sections)
+    assert subject == "This week across Mount Prospect, Arlington Heights, and Des Plaines: what's coming up"
+
+
 def test_build_email_subject_line_names_only_the_first_when_everything_collides():
     region = {"name": "Mount Prospect"}
     events = [
@@ -1911,6 +1941,93 @@ def test_render_email_digest_honest_empty_state():
     region = {"name": "Mount Prospect"}
     html = build_digest.render_email_digest(region, [], [], "https://x/", "Aug 29–30", None)
     assert "Nothing dated for this weekend yet" in html
+
+
+def test_render_combined_email_digest_shows_every_region():
+    # ROADMAP.md Phase 11 #105: the real defect this closes - a
+    # subscriber from any region besides Mount Prospect got the wrong
+    # town's weekend. Every region must appear in the one issue.
+    sections = [
+        {
+            "region_name": "Mount Prospect",
+            "region_url": "https://x/mount-prospect-60056/",
+            "weekend_events": [{"title": "Oktoberfest", "date": "Sep 18", "url": "https://x/1", "attendable": True}],
+            "evergreen": [],
+            "sponsor": None,
+        },
+        {
+            "region_name": "Arlington Heights",
+            "region_url": "https://x/arlington-heights-60005/",
+            "weekend_events": [],
+            "evergreen": [{"title": "Memorial Library", "url": "https://x/2", "tags": ["free"]}],
+            "sponsor": None,
+        },
+    ]
+    html = build_digest.render_combined_email_digest(sections, "Sep 18–20", datetime.now(timezone.utc))
+    assert "Mount Prospect" in html
+    assert "Oktoberfest" in html
+    assert "Arlington Heights" in html
+    assert "Memorial Library" in html
+    assert 'href="https://x/mount-prospect-60056/"' in html
+    assert 'href="https://x/arlington-heights-60005/"' in html
+
+
+def test_render_combined_email_digest_groups_informational_events_per_region():
+    sections = [
+        {
+            "region_name": "Mount Prospect",
+            "region_url": "https://x/mount-prospect-60056/",
+            "weekend_events": [
+                {"title": "Oktoberfest", "date": "Sep 18", "url": "https://x/1", "attendable": True},
+                {"title": "Half-Day Student Attendance", "date": "Sep 18", "url": "https://x/2", "attendable": False},
+            ],
+            "evergreen": [],
+            "sponsor": None,
+        }
+    ]
+    html = build_digest.render_combined_email_digest(sections, "Sep 18–20", datetime.now(timezone.utc))
+    assert "ALSO THIS WEEK" in html
+    assert "Half-Day Student Attendance" in html
+
+
+def test_render_combined_email_digest_shows_active_sponsor_per_region():
+    sections = [
+        {
+            "region_name": "Mount Prospect",
+            "region_url": "https://x/mount-prospect-60056/",
+            "weekend_events": [],
+            "evergreen": [],
+            "sponsor": {"title": "Acme Dentistry", "url": "https://x/3", "is_active_sponsor": True},
+        }
+    ]
+    html = build_digest.render_combined_email_digest(sections, "Sep 18–20", datetime.now(timezone.utc))
+    assert "Acme Dentistry" in html
+    assert "LOCAL RECOMMENDATION" in html
+
+
+def test_render_combined_email_digest_omits_house_ad_for_inactive_sponsor():
+    # Unlike the single-region email, the combined one skips the unsold-
+    # slot pitch entirely rather than repeating it once per region.
+    sections = [
+        {
+            "region_name": "Mount Prospect",
+            "region_url": "https://x/mount-prospect-60056/",
+            "weekend_events": [],
+            "evergreen": [],
+            "sponsor": {"title": "Sponsor this spot", "url": "", "is_active_sponsor": False},
+        }
+    ]
+    html = build_digest.render_combined_email_digest(sections, "Sep 18–20", datetime.now(timezone.utc))
+    assert "LOCAL RECOMMENDATION" not in html
+    assert "SPONSOR THIS SPOT" not in html
+
+
+def test_render_combined_email_digest_preview_shows_annotation():
+    sections = [{"region_name": "Mount Prospect", "region_url": "https://x/", "weekend_events": [], "evergreen": [], "sponsor": None}]
+    preview_html = build_digest.render_combined_email_digest(sections, "Sep 18–20", datetime.now(timezone.utc), preview=True)
+    send_html = build_digest.render_combined_email_digest(sections, "Sep 18–20", datetime.now(timezone.utc))
+    assert "PREVIEW ONLY" in preview_html
+    assert "PREVIEW ONLY" not in send_html
 
 
 def test_render_email_digest_shows_sponsor_only_when_active():

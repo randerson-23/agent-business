@@ -5,6 +5,7 @@ import pytest
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "scripts"))
 from send_newsletter import (  # noqa: E402
+    COMBINED_REGION,
     SendError,
     extract_subject,
     load_send_config,
@@ -101,6 +102,25 @@ def test_the_real_config_is_parseable_and_names_a_real_region():
     """Guards the live config, not a fixture: a typo'd region id here
     would only surface on a Thursday morning."""
     parsed = load_send_config()
-    if parsed["enabled"]:
+    if parsed["enabled"] and parsed["region"] != COMBINED_REGION:
         repo_root = Path(__file__).resolve().parents[1]
         assert (repo_root / "config" / "regions" / f"{parsed['region']}.yaml").exists()
+
+
+def test_read_built_email_combined_region_reads_the_combined_file(tmp_path):
+    (tmp_path / "combined-email-send.html").write_text(
+        build_email_html("This weekend across Mount Prospect and Arlington Heights"),
+        encoding="utf-8",
+    )
+    subject, html = read_built_email(COMBINED_REGION, docs_dir=tmp_path)
+    assert subject == "This weekend across Mount Prospect and Arlington Heights"
+    assert "<body>" in html
+
+
+def test_read_built_email_combined_region_also_refuses_the_preview_annotation(tmp_path):
+    (tmp_path / "combined-email-send.html").write_text(
+        build_email_html("Subject", body="<p>PREVIEW ONLY, NOT PART OF THE EMAIL</p>"),
+        encoding="utf-8",
+    )
+    with pytest.raises(SendError, match="preview annotation"):
+        read_built_email(COMBINED_REGION, docs_dir=tmp_path)
