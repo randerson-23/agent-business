@@ -95,6 +95,18 @@ SITE_NAME = "Within Ten"
 ORGANIZATION_ID = SITE_BASE_URL + "about/#organization"
 
 
+@lru_cache(maxsize=1)
+def get_template_env() -> Environment:
+    """The one Jinja2 Environment every render_* function in this module
+    uses. Every call site used to build its own with identical arguments
+    - a code-review pass found 8 of them, none adding a filter/global the
+    others lacked - which re-parses every .html.j2 file on every single
+    page render for no reason a single build ever needed. `lru_cache`
+    makes this a one-time cost per process.
+    """
+    return Environment(loader=FileSystemLoader(str(TEMPLATES_DIR)), autoescape=True)
+
+
 def load_yaml(path: Path) -> dict:
     with path.open("r", encoding="utf-8") as f:
         return yaml.safe_load(f) or {}
@@ -541,7 +553,7 @@ def render_trick_or_treat_page(entries: list[dict], now: datetime, analytics: di
     lead time - the two-week query spike before the 31st is the reason
     this can't wait until hours actually exist.
     """
-    env = Environment(loader=FileSystemLoader(str(TEMPLATES_DIR)), autoescape=True)
+    env = get_template_env()
     template = env.get_template("trick_or_treat.html.j2")
     return template.render(
         entries=entries,
@@ -782,7 +794,7 @@ def render_about_page(now: datetime, analytics: dict | None = None) -> str:
     build_organization_json_ld) - every other page's WebSite node
     references it by @id instead of re-declaring it.
     """
-    env = Environment(loader=FileSystemLoader(str(TEMPLATES_DIR)), autoescape=True)
+    env = get_template_env()
     template = env.get_template("about.html.j2")
     return template.render(
         hub_url=SITE_BASE_URL,
@@ -801,7 +813,7 @@ def render_sponsor_page(
     contact_email: str | None = None,
     stats: dict | None = None,
 ) -> str:
-    env = Environment(loader=FileSystemLoader(str(TEMPLATES_DIR)), autoescape=True)
+    env = get_template_env()
     template = env.get_template("sponsor.html.j2")
     return template.render(
         tiers=SPONSOR_TIERS,
@@ -1159,7 +1171,7 @@ def render_region_page(
     nearby_regions: list[dict] | None = None,
     region_map: dict | None = None,
 ) -> str:
-    env = Environment(loader=FileSystemLoader(str(TEMPLATES_DIR)), autoescape=True)
+    env = get_template_env()
     template = env.get_template("region.html.j2")
     all_events_flat = [e for b in blocks for e in b["events"]] + evergreen
     region = region_cfg["region"]
@@ -1316,7 +1328,7 @@ def render_hub_page(
     analytics: dict | None = None,
     stats: dict | None = None,
 ) -> str:
-    env = Environment(loader=FileSystemLoader(str(TEMPLATES_DIR)), autoescape=True)
+    env = get_template_env()
     template = env.get_template("hub.html.j2")
     return template.render(
         generated_at=now.strftime("%Y-%m-%d %H:%M UTC"),
@@ -1337,7 +1349,7 @@ def render_weekend_hub_page(
     one is. Deferred out of the per-region date-scoped-views slice to keep
     that one shippable; picked up here as the natural follow-up.
     """
-    env = Environment(loader=FileSystemLoader(str(TEMPLATES_DIR)), autoescape=True)
+    env = get_template_env()
     template = env.get_template("weekend_hub.html.j2")
     return template.render(
         region_sections=region_sections,
@@ -1769,7 +1781,7 @@ def render_email_digest(
     inside the thing it warns about gets pasted along with it every
     time, so the two files are now byte-identical except for this row.
     """
-    env = Environment(loader=FileSystemLoader(str(TEMPLATES_DIR)), autoescape=True)
+    env = get_template_env()
     template = env.get_template("email_digest.html.j2")
     evergreen_highlights = [e for e in evergreen if "free" in e.get("tags", [])][:3]
     # ROADMAP.md Phase 11 #90: a school half-day or office closure is real
@@ -1841,7 +1853,7 @@ def render_combined_email_digest(sections: list[dict], weekend_date_range: str, 
     default, used for the file that actually gets sent) omits the
     "PREVIEW ONLY" annotation row.
     """
-    env = Environment(loader=FileSystemLoader(str(TEMPLATES_DIR)), autoescape=True)
+    env = get_template_env()
     template = env.get_template("combined_email_digest.html.j2")
     region_blocks = []
     for s in sections:

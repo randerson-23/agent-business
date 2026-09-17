@@ -8,6 +8,15 @@ from unittest.mock import patch
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "scripts"))
 import build_digest  # noqa: E402
 
+def test_get_template_env_is_a_cached_singleton():
+    # A code-review pass found 8 render_* functions each building their
+    # own Environment(loader=FileSystemLoader(...)) with identical
+    # arguments - re-parsing every .html.j2 file on every single page
+    # render. get_template_env() replaced all 8 call sites; this guards
+    # the one thing that makes the fix real rather than cosmetic.
+    assert build_digest.get_template_env() is build_digest.get_template_env()
+
+
 REGION = {
     "id": "mount-prospect-60056",
     "name": "Mount Prospect",
