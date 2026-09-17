@@ -1,0 +1,23 @@
+version: 2
+updates:
+  # requirements.txt pins only lower bounds (requests>=2.31, etc.) with no
+  # lockfile - nothing currently notices when a newer, safer release of
+  # any of these exists. Dependabot version-update PRs are the standard,
+  # zero-maintenance-cost way to close that: opened automatically, run
+  # through the existing tests.yml CI before anyone looks at them, and
+  # cheap to review or merge on a cadence that fits "near-zero owner
+  # time" - unlike a framework, this is a GitHub feature with no runtime
+  # footprint on the built site at all.
+  - package-ecosystem: "pip"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+
+  # The workflow files themselves pin third-party actions
+  # (actions/checkout, actions/setup-python) by major version tag -
+  # Dependabot also tracks these and opens the same kind of PR when a
+  # new major/minor is available.
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"
