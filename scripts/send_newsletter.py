@@ -49,10 +49,21 @@ confirmation header, which were confirmed against a real API response,
 the scheduling shape is this session's best-documented guess and has
 never been tried against the live API - the first `schedule`-mode run
 is the actual test.
+
+ROADMAP.md item 114: item 110's own cron change silently dropped the
+occurrence it was meant to protect the same day it shipped, and nothing
+noticed - no failed job, no email, because there was no send job in
+which a guard could have run. `data/send_history.json` is the fix on
+this side: a positive record, appended here on every successful
+Buttondown response, so "did this week's issue actually go out" is a
+question the repo can answer instead of an assumption. Read by
+`scripts/check_send_history.py`, run on its own schedule, which is the
+other side - the actual alarm.
 """
 from __future__ import annotations
 
 import argparse
+import json
 import logging
 import os
 import re
@@ -68,6 +79,13 @@ import yaml
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
 DOCS_DIR = REPO_ROOT / "docs"
+SEND_HISTORY_PATH = REPO_ROOT / "data" / "send_history.json"
+# Modes that represent a real mail-out, as opposed to "draft" (created in
+# Buttondown but not sent to anyone until a human clicks send). Shared
+# with check_send_history.py, which only alarms on the absence of one of
+# these - a standing draft nobody ever sent shouldn't read as "the
+# newsletter went out".
+DELIVERY_MODES = {"send", "schedule"}
 NEWSLETTER_CONFIG = REPO_ROOT / "config" / "newsletter.yaml"
 
 # Buttondown API v1. See the module docstring: unverified from here.
@@ -118,6 +136,43 @@ API_KEY_ENV = "BUTTONDOWN_API_KEY"
 COMBINED_REGION = "combined"
 
 logger = logging.getLogger("send_newsletter")
+
+
+def load_send_history(path: Path = SEND_HISTORY_PATH) -> list[dict]:
+    """The record item 114 found missing: a small, committed JSON list
+    (same pattern as data/source_health.json) of every successful
+    Buttondown response this script has ever gotten. Missing or
+    corrupt reads as empty, same posture load_source_health() takes in
+    build_digest.py - a fresh start, not a crash.
+    """
+    if path.exists():
+        try:
+            return json.loads(path.read_text(encoding="utf-8"))
+        except (json.JSONDecodeError, OSError) as exc:
+            logger.warning("Could not read %s, starting fresh: %s", path, exc)
+    return []
+
+
+def record_send(
+    history: list[dict], *, timestamp: str, subject: str, buttondown_id: str, region: str, mode: str
+) -> list[dict]:
+    """Append one entry and return the updated list - a pure function
+    so the record shape is testable without touching a real file.
+    """
+    return history + [
+        {
+            "timestamp": timestamp,
+            "subject": subject,
+            "buttondown_id": buttondown_id,
+            "region": region,
+            "mode": mode,
+        }
+    ]
+
+
+def save_send_history(history: list[dict], path: Path = SEND_HISTORY_PATH) -> None:
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text(json.dumps(history, indent=2) + "\n", encoding="utf-8")
 
 
 class SendError(RuntimeError):
@@ -391,6 +446,23 @@ def main(argv: list[str] | None = None) -> int:
     except requests.RequestException as exc:
         logger.error("Network error talking to Buttondown: %s", exc)
         return 1
+
+    # ROADMAP.md item 114: recorded after a real 2xx from Buttondown, not
+    # before - a positive record has to mean the API actually accepted
+    # this, not merely that this script attempted it. If writing the
+    # record itself fails, that's a real bug worth a loud failure of its
+    # own next run, not swallowed here - the send already succeeded and
+    # this script shouldn't report success as anything but success.
+    history = load_send_history()
+    history = record_send(
+        history,
+        timestamp=now.isoformat(),
+        subject=subject,
+        buttondown_id=str(result.get("id", "")),
+        region=cfg["region"],
+        mode=cfg["mode"],
+    )
+    save_send_history(history)
 
     if cfg["mode"] == "send":
         logger.info("Sent. Buttondown id: %s", result.get("id", "?"))

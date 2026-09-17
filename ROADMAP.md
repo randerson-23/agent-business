@@ -4755,6 +4755,40 @@ this pass went looking.
      change is exactly when a fire gets dropped, and that is precisely
      when nobody is watching for it.
 
+     ✅ DONE (2026-09-17). `send_newsletter.py` gained `load_send_history()`/
+     `record_send()`/`save_send_history()`, wired into `main()` right
+     after a successful (2xx) `post_to_buttondown()` response - a
+     positive record can only mean the API actually accepted it, not
+     merely that this script attempted it. `scripts/check_send_history.py`
+     is the alarm: it finds the most recent `send`/`schedule` record
+     (deliberately not `draft` - a standing draft nobody sent isn't
+     evidence the newsletter went out) and fails if it's missing or
+     older than nine days. A new workflow, `send-watchdog.yml`, runs it
+     on Sunday 15:13 UTC - a different day and offset minute than both
+     `build-digest.yml` (Monday 12:00) and `send-newsletter.yml`
+     (Wednesday 22:37), on purpose: a watchdog sharing a schedule with
+     the thing it watches would miss exactly the failure mode that
+     motivated it. Three days after a normal Thursday send, so a missed
+     one is caught with about a week of margin before the next is due.
+
+     Seeded `data/send_history.json` with one real record rather than
+     leaving it empty: the actual successful live send from earlier
+     today (workflow run `35176614362`, Buttondown id
+     `em_5hgyjgfytf8hws9xxpw6b0fesk`, already verified against real
+     GitHub Actions logs and recorded in this file's own Needs Ryan
+     section) - a backfill of an already-confirmed fact, not a guess,
+     and it means the watchdog starts meaningful instead of in a
+     permanent false-failure state for a send that genuinely happened
+     before this tracking existed. Confirmed with a real run:
+     `check_send_history.py` against the seeded file reports "OK: last
+     delivery 15h55m ago" and exits 0; verified `--dry-run` leaves the
+     file's checksum unchanged (no record written without a real send).
+     354 tests pass. The operational rule item 114 asked for - trigger
+     a manual run after changing a cron - is recorded here rather than
+     in a workflow comment, since it's a process note for whoever edits
+     the schedule next, human or otherwise, and this file is where that
+     history already lives.
+
 115. **Item 100's `calendar.ics` must whitelist fields, not pass feeds
      through — decide this before it ships, not after.** The plan is to
      republish the aggregated events as a subscribable calendar. The
@@ -4781,6 +4815,34 @@ this pass went looking.
      the source link in `URL` so the feed drives traffic back rather than
      substituting for it — the attribution norm this site already
      follows in HTML.
+
+     ✅ VERIFIED (2026-09-17) - the worry doesn't describe the shipped
+     code, checked directly rather than assumed. Two things make it
+     already safe: (1) `fetch_ics()` in `fetchers.py` never extracts
+     `ORGANIZER`/`ATTENDEE`/`LOCATION`/`X-` properties into the internal
+     event dict in the first place - only `SUMMARY`, `DESCRIPTION`,
+     `URL` and `DTSTART` are parsed at all, so there is nothing for
+     `build_region_calendar_ics()` to copy through even if it tried; (2)
+     `event["detail"]` (emitted as ICS `DESCRIPTION`) is truncated to
+     `DETAIL_MAX_LEN` (160 chars) at construction time in `main()`,
+     before `build_region_calendar_ics()` ever sees it, and
+     `region.html.j2` renders that exact same already-truncated string
+     with no further truncation - so the HTML page and the ICS feed
+     show byte-identical text, not a fuller one. Added two regression
+     tests to guard both halves against silent regression:
+     `test_fetch_ics_never_captures_organizer_attendee_or_x_properties`
+     (fetchers.py) and
+     `test_build_region_calendar_ics_never_emits_organizer_attendee_or_x_properties`
+     (build_digest.py, feeding the function a deliberately over-stuffed
+     event dict to prove it's a field allowlist, not a passthrough,
+     regardless of what a future change to the event shape might add).
+     One real gap against the item's own wish list, left alone rather
+     than added speculatively: `LOCATION` is never emitted, since
+     `fetch_ics()` doesn't parse it from source feeds at all - worth
+     picking up only if a real source's calendar actually carries it
+     and a person wants it in the subscription; not blocking, since the
+     leak risk this item raised is what mattered before ship, and that
+     risk was never real.
 
 #### P2 (new)
 

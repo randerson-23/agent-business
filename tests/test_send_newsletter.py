@@ -14,9 +14,12 @@ from send_newsletter import (  # noqa: E402
     extract_subject,
     html_byte_size,
     load_send_config,
+    load_send_history,
     next_thursday_morning,
     read_build_timestamp,
     read_built_email,
+    record_send,
+    save_send_history,
 )
 
 # The real file opens with an authoring comment that mentions "<title>" in
@@ -316,3 +319,51 @@ def test_assert_build_is_fresh_rejects_a_stale_build():
     build_time = now - timedelta(days=5)
     with pytest.raises(SendError, match="docs/feed.xml"):
         assert_build_is_fresh(build_time, now)
+
+
+def test_load_send_history_missing_file_returns_empty_list(tmp_path):
+    assert load_send_history(tmp_path / "nope.json") == []
+
+
+def test_load_send_history_corrupt_file_returns_empty_list(tmp_path):
+    path = tmp_path / "send_history.json"
+    path.write_text("not json", encoding="utf-8")
+    assert load_send_history(path) == []
+
+
+def test_record_send_appends_without_mutating_the_original():
+    # ROADMAP.md item 114: the actual record item 111's staleness guard
+    # couldn't provide, because build-digest.yml rebuilding fine all day
+    # said nothing about whether a send job ever ran at all.
+    original = [{"timestamp": "old"}]
+    updated = record_send(
+        original, timestamp="2026-09-17T18:33:00+00:00", subject="This weekend",
+        buttondown_id="abc123", region="combined", mode="schedule",
+    )
+    assert original == [{"timestamp": "old"}]  # not mutated in place
+    assert updated == [
+        {"timestamp": "old"},
+        {
+            "timestamp": "2026-09-17T18:33:00+00:00",
+            "subject": "This weekend",
+            "buttondown_id": "abc123",
+            "region": "combined",
+            "mode": "schedule",
+        },
+    ]
+
+
+def test_save_and_load_send_history_round_trips(tmp_path):
+    path = tmp_path / "send_history.json"
+    history = record_send(
+        [], timestamp="2026-09-17T18:33:00+00:00", subject="Subj",
+        buttondown_id="abc123", region="combined", mode="send",
+    )
+    save_send_history(history, path)
+    assert load_send_history(path) == history
+
+
+def test_save_send_history_creates_the_parent_directory(tmp_path):
+    path = tmp_path / "nested" / "send_history.json"
+    save_send_history([{"timestamp": "x"}], path)
+    assert path.exists()
