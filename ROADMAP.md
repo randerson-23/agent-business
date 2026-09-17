@@ -4029,6 +4029,21 @@ keep it that way.
      "competitors have it" is not one. The site already has most features
      its competitors have; what it does not yet have is readers.
 
+     ✅ **DONE.** Added `DESIGN_PRINCIPLES.md` at the repo root: the two
+     directions (typography as the primary interface; restraint over
+     accumulation) named against what the site already does (Fraunces/
+     Inter, beige/green palette, no framework, the one View Transitions
+     animation framed explicitly as a progressive enhancement rather
+     than a feature) rather than as a hypothetical target. A concrete
+     "what this rules out" list (a component library, decorative
+     animation/parallax, stock photography, a third accent color or
+     second display face, dashboard-density layouts) so the defence is
+     checkable, not just aspirational. Closes with the item's own
+     standing question and the "competitors have it" non-justification,
+     stated as a rule for future PRs/commits to answer against, not
+     just prose to have read once. Copy only - no code changes; `python
+     -m pytest tests/ -q` → 309 passed (unchanged).
+
 #### P3 (new)
 
 104. **The seasonal-circuit guide exists in one region out of four.**
