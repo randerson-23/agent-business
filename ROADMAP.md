@@ -229,10 +229,21 @@ as noise:
   explicit request, framed as "for now". The sponsor CTA is a prefilled
   `mailto:` and the GitHub-issue fallback is gone.
 
+**Closed since the last check:** `BUTTONDOWN_API_KEY` — the owner added
+it, and it works. Real evidence, checked directly against GitHub
+Actions rather than assumed: workflow run `35176614362` (2026-09-17
+03:02 UTC) shows `=== LIVE: this will SEND to every subscriber ===`,
+`Region: combined`, `Subject: This weekend across Arlington Heights,
+Des Plaines, Mount Prospect, and Palatine`, and `Sent. Buttondown id:
+em_5hgyjgfytf8hws9xxpw6b0fesk` — a genuine successful live send of
+item 105's combined template, not a dry run. (One earlier manual run,
+`35176398162`, failed on a `400 sending_requires_confirmation` from
+Buttondown's own first-API-call interlock; the very next commit added
+the required header and the next run succeeded.)
+
 | Action | One line why | Unblocks |
 |---|---|---|
-| **Add `BUTTONDOWN_API_KEY` as a repository secret** (Settings → Secrets and variables → Actions), and confirm the free plan exposes the API at all | The Thursday send workflow is built and scheduled but inert without it — it exits 1 with a message rather than sending. **Free-tier API access could not be verified from the build sandbox**, so the first manual run is also the test of whether this plan allows it | The automated weekly send |
-| **Send the local press pitch** to Journal & Topics and/or the Daily Herald (item 77, template drafted in `OUTREACH_TEMPLATES.md` §7) | **The single highest-yield action available, by a wide margin, and now the only thing standing between a working site and an audience.** A local-media mention is worth 100-500 subscribers in a day (seventeenth pass); nothing else here is close for one email's effort. Every dependency it ever had is now cleared: the domain resolves, HTTPS serves, the signup form is live, the sponsor CTA works, and Google has the sitemap. The email needs picking a real reporter and hitting send. | 100-500 real subscribers from one email |
+| **Send the local press pitch** to Journal & Topics and/or the Daily Herald (item 77, template drafted in `OUTREACH_TEMPLATES.md` §7) | **The single highest-yield action available, by a wide margin, and now the only thing standing between a working site and an audience.** A local-media mention is worth 100-500 subscribers in a day (seventeenth pass); nothing else here is close for one email's effort. Every dependency it ever had is now cleared: the domain resolves, HTTPS serves, the signup form is live, the sponsor CTA works, Google has the sitemap, and the automated send is now proven end-to-end with a real successful live send (see above) - a reporter who signs up gets a real, working weekly email, not a hypothetical one. The email needs picking a real reporter and hitting send. | 100-500 real subscribers from one email |
 | Run a real trademark search before spending money on the domain, signage, print, or sponsor contracts (item 69) | **Reduced, not eliminated, by the pivot to "Within Ten".** The name was changed *because* WebSearch found "PORCHLIGHT" is a registered mark (reg. 6028585) held by a company that publishes a newsletter to ~60,000 readers. "Within Ten"/"WithinTen" turned up **no registered mark** - materially cleaner. But a web search is not a clearance search: it misses common-law use, similar-sounding marks and state registrations. Worth its small cost before money is committed, not after. | Spending safely on signage, print, sponsor contracts |
 
 **Nearly done, no longer blocking:** Buttondown's sending domain (item
