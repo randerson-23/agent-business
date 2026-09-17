@@ -8,6 +8,7 @@ from send_newsletter import (  # noqa: E402
     COMBINED_REGION,
     SendError,
     extract_subject,
+    html_byte_size,
     load_send_config,
     read_built_email,
 )
@@ -186,3 +187,17 @@ def test_api_errors_are_surfaced_verbatim(monkeypatch):
     monkeypatch.setattr(send_newsletter.requests, "post", fake_post)
     with pytest.raises(SendError, match="sending_requires_confirmation"):
         send_newsletter.post_to_buttondown("S", "<p>h</p>", "key", "send")
+
+
+def test_html_byte_size_counts_utf8_bytes_not_characters():
+    # A found bug: len(html) (character count) under-counts a payload
+    # full of multi-byte characters, which is exactly what the real
+    # templates are (em dashes, arrows, curly quotes repeated per
+    # event/region) - Gmail's 102KB clip limit is a byte limit.
+    html = "—" * 1000  # em dash: 1 character, 3 bytes in UTF-8
+    assert len(html) == 1000
+    assert html_byte_size(html) == 3000
+
+
+def test_html_byte_size_matches_character_count_for_ascii():
+    assert html_byte_size("a" * 500) == 500

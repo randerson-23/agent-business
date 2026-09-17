@@ -144,6 +144,16 @@ def read_built_email(region_id: str, docs_dir: Path = DOCS_DIR) -> tuple[str, st
     return extract_subject(html), html
 
 
+def html_byte_size(html: str) -> int:
+    """The real payload size Gmail's ~102KB clip limit applies to - UTF-8
+    bytes, not `len(html)` (character count). The templates are full of
+    multi-byte characters (em dashes, arrows, curly quotes) repeated per
+    event/region, so character count under-counts and would silently
+    miss a real oversized build as more regions/sponsors get added.
+    """
+    return len(html.encode("utf-8"))
+
+
 def post_to_buttondown(subject: str, html: str, api_key: str, mode: str) -> dict:
     """Create the email in Buttondown. Raises SendError with the API's own
     message on any non-2xx, so a wrong endpoint or a plan that gates API
@@ -214,14 +224,15 @@ def main(argv: list[str] | None = None) -> int:
             "SEND to every subscriber" if cfg["mode"] == "send"
             else "create a DRAFT in Buttondown",
         )
+    html_bytes = html_byte_size(html)
     logger.info("Region:  %s", cfg["region"])
     logger.info("Subject: %s", subject)
-    logger.info("Size:    %d bytes", len(html))
+    logger.info("Size:    %d bytes", html_bytes)
     logger.info("Configured mode: %s", cfg["mode"])
 
     # Gmail clips HTML email over ~102KB. The template is ~6KB, so this is
     # a guard against a future regression, not a live concern.
-    if len(html) > 102_000:
+    if html_bytes > 102_000:
         logger.warning("Email exceeds ~102KB and will be clipped by Gmail.")
 
     if args.dry_run:

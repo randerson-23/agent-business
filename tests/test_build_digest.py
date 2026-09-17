@@ -2005,21 +2005,83 @@ def test_render_combined_email_digest_shows_active_sponsor_per_region():
     assert "LOCAL RECOMMENDATION" in html
 
 
-def test_render_combined_email_digest_omits_house_ad_for_inactive_sponsor():
-    # Unlike the single-region email, the combined one skips the unsold-
-    # slot pitch entirely rather than repeating it once per region.
+def test_render_combined_email_digest_shows_house_ad_for_inactive_sponsor():
+    # A real bug found by a code-review pass: the combined email (the
+    # one actually mailed, item 105) originally had no house-ad
+    # fallback at all for an unsold slot, unlike the single-region
+    # email and the region page - contradicting item 88's own point
+    # that the email shouldn't be the one artifact that never mentions
+    # a slot is for sale.
     sections = [
         {
             "region_name": "Mount Prospect",
             "region_url": "https://x/mount-prospect-60056/",
             "weekend_events": [],
             "evergreen": [],
-            "sponsor": {"title": "Sponsor this spot", "url": "", "is_active_sponsor": False},
+            "sponsor": {"title": "Sponsor this spot", "detail": "Reach local families.", "url": "https://x/sponsor/", "is_active_sponsor": False},
+        }
+    ]
+    html = build_digest.render_combined_email_digest(sections, "Sep 18–20", datetime.now(timezone.utc))
+    assert "LOCAL RECOMMENDATION" not in html
+    assert "SPONSOR THIS SPOT" in html
+    assert "Reach local families." in html
+
+
+def test_render_combined_email_digest_omits_sponsor_block_when_sponsor_is_none():
+    sections = [
+        {
+            "region_name": "Mount Prospect",
+            "region_url": "https://x/mount-prospect-60056/",
+            "weekend_events": [],
+            "evergreen": [],
+            "sponsor": None,
         }
     ]
     html = build_digest.render_combined_email_digest(sections, "Sep 18–20", datetime.now(timezone.utc))
     assert "LOCAL RECOMMENDATION" not in html
     assert "SPONSOR THIS SPOT" not in html
+
+
+def test_render_combined_email_digest_shows_informational_events_with_no_attendable_events():
+    # The real bug: a region with only a non-attendable event (a school
+    # half-day) and no attendable events or evergreen highlights used to
+    # silently drop it, because the template only checked
+    # informational_events inside the attendable_events branch.
+    sections = [
+        {
+            "region_name": "Mount Prospect",
+            "region_url": "https://x/mount-prospect-60056/",
+            "weekend_events": [
+                {"title": "Half-Day Student Attendance", "date": "Sep 18", "url": "https://x/1", "attendable": False}
+            ],
+            "evergreen": [],
+            "sponsor": None,
+        }
+    ]
+    html = build_digest.render_combined_email_digest(sections, "Sep 18–20", datetime.now(timezone.utc))
+    assert "ALSO THIS WEEK" in html
+    assert "Half-Day Student Attendance" in html
+    # Not the honest-empty-state message too - that would read as a
+    # contradiction alongside the real informational item just shown.
+    assert "Nothing dated for this weekend yet" not in html
+
+
+def test_render_combined_email_digest_shows_informational_events_alongside_evergreen():
+    sections = [
+        {
+            "region_name": "Mount Prospect",
+            "region_url": "https://x/mount-prospect-60056/",
+            "weekend_events": [
+                {"title": "Half-Day Student Attendance", "date": "Sep 18", "url": "https://x/1", "attendable": False}
+            ],
+            "evergreen": [{"title": "Library Passes", "url": "https://x/2", "tags": ["free"]}],
+            "sponsor": None,
+        }
+    ]
+    html = build_digest.render_combined_email_digest(sections, "Sep 18–20", datetime.now(timezone.utc))
+    assert "ALSO THIS WEEK" in html
+    assert "Half-Day Student Attendance" in html
+    assert "Library Passes" in html
 
 
 def test_render_combined_email_digest_preview_shows_annotation():
