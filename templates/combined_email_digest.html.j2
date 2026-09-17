@@ -123,20 +123,6 @@ This weekend, four towns over
 </td>
 </tr>
 {% endfor %}
-{% if block.informational_events %}
-<tr>
-<td class="wt-accent wt-border" style="padding:8px 0 2px 0; border-top:1px solid #e6dcc8; font-family:Arial, Helvetica, sans-serif; font-size:12px; font-weight:bold; letter-spacing:0.5px; color:#96581f;">
-ALSO THIS WEEK
-</td>
-</tr>
-{% for item in block.informational_events[:2] %}
-<tr>
-<td class="wt-muted" style="font-family:Arial, Helvetica, sans-serif; font-size:14px; color:#766a58; padding-top:4px;">
-{{ item.title }}{% if item.date %} — {{ item.date }}{% endif %}
-</td>
-</tr>
-{% endfor %}
-{% endif %}
 {% elif block.evergreen_highlights %}
 <tr>
 <td class="wt-muted" style="font-family:Arial, Helvetica, sans-serif; font-size:14px; color:#766a58; padding-bottom:6px;">
@@ -150,12 +136,33 @@ Nothing new dated for this weekend yet, but worth knowing about:
 </td>
 </tr>
 {% endfor %}
-{% else %}
+{% elif not block.informational_events %}
 <tr>
 <td class="wt-muted" style="font-family:Arial, Helvetica, sans-serif; font-size:14px; color:#766a58;">
 Nothing dated for this weekend yet — the full guide has what's coming up.
 </td>
 </tr>
+{% endif %}
+
+{% if block.informational_events %}
+<!-- ROADMAP.md Phase 11 #90, applied here independently of the branch
+     above (a real bug this template shipped with: it only checked
+     informational_events inside the attendable_events branch, so a
+     region with only a half-day/closure and no attendable events
+     silently dropped it - email_digest.html.j2 checks it in both
+     branches for the same reason). -->
+<tr>
+<td class="wt-accent wt-border" style="padding:8px 0 2px 0; border-top:1px solid #e6dcc8; font-family:Arial, Helvetica, sans-serif; font-size:12px; font-weight:bold; letter-spacing:0.5px; color:#96581f;">
+ALSO THIS WEEK
+</td>
+</tr>
+{% for item in block.informational_events[:2] %}
+<tr>
+<td class="wt-muted" style="font-family:Arial, Helvetica, sans-serif; font-size:14px; color:#766a58; padding-top:4px;">
+{{ item.title }}{% if item.date %} — {{ item.date }}{% endif %}
+</td>
+</tr>
+{% endfor %}
 {% endif %}
 
 {% if block.sponsor and block.sponsor.is_active_sponsor %}
@@ -166,6 +173,26 @@ Nothing dated for this weekend yet — the full guide has what's coming up.
 <td bgcolor="#fdf3e4" class="wt-card-sponsor wt-border" style="background-color:#fdf3e4; border:1px solid #e6dcc8; border-radius:6px; padding:10px 14px;">
 <span class="wt-accent" style="font-family:Arial, Helvetica, sans-serif; font-size:11px; font-weight:bold; letter-spacing:0.5px; color:#96581f;">LOCAL RECOMMENDATION —</span>
 <a href="{{ block.sponsor.url }}" class="wt-ink" style="color:#2b2318; text-decoration:none; font-weight:bold; font-family:Arial, Helvetica, sans-serif; font-size:14px;">{{ block.sponsor.title }}</a>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+{% elif block.sponsor %}
+<!-- House ad (item 88's rationale, applied here too): an unsold slot
+     falls back to this on the region page and the single-region email
+     already - the combined email (the one actually mailed, item 105)
+     shouldn't be the one artifact that never mentions the slot is for
+     sale. Deliberately plain, matching the single-region email's own
+     unsold-slot treatment. -->
+<tr>
+<td style="padding-top:10px;">
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+<tr>
+<td bgcolor="#f6efe1" class="wt-bg wt-border" style="background-color:#f6efe1; border:1px dashed #e6dcc8; border-radius:6px; padding:10px 14px;">
+<span class="wt-muted" style="font-family:Arial, Helvetica, sans-serif; font-size:11px; font-weight:bold; letter-spacing:0.5px; color:#766a58;">SPONSOR THIS SPOT —</span>
+<span class="wt-muted" style="font-family:Arial, Helvetica, sans-serif; font-size:13px; color:#766a58;">{{ block.sponsor.detail }}</span>
+{% if block.sponsor.url %} <a href="{{ block.sponsor.url }}" class="wt-brand" style="color:#526b3f; text-decoration:none; font-weight:bold; font-family:Arial, Helvetica, sans-serif; font-size:13px;">Learn more &rarr;</a>{% endif %}
 </td>
 </tr>
 </table>

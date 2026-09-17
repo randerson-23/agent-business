@@ -4231,6 +4231,55 @@ overrule:
      and the two newly-generated combined-email files removed before
      committing.
 
+#### Housekeeping
+
+A `/code-review` pass over the newly-live-send-critical code
+(`combined_email_digest.html.j2`, `send_newsletter.py`) - worth doing
+now that a real send actually goes out on this path - found two real
+bugs the tests up to that point hadn't caught, both confirmed against
+real generated output before being called real:
+
+- **The combined email's house ad never rendered, for any region,
+  ever.** The template checked `{% if sponsor and is_active_sponsor %}`
+  with no `{% elif sponsor %}` fallback, unlike `email_digest.html.j2`
+  and `region.html.j2`, which both fall back to the "SPONSOR THIS SPOT"
+  house ad item 88 added specifically so the email is never the one
+  artifact that fails to mention a slot is for sale. Confirmed live,
+  not hypothetical: re-running the real build showed the actual sent
+  email (the one behind `em_5hgyjgfytf8hws9xxpw6b0fesk` above) would
+  have had **zero** sponsor mentions across all four regions, since
+  none currently has a paying sponsor. Fixed with the same house-ad
+  block the other two templates already use.
+- **A region with only a non-attendable event and nothing else silently
+  dropped it.** The "ALSO THIS WEEK" block was nested inside the
+  `{% if attendable_events %}` branch only, so a region with a school
+  half-day/closure and no attendable events or evergreen highlights
+  showed neither the closure notice nor anything else - exactly the
+  content item 90 required to always surface, just never as a headline.
+  Hoisted the check out so it fires independently of which branch
+  covers the attendable/evergreen/empty state, matching how
+  `email_digest.html.j2` already checks it in both of its branches.
+
+A third, lower-severity finding from the same pass: `send_newsletter.py`
+logged the Gmail 102KB clip-limit check against `len(html)` (character
+count) instead of the real UTF-8 byte size - harmless while every
+character is single-byte ASCII, but the templates are full of em
+dashes/arrows/curly quotes, and the gap is real: the actual combined
+email's character count (18,279) undercounts its real byte size
+(18,301) already, today, with only four regions. Extracted into a
+tested `html_byte_size()` helper rather than left inline.
+
+Not from the research loop - found by choosing to review the riskiest
+recent code now that it is live-send-critical, rather than waiting for
+a research pass to flag it or a real subscriber to notice a missing
+sponsor block. 5 new tests; `python -m pytest tests/ -q` → 314 passed.
+`python scripts/build_digest.py` → real build; confirmed the fixed
+house-ad block actually appears four times in the real generated
+`docs/combined-email-send.html` (once per region) where it previously
+appeared zero times, and confirmed the real byte-vs-character gap
+directly against that same file. `docs/` restored after (no untracked
+stragglers this time).
+
 ## Working agreements for autonomous iteration
 
 - Cadence is hourly (the platform's durable scheduler has a 1-hour floor;
