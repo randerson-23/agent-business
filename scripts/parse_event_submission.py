@@ -26,6 +26,7 @@ from __future__ import annotations
 
 import os
 import re
+import secrets
 import sys
 from pathlib import Path
 
@@ -162,6 +163,22 @@ def region_file_path(region_id: str) -> Path:
     return path
 
 
+def format_github_output(name: str, value: str) -> str:
+    """One $GITHUB_OUTPUT entry, in the delimiter form GitHub documents
+    for multiline values - never the bare `name=value` form, because
+    every value passed through here (a submitter's title/url/date, or a
+    SubmissionError message quoting them) originates from a public
+    Issue Form body an attacker fully controls. A literal newline in
+    `value` would otherwise start a new line in $GITHUB_OUTPUT that
+    could itself parse as `SOME_KEY=malicious`, letting a crafted
+    submission inject or overwrite outputs the workflow trusts. A
+    randomized delimiter (unguessable, so it can't be forged from
+    inside `value`) closes that off regardless of what `value` contains.
+    """
+    delimiter = f"ghadelim_{secrets.token_hex(16)}"
+    return f"{name}<<{delimiter}\n{value}\n{delimiter}"
+
+
 def main() -> int:
     body = os.environ.get("ISSUE_BODY")
     if body is None:
@@ -173,13 +190,13 @@ def main() -> int:
         block = build_evergreen_yaml_block(event)
         updated = insert_evergreen_entry(path.read_text(encoding="utf-8"), block)
     except SubmissionError as exc:
-        print(f"SUBMISSION_ERROR={exc}")
+        print(format_github_output("SUBMISSION_ERROR", str(exc)))
         return 1
     path.write_text(updated, encoding="utf-8")
-    print(f"REGION_FILE={path.relative_to(ROOT)}")
-    print(f"EVENT_TITLE={event['title']}")
+    print(format_github_output("REGION_FILE", str(path.relative_to(ROOT))))
+    print(format_github_output("EVENT_TITLE", event["title"]))
     if event["date"]:
-        print(f"EVENT_DATE={event['date']}")
+        print(format_github_output("EVENT_DATE", event["date"]))
     return 0
 
 

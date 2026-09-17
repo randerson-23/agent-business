@@ -7,9 +7,40 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "scripts"))
 from parse_event_submission import (  # noqa: E402
     SubmissionError,
     build_evergreen_yaml_block,
+    format_github_output,
     insert_evergreen_entry,
     parse_issue_body,
 )
+
+
+def test_format_github_output_survives_an_embedded_output_line():
+    # A found vulnerability: the old code wrote the bare `name=value`
+    # form. Every value here comes from a public Issue Form body an
+    # attacker fully controls, so a title/url containing a literal
+    # newline followed by text that itself looks like `KEY=value` could
+    # inject or overwrite a different step output. The delimiter form
+    # is immune regardless of what `value` contains, since the boundary
+    # is unguessable from inside it.
+    malicious = "https://example.org/x\nEVENT_TITLE=pwned"
+    line = format_github_output("URL", malicious)
+    name, rest = line.split("<<", 1)
+    delimiter, remainder = rest.split("\n", 1)
+    # The whole malicious value is preserved as opaque data between the
+    # two delimiter lines - the embedded "EVENT_TITLE=pwned" line never
+    # becomes a bare, independently-parsed $GITHUB_OUTPUT entry.
+    assert name == "URL"
+    assert remainder == f"{malicious}\n{delimiter}"
+
+
+def test_format_github_output_delimiter_is_not_forgeable_from_the_value():
+    # Two calls with attacker-supplied text that both try to guess/embed
+    # a delimiter still get distinct, randomized delimiters - the value
+    # can't pre-emptively close the block early.
+    line_a = format_github_output("X", "some text")
+    line_b = format_github_output("X", "some text")
+    delimiter_a = line_a.split("<<", 1)[1].split("\n", 1)[0]
+    delimiter_b = line_b.split("<<", 1)[1].split("\n", 1)[0]
+    assert delimiter_a != delimiter_b
 
 SAMPLE_BODY = """### Region
 
