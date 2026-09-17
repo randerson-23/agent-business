@@ -4521,6 +4521,28 @@ task.
      like `X-Buttondown-Live-Dangerously` was, and will announce
      themselves on the first run the same way.
 
+     ✅ DONE (2026-09-17). Added `send.mode: "schedule"` alongside
+     `draft`/`send`: it posts `status: "scheduled"` with a `publish_date`
+     computed by the new `next_thursday_morning()`, timezone-aware via
+     `zoneinfo` so CDT/CST is handled automatically rather than drifting
+     an hour every November/March the way the old fixed-UTC cron did.
+     `config/newsletter.yaml`'s `send.mode` is now `"schedule"` (this
+     week's issue had already gone out via manual dispatch before the
+     switch, so nothing was skipped or double-sent), and
+     `send-newsletter.yml`'s cron moved exactly as this item specified -
+     `37 22 * * 3`, Wednesday night - with the comment rewritten to
+     explain why. As flagged above, `publish_date`/`STATUS_SCHEDULED` are
+     this session's best-documented guess, not a confirmed API response
+     the way `about_to_send`'s header was; the module docstring says so
+     explicitly, and the first scheduled run is the real test. 331 tests
+     pass, including one that reproduces the exact local-day bug this
+     kind of timezone math tends to hide: a UTC timestamp a few hours
+     into the next calendar day but still Thursday evening in Chicago,
+     verified to still compute a Thursday `now` rather than mis-rolling
+     off a UTC-derived Friday. `--dry-run` was run against the real
+     current build and correctly prints the actual computed
+     `publish_date`.
+
 111. **A scheduled run that never happens is currently invisible.**
      `build-digest.yml` carries a deliberate comment explaining that a
      failing job emails the owner at no cost, which is a sound safety net
@@ -4536,6 +4558,32 @@ task.
      about four days, failing loudly rather than mailing stale events.
      That converts a silent non-event into an email the owner already
      gets. It also protects the send independently of item 110.
+
+     ✅ DONE (2026-09-17), with an honest caveat. Added
+     `read_build_timestamp()` (parses `docs/feed.xml`'s `<lastBuildDate>`,
+     already written fresh on every build - no new metadata needed) and
+     `assert_build_is_fresh()`, wired into `main()` right after the built
+     email is read, refusing to proceed if the build is older than
+     `MAX_BUILD_AGE` (four days). Verified against the real repo: manually
+     rewrote `docs/feed.xml`'s timestamp to 5 days old and confirmed
+     `send_newsletter.py --dry-run` refuses with a clear message and exit
+     code 1, then restored the real file.
+
+     The caveat, worth recording rather than glossing over: `send-
+     newsletter.yml` already rebuilds fresh in the same job immediately
+     before this check runs, so under the *current* workflow the check
+     should never actually trip - it's insurance against a future
+     refactor that separates build and send, or a manual run against a
+     checkout whose build step didn't run as expected, not a live
+     safeguard against send-newsletter.yml's own cron being silently
+     dropped. That specific scenario remains genuinely undetectable from
+     inside a job that never starts - no code running inside the workflow
+     can observe its own absence. Recording this now so a future pass
+     doesn't assume the gap is closed and stop looking for a real
+     mitigation (an external uptime-style check, or a low-frequency
+     watchdog workflow checking the Actions API for the last successful
+     run, are the two honest options and neither is cheap enough to add
+     opportunistically).
 
 #### P2 (new)
 
