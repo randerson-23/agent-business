@@ -164,6 +164,26 @@
 
   .answer-block { color: var(--muted); font-size: 14px; line-height: 1.6; margin: 4px 0 18px; max-width: 640px; }
 
+  /* ROADMAP.md Phase 11 #100: subscribable calendar, distinct from a
+     per-event "add to calendar" (.cal-row) - one subscription covers
+     every future event, so it earns a more visible treatment than a
+     per-card link. */
+  .calendar-subscribe {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 10px 16px;
+    margin: 0 0 18px;
+    font-size: 13.5px;
+  }
+  .calendar-subscribe-label { color: var(--muted); }
+  .calendar-subscribe a { font-weight: 600; color: var(--accent); text-decoration: none; }
+  .calendar-subscribe a:hover { text-decoration: underline; }
+
   .map-embed {
     position: relative;
     border-radius: var(--radius-lg);
@@ -627,6 +647,14 @@
     <a href="https://withintenmiles.com/palatine-60067/guides/">Guides</a>
     <a href="https://withintenmiles.com/palatine-60067/directory/">Directory</a>
   </nav>
+
+  
+  <div class="calendar-subscribe">
+    <span class="calendar-subscribe-label">📅 Subscribe once, get every Palatine event automatically:</span>
+    <a href="webcal://withintenmiles.com/palatine-60067/calendar.ics">Subscribe (Apple/Google Calendar)</a>
+    <a href="https://withintenmiles.com/palatine-60067/calendar.ics">Download .ics</a>
+  </div>
+  
 
   <p class="answer-block">Palatine (60067), IL: Village news, library events, and park district programs — northwest of Mount Prospect. This page rebuilds automatically, usually several times a week, and links directly to the official village, library, and park district sources for full details on any listing.</p>
 
@@ -1291,7 +1319,7 @@
     Local business? See the
     <a href="https://withintenmiles.com/sponsor/">sponsor page</a>.
     <a href="https://withintenmiles.com/about/">About</a>.
-    <br>Generated 2026-09-17 01:52 UTC.
+    <br>Generated 2026-09-17 01:57 UTC.
     
     <br><a href="https://withintenmiles.com/palatine-60067/weekly-summary.txt">Copy this week's summary</a> — a plain-text block ready to paste into a local group.
   </footer>
@@ -1317,7 +1345,7 @@
 <script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "Event", "name": "Palatine Oktoberfest (Friday)", "url": "https://palatinerotary.org/Oktoberfest.php", "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode", "description": "German beer, food & music return to Downtown Palatine. 5pm–midnight, N Smith & W Slade St. Free entry.", "startDate": "2026-09-18T00:00:00"}, {"@type": "Event", "name": "Palatine Oktoberfest — Family Day (Saturday)", "url": "https://palatinerotary.org/Oktoberfest.php", "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode", "description": "Family Day: games, crafts & entertainment plus German beer, food & music. Noon–midnight, N Smith & W Slade St. Free entry.", "startDate": "2026-09-19T00:00:00"}, {"@type": "Event", "name": "Palatine Oktoberfest (Sunday)", "url": "https://palatinerotary.org/Oktoberfest.php", "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode", "description": "German beer, food & music wind down Downtown Palatine's Oktoberfest. Noon–6pm, N Smith & W Slade St. Free entry.", "startDate": "2026-09-20T00:00:00"}]}</script>
 
 
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebPage", "name": "Palatine — Within Ten", "url": "https://withintenmiles.com/palatine-60067/", "dateModified": "2026-09-17T01:52:25.627106+00:00", "isPartOf": {"@type": "WebSite", "name": "Within Ten", "url": "https://withintenmiles.com/", "publisher": {"@id": "https://withintenmiles.com/about/#organization"}}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebPage", "name": "Palatine — Within Ten", "url": "https://withintenmiles.com/palatine-60067/", "dateModified": "2026-09-17T01:57:00.002906+00:00", "isPartOf": {"@type": "WebSite", "name": "Within Ten", "url": "https://withintenmiles.com/", "publisher": {"@id": "https://withintenmiles.com/about/#organization"}}}</script>
 <script>
 (function () {
   var activeTags = new Set();
