@@ -203,6 +203,31 @@ guides:
   # Longer Required") - the same change Mount Prospect made the same
   # year, suggesting a real regional pattern worth checking before
   # writing Des Plaines' and Palatine's own guides.
+  # ROADMAP.md Phase 11 #104: matches the Mount Prospect config's own
+  # seasonal-circuit-guide - same civic-source-only discipline, no
+  # invented dates/hours (those live on each organizer's own page).
+  # Harmony Fest/Taste of Arlington Heights is the confirmed downtown
+  # annual event (see the annual_events block above, and
+  # downtownarlingtonheights.us directly); linking the org's root here
+  # rather than this year's specific event page, since this guide is
+  # evergreen and next year's page will have a different URL.
+  - slug: "seasonal-circuit-guide"
+    title: "Seasonal Circuit Guide"
+    summary: "The recurring seasonal happenings Arlington Heights families ask about year after year — Harmony Fest and the Sounds of Summer concert series downtown, and Park District seasonal programming. Links to the real organizers' own pages, where each year's exact dates actually get posted."
+    items:
+      - title: "Harmony Fest & Sounds of Summer — Downtown Arlington Heights"
+        detail: "Downtown Arlington Heights' recurring seasonal events: the Sounds of Summer concert series each Thursday evening in summer, and Harmony Fest featuring the Taste of Arlington Heights each fall - dates and details are announced on their own site each year."
+        url: "https://downtownarlingtonheights.us/"
+        tags: ["outdoor"]
+      - title: "Village-run seasonal events & community calendar"
+        detail: "The Village's events page lists seasonal community events as they're scheduled, including Trunk-or-Treat and the holiday Tree Lighting - check for the current schedule."
+        url: "https://www.vah.com/explore/events.php"
+        tags: ["outdoor", "free"]
+      - title: "Seasonal programs — Arlington Heights Park District"
+        detail: "The Park District runs its own seasonal programming and community events year-round, including its fall Trunk-or-Treat - browse the current program guide for what's on."
+        url: "https://www.ahpd.org/"
+        tags: ["outdoor", "kid_friendly"]
+
   - slug: "new-to-town"
     title: "New to Town"
     summary: "The practical first-week checklist for anyone new to Arlington Heights — utilities and refuse/recycling, a library card, Park District registration, and which school districts actually serve your address. Pulls from the same civic sources as the weekly digest, organized for someone who just moved in rather than someone browsing this week's events."

@@ -4061,6 +4061,43 @@ keep it that way.
      it is breadth on something already working rather than a new
      capability, and because item 101's Halloween window closes first.
 
+     ✅ **DONE.** Added a `seasonal-circuit-guide` to Arlington Heights,
+     Des Plaines, and Palatine's YAML (same position as Mount
+     Prospect's: between `birthday-parties-and-kids-classes` and
+     `new-to-town`), each with three real, WebSearch-verified (2026-09-
+     17) items - a downtown/city annual-festival organizer, a village/
+     city seasonal-events hub, and the Park District's own seasonal
+     programming:
+
+     - **Arlington Heights**: Downtown Arlington Heights (Harmony Fest
+       / Sounds of Summer, linked at the org's root rather than a
+       year-specific event page, since this guide is evergreen), the
+       Village's events page, Arlington Heights Park District.
+     - **Des Plaines**: the City's own "City Sponsored Events" hub
+       (Fall Fest) and its Taste of Des Plaines page, Des Plaines Park
+       District. **Deliberately omitted a farmers market entry** - the
+       search results on one were conflicting (a stale "ended in 2016"
+       report alongside directories still listing it active), and
+       asserting an unconfirmed fact would break every other guide's
+       own discipline. Two confirmed items plus the Park District was
+       judged better than three items where one is guessed.
+     - **Palatine**: the Rotary Club of Palatine (Oktoberfest's real
+       organizer, already used for this year's dated `annual_events`
+       entries), the Palatine Farmers' Market's real stable page
+       (`/663/Farmers-Market`, not one of the site's transient per-
+       event calendar links), Palatine Park District.
+
+     YAML-only as scoped - no code changes. `python -m pytest tests/ -q`
+     → 309 passed (unchanged, confirming nothing broke). `python
+     scripts/build_digest.py` → real build; confirmed all four regions
+     now show 4 guides each in the build log, and spot-checked the real
+     generated `docs/<region>/guides/seasonal-circuit-guide/index.html`
+     for all three new regions - each shows the real title, summary,
+     and the correct organizer URLs (`downtownarlingtonheights.us`,
+     `desplainesil.gov`'s City Sponsored Events page, `palatinerotary.org`).
+     `docs/` restored and the three newly-generated guide directories
+     removed before committing.
+
 #### Research pass 2026-09-17 (twenty-fourth pass — owner-requested build)
 
 Not a research pass. The owner enabled Cloudflare Email Routing (MX now
