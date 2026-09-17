@@ -4615,6 +4615,45 @@ task.
      subscriber, but worth knowing that the analogue's endgame is
      something other than more listings.
 
+     ✅ DONE (2026-09-17), the calendar half; the guide itself
+     **deliberately deferred**, with the reasoning worth keeping. Added
+     `SEASONAL_CALENDAR.md` - the systematic fix this item asked for,
+     naming all five windows (trick-or-treat, holiday lights/Santa,
+     Restaurant Week, summer camps, farmers markets) with lead times and
+     current status. Tried to start the Restaurant Week guide itself in
+     the same pass and stopped: two separate web searches for the next
+     edition's dates returned two different specific date ranges for
+     what was presented as the same event, and the source page itself
+     couldn't be fetched directly to settle it (this sandbox's egress
+     proxy blocks it, same as every other outbound HTTP call here). That
+     is exactly the failure mode `SEASONAL_CALENDAR.md` and item 104
+     before it both name: a synthesized answer stating a specific date
+     with more confidence than the sources support. Publishing a guessed
+     date range on a real page would have been worse than not publishing
+     one - so the guide is recorded as not-yet-started with a named
+     reason, and `SEASONAL_CALENDAR.md`'s own "start by" column (January)
+     means there's no urgency lost by waiting for a pass close enough to
+     the window to verify the real dates directly from
+     chicagonorthwest.com.
+
+     Writing the calendar down surfaced a real, unrelated bug in the
+     process: fact-checking the trick-or-treat row against the actual
+     site found that `/trick-or-treat/` has been live and in the sitemap
+     since item 101 shipped, but **no region or hub page ever linked to
+     it** - reachable only by a crawler, never by an actual visitor,
+     during the exact window it exists to serve. Fixed the same day
+     rather than filed for later: `is_trick_or_treat_season()` in
+     `build_digest.py` gates a new footer link (region and hub pages
+     both) to September 1 - November 5, past which the page would just
+     be a permanent link to an empty "not posted yet" state -
+     `DESIGN_PRINCIPLES.md`'s standing question said that doesn't earn
+     its place. Verified against the real generated `docs/index.html`
+     and `docs/mount-prospect-60056/index.html` that the link renders
+     today (in season) with the correct absolute/relative URLs. 338
+     tests pass (7 new: season-boundary cases for
+     `is_trick_or_treat_season()`, and in-season/out-of-season link
+     presence on both `render_region_page()` and `render_hub_page()`).
+
 #### P3 (new)
 
 113. **Give `DESIGN_PRINCIPLES.md` a named referent instead of an
@@ -4638,6 +4677,14 @@ task.
      pre-empts a predictable drift: item 19's `animation-timeline:
      view()` experiment already failed real CI on LCP and TBT once, and
      the next such idea will arrive dressed as modern.
+
+     ✅ DONE (2026-09-17). Added a "The named referent" section to
+     `DESIGN_PRINCIPLES.md`, naming Godly and SiteInspire as the
+     standard and Awwwards explicitly as not the target, with the
+     concrete rule that follows (no scroll-driven animation, no
+     immersive intro, nothing that delays the first event appearing) and
+     the item 19 precedent as evidence this isn't hypothetical caution.
+     Docs-only change; 331 tests still pass, no build affected.
 
 ## Working agreements for autonomous iteration
 

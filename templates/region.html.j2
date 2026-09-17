@@ -878,6 +878,7 @@
     Local business? See the
     <a href="{{ hub_url }}sponsor/">sponsor page</a>.
     <a href="{{ hub_url }}about/">About</a>.
+    {% if trick_or_treat_in_season %}<a href="{{ hub_url }}trick-or-treat/">Trick-or-treat hours</a>.{% endif %}
     <br>Generated {{ generated_at }}.
     {% if analytics and analytics.configured %}<br>Visits counted with privacy-first, cookie-free analytics — no personal data collected.{% endif %}
     <br><a href="{{ region_base_url }}weekly-summary.txt">Copy this week's summary</a> — a plain-text block ready to paste into a local group.

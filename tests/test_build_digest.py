@@ -1028,6 +1028,45 @@ def test_render_region_page_shows_calendar_subscribe_link_on_main_page():
     assert 'href="webcal://withintenmiles.com/mount-prospect-60056/calendar.ics"' in html
 
 
+def test_is_trick_or_treat_season_true_in_september_and_october():
+    assert build_digest.is_trick_or_treat_season(datetime(2026, 9, 1, tzinfo=timezone.utc))
+    assert build_digest.is_trick_or_treat_season(datetime(2026, 10, 31, tzinfo=timezone.utc))
+
+
+def test_is_trick_or_treat_season_true_a_few_days_into_november():
+    assert build_digest.is_trick_or_treat_season(datetime(2026, 11, 5, tzinfo=timezone.utc))
+
+
+def test_is_trick_or_treat_season_false_outside_the_window():
+    assert not build_digest.is_trick_or_treat_season(datetime(2026, 11, 6, tzinfo=timezone.utc))
+    assert not build_digest.is_trick_or_treat_season(datetime(2026, 3, 15, tzinfo=timezone.utc))
+    assert not build_digest.is_trick_or_treat_season(datetime(2026, 8, 31, tzinfo=timezone.utc))
+
+
+def test_render_region_page_links_trick_or_treat_in_season():
+    # A found bug: the /trick-or-treat/ page (item 101) has been live
+    # and in the sitemap since it shipped, but no region or hub page
+    # ever linked to it - reachable only by a crawler reading the
+    # sitemap or llms.txt, never by an actual visitor.
+    blocks = [{"section": "Village News", "events": []}]
+    sponsor = {"title": "Sponsor this spot", "detail": "", "url": ""}
+    region_cfg = {"region": REGION}
+    html = build_digest.render_region_page(
+        region_cfg, blocks, sponsor, [], datetime(2026, 10, 1, tzinfo=timezone.utc)
+    )
+    assert 'href="https://withintenmiles.com/trick-or-treat/"' in html
+
+
+def test_render_region_page_omits_trick_or_treat_link_outside_season():
+    blocks = [{"section": "Village News", "events": []}]
+    sponsor = {"title": "Sponsor this spot", "detail": "", "url": ""}
+    region_cfg = {"region": REGION}
+    html = build_digest.render_region_page(
+        region_cfg, blocks, sponsor, [], datetime(2026, 3, 1, tzinfo=timezone.utc)
+    )
+    assert "trick-or-treat" not in html
+
+
 def test_render_region_page_omits_calendar_subscribe_link_on_other_views():
     blocks = [{"section": "Village News", "events": []}]
     sponsor = {"title": "Sponsor this spot", "detail": "", "url": ""}
@@ -1257,6 +1296,18 @@ def test_render_hub_page_has_no_distance_from_me_feature():
 def test_render_hub_page_handles_no_regions():
     html = build_digest.render_hub_page([], [], datetime.now(timezone.utc))
     assert "No regions configured yet" in html
+
+
+def test_render_hub_page_links_trick_or_treat_in_season():
+    summaries = [{**REGION, "event_count": 3, "path": "mount-prospect-60056/"}]
+    html = build_digest.render_hub_page([], summaries, datetime(2026, 9, 20, tzinfo=timezone.utc))
+    assert 'href="trick-or-treat/"' in html
+
+
+def test_render_hub_page_omits_trick_or_treat_link_outside_season():
+    summaries = [{**REGION, "event_count": 3, "path": "mount-prospect-60056/"}]
+    html = build_digest.render_hub_page([], summaries, datetime(2026, 6, 1, tzinfo=timezone.utc))
+    assert "trick-or-treat" not in html
 
 
 def test_render_hub_page_separates_region_cards_from_bento_grid():
