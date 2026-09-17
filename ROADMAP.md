@@ -3987,6 +3987,23 @@ keep it that way.
      better argument than a subscriber count, which is the one number
      this business will be weakest on for months.
 
+     ✅ **DONE — and found item 24's own follow-up had never actually
+     shipped.** Item 24 said "those same numbers belong in
+     `SPONSOR_KIT.md`" back when the send itself was built, but the
+     open-rate benchmark was never added there - checked directly
+     (`grep` for the 20-30%/40% figures in the kit came back empty)
+     rather than assumed. Added a new "Reach & retention" section,
+     right before "Placements & pricing" so it's read before the price
+     table: the open-rate benchmark item 24 always intended to land
+     there, the 5.47%/month news-vertical churn figure, the "an annual
+     membership buys next August's audience, not this week's" framing,
+     and a plain statement that a subscriber count is deliberately not
+     the lead number this early. Also names the weekly Thursday cadence
+     as sitting inside the validated monthly-to-twice-weekly band,
+     closing the "should this cadence be revisited" question the item's
+     own title raised. Copy only - no code changes; `python -m pytest
+     tests/ -q` → 309 passed (unchanged, confirming nothing else broke).
+
 103. **Write down the design principles, so the build loop stops adding.**
      The 2026 research is unusually clear that the failure mode for a
      site like this is accumulation: "the strongest websites will not try

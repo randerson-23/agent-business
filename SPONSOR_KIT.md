@@ -40,6 +40,25 @@ and specific beats generic ad copy.
 - **Simple, honest reach.** We publish weekly and report actual pageviews
   for your issue on request. No inflated "impressions."
 
+## Reach & retention
+
+A subscriber count isn't the number to lead with this early — it's
+honestly the weakest one this business has. Two industry benchmarks are
+a stronger, more honest argument than a raw count:
+
+- **Open rate.** 2026 email benchmarks put a typical newsletter at
+  20–30% open, with 40%+ considered excellent. We'll report our actual
+  rate against that scale as soon as there's a real week of data to
+  report.
+- **Retention.** News-vertical newsletters churn at roughly **5.47% a
+  month**, among the lowest of any content category — and readers who
+  open most weeks are about **2× as likely to still be subscribed a
+  year later** as occasional openers. That's the number an **annual**
+  membership is really buying: not this week's list, but next August's.
+  A weekly send (ours runs Thursdays) sits inside the band where opens
+  and clicks hold up without extra churn, so the cadence itself isn't
+  costing you audience.
+
 ## Placements & pricing
 
 **Annual Partner is the flagship membership** — a permanent listing, a
