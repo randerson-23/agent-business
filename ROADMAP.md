@@ -5753,6 +5753,37 @@ it cuts both ways.
      mailto link genuinely resolves to the configured `contact_email`,
      `docs/index.html`'s footer) after a real `build_digest.py` run.
 
+133. ✅ **DONE (build loop's own pick — a full read-through of
+     `scripts/send_newsletter.py`, since it hadn't had one this
+     session).** `read_build_timestamp()` parses `docs/feed.xml`'s
+     `<lastBuildDate>` with `email.utils.parsedate_to_datetime()`, which
+     does **not** raise on a date string with no UTC offset - it
+     silently returns a naive datetime instead. Confirmed empirically,
+     not assumed: `parsedate_to_datetime("Fri, 18 Sep 2026 13:00:29")`
+     (no trailing zone) returns
+     `datetime(2026, 9, 18, 13, 0, 29)` with `tzinfo=None`, no exception.
+     Unguarded, that naive value would flow straight into
+     `assert_build_is_fresh()`'s `now - build_time`, where `now` is
+     always aware - a bare, uncaught `TypeError` ("can't subtract
+     offset-naive and offset-aware datetimes") instead of the clean
+     `SendError` every other bad-input path in this file raises, which
+     is exactly the loud-but-readable failure item 111 exists to
+     guarantee.
+
+     Not reachable through the current pipeline today -
+     `build_digest.py`'s `build_feed_xml()` always writes an aware `now`,
+     and `email.utils.format_datetime()` always renders an aware
+     datetime with an explicit offset - but a real, findable gap in a
+     module whose own stated design promises loud, readable failures on
+     bad input, not raw tracebacks. Fixed at the source (inside
+     `read_build_timestamp()`, right where the ambiguity is introduced)
+     rather than downstream at the subtraction site: raise `SendError`
+     immediately if the parsed timestamp has no `tzinfo`. 1 new
+     regression test reproducing the exact naive-date string above. 378
+     tests pass; the real dry-run path (`--dry-run` against a real
+     `build_digest.py` output) still passes its freshness check
+     unaffected, confirming this doesn't touch the normal case.
+
 ## Working agreements for autonomous iteration
 
 - Cadence is hourly (the platform's durable scheduler has a 1-hour floor;

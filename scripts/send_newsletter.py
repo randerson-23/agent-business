@@ -288,9 +288,23 @@ def read_build_timestamp(docs_dir: Path = DOCS_DIR) -> datetime:
     if not match:
         raise SendError(f"{path} has no <lastBuildDate> - can't confirm the build is fresh")
     try:
-        return parsedate_to_datetime(match.group(1))
+        build_time = parsedate_to_datetime(match.group(1))
     except (TypeError, ValueError) as exc:
         raise SendError(f"Unparseable <lastBuildDate> in {path}: {match.group(1)!r} ({exc})")
+    # parsedate_to_datetime doesn't raise on a date with no UTC offset - it
+    # silently returns a naive datetime instead (e.g. "Fri, 18 Sep 2026
+    # 13:00:29" with no trailing zone). build_feed_xml() always writes an
+    # aware `now`, which email.utils.format_datetime always renders with
+    # an offset, so this shouldn't happen through the normal pipeline -
+    # but assert_build_is_fresh()'s `now - build_time` would otherwise
+    # crash with a raw, uncaught TypeError (naive minus aware) instead of
+    # the clean SendError this module's whole design promises on a bad
+    # input, exactly the silent-vs-loud distinction item 111 exists for.
+    if build_time.tzinfo is None:
+        raise SendError(
+            f"<lastBuildDate> in {path} has no timezone: {match.group(1)!r} - can't confirm the build is fresh"
+        )
+    return build_time
 
 
 def assert_build_is_fresh(build_time: datetime, now: datetime, max_age: timedelta = MAX_BUILD_AGE) -> None:
