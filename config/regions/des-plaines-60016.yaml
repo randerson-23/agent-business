@@ -122,6 +122,43 @@ sources:
     section: "Park District Events"
     enabled: true
 
+  - name: "Community Consolidated School District 62 — Calendar"
+    type: html_events
+    # ROADMAP.md Phase 11 #138: Des Plaines was the only region with no
+    # school-district source at all (3 sources against Mount Prospect's
+    # 8) - a real category gap, not a volume one, since item 90 gave
+    # no-school/early-dismissal days their own "Also this week" grouping
+    # that Des Plaines silently never fills.
+    #
+    # Not the same shape as D57's or D25's confirmed sources (both real
+    # `webcal://.../export.ics` or `icalfeed.ashx` URLs - see the Mount
+    # Prospect and Arlington Heights configs). WebSearch (2026-09-18)
+    # confirms d62.org's calendar module is Finalsite, not the ASP.NET-
+    # style platform D57/D25 use - Finalsite's own support docs describe
+    # a "Get Standard iCal URL" *per calendar*, generated from that
+    # calendar's own Settings panel, not a static filename this sandbox's
+    # blocked WebFetch can discover from search results alone. Guessing an
+    # opaque per-calendar token would be a fabrication, not a real-
+    # evidence guess like D57's readable /ical/<District_Name>_export.ics
+    # path - so this points at the confirmed real page instead
+    # (d62.org/calendars, found via WebSearch) as html_events, same
+    # honest-fallback shape already used above for the Library and Park
+    # District sources. Deliberately no `informational: true` - no other
+    # school-district source in this repo sets it; is_informational()'s
+    # per-item phrase detection (item 90) already reclassifies a "No
+    # School" or "Early Dismissal" item without it, so adding it here
+    # would be an unexplained inconsistency, not an improvement.
+    # Finalsite calendar listing pages are commonly JS-rendered, so per
+    # fetch_html_events's own documented behavior this may return a real
+    # `[]` rather than a transport error - fails soft either way, exactly
+    # like the Park District source above did before its own URL was
+    # confirmed. Will self-correct from the next real GitHub Actions
+    # build's logs if this needs a different path.
+    url: "https://www.d62.org/calendars"
+    keywords: ["no school", "early dismissal", "half day", "institute day", "records day", "holiday", "closed", "no classes"]
+    section: "School Calendar"
+    enabled: true
+
 # Known, dated, recurring annual events (ROADMAP.md Phase 11 #67/#68) -
 # see the Mount Prospect config for the full rationale. This one landed
 # with real urgency: WebSearch (2026-09-15) found Des Plaines Fall Fest,

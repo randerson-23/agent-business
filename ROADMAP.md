@@ -5982,7 +5982,8 @@ here had seen, and did **not** turn up the site.
 
 #### P2 (new)
 
-138. **Des Plaines is the only region with no school-district feed.**
+138. ✅ **DONE (build loop's own pick, partial) — Des Plaines is the only
+     region with no school-district feed.**
      Counted in config: Mount Prospect 8 sources, Palatine 5 (including
      two districts), Arlington Heights 4 (including D25), **Des Plaines
      3 — village, library, park district, and nothing else.**
@@ -6010,6 +6011,41 @@ here had seen, and did **not** turn up the site.
      handle an unverified URL. Worth checking Arlington Heights for a
      high-school district too: Palatine carries both D15 and D211, and
      Arlington Heights carries only D25.
+
+     ✅ DONE, partially - the honest version. WebSearch found d62.org's
+     calendar module is **Finalsite**, not the ASP.NET-style platform
+     D57/D25 use - a real, material difference from "find it the same
+     way D57's was found." D57's `/ical/<District_Name>_export.ics` is a
+     readable, guessable filename (confirmed by that district's own
+     indexed page); Finalsite's own support docs describe a "Get
+     Standard iCal URL" generated **per calendar** from that calendar's
+     Settings panel - an opaque, calendar-specific link with no
+     discoverable static pattern, and this sandbox's WebFetch is
+     proxy-blocked for `d62.org` the same way it is for every other
+     fetcher host here, so the actual per-calendar URL couldn't be read
+     off the page directly either. Inventing a plausible-looking hashed
+     URL would have been a fabrication, not a real-evidence guess like
+     D57's - so added the confirmed real page (`d62.org/calendars`,
+     verified indexed via WebSearch) as an `html_events` source instead,
+     the same honest-fallback shape already used for two of this same
+     region's other three sources. Didn't add `informational: true`
+     (the item's own suggestion): checked every existing school-district
+     source in this repo first and none sets it - `is_informational()`'s
+     per-item phrase detection (item 90) already reclassifies a "No
+     School"/"Early Dismissal" item without it, so adding an
+     inconsistent one-off here would be new drift, not a fix. Also
+     confirmed the Arlington Heights/D214 sub-question needs no new
+     work: `config/regions/arlington-heights-60005.yaml`'s existing
+     comment already documents D214 (the shared high school district)
+     as researched and found to have no discoverable public ICS, only
+     PDF calendars - a district-wide finding, not region-specific, so
+     nothing was missing there. 382 tests pass; verified against a real
+     `build_digest.py` run (the new source hits the same proxy-blocked
+     transport error every other fetcher in this sandbox does - not
+     counted against source health, and will self-correct from the next
+     real GitHub Actions build's logs if `d62.org/calendars`'s link list
+     turns out to be JS-rendered, same recovery path every other guessed
+     `html_events` source in this file already has).
 
 #### P3 (new)
 
