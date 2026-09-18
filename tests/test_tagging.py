@@ -119,6 +119,23 @@ def test_infer_tags_art_still_matches_word_start_and_plural():
     assert "art_culture" in infer_tags("Arts and Crafts Festival", "")
 
 
+def test_infer_tags_baby_does_not_false_positive_on_babysitting():
+    # "baby" was an unpadded substring, and a literal prefix of
+    # "babysitting" - a real, common library/park district program
+    # ("Babysitting Basics Certification Course", aimed at tweens/teens
+    # learning to care for younger kids, not the toddlers themselves)
+    # was tagging as a toddler event purely from that substring.
+    tags = infer_tags("Babysitting Basics Certification Course", "For ages 11-13.")
+    assert "toddler" not in tags
+
+
+def test_infer_tags_baby_still_matches_bare_word():
+    tags = infer_tags("Mommy and Baby Yoga", "")
+    assert "toddler" in tags
+    tags = infer_tags("Baby Storytime", "For babies and their caregivers.")
+    assert "toddler" in tags
+
+
 def test_tag_display_known_tag():
     display = tag_display("dog_friendly")
     assert display["label"] == "Dog-friendly"

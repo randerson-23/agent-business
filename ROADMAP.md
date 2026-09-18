@@ -5821,6 +5821,44 @@ it cuts both ways.
      browser check, not a persisted automated test. 378 tests pass
      (Python suite unaffected, since this is client-side JS).
 
+135. ✅ **DONE (build loop's own pick) — the same unpadded-substring
+     tagging bug class as item 121, one more real false positive found
+     by testing a plausible real municipal program title, not by code
+     inspection.** `"baby"` in the `toddler` tag's keyword list was
+     unpadded, and a literal prefix of `"babysitting"`/`"babysitter"` -
+     confirmed with a real, common library/park district offering,
+     `"Babysitting Basics Certification Course"` (typically aimed at
+     tweens/teens learning to care for *younger* kids, not the toddlers
+     themselves), which `infer_tags()` tagged `toddler` purely from that
+     substring before the fix.
+
+     Fixed with the same word-boundary-padding idiom item 121 already
+     established for `kid`/`pup`/`hall`/`art`: `"baby"` → `" baby "`
+     (both sides padded, since the false positive extends the keyword
+     on one side only - same shape as `kid`/`kidney` and `pup`/`puppet`).
+     `"babies"` (plural, already in the list) is unaffected and keeps
+     covering that common phrasing without this risk, same reasoning as
+     `kids`/`kidney` before it.
+
+     Two regression tests added
+     (`test_infer_tags_baby_does_not_false_positive_on_babysitting`,
+     `test_infer_tags_baby_still_matches_bare_word`) confirming the fix
+     closes the false positive while `"Mommy and Baby Yoga"` and `"Baby
+     Storytime"` still correctly tag `toddler`. Considered the same
+     substring risk for `"trail"` (a prefix of `"trailer"`, in the
+     `outdoor` tag) but left it alone: unlike `art`/`baby`/`kid`/`pup`/
+     `hall`, the false-positive word extends the keyword on the
+     *trailing* side, so the same leading-space padding trick doesn't
+     fix it (would need a trailing-boundary check the plain-`in`
+     matcher here doesn't do), and a real municipal listing titled
+     around "trailer" is a much thinner hypothetical than a real
+     babysitting-certification program - not worth the added complexity
+     ahead of an actual false positive being found. 380 tests pass;
+     verified against a real `build_digest.py` run (network calls to
+     the real fetcher/weather/IndexNow hosts fail in this sandbox as
+     expected - proxy-blocked, not a regression - the build still
+     completes and every page renders).
+
 ## Working agreements for autonomous iteration
 
 - Cadence is hourly (the platform's durable scheduler has a 1-hour floor;

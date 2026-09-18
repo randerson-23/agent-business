@@ -61,7 +61,17 @@ TAG_KEYWORDS: dict[str, tuple[str, ...]] = {
     # blanket "family" flag. A single event can match more than one band
     # (rare but real, e.g. a mixed-age storytime) - not deduplicated,
     # same as every other tag here.
-    "toddler": ("toddler", "baby", "babies", "infant", "little ones", "ages 0-2", "ages 1-3", "ages 2-3"),
+    "toddler": (
+        # " baby " (not bare "baby") - unpadded, "baby" is a literal
+        # prefix of "babysitting"/"babysitter"/"babysit", so a real,
+        # common library/park district program ("Babysitting Basics
+        # Certification Course", usually aimed at tweens/teens learning
+        # to care for younger kids, not the toddlers themselves) was
+        # tagging as a toddler event purely from that substring. "babies"
+        # (plural, below) already covers the common phrasing without
+        # this risk - no common word is "babies" + more letters.
+        "toddler", " baby ", "babies", "infant", "little ones", "ages 0-2", "ages 1-3", "ages 2-3",
+    ),
     "elementary": (
         "elementary", "school age", "school-age", "kindergarten", "grade school",
         "ages 5-10", "ages 6-10", "grades k-5",
