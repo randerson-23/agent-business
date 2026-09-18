@@ -1109,6 +1109,15 @@
         return String(text).replace(/\r\n/g, "\n").replace(/\r/g, "\n")
           .replace(/\\/g, "\\\\").replace(/,/g, "\\,").replace(/;/g, "\\;").replace(/\n/g, "\\n");
       }
+      function icsSanitizeUrl(url) {
+        // Same bare-CR injection as icsEscape() above, one more unfixed
+        // instance (ROADMAP.md item 136): item.url is a URI-typed field,
+        // not TEXT, so it never went through icsEscape() - but a raw
+        // CR/LF in it still corrupts the .ics line structure the same
+        // way. Stripped outright rather than folded to "\n": a real URL
+        // never legitimately contains a raw control character.
+        return String(url).replace(/[\r\n]+/g, "");
+      }
       var lines = ["BEGIN:VCALENDAR", "VERSION:2.0", "PRODID:-//Within Ten//EN"];
       tray.forEach(function (item) {
         lines.push("BEGIN:VEVENT");
@@ -1122,7 +1131,7 @@
         }
         lines.push("SUMMARY:" + icsEscape(item.title));
         if (item.detail) lines.push("DESCRIPTION:" + icsEscape(item.detail));
-        if (item.url) lines.push("URL:" + item.url);
+        if (item.url) lines.push("URL:" + icsSanitizeUrl(item.url));
         lines.push("END:VEVENT");
       });
       lines.push("END:VCALENDAR");
