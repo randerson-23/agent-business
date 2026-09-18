@@ -5538,6 +5538,25 @@ it since the first competitor review.
      (`docs/mount-prospect-60056/index.html`'s `.answer-block` paragraph)
      after a real `build_digest.py` run.
 
+129. ✅ **DONE — the same inconsistency as item 128, one rendering
+     surface over.** After fixing the answer block's redundant
+     automation claim, went looking for the same "how often does this
+     update" statement everywhere else on the site to check none of the
+     others had drifted. Found one that wasn't repetitive - it was
+     **wrong**: `build_og_images()`'s per-region Open Graph caption
+     ("What's happening in Mount Prospect — updated **weekly**") is what
+     a shared region link actually shows in a link-preview card on
+     Facebook/Slack/etc., and "weekly" contradicts the "several times a
+     week" cadence every other surface states (`tagline`, the answer
+     block, `llms.txt`'s intro, the Facebook post's own closing line).
+     Changed to "updated several times a week", matching the rest of the
+     site. Confirmed it still fits the image's 2-line wrap cap for every
+     real region name, including the longest ("Arlington Heights") -
+     rendered and visually inspected, not just measured. 1 new
+     regression test capturing the subtitle string passed to
+     `render_og_image()` (no OCR needed) and asserting it says "several
+     times a week", not "weekly". 372 tests pass.
+
 ## Working agreements for autonomous iteration
 
 - Cadence is hourly (the platform's durable scheduler has a 1-hour floor;

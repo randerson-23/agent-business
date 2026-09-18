@@ -1706,6 +1706,23 @@ def test_build_og_images_includes_default_and_one_per_region():
     assert all(img.size == (1200, 630) for img in images.values())
 
 
+def test_build_og_images_caption_matches_the_sites_own_update_cadence_claim(monkeypatch):
+    # The OG image is what a shared region link actually shows in a
+    # preview card - its caption used to say "updated weekly" while
+    # every other surface (tagline, the answer block, llms.txt) says
+    # "several times a week", the real cadence. Captured via the
+    # subtitle argument rather than OCR on the rendered pixels.
+    captured = []
+    monkeypatch.setattr(
+        build_digest, "render_og_image", lambda title, subtitle: captured.append(subtitle)
+    )
+    summaries = [{**REGION, "event_count": 1, "path": "mount-prospect-60056/"}]
+    build_digest.build_og_images(summaries)
+    region_subtitle = next(s for s in captured if "Mount Prospect" in s)
+    assert "several times a week" in region_subtitle
+    assert "weekly" not in region_subtitle
+
+
 def test_build_robots_txt_references_sitemap():
     robots = build_digest.build_robots_txt()
     assert f"Sitemap: {build_digest.SITE_BASE_URL}sitemap.xml" in robots

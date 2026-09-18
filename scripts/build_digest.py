@@ -1491,7 +1491,13 @@ def render_og_image(title: str, subtitle: str) -> Image.Image:
 def build_og_images(region_summaries: list[dict]) -> dict[str, Image.Image]:
     images = {"default": render_og_image(SITE_NAME, "Everything worth doing, ten miles out")}
     for r in region_summaries:
-        images[r["id"]] = render_og_image(r["name"], f"What's happening in {r['name']} — updated weekly")
+        # "several times a week" (not "updated weekly") - matches the
+        # cadence every other on-page/GEO surface states (tagline, the
+        # answer block, llms.txt), since this image is what a link
+        # preview actually shows when a region page is shared - the same
+        # inconsistency item 128 just fixed in prose, one rendering
+        # surface over.
+        images[r["id"]] = render_og_image(r["name"], f"What's happening in {r['name']} — updated several times a week")
     return images
 
 
