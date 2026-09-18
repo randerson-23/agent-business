@@ -5784,6 +5784,43 @@ it cuts both ways.
      `build_digest.py` output) still passes its freshness check
      unaffected, confirming this doesn't touch the normal case.
 
+134. ✅ **DONE — the exact bug item 127 just fixed server-side, found
+     duplicated client-side.** After fixing `_ics_escape()`'s missing
+     bare-`\r` handling in `build_digest.py`, checked whether the same
+     escaping logic existed anywhere else in the codebase - and it did:
+     the "Build my weekend" itinerary tray's client-side "Export all to
+     calendar" button (`templates/region.html.j2` and
+     `templates/weekend_hub.html.j2`, both templates carry their own
+     copy of this JS) has its own `icsEscape()`, byte-for-byte the same
+     unpadded four-substitution version the Python one used to be -
+     escapes `\`, `,`, `;`, `\n`, but not a bare `\r`.
+
+     **Confirmed exploitable with a real headless-browser test before
+     fixing it, not assumed from reading the code**: seeded
+     `localStorage`'s `weekendPlannerTray` with a crafted item titled
+     `"Fake Event\rDTSTART:20260101T000000Z\rSUMMARY:Injected"` (the
+     same class of value `fetch_rss()`'s `item.findtext()` can hand
+     through unescaped - `.strip()` only trims the ends, no line-
+     splitting), clicked the real "Export all to calendar" button, and
+     read back the downloaded `.ics` `Blob`'s actual content: the
+     `SUMMARY:` line came back with the raw `\r` bytes still embedded,
+     exactly like the server-side bug before its fix - a calendar app
+     lenient about line endings would read the injected text as extra
+     ICS properties in the same `VEVENT`.
+
+     Fixed identically in both templates: the same CRLF/bare-CR-to-LF
+     normalization added to `build_digest.py`, ported to JS
+     (`.replace(/\r\n/g, "\n").replace(/\r/g, "\n")` before the existing
+     four substitutions). Re-ran the identical headless-browser test
+     against the fixed build on both pages (`/mount-prospect-60056/`
+     and `/this-weekend/`, since the itinerary tray exists on both) -
+     the exported `SUMMARY:` line now contains no raw `\r` on either.
+     No JS test framework exists in this repo (`package.json` is
+     Lighthouse-CI-only), so this is verified the same way item 35's
+     original DOM-XSS fix to this same script was - a real, scripted
+     browser check, not a persisted automated test. 378 tests pass
+     (Python suite unaffected, since this is client-side JS).
+
 ## Working agreements for autonomous iteration
 
 - Cadence is hourly (the platform's durable scheduler has a 1-hour floor;
