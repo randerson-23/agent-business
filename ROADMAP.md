@@ -243,7 +243,7 @@ the required header and the next run succeeded.)
 
 | Action | One line why | Unblocks |
 |---|---|---|
-| **Send the local press pitch** to Journal & Topics and/or the Daily Herald (item 77, template drafted in `OUTREACH_TEMPLATES.md` §7) | **The single highest-yield action available, by a wide margin, and now the only thing standing between a working site and an audience.** A local-media mention is worth 100-500 subscribers in a day (seventeenth pass); nothing else here is close for one email's effort. Every dependency it ever had is now cleared: the domain resolves, HTTPS serves, the signup form is live, the sponsor CTA works, Google has the sitemap, and the automated send is now proven end-to-end with a real successful live send (see above) - a reporter who signs up gets a real, working weekly email, not a hypothetical one. The email needs picking a real reporter and hitting send. | 100-500 real subscribers from one email |
+| **Send the local press pitch** to the **Daily Herald first** (item 125 found Journal & Topics runs its own competing Event Calendar, so it's the second attempt, not the first; template reordered in `OUTREACH_TEMPLATES.md` §7) | **The single highest-yield action available, by a wide margin, and now the only thing standing between a working site and an audience.** A local-media mention is worth 100-500 subscribers in a day (seventeenth pass); nothing else here is close for one email's effort. Every dependency it ever had is now cleared: the domain resolves, HTTPS serves, the signup form is live, the sponsor CTA works, Google has the sitemap, and the automated send is now proven end-to-end with a real successful live send (see above) - a reporter who signs up gets a real, working weekly email, not a hypothetical one. The email needs picking a real reporter and hitting send. | 100-500 real subscribers from one email |
 | Run a real trademark search before spending money on the domain, signage, print, or sponsor contracts (item 69) | **Reduced, not eliminated, by the pivot to "Within Ten".** The name was changed *because* WebSearch found "PORCHLIGHT" is a registered mark (reg. 6028585) held by a company that publishes a newsletter to ~60,000 readers. "Within Ten"/"WithinTen" turned up **no registered mark** - materially cleaner. But a web search is not a clearance search: it misses common-law use, similar-sounding marks and state registrations. Worth its small cost before money is committed, not after. | Spending safely on signage, print, sponsor contracts |
 | **Set up the welcome email** in Buttondown's UI (item 106) | One-time, no-code, and the highest-open message this business will ever send (welcome emails average 34.79% opens, up to 4x a regular issue's) — but it needs a human in Buttondown's dashboard; there is no API surface for it to build against from here. Two things worth checking/writing before turning it on: confirm the free plan actually exposes a welcome/greeting email (unverified — the sending API working is not evidence about this separate feature), and write **one** good welcome email, not an e-commerce-style three-part drip — this is a local newsletter, not a cart-abandonment flow. | The highest-engagement touchpoint currently going unsent |
 | **Check Buttondown's dashboard after this Wednesday night** (send-newsletter.yml's cron is now `37 22 * * 3` — ~5:37pm Chicago Wednesday) to confirm item 110's `schedule` mode actually worked | This is the one thing this sandbox genuinely cannot verify: `publish_date`/`status: "scheduled"` are this session's best-documented *guess* at Buttondown's API shape, unconfirmed against a real response — unlike `about_to_send`'s header, which a real 400 already proved. If the guess is wrong, the job will fail loudly (surfaced-verbatim by design) rather than silently mis-schedule, so a failed run is itself informative; check either way, since a genuine several-hours-early margin to fix it is the entire point of moving the cron off Thursday morning. | Confirms the researched Thursday-07:00-Central slot is actually being honored, not just believed to be |
@@ -271,8 +271,7 @@ search, which item 22's whole AI-citation effort depends on.
 | **Macaroni KID** | ~500 hyperlocal family newsletters + sites, publisher-run, sponsor-funded | Seasonal *guides* (summer camps, "kids eat free", Halloween) as the flagship monetizable product; business directory; weekly + monthly calendar views |
 | **6AM City** | 400+ local newsletters, $9.5M rev, profitable in 2026 | **Self-service ad platform** — they built it because low-average-order-value local sponsors don't justify sales time. Directly targets this business's #1 constraint |
 | **Axios Local** | Local newsletter network, local-advertiser funded | Newsletter-first: the list is the asset, the site is the funnel |
-| **Patch** | Hyperlocal news + community calendar | User-submitted events, business directory, classifieds — community supplies the content |
-| **Patch / PatchAM** (re-assessed) | **PatchAM auto-generates a local newsletter for practically any US ZIP** — live in 14,000 towns, ~1M subscribers on that product, 3M overall, deliberately aimed at suburbs. Revenue is a **3–10% cut of sponsorships, memberships and community-calendar listings**. Sourced from "aggregation, automated event calendars, and posts from Nextdoor"; its CEO calls it a utility, not journalism | The first competitor that is **already in 60056 without being asked**. The moat survives but is narrower than this file has claimed (item 124) |
+| **Patch / PatchAM** | **PatchAM auto-generates a local newsletter for practically any US ZIP** — live in 14,000 towns, ~1M subscribers on that product, 3M overall, deliberately aimed at suburbs. Revenue is a **3–10% cut of sponsorships, memberships and community-calendar listings**. Sourced from "aggregation, automated event calendars, and posts from Nextdoor"; its CEO calls it a utility, not journalism. (Supersedes the original entry here, "hyperlocal news + community calendar" — that description predates PatchAM's auto-generation and was materially out of date, per item 124.) | The first competitor that is **already in 60056 without being asked**. The moat survives but is narrower than this file has claimed: hand-verified village/library/park-district feeds vs. generic aggregation + Nextdoor (item 124) |
 | **Journal & Topics** | Runs its own **submission-based Event Calendar** ("Submit Your Event") listing park district, library and history centre events across a coverage area including **Mount Prospect and Palatine** | Item 77's top-priority press target **also runs the competing product** (item 125) |
 | **Newsletter ad marketplaces** | Direct-sold B2C newsletter sponsorship conventionally needs **10,000–20,000 subscribers** and 100–200 clicks per ad; below that the advice is to sell through a third party | Those thresholds price a *list*. Half this business's tiers sell the *site* (item 118) |
 | **Public ICS feeds** (as a *source*) | A feed can carry more than titles — descriptions, locations, organiser notes — and a public subscription link is unauthenticated, so whatever it exposes is readable by anyone with the URL | Item 100 would **republish** consumed feeds. Whitelist fields rather than pass through (item 115) |
@@ -5373,6 +5372,24 @@ it since the first competitor review.
      category monetises locally, which strengthens item 118 rather than
      weakening it.
 
+     ✅ DONE (2026-09-18). Corrected `BUSINESS_PLAN.md`'s "currently has
+     no single aggregator" line to the narrower, checkable claim (no
+     aggregator built from hand-verified village/library/park-district
+     feeds specifically), with a pointer back here rather than silently
+     rewriting history. Replaced the stale original "Patch" competitors-
+     table row (which predated PatchAM's auto-generation and was flatly
+     out of date) with the twenty-eighth pass's re-assessed row, rather
+     than leaving both side by side contradicting each other. Added
+     "Isn't this just Patch?" as its own section in `SPONSOR_KIT.md`
+     (same objection-handling genre as the existing "Compared to
+     Nextdoor and Meta geo-ads" section) and folded the same answer into
+     the press-pitch email itself (`OUTREACH_TEMPLATES.md` §7, alongside
+     item 125's changes below) - both now say what actually differs
+     (hand-verified per-town civic feeds vs. generic aggregation +
+     Nextdoor) instead of the now-false "no one else aggregates this."
+     369 tests pass; no code changed, verified the new copy renders via
+     a real `build_digest.py` run.
+
 125. **Pitch the Daily Herald first, not Journal & Topics — they are not
      interchangeable.** Item 77 has named both for five passes as though
      picking either were a coin flip. They are not. **Journal & Topics
@@ -5404,6 +5421,21 @@ it since the first competitor review.
      automated and town-specific. Item 109's rule still binds — do not
      submit other organisations' events to their form.
 
+     ✅ DONE (2026-09-18). `OUTREACH_TEMPLATES.md` §7 now opens with the
+     ordering rationale explicitly (Daily Herald first, why; Journal &
+     Topics later, framed as complementary if approached at all) instead
+     of naming both as if picking were a coin flip. Added the exact line
+     this item asked for to the pitch email body itself - "pulled
+     straight from each town's own feeds rather than a submission form -
+     so it lists what's actually published, not just what an organiser
+     remembered to submit" - replacing the email's own overclaiming "No
+     one else aggregates all of those together for this area" line,
+     which item 124's finding made false as written. Updated the "Needs
+     Ryan" table's press-pitch row to match the new ordering so a future
+     pass doesn't read it as still-ambiguous. Sending is still a human
+     action (unchanged from item 77) - this shipped the corrected
+     template, not a send.
+
 #### P2 (new)
 
 126. **Say where the data comes from, on the page.** Counted on the live
@@ -5434,6 +5466,25 @@ it since the first competitor review.
      and it costs one line of config per region. The reason to do it now
      rather than later is that it is also the answer to the question
      every press and sponsor conversation is about to ask.
+
+     ✅ DONE (2026-09-18), merged into item 116's own field exactly as
+     asked - "written once, doing both jobs" - rather than adding a
+     second field that would need to stay in sync with it. Rewrote all
+     four regions' `tagline` to lead with "Pulled automatically from
+     the [Village/City], [Library], and Park District — plus [venues]
+     — several times a week," so the provenance claim and the stable
+     venue names item 116 wanted are now the same sentence, rendered in
+     all four places `tagline` already reaches: the on-page "Issue for
+     ..." statement, each hub card, every page's meta description, and
+     `llms.txt`. `test_every_region_tagline_names_at_least_two_real_venues`
+     (item 116's own drift guard) still passes unmodified - every
+     rewritten tagline still names at least two of that region's
+     hand-curated real venues, it just also now says where the data
+     comes from. 369 tests pass; verified against the real generated
+     site (`docs/mount-prospect-60056/index.html`'s on-page statement
+     and meta description, `docs/index.html`'s hub card, `docs/llms.txt`'s
+     region line) after a real `build_digest.py` run, not just the
+     source YAML.
 
 ## Working agreements for autonomous iteration
 

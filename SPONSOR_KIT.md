@@ -121,6 +121,21 @@ naming ourselves rather than waiting for a prospect to bring it up:
 None of this is an argument that the price is low — it isn't. It's an
 argument for what the price buys instead of a cheaper, noisier ad slot.
 
+## Isn't this just Patch?
+
+Fair question — Patch already covers all four of these towns, and
+PatchAM can auto-generate a local newsletter for almost any US ZIP on
+demand. The honest answer isn't "no one else does this," it's "Patch
+doesn't do *this*: PatchAM is built from aggregation, generic automated
+event calendars, and Nextdoor posts, spread thin across ~14,000 towns.
+Every issue here is pulled directly from **that specific town's**
+village, public library, and park district — the three feeds a local
+family actually checks, not a generic template applied at national
+scale. Patch's own CEO calls it a utility, not journalism; this is
+narrower on purpose. A sponsor next to a hand-verified civic calendar
+for one town is a different placement than a sponsor inside a
+mass-produced newsletter running in 14,000 others.
+
 ## Who this is for
 
 Local, independently owned businesses serving families in Mount Prospect,

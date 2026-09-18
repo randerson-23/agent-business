@@ -61,8 +61,10 @@ region:
   # ROADMAP.md Phase 11 #116: named real venues (Lake Park hosts Fall
   # Fest below, at 2200 Lee St), not a generic sentence naming no place
   # - see the mount-prospect config's own comment on this item for the
-  # full rationale.
-  tagline: "Lake Park and the Des Plaines Public Library — city news, library events, and park district programs, just north of O'Hare."
+  # full rationale. Rewritten for item 126 (twenty-ninth pass) to lead
+  # with "Pulled automatically" - see that same comment. "City", not
+  # "Village" - Des Plaines is legally a city, unlike the other three.
+  tagline: "Pulled automatically from the City, Public Library, and Park District — plus Lake Park — several times a week, just north of O'Hare."
   # Reused from templates/hub.html.j2's existing ZIP_COORDS table (already
   # present there for the "distance from me" nearby-ZIP fallback before
   # this region existed) rather than a fresh guess - a rough town-center

@@ -69,9 +69,15 @@ residents, pulling from public feeds:
 - **Time**: content aggregation runs on a schedule (GitHub Actions cron) with
   no human in the loop. The only recurring work is periodic sponsor outreach
   (a handful of emails a month) and updating feed configs if a source moves.
-- **Audience fit**: 60056 is affluent, highly educated, family-dense, and
-  currently has no single aggregator of village + library + parks info — the
+- **Audience fit**: 60056 is affluent, highly educated, family-dense, and,
+  as of ROADMAP.md's twenty-ninth research pass, has no aggregator built
+  from **hand-verified village + library + park district feeds** — the
   three biggest sources of "what's happening" for local families.
+  (Corrected from an earlier, broader "no single aggregator" claim: PatchAM
+  now auto-generates a newsletter for practically any ZIP, including this
+  one, but from generic aggregation and Nextdoor posts, not these three
+  specific sources — narrower, but real and checkable. See ROADMAP.md
+  item 124.)
 - **Monetization is local and small**: a $25–$75/week sponsor spot is an easy
   yes for a local business owner (dentist, tutoring center, ice cream shop,
   realtor) and doesn't require ad-network scale or approval.

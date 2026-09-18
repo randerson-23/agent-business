@@ -47,8 +47,9 @@ region:
   # Harmony Fest & Taste of Arlington Heights below; Lake Arlington is
   # the Park District's own named lake), not a generic sentence naming
   # no place - see the mount-prospect config's own comment on this
-  # item for the full rationale.
-  tagline: "Harmony Park, Lake Arlington, and the Arlington Heights Memorial Library — village news, library events, and park district programs, a short drive from Mount Prospect."
+  # item for the full rationale. Rewritten for item 126 (twenty-ninth
+  # pass) to lead with "Pulled automatically" - see that same comment.
+  tagline: "Pulled automatically from the Village, Memorial Library, and Park District — plus Harmony Park and Lake Arlington — several times a week, a short drive from Mount Prospect."
   # Village Hall coordinates (33 S Arlington Heights Rd) - a region-level
   # approximation for the "distance from you" feature (ROADMAP.md
   # Phase 8), not a specific venue's address.
