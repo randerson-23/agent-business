@@ -6072,6 +6072,52 @@ here had seen, and did **not** turn up the site.
      precisely because they are single numbers checked occasionally
      rather than a dashboard nobody maintains.
 
+140. ✅ **DONE (build loop's own pick) — a real production duplicate-card
+     bug, found by reading the actual output of the real GitHub Actions
+     build that ran after item 138's D62 source shipped, not by code
+     inspection.** `data/source_health.json` showed the new source
+     fetching a real `6` items on its first live run - genuinely working,
+     contrary to this file's own worry that Finalsite's calendar list
+     might be JS-rendered. But the built `docs/des-plaines-60016/
+     index.html` showed why it was 6 and not fewer: **"All Schools: No
+     School (Labor Day)" appeared twice, and "ICS: No School
+     (Parent-Teacher Conferences)" appeared four times** - the real,
+     live site rendering the same two closures six times over instead
+     of twice.
+
+     Root cause, found by reading `fetch_html_events()`
+     (`scripts/fetchers.py`): its `detail_links` branch (used when a
+     source has real per-event URLs) already dedupes by `url`, but the
+     **fallback keyword branch** right below it - the one every source
+     without a confirmed detail-link pattern falls into, D62 included -
+     never deduped at all. D62's calendar page apparently links each
+     closure notice more than once (an "ICS:"/"All Schools:"-prefixed
+     add-to-calendar variant alongside the plain listing), and since
+     every item in this fallback branch shares one generic listing-page
+     `url` (that's exactly why it's in the fallback branch and not the
+     one above), nothing ever collapsed the repeats.
+
+     Fixed by deduping the fallback branch too - but **not** by `url`
+     alone, which would have overcorrected: two genuinely different
+     closures (Labor Day, Parent-Teacher Conferences) share that same
+     one page `url`, so deduping on `url` alone would have silently
+     dropped one of them as a false duplicate. Deduped on `(title, url)`
+     together instead, which collapses the real repeats while keeping
+     both real closures. This is a generic fix to a shared fetcher, not
+     a D62-specific patch - it protects every other source that falls
+     into this same fallback branch (Village News, Library Events, and
+     several park district sources across all four regions) from the
+     identical failure mode the moment any of their pages happens to
+     link an item more than once, which this file had never had real
+     evidence of until this build.
+
+     Two regression tests added
+     (`test_fetch_html_events_dedupes_identical_title_and_url_in_fallback`,
+     reproducing the exact real titles/counts from the production
+     build, and `test_fetch_html_events_keeps_distinct_titles_sharing_one_page_url`,
+     guarding against the `url`-alone overcorrection). 384 tests pass;
+     verified against a real `build_digest.py` run.
+
 ## Working agreements for autonomous iteration
 
 - Cadence is hourly (the platform's durable scheduler has a 1-hour floor;

@@ -357,7 +357,29 @@ def fetch_html_events(
             if r["title"].lower() not in _NAV_LINK_DENYLIST
             and any(k in r["title"].lower() for k in active_keywords)
         ]
-        return _resolve_urls(candidates[:limit], resp.url)
+        # De-dupe by (title, url), not url alone - a real gap this branch
+        # never had, found in a real production build (ROADMAP.md item
+        # 140): Des Plaines' D62 calendar page (item 138) links the same
+        # closure notice more than once (an "ICS:"/"All Schools:"-
+        # prefixed add-to-calendar variant alongside the plain listing),
+        # and every source in this fallback branch - unlike the
+        # detail_links branch above, which exists precisely because it
+        # has real per-event detail URLs - shares one generic listing-
+        # page url across every item, since that's exactly why it fell
+        # into this branch rather than the one above. Deduping by url
+        # alone here would silently collapse two genuinely different
+        # closures (Labor Day, Parent-Teacher Conferences) that happen to
+        # share that one page url into a single card - title is part of
+        # the identity a real duplicate has to match too. Preserves
+        # order, same idiom as above.
+        seen = set()
+        deduped = []
+        for r in candidates:
+            key = (r["title"], r["url"])
+            if key not in seen:
+                seen.add(key)
+                deduped.append(r)
+        return _resolve_urls(deduped[:limit], resp.url)
     except Exception as exc:  # noqa: BLE001 - fail soft by design
         logger.warning("HTML events fetch failed for %s: %s", url, exc)
         return None
