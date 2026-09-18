@@ -832,6 +832,29 @@ def test_build_ics_data_uri_escapes_bare_carriage_returns():
     assert summary_line == "SUMMARY:Fake Event\\nDTSTART:20260101T000000Z\\nSUMMARY:Injected"
 
 
+def test_build_ics_data_uri_strips_bare_carriage_returns_from_url():
+    # The same bare-CR injection as the title test above, one more
+    # unfixed instance (ROADMAP.md item 136): event['url'] is a real,
+    # fetched RSS <link>/HTML href/ICS URL: value that never went through
+    # _ics_escape() (it's a URI-typed field, not TEXT) - but a raw CR/LF
+    # in it still corrupts the .ics line structure just like an
+    # unescaped one in SUMMARY does. Confirmed with a real crafted URL
+    # before fixing it, not assumed.
+    from urllib.parse import unquote
+
+    event = {
+        "title": "Real-looking Event",
+        "detail": "",
+        "url": "https://evil.example/x\rDTSTART:20260101T000000Z\rSUMMARY:Injected",
+        "date_iso": "2026-09-19T10:00:00",
+    }
+    uri = build_digest.build_ics_data_uri(event)
+    decoded = unquote(uri.split(",", 1)[1])
+    url_line = next(line for line in decoded.split("\r\n") if line.startswith("URL:"))
+    assert "\r" not in url_line
+    assert url_line == "URL:https://evil.example/xDTSTART:20260101T000000ZSUMMARY:Injected"
+
+
 def test_build_google_calendar_url_returns_none_without_date():
     assert build_digest.build_google_calendar_url({"title": "x", "date_iso": None}, "Mount Prospect") is None
 
@@ -866,6 +889,31 @@ def test_build_region_calendar_ics_omits_undated_events():
     blocks = [{"section": "Library", "events": [{"title": "Story Time", "url": "https://x/1", "date_iso": None}]}]
     ics = build_digest.build_region_calendar_ics(region, blocks, datetime.now(timezone.utc))
     assert "BEGIN:VEVENT" not in ics
+
+
+def test_build_region_calendar_ics_strips_bare_carriage_returns_from_url():
+    # Same real gap as test_build_ics_data_uri_strips_bare_carriage_returns_from_url
+    # (ROADMAP.md item 136), for the subscribable region feed - a public,
+    # continuously-refreshed .ics a real calendar app subscribes to, so
+    # this instance is reachable without anyone ever clicking a card.
+    region = {"id": "mount-prospect-60056", "name": "Mount Prospect"}
+    blocks = [
+        {
+            "section": "Library",
+            "events": [
+                {
+                    "title": "Real-looking Event",
+                    "url": "https://evil.example/x\rDTSTART:20260101T000000Z\rSUMMARY:Injected",
+                    "date_iso": "2026-09-19T10:00:00",
+                    "attendable": True,
+                }
+            ],
+        }
+    ]
+    ics = build_digest.build_region_calendar_ics(region, blocks, datetime.now(timezone.utc))
+    url_line = next(line for line in ics.split("\r\n") if line.startswith("URL:"))
+    assert "\r" not in url_line
+    assert url_line == "URL:https://evil.example/xDTSTART:20260101T000000ZSUMMARY:Injected"
 
 
 def test_build_region_calendar_ics_stable_uid_across_rebuilds():

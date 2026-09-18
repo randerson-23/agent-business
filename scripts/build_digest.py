@@ -276,6 +276,25 @@ def _ics_escape(text: str) -> str:
     )
 
 
+def _ics_sanitize_url(url: str) -> str:
+    """Strip embedded CR/LF from a URL before writing it into a URI-typed
+    ICS property (`URL:`) - a real gap _ics_escape() (above) doesn't
+    cover, found by checking whether the same bare-CR injection (items
+    127/134) had a third, unfixed instance: RFC 5545's TEXT-escaping
+    rules only apply to TEXT-valued properties like SUMMARY/DESCRIPTION,
+    but `event['url']` (a fetched RSS <link>/HTML href/ICS URL:, never
+    line-split the way fetch_ics's own parsing is) flows into `URL:`
+    unescaped either way, and a raw CR/LF there corrupts the .ics
+    content-line structure exactly like an unescaped one in SUMMARY does
+    - a lenient calendar parser reads it as extra injected properties in
+    the same VEVENT. Removed outright rather than folded to visible text
+    the way _ics_escape() folds a title's CR/LF to `\\n`: RFC 3986 URIs
+    never legitimately contain a raw control character, so there is no
+    real content to preserve, unlike a title/detail's own line break.
+    """
+    return re.sub(r"[\r\n]+", "", url or "")
+
+
 def build_ics_data_uri(event: dict) -> str | None:
     """A downloadable "add to calendar" link for an event with a
     machine-readable start date, as a data: URI - no extra output file
@@ -299,7 +318,7 @@ def build_ics_data_uri(event: dict) -> str | None:
     if event.get("detail"):
         lines.append(f"DESCRIPTION:{_ics_escape(event['detail'])}")
     if event.get("url"):
-        lines.append(f"URL:{event['url']}")
+        lines.append(f"URL:{_ics_sanitize_url(event['url'])}")
     lines += ["END:VEVENT", "END:VCALENDAR", ""]
     return "data:text/calendar;charset=utf-8," + quote("\r\n".join(lines))
 
@@ -366,7 +385,7 @@ def build_region_calendar_ics(region: dict, blocks: list[dict], now: datetime) -
         if event.get("detail"):
             lines.append(f"DESCRIPTION:{_ics_escape(event['detail'])}")
         if event.get("url"):
-            lines.append(f"URL:{event['url']}")
+            lines.append(f"URL:{_ics_sanitize_url(event['url'])}")
         lines.append("END:VEVENT")
     lines += ["END:VCALENDAR", ""]
     return "\r\n".join(lines)

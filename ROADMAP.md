@@ -5859,6 +5859,53 @@ it cuts both ways.
      expected - proxy-blocked, not a regression - the build still
      completes and every page renders).
 
+136. ✅ **DONE (build loop's own pick) — a third, unfixed instance of the
+     same bare-CR ICS injection items 127/134 already fixed twice, found
+     by checking whether `event['url']` had the same gap as
+     title/detail.** `_ics_escape()` (item 127, server-side) and its JS
+     mirror `icsEscape()` (item 134, client-side) both escape TEXT-typed
+     properties - `SUMMARY:`/`DESCRIPTION:`. Neither ever touched
+     `URL:{event['url']}` (`build_ics_data_uri()`,
+     `build_region_calendar_ics()` in `scripts/build_digest.py`) or its
+     two client-side twins (`templates/region.html.j2` and
+     `templates/weekend_hub.html.j2`'s `"URL:" + item.url` in the
+     itinerary tray export) - a URI-typed property doesn't need TEXT's
+     backslash-escaping, but a raw CR/LF in it still corrupts the `.ics`
+     content-line structure exactly the same way an unescaped one in
+     SUMMARY does, and `event['url']` is real, fetched RSS `<link>`/HTML
+     `href`/ICS `URL:` text that never runs through a line-splitting
+     pass (same reasoning as items 127/134's title/detail case).
+
+     **This instance is the most exposed of the three**: the client-side
+     tray export needs a visitor to click "Export," but
+     `build_region_calendar_ics()` writes a public, continuously-
+     refreshed `calendar.ics` a real calendar app *subscribes* to - a
+     malicious/compromised RSS feed could inject into every subscriber's
+     calendar app on the next refresh, with no click required at all.
+
+     **Confirmed exploitable before fixing, not assumed**: crafted an
+     event with `url = "https://evil.example/x\rDTSTART:...\rSUMMARY:
+     Injected"` and ran it through both Python builders directly - the
+     raw `\r` landed unescaped in the generated `URL:` line both times.
+     For the two client-side copies, reproduced with the same real
+     headless-Playwright technique item 134 used: seeded
+     `weekendPlannerTray` with the same malicious URL, clicked the real
+     export button on both `/mount-prospect-60056/` and `/this-weekend/`,
+     and read back the downloaded `.ics` Blob - confirmed the raw `\r`
+     present before the fix, on both pages.
+
+     Fixed with a new helper on each side rather than reusing
+     `_ics_escape()`/`icsEscape()`: those fold a CR/LF to visible `\n`
+     text, appropriate for a title/detail that might legitimately
+     contain one; a URL never legitimately does, so `_ics_sanitize_url()`
+     (Python) and `icsSanitizeUrl()` (JS) strip embedded CR/LF outright
+     instead. Applied at all four call sites (two Python, two JS).
+     Re-ran the same reproductions against the fixed build - no raw `\r`
+     in the `URL:` line anywhere. Two new regression tests added
+     (`test_build_ics_data_uri_strips_bare_carriage_returns_from_url`,
+     `test_build_region_calendar_ics_strips_bare_carriage_returns_from_url`).
+     382 tests pass; verified against a real `build_digest.py` run.
+
 ## Working agreements for autonomous iteration
 
 - Cadence is hourly (the platform's durable scheduler has a 1-hour floor;
