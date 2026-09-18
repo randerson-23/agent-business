@@ -1098,7 +1098,16 @@
         return d.getFullYear() + pad(d.getMonth() + 1) + pad(d.getDate()) + "T" + pad(d.getHours()) + pad(d.getMinutes()) + pad(d.getSeconds());
       }
       function icsEscape(text) {
-        return String(text).replace(/\\/g, "\\\\").replace(/,/g, "\\,").replace(/;/g, "\\;").replace(/\n/g, "\\n");
+        // Normalize CRLF and a bare CR to LF first, same as the
+        // server-side fix (build_digest.py's _ics_escape, ROADMAP.md
+        // item 127) - a raw \r left unescaped here would embed a real
+        // line break into the exported SUMMARY/DESCRIPTION value,
+        // letting a title/detail sourced from an external RSS/HTML feed
+        // inject what reads as extra ICS properties into this
+        // downloaded file. Confirmed with a real crafted title in a
+        // headless browser before fixing it.
+        return String(text).replace(/\r\n/g, "\n").replace(/\r/g, "\n")
+          .replace(/\\/g, "\\\\").replace(/,/g, "\\,").replace(/;/g, "\\;").replace(/\n/g, "\\n");
       }
       var lines = ["BEGIN:VCALENDAR", "VERSION:2.0", "PRODID:-//Within Ten//EN"];
       tray.forEach(function (item) {
