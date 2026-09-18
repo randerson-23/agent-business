@@ -194,6 +194,16 @@ also needs a DNS change only the domain owner can make.
 - Revisit whether an archive/history feature is worth it (dropped in Phase
   1 for simplicity) — only if a real user asks for it.
 - Per-event (not just per-region) distance — see Phase 8's "later" note.
+- **Before shipping a 5th region**: grep for hardcoded "four towns"/"four
+  ZIPs" first (`templates/hub.html.j2`'s hub subheading,
+  `templates/combined_email_digest.html.j2`'s intro line, and
+  `build_llms_txt()`'s "all four towns" trick-or-treat line in
+  `scripts/build_digest.py` are the ones as of the twenty-ninth pass's
+  own follow-up cycle) - none is wrong today at exactly four regions, so
+  not worth templating dynamically ahead of that need, but a real,
+  findable staleness risk the moment a fifth ships. `SPONSOR_KIT.md`'s
+  "All four ZIPs" line is hand-maintained prose, not generated - update
+  it by hand same as any other fact there.
 
 ### Phase 11 — Competitor-informed idea backlog (fed by a 6-hourly research loop)
 
