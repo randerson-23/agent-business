@@ -466,6 +466,50 @@ def test_fetch_html_events_denylists_known_nav_labels_in_fallback(mock_get):
 
 
 @patch("fetchers.requests.get")
+def test_fetch_html_events_dedupes_identical_title_and_url_in_fallback(mock_get):
+    # ROADMAP.md item 140: found in a real production build, not crafted
+    # first - Des Plaines' D62 calendar page (item 138) links the exact
+    # same closure notice more than once (an "ICS:"/"All Schools:"-
+    # prefixed add-to-calendar variant alongside the plain listing), and
+    # every link in this fallback branch shares one generic listing-page
+    # url (there's no per-event detail link here, unlike the branch
+    # above that already dedupes) - so the live site rendered "No
+    # School (Labor Day)" twice and "No School (Parent-Teacher
+    # Conferences)" four times over for what's really one closure each.
+    html = (
+        '<a href="/calendars">All Schools: No School (Labor Day)</a>'
+        '<a href="/calendars">All Schools: No School (Labor Day)</a>'
+        '<a href="/calendars">ICS: No School (Parent-Teacher Conferences)</a>'
+        '<a href="/calendars">ICS: No School (Parent-Teacher Conferences)</a>'
+    )
+    mock_get.return_value = _mock_response(html)
+    items = fetch_html_events("https://example.org/calendars", keywords=["no school"])
+    titles = [i["title"] for i in items]
+    assert titles == [
+        "All Schools: No School (Labor Day)",
+        "ICS: No School (Parent-Teacher Conferences)",
+    ]
+
+
+@patch("fetchers.requests.get")
+def test_fetch_html_events_keeps_distinct_titles_sharing_one_page_url(mock_get):
+    # The fix above must not overcorrect: two genuinely different closures
+    # that happen to share one generic listing-page url (the normal case
+    # for every source in this fallback branch, which exists precisely
+    # because it has no distinct per-event detail links) are not
+    # duplicates of each other just because their url matches - only
+    # (title, url) together identifies a real duplicate.
+    html = (
+        '<a href="/calendars">No School (Labor Day)</a>'
+        '<a href="/calendars">No School (Parent-Teacher Conferences)</a>'
+    )
+    mock_get.return_value = _mock_response(html)
+    items = fetch_html_events("https://example.org/calendars", keywords=["no school"])
+    titles = {i["title"] for i in items}
+    assert titles == {"No School (Labor Day)", "No School (Parent-Teacher Conferences)"}
+
+
+@patch("fetchers.requests.get")
 def test_fetch_html_events_returns_real_empty_list_when_nothing_matches(mock_get):
     # ROADMAP.md Phase 11 #55: a page that's reached successfully but has
     # no matching links returns a real [] - distinct from None (transport
