@@ -272,6 +272,8 @@ search, which item 22's whole AI-citation effort depends on.
 | **6AM City** | 400+ local newsletters, $9.5M rev, profitable in 2026 | **Self-service ad platform** — they built it because low-average-order-value local sponsors don't justify sales time. Directly targets this business's #1 constraint |
 | **Axios Local** | Local newsletter network, local-advertiser funded | Newsletter-first: the list is the asset, the site is the funnel |
 | **Patch** | Hyperlocal news + community calendar | User-submitted events, business directory, classifieds — community supplies the content |
+| **Patch / PatchAM** (re-assessed) | **PatchAM auto-generates a local newsletter for practically any US ZIP** — live in 14,000 towns, ~1M subscribers on that product, 3M overall, deliberately aimed at suburbs. Revenue is a **3–10% cut of sponsorships, memberships and community-calendar listings**. Sourced from "aggregation, automated event calendars, and posts from Nextdoor"; its CEO calls it a utility, not journalism | The first competitor that is **already in 60056 without being asked**. The moat survives but is narrower than this file has claimed (item 124) |
+| **Journal & Topics** | Runs its own **submission-based Event Calendar** ("Submit Your Event") listing park district, library and history centre events across a coverage area including **Mount Prospect and Palatine** | Item 77's top-priority press target **also runs the competing product** (item 125) |
 | **Newsletter ad marketplaces** | Direct-sold B2C newsletter sponsorship conventionally needs **10,000–20,000 subscribers** and 100–200 clicks per ad; below that the advice is to sell through a third party | Those thresholds price a *list*. Half this business's tiers sell the *site* (item 118) |
 | **Public ICS feeds** (as a *source*) | A feed can carry more than titles — descriptions, locations, organiser notes — and a public subscription link is unauthenticated, so whatever it exposes is readable by anyone with the URL | Item 100 would **republish** consumed feeds. Whitelist fields rather than pass through (item 115) |
 | **Main Line Today** (revisited) | Already cited here for the Thursday send slot. It also **produces its own Restaurant Week** — "the largest, most ambitious dining event in the region" — sold with "direct email blasts to local diners via opt-in subscriber lists" | The mature form of this business is *running* the local event, not just listing it (item 112) |
@@ -5313,6 +5315,125 @@ been asserting for six passes.**
      fabricated positive one. Worth keeping this pairing (light **and**
      dark) in mind for the next audit, since a plain re-run of item 62's
      exact script would have kept missing dark mode indefinitely.
+
+#### Research pass 2026-09-18 (twenty-ninth pass)
+
+This pass looked at the two local publications item 77 names as press
+targets, and found a competitor sitting in both of them. The headline
+finding is uncomfortable and overdue: **"nobody is doing this" is no
+longer true at the newsletter level**, and this file has been repeating
+it since the first competitor review.
+
+| Angle | Finding | Consequence |
+|---|---|---|
+| **PatchAM** | Auto-generates a local newsletter for **any US ZIP**, including 60056, generated on demand "even if you are the only subscriber". 14,000 towns, ~1M subscribers on the product. Explicitly targeting suburbs | A competitor is already in this market without having entered it (item 124) |
+| **Patch's sources** | "Aggregation, automated event calendars, and **posts from Nextdoor**." CEO: a utility, not journalism | The moat survives — but it is the *specific civic feeds*, not the idea (item 124) |
+| **Patch's revenue** | A **3–10% cut** of sponsorships, memberships and **community-calendar listings** | Independent evidence that local calendar listings monetise — supports item 118's tier split |
+| **Journal & Topics** | Runs a submission-based Event Calendar covering Mount Prospect and Palatine | The #1 pending owner action pitches a competitor (item 125) |
+| **Source transparency** | The three civic sources appear on the region page only as **section headings**; nothing states where the data comes from or why that matters | The one durable differentiator is invisible to a reader (item 126) |
+
+#### P1 (new)
+
+124. **Re-state the moat honestly: it is the civic feeds, not the idea.**
+     The competitors table has carried Patch since the first review as
+     "hyperlocal news + community calendar" whose worth-stealing was
+     user-submitted events and a business directory. That is badly out of
+     date. PatchAM now builds a newsletter for **practically any ZIP in
+     the country**, on demand, including this one — meaning the
+     "aggregated local events newsletter for Mount Prospect" product
+     exists already and required nobody to decide to build it.
+
+     The differentiation is still real, and it is worth being precise
+     because the imprecise version will lose an argument with a reporter
+     or a sponsor. Patch's newsletters are assembled from **aggregation,
+     generic automated event calendars, and Nextdoor posts**. This site
+     is assembled from **hand-verified feed URLs for the village, the
+     public library and the park district** of each specific town — the
+     three sources `BUSINESS_PLAN.md` identified as where a family
+     actually finds the weekend, and the ones a national template
+     applied to 14,000 towns does not have. Patch's own CEO describes the
+     product as a utility rather than journalism; the honest read is that
+     it is *broad and shallow by design*, and shallow is the opening.
+
+     So the claim changes from "no one aggregates this" — false — to "no
+     one aggregates **these**, and the generic approach demonstrably does
+     not reach them." That is narrower, defensible, and checkable. Two
+     concrete consequences:
+
+     - Update the competitors table entry and anywhere the file leans on
+       the unqualified version, including `BUSINESS_PLAN.md`'s "currently
+       has no single aggregator" line, which is now wrong as written.
+     - **Both the press pitch and `SPONSOR_KIT.md` need an answer to
+       "isn't this just Patch?"** Neither has one today, and it is the
+       first question an informed local reporter or a business owner who
+       already gets the Patch email will ask.
+
+     Worth noting what this does *not* change: Patch taking a 3–10% cut
+     of community-calendar listings is independent evidence that this
+     category monetises locally, which strengthens item 118 rather than
+     weakening it.
+
+125. **Pitch the Daily Herald first, not Journal & Topics — they are not
+     interchangeable.** Item 77 has named both for five passes as though
+     picking either were a coin flip. They are not. **Journal & Topics
+     runs its own Event Calendar with a "Submit Your Event" form**,
+     listing park district, library and history centre events across a
+     coverage area that includes Mount Prospect and Palatine. Pitching
+     them a story about a site that aggregates park district, library and
+     village events is pitching a publication its own competitor.
+
+     That is not automatically fatal — a local paper can still find a
+     resident's automation project a good story — but it is a materially
+     harder sell than the pitch template assumes, and it should not be
+     the first attempt. The **Daily Herald** covers Mount Prospect as
+     community news across a regional operation; a "local parent
+     automates the village calendar" story there competes with nothing
+     they sell.
+
+     Two changes to `OUTREACH_TEMPLATES.md` §7: order the targets
+     explicitly with the reason, and add a line the current draft lacks —
+     what the site does that a submission-based calendar structurally
+     cannot. A submitted calendar lists what an organiser remembered to
+     submit; an aggregated one lists what is actually published. That
+     difference is the story, it is true, and it is also the polite way
+     to raise the overlap rather than hope nobody notices.
+
+     If Journal & Topics is approached later, the honest framing is
+     complementary rather than competitive, and there is a real version
+     of that: their calendar is submission-based and regional, this is
+     automated and town-specific. Item 109's rule still binds — do not
+     submit other organisations' events to their form.
+
+#### P2 (new)
+
+126. **Say where the data comes from, on the page.** Counted on the live
+     build: "Village of Mount Prospect", "Mount Prospect Public Library"
+     and "Mount Prospect Park District" each appear three times on the
+     region page — entirely as **section headings**. Nothing anywhere
+     states that this page exists *because* those three feeds are pulled
+     automatically several times a week, and nothing tells a reader why
+     that is different from any other events page they have seen.
+
+     Item 124 makes this urgent rather than nice: the differentiator
+     against a nationally-generated newsletter is provenance, and
+     provenance is currently implicit. A reader who already receives the
+     Patch email for 60056 has no way to tell these apart from the page.
+
+     This is the same sentence item 116 asked for and it should be
+     written once, doing both jobs: a one-line statement above the
+     listings naming the real sources and the real places. Something
+     with the shape of *"Pulled automatically from the Village of Mount
+     Prospect, the Public Library and the Park District — plus Randhurst
+     Village, Melas Park and downtown Emerson & Busse — several times a
+     week."* That single line supplies the stable venue names item 116
+     wants for entity clarity, the provenance claim item 124 needs, and
+     the "what's in here" statement recommended in the **first**
+     competitor review and still unshipped twenty-eight passes later.
+
+     Trust research is consistent that naming sources raises credibility,
+     and it costs one line of config per region. The reason to do it now
+     rather than later is that it is also the answer to the question
+     every press and sponsor conversation is about to ask.
 
 ## Working agreements for autonomous iteration
 
