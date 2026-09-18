@@ -271,6 +271,7 @@ search, which item 22's whole AI-citation effort depends on.
 | **6AM City** | 400+ local newsletters, $9.5M rev, profitable in 2026 | **Self-service ad platform** — they built it because low-average-order-value local sponsors don't justify sales time. Directly targets this business's #1 constraint |
 | **Axios Local** | Local newsletter network, local-advertiser funded | Newsletter-first: the list is the asset, the site is the funnel |
 | **Patch** | Hyperlocal news + community calendar | User-submitted events, business directory, classifieds — community supplies the content |
+| **Newsletter ad marketplaces** | Direct-sold B2C newsletter sponsorship conventionally needs **10,000–20,000 subscribers** and 100–200 clicks per ad; below that the advice is to sell through a third party | Those thresholds price a *list*. Half this business's tiers sell the *site* (item 118) |
 | **Public ICS feeds** (as a *source*) | A feed can carry more than titles — descriptions, locations, organiser notes — and a public subscription link is unauthenticated, so whatever it exposes is readable by anyone with the URL | Item 100 would **republish** consumed feeds. Whitelist fields rather than pass through (item 115) |
 | **Main Line Today** (revisited) | Already cited here for the Thursday send slot. It also **produces its own Restaurant Week** — "the largest, most ambitious dining event in the region" — sold with "direct email blasts to local diners via opt-in subscriber lists" | The mature form of this business is *running* the local event, not just listing it (item 112) |
 | **Godly / SiteInspire** vs **Awwwards** | Godly is curated by a small team, 2–3 sites a week, favouring **craft over novelty — restrained, editorial, typographically considered**. Awwwards rewards experimental animation and immersive storytelling | Two different standards, and this site should be chasing exactly one of them (item 113) |
@@ -4960,6 +4961,114 @@ this pass went looking.
      fetcher host here regardless of dependency versions, so those
      warnings are pre-existing sandbox noise, not a regression from the
      bumps).
+
+#### Research pass 2026-09-18 (twenty-eighth pass)
+
+Two overdue re-checks, and one of them **corrects something this file has
+been asserting for six passes.**
+
+| Angle | Finding | Consequence |
+|---|---|---|
+| **Sponsorship thresholds** | Direct-sold B2C newsletter sponsorship conventionally wants **10,000–20,000 subscribers**. But also: "a small, high-quality community often attracts more sponsorship than a huge list with lukewarm engagement", and the standard opener is a **discounted rate for the first few** | Those thresholds price a **list**. Two of the four tiers price the **site**, which is live now (item 118) |
+| **Google structured data, 2026** | **FAQ rich results were deprecated in May 2026.** Rich-result eligibility also narrowed to pages where schema describes the **primary content purpose** | 16 guide pages carry `FAQPage` for a rich result that no longer exists (item 120) |
+| **Event schema placement** | Counted on the live build: `Event` appears on **13** pages — region, `this-weekend`, `free` — and **zero** on the hub | Already correct under the new "primary content purpose" rule. Confirmed, not a defect |
+
+#### P1 (new)
+
+118. **Correct the monetisation gate: two of the four tiers were never
+     waiting on subscribers.** Item 95 ended with "until there is an
+     audience number to put next to the price, no tier is sellable at any
+     price", and items 94/96/107 have repeated that framing since. It is
+     half wrong, and the half that is wrong has been keeping the whole
+     revenue side parked.
+
+     The conventional thresholds — 10,000–20,000 subscribers for direct
+     B2C sponsorship — price **a list**: an ad slot, measured in opens
+     and clicks. Read `BUSINESS_PLAN.md`'s tiers against that and they
+     split cleanly:
+
+     - **Weekly Spot ($50/wk)** and **Event Promo ($20)** are list
+       products. Top-of-newsletter placement, judged on who sees it.
+       These genuinely do need an audience, and the framing holds.
+     - **Annual Partner ($1,200/yr)** and **Neighborhood Authority
+       ($5,000/yr)** are almost entirely **site** products: a permanent
+       directory listing, a seasonal-guide spotlight, a live SEO
+       backlink, priority Editor's Pick. Not one of those is delivered by
+       an email. They are delivered by a live, indexed, four-region site
+       with GSC verified, a sitemap submitted, and a trick-or-treat page
+       positioned for the Q4 query — all of which exist **today**.
+
+     So the honest statement is narrower and much more useful: the
+     **newsletter** tiers are audience-gated; the **membership** tiers
+     are traffic-gated, and traffic is a thing the site can evidence now
+     rather than in six months. A local business buying an Annual
+     Partnership is buying a backlink and a directory listing on the only
+     site that aggregates their village's civic calendar — a proposition
+     that does not improve much at 10,000 subscribers and does not fail
+     at one.
+
+     Concretely: `SPONSOR_KIT.md` should stop leading with audience and
+     lead per-tier with what actually delivers that tier — search
+     presence and page traffic for the memberships, reach for the weekly
+     spot — and say plainly that the newsletter is young. Understating a
+     new list is credible; quietly implying it is large is the thing that
+     ends a local relationship permanently.
+
+119. **Offer a founding-partner rate, and say why it exists.** The
+     standard opener for a first sponsor is a discounted rate, and it
+     solves a problem this business specifically has: the first sponsor
+     takes all the risk of an unproven product, and has no comparable to
+     price against.
+
+     Make it explicit and finite — the first three businesses per region
+     get a founding rate held for their first two years, in exchange for
+     a testimonial and permission to name them as a founding partner.
+     Both sides of that trade matter. The discount is honest compensation
+     for buying something unproven, and the testimonial plus the named
+     logo is the **social proof the fifth conversation needs and the
+     first cannot have**. A local business owner deciding whether this is
+     real will be convinced by two neighbours already in it far more than
+     by a subscriber count.
+
+     Worth being disciplined about the number rather than inventing one:
+     the tiers are already researched, so a founding rate should be a
+     stated percentage off the published price with an end date, not a
+     new tier and not an open-ended negotiation. A permanently negotiable
+     price is how a $1,200 membership becomes a $300 one.
+
+#### P2 (new)
+
+120. **`FAQPage` is the second retracted search bet — keep the markup,
+     stop counting it, and make that a standing rule.** Google
+     **deprecated FAQ rich results in May 2026**. The build emits
+     `FAQPage` on 16 guide pages, added under item 22 as part of the
+     GEO/SEO effort. Those pages will not get the rich result they were
+     marked up for.
+
+     The recommendation is exactly item 98's, for the same reasons:
+     `build_guide_faq()` generates it from real content at zero marginal
+     cost, the answers are genuine and useful to a reader, and structured
+     content still helps machine extraction even where it earns no SERP
+     feature. **Keep it; stop treating it as progress.**
+
+     The other half of the 2026 change is worth confirming rather than
+     fixing: eligibility narrowed to pages where the schema describes the
+     page's **primary content purpose**, and supplementary schema on
+     off-topic sections no longer qualifies. Counted on the live build,
+     `Event` appears on 13 pages — region pages, `this-weekend`, `free` —
+     and on **zero** hub pages. That is already the right shape. Nothing
+     to change; worth a test asserting it stays that way, because the
+     tempting future change (Event markup on the hub to "help the home
+     page rank") is now actively counter-productive.
+
+     The pattern is the point. `llms.txt` (item 98) and `FAQPage` are the
+     **second and third** search-surface bets this file has had to walk
+     back inside a month — the first being item 22's overstated AI
+     Overview reach. Worth a line in the working agreements: **do not
+     count an unverified rich-result or AI-surface feature as shipped
+     progress.** Mark it speculative when added, and re-check it each
+     quarter. The cost of being wrong is small; the cost of believing a
+     dead channel is working is a backlog that looks healthier than it is.
 
 ## Working agreements for autonomous iteration
 
