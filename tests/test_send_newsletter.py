@@ -306,6 +306,20 @@ def test_read_build_timestamp_missing_element_raises(tmp_path):
         read_build_timestamp(docs_dir=tmp_path)
 
 
+def test_read_build_timestamp_raises_cleanly_on_a_date_with_no_timezone(tmp_path):
+    # parsedate_to_datetime doesn't raise on a date string with no UTC
+    # offset - it silently returns a naive datetime. Unguarded, that
+    # would surface later as a raw, uncaught TypeError ("naive minus
+    # aware") from assert_build_is_fresh's subtraction, instead of the
+    # clean SendError every other bad-input path here raises.
+    (tmp_path / "feed.xml").write_text(
+        "<rss><channel><lastBuildDate>Fri, 18 Sep 2026 13:00:29</lastBuildDate></channel></rss>",
+        encoding="utf-8",
+    )
+    with pytest.raises(SendError, match="no timezone"):
+        read_build_timestamp(docs_dir=tmp_path)
+
+
 def test_assert_build_is_fresh_allows_a_recent_build():
     now = datetime(2026, 9, 17, 12, 0, tzinfo=timezone.utc)
     build_time = now - timedelta(days=1)
