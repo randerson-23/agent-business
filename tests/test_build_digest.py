@@ -1759,12 +1759,40 @@ def test_build_llms_txt_omits_guides_section_when_none_exist():
 
 
 def test_build_answer_block_mentions_region_name_and_zip():
-    region = {"name": "Mount Prospect", "zip": "60056", "state": "IL", "tagline": "Village news, library events, and park district programs."}
+    # Real current tagline shape (item 126) - a stale generic fixture here
+    # would silently stop reflecting what actually renders on the page.
+    region = {
+        "name": "Mount Prospect",
+        "zip": "60056",
+        "state": "IL",
+        "tagline": "Pulled automatically from the Village, Public Library, and Park "
+        "District — plus Randhurst Village, Melas Park, Lions Park, and downtown "
+        "Emerson & Busse — several times a week.",
+    }
     result = build_digest.build_answer_block(region)
     assert "Mount Prospect" in result
     assert "60056" in result
     word_count = len(result.split())
     assert 30 <= word_count <= 70
+
+
+def test_build_answer_block_does_not_repeat_taglines_automation_claim():
+    # ROADMAP.md Phase 11 #126 rewrote every region's tagline to lead
+    # with "Pulled automatically from ... several times a week" - this
+    # text is always rendered directly after that tagline in the same
+    # on-page paragraph, so it shouldn't say the same thing again in
+    # different words right next to it.
+    region = {
+        "name": "Mount Prospect",
+        "zip": "60056",
+        "state": "IL",
+        "tagline": "Pulled automatically from the Village, Public Library, and Park "
+        "District — plus Randhurst Village, Melas Park, Lions Park, and downtown "
+        "Emerson & Busse — several times a week.",
+    }
+    result = build_digest.build_answer_block(region)
+    assert result.count("automatically") == 1
+    assert "several times a week" not in result.split(region["tagline"])[1]
 
 
 def test_build_region_map_link_url_uses_region_coordinates():
