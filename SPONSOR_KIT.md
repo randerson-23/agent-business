@@ -143,6 +143,27 @@ to the real village, library, or park district calendar that published
 it — a claim anyone can check by clicking. A sponsor's mention runs
 next to that, not next to auto-generated prose.
 
+## Isn't this just Kidlist?
+
+Fair question if you're a parent in this area — `mykidlist.com` runs a
+weekly family-activities email and weekend planner for the same
+northwest suburbs, and it's good. Worth naming honestly rather than
+pretending only Patch exists.
+
+The real difference is coverage, not quality. Kidlist is
+**submission-based**: a parent submits an event and an editor approves
+it (Wednesdays). Within Ten is **feed-based**: it carries what the
+village, library, park district, and school district actually
+publish, whether or not anyone thought to submit it. Kidlist is also
+**family-only by policy**; Within Ten covers the whole civic
+calendar — village board meetings and library adult programs included,
+not just kids' activities. And Kidlist is regional across the
+northwest suburbs, while Within Ten is per-town: a Mount Prospect
+subscriber gets Mount Prospect, not a shared regional digest.
+
+Both are real, human-run, non-AI local publications in the same
+towns — not a case of one replacing the other.
+
 ## Who this is for
 
 Local, independently owned businesses serving families in Mount Prospect,
