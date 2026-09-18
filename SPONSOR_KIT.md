@@ -136,6 +136,13 @@ narrower on purpose. A sponsor next to a hand-verified civic calendar
 for one town is a different placement than a sponsor inside a
 mass-produced newsletter running in 14,000 others.
 
+Worth saying plainly given how many "local news" sites got caught
+publishing AI-generated stories under invented bylines this year:
+**nothing on Within Ten is written by AI.** Every listing links back
+to the real village, library, or park district calendar that published
+it — a claim anyone can check by clicking. A sponsor's mention runs
+next to that, not next to auto-generated prose.
+
 ## Who this is for
 
 Local, independently owned businesses serving families in Mount Prospect,

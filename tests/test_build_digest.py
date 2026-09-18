@@ -142,6 +142,18 @@ def test_build_sponsor_cta_url_prefers_mailto_when_configured():
     assert "+" not in url
 
 
+def test_build_corrections_cta_url_falls_back_to_github_issue_when_unconfigured():
+    url = build_digest.build_corrections_cta_url(None)
+    assert url.startswith("https://github.com/randerson-23/agent-business/issues/new?")
+    assert "title=Correction" in url
+
+
+def test_build_corrections_cta_url_prefers_mailto_when_configured():
+    url = build_digest.build_corrections_cta_url("owner@example.com")
+    assert url.startswith("mailto:owner@example.com?")
+    assert "subject=Correction" in url
+
+
 def test_render_sponsor_page_uses_mailto_cta_when_contact_email_configured():
     html = build_digest.render_sponsor_page(
         [], datetime.now(timezone.utc), contact_email="owner@example.com"
@@ -216,6 +228,24 @@ def test_render_about_page_includes_analytics_script_when_configured():
 def test_render_about_page_omits_analytics_script_when_unconfigured():
     html = build_digest.render_about_page(datetime.now(timezone.utc))
     assert "goatcounter.com/count" not in html
+
+
+def test_render_about_page_states_nothing_is_written_by_ai():
+    # ROADMAP.md Phase 11 #131: the one claim a generic-aggregation
+    # competitor can't copy, stated precisely - true that listings
+    # aren't written by AI, without overclaiming that nothing here is
+    # processed at all (tagging/truncation/lead-selection are real).
+    html = build_digest.render_about_page(datetime.now(timezone.utc))
+    assert "Nothing on this site is written by AI" in html
+    assert "tags events" in html
+
+
+def test_render_about_page_offers_a_corrections_path_with_mailto_cta():
+    # ROADMAP.md Phase 11 #132: a stated corrections posture, with a real
+    # point of contact (not a dead link either way).
+    html = build_digest.render_about_page(datetime.now(timezone.utc), contact_email="owner@example.com")
+    assert "corrections get made the same week" in html
+    assert 'href="mailto:owner@example.com?subject=Correction' in html
 
 
 def test_format_event_date_parses_rfc822():
@@ -1358,6 +1388,17 @@ def test_render_hub_page_lists_regions():
     assert "3 live update" in html
 
 
+def test_render_hub_page_offers_a_corrections_path_with_mailto_cta():
+    # ROADMAP.md Phase 11 #132: the corrections line item 132 asked for
+    # in "the footer" - the hub is the site's front door, so it's the
+    # one footer that needs to carry it site-wide (region pages already
+    # link to the About page, where the fuller version lives).
+    summaries = [{**REGION, "event_count": 3, "path": "mount-prospect-60056/"}]
+    html = build_digest.render_hub_page([], summaries, datetime.now(timezone.utc), contact_email="owner@example.com")
+    assert "corrections get made the same week" in html
+    assert 'href="mailto:owner@example.com?subject=Correction' in html
+
+
 def test_render_hub_page_has_no_distance_from_me_feature():
     """The geolocation "Show distance from me" bar was removed at the
     owner's request on 2026-09-15, along with its ZIP fallback, its
@@ -1852,7 +1893,10 @@ def test_build_weekly_summary_txt_lists_dated_weekend_events():
     assert "Aug 29–30" in result
     assert "- Aug 29 — Fall Fest" in result
     assert "- Aug 30 — Story Time" in result
-    assert result.endswith("https://example.org/mount-prospect-60056/\n(Updated automatically, several times a week.)\n")
+    assert result.endswith(
+        "https://example.org/mount-prospect-60056/\n"
+        "(Pulled automatically from the village, library, and park district — several times a week.)\n"
+    )
 
 
 def test_build_weekly_summary_txt_caps_at_six_events():

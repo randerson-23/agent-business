@@ -258,6 +258,7 @@ the required header and the next run succeeded.)
 | **Set up the welcome email** in Buttondown's UI (item 106) | One-time, no-code, and the highest-open message this business will ever send (welcome emails average 34.79% opens, up to 4x a regular issue's) — but it needs a human in Buttondown's dashboard; there is no API surface for it to build against from here. Two things worth checking/writing before turning it on: confirm the free plan actually exposes a welcome/greeting email (unverified — the sending API working is not evidence about this separate feature), and write **one** good welcome email, not an e-commerce-style three-part drip — this is a local newsletter, not a cart-abandonment flow. | The highest-engagement touchpoint currently going unsent |
 | **Check Buttondown's dashboard after this Wednesday night** (send-newsletter.yml's cron is now `37 22 * * 3` — ~5:37pm Chicago Wednesday) to confirm item 110's `schedule` mode actually worked | This is the one thing this sandbox genuinely cannot verify: `publish_date`/`status: "scheduled"` are this session's best-documented *guess* at Buttondown's API shape, unconfirmed against a real response — unlike `about_to_send`'s header, which a real 400 already proved. If the guess is wrong, the job will fail loudly (surfaced-verbatim by design) rather than silently mis-schedule, so a failed run is itself informative; check either way, since a genuine several-hours-early margin to fix it is the entire point of moving the cron off Thursday morning. | Confirms the researched Thursday-07:00-Central slot is actually being honored, not just believed to be |
 | **Send the newsletter cross-recommendation email** to Northwest Neighbor (item 25, template drafted in `OUTREACH_TEMPLATES.md` §10) | A real, WebSearch-confirmed candidate: a free weekly newsletter covering the same northwest suburbs (Arlington Heights overlaps directly), different send day (Tuesday vs. Thursday) and a different angle (neighborhood lifestyle/openings vs. structured event aggregation) — complementary, not competing. Publishers who recommend others are 32× more likely to be recommended back. Who runs it wasn't findable by search, so the email opens with a question rather than a name — needs a human to send it and follow the reply. | A reciprocal-recommendation relationship with an overlapping, non-competing local audience |
+| **Decide whether to put a real name on the About page** (item 130) — currently "written and run by a local parent" | An anonymous automated local-events site now pattern-matches to the 200+ AI-generated "local news" sites shut down in August for invented bylines. The press pitch, sponsor conversations, and the "we're not one of those sites" claim (item 124) all sell the person, not just the product — but this trades the owner's own privacy for credibility, which is his call. A first name + last initial beats full anonymity by a wide margin if full disclosure isn't wanted. | Makes the press pitch (item 77/125) and sponsor conversations (items 118/119) sellable on a real person, not an anonymous automation |
 
 **Nearly done, no longer blocking:** Buttondown's sending domain (item
 47). The owner added `withintenmiles.com` and its managed-delegation NS
@@ -5626,6 +5627,14 @@ it cuts both ways.
      carries the surname anyway, so the marginal privacy cost of a byline
      is smaller than it looks.
 
+     ⚠️ **Owner's decision, added to Needs Ryan — not something this loop
+     should do on its own.** Whether and how to attach a real name (or
+     first-name-plus-initial) to the About page's "written and run by a
+     local parent" line trades the owner's own privacy for credibility,
+     which is exactly the kind of call item 130 itself says belongs to
+     him, not the build loop. Items 131 and 132 below - both real content
+     changes with no privacy trade-off - shipped this same pass instead.
+
 131. **State plainly that nothing here is written by a machine — it is
      the one claim competitors cannot copy.** Checked on the live build:
      **19 of 19** event cards link out to the source that published the
@@ -5659,6 +5668,38 @@ it cuts both ways.
      the Village, Public Library, and Park District") everywhere the bare
      word appears.
 
+     ✅ DONE (2026-09-18). Added the exact sentence this item asked for
+     to the About page's "How it's built" section - "Nothing on this
+     site is written by AI" - immediately followed by the precise,
+     defensible version of what the pipeline *does* do (`infer_tags`,
+     truncation, lead selection), so it survives the exact objection the
+     item itself raised rather than overclaiming. Added the same claim,
+     more concisely, to `SPONSOR_KIT.md`'s "Isn't this just Patch?"
+     section, since a sponsor deciding whether to buy is asking the same
+     question a reporter or reader is.
+
+     Also did the "related" fix, not just the headline one: found and
+     replaced every genuinely bare "updated automatically" (no source
+     named anywhere nearby) across the site - the hub's `<meta
+     description>`/`og:description`/`twitter:description` (all three
+     identical, now "pulled automatically from each town's village,
+     library, and park district"), both email templates' footer tagline,
+     and the Facebook weekly-summary's closing line. Left the handful of
+     occurrences that already have a source-naming qualifier in the same
+     sentence alone (`about.html.j2`'s own two other paragraphs, the
+     `llms.txt` intro, the RSS feed description) - those aren't the
+     ambiguity this item is about.
+
+     5 new regression tests (the AI-disclosure statement's exact wording
+     and precision, plus `build_corrections_cta_url`'s two branches used
+     by item 132 below). 377 tests pass; verified every fix against the
+     real generated site (`docs/about/index.html`, `docs/index.html`'s
+     meta tags, `docs/combined-email-send.html`'s footer,
+     `docs/mount-prospect-60056/weekly-summary.txt`) after a real
+     `build_digest.py` run, and re-ran the real accessibility audit
+     (axe-core, light and dark) against the two pages touched most (hub,
+     about) - 0 violations.
+
 #### P2 (new)
 
 132. **Add a corrections path, because accuracy is the entire claim.**
@@ -5685,6 +5726,32 @@ it cuts both ways.
      carries is exactly the content no competitor can aggregate, and the
      twenty-fifth pass already identified replies as the highest-value
      thing a local subscriber can send.
+
+     ✅ DONE (2026-09-18). A real point of contact, not just a promise:
+     added `build_contact_mailto_url()` (generalizing the sponsor CTA's
+     existing mailto-or-GitHub-issue-fallback logic, item 57, since it's
+     the same underlying need - a real address, never guessed) and
+     `build_corrections_cta_url()` on top of it. Threaded `contact_email`
+     through to `render_about_page()` and `render_hub_page()` (both had
+     exactly one call site in `main()`, so this stayed a small, mechanical
+     change) rather than only adding it where it was easiest.
+
+     Added the exact line this item asked for - "corrections get made
+     the same week" - to both the About page's "Questions or corrections"
+     section (which already had a GitHub-issue path for new event
+     submissions; this adds the general-purpose one) and the hub page's
+     footer, the site's front door. Didn't thread it through
+     `region.html.j2`'s five call sites this same pass - the About page
+     is one click from every region page's own footer already, and the
+     hub covers "the footer" this item asked for without touching five
+     call sites for one line; worth doing later if it turns out readers
+     don't find it there.
+
+     2 new regression tests (About page and hub page each showing the
+     cadence promise and a real mailto CTA when configured). 377 tests
+     pass; verified against the real generated site (`docs/about/index.html`'s
+     mailto link genuinely resolves to the configured `contact_email`,
+     `docs/index.html`'s footer) after a real `build_digest.py` run.
 
 ## Working agreements for autonomous iteration
 
