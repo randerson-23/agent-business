@@ -163,6 +163,17 @@ complementary (a submission-based, regional calendar vs. an automated,
 town-specific one) rather than competitive — and per item 109, never
 submit other organisations' events to their own form.
 
+**If a reporter asks "isn't this just Kidlist?"** — say yes, and say
+why that's fine: `mykidlist.com` is a real, good, human-run weekly
+family email for the same suburbs, and it validates the weekly-email
+and weekend-planner format rather than competing away the need for it.
+The honest difference is that Kidlist is submission-based and
+family-only across the whole northwest-suburbs region, while this site
+is feed-based (pulled from each town's own village/library/park
+district/school calendars, not what someone remembered to submit) and
+per-town rather than regional. Naming it unprompted isn't necessary,
+but dodging it if asked reads worse than the competition does.
+
 A local-media mention is the single highest-yield distribution action
 available (100–500 signups in a day, per the seventeenth research pass),
 worth far more effort than one email — but one email, sent, beats a

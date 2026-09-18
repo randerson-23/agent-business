@@ -5920,7 +5920,7 @@ here had seen, and did **not** turn up the site.
 
 #### P1 (new)
 
-137. **Kidlist is the real competitor, and the comparison is
+137. ✅ **DONE — Kidlist is the real competitor, and the comparison is
      clarifying.** `mykidlist.com` publishes a weekly family-activities
      email and a weekend planner for the west and northwest Chicago
      suburbs — not a national template pointed at a ZIP, but a real
@@ -5957,6 +5957,28 @@ here had seen, and did **not** turn up the site.
      is named and reachable**, which is independent support for item 130:
      the successful local competitor in this exact market does not
      operate anonymously.
+
+     ✅ DONE (build loop's own pick, same cycle). Added a matching
+     "Isn't this just Kidlist?" section to `SPONSOR_KIT.md`, right after
+     the existing Patch section, naming the real coverage/audience/
+     granularity differences (feed-based vs. submission-based,
+     all-audience vs. family-only, per-town vs. regional) rather than
+     claiming either is "better" - exactly the framing this item asked
+     for, and structurally the same pattern the Patch section already
+     established, so a reader sees Within Ten answer this question
+     honestly for a second real competitor, not just the first. Added a
+     parallel paragraph to `OUTREACH_TEMPLATES.md` §7 (the press pitch)
+     giving the same talking points for *if* a reporter raises Kidlist,
+     without baking an unprompted competitor comparison into the cold
+     pitch itself - matching how that same template already handles
+     Journal & Topics. Didn't touch item 130 (naming a real person on
+     the About page) - that's still the owner's own privacy/credibility
+     call, already in Needs Ryan; this item's mention of Kidlist's named
+     editor is supporting evidence for that decision, not a new reason
+     to make it here. 382 tests pass (markdown-only change, no code
+     path touches these files at build time - confirmed by grepping for
+     references, then still ran the full build as this loop's standing
+     verification step).
 
 #### P2 (new)
 
