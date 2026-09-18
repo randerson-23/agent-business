@@ -723,22 +723,26 @@ SPONSOR_TIERS = [
     {
         "name": "Event Promo",
         "price": "$20 one-time",
+        "gated_by": "Newsletter reach",
         "detail": "Your single event or announcement boosted to the top of \"This Week.\"",
     },
     {
         "name": "Weekly Spot",
         "price": "$50/week or $175/month",
+        "gated_by": "Newsletter reach",
         "detail": "Not ready for a year? The same top-of-page recommendation, available week-to-week or month-to-month.",
     },
     {
         "name": "Annual Partner",
         "price": "$1,200/year",
+        "gated_by": "Site traffic & search presence",
         "detail": "A permanent business directory listing, a spotlight placement inside one relevant seasonal guide, a live SEO backlink, and priority consideration for Editor's Pick — the flagship membership.",
         "recommended": True,
     },
     {
         "name": "Neighborhood Authority",
         "price": "$5,000/year, one business per region",
+        "gated_by": "Site traffic & search presence",
         "detail": "Everything in Annual Partner, held exclusively for your region year-round — built for real estate and other locally-budgeted categories seeking neighborhood-level presence, not just leads.",
     },
 ]

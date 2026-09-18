@@ -5014,6 +5014,23 @@ been asserting for six passes.**
      new list is credible; quietly implying it is large is the thing that
      ends a local relationship permanently.
 
+     ✅ DONE (2026-09-18). Rewrote `SPONSOR_KIT.md`'s "Reach & retention"
+     section to say the split explicitly (list-gated newsletter tiers vs.
+     traffic-gated membership tiers) rather than one blanket audience
+     caveat covering all four, and added a "Gated by" column to the
+     pricing table so the split is visible at a glance, not just in prose.
+     Didn't touch `BUSINESS_PLAN.md`'s tier table — that's the internal
+     planning doc this item's fix is *about* correcting the downstream
+     effect of (items 94/96/107's repeated "no tier is sellable" framing),
+     not the thing a prospect reads; `SPONSOR_KIT.md` and the live
+     `/sponsor` page are. Added the same `gated_by` label to each
+     `SPONSOR_TIERS` entry (`scripts/build_digest.py`) and rendered it on
+     each tier card in `templates/sponsor.html.j2`, so the live page
+     carries the identical split, not just the markdown. Verified
+     against the real generated site, not just the source: `docs/sponsor/index.html`'s
+     tier cards each show a "Gated by:" label matching `SPONSOR_KIT.md`'s
+     table after a real `build_digest.py` run.
+
 119. **Offer a founding-partner rate, and say why it exists.** The
      standard opener for a first sponsor is a discounted rate, and it
      solves a problem this business specifically has: the first sponsor
@@ -5035,6 +5052,21 @@ been asserting for six passes.**
      stated percentage off the published price with an end date, not a
      new tier and not an open-ended negotiation. A permanently negotiable
      price is how a $1,200 membership becomes a $300 one.
+
+     ✅ DONE (2026-09-18), shipped with item 118. **25% off Annual Partner
+     or Neighborhood Authority, first 3 businesses per region, held for
+     their first two years, for a testimonial + naming permission** —
+     added to `SPONSOR_KIT.md`'s new "Founding partner rate" section and
+     to the live `/sponsor` page's pricing note (`templates/sponsor.html.j2`),
+     so a prospect sees the identical offer whether they got the outreach
+     doc or found the page directly. A stated percentage with an end date
+     ("until a region's third spot is filled"), not an open-ended
+     negotiation, exactly as asked. No live per-region counter yet —
+     there are zero real sponsors today, so every region's three founding
+     spots are honestly still open; a real counter is future work once
+     the first sponsor signs. `test_render_sponsor_page_states_the_founding_partner_rate`
+     guards the live page's copy. 359 tests pass; verified live in
+     `docs/sponsor/index.html` after a real `build_digest.py` run.
 
 #### P2 (new)
 
@@ -5070,6 +5102,25 @@ been asserting for six passes.**
      quarter. The cost of being wrong is small; the cost of believing a
      dead channel is working is a backlog that looks healthier than it is.
 
+     ✅ DONE (2026-09-18). Left `build_guide_faq()`/`build_faq_json_ld()`
+     untouched — this item's own recommendation was to keep the markup,
+     not remove it, since it's real content at zero marginal cost. Added
+     the standing working agreement below verbatim. Added the guard test
+     this item asked for, at the level that actually matters: not a count
+     ("13 pages") that drifts with every new guide or region, but a
+     structural assertion that neither hub-level template can ever emit
+     Event schema, regardless of input —
+     `test_render_hub_page_never_embeds_event_json_ld` and
+     `test_render_weekend_hub_page_never_embeds_event_json_ld`, both
+     passing real events/region data through `render_hub_page()` and
+     `render_weekend_hub_page()` and asserting `"@type": "Event"` never
+     appears in the output. Re-verified the count itself too, against
+     this sandbox's own (network-blocked, lower-volume) build: `Event`
+     appears on 11 region-scoped pages, 0 on `docs/index.html` or
+     `docs/this-weekend/index.html` — same shape as the twenty-eighth
+     pass found on the live site, just fewer events fetched here. 359
+     tests pass.
+
 ## Working agreements for autonomous iteration
 
 - Cadence is hourly (the platform's durable scheduler has a 1-hour floor;
@@ -5098,3 +5149,8 @@ been asserting for six passes.**
   research loop stops re-suggesting them.
 - No human approval needed to merge your own PRs in this repo — squash
   merge once tests pass locally.
+- Do not count an unverified rich-result or AI-surface feature as shipped
+  progress (item 120). Mark it speculative when added, and re-check each
+  quarter — `llms.txt` (item 98), overstated AI Overview reach (item 22),
+  and `FAQPage` rich results (item 120) are the three this file has had to
+  walk back within a month.
