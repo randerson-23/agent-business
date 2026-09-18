@@ -6049,8 +6049,7 @@ here had seen, and did **not** turn up the site.
 
 #### P3 (new)
 
-139. **Record the discoverability baseline, because right now it is
-     zero.** A search naming the domain, the brand and the town returns
+139. ✅ **DONE — first real baseline taken.** A search naming the domain, the brand and the town returns
      Eventbrite, Meetup, the village, the library and Kidlist — and not
      this site. That is entirely expected four days after the domain was
      verified in Search Console, and it is not a defect. It is a
@@ -6071,6 +6070,25 @@ here had seen, and did **not** turn up the site.
      the same argument on the acquisition side, and both are cheap
      precisely because they are single numbers checked occasionally
      rather than a dashboard nobody maintains.
+
+     **Discoverability baseline (checked 2026-09-18, via WebSearch)**:
+
+     | Signal | Live? |
+     |---|---|
+     | Brand-name query (`Within Ten withintenmiles.com Mount Prospect events`) | ❌ Not yet — returns Kidlist, the Village, Eventbrite, the Library, mpdowntown.com, Meetup, AllEvents |
+     | `site:withintenmiles.com` | ❌ Not yet — zero results, no unrelated noise either (nothing mis-indexed under the domain) |
+     | Long-tail town+venue query (`"Within Ten" Mount Prospect weekend events village library park district`) | ❌ Not yet — returns the Library's own pages, the Park District, Meetup |
+     | Head term (`things to do in Mount Prospect this weekend`) | Not checked this pass — expected last regardless, per the ordering above; not worth spending a query on until the first three move |
+
+     All three checked signals are still off, four days after GSC
+     verification - exactly what this item predicted, not a surprise or
+     a regression. Recorded here as this file's own convention (inline,
+     no new `METRICS.md`, matching how item 102's open-frequency metric
+     is tracked) so the next check is a diff against a real number
+     instead of a re-derivation. Re-check roughly weekly, in the same
+     order, and stop at the first signal that's still off - no need to
+     spend a query confirming the head term is also off once brand-name
+     already is.
 
 140. ✅ **DONE (build loop's own pick) — a real production duplicate-card
      bug, found by reading the actual output of the real GitHub Actions
