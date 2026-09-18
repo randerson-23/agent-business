@@ -252,3 +252,47 @@ the town.
 
 [Your name]
 Within Ten — https://withintenmiles.com/
+
+## 10. Newsletter cross-recommendation (ROADMAP.md Phase 11 #25)
+
+Publishers who recommend other newsletters are **32× more likely to be
+recommended back**, and newsletters in a recommendation relationship
+grow roughly **2.75× faster** — but Buttondown has no Substack-style
+built-in Recommendations feature (item 96), so this only happens if
+someone actually asks. Send to **Northwest Neighbor**
+(newsletter.northwestneighbor.com), a free weekly newsletter covering
+Chicago's northwest suburbs — Arlington Heights, Barrington, Buffalo
+Grove, Elk Grove Village, Rolling Meadows, Schaumburg, Wheeling, and
+more — with openings, restaurant picks, and neighborhood updates,
+delivered Tuesday mornings. Confirmed real and active by direct search;
+who specifically runs it wasn't findable from here, so open with a
+question rather than a name.
+
+Two things make this a fit rather than competition worth avoiding: the
+send day doesn't collide (Tuesday vs. Within Ten's Thursday), and the
+angle is different (broad neighborhood lifestyle news vs. a structured
+weekend-events calendar pulled from village/library/park-district/school
+sources) — genuinely complementary rather than two newsletters chasing
+the same open. Send only after a real issue exists to point to (same
+precondition as templates 8 and 9).
+
+Subject: A fellow northwest-suburbs newsletter — mention swap?
+
+Hi there,
+
+I run **Within Ten** (https://withintenmiles.com/), a free weekly
+newsletter that pulls together village news, library events, park
+district programs, and school calendars for Mount Prospect, Arlington
+Heights, Des Plaines, and Palatine — the structured "what's happening
+this weekend" half of what Northwest Neighbor's readers are probably
+also curious about.
+
+Our audiences clearly overlap (Arlington Heights especially) without
+really competing — different day, different angle — so I thought a
+mention swap might be worth it for both of us: I'd gladly recommend
+Northwest Neighbor to our readers if you'd be open to the same. No
+obligation either way, and happy to share a sample issue first.
+
+Thanks for what you're building for the area,
+[Your name]
+Within Ten — https://withintenmiles.com/
