@@ -59,7 +59,14 @@ region:
   # by the twenty-seventh research pass, not guessed here); Emerson &
   # Busse is Oktoberfest's real downtown location per the annual_events
   # block below.
-  tagline: "Randhurst Village, Melas Park, Lions Park, and downtown Emerson & Busse — village news, library events, and park district programs."
+  #
+  # Rewritten again for the twenty-ninth pass (item 126): leads with
+  # "Pulled automatically" rather than naming the sources as if they were
+  # just section headings, since PatchAM (item 124) can generate an
+  # aggregated-looking newsletter for this same ZIP from generic feeds -
+  # provenance, not aggregation itself, is what's actually different, and
+  # this line is now the one place on the page that says so.
+  tagline: "Pulled automatically from the Village, Public Library, and Park District — plus Randhurst Village, Melas Park, Lions Park, and downtown Emerson & Busse — several times a week."
   # Village Hall coordinates (50 S Emerson St) - a region-level
   # approximation for the "distance from you" feature (ROADMAP.md
   # Phase 8), not a specific venue's address.

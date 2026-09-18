@@ -62,8 +62,9 @@ region:
   # lot hosts the Sister Cities Association's farmers' market, both
   # confirmed via item 104's WebSearch), not a generic sentence naming
   # no place - see the mount-prospect config's own comment on this
-  # item for the full rationale.
-  tagline: "Downtown Palatine and the Palatine Train Station farmers' market lot — village news, library events, and park district programs, northwest of Mount Prospect."
+  # item for the full rationale. Rewritten for item 126 (twenty-ninth
+  # pass) to lead with "Pulled automatically" - see that same comment.
+  tagline: "Pulled automatically from the Village, Public Library District, and Park District — plus Downtown Palatine and the Train Station farmers' market lot — several times a week, northwest of Mount Prospect."
   # Reused from templates/hub.html.j2's existing ZIP_COORDS table (already
   # present there for the "distance from me" nearby-ZIP fallback before
   # this region existed) rather than a fresh guess - a rough town-center
