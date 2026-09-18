@@ -247,6 +247,7 @@ the required header and the next run succeeded.)
 | Run a real trademark search before spending money on the domain, signage, print, or sponsor contracts (item 69) | **Reduced, not eliminated, by the pivot to "Within Ten".** The name was changed *because* WebSearch found "PORCHLIGHT" is a registered mark (reg. 6028585) held by a company that publishes a newsletter to ~60,000 readers. "Within Ten"/"WithinTen" turned up **no registered mark** - materially cleaner. But a web search is not a clearance search: it misses common-law use, similar-sounding marks and state registrations. Worth its small cost before money is committed, not after. | Spending safely on signage, print, sponsor contracts |
 | **Set up the welcome email** in Buttondown's UI (item 106) | One-time, no-code, and the highest-open message this business will ever send (welcome emails average 34.79% opens, up to 4x a regular issue's) — but it needs a human in Buttondown's dashboard; there is no API surface for it to build against from here. Two things worth checking/writing before turning it on: confirm the free plan actually exposes a welcome/greeting email (unverified — the sending API working is not evidence about this separate feature), and write **one** good welcome email, not an e-commerce-style three-part drip — this is a local newsletter, not a cart-abandonment flow. | The highest-engagement touchpoint currently going unsent |
 | **Check Buttondown's dashboard after this Wednesday night** (send-newsletter.yml's cron is now `37 22 * * 3` — ~5:37pm Chicago Wednesday) to confirm item 110's `schedule` mode actually worked | This is the one thing this sandbox genuinely cannot verify: `publish_date`/`status: "scheduled"` are this session's best-documented *guess* at Buttondown's API shape, unconfirmed against a real response — unlike `about_to_send`'s header, which a real 400 already proved. If the guess is wrong, the job will fail loudly (surfaced-verbatim by design) rather than silently mis-schedule, so a failed run is itself informative; check either way, since a genuine several-hours-early margin to fix it is the entire point of moving the cron off Thursday morning. | Confirms the researched Thursday-07:00-Central slot is actually being honored, not just believed to be |
+| **Send the newsletter cross-recommendation email** to Northwest Neighbor (item 25, template drafted in `OUTREACH_TEMPLATES.md` §10) | A real, WebSearch-confirmed candidate: a free weekly newsletter covering the same northwest suburbs (Arlington Heights overlaps directly), different send day (Tuesday vs. Thursday) and a different angle (neighborhood lifestyle/openings vs. structured event aggregation) — complementary, not competing. Publishers who recommend others are 32× more likely to be recommended back. Who runs it wasn't findable by search, so the email opens with a question rather than a name — needs a human to send it and follow the reply. | A reciprocal-recommendation relationship with an overlapping, non-competing local audience |
 
 **Nearly done, no longer blocking:** Buttondown's sending domain (item
 47). The owner added `withintenmiles.com` and its managed-delegation NS
@@ -943,6 +944,31 @@ Angles reviewed this pass:
     newsletters we like" block plus reciprocal listings with nearby-suburb
     publishers costs nothing per week and compounds. Depends on item 24.
 
+    ⚠️ **Template drafted, sending still needs Ryan — same shape as item
+    77.** Item 24 unblocked this a few cycles ago; the missing piece was
+    a real candidate, not code. A "we recommend other newsletters" block
+    with no real newsletter to name would be exactly the kind of
+    speculative, content-free scaffolding this file's working agreements
+    warn against, so this went looking for one instead of building one:
+    WebSearch (real, not guessed - same discipline as item 32's district
+    calendar feeds) surfaced **Northwest Neighbor**
+    (newsletter.northwestneighbor.com), a real, active, free weekly
+    newsletter covering Chicago's northwest suburbs including Arlington
+    Heights directly. Confirmed genuinely complementary rather than
+    competing before naming it anywhere: different send day (Tuesday
+    vs. Within Ten's Thursday) and a different angle (neighborhood
+    lifestyle/openings vs. this site's structured event aggregation).
+    Couldn't confirm who operates it from here, so
+    `OUTREACH_TEMPLATES.md` §10's draft opens with a question rather
+    than a name, and the ask (sending it, reading a reply, deciding
+    whether to reciprocate) is a human action this loop shouldn't take
+    on its own — added to the "Needs Ryan" table above. The on-site
+    "other newsletters we like" block itself still has nothing to
+    render until a real reciprocal relationship exists to name; building
+    it empty now would be the same content-free-scaffolding problem one
+    layer later, so it's deferred to whenever (if ever) that reply comes
+    back yes.
+
 26. ✅ done (PR #43) — **Performance budget in CI.** `.github/workflows/
     tests.yml` now runs Lighthouse CI (`@lhci/cli`, new `package.json` +
     lockfile, `lighthouserc.json` at repo root) against the built `docs/`
@@ -1108,6 +1134,22 @@ change whose cost only shows up on a real network stays gated behind it.
     analogues converging on the same slot is a stronger signal than the
     generic Tue–Thu benchmark from the third pass. Ship item 24 with a
     Thursday-afternoon send.
+
+    ✅ **DONE — decided the other way, deliberately, not silently
+    overridden.** Item 110's `next_thursday_morning()` (the function name
+    says it outright) computes Thursday **07:00** America/Chicago, and
+    `config/newsletter.yaml`'s own comment records why: "the owner asked
+    for Thursday mornings." That is an explicit standing instruction, not
+    a default this item's afternoon research should quietly overwrite —
+    a real preference from the person who actually reads the sponsor
+    invoices beats two out-of-category analogues (a suburban Philadelphia
+    parenting site, a different one) on a question this small. Recording
+    the tension rather than either silently complying with the research
+    or silently keeping the status quo: if the owner ever wants to
+    revisit the send hour, this item's two analogues are the case for
+    afternoon, sitting right next to `next_thursday_morning()`'s own
+    comment explaining why morning won instead. Nothing to build - this
+    is a documented decision, not an open question.
 
 32. ✅ first slice confirmed working (Mount Prospect / District 57 only).
     **School district and youth-sports calendars as a data source.** Real
