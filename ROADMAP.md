@@ -5486,6 +5486,32 @@ it since the first competitor review.
      region line) after a real `build_digest.py` run, not just the
      source YAML.
 
+127. ✅ **DONE (build loop's own pick — a real crafted-input test of the
+     .ics generator, since it hadn't been probed with an untrusted-input
+     lens before, only checked for correctness).** `_ics_escape()`
+     escaped backslash, comma, semicolon, and bare `\n` per RFC 5545, but
+     not a bare `\r` (a carriage return not paired with `\n`) - and
+     `fetch_ics()`'s own parsing already neutralizes this by running
+     incoming text through `splitlines()` (which treats a lone `\r` as a
+     line boundary), but `fetch_rss()`'s `item.findtext(...)` does not -
+     it takes an RSS `<title>`/`<description>` value as-is, only
+     `.strip()`-ing the ends. Confirmed exploitable with a real crafted
+     title before fixing it: `"Fake Event\rDTSTART:...\rSUMMARY:Injected"`
+     produced a `SUMMARY:` line with the raw `\r` bytes still embedded,
+     which many real-world calendar parsers treat as leniently as a full
+     CRLF line break - reading as extra, attacker-controlled ICS
+     properties injected into the same `VEVENT` a fetched RSS title
+     could reach.
+
+     Fixed by normalizing `\r\n` and a bare `\r` to `\n` *before* the
+     existing escape substitutions run, so the already-correct `\n`
+     handling now also covers CR - one shared helper, both call sites
+     (`build_ics_data_uri()`'s per-event download link and
+     `build_region_calendar_ics()`'s subscribable feed) fixed at once.
+     1 new regression test reproducing the exact crafted title above and
+     asserting the resulting `SUMMARY:` line contains no raw `\r`. 370
+     tests pass; a real `build_digest.py` run still exits 0.
+
 ## Working agreements for autonomous iteration
 
 - Cadence is hourly (the platform's durable scheduler has a 1-hour floor;

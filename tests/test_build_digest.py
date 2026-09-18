@@ -780,6 +780,28 @@ def test_build_ics_data_uri_escapes_commas_and_newlines():
     assert "SUMMARY:Ages 5\\, up\\nBring water" in decoded
 
 
+def test_build_ics_data_uri_escapes_bare_carriage_returns():
+    # A raw \r (not paired with \n) is plausible from an RSS/HTML source
+    # - unlike fetch_ics's own parsing, those never run the value through
+    # a line-splitting pass. Left unescaped, it would embed a real line
+    # break into the SUMMARY value: many real-world calendar parsers
+    # treat a bare CR as leniently as CRLF, letting the fetched title
+    # inject what reads as extra ICS properties into the same VEVENT.
+    from urllib.parse import unquote
+
+    event = {
+        "title": "Fake Event\rDTSTART:20260101T000000Z\rSUMMARY:Injected",
+        "detail": "",
+        "url": "",
+        "date_iso": "2026-09-19T10:00:00",
+    }
+    uri = build_digest.build_ics_data_uri(event)
+    decoded = unquote(uri.split(",", 1)[1])
+    summary_line = next(line for line in decoded.split("\r\n") if line.startswith("SUMMARY:"))
+    assert "\r" not in summary_line
+    assert summary_line == "SUMMARY:Fake Event\\nDTSTART:20260101T000000Z\\nSUMMARY:Injected"
+
+
 def test_build_google_calendar_url_returns_none_without_date():
     assert build_digest.build_google_calendar_url({"title": "x", "date_iso": None}, "Mount Prospect") is None
 

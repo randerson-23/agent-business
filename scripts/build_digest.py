@@ -250,9 +250,25 @@ def truncate(text: str, max_len: int = DETAIL_MAX_LEN) -> str:
 
 def _ics_escape(text: str) -> str:
     """Inverse of fetchers._unescape_ics_text - escape TEXT values per
-    RFC 5545 before writing them into an .ics file we generate."""
+    RFC 5545 before writing them into an .ics file we generate.
+
+    Normalizes CRLF and a bare CR to LF *before* escaping, then escapes
+    that LF the same as any other - RFC 5545 content lines are CRLF-
+    terminated externally and a raw CR should never survive into a
+    VALUE. Left unhandled, a title/detail containing a literal `\\r`
+    (plausible from an RSS/HTML source, which - unlike fetch_ics's own
+    parsing - never runs it through a line-splitting pass) would embed
+    an un-escaped line break into the generated SUMMARY/DESCRIPTION
+    line: many real-world calendar parsers treat a bare CR as a line
+    terminator just as leniently as CRLF, letting fetched content inject
+    what reads as extra ICS properties into the same VEVENT. Confirmed
+    with a real crafted title before fixing it, not assumed - see the
+    regression test.
+    """
     return (
         (text or "")
+        .replace("\r\n", "\n")
+        .replace("\r", "\n")
         .replace("\\", "\\\\")
         .replace(",", "\\,")
         .replace(";", "\\;")
