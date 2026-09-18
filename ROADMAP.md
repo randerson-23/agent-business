@@ -5282,6 +5282,38 @@ been asserting for six passes.**
      normally - the fix counts headings, not newlines. 369 tests pass; a
      real `build_digest.py` run still exits 0.
 
+123. ✅ **DONE (build loop's own pick — re-running item 62's real
+     accessibility audit, since several UI changes have shipped since
+     it last ran, plus closing a real gap in what it covered).**
+     `axe-core` via Playwright (same tooling item 62 used, still
+     available from this sandbox) against a real local build, this
+     time across **10** page types (the original 8, plus `/about/` and
+     `/trick-or-treat/`, both shipped after item 62's audit and never
+     checked): **0 violations everywhere**, including on the pages
+     changed most recently (`/sponsor/`'s new "Gated by" labels and
+     founding-partner note from items 118/119, `/mount-prospect-60056/`'s
+     rewritten itinerary-tray JS from the DOM-XSS fix). Item 62's fixes
+     have held.
+
+     Closed a real coverage gap while at it, not just re-running the
+     same check: axe's default `page.new_page()` renders in the
+     browser's **light** color scheme, so item 62's audit never actually
+     exercised any of this site's dark-mode CSS - a genuine blind spot,
+     since `color-contrast` was exactly the violation type item 62 found
+     and fixed. Re-ran the same 10 pages with Playwright's
+     `color_scheme="dark"` explicitly: also **0 violations**. Manually
+     spot-checked the specific new small-text elements most likely to
+     regress contrast first - `.gated-by`'s `--muted` on `--card` comes
+     to 5.16:1 light / 6.99:1 dark, both clearing AA's 4.5:1 floor for
+     text this size with room to spare.
+
+     Nothing to fix, so nothing shipped except this record - matching
+     item 120's own working agreement about not overclaiming, this
+     records a real negative result (checked, clean) rather than a
+     fabricated positive one. Worth keeping this pairing (light **and**
+     dark) in mind for the next audit, since a plain re-run of item 62's
+     exact script would have kept missing dark mode indefinitely.
+
 ## Working agreements for autonomous iteration
 
 - Cadence is hourly (the platform's durable scheduler has a 1-hour floor;
