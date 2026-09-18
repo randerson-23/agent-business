@@ -5198,6 +5198,42 @@ been asserting for six passes.**
      pass found on the live site, just fewer events fetched here. 359
      tests pass.
 
+#### P2 (new)
+
+121. ✅ **DONE (build loop's own pick, not from a research pass — the
+     backlog above is exhausted or Ryan-blocked, so this hour went
+     looking at code not recently reviewed instead).** **Four real
+     substring false positives in `scripts/tagging.py`'s heuristic
+     tagger, found by deliberately trying plausible real event titles
+     against `infer_tags()`, not by reading the code and guessing.**
+     Four of the unpadded keywords are literal prefixes of common,
+     unrelated words: `"kid"` ⊂ "Kidney" (a "Kidney Foundation Walk"
+     tagged kid-friendly), `"pup"` ⊂ "puppet"/"puppetry" (a library
+     puppet show — a genuinely common, non-dog kids' program — tagged
+     dog-friendly), `"hall"` ⊂ "Halloween" (a Halloween parade, usually
+     outdoor, tagged indoor), and `"art"` ⊂ "party"/"smart"/"start"/
+     "apartment"/"heart"/"chart" (a plain "Neighborhood Block Party"
+     tagged arts & culture). This is the exact same bug class the file
+     already fixed once for `"teen"`/`"tween"` (padded to avoid matching
+     inside "thirTEEN"/"beTWEEN") — that fix just never got generalized
+     to the other short, prefix-prone keywords sitting right next to it.
+
+     Fixed with the same padding idiom already established in the file
+     rather than introducing regex for a few keywords: `"kid"` → `" kid
+     "`, `"pup"` → `" pup "`, `"hall"` → `" hall "` (all whole-word,
+     since each has a real word that *extends* it and must be excluded
+     on both sides), and `"art"` → `" art"` (leading space only, since
+     "arts"/"artist"/"artistic"/"artwork" are legitimate extensions that
+     must still match — only words *preceded* by another letter, like
+     "p-art-y", were ever the problem). Confirmed each fix doesn't cost
+     real recall: "Kids' Fun Run", "Bring your pup", "Village Hall
+     Budget Meeting", "Art in the Park", and "Arts and Crafts Festival"
+     all still tag correctly, since the already-separate plural/adjacent
+     keywords (`"kids"`, `"puppy"`) and the leading-space-only rule cover
+     the common real phrasing. 8 new regression tests, one pair per
+     keyword (false-positive-excluded + legitimate-match-preserved). 367
+     tests pass; a real `build_digest.py` run still exits 0.
+
 ## Working agreements for autonomous iteration
 
 - Cadence is hourly (the platform's durable scheduler has a 1-hour floor;
