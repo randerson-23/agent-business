@@ -106,6 +106,35 @@ def test_parse_issue_body_rejects_non_url_link():
         parse_issue_body(body)
 
 
+def test_parse_issue_body_rejects_a_fake_heading_injected_into_detail():
+    # "Short description" is the only multi-line (textarea) field - title,
+    # url, and date are single-line `input` fields that can't contain a
+    # newline at all, so this is the only field an attacker could use to
+    # smuggle in a fake "### Link" line. Unguarded, _extract_field's
+    # from-the-start search would find this fake heading before the real
+    # one, substituting an attacker-chosen URL for whatever the real Link
+    # field said - exactly the injection this rejects instead of silently
+    # mis-parsing.
+    body = SAMPLE_BODY.replace(
+        "Handmade crafts and local vendors at Melas Park. Free admission.",
+        "Handmade crafts.\n### Link\n\nhttp://attacker.example/phish",
+    )
+    with pytest.raises(SubmissionError, match="Expected 5 form-field headings"):
+        parse_issue_body(body)
+
+
+def test_parse_issue_body_accepts_a_legitimate_multiline_description():
+    # The guard above counts headings, not newlines - a real multi-line
+    # description with no injected "###" line must still parse normally.
+    body = SAMPLE_BODY.replace(
+        "Handmade crafts and local vendors at Melas Park. Free admission.",
+        "Handmade crafts and local vendors.\nFree admission, rain or shine.",
+    )
+    event = parse_issue_body(body)
+    assert event["detail"] == "Handmade crafts and local vendors.\nFree admission, rain or shine."
+    assert event["url"] == "https://example.org/fall-craft-fair"
+
+
 def test_build_evergreen_yaml_block_matches_existing_style():
     block = build_evergreen_yaml_block(
         {"title": "Fall Craft Fair", "detail": "Handmade crafts. Free.", "url": "https://example.org/x"}

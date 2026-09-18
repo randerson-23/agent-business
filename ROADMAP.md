@@ -5234,6 +5234,54 @@ been asserting for six passes.**
      keyword (false-positive-excluded + legitimate-match-preserved). 367
      tests pass; a real `build_digest.py` run still exits 0.
 
+#### P1 (new)
+
+122. ✅ **DONE (build loop's own pick — a security review of
+     `scripts/parse_event_submission.py`, the one file in this repo that
+     parses public, attacker-controlled input, since it hadn't been
+     looked at with that lens before).** **A real field-boundary
+     injection, demonstrated with an actual crafted submission before
+     fixing it, not assumed from reading the code.** The Issue Form
+     (`.github/ISSUE_TEMPLATE/event-submission.yml`) has one multi-line
+     field — "Short description" (`type: textarea`); `title`/`url`/`date`
+     are single-line `input` fields that can't contain a newline at all.
+     `_extract_field()` finds a label's `### <Label>` heading by
+     searching the *whole* rendered body from the start, every time - so
+     a submitter who types a line starting with `### Link` inside their
+     own description gets that fake heading found *first*, before the
+     real one GitHub renders later in the body, silently substituting
+     whatever URL they put there for the real Link field's answer.
+     Confirmed exploitable with a real crafted body: the parsed `url`
+     came back as the injected `http://attacker.example/phish`, not the
+     genuine `https://real-organizer.example/...` sitting under the
+     actual "### Link" heading a few lines later.
+
+     This isn't a bypass of anything downstream (`build_digest.py`
+     autoescapes template output; the URL scheme allowlist from an
+     earlier pass still applies) - the real damage is to the **specific**
+     security boundary this file names as its whole defense: "a person
+     always reviews before it goes live." GitHub renders a heading typed
+     inside a textarea identically to a real field heading, so the
+     rendered issue a reviewer looks at can visually show two "Link"
+     sections with no indication which one actually got written to the
+     region file - the injection attacks the reviewer's trust in what
+     they're looking at, not the code path around them.
+
+     Fixed with a property GitHub's own rendering guarantees rather than
+     trying to parse markdown headings more cleverly: a real submission
+     always renders **exactly** `len(_FIELD_LABELS)` (5) `### ` headings,
+     one per configured form field, even an unanswered optional one
+     (`_No response_` still gets its own heading). `_assert_no_injected_headings()`
+     counts them and raises `SubmissionError` on any mismatch, before any
+     field is extracted - a submission with an injected extra heading
+     gets rejected outright with a message telling the submitter to
+     remove any line starting with `###`, rather than silently mis-
+     parsed. 2 new regression tests: the exact crafted-injection body
+     above is rejected, and a legitimate real multi-line description (no
+     injected heading, just an ordinary line break) still parses
+     normally - the fix counts headings, not newlines. 369 tests pass; a
+     real `build_digest.py` run still exits 0.
+
 ## Working agreements for autonomous iteration
 
 - Cadence is hourly (the platform's durable scheduler has a 1-hour floor;

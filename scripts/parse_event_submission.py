@@ -82,6 +82,37 @@ def _extract_field(body: str, label: str) -> str | None:
     return value
 
 
+def _assert_no_injected_headings(body: str) -> None:
+    """Guard against a field-boundary injection: GitHub always renders
+    exactly one `### <Label>` heading per form field (even an unanswered
+    optional one, as `_No response_`), so a real submission has exactly
+    `len(_FIELD_LABELS)` of them. `title`/`url`/`date` are single-line
+    `input` fields and can't contain a newline at all, but `detail` is a
+    multi-line `textarea` - a submitter can type a line starting with
+    "### " into it, and `_extract_field()` searches for a label's heading
+    from the *start* of the body, so an earlier, attacker-controlled fake
+    "### Link" (or "### Date (optional)") embedded inside their own
+    `detail` answer would be found instead of the real one that GitHub
+    renders later in the body - silently substituting a URL (or a date)
+    the submitter typed somewhere a human reviewer glancing at the
+    rendered issue wouldn't necessarily connect to the field it actually
+    populated (markdown renders a heading typed inside a textarea
+    identically to a real one). A miscount here is that attack's one
+    unavoidable side effect, so reject rather than parse ambiguously -
+    the human-review gate this whole file depends on only works if what
+    it shows a reviewer is what actually gets written.
+    """
+    actual = len(re.findall(r"^###\s+", body, re.MULTILINE))
+    expected = len(_FIELD_LABELS)
+    if actual != expected:
+        raise SubmissionError(
+            f"Expected {expected} form-field headings in the issue body, found {actual} - "
+            "a field's answer may contain a line starting with '###', which this parser "
+            "can't safely tell apart from a real field boundary. Remove any line starting "
+            "with '###' from your answers and resubmit."
+        )
+
+
 def parse_issue_body(body: str) -> dict:
     """Parse a rendered event-submission Issue Form body into
     {"region_id", "title", "detail", "url", "date"} ("date" is informational
@@ -89,6 +120,8 @@ def parse_issue_body(body: str) -> dict:
     written into the region file). Raises SubmissionError on anything
     that can't safely become a curated entry.
     """
+    _assert_no_injected_headings(body)
+
     region_label = _extract_field(body, _FIELD_LABELS["region"])
     region_id = REGION_LABEL_TO_ID.get(region_label or "")
     if not region_id:
