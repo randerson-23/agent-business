@@ -916,6 +916,27 @@ Angles reviewed this pass:
     excellent. Those same numbers belong in `SPONSOR_KIT.md`, since an
     open rate is a stronger sponsor argument than a subscriber count.
 
+    ✅ **DONE — closing a stale-looking gap, not building a new one.**
+    This item never got its own closing note even though the send path
+    it asked for has been live for a while: `scripts/send_newsletter.py`
+    + `.github/workflows/send-newsletter.yml` (Wednesday-night cron,
+    item 110), `config/newsletter.yaml`'s `send.mode` set to `"send"` by
+    the owner on 2026-09-17, and — the real evidence, not an assumption
+    — a genuine successful **live** send already confirmed against actual
+    GitHub Actions logs: workflow run `35176614362`
+    (2026-09-17 03:02 UTC), `=== LIVE: this will SEND to every
+    subscriber ===`, `Sent. Buttondown id: em_5hgyjgfytf8hws9xxpw6b0fesk`
+    (recorded in this file's "Needs Ryan" section under "Closed since
+    the last check"). The open-rate-benchmark follow-up this item asked
+    for landed too, in item 102 — see that item's own ✅ note. Left as an
+    explicit closing note here, rather than just leaving the item to be
+    inferred from later items, because a numbered item with no closing
+    marker reads as an open gap to the next research pass, which is
+    exactly the false-negative version of item 120's "backlog looks
+    less healthy than it is" problem — the twenty-eighth pass came
+    close to re-flagging this before this cycle checked the actual
+    workflow history.
+
 25. **Newsletter cross-recommendations.** Newsletters in recommendation
     networks grow about 2.75× faster, and publishers who recommend others
     are 32× more likely to be recommended back. A small "other local
@@ -3241,6 +3262,20 @@ Gmail-to-self always authenticates.
     Then pitch. Items 86 and 87 (subject-line dedupe, detail lines) should
     land in the same week — they are small, and they decide what those
     100–500 people judge the product by on day one.
+
+    ✅ **DONE — same day, by the owner, exactly as asked.** The very next
+    research pass (twenty-first, 2026-09-16) recorded the result: the
+    owner sent one real issue through Buttondown to a real Yahoo
+    address that same afternoon, and it **landed in the primary inbox**
+    with DMARC live at `p=quarantine` — stronger authentication than
+    this item required, confirmed by direct resolver query, not
+    assumed. That real send is exactly what surfaced the four findings
+    the twenty-first pass logged (subject line, MX record → item 93,
+    Yahoo dark mode, the `PREVIEW ONLY` leak) — the whole point of
+    testing the real path before the one-shot press pitch instead of
+    after. Never got its own closing marker even though the very next
+    paragraph in this file already recorded it happening; adding one
+    now for the same reason item 24's does.
 
 #### Housekeeping
 
