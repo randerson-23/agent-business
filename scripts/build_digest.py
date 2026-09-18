@@ -772,6 +772,29 @@ SPONSOR_INQUIRY_FIELDS = (
     "Why should we recommend you (one sentence): "
 )
 
+CORRECTION_PROMPT = "What's wrong or missing, and which region/event: "
+
+
+def build_contact_mailto_url(contact_email: str | None, subject: str, body: str) -> str:
+    """Prefers a real `mailto:` to `contact_email` (config/sponsors.yaml)
+    once a real contact address is configured - deliberately never
+    defaults to guessing one. Falls back to a prefilled GitHub issue when
+    unconfigured, so a CTA built on this never links to a dead address
+    either way. Shared by every on-site "reach a real person" CTA
+    (originally just the sponsor inquiry, item 57; item 132 added a
+    second, the corrections link) rather than duplicating the same
+    mailto/GitHub-fallback logic per caller.
+    """
+    # quote_via=quote: mailto: URIs (RFC 6068) need %20 for spaces, not
+    # urlencode's default '+' (an application/x-www-form-urlencoded
+    # convention a mail client's subject/body won't understand). Using it
+    # for the GitHub fallback too is harmless - GitHub accepts %20 fine.
+    if contact_email:
+        params = urlencode({"subject": subject, "body": body}, quote_via=quote)
+        return f"mailto:{contact_email}?{params}"
+    params = urlencode({"title": subject, "body": body}, quote_via=quote)
+    return f"https://github.com/randerson-23/agent-business/issues/new?{params}"
+
 
 def build_sponsor_cta_url(contact_email: str | None) -> str:
     """The sponsor page's only conversion point (ROADMAP.md Phase 11 #57).
@@ -781,22 +804,18 @@ def build_sponsor_cta_url(contact_email: str | None) -> str:
     had to create a GitHub account and file an issue in a developer bug
     tracker. Real evidence this was actually broken, not just unpolished:
     it's the *only* conversion point in the entire business.
-
-    Prefers a real `mailto:` to `contact_email` (config/sponsors.yaml)
-    with the same prefilled fields the GitHub issue used to collect, once
-    a real contact address is configured - deliberately never defaults to
-    guessing one. Falls back to the GitHub issue only when unconfigured,
-    same as before, so the page never has a dead link either way.
     """
-    # quote_via=quote: mailto: URIs (RFC 6068) need %20 for spaces, not
-    # urlencode's default '+' (an application/x-www-form-urlencoded
-    # convention a mail client's subject/body won't understand). Using it
-    # for the GitHub fallback too is harmless - GitHub accepts %20 fine.
-    if contact_email:
-        params = urlencode({"subject": "Sponsor inquiry", "body": SPONSOR_INQUIRY_FIELDS}, quote_via=quote)
-        return f"mailto:{contact_email}?{params}"
-    params = urlencode({"title": "Sponsor inquiry", "body": SPONSOR_INQUIRY_FIELDS}, quote_via=quote)
-    return f"https://github.com/randerson-23/agent-business/issues/new?{params}"
+    return build_contact_mailto_url(contact_email, "Sponsor inquiry", SPONSOR_INQUIRY_FIELDS)
+
+
+def build_corrections_cta_url(contact_email: str | None) -> str:
+    """A real point of contact for "something here is wrong or missing"
+    (ROADMAP.md Phase 11 #132) - the corrections path the site's whole
+    accuracy claim (item 131) needs to actually offer, not just assert.
+    Same mailto/GitHub-issue-fallback pattern as the sponsor CTA, since
+    it's the same underlying need: a real address, never guessed.
+    """
+    return build_contact_mailto_url(contact_email, "Correction", CORRECTION_PROMPT)
 
 
 def build_sponsor_availability(sponsors_cfg: dict, region_summaries: list[dict]) -> list[dict]:
@@ -824,7 +843,7 @@ def build_sponsor_availability(sponsors_cfg: dict, region_summaries: list[dict])
     return availability
 
 
-def render_about_page(now: datetime, analytics: dict | None = None) -> str:
+def render_about_page(now: datetime, analytics: dict | None = None, contact_email: str | None = None) -> str:
     """A real About page (ROADMAP.md Phase 11 #99) - the entity-clarity
     work item 22's GEO strategy was missing: who publishes this, why it
     exists, and how it's built, stated plainly for a reader or a
@@ -842,6 +861,7 @@ def render_about_page(now: datetime, analytics: dict | None = None) -> str:
         analytics=analytics,
         og_image_url=SITE_BASE_URL + "og/default.png",
         organization_json_ld=build_organization_json_ld(),
+        corrections_cta_url=build_corrections_cta_url(contact_email),
     )
 
 
@@ -1374,6 +1394,7 @@ def render_hub_page(
     newsletter: dict | None = None,
     analytics: dict | None = None,
     stats: dict | None = None,
+    contact_email: str | None = None,
 ) -> str:
     env = get_template_env()
     template = env.get_template("hub.html.j2")
@@ -1386,6 +1407,7 @@ def render_hub_page(
         stats=stats,
         og_image_url=SITE_BASE_URL + "og/default.png",
         trick_or_treat_in_season=is_trick_or_treat_season(now),
+        corrections_cta_url=build_corrections_cta_url(contact_email),
     )
 
 
@@ -1737,7 +1759,7 @@ def build_weekly_summary_txt(
         + "\n\n"
         "FIRST COMMENT (reply to your own post with this right after - the link goes here instead):\n\n"
         f"See everything: {region_url}\n"
-        "(Updated automatically, several times a week.)\n"
+        "(Pulled automatically from the village, library, and park district — several times a week.)\n"
     )
 
 
@@ -1996,6 +2018,7 @@ def filter_free_items(blocks: list[dict], evergreen: list[dict]) -> list[dict]:
 
 def main() -> None:
     sponsors_cfg = load_yaml(CONFIG_DIR / "sponsors.yaml")
+    contact_email = (sponsors_cfg.get("contact_email") or "").strip() or None
     newsletter = load_newsletter_config(load_yaml(CONFIG_DIR / "newsletter.yaml"))
     analytics = load_analytics_config(load_yaml(CONFIG_DIR / "analytics.yaml"))
     maps = load_maps_config(load_yaml(CONFIG_DIR / "maps.yaml"))
@@ -2294,7 +2317,7 @@ def main() -> None:
         "weekend_count": sum(len(s["events"]) for s in hub_weekend_sections),
         "weekend_date_range": hub_weekend_date_range or "",
     }
-    hub_html = render_hub_page(regions, region_summaries, now, newsletter, analytics, stats=hub_stats)
+    hub_html = render_hub_page(regions, region_summaries, now, newsletter, analytics, stats=hub_stats, contact_email=contact_email)
     (OUTPUT_DIR / "index.html").write_text(hub_html, encoding="utf-8")
     logger.info("Wrote %s", OUTPUT_DIR / "index.html")
 
@@ -2329,7 +2352,7 @@ def main() -> None:
         sponsor_availability,
         now,
         analytics,
-        contact_email=(sponsors_cfg.get("contact_email") or "").strip() or None,
+        contact_email=contact_email,
         stats=sponsor_stats,
     )
     sponsor_dir = OUTPUT_DIR / "sponsor"
@@ -2337,7 +2360,7 @@ def main() -> None:
     (sponsor_dir / "index.html").write_text(sponsor_html, encoding="utf-8")
     logger.info("Wrote %s", sponsor_dir / "index.html")
 
-    about_html = render_about_page(now, analytics)
+    about_html = render_about_page(now, analytics, contact_email=contact_email)
     about_dir = OUTPUT_DIR / "about"
     about_dir.mkdir(parents=True, exist_ok=True)
     (about_dir / "index.html").write_text(about_html, encoding="utf-8")

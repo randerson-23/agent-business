@@ -4,17 +4,17 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Within Ten — Everything worth doing, ten miles out</title>
-<meta name="description" content="Plan a weekend or a trip: local events and news across Chicago-area ZIP codes, updated automatically.">
+<meta name="description" content="Plan a weekend or a trip: local events and news across Chicago-area ZIP codes, pulled automatically from each town's village, library, and park district.">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Within Ten">
 <meta property="og:title" content="Within Ten — Everything worth doing, ten miles out">
-<meta property="og:description" content="Plan a weekend or a trip: local events and news across Chicago-area ZIP codes, updated automatically.">
+<meta property="og:description" content="Plan a weekend or a trip: local events and news across Chicago-area ZIP codes, pulled automatically from each town's village, library, and park district.">
 <meta property="og:image" content="{{ og_image_url }}">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Within Ten — Everything worth doing, ten miles out">
-<meta name="twitter:description" content="Plan a weekend or a trip: local events and news across Chicago-area ZIP codes, updated automatically.">
+<meta name="twitter:description" content="Plan a weekend or a trip: local events and news across Chicago-area ZIP codes, pulled automatically from each town's village, library, and park district.">
 <meta name="twitter:image" content="{{ og_image_url }}">
 <link rel="canonical" href="{{ canonical_url }}">
 <link rel="alternate" type="application/rss+xml" title="Within Ten — Upcoming Local Events" href="{{ canonical_url }}feed.xml">
@@ -406,6 +406,7 @@
     <a href="sponsor/">See pricing &amp; availability</a>.
     <a href="about/">About</a>.
     {% if trick_or_treat_in_season %}<a href="trick-or-treat/">Trick-or-treat hours</a>.{% endif %}
+    <br>See something wrong or missing? <a href="{{ corrections_cta_url }}">Email us</a> — corrections get made the same week.
     <br>Generated {{ generated_at }}.
     {% if analytics and analytics.configured %}<br>Visits counted with privacy-first, cookie-free analytics — no personal data collected.{% endif %}
   </footer>
