@@ -169,6 +169,26 @@ def test_render_sponsor_page_omits_stat_line_when_no_stats():
     assert '<p class="stat-line">' not in html
 
 
+def test_render_sponsor_page_labels_each_tier_by_what_gates_it():
+    # ROADMAP.md Phase 11 #118: newsletter tiers are audience-gated, but
+    # the two membership tiers are delivered by the site itself (traffic
+    # and search presence), not by list size - each tier card should say
+    # which one applies, matching SPONSOR_KIT.md's "Gated by" column.
+    html = build_digest.render_sponsor_page([], datetime.now(timezone.utc))
+    assert html.count("Gated by: Newsletter reach") == 2  # Event Promo, Weekly Spot
+    assert html.count("Gated by: Site traffic &amp; search presence") == 2  # Annual Partner, Neighborhood Authority
+
+
+def test_render_sponsor_page_states_the_founding_partner_rate():
+    # ROADMAP.md Phase 11 #119: a finite, stated discount for the first
+    # three sponsors per region, not an open-ended negotiation - the
+    # live self-serve page should say exactly what SPONSOR_KIT.md does.
+    html = build_digest.render_sponsor_page([], datetime.now(timezone.utc))
+    assert "Founding partner rate" in html
+    assert "first 3 businesses per region" in html
+    assert "25% off" in html
+
+
 def test_render_about_page_states_who_why_and_how():
     # ROADMAP.md Phase 11 #99: the entity-clarity content itself - who
     # publishes this, why it exists, how it's built - not just the
@@ -1360,6 +1380,34 @@ def test_render_hub_page_separates_region_cards_from_bento_grid():
     assert '<div class="bento-grid">' in html
     assert '<div class="region-grid" id="region-grid">' in html
     assert html.index('<div class="region-grid" id="region-grid">') > html.index('<div class="bento-grid">')
+
+
+def test_render_hub_page_never_embeds_event_json_ld():
+    # ROADMAP.md Phase 11 #120: Google's 2026 structured-data eligibility
+    # narrowed to schema matching a page's *primary content purpose*.
+    # The hub aggregates four regions - no single event is its primary
+    # purpose - so Event schema belongs only on region.html.j2's own
+    # views (region/this-weekend/today/free), never here. Guards against
+    # the tempting-but-now-counter-productive future change of adding
+    # Event markup to the hub "to help the home page rank."
+    summaries = [{"name": "Mount Prospect", "url": "https://x/mount-prospect-60056/", "event_count": 5}]
+    html = build_digest.render_hub_page([], summaries, datetime.now(timezone.utc))
+    assert '"@type": "Event"' not in html
+
+
+def test_render_weekend_hub_page_never_embeds_event_json_ld():
+    # Same guard as above, for the other hub-level page - the merged
+    # "This weekend near you" view spans every region, so it isn't any
+    # one event's primary content purpose either.
+    sections = [
+        {
+            "region_name": "Mount Prospect",
+            "region_url": f"{build_digest.SITE_BASE_URL}mount-prospect-60056/",
+            "events": [{"title": "Fishing Derby", "url": "https://x/", "detail": "", "date": "Sep 19", "tags": []}],
+        }
+    ]
+    html = build_digest.render_weekend_hub_page(sections, "Sep 19–20", datetime.now(timezone.utc))
+    assert '"@type": "Event"' not in html
 
 
 def test_render_hub_page_omits_newsletter_when_not_configured():

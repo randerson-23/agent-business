@@ -40,11 +40,13 @@ and specific beats generic ad copy.
 - **Simple, honest reach.** We publish weekly and report actual pageviews
   for your issue on request. No inflated "impressions."
 
-## Reach & retention
+## Reach & retention — and what each tier is actually buying
 
 A subscriber count isn't the number to lead with this early — it's
-honestly the weakest one this business has. Two industry benchmarks are
-a stronger, more honest argument than a raw count:
+honestly the weakest one this business has. But it's also not the
+number every tier depends on. **Weekly Spot and Event Promo are list
+products** — your name in an email, priced on who opens it — and for
+those, audience is the honest gate:
 
 - **Open rate.** 2026 email benchmarks put a typical newsletter at
   20–30% open, with 40%+ considered excellent. We'll report our actual
@@ -53,11 +55,17 @@ a stronger, more honest argument than a raw count:
 - **Retention.** News-vertical newsletters churn at roughly **5.47% a
   month**, among the lowest of any content category — and readers who
   open most weeks are about **2× as likely to still be subscribed a
-  year later** as occasional openers. That's the number an **annual**
-  membership is really buying: not this week's list, but next August's.
-  A weekly send (ours runs Thursdays) sits inside the band where opens
-  and clicks hold up without extra churn, so the cadence itself isn't
-  costing you audience.
+  year later** as occasional openers. A weekly send (ours runs
+  Thursdays) sits inside the band where opens and clicks hold up
+  without extra churn, so the cadence itself isn't costing you audience.
+
+**Annual Partner and Neighborhood Authority are almost entirely *site*
+products**, and the site's numbers are real today, not "coming soon":
+a permanent directory listing, a seasonal-guide spotlight, and a live
+SEO backlink are all delivered by the indexed, four-region site itself
+— verified in Google Search Console, sitemap submitted — not by the
+email list. None of that improves much at 10,000 subscribers, and none
+of it is blocked by having zero.
 
 ## Placements & pricing
 
@@ -67,15 +75,27 @@ instead of needing to be re-sold every week. Prefer to start smaller?
 Weekly Spot and Event Promo get the same recommendation on a shorter
 commitment.
 
-| Placement | Price | Details |
-|---|---|---|
-| **Event Promo** | $20 one-time | Your single event or announcement boosted to the top of "This Week." |
-| **Weekly Spot** | $50 / week, or $175 / month (4 weeks) | Top-of-page banner with your business name, a 2-sentence blurb, and a link, on that week's issue. Not ready for a year? Start here. |
-| **Annual Partner** ⭐ recommended | $1,200 / year | A permanent listing on the region's business directory, a spotlight placement inside one relevant seasonal guide, a live SEO backlink, and priority consideration for Editor's Pick. |
-| **Neighborhood Authority** | $5,000 / year, one business per region | Everything in Annual Partner, held exclusively for your region year-round. Built for real estate and other locally-budgeted categories after neighborhood-level presence, not just leads. |
+| Placement | Price | Gated by | Details |
+|---|---|---|---|
+| **Event Promo** | $20 one-time | Newsletter reach | Your single event or announcement boosted to the top of "This Week." |
+| **Weekly Spot** | $50 / week, or $175 / month (4 weeks) | Newsletter reach | Top-of-page banner with your business name, a 2-sentence blurb, and a link, on that week's issue. Not ready for a year? Start here. |
+| **Annual Partner** ⭐ recommended | $1,200 / year | Site traffic & search presence | A permanent listing on the region's business directory, a spotlight placement inside one relevant seasonal guide, a live SEO backlink, and priority consideration for Editor's Pick. |
+| **Neighborhood Authority** | $5,000 / year, one business per region | Site traffic & search presence | Everything in Annual Partner, held exclusively for your region year-round. Built for real estate and other locally-budgeted categories after neighborhood-level presence, not just leads. |
 
 Payment: Venmo/Zelle/check. Annual and month-to-month options — no
 long-term contract on Weekly Spot or Event Promo, cancel anytime.
+
+### Founding partner rate
+
+The first **three businesses per region** get a founding-partner rate —
+**25% off Annual Partner or Neighborhood Authority, held for your first
+two years** — in exchange for a short testimonial and permission to
+name you as a founding partner. It's a fair trade: you're buying
+something unproven before anyone else has, and the discount compensates
+for that; your name and a real quote is exactly the proof the next
+business we talk to can't get anywhere else. Rate ends once a region's
+third spot is filled — ask when requesting a quote to see how many
+remain in your region.
 
 ## Compared to Nextdoor and Meta geo-ads
 
