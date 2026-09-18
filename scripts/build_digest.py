@@ -929,12 +929,19 @@ def build_answer_block(region: dict) -> str:
     Deliberately generic/accurate rather than citing specific event
     counts or dates - those go stale the moment an AI's cached copy is a
     day old, and a wrong specific is worse than a true generality.
+
+    Doesn't repeat the automation/frequency claim `tagline` already
+    makes (item 126 rewrote every region's tagline to lead with "Pulled
+    automatically from ... several times a week") - this text is always
+    rendered directly after that tagline in the same on-page paragraph,
+    so saying it twice read as repetitive rather than reinforcing. Adds
+    only what the tagline doesn't: that each listing links back to the
+    official source itself.
     """
     return (
         f"{region['name']} ({region['zip']}), {region['state']}: {region['tagline']} "
-        f"This page rebuilds automatically, usually several times a week, "
-        f"and links directly to the official village, library, and park "
-        f"district sources for full details on any listing."
+        f"Every listing links directly to the official village, library, "
+        f"and park district source for full details."
     )
 
 

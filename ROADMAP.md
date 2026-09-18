@@ -5512,6 +5512,32 @@ it since the first competitor review.
      asserting the resulting `SUMMARY:` line contains no raw `\r`. 370
      tests pass; a real `build_digest.py` run still exits 0.
 
+128. ✅ **DONE — a self-correction from item 126's own change, found by
+     re-reading a nearby function this build loop hadn't touched
+     directly.** Item 126 rewrote every region's `tagline` to lead with
+     "Pulled automatically from ... several times a week." That tagline
+     renders inline, as the first sentence of `build_answer_block()`'s
+     on-page GEO paragraph (`<p class="answer-block">`) - and that same
+     function's own next sentence still said "This page rebuilds
+     automatically, usually several times a week, and links directly
+     to..." The same fact, in different words, twice in one paragraph:
+     "Pulled automatically ... several times a week. This page rebuilds
+     automatically, usually several times a week..." - exactly the kind
+     of repetitive AI-answer-block text the item 22 feature this
+     function serves is supposed to avoid.
+
+     Dropped the now-duplicated automation/frequency clause, kept the
+     one thing it said that `tagline` doesn't - that each listing links
+     back to its official source - so nothing informative was lost, just
+     the repetition. Updated the one existing test that had been passing
+     against a now-unrealistic generic tagline fixture (a leftover from
+     before item 116/126 rewrote every real tagline), and added a
+     regression test asserting "automatically" appears exactly once and
+     the frequency claim isn't repeated after the tagline. 371 tests
+     pass; verified against the real generated site
+     (`docs/mount-prospect-60056/index.html`'s `.answer-block` paragraph)
+     after a real `build_digest.py` run.
+
 ## Working agreements for autonomous iteration
 
 - Cadence is hourly (the platform's durable scheduler has a 1-hour floor;
