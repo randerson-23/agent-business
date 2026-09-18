@@ -13,18 +13,47 @@ from __future__ import annotations
 # Keep keywords lowercase - matching is done against lowercased text.
 TAG_KEYWORDS: dict[str, tuple[str, ...]] = {
     "kid_friendly": (
-        "kid", "kids", "child", "children", "family", "toddler", "preschool",
+        # " kid " (not bare "kid"), same substring-false-positive fix as
+        # "art"/"hall"/"pup" below - unpadded, "kid" is a literal prefix
+        # of "kidney", so a real fetched title ("Kidney Foundation Walk")
+        # was tagging as kid-friendly. "kids" (plural, below) already
+        # covers the far more common phrasing ("Kids' Night", "Kids Fun
+        # Run") without this risk, since no common word is "kids" + more
+        # letters the way "kidney" extends "kid".
+        " kid ", "kids", "child", "children", "family", "toddler", "preschool",
         "storytime", "story time", "youth", "playgroup", "craft",
     ),
-    "dog_friendly": ("dog", "dogs", "pup", "puppy", "canine", "pet friendly", "pet-friendly"),
+    "dog_friendly": (
+        # " pup " (not bare "pup") - unpadded, "pup" is a literal prefix
+        # of "puppet"/"puppetry", so a library puppet show (a genuinely
+        # common, non-dog kids' program) was tagging as dog-friendly.
+        # "puppy" (below) already covers the common phrasing.
+        "dog", "dogs", " pup ", "puppy", "canine", "pet friendly", "pet-friendly",
+    ),
     "free": ("free admission", "free event", "no cost", "no charge", " free "),
-    "indoor": ("library", "indoor", "museum", "theater", "theatre", "gym", "hall"),
+    "indoor": (
+        # " hall " (not bare "hall") - unpadded, "hall" is a literal
+        # prefix of "Halloween", so any Halloween event (usually an
+        # outdoor parade or trick-or-treat, the opposite of indoor) was
+        # tagging as indoor purely from that substring.
+        "library", "indoor", "museum", "theater", "theatre", "gym", " hall ",
+    ),
     "outdoor": (
         "park", "outdoor", "trail", "farmers market", "festival", "parade",
         "concert in the park", "5k", "fireworks",
     ),
     "food": ("food", "tasting", "restaurant", "brewery", "bakery", "farmers market"),
-    "art_culture": ("art", "museum", "gallery", "concert", "music", "theater", "theatre", "exhibit"),
+    "art_culture": (
+        # " art" (leading space only, no trailing space needed) - unpadded,
+        # "art" is a literal substring of "party"/"smart"/"start"/
+        # "apartment"/"heart"/"chart"/"depart" (any word with "art"
+        # preceded by a letter), so common event titles like "Block
+        # Party" were tagging as arts & culture. Leading-space-only still
+        # matches "arts", "artist", "artistic", "artwork" - only a word
+        # that *starts* with "art" should match, and none of those false
+        # positives do.
+        " art", "museum", "gallery", "concert", "music", "theater", "theatre", "exhibit",
+    ),
     # Age bands, orthogonal to kid_friendly (which stays the broad 0-17
     # umbrella) - ROADMAP.md Phase 11 #45. "Kid-friendly" spans a 17-year
     # range; Red Tricycle's flagship improvement on acquisition by
