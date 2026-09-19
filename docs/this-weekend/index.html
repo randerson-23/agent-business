@@ -269,40 +269,16 @@
   
     
     <section class="block">
-      <h2>Arlington Heights <a class="region-link" href="https://withintenmiles.com/arlington-heights-60005/">Full region page &rarr;</a></h2>
-      <div class="card-grid">
-      
-      
-      <div class="card">
-        <button type="button" class="tray-star" data-item='{"date": "Sep 19", "date_iso": "2026-09-19T09:00:00", "detail": "Due to the predicted inclement weather, Heritage Fest on September 19 has been CANCELED. We apologize for any inconvenience. Explore the cultural diversity\u2026", "id": "https://www.ahpd.org/event/heritage-fest-2026/", "region_name": "Arlington Heights", "region_url": "https://withintenmiles.com/arlington-heights-60005/", "title": "Heritage Fest", "url": "https://www.ahpd.org/event/heritage-fest-2026/"}' aria-pressed="false" aria-label="Add Heritage Fest to My Weekend">☆</button>
-        
-        <div class="date">Sep 19</div>
-        <h3><a href="https://www.ahpd.org/event/heritage-fest-2026/">Heritage Fest</a></h3>
-        
-        <p class="detail">Due to the predicted inclement weather, Heritage Fest on September 19 has been CANCELED. We apologize for any inconvenience. Explore the cultural diversity…</p>
-        
-        <div class="tag-row">
-          <span class="tag-badge" style="background: var(--hue-purple-bg); color: var(--hue-purple-ink);">🎨 Arts &amp; culture</span><span class="tag-badge" style="background: var(--hue-orange-bg); color: var(--hue-orange-ink);">🍽️ Food &amp; drink</span><span class="tag-badge" style="background: var(--hue-blue-bg); color: var(--hue-blue-ink);">🏠 Indoor</span><span class="tag-badge" style="background: var(--hue-teal-bg); color: var(--hue-teal-ink);">🌳 Outdoor</span>
-        </div>
-        
-        
-        <div class="cal-row">
-          <a href="data:text/calendar;charset=utf-8,BEGIN%3AVCALENDAR%0D%0AVERSION%3A2.0%0D%0APRODID%3A-//Within%20Ten//EN%0D%0ABEGIN%3AVEVENT%0D%0ADTSTART%3A20260919T090000%0D%0ADTEND%3A20260919T100000%0D%0ASUMMARY%3AHeritage%20Fest%0D%0ADESCRIPTION%3ADue%20to%20the%20predicted%20inclement%20weather%5C%2C%20Heritage%20Fest%20on%20September%2019%20has%20been%20CANCELED.%20We%20apologize%20for%20any%20inconvenience.%20Explore%20the%20cultural%20diversity%E2%80%A6%0D%0AURL%3Ahttps%3A//www.ahpd.org/event/heritage-fest-2026/%0D%0AEND%3AVEVENT%0D%0AEND%3AVCALENDAR%0D%0A" download="event.ics">📅 Add to calendar</a>
-          <a href="https://www.google.com/calendar/render?action=TEMPLATE&amp;text=Heritage+Fest&amp;dates=20260919T090000%2F20260919T100000&amp;details=Due+to+the+predicted+inclement+weather%2C+Heritage+Fest+on+September+19+has+been+CANCELED.+We+apologize+for+any+inconvenience.+Explore+the+cultural+diversity%E2%80%A6&amp;location=Arlington+Heights" target="_blank" rel="noopener">Google Calendar</a>
-        </div>
-        
-      </div>
-      
-      </div>
-    </section>
-    
-    <section class="block">
       <h2>Des Plaines <a class="region-link" href="https://withintenmiles.com/des-plaines-60016/">Full region page &rarr;</a></h2>
       <div class="card-grid">
       
+      <!-- id folds in date_iso so two occurrences of one recurring event
+           (item 141, same url) don't collide as one tray item - a real
+           bug confirmed with a headless-browser test before fixing
+           (ROADMAP.md item 146). -->
       
       <div class="card">
-        <button type="button" class="tray-star" data-item='{"date": "Sep 18", "date_iso": "2026-09-18T00:00:00", "detail": "Carnival rides, live bands, food \u0026 drink at Lake Park. 6\u201311pm, 2200 Lee St. Free admission.", "id": "https://desplainesfallfest.org/", "region_name": "Des Plaines", "region_url": "https://withintenmiles.com/des-plaines-60016/", "title": "Des Plaines Fall Fest (Friday)", "url": "https://desplainesfallfest.org/"}' aria-pressed="false" aria-label="Add Des Plaines Fall Fest (Friday) to My Weekend">☆</button>
+        <button type="button" class="tray-star" data-item='{"date": "Sep 18", "date_iso": "2026-09-18T00:00:00", "detail": "Carnival rides, live bands, food \u0026 drink at Lake Park. 6\u201311pm, 2200 Lee St. Free admission.", "id": "https://desplainesfallfest.org/|2026-09-18T00:00:00", "region_name": "Des Plaines", "region_url": "https://withintenmiles.com/des-plaines-60016/", "title": "Des Plaines Fall Fest (Friday)", "url": "https://desplainesfallfest.org/"}' aria-pressed="false" aria-label="Add Des Plaines Fall Fest (Friday) to My Weekend">☆</button>
         
         <div class="date">Sep 18</div>
         <h3><a href="https://desplainesfallfest.org/">Des Plaines Fall Fest (Friday)</a></h3>
@@ -321,9 +297,13 @@
         
       </div>
       
+      <!-- id folds in date_iso so two occurrences of one recurring event
+           (item 141, same url) don't collide as one tray item - a real
+           bug confirmed with a headless-browser test before fixing
+           (ROADMAP.md item 146). -->
       
       <div class="card">
-        <button type="button" class="tray-star" data-item='{"date": "Sep 19", "date_iso": "2026-09-19T00:00:00", "detail": "Carnival rides, rock wall, petting zoo, food \u0026 10 live bands at Lake Park. Noon\u201311pm, 2200 Lee St. Free admission.", "id": "https://desplainesfallfest.org/", "region_name": "Des Plaines", "region_url": "https://withintenmiles.com/des-plaines-60016/", "title": "Des Plaines Fall Fest (Saturday)", "url": "https://desplainesfallfest.org/"}' aria-pressed="false" aria-label="Add Des Plaines Fall Fest (Saturday) to My Weekend">☆</button>
+        <button type="button" class="tray-star" data-item='{"date": "Sep 19", "date_iso": "2026-09-19T00:00:00", "detail": "Carnival rides, rock wall, petting zoo, food \u0026 10 live bands at Lake Park. Noon\u201311pm, 2200 Lee St. Free admission.", "id": "https://desplainesfallfest.org/|2026-09-19T00:00:00", "region_name": "Des Plaines", "region_url": "https://withintenmiles.com/des-plaines-60016/", "title": "Des Plaines Fall Fest (Saturday)", "url": "https://desplainesfallfest.org/"}' aria-pressed="false" aria-label="Add Des Plaines Fall Fest (Saturday) to My Weekend">☆</button>
         
         <div class="date">Sep 19</div>
         <h3><a href="https://desplainesfallfest.org/">Des Plaines Fall Fest (Saturday)</a></h3>
@@ -342,9 +322,13 @@
         
       </div>
       
+      <!-- id folds in date_iso so two occurrences of one recurring event
+           (item 141, same url) don't collide as one tray item - a real
+           bug confirmed with a headless-browser test before fixing
+           (ROADMAP.md item 146). -->
       
       <div class="card">
-        <button type="button" class="tray-star" data-item='{"date": "Sep 20", "date_iso": "2026-09-20T00:00:00", "detail": "Carnival rides, rock wall, petting zoo \u0026 food wind down at Lake Park. Noon\u20137pm, 2200 Lee St. Free admission.", "id": "https://desplainesfallfest.org/", "region_name": "Des Plaines", "region_url": "https://withintenmiles.com/des-plaines-60016/", "title": "Des Plaines Fall Fest (Sunday)", "url": "https://desplainesfallfest.org/"}' aria-pressed="false" aria-label="Add Des Plaines Fall Fest (Sunday) to My Weekend">☆</button>
+        <button type="button" class="tray-star" data-item='{"date": "Sep 20", "date_iso": "2026-09-20T00:00:00", "detail": "Carnival rides, rock wall, petting zoo \u0026 food wind down at Lake Park. Noon\u20137pm, 2200 Lee St. Free admission.", "id": "https://desplainesfallfest.org/|2026-09-20T00:00:00", "region_name": "Des Plaines", "region_url": "https://withintenmiles.com/des-plaines-60016/", "title": "Des Plaines Fall Fest (Sunday)", "url": "https://desplainesfallfest.org/"}' aria-pressed="false" aria-label="Add Des Plaines Fall Fest (Sunday) to My Weekend">☆</button>
         
         <div class="date">Sep 20</div>
         <h3><a href="https://desplainesfallfest.org/">Des Plaines Fall Fest (Sunday)</a></h3>
@@ -370,9 +354,13 @@
       <h2>Mount Prospect <a class="region-link" href="https://withintenmiles.com/mount-prospect-60056/">Full region page &rarr;</a></h2>
       <div class="card-grid">
       
+      <!-- id folds in date_iso so two occurrences of one recurring event
+           (item 141, same url) don't collide as one tray item - a real
+           bug confirmed with a headless-browser test before fixing
+           (ROADMAP.md item 146). -->
       
       <div class="card">
-        <button type="button" class="tray-star" data-item='{"date": "Sep 18", "date_iso": "2026-09-18T00:00:00", "detail": "German food, drink \u0026 live music from the band Paloma. 4\u201311pm, Emerson St. \u0026 Busse Ave. \u2014 Downtown Merchants.", "id": "https://mpdowntown.com/oktoberfest-info/", "region_name": "Mount Prospect", "region_url": "https://withintenmiles.com/mount-prospect-60056/", "title": "Oktoberfest", "url": "https://mpdowntown.com/oktoberfest-info/"}' aria-pressed="false" aria-label="Add Oktoberfest to My Weekend">☆</button>
+        <button type="button" class="tray-star" data-item='{"date": "Sep 18", "date_iso": "2026-09-18T00:00:00", "detail": "German food, drink \u0026 live music from the band Paloma. 4\u201311pm, Emerson St. \u0026 Busse Ave. \u2014 Downtown Merchants.", "id": "https://mpdowntown.com/oktoberfest-info/|2026-09-18T00:00:00", "region_name": "Mount Prospect", "region_url": "https://withintenmiles.com/mount-prospect-60056/", "title": "Oktoberfest", "url": "https://mpdowntown.com/oktoberfest-info/"}' aria-pressed="false" aria-label="Add Oktoberfest to My Weekend">☆</button>
         <div class="series">Fall Fest &amp; Oktoberfest Weekend</div>
         <div class="date">Sep 18</div>
         <h3><a href="https://mpdowntown.com/oktoberfest-info/">Oktoberfest</a></h3>
@@ -391,9 +379,13 @@
         
       </div>
       
+      <!-- id folds in date_iso so two occurrences of one recurring event
+           (item 141, same url) don't collide as one tray item - a real
+           bug confirmed with a headless-browser test before fixing
+           (ROADMAP.md item 146). -->
       
       <div class="card">
-        <button type="button" class="tray-star" data-item='{"date": "Sep 19", "date_iso": "2026-09-19T00:00:00", "detail": "Free Fall Festival noon\u20134pm (special-needs hour noon\u20131pm) with crafts \u0026 entertainment, then Oktoberfest continues 4\u201311pm. Emerson \u0026 Busse.", "id": "https://mpdowntown.com/oktoberfest-info/", "region_name": "Mount Prospect", "region_url": "https://withintenmiles.com/mount-prospect-60056/", "title": "Fall Festival \u0026 Oktoberfest", "url": "https://mpdowntown.com/oktoberfest-info/"}' aria-pressed="false" aria-label="Add Fall Festival &amp; Oktoberfest to My Weekend">☆</button>
+        <button type="button" class="tray-star" data-item='{"date": "Sep 19", "date_iso": "2026-09-19T00:00:00", "detail": "Free Fall Festival noon\u20134pm (special-needs hour noon\u20131pm) with crafts \u0026 entertainment, then Oktoberfest continues 4\u201311pm. Emerson \u0026 Busse.", "id": "https://mpdowntown.com/oktoberfest-info/|2026-09-19T00:00:00", "region_name": "Mount Prospect", "region_url": "https://withintenmiles.com/mount-prospect-60056/", "title": "Fall Festival \u0026 Oktoberfest", "url": "https://mpdowntown.com/oktoberfest-info/"}' aria-pressed="false" aria-label="Add Fall Festival &amp; Oktoberfest to My Weekend">☆</button>
         <div class="series">Fall Fest &amp; Oktoberfest Weekend</div>
         <div class="date">Sep 19</div>
         <h3><a href="https://mpdowntown.com/oktoberfest-info/">Fall Festival &amp; Oktoberfest</a></h3>
@@ -412,9 +404,13 @@
         
       </div>
       
+      <!-- id folds in date_iso so two occurrences of one recurring event
+           (item 141, same url) don't collide as one tray item - a real
+           bug confirmed with a headless-browser test before fixing
+           (ROADMAP.md item 146). -->
       
       <div class="card">
-        <button type="button" class="tray-star" data-item='{"date": "Sep 20", "date_iso": "2026-09-20T08:00:00", "detail": "Local produce and vendors, organized by the Mount Prospect Lions Club, rain or shine. West Metra commuter lot, Northwest Hwy \u0026 Main St (Rte 83).", "id": "https://mplions.org/event/farmers-market/", "region_name": "Mount Prospect", "region_url": "https://withintenmiles.com/mount-prospect-60056/", "title": "Mount Prospect Farmers Market", "url": "https://mplions.org/event/farmers-market/"}' aria-pressed="false" aria-label="Add Mount Prospect Farmers Market to My Weekend">☆</button>
+        <button type="button" class="tray-star" data-item='{"date": "Sep 20", "date_iso": "2026-09-20T08:00:00", "detail": "Local produce and vendors, organized by the Mount Prospect Lions Club, rain or shine. West Metra commuter lot, Northwest Hwy \u0026 Main St (Rte 83).", "id": "https://mplions.org/event/farmers-market/|2026-09-20T08:00:00", "region_name": "Mount Prospect", "region_url": "https://withintenmiles.com/mount-prospect-60056/", "title": "Mount Prospect Farmers Market", "url": "https://mplions.org/event/farmers-market/"}' aria-pressed="false" aria-label="Add Mount Prospect Farmers Market to My Weekend">☆</button>
         
         <div class="date">Sep 20</div>
         <h3><a href="https://mplions.org/event/farmers-market/">Mount Prospect Farmers Market</a></h3>
@@ -433,9 +429,13 @@
         
       </div>
       
+      <!-- id folds in date_iso so two occurrences of one recurring event
+           (item 141, same url) don't collide as one tray item - a real
+           bug confirmed with a headless-browser test before fixing
+           (ROADMAP.md item 146). -->
       
       <div class="card">
-        <button type="button" class="tray-star" data-item='{"date": "Sep 19", "date_iso": "2026-09-19T10:00:00+00:00", "detail": "Saturday, September 19 2026 10:00am - 11:00am \n Craft and create with us! We\u0027ll provide an idea and supplies; you create your own masterpiece.", "id": "https://mppl.libnet.info/event/16428150", "region_name": "Mount Prospect", "region_url": "https://withintenmiles.com/mount-prospect-60056/", "title": "Creation Station: DIY Mu\u00f1ecas Quitapenas (Worry Dolls)", "url": "https://mppl.libnet.info/event/16428150"}' aria-pressed="false" aria-label="Add Creation Station: DIY Muñecas Quitapenas (Worry Dolls) to My Weekend">☆</button>
+        <button type="button" class="tray-star" data-item='{"date": "Sep 19", "date_iso": "2026-09-19T10:00:00+00:00", "detail": "Saturday, September 19 2026 10:00am - 11:00am \n Craft and create with us! We\u0027ll provide an idea and supplies; you create your own masterpiece.", "id": "https://mppl.libnet.info/event/16428150|2026-09-19T10:00:00+00:00", "region_name": "Mount Prospect", "region_url": "https://withintenmiles.com/mount-prospect-60056/", "title": "Creation Station: DIY Mu\u00f1ecas Quitapenas (Worry Dolls)", "url": "https://mppl.libnet.info/event/16428150"}' aria-pressed="false" aria-label="Add Creation Station: DIY Muñecas Quitapenas (Worry Dolls) to My Weekend">☆</button>
         
         <div class="date">Sep 19</div>
         <h3><a href="https://mppl.libnet.info/event/16428150">Creation Station: DIY Muñecas Quitapenas (Worry Dolls)</a></h3>
@@ -455,27 +455,6 @@
         
       </div>
       
-      
-      <div class="card">
-        <button type="button" class="tray-star" data-item='{"date": "Sep 20", "date_iso": "2026-09-20T11:00:00", "detail": "Barks and Brews 2: Electric Boogaloo Visit Friendship Park Conservatory for the second annual Barks and Brews event featuring The Buddy Foundation. Stop by\u2026", "id": "https://www.mppd.org/event/barks-and-brews-2-electric-boogaloo/", "region_name": "Mount Prospect", "region_url": "https://withintenmiles.com/mount-prospect-60056/", "title": "Barks and Brews 2: Electric Boogaloo", "url": "https://www.mppd.org/event/barks-and-brews-2-electric-boogaloo/"}' aria-pressed="false" aria-label="Add Barks and Brews 2: Electric Boogaloo to My Weekend">☆</button>
-        
-        <div class="date">Sep 20</div>
-        <h3><a href="https://www.mppd.org/event/barks-and-brews-2-electric-boogaloo/">Barks and Brews 2: Electric Boogaloo</a></h3>
-        
-        <p class="detail">Barks and Brews 2: Electric Boogaloo Visit Friendship Park Conservatory for the second annual Barks and Brews event featuring The Buddy Foundation. Stop by…</p>
-        
-        <div class="tag-row">
-          <span class="tag-badge" style="background: var(--hue-amber-bg); color: var(--hue-amber-ink);">🐕 Dog-friendly</span><span class="tag-badge" style="background: var(--hue-orange-bg); color: var(--hue-orange-ink);">🍽️ Food &amp; drink</span><span class="tag-badge" style="background: var(--hue-green-bg); color: var(--hue-green-ink);">💵 Free</span><span class="tag-badge" style="background: var(--hue-pink-bg); color: var(--hue-pink-ink);">🧒 Kid-friendly</span><span class="tag-badge" style="background: var(--hue-teal-bg); color: var(--hue-teal-ink);">🌳 Outdoor</span><span class="tag-badge" style="background: var(--hue-lime-bg); color: var(--hue-lime-ink);">👶 Toddler</span>
-        </div>
-        
-        
-        <div class="cal-row">
-          <a href="data:text/calendar;charset=utf-8,BEGIN%3AVCALENDAR%0D%0AVERSION%3A2.0%0D%0APRODID%3A-//Within%20Ten//EN%0D%0ABEGIN%3AVEVENT%0D%0ADTSTART%3A20260920T110000%0D%0ADTEND%3A20260920T120000%0D%0ASUMMARY%3ABarks%20and%20Brews%202%3A%20Electric%20Boogaloo%0D%0ADESCRIPTION%3ABarks%20and%20Brews%202%3A%20Electric%20Boogaloo%20Visit%20Friendship%20Park%20Conservatory%20for%20the%20second%20annual%20Barks%20and%20Brews%20event%20featuring%20The%20Buddy%20Foundation.%20Stop%20by%E2%80%A6%0D%0AURL%3Ahttps%3A//www.mppd.org/event/barks-and-brews-2-electric-boogaloo/%0D%0AEND%3AVEVENT%0D%0AEND%3AVCALENDAR%0D%0A" download="event.ics">📅 Add to calendar</a>
-          <a href="https://www.google.com/calendar/render?action=TEMPLATE&amp;text=Barks+and+Brews+2%3A+Electric+Boogaloo&amp;dates=20260920T110000%2F20260920T120000&amp;details=Barks+and+Brews+2%3A+Electric+Boogaloo+Visit+Friendship+Park+Conservatory+for+the+second+annual+Barks+and+Brews+event+featuring+The+Buddy+Foundation.+Stop+by%E2%80%A6&amp;location=Mount+Prospect" target="_blank" rel="noopener">Google Calendar</a>
-        </div>
-        
-      </div>
-      
       </div>
     </section>
     
@@ -483,9 +462,13 @@
       <h2>Palatine <a class="region-link" href="https://withintenmiles.com/palatine-60067/">Full region page &rarr;</a></h2>
       <div class="card-grid">
       
+      <!-- id folds in date_iso so two occurrences of one recurring event
+           (item 141, same url) don't collide as one tray item - a real
+           bug confirmed with a headless-browser test before fixing
+           (ROADMAP.md item 146). -->
       
       <div class="card">
-        <button type="button" class="tray-star" data-item='{"date": "Sep 18", "date_iso": "2026-09-18T00:00:00", "detail": "German beer, food \u0026 music return to Downtown Palatine. 5pm\u2013midnight, N Smith \u0026 W Slade St. Free entry.", "id": "https://palatinerotary.org/Oktoberfest.php", "region_name": "Palatine", "region_url": "https://withintenmiles.com/palatine-60067/", "title": "Palatine Oktoberfest (Friday)", "url": "https://palatinerotary.org/Oktoberfest.php"}' aria-pressed="false" aria-label="Add Palatine Oktoberfest (Friday) to My Weekend">☆</button>
+        <button type="button" class="tray-star" data-item='{"date": "Sep 18", "date_iso": "2026-09-18T00:00:00", "detail": "German beer, food \u0026 music return to Downtown Palatine. 5pm\u2013midnight, N Smith \u0026 W Slade St. Free entry.", "id": "https://palatinerotary.org/Oktoberfest.php|2026-09-18T00:00:00", "region_name": "Palatine", "region_url": "https://withintenmiles.com/palatine-60067/", "title": "Palatine Oktoberfest (Friday)", "url": "https://palatinerotary.org/Oktoberfest.php"}' aria-pressed="false" aria-label="Add Palatine Oktoberfest (Friday) to My Weekend">☆</button>
         
         <div class="date">Sep 18</div>
         <h3><a href="https://palatinerotary.org/Oktoberfest.php">Palatine Oktoberfest (Friday)</a></h3>
@@ -504,9 +487,13 @@
         
       </div>
       
+      <!-- id folds in date_iso so two occurrences of one recurring event
+           (item 141, same url) don't collide as one tray item - a real
+           bug confirmed with a headless-browser test before fixing
+           (ROADMAP.md item 146). -->
       
       <div class="card">
-        <button type="button" class="tray-star" data-item='{"date": "Sep 19", "date_iso": "2026-09-19T00:00:00", "detail": "Family Day: games, crafts \u0026 entertainment plus German beer, food \u0026 music. Noon\u2013midnight, N Smith \u0026 W Slade St. Free entry.", "id": "https://palatinerotary.org/Oktoberfest.php", "region_name": "Palatine", "region_url": "https://withintenmiles.com/palatine-60067/", "title": "Palatine Oktoberfest \u2014 Family Day (Saturday)", "url": "https://palatinerotary.org/Oktoberfest.php"}' aria-pressed="false" aria-label="Add Palatine Oktoberfest — Family Day (Saturday) to My Weekend">☆</button>
+        <button type="button" class="tray-star" data-item='{"date": "Sep 19", "date_iso": "2026-09-19T00:00:00", "detail": "Family Day: games, crafts \u0026 entertainment plus German beer, food \u0026 music. Noon\u2013midnight, N Smith \u0026 W Slade St. Free entry.", "id": "https://palatinerotary.org/Oktoberfest.php|2026-09-19T00:00:00", "region_name": "Palatine", "region_url": "https://withintenmiles.com/palatine-60067/", "title": "Palatine Oktoberfest \u2014 Family Day (Saturday)", "url": "https://palatinerotary.org/Oktoberfest.php"}' aria-pressed="false" aria-label="Add Palatine Oktoberfest — Family Day (Saturday) to My Weekend">☆</button>
         
         <div class="date">Sep 19</div>
         <h3><a href="https://palatinerotary.org/Oktoberfest.php">Palatine Oktoberfest — Family Day (Saturday)</a></h3>
@@ -525,9 +512,13 @@
         
       </div>
       
+      <!-- id folds in date_iso so two occurrences of one recurring event
+           (item 141, same url) don't collide as one tray item - a real
+           bug confirmed with a headless-browser test before fixing
+           (ROADMAP.md item 146). -->
       
       <div class="card">
-        <button type="button" class="tray-star" data-item='{"date": "Sep 20", "date_iso": "2026-09-20T00:00:00", "detail": "German beer, food \u0026 music wind down Downtown Palatine\u0027s Oktoberfest. Noon\u20136pm, N Smith \u0026 W Slade St. Free entry.", "id": "https://palatinerotary.org/Oktoberfest.php", "region_name": "Palatine", "region_url": "https://withintenmiles.com/palatine-60067/", "title": "Palatine Oktoberfest (Sunday)", "url": "https://palatinerotary.org/Oktoberfest.php"}' aria-pressed="false" aria-label="Add Palatine Oktoberfest (Sunday) to My Weekend">☆</button>
+        <button type="button" class="tray-star" data-item='{"date": "Sep 20", "date_iso": "2026-09-20T00:00:00", "detail": "German beer, food \u0026 music wind down Downtown Palatine\u0027s Oktoberfest. Noon\u20136pm, N Smith \u0026 W Slade St. Free entry.", "id": "https://palatinerotary.org/Oktoberfest.php|2026-09-20T00:00:00", "region_name": "Palatine", "region_url": "https://withintenmiles.com/palatine-60067/", "title": "Palatine Oktoberfest (Sunday)", "url": "https://palatinerotary.org/Oktoberfest.php"}' aria-pressed="false" aria-label="Add Palatine Oktoberfest (Sunday) to My Weekend">☆</button>
         
         <div class="date">Sep 20</div>
         <h3><a href="https://palatinerotary.org/Oktoberfest.php">Palatine Oktoberfest (Sunday)</a></h3>
@@ -556,7 +547,7 @@
     Want your ZIP added, or want to sponsor a region?
     <a href="https://withintenmiles.com/sponsor/">See pricing &amp; availability</a>.
     <a href="https://withintenmiles.com/about/">About</a>.
-    <br>Generated 2026-09-19 15:54 UTC.
+    <br>Generated 2026-09-19 16:55 UTC.
     
   </footer>
 </div>

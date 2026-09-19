@@ -736,9 +736,18 @@
   
 
   
+  <!-- ROADMAP.md item 146: id folds in date_iso (when present) so two
+       distinct dated occurrences that share one url - every occurrence
+       of a recurring event (item 141) links the same organiser page -
+       don't collide as "the same tray item." Confirmed with a real
+       headless-browser test before fixing: starring one Farmers Market
+       occurrence used to mark all six of that market's cards as
+       starred, and starring a second occurrence removed the first
+       instead of adding it, since the tray's toggle logic matches by
+       id alone. -->
   
   <div class="editors-pick">
-    <button type="button" class="tray-star" data-item='{"date": "Sep 18", "date_iso": "2026-09-18T00:00:00", "detail": "German food, drink \u0026 live music from the band Paloma. 4\u201311pm, Emerson St. \u0026 Busse Ave. \u2014 Downtown Merchants.", "id": "https://mpdowntown.com/oktoberfest-info/", "region_name": "Mount Prospect", "region_url": "https://withintenmiles.com/mount-prospect-60056/", "title": "Oktoberfest", "url": "https://mpdowntown.com/oktoberfest-info/"}' aria-pressed="false" aria-label="Add Oktoberfest to My Weekend">☆</button>
+    <button type="button" class="tray-star" data-item='{"date": "Sep 18", "date_iso": "2026-09-18T00:00:00", "detail": "German food, drink \u0026 live music from the band Paloma. 4\u201311pm, Emerson St. \u0026 Busse Ave. \u2014 Downtown Merchants.", "id": "https://mpdowntown.com/oktoberfest-info/|2026-09-18T00:00:00", "region_name": "Mount Prospect", "region_url": "https://withintenmiles.com/mount-prospect-60056/", "title": "Oktoberfest", "url": "https://mpdowntown.com/oktoberfest-info/"}' aria-pressed="false" aria-label="Add Oktoberfest to My Weekend">☆</button>
     <div class="label">✏️ Editor's Pick</div>
     <h2><a href="https://mpdowntown.com/oktoberfest-info/">Oktoberfest</a></h2>
     <div class="date">Sep 18</div>
@@ -761,18 +770,6 @@
 
   
   <div class="filter-bar" role="group" aria-label="Filter events">
-    
-    <button type="button" class="filter-chip" data-tag="art_culture" aria-pressed="false">
-      <span aria-hidden="true">🎨</span>Arts &amp; culture
-    </button>
-    
-    <button type="button" class="filter-chip" data-tag="dog_friendly" aria-pressed="false">
-      <span aria-hidden="true">🐕</span>Dog-friendly
-    </button>
-    
-    <button type="button" class="filter-chip" data-tag="elementary" aria-pressed="false">
-      <span aria-hidden="true">🎒</span>Elementary age
-    </button>
     
     <button type="button" class="filter-chip" data-tag="food" aria-pressed="false">
       <span aria-hidden="true">🍽️</span>Food &amp; drink
@@ -814,6 +811,8 @@
       
         <div class="card-grid">
         
+        <!-- id folds in date_iso - see the Editor's Pick tray_item above
+             for why (ROADMAP.md item 146). -->
         
         <div class="card" data-tags="outdoor">
           
@@ -823,7 +822,7 @@
                guide index have nothing to do with weekend planning.
                #90: nor does a school half-day belong in it - it's real
                and worth knowing, but nobody plans a weekend around one. -->
-          <button type="button" class="tray-star" data-item='{"date": "Sep 18", "date_iso": "2026-09-18T00:00:00", "detail": "German food, drink \u0026 live music from the band Paloma. 4\u201311pm, Emerson St. \u0026 Busse Ave. \u2014 Downtown Merchants.", "id": "https://mpdowntown.com/oktoberfest-info/", "region_name": "Mount Prospect", "region_url": "https://withintenmiles.com/mount-prospect-60056/", "title": "Oktoberfest", "url": "https://mpdowntown.com/oktoberfest-info/"}' aria-pressed="false" aria-label="Add Oktoberfest to My Weekend">☆</button>
+          <button type="button" class="tray-star" data-item='{"date": "Sep 18", "date_iso": "2026-09-18T00:00:00", "detail": "German food, drink \u0026 live music from the band Paloma. 4\u201311pm, Emerson St. \u0026 Busse Ave. \u2014 Downtown Merchants.", "id": "https://mpdowntown.com/oktoberfest-info/|2026-09-18T00:00:00", "region_name": "Mount Prospect", "region_url": "https://withintenmiles.com/mount-prospect-60056/", "title": "Oktoberfest", "url": "https://mpdowntown.com/oktoberfest-info/"}' aria-pressed="false" aria-label="Add Oktoberfest to My Weekend">☆</button>
           
           
           <div class="series">Fall Fest &amp; Oktoberfest Weekend</div>
@@ -844,6 +843,8 @@
           
         </div>
         
+        <!-- id folds in date_iso - see the Editor's Pick tray_item above
+             for why (ROADMAP.md item 146). -->
         
         <div class="card" data-tags="free,kid_friendly,outdoor">
           
@@ -853,7 +854,7 @@
                guide index have nothing to do with weekend planning.
                #90: nor does a school half-day belong in it - it's real
                and worth knowing, but nobody plans a weekend around one. -->
-          <button type="button" class="tray-star" data-item='{"date": "Sep 19", "date_iso": "2026-09-19T00:00:00", "detail": "Free Fall Festival noon\u20134pm (special-needs hour noon\u20131pm) with crafts \u0026 entertainment, then Oktoberfest continues 4\u201311pm. Emerson \u0026 Busse.", "id": "https://mpdowntown.com/oktoberfest-info/", "region_name": "Mount Prospect", "region_url": "https://withintenmiles.com/mount-prospect-60056/", "title": "Fall Festival \u0026 Oktoberfest", "url": "https://mpdowntown.com/oktoberfest-info/"}' aria-pressed="false" aria-label="Add Fall Festival &amp; Oktoberfest to My Weekend">☆</button>
+          <button type="button" class="tray-star" data-item='{"date": "Sep 19", "date_iso": "2026-09-19T00:00:00", "detail": "Free Fall Festival noon\u20134pm (special-needs hour noon\u20131pm) with crafts \u0026 entertainment, then Oktoberfest continues 4\u201311pm. Emerson \u0026 Busse.", "id": "https://mpdowntown.com/oktoberfest-info/|2026-09-19T00:00:00", "region_name": "Mount Prospect", "region_url": "https://withintenmiles.com/mount-prospect-60056/", "title": "Fall Festival \u0026 Oktoberfest", "url": "https://mpdowntown.com/oktoberfest-info/"}' aria-pressed="false" aria-label="Add Fall Festival &amp; Oktoberfest to My Weekend">☆</button>
           
           
           <div class="series">Fall Fest &amp; Oktoberfest Weekend</div>
@@ -874,6 +875,8 @@
           
         </div>
         
+        <!-- id folds in date_iso - see the Editor's Pick tray_item above
+             for why (ROADMAP.md item 146). -->
         
         <div class="card" data-tags="outdoor,food">
           
@@ -883,7 +886,7 @@
                guide index have nothing to do with weekend planning.
                #90: nor does a school half-day belong in it - it's real
                and worth knowing, but nobody plans a weekend around one. -->
-          <button type="button" class="tray-star" data-item='{"date": "Sep 20", "date_iso": "2026-09-20T08:00:00", "detail": "Local produce and vendors, organized by the Mount Prospect Lions Club, rain or shine. West Metra commuter lot, Northwest Hwy \u0026 Main St (Rte 83).", "id": "https://mplions.org/event/farmers-market/", "region_name": "Mount Prospect", "region_url": "https://withintenmiles.com/mount-prospect-60056/", "title": "Mount Prospect Farmers Market", "url": "https://mplions.org/event/farmers-market/"}' aria-pressed="false" aria-label="Add Mount Prospect Farmers Market to My Weekend">☆</button>
+          <button type="button" class="tray-star" data-item='{"date": "Sep 20", "date_iso": "2026-09-20T08:00:00", "detail": "Local produce and vendors, organized by the Mount Prospect Lions Club, rain or shine. West Metra commuter lot, Northwest Hwy \u0026 Main St (Rte 83).", "id": "https://mplions.org/event/farmers-market/|2026-09-20T08:00:00", "region_name": "Mount Prospect", "region_url": "https://withintenmiles.com/mount-prospect-60056/", "title": "Mount Prospect Farmers Market", "url": "https://mplions.org/event/farmers-market/"}' aria-pressed="false" aria-label="Add Mount Prospect Farmers Market to My Weekend">☆</button>
           
           
           
@@ -904,6 +907,8 @@
           
         </div>
         
+        <!-- id folds in date_iso - see the Editor's Pick tray_item above
+             for why (ROADMAP.md item 146). -->
         
         <div class="card" data-tags="outdoor,food">
           
@@ -913,7 +918,7 @@
                guide index have nothing to do with weekend planning.
                #90: nor does a school half-day belong in it - it's real
                and worth knowing, but nobody plans a weekend around one. -->
-          <button type="button" class="tray-star" data-item='{"date": "Sep 27", "date_iso": "2026-09-27T08:00:00", "detail": "Local produce and vendors, organized by the Mount Prospect Lions Club, rain or shine. West Metra commuter lot, Northwest Hwy \u0026 Main St (Rte 83).", "id": "https://mplions.org/event/farmers-market/", "region_name": "Mount Prospect", "region_url": "https://withintenmiles.com/mount-prospect-60056/", "title": "Mount Prospect Farmers Market", "url": "https://mplions.org/event/farmers-market/"}' aria-pressed="false" aria-label="Add Mount Prospect Farmers Market to My Weekend">☆</button>
+          <button type="button" class="tray-star" data-item='{"date": "Sep 27", "date_iso": "2026-09-27T08:00:00", "detail": "Local produce and vendors, organized by the Mount Prospect Lions Club, rain or shine. West Metra commuter lot, Northwest Hwy \u0026 Main St (Rte 83).", "id": "https://mplions.org/event/farmers-market/|2026-09-27T08:00:00", "region_name": "Mount Prospect", "region_url": "https://withintenmiles.com/mount-prospect-60056/", "title": "Mount Prospect Farmers Market", "url": "https://mplions.org/event/farmers-market/"}' aria-pressed="false" aria-label="Add Mount Prospect Farmers Market to My Weekend">☆</button>
           
           
           
@@ -934,6 +939,8 @@
           
         </div>
         
+        <!-- id folds in date_iso - see the Editor's Pick tray_item above
+             for why (ROADMAP.md item 146). -->
         
         <div class="card" data-tags="outdoor,food">
           
@@ -943,7 +950,7 @@
                guide index have nothing to do with weekend planning.
                #90: nor does a school half-day belong in it - it's real
                and worth knowing, but nobody plans a weekend around one. -->
-          <button type="button" class="tray-star" data-item='{"date": "Oct 4", "date_iso": "2026-10-04T08:00:00", "detail": "Local produce and vendors, organized by the Mount Prospect Lions Club, rain or shine. West Metra commuter lot, Northwest Hwy \u0026 Main St (Rte 83).", "id": "https://mplions.org/event/farmers-market/", "region_name": "Mount Prospect", "region_url": "https://withintenmiles.com/mount-prospect-60056/", "title": "Mount Prospect Farmers Market", "url": "https://mplions.org/event/farmers-market/"}' aria-pressed="false" aria-label="Add Mount Prospect Farmers Market to My Weekend">☆</button>
+          <button type="button" class="tray-star" data-item='{"date": "Oct 4", "date_iso": "2026-10-04T08:00:00", "detail": "Local produce and vendors, organized by the Mount Prospect Lions Club, rain or shine. West Metra commuter lot, Northwest Hwy \u0026 Main St (Rte 83).", "id": "https://mplions.org/event/farmers-market/|2026-10-04T08:00:00", "region_name": "Mount Prospect", "region_url": "https://withintenmiles.com/mount-prospect-60056/", "title": "Mount Prospect Farmers Market", "url": "https://mplions.org/event/farmers-market/"}' aria-pressed="false" aria-label="Add Mount Prospect Farmers Market to My Weekend">☆</button>
           
           
           
@@ -964,6 +971,8 @@
           
         </div>
         
+        <!-- id folds in date_iso - see the Editor's Pick tray_item above
+             for why (ROADMAP.md item 146). -->
         
         <div class="card" data-tags="outdoor,food">
           
@@ -973,7 +982,7 @@
                guide index have nothing to do with weekend planning.
                #90: nor does a school half-day belong in it - it's real
                and worth knowing, but nobody plans a weekend around one. -->
-          <button type="button" class="tray-star" data-item='{"date": "Oct 11", "date_iso": "2026-10-11T08:00:00", "detail": "Local produce and vendors, organized by the Mount Prospect Lions Club, rain or shine. West Metra commuter lot, Northwest Hwy \u0026 Main St (Rte 83).", "id": "https://mplions.org/event/farmers-market/", "region_name": "Mount Prospect", "region_url": "https://withintenmiles.com/mount-prospect-60056/", "title": "Mount Prospect Farmers Market", "url": "https://mplions.org/event/farmers-market/"}' aria-pressed="false" aria-label="Add Mount Prospect Farmers Market to My Weekend">☆</button>
+          <button type="button" class="tray-star" data-item='{"date": "Oct 11", "date_iso": "2026-10-11T08:00:00", "detail": "Local produce and vendors, organized by the Mount Prospect Lions Club, rain or shine. West Metra commuter lot, Northwest Hwy \u0026 Main St (Rte 83).", "id": "https://mplions.org/event/farmers-market/|2026-10-11T08:00:00", "region_name": "Mount Prospect", "region_url": "https://withintenmiles.com/mount-prospect-60056/", "title": "Mount Prospect Farmers Market", "url": "https://mplions.org/event/farmers-market/"}' aria-pressed="false" aria-label="Add Mount Prospect Farmers Market to My Weekend">☆</button>
           
           
           
@@ -994,6 +1003,8 @@
           
         </div>
         
+        <!-- id folds in date_iso - see the Editor's Pick tray_item above
+             for why (ROADMAP.md item 146). -->
         
         <div class="card" data-tags="outdoor,food">
           
@@ -1003,7 +1014,7 @@
                guide index have nothing to do with weekend planning.
                #90: nor does a school half-day belong in it - it's real
                and worth knowing, but nobody plans a weekend around one. -->
-          <button type="button" class="tray-star" data-item='{"date": "Oct 18", "date_iso": "2026-10-18T08:00:00", "detail": "Local produce and vendors, organized by the Mount Prospect Lions Club, rain or shine. West Metra commuter lot, Northwest Hwy \u0026 Main St (Rte 83).", "id": "https://mplions.org/event/farmers-market/", "region_name": "Mount Prospect", "region_url": "https://withintenmiles.com/mount-prospect-60056/", "title": "Mount Prospect Farmers Market", "url": "https://mplions.org/event/farmers-market/"}' aria-pressed="false" aria-label="Add Mount Prospect Farmers Market to My Weekend">☆</button>
+          <button type="button" class="tray-star" data-item='{"date": "Oct 18", "date_iso": "2026-10-18T08:00:00", "detail": "Local produce and vendors, organized by the Mount Prospect Lions Club, rain or shine. West Metra commuter lot, Northwest Hwy \u0026 Main St (Rte 83).", "id": "https://mplions.org/event/farmers-market/|2026-10-18T08:00:00", "region_name": "Mount Prospect", "region_url": "https://withintenmiles.com/mount-prospect-60056/", "title": "Mount Prospect Farmers Market", "url": "https://mplions.org/event/farmers-market/"}' aria-pressed="false" aria-label="Add Mount Prospect Farmers Market to My Weekend">☆</button>
           
           
           
@@ -1024,6 +1035,8 @@
           
         </div>
         
+        <!-- id folds in date_iso - see the Editor's Pick tray_item above
+             for why (ROADMAP.md item 146). -->
         
         <div class="card" data-tags="outdoor,food">
           
@@ -1033,7 +1046,7 @@
                guide index have nothing to do with weekend planning.
                #90: nor does a school half-day belong in it - it's real
                and worth knowing, but nobody plans a weekend around one. -->
-          <button type="button" class="tray-star" data-item='{"date": "Oct 25", "date_iso": "2026-10-25T08:00:00", "detail": "Local produce and vendors, organized by the Mount Prospect Lions Club, rain or shine. West Metra commuter lot, Northwest Hwy \u0026 Main St (Rte 83).", "id": "https://mplions.org/event/farmers-market/", "region_name": "Mount Prospect", "region_url": "https://withintenmiles.com/mount-prospect-60056/", "title": "Mount Prospect Farmers Market", "url": "https://mplions.org/event/farmers-market/"}' aria-pressed="false" aria-label="Add Mount Prospect Farmers Market to My Weekend">☆</button>
+          <button type="button" class="tray-star" data-item='{"date": "Oct 25", "date_iso": "2026-10-25T08:00:00", "detail": "Local produce and vendors, organized by the Mount Prospect Lions Club, rain or shine. West Metra commuter lot, Northwest Hwy \u0026 Main St (Rte 83).", "id": "https://mplions.org/event/farmers-market/|2026-10-25T08:00:00", "region_name": "Mount Prospect", "region_url": "https://withintenmiles.com/mount-prospect-60056/", "title": "Mount Prospect Farmers Market", "url": "https://mplions.org/event/farmers-market/"}' aria-pressed="false" aria-label="Add Mount Prospect Farmers Market to My Weekend">☆</button>
           
           
           
@@ -1069,6 +1082,8 @@
       
         <div class="card-grid">
         
+        <!-- id folds in date_iso - see the Editor's Pick tray_item above
+             for why (ROADMAP.md item 146). -->
         
         <div class="card" data-tags="indoor,kid_friendly">
           
@@ -1078,7 +1093,7 @@
                guide index have nothing to do with weekend planning.
                #90: nor does a school half-day belong in it - it's real
                and worth knowing, but nobody plans a weekend around one. -->
-          <button type="button" class="tray-star" data-item='{"date": "Sep 19", "date_iso": "2026-09-19T10:00:00+00:00", "detail": "Saturday, September 19 2026 10:00am - 11:00am \n Craft and create with us! We\u0027ll provide an idea and supplies; you create your own masterpiece.", "id": "https://mppl.libnet.info/event/16428150", "region_name": "Mount Prospect", "region_url": "https://withintenmiles.com/mount-prospect-60056/", "title": "Creation Station: DIY Mu\u00f1ecas Quitapenas (Worry Dolls)", "url": "https://mppl.libnet.info/event/16428150"}' aria-pressed="false" aria-label="Add Creation Station: DIY Muñecas Quitapenas (Worry Dolls) to My Weekend">☆</button>
+          <button type="button" class="tray-star" data-item='{"date": "Sep 19", "date_iso": "2026-09-19T10:00:00+00:00", "detail": "Saturday, September 19 2026 10:00am - 11:00am \n Craft and create with us! We\u0027ll provide an idea and supplies; you create your own masterpiece.", "id": "https://mppl.libnet.info/event/16428150|2026-09-19T10:00:00+00:00", "region_name": "Mount Prospect", "region_url": "https://withintenmiles.com/mount-prospect-60056/", "title": "Creation Station: DIY Mu\u00f1ecas Quitapenas (Worry Dolls)", "url": "https://mppl.libnet.info/event/16428150"}' aria-pressed="false" aria-label="Add Creation Station: DIY Muñecas Quitapenas (Worry Dolls) to My Weekend">☆</button>
           
           
           
@@ -1100,6 +1115,8 @@
           
         </div>
         
+        <!-- id folds in date_iso - see the Editor's Pick tray_item above
+             for why (ROADMAP.md item 146). -->
         
         <div class="card" data-tags="indoor,kid_friendly">
           
@@ -1109,7 +1126,7 @@
                guide index have nothing to do with weekend planning.
                #90: nor does a school half-day belong in it - it's real
                and worth knowing, but nobody plans a weekend around one. -->
-          <button type="button" class="tray-star" data-item='{"date": "Sep 21", "date_iso": "2026-09-21T09:30:00+00:00", "detail": "Monday, September 21 2026 9:30am - 10:00am \n Bring the whole family and join us for an interactive storytime with high-energy stories, songs, and activities.", "id": "https://mppl.libnet.info/event/16290481", "region_name": "Mount Prospect", "region_url": "https://withintenmiles.com/mount-prospect-60056/", "title": "Family Storytime", "url": "https://mppl.libnet.info/event/16290481"}' aria-pressed="false" aria-label="Add Family Storytime to My Weekend">☆</button>
+          <button type="button" class="tray-star" data-item='{"date": "Sep 21", "date_iso": "2026-09-21T09:30:00+00:00", "detail": "Monday, September 21 2026 9:30am - 10:00am \n Bring the whole family and join us for an interactive storytime with high-energy stories, songs, and activities.", "id": "https://mppl.libnet.info/event/16290481|2026-09-21T09:30:00+00:00", "region_name": "Mount Prospect", "region_url": "https://withintenmiles.com/mount-prospect-60056/", "title": "Family Storytime", "url": "https://mppl.libnet.info/event/16290481"}' aria-pressed="false" aria-label="Add Family Storytime to My Weekend">☆</button>
           
           
           
@@ -1131,6 +1148,8 @@
           
         </div>
         
+        <!-- id folds in date_iso - see the Editor's Pick tray_item above
+             for why (ROADMAP.md item 146). -->
         
         <div class="card" data-tags="indoor">
           
@@ -1140,7 +1159,7 @@
                guide index have nothing to do with weekend planning.
                #90: nor does a school half-day belong in it - it's real
                and worth knowing, but nobody plans a weekend around one. -->
-          <button type="button" class="tray-star" data-item='{"date": "Sep 21", "date_iso": "2026-09-21T10:00:00+00:00", "detail": "Monday, September 21 2026 10:00am - 11:00am \n Stop in and bring your questions about technology-related subjects such as smartphones, computers, email,\u2026", "id": "https://mppl.libnet.info/event/14755941", "region_name": "Mount Prospect", "region_url": "https://withintenmiles.com/mount-prospect-60056/", "title": "Drop-In Tech Help", "url": "https://mppl.libnet.info/event/14755941"}' aria-pressed="false" aria-label="Add Drop-In Tech Help to My Weekend">☆</button>
+          <button type="button" class="tray-star" data-item='{"date": "Sep 21", "date_iso": "2026-09-21T10:00:00+00:00", "detail": "Monday, September 21 2026 10:00am - 11:00am \n Stop in and bring your questions about technology-related subjects such as smartphones, computers, email,\u2026", "id": "https://mppl.libnet.info/event/14755941|2026-09-21T10:00:00+00:00", "region_name": "Mount Prospect", "region_url": "https://withintenmiles.com/mount-prospect-60056/", "title": "Drop-In Tech Help", "url": "https://mppl.libnet.info/event/14755941"}' aria-pressed="false" aria-label="Add Drop-In Tech Help to My Weekend">☆</button>
           
           
           
@@ -1162,6 +1181,8 @@
           
         </div>
         
+        <!-- id folds in date_iso - see the Editor's Pick tray_item above
+             for why (ROADMAP.md item 146). -->
         
         <div class="card" data-tags="indoor,kid_friendly">
           
@@ -1171,7 +1192,7 @@
                guide index have nothing to do with weekend planning.
                #90: nor does a school half-day belong in it - it's real
                and worth knowing, but nobody plans a weekend around one. -->
-          <button type="button" class="tray-star" data-item='{"date": "Sep 21", "date_iso": "2026-09-21T10:00:00+00:00", "detail": "Monday, September 21 2026 10:00am - 11:00am \n Craft and create with us! We\u0027ll provide an idea and supplies; you create your own masterpiece.", "id": "https://mppl.libnet.info/event/16428151", "region_name": "Mount Prospect", "region_url": "https://withintenmiles.com/mount-prospect-60056/", "title": "Creation Station: DIY Mu\u00f1ecas Quitapenas (Worry Dolls)", "url": "https://mppl.libnet.info/event/16428151"}' aria-pressed="false" aria-label="Add Creation Station: DIY Muñecas Quitapenas (Worry Dolls) to My Weekend">☆</button>
+          <button type="button" class="tray-star" data-item='{"date": "Sep 21", "date_iso": "2026-09-21T10:00:00+00:00", "detail": "Monday, September 21 2026 10:00am - 11:00am \n Craft and create with us! We\u0027ll provide an idea and supplies; you create your own masterpiece.", "id": "https://mppl.libnet.info/event/16428151|2026-09-21T10:00:00+00:00", "region_name": "Mount Prospect", "region_url": "https://withintenmiles.com/mount-prospect-60056/", "title": "Creation Station: DIY Mu\u00f1ecas Quitapenas (Worry Dolls)", "url": "https://mppl.libnet.info/event/16428151"}' aria-pressed="false" aria-label="Add Creation Station: DIY Muñecas Quitapenas (Worry Dolls) to My Weekend">☆</button>
           
           
           
@@ -1193,6 +1214,8 @@
           
         </div>
         
+        <!-- id folds in date_iso - see the Editor's Pick tray_item above
+             for why (ROADMAP.md item 146). -->
         
         <div class="card" data-tags="indoor,kid_friendly,toddler">
           
@@ -1202,7 +1225,7 @@
                guide index have nothing to do with weekend planning.
                #90: nor does a school half-day belong in it - it's real
                and worth knowing, but nobody plans a weekend around one. -->
-          <button type="button" class="tray-star" data-item='{"date": "Sep 21", "date_iso": "2026-09-21T10:30:00+00:00", "detail": "Monday, September 21 2026 10:30am - 11:00am \n Grow your little learner\u0027s literacy and language skills at this playful storytime full of wiggles, wonder, and\u2026", "id": "https://mppl.libnet.info/event/16290777", "region_name": "Mount Prospect", "region_url": "https://withintenmiles.com/mount-prospect-60056/", "title": "Toddler Storytime", "url": "https://mppl.libnet.info/event/16290777"}' aria-pressed="false" aria-label="Add Toddler Storytime to My Weekend">☆</button>
+          <button type="button" class="tray-star" data-item='{"date": "Sep 21", "date_iso": "2026-09-21T10:30:00+00:00", "detail": "Monday, September 21 2026 10:30am - 11:00am \n Grow your little learner\u0027s literacy and language skills at this playful storytime full of wiggles, wonder, and\u2026", "id": "https://mppl.libnet.info/event/16290777|2026-09-21T10:30:00+00:00", "region_name": "Mount Prospect", "region_url": "https://withintenmiles.com/mount-prospect-60056/", "title": "Toddler Storytime", "url": "https://mppl.libnet.info/event/16290777"}' aria-pressed="false" aria-label="Add Toddler Storytime to My Weekend">☆</button>
           
           
           
@@ -1224,6 +1247,8 @@
           
         </div>
         
+        <!-- id folds in date_iso - see the Editor's Pick tray_item above
+             for why (ROADMAP.md item 146). -->
         
         <div class="card" data-tags="indoor">
           
@@ -1233,7 +1258,7 @@
                guide index have nothing to do with weekend planning.
                #90: nor does a school half-day belong in it - it's real
                and worth knowing, but nobody plans a weekend around one. -->
-          <button type="button" class="tray-star" data-item='{"date": "Sep 21", "date_iso": "2026-09-21T11:00:00+00:00", "detail": "Monday, September 21 2026 11:00am - 11:30am \n Ever wonder what happens after your library materials go through the return slot? Get a behind-the-scenes look\u2026", "id": "https://mppl.libnet.info/event/16687517", "region_name": "Mount Prospect", "region_url": "https://withintenmiles.com/mount-prospect-60056/", "title": "Beyond the Book Drop", "url": "https://mppl.libnet.info/event/16687517"}' aria-pressed="false" aria-label="Add Beyond the Book Drop to My Weekend">☆</button>
+          <button type="button" class="tray-star" data-item='{"date": "Sep 21", "date_iso": "2026-09-21T11:00:00+00:00", "detail": "Monday, September 21 2026 11:00am - 11:30am \n Ever wonder what happens after your library materials go through the return slot? Get a behind-the-scenes look\u2026", "id": "https://mppl.libnet.info/event/16687517|2026-09-21T11:00:00+00:00", "region_name": "Mount Prospect", "region_url": "https://withintenmiles.com/mount-prospect-60056/", "title": "Beyond the Book Drop", "url": "https://mppl.libnet.info/event/16687517"}' aria-pressed="false" aria-label="Add Beyond the Book Drop to My Weekend">☆</button>
           
           
           
@@ -1261,195 +1286,6 @@
     
   
     
-    <section class="block">
-      <h2>Park District Events</h2>
-      
-        <div class="card-grid">
-        
-        
-        <div class="card" data-tags="dog_friendly,food,free,kid_friendly,outdoor,toddler">
-          
-          <!-- ROADMAP.md Phase 11 #63: My Weekend is for dated events -
-               offering to add "Find your school district" or a guide's
-               own title to it made no sense, since guide items and the
-               guide index have nothing to do with weekend planning.
-               #90: nor does a school half-day belong in it - it's real
-               and worth knowing, but nobody plans a weekend around one. -->
-          <button type="button" class="tray-star" data-item='{"date": "Sep 20", "date_iso": "2026-09-20T11:00:00", "detail": "Barks and Brews 2: Electric Boogaloo Visit Friendship Park Conservatory for the second annual Barks and Brews event featuring The Buddy Foundation. Stop by\u2026", "id": "https://www.mppd.org/event/barks-and-brews-2-electric-boogaloo/", "region_name": "Mount Prospect", "region_url": "https://withintenmiles.com/mount-prospect-60056/", "title": "Barks and Brews 2: Electric Boogaloo", "url": "https://www.mppd.org/event/barks-and-brews-2-electric-boogaloo/"}' aria-pressed="false" aria-label="Add Barks and Brews 2: Electric Boogaloo to My Weekend">☆</button>
-          
-          
-          
-          <div class="date">Sep 20</div>
-          <h3><a href="https://www.mppd.org/event/barks-and-brews-2-electric-boogaloo/">Barks and Brews 2: Electric Boogaloo</a></h3>
-          
-          <p class="detail">Barks and Brews 2: Electric Boogaloo Visit Friendship Park Conservatory for the second annual Barks and Brews event featuring The Buddy Foundation. Stop by…</p>
-          
-          <div class="tag-row">
-            <span class="tag-badge" style="background: var(--hue-amber-bg); color: var(--hue-amber-ink);">🐕 Dog-friendly</span><span class="tag-badge" style="background: var(--hue-orange-bg); color: var(--hue-orange-ink);">🍽️ Food &amp; drink</span><span class="tag-badge" style="background: var(--hue-green-bg); color: var(--hue-green-ink);">💵 Free</span><span class="tag-badge" style="background: var(--hue-pink-bg); color: var(--hue-pink-ink);">🧒 Kid-friendly</span><span class="tag-badge" style="background: var(--hue-teal-bg); color: var(--hue-teal-ink);">🌳 Outdoor</span><span class="tag-badge" style="background: var(--hue-lime-bg); color: var(--hue-lime-ink);">👶 Toddler</span>
-          </div>
-          
-          
-          <div class="cal-row">
-            <a href="data:text/calendar;charset=utf-8,BEGIN%3AVCALENDAR%0D%0AVERSION%3A2.0%0D%0APRODID%3A-//Within%20Ten//EN%0D%0ABEGIN%3AVEVENT%0D%0ADTSTART%3A20260920T110000%0D%0ADTEND%3A20260920T120000%0D%0ASUMMARY%3ABarks%20and%20Brews%202%3A%20Electric%20Boogaloo%0D%0ADESCRIPTION%3ABarks%20and%20Brews%202%3A%20Electric%20Boogaloo%20Visit%20Friendship%20Park%20Conservatory%20for%20the%20second%20annual%20Barks%20and%20Brews%20event%20featuring%20The%20Buddy%20Foundation.%20Stop%20by%E2%80%A6%0D%0AURL%3Ahttps%3A//www.mppd.org/event/barks-and-brews-2-electric-boogaloo/%0D%0AEND%3AVEVENT%0D%0AEND%3AVCALENDAR%0D%0A" download="event.ics">📅 Add to calendar</a>
-            <a href="https://www.google.com/calendar/render?action=TEMPLATE&amp;text=Barks+and+Brews+2%3A+Electric+Boogaloo&amp;dates=20260920T110000%2F20260920T120000&amp;details=Barks+and+Brews+2%3A+Electric+Boogaloo+Visit+Friendship+Park+Conservatory+for+the+second+annual+Barks+and+Brews+event+featuring+The+Buddy+Foundation.+Stop+by%E2%80%A6&amp;location=Mount+Prospect" target="_blank" rel="noopener">Google Calendar</a>
-          </div>
-          
-        </div>
-        
-        
-        <div class="card" data-tags="art_culture,elementary,kid_friendly,outdoor">
-          
-          <!-- ROADMAP.md Phase 11 #63: My Weekend is for dated events -
-               offering to add "Find your school district" or a guide's
-               own title to it made no sense, since guide items and the
-               guide index have nothing to do with weekend planning.
-               #90: nor does a school half-day belong in it - it's real
-               and worth knowing, but nobody plans a weekend around one. -->
-          <button type="button" class="tray-star" data-item='{"date": "Sep 26", "date_iso": "2026-09-26T09:30:00", "detail": "Fall Frenzy (Ages 5-10) Celebrate the beauty of the changing season with a burst of creativity! Join us in the Studio for this \u201cFall Frenzy\u201d workshop, where\u2026", "id": "https://www.mppd.org/event/fall-frenzy/", "region_name": "Mount Prospect", "region_url": "https://withintenmiles.com/mount-prospect-60056/", "title": "Fall Frenzy", "url": "https://www.mppd.org/event/fall-frenzy/"}' aria-pressed="false" aria-label="Add Fall Frenzy to My Weekend">☆</button>
-          
-          
-          
-          <div class="date">Sep 26</div>
-          <h3><a href="https://www.mppd.org/event/fall-frenzy/">Fall Frenzy</a></h3>
-          
-          <p class="detail">Fall Frenzy (Ages 5-10) Celebrate the beauty of the changing season with a burst of creativity! Join us in the Studio for this “Fall Frenzy” workshop, where…</p>
-          
-          <div class="tag-row">
-            <span class="tag-badge" style="background: var(--hue-purple-bg); color: var(--hue-purple-ink);">🎨 Arts &amp; culture</span><span class="tag-badge" style="background: var(--hue-cyan-bg); color: var(--hue-cyan-ink);">🎒 Elementary age</span><span class="tag-badge" style="background: var(--hue-pink-bg); color: var(--hue-pink-ink);">🧒 Kid-friendly</span><span class="tag-badge" style="background: var(--hue-teal-bg); color: var(--hue-teal-ink);">🌳 Outdoor</span>
-          </div>
-          
-          
-          <div class="cal-row">
-            <a href="data:text/calendar;charset=utf-8,BEGIN%3AVCALENDAR%0D%0AVERSION%3A2.0%0D%0APRODID%3A-//Within%20Ten//EN%0D%0ABEGIN%3AVEVENT%0D%0ADTSTART%3A20260926T093000%0D%0ADTEND%3A20260926T103000%0D%0ASUMMARY%3AFall%20Frenzy%0D%0ADESCRIPTION%3AFall%20Frenzy%20%28Ages%205-10%29%20Celebrate%20the%20beauty%20of%20the%20changing%20season%20with%20a%20burst%20of%20creativity%21%20Join%20us%20in%20the%20Studio%20for%20this%20%E2%80%9CFall%20Frenzy%E2%80%9D%20workshop%5C%2C%20where%E2%80%A6%0D%0AURL%3Ahttps%3A//www.mppd.org/event/fall-frenzy/%0D%0AEND%3AVEVENT%0D%0AEND%3AVCALENDAR%0D%0A" download="event.ics">📅 Add to calendar</a>
-            <a href="https://www.google.com/calendar/render?action=TEMPLATE&amp;text=Fall+Frenzy&amp;dates=20260926T093000%2F20260926T103000&amp;details=Fall+Frenzy+%28Ages+5-10%29+Celebrate+the+beauty+of+the+changing+season+with+a+burst+of+creativity%21+Join+us+in+the+Studio+for+this+%E2%80%9CFall+Frenzy%E2%80%9D+workshop%2C+where%E2%80%A6&amp;location=Mount+Prospect" target="_blank" rel="noopener">Google Calendar</a>
-          </div>
-          
-        </div>
-        
-        
-        <div class="card" data-tags="indoor,outdoor">
-          
-          <!-- ROADMAP.md Phase 11 #63: My Weekend is for dated events -
-               offering to add "Find your school district" or a guide's
-               own title to it made no sense, since guide items and the
-               guide index have nothing to do with weekend planning.
-               #90: nor does a school half-day belong in it - it's real
-               and worth knowing, but nobody plans a weekend around one. -->
-          <button type="button" class="tray-star" data-item='{"date": "Oct 3", "date_iso": "2026-10-03T08:30:00", "detail": "Trick or Treat Trail (Suggested Ages 3-10) Location RecPlex Enjoy a fun-filled trail of Halloween games and treats! Pick up your bag at check-in and continue\u2026", "id": "https://www.mppd.org/event/trick-or-treat-trail-3/", "region_name": "Mount Prospect", "region_url": "https://withintenmiles.com/mount-prospect-60056/", "title": "Trick or Treat Trail", "url": "https://www.mppd.org/event/trick-or-treat-trail-3/"}' aria-pressed="false" aria-label="Add Trick or Treat Trail to My Weekend">☆</button>
-          
-          
-          
-          <div class="date">Oct 3</div>
-          <h3><a href="https://www.mppd.org/event/trick-or-treat-trail-3/">Trick or Treat Trail</a></h3>
-          
-          <p class="detail">Trick or Treat Trail (Suggested Ages 3-10) Location RecPlex Enjoy a fun-filled trail of Halloween games and treats! Pick up your bag at check-in and continue…</p>
-          
-          <div class="tag-row">
-            <span class="tag-badge" style="background: var(--hue-blue-bg); color: var(--hue-blue-ink);">🏠 Indoor</span><span class="tag-badge" style="background: var(--hue-teal-bg); color: var(--hue-teal-ink);">🌳 Outdoor</span>
-          </div>
-          
-          
-          <div class="cal-row">
-            <a href="data:text/calendar;charset=utf-8,BEGIN%3AVCALENDAR%0D%0AVERSION%3A2.0%0D%0APRODID%3A-//Within%20Ten//EN%0D%0ABEGIN%3AVEVENT%0D%0ADTSTART%3A20261003T083000%0D%0ADTEND%3A20261003T093000%0D%0ASUMMARY%3ATrick%20or%20Treat%20Trail%0D%0ADESCRIPTION%3ATrick%20or%20Treat%20Trail%20%28Suggested%20Ages%203-10%29%20Location%20RecPlex%20Enjoy%20a%20fun-filled%20trail%20of%20Halloween%20games%20and%20treats%21%20Pick%20up%20your%20bag%20at%20check-in%20and%20continue%E2%80%A6%0D%0AURL%3Ahttps%3A//www.mppd.org/event/trick-or-treat-trail-3/%0D%0AEND%3AVEVENT%0D%0AEND%3AVCALENDAR%0D%0A" download="event.ics">📅 Add to calendar</a>
-            <a href="https://www.google.com/calendar/render?action=TEMPLATE&amp;text=Trick+or+Treat+Trail&amp;dates=20261003T083000%2F20261003T093000&amp;details=Trick+or+Treat+Trail+%28Suggested+Ages+3-10%29+Location+RecPlex+Enjoy+a+fun-filled+trail+of+Halloween+games+and+treats%21+Pick+up+your+bag+at+check-in+and+continue%E2%80%A6&amp;location=Mount+Prospect" target="_blank" rel="noopener">Google Calendar</a>
-          </div>
-          
-        </div>
-        
-        
-        <div class="card" data-tags="kid_friendly,outdoor">
-          
-          <!-- ROADMAP.md Phase 11 #63: My Weekend is for dated events -
-               offering to add "Find your school district" or a guide's
-               own title to it made no sense, since guide items and the
-               guide index have nothing to do with weekend planning.
-               #90: nor does a school half-day belong in it - it's real
-               and worth knowing, but nobody plans a weekend around one. -->
-          <button type="button" class="tray-star" data-item='{"date": "Oct 10", "date_iso": "2026-10-10T08:00:00", "detail": "Rescheduled! Fishing Derby (Ages 3-16) Grab your gear and make your way to Clearwater Park for a morning of family fishing! Test your skills and maybe even\u2026", "id": "https://www.mppd.org/event/fishing-derby-4/", "region_name": "Mount Prospect", "region_url": "https://withintenmiles.com/mount-prospect-60056/", "title": "Fishing Derby", "url": "https://www.mppd.org/event/fishing-derby-4/"}' aria-pressed="false" aria-label="Add Fishing Derby to My Weekend">☆</button>
-          
-          
-          
-          <div class="date">Oct 10</div>
-          <h3><a href="https://www.mppd.org/event/fishing-derby-4/">Fishing Derby</a></h3>
-          
-          <p class="detail">Rescheduled! Fishing Derby (Ages 3-16) Grab your gear and make your way to Clearwater Park for a morning of family fishing! Test your skills and maybe even…</p>
-          
-          <div class="tag-row">
-            <span class="tag-badge" style="background: var(--hue-pink-bg); color: var(--hue-pink-ink);">🧒 Kid-friendly</span><span class="tag-badge" style="background: var(--hue-teal-bg); color: var(--hue-teal-ink);">🌳 Outdoor</span>
-          </div>
-          
-          
-          <div class="cal-row">
-            <a href="data:text/calendar;charset=utf-8,BEGIN%3AVCALENDAR%0D%0AVERSION%3A2.0%0D%0APRODID%3A-//Within%20Ten//EN%0D%0ABEGIN%3AVEVENT%0D%0ADTSTART%3A20261010T080000%0D%0ADTEND%3A20261010T090000%0D%0ASUMMARY%3AFishing%20Derby%0D%0ADESCRIPTION%3ARescheduled%21%20Fishing%20Derby%20%28Ages%203-16%29%20Grab%20your%20gear%20and%20make%20your%20way%20to%20Clearwater%20Park%20for%20a%20morning%20of%20family%20fishing%21%20Test%20your%20skills%20and%20maybe%20even%E2%80%A6%0D%0AURL%3Ahttps%3A//www.mppd.org/event/fishing-derby-4/%0D%0AEND%3AVEVENT%0D%0AEND%3AVCALENDAR%0D%0A" download="event.ics">📅 Add to calendar</a>
-            <a href="https://www.google.com/calendar/render?action=TEMPLATE&amp;text=Fishing+Derby&amp;dates=20261010T080000%2F20261010T090000&amp;details=Rescheduled%21+Fishing+Derby+%28Ages+3-16%29+Grab+your+gear+and+make+your+way+to+Clearwater+Park+for+a+morning+of+family+fishing%21+Test+your+skills+and+maybe+even%E2%80%A6&amp;location=Mount+Prospect" target="_blank" rel="noopener">Google Calendar</a>
-          </div>
-          
-        </div>
-        
-        
-        <div class="card" data-tags="art_culture,elementary,kid_friendly,outdoor">
-          
-          <!-- ROADMAP.md Phase 11 #63: My Weekend is for dated events -
-               offering to add "Find your school district" or a guide's
-               own title to it made no sense, since guide items and the
-               guide index have nothing to do with weekend planning.
-               #90: nor does a school half-day belong in it - it's real
-               and worth knowing, but nobody plans a weekend around one. -->
-          <button type="button" class="tray-star" data-item='{"date": "Oct 10", "date_iso": "2026-10-10T09:30:00", "detail": "Spooky Scary Studio (Ages 5-10) The Studio has been overrun by spooky, yet friendly, skeletons just in time for Halloween! Join us for a workshop filled with\u2026", "id": "https://www.mppd.org/event/31551/", "region_name": "Mount Prospect", "region_url": "https://withintenmiles.com/mount-prospect-60056/", "title": "Spooky Scary Studio", "url": "https://www.mppd.org/event/31551/"}' aria-pressed="false" aria-label="Add Spooky Scary Studio to My Weekend">☆</button>
-          
-          
-          
-          <div class="date">Oct 10</div>
-          <h3><a href="https://www.mppd.org/event/31551/">Spooky Scary Studio</a></h3>
-          
-          <p class="detail">Spooky Scary Studio (Ages 5-10) The Studio has been overrun by spooky, yet friendly, skeletons just in time for Halloween! Join us for a workshop filled with…</p>
-          
-          <div class="tag-row">
-            <span class="tag-badge" style="background: var(--hue-purple-bg); color: var(--hue-purple-ink);">🎨 Arts &amp; culture</span><span class="tag-badge" style="background: var(--hue-cyan-bg); color: var(--hue-cyan-ink);">🎒 Elementary age</span><span class="tag-badge" style="background: var(--hue-pink-bg); color: var(--hue-pink-ink);">🧒 Kid-friendly</span><span class="tag-badge" style="background: var(--hue-teal-bg); color: var(--hue-teal-ink);">🌳 Outdoor</span>
-          </div>
-          
-          
-          <div class="cal-row">
-            <a href="data:text/calendar;charset=utf-8,BEGIN%3AVCALENDAR%0D%0AVERSION%3A2.0%0D%0APRODID%3A-//Within%20Ten//EN%0D%0ABEGIN%3AVEVENT%0D%0ADTSTART%3A20261010T093000%0D%0ADTEND%3A20261010T103000%0D%0ASUMMARY%3ASpooky%20Scary%20Studio%0D%0ADESCRIPTION%3ASpooky%20Scary%20Studio%20%28Ages%205-10%29%20The%20Studio%20has%20been%20overrun%20by%20spooky%5C%2C%20yet%20friendly%5C%2C%20skeletons%20just%20in%20time%20for%20Halloween%21%20Join%20us%20for%20a%20workshop%20filled%20with%E2%80%A6%0D%0AURL%3Ahttps%3A//www.mppd.org/event/31551/%0D%0AEND%3AVEVENT%0D%0AEND%3AVCALENDAR%0D%0A" download="event.ics">📅 Add to calendar</a>
-            <a href="https://www.google.com/calendar/render?action=TEMPLATE&amp;text=Spooky+Scary+Studio&amp;dates=20261010T093000%2F20261010T103000&amp;details=Spooky+Scary+Studio+%28Ages+5-10%29+The+Studio+has+been+overrun+by+spooky%2C+yet+friendly%2C+skeletons+just+in+time+for+Halloween%21+Join+us+for+a+workshop+filled+with%E2%80%A6&amp;location=Mount+Prospect" target="_blank" rel="noopener">Google Calendar</a>
-          </div>
-          
-        </div>
-        
-        
-        <div class="card" data-tags="outdoor">
-          
-          <!-- ROADMAP.md Phase 11 #63: My Weekend is for dated events -
-               offering to add "Find your school district" or a guide's
-               own title to it made no sense, since guide items and the
-               guide index have nothing to do with weekend planning.
-               #90: nor does a school half-day belong in it - it's real
-               and worth knowing, but nobody plans a weekend around one. -->
-          <button type="button" class="tray-star" data-item='{"date": "Oct 21", "date_iso": "2026-10-21T18:30:00", "detail": "Join the discussion \u2013 Public welcome! Meeting Agenda Meeting Packet", "id": "https://www.mppd.org/event/park-board-meeting-44/", "region_name": "Mount Prospect", "region_url": "https://withintenmiles.com/mount-prospect-60056/", "title": "Park Board Meeting", "url": "https://www.mppd.org/event/park-board-meeting-44/"}' aria-pressed="false" aria-label="Add Park Board Meeting to My Weekend">☆</button>
-          
-          
-          
-          <div class="date">Oct 21</div>
-          <h3><a href="https://www.mppd.org/event/park-board-meeting-44/">Park Board Meeting</a></h3>
-          
-          <p class="detail">Join the discussion – Public welcome! Meeting Agenda Meeting Packet</p>
-          
-          <div class="tag-row">
-            <span class="tag-badge" style="background: var(--hue-teal-bg); color: var(--hue-teal-ink);">🌳 Outdoor</span>
-          </div>
-          
-          
-          <div class="cal-row">
-            <a href="data:text/calendar;charset=utf-8,BEGIN%3AVCALENDAR%0D%0AVERSION%3A2.0%0D%0APRODID%3A-//Within%20Ten//EN%0D%0ABEGIN%3AVEVENT%0D%0ADTSTART%3A20261021T183000%0D%0ADTEND%3A20261021T193000%0D%0ASUMMARY%3APark%20Board%20Meeting%0D%0ADESCRIPTION%3AJoin%20the%20discussion%20%E2%80%93%20Public%20welcome%21%20Meeting%20Agenda%20Meeting%20Packet%0D%0AURL%3Ahttps%3A//www.mppd.org/event/park-board-meeting-44/%0D%0AEND%3AVEVENT%0D%0AEND%3AVCALENDAR%0D%0A" download="event.ics">📅 Add to calendar</a>
-            <a href="https://www.google.com/calendar/render?action=TEMPLATE&amp;text=Park+Board+Meeting&amp;dates=20261021T183000%2F20261021T193000&amp;details=Join+the+discussion+%E2%80%93+Public+welcome%21+Meeting+Agenda+Meeting+Packet&amp;location=Mount+Prospect" target="_blank" rel="noopener">Google Calendar</a>
-          </div>
-          
-        </div>
-        
-        </div>
-      
-    </section>
-    
   
     
     <section class="block">
@@ -1457,6 +1293,8 @@
       
         <div class="card-grid">
         
+        <!-- id folds in date_iso - see the Editor's Pick tray_item above
+             for why (ROADMAP.md item 146). -->
         
         <div class="card" data-tags="">
           
@@ -1466,7 +1304,7 @@
                guide index have nothing to do with weekend planning.
                #90: nor does a school half-day belong in it - it's real
                and worth knowing, but nobody plans a weekend around one. -->
-          <button type="button" class="tray-star" data-item='{"date": "Sep 21", "date_iso": "2026-09-21T00:00:00", "detail": "", "id": "Student and Staff Non-Attendance/Buildings Closed", "region_name": "Mount Prospect", "region_url": "https://withintenmiles.com/mount-prospect-60056/", "title": "Student and Staff Non-Attendance/Buildings Closed", "url": ""}' aria-pressed="false" aria-label="Add Student and Staff Non-Attendance/Buildings Closed to My Weekend">☆</button>
+          <button type="button" class="tray-star" data-item='{"date": "Sep 21", "date_iso": "2026-09-21T00:00:00", "detail": "", "id": "Student and Staff Non-Attendance/Buildings Closed|2026-09-21T00:00:00", "region_name": "Mount Prospect", "region_url": "https://withintenmiles.com/mount-prospect-60056/", "title": "Student and Staff Non-Attendance/Buildings Closed", "url": ""}' aria-pressed="false" aria-label="Add Student and Staff Non-Attendance/Buildings Closed to My Weekend">☆</button>
           
           
           
@@ -1483,6 +1321,8 @@
           
         </div>
         
+        <!-- id folds in date_iso - see the Editor's Pick tray_item above
+             for why (ROADMAP.md item 146). -->
         
         <div class="card" data-tags="">
           
@@ -1492,7 +1332,7 @@
                guide index have nothing to do with weekend planning.
                #90: nor does a school half-day belong in it - it's real
                and worth knowing, but nobody plans a weekend around one. -->
-          <button type="button" class="tray-star" data-item='{"date": "Sep 24", "date_iso": "2026-09-24T21:30:00", "detail": "", "id": "Education Foundation Meeting", "region_name": "Mount Prospect", "region_url": "https://withintenmiles.com/mount-prospect-60056/", "title": "Education Foundation Meeting", "url": ""}' aria-pressed="false" aria-label="Add Education Foundation Meeting to My Weekend">☆</button>
+          <button type="button" class="tray-star" data-item='{"date": "Sep 24", "date_iso": "2026-09-24T21:30:00", "detail": "", "id": "Education Foundation Meeting|2026-09-24T21:30:00", "region_name": "Mount Prospect", "region_url": "https://withintenmiles.com/mount-prospect-60056/", "title": "Education Foundation Meeting", "url": ""}' aria-pressed="false" aria-label="Add Education Foundation Meeting to My Weekend">☆</button>
           
           
           
@@ -1509,6 +1349,8 @@
           
         </div>
         
+        <!-- id folds in date_iso - see the Editor's Pick tray_item above
+             for why (ROADMAP.md item 146). -->
         
         <div class="card" data-tags="">
           
@@ -1518,7 +1360,7 @@
                guide index have nothing to do with weekend planning.
                #90: nor does a school half-day belong in it - it's real
                and worth knowing, but nobody plans a weekend around one. -->
-          <button type="button" class="tray-star" data-item='{"date": "Oct 2", "date_iso": "2026-10-02T00:00:00", "detail": "", "id": "School Custodian Appreciation Day", "region_name": "Mount Prospect", "region_url": "https://withintenmiles.com/mount-prospect-60056/", "title": "School Custodian Appreciation Day", "url": ""}' aria-pressed="false" aria-label="Add School Custodian Appreciation Day to My Weekend">☆</button>
+          <button type="button" class="tray-star" data-item='{"date": "Oct 2", "date_iso": "2026-10-02T00:00:00", "detail": "", "id": "School Custodian Appreciation Day|2026-10-02T00:00:00", "region_name": "Mount Prospect", "region_url": "https://withintenmiles.com/mount-prospect-60056/", "title": "School Custodian Appreciation Day", "url": ""}' aria-pressed="false" aria-label="Add School Custodian Appreciation Day to My Weekend">☆</button>
           
           
           
@@ -1535,6 +1377,8 @@
           
         </div>
         
+        <!-- id folds in date_iso - see the Editor's Pick tray_item above
+             for why (ROADMAP.md item 146). -->
         
         <div class="card" data-tags="">
           
@@ -1544,7 +1388,7 @@
                guide index have nothing to do with weekend planning.
                #90: nor does a school half-day belong in it - it's real
                and worth knowing, but nobody plans a weekend around one. -->
-          <button type="button" class="tray-star" data-item='{"date": "Oct 12", "date_iso": "2026-10-12T00:00:00", "detail": "", "id": "Student and Staff Non-Attendance/Buildings Closed", "region_name": "Mount Prospect", "region_url": "https://withintenmiles.com/mount-prospect-60056/", "title": "Student and Staff Non-Attendance/Buildings Closed", "url": ""}' aria-pressed="false" aria-label="Add Student and Staff Non-Attendance/Buildings Closed to My Weekend">☆</button>
+          <button type="button" class="tray-star" data-item='{"date": "Oct 12", "date_iso": "2026-10-12T00:00:00", "detail": "", "id": "Student and Staff Non-Attendance/Buildings Closed|2026-10-12T00:00:00", "region_name": "Mount Prospect", "region_url": "https://withintenmiles.com/mount-prospect-60056/", "title": "Student and Staff Non-Attendance/Buildings Closed", "url": ""}' aria-pressed="false" aria-label="Add Student and Staff Non-Attendance/Buildings Closed to My Weekend">☆</button>
           
           
           
@@ -1561,6 +1405,8 @@
           
         </div>
         
+        <!-- id folds in date_iso - see the Editor's Pick tray_item above
+             for why (ROADMAP.md item 146). -->
         
         <div class="card card-informational" data-tags="">
           
@@ -1579,6 +1425,8 @@
           
         </div>
         
+        <!-- id folds in date_iso - see the Editor's Pick tray_item above
+             for why (ROADMAP.md item 146). -->
         
         <div class="card" data-tags="">
           
@@ -1588,7 +1436,7 @@
                guide index have nothing to do with weekend planning.
                #90: nor does a school half-day belong in it - it's real
                and worth knowing, but nobody plans a weekend around one. -->
-          <button type="button" class="tray-star" data-item='{"date": "Oct 15", "date_iso": "2026-10-15T19:00:00", "detail": "", "id": "Board of Education Closed Meeting - Board Governance", "region_name": "Mount Prospect", "region_url": "https://withintenmiles.com/mount-prospect-60056/", "title": "Board of Education Closed Meeting - Board Governance", "url": ""}' aria-pressed="false" aria-label="Add Board of Education Closed Meeting - Board Governance to My Weekend">☆</button>
+          <button type="button" class="tray-star" data-item='{"date": "Oct 15", "date_iso": "2026-10-15T19:00:00", "detail": "", "id": "Board of Education Closed Meeting - Board Governance|2026-10-15T19:00:00", "region_name": "Mount Prospect", "region_url": "https://withintenmiles.com/mount-prospect-60056/", "title": "Board of Education Closed Meeting - Board Governance", "url": ""}' aria-pressed="false" aria-label="Add Board of Education Closed Meeting - Board Governance to My Weekend">☆</button>
           
           
           
@@ -1620,6 +1468,8 @@
       
         <div class="card-grid">
         
+        <!-- id folds in date_iso - see the Editor's Pick tray_item above
+             for why (ROADMAP.md item 146). -->
         
         <div class="card" data-tags="free">
           
@@ -1728,7 +1578,7 @@
     <a href="https://withintenmiles.com/sponsor/">sponsor page</a>.
     <a href="https://withintenmiles.com/about/">About</a>.
     <a href="https://withintenmiles.com/trick-or-treat/">Trick-or-treat hours</a>.
-    <br>Generated 2026-09-19 15:54 UTC.
+    <br>Generated 2026-09-19 16:55 UTC.
     
     <br><a href="https://withintenmiles.com/mount-prospect-60056/weekly-summary.txt">Copy this week's summary</a> — a plain-text block ready to paste into a local group.
   </footer>
@@ -1751,10 +1601,10 @@
 </div>
 
 
-<script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "Event", "name": "Oktoberfest", "url": "https://mpdowntown.com/oktoberfest-info/", "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode", "description": "German food, drink & live music from the band Paloma. 4–11pm, Emerson St. & Busse Ave. — Downtown Merchants.", "startDate": "2026-09-18T00:00:00"}, {"@type": "Event", "name": "Fall Festival & Oktoberfest", "url": "https://mpdowntown.com/oktoberfest-info/", "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode", "description": "Free Fall Festival noon–4pm (special-needs hour noon–1pm) with crafts & entertainment, then Oktoberfest continues 4–11pm. Emerson & Busse.", "startDate": "2026-09-19T00:00:00"}, {"@type": "Event", "name": "Mount Prospect Farmers Market", "url": "https://mplions.org/event/farmers-market/", "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode", "description": "Local produce and vendors, organized by the Mount Prospect Lions Club, rain or shine. West Metra commuter lot, Northwest Hwy & Main St (Rte 83).", "startDate": "2026-09-20T08:00:00"}, {"@type": "Event", "name": "Mount Prospect Farmers Market", "url": "https://mplions.org/event/farmers-market/", "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode", "description": "Local produce and vendors, organized by the Mount Prospect Lions Club, rain or shine. West Metra commuter lot, Northwest Hwy & Main St (Rte 83).", "startDate": "2026-09-27T08:00:00"}, {"@type": "Event", "name": "Mount Prospect Farmers Market", "url": "https://mplions.org/event/farmers-market/", "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode", "description": "Local produce and vendors, organized by the Mount Prospect Lions Club, rain or shine. West Metra commuter lot, Northwest Hwy & Main St (Rte 83).", "startDate": "2026-10-04T08:00:00"}, {"@type": "Event", "name": "Mount Prospect Farmers Market", "url": "https://mplions.org/event/farmers-market/", "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode", "description": "Local produce and vendors, organized by the Mount Prospect Lions Club, rain or shine. West Metra commuter lot, Northwest Hwy & Main St (Rte 83).", "startDate": "2026-10-11T08:00:00"}, {"@type": "Event", "name": "Mount Prospect Farmers Market", "url": "https://mplions.org/event/farmers-market/", "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode", "description": "Local produce and vendors, organized by the Mount Prospect Lions Club, rain or shine. West Metra commuter lot, Northwest Hwy & Main St (Rte 83).", "startDate": "2026-10-18T08:00:00"}, {"@type": "Event", "name": "Mount Prospect Farmers Market", "url": "https://mplions.org/event/farmers-market/", "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode", "description": "Local produce and vendors, organized by the Mount Prospect Lions Club, rain or shine. West Metra commuter lot, Northwest Hwy & Main St (Rte 83).", "startDate": "2026-10-25T08:00:00"}, {"@type": "Event", "name": "Creation Station: DIY Muñecas Quitapenas (Worry Dolls)", "url": "https://mppl.libnet.info/event/16428150", "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode", "description": "Saturday, September 19 2026 10:00am - 11:00am \n Craft and create with us! We'll provide an idea and supplies; you create your own masterpiece.", "startDate": "2026-09-19T10:00:00+00:00"}, {"@type": "Event", "name": "Family Storytime", "url": "https://mppl.libnet.info/event/16290481", "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode", "description": "Monday, September 21 2026 9:30am - 10:00am \n Bring the whole family and join us for an interactive storytime with high-energy stories, songs, and activities.", "startDate": "2026-09-21T09:30:00+00:00"}, {"@type": "Event", "name": "Drop-In Tech Help", "url": "https://mppl.libnet.info/event/14755941", "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode", "description": "Monday, September 21 2026 10:00am - 11:00am \n Stop in and bring your questions about technology-related subjects such as smartphones, computers, email,…", "startDate": "2026-09-21T10:00:00+00:00"}, {"@type": "Event", "name": "Creation Station: DIY Muñecas Quitapenas (Worry Dolls)", "url": "https://mppl.libnet.info/event/16428151", "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode", "description": "Monday, September 21 2026 10:00am - 11:00am \n Craft and create with us! We'll provide an idea and supplies; you create your own masterpiece.", "startDate": "2026-09-21T10:00:00+00:00"}, {"@type": "Event", "name": "Toddler Storytime", "url": "https://mppl.libnet.info/event/16290777", "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode", "description": "Monday, September 21 2026 10:30am - 11:00am \n Grow your little learner's literacy and language skills at this playful storytime full of wiggles, wonder, and…", "startDate": "2026-09-21T10:30:00+00:00"}, {"@type": "Event", "name": "Beyond the Book Drop", "url": "https://mppl.libnet.info/event/16687517", "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode", "description": "Monday, September 21 2026 11:00am - 11:30am \n Ever wonder what happens after your library materials go through the return slot? Get a behind-the-scenes look…", "startDate": "2026-09-21T11:00:00+00:00"}, {"@type": "Event", "name": "Barks and Brews 2: Electric Boogaloo", "url": "https://www.mppd.org/event/barks-and-brews-2-electric-boogaloo/", "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode", "description": "Barks and Brews 2: Electric Boogaloo Visit Friendship Park Conservatory for the second annual Barks and Brews event featuring The Buddy Foundation. Stop by…", "startDate": "2026-09-20T11:00:00"}, {"@type": "Event", "name": "Fall Frenzy", "url": "https://www.mppd.org/event/fall-frenzy/", "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode", "description": "Fall Frenzy (Ages 5-10) Celebrate the beauty of the changing season with a burst of creativity! Join us in the Studio for this “Fall Frenzy” workshop, where…", "startDate": "2026-09-26T09:30:00"}, {"@type": "Event", "name": "Trick or Treat Trail", "url": "https://www.mppd.org/event/trick-or-treat-trail-3/", "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode", "description": "Trick or Treat Trail (Suggested Ages 3-10) Location RecPlex Enjoy a fun-filled trail of Halloween games and treats! Pick up your bag at check-in and continue…", "startDate": "2026-10-03T08:30:00"}, {"@type": "Event", "name": "Fishing Derby", "url": "https://www.mppd.org/event/fishing-derby-4/", "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode", "description": "Rescheduled! Fishing Derby (Ages 3-16) Grab your gear and make your way to Clearwater Park for a morning of family fishing! Test your skills and maybe even…", "startDate": "2026-10-10T08:00:00"}, {"@type": "Event", "name": "Spooky Scary Studio", "url": "https://www.mppd.org/event/31551/", "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode", "description": "Spooky Scary Studio (Ages 5-10) The Studio has been overrun by spooky, yet friendly, skeletons just in time for Halloween! Join us for a workshop filled with…", "startDate": "2026-10-10T09:30:00"}, {"@type": "Event", "name": "Park Board Meeting", "url": "https://www.mppd.org/event/park-board-meeting-44/", "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode", "description": "Join the discussion – Public welcome! Meeting Agenda Meeting Packet", "startDate": "2026-10-21T18:30:00"}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "Event", "name": "Oktoberfest", "url": "https://mpdowntown.com/oktoberfest-info/", "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode", "description": "German food, drink & live music from the band Paloma. 4–11pm, Emerson St. & Busse Ave. — Downtown Merchants.", "startDate": "2026-09-18T00:00:00"}, {"@type": "Event", "name": "Fall Festival & Oktoberfest", "url": "https://mpdowntown.com/oktoberfest-info/", "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode", "description": "Free Fall Festival noon–4pm (special-needs hour noon–1pm) with crafts & entertainment, then Oktoberfest continues 4–11pm. Emerson & Busse.", "startDate": "2026-09-19T00:00:00"}, {"@type": "Event", "name": "Mount Prospect Farmers Market", "url": "https://mplions.org/event/farmers-market/", "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode", "description": "Local produce and vendors, organized by the Mount Prospect Lions Club, rain or shine. West Metra commuter lot, Northwest Hwy & Main St (Rte 83).", "startDate": "2026-09-20T08:00:00"}, {"@type": "Event", "name": "Mount Prospect Farmers Market", "url": "https://mplions.org/event/farmers-market/", "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode", "description": "Local produce and vendors, organized by the Mount Prospect Lions Club, rain or shine. West Metra commuter lot, Northwest Hwy & Main St (Rte 83).", "startDate": "2026-09-27T08:00:00"}, {"@type": "Event", "name": "Mount Prospect Farmers Market", "url": "https://mplions.org/event/farmers-market/", "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode", "description": "Local produce and vendors, organized by the Mount Prospect Lions Club, rain or shine. West Metra commuter lot, Northwest Hwy & Main St (Rte 83).", "startDate": "2026-10-04T08:00:00"}, {"@type": "Event", "name": "Mount Prospect Farmers Market", "url": "https://mplions.org/event/farmers-market/", "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode", "description": "Local produce and vendors, organized by the Mount Prospect Lions Club, rain or shine. West Metra commuter lot, Northwest Hwy & Main St (Rte 83).", "startDate": "2026-10-11T08:00:00"}, {"@type": "Event", "name": "Mount Prospect Farmers Market", "url": "https://mplions.org/event/farmers-market/", "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode", "description": "Local produce and vendors, organized by the Mount Prospect Lions Club, rain or shine. West Metra commuter lot, Northwest Hwy & Main St (Rte 83).", "startDate": "2026-10-18T08:00:00"}, {"@type": "Event", "name": "Mount Prospect Farmers Market", "url": "https://mplions.org/event/farmers-market/", "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode", "description": "Local produce and vendors, organized by the Mount Prospect Lions Club, rain or shine. West Metra commuter lot, Northwest Hwy & Main St (Rte 83).", "startDate": "2026-10-25T08:00:00"}, {"@type": "Event", "name": "Creation Station: DIY Muñecas Quitapenas (Worry Dolls)", "url": "https://mppl.libnet.info/event/16428150", "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode", "description": "Saturday, September 19 2026 10:00am - 11:00am \n Craft and create with us! We'll provide an idea and supplies; you create your own masterpiece.", "startDate": "2026-09-19T10:00:00+00:00"}, {"@type": "Event", "name": "Family Storytime", "url": "https://mppl.libnet.info/event/16290481", "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode", "description": "Monday, September 21 2026 9:30am - 10:00am \n Bring the whole family and join us for an interactive storytime with high-energy stories, songs, and activities.", "startDate": "2026-09-21T09:30:00+00:00"}, {"@type": "Event", "name": "Drop-In Tech Help", "url": "https://mppl.libnet.info/event/14755941", "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode", "description": "Monday, September 21 2026 10:00am - 11:00am \n Stop in and bring your questions about technology-related subjects such as smartphones, computers, email,…", "startDate": "2026-09-21T10:00:00+00:00"}, {"@type": "Event", "name": "Creation Station: DIY Muñecas Quitapenas (Worry Dolls)", "url": "https://mppl.libnet.info/event/16428151", "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode", "description": "Monday, September 21 2026 10:00am - 11:00am \n Craft and create with us! We'll provide an idea and supplies; you create your own masterpiece.", "startDate": "2026-09-21T10:00:00+00:00"}, {"@type": "Event", "name": "Toddler Storytime", "url": "https://mppl.libnet.info/event/16290777", "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode", "description": "Monday, September 21 2026 10:30am - 11:00am \n Grow your little learner's literacy and language skills at this playful storytime full of wiggles, wonder, and…", "startDate": "2026-09-21T10:30:00+00:00"}, {"@type": "Event", "name": "Beyond the Book Drop", "url": "https://mppl.libnet.info/event/16687517", "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode", "description": "Monday, September 21 2026 11:00am - 11:30am \n Ever wonder what happens after your library materials go through the return slot? Get a behind-the-scenes look…", "startDate": "2026-09-21T11:00:00+00:00"}]}</script>
 
 
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebPage", "name": "Mount Prospect — Within Ten", "url": "https://withintenmiles.com/mount-prospect-60056/", "dateModified": "2026-09-19T15:54:29.346470+00:00", "isPartOf": {"@type": "WebSite", "name": "Within Ten", "url": "https://withintenmiles.com/", "publisher": {"@id": "https://withintenmiles.com/about/#organization"}}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebPage", "name": "Mount Prospect — Within Ten", "url": "https://withintenmiles.com/mount-prospect-60056/", "dateModified": "2026-09-19T16:55:46.110744+00:00", "isPartOf": {"@type": "WebSite", "name": "Within Ten", "url": "https://withintenmiles.com/", "publisher": {"@id": "https://withintenmiles.com/about/#organization"}}}</script>
 <script>
 (function () {
   var activeTags = new Set();
