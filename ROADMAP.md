@@ -6632,7 +6632,7 @@ anyone builds an argument on it.
 
 #### P3 (new)
 
-150. **State the send count honestly: it is one.**
+150. ✅ **DONE — State the send count honestly: it is one.**
      `data/send_history.json` exists and works — item 114 shipped and the
      workflow is committing it back. It contains a single entry, the
      manual send of 2026-09-17, and the next scheduled issue is
@@ -6643,19 +6643,48 @@ anyone builds an argument on it.
      issues" — and that sentence is currently true only with N = 1 and
      the word "consecutive" doing no work. There is nothing wrong with
      that at six days old, but it is exactly the kind of number that
-     drifts into a pitch deck rounded up. `SPONSOR_KIT.md` should draw
-     from the file rather than from memory, and until the count is
-     genuinely into double digits the honest framing is the one item 118
-     already argued for: sell the **site**, which is live and complete,
-     and describe the newsletter as new.
+     drifts into a pitch deck rounded up.
 
-     Related and worth watching rather than acting on: the 2026-09-23
+     Checked `SPONSOR_KIT.md` directly against `data/send_history.json`
+     rather than against memory, as this item asked: it does **not**
+     currently make the "N consecutive issues" claim item 114 warned
+     about, or state any issue count at all. Nothing to walk back. It
+     already independently used the honest framing item 118 argued for —
+     "A subscriber count isn't the number to lead with this early — it's
+     honestly the weakest one this business has" — so the risk this item
+     flagged hadn't actually materialized.
+
+     What it was missing was the other half of that same honest framing:
+     it never said *why* there's no track record yet, leaving a void
+     where a sponsor could either assume the worst or wonder if a number
+     was being hidden. Added one clause, sourced from the file's one real
+     entry: "The newsletter itself is new — the first issue went out
+     September 17, 2026." A real, verifiable, currently-true fact, not a
+     projection — it turns the honest gap into the "ground floor
+     opportunity" framing item 118 already established rather than
+     leaving it unexplained.
+
+     Verified: `data/send_history.json`'s single entry's `timestamp`
+     field (`2026-09-17T03:02:00+00:00`) matches the date now stated in
+     `SPONSOR_KIT.md`. Grepped the whole repo for "consecutive" outside
+     `ROADMAP.md` itself and confirmed zero other sponsor-facing surface
+     (outreach templates, the site's own `/sponsor/` page copy in
+     `templates/sponsor.html.j2`) makes an issue-count claim needing the
+     same correction. No test references `SPONSOR_KIT.md`'s prose
+     directly (confirmed by grep), so no test update was needed for this
+     content-only change; `python -m pytest tests/ -q` still passes
+     unchanged.
+
+     Still true and still worth watching rather than acting on (nothing
+     to do here yet, as of this write-up on 2026-09-19): the 2026-09-23
      run will be the **first ever `schedule`-mode send**, and its
      Buttondown fields are still the unverified guess flagged in
      `send_newsletter.py`'s own docstring. If it fails it will fail
      loudly, which is the design working — but it means the second issue
      could slip a week, turning "one issue" into "two issues, thirteen
-     days apart."
+     days apart." A future cycle at or after 2026-09-23 should check
+     whether that send actually went out before touching this claim
+     again.
 
 ## Working agreements for autonomous iteration
 
