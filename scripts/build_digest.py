@@ -19,6 +19,7 @@ import math
 import re
 import statistics
 import sys
+from collections import Counter
 from datetime import date, datetime, time, timedelta, timezone
 from email.utils import format_datetime, parsedate_to_datetime
 from functools import lru_cache
@@ -1730,19 +1731,43 @@ def build_feed_xml(feed_items: list[dict], now: datetime) -> str:
     feed_items: dicts with title/url/detail/date_iso/region_name, already
     filtered to only real events with a resolved date (same filter every
     other structured-data feature in this file uses).
+
+    A real bug, found and fixed the same day it was noticed (ROADMAP.md
+    item 145): a `<guid>` must be unique per item - RSS readers and
+    aggregators use it for deduplication, many treating a repeat as "the
+    same item again" rather than a new one. Multiple events sharing one
+    `url` (a recurring event's every occurrence links the same organiser
+    page - item 141 - and even a pre-existing case: a multi-day festival
+    like Oktoberfest/Fall Festival, item 71's `series`, already linked
+    both days to the same info page) used to emit the identical
+    `<guid isPermaLink="true">` for every one of them - confirmed against
+    a real build's `docs/feed.xml`, which had 6 items for one farmers
+    market, all six with byte-identical guids. A feed reader that dedupes
+    by guid would surface at most one of six real, distinct occurrences,
+    and `isPermaLink="true"` was doubly wrong regardless - one URL cannot
+    truthfully be six different dates' "permanent link" at once. Only a
+    `url` that's actually unique among this build's items keeps the
+    simple `isPermaLink="true"` guid; a shared one gets the date folded
+    in and `isPermaLink="false"`, the RFC-documented way to say "this
+    guid is a stable identifier, not a dereferenceable page of its own."
     """
     dated = sorted(feed_items, key=lambda e: e["date_iso"])[:FEED_MAX_ITEMS]
+    url_counts = Counter(e["url"] for e in dated)
     items = []
     for e in dated:
         pub_dt = datetime.fromisoformat(e["date_iso"])
         if pub_dt.tzinfo is None:
             pub_dt = pub_dt.replace(tzinfo=timezone.utc)
         title = xml_escape(f"{e['region_name']}: {e['title']}")
+        if url_counts[e["url"]] > 1:
+            guid_value, is_permalink = f"{e['url']}#{e['date_iso']}", "false"
+        else:
+            guid_value, is_permalink = e["url"], "true"
         items.append(
             "  <item>\n"
             f"    <title>{title}</title>\n"
             f"    <link>{xml_escape(e['url'])}</link>\n"
-            f"    <guid isPermaLink=\"true\">{xml_escape(e['url'])}</guid>\n"
+            f"    <guid isPermaLink=\"{is_permalink}\">{xml_escape(guid_value)}</guid>\n"
             f"    <description>{xml_escape(e.get('detail') or '')}</description>\n"
             f"    <pubDate>{format_datetime(pub_dt)}</pubDate>\n"
             "  </item>"
