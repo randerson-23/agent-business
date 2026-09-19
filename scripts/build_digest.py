@@ -19,7 +19,7 @@ import math
 import re
 import statistics
 import sys
-from datetime import date, datetime, timedelta, timezone
+from datetime import date, datetime, time, timedelta, timezone
 from email.utils import format_datetime, parsedate_to_datetime
 from functools import lru_cache
 from pathlib import Path
@@ -619,7 +619,129 @@ def render_trick_or_treat_page(entries: list[dict], now: datetime, analytics: di
     )
 
 
-def prepare_annual_events(region_cfg: dict) -> dict | None:
+def _build_annual_event_dict(
+    item: dict, region_name: str, *, date_display: str | None, date_iso: str | None,
+    recurrence_note: str | None = None,
+) -> dict:
+    """Shared dict-construction for both a single dated annual_events entry
+    and one expanded occurrence of a recurring one - same event-dict shape
+    a fetched item gets (see prepare_annual_events' own docstring for why),
+    just with the date fields supplied by the caller instead of parsed from
+    a single `date:` string.
+    """
+    tags = item.get("tags")
+    if tags is None:
+        tags = infer_tags(item.get("title", ""), item.get("detail", ""), "Annual Events")
+    event = {
+        "title": item.get("title", ""),
+        # ROADMAP.md Phase 11 #71: an optional small kicker for entries
+        # that are one day of the same multi-day event (e.g. Friday and
+        # Saturday of one festival), so the grouping shows above the
+        # title instead of being concatenated into it. Absent for a
+        # standalone annual event.
+        "series": item.get("series"),
+        "detail": truncate(item.get("detail", "")),
+        "url": item.get("url", ""),
+        "date": date_display,
+        "date_iso": date_iso,
+        "tags": tags,
+        "tag_badges": [{"id": t, **tag_display(t)} for t in tags],
+        # ROADMAP.md item 141: a light "every Sunday through Oct 11"
+        # kicker for a recurring occurrence, so it reads as a standing
+        # reference rather than news repeated week after week - None for
+        # a one-off annual event, same as `series` above.
+        "recurrence_note": recurrence_note,
+    }
+    event["ics_href"] = build_ics_data_uri(event)
+    event["google_calendar_url"] = build_google_calendar_url(event, region_name)
+    return event
+
+
+_WEEKDAY_NAMES = {
+    "monday": 0, "tuesday": 1, "wednesday": 2, "thursday": 3,
+    "friday": 4, "saturday": 5, "sunday": 6,
+}
+
+# ROADMAP.md item 141: bounds how far forward a recurring event expands -
+# a five-month farmers-market season shouldn't inflate calendar.ics with
+# occurrences nobody will see for months, and a fixed window means the
+# list shrinks back down as the season plays out rather than growing
+# without limit build after build.
+MAX_RECURRENCE_DAYS = 120
+
+
+def expand_recurring_annual_event(item: dict, region_name: str, now: datetime) -> list[dict]:
+    """One `annual_events:` entry with a `recurrence:` block (starts, ends,
+    weekday, optional time) expanded into concrete dated occurrence dicts -
+    the fix ROADMAP.md item 141 asked for: a farmers market running
+    Sundays 14 Jun - 11 Oct is invisible to every date-scoped view, the
+    combined email, and calendar.ics today, despite being the most
+    reliably knowable event a region has, because `annual_events` only
+    ever understood a single `date:`.
+
+    Every occurrence is marked `attendable: True` (it's a real event, not
+    a closure notice - item 90's distinction doesn't apply here) and
+    `recurring: True`, which build_email_subject_line() and
+    select_editors_pick() both check and exclude from their headline
+    picks - the design caveat item 141 raised explicitly: the same market
+    named in twenty consecutive subject lines is exactly how a digest
+    starts reading as automated filler, the failure mode item 124's
+    competitors already have. A recurring item still appears normally in
+    the weekend view, the email body, and calendar.ics - only the
+    headline-selection logic treats it differently, via `recurrence_note`
+    (see _build_annual_event_dict).
+
+    Bounded to MAX_RECURRENCE_DAYS forward from `now` (or `ends`,
+    whichever is sooner) and never includes an occurrence that's already
+    passed - same "don't show what's already happened" rule every other
+    dated source on this site follows.
+    """
+    rec = item.get("recurrence")
+    if not rec:
+        return []
+    title = item.get("title", "<untitled>")
+    weekday_name = str(rec.get("weekday", "")).strip().lower()
+    weekday = _WEEKDAY_NAMES.get(weekday_name)
+    if weekday is None:
+        logger.warning("Unknown recurrence weekday %r for %r - skipping recurrence", rec.get("weekday"), title)
+        return []
+    try:
+        starts = datetime.strptime(rec["starts"], "%Y-%m-%d").date()
+        ends = datetime.strptime(rec["ends"], "%Y-%m-%d").date()
+    except (KeyError, ValueError) as exc:
+        logger.warning("Invalid recurrence starts/ends for %r: %s - skipping recurrence", title, exc)
+        return []
+    occurrence_time = time(0, 0)
+    if rec.get("time"):
+        try:
+            occurrence_time = datetime.strptime(rec["time"], "%H:%M").time()
+        except ValueError:
+            logger.warning("Invalid recurrence time %r for %r - defaulting to midnight", rec.get("time"), title)
+
+    today = now.date()
+    window_end = min(ends, today + timedelta(days=MAX_RECURRENCE_DAYS))
+    first = starts + timedelta(days=(weekday - starts.weekday()) % 7)
+    if first < today:
+        first = today + timedelta(days=(weekday - today.weekday()) % 7)
+
+    recurrence_note = f"Every {weekday_name.capitalize()} through {ends.strftime('%b %-d')}"
+    events = []
+    d = first
+    while d <= window_end:
+        event = _build_annual_event_dict(
+            item, region_name,
+            date_display=d.strftime("%b %-d"),
+            date_iso=datetime.combine(d, occurrence_time).isoformat(),
+            recurrence_note=recurrence_note,
+        )
+        event["attendable"] = True
+        event["recurring"] = True
+        events.append(event)
+        d += timedelta(days=7)
+    return events
+
+
+def prepare_annual_events(region_cfg: dict, now: datetime) -> dict | None:
     """Curated annual events with real dates (ROADMAP.md Phase 11 #67) -
     the missing third content type. `sources:` is fetched and best-effort;
     `evergreen:` is curated but undated; neither covers a known, dated,
@@ -637,6 +759,10 @@ def prepare_annual_events(region_cfg: dict) -> dict | None:
     an `annual_events:` entry with no special-casing; it's just another
     block. Returns None (not an empty block) when a region has none
     configured, so the section never renders as an empty apology.
+
+    An entry with a `recurrence:` block (ROADMAP.md item 141) expands
+    into many dated occurrences via expand_recurring_annual_event();
+    everything else here is unchanged for a plain single-`date:` entry.
     """
     raw_items = region_cfg.get("annual_events", [])
     if not raw_items:
@@ -644,29 +770,16 @@ def prepare_annual_events(region_cfg: dict) -> dict | None:
     region_name = region_cfg["region"]["name"]
     events = []
     for item in raw_items:
-        tags = item.get("tags")
-        if tags is None:
-            tags = infer_tags(item.get("title", ""), item.get("detail", ""), "Annual Events")
-        event = {
-            "title": item.get("title", ""),
-            # ROADMAP.md Phase 11 #71: an optional small kicker for
-            # entries that are one day of the same multi-day event (e.g.
-            # Friday and Saturday of one festival), so the grouping shows
-            # above the title instead of being concatenated into it -
-            # the earlier "Oktoberfest — Fall Fest & Oktoberfest weekend"
-            # phrasing repeated the festival name three times on the
-            # card. Absent for a standalone annual event.
-            "series": item.get("series"),
-            "detail": truncate(item.get("detail", "")),
-            "url": item.get("url", ""),
-            "date": format_event_date(item.get("date")),
-            "date_iso": parse_event_date_iso(item.get("date")),
-            "tags": tags,
-            "tag_badges": [{"id": t, **tag_display(t)} for t in tags],
-        }
-        event["ics_href"] = build_ics_data_uri(event)
-        event["google_calendar_url"] = build_google_calendar_url(event, region_name)
-        events.append(event)
+        if item.get("recurrence"):
+            events += expand_recurring_annual_event(item, region_name, now)
+            continue
+        events.append(
+            _build_annual_event_dict(
+                item, region_name,
+                date_display=format_event_date(item.get("date")),
+                date_iso=parse_event_date_iso(item.get("date")),
+            )
+        )
     return {"section": "Annual Events", "events": events}
 
 
@@ -923,6 +1036,14 @@ def select_editors_pick(region_cfg: dict, blocks: list[dict], evergreen: list[di
     kid-friendly break ties, since those are this audience's two biggest
     filters. Returns None only when the region has nothing at all to
     pick from.
+
+    Excludes a `recurring` occurrence (ROADMAP.md item 141) from the
+    heuristic specifically - the soonest-dated tiebreak would otherwise
+    pick the same standing weekly market every single build for its
+    entire season, the same "reads as automated filler" risk item 141
+    raised for the subject line, applied to the page's other headline
+    slot. `editors_pick_url` can still target one explicitly if an owner
+    ever wants to feature it - only the automatic pick avoids it.
     """
     candidates = [e for b in blocks for e in b["events"]] + evergreen
     candidates = [c for c in candidates if c.get("title") and c.get("url")]
@@ -946,7 +1067,8 @@ def select_editors_pick(region_cfg: dict, blocks: list[dict], evergreen: list[di
         tag_bonus = -(("free" in tags) + ("kid_friendly" in tags))
         return (not has_date, date_key, tag_bonus)
 
-    return sorted(candidates, key=sort_key)[0]
+    heuristic_candidates = [c for c in candidates if not c.get("recurring")] or candidates
+    return sorted(heuristic_candidates, key=sort_key)[0]
 
 
 def all_tags_present(*blocks_and_evergreen: list[dict]) -> list[dict]:
@@ -1828,21 +1950,37 @@ def build_email_subject_line(region: dict, weekend_events: list[dict]) -> str:
     nobody drives somewhere for one, so it must never win the subject
     line. Falls back to the honest "what's coming up" empty state if a
     weekend has no attendable events at all, same as having none at all.
+
+    Also never picks a `recurring` event (ROADMAP.md item 141) - the same
+    farmers market named in twenty consecutive subject lines is exactly
+    how a digest starts reading as automated filler, the design caveat
+    item 141 raised explicitly. A recurring event still counts toward
+    the "and N more" tally, same as a non-attendable one doesn't count
+    at all - two different kinds of "real, but not the headline."
     """
     name = region["name"]
-    titles = [e["title"] for e in weekend_events if e.get("attendable", True)]
-    if not titles:
+    attendable = [e for e in weekend_events if e.get("attendable", True)]
+    if not attendable:
         return f"This weekend in {name}: what's coming up"
-    first = titles[0]
-    if len(titles) == 1:
+
+    headline_candidates = [e for e in attendable if not e.get("recurring")]
+    if not headline_candidates:
+        return f"This weekend in {name}: what's coming up"
+
+    total = len(attendable)
+    first = headline_candidates[0]["title"]
+    if total == 1:
         return f"This weekend in {name}: {first}"
 
-    second = next((t for t in titles[1:] if not _is_near_duplicate_title(first, t)), None)
+    second = next(
+        (e["title"] for e in headline_candidates[1:] if not _is_near_duplicate_title(first, e["title"])),
+        None,
+    )
     if second is None:
-        remaining = len(titles) - 1
+        remaining = total - 1
         return f"This weekend in {name}: {first}, and {remaining} more"
 
-    more = len(titles) - 2
+    more = total - 2
     if more == 0:
         return f"This weekend in {name}: {first} and {second}"
     return f"This weekend in {name}: {first}, {second}, and {more} more"
@@ -2086,7 +2224,7 @@ def main() -> None:
             )
 
         blocks = fetch_region_sections(region_cfg, health=source_health)
-        annual_block = prepare_annual_events(region_cfg)
+        annual_block = prepare_annual_events(region_cfg, now)
         if annual_block:
             # First, not appended: curated + dated is the highest-
             # confidence content on the page (a human put it there

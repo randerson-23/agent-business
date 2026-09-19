@@ -462,6 +462,15 @@
     letter-spacing: 0.06em;
     text-transform: uppercase;
   }
+  /* ROADMAP.md item 141: a recurring event's "every Sunday through Oct
+     11" note - deliberately the opposite visual weight of .series above
+     (muted, not bold/uppercase/accent-colored), since the point is that
+     it reads as a standing reference, not news repeated every card. */
+  .card .recurrence-note {
+    color: var(--muted);
+    font-size: 12px;
+    font-style: italic;
+  }
   .card h3 { margin: 0; padding-right: 24px; font-size: 16px; font-weight: 600; line-height: 1.35; }
   .card h3 a { color: var(--ink); text-decoration: none; }
   .card h3 a:hover { color: var(--accent); }
@@ -810,6 +819,7 @@
           {% if item.series %}<div class="series">{{ item.series }}</div>{% endif %}
           {% if item.date %}<div class="date">{{ item.date }}</div>{% endif %}
           <h3>{% if item.url %}<a href="{{ item.url }}">{{ item.title }}</a>{% else %}{{ item.title }}{% endif %}</h3>
+          {% if item.recurrence_note %}<div class="recurrence-note">{{ item.recurrence_note }}</div>{% endif %}
           {% if item.detail %}<p class="detail">{{ item.detail }}</p>{% endif %}
           {% if item.tag_badges %}
           <div class="tag-row">

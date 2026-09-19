@@ -254,6 +254,30 @@ annual_events:
     detail: "Free Fall Festival noon–4pm (special-needs hour noon–1pm) with crafts & entertainment, then Oktoberfest continues 4–11pm. Emerson & Busse."
     url: "https://mpdowntown.com/oktoberfest-info/"
     tags: ["free", "kid_friendly", "outdoor"]
+  # ROADMAP.md item 141 (thirty-second pass): the real case that
+  # motivated the recurrence feature - a Sunday market running mid-June
+  # through late October is invisible to every date-scoped view without
+  # it, despite being the most reliably knowable event the region has.
+  # Confirmed via WebSearch (2026-09-19) against three independent
+  # sources: the Village of Mount Prospect's own event calendar, the
+  # organizing Mount Prospect Lions Club's own site, and the National
+  # Farmers Market Directory - 2026 season June 7-Oct 25, Sundays
+  # 8am-1pm, rain or shine, at the West Metra commuter lot (Northwest
+  # Hwy & Main St / Rte 83). Linked to the Lions Club's own page as the
+  # organizer's authoritative source, same convention as every other
+  # annual_events entry here. `recurrence:` expands into weekly dated
+  # occurrences at build time (expand_recurring_annual_event()) rather
+  # than needing 20 hand-written entries - see that function's docstring
+  # for the "never a subject-line headline" design rule this applies.
+  - title: "Mount Prospect Farmers Market"
+    detail: "Local produce and vendors, organized by the Mount Prospect Lions Club, rain or shine. West Metra commuter lot, Northwest Hwy & Main St (Rte 83)."
+    url: "https://mplions.org/event/farmers-market/"
+    tags: ["outdoor", "food"]
+    recurrence:
+      starts: "2026-06-07"
+      ends: "2026-10-25"
+      weekday: "Sunday"
+      time: "08:00"
 
 # Evergreen, always-available local info used as a fallback so the digest
 # never ships empty even if every live source above fails to fetch.
