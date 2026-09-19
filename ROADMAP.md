@@ -6476,42 +6476,88 @@ anyone builds an argument on it.
 
 #### P1 (new)
 
-148. **High school sports is the biggest family-relevant category the
-     site ignores — investigate the source before assuming it is
-     available.** For a family-dense suburb, a Friday night home football
-     game *is* the weekend, and local publishers build whole recurring
-     products around it: Shaw Local's "Friday Night Drive" covers every
-     game in the suburban area, week by week. This site carries none of
-     it. District 214 (the shared high school district covering Mount
-     Prospect and Arlington Heights) and District 211 (Palatine) are
-     already known entities here — D211's *academic* calendar is
-     configured in the Palatine region, and its athletics are not.
+148. ✅ **DONE — High school sports is the biggest family-relevant
+     category the site ignores — investigate the source before assuming
+     it is available.** For a family-dense suburb, a Friday night home
+     football game *is* the weekend, and local publishers build whole
+     recurring products around it: Shaw Local's "Friday Night Drive"
+     covers every game in the suburban area, week by week. This site
+     carried none of it. District 214 (the shared high school district
+     covering Mount Prospect and Arlington Heights), District 211
+     (Palatine), and District 207 (Des Plaines' Maine West) are all
+     already known entities here — D211's and D207's *academic* calendars
+     are configured; none of the four regions' athletics were.
 
-     The sourcing constraint is real and needs checking first, because it
-     determines whether this is a config change or a dead end. Illinois
-     high school schedules are published substantially **through
-     MaxPreps**, a commercial aggregator, rather than through open
-     district feeds; other states' associations do publish `.ics`
-     exports, but Illinois' was not confirmed to. So the order of work
-     is:
+     Did the source investigation the item called for, in order, using
+     WebSearch (the sandbox's own network can't reach any of these
+     districts' domains directly, confirmed by two failed `WebFetch`
+     attempts against `adc.d211.org` and `www.d214.org` — `EGRESS_BLOCKED`
+     — the same constraint every fetcher source in this repo already
+     works under):
 
-     1. Check whether each district's **own athletics page** publishes a
-        calendar feed, the same way D57's iCal page was found.
-     2. If it does, add it with `informational: false` — a game is
-        attendable, unlike item 90's no-school days — and let the
-        fail-soft fetcher handle an unverified URL.
-     3. **If only MaxPreps has it, stop.** Items 109 and 143 already set
-        the rule: this site does not republish data it has no right to,
-        and a commercial aggregator's schedules are exactly that. The
-        legitimate fallback is an evergreen guide entry linking to each
-        school's athletics page — honest, useful, and no worse than what
-        the trick-or-treat guide did before real data existed.
+     1. **Checked whether each district's own athletics page publishes a
+        calendar feed**, the way D57's academic iCal page was found.
+        D211's site (`adc.d211.org`) repeatedly surfaced only the
+        already-configured *academic* calendar's RSS URL, never a
+        distinct athletics one, across several targeted searches. A
+        promising-looking `PageType=21` "ICal Detail" link turned up too,
+        but with no way to confirm which calendar it actually points to
+        (sports vs. some other district calendar) without fetching the
+        page — and per items 109/143's own standard, an unconfirmed guess
+        doesn't get wired in just because it looks plausible.
+     2. **Checked whether MaxPreps is genuinely the dominant real source**,
+        rather than assuming it from the item's own framing. Searched each
+        region's actual team by name — "Prospect High School football
+        schedule," "John Hersey athletics schedule," "Fremd athletics
+        schedule" — and MaxPreps pages outranked every official district
+        page in the real results for all three, with district pages
+        themselves pointing searchers toward Hudl, IHSA, and NFHS Network
+        rather than hosting structured schedule data. This corroborates
+        the constraint the item already named, rather than taking it on
+        faith.
+     3. **Landed on the legitimate fallback the item itself specified**:
+        an evergreen guide entry linking to each school's own athletics
+        page — not MaxPreps (items 109/143's rule against republishing a
+        commercial aggregator's data is about pulling in and re-listing
+        its schedule as this site's own content, not linking out to a
+        team's page as a citation; this entry does the latter, to the
+        *school's own* page, not MaxPreps'). Found and confirmed one real,
+        school-specific athletics landing page per region — verified
+        present in each WebSearch call's raw result-link list, not just
+        the AI summary prose, the same discipline as every other
+        real-source fact in this repo:
+        - Mount Prospect (Prospect HS, D214): `d214.org/o/phs/page/athletics`
+        - Arlington Heights (Hersey HS, D214): `d214.org/o/jhhs/page/athletics`
+        - Palatine (Fremd HS, D211): `fhs.d211.org/athletics` (D211 hosts
+          each school's athletics section on its own subdomain, not under
+          `adc.d211.org`)
+        - Des Plaines (Maine West HS, D207): `west.maine207.org/maine-west-athletics/`
 
-     Worth flagging the seasonality: football is roughly eight home dates
-     across the autumn, which makes this a **Q4-shaped** addition
-     arriving late for this season. That argues for doing the source
-     investigation now and shipping whatever it supports, rather than
-     waiting for next August and rediscovering the question.
+     Added one `evergreen` entry per region (`config/regions/*.yaml`) with
+     an honest detail line stating plainly that this site has no licensed
+     schedule feed for game dates and why, rather than implying more than
+     a link actually delivers — matching this repo's `hours: null`
+     trick-or-treat honesty pattern rather than overclaiming.
+
+     Verified against a real local build:
+     `python scripts/build_digest.py` succeeded with no errors; grepped
+     each region's real `docs/<region>/index.html` output and confirmed
+     the new "Athletics" card renders with the correct title and a
+     correctly-escaped `href` for its school's real URL, in all four
+     regions. `python -m pytest tests/ -q`: 406 passed, unchanged — this
+     is a config-content-only change (same pattern as item 141's Farmers
+     Market addition), verified by inspecting the real generated output
+     rather than by adding a new test, since no existing test exercises
+     real `config/regions/*.yaml` content directly.
+
+     Not done, and explicitly out of scope here per the item's own
+     decision tree: no schedule *data* feed exists for any of the four
+     schools (steps 1-2 above ruled that out), so no `sources:` fetcher
+     entry, no `.ics` calendar wiring, and no `attendable` game events —
+     just the honest evergreen link. If Illinois HS athletics ever gets a
+     real open feed (a rules or platform change at IHSA/the districts
+     themselves), that would be new information worth re-investigating,
+     not a reason to revisit this conclusion on a hunch.
 
 #### P2 (new)
 

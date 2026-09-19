@@ -196,6 +196,14 @@ evergreen:
     detail: "Village council meetings, permits, and community announcements."
     url: "https://www.palatine.il.us/"
     tags: []
+  # ROADMAP.md item 148: see the Mount Prospect config for the sourcing
+  # rationale. D211 (Fremd's district) hosts each school's athletics
+  # section on its own subdomain rather than under adc.d211.org - found
+  # and confirmed present in the raw WebSearch result list, not guessed.
+  - title: "Fremd High School Athletics"
+    detail: "Fremd Vikings varsity & JV schedules, rosters, and ticket info. This site doesn't have a licensed schedule feed for game dates - Illinois HS schedules run mostly through MaxPreps, a commercial aggregator this site doesn't republish from - so this links to the school's own athletics page instead."
+    url: "https://fhs.d211.org/athletics"
+    tags: []
 
 # Structured trick-or-treat data (ROADMAP.md Phase 11 #101) - see the
 # Mount Prospect config for the rationale.

@@ -198,6 +198,14 @@ evergreen:
     detail: "City council meetings, permits, and community announcements."
     url: "https://www.desplainesil.gov/"
     tags: []
+  # ROADMAP.md item 148: see the Mount Prospect config for the sourcing
+  # rationale. Maine West is District 207 (a different district than
+  # D214/D211) - found and confirmed present in the raw WebSearch result
+  # list, not guessed.
+  - title: "Maine West High School Athletics"
+    detail: "Maine West Warriors varsity & JV schedules, rosters, and ticket info. This site doesn't have a licensed schedule feed for game dates - Illinois HS schedules run mostly through MaxPreps, a commercial aggregator this site doesn't republish from - so this links to the school's own athletics page instead."
+    url: "https://west.maine207.org/maine-west-athletics/"
+    tags: []
 
 # Structured trick-or-treat data (ROADMAP.md Phase 11 #101) - see the
 # Mount Prospect config for the rationale.
