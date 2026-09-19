@@ -924,7 +924,7 @@ Angles reviewed this pass:
 
 #### P2 (new)
 
-24. **Actually send the newsletter.** Item 12 captures addresses; nothing
+24. ✅ **Actually send the newsletter.** Item 12 captures addresses; nothing
     mails them, so the list is currently an asset earning zero. Buttondown's
     API plus the existing weekly build is the whole product Macaroni KID
     and 6AM City monetize. Send Tuesday–Thursday (highest engagement), and
@@ -1143,7 +1143,7 @@ change whose cost only shows up on a real network stays gated behind it.
 
 #### P2 (new)
 
-31. **Send the weekend email Thursday afternoon.** A refinement of open
+31. ✅ **Send the weekend email Thursday afternoon.** A refinement of open
     item 24, not a replacement. Both Main Line Parent and Philadelphia
     Family send their weekend planner Thursday PM — two independent
     analogues converging on the same slot is a stronger signal than the
@@ -3286,7 +3286,7 @@ Gmail-to-self always authenticates.
 
 #### P1 (new)
 
-89. **Prove one newsletter can send before the press pitch goes out, not
+89. ✅ **Prove one newsletter can send before the press pitch goes out, not
     after.** These two are being tracked independently and shouldn't be.
     Item 77's press pitch is the highest-yield action available and the
     file has said so for four passes — but a local-media mention is a
@@ -3364,7 +3364,7 @@ item 47 allows. Authentication and placement are working.
 
 #### P1 (new)
 
-90. **Events need an `attendable` / `informational` distinction, and only
+90. ✅ **Events need an `attendable` / `informational` distinction, and only
     attendable ones may headline.** The live subject line right now is
     `This weekend in Mount Prospect: Oktoberfest, Half-Day Student
     Attendance (Grades 1-8), and 1 more`. A school half-day is being
@@ -3434,7 +3434,7 @@ item 47 allows. Authentication and placement are working.
     a plain bullet today, which is a real but smaller gap than the one
     this closes, worth its own follow-up rather than scope creep here.
 
-91. **Emit a separate `email-send.html` with no preview annotation.** The
+91. ✅ **Emit a separate `email-send.html` with no preview annotation.** The
     test email went out with `PREVIEW ONLY, NOT PART OF THE EMAIL —
     SUBJECT LINE: …` rendered as the first line of body copy, above the
     wordmark, visible to the reader.
@@ -3481,7 +3481,7 @@ item 47 allows. Authentication and placement are working.
 
 #### P2 (new)
 
-92. **The template's dark-mode defense does not survive Yahoo — fix it or
+92. ✅ **The template's dark-mode defense does not survive Yahoo — fix it or
     stop claiming it.** `email_digest.html.j2`'s header comment states
     that setting every color explicitly (`bgcolor` attribute *and* inline
     style, on every cell, plus `meta color-scheme: light`) prevents
@@ -3621,7 +3621,7 @@ and exactly what a ticketing platform's listing will never contain.
 
 #### P1 (new)
 
-94. **Trade a mention for a mention with 3–5 local businesses — the
+94. ✅ **Trade a mention for a mention with 3–5 local businesses — the
     cheapest subscriber acquisition available, and it is sponsor
     prospecting wearing a different hat.** The tactic: offer a business a
     mention in the newsletter in exchange for them promoting it to their
@@ -3653,7 +3653,7 @@ and exactly what a ticketing platform's listing will never contain.
     as optional, not a condition of the mention. No code changes; this
     is copy only, so no test/build cycle to run.
 
-95. **The $5,000 Neighborhood Authority tier needs an answer to Nextdoor,
+95. ✅ **The $5,000 Neighborhood Authority tier needs an answer to Nextdoor,
     or it needs repricing.** `BUSINESS_PLAN.md` prices this tier against
     the realtor "neighborhood farming" budget of $500–1,500/month, and
     that budget is real — average agent marketing spend is over
@@ -3699,7 +3699,7 @@ and exactly what a ticketing platform's listing will never contain.
 
 #### P2 (new)
 
-96. **Name the Substack trade-off out loud, then keep Buttondown.** 40%
+96. ✅ **Name the Substack trade-off out loud, then keep Buttondown.** 40%
     of all new Substack subscriptions now originate inside its own
     network, and Recommendations is the main growth engine for
     publications under 10,000 subscribers. Buttondown has no network at
@@ -3735,7 +3735,7 @@ and exactly what a ticketing platform's listing will never contain.
     monetization item in the current backlog. Copy only - no code
     changes, no test/build cycle to run.
 
-97. **Raise the email's body type to the 16px floor.** The template sets
+97. ✅ **Raise the email's body type to the 16px floor.** The template sets
     event titles at 15px and dates, details and the footer at 13px. The
     stated mobile floor is **16px**, 55%+ of opens are mobile, and half
     of readers delete an email that does not read well on a phone — and
@@ -3775,7 +3775,7 @@ and exactly what a ticketing platform's listing will never contain.
 
 #### P3 (new) — a retraction
 
-98. **`llms.txt` does not work, and item 22 should stop implying it
+98. ✅ **`llms.txt` does not work, and item 22 should stop implying it
     does.** I recommended it. The current evidence is that Google has
     **explicitly stated no Google Search system reads or acts on
     `llms.txt`**, that no major AI provider — OpenAI, Google, Anthropic
@@ -3827,7 +3827,7 @@ and exactly what a ticketing platform's listing will never contain.
     inside a correction no one re-reads. Copy only in this item itself —
     no code changes, no test/build cycle to run.
 
-99. **Add `Organization` schema and a real About page — the entity-
+99. ✅ **Add `Organization` schema and a real About page — the entity-
     clarity work item 22 should have been pointing at.** Item 98's
     retraction found the actual lever for AI-search citation is content
     structure, claim clarity, and entity authority, not organic rank or
@@ -3916,7 +3916,7 @@ keep it that way.
 
 #### P1 (new)
 
-100. **Publish a subscribable `calendar.ics` per region — the strongest
+100. ✅ **Publish a subscribable `calendar.ics` per region — the strongest
      retention mechanism available, and a static file.** Today the site
      offers a per-event "Add to calendar" `data:` URI: a one-time copy
      that goes stale the moment anything changes and requires a fresh
@@ -4003,7 +4003,7 @@ keep it that way.
      `DTSTART`/`DTEND` values. `docs/` restored and the four newly-
      generated `calendar.ics` files removed before committing.
 
-101. **Publish the four villages' official trick-or-treat hours on one
+101. ✅ **Publish the four villages' official trick-or-treat hours on one
      page, before mid-October.** The fall guide currently handles this by
      pointing at the City's news page and saying the hours get posted
      there each October. That is the honest thing to write when you have
@@ -4076,7 +4076,7 @@ keep it that way.
 
 #### P2 (new)
 
-102. **Record the cadence as validated, and put churn in the sponsor
+102. ✅ **Record the cadence as validated, and put churn in the sponsor
      kit.** Two numbers arrived that answer open questions rather than
      raising them. MailerLite's data across roughly 1.4 million campaigns
      puts **monthly to twice-weekly** as the band where opens and clicks
@@ -4115,7 +4115,7 @@ keep it that way.
      own title raised. Copy only - no code changes; `python -m pytest
      tests/ -q` → 309 passed (unchanged, confirming nothing else broke).
 
-103. **Write down the design principles, so the build loop stops adding.**
+103. ✅ **Write down the design principles, so the build loop stops adding.**
      The 2026 research is unusually clear that the failure mode for a
      site like this is accumulation: "the strongest websites will not try
      to use twelve trends at once — identify the two or three directions
@@ -4157,7 +4157,7 @@ keep it that way.
 
 #### P3 (new)
 
-104. **The seasonal-circuit guide exists in one region out of four.**
+104. ✅ **The seasonal-circuit guide exists in one region out of four.**
      `config/regions/mount-prospect-60056.yaml` carries a
      `seasonal-circuit-guide`; Arlington Heights, Des Plaines and
      Palatine each have `fall-family-guide`,
@@ -4243,7 +4243,7 @@ overrule:
 
 #### P2 (new)
 
-105. **A combined multi-region email, or an honest reason there isn't
+105. ✅ **A combined multi-region email, or an honest reason there isn't
      one.** The send workflow mails **one** region's digest — Mount
      Prospect, the home region with the most sources — because
      Buttondown's free plan is a single list with no segmentation, and
@@ -4434,7 +4434,7 @@ press pitch lands.
      benchmark; do not port a three-part drip onto a local events
      newsletter, where it would read as pushy. One good welcome email.
 
-107. **Ask three local Facebook group admins for permission — the channel
+107. ✅ **Ask three local Facebook group admins for permission — the channel
      where this audience actually is, and the weekly post is already
      written.** `build_weekly_summary_txt()` has emitted a
      Facebook-shaped `POST` / `FIRST COMMENT` pair for every region for
@@ -4477,7 +4477,7 @@ press pitch lands.
 
 #### P2 (new)
 
-108. **The signup form promises one town and now delivers four.** Every
+108. ✅ **The signup form promises one town and now delivers four.** Every
      region page carries "The weekly digest, emailed once a week" beside
      that region's own events. A reader on the Palatine page reasonably
      concludes they are subscribing to Palatine. Since item 105 shipped
@@ -4584,7 +4584,7 @@ task.
 
 #### P1 (new)
 
-110. **Let Buttondown schedule the send, so a late Actions run stops
+110. ✅ **Let Buttondown schedule the send, so a late Actions run stops
      mattering.** The owner asked for Thursday mornings. What actually
      happens, on the measured evidence above, is that the job fires
      somewhere between 17:00 and 19:00 UTC — roughly **12pm–2pm
@@ -4638,7 +4638,7 @@ task.
      current build and correctly prints the actual computed
      `publish_date`.
 
-111. **A scheduled run that never happens is currently invisible.**
+111. ✅ **A scheduled run that never happens is currently invisible.**
      `build-digest.yml` carries a deliberate comment explaining that a
      failing job emails the owner at no cost, which is a sound safety net
      for a run that *fails*. It cannot catch the failure mode the
@@ -4682,7 +4682,7 @@ task.
 
 #### P2 (new)
 
-112. **Start the Chicago Northwest Restaurant Week guide now, and write
+112. ✅ **Start the Chicago Northwest Restaurant Week guide now, and write
      down the seasonal calendar while doing it.** Restaurant Week runs
      **Feb 27 – Mar 8** across the Northwest suburbs — all four regions,
      dated, annual, and exactly the kind of thing residents search for
@@ -4751,7 +4751,7 @@ task.
 
 #### P3 (new)
 
-113. **Give `DESIGN_PRINCIPLES.md` a named referent instead of an
+113. ✅ **Give `DESIGN_PRINCIPLES.md` a named referent instead of an
      adjective.** Item 103 shipped the file on the finding that the
      failure mode for a site like this is accumulation. "Restraint" is
      hard to argue against and equally hard to apply.
@@ -4818,7 +4818,7 @@ this pass went looking.
 
 #### P1 (new)
 
-114. **Nothing confirms a send happened, so a missed week is invisible.**
+114. ✅ **Nothing confirms a send happened, so a missed week is invisible.**
      Item 111 proposed a staleness guard on the *build* timestamp, which
      is the right instinct aimed at the wrong artifact. Today proves the
      gap is on the other side: the build ran fine all day; it was the
@@ -4956,7 +4956,7 @@ this pass went looking.
 
 #### P2 (new)
 
-116. **The site's geographic signal is as volatile as this week's event
+116. ✅ **The site's geographic signal is as volatile as this week's event
      list.** Local event pages rank on naming neighbourhoods, landmarks
      and venues, not just the town. Counting on the live Mount Prospect
      page: "Randhurst" appears 5 times, "Busse" 9, "Emerson" 11 —
@@ -5067,7 +5067,7 @@ been asserting for six passes.**
 
 #### P1 (new)
 
-118. **Correct the monetisation gate: two of the four tiers were never
+118. ✅ **Correct the monetisation gate: two of the four tiers were never
      waiting on subscribers.** Item 95 ended with "until there is an
      audience number to put next to the price, no tier is sellable at any
      price", and items 94/96/107 have repeated that framing since. It is
@@ -5123,7 +5123,7 @@ been asserting for six passes.**
      tier cards each show a "Gated by:" label matching `SPONSOR_KIT.md`'s
      table after a real `build_digest.py` run.
 
-119. **Offer a founding-partner rate, and say why it exists.** The
+119. ✅ **Offer a founding-partner rate, and say why it exists.** The
      standard opener for a first sponsor is a discounted rate, and it
      solves a problem this business specifically has: the first sponsor
      takes all the risk of an unproven product, and has no comparable to
@@ -5162,7 +5162,7 @@ been asserting for six passes.**
 
 #### P2 (new)
 
-120. **`FAQPage` is the second retracted search bet — keep the markup,
+120. ✅ **`FAQPage` is the second retracted search bet — keep the markup,
      stop counting it, and make that a standing rule.** Google
      **deprecated FAQ rich results in May 2026**. The build emits
      `FAQPage` on 16 guide pages, added under item 22 as part of the
@@ -5347,7 +5347,7 @@ it since the first competitor review.
 
 #### P1 (new)
 
-124. **Re-state the moat honestly: it is the civic feeds, not the idea.**
+124. ✅ **Re-state the moat honestly: it is the civic feeds, not the idea.**
      The competitors table has carried Patch since the first review as
      "hyperlocal news + community calendar" whose worth-stealing was
      user-submitted events and a business directory. That is badly out of
@@ -5404,7 +5404,7 @@ it since the first competitor review.
      369 tests pass; no code changed, verified the new copy renders via
      a real `build_digest.py` run.
 
-125. **Pitch the Daily Herald first, not Journal & Topics — they are not
+125. ✅ **Pitch the Daily Herald first, not Journal & Topics — they are not
      interchangeable.** Item 77 has named both for five passes as though
      picking either were a coin flip. They are not. **Journal & Topics
      runs its own Event Calendar with a "Submit Your Event" form**,
@@ -5452,7 +5452,7 @@ it since the first competitor review.
 
 #### P2 (new)
 
-126. **Say where the data comes from, on the page.** Counted on the live
+126. ✅ **Say where the data comes from, on the page.** Counted on the live
      build: "Village of Mount Prospect", "Mount Prospect Public Library"
      and "Mount Prospect Park District" each appear three times on the
      region page — entirely as **section headings**. Nothing anywhere
@@ -5637,7 +5637,7 @@ it cuts both ways.
      him, not the build loop. Items 131 and 132 below - both real content
      changes with no privacy trade-off - shipped this same pass instead.
 
-131. **State plainly that nothing here is written by a machine — it is
+131. ✅ **State plainly that nothing here is written by a machine — it is
      the one claim competitors cannot copy.** Checked on the live build:
      **19 of 19** event cards link out to the source that published the
      event. The site fetches real listings from named civic feeds and
@@ -5704,7 +5704,7 @@ it cuts both ways.
 
 #### P2 (new)
 
-132. **Add a corrections path, because accuracy is the entire claim.**
+132. ✅ **Add a corrections path, because accuracy is the entire claim.**
      Every failure in the category above was an accuracy failure. This
      site's differentiation rests on being traceable and correct — and it
      currently offers a reader who spots a wrong date no way to say so,
@@ -6192,7 +6192,7 @@ not read later as missed runs.
      reference rather than news. Get that right and the recurrence is an
      asset; get it wrong and it is twenty weeks of repetition.
 
-142. **The backlog overstates itself by nearly half, and this file is the
+142. ✅ **DONE — the backlog overstated itself by nearly half, and this file is the
      coordination surface between two loops.** Counting numbered Phase 11
      items: 139 total, 89 marked done, 1 skipped, **49 reading as open**.
      Cross-referencing those 49 against commit messages that name an item
@@ -6216,6 +6216,42 @@ not read later as missed runs.
      weaker version cheaply — assert that no item referenced as shipped
      in the last N commits still reads as open. A convention nothing
      checks is the convention that drifts.
+
+     Both fixes done (build loop's own pick, same cycle). **Reconciled,
+     but the scope turned out to be 34 items, not 22** - the research
+     pass's own count (via `git log` grep for `"(item N)"` in commit
+     messages) missed items whose body already carried a `✅ DONE`
+     marker but whose heading never got a second look, including several
+     from *this session's own* recent cycles (118-132) - the drift this
+     item describes is real even in code freshly written by this same
+     loop, not just old history. Confirmed each one the way the item
+     asked - against the actual body text's own prior verification, not
+     re-trusting a commit message - before touching the heading, and
+     deliberately did **not** touch three that looked similar but
+     weren't: items 25, 77, and 130 all carry a `⚠️` marker too, but it
+     means "drafted, a human action is still pending" (a press pitch
+     unsent, a cross-recommendation email unsent, a name decision not
+     yet made), not "done" - marking those `✅` would have been the exact
+     kind of false-positive this reconciliation exists to prevent, not a
+     fix. Left item 47 alone for the same reason from the other
+     direction: its own text says "not marking this item fully done"
+     and means it (unsubscribe headers, spam-complaint monitoring still
+     real work).
+
+     For "close the loop," added `tests/test_roadmap_consistency.py`
+     instead of a git-log-parsing test (fragile in a shallow clone, and
+     git history isn't guaranteed available inside every CI checkout) -
+     a static check of `ROADMAP.md` itself: any numbered item whose body
+     contains a `✅ DONE` marker must carry that marker on its own
+     heading line too, or the test fails and names the item. Verified it
+     actually catches the drift, not just passes by construction:
+     reverted one heading back to its old unmarked wording, watched the
+     test fail and name that exact item, then restored it. 385 tests
+     pass (1 new). The first fix (this reconciliation) is done manually,
+     once; the second (this test) is what keeps it from being needed
+     again - if a future cycle's own `✅ DONE` note doesn't make it onto
+     the heading, CI says so on the very next run instead of the count
+     silently drifting for another thirty-plus items.
 
 #### P3 (new)
 
