@@ -272,7 +272,11 @@
       <h2>{{ section.region_name }} <a class="region-link" href="{{ section.region_url }}">Full region page &rarr;</a></h2>
       <div class="card-grid">
       {% for item in section.events %}
-      {% set tray_item = {"id": item.url or item.title, "title": item.title, "url": item.url or "", "date": item.date or None, "date_iso": item.date_iso or None, "detail": item.detail or "", "region_name": section.region_name, "region_url": section.region_url} %}
+      <!-- id folds in date_iso so two occurrences of one recurring event
+           (item 141, same url) don't collide as one tray item - a real
+           bug confirmed with a headless-browser test before fixing
+           (ROADMAP.md item 146). -->
+      {% set tray_item = {"id": (item.url or item.title) ~ ("|" ~ item.date_iso if item.date_iso else ""), "title": item.title, "url": item.url or "", "date": item.date or None, "date_iso": item.date_iso or None, "detail": item.detail or "", "region_name": section.region_name, "region_url": section.region_url} %}
       <div class="card">
         <button type="button" class="tray-star" data-item='{{ tray_item | tojson }}' aria-pressed="false" aria-label="Add {{ item.title }} to My Weekend">☆</button>
         {% if item.series %}<div class="series">{{ item.series }}</div>{% endif %}

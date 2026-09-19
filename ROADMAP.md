@@ -6396,6 +6396,43 @@ not read later as missed runs.
      real rebuild: 16 feed items, 16 distinct guids, zero collisions.
      402 tests pass.
 
+146. ✅ **DONE (build loop's own pick) — the third real bug found this way
+     from item 141: the itinerary tray's own star buttons collide on a
+     recurring event, the same "shared url, distinct occurrences" root
+     cause as item 145's RSS guids, just on the client instead of the
+     server.** `templates/region.html.j2` and `templates/weekend_hub.html.j2`
+     build each event's tray "id" as `item.url or item.title` - unique
+     for a one-off event, but every occurrence of a recurring event
+     shares the same `url` by design, so every one of them got the
+     identical tray id.
+
+     **Confirmed with a real headless-browser test before fixing, not
+     assumed:** loaded the real built `/mount-prospect-60056/` page (six
+     Farmers Market occurrence cards, one per upcoming Sunday), clicked
+     only the Sep 20 card's star, and checked every Farmers Market
+     card's `aria-pressed` state afterward - **all six** showed starred,
+     from clicking just one. Worse than a cosmetic bug: the tray's
+     toggle logic matches by id alone (`tray[i].id === item.id`), so
+     starring a *second* occurrence after the first was already saved
+     wouldn't add a second planner entry - it would **remove the
+     first**, since the toggle sees "id already present" and un-stars
+     it. A family trying to plan for two different Sundays could star
+     one, star what looks like a second, and silently end up with
+     neither saved.
+
+     Fixed by folding `date_iso` into the id (`url|date_iso`) at all
+     four tray-item construction sites across both templates, so two
+     occurrences sharing a `url` no longer collide - `item.url` itself
+     (used separately for the actual link, and for the ICS/Google
+     Calendar export) is untouched, so nothing about what a reader
+     clicks or exports changed. Re-ran the identical headless-browser
+     test against the fixed build: exactly 1 of 6 cards shows starred
+     after clicking one, and each card's id is now genuinely distinct.
+     No JS test framework exists in this repo, so verified the same way
+     items 35/134's client-side fixes were - a real, scripted browser
+     check, not a persisted automated test. 402 tests pass (Python
+     suite unaffected, since this is template/client-side JS only).
+
 ## Working agreements for autonomous iteration
 
 - Cadence is hourly (the platform's durable scheduler has a 1-hour floor;

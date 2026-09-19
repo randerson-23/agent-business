@@ -750,7 +750,16 @@
   {% endif %}
 
   {% if editors_pick %}
-  {% set tray_item = {"id": editors_pick.url or editors_pick.title, "title": editors_pick.title, "url": editors_pick.url or "", "date": editors_pick.date or None, "date_iso": editors_pick.date_iso or None, "detail": editors_pick.detail or "", "region_name": region.name, "region_url": region_base_url} %}
+  <!-- ROADMAP.md item 146: id folds in date_iso (when present) so two
+       distinct dated occurrences that share one url - every occurrence
+       of a recurring event (item 141) links the same organiser page -
+       don't collide as "the same tray item." Confirmed with a real
+       headless-browser test before fixing: starring one Farmers Market
+       occurrence used to mark all six of that market's cards as
+       starred, and starring a second occurrence removed the first
+       instead of adding it, since the tray's toggle logic matches by
+       id alone. -->
+  {% set tray_item = {"id": (editors_pick.url or editors_pick.title) ~ ("|" ~ editors_pick.date_iso if editors_pick.date_iso else ""), "title": editors_pick.title, "url": editors_pick.url or "", "date": editors_pick.date or None, "date_iso": editors_pick.date_iso or None, "detail": editors_pick.detail or "", "region_name": region.name, "region_url": region_base_url} %}
   <div class="editors-pick">
     <button type="button" class="tray-star" data-item='{{ tray_item | tojson }}' aria-pressed="false" aria-label="Add {{ editors_pick.title }} to My Weekend">☆</button>
     <div class="label">✏️ Editor's Pick</div>
@@ -804,7 +813,9 @@
       {% if block.events %}
         <div class="card-grid">
         {% for item in block.events %}
-        {% set tray_item = {"id": item.url or item.title, "title": item.title, "url": item.url or "", "date": item.date or None, "date_iso": item.date_iso or None, "detail": item.detail or "", "region_name": region.name, "region_url": region_base_url} %}
+        <!-- id folds in date_iso - see the Editor's Pick tray_item above
+             for why (ROADMAP.md item 146). -->
+        {% set tray_item = {"id": (item.url or item.title) ~ ("|" ~ item.date_iso if item.date_iso else ""), "title": item.title, "url": item.url or "", "date": item.date or None, "date_iso": item.date_iso or None, "detail": item.detail or "", "region_name": region.name, "region_url": region_base_url} %}
         <div class="card{% if item.attendable == false %} card-informational{% endif %}" data-tags="{{ item.tags|join(',') }}">
           {% if nav_current != "guides" and item.attendable != false %}
           <!-- ROADMAP.md Phase 11 #63: My Weekend is for dated events -
