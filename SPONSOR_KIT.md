@@ -42,8 +42,9 @@ and specific beats generic ad copy.
 
 ## Reach & retention — and what each tier is actually buying
 
-A subscriber count isn't the number to lead with this early — it's
-honestly the weakest one this business has. But it's also not the
+The newsletter itself is new — the first issue went out September 17,
+2026 — so a subscriber count isn't the number to lead with this early;
+it's honestly the weakest one this business has. But it's also not the
 number every tier depends on. **Weekly Spot and Event Promo are list
 products** — your name in an email, priced on who opens it — and for
 those, audience is the honest gate:
