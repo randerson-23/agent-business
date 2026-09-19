@@ -161,6 +161,9 @@
   .card .date { color: var(--accent-2-text); font-size: 12px; font-weight: 700; letter-spacing: 0.02em; text-transform: uppercase; }
   /* ROADMAP.md Phase 11 #71: same series kicker as region.html.j2. */
   .card .series { color: var(--accent); font-size: 11px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; }
+  /* ROADMAP.md item 141: same muted "every Sunday through Oct 11" note
+     as region.html.j2 - deliberately the opposite weight of .series. */
+  .card .recurrence-note { color: var(--muted); font-size: 12px; font-style: italic; }
   .card h3 { margin: 0; padding-right: 24px; font-size: 16px; font-weight: 600; line-height: 1.35; }
   .tray-star {
     position: absolute;
@@ -271,11 +274,12 @@
       
       
       <div class="card">
-        <button type="button" class="tray-star" data-item='{"date": "Sep 19", "date_iso": "2026-09-19T09:00:00", "detail": "Staff is closely monitoring Saturday\u2019s weather. Weather updates or cancellations will be communicated on our website and social media before 6AM on Saturday,\u2026", "id": "https://www.ahpd.org/event/heritage-fest-2026/", "region_name": "Arlington Heights", "region_url": "https://withintenmiles.com/arlington-heights-60005/", "title": "Heritage Fest", "url": "https://www.ahpd.org/event/heritage-fest-2026/"}' aria-pressed="false" aria-label="Add Heritage Fest to My Weekend">☆</button>
+        <button type="button" class="tray-star" data-item='{"date": "Sep 19", "date_iso": "2026-09-19T09:00:00", "detail": "Due to the predicted inclement weather, Heritage Fest on September 19 has been CANCELED. We apologize for any inconvenience. Explore the cultural diversity\u2026", "id": "https://www.ahpd.org/event/heritage-fest-2026/", "region_name": "Arlington Heights", "region_url": "https://withintenmiles.com/arlington-heights-60005/", "title": "Heritage Fest", "url": "https://www.ahpd.org/event/heritage-fest-2026/"}' aria-pressed="false" aria-label="Add Heritage Fest to My Weekend">☆</button>
         
         <div class="date">Sep 19</div>
         <h3><a href="https://www.ahpd.org/event/heritage-fest-2026/">Heritage Fest</a></h3>
-        <p class="detail">Staff is closely monitoring Saturday’s weather. Weather updates or cancellations will be communicated on our website and social media before 6AM on Saturday,…</p>
+        
+        <p class="detail">Due to the predicted inclement weather, Heritage Fest on September 19 has been CANCELED. We apologize for any inconvenience. Explore the cultural diversity…</p>
         
         <div class="tag-row">
           <span class="tag-badge" style="background: var(--hue-purple-bg); color: var(--hue-purple-ink);">🎨 Arts &amp; culture</span><span class="tag-badge" style="background: var(--hue-orange-bg); color: var(--hue-orange-ink);">🍽️ Food &amp; drink</span><span class="tag-badge" style="background: var(--hue-blue-bg); color: var(--hue-blue-ink);">🏠 Indoor</span><span class="tag-badge" style="background: var(--hue-teal-bg); color: var(--hue-teal-ink);">🌳 Outdoor</span>
@@ -283,8 +287,8 @@
         
         
         <div class="cal-row">
-          <a href="data:text/calendar;charset=utf-8,BEGIN%3AVCALENDAR%0D%0AVERSION%3A2.0%0D%0APRODID%3A-//Within%20Ten//EN%0D%0ABEGIN%3AVEVENT%0D%0ADTSTART%3A20260919T090000%0D%0ADTEND%3A20260919T100000%0D%0ASUMMARY%3AHeritage%20Fest%0D%0ADESCRIPTION%3AStaff%20is%20closely%20monitoring%20Saturday%E2%80%99s%20weather.%20Weather%20updates%20or%20cancellations%20will%20be%20communicated%20on%20our%20website%20and%20social%20media%20before%206AM%20on%20Saturday%5C%2C%E2%80%A6%0D%0AURL%3Ahttps%3A//www.ahpd.org/event/heritage-fest-2026/%0D%0AEND%3AVEVENT%0D%0AEND%3AVCALENDAR%0D%0A" download="event.ics">📅 Add to calendar</a>
-          <a href="https://www.google.com/calendar/render?action=TEMPLATE&amp;text=Heritage+Fest&amp;dates=20260919T090000%2F20260919T100000&amp;details=Staff+is+closely+monitoring+Saturday%E2%80%99s+weather.+Weather+updates+or+cancellations+will+be+communicated+on+our+website+and+social+media+before+6AM+on+Saturday%2C%E2%80%A6&amp;location=Arlington+Heights" target="_blank" rel="noopener">Google Calendar</a>
+          <a href="data:text/calendar;charset=utf-8,BEGIN%3AVCALENDAR%0D%0AVERSION%3A2.0%0D%0APRODID%3A-//Within%20Ten//EN%0D%0ABEGIN%3AVEVENT%0D%0ADTSTART%3A20260919T090000%0D%0ADTEND%3A20260919T100000%0D%0ASUMMARY%3AHeritage%20Fest%0D%0ADESCRIPTION%3ADue%20to%20the%20predicted%20inclement%20weather%5C%2C%20Heritage%20Fest%20on%20September%2019%20has%20been%20CANCELED.%20We%20apologize%20for%20any%20inconvenience.%20Explore%20the%20cultural%20diversity%E2%80%A6%0D%0AURL%3Ahttps%3A//www.ahpd.org/event/heritage-fest-2026/%0D%0AEND%3AVEVENT%0D%0AEND%3AVCALENDAR%0D%0A" download="event.ics">📅 Add to calendar</a>
+          <a href="https://www.google.com/calendar/render?action=TEMPLATE&amp;text=Heritage+Fest&amp;dates=20260919T090000%2F20260919T100000&amp;details=Due+to+the+predicted+inclement+weather%2C+Heritage+Fest+on+September+19+has+been+CANCELED.+We+apologize+for+any+inconvenience.+Explore+the+cultural+diversity%E2%80%A6&amp;location=Arlington+Heights" target="_blank" rel="noopener">Google Calendar</a>
         </div>
         
       </div>
@@ -302,6 +306,7 @@
         
         <div class="date">Sep 18</div>
         <h3><a href="https://desplainesfallfest.org/">Des Plaines Fall Fest (Friday)</a></h3>
+        
         <p class="detail">Carnival rides, live bands, food &amp; drink at Lake Park. 6–11pm, 2200 Lee St. Free admission.</p>
         
         <div class="tag-row">
@@ -322,6 +327,7 @@
         
         <div class="date">Sep 19</div>
         <h3><a href="https://desplainesfallfest.org/">Des Plaines Fall Fest (Saturday)</a></h3>
+        
         <p class="detail">Carnival rides, rock wall, petting zoo, food &amp; 10 live bands at Lake Park. Noon–11pm, 2200 Lee St. Free admission.</p>
         
         <div class="tag-row">
@@ -342,6 +348,7 @@
         
         <div class="date">Sep 20</div>
         <h3><a href="https://desplainesfallfest.org/">Des Plaines Fall Fest (Sunday)</a></h3>
+        
         <p class="detail">Carnival rides, rock wall, petting zoo &amp; food wind down at Lake Park. Noon–7pm, 2200 Lee St. Free admission.</p>
         
         <div class="tag-row">
@@ -369,6 +376,7 @@
         <div class="series">Fall Fest &amp; Oktoberfest Weekend</div>
         <div class="date">Sep 18</div>
         <h3><a href="https://mpdowntown.com/oktoberfest-info/">Oktoberfest</a></h3>
+        
         <p class="detail">German food, drink &amp; live music from the band Paloma. 4–11pm, Emerson St. &amp; Busse Ave. — Downtown Merchants.</p>
         
         <div class="tag-row">
@@ -389,6 +397,7 @@
         <div class="series">Fall Fest &amp; Oktoberfest Weekend</div>
         <div class="date">Sep 19</div>
         <h3><a href="https://mpdowntown.com/oktoberfest-info/">Fall Festival &amp; Oktoberfest</a></h3>
+        
         <p class="detail">Free Fall Festival noon–4pm (special-needs hour noon–1pm) with crafts &amp; entertainment, then Oktoberfest continues 4–11pm. Emerson &amp; Busse.</p>
         
         <div class="tag-row">
@@ -405,21 +414,21 @@
       
       
       <div class="card">
-        <button type="button" class="tray-star" data-item='{"date": "Sep 18", "date_iso": "2026-09-18T10:00:00+00:00", "detail": "Friday, September 18 2026 10:00am - 11:30am \n Enjoy the magic of storytime plus the joy of hands-on sensory fun! You and your child will enjoy time together\u2026", "id": "https://mppl.libnet.info/event/16291338", "region_name": "Mount Prospect", "region_url": "https://withintenmiles.com/mount-prospect-60056/", "title": "Storytime Playdate: Art Studio", "url": "https://mppl.libnet.info/event/16291338"}' aria-pressed="false" aria-label="Add Storytime Playdate: Art Studio to My Weekend">☆</button>
+        <button type="button" class="tray-star" data-item='{"date": "Sep 20", "date_iso": "2026-09-20T08:00:00", "detail": "Local produce and vendors, organized by the Mount Prospect Lions Club, rain or shine. West Metra commuter lot, Northwest Hwy \u0026 Main St (Rte 83).", "id": "https://mplions.org/event/farmers-market/", "region_name": "Mount Prospect", "region_url": "https://withintenmiles.com/mount-prospect-60056/", "title": "Mount Prospect Farmers Market", "url": "https://mplions.org/event/farmers-market/"}' aria-pressed="false" aria-label="Add Mount Prospect Farmers Market to My Weekend">☆</button>
         
-        <div class="date">Sep 18</div>
-        <h3><a href="https://mppl.libnet.info/event/16291338">Storytime Playdate: Art Studio</a></h3>
-        <p class="detail">Friday, September 18 2026 10:00am - 11:30am 
- Enjoy the magic of storytime plus the joy of hands-on sensory fun! You and your child will enjoy time together…</p>
+        <div class="date">Sep 20</div>
+        <h3><a href="https://mplions.org/event/farmers-market/">Mount Prospect Farmers Market</a></h3>
+        <div class="recurrence-note">Every Sunday through Oct 25</div>
+        <p class="detail">Local produce and vendors, organized by the Mount Prospect Lions Club, rain or shine. West Metra commuter lot, Northwest Hwy &amp; Main St (Rte 83).</p>
         
         <div class="tag-row">
-          <span class="tag-badge" style="background: var(--hue-purple-bg); color: var(--hue-purple-ink);">🎨 Arts &amp; culture</span><span class="tag-badge" style="background: var(--hue-blue-bg); color: var(--hue-blue-ink);">🏠 Indoor</span><span class="tag-badge" style="background: var(--hue-pink-bg); color: var(--hue-pink-ink);">🧒 Kid-friendly</span>
+          <span class="tag-badge" style="background: var(--hue-teal-bg); color: var(--hue-teal-ink);">🌳 Outdoor</span><span class="tag-badge" style="background: var(--hue-orange-bg); color: var(--hue-orange-ink);">🍽️ Food &amp; drink</span>
         </div>
         
         
         <div class="cal-row">
-          <a href="data:text/calendar;charset=utf-8,BEGIN%3AVCALENDAR%0D%0AVERSION%3A2.0%0D%0APRODID%3A-//Within%20Ten//EN%0D%0ABEGIN%3AVEVENT%0D%0ADTSTART%3A20260918T100000%0D%0ADTEND%3A20260918T110000%0D%0ASUMMARY%3AStorytime%20Playdate%3A%20Art%20Studio%0D%0ADESCRIPTION%3AFriday%5C%2C%20September%2018%202026%2010%3A00am%20-%2011%3A30am%20%5Cn%20Enjoy%20the%20magic%20of%20storytime%20plus%20the%20joy%20of%20hands-on%20sensory%20fun%21%20You%20and%20your%20child%20will%20enjoy%20time%20together%E2%80%A6%0D%0AURL%3Ahttps%3A//mppl.libnet.info/event/16291338%0D%0AEND%3AVEVENT%0D%0AEND%3AVCALENDAR%0D%0A" download="event.ics">📅 Add to calendar</a>
-          <a href="https://www.google.com/calendar/render?action=TEMPLATE&amp;text=Storytime+Playdate%3A+Art+Studio&amp;dates=20260918T100000%2F20260918T110000&amp;details=Friday%2C+September+18+2026+10%3A00am+-+11%3A30am+%0A+Enjoy+the+magic+of+storytime+plus+the+joy+of+hands-on+sensory+fun%21+You+and+your+child+will+enjoy+time+together%E2%80%A6&amp;location=Mount+Prospect" target="_blank" rel="noopener">Google Calendar</a>
+          <a href="data:text/calendar;charset=utf-8,BEGIN%3AVCALENDAR%0D%0AVERSION%3A2.0%0D%0APRODID%3A-//Within%20Ten//EN%0D%0ABEGIN%3AVEVENT%0D%0ADTSTART%3A20260920T080000%0D%0ADTEND%3A20260920T090000%0D%0ASUMMARY%3AMount%20Prospect%20Farmers%20Market%0D%0ADESCRIPTION%3ALocal%20produce%20and%20vendors%5C%2C%20organized%20by%20the%20Mount%20Prospect%20Lions%20Club%5C%2C%20rain%20or%20shine.%20West%20Metra%20commuter%20lot%5C%2C%20Northwest%20Hwy%20%26%20Main%20St%20%28Rte%2083%29.%0D%0AURL%3Ahttps%3A//mplions.org/event/farmers-market/%0D%0AEND%3AVEVENT%0D%0AEND%3AVCALENDAR%0D%0A" download="event.ics">📅 Add to calendar</a>
+          <a href="https://www.google.com/calendar/render?action=TEMPLATE&amp;text=Mount+Prospect+Farmers+Market&amp;dates=20260920T080000%2F20260920T090000&amp;details=Local+produce+and+vendors%2C+organized+by+the+Mount+Prospect+Lions+Club%2C+rain+or+shine.+West+Metra+commuter+lot%2C+Northwest+Hwy+%26+Main+St+%28Rte+83%29.&amp;location=Mount+Prospect" target="_blank" rel="noopener">Google Calendar</a>
         </div>
         
       </div>
@@ -430,6 +439,7 @@
         
         <div class="date">Sep 19</div>
         <h3><a href="https://mppl.libnet.info/event/16428150">Creation Station: DIY Muñecas Quitapenas (Worry Dolls)</a></h3>
+        
         <p class="detail">Saturday, September 19 2026 10:00am - 11:00am 
  Craft and create with us! We&#39;ll provide an idea and supplies; you create your own masterpiece.</p>
         
@@ -447,30 +457,11 @@
       
       
       <div class="card">
-        <button type="button" class="tray-star" data-item='{"date": "Sep 18", "date_iso": "2026-09-18T16:30:00", "detail": "Mt. Melas Jr. Adventure Run (Ages 5-12) Test your limits with this fun and challenging 1.5 mile adventure run featuring hill elevation and grass and concrete\u2026", "id": "https://www.mppd.org/event/mt-melas-jr-adventure-run-4/", "region_name": "Mount Prospect", "region_url": "https://withintenmiles.com/mount-prospect-60056/", "title": "Mt. Melas Jr. Adventure Run", "url": "https://www.mppd.org/event/mt-melas-jr-adventure-run-4/"}' aria-pressed="false" aria-label="Add Mt. Melas Jr. Adventure Run to My Weekend">☆</button>
-        
-        <div class="date">Sep 18</div>
-        <h3><a href="https://www.mppd.org/event/mt-melas-jr-adventure-run-4/">Mt. Melas Jr. Adventure Run</a></h3>
-        <p class="detail">Mt. Melas Jr. Adventure Run (Ages 5-12) Test your limits with this fun and challenging 1.5 mile adventure run featuring hill elevation and grass and concrete…</p>
-        
-        <div class="tag-row">
-          <span class="tag-badge" style="background: var(--hue-teal-bg); color: var(--hue-teal-ink);">🌳 Outdoor</span>
-        </div>
-        
-        
-        <div class="cal-row">
-          <a href="data:text/calendar;charset=utf-8,BEGIN%3AVCALENDAR%0D%0AVERSION%3A2.0%0D%0APRODID%3A-//Within%20Ten//EN%0D%0ABEGIN%3AVEVENT%0D%0ADTSTART%3A20260918T163000%0D%0ADTEND%3A20260918T173000%0D%0ASUMMARY%3AMt.%20Melas%20Jr.%20Adventure%20Run%0D%0ADESCRIPTION%3AMt.%20Melas%20Jr.%20Adventure%20Run%20%28Ages%205-12%29%20Test%20your%20limits%20with%20this%20fun%20and%20challenging%201.5%20mile%20adventure%20run%20featuring%20hill%20elevation%20and%20grass%20and%20concrete%E2%80%A6%0D%0AURL%3Ahttps%3A//www.mppd.org/event/mt-melas-jr-adventure-run-4/%0D%0AEND%3AVEVENT%0D%0AEND%3AVCALENDAR%0D%0A" download="event.ics">📅 Add to calendar</a>
-          <a href="https://www.google.com/calendar/render?action=TEMPLATE&amp;text=Mt.+Melas+Jr.+Adventure+Run&amp;dates=20260918T163000%2F20260918T173000&amp;details=Mt.+Melas+Jr.+Adventure+Run+%28Ages+5-12%29+Test+your+limits+with+this+fun+and+challenging+1.5+mile+adventure+run+featuring+hill+elevation+and+grass+and+concrete%E2%80%A6&amp;location=Mount+Prospect" target="_blank" rel="noopener">Google Calendar</a>
-        </div>
-        
-      </div>
-      
-      
-      <div class="card">
         <button type="button" class="tray-star" data-item='{"date": "Sep 20", "date_iso": "2026-09-20T11:00:00", "detail": "Barks and Brews 2: Electric Boogaloo Visit Friendship Park Conservatory for the second annual Barks and Brews event featuring The Buddy Foundation. Stop by\u2026", "id": "https://www.mppd.org/event/barks-and-brews-2-electric-boogaloo/", "region_name": "Mount Prospect", "region_url": "https://withintenmiles.com/mount-prospect-60056/", "title": "Barks and Brews 2: Electric Boogaloo", "url": "https://www.mppd.org/event/barks-and-brews-2-electric-boogaloo/"}' aria-pressed="false" aria-label="Add Barks and Brews 2: Electric Boogaloo to My Weekend">☆</button>
         
         <div class="date">Sep 20</div>
         <h3><a href="https://www.mppd.org/event/barks-and-brews-2-electric-boogaloo/">Barks and Brews 2: Electric Boogaloo</a></h3>
+        
         <p class="detail">Barks and Brews 2: Electric Boogaloo Visit Friendship Park Conservatory for the second annual Barks and Brews event featuring The Buddy Foundation. Stop by…</p>
         
         <div class="tag-row">
@@ -481,22 +472,6 @@
         <div class="cal-row">
           <a href="data:text/calendar;charset=utf-8,BEGIN%3AVCALENDAR%0D%0AVERSION%3A2.0%0D%0APRODID%3A-//Within%20Ten//EN%0D%0ABEGIN%3AVEVENT%0D%0ADTSTART%3A20260920T110000%0D%0ADTEND%3A20260920T120000%0D%0ASUMMARY%3ABarks%20and%20Brews%202%3A%20Electric%20Boogaloo%0D%0ADESCRIPTION%3ABarks%20and%20Brews%202%3A%20Electric%20Boogaloo%20Visit%20Friendship%20Park%20Conservatory%20for%20the%20second%20annual%20Barks%20and%20Brews%20event%20featuring%20The%20Buddy%20Foundation.%20Stop%20by%E2%80%A6%0D%0AURL%3Ahttps%3A//www.mppd.org/event/barks-and-brews-2-electric-boogaloo/%0D%0AEND%3AVEVENT%0D%0AEND%3AVCALENDAR%0D%0A" download="event.ics">📅 Add to calendar</a>
           <a href="https://www.google.com/calendar/render?action=TEMPLATE&amp;text=Barks+and+Brews+2%3A+Electric+Boogaloo&amp;dates=20260920T110000%2F20260920T120000&amp;details=Barks+and+Brews+2%3A+Electric+Boogaloo+Visit+Friendship+Park+Conservatory+for+the+second+annual+Barks+and+Brews+event+featuring+The+Buddy+Foundation.+Stop+by%E2%80%A6&amp;location=Mount+Prospect" target="_blank" rel="noopener">Google Calendar</a>
-        </div>
-        
-      </div>
-      
-      
-      <div class="card">
-        <button type="button" class="tray-star" data-item='{"date": "Sep 18", "date_iso": "2026-09-18T00:00:00", "detail": "", "id": "Half-Day Student Attendance (Grades 1-8)", "region_name": "Mount Prospect", "region_url": "https://withintenmiles.com/mount-prospect-60056/", "title": "Half-Day Student Attendance (Grades 1-8)", "url": ""}' aria-pressed="false" aria-label="Add Half-Day Student Attendance (Grades 1-8) to My Weekend">☆</button>
-        
-        <div class="date">Sep 18</div>
-        <h3>Half-Day Student Attendance (Grades 1-8)</h3>
-        
-        
-        
-        <div class="cal-row">
-          <a href="data:text/calendar;charset=utf-8,BEGIN%3AVCALENDAR%0D%0AVERSION%3A2.0%0D%0APRODID%3A-//Within%20Ten//EN%0D%0ABEGIN%3AVEVENT%0D%0ADTSTART%3A20260918T000000%0D%0ADTEND%3A20260918T010000%0D%0ASUMMARY%3AHalf-Day%20Student%20Attendance%20%28Grades%201-8%29%0D%0AEND%3AVEVENT%0D%0AEND%3AVCALENDAR%0D%0A" download="event.ics">📅 Add to calendar</a>
-          <a href="https://www.google.com/calendar/render?action=TEMPLATE&amp;text=Half-Day+Student+Attendance+%28Grades+1-8%29&amp;dates=20260918T000000%2F20260918T010000&amp;details=&amp;location=Mount+Prospect" target="_blank" rel="noopener">Google Calendar</a>
         </div>
         
       </div>
@@ -514,6 +489,7 @@
         
         <div class="date">Sep 18</div>
         <h3><a href="https://palatinerotary.org/Oktoberfest.php">Palatine Oktoberfest (Friday)</a></h3>
+        
         <p class="detail">German beer, food &amp; music return to Downtown Palatine. 5pm–midnight, N Smith &amp; W Slade St. Free entry.</p>
         
         <div class="tag-row">
@@ -534,6 +510,7 @@
         
         <div class="date">Sep 19</div>
         <h3><a href="https://palatinerotary.org/Oktoberfest.php">Palatine Oktoberfest — Family Day (Saturday)</a></h3>
+        
         <p class="detail">Family Day: games, crafts &amp; entertainment plus German beer, food &amp; music. Noon–midnight, N Smith &amp; W Slade St. Free entry.</p>
         
         <div class="tag-row">
@@ -554,6 +531,7 @@
         
         <div class="date">Sep 20</div>
         <h3><a href="https://palatinerotary.org/Oktoberfest.php">Palatine Oktoberfest (Sunday)</a></h3>
+        
         <p class="detail">German beer, food &amp; music wind down Downtown Palatine&#39;s Oktoberfest. Noon–6pm, N Smith &amp; W Slade St. Free entry.</p>
         
         <div class="tag-row">
@@ -578,7 +556,7 @@
     Want your ZIP added, or want to sponsor a region?
     <a href="https://withintenmiles.com/sponsor/">See pricing &amp; availability</a>.
     <a href="https://withintenmiles.com/about/">About</a>.
-    <br>Generated 2026-09-18 20:54 UTC.
+    <br>Generated 2026-09-19 13:59 UTC.
     
   </footer>
 </div>

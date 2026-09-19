@@ -462,6 +462,15 @@
     letter-spacing: 0.06em;
     text-transform: uppercase;
   }
+  /* ROADMAP.md item 141: a recurring event's "every Sunday through Oct
+     11" note - deliberately the opposite visual weight of .series above
+     (muted, not bold/uppercase/accent-colored), since the point is that
+     it reads as a standing reference, not news repeated every card. */
+  .card .recurrence-note {
+    color: var(--muted);
+    font-size: 12px;
+    font-style: italic;
+  }
   .card h3 { margin: 0; padding-right: 24px; font-size: 16px; font-weight: 600; line-height: 1.35; }
   .card h3 a { color: var(--ink); text-decoration: none; }
   .card h3 a:hover { color: var(--accent); }
@@ -633,7 +642,7 @@
       <span class="kicker">Arlington Heights · 60005</span>
     </div>
     <h1>What&#39;s happening in Arlington Heights</h1>
-    <div class="sub">Issue for September 18, 2026 — Pulled automatically from the Village, Memorial Library, and Park District — plus Harmony Park and Lake Arlington — several times a week, a short drive from Mount Prospect.</div>
+    <div class="sub">Issue for September 19, 2026 — Pulled automatically from the Village, Memorial Library, and Park District — plus Harmony Park and Lake Arlington — several times a week, a short drive from Mount Prospect.</div>
   </div>
 </header>
 
@@ -816,6 +825,7 @@
           
           <div class="date">Oct 2</div>
           <h3><a href="https://downtownarlingtonheights.us/events/harmony-fest-taste-of-arlington-heights-2026">Harmony Fest &amp; Taste of Arlington Heights (Friday)</a></h3>
+          
           <p class="detail">Free live concerts in Harmony Park plus food &amp; drink from local restaurants. 5–11pm, Downtown Arlington Heights.</p>
           
           <div class="tag-row">
@@ -845,6 +855,7 @@
           
           <div class="date">Oct 3</div>
           <h3><a href="https://downtownarlingtonheights.us/events/harmony-fest-taste-of-arlington-heights-2026">Harmony Fest &amp; Taste of Arlington Heights (Saturday)</a></h3>
+          
           <p class="detail">Free live concerts, food &amp; drink, plus a kids&#39; zone. 3–11pm, Downtown Arlington Heights.</p>
           
           <div class="tag-row">
@@ -888,6 +899,7 @@
           
           
           
+          
         </div>
         
         
@@ -905,6 +917,7 @@
           
           
           <h3><a href="https://www.vah.com/government/board_meetings_online.php">Board Meetings Online</a></h3>
+          
           
           
           
@@ -928,6 +941,7 @@
           
           
           
+          
         </div>
         
         
@@ -945,6 +959,7 @@
           
           
           <h3><a href="https://www.vah.com/residents/senior_center/things_to_do.php">Activity Calendar &amp; Bimonthly Newsletter</a></h3>
+          
           
           
           
@@ -968,6 +983,7 @@
           
           
           
+          
         </div>
         
         
@@ -985,6 +1001,7 @@
           
           
           <h3><a href="https://form.jotform.com/241785563136058">Village Hall Meeting Room Request</a></h3>
+          
           
           
           <div class="tag-row">
@@ -1022,6 +1039,7 @@
           <h3><a href="https://www.ahml.info/scheduling/reservation/223808">Tween LitCrate Sign Up</a></h3>
           
           
+          
           <div class="tag-row">
             <span class="tag-badge" style="background: var(--hue-blue-bg); color: var(--hue-blue-ink);">🏠 Indoor</span><span class="tag-badge" style="background: var(--hue-indigo-bg); color: var(--hue-indigo-ink);">🧑 Teen</span>
           </div>
@@ -1051,6 +1069,7 @@
           <h3><a href="https://www.ahml.info/scheduling/reservation/224980">Senior Center: Film Discussion Circle</a></h3>
           
           
+          
           <div class="tag-row">
             <span class="tag-badge" style="background: var(--hue-blue-bg); color: var(--hue-blue-ink);">🏠 Indoor</span>
           </div>
@@ -1075,6 +1094,7 @@
           <h3><a href="https://www.ahml.info/scheduling/reservation/198027">Beginning ESL</a></h3>
           
           
+          
           <div class="tag-row">
             <span class="tag-badge" style="background: var(--hue-blue-bg); color: var(--hue-blue-ink);">🏠 Indoor</span>
           </div>
@@ -1097,6 +1117,7 @@
           
           <div class="date">Sep 2</div>
           <h3><a href="https://www.ahml.info/scheduling/reservation/224116">Baby Time</a></h3>
+          
           
           
           <div class="tag-row">
@@ -1128,6 +1149,7 @@
           <h3><a href="https://www.ahml.info/scheduling/reservation/224239">Play Time</a></h3>
           
           
+          
           <div class="tag-row">
             <span class="tag-badge" style="background: var(--hue-blue-bg); color: var(--hue-blue-ink);">🏠 Indoor</span>
           </div>
@@ -1150,6 +1172,7 @@
           
           
           <h3><a href="https://www.ahml.info/scheduling/reservation/208712">IDES Job Fair</a></h3>
+          
           
           
           <div class="tag-row">
@@ -1179,13 +1202,14 @@
                guide index have nothing to do with weekend planning.
                #90: nor does a school half-day belong in it - it's real
                and worth knowing, but nobody plans a weekend around one. -->
-          <button type="button" class="tray-star" data-item='{"date": "Sep 19", "date_iso": "2026-09-19T09:00:00", "detail": "Staff is closely monitoring Saturday\u2019s weather. Weather updates or cancellations will be communicated on our website and social media before 6AM on Saturday,\u2026", "id": "https://www.ahpd.org/event/heritage-fest-2026/", "region_name": "Arlington Heights", "region_url": "https://withintenmiles.com/arlington-heights-60005/", "title": "Heritage Fest", "url": "https://www.ahpd.org/event/heritage-fest-2026/"}' aria-pressed="false" aria-label="Add Heritage Fest to My Weekend">☆</button>
+          <button type="button" class="tray-star" data-item='{"date": "Sep 19", "date_iso": "2026-09-19T09:00:00", "detail": "Due to the predicted inclement weather, Heritage Fest on September 19 has been CANCELED. We apologize for any inconvenience. Explore the cultural diversity\u2026", "id": "https://www.ahpd.org/event/heritage-fest-2026/", "region_name": "Arlington Heights", "region_url": "https://withintenmiles.com/arlington-heights-60005/", "title": "Heritage Fest", "url": "https://www.ahpd.org/event/heritage-fest-2026/"}' aria-pressed="false" aria-label="Add Heritage Fest to My Weekend">☆</button>
           
           
           
           <div class="date">Sep 19</div>
           <h3><a href="https://www.ahpd.org/event/heritage-fest-2026/">Heritage Fest</a></h3>
-          <p class="detail">Staff is closely monitoring Saturday’s weather. Weather updates or cancellations will be communicated on our website and social media before 6AM on Saturday,…</p>
+          
+          <p class="detail">Due to the predicted inclement weather, Heritage Fest on September 19 has been CANCELED. We apologize for any inconvenience. Explore the cultural diversity…</p>
           
           <div class="tag-row">
             <span class="tag-badge" style="background: var(--hue-purple-bg); color: var(--hue-purple-ink);">🎨 Arts &amp; culture</span><span class="tag-badge" style="background: var(--hue-orange-bg); color: var(--hue-orange-ink);">🍽️ Food &amp; drink</span><span class="tag-badge" style="background: var(--hue-blue-bg); color: var(--hue-blue-ink);">🏠 Indoor</span><span class="tag-badge" style="background: var(--hue-teal-bg); color: var(--hue-teal-ink);">🌳 Outdoor</span>
@@ -1193,8 +1217,8 @@
           
           
           <div class="cal-row">
-            <a href="data:text/calendar;charset=utf-8,BEGIN%3AVCALENDAR%0D%0AVERSION%3A2.0%0D%0APRODID%3A-//Within%20Ten//EN%0D%0ABEGIN%3AVEVENT%0D%0ADTSTART%3A20260919T090000%0D%0ADTEND%3A20260919T100000%0D%0ASUMMARY%3AHeritage%20Fest%0D%0ADESCRIPTION%3AStaff%20is%20closely%20monitoring%20Saturday%E2%80%99s%20weather.%20Weather%20updates%20or%20cancellations%20will%20be%20communicated%20on%20our%20website%20and%20social%20media%20before%206AM%20on%20Saturday%5C%2C%E2%80%A6%0D%0AURL%3Ahttps%3A//www.ahpd.org/event/heritage-fest-2026/%0D%0AEND%3AVEVENT%0D%0AEND%3AVCALENDAR%0D%0A" download="event.ics">📅 Add to calendar</a>
-            <a href="https://www.google.com/calendar/render?action=TEMPLATE&amp;text=Heritage+Fest&amp;dates=20260919T090000%2F20260919T100000&amp;details=Staff+is+closely+monitoring+Saturday%E2%80%99s+weather.+Weather+updates+or+cancellations+will+be+communicated+on+our+website+and+social+media+before+6AM+on+Saturday%2C%E2%80%A6&amp;location=Arlington+Heights" target="_blank" rel="noopener">Google Calendar</a>
+            <a href="data:text/calendar;charset=utf-8,BEGIN%3AVCALENDAR%0D%0AVERSION%3A2.0%0D%0APRODID%3A-//Within%20Ten//EN%0D%0ABEGIN%3AVEVENT%0D%0ADTSTART%3A20260919T090000%0D%0ADTEND%3A20260919T100000%0D%0ASUMMARY%3AHeritage%20Fest%0D%0ADESCRIPTION%3ADue%20to%20the%20predicted%20inclement%20weather%5C%2C%20Heritage%20Fest%20on%20September%2019%20has%20been%20CANCELED.%20We%20apologize%20for%20any%20inconvenience.%20Explore%20the%20cultural%20diversity%E2%80%A6%0D%0AURL%3Ahttps%3A//www.ahpd.org/event/heritage-fest-2026/%0D%0AEND%3AVEVENT%0D%0AEND%3AVCALENDAR%0D%0A" download="event.ics">📅 Add to calendar</a>
+            <a href="https://www.google.com/calendar/render?action=TEMPLATE&amp;text=Heritage+Fest&amp;dates=20260919T090000%2F20260919T100000&amp;details=Due+to+the+predicted+inclement+weather%2C+Heritage+Fest+on+September+19+has+been+CANCELED.+We+apologize+for+any+inconvenience.+Explore+the+cultural+diversity%E2%80%A6&amp;location=Arlington+Heights" target="_blank" rel="noopener">Google Calendar</a>
           </div>
           
         </div>
@@ -1214,6 +1238,7 @@
           
           <div class="date">Sep 24</div>
           <h3><a href="https://www.ahpd.org/event/arlington-heights-park-foundation-golf-classic/">Arlington Heights Park Foundation Golf Classic</a></h3>
+          
           <p class="detail">The Arlington Heights Park Foundation welcomes all golfers to join us at Arlington Lakes Golf Club! Join us for a four-person scramble competition for a good…</p>
           
           <div class="tag-row">
@@ -1243,6 +1268,7 @@
           
           <div class="date">Sep 25</div>
           <h3><a href="https://www.ahpd.org/event/speakeasy-at-the-museum/">Speakeasy at the Museum</a></h3>
+          
           <p class="detail">Step back in time to the Roaring Twenties at our exclusive Speakeasy Night! Enjoy two Prohibition Era themed cocktails (alcohol and non-alcohol options…</p>
           
           <div class="tag-row">
@@ -1272,6 +1298,7 @@
           
           <div class="date">Oct 6</div>
           <h3><a href="https://www.ahpd.org/event/community-input-meeting-carefree-park/">Community Input Meeting - Carefree Park</a></h3>
+          
           <p class="detail">Help shape the future of Carefree Park! Join us for a community input meeting where residents can share their feedback and vote on their favorite playground…</p>
           
           <div class="tag-row">
@@ -1301,6 +1328,7 @@
           
           <div class="date">Oct 10</div>
           <h3><a href="https://www.ahpd.org/event/autumn-harvest-2026/">Autumn Harvest</a></h3>
+          
           <p class="detail">Don’t miss fall family fun with crafts, games, hayrides, a scarecrow building contest, live music and entertainment, and food available for purchase from…</p>
           
           <div class="tag-row">
@@ -1330,6 +1358,7 @@
           
           <div class="date">Oct 14</div>
           <h3><a href="https://www.ahpd.org/event/ahpd-senior-art-show/">AHPD Senior Art Show</a></h3>
+          
           <p class="detail">Take in an evening of art and enjoyment! Peruse AHPD adult students’ creations at the annual Art Show. Visual art, fiber arts and woodcraft will be on display…</p>
           
           <div class="tag-row">
@@ -1429,7 +1458,7 @@
     <a href="https://withintenmiles.com/sponsor/">sponsor page</a>.
     <a href="https://withintenmiles.com/about/">About</a>.
     <a href="https://withintenmiles.com/trick-or-treat/">Trick-or-treat hours</a>.
-    <br>Generated 2026-09-18 20:54 UTC.
+    <br>Generated 2026-09-19 13:59 UTC.
     
     <br><a href="https://withintenmiles.com/arlington-heights-60005/weekly-summary.txt">Copy this week's summary</a> — a plain-text block ready to paste into a local group.
   </footer>
@@ -1452,10 +1481,10 @@
 </div>
 
 
-<script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "Event", "name": "Harmony Fest & Taste of Arlington Heights (Friday)", "url": "https://downtownarlingtonheights.us/events/harmony-fest-taste-of-arlington-heights-2026", "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode", "description": "Free live concerts in Harmony Park plus food & drink from local restaurants. 5–11pm, Downtown Arlington Heights.", "startDate": "2026-10-02T00:00:00"}, {"@type": "Event", "name": "Harmony Fest & Taste of Arlington Heights (Saturday)", "url": "https://downtownarlingtonheights.us/events/harmony-fest-taste-of-arlington-heights-2026", "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode", "description": "Free live concerts, food & drink, plus a kids' zone. 3–11pm, Downtown Arlington Heights.", "startDate": "2026-10-03T00:00:00"}, {"@type": "Event", "name": "Tween LitCrate Sign Up", "url": "https://www.ahml.info/scheduling/reservation/223808", "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode", "startDate": "2026-09-01T00:00:00"}, {"@type": "Event", "name": "Baby Time", "url": "https://www.ahml.info/scheduling/reservation/224116", "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode", "startDate": "2026-09-02T00:00:00"}, {"@type": "Event", "name": "Heritage Fest", "url": "https://www.ahpd.org/event/heritage-fest-2026/", "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode", "description": "Staff is closely monitoring Saturday’s weather. Weather updates or cancellations will be communicated on our website and social media before 6AM on Saturday,…", "startDate": "2026-09-19T09:00:00"}, {"@type": "Event", "name": "Arlington Heights Park Foundation Golf Classic", "url": "https://www.ahpd.org/event/arlington-heights-park-foundation-golf-classic/", "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode", "description": "The Arlington Heights Park Foundation welcomes all golfers to join us at Arlington Lakes Golf Club! Join us for a four-person scramble competition for a good…", "startDate": "2026-09-24T09:00:00"}, {"@type": "Event", "name": "Speakeasy at the Museum", "url": "https://www.ahpd.org/event/speakeasy-at-the-museum/", "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode", "description": "Step back in time to the Roaring Twenties at our exclusive Speakeasy Night! Enjoy two Prohibition Era themed cocktails (alcohol and non-alcohol options…", "startDate": "2026-09-25T19:00:00"}, {"@type": "Event", "name": "Community Input Meeting - Carefree Park", "url": "https://www.ahpd.org/event/community-input-meeting-carefree-park/", "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode", "description": "Help shape the future of Carefree Park! Join us for a community input meeting where residents can share their feedback and vote on their favorite playground…", "startDate": "2026-10-06T17:30:00"}, {"@type": "Event", "name": "Autumn Harvest", "url": "https://www.ahpd.org/event/autumn-harvest-2026/", "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode", "description": "Don’t miss fall family fun with crafts, games, hayrides, a scarecrow building contest, live music and entertainment, and food available for purchase from…", "startDate": "2026-10-10T11:00:00"}, {"@type": "Event", "name": "AHPD Senior Art Show", "url": "https://www.ahpd.org/event/ahpd-senior-art-show/", "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode", "description": "Take in an evening of art and enjoyment! Peruse AHPD adult students’ creations at the annual Art Show. Visual art, fiber arts and woodcraft will be on display…", "startDate": "2026-10-14T16:00:00"}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "Event", "name": "Harmony Fest & Taste of Arlington Heights (Friday)", "url": "https://downtownarlingtonheights.us/events/harmony-fest-taste-of-arlington-heights-2026", "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode", "description": "Free live concerts in Harmony Park plus food & drink from local restaurants. 5–11pm, Downtown Arlington Heights.", "startDate": "2026-10-02T00:00:00"}, {"@type": "Event", "name": "Harmony Fest & Taste of Arlington Heights (Saturday)", "url": "https://downtownarlingtonheights.us/events/harmony-fest-taste-of-arlington-heights-2026", "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode", "description": "Free live concerts, food & drink, plus a kids' zone. 3–11pm, Downtown Arlington Heights.", "startDate": "2026-10-03T00:00:00"}, {"@type": "Event", "name": "Tween LitCrate Sign Up", "url": "https://www.ahml.info/scheduling/reservation/223808", "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode", "startDate": "2026-09-01T00:00:00"}, {"@type": "Event", "name": "Baby Time", "url": "https://www.ahml.info/scheduling/reservation/224116", "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode", "startDate": "2026-09-02T00:00:00"}, {"@type": "Event", "name": "Heritage Fest", "url": "https://www.ahpd.org/event/heritage-fest-2026/", "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode", "description": "Due to the predicted inclement weather, Heritage Fest on September 19 has been CANCELED. We apologize for any inconvenience. Explore the cultural diversity…", "startDate": "2026-09-19T09:00:00"}, {"@type": "Event", "name": "Arlington Heights Park Foundation Golf Classic", "url": "https://www.ahpd.org/event/arlington-heights-park-foundation-golf-classic/", "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode", "description": "The Arlington Heights Park Foundation welcomes all golfers to join us at Arlington Lakes Golf Club! Join us for a four-person scramble competition for a good…", "startDate": "2026-09-24T09:00:00"}, {"@type": "Event", "name": "Speakeasy at the Museum", "url": "https://www.ahpd.org/event/speakeasy-at-the-museum/", "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode", "description": "Step back in time to the Roaring Twenties at our exclusive Speakeasy Night! Enjoy two Prohibition Era themed cocktails (alcohol and non-alcohol options…", "startDate": "2026-09-25T19:00:00"}, {"@type": "Event", "name": "Community Input Meeting - Carefree Park", "url": "https://www.ahpd.org/event/community-input-meeting-carefree-park/", "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode", "description": "Help shape the future of Carefree Park! Join us for a community input meeting where residents can share their feedback and vote on their favorite playground…", "startDate": "2026-10-06T17:30:00"}, {"@type": "Event", "name": "Autumn Harvest", "url": "https://www.ahpd.org/event/autumn-harvest-2026/", "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode", "description": "Don’t miss fall family fun with crafts, games, hayrides, a scarecrow building contest, live music and entertainment, and food available for purchase from…", "startDate": "2026-10-10T11:00:00"}, {"@type": "Event", "name": "AHPD Senior Art Show", "url": "https://www.ahpd.org/event/ahpd-senior-art-show/", "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode", "description": "Take in an evening of art and enjoyment! Peruse AHPD adult students’ creations at the annual Art Show. Visual art, fiber arts and woodcraft will be on display…", "startDate": "2026-10-14T16:00:00"}]}</script>
 
 
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebPage", "name": "Arlington Heights — Within Ten", "url": "https://withintenmiles.com/arlington-heights-60005/", "dateModified": "2026-09-18T20:54:45.815755+00:00", "isPartOf": {"@type": "WebSite", "name": "Within Ten", "url": "https://withintenmiles.com/", "publisher": {"@id": "https://withintenmiles.com/about/#organization"}}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebPage", "name": "Arlington Heights — Within Ten", "url": "https://withintenmiles.com/arlington-heights-60005/", "dateModified": "2026-09-19T13:59:40.854781+00:00", "isPartOf": {"@type": "WebSite", "name": "Within Ten", "url": "https://withintenmiles.com/", "publisher": {"@id": "https://withintenmiles.com/about/#organization"}}}</script>
 <script>
 (function () {
   var activeTags = new Set();

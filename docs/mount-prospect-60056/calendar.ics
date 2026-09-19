@@ -7,8 +7,8 @@ REFRESH-INTERVAL;VALUE=DURATION:PT12H
 X-PUBLISHED-TTL:PT12H
 BEGIN:VEVENT
 UID:mount-prospect-60056-2026-09-18-oktoberfest@withintenmiles.com
-DTSTAMP:20260918T205445Z
-LAST-MODIFIED:20260918T205445Z
+DTSTAMP:20260919T135940Z
+LAST-MODIFIED:20260919T135940Z
 SEQUENCE:0
 DTSTART:20260918T000000
 DTEND:20260918T010000
@@ -18,8 +18,8 @@ URL:https://mpdowntown.com/oktoberfest-info/
 END:VEVENT
 BEGIN:VEVENT
 UID:mount-prospect-60056-2026-09-19-fall-festival-oktoberfest@withintenmiles.com
-DTSTAMP:20260918T205445Z
-LAST-MODIFIED:20260918T205445Z
+DTSTAMP:20260919T135940Z
+LAST-MODIFIED:20260919T135940Z
 SEQUENCE:0
 DTSTART:20260919T000000
 DTEND:20260919T010000
@@ -28,20 +28,75 @@ DESCRIPTION:Free Fall Festival noon–4pm (special-needs hour noon–1pm) with c
 URL:https://mpdowntown.com/oktoberfest-info/
 END:VEVENT
 BEGIN:VEVENT
-UID:mount-prospect-60056-2026-09-18-storytime-playdate-art-studio@withintenmiles.com
-DTSTAMP:20260918T205445Z
-LAST-MODIFIED:20260918T205445Z
+UID:mount-prospect-60056-2026-09-20-mount-prospect-farmers-market@withintenmiles.com
+DTSTAMP:20260919T135940Z
+LAST-MODIFIED:20260919T135940Z
 SEQUENCE:0
-DTSTART:20260918T100000
-DTEND:20260918T110000
-SUMMARY:Storytime Playdate: Art Studio
-DESCRIPTION:Friday\, September 18 2026 10:00am - 11:30am \n Enjoy the magic of storytime plus the joy of hands-on sensory fun! You and your child will enjoy time together…
-URL:https://mppl.libnet.info/event/16291338
+DTSTART:20260920T080000
+DTEND:20260920T090000
+SUMMARY:Mount Prospect Farmers Market
+DESCRIPTION:Local produce and vendors\, organized by the Mount Prospect Lions Club\, rain or shine. West Metra commuter lot\, Northwest Hwy & Main St (Rte 83).
+URL:https://mplions.org/event/farmers-market/
+END:VEVENT
+BEGIN:VEVENT
+UID:mount-prospect-60056-2026-09-27-mount-prospect-farmers-market@withintenmiles.com
+DTSTAMP:20260919T135940Z
+LAST-MODIFIED:20260919T135940Z
+SEQUENCE:0
+DTSTART:20260927T080000
+DTEND:20260927T090000
+SUMMARY:Mount Prospect Farmers Market
+DESCRIPTION:Local produce and vendors\, organized by the Mount Prospect Lions Club\, rain or shine. West Metra commuter lot\, Northwest Hwy & Main St (Rte 83).
+URL:https://mplions.org/event/farmers-market/
+END:VEVENT
+BEGIN:VEVENT
+UID:mount-prospect-60056-2026-10-04-mount-prospect-farmers-market@withintenmiles.com
+DTSTAMP:20260919T135940Z
+LAST-MODIFIED:20260919T135940Z
+SEQUENCE:0
+DTSTART:20261004T080000
+DTEND:20261004T090000
+SUMMARY:Mount Prospect Farmers Market
+DESCRIPTION:Local produce and vendors\, organized by the Mount Prospect Lions Club\, rain or shine. West Metra commuter lot\, Northwest Hwy & Main St (Rte 83).
+URL:https://mplions.org/event/farmers-market/
+END:VEVENT
+BEGIN:VEVENT
+UID:mount-prospect-60056-2026-10-11-mount-prospect-farmers-market@withintenmiles.com
+DTSTAMP:20260919T135940Z
+LAST-MODIFIED:20260919T135940Z
+SEQUENCE:0
+DTSTART:20261011T080000
+DTEND:20261011T090000
+SUMMARY:Mount Prospect Farmers Market
+DESCRIPTION:Local produce and vendors\, organized by the Mount Prospect Lions Club\, rain or shine. West Metra commuter lot\, Northwest Hwy & Main St (Rte 83).
+URL:https://mplions.org/event/farmers-market/
+END:VEVENT
+BEGIN:VEVENT
+UID:mount-prospect-60056-2026-10-18-mount-prospect-farmers-market@withintenmiles.com
+DTSTAMP:20260919T135940Z
+LAST-MODIFIED:20260919T135940Z
+SEQUENCE:0
+DTSTART:20261018T080000
+DTEND:20261018T090000
+SUMMARY:Mount Prospect Farmers Market
+DESCRIPTION:Local produce and vendors\, organized by the Mount Prospect Lions Club\, rain or shine. West Metra commuter lot\, Northwest Hwy & Main St (Rte 83).
+URL:https://mplions.org/event/farmers-market/
+END:VEVENT
+BEGIN:VEVENT
+UID:mount-prospect-60056-2026-10-25-mount-prospect-farmers-market@withintenmiles.com
+DTSTAMP:20260919T135940Z
+LAST-MODIFIED:20260919T135940Z
+SEQUENCE:0
+DTSTART:20261025T080000
+DTEND:20261025T090000
+SUMMARY:Mount Prospect Farmers Market
+DESCRIPTION:Local produce and vendors\, organized by the Mount Prospect Lions Club\, rain or shine. West Metra commuter lot\, Northwest Hwy & Main St (Rte 83).
+URL:https://mplions.org/event/farmers-market/
 END:VEVENT
 BEGIN:VEVENT
 UID:mount-prospect-60056-2026-09-19-creation-station-diy-mu-ecas-quitapenas-worry-dolls@withintenmiles.com
-DTSTAMP:20260918T205445Z
-LAST-MODIFIED:20260918T205445Z
+DTSTAMP:20260919T135940Z
+LAST-MODIFIED:20260919T135940Z
 SEQUENCE:0
 DTSTART:20260919T100000
 DTEND:20260919T110000
@@ -51,8 +106,8 @@ URL:https://mppl.libnet.info/event/16428150
 END:VEVENT
 BEGIN:VEVENT
 UID:mount-prospect-60056-2026-09-21-family-storytime@withintenmiles.com
-DTSTAMP:20260918T205445Z
-LAST-MODIFIED:20260918T205445Z
+DTSTAMP:20260919T135940Z
+LAST-MODIFIED:20260919T135940Z
 SEQUENCE:0
 DTSTART:20260921T093000
 DTEND:20260921T103000
@@ -62,8 +117,8 @@ URL:https://mppl.libnet.info/event/16290481
 END:VEVENT
 BEGIN:VEVENT
 UID:mount-prospect-60056-2026-09-21-drop-in-tech-help@withintenmiles.com
-DTSTAMP:20260918T205445Z
-LAST-MODIFIED:20260918T205445Z
+DTSTAMP:20260919T135940Z
+LAST-MODIFIED:20260919T135940Z
 SEQUENCE:0
 DTSTART:20260921T100000
 DTEND:20260921T110000
@@ -73,8 +128,8 @@ URL:https://mppl.libnet.info/event/14755941
 END:VEVENT
 BEGIN:VEVENT
 UID:mount-prospect-60056-2026-09-21-creation-station-diy-mu-ecas-quitapenas-worry-dolls@withintenmiles.com
-DTSTAMP:20260918T205445Z
-LAST-MODIFIED:20260918T205445Z
+DTSTAMP:20260919T135940Z
+LAST-MODIFIED:20260919T135940Z
 SEQUENCE:0
 DTSTART:20260921T100000
 DTEND:20260921T110000
@@ -84,8 +139,8 @@ URL:https://mppl.libnet.info/event/16428151
 END:VEVENT
 BEGIN:VEVENT
 UID:mount-prospect-60056-2026-09-21-toddler-storytime@withintenmiles.com
-DTSTAMP:20260918T205445Z
-LAST-MODIFIED:20260918T205445Z
+DTSTAMP:20260919T135940Z
+LAST-MODIFIED:20260919T135940Z
 SEQUENCE:0
 DTSTART:20260921T103000
 DTEND:20260921T113000
@@ -94,20 +149,20 @@ DESCRIPTION:Monday\, September 21 2026 10:30am - 11:00am \n Grow your little lea
 URL:https://mppl.libnet.info/event/16290777
 END:VEVENT
 BEGIN:VEVENT
-UID:mount-prospect-60056-2026-09-18-mt-melas-jr-adventure-run@withintenmiles.com
-DTSTAMP:20260918T205445Z
-LAST-MODIFIED:20260918T205445Z
+UID:mount-prospect-60056-2026-09-21-beyond-the-book-drop@withintenmiles.com
+DTSTAMP:20260919T135940Z
+LAST-MODIFIED:20260919T135940Z
 SEQUENCE:0
-DTSTART:20260918T163000
-DTEND:20260918T173000
-SUMMARY:Mt. Melas Jr. Adventure Run
-DESCRIPTION:Mt. Melas Jr. Adventure Run (Ages 5-12) Test your limits with this fun and challenging 1.5 mile adventure run featuring hill elevation and grass and concrete…
-URL:https://www.mppd.org/event/mt-melas-jr-adventure-run-4/
+DTSTART:20260921T110000
+DTEND:20260921T120000
+SUMMARY:Beyond the Book Drop
+DESCRIPTION:Monday\, September 21 2026 11:00am - 11:30am \n Ever wonder what happens after your library materials go through the return slot? Get a behind-the-scenes look…
+URL:https://mppl.libnet.info/event/16687517
 END:VEVENT
 BEGIN:VEVENT
 UID:mount-prospect-60056-2026-09-20-barks-and-brews-2-electric-boogaloo@withintenmiles.com
-DTSTAMP:20260918T205445Z
-LAST-MODIFIED:20260918T205445Z
+DTSTAMP:20260919T135940Z
+LAST-MODIFIED:20260919T135940Z
 SEQUENCE:0
 DTSTART:20260920T110000
 DTEND:20260920T120000
@@ -117,8 +172,8 @@ URL:https://www.mppd.org/event/barks-and-brews-2-electric-boogaloo/
 END:VEVENT
 BEGIN:VEVENT
 UID:mount-prospect-60056-2026-09-26-fall-frenzy@withintenmiles.com
-DTSTAMP:20260918T205445Z
-LAST-MODIFIED:20260918T205445Z
+DTSTAMP:20260919T135940Z
+LAST-MODIFIED:20260919T135940Z
 SEQUENCE:0
 DTSTART:20260926T093000
 DTEND:20260926T103000
@@ -128,8 +183,8 @@ URL:https://www.mppd.org/event/fall-frenzy/
 END:VEVENT
 BEGIN:VEVENT
 UID:mount-prospect-60056-2026-10-03-trick-or-treat-trail@withintenmiles.com
-DTSTAMP:20260918T205445Z
-LAST-MODIFIED:20260918T205445Z
+DTSTAMP:20260919T135940Z
+LAST-MODIFIED:20260919T135940Z
 SEQUENCE:0
 DTSTART:20261003T083000
 DTEND:20261003T093000
@@ -139,8 +194,8 @@ URL:https://www.mppd.org/event/trick-or-treat-trail-3/
 END:VEVENT
 BEGIN:VEVENT
 UID:mount-prospect-60056-2026-10-10-fishing-derby@withintenmiles.com
-DTSTAMP:20260918T205445Z
-LAST-MODIFIED:20260918T205445Z
+DTSTAMP:20260919T135940Z
+LAST-MODIFIED:20260919T135940Z
 SEQUENCE:0
 DTSTART:20261010T080000
 DTEND:20261010T090000
@@ -150,8 +205,8 @@ URL:https://www.mppd.org/event/fishing-derby-4/
 END:VEVENT
 BEGIN:VEVENT
 UID:mount-prospect-60056-2026-10-10-spooky-scary-studio@withintenmiles.com
-DTSTAMP:20260918T205445Z
-LAST-MODIFIED:20260918T205445Z
+DTSTAMP:20260919T135940Z
+LAST-MODIFIED:20260919T135940Z
 SEQUENCE:0
 DTSTART:20261010T093000
 DTEND:20261010T103000
@@ -160,19 +215,20 @@ DESCRIPTION:Spooky Scary Studio (Ages 5-10) The Studio has been overrun by spook
 URL:https://www.mppd.org/event/31551/
 END:VEVENT
 BEGIN:VEVENT
-UID:mount-prospect-60056-2026-09-18-half-day-student-attendance-grades-1-8@withintenmiles.com
-DTSTAMP:20260918T205445Z
-LAST-MODIFIED:20260918T205445Z
+UID:mount-prospect-60056-2026-10-21-park-board-meeting@withintenmiles.com
+DTSTAMP:20260919T135940Z
+LAST-MODIFIED:20260919T135940Z
 SEQUENCE:0
-DTSTART;VALUE=DATE:20260918
-DTEND;VALUE=DATE:20260919
-TRANSP:TRANSPARENT
-SUMMARY:Half-Day Student Attendance (Grades 1-8)
+DTSTART:20261021T183000
+DTEND:20261021T193000
+SUMMARY:Park Board Meeting
+DESCRIPTION:Join the discussion – Public welcome! Meeting Agenda Meeting Packet
+URL:https://www.mppd.org/event/park-board-meeting-44/
 END:VEVENT
 BEGIN:VEVENT
 UID:mount-prospect-60056-2026-09-21-student-and-staff-non-attendance-buildings-closed@withintenmiles.com
-DTSTAMP:20260918T205445Z
-LAST-MODIFIED:20260918T205445Z
+DTSTAMP:20260919T135940Z
+LAST-MODIFIED:20260919T135940Z
 SEQUENCE:0
 DTSTART:20260921T000000
 DTEND:20260921T010000
@@ -180,8 +236,8 @@ SUMMARY:Student and Staff Non-Attendance/Buildings Closed
 END:VEVENT
 BEGIN:VEVENT
 UID:mount-prospect-60056-2026-09-24-education-foundation-meeting@withintenmiles.com
-DTSTAMP:20260918T205445Z
-LAST-MODIFIED:20260918T205445Z
+DTSTAMP:20260919T135940Z
+LAST-MODIFIED:20260919T135940Z
 SEQUENCE:0
 DTSTART:20260924T213000
 DTEND:20260924T223000
@@ -189,8 +245,8 @@ SUMMARY:Education Foundation Meeting
 END:VEVENT
 BEGIN:VEVENT
 UID:mount-prospect-60056-2026-10-02-school-custodian-appreciation-day@withintenmiles.com
-DTSTAMP:20260918T205445Z
-LAST-MODIFIED:20260918T205445Z
+DTSTAMP:20260919T135940Z
+LAST-MODIFIED:20260919T135940Z
 SEQUENCE:0
 DTSTART:20261002T000000
 DTEND:20261002T010000
@@ -198,8 +254,8 @@ SUMMARY:School Custodian Appreciation Day
 END:VEVENT
 BEGIN:VEVENT
 UID:mount-prospect-60056-2026-10-12-student-and-staff-non-attendance-buildings-closed@withintenmiles.com
-DTSTAMP:20260918T205445Z
-LAST-MODIFIED:20260918T205445Z
+DTSTAMP:20260919T135940Z
+LAST-MODIFIED:20260919T135940Z
 SEQUENCE:0
 DTSTART:20261012T000000
 DTEND:20261012T010000
@@ -207,12 +263,21 @@ SUMMARY:Student and Staff Non-Attendance/Buildings Closed
 END:VEVENT
 BEGIN:VEVENT
 UID:mount-prospect-60056-2026-10-13-student-non-attendance-institute-day@withintenmiles.com
-DTSTAMP:20260918T205445Z
-LAST-MODIFIED:20260918T205445Z
+DTSTAMP:20260919T135940Z
+LAST-MODIFIED:20260919T135940Z
 SEQUENCE:0
 DTSTART;VALUE=DATE:20261013
 DTEND;VALUE=DATE:20261014
 TRANSP:TRANSPARENT
 SUMMARY:Student Non-Attendance/ Institute Day
+END:VEVENT
+BEGIN:VEVENT
+UID:mount-prospect-60056-2026-10-15-board-of-education-closed-meeting-board-governance@withintenmiles.com
+DTSTAMP:20260919T135940Z
+LAST-MODIFIED:20260919T135940Z
+SEQUENCE:0
+DTSTART:20261015T190000
+DTEND:20261015T200000
+SUMMARY:Board of Education Closed Meeting - Board Governance
 END:VEVENT
 END:VCALENDAR

@@ -462,6 +462,15 @@
     letter-spacing: 0.06em;
     text-transform: uppercase;
   }
+  /* ROADMAP.md item 141: a recurring event's "every Sunday through Oct
+     11" note - deliberately the opposite visual weight of .series above
+     (muted, not bold/uppercase/accent-colored), since the point is that
+     it reads as a standing reference, not news repeated every card. */
+  .card .recurrence-note {
+    color: var(--muted);
+    font-size: 12px;
+    font-style: italic;
+  }
   .card h3 { margin: 0; padding-right: 24px; font-size: 16px; font-weight: 600; line-height: 1.35; }
   .card h3 a { color: var(--ink); text-decoration: none; }
   .card h3 a:hover { color: var(--accent); }
@@ -633,7 +642,7 @@
       <span class="kicker">Palatine · 60067</span>
     </div>
     <h1>What&#39;s happening in Palatine</h1>
-    <div class="sub">Issue for September 18, 2026 — Pulled automatically from the Village, Public Library District, and Park District — plus Downtown Palatine and the Train Station farmers&#39; market lot — several times a week, northwest of Mount Prospect.</div>
+    <div class="sub">Issue for September 19, 2026 — Pulled automatically from the Village, Public Library District, and Park District — plus Downtown Palatine and the Train Station farmers&#39; market lot — several times a week, northwest of Mount Prospect.</div>
   </div>
 </header>
 
@@ -800,6 +809,7 @@
           
           <div class="date">Sep 18</div>
           <h3><a href="https://palatinerotary.org/Oktoberfest.php">Palatine Oktoberfest (Friday)</a></h3>
+          
           <p class="detail">German beer, food &amp; music return to Downtown Palatine. 5pm–midnight, N Smith &amp; W Slade St. Free entry.</p>
           
           <div class="tag-row">
@@ -829,6 +839,7 @@
           
           <div class="date">Sep 19</div>
           <h3><a href="https://palatinerotary.org/Oktoberfest.php">Palatine Oktoberfest — Family Day (Saturday)</a></h3>
+          
           <p class="detail">Family Day: games, crafts &amp; entertainment plus German beer, food &amp; music. Noon–midnight, N Smith &amp; W Slade St. Free entry.</p>
           
           <div class="tag-row">
@@ -858,6 +869,7 @@
           
           <div class="date">Sep 20</div>
           <h3><a href="https://palatinerotary.org/Oktoberfest.php">Palatine Oktoberfest (Sunday)</a></h3>
+          
           <p class="detail">German beer, food &amp; music wind down Downtown Palatine&#39;s Oktoberfest. Noon–6pm, N Smith &amp; W Slade St. Free entry.</p>
           
           <div class="tag-row">
@@ -877,6 +889,57 @@
     </section>
     
   
+    
+    <section class="block">
+      <h2>Village News</h2>
+      
+        <div class="card-grid">
+        
+        
+        <div class="card" data-tags="">
+          
+          <!-- ROADMAP.md Phase 11 #63: My Weekend is for dated events -
+               offering to add "Find your school district" or a guide's
+               own title to it made no sense, since guide items and the
+               guide index have nothing to do with weekend planning.
+               #90: nor does a school half-day belong in it - it's real
+               and worth knowing, but nobody plans a weekend around one. -->
+          <button type="button" class="tray-star" data-item='{"date": null, "date_iso": null, "detail": "", "id": "https://www.palatine.il.us/940/Public-Notices", "region_name": "Palatine", "region_url": "https://withintenmiles.com/palatine-60067/", "title": "Public Notices", "url": "https://www.palatine.il.us/940/Public-Notices"}' aria-pressed="false" aria-label="Add Public Notices to My Weekend">☆</button>
+          
+          
+          
+          
+          <h3><a href="https://www.palatine.il.us/940/Public-Notices">Public Notices</a></h3>
+          
+          
+          
+          
+        </div>
+        
+        
+        <div class="card" data-tags="">
+          
+          <!-- ROADMAP.md Phase 11 #63: My Weekend is for dated events -
+               offering to add "Find your school district" or a guide's
+               own title to it made no sense, since guide items and the
+               guide index have nothing to do with weekend planning.
+               #90: nor does a school half-day belong in it - it's real
+               and worth knowing, but nobody plans a weekend around one. -->
+          <button type="button" class="tray-star" data-item='{"date": null, "date_iso": null, "detail": "", "id": "https://www.palatine.il.us/site/copyright", "region_name": "Palatine", "region_url": "https://withintenmiles.com/palatine-60067/", "title": "Copyright Notices", "url": "https://www.palatine.il.us/site/copyright"}' aria-pressed="false" aria-label="Add Copyright Notices to My Weekend">☆</button>
+          
+          
+          
+          
+          <h3><a href="https://www.palatine.il.us/site/copyright">Copyright Notices</a></h3>
+          
+          
+          
+          
+        </div>
+        
+        </div>
+      
+    </section>
     
   
     
@@ -904,6 +967,7 @@
           <h3><a href="https://www.palatineparks.org/events/">Program Areas</a></h3>
           
           
+          
           <div class="tag-row">
             <span class="tag-badge" style="background: var(--hue-teal-bg); color: var(--hue-teal-ink);">🌳 Outdoor</span>
           </div>
@@ -928,6 +992,7 @@
           <h3><a href="https://www.palatineparks.org/summer-camps/">Summer Camps</a></h3>
           
           
+          
           <div class="tag-row">
             <span class="tag-badge" style="background: var(--hue-teal-bg); color: var(--hue-teal-ink);">🌳 Outdoor</span>
           </div>
@@ -942,6 +1007,7 @@
           
           
           <h3><a href="https://www.palatineparks.org/no-school-programming/">No School Programming</a></h3>
+          
           
           
           <div class="tag-row">
@@ -968,6 +1034,7 @@
           <h3><a href="https://www.palatineparks.org/programs/">Search Programs</a></h3>
           
           
+          
           <div class="tag-row">
             <span class="tag-badge" style="background: var(--hue-teal-bg); color: var(--hue-teal-ink);">🌳 Outdoor</span>
           </div>
@@ -992,6 +1059,7 @@
           <h3><a href="https://www.palatineparks.org/calendar-of-events/">Calendar of Events</a></h3>
           
           
+          
           <div class="tag-row">
             <span class="tag-badge" style="background: var(--hue-teal-bg); color: var(--hue-teal-ink);">🌳 Outdoor</span>
           </div>
@@ -1014,6 +1082,7 @@
           
           
           <h3><a href="https://www.palatineparks.org/festival-of-cultures/">Festival of Cultures</a></h3>
+          
           
           
           <div class="tag-row">
@@ -1110,7 +1179,7 @@
     <a href="https://withintenmiles.com/sponsor/">sponsor page</a>.
     <a href="https://withintenmiles.com/about/">About</a>.
     <a href="https://withintenmiles.com/trick-or-treat/">Trick-or-treat hours</a>.
-    <br>Generated 2026-09-18 20:54 UTC.
+    <br>Generated 2026-09-19 13:59 UTC.
     
     <br><a href="https://withintenmiles.com/palatine-60067/weekly-summary.txt">Copy this week's summary</a> — a plain-text block ready to paste into a local group.
   </footer>
@@ -1136,7 +1205,7 @@
 <script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "Event", "name": "Palatine Oktoberfest (Friday)", "url": "https://palatinerotary.org/Oktoberfest.php", "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode", "description": "German beer, food & music return to Downtown Palatine. 5pm–midnight, N Smith & W Slade St. Free entry.", "startDate": "2026-09-18T00:00:00"}, {"@type": "Event", "name": "Palatine Oktoberfest — Family Day (Saturday)", "url": "https://palatinerotary.org/Oktoberfest.php", "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode", "description": "Family Day: games, crafts & entertainment plus German beer, food & music. Noon–midnight, N Smith & W Slade St. Free entry.", "startDate": "2026-09-19T00:00:00"}, {"@type": "Event", "name": "Palatine Oktoberfest (Sunday)", "url": "https://palatinerotary.org/Oktoberfest.php", "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode", "description": "German beer, food & music wind down Downtown Palatine's Oktoberfest. Noon–6pm, N Smith & W Slade St. Free entry.", "startDate": "2026-09-20T00:00:00"}]}</script>
 
 
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebPage", "name": "Palatine — Within Ten", "url": "https://withintenmiles.com/palatine-60067/", "dateModified": "2026-09-18T20:54:45.815755+00:00", "isPartOf": {"@type": "WebSite", "name": "Within Ten", "url": "https://withintenmiles.com/", "publisher": {"@id": "https://withintenmiles.com/about/#organization"}}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebPage", "name": "Palatine — Within Ten", "url": "https://withintenmiles.com/palatine-60067/", "dateModified": "2026-09-19T13:59:40.854781+00:00", "isPartOf": {"@type": "WebSite", "name": "Within Ten", "url": "https://withintenmiles.com/", "publisher": {"@id": "https://withintenmiles.com/about/#organization"}}}</script>
 <script>
 (function () {
   var activeTags = new Set();

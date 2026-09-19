@@ -462,6 +462,15 @@
     letter-spacing: 0.06em;
     text-transform: uppercase;
   }
+  /* ROADMAP.md item 141: a recurring event's "every Sunday through Oct
+     11" note - deliberately the opposite visual weight of .series above
+     (muted, not bold/uppercase/accent-colored), since the point is that
+     it reads as a standing reference, not news repeated every card. */
+  .card .recurrence-note {
+    color: var(--muted);
+    font-size: 12px;
+    font-style: italic;
+  }
   .card h3 { margin: 0; padding-right: 24px; font-size: 16px; font-weight: 600; line-height: 1.35; }
   .card h3 a { color: var(--ink); text-decoration: none; }
   .card h3 a:hover { color: var(--accent); }
@@ -655,34 +664,6 @@
   
 
   
-  <div class="weather-bar">
-    
-    <div class="weather-day">
-      <span class="wx-emoji" aria-hidden="true">☁️</span>
-      <span class="wx-name">Friday</span>
-      <span class="wx-temp">72&deg; / 62&deg;</span>
-      <span class="wx-label">Overcast &middot; 25% precip</span>
-    </div>
-    
-    <div class="weather-day">
-      <span class="wx-emoji" aria-hidden="true">🌧️</span>
-      <span class="wx-name">Saturday</span>
-      <span class="wx-temp">74&deg; / 62&deg;</span>
-      <span class="wx-label">Heavy rain &middot; 71% precip</span>
-    </div>
-    
-    <div class="weather-day">
-      <span class="wx-emoji" aria-hidden="true">🌦️</span>
-      <span class="wx-name">Sunday</span>
-      <span class="wx-temp">70&deg; / 64&deg;</span>
-      <span class="wx-label">Rain showers &middot; 78% precip</span>
-    </div>
-    
-    
-    <div class="wx-note">Rain (or worse) in the forecast — the Indoor filter below can help plan around it.</div>
-    
-  </div>
-  
 
   
 
@@ -740,6 +721,7 @@
           
           <div class="date">Sep 18</div>
           <h3><a href="https://palatinerotary.org/Oktoberfest.php">Palatine Oktoberfest (Friday)</a></h3>
+          
           <p class="detail">German beer, food &amp; music return to Downtown Palatine. 5pm–midnight, N Smith &amp; W Slade St. Free entry.</p>
           
           <div class="tag-row">
@@ -769,6 +751,7 @@
           
           <div class="date">Sep 19</div>
           <h3><a href="https://palatinerotary.org/Oktoberfest.php">Palatine Oktoberfest — Family Day (Saturday)</a></h3>
+          
           <p class="detail">Family Day: games, crafts &amp; entertainment plus German beer, food &amp; music. Noon–midnight, N Smith &amp; W Slade St. Free entry.</p>
           
           <div class="tag-row">
@@ -798,6 +781,7 @@
           
           <div class="date">Sep 20</div>
           <h3><a href="https://palatinerotary.org/Oktoberfest.php">Palatine Oktoberfest (Sunday)</a></h3>
+          
           <p class="detail">German beer, food &amp; music wind down Downtown Palatine&#39;s Oktoberfest. Noon–6pm, N Smith &amp; W Slade St. Free entry.</p>
           
           <div class="tag-row">
@@ -851,7 +835,7 @@
     <a href="https://withintenmiles.com/sponsor/">sponsor page</a>.
     <a href="https://withintenmiles.com/about/">About</a>.
     <a href="https://withintenmiles.com/trick-or-treat/">Trick-or-treat hours</a>.
-    <br>Generated 2026-09-18 20:54 UTC.
+    <br>Generated 2026-09-19 13:59 UTC.
     
     <br><a href="https://withintenmiles.com/palatine-60067/weekly-summary.txt">Copy this week's summary</a> — a plain-text block ready to paste into a local group.
   </footer>
@@ -877,7 +861,7 @@
 <script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "Event", "name": "Palatine Oktoberfest (Friday)", "url": "https://palatinerotary.org/Oktoberfest.php", "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode", "description": "German beer, food & music return to Downtown Palatine. 5pm–midnight, N Smith & W Slade St. Free entry.", "startDate": "2026-09-18T00:00:00"}, {"@type": "Event", "name": "Palatine Oktoberfest — Family Day (Saturday)", "url": "https://palatinerotary.org/Oktoberfest.php", "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode", "description": "Family Day: games, crafts & entertainment plus German beer, food & music. Noon–midnight, N Smith & W Slade St. Free entry.", "startDate": "2026-09-19T00:00:00"}, {"@type": "Event", "name": "Palatine Oktoberfest (Sunday)", "url": "https://palatinerotary.org/Oktoberfest.php", "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode", "description": "German beer, food & music wind down Downtown Palatine's Oktoberfest. Noon–6pm, N Smith & W Slade St. Free entry.", "startDate": "2026-09-20T00:00:00"}]}</script>
 
 
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebPage", "name": "Palatine — Within Ten", "url": "https://withintenmiles.com/palatine-60067/this-weekend/", "dateModified": "2026-09-18T20:54:45.815755+00:00", "isPartOf": {"@type": "WebSite", "name": "Within Ten", "url": "https://withintenmiles.com/", "publisher": {"@id": "https://withintenmiles.com/about/#organization"}}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebPage", "name": "Palatine — Within Ten", "url": "https://withintenmiles.com/palatine-60067/this-weekend/", "dateModified": "2026-09-19T13:59:40.854781+00:00", "isPartOf": {"@type": "WebSite", "name": "Within Ten", "url": "https://withintenmiles.com/", "publisher": {"@id": "https://withintenmiles.com/about/#organization"}}}</script>
 <script>
 (function () {
   var activeTags = new Set();

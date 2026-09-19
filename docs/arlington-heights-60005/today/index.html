@@ -4,17 +4,17 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Today in Arlington Heights — Within Ten</title>
-<meta name="description" content="Friday, September 18 — everything happening today.">
+<meta name="description" content="Saturday, September 19 — everything happening today.">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Within Ten">
 <meta property="og:title" content="Today in Arlington Heights — Within Ten">
-<meta property="og:description" content="Friday, September 18 — everything happening today.">
+<meta property="og:description" content="Saturday, September 19 — everything happening today.">
 <meta property="og:image" content="https://withintenmiles.com/og/arlington-heights-60005.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Today in Arlington Heights — Within Ten">
-<meta name="twitter:description" content="Friday, September 18 — everything happening today.">
+<meta name="twitter:description" content="Saturday, September 19 — everything happening today.">
 <meta name="twitter:image" content="https://withintenmiles.com/og/arlington-heights-60005.png">
 <link rel="canonical" href="https://withintenmiles.com/arlington-heights-60005/today/">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='46' fill='%23526b3f'/%3E%3Cpath d='M50 22c-13 0-24 10-24 24 0 18 24 36 24 36s24-18 24-36c0-14-11-24-24-24z' fill='white'/%3E%3Ccircle cx='50' cy='45' r='10' fill='%23526b3f'/%3E%3C/svg%3E">
@@ -462,6 +462,15 @@
     letter-spacing: 0.06em;
     text-transform: uppercase;
   }
+  /* ROADMAP.md item 141: a recurring event's "every Sunday through Oct
+     11" note - deliberately the opposite visual weight of .series above
+     (muted, not bold/uppercase/accent-colored), since the point is that
+     it reads as a standing reference, not news repeated every card. */
+  .card .recurrence-note {
+    color: var(--muted);
+    font-size: 12px;
+    font-style: italic;
+  }
   .card h3 { margin: 0; padding-right: 24px; font-size: 16px; font-weight: 600; line-height: 1.35; }
   .card h3 a { color: var(--ink); text-decoration: none; }
   .card h3 a:hover { color: var(--accent); }
@@ -633,7 +642,7 @@
       <span class="kicker">Arlington Heights · 60005</span>
     </div>
     <h1>Today in Arlington Heights</h1>
-    <div class="sub">Friday, September 18 — everything happening today.</div>
+    <div class="sub">Saturday, September 19 — everything happening today.</div>
   </div>
 </header>
 
@@ -667,6 +676,28 @@
   </div>
 
   
+  <div class="filter-bar" role="group" aria-label="Filter events">
+    
+    <button type="button" class="filter-chip" data-tag="art_culture" aria-pressed="false">
+      <span aria-hidden="true">🎨</span>Arts &amp; culture
+    </button>
+    
+    <button type="button" class="filter-chip" data-tag="food" aria-pressed="false">
+      <span aria-hidden="true">🍽️</span>Food &amp; drink
+    </button>
+    
+    <button type="button" class="filter-chip" data-tag="indoor" aria-pressed="false">
+      <span aria-hidden="true">🏠</span>Indoor
+    </button>
+    
+    <button type="button" class="filter-chip" data-tag="outdoor" aria-pressed="false">
+      <span aria-hidden="true">🌳</span>Outdoor
+    </button>
+    
+    <button type="button" class="filter-chip clear" id="clear-filters">Clear filters</button>
+  </div>
+  <div class="sr-only" id="filter-status" aria-live="polite"></div>
+  
 
   
 
@@ -677,7 +708,39 @@
     <section class="block">
       <h2>Today in Arlington Heights</h2>
       
-        <p class="empty">Nothing dated for today yet — check back, or see all events.</p>
+        <div class="card-grid">
+        
+        
+        <div class="card" data-tags="art_culture,food,indoor,outdoor">
+          
+          <!-- ROADMAP.md Phase 11 #63: My Weekend is for dated events -
+               offering to add "Find your school district" or a guide's
+               own title to it made no sense, since guide items and the
+               guide index have nothing to do with weekend planning.
+               #90: nor does a school half-day belong in it - it's real
+               and worth knowing, but nobody plans a weekend around one. -->
+          <button type="button" class="tray-star" data-item='{"date": "Sep 19", "date_iso": "2026-09-19T09:00:00", "detail": "Due to the predicted inclement weather, Heritage Fest on September 19 has been CANCELED. We apologize for any inconvenience. Explore the cultural diversity\u2026", "id": "https://www.ahpd.org/event/heritage-fest-2026/", "region_name": "Arlington Heights", "region_url": "https://withintenmiles.com/arlington-heights-60005/", "title": "Heritage Fest", "url": "https://www.ahpd.org/event/heritage-fest-2026/"}' aria-pressed="false" aria-label="Add Heritage Fest to My Weekend">☆</button>
+          
+          
+          
+          <div class="date">Sep 19</div>
+          <h3><a href="https://www.ahpd.org/event/heritage-fest-2026/">Heritage Fest</a></h3>
+          
+          <p class="detail">Due to the predicted inclement weather, Heritage Fest on September 19 has been CANCELED. We apologize for any inconvenience. Explore the cultural diversity…</p>
+          
+          <div class="tag-row">
+            <span class="tag-badge" style="background: var(--hue-purple-bg); color: var(--hue-purple-ink);">🎨 Arts &amp; culture</span><span class="tag-badge" style="background: var(--hue-orange-bg); color: var(--hue-orange-ink);">🍽️ Food &amp; drink</span><span class="tag-badge" style="background: var(--hue-blue-bg); color: var(--hue-blue-ink);">🏠 Indoor</span><span class="tag-badge" style="background: var(--hue-teal-bg); color: var(--hue-teal-ink);">🌳 Outdoor</span>
+          </div>
+          
+          
+          <div class="cal-row">
+            <a href="data:text/calendar;charset=utf-8,BEGIN%3AVCALENDAR%0D%0AVERSION%3A2.0%0D%0APRODID%3A-//Within%20Ten//EN%0D%0ABEGIN%3AVEVENT%0D%0ADTSTART%3A20260919T090000%0D%0ADTEND%3A20260919T100000%0D%0ASUMMARY%3AHeritage%20Fest%0D%0ADESCRIPTION%3ADue%20to%20the%20predicted%20inclement%20weather%5C%2C%20Heritage%20Fest%20on%20September%2019%20has%20been%20CANCELED.%20We%20apologize%20for%20any%20inconvenience.%20Explore%20the%20cultural%20diversity%E2%80%A6%0D%0AURL%3Ahttps%3A//www.ahpd.org/event/heritage-fest-2026/%0D%0AEND%3AVEVENT%0D%0AEND%3AVCALENDAR%0D%0A" download="event.ics">📅 Add to calendar</a>
+            <a href="https://www.google.com/calendar/render?action=TEMPLATE&amp;text=Heritage+Fest&amp;dates=20260919T090000%2F20260919T100000&amp;details=Due+to+the+predicted+inclement+weather%2C+Heritage+Fest+on+September+19+has+been+CANCELED.+We+apologize+for+any+inconvenience.+Explore+the+cultural+diversity%E2%80%A6&amp;location=Arlington+Heights" target="_blank" rel="noopener">Google Calendar</a>
+          </div>
+          
+        </div>
+        
+        </div>
       
     </section>
     
@@ -716,7 +779,7 @@
     <a href="https://withintenmiles.com/sponsor/">sponsor page</a>.
     <a href="https://withintenmiles.com/about/">About</a>.
     <a href="https://withintenmiles.com/trick-or-treat/">Trick-or-treat hours</a>.
-    <br>Generated 2026-09-18 20:54 UTC.
+    <br>Generated 2026-09-19 13:59 UTC.
     
     <br><a href="https://withintenmiles.com/arlington-heights-60005/weekly-summary.txt">Copy this week's summary</a> — a plain-text block ready to paste into a local group.
   </footer>
@@ -739,8 +802,10 @@
 </div>
 
 
+<script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "Event", "name": "Heritage Fest", "url": "https://www.ahpd.org/event/heritage-fest-2026/", "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode", "description": "Due to the predicted inclement weather, Heritage Fest on September 19 has been CANCELED. We apologize for any inconvenience. Explore the cultural diversity…", "startDate": "2026-09-19T09:00:00"}]}</script>
 
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebPage", "name": "Arlington Heights — Within Ten", "url": "https://withintenmiles.com/arlington-heights-60005/today/", "dateModified": "2026-09-18T20:54:45.815755+00:00", "isPartOf": {"@type": "WebSite", "name": "Within Ten", "url": "https://withintenmiles.com/", "publisher": {"@id": "https://withintenmiles.com/about/#organization"}}}</script>
+
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebPage", "name": "Arlington Heights — Within Ten", "url": "https://withintenmiles.com/arlington-heights-60005/today/", "dateModified": "2026-09-19T13:59:40.854781+00:00", "isPartOf": {"@type": "WebSite", "name": "Within Ten", "url": "https://withintenmiles.com/", "publisher": {"@id": "https://withintenmiles.com/about/#organization"}}}</script>
 <script>
 (function () {
   var activeTags = new Set();
