@@ -134,6 +134,17 @@ This weekend in {{ region.name }}
 </td>
 </tr>
 {% endif %}
+{% if event.recurrence_note %}
+<!-- ROADMAP.md item 141: same muted, non-bold treatment as the site -
+     a standing reference, not news, so it gets the "wt-muted" style
+     already used for detail text rather than the bold accent color
+     above. -->
+<tr>
+<td class="wt-muted" style="font-family:Arial, Helvetica, sans-serif; font-size:12px; font-style:italic; color:#766a58;">
+{{ event.recurrence_note }}
+</td>
+</tr>
+{% endif %}
 {% if event.detail %}
 <tr>
 <td class="wt-muted" style="font-family:Arial, Helvetica, sans-serif; font-size:14px; color:#766a58; padding-top:2px;">

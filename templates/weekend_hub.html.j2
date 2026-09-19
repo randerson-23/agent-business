@@ -161,6 +161,9 @@
   .card .date { color: var(--accent-2-text); font-size: 12px; font-weight: 700; letter-spacing: 0.02em; text-transform: uppercase; }
   /* ROADMAP.md Phase 11 #71: same series kicker as region.html.j2. */
   .card .series { color: var(--accent); font-size: 11px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; }
+  /* ROADMAP.md item 141: same muted "every Sunday through Oct 11" note
+     as region.html.j2 - deliberately the opposite weight of .series. */
+  .card .recurrence-note { color: var(--muted); font-size: 12px; font-style: italic; }
   .card h3 { margin: 0; padding-right: 24px; font-size: 16px; font-weight: 600; line-height: 1.35; }
   .tray-star {
     position: absolute;
@@ -275,6 +278,7 @@
         {% if item.series %}<div class="series">{{ item.series }}</div>{% endif %}
         {% if item.date %}<div class="date">{{ item.date }}</div>{% endif %}
         <h3>{% if item.url %}<a href="{{ item.url }}">{{ item.title }}</a>{% else %}{{ item.title }}{% endif %}</h3>
+        {% if item.recurrence_note %}<div class="recurrence-note">{{ item.recurrence_note }}</div>{% endif %}
         {% if item.detail %}<p class="detail">{{ item.detail }}</p>{% endif %}
         {% if item.tag_badges %}
         <div class="tag-row">

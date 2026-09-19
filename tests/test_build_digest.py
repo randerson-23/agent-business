@@ -429,7 +429,7 @@ def test_render_trick_or_treat_page_shows_real_hours_once_posted():
 
 
 def test_prepare_annual_events_returns_none_when_none_configured():
-    assert build_digest.prepare_annual_events({}) is None
+    assert build_digest.prepare_annual_events({}, datetime.now(timezone.utc)) is None
 
 
 def test_prepare_annual_events_builds_full_event_shape():
@@ -445,7 +445,7 @@ def test_prepare_annual_events_builds_full_event_shape():
             }
         ],
     }
-    block = build_digest.prepare_annual_events(region_cfg)
+    block = build_digest.prepare_annual_events(region_cfg, datetime.now(timezone.utc))
     assert block["section"] == "Annual Events"
     event = block["events"][0]
     assert event["title"] == "Oktoberfest"
@@ -463,7 +463,7 @@ def test_prepare_annual_events_infers_tags_when_absent():
             {"title": "Free Fall Festival", "date": "2026-09-19", "detail": "Free family event with crafts."}
         ],
     }
-    block = build_digest.prepare_annual_events(region_cfg)
+    block = build_digest.prepare_annual_events(region_cfg, datetime.now(timezone.utc))
     assert "free" in block["events"][0]["tags"]
 
 
@@ -479,7 +479,7 @@ def test_prepare_annual_events_passes_through_series_when_present():
             }
         ],
     }
-    block = build_digest.prepare_annual_events(region_cfg)
+    block = build_digest.prepare_annual_events(region_cfg, datetime.now(timezone.utc))
     assert block["events"][0]["series"] == "Fall Fest & Oktoberfest Weekend"
 
 
@@ -488,8 +488,121 @@ def test_prepare_annual_events_series_is_none_when_absent():
         "region": {"name": "Mount Prospect"},
         "annual_events": [{"title": "Standalone Event", "date": "2026-09-18", "detail": "A one-off."}],
     }
-    block = build_digest.prepare_annual_events(region_cfg)
+    block = build_digest.prepare_annual_events(region_cfg, datetime.now(timezone.utc))
     assert block["events"][0]["series"] is None
+
+
+def test_expand_recurring_annual_event_produces_weekly_occurrences():
+    # ROADMAP.md item 141: the real case that motivated it - a Sunday
+    # farmers market running mid-June through mid-October.
+    item = {
+        "title": "Farmers Market",
+        "detail": "Local produce and crafts.",
+        "url": "https://x/market",
+        "recurrence": {"starts": "2026-06-14", "ends": "2026-10-11", "weekday": "Sunday", "time": "07:00"},
+    }
+    now = datetime(2026, 6, 1, tzinfo=timezone.utc)
+    events = build_digest.expand_recurring_annual_event(item, "Mount Prospect", now)
+    assert len(events) > 1
+    assert all(e["title"] == "Farmers Market" for e in events)
+    assert all(e["attendable"] is True for e in events)
+    assert all(e["recurring"] is True for e in events)
+    # Every date_iso actually falls on a Sunday at 07:00.
+    for e in events:
+        parsed = datetime.fromisoformat(e["date_iso"])
+        assert parsed.weekday() == 6
+        assert parsed.hour == 7
+    assert events[0]["date_iso"] == "2026-06-14T07:00:00"
+    assert events[0]["recurrence_note"] == "Every Sunday through Oct 11"
+
+
+def test_expand_recurring_annual_event_bounded_to_max_recurrence_days():
+    item = {
+        "title": "Farmers Market",
+        "url": "https://x/market",
+        "recurrence": {"starts": "2026-01-01", "ends": "2026-12-31", "weekday": "Sunday"},
+    }
+    now = datetime(2026, 1, 1, tzinfo=timezone.utc)
+    events = build_digest.expand_recurring_annual_event(item, "Mount Prospect", now)
+    last = datetime.fromisoformat(events[-1]["date_iso"]).date()
+    assert (last - now.date()).days <= build_digest.MAX_RECURRENCE_DAYS
+
+
+def test_expand_recurring_annual_event_skips_occurrences_already_passed():
+    # A season that started weeks before `now` shouldn't surface a Sunday
+    # that's already happened - only today-or-later occurrences appear.
+    item = {
+        "title": "Farmers Market",
+        "url": "https://x/market",
+        "recurrence": {"starts": "2026-06-01", "ends": "2026-10-11", "weekday": "Sunday"},
+    }
+    now = datetime(2026, 9, 1, tzinfo=timezone.utc)  # a Tuesday
+    events = build_digest.expand_recurring_annual_event(item, "Mount Prospect", now)
+    first = datetime.fromisoformat(events[0]["date_iso"]).date()
+    assert first >= now.date()
+
+
+def test_expand_recurring_annual_event_defaults_to_midnight_without_time():
+    item = {
+        "title": "Farmers Market",
+        "url": "https://x/market",
+        "recurrence": {"starts": "2026-06-14", "ends": "2026-06-28", "weekday": "Sunday"},
+    }
+    now = datetime(2026, 6, 1, tzinfo=timezone.utc)
+    events = build_digest.expand_recurring_annual_event(item, "Mount Prospect", now)
+    assert events[0]["date_iso"] == "2026-06-14T00:00:00"
+
+
+def test_expand_recurring_annual_event_fails_soft_on_bad_weekday():
+    item = {"title": "x", "url": "https://x/1", "recurrence": {"starts": "2026-06-14", "ends": "2026-10-11", "weekday": "Someday"}}
+    assert build_digest.expand_recurring_annual_event(item, "Mount Prospect", datetime.now(timezone.utc)) == []
+
+
+def test_expand_recurring_annual_event_fails_soft_on_bad_dates():
+    item = {"title": "x", "url": "https://x/1", "recurrence": {"starts": "not-a-date", "ends": "2026-10-11", "weekday": "Sunday"}}
+    assert build_digest.expand_recurring_annual_event(item, "Mount Prospect", datetime.now(timezone.utc)) == []
+
+
+def test_expand_recurring_annual_event_returns_empty_without_recurrence_block():
+    assert build_digest.expand_recurring_annual_event({"title": "x"}, "Mount Prospect", datetime.now(timezone.utc)) == []
+
+
+def test_prepare_annual_events_expands_a_recurring_entry():
+    region_cfg = {
+        "region": {"name": "Mount Prospect"},
+        "annual_events": [
+            {
+                "title": "Farmers Market",
+                "url": "https://x/market",
+                "recurrence": {"starts": "2026-06-14", "ends": "2026-10-11", "weekday": "Sunday", "time": "07:00"},
+            }
+        ],
+    }
+    now = datetime(2026, 6, 1, tzinfo=timezone.utc)
+    block = build_digest.prepare_annual_events(region_cfg, now)
+    assert len(block["events"]) > 1
+    assert all(e["recurring"] for e in block["events"])
+
+
+def test_prepare_annual_events_mixes_single_dated_and_recurring_entries():
+    region_cfg = {
+        "region": {"name": "Mount Prospect"},
+        "annual_events": [
+            {"title": "Oktoberfest", "date": "2026-09-18", "detail": "German food & live music."},
+            {
+                "title": "Farmers Market",
+                "url": "https://x/market",
+                "recurrence": {"starts": "2026-06-14", "ends": "2026-10-11", "weekday": "Sunday"},
+            },
+        ],
+    }
+    now = datetime(2026, 6, 1, tzinfo=timezone.utc)
+    block = build_digest.prepare_annual_events(region_cfg, now)
+    titles = {e["title"] for e in block["events"]}
+    assert titles == {"Oktoberfest", "Farmers Market"}
+    oktoberfest = next(e for e in block["events"] if e["title"] == "Oktoberfest")
+    assert oktoberfest.get("recurring") is None
+    assert oktoberfest.get("recurrence_note") is None
 
 
 def test_build_business_directory_empty_when_no_history():
@@ -737,6 +850,55 @@ def test_select_editors_pick_falls_back_when_override_url_not_found():
     blocks = [{"section": "Events", "events": [{"title": "Dated Event", "url": "https://x/dated", "date_iso": "2026-08-29T10:00:00", "tags": []}]}]
     pick = build_digest.select_editors_pick(region_cfg, blocks, [])
     assert pick["title"] == "Dated Event"
+
+
+def test_select_editors_pick_skips_a_recurring_event_even_when_soonest():
+    # ROADMAP.md item 141: the soonest-dated tiebreak would otherwise pick
+    # the same standing weekly market every build for its whole season -
+    # the same "reads as automated filler" risk item 141 raised for the
+    # subject line, applied to this page's other headline slot.
+    region_cfg = {"region": {"id": "x"}}
+    blocks = [
+        {
+            "section": "Events",
+            "events": [
+                {"title": "Farmers Market", "url": "https://x/market", "date_iso": "2026-08-29T10:00:00", "tags": [], "recurring": True},
+                {"title": "Later Real Event", "url": "https://x/later", "date_iso": "2026-09-10T10:00:00", "tags": []},
+            ],
+        }
+    ]
+    pick = build_digest.select_editors_pick(region_cfg, blocks, [])
+    assert pick["title"] == "Later Real Event"
+
+
+def test_select_editors_pick_falls_back_to_recurring_when_nothing_else_exists():
+    # A recurring event is still real content - excluded from the
+    # automatic heuristic, not deleted from the page entirely.
+    region_cfg = {"region": {"id": "x"}}
+    blocks = [
+        {
+            "section": "Events",
+            "events": [
+                {"title": "Farmers Market", "url": "https://x/market", "date_iso": "2026-08-29T10:00:00", "tags": [], "recurring": True},
+            ],
+        }
+    ]
+    pick = build_digest.select_editors_pick(region_cfg, blocks, [])
+    assert pick["title"] == "Farmers Market"
+
+
+def test_select_editors_pick_override_can_still_target_a_recurring_event():
+    region_cfg = {"region": {"id": "x", "editors_pick_url": "https://x/market"}}
+    blocks = [
+        {
+            "section": "Events",
+            "events": [
+                {"title": "Farmers Market", "url": "https://x/market", "date_iso": "2026-08-29T10:00:00", "tags": [], "recurring": True},
+            ],
+        }
+    ]
+    pick = build_digest.select_editors_pick(region_cfg, blocks, [])
+    assert pick["title"] == "Farmers Market"
 
 
 def test_select_editors_pick_ignores_items_missing_title_or_url():
@@ -2038,6 +2200,27 @@ def test_build_email_subject_line_handles_a_single_event():
 def test_build_email_subject_line_honest_empty_state():
     region = {"name": "Mount Prospect"}
     subject = build_digest.build_email_subject_line(region, [])
+    assert subject == "This weekend in Mount Prospect: what's coming up"
+
+
+def test_build_email_subject_line_never_names_a_recurring_event():
+    # ROADMAP.md item 141: the explicit design caveat - the same standing
+    # farmers market named in twenty consecutive subject lines is exactly
+    # how a digest starts reading as automated filler. A recurring event
+    # still counts toward the "and N more" tally, just never gets named.
+    region = {"name": "Mount Prospect"}
+    events = [
+        {"title": "Farmers Market", "date": "Sep 20", "url": "https://x/1", "recurring": True},
+        {"title": "Oktoberfest", "date": "Sep 19", "url": "https://x/2"},
+    ]
+    subject = build_digest.build_email_subject_line(region, events)
+    assert subject == "This weekend in Mount Prospect: Oktoberfest, and 1 more"
+
+
+def test_build_email_subject_line_falls_back_when_only_recurring_events_exist():
+    region = {"name": "Mount Prospect"}
+    events = [{"title": "Farmers Market", "date": "Sep 20", "url": "https://x/1", "recurring": True}]
+    subject = build_digest.build_email_subject_line(region, events)
     assert subject == "This weekend in Mount Prospect: what's coming up"
 
 

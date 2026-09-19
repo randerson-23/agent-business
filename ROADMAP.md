@@ -6152,7 +6152,7 @@ not read later as missed runs.
 
 #### P1 (new)
 
-141. **Teach the pipeline what a recurring event is — starting with
+141. ✅ **DONE — Teach the pipeline what a recurring event is — starting with
      farmers markets, which are the clearest case and a category
      competitors already own.** Checked in config: there is no
      recurrence vocabulary anywhere. `annual_events` reads exactly
@@ -6191,6 +6191,53 @@ not read later as missed runs.
      visual treatment ("every Sunday through 11 Oct") that reads as
      reference rather than news. Get that right and the recurrence is an
      asset; get it wrong and it is twenty weeks of repetition.
+
+     ✅ DONE (build loop's own pick, same cycle). Added a minimal
+     `recurrence:` block to `annual_events` (`starts`, `ends`, `weekday`,
+     optional `time`) and `expand_recurring_annual_event()` in
+     `scripts/build_digest.py`, which turns it into concrete dated
+     occurrence dicts at build time - bounded to `MAX_RECURRENCE_DAYS`
+     (120) forward from `now` or `ends`, whichever is sooner, and never
+     includes an occurrence that's already passed. Every occurrence
+     reuses `_build_annual_event_dict()` (factored out of the existing
+     single-`date:` path so both share one code path), so it's just
+     another dated event to every downstream consumer - the weekend
+     view, both email templates, schema.org `Event`, and item 100's
+     `calendar.ics` all picked it up with zero changes of their own.
+
+     Took the "One design consequence" warning literally rather than the
+     literal "Also this week" grouping suggested (that's item 90's
+     *non-attendable* informational bucket - a farmers market is a real
+     event people attend, so reusing it would have misrepresented one).
+     Instead: every occurrence carries `attendable: True` and
+     `recurring: True`; `build_email_subject_line()` and
+     `select_editors_pick()` both now exclude `recurring` items from
+     their headline pick specifically (a recurring item still counts in
+     the subject line's "and N more" tally, and `editors_pick_url` can
+     still target one by hand) - applying the item's own stated
+     principle to *both* places on the site that pick a "headline," not
+     just the one it named. Visual treatment: a muted, italic
+     `recurrence-note` kicker ("Every Sunday through Oct 25") on the
+     card, deliberately the opposite weight of the existing bold/accent
+     `.series` kicker, in both HTML templates and both email templates.
+
+     Shipped with a real, WebSearch-confirmed entry, not just the
+     infrastructure: the **Mount Prospect Farmers Market** (Mount
+     Prospect Lions Club, 2026 season June 7 - Oct 25, Sundays 8am-1pm,
+     West Metra commuter lot) - confirmed against three independent
+     sources (the Village's own calendar, the Lions Club's own site, and
+     the National Farmers Market Directory) before adding it to
+     `config/regions/mount-prospect-60056.yaml`. Verified against a real
+     `build_digest.py` run, not just the tests: the built
+     `this-weekend/index.html` shows exactly one real occurrence
+     (Sep 20) with no duplication across its star-button/title/JSON-LD
+     representations, `calendar.ics` carries six real future Sunday
+     occurrences, and the card's `recurrence-note` renders correctly.
+     14 new tests (recurrence expansion - weekly cadence, the 120-day
+     bound, skipping already-passed occurrences, the midnight default,
+     three fail-soft cases for bad input; subject-line and Editor's Pick
+     exclusion, both directions - excluded from the automatic heuristic,
+     still reachable via explicit override). 399 tests pass.
 
 142. ✅ **DONE — the backlog overstated itself by nearly half, and this file is the
      coordination surface between two loops.** Counting numbered Phase 11
