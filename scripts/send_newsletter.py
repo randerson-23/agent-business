@@ -40,15 +40,31 @@ send precisely. See send-newsletter.yml's cron comment for the other
 half of this: it now fires the night before.
 
 API shape note: the endpoint and field names below could not be verified
-from the build sandbox (outbound HTTP is blocked by the egress proxy), so
-they are stated once, here, rather than scattered - and any API error is
-surfaced verbatim rather than swallowed, so a wrong guess is loud and
-obvious on the first run rather than silent. That applies doubly to
-`publish_date`/`STATUS_SCHEDULED` below: unlike `about_to_send` and its
-confirmation header, which were confirmed against a real API response,
-the scheduling shape is this session's best-documented guess and has
-never been tried against the live API - the first `schedule`-mode run
-is the actual test.
+from the build sandbox by calling the live API directly (outbound HTTP to
+api.buttondown.com is blocked by the egress proxy, confirmed by a failed
+`requests` call and, separately, by `WebFetch` against docs.buttondown.com
+itself returning `EGRESS_BLOCKED`), so they are stated once, here, rather
+than scattered - and any API error is surfaced verbatim rather than
+swallowed, so a wrong guess is loud and obvious on the first run rather
+than silent. `about_to_send` and its confirmation header were confirmed
+against a real API response from an earlier send. `publish_date`/
+`STATUS_SCHEDULED` started as this session's best-documented guess,
+never tried against the live API; cross-checked since against
+Buttondown's own published docs via web search (the one channel that can
+reach real content this sandbox's network can't fetch directly) - their
+documented example is `{"status": "scheduled", "publish_date":
+"2024-12-31T12:00:00Z"}`, a "Z"-suffixed UTC string. The code below now
+converts to UTC and formats to match that exactly, rather than sending
+`next_thursday_morning()`'s own `-05:00`/`-06:00`-offset isoformat()
+string - the real moment was correct either way, but a subtly
+misinterpreted offset would have been the one failure mode this
+docstring's "loud and obvious" claim couldn't actually promise: if
+Buttondown's parser read an unrecognized offset as UTC rather than
+rejecting it, the email would go out six-or-so hours early with no
+error at all. This is still an unexercised guess against the live API in
+one sense - no request has actually been sent - but it is no longer an
+unverified one; the first `schedule`-mode run (2026-09-23) is the actual
+end-to-end test.
 
 ROADMAP.md item 114: item 110's own cron change silently dropped the
 occurrence it was meant to protect the same day it shipped, and nothing
@@ -342,7 +358,18 @@ def post_to_buttondown(
         status = STATUS_SEND
     elif mode == "schedule":
         status = STATUS_SCHEDULED
-        payload["publish_date"] = next_thursday_morning(now or datetime.now(timezone.utc)).isoformat()
+        # Buttondown's own docs example is a "Z"-suffixed UTC string
+        # ("2024-12-31T12:00:00Z"), not an offset like "-05:00" -
+        # next_thursday_morning() returns America/Chicago-zoned (the
+        # correct absolute moment either way, since isoformat() encodes
+        # the offset), but sending our own offset format bets Buttondown's
+        # parser treats "-05:00" as an actual offset rather than silently
+        # reading it as UTC and shipping six hours early - a wrong-time
+        # send that would clear as "success" and never surface the loud
+        # failure this module's docstring is counting on. Converting to
+        # UTC and matching their documented format exactly removes that
+        # bet without changing the real moment being sent.
+        payload["publish_date"] = next_thursday_morning(now or datetime.now(timezone.utc)).astimezone(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
     else:
         status = STATUS_DRAFT
     payload["status"] = status

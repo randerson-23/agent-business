@@ -1,3 +1,4 @@
+import re
 import sys
 from datetime import datetime, timedelta, timezone
 from email.utils import format_datetime
@@ -220,6 +221,30 @@ def test_schedule_mode_sets_scheduled_status_and_a_future_publish_date(monkeypat
     assert send_newsletter.LIVE_SEND_HEADER not in seen["headers"]
     scheduled_for = datetime.fromisoformat(seen["json"]["publish_date"])
     assert scheduled_for > now
+
+
+def test_schedule_mode_publish_date_matches_buttondowns_documented_z_format(monkeypatch):
+    """A real, found mismatch: next_thursday_morning() returns an
+    America/Chicago-zoned datetime, and .isoformat() on that produces an
+    offset string like "2026-09-24T07:00:00-05:00" - but Buttondown's own
+    published API docs (docs.buttondown.com/scheduling-emails-via-the-api,
+    found via web search since the sandbox can't fetch that domain
+    directly) show only a "Z"-suffixed UTC example:
+    "2024-12-31T12:00:00Z". A subtly wrong offset a lenient parser reads
+    as UTC would send hours early with no error at all - the one failure
+    mode this module's "a wrong guess is loud and obvious" docstring
+    claim can't actually promise. Assert the exact documented shape
+    instead of merely a parseable one."""
+    import send_newsletter
+
+    seen = _capture_post(monkeypatch)
+    now = datetime(2026, 9, 17, 15, 0, tzinfo=timezone.utc)  # a Thursday, midday UTC
+    send_newsletter.post_to_buttondown("Subj", "<p>hi</p>", "key", "schedule", now=now)
+    publish_date = seen["json"]["publish_date"]
+    assert publish_date.endswith("Z")
+    assert re.fullmatch(r"\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}Z", publish_date)
+    # And it's still the correct absolute moment, not just correctly shaped.
+    assert datetime.fromisoformat(publish_date) == next_thursday_morning(now).astimezone(timezone.utc)
 
 
 def test_api_errors_are_surfaced_verbatim(monkeypatch):
