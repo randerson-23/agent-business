@@ -6357,6 +6357,45 @@ not read later as missed runs.
      of a `datetime` now that the function's own contract changed. 400
      tests pass; verified against a real `build_digest.py` run.
 
+145. ✅ **DONE (build loop's own pick) — a real RSS spec violation, found
+     by reading the actual generated `docs/feed.xml` after item 141
+     shipped, not by re-reading the diff.** `build_feed_xml()` gave every
+     `<item>` a `<guid isPermaLink="true">` built from nothing but its
+     `url` - fine when every event links a distinct page, wrong the
+     moment two events share one. A recurring event's every occurrence
+     links the same organiser page by design (item 141), so the real
+     build's `docs/feed.xml` had **six items for one farmers market, all
+     six with the byte-identical guid** - confirmed by grepping the
+     actual generated file, not assumed from the code. RSS readers and
+     aggregators use `<guid>` for deduplication; many treat a repeated
+     guid as "the same item again," so at most one of six real, distinct
+     dates would likely ever reach a subscriber. `isPermaLink="true"`
+     compounded it - one URL cannot truthfully be six different dates'
+     "permanent link" at once.
+
+     Not purely new: the same collision already existed for a
+     multi-day annual event sharing one info-page URL across days (item
+     71's `series` - Oktoberfest/Fall Festival, Palatine's own Oktoberfest)
+     - smaller and less visible at two items than at six, but the same
+     bug, confirmed in the same real rebuild after the fix (three
+     distinct guids, one per Palatine Oktoberfest day, where "before"
+     would have been three duplicates).
+
+     Fixed by counting `url` occurrences across the build's own item set
+     first: a `url` that's actually unique keeps the simple
+     `isPermaLink="true"` guid; one shared by two or more items gets the
+     event's `date_iso` folded into the guid and switches to
+     `isPermaLink="false"` - the RFC-documented way to say "stable
+     identifier, not a dereferenceable page of its own," rather than
+     inventing a new convention. `<link>` is untouched either way, so
+     the real organiser URL a reader clicks never changes.
+
+     Two new regression tests (shared-URL items get distinct guids with
+     `isPermaLink="false"`; non-colliding items keep the simple
+     `isPermaLink="true"` guid unchanged) plus re-verified against a
+     real rebuild: 16 feed items, 16 distinct guids, zero collisions.
+     402 tests pass.
+
 ## Working agreements for autonomous iteration
 
 - Cadence is hourly (the platform's durable scheduler has a 1-hour floor;

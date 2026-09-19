@@ -1960,6 +1960,36 @@ def test_build_feed_xml_handles_no_items():
     assert root.find("channel").findall("item") == []
 
 
+def test_build_feed_xml_gives_a_unique_guid_to_events_sharing_one_url():
+    # ROADMAP.md item 145: a real bug found in the live feed.xml after
+    # item 141 shipped - a recurring event's every occurrence links the
+    # same organiser page, and the feed used to emit the byte-identical
+    # <guid isPermaLink="true"> for every one of them. Most RSS readers
+    # dedupe by guid, so only one of several real, distinct occurrences
+    # would ever reach a subscriber.
+    items = [
+        {"title": "Farmers Market", "url": "https://x/market", "detail": "", "date_iso": "2026-09-20", "region_name": "Mount Prospect"},
+        {"title": "Farmers Market", "url": "https://x/market", "detail": "", "date_iso": "2026-09-27", "region_name": "Mount Prospect"},
+    ]
+    xml = build_digest.build_feed_xml(items, datetime.now(timezone.utc))
+    guid_elements = [item.find("guid") for item in ET.fromstring(xml).find("channel").findall("item")]
+    guids = [g.text for g in guid_elements]
+    assert len(set(guids)) == 2, "each occurrence must get a distinct guid"
+    assert all(g.get("isPermaLink") == "false" for g in guid_elements)
+
+
+def test_build_feed_xml_keeps_a_simple_permalink_guid_when_urls_dont_collide():
+    items = [
+        {"title": "Fall Fest", "url": "https://x/1", "detail": "", "date_iso": "2026-09-19", "region_name": "Mount Prospect"},
+        {"title": "Oktoberfest", "url": "https://x/2", "detail": "", "date_iso": "2026-09-20", "region_name": "Mount Prospect"},
+    ]
+    xml = build_digest.build_feed_xml(items, datetime.now(timezone.utc))
+    for item in ET.fromstring(xml).find("channel").findall("item"):
+        guid = item.find("guid")
+        assert guid.get("isPermaLink") == "true"
+        assert guid.text == item.find("link").text
+
+
 def test_render_og_image_is_the_expected_raster_size():
     img = build_digest.render_og_image("Mount Prospect", "What's happening — updated weekly")
     assert img.size == (1200, 630)
