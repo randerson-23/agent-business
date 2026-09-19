@@ -670,7 +670,7 @@ _WEEKDAY_NAMES = {
 MAX_RECURRENCE_DAYS = 120
 
 
-def expand_recurring_annual_event(item: dict, region_name: str, now: datetime) -> list[dict]:
+def expand_recurring_annual_event(item: dict, region_name: str, today: date) -> list[dict]:
     """One `annual_events:` entry with a `recurrence:` block (starts, ends,
     weekday, optional time) expanded into concrete dated occurrence dicts -
     the fix ROADMAP.md item 141 asked for: a farmers market running
@@ -691,10 +691,21 @@ def expand_recurring_annual_event(item: dict, region_name: str, now: datetime) -
     headline-selection logic treats it differently, via `recurrence_note`
     (see _build_annual_event_dict).
 
-    Bounded to MAX_RECURRENCE_DAYS forward from `now` (or `ends`,
+    Bounded to MAX_RECURRENCE_DAYS forward from `today` (or `ends`,
     whichever is sooner) and never includes an occurrence that's already
     passed - same "don't show what's already happened" rule every other
     dated source on this site follows.
+
+    Takes `today` as the region's own local date (region_local_date()'s
+    result), not a bare UTC `now` - confirmed as a real, not theoretical,
+    bug before fixing: a build running Sunday night Central time is
+    already Monday in UTC, and a UTC-dated "today" pushed the very next
+    occurrence a full week past the Sunday that was, locally, still in
+    progress. weekend_dates()/filter_events_by_dates() already take the
+    same local-date precaution for exactly this "near midnight" class of
+    error (see region_local_date()'s own docstring) - this just applies
+    it here too instead of reintroducing the bug region_local_date exists
+    to prevent.
     """
     rec = item.get("recurrence")
     if not rec:
@@ -718,7 +729,6 @@ def expand_recurring_annual_event(item: dict, region_name: str, now: datetime) -
         except ValueError:
             logger.warning("Invalid recurrence time %r for %r - defaulting to midnight", rec.get("time"), title)
 
-    today = now.date()
     window_end = min(ends, today + timedelta(days=MAX_RECURRENCE_DAYS))
     first = starts + timedelta(days=(weekday - starts.weekday()) % 7)
     if first < today:
@@ -761,17 +771,21 @@ def prepare_annual_events(region_cfg: dict, now: datetime) -> dict | None:
     configured, so the section never renders as an empty apology.
 
     An entry with a `recurrence:` block (ROADMAP.md item 141) expands
-    into many dated occurrences via expand_recurring_annual_event();
-    everything else here is unchanged for a plain single-`date:` entry.
+    into many dated occurrences via expand_recurring_annual_event(),
+    using the region's own local date (not the build server's UTC one -
+    see that function's docstring for why this matters) as "today".
+    Everything else here is unchanged for a plain single-`date:` entry.
     """
     raw_items = region_cfg.get("annual_events", [])
     if not raw_items:
         return None
-    region_name = region_cfg["region"]["name"]
+    region = region_cfg["region"]
+    region_name = region["name"]
+    today = region_local_date(region, now)
     events = []
     for item in raw_items:
         if item.get("recurrence"):
-            events += expand_recurring_annual_event(item, region_name, now)
+            events += expand_recurring_annual_event(item, region_name, today)
             continue
         events.append(
             _build_annual_event_dict(

@@ -6322,6 +6322,41 @@ not read later as missed runs.
      for entity clarity, item 99's `Organization` schema, and item 126's
      provenance line.
 
+144. ✅ **DONE (build loop's own pick) — a real timezone bug in item 141's
+     own recurrence code, found the same hour it shipped, not by code
+     review months later.** `expand_recurring_annual_event()` computed
+     its "today" cutoff from `now.date()` - the build server's UTC
+     date - while `region_local_date()` exists elsewhere in this exact
+     file specifically because "today" near midnight depends on the
+     region's own timezone, not the server's. The new recurrence code
+     never called it.
+
+     **Confirmed exploitable with a real crafted input before fixing,
+     not assumed:** a build running Sunday night Central time (10pm CDT)
+     is already Monday 3am in UTC. Fed that exact UTC timestamp into
+     `expand_recurring_annual_event()` for a Sunday-recurring market and
+     the function returned **next** Sunday as the soonest occurrence -
+     skipping the Sunday that was, locally, still in progress, and
+     jumping a full week ahead. Since this loop's own builds run at
+     arbitrary times via push-triggered CI (not just the Monday-morning
+     schedule), the UTC/Central offset (5-6 hours) means a meaningful
+     fraction of the day was affected, not an edge case.
+
+     Fixed by changing `expand_recurring_annual_event()`'s signature
+     from a bare `now: datetime` to a `today: date` the caller supplies
+     already localized, and having `prepare_annual_events()` compute it
+     via the same `region_local_date()` every other date-boundary
+     decision in this file already uses (`weekend_dates()`,
+     `filter_events_by_dates()`) - applying the fix that already exists
+     for this exact class of error instead of reintroducing it.
+
+     One new regression test reproduces the exact scenario found (a
+     Sunday-night-Central build, expressed as its real Monday-UTC
+     timestamp, asserting the still-in-progress Sunday is not skipped),
+     plus updated the existing recurrence tests to pass a `date` instead
+     of a `datetime` now that the function's own contract changed. 400
+     tests pass; verified against a real `build_digest.py` run.
+
 ## Working agreements for autonomous iteration
 
 - Cadence is hourly (the platform's durable scheduler has a 1-hour floor;
