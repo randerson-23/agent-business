@@ -6686,6 +6686,72 @@ anyone builds an argument on it.
      whether that send actually went out before touching this claim
      again.
 
+#### P1 (new)
+
+151. ✅ **DONE — De-risk the 2026-09-23 first `schedule`-mode Buttondown
+     send before it runs, not after.** Item 150 flagged this as "watch,
+     don't act" since the send is still four days out. But the backlog
+     was otherwise empty this cycle (items 148/149/150 all shipped,
+     nothing new from the research loop yet), so rather than idle, this
+     cycle used the time to re-examine the one already-flagged risk still
+     sitting ahead of a real deadline — proactive, not reactive, since
+     the whole point of noticing a risk early is being able to act on it
+     before it fires.
+
+     `send_newsletter.py`'s own docstring already named the exposure:
+     `publish_date`'s exact shape "has never been tried against the live
+     API." The sandbox can't call `api.buttondown.com` directly (egress
+     blocked, same as every fetcher source) or even fetch
+     `docs.buttondown.com` with `WebFetch` (confirmed:
+     `EGRESS_BLOCKED`) - but WebSearch can still reach real page content
+     through search results, the same channel item 32's D57 calendar and
+     item 25's Northwest Neighbor newsletter were found through. Searched
+     Buttondown's own published docs for the exact request shape and
+     found a real, concrete mismatch: their documented example for
+     `scheduling-emails-via-the-api` is
+     `{"status": "scheduled", "publish_date": "2024-12-31T12:00:00Z"}` -
+     a "Z"-suffixed UTC string. The code was instead sending whatever
+     `next_thursday_morning()`'s own `.isoformat()` produced - confirmed
+     in a real Python REPL call: `"2026-09-24T07:00:00-05:00"`, an
+     America/Chicago offset, not UTC.
+
+     The failure mode this created is worse than a clean error: this
+     module's whole docstring premise is "a wrong guess is loud and
+     obvious," but a lenient API parser that reads an unrecognized offset
+     as if it were UTC wouldn't error at all - it would silently schedule
+     the send six-ish hours early, defeating the entire point of item 110
+     (hitting the researched Thursday-07:00-Central slot) without
+     tripping any alarm.
+
+     Fixed by converting to UTC and formatting to match Buttondown's
+     documented shape exactly:
+     `next_thursday_morning(now).astimezone(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")`
+     - same absolute moment either way (confirmed:
+     `2026-09-24T07:00:00-05:00` Chicago = `2026-09-24T12:00:00Z`), just
+     no longer betting on how permissively Buttondown parses an offset
+     it doesn't document.
+
+     Verified: a new test,
+     `test_schedule_mode_publish_date_matches_buttondowns_documented_z_format`,
+     asserts the exact `\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}Z` shape *and*
+     that it's still the correct absolute moment (not just correctly
+     formatted) by comparing against `next_thursday_morning(now)`
+     converted to UTC independently. `python -m pytest tests/ -q`: 407
+     passed (was 406) - the existing schedule-mode test still passes
+     unchanged since Python 3.11's `datetime.fromisoformat()` accepts a
+     `Z` suffix natively. `python scripts/build_digest.py` still
+     succeeds (this script doesn't touch the build pipeline).
+
+     Not resolved by this, and correctly so: this is now a
+     docs-verified guess, not a live-API-verified one - no request has
+     actually been sent. The docstring was updated to say exactly that,
+     honestly, rather than overclaiming confidence a documentation cross-
+     check can't fully deliver. The 2026-09-23 run is still the real
+     test; a future cycle at or after that date should check
+     `data/send_history.json` for the second entry and confirm the
+     timestamp lands at the intended Thursday-07:00-Central slot, not
+     shifted.
+
 ## Working agreements for autonomous iteration
 
 - Cadence is hourly (the platform's durable scheduler has a 1-hour floor;
