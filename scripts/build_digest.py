@@ -1567,24 +1567,38 @@ def render_hub_page(
     )
 
 
-def render_weekend_hub_page(
-    region_sections: list[dict], date_range: str, now: datetime, analytics: dict | None = None
+def render_merged_hub_page(
+    region_sections: list[dict],
+    now: datetime,
+    analytics: dict | None = None,
+    *,
+    slug: str = "this-weekend",
+    heading: str = "This Weekend Near You",
+    subheading: str,
+    meta_description: str,
+    empty_message: str,
 ) -> str:
-    """The hub-level 'This weekend near you' page: weekend events merged
-    across every region, grouped by region so it's still clear where each
-    one is. Deferred out of the per-region date-scoped-views slice to keep
-    that one shippable; picked up here as the natural follow-up.
+    """A hub-level page merging one date/price-scoped view across every
+    region, grouped by region so it's still clear where each one is.
+    Originally built for /this-weekend only (ROADMAP.md Phase 11 #26);
+    ROADMAP.md item 149 generalized it to also drive /free and /today,
+    the same code path with a different predicate feeding
+    `region_sections` - see the three call sites in main().
     """
     env = get_template_env()
-    template = env.get_template("weekend_hub.html.j2")
+    template = env.get_template("merged_hub.html.j2")
     return template.render(
         region_sections=region_sections,
-        date_range=date_range,
+        heading=heading,
+        subheading=subheading,
+        page_title=heading,
+        meta_description=meta_description,
         generated_at=now.strftime("%Y-%m-%d %H:%M UTC"),
-        canonical_url=SITE_BASE_URL + "this-weekend/",
+        canonical_url=SITE_BASE_URL + slug + "/",
         hub_url=SITE_BASE_URL,
         analytics=analytics,
         og_image_url=SITE_BASE_URL + "og/default.png",
+        empty_message=empty_message,
     )
 
 
@@ -1683,6 +1697,8 @@ def collect_sitemap_urls(region_summaries: list[dict]) -> list[str]:
     urls = [
         SITE_BASE_URL,
         SITE_BASE_URL + "this-weekend/",
+        SITE_BASE_URL + "today/",
+        SITE_BASE_URL + "free/",
         SITE_BASE_URL + "sponsor/",
         SITE_BASE_URL + "about/",
         SITE_BASE_URL + "trick-or-treat/",
@@ -1813,6 +1829,16 @@ def build_llms_txt(region_summaries: list[dict]) -> str:
     for r in region_summaries:
         base = SITE_BASE_URL + r["path"]
         lines.append(f"- [{r['name']} — this weekend]({base}this-weekend/)")
+    # ROADMAP.md item 149: same GEO discoverability as the "This weekend"
+    # section above, for the two hub-level views it added.
+    lines += ["", "## Today", f"- [Across every region]({SITE_BASE_URL}today/)"]
+    for r in region_summaries:
+        base = SITE_BASE_URL + r["path"]
+        lines.append(f"- [{r['name']} — today]({base}today/)")
+    lines += ["", "## Free things to do", f"- [Across every region]({SITE_BASE_URL}free/)"]
+    for r in region_summaries:
+        base = SITE_BASE_URL + r["path"]
+        lines.append(f"- [{r['name']} — free]({base}free/)")
     guide_lines = [
         f"- [{g['title']} — {r['name']}]({SITE_BASE_URL}{r['path']}guides/{g['slug']}/)"
         for r in region_summaries
@@ -2243,6 +2269,15 @@ def main() -> None:
     region_summaries = []
     hub_weekend_sections = []
     hub_weekend_date_range = None
+    hub_today_label = None
+    # ROADMAP.md item 149: same merge-across-regions pattern as
+    # hub_weekend_sections above, extended to /free and /today at the hub
+    # level - populated inside the per-region `views` loop below, from the
+    # exact same filtered item lists each region's own /free and /today
+    # pages already render, so there's no separate filtering logic to
+    # drift out of sync with the per-region views.
+    hub_free_sections = []
+    hub_today_sections = []
     feed_items = []
     trick_or_treat_entries = []
     combined_email_sections = []
@@ -2321,6 +2356,8 @@ def main() -> None:
         weekend_date_range = format_date_range(friday, sunday)
         if hub_weekend_date_range is None:
             hub_weekend_date_range = weekend_date_range  # regions share a timezone today
+        if hub_today_label is None:
+            hub_today_label = local_today.strftime("%A, %B %-d")  # regions share a timezone today
 
         weekly_summary_txt = build_weekly_summary_txt(
             region, weekend_events, evergreen, SITE_BASE_URL + region_id + "/", weekend_date_range
@@ -2410,6 +2447,18 @@ def main() -> None:
             view_dir.mkdir(parents=True, exist_ok=True)
             (view_dir / "index.html").write_text(view_html, encoding="utf-8")
             logger.info("Wrote %s (%d item%s)", view_dir / "index.html", len(items), "" if len(items) == 1 else "s")
+
+            # ROADMAP.md item 149: same non-empty gate as hub_weekend_sections
+            # (a region with nothing tagged free today shouldn't render an
+            # empty section on the hub page).
+            if slug == "today" and items:
+                hub_today_sections.append(
+                    {"region_name": region["name"], "region_url": SITE_BASE_URL + region_id + "/", "events": items}
+                )
+            elif slug == "free" and items:
+                hub_free_sections.append(
+                    {"region_name": region["name"], "region_url": SITE_BASE_URL + region_id + "/", "events": items}
+                )
 
         if guides:
             for guide in guides:
@@ -2512,16 +2561,61 @@ def main() -> None:
         "event_count": total_events,
         "weekend_count": sum(len(s["events"]) for s in hub_weekend_sections),
         "weekend_date_range": hub_weekend_date_range or "",
+        "free_count": sum(len(s["events"]) for s in hub_free_sections),
+        "today_count": sum(len(s["events"]) for s in hub_today_sections),
     }
     hub_html = render_hub_page(regions, region_summaries, now, newsletter, analytics, stats=hub_stats, contact_email=contact_email)
     (OUTPUT_DIR / "index.html").write_text(hub_html, encoding="utf-8")
     logger.info("Wrote %s", OUTPUT_DIR / "index.html")
 
-    weekend_hub_html = render_weekend_hub_page(hub_weekend_sections, hub_weekend_date_range or "", now, analytics)
+    weekend_hub_html = render_merged_hub_page(
+        hub_weekend_sections,
+        now,
+        analytics,
+        slug="this-weekend",
+        heading="This Weekend Near You",
+        subheading=f"{hub_weekend_date_range or ''} — everything with a known date, across every region.",
+        meta_description=f"Everything with a known date this weekend ({hub_weekend_date_range or ''}), across every region — one page for planning a trip nearby.",
+        empty_message="Nothing dated for this weekend yet across any region — check back, or browse a region's full page.",
+    )
     weekend_hub_dir = OUTPUT_DIR / "this-weekend"
     weekend_hub_dir.mkdir(parents=True, exist_ok=True)
     (weekend_hub_dir / "index.html").write_text(weekend_hub_html, encoding="utf-8")
     logger.info("Wrote %s (%d region section%s)", weekend_hub_dir / "index.html", len(hub_weekend_sections), "" if len(hub_weekend_sections) == 1 else "s")
+
+    # ROADMAP.md item 149: same hub-level merge, /free and /today - the
+    # per-region /free and /today views already exist (the `views` loop
+    # above); this just collects them across regions the same way
+    # hub_weekend_sections does for /this-weekend.
+    today_hub_html = render_merged_hub_page(
+        hub_today_sections,
+        now,
+        analytics,
+        slug="today",
+        heading="Happening Today Near You",
+        subheading=f"{hub_today_label or ''} — everything happening today, across every region.",
+        meta_description=f"Everything happening today ({hub_today_label or ''}), across every region.",
+        empty_message="Nothing dated for today yet across any region — check back, or browse a region's full page.",
+    )
+    today_hub_dir = OUTPUT_DIR / "today"
+    today_hub_dir.mkdir(parents=True, exist_ok=True)
+    (today_hub_dir / "index.html").write_text(today_hub_html, encoding="utf-8")
+    logger.info("Wrote %s (%d region section%s)", today_hub_dir / "index.html", len(hub_today_sections), "" if len(hub_today_sections) == 1 else "s")
+
+    free_hub_html = render_merged_hub_page(
+        hub_free_sections,
+        now,
+        analytics,
+        slug="free",
+        heading="Free Things To Do Near You",
+        subheading="Everything tagged free, any date, across every region.",
+        meta_description="Everything tagged free, any date, across every region — one page for planning a no-cost outing nearby.",
+        empty_message="Nothing tagged free yet across any region — check back, or browse a region's full page.",
+    )
+    free_hub_dir = OUTPUT_DIR / "free"
+    free_hub_dir.mkdir(parents=True, exist_ok=True)
+    (free_hub_dir / "index.html").write_text(free_hub_html, encoding="utf-8")
+    logger.info("Wrote %s (%d region section%s)", free_hub_dir / "index.html", len(hub_free_sections), "" if len(hub_free_sections) == 1 else "s")
 
     # ROADMAP.md Phase 11 #105: the actual file scripts/send_newsletter.py
     # reads and mails - every region in one issue, since Buttondown's

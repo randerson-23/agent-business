@@ -1692,6 +1692,24 @@ def test_render_hub_page_never_embeds_event_json_ld():
     assert '"@type": "Event"' not in html
 
 
+def _render_weekend_hub_page(sections, date_range, now, analytics=None):
+    """The /this-weekend hub call site's exact kwargs (ROADMAP.md item
+    149 generalized render_merged_hub_page to also drive /today and
+    /free) - kept as one helper so these tests read the same as before
+    the signature change.
+    """
+    return build_digest.render_merged_hub_page(
+        sections,
+        now,
+        analytics,
+        slug="this-weekend",
+        heading="This Weekend Near You",
+        subheading=f"{date_range} — everything with a known date, across every region.",
+        meta_description=f"Everything with a known date this weekend ({date_range}), across every region — one page for planning a trip nearby.",
+        empty_message="Nothing dated for this weekend yet across any region — check back, or browse a region's full page.",
+    )
+
+
 def test_render_weekend_hub_page_never_embeds_event_json_ld():
     # Same guard as above, for the other hub-level page - the merged
     # "This weekend near you" view spans every region, so it isn't any
@@ -1703,8 +1721,58 @@ def test_render_weekend_hub_page_never_embeds_event_json_ld():
             "events": [{"title": "Fishing Derby", "url": "https://x/", "detail": "", "date": "Sep 19", "tags": []}],
         }
     ]
-    html = build_digest.render_weekend_hub_page(sections, "Sep 19–20", datetime.now(timezone.utc))
+    html = _render_weekend_hub_page(sections, "Sep 19–20", datetime.now(timezone.utc))
     assert '"@type": "Event"' not in html
+
+
+def test_render_merged_hub_page_supports_a_different_slug_and_copy():
+    # ROADMAP.md item 149: render_merged_hub_page (formerly
+    # render_weekend_hub_page) now also drives /today and /free at the
+    # hub level - the same template, a different heading/canonical/slug.
+    sections = [
+        {
+            "region_name": "Palatine",
+            "region_url": f"{build_digest.SITE_BASE_URL}palatine-60067/",
+            "events": [{"title": "Free Concert in the Park", "url": "https://x/", "detail": "", "date": None, "tags": []}],
+        }
+    ]
+    html = build_digest.render_merged_hub_page(
+        sections,
+        datetime.now(timezone.utc),
+        slug="free",
+        heading="Free Things To Do Near You",
+        subheading="Everything tagged free, any date, across every region.",
+        meta_description="Everything tagged free, any date, across every region.",
+        empty_message="Nothing tagged free yet across any region.",
+    )
+    assert "<h1>Free Things To Do Near You</h1>" in html
+    assert "Free Concert in the Park" in html
+    assert f'rel="canonical" href="{build_digest.SITE_BASE_URL}free/"' in html
+
+
+def test_render_merged_hub_page_shows_its_own_empty_message():
+    html = build_digest.render_merged_hub_page(
+        [],
+        datetime.now(timezone.utc),
+        slug="today",
+        heading="Happening Today Near You",
+        subheading="Everything happening today, across every region.",
+        meta_description="Everything happening today, across every region.",
+        empty_message="Nothing dated for today yet across any region.",
+    )
+    assert "Nothing dated for today yet across any region." in html
+
+
+def test_render_hub_page_links_to_the_today_and_free_hub_views():
+    # ROADMAP.md item 149: the hub-level /today and /free pages exist but
+    # are worthless if nothing on the hub page links to them.
+    stats = {"region_count": 1, "event_count": 3, "weekend_count": 2, "weekend_date_range": "Sep 19-20", "today_count": 1, "free_count": 2}
+    summaries = [{**REGION, "event_count": 1, "path": "mount-prospect-60056/"}]
+    html = build_digest.render_hub_page([], summaries, datetime.now(timezone.utc), stats=stats)
+    assert 'href="today/"' in html
+    assert 'href="free/"' in html
+    assert "Today (1)" in html
+    assert "Free things to do (2)" in html
 
 
 def test_render_hub_page_omits_newsletter_when_not_configured():
@@ -1734,7 +1802,7 @@ def test_render_weekend_hub_page_groups_events_by_region():
             "events": [{"title": "Fishing Derby", "url": "https://x/", "detail": "", "date": "Sep 19", "tags": []}],
         }
     ]
-    html = build_digest.render_weekend_hub_page(sections, "Sep 19–20", datetime.now(timezone.utc))
+    html = _render_weekend_hub_page(sections, "Sep 19–20", datetime.now(timezone.utc))
     assert "Mount Prospect" in html
     assert "Fishing Derby" in html
     assert "Sep 19–20" in html
@@ -1742,7 +1810,7 @@ def test_render_weekend_hub_page_groups_events_by_region():
 
 
 def test_render_weekend_hub_page_handles_no_events_anywhere():
-    html = build_digest.render_weekend_hub_page([], "Sep 19–20", datetime.now(timezone.utc))
+    html = _render_weekend_hub_page([], "Sep 19–20", datetime.now(timezone.utc))
     assert "Nothing dated for this weekend yet across any region" in html
 
 
@@ -1776,7 +1844,7 @@ def test_render_region_page_tray_uses_safe_dom_methods_not_innerhtml_concat():
 
 
 def test_render_weekend_hub_page_tray_uses_safe_dom_methods_not_innerhtml_concat():
-    html = build_digest.render_weekend_hub_page([], "Sep 19–20", datetime.now(timezone.utc))
+    html = _render_weekend_hub_page([], "Sep 19–20", datetime.now(timezone.utc))
     _assert_tray_render_uses_safe_dom_methods(html)
 
 
@@ -1900,6 +1968,16 @@ def test_build_sitemap_xml_includes_weekend_hub_url():
     summaries = [{**REGION, "event_count": 1, "path": "mount-prospect-60056/"}]
     xml = build_digest.build_sitemap_xml(summaries, datetime.now(timezone.utc))
     assert f"<loc>{build_digest.SITE_BASE_URL}this-weekend/</loc>" in xml
+
+
+def test_build_sitemap_xml_includes_today_and_free_hub_urls():
+    # ROADMAP.md item 149: the two new hub-level merged views need to be
+    # discoverable the same way /this-weekend already is, or a search
+    # engine never learns they exist.
+    summaries = [{**REGION, "event_count": 1, "path": "mount-prospect-60056/"}]
+    xml = build_digest.build_sitemap_xml(summaries, datetime.now(timezone.utc))
+    assert f"<loc>{build_digest.SITE_BASE_URL}today/</loc>" in xml
+    assert f"<loc>{build_digest.SITE_BASE_URL}free/</loc>" in xml
 
 
 def test_build_sitemap_xml_includes_sponsor_url():
@@ -2055,6 +2133,12 @@ def test_build_llms_txt_lists_regions_and_weekend_links():
     assert result.startswith(f"# {build_digest.SITE_NAME}")
     assert f"[Mount Prospect (60056)]({build_digest.SITE_BASE_URL}mount-prospect-60056/)" in result
     assert f"[Mount Prospect — this weekend]({build_digest.SITE_BASE_URL}mount-prospect-60056/this-weekend/)" in result
+    # ROADMAP.md item 149: same GEO discoverability for the two hub-level
+    # views it added.
+    assert f"[Across every region]({build_digest.SITE_BASE_URL}today/)" in result
+    assert f"[Mount Prospect — today]({build_digest.SITE_BASE_URL}mount-prospect-60056/today/)" in result
+    assert f"[Across every region]({build_digest.SITE_BASE_URL}free/)" in result
+    assert f"[Mount Prospect — free]({build_digest.SITE_BASE_URL}mount-prospect-60056/free/)" in result
     assert "## Sponsorship" in result
     assert f"## About\n- [Who publishes this, and why]({build_digest.SITE_BASE_URL}about/)" in result
 
