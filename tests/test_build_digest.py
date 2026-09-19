@@ -501,8 +501,8 @@ def test_expand_recurring_annual_event_produces_weekly_occurrences():
         "url": "https://x/market",
         "recurrence": {"starts": "2026-06-14", "ends": "2026-10-11", "weekday": "Sunday", "time": "07:00"},
     }
-    now = datetime(2026, 6, 1, tzinfo=timezone.utc)
-    events = build_digest.expand_recurring_annual_event(item, "Mount Prospect", now)
+    today = date(2026, 6, 1)
+    events = build_digest.expand_recurring_annual_event(item, "Mount Prospect", today)
     assert len(events) > 1
     assert all(e["title"] == "Farmers Market" for e in events)
     assert all(e["attendable"] is True for e in events)
@@ -522,24 +522,24 @@ def test_expand_recurring_annual_event_bounded_to_max_recurrence_days():
         "url": "https://x/market",
         "recurrence": {"starts": "2026-01-01", "ends": "2026-12-31", "weekday": "Sunday"},
     }
-    now = datetime(2026, 1, 1, tzinfo=timezone.utc)
-    events = build_digest.expand_recurring_annual_event(item, "Mount Prospect", now)
+    today = date(2026, 1, 1)
+    events = build_digest.expand_recurring_annual_event(item, "Mount Prospect", today)
     last = datetime.fromisoformat(events[-1]["date_iso"]).date()
-    assert (last - now.date()).days <= build_digest.MAX_RECURRENCE_DAYS
+    assert (last - today).days <= build_digest.MAX_RECURRENCE_DAYS
 
 
 def test_expand_recurring_annual_event_skips_occurrences_already_passed():
-    # A season that started weeks before `now` shouldn't surface a Sunday
-    # that's already happened - only today-or-later occurrences appear.
+    # A season that started weeks before `today` shouldn't surface a
+    # Sunday that's already happened - only today-or-later occurrences.
     item = {
         "title": "Farmers Market",
         "url": "https://x/market",
         "recurrence": {"starts": "2026-06-01", "ends": "2026-10-11", "weekday": "Sunday"},
     }
-    now = datetime(2026, 9, 1, tzinfo=timezone.utc)  # a Tuesday
-    events = build_digest.expand_recurring_annual_event(item, "Mount Prospect", now)
+    today = date(2026, 9, 1)  # a Tuesday
+    events = build_digest.expand_recurring_annual_event(item, "Mount Prospect", today)
     first = datetime.fromisoformat(events[0]["date_iso"]).date()
-    assert first >= now.date()
+    assert first >= today
 
 
 def test_expand_recurring_annual_event_defaults_to_midnight_without_time():
@@ -548,23 +548,47 @@ def test_expand_recurring_annual_event_defaults_to_midnight_without_time():
         "url": "https://x/market",
         "recurrence": {"starts": "2026-06-14", "ends": "2026-06-28", "weekday": "Sunday"},
     }
-    now = datetime(2026, 6, 1, tzinfo=timezone.utc)
-    events = build_digest.expand_recurring_annual_event(item, "Mount Prospect", now)
+    today = date(2026, 6, 1)
+    events = build_digest.expand_recurring_annual_event(item, "Mount Prospect", today)
     assert events[0]["date_iso"] == "2026-06-14T00:00:00"
 
 
 def test_expand_recurring_annual_event_fails_soft_on_bad_weekday():
     item = {"title": "x", "url": "https://x/1", "recurrence": {"starts": "2026-06-14", "ends": "2026-10-11", "weekday": "Someday"}}
-    assert build_digest.expand_recurring_annual_event(item, "Mount Prospect", datetime.now(timezone.utc)) == []
+    assert build_digest.expand_recurring_annual_event(item, "Mount Prospect", date(2026, 6, 1)) == []
 
 
 def test_expand_recurring_annual_event_fails_soft_on_bad_dates():
     item = {"title": "x", "url": "https://x/1", "recurrence": {"starts": "not-a-date", "ends": "2026-10-11", "weekday": "Sunday"}}
-    assert build_digest.expand_recurring_annual_event(item, "Mount Prospect", datetime.now(timezone.utc)) == []
+    assert build_digest.expand_recurring_annual_event(item, "Mount Prospect", date(2026, 6, 1)) == []
 
 
 def test_expand_recurring_annual_event_returns_empty_without_recurrence_block():
-    assert build_digest.expand_recurring_annual_event({"title": "x"}, "Mount Prospect", datetime.now(timezone.utc)) == []
+    assert build_digest.expand_recurring_annual_event({"title": "x"}, "Mount Prospect", date(2026, 6, 1)) == []
+
+
+def test_prepare_annual_events_uses_the_regions_local_date_not_utc():
+    # A real bug found before fixing, not a theoretical one: a build
+    # running Sunday night Central time is already Monday in UTC. Passing
+    # a bare UTC `now` into the recurrence window made the very next
+    # occurrence skip the Sunday that was, locally, still in progress -
+    # jumping a full week ahead instead of showing today's market.
+    region_cfg = {
+        "region": {"name": "Mount Prospect", "timezone": "America/Chicago"},
+        "annual_events": [
+            {
+                "title": "Farmers Market",
+                "url": "https://x/market",
+                "recurrence": {"starts": "2026-06-07", "ends": "2026-10-25", "weekday": "Sunday", "time": "08:00"},
+            }
+        ],
+    }
+    # Sept 20, 2026 is a Sunday. 22:00 Central (CDT, UTC-5) on that Sunday
+    # is 03:00 UTC the following Monday - still Sunday locally.
+    now_utc = datetime(2026, 9, 21, 3, 0, tzinfo=timezone.utc)
+    block = build_digest.prepare_annual_events(region_cfg, now_utc)
+    first = datetime.fromisoformat(block["events"][0]["date_iso"]).date()
+    assert first == date(2026, 9, 20)
 
 
 def test_prepare_annual_events_expands_a_recurring_entry():
