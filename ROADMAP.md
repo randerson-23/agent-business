@@ -6515,13 +6515,13 @@ anyone builds an argument on it.
 
 #### P2 (new)
 
-149. **Publish `/free` and `/today` at the hub, not only per region.**
-     Checked against the live build: the hub carries exactly one merged
+149. ✅ **DONE — Publish `/free` and `/today` at the hub, not only per region.**
+     Checked against the live build: the hub carried exactly one merged
      cross-region view, `this-weekend/`, plus `about/`, `sponsor/` and
-     the new `trick-or-treat/`. Every region has its own `free/` and
-     `today/`; **neither exists at the hub.**
+     the new `trick-or-treat/`. Every region had its own `free/` and
+     `today/`; neither existed at the hub.
 
-     That is a gap in two directions at once. For a reader, the current
+     That was a gap in two directions at once. For a reader, the current
      UX research is that people want multiple entry points by intent —
      browse a list or filter first — and "free things to do" is one of
      the strongest intents this audience has; the hub already proves the
@@ -6531,15 +6531,58 @@ anyone builds an argument on it.
      was that URL-addressable views beat client-side-only filters
      precisely because they can rank.
 
-     The merge logic exists and is proven — `docs/this-weekend/` already
-     does exactly this across four regions. Extending it to `free` and
-     `today` is the same code path with a different predicate, and both
-     pages should carry the region label on each card so a reader can
-     tell whose free event it is. Keep the hub's first screen disciplined
-     while doing it: the research is consistent that one primary action
-     per screen outperforms, and three merged views plus four region
-     tiles is already the upper bound of what should be above the fold on
-     a phone.
+     The merge logic existed and was proven — `docs/this-weekend/`
+     already did exactly this across four regions. `render_weekend_hub_page()`
+     was generalized into `render_merged_hub_page()` (heading, subheading,
+     meta description, empty message and canonical slug now parameters
+     instead of hardcoded weekend copy), and its template renamed
+     `weekend_hub.html.j2` → `merged_hub.html.j2` to match — one template
+     now drives all three hub views. Inside the existing per-region
+     `views` loop (already computing each region's own `/today` and
+     `/free` item lists), a non-empty region's `today`/`free` items are
+     now also collected into `hub_today_sections`/`hub_free_sections`,
+     the exact same non-empty gate `hub_weekend_sections` already used —
+     so there's no separate filtering logic to drift out of sync with the
+     per-region views, per the item's own "same code path with a
+     different predicate" framing. Each card already carries
+     `region_name`/`region_url` since `merged_hub.html.j2`'s card markup
+     was untouched — the region label was already there for
+     `this-weekend`.
+
+     `/today/index.html` and `/free/index.html` now build at the hub
+     root, added to `collect_sitemap_urls()` and `build_llms_txt()`
+     (mirroring the existing `## This weekend` GEO section with matching
+     `## Today`/`## Free things to do` sections) alongside the existing
+     `this-weekend/` entries. The hub landing page keeps the "first
+     screen disciplined" requirement literally: rather than two more
+     bento tiles (which the item itself called out as exceeding the
+     phone above-the-fold budget), `/today` and `/free` are linked from a
+     single lightweight pill-link row under the bento grid, each showing
+     a live count (`stats.today_count`/`stats.free_count`, computed the
+     same way `stats.weekend_count` already was).
+
+     Verified against the real local build (network-fetch-blocked
+     sandbox, so against whatever the four regions' config/cached content
+     produce): `python scripts/build_digest.py` wrote
+     `docs/today/index.html` (3 region sections) and `docs/free/index.html`
+     (4 region sections); inspected both directly — correct
+     `<title>`/`<h1>`/canonical per page, region `<h2>` headings present,
+     events rendered under the right region. Confirmed `docs/sitemap.xml`
+     gained both `<loc>` entries and `docs/llms.txt` gained both new
+     sections with real per-region links. Confirmed the hub's own
+     `docs/index.html` renders `<div class="hub-secondary-links">` with
+     working `today/`/`free/` links and real counts (3 and 13 in this
+     build). `python -m pytest tests/ -q`: 406 passed (up from 402) —
+     added `test_render_merged_hub_page_supports_a_different_slug_and_copy`,
+     `test_render_merged_hub_page_shows_its_own_empty_message`,
+     `test_build_sitemap_xml_includes_today_and_free_hub_urls`,
+     `test_render_hub_page_links_to_the_today_and_free_hub_views`, plus
+     assertions extended in the existing llms.txt regions/weekend-links
+     test; the four `render_weekend_hub_page` call sites in the existing
+     test suite were updated to a small helper wrapping
+     `render_merged_hub_page` with the production `/this-weekend` kwargs,
+     so they keep testing the exact same behavior under the new,
+     generalized signature.
 
 #### P3 (new)
 

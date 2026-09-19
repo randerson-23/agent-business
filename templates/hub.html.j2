@@ -215,6 +215,20 @@
   }
   .bento-weekend h2 { margin: 2px 0 0; font-size: 24px; font-weight: 600; }
   .bento-weekend p { margin: 0; color: var(--accent); font-weight: 700; font-size: 14.5px; }
+  /* ROADMAP.md item 149: deliberately plain pill links, not bento tiles -
+     see the comment at the markup for why these two stay lightweight. */
+  .hub-secondary-links { display: flex; gap: 12px; flex-wrap: wrap; margin: -6px 0 18px; }
+  .hub-secondary-links a {
+    font-size: 13.5px;
+    font-weight: 600;
+    color: var(--accent);
+    text-decoration: none;
+    background: var(--card);
+    border-radius: 999px;
+    padding: 7px 14px;
+    box-shadow: var(--shadow-sm);
+  }
+  .hub-secondary-links a:hover { text-decoration: underline; }
   .bento-stat { align-items: center; text-align: center; background: var(--accent-soft); color: #fff; }
   .bento-stat-number { font-family: 'Fraunces', Georgia, serif; font-size: 40px; font-weight: 600; line-height: 1; }
   /* Opaque white, not rgba(255,255,255,.9) - the translucent version was
@@ -354,6 +368,16 @@
       <span class="bento-stat-number">{{ stats.region_count }}</span>
       <span class="bento-stat-label">town{{ 's' if stats.region_count != 1 else '' }} · {{ stats.event_count }} live update{{ 's' if stats.event_count != 1 else '' }} this week</span>
     </div>
+  </div>
+
+  <!-- ROADMAP.md item 149: the hub-level /today and /free merged views -
+       a lightweight text row rather than two more bento tiles, to keep
+       the above-the-fold weight the research pass called out (three
+       merged views + four region tiles is already the upper bound for a
+       phone screen without these becoming full tiles too). -->
+  <div class="hub-secondary-links">
+    <a href="today/">📍 Today ({{ stats.today_count }}) &rarr;</a>
+    <a href="free/">🎟️ Free things to do ({{ stats.free_count }}) &rarr;</a>
   </div>
 
   <!-- A separate flex-wrap grid, not part of .bento-grid above: with CSS
