@@ -16,7 +16,13 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "scripts"))
 ROADMAP_PATH = Path(__file__).resolve().parents[1] / "ROADMAP.md"
 
 _ITEM_HEADING = re.compile(r"^(\d+)\.\s")
-_BODY_DONE_MARKER = re.compile(r"✅\s*\*{0,2}DONE", re.IGNORECASE)
+# ROADMAP.md item 147: this pattern only matched the word "DONE" and
+# missed a real drifted item (115) whose body used the synonym
+# "VERIFIED" instead - found by grepping every "✅ <WORD>" phrasing
+# actually in use, not by guessing. Extend this alternation (rather than
+# a generic all-caps match, which would start flagging unrelated
+# acronyms like "JSON") if a new synonym shows up the same way.
+_BODY_DONE_MARKER = re.compile(r"✅\s*\*{0,2}(DONE|VERIFIED)", re.IGNORECASE)
 _HEADING_RESOLVED = re.compile(r"^\d+\.\s*(✅|⚠️)")
 
 # Items whose body legitimately mentions "✅ DONE" without claiming the

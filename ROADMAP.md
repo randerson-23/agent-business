@@ -4899,7 +4899,7 @@ this pass went looking.
      that did get written). `send-watchdog.yml` stays `contents: read`
      - it only ever reads the file.
 
-115. **Item 100's `calendar.ics` must whitelist fields, not pass feeds
+115. ✅ **Item 100's `calendar.ics` must whitelist fields, not pass feeds
      through — decide this before it ships, not after.** The plan is to
      republish the aggregated events as a subscribable calendar. The
      inputs are other organisations' ICS feeds: District 57, the park
@@ -6432,6 +6432,33 @@ not read later as missed runs.
      items 35/134's client-side fixes were - a real, scripted browser
      check, not a persisted automated test. 402 tests pass (Python
      suite unaffected, since this is template/client-side JS only).
+
+147. ✅ **DONE (build loop's own pick) — item 142's own drift guard had a
+     gap, found the same way item 142 found the original problem: by
+     checking what it claimed to prevent against the actual file.**
+     `tests/test_roadmap_consistency.py`'s regex only matched the literal
+     word "DONE" after a checkmark. Item 115 says its own work is
+     `✅ VERIFIED` in its body - a real, legitimate synonym already in
+     use elsewhere in this file's history - but the regex never caught
+     it, so its heading sat unmarked exactly like the 34 items item 142
+     already fixed, undetected by the very test meant to catch that.
+
+     Found by grepping every `✅ <WORD>` phrasing actually present in
+     `ROADMAP.md`, not by guessing at synonyms: 54 + 23 real uses of
+     `DONE`, one `VERIFIED` (item 115), and one unrelated match
+     (`✅ JSON-LD`, a checklist bullet, not a numbered-item heading -
+     correctly out of this test's scope either way). One real outlier,
+     one real fix: added `✅ **Item 100's...` to item 115's own heading,
+     and extended the test's regex to `(DONE|VERIFIED)` - an explicit
+     alternation, not a generic all-caps match, which would start
+     flagging unrelated acronyms like the `JSON` match above.
+
+     Verified the broadened regex actually catches what it's meant to,
+     not just passing by construction: reverted item 115's heading,
+     confirmed the test failed and named item 115 specifically, restored
+     it, confirmed green again. 402 tests pass; verified against a real
+     `build_digest.py` run (markdown/test-only change, but the file's
+     own convention is to always confirm, not assume).
 
 ## Working agreements for autonomous iteration
 
