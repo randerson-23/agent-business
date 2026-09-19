@@ -294,6 +294,25 @@ evergreen:
     detail: "Village board meetings, permits, and community announcements."
     url: "https://www.mountprospect.org/"
     tags: []
+  # ROADMAP.md item 148: real source investigation before adding this,
+  # not an assumption. A Friday night home game is real "this weekend"
+  # content this site was missing, but Illinois HS schedules run
+  # substantially through MaxPreps, a commercial aggregator - confirmed
+  # by search, not guessed: querying for Prospect's, Hersey's, and
+  # Fremd's actual football schedules surfaced MaxPreps ahead of every
+  # official district page, and D214's own calendar page was already
+  # confirmed PDF-only with no discoverable feed (see this file's header
+  # note, from item 32's investigation). Items 109/143 already ruled out
+  # republishing a commercial aggregator's schedule data this site has no
+  # right to, so the honest move is what District 214 DOES host itself: a
+  # real school-specific athletics landing page, found and confirmed via
+  # WebSearch (the sandbox's own network can't reach d214.org to verify
+  # live, same as every other fetcher source in this repo) - not a data
+  # feed, just a real link to the actual source instead of a guessed one.
+  - title: "Prospect High School Athletics"
+    detail: "Prospect Knights varsity & JV schedules, rosters, and ticket info. This site doesn't have a licensed schedule feed for game dates - Illinois HS schedules run mostly through MaxPreps, a commercial aggregator this site doesn't republish from - so this links to the school's own athletics page instead."
+    url: "https://www.d214.org/o/phs/page/athletics"
+    tags: []
 
 # Structured trick-or-treat data (ROADMAP.md Phase 11 #101) - feeds the
 # cross-region /trick-or-treat/ page. `hours` is deliberately null until
