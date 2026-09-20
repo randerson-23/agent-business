@@ -260,6 +260,7 @@ the required header and the next run succeeded.)
 | **Send the newsletter cross-recommendation email** to Northwest Neighbor (item 25, template drafted in `OUTREACH_TEMPLATES.md` §10) | A real, WebSearch-confirmed candidate: a free weekly newsletter covering the same northwest suburbs (Arlington Heights overlaps directly), different send day (Tuesday vs. Thursday) and a different angle (neighborhood lifestyle/openings vs. structured event aggregation) — complementary, not competing. Publishers who recommend others are 32× more likely to be recommended back. Who runs it wasn't findable by search, so the email opens with a question rather than a name — needs a human to send it and follow the reply. | A reciprocal-recommendation relationship with an overlapping, non-competing local audience |
 | **Send the civic-source link-back emails** — one each to the village/city site, public library, and park district in each region (item 152, template drafted in `OUTREACH_TEMPLATES.md` §11; full source list is each region's own `sources:` in `config/regions/*.yaml`) | The strongest local backlinks available, and a demonstrable, reciprocal ask rather than a favor: item 131 verified 19/19 event cards already link out to the publisher that posted the event, so every issue already sends these same organizations readers. Six-plus organizations across four towns, each a separate email (send one at a time, not a batch blast) — no cost, no deadline, and a "no" from any one costs nothing. | 5-10 quality local `.gov`/`.org` backlinks — the research says this beats 50 directory listings |
 | **Decide whether to put a real name on the About page** (item 130) — currently "written and run by a local parent" | An anonymous automated local-events site now pattern-matches to the 200+ AI-generated "local news" sites shut down in August for invented bylines. The press pitch, sponsor conversations, and the "we're not one of those sites" claim (item 124) all sell the person, not just the product — but this trades the owner's own privacy for credibility, which is his call. A first name + last initial beats full anonymity by a wide margin if full disclosure isn't wanted. | Makes the press pitch (item 77/125) and sponsor conversations (items 118/119) sellable on a real person, not an anonymous automation |
+| **Decide whether to file an Illinois DBA / Fictitious Business Name Statement** (item 154's Nextdoor investigation found this is the real blocker, not a storefront requirement) — Cook County's fee is $50 plus a three-consecutive-week newspaper publication requirement starting within 15 days of filing | Nextdoor's verified Business Page (two free posts/month) needs one of a specific list of official business documents this repo has no evidence "Within Ten" holds — `SPONSOR_KIT.md` names Venmo/Zelle/check, an individual's payment methods, not a business's. Not ineligible on principle the way item 143's Google Business Profile was — just not currently paperwork-qualified. A real cost and a real multi-week timeline, and the first step toward sponsor payments through anything other than Ryan's personal accounts too, so this is bigger than a Nextdoor decision alone. | Unlocks Nextdoor's free local-business posts, and separately, non-personal sponsor payment handling |
 
 **Nearly done, no longer blocking:** Buttondown's sending domain (item
 47). The owner added `withintenmiles.com` and its managed-delegation NS
@@ -6878,6 +6879,44 @@ asked any of them to link back.
      and the better pitch. Posting from a personal account instead of a
      Business Page is explicitly discouraged and should not be a
      workaround anyone reaches for.
+
+     **Checked, as asked — the real blocker turned out different from
+     the one this item anticipated.** WebSearch of Nextdoor's own
+     verification help pages found the eligibility bar is not the
+     storefront/in-person-contact test that ruled out item 143's Google
+     Business Profile: Nextdoor explicitly accepts a **home address** for
+     a home-based or mobile business (and lets it be hidden from public
+     display), so "online-only, real service area" was never the
+     obstacle it looked like at first glance.
+
+     The actual requirement is different and, for this business as it
+     stands today, a real blocker: verification needs one of a specific
+     list of **official business documents** — a government-issued
+     business license, an EIN confirmation letter, IRS tax notices, a
+     business bank account statement, a business credit report, or a
+     Fictitious Business Name Statement (Illinois' term for a DBA). This
+     repo has no evidence "Within Ten" has any of them — `SPONSOR_KIT.md`
+     itself names Venmo/Zelle/check as the payment methods, which is how
+     an individual takes payment, not a registered business with its own
+     bank account. So the honest read is: not ineligible the way item
+     143 was (nothing here rules it out on principle), but not currently
+     qualified either — the gap is paperwork, not the business model.
+
+     That paperwork is real but small, not a reason to give up on it:
+     Illinois' Fictitious Business Name Statement (DBA) is filed with the
+     county clerk, not the state — **Cook County's fee is $50** (covers
+     Mount Prospect, Arlington Heights, and Des Plaines directly; Palatine
+     straddles Cook and Lake counties, so confirm which clerk's office
+     applies before filing) — but it also requires publishing the
+     assumed name in a local newspaper for **three consecutive weeks**,
+     starting within 15 days of filing. That is a real cost, a real
+     multi-week timeline, and the first step toward accepting sponsor
+     payments through anything other than Ryan's personal accounts too —
+     which makes this bigger than a Nextdoor decision alone, and squarely
+     the owner's call, the same shape as item 153's Chamber dues. Added
+     to the "Needs Ryan" table above as a decision, not a task the loop
+     can complete: file (or don't) is not something this loop should
+     decide or spend on unilaterally.
 
 ## Working agreements for autonomous iteration
 
