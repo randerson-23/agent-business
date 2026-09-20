@@ -304,6 +304,8 @@ search, which item 22's whole AI-citation effort depends on.
 | **Macaroni KID** | ~500 hyperlocal family newsletters + sites, publisher-run, sponsor-funded | Seasonal *guides* (summer camps, "kids eat free", Halloween) as the flagship monetizable product; business directory; weekly + monthly calendar views |
 | **6AM City** | 400+ local newsletters, $9.5M rev, profitable in 2026 | **Self-service ad platform** — they built it because low-average-order-value local sponsors don't justify sales time. Directly targets this business's #1 constraint |
 | **Axios Local** | Local newsletter network, local-advertiser funded | Newsletter-first: the list is the asset, the site is the funnel |
+| **Tripadvisor / Yelp** (on the head term) | Both now rank for "things to do in Mount Prospect IL this weekend" with **evergreen attraction lists**, not dated events | The head term serves **two intents** and this site answers only one (item 158) |
+| **Evergreen vs. dated pages** | "Things to do" guides accumulate backlinks, search history and rank over years; **a new URL per event instance dilutes site authority**, and recurring events should keep one permanent URL updated in place | Confirms the guides are the compounding asset — and sets a rule before items 112/141 create year-stamped URLs (items 158/160) |
 | **Domain warm-up** | **Sudden volume spikes are a leading cause of spam placement** — providers read them as a spam pattern, and a flagged domain can lose weeks of progress. The signals that build trust are **replies, opens, stars and spam-to-inbox moves** | The press pitch is designed to take this list from 1 to 300 in a day, on a domain whose entire sending history is one email (item 155) |
 | **Local link building** (as a channel) | The strongest local link comes from a **.gov or .org tied to your own geography**; a Chamber of Commerce link outranks a random high-authority blog for local signals; **5–10 quality local links beat 50 directory listings** | The site already *sends* traffic to six local `.org` domains and has never asked for a link back (item 152) |
 | **Nextdoor** (as a channel, not a price) | Verified **local** businesses get **two free Business Posts per month** to the neighbourhood feed. National/e-commerce excluded. Anti-spam rules bite on repeated similar content | Two posts a month fits the time budget exactly — if a free local site qualifies at all (item 154) |
@@ -7279,6 +7281,136 @@ person — which is the entire point of items 77, 94 and 107.
      `test_render_email_digest_asks_for_a_reply_in_the_footer` and
      `test_render_combined_email_digest_asks_for_a_reply_in_the_footer`.
      `python -m pytest tests/ -q`: 409 passed (was 407).
+
+#### Research pass 2026-09-20 (thirty-sixth pass)
+
+A deeper batch, because the backlog is genuinely thin for the first time
+and the reason is worth stating.
+
+Re-audited: **156 numbered items, 136 done, 2 skipped, 18 open — and
+only 3 of those 18 are stale**, down from 22 when item 142 measured it
+four passes ago. The reconciliation worked. But look at what is actually
+left: 19, 22, 25, 35, 38, 48, 77, 78, 84, 130, 152–156. Item 84 is a
+rejection kept for the record. Items 77, 78, 130, 152, 153 and 154 are
+**Ryan's** — a press email, a spend decision, a privacy decision, six
+outreach emails, a membership, an eligibility check. **The build loop is
+close to out of work, and the remaining bottleneck is almost entirely
+human.** That shapes what this pass should produce, and items 158–161 are
+deliberately build-loop-shaped.
+
+| Angle | Finding | Consequence |
+|---|---|---|
+| **Head-term re-check** | Eventbrite still dominates, but **Tripadvisor and Yelp now rank too — with evergreen attraction lists, not events**. `experiencemountprospect.org` also ranks | The query mixes two intents; this site answers only the dated one (item 158) |
+| **Evergreen vs. dated** | Guides accumulate backlinks and rankings over years; **a new URL per event instance dilutes authority**; recurring events should keep one permanent URL updated in place | The guides are the compounding asset, and the rule needs writing down before items 112/141 (items 158/160) |
+| **Experience Mount Prospect** | Configured as a source but returns **403 Forbidden** — and it ranks for the head term this site is chasing | A blocked feed and a competitor are the same organisation (item 161) |
+
+#### P1 (new)
+
+158. **Build an evergreen "things to do in {town}" page per region — the
+     head term is two queries and the site answers one of them.**
+     Re-checking "things to do in Mount Prospect IL this weekend" turned
+     up something the earlier checks missed: alongside Eventbrite,
+     **Tripadvisor and Yelp now rank**, and neither lists a dated event.
+     They rank with standing attractions — museums, venues, places that
+     are there every week.
+
+     So the query has two populations behind it: people asking "what is
+     on this Saturday" and people asking "what is there to do here at
+     all." This site is excellent at the first and silent on the second,
+     and the second is the half that **compounds**. The research is
+     unambiguous: "things to do" guides accumulate backlinks, search
+     history and rankings over years, while dated listings capture
+     traffic for days. A weekly digest can never out-rank a page that has
+     been collecting authority since 2015 — but an evergreen page can,
+     and it is the natural home for item 152's incoming civic links.
+
+     The civic-source-only discipline makes this *harder* and *better*
+     than Tripadvisor's version. Harder because Yelp can list every
+     restaurant and this site will not. Better because the honest answer
+     for a family — the park district's pools and preserves, the
+     library's makerspace, the historical society's museum, Randhurst,
+     the downtown blocks — is exactly what the existing sources already
+     describe, and it is genuinely more useful than a ranked list of
+     attractions written by somebody who has never been.
+
+     Structurally it should follow the guides, which are the proven
+     pattern here: one stable slug per region (`/things-to-do/`), the
+     town named in title, headings and body, and **no year in the URL**
+     ever. Seed it from the four existing guides' evergreen entries
+     rather than writing new prose — the material is already in config.
+
+#### P2 (new)
+
+159. **Give the build loop standing work for when the queue empties:
+     verification, not features.** With 18 items open and most of them
+     Ryan's, the build loop will shortly have nothing queued — and the
+     failure mode for an idle build loop is inventing features, which
+     `DESIGN_PRINCIPLES.md` (item 103) exists to prevent and which item
+     124's competitors demonstrate the cost of.
+
+     The useful alternative is already implied across this file and has
+     never been stated as standing work. In priority order: **re-verify
+     the source feeds** (Experience Mount Prospect 403s, Downtown Mount
+     Prospect returns 200 with zero items — both recorded in config
+     comments and both quietly degrading the product); **close the
+     remaining stale-open markers** item 142 found; **re-run the
+     accessibility and performance audits** against the current build;
+     and **check every external link still resolves**, since civic sites
+     reorganise constantly and a dead link is the one error that makes
+     this product look unmaintained.
+
+     None of that adds surface area, all of it protects the claim items
+     131 and 152 rest on — that every listing is real and traceable to
+     its source. Worth writing into the working agreements as the default
+     when no P1 is open, so "nothing queued" never means "invent
+     something".
+
+160. **Write down the permanent-URL rule before items 112 and 141 break
+     it.** Checked: no year-stamped directory exists anywhere under
+     `docs/` today, and the trick-or-treat page item 101 shipped lives at
+     `/trick-or-treat/` rather than `/trick-or-treat-2026/`. That is
+     correct and it happened by good instinct rather than by rule.
+
+     Two queued items will test it. Item 112 wants a seasonal calendar
+     with Restaurant Week, holiday lights and summer camps; item 141
+     wants recurring events expanded into dated occurrences. The obvious
+     implementation of either produces `/restaurant-week-2027/` or a URL
+     per market date, and the research is explicit that this is the wrong
+     trade: **every new URL for the same recurring thing dilutes the
+     site's authority**, where updating one page in place compounds
+     backlinks, search history and rank.
+
+     The rule is one line and belongs in `DESIGN_PRINCIPLES.md`:
+     *seasonal and recurring pages keep one permanent URL forever; the
+     year lives in the content, never in the path.* A test asserting no
+     generated path matches `\d{4}` costs almost nothing and makes the
+     rule enforceable rather than aspirational.
+
+161. **Experience Mount Prospect is a blocked feed and a ranking
+     competitor — and item 152 can address both at once.**
+     `config/regions/mount-prospect-60056.yaml` records that
+     `experiencemountprospect.org` returns **403 Forbidden**: the domain
+     responds, the request is refused. It also appears in the live
+     results for the exact head term this site is chasing. It is the
+     village's own tourism arm, so it is neither a rival to be beaten nor
+     a source to be scraped around.
+
+     That makes it the single best first target for item 152's link-back
+     email, because one conversation can plausibly resolve three things:
+     a `.org` backlink from a locally-authoritative domain, permission or
+     a working URL for the feed that currently 403s, and a relationship
+     with the organisation whose events this site most wants. The ask
+     writes itself and is entirely honest — *we send readers to your
+     events every week and link every listing back to you; your calendar
+     blocks our fetcher, and we would rather ask than work around it.*
+
+     "We would rather ask than work around it" is worth saying out loud
+     to them. A 403 is a polite no from a server, and respecting it while
+     asking a human is the difference between the aggregator this
+     business wants to be and the one items 109, 131 and 143 keep ruling
+     out. Same treatment for Downtown Mount Prospect, whose feed returns
+     200 with zero matching items — a broken integration rather than a
+     refusal, and equally fixable by asking.
 
 ## Working agreements for autonomous iteration
 
