@@ -1407,6 +1407,19 @@ def test_render_region_page_shows_calendar_subscribe_link_on_main_page():
     assert 'href="webcal://withintenmiles.com/mount-prospect-60056/calendar.ics"' in html
 
 
+def test_render_region_page_shows_a_human_readable_freshness_note():
+    # ROADMAP.md item 163: dateModified in the JSON-LD is machine-only -
+    # this is the visible half of the same claim, near the listings
+    # rather than buried in the footer's "Generated ..." line.
+    blocks = [{"section": "Village News", "events": []}]
+    sponsor = {"title": "Sponsor this spot", "detail": "", "url": ""}
+    region_cfg = {"region": REGION}
+    html = build_digest.render_region_page(
+        region_cfg, blocks, sponsor, [], datetime(2026, 9, 20, 15, 0, tzinfo=timezone.utc)
+    )
+    assert "Updated automatically — last checked Sunday, September 20." in html
+
+
 def test_is_trick_or_treat_season_true_in_september_and_october():
     assert build_digest.is_trick_or_treat_season(datetime(2026, 9, 1, tzinfo=timezone.utc))
     assert build_digest.is_trick_or_treat_season(datetime(2026, 10, 31, tzinfo=timezone.utc))

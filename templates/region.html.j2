@@ -164,6 +164,14 @@
 
   .answer-block { color: var(--muted); font-size: 14px; line-height: 1.6; margin: 4px 0 18px; max-width: 640px; }
 
+  /* ROADMAP.md item 163: dateModified already sits in the JSON-LD, but
+     that's machine-only - nothing on the rendered page told a human
+     reader this exists at all. Deliberately near the listings (not
+     buried in the footer's own "Generated ..." line, which nobody
+     scrolls to read) and deliberately muted rather than a badge - the
+     fact should be findable, not shouted. */
+  .freshness-note { color: var(--muted); font-size: 13px; margin: 0 0 14px; }
+
   /* ROADMAP.md Phase 11 #100: subscribable calendar, distinct from a
      per-event "add to calendar" (.cal-row) - one subscription covers
      every future event, so it earns a more visible treatment than a
@@ -708,6 +716,8 @@
   {% endif %}
 
   {% if answer_block %}<p class="answer-block">{{ answer_block }}</p>{% endif %}
+
+  <p class="freshness-note">Updated automatically — last checked {{ last_checked_label }}.</p>
 
   {% if region_map %}
   <div class="map-embed">

@@ -938,11 +938,11 @@ Angles reviewed this pass:
 
 #### P1 (new)
 
-22. ⚠️ first slice done (PR #42) — **Get cited by AI search (GEO), as a
-    deliberate strategy.** Under 10% of AI-cited sources rank in Google's
-    top 10 for the same query, so the Phase 9 SEO work does **not** buy
-    this channel — and AI Overviews now trigger on roughly half of all
-    queries.
+22. ✅ **CLOSED AS A GOAL (item 162, 2026-09-20) — Get cited by AI search
+    (GEO), as a deliberate strategy.** Under 10% of AI-cited sources rank
+    in Google's top 10 for the same query, so the Phase 9 SEO work does
+    **not** buy this channel — and AI Overviews now trigger on roughly
+    half of all queries.
     Shipped: `build_llms_txt()` generates `/llms.txt` at build time
     (llmstxt.org convention) from the same `region_summaries` the sitemap
     uses, so it can't drift out of sync the way a hand-written one would
@@ -1027,6 +1027,24 @@ Angles reviewed this pass:
     claim clarity, and **entity authority** — is genuine remaining work,
     not yet done here, and is spun out as item 99 below rather than
     bundled into this correction.
+    **Closed as a goal, thirty-seventh research pass, 2026-09-20.**
+    Three recalibrations of the same item is enough, and the citation
+    data itself now makes the honest verdict clear: the top 15 domains
+    hold roughly two-thirds of all AI citations, Reddit alone takes
+    about 40%, and ChatGPT's single largest source is Wikipedia at
+    47.9%. A four-town local site was never going to win a meaningful
+    share of that distribution, and "get cited by AI search" should
+    stop being treated as a goal this business can move toward. Closing
+    the goal is not undoing the work — `robots.txt`'s AI-crawler
+    allow-list, `Event`/`FAQPage`/`WebSite` schema, and the entity-
+    naming consistency above all stand on their own, ordinary-search
+    or E-E-A-T grounds, independent of AI citation share. `llms.txt`
+    stays generated and uncounted, per the correction above. The one
+    finding worth carrying forward: pages updated within three months
+    earn roughly 6 citations against 3.6 for stale ones, and this site
+    rebuilds itself automatically several times a week — a real,
+    structural, already-running advantage (see item 163), just never
+    the whole strategy this item was named for.
 
 23. ✅ done (PR #41) — **Analytics — the first number every sponsor will
     ask for.** `config/analytics.yaml` holds a `goatcounter_code`, gated
@@ -7520,6 +7538,13 @@ than half (both item 98), and now the citation data itself.
      with, it costs nothing, and it is currently unclaimed. Item 158's
      evergreen pages should lean on it explicitly.
 
+     🟢 **Shipped, 2026-09-20.** Item 22's own heading now reads
+     `✅ CLOSED AS A GOAL`, with a closing note appended in place
+     explaining the citation-concentration data and confirming which
+     shipped pieces stand on other grounds. No code changed — this is
+     the roadmap-bookkeeping half of the item; the recency lever it
+     asks to carry forward is item 163's job.
+
 #### P2 (new)
 
 163. **Show a human when the page was last updated.** Checked against the
@@ -7551,6 +7576,30 @@ than half (both item 98), and now the citation data itself.
      `dateModified` is arguably better bound to the last build in which
      that region's items *changed*. The honest version is both more
      accurate and more defensible than a date that moves for no reason.
+
+     🟢 **Shipped, 2026-09-20 — the visible line only, per the item's
+     own caution.** A new `.freshness-note` line — *"Updated
+     automatically — last checked [region-local weekday, month, day]."*
+     — now renders near the top of every region page view (main,
+     weekend/today/free, guides, directory, things-to-do), right after
+     the answer block and well above the footer's existing
+     `Generated ...` line nobody scrolls to. Computed in
+     `render_region_page()` from the region's own local date via the
+     existing `region_local_date()` helper, not a raw UTC timestamp.
+     Deliberately says "last checked," not "last updated" — true
+     either way, since a build did run, without implying content
+     changed when it may not have. The schema-side half of this item
+     (binding `dateModified` to the last build that actually changed a
+     region's items, rather than every rebuild) is real but bigger —
+     it needs tracking previous-build state this pipeline doesn't keep
+     today — and is deliberately left open rather than bundled in here;
+     `dateModified` keeps tracking build time for now, which is what it
+     already did before this item. Verified against a real build (the
+     line renders with the correct date on all 7 checked page types)
+     and confirmed clean against the same Lighthouse pass item 159/its
+     follow-up already extended to those pages. One new test
+     (`test_render_region_page_shows_a_human_readable_freshness_note`).
+     417 tests pass (was 416).
 
 #### P3 (new)
 
