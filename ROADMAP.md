@@ -7122,13 +7122,13 @@ person — which is the entire point of items 77, 94 and 107.
      mid-edit. P2 because nothing is currently broken; it is instrumentation
      for the period when something might be.
 
-157. **Ask for a reply, not just a click — the email's one call to action
-     optimises for the weaker signal.** The combined email's single CTA
-     is "See everything in Mount Prospect", a link. Clicks are good. But
-     the signals providers actually use to build sender trust are
-     **replies, opens, stars and spam-to-inbox moves**, and a reply is
-     among the strongest of them — it is the clearest possible evidence
-     that a human wanted the message.
+157. ✅ **DONE — Ask for a reply, not just a click — the email's one call
+     to action optimises for the weaker signal.** The combined email's
+     single CTA is "See everything in Mount Prospect", a link. Clicks
+     are good. But the signals providers actually use to build sender
+     trust are **replies, opens, stars and spam-to-inbox moves**, and a
+     reply is among the strongest of them — it is the clearest possible
+     evidence that a human wanted the message.
 
      The site now has everything needed to earn one and uses none of it:
      replies reach a real inbox (item 93), item 132 proposed a corrections
@@ -7146,6 +7146,24 @@ person — which is the entire point of items 77, 94 and 107.
      distinguishes this from generated local content (items 131/132), and
      the resident-supplied events that are the one category no competitor
      can aggregate.
+
+     Added the exact line to both `templates/email_digest.html.j2` (the
+     per-region send) and `templates/combined_email_digest.html.j2` (the
+     all-regions send) as its own footer row, above the existing "Within
+     Ten — local events..." tagline row, matching the same muted 12px
+     footer styling rather than introducing a new visual weight — no new
+     button, no new color, nothing competing with the real CTA above it.
+     No mailto: link needed — Buttondown/Cloudflare Email Routing
+     already makes a plain reply work (item 93), so this is copy only.
+
+     Verified against the real generated output, not just the template
+     source: `python scripts/build_digest.py` then grepped the actual
+     `docs/mount-prospect-60056/email-send.html` and
+     `docs/combined-email-send.html` for the line - present, correctly
+     rendered, in both. Added
+     `test_render_email_digest_asks_for_a_reply_in_the_footer` and
+     `test_render_combined_email_digest_asks_for_a_reply_in_the_footer`.
+     `python -m pytest tests/ -q`: 409 passed (was 407).
 
 ## Working agreements for autonomous iteration
 
