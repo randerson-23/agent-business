@@ -305,6 +305,7 @@ search, which item 22's whole AI-citation effort depends on.
 | **Macaroni KID** | ~500 hyperlocal family newsletters + sites, publisher-run, sponsor-funded | Seasonal *guides* (summer camps, "kids eat free", Halloween) as the flagship monetizable product; business directory; weekly + monthly calendar views |
 | **6AM City** | 400+ local newsletters, $9.5M rev, profitable in 2026 | **Self-service ad platform** — they built it because low-average-order-value local sponsors don't justify sales time. Directly targets this business's #1 constraint |
 | **Axios Local** | Local newsletter network, local-advertiser funded | Newsletter-first: the list is the asset, the site is the funnel |
+| **AI citation concentration** | Across ~680M citations, the **top 15 domains take ~68% of AI citation share; Reddit alone ~40%**. ChatGPT's single largest source is Wikipedia (47.9%) and it cites brands **0.59%** of the time. But **recency is a strong lever**: pages updated within three months average ~6 citations against 3.6 for stale ones | A four-town local site will not win citation share. It *can* win on freshness, which it already has and never claims (items 162/163) |
 | **Tripadvisor / Yelp** (on the head term) | Both now rank for "things to do in Mount Prospect IL this weekend" with **evergreen attraction lists**, not dated events | The head term serves **two intents** and this site answers only one (item 158) |
 | **Evergreen vs. dated pages** | "Things to do" guides accumulate backlinks, search history and rank over years; **a new URL per event instance dilutes site authority**, and recurring events should keep one permanent URL updated in place | Confirms the guides are the compounding asset — and sets a rule before items 112/141 create year-stamped URLs (items 158/160) |
 | **Domain warm-up** | **Sudden volume spikes are a leading cause of spam placement** — providers read them as a spam pattern, and a flagged domain can lose weeks of progress. The signals that build trust are **replies, opens, stars and spam-to-inbox moves** | The press pitch is designed to take this list from 1 to 300 in a day, on a domain whose entire sending history is one email (item 155) |
@@ -7461,6 +7462,118 @@ deliberately build-loop-shaped.
      as the actual product the email describes. Sending itself needs
      Ryan, per the standing rule that a real email to a real
      organization isn't the build loop's to send.
+
+#### Research pass 2026-09-20 (thirty-seventh pass)
+
+The periodic AI-citation re-check, and it is decisive rather than
+another adjustment. Item 22 has now been recalibrated three times —
+`llms.txt` does not work, AI Overviews reach ~7% of local intent rather
+than half (both item 98), and now the citation data itself.
+
+| Angle | Finding | Consequence |
+|---|---|---|
+| **Citation concentration** | Synthesised across ~680M citations: the **top 15 domains hold ~68% of AI citation share, Reddit alone ~40%**. ChatGPT's largest single source is **Wikipedia at 47.9%**, and it cites brands **0.59%** of the time | A four-town local site is not going to win AI citation share. Stop treating it as a goal (item 162) |
+| **Recency** | Pages updated within three months average **~6 citations against 3.6** for stale pages; AI models weight recency strongly | The one lever where this site structurally beats every static competitor — and it is free and already running (items 162/163) |
+| **Freshness signals** | Checked the live build: `dateModified` **is** emitted in JSON-LD and `lastBuildDate` in the RSS feed. **Nothing on the page tells a human reader when it was updated** | The claim is machine-readable and invisible to the person it would persuade (item 163) |
+
+#### P1 (new)
+
+162. **Close item 22 as a goal and keep only the parts that earn their
+     place on other grounds.** "Get cited by AI search, as a deliberate
+     strategy" has been this file's standing ambition since the early
+     passes. The citation data makes the honest verdict clear: AI
+     citation is far more concentrated than organic search, the top 15
+     domains take roughly two-thirds of it, **Reddit alone takes about
+     40%**, and ChatGPT's single biggest source is Wikipedia. A site
+     covering four suburbs is not going to appear in that distribution,
+     and three consecutive recalibrations of the same item is enough.
+
+     Closing it is not the same as undoing the work, and the distinction
+     matters because most of what shipped under item 22 is genuinely
+     good — it was just justified by the wrong argument:
+
+     - `robots.txt` naming GPTBot, ClaudeBot, OAI-SearchBot and the rest
+       **stands**: allowing crawlers that exist costs nothing.
+     - schema.org `Event` **stands**, on ordinary rich-result grounds —
+       item 120 confirmed its placement is already correct under the
+       2026 "primary content purpose" rule.
+     - Entity clarity (`Organization` schema, the About page, item 116's
+       stable venue names) **stands**, because it helps ordinary local
+       search, which is the channel that can actually be won.
+     - `llms.txt` stays generated and uncounted, per item 98.
+
+     What goes is the *framing* — and with it the temptation to spend
+     another pass optimising for a channel whose own numbers say a local
+     publisher cannot reach it. Resolve item 22's own heading as closed,
+     referring here for why, rather than leaving it open to attract more
+     work. (Described rather than quoted: item 142's consistency test
+     reads a done-marker in any item's body as that item marking
+     *itself* done, and it is right to — the two are indistinguishable
+     by regex, and weakening the guard just to quote a marker would
+     cost more than the rewording.)
+
+     The one durable finding to carry forward is recency, and it is
+     genuinely good news: **pages updated within three months earn
+     roughly 6 citations against 3.6 for stale ones**. This site rebuilds
+     several times a week, automatically, forever. That is a structural
+     advantage over every static "best things to do" list it competes
+     with, it costs nothing, and it is currently unclaimed. Item 158's
+     evergreen pages should lean on it explicitly.
+
+#### P2 (new)
+
+163. **Show a human when the page was last updated.** Checked against the
+     live build: `dateModified` is present in JSON-LD
+     (`2026-09-20T14:54:40Z` on the Mount Prospect page) and the RSS feed
+     carries `lastBuildDate`. Neither is visible to a reader. The
+     strings "Updated" and "updated" appear nowhere in the rendered
+     page.
+
+     That is the wrong way round for this product specifically. The whole
+     differentiation established in items 124 and 131 is that this is
+     *current* — pulled automatically from live civic feeds, unlike a
+     guide written once in 2023 and quietly rotting. A visitor comparing
+     this page against Tripadvisor's evergreen list has no way to tell,
+     and the one fact that would settle it is sitting in a `<script>` tag.
+
+     One line, near the listings: *Updated automatically — last checked
+     Sunday 20 September.* Local date, not a timestamp; readable, not
+     precise. It reinforces the provenance line item 126 asked for, it is
+     the human-facing half of the same claim the schema already makes,
+     and it is exactly what item 158's evergreen pages need to avoid
+     looking like every other static list.
+
+     **One honest caution before shipping it.** `dateModified` currently
+     tracks the *build*, not the *content* — it churns every rebuild even
+     when nothing changed, and search engines are known to discount
+     timestamp churn without substantive change. So the visible line
+     should say what is actually true ("last checked"), and the schema's
+     `dateModified` is arguably better bound to the last build in which
+     that region's items *changed*. The honest version is both more
+     accurate and more defensible than a date that moves for no reason.
+
+#### P3 (new)
+
+164. **Recording the Reddit tension without reopening it.** Reddit takes
+     roughly 40% of all AI citations and is Perplexity's single largest
+     source at 46.7%. Item 84 examined local subreddits as a discovery
+     channel and **rejected** them: the 90/10 norm requires 9–19
+     non-promotional contributions between promotional posts, 61% of the
+     relevant subreddits ban self-promotion outright, and the cost falls
+     on the one resource `BUSINESS_PLAN.md` says the owner does not have.
+
+     That rejection still holds, and this finding does not overturn it —
+     it changes the size of the prize, not the price. Worth writing down
+     anyway for two reasons. First, so a later pass discovering the 40%
+     figure does not treat it as new information and reopen a settled
+     decision. Second, because the reasoning has an exception worth
+     naming: the cost of Reddit is *sustained participation*, so if the
+     owner ever becomes a genuine participant in a local subreddit for
+     his own reasons, the calculation changes completely — it is only
+     expensive as a marketing task.
+
+     No action. Filed so the next pass to find this number can skip
+     straight to the conclusion.
 
 ## Working agreements for autonomous iteration
 
