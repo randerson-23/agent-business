@@ -636,6 +636,34 @@ weekend is. That is the moat, and the site should say so out loud (a one-line
     submission failing silently or exactly this kind of deliberate live
     test.
 
+    🟢 **Follow-up, same session: fixed and live-verified the silence
+    itself, separately from the Settings gap it's paired with.** A
+    parsed submission that fails to reach a PR left the issue with no
+    comment at all — indistinguishable from one nobody ever looked at.
+    Added a step to `event-submission.yml` that comments whenever a
+    parsed submission (`exit_code == '0'`) doesn't make it to a PR, using
+    `if: failure()` specifically — the one condition that keeps a step
+    running after an earlier step in the same job has failed; every
+    other `if:` in this file implicitly requires `success()` too and
+    would just get skipped, the same implicit behavior that let this
+    silence go unnoticed.
+
+    Merged first (workflow behavior for `issues` events always runs from
+    the default branch, so this couldn't be tested pre-merge), then
+    live-verified with a second real test issue (#193, closed after)
+    while the underlying PR-creation permission gap was still present —
+    a rare, time-limited chance to exercise the failure path for real
+    before that setting gets fixed and this path stops firing for that
+    particular reason. It worked: the real run
+    (`35492825966`) failed at PR creation exactly as expected, and the
+    new step posted a real comment from `github-actions[bot]` on the
+    issue, confirmed by reading it back via the API rather than assuming
+    the workflow's green checkmark meant the comment landed. This
+    defense-in-depth step stays useful after the Settings toggle is
+    flipped too — any *other* future reason `create-pull-request` might
+    fail (a branch conflict, a rate limit) now gets the same visibility
+    instead of the same silence.
+
 #### Research pass 2026-08-27 (second pass)
 
 Pace note: the build loop cleared **10 of the first 13 items inside a day**
