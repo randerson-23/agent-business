@@ -255,7 +255,7 @@ the required header and the next run succeeded.)
 |---|---|---|
 | **Send the local press pitch** to the **Daily Herald first** (item 125 found Journal & Topics runs its own competing Event Calendar, so it's the second attempt, not the first; template reordered in `OUTREACH_TEMPLATES.md` §7) | **The single highest-yield action available, by a wide margin, and now the only thing standing between a working site and an audience.** A local-media mention is worth 100-500 subscribers in a day (seventeenth pass); nothing else here is close for one email's effort. Every dependency it ever had is now cleared: the domain resolves, HTTPS serves, the signup form is live, the sponsor CTA works, Google has the sitemap, and the automated send is now proven end-to-end with a real successful live send (see above) - a reporter who signs up gets a real, working weekly email, not a hypothetical one. The email needs picking a real reporter and hitting send. | 100-500 real subscribers from one email |
 | Run a real trademark search before spending money on the domain, signage, print, or sponsor contracts (item 69) | **Reduced, not eliminated, by the pivot to "Within Ten".** The name was changed *because* WebSearch found "PORCHLIGHT" is a registered mark (reg. 6028585) held by a company that publishes a newsletter to ~60,000 readers. "Within Ten"/"WithinTen" turned up **no registered mark** - materially cleaner. But a web search is not a clearance search: it misses common-law use, similar-sounding marks and state registrations. Worth its small cost before money is committed, not after. | Spending safely on signage, print, sponsor contracts |
-| **Set up the welcome email** in Buttondown's UI (item 106) | One-time, no-code, and the highest-open message this business will ever send (welcome emails average 34.79% opens, up to 4x a regular issue's) — but it needs a human in Buttondown's dashboard; there is no API surface for it to build against from here. Two things worth checking/writing before turning it on: confirm the free plan actually exposes a welcome/greeting email (unverified — the sending API working is not evidence about this separate feature), and write **one** good welcome email, not an e-commerce-style three-part drip — this is a local newsletter, not a cart-abandonment flow. | The highest-engagement touchpoint currently going unsent |
+| **Check Settings → Subscribing → Welcome** in Buttondown's dashboard, and write/enable one welcome email there if it's free-plan-available (item 106) | One-time, no-code, and the highest-open message this business will ever send (welcome emails average 34.79% opens, up to 4x a regular issue's) — but it needs a human in Buttondown's dashboard; there is no API surface for it to build against from here. WebSearch narrowed but didn't fully resolve the cost question: Buttondown's paid "automations"/welcome-*sequence* feature is confirmed $29/month and **not what this needs** — the one-off welcome email is a separate, simpler *transactional* email toggle, and whether that specific toggle is free-plan-available couldn't be confirmed from outside the account. Check that one setting before assuming either "it's free" or "it needs the $29/month upgrade." Write **one** good welcome email if it's there, not an e-commerce-style three-part drip. | The highest-engagement touchpoint currently going unsent |
 | **Check Buttondown's dashboard after this Wednesday night** (send-newsletter.yml's cron is now `37 22 * * 3` — ~5:37pm Chicago Wednesday) to confirm item 110's `schedule` mode actually worked | This is the one thing this sandbox genuinely cannot verify: `publish_date`/`status: "scheduled"` are this session's best-documented *guess* at Buttondown's API shape, unconfirmed against a real response — unlike `about_to_send`'s header, which a real 400 already proved. If the guess is wrong, the job will fail loudly (surfaced-verbatim by design) rather than silently mis-schedule, so a failed run is itself informative; check either way, since a genuine several-hours-early margin to fix it is the entire point of moving the cron off Thursday morning. | Confirms the researched Thursday-07:00-Central slot is actually being honored, not just believed to be |
 | **Send the newsletter cross-recommendation email** to Northwest Neighbor (item 25, template drafted in `OUTREACH_TEMPLATES.md` §10) | A real, WebSearch-confirmed candidate: a free weekly newsletter covering the same northwest suburbs (Arlington Heights overlaps directly), different send day (Tuesday vs. Thursday) and a different angle (neighborhood lifestyle/openings vs. structured event aggregation) — complementary, not competing. Publishers who recommend others are 32× more likely to be recommended back. Who runs it wasn't findable by search, so the email opens with a question rather than a name — needs a human to send it and follow the reply. | A reciprocal-recommendation relationship with an overlapping, non-competing local audience |
 | **Send the civic-source link-back emails** — one each to the village/city site, public library, and park district in each region (item 152, template drafted in `OUTREACH_TEMPLATES.md` §11; full source list is each region's own `sources:` in `config/regions/*.yaml`) | The strongest local backlinks available, and a demonstrable, reciprocal ask rather than a favor: item 131 verified 19/19 event cards already link out to the publisher that posted the event, so every issue already sends these same organizations readers. Six-plus organizations across four towns, each a separate email (send one at a time, not a batch blast) — no cost, no deadline, and a "no" from any one costs nothing. | 5-10 quality local `.gov`/`.org` backlinks — the research says this beats 50 directory listings |
@@ -4438,6 +4438,39 @@ press pitch lands.
      emails generate ~90% more orders than one — is an **e-commerce**
      benchmark; do not port a three-part drip onto a local events
      newsletter, where it would read as pushy. One good welcome email.
+
+     **Narrowed the first dependency by WebSearch (docs.buttondown.com is
+     egress-blocked from here, same as every other real fetch this
+     sandbox can't make directly), without fully resolving it.**
+     Buttondown has two structurally different features that could
+     satisfy this item, and they are not the same cost:
+
+     - **"Automations" / a welcome *sequence*** (`docs.buttondown.com/
+       welcome-sequence`) is a paid add-on, confirmed consistently across
+       multiple independent search results — **$29/month**, part of the
+       Standard tier. This is the multi-email, branching-timing feature,
+       and it is overkill for this item anyway: it was never asking for a
+       sequence, just one email.
+     - **A distinct, simpler "welcome email"** is its own toggle under
+       **Settings → Subscribing → Welcome**, described in Buttondown's
+       own docs (`transactional-emails-welcome`) as a *transactional*
+       email — sent once, automatically, right after a subscriber
+       confirms — a different feature category from "automations"
+       entirely (siblings: a confirmation email, this welcome email, and
+       a "premium welcome email" for paid-subscription upgrades, which
+       does not apply here). This is the one-off email item 106 actually
+       wants.
+
+     What search couldn't settle: whether *this* toggle/its customization
+     is free-plan-available or itself needs the Standard tier — results
+     disagreed (one described transactional-email customization broadly
+     as Standard-gated; the welcome email's own doc page didn't repeat
+     that restriction). Real uncertainty, not resolved by more searching
+     — the honest next step is a 30-second look at the actual toggle in
+     the live account, not another guess. Updated the "Needs Ryan" row
+     with the exact setting path and the corrected cost framing, so
+     whoever checks it isn't tempted to reach for the $29/month
+     automation when the free toggle may already do the job.
 
 107. ✅ **Ask three local Facebook group admins for permission — the channel
      where this audience actually is, and the weekly post is already
