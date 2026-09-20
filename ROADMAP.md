@@ -282,6 +282,8 @@ search, which item 22's whole AI-citation effort depends on.
 | **Macaroni KID** | ~500 hyperlocal family newsletters + sites, publisher-run, sponsor-funded | Seasonal *guides* (summer camps, "kids eat free", Halloween) as the flagship monetizable product; business directory; weekly + monthly calendar views |
 | **6AM City** | 400+ local newsletters, $9.5M rev, profitable in 2026 | **Self-service ad platform** — they built it because low-average-order-value local sponsors don't justify sales time. Directly targets this business's #1 constraint |
 | **Axios Local** | Local newsletter network, local-advertiser funded | Newsletter-first: the list is the asset, the site is the funnel |
+| **Local link building** (as a channel) | The strongest local link comes from a **.gov or .org tied to your own geography**; a Chamber of Commerce link outranks a random high-authority blog for local signals; **5–10 quality local links beat 50 directory listings** | The site already *sends* traffic to six local `.org` domains and has never asked for a link back (item 152) |
+| **Nextdoor** (as a channel, not a price) | Verified **local** businesses get **two free Business Posts per month** to the neighbourhood feed. National/e-commerce excluded. Anti-spam rules bite on repeated similar content | Two posts a month fits the time budget exactly — if a free local site qualifies at all (item 154) |
 | **Shaw Local "Friday Night Drive"** | A dedicated weekly high-school-football product for Chicago's "Suburban Life area" — week-by-week results and recaps for every game | Friday night football is a recurring weekly draw local publishers build whole verticals around, and this site has **zero** coverage of it (item 148) |
 | **WBEZ / Sun-Times / WTTW / Patch** (farmers-market guides) | All four publish a **dated suburban farmers-market guide each spring** — by region and day of week, with 2026 season dates, hours and addresses | A head-to-head content category where this site currently **punts to the organiser's page** (item 141) |
 | **Kidlist** (mykidlist.com) | "Activities for Kids in the **West and Northwest Suburbs**" — this exact territory. Weekly email, a weekend planner, "200 Things to Do with Kids This Weekend". **Submission-based with human review** (approvals on Wednesdays), a named editor, and a stated editorial rule: calendar carries **only free and/or drop-in** events, and no free events that exist to generate leads | The closest competitor found in thirty-one passes, and it is human-curated rather than generated (item 137) |
@@ -6751,6 +6753,114 @@ anyone builds an argument on it.
      `data/send_history.json` for the second entry and confirm the
      timestamp lands at the intended Thursday-07:00-Central slot, not
      shifted.
+
+#### Research pass 2026-09-20 (thirty-fourth pass)
+
+Item 139 measured discoverability at zero and listed the signals to
+watch. It did not say what to *do* about it, and thirty-three passes have
+gone by without anyone asking the most obvious question: this site links
+out to six local `.org` domains every single week, and has never once
+asked any of them to link back.
+
+| Angle | Finding | Consequence |
+|---|---|---|
+| **Local link building** | A **.gov or .org in your own geography** is the strongest local link there is; a Chamber link outranks a random authoritative blog for local signals; **5–10 quality local links beat 50 directory listings** | The highest-value backlinks available are the sites this one already promotes (item 152) |
+| **Chambers of Commerce** | Membership normally includes a directory listing with a link, and sponsorships carry a sponsor-page backlink | A strong local signal, a member directory full of prospects — and the first recurring cost (item 153) |
+| **Nextdoor** | Verified **local** businesses get **two free Business Posts/month**; national and e-commerce excluded; repeated similar content gets flagged | Fits the time budget, with the same eligibility doubt that killed item 143 (item 154) |
+
+#### P1 (new)
+
+152. **Ask the civic sources to link back — the strongest local backlinks
+     available, and the ask is reciprocal rather than a favour.** The
+     research is unusually consistent here: the most valuable link a
+     local site can hold is from a `.gov` or `.org` tied to its own
+     geography, and a handful of those outperform dozens of generic
+     directory listings. This site's natural candidates are the exact
+     domains it already serves: `mountprospect.org`, `mppl.org`,
+     `mppd.org`, `dppl.org`, `ahml.info`, `palatinelibrary.org`, and each
+     village's own site.
+
+     What makes this different from ordinary link-begging is that the
+     value already flows both ways and can be demonstrated. Item 131
+     verified **19 of 19** event cards link out to the publisher that
+     posted the event; every issue of the newsletter and every region
+     page sends readers to the library's own programme page and the park
+     district's own registration. The ask is therefore not "please link
+     to me" but "we send your events to local families every week and
+     link every listing back to you — would you add us to your community
+     links page?" Many library and village sites keep exactly such a
+     page.
+
+     Needs a short template in `OUTREACH_TEMPLATES.md` — a new §10 —
+     leading with what the site does *for them*, naming the specific
+     feed being used, and offering to correct or remove anything they
+     would rather not see aggregated. That last line matters: it treats
+     them as the owner of their own data, costs nothing, and is the
+     difference between a partner and a scraper. The build loop can draft
+     it; Ryan sends.
+
+     Sequence it **alongside** items 77 and 107 rather than behind them.
+     It is the same shape of task — a handful of emails, no cost, no
+     recurring time — and unlike the press pitch it is not one-shot: six
+     organisations, four towns, and a "no" from one costs nothing. It is
+     also the most durable of the three, because a community-links entry
+     keeps working every month without being re-sent.
+
+#### P2 (new)
+
+153. **Chamber of Commerce membership — a real backlink, a directory of
+     prospects, and the first recurring cost.** Chamber membership
+     normally carries a directory listing with a live link, and the
+     research names a Chamber link as a stronger local ranking signal
+     than a link from a random high-authority site. Four towns means four
+     chambers.
+
+     The second benefit is arguably larger than the first and is
+     currently missing from every monetisation item in this file: **a
+     Chamber's member directory is a list of exactly the businesses items
+     94, 118 and 119 are trying to reach**, pre-filtered for the ones
+     that already pay to be visible locally. A member emailing members is
+     a materially warmer approach than a cold email to a dentist.
+
+     Flagged honestly rather than slipped in, the same way item 78 flagged
+     Meta ads: **`BUSINESS_PLAN.md` assumes zero spend**, and Chamber dues
+     for a small business are typically a few hundred dollars a year per
+     chamber. That is a deliberate exception and the owner's call, not
+     the loop's. Two things make it a better first spend than item 78's
+     ad test: it produces a permanent asset rather than a one-off burst,
+     and it is the only item here that advances findability *and* sponsor
+     access at once. It is also the natural pairing with item 119's
+     founding-partner rate — join one chamber, in the strongest region,
+     and see whether a conversation starts before joining four.
+
+#### P3 (new)
+
+154. **Nextdoor gives two free Business Posts a month — if the site
+     qualifies at all.** Nextdoor has appeared here twice as a *pricing*
+     anchor (item 95) and as Patch's content source (item 124), never as
+     a channel this business could use. Verified businesses get two free
+     posts per month into the neighbourhood feed, which is where this
+     audience demonstrably is, and the twice-monthly ceiling happens to
+     match the time budget precisely.
+
+     The open question is eligibility, and it is the same one that ruled
+     out a Google Business Profile in item 143: Nextdoor restricts
+     newsfeed posting to **local businesses**, excluding national brands
+     and e-commerce. A free, locally-operated website with a real service
+     area is plausibly local in the sense they mean, and plausibly not a
+     "business" in the sense their verification expects. **Check before
+     building anything around it** — and if verification requires
+     claiming a physical storefront, stop, for exactly the reason item
+     143 gave.
+
+     If it does qualify, the rules argue for restraint anyway: repeated
+     similar content gets flagged, so a weekly "here's this week's
+     digest" post is the fastest route to being removed. Two posts a
+     month, each leading with something genuinely useful — the
+     trick-or-treat hours page, the free-events view — is both compliant
+     and the better pitch. Posting from a personal account instead of a
+     Business Page is explicitly discouraged and should not be a
+     workaround anyone reaches for.
 
 ## Working agreements for autonomous iteration
 
