@@ -285,6 +285,7 @@ search, which item 22's whole AI-citation effort depends on.
 | **Macaroni KID** | ~500 hyperlocal family newsletters + sites, publisher-run, sponsor-funded | Seasonal *guides* (summer camps, "kids eat free", Halloween) as the flagship monetizable product; business directory; weekly + monthly calendar views |
 | **6AM City** | 400+ local newsletters, $9.5M rev, profitable in 2026 | **Self-service ad platform** — they built it because low-average-order-value local sponsors don't justify sales time. Directly targets this business's #1 constraint |
 | **Axios Local** | Local newsletter network, local-advertiser funded | Newsletter-first: the list is the asset, the site is the funnel |
+| **Domain warm-up** | **Sudden volume spikes are a leading cause of spam placement** — providers read them as a spam pattern, and a flagged domain can lose weeks of progress. The signals that build trust are **replies, opens, stars and spam-to-inbox moves** | The press pitch is designed to take this list from 1 to 300 in a day, on a domain whose entire sending history is one email (item 155) |
 | **Local link building** (as a channel) | The strongest local link comes from a **.gov or .org tied to your own geography**; a Chamber of Commerce link outranks a random high-authority blog for local signals; **5–10 quality local links beat 50 directory listings** | The site already *sends* traffic to six local `.org` domains and has never asked for a link back (item 152) |
 | **Nextdoor** (as a channel, not a price) | Verified **local** businesses get **two free Business Posts per month** to the neighbourhood feed. National/e-commerce excluded. Anti-spam rules bite on repeated similar content | Two posts a month fits the time budget exactly — if a free local site qualifies at all (item 154) |
 | **Shaw Local "Friday Night Drive"** | A dedicated weekly high-school-football product for Chicago's "Suburban Life area" — week-by-week results and recaps for every game | Friday night football is a recurring weekly draw local publishers build whole verticals around, and this site has **zero** coverage of it (item 148) |
@@ -7039,6 +7040,112 @@ asked any of them to link back.
      to the "Needs Ryan" table above as a decision, not a task the loop
      can complete: file (or don't) is not something this loop should
      decide or spend on unilaterally.
+
+#### Research pass 2026-09-20 (thirty-fifth pass)
+
+Item 47 settled authentication before the first send. Nothing since has
+asked what happens to deliverability when the list **stops** being one
+person — which is the entire point of items 77, 94 and 107.
+
+| Angle | Finding | Consequence |
+|---|---|---|
+| **Volume spikes** | Sudden increases in sending volume are a leading cause of spam placement; providers read them as a spam pattern, and recovery can take weeks | The press pitch targets 100–500 signups **in a day**, against a sending history of one email (item 155) |
+| **What builds trust** | **Replies, opens, stars and spam-to-inbox moves** are the signals Gmail and Outlook actually use | A reply is worth more than a click, and the email asks for a click (item 157) |
+| **DMARC reporting** | Verified by resolver query: the only `rua` destination on `_dmarc.withintenmiles.com` is `…@inbound.postmarkapp.com` | Deliverability reports for this domain go to **Buttondown**, not to the owner (item 156) |
+
+#### P1 (new)
+
+155. **Growing the list gradually is a deliverability argument, not just
+     a strategy preference — and it re-ranks the outreach items.**
+     `withintenmiles.com` is days old and has sent exactly one email, to
+     one person (item 150). Item 77's press mention is designed to
+     produce 100–500 subscribers in a single day, and the next Thursday
+     issue would then go to all of them at once. Sudden volume spikes are
+     a leading cause of spam placement, and a domain that trips that
+     pattern can spend weeks recovering.
+
+     **Calibrating this honestly, because the obvious research
+     overstates it here.** Most warm-up guidance is written for cold
+     outreach from your own IP, and IP reputation is the bigger half of
+     it. Buttondown owns the sending IPs and their reputation, which this
+     business inherits — so the exposure is the **domain** reputation
+     that DKIM and DMARC align to, not an unwarmed IP. Google's bulk
+     sender thresholds also sit at 5,000/day, far above anything this
+     list will do. The risk is real and worth planning around; it is not
+     the catastrophe a cold-email article would imply, and nobody should
+     delay the press pitch out of fear of it.
+
+     What it does change is **ordering**, and it happens to reinforce an
+     ordering this file already recommends for different reasons. Items
+     94 (trade a mention with local businesses) and 107 (ask three
+     Facebook admins) grow the list in tens over weeks; item 77 grows it
+     in hundreds in a day. Running the gradual ones first means the
+     press-driven spike lands on a domain with several real sends behind
+     it rather than one. That is a second, independent argument for a
+     sequence already argued from repeatability — and when two unrelated
+     lines of reasoning pick the same order, it is worth following.
+
+     Concretely, and all of it free: keep the weekly cadence unbroken
+     from now (item 150's "one issue" is the actual problem), and after
+     any large influx resist the urge to immediately mail everyone
+     something extra. The welcome email (item 106) does real work here
+     too — it is a single, wanted, high-open message to each new
+     subscriber as they arrive, which is exactly the gradual, engaged
+     sending pattern providers reward.
+
+#### P2 (new)
+
+156. **The owner receives no deliverability reporting at all.** Resolver
+     query against `_dmarc.withintenmiles.com` returns a single
+     aggregate-report destination:
+     `rua=mailto:940f…@inbound.postmarkapp.com`. That is Buttondown's
+     collector, created when the managed sending domain was set up. It is
+     not wrong — but it means every DMARC aggregate report about **this
+     domain** goes to the vendor, and none to Ryan.
+
+     The consequence only bites when something goes wrong, which is
+     precisely when it matters: if alignment breaks, if a provider starts
+     quarantining, or if someone spoofs the domain, the evidence exists
+     and is invisible here. Given item 155's spike risk, the first weeks
+     after a press mention are exactly when a second pair of eyes is
+     worth having.
+
+     `rua` accepts a comma-separated list, so a second destination can be
+     added alongside Buttondown's rather than replacing it. Two honest
+     caveats: raw DMARC XML is unreadable, so this is only useful pointed
+     at a free digest service that emails a plain-English summary; and
+     because the destination is on a different domain from the DMARC
+     record, it needs the **external destination verification** TXT
+     record that the standard requires — the same mechanism Buttondown
+     already satisfies for its own address. So it is a two-record change,
+     not a one-line one, and worth saying so rather than discovering it
+     mid-edit. P2 because nothing is currently broken; it is instrumentation
+     for the period when something might be.
+
+157. **Ask for a reply, not just a click — the email's one call to action
+     optimises for the weaker signal.** The combined email's single CTA
+     is "See everything in Mount Prospect", a link. Clicks are good. But
+     the signals providers actually use to build sender trust are
+     **replies, opens, stars and spam-to-inbox moves**, and a reply is
+     among the strongest of them — it is the clearest possible evidence
+     that a human wanted the message.
+
+     The site now has everything needed to earn one and uses none of it:
+     replies reach a real inbox (item 93), item 132 proposed a corrections
+     path, and item 106's welcome email is slated to invite exactly this.
+     Extending it to every issue is one line in the email footer, and it
+     should ask for something specific rather than "let us know what you
+     think" — *"Know about something we missed? Hit reply, we read every
+     one"* gives a reader a concrete reason and an easy action.
+
+     Keep the hierarchy intact while doing it: current design research is
+     consistent that one dominant CTA per screen outperforms, so the
+     reply prompt belongs in the footer as a quiet secondary line, not as
+     a competing button. Done that way it serves three separate things
+     at once — deliverability (item 155), the corrections posture that
+     distinguishes this from generated local content (items 131/132), and
+     the resident-supplied events that are the one category no competitor
+     can aggregate.
 
 ## Working agreements for autonomous iteration
 
