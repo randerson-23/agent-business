@@ -370,3 +370,98 @@ than have you find it wrong on your own.
 Thanks for everything [Organization Name] does for the town,
 [Your name]
 Within Ten — https://withintenmiles.com/
+
+## 12. Experience Mount Prospect & Downtown Mount Prospect — link-back + feed access (ROADMAP.md Phase 11 #161)
+
+Two specific, real cases template 11 doesn't cover on its own, because
+both organizations are also **blocked or broken sources**, not just
+un-asked link partners:
+
+- `experiencemountprospect.org` — the Village's own tourism site,
+  configured as a source in `config/regions/mount-prospect-60056.yaml`,
+  returns **403 Forbidden** to this site's fetcher. It's also one of the
+  organic results for "things to do in Mount Prospect" — the exact head
+  term this site is chasing (item 161's finding). Not a competitor to
+  route around: the Village's own visitor site and this site's own
+  civic-source discipline point at the same thing.
+- `mpdowntown.com/events/` (Downtown Mount Prospect, run by the Downtown
+  Merchants — a separate organization from the Village) returns **200
+  with zero matching items**. Diagnosed 2026-09-15: the page's real
+  event links are rendered client-side by JavaScript, which this site's
+  fetcher deliberately doesn't execute (same reason it won't run
+  arbitrary third-party JS for any source) — not a keyword or pattern
+  problem worth further tuning on this end.
+
+Both emails below are ready to send as drafted, once a contact name is
+filled in — Within Ten's own site search (`WebSearch`) didn't surface
+a specific person for either, only the general organizations. Send
+Experience Mount Prospect first: it is the higher-value ask (an actual
+block, on the domain that ranks for the target query), and its outcome
+— did they reply, are they open to a conversation — should inform how
+the Downtown Mount Prospect email gets tailored, not just copied.
+
+Fixed ahead of these emails, so the ask is credible: `fetchers.py`'s
+`USER_AGENT` string was still `60056Weekly/1.0`, pointing at this
+project's GitHub repo — a pre-"Within Ten" name that told a civic IT
+admin nothing about what was actually requesting their calendar. It now
+reads `WithinTen/1.0 (+https://withintenmiles.com/)`, so a source asked
+to allowlist the fetcher is allowlisting something that identifies
+itself as the actual live product being described in the email below.
+
+### 12a. Experience Mount Prospect
+
+Subject: Your events site blocks us, and we'd rather ask than work around it
+
+Hi there,
+
+I run **Within Ten** (https://withintenmiles.com/), a free weekly
+digest of local events for Mount Prospect and three neighboring towns —
+pulled automatically from the Village's own calendar, the library, and
+the Park District, and sent to local families every week.
+
+I'd like to add Experience Mount Prospect's events to that mix too, but
+your site currently returns a 403 to our fetcher (it identifies itself
+honestly as `WithinTen/1.0`, no attempt to disguise it) — so right now
+we simply can't see what you're publishing. Rather than try to work
+around that, I wanted to ask directly: would you be open to allowlisting
+our fetcher, or pointing us at a feed you'd rather we use instead?
+
+Since we'd be sending readers straight to your own event pages on every
+listing we pull — the same way we already do for the Village, library,
+and Park District — I also wanted to ask whether you'd consider adding
+Within Ten to your own list of community resources. Happy to share a
+sample issue first, and if there's ever anything you'd rather see
+corrected or removed once we're pulling from you, just say so.
+
+Thanks for everything Experience Mount Prospect does for the town,
+[Your name]
+Within Ten — https://withintenmiles.com/
+
+### 12b. Downtown Mount Prospect
+
+Subject: A quick ask about your events page — and returning the favor
+
+Hi there,
+
+I run **Within Ten** (https://withintenmiles.com/), a free weekly
+digest of local events for Mount Prospect and three neighboring towns.
+We already send a link straight to mpdowntown.com in our downtown-events
+coverage and our seasonal guide's Oktoberfest & Fall Festival listing.
+
+I'd like to pull your events page automatically too, the way we do for
+the Village, library, and Park District, but our fetcher isn't finding
+individual events on mpdowntown.com/events/ — likely because the event
+list loads via JavaScript after the page renders, which our fetcher
+deliberately doesn't execute for any source. Is there a simpler feed —
+an RSS feed, a JSON endpoint, or even just a plain HTML list — you could
+point us at instead?
+
+Separately, since we're already sending you readers: would you be open
+to adding Within Ten to wherever you point businesses and residents to
+local resources? Happy to share a sample issue first, and if there's
+ever anything you'd rather see corrected or removed once we're pulling
+from your feed, just say so.
+
+Thanks for everything Downtown Mount Prospect does for the town,
+[Your name]
+Within Ten — https://withintenmiles.com/
