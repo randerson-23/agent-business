@@ -1719,7 +1719,7 @@ something already on the list.
 
 #### P2 (new)
 
-47. **Deliverability checklist — a gate on items 24 and 31, not a
+47. ✅ **Deliverability checklist — a gate on items 24 and 31, not a
     feature.** Before any first send, the following must be true, and
     whoever implements the newsletter should treat this as acceptance
     criteria rather than nice-to-have: SPF, DKIM and DMARC all published
@@ -1755,9 +1755,44 @@ something already on the list.
     the managed option itself avoided a real SPF collision this item
     warned about: because Buttondown's records live inside a delegated
     subdomain, the apex SPF record stays free for Cloudflare Email
-    Routing later. Not marking this item fully done - the rest of the
-    checklist (unsubscribe headers, spam-complaint monitoring) is still
-    real work for whoever implements items 24/31.
+    Routing later.
+
+    ✅ **The remaining two checklist items turned out to already be
+    handled, not still owed — checked rather than assumed from the
+    item's own "a managed provider handles nearly all of this" framing.**
+    WebSearched Buttondown's own documented behavior for each:
+
+    - **`List-Unsubscribe`/`List-Unsubscribe-Post` headers (RFC 8058).**
+      Multiple independent search results describe Buttondown as
+      automatically including **"one-click unsubscribe headers"** on
+      every send - language specific enough to imply the full RFC 8058
+      pair, since "one-click" is exactly what distinguishes the `-Post`
+      header from a bare `List-Unsubscribe`. One honest gap: no
+      Buttondown-specific documentation naming the `-Post` header
+      explicitly was found to close this with full certainty, so this
+      is strong, multi-source evidence rather than a verified quote -
+      worth a real send's raw headers confirming it outright if that
+      ever becomes easy to check (e.g. once item 106's welcome email or
+      a real weekly issue is inspectable).
+    - **Spam-complaint-rate monitoring.** Buttondown has its own
+      documented feature for exactly this,
+      `docs.buttondown.com/complaint-rate` - it tracks Complaint
+      Feedback Loop (CFBL) reports and surfaces the rate directly, no
+      separate tooling to build.
+
+    Both are the ESP doing what a managed provider is for, as this item
+    predicted before finding the domain-authentication path - nothing
+    left to build in this codebase for either. What's **not** resolved,
+    and can't be by research: whether this specific list's actual
+    complaint rate stays under 0.3%/0.1% is an ongoing operational fact,
+    not a one-time task, and is inherently unmeasurable against a
+    one-email send history (item 150) - Buttondown's own dashboard is
+    where Ryan would watch that, not something this repo needs to
+    surface separately. TLS in transit and valid forward/reverse DNS on
+    the sending IPs were already covered by "a managed provider... handles
+    nearly all of this" and Buttondown owning its own sending
+    infrastructure - not independently re-verified here, consistent with
+    that original framing.
 
 #### Recorded as skipped
 
