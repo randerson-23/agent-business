@@ -68,6 +68,26 @@ None of this is a change from what the site already does — the finding
 is that the existing direction is already correct and needs writing
 down as a **defence**, not that anything needs redesigning.
 
+## Permanent URLs
+
+Seasonal and recurring pages keep one permanent URL forever; the year
+lives in the content, never in the path. `/trick-or-treat/`, not
+`/trick-or-treat-2026/`; a recurring farmers market keeps its one guide
+URL updated in place, not a fresh URL per season or per date.
+
+This isn't a style preference — it's the same "restraint over
+accumulation" argument the rest of this file makes, applied to search
+authority instead of visual noise. The 2026 SEO research behind
+ROADMAP.md item 158 is explicit that a "things to do" or seasonal-guide
+page **compounds**: it accumulates backlinks, search history, and rank
+for as long as it keeps the same address. A new URL per year or per
+event instance starts that clock over from zero every time, which is
+the one mistake a small, evergreen aggregator can least afford.
+
+`tests/test_build_digest.py::test_collect_sitemap_urls_never_contains_a_year`
+(ROADMAP.md item 160) makes this enforceable rather than aspirational —
+it fails if any generated path matches a bare four-digit year.
+
 ## The standing question
 
 Before adding any new UI element, answer this in the PR or commit
