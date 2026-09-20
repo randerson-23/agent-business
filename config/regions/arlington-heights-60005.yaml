@@ -151,6 +151,15 @@ evergreen:
     detail: "Hersey Huskies varsity & JV schedules, rosters, and ticket info. This site doesn't have a licensed schedule feed for game dates - Illinois HS schedules run mostly through MaxPreps, a commercial aggregator this site doesn't republish from - so this links to the school's own athletics page instead."
     url: "https://www.d214.org/o/jhhs/page/athletics"
     tags: []
+  - title: AUTOMATED TEST 2 — safe to close, not a real submission
+    detail: 'This issue was opened by the autonomous build loop to verify the new "Comment
+      when a parsed submission couldn''t become a pull request" step in event-submission.yml
+      (a follow-up to the bug found via issue #189). PR creation is still expected to
+      fail here (the repo Settings toggle from that earlier finding hasn''t been flipped
+      yet) - this test checks that the workflow now leaves an explanatory comment on this
+      issue instead of failing silently. The loop will check the result, then close this
+      issue - no human action needed.'
+    url: https://withintenmiles.com/
 
 # Structured trick-or-treat data (ROADMAP.md Phase 11 #101) - see the
 # Mount Prospect config for the rationale.
