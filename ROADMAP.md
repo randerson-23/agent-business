@@ -261,6 +261,7 @@ the required header and the next run succeeded.)
 | **Send the newsletter cross-recommendation email** to Northwest Neighbor (item 25, template drafted in `OUTREACH_TEMPLATES.md` §10) | A real, WebSearch-confirmed candidate: a free weekly newsletter covering the same northwest suburbs (Arlington Heights overlaps directly), different send day (Tuesday vs. Thursday) and a different angle (neighborhood lifestyle/openings vs. structured event aggregation) — complementary, not competing. Publishers who recommend others are 32× more likely to be recommended back. Who runs it wasn't findable by search, so the email opens with a question rather than a name — needs a human to send it and follow the reply. | A reciprocal-recommendation relationship with an overlapping, non-competing local audience |
 | **Send the civic-source link-back emails** — one each to the village/city site, public library, and park district in each region (item 152, template drafted in `OUTREACH_TEMPLATES.md` §11; full source list is each region's own `sources:` in `config/regions/*.yaml`) | The strongest local backlinks available, and a demonstrable, reciprocal ask rather than a favor: item 131 verified 19/19 event cards already link out to the publisher that posted the event, so every issue already sends these same organizations readers. Six-plus organizations across four towns, each a separate email (send one at a time, not a batch blast) — no cost, no deadline, and a "no" from any one costs nothing. | 5-10 quality local `.gov`/`.org` backlinks — the research says this beats 50 directory listings |
 | **Decide whether to put a real name on the About page** (item 130) — currently "written and run by a local parent" | An anonymous automated local-events site now pattern-matches to the 200+ AI-generated "local news" sites shut down in August for invented bylines. The press pitch, sponsor conversations, and the "we're not one of those sites" claim (item 124) all sell the person, not just the product — but this trades the owner's own privacy for credibility, which is his call. A first name + last initial beats full anonymity by a wide margin if full disclosure isn't wanted. | Makes the press pitch (item 77/125) and sponsor conversations (items 118/119) sellable on a real person, not an anonymous automation |
+| **Enable Cloudflare's free DMARC Management** — Cloudflare dashboard → Email → DMARC Management (item 156; Postmark's free `dmarc.postmarkapp.com` digest is the named fallback if this doesn't fit) | The owner currently receives zero DMARC deliverability reporting — every aggregate report about this domain goes to Buttondown's own collector, invisible here. `withintenmiles.com` is already on Cloudflare DNS, so this is a dashboard toggle, not a hand-written DNS record: Cloudflare adds its own `rua` destination and renders a readable report dashboard for free, preserving the existing Buttondown destination alongside it by design. One honest caveat found by search, not glossed over: at least one real Cloudflare Community report describes this feature altering an existing DMARC record unexpectedly — worth checking `_dmarc.withintenmiles.com` after enabling to confirm Buttondown's destination is still there. Most useful **before** item 77's press-driven volume spike, not after. | Real visibility into deliverability problems, especially during the first weeks after a volume spike (item 155) |
 | **Decide whether to file an Illinois DBA / Fictitious Business Name Statement** (item 154's Nextdoor investigation found this is the real blocker, not a storefront requirement) — Cook County's fee is $50 plus a three-consecutive-week newspaper publication requirement starting within 15 days of filing | Nextdoor's verified Business Page (two free posts/month) needs one of a specific list of official business documents this repo has no evidence "Within Ten" holds — `SPONSOR_KIT.md` names Venmo/Zelle/check, an individual's payment methods, not a business's. Not ineligible on principle the way item 143's Google Business Profile was — just not currently paperwork-qualified. A real cost and a real multi-week timeline, and the first step toward sponsor payments through anything other than Ryan's personal accounts too, so this is bigger than a Nextdoor decision alone. | Unlocks Nextdoor's free local-business posts, and separately, non-personal sponsor payment handling |
 
 **Nearly done, no longer blocking:** Buttondown's sending domain (item
@@ -7121,6 +7122,47 @@ person — which is the entire point of items 77, 94 and 107.
      not a one-line one, and worth saying so rather than discovering it
      mid-edit. P2 because nothing is currently broken; it is instrumentation
      for the period when something might be.
+
+     **Researched the actual "second destination" rather than leaving
+     this as a generic to-do — and found the two-record framing above is
+     more than this site actually needs.** `withintenmiles.com` is
+     already on Cloudflare DNS (confirmed earlier this session, during
+     the Google Search Console DNS work — the two authoritative
+     nameservers are Cloudflare's). Cloudflare has its own free **DMARC
+     Management** feature, on every plan including the free tier:
+     enabling it from the dashboard (Email → DMARC Management) adds
+     Cloudflare's own `rua` address to the existing record automatically
+     — no hand-written TXT record, and no separate external-destination-
+     verification step, since Cloudflare is the one editing its own DNS
+     zone. Confirmed via search that it's additive by design (existing
+     destinations, including Buttondown's, are preserved alongside
+     Cloudflare's own) — and reports render as a readable dashboard
+     inside Cloudflare, not raw XML, satisfying the "needs to be
+     readable" caveat above for free, with no third-party account to
+     create.
+
+     Worth one honest caveat rather than presenting this as risk-free:
+     search also surfaced a real Cloudflare Community thread describing
+     the feature altering an existing DMARC record unexpectedly for at
+     least one user. Cloudflare's own docs say existing entries are
+     preserved, but that community report is real too — worth Ryan
+     checking `_dmarc.withintenmiles.com` after enabling to confirm
+     Buttondown's own `rua` destination is still present, not assuming
+     it from the feature's description alone.
+
+     **Postmark DMARC Digests** (`dmarc.postmarkapp.com`) is the fallback
+     if Cloudflare's feature turns out not to fit: free, no account
+     required (confirmed — you don't need to be a Postmark customer),
+     under 2 minutes to set up, weekly plain-English email summaries,
+     no dashboard to check. Worth naming specifically because Postmark
+     is already the vendor behind Buttondown's own existing `rua`
+     collector, per this item's own resolver finding — a second Postmark
+     product, not a new vendor relationship.
+
+     Added to the "Needs Ryan" table above with the Cloudflare path as
+     the primary recommendation and Postmark as the named fallback — a
+     DNS-adjacent dashboard action only Ryan can take, same as items
+     47/93 before it.
 
 157. ✅ **DONE — Ask for a reply, not just a click — the email's one call
      to action optimises for the weaker signal.** The combined email's
