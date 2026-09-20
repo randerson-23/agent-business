@@ -4983,6 +4983,21 @@ this pass went looking.
      that did get written). `send-watchdog.yml` stays `contents: read`
      - it only ever reads the file.
 
+     **Live-verified the workflow itself, not just the script, 2026-09-20
+     - the same gap that let item 13's bug hide.** Every check above ran
+     `check_send_history.py` locally against a seeded file; none of them
+     actually exercised `send-watchdog.yml` running on GitHub's own
+     infrastructure, with its own dependency install and its own
+     permissions, the exact category of gap that let item 13's PR-
+     creation failure go unnoticed until this session actually fired it.
+     `send-watchdog.yml` had **zero runs ever** in this repo's Actions
+     history, and its first real scheduled fire (Sunday 15:13 UTC) hadn't
+     happened yet today - so rather than wait and hope, manually
+     triggered it via its `workflow_dispatch` trigger (run
+     `35490203761`). Every step succeeded, including "Check the
+     newsletter has actually gone out recently" - confirmed real, not
+     assumed, ahead of its first live scheduled run.
+
 115. ✅ **Item 100's `calendar.ics` must whitelist fields, not pass feeds
      through — decide this before it ships, not after.** The plan is to
      republish the aggregated events as a subscribable calendar. The
