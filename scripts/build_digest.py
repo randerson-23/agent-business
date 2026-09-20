@@ -1437,6 +1437,12 @@ def render_region_page(
     # template, which gets unreadable fast once quotes have to nest.
     page_title = f"{heading} — {SITE_NAME}" if heading else f"{region['name']} ({region['zip']}) — {SITE_NAME}"
     page_description = subheading or f"What's happening in {region['name']}, {region['state']} ({region['zip']}): {region['tagline']}"
+    # ROADMAP.md item 163: dateModified below is machine-only; this is the
+    # human-readable half of the same freshness claim, in the region's own
+    # local date rather than a UTC timestamp - "last checked" (what's
+    # actually true - this build did run) rather than "last updated"
+    # (which would imply content changed, unverified here).
+    last_checked_label = region_local_date(region, now).strftime("%A, %B %-d")
     return template.render(
         region=region,
         issue_date=now.strftime("%B %d, %Y"),
@@ -1449,6 +1455,7 @@ def render_region_page(
         event_json_ld=build_event_json_ld(blocks),
         freshness_json_ld=build_freshness_json_ld(region, canonical_url, now),
         answer_block=answer_block,
+        last_checked_label=last_checked_label,
         map_link_url=map_link_url,
         map_embed_url=map_embed_url,
         nearby_regions=nearby_regions,
