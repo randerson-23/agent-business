@@ -313,6 +313,14 @@ evergreen:
     detail: "Prospect Knights varsity & JV schedules, rosters, and ticket info. This site doesn't have a licensed schedule feed for game dates - Illinois HS schedules run mostly through MaxPreps, a commercial aggregator this site doesn't republish from - so this links to the school's own athletics page instead."
     url: "https://www.d214.org/o/phs/page/athletics"
     tags: []
+  - title: AUTOMATED TEST — safe to close, not a real submission
+    detail: 'This issue was opened by the autonomous build loop to verify the live event-submission.yml
+      -> parse_event_submission.py -> pull request flow end-to-end (ROADMAP.md''s Phase
+      11 #13 write-up flagged this exact flow as "Unverified" since the sandbox can''t
+      fire a real issues.opened webhook). The loop will check the resulting pull request,
+      then close both this issue and that PR without merging - no human action needed.
+      Safe to close if you see this.'
+    url: https://withintenmiles.com/
 
 # Structured trick-or-treat data (ROADMAP.md Phase 11 #101) - feeds the
 # cross-region /trick-or-treat/ page. `hours` is deliberately null until
