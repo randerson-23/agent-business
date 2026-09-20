@@ -204,6 +204,13 @@ evergreen:
     detail: "Fremd Vikings varsity & JV schedules, rosters, and ticket info. This site doesn't have a licensed schedule feed for game dates - Illinois HS schedules run mostly through MaxPreps, a commercial aggregator this site doesn't republish from - so this links to the school's own athletics page instead."
     url: "https://fhs.d211.org/athletics"
     tags: []
+  - title: AUTOMATED TEST 3 — safe to close, not a real submission
+    detail: 'Ryan just enabled "Allow GitHub Actions to create and approve pull requests"
+      in Settings. This issue confirms the fix for real: the workflow should now parse
+      this, commit the change, and successfully open a review PR (where issues #189 and
+      #193 failed at that last step). The loop will verify the PR was actually created,
+      then close this issue and the PR without merging - no human action needed.'
+    url: https://withintenmiles.com/
 
 # Structured trick-or-treat data (ROADMAP.md Phase 11 #101) - see the
 # Mount Prospect config for the rationale.
