@@ -253,6 +253,7 @@ the required header and the next run succeeded.)
 
 | Action | One line why | Unblocks |
 |---|---|---|
+| **Enable "Allow GitHub Actions to create and approve pull requests"** — Settings → Actions → General → Workflow permissions, on this repo (item 13) | **A shipped feature has never actually worked, confirmed by a real live test (issue #189, closed), not by re-reading the code.** `event-submission.yml` parses a submission and commits it to a branch correctly, then fails to open the PR: `GitHub Actions is not permitted to create or approve pull requests`. Every real community submission this form has ever received has silently failed the same way — parsed, committed, never surfaced as a reviewable PR, no visible error short of digging into a failed Actions run. Nothing reached `main`, so the site itself was never at risk — just a dead-on-arrival feature. One checkbox fixes it. | Makes the community event-submission feature (item 13) actually work for the first time |
 | **Send the local press pitch** to the **Daily Herald first** (item 125 found Journal & Topics runs its own competing Event Calendar, so it's the second attempt, not the first; template reordered in `OUTREACH_TEMPLATES.md` §7) | **The single highest-yield action available, by a wide margin, and now the only thing standing between a working site and an audience.** A local-media mention is worth 100-500 subscribers in a day (seventeenth pass); nothing else here is close for one email's effort. Every dependency it ever had is now cleared: the domain resolves, HTTPS serves, the signup form is live, the sponsor CTA works, Google has the sitemap, and the automated send is now proven end-to-end with a real successful live send (see above) - a reporter who signs up gets a real, working weekly email, not a hypothetical one. The email needs picking a real reporter and hitting send. | 100-500 real subscribers from one email |
 | Run a real trademark search before spending money on the domain, signage, print, or sponsor contracts (item 69) | **Reduced, not eliminated, by the pivot to "Within Ten".** The name was changed *because* WebSearch found "PORCHLIGHT" is a registered mark (reg. 6028585) held by a company that publishes a newsletter to ~60,000 readers. "Within Ten"/"WithinTen" turned up **no registered mark** - materially cleaner. But a web search is not a clearance search: it misses common-law use, similar-sounding marks and state registrations. Worth its small cost before money is committed, not after. | Spending safely on signage, print, sponsor contracts |
 | **Check Settings → Subscribing → Welcome** in Buttondown's dashboard, and write/enable one welcome email there if it's free-plan-available (item 106) | One-time, no-code, and the highest-open message this business will ever send (welcome emails average 34.79% opens, up to 4x a regular issue's) — but it needs a human in Buttondown's dashboard; there is no API surface for it to build against from here. WebSearch narrowed but didn't fully resolve the cost question: Buttondown's paid "automations"/welcome-*sequence* feature is confirmed $29/month and **not what this needs** — the one-off welcome email is a separate, simpler *transactional* email toggle, and whether that specific toggle is free-plan-available couldn't be confirmed from outside the account. Check that one setting before assuming either "it's free" or "it needs the $29/month upgrade." Write **one** good welcome email if it's there, not an e-commerce-style three-part drip. | The highest-engagement touchpoint currently going unsent |
@@ -589,6 +590,51 @@ weekend is. That is the moat, and the site should say so out loud (a one-line
     repo is public) — worst case is spam PRs sitting unmerged, since
     nothing auto-publishes, but a quality/abuse gate is future work if
     that turns out to matter in practice.
+
+    🔴 **That "Unverified" flag was hiding a real, live bug — found by
+    actually running the flow, not by re-reading the code.** This session
+    has GitHub MCP tools this repo's own build/test loop doesn't: it can
+    open a real issue and fire the real webhook. Did exactly that —
+    opened a clearly-marked test issue (#189, closed after) through the
+    same `event-submission` label the real Issue Form applies, matching
+    the exact rendered body format `parse_issue_body()` expects (copied
+    from `tests/test_parse_event_submission.py`'s own `SAMPLE_BODY`) —
+    then watched the real workflow run rather than assuming success.
+
+    It failed. `parse_event_submission.py` parsed the issue correctly and
+    `insert_evergreen_entry()` correctly spliced a new entry into
+    `config/regions/mount-prospect-60056.yaml` (confirmed in the job log:
+    "1 file changed, 8 insertions") — every line of code this item
+    described worked exactly as documented, right up to the last step.
+    `peter-evans/create-pull-request@v8` then pushed the branch
+    (`event-submission/189`, real, on the remote) and tried to open the
+    PR itself, and GitHub's API rejected it:
+
+    ```
+    ##[error]GitHub Actions is not permitted to create or approve pull requests.
+    ```
+
+    That is a **repository setting**, not a bug in this repo's code —
+    Settings → Actions → General → Workflow permissions → "Allow GitHub
+    Actions to create and approve pull requests" is off. Every single
+    real community submission this feature has ever received, if any,
+    has silently failed the same way: parsed correctly, committed to a
+    real branch, and then never surfaced as a reviewable PR, with no
+    error visible anywhere for a human to notice short of digging into a
+    failed Actions run. **Nothing reached `main`** — the failed run never
+    merges its branch, so no bad data ever touched the live site; the
+    only correction needed is the Settings toggle. The orphaned
+    `event-submission/189` branch is harmless (unmerged, easy to delete
+    via the GitHub UI whenever) and left in place rather than
+    force-deleted, since this sandbox's git credentials aren't scoped for
+    remote branch deletion.
+
+    Added to the "Needs Ryan" table above. This is worth treating as
+    **P1, not routine cleanup**: a feature that has looked "done" since
+    PR #31 has never actually been able to deliver a single community
+    submission, and nobody would find out without either a real
+    submission failing silently or exactly this kind of deliberate live
+    test.
 
 #### Research pass 2026-08-27 (second pass)
 
