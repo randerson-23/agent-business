@@ -1,4 +1,4 @@
-"""Fail-soft fetchers for the 60056 Weekly digest.
+"""Fail-soft fetchers for Within Ten.
 
 Each fetch_* function returns a list of dicts with keys:
     title, detail, url, date (optional, ISO string or None)
@@ -28,8 +28,13 @@ import requests
 
 logger = logging.getLogger("fetchers")
 
+# ROADMAP.md item 161: was "60056Weekly/1.0", pointing at the GitHub repo -
+# a stale name from before the "Within Ten" pivot, and the wrong link to
+# hand a civic source asking who's hitting their site: a repo tells a
+# reader nothing about what's requesting their calendar, where the live
+# site does.
 REQUEST_TIMEOUT = 15
-USER_AGENT = "60056Weekly/1.0 (+https://github.com/randerson-23/agent-business)"
+USER_AGENT = "WithinTen/1.0 (+https://withintenmiles.com/)"
 MAX_ITEMS_PER_SOURCE = 6
 
 
