@@ -7378,6 +7378,18 @@ deliberately build-loop-shaped.
      when no P1 is open, so "nothing queued" never means "invent
      something".
 
+     🟢 **Shipped, 2026-09-20.** Written into "Working agreements for
+     autonomous iteration" as a standing default, in the same priority
+     order this item lays out, plus a first real pass run the same day
+     — see that section for the full write-up and findings. Headline
+     result: no regression found anywhere checked, and a genuinely new
+     technique discovered along the way — Lighthouse CI runs locally in
+     this sandbox after all (`CHROME_PATH` just needs pointing at the
+     pre-installed Chromium; the plain `npx lhci autorun` CI uses has no
+     reason to set that env var since GitHub's runners already have a
+     browser on `PATH`), so a future pass can get real, current
+     accessibility/best-practices numbers instead of waiting for CI.
+
 160. **Write down the permanent-URL rule before items 112 and 141 break
      it.** Checked: no year-stamped directory exists anywhere under
      `docs/` today, and the trick-or-treat page item 101 shipped lives at
@@ -7483,3 +7495,46 @@ deliberately build-loop-shaped.
   quarter — `llms.txt` (item 98), overstated AI Overview reach (item 22),
   and `FAQPage` rich results (item 120) are the three this file has had to
   walk back within a month.
+- **When the queue is empty (item 159): verify, don't invent.** An idle
+  build loop's failure mode is reaching for a new feature nobody asked
+  for, which `DESIGN_PRINCIPLES.md`'s standing question exists to rule
+  out. The default instead, in priority order: (1) cross-check
+  `data/source_health.json`'s real trailing counts (written by actual
+  GitHub Actions runs, never this sandbox's own blocked network — see
+  the note above) against each region config's own comments, looking
+  for a source that's newly gone quiet without a matching diagnosis;
+  (2) spot-check a few of this file's `⚠️`/partial-status items for
+  drift the way items 142/147 did wholesale; (3) re-run Lighthouse CI
+  locally (`CHROME_PATH=<path to the sandbox's own Chromium>
+  npx @lhci/cli collect --staticDistDir=docs ...` — `npx lhci autorun`'s
+  plain form fails here with no `CHROME_PATH` set) against the same
+  URLs `lighthouserc.json` already asserts, and read the real
+  `accessibility`/`best-practices` scores it also collects but doesn't
+  gate on; (4) treat a link a genuine visitor would follow (nav, footer,
+  a listed source's own site) as worth a WebSearch spot-check — this
+  sandbox's `requests`-based fetches 403 on every external domain, but
+  WebSearch isn't behind the same block. None of this adds surface
+  area; all of it protects the "every listing is real and traceable"
+  claim items 131 and 152 rest on.
+
+  First pass run 2026-09-20, item 159's own: no regression found.
+  `data/source_health.json`'s four 0-item entries (Downtown MP,
+  Experience MP, and Village of Mount Prospect's News *and* Calendar)
+  all match their region config's own long-standing 403/JS-rendering
+  diagnoses — nothing newly broken. Two low-but-nonzero feeds are worth
+  naming as the ones to check first if either ever drops to zero:
+  Randhurst Village — Events (steady at 1/build) and Village of
+  Palatine — News (steady at 2/build), each under half of any other
+  tracked source's count. Items 22 and 35 (this file's two
+  `⚠️ first slice done` markers) spot-checked and still accurately
+  describe their real, current state — no drift. Lighthouse CI re-run
+  locally against all four `lighthouserc.json` URLs: performance,
+  accessibility, and SEO all scored a perfect 1.0, comfortably inside
+  the asserted LCP/CLS/TBT budgets (worst case 960ms/0/8ms against
+  2500ms/0.1/200ms). `best-practices` scored 0.96 on every page, but
+  the one flagged item (`errors-in-console`, a failed fetch of Google
+  Fonts) is `net::ERR_CERT_AUTHORITY_INVALID` from this sandbox's own
+  TLS-intercepting proxy against `fonts.googleapis.com` — the same
+  category of sandbox-only false signal item 51 already documents for
+  the fetchers, not a real defect in what CI's own unrestricted browser
+  would see.
