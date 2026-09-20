@@ -7339,6 +7339,18 @@ deliberately build-loop-shaped.
      ever. Seed it from the four existing guides' evergreen entries
      rather than writing new prose — the material is already in config.
 
+     🟢 **Shipped, 2026-09-20.** `/things-to-do/` now builds for every
+     region: `build_things_to_do_items()` unions each region's evergreen
+     entries with every item across all its guides, deduped by url
+     (falling back to title) so a source repeated across guides — the
+     park district's own site, say — shows once, not four times. No new
+     prose, per the item's own instruction: every entry is material
+     already curated for evergreen/guides. One stable slug, no year in
+     the URL, same FAQ/JSON-LD treatment as a guide page. Wired into
+     nav on every region page, `sitemap.xml`, and a new "Things to do
+     (evergreen)" section in `llms.txt` alongside the existing dated
+     sections. 6 new tests; 415 passed.
+
 #### P2 (new)
 
 159. **Give the build loop standing work for when the queue empties:

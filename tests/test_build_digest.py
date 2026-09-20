@@ -387,6 +387,40 @@ def test_prepare_guides_returns_empty_list_when_no_guides_configured():
     assert build_digest.prepare_guides({}) == []
 
 
+def test_build_things_to_do_items_combines_evergreen_and_guide_items():
+    evergreen = [{"title": "Library", "url": "https://library/", "tags": []}]
+    guides = [
+        {"slug": "fall", "title": "Fall", "summary": "", "items": [{"title": "Park", "url": "https://park/", "tags": []}]}
+    ]
+    result = build_digest.build_things_to_do_items(evergreen, guides)
+    assert [i["title"] for i in result] == ["Library", "Park"]
+
+
+def test_build_things_to_do_items_dedupes_by_url_across_guides():
+    # ROADMAP.md item 158: a source that appears in several guides (the
+    # park district's own site, say) should show once, not once per guide.
+    shared = {"title": "Park District", "url": "https://parks/", "tags": []}
+    guides = [
+        {"slug": "a", "title": "A", "summary": "", "items": [shared]},
+        {"slug": "b", "title": "B", "summary": "", "items": [dict(shared)]},
+    ]
+    result = build_digest.build_things_to_do_items([], guides)
+    assert len(result) == 1
+
+
+def test_build_things_to_do_items_dedupes_by_title_when_url_missing():
+    guides = [
+        {"slug": "a", "title": "A", "summary": "", "items": [{"title": "No URL Item", "url": None, "tags": []}]},
+        {"slug": "b", "title": "B", "summary": "", "items": [{"title": "No URL Item", "url": None, "tags": []}]},
+    ]
+    result = build_digest.build_things_to_do_items([], guides)
+    assert len(result) == 1
+
+
+def test_build_things_to_do_items_empty_when_nothing_configured():
+    assert build_digest.build_things_to_do_items([], []) == []
+
+
 def test_prepare_trick_or_treat_returns_none_when_unconfigured():
     assert build_digest.prepare_trick_or_treat({}) is None
 
@@ -1998,6 +2032,14 @@ def test_build_sitemap_xml_includes_trick_or_treat_url():
     assert f"<loc>{build_digest.SITE_BASE_URL}trick-or-treat/</loc>" in xml
 
 
+def test_build_sitemap_xml_includes_things_to_do_url():
+    # ROADMAP.md item 158: the new evergreen page needs to be discoverable
+    # the same way /directory/ already is.
+    summaries = [{**REGION, "event_count": 1, "path": "mount-prospect-60056/"}]
+    xml = build_digest.build_sitemap_xml(summaries, datetime.now(timezone.utc))
+    assert f"<loc>{build_digest.SITE_BASE_URL}mount-prospect-60056/things-to-do/</loc>" in xml
+
+
 def test_build_feed_xml_produces_valid_rss():
     items = [
         {"title": "Fall Fest", "url": "https://x/1", "detail": "Food & drink.", "date_iso": "2026-09-19", "region_name": "Mount Prospect"},
@@ -2162,6 +2204,15 @@ def test_build_llms_txt_omits_guides_section_when_none_exist():
     summaries = [{"name": "Mount Prospect", "zip": "60056", "tagline": "x", "path": "mount-prospect-60056/", "guides": []}]
     result = build_digest.build_llms_txt(summaries)
     assert "## Guides" not in result
+
+
+def test_build_llms_txt_includes_things_to_do_section():
+    # ROADMAP.md item 158: the evergreen page needs the same GEO
+    # discoverability the This weekend/Today/Free sections already get.
+    summaries = [{"name": "Mount Prospect", "zip": "60056", "tagline": "x", "path": "mount-prospect-60056/", "guides": []}]
+    result = build_digest.build_llms_txt(summaries)
+    assert "## Things to do (evergreen)" in result
+    assert f"[Mount Prospect — things to do]({build_digest.SITE_BASE_URL}mount-prospect-60056/things-to-do/)" in result
 
 
 def test_build_answer_block_mentions_region_name_and_zip():

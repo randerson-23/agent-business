@@ -566,6 +566,35 @@ def prepare_guides(region_cfg: dict) -> list[dict]:
     return prepared
 
 
+def build_things_to_do_items(evergreen: list[dict], guides: list[dict]) -> list[dict]:
+    """The evergreen "Things to Do in {town}" page (ROADMAP.md item 158).
+
+    The research found the head term splits into two queries this site
+    only answered one of - "what's on this Saturday" (the dated digest)
+    and "what is there to do here at all" (the half Tripadvisor/Yelp
+    rank for, with standing attractions rather than dated events). An
+    evergreen page is the right answer for the second, and the research
+    is explicit that it's also the *compounding* one: a "things to do"
+    page accumulates backlinks and rank over years the way a dated
+    listing never gets the chance to.
+
+    Seeded entirely from material already curated for evergreen/guides
+    (item 158's own instruction: no new prose) - deduplicated by url
+    (falling back to title for the rare item with none) so a source
+    that appears in several guides, the park district's mppd.org say,
+    shows once here, not four or five times.
+    """
+    seen: set[str] = set()
+    items: list[dict] = []
+    for item in evergreen + [i for guide in guides for i in guide["items"]]:
+        key = item.get("url") or item.get("title", "")
+        if key in seen:
+            continue
+        seen.add(key)
+        items.append(item)
+    return items
+
+
 def is_trick_or_treat_season(now: datetime) -> bool:
     """Whether a footer link to /trick-or-treat/ (item 101) earns its
     place right now. True September through the first few days of
@@ -1382,6 +1411,7 @@ def render_region_page(
     canonical_suffix: str = "",
     guides_url: str | None = None,
     directory_url: str | None = None,
+    things_to_do_url: str | None = None,
     weather: list[dict] | None = None,
     newsletter: dict | None = None,
     editors_pick: dict | None = None,
@@ -1438,6 +1468,7 @@ def render_region_page(
         hub_url=SITE_BASE_URL,
         guides_url=guides_url,
         directory_url=directory_url,
+        things_to_do_url=things_to_do_url,
         weather=weather,
         newsletter=newsletter,
         editors_pick=editors_pick,
@@ -1705,7 +1736,14 @@ def collect_sitemap_urls(region_summaries: list[dict]) -> list[str]:
     ]
     for r in region_summaries:
         base = SITE_BASE_URL + r["path"]
-        urls += [base, base + "this-weekend/", base + "today/", base + "free/", base + "directory/"]
+        urls += [
+            base,
+            base + "this-weekend/",
+            base + "today/",
+            base + "free/",
+            base + "directory/",
+            base + "things-to-do/",
+        ]
         if r.get("guide_slugs"):
             urls.append(base + "guides/")
             urls += [base + f"guides/{slug}/" for slug in r["guide_slugs"]]
@@ -1839,6 +1877,12 @@ def build_llms_txt(region_summaries: list[dict]) -> str:
     for r in region_summaries:
         base = SITE_BASE_URL + r["path"]
         lines.append(f"- [{r['name']} — free]({base}free/)")
+    # ROADMAP.md item 158: the evergreen counterpart to the dated sections
+    # above - "what is there to do here at all", not tied to a weekend.
+    lines += ["", "## Things to do (evergreen)"]
+    for r in region_summaries:
+        base = SITE_BASE_URL + r["path"]
+        lines.append(f"- [{r['name']} — things to do]({base}things-to-do/)")
     guide_lines = [
         f"- [{g['title']} — {r['name']}]({SITE_BASE_URL}{r['path']}guides/{g['slug']}/)"
         for r in region_summaries
@@ -2320,6 +2364,11 @@ def main() -> None:
         # first listed business, so the page is worth linking to before
         # there's any real content in it.
         directory_url = SITE_BASE_URL + region_id + "/directory/"
+        # ROADMAP.md item 158: always present, same reasoning as
+        # directory_url above - the page always has content (evergreen
+        # entries alone guarantee that), so it's never worth hiding
+        # behind a conditional the way guides_url is.
+        things_to_do_url = SITE_BASE_URL + region_id + "/things-to-do/"
         editors_pick = select_editors_pick(region_cfg, blocks, evergreen)
 
         html = render_region_page(
@@ -2330,6 +2379,7 @@ def main() -> None:
             now,
             guides_url=guides_url,
             directory_url=directory_url,
+            things_to_do_url=things_to_do_url,
             newsletter=newsletter,
             analytics=analytics,
             editors_pick=editors_pick,
@@ -2439,6 +2489,7 @@ def main() -> None:
                 canonical_suffix=f"{slug}/",
                 guides_url=guides_url,
                 directory_url=directory_url,
+                things_to_do_url=things_to_do_url,
                 weather=weekend_weather if slug == "this-weekend" else None,
                 newsletter=newsletter,
                 analytics=analytics,
@@ -2475,6 +2526,7 @@ def main() -> None:
                     canonical_suffix=f"guides/{guide['slug']}/",
                     guides_url=guides_url,
                     directory_url=directory_url,
+                    things_to_do_url=things_to_do_url,
                     newsletter=newsletter,
                     analytics=analytics,
                     include_faq=True,
@@ -2509,6 +2561,7 @@ def main() -> None:
                 canonical_suffix="guides/",
                 guides_url=guides_url,
                 directory_url=directory_url,
+                things_to_do_url=things_to_do_url,
                 newsletter=newsletter,
                 analytics=analytics,
             )
@@ -2532,6 +2585,7 @@ def main() -> None:
             canonical_suffix="directory/",
             guides_url=guides_url,
             directory_url=directory_url,
+            things_to_do_url=things_to_do_url,
             newsletter=newsletter,
             analytics=analytics,
         )
@@ -2539,6 +2593,38 @@ def main() -> None:
         directory_dir.mkdir(parents=True, exist_ok=True)
         (directory_dir / "index.html").write_text(directory_html, encoding="utf-8")
         logger.info("Wrote %s (%d listing%s)", directory_dir / "index.html", len(directory), "" if len(directory) == 1 else "s")
+
+        # ROADMAP.md item 158: the evergreen answer to "what is there to do
+        # here at all" - seeded from material already curated for
+        # evergreen/guides rather than new prose, deduplicated across the two.
+        things_to_do_items = build_things_to_do_items(evergreen, guides)
+        things_to_do_html = render_region_page(
+            region_cfg,
+            [{"section": "Things to Do", "events": things_to_do_items}],
+            sponsor,
+            [],
+            now,
+            heading=f"Things to Do in {region['name']}",
+            subheading="Standing attractions and activities, any time of year — not tied to a date.",
+            empty_message="Nothing listed yet.",
+            nav_current="things-to-do",
+            canonical_suffix="things-to-do/",
+            guides_url=guides_url,
+            directory_url=directory_url,
+            things_to_do_url=things_to_do_url,
+            newsletter=newsletter,
+            analytics=analytics,
+            include_faq=True,
+        )
+        things_to_do_dir = region_dir / "things-to-do"
+        things_to_do_dir.mkdir(parents=True, exist_ok=True)
+        (things_to_do_dir / "index.html").write_text(things_to_do_html, encoding="utf-8")
+        logger.info(
+            "Wrote %s (%d item%s)",
+            things_to_do_dir / "index.html",
+            len(things_to_do_items),
+            "" if len(things_to_do_items) == 1 else "s",
+        )
 
         event_count = sum(len(b["events"]) for b in blocks)
         dated, total = structured_date_coverage(blocks)

@@ -695,6 +695,7 @@
     <a href="{{ region_base_url }}today/"{% if nav_current == "today" %} class="active"{% endif %}>Today</a>
     <a href="{{ region_base_url }}free/"{% if nav_current == "free" %} class="active"{% endif %}>Free</a>
     {% if guides_url %}<a href="{{ guides_url }}"{% if nav_current == "guides" %} class="active"{% endif %}>Guides</a>{% endif %}
+    {% if things_to_do_url %}<a href="{{ things_to_do_url }}"{% if nav_current == "things-to-do" %} class="active"{% endif %}>Things to Do</a>{% endif %}
     {% if directory_url %}<a href="{{ directory_url }}"{% if nav_current == "directory" %} class="active"{% endif %}>Directory</a>{% endif %}
   </nav>
 
