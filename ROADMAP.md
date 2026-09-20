@@ -7398,6 +7398,18 @@ deliberately build-loop-shaped.
      generated path matches `\d{4}` costs almost nothing and makes the
      rule enforceable rather than aspirational.
 
+     🟢 **Shipped, 2026-09-20.** Added a "Permanent URLs" section to
+     `DESIGN_PRINCIPLES.md` stating the rule and tying it to the same
+     "restraint over accumulation" argument the rest of that file
+     already makes, plus
+     `test_collect_sitemap_urls_never_contains_a_year` — it asserts no
+     URL `collect_sitemap_urls()` emits contains an isolated 4-digit
+     run (matched with digit-boundary lookaround so a 5-digit ZIP in
+     the path, e.g. `mount-prospect-60056`, doesn't false-positive).
+     416 tests pass. Items 112 and 141, whenever they're picked up,
+     now have a real test to fail against if they reach for a
+     year-stamped URL.
+
 161. **Experience Mount Prospect is a blocked feed and a ranking
      competitor — and item 152 can address both at once.**
      `config/regions/mount-prospect-60056.yaml` records that

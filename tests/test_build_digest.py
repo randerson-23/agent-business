@@ -1,4 +1,5 @@
 import json
+import re
 import sys
 import xml.etree.ElementTree as ET
 from datetime import date, datetime, timezone
@@ -2030,6 +2031,23 @@ def test_build_sitemap_xml_includes_trick_or_treat_url():
     summaries = [{**REGION, "event_count": 1, "path": "mount-prospect-60056/"}]
     xml = build_digest.build_sitemap_xml(summaries, datetime.now(timezone.utc))
     assert f"<loc>{build_digest.SITE_BASE_URL}trick-or-treat/</loc>" in xml
+
+
+def test_collect_sitemap_urls_never_contains_a_year():
+    # ROADMAP.md item 160 / DESIGN_PRINCIPLES.md "Permanent URLs": seasonal
+    # and recurring pages keep one permanent URL forever, with the year in
+    # the content, never the path - a new URL per year starts the
+    # backlink/rank clock over from zero. This is the enforcement: no path
+    # this function emits may contain a bare four-digit year.
+    summaries = [
+        {**REGION, "path": "mount-prospect-60056/", "guide_slugs": ["fall-family-guide", "seasonal-circuit-guide"]}
+    ]
+    urls = build_digest.collect_sitemap_urls(summaries)
+    assert urls, "expected at least the hub-level URLs"
+    # (?<!\d)\d{4}(?!\d): an isolated 4-digit run, so a 5-digit ZIP in the
+    # path (e.g. mount-prospect-60056) doesn't false-positive as a year.
+    for url in urls:
+        assert not re.search(r"(?<!\d)\d{4}(?!\d)", url), f"URL contains a year: {url}"
 
 
 def test_build_sitemap_xml_includes_things_to_do_url():
