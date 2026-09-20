@@ -109,3 +109,23 @@ jobs:
               issue_number: context.issue.number,
               body: `Thanks! Opened ${process.env.PR_URL} for review — it goes live once a person merges it.`,
             });
+
+      # A real gap found by a live test (ROADMAP.md item 13): a parsed
+      # submission that fails to become a PR - e.g. "Open a pull request
+      # for review" erroring - left the issue completely silent, no
+      # different from one nobody ever looked at. failure() (not a plain
+      # boolean check) is required here specifically because it's the one
+      # thing that keeps a step running after an earlier step in the same
+      # job has failed - every other `if:` in this file implicitly
+      # requires success() too and would just get skipped.
+      - name: Comment when a parsed submission couldn't become a pull request
+        if: failure() && steps.parse.outputs.exit_code == '0'
+        uses: actions/github-script@v9
+        with:
+          script: |
+            await github.rest.issues.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number,
+              body: "Thanks for the submission! This parsed correctly, but something went wrong opening the review pull request. A person will need to check this repository's Actions log for this workflow run to see what happened.",
+            });
