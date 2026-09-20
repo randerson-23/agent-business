@@ -219,8 +219,9 @@ doesn't re-suggest something already shipped.
 Everything below blocks on one person taking a real action outside this
 repo — a DNS/dashboard toggle, a real email sent, a spend or naming
 decision only the owner can make. Grown well past "deliberately short"
-since the twenty-first pass's cleanup (2026-09-16): nine rows as of
-2026-09-20, not because things are backing up unaddressed, but because
+since the twenty-first pass's cleanup (2026-09-16): eight rows as of
+2026-09-20 (one closed same-day — see below), not because things are
+backing up unaddressed, but because
 each research pass since has kept finding new real, well-scoped actions
 faster than one owner can clear them in a sitting — a healthy backlog to
 have, not a stuck one. The four items the owner cleared on 2026-09-16
@@ -259,9 +260,18 @@ item 105's combined template, not a dry run. (One earlier manual run,
 Buttondown's own first-API-call interlock; the very next commit added
 the required header and the next run succeeded.)
 
+**Closed since the last check:** "Allow GitHub Actions to create and
+approve pull requests" (item 13) — Ryan flipped it 2026-09-20. Not
+just trusted: live-verified with a third test issue (#199, closed)
+immediately after. It worked completely — real run `35509989841`
+succeeded, and the resulting PR (#200) had a clean, correctly-formed
+7-line diff to `config/regions/palatine-60067.yaml`, nothing corrupted.
+Closed #200 without merging (test content) and #199 with the
+confirmation. The community event-submission feature now works
+end-to-end for the first time since it shipped in PR #31.
+
 | Action | One line why | Unblocks |
 |---|---|---|
-| **Enable "Allow GitHub Actions to create and approve pull requests"** — Settings → Actions → General → Workflow permissions, on this repo (item 13) | **A shipped feature has never actually worked, confirmed by a real live test (issue #189, closed), not by re-reading the code.** `event-submission.yml` parses a submission and commits it to a branch correctly, then fails to open the PR: `GitHub Actions is not permitted to create or approve pull requests`. Every real community submission this form has ever received has silently failed the same way — parsed, committed, never surfaced as a reviewable PR, no visible error short of digging into a failed Actions run. Nothing reached `main`, so the site itself was never at risk — just a dead-on-arrival feature. One checkbox fixes it. | Makes the community event-submission feature (item 13) actually work for the first time |
 | **Send the local press pitch** to the **Daily Herald first** (item 125 found Journal & Topics runs its own competing Event Calendar, so it's the second attempt, not the first; template reordered in `OUTREACH_TEMPLATES.md` §7) | **The single highest-yield action available, by a wide margin, and now the only thing standing between a working site and an audience.** A local-media mention is worth 100-500 subscribers in a day (seventeenth pass); nothing else here is close for one email's effort. Every dependency it ever had is now cleared: the domain resolves, HTTPS serves, the signup form is live, the sponsor CTA works, Google has the sitemap, and the automated send is now proven end-to-end with a real successful live send (see above) - a reporter who signs up gets a real, working weekly email, not a hypothetical one. The email needs picking a real reporter and hitting send. | 100-500 real subscribers from one email |
 | Run a real trademark search before spending money on the domain, signage, print, or sponsor contracts (item 69) | **Reduced, not eliminated, by the pivot to "Within Ten".** The name was changed *because* WebSearch found "PORCHLIGHT" is a registered mark (reg. 6028585) held by a company that publishes a newsletter to ~60,000 readers. "Within Ten"/"WithinTen" turned up **no registered mark** - materially cleaner. But a web search is not a clearance search: it misses common-law use, similar-sounding marks and state registrations. Worth its small cost before money is committed, not after. | Spending safely on signage, print, sponsor contracts |
 | **Check Settings → Subscribing → Welcome** in Buttondown's dashboard, and write/enable one welcome email there if it's free-plan-available (item 106) | One-time, no-code, and the highest-open message this business will ever send (welcome emails average 34.79% opens, up to 4x a regular issue's) — but it needs a human in Buttondown's dashboard; there is no API surface for it to build against from here. WebSearch narrowed but didn't fully resolve the cost question: Buttondown's paid "automations"/welcome-*sequence* feature is confirmed $29/month and **not what this needs** — the one-off welcome email is a separate, simpler *transactional* email toggle, and whether that specific toggle is free-plan-available couldn't be confirmed from outside the account. Check that one setting before assuming either "it's free" or "it needs the $29/month upgrade." Write **one** good welcome email if it's there, not an e-commerce-style three-part drip. | The highest-engagement touchpoint currently going unsent |
@@ -673,6 +683,26 @@ weekend is. That is the moat, and the site should say so out loud (a one-line
     flipped too — any *other* future reason `create-pull-request` might
     fail (a branch conflict, a rate limit) now gets the same visibility
     instead of the same silence.
+
+    🟢 **The actual fix, confirmed live, 2026-09-20.** Ryan checked #189's
+    email notification, read the diagnosis above, and flipped the
+    Settings toggle within the hour. Rather than take that on faith, ran
+    a third real test (#199, closed) immediately after: real run
+    `35509989841` succeeded end-to-end, and the resulting PR (#200) had
+    a clean, correctly-formed 7-line diff to
+    `config/regions/palatine-60067.yaml` — nothing corrupted, exactly
+    the shape `insert_evergreen_entry()`'s own tests already promised.
+    Closed #200 without merging (test content) and #199 with the
+    confirmation. The community event-submission feature this item
+    shipped in PR #31 now works end-to-end for the first time. Also
+    worth recording plainly, since it's the whole point of this
+    exercise: Ryan got an alarming-sounding email about issue #193
+    overnight from a test this session ran and had already closed with
+    an explanation — a real instance of the cost this kind of live
+    testing can impose on the person actually watching the inbox, worth
+    weighing next time before opening a test issue that will notify him,
+    not just treating the technique as free because it's free to this
+    loop.
 
 #### Research pass 2026-08-27 (second pass)
 
