@@ -2465,6 +2465,16 @@ def test_render_email_digest_lists_weekend_events():
     assert "Aug 29–30" in html
 
 
+def test_render_email_digest_asks_for_a_reply_in_the_footer():
+    # ROADMAP.md item 157: a reply is a stronger deliverability signal
+    # than the click-through CTA, and replies now reach a real inbox
+    # (item 93) - a quiet footer line asking for one, not a competing
+    # button.
+    region = {"name": "Mount Prospect"}
+    html = build_digest.render_email_digest(region, [], [], "https://x/mount-prospect-60056/", "Aug 29–30", None)
+    assert "Hit reply" in html
+
+
 def test_render_email_digest_body_type_meets_the_16px_mobile_floor():
     # ROADMAP.md Phase 11 #97: 55%+ of opens are mobile and the stated
     # floor is 16px, but event titles shipped at 15px and dates/details
@@ -2643,6 +2653,22 @@ def test_render_combined_email_digest_shows_every_region():
     assert "Memorial Library" in html
     assert 'href="https://x/mount-prospect-60056/"' in html
     assert 'href="https://x/arlington-heights-60005/"' in html
+
+
+def test_render_combined_email_digest_asks_for_a_reply_in_the_footer():
+    # ROADMAP.md item 157: same reply-ask footer line as the per-region
+    # email, once for the whole combined issue.
+    sections = [
+        {
+            "region_name": "Mount Prospect",
+            "region_url": "https://x/mount-prospect-60056/",
+            "weekend_events": [],
+            "evergreen": [],
+            "sponsor": None,
+        }
+    ]
+    html = build_digest.render_combined_email_digest(sections, "Sep 18–20", datetime.now(timezone.utc))
+    assert "Hit reply" in html
 
 
 def test_render_combined_email_digest_groups_informational_events_per_region():
