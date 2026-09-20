@@ -164,6 +164,14 @@
 
   .answer-block { color: var(--muted); font-size: 14px; line-height: 1.6; margin: 4px 0 18px; max-width: 640px; }
 
+  /* ROADMAP.md item 163: dateModified already sits in the JSON-LD, but
+     that's machine-only - nothing on the rendered page told a human
+     reader this exists at all. Deliberately near the listings (not
+     buried in the footer's own "Generated ..." line, which nobody
+     scrolls to read) and deliberately muted rather than a badge - the
+     fact should be findable, not shouted. */
+  .freshness-note { color: var(--muted); font-size: 13px; margin: 0 0 14px; }
+
   /* ROADMAP.md Phase 11 #100: subscribable calendar, distinct from a
      per-event "add to calendar" (.cal-row) - one subscription covers
      every future event, so it earns a more visible treatment than a
@@ -662,6 +670,8 @@
 
   
 
+  <p class="freshness-note">Updated automatically — last checked Sunday, September 20.</p>
+
   
 
   
@@ -788,7 +798,7 @@
     <a href="https://withintenmiles.com/sponsor/">sponsor page</a>.
     <a href="https://withintenmiles.com/about/">About</a>.
     <a href="https://withintenmiles.com/trick-or-treat/">Trick-or-treat hours</a>.
-    <br>Generated 2026-09-20 14:54 UTC.
+    <br>Generated 2026-09-20 18:57 UTC.
     
     <br><a href="https://withintenmiles.com/mount-prospect-60056/weekly-summary.txt">Copy this week's summary</a> — a plain-text block ready to paste into a local group.
   </footer>
@@ -812,7 +822,7 @@
 
 
 
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebPage", "name": "Mount Prospect — Within Ten", "url": "https://withintenmiles.com/mount-prospect-60056/guides/", "dateModified": "2026-09-20T14:54:40.197234+00:00", "isPartOf": {"@type": "WebSite", "name": "Within Ten", "url": "https://withintenmiles.com/", "publisher": {"@id": "https://withintenmiles.com/about/#organization"}}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebPage", "name": "Mount Prospect — Within Ten", "url": "https://withintenmiles.com/mount-prospect-60056/guides/", "dateModified": "2026-09-20T18:57:09.055940+00:00", "isPartOf": {"@type": "WebSite", "name": "Within Ten", "url": "https://withintenmiles.com/", "publisher": {"@id": "https://withintenmiles.com/about/#organization"}}}</script>
 <script>
 (function () {
   var activeTags = new Set();
