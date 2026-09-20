@@ -7715,3 +7715,18 @@ than half (both item 98), and now the citation data itself.
   and CI-enforced, not a one-off manual check that goes stale the next
   time a new page template ships. Confirmed the full 7-URL set still
   passes `lhci assert` locally before committing.
+
+  Third pass, 2026-09-20 (same day, third hourly firing since): no new
+  research pass, no open issues/PRs, `data/source_health.json` unchanged
+  since the last real CI build — so this pass exercised the one
+  checklist item the first two hadn't yet: WebSearch-spot-checking a
+  genuine visitor's outbound links, not the fetch `sources:` URLs
+  `source_health.json` already tracks. Sampled six of the least-stable-
+  looking links from `config/regions/*.yaml`'s `evergreen`/`guides`
+  entries (the four item-148 HS athletics pages, one named event page,
+  one district registration page) — all six resolve and match the
+  config exactly, confirmed via `site:` searches returning the exact
+  URL with real, current page content. Nothing broken; also separately
+  confirmed via the real GitHub Actions run for the previous PR
+  (`35530681553`) that CI's own Lighthouse assertions passed for real
+  against the expanded 7-URL set, not just in this sandbox's local run.
