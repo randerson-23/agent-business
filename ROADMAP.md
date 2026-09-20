@@ -7538,3 +7538,18 @@ deliberately build-loop-shaped.
   category of sandbox-only false signal item 51 already documents for
   the fetchers, not a real defect in what CI's own unrestricted browser
   would see.
+
+  Second pass, 2026-09-20 (same day, next hourly firing): the first
+  pass's own Lighthouse re-run exposed a real gap in what it was
+  re-running against — `lighthouserc.json`'s four URLs never included
+  item 158's new `/things-to-do/` page, a guide detail page (the only
+  template with its own `FAQPage` schema besides things-to-do), or the
+  directory page (the only template with a real empty-state UI). All
+  three were genuinely unchecked by CI, not just unchecked by this
+  pass. Ran them locally the same way as the first pass — clean across
+  the board (performance/accessibility/SEO all 1.0, same sandbox-only
+  best-practices non-issue) — then added all three to
+  `lighthouserc.json`'s own URL list so this coverage is now permanent
+  and CI-enforced, not a one-off manual check that goes stale the next
+  time a new page template ships. Confirmed the full 7-URL set still
+  passes `lhci assert` locally before committing.
