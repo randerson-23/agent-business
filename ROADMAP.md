@@ -258,6 +258,7 @@ the required header and the next run succeeded.)
 | **Set up the welcome email** in Buttondown's UI (item 106) | One-time, no-code, and the highest-open message this business will ever send (welcome emails average 34.79% opens, up to 4x a regular issue's) — but it needs a human in Buttondown's dashboard; there is no API surface for it to build against from here. Two things worth checking/writing before turning it on: confirm the free plan actually exposes a welcome/greeting email (unverified — the sending API working is not evidence about this separate feature), and write **one** good welcome email, not an e-commerce-style three-part drip — this is a local newsletter, not a cart-abandonment flow. | The highest-engagement touchpoint currently going unsent |
 | **Check Buttondown's dashboard after this Wednesday night** (send-newsletter.yml's cron is now `37 22 * * 3` — ~5:37pm Chicago Wednesday) to confirm item 110's `schedule` mode actually worked | This is the one thing this sandbox genuinely cannot verify: `publish_date`/`status: "scheduled"` are this session's best-documented *guess* at Buttondown's API shape, unconfirmed against a real response — unlike `about_to_send`'s header, which a real 400 already proved. If the guess is wrong, the job will fail loudly (surfaced-verbatim by design) rather than silently mis-schedule, so a failed run is itself informative; check either way, since a genuine several-hours-early margin to fix it is the entire point of moving the cron off Thursday morning. | Confirms the researched Thursday-07:00-Central slot is actually being honored, not just believed to be |
 | **Send the newsletter cross-recommendation email** to Northwest Neighbor (item 25, template drafted in `OUTREACH_TEMPLATES.md` §10) | A real, WebSearch-confirmed candidate: a free weekly newsletter covering the same northwest suburbs (Arlington Heights overlaps directly), different send day (Tuesday vs. Thursday) and a different angle (neighborhood lifestyle/openings vs. structured event aggregation) — complementary, not competing. Publishers who recommend others are 32× more likely to be recommended back. Who runs it wasn't findable by search, so the email opens with a question rather than a name — needs a human to send it and follow the reply. | A reciprocal-recommendation relationship with an overlapping, non-competing local audience |
+| **Send the civic-source link-back emails** — one each to the village/city site, public library, and park district in each region (item 152, template drafted in `OUTREACH_TEMPLATES.md` §11; full source list is each region's own `sources:` in `config/regions/*.yaml`) | The strongest local backlinks available, and a demonstrable, reciprocal ask rather than a favor: item 131 verified 19/19 event cards already link out to the publisher that posted the event, so every issue already sends these same organizations readers. Six-plus organizations across four towns, each a separate email (send one at a time, not a batch blast) — no cost, no deadline, and a "no" from any one costs nothing. | 5-10 quality local `.gov`/`.org` backlinks — the research says this beats 50 directory listings |
 | **Decide whether to put a real name on the About page** (item 130) — currently "written and run by a local parent" | An anonymous automated local-events site now pattern-matches to the 200+ AI-generated "local news" sites shut down in August for invented bylines. The press pitch, sponsor conversations, and the "we're not one of those sites" claim (item 124) all sell the person, not just the product — but this trades the owner's own privacy for credibility, which is his call. A first name + last initial beats full anonymity by a wide margin if full disclosure isn't wanted. | Makes the press pitch (item 77/125) and sponsor conversations (items 118/119) sellable on a real person, not an anonymous automation |
 
 **Nearly done, no longer blocking:** Buttondown's sending domain (item
@@ -6805,6 +6806,22 @@ asked any of them to link back.
      organisations, four towns, and a "no" from one costs nothing. It is
      also the most durable of the three, because a community-links entry
      keeps working every month without being re-sent.
+
+     ⚠️ **Template drafted, sending still needs Ryan — same shape as
+     items 25 and 77.** `OUTREACH_TEMPLATES.md` §11 (§10 was already
+     taken by item 25's newsletter cross-recommendation template, drafted
+     the same session) — one adaptable template with
+     `[Organization Name]`/`[Contact Name]`/`[link]` placeholders rather
+     than six hardcoded emails, since the actual target list is longer
+     than the six domains named above once every region's own park
+     district and village/city site is counted (see each region's
+     `sources:` in `config/regions/*.yaml` for the full, real list — not
+     re-guessed here). Leads with what the site already does for them
+     (the 19/19 verified backlink from item 131), asks the actual
+     question directly, and offers to correct or remove anything they'd
+     rather not see aggregated, per the item's own requirement. Added to
+     the "Needs Ryan" table above — sending one at a time, not a batch
+     blast, is a human judgment call this loop shouldn't make on its own.
 
 #### P2 (new)
 

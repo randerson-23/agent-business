@@ -317,3 +317,56 @@ obligation either way, and happy to share a sample issue first.
 Thanks for what you're building for the area,
 [Your name]
 Within Ten — https://withintenmiles.com/
+
+## 11. Ask a civic source to link back (ROADMAP.md Phase 11 #152)
+
+A `.gov` or `.org` tied to your own geography is the strongest local
+backlink there is — a handful of those outperform dozens of generic
+directory listings — and this site's natural candidates are the exact
+sources it already sends readers to every week: each region's village/
+city site, public library, and park district (`mountprospect.org`,
+`mppl.org`, `mppd.org`, `dppl.org`, `ahml.info`, `palatinelibrary.org`,
+`palatineparks.org`, and the rest of each region's own `sources:` list
+in `config/regions/*.yaml`).
+
+This isn't ordinary link-begging, and the email should say so plainly:
+item 131 verified **19 of 19** event cards link out to the publisher
+that actually posted the event, so every issue already sends readers to
+that library's programme page or that park district's registration
+page. The ask is "we already send you readers every week — would you
+add us to your community links page?", not "please link to me for
+nothing." Many village and library sites keep exactly such a page.
+
+One line matters more than the ask itself: offering to correct or
+remove anything they'd rather not see aggregated. It costs nothing,
+treats them as the owner of their own data, and is the difference
+between reading as a partner and reading as a scraper — the same
+posture the trick-or-treat and annual-events sections already take
+toward these same sources. Send one per organization, not four at
+once — a single "how did event scraping become public information?"
+form-reply thread across all six looks like spam even when each
+individual email isn't. Send only after a real issue exists to point
+to (same precondition as templates 8, 9, and 10).
+
+Subject: We link to [Organization Name] every week — mind returning the favor?
+
+Hi [Contact Name],
+
+I run **Within Ten** (https://withintenmiles.com/), a free weekly
+digest that pulls together village news, library events, and Park
+District programs for [region] and sends them to local families every
+week — including a link straight to [Organization Name]'s own
+[programme page / calendar / registration page] on every listing we
+pull from you: [link to the specific region page or feed].
+
+Since we're already sending you readers, I wanted to ask directly
+rather than assume: would you be open to adding Within Ten to your
+community links page, or wherever you point residents to local
+resources? Happy to share a sample issue first, and if there's ever
+anything in how we've aggregated your events you'd rather see corrected
+or removed, just say so — it's your information, and I'd rather fix it
+than have you find it wrong on your own.
+
+Thanks for everything [Organization Name] does for the town,
+[Your name]
+Within Ten — https://withintenmiles.com/
