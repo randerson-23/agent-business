@@ -10,8 +10,10 @@ import pytest
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "scripts"))
 from send_newsletter import (  # noqa: E402
     COMBINED_REGION,
+    MIN_WEEKEND_EVENTS,
     SendError,
     assert_build_is_fresh,
+    assert_weekend_is_not_thin,
     extract_subject,
     html_byte_size,
     load_send_config,
@@ -19,6 +21,7 @@ from send_newsletter import (  # noqa: E402
     next_thursday_morning,
     read_build_timestamp,
     read_built_email,
+    read_weekend_event_count,
     record_send,
     save_send_history,
 )
@@ -358,6 +361,47 @@ def test_assert_build_is_fresh_rejects_a_stale_build():
     build_time = now - timedelta(days=5)
     with pytest.raises(SendError, match="docs/feed.xml"):
         assert_build_is_fresh(build_time, now)
+
+
+def test_read_weekend_event_count_combined_region_returns_total(tmp_path):
+    path = tmp_path / "weekend_signal.json"
+    path.write_text(
+        '{"region_counts": {"mount-prospect-60056": 1, "palatine-60067": 0}, "total": 1}',
+        encoding="utf-8",
+    )
+    assert read_weekend_event_count(COMBINED_REGION, path=path) == 1
+
+
+def test_read_weekend_event_count_single_region_returns_its_own_count(tmp_path):
+    path = tmp_path / "weekend_signal.json"
+    path.write_text(
+        '{"region_counts": {"mount-prospect-60056": 4, "palatine-60067": 0}, "total": 4}',
+        encoding="utf-8",
+    )
+    assert read_weekend_event_count("palatine-60067", path=path) == 0
+    assert read_weekend_event_count("mount-prospect-60056", path=path) == 4
+
+
+def test_read_weekend_event_count_unknown_region_is_zero_not_a_crash(tmp_path):
+    path = tmp_path / "weekend_signal.json"
+    path.write_text('{"region_counts": {}, "total": 0}', encoding="utf-8")
+    assert read_weekend_event_count("wheeling-60090", path=path) == 0
+
+
+def test_read_weekend_event_count_missing_file_names_the_build_step(tmp_path):
+    with pytest.raises(SendError, match="build_digest.py"):
+        read_weekend_event_count(COMBINED_REGION, path=tmp_path / "weekend_signal.json")
+
+
+def test_assert_weekend_is_not_thin_allows_the_floor_exactly():
+    assert_weekend_is_not_thin(MIN_WEEKEND_EVENTS, COMBINED_REGION)  # does not raise
+
+
+def test_assert_weekend_is_not_thin_rejects_below_the_floor():
+    # ROADMAP.md item 172: the fortieth research pass's own example - a
+    # combined issue with one event across five towns should not send.
+    with pytest.raises(SendError, match="floor"):
+        assert_weekend_is_not_thin(1, COMBINED_REGION)
 
 
 def test_load_send_history_missing_file_returns_empty_list(tmp_path):

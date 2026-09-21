@@ -308,6 +308,20 @@ Buttondown's documented API shape, so this is now docs-verified but
 still not live-API-verified; a failed run surfaces loudly by design, so
 check either way.
 
+Update, same day (item 172): that Wednesday run will very likely fail
+by design, not by accident. The live build this pass produced counted
+only 1 dated event across all five regions — well under the floor
+item 172 just added — so `send_newsletter.py` will refuse and the
+workflow will show red. That is the intended behavior, not a bug to
+chase: it is the guard stopping the first-ever scheduled send from
+going out as a one-event issue. If Wednesday's real count is still
+under the floor, this is exactly item 172's second decision, now live
+rather than hypothetical: let it skip (recommended — nothing else to
+do), or run `python scripts/send_newsletter.py --force-thin` by hand
+to send anyway. Either way it's a one-line decision, not new
+investigation, since item 159's source-health re-verification is the
+actual fix and is already the loop's own standing work.
+
 **Closed since the last check:** `BUTTONDOWN_API_KEY` — the owner added
 it, and it works. Real evidence, checked directly against GitHub
 Actions rather than assumed: workflow run `35176614362` (2026-09-17
@@ -8154,6 +8168,34 @@ anything cosmetic.
      155 argues the early sends are exactly the ones that set the habit.
      The second decision is Ryan's and only if he wants it: skip a week
      deliberately rather than send a thin issue.
+
+     🟢 **Shipped 2026-09-21** (the loop's half of this - the floor).
+     `build_digest.py` now writes `data/weekend_signal.json` (same
+     committed-JSON pattern as `data/source_health.json`) recording each
+     region's dated weekend-event count plus the total, right after
+     item 171's filter runs so the number is honest. `send_newsletter.py`
+     reads it and refuses to `send`/`schedule` (not `draft` - a thin
+     draft is still worth a human look) below `MIN_WEEKEND_EVENTS = 3`,
+     with a `--force-thin` flag for a deliberate override rather than
+     editing code under time pressure. Verified against the real build
+     this pass produced: the combined issue's actual count is **1**
+     (Mount Prospect's farmers market only), and
+     `python scripts/send_newsletter.py --dry-run` now refuses with
+     `"Only 1 dated event(s) for 'combined' this week (floor: 3)"` -
+     confirmed live, not assumed, and confirmed `--force-thin` correctly
+     bypasses it. This is the guard for Wednesday's imminent first real
+     `schedule`-mode send (2026-09-23): without it, that send would have
+     gone out as the one-event issue this item describes. 7 new tests
+     (430 total pass). The second decision - whether Ryan wants to skip
+     this week outright rather than let the guard hold it back - is
+     still his, not the loop's, and is now the most useful thing to
+     bring to him: see "Needs Ryan" below.
+
+     This doesn't fix the thinness itself, only stops it from mailing.
+     Item 159's standing re-verification work (403s and zero-item feeds
+     in `data/source_health.json`) is what actually raises the real
+     count, and stays the higher-value target once this guard is in
+     place.
 
 #### P2 (new)
 

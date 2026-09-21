@@ -23,7 +23,7 @@ headline: "Get it in your inbox"
 # given subscriber is in and put it first. The fix is to say what actually
 # ships: one email, one fixed order (same as load_regions()'s alphabetical
 # sort in scripts/build_digest.py), named plainly instead of implied.
-detail: "One email, Thursday mornings, covering Arlington Heights, Des Plaines, Mount Prospect, and Palatine. No spam, unsubscribe anytime."
+detail: "One email, Thursday mornings, covering Arlington Heights, Des Plaines, Mount Prospect, Palatine, and Wheeling. No spam, unsubscribe anytime."
 
 # Automated weekly send (ROADMAP.md Phase 11 #24/#31), added 2026-09-17 at
 # the owner's request. scripts/send_newsletter.py reads the already-built
