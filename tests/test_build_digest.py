@@ -3097,6 +3097,121 @@ def test_render_combined_email_digest_preview_shows_annotation():
     assert "PREVIEW ONLY" not in send_html
 
 
+def test_pick_evergreen_highlights_draws_from_more_than_one_source():
+    # ROADMAP.md item 177: every region's evergreen list only ever has
+    # one "free"-tagged entry (the library), so the old
+    # `[e for e in evergreen if "free" in tags][:3]` filter always
+    # returned exactly that one item regardless of its own slice limit -
+    # this is the real shape (library, park district, village) each
+    # region's config actually has.
+    evergreen = [
+        {"title": "Mount Prospect Public Library", "url": "https://x/1", "tags": ["free"]},
+        {"title": "Mount Prospect Park District", "url": "https://x/2", "tags": ["outdoor"]},
+        {"title": "Village of Mount Prospect", "url": "https://x/3", "tags": []},
+    ]
+    picks = build_digest._pick_evergreen_highlights(evergreen, limit=2)
+    titles = [p["title"] for p in picks]
+    assert titles == ["Mount Prospect Public Library", "Mount Prospect Park District"]
+
+
+def test_pick_evergreen_highlights_fills_from_other_sources_with_no_free_tag():
+    evergreen = [
+        {"title": "Village of X", "url": "https://x/1", "tags": []},
+        {"title": "X High School Athletics", "url": "https://x/2", "tags": []},
+    ]
+    picks = build_digest._pick_evergreen_highlights(evergreen, limit=1)
+    assert [p["title"] for p in picks] == ["Village of X"]
+
+
+def test_render_combined_email_digest_collapses_two_or_more_empty_regions():
+    # ROADMAP.md item 177 (forty-first research pass): a real thin-week
+    # build had four of five region blocks read the identical "Nothing
+    # new dated for this weekend yet, but worth knowing about:"
+    # sentence. Two or more genuinely empty regions (no attendable
+    # event, no informational note, no active sponsor) now collapse
+    # into one shared block instead of repeating that sentence once
+    # per region.
+    sections = [
+        {
+            "region_name": "Mount Prospect",
+            "region_url": "https://x/mount-prospect-60056/",
+            "weekend_events": [{"title": "Farmers Market", "date": "Sep 20", "url": "https://x/0", "attendable": True}],
+            "evergreen": [],
+            "sponsor": None,
+        }
+    ] + [
+        {
+            "region_name": name,
+            "region_url": f"https://x/{name}/",
+            "weekend_events": [],
+            "evergreen": [{"title": f"{name} Library", "url": f"https://x/{name}/lib", "tags": ["free"]}],
+            "sponsor": None,
+        }
+        for name in ["Arlington Heights", "Des Plaines", "Palatine", "Wheeling"]
+    ]
+    html = build_digest.render_combined_email_digest(sections, "Sep 18–20", datetime.now(timezone.utc))
+    # The identical per-region sentence never repeats...
+    assert "Nothing new dated for this weekend yet, but worth knowing about:" not in html
+    # ...replaced by one shared line naming every empty region...
+    assert "Nothing dated yet in Arlington Heights, Des Plaines, Palatine, or Wheeling" in html
+    # ...each still linking to its own real evergreen pick.
+    assert "Arlington Heights Library" in html
+    assert "Des Plaines Library" in html
+    assert "Palatine Library" in html
+    assert "Wheeling Library" in html
+    assert "Farmers Market" in html
+
+
+def test_render_combined_email_digest_does_not_collapse_a_single_empty_region():
+    sections = [
+        {
+            "region_name": "Mount Prospect",
+            "region_url": "https://x/mount-prospect-60056/",
+            "weekend_events": [{"title": "Farmers Market", "date": "Sep 20", "url": "https://x/0", "attendable": True}],
+            "evergreen": [],
+            "sponsor": None,
+        },
+        {
+            "region_name": "Arlington Heights",
+            "region_url": "https://x/arlington-heights-60005/",
+            "weekend_events": [],
+            "evergreen": [{"title": "AH Library", "url": "https://x/ah-lib", "tags": ["free"]}],
+            "sponsor": None,
+        },
+    ]
+    html = build_digest.render_combined_email_digest(sections, "Sep 18–20", datetime.now(timezone.utc))
+    assert "Nothing new dated for this weekend yet, but worth knowing about:" in html
+    assert "Nothing dated yet in" not in html
+
+
+def test_render_combined_email_digest_excludes_sponsored_region_from_collapse():
+    # A paying sponsor's placement (item 169's per-region tier) must not
+    # get folded into the shared empty-regions block even when every
+    # other region collapses - that placement is what the tier sells.
+    sections = [
+        {
+            "region_name": "Mount Prospect",
+            "region_url": "https://x/mount-prospect-60056/",
+            "weekend_events": [],
+            "evergreen": [],
+            "sponsor": {"title": "Acme Dentistry", "url": "https://x/3", "is_active_sponsor": True},
+        }
+    ] + [
+        {
+            "region_name": name,
+            "region_url": f"https://x/{name}/",
+            "weekend_events": [],
+            "evergreen": [],
+            "sponsor": None,
+        }
+        for name in ["Arlington Heights", "Des Plaines"]
+    ]
+    html = build_digest.render_combined_email_digest(sections, "Sep 18–20", datetime.now(timezone.utc))
+    assert "LOCAL RECOMMENDATION" in html
+    assert "Acme Dentistry" in html
+    assert "Nothing dated yet in Arlington Heights or Des Plaines" in html
+
+
 def test_render_email_digest_shows_sponsor_only_when_active():
     region = {"name": "Mount Prospect"}
     inactive = {"title": "Sponsor this spot", "detail": "", "url": "", "is_active_sponsor": False}

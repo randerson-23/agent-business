@@ -8624,6 +8624,61 @@ about to stop Wednesday's send.**
      point is not to hide that a week is quiet; it is to say so once,
      briefly, rather than four times at full length.
 
+     🟢 **Shipped 2026-09-21, two of three.** Confirmed the exact
+     mechanism before touching anything: every region's `evergreen:`
+     list is `[library, park district, village, HS athletics]` in that
+     order, and only the library entry ever carries an explicit `free`
+     tag - so `[e for e in evergreen if "free" in tags][:3]` always
+     returned exactly one item (the library) no matter how high its
+     slice limit was, real config confirmed for all five regions before
+     assuming it. New `_pick_evergreen_highlights()` helper prefers the
+     free-tagged item first, then fills remaining slots from the
+     region's own remaining evergreen entries in their existing curated
+     order - a standalone region block now shows up to 2 distinct
+     sources (library + park district) instead of one.
+
+     Collapsing: `render_combined_email_digest()` now separates regions
+     with genuinely nothing (no attendable event, no informational
+     note, and *no active sponsor* - a paying sponsor's per-region
+     placement, item 169's tier, is never folded away) from the rest,
+     and only collapses them into one shared block once **two or more**
+     qualify at once - `_join_names(..., conjunction="or")` (the
+     existing subject-line joiner, given a second conjunction option)
+     produces "Nothing dated yet in Arlington Heights, Des Plaines,
+     Palatine, or Wheeling — worth knowing about:" followed by one
+     compact line per region with its own real link, replacing four
+     repeats of the identical sentence. A single empty region still
+     reads as its own ordinary card - collapsing only pays off once
+     there's real repetition to remove.
+
+     Verified against this build's own real output (this sandbox's
+     network is blocked, so every non-Mount-Prospect region is
+     genuinely empty right now - an honest, if extreme, test of the
+     collapse path): `docs/combined-email-preview.html` shows exactly
+     one "Nothing dated yet in Arlington Heights, Des Plaines,
+     Palatine, or Wheeling" line, zero repeats of the old per-region
+     sentence, and Mount Prospect's real farmers-market card untouched
+     alongside it - screenshotted, not just grepped. 6 new tests (441
+     total pass), covering the multi-source pick, the collapse
+     threshold (2+ triggers it, 1 doesn't), and the sponsored-region
+     exclusion.
+
+     **Not attempted, and said plainly rather than guessed at:** the
+     third improvement (prefer a recurring entry when one's in range)
+     turns out to be structurally unreachable with today's data. Only
+     Mount Prospect has a `recurring: true` annual event (item 141's
+     Sunday farmers market, in season through Oct 25), and a weekly
+     recurrence's dated occurrence always lands inside the Fri–Sun
+     window it's checked against - so whenever that market is in
+     season, Mount Prospect's `attendable_events` is never empty and
+     the fallback branch this item is about never fires for it in the
+     first place. No other region has any recurring entry at all.
+     Writing the "prefer recurring" logic anyway would be dead code
+     with nothing real to exercise it - worth revisiting only once a
+     second region gets one, or once the farmers market's season ends
+     and its own fallback behavior can be checked against reality
+     instead of assumed.
+
 ## Working agreements for autonomous iteration
 
 - Cadence is hourly (the platform's durable scheduler has a 1-hour floor;
