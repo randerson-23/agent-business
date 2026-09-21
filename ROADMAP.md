@@ -8828,6 +8828,25 @@ about to stop Wednesday's send.**
   as pending (130 as the ranked "Next action," 77 and 25 in "After
   that"/"Small, no-decision-required"), so the markers and the section
   they describe haven't drifted apart from each other.
+
+  Sixth pass, 2026-09-21 (next hourly firing, queue still thin - no
+  new research pass since the forty-first). The third and fourth
+  passes' WebSearch link-checking had only ever sampled Des Plaines
+  and Mount Prospect; this pass covered Palatine instead, given item
+  175's fix touched it directly this cycle. Sampled six outbound
+  evergreen/guide/annual-event links from `config/regions/
+  palatine-60067.yaml`: Fremd HS Athletics, the Village's own Farmers'
+  Market page, the Public Library's library-card page, CCSD15's
+  registration page, D211's own site, and the Rotary Club's
+  Oktoberfest page. All six resolve and match their config
+  descriptions exactly - real content, current, at the exact URL
+  configured. The Oktoberfest check turned up a genuinely useful
+  confirmation rather than just a non-finding: WebSearch's own result
+  independently states the 16th Annual Oktoberfest runs Friday–Sunday,
+  September 20-22, 2026 - the identical Fri/Sat/Sun the three
+  `annual_events` entries for it already carry, confirming the
+  config's dates against a source outside this repo, not just
+  internal consistency. Nothing broken; nothing to fix.
 - **The research loop leaves at most three open owner decisions at a
   time (item 165).** A six-item "Needs Ryan" queue, none of it acted on
   in a week, is itself the finding — presenting equal-looking options
