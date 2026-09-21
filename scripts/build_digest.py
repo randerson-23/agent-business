@@ -2292,6 +2292,56 @@ def filter_events_by_dates(blocks: list[dict], target_dates: set[date]) -> list[
     return matched
 
 
+def filter_past_events(blocks: list[dict], today: date) -> list[dict]:
+    """Drop dated items whose date has already passed, evaluated against
+    `today` (region_local_date()'s result, not a bare UTC now - the same
+    local-date precaution region_local_date's own docstring explains).
+    ROADMAP.md item 171: every dated view on the site treats freshness as
+    its one structural advantage over generated local-content sites, but
+    nothing anywhere ever dropped a stale item, so a scraped or curated
+    event kept showing for weeks after it happened - confirmed on the
+    live build (Palatine's dated inventory was entirely last weekend's
+    Oktoberfest; Arlington Heights served a sign-up dated three weeks
+    gone).
+
+    Undated items (no date_iso) pass straight through untouched -
+    evergreen/guide entries never reach this function at all (they're
+    separate lists built by prepare_evergreen/prepare_guides and have no
+    date fields to begin with), but a fetched item without a resolved
+    date is common and isn't "past", it's just undated.
+
+    Applied once, here, to every block before it's used for anything -
+    not a second filter to keep in sync with filter_events_by_dates
+    below, which only narrows an already-filtered list down to specific
+    days.
+
+    A multi-day event modeled as one dict per day (the `series` kicker -
+    see _build_annual_event_dict's docstring) needs no special-casing:
+    each day has its own date_iso, so only the days that have actually
+    happened drop, and the festival's later days remain until their own
+    turn comes - "survives until its end date" falls out of filtering
+    per-occurrence rather than needing a separate start/end range. A
+    weekly-recurring entry (expand_recurring_annual_event) already never
+    generates a past occurrence in the first place, so this is a no-op
+    for those, not a second place that logic could drift out of sync.
+    """
+    filtered = []
+    for block in blocks:
+        events = []
+        for event in block["events"]:
+            iso = event.get("date_iso")
+            if iso:
+                try:
+                    event_date = datetime.fromisoformat(iso).date()
+                except ValueError:
+                    event_date = None
+                if event_date is not None and event_date < today:
+                    continue
+            events.append(event)
+        filtered.append({**block, "events": events})
+    return filtered
+
+
 def filter_free_items(blocks: list[dict], evergreen: list[dict]) -> list[dict]:
     """Every fetched event and evergreen entry tagged 'free', regardless
     of whether it has a resolved date - unlike the weekend/today views,
@@ -2361,6 +2411,7 @@ def main() -> None:
                 }
             )
 
+        local_today = region_local_date(region, now)
         blocks = fetch_region_sections(region_cfg, health=source_health)
         annual_block = prepare_annual_events(region_cfg, now)
         if annual_block:
@@ -2368,6 +2419,13 @@ def main() -> None:
             # confidence content on the page (a human put it there
             # deliberately), and it's often the most time-sensitive too.
             blocks.insert(0, annual_block)
+        # ROADMAP.md item 171: drop dated items whose date has already
+        # passed, before blocks feeds anything downstream - the main
+        # region page, the RSS feed, calendar.ics, Editor's Pick, and
+        # every date-scoped view all read from this same list, so
+        # filtering here once is what keeps them all honest instead of
+        # re-filtering (or forgetting to) in each one separately.
+        blocks = filter_past_events(blocks, local_today)
         feed_items += [
             {**e, "region_name": region["name"]}
             for b in blocks
@@ -2419,7 +2477,6 @@ def main() -> None:
         (region_dir / "calendar.ics").write_text(calendar_ics, encoding="utf-8")
         logger.info("Wrote %s", region_dir / "calendar.ics")
 
-        local_today = region_local_date(region, now)
         friday, saturday, sunday = weekend_dates(local_today)
         weekend_events = filter_events_by_dates(blocks, {friday, saturday, sunday})
         weekend_weather = build_weekend_weather(region, friday, saturday, sunday)

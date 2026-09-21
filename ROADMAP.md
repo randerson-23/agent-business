@@ -8100,6 +8100,34 @@ anything cosmetic.
      invisible in any test that uses relative dates, which is presumably
      why forty passes of green tests never caught it.
 
+     🟢 **Shipped 2026-09-21.** Added `filter_past_events(blocks, today)`
+     in `scripts/build_digest.py`, called once in `main()` right after
+     `fetch_region_sections()` and the curated `annual_events` block are
+     merged into `blocks` — every downstream consumer (the main region
+     page, calendar.ics, the RSS feed, Editor's Pick, and every
+     date-scoped view) reads from that same already-filtered list, so
+     there's one place this can drift out of sync, not several. `today`
+     is `region_local_date()`'s result (America/Chicago, not UTC), computed
+     before the fetch instead of after so the filter has it in hand.
+     Undated evergreen/guide entries never pass through this function at
+     all (they're separate lists). A multi-day festival modeled as one
+     dict per day needed no special handling — each day already carries
+     its own `date_iso`, so only the days that have actually happened
+     drop and the festival's later days remain; a weekly-recurring entry
+     already never generated a past occurrence (item 141), so this is a
+     no-op there, confirmed rather than assumed by reading
+     `expand_recurring_annual_event` before writing this fix. Verified
+     against a real local build: Palatine's Sep 18–20 Oktoberfest cards
+     disappeared from the region page and Editor's Pick fell back to the
+     library's evergreen listing, exactly as expected. Two new tests
+     added, including the fixture-dated-yesterday one the finding asked
+     for, computed relative to a fixed reference date rather than the
+     real clock (so the test doesn't itself rot the day the fixture
+     dates become "old" by the wrong measure) — 423 tests pass. This is
+     what makes item 172's thin-digest finding real rather than
+     theoretical: the same build that used to show a padded weekend now
+     shows what's actually left.
+
 172. **Wednesday's issue will contain one event across five towns —
      decide now whether to send it.** With past events still included the
      email looks sparse; with item 171's filter applied it gets
