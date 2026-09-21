@@ -8221,6 +8221,27 @@ anything cosmetic.
      dated items, having 2 of them be duplicates of each other is not a
      small proportion.
 
+     🟢 **Shipped 2026-09-21.** Added `dedupe_events(blocks)` to
+     `build_digest.py`, called right after item 171's past-event filter
+     in the same single insertion point - the main region page, RSS
+     feed, calendar.ics, and every date-scoped view all read from the
+     same deduped `blocks`. Reuses `_is_near_duplicate_title()` exactly
+     as this item asked, rather than a fresh comparison: two events
+     count as duplicates only when they also fall on the same calendar
+     day (a same-titled weekly-recurring event on two different Sundays
+     is not a duplicate), and when collapsing, the entry with a detail
+     line and a working URL wins over a bare stub. Both live examples
+     this item named - "Palatine Oktoberfest (Friday)" and "Tween
+     LitCrate Sign Up" - had already aged out of the dated views by the
+     time this shipped (item 171's filter got there first, in the same
+     pass), so this couldn't be re-verified against the exact original
+     duplicates; verified instead with 5 new tests built directly from
+     this item's own description (cross-source collapse preferring the
+     fuller entry, same title on different days left alone, distinct
+     same-day titles left alone, undated items never compared, and a
+     deterministic tie-break). 435 tests pass; real build unaffected
+     (still 1 dated event total, as item 172 already found).
+
 ## Working agreements for autonomous iteration
 
 - Cadence is hourly (the platform's durable scheduler has a 1-hour floor;
