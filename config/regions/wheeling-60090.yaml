@@ -4,46 +4,52 @@
 # (38,329 residents, 39% of households with children under 18 — the
 # largest and youngest-skewing of the four towns considered).
 #
-# Sourcing status as of 2026-09-21 (thirty-eighth pass), found via
-# WebSearch — this sandbox's own network can't fetch these sources
-# directly to confirm live item counts, so (unlike the other four
-# regions' configs) none of this is CONFIRMED against a real build yet.
-# The next real GitHub Actions build will be the first live test.
-#   - Village of Wheeling: wheelingil.gov runs CivicEngage (CivicPlus),
-#     a different CMS from every other region's village site. No
-#     confirmed RSS/ICS calendar export found by search (rss.aspx
-#     exists but its exact feed URLs weren't discoverable without a
-#     live fetch) - pointed at the real Calendar.aspx page as
-#     html_events instead, same honest-fallback shape as Des Plaines'
-#     school district source below.
+# Sourcing status as of 2026-09-21, confirmed against the real GitHub
+# Actions build (run 35549497769, 01:00 UTC) - this region's actual
+# first live test, since this sandbox's own network can't fetch these
+# sources directly:
+#   - Village of Wheeling: CONFIRMED — the Calendar.aspx html_events
+#     guess (wheelingil.gov runs CivicEngage/CivicPlus, a different CMS
+#     from every other region's village site) returned 4 real items on
+#     the very first real build. No RSS/ICS export was findable by
+#     search alone, so this is the second time in this repo a search-
+#     found *page* (as opposed to a search-found *feed URL*) has worked
+#     on the first real try - see School District 57's history in the
+#     Mount Prospect config for the first.
 #   - Indian Trails Public Library District (serves Wheeling, Buffalo
-#     Grove, Prospect Heights, and part of Arlington Heights): real
-#     events page confirmed at indiantrailslibrary.org/events/, backed
-#     by the same libnet.info/Communico platform Mount Prospect's
-#     library uses - but that platform's RSS feed URL is a base64-
-#     encoded per-library payload (confirmed by inspecting Mount
-#     Prospect's own mppl.libnet.info feed URL), not something
-#     guessable from search results alone. html_events fallback here
-#     too, same reasoning.
-#   - Wheeling Park District: real events page confirmed at
-#     wheelingparkdistrict.com/events/. Three other regions' park
-#     districts all run The Events Calendar (Tribe Events) WordPress
-#     plugin with a `?post_type=tribe_events&ical=1&eventDisplay=list`
-#     ICS export - search didn't turn up a direct confirmation this
-#     site runs the same plugin, but the URL is pattern-matched from
-#     that precedent rather than guessed from nothing. Marked
-#     unconfirmed; will self-correct from the next real build's logs
-#     if wrong, same as every other region's first-pass sources did.
-#   - Wheeling CCSD 21 (elementary/middle): no confirmed ICS/RSS feed
-#     found by search, same Finalsite-style gap as Des Plaines' CCSD 62
-#     (see that config's comment for the full reasoning against
-#     guessing an opaque per-calendar token). html_events against the
-#     real calendars page instead.
+#     Grove, Prospect Heights, and part of Arlington Heights): the
+#     confirmed events page at indiantrailslibrary.org/events/ hit a
+#     real 15-second **connect timeout**, not a 403 or a real "found
+#     zero" - a softer, more ambiguous signal than a clean refusal.
+#     Backed by the same libnet.info/Communico platform Mount
+#     Prospect's library uses, whose RSS feed URL is a base64-encoded
+#     per-library payload not guessable from search results alone - so
+#     this may be worth revisiting as an RSS source once a live fetch
+#     from an unrestricted environment can find that library's own
+#     feed URL, rather than assuming the timeout means the page itself
+#     is unreachable.
+#   - Wheeling Park District: CONFIRMED BROKEN — the
+#     `?post_type=tribe_events&ical=1&eventDisplay=list` URL, pattern-
+#     matched from three other regions' Park Districts on the theory
+#     they all run the same WordPress plugin, returned a real **403
+#     Forbidden**. Either this site doesn't run The Events Calendar
+#     plugin, or it does but blocks this fetcher's User-Agent the way
+#     Mount Prospect's Village site does - the 403 alone can't
+#     distinguish those. wheelingparkdistrict.com/events/ (confirmed
+#     real by search, not yet tried as a fetch target) is the next
+#     thing to attempt if this keeps failing.
+#   - Wheeling CCSD 21 (elementary/middle): CONFIRMED BROKEN — the real
+#     calendars page also returned a 403, same shape as the Park
+#     District's. No confirmed ICS/RSS feed was found by search either
+#     way (same Finalsite-style gap as Des Plaines' CCSD 62 - see that
+#     config's comment for the full reasoning against guessing an
+#     opaque per-calendar token).
 #   - Township High School District 214 (Wheeling High School):
 #     real, confirmed URL - same family and pattern as Mount Prospect's
 #     and Arlington Heights' D214 links (d214.org/o/<slug>/page/
 #     athletics), evergreen link only, same rationale as those (no
-#     licensed schedule-data feed for Illinois HS athletics).
+#     licensed schedule-data feed for Illinois HS athletics). Not a
+#     fetched source, so this real-build check doesn't apply to it.
 #
 # The pipeline fails soft either way: a broken source is skipped and
 # logged, it never breaks the whole digest build.
@@ -73,6 +79,8 @@ region:
 sources:
   - name: "Village of Wheeling — Calendar"
     type: html_events
+    # CONFIRMED (run 35549497769, 2026-09-21): 4 real items on the first
+    # real build - see the header comment for the full account.
     url: "https://www.wheelingil.gov/calendar.aspx"
     keywords: ["event", "meeting", "board", "commission", "festival", "open house", "notice", "closed", "holiday"]
     section: "Village Calendar"
@@ -80,6 +88,9 @@ sources:
 
   - name: "Indian Trails Public Library — Events"
     type: html_events
+    # UNCONFIRMED (run 35549497769, 2026-09-21): a real 15s connect
+    # timeout, not a 403 or a real zero - see the header comment. Left
+    # enabled since it fails soft either way.
     url: "https://www.indiantrailslibrary.org/events/"
     keywords: ["event", "class", "program", "story", "camp", "concert", "workshop", "book", "club"]
     section: "Library Events"
@@ -87,12 +98,17 @@ sources:
 
   - name: "Wheeling Park District — Events"
     type: ics
+    # CONFIRMED BROKEN (run 35549497769, 2026-09-21): real 403 Forbidden -
+    # the Tribe Events URL pattern-matched from three other regions'
+    # Park Districts didn't hold here. See the header comment.
     url: "webcal://www.wheelingparkdistrict.com/events/?post_type=tribe_events&ical=1&eventDisplay=list"
     section: "Park District Events"
     enabled: true
 
   - name: "Wheeling CCSD 21 — Calendar"
     type: html_events
+    # CONFIRMED BROKEN (run 35549497769, 2026-09-21): real 403 Forbidden.
+    # See the header comment.
     url: "https://ccsd21.org/parent-resources/calendars/"
     keywords: ["no school", "early dismissal", "half day", "institute day", "records day", "holiday", "closed", "no classes"]
     section: "School Calendar"
