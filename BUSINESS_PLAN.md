@@ -27,6 +27,20 @@ Quick research on the target ZIP before picking an idea:
 
 Sources: zip-codes.com, city-data.com, unitedstateszipcodes.org (60056 profile pages).
 
+**Reconciled, ROADMAP.md item 167 (2026-09-21):** the ZIP-profile-site
+$102K figure above turned out to be the accurate one, not overstated -
+worth recording since a later research pass found a $84,353 figure
+(Mount Prospect village's 2020 Census / older ACS vintage) that looked
+like a contradiction at first. The current, authoritative number is
+**$101,720**, from the ACS 2024 5-year estimate (Data USA and Census
+Reporter agree; Census Reporter's own margin of error is ±$5,626) -
+almost exactly what this section already said. The lesson generalizes:
+a village-level income figure is only as good as its vintage, and an
+older ACS estimate can look like a "more conservative" correction to a
+newer one when it's actually just stale. See `SPONSOR_KIT.md` for the
+same reconciliation applied to all four regions' figures, where the
+other three needed real correction.
+
 ## Ideas considered
 
 1. **Hyperlocal digest + local-business sponsorships** (chosen) — aggregate
