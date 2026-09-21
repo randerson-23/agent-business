@@ -24,9 +24,9 @@
      swap to the web font once it's fetched, instead of blocking first paint
      on a round trip to fonts.googleapis.com (real measured LCP impact on a
      cold connection was ~300ms - see ROADMAP.md Phase 11 #26). -->
-<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;800&display=swap">
-<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;800&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
-<noscript><link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;800&display=swap" rel="stylesheet"></noscript>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;800&display=optional">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;800&display=optional" rel="stylesheet" media="print" onload="this.media='all'">
+<noscript><link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;800&display=optional" rel="stylesheet"></noscript>
 <style>
   /* Native cross-document View Transitions (ROADMAP.md Phase 11 #20) -
      an unknown at-rule to any browser without support, so this is a
@@ -712,21 +712,21 @@
       <span class="wx-emoji" aria-hidden="true">☁️</span>
       <span class="wx-name">Friday</span>
       <span class="wx-temp">64&deg; / 61&deg;</span>
-      <span class="wx-label">Overcast &middot; 0% precip</span>
+      <span class="wx-label">Overcast &middot; 1% precip</span>
     </div>
     
     <div class="weather-day">
       <span class="wx-emoji" aria-hidden="true">🌦️</span>
       <span class="wx-name">Saturday</span>
       <span class="wx-temp">62&deg; / 56&deg;</span>
-      <span class="wx-label">Drizzle &middot; 4% precip</span>
+      <span class="wx-label">Drizzle &middot; 7% precip</span>
     </div>
     
     <div class="weather-day">
       <span class="wx-emoji" aria-hidden="true">🌦️</span>
       <span class="wx-name">Sunday</span>
       <span class="wx-temp">71&deg; / 56&deg;</span>
-      <span class="wx-label">Drizzle &middot; 13% precip</span>
+      <span class="wx-label">Drizzle &middot; 14% precip</span>
     </div>
     
     
@@ -748,8 +748,20 @@
   
   <div class="filter-bar" role="group" aria-label="Filter events">
     
+    <button type="button" class="filter-chip" data-tag="art_culture" aria-pressed="false">
+      <span aria-hidden="true">🎨</span>Arts &amp; culture
+    </button>
+    
+    <button type="button" class="filter-chip" data-tag="elementary" aria-pressed="false">
+      <span aria-hidden="true">🎒</span>Elementary age
+    </button>
+    
     <button type="button" class="filter-chip" data-tag="food" aria-pressed="false">
       <span aria-hidden="true">🍽️</span>Food &amp; drink
+    </button>
+    
+    <button type="button" class="filter-chip" data-tag="kid_friendly" aria-pressed="false">
+      <span aria-hidden="true">🧒</span>Kid-friendly
     </button>
     
     <button type="button" class="filter-chip" data-tag="outdoor" aria-pressed="false">
@@ -804,6 +816,38 @@
           
         </div>
         
+        <!-- id folds in date_iso - see the Editor's Pick tray_item above
+             for why (ROADMAP.md item 146). -->
+        
+        <div class="card" data-tags="art_culture,elementary,kid_friendly,outdoor">
+          
+          <!-- ROADMAP.md Phase 11 #63: My Weekend is for dated events -
+               offering to add "Find your school district" or a guide's
+               own title to it made no sense, since guide items and the
+               guide index have nothing to do with weekend planning.
+               #90: nor does a school half-day belong in it - it's real
+               and worth knowing, but nobody plans a weekend around one. -->
+          <button type="button" class="tray-star" data-item='{"date": "Sep 26", "date_iso": "2026-09-26T09:30:00", "detail": "Fall Frenzy (Ages 5-10) Celebrate the beauty of the changing season with a burst of creativity! Join us in the Studio for this \u201cFall Frenzy\u201d workshop, where\u2026", "id": "https://www.mppd.org/event/fall-frenzy/|2026-09-26T09:30:00", "region_name": "Mount Prospect", "region_url": "https://withintenmiles.com/mount-prospect-60056/", "title": "Fall Frenzy", "url": "https://www.mppd.org/event/fall-frenzy/"}' aria-pressed="false" aria-label="Add Fall Frenzy to My Weekend">☆</button>
+          
+          
+          
+          <div class="date">Sep 26</div>
+          <h3><a href="https://www.mppd.org/event/fall-frenzy/">Fall Frenzy</a></h3>
+          
+          <p class="detail">Fall Frenzy (Ages 5-10) Celebrate the beauty of the changing season with a burst of creativity! Join us in the Studio for this “Fall Frenzy” workshop, where…</p>
+          
+          <div class="tag-row">
+            <span class="tag-badge" style="background: var(--hue-purple-bg); color: var(--hue-purple-ink);">🎨 Arts &amp; culture</span><span class="tag-badge" style="background: var(--hue-cyan-bg); color: var(--hue-cyan-ink);">🎒 Elementary age</span><span class="tag-badge" style="background: var(--hue-pink-bg); color: var(--hue-pink-ink);">🧒 Kid-friendly</span><span class="tag-badge" style="background: var(--hue-teal-bg); color: var(--hue-teal-ink);">🌳 Outdoor</span>
+          </div>
+          
+          
+          <div class="cal-row">
+            <a href="data:text/calendar;charset=utf-8,BEGIN%3AVCALENDAR%0D%0AVERSION%3A2.0%0D%0APRODID%3A-//Within%20Ten//EN%0D%0ABEGIN%3AVEVENT%0D%0ADTSTART%3A20260926T093000%0D%0ADTEND%3A20260926T103000%0D%0ASUMMARY%3AFall%20Frenzy%0D%0ADESCRIPTION%3AFall%20Frenzy%20%28Ages%205-10%29%20Celebrate%20the%20beauty%20of%20the%20changing%20season%20with%20a%20burst%20of%20creativity%21%20Join%20us%20in%20the%20Studio%20for%20this%20%E2%80%9CFall%20Frenzy%E2%80%9D%20workshop%5C%2C%20where%E2%80%A6%0D%0AURL%3Ahttps%3A//www.mppd.org/event/fall-frenzy/%0D%0AEND%3AVEVENT%0D%0AEND%3AVCALENDAR%0D%0A" download="event.ics">📅 Add to calendar</a>
+            <a href="https://www.google.com/calendar/render?action=TEMPLATE&amp;text=Fall+Frenzy&amp;dates=20260926T093000%2F20260926T103000&amp;details=Fall+Frenzy+%28Ages+5-10%29+Celebrate+the+beauty+of+the+changing+season+with+a+burst+of+creativity%21+Join+us+in+the+Studio+for+this+%E2%80%9CFall+Frenzy%E2%80%9D+workshop%2C+where%E2%80%A6&amp;location=Mount+Prospect" target="_blank" rel="noopener">Google Calendar</a>
+          </div>
+          
+        </div>
+        
         </div>
       
     </section>
@@ -843,7 +887,7 @@
     <a href="https://withintenmiles.com/sponsor/">sponsor page</a>.
     <a href="https://withintenmiles.com/about/">About</a>.
     <a href="https://withintenmiles.com/trick-or-treat/">Trick-or-treat hours</a>.
-    <br>Generated 2026-09-21 14:46 UTC.
+    <br>Generated 2026-09-21 15:08 UTC.
     
     <br><a href="https://withintenmiles.com/mount-prospect-60056/weekly-summary.txt">Copy this week's summary</a> — a plain-text block ready to paste into a local group.
   </footer>
@@ -866,10 +910,10 @@
 </div>
 
 
-<script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "Event", "name": "Mount Prospect Farmers Market", "url": "https://mplions.org/event/farmers-market/", "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode", "description": "Local produce and vendors, organized by the Mount Prospect Lions Club, rain or shine. West Metra commuter lot, Northwest Hwy & Main St (Rte 83).", "startDate": "2026-09-27T08:00:00"}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "Event", "name": "Mount Prospect Farmers Market", "url": "https://mplions.org/event/farmers-market/", "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode", "description": "Local produce and vendors, organized by the Mount Prospect Lions Club, rain or shine. West Metra commuter lot, Northwest Hwy & Main St (Rte 83).", "startDate": "2026-09-27T08:00:00"}, {"@type": "Event", "name": "Fall Frenzy", "url": "https://www.mppd.org/event/fall-frenzy/", "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode", "description": "Fall Frenzy (Ages 5-10) Celebrate the beauty of the changing season with a burst of creativity! Join us in the Studio for this “Fall Frenzy” workshop, where…", "startDate": "2026-09-26T09:30:00"}]}</script>
 
 
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebPage", "name": "Mount Prospect — Within Ten", "url": "https://withintenmiles.com/mount-prospect-60056/this-weekend/", "dateModified": "2026-09-21T14:46:11.499590+00:00", "isPartOf": {"@type": "WebSite", "name": "Within Ten", "url": "https://withintenmiles.com/", "publisher": {"@id": "https://withintenmiles.com/about/#organization"}}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebPage", "name": "Mount Prospect — Within Ten", "url": "https://withintenmiles.com/mount-prospect-60056/this-weekend/", "dateModified": "2026-09-21T15:08:00.259445+00:00", "isPartOf": {"@type": "WebSite", "name": "Within Ten", "url": "https://withintenmiles.com/", "publisher": {"@id": "https://withintenmiles.com/about/#organization"}}}</script>
 <script>
 (function () {
   var activeTags = new Set();
