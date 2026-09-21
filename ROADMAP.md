@@ -8847,6 +8847,37 @@ about to stop Wednesday's send.**
   `annual_events` entries for it already carry, confirming the
   config's dates against a source outside this repo, not just
   internal consistency. Nothing broken; nothing to fix.
+
+  Seventh pass, 2026-09-21 (next hourly firing, queue still thin).
+  Closed out the WebSearch link-check rotation this item's priority
+  list calls for: Wheeling was the other region item 175's fix
+  touched directly and the only one of the five not yet sampled by
+  any pass (Mount Prospect, Des Plaines ×2, and Palatine already
+  covered). Sampled five outbound evergreen/guide links from
+  `config/regions/wheeling-60090.yaml`: Wheeling HS Athletics, the
+  Village's refuse/recycling page, Indian Trails Library's online-
+  card registration, Wheeling Park District's registration page, and
+  CCSD21's calendars page. All five resolve and match their config
+  descriptions exactly. The CCSD21 check is the more useful of the
+  five precisely because it's the same URL `data/source_health.json`
+  shows returning a real transport 403 from every fetcher - WebSearch
+  confirms the page itself is live and correct at that exact address,
+  which rules out "wrong URL" as the cause and leaves the known
+  access-blocking diagnosis as the only explanation, consistent with
+  what item 161 already found.
+
+  With all five regions now WebSearch-checked at least once across
+  these seven passes (Mount Prospect: fourth; Des Plaines: third and
+  fourth; Arlington Heights: not yet - the one gap left for a future
+  thin-queue pass; Palatine: sixth; Wheeling: this one) and two
+  independent `data/source_health.json` drift checks finding nothing,
+  this item-159 rotation has covered real ground rather than repeating
+  itself. If the next firing finds the queue still this thin, Arlington
+  Heights' links are the one remaining unsampled item on this
+  checklist; past that, repeating the same checks without new evidence
+  to look at stops being verification and starts being motion for its
+  own sake - worth saying plainly rather than manufacturing an eighth
+  pass that finds nothing new.
 - **The research loop leaves at most three open owner decisions at a
   time (item 165).** A six-item "Needs Ryan" queue, none of it acted on
   in a week, is itself the finding — presenting equal-looking options
