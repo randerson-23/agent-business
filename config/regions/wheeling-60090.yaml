@@ -17,17 +17,14 @@
 #     on the first real try - see School District 57's history in the
 #     Mount Prospect config for the first.
 #   - Indian Trails Public Library District (serves Wheeling, Buffalo
-#     Grove, Prospect Heights, and part of Arlington Heights): the
-#     confirmed events page at indiantrailslibrary.org/events/ hit a
-#     real 15-second **connect timeout**, not a 403 or a real "found
-#     zero" - a softer, more ambiguous signal than a clean refusal.
-#     Backed by the same libnet.info/Communico platform Mount
-#     Prospect's library uses, whose RSS feed URL is a base64-encoded
-#     per-library payload not guessable from search results alone - so
-#     this may be worth revisiting as an RSS source once a live fetch
-#     from an unrestricted environment can find that library's own
-#     feed URL, rather than assuming the timeout means the page itself
-#     is unreachable.
+#     Grove, Prospect Heights, and part of Arlington Heights): CONFIRMED
+#     — the first real build's 15-second connect timeout on
+#     indiantrailslibrary.org/events/ turned out to be transient, not a
+#     real block: the very next real build (run 35570674044, 2026-09-21
+#     06:58 UTC) returned 6 real items from the same URL, unchanged.
+#     Left as html_events rather than switched to the libnet.info RSS
+#     feed mentioned below, since the page-based source is now proven
+#     live and switching sources without a reason would just add risk.
 #   - Wheeling Park District: CONFIRMED BROKEN — the
 #     `?post_type=tribe_events&ical=1&eventDisplay=list` URL, pattern-
 #     matched from three other regions' Park Districts on the theory
@@ -88,9 +85,8 @@ sources:
 
   - name: "Indian Trails Public Library — Events"
     type: html_events
-    # UNCONFIRMED (run 35549497769, 2026-09-21): a real 15s connect
-    # timeout, not a 403 or a real zero - see the header comment. Left
-    # enabled since it fails soft either way.
+    # CONFIRMED (run 35570674044, 2026-09-21): 6 real items. The first
+    # build's connect timeout was transient - see the header comment.
     url: "https://www.indiantrailslibrary.org/events/"
     keywords: ["event", "class", "program", "story", "camp", "concert", "workshop", "book", "club"]
     section: "Library Events"
