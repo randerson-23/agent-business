@@ -17,16 +17,16 @@
 <meta name="twitter:description" content="Everything happening today (Monday, September 21), across every region.">
 <meta name="twitter:image" content="https://withintenmiles.com/og/default.png">
 <link rel="canonical" href="https://withintenmiles.com/today/">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='46' fill='%23526b3f'/%3E%3Cpath d='M50 22c-13 0-24 10-24 24 0 18 24 36 24 36s24-18 24-36c0-14-11-24-24-24z' fill='white'/%3E%3Ccircle cx='50' cy='45' r='10' fill='%23526b3f'/%3E%3C/svg%3E">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%23201e1d'/%3E%3Ctext x='50' y='66' font-family='Arial,sans-serif' font-weight='800' font-size='58' fill='%23ec3013' text-anchor='middle'%3EW%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <!-- Non-render-blocking font load: paint with the fallback stack immediately,
      swap to the web font once it's fetched, instead of blocking first paint
      on a round trip to fonts.googleapis.com (real measured LCP impact on a
      cold connection was ~300ms - see ROADMAP.md Phase 11 #26). -->
-<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap">
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
-<noscript><link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"></noscript>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;800&display=swap">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;800&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+<noscript><link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;800&display=swap" rel="stylesheet"></noscript>
 <style>
   /* Native cross-document View Transitions (ROADMAP.md Phase 11 #20) -
      an unknown at-rule to any browser without support, so this is a
@@ -43,22 +43,21 @@
     }
   }
   :root {
-    --bg: #f6efe1;
-    --card: #fffcf5;
-    --ink: #2b2318;
-    --muted: #766a58;
-    --accent: #526b3f;
-    --accent-soft: #5e7748;
-    --accent-2: #c17a3d;
-    /* Darker than --accent-2 - #c17a3d is only 3.0:1 on --bg, below WCAG
-       AA's 4.5:1 for text this small. Use for text; --accent-2 stays for
-       non-text accents (borders) where contrast rules don't apply. */
-    --accent-2-text: #96581f;
-    --border: #e6dcc8;
-    --radius-lg: 18px;
-    --shadow-sm: 0 1px 2px rgba(43,35,24,.06), 0 1px 1px rgba(43,35,24,.05);
-    --shadow-md: 0 10px 28px -10px rgba(43,35,24,.20), 0 2px 6px rgba(43,35,24,.06);
-    --shadow-lift: 0 16px 36px -12px rgba(43,35,24,.28), 0 3px 8px rgba(43,35,24,.08);
+    /* ROADMAP.md redesign (2026-09-21): "Modernist" system - see
+       region.html.j2's own copy of this block for the full rationale. */
+    --bg: #f3f2f2;
+    --card: #eae9e9;
+    --ink: #201e1d;
+    --muted: #605d5d;
+    --accent: #ec3013;
+    --accent-soft: #ec3013;
+    --accent-2: #ec3013;
+    --accent-2-text: #ae1800;
+    --border: color-mix(in srgb, var(--ink) 40%, transparent);
+    --radius-lg: 0px;
+    --shadow-sm: none;
+    --shadow-md: none;
+    --shadow-lift: none;
 
     --hue-pink-bg: #fde7ef;   --hue-pink-ink: #a3275a;
     --hue-amber-bg: #fdf0d8;  --hue-amber-ink: #92600a;
@@ -74,18 +73,15 @@
   }
   @media (prefers-color-scheme: dark) {
     :root {
-      --bg: #1c1710;
-      --card: #262019;
-      --ink: #f2ead9;
-      --muted: #b8a98e;
-      --accent: #8aa66d;
-      --accent-soft: #5c7a45;
-      --accent-2: #e0975a;
-      --accent-2-text: #e0975a;
-      --border: #3a3226;
-      --shadow-sm: 0 1px 2px rgba(0,0,0,.35), 0 1px 1px rgba(0,0,0,.25);
-      --shadow-md: 0 10px 28px -10px rgba(0,0,0,.55), 0 2px 6px rgba(0,0,0,.35);
-      --shadow-lift: 0 16px 36px -12px rgba(0,0,0,.65), 0 3px 8px rgba(0,0,0,.4);
+      --bg: #171615;
+      --card: #232120;
+      --ink: #f3f2f2;
+      --muted: #a9a5a5;
+      --accent: #ff563c;
+      --accent-soft: #ff563c;
+      --accent-2: #ff563c;
+      --accent-2-text: #ff9783;
+      --border: color-mix(in srgb, var(--ink) 30%, transparent);
 
       --hue-pink-bg: #4a2233;   --hue-pink-ink: #f5a8c4;
       --hue-amber-bg: #4a3814;  --hue-amber-ink: #f5cf8a;
@@ -105,59 +101,61 @@
     margin: 0;
     background: var(--bg);
     color: var(--ink);
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    font-family: 'Archivo', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
     line-height: 1.55;
     -webkit-font-smoothing: antialiased;
   }
-  h1, h2 { font-family: 'Fraunces', Georgia, 'Times New Roman', serif; }
+  h1, h2 { font-family: 'Archivo', system-ui, sans-serif; font-weight: 800; letter-spacing: -0.02em; }
   /* Bottom padding reserves room for the fixed "My Weekend" pill (see
      .tray-widget below) - same fix as region.html.j2 (ROADMAP.md Phase
      11 #56). */
   .wrap { max-width: 960px; margin: 0 auto; padding: 0 20px 96px; }
 
   .hero {
-    background: linear-gradient(135deg, var(--accent) 0%, var(--accent-soft) 60%, #749058 100%);
-    color: #fff;
-    padding: 26px 20px 44px;
-    margin-bottom: -24px;
+    background: var(--bg);
+    color: var(--ink);
+    padding: 20px 20px 28px;
+    margin-bottom: 0;
+    border-bottom: 2px solid var(--border);
   }
   .hero-inner { max-width: 960px; margin: 0 auto; }
-  a.back { color: rgba(255,255,255,.82); text-decoration: none; font-size: 13px; font-weight: 500; }
-  a.back:hover { color: #fff; }
+  a.back { color: var(--muted); text-decoration: none; font-size: 12px; font-weight: 800; letter-spacing: 0.06em; text-transform: uppercase; }
+  a.back:hover { color: var(--accent); }
   .brand-mark { display: inline-flex; align-items: center; gap: 8px; margin: 18px 0 8px; }
   .brand-mark svg { width: 22px; height: 22px; flex-shrink: 0; }
-  .kicker { font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; font-size: 12px; color: rgba(255,255,255,.85); }
-  .hero h1 { margin: 4px 0 8px; font-size: 34px; font-weight: 600; color: #fff; }
-  .hero .sub { color: rgba(255,255,255,.88); font-size: 15.5px; max-width: 620px; }
+  .kicker { font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; font-size: 12px; color: var(--accent-2-text); }
+  .hero h1 { margin: 4px 0 8px; font-size: 34px; color: var(--ink); }
+  .hero .sub { color: var(--muted); font-size: 15.5px; max-width: 620px; }
 
   section.block { margin: 30px 0; }
   section.block h2 {
     font-size: 20px;
-    font-weight: 600;
     margin: 0 0 4px;
     padding-bottom: 8px;
     border-bottom: 2px solid var(--border);
   }
-  section.block .region-link { font-size: 13px; font-weight: 600; color: var(--accent); text-decoration: none; }
+  section.block .region-link { font-size: 13px; font-weight: 700; color: var(--accent-2-text); text-decoration: none; }
   section.block .region-link:hover { text-decoration: underline; }
 
-  /* flex-wrap, not CSS grid - same fix as region.html.j2's .card-grid
-     (ROADMAP.md Phase 11 #61): each region's own section here can just
-     as easily land on 4 dated events and strand the last one. */
-  .card-grid { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 14px; }
+  /* A single-column stack of flat bordered rows, not a card grid - same
+     redesign as region.html.j2's .card-grid (see that file's own
+     comment for the full rationale). */
+  .card-grid { display: flex; flex-direction: column; gap: 0; margin-top: 14px; }
   .card {
     position: relative;
-    flex: 1 1 260px;
-    background: var(--card);
-    border-radius: var(--radius-lg);
-    box-shadow: var(--shadow-sm);
-    padding: 16px 18px;
+    background: none;
+    border: 0;
+    border-bottom: 1px solid var(--border);
+    border-radius: 0;
+    box-shadow: none;
+    padding: 16px 0;
     display: flex;
     flex-direction: column;
     gap: 7px;
-    transition: transform .15s ease, box-shadow .15s ease;
+    transition: background .12s ease;
   }
-  .card:hover { transform: translateY(-3px); box-shadow: var(--shadow-lift); }
+  .card:last-child { border-bottom: 0; }
+  .card:hover { background: color-mix(in srgb, var(--ink) 4%, transparent); }
   .card .date { color: var(--accent-2-text); font-size: 12px; font-weight: 700; letter-spacing: 0.02em; text-transform: uppercase; }
   /* ROADMAP.md Phase 11 #71: same series kicker as region.html.j2. */
   .card .series { color: var(--accent); font-size: 11px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; }
@@ -183,31 +181,34 @@
   .card h3 a:hover { color: var(--accent); }
   .card p.detail { margin: 0; color: var(--muted); font-size: 13.5px; }
   .tag-row { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 3px; }
-  .tag-badge { font-size: 11.5px; font-weight: 600; border-radius: 999px; padding: 3px 10px 3px 8px; display: inline-flex; align-items: center; gap: 3px; }
+  .tag-badge { font-size: 11.5px; font-weight: 600; border-radius: 0; padding: 3px 10px 3px 8px; display: inline-flex; align-items: center; gap: 3px; }
   .cal-row { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 4px; }
-  .cal-row a { font-size: 12.5px; font-weight: 600; color: var(--accent); text-decoration: none; }
+  .cal-row a { font-size: 12.5px; font-weight: 600; color: var(--accent-2-text); text-decoration: none; }
   .cal-row a:hover { text-decoration: underline; }
 
-  .empty-state { text-align: center; color: var(--muted); padding: 40px 0; background: var(--card); border-radius: var(--radius-lg); box-shadow: var(--shadow-sm); margin-top: 24px; }
+  .empty-state { text-align: center; color: var(--muted); padding: 40px 0; background: var(--card); border: 2px solid var(--border); border-radius: var(--radius-lg); box-shadow: var(--shadow-sm); margin-top: 24px; }
 
   a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
 
-  footer { text-align: center; color: var(--muted); font-size: 12.5px; margin-top: 44px; border-top: 1px solid var(--border); padding-top: 18px; }
-  footer a { color: var(--accent); font-weight: 600; }
+  footer { text-align: center; color: var(--muted); font-size: 12.5px; margin-top: 44px; border-top: 2px solid var(--border); padding-top: 18px; }
+  footer a { color: var(--accent-2-text); font-weight: 700; }
 
   .tray-widget { position: fixed; right: 18px; bottom: 18px; z-index: 20; }
   .tray-toggle {
     font: inherit;
-    font-weight: 700;
-    color: #fff;
+    font-weight: 800;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    font-size: 13px;
+    color: var(--bg);
     background: var(--accent-soft);
-    border: none;
-    border-radius: 999px;
+    border: 2px solid var(--accent-soft);
+    border-radius: 0;
     padding: 12px 18px;
     box-shadow: var(--shadow-lift);
     cursor: pointer;
   }
-  .tray-toggle:hover { filter: brightness(1.15); }
+  .tray-toggle:hover { background: var(--accent-2-text); border-color: var(--accent-2-text); }
   .tray-panel {
     position: absolute;
     right: 0;
@@ -216,6 +217,7 @@
     max-height: 60vh;
     overflow-y: auto;
     background: var(--card);
+    border: 2px solid var(--ink);
     border-radius: var(--radius-lg);
     box-shadow: var(--shadow-lift);
     padding: 14px 16px;
@@ -231,9 +233,9 @@
   .tray-item-remove { background: none; border: none; color: var(--muted); cursor: pointer; font-size: 15px; flex-shrink: 0; }
   .tray-item-remove:hover { color: var(--accent-2-text); }
   .tray-actions { display: flex; gap: 8px; margin-top: 10px; }
-  .tray-actions button { font: inherit; font-weight: 600; border-radius: 999px; padding: 7px 12px; cursor: pointer; font-size: 12.5px; }
-  #tray-export { background: var(--accent-soft); color: #fff; border: none; }
-  #tray-export:hover { filter: brightness(1.15); }
+  .tray-actions button { font: inherit; font-weight: 800; border-radius: 0; padding: 7px 12px; cursor: pointer; font-size: 12.5px; }
+  #tray-export { background: var(--accent-soft); color: var(--bg); border: 2px solid var(--accent-soft); }
+  #tray-export:hover { background: var(--accent-2-text); border-color: var(--accent-2-text); }
   #tray-clear { background: transparent; border: 1px solid var(--border); color: var(--muted); }
   .tray-note { margin: 10px 0 0; color: var(--muted); font-size: 11px; }
   .tray-empty { color: var(--muted); font-size: 13px; font-style: italic; }
@@ -253,9 +255,9 @@
     <a class="back" href="https://withintenmiles.com/">&larr; All regions</a>
     <div class="brand-mark">
       <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-        <circle cx="50" cy="50" r="48" fill="rgba(255,255,255,.16)"/>
-        <path d="M50 24c-12 0-22 9-22 22 0 16 22 34 22 34s22-18 22-34c0-13-10-22-22-22z" fill="#fff"/>
-        <circle cx="50" cy="46" r="9" fill="var(--accent)"/>
+        <circle cx="50" cy="50" r="48" fill="color-mix(in srgb, var(--accent) 14%, transparent)"/>
+        <path d="M50 24c-12 0-22 9-22 22 0 16 22 34 22 34s22-18 22-34c0-13-10-22-22-22z" fill="var(--ink)"/>
+        <circle cx="50" cy="46" r="9" fill="var(--card)"/>
       </svg>
       <span class="kicker">Within Ten</span>
     </div>
@@ -433,7 +435,7 @@
     Want your ZIP added, or want to sponsor a region?
     <a href="https://withintenmiles.com/sponsor/">See pricing &amp; availability</a>.
     <a href="https://withintenmiles.com/about/">About</a>.
-    <br>Generated 2026-09-21 14:00 UTC.
+    <br>Generated 2026-09-21 14:46 UTC.
     
   </footer>
 </div>

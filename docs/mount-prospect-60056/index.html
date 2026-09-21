@@ -17,16 +17,16 @@
 <meta name="twitter:description" content="What&#39;s happening in Mount Prospect, IL (60056): Pulled automatically from the Village, Public Library, and Park District — plus Randhurst Village, Melas Park, Lions Park, and downtown Emerson &amp; Busse — several times a week.">
 <meta name="twitter:image" content="https://withintenmiles.com/og/mount-prospect-60056.png">
 <link rel="canonical" href="https://withintenmiles.com/mount-prospect-60056/">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='46' fill='%23526b3f'/%3E%3Cpath d='M50 22c-13 0-24 10-24 24 0 18 24 36 24 36s24-18 24-36c0-14-11-24-24-24z' fill='white'/%3E%3Ccircle cx='50' cy='45' r='10' fill='%23526b3f'/%3E%3C/svg%3E">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%23201e1d'/%3E%3Ctext x='50' y='66' font-family='Arial,sans-serif' font-weight='800' font-size='58' fill='%23ec3013' text-anchor='middle'%3EW%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <!-- Non-render-blocking font load: paint with the fallback stack immediately,
      swap to the web font once it's fetched, instead of blocking first paint
      on a round trip to fonts.googleapis.com (real measured LCP impact on a
      cold connection was ~300ms - see ROADMAP.md Phase 11 #26). -->
-<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap">
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
-<noscript><link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"></noscript>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;800&display=swap">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;800&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+<noscript><link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;800&display=swap" rel="stylesheet"></noscript>
 <style>
   /* Native cross-document View Transitions (ROADMAP.md Phase 11 #20) -
      an unknown at-rule to any browser without support, so this is a
@@ -43,23 +43,29 @@
     }
   }
   :root {
-    --bg: #f6efe1;
-    --card: #fffcf5;
-    --ink: #2b2318;
-    --muted: #766a58;
-    --accent: #526b3f;
-    --accent-soft: #5e7748;
-    --accent-2: #c17a3d;
-    /* Darker than --accent-2 - #c17a3d is only 3.0:1 on --bg, below WCAG
-       AA's 4.5:1 for text this small. Use for text; --accent-2 stays for
-       non-text accents (borders) where contrast rules don't apply. */
-    --accent-2-text: #96581f;
-    --border: #e6dcc8;
-    --radius-lg: 18px;
-    --radius-md: 12px;
-    --shadow-sm: 0 1px 2px rgba(43,35,24,.06), 0 1px 1px rgba(43,35,24,.05);
-    --shadow-md: 0 10px 28px -10px rgba(43,35,24,.20), 0 2px 6px rgba(43,35,24,.06);
-    --shadow-lift: 0 16px 36px -12px rgba(43,35,24,.28), 0 3px 8px rgba(43,35,24,.08);
+    /* ROADMAP.md redesign (2026-09-21): "Modernist" system - flat,
+       architectural, set in Archivo: a single mono red accent on a light
+       neutral ground, zero corner radius, strong 2px dividers instead of
+       soft shadows. --border is derived from --ink via color-mix() so it
+       tracks light/dark automatically without a separate override below. */
+    --bg: #f3f2f2;
+    --card: #eae9e9;
+    --ink: #201e1d;
+    --muted: #605d5d;
+    --accent: #ec3013;
+    --accent-soft: #ec3013;
+    --accent-2: #ec3013;
+    /* Deep ramp step, not the raw accent - the accent-to-ground pair is
+       only ~3:1, enough for icons/borders/large text but below WCAG AA's
+       4.5:1 for text this small. Use for text; --accent/--accent-2 stay
+       for borders and large type where contrast rules don't apply. */
+    --accent-2-text: #ae1800;
+    --border: color-mix(in srgb, var(--ink) 40%, transparent);
+    --radius-lg: 0px;
+    --radius-md: 0px;
+    --shadow-sm: none;
+    --shadow-md: none;
+    --shadow-lift: none;
 
     --hue-pink-bg: #fde7ef;   --hue-pink-ink: #a3275a;
     --hue-amber-bg: #fdf0d8;  --hue-amber-ink: #92600a;
@@ -75,18 +81,15 @@
   }
   @media (prefers-color-scheme: dark) {
     :root {
-      --bg: #1c1710;
-      --card: #262019;
-      --ink: #f2ead9;
-      --muted: #b8a98e;
-      --accent: #8aa66d;
-      --accent-soft: #5c7a45;
-      --accent-2: #e0975a;
-      --accent-2-text: #e0975a;
-      --border: #3a3226;
-      --shadow-sm: 0 1px 2px rgba(0,0,0,.35), 0 1px 1px rgba(0,0,0,.25);
-      --shadow-md: 0 10px 28px -10px rgba(0,0,0,.55), 0 2px 6px rgba(0,0,0,.35);
-      --shadow-lift: 0 16px 36px -12px rgba(0,0,0,.65), 0 3px 8px rgba(0,0,0,.4);
+      --bg: #171615;
+      --card: #232120;
+      --ink: #f3f2f2;
+      --muted: #a9a5a5;
+      --accent: #ff563c;
+      --accent-soft: #ff563c;
+      --accent-2: #ff563c;
+      --accent-2-text: #ff9783;
+      --border: color-mix(in srgb, var(--ink) 30%, transparent);
 
       --hue-pink-bg: #4a2233;   --hue-pink-ink: #f5a8c4;
       --hue-amber-bg: #4a3814;  --hue-amber-ink: #f5cf8a;
@@ -106,11 +109,11 @@
     margin: 0;
     background: var(--bg);
     color: var(--ink);
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    font-family: 'Archivo', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
     line-height: 1.55;
     -webkit-font-smoothing: antialiased;
   }
-  h1, h2, h3 { font-family: 'Fraunces', Georgia, 'Times New Roman', serif; }
+  h1, h2, h3 { font-family: 'Archivo', system-ui, sans-serif; font-weight: 800; letter-spacing: -0.02em; }
   /* Bottom padding reserves room for the fixed "My Weekend" pill (see
      .tray-widget below) so it never sits directly over the last card's
      text - confirmed happening at 390px, obscuring a card's tag badges
@@ -119,48 +122,49 @@
   .wrap { max-width: 960px; margin: 0 auto; padding: 0 20px 96px; }
 
   .hero {
-    background: linear-gradient(135deg, var(--accent) 0%, var(--accent-soft) 60%, #749058 100%);
-    color: #fff;
-    padding: 26px 20px 44px;
-    margin-bottom: -24px;
+    background: var(--bg);
+    color: var(--ink);
+    padding: 20px 20px 28px;
+    margin-bottom: 0;
+    border-bottom: 2px solid var(--border);
   }
   .hero-inner { max-width: 960px; margin: 0 auto; }
-  a.back { color: rgba(255,255,255,.82); text-decoration: none; font-size: 13px; font-weight: 500; }
-  a.back:hover { color: #fff; }
+  a.back { color: var(--muted); text-decoration: none; font-size: 12px; font-weight: 800; letter-spacing: 0.06em; text-transform: uppercase; }
+  a.back:hover { color: var(--accent); }
   .brand-mark { display: inline-flex; align-items: center; gap: 8px; margin: 18px 0 8px; }
   .brand-mark svg { width: 22px; height: 22px; flex-shrink: 0; }
   .kicker {
-    font-weight: 700;
-    letter-spacing: 0.08em;
+    font-weight: 800;
+    letter-spacing: 0.1em;
     text-transform: uppercase;
     font-size: 12px;
-    color: rgba(255,255,255,.85);
+    color: var(--accent-2-text);
   }
-  .hero h1 { margin: 4px 0 8px; font-size: 34px; font-weight: 600; color: #fff; }
-  .hero .sub { color: rgba(255,255,255,.88); font-size: 15.5px; max-width: 620px; }
+  .hero h1 { margin: 4px 0 8px; font-size: 34px; color: var(--ink); }
+  .hero .sub { color: var(--muted); font-size: 15.5px; max-width: 620px; }
 
   .view-nav {
     display: flex;
     flex-wrap: wrap;
-    gap: 6px;
-    /* .hero carries margin-bottom: -24px so content can ride up into the
-       green band. These pills were the first thing after it, so at 18px
-       they straddled the boundary with their top edge in the green -
-       reported 2026-09-15. 42px clears the -24px overlap and leaves 18px
-       of breathing room, putting the whole row inside the beige. */
-    margin: 42px 0 6px;
+    gap: 4px 22px;
+    margin: 26px 0 6px;
+    border-bottom: 2px solid var(--border);
+    padding-bottom: 2px;
   }
   .view-nav a {
-    font-size: 13px;
-    font-weight: 600;
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
     color: var(--muted);
     text-decoration: none;
-    padding: 6px 12px;
-    border-radius: 999px;
-    border: 1px solid var(--border);
+    padding: 6px 2px;
+    border-radius: 0;
+    border: none;
+    border-bottom: 2px solid transparent;
   }
-  .view-nav a:hover { color: var(--accent); border-color: var(--accent); }
-  .view-nav a.active { color: #fff; background: var(--accent-soft); border-color: var(--accent-soft); }
+  .view-nav a:hover { color: var(--ink); border-bottom-color: var(--border); }
+  .view-nav a.active { color: var(--accent); background: none; border-bottom-color: var(--accent); }
 
   .answer-block { color: var(--muted); font-size: 14px; line-height: 1.6; margin: 4px 0 18px; max-width: 640px; }
 
@@ -182,7 +186,7 @@
     gap: 10px;
     flex-wrap: wrap;
     background: var(--card);
-    border: 1px solid var(--border);
+    border: 2px solid var(--border);
     border-radius: var(--radius-lg);
     padding: 10px 16px;
     margin: 0 0 18px;
@@ -194,6 +198,7 @@
 
   .map-embed {
     position: relative;
+    border: 2px solid var(--border);
     border-radius: var(--radius-lg);
     box-shadow: var(--shadow-sm);
     overflow: hidden;
@@ -219,9 +224,9 @@
   }
   .map-fallback svg { width: 100%; height: 100%; overflow: visible; }
   .map-fallback .map-line { stroke: var(--border); stroke-width: 1.5; stroke-dasharray: 4 3; }
-  .map-fallback .map-line-label { font-size: 10px; fill: var(--muted); font-family: 'Inter', sans-serif; }
+  .map-fallback .map-line-label { font-size: 10px; fill: var(--muted); font-family: 'Archivo', sans-serif; }
   .map-fallback .map-pin { fill: var(--accent-soft); stroke: var(--card); stroke-width: 2; }
-  .map-fallback .map-pin-label { font-size: 12px; font-weight: 700; fill: var(--ink); font-family: 'Inter', sans-serif; }
+  .map-fallback .map-pin-label { font-size: 12px; font-weight: 800; fill: var(--ink); font-family: 'Archivo', sans-serif; }
   .map-fallback a { text-decoration: none; }
   .map-fallback a:hover .map-pin { fill: var(--accent); }
   .map-fallback a:hover .map-pin-label { fill: var(--accent); }
@@ -244,10 +249,10 @@
     background: var(--card);
     color: var(--accent-2-text);
     font-size: 12.5px;
-    font-weight: 600;
+    font-weight: 800;
     text-decoration: none;
     padding: 6px 12px;
-    border-radius: 999px;
+    border-radius: 0;
     box-shadow: var(--shadow-sm);
     border: 1px solid var(--border);
   }
@@ -274,6 +279,7 @@
   }
   .weather-day {
     background: var(--card);
+    border: 1px solid var(--border);
     border-radius: var(--radius-md);
     box-shadow: var(--shadow-sm);
     padding: 10px 14px;
@@ -300,7 +306,12 @@
     box-shadow: var(--shadow-md);
     padding: 18px 20px;
     margin: 0 0 14px;
-    border-left: 4px solid var(--accent);
+    /* Full ink border, not the accent - this is the site's own editorial
+       pick, distinct from the sponsor slot below, which is what gets the
+       single accent color (Modernist's mono palette has no second brand
+       hue to tell them apart with, so the distinction is ink vs accent,
+       not two different accents). */
+    border: 2px solid var(--ink);
   }
   .editors-pick .label {
     font-size: 11px;
@@ -335,7 +346,7 @@
     box-shadow: var(--shadow-md);
     padding: 18px 20px;
     margin: 0 0 22px;
-    border-left: 4px solid var(--accent-2);
+    border: 2px solid var(--accent);
   }
   .sponsor .label {
     font-size: 11px;
@@ -364,24 +375,26 @@
   }
   .filter-chip {
     border: 1px solid var(--border);
-    background: var(--card);
+    background: var(--bg);
     color: var(--ink);
-    border-radius: 999px;
-    padding: 7px 14px;
-    font-size: 13px;
-    font-weight: 500;
+    border-radius: 0;
+    padding: 7px 12px;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
     cursor: pointer;
     user-select: none;
     display: inline-flex;
     align-items: center;
     gap: 6px;
     box-shadow: var(--shadow-sm);
-    transition: transform .12s ease, box-shadow .12s ease;
+    transition: background .12s ease;
   }
-  .filter-chip:hover { transform: translateY(-1px); box-shadow: var(--shadow-md); }
+  .filter-chip:hover { background: color-mix(in srgb, var(--ink) 7%, transparent); }
   .filter-chip[aria-pressed="true"] {
     background: var(--accent-soft);
-    color: #fff;
+    color: var(--bg);
     border-color: var(--accent-soft);
   }
   .filter-chip.clear { background: transparent; border-style: dashed; box-shadow: none; display: none; }
@@ -390,7 +403,6 @@
   section.block { margin-bottom: 30px; }
   section.block h2 {
     font-size: 20px;
-    font-weight: 600;
     margin: 0 0 14px;
     padding-bottom: 8px;
     border-bottom: 2px solid var(--border);
@@ -406,31 +418,41 @@
      grid, not one merely unused in one row - flexbox distributes
      flex-grow space per row independently, so a lone last-row card
      stretches to fill it instead. */
+  /* Redesign (2026-09-21): a single-column stack of flat bordered rows
+     instead of a wrapped grid of boxes - Modernist's own dominant
+     pattern everywhere in its mockups (weekend picks, region rows, event
+     listings, email items) is a dense list with a divider between rows,
+     never a card grid. This also sidesteps ROADMAP.md Phase 11 #61's
+     original reason for flexbox over CSS grid (a lone last-row card
+     stranded next to an empty gap) for free: a single column has no row
+     for anything to be stranded in. */
   .card-grid {
     display: flex;
-    flex-wrap: wrap;
-    gap: 14px;
+    flex-direction: column;
+    gap: 0;
   }
   .card {
     position: relative;
-    flex: 1 1 260px;
-    background: var(--card);
-    border-radius: var(--radius-lg);
-    box-shadow: var(--shadow-sm);
-    padding: 16px 18px;
+    background: none;
+    border: 0;
+    border-bottom: 1px solid var(--border);
+    border-radius: 0;
+    box-shadow: none;
+    padding: 16px 0;
     display: flex;
     flex-direction: column;
     gap: 7px;
-    transition: transform .15s ease, box-shadow .15s ease;
+    transition: background .12s ease;
   }
-  .card:hover { transform: translateY(-3px); box-shadow: var(--shadow-lift); }
+  .card:last-child { border-bottom: 0; }
+  .card:hover { background: color-mix(in srgb, var(--ink) 4%, transparent); }
   .card.hidden { display: none; }
   /* ROADMAP.md Phase 11 #90: a school half-day or office closure is real
      and belongs on the page, but must read as secondary to an actual
-     event - muted fill, no lift-on-hover (there's nothing to click into
+     event - a faint fill, no hover tint (there's nothing to click into
      planning), and no star, since My Weekend is for things to attend. */
-  .card-informational { background: var(--bg); box-shadow: none; }
-  .card-informational:hover { transform: none; box-shadow: none; }
+  .card-informational { background: color-mix(in srgb, var(--ink) 3%, transparent); }
+  .card-informational:hover { background: color-mix(in srgb, var(--ink) 3%, transparent); }
   .card-informational .informational-label {
     color: var(--muted);
     font-size: 11px;
@@ -495,7 +517,7 @@
   .tag-badge {
     font-size: 11.5px;
     font-weight: 600;
-    border-radius: 999px;
+    border-radius: 0;
     padding: 3px 10px 3px 8px;
     display: inline-flex;
     align-items: center;
@@ -522,6 +544,7 @@
   .faq h2 { font-size: 18px; font-weight: 600; margin: 0 0 10px; }
   .faq-item {
     background: var(--card);
+    border: 1px solid var(--border);
     border-radius: var(--radius-md);
     box-shadow: var(--shadow-sm);
     padding: 12px 16px;
@@ -538,6 +561,7 @@
 
   .newsletter {
     background: var(--card);
+    border: 2px solid var(--ink);
     border-radius: var(--radius-lg);
     box-shadow: var(--shadow-sm);
     padding: 20px 24px;
@@ -551,49 +575,55 @@
   .newsletter form { display: contents; }
   .newsletter-copy strong { font-size: 15px; }
   .newsletter-copy p { margin: 3px 0 0; color: var(--muted); font-size: 13.5px; }
-  .newsletter-form-row { display: flex; gap: 8px; flex-wrap: wrap; }
+  .newsletter-form-row { display: flex; gap: 0; flex-wrap: wrap; }
   .newsletter-form-row input[type="email"] {
     font: inherit;
-    border: 1px solid var(--border);
-    border-radius: 999px;
+    border: 2px solid var(--ink);
+    border-right: 0;
+    border-radius: 0;
     padding: 8px 14px;
     min-width: 200px;
+    background: var(--bg);
+    color: var(--ink);
   }
   .newsletter-form-row button {
     font: inherit;
-    font-weight: 600;
-    color: #fff;
+    font-weight: 800;
+    color: var(--bg);
     background: var(--accent-soft);
-    border: none;
-    border-radius: 999px;
+    border: 2px solid var(--accent-soft);
+    border-radius: 0;
     padding: 8px 18px;
     cursor: pointer;
   }
-  .newsletter-form-row button:hover { filter: brightness(1.15); }
+  .newsletter-form-row button:hover { background: var(--accent-2-text); border-color: var(--accent-2-text); }
 
   footer {
     text-align: center;
     color: var(--muted);
     font-size: 12.5px;
     margin-top: 44px;
-    border-top: 1px solid var(--border);
+    border-top: 2px solid var(--border);
     padding-top: 18px;
   }
-  footer a { color: var(--accent); font-weight: 600; }
+  footer a { color: var(--accent-2-text); font-weight: 700; }
 
   .tray-widget { position: fixed; right: 18px; bottom: 18px; z-index: 20; }
   .tray-toggle {
     font: inherit;
-    font-weight: 700;
-    color: #fff;
+    font-weight: 800;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    font-size: 13px;
+    color: var(--bg);
     background: var(--accent-soft);
-    border: none;
-    border-radius: 999px;
+    border: 2px solid var(--accent-soft);
+    border-radius: 0;
     padding: 12px 18px;
     box-shadow: var(--shadow-lift);
     cursor: pointer;
   }
-  .tray-toggle:hover { filter: brightness(1.15); }
+  .tray-toggle:hover { background: var(--accent-2-text); border-color: var(--accent-2-text); }
   .tray-panel {
     position: absolute;
     right: 0;
@@ -602,6 +632,7 @@
     max-height: 60vh;
     overflow-y: auto;
     background: var(--card);
+    border: 2px solid var(--ink);
     border-radius: var(--radius-lg);
     box-shadow: var(--shadow-lift);
     padding: 14px 16px;
@@ -617,9 +648,9 @@
   .tray-item-remove { background: none; border: none; color: var(--muted); cursor: pointer; font-size: 15px; flex-shrink: 0; }
   .tray-item-remove:hover { color: var(--accent-2-text); }
   .tray-actions { display: flex; gap: 8px; margin-top: 10px; }
-  .tray-actions button { font: inherit; font-weight: 600; border-radius: 999px; padding: 7px 12px; cursor: pointer; font-size: 12.5px; }
-  #tray-export { background: var(--accent-soft); color: #fff; border: none; }
-  #tray-export:hover { filter: brightness(1.15); }
+  .tray-actions button { font: inherit; font-weight: 800; border-radius: 0; padding: 7px 12px; cursor: pointer; font-size: 12.5px; }
+  #tray-export { background: var(--accent-soft); color: var(--bg); border: 2px solid var(--accent-soft); }
+  #tray-export:hover { background: var(--accent-2-text); border-color: var(--accent-2-text); }
   #tray-clear { background: transparent; border: 1px solid var(--border); color: var(--muted); }
   .tray-note { margin: 10px 0 0; color: var(--muted); font-size: 11px; }
   .tray-empty { color: var(--muted); font-size: 13px; font-style: italic; }
@@ -643,9 +674,9 @@
     <a class="back" href="https://withintenmiles.com/">&larr; All regions</a>
     <div class="brand-mark">
       <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-        <circle cx="50" cy="50" r="48" fill="rgba(255,255,255,.16)"/>
-        <path d="M50 24c-12 0-22 9-22 22 0 16 22 34 22 34s22-18 22-34c0-13-10-22-22-22z" fill="#fff"/>
-        <circle cx="50" cy="46" r="9" fill="var(--accent)"/>
+        <circle cx="50" cy="50" r="48" fill="color-mix(in srgb, var(--accent) 14%, transparent)"/>
+        <path d="M50 24c-12 0-22 9-22 22 0 16 22 34 22 34s22-18 22-34c0-13-10-22-22-22z" fill="var(--ink)"/>
+        <circle cx="50" cy="46" r="9" fill="var(--card)"/>
       </svg>
       <span class="kicker">Mount Prospect · 60056</span>
     </div>
@@ -799,14 +830,6 @@
 
   
   <div class="filter-bar" role="group" aria-label="Filter events">
-    
-    <button type="button" class="filter-chip" data-tag="art_culture" aria-pressed="false">
-      <span aria-hidden="true">🎨</span>Arts &amp; culture
-    </button>
-    
-    <button type="button" class="filter-chip" data-tag="elementary" aria-pressed="false">
-      <span aria-hidden="true">🎒</span>Elementary age
-    </button>
     
     <button type="button" class="filter-chip" data-tag="food" aria-pressed="false">
       <span aria-hidden="true">🍽️</span>Food &amp; drink
@@ -1194,207 +1217,6 @@
     
   
     
-    <section class="block">
-      <h2>Park District Events</h2>
-      
-        <div class="card-grid">
-        
-        <!-- id folds in date_iso - see the Editor's Pick tray_item above
-             for why (ROADMAP.md item 146). -->
-        
-        <div class="card" data-tags="art_culture,elementary,kid_friendly,outdoor">
-          
-          <!-- ROADMAP.md Phase 11 #63: My Weekend is for dated events -
-               offering to add "Find your school district" or a guide's
-               own title to it made no sense, since guide items and the
-               guide index have nothing to do with weekend planning.
-               #90: nor does a school half-day belong in it - it's real
-               and worth knowing, but nobody plans a weekend around one. -->
-          <button type="button" class="tray-star" data-item='{"date": "Sep 26", "date_iso": "2026-09-26T09:30:00", "detail": "Fall Frenzy (Ages 5-10) Celebrate the beauty of the changing season with a burst of creativity! Join us in the Studio for this \u201cFall Frenzy\u201d workshop, where\u2026", "id": "https://www.mppd.org/event/fall-frenzy/|2026-09-26T09:30:00", "region_name": "Mount Prospect", "region_url": "https://withintenmiles.com/mount-prospect-60056/", "title": "Fall Frenzy", "url": "https://www.mppd.org/event/fall-frenzy/"}' aria-pressed="false" aria-label="Add Fall Frenzy to My Weekend">☆</button>
-          
-          
-          
-          <div class="date">Sep 26</div>
-          <h3><a href="https://www.mppd.org/event/fall-frenzy/">Fall Frenzy</a></h3>
-          
-          <p class="detail">Fall Frenzy (Ages 5-10) Celebrate the beauty of the changing season with a burst of creativity! Join us in the Studio for this “Fall Frenzy” workshop, where…</p>
-          
-          <div class="tag-row">
-            <span class="tag-badge" style="background: var(--hue-purple-bg); color: var(--hue-purple-ink);">🎨 Arts &amp; culture</span><span class="tag-badge" style="background: var(--hue-cyan-bg); color: var(--hue-cyan-ink);">🎒 Elementary age</span><span class="tag-badge" style="background: var(--hue-pink-bg); color: var(--hue-pink-ink);">🧒 Kid-friendly</span><span class="tag-badge" style="background: var(--hue-teal-bg); color: var(--hue-teal-ink);">🌳 Outdoor</span>
-          </div>
-          
-          
-          <div class="cal-row">
-            <a href="data:text/calendar;charset=utf-8,BEGIN%3AVCALENDAR%0D%0AVERSION%3A2.0%0D%0APRODID%3A-//Within%20Ten//EN%0D%0ABEGIN%3AVEVENT%0D%0ADTSTART%3A20260926T093000%0D%0ADTEND%3A20260926T103000%0D%0ASUMMARY%3AFall%20Frenzy%0D%0ADESCRIPTION%3AFall%20Frenzy%20%28Ages%205-10%29%20Celebrate%20the%20beauty%20of%20the%20changing%20season%20with%20a%20burst%20of%20creativity%21%20Join%20us%20in%20the%20Studio%20for%20this%20%E2%80%9CFall%20Frenzy%E2%80%9D%20workshop%5C%2C%20where%E2%80%A6%0D%0AURL%3Ahttps%3A//www.mppd.org/event/fall-frenzy/%0D%0AEND%3AVEVENT%0D%0AEND%3AVCALENDAR%0D%0A" download="event.ics">📅 Add to calendar</a>
-            <a href="https://www.google.com/calendar/render?action=TEMPLATE&amp;text=Fall+Frenzy&amp;dates=20260926T093000%2F20260926T103000&amp;details=Fall+Frenzy+%28Ages+5-10%29+Celebrate+the+beauty+of+the+changing+season+with+a+burst+of+creativity%21+Join+us+in+the+Studio+for+this+%E2%80%9CFall+Frenzy%E2%80%9D+workshop%2C+where%E2%80%A6&amp;location=Mount+Prospect" target="_blank" rel="noopener">Google Calendar</a>
-          </div>
-          
-        </div>
-        
-        <!-- id folds in date_iso - see the Editor's Pick tray_item above
-             for why (ROADMAP.md item 146). -->
-        
-        <div class="card" data-tags="indoor,outdoor">
-          
-          <!-- ROADMAP.md Phase 11 #63: My Weekend is for dated events -
-               offering to add "Find your school district" or a guide's
-               own title to it made no sense, since guide items and the
-               guide index have nothing to do with weekend planning.
-               #90: nor does a school half-day belong in it - it's real
-               and worth knowing, but nobody plans a weekend around one. -->
-          <button type="button" class="tray-star" data-item='{"date": "Oct 3", "date_iso": "2026-10-03T08:30:00", "detail": "Trick or Treat Trail (Suggested Ages 3-10) Location RecPlex Enjoy a fun-filled trail of Halloween games and treats! Pick up your bag at check-in and continue\u2026", "id": "https://www.mppd.org/event/trick-or-treat-trail-3/|2026-10-03T08:30:00", "region_name": "Mount Prospect", "region_url": "https://withintenmiles.com/mount-prospect-60056/", "title": "Trick or Treat Trail", "url": "https://www.mppd.org/event/trick-or-treat-trail-3/"}' aria-pressed="false" aria-label="Add Trick or Treat Trail to My Weekend">☆</button>
-          
-          
-          
-          <div class="date">Oct 3</div>
-          <h3><a href="https://www.mppd.org/event/trick-or-treat-trail-3/">Trick or Treat Trail</a></h3>
-          
-          <p class="detail">Trick or Treat Trail (Suggested Ages 3-10) Location RecPlex Enjoy a fun-filled trail of Halloween games and treats! Pick up your bag at check-in and continue…</p>
-          
-          <div class="tag-row">
-            <span class="tag-badge" style="background: var(--hue-blue-bg); color: var(--hue-blue-ink);">🏠 Indoor</span><span class="tag-badge" style="background: var(--hue-teal-bg); color: var(--hue-teal-ink);">🌳 Outdoor</span>
-          </div>
-          
-          
-          <div class="cal-row">
-            <a href="data:text/calendar;charset=utf-8,BEGIN%3AVCALENDAR%0D%0AVERSION%3A2.0%0D%0APRODID%3A-//Within%20Ten//EN%0D%0ABEGIN%3AVEVENT%0D%0ADTSTART%3A20261003T083000%0D%0ADTEND%3A20261003T093000%0D%0ASUMMARY%3ATrick%20or%20Treat%20Trail%0D%0ADESCRIPTION%3ATrick%20or%20Treat%20Trail%20%28Suggested%20Ages%203-10%29%20Location%20RecPlex%20Enjoy%20a%20fun-filled%20trail%20of%20Halloween%20games%20and%20treats%21%20Pick%20up%20your%20bag%20at%20check-in%20and%20continue%E2%80%A6%0D%0AURL%3Ahttps%3A//www.mppd.org/event/trick-or-treat-trail-3/%0D%0AEND%3AVEVENT%0D%0AEND%3AVCALENDAR%0D%0A" download="event.ics">📅 Add to calendar</a>
-            <a href="https://www.google.com/calendar/render?action=TEMPLATE&amp;text=Trick+or+Treat+Trail&amp;dates=20261003T083000%2F20261003T093000&amp;details=Trick+or+Treat+Trail+%28Suggested+Ages+3-10%29+Location+RecPlex+Enjoy+a+fun-filled+trail+of+Halloween+games+and+treats%21+Pick+up+your+bag+at+check-in+and+continue%E2%80%A6&amp;location=Mount+Prospect" target="_blank" rel="noopener">Google Calendar</a>
-          </div>
-          
-        </div>
-        
-        <!-- id folds in date_iso - see the Editor's Pick tray_item above
-             for why (ROADMAP.md item 146). -->
-        
-        <div class="card" data-tags="kid_friendly,outdoor">
-          
-          <!-- ROADMAP.md Phase 11 #63: My Weekend is for dated events -
-               offering to add "Find your school district" or a guide's
-               own title to it made no sense, since guide items and the
-               guide index have nothing to do with weekend planning.
-               #90: nor does a school half-day belong in it - it's real
-               and worth knowing, but nobody plans a weekend around one. -->
-          <button type="button" class="tray-star" data-item='{"date": "Oct 10", "date_iso": "2026-10-10T08:00:00", "detail": "Rescheduled! Fishing Derby (Ages 3-16) Grab your gear and make your way to Clearwater Park for a morning of family fishing! Test your skills and maybe even\u2026", "id": "https://www.mppd.org/event/fishing-derby-4/|2026-10-10T08:00:00", "region_name": "Mount Prospect", "region_url": "https://withintenmiles.com/mount-prospect-60056/", "title": "Fishing Derby", "url": "https://www.mppd.org/event/fishing-derby-4/"}' aria-pressed="false" aria-label="Add Fishing Derby to My Weekend">☆</button>
-          
-          
-          
-          <div class="date">Oct 10</div>
-          <h3><a href="https://www.mppd.org/event/fishing-derby-4/">Fishing Derby</a></h3>
-          
-          <p class="detail">Rescheduled! Fishing Derby (Ages 3-16) Grab your gear and make your way to Clearwater Park for a morning of family fishing! Test your skills and maybe even…</p>
-          
-          <div class="tag-row">
-            <span class="tag-badge" style="background: var(--hue-pink-bg); color: var(--hue-pink-ink);">🧒 Kid-friendly</span><span class="tag-badge" style="background: var(--hue-teal-bg); color: var(--hue-teal-ink);">🌳 Outdoor</span>
-          </div>
-          
-          
-          <div class="cal-row">
-            <a href="data:text/calendar;charset=utf-8,BEGIN%3AVCALENDAR%0D%0AVERSION%3A2.0%0D%0APRODID%3A-//Within%20Ten//EN%0D%0ABEGIN%3AVEVENT%0D%0ADTSTART%3A20261010T080000%0D%0ADTEND%3A20261010T090000%0D%0ASUMMARY%3AFishing%20Derby%0D%0ADESCRIPTION%3ARescheduled%21%20Fishing%20Derby%20%28Ages%203-16%29%20Grab%20your%20gear%20and%20make%20your%20way%20to%20Clearwater%20Park%20for%20a%20morning%20of%20family%20fishing%21%20Test%20your%20skills%20and%20maybe%20even%E2%80%A6%0D%0AURL%3Ahttps%3A//www.mppd.org/event/fishing-derby-4/%0D%0AEND%3AVEVENT%0D%0AEND%3AVCALENDAR%0D%0A" download="event.ics">📅 Add to calendar</a>
-            <a href="https://www.google.com/calendar/render?action=TEMPLATE&amp;text=Fishing+Derby&amp;dates=20261010T080000%2F20261010T090000&amp;details=Rescheduled%21+Fishing+Derby+%28Ages+3-16%29+Grab+your+gear+and+make+your+way+to+Clearwater+Park+for+a+morning+of+family+fishing%21+Test+your+skills+and+maybe+even%E2%80%A6&amp;location=Mount+Prospect" target="_blank" rel="noopener">Google Calendar</a>
-          </div>
-          
-        </div>
-        
-        <!-- id folds in date_iso - see the Editor's Pick tray_item above
-             for why (ROADMAP.md item 146). -->
-        
-        <div class="card" data-tags="art_culture,elementary,kid_friendly,outdoor">
-          
-          <!-- ROADMAP.md Phase 11 #63: My Weekend is for dated events -
-               offering to add "Find your school district" or a guide's
-               own title to it made no sense, since guide items and the
-               guide index have nothing to do with weekend planning.
-               #90: nor does a school half-day belong in it - it's real
-               and worth knowing, but nobody plans a weekend around one. -->
-          <button type="button" class="tray-star" data-item='{"date": "Oct 10", "date_iso": "2026-10-10T09:30:00", "detail": "Spooky Scary Studio (Ages 5-10) The Studio has been overrun by spooky, yet friendly, skeletons just in time for Halloween! Join us for a workshop filled with\u2026", "id": "https://www.mppd.org/event/31551/|2026-10-10T09:30:00", "region_name": "Mount Prospect", "region_url": "https://withintenmiles.com/mount-prospect-60056/", "title": "Spooky Scary Studio", "url": "https://www.mppd.org/event/31551/"}' aria-pressed="false" aria-label="Add Spooky Scary Studio to My Weekend">☆</button>
-          
-          
-          
-          <div class="date">Oct 10</div>
-          <h3><a href="https://www.mppd.org/event/31551/">Spooky Scary Studio</a></h3>
-          
-          <p class="detail">Spooky Scary Studio (Ages 5-10) The Studio has been overrun by spooky, yet friendly, skeletons just in time for Halloween! Join us for a workshop filled with…</p>
-          
-          <div class="tag-row">
-            <span class="tag-badge" style="background: var(--hue-purple-bg); color: var(--hue-purple-ink);">🎨 Arts &amp; culture</span><span class="tag-badge" style="background: var(--hue-cyan-bg); color: var(--hue-cyan-ink);">🎒 Elementary age</span><span class="tag-badge" style="background: var(--hue-pink-bg); color: var(--hue-pink-ink);">🧒 Kid-friendly</span><span class="tag-badge" style="background: var(--hue-teal-bg); color: var(--hue-teal-ink);">🌳 Outdoor</span>
-          </div>
-          
-          
-          <div class="cal-row">
-            <a href="data:text/calendar;charset=utf-8,BEGIN%3AVCALENDAR%0D%0AVERSION%3A2.0%0D%0APRODID%3A-//Within%20Ten//EN%0D%0ABEGIN%3AVEVENT%0D%0ADTSTART%3A20261010T093000%0D%0ADTEND%3A20261010T103000%0D%0ASUMMARY%3ASpooky%20Scary%20Studio%0D%0ADESCRIPTION%3ASpooky%20Scary%20Studio%20%28Ages%205-10%29%20The%20Studio%20has%20been%20overrun%20by%20spooky%5C%2C%20yet%20friendly%5C%2C%20skeletons%20just%20in%20time%20for%20Halloween%21%20Join%20us%20for%20a%20workshop%20filled%20with%E2%80%A6%0D%0AURL%3Ahttps%3A//www.mppd.org/event/31551/%0D%0AEND%3AVEVENT%0D%0AEND%3AVCALENDAR%0D%0A" download="event.ics">📅 Add to calendar</a>
-            <a href="https://www.google.com/calendar/render?action=TEMPLATE&amp;text=Spooky+Scary+Studio&amp;dates=20261010T093000%2F20261010T103000&amp;details=Spooky+Scary+Studio+%28Ages+5-10%29+The+Studio+has+been+overrun+by+spooky%2C+yet+friendly%2C+skeletons+just+in+time+for+Halloween%21+Join+us+for+a+workshop+filled+with%E2%80%A6&amp;location=Mount+Prospect" target="_blank" rel="noopener">Google Calendar</a>
-          </div>
-          
-        </div>
-        
-        <!-- id folds in date_iso - see the Editor's Pick tray_item above
-             for why (ROADMAP.md item 146). -->
-        
-        <div class="card" data-tags="outdoor">
-          
-          <!-- ROADMAP.md Phase 11 #63: My Weekend is for dated events -
-               offering to add "Find your school district" or a guide's
-               own title to it made no sense, since guide items and the
-               guide index have nothing to do with weekend planning.
-               #90: nor does a school half-day belong in it - it's real
-               and worth knowing, but nobody plans a weekend around one. -->
-          <button type="button" class="tray-star" data-item='{"date": "Oct 21", "date_iso": "2026-10-21T18:30:00", "detail": "Join the discussion \u2013 Public welcome! Meeting Agenda Meeting Packet", "id": "https://www.mppd.org/event/park-board-meeting-44/|2026-10-21T18:30:00", "region_name": "Mount Prospect", "region_url": "https://withintenmiles.com/mount-prospect-60056/", "title": "Park Board Meeting", "url": "https://www.mppd.org/event/park-board-meeting-44/"}' aria-pressed="false" aria-label="Add Park Board Meeting to My Weekend">☆</button>
-          
-          
-          
-          <div class="date">Oct 21</div>
-          <h3><a href="https://www.mppd.org/event/park-board-meeting-44/">Park Board Meeting</a></h3>
-          
-          <p class="detail">Join the discussion – Public welcome! Meeting Agenda Meeting Packet</p>
-          
-          <div class="tag-row">
-            <span class="tag-badge" style="background: var(--hue-teal-bg); color: var(--hue-teal-ink);">🌳 Outdoor</span>
-          </div>
-          
-          
-          <div class="cal-row">
-            <a href="data:text/calendar;charset=utf-8,BEGIN%3AVCALENDAR%0D%0AVERSION%3A2.0%0D%0APRODID%3A-//Within%20Ten//EN%0D%0ABEGIN%3AVEVENT%0D%0ADTSTART%3A20261021T183000%0D%0ADTEND%3A20261021T193000%0D%0ASUMMARY%3APark%20Board%20Meeting%0D%0ADESCRIPTION%3AJoin%20the%20discussion%20%E2%80%93%20Public%20welcome%21%20Meeting%20Agenda%20Meeting%20Packet%0D%0AURL%3Ahttps%3A//www.mppd.org/event/park-board-meeting-44/%0D%0AEND%3AVEVENT%0D%0AEND%3AVCALENDAR%0D%0A" download="event.ics">📅 Add to calendar</a>
-            <a href="https://www.google.com/calendar/render?action=TEMPLATE&amp;text=Park+Board+Meeting&amp;dates=20261021T183000%2F20261021T193000&amp;details=Join+the+discussion+%E2%80%93+Public+welcome%21+Meeting+Agenda+Meeting+Packet&amp;location=Mount+Prospect" target="_blank" rel="noopener">Google Calendar</a>
-          </div>
-          
-        </div>
-        
-        <!-- id folds in date_iso - see the Editor's Pick tray_item above
-             for why (ROADMAP.md item 146). -->
-        
-        <div class="card" data-tags="art_culture,kid_friendly,outdoor">
-          
-          <!-- ROADMAP.md Phase 11 #63: My Weekend is for dated events -
-               offering to add "Find your school district" or a guide's
-               own title to it made no sense, since guide items and the
-               guide index have nothing to do with weekend planning.
-               #90: nor does a school half-day belong in it - it's real
-               and worth knowing, but nobody plans a weekend around one. -->
-          <button type="button" class="tray-star" data-item='{"date": "Oct 23", "date_iso": "2026-10-23T18:00:00", "detail": "Daddy Daughter Date Night \u2013 Ties \u0026 Tiaras (Ages 4-12) Step into an unforgettable evening of elegance, laughter, and special memories at our Daddy Daughter\u2026", "id": "https://www.mppd.org/event/daddy-daughter-date-night-4/|2026-10-23T18:00:00", "region_name": "Mount Prospect", "region_url": "https://withintenmiles.com/mount-prospect-60056/", "title": "Daddy Daughter Date Night", "url": "https://www.mppd.org/event/daddy-daughter-date-night-4/"}' aria-pressed="false" aria-label="Add Daddy Daughter Date Night to My Weekend">☆</button>
-          
-          
-          
-          <div class="date">Oct 23</div>
-          <h3><a href="https://www.mppd.org/event/daddy-daughter-date-night-4/">Daddy Daughter Date Night</a></h3>
-          
-          <p class="detail">Daddy Daughter Date Night – Ties &amp; Tiaras (Ages 4-12) Step into an unforgettable evening of elegance, laughter, and special memories at our Daddy Daughter…</p>
-          
-          <div class="tag-row">
-            <span class="tag-badge" style="background: var(--hue-purple-bg); color: var(--hue-purple-ink);">🎨 Arts &amp; culture</span><span class="tag-badge" style="background: var(--hue-pink-bg); color: var(--hue-pink-ink);">🧒 Kid-friendly</span><span class="tag-badge" style="background: var(--hue-teal-bg); color: var(--hue-teal-ink);">🌳 Outdoor</span>
-          </div>
-          
-          
-          <div class="cal-row">
-            <a href="data:text/calendar;charset=utf-8,BEGIN%3AVCALENDAR%0D%0AVERSION%3A2.0%0D%0APRODID%3A-//Within%20Ten//EN%0D%0ABEGIN%3AVEVENT%0D%0ADTSTART%3A20261023T180000%0D%0ADTEND%3A20261023T190000%0D%0ASUMMARY%3ADaddy%20Daughter%20Date%20Night%0D%0ADESCRIPTION%3ADaddy%20Daughter%20Date%20Night%20%E2%80%93%20Ties%20%26%20Tiaras%20%28Ages%204-12%29%20Step%20into%20an%20unforgettable%20evening%20of%20elegance%5C%2C%20laughter%5C%2C%20and%20special%20memories%20at%20our%20Daddy%20Daughter%E2%80%A6%0D%0AURL%3Ahttps%3A//www.mppd.org/event/daddy-daughter-date-night-4/%0D%0AEND%3AVEVENT%0D%0AEND%3AVCALENDAR%0D%0A" download="event.ics">📅 Add to calendar</a>
-            <a href="https://www.google.com/calendar/render?action=TEMPLATE&amp;text=Daddy+Daughter+Date+Night&amp;dates=20261023T180000%2F20261023T190000&amp;details=Daddy+Daughter+Date+Night+%E2%80%93+Ties+%26+Tiaras+%28Ages+4-12%29+Step+into+an+unforgettable+evening+of+elegance%2C+laughter%2C+and+special+memories+at+our+Daddy+Daughter%E2%80%A6&amp;location=Mount+Prospect" target="_blank" rel="noopener">Google Calendar</a>
-          </div>
-          
-        </div>
-        
-        </div>
-      
-    </section>
-    
   
     
     <section class="block">
@@ -1695,7 +1517,7 @@
     <a href="https://withintenmiles.com/sponsor/">sponsor page</a>.
     <a href="https://withintenmiles.com/about/">About</a>.
     <a href="https://withintenmiles.com/trick-or-treat/">Trick-or-treat hours</a>.
-    <br>Generated 2026-09-21 14:00 UTC.
+    <br>Generated 2026-09-21 14:46 UTC.
     
     <br><a href="https://withintenmiles.com/mount-prospect-60056/weekly-summary.txt">Copy this week's summary</a> — a plain-text block ready to paste into a local group.
   </footer>
@@ -1718,10 +1540,10 @@
 </div>
 
 
-<script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "Event", "name": "Mount Prospect Farmers Market", "url": "https://mplions.org/event/farmers-market/", "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode", "description": "Local produce and vendors, organized by the Mount Prospect Lions Club, rain or shine. West Metra commuter lot, Northwest Hwy & Main St (Rte 83).", "startDate": "2026-09-27T08:00:00"}, {"@type": "Event", "name": "Mount Prospect Farmers Market", "url": "https://mplions.org/event/farmers-market/", "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode", "description": "Local produce and vendors, organized by the Mount Prospect Lions Club, rain or shine. West Metra commuter lot, Northwest Hwy & Main St (Rte 83).", "startDate": "2026-10-04T08:00:00"}, {"@type": "Event", "name": "Mount Prospect Farmers Market", "url": "https://mplions.org/event/farmers-market/", "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode", "description": "Local produce and vendors, organized by the Mount Prospect Lions Club, rain or shine. West Metra commuter lot, Northwest Hwy & Main St (Rte 83).", "startDate": "2026-10-11T08:00:00"}, {"@type": "Event", "name": "Mount Prospect Farmers Market", "url": "https://mplions.org/event/farmers-market/", "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode", "description": "Local produce and vendors, organized by the Mount Prospect Lions Club, rain or shine. West Metra commuter lot, Northwest Hwy & Main St (Rte 83).", "startDate": "2026-10-18T08:00:00"}, {"@type": "Event", "name": "Mount Prospect Farmers Market", "url": "https://mplions.org/event/farmers-market/", "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode", "description": "Local produce and vendors, organized by the Mount Prospect Lions Club, rain or shine. West Metra commuter lot, Northwest Hwy & Main St (Rte 83).", "startDate": "2026-10-25T08:00:00"}, {"@type": "Event", "name": "Family Storytime", "url": "https://mppl.libnet.info/event/16290481", "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode", "description": "Monday, September 21 2026 9:30am - 10:00am \n Bring the whole family and join us for an interactive storytime with high-energy stories, songs, and activities.", "startDate": "2026-09-21T09:30:00+00:00"}, {"@type": "Event", "name": "Drop-In Tech Help", "url": "https://mppl.libnet.info/event/14755941", "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode", "description": "Monday, September 21 2026 10:00am - 11:00am \n Stop in and bring your questions about technology-related subjects such as smartphones, computers, email,…", "startDate": "2026-09-21T10:00:00+00:00"}, {"@type": "Event", "name": "Creation Station: DIY Muñecas Quitapenas (Worry Dolls)", "url": "https://mppl.libnet.info/event/16428151", "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode", "description": "Monday, September 21 2026 10:00am - 11:00am \n Craft and create with us! We'll provide an idea and supplies; you create your own masterpiece.", "startDate": "2026-09-21T10:00:00+00:00"}, {"@type": "Event", "name": "Toddler Storytime", "url": "https://mppl.libnet.info/event/16290777", "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode", "description": "Monday, September 21 2026 10:30am - 11:00am \n Grow your little learner's literacy and language skills at this playful storytime full of wiggles, wonder, and…", "startDate": "2026-09-21T10:30:00+00:00"}, {"@type": "Event", "name": "Beyond the Book Drop", "url": "https://mppl.libnet.info/event/16687517", "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode", "description": "Monday, September 21 2026 11:00am - 11:30am \n Ever wonder what happens after your library materials go through the return slot? Get a behind-the-scenes look…", "startDate": "2026-09-21T11:00:00+00:00"}, {"@type": "Event", "name": "Fall Frenzy", "url": "https://www.mppd.org/event/fall-frenzy/", "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode", "description": "Fall Frenzy (Ages 5-10) Celebrate the beauty of the changing season with a burst of creativity! Join us in the Studio for this “Fall Frenzy” workshop, where…", "startDate": "2026-09-26T09:30:00"}, {"@type": "Event", "name": "Trick or Treat Trail", "url": "https://www.mppd.org/event/trick-or-treat-trail-3/", "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode", "description": "Trick or Treat Trail (Suggested Ages 3-10) Location RecPlex Enjoy a fun-filled trail of Halloween games and treats! Pick up your bag at check-in and continue…", "startDate": "2026-10-03T08:30:00"}, {"@type": "Event", "name": "Fishing Derby", "url": "https://www.mppd.org/event/fishing-derby-4/", "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode", "description": "Rescheduled! Fishing Derby (Ages 3-16) Grab your gear and make your way to Clearwater Park for a morning of family fishing! Test your skills and maybe even…", "startDate": "2026-10-10T08:00:00"}, {"@type": "Event", "name": "Spooky Scary Studio", "url": "https://www.mppd.org/event/31551/", "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode", "description": "Spooky Scary Studio (Ages 5-10) The Studio has been overrun by spooky, yet friendly, skeletons just in time for Halloween! Join us for a workshop filled with…", "startDate": "2026-10-10T09:30:00"}, {"@type": "Event", "name": "Park Board Meeting", "url": "https://www.mppd.org/event/park-board-meeting-44/", "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode", "description": "Join the discussion – Public welcome! Meeting Agenda Meeting Packet", "startDate": "2026-10-21T18:30:00"}, {"@type": "Event", "name": "Daddy Daughter Date Night", "url": "https://www.mppd.org/event/daddy-daughter-date-night-4/", "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode", "description": "Daddy Daughter Date Night – Ties & Tiaras (Ages 4-12) Step into an unforgettable evening of elegance, laughter, and special memories at our Daddy Daughter…", "startDate": "2026-10-23T18:00:00"}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "Event", "name": "Mount Prospect Farmers Market", "url": "https://mplions.org/event/farmers-market/", "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode", "description": "Local produce and vendors, organized by the Mount Prospect Lions Club, rain or shine. West Metra commuter lot, Northwest Hwy & Main St (Rte 83).", "startDate": "2026-09-27T08:00:00"}, {"@type": "Event", "name": "Mount Prospect Farmers Market", "url": "https://mplions.org/event/farmers-market/", "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode", "description": "Local produce and vendors, organized by the Mount Prospect Lions Club, rain or shine. West Metra commuter lot, Northwest Hwy & Main St (Rte 83).", "startDate": "2026-10-04T08:00:00"}, {"@type": "Event", "name": "Mount Prospect Farmers Market", "url": "https://mplions.org/event/farmers-market/", "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode", "description": "Local produce and vendors, organized by the Mount Prospect Lions Club, rain or shine. West Metra commuter lot, Northwest Hwy & Main St (Rte 83).", "startDate": "2026-10-11T08:00:00"}, {"@type": "Event", "name": "Mount Prospect Farmers Market", "url": "https://mplions.org/event/farmers-market/", "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode", "description": "Local produce and vendors, organized by the Mount Prospect Lions Club, rain or shine. West Metra commuter lot, Northwest Hwy & Main St (Rte 83).", "startDate": "2026-10-18T08:00:00"}, {"@type": "Event", "name": "Mount Prospect Farmers Market", "url": "https://mplions.org/event/farmers-market/", "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode", "description": "Local produce and vendors, organized by the Mount Prospect Lions Club, rain or shine. West Metra commuter lot, Northwest Hwy & Main St (Rte 83).", "startDate": "2026-10-25T08:00:00"}, {"@type": "Event", "name": "Family Storytime", "url": "https://mppl.libnet.info/event/16290481", "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode", "description": "Monday, September 21 2026 9:30am - 10:00am \n Bring the whole family and join us for an interactive storytime with high-energy stories, songs, and activities.", "startDate": "2026-09-21T09:30:00+00:00"}, {"@type": "Event", "name": "Drop-In Tech Help", "url": "https://mppl.libnet.info/event/14755941", "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode", "description": "Monday, September 21 2026 10:00am - 11:00am \n Stop in and bring your questions about technology-related subjects such as smartphones, computers, email,…", "startDate": "2026-09-21T10:00:00+00:00"}, {"@type": "Event", "name": "Creation Station: DIY Muñecas Quitapenas (Worry Dolls)", "url": "https://mppl.libnet.info/event/16428151", "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode", "description": "Monday, September 21 2026 10:00am - 11:00am \n Craft and create with us! We'll provide an idea and supplies; you create your own masterpiece.", "startDate": "2026-09-21T10:00:00+00:00"}, {"@type": "Event", "name": "Toddler Storytime", "url": "https://mppl.libnet.info/event/16290777", "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode", "description": "Monday, September 21 2026 10:30am - 11:00am \n Grow your little learner's literacy and language skills at this playful storytime full of wiggles, wonder, and…", "startDate": "2026-09-21T10:30:00+00:00"}, {"@type": "Event", "name": "Beyond the Book Drop", "url": "https://mppl.libnet.info/event/16687517", "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode", "description": "Monday, September 21 2026 11:00am - 11:30am \n Ever wonder what happens after your library materials go through the return slot? Get a behind-the-scenes look…", "startDate": "2026-09-21T11:00:00+00:00"}]}</script>
 
 
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebPage", "name": "Mount Prospect — Within Ten", "url": "https://withintenmiles.com/mount-prospect-60056/", "dateModified": "2026-09-21T14:00:47.801667+00:00", "isPartOf": {"@type": "WebSite", "name": "Within Ten", "url": "https://withintenmiles.com/", "publisher": {"@id": "https://withintenmiles.com/about/#organization"}}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebPage", "name": "Mount Prospect — Within Ten", "url": "https://withintenmiles.com/mount-prospect-60056/", "dateModified": "2026-09-21T14:46:11.499590+00:00", "isPartOf": {"@type": "WebSite", "name": "Within Ten", "url": "https://withintenmiles.com/", "publisher": {"@id": "https://withintenmiles.com/about/#organization"}}}</script>
 <script>
 (function () {
   var activeTags = new Set();
