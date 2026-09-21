@@ -68,7 +68,7 @@ PREVIEW ONLY, NOT PART OF THE EMAIL — SUBJECT LINE: {{ subject_line }}
 <!-- Intro -->
 <tr>
 <td style="font-family:Georgia, 'Times New Roman', serif; font-size:22px; line-height:1.3; color:#2b2318; padding-bottom:6px;" class="wt-ink">
-This weekend, four towns over
+This weekend, across the northwest suburbs
 </td>
 </tr>
 <tr>
@@ -172,26 +172,6 @@ ALSO THIS WEEK
 </table>
 </td>
 </tr>
-{% elif block.sponsor %}
-<!-- House ad (item 88's rationale, applied here too): an unsold slot
-     falls back to this on the region page and the single-region email
-     already - the combined email (the one actually mailed, item 105)
-     shouldn't be the one artifact that never mentions the slot is for
-     sale. Deliberately plain, matching the single-region email's own
-     unsold-slot treatment. -->
-<tr>
-<td style="padding-top:10px;">
-<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
-<tr>
-<td bgcolor="#f6efe1" class="wt-bg wt-border" style="background-color:#f6efe1; border:1px dashed #e6dcc8; border-radius:6px; padding:10px 14px;">
-<span class="wt-muted" style="font-family:Arial, Helvetica, sans-serif; font-size:11px; font-weight:bold; letter-spacing:0.5px; color:#766a58;">SPONSOR THIS SPOT —</span>
-<span class="wt-muted" style="font-family:Arial, Helvetica, sans-serif; font-size:13px; color:#766a58;">{{ block.sponsor.detail }}</span>
-{% if block.sponsor.url %} <a href="{{ block.sponsor.url }}" class="wt-brand" style="color:#526b3f; text-decoration:none; font-weight:bold; font-family:Arial, Helvetica, sans-serif; font-size:13px;">Learn more &rarr;</a>{% endif %}
-</td>
-</tr>
-</table>
-</td>
-</tr>
 {% endif %}
 
 <tr>
@@ -205,6 +185,31 @@ ALSO THIS WEEK
 </tr>
 <tr><td style="padding:0 0 16px 0;"></td></tr>
 {% endfor %}
+
+{% if house_ad %}
+<!-- ROADMAP.md item 169: house ads are inventory notices, not content -
+     they appear at most once per artifact, regardless of how many
+     regions have nothing sold. Item 88's rationale for showing an
+     unsold slot at all still applies (this shouldn't be the one
+     artifact that never mentions a slot is for sale) - what changed is
+     that a real paying sponsor still gets a per-region block above
+     (that placement is what the tier sells), while the free "nothing's
+     sold here yet" notice runs once for the whole issue instead of
+     once per region. -->
+<tr>
+<td style="padding-bottom:16px;">
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+<tr>
+<td bgcolor="#f6efe1" class="wt-bg wt-border" style="background-color:#f6efe1; border:1px dashed #e6dcc8; border-radius:6px; padding:10px 14px;">
+<span class="wt-muted" style="font-family:Arial, Helvetica, sans-serif; font-size:11px; font-weight:bold; letter-spacing:0.5px; color:#766a58;">SPONSOR THIS SPOT —</span>
+<span class="wt-muted" style="font-family:Arial, Helvetica, sans-serif; font-size:13px; color:#766a58;">{{ house_ad.detail }}</span>
+{% if house_ad.url %} <a href="{{ house_ad.url }}" class="wt-brand" style="color:#526b3f; text-decoration:none; font-weight:bold; font-family:Arial, Helvetica, sans-serif; font-size:13px;">Learn more &rarr;</a>{% endif %}
+</td>
+</tr>
+</table>
+</td>
+</tr>
+{% endif %}
 
 <!-- Footer -->
 <!-- ROADMAP.md item 157: a reply is a stronger deliverability signal

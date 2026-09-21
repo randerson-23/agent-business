@@ -1904,7 +1904,7 @@ def build_llms_txt(region_summaries: list[dict]) -> str:
     lines += ["", "## Calendars"] + calendar_lines
     lines += ["", "## Sponsorship", f"- [Sponsor a region]({SITE_BASE_URL}sponsor/)"]
     lines += ["", "## About", f"- [Who publishes this, and why]({SITE_BASE_URL}about/)"]
-    lines += ["", "## Seasonal", f"- [Trick-or-treat hours, all four towns]({SITE_BASE_URL}trick-or-treat/)"]
+    lines += ["", "## Seasonal", f"- [Trick-or-treat hours, all {len(region_summaries)} towns]({SITE_BASE_URL}trick-or-treat/)"]
     lines += ["", "## Feed", f"- [RSS: upcoming events across every region]({SITE_BASE_URL}feed.xml)"]
     return "\n".join(lines) + "\n"
 
@@ -2205,9 +2205,11 @@ def render_combined_email_digest(sections: list[dict], weekend_date_range: str, 
     env = get_template_env()
     template = env.get_template("combined_email_digest.html.j2")
     region_blocks = []
+    house_ad = None
     for s in sections:
         weekend_events = s["weekend_events"]
         evergreen_highlights = [e for e in s.get("evergreen", []) if "free" in e.get("tags", [])][:3]
+        sponsor = s.get("sponsor")
         region_blocks.append(
             {
                 "region_name": s["region_name"],
@@ -2215,11 +2217,22 @@ def render_combined_email_digest(sections: list[dict], weekend_date_range: str, 
                 "attendable_events": [e for e in weekend_events if e.get("attendable", True)],
                 "informational_events": [e for e in weekend_events if not e.get("attendable", True)],
                 "evergreen_highlights": evergreen_highlights,
-                "sponsor": s.get("sponsor"),
+                "sponsor": sponsor,
             }
         )
+        # ROADMAP.md item 169: house ads are inventory notices and
+        # appear at most once per artifact, not once per region - a
+        # real paying sponsor still gets its own per-region block above
+        # (that placement is what the tier sells). The first unsold
+        # slot found stands in for all of them, since today every
+        # region's house ad is the same shared default anyway; picking
+        # deterministically (first in section order) rather than
+        # arbitrarily keeps this reproducible if that ever changes.
+        if house_ad is None and sponsor and not sponsor.get("is_active_sponsor"):
+            house_ad = sponsor
     return template.render(
         region_blocks=region_blocks,
+        house_ad=house_ad,
         weekend_date_range=weekend_date_range,
         subject_line=build_combined_email_subject_line(sections),
         preview=preview,
