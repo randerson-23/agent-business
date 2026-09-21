@@ -466,6 +466,41 @@ def test_fetch_html_events_denylists_known_nav_labels_in_fallback(mock_get):
 
 
 @patch("fetchers.requests.get")
+def test_fetch_html_events_denylists_libcal_and_civicplus_chrome(mock_get):
+    # ROADMAP.md item 175 (forty-first research pass): found in real
+    # production output, not crafted first - Des Plaines, Palatine, and
+    # Wheeling's Library/Village/Park District sources (none with a
+    # confirmed detail_link_pattern) were all falling into this exact
+    # fallback branch and returning generic nav/account/legal chrome as
+    # "events" purely because a keyword substring matched ("my EVENTS",
+    # "news & EVENTS", "PROGRAM guide"). "Copyright Notices" confirmed on
+    # two unrelated civicplus-template domains (palatine.il.us,
+    # wheelingil.gov), "My events" confirmed on calendar.dppl.org (a
+    # LibCal system, same false-positive shape item 9 first found on a
+    # different LibCal URL) - a real recurring platform pattern, not a
+    # one-off typo to patch and forget.
+    html = (
+        '<a href="https://calendar.dppl.org/myevents">My events</a>'
+        '<a href="https://www.dpparks.org/events/">Programs / Event Tickets</a>'
+        '<a href="https://www.wheelingil.gov/civicalerts.aspx">News &amp; Events</a>'
+        '<a href="https://www.palatine.il.us/site/copyright">Copyright Notices</a>'
+        '<a href="/x">Fall Festival Craft Fair</a>'
+    )
+    mock_get.return_value = _mock_response(html)
+    # "notice" isn't in DEFAULT_KEYWORDS - real production configs for the
+    # two civicplus sources above (Palatine's Village News, Wheeling's
+    # Village Calendar) both add it, which is exactly how "Copyright
+    # Notices" reached the denylist check in the wild rather than being
+    # excluded by the keyword filter before ever getting there.
+    items = fetch_html_events(
+        "https://example.org/events",
+        keywords=["event", "program", "notice", "festival"],
+    )
+    titles = {i["title"] for i in items}
+    assert titles == {"Fall Festival Craft Fair"}
+
+
+@patch("fetchers.requests.get")
 def test_fetch_html_events_dedupes_identical_title_and_url_in_fallback(mock_get):
     # ROADMAP.md item 140: found in a real production build, not crafted
     # first - Des Plaines' D62 calendar page (item 138) links the exact
