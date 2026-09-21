@@ -13,19 +13,28 @@ re-deriving it from scratch.
 
 ## The two directions
 
-**Typography as the primary interface.** Fraunces for headings, Inter
-for body, a beige/green palette, generous whitespace. No framework,
-because a framework brings its own visual vocabulary (component
-shadows, motion defaults, icon sets) that competes with typography for
-attention instead of getting out of its way.
+**Typography as the primary interface.** Archivo throughout (400/600/800
+weights), a near-neutral grey ground (`#f3f2f2` / `#171615` dark), a
+single red accent (`#ec3013` on the site, `#ae1800`/`#ff9783` for
+accessible text-weight use), zero corner radius, and flat 2px borders
+in place of soft shadows — generous whitespace still does the same job
+it always did. No framework, because a framework brings its own visual
+vocabulary (component shadows, motion defaults, icon sets) that competes
+with typography for attention instead of getting out of its way.
+
+*(Redesigned 2026-09-21, item 174, from an earlier Fraunces-heading /
+Inter-body / beige-green system — see "Changing this system" below for
+why that changed and what the bar is for changing it again.)*
 
 **Restraint over accumulation.** No motion for its own sake — the one
 animation on the site (native View Transitions on navigation) is a
 progressive enhancement with a `prefers-reduced-motion` off-switch, not
 a feature. No decorative illustration, no stock photography, no
-gradient-mesh backgrounds. The refined serif heading is what signals
-editorial polish; a competing visual trend on the same page would
-undercut it, not add to it.
+gradient-mesh backgrounds. **One accent color, deliberately never a
+second one** — the same restraint that used to be expressed through a
+refined serif heading is now expressed through a mono-accent, zero-
+radius system: a competing visual trend on the same page would undercut
+it, not add to it, whichever specific system is currently in place.
 
 ## The named referent
 
@@ -64,9 +73,35 @@ like. The next one will too.
 - Dense, dashboard-style information density. This is a reading
   experience, not a control panel.
 
-None of this is a change from what the site already does — the finding
-is that the existing direction is already correct and needs writing
-down as a **defence**, not that anything needs redesigning.
+This described the site's original direction as a **defence** against
+accumulation, not a call to redesign — and then item 174 redesigned it
+anyway, to the system described above. The redesign held the same two
+directions (typography-first, one accent, no framework); what it
+changed was execution, not the argument. The research pass that found
+it (item 176) put it plainly: the execution was careful, but a full
+palette and typeface change happening while the build loop was idle is
+exactly the failure mode this file exists to catch, whether or not the
+result is good.
+
+## Changing this system
+
+A change to the palette, typeface, or layout system needs a **stated
+reason a reader would notice** — not "this looks more current" or "I
+was idle and it seemed worth trying" — written down in the commit or
+PR *before* the work, the same bar this file already applies to adding
+a feature (see "The standing question" below). "A reader would notice"
+rules out anything whose actual motivation is that the builder found
+the old system slightly dated: restraint doesn't go stale on its own
+schedule.
+
+This doesn't ban redesigning. It bans redesigning as a way to fill
+otherwise-idle time. If the next redesign has a real, stated reason
+(item 158's `/things-to-do/` pages needed real accessible-contrast
+text on the accent color, say, and the color didn't have one at the
+weight needed) — write that reason down first, then do the work. If
+the honest reason is "nothing else was actionable" — that's exactly
+what item 159's "verify, don't invent" standing work exists to absorb
+instead.
 
 ## Permanent URLs
 

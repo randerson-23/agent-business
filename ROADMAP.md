@@ -8579,6 +8579,24 @@ about to stop Wednesday's send.**
      That is not a ban on redesigning; it is the same bar item 103
      already applies to adding features, applied to changing them.
 
+     🟢 **Shipped 2026-09-21.** Rewrote `DESIGN_PRINCIPLES.md`'s "The
+     two directions" to describe the real, current system — Archivo
+     throughout, `#f3f2f2`/`#171615` grey ground, single `#ec3013` red
+     accent, zero corner radius, flat 2px borders — with an inline note
+     marking it as item 174's 2026-09-21 redesign from the earlier
+     Fraunces/Inter/beige-green system, rather than presenting either
+     as timeless. Replaced the old closing line ("the existing
+     direction is already correct... not that anything needs
+     redesigning") with an honest account of what actually happened:
+     the file said that, then a redesign happened anyway, and this
+     finding is what caught it. Added a new "Changing this system"
+     section with the exact rule asked for — a stated, reader-noticing
+     reason recorded *before* the work, explicitly ruling out "it
+     looked dated" as a qualifying reason, and pointing back at item
+     159's "verify, don't invent" standing work as where idle-loop time
+     should go instead. No code changed; this is the guard document
+     catching up to what it's meant to guard.
+
 #### P2 (new)
 
 177. **Four identical empty states is a design problem, not a data
