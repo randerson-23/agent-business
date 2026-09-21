@@ -8486,6 +8486,27 @@ anything cosmetic.
   confirmed via the real GitHub Actions run for the previous PR
   (`35530681553`) that CI's own Lighthouse assertions passed for real
   against the expanded 7-URL set, not just in this sandbox's local run.
+
+  Fourth pass, 2026-09-21 (three hourly firings after item 174's CLS
+  fix shipped): no new research pass, no open issues/PRs,
+  `data/source_health.json` unchanged since the last real CI build.
+  Re-checked item (1) first, given item 172's direct stake in it -
+  Mount Prospect's four zero/near-zero sources (Village News/Calendar,
+  Experience Mount Prospect, Downtown Mount Prospect) still match the
+  same 403/JS-rendering diagnoses dated 2026-08-29, confirmed unchanged
+  against the redesign PR's own real build log from earlier today
+  (run `35614346834`) - no drift, nothing newly broken, nothing a
+  User-Agent change could fix that item 161 hasn't already tried. Then
+  WebSearch-spot-checked five more outbound Des Plaines evergreen/guide
+  links not covered by the third pass's sample (Fall Fest, two Maine
+  207 athletics/boundary pages, Taste of Des Plaines, D62's calendar
+  page) - all five resolve and match their config descriptions. One
+  worth a note, not a fix: `desplainesil.gov`'s Taste of Des Plaines
+  page has at least two other historical URL paths still turning up in
+  search alongside the current one, meaning that domain has
+  reorganized its own URL structure before - the config's current URL
+  is live and correct today, but it's the one link in this pass worth
+  checking again sooner than the others if it ever 404s.
 - **The research loop leaves at most three open owner decisions at a
   time (item 165).** A six-item "Needs Ryan" queue, none of it acted on
   in a week, is itself the finding — presenting equal-looking options
