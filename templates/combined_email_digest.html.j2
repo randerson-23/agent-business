@@ -186,6 +186,33 @@ ALSO THIS WEEK
 <tr><td style="padding:0 0 16px 0;"></td></tr>
 {% endfor %}
 
+{% if empty_regions_summary %}
+<!-- ROADMAP.md item 177: regions with nothing dated, no informational
+     note, and no active sponsor collapse into one shared block instead
+     of repeating "Nothing new dated..." as a full card per region -
+     built in build_digest.py only once 2+ regions qualify at once, so
+     a single quiet region still gets its own ordinary card above. -->
+<tr>
+<td bgcolor="#eae9e9" class="wt-card wt-border" style="background-color:#eae9e9; border:2px solid #d7d3d3; border-radius:0; padding:20px; margin-bottom:16px;">
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+<tr>
+<td class="wt-muted" style="font-family:Arial, Helvetica, sans-serif; font-size:14px; color:#605d5d; padding-bottom:10px;">
+Nothing dated yet in {{ empty_regions_summary.names }} — worth knowing about:
+</td>
+</tr>
+{% for entry in empty_regions_summary.entries %}
+<tr>
+<td class="wt-border" style="padding:6px 0; border-top:1px solid #d7d3d3; font-family:Arial, Helvetica, sans-serif; font-size:14px;">
+<a href="{{ entry.region_url }}" class="wt-ink" style="color:#201e1d; text-decoration:none; font-weight:bold;">{{ entry.region_name }}</a>{% if entry.highlight %} — <a href="{{ entry.highlight[0].url }}" class="wt-ink" style="color:#201e1d; text-decoration:none;">{{ entry.highlight[0].title }}</a>{% endif %}
+</td>
+</tr>
+{% endfor %}
+</table>
+</td>
+</tr>
+<tr><td style="padding:0 0 16px 0;"></td></tr>
+{% endif %}
+
 {% if house_ad %}
 <!-- ROADMAP.md item 169: house ads are inventory notices, not content -
      they appear at most once per artifact, regardless of how many

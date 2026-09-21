@@ -2184,19 +2184,20 @@ def render_email_digest(
     )
 
 
-def _join_names(names: list[str]) -> str:
+def _join_names(names: list[str], conjunction: str = "and") -> str:
     """"X", "X and Y", or "X, Y, and Z" - natural-language joining for the
-    combined email's subject line and headline, used nowhere else in
-    this file since every other list of names here is either a single
-    region or already formatted per-item.
+    combined email's subject line and headline. `conjunction` defaults
+    to "and" (those two call sites); item 177's collapsed-empty-regions
+    line passes "or" instead, since it's naming alternatives ("nothing
+    dated yet in A, B, or C") rather than a set that's all true at once.
     """
     if not names:
         return ""
     if len(names) == 1:
         return names[0]
     if len(names) == 2:
-        return f"{names[0]} and {names[1]}"
-    return ", ".join(names[:-1]) + f", and {names[-1]}"
+        return f"{names[0]} {conjunction} {names[1]}"
+    return ", ".join(names[:-1]) + f", {conjunction} {names[-1]}"
 
 
 def build_combined_email_subject_line(sections: list[dict]) -> str:
@@ -2213,6 +2214,24 @@ def build_combined_email_subject_line(sections: list[dict]) -> str:
     if with_events:
         return f"This weekend across {_join_names(with_events)}"
     return f"This week across {_join_names([s['region_name'] for s in sections])}: what's coming up"
+
+
+def _pick_evergreen_highlights(evergreen: list[dict], limit: int) -> list[dict]:
+    """Fallback picks for a region with nothing dated this weekend
+    (ROADMAP.md item 177). Every region's `evergreen:` list is
+    [library, park district, village, HS athletics] in that config
+    order, and only the library entry carries an explicit "free" tag -
+    so the old `[e for e in evergreen if "free" in tags][:3]` filter
+    always returned exactly one item (the library) no matter how high
+    its own slice limit was, which is why four of five combined-email
+    region blocks read as the same single library link. Preferring the
+    "free"-tagged item first (still the safest single pick) and then
+    filling remaining slots from the rest of the region's own curated
+    list draws from more than one real source instead.
+    """
+    free = [e for e in evergreen if "free" in e.get("tags", [])]
+    rest = [e for e in evergreen if e not in free]
+    return (free + rest)[:limit]
 
 
 def render_combined_email_digest(sections: list[dict], weekend_date_range: str, now: datetime, *, preview: bool = False) -> str:
@@ -2233,25 +2252,39 @@ def render_combined_email_digest(sections: list[dict], weekend_date_range: str, 
     Same `preview` split as render_email_digest (item 91): `False` (the
     default, used for the file that actually gets sent) omits the
     "PREVIEW ONLY" annotation row.
+
+    ROADMAP.md item 177: a region with no attendable event, no
+    informational note, and no active-sponsor placement to protect its
+    own card for is a candidate to collapse into one shared block
+    instead of repeating a full "Nothing new dated..." card once per
+    region - the forty-first research pass found four of five region
+    blocks reading as that identical sentence in one real thin-week
+    build. Collapsing only kicks in once two or more regions qualify at
+    once (`collapse` below); a single quiet region reads fine as its
+    own ordinary card and loses nothing by staying one.
     """
     env = get_template_env()
     template = env.get_template("combined_email_digest.html.j2")
-    region_blocks = []
+    all_blocks = []
+    empty_candidates = []
     house_ad = None
     for s in sections:
         weekend_events = s["weekend_events"]
-        evergreen_highlights = [e for e in s.get("evergreen", []) if "free" in e.get("tags", [])][:3]
+        attendable_events = [e for e in weekend_events if e.get("attendable", True)]
+        informational_events = [e for e in weekend_events if not e.get("attendable", True)]
         sponsor = s.get("sponsor")
-        region_blocks.append(
-            {
-                "region_name": s["region_name"],
-                "region_url": s["region_url"],
-                "attendable_events": [e for e in weekend_events if e.get("attendable", True)],
-                "informational_events": [e for e in weekend_events if not e.get("attendable", True)],
-                "evergreen_highlights": evergreen_highlights,
-                "sponsor": sponsor,
-            }
-        )
+        is_sponsored = bool(sponsor and sponsor.get("is_active_sponsor"))
+        block = {
+            "region_name": s["region_name"],
+            "region_url": s["region_url"],
+            "attendable_events": attendable_events,
+            "informational_events": informational_events,
+            "evergreen_highlights": _pick_evergreen_highlights(s.get("evergreen", []), limit=2),
+            "sponsor": sponsor,
+        }
+        all_blocks.append(block)
+        if not attendable_events and not informational_events and not is_sponsored:
+            empty_candidates.append(block)
         # ROADMAP.md item 169: house ads are inventory notices and
         # appear at most once per artifact, not once per region - a
         # real paying sponsor still gets its own per-region block above
@@ -2262,8 +2295,25 @@ def render_combined_email_digest(sections: list[dict], weekend_date_range: str, 
         # arbitrarily keeps this reproducible if that ever changes.
         if house_ad is None and sponsor and not sponsor.get("is_active_sponsor"):
             house_ad = sponsor
+
+    collapse = len(empty_candidates) >= 2
+    region_blocks = [b for b in all_blocks if not (collapse and b in empty_candidates)]
+    empty_regions_summary = None
+    if collapse:
+        empty_regions_summary = {
+            "names": _join_names([b["region_name"] for b in empty_candidates], conjunction="or"),
+            "entries": [
+                {
+                    "region_name": b["region_name"],
+                    "region_url": b["region_url"],
+                    "highlight": b["evergreen_highlights"][:1],
+                }
+                for b in empty_candidates
+            ],
+        }
     return template.render(
         region_blocks=region_blocks,
+        empty_regions_summary=empty_regions_summary,
         house_ad=house_ad,
         weekend_date_range=weekend_date_range,
         subject_line=build_combined_email_subject_line(sections),
