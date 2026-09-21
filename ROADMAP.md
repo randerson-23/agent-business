@@ -352,6 +352,7 @@ search, which item 22's whole AI-citation effort depends on.
 | **Macaroni KID** | ~500 hyperlocal family newsletters + sites, publisher-run, sponsor-funded | Seasonal *guides* (summer camps, "kids eat free", Halloween) as the flagship monetizable product; business directory; weekly + monthly calendar views |
 | **6AM City** | 400+ local newsletters, $9.5M rev, profitable in 2026 | **Self-service ad platform** — they built it because low-average-order-value local sponsors don't justify sales time. Directly targets this business's #1 constraint |
 | **Axios Local** | Local newsletter network, local-advertiser funded | Newsletter-first: the list is the asset, the site is the funnel |
+| **The site's own live output** (inspected, not researched) | The committed build is stamped `2026-09-21T01:54Z` — Sunday evening in Chicago — and still headlines **"Sep 18–20"** as *this weekend*. It is now Monday there | The freshness claim items 162/163 rest on breaks every Monday morning (item 168) |
 | **Neighbouring towns** (expansion candidates) | **Wheeling** 38.3k, **39% of households with children under 18**; **Elk Grove Village** 32.8k but **shrinking ~0.6%/yr**; **Rolling Meadows** 24.2k; **Prospect Heights** 16.1k and the oldest (18.7% over 65, 21.1% under 18) | Wheeling is the clear next region on family density; Prospect Heights is the weakest fit (item 166) |
 | **AI citation concentration** | Across ~680M citations, the **top 15 domains take ~68% of AI citation share; Reddit alone ~40%**. ChatGPT's single largest source is Wikipedia (47.9%) and it cites brands **0.59%** of the time. But **recency is a strong lever**: pages updated within three months average ~6 citations against 3.6 for stale ones | A four-town local site will not win citation share. It *can* win on freshness, which it already has and never claims (items 162/163) |
 | **Tripadvisor / Yelp** (on the head term) | Both now rank for "things to do in Mount Prospect IL this weekend" with **evergreen attraction lists**, not dated events | The head term serves **two intents** and this site answers only one (item 158) |
@@ -7912,6 +7913,106 @@ queue at all.
      Spanish resources) is a real scope and design decision this pass
      deliberately leaves open rather than acting on unprompted, exactly
      as the item itself asked.
+
+#### Research pass 2026-09-21 (thirty-ninth pass)
+
+No external research this time. This pass read what Wednesday's issue
+will actually say, and found three things — one of which contradicts the
+claim the last two passes built on.
+
+| Angle | Finding | Consequence |
+|---|---|---|
+| **Weekend rollover** | `weekend_dates()` returns **Sep 18–20** for a Sunday build and **Sep 25–27** for a Monday one. The committed build is stamped `2026-09-21T01:54Z` (Sunday 20:54 Chicago) and the live site still says "this weekend: Sep 18–20" — on a Monday | The site advertises a weekend that has already ended, every week (item 168) |
+| **House ads** | The combined email contains **five** "SPONSOR THIS SPOT" blocks — one per region plus one more | Five sales pitches in a free weekly digest with no sponsors and one subscriber (item 169) |
+| **Internal consistency** | Headline reads "This weekend, **four** towns over"; the subject names **three** ("Des Plaines, Mount Prospect, and Palatine") | Arlington Heights has nothing dated. Both are defensible alone; together they read as a bug (item 170) |
+
+#### P1 (new)
+
+168. **The site shows last weekend's events on Monday mornings — the one
+     failure the freshness claim exists to rule out.** Verified by
+     calling `weekend_dates()` directly: a build dated Sunday 20 Sep
+     returns the window **18–20 Sep**; a build dated Monday 21 Sep
+     returns **25–27 Sep**. The currently committed build is stamped
+     `2026-09-21T01:54Z`, which is Sunday evening in America/Chicago, so
+     it correctly computed Sunday's window — and it is now Monday there,
+     and the live site still headlines "Sep 18–20" as *this weekend*.
+
+     The gap is structural, not a one-off. The weekend window rolls over
+     at local midnight on Monday, but nothing is scheduled to rebuild at
+     that moment. `build-digest.yml` fires on pushes to `main` and on
+     `cron: "0 12 * * 1"` — and item 110 measured this repo's scheduled
+     runs landing **5h27m to 6h54m late**, which puts the Monday rebuild
+     somewhere around midday Chicago time. So in the worst case the site
+     advertises a finished weekend **from Sunday midnight until early
+     Monday afternoon** — roughly fourteen hours, every week, on the
+     morning when a parent plausibly checks what is coming up.
+
+     It has been masked so far by an accident: the build loop pushes
+     frequently, and every push rebuilds. **That dependency is about to
+     weaken** — item 159 found the build loop nearly out of work, so as
+     it goes quiet the stale window gets longer, not shorter. A freshness
+     guarantee that holds only while a separate agent happens to be busy
+     is not a guarantee.
+
+     The fix is one cron line: rebuild early Monday local time, before
+     anyone looks. Given the measured 5–7 hour lateness, a cron aimed at
+     roughly **08:00 UTC Monday** (`17 8 * * 1`, offset minute per item
+     110) would land mid-morning Chicago at worst and shortly after
+     midnight at best — both strictly better than now. Keep the existing
+     Monday-noon entry or replace it, but do not rely on push-triggered
+     builds for a time-sensitive rollover.
+
+     Worth pairing with item 163's visible "last checked" line, which
+     would have made this obvious to a reader — and to us — weeks ago.
+
+#### P2 (new)
+
+169. **Five "SPONSOR THIS SPOT" blocks in one email is too many.**
+     Counted in the built artifact: the combined issue carries **five**
+     house ads — one per region block plus another. Item 88 was right
+     that an empty slot should say it is for sale rather than render
+     nothing, and item 105 was right to give every region its own block.
+     The interaction of the two was not considered, and it produces a
+     free weekly digest in which roughly one visible element in four is
+     asking for money, for a product that currently has **one subscriber
+     and no sponsors**.
+
+     This matters beyond taste. Item 124's whole differentiation is
+     against products that feel automated and commercial; item 137's
+     nearest real competitor is human-curated and restrained; and
+     `DESIGN_PRINCIPLES.md` (item 103) exists precisely to stop
+     accumulation like this, where each addition was individually
+     justified.
+
+     The fix keeps both intents: **one house ad per issue, not per
+     region** — placed once near the foot of the email, worded as
+     available inventory rather than a per-town pitch. A real, paying
+     sponsor should still appear inside its own region's block, because
+     that placement is what the tier sells. The rule generalises and is
+     worth writing down: *house ads are inventory notices and appear at
+     most once per artifact; paid placements are content and appear where
+     they were sold.*
+
+170. **The headline says four towns, the subject names three.** The
+     combined email's headline reads "This weekend, four towns over"
+     while the generated subject is "This weekend across Des Plaines,
+     Mount Prospect, and Palatine". Arlington Heights has nothing dated
+     this week, so the subject-line builder correctly omits it while the
+     body correctly still includes the town with an honest empty state.
+
+     Each behaviour is right on its own. Together they are the kind of
+     small inconsistency a careful reader notices and a sponsor asks
+     about — and "four towns" is a claim about coverage, which is
+     exactly the sort of number item 167 just flagged as worth getting
+     right before it reaches anyone.
+
+     Cheapest correct fix: make the headline count what the issue
+     actually carries, or drop the number entirely — "This weekend,
+     across the northwest suburbs" says the true thing without asserting
+     an arithmetic the subject line contradicts. A test asserting the
+     headline's town count matches the number of region blocks rendered
+     would stop it recurring as regions are added (item 166 adds a
+     fifth).
 
 ## Working agreements for autonomous iteration
 
