@@ -8525,6 +8525,22 @@ about to stop Wednesday's send.**
      entry so fresh, honest history starts accumulating from the
      corrected code, documented here rather than silently edited.
 
+     **Final result, from the real post-merge `build-digest.yml` run
+     (`23a62a9`), not assumed:** the fix did exactly what it was scoped
+     to do and no more. Item counts dropped as predicted — Des Plaines
+     20→19, Palatine 14→12 (its "Village of Palatine — News" source
+     alone went 2→0, confirming those 2 were always "Copyright
+     Notices" + "Public Notices"), Wheeling 10→9 — real chrome, gone.
+     **Structured-date coverage stayed at 0% for all three regions**
+     (0/19, 0/12, 0/9) — worth stating plainly rather than letting the
+     item-count drop read as more than it is. Removing chrome shrinks
+     the denominator; it can't raise the numerator when the numerator's
+     ceiling is the separate, still-open `_nearby_date_hint()` gap this
+     item already named above. Both things are true at once: the site
+     now shows fewer fake listings, and the newsletter is no closer to
+     clearing `MIN_WEEKEND_EVENTS = 3` in these three towns until that
+     second, harder problem gets real markup evidence to fix against.
+
 176. **The design guard did not hold, and the document that was supposed
      to hold it is now stale.** `DESIGN_PRINCIPLES.md` shipped under item
      103 to stop accumulation, names Godly and SiteInspire as the
