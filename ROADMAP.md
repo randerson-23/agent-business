@@ -8364,6 +8364,22 @@ anything cosmetic.
      runs across all 7 URLs passed with no assertion failures, versus
      the prior run's CLS failures on 5 of them. 435 tests still pass.
 
+     Confirmed green on the real PR and on `main` after merge (#219,
+     `89fad06`), not just assumed from the local run above - polled the
+     actual GitHub Actions run via the API until it completed, rather
+     than merging on faith. One unrelated, benign flake surfaced while
+     watching: `build-digest.yml`'s "Commit generated site" step failed
+     on `main` with a plain git push rejection, because the merge
+     landed within about five seconds of that same workflow's own
+     hourly `schedule` trigger firing - two independent runs raced to
+     commit `docs/` at once. Not this fix's fault and not a real
+     problem: the `schedule`-triggered twin's commit succeeded and
+     `docs/` was already current by the time this was checked. Noted
+     for pattern-recognition only, since a merge landing within
+     seconds of build-digest.yml's own hourly cron is bound to recur
+     occasionally - not worth hardening (a `git pull --rebase` retry
+     before push) for a race this rare and this self-healing.
+
 ## Working agreements for autonomous iteration
 
 - Cadence is hourly (the platform's durable scheduler has a 1-hour floor;
