@@ -8329,6 +8329,41 @@ anything cosmetic.
      brighter accent-500 red Modernist's own ramp guidance calls for on
      a dark background.
 
+     🔴→🟢 **Real CI regression found and fixed, 2026-09-21 (same day,
+     next hourly firing).** The redesign PR's own Lighthouse CI job
+     failed - checked, not assumed, from the real GitHub Actions run
+     (`35614346834`) rather than trusted from local pytest alone.
+     Cumulative Layout Shift exceeded the 0.1 budget on 5 of 7 tested
+     URLs (0.10-0.18), the real defect surface a template redesign has
+     that a Python test suite structurally cannot see. Root cause:
+     Archivo loads via `&display=swap` (FOUT - the fallback stack
+     paints first, then swaps once the webfont arrives), and its
+     metrics differ enough from the system fallback - especially now
+     that headings are uniformly 800-weight with `-0.02em`
+     letter-spacing, versus the old design's lighter 500-700 weights -
+     that the swap reflows large headline text measurably, which
+     `display=swap` never guarded against and the old Fraunces/Inter
+     pairing apparently stayed just under the budget.
+
+     Fix: `&display=swap` → `&display=optional` on all three Archivo
+     `<link>` tags in every site-page template (region, hub,
+     merged_hub, about, sponsor, trick_or_treat - the email templates
+     don't load webfonts at all, so they were never affected).
+     `optional` gives the browser a very short block window and, if
+     the font isn't ready, uses the fallback for that page view with
+     no later swap - the standard, documented fix for exactly this
+     failure signature, trading "the custom font sometimes won't show
+     on a cold, slow first load" for "no layout shift, ever," which is
+     the right trade for a budget that's asserted in CI.
+
+     Verified locally before pushing, not just reasoned about: `rm -rf
+     .lighthouseci && CHROME_PATH=/opt/pw-browsers/chromium-*/chrome-
+     linux/chrome npx @lhci/cli autorun --collect.settings.chromeFlags
+     ="--no-sandbox"` (the `--no-sandbox` flag needed running as root
+     in this sandbox, not something CI's own runner needs) - all 21
+     runs across all 7 URLs passed with no assertion failures, versus
+     the prior run's CLS failures on 5 of them. 435 tests still pass.
+
 ## Working agreements for autonomous iteration
 
 - Cadence is hourly (the platform's durable scheduler has a 1-hour floor;
