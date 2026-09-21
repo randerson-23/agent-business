@@ -8242,6 +8242,93 @@ anything cosmetic.
      deterministic tie-break). 435 tests pass; real build unaffected
      (still 1 dated event total, as item 172 already found).
 
+174. **Full visual redesign to "Modernist": Archivo, a single red
+     accent, zero corner radius, flat 2px dividers.** Owner-directed
+     (not from a research pass): shared a claude.ai Design mockup
+     (hub, region, and email screens) plus its underlying design-system
+     tokens (`_ds/modernist-.../styles.css`, `--color-bg: #f3f2f2`,
+     `--color-text: #201e1d`, `--color-accent: #ec3013`, Archivo,
+     `--radius-md: 0`) and asked to convert the real site to match.
+
+     Confirmed scope with the owner before touching code: convert every
+     page (not just the three mocked up), design a dark-mode variant to
+     match (the mockup only showed light), and keep every interactive
+     feature exactly as-is (the sticky filter bar, the "My Weekend"
+     star/tray with localStorage export, add-to-calendar links, View
+     Transitions) - all three answered as recommended.
+
+     Applied as a values-only swap wherever the markup already ran
+     through CSS custom properties - `region.html.j2` (reused by 7 page
+     variants: the main page, this-weekend/today/free, guide pages,
+     directory, things-to-do), `hub.html.j2`, `merged_hub.html.j2`,
+     `about.html.j2`, `sponsor.html.j2`, and `trick_or_treat.html.j2`
+     all kept every class name, id, and Jinja branch untouched -
+     `--bg`/`--card`/`--ink`/`--accent`/`--radius-lg`/`--shadow-*`
+     tokens changed value, JS/tests never had to change. Two markup
+     changes were necessary rather than cosmetic: `.card-grid`/`.card`
+     went from a flex-wrap grid of shadowed boxes to a single-column
+     stack of flat bordered rows (Modernist's own dominant pattern in
+     every mockup screen, and it also gets item 61's stranded-last-card
+     fix for free - a column has no row to strand anything in), and the
+     hub page gained a slim top nav bar (This weekend/Today/Free/
+     Sponsor/About) matching the mockup, since no equivalent existed
+     before. Two inline SVG icons (the brand mark on region.html.j2/
+     hub.html.j2/merged_hub.html.j2) had hardcoded light-on-green fills
+     that don't work on a light ground - repainted, not redesigned.
+
+     Editor's Pick and Sponsor boxes, previously distinguished by two
+     different accent colors (green left-border vs. amber left-border),
+     needed a real decision: Modernist is deliberately mono-accent ("no
+     second accent was chosen"), so inventing a second color would
+     contradict the system this item asked to adopt. Editor's Pick got
+     a full ink border (the site's own editorial pick); Sponsor got the
+     accent (paid/promoted), matching the mockup's own sponsor-CTA
+     border treatment.
+
+     The two email templates (`email_digest.html.j2`,
+     `combined_email_digest.html.j2`) and their shared
+     `_email_dark_mode.css.j2` needed a different approach: email HTML
+     is inline hex, not CSS variables, by design (client constraints -
+     see that file's own docstring), so this was a direct hex-for-hex
+     find-and-replace against the same mapping (`#f6efe1`→`#f3f2f2`,
+     `#2b2318`→`#201e1d`, `#96581f`→`#ae1800` and so on), plus swapping
+     the Georgia serif headline for bold Arial (Archivo isn't
+     email-safe; Modernist has no serif/sans pairing to preserve
+     anyway, unlike the old Fraunces/Inter pair). `_email_dark_mode.css.j2`
+     forces the light palette back against Yahoo/Outlook.com's forced
+     dark-mode rewriting (item 92) - that mechanism is unrelated to the
+     browser dark-mode work above and was preserved as-is, just
+     repainted to the new hex values.
+
+     Four exact-hex test assertions in `test_render_email_digest_body_
+     type_meets_the_16px_mobile_floor` (item 97) had the old palette's
+     literal colors baked in and had to be updated in lockstep - the
+     one place breaking a test was correct rather than a regression,
+     since the values it pins are exactly what changed.
+
+     Verified with a real build and headless-Chromium screenshots
+     (Playwright, the pre-installed Chromium binary) of the hub, a
+     region page, the merged this-weekend hub view, the sponsor page,
+     and an email preview - not just "tests pass," since a redesign's
+     actual defect surface is visual. All five read as a coherent,
+     intentional system: flat bordered rows, the red accent used
+     sparingly (kickers, active states, the sponsor border), Archivo's
+     fallback stack rendering correctly even with this sandbox's own
+     network blocking the real webfont. 435 tests pass.
+
+     Dark mode was independently screenshotted too (Playwright's
+     `color_scheme="dark"` emulation, hub + region), and caught a real
+     process mistake in the process: the first dark-mode screenshot
+     showed the *old* green-gradient hero, because `git restore docs/`
+     (run to keep the diff source-only before committing) had reverted
+     `docs/` to the stale pre-redesign build in between the light-mode
+     and dark-mode screenshot passes - the templates were already
+     correct, the rendered output being screenshotted wasn't. Rebuilt
+     fresh and re-screenshotted before trusting the result: dark mode
+     renders correctly - near-black ground, off-white ink, the
+     brighter accent-500 red Modernist's own ramp guidance calls for on
+     a dark background.
+
 ## Working agreements for autonomous iteration
 
 - Cadence is hourly (the platform's durable scheduler has a 1-hour floor;

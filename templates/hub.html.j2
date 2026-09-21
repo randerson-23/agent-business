@@ -18,16 +18,16 @@
 <meta name="twitter:image" content="{{ og_image_url }}">
 <link rel="canonical" href="{{ canonical_url }}">
 <link rel="alternate" type="application/rss+xml" title="Within Ten — Upcoming Local Events" href="{{ canonical_url }}feed.xml">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='46' fill='%23526b3f'/%3E%3Cpath d='M50 22c-13 0-24 10-24 24 0 18 24 36 24 36s24-18 24-36c0-14-11-24-24-24z' fill='white'/%3E%3Ccircle cx='50' cy='45' r='10' fill='%23526b3f'/%3E%3C/svg%3E">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%23201e1d'/%3E%3Ctext x='50' y='66' font-family='Arial,sans-serif' font-weight='800' font-size='58' fill='%23ec3013' text-anchor='middle'%3EW%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <!-- Non-render-blocking font load: paint with the fallback stack immediately,
      swap to the web font once it's fetched, instead of blocking first paint
      on a round trip to fonts.googleapis.com (real measured LCP impact on a
      cold connection was ~300ms - see ROADMAP.md Phase 11 #26). -->
-<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap">
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
-<noscript><link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"></noscript>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;800&display=swap">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;800&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+<noscript><link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;800&display=swap" rel="stylesheet"></noscript>
 <style>
   /* Native cross-document View Transitions (ROADMAP.md Phase 11 #20) -
      an unknown at-rule to any browser without support, so this is a
@@ -44,39 +44,42 @@
     }
   }
   :root {
-    --bg: #f6efe1;
-    --card: #fffcf5;
-    --ink: #2b2318;
-    --muted: #766a58;
-    --accent: #526b3f;
-    --accent-soft: #5e7748;
-    --accent-2: #c17a3d;
-    /* Darker than --accent-2 - #c17a3d is only 3.0:1 on --bg, below WCAG
-       AA's 4.5:1 for text this small. Use for text; --accent-2 stays for
-       non-text accents (borders) where contrast rules don't apply. */
-    --accent-2-text: #96581f;
-    --border: #e6dcc8;
-    --radius-lg: 18px;
-    --shadow-sm: 0 1px 2px rgba(43,35,24,.06), 0 1px 1px rgba(43,35,24,.05);
-    --shadow-md: 0 10px 28px -10px rgba(43,35,24,.20), 0 2px 6px rgba(43,35,24,.06);
-    --shadow-lift: 0 16px 36px -12px rgba(43,35,24,.28), 0 3px 8px rgba(43,35,24,.08);
-    --callout-gradient: linear-gradient(135deg, #fdf3e4, #fffcf5);
+    /* ROADMAP.md redesign (2026-09-21): "Modernist" system - flat,
+       architectural, set in Archivo: a single mono red accent on a light
+       neutral ground, zero corner radius, strong 2px dividers instead of
+       soft shadows. --border is derived from --ink via color-mix() so it
+       tracks light/dark automatically without a separate override below. */
+    --bg: #f3f2f2;
+    --card: #eae9e9;
+    --ink: #201e1d;
+    --muted: #605d5d;
+    --accent: #ec3013;
+    --accent-soft: #ec3013;
+    --accent-2: #ec3013;
+    /* Deep ramp step, not the raw accent - the accent-to-ground pair is
+       only ~3:1, enough for icons/borders/large text but below WCAG AA's
+       4.5:1 for text this small. Use for text; --accent/--accent-2 stay
+       for borders and large type where contrast rules don't apply. */
+    --accent-2-text: #ae1800;
+    --border: color-mix(in srgb, var(--ink) 40%, transparent);
+    --radius-lg: 0px;
+    --shadow-sm: none;
+    --shadow-md: none;
+    --shadow-lift: none;
+    --callout-gradient: var(--card);
   }
   @media (prefers-color-scheme: dark) {
     :root {
-      --bg: #1c1710;
-      --card: #262019;
-      --ink: #f2ead9;
-      --muted: #b8a98e;
-      --accent: #8aa66d;
-      --accent-soft: #5c7a45;
-      --accent-2: #e0975a;
-      --accent-2-text: #e0975a;
-      --border: #3a3226;
-      --shadow-sm: 0 1px 2px rgba(0,0,0,.35), 0 1px 1px rgba(0,0,0,.25);
-      --shadow-md: 0 10px 28px -10px rgba(0,0,0,.55), 0 2px 6px rgba(0,0,0,.35);
-      --shadow-lift: 0 16px 36px -12px rgba(0,0,0,.65), 0 3px 8px rgba(0,0,0,.4);
-      --callout-gradient: linear-gradient(135deg, #2e2517, #262019);
+      --bg: #171615;
+      --card: #232120;
+      --ink: #f3f2f2;
+      --muted: #a9a5a5;
+      --accent: #ff563c;
+      --accent-soft: #ff563c;
+      --accent-2: #ff563c;
+      --accent-2-text: #ff9783;
+      --border: color-mix(in srgb, var(--ink) 30%, transparent);
+      --callout-gradient: var(--card);
     }
   }
   * { box-sizing: border-box; }
@@ -84,44 +87,50 @@
     margin: 0;
     background: var(--bg);
     color: var(--ink);
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    font-family: 'Archivo', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
     line-height: 1.55;
     -webkit-font-smoothing: antialiased;
     min-height: 100vh;
   }
-  h1, h2 { font-family: 'Fraunces', Georgia, 'Times New Roman', serif; }
+  h1, h2 { font-family: 'Archivo', system-ui, sans-serif; font-weight: 800; letter-spacing: -0.02em; }
+
+  .topnav {
+    display: flex;
+    align-items: baseline;
+    gap: 24px;
+    flex-wrap: wrap;
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 14px 20px;
+    border-bottom: 2px solid var(--border);
+  }
+  .topnav .wordmark { font-weight: 800; font-size: 16px; letter-spacing: -0.01em; color: var(--ink); }
+  .topnav nav { display: flex; gap: 18px; flex-wrap: wrap; margin-left: auto; }
+  .topnav nav a { font-size: 13px; font-weight: 700; color: var(--ink); text-decoration: none; }
+  .topnav nav a:hover { color: var(--accent); }
 
   .hero {
-    background: linear-gradient(135deg, var(--accent) 0%, var(--accent-soft) 60%, #749058 100%);
-    color: #fff;
-    padding: 64px 20px 100px;
-    text-align: center;
+    background: var(--bg);
+    color: var(--ink);
+    padding: 44px 20px 40px;
+    text-align: left;
     position: relative;
     overflow: hidden;
   }
-  .hero::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background-image: radial-gradient(circle at 12% 18%, rgba(255,255,255,.10) 0, transparent 40%),
-                       radial-gradient(circle at 88% 82%, rgba(255,255,255,.10) 0, transparent 42%);
-    pointer-events: none;
-  }
-  .hero-inner { position: relative; max-width: 620px; margin: 0 auto; }
+  .hero-inner { position: relative; max-width: 620px; margin: 0; }
   .brand-mark { display: inline-flex; align-items: center; gap: 8px; margin-bottom: 14px; }
   .brand-mark svg { width: 26px; height: 26px; }
   .kicker {
-    font-weight: 700;
-    letter-spacing: 0.08em;
+    font-weight: 800;
+    letter-spacing: 0.1em;
     text-transform: uppercase;
     font-size: 12.5px;
-    color: rgba(255,255,255,.88);
+    color: var(--accent-2-text);
   }
   .hero h1 {
     margin: 8px 0 12px;
-    font-size: 40px;
-    font-weight: 600;
-    color: #fff;
+    font-size: clamp(32px, 5vw, 48px);
+    color: var(--ink);
     /* Without this the headline breaks as "...ten miles" / "out.",
        orphaning a two-letter word on its own line inside a 620px
        hero-inner. Balanced wrapping evens the lines instead; unsupported
@@ -129,9 +138,9 @@
        before, so there is nothing to fall back to. */
     text-wrap: balance;
   }
-  .hero .sub { color: rgba(255,255,255,.9); font-size: 16.5px; }
+  .hero .sub { color: var(--muted); font-size: 16.5px; }
 
-  .wrap { max-width: 960px; margin: -56px auto 0; padding: 0 20px 64px; position: relative; }
+  .wrap { max-width: 960px; margin: 0 auto; padding: 32px 20px 64px; position: relative; }
 
   /* Bento grid (ROADMAP.md Phase 11 #8): the "this weekend" callout and
      the stat tile, and only those two - region cards used to share this
@@ -168,6 +177,7 @@
   }
   .bento-tile {
     background: var(--card);
+    border: 2px solid var(--border);
     border-radius: var(--radius-lg);
     box-shadow: var(--shadow-md);
     padding: 24px;
@@ -177,14 +187,14 @@
     flex-direction: column;
     gap: 7px;
     justify-content: center;
-    transition: transform .15s ease, box-shadow .15s ease;
+    transition: background .12s ease;
     /* Lets a tile's own contents respond to the width the grid track
        actually gives it (see @container rules below) rather than only
        the viewport - the same tile is much wider with 2 regions than
        with 5 (ROADMAP.md Phase 11 #21). */
     container-type: inline-size;
   }
-  .bento-tile:hover { transform: translateY(-4px); box-shadow: var(--shadow-lift); }
+  .bento-tile:hover { background: color-mix(in srgb, var(--ink) 5%, var(--card)); }
   /* Scroll-reveal (ROADMAP.md Phase 11 #9), attempt 2: an
      IntersectionObserver toggles this class once per tile instead of
      animation-timeline: view()'s continuous per-frame scroll-linked
@@ -194,59 +204,54 @@
      deferred a tile's recorded LCP timestamp last time; a tile is fully
      painted and LCP-eligible immediately regardless of this class. */
   @media (prefers-reduced-motion: no-preference) {
-    .bento-tile.js-reveal-ready { transform: translateY(16px); transition: transform .4s ease, box-shadow .15s ease; }
+    .bento-tile.js-reveal-ready { transform: translateY(16px); transition: transform .4s ease, background .12s ease; }
     .bento-tile.js-reveal-ready.js-revealed { transform: translateY(0); }
-    /* Keep the existing hover lift working once a tile has settled -
-       otherwise the reveal rule's higher specificity would suppress it. */
-    .bento-tile.js-reveal-ready.js-revealed:hover { transform: translateY(-4px); }
   }
   .bento-weekend {
     background: var(--callout-gradient);
-    border: 1px solid var(--border);
-    border-left: 4px solid var(--accent-2);
+    border: 2px solid var(--accent);
     justify-content: flex-start;
   }
   .bento-weekend .bento-kicker {
-    font-weight: 700;
+    font-weight: 800;
     font-size: 12.5px;
     text-transform: uppercase;
-    letter-spacing: 0.05em;
+    letter-spacing: 0.08em;
     color: var(--accent-2-text);
   }
-  .bento-weekend h2 { margin: 2px 0 0; font-size: 24px; font-weight: 600; }
-  .bento-weekend p { margin: 0; color: var(--accent); font-weight: 700; font-size: 14.5px; }
-  /* ROADMAP.md item 149: deliberately plain pill links, not bento tiles -
+  .bento-weekend h2 { margin: 2px 0 0; font-size: 24px; }
+  .bento-weekend p { margin: 0; color: var(--accent-2-text); font-weight: 700; font-size: 14.5px; }
+  /* ROADMAP.md item 149: deliberately plain flat links, not bento tiles -
      see the comment at the markup for why these two stay lightweight. */
-  .hub-secondary-links { display: flex; gap: 12px; flex-wrap: wrap; margin: -6px 0 18px; }
+  .hub-secondary-links { display: flex; gap: 20px; flex-wrap: wrap; margin: -6px 0 18px; }
   .hub-secondary-links a {
-    font-size: 13.5px;
-    font-weight: 600;
-    color: var(--accent);
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--ink);
     text-decoration: none;
-    background: var(--card);
-    border-radius: 999px;
-    padding: 7px 14px;
-    box-shadow: var(--shadow-sm);
+    background: none;
+    border-bottom: 2px solid var(--border);
+    padding: 0 0 4px;
+    box-shadow: none;
   }
-  .hub-secondary-links a:hover { text-decoration: underline; }
-  .bento-stat { align-items: center; text-align: center; background: var(--accent-soft); color: #fff; }
-  .bento-stat-number { font-family: 'Fraunces', Georgia, serif; font-size: 40px; font-weight: 600; line-height: 1; }
-  /* Opaque white, not rgba(255,255,255,.9) - the translucent version was
-     only 4.4:1 against --accent-soft, below AA's 4.5:1 for text this
-     small. Found by a real axe-core audit (ROADMAP.md Phase 11 #62). */
-  .bento-stat-label { font-size: 12.5px; color: #fff; }
+  .hub-secondary-links a:hover { color: var(--accent); border-bottom-color: var(--accent); }
+  .bento-stat { align-items: center; text-align: center; background: var(--accent-soft); border-color: var(--accent-soft); color: var(--bg); }
+  .bento-stat-number { font-family: 'Archivo', system-ui, sans-serif; font-size: 40px; font-weight: 800; line-height: 1; }
+  .bento-stat-label { font-size: 12.5px; color: var(--bg); }
   .region-card .zip {
     color: var(--accent-2-text);
-    font-weight: 700;
+    font-weight: 800;
     font-size: 12.5px;
     text-transform: uppercase;
-    letter-spacing: 0.05em;
+    letter-spacing: 0.06em;
   }
-  .region-card h2 { margin: 0; font-size: 21px; font-weight: 600; }
+  .region-card h2 { margin: 0; font-size: 21px; }
   .region-card p { margin: 0; color: var(--muted); font-size: 13.5px; }
   .region-card .count {
     font-size: 12.5px;
-    color: var(--accent);
+    color: var(--accent-2-text);
     font-weight: 700;
     margin-top: 4px;
   }
@@ -265,12 +270,14 @@
     color: var(--muted);
     padding: 40px 0;
     background: var(--card);
+    border: 2px solid var(--border);
     border-radius: var(--radius-lg);
     box-shadow: var(--shadow-sm);
   }
 
   .newsletter {
     background: var(--card);
+    border: 2px solid var(--ink);
     border-radius: var(--radius-lg);
     box-shadow: var(--shadow-sm);
     padding: 20px 24px;
@@ -284,25 +291,28 @@
   .newsletter form { display: contents; }
   .newsletter-copy strong { font-size: 15px; }
   .newsletter-copy p { margin: 3px 0 0; color: var(--muted); font-size: 13.5px; }
-  .newsletter-form-row { display: flex; gap: 8px; flex-wrap: wrap; }
+  .newsletter-form-row { display: flex; gap: 0; flex-wrap: wrap; }
   .newsletter-form-row input[type="email"] {
     font: inherit;
-    border: 1px solid var(--border);
-    border-radius: 999px;
+    border: 2px solid var(--ink);
+    border-right: 0;
+    border-radius: 0;
     padding: 8px 14px;
     min-width: 200px;
+    background: var(--bg);
+    color: var(--ink);
   }
   .newsletter-form-row button {
     font: inherit;
-    font-weight: 600;
-    color: #fff;
+    font-weight: 800;
+    color: var(--bg);
     background: var(--accent-soft);
-    border: none;
-    border-radius: 999px;
+    border: 2px solid var(--accent-soft);
+    border-radius: 0;
     padding: 8px 18px;
     cursor: pointer;
   }
-  .newsletter-form-row button:hover { filter: brightness(1.15); }
+  .newsletter-form-row button:hover { background: var(--accent-2-text); border-color: var(--accent-2-text); }
 
   a:focus-visible, button:focus-visible, input:focus-visible {
     outline: 2px solid var(--accent);
@@ -323,19 +333,29 @@
     color: var(--muted);
     font-size: 12.5px;
     margin-top: 48px;
-    border-top: 1px solid var(--border);
+    border-top: 2px solid var(--border);
     padding-top: 18px;
   }
-  footer a { color: var(--accent); font-weight: 600; }
+  footer a { color: var(--accent-2-text); font-weight: 700; }
 
   @media (max-width: 480px) {
-    .hero { padding: 48px 18px 84px; }
-    .hero h1 { font-size: 30px; }
-    .wrap { margin-top: -48px; padding: 0 14px 48px; }
+    .hero { padding: 32px 18px 28px; }
+    .hero h1 { font-size: 28px; }
+    .wrap { padding: 24px 14px 48px; }
   }
 </style>
 </head>
 <body>
+  <div class="topnav">
+    <span class="wordmark">WITHIN TEN</span>
+    <nav aria-label="Quick links">
+      <a href="this-weekend/">This weekend</a>
+      <a href="today/">Today</a>
+      <a href="free/">Free</a>
+      <a href="sponsor/">Sponsor</a>
+      <a href="about/">About</a>
+    </nav>
+  </div>
   <!-- header, not div (ROADMAP.md Phase 11 #62, found by a real axe-core
        audit): everything in the hero previously sat outside any
        landmark - <main> only wraps the content below it. -->
@@ -343,9 +363,9 @@
     <div class="hero-inner">
       <div class="brand-mark">
         <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-          <circle cx="50" cy="50" r="48" fill="rgba(255,255,255,.16)"/>
-          <path d="M50 22c-13 0-24 10-24 24 0 18 24 36 24 36s24-18 24-36c0-14-11-24-24-24z" fill="#fff"/>
-          <circle cx="50" cy="45" r="10" fill="var(--accent)"/>
+          <circle cx="50" cy="50" r="48" fill="color-mix(in srgb, var(--accent) 14%, transparent)"/>
+          <path d="M50 22c-13 0-24 10-24 24 0 18 24 36 24 36s24-18 24-36c0-14-11-24-24-24z" fill="var(--ink)"/>
+          <circle cx="50" cy="45" r="10" fill="var(--card)"/>
         </svg>
         <span class="kicker">Within Ten &middot; Northwest Suburbs</span>
       </div>
