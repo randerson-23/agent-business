@@ -8431,6 +8431,79 @@ about to stop Wednesday's send.**
      valuable work available to the build loop and it outranks anything
      cosmetic.
 
+     🟢 **Partly shipped 2026-09-21** — one real, confirmed bug fixed;
+     one real, separate problem found and deliberately left open rather
+     than guessed at.
+
+     Re-verifying the feeds (as asked) surfaced something more useful
+     than "still 403": the build's own "Structured-date coverage" line
+     showed Des Plaines, Palatine, and Wheeling at **0/20, 0/14, 0/10** —
+     zero machine-readable dates despite each fetcher returning a
+     nonzero item count. That's not the 403/zero-item pattern item 161
+     already named; it's items being fetched successfully and coming
+     back as *undated noise*. Pulled the real `data-item` JSON out of
+     each region's actual committed `docs/` output (not a guess) and
+     found `fetch_html_events()`'s keyword-fallback branch — the code
+     path used whenever a source has no confirmed `detail_link_pattern`,
+     which is true for every Des Plaines/Palatine/Wheeling source — was
+     matching generic nav/account/legal chrome purely because its link
+     text contained a configured keyword substring: "My events" (a
+     LibCal account link on `calendar.dppl.org` — the same false-positive
+     *shape* item 9 fixed once before on a different LibCal site, now
+     confirmed recurring on this one too), "Programs / Event Tickets",
+     "News & Events", "City Council", "Program Guide", "Search Programs",
+     "Calendar of Events", "Subscribe to E-News", "Book Discussion
+     Request Form" — plus "Copyright Notices" and "Public Notices",
+     confirmed on two *unrelated* civicplus-platform domains
+     (`palatine.il.us` and `wheelingil.gov`), which only reach the
+     denylist check at all because both towns' own YAML configs add
+     `"notice"` to that source's `keywords:` override (confirmed by
+     reading `config/regions/palatine-60067.yaml` and
+     `wheeling-60090.yaml` directly, not assumed) for legitimate reasons
+     (catching real closure/advisory notices) that happen to also catch
+     "Copyright Notices" in the site footer.
+
+     Added all 11 to `_NAV_LINK_DENYLIST` in `scripts/fetchers.py`, with
+     a comment citing exactly which region's `docs/` output confirmed
+     each one. Deliberately left several similar-looking titles from the
+     same real evidence **out** of the denylist because they read as
+     plausibly real, if undated, standing programs rather than pure
+     chrome — "Book groups", "Summer Camps", "Museum Pass Programs",
+     "Festival of Cultures", "Used book sale", "Storywalk", "Books &
+     Media", "E-books & Digital Downloads", "Program Areas". Denylisting
+     those on a guess would trade one kind of wrong (chrome as event) for
+     another (a real program silently dropped), which the "verify, don't
+     invent" standing rule below rules out without markup evidence this
+     sandbox's blocked network can't fetch. New regression test
+     (`test_fetch_html_events_denylists_libcal_and_civicplus_chrome`)
+     reproduces the exact HTML shape from `calendar.dppl.org`,
+     `dpparks.org`, `wheelingil.gov`, and `palatine.il.us`, passing the
+     same `keywords:` override the real configs use so "Copyright
+     Notices" is exercised the way it actually reaches the check in
+     production, not trivially excluded by the keyword filter first —
+     436 tests pass. This sandbox's network is fully blocked (every
+     fetcher 403s here), so a local rebuild can't demonstrate the live
+     coverage-number improvement directly; that confirmation has to come
+     from the next real `build-digest.yml` run's own log line, same as
+     every other fetcher fix this session.
+
+     **Still open, and separately scoped rather than guessed at:** even
+     with all confirmed chrome removed, some of what's left in those
+     three regions is genuinely real and still undated — Wheeling's
+     Village Board/Commission meetings, Palatine's "Festival of
+     Cultures" — because `_nearby_date_hint()`'s two date-extraction
+     regexes (`_DATA_DATE_ATTR`, `_ARIA_LABEL_DATE`) were each confirmed
+     against exactly one platform (Mount Prospect's Vision Internet
+     calendar, AHML's Drupal calendar) and return `None` silently for any
+     other site's markup — which these three towns' sites are. Fixing
+     that needs the real markup for each platform to confirm a new
+     pattern against, which this sandbox cannot fetch; guessing a regex
+     from field names alone risks a confidently wrong date, which item
+     171 already established is the one error this site can't afford.
+     Left as a named, scoped finding for the next pass that has live
+     network access to a Des Plaines/Palatine/Wheeling page, rather than
+     shipped as a guess.
+
 176. **The design guard did not hold, and the document that was supposed
      to hold it is now stale.** `DESIGN_PRINCIPLES.md` shipped under item
      103 to stop accumulation, names Godly and SiteInspire as the

@@ -218,6 +218,30 @@ class _EventLinkExtractor(HTMLParser):
 
 # Static nav/menu labels that keep showing up as false positives on library
 # and park district listing pages - these are section links, not events.
+#
+# ROADMAP.md item 175 (the forty-first research pass): confirmed against
+# the real committed docs/ output for Des Plaines, Palatine, and Wheeling,
+# not guessed - three regions' Library/Park District/Village sources, none
+# with a confirmed detail_link_pattern, were all falling into the crude
+# keyword-fallback branch below and picking up generic nav/account/legal
+# chrome purely because it happens to contain a keyword substring ("my
+# EVENTS", "PROGRAM guide", "news & EVENTS"). Every entry here was seen
+# verbatim in that real build, each linking to a standing nav/account/
+# legal page, never a specific dated listing: "my events" is a LibCal
+# personal-account page (calendar.dppl.org/myevents - the exact false
+# positive item 9 first found on a different LibCal URL, recurring here
+# because the denylist approach only ever covers strings actually seen,
+# not the platform pattern); "copyright notices"/"public notices" are
+# civicplus-template legal-footer links (confirmed on two unrelated
+# domains, palatine.il.us and wheelingil.gov); "calendar of events" and
+# "news & events" are self-referential links back to the listing page
+# itself, not to any one event on it. Deliberately does NOT include
+# titles seen in the same build that plausibly describe a real (if
+# undated) standing program - "book groups", "summer camps", "museum
+# pass programs" and the like read as legitimate content a family might
+# click through to, the same category evergreen entries already cover
+# elsewhere, and removing them would be guessing they're chrome rather
+# than confirming it.
 _NAV_LINK_DENYLIST = {
     "all events",
     "special events",
@@ -228,6 +252,17 @@ _NAV_LINK_DENYLIST = {
     "teen events",
     "virtual events",
     "south branch",
+    "my events",
+    "subscribe to e-news",
+    "city council",
+    "copyright notices",
+    "public notices",
+    "program guide",
+    "programs / event tickets",
+    "search programs",
+    "calendar of events",
+    "news & events",
+    "book discussion request form",
 }
 
 # Communico (the platform behind mppl.libnet.info and many other library
