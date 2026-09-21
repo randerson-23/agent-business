@@ -8806,6 +8806,28 @@ about to stop Wednesday's send.**
   reorganized its own URL structure before - the config's current URL
   is live and correct today, but it's the one link in this pass worth
   checking again sooner than the others if it ever 404s.
+
+  Fifth pass, 2026-09-21 (immediately after items 175/176/177 shipped
+  and merged - the forty-first research pass's full backlog is now
+  clear). Checked `data/source_health.json` against the real post-
+  merge build (`8edc704`) rather than assuming the queue is thin -
+  item 175's reset key, `palatine-60067:Village of Palatine — News`,
+  now shows `[0, 0]`, two real builds confirming the fix holds rather
+  than the reset having been a one-off fluke. Two sources dipped from
+  a steady 4 to a real 3 in this same build - `des-plaines-60016:Des
+  Plaines Public Library — Events` and `wheeling-60090:Village of
+  Wheeling — Calendar` - but neither crossed to zero, so
+  `detect_source_regressions()` correctly left both alone; read as
+  ordinary week-to-week turnover (an event's date passing, a listing
+  rotating off), not a fetcher issue, and not worth chasing further
+  without a second data point. Also spot-checked items 25, 77, and
+  130 - the three `⚠️` markers the thirty-first pass's reconciliation
+  deliberately left alone as "a human action is still pending" rather
+  than done - against the current "Needs Ryan" section (restructured
+  under item 165 this same day): all three still appear there exactly
+  as pending (130 as the ranked "Next action," 77 and 25 in "After
+  that"/"Small, no-decision-required"), so the markers and the section
+  they describe haven't drifted apart from each other.
 - **The research loop leaves at most three open owner decisions at a
   time (item 165).** A six-item "Needs Ryan" queue, none of it acted on
   in a week, is itself the finding — presenting equal-looking options
