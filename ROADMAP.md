@@ -366,6 +366,7 @@ search, which item 22's whole AI-citation effort depends on.
 | **Macaroni KID** | ~500 hyperlocal family newsletters + sites, publisher-run, sponsor-funded | Seasonal *guides* (summer camps, "kids eat free", Halloween) as the flagship monetizable product; business directory; weekly + monthly calendar views |
 | **6AM City** | 400+ local newsletters, $9.5M rev, profitable in 2026 | **Self-service ad platform** — they built it because low-average-order-value local sponsors don't justify sales time. Directly targets this business's #1 constraint |
 | **Axios Local** | Local newsletter network, local-advertiser funded | Newsletter-first: the list is the asset, the site is the funnel |
+| **The redesign, inspected** | Site and email both now run **grey `#f3f2f2` with a red accent** (`#ec3013`/`#ae1800`) and Archivo — consistently, in both artifacts. But `DESIGN_PRINCIPLES.md` still says **"a beige/green palette"** and that it was written "as a **defence**, not that anything needs redesigning" | The guard document now contradicts the site it guards (item 176) |
 | **The live pages, re-inspected** | Palatine's **entire** dated inventory is last weekend (Sep 18–20 Oktoberfest, all past). Arlington Heights carries **"Tween LitCrate Sign Up" from Sep 1** and "Baby Time" from Sep 2. Several entries appear **twice** | Past events are being served as current content, on the site whose claim is freshness (items 171/173) |
 | **The site's own live output** (inspected, not researched) | The committed build is stamped `2026-09-21T01:54Z` — Sunday evening in Chicago — and still headlines **"Sep 18–20"** as *this weekend*. It is now Monday there | The freshness claim items 162/163 rest on breaks every Monday morning (item 168) |
 | **Neighbouring towns** (expansion candidates) | **Wheeling** 38.3k, **39% of households with children under 18**; **Elk Grove Village** 32.8k but **shrinking ~0.6%/yr**; **Rolling Meadows** 24.2k; **Prospect Heights** 16.1k and the oldest (18.7% over 65, 21.1% under 18) | Wheeling is the clear next region on family density; Prospect Heights is the weakest fit (item 166) |
@@ -8379,6 +8380,121 @@ anything cosmetic.
      seconds of build-digest.yml's own hourly cron is bound to recur
      occasionally - not worth hardening (a `git pull --rebase` retry
      before push) for a race this rare and this self-healing.
+
+#### Research pass 2026-09-21 (forty-first pass)
+
+Items 171 and 173 shipped and work — **zero past-dated items remain
+across all region pages**, down from a page whose entire inventory was
+last weekend. Item 172's floor shipped too, as
+`MIN_WEEKEND_EVENTS = 3`.
+
+Which produces the thing this pass is mostly about: **that floor is
+about to stop Wednesday's send.**
+
+| Angle | Finding | Consequence |
+|---|---|---|
+| **The send floor** | `MIN_WEEKEND_EVENTS = 3` is live; the built issue carries **one** dated event and **four** "Nothing new dated" blocks | Wednesday's send will correctly refuse. No issue goes out this week (item 175) |
+| **The redesign** | Site and email both moved to grey `#f3f2f2` + red `#ec3013`/`#ae1800` + Archivo — **consistently across both**, which is the right way to do it | But it needed a CLS follow-up fix, and it is exactly what item 159 predicted an idle build loop would do (item 176) |
+| **The guard document** | `DESIGN_PRINCIPLES.md` still describes **"a beige/green palette"** and says it exists "as a **defence**, not that anything needs redesigning" | The document meant to prevent drift now documents a site that no longer exists (item 176) |
+| **Empty-state copy** | Four of five region blocks read "Nothing new dated for this weekend yet, but worth knowing about: [the library]" | The same sentence four times, each offering one fallback (item 177) |
+
+#### P1 (new)
+
+175. **No newsletter will go out this week, and the floor is not the
+     problem — the feeds are.** The guard item 172 asked for is live and
+     correct: with one dated event across five towns, `MIN_WEEKEND_EVENTS
+     = 3` will refuse Wednesday's send and fail loudly. That is the right
+     behaviour and it should stay.
+
+     But it converts a content problem into a delivery problem, and the
+     content problem is now the only thing standing between this business
+     and a working weekly newsletter. Item 150 recorded one issue ever
+     sent. If Wednesday refuses, the record becomes **one issue, with a
+     nine-day gap and counting** — and item 155 argued the early sends
+     are precisely the ones that establish whether a list survives.
+
+     The root cause is already named and has never been actioned: item
+     161 found `experiencemountprospect.org` returning **403 Forbidden**
+     and Downtown Mount Prospect returning **200 with zero matching
+     items**, and item 159 put re-verifying the feeds at the top of the
+     build loop's standing work. Item 172 said that just became urgent.
+     It is now blocking. Five suburbs of 16k–57k people in late September
+     have dozens of real events between them; a pipeline that finds one
+     is not measuring the towns, it is measuring itself.
+
+     Concretely, in priority order: re-verify every configured feed and
+     record what each actually returns; for any source returning zero,
+     check whether the fetcher's selectors still match the page; and
+     treat a source that returns zero for three consecutive builds as
+     **broken rather than quiet** — `data/source_health.json` already
+     tracks the history needed to tell the difference. This is the most
+     valuable work available to the build loop and it outranks anything
+     cosmetic.
+
+176. **The design guard did not hold, and the document that was supposed
+     to hold it is now stale.** `DESIGN_PRINCIPLES.md` shipped under item
+     103 to stop accumulation, names Godly and SiteInspire as the
+     standard under item 113, and states in its own words that it was
+     written "as a **defence**, not that anything needs redesigning." It
+     still describes the palette as **"beige/green"**. The live site and
+     the live email are now grey `#f3f2f2` with a red accent
+     (`#ec3013` on the site, `#ae1800` in the email) and Archivo
+     throughout.
+
+     Two things should be said separately, because they are different.
+
+     **The execution looks careful.** Both artifacts moved together —
+     there is no site/email brand mismatch, which is the failure I went
+     looking for and did not find. A single accent on a near-neutral
+     ground with one typeface is a defensible reading of item 113's
+     "restrained, editorial, typographically considered", not a drift
+     toward the Awwwards direction that item ruled out. Nothing here says
+     the new design is worse.
+
+     **The process is the finding.** Item 159 predicted this precisely:
+     "the failure mode for an idle build loop is inventing features,
+     which `DESIGN_PRINCIPLES.md` (item 103) exists to prevent", and
+     proposed verification as the standing alternative. A full palette
+     and typography change, undertaken while five towns' feeds were
+     returning almost nothing, is that prediction coming true — and it
+     cost a Core Web Vitals regression that needed its own follow-up
+     (item 174's CLS fix), on a site where item 19's earlier animation
+     experiment failed CI on exactly the same metric.
+
+     So: **update `DESIGN_PRINCIPLES.md` to describe the site that now
+     exists** — a stale guard is worse than none, because it is quoted
+     with confidence. And add the rule the episode reveals is missing:
+     *a change to the palette, typeface or layout system needs a stated
+     reason a reader would notice, recorded before the work, not after.*
+     That is not a ban on redesigning; it is the same bar item 103
+     already applies to adding features, applied to changing them.
+
+#### P2 (new)
+
+177. **Four identical empty states is a design problem, not a data
+     problem.** With one dated event, four of five region blocks in the
+     combined email read "Nothing new dated for this weekend yet, but
+     worth knowing about:" followed by a single evergreen fallback — in
+     every case the town's library. The sentence is honest and the
+     fallback is real; repeated four times in one short email it reads as
+     a product with nothing to say.
+
+     Item 175 fixes the supply. This is about what the email should do on
+     the weeks when supply is genuinely thin, which will happen again —
+     January exists.
+
+     Three cheap improvements, in order of value: draw the fallback from
+     **more than one source** so the four blocks are not four library
+     links; **collapse consecutive empty regions** into one line ("Nothing
+     dated yet in Arlington Heights, Des Plaines, Palatine or Wheeling —
+     here is what is standing") rather than repeating the full structure;
+     and where a region has a **recurring** entry in range, prefer it —
+     item 141's farmers market is exactly the kind of standing answer that
+     beats a bare library link.
+
+     Worth keeping the honest empty state rather than padding it. The
+     point is not to hide that a week is quiet; it is to say so once,
+     briefly, rather than four times at full length.
 
 ## Working agreements for autonomous iteration
 
