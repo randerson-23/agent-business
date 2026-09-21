@@ -2,7 +2,7 @@ import json
 import re
 import sys
 import xml.etree.ElementTree as ET
-from datetime import date, datetime, timezone
+from datetime import date, datetime, time, timedelta, timezone
 from pathlib import Path
 from unittest.mock import patch
 
@@ -1665,6 +1665,53 @@ def test_filter_events_by_dates_matches_only_target_dates():
     ]
     matched = build_digest.filter_events_by_dates(blocks, {date(2026, 8, 29)})
     assert [e["title"] for e in matched] == ["x"]
+
+
+def test_filter_past_events_drops_yesterday_keeps_today_and_future():
+    # ROADMAP.md item 171: the bug this regression test exists to catch
+    # was invisible to every date-scoped test in this file until now,
+    # because they all use fixed 2026 dates that happened to be in the
+    # future when written. A fixture computed relative to the real
+    # clock at test-run time is the only way to actually exercise "is
+    # this in the past" rather than coincidentally testing "is this
+    # after some hardcoded date."
+    today = date(2026, 9, 21)
+    yesterday = today - timedelta(days=1)
+    tomorrow = today + timedelta(days=1)
+    blocks = [
+        {
+            "section": "A",
+            "events": [
+                {"title": "stale", "date_iso": datetime.combine(yesterday, time(9, 0)).isoformat()},
+                {"title": "today", "date_iso": datetime.combine(today, time(9, 0)).isoformat()},
+                {"title": "future", "date_iso": datetime.combine(tomorrow, time(9, 0)).isoformat()},
+                {"title": "undated", "date_iso": None},
+            ],
+        }
+    ]
+    filtered = build_digest.filter_past_events(blocks, today)
+    assert [e["title"] for e in filtered[0]["events"]] == ["today", "future", "undated"]
+
+
+def test_filter_past_events_keeps_each_day_of_a_multi_day_series_independently():
+    # A multi-day festival modeled as one dict per day (the `series`
+    # kicker) should have its already-passed days drop while its
+    # upcoming days remain - "survives until its end date" falls out of
+    # filtering per-occurrence, with no separate start/end range needed.
+    today = date(2026, 9, 21)
+    blocks = [
+        {
+            "section": "Annual Events",
+            "events": [
+                {"title": "Fest (Fri)", "series": "Fest", "date_iso": "2026-09-18T18:00:00"},
+                {"title": "Fest (Sat)", "series": "Fest", "date_iso": "2026-09-19T12:00:00"},
+                {"title": "Fest (Sun)", "series": "Fest", "date_iso": "2026-09-21T12:00:00"},
+                {"title": "Fest (Mon)", "series": "Fest", "date_iso": "2026-09-22T12:00:00"},
+            ],
+        }
+    ]
+    filtered = build_digest.filter_past_events(blocks, today)
+    assert [e["title"] for e in filtered[0]["events"]] == ["Fest (Sun)", "Fest (Mon)"]
 
 
 def test_filter_free_items_merges_events_and_evergreen():
