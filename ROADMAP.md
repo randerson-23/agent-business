@@ -8504,6 +8504,27 @@ about to stop Wednesday's send.**
      network access to a Des Plaines/Palatine/Wheeling page, rather than
      shipped as a guess.
 
+     **One follow-up correction, made real by CI itself rather than
+     assumed:** the PR's own `tests.yml` run failed on its first push —
+     `detect_source_regressions()` (item 51) flagged
+     `palatine-60067:Village of Palatine — News` for dropping from a
+     steady trailing count of **2** to a real **0**. Checked the actual
+     job log rather than guessing at the cause: the fetch itself
+     succeeded (no transport-error tag), it's a genuine post-filter 0.
+     That source's config (`url:
+     "https://www.palatine.il.us/CivicAlerts.aspx"`, `keywords: [...,
+     "notice", ...]`) is exactly the page and the reason "Copyright
+     Notices" reached this fix's denylist check in the first place — so
+     that steady "2" was, in hindsight, never real news; it was this
+     source's entire history being two chrome links every single build.
+     The regression detector correctly can't distinguish "a source died"
+     from "a source's own past counts were themselves wrong and a fix
+     just corrected them" — that's a real, previously-unexercised gap in
+     what it can tell, not a new bug to fix this cycle. Reset that one
+     key's history in `data/source_health.json` to a single fresh `[0]`
+     entry so fresh, honest history starts accumulating from the
+     corrected code, documented here rather than silently edited.
+
 176. **The design guard did not hold, and the document that was supposed
      to hold it is now stale.** `DESIGN_PRINCIPLES.md` shipped under item
      103 to stop accumulation, names Godly and SiteInspire as the
