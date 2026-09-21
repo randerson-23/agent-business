@@ -7965,6 +7965,16 @@ claim the last two passes built on.
      Worth pairing with item 163's visible "last checked" line, which
      would have made this obvious to a reader — and to us — weeks ago.
 
+     🟢 **Shipped, 2026-09-21.** Replaced `build-digest.yml`'s
+     `0 12 * * 1` (12:00 UTC) schedule entry with `17 8 * * 1` (08:17
+     UTC), exactly the item's own suggestion including the offset
+     minute to dodge the documented ":00" delay spike. Confirmed by
+     reading `weekend_dates()` directly (already true before this fix,
+     worth stating since it's what makes a *weekly* rebuild the right
+     fix rather than a daily one): the Fri/Sat/Sun window it returns
+     only changes at the Sunday-to-Monday local-midnight boundary, so
+     this single earlier Monday slot is sufficient by construction.
+
 #### P2 (new)
 
 169. **Five "SPONSOR THIS SPOT" blocks in one email is too many.**
@@ -7993,6 +8003,19 @@ claim the last two passes built on.
      most once per artifact; paid placements are content and appear where
      they were sold.*
 
+     🟢 **Shipped, 2026-09-21.** `render_combined_email_digest()` now
+     picks at most one unsold-slot sponsor across all sections (first
+     found, deterministic) and passes it separately from the per-region
+     `sponsor` field; `combined_email_digest.html.j2` renders it once,
+     after the region loop, worded exactly as before ("SPONSOR THIS
+     SPOT"). A real paying sponsor's per-region block is untouched -
+     still renders inside its own region, since that placement is what
+     the tier sells. Verified against a real build: 5 unsold regions
+     now produce exactly 1 house-ad block, not 5. Two new tests
+     (multiple-unsold-regions and paid-sponsor-plus-house-ad-together).
+     The generalized rule is now written down in the item body above,
+     not just applied once.
+
 170. **The headline says four towns, the subject names three.** The
      combined email's headline reads "This weekend, four towns over"
      while the generated subject is "This weekend across Des Plaines,
@@ -8013,6 +8036,20 @@ claim the last two passes built on.
      headline's town count matches the number of region blocks rendered
      would stop it recurring as regions are added (item 166 adds a
      fifth).
+
+     🟢 **Shipped, 2026-09-21 — took the "drop the number" option.**
+     The headline is now the literal suggested text, "This weekend,
+     across the northwest suburbs" - true regardless of how many
+     regions have something dated this week, so it can't drift from
+     the subject line again. Found and fixed the same class of bug in
+     two more places while in there, since Wheeling (item 166) had
+     already made both wrong: `hub.html.j2`'s subheading hardcoded
+     "four towns" (now `{{ region_summaries|length }}`), and
+     `build_llms_txt()`'s trick-or-treat line hardcoded "all four
+     towns" (now `len(region_summaries)`). Verified against a real
+     build: both now read "5 towns". Three new tests, one per fixed
+     location, each asserting the real count renders and the stale
+     "four towns" string is gone.
 
 ## Working agreements for autonomous iteration
 

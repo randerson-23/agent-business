@@ -1213,6 +1213,18 @@ def test_build_llms_txt_lists_each_regions_calendar():
     assert f"[Mount Prospect — subscribable calendar (.ics)]({build_digest.SITE_BASE_URL}mount-prospect-60056/calendar.ics)" in result
 
 
+def test_build_llms_txt_trick_or_treat_line_counts_actual_regions():
+    # ROADMAP.md item 170: "all four towns" was hardcoded and already
+    # wrong once a fifth region (item 166) shipped.
+    summaries = [
+        {"name": "Mount Prospect", "zip": "60056", "tagline": "x", "path": "mount-prospect-60056/", "guides": []},
+        {"name": "Wheeling", "zip": "60090", "tagline": "x", "path": "wheeling-60090/", "guides": []},
+    ]
+    result = build_digest.build_llms_txt(summaries)
+    assert "all 2 towns" in result
+    assert "all four towns" not in result
+
+
 def test_build_google_calendar_url_has_expected_params():
     event = {"title": "Fishing Derby", "detail": "Bring gear", "date_iso": "2026-09-19T10:00:00"}
     url = build_digest.build_google_calendar_url(event, "Mount Prospect")
@@ -1668,6 +1680,20 @@ def test_render_hub_page_lists_regions():
     assert "Mount Prospect" in html
     assert "mount-prospect-60056/" in html
     assert "3 live update" in html
+
+
+def test_render_hub_page_subheading_counts_actual_regions():
+    # ROADMAP.md item 170: the subheading used to hardcode "four towns",
+    # which was already wrong the moment a fifth region (item 166)
+    # shipped - the same class of stale-count bug flagged for the
+    # combined email's headline. Computed from region_summaries instead.
+    summaries = [
+        {**REGION, "event_count": 3, "path": "mount-prospect-60056/"},
+        {**REGION, "id": "wheeling-60090", "name": "Wheeling", "event_count": 1, "path": "wheeling-60090/"},
+    ]
+    html = build_digest.render_hub_page([], summaries, datetime.now(timezone.utc))
+    assert "for 2 towns" in html
+    assert "four towns" not in html
 
 
 def test_render_hub_page_offers_a_corrections_path_with_mailto_cta():
@@ -2806,6 +2832,53 @@ def test_render_combined_email_digest_shows_house_ad_for_inactive_sponsor():
     assert "LOCAL RECOMMENDATION" not in html
     assert "SPONSOR THIS SPOT" in html
     assert "Reach local families." in html
+
+
+def test_render_combined_email_digest_shows_house_ad_once_not_per_region():
+    # ROADMAP.md item 169: a real bug found by reading what Wednesday's
+    # issue actually sends - every unsold region rendered its own
+    # "SPONSOR THIS SPOT" block, so a free digest with one subscriber
+    # and no sponsors carried five sales pitches. House ads are
+    # inventory notices and appear at most once per artifact.
+    house_ad = {"title": "Sponsor this spot", "detail": "Reach local families.", "url": "https://x/sponsor/", "is_active_sponsor": False}
+    sections = [
+        {
+            "region_name": name,
+            "region_url": f"https://x/{name}/",
+            "weekend_events": [],
+            "evergreen": [],
+            "sponsor": house_ad,
+        }
+        for name in ["Mount Prospect", "Arlington Heights", "Des Plaines", "Palatine", "Wheeling"]
+    ]
+    html = build_digest.render_combined_email_digest(sections, "Sep 18–20", datetime.now(timezone.utc))
+    assert html.count("SPONSOR THIS SPOT") == 1
+
+
+def test_render_combined_email_digest_shows_active_sponsor_and_house_ad_together():
+    # A real paying sponsor keeps its own per-region placement (that's
+    # what the tier sells) even while the one shared house-ad notice
+    # still runs once for every other region with nothing sold.
+    sections = [
+        {
+            "region_name": "Mount Prospect",
+            "region_url": "https://x/mount-prospect-60056/",
+            "weekend_events": [],
+            "evergreen": [],
+            "sponsor": {"title": "Acme Dentistry", "url": "https://x/3", "is_active_sponsor": True},
+        },
+        {
+            "region_name": "Arlington Heights",
+            "region_url": "https://x/arlington-heights-60005/",
+            "weekend_events": [],
+            "evergreen": [],
+            "sponsor": {"title": "Sponsor this spot", "detail": "Reach local families.", "url": "https://x/sponsor/", "is_active_sponsor": False},
+        },
+    ]
+    html = build_digest.render_combined_email_digest(sections, "Sep 18–20", datetime.now(timezone.utc))
+    assert html.count("LOCAL RECOMMENDATION") == 1
+    assert html.count("SPONSOR THIS SPOT") == 1
+    assert "Acme Dentistry" in html
 
 
 def test_render_combined_email_digest_omits_sponsor_block_when_sponsor_is_none():

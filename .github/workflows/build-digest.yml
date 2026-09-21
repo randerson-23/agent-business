@@ -2,8 +2,22 @@ name: Build region digests
 
 on:
   schedule:
-    # Every Monday 12:00 UTC (07:00 America/Chicago standard time).
-    - cron: "0 12 * * 1"
+    # Monday 08:17 UTC (~03:17 America/Chicago) - moved here by
+    # ROADMAP.md item 168. weekend_dates() only changes what "this
+    # weekend" means at the Sunday->Monday local-midnight boundary, so a
+    # weekly rebuild here is enough by construction - the bug was
+    # timing, not frequency. The old 12:00 UTC (~07:00 Chicago) slot
+    # left the site advertising an already-finished weekend for
+    # anywhere from a few hours to most of a morning, every week -
+    # exactly the freshness gap item 163's "last checked" line exists
+    # to make visible, not create. Given this repo's own measured
+    # scheduled-run lateness (5h27m-6h54m, see send-newsletter.yml),
+    # this lands mid-morning Chicago at worst and shortly after
+    # midnight at best - both strictly better than a slot that starts
+    # the week already behind. The offset minute (":17") dodges the
+    # documented delay spike clustered at ":00", same reasoning as
+    # send-newsletter.yml's own ":37".
+    - cron: "17 8 * * 1"
   workflow_dispatch: {}
   push:
     branches: [main]
