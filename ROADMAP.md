@@ -7868,6 +7868,51 @@ queue at all.
      reconciling once, citing the source and the year, and using the
      conservative figure where they disagree.
 
+     🟢 **Income figures reconciled, 2026-09-21.** The $84,353 figure
+     turned out to be the stale one, not the accurate one — it's Mount
+     Prospect's 2020 Census / older ACS vintage, and the current ACS
+     2024 5-year estimate is **$101,720** (Data USA and Census Reporter
+     agree), almost exactly what `BUSINESS_PLAN.md` already said. "Use
+     the conservative figure where they disagree" turned out to be the
+     wrong instinct here: the older number isn't more conservative, it's
+     just older, and blindly preferring it would have replaced an
+     accurate figure with a stale one. Checked all three other regions
+     the same way (Data USA, 2024) while in there, since `SPONSOR_KIT.md`
+     makes the same kind of claim for each: Arlington Heights is
+     **$116,723**, not the ~$100K it said (meaningfully understated);
+     Des Plaines is **$97,875**, not ~$87K (also understated); Palatine
+     is **$97,819** median, not the ~$125K it said - that number turned
+     out to be Palatine's *average* household income ($124,160),
+     conflated with the *median* the rest of the sentence was using, a
+     real and more consequential error than the one this item originally
+     flagged. National median updated to the Census Bureau's own 2024
+     figure ($83,730) for the comparison baseline. Both
+     `BUSINESS_PLAN.md` and `SPONSOR_KIT.md` updated with the corrected
+     numbers and cited source/year; `BUSINESS_PLAN.md` keeps the
+     original figure in place with a reconciliation note appended rather
+     than silently rewriting the historical record. Wheeling's own
+     figure is a known, explicitly-flagged gap - not sourced or added to
+     `SPONSOR_KIT.md`'s table this pass, since guessing it would repeat
+     exactly the mistake this reconciliation just fixed.
+
+     🟡 **Spanish-language question researched, not decided, 2026-09-21.**
+     Checked whether Wheeling's own sources already offer Spanish
+     content, per the item's own instruction, before treating this as
+     an all-or-nothing feature question: **Indian Trails Public Library
+     District has a real, live "Servicios en Español" page**
+     (`indiantrailslibrary.org/services/adults/servicios-en-espanol/`),
+     bilingual staff, and Spanish-language materials/programs (Spanish
+     conversation practice, ESL resources, a bilingual collection). The
+     Village of Wheeling's own site shows no equivalent Spanish-language
+     section by search. This changes the shape of the eventual decision
+     from "would there even be Spanish content to include" to "there's
+     at least one confirmed real source, if a bilingual treatment is
+     ever worth building" - but building anything from it (a Spanish-
+     language digest, a translated page, a note on which sources have
+     Spanish resources) is a real scope and design decision this pass
+     deliberately leaves open rather than acting on unprompted, exactly
+     as the item itself asked.
+
 ## Working agreements for autonomous iteration
 
 - Cadence is hourly (the platform's durable scheduler has a 1-hour floor;

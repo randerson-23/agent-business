@@ -2,8 +2,8 @@
 
 *A weekly digest of village news, library events, and park district
 programs — currently live for Mount Prospect (60056), Arlington Heights
-(60005), Des Plaines (60016), and Palatine (60067), IL, with more ZIPs
-planned.*
+(60005), Des Plaines (60016), Palatine (60067), and Wheeling (60090), IL,
+with more ZIPs planned.*
 
 **Live pricing and real-time per-region availability:**
 https://withintenmiles.com/sponsor/
@@ -28,12 +28,19 @@ and specific beats generic ad copy.
   shows outperforms banner ads for trust and action.
 - **Hyperlocal, opt-in audience.** Every reader is specifically looking at
   the region you sponsor. No wasted impressions.
-- **Affluent, family-dense ZIPs.** All four ZIPs run $87K-$125K median
-  household income — 60056 (Mount Prospect) ~$102K, 60005 (Arlington
-  Heights) ~$100K, 60016 (Des Plaines) ~$87K, and 60067 (Palatine)
-  ~$125K — every one above the national median (~$81K), with a strong
-  skew toward married households with kids — a good match for family
-  services, healthcare, home services, and local retail.
+- **Affluent, family-dense ZIPs.** The four original ZIPs run roughly
+  $98K-$117K median household income (ACS 2024 5-year estimates, via
+  Data USA/Census Reporter — see `BUSINESS_PLAN.md`'s reconciliation
+  note, ROADMAP.md item 167) — 60056 (Mount Prospect) ~$102K, 60005
+  (Arlington Heights) ~$117K, 60016 (Des Plaines) ~$98K, and 60067
+  (Palatine) ~$98K median (the previous ~$125K here conflated *average*
+  household income, which skews well above the median in any town with
+  a wide income spread, with the *median* figure the rest of this line
+  uses) — every one above the national median ($83,730, Census Bureau,
+  2024), with a strong skew toward married households with kids — a
+  good match for family services, healthcare, home services, and local
+  retail. Wheeling (60090, item 166) isn't in this range yet — its own
+  figure hasn't been sourced and reconciled the same way.
 - **One business per region, at any tier.** No banner-blindness, no
   competing ads on the page — just the one recommendation, whether it's
   held for a week or a year.
