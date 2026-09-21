@@ -7,8 +7,8 @@ REFRESH-INTERVAL;VALUE=DURATION:PT12H
 X-PUBLISHED-TTL:PT12H
 BEGIN:VEVENT
 UID:arlington-heights-60005-2026-10-02-harmony-fest-taste-of-arlington-heights-friday@withintenmiles.com
-DTSTAMP:20260920T185709Z
-LAST-MODIFIED:20260920T185709Z
+DTSTAMP:20260921T010100Z
+LAST-MODIFIED:20260921T010100Z
 SEQUENCE:0
 DTSTART:20261002T000000
 DTEND:20261002T010000
@@ -18,8 +18,8 @@ URL:https://downtownarlingtonheights.us/events/harmony-fest-taste-of-arlington-h
 END:VEVENT
 BEGIN:VEVENT
 UID:arlington-heights-60005-2026-10-03-harmony-fest-taste-of-arlington-heights-saturday@withintenmiles.com
-DTSTAMP:20260920T185709Z
-LAST-MODIFIED:20260920T185709Z
+DTSTAMP:20260921T010100Z
+LAST-MODIFIED:20260921T010100Z
 SEQUENCE:0
 DTSTART:20261003T000000
 DTEND:20261003T010000
@@ -29,8 +29,8 @@ URL:https://downtownarlingtonheights.us/events/harmony-fest-taste-of-arlington-h
 END:VEVENT
 BEGIN:VEVENT
 UID:arlington-heights-60005-2026-09-01-tween-litcrate-sign-up@withintenmiles.com
-DTSTAMP:20260920T185709Z
-LAST-MODIFIED:20260920T185709Z
+DTSTAMP:20260921T010100Z
+LAST-MODIFIED:20260921T010100Z
 SEQUENCE:0
 DTSTART:20260901T000000
 DTEND:20260901T010000
@@ -39,78 +39,12 @@ URL:https://www.ahml.info/scheduling/reservation/223808
 END:VEVENT
 BEGIN:VEVENT
 UID:arlington-heights-60005-2026-09-02-baby-time@withintenmiles.com
-DTSTAMP:20260920T185709Z
-LAST-MODIFIED:20260920T185709Z
+DTSTAMP:20260921T010100Z
+LAST-MODIFIED:20260921T010100Z
 SEQUENCE:0
 DTSTART:20260902T000000
 DTEND:20260902T010000
 SUMMARY:Baby Time
 URL:https://www.ahml.info/scheduling/reservation/224116
-END:VEVENT
-BEGIN:VEVENT
-UID:arlington-heights-60005-2026-09-24-arlington-heights-park-foundation-golf-classic@withintenmiles.com
-DTSTAMP:20260920T185709Z
-LAST-MODIFIED:20260920T185709Z
-SEQUENCE:0
-DTSTART:20260924T090000
-DTEND:20260924T100000
-SUMMARY:Arlington Heights Park Foundation Golf Classic
-DESCRIPTION:The Arlington Heights Park Foundation welcomes all golfers to join us at Arlington Lakes Golf Club! Join us for a four-person scramble competition for a good…
-URL:https://www.ahpd.org/event/arlington-heights-park-foundation-golf-classic/
-END:VEVENT
-BEGIN:VEVENT
-UID:arlington-heights-60005-2026-09-25-speakeasy-at-the-museum@withintenmiles.com
-DTSTAMP:20260920T185709Z
-LAST-MODIFIED:20260920T185709Z
-SEQUENCE:0
-DTSTART:20260925T190000
-DTEND:20260925T200000
-SUMMARY:Speakeasy at the Museum
-DESCRIPTION:Step back in time to the Roaring Twenties at our exclusive Speakeasy Night! Enjoy two Prohibition Era themed cocktails (alcohol and non-alcohol options…
-URL:https://www.ahpd.org/event/speakeasy-at-the-museum/
-END:VEVENT
-BEGIN:VEVENT
-UID:arlington-heights-60005-2026-10-06-community-input-meeting-carefree-park@withintenmiles.com
-DTSTAMP:20260920T185709Z
-LAST-MODIFIED:20260920T185709Z
-SEQUENCE:0
-DTSTART:20261006T173000
-DTEND:20261006T183000
-SUMMARY:Community Input Meeting - Carefree Park
-DESCRIPTION:Help shape the future of Carefree Park! Join us for a community input meeting where residents can share their feedback and vote on their favorite playground…
-URL:https://www.ahpd.org/event/community-input-meeting-carefree-park/
-END:VEVENT
-BEGIN:VEVENT
-UID:arlington-heights-60005-2026-10-10-autumn-harvest@withintenmiles.com
-DTSTAMP:20260920T185709Z
-LAST-MODIFIED:20260920T185709Z
-SEQUENCE:0
-DTSTART:20261010T110000
-DTEND:20261010T120000
-SUMMARY:Autumn Harvest
-DESCRIPTION:Don’t miss fall family fun with crafts\, games\, hayrides\, a scarecrow building contest\, live music and entertainment\, and food available for purchase from…
-URL:https://www.ahpd.org/event/autumn-harvest-2026/
-END:VEVENT
-BEGIN:VEVENT
-UID:arlington-heights-60005-2026-10-14-ahpd-senior-art-show@withintenmiles.com
-DTSTAMP:20260920T185709Z
-LAST-MODIFIED:20260920T185709Z
-SEQUENCE:0
-DTSTART:20261014T160000
-DTEND:20261014T170000
-SUMMARY:AHPD Senior Art Show
-DESCRIPTION:Take in an evening of art and enjoyment! Peruse AHPD adult students’ creations at the annual Art Show. Visual art\, fiber arts and woodcraft will be on display…
-URL:https://www.ahpd.org/event/ahpd-senior-art-show/
-END:VEVENT
-BEGIN:VEVENT
-UID:arlington-heights-60005-2026-10-16-oddities-night@withintenmiles.com
-DTSTAMP:20260920T185709Z
-LAST-MODIFIED:20260920T185709Z
-SEQUENCE:0
-DTSTART:20261016T190000
-DTEND:20261016T200000
-SUMMARY:Oddities Night
-DESCRIPTION:Step into the strange and mysterious at Oddities Night! Explore unusual objects from local museum collections\, enjoy treats and themed drinks and experience a…
-URL:https://www.ahpd.org/event/oddities-night/
 END:VEVENT
 END:VCALENDAR
