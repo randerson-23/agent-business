@@ -305,6 +305,7 @@ search, which item 22's whole AI-citation effort depends on.
 | **Macaroni KID** | ~500 hyperlocal family newsletters + sites, publisher-run, sponsor-funded | Seasonal *guides* (summer camps, "kids eat free", Halloween) as the flagship monetizable product; business directory; weekly + monthly calendar views |
 | **6AM City** | 400+ local newsletters, $9.5M rev, profitable in 2026 | **Self-service ad platform** — they built it because low-average-order-value local sponsors don't justify sales time. Directly targets this business's #1 constraint |
 | **Axios Local** | Local newsletter network, local-advertiser funded | Newsletter-first: the list is the asset, the site is the funnel |
+| **Neighbouring towns** (expansion candidates) | **Wheeling** 38.3k, **39% of households with children under 18**; **Elk Grove Village** 32.8k but **shrinking ~0.6%/yr**; **Rolling Meadows** 24.2k; **Prospect Heights** 16.1k and the oldest (18.7% over 65, 21.1% under 18) | Wheeling is the clear next region on family density; Prospect Heights is the weakest fit (item 166) |
 | **AI citation concentration** | Across ~680M citations, the **top 15 domains take ~68% of AI citation share; Reddit alone ~40%**. ChatGPT's single largest source is Wikipedia (47.9%) and it cites brands **0.59%** of the time. But **recency is a strong lever**: pages updated within three months average ~6 citations against 3.6 for stale ones | A four-town local site will not win citation share. It *can* win on freshness, which it already has and never claims (items 162/163) |
 | **Tripadvisor / Yelp** (on the head term) | Both now rank for "things to do in Mount Prospect IL this weekend" with **evergreen attraction lists**, not dated events | The head term serves **two intents** and this site answers only one (item 158) |
 | **Evergreen vs. dated pages** | "Things to do" guides accumulate backlinks, search history and rank over years; **a new URL per event instance dilutes site authority**, and recurring events should keep one permanent URL updated in place | Confirms the guides are the compounding asset — and sets a rule before items 112/141 create year-stamped URLs (items 158/160) |
@@ -7623,6 +7624,126 @@ than half (both item 98), and now the citation data itself.
 
      No action. Filed so the next pass to find this number can skip
      straight to the conclusion.
+
+#### Research pass 2026-09-21 (thirty-eighth pass)
+
+Item 159 observed that the remaining bottleneck is human. This pass
+counted it: **six open items are owner actions** — 77 (press pitch), 78
+(Meta ads), 130 (name on the About page), 152 (link-back emails), 153
+(Chamber membership), 154 (Nextdoor eligibility). None has moved in a
+week, and four of the six were added by this loop in the last four
+passes.
+
+That is worth naming plainly as a problem with **this loop**, not with
+the owner. `BUSINESS_PLAN.md`'s founding constraint is "full-time job +
+two small children → near-zero ongoing weekly time." A research process
+that adds human tasks faster than one person can complete them is not
+producing leverage; it is producing a queue, and a six-item queue in
+front of someone with an hour a month is functionally the same as no
+queue at all.
+
+| Angle | Finding | Consequence |
+|---|---|---|
+| **The owner queue** | Six open owner actions, four added in four passes, none completed in a week | The loop is generating faster than the constraint allows (item 165) |
+| **Expansion candidates** | Wheeling **38.3k, 39% of households with children under 18**; Elk Grove Village 32.8k but **shrinking**; Rolling Meadows 24.2k; Prospect Heights 16.1k and oldest | A concrete answer to "which town next", and real build-loop work (item 166) |
+| **Demographic detail** | Wheeling is **28.1% Hispanic**; `BUSINESS_PLAN.md` cites ~$102K median household income for 60056 where village-level census figures show **$84,353** | One content question and one number worth reconciling (item 167) |
+
+#### P1 (new)
+
+165. **Cut the owner queue to one thing, and say which.** Six items now
+     wait on Ryan. Ranked by this file's own reasoning they are not close
+     to equal, and presenting them as a list invites the outcome that has
+     actually happened — nothing gets picked.
+
+     The ranking, from arguments already made here rather than new ones:
+
+     1. **Item 130 — put a real name on the About page.** It takes
+        minutes, costs nothing, and **items 77, 152 and 153 all get
+        weaker without it**: a reporter will not write about an anonymous
+        site, a library will not link to one as readily, and a business
+        owner does not buy from one. It is the only item that is a
+        prerequisite for others.
+     2. **Item 152 — the link-back emails.** Six emails, no cost,
+        repeatable, and the most durable result (a community-links entry
+        keeps working). Item 161 already names the best first target.
+     3. **Item 77 — the press pitch.** Highest single yield, but
+        one-shot, and item 155 argues it should follow gradual list
+        growth rather than lead it.
+     4. Items 153, 154, 78 — **park them.** Two involve money and one is
+        an eligibility question about a channel that may not accept this
+        site at all. None should compete for attention with the three
+        above.
+
+     The concrete change is to `ROADMAP.md`'s Needs Ryan block: show
+     **one** "next action" with its reason, and move the rest to a
+     collapsed "after that" list. A queue of six reads as a backlog; a
+     single named next step reads as a decision already made. And it is
+     the loop's job to make that decision, having done the research —
+     handing over six ranked options is handing back the work.
+
+     Standing rule worth adding to the working agreements: **the research
+     loop may leave at most three open owner actions.** Beyond that, it
+     re-ranks and parks rather than appending. Build-loop items are
+     unbounded because the build loop has unbounded hours; owner items
+     are bounded because the owner does not.
+
+#### P2 (new)
+
+166. **Wheeling is the next region, and the numbers are not close.**
+     `BUSINESS_PLAN.md` says each new region costs "almost nothing" —
+     one YAML file — and item 159 found the build loop nearly out of
+     work. Expansion is the third option alongside features and
+     verification, and it is the one that widens the surface that can
+     rank and the audience that can subscribe.
+
+     On the data, for a site whose audience is families:
+
+     - **Wheeling — 38,329, and 39% of households have children under
+       18.** Largest of the candidates and the strongest family signal.
+     - **Elk Grove Village — 32,812, but declining ~0.6%/yr.** Fine on
+       income ($94,175 median household) and a reasonable second.
+     - **Rolling Meadows — 24,200.** Middling on both counts.
+     - **Prospect Heights — 16,058, and the oldest of the four** (18.7%
+       over 65 against 21.1% under 18). Weakest fit for this product.
+
+     One strategic note to weigh rather than ignore: Wheeling, Prospect
+     Heights and Rolling Meadows are all inside **Journal & Topics'**
+     coverage area (twenty-ninth pass). Expanding into them increases
+     overlap with the publication item 125 already flagged as a
+     competitor-and-press-target. That is an argument for the honest
+     framing item 125 recommends, not against expanding — but it should
+     be a decision rather than a surprise.
+
+     The work is exactly the established pattern: find the village,
+     library, park district and school district feed URLs, write one YAML
+     config, let the fail-soft fetcher handle what is unverified. Item
+     138's lesson applies — include a school district from the start
+     rather than discovering the gap later.
+
+#### P3 (new)
+
+167. **Two numbers worth getting right before they end up in a pitch.**
+
+     **Wheeling is 28.1% Hispanic.** If item 166 proceeds, that raises a
+     content question this site has never faced: it aggregates
+     English-language civic feeds and publishes in English only. Many
+     village and library sites publish Spanish-language programming
+     information, and a digest that silently drops it would under-serve
+     more than a quarter of the town. Not a blocker and not a reason to
+     skip Wheeling — but worth deciding deliberately rather than by
+     default, and worth checking whether the sources themselves offer
+     Spanish feeds before assuming they do not.
+
+     **`BUSINESS_PLAN.md` cites ~$102K median household income for
+     60056; village-level census figures show $84,353.** Both may be
+     right — ZIP-code and municipal boundaries differ, and the sources
+     are different years — but the plan's number came from ZIP profile
+     sites and the gap is large enough to matter if it is ever repeated
+     to a sponsor. `SPONSOR_KIT.md` describing the audience as
+     higher-income than it is would be the kind of small overstatement
+     that costs credibility precisely when it is being checked. Worth
+     reconciling once, citing the source and the year, and using the
+     conservative figure where they disagree.
 
 ## Working agreements for autonomous iteration
 
