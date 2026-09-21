@@ -352,6 +352,7 @@ search, which item 22's whole AI-citation effort depends on.
 | **Macaroni KID** | ~500 hyperlocal family newsletters + sites, publisher-run, sponsor-funded | Seasonal *guides* (summer camps, "kids eat free", Halloween) as the flagship monetizable product; business directory; weekly + monthly calendar views |
 | **6AM City** | 400+ local newsletters, $9.5M rev, profitable in 2026 | **Self-service ad platform** — they built it because low-average-order-value local sponsors don't justify sales time. Directly targets this business's #1 constraint |
 | **Axios Local** | Local newsletter network, local-advertiser funded | Newsletter-first: the list is the asset, the site is the funnel |
+| **The live pages, re-inspected** | Palatine's **entire** dated inventory is last weekend (Sep 18–20 Oktoberfest, all past). Arlington Heights carries **"Tween LitCrate Sign Up" from Sep 1** and "Baby Time" from Sep 2. Several entries appear **twice** | Past events are being served as current content, on the site whose claim is freshness (items 171/173) |
 | **The site's own live output** (inspected, not researched) | The committed build is stamped `2026-09-21T01:54Z` — Sunday evening in Chicago — and still headlines **"Sep 18–20"** as *this weekend*. It is now Monday there | The freshness claim items 162/163 rest on breaks every Monday morning (item 168) |
 | **Neighbouring towns** (expansion candidates) | **Wheeling** 38.3k, **39% of households with children under 18**; **Elk Grove Village** 32.8k but **shrinking ~0.6%/yr**; **Rolling Meadows** 24.2k; **Prospect Heights** 16.1k and the oldest (18.7% over 65, 21.1% under 18) | Wheeling is the clear next region on family density; Prospect Heights is the weakest fit (item 166) |
 | **AI citation concentration** | Across ~680M citations, the **top 15 domains take ~68% of AI citation share; Reddit alone ~40%**. ChatGPT's single largest source is Wikipedia (47.9%) and it cites brands **0.59%** of the time. But **recency is a strong lever**: pages updated within three months average ~6 citations against 3.6 for stale ones | A four-town local site will not win citation share. It *can* win on freshness, which it already has and never claims (items 162/163) |
@@ -8050,6 +8051,105 @@ claim the last two passes built on.
      build: both now read "5 towns". Three new tests, one per fixed
      location, each asserting the real count renders and the stale
      "four towns" string is gone.
+
+#### Research pass 2026-09-21 (fortieth pass)
+
+Yesterday's three findings all shipped — the Monday cron moved to
+`17 8 * * 1`, the window reads Sep 25–27, the house ads went from five to
+one, and the headline no longer asserts a town count. Item 141's
+recurrence work landed too (the farmers market renders "Every Sunday
+through Oct 25"), and Wheeling is live as a fifth region.
+
+So this pass read the output again, and found something worse than
+anything cosmetic.
+
+| Angle | Finding | Consequence |
+|---|---|---|
+| **Wednesday's issue** | **Four of five regions have nothing dated.** The whole email is one farmers market | The first-ever scheduled send is a weekend digest containing one event (item 172) |
+| **Past events** | Palatine's entire dated inventory is **Sep 18–20, all past**. Arlington Heights serves **"Tween LitCrate Sign Up" dated Sep 1** — three weeks stale | The freshness claim is not just unproven, it is currently false (item 171) |
+| **Dated inventory** | Region pages show 18–24 cards, but Arlington Heights has **5 dated items** and Palatine **4** | The weekly digest is structurally fragile, not unlucky this week (item 172) |
+| **Duplicates** | "Palatine Oktoberfest (Friday)" and "Tween LitCrate Sign Up" each appear **twice** | A smaller bug, but visible on the same pages (item 173) |
+
+#### P1 (new)
+
+171. **The site is serving past events as current content.** Verified
+     against the live build: every dated item on the Palatine page is
+     last weekend's Oktoberfest (18, 18, 19, 20 September — today is the
+     21st), and Arlington Heights carries "Tween LitCrate Sign Up" dated
+     **1 September** and "Baby Time" dated 2 September, three weeks gone.
+
+     This is the most serious thing found in forty passes, because it is
+     not a gap — it is the product actively doing the opposite of what it
+     claims. Items 162 and 163 built a whole strategy on freshness being
+     this site's one structural advantage. Item 131 stakes the
+     differentiation against generated local content on every listing
+     being real and traceable. A parent who clicks "Tween LitCrate Sign
+     Up" and finds a closed signup from three weeks ago learns something
+     about this site that no amount of provenance copy undoes.
+
+     The fix is a filter that should have existed from the first build:
+     **drop dated items whose date is in the past**, evaluated in
+     `America/Chicago` rather than UTC so nothing vanishes an evening
+     early or lingers a morning late. Two details worth getting right
+     rather than discovering later: a multi-day event should survive
+     until its *end* date, not its start (item 141's recurrence work
+     already models spans); and genuinely undated evergreen entries must
+     be untouched, since they are what the guides are made of.
+
+     Worth a test with a fixture dated yesterday — the failure is
+     invisible in any test that uses relative dates, which is presumably
+     why forty passes of green tests never caught it.
+
+172. **Wednesday's issue will contain one event across five towns —
+     decide now whether to send it.** With past events still included the
+     email looks sparse; with item 171's filter applied it gets
+     *sparser*, because most of what is dated is behind us. The current
+     build of the combined issue is: Arlington Heights nothing, Des
+     Plaines nothing, Mount Prospect one farmers market, Palatine
+     nothing, Wheeling nothing.
+
+     And the thinness is structural, not a bad week. Counted on the live
+     build: Arlington Heights has **5 dated items in total**, Palatine
+     **4**. For towns of roughly 75,000 and 69,000 people that is
+     implausibly low, which points at the sources rather than the towns —
+     the 403 and zero-item feeds item 161 flagged are exactly the kind of
+     thing that would produce it, and item 159 already put re-verifying
+     them at the top of the build loop's standing work. That work just
+     became urgent rather than housekeeping.
+
+     Two decisions, and the loop should make the first one rather than
+     leaving it: **an issue with fewer than roughly three dated events
+     across all regions should not send.** Add a floor to
+     `send_newsletter.py` in the same spirit as its staleness guard —
+     refuse, loudly, and let the failure email say why. A weekly digest
+     that arrives nearly empty teaches subscribers to ignore it, and item
+     155 argues the early sends are exactly the ones that set the habit.
+     The second decision is Ryan's and only if he wants it: skip a week
+     deliberately rather than send a thin issue.
+
+#### P2 (new)
+
+173. **Duplicate entries on the region pages.** "Palatine Oktoberfest
+     (Friday)" appears twice with the same date, and Arlington Heights'
+     "Tween LitCrate Sign Up" likewise. Both are visible in the rendered
+     page, not just in the star-button payload.
+
+     The likely cause is two configured sources carrying the same event —
+     a village news feed and a downtown-merchants feed both announcing
+     Oktoberfest, for instance — which is the normal case in civic
+     aggregation rather than an edge case, and will get more common as
+     item 166 adds regions and item 148 potentially adds athletics.
+
+     A dedupe keyed on normalised title plus date would fix it, and the
+     normalisation already exists: item 86 built near-duplicate title
+     matching for the subject line and the same comparison applies here.
+     Prefer the entry with a detail line and a working URL when
+     collapsing, so dedupe improves the surviving card rather than
+     picking arbitrarily.
+
+     P2 rather than P1 only because item 171 is worse. On a page with 4
+     dated items, having 2 of them be duplicates of each other is not a
+     small proportion.
 
 ## Working agreements for autonomous iteration
 
