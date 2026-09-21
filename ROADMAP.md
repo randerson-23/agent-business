@@ -8878,6 +8878,36 @@ about to stop Wednesday's send.**
   to look at stops being verification and starts being motion for its
   own sake - worth saying plainly rather than manufacturing an eighth
   pass that finds nothing new.
+
+  Eighth pass, 2026-09-21 (next hourly firing) - deliberately a
+  different angle rather than an eighth link-check, per the seventh
+  pass's own note above. Checked the real GitHub Actions run history
+  for `build-digest.yml` instead: the last three merges (the fifth/
+  sixth/seventh verification-pass PRs, all docs-only) triggered no
+  rebuild at all, which looked at first like a gap worth investigating
+  rather than assuming. It isn't one - `build-digest.yml`'s `push`
+  trigger carries a `paths:` filter
+  (`scripts/**`/`templates/**`/`config/**`/its own workflow file), and
+  item 168 moved its `schedule` trigger to once a week
+  (`17 8 * * 1`, replacing whatever more frequent cadence an earlier
+  pass in this file's history had documented) rather than hourly. A
+  ROADMAP-only commit correctly changes nothing the site serves, so
+  correctly triggers no rebuild; the real code changes earlier this
+  cycle (items 175 and 177) each did trigger one, both green (runs
+  `35643453169` and `35646601410`).
+
+  That raised a real question worth actually answering rather than
+  assuming away: does a week-old `docs/` state risk mailing a stale
+  Wednesday newsletter? Read `send-newsletter.yml` directly rather
+  than guessing - its own "Build digest" step runs
+  `python scripts/build_digest.py` fresh every time, with a comment
+  explaining exactly why: "Built fresh rather than trusting whatever
+  docs/ happens to hold... mailing a stale digest is worse than not
+  mailing." The send path never reads the committed `docs/` at all,
+  so the weekly site-rebuild cadence and the send's own freshness are
+  fully decoupled by design - nothing to fix, and worth having
+  actually read the workflow rather than assumed it from the schedule
+  alone.
 - **The research loop leaves at most three open owner decisions at a
   time (item 165).** A six-item "Needs Ryan" queue, none of it acted on
   in a week, is itself the finding — presenting equal-looking options
