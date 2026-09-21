@@ -1,0 +1,196 @@
+# Region config for Wheeling, IL (ZIP 60090) — the fifth region, added
+# per ROADMAP.md item 166 (thirty-eighth research pass): the strongest
+# family-demographic fit among the researched expansion candidates
+# (38,329 residents, 39% of households with children under 18 — the
+# largest and youngest-skewing of the four towns considered).
+#
+# Sourcing status as of 2026-09-21 (thirty-eighth pass), found via
+# WebSearch — this sandbox's own network can't fetch these sources
+# directly to confirm live item counts, so (unlike the other four
+# regions' configs) none of this is CONFIRMED against a real build yet.
+# The next real GitHub Actions build will be the first live test.
+#   - Village of Wheeling: wheelingil.gov runs CivicEngage (CivicPlus),
+#     a different CMS from every other region's village site. No
+#     confirmed RSS/ICS calendar export found by search (rss.aspx
+#     exists but its exact feed URLs weren't discoverable without a
+#     live fetch) - pointed at the real Calendar.aspx page as
+#     html_events instead, same honest-fallback shape as Des Plaines'
+#     school district source below.
+#   - Indian Trails Public Library District (serves Wheeling, Buffalo
+#     Grove, Prospect Heights, and part of Arlington Heights): real
+#     events page confirmed at indiantrailslibrary.org/events/, backed
+#     by the same libnet.info/Communico platform Mount Prospect's
+#     library uses - but that platform's RSS feed URL is a base64-
+#     encoded per-library payload (confirmed by inspecting Mount
+#     Prospect's own mppl.libnet.info feed URL), not something
+#     guessable from search results alone. html_events fallback here
+#     too, same reasoning.
+#   - Wheeling Park District: real events page confirmed at
+#     wheelingparkdistrict.com/events/. Three other regions' park
+#     districts all run The Events Calendar (Tribe Events) WordPress
+#     plugin with a `?post_type=tribe_events&ical=1&eventDisplay=list`
+#     ICS export - search didn't turn up a direct confirmation this
+#     site runs the same plugin, but the URL is pattern-matched from
+#     that precedent rather than guessed from nothing. Marked
+#     unconfirmed; will self-correct from the next real build's logs
+#     if wrong, same as every other region's first-pass sources did.
+#   - Wheeling CCSD 21 (elementary/middle): no confirmed ICS/RSS feed
+#     found by search, same Finalsite-style gap as Des Plaines' CCSD 62
+#     (see that config's comment for the full reasoning against
+#     guessing an opaque per-calendar token). html_events against the
+#     real calendars page instead.
+#   - Township High School District 214 (Wheeling High School):
+#     real, confirmed URL - same family and pattern as Mount Prospect's
+#     and Arlington Heights' D214 links (d214.org/o/<slug>/page/
+#     athletics), evergreen link only, same rationale as those (no
+#     licensed schedule-data feed for Illinois HS athletics).
+#
+# The pipeline fails soft either way: a broken source is skipped and
+# logged, it never breaks the whole digest build.
+
+region:
+  id: "wheeling-60090"
+  name: "Wheeling"
+  zip: "60090"
+  state: "IL"
+  timezone: "America/Chicago"
+  tagline: "Pulled automatically from the Village, Indian Trails Public Library, and Wheeling Park District — plus Heritage Park and Chicago Executive Airport — several times a week."
+  # Wikipedia-cited town-center coordinate (42°07'25"N 87°55'15"W), not a
+  # geocoded Village Hall address (2 Community Blvd) - this sandbox has
+  # no geocoding access, and the other regions' "Village Hall
+  # coordinates" framing would overstate the precision actually behind
+  # this number. Close enough for the region-level "distance from you"
+  # feature (ROADMAP.md Phase 8), which never claimed street-level
+  # accuracy anyway.
+  lat: 42.1236
+  lon: -87.9208
+  # Optional: force the /region/ page's "Editor's Pick" card to a specific
+  # item by its exact `url` (ROADMAP.md Phase 11 #16). Unset by default -
+  # the heuristic (soonest dated item, ties broken by free/kid-friendly)
+  # picks automatically otherwise.
+  # editors_pick_url: "https://www.indiantrailslibrary.org/"
+
+sources:
+  - name: "Village of Wheeling — Calendar"
+    type: html_events
+    url: "https://www.wheelingil.gov/calendar.aspx"
+    keywords: ["event", "meeting", "board", "commission", "festival", "open house", "notice", "closed", "holiday"]
+    section: "Village Calendar"
+    enabled: true
+
+  - name: "Indian Trails Public Library — Events"
+    type: html_events
+    url: "https://www.indiantrailslibrary.org/events/"
+    keywords: ["event", "class", "program", "story", "camp", "concert", "workshop", "book", "club"]
+    section: "Library Events"
+    enabled: true
+
+  - name: "Wheeling Park District — Events"
+    type: ics
+    url: "webcal://www.wheelingparkdistrict.com/events/?post_type=tribe_events&ical=1&eventDisplay=list"
+    section: "Park District Events"
+    enabled: true
+
+  - name: "Wheeling CCSD 21 — Calendar"
+    type: html_events
+    url: "https://ccsd21.org/parent-resources/calendars/"
+    keywords: ["no school", "early dismissal", "half day", "institute day", "records day", "holiday", "closed", "no classes"]
+    section: "School Calendar"
+    enabled: true
+
+evergreen:
+  - title: "Indian Trails Public Library District"
+    detail: "355 Schoenbeck Rd. Serves Wheeling, Buffalo Grove, Prospect Heights, and part of Arlington Heights - makerspace, programs for all ages, and a branch location."
+    url: "https://www.indiantrailslibrary.org/"
+    tags: ["indoor", "kid_friendly", "free"]
+  - title: "Wheeling Park District"
+    detail: "Parks, pools, and Heritage Park's performance pavilion across the village."
+    url: "https://www.wheelingparkdistrict.com/"
+    tags: ["outdoor", "kid_friendly"]
+  - title: "Village of Wheeling"
+    detail: "Village board meetings, permits, and community announcements."
+    url: "https://www.wheelingil.gov/"
+    tags: []
+  # ROADMAP.md item 148: same sourcing rationale as the other three
+  # regions' D214 athletics links (real URL, found via WebSearch and
+  # confirmed present in the raw result list, not guessed) - Illinois HS
+  # schedules run mostly through MaxPreps, a commercial aggregator this
+  # site doesn't republish from.
+  - title: "Wheeling High School Athletics"
+    detail: "Wildcats varsity & JV schedules, rosters, and ticket info. This site doesn't have a licensed schedule feed for game dates, so this links to the school's own athletics page instead."
+    url: "https://www.d214.org/o/whs/page/athletics"
+    tags: []
+
+# Structured trick-or-treat data (ROADMAP.md Phase 11 #101) - see the
+# Mount Prospect config for the rationale.
+trick_or_treat:
+  url: "https://www.wheelingil.gov/calendar.aspx"
+  hours: null
+
+# Seasonal/evergreen guides (ROADMAP.md Phase 11 #5) - same civic-
+# source-only approach as the other three regions' guides.
+guides:
+  - slug: "fall-family-guide"
+    title: "Fall Family Guide"
+    summary: "A living guide to fall in Wheeling — seasonal park district programs, library fall programming, and where the Village posts official trick-or-treat hours. Pulls from the same civic sources as the weekly digest, organized by season instead of by week."
+    items:
+      - title: "Fall & seasonal programs — Wheeling Park District"
+        detail: "Seasonal drop-ins, fall break camps, and rec programs. Dates and registration change every year — check the current program guide."
+        url: "https://www.wheelingparkdistrict.com/"
+        tags: ["outdoor", "kid_friendly"]
+      - title: "Fall programs — Indian Trails Public Library"
+        detail: "Seasonal makerspace classes, storytimes, and programs for all ages — a solid pick for a rainy fall Saturday."
+        url: "https://www.indiantrailslibrary.org/events/"
+        tags: ["indoor", "kid_friendly", "free"]
+      - title: "Official trick-or-treat hours — five towns"
+        detail: "Combined trick-or-treat hours for Mount Prospect, Arlington Heights, Des Plaines, Palatine, and Wheeling, updated automatically as each village posts them."
+        url: "https://withintenmiles.com/trick-or-treat/"
+        tags: ["kid_friendly", "free"]
+
+  # ROADMAP.md Phase 11 #15 - see the other regions' configs for the
+  # rationale; same civic-source-only discipline here.
+  - slug: "birthday-parties-and-kids-classes"
+    title: "Birthday Parties & Kids' Classes"
+    summary: "Where Wheeling families look for party venues, rec classes, and enrichment programs — the small set of standing civic options, plus local businesses as they join the directory below."
+    items:
+      - title: "Birthday parties & rentals — Wheeling Park District"
+        detail: "Pool parties, gym space, and themed party packages through the Park District — check current pricing, room availability, and booking windows."
+        url: "https://www.wheelingparkdistrict.com/registration/"
+        tags: ["kid_friendly"]
+      - title: "Kids' classes & camps — Wheeling Park District"
+        detail: "Swim lessons, sports, dance, and seasonal camps for all ages — browse the current program guide for schedules and registration."
+        url: "https://www.wheelingparkdistrict.com/"
+        tags: ["kid_friendly"]
+      - title: "Kids' programs — Indian Trails Public Library"
+        detail: "Free storytimes, makerspace classes, and craft programs for kids and teens — no registration fee."
+        url: "https://www.indiantrailslibrary.org/events/"
+        tags: ["indoor", "kid_friendly", "free", "teen"]
+      - title: "Local party venues, entertainers & tutoring centers"
+        detail: "Private businesses appear here as they join the local directory — see what's currently listed."
+        url: "https://withintenmiles.com/wheeling-60090/directory/"
+        tags: ["kid_friendly"]
+
+  - slug: "new-to-town"
+    title: "New to Town"
+    summary: "The practical first-week checklist for anyone new to Wheeling — utilities and refuse/recycling, a library card, Park District registration, and which school districts actually serve your address. Pulls from the same civic sources as the weekly digest, organized for someone who just moved in rather than someone browsing this week's events."
+    items:
+      - title: "Village services, utilities, refuse & recycling"
+        detail: "Water and sewer are billed by the Village every two months. Refuse, recycling, and yard waste go out together weekly via Waste Management under the Village's current five-year contract (through May 2029) - each household gets one 96-gallon refuse cart and one 64-gallon recycling cart. Utility billing questions: 847-499-9016."
+        url: "https://www.wheelingil.gov/332/Refuse-Recycling-Yard-Waste"
+        tags: []
+      - title: "Get an Indian Trails Public Library card"
+        detail: "Register online for a temporary 30-day digital card (barcode emailed within 48 hours), then bring photo ID to the Circulation Desk at 355 Schoenbeck Rd. for a permanent one - or register in person from the start. Serves Wheeling, Buffalo Grove, Prospect Heights, and part of Arlington Heights."
+        url: "https://www.indiantrailslibrary.org/register-online-for-your-library-card/"
+        tags: ["indoor", "kid_friendly", "free"]
+      - title: "Register for Wheeling Park District programs"
+        detail: "Create a WebTrac household account, then bring ID to the Community Recreation Center (100 Community Blvd.) to verify residency for resident rates - new accounts default to non-resident pricing until verified."
+        url: "https://www.wheelingparkdistrict.com/registration/"
+        tags: ["outdoor", "kid_friendly"]
+      - title: "Wheeling Community Consolidated School District 21 (elementary & middle school)"
+        detail: "Covers most of Wheeling plus parts of Buffalo Grove, Arlington Heights, Mount Prospect, and Prospect Heights - but the Lake County portion of Wheeling falls under Aptakisic-Tripp CCSD 102 instead, so confirm your specific address rather than assuming. District office: 847-537-8270."
+        url: "https://ccsd21.org/parent-resources/calendars/"
+        tags: []
+      - title: "Township High School District 214 (high school)"
+        detail: "Wheeling High School, part of District 214 - the same district that serves Mount Prospect's Prospect High School and several other neighboring towns — confirm by address rather than assuming."
+        url: "https://www.d214.org/"
+        tags: []
