@@ -44,15 +44,15 @@
 </noscript>
 <![endif]-->
 </head>
-<body class="wt-bg" style="margin:0; padding:0; background-color:#f6efe1;" bgcolor="#f6efe1">
-<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" bgcolor="#f6efe1" class="wt-bg" style="background-color:#f6efe1;">
+<body class="wt-bg" style="margin:0; padding:0; background-color:#f3f2f2;" bgcolor="#f3f2f2">
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" bgcolor="#f3f2f2" class="wt-bg" style="background-color:#f3f2f2;">
 <tr>
 <td align="center" style="padding:24px 16px;">
 <table role="presentation" width="600" cellpadding="0" cellspacing="0" border="0" style="width:600px; max-width:600px;">
 
 {% if preview %}
 <tr>
-<td class="wt-accent wt-border" style="padding:0 8px 12px 8px; font-family:Arial, Helvetica, sans-serif; font-size:12px; color:#96581f; border-bottom:1px dashed #e6dcc8;">
+<td class="wt-accent wt-border" style="padding:0 8px 12px 8px; font-family:Arial, Helvetica, sans-serif; font-size:12px; color:#ae1800; border-bottom:1px dashed #d7d3d3;">
 PREVIEW ONLY, NOT PART OF THE EMAIL — SUBJECT LINE: {{ subject_line }}
 </td>
 </tr>
@@ -61,18 +61,18 @@ PREVIEW ONLY, NOT PART OF THE EMAIL — SUBJECT LINE: {{ subject_line }}
 <!-- Wordmark -->
 <tr>
 <td style="padding:0 8px 16px 8px;">
-<span class="wt-brand" style="font-family:Arial, Helvetica, sans-serif; font-size:13px; font-weight:bold; letter-spacing:1px; color:#526b3f;">WITHIN TEN</span>
+<span class="wt-brand" style="font-family:Arial, Helvetica, sans-serif; font-size:13px; font-weight:bold; letter-spacing:1px; color:#ae1800;">WITHIN TEN</span>
 </td>
 </tr>
 
 <!-- Intro -->
 <tr>
-<td style="font-family:Georgia, 'Times New Roman', serif; font-size:22px; line-height:1.3; color:#2b2318; padding-bottom:6px;" class="wt-ink">
+<td style="font-family:Arial, Helvetica, sans-serif; font-size:22px; font-weight:bold; line-height:1.2; color:#201e1d; padding-bottom:6px;" class="wt-ink">
 This weekend, across the northwest suburbs
 </td>
 </tr>
 <tr>
-<td class="wt-muted" style="font-family:Arial, Helvetica, sans-serif; font-size:14px; color:#766a58; padding-bottom:18px;">
+<td class="wt-muted" style="font-family:Arial, Helvetica, sans-serif; font-size:14px; color:#605d5d; padding-bottom:18px;">
 {{ weekend_date_range }}
 </td>
 </tr>
@@ -80,27 +80,27 @@ This weekend, across the northwest suburbs
 {% for block in region_blocks %}
 <!-- Region block: {{ block.region_name }} -->
 <tr>
-<td bgcolor="#fffcf5" class="wt-card wt-border" style="background-color:#fffcf5; border:1px solid #e6dcc8; border-radius:8px; padding:20px; margin-bottom:16px;">
+<td bgcolor="#eae9e9" class="wt-card wt-border" style="background-color:#eae9e9; border:2px solid #d7d3d3; border-radius:0; padding:20px; margin-bottom:16px;">
 <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
 <tr>
-<td class="wt-ink" style="font-family:Georgia, 'Times New Roman', serif; font-size:18px; color:#2b2318; padding-bottom:10px;">
-<a href="{{ block.region_url }}" class="wt-ink" style="color:#2b2318; text-decoration:none;">{{ block.region_name }}</a>
+<td class="wt-ink" style="font-family:Arial, Helvetica, sans-serif; font-size:18px; font-weight:bold; color:#201e1d; padding-bottom:10px;">
+<a href="{{ block.region_url }}" class="wt-ink" style="color:#201e1d; text-decoration:none;">{{ block.region_name }}</a>
 </td>
 </tr>
 
 {% if block.attendable_events %}
 {% for event in block.attendable_events[:4] %}
 <tr>
-<td class="wt-border" style="padding:8px 0; border-top:1px solid #e6dcc8;">
+<td class="wt-border" style="padding:8px 0; border-top:1px solid #d7d3d3;">
 <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
 <tr>
-<td class="wt-ink" style="font-family:Arial, Helvetica, sans-serif; font-size:16px; color:#2b2318;">
-<a href="{{ event.url }}" class="wt-ink" style="color:#2b2318; text-decoration:none; font-weight:bold;">{{ event.title }}</a>
+<td class="wt-ink" style="font-family:Arial, Helvetica, sans-serif; font-size:16px; color:#201e1d;">
+<a href="{{ event.url }}" class="wt-ink" style="color:#201e1d; text-decoration:none; font-weight:bold;">{{ event.title }}</a>
 </td>
 </tr>
 {% if event.date %}
 <tr>
-<td class="wt-accent" style="font-family:Arial, Helvetica, sans-serif; font-size:14px; color:#96581f;">
+<td class="wt-accent" style="font-family:Arial, Helvetica, sans-serif; font-size:14px; color:#ae1800;">
 {{ event.date }}
 </td>
 </tr>
@@ -108,7 +108,7 @@ This weekend, across the northwest suburbs
 {% if event.recurrence_note %}
 <!-- ROADMAP.md item 141: same muted treatment as email_digest.html.j2. -->
 <tr>
-<td class="wt-muted" style="font-family:Arial, Helvetica, sans-serif; font-size:12px; font-style:italic; color:#766a58;">
+<td class="wt-muted" style="font-family:Arial, Helvetica, sans-serif; font-size:12px; font-style:italic; color:#605d5d;">
 {{ event.recurrence_note }}
 </td>
 </tr>
@@ -119,20 +119,20 @@ This weekend, across the northwest suburbs
 {% endfor %}
 {% elif block.evergreen_highlights %}
 <tr>
-<td class="wt-muted" style="font-family:Arial, Helvetica, sans-serif; font-size:14px; color:#766a58; padding-bottom:6px;">
+<td class="wt-muted" style="font-family:Arial, Helvetica, sans-serif; font-size:14px; color:#605d5d; padding-bottom:6px;">
 Nothing new dated for this weekend yet, but worth knowing about:
 </td>
 </tr>
 {% for item in block.evergreen_highlights %}
 <tr>
-<td class="wt-border" style="padding:6px 0; border-top:1px solid #e6dcc8; font-family:Arial, Helvetica, sans-serif; font-size:15px;">
-<a href="{{ item.url }}" class="wt-ink" style="color:#2b2318; text-decoration:none; font-weight:bold;">{{ item.title }}</a>
+<td class="wt-border" style="padding:6px 0; border-top:1px solid #d7d3d3; font-family:Arial, Helvetica, sans-serif; font-size:15px;">
+<a href="{{ item.url }}" class="wt-ink" style="color:#201e1d; text-decoration:none; font-weight:bold;">{{ item.title }}</a>
 </td>
 </tr>
 {% endfor %}
 {% elif not block.informational_events %}
 <tr>
-<td class="wt-muted" style="font-family:Arial, Helvetica, sans-serif; font-size:14px; color:#766a58;">
+<td class="wt-muted" style="font-family:Arial, Helvetica, sans-serif; font-size:14px; color:#605d5d;">
 Nothing dated for this weekend yet — the full guide has what's coming up.
 </td>
 </tr>
@@ -146,13 +146,13 @@ Nothing dated for this weekend yet — the full guide has what's coming up.
      silently dropped it - email_digest.html.j2 checks it in both
      branches for the same reason). -->
 <tr>
-<td class="wt-accent wt-border" style="padding:8px 0 2px 0; border-top:1px solid #e6dcc8; font-family:Arial, Helvetica, sans-serif; font-size:12px; font-weight:bold; letter-spacing:0.5px; color:#96581f;">
+<td class="wt-accent wt-border" style="padding:8px 0 2px 0; border-top:1px solid #d7d3d3; font-family:Arial, Helvetica, sans-serif; font-size:12px; font-weight:bold; letter-spacing:0.5px; color:#ae1800;">
 ALSO THIS WEEK
 </td>
 </tr>
 {% for item in block.informational_events[:2] %}
 <tr>
-<td class="wt-muted" style="font-family:Arial, Helvetica, sans-serif; font-size:14px; color:#766a58; padding-top:4px;">
+<td class="wt-muted" style="font-family:Arial, Helvetica, sans-serif; font-size:14px; color:#605d5d; padding-top:4px;">
 {{ item.title }}{% if item.date %} — {{ item.date }}{% endif %}
 </td>
 </tr>
@@ -164,9 +164,9 @@ ALSO THIS WEEK
 <td style="padding-top:10px;">
 <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
 <tr>
-<td bgcolor="#fdf3e4" class="wt-card-sponsor wt-border" style="background-color:#fdf3e4; border:1px solid #e6dcc8; border-radius:6px; padding:10px 14px;">
-<span class="wt-accent" style="font-family:Arial, Helvetica, sans-serif; font-size:11px; font-weight:bold; letter-spacing:0.5px; color:#96581f;">LOCAL RECOMMENDATION —</span>
-<a href="{{ block.sponsor.url }}" class="wt-ink" style="color:#2b2318; text-decoration:none; font-weight:bold; font-family:Arial, Helvetica, sans-serif; font-size:14px;">{{ block.sponsor.title }}</a>
+<td bgcolor="#fff2ef" class="wt-card-sponsor wt-border" style="background-color:#fff2ef; border:2px solid #ec3013; border-radius:0; padding:10px 14px;">
+<span class="wt-accent" style="font-family:Arial, Helvetica, sans-serif; font-size:11px; font-weight:bold; letter-spacing:0.5px; color:#ae1800;">LOCAL RECOMMENDATION —</span>
+<a href="{{ block.sponsor.url }}" class="wt-ink" style="color:#201e1d; text-decoration:none; font-weight:bold; font-family:Arial, Helvetica, sans-serif; font-size:14px;">{{ block.sponsor.title }}</a>
 </td>
 </tr>
 </table>
@@ -176,7 +176,7 @@ ALSO THIS WEEK
 
 <tr>
 <td style="padding-top:12px;">
-<a href="{{ block.region_url }}" class="wt-brand" style="color:#526b3f; text-decoration:none; font-weight:bold; font-family:Arial, Helvetica, sans-serif; font-size:13px;">See everything in {{ block.region_name }} &rarr;</a>
+<a href="{{ block.region_url }}" class="wt-brand" style="color:#ae1800; text-decoration:none; font-weight:bold; font-family:Arial, Helvetica, sans-serif; font-size:13px;">See everything in {{ block.region_name }} &rarr;</a>
 </td>
 </tr>
 
@@ -200,10 +200,10 @@ ALSO THIS WEEK
 <td style="padding-bottom:16px;">
 <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
 <tr>
-<td bgcolor="#f6efe1" class="wt-bg wt-border" style="background-color:#f6efe1; border:1px dashed #e6dcc8; border-radius:6px; padding:10px 14px;">
-<span class="wt-muted" style="font-family:Arial, Helvetica, sans-serif; font-size:11px; font-weight:bold; letter-spacing:0.5px; color:#766a58;">SPONSOR THIS SPOT —</span>
-<span class="wt-muted" style="font-family:Arial, Helvetica, sans-serif; font-size:13px; color:#766a58;">{{ house_ad.detail }}</span>
-{% if house_ad.url %} <a href="{{ house_ad.url }}" class="wt-brand" style="color:#526b3f; text-decoration:none; font-weight:bold; font-family:Arial, Helvetica, sans-serif; font-size:13px;">Learn more &rarr;</a>{% endif %}
+<td bgcolor="#f3f2f2" class="wt-bg wt-border" style="background-color:#f3f2f2; border:1px dashed #d7d3d3; border-radius:0; padding:10px 14px;">
+<span class="wt-muted" style="font-family:Arial, Helvetica, sans-serif; font-size:11px; font-weight:bold; letter-spacing:0.5px; color:#605d5d;">SPONSOR THIS SPOT —</span>
+<span class="wt-muted" style="font-family:Arial, Helvetica, sans-serif; font-size:13px; color:#605d5d;">{{ house_ad.detail }}</span>
+{% if house_ad.url %} <a href="{{ house_ad.url }}" class="wt-brand" style="color:#ae1800; text-decoration:none; font-weight:bold; font-family:Arial, Helvetica, sans-serif; font-size:13px;">Learn more &rarr;</a>{% endif %}
 </td>
 </tr>
 </table>
@@ -217,12 +217,12 @@ ALSO THIS WEEK
      inbox (item 93) - a quiet secondary line, not a competing button,
      per the item's own "one dominant CTA per screen" reasoning. -->
 <tr>
-<td align="center" class="wt-muted" style="padding:8px 8px 0 8px; font-family:Arial, Helvetica, sans-serif; font-size:12px; color:#766a58;">
+<td align="center" class="wt-muted" style="padding:8px 8px 0 8px; font-family:Arial, Helvetica, sans-serif; font-size:12px; color:#605d5d;">
 Know about something we missed? Hit reply — we read every one.
 </td>
 </tr>
 <tr>
-<td align="center" class="wt-muted" style="padding:8px 8px 8px 8px; font-family:Arial, Helvetica, sans-serif; font-size:12px; color:#766a58;">
+<td align="center" class="wt-muted" style="padding:8px 8px 8px 8px; font-family:Arial, Helvetica, sans-serif; font-size:12px; color:#605d5d;">
 Within Ten — local events within ten miles, pulled automatically from each village, library, and park district.
 </td>
 </tr>

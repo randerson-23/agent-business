@@ -2759,10 +2759,10 @@ def test_render_email_digest_body_type_meets_the_16px_mobile_floor():
     # The wordmark ("WITHIN TEN") deliberately stays at 13px - a brand
     # mark, not body copy - so this checks the specific event/sponsor
     # rows rather than asserting no 13px survives anywhere in the file.
-    assert 'font-size:16px; color:#2b2318; padding-bottom:2px;">\n<a href="https://x/1"' in html
-    assert "font-size:14px; color:#96581f;" in html  # event date
-    assert "font-size:14px; color:#766a58; padding-top:2px;" in html  # event detail
-    assert "font-size:16px; color:#2b2318;\">\n<a href=\"https://x/3\"" in html  # sponsor title link
+    assert 'font-size:16px; color:#201e1d; padding-bottom:2px;">\n<a href="https://x/1"' in html
+    assert "font-size:14px; color:#ae1800;" in html  # event date
+    assert "font-size:14px; color:#605d5d; padding-top:2px;" in html  # event detail
+    assert "font-size:16px; color:#201e1d;\">\n<a href=\"https://x/3\"" in html  # sponsor title link
     assert "Open since 1998." in html
 
 
