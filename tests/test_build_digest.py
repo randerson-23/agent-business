@@ -1714,6 +1714,19 @@ def test_filter_past_events_keeps_each_day_of_a_multi_day_series_independently()
     assert [e["title"] for e in filtered[0]["events"]] == ["Fest (Sun)", "Fest (Mon)"]
 
 
+def test_write_weekend_signal_writes_total_and_per_region_counts(tmp_path, monkeypatch):
+    path = tmp_path / "weekend_signal.json"
+    monkeypatch.setattr(build_digest, "WEEKEND_SIGNAL_PATH", path)
+    build_digest.write_weekend_signal(
+        {"mount-prospect-60056": 4, "palatine-60067": 0},
+        datetime(2026, 9, 21, 12, 0, tzinfo=timezone.utc),
+    )
+    written = json.loads(path.read_text(encoding="utf-8"))
+    assert written["total"] == 4
+    assert written["region_counts"] == {"mount-prospect-60056": 4, "palatine-60067": 0}
+    assert written["generated_at"] == "2026-09-21T12:00:00+00:00"
+
+
 def test_filter_free_items_merges_events_and_evergreen():
     blocks = [{"section": "A", "events": [{"title": "Fair", "tags": ["free"]}, {"title": "Gala", "tags": []}]}]
     evergreen = [{"title": "Library", "tags": ["free"]}, {"title": "Village Hall", "tags": []}]

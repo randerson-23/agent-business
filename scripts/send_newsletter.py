@@ -96,6 +96,17 @@ import yaml
 REPO_ROOT = Path(__file__).resolve().parent.parent
 DOCS_DIR = REPO_ROOT / "docs"
 SEND_HISTORY_PATH = REPO_ROOT / "data" / "send_history.json"
+# Written by build_digest.py's write_weekend_signal() (ROADMAP.md item 172).
+WEEKEND_SIGNAL_PATH = REPO_ROOT / "data" / "weekend_signal.json"
+# ROADMAP.md item 172: the fortieth research pass's own floor - "an issue
+# with fewer than roughly three dated events across all regions should not
+# send." Counted on a real build at the time: Arlington Heights had 5 dated
+# items total and Palatine 4, for towns of ~75,000/~69,000 people, which
+# pointed at broken sources rather than a genuinely quiet week. This can't
+# fix a broken source by itself; it exists so a thin week teaches nobody
+# to ignore the newsletter (item 155's argument for why the early sends
+# matter most) while that gets fixed.
+MIN_WEEKEND_EVENTS = 3
 # Modes that represent a real mail-out, as opposed to "draft" (created in
 # Buttondown but not sent to anyone until a human clicks send). Shared
 # with check_send_history.py, which only alarms on the absence of one of
@@ -346,6 +357,46 @@ def assert_build_is_fresh(build_time: datetime, now: datetime, max_age: timedelt
         )
 
 
+def read_weekend_event_count(region_id: str, path: Path = WEEKEND_SIGNAL_PATH) -> int:
+    """How many dated weekend events the just-finished build found for
+    `region_id` - the total across every region when `region_id` is the
+    COMBINED_REGION sentinel (what the combined issue actually mails),
+    one region's own count otherwise.
+
+    Missing or corrupt reads as 0, the same fail-loud-not-crash posture
+    read_build_timestamp() takes toward a missing feed.xml: a floor this
+    script can't evaluate should block a delivery mode, not skip the
+    check silently.
+    """
+    if not path.exists():
+        raise SendError(f"No {path} - run scripts/build_digest.py first")
+    try:
+        signal = json.loads(path.read_text(encoding="utf-8"))
+    except (json.JSONDecodeError, OSError) as exc:
+        raise SendError(f"Could not read {path}: {exc}")
+    if region_id == COMBINED_REGION:
+        return int(signal.get("total", 0))
+    return int(signal.get("region_counts", {}).get(region_id, 0))
+
+
+def assert_weekend_is_not_thin(count: int, region_id: str, min_events: int = MIN_WEEKEND_EVENTS) -> None:
+    """Refuse to mail an issue with fewer than `min_events` dated events
+    (ROADMAP.md item 172) - a thin issue teaches subscribers to ignore it
+    (item 155's argument for why the early sends matter most), and this
+    site's whole differentiation is freshness (items 162/163), not volume
+    padding. Skipping a week deliberately, if the owner wants that, is a
+    decision for a human, not this script - all this does is stop a thin
+    issue from going out mechanically.
+    """
+    if count < min_events:
+        raise SendError(
+            f"Only {count} dated event(s) for {region_id!r} this week (floor: {min_events}) - "
+            "refusing to mail a newsletter issue this thin. Check data/source_health.json for "
+            "a silently broken source, or use --force-thin if this week's thinness is real and "
+            "expected."
+        )
+
+
 def post_to_buttondown(
     subject: str, html: str, api_key: str, mode: str, *, now: datetime | None = None
 ) -> dict:
@@ -403,6 +454,13 @@ def main(argv: list[str] | None = None) -> int:
         help="Read and validate the built email, print what would be sent, "
         "and make no network call.",
     )
+    parser.add_argument(
+        "--force-thin",
+        action="store_true",
+        help="Send/schedule anyway even if this week's issue has fewer than "
+        f"{MIN_WEEKEND_EVENTS} dated events - use only when that thinness "
+        "is real and deliberate, not to silence a source that broke.",
+    )
     args = parser.parse_args(argv)
     logging.basicConfig(level=logging.INFO, format="%(message)s")
 
@@ -431,6 +489,22 @@ def main(argv: list[str] | None = None) -> int:
     except SendError as exc:
         logger.error("%s", exc)
         return 1
+
+    # ROADMAP.md item 172: only a real delivery mode is worth blocking - a
+    # thin draft is still useful to look at (it's how a human decides
+    # whether to skip the week), so this only guards send/schedule. Same
+    # posture as assert_build_is_fresh above: checked during --dry-run too,
+    # so the floor shows up in a validation run rather than only on the
+    # real attempt.
+    if cfg["mode"] in DELIVERY_MODES:
+        if args.force_thin:
+            logger.info("--force-thin set - skipping the minimum-dated-events check.")
+        else:
+            try:
+                assert_weekend_is_not_thin(read_weekend_event_count(cfg["region"]), cfg["region"])
+            except SendError as exc:
+                logger.error("%s", exc)
+                return 1
 
     # The banner comes first and names the outcome, not the setting. An
     # earlier version printed "Mode: send" directly above "Dry run - no
