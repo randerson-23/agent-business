@@ -217,36 +217,96 @@ doesn't re-suggest something already shipped.
 #### Needs Ryan
 
 Everything below blocks on one person taking a real action outside this
-repo — a DNS/dashboard toggle, a real email sent, a spend or naming
-decision only the owner can make. Grown well past "deliberately short"
-since the twenty-first pass's cleanup (2026-09-16): nine rows as of
-2026-09-20 (one closed same-day — see below), not because things are
-backing up unaddressed, but because
-each research pass since has kept finding new real, well-scoped actions
-faster than one owner can clear them in a sitting — a healthy backlog to
-have, not a stuck one. The four items the owner cleared on 2026-09-16
-(domain registration, HTTPS, Google Search Console, `contact_email`) are
-closed out and removed below rather than left as noise; new rows get
-removed the same way once acted on, not left to accumulate as
-false-urgency clutter.
+repo. **Restructured per item 165, 2026-09-21.** The flat list this
+section used to be had grown to ten rows, six of them real judgment
+calls, none acted on in a week — and item 165's finding was that
+presenting six roughly-equal-looking options is itself why nothing gets
+picked: a queue that size in front of someone with an hour a month
+functionally reads as no queue at all. The fix is the research loop's
+own job, not the owner's: rank the decisions and name **one** next
+action instead of handing back a list. Standing rule (also in the
+working agreements below): the research loop leaves at most three open
+owner *decisions* at a time, ranked, not appended to indefinitely.
 
-- **Register a domain** — `withintenmiles.com`, 2026-09-15 (items 39/46).
-- **Confirm HTTPS serves** — padlock confirmed by the owner 2026-09-16.
-  This sandbox could never check it: a TLS handshake from here returns
-  the egress proxy's block page, not GitHub's answer.
-- **Google Search Console** (item 73) — verified 2026-09-16 and
-  `sitemap.xml` submitted successfully. Worth recording *why* it first
-  failed, because the error was misleading: the DNS TXT record was
-  correct and live the whole time (confirmed by querying both
-  authoritative Cloudflare nameservers directly, `hal.ns` and
-  `sneh.ns`), and GSC's "Could not find your domain" referred to the
-  **property name**, not the record. The property had been created
-  against the wrong URL. Waiting for propagation would never have fixed
-  it. If a future verification fails, check the property string before
-  blaming DNS.
-- **`contact_email`** (item 57) — set to a personal Gmail at the owner's
-  explicit request, framed as "for now". The sponsor CTA is a prefilled
-  `mailto:` and the GitHub-issue fallback is gone.
+**Next action.** **Put a real name on the About page** (item 130) —
+currently "written and run by a local parent." Takes minutes, costs
+nothing, and is the one prerequisite the other two items below actually
+depend on: a reporter won't write about an anonymous site, a library
+won't link to one as readily, a business owner won't sponsor one. An
+anonymous automated local-events site also now pattern-matches to the
+200+ AI-generated "local news" sites shut down in August for invented
+bylines — the press pitch, sponsor conversations, and the "we're not
+one of those sites" claim (item 124) all sell the person, not just the
+product. A first name + last initial beats full anonymity by a wide
+margin if full disclosure isn't wanted. This is the owner's own privacy
+to trade, which is exactly why it's a decision and not a default.
+
+**After that, in order:**
+
+1. **Send the outreach emails** — six civic-source link-back emails
+   (item 152, `OUTREACH_TEMPLATES.md` §11, one per village/library/park
+   district across all four regions) plus the two already-drafted,
+   ready-to-send Mount Prospect emails (item 161, §12a/12b — send
+   Experience Mount Prospect first, let its reply inform Downtown Mount
+   Prospect's). No cost, repeatable, no deadline, and the most durable
+   result of anything in this section: item 131 verified 19/19 event
+   cards already link out to the publisher that posted the event, so
+   every issue already sends these organizations readers — a community-
+   links-page entry, once added, keeps working without further effort.
+2. **Send the local press pitch** to the **Daily Herald first** (item
+   125 found Journal & Topics runs a competing Event Calendar, so
+   Daily Herald is the first attempt, not the second; template in
+   `OUTREACH_TEMPLATES.md` §7). The single highest-yield action
+   available — 100-500 subscribers from one email (seventeenth pass) —
+   but one-shot, and item 155 argues it should follow gradual list
+   growth (item 1 above) rather than lead it, so a press-driven spike
+   lands on a domain with real sends behind it already. Every technical
+   dependency is cleared: domain, HTTPS, signup form, sponsor CTA,
+   Google's sitemap, and a proven live send all work.
+
+**Parked — real, but shouldn't compete with the two above:**
+- **Chamber of Commerce membership** (item 153) — a real backlink and a
+  prospect directory, but a recurring cost, and `BUSINESS_PLAN.md`
+  assumes zero spend.
+- **Illinois DBA / Fictitious Business Name filing** (item 154) — the
+  real blocker to Nextdoor's free Business Page, per that item's own
+  investigation. $50 plus a three-week newspaper-publication
+  requirement — a real cost and multi-week timeline, not a quick
+  decision.
+- **Meta geo-targeted ads** (item 78) — a bounded, low-cost test in
+  principle, but a spend decision `BUSINESS_PLAN.md` doesn't assume,
+  parked alongside the other two money questions rather than competing
+  with the two free, no-deadline actions above.
+
+**Small, no-decision-required — do whenever convenient, no ranking
+needed because none of these compete with anything above:**
+- Run a real trademark search before spending on signage, print, or
+  sponsor contracts (item 69) — "Within Ten"/"WithinTen" turned up no
+  registered mark by web search, materially cleaner than the rejected
+  "PORCHLIGHT" name, but a web search isn't a clearance search.
+- Check **Settings → Subscribing → Welcome** in Buttondown's dashboard
+  and enable one welcome email if free-plan-available (item 106) —
+  welcome emails average 34.79% opens, up to 4× a regular issue's; the
+  cost question (is the one-off transactional toggle free, distinct
+  from the confirmed-$29/month automations feature) can only be
+  answered inside the account.
+- Send the newsletter cross-recommendation email to Northwest Neighbor
+  (item 25, `OUTREACH_TEMPLATES.md` §10) — a free weekly newsletter
+  covering overlapping northwest suburbs, complementary rather than
+  competing; publishers who recommend others are 32× more likely to be
+  recommended back.
+- Enable Cloudflare's free DMARC Management (item 156; Postmark's free
+  digest is the named fallback) — the owner currently gets zero
+  deliverability reporting; a dashboard toggle, not a hand-written DNS
+  record, best done before item 77's press-driven volume spike.
+
+**Time-boxed, not a decision:** check Buttondown's dashboard on
+2026-09-23 (send-newsletter.yml's cron fires ~5:37pm Chicago Wednesday
+the night before) to confirm item 110's `schedule` mode actually
+worked — item 151 fixed a real `publish_date` format mismatch against
+Buttondown's documented API shape, so this is now docs-verified but
+still not live-API-verified; a failed run surfaces loudly by design, so
+check either way.
 
 **Closed since the last check:** `BUTTONDOWN_API_KEY` — the owner added
 it, and it works. Real evidence, checked directly against GitHub
@@ -269,19 +329,6 @@ succeeded, and the resulting PR (#200) had a clean, correctly-formed
 Closed #200 without merging (test content) and #199 with the
 confirmation. The community event-submission feature now works
 end-to-end for the first time since it shipped in PR #31.
-
-| Action | One line why | Unblocks |
-|---|---|---|
-| **Send the local press pitch** to the **Daily Herald first** (item 125 found Journal & Topics runs its own competing Event Calendar, so it's the second attempt, not the first; template reordered in `OUTREACH_TEMPLATES.md` §7) | **The single highest-yield action available, by a wide margin, and now the only thing standing between a working site and an audience.** A local-media mention is worth 100-500 subscribers in a day (seventeenth pass); nothing else here is close for one email's effort. Every dependency it ever had is now cleared: the domain resolves, HTTPS serves, the signup form is live, the sponsor CTA works, Google has the sitemap, and the automated send is now proven end-to-end with a real successful live send (see above) - a reporter who signs up gets a real, working weekly email, not a hypothetical one. The email needs picking a real reporter and hitting send. | 100-500 real subscribers from one email |
-| Run a real trademark search before spending money on the domain, signage, print, or sponsor contracts (item 69) | **Reduced, not eliminated, by the pivot to "Within Ten".** The name was changed *because* WebSearch found "PORCHLIGHT" is a registered mark (reg. 6028585) held by a company that publishes a newsletter to ~60,000 readers. "Within Ten"/"WithinTen" turned up **no registered mark** - materially cleaner. But a web search is not a clearance search: it misses common-law use, similar-sounding marks and state registrations. Worth its small cost before money is committed, not after. | Spending safely on signage, print, sponsor contracts |
-| **Check Settings → Subscribing → Welcome** in Buttondown's dashboard, and write/enable one welcome email there if it's free-plan-available (item 106) | One-time, no-code, and the highest-open message this business will ever send (welcome emails average 34.79% opens, up to 4x a regular issue's) — but it needs a human in Buttondown's dashboard; there is no API surface for it to build against from here. WebSearch narrowed but didn't fully resolve the cost question: Buttondown's paid "automations"/welcome-*sequence* feature is confirmed $29/month and **not what this needs** — the one-off welcome email is a separate, simpler *transactional* email toggle, and whether that specific toggle is free-plan-available couldn't be confirmed from outside the account. Check that one setting before assuming either "it's free" or "it needs the $29/month upgrade." Write **one** good welcome email if it's there, not an e-commerce-style three-part drip. | The highest-engagement touchpoint currently going unsent |
-| **Check Buttondown's dashboard on 2026-09-23** (send-newsletter.yml's cron is `37 22 * * 3` — ~5:37pm Chicago Wednesday the night before) to confirm item 110's `schedule` mode actually worked | This is the one thing this sandbox genuinely cannot verify end-to-end. Update since this row was first written: item 151 found and fixed a real mismatch between `publish_date`'s format and Buttondown's own documented API shape (it was sending an America/Chicago-offset string; their docs show a `Z`-suffixed UTC one) — so this is now a **docs-verified** guess, not the original unverified one, but it is still not a **live-API-verified** one; no request has actually been sent with the corrected shape yet. If it's still wrong, the job fails loudly (surfaced-verbatim by design) rather than silently mis-scheduling, so a failed run is itself informative; check either way, since a genuine several-hours-early margin to fix it is the entire point of moving the cron off Thursday morning. | Confirms the researched Thursday-07:00-Central slot is actually being honored, not just believed to be |
-| **Send the newsletter cross-recommendation email** to Northwest Neighbor (item 25, template drafted in `OUTREACH_TEMPLATES.md` §10) | A real, WebSearch-confirmed candidate: a free weekly newsletter covering the same northwest suburbs (Arlington Heights overlaps directly), different send day (Tuesday vs. Thursday) and a different angle (neighborhood lifestyle/openings vs. structured event aggregation) — complementary, not competing. Publishers who recommend others are 32× more likely to be recommended back. Who runs it wasn't findable by search, so the email opens with a question rather than a name — needs a human to send it and follow the reply. | A reciprocal-recommendation relationship with an overlapping, non-competing local audience |
-| **Send the civic-source link-back emails** — one each to the village/city site, public library, and park district in each region (item 152, template drafted in `OUTREACH_TEMPLATES.md` §11; full source list is each region's own `sources:` in `config/regions/*.yaml`) | The strongest local backlinks available, and a demonstrable, reciprocal ask rather than a favor: item 131 verified 19/19 event cards already link out to the publisher that posted the event, so every issue already sends these same organizations readers. Six-plus organizations across four towns, each a separate email (send one at a time, not a batch blast) — no cost, no deadline, and a "no" from any one costs nothing. | 5-10 quality local `.gov`/`.org` backlinks — the research says this beats 50 directory listings |
-| **Send the Experience Mount Prospect email, then (informed by its outcome) Downtown Mount Prospect's** — both drafted and ready to send in `OUTREACH_TEMPLATES.md` §12a/12b (item 161) | Both are simultaneously a blocked/broken source *and* a link-back candidate. Experience Mount Prospect 403s this site's fetcher and ranks for the exact head term ("things to do in Mount Prospect") item 158's page now answers — a single reply could fix the block, add a `.org` backlink, and open a relationship with the Village's own tourism arm at once. Downtown Mount Prospect's `/events/` returns 200 with 0 items (JS-rendered list, diagnosed 2026-09-15) — same three-part ask, different org (the Downtown Merchants, not the Village). Send Experience Mount Prospect first; its reply should inform, not just get copied into, the second email. | A working feed from each source (currently silent or blocked), plus two more local backlinks |
-| **Decide whether to put a real name on the About page** (item 130) — currently "written and run by a local parent" | An anonymous automated local-events site now pattern-matches to the 200+ AI-generated "local news" sites shut down in August for invented bylines. The press pitch, sponsor conversations, and the "we're not one of those sites" claim (item 124) all sell the person, not just the product — but this trades the owner's own privacy for credibility, which is his call. A first name + last initial beats full anonymity by a wide margin if full disclosure isn't wanted. | Makes the press pitch (item 77/125) and sponsor conversations (items 118/119) sellable on a real person, not an anonymous automation |
-| **Enable Cloudflare's free DMARC Management** — Cloudflare dashboard → Email → DMARC Management (item 156; Postmark's free `dmarc.postmarkapp.com` digest is the named fallback if this doesn't fit) | The owner currently receives zero DMARC deliverability reporting — every aggregate report about this domain goes to Buttondown's own collector, invisible here. `withintenmiles.com` is already on Cloudflare DNS, so this is a dashboard toggle, not a hand-written DNS record: Cloudflare adds its own `rua` destination and renders a readable report dashboard for free, preserving the existing Buttondown destination alongside it by design. One honest caveat found by search, not glossed over: at least one real Cloudflare Community report describes this feature altering an existing DMARC record unexpectedly — worth checking `_dmarc.withintenmiles.com` after enabling to confirm Buttondown's destination is still there. Most useful **before** item 77's press-driven volume spike, not after. | Real visibility into deliverability problems, especially during the first weeks after a volume spike (item 155) |
-| **Decide whether to file an Illinois DBA / Fictitious Business Name Statement** (item 154's Nextdoor investigation found this is the real blocker, not a storefront requirement) — Cook County's fee is $50 plus a three-consecutive-week newspaper publication requirement starting within 15 days of filing | Nextdoor's verified Business Page (two free posts/month) needs one of a specific list of official business documents this repo has no evidence "Within Ten" holds — `SPONSOR_KIT.md` names Venmo/Zelle/check, an individual's payment methods, not a business's. Not ineligible on principle the way item 143's Google Business Profile was — just not currently paperwork-qualified. A real cost and a real multi-week timeline, and the first step toward sponsor payments through anything other than Ryan's personal accounts too, so this is bigger than a Nextdoor decision alone. | Unlocks Nextdoor's free local-business posts, and separately, non-personal sponsor payment handling |
 
 **Nearly done, no longer blocking:** Buttondown's sending domain (item
 47). The owner added `withintenmiles.com` and its managed-delegation NS
@@ -7687,6 +7734,21 @@ queue at all.
      unbounded because the build loop has unbounded hours; owner items
      are bounded because the owner does not.
 
+     🟢 **Shipped, 2026-09-21.** The "Needs Ryan" section now leads with
+     one named **Next action** (item 130, exactly as ranked here), an
+     **After that** list of two (152+161 folded together, then 77),
+     and an explicit **Parked** list (153, 154, 78) with a one-line why
+     each — real, not deleted, just visibly deprioritized. The smaller
+     no-decision items (69, 106, 25, 156) got their own
+     no-ranking-needed group rather than competing with the three real
+     decisions above, and the time-boxed Sept-23 check stayed separate
+     since it isn't a decision at all. The standing rule is now in
+     "Working agreements for autonomous iteration," worded as "at most
+     three open owner *decisions*" to match how this restructuring
+     actually counts them (the small housekeeping items and the
+     time-boxed check don't count against the cap, matching this
+     item's own reasoning that they don't compete for attention).
+
 #### P2 (new)
 
 166. **Wheeling is the next region, and the numbers are not close.**
@@ -7851,3 +7913,15 @@ queue at all.
   confirmed via the real GitHub Actions run for the previous PR
   (`35530681553`) that CI's own Lighthouse assertions passed for real
   against the expanded 7-URL set, not just in this sandbox's local run.
+- **The research loop leaves at most three open owner decisions at a
+  time (item 165).** A six-item "Needs Ryan" queue, none of it acted on
+  in a week, is itself the finding — presenting equal-looking options
+  invites nothing getting picked, and `BUSINESS_PLAN.md`'s founding
+  constraint ("near-zero ongoing weekly time") means the owner's
+  attention is the actual bottleneck, not this loop's output rate.
+  Ranking and naming **one** next action is the research loop's job,
+  not the owner's — see the "Needs Ryan" section's own "Next action" /
+  "After that" / "Parked" structure for the current example. Past
+  three real decisions, a new one gets ranked against the existing
+  three and either displaces a parked one or waits, rather than being
+  appended as a fourth live option.
