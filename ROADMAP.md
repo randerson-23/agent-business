@@ -7782,6 +7782,41 @@ queue at all.
      138's lesson applies — include a school district from the start
      rather than discovering the gap later.
 
+     🟢 **Shipped, 2026-09-21.** `config/regions/wheeling-60090.yaml`
+     added — Village of Wheeling, Indian Trails Public Library District,
+     Wheeling Park District, Wheeling CCSD 21, and a Township High
+     School District 214 (Wheeling High School) athletics link, plus
+     `evergreen`/`guides` content (fall-family-guide,
+     birthday-parties-and-kids-classes, new-to-town) built from real,
+     WebSearch-sourced civic facts (utility billing, library-card
+     registration, Park District residency verification), same
+     civic-source-only discipline as the other four regions. No
+     confirmed live source counts yet — this sandbox's network can't
+     fetch these sites directly, so (like every region's first pass)
+     that awaits the next real GitHub Actions build. Item 138's lesson
+     applied from the start: the school district is in this region's
+     first commit, not a later gap-fill. Verified end-to-end against a
+     real local build: the region generates every page type including
+     item 158's `/things-to-do/` page (12 items, seeded automatically
+     from its own evergreen/guides content with zero extra code), and
+     `build_nearby_regions()`/`build_region_map()` both generalized to
+     5 regions with no code change - confirmed the "within ten miles"
+     premise actually holds for a real visitor here too: Wheeling's
+     three nearest neighbors compute to 3.9/4.0/5.9 miles. Coordinates
+     are a Wikipedia-cited town-center point, not a geocoded Village
+     Hall address (no geocoding access from this sandbox) - said so in
+     the config's own comment rather than implying false precision.
+     Found and fixed a real test gap along the way:
+     `test_every_region_tagline_names_at_least_two_real_venues` has a
+     per-region expected-venues dict that doesn't auto-discover new
+     regions, so it correctly failed with a `KeyError` until Wheeling's
+     entry (Heritage Park, Chicago Executive Airport) was added - a
+     genuine test working exactly as designed, not a bug in the test.
+     417 tests pass (was 417 before too - one region added, one
+     dict entry added to keep the same test passing for the same
+     reason). Item 167's Spanish-language question and income-figure
+     reconciliation are separate, deliberately not bundled in here.
+
 #### P3 (new)
 
 167. **Two numbers worth getting right before they end up in a pitch.**

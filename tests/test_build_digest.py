@@ -3151,6 +3151,7 @@ _EXPECTED_TAGLINE_VENUES = {
     "arlington-heights-60005": ["Harmony Park", "Lake Arlington"],
     "des-plaines-60016": ["Lake Park", "Public Library"],
     "palatine-60067": ["Downtown Palatine", "Train Station"],
+    "wheeling-60090": ["Heritage Park", "Chicago Executive Airport"],
 }
 
 
