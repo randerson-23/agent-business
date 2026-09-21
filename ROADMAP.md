@@ -7817,6 +7817,32 @@ queue at all.
      reason). Item 167's Spanish-language question and income-figure
      reconciliation are separate, deliberately not bundled in here.
 
+     🟢 **First real build checked, 2026-09-21 (same day, next hourly
+     firing).** Real GitHub Actions run `35549497769` gave this
+     region's actual first live test, and the header comment above is
+     now rewritten with the confirmed results rather than the original
+     "none of this is confirmed yet" caveat: the **Village of Wheeling
+     source worked on the first real try** (4 items, the guessed
+     `Calendar.aspx` html_events page) - the second time in this repo a
+     search-found *page* rather than a search-found *feed URL* has
+     worked first try (School District 57's history in the Mount
+     Prospect config is the first). Both **Wheeling Park District and
+     Wheeling CCSD 21 came back a real 403 Forbidden** - the Park
+     District's pattern-matched Tribe Events ICS URL didn't hold, and
+     the school district's calendars page is blocked outright. Indian
+     Trails Public Library hit a genuine 15-second connect timeout,
+     a softer and more ambiguous signal than either outcome above -
+     worth a second look once there's a live-fetch-capable environment
+     to find that library's own libnet.info feed URL, rather than
+     assuming the timeout means the page is unreachable. Each source's
+     own block in the config now carries a one-line confirmed/broken/
+     unconfirmed note, matching every other region's per-source
+     annotation convention. No second guess attempted this pass for
+     the two 403s - a 403 (unlike a 404) doesn't distinguish "wrong
+     plugin" from "blocked like Mount Prospect's Village site," and
+     guessing again without a stronger signal would carry the same risk
+     as the first guess.
+
 #### P3 (new)
 
 167. **Two numbers worth getting right before they end up in a pitch.**
