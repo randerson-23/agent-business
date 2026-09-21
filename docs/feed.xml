@@ -4,7 +4,7 @@
   <title>Within Ten — Upcoming Local Events</title>
   <link>https://withintenmiles.com/</link>
   <description>Upcoming events across every Within Ten region, soonest first - aggregated automatically from village, library, park district and school-district calendars.</description>
-  <lastBuildDate>Mon, 21 Sep 2026 15:08:00 +0000</lastBuildDate>
+  <lastBuildDate>Mon, 21 Sep 2026 19:13:43 +0000</lastBuildDate>
   <item>
     <title>Mount Prospect: Family Storytime</title>
     <link>https://mppl.libnet.info/event/16290481</link>
@@ -44,6 +44,20 @@
     <description>Monday, September 21 2026 11:00am - 11:30am 
  Ever wonder what happens after your library materials go through the return slot? Get a behind-the-scenes look…</description>
     <pubDate>Mon, 21 Sep 2026 11:00:00 +0000</pubDate>
+  </item>
+  <item>
+    <title>Arlington Heights: Arlington Heights Park Foundation Golf Classic</title>
+    <link>https://www.ahpd.org/event/arlington-heights-park-foundation-golf-classic/</link>
+    <guid isPermaLink="true">https://www.ahpd.org/event/arlington-heights-park-foundation-golf-classic/</guid>
+    <description>The Arlington Heights Park Foundation welcomes all golfers to join us at Arlington Lakes Golf Club! Join us for a four-person scramble competition for a good…</description>
+    <pubDate>Thu, 24 Sep 2026 09:00:00 +0000</pubDate>
+  </item>
+  <item>
+    <title>Arlington Heights: Speakeasy at the Museum</title>
+    <link>https://www.ahpd.org/event/speakeasy-at-the-museum/</link>
+    <guid isPermaLink="true">https://www.ahpd.org/event/speakeasy-at-the-museum/</guid>
+    <description>Step back in time to the Roaring Twenties at our exclusive Speakeasy Night! Enjoy two Prohibition Era themed cocktails (alcohol and non-alcohol options…</description>
+    <pubDate>Fri, 25 Sep 2026 19:00:00 +0000</pubDate>
   </item>
   <item>
     <title>Mount Prospect: Fall Frenzy</title>
@@ -88,6 +102,13 @@
     <pubDate>Sun, 04 Oct 2026 08:00:00 +0000</pubDate>
   </item>
   <item>
+    <title>Arlington Heights: Community Input Meeting - Carefree Park</title>
+    <link>https://www.ahpd.org/event/community-input-meeting-carefree-park/</link>
+    <guid isPermaLink="true">https://www.ahpd.org/event/community-input-meeting-carefree-park/</guid>
+    <description>Help shape the future of Carefree Park! Join us for a community input meeting where residents can share their feedback and vote on their favorite playground…</description>
+    <pubDate>Tue, 06 Oct 2026 17:30:00 +0000</pubDate>
+  </item>
+  <item>
     <title>Mount Prospect: Fishing Derby</title>
     <link>https://www.mppd.org/event/fishing-derby-4/</link>
     <guid isPermaLink="true">https://www.mppd.org/event/fishing-derby-4/</guid>
@@ -102,11 +123,32 @@
     <pubDate>Sat, 10 Oct 2026 09:30:00 +0000</pubDate>
   </item>
   <item>
+    <title>Arlington Heights: Autumn Harvest</title>
+    <link>https://www.ahpd.org/event/autumn-harvest-2026/</link>
+    <guid isPermaLink="true">https://www.ahpd.org/event/autumn-harvest-2026/</guid>
+    <description>Don’t miss fall family fun with crafts, games, hayrides, a scarecrow building contest, live music and entertainment, and food available for purchase from…</description>
+    <pubDate>Sat, 10 Oct 2026 11:00:00 +0000</pubDate>
+  </item>
+  <item>
     <title>Mount Prospect: Mount Prospect Farmers Market</title>
     <link>https://mplions.org/event/farmers-market/</link>
     <guid isPermaLink="false">https://mplions.org/event/farmers-market/#2026-10-11T08:00:00</guid>
     <description>Local produce and vendors, organized by the Mount Prospect Lions Club, rain or shine. West Metra commuter lot, Northwest Hwy &amp; Main St (Rte 83).</description>
     <pubDate>Sun, 11 Oct 2026 08:00:00 +0000</pubDate>
+  </item>
+  <item>
+    <title>Arlington Heights: AHPD Senior Art Show</title>
+    <link>https://www.ahpd.org/event/ahpd-senior-art-show/</link>
+    <guid isPermaLink="true">https://www.ahpd.org/event/ahpd-senior-art-show/</guid>
+    <description>Take in an evening of art and enjoyment! Peruse AHPD adult students’ creations at the annual Art Show. Visual art, fiber arts and woodcraft will be on display…</description>
+    <pubDate>Wed, 14 Oct 2026 16:00:00 +0000</pubDate>
+  </item>
+  <item>
+    <title>Arlington Heights: Oddities Night</title>
+    <link>https://www.ahpd.org/event/oddities-night/</link>
+    <guid isPermaLink="true">https://www.ahpd.org/event/oddities-night/</guid>
+    <description>Step into the strange and mysterious at Oddities Night! Explore unusual objects from local museum collections, enjoy treats and themed drinks and experience a…</description>
+    <pubDate>Fri, 16 Oct 2026 19:00:00 +0000</pubDate>
   </item>
   <item>
     <title>Mount Prospect: Mount Prospect Farmers Market</title>
