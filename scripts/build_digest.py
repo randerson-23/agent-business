@@ -2374,6 +2374,78 @@ def filter_past_events(blocks: list[dict], today: date) -> list[dict]:
     return filtered
 
 
+def dedupe_events(blocks: list[dict]) -> list[dict]:
+    """Collapse near-duplicate dated items across every source in a
+    region's build (ROADMAP.md item 173) - e.g. a village feed and a
+    downtown-merchants feed both announcing the same Oktoberfest, which
+    the fortieth research pass found live: "Palatine Oktoberfest
+    (Friday)" and "Tween LitCrate Sign Up" each appeared twice on the
+    same page with the same date.
+
+    Reuses `_is_near_duplicate_title` (item 86's subject-line matching)
+    rather than a fresh comparison, on the grounds the research pass
+    named explicitly: it already answers "do these read as the same
+    thing" and a second answer would just be a second place for that
+    logic to drift out of sync. Two events count as duplicates only when
+    they also fall on the same calendar day - same-titled recurring
+    events on different days (e.g. "Every Sunday...") are a completely
+    normal, non-duplicate case this must not collapse. Undated items
+    (no date_iso) are never compared here at all - "same day" has no
+    meaning for them, and evergreen/guide entries never reach this
+    function in the first place (they're separate lists).
+
+    When a duplicate group is found, keeps the entry with a detail line
+    and a working URL over one with neither (a bare village RSS stub
+    duplicating a fuller downtown-merchants listing, say), so collapsing
+    duplicates makes the surviving card better rather than picking
+    whichever happened to be fetched first. Ties keep the earliest
+    occurrence, for a deterministic, order-stable result across builds.
+    """
+    flat = [
+        (block_idx, event_idx, event)
+        for block_idx, block in enumerate(blocks)
+        for event_idx, event in enumerate(block["events"])
+    ]
+
+    def event_day(event: dict) -> date | None:
+        iso = event.get("date_iso")
+        if not iso:
+            return None
+        try:
+            return datetime.fromisoformat(iso).date()
+        except ValueError:
+            return None
+
+    groups: list[list[int]] = []
+    for i, (_, _, event) in enumerate(flat):
+        day = event_day(event)
+        if day is None:
+            continue
+        for group in groups:
+            leader = flat[group[0]][2]
+            if event_day(leader) == day and _is_near_duplicate_title(leader["title"], event["title"]):
+                group.append(i)
+                break
+        else:
+            groups.append([i])
+
+    drop: set[tuple[int, int]] = set()
+    for group in groups:
+        if len(group) < 2:
+            continue
+        best = max(group, key=lambda i: (bool(flat[i][2].get("detail")), bool(flat[i][2].get("url"))))
+        for i in group:
+            if i != best:
+                block_idx, event_idx, _ = flat[i]
+                drop.add((block_idx, event_idx))
+
+    filtered = []
+    for block_idx, block in enumerate(blocks):
+        events = [e for event_idx, e in enumerate(block["events"]) if (block_idx, event_idx) not in drop]
+        filtered.append({**block, "events": events})
+    return filtered
+
+
 def filter_free_items(blocks: list[dict], evergreen: list[dict]) -> list[dict]:
     """Every fetched event and evergreen entry tagged 'free', regardless
     of whether it has a resolved date - unlike the weekend/today views,
@@ -2463,6 +2535,12 @@ def main() -> None:
         # filtering here once is what keeps them all honest instead of
         # re-filtering (or forgetting to) in each one separately.
         blocks = filter_past_events(blocks, local_today)
+        # ROADMAP.md item 173: same single-insertion-point reasoning as
+        # item 171's filter above - collapsing duplicates here, before
+        # anything downstream reads blocks, means the main region page,
+        # the RSS feed, calendar.ics, and every date-scoped view all see
+        # the same deduped list instead of needing their own pass.
+        blocks = dedupe_events(blocks)
         feed_items += [
             {**e, "region_name": region["name"]}
             for b in blocks

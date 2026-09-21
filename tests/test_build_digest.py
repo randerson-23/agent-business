@@ -1727,6 +1727,97 @@ def test_write_weekend_signal_writes_total_and_per_region_counts(tmp_path, monke
     assert written["generated_at"] == "2026-09-21T12:00:00+00:00"
 
 
+def test_dedupe_events_collapses_same_day_near_duplicate_titles_across_sources():
+    # ROADMAP.md item 173: exactly the live-build pair the fortieth pass
+    # found - one source's bare title, another's fuller one, same day.
+    blocks = [
+        {
+            "section": "Village Feed",
+            "events": [
+                {"title": "Palatine Oktoberfest", "date_iso": "2026-09-25T18:00:00", "detail": "", "url": ""},
+            ],
+        },
+        {
+            "section": "Downtown Merchants",
+            "events": [
+                {
+                    "title": "Palatine Oktoberfest (Friday)",
+                    "date_iso": "2026-09-25T18:00:00",
+                    "detail": "German beer, food & music.",
+                    "url": "https://palatinerotary.org/Oktoberfest.php",
+                },
+            ],
+        },
+    ]
+    deduped = build_digest.dedupe_events(blocks)
+    all_events = [e for b in deduped for e in b["events"]]
+    assert len(all_events) == 1
+    # The fuller entry (has both detail and url) survives, not whichever
+    # source happened to be fetched first.
+    assert all_events[0]["title"] == "Palatine Oktoberfest (Friday)"
+
+
+def test_dedupe_events_keeps_same_titled_events_on_different_days():
+    # A weekly-recurring farmers market named identically on two
+    # different Sundays is not a duplicate - only same-day collisions
+    # should ever collapse.
+    blocks = [
+        {
+            "section": "Annual Events",
+            "events": [
+                {"title": "Farmers Market", "date_iso": "2026-09-21T09:00:00", "detail": "", "url": ""},
+                {"title": "Farmers Market", "date_iso": "2026-09-28T09:00:00", "detail": "", "url": ""},
+            ],
+        }
+    ]
+    deduped = build_digest.dedupe_events(blocks)
+    assert len(deduped[0]["events"]) == 2
+
+
+def test_dedupe_events_leaves_distinct_titles_on_the_same_day_alone():
+    blocks = [
+        {
+            "section": "A",
+            "events": [
+                {"title": "Fall Fest", "date_iso": "2026-09-25T18:00:00", "detail": "", "url": ""},
+                {"title": "Library Story Time", "date_iso": "2026-09-25T10:00:00", "detail": "", "url": ""},
+            ],
+        }
+    ]
+    deduped = build_digest.dedupe_events(blocks)
+    assert len(deduped[0]["events"]) == 2
+
+
+def test_dedupe_events_ignores_undated_items():
+    blocks = [
+        {
+            "section": "A",
+            "events": [
+                {"title": "Same Undated Thing", "date_iso": None, "detail": "", "url": ""},
+                {"title": "Same Undated Thing", "date_iso": None, "detail": "", "url": ""},
+            ],
+        }
+    ]
+    deduped = build_digest.dedupe_events(blocks)
+    assert len(deduped[0]["events"]) == 2
+
+
+def test_dedupe_events_breaks_ties_by_keeping_the_earliest_occurrence():
+    blocks = [
+        {
+            "section": "A",
+            "events": [
+                {"title": "Oktoberfest", "date_iso": "2026-09-25T18:00:00", "detail": "", "url": ""},
+                {"title": "Palatine Oktoberfest", "date_iso": "2026-09-25T18:00:00", "detail": "", "url": ""},
+            ],
+        }
+    ]
+    deduped = build_digest.dedupe_events(blocks)
+    all_events = [e for b in deduped for e in b["events"]]
+    assert len(all_events) == 1
+    assert all_events[0]["title"] == "Oktoberfest"
+
+
 def test_filter_free_items_merges_events_and_evergreen():
     blocks = [{"section": "A", "events": [{"title": "Fair", "tags": ["free"]}, {"title": "Gala", "tags": []}]}]
     evergreen = [{"title": "Library", "tags": ["free"]}, {"title": "Village Hall", "tags": []}]
