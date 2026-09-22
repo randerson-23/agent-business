@@ -4,7 +4,7 @@
   <title>Within Ten — Upcoming Local Events</title>
   <link>https://withintenmiles.com/</link>
   <description>Upcoming events across every Within Ten region, soonest first - aggregated automatically from village, library, park district and school-district calendars.</description>
-  <lastBuildDate>Tue, 22 Sep 2026 01:01:36 +0000</lastBuildDate>
+  <lastBuildDate>Tue, 22 Sep 2026 01:33:52 +0000</lastBuildDate>
   <item>
     <title>Arlington Heights: Kids' Time</title>
     <link>https://www.ahml.info/scheduling/reservation/224204</link>
@@ -117,6 +117,13 @@ A virtual…</description>
     <pubDate>Wed, 23 Sep 2026 18:00:00 +0000</pubDate>
   </item>
   <item>
+    <title>Arlington Heights: Arlington Heights Park Foundation Golf Classic</title>
+    <link>https://www.ahpd.org/event/arlington-heights-park-foundation-golf-classic/</link>
+    <guid isPermaLink="true">https://www.ahpd.org/event/arlington-heights-park-foundation-golf-classic/</guid>
+    <description>The Arlington Heights Park Foundation welcomes all golfers to join us at Arlington Lakes Golf Club! Join us for a four-person scramble competition for a good…</description>
+    <pubDate>Thu, 24 Sep 2026 09:00:00 +0000</pubDate>
+  </item>
+  <item>
     <title>Mount Prospect: Baby Storytime</title>
     <link>https://mppl.libnet.info/event/16291123</link>
     <guid isPermaLink="true">https://mppl.libnet.info/event/16291123</guid>
@@ -203,6 +210,20 @@ A virtual…</description>
     <description>Friday, September 25 2026 5:00pm - 6:30pm 
  Bring your friends and stop by South Branch to play Mario Kart on our Nintendo Switch!</description>
     <pubDate>Fri, 25 Sep 2026 17:00:00 +0000</pubDate>
+  </item>
+  <item>
+    <title>Arlington Heights: Speakeasy at the Museum</title>
+    <link>https://www.ahpd.org/event/speakeasy-at-the-museum/</link>
+    <guid isPermaLink="true">https://www.ahpd.org/event/speakeasy-at-the-museum/</guid>
+    <description>Step back in time to the Roaring Twenties at our exclusive Speakeasy Night! Enjoy two Prohibition Era themed cocktails (alcohol and non-alcohol options…</description>
+    <pubDate>Fri, 25 Sep 2026 19:00:00 +0000</pubDate>
+  </item>
+  <item>
+    <title>Mount Prospect: Fall Frenzy</title>
+    <link>https://www.mppd.org/event/fall-frenzy/</link>
+    <guid isPermaLink="true">https://www.mppd.org/event/fall-frenzy/</guid>
+    <description>Fall Frenzy (Ages 5-10) Celebrate the beauty of the changing season with a burst of creativity! Join us in the Studio for this “Fall Frenzy” workshop, where…</description>
+    <pubDate>Sat, 26 Sep 2026 09:30:00 +0000</pubDate>
   </item>
   <item>
     <title>Mount Prospect: Potty Palooza</title>
@@ -377,30 +398,6 @@ A virtual…</description>
     <guid isPermaLink="true">https://downtownarlingtonheights.us/events/harmony-fest-taste-of-arlington-heights-2026</guid>
     <description>Free live concerts in Harmony Park plus food &amp; drink from local restaurants. 5–11pm, Downtown Arlington Heights.</description>
     <pubDate>Fri, 02 Oct 2026 00:00:00 +0000</pubDate>
-  </item>
-  <item>
-    <title>Mount Prospect: World Language Storytime: Filipino</title>
-    <link>https://mppl.libnet.info/event/16521837</link>
-    <guid isPermaLink="true">https://mppl.libnet.info/event/16521837</guid>
-    <description>Friday, October 02 2026 10:00am - 10:30am 
- Mabuhay! Join us for an interactive, bilingual storytime with stories, songs, rhymes, and activities that…</description>
-    <pubDate>Fri, 02 Oct 2026 10:00:00 +0000</pubDate>
-  </item>
-  <item>
-    <title>Mount Prospect: Teen Book Café</title>
-    <link>https://mppl.libnet.info/event/14685926</link>
-    <guid isPermaLink="true">https://mppl.libnet.info/event/14685926</guid>
-    <description>Friday, October 02 2026 4:30pm - 6:00pm 
- Love books? Come hang out with us at Khepri Kitchen + Coffee, 106 S. Emerson St. We'll talk about new books,…</description>
-    <pubDate>Fri, 02 Oct 2026 16:30:00 +0000</pubDate>
-  </item>
-  <item>
-    <title>Mount Prospect: LEGO Mania</title>
-    <link>https://mppl.libnet.info/event/16749784</link>
-    <guid isPermaLink="true">https://mppl.libnet.info/event/16749784</guid>
-    <description>Friday, October 02 2026 5:00pm - 6:00pm 
- Create a never-before-seen masterpiece using our large collection of LEGO bricks! At the end of the program, we will…</description>
-    <pubDate>Fri, 02 Oct 2026 17:00:00 +0000</pubDate>
   </item>
 </channel>
 </rss>
