@@ -10327,6 +10327,32 @@ mechanism, and it is the third possibility neither option covered.**
      Nothing here blocks on the owner except step 3, which is already
      queued.
 
+     🟢 **Step 1 shipped, 2026-09-22.** `scripts/fetchers.py`'s single
+     shared `_get()` (used by all three of `fetch_rss`, `fetch_ics`,
+     `fetch_html_events`) now sends `Accept:
+     text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8`
+     and `Accept-Language: en-US,en;q=0.9` alongside the existing,
+     unchanged, truthful `User-Agent` — a new `REQUEST_HEADERS`
+     constant replacing the old inline `{"User-Agent": USER_AGENT}`
+     dict. `requests` on its own only ever sent `User-Agent`, a bare
+     `Accept: */*`, and `Accept-Encoding`; a real browser sends more,
+     and this item's own research named the gap as a common CMS
+     bot-filter trigger. No Client Hints, no TLS fingerprinting, no UA
+     change — this is the "complete, honest client" option, not the
+     rejected spoofing one. `fetch_weather` and `submit_indexnow`
+     (the two other `requests.get`/`.post` call sites in this file)
+     are untouched — they're an external weather API and a shared
+     search-engine ping, not a civic source that could 403. New test
+     (`test_fetch_rss_sends_a_complete_honest_header_set`) asserts the
+     real headers dict `_get()` sends; 499 total pass. This sandbox's
+     network is fully blocked, so the effect on the six real 403s
+     can't be shown locally — same as every other fetcher fix this
+     session, that confirmation waits on the next real
+     `build-digest.yml` run. **Steps 2 (sanctioned endpoint) and 3
+     (ask) are unaffected and still open** — step 2 needs the same
+     real-page-fetch this loop can't make (item 182's pattern), and
+     step 3 is already folded into item 152's queued outreach email.
+
 #### P2 (new)
 
 193. **Palatine Public Library started 403ing today, and it is the
@@ -10360,6 +10386,20 @@ mechanism, and it is the third possibility neither option covered.**
        If the block is platform-wide rather than Palatine-specific,
        the healthy scrapes are on borrowed time and the feed migration
        stops being an optimisation.
+
+     🟢 **Watched, not acted on, 2026-09-22 — it was the blip.** The
+     real committed `data/source_transport_failures.json` from the
+     next `build-digest.yml` run shows `palatine-60067:Palatine Public
+     Library District — Events` back at streak **0** — not in the
+     failures file at all, which this repo's own tracking only does
+     for a source that fetched cleanly. One real data point, checked
+     rather than assumed, and it says this item's own first
+     instruction ("watch before acting, a streak of 1 can be a blip")
+     was right: no rewrite needed, no feed swap forced on one bad
+     build. Item 182's Indian Trails-style feed swap for Palatine
+     Public Library is still worth doing on its own merits (that item
+     is still open), just not as an emergency reaction to a failure
+     that already resolved itself.
 
 Competitors reviewed this pass: **Buttondown's own opt-in and
 subscriber-state model** (double opt-in on by default, `unactivated`

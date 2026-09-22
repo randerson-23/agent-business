@@ -7,6 +7,8 @@ import requests
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "scripts"))
 from fetchers import (  # noqa: E402
+    REQUEST_HEADERS,
+    USER_AGENT,
     _record_failure,
     fetch_html_events,
     fetch_ics,
@@ -92,6 +94,22 @@ def test_fetch_rss_parses_items(mock_get):
     assert len(items) == 2
     assert items[0]["title"] == "Board Meeting Tuesday"
     assert items[0]["url"] == "https://example.org/board"
+
+
+@patch("fetchers.requests.get")
+def test_fetch_rss_sends_a_complete_honest_header_set(mock_get):
+    # ROADMAP.md item 192: the standard 403 remedy (spoof a browser UA,
+    # match Client Hints) is explicitly rejected - the UA stays truthful
+    # and identifying. What's added is Accept and Accept-Language, which
+    # `requests` doesn't send by default and whose absence alone can trip
+    # a CMS bot filter - a complete client, not a disguised one.
+    mock_get.return_value = _mock_response(SAMPLE_RSS)
+    fetch_rss("https://example.org/rss")
+    _, kwargs = mock_get.call_args
+    assert kwargs["headers"] == REQUEST_HEADERS
+    assert kwargs["headers"]["User-Agent"] == USER_AGENT
+    assert "Accept" in kwargs["headers"]
+    assert "Accept-Language" in kwargs["headers"]
 
 
 @patch("fetchers.requests.get")
