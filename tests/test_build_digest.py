@@ -1521,6 +1521,54 @@ def test_detect_missing_sources_returns_empty_when_everything_recorded():
     assert build_digest.detect_missing_sources(regions, health) == []
 
 
+def test_update_weekend_history_appends_and_trims_to_history_len():
+    history = {}
+    for count in range(build_digest.WEEKEND_HISTORY_LEN + 3):
+        build_digest.update_weekend_history(history, "des-plaines-60016", count)
+    assert len(history["des-plaines-60016"]) == build_digest.WEEKEND_HISTORY_LEN
+    # oldest entries (0, 1, 2) dropped, most recent kept, in order
+    assert history["des-plaines-60016"][0] == 3
+    assert history["des-plaines-60016"][-1] == build_digest.WEEKEND_HISTORY_LEN + 2
+
+
+def test_save_and_load_weekend_history_round_trip(tmp_path, monkeypatch):
+    path = tmp_path / "weekend_signal_history.json"
+    monkeypatch.setattr(build_digest, "WEEKEND_HISTORY_PATH", path)
+    history = {"des-plaines-60016": [0, 0, 3]}
+    build_digest.save_weekend_history(history)
+    assert build_digest.load_weekend_history() == history
+
+
+def test_load_weekend_history_returns_empty_dict_when_missing(tmp_path, monkeypatch):
+    monkeypatch.setattr(build_digest, "WEEKEND_HISTORY_PATH", tmp_path / "missing.json")
+    assert build_digest.load_weekend_history() == {}
+
+
+def test_detect_zero_weekend_regions_flags_at_threshold():
+    # ROADMAP.md item 186: Des Plaines' own real shape - reachable,
+    # un-truncated sources, still 0 weekend events for 3+ builds running.
+    history = {
+        "des-plaines-60016": [5, 0, 0, 0],
+        "mount-prospect-60056": [7, 6, 8, 7],
+    }
+    assert build_digest.detect_zero_weekend_regions(history) == ["des-plaines-60016"]
+
+
+def test_detect_zero_weekend_regions_ignores_below_threshold():
+    # Only 2 trailing zeros, threshold is 3 - a genuinely quiet weekend
+    # that hasn't yet earned the "still zero" label.
+    history = {"palatine-60067": [3, 0, 0]}
+    assert build_digest.detect_zero_weekend_regions(history) == []
+
+
+def test_detect_zero_weekend_regions_ignores_a_recent_nonzero_build():
+    # The most recent `threshold` builds must ALL be zero - a region
+    # that just recovered (item 182's Wheeling fix) shouldn't be flagged
+    # by older zeros still sitting earlier in its history.
+    history = {"wheeling-60090": [0, 0, 0, 7]}
+    assert build_digest.detect_zero_weekend_regions(history) == []
+
+
 def test_render_region_page_produces_html_even_with_empty_sources():
     # On the main page (nav_current="all", the default - real call sites
     # for every other view always pass their own nav_current), an empty

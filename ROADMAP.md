@@ -9572,6 +9572,39 @@ Network-wide the weekend is now **18 events**, up from 10 this morning.
      same two regions, so they should be sequenced together rather
      than as separate efforts.
 
+     🟢 **Partly shipped 2026-09-22 — the stale-visibility fix; the
+     re-scope was already done by this pass itself (see the ⚠️ marker
+     on item 179 above); the transport-repair track's exception-class
+     logging is left open.** Made a stale health entry visibly stale
+     exactly where this item asked: `detect_chronic_transport_failures`'s
+     existing warning (item 181) now looks up `source_health.get(key)`
+     and, when a nonzero transport streak means that count can only be
+     a frozen pre-failure value, appends it to the same log line —
+     *"...has failed transport on 6+ consecutive builds
+     (source_health.json still shows a stale 0 from before the
+     failures began)"*. One line, read once, states both facts this
+     pass had to cross-reference two files to establish.
+
+     Verified against a real local build: the note appears on exactly
+     the three Mount Prospect sources this item names (Village
+     Calendar, Village News, Experience MP) and is correctly absent
+     from sources that were never recorded at all (item 181's own
+     `detect_missing_sources` territory, a different failure shape)
+     and from the two genuinely-dead scrapers (streak 0, nothing to
+     flag as chronic).
+
+     Left open, honestly: capturing the exception class or HTTP status
+     alongside the streak needs touching `fetch_rss`/`fetch_ics`/
+     `fetch_html_events`'s return contract (all three currently
+     collapse every failure to a bare `None`), a wider change than fits
+     alongside this pass's other two items — and, per this item's own
+     text, the actual diagnosis of *why* each of the eight fails still
+     needs real network access this loop doesn't have regardless of
+     what gets logged. Recording the shape of the fix rather than
+     rushing it: a `(exception_class, status_code)` tuple threaded
+     through the same `None`-on-failure path, is real follow-up work,
+     not done here.
+
 186. **Every check in this repo asks "is the source working?" and none
      asks "is the region producing?"** Des Plaines is the proof: four
      sources, four successful fetches, **zero** transport failures,
@@ -9616,6 +9649,59 @@ Network-wide the weekend is now **18 events**, up from 10 this morning.
      per-region floor rather than a network-wide one — that question
      cannot be answered while "zero because quiet" and "zero because
      mis-shaped inventory" are indistinguishable.
+
+     🟢 **Shipped 2026-09-22, both checks from the "what to build"
+     list.** `data/weekend_signal.json` only ever holds the latest
+     build's snapshot (by design — `send_newsletter.py` reads it that
+     way), so a *trailing* history needed its own file rather than a
+     rework of one another consumer depends on: added
+     `data/weekend_signal_history.json`, same pattern as item 181's
+     `source_transport_failures.json` (`load_weekend_history()`,
+     `update_weekend_history()`, `save_weekend_history()`, each region
+     keeping its last `WEEKEND_HISTORY_LEN = 10` weekend-event counts).
+
+     `detect_zero_weekend_regions()` flags any region whose trailing
+     `ZERO_WEEKEND_ALERT_THRESHOLD = 3` builds all landed zero.
+     Deliberately **not** transition-gated — matching
+     `detect_truncated_sources` rather than `detect_newly_broken_sources`,
+     since a region that's *still* contributing zero should stay loud
+     for as long as that's true, the same reasoning item 180 already
+     established for a source pinned at its cap. And deliberately
+     **non-blocking** (`logger.warning()`, not wired into `sys.exit(1)`),
+     for the identical reason items 181/185's checks above are: Des
+     Plaines and Palatine are *already* at the threshold right now, so
+     a build-failing version would fail every build — including
+     `send-newsletter.yml`'s own, which has no `continue-on-error`/
+     `if: always()` on this step — until item 182's remaining feed
+     work lands for those two regions, which needs real network access
+     this loop doesn't have.
+
+     Also added the funnel logging the second bullet asked for — one
+     line per region, `fetched -> dated -> in this weekend's window` —
+     computed from data the main loop already has in hand (`blocks`
+     and `weekend_events`), no new fetching or storage needed. Verified
+     against a real local build that it shows exactly the collapse
+     this item describes: Des Plaines currently reads `0 fetched -> 0
+     dated -> 0 in window` in this sandbox's network-blocked build
+     (expected here — every fetch fails soft to nothing locally, per
+     this file's own working agreements); the real number to watch
+     for is the next GitHub Actions build's version of this line,
+     where Des Plaines should show real fetched/dated counts collapsing
+     only at the third stage, matching this pass's own manual
+     accounting (37 items, 0 in-window).
+
+     The third bullet — deciding what a zero-contribution region
+     should render — needed no new code: item 177's consolidated
+     empty-state already handles it gracefully. What was missing was
+     only the ability to tell "zero because quiet" from "zero because
+     something's structurally wrong," which the detector above now
+     answers.
+
+     6 new tests (history round-trip, trim-to-length, threshold edge,
+     ignoring a region that just recovered); 471 total pass. Updated
+     `build-digest.yml` to commit the new file, and the working-
+     agreements section to `git restore` it locally same as the other
+     two generated data files.
 
 187. **Capture the open rate, because it is the number a sponsor will
      ask for first.** Researched what local sponsors actually evaluate
@@ -9787,10 +9873,11 @@ public static repo cannot solve).
   before committing.
 - Never hand-commit `docs/` output — run `git restore docs/` and remove any
   newly-created `docs/<region-id>/` directories before staging.
-- Same for `data/source_health.json` (item 51) and
-  `data/source_transport_failures.json` (item 181) — always `git
-  restore` both after a local build in this sandbox, never stage
-  either. This sandbox's network is blocked, so every source fetches 0
+- Same for `data/source_health.json` (item 51),
+  `data/source_transport_failures.json` (item 181), and
+  `data/weekend_signal_history.json` (item 186) — always `git
+  restore` all three after a local build in this sandbox, never stage
+  any of them. This sandbox's network is blocked, so every source fetches 0
   here; against the real trailing history from actual GitHub Actions
   runs, that reads as every source dying at once and `build_digest.py`
   will legitimately exit 1 - correct behavior, but committing that
