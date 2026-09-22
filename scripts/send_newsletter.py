@@ -645,6 +645,18 @@ def main(argv: list[str] | None = None) -> int:
             logger.error("Network error checking Buttondown subscriber count: %s", exc)
             return 1
         logger.info("Confirmed (type=regular) subscribers: %d", regular_subscriber_count)
+        # ROADMAP.md item 190's own "not done yet" note: purely
+        # informational, never affects the guard decision above (which
+        # only needs the regular count to decide), and a failure here
+        # must never block an otherwise-valid send over a diagnostic
+        # extra call - "one subscriber, zero confirmed" vs "zero
+        # subscribers" is worth being able to tell apart from this log
+        # alone, but it's not worth failing a send to find out.
+        try:
+            unactivated_count = fetch_subscriber_count(api_key, "unactivated")
+            logger.info("Unconfirmed (type=unactivated) subscribers: %d", unactivated_count)
+        except requests.RequestException as exc:
+            logger.warning("Could not check unactivated subscriber count: %s", exc)
         if args.force_empty_audience:
             logger.info("--force-empty-audience set - skipping the confirmed-subscriber check.")
         else:

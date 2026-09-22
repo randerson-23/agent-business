@@ -10189,18 +10189,27 @@ mechanism, and it is the third possibility neither option covered.**
      zero/nonzero guard boundary, and both branches of the optional
      history key.
 
-     **Not done yet, and named rather than silently dropped:**
-     breaking out `unactivated` alongside `regular` in the log line
-     (the item's own third bullet) — the guard only needs the one
-     number to decide, and `fetch_subscriber_count` already takes
-     either type as an argument, so adding a second logged call is a
-     small follow-up, not a new investigation. Checking Buttondown's
-     own default confirmation email (item 191's own "not done" note)
-     is still a look inside the dashboard, still folded into Needs
-     Ryan, still not something this loop can do. This item's real
-     effect — whether the next live send actually reaches someone —
-     waits on the next real scheduled run, same as every guard this
-     session has added.
+     🟢 **Follow-up shipped, 2026-09-22 — the `unactivated` count is
+     now logged too.** `main()` makes one more read-only call,
+     `fetch_subscriber_count(api_key, "unactivated")`, right after the
+     `regular` one that decides the guard, and logs it as a second
+     line. Purely informational — it never affects the guard's
+     decision, which only ever needed the `regular` count — and a
+     failure to fetch it is caught separately and only warns, never
+     blocks an otherwise-valid send over a diagnostic extra call. This
+     is exactly the "one subscriber, zero confirmed" vs. "zero
+     subscribers" distinction the item's own third bullet asked for.
+     505 tests still pass (no new test added for this one - it's a
+     log line around an already-tested function, and the file's own
+     convention doesn't unit-test `main()` directly).
+
+     **Still not done, and still named rather than silently dropped:**
+     checking Buttondown's own default confirmation email (item 191's
+     own "not done" note) is still a look inside the dashboard, still
+     folded into Needs Ryan, still not something this loop can do.
+     This item's real effect — whether the next live send actually
+     reaches someone — waits on the next real scheduled run, same as
+     every guard this session has added.
 
 191. **The signup flow never once mentions that a confirmation is
      coming.** `templates/region.html.j2` posts to Buttondown's
@@ -10423,6 +10432,13 @@ mechanism, and it is the third possibility neither option covered.**
      to lump in. Watching, not acting — this is exactly the "watch
      before acting" instinct item 193 confirmed was correct last
      cycle, applied the same way here.
+
+     🟢 **Resolved, 2026-09-22 — it was the blip.** The next real
+     `build-digest.yml` run's `data/source_transport_failures.json`
+     shows all three (Arlington Heights, Des Plaines, and Mount
+     Prospect Park District) back at streak 0. One data point, real
+     evidence, no rewrite needed — the second confirmation of the same
+     "watch before acting" call this session has now made twice.
 
 #### P2 (new)
 
