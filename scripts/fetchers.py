@@ -35,6 +35,23 @@ logger = logging.getLogger("fetchers")
 # site does.
 REQUEST_TIMEOUT = 15
 USER_AGENT = "WithinTen/1.0 (+https://withintenmiles.com/)"
+# ROADMAP.md item 192 (forty-fifth research pass): six chronic 403s, and
+# the standard remedy for that - a spoofed browser UA, matched Client
+# Hints, a disguised TLS fingerprint - is explicitly rejected here. Item
+# 161 deliberately made this UA *identifying* so a civic source can see
+# who's asking, and item 152's whole play is asking those same
+# organizations for a link-back; pretending to be Chrome to get past a
+# village's block would quietly trade that away for six feeds. `requests`
+# on its own sends only User-Agent, Accept: */* and Accept-Encoding - a
+# real browser also sends a specific Accept and an Accept-Language, and
+# their absence alone is enough to trip some CMS bot filters. Adding the
+# two is being a complete, well-formed client, not spoofing one - the UA
+# stays truthful and identifying either way.
+REQUEST_HEADERS = {
+    "User-Agent": USER_AGENT,
+    "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+    "Accept-Language": "en-US,en;q=0.9",
+}
 # ROADMAP.md item 178 (forty-second research pass): was 6, and every
 # live source in data/source_health.json's real trailing history
 # returned exactly 6 on every recorded build - not a coincidence about
@@ -99,7 +116,7 @@ def _get(url: str) -> requests.Response:
     resp = requests.get(
         url,
         timeout=REQUEST_TIMEOUT,
-        headers={"User-Agent": USER_AGENT},
+        headers=REQUEST_HEADERS,
     )
     resp.raise_for_status()
     return resp
