@@ -117,6 +117,17 @@ NEWSLETTER_CONFIG = REPO_ROOT / "config" / "newsletter.yaml"
 
 # Buttondown API v1. See the module docstring: unverified from here.
 BUTTONDOWN_API_URL = "https://api.buttondown.com/v1/emails"
+# ROADMAP.md item 190 (forty-fifth research pass): confirmed via
+# Buttondown's own published API docs (web search, same posture as the
+# rest of this module's endpoint shapes - this sandbox can't reach
+# api.buttondown.com to verify live). `GET /v1/subscribers?type=<type>`
+# returns the standard paginated {count, next, previous, results} shape;
+# only `count` is read here, never the subscriber list itself.
+# `type=regular` is confirmed subscribers, `type=unactivated` is a new
+# signup sitting on Buttondown's double opt-in until they click the
+# confirmation link - an unconfirmed address doesn't count as a
+# subscriber and won't receive a send.
+BUTTONDOWN_SUBSCRIBERS_URL = "https://api.buttondown.com/v1/subscribers"
 BUTTONDOWN_AUTH_SCHEME = "Token"
 # Buttondown's status for "created but not sent" vs "send this now" vs
 # "send it, but later, at a time Buttondown itself holds" (item 110).
@@ -181,20 +192,37 @@ def load_send_history(path: Path = SEND_HISTORY_PATH) -> list[dict]:
 
 
 def record_send(
-    history: list[dict], *, timestamp: str, subject: str, buttondown_id: str, region: str, mode: str
+    history: list[dict],
+    *,
+    timestamp: str,
+    subject: str,
+    buttondown_id: str,
+    region: str,
+    mode: str,
+    pre_send_subscriber_count: int | None = None,
 ) -> list[dict]:
     """Append one entry and return the updated list - a pure function
     so the record shape is testable without touching a real file.
+
+    `pre_send_subscriber_count` (ROADMAP.md item 190) is the confirmed
+    (type=regular) Buttondown subscriber count measured immediately
+    before this send, when the send path checked it - `None` for a
+    draft, which never queries it. Deliberately a different fact from
+    the `metrics.recipients` `backfill_send_metrics.py` (item 187)
+    writes onto this same entry afterwards: one is measured before the
+    send, the other after, and a disagreement between them is itself a
+    signal worth being able to see.
     """
-    return history + [
-        {
-            "timestamp": timestamp,
-            "subject": subject,
-            "buttondown_id": buttondown_id,
-            "region": region,
-            "mode": mode,
-        }
-    ]
+    entry = {
+        "timestamp": timestamp,
+        "subject": subject,
+        "buttondown_id": buttondown_id,
+        "region": region,
+        "mode": mode,
+    }
+    if pre_send_subscriber_count is not None:
+        entry["pre_send_subscriber_count"] = pre_send_subscriber_count
+    return history + [entry]
 
 
 def save_send_history(history: list[dict], path: Path = SEND_HISTORY_PATH) -> None:
@@ -397,6 +425,49 @@ def assert_weekend_is_not_thin(count: int, region_id: str, min_events: int = MIN
         )
 
 
+def fetch_subscriber_count(api_key: str, subscriber_type: str, *, url: str = BUTTONDOWN_SUBSCRIBERS_URL) -> int:
+    """How many Buttondown subscribers currently hold `subscriber_type`
+    ("regular" or "unactivated") - only the `count` field of the
+    standard paginated list response, never the subscriber list itself.
+    Raises on any transport error, same as `post_to_buttondown` - a
+    failed check here should stop a send exactly as loudly as a failed
+    send itself, not be swallowed into "assume it's fine."
+    """
+    response = requests.get(
+        url,
+        headers={"Authorization": f"{BUTTONDOWN_AUTH_SCHEME} {api_key}"},
+        params={"type": subscriber_type},
+        timeout=30,
+    )
+    response.raise_for_status()
+    return int(response.json().get("count", 0))
+
+
+def assert_has_confirmed_subscribers(regular_count: int) -> None:
+    """Refuse to mail nobody while reporting success (ROADMAP.md item
+    190). Item 187's first live metrics call returned `recipients: 0`
+    for this business's only send so far; Buttondown enforces double
+    opt-in by default and cannot be made not to, so an address that
+    never clicks its confirmation link sits in `unactivated` forever
+    and never counts as a subscriber. `send_newsletter.py` already
+    guards build freshness and issue thinness before every real send -
+    both are about *content*. This is the first guard about *audience*,
+    and the send-doesn't-use-my-name path (item 105's combined issue)
+    can produce exactly this silently until now: a 2xx from Buttondown
+    that mailed a list of zero, indistinguishable from a real send
+    unless something checks first.
+    """
+    if regular_count < 1:
+        raise SendError(
+            "Buttondown reports 0 confirmed (type=regular) subscribers - refusing to "
+            "mail a newsletter that would reach nobody while reporting success. Check "
+            "whether real subscribers are stuck in `unactivated` (Buttondown's double "
+            "opt-in - see item 191's confirmation-flow fix) before assuming the list is "
+            "genuinely empty. Use --force-empty-audience only if sending to zero "
+            "confirmed subscribers is deliberate."
+        )
+
+
 def post_to_buttondown(
     subject: str, html: str, api_key: str, mode: str, *, now: datetime | None = None
 ) -> dict:
@@ -460,6 +531,14 @@ def main(argv: list[str] | None = None) -> int:
         help="Send/schedule anyway even if this week's issue has fewer than "
         f"{MIN_WEEKEND_EVENTS} dated events - use only when that thinness "
         "is real and deliberate, not to silence a source that broke.",
+    )
+    parser.add_argument(
+        "--force-empty-audience",
+        action="store_true",
+        help="Send/schedule anyway even if Buttondown reports 0 confirmed "
+        "subscribers (ROADMAP.md item 190) - use only when mailing zero "
+        "confirmed subscribers is deliberate, not to bypass a real "
+        "double-opt-in problem.",
     )
     args = parser.parse_args(argv)
     logging.basicConfig(level=logging.INFO, format="%(message)s")
@@ -553,6 +632,28 @@ def main(argv: list[str] | None = None) -> int:
         )
         return 1
 
+    # ROADMAP.md item 190: the first guard about *audience* rather than
+    # content - assert_build_is_fresh and assert_weekend_is_not_thin above
+    # are both about content. A draft doesn't mail anyone regardless of
+    # audience size, so this only runs for a real delivery mode, same
+    # scoping as the thin-issue check.
+    regular_subscriber_count = None
+    if cfg["mode"] in DELIVERY_MODES:
+        try:
+            regular_subscriber_count = fetch_subscriber_count(api_key, "regular")
+        except requests.RequestException as exc:
+            logger.error("Network error checking Buttondown subscriber count: %s", exc)
+            return 1
+        logger.info("Confirmed (type=regular) subscribers: %d", regular_subscriber_count)
+        if args.force_empty_audience:
+            logger.info("--force-empty-audience set - skipping the confirmed-subscriber check.")
+        else:
+            try:
+                assert_has_confirmed_subscribers(regular_subscriber_count)
+            except SendError as exc:
+                logger.error("%s", exc)
+                return 1
+
     try:
         result = post_to_buttondown(subject, html, api_key, cfg["mode"], now=now)
     except SendError as exc:
@@ -576,6 +677,7 @@ def main(argv: list[str] | None = None) -> int:
         buttondown_id=str(result.get("id", "")),
         region=cfg["region"],
         mode=cfg["mode"],
+        pre_send_subscriber_count=regular_subscriber_count,
     )
     save_send_history(history)
 

@@ -6,6 +6,7 @@ from pathlib import Path
 from zoneinfo import ZoneInfo
 
 import pytest
+import requests
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "scripts"))
 from send_newsletter import (  # noqa: E402
@@ -13,8 +14,10 @@ from send_newsletter import (  # noqa: E402
     MIN_WEEKEND_EVENTS,
     SendError,
     assert_build_is_fresh,
+    assert_has_confirmed_subscribers,
     assert_weekend_is_not_thin,
     extract_subject,
+    fetch_subscriber_count,
     html_byte_size,
     load_send_config,
     load_send_history,
@@ -172,6 +175,10 @@ class _FakeResponse:
     def json(self):
         return self._payload
 
+    def raise_for_status(self):
+        if not self.ok:
+            raise requests.HTTPError(f"{self.status_code} error")
+
 
 def _capture_post(monkeypatch):
     """Record the kwargs post_to_buttondown hands to requests.post."""
@@ -248,6 +255,68 @@ def test_schedule_mode_publish_date_matches_buttondowns_documented_z_format(monk
     assert re.fullmatch(r"\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}Z", publish_date)
     # And it's still the correct absolute moment, not just correctly shaped.
     assert datetime.fromisoformat(publish_date) == next_thursday_morning(now).astimezone(timezone.utc)
+
+
+def test_fetch_subscriber_count_reads_the_count_field(monkeypatch):
+    import send_newsletter
+
+    seen = {}
+
+    def fake_get(url, **kwargs):
+        seen["url"] = url
+        seen.update(kwargs)
+        return _FakeResponse(payload={"count": 42, "results": []})
+
+    monkeypatch.setattr(send_newsletter.requests, "get", fake_get)
+    count = fetch_subscriber_count("key", "regular")
+    assert count == 42
+    assert seen["params"] == {"type": "regular"}
+    assert seen["headers"]["Authorization"] == "Token key"
+
+
+def test_fetch_subscriber_count_raises_on_http_error(monkeypatch):
+    import send_newsletter
+
+    monkeypatch.setattr(
+        send_newsletter.requests, "get", lambda url, **kwargs: _FakeResponse(ok=False, status_code=500)
+    )
+    with pytest.raises(requests.HTTPError):
+        fetch_subscriber_count("key", "regular")
+
+
+def test_assert_has_confirmed_subscribers_allows_at_least_one():
+    assert_has_confirmed_subscribers(1)
+    assert_has_confirmed_subscribers(500)
+
+
+def test_assert_has_confirmed_subscribers_rejects_zero():
+    # ROADMAP.md item 190: this is exactly the real result item 187's
+    # first live metrics call returned (recipients: 0) for this
+    # business's only send - the guard this pass found missing.
+    with pytest.raises(SendError, match="0 confirmed"):
+        assert_has_confirmed_subscribers(0)
+
+
+def test_record_send_omits_subscriber_count_when_not_measured():
+    # A draft never queries Buttondown for a count, so the key shouldn't
+    # appear at all rather than showing a misleading 0.
+    updated = record_send(
+        [], timestamp="t", subject="s", buttondown_id="1", region="r", mode="draft"
+    )
+    assert "pre_send_subscriber_count" not in updated[0]
+
+
+def test_record_send_includes_subscriber_count_when_measured():
+    updated = record_send(
+        [],
+        timestamp="t",
+        subject="s",
+        buttondown_id="1",
+        region="r",
+        mode="send",
+        pre_send_subscriber_count=7,
+    )
+    assert updated[0]["pre_send_subscriber_count"] == 7
 
 
 def test_api_errors_are_surfaced_verbatim(monkeypatch):

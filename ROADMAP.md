@@ -10163,6 +10163,45 @@ mechanism, and it is the third possibility neither option covered.**
      they are repeatable, and they grow the list slowly enough to
      prove the flow works before it matters.
 
+     🟢 **Shipped, 2026-09-22 — the audience guard and the pre-send
+     record.** `scripts/send_newsletter.py` now calls a new
+     `fetch_subscriber_count(api_key, "regular")` (confirmed via
+     Buttondown's own published API docs — `GET
+     /v1/subscribers?type=regular` returns the standard paginated
+     `{count, ...}` shape, this sandbox can't reach the live API to
+     verify it directly, same posture the rest of this module's
+     endpoint shapes already take) immediately before every real
+     send/schedule, logs the count, and refuses with
+     `assert_has_confirmed_subscribers()` when it's zero — the same
+     shape as the existing `assert_build_is_fresh`/
+     `assert_weekend_is_not_thin` content guards, just the first one
+     about *audience*. A new `--force-empty-audience` flag is the
+     escape hatch, symmetric with `--force-thin`. The count is also
+     written onto the new `send_history.json` entry as
+     `pre_send_subscriber_count` — deliberately a different fact from
+     the `metrics.recipients` item 187's backfill writes onto the same
+     entry afterwards, since a disagreement between "measured before"
+     and "measured after" is itself the signal this item's own text
+     named. Draft mode is unaffected (a draft doesn't mail anyone
+     regardless of audience size, and the check would need a network
+     call `--dry-run`'s docstring promises never happens). 6 new tests
+     (505 total pass) cover the API call's real request shape, the
+     zero/nonzero guard boundary, and both branches of the optional
+     history key.
+
+     **Not done yet, and named rather than silently dropped:**
+     breaking out `unactivated` alongside `regular` in the log line
+     (the item's own third bullet) — the guard only needs the one
+     number to decide, and `fetch_subscriber_count` already takes
+     either type as an argument, so adding a second logged call is a
+     small follow-up, not a new investigation. Checking Buttondown's
+     own default confirmation email (item 191's own "not done" note)
+     is still a look inside the dashboard, still folded into Needs
+     Ryan, still not something this loop can do. This item's real
+     effect — whether the next live send actually reaches someone —
+     waits on the next real scheduled run, same as every guard this
+     session has added.
+
 191. **The signup flow never once mentions that a confirmation is
      coming.** `templates/region.html.j2` posts to Buttondown's
      `embed-subscribe` endpoint with `target="popupwindow"` and an
@@ -10352,6 +10391,38 @@ mechanism, and it is the third possibility neither option covered.**
      (ask) are unaffected and still open** — step 2 needs the same
      real-page-fetch this loop can't make (item 182's pattern), and
      step 3 is already folded into item 152's queued outreach email.
+
+     🔴 **Real result, 2026-09-22 — step 1 did not work.** The next
+     real `build-digest.yml` run (after the header fix merged) is the
+     confirmation the note above said to wait for, and it says no:
+     `data/source_transport_failure_details.json` shows all six 403s
+     unchanged (`Experience Mount Prospect`, `Village of Mount Prospect
+     — Calendar`, `Village of Mount Prospect — News`, `Wheeling CCSD
+     21`, `Wheeling Park District`, still `HTTPError`/403 each) and
+     the streak counter moved 10→11 for every one of them — a build
+     ran, the new headers were sent, nothing changed. Recorded plainly
+     rather than left ambiguous: these six CMS's are blocking on
+     something the missing `Accept`/`Accept-Language` headers weren't
+     it — most likely an IP-range, WAF, or literal UA-string rule, not
+     a bare-client fingerprint. **Step 1 is exhausted; steps 2
+     (sanctioned endpoint) and 3 (ask) are the only ones left**, and
+     both were already known to need the owner or a real page fetch
+     this loop can't make.
+
+     **A new, separate signal from the same build, filed here rather
+     than assumed away:** three *different* sources — Arlington
+     Heights Park District, Des Plaines Park District, and Mount
+     Prospect Park District, all three the same WordPress "The Events
+     Calendar" plugin's `?post_type=tribe_events&ical=1` export, each
+     at a different domain — newly show `ConnectTimeout` at streak 1.
+     Same discipline as item 193: one data point, three sources at
+     once smells like a correlated blip (a runner-side network hiccup
+     hitting several domains in the same build) rather than three
+     independent breakages, and a `ConnectTimeout` is a different
+     failure class from the six chronic 403s above, not a fourth one
+     to lump in. Watching, not acting — this is exactly the "watch
+     before acting" instinct item 193 confirmed was correct last
+     cycle, applied the same way here.
 
 #### P2 (new)
 
