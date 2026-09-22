@@ -1,11 +1,23 @@
 {
+  "arlington-heights-60005:Arlington Heights Park District \u2014 Events": {
+    "exception_class": "ConnectTimeout",
+    "status_code": null
+  },
   "arlington-heights-60005:Arlington Heights School District 25 \u2014 Calendar": {
     "exception_class": "HTTPError",
     "status_code": 404
   },
+  "des-plaines-60016:Des Plaines Park District \u2014 Events": {
+    "exception_class": "ConnectTimeout",
+    "status_code": null
+  },
   "mount-prospect-60056:Experience Mount Prospect \u2014 Events": {
     "exception_class": "HTTPError",
     "status_code": 403
+  },
+  "mount-prospect-60056:Mount Prospect Park District \u2014 Events": {
+    "exception_class": "ConnectTimeout",
+    "status_code": null
   },
   "mount-prospect-60056:Village of Mount Prospect \u2014 Calendar": {
     "exception_class": "HTTPError",
