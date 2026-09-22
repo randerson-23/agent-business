@@ -8766,6 +8766,52 @@ last three passes assumed.**
      change and is left for a following pass rather than folded into
      this one.
 
+     **Final confirmation, from the real post-merge build (`f190e02`),
+     not assumed:** the fix worked exactly as intended. Mount Prospect
+     Public Library — Events jumped 6→200, its School District 57
+     calendar 6→66, Arlington Heights Memorial Library 6→200 — and it
+     wasn't truncation of the same handful of items either: pulled the
+     real committed `docs/arlington-heights-60005/index.html` and
+     confirmed 199 distinct data-items, 132 unique titles, the repeats
+     being exactly what a real library calendar produces (13 "Beginning
+     ESL" sessions, 9 "Play Time," 6 "Baby Time" - individual weekly
+     occurrences, not chrome or duplication). The weekend view moved
+     for real: Mount Prospect's `this-weekend/index.html` went from 2
+     items to 6, `free/index.html` from 2 to 7. `TOTAL structured-date
+     coverage: 249/482 events (52%)`, up from the low-30s/81 this file
+     had been reporting for weeks. `detect_source_regressions()` found
+     nothing to flag - every source that changed went up, none crossed
+     to zero.
+
+     One real, honestly-reported side effect, checked rather than
+     assumed away: Arlington Heights' own coverage *percentage* dropped
+     (5/194, down from 8/18) even though the volume win is real -
+     raising the cap didn't fix dates, it just made the existing,
+     already-flagged (item 175's "separately flagged" note)
+     `_nearby_date_hint()` gap visible at 194 items instead of 12. That
+     gap is unchanged by this item and still not attempted here for the
+     same reason item 175 gave: fixing it needs real markup evidence
+     this sandbox can't fetch.
+
+     Also checked, given this item's own instruction to look at display
+     limits afterward: a 356KB, 199-item region page is a real dom-size
+     concern, not a hypothetical one. Ran Lighthouse locally (this
+     sandbox's Chromium, `--no-sandbox`) against the actual committed
+     Arlington Heights page - `dom-size` scores 0 (2,756+ elements
+     region-wide once Mount Prospect's own 239-item page is checked the
+     same way), but the metrics `lighthouserc.json` actually gates on
+     stayed comfortably inside budget on both: LCP 953ms/1209ms, CLS 0,
+     TBT 80.5ms/55.5ms against the 2500ms/0.1/200ms limits. Mount
+     Prospect's page carries the identical `dom-size` flag and already
+     passed real CI on this exact data (PR #230's own Tests workflow
+     built with real network access), so this isn't a new regression -
+     it's the expected shape of "more real content," not yet a problem
+     the current gates catch, but worth a display-side cap or "show
+     more" pattern in a future pass if a source's raw count keeps
+     growing rather than settling. Recorded as a real, open,
+     non-blocking finding rather than either ignored or over-fixed on
+     a guess.
+
 179. **Mount Prospect has lost its entire village layer, and it is the
      only region that has.** The four zero-returning sources are not
      scattered: they are **Village of Mount Prospect — News**, **Village
