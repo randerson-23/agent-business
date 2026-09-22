@@ -3580,6 +3580,9 @@ def test_build_organization_json_ld_defines_the_referenced_entity():
     # item's never-fabricate-a-fact discipline.
     assert "logo" not in parsed
     assert "sameAs" not in parsed
+    # ROADMAP.md item 130: a real name is now known, so it belongs here
+    # too - the same entity-authority signal as the About page's prose.
+    assert parsed["founder"] == {"@type": "Person", "name": "Ryan Anderson"}
 
 
 def test_render_region_page_title_uses_canonical_site_name():
