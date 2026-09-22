@@ -8822,6 +8822,28 @@ last three passes assumed.**
      non-blocking finding rather than either ignored or over-fixed on
      a guess.
 
+     **Second follow-up, 2026-09-22 - the 200 cap turned out too low,
+     found by the diagnostic item 180 built specifically to find
+     exactly this:** the PR shipping item 180's truncation check failed
+     real CI on its very first live run - `detect_truncated_sources()`
+     correctly caught Arlington Heights Memorial Library and Mount
+     Prospect Public Library both landing on exactly 200 for 3
+     consecutive real builds. Checked before reacting, not assumed: the
+     earlier real-CI confirmation above already established AHML's 199
+     items were genuine, distinct content (132 unique titles, real
+     recurring sessions), so this isn't item 175's nav-chrome problem
+     recurring - it's a source that's genuinely bigger than 200 was
+     assumed to comfortably cover. Raised `MAX_ITEMS_PER_SOURCE` to
+     500 in `scripts/fetchers.py`, still "a few hundred" as this item
+     originally asked, not unbounded. Flagged honestly rather than
+     treated as solved: `fetch_rss` and `fetch_html_events` still have
+     no per-item date-horizon bound, so a source that keeps genuinely
+     growing (AHML's rolling calendar is exactly this shape) can hit
+     500 too - the real, not-yet-attempted fix stays what this item
+     originally proposed, bounding by date horizon inside the fetcher
+     itself, not repeatedly raising a count cap each time a real
+     source outgrows it.
+
 179. **Mount Prospect has lost its entire village layer, and it is the
      only region that has.** The four zero-returning sources are not
      scattered: they are **Village of Mount Prospect — News**, **Village
@@ -9182,6 +9204,25 @@ last three passes assumed.**
   fully decoupled by design - nothing to fix, and worth having
   actually read the workflow rather than assumed it from the schedule
   alone.
+
+  Ninth pass, 2026-09-22 (no new research pass yet; items 178/179/180's
+  full backlog already shipped and merged). Closed the one remaining
+  gap the seventh pass named: Arlington Heights, the last of the five
+  regions never WebSearch-checked. Sampled five outbound evergreen/
+  guide/annual-event links (John Hersey HS Athletics, the Village's own
+  events page, the Library's card-registration page, School District
+  25's registration page, and Harmony Fest's real event page) - all
+  five resolve and match their config descriptions exactly. The Harmony
+  Fest check looked like a real discrepancy at first (WebSearch's own
+  results, independent of this repo, returned "October 2-3, 2026" for
+  the query) until checking the config directly showed it already says
+  exactly that, sourced from a WebSearch the fifteenth research pass
+  ran back on 2026-09-15 - a confirmation, not a drift, but worth
+  catching the difference between the two before writing either one
+  down. All five regions have now been WebSearch-checked at least once;
+  the rotation this item's checklist called for is complete, and the
+  next thin-queue pass should look for something else rather than
+  re-running it a tenth time with nothing new to find.
 - **The research loop leaves at most three open owner decisions at a
   time (item 165).** A six-item "Needs Ryan" queue, none of it acted on
   in a week, is itself the finding — presenting equal-looking options
