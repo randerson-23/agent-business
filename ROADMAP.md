@@ -9804,6 +9804,48 @@ Network-wide the weekend is now **18 events**, up from 10 this morning.
      a slot nobody has bought is speculative. Recorded so the question
      is asked *before* the first one is priced, rather than after.
 
+     🟢 **Shipped 2026-09-22 — the capture infrastructure, not the
+     quoted number.** Added `scripts/backfill_send_metrics.py` and its
+     own workflow (`backfill-send-metrics.yml`), deliberately separate
+     from `send_newsletter.py`/`send-newsletter.yml` per this item's
+     own instruction: a metrics fetch failing must never be able to
+     touch a send, and giving the two no shared failure path at all is
+     the simplest way to guarantee that, not just an aspiration.
+
+     `data/send_history.json`'s `buttondown_id` is exactly the handle
+     item 187 said it would be — the new script calls Buttondown's
+     documented `GET /v1/emails/{id}/analytics` endpoint (confirmed
+     from Buttondown's own API docs via WebSearch, not guessed; this
+     sandbox's network is proxy-blocked for `api.buttondown.com` same
+     as everywhere else, so real confirmation waits on the first
+     scheduled run, same posture `send_newsletter.py`'s own module
+     docstring already takes for its endpoint) and records
+     `recipients`/`opens`/`clicks` plus derived `open_rate`/
+     `click_rate` onto each entry's new `metrics` field.
+
+     Runs daily via its own cron, not because sends happen daily but
+     because `needs_backfill()` only picks up an entry once it's
+     `METRICS_BACKFILL_MIN_AGE` (3 days) old — a daily check catches
+     that threshold promptly instead of making a fresh send wait for
+     the next weekly cron. Reading too early would record a permanent
+     zero (each entry is only ever backfilled once), which is exactly
+     the mistake this item's own text warned against.
+
+     A per-entry fetch failure is a `logger.warning()`, never a raised
+     exception that could abort backfilling the rest of the file — and
+     `derive_metrics()` treats missing/null fields as `0` rather than
+     raising, since Buttondown's own docs say a request against an
+     account with tracking disabled still succeeds with no data. 17
+     new tests (age-threshold boundary in both directions, a missing
+     API key, one failed fetch not blocking the others, a too-recent
+     send staying unmetered, the full `main()` path with a fake
+     Buttondown response); 488 total pass.
+
+     Sequencing caveat unchanged from this item's own text: with one
+     subscriber, the first real number this produces is not yet worth
+     quoting anywhere. This ships the capture so the history exists
+     once it is.
+
 #### P2 (new)
 
 188. **There is nothing to submit to Google News — the eligibility
