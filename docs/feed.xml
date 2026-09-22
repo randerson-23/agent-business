@@ -4,14 +4,7 @@
   <title>Within Ten — Upcoming Local Events</title>
   <link>https://withintenmiles.com/</link>
   <description>Upcoming events across every Within Ten region, soonest first - aggregated automatically from village, library, park district and school-district calendars.</description>
-  <lastBuildDate>Tue, 22 Sep 2026 02:02:36 +0000</lastBuildDate>
-  <item>
-    <title>Arlington Heights: Kids' Time</title>
-    <link>https://www.ahml.info/scheduling/reservation/224204</link>
-    <guid isPermaLink="true">https://www.ahml.info/scheduling/reservation/224204</guid>
-    <description></description>
-    <pubDate>Mon, 21 Sep 2026 00:00:00 +0000</pubDate>
-  </item>
+  <lastBuildDate>Tue, 22 Sep 2026 07:06:50 +0000</lastBuildDate>
   <item>
     <title>Arlington Heights: Social Worker in the Library</title>
     <link>https://www.ahml.info/scheduling/reservation/218146</link>
@@ -226,13 +219,6 @@ A virtual…</description>
     <pubDate>Sat, 26 Sep 2026 00:00:00 +0000</pubDate>
   </item>
   <item>
-    <title>Mount Prospect: Fall Frenzy</title>
-    <link>https://www.mppd.org/event/fall-frenzy/</link>
-    <guid isPermaLink="true">https://www.mppd.org/event/fall-frenzy/</guid>
-    <description>Fall Frenzy (Ages 5-10) Celebrate the beauty of the changing season with a burst of creativity! Join us in the Studio for this “Fall Frenzy” workshop, where…</description>
-    <pubDate>Sat, 26 Sep 2026 09:30:00 +0000</pubDate>
-  </item>
-  <item>
     <title>Mount Prospect: Potty Palooza</title>
     <link>https://mppl.libnet.info/event/16427602</link>
     <guid isPermaLink="true">https://mppl.libnet.info/event/16427602</guid>
@@ -394,6 +380,22 @@ A virtual…</description>
     <description>Thursday, October 01 2026 4:00pm - 4:30pm 
  Celebrate the completion of the librarys second floor renovation!</description>
     <pubDate>Thu, 01 Oct 2026 16:00:00 +0000</pubDate>
+  </item>
+  <item>
+    <title>Mount Prospect: Tech Playground</title>
+    <link>https://mppl.libnet.info/event/16392028</link>
+    <guid isPermaLink="true">https://mppl.libnet.info/event/16392028</guid>
+    <description>Thursday, October 01 2026 6:00pm - 7:00pm 
+ Be a tech explorer and try out STEAM toys at the library.</description>
+    <pubDate>Thu, 01 Oct 2026 18:00:00 +0000</pubDate>
+  </item>
+  <item>
+    <title>Mount Prospect: Career Coaching Appointment</title>
+    <link>https://mppl.libnet.info/event/16514063</link>
+    <guid isPermaLink="true">https://mppl.libnet.info/event/16514063</guid>
+    <description>Thursday, October 01 2026 6:00pm - 7:00pm 
+ Jumpstart your job search with a virtual one-hour session with an experienced career coach.</description>
+    <pubDate>Thu, 01 Oct 2026 18:00:00 +0000</pubDate>
   </item>
 </channel>
 </rss>
