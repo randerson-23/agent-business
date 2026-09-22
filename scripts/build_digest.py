@@ -48,6 +48,19 @@ OUTPUT_DIR = ROOT / "docs"
 SOURCE_HEALTH_PATH = ROOT / "data" / "source_health.json"
 SOURCE_HEALTH_HISTORY_LEN = 10
 
+# ROADMAP.md item 181 (forty-third research pass): a source that fails
+# transport on *every* build since it was added never gets a single
+# entry in source_health.json above - item 55's "skip a transport
+# failure rather than record a misleading 0" is correct for a one-off
+# failure, but taken to its extreme it means a permanently-403'd source
+# gets no history at all, forever, rather than a forgiving gap. Tracked
+# here as a separate file rather than folded into source_health.json's
+# own per-key list, so item 55's schema and reasoning (a count history
+# that is never polluted with transport-failure noise) stay untouched -
+# this is an addition, not a rework.
+TRANSPORT_FAILURE_PATH = ROOT / "data" / "source_transport_failures.json"
+CONSECUTIVE_TRANSPORT_FAILURE_ALERT_THRESHOLD = 3
+
 # ROADMAP.md item 172: a small, committed JSON file (same pattern as
 # source_health.json above) recording how many dated weekend events each
 # region contributed to the build just finished - the signal
@@ -515,6 +528,82 @@ def save_source_health(health: dict) -> None:
     )
 
 
+def load_transport_failures() -> dict:
+    """Per-source consecutive-transport-failure streak (ROADMAP.md item
+    181, forty-third research pass) - a source that 403s/times out on
+    every build since it was added never earns a single entry in
+    source_health.json (item 55's fetch loop deliberately skips
+    recording a transport failure there, to keep that file's count
+    history free of misleading zeros). That's correct for count
+    history and it means a chronically-403'd source gets no signal at
+    all, forever, rather than a forgiving gap - tracked here instead,
+    separately, so item 55's own file and reasoning stay untouched.
+    """
+    if TRANSPORT_FAILURE_PATH.exists():
+        try:
+            return json.loads(TRANSPORT_FAILURE_PATH.read_text(encoding="utf-8"))
+        except (json.JSONDecodeError, OSError) as exc:
+            logger.warning("Could not read %s, starting fresh: %s", TRANSPORT_FAILURE_PATH, exc)
+    return {}
+
+
+def update_transport_failures(failures: dict, source_key: str, transport_failed: bool) -> None:
+    """Increment a source's consecutive-failure streak on a transport
+    failure, reset to 0 on any successful fetch (any real [] or a
+    nonzero count both count as success here - only a `None` transport
+    failure, item 55's own signal, increments).
+    """
+    failures[source_key] = failures.get(source_key, 0) + 1 if transport_failed else 0
+
+
+def save_transport_failures(failures: dict) -> None:
+    TRANSPORT_FAILURE_PATH.parent.mkdir(parents=True, exist_ok=True)
+    TRANSPORT_FAILURE_PATH.write_text(
+        json.dumps(failures, indent=2, sort_keys=True) + "\n", encoding="utf-8"
+    )
+
+
+def detect_chronic_transport_failures(
+    failures: dict, threshold: int = CONSECUTIVE_TRANSPORT_FAILURE_ALERT_THRESHOLD
+) -> list[str]:
+    """Source keys whose transport-failure streak has reached the alert
+    threshold - ROADMAP.md item 181. Not reset once flagged (a source
+    still 403ing on build N+1 should keep saying so, same reasoning as
+    detect_truncated_sources' own non-transition-gating), so this stays
+    loud for as long as the failure continues rather than firing once.
+    """
+    return sorted(key for key, streak in failures.items() if streak >= threshold)
+
+
+def expected_source_keys(regions: list[dict]) -> set[str]:
+    """Every `region_id:source_name` key `config/regions/*.yaml` actually
+    declares (enabled sources only - a disabled one is deliberately not
+    fetched, so its absence from source_health.json is correct, not a
+    gap). The set detect_missing_sources compares real health-file keys
+    against.
+    """
+    keys = set()
+    for region_cfg in regions:
+        region_id = region_cfg["region"]["id"]
+        for source in region_cfg.get("sources", []):
+            if source.get("enabled", True):
+                keys.add(f"{region_id}:{source['name']}")
+    return keys
+
+
+def detect_missing_sources(regions: list[dict], health: dict) -> list[str]:
+    """Source keys `config/regions/*.yaml` declares that have never once
+    appeared in `data/source_health.json` - ROADMAP.md item 181 (forty-
+    third research pass). detect_source_regressions/detect_truncated_
+    sources/detect_newly_broken_sources all iterate `health.items()`, so
+    a source that fails transport on every build since it was added -
+    which never gets a key at all, per item 55's own design - is
+    structurally invisible to every one of them. This is the check that
+    catches the absence itself, the one thing "iterate the keys" can't.
+    """
+    return sorted(expected_source_keys(regions) - health.keys())
+
+
 def write_weekend_signal(region_counts: dict[str, int], now: datetime) -> None:
     """Write WEEKEND_SIGNAL_PATH (ROADMAP.md item 172) - a snapshot of how
     many dated weekend events this build found per region, plus the total
@@ -539,7 +628,9 @@ def write_weekend_signal(region_counts: dict[str, int], now: datetime) -> None:
     )
 
 
-def fetch_region_sections(region_cfg: dict, health: dict | None = None) -> list[dict]:
+def fetch_region_sections(
+    region_cfg: dict, health: dict | None = None, transport_failures: dict | None = None
+) -> list[dict]:
     region_id = region_cfg["region"]["id"]
     region_name = region_cfg["region"]["name"]
     blocks = []
@@ -572,8 +663,14 @@ def fetch_region_sections(region_cfg: dict, health: dict | None = None) -> list[
                 len(raw_items),
                 " (transport error - not counted for health)" if transport_failed else "",
             )
+            source_key = f"{region_id}:{source['name']}"
             if health is not None and not transport_failed:
-                update_source_health(health, f"{region_id}:{source['name']}", len(raw_items))
+                update_source_health(health, source_key, len(raw_items))
+            # ROADMAP.md item 181: tracked regardless of transport_failed,
+            # unlike source_health.json above - a streak needs to see
+            # every success too, to reset back to 0.
+            if transport_failures is not None:
+                update_transport_failures(transport_failures, source_key, transport_failed)
 
         events = []
         for item in raw_items:
@@ -2564,6 +2661,7 @@ def main() -> None:
     (OUTPUT_DIR / ".nojekyll").touch()
 
     source_health = load_source_health()
+    transport_failures = load_transport_failures()
     # Static config (id/name/lat/lon), independent of fetch results, so
     # it's safe to build once before the fetch loop below - every
     # region's own nearby-regions strip (ROADMAP.md Phase 11 #52) needs
@@ -2616,7 +2714,7 @@ def main() -> None:
             )
 
         local_today = region_local_date(region, now)
-        blocks = fetch_region_sections(region_cfg, health=source_health)
+        blocks = fetch_region_sections(region_cfg, health=source_health, transport_failures=transport_failures)
         annual_block = prepare_annual_events(region_cfg, now)
         if annual_block:
             # First, not appended: curated + dated is the highest-
@@ -3065,6 +3163,30 @@ def main() -> None:
     write_weekend_signal(weekend_event_counts, now)
 
     save_source_health(source_health)
+    save_transport_failures(transport_failures)
+    # ROADMAP.md item 181 (forty-third research pass): logged, not
+    # build-failing like the checks below - real, current
+    # data/source_health.json already has exactly the 5 sources this
+    # check is designed to catch (confirmed by the research pass that
+    # asked for it), and send-newsletter.yml's "Build digest" step has
+    # no `continue-on-error`/`if: always()` on the step after it. A
+    # build-failing version of this check right now would deterministically
+    # block the very next scheduled send (2026-09-23) on a condition
+    # this loop cannot fix without real network access to diagnose the
+    # five real URLs. The diagnostic value is in the log line existing
+    # at all, not in stopping the build over a gap that needs a
+    # separate pass with real network to close.
+    for key in detect_missing_sources(regions, source_health):
+        logger.warning(
+            "Source never recorded: %s is configured but has never once appeared in source_health.json - a permanent transport failure, invisible to every regression check.",
+            key,
+        )
+    for key in detect_chronic_transport_failures(transport_failures):
+        logger.warning(
+            "Source chronic transport failure: %s has failed transport on %d+ consecutive builds.",
+            key, transport_failures[key],
+        )
+
     regressions = detect_source_regressions(source_health)
     truncated = detect_truncated_sources(source_health)
     newly_broken = detect_newly_broken_sources(source_health)

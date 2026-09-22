@@ -9085,6 +9085,67 @@ what the totals hide.
      product — and this file spent three research passes inferring
      around item 178 for exactly that reason.
 
+     🟢 **Shipped 2026-09-22.** Added `expected_source_keys()` and
+     `detect_missing_sources()` to `scripts/build_digest.py` — the
+     former builds the full `region:name` set from every enabled
+     source across `config/regions/*.yaml`, the latter diffs it
+     against `health.keys()`. Also added `load_transport_failures()`,
+     `update_transport_failures()`, `save_transport_failures()` and
+     `detect_chronic_transport_failures()`, backed by a new
+     `data/source_transport_failures.json` keyed the same way as
+     `source_health.json` but tracking a **consecutive-failure
+     streak** per source rather than an item count: it increments on
+     every transport failure and resets to 0 on any success, so a
+     source that fails once and recovers never gets flagged, but one
+     failing on every build accumulates a streak that
+     `detect_chronic_transport_failures()` flags once it crosses
+     `CONSECUTIVE_TRANSPORT_FAILURE_ALERT_THRESHOLD = 3`. This is
+     exactly item 55's own reasoning, applied to the case it never
+     considered: the count history stays clean (no `0` written for a
+     transport failure), and the "was this a one-off or is it dying"
+     question now has its own answer instead of no answer at all.
+     `fetch_region_sections()` calls `update_transport_failures()`
+     unconditionally for every source (success or failure), right
+     alongside the existing `update_source_health()` call.
+
+     One real design decision this item's own wording asked for but
+     didn't get: it said "both checks belong in the build, failing
+     the job the way item 51's existing regression check already
+     does." Checked that against the real, current health file
+     before wiring it in — and it would have been wrong to follow
+     literally. The five sources this check exists to catch are
+     *already missing right now*, so a build-failing version fails
+     **every build starting with this one**, including
+     `send-newsletter.yml`'s own independent `python
+     scripts/build_digest.py` step, which has no
+     `continue-on-error`/`if: always()` guarding it. That would
+     silently block tomorrow's scheduled send (Wednesday 2026-09-23
+     22:37 UTC) — the same send items 175/178 just spent this pass
+     unblocking. Wired both new checks in as `logger.warning()` calls
+     instead, deliberately **not** added to the existing
+     `sys.exit(1)` condition that `detect_source_regressions`,
+     `detect_truncated_sources` and `detect_newly_broken_sources`
+     share. They stay loud in the build log without withholding
+     output, matching the same "never withhold otherwise-good output"
+     principle `build-digest.yml`'s own `if: always()` comment (item
+     51) already states for the commit step. Also updated
+     `build-digest.yml` to commit the new
+     `data/source_transport_failures.json` file alongside the other
+     generated data files.
+
+     Verified against a real local build: all five sources named
+     above in this item's own list logged as warnings, exactly
+     matching (no more, no fewer). Added 10 tests to
+     `tests/test_build_digest.py` covering the increment/reset
+     behavior, the round-trip save/load, the threshold edge (flags at
+     3, not below it), and `detect_missing_sources()` against both a
+     never-recorded enabled source and a disabled one (which must not
+     be flagged). Full suite: 459 passed.
+
+     Diagnosing *why* the five fail transport still needs real
+     network access this loop doesn't have — unchanged from this
+     item's original scope, now tracked loudly instead of silently.
+
 182. **Three of five regions contribute zero weekend events, and the
      cap fix could never have helped them.** `data/weekend_signal.json`:
      Arlington Heights 3, Mount Prospect 7, **Des Plaines 0, Palatine
@@ -9256,13 +9317,15 @@ every event in a subscriber's calendar).
   before committing.
 - Never hand-commit `docs/` output — run `git restore docs/` and remove any
   newly-created `docs/<region-id>/` directories before staging.
-- Same for `data/source_health.json` (item 51) — always `git restore` it
-  after a local build in this sandbox, never stage it. This sandbox's
-  network is blocked, so every source fetches 0 here; against the real
-  trailing history from actual GitHub Actions runs, that reads as every
-  source dying at once and `build_digest.py` will legitimately exit 1 -
-  correct behavior, but committing that run's health file would poison
-  the real history with a sandbox-only false mass-regression.
+- Same for `data/source_health.json` (item 51) and
+  `data/source_transport_failures.json` (item 181) — always `git
+  restore` both after a local build in this sandbox, never stage
+  either. This sandbox's network is blocked, so every source fetches 0
+  here; against the real trailing history from actual GitHub Actions
+  runs, that reads as every source dying at once and `build_digest.py`
+  will legitimately exit 1 - correct behavior, but committing that
+  run's health file would poison the real history with a sandbox-only
+  false mass-regression.
 - Don't add speculative complexity ahead of an actual phase — this is a
   real small business, not a demo.
 - Phase 11 is the idea queue, not a spec. Items there are researched

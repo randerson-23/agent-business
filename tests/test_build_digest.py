@@ -1427,6 +1427,100 @@ def test_load_source_health_returns_empty_dict_on_corrupt_json(tmp_path, monkeyp
     assert build_digest.load_source_health() == {}
 
 
+def test_update_transport_failures_increments_on_failure():
+    failures = {}
+    build_digest.update_transport_failures(failures, "region:Source", transport_failed=True)
+    build_digest.update_transport_failures(failures, "region:Source", transport_failed=True)
+    assert failures["region:Source"] == 2
+
+
+def test_update_transport_failures_resets_on_success():
+    failures = {"region:Source": 5}
+    build_digest.update_transport_failures(failures, "region:Source", transport_failed=False)
+    assert failures["region:Source"] == 0
+
+
+def test_detect_chronic_transport_failures_flags_at_threshold():
+    failures = {"region:Dead": 3, "region:Fine": 1}
+    assert build_digest.detect_chronic_transport_failures(failures, threshold=3) == ["region:Dead"]
+
+
+def test_detect_chronic_transport_failures_ignores_below_threshold():
+    failures = {"region:Blip": 2}
+    assert build_digest.detect_chronic_transport_failures(failures, threshold=3) == []
+
+
+def test_save_and_load_transport_failures_round_trip(tmp_path, monkeypatch):
+    monkeypatch.setattr(build_digest, "TRANSPORT_FAILURE_PATH", tmp_path / "transport_failures.json")
+    failures = {"region:Source": 4}
+    build_digest.save_transport_failures(failures)
+    assert build_digest.load_transport_failures() == failures
+
+
+def test_load_transport_failures_returns_empty_dict_when_missing(tmp_path, monkeypatch):
+    monkeypatch.setattr(build_digest, "TRANSPORT_FAILURE_PATH", tmp_path / "does-not-exist.json")
+    assert build_digest.load_transport_failures() == {}
+
+
+def test_expected_source_keys_includes_only_enabled_sources():
+    regions = [
+        {
+            "region": {"id": "mount-prospect-60056"},
+            "sources": [
+                {"name": "Village News", "enabled": True},
+                {"name": "Disabled Source", "enabled": False},
+                {"name": "Default Enabled"},
+            ],
+        }
+    ]
+    assert build_digest.expected_source_keys(regions) == {
+        "mount-prospect-60056:Village News",
+        "mount-prospect-60056:Default Enabled",
+    }
+
+
+def test_detect_missing_sources_flags_a_configured_source_never_recorded():
+    # ROADMAP.md item 181 (forty-third research pass): a source that
+    # fails transport on every build never earns a key in
+    # source_health.json at all (item 55's own design) - the three
+    # detectors above can't see an absent key by iterating present
+    # ones. This is the check that catches the absence itself.
+    regions = [
+        {
+            "region": {"id": "wheeling-60090"},
+            "sources": [
+                {"name": "Indian Trails Public Library — Events", "enabled": True},
+                {"name": "Wheeling Park District — Events", "enabled": True},
+            ],
+        }
+    ]
+    health = {"wheeling-60090:Indian Trails Public Library — Events": [6, 6, 6]}
+    assert build_digest.detect_missing_sources(regions, health) == [
+        "wheeling-60090:Wheeling Park District — Events"
+    ]
+
+
+def test_detect_missing_sources_ignores_a_disabled_source():
+    regions = [
+        {
+            "region": {"id": "wheeling-60090"},
+            "sources": [{"name": "Disabled Source", "enabled": False}],
+        }
+    ]
+    assert build_digest.detect_missing_sources(regions, {}) == []
+
+
+def test_detect_missing_sources_returns_empty_when_everything_recorded():
+    regions = [
+        {
+            "region": {"id": "mount-prospect-60056"},
+            "sources": [{"name": "Village News", "enabled": True}],
+        }
+    ]
+    health = {"mount-prospect-60056:Village News": [6]}
+    assert build_digest.detect_missing_sources(regions, health) == []
+
+
 def test_render_region_page_produces_html_even_with_empty_sources():
     # On the main page (nav_current="all", the default - real call sites
     # for every other view always pass their own nav_current), an empty

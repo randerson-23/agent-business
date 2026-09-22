@@ -64,7 +64,7 @@ jobs:
         run: |
           git config user.name "local-planner-bot"
           git config user.email "actions@users.noreply.github.com"
-          git add docs/ data/source_health.json data/weekend_signal.json
+          git add docs/ data/source_health.json data/weekend_signal.json data/source_transport_failures.json
           if git diff --cached --quiet; then
             echo "No changes to commit."
           else
