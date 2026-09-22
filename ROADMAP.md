@@ -8895,6 +8895,17 @@ last three passes assumed.**
      that carries Oktoberfest — the single biggest event the site has
      ever listed.
 
+     ⚠️ **Re-scoped by item 185 (forty-fourth pass).** The "four
+     zero-returning sources" framing above is wrong, and measured data
+     now says so: three of the four (Village News, Village Calendar,
+     Experience MP) fail *transport* on every build and their `0` in
+     the health file is a stale pre-failure value, not a reading. Only
+     **Downtown Mount Prospect** genuinely reaches the page and finds
+     nothing. Treat this item as covering Downtown Mount Prospect
+     alone; the other three belong to item 185's transport-repair
+     track, and need a different fix. The civic-moat argument below
+     stands unchanged — the layer is absent either way.
+
      Item 161 already diagnosed two of the four (Experience Mount
      Prospect 403s; Downtown Mount Prospect returns 200 with zero
      matches) and proposed asking rather than working around. The two
@@ -9464,6 +9475,304 @@ advice is consistently *not* to build one), and **subscribable
 platform-specific subscribe-link shapes, `X-WR-CALNAME`, and the
 stable-`UID` requirement that keeps a weekly rebuild from duplicating
 every event in a subscriber's calendar).
+
+
+#### Research pass 2026-09-22 (forty-fourth pass)
+
+Item 181 shipped six hours ago and immediately produced information this
+file has never had. `data/source_transport_failures.json` now exists, and
+reading it against `data/source_health.json` **contradicts item 179's
+diagnosis** — which this pass takes as the finding rather than defending
+the earlier write-up. Item 182's first swap also landed, and its result
+settles what had been an argument: Indian Trails went **14 → 247** items
+on the feed swap alone, and Wheeling went **0 → 7** weekend events.
+Network-wide the weekend is now **18 events**, up from 10 this morning.
+
+| Angle | Finding | Consequence |
+|---|---|---|
+| **Transport failures, now measured** | **Eight of 25 sources fail transport on every build** (streak 5 of 5): AH School District 25, Experience Mount Prospect, Village of Mount Prospect Calendar, Village of Mount Prospect News, Palatine CCSD 15, Palatine D211, Wheeling CCSD 21, Wheeling Park District. Palatine Public Library sits at 1 — its first recorded flake | 32% of the roster is unreachable, not broken. That is a different repair than a rewritten selector (item 185) |
+| **Item 179, contradicted** | Three of item 179's "dead four" (Village Calendar, Village News, Experience MP) are **transport failures**, not dead scrapers. Their `0` in the health file is a *stale* last-recorded value that the skip-on-transport-failure rule has frozen in place since | The health file and the transport file tell contradictory stories about the same three sources, and the health file's version is the one item 179 was written from (item 185) |
+| **The genuinely dead two** | **Downtown Mount Prospect** and **Village of Palatine — News** both show streak **0** and count **0**. They reach the page fine and find nothing | Exactly two true dead scrapers, not four. These are the only two where "the selector broke" is the right hypothesis (item 185) |
+| **Des Plaines, the invisible class** | All four Des Plaines sources reach, return **37 items** between them, carry **zero transport failures** — and the region contributes **0 weekend events**. Nothing in the repo can see this | Every detector this repo has answers "is the source working?" Nothing answers "is the region producing?" (item 186) |
+| **What local sponsors actually ask for** | Sponsors evaluate engagement over list size — a small engaged list beats a big weak one — and the specific number they ask for is the **open rate**; refusing to share it is read as bad numbers. Healthy bands cited: open >40%, CTOR >15%, sponsored-link CTR 0.5–2% | `SPONSOR_KIT.md` already argues engagement-over-count well. But `data/send_history.json` records *that* a send happened, not how it performed — the one number a sponsor will ask for is not being captured at all (item 187) |
+| **Native vs. banner placement** | Native in-content integrations reportedly outperform banner placements by **3–5×** | The Weekly Spot tier is sold as a "top-of-page banner," and in the built email the sponsor block sits *below every event* as a house ad. Worth knowing before the first real sponsor is priced (item 187) |
+| **Google News, re-checked** | Google **stopped taking Publisher Center submissions in April 2024** and finished moving to automatically generated publication pages in **March 2025**. Eligibility is now automatic and binary: follow the news content policies and you are in the pool. Publisher Center is optional and does not affect eligibility. Ranking within the pool runs on relevance, prominence, authoritativeness, **freshness**, usability and **location** | There is nothing to apply for — recording this so no future pass files "submit to Publisher Center" as work. The live question is different and narrower (item 188) |
+| **Web push on a static site (design/UX)** | The whole loop is doable with no server: generate a VAPID keypair, hold the private key as a repo secret, and have a **GitHub Action sign and send** the push. A working public implementation of exactly this pattern exists (`muan/push`) | The existing weekly workflow is already the "server." The honest blocker is not sending — it is where subscription endpoints get stored, which a static site has no answer for (item 189) |
+
+#### P1 (new)
+
+185. **`source_transport_failures.json` contradicts item 179, and the
+     contradiction is the more useful fact.** Item 179 reads the four
+     zero-returning Mount Prospect sources as a village layer whose
+     scrapers have died. The transport file, six hours old, says
+     otherwise for three of them:
+
+     | Source | Transport streak | Health count | What is actually wrong |
+     |---|---|---|---|
+     | Village of Mount Prospect — Calendar | **5** | 0 (stale) | Never reached |
+     | Village of Mount Prospect — News | **5** | 0 (stale) | Never reached |
+     | Experience Mount Prospect — Events | **5** | 0 (stale) | Never reached |
+     | Downtown Mount Prospect — Events | 0 | 0 | **Reaches, finds nothing** |
+
+     The `0` those first three carry in `source_health.json` is not a
+     current reading. It is the last value recorded *before* they
+     started failing transport, frozen there by the very rule item 55
+     introduced: a transport failure is skipped from health rather
+     than written, so a source that fails forever keeps publishing its
+     final pre-failure number forever. Item 181 fixed the case where
+     that leaves *no* key; this is the case where it leaves a **stale
+     key that actively misleads**, which is worse, because a stale
+     zero is indistinguishable from a live zero and item 179 was
+     written from exactly that confusion.
+
+     The two repairs are not the same work. A source that never
+     connects needs a transport fix — a `User-Agent` the host will
+     accept, a rate-limit backoff, a moved URL, or the host simply
+     blocking datacentre IPs. A source that connects and finds nothing
+     needs a selector fix. Item 179 proposes the second for all four,
+     and it is the right proposal for exactly one of them.
+
+     What to build:
+
+     - **Re-scope item 179** to Downtown Mount Prospect only, and add
+       **Village of Palatine — News** (streak 0, count 0) alongside
+       it — the same signature, in a different region, that item 179
+       never grouped with the others. Those two are the genuine dead
+       scrapers, and they are the only two where reading the page's
+       current markup is the right first move.
+     - **Open a transport-repair track** for the eight chronic
+       failures. Diagnosis needs real network access, which this
+       research loop does not have; the build loop does. The first
+       thing worth knowing is the *kind* of failure, so log and
+       persist the exception class or HTTP status alongside the
+       streak. "403 on every request" and "DNS does not resolve" are
+       different problems and currently record identically.
+     - **Make a stale health entry visibly stale.** When a source's
+       transport streak is nonzero, its health count is by definition
+       not current. Render it as such wherever health is read —
+       carrying a timestamp or a `stale` flag next to the count —
+       rather than letting a frozen number keep being quoted as an
+       observation. This pass and item 179 both quoted one.
+
+     **Credit where it is due, and the correction narrowed
+     accordingly:** item 161 already had part of this by hand — it
+     records Experience Mount Prospect as 403ing and Downtown Mount
+     Prospect as returning 200 with zero matches, which is exactly the
+     split above. So the split was known; what was missing was any
+     mechanism to *keep* knowing it. Item 179 then summarised all four
+     as one "dead village layer" anyway, and items 171–175 reasoned
+     from that summary rather than from item 161's detail. The new
+     value here is not the insight — it is that the insight is now a
+     file that updates every build instead of a note a later pass
+     stopped reading.
+
+     Priority note: the eight chronic failures include **both**
+     remaining non-library sources in Wheeling and **two of five** in
+     Palatine. Item 182's work and this item's work converge on the
+     same two regions, so they should be sequenced together rather
+     than as separate efforts.
+
+186. **Every check in this repo asks "is the source working?" and none
+     asks "is the region producing?"** Des Plaines is the proof: four
+     sources, four successful fetches, **zero** transport failures,
+     **37 items** between them — and **0 weekend events**, for the
+     second consecutive build. Every diagnostic in the repo reports
+     Des Plaines as healthy. The subject line reports it as absent.
+
+     This is a third failure class, distinct from the two item 185
+     separates, and it is the only one with no instrumentation at all:
+     a source can be reachable, un-truncated, returning a respectable
+     item count, and still contribute nothing to the product, because
+     nothing it returns is a dated event inside the weekend window.
+     Des Plaines's mix explains how: City News (10) is news posts, D62
+     (4) is a school calendar largely of closures, the Park District
+     (20) is programme listings, and the Library (3) is the shallowest
+     library in the network. Plenty of items; almost nothing dated to
+     a Saturday.
+
+     What to build:
+
+     - **Per-region weekend contribution as a first-class check.**
+       `data/weekend_signal.json` already records `region_counts`
+       every build. Nothing reads them. Add a detector that flags any
+       region at zero for N consecutive builds, in the same place the
+       other detectors report — the data is already being written, it
+       just has no consumer.
+     - **Report the funnel per region, not just the total.** Items
+       fetched → items with a parseable date → items inside the
+       weekend window. Three numbers per region, and the stage where
+       Des Plaines collapses becomes obvious rather than inferred.
+       This is the diagnostic that would have replaced this pass's
+       reasoning with a lookup.
+     - **Then decide what a zero-contribution region should render.**
+       That is a product question, not a bug: a region that
+       genuinely has no weekend events is a legitimate state, and
+       item 177's consolidated empty-state already handles it
+       gracefully. What is not legitimate is not knowing which of the
+       two it is.
+
+     Depends on nothing. Blocks a sensible answer to item 182's open
+     question about whether `MIN_WEEKEND_EVENTS` should be a
+     per-region floor rather than a network-wide one — that question
+     cannot be answered while "zero because quiet" and "zero because
+     mis-shaped inventory" are indistinguishable.
+
+187. **Capture the open rate, because it is the number a sponsor will
+     ask for first.** Researched what local sponsors actually evaluate
+     before buying: engagement over list size — a small engaged list
+     is explicitly reported to beat a large weak one — with the
+     specific ask being the **open rate**, and a publisher who will
+     not share it read as having bad numbers. The healthy bands cited
+     are open >40%, click-to-open >15%, and sponsored-link CTR
+     0.5–2%, where under 0.5% signals poor audience fit.
+
+     `SPONSOR_KIT.md` already makes the engagement-over-count argument
+     well and honestly, so the framing is not the gap. The gap is the
+     data. `data/send_history.json` records the timestamp, subject,
+     region, mode and Buttondown ID of each send — *that* it happened,
+     never how it performed. When the first sponsor conversation
+     reaches "what's your open rate," the answer today is that nobody
+     measured.
+
+     The hard part is already done: `buttondown_id` is being stored,
+     and that is exactly the handle needed to ask Buttondown for the
+     email's own stats afterwards. What is missing is the second step.
+
+     What to build:
+
+     - **A metrics backfill step**, run as its own scheduled job a few
+       days after each send (opens keep accruing for days, so reading
+       them at send time would be reading zeroes). Walk
+       `send_history.json`, and for any entry with a `buttondown_id`
+       and no metrics, fetch and record recipients, opens, clicks and
+       the derived rates.
+     - **Keep it non-fatal.** A metrics fetch failing must never
+       affect a send. It runs in a separate workflow for that reason,
+       not bolted onto `send-newsletter.yml`.
+     - **Then let `SPONSOR_KIT.md` quote real numbers** instead of
+       2026 category benchmarks. A kit that cites the publication's
+       own measured open rate is a materially different document from
+       one citing an industry band, and it is the difference the
+       research above describes.
+
+     Sequencing caveat, stated honestly: with one subscriber, an open
+     rate is a number about a sample of one and is not yet worth
+     quoting to anyone. Build the capture now anyway, because the
+     metric only becomes meaningful with a trailing history, and a
+     history not being recorded today cannot be recovered later. This
+     is infrastructure that has to precede the audience, not follow
+     it.
+
+     **Second finding, filed here rather than as its own item:**
+     native in-content integrations reportedly outperform banner
+     placements by 3–5×. The Weekly Spot tier is sold as a
+     "top-of-page banner," and in the built email the sponsor block
+     renders *below every event*, as the last thing before the
+     footer — the weakest position for the weakest format. Not filed
+     as work because there is no sponsor to move yet, and redesigning
+     a slot nobody has bought is speculative. Recorded so the question
+     is asked *before* the first one is priced, rather than after.
+
+#### P2 (new)
+
+188. **There is nothing to submit to Google News — the eligibility
+     question this file has been circling is already answered.**
+     Re-checked per the research loop's standing instruction. Google
+     stopped accepting manual publication submissions in Publisher
+     Center in **April 2024** and completed the move to automatically
+     generated publication pages in **March 2025**. Eligibility is now
+     automatic and binary: content that follows the news content
+     policies is eligible for the News tab and Top Stories, with no
+     form, no review queue and no waiting. Publisher Center is
+     optional and does not affect eligibility at all.
+
+     Filed mainly as a **negative result**: "set up Google Publisher
+     Center" is a plausible-sounding, zero-value task that a future
+     pass would otherwise file, and it is now foreclosed with a date
+     attached.
+
+     The live question is narrower and more interesting. Ranking
+     within the eligible pool runs on relevance, prominence,
+     authoritativeness, **freshness**, usability and **location** —
+     and freshness and location are precisely the two attributes this
+     site has in abundance and, per items 162/163, has never claimed.
+     But eligibility runs on *news content policies*, and this site
+     does not publish news-shaped content: its region pages are
+     rewritten in place every week at a stable URL, which is the right
+     call for SEO authority (item 158/160, and do not undo it) and the
+     wrong shape for a surface that indexes dated articles.
+
+     So the actual item, small and testable: **determine whether
+     anything this site publishes is article-shaped enough to be
+     eligible at all** before investing in the surface. The most
+     likely candidate is the seasonal-guide family (items 112/141 —
+     the Halloween and farmers-market guides), which are genuinely
+     dated, genuinely local, and already planned. Check what
+     `docs/feed.xml` currently advertises, and whether the guides
+     carry a visible publication date and byline — which loops back
+     into item 130, since "authoritativeness" and an anonymous site
+     are in direct tension. Do not build for this surface until that
+     question has an answer; a negative answer is a perfectly good
+     outcome and saves the work.
+
+#### P3 (new)
+
+189. **Web push for the weekend digest — architecturally free, blocked
+     on one thing this stack does not have.** The design/UX angle this
+     pass researched, filed at P3 with its blocker named rather than
+     buried, because it is the kind of item that looks impossible on a
+     static site and is mostly not.
+
+     The mechanism, checked rather than assumed: generate a VAPID
+     keypair, hold the private key as a repository secret, and have a
+     **GitHub Action sign the JWT and deliver the push** to each
+     stored subscription endpoint. No server. A working public
+     implementation of exactly this pattern exists (`muan/push`). This
+     repo is unusually well-placed for it — the send workflow already
+     runs weekly on a schedule, already holds a secret, and already
+     knows what the weekend contains — so the "backend" is a step in a
+     workflow that exists.
+
+     **The blocker, stated plainly: a static site has nowhere to store
+     a subscription.** Web push requires persisting each browser's
+     endpoint object, and `docs/` is a build artifact regenerated
+     every week. Committing subscriber endpoints into a public
+     repository is not an option — they are per-device identifiers and
+     the repo is public. That is a real dependency, not a detail, and
+     it is why this is P3 and not P1.
+
+     Realistic resolutions, in rough order of fit:
+
+     1. **Don't build it yet.** With one subscriber, push solves a
+        retention problem the business does not have. Item 183's
+        footer link and item 184's calendar feed both address the same
+        "keep a reader" goal with no storage dependency at all.
+     2. **Reuse Buttondown.** The list already exists and already has
+        a delivery channel. A second channel duplicating it is
+        overhead, not reach.
+     3. **Revisit if a datastore ever lands** for another reason. If
+        something in the stack ever grows a place to put per-reader
+        state, push becomes a small, mostly-written feature rather
+        than a new subsystem.
+
+     Recorded now so the architecture question is answered once, with
+     the blocker attached, instead of being re-researched by a later
+     pass that gets as far as "GitHub Actions can send it" and files
+     it as easy.
+
+Competitors reviewed this pass: **Google News / Publisher Center**
+(re-checked per standing instruction — manual submission ended April
+2024, automatic publication pages completed March 2025, so eligibility
+is automatic and there is nothing to apply for; ranking runs on
+relevance, prominence, authoritativeness, freshness, usability and
+location), **newsletter sponsorship buy-side benchmarks** (what a
+sponsor evaluates before buying: engagement over list size, the open
+rate as the specific ask, open >40% / CTOR >15% / sponsored-link CTR
+0.5–2%, and native integrations reportedly outperforming banners 3–5×),
+and **web push on a static site** as a design/UX pattern (VAPID
+keypair, private key as a repository secret, a GitHub Action signing
+and delivering the push, and the subscription-storage problem that a
+public static repo cannot solve).
 
 
 ## Working agreements for autonomous iteration
