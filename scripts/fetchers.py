@@ -57,7 +57,25 @@ USER_AGENT = "WithinTen/1.0 (+https://withintenmiles.com/)"
 # site-wide feed, not one civic source) rather than removed outright,
 # so one pathological feed still can't dominate a region page or blow
 # up build time.
-MAX_ITEMS_PER_SOURCE = 200
+#
+# Raised again to 500 the same day (item 180's own truncation detector,
+# built specifically to catch this class of problem, caught it for
+# real on its very first live run): Arlington Heights Memorial
+# Library and Mount Prospect Public Library both landed on exactly 200
+# for 3 consecutive real builds - genuinely more content than 200 was
+# assumed to comfortably cover, not a coincidence, confirmed the same
+# way item 178 was originally confirmed (real data/source_health.json
+# history, not guessed). AHML's Drupal calendar in particular is
+# exactly the kind of source this can recur for: many real weekly-
+# recurring sessions (confirmed real content, not chrome - see item
+# 178's own write-up), each its own detail link, accumulating for as
+# far forward as the calendar's own window extends. 500 is still "a
+# few hundred," not unbounded - the real, not-yet-attempted fix stays
+# what item 178 originally proposed: bound by date horizon inside the
+# fetcher itself (fetch_rss and fetch_html_events have no per-item
+# date ordering to do that with yet), not by raising this number again
+# each time a real source outgrows it.
+MAX_ITEMS_PER_SOURCE = 500
 
 
 def _unescape_ics_text(value: str) -> str:
