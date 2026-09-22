@@ -575,6 +575,8 @@
   .newsletter form { display: contents; }
   .newsletter-copy strong { font-size: 15px; }
   .newsletter-copy p { margin: 3px 0 0; color: var(--muted); font-size: 13.5px; }
+  .newsletter-copy .newsletter-note { font-size: 12px; margin-top: 6px; }
+  .newsletter-pending { margin: 0; font-size: 13.5px; font-weight: 600; }
   .newsletter-form-row { display: flex; gap: 0; flex-wrap: wrap; }
   .newsletter-form-row input[type="email"] {
     font: inherit;
@@ -930,13 +932,19 @@
   {% endif %}
 
   {# Only render once signup actually works - see hub.html.j2 for the
-     same fix and rationale (ROADMAP.md Phase 11 #56). #}
+     same fix and rationale (ROADMAP.md Phase 11 #56). Targets a hidden
+     iframe rather than a popup window (item 191) - works with no JS at
+     all since a named target is plain HTML, and the popup it replaces
+     gave a reader zero feedback when blocked. The submit-time swap to
+     the pending message below is a JS enhancement on top; the note
+     under the input is the no-JS fallback disclosure. #}
   {% if newsletter and newsletter.configured %}
-  <div class="newsletter">
-    <form action="https://buttondown.com/api/emails/embed-subscribe/{{ newsletter.buttondown_username }}" method="post" target="popupwindow" onsubmit="window.open('https://buttondown.com/{{ newsletter.buttondown_username }}', 'popupwindow')">
+  <div class="newsletter" id="newsletter-signup">
+    <form class="newsletter-form" action="https://buttondown.com/api/emails/embed-subscribe/{{ newsletter.buttondown_username }}" method="post" target="bd-hidden-frame">
       <div class="newsletter-copy">
         <strong>{{ newsletter.headline }}</strong>
         <p>{{ newsletter.detail }}</p>
+        <p class="newsletter-note">We'll send one email to confirm.</p>
       </div>
       <div class="newsletter-form-row">
         <label class="sr-only" for="bd-email">Email address</label>
@@ -944,7 +952,20 @@
         <button type="submit">Subscribe</button>
       </div>
     </form>
+    <p class="newsletter-pending" hidden>Almost there — check your email and click the confirmation link.</p>
   </div>
+  <iframe name="bd-hidden-frame" title="Newsletter signup" style="display:none" aria-hidden="true"></iframe>
+  <script>
+  (function () {
+    var form = document.querySelector("#newsletter-signup .newsletter-form");
+    var pending = document.querySelector("#newsletter-signup .newsletter-pending");
+    if (!form || !pending) return;
+    form.addEventListener("submit", function () {
+      form.hidden = true;
+      pending.hidden = false;
+    });
+  })();
+  </script>
   {% endif %}
   </main>
 

@@ -1858,6 +1858,23 @@ def test_render_region_page_shows_newsletter_form_when_configured():
     assert "Signup coming soon" not in html
 
 
+def test_render_region_page_newsletter_form_uses_hidden_iframe_not_popup():
+    # ROADMAP.md item 191: a popup gives a blocked-popup reader zero
+    # feedback, and the page never disclosed that a confirmation email
+    # (Buttondown's own double opt-in, item 190) was coming.
+    newsletter = {"configured": True, "headline": "Get it in your inbox", "detail": "Weekly.", "buttondown_username": "planner"}
+    html = build_digest.render_region_page(
+        {"region": REGION}, [], {"title": "", "detail": "", "url": ""}, [], datetime.now(timezone.utc),
+        newsletter=newsletter,
+    )
+    assert 'target="bd-hidden-frame"' in html
+    assert 'popupwindow' not in html
+    assert 'window.open' not in html
+    assert '<iframe name="bd-hidden-frame"' in html
+    assert "We'll send one email to confirm." in html
+    assert "check your email and click the confirmation link" in html
+
+
 def test_render_region_page_calendar_box_includes_email_link_when_configured():
     # ROADMAP.md item 183's own follow-up: the bottom-of-page signup form
     # sits 99%+ of the way down a real region page, unreachable by a
@@ -2276,6 +2293,18 @@ def test_render_hub_page_shows_newsletter_form_when_configured():
     newsletter = {"configured": True, "headline": "Get it in your inbox", "detail": "Weekly.", "buttondown_username": "planner"}
     html = build_digest.render_hub_page([], [], datetime.now(timezone.utc), newsletter=newsletter)
     assert 'buttondown.com/api/emails/embed-subscribe/planner' in html
+
+
+def test_render_hub_page_newsletter_form_uses_hidden_iframe_not_popup():
+    # Same fix as the region page (item 191) - see that test's comment.
+    newsletter = {"configured": True, "headline": "Get it in your inbox", "detail": "Weekly.", "buttondown_username": "planner"}
+    html = build_digest.render_hub_page([], [], datetime.now(timezone.utc), newsletter=newsletter)
+    assert 'target="bd-hidden-frame"' in html
+    assert 'popupwindow' not in html
+    assert 'window.open' not in html
+    assert '<iframe name="bd-hidden-frame"' in html
+    assert "We'll send one email to confirm." in html
+    assert "check your email and click the confirmation link" in html
     assert "Signup coming soon" not in html
 
 
