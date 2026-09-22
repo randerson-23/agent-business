@@ -8844,6 +8844,16 @@ last three passes assumed.**
      itself, not repeatedly raising a count cap each time a real
      source outgrows it.
 
+     **Settled, confirmed by a third real build:** both sources' true
+     totals turned out well inside the new cap rather than still
+     climbing toward it - `data/source_health.json` now shows Arlington
+     Heights Memorial Library at a real 259 and Mount Prospect Public
+     Library at a real 299, both comfortably below 500. The 200-item
+     truncation was real but bounded, not a sign of unbounded growth;
+     500 looks like real headroom rather than a number that will need
+     raising again next week. `detect_truncated_sources()` and the
+     other two health checks all confirm clean against this fresh data.
+
 179. **Mount Prospect has lost its entire village layer, and it is the
      only region that has.** The four zero-returning sources are not
      scattered: they are **Village of Mount Prospect — News**, **Village
