@@ -1369,6 +1369,45 @@ def test_detect_source_regressions_ignores_a_source_still_returning_events():
     assert build_digest.detect_source_regressions(health) == []
 
 
+def test_detect_truncated_sources_flags_a_source_pinned_at_the_cap():
+    # ROADMAP.md item 180 (forty-second research pass): a source landing
+    # on exactly the cap three builds running is almost certainly being
+    # cut off, not coincidentally exhausted at the same number every time
+    # - the diagnostic that would have surfaced item 178 directly.
+    health = {"region:Truncated": [6, 6, 6]}
+    assert build_digest.detect_truncated_sources(health, cap=6) == ["region:Truncated"]
+
+
+def test_detect_truncated_sources_ignores_a_source_below_the_cap():
+    health = {"region:Healthy": [4, 5, 4]}
+    assert build_digest.detect_truncated_sources(health, cap=6) == []
+
+
+def test_detect_truncated_sources_ignores_one_coincidental_hit_at_the_cap():
+    health = {"region:Coincidence": [4, 5, 6]}
+    assert build_digest.detect_truncated_sources(health, cap=6) == []
+
+
+def test_detect_newly_broken_sources_flags_the_third_consecutive_zero():
+    health = {"region:JustDied": [6, 5, 0, 0, 0]}
+    assert build_digest.detect_newly_broken_sources(health) == ["region:JustDied"]
+
+
+def test_detect_newly_broken_sources_does_not_re_flag_a_source_already_dead():
+    # A source that died weeks ago and has since fully aged into an
+    # all-zero history (the four known Mount Prospect village sources,
+    # items 161/179) should not re-trigger this every single build -
+    # only the transition build, where the 4th-from-last entry was still
+    # nonzero, does.
+    health = {"region:LongDead": [0, 0, 0, 0, 0, 0]}
+    assert build_digest.detect_newly_broken_sources(health) == []
+
+
+def test_detect_newly_broken_sources_ignores_a_source_with_too_little_history():
+    health = {"region:NewSource": [0, 0, 0]}
+    assert build_digest.detect_newly_broken_sources(health) == []
+
+
 def test_save_and_load_source_health_round_trip(tmp_path, monkeypatch):
     monkeypatch.setattr(build_digest, "SOURCE_HEALTH_PATH", tmp_path / "source_health.json")
     health = {"region:Source": [1, 2, 3]}
