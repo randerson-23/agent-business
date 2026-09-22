@@ -743,6 +743,17 @@
     <span class="calendar-subscribe-label">📅 Subscribe once, get every {{ region.name }} event automatically:</span>
     <a href="{{ calendar_ics_url | replace('https://', 'webcal://') }}">Subscribe (Apple/Google Calendar)</a>
     <a href="{{ calendar_ics_url }}">Download .ics</a>
+    {# ROADMAP.md item 183's own follow-up: the email signup form sits
+       at the very bottom of this page (measured: 99%+ of the way down
+       a real region page), reachable only by a reader who scrolls past
+       every event on the page first. Rather than duplicate the full
+       form up here - competing with this box's own "one dominant ask"
+       and the map/weather content right below - one plain link to the
+       same hosted subscribe page the email footer (item 183) already
+       uses, folded into this existing box instead of a new one. #}
+    {% if newsletter and newsletter.configured %}
+    <a href="https://buttondown.com/{{ newsletter.buttondown_username }}">📬 Get it by email instead</a>
+    {% endif %}
   </div>
   {% endif %}
 
