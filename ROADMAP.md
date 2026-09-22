@@ -9357,6 +9357,25 @@ what the totals hide.
        than a second guess layered on an already-uncertain platform
        ID.
 
+       🟡 **Follow-up, 2026-09-22 — platform narrowed, still no config
+       change.** A second WebSearch pass found six *unrelated* public
+       libraries (`hhhlibrary.org`, `mld.org`, `fordlibrary.org`,
+       `riverheadlibrary.org`, `cslibrary.org`, `kckpl.org`) all
+       serving the identical URL grammar
+       `/events/feed/html?_wrapper_format=lc_calendar_feed&current_date=…&ongoing_events=hide`
+       — real, indexed search hits, not guessed. That confirms the
+       "Drupal-style Views date-argument routing" fingerprint above is
+       a specific shared library-calendar product deployed across many
+       public libraries, not a one-off Drupal build — real corroboration
+       for the existing platform ID rather than a fresh guess. It does
+       **not** close the gap: every one of those hits is itself an
+       `html`-wrapper page, and no search result shows this product
+       exposing `rss` or `ical` as a `_wrapper_format` value alongside
+       `html`. Whether the machine-readable swap is even possible is
+       still exactly the same real-page-fetch question as before —
+       named honestly as narrowed, not solved, rather than quietly
+       upgraded to "confirmed."
+
      Both remaining gaps need one real page fetch each, not more
      search — recorded honestly as still open rather than closed on
      inference.
