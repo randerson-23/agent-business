@@ -33,7 +33,7 @@ from jinja2 import Environment, FileSystemLoader
 from PIL import Image, ImageDraw, ImageFont
 
 sys.path.insert(0, str(Path(__file__).parent))
-from fetchers import FETCHERS, fetch_weather, submit_indexnow  # noqa: E402
+from fetchers import FETCHERS, MAX_ITEMS_PER_SOURCE, fetch_weather, submit_indexnow  # noqa: E402
 from tagging import infer_tags, is_informational, merge_default_tags, tag_display  # noqa: E402
 
 logging.basicConfig(level=logging.INFO, format="%(levelname)s %(name)s: %(message)s")
@@ -461,6 +461,51 @@ def detect_source_regressions(health: dict) -> list[str]:
         if current == 0 and statistics.median(prior) > 0:
             regressions.append(key)
     return regressions
+
+
+def detect_truncated_sources(health: dict, cap: int = MAX_ITEMS_PER_SOURCE) -> list[str]:
+    """Source keys whose last three counts all land exactly on
+    MAX_ITEMS_PER_SOURCE - ROADMAP.md item 180 (forty-second research
+    pass): a source pinned at exactly the cap three builds running is
+    almost certainly being cut off, not coincidentally exhausted at
+    exactly the runaway-guard ceiling every time. This is exactly the
+    diagnostic that would have surfaced item 178 (the cap sitting at 6
+    for every live source, for every recorded build) directly instead
+    of needing three passes of inference to find the same fact.
+    """
+    truncated = []
+    for key, history in sorted(health.items()):
+        if len(history) >= 3 and history[-3:] == [cap] * 3:
+            truncated.append(key)
+    return truncated
+
+
+def detect_newly_broken_sources(health: dict) -> list[str]:
+    """Source keys where a third consecutive zero just landed -
+    ROADMAP.md item 180 (forty-second research pass): the existing
+    regression check above only catches the *transition* from a
+    positive trailing median to a single zero, and naturally goes quiet
+    again once a chronically-dead source's own history fully ages past
+    that transition (its trailing median becomes 0 too, indistinguishable
+    from a source that has always legitimately returned nothing). That's
+    exactly right for one-off noise and exactly wrong for a source that
+    dies and stays dead - it should say so once, not go silently
+    unreadable again after ten builds.
+
+    Fires exactly once, on the build where the third consecutive zero
+    lands (`history[-4]` was still nonzero), not on every later build a
+    source stays dead - a source already fully aged into all-zero
+    history (the four known Mount Prospect village sources, items
+    161/179) won't re-trigger this every build going forward, since
+    that transition already happened outside this file's own tracked
+    window. New sources with fewer than four recorded builds are left
+    alone; there's nothing to transition from yet.
+    """
+    newly_broken = []
+    for key, history in sorted(health.items()):
+        if len(history) >= 4 and history[-3:] == [0, 0, 0] and history[-4] != 0:
+            newly_broken.append(key)
+    return newly_broken
 
 
 def save_source_health(health: dict) -> None:
@@ -3021,7 +3066,9 @@ def main() -> None:
 
     save_source_health(source_health)
     regressions = detect_source_regressions(source_health)
-    if regressions:
+    truncated = detect_truncated_sources(source_health)
+    newly_broken = detect_newly_broken_sources(source_health)
+    if regressions or truncated or newly_broken:
         # Deliberately fails the build *after* every other file above is
         # already written to disk (ROADMAP.md Phase 11 #51) - the
         # workflow's commit step still runs with `if: always()` so the
@@ -3036,6 +3083,26 @@ def main() -> None:
         for key in regressions:
             logger.error(
                 "Source health regression: %s just returned 0 items despite a positive trailing history - likely a silently broken scraper, not a normal empty week.",
+                key,
+            )
+        # ROADMAP.md item 180 (forty-second research pass): the two gaps
+        # item 51's original check didn't know about. Truncation isn't
+        # transition-gated - it fires on every build a source stays
+        # pinned at the cap, since that's an ongoing condition worth
+        # continued attention until fixed, not a one-time event like a
+        # source dying.
+        for key in truncated:
+            logger.error(
+                "Source truncation: %s has returned exactly the %d-item cap on its last 3 builds - likely being cut off, not coincidentally exhausted at the same number every time.",
+                key, MAX_ITEMS_PER_SOURCE,
+            )
+        # Transition-gated (fires once, on the build the third consecutive
+        # zero lands) - a source already fully aged into all-zero history
+        # (the four known Mount Prospect village sources, items 161/179)
+        # won't re-trigger this every build going forward.
+        for key in newly_broken:
+            logger.error(
+                "Source newly broken: %s has returned 0 items on 3 consecutive builds - broken, not a normal quiet week.",
                 key,
             )
         sys.exit(1)

@@ -8914,6 +8914,45 @@ last three passes assumed.**
      existing regression check already does — the mechanism exists, it
      simply does not know about these two cases.
 
+     🟢 **Shipped 2026-09-22.** Added `detect_truncated_sources()` and
+     `detect_newly_broken_sources()` alongside the existing
+     `detect_source_regressions()` in `scripts/build_digest.py`, wired
+     into the same build-failing check at the same point in `main()`.
+
+     Truncation fires whenever a source's last three counts all land
+     exactly on `MAX_ITEMS_PER_SOURCE` (200 now) — deliberately **not**
+     transition-gated, since it's meant to stay loud for as long as a
+     source is actually being cut off, unlike a source that died once.
+
+     The "broken rather than quiet" check needed one real design
+     decision this item's own wording didn't spell out: item 180 asked
+     for both checks to fail the build exactly like the existing one,
+     but a literal "any source with 3+ trailing zeros" check would
+     permanently fail every build going forward for the four already-
+     known, already-diagnosed dead Mount Prospect sources (items
+     161/179) until their real fix lands — training everyone to ignore
+     red builds, the opposite of the alert's actual purpose. Checked
+     this against the real, current `data/source_health.json` before
+     deciding, not assumed: those four sources' histories are already
+     fully aged into all-zero (`[0,0,0,0,0]` and longer), so a naive
+     check fires on every single build from here forward.
+
+     Fixed by transition-gating it the same way the existing regression
+     check already is: `detect_newly_broken_sources()` only fires on
+     the build where the *third* consecutive zero lands (the 4th-from-
+     last entry was still nonzero) — once, not forever. A source dead
+     for weeks and already fully aged into flat-zero history won't
+     re-trigger it on every later build; a source that dies *starting
+     now* still gets caught at the moment it crosses into "broken," not
+     silently absorbed into "quiet by design" the way item 175/180
+     both described. Verified against the real, current health file:
+     all three new/existing checks return empty against it (no false
+     positive on the four already-known-dead sources or on
+     `palatine-60067:Village of Palatine — News`'s own item-175 reset
+     history), confirmed by running the functions directly against the
+     committed file before shipping, not assumed from the design alone.
+     6 new tests, 449 total pass.
+
 ## Working agreements for autonomous iteration
 
 - Cadence is hourly (the platform's durable scheduler has a 1-hour floor;
