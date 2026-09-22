@@ -84,11 +84,29 @@ sources:
     enabled: true
 
   - name: "Indian Trails Public Library — Events"
-    type: html_events
-    # CONFIRMED (run 35570674044, 2026-09-21): 6 real items. The first
-    # build's connect timeout was transient - see the header comment.
-    url: "https://www.indiantrailslibrary.org/events/"
-    keywords: ["event", "class", "program", "story", "camp", "concert", "workshop", "book", "club"]
+    type: rss
+    # ROADMAP.md item 182: Indian Trails runs the same Communico/libnet.info
+    # platform as Mount Prospect Public Library - confirmed by WebSearch
+    # (indiantrails.libnet.info/events, "Events - Indian Trails Public
+    # Library District - Communico"), not assumed from the town alone.
+    # MPPL's own switch from html_events scraping to this exact "feeds"
+    # endpoint (see that region's config) took it from 6 (pre-cap) to 299,
+    # the deepest source in the whole network - the same trade is worth
+    # making here since it's the identical platform, not a guess at a new
+    # one. The `data` param is the same base64 JSON filters payload MPPL
+    # already uses (feedType rss, all locations/ages/types, no term,
+    # 30-day window) - nothing in it is library-specific, only the
+    # subdomain changes.
+    #
+    # Previous html_events source (CONFIRMED live, 6 real items, run
+    # 35570674044) is the fallback if this RSS endpoint turns out not to
+    # mirror MPPL's exactly: url "https://www.indiantrailslibrary.org/events/",
+    # keywords ["event", "class", "program", "story", "camp", "concert",
+    # "workshop", "book", "club"], type html_events. Not yet confirmed
+    # against a live run - this sandbox's network is proxy-blocked for
+    # arbitrary domains; will self-correct from the next real GitHub
+    # Actions build, same as every other source here.
+    url: "https://indiantrails.libnet.info/feeds?data=eyJmZWVkVHlwZSI6InJzcyIsImZpbHRlcnMiOnsibG9jYXRpb24iOlsiYWxsIl0sImFnZXMiOlsiYWxsIl0sInR5cGVzIjpbImFsbCJdLCJ0YWdzIjpbXSwidGVybSI6IiIsImRheXMiOjMwfX0="
     section: "Library Events"
     enabled: true
 

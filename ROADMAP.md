@@ -9201,6 +9201,73 @@ what the totals hide.
      a total, but it is a judgement call about what the product
      promises, so it is named here rather than filed as a change.
 
+     🟢 **One of three shipped, 2026-09-22 — Indian Trails switched to
+     its real feed; Des Plaines and Palatine researched but not
+     guessed.** WebSearch (this loop still has no direct fetch access)
+     identified the actual platform behind all three shallow
+     libraries rather than assuming from the town name:
+
+     - **Indian Trails Public Library (Wheeling) — CONFIRMED, same
+       platform as MPPL.** WebSearch surfaced `indiantrails.libnet.info`
+       directly ("Events - Indian Trails Public Library District -
+       Communico") — the identical Communico/libnet.info platform
+       already proven live for Mount Prospect Public Library, which
+       went from 6 (pre-cap) to 299 items on the exact same
+       `/feeds?data=<base64 filters>` endpoint this item's own text
+       named as the lead worth chasing. The base64 payload is a plain
+       JSON filters object with no library ID inside it (decoded and
+       confirmed: `{"feedType":"rss","filters":{...}}`), so swapping
+       only the subdomain is the whole change, not a guess at a new
+       parameter shape. Switched `config/regions/wheeling-60090.yaml`'s
+       Indian Trails source from `html_events` (6 items) to `rss`
+       pointed at `indiantrails.libnet.info/feeds?data=...`, keeping
+       the previous confirmed-live URL and keywords documented in the
+       comment as the rollback if this doesn't hold up. Deliberately
+       reversing the *previous* build's own reasoning ("switching
+       sources without a reason would just add risk") because this
+       pass supplies the reason that build didn't have: a same-
+       platform swap already proven to work elsewhere, not a fresh
+       guess. Local build confirms the new URL is reached and fails
+       soft exactly like every other source in this sandbox's blocked
+       network (a real `ProxyError`, not a config or parse error);
+       real confirmation waits on the next GitHub Actions build, same
+       as every other source here. 463 tests still pass — no test
+       hardcodes this source's type or URL.
+     - **Des Plaines Public Library — platform identified, exact feed
+       parameters still unknown.** WebSearch confirms `calendar.dppl.org`
+       is a custom-domain alias of a real Springshare LibCal account
+       (`dppl.libcal.com` — a search result titled "LibCal - Des
+       Plaines Public Library" resolves there), not a guess. LibCal's
+       public RSS shape is confirmed too, from three other libraries'
+       *working* URLs found by search (`.../rss.php?cid=<id>&iid=<id>&m=<view>`).
+       What's missing is the one thing WebSearch summaries can't
+       supply: `calendar.dppl.org`'s *own* `iid`/`cid` values, which
+       only exist in that page's rendered HTML (typically behind a
+       "Subscribe"/RSS icon) — the same class of gap item 179 hit
+       researching a village RSS URL, and the same resolution applies:
+       named here with the real evidence behind it rather than guessed
+       into a config that could silently return 0 items or point at
+       someone else's calendar.
+     - **Palatine Public Library District — platform still
+       unconfirmed, and the URL shape argues against LibCal/Communico.**
+       The real, currently-configured URL
+       (`palatinelibrary.org/events/upcoming`) and its siblings
+       (`/events/list`, `/events/week`, `/events/month/2019/03`) don't
+       match either platform's URL grammar — LibCal uses `/calendar`,
+       Communico/libnet.info uses `/events` with query params, not a
+       `/month/<year>/<month>` path segment. That path shape is a
+       distinctive fingerprint of a Drupal-based events calendar
+       (Views date-argument routing), not LibCal or Communico, so a
+       feed here (if one exists) is more likely a Drupal core/Views
+       RSS export at a different path than either platform's
+       documented one — worth a real page fetch to confirm rather
+       than a second guess layered on an already-uncertain platform
+       ID.
+
+     Both remaining gaps need one real page fetch each, not more
+     search — recorded honestly as still open rather than closed on
+     inference.
+
 183. **A forwarded issue dead-ends: sixteen links in the email and not
      one of them subscribes.** Counted directly in
      `docs/combined-email-send.html`: five region pages, one sponsor
