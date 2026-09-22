@@ -9182,6 +9182,25 @@ last three passes assumed.**
   fully decoupled by design - nothing to fix, and worth having
   actually read the workflow rather than assumed it from the schedule
   alone.
+
+  Ninth pass, 2026-09-22 (no new research pass yet; items 178/179/180's
+  full backlog already shipped and merged). Closed the one remaining
+  gap the seventh pass named: Arlington Heights, the last of the five
+  regions never WebSearch-checked. Sampled five outbound evergreen/
+  guide/annual-event links (John Hersey HS Athletics, the Village's own
+  events page, the Library's card-registration page, School District
+  25's registration page, and Harmony Fest's real event page) - all
+  five resolve and match their config descriptions exactly. The Harmony
+  Fest check looked like a real discrepancy at first (WebSearch's own
+  results, independent of this repo, returned "October 2-3, 2026" for
+  the query) until checking the config directly showed it already says
+  exactly that, sourced from a WebSearch the fifteenth research pass
+  ran back on 2026-09-15 - a confirmation, not a drift, but worth
+  catching the difference between the two before writing either one
+  down. All five regions have now been WebSearch-checked at least once;
+  the rotation this item's checklist called for is complete, and the
+  next thin-queue pass should look for something else rather than
+  re-running it a tenth time with nothing new to find.
 - **The research loop leaves at most three open owner decisions at a
   time (item 165).** A six-item "Needs Ryan" queue, none of it acted on
   in a week, is itself the finding — presenting equal-looking options
