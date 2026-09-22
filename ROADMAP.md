@@ -8985,6 +8985,265 @@ last three passes assumed.**
      committed file before shipping, not assumed from the design alone.
      6 new tests, 449 total pass.
 
+#### Research pass 2026-09-22 (forty-third pass)
+
+**Item 178 worked, and the send is unblocked.** Checked first, before
+researching anything, because the forty-second pass ended on a live
+production failure and the scheduled send fires tomorrow (Wednesday
+22:37 UTC). `data/source_health.json` now totals roughly **743 items
+across 20 recorded sources**, against ~75 last pass — Arlington Heights
+Memorial Library went 6 → 259, Mount Prospect Public Library 6 → 299.
+`data/weekend_signal.json` reports **10 dated weekend events**, clearing
+`MIN_WEEKEND_EVENTS = 3`. The newsletter item 175 said would not go out
+this week will go out. Item 177 shipped too, visibly: the four identical
+empty states are now one consolidated sentence.
+
+But reading the built email rather than only the counters turned up
+what the totals hide.
+
+| Angle | Finding | Consequence |
+|---|---|---|
+| **Sources that were never recorded** | `config/regions/*.yaml` declares **25** sources. `data/source_health.json` has **20** keys. The five missing have **never been recorded once** — not zeroes, absent | Item 180's three detectors all iterate `health.items()`. A key that does not exist cannot be iterated, so 20% of the roster is structurally invisible to every health check this repo has (item 181) |
+| **Which five** | AH School District 25 (ics), Palatine CCSD 15 (ics), Palatine D211 (rss), Wheeling Park District (ics), Wheeling CCSD 21 (html) — **four of five are feed fetchers, not scrapes**, and two each sit in Palatine and Wheeling | The two regions with the most dark sources are two of the three regions contributing zero weekend events (item 181) |
+| **The subject line, read literally** | The built email is headed *"This weekend across Arlington Heights and Mount Prospect"*. Des Plaines, Palatine and Wheeling contribute **0 weekend events each** | The two regions that recovered are exactly the two with a deep library feed (259, 299). The cap fix lifted the sources that were deep; it did nothing for the ones that were always shallow (item 182) |
+| **Springshare LibCal** | `calendar.dppl.org` is a hosted **LibCal** instance, scraped as `html_events` and yielding **3 items**. LibCal publishes documented public RSS (`/rss.php?m=…&iid=…&cid=…`) and iCal endpoints per calendar, no auth | Des Plaines's library is being read through the narrowest available door. The deepest feed in the whole pipeline (MPPL, 299) is the one source already using a real feed instead of a scrape (item 182) |
+| **Newsletter referral programs** | The standard growth engine for this category — Morning Brew, The Hustle, 6AM City all built on it. Reported effect: ~15–20% faster growth on digital-only rewards, 50–200% with physical or giveaway tiers. **But the consistent advice is to treat it as an amplifier above ~1,000 subscribers**, and to use direct acquisition below that | `BUSINESS_PLAN.md` says plainly that this newsletter "has no organic growth channel." Referral is the obvious answer and it is genuinely the wrong one at a list of one. Recording the threshold so a future pass does not file it as a P1 (item 183) |
+| **The email's own links** | 16 `href`s in `docs/combined-email-send.html`: 5 region pages, 1 sponsor page, 10 outbound event links. **Not one of them is a subscribe link** | The one growth mechanism that costs nothing and works at *any* list size is a subscriber forwarding the email. Right now that forward dead-ends: the neighbour who receives it has nowhere to click to join (item 183) |
+| **Subscribable calendar feeds (design/UX)** | A `webcal://` URL tells a calendar app to *subscribe* rather than download once; Google takes `https://calendar.google.com/calendar/r?cid=webcal://…`, Apple and Outlook take the bare `webcal://`. `X-WR-CALNAME` sets the name the subscriber sees, or the feed shows up as "feed.ics" | The site already builds a per-event ICS data URI and a Google Calendar link for every card. A *per-region subscribable* feed is the same data, published once, and it is the only feature on this roadmap that keeps working for a reader who never opens the site again (item 184) |
+
+#### P1 (new)
+
+181. **Five configured sources have never been recorded once, and the
+     health file cannot detect its own missing keys.** `config/regions/*.yaml`
+     declares 25 sources; `data/source_health.json` holds 20. The gap is
+     exact and it is not stale keys — every health key maps to a live
+     config entry, so nothing was renamed. The five that have never
+     appeared:
+
+     - `arlington-heights-60005:Arlington Heights School District 25 — Calendar` (ics)
+     - `palatine-60067:Community Consolidated School District 15 — Calendar` (ics)
+     - `palatine-60067:Township High School District 211 — Calendar` (rss)
+     - `wheeling-60090:Wheeling Park District — Events` (ics)
+     - `wheeling-60090:Wheeling CCSD 21 — Calendar` (html_events)
+
+     The mechanism is a deliberate design decision working exactly as
+     written and producing a result nobody intended.
+     `build_digest.py`'s fetch loop treats a fetcher returning `None` —
+     a transport or parse failure, a 403, a timeout, a non-2xx — as
+     *not health signal*, and skips `update_source_health()` entirely.
+     Its comment (item 55) argues the case well for the situation it
+     was reasoning about: "a 403 or a timeout means the scraper never
+     got a chance to work, so it's skipped from history entirely
+     rather than recorded as a 0 that looks identical to a genuinely
+     dead scraper." That is right for a *one-off* failure. It was
+     never considered against a source that fails transport on **every
+     build since it was added**, which is what these five are doing —
+     and in that case the source does not get a forgiving gap in its
+     history, it gets no history at all, forever.
+
+     The consequence is that item 180's work does not cover them.
+     `detect_source_regressions`, `detect_truncated_sources` and
+     `detect_newly_broken_sources` all open with
+     `for key, history in sorted(health.items())`. You cannot detect
+     the absence of a key by iterating the keys. The forty-second pass
+     wrote that a chronically-dead source "should say so once, not go
+     silently unreadable again" — these five never got as far as
+     saying it once.
+
+     Note which five they are: **four of the five are `ics` or `rss`
+     fetchers**, not HTML scrapes. That is a real signal and worth
+     acting on rather than treating the five as unrelated one-offs.
+     It is not the `webcal://` scheme in general — three other
+     `webcal://` sources (AH Park District 17, MP Park District 15,
+     MP D57 66) record fine — so the cause is per-source and needs a
+     network-capable run to pin down, which this loop cannot do.
+
+     What to build:
+
+     - **Reconcile config against health at the end of every build.**
+       Load the region configs, build the set of expected
+       `region:name` keys, diff against `health.keys()`, and report
+       anything configured-but-never-recorded alongside the existing
+       three detectors. This is the check that turns "the health file
+       looks fine" into "the health file covers 20 of 25 sources."
+     - **Record a permanent transport failure, without undoing item
+       55's reasoning.** Keep the count history clean — a 403 still
+       must not be written as a `0` that looks like a dead scraper —
+       but track consecutive transport failures per source key
+       separately, so a source failing transport on N builds running
+       is loud rather than absent. Item 55's concern was about
+       *conflating* the two states; the fix is to record both, not to
+       record neither.
+     - **Then diagnose the five.** Needs real network; this pass
+       could not fetch them. Expect some to be genuine 403s (the
+       CivicPlus and Finalsite family both rate-limit non-browser
+       agents) and some to be moved URLs.
+
+     Priority: this ranks above cosmetic work because it is the same
+     class of bug as item 178 — a quiet mechanism producing a
+     plausible-looking file that hides the actual state of the
+     product — and this file spent three research passes inferring
+     around item 178 for exactly that reason.
+
+182. **Three of five regions contribute zero weekend events, and the
+     cap fix could never have helped them.** `data/weekend_signal.json`:
+     Arlington Heights 3, Mount Prospect 7, **Des Plaines 0, Palatine
+     0, Wheeling 0**. The built subject line says so out loud — *"This
+     weekend across Arlington Heights and Mount Prospect"* — and the
+     body renders the other three as a single consolidated "nothing
+     dated yet" row (item 177's fix, working). A Wheeling subscriber
+     opens a weekend digest whose subject excludes their town.
+
+     Item 178 raised `MAX_ITEMS_PER_SOURCE` from 6 to 500 and that was
+     correct, but it could only ever help a source that *had* more
+     than six items behind the cap. Sort the recovered counts and the
+     pattern is unambiguous: the two regions that recovered are the
+     two holding a genuinely deep library feed (AHML 259, MPPL 299).
+     Every other library in the network is shallow — **Des Plaines
+     Public Library 3, Palatine Public Library District 12, Indian
+     Trails 14** — and those numbers did not move when the cap moved,
+     because there was never anything behind the cap to release.
+     The weekend digest is, right now, library-powered, and three
+     regions have no library supplying it.
+
+     The lead worth chasing is the platform, not the town.
+     `calendar.dppl.org` is a hosted **Springshare LibCal** instance
+     being read as `html_events`, and LibCal publishes documented
+     public feeds — an RSS endpoint of the shape
+     `…/rss.php?m=<inst>&iid=<calendar>&cid=<id>` and per-calendar
+     iCal exports, both unauthenticated. That is the same trade that
+     already produced this pipeline's single best source: Mount
+     Prospect Public Library is the one library read through a real
+     feed (`mppl.libnet.info` RSS) rather than scraped, and it is the
+     deepest source in the network at 299.
+
+     What to do, in order:
+
+     1. Identify the calendar platform behind each of the three
+        shallow libraries (LibCal/Springshare, Communico, Libnet and
+        LibraryMarket cover most public-library calendars in this
+        area), then find that platform's documented public feed
+        endpoint rather than scraping its rendered HTML.
+     2. Swap the source type from `html_events` to `rss`/`ics` where
+        a feed exists, and keep the HTML scrape configured as the
+        fallback the fail-soft design already expects.
+     3. Re-check `weekend_signal.json` per region afterwards. The
+        success criterion is not "more items" — it is **every region
+        naming at least one dated weekend event**, because that is
+        what the subject line is built from.
+
+     Until then the honest framing for the guard in
+     `send_newsletter.py` is worth reconsidering: `MIN_WEEKEND_EVENTS`
+     is a *network-wide* floor of 3, and 10 events all sitting in two
+     towns passes it while three towns get an empty issue. A
+     per-region floor is a different and probably better question than
+     a total, but it is a judgement call about what the product
+     promises, so it is named here rather than filed as a change.
+
+183. **A forwarded issue dead-ends: sixteen links in the email and not
+     one of them subscribes.** Counted directly in
+     `docs/combined-email-send.html`: five region pages, one sponsor
+     page, ten outbound event links, and the reply CTA ("Know about
+     something we missed? Hit reply"). Nothing a reader can click to
+     join the list.
+
+     This matters more than it sounds because of what
+     `BUSINESS_PLAN.md` already concedes: "**this newsletter has no
+     organic growth channel.** Every subscriber comes from press
+     (one-shot), the trade-a-mention barter, SEO (slow), or paid
+     acquisition." Forwarding is the one channel that is organic,
+     free, and works at a list of one — and it is currently broken at
+     the receiving end. The neighbour who gets the email forwarded to
+     them has ten ways to reach a library event page and zero ways to
+     reach a signup form.
+
+     The fix is small and belongs in the email template, not the
+     roadmap's monetization tier: a single line in the footer, above
+     the existing reply CTA — *"Get this every Thursday →"* pointing
+     at the site's signup — plus an explicit forward prompt. The
+     region links already in the email go to region pages; whether
+     those pages surface the signup form above the fold is worth
+     checking as part of this, since a subscribe link that lands on a
+     page where the form is buried is the same dead end one click
+     later.
+
+     **And the deliberate non-item:** researched formal referral
+     programs this pass and they are the standard answer for this
+     category — Morning Brew, The Hustle and 6AM City all grew on
+     milestone-reward referral, with reported effects of ~15–20%
+     faster growth on digital-only rewards and 50–200% where physical
+     rewards or giveaways are involved. The consistent advice is also
+     that a referral program is an **amplifier above roughly 1,000
+     subscribers** and that below that threshold the effort belongs in
+     direct acquisition, because a percentage uplift on a list of one
+     is one. This is recorded as a finding precisely so a later pass
+     does not file "build a referral program" as a P1 — it is a real
+     tactic, correctly sequenced *after* the press pitch (item 77) and
+     the barter (item 94), and the footer link above is the part of it
+     that is worth building now, since a referral program later needs
+     that link to exist anyway.
+
+#### P2 (new)
+
+184. **Publish a subscribable per-region calendar feed — the one
+     feature that keeps working for a reader who never comes back.**
+     Every event card already builds an ICS data URI and a Google
+     Calendar link (both per-event, both one-shot). The missing form
+     is the *subscription*: one `webcal://` feed per region, so a
+     parent adds "Within Ten — Mount Prospect" to their phone's
+     calendar once and the town's events keep appearing next to their
+     own plans forever, with no email, no app, and no return visit.
+
+     For a site whose entire value proposition is "we watch the feeds
+     so you don't," handing the reader a feed is the most literal
+     possible expression of the product. It also fits
+     `BUSINESS_PLAN.md`'s hardest constraint better than anything else
+     on this list: the build cost is one static file per region
+     emitted by an existing pipeline, and the ongoing owner cost is
+     zero.
+
+     Mechanics, researched rather than assumed:
+
+     - Publish `docs/<region>/calendar.ics` as a real static file
+       (GitHub Pages serves it fine; set `X-WR-CALNAME` to the region
+       name or subscribers get a calendar literally named
+       "feed.ics").
+     - The subscribe link is the *same URL* under the `webcal://`
+       scheme — `webcal://withintenmiles.com/<region>/calendar.ics`.
+       Apple Calendar and Outlook take that directly; Google needs
+       `https://calendar.google.com/calendar/r?cid=webcal://…`. Offer
+       both plus a copy-the-URL affordance, because a bare
+       `webcal://` link does nothing useful on a desktop with no
+       calendar client registered.
+     - Include `UID` and `SEQUENCE` per event and keep a stable `UID`
+       across rebuilds, or every weekly rebuild duplicates every
+       event in every subscriber's calendar. This is the one detail
+       that turns the feature from delightful into a reason to
+       unsubscribe, so it is worth a test.
+     - Scope it to dated, attendable events only — the pipeline
+       already carries an `attendable` flag (item 90), and pushing a
+       school half-day closure into someone's personal calendar is
+       not the same product as pushing a farmers market.
+
+     Sequence this after item 182. A subscribable feed for a region
+     that currently produces zero weekend events would be a subscribe
+     button that delivers an empty calendar, which is worse than not
+     offering it.
+
+Competitors reviewed this pass: **Springshare LibCal** (as a *feed
+platform* rather than a competitor — the calendar software behind a
+large share of public-library event calendars, including at least one
+of this network's own shallow sources, publishing unauthenticated RSS
+and iCal endpoints that this pipeline is not using), **newsletter
+referral programs** (Morning Brew / The Hustle / 6AM City's shared
+growth engine, and the ~1,000-subscriber threshold below which the
+advice is consistently *not* to build one), and **subscribable
+`webcal://` calendar feeds** as a design/UX pattern (the
+platform-specific subscribe-link shapes, `X-WR-CALNAME`, and the
+stable-`UID` requirement that keeps a weekly rebuild from duplicating
+every event in a subscriber's calendar).
+
+
 ## Working agreements for autonomous iteration
 
 - Cadence is hourly (the platform's durable scheduler has a 1-hour floor;
