@@ -9708,6 +9708,44 @@ Network-wide the weekend is now **18 events**, up from 10 this morning.
      the new file and the working agreements to `git restore` it
      locally, same discipline as the other three generated data files.
 
+     **First real result, from this PR's own CI run** — and, checked
+     against each source's own config comment before writing this
+     down, **not new information**, which is itself worth recording
+     honestly rather than overclaiming a discovery:
+
+     | Source | Real failure |
+     |---|---|
+     | Arlington Heights Park District — Events | ConnectTimeout |
+     | Arlington Heights School District 25 — Calendar | HTTP 404 |
+     | Des Plaines Park District — Events | ConnectTimeout |
+     | Experience Mount Prospect — Events | HTTP 403 |
+     | Mount Prospect Park District — Events | ConnectTimeout |
+     | Village of Mount Prospect — Calendar | HTTP 403 |
+     | Village of Mount Prospect — News | HTTP 403 |
+     | Community Consolidated School District 15 — Calendar (Palatine) | HTTP 404 |
+     | Township High School District 211 — Calendar (Palatine) | HTTP 404 |
+     | Wheeling CCSD 21 — Calendar | HTTP 404 |
+     | Wheeling Park District — Events | HTTP 403 |
+
+     Every one of these eleven already carries a "CONFIRMED BROKEN"
+     comment with the matching HTTP status in its own
+     `config/regions/*.yaml` entry, dated as far back as 2026-09-15 —
+     the three school-district 404s are the same documented
+     `site/handlers/icalfeed.ashx?MIID=<id>` Finalsite-platform gap
+     item 179's own header comment already named, and the 403s match
+     items 161/179's existing per-source findings exactly. Nothing
+     here was unknown; it was scattered across four separate config
+     files' comments instead of visible in one place. That is exactly
+     the value item 185's own text named — "the insight is now a file
+     that updates every build instead of a note a later pass stopped
+     reading" — realized for real, not a new lead to chase. The
+     Finalsite MIID pattern is also why this doesn't turn into a quick
+     fix: item 179's own header comment already explains why guessing
+     a new MIID for a 404'd calendar is the same invented-fix risk
+     this file's own discipline rules out, so these four stay accurately
+     described as "needs a real page fetch to find the new ID," not
+     "needs a config change."
+
 186. **Every check in this repo asks "is the source working?" and none
      asks "is the region producing?"** Des Plaines is the proof: four
      sources, four successful fetches, **zero** transport failures,
