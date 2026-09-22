@@ -9664,6 +9664,50 @@ Network-wide the weekend is now **18 events**, up from 10 this morning.
      through the same `None`-on-failure path, is real follow-up work,
      not done here.
 
+     🟢 **Follow-up shipped, 2026-09-22 — the deferred exception-class/
+     status-code capture.** Chose the design named above and built it
+     without touching the existing `None`-on-failure contract at all:
+     `fetch_rss`/`fetch_ics`/`fetch_html_events` now accept an optional
+     keyword-only `failure_info: dict | None = None` (`fetchers.py`),
+     populated only in the `except` branch via a shared
+     `_record_failure()` helper — `exception_class` always, `status_code`
+     only for a real `requests.HTTPError` with a response (a
+     `ConnectionError`/`Timeout`/`ProxyError` never had one, and staying
+     `None` there is itself the useful signal item 185 asked to capture,
+     not a gap). Every existing caller that doesn't pass `failure_info`
+     is completely unaffected — this is the zero-risk shape that let
+     item 185's own text flag this as real work without it needing to
+     block on a wider refactor.
+
+     Stored in a new `data/source_transport_failure_details.json`
+     rather than reworking `source_transport_failures.json`'s existing
+     `{key: streak_int}` shape — the same "add a file, don't migrate a
+     schema another consumer already has real committed history under"
+     reasoning items 181/186 already used. `update_transport_failure_details()`
+     also clears an entry on the source's next success, so a recovered
+     source doesn't keep showing a stale "last failed with a 403" next
+     to a health count that's currently fine.
+
+     `detect_chronic_transport_failures()`'s own warning line now
+     quotes it: *"...has failed transport on 9+ consecutive builds. Last
+     failure: HTTPError (HTTP 403)."* Verified against a real local
+     build: every one of this sandbox's own transport failures now logs
+     `Last failure: ProxyError` (no status code, correctly — a
+     ProxyError never gets a response) — exactly the class/shape this
+     sandbox's blocked network should produce, and exactly the
+     "chronic 403 vs. DNS failure" distinction item 185 named, ready to
+     show real HTTP status codes once GitHub Actions' own build hits a
+     genuinely-403'd source.
+
+     8 new tests (all three fetchers' `failure_info` population,
+     including the HTTP-status-code path via a real `requests.HTTPError`
+     with a mock response; the new file's round-trip, clear-on-success,
+     and missing-file cases; an end-to-end test through
+     `fetch_region_sections()` itself rather than only the pieces in
+     isolation); 496 total pass. Updated `build-digest.yml` to commit
+     the new file and the working agreements to `git restore` it
+     locally, same discipline as the other three generated data files.
+
 186. **Every check in this repo asks "is the source working?" and none
      asks "is the region producing?"** Des Plaines is the proof: four
      sources, four successful fetches, **zero** transport failures,
@@ -9975,10 +10019,11 @@ public static repo cannot solve).
 - Never hand-commit `docs/` output — run `git restore docs/` and remove any
   newly-created `docs/<region-id>/` directories before staging.
 - Same for `data/source_health.json` (item 51),
-  `data/source_transport_failures.json` (item 181), and
-  `data/weekend_signal_history.json` (item 186) — always `git
-  restore` all three after a local build in this sandbox, never stage
-  any of them. This sandbox's network is blocked, so every source fetches 0
+  `data/source_transport_failures.json` (item 181),
+  `data/weekend_signal_history.json` (item 186), and
+  `data/source_transport_failure_details.json` (item 185) — always
+  `git restore` all four after a local build in this sandbox, never
+  stage any of them. This sandbox's network is blocked, so every source fetches 0
   here; against the real trailing history from actual GitHub Actions
   runs, that reads as every source dying at once and `build_digest.py`
   will legitimately exit 1 - correct behavior, but committing that

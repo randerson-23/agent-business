@@ -3,9 +3,11 @@ from pathlib import Path
 from unittest.mock import Mock, patch
 
 import pytest
+import requests
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "scripts"))
 from fetchers import (  # noqa: E402
+    _record_failure,
     fetch_html_events,
     fetch_ics,
     fetch_rss,
@@ -136,6 +138,17 @@ def test_fetch_rss_fails_soft_on_bad_xml(mock_get):
 
 
 @patch("fetchers.requests.get")
+def test_fetch_rss_populates_failure_info_on_error(mock_get):
+    # ROADMAP.md item 185: the return value stays exactly None either
+    # way (no behavior change for every existing caller) - failure_info
+    # is opt-in, populated only when the caller passes one.
+    mock_get.side_effect = RuntimeError("boom")
+    failure_info = {}
+    assert fetch_rss("https://example.org/rss", failure_info=failure_info) is None
+    assert failure_info == {"exception_class": "RuntimeError", "status_code": None}
+
+
+@patch("fetchers.requests.get")
 def test_fetch_rss_does_not_truncate_a_well_stocked_feed_to_six(mock_get):
     # ROADMAP.md item 178 (forty-second research pass): every live source
     # in data/source_health.json's real trailing history returned exactly
@@ -182,6 +195,14 @@ def test_fetch_ics_does_not_truncate_a_well_stocked_feed_to_six(mock_get):
 def test_fetch_ics_fails_soft(mock_get):
     mock_get.side_effect = RuntimeError("boom")
     assert fetch_ics("https://example.org/cal.ics") is None
+
+
+@patch("fetchers.requests.get")
+def test_fetch_ics_populates_failure_info_on_error(mock_get):
+    mock_get.side_effect = RuntimeError("boom")
+    failure_info = {}
+    assert fetch_ics("https://example.org/cal.ics", failure_info=failure_info) is None
+    assert failure_info == {"exception_class": "RuntimeError", "status_code": None}
 
 
 @patch("fetchers.requests.get")
@@ -275,6 +296,22 @@ def test_fetch_html_events_filters_relevant_links(mock_get):
 def test_fetch_html_events_fails_soft(mock_get):
     mock_get.side_effect = RuntimeError("boom")
     assert fetch_html_events("https://example.org/events") is None
+
+
+@patch("fetchers.requests.get")
+def test_fetch_html_events_populates_failure_info_with_an_http_status(mock_get):
+    # ROADMAP.md item 185's own example: "403 on every request" and "DNS
+    # does not resolve" are different problems and used to record
+    # identically. An HTTPError carries a real response/status_code; a
+    # bare connection failure (covered by the other two fetchers' tests
+    # above) does not, and status_code stays None there - itself the
+    # distinguishing signal.
+    response = Mock()
+    response.status_code = 403
+    mock_get.side_effect = requests.HTTPError("403 Forbidden", response=response)
+    failure_info = {}
+    assert fetch_html_events("https://example.org/events", failure_info=failure_info) is None
+    assert failure_info == {"exception_class": "HTTPError", "status_code": 403}
 
 
 @patch("fetchers.requests.get")

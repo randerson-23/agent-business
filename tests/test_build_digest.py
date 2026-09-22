@@ -1462,6 +1462,61 @@ def test_load_transport_failures_returns_empty_dict_when_missing(tmp_path, monke
     assert build_digest.load_transport_failures() == {}
 
 
+def test_update_transport_failure_details_records_a_failure():
+    # ROADMAP.md item 185: "403 on every request" and "DNS does not
+    # resolve" used to record identically - this is the detail that
+    # tells them apart.
+    details = {}
+    build_digest.update_transport_failure_details(
+        details, "region:Source", {"exception_class": "HTTPError", "status_code": 403}
+    )
+    assert details["region:Source"] == {"exception_class": "HTTPError", "status_code": 403}
+
+
+def test_update_transport_failure_details_clears_on_success():
+    # A source that recovers shouldn't keep showing a stale "last failed
+    # with a 403" next to a health count that's currently fine.
+    details = {"region:Source": {"exception_class": "HTTPError", "status_code": 403}}
+    build_digest.update_transport_failure_details(details, "region:Source", {})
+    assert "region:Source" not in details
+
+
+def test_save_and_load_transport_failure_details_round_trip(tmp_path, monkeypatch):
+    monkeypatch.setattr(build_digest, "TRANSPORT_FAILURE_DETAIL_PATH", tmp_path / "details.json")
+    details = {"region:Source": {"exception_class": "ConnectionError", "status_code": None}}
+    build_digest.save_transport_failure_details(details)
+    assert build_digest.load_transport_failure_details() == details
+
+
+def test_load_transport_failure_details_returns_empty_dict_when_missing(tmp_path, monkeypatch):
+    monkeypatch.setattr(build_digest, "TRANSPORT_FAILURE_DETAIL_PATH", tmp_path / "missing.json")
+    assert build_digest.load_transport_failure_details() == {}
+
+
+def test_fetch_region_sections_records_failure_detail_on_transport_failure(monkeypatch):
+    # End-to-end through fetch_region_sections rather than just the
+    # helper - confirms the wiring, not just the pieces in isolation.
+    region_cfg = {
+        "region": {"id": "test-region", "name": "Test Region"},
+        "sources": [
+            {
+                "name": "Flaky Source", "type": "html_events", "enabled": True,
+                "url": "https://example.org", "section": "Test Section",
+            }
+        ],
+    }
+
+    def fake_fetch_html_events(url, **kwargs):
+        kwargs["failure_info"]["exception_class"] = "HTTPError"
+        kwargs["failure_info"]["status_code"] = 403
+        return None
+
+    monkeypatch.setitem(build_digest.FETCHERS, "html_events", fake_fetch_html_events)
+    details: dict = {}
+    build_digest.fetch_region_sections(region_cfg, transport_failure_details=details)
+    assert details["test-region:Flaky Source"] == {"exception_class": "HTTPError", "status_code": 403}
+
+
 def test_expected_source_keys_includes_only_enabled_sources():
     regions = [
         {

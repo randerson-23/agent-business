@@ -105,7 +105,28 @@ def _get(url: str) -> requests.Response:
     return resp
 
 
-def fetch_rss(url: str, limit: int = MAX_ITEMS_PER_SOURCE, **_ignored) -> list[dict] | None:
+def _record_failure(exc: Exception, failure_info: dict | None) -> None:
+    """Populate `failure_info` (if the caller passed one) with the kind of
+    transport failure this was (ROADMAP.md item 185, forty-fourth
+    research pass): a chronic 403 and a chronic DNS failure both
+    currently collapse into the same bare streak count in
+    build_digest.py's own tracking, and "what kind of failure" is the
+    first real diagnostic question item 185 named. `status_code` is only
+    ever populated for an HTTP error with a real response (`requests.
+    HTTPError`); a `ConnectionError`/`Timeout`/`ProxyError` never got a
+    response at all, so it stays `None` there - itself a real signal,
+    not a gap.
+    """
+    if failure_info is None:
+        return
+    failure_info["exception_class"] = type(exc).__name__
+    response = getattr(exc, "response", None)
+    failure_info["status_code"] = getattr(response, "status_code", None)
+
+
+def fetch_rss(
+    url: str, limit: int = MAX_ITEMS_PER_SOURCE, *, failure_info: dict | None = None, **_ignored
+) -> list[dict] | None:
     """Parse a standard RSS 2.0 feed using only the stdlib XML parser.
 
     Returns `None` on a transport/parse failure (network error, bad XML) -
@@ -117,6 +138,9 @@ def fetch_rss(url: str, limit: int = MAX_ITEMS_PER_SOURCE, **_ignored) -> list[d
     transient block looks identical to a source that's actually died).
     Callers that just want events still treat `None` as `[]`; only the
     health tracker in build_digest.py cares about the distinction.
+
+    `failure_info`, if given, gets the exception class/status code on
+    failure (ROADMAP.md item 185) - see `_record_failure`.
     """
     try:
         resp = _get(url)
@@ -145,10 +169,13 @@ def fetch_rss(url: str, limit: int = MAX_ITEMS_PER_SOURCE, **_ignored) -> list[d
         return items
     except Exception as exc:  # noqa: BLE001 - fail soft by design
         logger.warning("RSS fetch failed for %s: %s", url, exc)
+        _record_failure(exc, failure_info)
         return None
 
 
-def fetch_ics(url: str, limit: int = MAX_ITEMS_PER_SOURCE, **_ignored) -> list[dict] | None:
+def fetch_ics(
+    url: str, limit: int = MAX_ITEMS_PER_SOURCE, *, failure_info: dict | None = None, **_ignored
+) -> list[dict] | None:
     """Minimal ICS (iCalendar) VEVENT parser, upcoming events only.
 
     Deliberately dependency-free: handles the common single-line
@@ -156,7 +183,7 @@ def fetch_ics(url: str, limit: int = MAX_ITEMS_PER_SOURCE, **_ignored) -> list[d
 
     Returns `None` on a transport/parse failure, distinct from a real
     `[]` (fetched fine, nothing upcoming) - see fetch_rss's docstring for
-    why (ROADMAP.md Phase 11 #55).
+    why (ROADMAP.md Phase 11 #55). `failure_info` - see fetch_rss.
     """
     try:
         # `webcal://` is a hint for calendar apps to subscribe, not a real
@@ -219,6 +246,7 @@ def fetch_ics(url: str, limit: int = MAX_ITEMS_PER_SOURCE, **_ignored) -> list[d
         return limited
     except Exception as exc:  # noqa: BLE001 - fail soft by design
         logger.warning("ICS fetch failed for %s: %s", url, exc)
+        _record_failure(exc, failure_info)
         return None
 
 
@@ -389,6 +417,8 @@ def fetch_html_events(
     limit: int = MAX_ITEMS_PER_SOURCE,
     keywords: tuple[str, ...] | list[str] | None = None,
     detail_link_pattern: str | None = None,
+    *,
+    failure_info: dict | None = None,
     **_ignored,
 ) -> list[dict] | None:
     """Best-effort scrape of a listing page for relevant link text.
@@ -408,6 +438,7 @@ def fetch_html_events(
     instead - distinct from that real `[]` (ROADMAP.md Phase 11 #55): a
     403 or a timeout means the scraper never got a chance to work, which
     is a different, softer signal than "worked, found nothing."
+    `failure_info` - see fetch_rss.
     """
     try:
         resp = _get(url)
@@ -462,6 +493,7 @@ def fetch_html_events(
         return _resolve_urls(deduped[:limit], resp.url)
     except Exception as exc:  # noqa: BLE001 - fail soft by design
         logger.warning("HTML events fetch failed for %s: %s", url, exc)
+        _record_failure(exc, failure_info)
         return None
 
 
