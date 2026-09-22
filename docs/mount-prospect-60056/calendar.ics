@@ -7,8 +7,8 @@ REFRESH-INTERVAL;VALUE=DURATION:PT12H
 X-PUBLISHED-TTL:PT12H
 BEGIN:VEVENT
 UID:mount-prospect-60056-2026-09-27-mount-prospect-farmers-market@withintenmiles.com
-DTSTAMP:20260921T194339Z
-LAST-MODIFIED:20260921T194339Z
+DTSTAMP:20260922T010136Z
+LAST-MODIFIED:20260922T010136Z
 SEQUENCE:0
 DTSTART:20260927T080000
 DTEND:20260927T090000
@@ -18,8 +18,8 @@ URL:https://mplions.org/event/farmers-market/
 END:VEVENT
 BEGIN:VEVENT
 UID:mount-prospect-60056-2026-10-04-mount-prospect-farmers-market@withintenmiles.com
-DTSTAMP:20260921T194339Z
-LAST-MODIFIED:20260921T194339Z
+DTSTAMP:20260922T010136Z
+LAST-MODIFIED:20260922T010136Z
 SEQUENCE:0
 DTSTART:20261004T080000
 DTEND:20261004T090000
@@ -29,8 +29,8 @@ URL:https://mplions.org/event/farmers-market/
 END:VEVENT
 BEGIN:VEVENT
 UID:mount-prospect-60056-2026-10-11-mount-prospect-farmers-market@withintenmiles.com
-DTSTAMP:20260921T194339Z
-LAST-MODIFIED:20260921T194339Z
+DTSTAMP:20260922T010136Z
+LAST-MODIFIED:20260922T010136Z
 SEQUENCE:0
 DTSTART:20261011T080000
 DTEND:20261011T090000
@@ -40,8 +40,8 @@ URL:https://mplions.org/event/farmers-market/
 END:VEVENT
 BEGIN:VEVENT
 UID:mount-prospect-60056-2026-10-18-mount-prospect-farmers-market@withintenmiles.com
-DTSTAMP:20260921T194339Z
-LAST-MODIFIED:20260921T194339Z
+DTSTAMP:20260922T010136Z
+LAST-MODIFIED:20260922T010136Z
 SEQUENCE:0
 DTSTART:20261018T080000
 DTEND:20261018T090000
@@ -51,8 +51,8 @@ URL:https://mplions.org/event/farmers-market/
 END:VEVENT
 BEGIN:VEVENT
 UID:mount-prospect-60056-2026-10-25-mount-prospect-farmers-market@withintenmiles.com
-DTSTAMP:20260921T194339Z
-LAST-MODIFIED:20260921T194339Z
+DTSTAMP:20260922T010136Z
+LAST-MODIFIED:20260922T010136Z
 SEQUENCE:0
 DTSTART:20261025T080000
 DTEND:20261025T090000
@@ -61,73 +61,1923 @@ DESCRIPTION:Local produce and vendors\, organized by the Mount Prospect Lions Cl
 URL:https://mplions.org/event/farmers-market/
 END:VEVENT
 BEGIN:VEVENT
-UID:mount-prospect-60056-2026-09-21-family-storytime@withintenmiles.com
-DTSTAMP:20260921T194339Z
-LAST-MODIFIED:20260921T194339Z
+UID:mount-prospect-60056-2026-09-22-baby-storytime@withintenmiles.com
+DTSTAMP:20260922T010136Z
+LAST-MODIFIED:20260922T010136Z
 SEQUENCE:0
-DTSTART:20260921T093000
-DTEND:20260921T103000
+DTSTART:20260922T093000
+DTEND:20260922T103000
+SUMMARY:Baby Storytime
+DESCRIPTION:Tuesday\, September 22 2026 9:30am - 10:00am \n A lifelong love of reading starts at birth! Join us for songs\, rhymes\, stories\, and playtime made specially for…
+URL:https://mppl.libnet.info/event/16291094
+END:VEVENT
+BEGIN:VEVENT
+UID:mount-prospect-60056-2026-09-22-movies-mppl-jersey-boys@withintenmiles.com
+DTSTAMP:20260922T010136Z
+LAST-MODIFIED:20260922T010136Z
+SEQUENCE:0
+DTSTART:20260922T103000
+DTEND:20260922T113000
+SUMMARY:Movies @ MPPL: Jersey Boys
+DESCRIPTION:Tuesday\, September 22 2026 10:30am - 12:30pm \n Join us for a screening of "Jersey Boys."
+URL:https://mppl.libnet.info/event/14038408
+END:VEVENT
+BEGIN:VEVENT
+UID:mount-prospect-60056-2026-09-22-family-storytime@withintenmiles.com
+DTSTAMP:20260922T010136Z
+LAST-MODIFIED:20260922T010136Z
+SEQUENCE:0
+DTSTART:20260922T103000
+DTEND:20260922T113000
 SUMMARY:Family Storytime
-DESCRIPTION:Monday\, September 21 2026 9:30am - 10:00am \n Bring the whole family and join us for an interactive storytime with high-energy stories\, songs\, and activities.
-URL:https://mppl.libnet.info/event/16290481
+DESCRIPTION:Tuesday\, September 22 2026 10:30am - 11:00am \n Bring the whole family and join us for an interactive storytime with high-energy stories\, songs\, and activities.
+URL:https://mppl.libnet.info/event/16290575
 END:VEVENT
 BEGIN:VEVENT
-UID:mount-prospect-60056-2026-09-21-drop-in-tech-help@withintenmiles.com
-DTSTAMP:20260921T194339Z
-LAST-MODIFIED:20260921T194339Z
+UID:mount-prospect-60056-2026-09-22-play-and-learn@withintenmiles.com
+DTSTAMP:20260922T010136Z
+LAST-MODIFIED:20260922T010136Z
 SEQUENCE:0
-DTSTART:20260921T100000
-DTEND:20260921T110000
-SUMMARY:Drop-In Tech Help
-DESCRIPTION:Monday\, September 21 2026 10:00am - 11:00am \n Stop in and bring your questions about technology-related subjects such as smartphones\, computers\, email\,…
-URL:https://mppl.libnet.info/event/14755941
+DTSTART:20260922T113000
+DTEND:20260922T123000
+SUMMARY:Play and Learn
+DESCRIPTION:Tuesday\, September 22 2026 11:30am - 12:15pm \n Join us each week for storytime\, sing-alongs\, and developmental play experiences that encourage learning…
+URL:https://mppl.libnet.info/event/16440798
 END:VEVENT
 BEGIN:VEVENT
-UID:mount-prospect-60056-2026-09-21-creation-station-diy-mu-ecas-quitapenas-worry-dolls@withintenmiles.com
-DTSTAMP:20260921T194339Z
-LAST-MODIFIED:20260921T194339Z
+UID:mount-prospect-60056-2026-09-22-big-kids-storytime@withintenmiles.com
+DTSTAMP:20260922T010136Z
+LAST-MODIFIED:20260922T010136Z
 SEQUENCE:0
-DTSTART:20260921T100000
-DTEND:20260921T110000
-SUMMARY:Creation Station: DIY Muñecas Quitapenas (Worry Dolls)
-DESCRIPTION:Monday\, September 21 2026 10:00am - 11:00am \n Craft and create with us! We'll provide an idea and supplies\; you create your own masterpiece.
-URL:https://mppl.libnet.info/event/16428151
+DTSTART:20260922T133000
+DTEND:20260922T143000
+SUMMARY:Big Kids Storytime
+DESCRIPTION:Tuesday\, September 22 2026 1:30pm - 2:15pm \n Grow into a super reader through playful books and fun with friends! This storytime is the perfect fit for…
+URL:https://mppl.libnet.info/event/16290730
 END:VEVENT
 BEGIN:VEVENT
-UID:mount-prospect-60056-2026-09-21-toddler-storytime@withintenmiles.com
-DTSTAMP:20260921T194339Z
-LAST-MODIFIED:20260921T194339Z
+UID:mount-prospect-60056-2026-09-22-teen-manga-hangout@withintenmiles.com
+DTSTAMP:20260922T010136Z
+LAST-MODIFIED:20260922T010136Z
 SEQUENCE:0
-DTSTART:20260921T103000
-DTEND:20260921T113000
+DTSTART:20260922T160000
+DTEND:20260922T170000
+SUMMARY:Teen Manga Hangout
+DESCRIPTION:Tuesday\, September 22 2026 4:00pm - 5:00pm \n Join other manga readers to share your recent reads. We'll chat about things we loved (or didn't) and get some…
+URL:https://mppl.libnet.info/event/16532780
+END:VEVENT
+BEGIN:VEVENT
+UID:mount-prospect-60056-2026-09-23-toddler-storytime@withintenmiles.com
+DTSTAMP:20260922T010136Z
+LAST-MODIFIED:20260922T010136Z
+SEQUENCE:0
+DTSTART:20260923T093000
+DTEND:20260923T103000
 SUMMARY:Toddler Storytime
-DESCRIPTION:Monday\, September 21 2026 10:30am - 11:00am \n Grow your little learner's literacy and language skills at this playful storytime full of wiggles\, wonder\, and…
-URL:https://mppl.libnet.info/event/16290777
+DESCRIPTION:Wednesday\, September 23 2026 9:30am - 10:00am \n Grow your little learner's literacy and language skills at this playful storytime full of wiggles\, wonder\, and…
+URL:https://mppl.libnet.info/event/16290953
 END:VEVENT
 BEGIN:VEVENT
-UID:mount-prospect-60056-2026-09-21-beyond-the-book-drop@withintenmiles.com
-DTSTAMP:20260921T194339Z
-LAST-MODIFIED:20260921T194339Z
+UID:mount-prospect-60056-2026-09-23-ingl-s-para-hispanohablantes@withintenmiles.com
+DTSTAMP:20260922T010136Z
+LAST-MODIFIED:20260922T010136Z
 SEQUENCE:0
-DTSTART:20260921T110000
-DTEND:20260921T120000
+DTSTART:20260923T110000
+DTEND:20260923T120000
+SUMMARY:Inglés para Hispanohablantes
+DESCRIPTION:Wednesday\, September 23 2026 11:00am - 12:00pm \n Una clase virtual vía Zoom\, de conversación\, para hispanohablantes que buscan mejorar su inglés. \n\nA virtual…
+URL:https://mppl.libnet.info/event/17476702
+END:VEVENT
+BEGIN:VEVENT
+UID:mount-prospect-60056-2026-09-23-hooked-on-books@withintenmiles.com
+DTSTAMP:20260922T010136Z
+LAST-MODIFIED:20260922T010136Z
+SEQUENCE:0
+DTSTART:20260923T163000
+DTEND:20260923T173000
+SUMMARY:Hooked on Books!
+DESCRIPTION:Wednesday\, September 23 2026 4:30pm - 5:15pm \n In this interactive club perfect for kids just starting chapter books\, we'll read a fun story\, play games or do…
+URL:https://mppl.libnet.info/event/16432126
+END:VEVENT
+BEGIN:VEVENT
+UID:mount-prospect-60056-2026-09-23-cricut-design-space-for-beginners@withintenmiles.com
+DTSTAMP:20260922T010136Z
+LAST-MODIFIED:20260922T010136Z
+SEQUENCE:0
+DTSTART:20260923T170000
+DTEND:20260923T180000
+SUMMARY:Cricut Design Space for Beginners
+DESCRIPTION:Wednesday\, September 23 2026 5:00pm - 6:30pm \n Explore Cricut Design Space and learn how to use a Cricut cutting machine.
+URL:https://mppl.libnet.info/event/16488223
+END:VEVENT
+BEGIN:VEVENT
+UID:mount-prospect-60056-2026-09-23-minecraft-engineers@withintenmiles.com
+DTSTAMP:20260922T010136Z
+LAST-MODIFIED:20260922T010136Z
+SEQUENCE:0
+DTSTART:20260923T180000
+DTEND:20260923T190000
+SUMMARY:Minecraft Engineers
+DESCRIPTION:Wednesday\, September 23 2026 6:00pm - 7:00pm \n Get your pickaxe ready! Build unique structures that solve various design challenges. Then share your digital…
+URL:https://mppl.libnet.info/event/16260928
+END:VEVENT
+BEGIN:VEVENT
+UID:mount-prospect-60056-2026-09-24-baby-storytime@withintenmiles.com
+DTSTAMP:20260922T010136Z
+LAST-MODIFIED:20260922T010136Z
+SEQUENCE:0
+DTSTART:20260924T093000
+DTEND:20260924T103000
+SUMMARY:Baby Storytime
+DESCRIPTION:Thursday\, September 24 2026 9:30am - 10:00am \n A lifelong love of reading starts at birth! Join us for songs\, rhymes\, stories\, and playtime made specially for…
+URL:https://mppl.libnet.info/event/16291123
+END:VEVENT
+BEGIN:VEVENT
+UID:mount-prospect-60056-2026-09-24-ides-job-fair@withintenmiles.com
+DTSTAMP:20260922T010136Z
+LAST-MODIFIED:20260922T010136Z
+SEQUENCE:0
+DTSTART:20260924T100000
+DTEND:20260924T110000
+SUMMARY:IDES Job Fair
+DESCRIPTION:Thursday\, September 24 2026 10:00am - 1:00pm \n Connect with dozens of local employers at this all-industry job fair presented by the Illinois Department of…
+URL:https://mppl.libnet.info/event/15031136
+END:VEVENT
+BEGIN:VEVENT
+UID:mount-prospect-60056-2026-09-24-family-storytime@withintenmiles.com
+DTSTAMP:20260922T010136Z
+LAST-MODIFIED:20260922T010136Z
+SEQUENCE:0
+DTSTART:20260924T103000
+DTEND:20260924T113000
+SUMMARY:Family Storytime
+DESCRIPTION:Thursday\, September 24 2026 10:30am - 11:00am \n Bring the whole family and join us for an interactive storytime with high-energy stories\, songs\, and activities.
+URL:https://mppl.libnet.info/event/16290642
+END:VEVENT
+BEGIN:VEVENT
+UID:mount-prospect-60056-2026-09-24-animal-investigators-junior-prairie-dogs@withintenmiles.com
+DTSTAMP:20260922T010136Z
+LAST-MODIFIED:20260922T010136Z
+SEQUENCE:0
+DTSTART:20260924T163000
+DTEND:20260924T173000
+SUMMARY:Animal Investigators Junior: Prairie Dogs
+DESCRIPTION:Thursday\, September 24 2026 4:30pm - 5:30pm \n Let's hang out and admire incredible animals together!
+URL:https://mppl.libnet.info/event/16275302
+END:VEVENT
+BEGIN:VEVENT
+UID:mount-prospect-60056-2026-09-24-3d-printing-for-kids-learn-tinkercad@withintenmiles.com
+DTSTAMP:20260922T010136Z
+LAST-MODIFIED:20260922T010136Z
+SEQUENCE:0
+DTSTART:20260924T180000
+DTEND:20260924T190000
+SUMMARY:3D Printing for Kids: Learn Tinkercad
+DESCRIPTION:Thursday\, September 24 2026 6:00pm - 7:00pm \n Learn how to create objects using Tinkercad\, a digital-design computer software.
+URL:https://mppl.libnet.info/event/16256564
+END:VEVENT
+BEGIN:VEVENT
+UID:mount-prospect-60056-2026-09-24-beyond-the-book-drop@withintenmiles.com
+DTSTAMP:20260922T010136Z
+LAST-MODIFIED:20260922T010136Z
+SEQUENCE:0
+DTSTART:20260924T180000
+DTEND:20260924T190000
 SUMMARY:Beyond the Book Drop
-DESCRIPTION:Monday\, September 21 2026 11:00am - 11:30am \n Ever wonder what happens after your library materials go through the return slot? Get a behind-the-scenes look…
-URL:https://mppl.libnet.info/event/16687517
+DESCRIPTION:Thursday\, September 24 2026 6:00pm - 6:30pm \n Ever wonder what happens after your library materials go through the return slot? Get a behind-the-scenes look…
+URL:https://mppl.libnet.info/event/16687519
 END:VEVENT
 BEGIN:VEVENT
-UID:mount-prospect-60056-2026-09-21-student-and-staff-non-attendance-buildings-closed@withintenmiles.com
-DTSTAMP:20260921T194339Z
-LAST-MODIFIED:20260921T194339Z
+UID:mount-prospect-60056-2026-09-24-where-the-paletero-man-goes@withintenmiles.com
+DTSTAMP:20260922T010136Z
+LAST-MODIFIED:20260922T010136Z
 SEQUENCE:0
-DTSTART:20260921T000000
-DTEND:20260921T010000
-SUMMARY:Student and Staff Non-Attendance/Buildings Closed
+DTSTART:20260924T180000
+DTEND:20260924T190000
+SUMMARY:Where the Paletero Man Goes
+DESCRIPTION:Thursday\, September 24 2026 6:00pm - 6:30pm \n Join us for an energetic conversation as we celebrate the joy of community and summer fun with Latin…
+URL:https://mppl.libnet.info/event/17443738
+END:VEVENT
+BEGIN:VEVENT
+UID:mount-prospect-60056-2026-09-24-getting-started-with-mexican-genealogy@withintenmiles.com
+DTSTAMP:20260922T010136Z
+LAST-MODIFIED:20260922T010136Z
+SEQUENCE:0
+DTSTART:20260924T190000
+DTEND:20260924T200000
+SUMMARY:Getting Started With Mexican Genealogy
+DESCRIPTION:Thursday\, September 24 2026 7:00pm - 8:00pm \n Genealogist Moises Garza will offer ways to get started researching your Mexican ancestors.
+URL:https://mppl.libnet.info/event/15917778
+END:VEVENT
+BEGIN:VEVENT
+UID:mount-prospect-60056-2026-09-25-storytime-playdate-mini-museum@withintenmiles.com
+DTSTAMP:20260922T010136Z
+LAST-MODIFIED:20260922T010136Z
+SEQUENCE:0
+DTSTART:20260925T100000
+DTEND:20260925T110000
+SUMMARY:Storytime Playdate: Mini Museum
+DESCRIPTION:Friday\, September 25 2026 10:00am - 11:30am \n Enjoy the magic of storytime plus the joy of hands-on sensory fun! You and your child will enjoy time together…
+URL:https://mppl.libnet.info/event/16291355
+END:VEVENT
+BEGIN:VEVENT
+UID:mount-prospect-60056-2026-09-25-teen-volunteering@withintenmiles.com
+DTSTAMP:20260922T010136Z
+LAST-MODIFIED:20260922T010136Z
+SEQUENCE:0
+DTSTART:20260925T170000
+DTEND:20260925T180000
+SUMMARY:Teen Volunteering
+DESCRIPTION:Friday\, September 25 2026 5:00pm - 6:00pm \n Give back to the community and earn volunteer hours at the same time.
+URL:https://mppl.libnet.info/event/14039774
+END:VEVENT
+BEGIN:VEVENT
+UID:mount-prospect-60056-2026-09-25-let-s-play-mario-kart@withintenmiles.com
+DTSTAMP:20260922T010136Z
+LAST-MODIFIED:20260922T010136Z
+SEQUENCE:0
+DTSTART:20260925T170000
+DTEND:20260925T180000
+SUMMARY:Let's Play: Mario Kart
+DESCRIPTION:Friday\, September 25 2026 5:00pm - 6:30pm \n Bring your friends and stop by South Branch to play Mario Kart on our Nintendo Switch!
+URL:https://mppl.libnet.info/event/16440990
+END:VEVENT
+BEGIN:VEVENT
+UID:mount-prospect-60056-2026-09-26-potty-palooza@withintenmiles.com
+DTSTAMP:20260922T010136Z
+LAST-MODIFIED:20260922T010136Z
+SEQUENCE:0
+DTSTART:20260926T100000
+DTEND:20260926T110000
+SUMMARY:Potty Palooza
+DESCRIPTION:Saturday\, September 26 2026 10:00am - 11:00am \n Ready to start your potty training journey? Let us help make this big step a whole lot more fun!
+URL:https://mppl.libnet.info/event/16427602
+END:VEVENT
+BEGIN:VEVENT
+UID:mount-prospect-60056-2026-09-26-beyond-the-book-drop@withintenmiles.com
+DTSTAMP:20260922T010136Z
+LAST-MODIFIED:20260922T010136Z
+SEQUENCE:0
+DTSTART:20260926T110000
+DTEND:20260926T120000
+SUMMARY:Beyond the Book Drop
+DESCRIPTION:Saturday\, September 26 2026 11:00am - 11:30am \n Ever wonder what happens after your library materials go through the return slot? Get a behind-the-scenes look…
+URL:https://mppl.libnet.info/event/16687521
+END:VEVENT
+BEGIN:VEVENT
+UID:mount-prospect-60056-2026-09-28-let-s-play-loter-a@withintenmiles.com
+DTSTAMP:20260922T010136Z
+LAST-MODIFIED:20260922T010136Z
+SEQUENCE:0
+DTSTART:20260928T180000
+DTEND:20260928T190000
+SUMMARY:Let's Play Lotería!
+DESCRIPTION:Monday\, September 28 2026 6:00pm - 7:00pm \n Listen\, match\, and win prizes during this fun\, fast-paced bilingual bingo-like game of Lotería!
+URL:https://mppl.libnet.info/event/16259503
+END:VEVENT
+BEGIN:VEVENT
+UID:mount-prospect-60056-2026-09-28-weight-loss-medications-what-to-know@withintenmiles.com
+DTSTAMP:20260922T010136Z
+LAST-MODIFIED:20260922T010136Z
+SEQUENCE:0
+DTSTART:20260928T190000
+DTEND:20260928T200000
+SUMMARY:Weight Loss Medications: What to Know
+DESCRIPTION:Monday\, September 28 2026 7:00pm - 8:00pm \n Join Dr. Annette Carmichael\, a clinical pharmacist\, for an informative session exploring today's most common…
+URL:https://mppl.libnet.info/event/16536787
+END:VEVENT
+BEGIN:VEVENT
+UID:mount-prospect-60056-2026-09-29-play-and-learn@withintenmiles.com
+DTSTAMP:20260922T010136Z
+LAST-MODIFIED:20260922T010136Z
+SEQUENCE:0
+DTSTART:20260929T113000
+DTEND:20260929T123000
+SUMMARY:Play and Learn
+DESCRIPTION:Tuesday\, September 29 2026 11:30am - 12:15pm \n Join us each week for storytime\, sing-alongs\, and developmental play experiences that encourage learning…
+URL:https://mppl.libnet.info/event/16440799
+END:VEVENT
+BEGIN:VEVENT
+UID:mount-prospect-60056-2026-09-29-ready-set-read@withintenmiles.com
+DTSTAMP:20260922T010136Z
+LAST-MODIFIED:20260922T010136Z
+SEQUENCE:0
+DTSTART:20260929T161500
+DTEND:20260929T171500
+SUMMARY:Ready\, Set\, Read!
+DESCRIPTION:Tuesday\, September 29 2026 4:15pm - 5:00pm \n Come have fun with play-based activities that develop early literacy skills based in the science of reading.
+URL:https://mppl.libnet.info/event/16291592
+END:VEVENT
+BEGIN:VEVENT
+UID:mount-prospect-60056-2026-09-30-messy-makers-storytime-under-the-sea@withintenmiles.com
+DTSTAMP:20260922T010136Z
+LAST-MODIFIED:20260922T010136Z
+SEQUENCE:0
+DTSTART:20260930T100000
+DTEND:20260930T110000
+SUMMARY:Messy Makers Storytime: Under the Sea
+DESCRIPTION:Wednesday\, September 30 2026 10:00am - 10:30am \n Come explore under-sea wonders with a story and messy activities!
+URL:https://mppl.libnet.info/event/16293715
+END:VEVENT
+BEGIN:VEVENT
+UID:mount-prospect-60056-2026-09-30-clerk-of-the-circuit-court-of-cook-county-mobile-unit@withintenmiles.com
+DTSTAMP:20260922T010136Z
+LAST-MODIFIED:20260922T010136Z
+SEQUENCE:0
+DTSTART:20260930T133000
+DTEND:20260930T143000
+SUMMARY:Clerk of the Circuit Court of Cook County: Mobile Unit
+DESCRIPTION:Wednesday\, September 30 2026 1:30pm - 4:00pm \n The Clerk of the Circuit Court's Mobile Unit is designed to help community members understand their legal…
+URL:https://mppl.libnet.info/event/15739859
+END:VEVENT
+BEGIN:VEVENT
+UID:mount-prospect-60056-2026-09-30-drop-in-tech-help@withintenmiles.com
+DTSTAMP:20260922T010136Z
+LAST-MODIFIED:20260922T010136Z
+SEQUENCE:0
+DTSTART:20260930T140000
+DTEND:20260930T150000
+SUMMARY:Drop-In Tech Help
+DESCRIPTION:Wednesday\, September 30 2026 2:00pm - 3:00pm \n Stop in and bring your questions about technology-related subjects such as smartphones\, computers\, email\,…
+URL:https://mppl.libnet.info/event/14755967
+END:VEVENT
+BEGIN:VEVENT
+UID:mount-prospect-60056-2026-09-30-3d-printing-for-families-learn-thingiverse@withintenmiles.com
+DTSTAMP:20260922T010136Z
+LAST-MODIFIED:20260922T010136Z
+SEQUENCE:0
+DTSTART:20260930T163000
+DTEND:20260930T173000
+SUMMARY:3D Printing for Families: Learn Thingiverse
+DESCRIPTION:Wednesday\, September 30 2026 4:30pm - 5:30pm \n Learn how to use Thingiverse to find a 3D print project and submit it to the library to be printed.
+URL:https://mppl.libnet.info/event/16282076
+END:VEVENT
+BEGIN:VEVENT
+UID:mount-prospect-60056-2026-09-30-pok-mon-club@withintenmiles.com
+DTSTAMP:20260922T010136Z
+LAST-MODIFIED:20260922T010136Z
+SEQUENCE:0
+DTSTART:20260930T180000
+DTEND:20260930T190000
+SUMMARY:Pokémon Club
+DESCRIPTION:Wednesday\, September 30 2026 6:00pm - 7:00pm \n Do you wish you could catch 'em all? Meet up with other Pokémon fans for activities\, games\, and more fun!
+URL:https://mppl.libnet.info/event/16385381
+END:VEVENT
+BEGIN:VEVENT
+UID:mount-prospect-60056-2026-09-30-lawyers-at-the-library-your-legal-help-desk@withintenmiles.com
+DTSTAMP:20260922T010136Z
+LAST-MODIFIED:20260922T010136Z
+SEQUENCE:0
+DTSTART:20260930T183000
+DTEND:20260930T193000
+SUMMARY:Lawyers at the Library: Your Legal Help Desk
+DESCRIPTION:Wednesday\, September 30 2026 6:30pm - 7:00pm \n Need legal advice but don't know where to start? Free legal consultations are available through a virtual…
+URL:https://mppl.libnet.info/event/16565148
+END:VEVENT
+BEGIN:VEVENT
+UID:mount-prospect-60056-2026-10-01-crafts-to-go-kits@withintenmiles.com
+DTSTAMP:20260922T010136Z
+LAST-MODIFIED:20260922T010136Z
+SEQUENCE:0
+DTSTART:20261001T000000
+DTEND:20261001T010000
+SUMMARY:Crafts-to-Go Kits
+DESCRIPTION:Thursday\, October 01 2026 12:00am - 11:59pm \n Stop by the Youth desk and pick up a fun DIY craft to make at home!
+URL:https://mppl.libnet.info/event/14829279
+END:VEVENT
+BEGIN:VEVENT
+UID:mount-prospect-60056-2026-10-01-homeschool-hangout@withintenmiles.com
+DTSTAMP:20260922T010136Z
+LAST-MODIFIED:20260922T010136Z
+SEQUENCE:0
+DTSTART:20261001T100000
+DTEND:20261001T110000
+SUMMARY:Homeschool Hangout
+DESCRIPTION:Thursday\, October 01 2026 10:00am - 11:00am \n Get to know other homeschool families in the area while playing games\, trying out hands-on activities\, and more!
+URL:https://mppl.libnet.info/event/16069481
+END:VEVENT
+BEGIN:VEVENT
+UID:mount-prospect-60056-2026-10-01-elected-officials-office-hours@withintenmiles.com
+DTSTAMP:20260922T010136Z
+LAST-MODIFIED:20260922T010136Z
+SEQUENCE:0
+DTSTART:20261001T140000
+DTEND:20261001T150000
+SUMMARY:Elected Officials Office Hours
+DESCRIPTION:Thursday\, October 01 2026 2:00pm - 4:00pm \n Meet with Representatives from the office of the 53rd District State Rep. Nicolle Grasse.
+URL:https://mppl.libnet.info/event/15852955
+END:VEVENT
+BEGIN:VEVENT
+UID:mount-prospect-60056-2026-10-01-second-floor-renovation-celebration@withintenmiles.com
+DTSTAMP:20260922T010136Z
+LAST-MODIFIED:20260922T010136Z
+SEQUENCE:0
+DTSTART:20261001T160000
+DTEND:20261001T170000
+SUMMARY:Second Floor Renovation Celebration
+DESCRIPTION:Thursday\, October 01 2026 4:00pm - 4:30pm \n Celebrate the completion of the librarys second floor renovation!
+URL:https://mppl.libnet.info/event/17383529
+END:VEVENT
+BEGIN:VEVENT
+UID:mount-prospect-60056-2026-10-01-tech-playground@withintenmiles.com
+DTSTAMP:20260922T010136Z
+LAST-MODIFIED:20260922T010136Z
+SEQUENCE:0
+DTSTART:20261001T180000
+DTEND:20261001T190000
+SUMMARY:Tech Playground
+DESCRIPTION:Thursday\, October 01 2026 6:00pm - 7:00pm \n Be a tech explorer and try out STEAM toys at the library.
+URL:https://mppl.libnet.info/event/16392028
+END:VEVENT
+BEGIN:VEVENT
+UID:mount-prospect-60056-2026-10-01-career-coaching-appointment@withintenmiles.com
+DTSTAMP:20260922T010136Z
+LAST-MODIFIED:20260922T010136Z
+SEQUENCE:0
+DTSTART:20261001T180000
+DTEND:20261001T190000
+SUMMARY:Career Coaching Appointment
+DESCRIPTION:Thursday\, October 01 2026 6:00pm - 7:00pm \n Jumpstart your job search with a virtual one-hour session with an experienced career coach.
+URL:https://mppl.libnet.info/event/16514063
+END:VEVENT
+BEGIN:VEVENT
+UID:mount-prospect-60056-2026-10-01-courage-choice-and-what-comes-next-with-veronica-roth@withintenmiles.com
+DTSTAMP:20260922T010136Z
+LAST-MODIFIED:20260922T010136Z
+SEQUENCE:0
+DTSTART:20261001T180000
+DTEND:20261001T190000
+SUMMARY:Courage\, Choice\, and What Comes Next With Veronica Roth
+DESCRIPTION:Thursday\, October 01 2026 6:00pm - 7:00pm \n Join us for an online conversation with #1 New York Times bestselling author Veronica Roth.
+URL:https://mppl.libnet.info/event/17310349
+END:VEVENT
+BEGIN:VEVENT
+UID:mount-prospect-60056-2026-10-01-drop-in-crochet-and-knit-group@withintenmiles.com
+DTSTAMP:20260922T010136Z
+LAST-MODIFIED:20260922T010136Z
+SEQUENCE:0
+DTSTART:20261001T190000
+DTEND:20261001T200000
+SUMMARY:Drop-In Crochet and Knit Group
+DESCRIPTION:Thursday\, October 01 2026 7:00pm - 8:30pm \n Bring your latest crochet or knit projects and share your enthusiasm with other needlecrafters.
+URL:https://mppl.libnet.info/event/14039633
+END:VEVENT
+BEGIN:VEVENT
+UID:mount-prospect-60056-2026-10-02-world-language-storytime-filipino@withintenmiles.com
+DTSTAMP:20260922T010136Z
+LAST-MODIFIED:20260922T010136Z
+SEQUENCE:0
+DTSTART:20261002T100000
+DTEND:20261002T110000
+SUMMARY:World Language Storytime: Filipino
+DESCRIPTION:Friday\, October 02 2026 10:00am - 10:30am \n Mabuhay! Join us for an interactive\, bilingual storytime with stories\, songs\, rhymes\, and activities that…
+URL:https://mppl.libnet.info/event/16521837
+END:VEVENT
+BEGIN:VEVENT
+UID:mount-prospect-60056-2026-10-02-teen-book-caf@withintenmiles.com
+DTSTAMP:20260922T010136Z
+LAST-MODIFIED:20260922T010136Z
+SEQUENCE:0
+DTSTART:20261002T163000
+DTEND:20261002T173000
+SUMMARY:Teen Book Café
+DESCRIPTION:Friday\, October 02 2026 4:30pm - 6:00pm \n Love books? Come hang out with us at Khepri Kitchen + Coffee\, 106 S. Emerson St. We'll talk about new books\,…
+URL:https://mppl.libnet.info/event/14685926
+END:VEVENT
+BEGIN:VEVENT
+UID:mount-prospect-60056-2026-10-02-lego-mania@withintenmiles.com
+DTSTAMP:20260922T010136Z
+LAST-MODIFIED:20260922T010136Z
+SEQUENCE:0
+DTSTART:20261002T170000
+DTEND:20261002T180000
+SUMMARY:LEGO Mania
+DESCRIPTION:Friday\, October 02 2026 5:00pm - 6:00pm \n Create a never-before-seen masterpiece using our large collection of LEGO bricks! At the end of the program\, we will…
+URL:https://mppl.libnet.info/event/16749784
+END:VEVENT
+BEGIN:VEVENT
+UID:mount-prospect-60056-2026-10-03-checkmates-meetup@withintenmiles.com
+DTSTAMP:20260922T010136Z
+LAST-MODIFIED:20260922T010136Z
+SEQUENCE:0
+DTSTART:20261003T140000
+DTEND:20261003T150000
+SUMMARY:CheckMates Meetup
+DESCRIPTION:Saturday\, October 03 2026 2:00pm - 3:30pm \n Join other chess fans for a mini lesson and guided instruction to sharpen your skills\, or just stop by for a match!
+URL:https://mppl.libnet.info/event/16648940
+END:VEVENT
+BEGIN:VEVENT
+UID:mount-prospect-60056-2026-10-05-family-storytime@withintenmiles.com
+DTSTAMP:20260922T010136Z
+LAST-MODIFIED:20260922T010136Z
+SEQUENCE:0
+DTSTART:20261005T093000
+DTEND:20261005T103000
+SUMMARY:Family Storytime
+DESCRIPTION:Monday\, October 05 2026 9:30am - 10:00am \n Bring the whole family and join us for an interactive storytime with high-energy stories\, songs\, and activities.
+URL:https://mppl.libnet.info/event/16553298
+END:VEVENT
+BEGIN:VEVENT
+UID:mount-prospect-60056-2026-10-05-toddler-storytime@withintenmiles.com
+DTSTAMP:20260922T010136Z
+LAST-MODIFIED:20260922T010136Z
+SEQUENCE:0
+DTSTART:20261005T103000
+DTEND:20261005T113000
+SUMMARY:Toddler Storytime
+DESCRIPTION:Monday\, October 05 2026 10:30am - 11:00am \n Grow your little learner's literacy and language skills at this playful storytime full of wiggles\, wonder\, and fun!
+URL:https://mppl.libnet.info/event/16553328
+END:VEVENT
+BEGIN:VEVENT
+UID:mount-prospect-60056-2026-10-05-3d-printing-for-kids-learn-tinkercad@withintenmiles.com
+DTSTAMP:20260922T010136Z
+LAST-MODIFIED:20260922T010136Z
+SEQUENCE:0
+DTSTART:20261005T163000
+DTEND:20261005T173000
+SUMMARY:3D Printing for Kids: Learn Tinkercad
+DESCRIPTION:Monday\, October 05 2026 4:30pm - 5:30pm \n Learn how to create objects using Tinkercad\, a digital-design computer software.
+URL:https://mppl.libnet.info/event/16391863
+END:VEVENT
+BEGIN:VEVENT
+UID:mount-prospect-60056-2026-10-05-creation-station-mini-monsters@withintenmiles.com
+DTSTAMP:20260922T010136Z
+LAST-MODIFIED:20260922T010136Z
+SEQUENCE:0
+DTSTART:20261005T180000
+DTEND:20261005T190000
+SUMMARY:Creation Station: Mini Monsters
+DESCRIPTION:Monday\, October 05 2026 6:00pm - 7:00pm \n Craft and create with us! We'll provide an idea and supplies\; you create your own masterpiece.
+URL:https://mppl.libnet.info/event/16640906
+END:VEVENT
+BEGIN:VEVENT
+UID:mount-prospect-60056-2026-10-06-baby-storytime@withintenmiles.com
+DTSTAMP:20260922T010136Z
+LAST-MODIFIED:20260922T010136Z
+SEQUENCE:0
+DTSTART:20261006T093000
+DTEND:20261006T103000
+SUMMARY:Baby Storytime
+DESCRIPTION:Tuesday\, October 06 2026 9:30am - 10:00am \n A lifelong love of reading starts at birth! Join us for songs\, rhymes\, stories\, and playtime made specially for…
+URL:https://mppl.libnet.info/event/16553351
+END:VEVENT
+BEGIN:VEVENT
+UID:mount-prospect-60056-2026-10-06-family-storytime@withintenmiles.com
+DTSTAMP:20260922T010136Z
+LAST-MODIFIED:20260922T010136Z
+SEQUENCE:0
+DTSTART:20261006T103000
+DTEND:20261006T113000
+SUMMARY:Family Storytime
+DESCRIPTION:Tuesday\, October 06 2026 10:30am - 11:00am \n Bring the whole family and join us for an interactive storytime with high-energy stories\, songs\, and activities.
+URL:https://mppl.libnet.info/event/16553375
+END:VEVENT
+BEGIN:VEVENT
+UID:mount-prospect-60056-2026-10-06-play-and-learn@withintenmiles.com
+DTSTAMP:20260922T010136Z
+LAST-MODIFIED:20260922T010136Z
+SEQUENCE:0
+DTSTART:20261006T113000
+DTEND:20261006T123000
+SUMMARY:Play and Learn
+DESCRIPTION:Tuesday\, October 06 2026 11:30am - 12:15pm \n Join us each week for storytime\, sing-alongs\, and developmental play experiences that encourage learning through…
+URL:https://mppl.libnet.info/event/16749800
+END:VEVENT
+BEGIN:VEVENT
+UID:mount-prospect-60056-2026-10-06-big-kids-storytime@withintenmiles.com
+DTSTAMP:20260922T010136Z
+LAST-MODIFIED:20260922T010136Z
+SEQUENCE:0
+DTSTART:20261006T133000
+DTEND:20261006T143000
+SUMMARY:Big Kids Storytime
+DESCRIPTION:Tuesday\, October 06 2026 1:30pm - 2:15pm \n Grow into a super reader through playful books and fun with friends! This storytime is the perfect fit for…
+URL:https://mppl.libnet.info/event/16553392
+END:VEVENT
+BEGIN:VEVENT
+UID:mount-prospect-60056-2026-10-06-choosing-your-medicare-supplement-insurance-policy@withintenmiles.com
+DTSTAMP:20260922T010136Z
+LAST-MODIFIED:20260922T010136Z
+SEQUENCE:0
+DTSTART:20261006T140000
+DTEND:20261006T150000
+SUMMARY:Choosing Your Medicare Supplement Insurance Policy
+DESCRIPTION:Tuesday\, October 06 2026 2:00pm - 3:00pm \n This program will provide helpful guidance needed to navigate Medicare supplement options with a Medicare…
+URL:https://mppl.libnet.info/event/16332683
+END:VEVENT
+BEGIN:VEVENT
+UID:mount-prospect-60056-2026-10-06-galaxy-pumpkins-adult-craft@withintenmiles.com
+DTSTAMP:20260922T010136Z
+LAST-MODIFIED:20260922T010136Z
+SEQUENCE:0
+DTSTART:20261006T190000
+DTEND:20261006T200000
+SUMMARY:Galaxy Pumpkins Adult Craft
+DESCRIPTION:Tuesday\, October 06 2026 7:00pm - 8:00pm \n Adults\, celebrate One Book\, One Village and the holiday season by painting your very own space pumpkin.
+URL:https://mppl.libnet.info/event/15766207
+END:VEVENT
+BEGIN:VEVENT
+UID:mount-prospect-60056-2026-10-07-toddler-storytime@withintenmiles.com
+DTSTAMP:20260922T010136Z
+LAST-MODIFIED:20260922T010136Z
+SEQUENCE:0
+DTSTART:20261007T093000
+DTEND:20261007T103000
+SUMMARY:Toddler Storytime
+DESCRIPTION:Wednesday\, October 07 2026 9:30am - 10:00am \n Grow your little learner's literacy and language skills at this playful storytime full of wiggles\, wonder\, and…
+URL:https://mppl.libnet.info/event/16553439
+END:VEVENT
+BEGIN:VEVENT
+UID:mount-prospect-60056-2026-10-07-drop-in-tech-help@withintenmiles.com
+DTSTAMP:20260922T010136Z
+LAST-MODIFIED:20260922T010136Z
+SEQUENCE:0
+DTSTART:20261007T100000
+DTEND:20261007T110000
+SUMMARY:Drop-In Tech Help
+DESCRIPTION:Wednesday\, October 07 2026 10:00am - 11:00am \n Stop in and bring your questions about technology-related subjects such as smartphones\, computers\, email\,…
+URL:https://mppl.libnet.info/event/14756159
+END:VEVENT
+BEGIN:VEVENT
+UID:mount-prospect-60056-2026-10-07-wednesday-morning-book-group@withintenmiles.com
+DTSTAMP:20260922T010136Z
+LAST-MODIFIED:20260922T010136Z
+SEQUENCE:0
+DTSTART:20261007T110000
+DTEND:20261007T120000
+SUMMARY:Wednesday Morning Book Group
+DESCRIPTION:Wednesday\, October 07 2026 11:00am - 12:00pm \n Join others in the community for a casual discussion of our One Book\, One Village read\, Project Hail Mary by…
+URL:https://mppl.libnet.info/event/15979949
+END:VEVENT
+BEGIN:VEVENT
+UID:mount-prospect-60056-2026-10-07-potions-lab@withintenmiles.com
+DTSTAMP:20260922T010136Z
+LAST-MODIFIED:20260922T010136Z
+SEQUENCE:0
+DTSTART:20261007T163000
+DTEND:20261007T173000
+SUMMARY:Potions Lab
+DESCRIPTION:Wednesday\, October 07 2026 4:30pm - 5:15pm \n Fizzy\, frothy\, or bubbly? What kind of colorful concoction will you mix today? Each month will feature different…
+URL:https://mppl.libnet.info/event/16640911
+END:VEVENT
+BEGIN:VEVENT
+UID:mount-prospect-60056-2026-10-07-galaxy-pumpkins-adult-craft@withintenmiles.com
+DTSTAMP:20260922T010136Z
+LAST-MODIFIED:20260922T010136Z
+SEQUENCE:0
+DTSTART:20261007T190000
+DTEND:20261007T200000
+SUMMARY:Galaxy Pumpkins Adult Craft
+DESCRIPTION:Wednesday\, October 07 2026 7:00pm - 8:00pm \n Adults\, celebrate One Book\, One Village and the holiday season by painting your very own space pumpkin.
+URL:https://mppl.libnet.info/event/15956577
+END:VEVENT
+BEGIN:VEVENT
+UID:mount-prospect-60056-2026-10-08-baby-storytime@withintenmiles.com
+DTSTAMP:20260922T010136Z
+LAST-MODIFIED:20260922T010136Z
+SEQUENCE:0
+DTSTART:20261008T093000
+DTEND:20261008T103000
+SUMMARY:Baby Storytime
+DESCRIPTION:Thursday\, October 08 2026 9:30am - 10:00am \n A lifelong love of reading starts at birth! Join us for songs\, rhymes\, stories\, and playtime made specially for…
+URL:https://mppl.libnet.info/event/16553491
+END:VEVENT
+BEGIN:VEVENT
+UID:mount-prospect-60056-2026-10-08-family-storytime@withintenmiles.com
+DTSTAMP:20260922T010136Z
+LAST-MODIFIED:20260922T010136Z
+SEQUENCE:0
+DTSTART:20261008T103000
+DTEND:20261008T113000
+SUMMARY:Family Storytime
+DESCRIPTION:Thursday\, October 08 2026 10:30am - 11:00am \n Bring the whole family and join us for an interactive storytime with high-energy stories\, songs\, and activities.
+URL:https://mppl.libnet.info/event/16553520
+END:VEVENT
+BEGIN:VEVENT
+UID:mount-prospect-60056-2026-10-08-movies-mppl-project-hail-mary@withintenmiles.com
+DTSTAMP:20260922T010136Z
+LAST-MODIFIED:20260922T010136Z
+SEQUENCE:0
+DTSTART:20261008T140000
+DTEND:20261008T150000
+SUMMARY:Movies @ MPPL: Project Hail Mary
+DESCRIPTION:Thursday\, October 08 2026 2:00pm - 5:00pm \n Join us for a screening of "Project Hail Mary."
+URL:https://mppl.libnet.info/event/14038363
+END:VEVENT
+BEGIN:VEVENT
+UID:mount-prospect-60056-2026-10-08-score-business-mentoring@withintenmiles.com
+DTSTAMP:20260922T010136Z
+LAST-MODIFIED:20260922T010136Z
+SEQUENCE:0
+DTSTART:20261008T150000
+DTEND:20261008T160000
+SUMMARY:SCORE Business Mentoring
+DESCRIPTION:Thursday\, October 08 2026 3:00pm - 4:00pm \n Local entrepreneurs and small businesses can get one-on-one support  by meeting with an experienced mentor from…
+URL:https://mppl.libnet.info/event/16031174
+END:VEVENT
+BEGIN:VEVENT
+UID:mount-prospect-60056-2026-10-08-codebuilders@withintenmiles.com
+DTSTAMP:20260922T010136Z
+LAST-MODIFIED:20260922T010136Z
+SEQUENCE:0
+DTSTART:20261008T180000
+DTEND:20261008T190000
+SUMMARY:CodeBuilders
+DESCRIPTION:Thursday\, October 08 2026 6:00pm - 7:00pm \n Experience the thrill of telling a computer what to do and watching your instructions come to life!
+URL:https://mppl.libnet.info/event/16391904
+END:VEVENT
+BEGIN:VEVENT
+UID:mount-prospect-60056-2026-10-08-mount-prospect-stories@withintenmiles.com
+DTSTAMP:20260922T010136Z
+LAST-MODIFIED:20260922T010136Z
+SEQUENCE:0
+DTSTART:20261008T190000
+DTEND:20261008T200000
+SUMMARY:Mount Prospect Stories
+DESCRIPTION:Thursday\, October 08 2026 7:00pm - 8:00pm \n Learn how Mount Prospect's business environment has changed from rural to high tech.
+URL:https://mppl.libnet.info/event/15786788
+END:VEVENT
+BEGIN:VEVENT
+UID:mount-prospect-60056-2026-10-09-storytime-playdate-star-party@withintenmiles.com
+DTSTAMP:20260922T010136Z
+LAST-MODIFIED:20260922T010136Z
+SEQUENCE:0
+DTSTART:20261009T100000
+DTEND:20261009T110000
+SUMMARY:Storytime Playdate: Star Party
+DESCRIPTION:Friday\, October 09 2026 10:00am - 11:30am \n Enjoy the magic of storytime plus the joy of hands-on sensory fun! You and your child will enjoy time together…
+URL:https://mppl.libnet.info/event/16553541
+END:VEVENT
+BEGIN:VEVENT
+UID:mount-prospect-60056-2026-10-09-build-and-watch-the-addams-family@withintenmiles.com
+DTSTAMP:20260922T010136Z
+LAST-MODIFIED:20260922T010136Z
+SEQUENCE:0
+DTSTART:20261009T170000
+DTEND:20261009T180000
+SUMMARY:Build and Watch: The Addams Family
+DESCRIPTION:Friday\, October 09 2026 5:00pm - 7:00pm \n Enjoy a movie night at the library and have fun building with LEGO bricks and other various toys!
+URL:https://mppl.libnet.info/event/16749793
+END:VEVENT
+BEGIN:VEVENT
+UID:mount-prospect-60056-2026-10-10-digitizing-photos-slides-and-negatives@withintenmiles.com
+DTSTAMP:20260922T010136Z
+LAST-MODIFIED:20260922T010136Z
+SEQUENCE:0
+DTSTART:20261010T100000
+DTEND:20261010T110000
+SUMMARY:Digitizing Photos\, Slides\, and Negatives
+DESCRIPTION:Saturday\, October 10 2026 10:00am - 11:00am \n Learn how to digitize old photos\, slides\, and negatives using the library's Mac Studio equipment. It's a great…
+URL:https://mppl.libnet.info/event/16452806
+END:VEVENT
+BEGIN:VEVENT
+UID:mount-prospect-60056-2026-10-10-afternoon-tea-social@withintenmiles.com
+DTSTAMP:20260922T010136Z
+LAST-MODIFIED:20260922T010136Z
+SEQUENCE:0
+DTSTART:20261010T120000
+DTEND:20261010T130000
+SUMMARY:Afternoon Tea Social
+DESCRIPTION:Saturday\, October 10 2026 12:00pm - 1:00pm \n Come join us for an afternoon event celebrating our One Book\, One Village community read!
+URL:https://mppl.libnet.info/event/16124662
+END:VEVENT
+BEGIN:VEVENT
+UID:mount-prospect-60056-2026-10-12-family-storytime@withintenmiles.com
+DTSTAMP:20260922T010136Z
+LAST-MODIFIED:20260922T010136Z
+SEQUENCE:0
+DTSTART:20261012T093000
+DTEND:20261012T103000
+SUMMARY:Family Storytime
+DESCRIPTION:Monday\, October 12 2026 9:30am - 10:00am \n Bring the whole family and join us for an interactive storytime with high-energy stories\, songs\, and activities.
+URL:https://mppl.libnet.info/event/16553299
+END:VEVENT
+BEGIN:VEVENT
+UID:mount-prospect-60056-2026-10-12-creation-station-mini-monsters@withintenmiles.com
+DTSTAMP:20260922T010136Z
+LAST-MODIFIED:20260922T010136Z
+SEQUENCE:0
+DTSTART:20261012T100000
+DTEND:20261012T110000
+SUMMARY:Creation Station: Mini Monsters
+DESCRIPTION:Monday\, October 12 2026 10:00am - 11:30am \n Craft and create with us! We'll provide an idea and supplies\; then you create your own masterpiece.
+URL:https://mppl.libnet.info/event/16288686
+END:VEVENT
+BEGIN:VEVENT
+UID:mount-prospect-60056-2026-10-12-toddler-storytime@withintenmiles.com
+DTSTAMP:20260922T010136Z
+LAST-MODIFIED:20260922T010136Z
+SEQUENCE:0
+DTSTART:20261012T103000
+DTEND:20261012T113000
+SUMMARY:Toddler Storytime
+DESCRIPTION:Monday\, October 12 2026 10:30am - 11:00am \n Grow your little learner's literacy and language skills at this playful storytime full of wiggles\, wonder\, and fun!
+URL:https://mppl.libnet.info/event/16553329
+END:VEVENT
+BEGIN:VEVENT
+UID:mount-prospect-60056-2026-10-12-gross-science@withintenmiles.com
+DTSTAMP:20260922T010136Z
+LAST-MODIFIED:20260922T010136Z
+SEQUENCE:0
+DTSTART:20261012T163000
+DTEND:20261012T173000
+SUMMARY:Gross Science
+DESCRIPTION:Monday\, October 12 2026 4:30pm - 5:15pm \n Let's explore our weird and wacky world with hands-on activities that might make you laugh\, wrinkle your nose\, or…
+URL:https://mppl.libnet.info/event/16640961
+END:VEVENT
+BEGIN:VEVENT
+UID:mount-prospect-60056-2026-10-12-teen-volunteering@withintenmiles.com
+DTSTAMP:20260922T010136Z
+LAST-MODIFIED:20260922T010136Z
+SEQUENCE:0
+DTSTART:20261012T170000
+DTEND:20261012T180000
+SUMMARY:Teen Volunteering
+DESCRIPTION:Monday\, October 12 2026 5:00pm - 6:00pm \n Give back to the community and earn volunteer hours at the same time.
+URL:https://mppl.libnet.info/event/16749798
+END:VEVENT
+BEGIN:VEVENT
+UID:mount-prospect-60056-2026-10-12-understanding-medicare-choices@withintenmiles.com
+DTSTAMP:20260922T010136Z
+LAST-MODIFIED:20260922T010136Z
+SEQUENCE:0
+DTSTART:20261012T190000
+DTEND:20261012T200000
+SUMMARY:Understanding Medicare Choices
+DESCRIPTION:Monday\, October 12 2026 7:00pm - 8:30pm \n  Join financial educator Karen Chan for an overview of Medicare options to help you understand your choices\, avoid…
+URL:https://mppl.libnet.info/event/15371247
+END:VEVENT
+BEGIN:VEVENT
+UID:mount-prospect-60056-2026-10-12-monday-night-book-group@withintenmiles.com
+DTSTAMP:20260922T010136Z
+LAST-MODIFIED:20260922T010136Z
+SEQUENCE:0
+DTSTART:20261012T190000
+DTEND:20261012T200000
+SUMMARY:Monday Night Book Group
+DESCRIPTION:Monday\, October 12 2026 7:00pm - 8:00pm \n Join others in the community for a casual discussion of our One Book\, One Village read\, Project Hail Mary by Andy…
+URL:https://mppl.libnet.info/event/15980022
+END:VEVENT
+BEGIN:VEVENT
+UID:mount-prospect-60056-2026-10-13-baby-storytime@withintenmiles.com
+DTSTAMP:20260922T010136Z
+LAST-MODIFIED:20260922T010136Z
+SEQUENCE:0
+DTSTART:20261013T093000
+DTEND:20261013T103000
+SUMMARY:Baby Storytime
+DESCRIPTION:Tuesday\, October 13 2026 9:30am - 10:00am \n A lifelong love of reading starts at birth! Join us for songs\, rhymes\, stories\, and playtime made specially for…
+URL:https://mppl.libnet.info/event/16553352
+END:VEVENT
+BEGIN:VEVENT
+UID:mount-prospect-60056-2026-10-13-family-storytime@withintenmiles.com
+DTSTAMP:20260922T010136Z
+LAST-MODIFIED:20260922T010136Z
+SEQUENCE:0
+DTSTART:20261013T103000
+DTEND:20261013T113000
+SUMMARY:Family Storytime
+DESCRIPTION:Tuesday\, October 13 2026 10:30am - 11:00am \n Bring the whole family and join us for an interactive storytime with high-energy stories\, songs\, and activities.
+URL:https://mppl.libnet.info/event/16553376
+END:VEVENT
+BEGIN:VEVENT
+UID:mount-prospect-60056-2026-10-13-play-and-learn@withintenmiles.com
+DTSTAMP:20260922T010136Z
+LAST-MODIFIED:20260922T010136Z
+SEQUENCE:0
+DTSTART:20261013T113000
+DTEND:20261013T123000
+SUMMARY:Play and Learn
+DESCRIPTION:Tuesday\, October 13 2026 11:30am - 12:15pm \n Join us each week for storytime\, sing-alongs\, and developmental play experiences that encourage learning through…
+URL:https://mppl.libnet.info/event/16749801
+END:VEVENT
+BEGIN:VEVENT
+UID:mount-prospect-60056-2026-10-13-big-kids-storytime@withintenmiles.com
+DTSTAMP:20260922T010136Z
+LAST-MODIFIED:20260922T010136Z
+SEQUENCE:0
+DTSTART:20261013T133000
+DTEND:20261013T143000
+SUMMARY:Big Kids Storytime
+DESCRIPTION:Tuesday\, October 13 2026 1:30pm - 2:15pm \n Grow into a super reader through playful books and fun with friends! This storytime is the perfect fit for…
+URL:https://mppl.libnet.info/event/16553393
+END:VEVENT
+BEGIN:VEVENT
+UID:mount-prospect-60056-2026-10-13-introduction-to-web-resources@withintenmiles.com
+DTSTAMP:20260922T010136Z
+LAST-MODIFIED:20260922T010136Z
+SEQUENCE:0
+DTSTART:20261013T140000
+DTEND:20261013T150000
+SUMMARY:Introduction to Web Resources
+DESCRIPTION:Tuesday\, October 13 2026 2:00pm - 3:00pm \n Discover the extensive collection of free online resources available with your library card.
+URL:https://mppl.libnet.info/event/16505448
+END:VEVENT
+BEGIN:VEVENT
+UID:mount-prospect-60056-2026-10-13-teen-astronaut-food-taste-test@withintenmiles.com
+DTSTAMP:20260922T010136Z
+LAST-MODIFIED:20260922T010136Z
+SEQUENCE:0
+DTSTART:20261013T163000
+DTEND:20261013T173000
+SUMMARY:Teen Astronaut Food Taste Test
+DESCRIPTION:Tuesday\, October 13 2026 4:30pm - 5:30pm \n Curious about what astronauts eat? Join us as we sample a variety of astronaut food to celebrate our One Book\, One…
+URL:https://mppl.libnet.info/event/16583547
+END:VEVENT
+BEGIN:VEVENT
+UID:mount-prospect-60056-2026-10-13-adult-astronaut-food-taste-test@withintenmiles.com
+DTSTAMP:20260922T010136Z
+LAST-MODIFIED:20260922T010136Z
+SEQUENCE:0
+DTSTART:20261013T183000
+DTEND:20261013T193000
+SUMMARY:Adult Astronaut Food Taste Test
+DESCRIPTION:Tuesday\, October 13 2026 6:30pm - 7:30pm \n Curious about what astronauts eat? Join us as we sample a variety of astronaut food to celebrate our One Book\, One…
+URL:https://mppl.libnet.info/event/15766141
+END:VEVENT
+BEGIN:VEVENT
+UID:mount-prospect-60056-2026-10-14-toddler-storytime@withintenmiles.com
+DTSTAMP:20260922T010136Z
+LAST-MODIFIED:20260922T010136Z
+SEQUENCE:0
+DTSTART:20261014T093000
+DTEND:20261014T103000
+SUMMARY:Toddler Storytime
+DESCRIPTION:Wednesday\, October 14 2026 9:30am - 10:00am \n Grow your little learner's literacy and language skills at this playful storytime full of wiggles\, wonder\, and…
+URL:https://mppl.libnet.info/event/16553440
+END:VEVENT
+BEGIN:VEVENT
+UID:mount-prospect-60056-2026-10-14-elected-officials-office-hours@withintenmiles.com
+DTSTAMP:20260922T010136Z
+LAST-MODIFIED:20260922T010136Z
+SEQUENCE:0
+DTSTART:20261014T100000
+DTEND:20261014T110000
+SUMMARY:Elected Officials Office Hours
+DESCRIPTION:Wednesday\, October 14 2026 10:00am - 12:00pm \n Learn about services and resources provided by Cook County.
+URL:https://mppl.libnet.info/event/15554310
+END:VEVENT
+BEGIN:VEVENT
+UID:mount-prospect-60056-2026-10-14-ingl-s-para-hispanohablantes@withintenmiles.com
+DTSTAMP:20260922T010136Z
+LAST-MODIFIED:20260922T010136Z
+SEQUENCE:0
+DTSTART:20261014T110000
+DTEND:20261014T120000
+SUMMARY:Inglés para Hispanohablantes
+DESCRIPTION:Wednesday\, October 14 2026 11:00am - 12:00pm \n Una clase virtual vía Zoom\, de conversación\, para hispanohablantes que buscan mejorar su inglés. \n\nA virtual…
+URL:https://mppl.libnet.info/event/17476743
+END:VEVENT
+BEGIN:VEVENT
+UID:mount-prospect-60056-2026-10-14-animal-investigators-junior-jellyfish@withintenmiles.com
+DTSTAMP:20260922T010136Z
+LAST-MODIFIED:20260922T010136Z
+SEQUENCE:0
+DTSTART:20261014T163000
+DTEND:20261014T173000
+SUMMARY:Animal Investigators Junior: Jellyfish
+DESCRIPTION:Wednesday\, October 14 2026 4:30pm - 5:30pm \n Let's hang out and admire incredible animals together!
+URL:https://mppl.libnet.info/event/16640992
+END:VEVENT
+BEGIN:VEVENT
+UID:mount-prospect-60056-2026-10-14-movie-screening-project-hail-mary@withintenmiles.com
+DTSTAMP:20260922T010136Z
+LAST-MODIFIED:20260922T010136Z
+SEQUENCE:0
+DTSTART:20261014T163000
+DTEND:20261014T173000
+SUMMARY:Movie Screening: Project Hail Mary
+DESCRIPTION:Wednesday\, October 14 2026 4:30pm - 7:30pm \n Join us for a screening of Project Hail Mary.
+URL:https://mppl.libnet.info/event/16760346
+END:VEVENT
+BEGIN:VEVENT
+UID:mount-prospect-60056-2026-10-14-intro-to-adobe-premier-part-1@withintenmiles.com
+DTSTAMP:20260922T010136Z
+LAST-MODIFIED:20260922T010136Z
+SEQUENCE:0
+DTSTART:20261014T183000
+DTEND:20261014T193000
+SUMMARY:Intro to Adobe Premier: Part 1
+DESCRIPTION:Wednesday\, October 14 2026 6:30pm - 8:00pm \n Curious about editing videos with Adobe Premiere? In this two-part program\, we will cover the basics of adobe…
+URL:https://mppl.libnet.info/event/16278627
+END:VEVENT
+BEGIN:VEVENT
+UID:mount-prospect-60056-2026-10-15-baby-storytime@withintenmiles.com
+DTSTAMP:20260922T010136Z
+LAST-MODIFIED:20260922T010136Z
+SEQUENCE:0
+DTSTART:20261015T093000
+DTEND:20261015T103000
+SUMMARY:Baby Storytime
+DESCRIPTION:Thursday\, October 15 2026 9:30am - 10:00am \n A lifelong love of reading starts at birth! Join us for songs\, rhymes\, stories\, and playtime made specially for…
+URL:https://mppl.libnet.info/event/16553492
+END:VEVENT
+BEGIN:VEVENT
+UID:mount-prospect-60056-2026-10-15-coin-collecting-appraisals@withintenmiles.com
+DTSTAMP:20260922T010136Z
+LAST-MODIFIED:20260922T010136Z
+SEQUENCE:0
+DTSTART:20261015T100000
+DTEND:20261015T110000
+SUMMARY:Coin Collecting Appraisals
+DESCRIPTION:Thursday\, October 15 2026 10:00am - 4:00pm \n Meet privately with lifelong coin collector Dave Ekstrom to appraise your old coins.
+URL:https://mppl.libnet.info/event/16607413
+END:VEVENT
+BEGIN:VEVENT
+UID:mount-prospect-60056-2026-10-15-family-storytime@withintenmiles.com
+DTSTAMP:20260922T010136Z
+LAST-MODIFIED:20260922T010136Z
+SEQUENCE:0
+DTSTART:20261015T103000
+DTEND:20261015T113000
+SUMMARY:Family Storytime
+DESCRIPTION:Thursday\, October 15 2026 10:30am - 11:00am \n Bring the whole family and join us for an interactive storytime with high-energy stories\, songs\, and activities.
+URL:https://mppl.libnet.info/event/16553521
+END:VEVENT
+BEGIN:VEVENT
+UID:mount-prospect-60056-2026-10-15-drop-in-tech-help@withintenmiles.com
+DTSTAMP:20260922T010136Z
+LAST-MODIFIED:20260922T010136Z
+SEQUENCE:0
+DTSTART:20261015T140000
+DTEND:20261015T150000
+SUMMARY:Drop-In Tech Help
+DESCRIPTION:Thursday\, October 15 2026 2:00pm - 3:00pm \n Stop in and bring your questions about technology-related subjects such as smartphones\, computers\, email\,…
+URL:https://mppl.libnet.info/event/14756228
+END:VEVENT
+BEGIN:VEVENT
+UID:mount-prospect-60056-2026-10-15-regular-library-board-meeting@withintenmiles.com
+DTSTAMP:20260922T010136Z
+LAST-MODIFIED:20260922T010136Z
+SEQUENCE:0
+DTSTART:20261015T180000
+DTEND:20261015T190000
+SUMMARY:Regular Library Board Meeting
+DESCRIPTION:Thursday\, October 15 2026 6:00pm - 9:00pm \n The Board of Library Trustees meets the third Thursday of each month at 6 p.m. at the library.
+URL:https://mppl.libnet.info/event/15915285
+END:VEVENT
+BEGIN:VEVENT
+UID:mount-prospect-60056-2026-10-15-career-coaching-appointment@withintenmiles.com
+DTSTAMP:20260922T010136Z
+LAST-MODIFIED:20260922T010136Z
+SEQUENCE:0
+DTSTART:20261015T180000
+DTEND:20261015T190000
+SUMMARY:Career Coaching Appointment
+DESCRIPTION:Thursday\, October 15 2026 6:00pm - 7:00pm \n Jumpstart your job search with a virtual one-hour session with an experienced career coach.
+URL:https://mppl.libnet.info/event/16514103
+END:VEVENT
+BEGIN:VEVENT
+UID:mount-prospect-60056-2026-10-16-storytime-playdate-space-explorers@withintenmiles.com
+DTSTAMP:20260922T010136Z
+LAST-MODIFIED:20260922T010136Z
+SEQUENCE:0
+DTSTART:20261016T100000
+DTEND:20261016T110000
+SUMMARY:Storytime Playdate: Space Explorers
+DESCRIPTION:Friday\, October 16 2026 10:00am - 11:30am \n Enjoy the magic of storytime plus the joy of hands-on sensory fun! You and your child will enjoy time together…
+URL:https://mppl.libnet.info/event/16553592
+END:VEVENT
+BEGIN:VEVENT
+UID:mount-prospect-60056-2026-10-17-friends-book-sale@withintenmiles.com
+DTSTAMP:20260922T010136Z
+LAST-MODIFIED:20260922T010136Z
+SEQUENCE:0
+DTSTART:20261017T090000
+DTEND:20261017T100000
+SUMMARY:Friends Book Sale
+DESCRIPTION:Saturday\, October 17 2026 9:00am - 4:30pm \n Stock up on great books at bargain prices during the Friends of the Library's used book sale.
+URL:https://mppl.libnet.info/event/13845865
+END:VEVENT
+BEGIN:VEVENT
+UID:mount-prospect-60056-2026-10-18-friends-book-sale@withintenmiles.com
+DTSTAMP:20260922T010136Z
+LAST-MODIFIED:20260922T010136Z
+SEQUENCE:0
+DTSTART:20261018T110000
+DTEND:20261018T120000
+SUMMARY:Friends Book Sale
+DESCRIPTION:Sunday\, October 18 2026 11:00am - 4:00pm \n Stock up on great books at bargain prices during the Friends of the Library's used book sale.
+URL:https://mppl.libnet.info/event/13845871
+END:VEVENT
+BEGIN:VEVENT
+UID:mount-prospect-60056-2026-10-19-family-storytime@withintenmiles.com
+DTSTAMP:20260922T010136Z
+LAST-MODIFIED:20260922T010136Z
+SEQUENCE:0
+DTSTART:20261019T093000
+DTEND:20261019T103000
+SUMMARY:Family Storytime
+DESCRIPTION:Monday\, October 19 2026 9:30am - 10:00am \n Bring the whole family and join us for an interactive storytime with high-energy stories\, songs\, and activities.
+URL:https://mppl.libnet.info/event/16553300
+END:VEVENT
+BEGIN:VEVENT
+UID:mount-prospect-60056-2026-10-19-drop-in-tech-help@withintenmiles.com
+DTSTAMP:20260922T010136Z
+LAST-MODIFIED:20260922T010136Z
+SEQUENCE:0
+DTSTART:20261019T100000
+DTEND:20261019T110000
+SUMMARY:Drop-In Tech Help
+DESCRIPTION:Monday\, October 19 2026 10:00am - 11:00am \n Stop in and bring your questions about technology-related subjects such as smartphones\, computers\, email\,…
+URL:https://mppl.libnet.info/event/14756276
+END:VEVENT
+BEGIN:VEVENT
+UID:mount-prospect-60056-2026-10-19-toddler-storytime@withintenmiles.com
+DTSTAMP:20260922T010136Z
+LAST-MODIFIED:20260922T010136Z
+SEQUENCE:0
+DTSTART:20261019T103000
+DTEND:20261019T113000
+SUMMARY:Toddler Storytime
+DESCRIPTION:Monday\, October 19 2026 10:30am - 11:00am \n Grow your little learner's literacy and language skills at this playful storytime full of wiggles\, wonder\, and fun!
+URL:https://mppl.libnet.info/event/16553330
+END:VEVENT
+BEGIN:VEVENT
+UID:mount-prospect-60056-2026-10-19-listen-to-your-heirlooms@withintenmiles.com
+DTSTAMP:20260922T010136Z
+LAST-MODIFIED:20260922T010136Z
+SEQUENCE:0
+DTSTART:20261019T140000
+DTEND:20261019T150000
+SUMMARY:Listen to Your Heirlooms
+DESCRIPTION:Monday\, October 19 2026 2:00pm - 4:00pm \n Uncover the stories behind your family heirlooms with guidance from an antique appraiser.
+URL:https://mppl.libnet.info/event/16368490
+END:VEVENT
+BEGIN:VEVENT
+UID:mount-prospect-60056-2026-10-19-animal-investigators-junior-jellyfish@withintenmiles.com
+DTSTAMP:20260922T010136Z
+LAST-MODIFIED:20260922T010136Z
+SEQUENCE:0
+DTSTART:20261019T163000
+DTEND:20261019T173000
+SUMMARY:Animal Investigators Junior: Jellyfish
+DESCRIPTION:Monday\, October 19 2026 4:30pm - 5:30pm \n Let's hang out and admire incredible animals together!
+URL:https://mppl.libnet.info/event/16640995
+END:VEVENT
+BEGIN:VEVENT
+UID:mount-prospect-60056-2026-10-19-cricut-studio-diy-stickers@withintenmiles.com
+DTSTAMP:20260922T010136Z
+LAST-MODIFIED:20260922T010136Z
+SEQUENCE:0
+DTSTART:20261019T180000
+DTEND:20261019T190000
+SUMMARY:Cricut Studio: DIY Stickers
+DESCRIPTION:Monday\, October 19 2026 6:00pm - 8:00pm \n Learn the basics of Cricut Design Space and create your own custom stickers!
+URL:https://mppl.libnet.info/event/16278585
+END:VEVENT
+BEGIN:VEVENT
+UID:mount-prospect-60056-2026-10-19-night-off-game-on@withintenmiles.com
+DTSTAMP:20260922T010136Z
+LAST-MODIFIED:20260922T010136Z
+SEQUENCE:0
+DTSTART:20261019T190000
+DTEND:20261019T200000
+SUMMARY:Night Off? Game On!
+DESCRIPTION:Monday\, October 19 2026 7:00pm - 8:30pm \n Spend your night off playing tabletop games with other gaming enthusiasts!
+URL:https://mppl.libnet.info/event/14039685
+END:VEVENT
+BEGIN:VEVENT
+UID:mount-prospect-60056-2026-10-19-mppl-writers-group@withintenmiles.com
+DTSTAMP:20260922T010136Z
+LAST-MODIFIED:20260922T010136Z
+SEQUENCE:0
+DTSTART:20261019T190000
+DTEND:20261019T200000
+SUMMARY:MPPL Writers Group
+DESCRIPTION:Monday\, October 19 2026 7:00pm - 8:30pm \n Bring your current writing projects for thoughtful support and constructive critique from a group of fellow writers.
+URL:https://mppl.libnet.info/event/14049842
+END:VEVENT
+BEGIN:VEVENT
+UID:mount-prospect-60056-2026-10-20-baby-storytime@withintenmiles.com
+DTSTAMP:20260922T010136Z
+LAST-MODIFIED:20260922T010136Z
+SEQUENCE:0
+DTSTART:20261020T093000
+DTEND:20261020T103000
+SUMMARY:Baby Storytime
+DESCRIPTION:Tuesday\, October 20 2026 9:30am - 10:00am \n A lifelong love of reading starts at birth! Join us for songs\, rhymes\, stories\, and playtime made specially for…
+URL:https://mppl.libnet.info/event/16553353
+END:VEVENT
+BEGIN:VEVENT
+UID:mount-prospect-60056-2026-10-20-resources-for-illinois-residents@withintenmiles.com
+DTSTAMP:20260922T010136Z
+LAST-MODIFIED:20260922T010136Z
+SEQUENCE:0
+DTSTART:20261020T100000
+DTEND:20261020T110000
+SUMMARY:Resources for Illinois Residents
+DESCRIPTION:Tuesday\, October 20 2026 10:00am - 1:00pm \n Representatives from the Office of the Illinois State Treasurer and the Illinois Attorney General will be…
+URL:https://mppl.libnet.info/event/15693343
+END:VEVENT
+BEGIN:VEVENT
+UID:mount-prospect-60056-2026-10-20-family-storytime@withintenmiles.com
+DTSTAMP:20260922T010136Z
+LAST-MODIFIED:20260922T010136Z
+SEQUENCE:0
+DTSTART:20261020T103000
+DTEND:20261020T113000
+SUMMARY:Family Storytime
+DESCRIPTION:Tuesday\, October 20 2026 10:30am - 11:00am \n Bring the whole family and join us for an interactive storytime with high-energy stories\, songs\, and activities.
+URL:https://mppl.libnet.info/event/16553377
+END:VEVENT
+BEGIN:VEVENT
+UID:mount-prospect-60056-2026-10-20-play-and-learn@withintenmiles.com
+DTSTAMP:20260922T010136Z
+LAST-MODIFIED:20260922T010136Z
+SEQUENCE:0
+DTSTART:20261020T113000
+DTEND:20261020T123000
+SUMMARY:Play and Learn
+DESCRIPTION:Tuesday\, October 20 2026 11:30am - 12:15pm \n Join us each week for storytime\, sing-alongs\, and developmental play experiences that encourage learning through…
+URL:https://mppl.libnet.info/event/16749802
+END:VEVENT
+BEGIN:VEVENT
+UID:mount-prospect-60056-2026-10-20-big-kids-storytime@withintenmiles.com
+DTSTAMP:20260922T010136Z
+LAST-MODIFIED:20260922T010136Z
+SEQUENCE:0
+DTSTART:20261020T133000
+DTEND:20261020T143000
+SUMMARY:Big Kids Storytime
+DESCRIPTION:Tuesday\, October 20 2026 1:30pm - 2:15pm \n Grow into a super reader through playful books and fun with friends! This storytime is the perfect fit for…
+URL:https://mppl.libnet.info/event/16553394
+END:VEVENT
+BEGIN:VEVENT
+UID:mount-prospect-60056-2026-10-20-elected-officials-office-hours@withintenmiles.com
+DTSTAMP:20260922T010136Z
+LAST-MODIFIED:20260922T010136Z
+SEQUENCE:0
+DTSTART:20261020T140000
+DTEND:20261020T150000
+SUMMARY:Elected Officials Office Hours
+DESCRIPTION:Tuesday\, October 20 2026 2:00pm - 4:00pm \n Meet privately with staff from the office of State Sen. Mark Walker.
+URL:https://mppl.libnet.info/event/15390265
+END:VEVENT
+BEGIN:VEVENT
+UID:mount-prospect-60056-2026-10-20-teen-craft-paint-a-pumpkin-goose@withintenmiles.com
+DTSTAMP:20260922T010136Z
+LAST-MODIFIED:20260922T010136Z
+SEQUENCE:0
+DTSTART:20261020T160000
+DTEND:20261020T170000
+SUMMARY:Teen Craft: Paint a Pumpkin Goose
+DESCRIPTION:Tuesday\, October 20 2026 4:00pm - 5:00pm \n Each month we meet to get crafty and make something new with supplies from the library. This month\, we're painting…
+URL:https://mppl.libnet.info/event/14039946
+END:VEVENT
+BEGIN:VEVENT
+UID:mount-prospect-60056-2026-10-20-3d-printing-for-kids-intermediate-tinkercad@withintenmiles.com
+DTSTAMP:20260922T010136Z
+LAST-MODIFIED:20260922T010136Z
+SEQUENCE:0
+DTSTART:20261020T163000
+DTEND:20261020T173000
+SUMMARY:3D Printing for Kids: Intermediate Tinkercad
+DESCRIPTION:Tuesday\, October 20 2026 4:30pm - 5:30pm \n Make a 3D design from scratch\, and we'll have it printed at the library.
+URL:https://mppl.libnet.info/event/16391860
+END:VEVENT
+BEGIN:VEVENT
+UID:mount-prospect-60056-2026-10-20-astrology-101-birth-charts@withintenmiles.com
+DTSTAMP:20260922T010136Z
+LAST-MODIFIED:20260922T010136Z
+SEQUENCE:0
+DTSTART:20261020T190000
+DTEND:20261020T200000
+SUMMARY:Astrology 101: Birth Charts
+DESCRIPTION:Tuesday\, October 20 2026 7:00pm - 8:00pm \n Learn what your personal star alignment means for you!
+URL:https://mppl.libnet.info/event/15766208
+END:VEVENT
+BEGIN:VEVENT
+UID:mount-prospect-60056-2026-10-21-toddler-storytime@withintenmiles.com
+DTSTAMP:20260922T010136Z
+LAST-MODIFIED:20260922T010136Z
+SEQUENCE:0
+DTSTART:20261021T093000
+DTEND:20261021T103000
+SUMMARY:Toddler Storytime
+DESCRIPTION:Wednesday\, October 21 2026 9:30am - 10:00am \n Grow your little learner's literacy and language skills at this playful storytime full of wiggles\, wonder\, and…
+URL:https://mppl.libnet.info/event/16553441
+END:VEVENT
+BEGIN:VEVENT
+UID:mount-prospect-60056-2026-10-21-growing-into-graphic-novels@withintenmiles.com
+DTSTAMP:20260922T010136Z
+LAST-MODIFIED:20260922T010136Z
+SEQUENCE:0
+DTSTART:20261021T170000
+DTEND:20261021T180000
+SUMMARY:Growing Into Graphic Novels
+DESCRIPTION:Wednesday\, October 21 2026 5:00pm - 5:45pm \n Growing readers will enjoy fun\, hands-on activities related to a graphic novel. Graphic novels help build…
+URL:https://mppl.libnet.info/event/16508080
+END:VEVENT
+BEGIN:VEVENT
+UID:mount-prospect-60056-2026-10-21-movies-mppl-project-hail-mary@withintenmiles.com
+DTSTAMP:20260922T010136Z
+LAST-MODIFIED:20260922T010136Z
+SEQUENCE:0
+DTSTART:20261021T180000
+DTEND:20261021T190000
+SUMMARY:Movies @ MPPL: Project Hail Mary
+DESCRIPTION:Wednesday\, October 21 2026 6:00pm - 9:00pm \n Join us for a screening of "Project Hail Mary."
+URL:https://mppl.libnet.info/event/16676542
+END:VEVENT
+BEGIN:VEVENT
+UID:mount-prospect-60056-2026-10-21-spanish-book-and-movie-discussion-project-hail-mary@withintenmiles.com
+DTSTAMP:20260922T010136Z
+LAST-MODIFIED:20260922T010136Z
+SEQUENCE:0
+DTSTART:20261021T180000
+DTEND:20261021T190000
+SUMMARY:Spanish Book and Movie Discussion: Project Hail Mary
+DESCRIPTION:Wednesday\, October 21 2026 6:00pm - 7:00pm \n If you've read the book\, watched the movie\, or both\, you are welcome to join us for a casual discussion in…
+URL:https://mppl.libnet.info/event/16760505
+END:VEVENT
+BEGIN:VEVENT
+UID:mount-prospect-60056-2026-10-21-intro-to-adobe-premier-part-2@withintenmiles.com
+DTSTAMP:20260922T010136Z
+LAST-MODIFIED:20260922T010136Z
+SEQUENCE:0
+DTSTART:20261021T183000
+DTEND:20261021T193000
+SUMMARY:Intro to Adobe Premier: Part 2
+DESCRIPTION:Wednesday\, October 21 2026 6:30pm - 8:00pm \n Curious about editing videos with Adobe Premiere? In this two-part program\, we will cover the basics of Adobe…
+URL:https://mppl.libnet.info/event/16104608
+END:VEVENT
+BEGIN:VEVENT
+UID:mount-prospect-60056-2026-10-22-small-business-morning-meetup@withintenmiles.com
+DTSTAMP:20260922T010136Z
+LAST-MODIFIED:20260922T010136Z
+SEQUENCE:0
+DTSTART:20261022T090000
+DTEND:20261022T100000
+SUMMARY:Small Business Morning Meetup
+DESCRIPTION:Thursday\, October 22 2026 9:00am - 10:30am \n Small business owners will find like-minded professionals at this library event.
+URL:https://mppl.libnet.info/event/14440725
+END:VEVENT
+BEGIN:VEVENT
+UID:mount-prospect-60056-2026-10-22-baby-storytime@withintenmiles.com
+DTSTAMP:20260922T010136Z
+LAST-MODIFIED:20260922T010136Z
+SEQUENCE:0
+DTSTART:20261022T093000
+DTEND:20261022T103000
+SUMMARY:Baby Storytime
+DESCRIPTION:Thursday\, October 22 2026 9:30am - 10:00am \n A lifelong love of reading starts at birth! Join us for songs\, rhymes\, stories\, and playtime made specially for…
+URL:https://mppl.libnet.info/event/16553493
+END:VEVENT
+BEGIN:VEVENT
+UID:mount-prospect-60056-2026-10-22-family-storytime@withintenmiles.com
+DTSTAMP:20260922T010136Z
+LAST-MODIFIED:20260922T010136Z
+SEQUENCE:0
+DTSTART:20261022T103000
+DTEND:20261022T113000
+SUMMARY:Family Storytime
+DESCRIPTION:Thursday\, October 22 2026 10:30am - 11:00am \n Bring the whole family and join us for an interactive storytime with high-energy stories\, songs\, and activities.
+URL:https://mppl.libnet.info/event/16553522
+END:VEVENT
+BEGIN:VEVENT
+UID:mount-prospect-60056-2026-10-22-3d-printing-for-kids-learn-tinkercad@withintenmiles.com
+DTSTAMP:20260922T010136Z
+LAST-MODIFIED:20260922T010136Z
+SEQUENCE:0
+DTSTART:20261022T180000
+DTEND:20261022T190000
+SUMMARY:3D Printing for Kids: Learn Tinkercad
+DESCRIPTION:Thursday\, October 22 2026 6:00pm - 7:00pm \n Learn how to create objects using Tinkercad\, a digital-design computer software.
+URL:https://mppl.libnet.info/event/16391958
+END:VEVENT
+BEGIN:VEVENT
+UID:mount-prospect-60056-2026-10-22-making-sense-of-menopause@withintenmiles.com
+DTSTAMP:20260922T010136Z
+LAST-MODIFIED:20260922T010136Z
+SEQUENCE:0
+DTSTART:20261022T190000
+DTEND:20261022T200000
+SUMMARY:Making Sense of Menopause
+DESCRIPTION:Thursday\, October 22 2026 7:00pm - 8:00pm \n  Join us for an informative session about menopause with clinical pharmacist Erin Carson\, coordinator of UIC…
+URL:https://mppl.libnet.info/event/16554197
+END:VEVENT
+BEGIN:VEVENT
+UID:mount-prospect-60056-2026-10-23-storytime-playdate-wonderful-worlds@withintenmiles.com
+DTSTAMP:20260922T010136Z
+LAST-MODIFIED:20260922T010136Z
+SEQUENCE:0
+DTSTART:20261023T100000
+DTEND:20261023T110000
+SUMMARY:Storytime Playdate: Wonderful Worlds
+DESCRIPTION:Friday\, October 23 2026 10:00am - 11:30am \n Enjoy the magic of storytime plus the joy of hands-on sensory fun! You and your child will enjoy time together…
+URL:https://mppl.libnet.info/event/16553607
+END:VEVENT
+BEGIN:VEVENT
+UID:mount-prospect-60056-2026-10-23-teen-volunteering@withintenmiles.com
+DTSTAMP:20260922T010136Z
+LAST-MODIFIED:20260922T010136Z
+SEQUENCE:0
+DTSTART:20261023T170000
+DTEND:20261023T180000
+SUMMARY:Teen Volunteering
+DESCRIPTION:Friday\, October 23 2026 5:00pm - 6:00pm \n Give back to the community and earn volunteer hours at the same time.
+URL:https://mppl.libnet.info/event/14701895
+END:VEVENT
+BEGIN:VEVENT
+UID:mount-prospect-60056-2026-10-23-after-hours-social@withintenmiles.com
+DTSTAMP:20260922T010136Z
+LAST-MODIFIED:20260922T010136Z
+SEQUENCE:0
+DTSTART:20261023T190000
+DTEND:20261023T200000
+SUMMARY:After Hours Social
+DESCRIPTION:Friday\, October 23 2026 7:00pm - 8:30pm \n For ages 21+. Come join us at the library for an after-hours event celebrating our One Book\, One Village community…
+URL:https://mppl.libnet.info/event/13273437
+END:VEVENT
+BEGIN:VEVENT
+UID:mount-prospect-60056-2026-10-25-the-shakespeare-project-of-chicago-macbeth@withintenmiles.com
+DTSTAMP:20260922T010136Z
+LAST-MODIFIED:20260922T010136Z
+SEQUENCE:0
+DTSTART:20261025T134500
+DTEND:20261025T144500
+SUMMARY:The Shakespeare Project of Chicago: Macbeth
+DESCRIPTION:Sunday\, October 25 2026 1:45pm - 4:30pm \n Step into a world of ambition\, madness\, and prophecy. Come see Macbeth\, where every shadow hides a dagger\, and…
+URL:https://mppl.libnet.info/event/16138104
+END:VEVENT
+BEGIN:VEVENT
+UID:mount-prospect-60056-2026-10-26-world-language-storytime-japanese@withintenmiles.com
+DTSTAMP:20260922T010136Z
+LAST-MODIFIED:20260922T010136Z
+SEQUENCE:0
+DTSTART:20261026T100000
+DTEND:20261026T110000
+SUMMARY:World Language Storytime: Japanese
+DESCRIPTION:Monday\, October 26 2026 10:00am - 10:30am \n Konnichiwa! Join us for an interactive\, bilingual storytime with stories\, songs\, rhymes\, and activities that…
+URL:https://mppl.libnet.info/event/16706890
+END:VEVENT
+BEGIN:VEVENT
+UID:mount-prospect-60056-2026-10-26-drop-in-tech-help@withintenmiles.com
+DTSTAMP:20260922T010136Z
+LAST-MODIFIED:20260922T010136Z
+SEQUENCE:0
+DTSTART:20261026T140000
+DTEND:20261026T150000
+SUMMARY:Drop-In Tech Help
+DESCRIPTION:Monday\, October 26 2026 2:00pm - 3:00pm \n Stop in and bring your questions about technology-related subjects such as smartphones\, computers\, email\, Microsoft…
+URL:https://mppl.libnet.info/event/14756318
+END:VEVENT
+BEGIN:VEVENT
+UID:mount-prospect-60056-2026-10-26-hooked-on-books@withintenmiles.com
+DTSTAMP:20260922T010136Z
+LAST-MODIFIED:20260922T010136Z
+SEQUENCE:0
+DTSTART:20261026T163000
+DTEND:20261026T173000
+SUMMARY:Hooked on Books!
+DESCRIPTION:Monday\, October 26 2026 4:30pm - 5:15pm \n In this interactive club perfect for kids just starting chapter books\, we'll read a fun story and do related…
+URL:https://mppl.libnet.info/event/16641009
+END:VEVENT
+BEGIN:VEVENT
+UID:mount-prospect-60056-2026-10-26-a-club-for-kids-who-like-books@withintenmiles.com
+DTSTAMP:20260922T010136Z
+LAST-MODIFIED:20260922T010136Z
+SEQUENCE:0
+DTSTART:20261026T180000
+DTEND:20261026T190000
+SUMMARY:A Club for Kids Who Like Books
+DESCRIPTION:Monday\, October 26 2026 6:00pm - 7:00pm \n Meet new friends\, make a project\, and find your next great read in this unique book club (no prior reading…
+URL:https://mppl.libnet.info/event/16641020
+END:VEVENT
+BEGIN:VEVENT
+UID:mount-prospect-60056-2026-10-26-how-to-prepare-for-the-rising-cost-of-college@withintenmiles.com
+DTSTAMP:20260922T010136Z
+LAST-MODIFIED:20260922T010136Z
+SEQUENCE:0
+DTSTART:20261026T190000
+DTEND:20261026T200000
+SUMMARY:How to Prepare for the Rising Cost of College
+DESCRIPTION:Monday\, October 26 2026 7:00pm - 8:30pm \n Each year the price of college tuition rises higher than the yearly rate of inflation.
+URL:https://mppl.libnet.info/event/16376313
+END:VEVENT
+BEGIN:VEVENT
+UID:mount-prospect-60056-2026-10-27-playgroup-for-language-development@withintenmiles.com
+DTSTAMP:20260922T010136Z
+LAST-MODIFIED:20260922T010136Z
+SEQUENCE:0
+DTSTART:20261027T100000
+DTEND:20261027T110000
+SUMMARY:Playgroup for Language Development
+DESCRIPTION:Tuesday\, October 27 2026 10:00am - 11:00am \n Enjoy playtime\, storytime\, fingerplays\, music\, and more! Led by a licensed speech therapist from Assential…
+URL:https://mppl.libnet.info/event/16524917
+END:VEVENT
+BEGIN:VEVENT
+UID:mount-prospect-60056-2026-10-27-movies-at-mppl-the-martian@withintenmiles.com
+DTSTAMP:20260922T010136Z
+LAST-MODIFIED:20260922T010136Z
+SEQUENCE:0
+DTSTART:20261027T103000
+DTEND:20261027T113000
+SUMMARY:Movies at MPPL: The Martian
+DESCRIPTION:Tuesday\, October 27 2026 10:30am - 12:30pm \n Join us for a screening of "The Martian."
+URL:https://mppl.libnet.info/event/16899837
+END:VEVENT
+BEGIN:VEVENT
+UID:mount-prospect-60056-2026-10-27-play-and-learn@withintenmiles.com
+DTSTAMP:20260922T010136Z
+LAST-MODIFIED:20260922T010136Z
+SEQUENCE:0
+DTSTART:20261027T113000
+DTEND:20261027T123000
+SUMMARY:Play and Learn
+DESCRIPTION:Tuesday\, October 27 2026 11:30am - 12:15pm \n Join us each week for storytime\, sing-alongs\, and developmental play experiences that encourage learning through…
+URL:https://mppl.libnet.info/event/16749803
+END:VEVENT
+BEGIN:VEVENT
+UID:mount-prospect-60056-2026-10-27-teen-manga-hangout@withintenmiles.com
+DTSTAMP:20260922T010136Z
+LAST-MODIFIED:20260922T010136Z
+SEQUENCE:0
+DTSTART:20261027T160000
+DTEND:20261027T170000
+SUMMARY:Teen Manga Hangout
+DESCRIPTION:Tuesday\, October 27 2026 4:00pm - 5:00pm \n Join other manga readers to share your recent reads! We'll chat about things we loved (or didn't) and get some…
+URL:https://mppl.libnet.info/event/16533457
+END:VEVENT
+BEGIN:VEVENT
+UID:mount-prospect-60056-2026-10-27-dungeons-dragons@withintenmiles.com
+DTSTAMP:20260922T010136Z
+LAST-MODIFIED:20260922T010136Z
+SEQUENCE:0
+DTSTART:20261027T180000
+DTEND:20261027T190000
+SUMMARY:Dungeons & Dragons
+DESCRIPTION:Tuesday\, October 27 2026 6:00pm - 8:00pm \n Heroes needed! Adventure\, danger and treasure await the brave and the bold! Will you work with your team to solve…
+URL:https://mppl.libnet.info/event/16641036
+END:VEVENT
+BEGIN:VEVENT
+UID:mount-prospect-60056-2026-10-28-ingl-s-para-hispanohablantes@withintenmiles.com
+DTSTAMP:20260922T010136Z
+LAST-MODIFIED:20260922T010136Z
+SEQUENCE:0
+DTSTART:20261028T110000
+DTEND:20261028T120000
+SUMMARY:Inglés para Hispanohablantes
+DESCRIPTION:Wednesday\, October 28 2026 11:00am - 12:00pm \n Una clase virtual vía Zoom\, de conversación\, para hispanohablantes que buscan mejorar su inglés. \n\nA virtual…
+URL:https://mppl.libnet.info/event/17476744
+END:VEVENT
+BEGIN:VEVENT
+UID:mount-prospect-60056-2026-10-28-mount-prospect-downtown-merchants-trick-or-treat@withintenmiles.com
+DTSTAMP:20260922T010136Z
+LAST-MODIFIED:20260922T010136Z
+SEQUENCE:0
+DTSTART:20261028T160000
+DTEND:20261028T170000
+SUMMARY:Mount Prospect Downtown Merchants Trick-or-Treat
+DESCRIPTION:Wednesday\, October 28 2026 4:00pm - 6:00pm \n Come out in your costume and get some goodies!
+URL:https://mppl.libnet.info/event/16553873
+END:VEVENT
+BEGIN:VEVENT
+UID:mount-prospect-60056-2026-10-28-minecraft-engineers@withintenmiles.com
+DTSTAMP:20260922T010136Z
+LAST-MODIFIED:20260922T010136Z
+SEQUENCE:0
+DTSTART:20261028T180000
+DTEND:20261028T190000
+SUMMARY:Minecraft Engineers
+DESCRIPTION:Wednesday\, October 28 2026 6:00pm - 7:00pm \n Get your pickaxe ready! Build unique structures that solve various design challenges. Then share your digital…
+URL:https://mppl.libnet.info/event/16394676
+END:VEVENT
+BEGIN:VEVENT
+UID:mount-prospect-60056-2026-10-28-lawyers-at-the-library-your-legal-help-desk@withintenmiles.com
+DTSTAMP:20260922T010136Z
+LAST-MODIFIED:20260922T010136Z
+SEQUENCE:0
+DTSTART:20261028T183000
+DTEND:20261028T193000
+SUMMARY:Lawyers at the Library: Your Legal Help Desk
+DESCRIPTION:Wednesday\, October 28 2026 6:30pm - 7:00pm \n Need legal advice but don't know where to start? Free legal consultations are available through a virtual meeting…
+URL:https://mppl.libnet.info/event/16565155
+END:VEVENT
+BEGIN:VEVENT
+UID:mount-prospect-60056-2026-10-28-gardening-can-be-murder@withintenmiles.com
+DTSTAMP:20260922T010136Z
+LAST-MODIFIED:20260922T010136Z
+SEQUENCE:0
+DTSTART:20261028T190000
+DTEND:20261028T200000
+SUMMARY:Gardening Can Be Murder
+DESCRIPTION:Wednesday\, October 28 2026 7:00pm - 8:00pm \n Author and gardener Marta McDowell explores the many ways in which writers have found inspiration in the sinister…
+URL:https://mppl.libnet.info/event/16727732
+END:VEVENT
+BEGIN:VEVENT
+UID:mount-prospect-60056-2026-10-29-halloween-storytime@withintenmiles.com
+DTSTAMP:20260922T010136Z
+LAST-MODIFIED:20260922T010136Z
+SEQUENCE:0
+DTSTART:20261029T100000
+DTEND:20261029T110000
+SUMMARY:Halloween Storytime
+DESCRIPTION:Thursday\, October 29 2026 10:00am - 11:00am \n This special Halloween-themed storytime is packed with pumpkins\, bats\, and trick-or-treat fun!
+URL:https://mppl.libnet.info/event/16553734
+END:VEVENT
+BEGIN:VEVENT
+UID:mount-prospect-60056-2026-10-29-tech-playground@withintenmiles.com
+DTSTAMP:20260922T010136Z
+LAST-MODIFIED:20260922T010136Z
+SEQUENCE:0
+DTSTART:20261029T180000
+DTEND:20261029T190000
+SUMMARY:Tech Playground
+DESCRIPTION:Thursday\, October 29 2026 6:00pm - 7:00pm \n Be a tech explorer and try out STEAM toys at the library.
+URL:https://mppl.libnet.info/event/16391957
+END:VEVENT
+BEGIN:VEVENT
+UID:mount-prospect-60056-2026-10-29-sailing-bright-eternity@withintenmiles.com
+DTSTAMP:20260922T010136Z
+LAST-MODIFIED:20260922T010136Z
+SEQUENCE:0
+DTSTART:20261029T190000
+DTEND:20261029T200000
+SUMMARY:Sailing Bright Eternity
+DESCRIPTION:Thursday\, October 29 2026 7:00pm - 8:00pm \n Astrophysicist Shane L. Larson will explore how science fiction depicts star travel in books and movies\, the true…
+URL:https://mppl.libnet.info/event/16949245
+END:VEVENT
+BEGIN:VEVENT
+UID:mount-prospect-60056-2026-10-30-calavera-creations@withintenmiles.com
+DTSTAMP:20260922T010136Z
+LAST-MODIFIED:20260922T010136Z
+SEQUENCE:0
+DTSTART:20261030T170000
+DTEND:20261030T180000
+SUMMARY:Calavera Creations
+DESCRIPTION:Friday\, October 30 2026 5:00pm - 6:00pm \n Celebrate Día de los Muertos and decorate your own ceramic calavera!
+URL:https://mppl.libnet.info/event/16749799
+END:VEVENT
+BEGIN:VEVENT
+UID:mount-prospect-60056-2026-10-31-digitizing-vhs-tapes@withintenmiles.com
+DTSTAMP:20260922T010136Z
+LAST-MODIFIED:20260922T010136Z
+SEQUENCE:0
+DTSTART:20261031T100000
+DTEND:20261031T110000
+SUMMARY:Digitizing VHS Tapes
+DESCRIPTION:Saturday\, October 31 2026 10:00am - 11:00am \n Learn the steps to convert VHS home videos to DVD or digital format using the library's Mac Studio equipment.
+URL:https://mppl.libnet.info/event/17466686
+END:VEVENT
+BEGIN:VEVENT
+UID:mount-prospect-60056-2026-11-01-adult-bookfix-complicated-relationships@withintenmiles.com
+DTSTAMP:20260922T010136Z
+LAST-MODIFIED:20260922T010136Z
+SEQUENCE:0
+DTSTART:20261101T000000
+DTEND:20261101T010000
+SUMMARY:Adult BookFix: Complicated Relationships
+DESCRIPTION:Sunday\, November 01 2026 12:00am - 11:59pm \n Looking for your next read? Want a suggestion that fits a category in our year-round Book Bingo? We've got you…
+URL:https://mppl.libnet.info/event/17206113
+END:VEVENT
+BEGIN:VEVENT
+UID:mount-prospect-60056-2026-11-02-crafts-to-go-kits@withintenmiles.com
+DTSTAMP:20260922T010136Z
+LAST-MODIFIED:20260922T010136Z
+SEQUENCE:0
+DTSTART:20261102T000000
+DTEND:20261102T010000
+SUMMARY:Crafts-to-Go Kits
+DESCRIPTION:Monday\, November 02 2026 12:00am - 11:59pm \n Stop by the Youth desk and pick up a fun DIY craft to make at home!
+URL:https://mppl.libnet.info/event/14829755
+END:VEVENT
+BEGIN:VEVENT
+UID:mount-prospect-60056-2026-11-02-family-reading-night-kits@withintenmiles.com
+DTSTAMP:20260922T010136Z
+LAST-MODIFIED:20260922T010136Z
+SEQUENCE:0
+DTSTART:20261102T000000
+DTEND:20261102T010000
+SUMMARY:Family Reading Night Kits
+DESCRIPTION:Monday\, November 02 2026 12:00am - 11:59pm \n Mount Prospect Public Library is joining the statewide Family Reading Night event and invites families to join…
+URL:https://mppl.libnet.info/event/16903311
+END:VEVENT
+BEGIN:VEVENT
+UID:mount-prospect-60056-2026-11-02-aarp-driver-safety-course@withintenmiles.com
+DTSTAMP:20260922T010136Z
+LAST-MODIFIED:20260922T010136Z
+SEQUENCE:0
+DTSTART:20261102T090000
+DTEND:20261102T100000
+SUMMARY:AARP Driver Safety Course
+DESCRIPTION:Monday\, November 02 2026 9:00am - 1:00pm \n This two-part\, eight-hour program provides a refresher course for motorists age 55 and older.
+URL:https://mppl.libnet.info/event/16617231
+END:VEVENT
+BEGIN:VEVENT
+UID:mount-prospect-60056-2026-11-02-family-storytime@withintenmiles.com
+DTSTAMP:20260922T010136Z
+LAST-MODIFIED:20260922T010136Z
+SEQUENCE:0
+DTSTART:20261102T093000
+DTEND:20261102T103000
+SUMMARY:Family Storytime
+DESCRIPTION:Monday\, November 02 2026 9:30am - 10:00am \n Bring the whole family and join us for an interactive storytime with high-energy stories\, songs\, and activities.
+URL:https://mppl.libnet.info/event/16637669
+END:VEVENT
+BEGIN:VEVENT
+UID:mount-prospect-60056-2026-11-02-toddler-storytime@withintenmiles.com
+DTSTAMP:20260922T010136Z
+LAST-MODIFIED:20260922T010136Z
+SEQUENCE:0
+DTSTART:20261102T103000
+DTEND:20261102T113000
+SUMMARY:Toddler Storytime
+DESCRIPTION:Monday\, November 02 2026 10:30am - 11:00am \n Grow your little learner's literacy and language skills at this playful storytime full of wiggles\, wonder\, and fun!
+URL:https://mppl.libnet.info/event/16637797
+END:VEVENT
+BEGIN:VEVENT
+UID:mount-prospect-60056-2026-11-02-night-off-game-on@withintenmiles.com
+DTSTAMP:20260922T010136Z
+LAST-MODIFIED:20260922T010136Z
+SEQUENCE:0
+DTSTART:20261102T190000
+DTEND:20261102T200000
+SUMMARY:Night Off? Game On!
+DESCRIPTION:Monday\, November 02 2026 7:00pm - 8:30pm \n Spend your night off playing tabletop games with other gaming enthusiasts!
+URL:https://mppl.libnet.info/event/16506789
+END:VEVENT
+BEGIN:VEVENT
+UID:mount-prospect-60056-2026-11-03-aarp-driver-safety-course@withintenmiles.com
+DTSTAMP:20260922T010136Z
+LAST-MODIFIED:20260922T010136Z
+SEQUENCE:0
+DTSTART:20261103T090000
+DTEND:20261103T100000
+SUMMARY:AARP Driver Safety Course
+DESCRIPTION:Tuesday\, November 03 2026 9:00am - 1:00pm \n This two-part\, eight-hour program provides a refresher course for motorists age 55 and older.
+URL:https://mppl.libnet.info/event/16617232
+END:VEVENT
+BEGIN:VEVENT
+UID:mount-prospect-60056-2026-11-03-cardboard-construction-workshop@withintenmiles.com
+DTSTAMP:20260922T010136Z
+LAST-MODIFIED:20260922T010136Z
+SEQUENCE:0
+DTSTART:20261103T093000
+DTEND:20261103T103000
+SUMMARY:Cardboard Construction Workshop
+DESCRIPTION:Tuesday\, November 03 2026 9:30am - 11:00am \n Collaborate and construct cardboard creations.
+URL:https://mppl.libnet.info/event/16288687
+END:VEVENT
+BEGIN:VEVENT
+UID:mount-prospect-60056-2026-11-03-baby-storytime@withintenmiles.com
+DTSTAMP:20260922T010136Z
+LAST-MODIFIED:20260922T010136Z
+SEQUENCE:0
+DTSTART:20261103T093000
+DTEND:20261103T103000
+SUMMARY:Baby Storytime
+DESCRIPTION:Tuesday\, November 03 2026 9:30am - 10:00am \n A lifelong love of reading starts at birth! Join us for songs\, rhymes\, stories\, and playtime made specially for…
+URL:https://mppl.libnet.info/event/16637815
+END:VEVENT
+BEGIN:VEVENT
+UID:mount-prospect-60056-2026-11-03-family-storytime@withintenmiles.com
+DTSTAMP:20260922T010136Z
+LAST-MODIFIED:20260922T010136Z
+SEQUENCE:0
+DTSTART:20261103T103000
+DTEND:20261103T113000
+SUMMARY:Family Storytime
+DESCRIPTION:Tuesday\, November 03 2026 10:30am - 11:00am \n Bring the whole family and join us for an interactive storytime with high-energy stories\, songs\, and activities.
+URL:https://mppl.libnet.info/event/16637827
+END:VEVENT
+BEGIN:VEVENT
+UID:mount-prospect-60056-2026-11-03-play-and-learn@withintenmiles.com
+DTSTAMP:20260922T010136Z
+LAST-MODIFIED:20260922T010136Z
+SEQUENCE:0
+DTSTART:20261103T113000
+DTEND:20261103T123000
+SUMMARY:Play and Learn
+DESCRIPTION:Tuesday\, November 03 2026 11:30am - 12:15pm \n Join us each week for storytime\, sing-alongs\, and developmental play experiences that encourage learning through…
+URL:https://mppl.libnet.info/event/16882806
+END:VEVENT
+BEGIN:VEVENT
+UID:mount-prospect-60056-2026-11-03-reclaiming-your-inner-wisdom@withintenmiles.com
+DTSTAMP:20260922T010136Z
+LAST-MODIFIED:20260922T010136Z
+SEQUENCE:0
+DTSTART:20261103T130000
+DTEND:20261103T140000
+SUMMARY:Reclaiming Your Inner Wisdom
+DESCRIPTION:Tuesday\, November 03 2026 1:00pm - 2:00pm \n Join Indigenous Medicine Woman Asha Frost as she explores her groundbreaking book\, "You Are the Medicine: 13…
+URL:https://mppl.libnet.info/event/17353131
+END:VEVENT
+BEGIN:VEVENT
+UID:mount-prospect-60056-2026-11-03-big-kids-storytime@withintenmiles.com
+DTSTAMP:20260922T010136Z
+LAST-MODIFIED:20260922T010136Z
+SEQUENCE:0
+DTSTART:20261103T133000
+DTEND:20261103T143000
+SUMMARY:Big Kids Storytime
+DESCRIPTION:Tuesday\, November 03 2026 1:30pm - 2:15pm \n Grow into a super reader through playful books and fun with friends! This storytime is the perfect fit for…
+URL:https://mppl.libnet.info/event/16637850
+END:VEVENT
+BEGIN:VEVENT
+UID:mount-prospect-60056-2026-11-03-community-blood-drive@withintenmiles.com
+DTSTAMP:20260922T010136Z
+LAST-MODIFIED:20260922T010136Z
+SEQUENCE:0
+DTSTART:20261103T150000
+DTEND:20261103T160000
+SUMMARY:Community Blood Drive
+DESCRIPTION:Tuesday\, November 03 2026 3:00pm - 7:00pm \n Help save lives and make a difference by donating blood.
+URL:https://mppl.libnet.info/event/17173106
+END:VEVENT
+BEGIN:VEVENT
+UID:mount-prospect-60056-2026-11-04-toddler-storytime@withintenmiles.com
+DTSTAMP:20260922T010136Z
+LAST-MODIFIED:20260922T010136Z
+SEQUENCE:0
+DTSTART:20261104T093000
+DTEND:20261104T103000
+SUMMARY:Toddler Storytime
+DESCRIPTION:Wednesday\, November 04 2026 9:30am - 10:00am \n Grow your little learner's literacy and language skills at this playful storytime full of wiggles\, wonder\, and…
+URL:https://mppl.libnet.info/event/16637882
+END:VEVENT
+BEGIN:VEVENT
+UID:mount-prospect-60056-2026-11-04-drop-in-tech-help@withintenmiles.com
+DTSTAMP:20260922T010136Z
+LAST-MODIFIED:20260922T010136Z
+SEQUENCE:0
+DTSTART:20261104T100000
+DTEND:20261104T110000
+SUMMARY:Drop-In Tech Help
+DESCRIPTION:Wednesday\, November 04 2026 10:00am - 11:00am \n Stop in and bring your questions about technology-related subjects such as smartphones\, computers\, email\,…
+URL:https://mppl.libnet.info/event/14756351
+END:VEVENT
+BEGIN:VEVENT
+UID:mount-prospect-60056-2026-11-04-wednesday-morning-book-group@withintenmiles.com
+DTSTAMP:20260922T010136Z
+LAST-MODIFIED:20260922T010136Z
+SEQUENCE:0
+DTSTART:20261104T110000
+DTEND:20261104T120000
+SUMMARY:Wednesday Morning Book Group
+DESCRIPTION:Wednesday\, November 04 2026 11:00am - 12:00pm \n Join us for a discussion of "The Wild Dark Shore" by Charlotte McConaghy.
+URL:https://mppl.libnet.info/event/14047744
+END:VEVENT
+BEGIN:VEVENT
+UID:mount-prospect-60056-2026-11-04-make-and-meet-with-karla-arenas-valenti@withintenmiles.com
+DTSTAMP:20260922T010136Z
+LAST-MODIFIED:20260922T010136Z
+SEQUENCE:0
+DTSTART:20261104T163000
+DTEND:20261104T173000
+SUMMARY:Make and Meet With Karla Arenas Valenti
+DESCRIPTION:Wednesday\, November 04 2026 4:30pm - 5:30pm \n In this unique meet-the-author program\, get an inside peek into Valenti's creative process. Then\, customize your…
+URL:https://mppl.libnet.info/event/16131511
+END:VEVENT
+BEGIN:VEVENT
+UID:mount-prospect-60056-2026-11-05-baby-storytime@withintenmiles.com
+DTSTAMP:20260922T010136Z
+LAST-MODIFIED:20260922T010136Z
+SEQUENCE:0
+DTSTART:20261105T093000
+DTEND:20261105T103000
+SUMMARY:Baby Storytime
+DESCRIPTION:Thursday\, November 05 2026 9:30am - 10:00am \n A lifelong love of reading starts at birth! Join us for songs\, rhymes\, stories\, and playtime made specially for…
+URL:https://mppl.libnet.info/event/16637937
+END:VEVENT
+BEGIN:VEVENT
+UID:mount-prospect-60056-2026-11-05-family-storytime@withintenmiles.com
+DTSTAMP:20260922T010136Z
+LAST-MODIFIED:20260922T010136Z
+SEQUENCE:0
+DTSTART:20261105T103000
+DTEND:20261105T113000
+SUMMARY:Family Storytime
+DESCRIPTION:Thursday\, November 05 2026 10:30am - 11:00am \n Bring the whole family and join us for an interactive storytime with high-energy stories\, songs\, and activities.
+URL:https://mppl.libnet.info/event/16637956
+END:VEVENT
+BEGIN:VEVENT
+UID:mount-prospect-60056-2026-11-05-elected-officials-office-hours@withintenmiles.com
+DTSTAMP:20260922T010136Z
+LAST-MODIFIED:20260922T010136Z
+SEQUENCE:0
+DTSTART:20261105T140000
+DTEND:20261105T150000
+SUMMARY:Elected Officials Office Hours
+DESCRIPTION:Thursday\, November 05 2026 2:00pm - 4:00pm \n Meet with representatives from the office of the 53rd District State Rep. Nicolle Grasse.
+URL:https://mppl.libnet.info/event/15852957
+END:VEVENT
+BEGIN:VEVENT
+UID:mount-prospect-60056-2026-11-05-paper-circuits-workshop@withintenmiles.com
+DTSTAMP:20260922T010136Z
+LAST-MODIFIED:20260922T010136Z
+SEQUENCE:0
+DTSTART:20261105T180000
+DTEND:20261105T190000
+SUMMARY:Paper Circuits Workshop
+DESCRIPTION:Thursday\, November 05 2026 6:00pm - 7:00pm \n Combine art and technology to make paper circuit creations.
+URL:https://mppl.libnet.info/event/16392033
 END:VEVENT
 BEGIN:VEVENT
 UID:mount-prospect-60056-2026-09-24-education-foundation-meeting@withintenmiles.com
-DTSTAMP:20260921T194339Z
-LAST-MODIFIED:20260921T194339Z
+DTSTAMP:20260922T010136Z
+LAST-MODIFIED:20260922T010136Z
 SEQUENCE:0
 DTSTART:20260924T213000
 DTEND:20260924T223000
@@ -135,8 +1985,8 @@ SUMMARY:Education Foundation Meeting
 END:VEVENT
 BEGIN:VEVENT
 UID:mount-prospect-60056-2026-10-02-school-custodian-appreciation-day@withintenmiles.com
-DTSTAMP:20260921T194339Z
-LAST-MODIFIED:20260921T194339Z
+DTSTAMP:20260922T010136Z
+LAST-MODIFIED:20260922T010136Z
 SEQUENCE:0
 DTSTART:20261002T000000
 DTEND:20261002T010000
@@ -144,8 +1994,8 @@ SUMMARY:School Custodian Appreciation Day
 END:VEVENT
 BEGIN:VEVENT
 UID:mount-prospect-60056-2026-10-12-student-and-staff-non-attendance-buildings-closed@withintenmiles.com
-DTSTAMP:20260921T194339Z
-LAST-MODIFIED:20260921T194339Z
+DTSTAMP:20260922T010136Z
+LAST-MODIFIED:20260922T010136Z
 SEQUENCE:0
 DTSTART:20261012T000000
 DTEND:20261012T010000
@@ -153,8 +2003,8 @@ SUMMARY:Student and Staff Non-Attendance/Buildings Closed
 END:VEVENT
 BEGIN:VEVENT
 UID:mount-prospect-60056-2026-10-13-student-non-attendance-institute-day@withintenmiles.com
-DTSTAMP:20260921T194339Z
-LAST-MODIFIED:20260921T194339Z
+DTSTAMP:20260922T010136Z
+LAST-MODIFIED:20260922T010136Z
 SEQUENCE:0
 DTSTART;VALUE=DATE:20261013
 DTEND;VALUE=DATE:20261014
@@ -163,11 +2013,561 @@ SUMMARY:Student Non-Attendance/ Institute Day
 END:VEVENT
 BEGIN:VEVENT
 UID:mount-prospect-60056-2026-10-15-board-of-education-closed-meeting-board-governance@withintenmiles.com
-DTSTAMP:20260921T194339Z
-LAST-MODIFIED:20260921T194339Z
+DTSTAMP:20260922T010136Z
+LAST-MODIFIED:20260922T010136Z
 SEQUENCE:0
 DTSTART:20261015T190000
 DTEND:20261015T200000
 SUMMARY:Board of Education Closed Meeting - Board Governance
+END:VEVENT
+BEGIN:VEVENT
+UID:mount-prospect-60056-2026-10-22-education-foundation-meeting@withintenmiles.com
+DTSTAMP:20260922T010136Z
+LAST-MODIFIED:20260922T010136Z
+SEQUENCE:0
+DTSTART:20261022T213000
+DTEND:20261022T223000
+SUMMARY:Education Foundation Meeting
+END:VEVENT
+BEGIN:VEVENT
+UID:mount-prospect-60056-2026-10-23-end-of-first-quarter-lincoln@withintenmiles.com
+DTSTAMP:20260922T010136Z
+LAST-MODIFIED:20260922T010136Z
+SEQUENCE:0
+DTSTART:20261023T000000
+DTEND:20261023T010000
+SUMMARY:End of First Quarter (Lincoln)
+END:VEVENT
+BEGIN:VEVENT
+UID:mount-prospect-60056-2026-10-23-school-principal-day@withintenmiles.com
+DTSTAMP:20260922T010136Z
+LAST-MODIFIED:20260922T010136Z
+SEQUENCE:0
+DTSTART:20261023T000000
+DTEND:20261023T010000
+SUMMARY:School Principal Day
+END:VEVENT
+BEGIN:VEVENT
+UID:mount-prospect-60056-2026-11-02-student-non-attendance-conferences@withintenmiles.com
+DTSTAMP:20260922T010136Z
+LAST-MODIFIED:20260922T010136Z
+SEQUENCE:0
+DTSTART:20261102T000000
+DTEND:20261102T010000
+SUMMARY:Student Non-Attendance / Conferences
+END:VEVENT
+BEGIN:VEVENT
+UID:mount-prospect-60056-2026-11-03-student-and-staff-non-attendance-election-day@withintenmiles.com
+DTSTAMP:20260922T010136Z
+LAST-MODIFIED:20260922T010136Z
+SEQUENCE:0
+DTSTART:20261103T000000
+DTEND:20261103T010000
+SUMMARY:Student and Staff Non-Attendance/Election Day
+END:VEVENT
+BEGIN:VEVENT
+UID:mount-prospect-60056-2026-11-11-school-psychologist-day@withintenmiles.com
+DTSTAMP:20260922T010136Z
+LAST-MODIFIED:20260922T010136Z
+SEQUENCE:0
+DTSTART:20261111T000000
+DTEND:20261111T010000
+SUMMARY:School Psychologist Day
+END:VEVENT
+BEGIN:VEVENT
+UID:mount-prospect-60056-2026-11-13-end-of-first-trimester-elementary@withintenmiles.com
+DTSTAMP:20260922T010136Z
+LAST-MODIFIED:20260922T010136Z
+SEQUENCE:0
+DTSTART:20261113T000000
+DTEND:20261113T010000
+SUMMARY:End of First Trimester (Elementary)
+END:VEVENT
+BEGIN:VEVENT
+UID:mount-prospect-60056-2026-11-13-school-board-member-day@withintenmiles.com
+DTSTAMP:20260922T010136Z
+LAST-MODIFIED:20260922T010136Z
+SEQUENCE:0
+DTSTART:20261113T000000
+DTEND:20261113T010000
+SUMMARY:School Board Member Day
+END:VEVENT
+BEGIN:VEVENT
+UID:mount-prospect-60056-2026-11-17-board-of-education-meeting@withintenmiles.com
+DTSTAMP:20260922T010136Z
+LAST-MODIFIED:20260922T010136Z
+SEQUENCE:0
+DTSTART:20261117T230000
+DTEND:20261118T000000
+SUMMARY:Board of Education Meeting
+END:VEVENT
+BEGIN:VEVENT
+UID:mount-prospect-60056-2026-11-19-education-foundation-meeting@withintenmiles.com
+DTSTAMP:20260922T010136Z
+LAST-MODIFIED:20260922T010136Z
+SEQUENCE:0
+DTSTART:20261119T223000
+DTEND:20261119T233000
+SUMMARY:Education Foundation Meeting
+END:VEVENT
+BEGIN:VEVENT
+UID:mount-prospect-60056-2026-11-20-substitute-educator-day@withintenmiles.com
+DTSTAMP:20260922T010136Z
+LAST-MODIFIED:20260922T010136Z
+SEQUENCE:0
+DTSTART:20261120T000000
+DTEND:20261120T010000
+SUMMARY:Substitute Educator Day
+END:VEVENT
+BEGIN:VEVENT
+UID:mount-prospect-60056-2026-11-23-fall-break-no-school@withintenmiles.com
+DTSTAMP:20260922T010136Z
+LAST-MODIFIED:20260922T010136Z
+SEQUENCE:0
+DTSTART;VALUE=DATE:20261123
+DTEND;VALUE=DATE:20261124
+TRANSP:TRANSPARENT
+SUMMARY:Fall Break - No School
+END:VEVENT
+BEGIN:VEVENT
+UID:mount-prospect-60056-2026-12-03-board-of-education-meeting-tentative@withintenmiles.com
+DTSTAMP:20260922T010136Z
+LAST-MODIFIED:20260922T010136Z
+SEQUENCE:0
+DTSTART:20261203T230000
+DTEND:20261204T000000
+SUMMARY:Board of Education Meeting (Tentative)
+END:VEVENT
+BEGIN:VEVENT
+UID:mount-prospect-60056-2026-12-15-board-of-education-meeting@withintenmiles.com
+DTSTAMP:20260922T010136Z
+LAST-MODIFIED:20260922T010136Z
+SEQUENCE:0
+DTSTART:20261215T230000
+DTEND:20261216T000000
+SUMMARY:Board of Education Meeting
+END:VEVENT
+BEGIN:VEVENT
+UID:mount-prospect-60056-2026-12-17-education-foundation-meeting@withintenmiles.com
+DTSTAMP:20260922T010136Z
+LAST-MODIFIED:20260922T010136Z
+SEQUENCE:0
+DTSTART:20261217T223000
+DTEND:20261217T233000
+SUMMARY:Education Foundation Meeting
+END:VEVENT
+BEGIN:VEVENT
+UID:mount-prospect-60056-2026-12-21-winter-break-no-school@withintenmiles.com
+DTSTAMP:20260922T010136Z
+LAST-MODIFIED:20260922T010136Z
+SEQUENCE:0
+DTSTART;VALUE=DATE:20261221
+DTEND;VALUE=DATE:20261222
+TRANSP:TRANSPARENT
+SUMMARY:Winter Break - No School
+END:VEVENT
+BEGIN:VEVENT
+UID:mount-prospect-60056-2026-12-28-winter-break-no-school@withintenmiles.com
+DTSTAMP:20260922T010136Z
+LAST-MODIFIED:20260922T010136Z
+SEQUENCE:0
+DTSTART;VALUE=DATE:20261228
+DTEND;VALUE=DATE:20261229
+TRANSP:TRANSPARENT
+SUMMARY:Winter Break - No School
+END:VEVENT
+BEGIN:VEVENT
+UID:mount-prospect-60056-2027-01-04-student-non-attendance-institute-day@withintenmiles.com
+DTSTAMP:20260922T010136Z
+LAST-MODIFIED:20260922T010136Z
+SEQUENCE:0
+DTSTART;VALUE=DATE:20270104
+DTEND;VALUE=DATE:20270105
+TRANSP:TRANSPARENT
+SUMMARY:Student Non-Attendance/Institute Day
+END:VEVENT
+BEGIN:VEVENT
+UID:mount-prospect-60056-2027-01-15-end-of-2nd-quarter-lincoln@withintenmiles.com
+DTSTAMP:20260922T010136Z
+LAST-MODIFIED:20260922T010136Z
+SEQUENCE:0
+DTSTART:20270115T000000
+DTEND:20270115T010000
+SUMMARY:End of 2nd Quarter (Lincoln)
+END:VEVENT
+BEGIN:VEVENT
+UID:mount-prospect-60056-2027-01-18-student-and-staff-non-attendance-buildings-closed@withintenmiles.com
+DTSTAMP:20260922T010136Z
+LAST-MODIFIED:20260922T010136Z
+SEQUENCE:0
+DTSTART:20270118T000000
+DTEND:20270118T010000
+SUMMARY:Student and Staff Non Attendance/Buildings Closed
+END:VEVENT
+BEGIN:VEVENT
+UID:mount-prospect-60056-2027-01-21-board-of-education-meeting@withintenmiles.com
+DTSTAMP:20260922T010136Z
+LAST-MODIFIED:20260922T010136Z
+SEQUENCE:0
+DTSTART:20270121T230000
+DTEND:20270122T000000
+SUMMARY:Board of Education Meeting
+END:VEVENT
+BEGIN:VEVENT
+UID:mount-prospect-60056-2027-02-04-board-of-education-meeting-tentative@withintenmiles.com
+DTSTAMP:20260922T010136Z
+LAST-MODIFIED:20260922T010136Z
+SEQUENCE:0
+DTSTART:20270204T230000
+DTEND:20270205T000000
+SUMMARY:Board of Education Meeting (Tentative)
+END:VEVENT
+BEGIN:VEVENT
+UID:mount-prospect-60056-2027-02-12-half-day-student-attendance-grades-1-8@withintenmiles.com
+DTSTAMP:20260922T010136Z
+LAST-MODIFIED:20260922T010136Z
+SEQUENCE:0
+DTSTART;VALUE=DATE:20270212
+DTEND;VALUE=DATE:20270213
+TRANSP:TRANSPARENT
+SUMMARY:Half-day Student Attendance (Grades 1-8)
+END:VEVENT
+BEGIN:VEVENT
+UID:mount-prospect-60056-2027-02-15-student-and-staff-non-attendance-buildings-closed@withintenmiles.com
+DTSTAMP:20260922T010136Z
+LAST-MODIFIED:20260922T010136Z
+SEQUENCE:0
+DTSTART:20270215T000000
+DTEND:20270215T010000
+SUMMARY:Student and Staff Non Attendance/Buildings Closed
+END:VEVENT
+BEGIN:VEVENT
+UID:mount-prospect-60056-2027-02-18-board-of-education-meeting@withintenmiles.com
+DTSTAMP:20260922T010136Z
+LAST-MODIFIED:20260922T010136Z
+SEQUENCE:0
+DTSTART:20270218T230000
+DTEND:20270219T000000
+SUMMARY:Board of Education Meeting
+END:VEVENT
+BEGIN:VEVENT
+UID:mount-prospect-60056-2027-02-26-end-of-second-trimester-elementary@withintenmiles.com
+DTSTAMP:20260922T010136Z
+LAST-MODIFIED:20260922T010136Z
+SEQUENCE:0
+DTSTART:20270226T000000
+DTEND:20270226T010000
+SUMMARY:End of Second Trimester (Elementary)
+END:VEVENT
+BEGIN:VEVENT
+UID:mount-prospect-60056-2027-03-04-board-of-education-meeting-tentative@withintenmiles.com
+DTSTAMP:20260922T010136Z
+LAST-MODIFIED:20260922T010136Z
+SEQUENCE:0
+DTSTART:20270304T230000
+DTEND:20270305T000000
+SUMMARY:Board of Education Meeting (Tentative)
+END:VEVENT
+BEGIN:VEVENT
+UID:mount-prospect-60056-2027-03-05-half-day-student-attendance-grades-1-8@withintenmiles.com
+DTSTAMP:20260922T010136Z
+LAST-MODIFIED:20260922T010136Z
+SEQUENCE:0
+DTSTART;VALUE=DATE:20270305
+DTEND;VALUE=DATE:20270306
+TRANSP:TRANSPARENT
+SUMMARY:Half-Day Student Attendance (Grades 1-8)
+END:VEVENT
+BEGIN:VEVENT
+UID:mount-prospect-60056-2027-03-16-school-social-worker-day@withintenmiles.com
+DTSTAMP:20260922T010136Z
+LAST-MODIFIED:20260922T010136Z
+SEQUENCE:0
+DTSTART:20270316T000000
+DTEND:20270316T010000
+SUMMARY:School Social Worker Day
+END:VEVENT
+BEGIN:VEVENT
+UID:mount-prospect-60056-2027-03-18-education-foundation-meeting@withintenmiles.com
+DTSTAMP:20260922T010136Z
+LAST-MODIFIED:20260922T010136Z
+SEQUENCE:0
+DTSTART:20270318T213000
+DTEND:20270318T223000
+SUMMARY:Education Foundation Meeting
+END:VEVENT
+BEGIN:VEVENT
+UID:mount-prospect-60056-2027-03-18-board-of-education-meeting@withintenmiles.com
+DTSTAMP:20260922T010136Z
+LAST-MODIFIED:20260922T010136Z
+SEQUENCE:0
+DTSTART:20270318T220000
+DTEND:20270318T230000
+SUMMARY:Board of Education Meeting
+END:VEVENT
+BEGIN:VEVENT
+UID:mount-prospect-60056-2027-03-19-end-of-3rd-quarter-lincoln@withintenmiles.com
+DTSTAMP:20260922T010136Z
+LAST-MODIFIED:20260922T010136Z
+SEQUENCE:0
+DTSTART:20270319T000000
+DTEND:20270319T010000
+SUMMARY:End of 3rd Quarter (Lincoln)
+END:VEVENT
+BEGIN:VEVENT
+UID:mount-prospect-60056-2027-03-19-school-bcba-day@withintenmiles.com
+DTSTAMP:20260922T010136Z
+LAST-MODIFIED:20260922T010136Z
+SEQUENCE:0
+DTSTART:20270319T000000
+DTEND:20270319T010000
+SUMMARY:School BCBA Day
+END:VEVENT
+BEGIN:VEVENT
+UID:mount-prospect-60056-2027-03-22-spring-break-no-school@withintenmiles.com
+DTSTAMP:20260922T010136Z
+LAST-MODIFIED:20260922T010136Z
+SEQUENCE:0
+DTSTART;VALUE=DATE:20270322
+DTEND;VALUE=DATE:20270323
+TRANSP:TRANSPARENT
+SUMMARY:Spring Break - No School
+END:VEVENT
+BEGIN:VEVENT
+UID:mount-prospect-60056-2027-04-01-board-of-education-meeting-tentative@withintenmiles.com
+DTSTAMP:20260922T010136Z
+LAST-MODIFIED:20260922T010136Z
+SEQUENCE:0
+DTSTART:20270401T220000
+DTEND:20270401T230000
+SUMMARY:Board of Education Meeting (Tentative)
+END:VEVENT
+BEGIN:VEVENT
+UID:mount-prospect-60056-2027-04-05-school-librarian-appreciation-day@withintenmiles.com
+DTSTAMP:20260922T010136Z
+LAST-MODIFIED:20260922T010136Z
+SEQUENCE:0
+DTSTART:20270405T000000
+DTEND:20270405T010000
+SUMMARY:School Librarian Appreciation Day
+END:VEVENT
+BEGIN:VEVENT
+UID:mount-prospect-60056-2027-04-06-assistant-principal-appreciation-day@withintenmiles.com
+DTSTAMP:20260922T010136Z
+LAST-MODIFIED:20260922T010136Z
+SEQUENCE:0
+DTSTART:20270406T000000
+DTEND:20270406T010000
+SUMMARY:Assistant Principal Appreciation Day
+END:VEVENT
+BEGIN:VEVENT
+UID:mount-prospect-60056-2027-04-06-half-day-student-attendance-grades-1-8@withintenmiles.com
+DTSTAMP:20260922T010136Z
+LAST-MODIFIED:20260922T010136Z
+SEQUENCE:0
+DTSTART;VALUE=DATE:20270406
+DTEND;VALUE=DATE:20270407
+TRANSP:TRANSPARENT
+SUMMARY:Half-Day Student Attendance (Grades 1-8)
+END:VEVENT
+BEGIN:VEVENT
+UID:mount-prospect-60056-2027-04-07-instructional-assistant-appreciation-day@withintenmiles.com
+DTSTAMP:20260922T010136Z
+LAST-MODIFIED:20260922T010136Z
+SEQUENCE:0
+DTSTART:20270407T000000
+DTEND:20270407T010000
+SUMMARY:Instructional Assistant Appreciation Day
+END:VEVENT
+BEGIN:VEVENT
+UID:mount-prospect-60056-2027-04-15-occupational-therapist-day@withintenmiles.com
+DTSTAMP:20260922T010136Z
+LAST-MODIFIED:20260922T010136Z
+SEQUENCE:0
+DTSTART:20270415T000000
+DTEND:20270415T010000
+SUMMARY:Occupational Therapist Day
+END:VEVENT
+BEGIN:VEVENT
+UID:mount-prospect-60056-2027-04-15-board-of-education-meeting@withintenmiles.com
+DTSTAMP:20260922T010136Z
+LAST-MODIFIED:20260922T010136Z
+SEQUENCE:0
+DTSTART:20270415T220000
+DTEND:20270415T230000
+SUMMARY:Board of Education Meeting
+END:VEVENT
+BEGIN:VEVENT
+UID:mount-prospect-60056-2027-04-21-administrative-professionals-day@withintenmiles.com
+DTSTAMP:20260922T010136Z
+LAST-MODIFIED:20260922T010136Z
+SEQUENCE:0
+DTSTART:20270421T000000
+DTEND:20270421T010000
+SUMMARY:Administrative Professionals Day
+END:VEVENT
+BEGIN:VEVENT
+UID:mount-prospect-60056-2027-04-22-education-foundation-meeting@withintenmiles.com
+DTSTAMP:20260922T010136Z
+LAST-MODIFIED:20260922T010136Z
+SEQUENCE:0
+DTSTART:20270422T213000
+DTEND:20270422T223000
+SUMMARY:Education Foundation Meeting
+END:VEVENT
+BEGIN:VEVENT
+UID:mount-prospect-60056-2027-04-27-school-bus-driver-appreciation-day@withintenmiles.com
+DTSTAMP:20260922T010136Z
+LAST-MODIFIED:20260922T010136Z
+SEQUENCE:0
+DTSTART:20270427T000000
+DTEND:20270427T010000
+SUMMARY:School Bus Driver Appreciation Day
+END:VEVENT
+BEGIN:VEVENT
+UID:mount-prospect-60056-2027-05-03-staff-appreciation-week@withintenmiles.com
+DTSTAMP:20260922T010136Z
+LAST-MODIFIED:20260922T010136Z
+SEQUENCE:0
+DTSTART:20270503T000000
+DTEND:20270503T010000
+SUMMARY:Staff Appreciation Week
+END:VEVENT
+BEGIN:VEVENT
+UID:mount-prospect-60056-2027-05-06-board-of-education-meeting-tentative@withintenmiles.com
+DTSTAMP:20260922T010136Z
+LAST-MODIFIED:20260922T010136Z
+SEQUENCE:0
+DTSTART:20270506T220000
+DTEND:20270506T230000
+SUMMARY:Board of Education Meeting (Tentative)
+END:VEVENT
+BEGIN:VEVENT
+UID:mount-prospect-60056-2027-05-12-school-nurse-appreciation-day@withintenmiles.com
+DTSTAMP:20260922T010136Z
+LAST-MODIFIED:20260922T010136Z
+SEQUENCE:0
+DTSTART:20270512T000000
+DTEND:20270512T010000
+SUMMARY:School Nurse Appreciation Day
+END:VEVENT
+BEGIN:VEVENT
+UID:mount-prospect-60056-2027-05-14-school-communicators-day@withintenmiles.com
+DTSTAMP:20260922T010136Z
+LAST-MODIFIED:20260922T010136Z
+SEQUENCE:0
+DTSTART:20270514T000000
+DTEND:20270514T010000
+SUMMARY:School Communicators Day
+END:VEVENT
+BEGIN:VEVENT
+UID:mount-prospect-60056-2027-05-18-speech-language-pathologist-day@withintenmiles.com
+DTSTAMP:20260922T010136Z
+LAST-MODIFIED:20260922T010136Z
+SEQUENCE:0
+DTSTART:20270518T000000
+DTEND:20270518T010000
+SUMMARY:Speech-Language Pathologist Day
+END:VEVENT
+BEGIN:VEVENT
+UID:mount-prospect-60056-2027-05-20-last-day-of-circle-of-friends-pre-school@withintenmiles.com
+DTSTAMP:20260922T010136Z
+LAST-MODIFIED:20260922T010136Z
+SEQUENCE:0
+DTSTART:20270520T000000
+DTEND:20270520T010000
+SUMMARY:Last Day of Circle of Friends Pre-School
+END:VEVENT
+BEGIN:VEVENT
+UID:mount-prospect-60056-2027-05-20-education-foundation-meeting@withintenmiles.com
+DTSTAMP:20260922T010136Z
+LAST-MODIFIED:20260922T010136Z
+SEQUENCE:0
+DTSTART:20270520T213000
+DTEND:20270520T223000
+SUMMARY:Education Foundation Meeting
+END:VEVENT
+BEGIN:VEVENT
+UID:mount-prospect-60056-2027-05-20-board-of-education-meeting@withintenmiles.com
+DTSTAMP:20260922T010136Z
+LAST-MODIFIED:20260922T010136Z
+SEQUENCE:0
+DTSTART:20270520T220000
+DTEND:20270520T230000
+SUMMARY:Board of Education Meeting
+END:VEVENT
+BEGIN:VEVENT
+UID:mount-prospect-60056-2027-05-21-half-day-student-attendance-grades-1-8@withintenmiles.com
+DTSTAMP:20260922T010136Z
+LAST-MODIFIED:20260922T010136Z
+SEQUENCE:0
+DTSTART;VALUE=DATE:20270521
+DTEND;VALUE=DATE:20270522
+TRANSP:TRANSPARENT
+SUMMARY:Half-Day Student Attendance (Grades 1-8)
+END:VEVENT
+BEGIN:VEVENT
+UID:mount-prospect-60056-2027-05-27-last-day-of-kindergarten@withintenmiles.com
+DTSTAMP:20260922T010136Z
+LAST-MODIFIED:20260922T010136Z
+SEQUENCE:0
+DTSTART:20270527T000000
+DTEND:20270527T010000
+SUMMARY:Last Day of Kindergarten
+END:VEVENT
+BEGIN:VEVENT
+UID:mount-prospect-60056-2027-05-28-end-of-4th-quarter-lincoln@withintenmiles.com
+DTSTAMP:20260922T010136Z
+LAST-MODIFIED:20260922T010136Z
+SEQUENCE:0
+DTSTART:20270528T000000
+DTEND:20270528T010000
+SUMMARY:End of 4th Quarter (Lincoln)
+END:VEVENT
+BEGIN:VEVENT
+UID:mount-prospect-60056-2027-05-28-end-of-third-trimester-elementary@withintenmiles.com
+DTSTAMP:20260922T010136Z
+LAST-MODIFIED:20260922T010136Z
+SEQUENCE:0
+DTSTART:20270528T000000
+DTEND:20270528T010000
+SUMMARY:End of Third Trimester (Elementary)
+END:VEVENT
+BEGIN:VEVENT
+UID:mount-prospect-60056-2027-05-28-last-day-for-grades-1-8-half-day-attendance@withintenmiles.com
+DTSTAMP:20260922T010136Z
+LAST-MODIFIED:20260922T010136Z
+SEQUENCE:0
+DTSTART;VALUE=DATE:20270528
+DTEND;VALUE=DATE:20270529
+TRANSP:TRANSPARENT
+SUMMARY:Last Day for Grades 1-8 (Half Day Attendance)
+END:VEVENT
+BEGIN:VEVENT
+UID:mount-prospect-60056-2027-06-01-emergency-days@withintenmiles.com
+DTSTAMP:20260922T010136Z
+LAST-MODIFIED:20260922T010136Z
+SEQUENCE:0
+DTSTART:20270601T000000
+DTEND:20270601T010000
+SUMMARY:Emergency Days
+END:VEVENT
+BEGIN:VEVENT
+UID:mount-prospect-60056-2027-06-07-emergency-days@withintenmiles.com
+DTSTAMP:20260922T010136Z
+LAST-MODIFIED:20260922T010136Z
+SEQUENCE:0
+DTSTART:20270607T000000
+DTEND:20270607T010000
+SUMMARY:Emergency Days
+END:VEVENT
+BEGIN:VEVENT
+UID:mount-prospect-60056-2027-06-17-board-of-education-meeting@withintenmiles.com
+DTSTAMP:20260922T010136Z
+LAST-MODIFIED:20260922T010136Z
+SEQUENCE:0
+DTSTART:20270617T220000
+DTEND:20270617T230000
+SUMMARY:Board of Education Meeting
 END:VEVENT
 END:VCALENDAR
