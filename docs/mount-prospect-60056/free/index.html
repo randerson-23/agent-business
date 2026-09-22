@@ -575,6 +575,8 @@
   .newsletter form { display: contents; }
   .newsletter-copy strong { font-size: 15px; }
   .newsletter-copy p { margin: 3px 0 0; color: var(--muted); font-size: 13.5px; }
+  .newsletter-copy .newsletter-note { font-size: 12px; margin-top: 6px; }
+  .newsletter-pending { margin: 0; font-size: 13.5px; font-weight: 600; }
   .newsletter-form-row { display: flex; gap: 0; flex-wrap: wrap; }
   .newsletter-form-row input[type="email"] {
     font: inherit;
@@ -1084,11 +1086,12 @@
 
   
   
-  <div class="newsletter">
-    <form action="https://buttondown.com/api/emails/embed-subscribe/andersonryant" method="post" target="popupwindow" onsubmit="window.open('https://buttondown.com/andersonryant', 'popupwindow')">
+  <div class="newsletter" id="newsletter-signup">
+    <form class="newsletter-form" action="https://buttondown.com/api/emails/embed-subscribe/andersonryant" method="post" target="bd-hidden-frame">
       <div class="newsletter-copy">
         <strong>Get it in your inbox</strong>
         <p>One email, Thursday mornings, covering Arlington Heights, Des Plaines, Mount Prospect, Palatine, and Wheeling. No spam, unsubscribe anytime.</p>
+        <p class="newsletter-note">We'll send one email to confirm.</p>
       </div>
       <div class="newsletter-form-row">
         <label class="sr-only" for="bd-email">Email address</label>
@@ -1096,7 +1099,20 @@
         <button type="submit">Subscribe</button>
       </div>
     </form>
+    <p class="newsletter-pending" hidden>Almost there — check your email and click the confirmation link.</p>
   </div>
+  <iframe name="bd-hidden-frame" title="Newsletter signup" style="display:none" aria-hidden="true"></iframe>
+  <script>
+  (function () {
+    var form = document.querySelector("#newsletter-signup .newsletter-form");
+    var pending = document.querySelector("#newsletter-signup .newsletter-pending");
+    if (!form || !pending) return;
+    form.addEventListener("submit", function () {
+      form.hidden = true;
+      pending.hidden = false;
+    });
+  })();
+  </script>
   
   </main>
 
@@ -1105,7 +1121,7 @@
     <a href="https://withintenmiles.com/sponsor/">sponsor page</a>.
     <a href="https://withintenmiles.com/about/">About</a>.
     <a href="https://withintenmiles.com/trick-or-treat/">Trick-or-treat hours</a>.
-    <br>Generated 2026-09-22 16:05 UTC.
+    <br>Generated 2026-09-22 18:56 UTC.
     
     <br><a href="https://withintenmiles.com/mount-prospect-60056/weekly-summary.txt">Copy this week's summary</a> — a plain-text block ready to paste into a local group.
   </footer>
@@ -1131,7 +1147,7 @@
 <script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "Event", "name": "Lawyers at the Library: Your Legal Help Desk", "url": "https://mppl.libnet.info/event/16565148", "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode", "description": "Wednesday, September 30 2026 6:30pm - 7:00pm \n Need legal advice but don't know where to start? Free legal consultations are available through a virtual…", "startDate": "2026-09-30T18:30:00+00:00"}, {"@type": "Event", "name": "Introduction to Web Resources", "url": "https://mppl.libnet.info/event/16505448", "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode", "description": "Tuesday, October 13 2026 2:00pm - 3:00pm \n Discover the extensive collection of free online resources available with your library card.", "startDate": "2026-10-13T14:00:00+00:00"}, {"@type": "Event", "name": "Hooked on Books!", "url": "https://mppl.libnet.info/event/16641009", "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode", "description": "Monday, October 26 2026 4:30pm - 5:15pm \n In this interactive club perfect for kids just starting chapter books, we'll read a fun story and do related…", "startDate": "2026-10-26T16:30:00+00:00"}, {"@type": "Event", "name": "A Club for Kids Who Like Books", "url": "https://mppl.libnet.info/event/16641020", "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode", "description": "Monday, October 26 2026 6:00pm - 7:00pm \n Meet new friends, make a project, and find your next great read in this unique book club (no prior reading…", "startDate": "2026-10-26T18:00:00+00:00"}, {"@type": "Event", "name": "Lawyers at the Library: Your Legal Help Desk", "url": "https://mppl.libnet.info/event/16565155", "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode", "description": "Wednesday, October 28 2026 6:30pm - 7:00pm \n Need legal advice but don't know where to start? Free legal consultations are available through a virtual meeting…", "startDate": "2026-10-28T18:30:00+00:00"}, {"@type": "Event", "name": "Family Reading Night", "url": "https://mppl.libnet.info/event/16903460", "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode", "description": "Thursday, November 19 2026 12:00am - 11:59pm \n The library is joining the statewide event, encouraging families to spend quality time reading together with a…", "startDate": "2026-11-19T00:00:00+00:00"}, {"@type": "Event", "name": "Hooked on Books!", "url": "https://mppl.libnet.info/event/16873363", "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode", "description": "Monday, November 30 2026 4:30pm - 5:15pm \n In this interactive club perfect for kids just starting chapter books, we'll read a fun story, and do related…", "startDate": "2026-11-30T16:30:00+00:00"}, {"@type": "Event", "name": "A Club for Kids Who Like Books", "url": "https://mppl.libnet.info/event/16873366", "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode", "description": "Monday, November 30 2026 6:00pm - 7:00pm \n Meet new friends, make a project, and find your next great read in this unique book club (no prior reading…", "startDate": "2026-11-30T18:00:00+00:00"}]}</script>
 
 
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebPage", "name": "Mount Prospect — Within Ten", "url": "https://withintenmiles.com/mount-prospect-60056/free/", "dateModified": "2026-09-22T16:05:16.194727+00:00", "isPartOf": {"@type": "WebSite", "name": "Within Ten", "url": "https://withintenmiles.com/", "publisher": {"@id": "https://withintenmiles.com/about/#organization"}}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebPage", "name": "Mount Prospect — Within Ten", "url": "https://withintenmiles.com/mount-prospect-60056/free/", "dateModified": "2026-09-22T18:56:45.031061+00:00", "isPartOf": {"@type": "WebSite", "name": "Within Ten", "url": "https://withintenmiles.com/", "publisher": {"@id": "https://withintenmiles.com/about/#organization"}}}</script>
 <script>
 (function () {
   var activeTags = new Set();

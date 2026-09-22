@@ -291,6 +291,8 @@
   .newsletter form { display: contents; }
   .newsletter-copy strong { font-size: 15px; }
   .newsletter-copy p { margin: 3px 0 0; color: var(--muted); font-size: 13.5px; }
+  .newsletter-copy .newsletter-note { font-size: 12px; margin-top: 6px; }
+  .newsletter-pending { margin: 0; font-size: 13.5px; font-weight: 600; }
   .newsletter-form-row { display: flex; gap: 0; flex-wrap: wrap; }
   .newsletter-form-row input[type="email"] {
     font: inherit;
@@ -386,7 +388,7 @@
     </a>
     <div class="bento-tile bento-stat">
       <span class="bento-stat-number">5</span>
-      <span class="bento-stat-label">towns · 895 live updates this week</span>
+      <span class="bento-stat-label">towns · 906 live updates this week</span>
     </div>
   </div>
 
@@ -437,7 +439,7 @@
       <span class="zip">60067 · IL</span>
       <h2>Palatine</h2>
       <p>Pulled automatically from the Village, Public Library District, and Park District — plus Downtown Palatine and the Train Station farmers&#39; market lot — several times a week, northwest of Mount Prospect.</p>
-      <span class="count">11 live updates this week</span>
+      <span class="count">22 live updates this week</span>
     </a>
     
     <a class="bento-tile region-card" href="wheeling-60090/">
@@ -452,11 +454,12 @@
 
   
   
-  <div class="newsletter">
-    <form action="https://buttondown.com/api/emails/embed-subscribe/andersonryant" method="post" target="popupwindow" onsubmit="window.open('https://buttondown.com/andersonryant', 'popupwindow')">
+  <div class="newsletter" id="newsletter-signup">
+    <form class="newsletter-form" action="https://buttondown.com/api/emails/embed-subscribe/andersonryant" method="post" target="bd-hidden-frame">
       <div class="newsletter-copy">
         <strong>Get it in your inbox</strong>
         <p>One email, Thursday mornings, covering Arlington Heights, Des Plaines, Mount Prospect, Palatine, and Wheeling. No spam, unsubscribe anytime.</p>
+        <p class="newsletter-note">We'll send one email to confirm.</p>
       </div>
       <div class="newsletter-form-row">
         <label class="sr-only" for="bd-email">Email address</label>
@@ -464,7 +467,20 @@
         <button type="submit">Subscribe</button>
       </div>
     </form>
+    <p class="newsletter-pending" hidden>Almost there — check your email and click the confirmation link.</p>
   </div>
+  <iframe name="bd-hidden-frame" title="Newsletter signup" style="display:none" aria-hidden="true"></iframe>
+  <script>
+  (function () {
+    var form = document.querySelector("#newsletter-signup .newsletter-form");
+    var pending = document.querySelector("#newsletter-signup .newsletter-pending");
+    if (!form || !pending) return;
+    form.addEventListener("submit", function () {
+      form.hidden = true;
+      pending.hidden = false;
+    });
+  })();
+  </script>
   
   </main>
 
@@ -474,7 +490,7 @@
     <a href="about/">About</a>.
     <a href="trick-or-treat/">Trick-or-treat hours</a>.
     <br>See something wrong or missing? <a href="mailto:andersonryant@gmail.com?subject=Correction&amp;body=What%27s%20wrong%20or%20missing%2C%20and%20which%20region%2Fevent%3A%20">Email us</a> — corrections get made the same week.
-    <br>Generated 2026-09-22 16:05 UTC.
+    <br>Generated 2026-09-22 18:56 UTC.
     
   </footer>
   </div>

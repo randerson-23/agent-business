@@ -575,6 +575,8 @@
   .newsletter form { display: contents; }
   .newsletter-copy strong { font-size: 15px; }
   .newsletter-copy p { margin: 3px 0 0; color: var(--muted); font-size: 13.5px; }
+  .newsletter-copy .newsletter-note { font-size: 12px; margin-top: 6px; }
+  .newsletter-pending { margin: 0; font-size: 13.5px; font-weight: 600; }
   .newsletter-form-row { display: flex; gap: 0; flex-wrap: wrap; }
   .newsletter-form-row input[type="email"] {
     font: inherit;
@@ -867,11 +869,12 @@
 
   
   
-  <div class="newsletter">
-    <form action="https://buttondown.com/api/emails/embed-subscribe/andersonryant" method="post" target="popupwindow" onsubmit="window.open('https://buttondown.com/andersonryant', 'popupwindow')">
+  <div class="newsletter" id="newsletter-signup">
+    <form class="newsletter-form" action="https://buttondown.com/api/emails/embed-subscribe/andersonryant" method="post" target="bd-hidden-frame">
       <div class="newsletter-copy">
         <strong>Get it in your inbox</strong>
         <p>One email, Thursday mornings, covering Arlington Heights, Des Plaines, Mount Prospect, Palatine, and Wheeling. No spam, unsubscribe anytime.</p>
+        <p class="newsletter-note">We'll send one email to confirm.</p>
       </div>
       <div class="newsletter-form-row">
         <label class="sr-only" for="bd-email">Email address</label>
@@ -879,7 +882,20 @@
         <button type="submit">Subscribe</button>
       </div>
     </form>
+    <p class="newsletter-pending" hidden>Almost there — check your email and click the confirmation link.</p>
   </div>
+  <iframe name="bd-hidden-frame" title="Newsletter signup" style="display:none" aria-hidden="true"></iframe>
+  <script>
+  (function () {
+    var form = document.querySelector("#newsletter-signup .newsletter-form");
+    var pending = document.querySelector("#newsletter-signup .newsletter-pending");
+    if (!form || !pending) return;
+    form.addEventListener("submit", function () {
+      form.hidden = true;
+      pending.hidden = false;
+    });
+  })();
+  </script>
   
   </main>
 
@@ -888,7 +904,7 @@
     <a href="https://withintenmiles.com/sponsor/">sponsor page</a>.
     <a href="https://withintenmiles.com/about/">About</a>.
     <a href="https://withintenmiles.com/trick-or-treat/">Trick-or-treat hours</a>.
-    <br>Generated 2026-09-22 16:05 UTC.
+    <br>Generated 2026-09-22 18:56 UTC.
     
     <br><a href="https://withintenmiles.com/des-plaines-60016/weekly-summary.txt">Copy this week's summary</a> — a plain-text block ready to paste into a local group.
   </footer>
@@ -914,7 +930,7 @@
 
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "How current is this guide?", "acceptedAnswer": {"@type": "Answer", "text": "It's regenerated automatically from the village, library, and park district's own listings, typically several times a week - not a one-time write-up that goes stale."}}, {"@type": "Question", "name": "Is this every event or business, or just what's listed here?", "acceptedAnswer": {"@type": "Answer", "text": "Only what the linked public sources publish. For full details, hours, or anything not listed here, check the official page each item links to."}}, {"@type": "Question", "name": "How do I see what's happening in Des Plaines this specific weekend?", "acceptedAnswer": {"@type": "Answer", "text": "See the <a href=\"https://withintenmiles.com/des-plaines-60016/this-weekend/\">weekend view<\/a>, which only shows items with a known date in the coming Friday-Sunday."}}, {"@type": "Question", "name": "Can I add an event, or suggest a business for the directory?", "acceptedAnswer": {"@type": "Answer", "text": "Yes - <a href=\"https://github.com/randerson-23/agent-business/issues/new?template=event-submission.yml\">submit an event<\/a> and a person reviews it before it goes live, or a business owner can <a href=\"https://withintenmiles.com/sponsor/\">inquire about a listing<\/a>."}}]}</script>
 
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebPage", "name": "Des Plaines — Within Ten", "url": "https://withintenmiles.com/des-plaines-60016/guides/birthday-parties-and-kids-classes/", "dateModified": "2026-09-22T16:05:16.194727+00:00", "isPartOf": {"@type": "WebSite", "name": "Within Ten", "url": "https://withintenmiles.com/", "publisher": {"@id": "https://withintenmiles.com/about/#organization"}}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebPage", "name": "Des Plaines — Within Ten", "url": "https://withintenmiles.com/des-plaines-60016/guides/birthday-parties-and-kids-classes/", "dateModified": "2026-09-22T18:56:45.031061+00:00", "isPartOf": {"@type": "WebSite", "name": "Within Ten", "url": "https://withintenmiles.com/", "publisher": {"@id": "https://withintenmiles.com/about/#organization"}}}</script>
 <script>
 (function () {
   var activeTags = new Set();

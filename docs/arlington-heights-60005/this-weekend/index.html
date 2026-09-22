@@ -575,6 +575,8 @@
   .newsletter form { display: contents; }
   .newsletter-copy strong { font-size: 15px; }
   .newsletter-copy p { margin: 3px 0 0; color: var(--muted); font-size: 13.5px; }
+  .newsletter-copy .newsletter-note { font-size: 12px; margin-top: 6px; }
+  .newsletter-pending { margin: 0; font-size: 13.5px; font-weight: 600; }
   .newsletter-form-row { display: flex; gap: 0; flex-wrap: wrap; }
   .newsletter-form-row input[type="email"] {
     font: inherit;
@@ -711,26 +713,24 @@
     <div class="weather-day">
       <span class="wx-emoji" aria-hidden="true">☁️</span>
       <span class="wx-name">Friday</span>
-      <span class="wx-temp">70&deg; / 59&deg;</span>
+      <span class="wx-temp">70&deg; / 61&deg;</span>
       <span class="wx-label">Overcast &middot; 1% precip</span>
     </div>
     
     <div class="weather-day">
-      <span class="wx-emoji" aria-hidden="true">🌦️</span>
+      <span class="wx-emoji" aria-hidden="true">☁️</span>
       <span class="wx-name">Saturday</span>
-      <span class="wx-temp">63&deg; / 58&deg;</span>
-      <span class="wx-label">Light drizzle &middot; 2% precip</span>
+      <span class="wx-temp">72&deg; / 57&deg;</span>
+      <span class="wx-label">Overcast &middot; 2% precip</span>
     </div>
     
     <div class="weather-day">
-      <span class="wx-emoji" aria-hidden="true">🌦️</span>
+      <span class="wx-emoji" aria-hidden="true">☁️</span>
       <span class="wx-name">Sunday</span>
-      <span class="wx-temp">68&deg; / 58&deg;</span>
-      <span class="wx-label">Light drizzle &middot; 7% precip</span>
+      <span class="wx-temp">72&deg; / 59&deg;</span>
+      <span class="wx-label">Overcast &middot; 7% precip</span>
     </div>
     
-    
-    <div class="wx-note">Rain (or worse) in the forecast — the Indoor filter below can help plan around it.</div>
     
   </div>
   
@@ -930,11 +930,12 @@
 
   
   
-  <div class="newsletter">
-    <form action="https://buttondown.com/api/emails/embed-subscribe/andersonryant" method="post" target="popupwindow" onsubmit="window.open('https://buttondown.com/andersonryant', 'popupwindow')">
+  <div class="newsletter" id="newsletter-signup">
+    <form class="newsletter-form" action="https://buttondown.com/api/emails/embed-subscribe/andersonryant" method="post" target="bd-hidden-frame">
       <div class="newsletter-copy">
         <strong>Get it in your inbox</strong>
         <p>One email, Thursday mornings, covering Arlington Heights, Des Plaines, Mount Prospect, Palatine, and Wheeling. No spam, unsubscribe anytime.</p>
+        <p class="newsletter-note">We'll send one email to confirm.</p>
       </div>
       <div class="newsletter-form-row">
         <label class="sr-only" for="bd-email">Email address</label>
@@ -942,7 +943,20 @@
         <button type="submit">Subscribe</button>
       </div>
     </form>
+    <p class="newsletter-pending" hidden>Almost there — check your email and click the confirmation link.</p>
   </div>
+  <iframe name="bd-hidden-frame" title="Newsletter signup" style="display:none" aria-hidden="true"></iframe>
+  <script>
+  (function () {
+    var form = document.querySelector("#newsletter-signup .newsletter-form");
+    var pending = document.querySelector("#newsletter-signup .newsletter-pending");
+    if (!form || !pending) return;
+    form.addEventListener("submit", function () {
+      form.hidden = true;
+      pending.hidden = false;
+    });
+  })();
+  </script>
   
   </main>
 
@@ -951,7 +965,7 @@
     <a href="https://withintenmiles.com/sponsor/">sponsor page</a>.
     <a href="https://withintenmiles.com/about/">About</a>.
     <a href="https://withintenmiles.com/trick-or-treat/">Trick-or-treat hours</a>.
-    <br>Generated 2026-09-22 16:05 UTC.
+    <br>Generated 2026-09-22 18:56 UTC.
     
     <br><a href="https://withintenmiles.com/arlington-heights-60005/weekly-summary.txt">Copy this week's summary</a> — a plain-text block ready to paste into a local group.
   </footer>
@@ -977,7 +991,7 @@
 <script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "Event", "name": "Play, Learn & Grow Family Workshop (Week 5 of 5)", "url": "https://www.ahml.info/scheduling/reservation/196135", "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode", "startDate": "2026-09-25T00:00:00"}, {"@type": "Event", "name": "One Book, One Village at the Farmers Market", "url": "https://www.ahml.info/scheduling/reservation/226806", "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode", "startDate": "2026-09-26T00:00:00"}, {"@type": "Event", "name": "Centennial Celebration and Anniversary Party", "url": "https://www.ahml.info/scheduling/reservation/220984", "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode", "startDate": "2026-09-27T00:00:00"}, {"@type": "Event", "name": "Speakeasy at the Museum", "url": "https://www.ahpd.org/event/speakeasy-at-the-museum/", "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode", "description": "Step back in time to the Roaring Twenties at our exclusive Speakeasy Night! Enjoy two Prohibition Era themed cocktails (alcohol and non-alcohol options…", "startDate": "2026-09-25T19:00:00"}]}</script>
 
 
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebPage", "name": "Arlington Heights — Within Ten", "url": "https://withintenmiles.com/arlington-heights-60005/this-weekend/", "dateModified": "2026-09-22T16:05:16.194727+00:00", "isPartOf": {"@type": "WebSite", "name": "Within Ten", "url": "https://withintenmiles.com/", "publisher": {"@id": "https://withintenmiles.com/about/#organization"}}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebPage", "name": "Arlington Heights — Within Ten", "url": "https://withintenmiles.com/arlington-heights-60005/this-weekend/", "dateModified": "2026-09-22T18:56:45.031061+00:00", "isPartOf": {"@type": "WebSite", "name": "Within Ten", "url": "https://withintenmiles.com/", "publisher": {"@id": "https://withintenmiles.com/about/#organization"}}}</script>
 <script>
 (function () {
   var activeTags = new Set();
