@@ -1571,6 +1571,13 @@ def build_organization_json_ld() -> str:
     inventing either would break the same never-fabricate-a-fact
     discipline every other structured-data function in this file holds
     itself to.
+
+    `founder` added 2026-09-22 (ROADMAP.md item 130) - the same real
+    name now on the About page's own prose, not a separate invention.
+    This is exactly the "who publishes this" entity-authority signal
+    item 99's own docstring above says AI citation actually runs on;
+    an anonymous Organization node was a weaker version of the same
+    anonymity problem item 130 named for the visible page text.
     """
     payload = {
         "@context": "https://schema.org",
@@ -1578,6 +1585,7 @@ def build_organization_json_ld() -> str:
         "@id": ORGANIZATION_ID,
         "name": SITE_NAME,
         "url": SITE_BASE_URL,
+        "founder": {"@type": "Person", "name": "Ryan Anderson"},
     }
     return json.dumps(payload, ensure_ascii=False).replace("</", "<\\/")
 

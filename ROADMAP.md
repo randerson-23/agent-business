@@ -228,41 +228,38 @@ action instead of handing back a list. Standing rule (also in the
 working agreements below): the research loop leaves at most three open
 owner *decisions* at a time, ranked, not appended to indefinitely.
 
-**Next action.** **Put a real name on the About page** (item 130) —
-currently "written and run by a local parent." Takes minutes, costs
-nothing, and is the one prerequisite the other two items below actually
-depend on: a reporter won't write about an anonymous site, a library
-won't link to one as readily, a business owner won't sponsor one. An
-anonymous automated local-events site also now pattern-matches to the
-200+ AI-generated "local news" sites shut down in August for invented
-bylines — the press pitch, sponsor conversations, and the "we're not
-one of those sites" claim (item 124) all sell the person, not just the
-product. A first name + last initial beats full anonymity by a wide
-margin if full disclosure isn't wanted. This is the owner's own privacy
-to trade, which is exactly why it's a decision and not a default.
+**Item 130 done, 2026-09-22 — a real name (Ryan Anderson) is now on
+the About page and in the Organization schema.** Ryan confirmed and
+answered the naming question directly in this session; see item 130's
+own 🟢 write-up above for what shipped. That clears the one
+prerequisite the two actions below were waiting on.
 
-**After that, in order:**
+**Next action.** **Send the outreach emails** — six civic-source
+link-back emails (item 152, `OUTREACH_TEMPLATES.md` §11, one per
+village/library/park district across all five regions) plus the two
+already-drafted, ready-to-send Mount Prospect emails (item 161, §12a/
+12b — send Experience Mount Prospect first, let its reply inform
+Downtown Mount Prospect's). No cost, repeatable, no deadline, and the
+most durable result of anything in this section: item 131 verified
+19/19 event cards already link out to the publisher that posted the
+event, so every issue already sends these organizations readers — a
+community-links-page entry, once added, keeps working without further
+effort. Now that a real name is attached, `OUTREACH_TEMPLATES.md`'s
+`[Your name]` signature placeholder is ready to fill in as-is.
 
-1. **Send the outreach emails** — six civic-source link-back emails
-   (item 152, `OUTREACH_TEMPLATES.md` §11, one per village/library/park
-   district across all four regions) plus the two already-drafted,
-   ready-to-send Mount Prospect emails (item 161, §12a/12b — send
-   Experience Mount Prospect first, let its reply inform Downtown Mount
-   Prospect's). No cost, repeatable, no deadline, and the most durable
-   result of anything in this section: item 131 verified 19/19 event
-   cards already link out to the publisher that posted the event, so
-   every issue already sends these organizations readers — a community-
-   links-page entry, once added, keeps working without further effort.
-2. **Send the local press pitch** to the **Daily Herald first** (item
+**After that:**
+
+1. **Send the local press pitch** to the **Daily Herald first** (item
    125 found Journal & Topics runs a competing Event Calendar, so
    Daily Herald is the first attempt, not the second; template in
    `OUTREACH_TEMPLATES.md` §7). The single highest-yield action
    available — 100-500 subscribers from one email (seventeenth pass) —
    but one-shot, and item 155 argues it should follow gradual list
-   growth (item 1 above) rather than lead it, so a press-driven spike
-   lands on a domain with real sends behind it already. Every technical
-   dependency is cleared: domain, HTTPS, signup form, sponsor CTA,
-   Google's sitemap, and a proven live send all work.
+   growth (the outreach emails above) rather than lead it, so a
+   press-driven spike lands on a domain with real sends behind it
+   already. Every technical dependency is cleared: domain, HTTPS,
+   signup form, sponsor CTA, Google's sitemap, a proven live send, and
+   now a named byline for the story to actually be about — all work.
 
 **Parked — real, but shouldn't compete with the two above:**
 - **Chamber of Commerce membership** (item 153) — a real backlink and a
@@ -5959,6 +5956,54 @@ it cuts both ways.
      which is exactly the kind of call item 130 itself says belongs to
      him, not the build loop. Items 131 and 132 below - both real content
      changes with no privacy trade-off - shipped this same pass instead.
+
+     🟢 **Shipped 2026-09-22 — the owner answered directly.** Ryan
+     confirmed his name in this session and asked whether "Ryan
+     Anderson" (full name) was enough or something more was needed.
+     Answered that full disclosure is the *stronger* option, not just
+     an acceptable one, for every reason this item names — a reporter,
+     a library, and a sponsor all trust a named person more than
+     initials — and that no photo, bio, or credentials are required
+     beyond the name itself.
+
+     `templates/about.html.j2`'s "written and run by a local parent"
+     line now reads "written and run by Ryan Anderson, a local
+     parent" — kept the existing "local parent" framing intact rather
+     than replacing it, since `test_render_about_page_states_who_why_and_how`
+     already asserts that substring and the framing itself (item
+     77's press-pitch angle) still holds with a name attached.
+
+     Also strengthened the structured-data half of the same fix while
+     in the file: `build_organization_json_ld()` (item 99) previously
+     emitted a deliberately bare `Organization` node — "no `founder`"
+     was itself a documented decision, made because no real name was
+     known and inventing one would break this file's own never-
+     fabricate-a-fact discipline. That constraint no longer holds, so
+     added `"founder": {"@type": "Person", "name": "Ryan Anderson"}` —
+     the same entity-authority signal item 99's own docstring says AI
+     citation runs on, now backed by a real fact instead of withheld
+     for lack of one.
+
+     Caught and fixed a second, unrelated staleness bug in the same
+     file while there: the About page's region list still said
+     "Mount Prospect (60056), Arlington Heights (60005), Des Plaines
+     (60016), and Palatine (60067)" — four towns, missing Wheeling
+     entirely, the exact same class of bug the forty-fourth pass's own
+     `SPONSOR_KIT.md`/config fixes caught two hours earlier, just in a
+     file that pass hadn't checked. Now lists all five.
+
+     Verified against a real local build: `docs/about/index.html`
+     shows "Ryan Anderson" in both the visible prose and the
+     `founder` JSON-LD, and the region list names all five towns. 471
+     tests pass (one existing test extended with a `founder`
+     assertion, no new test needed since "local parent" stayed a
+     substring of the updated line).
+
+     What's still open, named in this item's own text and unaffected
+     by today's fix: items 152's outreach emails and item 125's press
+     pitch (Daily Herald first) are real actions only Ryan can take by
+     sending them — this item removed the one blocker that stood in
+     front of both, not the sending itself.
 
 131. ✅ **State plainly that nothing here is written by a machine — it is
      the one claim competitors cannot copy.** Checked on the live build:
