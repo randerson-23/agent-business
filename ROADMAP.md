@@ -315,6 +315,20 @@ Buttondown's documented API shape, so this is now docs-verified but
 still not live-API-verified; a failed run surfaces loudly by design, so
 check either way.
 
+**A real surprise surfaced 2026-09-22 (item 187), worth a 30-second
+check:** manually ran the new metrics backfill
+(`backfill-send-metrics.yml`) to verify it against the live Buttondown
+API, and the real response for the one send this repo has made came
+back `recipients: 0, opens: 0, clicks: 0` — the API call itself
+succeeded; this isn't a script bug. Two real possibilities, and only
+Ryan can tell which from inside the account: either Buttondown's
+**Tracking** setting is off (their own docs say a disabled-tracking
+account still returns a successful, empty response — exactly this
+shape), or the list genuinely has zero confirmed subscribers, which
+would mean the "the owner is the only subscriber" framing used
+throughout this file's earlier passes was never actually true. Worth
+checking before quoting any number from this pipeline to a sponsor.
+
 Update, same day (item 172): that Wednesday run will very likely fail
 by design, not by accident. The live build this pass produced counted
 only 1 dated event across all five regions — well under the floor
