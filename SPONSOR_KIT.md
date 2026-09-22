@@ -28,19 +28,22 @@ and specific beats generic ad copy.
   shows outperforms banner ads for trust and action.
 - **Hyperlocal, opt-in audience.** Every reader is specifically looking at
   the region you sponsor. No wasted impressions.
-- **Affluent, family-dense ZIPs.** The four original ZIPs run roughly
-  $98K-$117K median household income (ACS 2024 5-year estimates, via
-  Data USA/Census Reporter — see `BUSINESS_PLAN.md`'s reconciliation
-  note, ROADMAP.md item 167) — 60056 (Mount Prospect) ~$102K, 60005
-  (Arlington Heights) ~$117K, 60016 (Des Plaines) ~$98K, and 60067
-  (Palatine) ~$98K median (the previous ~$125K here conflated *average*
-  household income, which skews well above the median in any town with
-  a wide income spread, with the *median* figure the rest of this line
-  uses) — every one above the national median ($83,730, Census Bureau,
-  2024), with a strong skew toward married households with kids — a
-  good match for family services, healthcare, home services, and local
-  retail. Wheeling (60090, item 166) isn't in this range yet — its own
-  figure hasn't been sourced and reconciled the same way.
+- **Affluent, family-dense ZIPs.** The five ZIPs run roughly $85K-$117K
+  median household income (ACS 2024 5-year estimates, via Data USA/
+  Census Reporter — see `BUSINESS_PLAN.md`'s reconciliation note,
+  ROADMAP.md item 167) — 60056 (Mount Prospect) ~$102K, 60005
+  (Arlington Heights) ~$117K, 60016 (Des Plaines) ~$98K, 60067
+  (Palatine) ~$98K, and 60090 (Wheeling) ~$85K median (the previous
+  ~$125K here conflated *average* household income, which skews well
+  above the median in any town with a wide income spread, with the
+  *median* figure the rest of this line uses) — every one above the
+  national median ($83,730, Census Bureau, 2024), with a strong skew
+  toward married households with kids — a good match for family
+  services, healthcare, home services, and local retail. Wheeling sits
+  closest to that national line of the five, sourced 2026-09-22
+  (incomebyzipcode.com's ZIP-level $85,355 and Data USA's village-level
+  $85,205 agree closely, the same ZIP-vs-village pattern item 167
+  already found and reconciled for Mount Prospect).
 - **One business per region, at any tier.** No banner-blindness, no
   competing ads on the page — just the one recommendation, whether it's
   held for a week or a year.
@@ -70,7 +73,7 @@ those, audience is the honest gate:
 **Annual Partner and Neighborhood Authority are almost entirely *site*
 products**, and the site's numbers are real today, not "coming soon":
 a permanent directory listing, a seasonal-guide spotlight, and a live
-SEO backlink are all delivered by the indexed, four-region site itself
+SEO backlink are all delivered by the indexed, five-region site itself
 — verified in Google Search Console, sitemap submitted — not by the
 email list. None of that improves much at 10,000 subscribers, and none
 of it is blocked by having zero.
@@ -131,7 +134,7 @@ argument for what the price buys instead of a cheaper, noisier ad slot.
 
 ## Isn't this just Patch?
 
-Fair question — Patch already covers all four of these towns, and
+Fair question — Patch already covers all five of these towns, and
 PatchAM can auto-generate a local newsletter for almost any US ZIP on
 demand. The honest answer isn't "no one else does this," it's "Patch
 doesn't do *this*: PatchAM is built from aggregation, generic automated
@@ -175,11 +178,11 @@ towns — not a case of one replacing the other.
 ## Who this is for
 
 Local, independently owned businesses serving families in Mount Prospect,
-Arlington Heights, Des Plaines, or Palatine: pediatric/family dentists,
-tutoring and enrichment programs, ice cream and bakery shops, real estate
-agents, home services (HVAC, landscaping), pediatricians and family
-medicine, kids' activity providers (gymnastics, swim, martial arts),
-local restaurants.
+Arlington Heights, Des Plaines, Palatine, or Wheeling: pediatric/family
+dentists, tutoring and enrichment programs, ice cream and bakery shops,
+real estate agents, home services (HVAC, landscaping), pediatricians and
+family medicine, kids' activity providers (gymnastics, swim, martial
+arts), local restaurants.
 
 ## How it works
 
