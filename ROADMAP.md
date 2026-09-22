@@ -299,6 +299,16 @@ needed because none of these compete with anything above:**
   digest is the named fallback) — the owner currently gets zero
   deliverability reporting; a dashboard toggle, not a hand-written DNS
   record, best done before item 77's press-driven volume spike.
+- Open **mountprospect.org/community/hidden-page/new-advanced-components/list-all-rss-feed**
+  (item 179) and paste back the actual "Village News" feed URL it
+  links to — confirmed real and live by WebSearch, but the click-
+  through URL itself isn't something this loop can reach from its own
+  blocked sandbox (confirmed directly: both `requests` and this
+  sandbox's own Playwright/Chromium hit the same tunnel block against
+  external domains, not just the `requests`-only limitation earlier
+  passes assumed). Thirty seconds in a browser; unblocks a real fix
+  for Mount Prospect's dead Village News source without guessing a
+  feed-URL pattern.
 
 **Time-boxed, not a decision:** check Buttondown's dashboard on
 2026-09-23 (send-newsletter.yml's cron fires ~5:37pm Chicago Wednesday
@@ -8840,6 +8850,44 @@ last three passes assumed.**
      to the build loop** — it restores the flagship region's civic tier
      and it directly feeds item 178's fix, since a raised cap only helps
      sources that return anything at all.
+
+     🟡 **Partly investigated 2026-09-22 — first question answered, second
+     one needs real network access this loop doesn't have.** WebSearch
+     (real, not guessed) confirms both `mountprospect.org/services/news`
+     and `mountprospect.org/services/calendar` are still the correct,
+     live, current URLs — the same two pages surface as the top hits for
+     a `site:` search of exactly those paths, and the domain is actively
+     publishing (an indexed "Mount Prospect Update - April 10, 2026" news
+     story, live Human Services calendar events). So the 403 isn't a
+     stale URL; whatever's blocking this fetcher's User-Agent is blocking
+     it on a page that demonstrably still exists and still updates.
+
+     A genuinely promising lead surfaced in the same search: the Village
+     publishes real, categorized RSS feeds from a
+     `.../list-all-rss-feed` page, "Village News" named as one of the
+     categories - a first-class feed this codebase's existing, already-
+     reliable `fetch_rss()` could use directly (the same fetcher already
+     pulls the Library's RSS with zero errors), rather than continuing to
+     fight a 403'd HTML scrape. That would plausibly work even if the
+     block is User-Agent/bot-detection on the HTML page specifically,
+     since a feed URL is often served from different infrastructure.
+
+     Tried to get the actual feed URL directly rather than stopping at
+     "a feed page exists": confirmed, by testing it directly rather than
+     assuming from an earlier pass's characterization, that this
+     sandbox's blocked network isn't a `requests`-library-specific
+     limitation — the sandbox's own pre-installed Playwright/Chromium
+     hit the identical `net::ERR_TUNNEL_CONNECTION_FAILED` against the
+     same external domain. Neither tool available to this loop can reach
+     that page's real DOM to read off the click-through feed URL, and
+     guessing a Vision Internet RSS URL pattern would be exactly the
+     kind of invented fix this file's own discipline rules out. Added a
+     30-second "open this page, paste the feed URL" ask to the "Needs
+     Ryan" small/no-decision bucket rather than blocking on it silently
+     or guessing past it - the smallest, most mechanical item there,
+     not a judgment call. The Village Calendar side (meetings/events,
+     as distinct from News) is worth checking the same listing page for
+     once that URL comes back, in case it's also a named category there.
 
 #### P2 (new)
 
