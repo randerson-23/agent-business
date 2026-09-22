@@ -366,6 +366,7 @@ search, which item 22's whole AI-citation effort depends on.
 | **Macaroni KID** | ~500 hyperlocal family newsletters + sites, publisher-run, sponsor-funded | Seasonal *guides* (summer camps, "kids eat free", Halloween) as the flagship monetizable product; business directory; weekly + monthly calendar views |
 | **6AM City** | 400+ local newsletters, $9.5M rev, profitable in 2026 | **Self-service ad platform** — they built it because low-average-order-value local sponsors don't justify sales time. Directly targets this business's #1 constraint |
 | **Axios Local** | Local newsletter network, local-advertiser funded | Newsletter-first: the list is the asset, the site is the funnel |
+| **`data/source_health.json`, read properly** | 16 sources live, **4 returning zero — all four of them Mount Prospect's village layer**. And every healthy source returns **exactly 6, every single build**, because `fetchers.py` sets `MAX_ITEMS_PER_SOURCE = 6` | The thin weekend is a fetch-time cap, not quiet towns (items 178/179) |
 | **The redesign, inspected** | Site and email both now run **grey `#f3f2f2` with a red accent** (`#ec3013`/`#ae1800`) and Archivo — consistently, in both artifacts. But `DESIGN_PRINCIPLES.md` still says **"a beige/green palette"** and that it was written "as a **defence**, not that anything needs redesigning" | The guard document now contradicts the site it guards (item 176) |
 | **The live pages, re-inspected** | Palatine's **entire** dated inventory is last weekend (Sep 18–20 Oktoberfest, all past). Arlington Heights carries **"Tween LitCrate Sign Up" from Sep 1** and "Baby Time" from Sep 2. Several entries appear **twice** | Past events are being served as current content, on the site whose claim is freshness (items 171/173) |
 | **The site's own live output** (inspected, not researched) | The committed build is stamped `2026-09-21T01:54Z` — Sunday evening in Chicago — and still headlines **"Sep 18–20"** as *this weekend*. It is now Monday there | The freshness claim items 162/163 rest on breaks every Monday morning (item 168) |
@@ -8678,6 +8679,108 @@ about to stop Wednesday's send.**
      second region gets one, or once the farmers market's season ends
      and its own fallback behavior can be checked against reality
      instead of assumed.
+
+#### Research pass 2026-09-22 (forty-second pass)
+
+Item 175 said the feeds were the problem and asked for root-causing. This
+pass did it, against `data/source_health.json` and `scripts/fetchers.py`
+rather than by inference. **The cause is found and it is not what the
+last three passes assumed.**
+
+| Angle | Finding | Consequence |
+|---|---|---|
+| **Volume** | 16 of 20 sources are live, returning roughly **75 items** between them. The towns are not quiet | The thin weekend was never a supply problem (item 178) |
+| **The cap** | `scripts/fetchers.py:38` — **`MAX_ITEMS_PER_SOURCE = 6`**. Every healthy source returns exactly 6, on every recorded build | A library publishing 40 events a month contributes 6. The weekend window is starved by truncation (item 178) |
+| **The dead four** | Zero-returning sources are **Village of Mount Prospect News, Village of Mount Prospect Calendar, Downtown Mount Prospect, Experience Mount Prospect** — every one of them Mount Prospect, every one of them the village layer | The home region has lost its entire civic tier and is running on library + parks + schools (item 179) |
+
+#### P1 (new)
+
+178. **`MAX_ITEMS_PER_SOURCE = 6` is why the weekend is empty — fetch by
+     horizon, not by count.** Every live source in the health file
+     returns exactly 6 items, on every build recorded. That is not a
+     coincidence about twenty different civic calendars; it is
+     `scripts/fetchers.py` truncating each feed to its first six entries
+     before anything else happens.
+
+     The consequence falls entirely on the weekend view, and it explains
+     the whole puzzle of the last three passes. A public library
+     publishing forty programmes across the next month contributes six of
+     them. A park district the same. So the site holds ~75 items spread
+     over several weeks, which makes the region pages look reasonably
+     full — and leaves the odds that three or more land on **one
+     specific Friday-to-Sunday** poor. Items 171–175 read that as broken
+     sources or quiet towns. It was neither.
+
+     The design is backwards: it truncates by count and then filters by
+     date, when it should gather across a date horizon and let the window
+     select. Concretely — **raise the cap substantially and bound by time
+     instead**: take everything a feed offers within, say, the next 60
+     days, with a generous per-source ceiling (a few hundred) purely as a
+     runaway guard rather than as the operative limit. `FEED_MAX_ITEMS =
+     50` already exists in `build_digest.py` for the RSS output, so a
+     larger number is not a new idea in this codebase, just one that
+     never reached the fetchers.
+
+     Two things to keep while changing it. The **per-source cap should
+     stay non-null** so one pathological feed cannot dominate a region
+     page; and the region page's own display limits should be checked
+     afterwards, because they were tuned against six-item sources and may
+     now need their own attention. Worth a test that asserts a fetcher
+     given 50 well-formed dated items returns substantially more than six.
+
+179. **Mount Prospect has lost its entire village layer, and it is the
+     only region that has.** The four zero-returning sources are not
+     scattered: they are **Village of Mount Prospect — News**, **Village
+     of Mount Prospect — Calendar**, **Downtown Mount Prospect** and
+     **Experience Mount Prospect**. Every other region's sources are
+     live. The home region — the one `BUSINESS_PLAN.md` is written about,
+     the one the domain and the brand were chosen for — is running on its
+     library, park district and school district alone.
+
+     That is worse than it looks in the counts, because the village layer
+     is the *civic* half of the moat. Item 124's differentiation against
+     Patch rests on aggregating "the village, the public library and the
+     park district"; item 131's provenance claim names them; item 152's
+     link-back play targets them. One of those three is currently absent
+     for the flagship town, and Downtown Mount Prospect is the source
+     that carries Oktoberfest — the single biggest event the site has
+     ever listed.
+
+     Item 161 already diagnosed two of the four (Experience Mount
+     Prospect 403s; Downtown Mount Prospect returns 200 with zero
+     matches) and proposed asking rather than working around. The two
+     Village feeds are new here and need the same treatment: check
+     whether the URL still resolves, whether the selectors still match,
+     and whether the village has moved its calendar to a platform with a
+     published feed. **This is the single most valuable repair available
+     to the build loop** — it restores the flagship region's civic tier
+     and it directly feeds item 178's fix, since a raised cap only helps
+     sources that return anything at all.
+
+#### P2 (new)
+
+180. **A source pinned at exactly the cap is a diagnostic nobody is
+     reading.** `data/source_health.json` shows sixteen sources with
+     perfectly flat histories — `[6, 6, 6, 6, 6]` — and four flat at
+     zero. Item 51 built this file to distinguish a transport failure
+     from a genuine empty week, which it does well. It has no concept of
+     the third state now known to matter: **truncation**.
+
+     A feed returning exactly `MAX_ITEMS_PER_SOURCE` on every single
+     build is almost certainly being cut off, not exhausted. That is a
+     one-line check with real diagnostic value, and it is the signal that
+     would have surfaced item 178 weeks ago instead of three passes of
+     inference: flag any source whose last N counts all equal the cap.
+
+     Worth pairing with the inverse, which item 175 asked for and is
+     still worth having after 178 lands: treat a source returning zero
+     for three consecutive builds as **broken rather than quiet**. The
+     four dead Mount Prospect sources have flat-zero histories going back
+     as far as the file records, and nothing has ever said so out loud.
+
+     Both checks belong in the build, failing the job the way item 51's
+     existing regression check already does — the mechanism exists, it
+     simply does not know about these two cases.
 
 ## Working agreements for autonomous iteration
 
