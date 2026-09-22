@@ -9370,6 +9370,41 @@ what the totals hide.
      item's scoped "add a footer line," and deserves its own pass
      rather than riding along on this one.
 
+     🟢 **Follow-up shipped, 2026-09-22.** Measured the buried-form
+     claim precisely rather than trusting the earlier line-number
+     estimate: this sandbox's pre-installed Playwright/Chromium can
+     render a local `file://` page and screenshot it without any
+     network access (confirmed directly - the earlier assumption that
+     this loop had no way to visually verify a design change was
+     wrong). Loaded the real, current `docs/mount-prospect-60056/index.html`
+     at a 390px mobile viewport: the page is 74,739px tall and the
+     newsletter form starts at y=74,231 - **the last 0.7% of the
+     page**, not just "below the fold."
+
+     Fixed by folding one plain link into the *existing*
+     `.calendar-subscribe` box instead of adding a new element or
+     duplicating the full form: `📬 Get it by email instead`, next to
+     "Download .ics", linking straight to the same
+     `https://buttondown.com/<username>` hosted page the email footer
+     (this item, above) already uses - not an embedded `<form>`, same
+     reasoning as before. Gated on the same `newsletter.configured`
+     flag as the rest of the feature. This keeps the "one dominant CTA
+     per screen" principle (item 157) intact: it's the *same* box,
+     not a second competing one, so nothing new demands attention on
+     an already-busy hero area (nav, calendar-subscribe, freshness
+     note, map, and weather all already sit above the fold).
+
+     Verified visually, not just by content-assertion: screenshotted
+     the real generated Mount Prospect region page at mobile (390px),
+     narrow mobile (375px, iPhone SE), and desktop (1280px) widths, in
+     both light and dark mode. The new link wraps naturally onto its
+     own line on mobile without adding vertical space elsewhere, sits
+     inline on desktop, and uses the box's existing link styling in
+     both themes - no layout shift, no clashing. Confirmed live in the
+     other four regions' generated pages too (all five contain the new
+     link with `enabled: true`). Added 2 tests (link present when
+     configured, absent when not); 465 total pass.
+
 #### P2 (new)
 
 184. **Publish a subscribable per-region calendar feed — the one

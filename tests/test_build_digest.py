@@ -1755,6 +1755,30 @@ def test_render_region_page_shows_newsletter_form_when_configured():
     assert "Signup coming soon" not in html
 
 
+def test_render_region_page_calendar_box_includes_email_link_when_configured():
+    # ROADMAP.md item 183's own follow-up: the bottom-of-page signup form
+    # sits 99%+ of the way down a real region page, unreachable by a
+    # reader who doesn't scroll through every event first - one plain
+    # link folded into the existing above-the-fold calendar-subscribe
+    # box instead.
+    newsletter = {"configured": True, "headline": "Get it in your inbox", "detail": "Weekly.", "buttondown_username": "planner"}
+    html = build_digest.render_region_page(
+        {"region": REGION}, [], {"title": "", "detail": "", "url": ""}, [], datetime.now(timezone.utc),
+        newsletter=newsletter,
+    )
+    assert "Get it by email instead" in html
+    assert 'href="https://buttondown.com/planner"' in html
+
+
+def test_render_region_page_calendar_box_omits_email_link_when_unconfigured():
+    newsletter = {"configured": False, "headline": "Get it in your inbox", "detail": "Weekly.", "buttondown_username": ""}
+    html = build_digest.render_region_page(
+        {"region": REGION}, [], {"title": "", "detail": "", "url": ""}, [], datetime.now(timezone.utc),
+        newsletter=newsletter,
+    )
+    assert "Get it by email instead" not in html
+
+
 def test_region_local_date_uses_region_timezone():
     # noon UTC is still the same calendar day in America/Chicago (UTC-5/6)
     now_utc = datetime(2026, 8, 27, 12, 0, tzinfo=timezone.utc)
