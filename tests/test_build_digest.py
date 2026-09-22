@@ -2867,6 +2867,26 @@ def test_render_email_digest_asks_for_a_reply_in_the_footer():
     assert "Hit reply" in html
 
 
+def test_render_email_digest_shows_subscribe_link_when_newsletter_configured():
+    # ROADMAP.md item 183: a forwarded email had nowhere for a new
+    # reader to click to join - one quiet subscribe link, gated the
+    # same way the rest of the newsletter feature is (item 34).
+    region = {"name": "Mount Prospect"}
+    newsletter = {"configured": True, "buttondown_username": "withinten"}
+    html = build_digest.render_email_digest(
+        region, [], [], "https://x/", "Aug 29–30", None, newsletter
+    )
+    assert "https://buttondown.com/withinten" in html
+    assert "Forwarded this?" in html
+
+
+def test_render_email_digest_omits_subscribe_link_when_newsletter_unconfigured():
+    region = {"name": "Mount Prospect"}
+    html = build_digest.render_email_digest(region, [], [], "https://x/", "Aug 29–30", None, None)
+    assert "Forwarded this?" not in html
+    assert "buttondown.com" not in html
+
+
 def test_render_email_digest_body_type_meets_the_16px_mobile_floor():
     # ROADMAP.md Phase 11 #97: 55%+ of opens are mobile and the stated
     # floor is 16px, but event titles shipped at 15px and dates/details
@@ -3061,6 +3081,41 @@ def test_render_combined_email_digest_asks_for_a_reply_in_the_footer():
     ]
     html = build_digest.render_combined_email_digest(sections, "Sep 18–20", datetime.now(timezone.utc))
     assert "Hit reply" in html
+
+
+def test_render_combined_email_digest_shows_subscribe_link_when_newsletter_configured():
+    # ROADMAP.md item 183: same forward-dead-end fix as the per-region
+    # email, applied to the combined issue.
+    sections = [
+        {
+            "region_name": "Mount Prospect",
+            "region_url": "https://x/mount-prospect-60056/",
+            "weekend_events": [],
+            "evergreen": [],
+            "sponsor": None,
+        }
+    ]
+    newsletter = {"configured": True, "buttondown_username": "withinten"}
+    html = build_digest.render_combined_email_digest(
+        sections, "Sep 18–20", datetime.now(timezone.utc), newsletter
+    )
+    assert "https://buttondown.com/withinten" in html
+    assert "Forwarded this?" in html
+
+
+def test_render_combined_email_digest_omits_subscribe_link_when_newsletter_unconfigured():
+    sections = [
+        {
+            "region_name": "Mount Prospect",
+            "region_url": "https://x/mount-prospect-60056/",
+            "weekend_events": [],
+            "evergreen": [],
+            "sponsor": None,
+        }
+    ]
+    html = build_digest.render_combined_email_digest(sections, "Sep 18–20", datetime.now(timezone.utc))
+    assert "Forwarded this?" not in html
+    assert "buttondown.com" not in html
 
 
 def test_render_combined_email_digest_groups_informational_events_per_region():
