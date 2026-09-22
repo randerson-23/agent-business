@@ -61,6 +61,15 @@ SOURCE_HEALTH_HISTORY_LEN = 10
 TRANSPORT_FAILURE_PATH = ROOT / "data" / "source_transport_failures.json"
 CONSECUTIVE_TRANSPORT_FAILURE_ALERT_THRESHOLD = 3
 
+# ROADMAP.md item 185 (forty-fourth research pass): the streak above
+# tells you a source is chronically failing transport but not *how* -
+# "403 on every request" and "DNS does not resolve" currently record
+# identically. A separate file, not a reworked source_transport_failures.json:
+# that file already has real, committed history under its current flat
+# {key: streak_int} shape, and this is an addition, not a schema
+# migration of something another consumer already depends on.
+TRANSPORT_FAILURE_DETAIL_PATH = ROOT / "data" / "source_transport_failure_details.json"
+
 # ROADMAP.md item 172: a small, committed JSON file (same pattern as
 # source_health.json above) recording how many dated weekend events each
 # region contributed to the build just finished - the signal
@@ -577,6 +586,38 @@ def save_transport_failures(failures: dict) -> None:
     )
 
 
+def load_transport_failure_details() -> dict:
+    """Load TRANSPORT_FAILURE_DETAIL_PATH (ROADMAP.md item 185) - same
+    load-or-fresh-start pattern as load_transport_failures().
+    """
+    if TRANSPORT_FAILURE_DETAIL_PATH.exists():
+        try:
+            return json.loads(TRANSPORT_FAILURE_DETAIL_PATH.read_text(encoding="utf-8"))
+        except (json.JSONDecodeError, OSError) as exc:
+            logger.warning("Could not read %s, starting fresh: %s", TRANSPORT_FAILURE_DETAIL_PATH, exc)
+    return {}
+
+
+def update_transport_failure_details(details: dict, source_key: str, failure_info: dict | None) -> None:
+    """Record the most recent transport failure's exception class/status
+    code for `source_key` (ROADMAP.md item 185), or clear the entry once
+    the source succeeds again - a stale "last failed with a 403" entry
+    sitting next to a source that's currently healthy would mislead the
+    same way item 185's own stale-health-count finding did.
+    """
+    if failure_info:
+        details[source_key] = failure_info
+    else:
+        details.pop(source_key, None)
+
+
+def save_transport_failure_details(details: dict) -> None:
+    TRANSPORT_FAILURE_DETAIL_PATH.parent.mkdir(parents=True, exist_ok=True)
+    TRANSPORT_FAILURE_DETAIL_PATH.write_text(
+        json.dumps(details, indent=2, sort_keys=True) + "\n", encoding="utf-8"
+    )
+
+
 def detect_chronic_transport_failures(
     failures: dict, threshold: int = CONSECUTIVE_TRANSPORT_FAILURE_ALERT_THRESHOLD
 ) -> list[str]:
@@ -685,7 +726,10 @@ def detect_zero_weekend_regions(history: dict, threshold: int = ZERO_WEEKEND_ALE
 
 
 def fetch_region_sections(
-    region_cfg: dict, health: dict | None = None, transport_failures: dict | None = None
+    region_cfg: dict,
+    health: dict | None = None,
+    transport_failures: dict | None = None,
+    transport_failure_details: dict | None = None,
 ) -> list[dict]:
     region_id = region_cfg["region"]["id"]
     region_name = region_cfg["region"]["name"]
@@ -699,10 +743,12 @@ def fetch_region_sections(
             raw_items = []
         else:
             logger.info("Fetching %s (%s)", source["name"], source["type"])
+            failure_info: dict = {}
             raw_items = fetcher(
                 source["url"],
                 keywords=source.get("keywords"),
                 detail_link_pattern=source.get("detail_link_pattern"),
+                failure_info=failure_info,
             )
             # A fetcher returns None on a transport/parse failure (network
             # error, non-2xx status) versus a real [] (reached the page,
@@ -727,6 +773,12 @@ def fetch_region_sections(
             # every success too, to reset back to 0.
             if transport_failures is not None:
                 update_transport_failures(transport_failures, source_key, transport_failed)
+            # ROADMAP.md item 185: the *kind* of transport failure, not
+            # just that one happened - failure_info is only ever
+            # populated when transport_failed is true (fetchers.py only
+            # fills it in the except branch), so no extra guard needed.
+            if transport_failure_details is not None:
+                update_transport_failure_details(transport_failure_details, source_key, failure_info)
 
         events = []
         for item in raw_items:
@@ -2729,6 +2781,7 @@ def main() -> None:
 
     source_health = load_source_health()
     transport_failures = load_transport_failures()
+    transport_failure_details = load_transport_failure_details()
     weekend_history = load_weekend_history()
     # Static config (id/name/lat/lon), independent of fetch results, so
     # it's safe to build once before the fetch loop below - every
@@ -2782,7 +2835,12 @@ def main() -> None:
             )
 
         local_today = region_local_date(region, now)
-        blocks = fetch_region_sections(region_cfg, health=source_health, transport_failures=transport_failures)
+        blocks = fetch_region_sections(
+            region_cfg,
+            health=source_health,
+            transport_failures=transport_failures,
+            transport_failure_details=transport_failure_details,
+        )
         annual_block = prepare_annual_events(region_cfg, now)
         if annual_block:
             # First, not appended: curated + dated is the highest-
@@ -3247,6 +3305,7 @@ def main() -> None:
 
     save_source_health(source_health)
     save_transport_failures(transport_failures)
+    save_transport_failure_details(transport_failure_details)
     save_weekend_history(weekend_history)
     # ROADMAP.md item 181 (forty-third research pass): logged, not
     # build-failing like the checks below - real, current
@@ -3278,9 +3337,23 @@ def main() -> None:
         # this file to discover it.
         stale_history = source_health.get(key)
         stale_note = f" (source_health.json still shows a stale {stale_history[-1]} from before the failures began)" if stale_history else ""
+        # ROADMAP.md item 185's own "what to build" list, second bullet:
+        # the *kind* of failure, not just that one is happening - "403 on
+        # every request" and "DNS does not resolve" used to record
+        # identically. Absent (empty dict) reads as "unknown" rather than
+        # a crash - e.g. an existing data/source_transport_failures.json
+        # entry from before this detail file existed.
+        detail = transport_failure_details.get(key) or {}
+        detail_note = (
+            f" Last failure: {detail['exception_class']}"
+            + (f" (HTTP {detail['status_code']})" if detail.get("status_code") else "")
+            + "."
+            if detail.get("exception_class")
+            else ""
+        )
         logger.warning(
-            "Source chronic transport failure: %s has failed transport on %d+ consecutive builds.%s",
-            key, transport_failures[key], stale_note,
+            "Source chronic transport failure: %s has failed transport on %d+ consecutive builds.%s%s",
+            key, transport_failures[key], stale_note, detail_note,
         )
 
     # ROADMAP.md item 186 (forty-fourth research pass): non-blocking for
