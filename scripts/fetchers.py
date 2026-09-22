@@ -35,7 +35,29 @@ logger = logging.getLogger("fetchers")
 # site does.
 REQUEST_TIMEOUT = 15
 USER_AGENT = "WithinTen/1.0 (+https://withintenmiles.com/)"
-MAX_ITEMS_PER_SOURCE = 6
+# ROADMAP.md item 178 (forty-second research pass): was 6, and every
+# live source in data/source_health.json's real trailing history
+# returned exactly 6 on every recorded build - not a coincidence about
+# twenty different civic calendars, but this constant truncating each
+# feed to its first six entries before build_digest.py's own date-window
+# filtering (weekend_dates/filter_events_by_dates, filter_past_events)
+# ever runs. A library publishing forty programmes a month contributed
+# six of them; the weekend window was starved by truncation, not by
+# quiet towns or broken sources.
+#
+# The fix this item asked for: gather across a date horizon and let the
+# window select, rather than truncating by count first. fetch_ics
+# already filters to upcoming-only (date >= today) before this limit
+# ever applies, so raising it there directly implements "the window
+# selects." fetch_rss and fetch_html_events have no per-item date
+# ordering to exploit the same way, so this cap is their only real
+# bound - raised here to the "a few hundred" runaway-guard size item
+# 178 asked for (matching the existing FEED_MAX_ITEMS = 50 precedent
+# for this file's own RSS *output*, sized up since 50 was tuned for a
+# site-wide feed, not one civic source) rather than removed outright,
+# so one pathological feed still can't dominate a region page or blow
+# up build time.
+MAX_ITEMS_PER_SOURCE = 200
 
 
 def _unescape_ics_text(value: str) -> str:

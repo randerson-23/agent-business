@@ -8728,6 +8728,44 @@ last three passes assumed.**
      now need their own attention. Worth a test that asserts a fetcher
      given 50 well-formed dated items returns substantially more than six.
 
+     🟢 **Shipped 2026-09-22.** Raised `MAX_ITEMS_PER_SOURCE` in
+     `scripts/fetchers.py` from 6 to 200 — sized to the "a few hundred"
+     runaway-guard this item asked for, not removed outright, so one
+     pathological feed still can't dominate a region page or blow up
+     build time. `fetch_ics` already filters to upcoming-only before
+     this cap ever applies, so raising it there directly implements
+     "gather across a date horizon and let the window select" with no
+     other logic change; `fetch_rss` and `fetch_html_events` have no
+     per-item date ordering to exploit the same way, so the raised cap
+     is their only real fix, and build_digest.py's own existing
+     downstream filters (`filter_past_events`,
+     `filter_events_by_dates`/`weekend_dates`) are what actually select
+     the weekend window from the larger pool now flowing through.
+
+     Checked the region page's own display limits before assuming they
+     needed the same attention this item flagged: none do.
+     `templates/combined_email_digest.html.j2`'s `[:4]` and
+     `templates/email_digest.html.j2`'s `[:6]` (also mirrored in
+     `build_weekly_summary_txt`'s own `[:6]`) all slice
+     *already-weekend-filtered* events for a short email/social post,
+     not raw fetcher output — a real weekend won't have dozens of
+     events per region regardless of this fix, so these were never
+     tuned against the six-item cap and don't need raising. No other
+     `[:N]` slice exists on the main region page.
+
+     Added the two tests this item's own write-up asked for
+     (`test_fetch_rss_does_not_truncate_a_well_stocked_feed_to_six`,
+     `test_fetch_ics_does_not_truncate_a_well_stocked_feed_to_six`) - a
+     50-item feed now returns 50, not 6. 443 tests pass. This sandbox's
+     network is fully blocked, so a local rebuild can't demonstrate the
+     real per-region item-count increase directly (every source still
+     fetches 0 here); that confirmation has to come from the next real
+     `build-digest.yml` run's own log, same discipline as every other
+     fetcher fix this session. Item 179 (Mount Prospect's dead village
+     layer) is a separate, real-URL-diagnosis task rather than a code
+     change and is left for a following pass rather than folded into
+     this one.
+
 179. **Mount Prospect has lost its entire village layer, and it is the
      only region that has.** The four zero-returning sources are not
      scattered: they are **Village of Mount Prospect — News**, **Village

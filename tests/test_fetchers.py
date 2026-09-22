@@ -136,11 +136,46 @@ def test_fetch_rss_fails_soft_on_bad_xml(mock_get):
 
 
 @patch("fetchers.requests.get")
+def test_fetch_rss_does_not_truncate_a_well_stocked_feed_to_six(mock_get):
+    # ROADMAP.md item 178 (forty-second research pass): every live source
+    # in data/source_health.json's real trailing history returned exactly
+    # 6 items on every recorded build - MAX_ITEMS_PER_SOURCE was cutting
+    # each feed off before build_digest.py's own date-window filtering
+    # ever got a chance to select from it. A feed with 50 real entries
+    # should come back with (comfortably) more than the old cap, per the
+    # item's own suggested test.
+    items_xml = "".join(
+        f"<item><title>Event {i}</title><link>https://example.org/{i}</link></item>"
+        for i in range(50)
+    )
+    rss = f'<?xml version="1.0"?><rss><channel>{items_xml}</channel></rss>'
+    mock_get.return_value = _mock_response(rss)
+    items = fetch_rss("https://example.org/rss")
+    assert len(items) == 50
+
+
+@patch("fetchers.requests.get")
 def test_fetch_ics_filters_past_events(mock_get):
     mock_get.return_value = _mock_response(SAMPLE_ICS)
     items = fetch_ics("https://example.org/cal.ics")
     assert len(items) == 1
     assert items[0]["title"] == "Storytime at the Park"
+
+
+@patch("fetchers.requests.get")
+def test_fetch_ics_does_not_truncate_a_well_stocked_feed_to_six(mock_get):
+    # Same regression as the RSS version above (item 178) - fetch_ics
+    # already filters to upcoming-only before this cap applies, so
+    # raising it directly implements "gather across a date horizon and
+    # let the window select" with no other logic change needed here.
+    events = "".join(
+        f"BEGIN:VEVENT\nSUMMARY:Event {i}\nDTSTART:20990901T{i % 24:02d}0000Z\nEND:VEVENT\n"
+        for i in range(50)
+    )
+    ics = f"BEGIN:VCALENDAR\n{events}END:VCALENDAR\n"
+    mock_get.return_value = _mock_response(ics)
+    items = fetch_ics("https://example.org/cal.ics")
+    assert len(items) == 50
 
 
 @patch("fetchers.requests.get")
