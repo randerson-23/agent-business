@@ -5034,6 +5034,29 @@ task.
      `is_trick_or_treat_season()`, and in-season/out-of-season link
      presence on both `render_region_page()` and `render_hub_page()`).
 
+     🔴 **Correction, 2026-09-22: this item's own "precisely these four
+     towns" claim was never actually verified and turns out to be
+     wrong.** Checked while fixing an unrelated stale-count bug
+     elsewhere in this file (WebSearch, cross-confirmed with a second,
+     independent query): Chicago Northwest Restaurant Week's real
+     participating towns are **Arlington Heights, Elk Grove Village,
+     Itasca, Rolling Meadows, Roselle, Schaumburg, Streamwood, and Wood
+     Dale**. Of this site's five regions, only **Arlington Heights** is
+     actually on that list — Mount Prospect, Des Plaines, Palatine, and
+     Wheeling are not. The original claim was written when this repo
+     had exactly four regions and appears to have been a "same general
+     area" assumption dressed as a confirmed participant list, the same
+     failure mode item 104 and this item's own later paragraph both
+     warn against, just not caught at the time it was made.
+     `SEASONAL_CALENDAR.md`'s Restaurant Week row is corrected with the
+     same finding. Consequence for whenever this guide gets built: it
+     is at most an Arlington Heights-only seasonal note, not the
+     all-region page this item and `SEASONAL_CALENDAR.md` both assumed
+     — worth re-confirming the town list itself, not just the dates,
+     against chicagonorthwest.com when that pass happens, since a
+     participant roster is exactly the kind of thing that can also
+     change year to year.
+
 #### P3 (new)
 
 113. ✅ **Give `DESIGN_PRINCIPLES.md` a named referent instead of an
