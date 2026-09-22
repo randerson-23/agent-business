@@ -4,7 +4,7 @@
   <title>Within Ten — Upcoming Local Events</title>
   <link>https://withintenmiles.com/</link>
   <description>Upcoming events across every Within Ten region, soonest first - aggregated automatically from village, library, park district and school-district calendars.</description>
-  <lastBuildDate>Tue, 22 Sep 2026 19:54:51 +0000</lastBuildDate>
+  <lastBuildDate>Tue, 22 Sep 2026 20:58:04 +0000</lastBuildDate>
   <item>
     <title>Arlington Heights: Social Worker in the Library</title>
     <link>https://www.ahml.info/scheduling/reservation/218146</link>
@@ -181,6 +181,13 @@ Hoopla or another library app?…</description>
     <guid isPermaLink="true">https://www.ahml.info/scheduling/reservation/224168</guid>
     <description></description>
     <pubDate>Thu, 24 Sep 2026 00:00:00 +0000</pubDate>
+  </item>
+  <item>
+    <title>Arlington Heights: Arlington Heights Park Foundation Golf Classic</title>
+    <link>https://www.ahpd.org/event/arlington-heights-park-foundation-golf-classic/</link>
+    <guid isPermaLink="true">https://www.ahpd.org/event/arlington-heights-park-foundation-golf-classic/</guid>
+    <description>The Arlington Heights Park Foundation welcomes all golfers to join us at Arlington Lakes Golf Club! Join us for a four-person scramble competition for a good…</description>
+    <pubDate>Thu, 24 Sep 2026 09:00:00 +0000</pubDate>
   </item>
   <item>
     <title>Mount Prospect: Baby Storytime</title>
@@ -367,6 +374,13 @@ Cómo reconocer los síntomas de…</description>
     <pubDate>Fri, 25 Sep 2026 17:30:00 +0000</pubDate>
   </item>
   <item>
+    <title>Arlington Heights: Speakeasy at the Museum</title>
+    <link>https://www.ahpd.org/event/speakeasy-at-the-museum/</link>
+    <guid isPermaLink="true">https://www.ahpd.org/event/speakeasy-at-the-museum/</guid>
+    <description>Step back in time to the Roaring Twenties at our exclusive Speakeasy Night! Enjoy two Prohibition Era themed cocktails (alcohol and non-alcohol options…</description>
+    <pubDate>Fri, 25 Sep 2026 19:00:00 +0000</pubDate>
+  </item>
+  <item>
     <title>Wheeling: Rhythm &amp; Blues Line Dance Class</title>
     <link>https://indiantrails.libnet.info/event/16696680</link>
     <guid isPermaLink="true">https://indiantrails.libnet.info/event/16696680</guid>
@@ -382,28 +396,11 @@ Cómo reconocer los síntomas de…</description>
     <pubDate>Sat, 26 Sep 2026 00:00:00 +0000</pubDate>
   </item>
   <item>
-    <title>Mount Prospect: Potty Palooza</title>
-    <link>https://mppl.libnet.info/event/16427602</link>
-    <guid isPermaLink="true">https://mppl.libnet.info/event/16427602</guid>
-    <description>Saturday, September 26 2026 10:00am - 11:00am 
- Ready to start your potty training journey? Let us help make this big step a whole lot more fun!</description>
-    <pubDate>Sat, 26 Sep 2026 10:00:00 +0000</pubDate>
-  </item>
-  <item>
-    <title>Mount Prospect: Beyond the Book Drop</title>
-    <link>https://mppl.libnet.info/event/16687521</link>
-    <guid isPermaLink="true">https://mppl.libnet.info/event/16687521</guid>
-    <description>Saturday, September 26 2026 11:00am - 11:30am 
- Ever wonder what happens after your library materials go through the return slot? Get a behind-the-scenes look…</description>
-    <pubDate>Sat, 26 Sep 2026 11:00:00 +0000</pubDate>
-  </item>
-  <item>
-    <title>Wheeling: Music &amp; Dance Around the Mediterranean</title>
-    <link>https://indiantrails.libnet.info/event/16655149</link>
-    <guid isPermaLink="true">https://indiantrails.libnet.info/event/16655149</guid>
-    <description>Saturday, September 26 2026 2:00pm - 3:00pm 
- Music and dance from around the Eastern Mediterranean, including Türkiye, Egypt, Greece and beyond. R</description>
-    <pubDate>Sat, 26 Sep 2026 14:00:00 +0000</pubDate>
+    <title>Mount Prospect: Fall Frenzy</title>
+    <link>https://www.mppd.org/event/fall-frenzy/</link>
+    <guid isPermaLink="true">https://www.mppd.org/event/fall-frenzy/</guid>
+    <description>Fall Frenzy (Ages 5-10) Celebrate the beauty of the changing season with a burst of creativity! Join us in the Studio for this “Fall Frenzy” workshop, where…</description>
+    <pubDate>Sat, 26 Sep 2026 09:30:00 +0000</pubDate>
   </item>
 </channel>
 </rss>
