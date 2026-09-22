@@ -4,6 +4,11 @@
     "subject": "This weekend across Arlington Heights, Des Plaines, Mount Prospect, and Palatine",
     "buttondown_id": "em_5hgyjgfytf8hws9xxpw6b0fesk",
     "region": "combined",
-    "mode": "send"
+    "mode": "send",
+    "metrics": {
+      "recipients": 0,
+      "opens": 0,
+      "clicks": 0
+    }
   }
 ]
