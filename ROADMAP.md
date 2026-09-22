@@ -10220,6 +10220,47 @@ mechanism, and it is the third possibility neither option covered.**
      Depends on nothing. Pairs with item 190 — 190 detects the empty
      list, 191 is why it is empty.
 
+     🟢 **Shipped, 2026-09-22 — the two in-repo pieces.** Both
+     `templates/region.html.j2` and `templates/hub.html.j2` (the two
+     actual `<form>` embeds; the "hosted Buttondown page" and the
+     "get it by email instead" link both just point at Buttondown's
+     own subscribe page, which this repo has no template for and
+     didn't touch) now:
+
+     - Target a hidden `<iframe name="bd-hidden-frame">` instead of
+       `target="popupwindow"` + `onsubmit="window.open(...)"`. This is
+       plain HTML — a named target works with zero JavaScript, so
+       nothing regresses for a no-JS reader, and nothing pops up or
+       gets blocked for anyone.
+     - Show "We'll send one email to confirm." under the input,
+       always, JS or not — the pre-submit disclosure the research
+       named as the single cheapest intervention.
+     - On submit, a small inline script (matching this file's existing
+       plain-JS/IIFE convention, no framework) swaps the form for an
+       in-page "Almost there — check your email and click the
+       confirmation link." message. No-JS fallback: the form still
+       submits into the hidden iframe silently; the reader keeps the
+       pre-submit disclosure line either way.
+
+     Verified visually, not just by grep: real Playwright
+     screenshots (light and dark, 390px viewport) of a locally built
+     region page, before and after dispatching a real `submit` event
+     on the form, confirmed the message renders and the popup call is
+     gone. 2 new tests (`..._uses_hidden_iframe_not_popup`, one per
+     template) assert `target="bd-hidden-frame"` is present and
+     `popupwindow`/`window.open` are gone — 498 total pass.
+     `check_perf_budget.py` (item 26) still passes (9.7KB peak inline
+     JS against a 12KB budget).
+
+     **Not done, and named rather than silently skipped:** checking
+     Buttondown's own default confirmation email (subject line, CTA,
+     whether it matches item 174's Archivo/red brand) — that lives
+     entirely inside the Buttondown dashboard, so it's a look, not a
+     build; folded into item 190's Needs-Ryan write-up rather than a
+     separate one. Item 190 itself (the pre-send audience guard and
+     the subscriber-count history) is still open — this item only
+     covers the flow half of the 190/191 pair.
+
 192. **Nine chronic failures are two problems: three stale IDs and six
      closed doors.** Item 185 asked for the failure *kind* to be
      recorded rather than just the streak, that shipped, and the
