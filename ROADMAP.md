@@ -9244,6 +9244,42 @@ what the totals hide.
      that is worth building now, since a referral program later needs
      that link to exist anyway.
 
+     🟢 **Shipped 2026-09-22.** Added a gated footer line to both email
+     templates (`templates/email_digest.html.j2` and
+     `templates/combined_email_digest.html.j2`), above the existing
+     item 157 reply CTA: *"Forwarded this? Get your own weekend guide
+     every Thursday →"* linking to Buttondown's own hosted subscribe
+     page (`https://buttondown.com/<username>`) rather than an
+     embedded `<form>` — email clients strip or neuter forms
+     inconsistently, a plain link does not. Gated on
+     `newsletter.configured` (item 34's existing
+     `load_newsletter_config()`), the same on/off switch the rest of
+     the newsletter feature already uses, so an unconfigured install
+     shows neither line nor a link to nothing. Wired `newsletter`
+     through as a new parameter on `render_email_digest()` and
+     `render_combined_email_digest()` — neither function received it
+     before, since nothing in either template had needed it until now.
+
+     Verified against the real, current `config/newsletter.yaml`
+     (`buttondown_username: "andersonryant"`, `configured: True`) with
+     a real local build: `docs/combined-email-send.html` now contains
+     `Forwarded this? ... https://buttondown.com/andersonryant`. 6 new
+     tests (configured/unconfigured × both templates plus the
+     combined-issue case), 463 total pass.
+
+     Checked the region-page half of this item's own scope — whether
+     the signup form sits above the fold — rather than assuming it
+     does: it does not. `templates/region.html.j2`'s form (line ~925)
+     sits after the FAQ section, near the very bottom of a
+     1221-line template whose hero starts at line 713. A neighbour who
+     clicks the new footer link's *region* pages (the ten already in
+     the email) would still have to scroll past the whole page to
+     find where to sign up. Flagging this honestly rather than folding
+     it in here: moving or duplicating the form's position is a real
+     UX change to a page already shipped and stable, wider than this
+     item's scoped "add a footer line," and deserves its own pass
+     rather than riding along on this one.
+
 #### P2 (new)
 
 184. **Publish a subscribable per-region calendar feed — the one

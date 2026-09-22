@@ -2283,6 +2283,7 @@ def render_email_digest(
     region_url: str,
     weekend_date_range: str,
     sponsor: dict | None,
+    newsletter: dict | None = None,
     *,
     preview: bool = False,
 ) -> str:
@@ -2322,6 +2323,7 @@ def render_email_digest(
         weekend_date_range=weekend_date_range,
         sponsor=sponsor,
         subject_line=build_email_subject_line(region, weekend_events),
+        newsletter=newsletter or {"configured": False},
         preview=preview,
     )
 
@@ -2376,7 +2378,7 @@ def _pick_evergreen_highlights(evergreen: list[dict], limit: int) -> list[dict]:
     return (free + rest)[:limit]
 
 
-def render_combined_email_digest(sections: list[dict], weekend_date_range: str, now: datetime, *, preview: bool = False) -> str:
+def render_combined_email_digest(sections: list[dict], weekend_date_range: str, now: datetime, newsletter: dict | None = None, *, preview: bool = False) -> str:
     """The combined, all-regions email (ROADMAP.md Phase 11 #105) - the
     signup form is on every region page, but the automated send (item
     24/31) only ever mailed Mount Prospect's digest, since Buttondown's
@@ -2459,6 +2461,7 @@ def render_combined_email_digest(sections: list[dict], weekend_date_range: str, 
         house_ad=house_ad,
         weekend_date_range=weekend_date_range,
         subject_line=build_combined_email_subject_line(sections),
+        newsletter=newsletter or {"configured": False},
         preview=preview,
     )
 
@@ -2802,7 +2805,8 @@ def main() -> None:
         logger.info("Wrote %s", region_dir / "weekly-summary.txt")
 
         email_digest_args = (
-            region, weekend_events, evergreen, SITE_BASE_URL + region_id + "/", weekend_date_range, sponsor
+            region, weekend_events, evergreen, SITE_BASE_URL + region_id + "/", weekend_date_range, sponsor,
+            newsletter,
         )
         # ROADMAP.md Phase 11 #91: two files, byte-identical except for
         # the annotation row - email-send.html is the one to paste into
@@ -3094,7 +3098,7 @@ def main() -> None:
     # free-plan list has no per-region segmentation to send four separate
     # ones to. Same email-send/email-preview split as the single-region
     # digest (item 91).
-    combined_email_args = (combined_email_sections, hub_weekend_date_range or "", now)
+    combined_email_args = (combined_email_sections, hub_weekend_date_range or "", now, newsletter)
     (OUTPUT_DIR / "combined-email-send.html").write_text(
         render_combined_email_digest(*combined_email_args), encoding="utf-8"
     )
