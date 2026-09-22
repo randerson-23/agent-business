@@ -261,6 +261,20 @@ effort. Now that a real name is attached, `OUTREACH_TEMPLATES.md`'s
    signup form, sponsor CTA, Google's sitemap, a proven live send, and
    now a named byline for the story to actually be about — all work.
 
+   ⚠️ **One of those dependencies is now in doubt (item 190,
+   forty-fifth pass).** "A proven live send" assumes the 2026-09-17
+   send reached someone; item 187's metrics call says it reached
+   **zero recipients**, and item 190 names the likely mechanism —
+   Buttondown enforces double opt-in, an unconfirmed address is not a
+   subscriber, and the signup flow never tells anyone a confirmation
+   email is coming (item 191). The pitch is one-shot and is the
+   highest-yield action available, so it should not be spent pointing
+   100–500 people at a funnel that may be silently dropping them.
+   **Confirm the list state and fix the confirmation flow first.**
+   This does not change the ordering above — the outreach emails were
+   already first, and they are exactly the slow, repeatable growth
+   that proves the flow works before the pitch depends on it.
+
 **Parked — real, but shouldn't compete with the two above:**
 - **Chamber of Commerce membership** (item 153) — a real backlink and a
   prospect directory, but a recurring cost, and `BUSINESS_PLAN.md`
@@ -10061,6 +10075,265 @@ and **web push on a static site** as a design/UX pattern (VAPID
 keypair, private key as a repository secret, a GitHub Action signing
 and delivering the push, and the subscription-storage problem that a
 public static repo cannot solve).
+
+
+#### Research pass 2026-09-22 (forty-fifth pass)
+
+Item 130 is done — a real name is on the About page, confirmed by Ryan
+directly — and items 184, 186 and 187 all shipped this afternoon. Item
+187's first live run then returned `recipients: 0` for the only send
+this business has ever made, and the build loop filed that as a
+two-possibility question for the owner. **This pass names the
+mechanism, and it is the third possibility neither option covered.**
+
+| Angle | Finding | Consequence |
+|---|---|---|
+| **Buttondown's opt-in model** | Buttondown applies **double opt-in by default**: a new subscriber is created in state `unactivated` and **an unconfirmed address does not count as a subscriber**. The behaviour **cannot be disabled globally** — only per-subscriber, by creating them via API with `type: regular` | `recipients: 0` most likely means an address exists and was never confirmed. Not "tracking is off," not "nobody ever signed up" — a third state, and the only one that looks like both (item 190) |
+| **The signup form, read** | `templates/region.html.j2` uses Buttondown's embed form with `target="popupwindow"` and an `onsubmit` that opens a popup. The page the reader is on **does not change**, and nothing anywhere — form, page, confirmation copy — tells them a confirmation email is coming | The flow has no pending state at all. A reader who subscribes and never checks their inbox is invisible to themselves and to us (item 191) |
+| **Double opt-in drop-off** | Confirmation costs a reported **20–30% of subscribers** who never confirm — but that is **not inevitable**: a good flow (clear subject, instant delivery, obvious CTA, a reminder at 24–48h) is reported to reach **96%** confirmation. Those who do confirm engage at roughly **2×** | The 20–30% is the cost of a flow that *mentions* confirmation. This site's flow does not mention it, which is not the same starting point (item 191) |
+| **Transport failures, now diagnosed** | Item 185's ask shipped, and the nine chronic failures split cleanly: **six 403s** (Experience MP, Village of MP Calendar, Village of MP News, Palatine Public Library, Wheeling CCSD 21, Wheeling Park District) and **three 404s** (AH School District 25, Palatine CCSD 15, Palatine D211) | Two different problems that were one undifferentiated blob nine hours ago. Only one of them is fixable from inside this repo (item 192) |
+| **The three 404s share a URL shape** | All three are Finalsite-family school-district feeds: two are `…/site/handlers/icalfeed.ashx?MIID=<n>` (sd25.org, ccsd15.net) and one is `…/site/RSS.aspx?…ModuleInstanceID=<n>` (adc.d211.org). The sibling AH Park District feed, a different shape, works fine | A 404 on a live district site with a numeric calendar ID in the query string is a **rotated ID**, not a dead feed. One diagnosis, three fixes, no permission required (item 192) |
+| **The standard 403 remedy, and why not to take it** | Every current guide answers 403 the same way: send a realistic browser `User-Agent`, match Client Hints, disguise the TLS fingerprint. UA spoofing alone is reported to cut 403s by ~30% on simpler sites | Item 161 deliberately set an **identifying** UA (`WithinTen/1.0 (+https://withintenmiles.com/)`) so a civic source can see who is asking, and item 152's whole play is *asking those same organizations for a link*. Spoofing Chrome at a village that blocked us is the one remedy this business must not use (item 192) |
+| **Palatine Public Library, newly blocked** | Was returning 11–12 items as recently as this morning. Now **403**, streak 1 | A live regression, in one of the two regions already contributing zero weekend events, on the source item 182 was about to swap to a feed (item 193) |
+
+#### P1 (new)
+
+190. **`recipients: 0` has a named mechanism, and `send_newsletter.py`
+     has no guard that would ever catch it.** The build loop's Needs
+     Ryan note offers two explanations — tracking disabled, or a
+     genuinely empty list. Buttondown's own documentation supplies a
+     third that fits the evidence better than either:
+
+     - New subscribers are **subject to double opt-in by default**.
+     - Until they click the confirmation link they hold the state
+       **`unactivated`**.
+     - **An unconfirmed address does not count as a subscriber.**
+     - The behaviour **cannot be turned off globally** — only
+       per-subscriber, by creating them through the API with
+       `type: regular`.
+
+     That explains the whole history at once, including the parts the
+     other two explanations leave awkward. It explains a send that
+     reported success and delivered to nobody. It explains why the
+     account plainly *has* an address in it (the owner signed up) while
+     the API reports zero recipients. And it is consistent with the
+     owner's own earlier report of a send that "successfully ran" with
+     no email arriving — which at the time was attributed to the
+     dry-run default and then to the missing live-send header, both of
+     which were real bugs and both of which were fixed. This would be
+     the third one in the same chain, and the only one left that the
+     repo cannot see.
+
+     Stated honestly: this is the **most likely** explanation, not a
+     confirmed one. It is confirmable in one API call, which is the
+     point — nobody has to guess.
+
+     What to build:
+
+     - **A pre-send audience guard.** `send_newsletter.py` has three
+       guards and all three are about *content*: the preview-marker
+       refusal, `assert_build_is_fresh`, `assert_weekend_is_not_thin`.
+       There is no guard about *audience*. Query Buttondown's
+       subscriber count before posting and refuse — or, at minimum,
+       print an unmissable warning — when the confirmed-subscriber
+       count is zero. A newsletter that mails nobody while reporting
+       success is precisely the failure this file has now hit twice.
+     - **Record the count in `send_history.json`** at send time,
+       alongside the metrics item 187 backfills afterwards. Recipients
+       measured *before* the send and recipients measured *after* are
+       different facts, and a disagreement between them is itself a
+       signal.
+     - **Break out subscriber counts by status** where the API
+       exposes it (`unactivated` vs `regular`). "One subscriber, zero
+       confirmed" and "zero subscribers" are the two states this pass
+       cannot currently distinguish from outside the account, and the
+       repo should never be in that position again.
+
+     **This re-ranks the Needs Ryan queue.** That section currently
+     lists "a proven live send" among the dependencies cleared for the
+     press pitch. If this item is right, that send was not proven —
+     it was accepted, addressed to nobody, and reported as fine. The
+     press pitch is the single highest-yield one-shot action available
+     (100–500 subscribers from one email) and it is **one-shot**.
+     Pointing it at a signup flow that silently drops people is
+     spending the business's best card on a bucket with a hole in it.
+     Sequencing: confirm the list state and fix the flow (item 191)
+     **before** the pitch. The civic outreach emails, already the
+     named next action, are unaffected and should still go first —
+     they are repeatable, and they grow the list slowly enough to
+     prove the flow works before it matters.
+
+191. **The signup flow never once mentions that a confirmation is
+     coming.** `templates/region.html.j2` posts to Buttondown's
+     `embed-subscribe` endpoint with `target="popupwindow"` and an
+     `onsubmit` handler that opens a popup window. Consequences, in
+     order of severity:
+
+     - **The page the reader is on does not change.** No success
+       state, no pending state, no acknowledgement. Whatever the popup
+       does, the reader's actual context is unchanged.
+     - **Popups are blocked or hostile.** A blocked popup means the
+       reader receives *zero* feedback. On mobile, a popup window is
+       disorienting even when it works.
+     - **Nothing says "check your email."** Given item 190 — that
+       Buttondown enforces double opt-in and cannot be made not to —
+       the confirmation click is a **mandatory step in the funnel**,
+       and it is completely undocumented to the reader.
+
+     The research puts numbers on the cost. Double opt-in is reported
+     to lose **20–30%** of subscribers who never confirm, and a
+     well-built flow — clear subject line, instant delivery, obvious
+     CTA, a reminder at 24–48 hours — is reported to reach **96%**.
+     That 20–30% baseline describes flows that *tell people
+     confirmation exists*. This one does not, so it does not get to
+     claim the baseline as a floor.
+
+     Worth being precise about the upside rather than overselling it:
+     the people who do confirm are reported to engage at roughly
+     **2×**, so double opt-in is not the enemy here and this item is
+     not an argument for dodging it. The confirmation step is good for
+     deliverability — which items about domain warm-up (155) and
+     bulk-sender rules already care about a great deal. The problem is
+     an *undisclosed* mandatory step, not the step.
+
+     What to build:
+
+     - **Replace the popup with an in-page pending state.** Post the
+       form, then render, in the page: "Almost there — check your
+       email and click the confirmation link." This is a small
+       progressive-enhancement change and needs no framework and no
+       build step: intercept the submit, POST it, swap the form for
+       the message, and leave the plain form as the no-JS fallback.
+     - **Say it before they submit, too.** One line under the input —
+       "We'll send one email to confirm" — sets the expectation, which
+       is the single cheapest confirmation-rate intervention in the
+       research.
+     - **Apply it in all three places a reader can subscribe**: the
+       region-page form, the hosted Buttondown page the email footer
+       links to (item 183), and the "get it by email instead" link
+       next to the new calendar-subscribe row (item 184).
+     - **Then check the confirmation email itself.** It is Buttondown's
+       default and has never been looked at. Subject clarity and one
+       obvious button are the whole game, and the site now has a real
+       brand (item 174) that email almost certainly does not match.
+
+     Depends on nothing. Pairs with item 190 — 190 detects the empty
+     list, 191 is why it is empty.
+
+192. **Nine chronic failures are two problems: three stale IDs and six
+     closed doors.** Item 185 asked for the failure *kind* to be
+     recorded rather than just the streak, that shipped, and the
+     answer separates cleanly:
+
+     | Status | Sources | Nature |
+     |---|---|---|
+     | **404** | AH School District 25, Palatine CCSD 15, Palatine D211 | The URL is wrong |
+     | **403** | Experience MP, Village of MP Calendar, Village of MP News, Palatine Public Library, Wheeling CCSD 21, Wheeling Park District | The host is refusing us |
+
+     **The three 404s are one bug, not three.** All three are
+     Finalsite-family school-district feeds carrying a numeric calendar
+     ID in the query string — two of the shape
+     `…/site/handlers/icalfeed.ashx?MIID=<n>` (sd25.org, ccsd15.net)
+     and one `…/site/RSS.aspx?…ModuleInstanceID=<n>` (adc.d211.org).
+     A 404 from a live district site on that shape means the ID has
+     been rotated, not that the district stopped publishing a
+     calendar. The fix is to re-derive each current ID from the
+     district's own live calendar page and update
+     `config/regions/*.yaml`. No permission, no negotiation, no code
+     change — three config values. **Do these first**: they are the
+     only ones fully inside this repo's control, and they restore a
+     source to all three of Arlington Heights, Palatine and (via 193's
+     neighbour) the school tier generally.
+
+     **The six 403s need a decision this pass wants to make
+     explicitly, because the default answer is wrong for this
+     business.** Every current guide gives the same remedy: send a
+     realistic browser `User-Agent`, match the Client Hints, disguise
+     the TLS fingerprint — with UA spoofing alone reported to cut 403s
+     by around 30% on simpler sites. **Do not do this.** Item 161
+     deliberately replaced a stale UA with an *identifying* one,
+     `WithinTen/1.0 (+https://withintenmiles.com/)`, on the reasoning
+     that a civic source checking its logs should be able to see who
+     is asking and click through to find out. Item 152's entire play
+     is emailing those same villages and libraries to ask for a
+     link-back. Item 131's provenance claim and item 124's
+     differentiation against Patch both rest on this being a
+     hand-verified, above-board pipeline. Spoofing Chrome to get past
+     a village's block would quietly trade all of that for six feeds,
+     and it would be indefensible if anyone ever looked.
+
+     The legitimate options, in order:
+
+     1. **Send a complete, honest header set.** Many civic CMS 403s
+        fire on a *missing* `Accept` or `Accept-Language`, not on the
+        UA string. Sending the headers a normal client sends, while
+        keeping the truthful UA, is not spoofing — it is being a
+        well-formed client. Try this first; it is cheap and it costs
+        nothing in integrity.
+     2. **Look for the sanctioned endpoint.** A site that blocks its
+        rendered HTML often publishes an ICS or RSS feed that is not
+        blocked — exactly the trade that took Indian Trails from 14 to
+        247 items and Mount Prospect Public Library to 299.
+     3. **Ask.** Six 403s across four organizations, and item 152 is
+        already about to email all of them. Fold it into that email:
+        *we link our readers to your events every week, our fetcher
+        identifies itself as WithinTen, your calendar currently
+        returns 403 — is there a feed URL you'd prefer we use?* That
+        is a better first message than a cold link-back request
+        anyway, because it opens with something the recipient can fix
+        and ends with a relationship.
+
+     Nothing here blocks on the owner except step 3, which is already
+     queued.
+
+#### P2 (new)
+
+193. **Palatine Public Library started 403ing today, and it is the
+     source item 182 was about to replace.** It returned 11–12 items
+     as recently as this morning's build; `source_transport_failures`
+     now has it at streak 1 with a 403. Filed separately from item
+     192's six chronic blocks because this one is a **regression with
+     a known-good state hours behind it**, which makes it both more
+     diagnosable and more urgent than a source that has never worked.
+
+     It also lands in the worst possible place. Palatine already
+     contributes **zero** weekend events, already has two 404ing
+     school feeds (item 192), and its library was the specific source
+     item 182 identified for a feed swap on the Indian Trails model.
+     That leaves Palatine Park District as the region's only fully
+     healthy source.
+
+     What to do:
+
+     - **Watch the streak before acting.** A streak of 1 can be a
+       blip; item 185's whole point is that this repo can now tell the
+       difference within a couple of builds instead of guessing.
+       Nothing should be rewritten on one data point.
+     - **If it holds, skip straight to the feed swap** rather than
+       repairing the scrape. Item 182 wanted Palatine on a real feed
+       regardless, the 403 makes the HTML path a dead end, and the two
+       pieces of work collapse into one.
+     - **Check the other libraries for the same signature.** Four
+       library sources across five regions now sit on three different
+       access paths (RSS feed, HTML scrape, and one freshly blocked).
+       If the block is platform-wide rather than Palatine-specific,
+       the healthy scrapes are on borrowed time and the feed migration
+       stops being an optimisation.
+
+Competitors reviewed this pass: **Buttondown's own opt-in and
+subscriber-state model** (double opt-in on by default, `unactivated`
+until confirmed, unconfirmed addresses excluded from recipient counts,
+and no global off switch), **double opt-in conversion benchmarks**
+(20–30% never confirm as the typical cost, ~96% reported achievable
+with a clear flow and a 24–48h reminder, ~2× engagement among those who
+do confirm), **the 2026 anti-bot / 403 remediation literature** (the
+uniform recommendation to spoof a browser UA, match Client Hints and
+disguise the TLS fingerprint — evaluated and explicitly rejected for
+this business, with the honest-header and ask-the-source alternatives
+taken instead), and the post-signup **confirmation flow as a UX
+surface** (in-page pending state over popup, pre-submit expectation
+setting, and the confirmation email's own subject and CTA as the
+highest-leverage points in the funnel).
 
 
 ## Working agreements for autonomous iteration
