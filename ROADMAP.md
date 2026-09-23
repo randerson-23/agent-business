@@ -10433,12 +10433,36 @@ mechanism, and it is the third possibility neither option covered.**
      before acting" instinct item 193 confirmed was correct last
      cycle, applied the same way here.
 
-     🟢 **Resolved, 2026-09-22 — it was the blip.** The next real
+     🟡 **Marked resolved 2026-09-22, then reopened by item 194
+     (forty-sixth pass) — it was not the blip.** The note below was
+     written from the 20:58 UTC build, which did show all three back
+     at streak 0. The 21:55 build put all three back at **1**, and
+     tracing all four consecutive builds gives 0 → 1 → 0 → 1: the
+     three sources **alternate every build, in lockstep**. Sampling an
+     alternating signal on the wrong parity returns a clean result
+     every time, which is exactly what happened here. The "watch
+     before acting" instinct was still right — acting on one failure
+     would have been wrong too — but one *recovery* does not clear an
+     intermittent fault any more than one failure proves a break.
+     See item 194 for the build-by-build evidence, why
+     `CONSECUTIVE_TRANSPORT_FAILURE_ALERT_THRESHOLD = 3` can never
+     flag an every-other-build failure, and item 195 for the missing
+     retry that turns it into missing park districts.
+
+     One detail in the paragraph above is also slightly off and worth
+     correcting rather than leaving to mislead a later diagnosis: the
+     three are **not** all the same `?post_type=tribe_events&ical=1`
+     export. Arlington Heights and Mount Prospect Park District are
+     (`ics`); **Des Plaines Park District is configured as
+     `html_events` against `https://www.dpparks.org/events`**. They
+     may well still share the underlying plugin, but they are not
+     being fetched the same way, so "same export" cannot carry the
+     correlation argument on its own.
+
+     The original note, kept for the record: *"The next real
      `build-digest.yml` run's `data/source_transport_failures.json`
-     shows all three (Arlington Heights, Des Plaines, and Mount
-     Prospect Park District) back at streak 0. One data point, real
-     evidence, no rewrite needed — the second confirmation of the same
-     "watch before acting" call this session has now made twice.
+     shows all three back at streak 0. One data point, real evidence,
+     no rewrite needed."*
 
 #### P2 (new)
 
@@ -10502,6 +10526,267 @@ taken instead), and the post-signup **confirmation flow as a UX
 surface** (in-page pending state over popup, pre-submit expectation
 setting, and the confirmation email's own subject and CTA as the
 highest-leverage points in the funnel).
+
+
+#### Research pass 2026-09-23 (forty-sixth pass)
+
+Items 190, 191 and 192 all shipped within six hours of the forty-fifth
+pass. Item 192's honest-header change also **cleared Palatine Public
+Library's 403** — it is back to streak 0, which settles item 193 in the
+best possible way. But the same change window coincided with three
+healthy park-district sources dropping to `ConnectTimeout`, the build
+loop checked one later build, saw them recover, and recorded the blip
+as resolved. **It is not resolved, and the way it is not resolved is
+the finding.**
+
+The tonight-relevant part: this repo's newsletter cron fires **today at
+22:37 UTC**, and it builds fresh rather than reading committed output.
+
+| Angle | Finding | Consequence |
+|---|---|---|
+| **The "blip", traced build by build** | The three park districts (Arlington Heights, Des Plaines, Mount Prospect) read **0 → 1 → 0 → 1** across four consecutive hourly builds: 18:57 pass, 19:56 fail, 20:58 pass, 21:55 fail. The build loop read the 20:58 pass and concluded the blip was over; 21:55 says otherwise | It is not a blip and not a break. It is **intermittent, roughly every other build** — a third behaviour neither category covers (item 194) |
+| **Why no detector will ever see it** | `CONSECUTIVE_TRANSPORT_FAILURE_ALERT_THRESHOLD = 3`. A source that fails every *other* build never gets its streak above **1** | An alternating source is **structurally invisible** to `detect_chronic_transport_failures`, and equally invisible to the health-side detectors, which need three consecutive zeros. Same blind-spot class as items 181 and 185 — in the newest code (item 194) |
+| **Item 192 is exonerated** | The alternation continues across builds both before and after the header change, and a static header set cannot turn itself on and off hourly | Nobody should revert item 192 over this. The honest-header change fixed a 403 and caused none of this (item 194) |
+| **No retry exists anywhere** | `scripts/fetchers.py` has **no retry, no backoff, no `Session` with an adapter**. `REQUEST_TIMEOUT = 15`, one attempt, and a `ConnectTimeout` permanently drops that source for that build | Three park districts' entire inventory vanishes from roughly every other issue, silently. Tonight's send builds fresh at 22:37 — if that build lands on a fail tick, three park districts are simply not in the newsletter (item 195) |
+| **Seed lists** | Standard practice before a campaign going to a larger or different audience than usual: send to a small curated set of addresses across the major providers first, and read **inbox placement** — inbox, spam, or missing — rather than trusting a success response. Catches broken authentication, blacklisting and content triggers before the real send | The business has sent exactly one email, to **zero recipients**, and its next planned act is a press pitch designed to take the list from ~0 to 100–500 in a day. Nothing currently proves an email from this domain reaches a human inbox at all (item 196) |
+| **Partial freshness degradation (design/UX)** | A named, documented failure mode: *some data partitions update while others silently fail*, which basic freshness checks miss entirely. The recommended remedy is a visible "data as of" indicator, and keeping **"data as of" / "loaded at" / "viewed at" distinct** because they mean different things | This is exactly the park-district situation, and the site has no vocabulary for it: a page built from 22 of 25 sources and a page built from 25 look identical to a reader (item 197) |
+| **School CMS platforms** | Finalsite's calendar module integrates with iCal and offers iCal download; Edlio's calendars likewise integrate with Google and iCal. The platform families in this space are Finalsite, Blackbaud, Apptegy and Edlio | Supports item 192's read of the three 404s: the districts do publish iCal, so a 404 on a numeric-ID feed URL is a **rotated ID**, not a district that stopped publishing (item 198) |
+
+#### P1 (new)
+
+194. **The three park districts alternate pass/fail every build, and no
+     detector in this repo can represent that.** Traced through the
+     committed data rather than inferred, one build commit at a time:
+
+     | Build (UTC) | AH Park District | Des Plaines Park District | MP Park District |
+     |---|---|---|---|
+     | `987cedab` 18:57 | 0 | 0 | 0 |
+     | `47da1c9a` 19:56 | **1** | **1** | **1** |
+     | `e79beec7` 20:58 | 0 | 0 | 0 |
+     | `87977a8d` 21:55 | **1** | **1** | **1** |
+
+     All three move together, every hour, in lockstep. The build loop
+     read `e79beec7` and recorded the failure as "the blip, not a new
+     break" — a reasonable call on the evidence available at that
+     moment, and item 193's own "watch the streak before acting"
+     advice pointed at it. One more build inverts the conclusion. The
+     correction worth carrying forward is about method, not blame:
+     **one recovery does not clear an intermittent fault**, and for an
+     alternating signal specifically, sampling on the wrong parity
+     gives a clean bill of health every time.
+
+     The structural problem is worse than the outage.
+     `CONSECUTIVE_TRANSPORT_FAILURE_ALERT_THRESHOLD = 3`, and
+     `detect_chronic_transport_failures` flags a source only at
+     `streak >= threshold`. A source that fails every other build
+     **never exceeds a streak of 1**. It cannot ever be flagged. The
+     health-side detectors are no better: `detect_newly_broken_sources`
+     needs three consecutive zeros, and an alternating source never
+     produces two. So this repo now has three generations of source
+     monitoring — items 180, 181, 185 — and a source can fail **half
+     of all builds forever** without a single one of them saying a
+     word. That is the same blind spot those three items each closed a
+     different face of, reappearing in the newest code.
+
+     One thing this does **not** mean: item 192's honest-header change
+     is not the cause and must not be reverted over this. A static set
+     of request headers cannot toggle itself hourly, and the
+     alternation runs through builds on both sides of that change. The
+     first failure landing two minutes after the deploy is a
+     coincidence of timing, and worth saying plainly so it does not
+     get "fixed" by undoing a change that fixed a 403.
+
+     What to build:
+
+     - **Track a failure *rate*, not only a streak.** Keep the streak —
+       it answers "is this down right now" — and add a trailing
+       window (last N builds, fail count). Flag on either a streak at
+       threshold **or** a rate above some fraction of the window.
+       Everything needed is already being written every build.
+     - **Flag lockstep failures as one event.** Three unrelated hosts
+       failing on exactly the same builds and recovering on exactly
+       the same builds is not three coincidences; it is one cause —
+       plausibly the runner's egress, a shared CDN, or per-IP rate
+       limiting. A detector that groups same-build failures across
+       sources turns three confusing rows into one legible signal.
+     - **Then find the cause.** `ConnectTimeout` is a TCP-connect
+       failure: the request never reached the application, so nothing
+       about headers, paths or parsing is implicated. Needs a
+       network-capable run, which the build loop has and this loop
+       does not.
+
+195. **`fetchers.py` has no retry, and that is what turns a flaky host
+     into a missing park district.** Checked directly: no retry, no
+     backoff, no `requests.Session` with an adapter, no
+     `urllib3.Retry`. One attempt at `REQUEST_TIMEOUT = 15`, and any
+     `ConnectTimeout` drops that source from that build permanently.
+
+     This is why item 194's intermittency has full product
+     consequences rather than being a logged curiosity. Roughly every
+     other issue is missing three park districts' entire inventory —
+     in a product whose whole claim is aggregating "the village, the
+     public library and the park district."
+
+     **It is also tonight's problem, concretely.**
+     `send-newsletter.yml` runs `build_digest.py` fresh at 22:37 UTC
+     rather than mailing whatever `docs/` holds — correct, and the
+     right call for staleness. The side effect is that whichever
+     parity that single build lands on decides whether three park
+     districts appear in the issue, and neither the guards nor the
+     logs would remark on it. `assert_weekend_is_not_thin` compares a
+     network-wide total against `MIN_WEEKEND_EVENTS = 3` and will pass
+     comfortably at 16 either way.
+
+     What to build:
+
+     - **Retry transient transport failures**, 2–3 attempts with a
+       short exponential backoff, on connect timeouts, read timeouts
+       and 5xx only. Explicitly **not** on 403 or 404 — item 192
+       established those are a permissions question and a config
+       question respectively, and hammering a civic host that already
+       said no is precisely the behaviour that gets a polite bot
+       blocked for good.
+     - **Count a retried success as a success, and log that it was
+       retried.** A source that needs a retry every build is a
+       different fact from one that never does, and item 194's rate
+       tracking wants that signal.
+     - **Keep the total time bounded.** Twenty-five sources × three
+       attempts × 15s is a worst case worth capping so a bad build
+       degrades rather than hangs — the fail-soft posture
+       `BUSINESS_PLAN.md` already commits to.
+
+     Small, self-contained, no new dependency, and it is the single
+     highest-value-per-line change currently open.
+
+196. **Nothing proves an email from this domain reaches a human inbox,
+     and the next planned act assumes it does.** The record: one send,
+     `recipients: 0`. Item 190 named the likely mechanism and shipped
+     a guard; item 191 fixed the confirmation disclosure. Both are
+     right and neither answers the remaining question — **when an
+     email does go out, where does it land?**
+
+     Standard practice for exactly this moment is a **seed list**: a
+     small curated set of addresses across the major mailbox
+     providers, mailed before a campaign going to a larger or
+     different audience than usual, and read for **inbox placement** —
+     inbox, spam, or missing — rather than for a successful API
+     response. It catches broken authentication, blacklisting and
+     content triggers before they hit real subscribers. The press
+     pitch is precisely "a larger or different audience than usual":
+     one email, 100–500 subscribers in a day, one shot, onto a domain
+     whose entire sending history is one message to nobody (item 155's
+     warm-up concern, now with a sharper edge).
+
+     What to build:
+
+     - **Put two or three real addresses on the list, on different
+       providers**, confirmed through the actual signup flow item 191
+       just rebuilt. This does double duty: it proves the confirmation
+       flow end to end, and it gives item 190's guard a non-zero count
+       to pass on honestly rather than by exception.
+     - **Record placement per send** in `send_history.json` next to
+       item 187's metrics — which folder it landed in, per provider,
+       checked by hand at first. Three data points a week is not a
+       burden and it is the only deliverability evidence this business
+       will have for months.
+     - **Check the authentication story is actually live**, not just
+       configured: SPF, DKIM and DMARC alignment on the domain
+       Buttondown sends as. The earlier Cloudflare Email Routing work
+       covered *receiving*; sending alignment is a separate thing and
+       has never been verified against a delivered message.
+
+     Owner-dependent in part (someone must own the seed addresses),
+     but the smallest version — one extra address the owner already
+     controls, confirmed properly — costs a minute and unblocks item
+     190's guard, item 187's metrics and the press-pitch sequencing
+     all at once.
+
+#### P2 (new)
+
+197. **A page built from 22 of 25 sources looks exactly like one built
+     from 25.** The design/UX angle this pass researched turns out to
+     name item 194's situation precisely: **partial freshness
+     degradation** — some data partitions update while others silently
+     fail — is a documented failure mode that ordinary freshness
+     checks miss, because the page *is* fresh; it is just incomplete.
+
+     The recommended remedy is a visible "data as of" indicator, and
+     specifically keeping **"data as of," "loaded at" and "viewed at"
+     distinct**, because they answer different questions. This site
+     currently has one timestamp doing all three jobs, and items
+     162/163 already argue freshness is the one claim this business
+     can defend against every competitor. A freshness claim that
+     cannot distinguish "complete and current" from "current but
+     missing three sources" is weaker than it looks.
+
+     What to build, smallest useful version first:
+
+     - **Record sources-reporting per build.** The numerator and
+       denominator both already exist — `expected_source_keys()` and
+       the per-build fetch results. Persist "22 of 25" alongside the
+       build timestamp.
+     - **Surface it where it is checkable, not where it is noisy.**
+       A reader does not want a data-quality widget on a weekend
+       events page. But `llms.txt`, the About page and the feed are
+       exactly the places a provenance claim belongs, and item 131's
+       verifiability argument is stronger with a real number than
+       with prose.
+     - **Separate the two timestamps the site conflates.** "Events as
+       of" (the newest event data) and "page built" (when the
+       generator ran) diverge exactly when something fails, which is
+       when the difference matters.
+
+     Deliberately *not* proposing a reader-facing degradation banner.
+     A warning that says "some sources are missing" on a page a parent
+     is scanning for Saturday plans costs more trust than it earns,
+     and item 177 already established this file's preference for
+     handling thin states gracefully rather than apologetically.
+     Depends on item 194's per-build data.
+
+198. **The three 404s are on platforms that definitely still publish
+     iCal — which makes them a lookup, not a loss.** Item 192 read the
+     three 404ing school feeds (AH School District 25, Palatine CCSD
+     15, Palatine D211) as rotated numeric calendar IDs rather than
+     discontinued feeds. The platform research supports it: the K-12
+     CMS families in this space are **Finalsite, Blackbaud, Apptegy
+     and Edlio**, and both Finalsite's calendar module and Edlio's
+     calendars integrate with iCal and offer iCal export as standard
+     features. A district on one of those platforms with a live
+     calendar page is publishing a feed; the repo simply has the wrong
+     URL for it.
+
+     What to do — and the honest caveat first: **no published lookup
+     table exists.** The research turned up no documentation giving
+     the feed-URL pattern per platform, and the consistent advice is
+     to get the URL from the calendar page itself or ask the
+     district's web administrator. So this is a per-source manual
+     step, not a scripted one:
+
+     1. Load each district's live calendar page and find the
+        subscribe/export affordance — on Finalsite and Edlio this is a
+        standard UI element, not a hidden endpoint.
+     2. Update the three URLs in `config/regions/*.yaml`. No code
+        change.
+     3. Note the platform per source in the config while there. When
+        the next ID rotates — and it will — knowing the source is
+        Finalsite turns a blind hunt into a known procedure.
+
+     Needs one network-capable run. Worth pairing with item 192's
+     403 work into a single "fix the feeds" session rather than
+     scheduling separately.
+
+Competitors reviewed this pass: **seed-list deliverability testing**
+(inbox placement measured across the major providers before a campaign
+to a larger or different audience than usual, catching authentication
+breakage, blacklisting and content triggers that a successful API
+response hides), **K-12 school CMS platforms as feed sources**
+(Finalsite, Blackbaud, Apptegy and Edlio; Finalsite's and Edlio's
+calendars both integrate with and export iCal as standard, supporting
+item 192's rotated-ID reading of the three 404s — and no published
+per-platform feed-URL pattern exists, so it stays a manual lookup), and
+**partial freshness degradation** as a design/UX problem (some sources
+silently failing while the page stays technically fresh, and the
+"data as of" / "loaded at" / "viewed at" distinction as the remedy).
 
 
 ## Working agreements for autonomous iteration
