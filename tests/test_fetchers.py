@@ -8,7 +8,10 @@ import requests
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "scripts"))
 from fetchers import (  # noqa: E402
     REQUEST_HEADERS,
+    RETRY_ATTEMPTS,
     USER_AGENT,
+    _get,
+    _is_retryable,
     _record_failure,
     fetch_html_events,
     fetch_ics,
@@ -164,6 +167,79 @@ def test_fetch_rss_populates_failure_info_on_error(mock_get):
     failure_info = {}
     assert fetch_rss("https://example.org/rss", failure_info=failure_info) is None
     assert failure_info == {"exception_class": "RuntimeError", "status_code": None}
+
+
+def _http_error(status_code):
+    response = Mock()
+    response.status_code = status_code
+    return requests.HTTPError(f"{status_code} error", response=response)
+
+
+class TestIsRetryable:
+    # ROADMAP.md item 195: only a transient failure is worth retrying.
+    def test_connect_timeout_is_retryable(self):
+        assert _is_retryable(requests.ConnectTimeout("boom")) is True
+
+    def test_read_timeout_is_retryable(self):
+        assert _is_retryable(requests.ReadTimeout("boom")) is True
+
+    def test_5xx_is_retryable(self):
+        assert _is_retryable(_http_error(500)) is True
+        assert _is_retryable(_http_error(503)) is True
+
+    def test_403_is_not_retryable(self):
+        # Item 192: a 403 is a permissions question - retrying hammers a
+        # host that already said no, exactly the wrong move.
+        assert _is_retryable(_http_error(403)) is False
+
+    def test_404_is_not_retryable(self):
+        assert _is_retryable(_http_error(404)) is False
+
+    def test_generic_exception_is_not_retryable(self):
+        assert _is_retryable(RuntimeError("boom")) is False
+
+
+@patch("fetchers.time.sleep")
+@patch("fetchers.requests.get")
+def test_get_retries_a_transient_connect_timeout_and_succeeds(mock_get, mock_sleep):
+    mock_get.side_effect = [requests.ConnectTimeout("boom"), _mock_response("ok")]
+    resp = _get("https://example.org/feed")
+    assert resp.text == "ok"
+    assert mock_get.call_count == 2
+    mock_sleep.assert_called_once()
+
+
+@patch("fetchers.time.sleep")
+@patch("fetchers.requests.get")
+def test_get_gives_up_after_retry_attempts_exhausted(mock_get, mock_sleep):
+    mock_get.side_effect = requests.ConnectTimeout("boom")
+    with pytest.raises(requests.ConnectTimeout):
+        _get("https://example.org/feed")
+    assert mock_get.call_count == RETRY_ATTEMPTS
+
+
+@patch("fetchers.time.sleep")
+@patch("fetchers.requests.get")
+def test_get_does_not_retry_a_403(mock_get, mock_sleep):
+    response = _mock_response()
+    response.raise_for_status = Mock(side_effect=_http_error(403))
+    mock_get.return_value = response
+    with pytest.raises(requests.HTTPError):
+        _get("https://example.org/feed")
+    assert mock_get.call_count == 1
+    mock_sleep.assert_not_called()
+
+
+@patch("fetchers.time.sleep")
+@patch("fetchers.requests.get")
+def test_fetch_rss_populates_failure_info_after_exhausted_retries(mock_get, mock_sleep):
+    # The failure_info contract (item 185) still holds once retries are
+    # exhausted - the caller sees the same final exception either way.
+    mock_get.side_effect = requests.ConnectTimeout("boom")
+    failure_info = {}
+    assert fetch_rss("https://example.org/rss", failure_info=failure_info) is None
+    assert failure_info == {"exception_class": "ConnectTimeout", "status_code": None}
+    assert mock_get.call_count == RETRY_ATTEMPTS
 
 
 @patch("fetchers.requests.get")

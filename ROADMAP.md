@@ -10658,6 +10658,32 @@ The tonight-relevant part: this repo's newsletter cron fires **today at
      Small, self-contained, no new dependency, and it is the single
      highest-value-per-line change currently open.
 
+     🟢 **Shipped, 2026-09-23.** `scripts/fetchers.py`'s shared `_get()`
+     now retries up to `RETRY_ATTEMPTS = 3` total attempts with a short
+     exponential backoff (1s, then 2s) via a new `_is_retryable(exc)`
+     classifier — `True` only for `requests.ConnectTimeout`,
+     `requests.ReadTimeout`, or an `HTTPError` with a 5xx status;
+     `False` for everything else, 403/404 included, exactly as this
+     item specified. A retried success is logged
+     (`"Fetch succeeded for %s after %d attempt(s)"`) so item 194's
+     rate-tracking has the signal available later, though nothing
+     persists it to a file yet — no consumer reads it as data today,
+     only as a log line. Worst-case time per source stays bounded at
+     3 × `REQUEST_TIMEOUT` plus ~3s of backoff, never unbounded. 9 new
+     tests (515 total pass) cover the classifier's boundary (timeout/
+     5xx retryable, 403/404/generic-exception not), a retry that
+     succeeds on the second attempt, exhausting all attempts and
+     re-raising the original exception, and that `fetch_rss`'s
+     existing `failure_info` contract (item 185) is unaffected by the
+     extra attempts. Locally this sandbox's own `ProxyError` (a
+     `ConnectionError` subclass, not a `Timeout`) correctly triggers no
+     retries and no slowdown — real build time unchanged at ~8s: this
+     fix is scoped to the exact failure class item 194 traced
+     (`ConnectTimeout`), not to this sandbox's unrelated network
+     block. Whether it actually clears the park-district alternation
+     waits on the next few real `build-digest.yml` builds, same
+     confirmation posture as every fetcher fix this session.
+
 196. **Nothing proves an email from this domain reaches a human inbox,
      and the next planned act assumes it does.** The record: one send,
      `recipients: 0`. Item 190 named the likely mechanism and shipped
