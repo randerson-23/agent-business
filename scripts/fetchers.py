@@ -19,6 +19,7 @@ from __future__ import annotations
 
 import logging
 import re
+import time
 import xml.etree.ElementTree as ET
 from datetime import datetime, timezone
 from html.parser import HTMLParser
@@ -112,14 +113,68 @@ def _unescape_ics_text(value: str) -> str:
     return " ".join(unescaped.split())
 
 
+def _is_retryable(exc: Exception) -> bool:
+    """ROADMAP.md item 195: retry only a *transient* failure - a connect/
+    read timeout (the request never reached the application, or the
+    application never answered in time) or a 5xx (the server's own
+    problem, not this request's). Deliberately excludes 403/404: item
+    192 already established those are a permissions question and a
+    config question respectively, and hammering a civic host that
+    already said no with more identical requests is exactly the
+    behaviour that gets a polite, identifying bot blocked for good.
+    """
+    if isinstance(exc, (requests.ConnectTimeout, requests.ReadTimeout)):
+        return True
+    if isinstance(exc, requests.HTTPError):
+        status_code = getattr(getattr(exc, "response", None), "status_code", None)
+        return status_code is not None and 500 <= status_code < 600
+    return False
+
+
+# ROADMAP.md item 194 (forty-sixth research pass): three park district
+# sources traced build-by-build alternated 0/1/0/1 in perfect lockstep -
+# a source failing exactly every other build never exceeds a streak of
+# 1 against CONSECUTIVE_TRANSPORT_FAILURE_ALERT_THRESHOLD = 3, so no
+# detector in this repo (items 180/181/185) could ever flag it. Item 195
+# named the actual fix: fetchers.py made one attempt at REQUEST_TIMEOUT
+# and gave up, so a single transient ConnectTimeout dropped a source's
+# entire inventory for that build - not a monitoring gap, a missing
+# retry. 3 total attempts, short exponential backoff (1s, 2s) - enough
+# to ride out a one-build network blip without turning a real,
+# persistent outage into a much longer hang: worst case per source is
+# bounded (3 * REQUEST_TIMEOUT + backoff), never unbounded.
+RETRY_ATTEMPTS = 3
+RETRY_BACKOFF_BASE_SECONDS = 1.0
+
+
 def _get(url: str) -> requests.Response:
-    resp = requests.get(
-        url,
-        timeout=REQUEST_TIMEOUT,
-        headers=REQUEST_HEADERS,
-    )
-    resp.raise_for_status()
-    return resp
+    last_exc: Exception | None = None
+    for attempt in range(1, RETRY_ATTEMPTS + 1):
+        try:
+            resp = requests.get(
+                url,
+                timeout=REQUEST_TIMEOUT,
+                headers=REQUEST_HEADERS,
+            )
+            resp.raise_for_status()
+            if attempt > 1:
+                # A source that needs a retry every build is a different
+                # fact from one that never does (item 194's rate
+                # tracking wants this signal) - logged, not yet recorded
+                # to a file, since no consumer reads it as data today.
+                logger.info("Fetch succeeded for %s after %d attempt(s).", url, attempt)
+            return resp
+        except Exception as exc:  # noqa: BLE001 - re-raised below when not retryable
+            last_exc = exc
+            if attempt == RETRY_ATTEMPTS or not _is_retryable(exc):
+                raise
+            backoff = RETRY_BACKOFF_BASE_SECONDS * (2 ** (attempt - 1))
+            logger.info(
+                "Transient fetch failure for %s (%s), retrying (%d/%d) in %.1fs.",
+                url, type(exc).__name__, attempt + 1, RETRY_ATTEMPTS, backoff,
+            )
+            time.sleep(backoff)
+    raise last_exc  # pragma: no cover - loop above always returns or raises
 
 
 def _record_failure(exc: Exception, failure_info: dict | None) -> None:
