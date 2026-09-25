@@ -271,6 +271,11 @@ effort. Now that a real name is attached, `OUTREACH_TEMPLATES.md`'s
    highest-yield action available, so it should not be spent pointing
    100–500 people at a funnel that may be silently dropping them.
    **Confirm the list state and fix the confirmation flow first.**
+   *Update (forty-seventh pass, 2026-09-25): the list state is
+   confirmed. The 2026-09-24 send recorded `pre_send_subscriber_count:
+   1` and passed item 190's guard, and item 191's flow shipped. Inbox
+   placement remains unproven until item 196's seed check or the
+   2026-09-27 metrics backfill.*
    This does not change the ordering above — the outreach emails were
    already first, and they are exactly the slow, repeatable growth
    that proves the flow works before the pitch depends on it.
@@ -10813,6 +10818,209 @@ per-platform feed-URL pattern exists, so it stays a manual lookup), and
 **partial freshness degradation** as a design/UX problem (some sources
 silently failing while the page stays technically fresh, and the
 "data as of" / "loaded at" / "viewed at" distinction as the remedy).
+
+
+#### Research pass 2026-09-25 (forty-seventh pass)
+
+This loop missed eleven scheduled firings between 2026-09-23 06:33 and
+2026-09-25 18:33 UTC. This one pass covers the gap rather than filing
+eleven. Three things happened in that window, and together they produce
+this pass's main finding.
+
+- **The Wednesday send worked.** `data/send_history.json` records a
+  `schedule`-mode send at 2026-09-24 00:55 UTC with
+  **`pre_send_subscriber_count: 1`**. Item 190's guard passed on a
+  genuinely confirmed subscriber, so the `recipients: 0` state item 190
+  diagnosed has been fixed at the source. Opens and clicks become
+  readable at 2026-09-27 00:55 under `METRICS_BACKFILL_MIN_AGE = 3
+  days`. That is by design, not a gap.
+- **Item 195 (fetch retry) shipped** as #252, the build loop's last
+  merge before going quiet.
+- **The build loop then stopped committing.** Its session record shows a
+  **seven-day rate limit in effect until 2026-09-26 12:00 UTC**. It is
+  still firing hourly and still "running", but nothing has merged since
+  2026-09-23 ~01:00 UTC. That is an account-level pause, not a bug in
+  this repo, and it lifts on its own. It is recorded here only because
+  it exposed the next finding.
+
+| Angle | Finding | Consequence |
+|---|---|---|
+| **`/today/`, read on Friday** | `docs/today/index.html` headlines **"Tuesday, September 22 — everything happening today"** and is stamped `Generated 2026-09-23 00:55 UTC`. It is Friday, September 25 | The page whose whole premise is *today* has been wrong for three days, and nothing in the repo noticed (item 199) |
+| **Why, structurally** | `build-digest.yml`'s only schedule is **`17 8 * * 1` (Mondays)**, set by item 168. Every other rebuild came from its `push` trigger, meaning the build loop merging code. At roughly one merge an hour that *looked* like hourly freshness | The site's day-to-day freshness has been an **accidental by-product of the build loop's commit rate**. When the loop pauses, the site silently stops updating (item 199) |
+| **Client-side date correction (design/UX)** | Every card already carries `date_iso`, and the templates already construct `new Date(item.date_iso)` for calendar export. The browser knows today's date; the static page does not | A date-scoped page can correct itself in the viewer's browser (hide past cards, fix the headline) whatever the build cadence. Freshness that does not depend on CI being on time (item 200) |
+| **Head term, re-checked** | "things to do in Mount Prospect IL this weekend": **Eventbrite** (two URLs), **Tripadvisor**, **Groupon**, **Yelp**, **AllEvents.in**, **Trip.com**, and the **Experience Mount Prospect event calendar** (the village's own), plus **mppl.org/events**. withintenmiles.com does not appear | Two of the nine results are this pipeline's *own sources*, and one of them is a source that 403s this pipeline on every build. That source both outranks the site and blocks it (item 201) |
+| **Event schema, re-checked** | Google's Event markup **remains supported**. The 2026 shift is in purpose: AI Mode reads structured data as a **trust and verification signal**, used to check factual claims and judge source credibility, not mainly to trigger a visual rich result | A stale date on a page is no longer just a freshness miss. It is a claim a verifier can check and find false (item 202) |
+
+#### P1 (new)
+
+199. **The site only rebuilds on Mondays, and nobody knew because the
+     build loop's merges were covering for it.** `/today/` currently
+     reads *"Tuesday, September 22 — everything happening today"*. It
+     is Friday. The last rebuild of any kind was 2026-09-23 00:59 UTC.
+
+     The mechanism has two halves. Item 168 moved `build-digest.yml`'s
+     schedule to `17 8 * * 1`, once a week, reasoning that the weekend
+     digest only needs a weekly refresh. That reasoning was right for
+     the weekend digest and wrong for `/today/`, which is definitionally
+     daily. The workflow's `push` trigger (paths `scripts/**`,
+     `templates/**`, `config/**`) then fired on nearly every build-loop
+     merge. Hourly merges produced something that looked like hourly
+     rebuilds. Nobody designed that freshness: the site borrowed it
+     from the build loop's activity. The eighth verification pass even
+     checked this cadence and correctly concluded the *send* was
+     decoupled from it. It did not check the pages that are read on
+     the days between sends.
+
+     The build loop is paused by an account rate limit until
+     2026-09-26 12:00 UTC, so the site will not rebuild before then.
+     Once the backlog thins and merges slow down, the same thing will
+     happen again with no pause needed.
+
+     What to build:
+
+     - **Add a daily schedule to `build-digest.yml`** alongside the
+       Monday one. The run already exists and costs nothing new. A
+       daily cron at an offset minute, timed so it lands in the early
+       Chicago morning even when GitHub runs it hours late (item 110
+       measured 5h27m–6h54m late), gives `/today/` a same-day build on
+       most days. Do **not** go more frequent than needed. Item 168's
+       concern about churning commits was real.
+     - **Alert on staleness.** `send-watchdog.yml` already exists to
+       catch a send that silently did not happen. The same pattern
+       applies to the site: if the committed build stamp is more than
+       ~36 hours old, say so in a failing check. That is the detector
+       that would have caught this on Wednesday night instead of in a
+       research pass on Friday.
+     - **Treat the pause as a free test.** Right now the repo is
+       running on its own schedules alone, with no build loop. Whatever
+       looks wrong in the next day or two shows what the product does
+       without an agent behind it, which is the state
+       `BUSINESS_PLAN.md`'s "near-zero ongoing weekly time" says it
+       should eventually be able to live in.
+
+     This is the same failure class as items 162/163/168: the freshness
+     claim, the one claim this business can defend against every
+     competitor, breaking between builds. This time it is not a Monday
+     edge case. It lasts as long as any pause does.
+
+#### P2 (new)
+
+200. **Let date-scoped pages correct themselves in the browser.** The
+     design/UX angle for this pass, and the durable half of item 199.
+     A cron can be hours late or skipped (items 110 and 194 both
+     measured this repo's scheduling and found it unreliable). The
+     viewer's own clock is never late.
+
+     Everything needed is already on the page. Each card carries
+     `date_iso`, and `region.html.j2` / `merged_hub.html.j2` already
+     parse it with `new Date(item.date_iso)` for calendar export. Using
+     the same value to decide *visibility* is a small progressive
+     enhancement: no framework, no build step, and the static HTML
+     stays the no-JS fallback.
+
+     - **Hide cards whose date has passed** in the viewer's local
+       date. A Thursday event should not appear on Saturday as upcoming
+       because the page was built Wednesday.
+     - **Correct the headline** on `/today/` and the weekend views when
+       the viewer's date differs from the build date. Where the build
+       has nothing for the viewer's day, say so plainly ("Nothing listed
+       for today yet — here's this weekend") rather than presenting
+       another day's list under today's heading.
+     - **Keep the build stamp honest and visible**, and separate "page
+       built" from "events as of" (item 197). Once the page corrects
+       itself, the stamp becomes something a reader can check, not a
+       warning.
+
+     Scope guard: this is about not *misstating* the date, not about
+     live data. It must never fetch anything at view time. The
+     pipeline stays a static build, and this only stops a static build
+     from making claims about a day it did not see.
+
+201. **The village's own calendar outranks the site for its head term,
+     and it is the one source that blocks us.** Re-checked "things to
+     do in Mount Prospect IL this weekend" per standing instruction.
+     The first page is Eventbrite (twice), Tripadvisor, Groupon, Yelp,
+     AllEvents.in, Trip.com, **the Experience Mount Prospect event
+     calendar**, and **mppl.org/events**. withintenmiles.com is absent,
+     as expected for a young domain (items 156/158 already set that
+     expectation).
+
+     What is new is that two of those results are this pipeline's own
+     sources. Mount Prospect Public Library is the deepest feed in the
+     network (299 items). Experience Mount Prospect is the opposite: it
+     returns **403 to this pipeline on every build** (item 192,
+     transport streak in the teens) while ranking on page one for the
+     query this business exists to answer.
+
+     That makes item 192's third option, *ask*, the highest-value
+     single conversation available for the home region. It turns a
+     blocked source into a working one, and it opens a relationship
+     with the organization that already owns the search result. The
+     draft already exists: `OUTREACH_TEMPLATES.md` §12a, which the
+     Needs Ryan section already ranks first ("send Experience Mount
+     Prospect first"). This item does not add a new owner action. It
+     raises the stakes of one that is already queued, with a reason the
+     queue did not have before: this email is about access to the
+     page-one competitor for the flagship town's head term, not only a
+     link.
+
+     Also worth recording for the next re-check: **AllEvents.in** now
+     ranks here. It is one of the uncovered competitors in this loop's
+     standing list, and its listing pages are auto-aggregated. That
+     puts it in the same bucket as PatchAM (item 124): generic breadth
+     against this site's hand-verified civic sources. It is not a
+     reason for a new item until it shows up with something this site
+     lacks.
+
+#### P3 (new)
+
+202. **Event markup is now read by a verifier, so a stale date is a
+     trust problem as well as a freshness one.** Re-checked Google's
+     structured-data position per standing instruction. Event schema
+     **remains supported**. The documented 2026 change is in purpose:
+     AI Mode treats structured data as a **trust and verification
+     signal**, used to check factual claims and assess source
+     credibility, rather than mainly as a trigger for visual rich
+     results. (FAQ rich results ending on 2026-05-07 was already
+     recorded in the seventh pass's correction to the `FAQPage` item,
+     so it is not re-filed here.)
+
+     Consequence for this repo: Event JSON-LD that carries dates is a
+     set of checkable claims. A region page emitting `startDate` values
+     for events that have already happened, or a page presenting
+     another day's events as today's, is exactly what a verifier is
+     built to catch. Item 131's whole provenance argument ("anyone can
+     check") works in both directions.
+
+     What to do: nothing new beyond making sure items 199 and 200 apply
+     to structured data as well as to visible HTML. Specifically,
+     **never emit Event JSON-LD for an event whose date is before the
+     build date**. `filter_past_events` probably already guarantees
+     that at build time, and it is worth one test to prove it. The
+     risk is not the filter. It is the gap *between* builds, which item
+     199 closes. Filed at P3 because it is a constraint on items
+     199/200, not separate work.
+
+**Re-ranking note for the Needs Ryan section.** The forty-fifth pass
+added a warning that "a proven live send" was in doubt. That doubt is
+now half resolved. The list genuinely holds one confirmed subscriber,
+and the 2026-09-24 send reached a real address. What is still
+unproven is **placement**, meaning whether it landed in the inbox or in
+spam. That is item 196's seed-list question, and the first metrics
+backfill on 2026-09-27 will partly answer it. The ordering does not
+change: outreach emails first, press pitch after, now with one fewer
+reason to wait.
+
+Competitors reviewed this pass: **the head-term SERP, re-checked**
+(Eventbrite ×2, Tripadvisor, Groupon, Yelp, AllEvents.in, Trip.com, the
+Experience Mount Prospect calendar and mppl.org/events on page one;
+withintenmiles.com absent; two of nine results are this pipeline's own
+sources, one of which blocks it), **Google Event structured data,
+re-checked** (still supported; its 2026 role is a trust and
+verification signal for AI Mode), and **client-side date correction on
+static pages** as a design/UX pattern (using the viewer's clock and the
+`date_iso` already on every card, so date-scoped pages stay correct
+between builds).
 
 
 ## Working agreements for autonomous iteration
