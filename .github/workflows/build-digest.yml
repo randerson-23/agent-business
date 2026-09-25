@@ -18,6 +18,18 @@ on:
     # documented delay spike clustered at ":00", same reasoning as
     # send-newsletter.yml's own ":37".
     - cron: "17 8 * * 1"
+    # Daily 06:23 UTC (~01:23 America/Chicago) - ROADMAP.md item 199.
+    # Item 168's weekly cron above is correct for the weekend digest,
+    # which only changes at a weekly boundary, but /today/ is
+    # definitionally daily and item 199's forty-seventh research pass
+    # found it silently stale for three days once the build loop's own
+    # merges (which had been covering for the missing daily rebuild)
+    # paused. This lands by ~08:23 Chicago even at this repo's own
+    # measured worst-case lateness (5h27m-6h54m), so /today/ has a
+    # same-day build before most readers are up. The offset minute
+    # (":23") dodges the ":00" delay spike, same reasoning as the
+    # Monday cron above.
+    - cron: "23 6 * * *"
   workflow_dispatch: {}
   push:
     branches: [main]
@@ -64,7 +76,7 @@ jobs:
         run: |
           git config user.name "local-planner-bot"
           git config user.email "actions@users.noreply.github.com"
-          git add docs/ data/source_health.json data/weekend_signal.json data/source_transport_failures.json data/weekend_signal_history.json data/source_transport_failure_details.json
+          git add docs/ data/source_health.json data/weekend_signal.json data/source_transport_failures.json data/weekend_signal_history.json data/source_transport_failure_details.json data/source_completeness.json
           if git diff --cached --quiet; then
             echo "No changes to commit."
           else

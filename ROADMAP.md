@@ -10949,6 +10949,37 @@ this pass's main finding.
      competitor, breaking between builds. This time it is not a Monday
      edge case. It lasts as long as any pause does.
 
+     🟢 **Shipped, 2026-09-25.** `build-digest.yml` now has a second
+     cron alongside item 168's Monday one: daily at `23 6 * * *` (offset
+     minute, same reasoning as the Monday slot's `:17` — dodges the
+     documented `:00` delay spike). Lands `/today/` a same-day build by
+     ~08:23 Chicago even at this repo's own measured worst-case
+     scheduled-run lateness (5h27m–6h54m).
+
+     The staleness alert is a new, independent `build-watchdog.yml`
+     (weekly, Tuesday `41 19 * * 2` — deliberately a different day and
+     offset minute than every other cron in the repo, same reasoning as
+     `send-watchdog.yml`'s own Sunday slot: a watchdog sharing a
+     schedule with the thing it watches would miss exactly the failure
+     mode that motivated it) running a new `scripts/check_build_freshness.py`.
+     It reads `data/weekend_signal.json`'s own `generated_at` (already
+     written by `write_weekend_signal()` on every real build — no new
+     data file needed) and fails loudly (non-zero exit → GitHub's
+     "workflow failed" email, same mechanism `check_send_history.py`
+     already uses) if the newest build is missing or older than 36
+     hours, per the item's own suggested threshold. 6 new tests.
+
+     The third bullet ("treat the pause as a free test") wasn't
+     something to build — it was an observation about the state the
+     repo happened to be in. Not tracked as a separate deliverable.
+
+     While in this file: fixed an oversight from item 197's own PR —
+     `data/source_completeness.json` was written locally but never
+     added to `build-digest.yml`'s commit step, so the real per-build
+     figure `llms.txt`/About/`feed.xml` display would never have
+     persisted to the repo on an actual CI run. Added to the `git add`
+     line alongside the other tracked build-state files.
+
 #### P2 (new)
 
 200. **Let date-scoped pages correct themselves in the browser.** The
