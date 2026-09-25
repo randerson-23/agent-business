@@ -6,10 +6,30 @@ each pickup to see current phase and what's next, and update it as phases
 complete).
 
 Two loops write to this file:
-- an **hourly build loop** that implements the next phase item and ships PRs;
-- a **6-hourly research loop** (added 2026-08-27) that re-reads
-  `BUSINESS_PLAN.md`, reviews competitor sites, and refreshes the idea
-  backlog in **Phase 11**. It only edits this file — it never implements.
+- a **6-hourly build loop** (hourly until 2026-09-25) that implements the
+  next phase item and ships PRs;
+- a **daily research loop** (added 2026-08-27; 6-hourly until 2026-09-25)
+  that re-reads `BUSINESS_PLAN.md`, reviews competitor sites, and refreshes
+  the idea backlog in **Phase 11**. It only edits this file — it never
+  implements.
+
+### ▶ Next up for the build loop — item 199 (owner-flagged, 2026-09-25)
+
+**Ryan has asked for item 199 to be the build loop's next item, ahead of
+everything else in the backlog.** Do it before picking anything else.
+
+Why it jumps the queue: `build-digest.yml` is only scheduled for Mondays
+(`17 8 * * 1`). Every other rebuild has come from build-loop merges via
+the `push` trigger. With the build loop now running every 6 hours instead
+of hourly, those incidental rebuilds are rarer, and the site's date-scoped
+pages will routinely be stale — `/today/` read "Tuesday, September 22"
+from Wednesday through Friday this week. The fix is small: a daily cron on
+`build-digest.yml` plus a staleness check. Full details are in item 199
+below (forty-seventh research pass).
+
+Once item 199 ships, mark it 🟢 in place and delete this block. Item 200
+(client-side date correction) is the natural follow-on but is **not**
+part of this flag.
 
 ## Vision
 
@@ -10878,7 +10898,8 @@ this pass's main finding.
 
 #### P1 (new)
 
-199. **The site only rebuilds on Mondays, and nobody knew because the
+199. ▶ **NEXT UP — owner-flagged 2026-09-25, see the block at the top of
+     this file.** **The site only rebuilds on Mondays, and nobody knew because the
      build loop's merges were covering for it.** `/today/` currently
      reads *"Tuesday, September 22 — everything happening today"*. It
      is Friday. The last rebuild of any kind was 2026-09-23 00:59 UTC.
