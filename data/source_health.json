@@ -12,7 +12,6 @@
     259
   ],
   "arlington-heights-60005:Arlington Heights Park District \u2014 Events": [
-    6,
     17,
     17,
     17,
@@ -21,6 +20,7 @@
     17,
     17,
     17,
+    18,
     18
   ],
   "arlington-heights-60005:Village of Arlington Heights \u2014 News": [
@@ -60,7 +60,7 @@
     4
   ],
   "des-plaines-60016:Des Plaines Park District \u2014 Events": [
-    6,
+    20,
     20,
     20,
     20,
@@ -122,8 +122,8 @@
     299,
     299,
     299,
-    299,
     292,
+    277,
     277
   ],
   "mount-prospect-60056:Mount Prospect School District 57 \u2014 Calendar": [
@@ -135,7 +135,7 @@
     66,
     66,
     66,
-    66,
+    65,
     65
   ],
   "mount-prospect-60056:Randhurst Village \u2014 Events": [
@@ -173,7 +173,7 @@
     11,
     11,
     11,
-    11,
+    13,
     13
   ],
   "palatine-60067:Palatine Public Library District \u2014 Events": [
@@ -183,10 +183,10 @@
     11,
     11,
     11,
-    11,
     12,
     12,
-    12
+    12,
+    14
   ],
   "palatine-60067:Village of Palatine \u2014 News": [
     0,
@@ -208,8 +208,8 @@
     247,
     247,
     247,
-    247,
     242,
+    227,
     227
   ],
   "wheeling-60090:Village of Wheeling \u2014 Calendar": [
@@ -221,7 +221,7 @@
     2,
     2,
     2,
-    2,
+    1,
     1
   ]
 }

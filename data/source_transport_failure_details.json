@@ -3,10 +3,6 @@
     "exception_class": "HTTPError",
     "status_code": 404
   },
-  "des-plaines-60016:Des Plaines Park District \u2014 Events": {
-    "exception_class": "HTTPError",
-    "status_code": 403
-  },
   "mount-prospect-60056:Experience Mount Prospect \u2014 Events": {
     "exception_class": "HTTPError",
     "status_code": 403
@@ -22,10 +18,6 @@
   "palatine-60067:Community Consolidated School District 15 \u2014 Calendar": {
     "exception_class": "HTTPError",
     "status_code": 404
-  },
-  "palatine-60067:Palatine Public Library District \u2014 Events": {
-    "exception_class": "HTTPError",
-    "status_code": 403
   },
   "palatine-60067:Township High School District 211 \u2014 Calendar": {
     "exception_class": "HTTPError",
