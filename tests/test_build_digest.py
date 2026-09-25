@@ -249,6 +249,20 @@ def test_render_about_page_offers_a_corrections_path_with_mailto_cta():
     assert 'href="mailto:owner@example.com?subject=Correction' in html
 
 
+def test_render_about_page_states_source_completeness_when_given():
+    # ROADMAP.md item 197: a real per-build completeness figure, not
+    # just the timestamp this page already shows.
+    html = build_digest.render_about_page(
+        datetime.now(timezone.utc), source_completeness={"reporting": 22, "expected": 25}
+    )
+    assert "reached 22 of 25 configured sources" in html
+
+
+def test_render_about_page_omits_source_completeness_when_not_given():
+    html = build_digest.render_about_page(datetime.now(timezone.utc))
+    assert "configured sources" not in html
+
+
 def test_format_event_date_parses_rfc822():
     assert build_digest.format_event_date("Mon, 24 Aug 2026 12:00:00 GMT") == "Aug 24"
 
@@ -1314,6 +1328,36 @@ def test_fetch_region_sections_records_source_health(monkeypatch):
     health = {}
     build_digest.fetch_region_sections(region_cfg, health=health)
     assert health["mount-prospect-60056:Park"] == [1]
+
+
+def test_fetch_region_sections_counts_completeness_on_success(monkeypatch):
+    # ROADMAP.md item 197: a successful fetch counts toward both the
+    # numerator (reporting) and denominator (expected).
+    def fake_fetcher(url, **kwargs):
+        return [{"title": "A", "detail": "x", "url": "https://x/1", "date": None}]
+
+    monkeypatch.setitem(build_digest.FETCHERS, "ics", fake_fetcher)
+    region_cfg = {
+        "region": REGION,
+        "sources": [{"name": "Park", "type": "ics", "url": "https://x/cal.ics", "section": "Events", "enabled": True}],
+    }
+    completeness = {"expected": 0, "reporting": 0}
+    build_digest.fetch_region_sections(region_cfg, completeness=completeness)
+    assert completeness == {"expected": 1, "reporting": 1}
+
+
+def test_fetch_region_sections_counts_expected_but_not_reporting_on_transport_failure(monkeypatch):
+    def fake_fetcher(url, **kwargs):
+        return None
+
+    monkeypatch.setitem(build_digest.FETCHERS, "ics", fake_fetcher)
+    region_cfg = {
+        "region": REGION,
+        "sources": [{"name": "Park", "type": "ics", "url": "https://x/cal.ics", "section": "Events", "enabled": True}],
+    }
+    completeness = {"expected": 0, "reporting": 0}
+    build_digest.fetch_region_sections(region_cfg, completeness=completeness)
+    assert completeness == {"expected": 1, "reporting": 0}
 
 
 def test_fetch_region_sections_skips_health_recording_on_transport_failure(monkeypatch):
@@ -2552,6 +2596,17 @@ def test_build_feed_xml_produces_valid_rss():
     assert item.find("description").text == "Food & drink."
 
 
+def test_build_feed_xml_states_source_completeness_when_given():
+    # ROADMAP.md item 197
+    items = [
+        {"title": "Fall Fest", "url": "https://x/1", "detail": "", "date_iso": "2026-09-19", "region_name": "Mount Prospect"},
+    ]
+    xml = build_digest.build_feed_xml(items, datetime.now(timezone.utc), {"reporting": 22, "expected": 25})
+    root = ET.fromstring(xml)
+    description = root.find("channel").find("description").text
+    assert "reached 22 of 25 configured sources" in description
+
+
 def test_build_feed_xml_orders_soonest_first():
     items = [
         {"title": "Later", "url": "https://x/2", "detail": "", "date_iso": "2026-10-01", "region_name": "Palatine"},
@@ -2680,6 +2735,23 @@ def test_build_llms_txt_lists_regions_and_weekend_links():
     assert f"[Mount Prospect — free]({build_digest.SITE_BASE_URL}mount-prospect-60056/free/)" in result
     assert "## Sponsorship" in result
     assert f"## About\n- [Who publishes this, and why]({build_digest.SITE_BASE_URL}about/)" in result
+
+
+def test_build_llms_txt_states_source_completeness_when_given():
+    # ROADMAP.md item 197
+    summaries = [
+        {"name": "Mount Prospect", "zip": "60056", "tagline": "Village news.", "path": "mount-prospect-60056/", "guides": []},
+    ]
+    result = build_digest.build_llms_txt(summaries, {"reporting": 22, "expected": 25})
+    assert "22 of 25 configured sources reported successfully" in result
+
+
+def test_build_llms_txt_omits_source_completeness_when_not_given():
+    summaries = [
+        {"name": "Mount Prospect", "zip": "60056", "tagline": "Village news.", "path": "mount-prospect-60056/", "guides": []},
+    ]
+    result = build_digest.build_llms_txt(summaries)
+    assert "configured sources reported" not in result
 
 
 def test_build_llms_txt_includes_guides_when_present():

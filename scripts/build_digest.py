@@ -70,6 +70,18 @@ CONSECUTIVE_TRANSPORT_FAILURE_ALERT_THRESHOLD = 3
 # migration of something another consumer already depends on.
 TRANSPORT_FAILURE_DETAIL_PATH = ROOT / "data" / "source_transport_failure_details.json"
 
+# ROADMAP.md item 197 (forty-sixth research pass): a page built from 22
+# of 25 configured sources looks identical to one built from 25 - the
+# "partial freshness degradation" failure mode, where the page stays
+# technically fresh but is quietly incomplete. This file records the
+# numerator/denominator of the build that just ran, so llms.txt, the
+# About page and feed.xml can state a real completeness figure instead
+# of the one timestamp this site currently makes do triple duty as
+# "data as of," "loaded at" and "built at" all at once. A new file, not
+# a migration of source_health.json's per-source counts: this is a
+# single build-wide fact, not a per-source history.
+SOURCE_COMPLETENESS_PATH = ROOT / "data" / "source_completeness.json"
+
 # ROADMAP.md item 172: a small, committed JSON file (same pattern as
 # source_health.json above) recording how many dated weekend events each
 # region contributed to the build just finished - the signal
@@ -618,6 +630,23 @@ def save_transport_failure_details(details: dict) -> None:
     )
 
 
+def write_source_completeness(reporting: int, expected: int, now: datetime) -> None:
+    """Persist "N of M sources reported" for the build that just ran
+    (ROADMAP.md item 197) - a single build-wide snapshot, not a history,
+    since llms.txt/about/feed.xml only ever need the latest figure.
+    """
+    SOURCE_COMPLETENESS_PATH.parent.mkdir(parents=True, exist_ok=True)
+    SOURCE_COMPLETENESS_PATH.write_text(
+        json.dumps(
+            {"reporting": reporting, "expected": expected, "built_at": now.isoformat()},
+            indent=2,
+            sort_keys=True,
+        )
+        + "\n",
+        encoding="utf-8",
+    )
+
+
 def detect_chronic_transport_failures(
     failures: dict, threshold: int = CONSECUTIVE_TRANSPORT_FAILURE_ALERT_THRESHOLD
 ) -> list[str]:
@@ -730,6 +759,7 @@ def fetch_region_sections(
     health: dict | None = None,
     transport_failures: dict | None = None,
     transport_failure_details: dict | None = None,
+    completeness: dict | None = None,
 ) -> list[dict]:
     region_id = region_cfg["region"]["id"]
     region_name = region_cfg["region"]["name"]
@@ -737,6 +767,8 @@ def fetch_region_sections(
     for source in region_cfg.get("sources", []):
         if not source.get("enabled", True):
             continue
+        if completeness is not None:
+            completeness["expected"] += 1
         fetcher = FETCHERS.get(source["type"])
         if fetcher is None:
             logger.warning("Unknown source type %r for %s", source["type"], source["name"])
@@ -766,6 +798,8 @@ def fetch_region_sections(
                 " (transport error - not counted for health)" if transport_failed else "",
             )
             source_key = f"{region_id}:{source['name']}"
+            if not transport_failed and completeness is not None:
+                completeness["reporting"] += 1
             if health is not None and not transport_failed:
                 update_source_health(health, source_key, len(raw_items))
             # ROADMAP.md item 181: tracked regardless of transport_failed,
@@ -1301,7 +1335,12 @@ def build_sponsor_availability(sponsors_cfg: dict, region_summaries: list[dict])
     return availability
 
 
-def render_about_page(now: datetime, analytics: dict | None = None, contact_email: str | None = None) -> str:
+def render_about_page(
+    now: datetime,
+    analytics: dict | None = None,
+    contact_email: str | None = None,
+    source_completeness: dict | None = None,
+) -> str:
     """A real About page (ROADMAP.md Phase 11 #99) - the entity-clarity
     work item 22's GEO strategy was missing: who publishes this, why it
     exists, and how it's built, stated plainly for a reader or a
@@ -1320,6 +1359,7 @@ def render_about_page(now: datetime, analytics: dict | None = None, contact_emai
         og_image_url=SITE_BASE_URL + "og/default.png",
         organization_json_ld=build_organization_json_ld(),
         corrections_cta_url=build_corrections_cta_url(contact_email),
+        source_completeness=source_completeness,
     )
 
 
@@ -2064,7 +2104,7 @@ def build_sitemap_xml(region_summaries: list[dict], now: datetime) -> str:
 FEED_MAX_ITEMS = 50
 
 
-def build_feed_xml(feed_items: list[dict], now: datetime) -> str:
+def build_feed_xml(feed_items: list[dict], now: datetime, source_completeness: dict | None = None) -> str:
     """A real RSS 2.0 feed at /feed.xml (ROADMAP.md Phase 11 #79) - the
     site syndicating its *own* aggregated events, not republishing onto
     a third-party platform (that's item 48, correctly skipped for a
@@ -2104,6 +2144,15 @@ def build_feed_xml(feed_items: list[dict], now: datetime) -> str:
     """
     dated = sorted(feed_items, key=lambda e: e["date_iso"])[:FEED_MAX_ITEMS]
     url_counts = Counter(e["url"] for e in dated)
+    description = (
+        f"Upcoming events across every {SITE_NAME} region, soonest first - "
+        "aggregated automatically from village, library, park district and school-district calendars."
+    )
+    if source_completeness:
+        description += (
+            f" This build reached {source_completeness.get('reporting', 0)} of "
+            f"{source_completeness.get('expected', 0)} configured sources."
+        )
     items = []
     for e in dated:
         pub_dt = datetime.fromisoformat(e["date_iso"])
@@ -2129,8 +2178,7 @@ def build_feed_xml(feed_items: list[dict], now: datetime) -> str:
         "<channel>\n"
         f"  <title>{SITE_NAME} — Upcoming Local Events</title>\n"
         f"  <link>{SITE_BASE_URL}</link>\n"
-        f"  <description>Upcoming events across every {SITE_NAME} region, soonest first - "
-        "aggregated automatically from village, library, park district and school-district calendars.</description>\n"
+        f"  <description>{xml_escape(description)}</description>\n"
         f"  <lastBuildDate>{format_datetime(now)}</lastBuildDate>\n"
         + "\n".join(items)
         + ("\n" if items else "")
@@ -2139,7 +2187,7 @@ def build_feed_xml(feed_items: list[dict], now: datetime) -> str:
     )
 
 
-def build_llms_txt(region_summaries: list[dict]) -> str:
+def build_llms_txt(region_summaries: list[dict], source_completeness: dict | None = None) -> str:
     """llms.txt (llmstxt.org convention, ROADMAP.md Phase 11 #22 - GEO):
     a plain-language map of the site for an AI agent/crawler to read
     directly, generated at build time from the same region_summaries the
@@ -2155,8 +2203,16 @@ def build_llms_txt(region_summaries: list[dict]) -> str:
         "multiple times a week), so it stays current without a human "
         "keeping it that way.",
         "",
-        "## Regions",
     ]
+    if source_completeness:
+        lines += [
+            f"As of this build, {source_completeness.get('reporting', 0)} of "
+            f"{source_completeness.get('expected', 0)} configured sources reported "
+            "successfully; the rest is a source that didn't answer this time, not "
+            "missing coverage.",
+            "",
+        ]
+    lines.append("## Regions")
     for r in region_summaries:
         base = SITE_BASE_URL + r["path"]
         lines.append(f"- [{r['name']} ({r['zip']})]({base}): {r['tagline']}")
@@ -2783,6 +2839,10 @@ def main() -> None:
     transport_failures = load_transport_failures()
     transport_failure_details = load_transport_failure_details()
     weekend_history = load_weekend_history()
+    # ROADMAP.md item 197: numerator/denominator for this build's
+    # "N of M sources reported" fact, accumulated across every region's
+    # fetch_region_sections() call below.
+    source_completeness = {"expected": 0, "reporting": 0}
     # Static config (id/name/lat/lon), independent of fetch results, so
     # it's safe to build once before the fetch loop below - every
     # region's own nearby-regions strip (ROADMAP.md Phase 11 #52) needs
@@ -2840,6 +2900,7 @@ def main() -> None:
             health=source_health,
             transport_failures=transport_failures,
             transport_failure_details=transport_failure_details,
+            completeness=source_completeness,
         )
         annual_block = prepare_annual_events(region_cfg, now)
         if annual_block:
@@ -3263,7 +3324,7 @@ def main() -> None:
     (sponsor_dir / "index.html").write_text(sponsor_html, encoding="utf-8")
     logger.info("Wrote %s", sponsor_dir / "index.html")
 
-    about_html = render_about_page(now, analytics, contact_email=contact_email)
+    about_html = render_about_page(now, analytics, contact_email=contact_email, source_completeness=source_completeness)
     about_dir = OUTPUT_DIR / "about"
     about_dir.mkdir(parents=True, exist_ok=True)
     (about_dir / "index.html").write_text(about_html, encoding="utf-8")
@@ -3278,10 +3339,10 @@ def main() -> None:
     sitemap_urls = collect_sitemap_urls(region_summaries)
     (OUTPUT_DIR / "sitemap.xml").write_text(build_sitemap_xml(region_summaries, now), encoding="utf-8")
     (OUTPUT_DIR / "robots.txt").write_text(build_robots_txt(), encoding="utf-8")
-    (OUTPUT_DIR / "llms.txt").write_text(build_llms_txt(region_summaries), encoding="utf-8")
+    (OUTPUT_DIR / "llms.txt").write_text(build_llms_txt(region_summaries, source_completeness), encoding="utf-8")
     (OUTPUT_DIR / "CNAME").write_text(CUSTOM_DOMAIN + "\n", encoding="utf-8")
     (OUTPUT_DIR / f"{INDEXNOW_KEY}.txt").write_text(INDEXNOW_KEY, encoding="utf-8")
-    (OUTPUT_DIR / "feed.xml").write_text(build_feed_xml(feed_items, now), encoding="utf-8")
+    (OUTPUT_DIR / "feed.xml").write_text(build_feed_xml(feed_items, now, source_completeness), encoding="utf-8")
     logger.info("Wrote sitemap.xml, robots.txt, llms.txt, CNAME, feed.xml, and IndexNow key file")
     og_dir = OUTPUT_DIR / "og"
     og_dir.mkdir(parents=True, exist_ok=True)
@@ -3307,6 +3368,11 @@ def main() -> None:
     save_transport_failures(transport_failures)
     save_transport_failure_details(transport_failure_details)
     save_weekend_history(weekend_history)
+    write_source_completeness(source_completeness["reporting"], source_completeness["expected"], now)
+    logger.info(
+        "Source completeness: %d of %d configured sources reported.",
+        source_completeness["reporting"], source_completeness["expected"],
+    )
     # ROADMAP.md item 181 (forty-third research pass): logged, not
     # build-failing like the checks below - real, current
     # data/source_health.json already has exactly the 5 sources this

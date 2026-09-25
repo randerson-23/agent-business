@@ -10774,6 +10774,31 @@ The tonight-relevant part: this repo's newsletter cron fires **today at
      handling thin states gracefully rather than apologetically.
      Depends on item 194's per-build data.
 
+     🟢 **Shipped (first two bullets), 2026-09-25.** `build_digest.py`
+     now counts, per build, how many of the configured sources reported
+     (not transport-failed) versus how many are configured at all —
+     accumulated across every region inside `fetch_region_sections()`
+     via a new `completeness` counter dict — and persists the result
+     to a new `data/source_completeness.json`
+     (`{"reporting": N, "expected": M, "built_at": ...}`, same
+     add-a-new-file pattern as items 181/185/186, not a migration of
+     `source_health.json`'s per-source schema). Surfaced in exactly the
+     three checkable, non-noisy places the item proposed: `llms.txt`
+     ("As of this build, N of M configured sources reported
+     successfully…"), the About page's "How it's built" section ("This
+     build reached N of M configured sources…"), and `feed.xml`'s
+     channel `<description>`. No reader-facing banner added, per the
+     item's own instruction.
+
+     The third bullet — splitting "events as of" from "page built" into
+     two distinct timestamps — is **not done**. This build only adds
+     the completeness count; the single build timestamp this file
+     already emits (`generated_at`/`lastBuildDate`) still does the
+     "page built" job, and nothing yet computes a separate "newest
+     event data" timestamp. Left as a follow-up rather than folded in
+     here, since it is a different fact (freshness of content vs.
+     completeness of sources) and doesn't block shipping this one.
+
 198. **The three 404s are on platforms that definitely still publish
      iCal — which makes them a lookup, not a loss.** Item 192 read the
      three 404ing school feeds (AH School District 25, Palatine CCSD
@@ -11037,10 +11062,13 @@ between builds).
   newly-created `docs/<region-id>/` directories before staging.
 - Same for `data/source_health.json` (item 51),
   `data/source_transport_failures.json` (item 181),
-  `data/weekend_signal_history.json` (item 186), and
-  `data/source_transport_failure_details.json` (item 185) — always
-  `git restore` all four after a local build in this sandbox, never
-  stage any of them. This sandbox's network is blocked, so every source fetches 0
+  `data/weekend_signal_history.json` (item 186),
+  `data/source_transport_failure_details.json` (item 185), and
+  `data/source_completeness.json` (item 197) — always
+  `git restore` (or, for `source_completeness.json`, since it's a new
+  untracked file rather than one with committed history, `rm`) all
+  five after a local build in this sandbox, never stage any of them.
+  This sandbox's network is blocked, so every source fetches 0
   here; against the real trailing history from actual GitHub Actions
   runs, that reads as every source dying at once and `build_digest.py`
   will legitimately exit 1 - correct behavior, but committing that
