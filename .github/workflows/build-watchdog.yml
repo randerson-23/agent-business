@@ -1,0 +1,41 @@
+name: Build watchdog
+
+# ROADMAP.md item 199. build-digest.yml's own "Commit generated site"
+# step already emails the owner when a build *fails*. It does nothing
+# when the build simply never *runs* - exactly what the forty-seventh
+# research pass found: item 168's cron went weekly-only, and the site's
+# apparent daily freshness turned out to be a side effect of the build
+# loop's own hourly merges. When that loop paused, nothing rebuilt and
+# nothing noticed for three days.
+#
+# scripts/check_build_freshness.py does the actual check against
+# data/weekend_signal.json's generated_at (written by build_digest.py on
+# every real build) and fails loudly if the newest build is missing or
+# more than 36 hours old.
+
+on:
+  schedule:
+    # Tuesday 19:41 UTC - a different day and offset minute than every
+    # other cron in this repo (build-digest.yml: Monday 08:17 and daily
+    # 06:23; send-newsletter.yml: Wednesday 22:37; send-watchdog.yml:
+    # Sunday 15:13), deliberately: a watchdog sharing a schedule with the
+    # thing it watches would miss exactly the failure mode that
+    # motivated it (a schedule change eating an occurrence).
+    - cron: "41 19 * * 2"
+  workflow_dispatch: {}
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: actions/setup-python@v7
+        with:
+          python-version: "3.11"
+
+      - name: Check the site has actually rebuilt recently
+        run: python scripts/check_build_freshness.py
