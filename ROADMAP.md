@@ -399,6 +399,12 @@ Cloudflare Email Routing later. No merge needed.
 Webmaster Tools (part of item 73). It skips re-verification entirely and
 covers Bing, Yahoo and DuckDuckGo - and Bing's index feeds ChatGPT
 search, which item 22's whole AI-citation effort depends on.
+**Moved up by item 204 (forty-eighth pass, 2026-09-26):** this is now
+the most useful two-minute action on this list. Bing's index is the
+source for ChatGPT search, Copilot, Edge and DuckDuckGo, and is reported
+to drive about 30% of AI-referred local traffic. In Bing Webmaster
+Tools, choose **Import from Google Search Console**. It is an action,
+not a decision, so it does not count against the three-decision limit.
 
 #### Competitors reviewed (2026-08-27)
 
@@ -11150,6 +11156,144 @@ verification signal for AI Mode), and **client-side date correction on
 static pages** as a design/UX pattern (using the viewer's clock and the
 `date_iso` already on every card, so date-scoped pages stay correct
 between builds).
+
+
+#### Research pass 2026-09-26 (forty-eighth pass)
+
+This is the first pass on the daily cadence. The build loop shipped
+item 199 (#254) within a minute of the owner flag landing, then items
+200 and 202 (#255), and answered item 188 (#256: nothing on the site is
+article-shaped, so Google News is closed). The owner-flag block has been
+removed as instructed. `/today/` is now stamped `2026-09-26 01:03 UTC`
+and headlines Friday, September 25, which was correct in Chicago at
+build time.
+
+Checking item 199's shipped version against the item's own
+specification found one gap.
+
+| Angle | Finding | Consequence |
+|---|---|---|
+| **The new watchdog's schedule** | `build-watchdog.yml` fails if the newest build is **more than 36 hours old**, but it only runs **`41 19 * * 2`: Tuesdays**. A build that stops on a Wednesday is not reported until the following Tuesday | Worst-case detection lag is about **six and a half days** past the threshold. That is roughly the three-day outage item 199 was filed for, twice over (item 203) |
+| **The first daily build** | `build-digest.yml` now has a daily `23 6 * * *`. Today's first occurrence had not committed by 11:34 UTC, 5h11m later. That is inside the 5h27m–6h54m lateness item 110 measured, so it is **not yet a finding** | Checked, not concluded. The next pass should confirm the daily cron actually produces a commit each day (item 203) |
+| **Bing as the pipe behind AI search** | Bing's index powers **ChatGPT search, Microsoft Copilot, Edge and DuckDuckGo**, and is reported to drive **~30% of AI-referred local traffic**. ChatGPT's local answers are described as effectively Bing-mediated | The GSC → Bing Webmaster Tools import has been parked under "Also worth doing, not blocking" since 2026-09-16. It is a two-minute owner action, and the case for it is now stronger than when it was parked (item 204) |
+| **Bing Places / Apple Business** | Both are free listing platforms for businesses with a **physical place or service area**: map place cards, Showcases, Action Links. Apple rebranded Business Connect to **Apple Business** on 2026-04-14; Square integrated with it on 2026-09-24 | **Not applicable.** A website publisher has no place card to claim. Recorded so no future pass files "list on Apple Maps / Bing Places" |
+| **Home Screen web apps (design/UX)** | On **iOS 26, every site added to the Home Screen opens as a web app by default**, and Safari surfaces "Add to Home Screen" more prominently when the site has a **valid Web App Manifest**. iOS web push is only available to Home Screen web apps | A manifest is one static JSON file plus icons. It gives a returning reader an app-like shortcut at no ongoing cost, and it is the prerequisite item 189 would eventually need (item 205) |
+
+#### P1 (new)
+
+203. **The build watchdog checks for 36-hour staleness once a week.**
+     Item 199 asked for a check that "the committed build stamp is more
+     than ~36 hours old, say so in a failing check", and specifically
+     for "the detector that would have caught this on Wednesday night
+     instead of in a research pass on Friday." `build-watchdog.yml` and
+     `scripts/check_build_freshness.py` implement the threshold
+     correctly. The schedule does not match it: the watchdog runs only
+     on **Tuesdays at 19:41 UTC**.
+
+     The workflow's own comment explains the choice: a watchdog should
+     not share a schedule with the thing it watches, or one schedule
+     change can silence both. That reasoning is right, and it is about
+     *which minute* the watchdog runs, not *how often*. A monitor has to
+     run at least as often as its threshold, or the threshold is
+     meaningless. Under the current schedule, a build that stops on
+     Wednesday morning crosses 36 hours on Thursday evening and is not
+     reported until the following Tuesday evening, which is later than
+     the three-day `/today/` outage this was built to catch.
+
+     What to build:
+
+     - **Run the watchdog daily at an hour and minute that no other cron
+       uses**, e.g. `41 19 * * *`. This keeps the separation the comment
+       argues for, because it is still a different trigger from
+       `build-digest.yml`'s `23 6 * * *` and `17 8 * * 1`, with a daily
+       frequency that matches a 36-hour threshold. Same change, one
+       field.
+     - **Confirm the daily build actually lands.** Today's first
+       `23 6 * * *` occurrence had not committed after 5h11m. That is
+       still inside item 110's measured lateness, so nothing is wrong
+       yet. It is worth checking once, because item 110 also documented
+       that changing a workflow's cron can drop the pending occurrence,
+       and item 199 changed exactly that. A daily watchdog would answer
+       this question by itself from tomorrow on.
+
+     Small, one-line, and it closes item 199 properly.
+
+204. **Import the site into Bing Webmaster Tools. It is now one of the
+     most useful two minutes available.** This is an owner action that
+     has been parked under "Also worth doing, not blocking" since
+     2026-09-16 (item 73's second half). This pass's research moves it
+     up, though it is still an action and not a new decision, so item
+     165's three-decision limit is unaffected.
+
+     The evidence: Bing's index is the source for **ChatGPT search,
+     Microsoft Copilot, Edge and DuckDuckGo**, and is reported to drive
+     roughly **30% of AI-referred local traffic**. ChatGPT's local
+     recommendations are described as effectively Bing-mediated. The
+     site already pings Bing on every rebuild through IndexNow (item
+     72). IndexNow tells Bing *that* something changed. Webmaster Tools
+     is where Bing reports whether it indexed the site at all, and
+     where the sitemap is registered. Without the property, the IndexNow
+     pings go to a search engine that cannot show us what it did with
+     them.
+
+     The steps are unchanged from item 73: in Bing Webmaster Tools,
+     choose **Import from Google Search Console**. That skips
+     re-verification entirely, because GSC was verified on 2026-09-16.
+
+     This pass has moved the line in the Needs Ryan section to the top
+     of its non-decision checklist, with this evidence attached. It
+     does not displace the ranked decisions. Bing Places and Apple
+     Business were checked and do **not** apply, since both are
+     place-card platforms for businesses with a physical location.
+
+#### P2 (new)
+
+205. **Add a Web App Manifest, so a returning reader can keep the site on
+     their Home Screen.** This is the design/UX angle for the pass, and
+     it serves "can it keep an audience" directly. On **iOS 26, every
+     site added to the Home Screen opens as a web app by default**, and
+     Safari offers "Add to Home Screen" more prominently when a site
+     has a valid manifest. A parent who checks the site every Friday
+     gets an icon next to their other apps, which opens straight into
+     their town's page with no browser chrome.
+
+     The build is small and static:
+
+     - **`docs/manifest.webmanifest`** with `name` ("Within Ten"),
+       `short_name`, `start_url` (the hub, so the region picker works),
+       `display: "standalone"`, `theme_color` and `background_color`
+       from the Modernist palette (item 174: `#ec3013` / `#f3f2f2`), and
+       icons at the standard sizes, generated once from the existing
+       brand mark.
+     - **A `<link rel="manifest">` and an `apple-touch-icon`** in every
+       template's `<head>`. No framework and no build step beyond what
+       `build_digest.py` already writes.
+
+     **The constraint that matters: do not add an offline-caching
+     service worker.** Many manifest guides pair it with one, but a
+     cache-first service worker would reintroduce exactly the stale
+     `/today/` problem items 199 and 200 just fixed, and in a form
+     that is harder to see, because the reader's device would keep
+     serving an old build after the server had a new one. The manifest
+     alone is enough for Home Screen install. If a service worker is
+     ever added (for example for item 189's push), it must be
+     network-first for every HTML page.
+
+     Honest ceiling: this makes returning easier. It does not bring
+     anyone new. It ranks behind every acquisition item, and it is here
+     because it costs almost nothing and compounds with item 184's
+     calendar feed and item 183's subscribe link, which are the other
+     ways this site keeps a reader.
+
+Competitors reviewed this pass: **Bing as the index behind AI search**
+(powers ChatGPT search, Copilot, Edge and DuckDuckGo; reported ~30% of
+AI-referred local traffic), **Bing Places and Apple Business** (Apple
+Business Connect rebranded 2026-04-14; both are place-card platforms
+for businesses with a physical location, so they do not apply to a
+website publisher; recorded as a negative result), and **Home Screen
+web apps on iOS 26** as a design/UX pattern (manifest-driven install,
+standalone display by default, and web push available only to
+installed web apps).
 
 
 ## Working agreements for autonomous iteration
