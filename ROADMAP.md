@@ -11218,6 +11218,14 @@ specification found one gap.
 
      Small, one-line, and it closes item 199 properly.
 
+     🟢 **Shipped, 2026-09-26.** `build-watchdog.yml`'s cron changed
+     from `41 19 * * 2` (Tuesdays only) to `41 19 * * *` (daily, same
+     offset minute) — the one-field change the item asked for. The
+     "confirm the daily build actually lands" sub-point is deliberately
+     left open per the item's own text: it resolves itself from the
+     next real GitHub Actions occurrence, not from anything this
+     sandbox can force.
+
 204. **Import the site into Bing Webmaster Tools. It is now one of the
      most useful two minutes available.** This is an owner action that
      has been parked under "Also worth doing, not blocking" since

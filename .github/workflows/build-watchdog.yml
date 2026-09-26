@@ -15,13 +15,20 @@ name: Build watchdog
 
 on:
   schedule:
-    # Tuesday 19:41 UTC - a different day and offset minute than every
-    # other cron in this repo (build-digest.yml: Monday 08:17 and daily
-    # 06:23; send-newsletter.yml: Wednesday 22:37; send-watchdog.yml:
-    # Sunday 15:13), deliberately: a watchdog sharing a schedule with the
-    # thing it watches would miss exactly the failure mode that
-    # motivated it (a schedule change eating an occurrence).
-    - cron: "41 19 * * 2"
+    # Daily 19:41 UTC (ROADMAP.md item 203) - a monitor has to run at
+    # least as often as the threshold it checks, or the threshold is
+    # meaningless. The original weekly Tuesday slot checked a 36-hour
+    # staleness threshold only once every seven days, so a build that
+    # stopped on a Wednesday morning wasn't reported until the
+    # following Tuesday evening - six and a half days past the
+    # threshold, longer than the three-day /today/ outage this
+    # watchdog exists to catch. Still a distinct offset minute from
+    # every other cron in this repo (build-digest.yml: Monday 08:17
+    # and daily 06:23; send-newsletter.yml: Wednesday 22:37;
+    # send-watchdog.yml: Sunday 15:13), so it keeps the separation the
+    # "don't share a schedule with the thing you watch" reasoning
+    # argues for - that reasoning is about which minute, not how often.
+    - cron: "41 19 * * *"
   workflow_dispatch: {}
 
 permissions:
