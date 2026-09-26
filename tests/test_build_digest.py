@@ -1778,6 +1778,45 @@ def test_render_region_page_lists_fetched_events_and_tags():
     assert 'data-tag="free"' in html
 
 
+def test_render_region_page_cards_carry_date_iso_for_client_side_correction():
+    # ROADMAP.md item 200: the client-side script hides a card whose
+    # date has passed the viewer's own clock - it needs the raw
+    # date_iso on the card itself, not just the human-readable date.
+    blocks = [
+        {
+            "section": "Village News",
+            "events": [
+                {"title": "Board Meeting", "detail": "", "url": "https://x/1", "date": "Aug 24", "date_iso": "2026-08-24", "tags": []}
+            ],
+        }
+    ]
+    html = build_digest.render_region_page(
+        {"region": REGION}, blocks, {"title": "", "detail": "", "url": ""}, [], datetime.now(timezone.utc)
+    )
+    assert 'data-date-iso="2026-08-24"' in html
+
+
+def test_render_region_page_omits_build_scope_attributes_when_not_given():
+    html = build_digest.render_region_page(
+        {"region": REGION}, [], {"title": "", "detail": "", "url": ""}, [], datetime.now(timezone.utc)
+    )
+    main_tag = html.split("<main")[1].split(">")[0]
+    assert "data-build-scope-end-iso" not in main_tag
+
+
+def test_render_region_page_includes_build_scope_attributes_when_given():
+    html = build_digest.render_region_page(
+        {"region": REGION}, [], {"title": "", "detail": "", "url": ""}, [], datetime.now(timezone.utc),
+        build_scope_end_iso="2026-09-25",
+        stale_empty_message="Nothing listed for today yet —",
+        empty_follow_url="https://withintenmiles.com/mount-prospect-60056/this-weekend/",
+        empty_follow_label="here's this weekend",
+    )
+    assert 'data-build-scope-end-iso="2026-09-25"' in html
+    assert 'data-stale-empty-message="Nothing listed for today yet —"' in html
+    assert 'data-empty-follow-url="https://withintenmiles.com/mount-prospect-60056/this-weekend/"' in html
+
+
 def test_render_region_page_heading_and_subheading_overrides():
     html = build_digest.render_region_page(
         {"region": REGION}, [], {"title": "", "detail": "", "url": ""}, [], datetime.now(timezone.utc),
@@ -2012,6 +2051,31 @@ def test_filter_past_events_drops_yesterday_keeps_today_and_future():
     ]
     filtered = build_digest.filter_past_events(blocks, today)
     assert [e["title"] for e in filtered[0]["events"]] == ["today", "future", "undated"]
+
+
+def test_filter_past_events_then_event_json_ld_never_emits_a_past_startdate():
+    # ROADMAP.md item 202: Event JSON-LD is now read as a checkable
+    # trust claim, not just a rich-result trigger, so a startDate before
+    # the build date is a false claim, not just a stale one. This proves
+    # the actual pipeline composition (filter_past_events feeding
+    # build_event_json_ld, the same order main() uses) rather than
+    # asserting either function in isolation.
+    today = date(2026, 9, 21)
+    yesterday = today - timedelta(days=1)
+    tomorrow = today + timedelta(days=1)
+    blocks = [
+        {
+            "section": "A",
+            "events": [
+                {"title": "stale", "url": "https://x/1", "date_iso": datetime.combine(yesterday, time(9, 0)).isoformat()},
+                {"title": "future", "url": "https://x/2", "date_iso": datetime.combine(tomorrow, time(9, 0)).isoformat()},
+            ],
+        }
+    ]
+    filtered = build_digest.filter_past_events(blocks, today)
+    json_ld = build_digest.build_event_json_ld(filtered)
+    assert "stale" not in json_ld
+    assert "future" in json_ld
 
 
 def test_filter_past_events_keeps_each_day_of_a_multi_day_series_independently():
@@ -2294,6 +2358,48 @@ def test_render_merged_hub_page_supports_a_different_slug_and_copy():
     assert "<h1>Free Things To Do Near You</h1>" in html
     assert "Free Concert in the Park" in html
     assert f'rel="canonical" href="{build_digest.SITE_BASE_URL}free/"' in html
+
+
+def test_render_merged_hub_page_cards_carry_date_iso():
+    sections = [
+        {
+            "region_name": "Palatine",
+            "region_url": f"{build_digest.SITE_BASE_URL}palatine-60067/",
+            "events": [{"title": "Free Concert", "url": "https://x/", "detail": "", "date": "Sep 19", "date_iso": "2026-09-19", "tags": []}],
+        }
+    ]
+    html = build_digest.render_merged_hub_page(
+        sections, datetime.now(timezone.utc), slug="today", heading="Happening Today Near You",
+        subheading="", meta_description="",
+        empty_message="Nothing dated for today yet across any region.",
+    )
+    assert 'data-date-iso="2026-09-19"' in html
+
+
+def test_render_merged_hub_page_includes_build_scope_attributes_when_given():
+    # ROADMAP.md item 200: same client-side date correction as the
+    # per-region pages, driven by the hub-level today/weekend crons.
+    html = build_digest.render_merged_hub_page(
+        [], datetime.now(timezone.utc), slug="today", heading="Happening Today Near You",
+        subheading="", meta_description="",
+        empty_message="Nothing dated for today yet across any region.",
+        build_scope_end_iso="2026-09-25",
+        stale_empty_message="Nothing listed for today yet —",
+        empty_follow_url="https://withintenmiles.com/this-weekend/",
+        empty_follow_label="here's this weekend",
+    )
+    assert 'data-build-scope-end-iso="2026-09-25"' in html
+    assert 'data-empty-follow-url="https://withintenmiles.com/this-weekend/"' in html
+
+
+def test_render_merged_hub_page_omits_build_scope_attributes_when_not_given():
+    html = build_digest.render_merged_hub_page(
+        [], datetime.now(timezone.utc), slug="free", heading="Free Things To Do Near You",
+        subheading="", meta_description="",
+        empty_message="Nothing tagged free yet across any region.",
+    )
+    main_tag = html.split("<main")[1].split(">")[0]
+    assert "data-build-scope-end-iso" not in main_tag
 
 
 def test_render_merged_hub_page_shows_its_own_empty_message():

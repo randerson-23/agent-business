@@ -13,24 +13,6 @@ Two loops write to this file:
   the idea backlog in **Phase 11**. It only edits this file — it never
   implements.
 
-### ▶ Next up for the build loop — item 199 (owner-flagged, 2026-09-25)
-
-**Ryan has asked for item 199 to be the build loop's next item, ahead of
-everything else in the backlog.** Do it before picking anything else.
-
-Why it jumps the queue: `build-digest.yml` is only scheduled for Mondays
-(`17 8 * * 1`). Every other rebuild has come from build-loop merges via
-the `push` trigger. With the build loop now running every 6 hours instead
-of hourly, those incidental rebuilds are rarer, and the site's date-scoped
-pages will routinely be stale — `/today/` read "Tuesday, September 22"
-from Wednesday through Friday this week. The fix is small: a daily cron on
-`build-digest.yml` plus a staleness check. Full details are in item 199
-below (forty-seventh research pass).
-
-Once item 199 ships, mark it 🟢 in place and delete this block. Item 200
-(client-side date correction) is the natural follow-on but is **not**
-part of this flag.
-
 ## Vision
 
 Start with one hyperlocal digest (Mount Prospect, IL / 60056) and grow it
@@ -10898,8 +10880,7 @@ this pass's main finding.
 
 #### P1 (new)
 
-199. ▶ **NEXT UP — owner-flagged 2026-09-25, see the block at the top of
-     this file.** **The site only rebuilds on Mondays, and nobody knew because the
+199. **The site only rebuilds on Mondays, and nobody knew because the
      build loop's merges were covering for it.** `/today/` currently
      reads *"Tuesday, September 22 — everything happening today"*. It
      is Friday. The last rebuild of any kind was 2026-09-23 00:59 UTC.
@@ -11013,6 +10994,34 @@ this pass's main finding.
      pipeline stays a static build, and this only stops a static build
      from making claims about a day it did not see.
 
+     🟢 **Shipped, 2026-09-26.** Every card in `region.html.j2` and
+     `merged_hub.html.j2` now carries `data-date-iso`, and both
+     templates' `<main>` element carries `data-build-scope-end-iso` on
+     the today/weekend views only (the two whose headline makes a
+     dated claim) plus a `data-stale-empty-message` /
+     `data-empty-follow-url` / `data-empty-follow-label` triple.  A
+     small shared inline script (no framework, no build step) hides
+     any card whose date has passed the viewer's own local clock, and
+     — only once the viewer's date has moved past the page's own
+     `build_scope_end_iso` — swaps in the corrected message ("Nothing
+     listed for today yet — here's this weekend" / "This weekend's
+     events have passed — here's today") with a working link, in
+     place of whatever empty-state markup the build shipped. Verified
+     against real generated HTML in a headless browser with the
+     system clock frozen both inside and past the build's window: cards
+     stay visible and untouched inside the window, and correctly hide
+     with the message swapped in once past it. `/free/` and the main
+     "all events" view intentionally carry no scope-end attribute and
+     no correction — they make no dated headline claim to get wrong.
+     9 new tests (7 template-attribute tests, plus item 202's own
+     composition test below).
+
+     The third bullet ("keep the build stamp honest and visible")
+     needed no new work — `region.html.j2`'s `.freshness-note` (item
+     163) and both templates' footer `Generated {{ generated_at }}`
+     line already do this; this item only had to make the *content*
+     correct itself to match what that stamp honestly says.
+
 201. **The village's own calendar outranks the site for its head term,
      and it is the one source that blocks us.** Re-checked "things to
      do in Mount Prospect IL this weekend" per standing instruction.
@@ -11078,6 +11087,19 @@ this pass's main finding.
      199 closes. Filed at P3 because it is a constraint on items
      199/200, not separate work.
 
+     🟢 **Shipped, 2026-09-26.** Verified rather than assumed:
+     `filter_past_events()` is applied once, in `main()`, to every
+     region's `blocks` before any date-scoped view (including the
+     JSON-LD-bearing "all events" page) is built from it — confirmed
+     by reading the call site, not inferred from the docstring. Added
+     `test_filter_past_events_then_event_json_ld_never_emits_a_past_startdate`,
+     which composes the two real functions the way `main()` does
+     (`filter_past_events` feeding `build_event_json_ld`) rather than
+     testing either in isolation, and asserts a stale event's title
+     never reaches the emitted JSON-LD while a future one does. The
+     risk this item named — the gap *between* builds — is item 199/200's
+     to close, and both are now shipped above.
+
 **Re-ranking note for the Needs Ryan section.** The forty-fifth pass
 added a warning that "a proven live send" was in doubt. That doubt is
 now half resolved. The list genuinely holds one confirmed subscriber,
@@ -11116,10 +11138,10 @@ between builds).
   `data/source_transport_failures.json` (item 181),
   `data/weekend_signal_history.json` (item 186),
   `data/source_transport_failure_details.json` (item 185), and
-  `data/source_completeness.json` (item 197) — always
-  `git restore` (or, for `source_completeness.json`, since it's a new
-  untracked file rather than one with committed history, `rm`) all
-  five after a local build in this sandbox, never stage any of them.
+  `data/source_completeness.json` (item 197, committed by a real CI
+  build for the first time 2026-09-25 — `git restore` it like the
+  others now, not `rm`) — always `git restore` all five after a local
+  build in this sandbox, never stage any of them.
   This sandbox's network is blocked, so every source fetches 0
   here; against the real trailing history from actual GitHub Actions
   runs, that reads as every source dying at once and `build_digest.py`

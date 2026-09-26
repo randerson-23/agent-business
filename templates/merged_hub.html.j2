@@ -267,7 +267,7 @@
 </header>
 
 <div class="wrap">
-  <main>
+  <main{% if build_scope_end_iso %} data-build-scope-end-iso="{{ build_scope_end_iso }}" data-stale-empty-message="{{ stale_empty_message }}" data-empty-follow-url="{{ empty_follow_url }}" data-empty-follow-label="{{ empty_follow_label }}"{% endif %}>
   {% if region_sections %}
     {% for section in region_sections %}
     <section class="block">
@@ -279,7 +279,7 @@
            bug confirmed with a headless-browser test before fixing
            (ROADMAP.md item 146). -->
       {% set tray_item = {"id": (item.url or item.title) ~ ("|" ~ item.date_iso if item.date_iso else ""), "title": item.title, "url": item.url or "", "date": item.date or None, "date_iso": item.date_iso or None, "detail": item.detail or "", "region_name": section.region_name, "region_url": section.region_url} %}
-      <div class="card">
+      <div class="card" data-date-iso="{{ item.date_iso or '' }}">
         <button type="button" class="tray-star" data-item='{{ tray_item | tojson }}' aria-pressed="false" aria-label="Add {{ item.title }} to My Weekend">☆</button>
         {% if item.series %}<div class="series">{{ item.series }}</div>{% endif %}
         {% if item.date %}<div class="date">{{ item.date }}</div>{% endif %}
@@ -522,6 +522,51 @@
 
   syncStars();
   render();
+})();
+</script>
+<script>
+// ROADMAP.md item 200: same client-side date correction as
+// region.html.j2's own copy of this script - see that file for the
+// full rationale (item 199's "Tuesday, September 22" read on a Friday).
+// Never fetches anything - the static HTML above is still the complete
+// no-JS fallback, just possibly stale the same way it always was.
+(function () {
+  function localIso(d) {
+    return d.getFullYear() + "-" + String(d.getMonth() + 1).padStart(2, "0") + "-" + String(d.getDate()).padStart(2, "0");
+  }
+  var todayIso = localIso(new Date());
+  document.querySelectorAll(".card[data-date-iso]").forEach(function (card) {
+    var iso = card.getAttribute("data-date-iso");
+    if (iso && iso.slice(0, 10) < todayIso) card.style.display = "none";
+  });
+  var main = document.querySelector("main[data-build-scope-end-iso]");
+  if (!main) return;
+  var scopeEnd = main.getAttribute("data-build-scope-end-iso");
+  if (!scopeEnd || todayIso <= scopeEnd) return;
+  var anyVisible = false;
+  main.querySelectorAll(".card-grid").forEach(function (grid) {
+    var visible = Array.prototype.some.call(grid.children, function (el) { return el.style.display !== "none"; });
+    if (visible) { anyVisible = true; return; }
+    var section = grid.closest("section");
+    if (section) section.style.display = "none";
+  });
+  if (anyVisible) return;
+  var note = document.createElement("div");
+  note.className = "empty-state";
+  note.textContent = main.getAttribute("data-stale-empty-message") + " ";
+  var followUrl = main.getAttribute("data-empty-follow-url");
+  if (followUrl) {
+    var a = document.createElement("a");
+    a.href = followUrl;
+    a.textContent = main.getAttribute("data-empty-follow-label") || "see what's next";
+    note.appendChild(a);
+  }
+  var existing = main.querySelector(".empty-state");
+  if (existing) {
+    existing.replaceWith(note);
+  } else {
+    main.appendChild(note);
+  }
 })();
 </script>
 {% if analytics and analytics.configured %}
