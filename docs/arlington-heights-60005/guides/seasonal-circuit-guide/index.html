@@ -753,7 +753,7 @@
         <!-- id folds in date_iso - see the Editor's Pick tray_item above
              for why (ROADMAP.md item 146). -->
         
-        <div class="card" data-tags="outdoor">
+        <div class="card" data-tags="outdoor" data-date-iso="">
           
           
           
@@ -772,7 +772,7 @@
         <!-- id folds in date_iso - see the Editor's Pick tray_item above
              for why (ROADMAP.md item 146). -->
         
-        <div class="card" data-tags="outdoor,free">
+        <div class="card" data-tags="outdoor,free" data-date-iso="">
           
           
           
@@ -791,7 +791,7 @@
         <!-- id folds in date_iso - see the Editor's Pick tray_item above
              for why (ROADMAP.md item 146). -->
         
-        <div class="card" data-tags="outdoor,kid_friendly">
+        <div class="card" data-tags="outdoor,kid_friendly" data-date-iso="">
           
           
           
@@ -885,7 +885,7 @@
     <a href="https://withintenmiles.com/sponsor/">sponsor page</a>.
     <a href="https://withintenmiles.com/about/">About</a>.
     <a href="https://withintenmiles.com/trick-or-treat/">Trick-or-treat hours</a>.
-    <br>Generated 2026-09-25 19:25 UTC.
+    <br>Generated 2026-09-26 01:03 UTC.
     
     <br><a href="https://withintenmiles.com/arlington-heights-60005/weekly-summary.txt">Copy this week's summary</a> — a plain-text block ready to paste into a local group.
   </footer>
@@ -911,7 +911,7 @@
 
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "How current is this guide?", "acceptedAnswer": {"@type": "Answer", "text": "It's regenerated automatically from the village, library, and park district's own listings, typically several times a week - not a one-time write-up that goes stale."}}, {"@type": "Question", "name": "Is this every event or business, or just what's listed here?", "acceptedAnswer": {"@type": "Answer", "text": "Only what the linked public sources publish. For full details, hours, or anything not listed here, check the official page each item links to."}}, {"@type": "Question", "name": "How do I see what's happening in Arlington Heights this specific weekend?", "acceptedAnswer": {"@type": "Answer", "text": "See the <a href=\"https://withintenmiles.com/arlington-heights-60005/this-weekend/\">weekend view<\/a>, which only shows items with a known date in the coming Friday-Sunday."}}, {"@type": "Question", "name": "Can I add an event, or suggest a business for the directory?", "acceptedAnswer": {"@type": "Answer", "text": "Yes - <a href=\"https://github.com/randerson-23/agent-business/issues/new?template=event-submission.yml\">submit an event<\/a> and a person reviews it before it goes live, or a business owner can <a href=\"https://withintenmiles.com/sponsor/\">inquire about a listing<\/a>."}}]}</script>
 
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebPage", "name": "Arlington Heights — Within Ten", "url": "https://withintenmiles.com/arlington-heights-60005/guides/seasonal-circuit-guide/", "dateModified": "2026-09-25T19:25:05.303269+00:00", "isPartOf": {"@type": "WebSite", "name": "Within Ten", "url": "https://withintenmiles.com/", "publisher": {"@id": "https://withintenmiles.com/about/#organization"}}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebPage", "name": "Arlington Heights — Within Ten", "url": "https://withintenmiles.com/arlington-heights-60005/guides/seasonal-circuit-guide/", "dateModified": "2026-09-26T01:03:22.504416+00:00", "isPartOf": {"@type": "WebSite", "name": "Within Ten", "url": "https://withintenmiles.com/", "publisher": {"@id": "https://withintenmiles.com/about/#organization"}}}</script>
 <script>
 (function () {
   var activeTags = new Set();
@@ -1153,6 +1153,55 @@
 
   syncStars();
   render();
+})();
+</script>
+<script>
+// ROADMAP.md item 200: a static build can't know the viewer's real
+// clock, so /today/ and /this-weekend/ have gone stale between builds
+// with nothing on the page saying so (item 199's own headline bug -
+// "Tuesday, September 22" read on a Friday). Every card already carries
+// its own date_iso; this just uses the viewer's own clock, already
+// correct, to hide what has passed and say so plainly when nothing
+// this page covers is left. Never fetches anything - the static HTML
+// above is still the complete no-JS fallback, just possibly stale the
+// same way it always was before this ran.
+(function () {
+  function localIso(d) {
+    return d.getFullYear() + "-" + String(d.getMonth() + 1).padStart(2, "0") + "-" + String(d.getDate()).padStart(2, "0");
+  }
+  var todayIso = localIso(new Date());
+  document.querySelectorAll(".card[data-date-iso]").forEach(function (card) {
+    var iso = card.getAttribute("data-date-iso");
+    if (iso && iso.slice(0, 10) < todayIso) card.style.display = "none";
+  });
+  var main = document.querySelector("main[data-build-scope-end-iso]");
+  if (!main) return;
+  var scopeEnd = main.getAttribute("data-build-scope-end-iso");
+  if (!scopeEnd || todayIso <= scopeEnd) return;
+  var anyVisible = false;
+  main.querySelectorAll(".card-grid").forEach(function (grid) {
+    var visible = Array.prototype.some.call(grid.children, function (el) { return el.style.display !== "none"; });
+    if (visible) { anyVisible = true; return; }
+    var section = grid.closest("section");
+    if (section) section.style.display = "none";
+  });
+  if (anyVisible) return;
+  var note = document.createElement("p");
+  note.className = "empty";
+  note.textContent = main.getAttribute("data-stale-empty-message") + " ";
+  var followUrl = main.getAttribute("data-empty-follow-url");
+  if (followUrl) {
+    var a = document.createElement("a");
+    a.href = followUrl;
+    a.textContent = main.getAttribute("data-empty-follow-label") || "see what's next";
+    note.appendChild(a);
+  }
+  var existing = main.querySelector("p.empty");
+  if (existing) {
+    existing.replaceWith(note);
+  } else {
+    main.appendChild(note);
+  }
 })();
 </script>
 
