@@ -10024,6 +10024,36 @@ Network-wide the weekend is now **18 events**, up from 10 this morning.
      question has an answer; a negative answer is a perfectly good
      outcome and saves the work.
 
+     🔴 **Answered — no, 2026-09-26.** Checked directly against the
+     real codebase rather than guessed:
+
+     - `docs/feed.xml` advertises **only dated events** (`<item>`
+       entries built from `feed_items`, one per event). It carries no
+       entry for any guide page at all — the seasonal-guide family
+       item 188 itself named as the likely candidate isn't in the feed
+       to begin with.
+     - Guides render through the same `region.html.j2` every other
+       view uses (`nav_current="guides"`), which carries the same
+       page-wide `Generated {{ generated_at }}` footer and item 163's
+       "last checked" freshness note every other page has — both
+       build-time facts, not a per-guide publication date.
+     - A repo-wide search for `Article`/`NewsArticle`/`BlogPosting`
+       JSON-LD types, `datePublished`, or an `author` property (the
+       schema.org shape a News surface actually reads for
+       authoritativeness) returns **zero matches**. Item 130's real
+       byline ("Ryan Anderson") lives on the About page and in the
+       site-wide `Organization` JSON-LD only — it says who runs the
+       *site*, not who wrote or dated any individual guide.
+
+     Nothing this site currently publishes is article-shaped. Per this
+     item's own instruction, that is the answer, not a gap to fill —
+     no Google News work is queued. If the seasonal-guide family (item
+     112/141) ever grows a real per-guide publish date and byline for
+     its own sake, this question is worth re-checking then; building
+     that structure *for* this surface, with no other use, would be
+     exactly the speculative complexity this file's working agreements
+     rule out.
+
 #### P3 (new)
 
 189. **Web push for the weekend digest — architecturally free, blocked
