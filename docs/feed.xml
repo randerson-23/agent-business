@@ -3,21 +3,14 @@
 <channel>
   <title>Within Ten — Upcoming Local Events</title>
   <link>https://withintenmiles.com/</link>
-  <description>Upcoming events across every Within Ten region, soonest first - aggregated automatically from village, library, park district and school-district calendars. This build reached 17 of 25 configured sources.</description>
-  <lastBuildDate>Sat, 26 Sep 2026 12:58:27 +0000</lastBuildDate>
+  <description>Upcoming events across every Within Ten region, soonest first - aggregated automatically from village, library, park district and school-district calendars. This build reached 14 of 25 configured sources.</description>
+  <lastBuildDate>Sat, 26 Sep 2026 18:56:31 +0000</lastBuildDate>
   <item>
     <title>Arlington Heights: One Book, One Village at the Farmers Market</title>
     <link>https://www.ahml.info/scheduling/reservation/226806</link>
     <guid isPermaLink="true">https://www.ahml.info/scheduling/reservation/226806</guid>
     <description></description>
     <pubDate>Sat, 26 Sep 2026 00:00:00 +0000</pubDate>
-  </item>
-  <item>
-    <title>Mount Prospect: Fall Frenzy</title>
-    <link>https://www.mppd.org/event/fall-frenzy/</link>
-    <guid isPermaLink="true">https://www.mppd.org/event/fall-frenzy/</guid>
-    <description>Fall Frenzy (Ages 5-10) Celebrate the beauty of the changing season with a burst of creativity! Join us in the Studio for this “Fall Frenzy” workshop, where…</description>
-    <pubDate>Sat, 26 Sep 2026 09:30:00 +0000</pubDate>
   </item>
   <item>
     <title>Mount Prospect: Potty Palooza</title>
@@ -53,7 +46,7 @@
   <item>
     <title>Mount Prospect: Mount Prospect Farmers Market</title>
     <link>https://mplions.org/event/farmers-market/</link>
-    <guid isPermaLink="true">https://mplions.org/event/farmers-market/</guid>
+    <guid isPermaLink="false">https://mplions.org/event/farmers-market/#2026-09-27T08:00:00</guid>
     <description>Local produce and vendors, organized by the Mount Prospect Lions Club, rain or shine. West Metra commuter lot, Northwest Hwy &amp; Main St (Rte 83).</description>
     <pubDate>Sun, 27 Sep 2026 08:00:00 +0000</pubDate>
   </item>
@@ -389,11 +382,19 @@
     <pubDate>Sat, 03 Oct 2026 00:00:00 +0000</pubDate>
   </item>
   <item>
-    <title>Mount Prospect: Trick or Treat Trail</title>
-    <link>https://www.mppd.org/event/trick-or-treat-trail-3/</link>
-    <guid isPermaLink="true">https://www.mppd.org/event/trick-or-treat-trail-3/</guid>
-    <description>Trick or Treat Trail (Suggested Ages 3-10) Location RecPlex Enjoy a fun-filled trail of Halloween games and treats! Pick up your bag at check-in and continue…</description>
-    <pubDate>Sat, 03 Oct 2026 08:30:00 +0000</pubDate>
+    <title>Mount Prospect: CheckMates Meetup</title>
+    <link>https://mppl.libnet.info/event/16648940</link>
+    <guid isPermaLink="true">https://mppl.libnet.info/event/16648940</guid>
+    <description>Saturday, October 03 2026 2:00pm - 3:30pm 
+ Join other chess fans for a mini lesson and guided instruction to sharpen your skills, or just stop by for a match!</description>
+    <pubDate>Sat, 03 Oct 2026 14:00:00 +0000</pubDate>
+  </item>
+  <item>
+    <title>Mount Prospect: Mount Prospect Farmers Market</title>
+    <link>https://mplions.org/event/farmers-market/</link>
+    <guid isPermaLink="false">https://mplions.org/event/farmers-market/#2026-10-04T08:00:00</guid>
+    <description>Local produce and vendors, organized by the Mount Prospect Lions Club, rain or shine. West Metra commuter lot, Northwest Hwy &amp; Main St (Rte 83).</description>
+    <pubDate>Sun, 04 Oct 2026 08:00:00 +0000</pubDate>
   </item>
 </channel>
 </rss>
