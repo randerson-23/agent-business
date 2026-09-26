@@ -11320,6 +11320,48 @@ web apps on iOS 26** as a design/UX pattern (manifest-driven install,
 standalone display by default, and web push available only to
 installed web apps).
 
+#### P1 (found mid-cycle, not from a scheduled pass)
+
+206. **The build loop's own daily cron lost a real `git push` race on
+     its very first occurrence.** Found while checking item 203's own
+     deferred question ("confirm the daily build actually lands") by
+     reading the real `build-digest.yml` run history rather than
+     assuming — GitHub Actions run #186, the first `23 6 * * *`
+     occurrence, shows `"Commit generated site"` failing with:
+
+     ```
+     ! [rejected]        main -> main (fetch first)
+     error: failed to push some refs
+     ```
+
+     The mechanism: this run checked out `main` at 11:33:20 UTC, spent
+     ~3 minutes fetching every source, and by the time it tried to
+     push its generated-content commit at 11:36:44, the build loop had
+     merged a separate PR (item 203's own fix, as it happens) onto
+     `main` in that exact window. `git push` with no retry just fails
+     outright on any non-fast-forward — a real, reproducible race, not
+     a fluke: `build-digest.yml` now runs on two crons plus every
+     build-loop merge (via its `push` trigger), and a 3-minute build
+     is a wide window for something else to land on `main` first.
+     `send-newsletter.yml` and `backfill-send-metrics.yml` commit
+     generated files with the identical unguarded `git push`, so both
+     share the same exposure, just with a shorter build step and a
+     less frequent trigger.
+
+     Fixed identically in all three workflows: after a rejected push,
+     `git fetch origin main && git rebase origin/main` and retry, up
+     to 5 attempts, failing loudly (`::error::`) only if every attempt
+     is exhausted. Safe specifically because every one of these three
+     commits is generated-content-only (`docs/`, `data/*.json`) — no
+     other workflow hand-edits those same files, so a rebase either
+     applies cleanly or the rebase step itself fails loudly rather
+     than pushing something broken. Verified the retry logic itself
+     against a real local git race (two clones of one bare repo, one
+     pushing first) before trusting it in CI: the loop hit the
+     identical `[rejected] ... (fetch first)` message, rebased, and
+     succeeded on the second attempt with both commits intact. 🟢
+     **Shipped, 2026-09-26.**
+
 
 ## Working agreements for autonomous iteration
 

@@ -81,5 +81,25 @@ jobs:
             echo "No changes to commit."
           else
             git commit -m "Auto-build region digests [skip ci]"
-            git push
+            # ROADMAP.md item 206: this workflow now has a daily cron
+            # (item 199) on top of the build loop's own frequent
+            # push-triggered runs, and this build takes minutes -
+            # confirmed for real when the first daily occurrence lost
+            # a `git push` race to a build-loop merge that landed on
+            # main during this run's build step ("! [rejected] main ->
+            # main (fetch first)"). Only this generated-content commit
+            # can ever be behind; retrying after a rebase resolves it
+            # without risking a source-code conflict, since no other
+            # workflow touches these same generated files by hand.
+            attempt=1
+            until git push; do
+              if [ "$attempt" -ge 5 ]; then
+                echo "::error::Failed to push after $attempt attempts."
+                exit 1
+              fi
+              echo "Push rejected (attempt $attempt) - another workflow pushed to main first. Rebasing and retrying."
+              git fetch origin main
+              git rebase origin/main
+              attempt=$((attempt + 1))
+            done
           fi
