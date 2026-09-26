@@ -1687,6 +1687,16 @@ def test_render_region_page_produces_html_even_with_empty_sources():
     assert "quiet week" in html
 
 
+def test_render_region_page_links_the_web_manifest_and_touch_icon():
+    # ROADMAP.md item 205: lets a returning reader add the site to
+    # their phone's Home Screen.
+    html = build_digest.render_region_page(
+        {"region": REGION}, [], {"title": "", "detail": "", "url": ""}, [], datetime.now(timezone.utc)
+    )
+    assert '<link rel="manifest" href="https://withintenmiles.com/manifest.webmanifest">' in html
+    assert '<link rel="apple-touch-icon" href="https://withintenmiles.com/icons/icon-192.png">' in html
+
+
 def test_render_region_page_shows_calendar_subscribe_link_on_main_page():
     # ROADMAP.md Phase 11 #100: shown once, on the main region page
     # (nav_current="all", the default) - a subscription is the whole
@@ -2766,6 +2776,30 @@ def test_build_feed_xml_keeps_a_simple_permalink_guid_when_urls_dont_collide():
         guid = item.find("guid")
         assert guid.get("isPermaLink") == "true"
         assert guid.text == item.find("link").text
+
+
+def test_render_app_icon_is_the_requested_square_size():
+    img = build_digest.render_app_icon(192)
+    assert img.size == (192, 192)
+    assert img.mode == "RGB"
+
+
+def test_build_app_icons_covers_every_declared_size():
+    icons = build_digest.build_app_icons()
+    assert set(icons) == set(build_digest.APP_ICON_SIZES)
+    for size, img in icons.items():
+        assert img.size == (size, size)
+
+
+def test_build_web_manifest_is_valid_json_with_expected_fields():
+    manifest = json.loads(build_digest.build_web_manifest())
+    assert manifest["name"] == build_digest.SITE_NAME
+    assert manifest["start_url"] == build_digest.SITE_BASE_URL
+    assert manifest["display"] == "standalone"
+    assert manifest["theme_color"] == "#ec3013"
+    assert {(i["sizes"], i["type"]) for i in manifest["icons"]} == {
+        (f"{size}x{size}", "image/png") for size in build_digest.APP_ICON_SIZES
+    }
 
 
 def test_render_og_image_is_the_expected_raster_size():
