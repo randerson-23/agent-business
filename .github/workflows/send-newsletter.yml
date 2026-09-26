@@ -91,5 +91,20 @@ jobs:
             echo "No changes to commit."
           else
             git commit -m "Record newsletter send [skip ci]"
-            git push
+            # ROADMAP.md item 206: build-digest.yml hit a real
+            # `git push` rejection when a build-loop merge landed on
+            # main mid-run. Same generated-content-only commit
+            # pattern here, same fix: rebase onto the new tip and
+            # retry rather than lose a real send record to the race.
+            attempt=1
+            until git push; do
+              if [ "$attempt" -ge 5 ]; then
+                echo "::error::Failed to push after $attempt attempts."
+                exit 1
+              fi
+              echo "Push rejected (attempt $attempt) - another workflow pushed to main first. Rebasing and retrying."
+              git fetch origin main
+              git rebase origin/main
+              attempt=$((attempt + 1))
+            done
           fi
