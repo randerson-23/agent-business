@@ -2077,6 +2077,56 @@ def build_og_images(region_summaries: list[dict]) -> dict[str, Image.Image]:
     return images
 
 
+# ROADMAP.md item 205: the same dark-bg/red-"W" mark every template's own
+# inline-SVG favicon already draws (viewBox 100, rect fill #201e1d, text
+# fill #ec3013, font-weight 800) - rendered as real PNGs here because a
+# Web App Manifest's `icons` list needs raster files at fixed sizes, not
+# a data URI. Deliberately not reusing OG_BG/OG_ACCENT above: those mirror
+# an older palette than the current Modernist one (item 174) the favicon
+# and every template's CSS actually use now.
+APP_ICON_BG = (0x20, 0x1E, 0x1D)
+APP_ICON_ACCENT = (0xEC, 0x30, 0x13)
+APP_ICON_SIZES = (192, 512)
+
+
+def render_app_icon(size: int) -> Image.Image:
+    img = Image.new("RGB", (size, size), APP_ICON_BG)
+    draw = ImageDraw.Draw(img)
+    font = _og_font("DejaVuSans-Bold.ttf", round(size * 0.58))
+    bbox = draw.textbbox((0, 0), "W", font=font)
+    x = (size - (bbox[2] - bbox[0])) / 2 - bbox[0]
+    y = (size - (bbox[3] - bbox[1])) / 2 - bbox[1]
+    draw.text((x, y), "W", font=font, fill=APP_ICON_ACCENT)
+    return img
+
+
+def build_app_icons() -> dict[int, Image.Image]:
+    return {size: render_app_icon(size) for size in APP_ICON_SIZES}
+
+
+def build_web_manifest() -> str:
+    """docs/manifest.webmanifest (ROADMAP.md item 205) - lets a returning
+    reader add the site to their phone's Home Screen as a standalone app.
+    Deliberately no service worker: a cache-first one would reintroduce
+    the exact stale-/today/ problem items 199/200 just fixed, in a form
+    harder to notice, because the reader's device would keep serving an
+    old build after the server had a new one.
+    """
+    manifest = {
+        "name": SITE_NAME,
+        "short_name": SITE_NAME,
+        "start_url": SITE_BASE_URL,
+        "display": "standalone",
+        "background_color": "#f3f2f2",
+        "theme_color": "#ec3013",
+        "icons": [
+            {"src": f"icons/icon-{size}.png", "sizes": f"{size}x{size}", "type": "image/png"}
+            for size in APP_ICON_SIZES
+        ],
+    }
+    return json.dumps(manifest, indent=2) + "\n"
+
+
 def collect_sitemap_urls(region_summaries: list[dict]) -> list[str]:
     urls = [
         SITE_BASE_URL,
@@ -3402,6 +3452,12 @@ def main() -> None:
     for name, image in og_images.items():
         image.save(og_dir / f"{name}.png", "PNG")
     logger.info("Wrote %d Open Graph image(s) to %s", len(og_images), og_dir)
+    icons_dir = OUTPUT_DIR / "icons"
+    icons_dir.mkdir(parents=True, exist_ok=True)
+    for size, image in build_app_icons().items():
+        image.save(icons_dir / f"icon-{size}.png", "PNG")
+    (OUTPUT_DIR / "manifest.webmanifest").write_text(build_web_manifest(), encoding="utf-8")
+    logger.info("Wrote manifest.webmanifest and %d app icon(s) to %s", len(APP_ICON_SIZES), icons_dir)
     submit_indexnow(
         host=CUSTOM_DOMAIN,
         key=INDEXNOW_KEY,

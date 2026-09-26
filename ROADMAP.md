@@ -11293,6 +11293,23 @@ specification found one gap.
      calendar feed and item 183's subscribe link, which are the other
      ways this site keeps a reader.
 
+     🟢 **Shipped, 2026-09-26.** `build_digest.py` now renders
+     `docs/manifest.webmanifest` and two PNG icons (192×192, 512×512)
+     from the same dark-bg/red-"W" mark every template's inline-SVG
+     favicon already draws — rasterized with the DejaVu Sans Bold font
+     already bundled for the OG images, not a new asset. `name`/
+     `short_name` is `SITE_NAME`, `start_url` is the hub
+     (`SITE_BASE_URL`), `display` is `"standalone"`, and
+     `theme_color`/`background_color` are the exact Modernist hex
+     values the item named (`#ec3013` / `#f3f2f2`) — deliberately not
+     reusing this file's existing `OG_BG`/`OG_ACCENT` constants, which
+     mirror an older, pre-item-174 palette. Every one of the six
+     templates now links `<link rel="manifest">` and
+     `<link rel="apple-touch-icon">` in its `<head>`, verified against
+     a real build across all six page types (hub, region, merged-hub,
+     about, sponsor, trick-or-treat). No service worker, per the
+     item's own constraint. 8 new tests; 539 total pass.
+
 Competitors reviewed this pass: **Bing as the index behind AI search**
 (powers ChatGPT search, Copilot, Edge and DuckDuckGo; reported ~30% of
 AI-referred local traffic), **Bing Places and Apple Business** (Apple
