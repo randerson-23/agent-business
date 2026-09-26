@@ -1752,6 +1752,10 @@ def render_region_page(
     map_embed_url: str | None = None,
     nearby_regions: list[dict] | None = None,
     region_map: dict | None = None,
+    build_scope_end_iso: str | None = None,
+    stale_empty_message: str | None = None,
+    empty_follow_url: str | None = None,
+    empty_follow_label: str | None = None,
 ) -> str:
     env = get_template_env()
     template = env.get_template("region.html.j2")
@@ -1812,6 +1816,10 @@ def render_region_page(
         analytics=analytics,
         og_image_url=SITE_BASE_URL + "og/" + region["id"] + ".png",
         trick_or_treat_in_season=is_trick_or_treat_season(now),
+        build_scope_end_iso=build_scope_end_iso,
+        stale_empty_message=stale_empty_message,
+        empty_follow_url=empty_follow_url,
+        empty_follow_label=empty_follow_label,
     )
 
 
@@ -1945,6 +1953,10 @@ def render_merged_hub_page(
     subheading: str,
     meta_description: str,
     empty_message: str,
+    build_scope_end_iso: str | None = None,
+    stale_empty_message: str | None = None,
+    empty_follow_url: str | None = None,
+    empty_follow_label: str | None = None,
 ) -> str:
     """A hub-level page merging one date/price-scoped view across every
     region, grouped by region so it's still clear where each one is.
@@ -1967,6 +1979,10 @@ def render_merged_hub_page(
         analytics=analytics,
         og_image_url=SITE_BASE_URL + "og/default.png",
         empty_message=empty_message,
+        build_scope_end_iso=build_scope_end_iso,
+        stale_empty_message=stale_empty_message,
+        empty_follow_url=empty_follow_url,
+        empty_follow_label=empty_follow_label,
     )
 
 
@@ -2861,7 +2877,9 @@ def main() -> None:
     region_summaries = []
     hub_weekend_sections = []
     hub_weekend_date_range = None
+    hub_weekend_end_iso = None
     hub_today_label = None
+    hub_today_iso = None
     # ROADMAP.md item 149: same merge-across-regions pattern as
     # hub_weekend_sections above, extended to /free and /today at the hub
     # level - populated inside the per-region `views` loop below, from the
@@ -2993,8 +3011,10 @@ def main() -> None:
         weekend_date_range = format_date_range(friday, sunday)
         if hub_weekend_date_range is None:
             hub_weekend_date_range = weekend_date_range  # regions share a timezone today
+            hub_weekend_end_iso = sunday.isoformat()
         if hub_today_label is None:
             hub_today_label = local_today.strftime("%A, %B %-d")  # regions share a timezone today
+            hub_today_iso = local_today.isoformat()
 
         weekly_summary_txt = build_weekly_summary_txt(
             region, weekend_events, evergreen, SITE_BASE_URL + region_id + "/", weekend_date_range
@@ -3064,6 +3084,26 @@ def main() -> None:
             ),
         ]
         for slug, items, heading, subheading, nav_current, empty_message in views:
+            # ROADMAP.md item 200: a static build can't know the viewer's
+            # real clock, so /today/ and /this-weekend/ carry enough for
+            # the page's own client-side script to notice when the
+            # viewer's local date has moved past what the build covered,
+            # and swap in an honest message instead of presenting a
+            # stale day under today's/this weekend's heading. Only these
+            # two views are date-scoped in a way a headline can go wrong
+            # about; /free/ has no such claim.
+            if slug == "this-weekend":
+                build_scope_end_iso = sunday.isoformat()
+                stale_empty_message = "This weekend's events have passed —"
+                empty_follow_url = f"{SITE_BASE_URL}{region_id}/today/"
+                empty_follow_label = "here's today"
+            elif slug == "today":
+                build_scope_end_iso = local_today.isoformat()
+                stale_empty_message = "Nothing listed for today yet —"
+                empty_follow_url = f"{SITE_BASE_URL}{region_id}/this-weekend/"
+                empty_follow_label = "here's this weekend"
+            else:
+                build_scope_end_iso = stale_empty_message = empty_follow_url = empty_follow_label = None
             view_html = render_region_page(
                 region_cfg,
                 [{"section": heading, "events": items}],
@@ -3081,6 +3121,10 @@ def main() -> None:
                 weather=weekend_weather if slug == "this-weekend" else None,
                 newsletter=newsletter,
                 analytics=analytics,
+                build_scope_end_iso=build_scope_end_iso,
+                stale_empty_message=stale_empty_message,
+                empty_follow_url=empty_follow_url,
+                empty_follow_label=empty_follow_label,
             )
             view_dir = region_dir / slug
             view_dir.mkdir(parents=True, exist_ok=True)
@@ -3251,6 +3295,10 @@ def main() -> None:
         subheading=f"{hub_weekend_date_range or ''} — everything with a known date, across every region.",
         meta_description=f"Everything with a known date this weekend ({hub_weekend_date_range or ''}), across every region — one page for planning a trip nearby.",
         empty_message="Nothing dated for this weekend yet across any region — check back, or browse a region's full page.",
+        build_scope_end_iso=hub_weekend_end_iso,
+        stale_empty_message="This weekend's events have passed —",
+        empty_follow_url=f"{SITE_BASE_URL}today/",
+        empty_follow_label="here's today",
     )
     weekend_hub_dir = OUTPUT_DIR / "this-weekend"
     weekend_hub_dir.mkdir(parents=True, exist_ok=True)
@@ -3270,6 +3318,10 @@ def main() -> None:
         subheading=f"{hub_today_label or ''} — everything happening today, across every region.",
         meta_description=f"Everything happening today ({hub_today_label or ''}), across every region.",
         empty_message="Nothing dated for today yet across any region — check back, or browse a region's full page.",
+        build_scope_end_iso=hub_today_iso,
+        stale_empty_message="Nothing listed for today yet —",
+        empty_follow_url=f"{SITE_BASE_URL}this-weekend/",
+        empty_follow_label="here's this weekend",
     )
     today_hub_dir = OUTPUT_DIR / "today"
     today_hub_dir.mkdir(parents=True, exist_ok=True)

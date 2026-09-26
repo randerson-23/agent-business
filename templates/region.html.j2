@@ -729,7 +729,7 @@
 </header>
 
 <div class="wrap">
-  <main>
+  <main{% if build_scope_end_iso %} data-build-scope-end-iso="{{ build_scope_end_iso }}" data-stale-empty-message="{{ stale_empty_message }}" data-empty-follow-url="{{ empty_follow_url }}" data-empty-follow-label="{{ empty_follow_label }}"{% endif %}>
   <nav class="view-nav" aria-label="Filter by date or price">
     <a href="{{ region_base_url }}"{% if nav_current == "all" %} class="active"{% endif %}>All events</a>
     <a href="{{ region_base_url }}this-weekend/"{% if nav_current == "weekend" %} class="active"{% endif %}>This weekend</a>
@@ -871,7 +871,7 @@
         <!-- id folds in date_iso - see the Editor's Pick tray_item above
              for why (ROADMAP.md item 146). -->
         {% set tray_item = {"id": (item.url or item.title) ~ ("|" ~ item.date_iso if item.date_iso else ""), "title": item.title, "url": item.url or "", "date": item.date or None, "date_iso": item.date_iso or None, "detail": item.detail or "", "region_name": region.name, "region_url": region_base_url} %}
-        <div class="card{% if item.attendable == false %} card-informational{% endif %}" data-tags="{{ item.tags|join(',') }}">
+        <div class="card{% if item.attendable == false %} card-informational{% endif %}" data-tags="{{ item.tags|join(',') }}" data-date-iso="{{ item.date_iso or '' }}">
           {% if nav_current != "guides" and item.attendable != false %}
           <!-- ROADMAP.md Phase 11 #63: My Weekend is for dated events -
                offering to add "Find your school district" or a guide's
@@ -1244,6 +1244,55 @@
 
   syncStars();
   render();
+})();
+</script>
+<script>
+// ROADMAP.md item 200: a static build can't know the viewer's real
+// clock, so /today/ and /this-weekend/ have gone stale between builds
+// with nothing on the page saying so (item 199's own headline bug -
+// "Tuesday, September 22" read on a Friday). Every card already carries
+// its own date_iso; this just uses the viewer's own clock, already
+// correct, to hide what has passed and say so plainly when nothing
+// this page covers is left. Never fetches anything - the static HTML
+// above is still the complete no-JS fallback, just possibly stale the
+// same way it always was before this ran.
+(function () {
+  function localIso(d) {
+    return d.getFullYear() + "-" + String(d.getMonth() + 1).padStart(2, "0") + "-" + String(d.getDate()).padStart(2, "0");
+  }
+  var todayIso = localIso(new Date());
+  document.querySelectorAll(".card[data-date-iso]").forEach(function (card) {
+    var iso = card.getAttribute("data-date-iso");
+    if (iso && iso.slice(0, 10) < todayIso) card.style.display = "none";
+  });
+  var main = document.querySelector("main[data-build-scope-end-iso]");
+  if (!main) return;
+  var scopeEnd = main.getAttribute("data-build-scope-end-iso");
+  if (!scopeEnd || todayIso <= scopeEnd) return;
+  var anyVisible = false;
+  main.querySelectorAll(".card-grid").forEach(function (grid) {
+    var visible = Array.prototype.some.call(grid.children, function (el) { return el.style.display !== "none"; });
+    if (visible) { anyVisible = true; return; }
+    var section = grid.closest("section");
+    if (section) section.style.display = "none";
+  });
+  if (anyVisible) return;
+  var note = document.createElement("p");
+  note.className = "empty";
+  note.textContent = main.getAttribute("data-stale-empty-message") + " ";
+  var followUrl = main.getAttribute("data-empty-follow-url");
+  if (followUrl) {
+    var a = document.createElement("a");
+    a.href = followUrl;
+    a.textContent = main.getAttribute("data-empty-follow-label") || "see what's next";
+    note.appendChild(a);
+  }
+  var existing = main.querySelector("p.empty");
+  if (existing) {
+    existing.replaceWith(note);
+  } else {
+    main.appendChild(note);
+  }
 })();
 </script>
 {% if analytics and analytics.configured %}
