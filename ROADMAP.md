@@ -11437,6 +11437,26 @@ cause.
      input. It pairs with item 187's metrics: once there is more than
      one subscriber, the open-rate history will show whether it helped.
 
+     🟢 **Shipped, 2026-09-27.** Both `email_digest.html.j2` and
+     `combined_email_digest.html.j2` now open `<body>` with a hidden
+     preheader — the standard zero-size/zero-opacity/`mso-hide:all`
+     pattern, followed by zero-width-joiner padding so a client that
+     keeps reading past it pulls in invisible characters rather than
+     visible body copy. New `build_email_preheader(count, titles)` and
+     `_pick_preheader_titles()` (the same near-duplicate/recurring
+     exclusion `build_email_subject_line()` already uses, reused
+     rather than re-implemented) generate it from the issue's own
+     data — *"N things this weekend — incl. Title1 and Title2"*,
+     trimmed to 90 characters via the existing `truncate()` helper,
+     falling back to a count-only line when every candidate title is
+     recurring, and to an honest "Nothing new dated yet" line when the
+     count is zero. Deliberately never names a region, since the
+     subject line already does and item 207's whole finding was a
+     preview that mostly repeated it. Verified against a real local
+     build: both `docs/combined-email-send.html` and a region's own
+     `email-send.html` render the hidden div with real generated
+     content. 10 new tests; 549 total pass.
+
 #### P2 (new)
 
 208. **Put Small Business Saturday on the calendar as the first
@@ -11474,6 +11494,20 @@ cause.
      Owner time is a few emails in early November, which fits the
      business plan's "handful of sponsor emails a month" budget. The
      build loop can do the calendar row and the template now.
+
+     🟢 **Shipped, 2026-09-27.** Added the Small Business Saturday row
+     to `SEASONAL_CALENDAR.md`'s table, marked explicitly as a
+     *sponsor window, not reader content*, plus a note under the table
+     saying sponsor-side windows belong in this file too — so the next
+     one (Cyber Monday or a spring/summer equivalent) is found by
+     checking this list, not rediscovered by luck. Added template #13
+     to `OUTREACH_TEMPLATES.md`: short, dated, one ask ("feature your
+     Small Business Saturday offer for $20"), following item 118's
+     honest-pricing rule explicitly — no subscriber count quoted until
+     item 187 has a real one. The actual "Shop Small" section on
+     region pages and in the Thanksgiving-week issue, and sending the
+     emails themselves, wait on real shop responses in early November
+     — not buildable ahead of having anyone to feature.
 
 Competitors reviewed this pass: **Small Business Saturday** (2026-11-28;
 an American Express initiative co-sponsored by the SBA since 2011, and

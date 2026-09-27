@@ -3216,6 +3216,80 @@ def test_build_email_subject_line_names_only_the_first_when_everything_collides(
     assert subject == "This weekend in Mount Prospect: Oktoberfest, and 2 more"
 
 
+def test_build_email_preheader_honest_empty_state():
+    assert build_digest.build_email_preheader(0, []) == "Nothing new dated yet this week — see what's evergreen and coming up"
+
+
+def test_build_email_preheader_singular_with_one_title():
+    preheader = build_digest.build_email_preheader(1, ["Fall Festival"])
+    assert preheader == "1 thing this weekend — incl. Fall Festival"
+
+
+def test_build_email_preheader_plural_with_two_titles():
+    preheader = build_digest.build_email_preheader(3, ["Fall Festival", "Story Time"])
+    assert preheader == "3 things this weekend — incl. Fall Festival and Story Time"
+
+
+def test_build_email_preheader_falls_back_to_count_only_without_titles():
+    assert build_digest.build_email_preheader(2, []) == "2 things this weekend"
+
+
+def test_build_email_preheader_never_exceeds_the_safe_length():
+    preheader = build_digest.build_email_preheader(
+        16, ["A Very Long Farmers Market Name That Runs On", "An Equally Long Second Event Name Here Too"]
+    )
+    assert len(preheader) <= build_digest.PREHEADER_MAX_LEN
+
+
+def test_build_email_preheader_does_not_name_a_region():
+    # ROADMAP.md item 207: the subject line already names the region(s)
+    # - the preheader's whole point is to add something the subject
+    # doesn't already say.
+    preheader = build_digest.build_email_preheader(1, ["Fall Festival"])
+    assert "Mount Prospect" not in preheader
+    assert "Arlington Heights" not in preheader
+
+
+def test_pick_preheader_titles_skips_recurring_events():
+    events = [
+        {"title": "Weekly Farmers Market", "attendable": True, "recurring": True},
+        {"title": "Fall Festival", "attendable": True, "recurring": False},
+    ]
+    assert build_digest._pick_preheader_titles(events) == ["Fall Festival"]
+
+
+def test_pick_preheader_titles_skips_a_near_duplicate_second_title():
+    events = [
+        {"title": "Oktoberfest", "attendable": True, "recurring": False},
+        {"title": "Fall Festival & Oktoberfest", "attendable": True, "recurring": False},
+        {"title": "Story Time", "attendable": True, "recurring": False},
+    ]
+    assert build_digest._pick_preheader_titles(events) == ["Oktoberfest", "Story Time"]
+
+
+def test_render_email_digest_includes_a_hidden_preheader():
+    region = {"name": "Mount Prospect"}
+    events = [{"title": "Fall Fest", "date": "Aug 29", "url": "https://x/1", "attendable": True}]
+    html = build_digest.render_email_digest(region, events, [], "https://x/mount-prospect-60056/", "Aug 29–30", None)
+    assert "1 thing this weekend — incl. Fall Fest" in html
+    assert "display:none" in html
+
+
+def test_render_combined_email_digest_includes_a_hidden_preheader():
+    sections = [
+        {
+            "region_name": "Mount Prospect",
+            "region_url": "https://x/mount-prospect-60056/",
+            "weekend_events": [{"title": "Fall Fest", "date": "Aug 29", "url": "https://x/1", "attendable": True}],
+            "evergreen": [],
+            "sponsor": None,
+        }
+    ]
+    html = build_digest.render_combined_email_digest(sections, "Aug 29–30", datetime.now(timezone.utc))
+    assert "1 thing this weekend — incl. Fall Fest" in html
+    assert "Mount Prospect" not in html.split("mso-hide:all;\">")[1].split("</div>")[0]
+
+
 def test_render_email_digest_lists_weekend_events():
     region = {"name": "Mount Prospect"}
     events = [{"title": "Fall Fest", "date": "Aug 29", "url": "https://x/1"}]
