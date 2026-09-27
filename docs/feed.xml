@@ -4,38 +4,7 @@
   <title>Within Ten — Upcoming Local Events</title>
   <link>https://withintenmiles.com/</link>
   <description>Upcoming events across every Within Ten region, soonest first - aggregated automatically from village, library, park district and school-district calendars. This build reached 14 of 25 configured sources.</description>
-  <lastBuildDate>Sat, 26 Sep 2026 18:56:31 +0000</lastBuildDate>
-  <item>
-    <title>Arlington Heights: One Book, One Village at the Farmers Market</title>
-    <link>https://www.ahml.info/scheduling/reservation/226806</link>
-    <guid isPermaLink="true">https://www.ahml.info/scheduling/reservation/226806</guid>
-    <description></description>
-    <pubDate>Sat, 26 Sep 2026 00:00:00 +0000</pubDate>
-  </item>
-  <item>
-    <title>Mount Prospect: Potty Palooza</title>
-    <link>https://mppl.libnet.info/event/16427602</link>
-    <guid isPermaLink="true">https://mppl.libnet.info/event/16427602</guid>
-    <description>Saturday, September 26 2026 10:00am - 11:00am 
- Ready to start your potty training journey? Let us help make this big step a whole lot more fun!</description>
-    <pubDate>Sat, 26 Sep 2026 10:00:00 +0000</pubDate>
-  </item>
-  <item>
-    <title>Mount Prospect: Beyond the Book Drop</title>
-    <link>https://mppl.libnet.info/event/16687521</link>
-    <guid isPermaLink="true">https://mppl.libnet.info/event/16687521</guid>
-    <description>Saturday, September 26 2026 11:00am - 11:30am 
- Ever wonder what happens after your library materials go through the return slot? Get a behind-the-scenes look…</description>
-    <pubDate>Sat, 26 Sep 2026 11:00:00 +0000</pubDate>
-  </item>
-  <item>
-    <title>Wheeling: Music &amp; Dance Around the Mediterranean</title>
-    <link>https://indiantrails.libnet.info/event/16655149</link>
-    <guid isPermaLink="true">https://indiantrails.libnet.info/event/16655149</guid>
-    <description>Saturday, September 26 2026 2:00pm - 3:00pm 
- Music and dance from around the Eastern Mediterranean, including Türkiye, Egypt, Greece and beyond. R</description>
-    <pubDate>Sat, 26 Sep 2026 14:00:00 +0000</pubDate>
-  </item>
+  <lastBuildDate>Sun, 27 Sep 2026 12:12:15 +0000</lastBuildDate>
   <item>
     <title>Arlington Heights: Centennial Celebration and Anniversary Party</title>
     <link>https://www.ahml.info/scheduling/reservation/220984</link>
@@ -395,6 +364,39 @@
     <guid isPermaLink="false">https://mplions.org/event/farmers-market/#2026-10-04T08:00:00</guid>
     <description>Local produce and vendors, organized by the Mount Prospect Lions Club, rain or shine. West Metra commuter lot, Northwest Hwy &amp; Main St (Rte 83).</description>
     <pubDate>Sun, 04 Oct 2026 08:00:00 +0000</pubDate>
+  </item>
+  <item>
+    <title>Wheeling: Resume Review &amp; Career Coaching Appointments</title>
+    <link>https://indiantrails.libnet.info/event/16653831</link>
+    <guid isPermaLink="true">https://indiantrails.libnet.info/event/16653831</guid>
+    <description>Sunday, October 04 2026 12:15pm - 1:15pm 
+ Kickstart your career with a one-hour resume review with a career specialist. Resume Review and Career Coaching…</description>
+    <pubDate>Sun, 04 Oct 2026 12:15:00 +0000</pubDate>
+  </item>
+  <item>
+    <title>Wheeling: High School Volunteer Kits</title>
+    <link>https://indiantrails.libnet.info/event/16623729</link>
+    <guid isPermaLink="true">https://indiantrails.libnet.info/event/16623729</guid>
+    <description>Monday, October 05 2026 9:00am - 9:00pm 
+ Bag pickup: 9 am-9 pm. 
+Complete and return a volunteer craft kit by the end of the month to count towards one hour…</description>
+    <pubDate>Mon, 05 Oct 2026 09:00:00 +0000</pubDate>
+  </item>
+  <item>
+    <title>Mount Prospect: Family Storytime</title>
+    <link>https://mppl.libnet.info/event/16553298</link>
+    <guid isPermaLink="true">https://mppl.libnet.info/event/16553298</guid>
+    <description>Monday, October 05 2026 9:30am - 10:00am 
+ Bring the whole family and join us for an interactive storytime with high-energy stories, songs, and activities.</description>
+    <pubDate>Mon, 05 Oct 2026 09:30:00 +0000</pubDate>
+  </item>
+  <item>
+    <title>Mount Prospect: Toddler Storytime</title>
+    <link>https://mppl.libnet.info/event/16553328</link>
+    <guid isPermaLink="true">https://mppl.libnet.info/event/16553328</guid>
+    <description>Monday, October 05 2026 10:30am - 11:00am 
+ Grow your little learner's literacy and language skills at this playful storytime full of wiggles, wonder, and fun!</description>
+    <pubDate>Mon, 05 Oct 2026 10:30:00 +0000</pubDate>
   </item>
 </channel>
 </rss>
