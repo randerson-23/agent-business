@@ -2514,6 +2514,52 @@ def build_email_subject_line(region: dict, weekend_events: list[dict]) -> str:
     return f"This weekend in {name}: {first}, {second}, and {more} more"
 
 
+# ROADMAP.md item 207: preview text shows 35-140 characters depending
+# on the mail client, with 40-90 the reported safe zone across major
+# clients. 90 keeps every client's truncation point inside real content
+# rather than mid-word in a client with a shorter window.
+PREHEADER_MAX_LEN = 90
+
+
+def _pick_preheader_titles(attendable_events: list[dict], limit: int = 2) -> list[str]:
+    """First `limit` distinct, non-recurring titles for the preheader -
+    the same near-duplicate/recurring exclusion build_email_subject_line()
+    already uses for the subject line, reused here since it is the same
+    "what is actually distinctive about this issue" question, just
+    feeding the preheader instead.
+    """
+    candidates = [e for e in attendable_events if not e.get("recurring")]
+    picked: list[str] = []
+    for e in candidates:
+        title = e["title"]
+        if any(_is_near_duplicate_title(title, p) for p in picked):
+            continue
+        picked.append(title)
+        if len(picked) >= limit:
+            break
+    return picked
+
+
+def build_email_preheader(count: int, titles: list[str]) -> str:
+    """Hidden inbox preview text (ROADMAP.md item 207). Without one,
+    every client falls back to whatever visible text comes first in
+    <body>, which on this template is the wordmark and issue date -
+    largely repeating the subject line rather than complementing it.
+    Deliberately never names a region: the subject line already does,
+    and item 207's own finding was a preview that mostly restated the
+    subject rather than adding something new.
+    """
+    if count == 0:
+        return "Nothing new dated yet this week — see what's evergreen and coming up"
+    if not titles:
+        body = f"{count} thing{'s' if count != 1 else ''} this weekend"
+    elif len(titles) == 1:
+        body = f"{count} thing{'s' if count != 1 else ''} this weekend — incl. {titles[0]}"
+    else:
+        body = f"{count} things this weekend — incl. {titles[0]} and {titles[1]}"
+    return truncate(body, PREHEADER_MAX_LEN)
+
+
 def render_email_digest(
     region: dict,
     weekend_events: list[dict],
@@ -2561,6 +2607,7 @@ def render_email_digest(
         weekend_date_range=weekend_date_range,
         sponsor=sponsor,
         subject_line=build_email_subject_line(region, weekend_events),
+        preheader=build_email_preheader(len(attendable_events), _pick_preheader_titles(attendable_events)),
         newsletter=newsletter or {"configured": False},
         preview=preview,
     )
@@ -2650,10 +2697,12 @@ def render_combined_email_digest(sections: list[dict], weekend_date_range: str, 
     all_blocks = []
     empty_candidates = []
     house_ad = None
+    all_attendable_events = []
     for s in sections:
         weekend_events = s["weekend_events"]
         attendable_events = [e for e in weekend_events if e.get("attendable", True)]
         informational_events = [e for e in weekend_events if not e.get("attendable", True)]
+        all_attendable_events.extend(attendable_events)
         sponsor = s.get("sponsor")
         is_sponsored = bool(sponsor and sponsor.get("is_active_sponsor"))
         block = {
@@ -2699,6 +2748,7 @@ def render_combined_email_digest(sections: list[dict], weekend_date_range: str, 
         house_ad=house_ad,
         weekend_date_range=weekend_date_range,
         subject_line=build_combined_email_subject_line(sections),
+        preheader=build_email_preheader(len(all_attendable_events), _pick_preheader_titles(all_attendable_events)),
         newsletter=newsletter or {"configured": False},
         preview=preview,
     )

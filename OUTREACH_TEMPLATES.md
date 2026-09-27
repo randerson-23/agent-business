@@ -465,3 +465,34 @@ from your feed, just say so.
 Thanks for everything Downtown Mount Prospect does for the town,
 [Your name]
 Within Ten — https://withintenmiles.com/
+
+## 13. Small Business Saturday feature (ROADMAP.md item 208)
+
+Short, dated, one ask — send to a handful of downtown Mount Prospect
+and Arlington Heights shops in the first week of November, ahead of
+Small Business Saturday (2026-11-28). Per item 118's honest-pricing
+rule: with a list this small, what's actually being sold is placement
+on the region pages and in the Thanksgiving-week issue, not reach — do
+not quote a subscriber number here until item 187 has a real one to
+quote.
+
+Subject: Feature your Small Business Saturday offer for $20
+
+Hi [Owner Name],
+
+Small Business Saturday is [Saturday, November 28] — I run **Within
+Ten**, a free local digest for [Mount Prospect / Arlington Heights],
+and I'm putting together a "Shop Small" section for that weekend's
+issue and each region page.
+
+For $20 (the one-time Event Promo), [Business Name]'s Small Business
+Saturday offer gets featured at the top of that section — your own
+words on what you're running that day, with a link back to your site.
+No subscription, no renewal, just that one placement.
+
+Want in? Just send me a line or two on your offer and I'll have it up
+before the weekend.
+
+Thanks,
+[Your name]
+Within Ten — https://withintenmiles.com/
