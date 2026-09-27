@@ -11226,6 +11226,13 @@ specification found one gap.
      next real GitHub Actions occurrence, not from anything this
      sandbox can force.
 
+     **Confirmed, 2026-09-27.** The watchdog's own first daily
+     occurrence (run #1, scheduled 19:41 UTC, actually ran 22:10 UTC —
+     inside this repo's own measured lateness) completed with
+     `conclusion: success`, checked against the real GitHub Actions
+     run history rather than assumed. It is now genuinely watching
+     daily, not weekly.
+
 204. **Import the site into Bing Webmaster Tools. It is now one of the
      most useful two minutes available.** This is an owner action that
      has been parked under "Also worth doing, not blocking" since
@@ -11362,15 +11369,23 @@ installed web apps).
      succeeded on the second attempt with both commits intact. 🟢
      **Shipped, 2026-09-26.**
 
+     **Confirmed, 2026-09-27.** The very next real push after this
+     fix merged (#259's own merge, run #188) committed and pushed
+     generated content with no rejection — the ordinary, non-racing
+     path still works exactly as before. No push rejection has
+     recurred since.
+
 
 ## Working agreements for autonomous iteration
 
-- Cadence is hourly (the platform's durable scheduler has a 1-hour floor;
-  a faster session-local scheduler was tried and doesn't survive this
-  environment's container lifecycle, confirmed empty after the fact — see
-  chat history 2026-08-26). Not every firing needs to end in a merged PR —
-  batch a coherent slice of work, ship it when it's coherent and tested,
-  skip the ship step (with a one-line note) when mid-slice.
+- Cadence is every 6 hours (the owner changed it from hourly on
+  2026-09-25; the platform's durable scheduler has a 1-hour floor, and
+  a faster session-local scheduler was tried earlier and doesn't
+  survive this environment's container lifecycle, confirmed empty
+  after the fact — see chat history 2026-08-26). Not every firing needs
+  to end in a merged PR — batch a coherent slice of work, ship it when
+  it's coherent and tested, skip the ship step (with a one-line note)
+  when mid-slice.
 - Always run `python -m pytest tests/ -q` and `python scripts/build_digest.py`
   before committing.
 - Never hand-commit `docs/` output — run `git restore docs/` and remove any
