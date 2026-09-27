@@ -11376,6 +11376,116 @@ installed web apps).
      recurred since.
 
 
+#### Research pass 2026-09-27 (forty-ninth pass)
+
+The build loop shipped items 203 (daily watchdog), 205 (Web App
+Manifest) and 206, which it filed itself. Item 206 fixed a real `git
+push` race that made the first daily `build-digest.yml` run (#186)
+fail. The build loop has confirmed the watchdog against real Actions
+history. This pass checked the build side and traced the race to its
+cause.
+
+| Angle | Finding | Consequence |
+|---|---|---|
+| **What the daily build raced against** | Run #186 checked out `main` at 11:33:23 UTC on 2026-09-26 and was rejected at 11:36:44. The only commit to land in that window was **`fc835b0`, the forty-eighth research pass, pushed at 11:36:04**. The `23 6 * * *` build was delivered **5h10m late, at 11:33 UTC, the same minute the daily research loop fires** | Given this repo's measured Actions lateness, the two daily schedules land together. Item 206's retry makes the collision harmless. It is recorded so nobody re-diagnoses it. No new item |
+| **Today's daily build** | As of 11:33 UTC on 2026-09-27, today's `23 6 * * *` occurrence has not appeared in the run list (5h10m). Still inside item 110's 5h27m–6h54m band | Not a finding. The daily watchdog now covers this without a research pass |
+| **The email has no preheader** | `docs/combined-email-send.html` has no hidden preview-text element. The inbox preview is whatever visible text comes first: *"WITHIN TEN · This weekend, across the northwest suburbs · Sep 25–27 · Arlington Heights…"*, which largely repeats the subject line | The line under the subject in every inbox is uncontrolled (item 207) |
+| **Preheader practice (design/UX)** | Preview text shows **35–140 characters** depending on client (Apple Mail up to 140, Gmail desktop 90–110, Gmail mobile 40–90); the safe zone is **40–90**, with the key message in the first 40. One reported comparison: **22.3% vs 19.3% open** and **3.3% vs 2.2% click-through** with vs without. Best practice is to *complement* the subject, not repeat it. Apple Mail on iOS 18.2+ may show an **AI summary** instead | Cheap, data-driven, and it applies to every future send. The Apple caveat lowers the ceiling but not the value (item 207) |
+| **Small Business Saturday** | **2026-11-28**, the Saturday after Thanksgiving. Created by American Express and **co-sponsored by the SBA since 2011**. Independent shops run special offers and pop-ups under "Shop Small" | A dated, national, local-business marketing moment, nine weeks out. It is exactly when a shop would plausibly pay $20 to boost its own sale. This business has no first sponsor yet, and this is the most natural first ask the calendar offers (item 208) |
+| **AllEvents.in** | Aggregates from **Eventbrite, Facebook, Meetup and local event websites** into one index covering **160+ countries**. It appeared on page one for the Mount Prospect head term last pass | Same bucket as PatchAM (item 124): generic breadth, not hand-verified civic sources. **No item.** Recorded so it is not re-researched |
+
+#### P1 (new)
+
+207. **Add a preheader to the newsletter, so the line under the subject
+     says something new.** The built email has no hidden preview-text
+     element, so every inbox previews the first visible text, which
+     currently reads *"WITHIN TEN · This weekend, across the northwest
+     suburbs · Sep 25–27 · Arlington Heights…"*. The subject is already
+     *"This weekend across Arlington Heights, Mount Prospect, and
+     Wheeling"*, so the preview mostly repeats it.
+
+     That line is the second-most-read text the business produces,
+     after the subject. The research: preview text shows 35–140
+     characters depending on client, with **40–90** as the safe zone
+     and the key message in the first 40. The reported comparison is
+     **22.3% vs 19.3%** open rate and **3.3% vs 2.2%** click-through
+     with vs without a preheader. The consistent advice is to
+     *complement* the subject, not restate it.
+
+     What to build (template plus a small builder function, no new
+     dependency):
+
+     - **A hidden preheader as the first element in `<body>`** in both
+       `email_digest.html.j2` and `combined_email_digest.html.j2`, using
+       the standard hidden-span pattern (`display:none`, zero size and
+       opacity, `mso-hide:all`), followed by the usual
+       zero-width-joiner padding so the client does not pull visible
+       body text into the preview after it.
+     - **Generate it from the issue's own data**, not from a fixed
+       string. Something like *"16 things this weekend — incl. the
+       Mount Prospect Farmers Market and Mario Kart at the library"*:
+       a count and the two most distinctive titles, trimmed to 90
+       characters, with the count and first title inside the first 40.
+       The subject already lists the towns, so the preheader should not.
+     - **Add a test** that asserts the preheader exists, is ≤ 90
+       characters, and does not repeat the subject's town list.
+
+     Honest caveat: Apple Mail on iOS 18.2+ may replace preview text
+     with an AI-generated summary. That lowers the ceiling, but Gmail
+     (desktop and mobile) and older Apple clients still show the
+     preheader, and a clear first line also gives a summariser better
+     input. It pairs with item 187's metrics: once there is more than
+     one subscriber, the open-rate history will show whether it helped.
+
+#### P2 (new)
+
+208. **Put Small Business Saturday on the calendar as the first
+     *sponsor* window, and have the offer ready by late October.**
+     `SEASONAL_CALENDAR.md` lists reader-content windows (trick-or-treat,
+     holiday lights, restaurant week, camps, farmers markets). It has no
+     sponsor-side windows, and this business has not yet made its first
+     sale. **Small Business Saturday, 2026-11-28**, is the most natural
+     first ask on the calendar. It is national, created by American
+     Express, co-sponsored by the SBA since 2011, and built around
+     independent shops running their own offers. A shop running a
+     Small Business Saturday sale is the obvious buyer for the **$20
+     Event Promo** tier, the smallest ask in `BUSINESS_PLAN.md`'s price
+     table.
+
+     What to build:
+
+     - **A `SEASONAL_CALENDAR.md` row**: *Small Business Saturday —
+       2026-11-28 — start by late October — a "Shop Small" section in
+       the 2026-11-25 newsletter and on each region page, listing
+       participating local shops' offers; the $20 Event Promo offered
+       to shops that want theirs featured at the top.* Also add a
+       short line under the table saying sponsor windows belong in
+       this file too, so the next one is not found by luck either.
+     - **An outreach variant in `OUTREACH_TEMPLATES.md`** for this
+       window: short, dated, one ask (*"feature your Small Business
+       Saturday offer for $20"*), sent to a handful of downtown shops in
+       Mount Prospect and Arlington Heights in the first week of
+       November.
+     - **Honest pricing framing**, following item 118: with a list this
+       small, the offer is placement on the site's region pages and the
+       Thanksgiving-week issue, not reach. Do not quote a subscriber
+       number in the pitch until item 187 has a real one.
+
+     Owner time is a few emails in early November, which fits the
+     business plan's "handful of sponsor emails a month" budget. The
+     build loop can do the calendar row and the template now.
+
+Competitors reviewed this pass: **Small Business Saturday** (2026-11-28;
+an American Express initiative co-sponsored by the SBA since 2011, and
+the first sponsor-side seasonal window found for this business),
+**AllEvents.in** (aggregates Eventbrite, Facebook, Meetup and local
+event sites across 160+ countries; generic breadth in the same bucket
+as PatchAM, so no item), and **email preheader practice** as a
+design/UX angle (40–90 character safe zone, complement rather than
+repeat the subject, reported open and click lift, and the Apple Mail
+AI-summary caveat).
+
+
 ## Working agreements for autonomous iteration
 
 - Cadence is every 6 hours (the owner changed it from hourly on
