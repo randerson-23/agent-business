@@ -278,6 +278,23 @@ effort. Now that a real name is attached, `OUTREACH_TEMPLATES.md`'s
    1` and passed item 190's guard, and item 191's flow shipped. Inbox
    placement remains unproven until item 196's seed check or the
    2026-09-27 metrics backfill.*
+
+   **Update, 2026-09-27 — the metrics backfill ran; it does not settle
+   the question.** `backfill_send_metrics.py`'s own real, one-time
+   (per item's design, never re-checked) run recorded
+   `recipients: 1, opens: 0, clicks: 0` for the 2026-09-24 send —
+   confirmed by reading the real committed `data/send_history.json`,
+   not assumed. Stated honestly: `opens: 0` on `n=1` is not a
+   placement verdict either way. A tracking pixel firing zero times
+   is consistent with the message sitting unread in the inbox just as
+   much as with it landing in spam — the metric cannot distinguish
+   those two, and a sample of one subscriber is not evidence of a
+   pattern regardless. This neither confirms nor clears item 196's
+   seed-list deliverability question; it only means the one real send
+   this business has made has, so far, not been opened by its one
+   real subscriber. Recorded so no future pass reads a real `opens: 0`
+   entry and either overclaims a placement problem or wrongly treats
+   the number as good news.
    This does not change the ordering above — the outreach emails were
    already first, and they are exactly the slow, repeatable growth
    that proves the flow works before the pitch depends on it.
@@ -9987,6 +10004,15 @@ Network-wide the weekend is now **18 events**, up from 10 this morning.
      subscriber, the first real number this produces is not yet worth
      quoting anywhere. This ships the capture so the history exists
      once it is.
+
+     **First real number, 2026-09-27.** The daily cron's own first
+     eligible run backfilled the 2026-09-24 send: `recipients: 1,
+     opens: 0, clicks: 0`. Confirmed from the real committed
+     `data/send_history.json`, not assumed — and, per this item's own
+     caveat above and the fuller discussion in the Needs Ryan section,
+     not yet a number worth quoting to a sponsor or treating as a
+     placement verdict. `n=1` is not a sample, just this business's
+     first real data point.
 
 #### P2 (new)
 
