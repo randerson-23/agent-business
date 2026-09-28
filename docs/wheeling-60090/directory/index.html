@@ -55,7 +55,8 @@
     --ink: #201e1d;
     --muted: #605d5d;
     --accent: #ec3013;
-    --accent-soft: #ec3013;
+    /* Solid fills under --bg text: #ec3013 is only 3.76:1 there (item 210). */
+    --accent-soft: #cc280d;
     --accent-2: #ec3013;
     /* Deep ramp step, not the raw accent - the accent-to-ground pair is
        only ~3:1, enough for icons/borders/large text but below WCAG AA's
@@ -132,7 +133,7 @@
   }
   .hero-inner { max-width: 960px; margin: 0 auto; }
   a.back { color: var(--muted); text-decoration: none; font-size: 12px; font-weight: 800; letter-spacing: 0.06em; text-transform: uppercase; }
-  a.back:hover { color: var(--accent); }
+  a.back:hover { color: var(--accent-2-text); }
   .brand-mark { display: inline-flex; align-items: center; gap: 8px; margin: 18px 0 8px; }
   .brand-mark svg { width: 22px; height: 22px; flex-shrink: 0; }
   .kicker {
@@ -166,7 +167,7 @@
     border-bottom: 2px solid transparent;
   }
   .view-nav a:hover { color: var(--ink); border-bottom-color: var(--border); }
-  .view-nav a.active { color: var(--accent); background: none; border-bottom-color: var(--accent); }
+  .view-nav a.active { color: var(--accent-2-text); background: none; border-bottom-color: var(--accent); }
 
   .answer-block { color: var(--muted); font-size: 14px; line-height: 1.6; margin: 4px 0 18px; max-width: 640px; }
 
@@ -195,7 +196,7 @@
     font-size: 13.5px;
   }
   .calendar-subscribe-label { color: var(--muted); }
-  .calendar-subscribe a { font-weight: 600; color: var(--accent); text-decoration: none; }
+  .calendar-subscribe a { font-weight: 600; color: var(--accent-2-text); text-decoration: none; }
   .calendar-subscribe a:hover { text-decoration: underline; }
 
   .map-embed {
@@ -258,7 +259,7 @@
     box-shadow: var(--shadow-sm);
     border: 1px solid var(--border);
   }
-  .map-link:hover { color: var(--accent); border-color: var(--accent); }
+  .map-link:hover { color: var(--accent-2-text); border-color: var(--accent); }
   .map-link:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
 
   .quiet-note { color: var(--muted); font-size: 14px; font-style: italic; margin: 0 0 14px; }
@@ -270,7 +271,7 @@
     text-decoration: none;
     border-bottom: 1px solid var(--border);
   }
-  .nearby-strip a:hover { color: var(--accent); border-color: var(--accent); }
+  .nearby-strip a:hover { color: var(--accent-2-text); border-color: var(--accent); }
   .nearby-strip .sep { margin: 0 8px; color: var(--border); }
 
   .weather-bar {
@@ -319,7 +320,7 @@
     font-size: 11px;
     text-transform: uppercase;
     letter-spacing: 0.06em;
-    color: var(--accent);
+    color: var(--accent-2-text);
     font-weight: 700;
     margin-bottom: 4px;
   }
@@ -329,7 +330,7 @@
      {region}" is - h3 here skipped a level straight from the page's h1. */
   .editors-pick h2 { margin: 0 0 4px; font-size: 17px; font-weight: 600; padding-right: 24px; }
   .editors-pick h2 a { color: var(--ink); text-decoration: none; }
-  .editors-pick h2 a:hover { color: var(--accent); }
+  .editors-pick h2 a:hover { color: var(--accent-2-text); }
   .editors-pick .date {
     color: var(--accent-2-text);
     font-size: 12px;
@@ -488,7 +489,7 @@
      of one festival), so the grouping shows without repeating it into
      the title itself. Same treatment as .editors-pick .label. */
   .card .series {
-    color: var(--accent);
+    color: var(--accent-2-text);
     font-size: 11px;
     font-weight: 700;
     letter-spacing: 0.06em;
@@ -505,14 +506,14 @@
   }
   .card h3 { margin: 0; padding-right: 24px; font-size: 16px; font-weight: 600; line-height: 1.35; }
   .card h3 a { color: var(--ink); text-decoration: none; }
-  .card h3 a:hover { color: var(--accent); }
+  .card h3 a:hover { color: var(--accent-2-text); }
   .card p.detail { margin: 0; color: var(--muted); font-size: 13.5px; }
   .tag-row { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 3px; }
   .cal-row { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 4px; }
   .cal-row a {
     font-size: 12.5px;
     font-weight: 600;
-    color: var(--accent);
+    color: var(--accent-2-text);
     text-decoration: none;
   }
   .cal-row a:hover { text-decoration: underline; }
@@ -526,7 +527,7 @@
     gap: 3px;
   }
   .empty { color: var(--muted); font-size: 14px; font-style: italic; }
-  .empty a { color: var(--accent); font-weight: 600; font-style: normal; }
+  .empty a { color: var(--accent-2-text); font-weight: 600; font-style: normal; }
 
   .sr-only {
     position: absolute;
@@ -559,7 +560,7 @@
   }
   .faq-item summary::-webkit-details-marker { color: var(--accent); }
   .faq-item p { margin: 8px 0 0; color: var(--muted); font-size: 13.5px; line-height: 1.6; }
-  .faq-item p a { color: var(--accent); font-weight: 600; }
+  .faq-item p a { color: var(--accent-2-text); font-weight: 600; }
 
   .newsletter {
     background: var(--card);
@@ -647,7 +648,7 @@
   .tray-item { display: flex; justify-content: space-between; align-items: flex-start; gap: 8px; font-size: 13px; border-bottom: 1px solid var(--border); padding-bottom: 8px; }
   .tray-item:last-child { border-bottom: none; padding-bottom: 0; }
   .tray-item a { color: var(--ink); text-decoration: none; font-weight: 600; }
-  .tray-item a:hover { color: var(--accent); }
+  .tray-item a:hover { color: var(--accent-2-text); }
   .tray-item-meta { color: var(--muted); font-size: 11.5px; }
   .tray-item-remove { background: none; border: none; color: var(--muted); cursor: pointer; font-size: 15px; flex-shrink: 0; }
   .tray-item-remove:hover { color: var(--accent-2-text); }
@@ -785,7 +786,7 @@
     <a href="https://withintenmiles.com/sponsor/">sponsor page</a>.
     <a href="https://withintenmiles.com/about/">About</a>.
     <a href="https://withintenmiles.com/trick-or-treat/">Trick-or-treat hours</a>.
-    <br>Generated 2026-09-28 16:46 UTC.
+    <br>Generated 2026-09-28 19:08 UTC.
     
     <br><a href="https://withintenmiles.com/wheeling-60090/weekly-summary.txt">Copy this week's summary</a> — a plain-text block ready to paste into a local group.
   </footer>
@@ -809,7 +810,7 @@
 
 
 
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebPage", "name": "Wheeling — Within Ten", "url": "https://withintenmiles.com/wheeling-60090/directory/", "dateModified": "2026-09-28T16:46:55.785487+00:00", "isPartOf": {"@type": "WebSite", "name": "Within Ten", "url": "https://withintenmiles.com/", "publisher": {"@id": "https://withintenmiles.com/about/#organization"}}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebPage", "name": "Wheeling — Within Ten", "url": "https://withintenmiles.com/wheeling-60090/directory/", "dateModified": "2026-09-28T19:08:46.031200+00:00", "isPartOf": {"@type": "WebSite", "name": "Within Ten", "url": "https://withintenmiles.com/", "publisher": {"@id": "https://withintenmiles.com/about/#organization"}}}</script>
 <script>
 (function () {
   var activeTags = new Set();

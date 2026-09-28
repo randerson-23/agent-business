@@ -55,7 +55,8 @@
     --ink: #201e1d;
     --muted: #605d5d;
     --accent: #ec3013;
-    --accent-soft: #ec3013;
+    /* Solid fills under --bg text: #ec3013 is only 3.76:1 there (item 210). */
+    --accent-soft: #cc280d;
     --accent-2: #ec3013;
     /* Deep ramp step, not the raw accent - the accent-to-ground pair is
        only ~3:1, enough for icons/borders/large text but below WCAG AA's
@@ -132,7 +133,7 @@
   }
   .hero-inner { max-width: 960px; margin: 0 auto; }
   a.back { color: var(--muted); text-decoration: none; font-size: 12px; font-weight: 800; letter-spacing: 0.06em; text-transform: uppercase; }
-  a.back:hover { color: var(--accent); }
+  a.back:hover { color: var(--accent-2-text); }
   .brand-mark { display: inline-flex; align-items: center; gap: 8px; margin: 18px 0 8px; }
   .brand-mark svg { width: 22px; height: 22px; flex-shrink: 0; }
   .kicker {
@@ -166,7 +167,7 @@
     border-bottom: 2px solid transparent;
   }
   .view-nav a:hover { color: var(--ink); border-bottom-color: var(--border); }
-  .view-nav a.active { color: var(--accent); background: none; border-bottom-color: var(--accent); }
+  .view-nav a.active { color: var(--accent-2-text); background: none; border-bottom-color: var(--accent); }
 
   .answer-block { color: var(--muted); font-size: 14px; line-height: 1.6; margin: 4px 0 18px; max-width: 640px; }
 
@@ -195,7 +196,7 @@
     font-size: 13.5px;
   }
   .calendar-subscribe-label { color: var(--muted); }
-  .calendar-subscribe a { font-weight: 600; color: var(--accent); text-decoration: none; }
+  .calendar-subscribe a { font-weight: 600; color: var(--accent-2-text); text-decoration: none; }
   .calendar-subscribe a:hover { text-decoration: underline; }
 
   .map-embed {
@@ -258,7 +259,7 @@
     box-shadow: var(--shadow-sm);
     border: 1px solid var(--border);
   }
-  .map-link:hover { color: var(--accent); border-color: var(--accent); }
+  .map-link:hover { color: var(--accent-2-text); border-color: var(--accent); }
   .map-link:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
 
   .quiet-note { color: var(--muted); font-size: 14px; font-style: italic; margin: 0 0 14px; }
@@ -270,7 +271,7 @@
     text-decoration: none;
     border-bottom: 1px solid var(--border);
   }
-  .nearby-strip a:hover { color: var(--accent); border-color: var(--accent); }
+  .nearby-strip a:hover { color: var(--accent-2-text); border-color: var(--accent); }
   .nearby-strip .sep { margin: 0 8px; color: var(--border); }
 
   .weather-bar {
@@ -319,7 +320,7 @@
     font-size: 11px;
     text-transform: uppercase;
     letter-spacing: 0.06em;
-    color: var(--accent);
+    color: var(--accent-2-text);
     font-weight: 700;
     margin-bottom: 4px;
   }
@@ -329,7 +330,7 @@
      {region}" is - h3 here skipped a level straight from the page's h1. */
   .editors-pick h2 { margin: 0 0 4px; font-size: 17px; font-weight: 600; padding-right: 24px; }
   .editors-pick h2 a { color: var(--ink); text-decoration: none; }
-  .editors-pick h2 a:hover { color: var(--accent); }
+  .editors-pick h2 a:hover { color: var(--accent-2-text); }
   .editors-pick .date {
     color: var(--accent-2-text);
     font-size: 12px;
@@ -488,7 +489,7 @@
      of one festival), so the grouping shows without repeating it into
      the title itself. Same treatment as .editors-pick .label. */
   .card .series {
-    color: var(--accent);
+    color: var(--accent-2-text);
     font-size: 11px;
     font-weight: 700;
     letter-spacing: 0.06em;
@@ -505,14 +506,14 @@
   }
   .card h3 { margin: 0; padding-right: 24px; font-size: 16px; font-weight: 600; line-height: 1.35; }
   .card h3 a { color: var(--ink); text-decoration: none; }
-  .card h3 a:hover { color: var(--accent); }
+  .card h3 a:hover { color: var(--accent-2-text); }
   .card p.detail { margin: 0; color: var(--muted); font-size: 13.5px; }
   .tag-row { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 3px; }
   .cal-row { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 4px; }
   .cal-row a {
     font-size: 12.5px;
     font-weight: 600;
-    color: var(--accent);
+    color: var(--accent-2-text);
     text-decoration: none;
   }
   .cal-row a:hover { text-decoration: underline; }
@@ -526,7 +527,7 @@
     gap: 3px;
   }
   .empty { color: var(--muted); font-size: 14px; font-style: italic; }
-  .empty a { color: var(--accent); font-weight: 600; font-style: normal; }
+  .empty a { color: var(--accent-2-text); font-weight: 600; font-style: normal; }
 
   .sr-only {
     position: absolute;
@@ -559,7 +560,7 @@
   }
   .faq-item summary::-webkit-details-marker { color: var(--accent); }
   .faq-item p { margin: 8px 0 0; color: var(--muted); font-size: 13.5px; line-height: 1.6; }
-  .faq-item p a { color: var(--accent); font-weight: 600; }
+  .faq-item p a { color: var(--accent-2-text); font-weight: 600; }
 
   .newsletter {
     background: var(--card);
@@ -647,7 +648,7 @@
   .tray-item { display: flex; justify-content: space-between; align-items: flex-start; gap: 8px; font-size: 13px; border-bottom: 1px solid var(--border); padding-bottom: 8px; }
   .tray-item:last-child { border-bottom: none; padding-bottom: 0; }
   .tray-item a { color: var(--ink); text-decoration: none; font-weight: 600; }
-  .tray-item a:hover { color: var(--accent); }
+  .tray-item a:hover { color: var(--accent-2-text); }
   .tray-item-meta { color: var(--muted); font-size: 11.5px; }
   .tray-item-remove { background: none; border: none; color: var(--muted); cursor: pointer; font-size: 15px; flex-shrink: 0; }
   .tray-item-remove:hover { color: var(--accent-2-text); }
@@ -713,23 +714,23 @@
   <div class="weather-bar">
     
     <div class="weather-day">
-      <span class="wx-emoji" aria-hidden="true">🌧️</span>
+      <span class="wx-emoji" aria-hidden="true">🌦️</span>
       <span class="wx-name">Friday</span>
-      <span class="wx-temp">62&deg; / 55&deg;</span>
-      <span class="wx-label">Heavy drizzle &middot; 63% precip</span>
+      <span class="wx-temp">65&deg; / 57&deg;</span>
+      <span class="wx-label">Light rain &middot; 63% precip</span>
     </div>
     
     <div class="weather-day">
-      <span class="wx-emoji" aria-hidden="true">☁️</span>
+      <span class="wx-emoji" aria-hidden="true">☀️</span>
       <span class="wx-name">Saturday</span>
-      <span class="wx-temp">62&deg; / 54&deg;</span>
-      <span class="wx-label">Overcast &middot; 21% precip</span>
+      <span class="wx-temp">64&deg; / 55&deg;</span>
+      <span class="wx-label">Clear sky &middot; 21% precip</span>
     </div>
     
     <div class="weather-day">
       <span class="wx-emoji" aria-hidden="true">☁️</span>
       <span class="wx-name">Sunday</span>
-      <span class="wx-temp">67&deg; / 56&deg;</span>
+      <span class="wx-temp">67&deg; / 54&deg;</span>
       <span class="wx-label">Overcast &middot; 17% precip</span>
     </div>
     
@@ -955,6 +956,38 @@
         <!-- id folds in date_iso - see the Editor's Pick tray_item above
              for why (ROADMAP.md item 146). -->
         
+        <div class="card" data-tags="indoor,outdoor" data-date-iso="2026-10-03T08:30:00">
+          
+          <!-- ROADMAP.md Phase 11 #63: My Weekend is for dated events -
+               offering to add "Find your school district" or a guide's
+               own title to it made no sense, since guide items and the
+               guide index have nothing to do with weekend planning.
+               #90: nor does a school half-day belong in it - it's real
+               and worth knowing, but nobody plans a weekend around one. -->
+          <button type="button" class="tray-star" data-item='{"date": "Oct 3", "date_iso": "2026-10-03T08:30:00", "detail": "Trick or Treat Trail (Suggested Ages 3-10) Location RecPlex Enjoy a fun-filled trail of Halloween games and treats! Pick up your bag at check-in and continue\u2026", "id": "https://www.mppd.org/event/trick-or-treat-trail-3/|2026-10-03T08:30:00", "region_name": "Mount Prospect", "region_url": "https://withintenmiles.com/mount-prospect-60056/", "title": "Trick or Treat Trail", "url": "https://www.mppd.org/event/trick-or-treat-trail-3/"}' aria-pressed="false" aria-label="Add Trick or Treat Trail to My Weekend">☆</button>
+          
+          
+          
+          <div class="date">Oct 3</div>
+          <h3><a href="https://www.mppd.org/event/trick-or-treat-trail-3/">Trick or Treat Trail</a></h3>
+          
+          <p class="detail">Trick or Treat Trail (Suggested Ages 3-10) Location RecPlex Enjoy a fun-filled trail of Halloween games and treats! Pick up your bag at check-in and continue…</p>
+          
+          <div class="tag-row">
+            <span class="tag-badge" style="background: var(--hue-blue-bg); color: var(--hue-blue-ink);">🏠 Indoor</span><span class="tag-badge" style="background: var(--hue-teal-bg); color: var(--hue-teal-ink);">🌳 Outdoor</span>
+          </div>
+          
+          
+          <div class="cal-row">
+            <a href="data:text/calendar;charset=utf-8,BEGIN%3AVCALENDAR%0D%0AVERSION%3A2.0%0D%0APRODID%3A-//Within%20Ten//EN%0D%0ABEGIN%3AVEVENT%0D%0ADTSTART%3A20261003T083000%0D%0ADTEND%3A20261003T093000%0D%0ASUMMARY%3ATrick%20or%20Treat%20Trail%0D%0ADESCRIPTION%3ATrick%20or%20Treat%20Trail%20%28Suggested%20Ages%203-10%29%20Location%20RecPlex%20Enjoy%20a%20fun-filled%20trail%20of%20Halloween%20games%20and%20treats%21%20Pick%20up%20your%20bag%20at%20check-in%20and%20continue%E2%80%A6%0D%0AURL%3Ahttps%3A//www.mppd.org/event/trick-or-treat-trail-3/%0D%0AEND%3AVEVENT%0D%0AEND%3AVCALENDAR%0D%0A" download="event.ics">📅 Add to calendar</a>
+            <a href="https://www.google.com/calendar/render?action=TEMPLATE&amp;text=Trick+or+Treat+Trail&amp;dates=20261003T083000%2F20261003T093000&amp;details=Trick+or+Treat+Trail+%28Suggested+Ages+3-10%29+Location+RecPlex+Enjoy+a+fun-filled+trail+of+Halloween+games+and+treats%21+Pick+up+your+bag+at+check-in+and+continue%E2%80%A6&amp;location=Mount+Prospect" target="_blank" rel="noopener">Google Calendar</a>
+          </div>
+          
+        </div>
+        
+        <!-- id folds in date_iso - see the Editor's Pick tray_item above
+             for why (ROADMAP.md item 146). -->
+        
         <div class="card" data-tags="" data-date-iso="2026-10-02T00:00:00">
           
           <!-- ROADMAP.md Phase 11 #63: My Weekend is for dated events -
@@ -1033,7 +1066,7 @@
     <a href="https://withintenmiles.com/sponsor/">sponsor page</a>.
     <a href="https://withintenmiles.com/about/">About</a>.
     <a href="https://withintenmiles.com/trick-or-treat/">Trick-or-treat hours</a>.
-    <br>Generated 2026-09-28 16:46 UTC.
+    <br>Generated 2026-09-28 19:08 UTC.
     
     <br><a href="https://withintenmiles.com/mount-prospect-60056/weekly-summary.txt">Copy this week's summary</a> — a plain-text block ready to paste into a local group.
   </footer>
@@ -1056,10 +1089,10 @@
 </div>
 
 
-<script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "Event", "name": "Mount Prospect Farmers Market", "url": "https://mplions.org/event/farmers-market/", "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode", "description": "Local produce and vendors, organized by the Mount Prospect Lions Club, rain or shine. West Metra commuter lot, Northwest Hwy & Main St (Rte 83).", "startDate": "2026-10-04T08:00:00"}, {"@type": "Event", "name": "World Language Storytime: Filipino", "url": "https://mppl.libnet.info/event/16521837", "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode", "description": "Friday, October 02 2026 10:00am - 10:30am \n Mabuhay! Join us for an interactive, bilingual storytime with stories, songs, rhymes, and activities that…", "startDate": "2026-10-02T10:00:00+00:00"}, {"@type": "Event", "name": "Teen Book Café", "url": "https://mppl.libnet.info/event/14685926", "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode", "description": "Friday, October 02 2026 4:30pm - 6:00pm \n Love books? Come hang out with us at Khepri Kitchen + Coffee, 106 S. Emerson St. We'll talk about new books,…", "startDate": "2026-10-02T16:30:00+00:00"}, {"@type": "Event", "name": "LEGO Mania", "url": "https://mppl.libnet.info/event/16749784", "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode", "description": "Friday, October 02 2026 5:00pm - 6:00pm \n Create a never-before-seen masterpiece using our large collection of LEGO bricks! At the end of the program, we will…", "startDate": "2026-10-02T17:00:00+00:00"}, {"@type": "Event", "name": "CheckMates Meetup", "url": "https://mppl.libnet.info/event/16648940", "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode", "description": "Saturday, October 03 2026 2:00pm - 3:30pm \n Join other chess fans for a mini lesson and guided instruction to sharpen your skills, or just stop by for a match!", "startDate": "2026-10-03T14:00:00+00:00"}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "Event", "name": "Mount Prospect Farmers Market", "url": "https://mplions.org/event/farmers-market/", "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode", "description": "Local produce and vendors, organized by the Mount Prospect Lions Club, rain or shine. West Metra commuter lot, Northwest Hwy & Main St (Rte 83).", "startDate": "2026-10-04T08:00:00"}, {"@type": "Event", "name": "World Language Storytime: Filipino", "url": "https://mppl.libnet.info/event/16521837", "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode", "description": "Friday, October 02 2026 10:00am - 10:30am \n Mabuhay! Join us for an interactive, bilingual storytime with stories, songs, rhymes, and activities that…", "startDate": "2026-10-02T10:00:00+00:00"}, {"@type": "Event", "name": "Teen Book Café", "url": "https://mppl.libnet.info/event/14685926", "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode", "description": "Friday, October 02 2026 4:30pm - 6:00pm \n Love books? Come hang out with us at Khepri Kitchen + Coffee, 106 S. Emerson St. We'll talk about new books,…", "startDate": "2026-10-02T16:30:00+00:00"}, {"@type": "Event", "name": "LEGO Mania", "url": "https://mppl.libnet.info/event/16749784", "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode", "description": "Friday, October 02 2026 5:00pm - 6:00pm \n Create a never-before-seen masterpiece using our large collection of LEGO bricks! At the end of the program, we will…", "startDate": "2026-10-02T17:00:00+00:00"}, {"@type": "Event", "name": "CheckMates Meetup", "url": "https://mppl.libnet.info/event/16648940", "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode", "description": "Saturday, October 03 2026 2:00pm - 3:30pm \n Join other chess fans for a mini lesson and guided instruction to sharpen your skills, or just stop by for a match!", "startDate": "2026-10-03T14:00:00+00:00"}, {"@type": "Event", "name": "Trick or Treat Trail", "url": "https://www.mppd.org/event/trick-or-treat-trail-3/", "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode", "description": "Trick or Treat Trail (Suggested Ages 3-10) Location RecPlex Enjoy a fun-filled trail of Halloween games and treats! Pick up your bag at check-in and continue…", "startDate": "2026-10-03T08:30:00"}]}</script>
 
 
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebPage", "name": "Mount Prospect — Within Ten", "url": "https://withintenmiles.com/mount-prospect-60056/this-weekend/", "dateModified": "2026-09-28T16:46:55.785487+00:00", "isPartOf": {"@type": "WebSite", "name": "Within Ten", "url": "https://withintenmiles.com/", "publisher": {"@id": "https://withintenmiles.com/about/#organization"}}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebPage", "name": "Mount Prospect — Within Ten", "url": "https://withintenmiles.com/mount-prospect-60056/this-weekend/", "dateModified": "2026-09-28T19:08:46.031200+00:00", "isPartOf": {"@type": "WebSite", "name": "Within Ten", "url": "https://withintenmiles.com/", "publisher": {"@id": "https://withintenmiles.com/about/#organization"}}}</script>
 <script>
 (function () {
   var activeTags = new Set();

@@ -55,7 +55,8 @@
     --ink: #201e1d;
     --muted: #605d5d;
     --accent: #ec3013;
-    --accent-soft: #ec3013;
+    /* Solid fills under --bg text: #ec3013 is only 3.76:1 there (item 210). */
+    --accent-soft: #cc280d;
     --accent-2: #ec3013;
     /* Deep ramp step, not the raw accent - the accent-to-ground pair is
        only ~3:1, enough for icons/borders/large text but below WCAG AA's
@@ -132,7 +133,7 @@
   }
   .hero-inner { max-width: 960px; margin: 0 auto; }
   a.back { color: var(--muted); text-decoration: none; font-size: 12px; font-weight: 800; letter-spacing: 0.06em; text-transform: uppercase; }
-  a.back:hover { color: var(--accent); }
+  a.back:hover { color: var(--accent-2-text); }
   .brand-mark { display: inline-flex; align-items: center; gap: 8px; margin: 18px 0 8px; }
   .brand-mark svg { width: 22px; height: 22px; flex-shrink: 0; }
   .kicker {
@@ -166,7 +167,7 @@
     border-bottom: 2px solid transparent;
   }
   .view-nav a:hover { color: var(--ink); border-bottom-color: var(--border); }
-  .view-nav a.active { color: var(--accent); background: none; border-bottom-color: var(--accent); }
+  .view-nav a.active { color: var(--accent-2-text); background: none; border-bottom-color: var(--accent); }
 
   .answer-block { color: var(--muted); font-size: 14px; line-height: 1.6; margin: 4px 0 18px; max-width: 640px; }
 
@@ -195,7 +196,7 @@
     font-size: 13.5px;
   }
   .calendar-subscribe-label { color: var(--muted); }
-  .calendar-subscribe a { font-weight: 600; color: var(--accent); text-decoration: none; }
+  .calendar-subscribe a { font-weight: 600; color: var(--accent-2-text); text-decoration: none; }
   .calendar-subscribe a:hover { text-decoration: underline; }
 
   .map-embed {
@@ -258,7 +259,7 @@
     box-shadow: var(--shadow-sm);
     border: 1px solid var(--border);
   }
-  .map-link:hover { color: var(--accent); border-color: var(--accent); }
+  .map-link:hover { color: var(--accent-2-text); border-color: var(--accent); }
   .map-link:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
 
   .quiet-note { color: var(--muted); font-size: 14px; font-style: italic; margin: 0 0 14px; }
@@ -270,7 +271,7 @@
     text-decoration: none;
     border-bottom: 1px solid var(--border);
   }
-  .nearby-strip a:hover { color: var(--accent); border-color: var(--accent); }
+  .nearby-strip a:hover { color: var(--accent-2-text); border-color: var(--accent); }
   .nearby-strip .sep { margin: 0 8px; color: var(--border); }
 
   .weather-bar {
@@ -319,7 +320,7 @@
     font-size: 11px;
     text-transform: uppercase;
     letter-spacing: 0.06em;
-    color: var(--accent);
+    color: var(--accent-2-text);
     font-weight: 700;
     margin-bottom: 4px;
   }
@@ -329,7 +330,7 @@
      {region}" is - h3 here skipped a level straight from the page's h1. */
   .editors-pick h2 { margin: 0 0 4px; font-size: 17px; font-weight: 600; padding-right: 24px; }
   .editors-pick h2 a { color: var(--ink); text-decoration: none; }
-  .editors-pick h2 a:hover { color: var(--accent); }
+  .editors-pick h2 a:hover { color: var(--accent-2-text); }
   .editors-pick .date {
     color: var(--accent-2-text);
     font-size: 12px;
@@ -488,7 +489,7 @@
      of one festival), so the grouping shows without repeating it into
      the title itself. Same treatment as .editors-pick .label. */
   .card .series {
-    color: var(--accent);
+    color: var(--accent-2-text);
     font-size: 11px;
     font-weight: 700;
     letter-spacing: 0.06em;
@@ -505,14 +506,14 @@
   }
   .card h3 { margin: 0; padding-right: 24px; font-size: 16px; font-weight: 600; line-height: 1.35; }
   .card h3 a { color: var(--ink); text-decoration: none; }
-  .card h3 a:hover { color: var(--accent); }
+  .card h3 a:hover { color: var(--accent-2-text); }
   .card p.detail { margin: 0; color: var(--muted); font-size: 13.5px; }
   .tag-row { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 3px; }
   .cal-row { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 4px; }
   .cal-row a {
     font-size: 12.5px;
     font-weight: 600;
-    color: var(--accent);
+    color: var(--accent-2-text);
     text-decoration: none;
   }
   .cal-row a:hover { text-decoration: underline; }
@@ -526,7 +527,7 @@
     gap: 3px;
   }
   .empty { color: var(--muted); font-size: 14px; font-style: italic; }
-  .empty a { color: var(--accent); font-weight: 600; font-style: normal; }
+  .empty a { color: var(--accent-2-text); font-weight: 600; font-style: normal; }
 
   .sr-only {
     position: absolute;
@@ -559,7 +560,7 @@
   }
   .faq-item summary::-webkit-details-marker { color: var(--accent); }
   .faq-item p { margin: 8px 0 0; color: var(--muted); font-size: 13.5px; line-height: 1.6; }
-  .faq-item p a { color: var(--accent); font-weight: 600; }
+  .faq-item p a { color: var(--accent-2-text); font-weight: 600; }
 
   .newsletter {
     background: var(--card);
@@ -647,7 +648,7 @@
   .tray-item { display: flex; justify-content: space-between; align-items: flex-start; gap: 8px; font-size: 13px; border-bottom: 1px solid var(--border); padding-bottom: 8px; }
   .tray-item:last-child { border-bottom: none; padding-bottom: 0; }
   .tray-item a { color: var(--ink); text-decoration: none; font-weight: 600; }
-  .tray-item a:hover { color: var(--accent); }
+  .tray-item a:hover { color: var(--accent-2-text); }
   .tray-item-meta { color: var(--muted); font-size: 11.5px; }
   .tray-item-remove { background: none; border: none; color: var(--muted); cursor: pointer; font-size: 15px; flex-shrink: 0; }
   .tray-item-remove:hover { color: var(--accent-2-text); }
@@ -1220,6 +1221,555 @@
     
   
     
+    <section class="block">
+      <h2>Park District Events</h2>
+      
+        <div class="card-grid">
+        
+        <!-- id folds in date_iso - see the Editor's Pick tray_item above
+             for why (ROADMAP.md item 146). -->
+        
+        <div class="card" data-tags="outdoor" data-date-iso="">
+          
+          <!-- ROADMAP.md Phase 11 #63: My Weekend is for dated events -
+               offering to add "Find your school district" or a guide's
+               own title to it made no sense, since guide items and the
+               guide index have nothing to do with weekend planning.
+               #90: nor does a school half-day belong in it - it's real
+               and worth knowing, but nobody plans a weekend around one. -->
+          <button type="button" class="tray-star" data-item='{"date": null, "date_iso": null, "detail": "", "id": "https://www.dpparks.org/aqua-fitness/", "region_name": "Des Plaines", "region_url": "https://withintenmiles.com/des-plaines-60016/", "title": "Swim Programs/Aqua Fitness", "url": "https://www.dpparks.org/aqua-fitness/"}' aria-pressed="false" aria-label="Add Swim Programs/Aqua Fitness to My Weekend">☆</button>
+          
+          
+          
+          
+          <h3><a href="https://www.dpparks.org/aqua-fitness/">Swim Programs/Aqua Fitness</a></h3>
+          
+          
+          
+          <div class="tag-row">
+            <span class="tag-badge" style="background: var(--hue-teal-bg); color: var(--hue-teal-ink);">🌳 Outdoor</span>
+          </div>
+          
+          
+        </div>
+        
+        <!-- id folds in date_iso - see the Editor's Pick tray_item above
+             for why (ROADMAP.md item 146). -->
+        
+        <div class="card" data-tags="indoor,outdoor" data-date-iso="">
+          
+          <!-- ROADMAP.md Phase 11 #63: My Weekend is for dated events -
+               offering to add "Find your school district" or a guide's
+               own title to it made no sense, since guide items and the
+               guide index have nothing to do with weekend planning.
+               #90: nor does a school half-day belong in it - it's real
+               and worth knowing, but nobody plans a weekend around one. -->
+          <button type="button" class="tray-star" data-item='{"date": null, "date_iso": null, "detail": "", "id": "https://www.dpparks.org/swim-school/", "region_name": "Des Plaines", "region_url": "https://withintenmiles.com/des-plaines-60016/", "title": "Swim School Indoor and Outdoor", "url": "https://www.dpparks.org/swim-school/"}' aria-pressed="false" aria-label="Add Swim School Indoor and Outdoor to My Weekend">☆</button>
+          
+          
+          
+          
+          <h3><a href="https://www.dpparks.org/swim-school/">Swim School Indoor and Outdoor</a></h3>
+          
+          
+          
+          <div class="tag-row">
+            <span class="tag-badge" style="background: var(--hue-blue-bg); color: var(--hue-blue-ink);">🏠 Indoor</span><span class="tag-badge" style="background: var(--hue-teal-bg); color: var(--hue-teal-ink);">🌳 Outdoor</span>
+          </div>
+          
+          
+        </div>
+        
+        <!-- id folds in date_iso - see the Editor's Pick tray_item above
+             for why (ROADMAP.md item 146). -->
+        
+        <div class="card" data-tags="outdoor" data-date-iso="">
+          
+          <!-- ROADMAP.md Phase 11 #63: My Weekend is for dated events -
+               offering to add "Find your school district" or a guide's
+               own title to it made no sense, since guide items and the
+               guide index have nothing to do with weekend planning.
+               #90: nor does a school half-day belong in it - it's real
+               and worth knowing, but nobody plans a weekend around one. -->
+          <button type="button" class="tray-star" data-item='{"date": null, "date_iso": null, "detail": "", "id": "https://www.dpparks.org/warriors-swim-team/", "region_name": "Des Plaines", "region_url": "https://withintenmiles.com/des-plaines-60016/", "title": "Warriors Swim Team", "url": "https://www.dpparks.org/warriors-swim-team/"}' aria-pressed="false" aria-label="Add Warriors Swim Team to My Weekend">☆</button>
+          
+          
+          
+          
+          <h3><a href="https://www.dpparks.org/warriors-swim-team/">Warriors Swim Team</a></h3>
+          
+          
+          
+          <div class="tag-row">
+            <span class="tag-badge" style="background: var(--hue-teal-bg); color: var(--hue-teal-ink);">🌳 Outdoor</span>
+          </div>
+          
+          
+        </div>
+        
+        <!-- id folds in date_iso - see the Editor's Pick tray_item above
+             for why (ROADMAP.md item 146). -->
+        
+        <div class="card" data-tags="outdoor" data-date-iso="">
+          
+          <!-- ROADMAP.md Phase 11 #63: My Weekend is for dated events -
+               offering to add "Find your school district" or a guide's
+               own title to it made no sense, since guide items and the
+               guide index have nothing to do with weekend planning.
+               #90: nor does a school half-day belong in it - it's real
+               and worth knowing, but nobody plans a weekend around one. -->
+          <button type="button" class="tray-star" data-item='{"date": null, "date_iso": null, "detail": "", "id": "https://www.dpparks.org/tritons-swim-team/", "region_name": "Des Plaines", "region_url": "https://withintenmiles.com/des-plaines-60016/", "title": "Tritons Swim Team", "url": "https://www.dpparks.org/tritons-swim-team/"}' aria-pressed="false" aria-label="Add Tritons Swim Team to My Weekend">☆</button>
+          
+          
+          
+          
+          <h3><a href="https://www.dpparks.org/tritons-swim-team/">Tritons Swim Team</a></h3>
+          
+          
+          
+          <div class="tag-row">
+            <span class="tag-badge" style="background: var(--hue-teal-bg); color: var(--hue-teal-ink);">🌳 Outdoor</span>
+          </div>
+          
+          
+        </div>
+        
+        <!-- id folds in date_iso - see the Editor's Pick tray_item above
+             for why (ROADMAP.md item 146). -->
+        
+        <div class="card" data-tags="kid_friendly,outdoor" data-date-iso="">
+          
+          <!-- ROADMAP.md Phase 11 #63: My Weekend is for dated events -
+               offering to add "Find your school district" or a guide's
+               own title to it made no sense, since guide items and the
+               guide index have nothing to do with weekend planning.
+               #90: nor does a school half-day belong in it - it's real
+               and worth knowing, but nobody plans a weekend around one. -->
+          <button type="button" class="tray-star" data-item='{"date": null, "date_iso": null, "detail": "", "id": "https://www.dpparks.org/youth-multi-sports/", "region_name": "Des Plaines", "region_url": "https://withintenmiles.com/des-plaines-60016/", "title": "Youth Multi-Sports", "url": "https://www.dpparks.org/youth-multi-sports/"}' aria-pressed="false" aria-label="Add Youth Multi-Sports to My Weekend">☆</button>
+          
+          
+          
+          
+          <h3><a href="https://www.dpparks.org/youth-multi-sports/">Youth Multi-Sports</a></h3>
+          
+          
+          
+          <div class="tag-row">
+            <span class="tag-badge" style="background: var(--hue-pink-bg); color: var(--hue-pink-ink);">🧒 Kid-friendly</span><span class="tag-badge" style="background: var(--hue-teal-bg); color: var(--hue-teal-ink);">🌳 Outdoor</span>
+          </div>
+          
+          
+        </div>
+        
+        <!-- id folds in date_iso - see the Editor's Pick tray_item above
+             for why (ROADMAP.md item 146). -->
+        
+        <div class="card" data-tags="kid_friendly,outdoor" data-date-iso="">
+          
+          <!-- ROADMAP.md Phase 11 #63: My Weekend is for dated events -
+               offering to add "Find your school district" or a guide's
+               own title to it made no sense, since guide items and the
+               guide index have nothing to do with weekend planning.
+               #90: nor does a school half-day belong in it - it's real
+               and worth knowing, but nobody plans a weekend around one. -->
+          <button type="button" class="tray-star" data-item='{"date": null, "date_iso": null, "detail": "", "id": "https://www.dpparks.org/preschool-classes/", "region_name": "Des Plaines", "region_url": "https://withintenmiles.com/des-plaines-60016/", "title": "Preschool Classes", "url": "https://www.dpparks.org/preschool-classes/"}' aria-pressed="false" aria-label="Add Preschool Classes to My Weekend">☆</button>
+          
+          
+          
+          
+          <h3><a href="https://www.dpparks.org/preschool-classes/">Preschool Classes</a></h3>
+          
+          
+          
+          <div class="tag-row">
+            <span class="tag-badge" style="background: var(--hue-pink-bg); color: var(--hue-pink-ink);">🧒 Kid-friendly</span><span class="tag-badge" style="background: var(--hue-teal-bg); color: var(--hue-teal-ink);">🌳 Outdoor</span>
+          </div>
+          
+          
+        </div>
+        
+        <!-- id folds in date_iso - see the Editor's Pick tray_item above
+             for why (ROADMAP.md item 146). -->
+        
+        <div class="card" data-tags="kid_friendly,outdoor" data-date-iso="">
+          
+          <!-- ROADMAP.md Phase 11 #63: My Weekend is for dated events -
+               offering to add "Find your school district" or a guide's
+               own title to it made no sense, since guide items and the
+               guide index have nothing to do with weekend planning.
+               #90: nor does a school half-day belong in it - it's real
+               and worth knowing, but nobody plans a weekend around one. -->
+          <button type="button" class="tray-star" data-item='{"date": null, "date_iso": null, "detail": "", "id": "https://www.dpparks.org/early-childhood-classes/", "region_name": "Des Plaines", "region_url": "https://withintenmiles.com/des-plaines-60016/", "title": "Early Childhood Classes", "url": "https://www.dpparks.org/early-childhood-classes/"}' aria-pressed="false" aria-label="Add Early Childhood Classes to My Weekend">☆</button>
+          
+          
+          
+          
+          <h3><a href="https://www.dpparks.org/early-childhood-classes/">Early Childhood Classes</a></h3>
+          
+          
+          
+          <div class="tag-row">
+            <span class="tag-badge" style="background: var(--hue-pink-bg); color: var(--hue-pink-ink);">🧒 Kid-friendly</span><span class="tag-badge" style="background: var(--hue-teal-bg); color: var(--hue-teal-ink);">🌳 Outdoor</span>
+          </div>
+          
+          
+        </div>
+        
+        <!-- id folds in date_iso - see the Editor's Pick tray_item above
+             for why (ROADMAP.md item 146). -->
+        
+        <div class="card" data-tags="kid_friendly,outdoor" data-date-iso="">
+          
+          <!-- ROADMAP.md Phase 11 #63: My Weekend is for dated events -
+               offering to add "Find your school district" or a guide's
+               own title to it made no sense, since guide items and the
+               guide index have nothing to do with weekend planning.
+               #90: nor does a school half-day belong in it - it's real
+               and worth knowing, but nobody plans a weekend around one. -->
+          <button type="button" class="tray-star" data-item='{"date": null, "date_iso": null, "detail": "", "id": "https://www.dpparks.org/preschool-summer-camps/", "region_name": "Des Plaines", "region_url": "https://withintenmiles.com/des-plaines-60016/", "title": "Preschool Summer Camps", "url": "https://www.dpparks.org/preschool-summer-camps/"}' aria-pressed="false" aria-label="Add Preschool Summer Camps to My Weekend">☆</button>
+          
+          
+          
+          
+          <h3><a href="https://www.dpparks.org/preschool-summer-camps/">Preschool Summer Camps</a></h3>
+          
+          
+          
+          <div class="tag-row">
+            <span class="tag-badge" style="background: var(--hue-pink-bg); color: var(--hue-pink-ink);">🧒 Kid-friendly</span><span class="tag-badge" style="background: var(--hue-teal-bg); color: var(--hue-teal-ink);">🌳 Outdoor</span>
+          </div>
+          
+          
+        </div>
+        
+        <!-- id folds in date_iso - see the Editor's Pick tray_item above
+             for why (ROADMAP.md item 146). -->
+        
+        <div class="card" data-tags="outdoor" data-date-iso="">
+          
+          <!-- ROADMAP.md Phase 11 #63: My Weekend is for dated events -
+               offering to add "Find your school district" or a guide's
+               own title to it made no sense, since guide items and the
+               guide index have nothing to do with weekend planning.
+               #90: nor does a school half-day belong in it - it's real
+               and worth knowing, but nobody plans a weekend around one. -->
+          <button type="button" class="tray-star" data-item='{"date": null, "date_iso": null, "detail": "", "id": "https://www.dpparks.org/des-plaines-dance-academy-class-descriptions/", "region_name": "Des Plaines", "region_url": "https://withintenmiles.com/des-plaines-60016/", "title": "Des Plaines Dance Academy Class Descriptions", "url": "https://www.dpparks.org/des-plaines-dance-academy-class-descriptions/"}' aria-pressed="false" aria-label="Add Des Plaines Dance Academy Class Descriptions to My Weekend">☆</button>
+          
+          
+          
+          
+          <h3><a href="https://www.dpparks.org/des-plaines-dance-academy-class-descriptions/">Des Plaines Dance Academy Class Descriptions</a></h3>
+          
+          
+          
+          <div class="tag-row">
+            <span class="tag-badge" style="background: var(--hue-teal-bg); color: var(--hue-teal-ink);">🌳 Outdoor</span>
+          </div>
+          
+          
+        </div>
+        
+        <!-- id folds in date_iso - see the Editor's Pick tray_item above
+             for why (ROADMAP.md item 146). -->
+        
+        <div class="card" data-tags="outdoor" data-date-iso="">
+          
+          <!-- ROADMAP.md Phase 11 #63: My Weekend is for dated events -
+               offering to add "Find your school district" or a guide's
+               own title to it made no sense, since guide items and the
+               guide index have nothing to do with weekend planning.
+               #90: nor does a school half-day belong in it - it's real
+               and worth knowing, but nobody plans a weekend around one. -->
+          <button type="button" class="tray-star" data-item='{"date": null, "date_iso": null, "detail": "", "id": "https://www.dpparks.org/event-tickets/", "region_name": "Des Plaines", "region_url": "https://withintenmiles.com/des-plaines-60016/", "title": "Events Tickets", "url": "https://www.dpparks.org/event-tickets/"}' aria-pressed="false" aria-label="Add Events Tickets to My Weekend">☆</button>
+          
+          
+          
+          
+          <h3><a href="https://www.dpparks.org/event-tickets/">Events Tickets</a></h3>
+          
+          
+          
+          <div class="tag-row">
+            <span class="tag-badge" style="background: var(--hue-teal-bg); color: var(--hue-teal-ink);">🌳 Outdoor</span>
+          </div>
+          
+          
+        </div>
+        
+        <!-- id folds in date_iso - see the Editor's Pick tray_item above
+             for why (ROADMAP.md item 146). -->
+        
+        <div class="card" data-tags="outdoor" data-date-iso="">
+          
+          <!-- ROADMAP.md Phase 11 #63: My Weekend is for dated events -
+               offering to add "Find your school district" or a guide's
+               own title to it made no sense, since guide items and the
+               guide index have nothing to do with weekend planning.
+               #90: nor does a school half-day belong in it - it's real
+               and worth knowing, but nobody plans a weekend around one. -->
+          <button type="button" class="tray-star" data-item='{"date": null, "date_iso": null, "detail": "", "id": "https://www.dpparks.org/event-tickets/", "region_name": "Des Plaines", "region_url": "https://withintenmiles.com/des-plaines-60016/", "title": "Special Events and Tickets", "url": "https://www.dpparks.org/event-tickets/"}' aria-pressed="false" aria-label="Add Special Events and Tickets to My Weekend">☆</button>
+          
+          
+          
+          
+          <h3><a href="https://www.dpparks.org/event-tickets/">Special Events and Tickets</a></h3>
+          
+          
+          
+          <div class="tag-row">
+            <span class="tag-badge" style="background: var(--hue-teal-bg); color: var(--hue-teal-ink);">🌳 Outdoor</span>
+          </div>
+          
+          
+        </div>
+        
+        <!-- id folds in date_iso - see the Editor's Pick tray_item above
+             for why (ROADMAP.md item 146). -->
+        
+        <div class="card" data-tags="outdoor" data-date-iso="">
+          
+          <!-- ROADMAP.md Phase 11 #63: My Weekend is for dated events -
+               offering to add "Find your school district" or a guide's
+               own title to it made no sense, since guide items and the
+               guide index have nothing to do with weekend planning.
+               #90: nor does a school half-day belong in it - it's real
+               and worth knowing, but nobody plans a weekend around one. -->
+          <button type="button" class="tray-star" data-item='{"date": null, "date_iso": null, "detail": "", "id": "https://www.dpparks.org/fitness-classes/", "region_name": "Des Plaines", "region_url": "https://withintenmiles.com/des-plaines-60016/", "title": "Fitness Classes", "url": "https://www.dpparks.org/fitness-classes/"}' aria-pressed="false" aria-label="Add Fitness Classes to My Weekend">☆</button>
+          
+          
+          
+          
+          <h3><a href="https://www.dpparks.org/fitness-classes/">Fitness Classes</a></h3>
+          
+          
+          
+          <div class="tag-row">
+            <span class="tag-badge" style="background: var(--hue-teal-bg); color: var(--hue-teal-ink);">🌳 Outdoor</span>
+          </div>
+          
+          
+        </div>
+        
+        <!-- id folds in date_iso - see the Editor's Pick tray_item above
+             for why (ROADMAP.md item 146). -->
+        
+        <div class="card" data-tags="art_culture,outdoor" data-date-iso="">
+          
+          <!-- ROADMAP.md Phase 11 #63: My Weekend is for dated events -
+               offering to add "Find your school district" or a guide's
+               own title to it made no sense, since guide items and the
+               guide index have nothing to do with weekend planning.
+               #90: nor does a school half-day belong in it - it's real
+               and worth knowing, but nobody plans a weekend around one. -->
+          <button type="button" class="tray-star" data-item='{"date": null, "date_iso": null, "detail": "", "id": "https://www.dpparks.org/community-concert-band/", "region_name": "Des Plaines", "region_url": "https://withintenmiles.com/des-plaines-60016/", "title": "Des Plaines Community Concert Band", "url": "https://www.dpparks.org/community-concert-band/"}' aria-pressed="false" aria-label="Add Des Plaines Community Concert Band to My Weekend">☆</button>
+          
+          
+          
+          
+          <h3><a href="https://www.dpparks.org/community-concert-band/">Des Plaines Community Concert Band</a></h3>
+          
+          
+          
+          <div class="tag-row">
+            <span class="tag-badge" style="background: var(--hue-purple-bg); color: var(--hue-purple-ink);">🎨 Arts &amp; culture</span><span class="tag-badge" style="background: var(--hue-teal-bg); color: var(--hue-teal-ink);">🌳 Outdoor</span>
+          </div>
+          
+          
+        </div>
+        
+        <!-- id folds in date_iso - see the Editor's Pick tray_item above
+             for why (ROADMAP.md item 146). -->
+        
+        <div class="card" data-tags="outdoor" data-date-iso="">
+          
+          <!-- ROADMAP.md Phase 11 #63: My Weekend is for dated events -
+               offering to add "Find your school district" or a guide's
+               own title to it made no sense, since guide items and the
+               guide index have nothing to do with weekend planning.
+               #90: nor does a school half-day belong in it - it's real
+               and worth knowing, but nobody plans a weekend around one. -->
+          <button type="button" class="tray-star" data-item='{"date": null, "date_iso": null, "detail": "", "id": "https://www.dpparks.org/nature-programs/", "region_name": "Des Plaines", "region_url": "https://withintenmiles.com/des-plaines-60016/", "title": "Nature Programs", "url": "https://www.dpparks.org/nature-programs/"}' aria-pressed="false" aria-label="Add Nature Programs to My Weekend">☆</button>
+          
+          
+          
+          
+          <h3><a href="https://www.dpparks.org/nature-programs/">Nature Programs</a></h3>
+          
+          
+          
+          <div class="tag-row">
+            <span class="tag-badge" style="background: var(--hue-teal-bg); color: var(--hue-teal-ink);">🌳 Outdoor</span>
+          </div>
+          
+          
+        </div>
+        
+        <!-- id folds in date_iso - see the Editor's Pick tray_item above
+             for why (ROADMAP.md item 146). -->
+        
+        <div class="card" data-tags="outdoor" data-date-iso="">
+          
+          <!-- ROADMAP.md Phase 11 #63: My Weekend is for dated events -
+               offering to add "Find your school district" or a guide's
+               own title to it made no sense, since guide items and the
+               guide index have nothing to do with weekend planning.
+               #90: nor does a school half-day belong in it - it's real
+               and worth knowing, but nobody plans a weekend around one. -->
+          <button type="button" class="tray-star" data-item='{"date": null, "date_iso": null, "detail": "", "id": "https://www.dpparks.org/summer-camps/", "region_name": "Des Plaines", "region_url": "https://withintenmiles.com/des-plaines-60016/", "title": "Summer Camps", "url": "https://www.dpparks.org/summer-camps/"}' aria-pressed="false" aria-label="Add Summer Camps to My Weekend">☆</button>
+          
+          
+          
+          
+          <h3><a href="https://www.dpparks.org/summer-camps/">Summer Camps</a></h3>
+          
+          
+          
+          <div class="tag-row">
+            <span class="tag-badge" style="background: var(--hue-teal-bg); color: var(--hue-teal-ink);">🌳 Outdoor</span>
+          </div>
+          
+          
+        </div>
+        
+        <!-- id folds in date_iso - see the Editor's Pick tray_item above
+             for why (ROADMAP.md item 146). -->
+        
+        <div class="card" data-tags="kid_friendly,outdoor" data-date-iso="">
+          
+          <!-- ROADMAP.md Phase 11 #63: My Weekend is for dated events -
+               offering to add "Find your school district" or a guide's
+               own title to it made no sense, since guide items and the
+               guide index have nothing to do with weekend planning.
+               #90: nor does a school half-day belong in it - it's real
+               and worth knowing, but nobody plans a weekend around one. -->
+          <button type="button" class="tray-star" data-item='{"date": null, "date_iso": null, "detail": "", "id": "https://www.dpparks.org/youth-programs/", "region_name": "Des Plaines", "region_url": "https://withintenmiles.com/des-plaines-60016/", "title": "Youth Programs", "url": "https://www.dpparks.org/youth-programs/"}' aria-pressed="false" aria-label="Add Youth Programs to My Weekend">☆</button>
+          
+          
+          
+          
+          <h3><a href="https://www.dpparks.org/youth-programs/">Youth Programs</a></h3>
+          
+          
+          
+          <div class="tag-row">
+            <span class="tag-badge" style="background: var(--hue-pink-bg); color: var(--hue-pink-ink);">🧒 Kid-friendly</span><span class="tag-badge" style="background: var(--hue-teal-bg); color: var(--hue-teal-ink);">🌳 Outdoor</span>
+          </div>
+          
+          
+        </div>
+        
+        <!-- id folds in date_iso - see the Editor's Pick tray_item above
+             for why (ROADMAP.md item 146). -->
+        
+        <div class="card" data-tags="outdoor" data-date-iso="">
+          
+          <!-- ROADMAP.md Phase 11 #63: My Weekend is for dated events -
+               offering to add "Find your school district" or a guide's
+               own title to it made no sense, since guide items and the
+               guide index have nothing to do with weekend planning.
+               #90: nor does a school half-day belong in it - it's real
+               and worth knowing, but nobody plans a weekend around one. -->
+          <button type="button" class="tray-star" data-item='{"date": null, "date_iso": null, "detail": "", "id": "https://www.dpparks.org/golf-center-events/", "region_name": "Des Plaines", "region_url": "https://withintenmiles.com/des-plaines-60016/", "title": "Golf Center Events", "url": "https://www.dpparks.org/golf-center-events/"}' aria-pressed="false" aria-label="Add Golf Center Events to My Weekend">☆</button>
+          
+          
+          
+          
+          <h3><a href="https://www.dpparks.org/golf-center-events/">Golf Center Events</a></h3>
+          
+          
+          
+          <div class="tag-row">
+            <span class="tag-badge" style="background: var(--hue-teal-bg); color: var(--hue-teal-ink);">🌳 Outdoor</span>
+          </div>
+          
+          
+        </div>
+        
+        <!-- id folds in date_iso - see the Editor's Pick tray_item above
+             for why (ROADMAP.md item 146). -->
+        
+        <div class="card" data-tags="outdoor" data-date-iso="">
+          
+          <!-- ROADMAP.md Phase 11 #63: My Weekend is for dated events -
+               offering to add "Find your school district" or a guide's
+               own title to it made no sense, since guide items and the
+               guide index have nothing to do with weekend planning.
+               #90: nor does a school half-day belong in it - it's real
+               and worth knowing, but nobody plans a weekend around one. -->
+          <button type="button" class="tray-star" data-item='{"date": null, "date_iso": null, "detail": "", "id": "https://www.dpparks.org/fields-and-sports-areas/", "region_name": "Des Plaines", "region_url": "https://withintenmiles.com/des-plaines-60016/", "title": "Fields and Sports Areas", "url": "https://www.dpparks.org/fields-and-sports-areas/"}' aria-pressed="false" aria-label="Add Fields and Sports Areas to My Weekend">☆</button>
+          
+          
+          
+          
+          <h3><a href="https://www.dpparks.org/fields-and-sports-areas/">Fields and Sports Areas</a></h3>
+          
+          
+          
+          <div class="tag-row">
+            <span class="tag-badge" style="background: var(--hue-teal-bg); color: var(--hue-teal-ink);">🌳 Outdoor</span>
+          </div>
+          
+          
+        </div>
+        
+        <!-- id folds in date_iso - see the Editor's Pick tray_item above
+             for why (ROADMAP.md item 146). -->
+        
+        <div class="card" data-tags="kid_friendly,outdoor" data-date-iso="">
+          
+          <!-- ROADMAP.md Phase 11 #63: My Weekend is for dated events -
+               offering to add "Find your school district" or a guide's
+               own title to it made no sense, since guide items and the
+               guide index have nothing to do with weekend planning.
+               #90: nor does a school half-day belong in it - it's real
+               and worth knowing, but nobody plans a weekend around one. -->
+          <button type="button" class="tray-star" data-item='{"date": null, "date_iso": null, "detail": "", "id": "https://www.dpparks.org/event/family-spooky-swim/", "region_name": "Des Plaines", "region_url": "https://withintenmiles.com/des-plaines-60016/", "title": "Family Spooky Swim", "url": "https://www.dpparks.org/event/family-spooky-swim/"}' aria-pressed="false" aria-label="Add Family Spooky Swim to My Weekend">☆</button>
+          
+          
+          
+          
+          <h3><a href="https://www.dpparks.org/event/family-spooky-swim/">Family Spooky Swim</a></h3>
+          
+          
+          
+          <div class="tag-row">
+            <span class="tag-badge" style="background: var(--hue-pink-bg); color: var(--hue-pink-ink);">🧒 Kid-friendly</span><span class="tag-badge" style="background: var(--hue-teal-bg); color: var(--hue-teal-ink);">🌳 Outdoor</span>
+          </div>
+          
+          
+        </div>
+        
+        <!-- id folds in date_iso - see the Editor's Pick tray_item above
+             for why (ROADMAP.md item 146). -->
+        
+        <div class="card" data-tags="outdoor" data-date-iso="">
+          
+          <!-- ROADMAP.md Phase 11 #63: My Weekend is for dated events -
+               offering to add "Find your school district" or a guide's
+               own title to it made no sense, since guide items and the
+               guide index have nothing to do with weekend planning.
+               #90: nor does a school half-day belong in it - it's real
+               and worth knowing, but nobody plans a weekend around one. -->
+          <button type="button" class="tray-star" data-item='{"date": null, "date_iso": null, "detail": "", "id": "https://www.dpparks.org/events/list/?posts_per_page=13\u0026eventDisplay=past", "region_name": "Des Plaines", "region_url": "https://withintenmiles.com/des-plaines-60016/", "title": "Previous Events", "url": "https://www.dpparks.org/events/list/?posts_per_page=13\u0026eventDisplay=past"}' aria-pressed="false" aria-label="Add Previous Events to My Weekend">☆</button>
+          
+          
+          
+          
+          <h3><a href="https://www.dpparks.org/events/list/?posts_per_page=13&amp;eventDisplay=past">Previous Events</a></h3>
+          
+          
+          
+          <div class="tag-row">
+            <span class="tag-badge" style="background: var(--hue-teal-bg); color: var(--hue-teal-ink);">🌳 Outdoor</span>
+          </div>
+          
+          
+        </div>
+        
+        </div>
+      
+    </section>
+    
   
     
     <section class="block">
@@ -1392,7 +1942,7 @@
     <a href="https://withintenmiles.com/sponsor/">sponsor page</a>.
     <a href="https://withintenmiles.com/about/">About</a>.
     <a href="https://withintenmiles.com/trick-or-treat/">Trick-or-treat hours</a>.
-    <br>Generated 2026-09-28 16:46 UTC.
+    <br>Generated 2026-09-28 19:08 UTC.
     
     <br><a href="https://withintenmiles.com/des-plaines-60016/weekly-summary.txt">Copy this week's summary</a> — a plain-text block ready to paste into a local group.
   </footer>
@@ -1416,7 +1966,7 @@
 
 
 
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebPage", "name": "Des Plaines — Within Ten", "url": "https://withintenmiles.com/des-plaines-60016/", "dateModified": "2026-09-28T16:46:55.785487+00:00", "isPartOf": {"@type": "WebSite", "name": "Within Ten", "url": "https://withintenmiles.com/", "publisher": {"@id": "https://withintenmiles.com/about/#organization"}}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebPage", "name": "Des Plaines — Within Ten", "url": "https://withintenmiles.com/des-plaines-60016/", "dateModified": "2026-09-28T19:08:46.031200+00:00", "isPartOf": {"@type": "WebSite", "name": "Within Ten", "url": "https://withintenmiles.com/", "publisher": {"@id": "https://withintenmiles.com/about/#organization"}}}</script>
 <script>
 (function () {
   var activeTags = new Set();

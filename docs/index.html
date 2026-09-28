@@ -56,7 +56,7 @@
     --ink: #201e1d;
     --muted: #605d5d;
     --accent: #ec3013;
-    --accent-soft: #ec3013;
+    --accent-soft: #cc280d;
     --accent-2: #ec3013;
     /* Deep ramp step, not the raw accent - the accent-to-ground pair is
        only ~3:1, enough for icons/borders/large text but below WCAG AA's
@@ -109,7 +109,7 @@
   .topnav .wordmark { font-weight: 800; font-size: 16px; letter-spacing: -0.01em; color: var(--ink); }
   .topnav nav { display: flex; gap: 18px; flex-wrap: wrap; margin-left: auto; }
   .topnav nav a { font-size: 13px; font-weight: 700; color: var(--ink); text-decoration: none; }
-  .topnav nav a:hover { color: var(--accent); }
+  .topnav nav a:hover { color: var(--accent-2-text); }
 
   .hero {
     background: var(--bg);
@@ -238,7 +238,7 @@
     padding: 0 0 4px;
     box-shadow: none;
   }
-  .hub-secondary-links a:hover { color: var(--accent); border-bottom-color: var(--accent); }
+  .hub-secondary-links a:hover { color: var(--accent-2-text); border-bottom-color: var(--accent); }
   .bento-stat { align-items: center; text-align: center; background: var(--accent-soft); border-color: var(--accent-soft); color: var(--bg); }
   .bento-stat-number { font-family: 'Archivo', system-ui, sans-serif; font-size: 40px; font-weight: 800; line-height: 1; }
   .bento-stat-label { font-size: 12.5px; color: var(--bg); }
@@ -386,11 +386,11 @@
     <a class="bento-tile bento-weekend" href="this-weekend/">
       <span class="bento-kicker">📅 This weekend</span>
       <h2>Oct 2–4</h2>
-      <p>13 things happening across every region &rarr;</p>
+      <p>14 things happening across every region &rarr;</p>
     </a>
     <div class="bento-tile bento-stat">
       <span class="bento-stat-number">5</span>
-      <span class="bento-stat-label">towns · 803 live updates this week</span>
+      <span class="bento-stat-label">towns · 854 live updates this week</span>
     </div>
   </div>
 
@@ -401,7 +401,7 @@
        phone screen without these becoming full tiles too). -->
   <div class="hub-secondary-links">
     <a href="today/">📍 Today (5) &rarr;</a>
-    <a href="free/">🎟️ Free things to do (17) &rarr;</a>
+    <a href="free/">🎟️ Free things to do (20) &rarr;</a>
   </div>
 
   <!-- A separate flex-wrap grid, not part of .bento-grid above: with CSS
@@ -420,21 +420,21 @@
       <span class="zip">60005 · IL</span>
       <h2>Arlington Heights</h2>
       <p>Pulled automatically from the Village, Memorial Library, and Park District — plus Harmony Park and Lake Arlington — several times a week, a short drive from Mount Prospect.</p>
-      <span class="count">246 live updates this week</span>
+      <span class="count">263 live updates this week</span>
     </a>
     
     <a class="bento-tile region-card" href="des-plaines-60016/">
       <span class="zip">60016 · IL</span>
       <h2>Des Plaines</h2>
       <p>Pulled automatically from the City, Public Library, and Park District — plus Lake Park — several times a week, just north of O&#39;Hare.</p>
-      <span class="count">17 live updates this week</span>
+      <span class="count">37 live updates this week</span>
     </a>
     
     <a class="bento-tile region-card" href="mount-prospect-60056/">
       <span class="zip">60056 · IL</span>
       <h2>Mount Prospect</h2>
       <p>Pulled automatically from the Village, Public Library, and Park District — plus Randhurst Village, Melas Park, Lions Park, and downtown Emerson &amp; Busse — several times a week.</p>
-      <span class="count">306 live updates this week</span>
+      <span class="count">320 live updates this week</span>
     </a>
     
     <a class="bento-tile region-card" href="palatine-60067/">
@@ -492,7 +492,7 @@
     <a href="about/">About</a>.
     <a href="trick-or-treat/">Trick-or-treat hours</a>.
     <br>See something wrong or missing? <a href="mailto:andersonryant@gmail.com?subject=Correction&amp;body=What%27s%20wrong%20or%20missing%2C%20and%20which%20region%2Fevent%3A%20">Email us</a> — corrections get made the same week.
-    <br>Generated 2026-09-28 16:46 UTC.
+    <br>Generated 2026-09-28 19:08 UTC.
     
   </footer>
   </div>
