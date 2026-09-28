@@ -3,22 +3,8 @@
 <channel>
   <title>Within Ten — Upcoming Local Events</title>
   <link>https://withintenmiles.com/</link>
-  <description>Upcoming events across every Within Ten region, soonest first - aggregated automatically from village, library, park district and school-district calendars. This build reached 16 of 25 configured sources.</description>
-  <lastBuildDate>Mon, 28 Sep 2026 00:59:48 +0000</lastBuildDate>
-  <item>
-    <title>Arlington Heights: Centennial Celebration and Anniversary Party</title>
-    <link>https://www.ahml.info/scheduling/reservation/220984</link>
-    <guid isPermaLink="true">https://www.ahml.info/scheduling/reservation/220984</guid>
-    <description></description>
-    <pubDate>Sun, 27 Sep 2026 00:00:00 +0000</pubDate>
-  </item>
-  <item>
-    <title>Mount Prospect: Mount Prospect Farmers Market</title>
-    <link>https://mplions.org/event/farmers-market/</link>
-    <guid isPermaLink="false">https://mplions.org/event/farmers-market/#2026-09-27T08:00:00</guid>
-    <description>Local produce and vendors, organized by the Mount Prospect Lions Club, rain or shine. West Metra commuter lot, Northwest Hwy &amp; Main St (Rte 83).</description>
-    <pubDate>Sun, 27 Sep 2026 08:00:00 +0000</pubDate>
-  </item>
+  <description>Upcoming events across every Within Ten region, soonest first - aggregated automatically from village, library, park district and school-district calendars. This build reached 14 of 25 configured sources.</description>
+  <lastBuildDate>Mon, 28 Sep 2026 16:46:55 +0000</lastBuildDate>
   <item>
     <title>Arlington Heights: Kids' Time</title>
     <link>https://www.ahml.info/scheduling/reservation/224206</link>
@@ -351,13 +337,6 @@
     <pubDate>Sat, 03 Oct 2026 00:00:00 +0000</pubDate>
   </item>
   <item>
-    <title>Mount Prospect: Trick or Treat Trail</title>
-    <link>https://www.mppd.org/event/trick-or-treat-trail-3/</link>
-    <guid isPermaLink="true">https://www.mppd.org/event/trick-or-treat-trail-3/</guid>
-    <description>Trick or Treat Trail (Suggested Ages 3-10) Location RecPlex Enjoy a fun-filled trail of Halloween games and treats! Pick up your bag at check-in and continue…</description>
-    <pubDate>Sat, 03 Oct 2026 08:30:00 +0000</pubDate>
-  </item>
-  <item>
     <title>Mount Prospect: CheckMates Meetup</title>
     <link>https://mppl.libnet.info/event/16648940</link>
     <guid isPermaLink="true">https://mppl.libnet.info/event/16648940</guid>
@@ -368,7 +347,7 @@
   <item>
     <title>Mount Prospect: Mount Prospect Farmers Market</title>
     <link>https://mplions.org/event/farmers-market/</link>
-    <guid isPermaLink="false">https://mplions.org/event/farmers-market/#2026-10-04T08:00:00</guid>
+    <guid isPermaLink="true">https://mplions.org/event/farmers-market/</guid>
     <description>Local produce and vendors, organized by the Mount Prospect Lions Club, rain or shine. West Metra commuter lot, Northwest Hwy &amp; Main St (Rte 83).</description>
     <pubDate>Sun, 04 Oct 2026 08:00:00 +0000</pubDate>
   </item>
@@ -396,6 +375,30 @@ Complete and return a volunteer craft kit by the end of the month to count towar
     <description>Monday, October 05 2026 9:30am - 10:00am 
  Bring the whole family and join us for an interactive storytime with high-energy stories, songs, and activities.</description>
     <pubDate>Mon, 05 Oct 2026 09:30:00 +0000</pubDate>
+  </item>
+  <item>
+    <title>Mount Prospect: Toddler Storytime</title>
+    <link>https://mppl.libnet.info/event/16553328</link>
+    <guid isPermaLink="true">https://mppl.libnet.info/event/16553328</guid>
+    <description>Monday, October 05 2026 10:30am - 11:00am 
+ Grow your little learner's literacy and language skills at this playful storytime full of wiggles, wonder, and fun!</description>
+    <pubDate>Mon, 05 Oct 2026 10:30:00 +0000</pubDate>
+  </item>
+  <item>
+    <title>Wheeling: Charcoal Drawing</title>
+    <link>https://indiantrails.libnet.info/event/16724299</link>
+    <guid isPermaLink="true">https://indiantrails.libnet.info/event/16724299</guid>
+    <description>Monday, October 05 2026 11:00am - 1:00pm 
+ Learn charcoal drawing techniques in a step by step still life session. R</description>
+    <pubDate>Mon, 05 Oct 2026 11:00:00 +0000</pubDate>
+  </item>
+  <item>
+    <title>Wheeling: Stitch Together Meet-Up</title>
+    <link>https://indiantrails.libnet.info/event/16494402</link>
+    <guid isPermaLink="true">https://indiantrails.libnet.info/event/16494402</guid>
+    <description>Monday, October 05 2026 1:00pm - 3:00pm 
+ If your craft of choice uses needles or hooks, this group is for you. Bring your knit, crochet, embroidery or cross…</description>
+    <pubDate>Mon, 05 Oct 2026 13:00:00 +0000</pubDate>
   </item>
 </channel>
 </rss>
