@@ -11592,6 +11592,12 @@ AI-summary caveat).
      own currently-live regression — exit 1 without it, exit 0 with a
      clear warning logged with it. 3 new tests; 552 total pass.
 
+     **Confirmed, 2026-09-28.** The fix's own merge push (run #592)
+     shows `conclusion: success` on the real "Tests" workflow — the
+     same commit that would have failed it under the old behavior.
+     Checked against the real GitHub Actions run, not assumed from
+     local verification alone.
+
      The Wheeling finding itself stays open, filed for whoever next
      has real network access to `wheelingil.gov/calendar.aspx`: check
      whether the page still lists events at all before assuming
