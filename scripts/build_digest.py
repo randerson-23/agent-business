@@ -16,6 +16,7 @@ from __future__ import annotations
 import json
 import logging
 import math
+import os
 import re
 import statistics
 import sys
@@ -47,6 +48,30 @@ FONTS_DIR = ROOT / "assets" / "fonts"
 OUTPUT_DIR = ROOT / "docs"
 SOURCE_HEALTH_PATH = ROOT / "data" / "source_health.json"
 SOURCE_HEALTH_HISTORY_LEN = 10
+
+# ROADMAP.md item 209: item 51's health-regression exit(1) is correct
+# for build-digest.yml, whose own "if: always()" commit step still
+# publishes the site regardless and only relies on this exit code to
+# email the owner. tests.yml runs this same pipeline against live
+# external data as a "did the code crash" smoke test on every PR, with
+# no such override - a village calendar genuinely going quiet for real
+# (confirmed via real GitHub Actions run #189/#190's logs, not this
+# sandbox's own blocked network) now fails that check on every push
+# regardless of what the PR actually changed, which trains a reviewer
+# to read a red "Tests" check as "probably just content, not code."
+# Set only by tests.yml's smoke-test step.
+SMOKE_TEST_ENV_VAR = "BUILD_DIGEST_SMOKE_TEST"
+
+
+def should_exit_for_health_regression(
+    regressions: list, truncated: list, newly_broken: list, smoke_test: bool
+) -> bool:
+    """Whether the process should exit non-zero for a content-health
+    regression (ROADMAP.md item 209) - true unless `smoke_test` is
+    set, since a "did the code crash" check has nothing to do with
+    whether a village calendar happens to be non-empty this week.
+    """
+    return bool(regressions or truncated or newly_broken) and not smoke_test
 
 # ROADMAP.md item 181 (forty-third research pass): a source that fails
 # transport on *every* build since it was added never gets a single
@@ -3634,7 +3659,15 @@ def main() -> None:
                 "Source newly broken: %s has returned 0 items on 3 consecutive builds - broken, not a normal quiet week.",
                 key,
             )
-        sys.exit(1)
+        smoke_test = os.environ.get(SMOKE_TEST_ENV_VAR) == "1"
+        if should_exit_for_health_regression(regressions, truncated, newly_broken, smoke_test):
+            sys.exit(1)
+        elif smoke_test:
+            logger.warning(
+                "%s=1 - not failing the process despite the health regression(s) above "
+                "(this run's job is 'did the code crash', not live content health).",
+                SMOKE_TEST_ENV_VAR,
+            )
 
 
 if __name__ == "__main__":

@@ -30,7 +30,19 @@ jobs:
       - name: Run test suite
         run: python -m pytest tests/ -q
 
+      # ROADMAP.md item 209: this step's job is "does the code crash,"
+      # not "is live external site content currently non-empty" - a
+      # village calendar genuinely going quiet has nothing to do with
+      # whether a PR's code is correct, but without this flag a real
+      # content-health regression fails this check on every push
+      # regardless of what changed (confirmed against real run
+      # failures, not assumed). build-digest.yml's own real scheduled
+      # run does NOT set this - there, the same regression exiting
+      # non-zero is the intended behavior, since that's what tells
+      # GitHub to email the owner.
       - name: Build digest (smoke test)
+        env:
+          BUILD_DIGEST_SMOKE_TEST: "1"
         run: python scripts/build_digest.py
 
       - name: Check inline JS budget
