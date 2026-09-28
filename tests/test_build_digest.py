@@ -1452,6 +1452,23 @@ def test_detect_newly_broken_sources_ignores_a_source_with_too_little_history():
     assert build_digest.detect_newly_broken_sources(health) == []
 
 
+def test_should_exit_for_health_regression_true_outside_smoke_test():
+    # ROADMAP.md item 209: build-digest.yml's own real run relies on
+    # this exit code to email the owner - it must still fire normally.
+    assert build_digest.should_exit_for_health_regression(["a:b"], [], [], smoke_test=False) is True
+
+
+def test_should_exit_for_health_regression_false_in_smoke_test():
+    # tests.yml's "did the code crash" check sets smoke_test=True, so
+    # a live content regression (e.g. a village calendar genuinely
+    # going quiet) must not fail an unrelated PR's CI check.
+    assert build_digest.should_exit_for_health_regression(["a:b"], [], [], smoke_test=True) is False
+
+
+def test_should_exit_for_health_regression_false_with_no_regressions_even_outside_smoke_test():
+    assert build_digest.should_exit_for_health_regression([], [], [], smoke_test=False) is False
+
+
 def test_save_and_load_source_health_round_trip(tmp_path, monkeypatch):
     monkeypatch.setattr(build_digest, "SOURCE_HEALTH_PATH", tmp_path / "source_health.json")
     health = {"region:Source": [1, 2, 3]}

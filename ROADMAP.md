@@ -11545,6 +11545,58 @@ design/UX angle (40–90 character safe zone, complement rather than
 repeat the subject, reported open and click lift, and the Apple Mail
 AI-summary caveat).
 
+#### P1 (found mid-cycle, not from a scheduled pass)
+
+209. **A real, live-content regression was failing every PR's "Tests"
+     check, unrelated to what the PR actually changed.** Found by
+     reading real GitHub Actions run history rather than assuming
+     local `pytest` passing meant CI was clean — `tests.yml`'s own
+     "Tests" runs (#586–590, on real pushes and PRs from 2026-09-27)
+     all show `conclusion: failure`. The actual job log shows why:
+     `tests.yml`'s "Build digest (smoke test)" step runs
+     `scripts/build_digest.py` with real network access, and
+     **`wheeling-60090:Village of Wheeling — Calendar`** has genuinely
+     declined to 0 items on the real, committed `data/source_health.json`
+     trail (`[2, 2, 2, 1, 1, 1, 1, 1, 0, 0]`) — a gradual, monotonic
+     taper, not a sudden cliff, which reads more like a quiet calendar
+     than a broken scraper, though this sandbox's network is blocked
+     for `wheelingil.gov` (confirmed via a real `WebFetch` attempt,
+     `EGRESS_BLOCKED`) so the page's actual current content can't be
+     independently verified. Per items 193/194's own precedent, a
+     single detector firing on a real but unverifiable signal is
+     watched, not acted on with a guessed config change.
+
+     The design gap this exposed is separate from Wheeling itself:
+     item 51's `sys.exit(1)` on a content-health regression is
+     correct for `build-digest.yml`, whose own `if: always()` commit
+     step still publishes the site regardless and relies on this exit
+     code purely to email the owner — that is the intended behavior,
+     unchanged here. `tests.yml` runs the identical pipeline as a
+     "did the code crash" smoke test on every PR, with no such
+     override, so a live external site's content has been failing
+     that check regardless of what any given PR's diff actually
+     touches — exactly the kind of unrelated red check that trains a
+     reviewer to stop trusting "Tests" as a real signal.
+
+     🟢 **Shipped, 2026-09-28.** New `should_exit_for_health_regression()`
+     (a small, pure, separately-tested function, not inlined logic)
+     decides whether a regression should fail the process, gated on a
+     new `BUILD_DIGEST_SMOKE_TEST` environment variable. `main()`
+     still logs every regression/truncation/newly-broken error exactly
+     as before either way — only the exit code changes.
+     `tests.yml`'s smoke-test step now sets `BUILD_DIGEST_SMOKE_TEST: "1"`;
+     `build-digest.yml`'s real scheduled/push runs do not, so the
+     owner-email behavior is completely unchanged there. Verified
+     directly, not just by the new unit tests: ran the real script
+     locally both with and without the env var against this sandbox's
+     own currently-live regression — exit 1 without it, exit 0 with a
+     clear warning logged with it. 3 new tests; 552 total pass.
+
+     The Wheeling finding itself stays open, filed for whoever next
+     has real network access to `wheelingil.gov/calendar.aspx`: check
+     whether the page still lists events at all before assuming
+     either "broken scraper" or "quiet week."
+
 
 ## Working agreements for autonomous iteration
 
