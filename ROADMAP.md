@@ -207,10 +207,10 @@ also needs a DNS change only the domain owner can make.
   "All four ZIPs" line is hand-maintained prose, not generated - update
   it by hand same as any other fact there.
 
-### Phase 11 — Competitor-informed idea backlog (fed by a 6-hourly research loop)
+### Phase 11 — Competitor-informed idea backlog (fed by a daily research loop)
 
-A second scheduled loop (separate from the hourly build loop) researches the
-business plan + competitor sites every 6 hours and appends/refreshes ideas
+A second scheduled loop (separate from the daily build loop) researches the
+business plan + competitor sites once a day and appends/refreshes ideas
 here. **This section is the implementation loop's queue** — when Phases 5-10
 have nothing pressing, pick the highest unclaimed `P1` item below. Mark items
 `✅ done (PR #N)` in place rather than deleting them, so the research loop
@@ -11683,6 +11683,30 @@ regression the redesign might have introduced, and found one.
      is also the cheapest credibility fix available: one token, one
      assertion.
 
+     ✅ **Shipped (PR #265), 2026-09-28.** No new token was needed.
+     Item 62 had already added `--accent-2-text` (`#ae1800` light,
+     `#ff9783` dark) to every template. The redesign kept that token
+     but stopped using it for new small-text rules. Three changes:
+     - **Red text.** 26 small-text uses of `color: var(--accent)` now
+       use `--accent-2-text`. The rest of `--accent` (borders, outlines,
+       SVG fills, the FAQ marker glyph) stays `#ec3013`.
+     - **Text on red.** The first push missed this case. Light text on
+       the solid `--accent-soft` fill measured 3.75:1 (Subscribe button,
+       sponsor CTA, hub stat label). In light mode, `--accent-soft` is
+       now `#cc280d` (4.85:1). In dark mode, `--accent-2-strong` on the
+       sponsor tier badge is now `#ff563c` (5.72:1, was 2.52:1).
+     - **The check.** `lighthouserc.json` now asserts
+       `categories:accessibility >= 0.95` and `color-contrast`. On its
+       first CI run it failed all 7 URLs on the text-on-red cases above.
+       That failure is how the second fix was found, which is the point
+       of making it a check instead of an audit.
+     Verified against the real build with axe-core 4.10 in both color
+     schemes across 10 page types, down from 4 distinct light violations
+     and 1 dark to zero. `lhci autorun` also passes locally. Not done:
+     axe's best-practice `region` rule still flags the hub's wordmark as
+     sitting outside a landmark. That rule is not a WCAG failure and is
+     not scored by Lighthouse.
+
 #### P2 (new)
 
 211. **Peachjar: school e-flyers into parents' inboxes. Parked until
@@ -11731,8 +11755,10 @@ charitable programs; local district use unconfirmed).
 
 ## Working agreements for autonomous iteration
 
-- Cadence is every 6 hours (the owner changed it from hourly on
-  2026-09-25; the platform's durable scheduler has a 1-hour floor, and
+- Cadence is once a day at 13:51 UTC, about two hours after the daily
+  research loop (11:33 UTC). The owner changed it from hourly to every
+  6 hours on 2026-09-25, then to daily on 2026-09-28. The platform's
+  durable scheduler has a 1-hour floor, and
   a faster session-local scheduler was tried earlier and doesn't
   survive this environment's container lifecycle, confirmed empty
   after the fact — see chat history 2026-08-26). Not every firing needs
@@ -11749,8 +11775,10 @@ charitable programs; local district use unconfirmed).
   `data/source_transport_failure_details.json` (item 185), and
   `data/source_completeness.json` (item 197, committed by a real CI
   build for the first time 2026-09-25 — `git restore` it like the
-  others now, not `rm`) — always `git restore` all five after a local
-  build in this sandbox, never stage any of them.
+  others now, not `rm`), and `data/weekend_signal.json` (also
+  committed by build-digest.yml, missing from this list until
+  2026-09-28) — always `git restore` all six after a local build in
+  this sandbox, never stage any of them.
   This sandbox's network is blocked, so every source fetches 0
   here; against the real trailing history from actual GitHub Actions
   runs, that reads as every source dying at once and `build_digest.py`
