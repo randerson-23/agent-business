@@ -312,6 +312,13 @@ effort. Now that a real name is attached, `OUTREACH_TEMPLATES.md`'s
   principle, but a spend decision `BUSINESS_PLAN.md` doesn't assume,
   parked alongside the other two money questions rather than competing
   with the two free, no-deadline actions above.
+- **Peachjar school e-flyers** (item 211, fiftieth pass) — flyers
+  delivered to every parent's inbox in a school district, at $25 per
+  school, after district approval. The audience fit is close to perfect,
+  but it is unverified (which local districts use it is not yet
+  confirmed), it is a spend decision, and it is a list spike that
+  belongs after the signup and delivery path is proven. It sits in the
+  same slot as the press pitch.
 
 **Small, no-decision-required — do whenever convenient, no ranking
 needed because none of these compete with anything above:**
@@ -11602,6 +11609,124 @@ AI-summary caveat).
      has real network access to `wheelingil.gov/calendar.aspx`: check
      whether the page still lists events at all before assuming
      either "broken scraper" or "quiet week."
+
+
+#### Research pass 2026-09-28 (fiftieth pass)
+
+The build loop shipped items 207 (preheader) and 208 (Small Business
+Saturday calendar row). It also filed and fixed item 209 (a smoke test
+coupled to live content health), and recorded the first real metrics
+backfill (`recipients: 1, opens: 0` for the 2026-09-24 send). It stated
+correctly that n=1 settles nothing. This pass went looking for a
+regression the redesign might have introduced, and found one.
+
+| Angle | Finding | Consequence |
+|---|---|---|
+| **The redesign's accent colour, measured** | `--accent: #ec3013` is used as **text colour in 29 places** across the site templates. Its contrast on the page background `#f3f2f2` is **3.76:1**, and on the card background `#eae9e9` about **3.4:1**. WCAG 2.1 AA needs **4.5:1** for normal-size text. Affected selectors include `.editors-pick .label` and `.card .series` (both **11px**), `.cal-row a` (**12.5px**), `.calendar-subscribe a`, `.view-nav a.active` and `.faq-item p a` | Small red text across every region page fails AA. The email templates already use a darker accent for text, `#ae1800` (**6.41:1**), so the fix is known and on-brand (item 210) |
+| **Why nothing caught it** | Item 62 ran a real axe-core audit, fixed exactly this violation class (`color-contrast`), and split a separate token for text use. That was **before** the redesign (item 174), and the audit was a **one-off**: axe does not run in any workflow or test. `lighthouserc.json` asserts only LCP, CLS and TBT, with **no accessibility assertion** | Same shape as item 176: a guard that existed once did not hold through a redesign, because nothing kept checking it (item 210) |
+| **ADA Title II web rule** | State and local governments must meet **WCAG 2.1 AA**. On 2026-04-20 the DOJ extended the deadlines to **2027-04-26** (entities of 50,000+ population) and **2028-04-26** (smaller entities and all **special district governments**) | Every civic source this site links to (villages, libraries, park districts, school districts) is working toward WCAG 2.1 AA right now. Item 152 asks those same organizations to link to this site. It is a better ask from a site that passes the standard they are being held to (item 210) |
+| **Peachjar (school e-flyers)** | Digital flyer distribution used by many US school districts: an organization uploads a flyer, the **district approves it**, and it goes to **parents' inboxes** and the school flyerboard. **$25 per school per flyer** ($22.50 in bulk). Free only for charitable, child-benefiting programs with no paid follow-on. Whether **D57, D25, D62, D15 or D21** use Peachjar was **not confirmed** by search | Potentially the most targeted acquisition channel this business could buy: every parent in a district, in their inbox. Unverified, paid, and approval-gated, so it goes in the parked list, not the live queue (item 211) |
+| **The first open-rate number** | `opens: 0` from the only subscriber, who is the owner. Opens are backfilled **once**, three days after a send, and never re-read | Nothing to build. The owner can answer "did it arrive, and where?" in one sentence, which settles more than any pixel at n=1 |
+
+#### P1 (new)
+
+210. **The redesign's red accent fails WCAG AA as small text, and nothing
+     in CI can notice.** Measured, not estimated. `--accent: #ec3013` is
+     3.76:1 on `#f3f2f2` and about 3.4:1 on `#eae9e9`. White on `#ec3013`
+     (buttons, badges) is 4.2:1. WCAG 2.1 AA requires 4.5:1 for text
+     below 18.66px bold or 24px regular. The accent is used as text
+     colour 29 times in the templates, including 11px uppercase labels
+     (`.editors-pick .label`, `.card .series`), 12.5px calendar links
+     (`.cal-row a`), the active view tab, the new calendar-subscribe
+     link (item 184) and links inside FAQ answers. Each of those fails.
+
+     Item 62 already fixed this class of problem once: it found
+     `color-contrast` violations with axe-core and introduced a
+     dedicated `--accent-2-strong` token for text on solid fills. The
+     redesign replaced the palette afterwards, and item 62's audit never
+     became a check, so the regression went through CI green. That is
+     item 176's lesson again, now for accessibility: a standard only
+     holds through a redesign if something keeps testing it.
+
+     What to build:
+
+     - **Split the token.** Keep `--accent: #ec3013` for fills, borders,
+       rules and large display type, which is the redesign's visual
+       signature and passes at display sizes. Add **`--accent-text:
+       #ae1800`**, the value the email templates already use (6.41:1 on
+       `#f3f2f2`, about 5.9:1 on `#eae9e9`), and switch every small-text
+       `color: var(--accent)` to it. For white text on a red fill,
+       either use `#ae1800` as the fill or make the text large and bold
+       enough to qualify as large text. Check the dark-mode value
+       (`#ff563c`) the same way. It was not measured in this pass.
+     - **Make it a check, not an audit.** Add an assertion to
+       `lighthouserc.json`: `"color-contrast": "error"`, or
+       `"categories:accessibility": ["error", {"minScore": 0.95}]`.
+       Lighthouse CI already renders these seven URLs on every run, so
+       this costs one line. Or run item 62's axe script in `tests.yml`.
+       Either way, the next palette change fails CI instead of passing
+       silently.
+     - **Re-run item 62's full axe audit once** after the token split,
+       across the same eight page types, to catch anything besides
+       contrast that the redesign changed.
+
+     Why this ranks P1 in a business with no disabled-user complaints
+     on record: the civic organizations this site depends on are under
+     the DOJ's ADA Title II web rule, which requires **WCAG 2.1 AA**,
+     with compliance dates of **2027-04-26** for entities of 50,000+
+     population and **2028-04-26** for smaller entities and special
+     districts. Park districts and library districts are special
+     districts. Item 152 asks exactly these organizations for a link.
+     They are auditing their own sites against this standard right now,
+     so passing it is worth being able to say. It is not a reason
+     they would refuse a link, and this item does not claim it is. It
+     is also the cheapest credibility fix available: one token, one
+     assertion.
+
+#### P2 (new)
+
+211. **Peachjar: school e-flyers into parents' inboxes. Parked until
+     the flow is proven and a district is confirmed.** Many US school
+     districts distribute community flyers through Peachjar. The
+     organization uploads a flyer and selects districts, the district
+     approves it, and it is delivered to parents' email and the school's
+     online flyerboard. Pricing is **$25 per school per flyer**
+     ($22.50 per school in bulk). Free distribution is limited to
+     charitable, child-benefiting programs with no paid follow-on, which
+     a sponsor-funded newsletter would not qualify for.
+
+     As an audience match it is close to perfect: every family in a
+     district, reached where item 191's signup confirmation email also
+     lands. Three things keep it parked:
+
+     1. **Unverified.** Searches did not confirm whether D57, D25, D62,
+        D15 or D21 use Peachjar or run their own flyer policy. (CCSD 21
+        has a `/community/` page worth reading first.) The first step
+        is one look at each district's community-flyer page. That is
+        research the build loop can do. It is not an owner decision yet.
+     2. **Paid and approval-gated.** `BUSINESS_PLAN.md` assumes zero
+        spend. A district-wide send in Mount Prospect is on the order
+        of a few schools × $25, which is small, but it is a spend
+        decision, and districts can decline for-profit flyers.
+     3. **Sequencing.** A district-wide send is a list spike, which is
+        exactly what item 155's warm-up research warns against on a
+        domain with one send of history. It belongs after items 190,
+        191 and 196 have proven the signup and delivery path, and in the
+        same "after the outreach emails" slot as the press pitch.
+
+     This pass has added it to the Needs Ryan section's **Parked**
+     list, so it does not become a fourth live decision against item
+     165's limit of three.
+
+Competitors reviewed this pass: **WCAG 2.1 AA contrast, measured on the
+live palette** (accent text 3.76:1 on the page background and about
+3.4:1 on cards, against a 4.5:1 requirement; the email's `#ae1800` at
+6.41:1), **the DOJ ADA Title II web rule** (WCAG 2.1 AA for state and
+local government; deadlines extended on 2026-04-20 to 2027-04-26 and
+2028-04-26, the latter covering special districts such as park and
+library districts), and **Peachjar** (district-approved school e-flyers
+to parents' inboxes, $25 per school, free only for qualifying
+charitable programs; local district use unconfirmed).
 
 
 ## Working agreements for autonomous iteration
