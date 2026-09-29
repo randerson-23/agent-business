@@ -11850,6 +11850,42 @@ several stalled items.
      run, then do item 213's two library swaps. Remove a probe entry
      once its question is answered.
 
+     **First real run, 2026-09-29 (commit `49811ad`, triggered by the
+     merge).** It worked end to end, and it answered these questions:
+     - **Item 192 is answered: the 403s are bot walls.** All five
+       chronic 403 pages also refuse a GitHub runner that sends the
+       honest headers. The page titles name the mechanism: "Access
+       Denied" on both Village of Mount Prospect pages and Experience
+       Mount Prospect, Cloudflare's "Just a moment..." challenge on
+       Wheeling Park District, and "ccsd21.org used Cloudflare to
+       restrict access" on CCSD 21. These are deliberate blocks, not
+       missing headers, which confirms item 192's decision not to
+       spoof. The only route left for these five is asking (item 152).
+       Their probes are removed.
+     - **Mount Prospect Park District advertises a feed at a different
+       URL.** Its sponsorship page returned 200 and lists
+       `<link rel="alternate" type="text/calendar"
+       href="https://www.mppd.org/events/?ical=1">`. The configured
+       source is `webcal://www.mppd.org/?post_type=tribe_events&ical=1&eventDisplay=list`,
+       which has hit `ConnectTimeout` in the build. The advertised URL
+       is now probed directly. If it returns events, swap the source
+       URL. The sponsorship page's prices are still unread, because the
+       probe records links, not body text.
+     - **Palatine library also returns 403 from the runner.** Item 213's
+       Palatine swap can't be answered by a probe of that page. The
+       next step is the outreach route, or finding another public
+       LibraryCalendar endpoint.
+     - **Des Plaines' LibCal landing page links no feed.** The page
+       returned 200 with title "landing page - Des Plaines" but no
+       `rel=alternate` or calendar-looking `href`. `dppl.org` only
+       advertises its blog RSS.
+     - **The school districts' home pages don't link their iCal feeds.**
+       `/community/feed15` on ccsd15.net is a flyer page ("Feed 15"),
+       not a feed. It is a false positive of the `feed` substring match.
+       Item 198 needs each district's calendar page URL, which only a
+       loop can pick from those pages' links. The probe currently
+       records only calendar-looking links.
+
 213. **Des Plaines and Palatine have been empty for ten straight builds.
      Do item 182's remaining swaps first once item 212 lands.** This is
      a re-ranking, not new work. Item 182 identified the two remaining
