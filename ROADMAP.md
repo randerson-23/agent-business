@@ -11632,7 +11632,7 @@ regression the redesign might have introduced, and found one.
 
 #### P1 (new)
 
-210. **The redesign's red accent fails WCAG AA as small text, and nothing
+210. ✅ **DONE (PR #265) — The redesign's red accent fails WCAG AA as small text, and nothing
      in CI can notice.** Measured, not estimated. `--accent: #ec3013` is
      3.76:1 on `#f3f2f2` and about 3.4:1 on `#eae9e9`. White on `#ec3013`
      (buttons, badges) is 4.2:1. WCAG 2.1 AA requires 4.5:1 for text
@@ -11776,7 +11776,7 @@ several stalled items.
 
 #### P1 (new)
 
-212. **Give both loops eyes: a URL-probe workflow, so "needs a real page
+212. ✅ **DONE — Give both loops eyes: a URL-probe workflow, so "needs a real page
      fetch" becomes a lookup.** About ten items in this file end at the
      same wall: the research sandbox and the build sandbox both block
      general web egress, so every question of the form "what does this
@@ -11824,6 +11824,31 @@ several stalled items.
      Priority: this is the highest-leverage open item in the file. It
      does not fix anything by itself. It removes the one blocker that
      four other items (182, 192, 198, and the pricing question) share.
+
+     ✅ **Shipped 2026-09-29.** Built as specified:
+     `config/url_probes.yaml` holds the open questions (12 seeded
+     entries), `scripts/probe_urls.py` makes one request per URL with
+     `fetchers.py`'s own `REQUEST_HEADERS` and no retries, and
+     `.github/workflows/probe-urls.yml` runs on `workflow_dispatch` or
+     when the question list or the script changes on `main`, then
+     commits `data/url_probes.json` with item 206's push retry. Each
+     result records status, final URL, `Content-Type`, byte count, page
+     title, every `rel="alternate"` feed link, every calendar-looking
+     `href`, and an event count for `.ics` responses. Changes to the
+     seed list: the Des Plaines library home page replaces a guessed
+     `/events` URL, the three school districts are probed at their home
+     pages (their feed IDs rotated, so the page is what links the
+     current one), and the 403 park-district feed is probed at its
+     events page. Verified end to end against the site's own built
+     pages served locally: it found the hub's RSS `rel=alternate` link
+     and counted 4 events in a real `calendar.ics`. That run also
+     caught a real bug. `requests` assumes ISO-8859-1 for `text/html`
+     without a charset, which turned `—` into `â€”`. It now defaults
+     to UTF-8, with a test. In this sandbox every probe returns
+     `ProxyError`, which is the reason the workflow exists. **Next:**
+     read `data/url_probes.json` on `origin/main` after this PR's merge
+     run, then do item 213's two library swaps. Remove a probe entry
+     once its question is answered.
 
 213. **Des Plaines and Palatine have been empty for ten straight builds.
      Do item 182's remaining swaps first once item 212 lands.** This is
@@ -11913,6 +11938,12 @@ with segmentation and clear expectations as the standard remedy).
   committed by build-digest.yml, missing from this list until
   2026-09-28) — always `git restore` all six after a local build in
   this sandbox, never stage any of them.
+- `data/url_probes.json` (item 212) is written only by
+  `probe-urls.yml` on a GitHub runner. Never commit a local run of
+  `scripts/probe_urls.py`: in this sandbox every probe returns
+  `ProxyError`, and committing that would overwrite the real answers.
+  To ask a new question, edit `config/url_probes.yaml` in a PR. The
+  merge triggers the probe run.
   This sandbox's network is blocked, so every source fetches 0
   here; against the real trailing history from actual GitHub Actions
   runs, that reads as every source dying at once and `build_digest.py`
