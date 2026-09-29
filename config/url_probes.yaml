@@ -34,25 +34,16 @@ probes:
     item: 198
     purpose: D211 - current calendar RSS ModuleInstanceID
 
-  # Item 192: chronic 403s with the honest UA and full headers. Does the
-  # page itself 403 from a GitHub runner too, and does it advertise a feed?
-  - url: https://www.mountprospect.org/services/calendar
-    item: 192
-    purpose: Village of Mount Prospect calendar (403 in the build)
-  - url: https://www.mountprospect.org/services/news
-    item: 192
-    purpose: Village of Mount Prospect news (403 in the build)
-  - url: https://www.experiencemountprospect.org/events/
-    item: 192
-    purpose: Experience Mount Prospect events (403 in the build)
-  - url: https://www.wheelingparkdistrict.com/events/
-    item: 192
-    purpose: Wheeling Park District events page (its iCal feed 403s)
-  - url: https://ccsd21.org/parent-resources/calendars/
-    item: 192
-    purpose: Wheeling CCSD 21 calendars (403 in the build)
+  # Item 192 answered 2026-09-29: all five 403s are bot walls (Access
+  # Denied / Cloudflare) from a GitHub runner too - see ROADMAP.md item 212.
 
   # Item 212 pricing anchor: a local competitor for the same sponsor budget.
   - url: https://www.mppd.org/sponsorship/
     item: 212
     purpose: Mount Prospect Park District sponsorship programme - package prices
+
+  # Item 212 run 1: mppd.org advertises this text/calendar feed, while the
+  # configured webcal://www.mppd.org/?post_type=tribe_events... URL times out.
+  - url: https://www.mppd.org/events/?ical=1
+    item: 181
+    purpose: Mount Prospect Park District's advertised iCal feed - candidate source swap
