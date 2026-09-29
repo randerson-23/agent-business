@@ -11755,6 +11755,138 @@ to parents' inboxes, $25 per school, free only for qualifying
 charitable programs; local district use unconfirmed).
 
 
+#### Research pass 2026-09-29 (fifty-first pass)
+
+The build loop shipped item 210 (#265): the WCAG contrast fix, plus a
+Lighthouse accessibility assertion so a future palette change fails CI.
+The item-207 preheader is live in the built email, reading *"14 things
+this weekend — incl. Harmony Fest & Taste of Arlington Heights (Friday)
+and…"*. Both loops now run daily.
+
+This pass looked at what has *not* moved, and found one cause behind
+several stalled items.
+
+| Angle | Finding | Consequence |
+|---|---|---|
+| **Weekend coverage, full history** | `data/weekend_signal_history.json`: **Des Plaines and Palatine have contributed 0 weekend events on every one of the 10 recorded builds.** Arlington Heights, Mount Prospect and Wheeling recover and dip; those two never register | Two of five towns have been empty in every newsletter since tracking began. Item 182's remaining two library swaps are the fix, and they have been stalled since 2026-09-22 (item 213) |
+| **Why they stalled** | Item 182's own 2026-09-22 note ends: *"Both remaining gaps need one real page fetch each, not more search."* The same sentence closes items 181, 185, 192 and 198, among others. About ten places in this file stop at "needs a real page fetch / network-capable run". Eight sources now show a transport-failure streak of **25** | Neither loop can fetch a web page, because both sandboxes block general egress. **GitHub Actions can.** `build-digest.yml` reaches these same sites every day. The capability exists and nothing points it at the diagnostic questions (item 212) |
+| **LibraryCalendar feeds** | Searched for the feed URL grammar of the library-calendar product item 182 fingerprinted (`_wrapper_format=lc_calendar_feed`). Nothing turned up beyond generic Drupal iCal documentation | Confirms item 182's own conclusion: search cannot answer this. A real fetch of the page can (item 212) |
+| **Park-district sponsorship** | Mount Prospect Park District runs its own **sponsorship programme** (`mppd.org/sponsorship/`), sold to local businesses for visibility. Pricing is not visible in search results | Park districts are selling to the same local-business budget this business wants. Their published package prices are the most relevant price anchor for the $50–$175 tiers, and one fetch would read them (item 212) |
+| **Why readers unsubscribe (design/UX)** | Surveys put **irrelevant content** at the top: **53.8%** unsubscribe because content is irrelevant, and **54.9%** if they do not recognise the sender. Segmentation and clear expectations are the standard remedy | The combined email tells Des Plaines and Palatine readers *"Nothing dated yet in Des Plaines or Palatine"* and gives them a bare library link, every week. For a site named "within ten miles", that is also a missed chance to point to what is close by (item 214) |
+
+#### P1 (new)
+
+212. **Give both loops eyes: a URL-probe workflow, so "needs a real page
+     fetch" becomes a lookup.** About ten items in this file end at the
+     same wall: the research sandbox and the build sandbox both block
+     general web egress, so every question of the form "what does this
+     page actually serve?" gets deferred to a "network-capable run" that
+     never comes. Meanwhile GitHub Actions runners fetch these exact
+     hosts every day in `build-digest.yml`. This item points that
+     capability at the open questions.
+
+     What to build:
+
+     - **`config/url_probes.yaml`**: a short list of `{url, purpose,
+       item}` entries. It is the question list, edited by either loop.
+     - **`.github/workflows/probe-urls.yml`**: `workflow_dispatch`, plus
+       a trigger when `config/url_probes.yaml` changes on `main`, so
+       adding a question runs it. For each URL, make **one** request
+       with the same honest `User-Agent` and header set as `fetchers.py`
+       (items 161 and 192). No retries on 403 or 404, for the reasons
+       item 195 gives. Record: HTTP status, final URL after redirects,
+       `Content-Type`, byte count, every `<link rel="alternate">` feed
+       link, every `href` containing `.ics`, `ical`, `webcal:`, `rss` or
+       `feed`, and the page `<title>`.
+     - **Write the results to `data/url_probes.json`** and commit them
+       with item 206's rebase-and-retry push. That makes the answers
+       readable from `origin/main` by both loops, which is all either
+       of them needs.
+     - **Probes never change source config themselves.** A loop reads
+       the result and makes the config edit in a normal reviewed PR.
+       The probe is a question, not an action.
+
+     Seed list (each entry names the item it unblocks):
+
+     | URL | Unblocks |
+     |---|---|
+     | `https://calendar.dppl.org/` and the Des Plaines library events page | Item 182: Des Plaines library feed swap |
+     | `https://www.palatinelibrary.org/events/upcoming` | Item 182: Palatine library feed swap |
+     | The live calendar pages of **D25** (sd25.org), **CCSD 15** (ccsd15.net) and **D211** (adc.d211.org) | Item 198: the three rotated-ID 404 feeds |
+     | The six 403 sources in `data/source_transport_failure_details.json` | Item 192: which of them serve a sanctioned feed that is not blocked |
+     | `https://www.mppd.org/sponsorship/` | Park-district sponsorship prices as a pricing anchor |
+
+     Politeness is built in by design: one request per URL per run, only
+     when the question list changes or someone dispatches it, from a
+     client that identifies itself. It is lighter than a single daily
+     build.
+
+     Priority: this is the highest-leverage open item in the file. It
+     does not fix anything by itself. It removes the one blocker that
+     four other items (182, 192, 198, and the pricing question) share.
+
+213. **Des Plaines and Palatine have been empty for ten straight builds.
+     Do item 182's remaining swaps first once item 212 lands.** This is
+     a re-ranking, not new work. Item 182 identified the two remaining
+     libraries (Des Plaines via Springshare LibCal, Palatine via the
+     LibraryCalendar product fingerprinted on 2026-09-22) and proved the
+     approach, taking Indian Trails from 14 to 247 items and Wheeling
+     from 0 to 7 weekend events. The remaining two have waited a week
+     for a page fetch. With item 212 in place, each becomes: read
+     `data/url_probes.json`, find the feed link, change one source's
+     `type` and `url` in the region config, and re-check
+     `weekend_signal.json`.
+
+     Success criterion, unchanged from item 182: **every region names at
+     least one dated weekend event**. This is also the precondition for
+     item 214. Pointing readers to a neighbouring town is a good
+     fallback and a poor permanent state.
+
+#### P2 (new)
+
+214. **When a town has nothing, point to the closest town that does.**
+     The design/UX angle for the pass, using the site's own name. The
+     combined email currently says *"Nothing dated yet in Des Plaines or
+     Palatine — worth knowing about:"* followed by each town's library
+     name, and has done so every week. Unsubscribe research is blunt
+     about where that leads: **irrelevant content is the top stated
+     reason people leave (53.8%)**. A Palatine reader who sees their
+     town listed as empty week after week has a reason to go.
+
+     The brand already says what to do instead. Palatine to Arlington
+     Heights is well within ten miles, and `build_nearby_regions()` in
+     `build_digest.py` already computes nearby regions for the region
+     pages' "nearby" strip.
+
+     What to build:
+
+     - **In the combined email's empty-town row**, replace the bare
+       library link with the nearest region that has events this
+       weekend, plus one of its event titles: *"Palatine — nothing dated
+       yet. Closest this weekend: Arlington Heights, 4 mi — Harmony
+       Fest."* Keep the library link as a second line, since it is
+       still the right evergreen fallback.
+     - **Do the same on the empty region pages' weekend view**, so a
+       reader who lands on `/palatine-60067/this-weekend/` sees what is
+       nearby instead of a dead end.
+     - **Use the region-level distances already in the pipeline** (Phase
+       8's region-level v1). No geolocation and no new data.
+
+     Deliberately scoped: this makes an empty week useful. It does not
+     make it acceptable, which is item 213's job. It is P2 because it
+     matters most in the weeks before item 213 lands and in whatever
+     quiet weeks remain afterwards.
+
+Competitors reviewed this pass: **LibraryCalendar (Library Market) feed
+endpoints** (searched and not documented publicly, confirming that item
+182 needs a real fetch), **Mount Prospect Park District's sponsorship
+programme** (a local competitor for the same business sponsorship
+budget; prices not visible in search, and seeded into item 212's probe
+list as a pricing anchor), and **newsletter unsubscribe drivers** as a
+design/UX angle (irrelevant content 53.8%, unrecognised sender 54.9%,
+with segmentation and clear expectations as the standard remedy).
+
+
 ## Working agreements for autonomous iteration
 
 - Cadence is once a day at 13:51 UTC, about two hours after the daily
