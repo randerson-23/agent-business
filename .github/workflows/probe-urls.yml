@@ -1,0 +1,58 @@
+name: Probe URLs
+
+# ROADMAP.md item 212: the autonomous loops can't fetch web pages, but a
+# GitHub runner can. Runs when the question list changes on main, or on
+# demand - never on a schedule, so it stays one request per question.
+on:
+  push:
+    branches: [main]
+    paths:
+      - config/url_probes.yaml
+      - scripts/probe_urls.py
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+concurrency:
+  group: probe-urls
+  cancel-in-progress: false
+
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: actions/setup-python@v7
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Probe URLs
+        run: python scripts/probe_urls.py
+
+      - name: Commit probe results
+        run: |
+          git config user.name "local-planner-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add data/url_probes.json
+          if git diff --cached --quiet; then
+            echo "No changes to commit."
+          else
+            git commit -m "Record URL probe results [skip ci]"
+            # Item 206's fix for the real push race with other workflows.
+            attempt=1
+            until git push; do
+              if [ "$attempt" -ge 5 ]; then
+                echo "::error::Failed to push after $attempt attempts."
+                exit 1
+              fi
+              echo "Push rejected (attempt $attempt) - another workflow pushed to main first. Rebasing and retrying."
+              git fetch origin main
+              git rebase origin/main
+              attempt=$((attempt + 1))
+            done
+          fi
