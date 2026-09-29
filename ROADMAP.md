@@ -6,9 +6,11 @@ each pickup to see current phase and what's next, and update it as phases
 complete).
 
 Two loops write to this file:
-- a **6-hourly build loop** (hourly until 2026-09-25) that implements the
-  next phase item and ships PRs;
-- a **daily research loop** (added 2026-08-27; 6-hourly until 2026-09-25)
+- a **daily build loop** (13:51 UTC; hourly until 2026-09-25, then
+  6-hourly until 2026-09-28) that implements the next phase item and ships
+  PRs;
+- a **daily research loop** (11:33 UTC; added 2026-08-27; 6-hourly until
+  2026-09-25)
   that re-reads `BUSINESS_PLAN.md`, reviews competitor sites, and refreshes
   the idea backlog in **Phase 11**. It only edits this file — it never
   implements.
