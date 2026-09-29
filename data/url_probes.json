@@ -1,0 +1,199 @@
+{
+  "results": [
+    {
+      "url": "https://calendar.dppl.org/",
+      "purpose": "Des Plaines library - find the Springshare LibCal feed link",
+      "item": 182,
+      "probed_at": "2026-09-29T14:02:17+00:00",
+      "status": 200,
+      "final_url": "https://calendar.dppl.org/",
+      "content_type": "text/html; charset=UTF-8",
+      "bytes": 55743,
+      "title": "landing page - Des Plaines",
+      "feed_links": [],
+      "calendar_links": []
+    },
+    {
+      "url": "https://www.dppl.org/",
+      "purpose": "Des Plaines library home page - alternate link to the events feed",
+      "item": 182,
+      "probed_at": "2026-09-29T14:02:17+00:00",
+      "status": 200,
+      "final_url": "https://www.dppl.org/",
+      "content_type": "text/html; charset=UTF-8",
+      "bytes": 18510,
+      "title": "Des Plaines Public Library",
+      "feed_links": [
+        {
+          "href": "https://www.dppl.org/blog/rss",
+          "type": "application/rss+xml",
+          "title": "Des Plaines Public Library Blog"
+        }
+      ],
+      "calendar_links": []
+    },
+    {
+      "url": "https://www.palatinelibrary.org/events/upcoming",
+      "purpose": "Palatine library - find the LibraryCalendar (lc_calendar_feed) iCal/RSS link",
+      "item": 182,
+      "probed_at": "2026-09-29T14:02:18+00:00",
+      "status": 403,
+      "final_url": "https://www.palatinelibrary.org/events/upcoming",
+      "content_type": "text/plain; charset=utf-8",
+      "bytes": 72
+    },
+    {
+      "url": "https://www.sd25.org/",
+      "purpose": "D25 - current calendar page / icalfeed.ashx MIID",
+      "item": 198,
+      "probed_at": "2026-09-29T14:02:19+00:00",
+      "status": 200,
+      "final_url": "https://www.sd25.org/",
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 98637,
+      "title": "Home - Arlington Heights School District 25",
+      "feed_links": [],
+      "calendar_links": [
+        "https://www.sd25.org/departments/student-learning/curriculum-by-subjects/career-technical-education",
+        "https://www.sd25.org/departments/student-learning/curriculum-by-subjects/physical-education"
+      ]
+    },
+    {
+      "url": "https://www.ccsd15.net/",
+      "purpose": "CCSD 15 - current calendar page / icalfeed.ashx MIID",
+      "item": 198,
+      "probed_at": "2026-09-29T14:02:19+00:00",
+      "status": 200,
+      "final_url": "https://www.ccsd15.net/",
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 166572,
+      "title": "Home - Community Consolidated School District 15",
+      "feed_links": [],
+      "calendar_links": [
+        "https://www.ccsd15.net/community/feed15"
+      ]
+    },
+    {
+      "url": "https://adc.d211.org/",
+      "purpose": "D211 - current calendar RSS ModuleInstanceID",
+      "item": 198,
+      "probed_at": "2026-09-29T14:02:19+00:00",
+      "status": 200,
+      "final_url": "https://adc.d211.org/",
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 70994,
+      "title": "Home - Township High School District 211",
+      "feed_links": [],
+      "calendar_links": []
+    },
+    {
+      "url": "https://www.mountprospect.org/services/calendar",
+      "purpose": "Village of Mount Prospect calendar (403 in the build)",
+      "item": 192,
+      "probed_at": "2026-09-29T14:02:19+00:00",
+      "status": 403,
+      "final_url": "https://www.mountprospect.org/services/calendar",
+      "content_type": "text/html",
+      "bytes": 434,
+      "title": "Access Denied",
+      "feed_links": [],
+      "calendar_links": []
+    },
+    {
+      "url": "https://www.mountprospect.org/services/news",
+      "purpose": "Village of Mount Prospect news (403 in the build)",
+      "item": 192,
+      "probed_at": "2026-09-29T14:02:20+00:00",
+      "status": 403,
+      "final_url": "https://www.mountprospect.org/services/news",
+      "content_type": "text/html",
+      "bytes": 430,
+      "title": "Access Denied",
+      "feed_links": [],
+      "calendar_links": []
+    },
+    {
+      "url": "https://www.experiencemountprospect.org/events/",
+      "purpose": "Experience Mount Prospect events (403 in the build)",
+      "item": 192,
+      "probed_at": "2026-09-29T14:02:20+00:00",
+      "status": 403,
+      "final_url": "https://www.experiencemountprospect.org/events/",
+      "content_type": "text/html",
+      "bytes": 434,
+      "title": "Access Denied",
+      "feed_links": [],
+      "calendar_links": []
+    },
+    {
+      "url": "https://www.wheelingparkdistrict.com/events/",
+      "purpose": "Wheeling Park District events page (its iCal feed 403s)",
+      "item": 192,
+      "probed_at": "2026-09-29T14:02:20+00:00",
+      "status": 403,
+      "final_url": "https://www.wheelingparkdistrict.com/events/",
+      "content_type": "text/html; charset=UTF-8",
+      "bytes": 5504,
+      "title": "Just a moment...",
+      "feed_links": [],
+      "calendar_links": []
+    },
+    {
+      "url": "https://ccsd21.org/parent-resources/calendars/",
+      "purpose": "Wheeling CCSD 21 calendars (403 in the build)",
+      "item": 192,
+      "probed_at": "2026-09-29T14:02:20+00:00",
+      "status": 403,
+      "final_url": "https://ccsd21.org/parent-resources/calendars/",
+      "content_type": "text/html; charset=UTF-8",
+      "bytes": 8142,
+      "title": "Access denied | ccsd21.org used Cloudflare to restrict access | ccsd21.org | Cloudflare",
+      "feed_links": [],
+      "calendar_links": []
+    },
+    {
+      "url": "https://www.mppd.org/sponsorship/",
+      "purpose": "Mount Prospect Park District sponsorship programme - package prices",
+      "item": 212,
+      "probed_at": "2026-09-29T14:02:20+00:00",
+      "status": 200,
+      "final_url": "https://www.mppd.org/sponsorship/",
+      "content_type": "text/html; charset=UTF-8",
+      "bytes": 92988,
+      "title": "Sponsorship - Mt. Prospect Park District",
+      "feed_links": [
+        {
+          "href": "https://www.mppd.org/feed/",
+          "type": "application/rss+xml",
+          "title": "Mt. Prospect Park District » Feed"
+        },
+        {
+          "href": "https://www.mppd.org/events/?ical=1",
+          "type": "text/calendar",
+          "title": "Mt. Prospect Park District » iCal Feed"
+        },
+        {
+          "href": "https://www.mppd.org/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fwww.mppd.org%2Fsponsorship%2F",
+          "type": "application/json+oembed",
+          "title": "oEmbed (JSON)"
+        },
+        {
+          "href": "https://www.mppd.org/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fwww.mppd.org%2Fsponsorship%2F&format=xml",
+          "type": "text/xml+oembed",
+          "title": "oEmbed (XML)"
+        },
+        {
+          "href": "https://www.mppd.org/wp-json/wp/v2/pages/444",
+          "type": "application/json",
+          "title": "JSON"
+        },
+        {
+          "href": "https://www.mppd.org/wp-json/tribe/events/v1/",
+          "type": "",
+          "title": ""
+        }
+      ],
+      "calendar_links": []
+    }
+  ]
+}
