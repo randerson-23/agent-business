@@ -11948,6 +11948,109 @@ design/UX angle (irrelevant content 53.8%, unrecognised sender 54.9%,
 with segmentation and clear expectations as the standard remedy).
 
 
+#### Research pass 2026-09-30 (fifty-second pass)
+
+The build loop shipped item 212 within hours (#266, #267):
+`config/url_probes.yaml`, `probe-urls.yml`, `scripts/probe_urls.py`, and
+the first real answers in `data/url_probes.json`. This is the first
+time either loop has seen what these pages actually serve. This pass
+read the results. They answer "does the page load?" (yes, every one)
+but not the questions the probes were asked.
+
+| Angle | Finding | Consequence |
+|---|---|---|
+| **What the probes found** | All 8 URLs returned **200**. But `calendar.dppl.org` (55 KB), `palatinelibrary.org/events/upcoming` (150 KB) and the three school-district home pages all came back with **empty `feed_links` and `calendar_links`**. The only feed links found were a DPPL *blog* RSS and MPPD's WordPress feeds | The probe only harvests `<link rel="alternate">` and `<a href>`. LibCal and LibraryCalendar build their subscribe links in JavaScript, and the school pages probed were home pages, not calendar pages. The answers are in the HTML the probe fetched; it just does not look for them (item 215) |
+| **LibCal's addressing** | LibCal calendars are addressed by a numeric calendar ID, for example `…/calendar?cid=14131` on Springshare's own tutorial instance. The exact `ical_subscribe` path is not documented in search | A `cid=\d+` regex over the raw DPPL page will very likely find the calendar ID the feed URL needs. Search cannot answer this; one regex over an already-fetched page can (item 215) |
+| **MPPD's advertised iCal link** | `mppd.org/events/?ical=1`, advertised in the page's own `<link rel="alternate" type="text/calendar">`, returned **200 with 0 bytes and `text/html`** | Do **not** swap MPPD to it. The configured `webcal://www.mppd.org/?post_type=tribe_events&ical=1&eventDisplay=list` already returns items when it connects. Recorded so nobody "fixes" a working source onto an empty one |
+| **Local Instagram as discovery** | Local accounts grow when content is recognisably *place-specific*: streets, events and businesses people know. Tagging a local event or landmark reaches people already nearby and interested. "Follow us" alone does little; a concrete reason to follow works | A weekly "this weekend in [town]" card is the content these channels reward, and the pipeline already renders per-region images with Pillow for OG cards (item 216) |
+
+#### P1 (new)
+
+215. **Teach the probe to look inside the page, then re-ask the same
+     questions.** Item 212 works: every URL loaded and the results are
+     committed where both loops can read them. It just collects the
+     wrong evidence for these particular questions. `probe_urls.py`
+     records `<link rel="alternate">` feeds and `<a href>`s containing
+     `.ics`, `ical`, `webcal:`, `rss` or `feed`. The two library
+     calendars render their subscribe controls in JavaScript, so those
+     links are not in the static markup as anchors. The identifiers the
+     feed URLs are built from usually *are* in the raw HTML, inside
+     scripts and data attributes. The school probes hit home pages,
+     while the feed IDs live on each district's calendar page.
+
+     What to build, as a small extension of the existing script:
+
+     - **Per-probe `patterns:`** in `config/url_probes.yaml`: a list of
+       regexes run against the raw response body. Each match is
+       recorded with ~60 characters of surrounding context (capped, for
+       example at 20 matches per pattern). Generic and reusable, and
+       still read-only.
+     - **Per-probe `follow:`** (optional): a regex over the page's
+       `href`s whose first match is also probed, one level deep. This
+       covers the "home page → calendar page" hop without hand-writing
+       every URL.
+     - **Re-seed the open questions** with those fields:
+
+     | Probe | `patterns` / `follow` | What it should find |
+     |---|---|---|
+     | `calendar.dppl.org` | `cid=\d+`, `ical_subscribe`, `rss\.php` | The LibCal calendar ID; LibCal addresses calendars as `calendar?cid=NNNN` |
+     | `palatinelibrary.org/events/upcoming` | `lc_calendar_feed`, `_wrapper_format=\w+`, `\.ics`, `ical` | Whether the LibraryCalendar product exposes an iCal/RSS wrapper format (item 182's open question) |
+     | `sd25.org`, `ccsd15.net`, `adc.d211.org` | `MIID=\d+`, `ModuleInstanceID=\d+`, `icalfeed`; `follow: '(?i)calendar'` | The current calendar IDs, to replace the rotated ones behind the three 404s (item 198) |
+     | `mppd.org/sponsorship/` | `\$\s?\d[\d,]*(?:\.\d\d)?` | Park-district sponsorship prices as a pricing anchor |
+
+     Once these land, item 213 (Des Plaines and Palatine, zero weekend
+     events for every recorded build) and item 198 each become a
+     one-line config change read straight off `data/url_probes.json`.
+     This is the only thing standing between those items and done, so
+     it ranks with them. Same constraint as item 212: probes never edit
+     source config themselves.
+
+#### P2 (new)
+
+216. **Render a weekly "this weekend in [town]" share card per region.**
+     This is the design/UX angle for the pass, aimed at "can it be
+     found". Research on local accounts is consistent: content that is
+     recognisably about *this place* (named events, known venues,
+     familiar streets) is what travels, and a concrete reason to follow
+     beats a generic ask. The site produces exactly that content every
+     week and ships it only as HTML and email.
+
+     `build_digest.py` already renders per-region PNGs with Pillow for
+     the OG cards (`render_og_image`, `build_og_images`, written to
+     `docs/og/`). Extend the same code to produce a portrait
+     **1080×1350** card per region each build, published at
+     `docs/<region>/this-weekend.png`: the town name, the weekend's
+     dates, three or four event titles with days, the site's URL in
+     the footer, and the Modernist palette and type (item 174, with item
+     210's text-safe accent).
+
+     Where it gets used, all optional and at the owner's discretion:
+
+     - A local Facebook group post (item 107's one-conversation
+       channel), where an image carries far better than a bare link.
+     - Nextdoor, if item 154's Business Page ever happens.
+     - An Instagram or Threads post, or simply texted to a friend.
+     - Linked from the newsletter footer as "share this weekend" (pairs
+       with item 183's subscribe link).
+
+     Owner time is **zero to build** and roughly **two minutes** in any
+     week the owner chooses to post it. Deliberately **no automated
+     posting**. Meta's publishing API needs a business account, app
+     review and tokens, which is a setup and account decision that
+     belongs in the Parked list if it is ever wanted. The card is useful
+     without it.
+
+Competitors reviewed this pass: **Springshare LibCal addressing**
+(calendars are addressed by numeric `cid`, e.g. `calendar?cid=14131`;
+the subscribe endpoint is not publicly documented, so it has to be read
+from the live page), **the first real URL-probe results** (every page
+loads; subscribe links are JavaScript-rendered or on unprobed
+sub-pages; MPPD's advertised iCal link is empty), and **local
+Instagram / social discovery** as a design/UX angle (place-specific
+content and event tagging reach nearby, interested people; a concrete
+reason to follow outperforms a generic ask).
+
+
 ## Working agreements for autonomous iteration
 
 - Cadence is once a day at 13:51 UTC, about two hours after the daily
