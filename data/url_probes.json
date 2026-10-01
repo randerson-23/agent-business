@@ -2,9 +2,9 @@
   "results": [
     {
       "url": "https://calendar.dppl.org/",
-      "purpose": "Des Plaines library (Springshare LibCal) - the calendar cid its feed URL needs",
+      "purpose": "Des Plaines library calendar - platform fingerprint and any feed/API URL",
       "item": 182,
-      "probed_at": "2026-10-01T13:59:40+00:00",
+      "probed_at": "2026-10-01T14:20:17+00:00",
       "status": 200,
       "final_url": "https://calendar.dppl.org/",
       "content_type": "text/html; charset=UTF-8",
@@ -13,205 +13,168 @@
       "feed_links": [],
       "calendar_links": [],
       "pattern_matches": {
-        "cid=\\d+": [],
-        "ical_subscribe": [],
-        "rss\\.php": [],
-        "(?i)[a-z/._-]*ical[a-z/._?=&-]*": [
+        "(?i)calendar\\.google\\.com/calendar/[^\"'\\s<]*": [],
+        "(?i)webcal://[^\"'\\s<]*": [],
+        "(?i)[^\"'\\s<=]*\\.ics\\b[^\"'\\s<]*": [],
+        "(?i)[^\"'\\s<=]*/(?:api|ajax|feeds?)/[^\"'\\s<]*": [
           {
-            "match": "vertical-align",
-            "context": "ding: 0; border: 0; font: inherit; font-size: 100%; vertical-align: baseline; } html, body.embeded{ line-height: 1; heig"
+            "match": "//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css",
+            "context": "3f0LnxD3uzfoCj/koQ==' crossorigin='anonymous'/> <link href='//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css' rel='stylesheet' type='text/css' integrity='sha512-SfTiTlX"
+          },
+          {
+            "match": "//cdnjs.cloudflare.com/ajax/libs/jquery-ajaxtransport-xdomainrequest/1.0.3/jquery.xdomainrequest.min.js",
+            "context": "f lte IE 9]> <script type=\"text/javascript\" src=\"//cdnjs.cloudflare.com/ajax/libs/jquery-ajaxtransport-xdomainrequest/1.0.3/jquery.xdomainrequest.min.js\" integrity=\"sha512-A2sj0WV8pRqcC1N+TGY6w+KpNYZDyV2LGwLq"
+          },
+          {
+            "match": "https://cdnjs.cloudflare.com/ajax/libs/webcomponentsjs/1.3.3/custom-elements-es5-adapter.js",
+            "context": "' crossorigin='anonymous'></script> <script src=\"https://cdnjs.cloudflare.com/ajax/libs/webcomponentsjs/1.3.3/custom-elements-es5-adapter.js\" integrity=\"sha512-FFn4n1AAKwhX5px0JWxRoLLpvvnm59OqY0yZjIpu"
+          },
+          {
+            "match": "https://cdnjs.cloudflare.com/ajax/libs/webcomponentsjs/1.3.3/webcomponents-lite.js",
+            "context": "=\" crossorigin=\"anonymous\"></script> <script src=\"https://cdnjs.cloudflare.com/ajax/libs/webcomponentsjs/1.3.3/webcomponents-lite.js\" integrity=\"sha512-7cpa7iIxY9Fz1D454GUQi8Wp/XKAY1l85H5hQcDd"
           }
-        ]
+        ],
+        "(?i)\\b(?:libcal|springshare|librarymarket|communico|libnet|evanced|bibliocommons|locable|trumba|localist)\\b": [
+          {
+            "match": "communico",
+            "context": "cation-->\" /> <meta name=\"apiserver\" content=\"https://api.communico.co\" /> <meta name=\"region\" content=\"us\" /> <meta name=\""
+          },
+          {
+            "match": "libnet",
+            "context": "e.css' rel='stylesheet' type='text/css'/> <link href='//cdn.libnet.info/css/rome/2.1.14/rome.min.css' rel='stylesheet' type='t"
+          },
+          {
+            "match": "bibliocommons",
+            "context": "class=\"nav-catalog mobile-hide\"><a href=\"https://desplaines.bibliocommons.com/\">Catalog</a></li> <li class=\"wide-hide\"><a class=\"nav-"
+          },
+          {
+            "match": "Communico",
+            "context": "bility()'>Accessibility</a> | <a href='http://communico.co'>Communico</a><br/><br/> <span style='font-size:80%'>Connected con"
+          }
+        ],
+        "(?i)\\b(?:finalsite|thrillshare|apptegy|edlio|schoolmessenger|blackboard|campussuite|rschooltoday|schoolpointe)\\b": []
       }
     },
     {
       "url": "https://www.palatinelibrary.org/events/upcoming",
-      "purpose": "Palatine library (LibraryCalendar) - does it expose an iCal/RSS wrapper format?",
+      "purpose": "Palatine library events - platform fingerprint and any feed/API URL",
       "item": 182,
-      "probed_at": "2026-10-01T13:59:40+00:00",
+      "probed_at": "2026-10-01T14:20:17+00:00",
       "status": 200,
       "final_url": "https://www.palatinelibrary.org/events/upcoming",
       "content_type": "text/html; charset=utf-8",
-      "bytes": 149609,
+      "bytes": 149605,
       "title": "Upcoming Events | Palatine Library District",
       "feed_links": [],
       "calendar_links": [],
       "pattern_matches": {
-        "lc_calendar_feed": [],
-        "_wrapper_format=\\w+": [],
-        "[\\w/.-]*\\.ics\\b": [],
-        "(?i)[a-z/._-]*ical[a-z/._?=&-]*": [
+        "(?i)calendar\\.google\\.com/calendar/[^\"'\\s<]*": [],
+        "(?i)webcal://[^\"'\\s<]*": [],
+        "(?i)[^\"'\\s<=]*\\.ics\\b[^\"'\\s<]*": [],
+        "(?i)[^\"'\\s<=]*/(?:api|ajax|feeds?)/[^\"'\\s<]*": [],
+        "(?i)\\b(?:libcal|springshare|librarymarket|communico|libnet|evanced|bibliocommons|locable|trumba|localist)\\b": [
           {
-            "match": "canonical",
-            "context": "eo.position\" content=\"42.1219889,-88.0390033\" /> <link rel=\"canonical\" href=\"https://www.palatinelibrary.org/events/upcoming\" />"
+            "match": "bibliocommons",
+            "context": "<a href=\"https://palatinelibrary.bibliocommons.com/\" class=\"nav-link nav-level-2\" data-nav-level=\"2\" role="
           }
-        ]
+        ],
+        "(?i)\\b(?:finalsite|thrillshare|apptegy|edlio|schoolmessenger|blackboard|campussuite|rschooltoday|schoolpointe)\\b": []
       }
     },
     {
-      "url": "https://www.sd25.org/",
-      "purpose": "D25 - current calendar module ID (MIID) for icalfeed.ashx",
+      "url": "https://www.sd25.org/calendar-73",
+      "purpose": "D25 calendar page - platform fingerprint and any feed/embed URL",
       "item": 198,
-      "probed_at": "2026-10-01T13:59:41+00:00",
+      "probed_at": "2026-10-01T14:20:17+00:00",
       "status": 200,
-      "final_url": "https://www.sd25.org/",
+      "final_url": "https://www.sd25.org/calendar-73",
       "content_type": "text/html; charset=utf-8",
-      "bytes": 98378,
-      "title": "Home - Arlington Heights School District 25",
+      "bytes": 95236,
+      "title": "Calendar",
       "feed_links": [],
       "calendar_links": [
         "https://www.sd25.org/departments/student-learning/curriculum-by-subjects/career-technical-education",
         "https://www.sd25.org/departments/student-learning/curriculum-by-subjects/physical-education"
       ],
       "pattern_matches": {
-        "MIID=\\d+": [],
-        "ModuleInstanceID=\\d+": [],
-        "(?i)icalfeed[^\"\\s]*": []
-      },
-      "followed": {
-        "url": "https://www.sd25.org/calendar-73",
-        "purpose": "",
-        "item": null,
-        "probed_at": "2026-10-01T13:59:42+00:00",
-        "status": 200,
-        "final_url": "https://www.sd25.org/calendar-73",
-        "content_type": "text/html; charset=utf-8",
-        "bytes": 95236,
-        "title": "Calendar",
-        "feed_links": [],
-        "calendar_links": [
-          "https://www.sd25.org/departments/student-learning/curriculum-by-subjects/career-technical-education",
-          "https://www.sd25.org/departments/student-learning/curriculum-by-subjects/physical-education"
-        ],
-        "pattern_matches": {
-          "MIID=\\d+": [],
-          "ModuleInstanceID=\\d+": [],
-          "(?i)icalfeed[^\"\\s]*": []
-        }
+        "(?i)calendar\\.google\\.com/calendar/[^\"'\\s<]*": [],
+        "(?i)webcal://[^\"'\\s<]*": [],
+        "(?i)[^\"'\\s<=]*\\.ics\\b[^\"'\\s<]*": [],
+        "(?i)[^\"'\\s<=]*/(?:api|ajax|feeds?)/[^\"'\\s<]*": [],
+        "(?i)\\b(?:libcal|springshare|librarymarket|communico|libnet|evanced|bibliocommons|locable|trumba|localist)\\b": [],
+        "(?i)\\b(?:finalsite|thrillshare|apptegy|edlio|schoolmessenger|blackboard|campussuite|rschooltoday|schoolpointe)\\b": [
+          {
+            "match": "finalsite",
+            "context": "; </script> <link rel=\"icon\" href=\"https://resources.finalsite.net/images/v1756801957/sd25org/j7snpc5f6cmltcudjnpx/Arlingt"
+          },
+          {
+            "match": "Finalsite",
+            "context": "ref=\"https://www.finalsite.com/districts\" title=\"Powered by Finalsite opens in a new window\" target=\"_blank\">Powered by Finalsite"
+          }
+        ]
       }
     },
     {
-      "url": "https://www.ccsd15.net/",
-      "purpose": "CCSD 15 - current calendar module ID (MIID) for icalfeed.ashx",
+      "url": "https://www.ccsd15.net/our-district/calendars",
+      "purpose": "CCSD 15 calendars page - platform fingerprint and any feed/embed URL",
       "item": 198,
-      "probed_at": "2026-10-01T13:59:42+00:00",
+      "probed_at": "2026-10-01T14:20:19+00:00",
       "status": 200,
-      "final_url": "https://www.ccsd15.net/",
+      "final_url": "https://www.ccsd15.net/our-district/calendars",
       "content_type": "text/html; charset=utf-8",
-      "bytes": 166617,
-      "title": "Home - Community Consolidated School District 15",
+      "bytes": 354311,
+      "title": "Calendars - Community Consolidated School District 15",
       "feed_links": [],
       "calendar_links": [
-        "https://www.ccsd15.net/community/feed15"
+        "https://www.ccsd15.net/community/feed15",
+        "https://www.ccsd15.net/our-district/about-district-15/feed15"
       ],
       "pattern_matches": {
-        "MIID=\\d+": [],
-        "ModuleInstanceID=\\d+": [],
-        "(?i)icalfeed[^\"\\s]*": []
-      },
-      "followed": {
-        "url": "https://www.ccsd15.net/our-district/calendars",
-        "purpose": "",
-        "item": null,
-        "probed_at": "2026-10-01T13:59:42+00:00",
-        "status": 200,
-        "final_url": "https://www.ccsd15.net/our-district/calendars",
-        "content_type": "text/html; charset=utf-8",
-        "bytes": 354311,
-        "title": "Calendars - Community Consolidated School District 15",
-        "feed_links": [],
-        "calendar_links": [
-          "https://www.ccsd15.net/community/feed15",
-          "https://www.ccsd15.net/our-district/about-district-15/feed15"
-        ],
-        "pattern_matches": {
-          "MIID=\\d+": [],
-          "ModuleInstanceID=\\d+": [],
-          "(?i)icalfeed[^\"\\s]*": []
-        }
+        "(?i)calendar\\.google\\.com/calendar/[^\"'\\s<]*": [],
+        "(?i)webcal://[^\"'\\s<]*": [],
+        "(?i)[^\"'\\s<=]*\\.ics\\b[^\"'\\s<]*": [],
+        "(?i)[^\"'\\s<=]*/(?:api|ajax|feeds?)/[^\"'\\s<]*": [],
+        "(?i)\\b(?:libcal|springshare|librarymarket|communico|libnet|evanced|bibliocommons|locable|trumba|localist)\\b": [],
+        "(?i)\\b(?:finalsite|thrillshare|apptegy|edlio|schoolmessenger|blackboard|campussuite|rschooltoday|schoolpointe)\\b": [
+          {
+            "match": "finalsite",
+            "context": "; </script> <link rel=\"icon\" href=\"https://resources.finalsite.net/images/v1714498917/ccsd15net/omkgynazrm2glqobewik/ccsd1"
+          },
+          {
+            "match": "Finalsite",
+            "context": "ref=\"https://www.finalsite.com/districts\" title=\"Powered by Finalsite opens in a new window\" target=\"_blank\">Powered by Finalsite"
+          }
+        ]
       }
     },
     {
-      "url": "https://adc.d211.org/",
-      "purpose": "D211 - current calendar RSS ModuleInstanceID",
+      "url": "https://adc.d211.org/district-info/info/calendars",
+      "purpose": "D211 calendars page - platform fingerprint and any feed/embed URL",
       "item": 198,
-      "probed_at": "2026-10-01T13:59:48+00:00",
+      "probed_at": "2026-10-01T14:20:20+00:00",
       "status": 200,
-      "final_url": "https://adc.d211.org/",
+      "final_url": "https://adc.d211.org/district-info/info/calendars",
       "content_type": "text/html; charset=utf-8",
-      "bytes": 69148,
-      "title": "Home - Township High School District 211",
+      "bytes": 71982,
+      "title": "Calendars",
       "feed_links": [],
       "calendar_links": [],
       "pattern_matches": {
-        "MIID=\\d+": [],
-        "ModuleInstanceID=\\d+": [],
-        "(?i)icalfeed[^\"\\s]*": []
-      },
-      "followed": {
-        "url": "https://adc.d211.org/district-info/info/calendars",
-        "purpose": "",
-        "item": null,
-        "probed_at": "2026-10-01T13:59:48+00:00",
-        "status": 200,
-        "final_url": "https://adc.d211.org/district-info/info/calendars",
-        "content_type": "text/html; charset=utf-8",
-        "bytes": 71982,
-        "title": "Calendars",
-        "feed_links": [],
-        "calendar_links": [],
-        "pattern_matches": {
-          "MIID=\\d+": [],
-          "ModuleInstanceID=\\d+": [],
-          "(?i)icalfeed[^\"\\s]*": []
-        }
-      }
-    },
-    {
-      "url": "https://www.mppd.org/sponsorship/",
-      "purpose": "Mount Prospect Park District sponsorship programme - package prices",
-      "item": 212,
-      "probed_at": "2026-10-01T13:59:49+00:00",
-      "status": 200,
-      "final_url": "https://www.mppd.org/sponsorship/",
-      "content_type": "text/html; charset=UTF-8",
-      "bytes": 92990,
-      "title": "Sponsorship - Mt. Prospect Park District",
-      "feed_links": [
-        {
-          "href": "https://www.mppd.org/feed/",
-          "type": "application/rss+xml",
-          "title": "Mt. Prospect Park District » Feed"
-        },
-        {
-          "href": "https://www.mppd.org/events/?ical=1",
-          "type": "text/calendar",
-          "title": "Mt. Prospect Park District » iCal Feed"
-        },
-        {
-          "href": "https://www.mppd.org/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fwww.mppd.org%2Fsponsorship%2F",
-          "type": "application/json+oembed",
-          "title": "oEmbed (JSON)"
-        },
-        {
-          "href": "https://www.mppd.org/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fwww.mppd.org%2Fsponsorship%2F&format=xml",
-          "type": "text/xml+oembed",
-          "title": "oEmbed (XML)"
-        },
-        {
-          "href": "https://www.mppd.org/wp-json/wp/v2/pages/444",
-          "type": "application/json",
-          "title": "JSON"
-        },
-        {
-          "href": "https://www.mppd.org/wp-json/tribe/events/v1/",
-          "type": "",
-          "title": ""
-        }
-      ],
-      "calendar_links": [],
-      "pattern_matches": {
-        "\\$\\s?\\d[\\d,]*(?:\\.\\d\\d)?": []
+        "(?i)calendar\\.google\\.com/calendar/[^\"'\\s<]*": [],
+        "(?i)webcal://[^\"'\\s<]*": [],
+        "(?i)[^\"'\\s<=]*\\.ics\\b[^\"'\\s<]*": [],
+        "(?i)[^\"'\\s<=]*/(?:api|ajax|feeds?)/[^\"'\\s<]*": [],
+        "(?i)\\b(?:libcal|springshare|librarymarket|communico|libnet|evanced|bibliocommons|locable|trumba|localist)\\b": [],
+        "(?i)\\b(?:finalsite|thrillshare|apptegy|edlio|schoolmessenger|blackboard|campussuite|rschooltoday|schoolpointe)\\b": [
+          {
+            "match": "finalsite",
+            "context": "; </script> <link rel=\"icon\" href=\"https://resources.finalsite.net/images/v1761654527/adcd211org/gms9lwrekbhu06iixx12/211V"
+          },
+          {
+            "match": "Finalsite",
+            "context": "ref=\"https://www.finalsite.com/districts\" title=\"Powered by Finalsite opens in a new window\" target=\"_blank\">Powered by Finalsite"
+          }
+        ]
       }
     }
   ]
