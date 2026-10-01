@@ -25,5 +25,13 @@
       "open_rate": 0.0,
       "click_rate": 0.0
     }
+  },
+  {
+    "timestamp": "2026-10-01T01:33:14.764427+00:00",
+    "subject": "This weekend across Arlington Heights, Mount Prospect, and Wheeling",
+    "buttondown_id": "em_45v7sspnpm8av85c5c33y5dy9e",
+    "region": "combined",
+    "mode": "schedule",
+    "pre_send_subscriber_count": 1
   }
 ]
