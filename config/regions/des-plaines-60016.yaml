@@ -92,16 +92,18 @@ sources:
     enabled: true
 
   - name: "Des Plaines Public Library — Events"
-    type: html_events
-    # Pointed at calendar.dppl.org 2026-08-29, based on real evidence: the
-    # previous dppl.org/events source returned a "My events" link to
-    # https://calendar.dppl.org/myevents - a distinct subdomain, the same
-    # "library calendar lives on its own platform subdomain" shape
-    # mppl.libnet.info (Mount Prospect) already confirmed. Root path only
-    # (no confirmed listing-page path yet); still relies on the keyword
-    # fallback, still html_events since no ICS/RSS export is confirmed.
-    url: "https://calendar.dppl.org/"
-    keywords: ["event", "class", "program", "story", "camp", "concert", "workshop", "book"]
+    type: rss
+    # ROADMAP.md items 213/215: calendar.dppl.org is Communico - the same
+    # platform as the Mount Prospect and Indian Trails library feeds - not
+    # LibCal as item 182 assumed. Found by the URL-probe workflow (round 3
+    # fingerprint: meta apiserver api.communico.co, assets on
+    # cdn.libnet.info). Round 4 (2026-10-01) fetched this exact URL from a
+    # GitHub runner: 200, application/rss+xml, 331 KB. Same generic filter
+    # blob as Mount Prospect's feed (all locations/ages/types, 30 days).
+    # Replaces an html_events scrape of the calendar's root page, whose
+    # keyword fallback only ever found nav links; Des Plaines contributed 0
+    # weekend events on every recorded build before this.
+    url: "https://calendar.dppl.org/feeds?data=eyJmZWVkVHlwZSI6InJzcyIsImZpbHRlcnMiOnsibG9jYXRpb24iOlsiYWxsIl0sImFnZXMiOlsiYWxsIl0sInR5cGVzIjpbImFsbCJdLCJ0YWdzIjpbXSwidGVybSI6IiIsImRheXMiOjMwfX0="
     section: "Library Events"
     enabled: true
 
