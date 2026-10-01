@@ -17,48 +17,28 @@
 #             probed too (same patterns, one level deep, never further).
 
 probes:
-  # Round 5 (2026-10-01). Round 4 answered Des Plaines: Communico's RSS feed
-  # on calendar.dppl.org returned 200 application/rss+xml, 331 KB, and is now
-  # the configured source. It also showed the Finalsite calendar IDs sit in
-  # *unquoted* attributes (data-calendar-ids=361,349,360), which round 4's
-  # quoted-only pattern missed.
+  # Round 6 (2026-10-01). Round 5 found D211's Finalsite iCal (200
+  # text/calendar, 20 events; now the configured source) and captured CCSD
+  # 15's two full calendar-ID lists. D25's iCal for 361,349,360 was valid but
+  # empty (0 events) - recorded in ROADMAP.md, not re-probed this round.
 
-  # Items 182/213, Palatine. 403 on rounds 1 and 4, 200 on rounds 2 and 3:
-  # intermittent. Same fingerprint question as round 4.
-  - url: https://www.palatinelibrary.org/events/upcoming
-    item: 182
-    purpose: Palatine library events - CMS and events-module fingerprint, any feed/export path
+  # Item 198: CCSD 15's Finalsite iCal, once per calendar element on its page.
+  - url: https://www.ccsd15.net/fs/calendar-manager/events.ics?calendar_ids[]=70&calendar_ids[]=21&calendar_ids[]=40&calendar_ids[]=45&calendar_ids[]=22&calendar_ids[]=41&calendar_ids[]=68&calendar_ids[]=12
+    item: 198
+    purpose: CCSD 15 - Finalsite iCal for the first calendar element's 8 IDs (candidate source)
+  - url: https://www.ccsd15.net/fs/calendar-manager/events.ics?calendar_ids[]=67&calendar_ids[]=45&calendar_ids[]=68&calendar_ids[]=11&calendar_ids[]=66&calendar_ids[]=15&calendar_ids[]=14&calendar_ids[]=39&calendar_ids[]=38&calendar_ids[]=27&calendar_ids[]=17&calendar_ids[]=10&calendar_ids[]=28&calendar_ids[]=21&calendar_ids[]=26&calendar_ids[]=19&calendar_ids[]=24&calendar_ids[]=40&calendar_ids[]=37&calendar_ids[]=36&calendar_ids[]=35&calendar_ids[]=34&calendar_ids[]=22&calendar_ids[]=33&calendar_ids[]=32&calendar_ids[]=25&calendar_ids[]=31&calendar_ids[]=41&calendar_ids[]=9&calendar_ids[]=29&calendar_ids[]=20&calendar_ids[]=12
+    item: 198
+    purpose: CCSD 15 - Finalsite iCal for the second calendar element's 32 IDs (candidate source)
+
+  # Item 192 follow-up: both Village of Mount Prospect sources returned 404
+  # (not 403) in PR #272's CI build. Find where news and the calendar moved.
+  - url: https://www.mountprospect.org/
+    item: 192
+    purpose: Village of Mount Prospect home page - current news and calendar links (old paths now 404)
+    follow: '(?i)calendar'
     patterns:
-      - '(?i)\bdrupal\b[^"<]{0,40}'
-      - '(?i)(?:librarymarket|library market|lc-calendar|lc_calendar|libraryaware|evanced|tockify|assabet|localist|trumba|wordpress|tribe-events)'
-      - '(?i)[^"''\s<=]*/events?/(?:feed|rss|ical|ics|export|subscribe)[^"''\s<]*'
-      - '(?i)<meta name="generator" content="[^"]*"'
-
-  # Item 198: full Finalsite calendar-ID lists and any feed URL each page
-  # advertises (D211's carries a data-calendars-feed-url attribute).
-  - url: https://www.sd25.org/calendar-73
-    item: 198
-    purpose: D25 calendar page - full Finalsite calendar IDs and feed-URL attribute
-    patterns: &finalsite_attrs
-      - 'data-calendar-ids="?[\d,]+'
-      - 'data-calendars?-feed-url="?[^"\s>]*'
-  - url: https://www.ccsd15.net/our-district/calendars
-    item: 198
-    purpose: CCSD 15 calendars page - full Finalsite calendar IDs and feed-URL attribute
-    patterns: *finalsite_attrs
-  - url: https://adc.d211.org/district-info/info/calendars
-    item: 198
-    purpose: D211 calendars page - full Finalsite calendar IDs and feed-URL attribute
-    patterns: *finalsite_attrs
-
-  # Item 198: Finalsite's iCal endpoint with the IDs round 4 showed in full.
-  # CCSD 15's list was cut off in round 4's context, so it waits a round.
-  - url: https://www.sd25.org/fs/calendar-manager/events.ics?calendar_ids[]=361&calendar_ids[]=349&calendar_ids[]=360
-    item: 198
-    purpose: D25 - Finalsite iCal for calendar IDs 361, 349, 360 (candidate source)
-  - url: https://adc.d211.org/fs/calendar-manager/events.ics?calendar_ids[]=27
-    item: 198
-    purpose: D211 - Finalsite iCal for calendar ID 27 (candidate source)
+      - '(?i)href="[^"]*(?:news|calendar|events?|notify|rss)[^"]*"'
+      - '(?i)\b(?:civicplus|civicengage|granicus|revize|govstack|opencities|drupal|wordpress)\b'
 
   # Answered and removed (see ROADMAP.md items 212 and 215):
   # - The five 403 sources: bot walls (Access Denied / Cloudflare) from a runner too.
@@ -67,3 +47,6 @@ probes:
   # - mppd.org/sponsorship/: no dollar amounts in the page; prices aren't published there.
   # - calendar.dppl.org: Communico; its RSS feed is now the configured source (round 4).
   # - dppl.libnet.info: not DPPL's host (redirects to Google).
+  # - adc.d211.org: Finalsite calendar 27; its iCal is now the configured source (round 5).
+  # - palatinelibrary.org/events/upcoming: Drupal 11 + LibraryCalendar, but no feed
+  #   path in five rounds of patterns - next step is asking the library (item 152).

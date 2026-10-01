@@ -12112,6 +12112,41 @@ but not the questions the probes were asked.
      `events.ics?calendar_ids[]=` endpoint directly for D25 and D211, and
      re-asks Palatine's fingerprint question.
 
+     **Des Plaines swap confirmed by a real networked build.** In PR
+     #272's own CI smoke build, the Des Plaines library RSS fetch
+     logged no failure. The "Region zero weekend contribution" warning,
+     which had always listed Des Plaines, listed **only
+     `palatine-60067`**. Des Plaines is contributing weekend events for
+     the first time on record.
+
+     **Round 5 results, 2026-10-01: D211 found and swapped in.**
+     - **D211:** `adc.d211.org/fs/calendar-manager/events.ics?calendar_ids[]=27`
+       returned **200, `text/calendar`, 20 events**. Acted on in the
+       same PR: Palatine's D211 source is now `type: ics` on that URL,
+       replacing the Blackboard `RSS.aspx` feed that 404'd on every
+       build. Section and name are unchanged.
+     - **D25:** the iCal for `361,349,360` is valid `text/calendar` but
+       has **0 events** (447 bytes). It's not swapped. These IDs may be
+       filter calendars, or the endpoint may need a date-range
+       parameter. This is still open.
+     - **CCSD 15:** the page has two calendar elements, one with 8 IDs
+       and one with 32. Round 6 probes the iCal for each.
+     - **Palatine:** confirmed **Drupal 11 + LibraryCalendar**
+       (`<meta name="Generator" content="Drupal 11">`, `lc_calendar`
+       and `lc-calendar` classes), which matches item 182's original
+       fingerprint. Five rounds of feed-shaped patterns found **no feed
+       or export path** in the page. Stop probing: the next step is
+       asking the library for its feed URL (item 152), which is a
+       one-sentence email.
+
+     **Seen in the same CI log, not acted on:** both Village of Mount
+     Prospect sources (`/services/news` and `/services/calendar`) now
+     return **404** where they returned 403 for 34+ builds. The Village
+     appears to have moved those pages, and a 404 is a fixable problem
+     where a bot wall wasn't. Round 6 probes `mountprospect.org`'s
+     home page, following its first calendar link, for the new news and
+     calendar URLs.
+
 #### P2 (new)
 
 216. **Render a weekly "this weekend in [town]" share card per region.**
