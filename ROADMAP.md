@@ -12098,7 +12098,7 @@ send went out on schedule (2026-10-01 01:33 UTC, `pre_send_subscriber_count:
 
 #### P1 (new)
 
-217. **Lead the combined subject line with events, not a town list.**
+217. ✅ **DONE — Lead the combined subject line with events, not a town list.**
      `build_combined_email_subject_line()` returns *"This weekend across
      {towns}"*. Three weekly sends in a row have used exactly *"This
      weekend across Arlington Heights, Mount Prospect, and Wheeling"*.
@@ -12130,6 +12130,30 @@ send went out on schedule (2026-10-01 01:33 UTC, `pre_send_subscriber_count:
      Measurement: item 187's metrics will show whether it helped once
      there is more than one subscriber. Until then, it is the right
      default on the evidence.
+
+     ✅ **Shipped 2026-10-01.** `build_combined_email_subject_line()` now
+     names up to two attendable, non-recurring, non-near-duplicate
+     titles plus a count. Titles are picked round-robin across towns
+     so the first town alphabetically doesn't take both slots. The
+     subject is capped at `SUBJECT_MAX_LEN = 60`. The new
+     `build_combined_email_preheader()` names every covered town,
+     including the empty ones, and never a title. The subject only
+     falls back to listing towns when every event is recurring.
+     Two things a real build caught that the unit tests did not:
+     - **One event's own title contains "&"** ("Harmony Fest & Taste
+       of Arlington Heights (Friday)"). Clipping it and then joining
+       the count with another "&" read as nonsense, so the count uses
+       "and", matching item 83's single-region format.
+     - **Whole titles beat clipped ones.** The fitter tries the first
+       pair, then every single title whole, and clips only as a last
+       resort.
+     Real output for the 2026-10-02 weekend: subject **"Harmony Fest &
+     Taste of Arlington… and 2 more this weekend"** (58 characters). It
+     clips here because the Saturday Harmony Fest is a near-duplicate
+     and the Farmers Market is recurring, which leaves one 50-character
+     candidate. Preheader: **"Across Arlington Heights, Des Plaines,
+     Mount Prospect, Palatine, and Wheeling"**. The single-region
+     builders are unchanged. 10 new or updated tests; 574 pass.
 
 218. **Fill in trick-or-treat hours now. The page peaks in 30 days and
      every town is still `null`.** Item 101's `/trick-or-treat/` page

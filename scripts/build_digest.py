@@ -2654,20 +2654,83 @@ def _join_names(names: list[str], conjunction: str = "and") -> str:
     return ", ".join(names[:-1]) + f", {conjunction} {names[-1]}"
 
 
+# ROADMAP.md item 217: most clients show roughly 40-60 subject
+# characters before truncating, and the subject now carries event
+# titles that vary in length week to week.
+SUBJECT_MAX_LEN = 60
+
+
+def _round_robin_attendable(sections: list[dict]) -> list[dict]:
+    """Every attendable event, interleaved across regions (first from
+    each region, then second from each, ...), so the titles a subject
+    line picks aren't all from whichever town sorts first."""
+    per_region = [[e for e in s["weekend_events"] if e.get("attendable", True)] for s in sections]
+    interleaved = []
+    for i in range(max((len(r) for r in per_region), default=0)):
+        interleaved.extend(r[i] for r in per_region if i < len(r))
+    return interleaved
+
+
+def _fit_subject(titles: list[str], total: int) -> str:
+    """'{A}, {B} and N more this weekend' within SUBJECT_MAX_LEN.
+
+    Prefers whole real titles over clipped ones: the first pair that
+    fits, else the first single title that fits, and only then a clipped
+    first title. "and" rather than "&" because real titles contain "&"
+    themselves ("Harmony Fest & Taste of Arlington Heights (Friday)" is
+    one event), and a clipped one followed by another "&" read as
+    nonsense in a real build.
+    """
+    def compose(named: list[str]) -> str:
+        more = total - len(named)
+        if len(named) == 1:
+            return f"This weekend: {named[0]}" if more == 0 else f"{named[0]} and {more} more this weekend"
+        lead = f"{named[0]}, {named[1]}" if more else f"{named[0]} and {named[1]}"
+        return f"{lead} and {more} more this weekend" if more else f"{lead} this weekend"
+
+    attempts = [titles[:2]] if len(titles) >= 2 else []
+    attempts += [[title] for title in titles]
+    for named in attempts:
+        subject = compose(named)
+        if len(subject) <= SUBJECT_MAX_LEN:
+            return subject
+    room = SUBJECT_MAX_LEN - (len(compose(titles[:1])) - len(titles[0]))
+    return compose([truncate(titles[0], room)])
+
+
 def build_combined_email_subject_line(sections: list[dict]) -> str:
     """ROADMAP.md Phase 11 #105: one subject line for every region, since
     Buttondown's free-plan list has no per-region segmentation and every
-    subscriber receives the same issue. Names every region that has at
-    least one attendable event this weekend (item 90's split still
-    applies - a school half-day never earns a region its mention here
-    either); falls back to naming every covered region with the same
-    honest "what's coming up" framing as the single-region version if
-    none of them do.
+    subscriber receives the same issue.
+
+    ROADMAP.md item 217: leads with what is happening, not which towns.
+    The town-list version read "This weekend across Arlington Heights,
+    Mount Prospect, and Wheeling" on three sends in a row - identical
+    each week, no reason to open, and it left out every town with
+    nothing dated. Same selection rules as the single-region subject
+    (item 83): attendable only (item 90), never a recurring event (item
+    141), no near-duplicate second title (item 86). The towns move to
+    the preheader (build_combined_email_preheader), so subject and
+    preview never repeat each other.
     """
-    with_events = [s["region_name"] for s in sections if any(e.get("attendable", True) for e in s["weekend_events"])]
-    if with_events:
-        return f"This weekend across {_join_names(with_events)}"
-    return f"This week across {_join_names([s['region_name'] for s in sections])}: what's coming up"
+    attendable = _round_robin_attendable(sections)
+    if not attendable:
+        return f"This week across {_join_names([s['region_name'] for s in sections])}: what's coming up"
+    titles = _pick_preheader_titles(attendable, limit=5)
+    if not titles:
+        with_events = [s["region_name"] for s in sections if any(e.get("attendable", True) for e in s["weekend_events"])]
+        return truncate(f"This weekend across {_join_names(with_events)}", SUBJECT_MAX_LEN)
+    return _fit_subject(titles, len(attendable))
+
+
+def build_combined_email_preheader(sections: list[dict]) -> str:
+    """ROADMAP.md item 217 swaps roles with item 207: once the subject
+    carries the event titles, the preview names every covered town -
+    including the ones with nothing dated this weekend, which the old
+    subject silently dropped - and never repeats a title."""
+    if not any(e.get("attendable", True) for s in sections for e in s["weekend_events"]):
+        return build_email_preheader(0, [])
+    return truncate(f"Across {_join_names([s['region_name'] for s in sections])}", PREHEADER_MAX_LEN)
 
 
 def _pick_evergreen_highlights(evergreen: list[dict], limit: int) -> list[dict]:
@@ -2722,12 +2785,10 @@ def render_combined_email_digest(sections: list[dict], weekend_date_range: str, 
     all_blocks = []
     empty_candidates = []
     house_ad = None
-    all_attendable_events = []
     for s in sections:
         weekend_events = s["weekend_events"]
         attendable_events = [e for e in weekend_events if e.get("attendable", True)]
         informational_events = [e for e in weekend_events if not e.get("attendable", True)]
-        all_attendable_events.extend(attendable_events)
         sponsor = s.get("sponsor")
         is_sponsored = bool(sponsor and sponsor.get("is_active_sponsor"))
         block = {
@@ -2773,7 +2834,7 @@ def render_combined_email_digest(sections: list[dict], weekend_date_range: str, 
         house_ad=house_ad,
         weekend_date_range=weekend_date_range,
         subject_line=build_combined_email_subject_line(sections),
-        preheader=build_email_preheader(len(all_attendable_events), _pick_preheader_titles(all_attendable_events)),
+        preheader=build_combined_email_preheader(sections),
         newsletter=newsletter or {"configured": False},
         preview=preview,
     )

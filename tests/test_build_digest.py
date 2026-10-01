@@ -3187,7 +3187,7 @@ def test_build_combined_email_subject_line_names_regions_with_events():
         {"region_name": "Arlington Heights", "weekend_events": [{"title": "Harvest Fest", "attendable": True}]},
     ]
     subject = build_digest.build_combined_email_subject_line(sections)
-    assert subject == "This weekend across Mount Prospect and Arlington Heights"
+    assert subject == "Oktoberfest and Harvest Fest this weekend"
 
 
 def test_build_combined_email_subject_line_excludes_regions_with_no_attendable_events():
@@ -3196,7 +3196,7 @@ def test_build_combined_email_subject_line_excludes_regions_with_no_attendable_e
         {"region_name": "Arlington Heights", "weekend_events": [{"title": "Half-Day", "attendable": False}]},
     ]
     subject = build_digest.build_combined_email_subject_line(sections)
-    assert subject == "This weekend across Mount Prospect"
+    assert subject == "This weekend: Oktoberfest"
 
 
 def test_build_combined_email_subject_line_falls_back_when_no_region_has_events():
@@ -3303,8 +3303,12 @@ def test_render_combined_email_digest_includes_a_hidden_preheader():
         }
     ]
     html = build_digest.render_combined_email_digest(sections, "Aug 29–30", datetime.now(timezone.utc))
-    assert "1 thing this weekend — incl. Fall Fest" in html
-    assert "Mount Prospect" not in html.split("mso-hide:all;\">")[1].split("</div>")[0]
+    preheader = html.split("mso-hide:all;\">")[1].split("</div>")[0]
+    # ROADMAP.md item 217: the subject now carries the event titles, so
+    # the preview names the towns and never repeats a title.
+    assert preheader.startswith("Across Mount Prospect")
+    assert "Fall Fest" not in preheader
+    assert "<title>This weekend: Fall Fest</title>" in html
 
 
 def test_render_email_digest_lists_weekend_events():
@@ -4157,3 +4161,97 @@ def test_every_region_tagline_names_at_least_two_real_venues():
             f"{region['id']}: tagline {tagline!r} names fewer than 2 of the expected "
             f"real venues {expected}"
         )
+
+
+def _section(name, *events):
+    return {"region_name": name, "weekend_events": [dict({"attendable": True}, **e) for e in events]}
+
+
+def test_combined_subject_leads_with_events_and_counts_the_rest():
+    # ROADMAP.md item 217: three sends in a row were titled with the same
+    # town list. The subject now names what is happening.
+    sections = [
+        _section("Arlington Heights", {"title": "Harmony Fest"}, {"title": "Story Time"}, {"title": "Book Sale"}),
+        _section("Mount Prospect", {"title": "Oktoberfest"}, {"title": "Movie Night"}),
+    ]
+    subject = build_digest.build_combined_email_subject_line(sections)
+    assert subject == "Harmony Fest, Oktoberfest and 3 more this weekend"
+
+
+def test_combined_subject_picks_titles_across_towns_not_all_from_the_first():
+    sections = [
+        _section("Arlington Heights", {"title": "Harmony Fest"}, {"title": "Taste of Arlington Heights"}),
+        _section("Wheeling", {"title": "Pumpkin Patch"}),
+    ]
+    assert "Pumpkin Patch" in build_digest.build_combined_email_subject_line(sections)
+
+
+def test_combined_subject_skips_recurring_and_near_duplicate_titles():
+    sections = [
+        _section("Mount Prospect", {"title": "Farmers Market", "recurring": True}, {"title": "Oktoberfest"}),
+        _section("Wheeling", {"title": "Fall Fest & Oktoberfest"}, {"title": "Movie Night"}),
+    ]
+    # Round-robin order is Farmers Market (recurring, skipped), Fall Fest &
+    # Oktoberfest, Oktoberfest (near-duplicate, skipped), Movie Night.
+    subject = build_digest.build_combined_email_subject_line(sections)
+    assert subject == "Fall Fest & Oktoberfest, Movie Night and 2 more this weekend"
+    assert "Farmers Market" not in subject
+
+
+def test_combined_subject_never_exceeds_the_safe_length():
+    long_a = "The Annual Northwest Suburban Harvest and Heritage Celebration"
+    long_b = "Community Chamber Orchestra Autumn Concert Series"
+    sections = [_section("A", {"title": long_a}), _section("B", {"title": long_b})]
+    subject = build_digest.build_combined_email_subject_line(sections)
+    # Neither title fits whole, so the first is clipped as a last resort.
+    assert len(subject) <= build_digest.SUBJECT_MAX_LEN
+    assert subject.startswith("The Annual Northwest")
+    assert subject.endswith("… and 1 more this weekend")
+
+
+def test_combined_subject_drops_the_second_title_before_clipping_the_first():
+    sections = [
+        _section("A", {"title": "Taste of Arlington Heights (Friday)"}),
+        _section("B", {"title": "Wheeling Community Fall Festival Weekend"}),
+    ]
+    subject = build_digest.build_combined_email_subject_line(sections)
+    assert subject == "Taste of Arlington Heights (Friday) and 1 more this weekend"
+
+
+def test_combined_subject_prefers_a_shorter_whole_title_over_clipping():
+    # The real build that motivated this: one event's own title contains
+    # "&" and is too long to fit whole, and clipping it read as nonsense.
+    sections = [
+        _section("Arlington Heights", {"title": "Harmony Fest & Taste of Arlington Heights (Friday)"}),
+        _section("Wheeling", {"title": "Pumpkin Patch"}, {"title": "Movie Night"}),
+    ]
+    subject = build_digest.build_combined_email_subject_line(sections)
+    assert subject == "Pumpkin Patch and 2 more this weekend"
+    assert "…" not in subject
+
+
+def test_combined_preheader_names_every_town_including_empty_ones():
+    sections = [
+        _section("Arlington Heights", {"title": "Harmony Fest"}),
+        _section("Des Plaines"),
+        _section("Palatine"),
+    ]
+    preheader = build_digest.build_combined_email_preheader(sections)
+    assert preheader == "Across Arlington Heights, Des Plaines, and Palatine"
+    assert "Harmony Fest" not in preheader
+
+
+def test_combined_preheader_keeps_the_honest_empty_state():
+    sections = [_section("Des Plaines"), _section("Palatine")]
+    assert build_digest.build_combined_email_preheader(sections) == build_digest.build_email_preheader(0, [])
+
+
+def test_combined_subject_and_preheader_never_share_an_event_title():
+    sections = [
+        _section("Arlington Heights", {"title": "Harmony Fest"}, {"title": "Story Time"}),
+        _section("Mount Prospect", {"title": "Oktoberfest"}),
+    ]
+    subject = build_digest.build_combined_email_subject_line(sections)
+    preheader = build_digest.build_combined_email_preheader(sections)
+    for title in ("Harmony Fest", "Story Time", "Oktoberfest"):
+        assert not (title in subject and title in preheader)
