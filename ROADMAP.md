@@ -12056,6 +12056,35 @@ but not the questions the probes were asked.
      That would be the point to ask the organisation for a feed
      (item 152) rather than keep probing.
 
+     **Round 3 results, 2026-10-01 (`fe80abd`): two platforms
+     identified.**
+     - **Des Plaines' calendar is Communico, not LibCal.**
+       `calendar.dppl.org` carries `<meta name="apiserver"
+       content="https://api.communico.co">`, loads assets from
+       `cdn.libnet.info`, and its footer says "Communico". This is the
+       platform behind the Mount Prospect and Indian Trails library
+       sources already in config (`*.libnet.info/feeds?data=…`), so
+       item 182's LibCal guess was wrong. The swap that took Indian
+       Trails from 14 to 247 items should apply here too.
+     - **All three districts run Finalsite.** Each calendar page says
+       "Powered by Finalsite" and serves its icon from
+       `resources.finalsite.net`. That confirms the Blackboard
+       `icalfeed.ashx` feeds were retired with the old CMS.
+     - **Palatine is still unidentified.** Its only fingerprint match
+       was a BiblioCommons *catalog* link, which says nothing about the
+       events module.
+
+     **Round 4 (queued 2026-10-01):** probes Communico's RSS endpoint on
+     DPPL's custom domain and on a guessed `dppl.libnet.info` host. Both
+     use the generic filter blob the two working libnet feeds use (all
+     locations, ages and types, 30 days). It also looks for Finalsite
+     `data-calendar-ids` and `calendar_ids[]=` markup on the three
+     district pages (Finalsite subscribes via
+     `/fs/calendar-manager/events.ics?calendar_ids[]=N`), and checks
+     Palatine for a CMS `generator` tag, events-module names, and any
+     `/events/feed|rss|ical|export` path. If DPPL's feed returns
+     `<item>`s, item 213's Des Plaines half is a one-line source change.
+
 #### P2 (new)
 
 216. **Render a weekly "this weekend in [town]" share card per region.**
