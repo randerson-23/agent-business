@@ -14,6 +14,7 @@ saw. Acting on an answer is a normal reviewed PR.
 from __future__ import annotations
 
 import json
+import re
 import sys
 from datetime import datetime, timezone
 from html.parser import HTMLParser
@@ -33,6 +34,8 @@ RESULTS_PATH = ROOT / "data" / "url_probes.json"
 CALENDAR_HREF_MARKERS = (".ics", "ical", "webcal:", "rss", "feed", "icalfeed")
 MAX_LINKS = 40
 MAX_READ_BYTES = 2_000_000
+MAX_MATCHES_PER_PATTERN = 20
+CONTEXT_CHARS = 60
 
 
 class _LinkCollector(HTMLParser):
@@ -93,7 +96,53 @@ def extract_page_signals(html: str, base_url: str) -> dict:
     }
 
 
-def probe(entry: dict, session=requests, now: datetime | None = None) -> dict:
+def find_pattern_matches(text: str, patterns: list[str]) -> dict:
+    """Each regex's distinct matches in the raw body, with a little context.
+
+    Item 215: LibCal and LibraryCalendar build their subscribe links in
+    JavaScript, so the IDs a feed URL needs sit in scripts and data
+    attributes, not in any <a href>. Matching the raw text finds them.
+    """
+    found = {}
+    for pattern in patterns:
+        hits, seen = [], set()
+        for m in re.finditer(pattern, text):
+            if m.group(0) in seen:
+                continue
+            seen.add(m.group(0))
+            context = text[max(0, m.start() - CONTEXT_CHARS): m.end() + CONTEXT_CHARS]
+            hits.append({"match": m.group(0), "context": " ".join(context.split())})
+            if len(hits) >= MAX_MATCHES_PER_PATTERN:
+                break
+        found[pattern] = hits
+    return found
+
+
+def find_follow_url(html: str, base_url: str, pattern: str) -> str | None:
+    """First link whose href matches `pattern`, other than the page itself."""
+    parser = _LinkCollector()
+    try:
+        parser.feed(html)
+    except Exception:
+        pass
+    here = base_url.split("#")[0].rstrip("/")
+    for href in parser.hrefs:
+        if href.startswith(("#", "mailto:", "tel:", "javascript:")) or not re.search(pattern, href):
+            continue
+        absolute = urljoin(base_url, href).split("#")[0]
+        if absolute.rstrip("/") != here:
+            return absolute
+    return None
+
+
+def _decode(resp, body: bytes, content_type: str) -> str:
+    # requests assumes ISO-8859-1 for text/* without a charset, which
+    # garbles UTF-8 pages (an em dash became "â€”" in a real run).
+    encoding = resp.encoding if "charset=" in content_type.lower() and resp.encoding else "utf-8"
+    return body.decode(encoding, errors="replace")
+
+
+def probe(entry: dict, session=requests, now: datetime | None = None, allow_follow: bool = True) -> dict:
     url = entry["url"]
     result = {
         "url": url,
@@ -115,19 +164,35 @@ def probe(entry: dict, session=requests, now: datetime | None = None) -> dict:
         "content_type": content_type,
         "bytes": len(resp.content),
     })
-    if "html" in content_type.lower() or body.lstrip()[:15].lower().startswith((b"<!doctype html", b"<html")):
-        # requests assumes ISO-8859-1 for text/* without a charset, which
-        # garbles UTF-8 pages (an em dash became "â€”" in a real run).
-        encoding = resp.encoding if "charset=" in content_type.lower() and resp.encoding else "utf-8"
-        result.update(extract_page_signals(body.decode(encoding, errors="replace"), resp.url))
+    text = _decode(resp, body, content_type)
+    is_html = "html" in content_type.lower() or body.lstrip()[:15].lower().startswith((b"<!doctype html", b"<html"))
+    if is_html:
+        result.update(extract_page_signals(text, resp.url))
     elif body.lstrip().startswith(b"BEGIN:VCALENDAR"):
         result["ics_event_count"] = body.count(b"BEGIN:VEVENT")
+
+    if entry.get("patterns"):
+        result["pattern_matches"] = find_pattern_matches(text, entry["patterns"])
+
+    if allow_follow and is_html and entry.get("follow"):
+        target = find_follow_url(text, resp.url, entry["follow"])
+        if target is None:
+            result["followed"] = None
+        else:
+            # One level only: the followed page gets the same patterns but
+            # never follows further, so a probe stays at most two requests.
+            sub = {"url": target, "patterns": entry.get("patterns", [])}
+            result["followed"] = probe(sub, session=session, now=now, allow_follow=False)
     return result
 
 
 def load_probes(path: Path = PROBES_PATH) -> list[dict]:
     data = yaml.safe_load(path.read_text()) or {}
-    return [p for p in data.get("probes", []) if p.get("url")]
+    probes = [p for p in data.get("probes", []) if p.get("url")]
+    for p in probes:
+        for pattern in p.get("patterns", []) + ([p["follow"]] if p.get("follow") else []):
+            re.compile(pattern)  # fail the run loudly on a typo, before any request
+    return probes
 
 
 def main() -> int:
@@ -136,7 +201,9 @@ def main() -> int:
     RESULTS_PATH.write_text(json.dumps({"results": results}, indent=2, ensure_ascii=False) + "\n")
     for r in results:
         outcome = r.get("error") or r.get("status")
-        print(f"{outcome}\t{r['url']}\t{len(r.get('feed_links', []))} feed / {len(r.get('calendar_links', []))} calendar links")
+        matches = sum(len(v) for v in (r.get("pattern_matches") or {}).values())
+        followed = (r.get("followed") or {}).get("url", "-")
+        print(f"{outcome}\t{r['url']}\t{len(r.get('feed_links', []))} feed / {len(r.get('calendar_links', []))} calendar links / {matches} pattern hits / followed {followed}")
     return 0
 
 

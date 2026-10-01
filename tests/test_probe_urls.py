@@ -8,8 +8,11 @@ import yaml
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "scripts"))
 from fetchers import REQUEST_HEADERS  # noqa: E402
 from probe_urls import (  # noqa: E402
+    MAX_MATCHES_PER_PATTERN,
     PROBES_PATH,
     extract_page_signals,
+    find_follow_url,
+    find_pattern_matches,
     load_probes,
     normalize_url,
     probe,
@@ -28,14 +31,14 @@ class _Resp:
 
 
 class _Session:
-    def __init__(self, resp=None, exc=None):
-        self.resp, self.exc, self.calls = resp, exc, []
+    def __init__(self, resp=None, exc=None, by_url=None):
+        self.resp, self.exc, self.by_url, self.calls = resp, exc, by_url or {}, []
 
     def get(self, url, **kwargs):
         self.calls.append((url, kwargs))
         if self.exc:
             raise self.exc
-        return self.resp
+        return self.by_url.get(url, self.resp)
 
 
 def test_extract_page_signals_finds_feeds_calendar_links_and_title():
@@ -109,3 +112,47 @@ def test_load_probes_skips_entries_without_a_url(tmp_path):
     path = tmp_path / "probes.yaml"
     path.write_text(yaml.safe_dump({"probes": [{"url": "https://a.org/", "item": 1, "purpose": "x"}, {"item": 2}]}))
     assert [p["url"] for p in load_probes(path)] == ["https://a.org/"]
+
+
+def test_pattern_matches_find_ids_inside_scripts_with_context_and_dedupe():
+    html = '<script>var cal = {"url": "/calendar?cid=14131&t=d"}; load("/calendar?cid=14131");</script>'
+    found = find_pattern_matches(html, [r"cid=\d+", r"nothing_here"])
+    assert [h["match"] for h in found[r"cid=\d+"]] == ["cid=14131"]
+    assert '"/calendar?cid=14131&t=d"' in found[r"cid=\d+"][0]["context"]
+    assert found["nothing_here"] == []
+
+
+def test_pattern_matches_are_capped_per_pattern():
+    text = " ".join(f"MIID={n}" for n in range(MAX_MATCHES_PER_PATTERN + 5))
+    assert len(find_pattern_matches(text, [r"MIID=\d+"])[r"MIID=\d+"]) == MAX_MATCHES_PER_PATTERN
+
+
+def test_follow_url_resolves_relative_links_and_skips_the_page_itself():
+    html = """<a href="#calendar">skip</a><a href="https://x.org/">Calendar home</a>
+    <a href="/Page/2#calendar-top">District Calendar</a>"""
+    assert find_follow_url(html, "https://x.org/", r"(?i)calendar") == "https://x.org/Page/2"
+    assert find_follow_url(html, "https://x.org/", r"nomatch") is None
+
+
+def test_probe_follows_one_level_with_the_same_patterns_and_stops():
+    home = _Resp(b'<html><a href="/cal">Calendar</a></html>', url="https://d.org/")
+    cal = _Resp(b'<html><a href="/cal2">Calendar 2</a><script>feed("icalfeed.ashx?MIID=569")</script></html>', url="https://d.org/cal")
+    session = _Session(by_url={"https://d.org/": home, "https://d.org/cal": cal})
+    entry = {"url": "https://d.org/", "item": 198, "purpose": "p", "follow": "(?i)cal", "patterns": [r"MIID=\d+"]}
+    result = probe(entry, session=session, now=NOW)
+    assert result["pattern_matches"] == {r"MIID=\d+": []}
+    assert result["followed"]["url"] == "https://d.org/cal"
+    assert [h["match"] for h in result["followed"]["pattern_matches"][r"MIID=\d+"]] == ["MIID=569"]
+    assert "followed" not in result["followed"]
+    assert [c[0] for c in session.calls] == ["https://d.org/", "https://d.org/cal"]
+
+
+def test_load_probes_rejects_a_bad_regex_before_any_request(tmp_path):
+    path = tmp_path / "probes.yaml"
+    path.write_text(yaml.safe_dump({"probes": [{"url": "https://a.org/", "item": 1, "purpose": "x", "patterns": ["cid=(\\d+"]}]}))
+    try:
+        load_probes(path)
+    except Exception as exc:
+        assert "unterminated" in str(exc) or "missing" in str(exc)
+    else:
+        raise AssertionError("a malformed pattern should fail load_probes")
