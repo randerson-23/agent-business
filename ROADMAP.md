@@ -12051,6 +12051,147 @@ content and event tagging reach nearby, interested people; a concrete
 reason to follow outperforms a generic ask).
 
 
+#### Research pass 2026-10-01 (fifty-third pass)
+
+**The build loop did not ship yesterday, and is blocked mid-commit.**
+No build-loop PR has merged since #267 on 2026-09-29. The build
+session's own status reads *"Bash outage blocking commit; 4 files
+staged, ready to test+push"* for **item 215**. That is a tool outage in
+its environment, not a problem with the item. It should resume on its
+next daily firing (13:51 UTC). Staged-but-uncommitted work can be lost
+if its container is reclaimed, so if item 215 is not on `main` after
+today's run, it will need redoing from the item text. The third weekly
+send went out on schedule (2026-10-01 01:33 UTC, `pre_send_subscriber_count:
+1`).
+
+| Angle | Finding | Consequence |
+|---|---|---|
+| **The subject line, three weeks running** | All three scheduled sends were titled *"This weekend across Arlington Heights, Mount Prospect, and Wheeling"*. The combined builder (`build_combined_email_subject_line`, item 105) names every town with events, so Des Plaines and Palatine have been absent from the subject every week | A town list carries no reason to open. For the two towns it omits, it tells their readers the issue is not for them (item 217) |
+| **Specific vs generic subject lines (design/UX)** | 2026 data: specific, personalised subject lines reach **~46% opens vs 18–35%** for generic ones. The shared pattern is a concrete, checkable claim, so readers know what they are getting | Item 83 already settled a specific format for *single-region* subjects (*"This weekend in Mount Prospect: X and Y"*). The combined email never adopted it (item 217) |
+| **Trick-or-treat hours, all five towns** | Every region's `trick_or_treat.hours` is still **`null`**, 30 days before the page's one day of peak demand. Search found Mount Prospect's **standing village hours, 3–8 p.m. on October 31**, and a **Downtown Trick-or-Treat on Wednesday, October 28, 2026, 4–6 p.m.** (the weekday matches 2026) | The page item 101 built will meet its peak with nothing in it unless the hours go in now (item 218) |
+| **Search results recycle old years** | Of four tree-lighting dates search returned "for 2026", **three carry 2025 weekdays**: Palatine "Saturday, November 22" (Sunday in 2026), Mount Prospect "Wednesday, November 26" (Thursday in 2026), Des Plaines "Friday, December 5" (Saturday in 2026). A Mount Prospect "Saturday, October 5" trick-or-treat trail is a **2024** date. Only **Arlington Heights, Friday, November 27, 2026**, from `ahpd.org/event/holiday-tree-lighting-2026/`, checks out. `config/regions/mount-prospect-60056.yaml`'s own example comment says *"Friday, October 31"*; October 31, 2026 is a **Saturday** | `SEASONAL_CALENDAR.md` already warns about this for Restaurant Week. It happens routinely, and the weekday is a free, mechanical check for it (item 219) |
+| **Fall farms and pumpkin patches** | Macaroni KID, Sun-Times, Time Out, Do312, Patch (Palatine) and others all publish fall farm guides. The big nearby farms are **Goebbert's (Pingree Grove), All Seasons (Woodstock) and Jonamac (Malta)**, all roughly 20–50 miles out | **Not filed.** A "drive an hour" guide contradicts *within ten miles*, the season ends 2026-10-31, and the in-radius fall content already exists (`fall-family-guide`). Recorded so no future pass files it |
+
+#### P1 (new)
+
+217. **Lead the combined subject line with events, not a town list.**
+     `build_combined_email_subject_line()` returns *"This weekend across
+     {towns}"*. Three weekly sends in a row have used exactly *"This
+     weekend across Arlington Heights, Mount Prospect, and Wheeling"*.
+     That is the same every week, it says nothing about what is
+     happening, and it leaves out the two towns item 213 is still
+     trying to fill.
+
+     Item 83 already settled the right shape for single-region issues:
+     *"This weekend in Mount Prospect: X and Y"*. The research backs it:
+     specific, checkable subject lines reach about 46% opens against
+     18–35% for generic ones.
+
+     What to build:
+
+     - **Subject:** the two or three most distinctive attendable events
+       across all regions, then the count. For example, *"Harmony Fest,
+       a farmers market & 12 more this weekend"*. Reuse item 83's
+       dedupe (the "Oktoberfest and Fall Festival & Oktoberfest"
+       stutter fix) and keep it under about 60 characters.
+     - **Swap roles with the preheader (item 207).** Item 207 put events
+       in the preheader *because* the subject already listed towns. Once
+       the subject carries the events, the preheader should carry the
+       towns, framed so no town is left out: *"Across Arlington Heights,
+       Des Plaines, Mount Prospect, Palatine & Wheeling."* Update both
+       builders together so they never repeat each other.
+     - **Tests:** subject ≤ 60 characters, no duplicate event words, and
+       subject and preheader share no event title.
+
+     Measurement: item 187's metrics will show whether it helped once
+     there is more than one subscriber. Until then, it is the right
+     default on the evidence.
+
+218. **Fill in trick-or-treat hours now. The page peaks in 30 days and
+     every town is still `null`.** Item 101's `/trick-or-treat/` page
+     shows an honest "not yet posted" state while `hours` is `null`.
+     That was the right design in September. On October 1, with the page
+     reachable from every region's footer since the
+     `is_trick_or_treat_season()` fix, it means the page's one big day
+     arrives empty unless someone fills it in.
+
+     Found this pass, with dates checked against the 2026 calendar:
+
+     - **Mount Prospect:** village-wide trick-or-treat hours of **3:00–8:00
+       p.m. on October 31**, the Village's standing hours per its own
+       calendar entry (`mountprospect.org/…/Event/10985`). It is not
+       2026-dated, so record it with that caveat until the Village's
+       2026 post confirms it. Also, **Downtown Trick-or-Treat:
+       Wednesday, October 28, 2026, 4:00–6:00 p.m.**, where the weekday
+       matches 2026. That is a dated event worth listing beside the
+       hours.
+     - **Fix the example in the config comment.** It suggests
+       *"3:00–7:00 PM, Friday, October 31"*, but October 31, 2026 is a
+       **Saturday**. Anyone copying that format would publish a wrong
+       weekday.
+     - **The other four towns:** add their village news pages to item
+       215's probe list with `patterns: ['(?i)trick.or.treat[^<]{0,120}']`
+       so the probe captures the announcement text as it posts. A
+       research pass can also search again, with item 219's weekday
+       check applied.
+
+     Zero owner time. The build loop fills in config values, and the
+     page and Event schema update on the next build.
+
+#### P2 (new)
+
+219. **Reject any date whose weekday doesn't match its year.** This pass
+     caught search results presenting **2025 dates as 2026** three times
+     out of four, plus a **2024** date, purely by checking the weekday.
+     The repo's own config comment carries a wrong weekday too.
+     `SEASONAL_CALENDAR.md` already describes this failure mode in its
+     Restaurant Week note. The weekday check is the cheap, mechanical
+     way to catch it before it ships.
+
+     What to build:
+
+     - **A test** that scans `config/**/*.yaml`, `SEASONAL_CALENDAR.md`
+       and the guide templates for strings like `<Weekday>, <Month>
+       <day>`, takes the year from the same string or line (defaulting
+       to the current season's year), and fails on any mismatch. It
+       would have flagged *"Friday, October 31"* today.
+     - **A rule in `SEASONAL_CALENDAR.md`**: a date found by search only
+       counts if it comes from a page dated for the target year *and* its
+       weekday matches that year. Otherwise it is "unverified", whatever
+       the search snippet says.
+
+     Small, permanent, and it protects the one claim this business
+     defends against every competitor: accurate, current local
+     information.
+
+220. **Holiday lights: one date confirmed, three to verify, start by late
+     October.** `SEASONAL_CALENDAR.md`'s holiday row says to start by
+     late October. Research for it now, with item 219's check applied:
+
+     | Town | Status |
+     |---|---|
+     | **Arlington Heights** | ✅ **Friday, November 27, 2026, 4:30–6:30 p.m.**: pre-show 4:30, remarks 5:00, lighting 5:15, plus family activities at Harmony Park. Source: `ahpd.org/event/holiday-tree-lighting-2026/` |
+     | Palatine | ⚠️ Search gave "Saturday, November 22", a **2025** date |
+     | Mount Prospect | ⚠️ Search gave "Wednesday, November 26", a **2025** date |
+     | Des Plaines | ⚠️ Search gave "Friday, December 5", a **2025** date |
+     | Wheeling | No result |
+
+     Build the page (same shape as `/trick-or-treat/`, as the calendar
+     row specifies) with Arlington Heights confirmed and the others in
+     the honest "not yet posted" state. Add the four unverified towns'
+     event pages to item 215's probe list so their 2026 dates are
+     captured when posted. Do not publish any date from the ⚠️ rows.
+
+Competitors reviewed this pass: **subject-line specificity** as a
+design/UX angle (specific subjects ~46% vs 18–35% opens for generic),
+**local holiday tree-lighting and trick-or-treat listings** (search
+results routinely present prior years' dates as current, which a
+weekday check exposes; one 2026 date confirmed), and **fall farm guides**
+(Macaroni KID, Sun-Times, Time Out, Do312, Patch; the major farms are
+20–50 miles out, so this is deliberately not filed for a site promising
+*within ten miles*).
+
+
 ## Working agreements for autonomous iteration
 
 - Cadence is once a day at 13:51 UTC, about two hours after the daily
