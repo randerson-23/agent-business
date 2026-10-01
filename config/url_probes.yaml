@@ -17,28 +17,28 @@
 #             probed too (same patterns, one level deep, never further).
 
 probes:
-  # Round 6 (2026-10-01). Round 5 found D211's Finalsite iCal (200
-  # text/calendar, 20 events; now the configured source) and captured CCSD
-  # 15's two full calendar-ID lists. D25's iCal for 361,349,360 was valid but
-  # empty (0 events) - recorded in ROADMAP.md, not re-probed this round.
+  # Round 7 (2026-10-01). Round 6 found CCSD 15's Finalsite iCal (8 IDs: 64
+  # events; now the configured source) and that mountprospect.org moved to
+  # the Revize CMS and is reachable again (200, not a bot wall). Its news
+  # is at /news/index.php and its calendar at /calendar/index.php, but the
+  # Revize calendar is JavaScript-rendered, so find the link shape of a
+  # real news item and any calendar data/feed endpoint before swapping.
 
-  # Item 198: CCSD 15's Finalsite iCal, once per calendar element on its page.
-  - url: https://www.ccsd15.net/fs/calendar-manager/events.ics?calendar_ids[]=70&calendar_ids[]=21&calendar_ids[]=40&calendar_ids[]=45&calendar_ids[]=22&calendar_ids[]=41&calendar_ids[]=68&calendar_ids[]=12
-    item: 198
-    purpose: CCSD 15 - Finalsite iCal for the first calendar element's 8 IDs (candidate source)
-  - url: https://www.ccsd15.net/fs/calendar-manager/events.ics?calendar_ids[]=67&calendar_ids[]=45&calendar_ids[]=68&calendar_ids[]=11&calendar_ids[]=66&calendar_ids[]=15&calendar_ids[]=14&calendar_ids[]=39&calendar_ids[]=38&calendar_ids[]=27&calendar_ids[]=17&calendar_ids[]=10&calendar_ids[]=28&calendar_ids[]=21&calendar_ids[]=26&calendar_ids[]=19&calendar_ids[]=24&calendar_ids[]=40&calendar_ids[]=37&calendar_ids[]=36&calendar_ids[]=35&calendar_ids[]=34&calendar_ids[]=22&calendar_ids[]=33&calendar_ids[]=32&calendar_ids[]=25&calendar_ids[]=31&calendar_ids[]=41&calendar_ids[]=9&calendar_ids[]=29&calendar_ids[]=20&calendar_ids[]=12
-    item: 198
-    purpose: CCSD 15 - Finalsite iCal for the second calendar element's 32 IDs (candidate source)
-
-  # Item 192 follow-up: both Village of Mount Prospect sources returned 404
-  # (not 403) in PR #272's CI build. Find where news and the calendar moved.
-  - url: https://www.mountprospect.org/
+  # Item 192: Village of Mount Prospect news - what does one article link look like?
+  - url: https://www.mountprospect.org/news/index.php
     item: 192
-    purpose: Village of Mount Prospect home page - current news and calendar links (old paths now 404)
-    follow: '(?i)calendar'
+    purpose: Village news index - href shape of individual news items (for detail_link_pattern) and any RSS
     patterns:
-      - '(?i)href="[^"]*(?:news|calendar|events?|notify|rss)[^"]*"'
-      - '(?i)\b(?:civicplus|civicengage|granicus|revize|govstack|opencities|drupal|wordpress)\b'
+      - '(?i)href="[^"]*news[^"]*(?:\?|/)[^"]*"'
+      - '(?i)href="[^"]*(?:rss|feed)[^"]*"'
+  # Item 192: Village calendar - Revize's calendar loads events from a data endpoint.
+  - url: https://www.mountprospect.org/calendar/index.php
+    item: 192
+    purpose: Village calendar - Revize calendar data/feed/iCal endpoint
+    patterns:
+      - '(?i)[^"''\s<=]*\.ics\b[^"''\s<]*'
+      - '(?i)[^"''\s<=(]*(?:calendar_data|getEvents|events?\.(?:json|php)|revize_calendar/[^"''\s<]*\.php|webspace[^"''\s<]*)[^"''\s<)]*'
+      - '(?i)(?:url|source|events)\s*:\s*["''][^"'']+["'']'
 
   # Answered and removed (see ROADMAP.md items 212 and 215):
   # - The five 403 sources: bot walls (Access Denied / Cloudflare) from a runner too.
@@ -50,3 +50,5 @@ probes:
   # - adc.d211.org: Finalsite calendar 27; its iCal is now the configured source (round 5).
   # - palatinelibrary.org/events/upcoming: Drupal 11 + LibraryCalendar, but no feed
   #   path in five rounds of patterns - next step is asking the library (item 152).
+  # - www.ccsd15.net: Finalsite; the 8-ID calendar iCal is now the configured source (round 6).
+  # - www.mountprospect.org/: moved to Revize, reachable (200); news and calendar paths found (round 6).
