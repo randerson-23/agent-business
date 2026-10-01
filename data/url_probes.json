@@ -2,102 +2,180 @@
   "results": [
     {
       "url": "https://calendar.dppl.org/",
-      "purpose": "Des Plaines library - find the Springshare LibCal feed link",
+      "purpose": "Des Plaines library (Springshare LibCal) - the calendar cid its feed URL needs",
       "item": 182,
-      "probed_at": "2026-09-29T14:11:43+00:00",
+      "probed_at": "2026-10-01T13:59:40+00:00",
       "status": 200,
       "final_url": "https://calendar.dppl.org/",
       "content_type": "text/html; charset=UTF-8",
       "bytes": 55744,
       "title": "landing page - Des Plaines",
       "feed_links": [],
-      "calendar_links": []
-    },
-    {
-      "url": "https://www.dppl.org/",
-      "purpose": "Des Plaines library home page - alternate link to the events feed",
-      "item": 182,
-      "probed_at": "2026-09-29T14:11:44+00:00",
-      "status": 200,
-      "final_url": "https://www.dppl.org/",
-      "content_type": "text/html; charset=UTF-8",
-      "bytes": 18510,
-      "title": "Des Plaines Public Library",
-      "feed_links": [
-        {
-          "href": "https://www.dppl.org/blog/rss",
-          "type": "application/rss+xml",
-          "title": "Des Plaines Public Library Blog"
-        }
-      ],
-      "calendar_links": []
+      "calendar_links": [],
+      "pattern_matches": {
+        "cid=\\d+": [],
+        "ical_subscribe": [],
+        "rss\\.php": [],
+        "(?i)[a-z/._-]*ical[a-z/._?=&-]*": [
+          {
+            "match": "vertical-align",
+            "context": "ding: 0; border: 0; font: inherit; font-size: 100%; vertical-align: baseline; } html, body.embeded{ line-height: 1; heig"
+          }
+        ]
+      }
     },
     {
       "url": "https://www.palatinelibrary.org/events/upcoming",
-      "purpose": "Palatine library - find the LibraryCalendar (lc_calendar_feed) iCal/RSS link",
+      "purpose": "Palatine library (LibraryCalendar) - does it expose an iCal/RSS wrapper format?",
       "item": 182,
-      "probed_at": "2026-09-29T14:11:44+00:00",
+      "probed_at": "2026-10-01T13:59:40+00:00",
       "status": 200,
       "final_url": "https://www.palatinelibrary.org/events/upcoming",
       "content_type": "text/html; charset=utf-8",
-      "bytes": 149856,
+      "bytes": 149609,
       "title": "Upcoming Events | Palatine Library District",
       "feed_links": [],
-      "calendar_links": []
+      "calendar_links": [],
+      "pattern_matches": {
+        "lc_calendar_feed": [],
+        "_wrapper_format=\\w+": [],
+        "[\\w/.-]*\\.ics\\b": [],
+        "(?i)[a-z/._-]*ical[a-z/._?=&-]*": [
+          {
+            "match": "canonical",
+            "context": "eo.position\" content=\"42.1219889,-88.0390033\" /> <link rel=\"canonical\" href=\"https://www.palatinelibrary.org/events/upcoming\" />"
+          }
+        ]
+      }
     },
     {
       "url": "https://www.sd25.org/",
-      "purpose": "D25 - current calendar page / icalfeed.ashx MIID",
+      "purpose": "D25 - current calendar module ID (MIID) for icalfeed.ashx",
       "item": 198,
-      "probed_at": "2026-09-29T14:11:45+00:00",
+      "probed_at": "2026-10-01T13:59:41+00:00",
       "status": 200,
       "final_url": "https://www.sd25.org/",
       "content_type": "text/html; charset=utf-8",
-      "bytes": 98637,
+      "bytes": 98378,
       "title": "Home - Arlington Heights School District 25",
       "feed_links": [],
       "calendar_links": [
         "https://www.sd25.org/departments/student-learning/curriculum-by-subjects/career-technical-education",
         "https://www.sd25.org/departments/student-learning/curriculum-by-subjects/physical-education"
-      ]
+      ],
+      "pattern_matches": {
+        "MIID=\\d+": [],
+        "ModuleInstanceID=\\d+": [],
+        "(?i)icalfeed[^\"\\s]*": []
+      },
+      "followed": {
+        "url": "https://www.sd25.org/calendar-73",
+        "purpose": "",
+        "item": null,
+        "probed_at": "2026-10-01T13:59:42+00:00",
+        "status": 200,
+        "final_url": "https://www.sd25.org/calendar-73",
+        "content_type": "text/html; charset=utf-8",
+        "bytes": 95236,
+        "title": "Calendar",
+        "feed_links": [],
+        "calendar_links": [
+          "https://www.sd25.org/departments/student-learning/curriculum-by-subjects/career-technical-education",
+          "https://www.sd25.org/departments/student-learning/curriculum-by-subjects/physical-education"
+        ],
+        "pattern_matches": {
+          "MIID=\\d+": [],
+          "ModuleInstanceID=\\d+": [],
+          "(?i)icalfeed[^\"\\s]*": []
+        }
+      }
     },
     {
       "url": "https://www.ccsd15.net/",
-      "purpose": "CCSD 15 - current calendar page / icalfeed.ashx MIID",
+      "purpose": "CCSD 15 - current calendar module ID (MIID) for icalfeed.ashx",
       "item": 198,
-      "probed_at": "2026-09-29T14:11:45+00:00",
+      "probed_at": "2026-10-01T13:59:42+00:00",
       "status": 200,
       "final_url": "https://www.ccsd15.net/",
       "content_type": "text/html; charset=utf-8",
-      "bytes": 166572,
+      "bytes": 166617,
       "title": "Home - Community Consolidated School District 15",
       "feed_links": [],
       "calendar_links": [
         "https://www.ccsd15.net/community/feed15"
-      ]
+      ],
+      "pattern_matches": {
+        "MIID=\\d+": [],
+        "ModuleInstanceID=\\d+": [],
+        "(?i)icalfeed[^\"\\s]*": []
+      },
+      "followed": {
+        "url": "https://www.ccsd15.net/our-district/calendars",
+        "purpose": "",
+        "item": null,
+        "probed_at": "2026-10-01T13:59:42+00:00",
+        "status": 200,
+        "final_url": "https://www.ccsd15.net/our-district/calendars",
+        "content_type": "text/html; charset=utf-8",
+        "bytes": 354311,
+        "title": "Calendars - Community Consolidated School District 15",
+        "feed_links": [],
+        "calendar_links": [
+          "https://www.ccsd15.net/community/feed15",
+          "https://www.ccsd15.net/our-district/about-district-15/feed15"
+        ],
+        "pattern_matches": {
+          "MIID=\\d+": [],
+          "ModuleInstanceID=\\d+": [],
+          "(?i)icalfeed[^\"\\s]*": []
+        }
+      }
     },
     {
       "url": "https://adc.d211.org/",
       "purpose": "D211 - current calendar RSS ModuleInstanceID",
       "item": 198,
-      "probed_at": "2026-09-29T14:11:48+00:00",
+      "probed_at": "2026-10-01T13:59:48+00:00",
       "status": 200,
       "final_url": "https://adc.d211.org/",
       "content_type": "text/html; charset=utf-8",
-      "bytes": 70994,
+      "bytes": 69148,
       "title": "Home - Township High School District 211",
       "feed_links": [],
-      "calendar_links": []
+      "calendar_links": [],
+      "pattern_matches": {
+        "MIID=\\d+": [],
+        "ModuleInstanceID=\\d+": [],
+        "(?i)icalfeed[^\"\\s]*": []
+      },
+      "followed": {
+        "url": "https://adc.d211.org/district-info/info/calendars",
+        "purpose": "",
+        "item": null,
+        "probed_at": "2026-10-01T13:59:48+00:00",
+        "status": 200,
+        "final_url": "https://adc.d211.org/district-info/info/calendars",
+        "content_type": "text/html; charset=utf-8",
+        "bytes": 71982,
+        "title": "Calendars",
+        "feed_links": [],
+        "calendar_links": [],
+        "pattern_matches": {
+          "MIID=\\d+": [],
+          "ModuleInstanceID=\\d+": [],
+          "(?i)icalfeed[^\"\\s]*": []
+        }
+      }
     },
     {
       "url": "https://www.mppd.org/sponsorship/",
       "purpose": "Mount Prospect Park District sponsorship programme - package prices",
       "item": 212,
-      "probed_at": "2026-09-29T14:11:48+00:00",
+      "probed_at": "2026-10-01T13:59:49+00:00",
       "status": 200,
       "final_url": "https://www.mppd.org/sponsorship/",
       "content_type": "text/html; charset=UTF-8",
-      "bytes": 92988,
+      "bytes": 92990,
       "title": "Sponsorship - Mt. Prospect Park District",
       "feed_links": [
         {
@@ -131,20 +209,10 @@
           "title": ""
         }
       ],
-      "calendar_links": []
-    },
-    {
-      "url": "https://www.mppd.org/events/?ical=1",
-      "purpose": "Mount Prospect Park District's advertised iCal feed - candidate source swap",
-      "item": 181,
-      "probed_at": "2026-09-29T14:11:48+00:00",
-      "status": 200,
-      "final_url": "https://www.mppd.org/events/?ical=1",
-      "content_type": "text/html; charset=UTF-8",
-      "bytes": 0,
-      "title": "",
-      "feed_links": [],
-      "calendar_links": []
+      "calendar_links": [],
+      "pattern_matches": {
+        "\\$\\s?\\d[\\d,]*(?:\\.\\d\\d)?": []
+      }
     }
   ]
 }
