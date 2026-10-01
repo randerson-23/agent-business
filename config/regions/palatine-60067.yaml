@@ -114,23 +114,15 @@ sources:
 
   - name: "Community Consolidated School District 15 — Calendar"
     type: ics
-    # ROADMAP.md Phase 11 #32 follow-up (fourteenth research pass,
-    # 2026-08-30): same "school calendars as a data source" treatment
-    # already confirmed working for Mount Prospect's District 57, and
-    # just added for Arlington Heights' District 25 (see those configs'
-    # comments) - found via web search of ccsd15.net's own "ICal Feed"
-    # page, a real indexed page at this exact URL, same
-    # `site/handlers/icalfeed.ashx?MIID=<id>` pattern D25 uses (same CMS
-    # platform, not a copy-guess - each MIID was found independently).
-    # CONFIRMED BROKEN 2026-09-15 against the real build (run
-    # 34983302071): 404. Same failure mode as D25's own source in
-    # Arlington Heights' config this same run - a real, indexed URL
-    # isn't the same as a live one; the module instance ID has
-    # apparently rotated or expired since being indexed, which no amount
-    # of re-searching turned up a fix for (two follow-up WebSearch passes
-    # both surfaced this identical, still-broken URL). Left enabled since
-    # it fails soft regardless.
-    url: "webcal://www.ccsd15.net/site/handlers/icalfeed.ashx?MIID=5415"
+    # ROADMAP.md items 198/215: the Blackboard icalfeed.ashx?MIID=5415 feed
+    # 404'd on every build because CCSD 15 moved to Finalsite. Its calendars
+    # page has two calendar elements. These are the first element's 8 IDs,
+    # whose Finalsite iCal returned 200 text/calendar with 64 events from a
+    # GitHub runner (URL-probe round 6, 2026-10-01). The second element's 32
+    # IDs returned 677 events - every school's calendar, sports included -
+    # deliberately not used, since it would flood the digest with
+    # school-level items nobody outside that school plans a weekend around.
+    url: "https://www.ccsd15.net/fs/calendar-manager/events.ics?calendar_ids[]=70&calendar_ids[]=21&calendar_ids[]=40&calendar_ids[]=45&calendar_ids[]=22&calendar_ids[]=41&calendar_ids[]=68&calendar_ids[]=12"
     section: "School Calendar"
     enabled: true
 

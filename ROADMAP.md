@@ -12147,6 +12147,37 @@ but not the questions the probes were asked.
      home page, following its first calendar link, for the new news and
      calendar URLs.
 
+     **D211 swap confirmed by a real networked build.** In PR #273's CI
+     smoke build, the D211 iCal fetched cleanly, and D211 dropped off
+     the "Source never recorded" list it had been on in the previous
+     run.
+
+     **Round 6 results, 2026-10-01: CCSD 15 found and swapped in; the
+     Village of Mount Prospect is reachable again.**
+     - **CCSD 15:** both calendar elements' iCal feeds work. The 8-ID
+       feed (`70,21,40,45,22,41,68,12`) returned **64 events**. The 32-ID
+       feed returned **677**, which is every school's calendar with sports
+       included. Acted on in the same PR: the CCSD 15 source is now
+       `type: ics` on the **8-ID** feed. The 677-event one would flood
+       the digest with school-level items.
+     - **Village of Mount Prospect moved to the Revize CMS and returns
+       200 to a runner.** The bot wall that 403'd for 34+ builds is gone.
+       News is now at `/news/index.php` and the calendar at
+       `/calendar/index.php`. **Not swapped yet:** the Revize calendar
+       renders in JavaScript, and an `html_events` scrape of either page
+       could fill "Village News" with navigation links (the same failure
+       Des Plaines' old library scrape had). Round 7 probes both pages
+       for the href shape of a real news item (for a
+       `detail_link_pattern`) and for the calendar's data or iCal
+       endpoint. **Next:** swap the two Village sources using round 7's
+       answers.
+
+     **Item 213/198 scoreboard after this cycle:** Des Plaines library
+     ✅ (Communico RSS), D211 ✅ (Finalsite iCal), CCSD 15 ✅ (Finalsite
+     iCal). Still open: D25 (its iCal is valid but empty), the Palatine
+     library (no feed path; ask the library, item 152), and the Village
+     of Mount Prospect (round 7).
+
 #### P2 (new)
 
 216. **Render a weekly "this weekend in [town]" share card per region.**
