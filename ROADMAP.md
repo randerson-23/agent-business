@@ -12085,6 +12085,33 @@ but not the questions the probes were asked.
      `/events/feed|rss|ical|export` path. If DPPL's feed returns
      `<item>`s, item 213's Des Plaines half is a one-line source change.
 
+     **Round 4 results, 2026-10-01: Des Plaines' feed found and
+     swapped in.**
+     - `https://calendar.dppl.org/feeds?data=…` returned **200,
+       `application/rss+xml`, 331 KB**. The `<title>` pattern only
+       caught the channel title, almost certainly because item titles
+       are CDATA-wrapped. The guessed `dppl.libnet.info` host is wrong
+       (it redirected to Google). **Acted on in the same PR:**
+       `config/regions/des-plaines-60016.yaml`'s library source is now
+       `type: rss` on that URL, replacing an `html_events` scrape whose
+       keyword fallback only ever found nav links. The source name is
+       unchanged, so its health history continues. **To verify:** the
+       next real build's `data/source_health.json` should show this
+       source above 0, and `weekend_signal.json` should show Des
+       Plaines contributing weekend events for the first time.
+     - **Finalsite calendar IDs found**, in *unquoted* attributes that
+       the quoted-only pattern missed: D25 `data-calendar-ids=361,349,360`,
+       D211 `data-calendar-ids=27` plus a `data-calendars-feed-url`
+       attribute, and CCSD 15 `70,21,40,45,22,41,68,12…` (cut off by
+       the context window).
+     - **Palatine returned 403 again.** Across four rounds it has
+       returned 403, 200, 200, 403, so it is intermittent.
+
+     **Round 5 (queued):** captures the full ID lists and feed-URL
+     attributes with fixed patterns. It probes Finalsite's
+     `events.ics?calendar_ids[]=` endpoint directly for D25 and D211, and
+     re-asks Palatine's fingerprint question.
+
 #### P2 (new)
 
 216. **Render a weekly "this weekend in [town]" share card per region.**
