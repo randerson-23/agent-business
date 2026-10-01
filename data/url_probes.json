@@ -1,91 +1,72 @@
 {
   "results": [
     {
-      "url": "https://calendar.dppl.org/",
-      "purpose": "Des Plaines library calendar - platform fingerprint and any feed/API URL",
+      "url": "https://calendar.dppl.org/feeds?data=eyJmZWVkVHlwZSI6InJzcyIsImZpbHRlcnMiOnsibG9jYXRpb24iOlsiYWxsIl0sImFnZXMiOlsiYWxsIl0sInR5cGVzIjpbImFsbCJdLCJ0YWdzIjpbXSwidGVybSI6IiIsImRheXMiOjMwfX0=",
+      "purpose": "Des Plaines library - Communico RSS feed on the custom domain (candidate source)",
       "item": 182,
-      "probed_at": "2026-10-01T14:20:17+00:00",
+      "probed_at": "2026-10-01T14:30:00+00:00",
       "status": 200,
-      "final_url": "https://calendar.dppl.org/",
-      "content_type": "text/html; charset=UTF-8",
-      "bytes": 55744,
-      "title": "landing page - Des Plaines",
+      "final_url": "https://calendar.dppl.org/feeds?data=eyJmZWVkVHlwZSI6InJzcyIsImZpbHRlcnMiOnsibG9jYXRpb24iOlsiYWxsIl0sImFnZXMiOlsiYWxsIl0sInR5cGVzIjpbImFsbCJdLCJ0YWdzIjpbXSwidGVybSI6IiIsImRheXMiOjMwfX0=",
+      "content_type": "application/rss+xml; charset=utf-8",
+      "bytes": 331330,
+      "pattern_matches": {
+        "<item>": [
+          {
+            "match": "<item>",
+            "context": "t 2026 14:30:02 +0000</lastBuildDate> <ttl>60</ttl> <item> <title><![CDATA[Teen Book Bags ]]></title> <lin"
+          }
+        ],
+        "<title>[^<]{1,90}": [
+          {
+            "match": "<title>RSS Feed for Des Plaines",
+            "context": "http://www.w3.org/2005/Atom\" version=\"2.0\"> <channel> <title>RSS Feed for Des Plaines</title> <link>https://desplaines.libnet.info/</link>"
+          }
+        ]
+      }
+    },
+    {
+      "url": "https://dppl.libnet.info/feeds?data=eyJmZWVkVHlwZSI6InJzcyIsImZpbHRlcnMiOnsibG9jYXRpb24iOlsiYWxsIl0sImFnZXMiOlsiYWxsIl0sInR5cGVzIjpbImFsbCJdLCJ0YWdzIjpbXSwidGVybSI6IiIsImRheXMiOjMwfX0=",
+      "purpose": "Des Plaines library - Communico RSS feed on the libnet.info host (guessed subdomain)",
+      "item": 182,
+      "probed_at": "2026-10-01T14:30:02+00:00",
+      "status": 200,
+      "final_url": "http://www.google.com/",
+      "content_type": "text/html; charset=ISO-8859-1",
+      "bytes": 84697,
+      "title": "Google",
       "feed_links": [],
       "calendar_links": [],
       "pattern_matches": {
-        "(?i)calendar\\.google\\.com/calendar/[^\"'\\s<]*": [],
-        "(?i)webcal://[^\"'\\s<]*": [],
-        "(?i)[^\"'\\s<=]*\\.ics\\b[^\"'\\s<]*": [],
-        "(?i)[^\"'\\s<=]*/(?:api|ajax|feeds?)/[^\"'\\s<]*": [
+        "<item>": [],
+        "<title>[^<]{1,90}": [
           {
-            "match": "//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css",
-            "context": "3f0LnxD3uzfoCj/koQ==' crossorigin='anonymous'/> <link href='//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css' rel='stylesheet' type='text/css' integrity='sha512-SfTiTlX"
-          },
-          {
-            "match": "//cdnjs.cloudflare.com/ajax/libs/jquery-ajaxtransport-xdomainrequest/1.0.3/jquery.xdomainrequest.min.js",
-            "context": "f lte IE 9]> <script type=\"text/javascript\" src=\"//cdnjs.cloudflare.com/ajax/libs/jquery-ajaxtransport-xdomainrequest/1.0.3/jquery.xdomainrequest.min.js\" integrity=\"sha512-A2sj0WV8pRqcC1N+TGY6w+KpNYZDyV2LGwLq"
-          },
-          {
-            "match": "https://cdnjs.cloudflare.com/ajax/libs/webcomponentsjs/1.3.3/custom-elements-es5-adapter.js",
-            "context": "' crossorigin='anonymous'></script> <script src=\"https://cdnjs.cloudflare.com/ajax/libs/webcomponentsjs/1.3.3/custom-elements-es5-adapter.js\" integrity=\"sha512-FFn4n1AAKwhX5px0JWxRoLLpvvnm59OqY0yZjIpu"
-          },
-          {
-            "match": "https://cdnjs.cloudflare.com/ajax/libs/webcomponentsjs/1.3.3/webcomponents-lite.js",
-            "context": "=\" crossorigin=\"anonymous\"></script> <script src=\"https://cdnjs.cloudflare.com/ajax/libs/webcomponentsjs/1.3.3/webcomponents-lite.js\" integrity=\"sha512-7cpa7iIxY9Fz1D454GUQi8Wp/XKAY1l85H5hQcDd"
+            "match": "<title>Google",
+            "context": "ogleg/1x/googleg_standard_color_128dp.png\" itemprop=\"image\"><title>Google</title><script nonce=\"e7UvUS67aV-S1bGsljxwNw\">(function(){v"
           }
-        ],
-        "(?i)\\b(?:libcal|springshare|librarymarket|communico|libnet|evanced|bibliocommons|locable|trumba|localist)\\b": [
-          {
-            "match": "communico",
-            "context": "cation-->\" /> <meta name=\"apiserver\" content=\"https://api.communico.co\" /> <meta name=\"region\" content=\"us\" /> <meta name=\""
-          },
-          {
-            "match": "libnet",
-            "context": "e.css' rel='stylesheet' type='text/css'/> <link href='//cdn.libnet.info/css/rome/2.1.14/rome.min.css' rel='stylesheet' type='t"
-          },
-          {
-            "match": "bibliocommons",
-            "context": "class=\"nav-catalog mobile-hide\"><a href=\"https://desplaines.bibliocommons.com/\">Catalog</a></li> <li class=\"wide-hide\"><a class=\"nav-"
-          },
-          {
-            "match": "Communico",
-            "context": "bility()'>Accessibility</a> | <a href='http://communico.co'>Communico</a><br/><br/> <span style='font-size:80%'>Connected con"
-          }
-        ],
-        "(?i)\\b(?:finalsite|thrillshare|apptegy|edlio|schoolmessenger|blackboard|campussuite|rschooltoday|schoolpointe)\\b": []
+        ]
       }
     },
     {
       "url": "https://www.palatinelibrary.org/events/upcoming",
-      "purpose": "Palatine library events - platform fingerprint and any feed/API URL",
+      "purpose": "Palatine library events - CMS and events-module fingerprint, any feed/export path",
       "item": 182,
-      "probed_at": "2026-10-01T14:20:17+00:00",
-      "status": 200,
+      "probed_at": "2026-10-01T14:30:03+00:00",
+      "status": 403,
       "final_url": "https://www.palatinelibrary.org/events/upcoming",
-      "content_type": "text/html; charset=utf-8",
-      "bytes": 149605,
-      "title": "Upcoming Events | Palatine Library District",
-      "feed_links": [],
-      "calendar_links": [],
+      "content_type": "text/plain; charset=utf-8",
+      "bytes": 72,
       "pattern_matches": {
-        "(?i)calendar\\.google\\.com/calendar/[^\"'\\s<]*": [],
-        "(?i)webcal://[^\"'\\s<]*": [],
-        "(?i)[^\"'\\s<=]*\\.ics\\b[^\"'\\s<]*": [],
-        "(?i)[^\"'\\s<=]*/(?:api|ajax|feeds?)/[^\"'\\s<]*": [],
-        "(?i)\\b(?:libcal|springshare|librarymarket|communico|libnet|evanced|bibliocommons|locable|trumba|localist)\\b": [
-          {
-            "match": "bibliocommons",
-            "context": "<a href=\"https://palatinelibrary.bibliocommons.com/\" class=\"nav-link nav-level-2\" data-nav-level=\"2\" role="
-          }
-        ],
-        "(?i)\\b(?:finalsite|thrillshare|apptegy|edlio|schoolmessenger|blackboard|campussuite|rschooltoday|schoolpointe)\\b": []
+        "(?i)\\bdrupal\\b[^\"<]{0,40}": [],
+        "(?i)(?:librarymarket|library market|lc-calendar|lc_calendar|libraryaware|evanced|tockify|assabet|localist|trumba|wordpress|tribe-events)": [],
+        "(?i)[^\"'\\s<=]*/events?/(?:feed|rss|ical|ics|export|subscribe)[^\"'\\s<]*": [],
+        "(?i)<meta name=\"generator\" content=\"[^\"]*\"": []
       }
     },
     {
       "url": "https://www.sd25.org/calendar-73",
-      "purpose": "D25 calendar page - platform fingerprint and any feed/embed URL",
+      "purpose": "D25 calendar page - Finalsite calendar IDs for events.ics",
       "item": 198,
-      "probed_at": "2026-10-01T14:20:17+00:00",
+      "probed_at": "2026-10-01T14:30:03+00:00",
       "status": 200,
       "final_url": "https://www.sd25.org/calendar-73",
       "content_type": "text/html; charset=utf-8",
@@ -97,28 +78,98 @@
         "https://www.sd25.org/departments/student-learning/curriculum-by-subjects/physical-education"
       ],
       "pattern_matches": {
-        "(?i)calendar\\.google\\.com/calendar/[^\"'\\s<]*": [],
-        "(?i)webcal://[^\"'\\s<]*": [],
-        "(?i)[^\"'\\s<=]*\\.ics\\b[^\"'\\s<]*": [],
-        "(?i)[^\"'\\s<=]*/(?:api|ajax|feeds?)/[^\"'\\s<]*": [],
-        "(?i)\\b(?:libcal|springshare|librarymarket|communico|libnet|evanced|bibliocommons|locable|trumba|localist)\\b": [],
-        "(?i)\\b(?:finalsite|thrillshare|apptegy|edlio|schoolmessenger|blackboard|campussuite|rschooltoday|schoolpointe)\\b": [
+        "(?i)data-calendar[-_]?ids?=\"[^\"]*\"": [],
+        "(?i)calendar_ids?(?:%5B%5D|\\[\\])?=\\d+": [],
+        "(?i)fs/calendar-manager/[^\"'\\s<]*": [],
+        "(?i)fs-?calendar[^\"<]{0,60}": [
           {
-            "match": "finalsite",
-            "context": "; </script> <link rel=\"icon\" href=\"https://resources.finalsite.net/images/v1756801957/sd25org/j7snpc5f6cmltcudjnpx/Arlingt"
+            "match": "fsCalendar fsGrid fsItemCount_5",
+            "context": "ection> </div> </div> <section class=\"fsElement fsCalendar fsGrid fsItemCount_5\" id=\"fsEl_13442\" data-calendar-ids=361,349,360 data-calenda"
           },
           {
-            "match": "Finalsite",
-            "context": "ref=\"https://www.finalsite.com/districts\" title=\"Powered by Finalsite opens in a new window\" target=\"_blank\">Powered by Finalsite"
+            "match": "fsCalendarGridControlBar fsStyleAutoclear",
+            "context": "</header> <div class=\"fsElementContent\" > <div class=\"fsCalendarGridControlBar fsStyleAutoclear\"> <div class=\"fsElementControls\"> <div class=\"fs"
+          },
+          {
+            "match": "fsCalendarGridBrowser fsCalendarMonthBrowser",
+            "context": "to Calendar Alerts</span> </a></div> </div> <div class=\"fsCalendarGridBrowser fsCalendarMonthBrowser\"> <button aria-label='Previous Month' class=\"fsCalendarPr"
+          },
+          {
+            "match": "fsCalendarPrevMonth fsLeftArrow",
+            "context": "MonthBrowser\"> <button aria-label='Previous Month' class=\"fsCalendarPrevMonth fsLeftArrow\" value=\"2026-09-01\"><</button> <span>October 2026</span>"
+          },
+          {
+            "match": "fsCalendarNextMonth fsRightArrow",
+            "context": "ctober 2026</span> <button aria-label='Next Month' class=\"fsCalendarNextMonth fsRightArrow\" value=\"2026-11-01\">></button> </div> </div> <div class=\""
+          },
+          {
+            "match": "fsCalendarDayView fsStateHidden",
+            "context": "\" value=\"2026-11-01\">></button> </div> </div> <div class=\"fsCalendarDayView fsStateHidden\" data-day=\"1\" data-year=\"2026\" data-month=\"9\" role=\"tabpane"
+          },
+          {
+            "match": "fsCalendarEventGrid  fsStyleAutoclear",
+            "context": "r=\"2026\" data-month=\"9\" role=\"tabpanel\"></div> <div class=\"fsCalendarEventGrid fsStyleAutoclear\" role=\"tabpanel\"> <div class=\"fsCalendarWeekdays\"> <"
+          },
+          {
+            "match": "fsCalendarWeekdays",
+            "context": "EventGrid fsStyleAutoclear\" role=\"tabpanel\"> <div class=\"fsCalendarWeekdays\"> <span>Sunday</span> <span>Monday</span> <s"
+          },
+          {
+            "match": "fsCalendarRow",
+            "context": "ay</span> <span>Saturday</span> </div> <div class=\"fsCalendarRow\"> <div class=\"fsCalendarDaybox fsCalendarOutOfRange\""
+          },
+          {
+            "match": "fsCalendarDaybox fsCalendarOutOfRange",
+            "context": "> </div> <div class=\"fsCalendarRow\"> <div class=\"fsCalendarDaybox fsCalendarOutOfRange\"> <div class=\"fsCalendarDate\" data-day=\"27\" data-year"
+          },
+          {
+            "match": "fsCalendarDate",
+            "context": "=\"fsCalendarDaybox fsCalendarOutOfRange\"> <div class=\"fsCalendarDate\" data-day=\"27\" data-year=\"2026\" data-month=\"8\"><span class="
+          },
+          {
+            "match": "fsCalendarDay",
+            "context": "data-day=\"27\" data-year=\"2026\" data-month=\"8\"><span class=\"fsCalendarDay\">Sunday,</span> <span class=\"fsCalendarMonth\">September</sp"
+          },
+          {
+            "match": "fsCalendarMonth",
+            "context": "\"8\"><span class=\"fsCalendarDay\">Sunday,</span> <span class=\"fsCalendarMonth\">September</span> 27</div> </div> <div clas"
+          },
+          {
+            "match": "fsCalendarDaybox fsStateHasEvents fsCalendarOutOfRange",
+            "context": "eptember</span> 28</div> </div> <div class=\"fsCalendarDaybox fsStateHasEvents fsCalendarOutOfRange\"> <div class=\"fsCalendarDate\" data-day=\"29\" data-year"
+          },
+          {
+            "match": "fsCalendarInfo",
+            "context": "sCalendarMonth\">September</span> 29</div> <div class=\"fsCalendarInfo\"> <span class='fsElementEventColorIcon' style='backgr"
+          },
+          {
+            "match": "fsCalendarEventTitle fsCalendarEventLink",
+            "context": "ROnly'>School Board Meeting</span> <a class=\"fsCalendarEventTitle fsCalendarEventLink\" title=\"School Board Meeting\" data-occur-id=\"532267\" href=\""
+          },
+          {
+            "match": "fsCalendarDaybox fsCalendarToday",
+            "context": "eptember</span> 30</div> </div> <div class=\"fsCalendarDaybox fsCalendarToday\"> <div class=\"fsCalendarDate\" data-day=\"1\" data-year="
+          },
+          {
+            "match": "fsCalendarDaybox ",
+            "context": "\">October</span> 1</div> </div> <div class=\"fsCalendarDaybox \"> <div class=\"fsCalendarDate\" data-day=\"2\" data-year="
+          },
+          {
+            "match": "fsCalendarDaybox fsStateHasEvents",
+            "context": "\">October</span> 7</div> </div> <div class=\"fsCalendarDaybox fsStateHasEvents\"> <div class=\"fsCalendarDate\" data-day=\"8\" data-year="
+          },
+          {
+            "match": "fsCalendarLegend",
+            "context": "iv> </div> </div> </div> <div class=\"fsCalendarLegend\"> <h4>Calendar &amp; Category Legend:</h4>"
           }
         ]
       }
     },
     {
       "url": "https://www.ccsd15.net/our-district/calendars",
-      "purpose": "CCSD 15 calendars page - platform fingerprint and any feed/embed URL",
+      "purpose": "CCSD 15 calendars page - Finalsite calendar IDs for events.ics",
       "item": 198,
-      "probed_at": "2026-10-01T14:20:19+00:00",
+      "probed_at": "2026-10-01T14:30:04+00:00",
       "status": 200,
       "final_url": "https://www.ccsd15.net/our-district/calendars",
       "content_type": "text/html; charset=utf-8",
@@ -130,28 +181,98 @@
         "https://www.ccsd15.net/our-district/about-district-15/feed15"
       ],
       "pattern_matches": {
-        "(?i)calendar\\.google\\.com/calendar/[^\"'\\s<]*": [],
-        "(?i)webcal://[^\"'\\s<]*": [],
-        "(?i)[^\"'\\s<=]*\\.ics\\b[^\"'\\s<]*": [],
-        "(?i)[^\"'\\s<=]*/(?:api|ajax|feeds?)/[^\"'\\s<]*": [],
-        "(?i)\\b(?:libcal|springshare|librarymarket|communico|libnet|evanced|bibliocommons|locable|trumba|localist)\\b": [],
-        "(?i)\\b(?:finalsite|thrillshare|apptegy|edlio|schoolmessenger|blackboard|campussuite|rschooltoday|schoolpointe)\\b": [
+        "(?i)data-calendar[-_]?ids?=\"[^\"]*\"": [],
+        "(?i)calendar_ids?(?:%5B%5D|\\[\\])?=\\d+": [],
+        "(?i)fs/calendar-manager/[^\"'\\s<]*": [],
+        "(?i)fs-?calendar[^\"<]{0,60}": [
           {
-            "match": "finalsite",
-            "context": "; </script> <link rel=\"icon\" href=\"https://resources.finalsite.net/images/v1714498917/ccsd15net/omkgynazrm2glqobewik/ccsd1"
+            "match": "fsCalendarTools fsSearch square, card light fsToolsElement",
+            "context": "utoclear\" id=\"fsEl_75706\" > <section class=\"fsElement fsCalendarTools fsSearch square, card light fsToolsElement\" id=\"fsEl_75707\" data-use-new=\"true\" data-linked-element-id"
           },
           {
-            "match": "Finalsite",
-            "context": "ref=\"https://www.finalsite.com/districts\" title=\"Powered by Finalsite opens in a new window\" target=\"_blank\">Powered by Finalsite"
+            "match": "fsCalendar fsGrid fsItemCount_5",
+            "context": "iv> </div> </div> <section class=\"fsElement fsCalendar fsGrid fsItemCount_5\" id=\"fsEl_75711\" data-calendar-ids=70,21,40,45,22,41,68,12"
+          },
+          {
+            "match": "fsCalendarGridControlBar fsStyleAutoclear",
+            "context": "</header> <div class=\"fsElementContent\" > <div class=\"fsCalendarGridControlBar fsStyleAutoclear\"> <div class=\"fsDisplayNavigation\"> <div class='fsDispla"
+          },
+          {
+            "match": "fsCalendarFilter",
+            "context": "sStyleSROnly\">Print Grid Element</span> </a> <a class=\"fsCalendarFilter\" title=\"Filters\" data-element-id=\"75711\" href=\"#\"> <spa"
+          },
+          {
+            "match": "fsCalendarFilterIcon",
+            "context": "Filters\" data-element-id=\"75711\" href=\"#\"> <span class=\"fsCalendarFilterIcon\"> <span class=\"fsStyleSROnly\">Calendar Filter</span>"
+          },
+          {
+            "match": "fsCalendarGridBrowser fsCalendarMonthBrowser",
+            "context": "Calendar RSS Feeds</span> </a></div> </div> <div class=\"fsCalendarGridBrowser fsCalendarMonthBrowser\"> <button aria-label='Previous Month' class=\"fsCalendarPr"
+          },
+          {
+            "match": "fsCalendarPrevMonth fsLeftArrow",
+            "context": "MonthBrowser\"> <button aria-label='Previous Month' class=\"fsCalendarPrevMonth fsLeftArrow\" value=\"2026-09-01\"><</button> <span class=\"fsCalendarGri"
+          },
+          {
+            "match": "fsCalendarGridShowMonthPickerButton",
+            "context": "h fsLeftArrow\" value=\"2026-09-01\"><</button> <span class=\"fsCalendarGridShowMonthPickerButton\" data-month=\"10\" data-year=\"2026\" tabindex=\"0\" >October 202"
+          },
+          {
+            "match": "fsCalendarNextMonth fsRightArrow",
+            "context": "ctober 2026</span> <button aria-label='Next Month' class=\"fsCalendarNextMonth fsRightArrow\" value=\"2026-11-01\">></button> </div> </div> <div class=\""
+          },
+          {
+            "match": "fsCalendarDayView fsStateHidden",
+            "context": "\" value=\"2026-11-01\">></button> </div> </div> <div class=\"fsCalendarDayView fsStateHidden\" data-day=\"1\" data-year=\"2026\" data-month=\"9\" role=\"tabpane"
+          },
+          {
+            "match": "fsCalendarEventGrid fsCalendarCombineWeekendDays fsStyleAutoclear",
+            "context": "ole=\"tabpanel\"></div> <div class=\"fsNewModuleCalendarGrid fsCalendarEventGrid fsCalendarCombineWeekendDays fsStyleAutoclear\" role=\"tabpanel\"> <div class=\"fsCalendarWeekdays\">"
+          },
+          {
+            "match": "fsCalendarWeekdays",
+            "context": "ekendDays fsStyleAutoclear\" role=\"tabpanel\"> <div class=\"fsCalendarWeekdays\"> <span>Monday</span> <span>Tuesday</span> <"
+          },
+          {
+            "match": "fsCalendarRow",
+            "context": "y</span> <span>Sat/Sun</span> </div> <div class=\"fsCalendarRow\"> <div class=\"fsCalendarDaybox fsCalendarOutOfRange\""
+          },
+          {
+            "match": "fsCalendarDaybox fsCalendarOutOfRange",
+            "context": "</div> <div class=\"fsCalendarRow\"> <div class=\"fsCalendarDaybox fsCalendarOutOfRange\"> <div class=\"fsCalendarDate\" data-day=\"28\" data-yea"
+          },
+          {
+            "match": "fsCalendarDate",
+            "context": "\"fsCalendarDaybox fsCalendarOutOfRange\"> <div class=\"fsCalendarDate\" data-day=\"28\" data-year=\"2026\" data-month=\"8\"> <span"
+          },
+          {
+            "match": "fsCalendarDay",
+            "context": "day=\"28\" data-year=\"2026\" data-month=\"8\"> <span class=\"fsCalendarDay\">Monday,</span> <span class=\"fsCalendarMonth\">Septembe"
+          },
+          {
+            "match": "fsCalendarMonth",
+            "context": "span class=\"fsCalendarDay\">Monday,</span> <span class=\"fsCalendarMonth\">September</span> 28 </div> </div>"
+          },
+          {
+            "match": "fsCalendarDaybox fsStateHasEvents fsCalendarOutOfRange",
+            "context": "an> 29 </div> </div> <div class=\"fsCalendarDaybox fsStateHasEvents fsCalendarOutOfRange\"> <div class=\"fsCalendarDate\" data-day=\"30\" data-yea"
+          },
+          {
+            "match": "fsCalendarInfo fsCalendarDayViewEvent noBottomMargin fsCalendarEvent",
+            "context": "September</span> 30 </div> <div class=\"fsCalendarInfo fsCalendarDayViewEvent noBottomMargin fsCalendarEvent\"> <a class=\"fsCalendarTit"
+          },
+          {
+            "match": "fsCalendarTitle fsCalendarEventLink",
+            "context": "CalendarEvent\"> <a class=\"fsCalendarTitle fsCalendarEventLink\" title=\"Free Developmental Screenings\" data-occur-id=\"59938"
           }
         ]
       }
     },
     {
       "url": "https://adc.d211.org/district-info/info/calendars",
-      "purpose": "D211 calendars page - platform fingerprint and any feed/embed URL",
+      "purpose": "D211 calendars page - Finalsite calendar IDs for events.ics",
       "item": 198,
-      "probed_at": "2026-10-01T14:20:20+00:00",
+      "probed_at": "2026-10-01T14:30:04+00:00",
       "status": 200,
       "final_url": "https://adc.d211.org/district-info/info/calendars",
       "content_type": "text/html; charset=utf-8",
@@ -160,19 +281,21 @@
       "feed_links": [],
       "calendar_links": [],
       "pattern_matches": {
-        "(?i)calendar\\.google\\.com/calendar/[^\"'\\s<]*": [],
-        "(?i)webcal://[^\"'\\s<]*": [],
-        "(?i)[^\"'\\s<=]*\\.ics\\b[^\"'\\s<]*": [],
-        "(?i)[^\"'\\s<=]*/(?:api|ajax|feeds?)/[^\"'\\s<]*": [],
-        "(?i)\\b(?:libcal|springshare|librarymarket|communico|libnet|evanced|bibliocommons|locable|trumba|localist)\\b": [],
-        "(?i)\\b(?:finalsite|thrillshare|apptegy|edlio|schoolmessenger|blackboard|campussuite|rschooltoday|schoolpointe)\\b": [
+        "(?i)data-calendar[-_]?ids?=\"[^\"]*\"": [],
+        "(?i)calendar_ids?(?:%5B%5D|\\[\\])?=\\d+": [],
+        "(?i)fs/calendar-manager/[^\"'\\s<]*": [],
+        "(?i)fs-?calendar[^\"<]{0,60}": [
           {
-            "match": "finalsite",
-            "context": "; </script> <link rel=\"icon\" href=\"https://resources.finalsite.net/images/v1761654527/adcd211org/gms9lwrekbhu06iixx12/211V"
+            "match": "fsCalendar fsList fsItemCount_5",
+            "context": "utoclear\" id=\"fsEl_35309\" > <section class=\"fsElement fsCalendar fsList fsItemCount_5\" id=\"fsEl_35307\" data-calendar-ids=27 data-calendars-feed-u"
           },
           {
-            "match": "Finalsite",
-            "context": "ref=\"https://www.finalsite.com/districts\" title=\"Powered by Finalsite opens in a new window\" target=\"_blank\">Powered by Finalsite"
+            "match": "fsCalendarEventLink",
+            "context": "SROnly'>District 211 Events Calendar</span> <a class=\"fsCalendarEventLink\" data-occur-id=\"261649_2026-10-12T00:00:00Z_2026-10-13T00:0"
+          },
+          {
+            "match": "fsCalendarEventLink fsReadMoreLink",
+            "context": "n\">All District 211 Buildings</div> </div> <a class=\"fsCalendarEventLink fsReadMoreLink\" data-occur-id=\"261649_2026-10-12T00:00:00Z_2026-10-13T00:0"
           }
         ]
       }
