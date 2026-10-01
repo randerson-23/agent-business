@@ -3,7 +3,7 @@
     259,
     259,
     259,
-    259,
+    255,
     255,
     255,
     255,
@@ -20,7 +20,7 @@
     17,
     17,
     17,
-    17,
+    19,
     19
   ],
   "arlington-heights-60005:Village of Arlington Heights \u2014 News": [
@@ -51,7 +51,7 @@
     4,
     4,
     4,
-    4,
+    5,
     5,
     5,
     5,
@@ -80,7 +80,7 @@
     3,
     3,
     3,
-    3,
+    483,
     483
   ],
   "mount-prospect-60056:Downtown Mount Prospect \u2014 Events": [
@@ -117,8 +117,8 @@
   "mount-prospect-60056:Mount Prospect Public Library \u2014 Events": [
     269,
     269,
-    269,
     267,
+    259,
     259,
     259,
     259,
@@ -130,7 +130,7 @@
     65,
     65,
     65,
-    65,
+    66,
     66,
     66,
     66,
@@ -188,6 +188,9 @@
     14,
     14
   ],
+  "palatine-60067:Township High School District 211 \u2014 Calendar": [
+    15
+  ],
   "palatine-60067:Village of Palatine \u2014 News": [
     0,
     0,
@@ -203,10 +206,10 @@
   "wheeling-60090:Indian Trails Public Library \u2014 Events": [
     218,
     218,
-    218,
     215,
     312,
     312,
+    379,
     379,
     379,
     379,
@@ -216,7 +219,7 @@
     0,
     0,
     0,
-    0,
+    6,
     6,
     6,
     6,
