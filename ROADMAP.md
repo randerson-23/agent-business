@@ -11871,10 +11871,11 @@ several stalled items.
        is now probed directly. If it returns events, swap the source
        URL. The sponsorship page's prices are still unread, because the
        probe records links, not body text.
-     - **Palatine library also returns 403 from the runner.** Item 213's
-       Palatine swap can't be answered by a probe of that page. The
-       next step is the outreach route, or finding another public
-       LibraryCalendar endpoint.
+     - **Palatine library: intermittent, not blocked.** It returned 403
+       on the first run and **200 (150 KB)** on the second, 25 minutes
+       later (`930ea4f`). An earlier version of this note said it
+       403s from the runner, which one run was not enough to say. A
+       probe of that page can answer item 213 after all. See item 215.
      - **Des Plaines' LibCal landing page links no feed.** The page
        returned 200 with title "landing page - Des Plaines" but no
        `rel=alternate` or calendar-looking `href`. `dppl.org` only
@@ -11966,7 +11967,7 @@ but not the questions the probes were asked.
 
 #### P1 (new)
 
-215. **Teach the probe to look inside the page, then re-ask the same
+215. ✅ **DONE — Teach the probe to look inside the page, then re-ask the same
      questions.** Item 212 works: every URL loaded and the results are
      committed where both loops can read them. It just collects the
      wrong evidence for these particular questions. `probe_urls.py`
@@ -12004,6 +12005,29 @@ but not the questions the probes were asked.
      This is the only thing standing between those items and done, so
      it ranks with them. Same constraint as item 212: probes never edit
      source config themselves.
+
+     ✅ **Shipped 2026-09-30.** `scripts/probe_urls.py` now reads two
+     optional per-probe fields. `patterns:` runs each regex over the
+     raw body and records up to 20 distinct matches, each with about
+     60 characters of context. `follow:` probes the first `href`
+     matching a regex, other than the page itself, with the same
+     patterns. It goes one level deep only, so a probe is never more
+     than two requests. `load_probes()` compiles every regex before any
+     request, so a typo fails the run instead of silently matching
+     nothing. The question list was re-seeded as in the table above.
+     One change: the LibCal and LibraryCalendar probes also match any
+     `…ical…` token case-insensitively, in case the subscribe path
+     is spelled differently from the guess. Three questions item 212
+     already answered were removed: the empty MPPD iCal link, the DPPL
+     home page (it links only the blog RSS), and the five bot-walled
+     403s. Verified end to end against the site's own built pages: a
+     pattern match on the hub, then a `follow` to the Mount Prospect
+     page that found its `webcal://` subscribe link. 13 probe tests.
+     **Next:** read `pattern_matches` and `followed` in
+     `data/url_probes.json` on `origin/main` after the merge run. If
+     DPPL's `cid` or Palatine's feed format shows up, item 213 becomes
+     a one-line source change per library. Same for item 198 with the
+     schools' `MIID`s.
 
 #### P2 (new)
 

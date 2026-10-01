@@ -7,43 +7,66 @@
 # a normal PR. Probes never change source config by themselves.
 #
 # Remove an entry once its question is answered, so each run stays one
-# polite request per open question.
+# polite request per open question (two when `follow` is set).
+#
+# Optional per-probe fields (item 215):
+#   patterns: regexes run against the raw response body; each distinct
+#             match is recorded with ~60 characters of context. Use this
+#             for IDs that pages build into JavaScript rather than links.
+#   follow:   a regex over the page's hrefs; the first matching link is
+#             probed too (same patterns, one level deep, never further).
 
 probes:
-  # Item 182/213: Des Plaines and Palatine have contributed 0 weekend
-  # events on every recorded build. Find each library's real feed link.
+  # Items 182/213: Des Plaines and Palatine have contributed 0 weekend
+  # events on every recorded build. Both library calendars build their
+  # subscribe links in JavaScript, so read the IDs out of the raw page.
   - url: https://calendar.dppl.org/
     item: 182
-    purpose: Des Plaines library - find the Springshare LibCal feed link
-  - url: https://www.dppl.org/
-    item: 182
-    purpose: Des Plaines library home page - alternate link to the events feed
+    purpose: Des Plaines library (Springshare LibCal) - the calendar cid its feed URL needs
+    patterns:
+      - 'cid=\d+'
+      - 'ical_subscribe'
+      - 'rss\.php'
+      - '(?i)[a-z/._-]*ical[a-z/._?=&-]*'
   - url: https://www.palatinelibrary.org/events/upcoming
     item: 182
-    purpose: Palatine library - find the LibraryCalendar (lc_calendar_feed) iCal/RSS link
+    purpose: Palatine library (LibraryCalendar) - does it expose an iCal/RSS wrapper format?
+    patterns:
+      - 'lc_calendar_feed'
+      - '_wrapper_format=\w+'
+      - '[\w/.-]*\.ics\b'
+      - '(?i)[a-z/._-]*ical[a-z/._?=&-]*'
 
   # Item 198: school-district iCal feeds that 404 after a module-ID
-  # rotation. The live calendar pages should link the current feed.
+  # rotation. The IDs live on each district's calendar page, so follow
+  # the home page's first "calendar" link and look for them there.
   - url: https://www.sd25.org/
     item: 198
-    purpose: D25 - current calendar page / icalfeed.ashx MIID
+    purpose: D25 - current calendar module ID (MIID) for icalfeed.ashx
+    follow: '(?i)calendar'
+    patterns: &school_ids
+      - 'MIID=\d+'
+      - 'ModuleInstanceID=\d+'
+      - '(?i)icalfeed[^"\s]*'
   - url: https://www.ccsd15.net/
     item: 198
-    purpose: CCSD 15 - current calendar page / icalfeed.ashx MIID
+    purpose: CCSD 15 - current calendar module ID (MIID) for icalfeed.ashx
+    follow: '(?i)calendar'
+    patterns: *school_ids
   - url: https://adc.d211.org/
     item: 198
     purpose: D211 - current calendar RSS ModuleInstanceID
-
-  # Item 192 answered 2026-09-29: all five 403s are bot walls (Access
-  # Denied / Cloudflare) from a GitHub runner too - see ROADMAP.md item 212.
+    follow: '(?i)calendar'
+    patterns: *school_ids
 
   # Item 212 pricing anchor: a local competitor for the same sponsor budget.
   - url: https://www.mppd.org/sponsorship/
     item: 212
     purpose: Mount Prospect Park District sponsorship programme - package prices
+    patterns:
+      - '\$\s?\d[\d,]*(?:\.\d\d)?'
 
-  # Item 212 run 1: mppd.org advertises this text/calendar feed, while the
-  # configured webcal://www.mppd.org/?post_type=tribe_events... URL times out.
-  - url: https://www.mppd.org/events/?ical=1
-    item: 181
-    purpose: Mount Prospect Park District's advertised iCal feed - candidate source swap
+  # Answered and removed (see ROADMAP.md items 212 and 215):
+  # - The five 403 sources: bot walls (Access Denied / Cloudflare) from a runner too.
+  # - mppd.org/events/?ical=1: 200 with 0 bytes. Keep the configured webcal feed.
+  # - www.dppl.org home page: links only the library's blog RSS.
