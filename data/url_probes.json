@@ -1,168 +1,228 @@
 {
   "results": [
     {
-      "url": "https://www.palatinelibrary.org/events/upcoming",
-      "purpose": "Palatine library events - CMS and events-module fingerprint, any feed/export path",
-      "item": 182,
-      "probed_at": "2026-10-01T14:40:05+00:00",
+      "url": "https://www.ccsd15.net/fs/calendar-manager/events.ics?calendar_ids[]=70&calendar_ids[]=21&calendar_ids[]=40&calendar_ids[]=45&calendar_ids[]=22&calendar_ids[]=41&calendar_ids[]=68&calendar_ids[]=12",
+      "purpose": "CCSD 15 - Finalsite iCal for the first calendar element's 8 IDs (candidate source)",
+      "item": 198,
+      "probed_at": "2026-10-01T14:47:46+00:00",
       "status": 200,
-      "final_url": "https://www.palatinelibrary.org/events/upcoming",
-      "content_type": "text/html; charset=utf-8",
-      "bytes": 149707,
-      "title": "Upcoming Events | Palatine Library District",
+      "final_url": "https://www.ccsd15.net/fs/calendar-manager/events.ics?calendar_ids%5B%5D=70&calendar_ids%5B%5D=21&calendar_ids%5B%5D=40&calendar_ids%5B%5D=45&calendar_ids%5B%5D=22&calendar_ids%5B%5D=41&calendar_ids%5B%5D=68&calendar_ids%5B%5D=12",
+      "content_type": "text/calendar; charset=utf-8",
+      "bytes": 44813,
+      "ics_event_count": 64
+    },
+    {
+      "url": "https://www.ccsd15.net/fs/calendar-manager/events.ics?calendar_ids[]=67&calendar_ids[]=45&calendar_ids[]=68&calendar_ids[]=11&calendar_ids[]=66&calendar_ids[]=15&calendar_ids[]=14&calendar_ids[]=39&calendar_ids[]=38&calendar_ids[]=27&calendar_ids[]=17&calendar_ids[]=10&calendar_ids[]=28&calendar_ids[]=21&calendar_ids[]=26&calendar_ids[]=19&calendar_ids[]=24&calendar_ids[]=40&calendar_ids[]=37&calendar_ids[]=36&calendar_ids[]=35&calendar_ids[]=34&calendar_ids[]=22&calendar_ids[]=33&calendar_ids[]=32&calendar_ids[]=25&calendar_ids[]=31&calendar_ids[]=41&calendar_ids[]=9&calendar_ids[]=29&calendar_ids[]=20&calendar_ids[]=12",
+      "purpose": "CCSD 15 - Finalsite iCal for the second calendar element's 32 IDs (candidate source)",
+      "item": 198,
+      "probed_at": "2026-10-01T14:47:47+00:00",
+      "status": 200,
+      "final_url": "https://www.ccsd15.net/fs/calendar-manager/events.ics?calendar_ids%5B%5D=67&calendar_ids%5B%5D=45&calendar_ids%5B%5D=68&calendar_ids%5B%5D=11&calendar_ids%5B%5D=66&calendar_ids%5B%5D=15&calendar_ids%5B%5D=14&calendar_ids%5B%5D=39&calendar_ids%5B%5D=38&calendar_ids%5B%5D=27&calendar_ids%5B%5D=17&calendar_ids%5B%5D=10&calendar_ids%5B%5D=28&calendar_ids%5B%5D=21&calendar_ids%5B%5D=26&calendar_ids%5B%5D=19&calendar_ids%5B%5D=24&calendar_ids%5B%5D=40&calendar_ids%5B%5D=37&calendar_ids%5B%5D=36&calendar_ids%5B%5D=35&calendar_ids%5B%5D=34&calendar_ids%5B%5D=22&calendar_ids%5B%5D=33&calendar_ids%5B%5D=32&calendar_ids%5B%5D=25&calendar_ids%5B%5D=31&calendar_ids%5B%5D=41&calendar_ids%5B%5D=9&calendar_ids%5B%5D=29&calendar_ids%5B%5D=20&calendar_ids%5B%5D=12",
+      "content_type": "text/calendar; charset=utf-8",
+      "bytes": 240241,
+      "ics_event_count": 677
+    },
+    {
+      "url": "https://www.mountprospect.org/",
+      "purpose": "Village of Mount Prospect home page - current news and calendar links (old paths now 404)",
+      "item": 192,
+      "probed_at": "2026-10-01T14:47:50+00:00",
+      "status": 200,
+      "final_url": "https://www.mountprospect.org/",
+      "content_type": "text/html; charset=UTF-8",
+      "bytes": 201449,
+      "title": "Mount Prospect, IL",
       "feed_links": [],
-      "calendar_links": [],
+      "calendar_links": [
+        "https://www.mountprospect.org/plans_and_reports/community_information_and_fact_check_portal/prestige_feed.php"
+      ],
       "pattern_matches": {
-        "(?i)\\bdrupal\\b[^\"<]{0,40}": [
+        "(?i)href=\"[^\"]*(?:news|calendar|events?|notify|rss)[^\"]*\"": [
           {
-            "match": "Drupal 11 (https://www.drupal.org)",
-            "context": "elibrary.org/media/1933\" /> <meta name=\"Generator\" content=\"Drupal 11 (https://www.drupal.org)\" /> <meta name=\"MobileOptimized\" content=\"width\" /> <meta n"
+            "match": "href=\"/revize/plugins/revize_calendar/core/main.css\"",
+            "context": "g > * {flex: 0 0 auto; width:33.333332%} } </style> <link href=\"/revize/plugins/revize_calendar/core/main.css\" rel=\"stylesheet\" /> <link href=\"/revize/plugins/revize_cal"
           },
           {
-            "match": "drupal-link-system-path=",
-            "context": "ovies-more\" data-dropdown=\"dropdown-books-movies-more\" data-drupal-link-system-path=\"node/79\">Books, Movies, More</a> <button"
+            "match": "href=\"/revize/plugins/revize_calendar/daygrid/main.min.css\"",
+            "context": "s/revize_calendar/core/main.css\" rel=\"stylesheet\" /> <link href=\"/revize/plugins/revize_calendar/daygrid/main.min.css\" rel=\"stylesheet\" /> <link href=\"/revize/plugins/revize_cal"
           },
           {
-            "match": "drupal-link-query=",
-            "context": "v-link nav-level-2\" data-nav-level=\"2\" role=\"menuitem\" data-drupal-link-query=\"{&quot;field_db_type_target_id&quot;:{&quot;121&quot;:&quot"
+            "match": "href=\"/revize/plugins/revize_calendar/timegrid/main.min.css\"",
+            "context": "e_calendar/daygrid/main.min.css\" rel=\"stylesheet\" /> <link href=\"/revize/plugins/revize_calendar/timegrid/main.min.css\" rel=\"stylesheet\" /> <link href=\"/revize/plugins/revize_cal"
           },
           {
-            "match": "drupal-selector=",
-            "context": "h-block--search\"> <form class=\"lm-search-form\" data-drupal-selector=\"lm-search-form\" data-new-tab=\"catalog\" data-new-tab-message"
+            "match": "href=\"/revize/plugins/revize_calendar/list/main.min.css\"",
+            "context": "_calendar/timegrid/main.min.css\" rel=\"stylesheet\" /> <link href=\"/revize/plugins/revize_calendar/list/main.min.css\" rel=\"stylesheet\" /> <link href=\"_assets_/plugins/revizeCal"
           },
           {
-            "match": "drupal-messages-fallback class=",
-            "context": "<div class=\"region region-content\"> <div data-drupal-messages-fallback class=\"hidden\"></div> <div id=\"block-lm-custom-site-theme-breadcru"
+            "match": "href=\"_assets_/plugins/revizeCalendar/css/mini.css\"",
+            "context": "vize_calendar/list/main.min.css\" rel=\"stylesheet\" /> <link href=\"_assets_/plugins/revizeCalendar/css/mini.css\" rel=\"stylesheet\" /> <link href=\"/revize/plugins/revize_cal"
           },
           {
-            "match": "drupal-settings-json",
-            "context": "<script type=\"application/json\" data-drupal-selector=\"drupal-settings-json\">{\"path\":{\"baseUrl\":\"\\/\",\"pathPrefix\":\"\",\"currentPath\":\"eve"
+            "match": "href=\"/revize/plugins/revize_calendar/core/nav-panels.css\"",
+            "context": "ins/revizeCalendar/css/mini.css\" rel=\"stylesheet\" /> <link href=\"/revize/plugins/revize_calendar/core/nav-panels.css\" rel=\"stylesheet\" /><script> var defaultCalendarColor = \"#"
           },
           {
-            "match": "drupal.js?v=11.4.7",
-            "context": "ttingsLoader.js?v=11.4.7\"></script> <script src=\"/core/misc/drupal.js?v=11.4.7\"></script> <script src=\"/core/misc/drupal.init.js?v=11.4.7\""
+            "match": "href=\"news/index.php\"",
+            "context": "evel1 menuHidden li-224\"><a class=\"menuA level1 menuHidden\" href=\"news/index.php\" target=\"_self\">News</a></li> <li class=\"menuLI level1 m"
           },
           {
-            "match": "drupal.init.js?v=11.4.7",
-            "context": "/misc/drupal.js?v=11.4.7\"></script> <script src=\"/core/misc/drupal.init.js?v=11.4.7\"></script> <script src=\"/core/misc/debounce.js?v=11.4.7\"></"
+            "match": "href=\"community/village_events_photo_archive.php\"",
+            "context": "evel1 menuHidden li-235\"><a class=\"menuA level1 menuHidden\" href=\"community/village_events_photo_archive.php\" target=\"_self\">Village Events Photo Archive</a></li> <l"
+          },
+          {
+            "match": "href=\"community/village_newsletter.php\"",
+            "context": "evel1 menuHidden li-236\"><a class=\"menuA level1 menuHidden\" href=\"community/village_newsletter.php\" target=\"_self\">Village Newsletter</a></li> <li class=\"m"
+          },
+          {
+            "match": "href=\"boards_and_commissions/special_events_commission.php\"",
+            "context": "evel1 menuHidden li-267\"><a class=\"menuA level1 menuHidden\" href=\"boards_and_commissions/special_events_commission.php\" target=\"_self\">Special Events Commission</a></li> <li c"
+          },
+          {
+            "match": "href=\"departments/community_development/news_and_information.php\"",
+            "context": "evel2 menuHidden li-274\"><a class=\"menuA level2 menuHidden\" href=\"departments/community_development/news_and_information.php\" target=\"_self\">Common Questions</a></li> <li class=\"m"
+          },
+          {
+            "match": "href=\"departments/fire/fire_prevention_bureau/index.php\"",
+            "context": "evel2 menuHidden li-288\"><a class=\"menuA level2 menuHidden\" href=\"departments/fire/fire_prevention_bureau/index.php\" target=\"_self\">Fire Prevention Bureau</a></li> <li cl"
+          },
+          {
+            "match": "href=\"departments/fire/news_and_information/index.php\"",
+            "context": "evel2 menuHidden li-287\"><a class=\"menuA level2 menuHidden\" href=\"departments/fire/news_and_information/index.php\" target=\"_self\">News and Information</a></li> </ul>"
+          },
+          {
+            "match": "href=\"departments/police/news_and_information/index.php\"",
+            "context": "evel2 menuHidden li-307\"><a class=\"menuA level2 menuHidden\" href=\"departments/police/news_and_information/index.php\" target=\"_self\">News and Information</a></li> </ul>"
+          },
+          {
+            "match": "href=\"calendar/index.php\"",
+            "context": "d-flex align-items-stretch\" data-aos-duration=\"600\"> <a href=\"calendar/index.php\" target=\"_self\" class=\"rz-btn-element d-flex align-item"
+          },
+          {
+            "match": "href=\"calendar\"",
+            "context": "dal-event-title\">City Council Meeting </h3> <a href=\"calendar\" class=\"flex-shrink-0 btn btn-light bg-white b"
+          },
+          {
+            "match": "href=\"./news\"",
+            "context": "umb mb-3\"> <ul> <li class=\"breadcrumb-item\"><a href=\"./news\">Articles</a> <li class=\"breadcrumb-item active text"
           }
         ],
-        "(?i)(?:librarymarket|library market|lc-calendar|lc_calendar|libraryaware|evanced|tockify|assabet|localist|trumba|wordpress|tribe-events)": [
+        "(?i)\\b(?:civicplus|civicengage|granicus|revize|govstack|opencities|drupal|wordpress)\\b": [
           {
-            "match": "lc_calendar",
-            "context": "lesheet\" media=\"all\" href=\"/modules/custom/library_calendar/lc_calendar_theme/css/base.css?tm8fzl\" /> <link rel=\"stylesheet\" media="
+            "match": "revize",
+            "context": "ite_assets/logo.png?t=202607240230110\" /> <link href=\"/revize/plugins/setup/css/revize.css\" rel=\"stylesheet\" type=\"text/c"
           },
           {
-            "match": "lc-calendar",
-            "context": "ilters lc-form--has-filters clearfix\" data-drupal-selector=\"lc-calendar-filter-form\" action=\"/events/upcoming\" method=\"post\" id=\"lc"
-          }
-        ],
-        "(?i)[^\"'\\s<=]*/events?/(?:feed|rss|ical|ics|export|subscribe)[^\"'\\s<]*": [],
-        "(?i)<meta name=\"generator\" content=\"[^\"]*\"": [
-          {
-            "match": "<meta name=\"Generator\" content=\"Drupal 11 (https://www.drupal.org)\"",
-            "context": "ge\" content=\"https://www.palatinelibrary.org/media/1933\" /> <meta name=\"Generator\" content=\"Drupal 11 (https://www.drupal.org)\" /> <meta name=\"MobileOptimized\" content=\"width\" /> <meta na"
+            "match": "Revize",
+            "context": "ith('.revize.com'); // If different domain and NOT a Revize domain, show confirmation popup if (linkHost !== curre"
           }
         ]
-      }
-    },
-    {
-      "url": "https://www.sd25.org/calendar-73",
-      "purpose": "D25 calendar page - full Finalsite calendar IDs and feed-URL attribute",
-      "item": 198,
-      "probed_at": "2026-10-01T14:40:05+00:00",
-      "status": 200,
-      "final_url": "https://www.sd25.org/calendar-73",
-      "content_type": "text/html; charset=utf-8",
-      "bytes": 95236,
-      "title": "Calendar",
-      "feed_links": [],
-      "calendar_links": [
-        "https://www.sd25.org/departments/student-learning/curriculum-by-subjects/career-technical-education",
-        "https://www.sd25.org/departments/student-learning/curriculum-by-subjects/physical-education"
-      ],
-      "pattern_matches": {
-        "data-calendar-ids=\"?[\\d,]+": [
-          {
-            "match": "data-calendar-ids=361,349,360",
-            "context": "\"fsElement fsCalendar fsGrid fsItemCount_5\" id=\"fsEl_13442\" data-calendar-ids=361,349,360 data-calendars-feed-uuid=\"53a41768-80e6-422c-a2d5-cc26e0365"
-          }
+      },
+      "followed": {
+        "url": "https://www.mountprospect.org/calendar/index.php",
+        "purpose": "",
+        "item": null,
+        "probed_at": "2026-10-01T14:47:50+00:00",
+        "status": 200,
+        "final_url": "https://www.mountprospect.org/calendar/index.php",
+        "content_type": "text/html; charset=UTF-8",
+        "bytes": 150170,
+        "title": "Mount Prospect, IL",
+        "feed_links": [],
+        "calendar_links": [
+          "https://www.mountprospect.org/calendar/plans_and_reports/community_information_and_fact_check_portal/prestige_feed.php"
         ],
-        "data-calendars?-feed-url=\"?[^\"\\s>]*": []
+        "pattern_matches": {
+          "(?i)href=\"[^\"]*(?:news|calendar|events?|notify|rss)[^\"]*\"": [
+            {
+              "match": "href=\"/revize/plugins/revize_calendar/core/main.css\"",
+              "context": "g > * {flex: 0 0 auto; width:33.333332%} } </style> <link href=\"/revize/plugins/revize_calendar/core/main.css\" rel=\"stylesheet\" /> <link href=\"/revize/plugins/revize_cal"
+            },
+            {
+              "match": "href=\"/revize/plugins/revize_calendar/daygrid/main.min.css\"",
+              "context": "s/revize_calendar/core/main.css\" rel=\"stylesheet\" /> <link href=\"/revize/plugins/revize_calendar/daygrid/main.min.css\" rel=\"stylesheet\" /> <link href=\"/revize/plugins/revize_cal"
+            },
+            {
+              "match": "href=\"/revize/plugins/revize_calendar/timegrid/main.min.css\"",
+              "context": "e_calendar/daygrid/main.min.css\" rel=\"stylesheet\" /> <link href=\"/revize/plugins/revize_calendar/timegrid/main.min.css\" rel=\"stylesheet\" /> <link href=\"/revize/plugins/revize_cal"
+            },
+            {
+              "match": "href=\"/revize/plugins/revize_calendar/list/main.min.css\"",
+              "context": "_calendar/timegrid/main.min.css\" rel=\"stylesheet\" /> <link href=\"/revize/plugins/revize_calendar/list/main.min.css\" rel=\"stylesheet\" /> <link href=\"_assets_/plugins/revizeCal"
+            },
+            {
+              "match": "href=\"_assets_/plugins/revizeCalendar/css/mini.css\"",
+              "context": "vize_calendar/list/main.min.css\" rel=\"stylesheet\" /> <link href=\"_assets_/plugins/revizeCalendar/css/mini.css\" rel=\"stylesheet\" /> <link href=\"/revize/plugins/revize_cal"
+            },
+            {
+              "match": "href=\"/revize/plugins/revize_calendar/core/nav-panels.css\"",
+              "context": "ins/revizeCalendar/css/mini.css\" rel=\"stylesheet\" /> <link href=\"/revize/plugins/revize_calendar/core/nav-panels.css\" rel=\"stylesheet\" /><script> var defaultCalendarColor = \"#"
+            },
+            {
+              "match": "href=\"calendar/index.php#rz-content-wrap\"",
+              "context": "n btn-light bg-white px-4 p-3 gap-4 align-items-center\" href=\"calendar/index.php#rz-content-wrap\"> <span class=\"d-inline-flex align-items-center gap-2\">"
+            },
+            {
+              "match": "href=\"news/index.php\"",
+              "context": "evel1 menuHidden li-224\"><a class=\"menuA level1 menuHidden\" href=\"news/index.php\" target=\"_self\">News</a></li> <li class=\"menuLI level1 m"
+            },
+            {
+              "match": "href=\"community/village_events_photo_archive.php\"",
+              "context": "evel1 menuHidden li-235\"><a class=\"menuA level1 menuHidden\" href=\"community/village_events_photo_archive.php\" target=\"_self\">Village Events Photo Archive</a></li> <l"
+            },
+            {
+              "match": "href=\"community/village_newsletter.php\"",
+              "context": "evel1 menuHidden li-236\"><a class=\"menuA level1 menuHidden\" href=\"community/village_newsletter.php\" target=\"_self\">Village Newsletter</a></li> <li class=\"m"
+            },
+            {
+              "match": "href=\"boards_and_commissions/special_events_commission.php\"",
+              "context": "evel1 menuHidden li-267\"><a class=\"menuA level1 menuHidden\" href=\"boards_and_commissions/special_events_commission.php\" target=\"_self\">Special Events Commission</a></li> <li c"
+            },
+            {
+              "match": "href=\"departments/community_development/news_and_information.php\"",
+              "context": "evel2 menuHidden li-274\"><a class=\"menuA level2 menuHidden\" href=\"departments/community_development/news_and_information.php\" target=\"_self\">Common Questions</a></li> <li class=\"m"
+            },
+            {
+              "match": "href=\"departments/fire/fire_prevention_bureau/index.php\"",
+              "context": "evel2 menuHidden li-288\"><a class=\"menuA level2 menuHidden\" href=\"departments/fire/fire_prevention_bureau/index.php\" target=\"_self\">Fire Prevention Bureau</a></li> <li cl"
+            },
+            {
+              "match": "href=\"departments/fire/news_and_information/index.php\"",
+              "context": "evel2 menuHidden li-287\"><a class=\"menuA level2 menuHidden\" href=\"departments/fire/news_and_information/index.php\" target=\"_self\">News and Information</a></li> </ul>"
+            },
+            {
+              "match": "href=\"departments/police/news_and_information/index.php\"",
+              "context": "evel2 menuHidden li-307\"><a class=\"menuA level2 menuHidden\" href=\"departments/police/news_and_information/index.php\" target=\"_self\">News and Information</a></li> </ul>"
+            },
+            {
+              "match": "href=\"calendar/index.php#\"",
+              "context": "ss=\"clearfix\"> <li class=\"calendar-tab-filter-all\"> <a href=\"calendar/index.php#\" class=\"calendar-tab-filter\" data-calendar-id=\"clear\">Show A"
+            },
+            {
+              "match": "href=\"calendar\"",
+              "context": "dal-event-title\">City Council Meeting </h3> <a href=\"calendar\" class=\"flex-shrink-0 btn btn-light bg-white b"
+            },
+            {
+              "match": "href=\"./news\"",
+              "context": "umb mb-3\"> <ul> <li class=\"breadcrumb-item\"><a href=\"./news\">Articles</a> <li class=\"breadcrumb-item active text"
+            },
+            {
+              "match": "href=\"https://builder1.revize.com/revize/security/index.jsp?webspace=mountprospectil&filename=/calendar/index.php\"",
+              "context": "the Government Website Experts <i class=\"bi bi-dot\"></i> <a href=\"https://builder1.revize.com/revize/security/index.jsp?webspace=mountprospectil&filename=/calendar/index.php\" class=\"btn btn-primary btn-primary-rz btn-sm rounded-1\">Sta"
+            }
+          ],
+          "(?i)\\b(?:civicplus|civicengage|granicus|revize|govstack|opencities|drupal|wordpress)\\b": [
+            {
+              "match": "revize",
+              "context": "ite_assets/logo.png?t=202607240230110\" /> <link href=\"/revize/plugins/setup/css/revize.css\" rel=\"stylesheet\" type=\"text/c"
+            },
+            {
+              "match": "Revize",
+              "context": "ith('.revize.com'); // If different domain and NOT a Revize domain, show confirmation popup if (linkHost !== curre"
+            }
+          ]
+        }
       }
-    },
-    {
-      "url": "https://www.ccsd15.net/our-district/calendars",
-      "purpose": "CCSD 15 calendars page - full Finalsite calendar IDs and feed-URL attribute",
-      "item": 198,
-      "probed_at": "2026-10-01T14:40:06+00:00",
-      "status": 200,
-      "final_url": "https://www.ccsd15.net/our-district/calendars",
-      "content_type": "text/html; charset=utf-8",
-      "bytes": 354311,
-      "title": "Calendars - Community Consolidated School District 15",
-      "feed_links": [],
-      "calendar_links": [
-        "https://www.ccsd15.net/community/feed15",
-        "https://www.ccsd15.net/our-district/about-district-15/feed15"
-      ],
-      "pattern_matches": {
-        "data-calendar-ids=\"?[\\d,]+": [
-          {
-            "match": "data-calendar-ids=70,21,40,45,22,41,68,12",
-            "context": "\"fsElement fsCalendar fsGrid fsItemCount_5\" id=\"fsEl_75711\" data-calendar-ids=70,21,40,45,22,41,68,12 data-calendars-feed-uuid=\"3b5ca682-a525-43d8-b5f1-7c5c56312"
-          },
-          {
-            "match": "data-calendar-ids=67,45,68,11,66,15,14,39,38,27,17,10,28,21,26,19,24,40,37,36,35,34,22,33,32,25,31,41,9,29,20,12",
-            "context": "\"fsElement fsCalendar fsGrid fsItemCount_5\" id=\"fsEl_75702\" data-calendar-ids=67,45,68,11,66,15,14,39,38,27,17,10,28,21,26,19,24,40,37,36,35,34,22,33,32,25,31,41,9,29,20,12 data-calendars-feed-uuid=\"989d3e59-b0bd-4972-a29f-ad2ee733e"
-          }
-        ],
-        "data-calendars?-feed-url=\"?[^\"\\s>]*": []
-      }
-    },
-    {
-      "url": "https://adc.d211.org/district-info/info/calendars",
-      "purpose": "D211 calendars page - full Finalsite calendar IDs and feed-URL attribute",
-      "item": 198,
-      "probed_at": "2026-10-01T14:40:06+00:00",
-      "status": 200,
-      "final_url": "https://adc.d211.org/district-info/info/calendars",
-      "content_type": "text/html; charset=utf-8",
-      "bytes": 71982,
-      "title": "Calendars",
-      "feed_links": [],
-      "calendar_links": [],
-      "pattern_matches": {
-        "data-calendar-ids=\"?[\\d,]+": [
-          {
-            "match": "data-calendar-ids=27",
-            "context": "\"fsElement fsCalendar fsList fsItemCount_5\" id=\"fsEl_35307\" data-calendar-ids=27 data-calendars-feed-uuid=\"f1ec5afa-8c52-4371-b614-2c1c74ac1"
-          }
-        ],
-        "data-calendars?-feed-url=\"?[^\"\\s>]*": []
-      }
-    },
-    {
-      "url": "https://www.sd25.org/fs/calendar-manager/events.ics?calendar_ids[]=361&calendar_ids[]=349&calendar_ids[]=360",
-      "purpose": "D25 - Finalsite iCal for calendar IDs 361, 349, 360 (candidate source)",
-      "item": 198,
-      "probed_at": "2026-10-01T14:40:08+00:00",
-      "status": 200,
-      "final_url": "https://www.sd25.org/fs/calendar-manager/events.ics?calendar_ids%5B%5D=361&calendar_ids%5B%5D=349&calendar_ids%5B%5D=360",
-      "content_type": "text/calendar; charset=utf-8",
-      "bytes": 447,
-      "ics_event_count": 0
-    },
-    {
-      "url": "https://adc.d211.org/fs/calendar-manager/events.ics?calendar_ids[]=27",
-      "purpose": "D211 - Finalsite iCal for calendar ID 27 (candidate source)",
-      "item": 198,
-      "probed_at": "2026-10-01T14:40:08+00:00",
-      "status": 200,
-      "final_url": "https://adc.d211.org/fs/calendar-manager/events.ics?calendar_ids%5B%5D=27",
-      "content_type": "text/calendar; charset=utf-8",
-      "bytes": 8548,
-      "ics_event_count": 20
     }
   ]
 }
