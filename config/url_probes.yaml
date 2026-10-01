@@ -17,45 +17,60 @@
 #             probed too (same patterns, one level deep, never further).
 
 probes:
-  # Round 3 (2026-10-01). Round 2's targeted IDs (LibCal cid, LibraryCalendar
-  # lc_calendar_feed, Blackboard MIID) appear nowhere in these pages, so ask a
-  # broader question: which calendar platform is this, and does it embed or
-  # link a subscribable feed? One shared pattern set for all five pages.
+  # Round 4 (2026-10-01). Round 3 fingerprinted each platform: DPPL's
+  # calendar is Communico (meta apiserver api.communico.co, assets on
+  # cdn.libnet.info) - the same platform as the Mount Prospect and Indian
+  # Trails library feeds already in config - and all three school districts
+  # run Finalsite.
 
-  # Items 182/213: Des Plaines and Palatine libraries.
-  - url: https://calendar.dppl.org/
+  # Items 182/213, Des Plaines. Communico's RSS endpoint with the exact
+  # generic filter blob the two working libnet feeds use (all locations,
+  # ages and types, 30 days). Two candidate hosts: the custom domain, and
+  # the libnet.info default (a guess at the subdomain).
+  - url: https://calendar.dppl.org/feeds?data=eyJmZWVkVHlwZSI6InJzcyIsImZpbHRlcnMiOnsibG9jYXRpb24iOlsiYWxsIl0sImFnZXMiOlsiYWxsIl0sInR5cGVzIjpbImFsbCJdLCJ0YWdzIjpbXSwidGVybSI6IiIsImRheXMiOjMwfX0=
     item: 182
-    purpose: Des Plaines library calendar - platform fingerprint and any feed/API URL
-    patterns: &calendar_signals
-      - '(?i)calendar\.google\.com/calendar/[^"''\s<]*'
-      - '(?i)webcal://[^"''\s<]*'
-      - '(?i)[^"''\s<=]*\.ics\b[^"''\s<]*'
-      - '(?i)[^"''\s<=]*/(?:api|ajax|feeds?)/[^"''\s<]*'
-      - '(?i)\b(?:libcal|springshare|librarymarket|communico|libnet|evanced|bibliocommons|locable|trumba|localist)\b'
-      - '(?i)\b(?:finalsite|thrillshare|apptegy|edlio|schoolmessenger|blackboard|campussuite|rschooltoday|schoolpointe)\b'
+    purpose: Des Plaines library - Communico RSS feed on the custom domain (candidate source)
+    patterns: &rss_items
+      - '<item>'
+      - '<title>[^<]{1,90}'
+  - url: https://dppl.libnet.info/feeds?data=eyJmZWVkVHlwZSI6InJzcyIsImZpbHRlcnMiOnsibG9jYXRpb24iOlsiYWxsIl0sImFnZXMiOlsiYWxsIl0sInR5cGVzIjpbImFsbCJdLCJ0YWdzIjpbXSwidGVybSI6IiIsImRheXMiOjMwfX0=
+    item: 182
+    purpose: Des Plaines library - Communico RSS feed on the libnet.info host (guessed subdomain)
+    patterns: *rss_items
+
+  # Items 182/213, Palatine. Round 3's only fingerprint was a BiblioCommons
+  # *catalog* link, which says nothing about the events platform.
   - url: https://www.palatinelibrary.org/events/upcoming
     item: 182
-    purpose: Palatine library events - platform fingerprint and any feed/API URL
-    patterns: *calendar_signals
+    purpose: Palatine library events - CMS and events-module fingerprint, any feed/export path
+    patterns:
+      - '(?i)\bdrupal\b[^"<]{0,40}'
+      - '(?i)(?:librarymarket|library market|lc-calendar|lc_calendar|libraryaware|evanced|tockify|assabet|localist|trumba|wordpress|tribe-events)'
+      - '(?i)[^"''\s<=]*/events?/(?:feed|rss|ical|ics|export|subscribe)[^"''\s<]*'
+      - '(?i)<meta name="generator" content="[^"]*"'
 
-  # Item 198: round 2's follow reached each district's calendar page, which has
-  # no icalfeed.ashx or MIID at all - the old Blackboard feeds look retired, not
-  # rotated. Probe the calendar pages directly for whatever replaced them.
+  # Item 198: all three districts run Finalsite, whose calendars subscribe
+  # via /fs/calendar-manager/events.ics?calendar_ids[]=N. Find the IDs.
   - url: https://www.sd25.org/calendar-73
     item: 198
-    purpose: D25 calendar page - platform fingerprint and any feed/embed URL
-    patterns: *calendar_signals
+    purpose: D25 calendar page - Finalsite calendar IDs for events.ics
+    patterns: &finalsite_ids
+      - '(?i)data-calendar[-_]?ids?="[^"]*"'
+      - '(?i)calendar_ids?(?:%5B%5D|\[\])?=\d+'
+      - '(?i)fs/calendar-manager/[^"''\s<]*'
+      - '(?i)fs-?calendar[^"<]{0,60}'
   - url: https://www.ccsd15.net/our-district/calendars
     item: 198
-    purpose: CCSD 15 calendars page - platform fingerprint and any feed/embed URL
-    patterns: *calendar_signals
+    purpose: CCSD 15 calendars page - Finalsite calendar IDs for events.ics
+    patterns: *finalsite_ids
   - url: https://adc.d211.org/district-info/info/calendars
     item: 198
-    purpose: D211 calendars page - platform fingerprint and any feed/embed URL
-    patterns: *calendar_signals
+    purpose: D211 calendars page - Finalsite calendar IDs for events.ics
+    patterns: *finalsite_ids
 
   # Answered and removed (see ROADMAP.md items 212 and 215):
   # - The five 403 sources: bot walls (Access Denied / Cloudflare) from a runner too.
   # - mppd.org/events/?ical=1: 200 with 0 bytes. Keep the configured webcal feed.
   # - www.dppl.org home page: links only the library's blog RSS.
   # - mppd.org/sponsorship/: no dollar amounts in the page; prices aren't published there.
+  # - calendar.dppl.org: Communico (round 3). sd25/ccsd15/d211: Finalsite (round 3).
