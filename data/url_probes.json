@@ -1,90 +1,28 @@
 {
   "results": [
     {
-      "url": "https://www.ccsd15.net/fs/calendar-manager/events.ics?calendar_ids[]=70&calendar_ids[]=21&calendar_ids[]=40&calendar_ids[]=45&calendar_ids[]=22&calendar_ids[]=41&calendar_ids[]=68&calendar_ids[]=12",
-      "purpose": "CCSD 15 - Finalsite iCal for the first calendar element's 8 IDs (candidate source)",
-      "item": 198,
-      "probed_at": "2026-10-01T14:47:46+00:00",
-      "status": 200,
-      "final_url": "https://www.ccsd15.net/fs/calendar-manager/events.ics?calendar_ids%5B%5D=70&calendar_ids%5B%5D=21&calendar_ids%5B%5D=40&calendar_ids%5B%5D=45&calendar_ids%5B%5D=22&calendar_ids%5B%5D=41&calendar_ids%5B%5D=68&calendar_ids%5B%5D=12",
-      "content_type": "text/calendar; charset=utf-8",
-      "bytes": 44813,
-      "ics_event_count": 64
-    },
-    {
-      "url": "https://www.ccsd15.net/fs/calendar-manager/events.ics?calendar_ids[]=67&calendar_ids[]=45&calendar_ids[]=68&calendar_ids[]=11&calendar_ids[]=66&calendar_ids[]=15&calendar_ids[]=14&calendar_ids[]=39&calendar_ids[]=38&calendar_ids[]=27&calendar_ids[]=17&calendar_ids[]=10&calendar_ids[]=28&calendar_ids[]=21&calendar_ids[]=26&calendar_ids[]=19&calendar_ids[]=24&calendar_ids[]=40&calendar_ids[]=37&calendar_ids[]=36&calendar_ids[]=35&calendar_ids[]=34&calendar_ids[]=22&calendar_ids[]=33&calendar_ids[]=32&calendar_ids[]=25&calendar_ids[]=31&calendar_ids[]=41&calendar_ids[]=9&calendar_ids[]=29&calendar_ids[]=20&calendar_ids[]=12",
-      "purpose": "CCSD 15 - Finalsite iCal for the second calendar element's 32 IDs (candidate source)",
-      "item": 198,
-      "probed_at": "2026-10-01T14:47:47+00:00",
-      "status": 200,
-      "final_url": "https://www.ccsd15.net/fs/calendar-manager/events.ics?calendar_ids%5B%5D=67&calendar_ids%5B%5D=45&calendar_ids%5B%5D=68&calendar_ids%5B%5D=11&calendar_ids%5B%5D=66&calendar_ids%5B%5D=15&calendar_ids%5B%5D=14&calendar_ids%5B%5D=39&calendar_ids%5B%5D=38&calendar_ids%5B%5D=27&calendar_ids%5B%5D=17&calendar_ids%5B%5D=10&calendar_ids%5B%5D=28&calendar_ids%5B%5D=21&calendar_ids%5B%5D=26&calendar_ids%5B%5D=19&calendar_ids%5B%5D=24&calendar_ids%5B%5D=40&calendar_ids%5B%5D=37&calendar_ids%5B%5D=36&calendar_ids%5B%5D=35&calendar_ids%5B%5D=34&calendar_ids%5B%5D=22&calendar_ids%5B%5D=33&calendar_ids%5B%5D=32&calendar_ids%5B%5D=25&calendar_ids%5B%5D=31&calendar_ids%5B%5D=41&calendar_ids%5B%5D=9&calendar_ids%5B%5D=29&calendar_ids%5B%5D=20&calendar_ids%5B%5D=12",
-      "content_type": "text/calendar; charset=utf-8",
-      "bytes": 240241,
-      "ics_event_count": 677
-    },
-    {
-      "url": "https://www.mountprospect.org/",
-      "purpose": "Village of Mount Prospect home page - current news and calendar links (old paths now 404)",
+      "url": "https://www.mountprospect.org/news/index.php",
+      "purpose": "Village news index - href shape of individual news items (for detail_link_pattern) and any RSS",
       "item": 192,
-      "probed_at": "2026-10-01T14:47:50+00:00",
+      "probed_at": "2026-10-01T14:55:19+00:00",
       "status": 200,
-      "final_url": "https://www.mountprospect.org/",
+      "final_url": "https://www.mountprospect.org/news/index.php",
       "content_type": "text/html; charset=UTF-8",
-      "bytes": 201449,
+      "bytes": 149661,
       "title": "Mount Prospect, IL",
       "feed_links": [],
       "calendar_links": [
-        "https://www.mountprospect.org/plans_and_reports/community_information_and_fact_check_portal/prestige_feed.php"
+        "https://www.mountprospect.org/news/plans_and_reports/community_information_and_fact_check_portal/prestige_feed.php"
       ],
       "pattern_matches": {
-        "(?i)href=\"[^\"]*(?:news|calendar|events?|notify|rss)[^\"]*\"": [
+        "(?i)href=\"[^\"]*news[^\"]*(?:\\?|/)[^\"]*\"": [
           {
-            "match": "href=\"/revize/plugins/revize_calendar/core/main.css\"",
-            "context": "g > * {flex: 0 0 auto; width:33.333332%} } </style> <link href=\"/revize/plugins/revize_calendar/core/main.css\" rel=\"stylesheet\" /> <link href=\"/revize/plugins/revize_cal"
-          },
-          {
-            "match": "href=\"/revize/plugins/revize_calendar/daygrid/main.min.css\"",
-            "context": "s/revize_calendar/core/main.css\" rel=\"stylesheet\" /> <link href=\"/revize/plugins/revize_calendar/daygrid/main.min.css\" rel=\"stylesheet\" /> <link href=\"/revize/plugins/revize_cal"
-          },
-          {
-            "match": "href=\"/revize/plugins/revize_calendar/timegrid/main.min.css\"",
-            "context": "e_calendar/daygrid/main.min.css\" rel=\"stylesheet\" /> <link href=\"/revize/plugins/revize_calendar/timegrid/main.min.css\" rel=\"stylesheet\" /> <link href=\"/revize/plugins/revize_cal"
-          },
-          {
-            "match": "href=\"/revize/plugins/revize_calendar/list/main.min.css\"",
-            "context": "_calendar/timegrid/main.min.css\" rel=\"stylesheet\" /> <link href=\"/revize/plugins/revize_calendar/list/main.min.css\" rel=\"stylesheet\" /> <link href=\"_assets_/plugins/revizeCal"
-          },
-          {
-            "match": "href=\"_assets_/plugins/revizeCalendar/css/mini.css\"",
-            "context": "vize_calendar/list/main.min.css\" rel=\"stylesheet\" /> <link href=\"_assets_/plugins/revizeCalendar/css/mini.css\" rel=\"stylesheet\" /> <link href=\"/revize/plugins/revize_cal"
-          },
-          {
-            "match": "href=\"/revize/plugins/revize_calendar/core/nav-panels.css\"",
-            "context": "ins/revizeCalendar/css/mini.css\" rel=\"stylesheet\" /> <link href=\"/revize/plugins/revize_calendar/core/nav-panels.css\" rel=\"stylesheet\" /><script> var defaultCalendarColor = \"#"
+            "match": "href=\"news/index.php#rz-content-wrap\"",
+            "context": "n btn-light bg-white px-4 p-3 gap-4 align-items-center\" href=\"news/index.php#rz-content-wrap\"> <span class=\"d-inline-flex align-items-center gap-2\">"
           },
           {
             "match": "href=\"news/index.php\"",
             "context": "evel1 menuHidden li-224\"><a class=\"menuA level1 menuHidden\" href=\"news/index.php\" target=\"_self\">News</a></li> <li class=\"menuLI level1 m"
-          },
-          {
-            "match": "href=\"community/village_events_photo_archive.php\"",
-            "context": "evel1 menuHidden li-235\"><a class=\"menuA level1 menuHidden\" href=\"community/village_events_photo_archive.php\" target=\"_self\">Village Events Photo Archive</a></li> <l"
-          },
-          {
-            "match": "href=\"community/village_newsletter.php\"",
-            "context": "evel1 menuHidden li-236\"><a class=\"menuA level1 menuHidden\" href=\"community/village_newsletter.php\" target=\"_self\">Village Newsletter</a></li> <li class=\"m"
-          },
-          {
-            "match": "href=\"boards_and_commissions/special_events_commission.php\"",
-            "context": "evel1 menuHidden li-267\"><a class=\"menuA level1 menuHidden\" href=\"boards_and_commissions/special_events_commission.php\" target=\"_self\">Special Events Commission</a></li> <li c"
-          },
-          {
-            "match": "href=\"departments/community_development/news_and_information.php\"",
-            "context": "evel2 menuHidden li-274\"><a class=\"menuA level2 menuHidden\" href=\"departments/community_development/news_and_information.php\" target=\"_self\">Common Questions</a></li> <li class=\"m"
-          },
-          {
-            "match": "href=\"departments/fire/fire_prevention_bureau/index.php\"",
-            "context": "evel2 menuHidden li-288\"><a class=\"menuA level2 menuHidden\" href=\"departments/fire/fire_prevention_bureau/index.php\" target=\"_self\">Fire Prevention Bureau</a></li> <li cl"
           },
           {
             "match": "href=\"departments/fire/news_and_information/index.php\"",
@@ -95,133 +33,117 @@
             "context": "evel2 menuHidden li-307\"><a class=\"menuA level2 menuHidden\" href=\"departments/police/news_and_information/index.php\" target=\"_self\">News and Information</a></li> </ul>"
           },
           {
-            "match": "href=\"calendar/index.php\"",
-            "context": "d-flex align-items-stretch\" data-aos-duration=\"600\"> <a href=\"calendar/index.php\" target=\"_self\" class=\"rz-btn-element d-flex align-item"
-          },
-          {
-            "match": "href=\"calendar\"",
-            "context": "dal-event-title\">City Council Meeting </h3> <a href=\"calendar\" class=\"flex-shrink-0 btn btn-light bg-white b"
-          },
-          {
-            "match": "href=\"./news\"",
-            "context": "umb mb-3\"> <ul> <li class=\"breadcrumb-item\"><a href=\"./news\">Articles</a> <li class=\"breadcrumb-item active text"
+            "match": "href=\"https://builder1.revize.com/revize/security/index.jsp?webspace=mountprospectil&filename=/news/index.php\"",
+            "context": "the Government Website Experts <i class=\"bi bi-dot\"></i> <a href=\"https://builder1.revize.com/revize/security/index.jsp?webspace=mountprospectil&filename=/news/index.php\" class=\"btn btn-primary btn-primary-rz btn-sm rounded-1\">Sta"
           }
         ],
-        "(?i)\\b(?:civicplus|civicengage|granicus|revize|govstack|opencities|drupal|wordpress)\\b": [
+        "(?i)href=\"[^\"]*(?:rss|feed)[^\"]*\"": [
           {
-            "match": "revize",
-            "context": "ite_assets/logo.png?t=202607240230110\" /> <link href=\"/revize/plugins/setup/css/revize.css\" rel=\"stylesheet\" type=\"text/c"
-          },
-          {
-            "match": "Revize",
-            "context": "ith('.revize.com'); // If different domain and NOT a Revize domain, show confirmation popup if (linkHost !== curre"
+            "match": "href=\"plans_and_reports/community_information_and_fact_check_portal/prestige_feed.php\"",
+            "context": "evel2 menuHidden li-171\"><a class=\"menuA level2 menuHidden\" href=\"plans_and_reports/community_information_and_fact_check_portal/prestige_feed.php\" target=\"_self\">Prestige Feed</a></li> <li class=\"menu"
           }
         ]
-      },
-      "followed": {
-        "url": "https://www.mountprospect.org/calendar/index.php",
-        "purpose": "",
-        "item": null,
-        "probed_at": "2026-10-01T14:47:50+00:00",
-        "status": 200,
-        "final_url": "https://www.mountprospect.org/calendar/index.php",
-        "content_type": "text/html; charset=UTF-8",
-        "bytes": 150170,
-        "title": "Mount Prospect, IL",
-        "feed_links": [],
-        "calendar_links": [
-          "https://www.mountprospect.org/calendar/plans_and_reports/community_information_and_fact_check_portal/prestige_feed.php"
+      }
+    },
+    {
+      "url": "https://www.mountprospect.org/calendar/index.php",
+      "purpose": "Village calendar - Revize calendar data/feed/iCal endpoint",
+      "item": 192,
+      "probed_at": "2026-10-01T14:55:19+00:00",
+      "status": 200,
+      "final_url": "https://www.mountprospect.org/calendar/index.php",
+      "content_type": "text/html; charset=UTF-8",
+      "bytes": 150170,
+      "title": "Mount Prospect, IL",
+      "feed_links": [],
+      "calendar_links": [
+        "https://www.mountprospect.org/calendar/plans_and_reports/community_information_and_fact_check_portal/prestige_feed.php"
+      ],
+      "pattern_matches": {
+        "(?i)[^\"'\\s<=]*\\.ics\\b[^\"'\\s<]*": [],
+        "(?i)[^\"'\\s<=(]*(?:calendar_data|getEvents|events?\\.(?:json|php)|revize_calendar/[^\"'\\s<]*\\.php|webspace[^\"'\\s<]*)[^\"'\\s<)]*": [
+          {
+            "match": "webspace_page_permissions",
+            "context": "rmissions_options = 'warningsOFF' RZ.permissions_module = 'webspace_page_permissions' RZ.webspace = \"mountprospectil\" RZ.webspacedesc = \"\";"
+          },
+          {
+            "match": "RZ.webspace",
+            "context": "sOFF' RZ.permissions_module = 'webspace_page_permissions' RZ.webspace = \"mountprospectil\" RZ.webspacedesc = \"\"; RZ.featurespa"
+          },
+          {
+            "match": "RZ.webspacedesc",
+            "context": "ebspace_page_permissions' RZ.webspace = \"mountprospectil\" RZ.webspacedesc = \"\"; RZ.featurespattern = '(EZ)'; null RZ.webspacel"
+          },
+          {
+            "match": "RZ.webspacelinksurl",
+            "context": "webspacedesc = \"\"; RZ.featurespattern = '(EZ)'; null RZ.webspacelinksurl = '' RZ.webspacelinksurl = './webspace/links.html' RZ.wor"
+          },
+          {
+            "match": "./webspace/links.html",
+            "context": "; null RZ.webspacelinksurl = '' RZ.webspacelinksurl = './webspace/links.html' RZ.workflowlist = 'Default Workflow,Public Works Workflow"
+          },
+          {
+            "match": "RZ.webspace_config",
+            "context": "if (!RZ.nextseq) RZ.nextseq = {linknames:{},modules:{}}; RZ.webspace_config = new Object(); RZ.webspace_config.admin_email = \"noreply@"
+          },
+          {
+            "match": "RZ.webspace_config.admin_email",
+            "context": "ames:{},modules:{}}; RZ.webspace_config = new Object(); RZ.webspace_config.admin_email = \"noreply@revize.com\"; RZ.webspace_config.calendar_option"
+          },
+          {
+            "match": "RZ.webspace_config.calendar_options",
+            "context": "); RZ.webspace_config.admin_email = \"noreply@revize.com\"; RZ.webspace_config.calendar_options = \"max_events=6\"; RZ.webspace_config.form_captcha = \"yes\";"
+          },
+          {
+            "match": "RZ.webspace_config.form_captcha",
+            "context": "m\"; RZ.webspace_config.calendar_options = \"max_events=6\"; RZ.webspace_config.form_captcha = \"yes\"; RZ.webspace_config.form_server = \"revizeserver\";"
+          },
+          {
+            "match": "RZ.webspace_config.form_server",
+            "context": "\"max_events=6\"; RZ.webspace_config.form_captcha = \"yes\"; RZ.webspace_config.form_server = \"revizeserver\"; RZ.webspace_config.form_technology = \"js"
+          },
+          {
+            "match": "RZ.webspace_config.form_technology",
+            "context": "= \"yes\"; RZ.webspace_config.form_server = \"revizeserver\"; RZ.webspace_config.form_technology = \"jsp\"; RZ.webspace_config.formwizard_ftp_password = \"\";"
+          },
+          {
+            "match": "RZ.webspace_config.formwizard_ftp_password",
+            "context": "evizeserver\"; RZ.webspace_config.form_technology = \"jsp\"; RZ.webspace_config.formwizard_ftp_password = \"\"; RZ.webspace_config.formwizard_ftp_port = \"\"; RZ.web"
+          },
+          {
+            "match": "RZ.webspace_config.formwizard_ftp_port",
+            "context": "= \"jsp\"; RZ.webspace_config.formwizard_ftp_password = \"\"; RZ.webspace_config.formwizard_ftp_port = \"\"; RZ.webspace_config.formwizard_ftp_server = \"\"; RZ.w"
+          },
+          {
+            "match": "RZ.webspace_config.formwizard_ftp_server",
+            "context": "ssword = \"\"; RZ.webspace_config.formwizard_ftp_port = \"\"; RZ.webspace_config.formwizard_ftp_server = \"\"; RZ.webspace_config.formwizard_ftp_user = \"\"; RZ.web"
+          },
+          {
+            "match": "RZ.webspace_config.formwizard_ftp_user",
+            "context": "port = \"\"; RZ.webspace_config.formwizard_ftp_server = \"\"; RZ.webspace_config.formwizard_ftp_user = \"\"; RZ.webspace_config.formwizard_setup = \"yes\"; RZ.web"
+          },
+          {
+            "match": "RZ.webspace_config.formwizard_setup",
+            "context": "server = \"\"; RZ.webspace_config.formwizard_ftp_user = \"\"; RZ.webspace_config.formwizard_setup = \"yes\"; RZ.webspace_config.formwizard_smtp_password = \"xx"
+          },
+          {
+            "match": "RZ.webspace_config.formwizard_smtp_password",
+            "context": "p_user = \"\"; RZ.webspace_config.formwizard_setup = \"yes\"; RZ.webspace_config.formwizard_smtp_password = \"xxx\"; RZ.webspace_config.formwizard_smtp_server = \"xxx\""
+          },
+          {
+            "match": "RZ.webspace_config.formwizard_smtp_server",
+            "context": "es\"; RZ.webspace_config.formwizard_smtp_password = \"xxx\"; RZ.webspace_config.formwizard_smtp_server = \"xxx\"; RZ.webspace_config.formwizard_smtp_user = \"xxx\";"
+          },
+          {
+            "match": "RZ.webspace_config.formwizard_smtp_user",
+            "context": "\"xxx\"; RZ.webspace_config.formwizard_smtp_server = \"xxx\"; RZ.webspace_config.formwizard_smtp_user = \"xxx\"; RZ.webspace_config.google_analytics = \"\"; RZ.web"
+          },
+          {
+            "match": "RZ.webspace_config.google_analytics",
+            "context": "= \"xxx\"; RZ.webspace_config.formwizard_smtp_user = \"xxx\"; RZ.webspace_config.google_analytics = \"\"; RZ.webspace_config.home_pageid = \"0\"; RZ.webspace_c"
+          }
         ],
-        "pattern_matches": {
-          "(?i)href=\"[^\"]*(?:news|calendar|events?|notify|rss)[^\"]*\"": [
-            {
-              "match": "href=\"/revize/plugins/revize_calendar/core/main.css\"",
-              "context": "g > * {flex: 0 0 auto; width:33.333332%} } </style> <link href=\"/revize/plugins/revize_calendar/core/main.css\" rel=\"stylesheet\" /> <link href=\"/revize/plugins/revize_cal"
-            },
-            {
-              "match": "href=\"/revize/plugins/revize_calendar/daygrid/main.min.css\"",
-              "context": "s/revize_calendar/core/main.css\" rel=\"stylesheet\" /> <link href=\"/revize/plugins/revize_calendar/daygrid/main.min.css\" rel=\"stylesheet\" /> <link href=\"/revize/plugins/revize_cal"
-            },
-            {
-              "match": "href=\"/revize/plugins/revize_calendar/timegrid/main.min.css\"",
-              "context": "e_calendar/daygrid/main.min.css\" rel=\"stylesheet\" /> <link href=\"/revize/plugins/revize_calendar/timegrid/main.min.css\" rel=\"stylesheet\" /> <link href=\"/revize/plugins/revize_cal"
-            },
-            {
-              "match": "href=\"/revize/plugins/revize_calendar/list/main.min.css\"",
-              "context": "_calendar/timegrid/main.min.css\" rel=\"stylesheet\" /> <link href=\"/revize/plugins/revize_calendar/list/main.min.css\" rel=\"stylesheet\" /> <link href=\"_assets_/plugins/revizeCal"
-            },
-            {
-              "match": "href=\"_assets_/plugins/revizeCalendar/css/mini.css\"",
-              "context": "vize_calendar/list/main.min.css\" rel=\"stylesheet\" /> <link href=\"_assets_/plugins/revizeCalendar/css/mini.css\" rel=\"stylesheet\" /> <link href=\"/revize/plugins/revize_cal"
-            },
-            {
-              "match": "href=\"/revize/plugins/revize_calendar/core/nav-panels.css\"",
-              "context": "ins/revizeCalendar/css/mini.css\" rel=\"stylesheet\" /> <link href=\"/revize/plugins/revize_calendar/core/nav-panels.css\" rel=\"stylesheet\" /><script> var defaultCalendarColor = \"#"
-            },
-            {
-              "match": "href=\"calendar/index.php#rz-content-wrap\"",
-              "context": "n btn-light bg-white px-4 p-3 gap-4 align-items-center\" href=\"calendar/index.php#rz-content-wrap\"> <span class=\"d-inline-flex align-items-center gap-2\">"
-            },
-            {
-              "match": "href=\"news/index.php\"",
-              "context": "evel1 menuHidden li-224\"><a class=\"menuA level1 menuHidden\" href=\"news/index.php\" target=\"_self\">News</a></li> <li class=\"menuLI level1 m"
-            },
-            {
-              "match": "href=\"community/village_events_photo_archive.php\"",
-              "context": "evel1 menuHidden li-235\"><a class=\"menuA level1 menuHidden\" href=\"community/village_events_photo_archive.php\" target=\"_self\">Village Events Photo Archive</a></li> <l"
-            },
-            {
-              "match": "href=\"community/village_newsletter.php\"",
-              "context": "evel1 menuHidden li-236\"><a class=\"menuA level1 menuHidden\" href=\"community/village_newsletter.php\" target=\"_self\">Village Newsletter</a></li> <li class=\"m"
-            },
-            {
-              "match": "href=\"boards_and_commissions/special_events_commission.php\"",
-              "context": "evel1 menuHidden li-267\"><a class=\"menuA level1 menuHidden\" href=\"boards_and_commissions/special_events_commission.php\" target=\"_self\">Special Events Commission</a></li> <li c"
-            },
-            {
-              "match": "href=\"departments/community_development/news_and_information.php\"",
-              "context": "evel2 menuHidden li-274\"><a class=\"menuA level2 menuHidden\" href=\"departments/community_development/news_and_information.php\" target=\"_self\">Common Questions</a></li> <li class=\"m"
-            },
-            {
-              "match": "href=\"departments/fire/fire_prevention_bureau/index.php\"",
-              "context": "evel2 menuHidden li-288\"><a class=\"menuA level2 menuHidden\" href=\"departments/fire/fire_prevention_bureau/index.php\" target=\"_self\">Fire Prevention Bureau</a></li> <li cl"
-            },
-            {
-              "match": "href=\"departments/fire/news_and_information/index.php\"",
-              "context": "evel2 menuHidden li-287\"><a class=\"menuA level2 menuHidden\" href=\"departments/fire/news_and_information/index.php\" target=\"_self\">News and Information</a></li> </ul>"
-            },
-            {
-              "match": "href=\"departments/police/news_and_information/index.php\"",
-              "context": "evel2 menuHidden li-307\"><a class=\"menuA level2 menuHidden\" href=\"departments/police/news_and_information/index.php\" target=\"_self\">News and Information</a></li> </ul>"
-            },
-            {
-              "match": "href=\"calendar/index.php#\"",
-              "context": "ss=\"clearfix\"> <li class=\"calendar-tab-filter-all\"> <a href=\"calendar/index.php#\" class=\"calendar-tab-filter\" data-calendar-id=\"clear\">Show A"
-            },
-            {
-              "match": "href=\"calendar\"",
-              "context": "dal-event-title\">City Council Meeting </h3> <a href=\"calendar\" class=\"flex-shrink-0 btn btn-light bg-white b"
-            },
-            {
-              "match": "href=\"./news\"",
-              "context": "umb mb-3\"> <ul> <li class=\"breadcrumb-item\"><a href=\"./news\">Articles</a> <li class=\"breadcrumb-item active text"
-            },
-            {
-              "match": "href=\"https://builder1.revize.com/revize/security/index.jsp?webspace=mountprospectil&filename=/calendar/index.php\"",
-              "context": "the Government Website Experts <i class=\"bi bi-dot\"></i> <a href=\"https://builder1.revize.com/revize/security/index.jsp?webspace=mountprospectil&filename=/calendar/index.php\" class=\"btn btn-primary btn-primary-rz btn-sm rounded-1\">Sta"
-            }
-          ],
-          "(?i)\\b(?:civicplus|civicengage|granicus|revize|govstack|opencities|drupal|wordpress)\\b": [
-            {
-              "match": "revize",
-              "context": "ite_assets/logo.png?t=202607240230110\" /> <link href=\"/revize/plugins/setup/css/revize.css\" rel=\"stylesheet\" type=\"text/c"
-            },
-            {
-              "match": "Revize",
-              "context": "ith('.revize.com'); // If different domain and NOT a Revize domain, show confirmation popup if (linkHost !== curre"
-            }
-          ]
-        }
+        "(?i)(?:url|source|events)\\s*:\\s*[\"'][^\"']+[\"']": []
       }
     }
   ]
