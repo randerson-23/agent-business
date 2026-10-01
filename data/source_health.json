@@ -4,7 +4,7 @@
     259,
     259,
     259,
-    259,
+    255,
     255,
     255,
     255,
@@ -12,7 +12,6 @@
     255
   ],
   "arlington-heights-60005:Arlington Heights Park District \u2014 Events": [
-    18,
     17,
     17,
     17,
@@ -21,7 +20,8 @@
     17,
     17,
     17,
-    17
+    17,
+    19
   ],
   "arlington-heights-60005:Village of Arlington Heights \u2014 News": [
     10,
@@ -52,7 +52,7 @@
     4,
     4,
     4,
-    4,
+    5,
     5,
     5,
     5,
@@ -81,7 +81,7 @@
     3,
     3,
     3,
-    3
+    483
   ],
   "mount-prospect-60056:Downtown Mount Prospect \u2014 Events": [
     0,
@@ -103,7 +103,7 @@
     0
   ],
   "mount-prospect-60056:Mount Prospect Park District \u2014 Events": [
-    15,
+    14,
     14,
     14,
     14,
@@ -115,11 +115,11 @@
     14
   ],
   "mount-prospect-60056:Mount Prospect Public Library \u2014 Events": [
-    271,
     269,
     269,
     269,
     267,
+    259,
     259,
     259,
     259,
@@ -131,7 +131,7 @@
     65,
     65,
     65,
-    65,
+    66,
     66,
     66,
     66,
@@ -201,13 +201,13 @@
     0
   ],
   "wheeling-60090:Indian Trails Public Library \u2014 Events": [
-    220,
     218,
     218,
     218,
     215,
     312,
     312,
+    379,
     379,
     379,
     379
@@ -217,7 +217,7 @@
     0,
     0,
     0,
-    0,
+    6,
     6,
     6,
     6,
