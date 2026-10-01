@@ -12029,6 +12029,33 @@ but not the questions the probes were asked.
      a one-line source change per library. Same for item 198 with the
      schools' `MIID`s.
 
+     **Round 2 results, 2026-10-01 (`e6d52e3`): every targeted ID came
+     back absent.** All six pages returned 200.
+     - **The guessed formats are wrong.** `cid=`, `ical_subscribe`,
+       `rss.php`, `lc_calendar_feed` and `_wrapper_format=` appear
+       nowhere in either library page. The only `ical` matches were
+       noise (`vertical-align`, `canonical`).
+     - **`follow` worked.** It reached each district's real calendar
+       page: `sd25.org/calendar-73`, `ccsd15.net/our-district/calendars`
+       and `adc.d211.org/district-info/info/calendars`. None of the three
+       contains `icalfeed.ashx`, `MIID` or `ModuleInstanceID`, so the
+       three 404 feeds look **retired with the old CMS, not rotated**.
+       Item 198's "find the new MIID" framing is probably wrong.
+     - **MPPD's sponsorship page has no dollar amounts.** Prices aren't
+       published there, so that probe was removed.
+
+     **Round 3 (queued 2026-10-01):** stop guessing one platform's ID
+     format and ask what platform each page runs. The two library pages
+     and the three district calendar pages (probed directly now that
+     their URLs are known) share one pattern set: Google Calendar
+     embeds (an embed's `src=` id gives a public `.ics`), `webcal:` and
+     `.ics` URLs, `/api/`, `/ajax/` and `/feed/` paths, and platform
+     names (LibCal, LibraryMarket, Communico, Finalsite, Thrillshare,
+     Edlio, and others). If a page loads its events entirely from an API
+     with no fingerprint in the static HTML, the probe can't see it.
+     That would be the point to ask the organisation for a feed
+     (item 152) rather than keep probing.
+
 #### P2 (new)
 
 216. **Render a weekly "this weekend in [town]" share card per region.**
