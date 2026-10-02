@@ -2671,7 +2671,57 @@ def _round_robin_attendable(sections: list[dict]) -> list[dict]:
     return interleaved
 
 
-def _fit_subject(titles: list[str], total: int) -> str:
+# ROADMAP.md item 222: words that mark a one-off community occasion -
+# the kind of thing a subject line should lead with - versus a routine
+# programme, which shouldn't, even when it happens to sort first.
+_OCCASION_WORDS = re.compile(
+    r"\b(?:fest|festival|oktoberfest|fair|parade|market|concert|tree lighting|"
+    r"trick[- ]or[- ]treat|carnival|celebration|halloween|harvest|holiday|"
+    r"fireworks|craft show|art show|block party|5k|fun run)\b",
+    re.I,
+)
+_ROUTINE_WORDS = re.compile(
+    r"\b(?:class|classes|lesson|lessons|workshop|meeting|board|council|session|"
+    r"practice|club|drawing|tutoring|lab|open gym|registration|closed|closure)\b",
+    re.I,
+)
+_TRAILING_YEAR = re.compile(r"\s*[-–—:,]?\s*\(?\b(?:19|20)\d\d\b\)?\s*$")
+_TRAILING_SESSION = re.compile(
+    r"\s*\((?:(?:week|session|part|day|class)\s*\d+(?:\s*of\s*\d+)?|(?:mon|tues|wednes|thurs|fri|satur|sun)day)\)\s*$", re.I
+)
+
+
+def _clean_subject_title(title: str) -> str:
+    """A title as it should read in a subject line (item 222): no trailing
+    year or edition token ("Life Drawing at the Library 2026") and no
+    session suffix ("(Week 5 of 5)"). Card titles stay as published -
+    this only shapes the subject."""
+    cleaned = _TRAILING_SESSION.sub("", title).strip()
+    # "Class of 2026" names a cohort, not an edition - keep that year.
+    if not re.search(r"\bof\s+(?:19|20)\d\d\s*$", cleaned, re.I):
+        cleaned = _TRAILING_YEAR.sub("", cleaned).strip()
+    cleaned = _TRAILING_SESSION.sub("", cleaned).strip()
+    return cleaned or title
+
+
+def _occasion_score(event: dict) -> int:
+    """How strongly an event should lead a subject line (item 222). A
+    festival beats a library class even when the class sorts first."""
+    title = event.get("title", "")
+    tags = set(event.get("tags") or [])
+    score = 0
+    if _OCCASION_WORDS.search(title):
+        score += 3
+    if _ROUTINE_WORDS.search(title):
+        score -= 2
+    if "free" in tags:
+        score += 1
+    if "kid_friendly" in tags:
+        score += 1
+    return score
+
+
+def _fit_subject(titles: list[str], total: int, lone_leads: list[str] | None = None) -> str:
     """'{A}, {B} and N more this weekend' within SUBJECT_MAX_LEN.
 
     Prefers whole real titles over clipped ones: the first pair that
@@ -2689,7 +2739,9 @@ def _fit_subject(titles: list[str], total: int) -> str:
         return f"{lead} and {more} more this weekend" if more else f"{lead} this weekend"
 
     attempts = [titles[:2]] if len(titles) >= 2 else []
-    attempts += [[title] for title in titles]
+    # Item 222: only a top-ranked title may lead alone, so a shorter but
+    # less notable title can't win just by fitting - clip the top one instead.
+    attempts += [[title] for title in (lone_leads if lone_leads is not None else titles)]
     for named in attempts:
         subject = compose(named)
         if len(subject) <= SUBJECT_MAX_LEN:
@@ -2716,11 +2768,19 @@ def build_combined_email_subject_line(sections: list[dict]) -> str:
     attendable = _round_robin_attendable(sections)
     if not attendable:
         return f"This week across {_join_names([s['region_name'] for s in sections])}: what's coming up"
-    titles = _pick_preheader_titles(attendable, limit=5)
+    # Item 222: lead with the most notable occasion, not whichever event
+    # round-robin order puts first. sorted() is stable, so ties keep the
+    # round-robin spread across towns.
+    ranked = sorted(attendable, key=_occasion_score, reverse=True)
+    cleaned = [dict(e, title=_clean_subject_title(e["title"])) for e in ranked]
+    titles = _pick_preheader_titles(cleaned, limit=5)
     if not titles:
         with_events = [s["region_name"] for s in sections if any(e.get("attendable", True) for e in s["weekend_events"])]
         return truncate(f"This weekend across {_join_names(with_events)}", SUBJECT_MAX_LEN)
-    return _fit_subject(titles, len(attendable))
+    scores = {e["title"]: _occasion_score(e) for e in cleaned}
+    best = max((scores.get(title, 0) for title in titles), default=0)
+    lone_leads = [title for title in titles if scores.get(title, 0) == best]
+    return _fit_subject(titles, len(attendable), lone_leads)
 
 
 def build_combined_email_preheader(sections: list[dict]) -> str:
