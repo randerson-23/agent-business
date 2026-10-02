@@ -12459,7 +12459,7 @@ for every recorded build.
      which is item 213's original goal, reached through the village
      rather than the library.
 
-222. **Pick the subject's lead event by how notable it is, not by
+222. ✅ **DONE — Pick the subject's lead event by how notable it is, not by
      round-robin order.** Item 217 got the format right. The current
      subject is *"Life Drawing at the Library 2026 and 20 more this
      weekend"*. `_round_robin_attendable()` interleaves regions in order,
@@ -12484,6 +12484,33 @@ for every recorded build.
      - **Tests:** a fixture weekend with a festival and a library class
        must lead with the festival; a title ending in "2026" must render
        without it.
+
+     ✅ **Shipped 2026-10-02.** `_occasion_score()` gives +3 for an
+     occasion word (fest, festival, fair, parade, market, concert, tree
+     lighting, trick-or-treat, carnival, and so on), -2 for a routine
+     word (class, lesson, workshop, meeting, session, club, drawing,
+     closure, and so on), and +1 each for the `free` and `kid_friendly`
+     tags. Events don't carry their source section, so source level
+     isn't scored. Candidates are sorted by that score. The sort is
+     stable, so ties keep item 217's round-robin spread across towns.
+     The recurring and near-duplicate rules are unchanged.
+     `_clean_subject_title()` strips trailing years ("… 2026", "(2026)",
+     "– 2026"), session suffixes ("(Week 5 of 5)") and multi-day weekday
+     markers ("(Friday)"), but keeps a cohort year ("Class of 2026").
+     It only affects the subject. Card titles stay as published.
+
+     A real-data check caught a bug that the fixture test alone would
+     have missed. Run against the titles in the CI-built email on
+     `main`, Harmony Fest ranked first but was too long to fit whole,
+     and item 217's fitter then fell through to the first title that
+     fit, **"Senior Center: Travelogue"** (score 0). That defeated the
+     ranking. Now only top-ranked titles may lead alone, and the top one
+     is clipped before a weaker title can replace it. Live subject before
+     this change: *"Life Drawing at the Library 2026 and 20 more this
+     weekend"*. The same data after: *"Harmony Fest & Taste of
+     Arlington… and 15 more this weekend"* (the count is approximate,
+     reconstructed from the email's HTML). 7 new tests and 2 updated;
+     581 pass.
 
 #### P2 (new)
 
