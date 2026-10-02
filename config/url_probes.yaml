@@ -17,63 +17,26 @@
 #             probed too (same patterns, one level deep, never further).
 
 probes:
-  # Round 8 (2026-10-02). Item 221: Palatine is the last town with zero
-  # weekend events. palatine.il.us and wheelingil.gov run CivicPlus
-  # CivicEngage, which conventionally publishes RSS/iCal for calendar and
-  # news. The feed URLs below are recalled conventions; each site's own
-  # /rss.aspx index is probed too, so a real URL can replace a guess.
+  # Round 9 (2026-10-02). Round 8 answered item 221: both villages' CivicPlus
+  # feeds work, and Palatine's news RSS, Palatine's Main Calendar iCal (19
+  # events) and Wheeling's Main Calendar iCal are now configured sources.
+  # It also found the Village of Mount Prospect's Revize site publishes
+  # _includes_/published/news_list.json.
 
-  # Item 221: Village of Palatine (CivicPlus; Main Calendar is CID=14).
-  - url: https://www.palatine.il.us/rss.aspx
-    item: 221
-    purpose: Palatine - CivicPlus feed index; lists the site's own RSSFeed.aspx URLs
-    patterns: &civic_feed_index
-      - '(?i)RSSFeed\.aspx\?[^"''\s<]*'
-      - '(?i)iCalendar\.aspx\?[^"''\s<]*'
-  - url: https://www.palatine.il.us/RSSFeed.aspx?ModID=58&CID=All-calendar.xml
-    item: 221
-    purpose: Palatine - CivicPlus calendar RSS (recalled convention; candidate new source)
-    patterns: &rss_items
-      - '<item>'
-      - '<title>[^<]{1,90}'
-  - url: https://www.palatine.il.us/RSSFeed.aspx?ModID=1&CID=All-newsflash.xml
-    item: 221
-    purpose: Palatine - CivicPlus news RSS (recalled convention; candidate swap for the 0-item news scrape)
-    patterns: *rss_items
-  - url: https://www.palatine.il.us/common/modules/iCalendar/iCalendar.aspx?catID=14&feed=calendar
-    item: 221
-    purpose: Palatine - CivicPlus iCal for the Main Calendar, catID=14 (recalled convention)
-
-  # Item 221: Village of Wheeling (CivicPlus; its calendar scrape returns 2-3 items).
-  - url: https://www.wheelingil.gov/rss.aspx
-    item: 221
-    purpose: Wheeling - CivicPlus feed index; lists the site's own RSSFeed.aspx URLs
-    patterns: *civic_feed_index
-  - url: https://www.wheelingil.gov/RSSFeed.aspx?ModID=58&CID=All-calendar.xml
-    item: 221
-    purpose: Wheeling - CivicPlus calendar RSS (recalled convention; candidate swap)
-    patterns: *rss_items
-
-  # Item 223: Palatine Park District's special events in Vermont Systems WebTrac.
-  - url: https://ilpalatineweb.myvscloud.com/webtrac/web/search.html?module=AR&type=SPECEVNT
-    item: 223
-    purpose: Palatine Park District special events (WebTrac) - result rows, dates, any export link
-    patterns:
-      - '(?i)\b(?:Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)[a-z]*\.? \d{1,2},? 20\d\d'
-      - '\b\d{1,2}/\d{1,2}/20\d\d\b'
-      - '(?i)(?:export|ical|\.ics|rss|csv)[^"''\s<]{0,60}'
-
-  # Item 192: round 7 found the Village of Mount Prospect's news and calendar
-  # pages render in JavaScript (Revize RZ.* config, no static item links).
-  # One more look for the data the calendar app loads.
-  - url: https://www.mountprospect.org/calendar/index.php
+  # Item 192: the shape of Mount Prospect's news JSON, for a json fetcher.
+  - url: https://www.mountprospect.org/_includes_/published/news_list.json
     item: 192
-    purpose: Village calendar (Revize) - the calendar app's data/source URL
+    purpose: Village of Mount Prospect news JSON (Revize) - its keys and one item's shape
     patterns:
-      - '(?i)calendar_app[^"''\s<]*'
-      - '(?i)[^"''\s<=(]*\.json\b[^"''\s<)]*'
-      - '(?i)RZ\.webspace\s*=\s*["''][^"'']+'
-      - '(?i)calendar_options[^;]{0,160}'
+      - '"[A-Za-z_]+"\s*:'
+      - '"(?:title|name|headline)"\s*:\s*"[^"]{1,90}'
+      - '"(?:date|pubdate|published|created|post_date|start)[A-Za-z_]*"\s*:\s*"[^"]{1,40}'
+      - '"(?:url|link|href|path)"\s*:\s*"[^"]{1,120}'
+
+  # Item 221: confirm Wheeling's Main Calendar iCal returns events, as Palatine's did.
+  - url: https://www.wheelingil.gov/common/modules/iCalendar/iCalendar.aspx?catID=14&feed=calendar
+    item: 221
+    purpose: Wheeling Main Calendar iCal - event count (now the configured source)
 
   # Answered and removed (see ROADMAP.md items 212 and 215):
   # - The five 403 sources: bot walls (Access Denied / Cloudflare) from a runner too.
@@ -88,3 +51,8 @@ probes:
   # - www.ccsd15.net: Finalsite; the 8-ID calendar iCal is now the configured source (round 6).
   # - www.mountprospect.org/: moved to Revize, reachable (200); news and calendar paths found (round 6).
   # - mountprospect.org/news/index.php: JavaScript-rendered (Revize); no static article links (round 7).
+  # - palatine.il.us + wheelingil.gov: CivicPlus; news RSS and Main Calendar (catID=14)
+  #   iCal now configured (round 8). Both sites' /rss.aspx list their real feed IDs.
+  # - ilpalatineweb.myvscloud.com (WebTrac): 403 from a runner (round 8, item 223).
+  # - mountprospect.org/calendar/index.php: no calendar data URL; it lists only
+  #   catalogue/news/job/bids JSON (round 8).

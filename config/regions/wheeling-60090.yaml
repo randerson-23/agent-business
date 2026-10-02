@@ -75,11 +75,18 @@ region:
 
 sources:
   - name: "Village of Wheeling — Calendar"
-    type: html_events
-    # CONFIRMED (run 35549497769, 2026-09-21): 4 real items on the first
-    # real build - see the header comment for the full account.
-    url: "https://www.wheelingil.gov/calendar.aspx"
-    keywords: ["event", "meeting", "board", "commission", "festival", "open house", "notice", "closed", "holiday"]
+    type: ics
+    # ROADMAP.md item 221: wheelingil.gov runs CivicPlus CivicEngage, the same
+    # platform as palatine.il.us. The HTML scrape of calendar.aspx returned
+    # only 2-3 items and declined to 0 (the item 209 health regression). The
+    # site's own /rss.aspx lists "Main-Calendar-14", and its calendar RSS
+    # returned real items from a GitHub runner (URL-probe round 8,
+    # 2026-10-02): a Village Board pancake breakfast, meetings and holiday
+    # closures. This is the iCal form of that same Main Calendar, chosen over
+    # the RSS for its structured event dates - the same endpoint returned 19
+    # events for Palatine's Main Calendar. Name unchanged so its health
+    # history continues.
+    url: "https://www.wheelingil.gov/common/modules/iCalendar/iCalendar.aspx?catID=14&feed=calendar"
     section: "Village Calendar"
     enabled: true
 
