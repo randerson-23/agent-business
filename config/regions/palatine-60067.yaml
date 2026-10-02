@@ -79,15 +79,27 @@ region:
 
 sources:
   - name: "Village of Palatine — News"
-    type: html_events
-    # Fixed 2026-08-30 (see header note): the Village's real domain is
-    # palatine.il.us, not palatineil.gov - confirmed via WebSearch against
-    # the Village's own site. Still relies on the keyword fallback rather
-    # than an invented detail_link_pattern (no individual news-item URL
-    # shape confirmed yet).
-    url: "https://www.palatine.il.us/CivicAlerts.aspx"
-    keywords: ["news", "press release", "mayor", "council", "meeting", "notice", "advisory", "alert", "closure"]
+    type: rss
+    # ROADMAP.md item 221: palatine.il.us runs CivicPlus CivicEngage. The
+    # HTML scrape of CivicAlerts.aspx returned 0 items on every recorded
+    # build. The site's own feed index (/rss.aspx) lists this News Flash
+    # RSS, which returned real items from a GitHub runner (URL-probe round
+    # 8, 2026-10-02), including "Village Recommended Trick-or-Treating Hours".
+    url: "https://www.palatine.il.us/RSSFeed.aspx?ModID=1&CID=All-newsflash.xml"
     section: "Village News"
+    enabled: true
+
+  - name: "Village of Palatine — Calendar"
+    type: ics
+    # ROADMAP.md item 221: a new source, not a swap - Palatine had no village
+    # calendar source at all. CivicPlus's iCal for the Main Calendar
+    # (catID=14, listed as "Main-Calendar-14" in the site's /rss.aspx)
+    # returned 200 text/calendar with 19 events from a GitHub runner (round
+    # 8). Its RSS twin carried Tales for Tots, Play On!, the Fire Department
+    # Open House and the Downtown Palatine Grand Re-Opening - the community
+    # events Palatine's weekend digest has been missing on every build.
+    url: "https://www.palatine.il.us/common/modules/iCalendar/iCalendar.aspx?catID=14&feed=calendar"
+    section: "Village Calendar"
     enabled: true
 
   - name: "Palatine Public Library District — Events"

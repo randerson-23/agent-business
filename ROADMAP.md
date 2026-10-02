@@ -12423,7 +12423,7 @@ for every recorded build.
 
 #### P1 (new)
 
-221. **Read the Village of Palatine through CivicPlus's own feeds. It
+221. ✅ **DONE — Read the Village of Palatine through CivicPlus's own feeds. It
      is the last empty town.** Palatine has contributed zero weekend
      events on every recorded build. Its library has no feed path (the
      build loop's round 5 concluded "ask the library", via item 152).
@@ -12458,6 +12458,29 @@ for every recorded build.
      Success criterion: Palatine names at least one dated weekend event,
      which is item 213's original goal, reached through the village
      rather than the library.
+
+     ✅ **Shipped 2026-10-02.** Probe round 8 (`0d35fd9`) validated the
+     conventions, and each site's own `/rss.aspx` index confirmed the
+     feed IDs (both list `Main-Calendar-14`).
+     - **Palatine news:** `RSSFeed.aspx?ModID=1&CID=All-newsflash.xml`
+       returned real items. The *Village of Palatine — News* source
+       moved off the CivicAlerts HTML scrape (0 items on every build)
+       to this RSS feed.
+     - **Palatine calendar:** `iCalendar.aspx?catID=14&feed=calendar`
+       returned **200, `text/calendar`, 19 events**. It is added as a
+       **new** *Village of Palatine — Calendar* source. Its RSS twin
+       listed *Tales for Tots*, *Play On!*, the Fire Department Open
+       House and the Downtown Palatine Grand Re-Opening.
+     - **Wheeling calendar:** the *Village of Wheeling — Calendar* source
+       moved from the `calendar.aspx` scrape (2–3 items, falling to 0,
+       which was item 209's regression) to the same Main Calendar iCal.
+       Its RSS twin returned real items (a Village Board pancake
+       breakfast, meetings, closures). The name is unchanged, so its
+       health history continues. Round 9 confirms its event count.
+     - **For item 218:** Palatine's news RSS includes *"Village
+       Recommended Trick-or-Treating Hours"*. Read that item's text
+       before filling in Palatine's `trick_or_treat.hours`, and check
+       the weekday against 2026 (item 219).
 
 222. ✅ **DONE — Pick the subject's lead event by how notable it is, not by
      round-robin order.** Item 217 got the format right. The current
@@ -12527,6 +12550,11 @@ for every recorded build.
      is the bigger and more reliable source of weekend events. Respect
      WebTrac's terms of use: the probe and any scrape stay one polite,
      identified request per build.
+
+     **Probe round 8: 403 from a GitHub runner.** WebTrac refuses the
+     honest identified client. With Palatine's village calendar now
+     configured (item 221), this is lower priority still. Leave it until
+     a reason appears.
 
 Competitors reviewed this pass: **CivicPlus CivicEngage** as a feed
 platform (Palatine and Wheeling village sites; conventional calendar and
