@@ -1,291 +1,37 @@
 {
   "results": [
     {
-      "url": "https://www.mountprospect.org/_includes_/published/news_list.json",
-      "purpose": "Village of Mount Prospect news JSON (Revize) - its keys and one item's shape",
-      "item": 192,
-      "probed_at": "2026-10-02T14:18:29+00:00",
+      "url": "https://www.sd25.org/fs/calendar-manager/events.ics?calendar_ids[]=361",
+      "purpose": "D25 - Finalsite iCal for calendar ID 361 alone",
+      "item": 198,
+      "probed_at": "2026-10-02T14:27:02+00:00",
       "status": 200,
-      "final_url": "https://www.mountprospect.org/_includes_/published/news_list.json",
-      "content_type": "application/json",
-      "bytes": 16755,
-      "pattern_matches": {
-        "\"[A-Za-z_]+\"\\s*:": [
-          {
-            "match": "\"date\":",
-            "context": "{\"11\":{\"date\":\"May 5, 2026\",\"brief\":\"\",\"seq_no\":\"0.00\",\"image\":\"website_as"
-          },
-          {
-            "match": "\"brief\":",
-            "context": "{\"11\":{\"date\":\"May 5, 2026\",\"brief\":\"\",\"seq_no\":\"0.00\",\"image\":\"website_assets\\/news-2.jpg?t=202"
-          },
-          {
-            "match": "\"seq_no\":",
-            "context": "{\"11\":{\"date\":\"May 5, 2026\",\"brief\":\"\",\"seq_no\":\"0.00\",\"image\":\"website_assets\\/news-2.jpg?t=202608191703420"
-          },
-          {
-            "match": "\"image\":",
-            "context": "{\"11\":{\"date\":\"May 5, 2026\",\"brief\":\"\",\"seq_no\":\"0.00\",\"image\":\"website_assets\\/news-2.jpg?t=202608191703420\",\"link\":\"\\/art"
-          },
-          {
-            "match": "\"link\":",
-            "context": ".00\",\"image\":\"website_assets\\/news-2.jpg?t=202608191703420\",\"link\":\"\\/articles\\/Property-Tax-Relief-Grant-11.php\",\"options\":{\"c"
-          },
-          {
-            "match": "\"options\":",
-            "context": "3420\",\"link\":\"\\/articles\\/Property-Tax-Relief-Grant-11.php\",\"options\":{\"category_rid\":[\"20\",\"1436\"],\"category_name\":[\"(Deleted Cat"
-          },
-          {
-            "match": "\"category_rid\":",
-            "context": "\":\"\\/articles\\/Property-Tax-Relief-Grant-11.php\",\"options\":{\"category_rid\":[\"20\",\"1436\"],\"category_name\":[\"(Deleted Category)\",\"Human S"
-          },
-          {
-            "match": "\"category_name\":",
-            "context": "elief-Grant-11.php\",\"options\":{\"category_rid\":[\"20\",\"1436\"],\"category_name\":[\"(Deleted Category)\",\"Human Services\"],\"image_display\":{},\""
-          },
-          {
-            "match": "\"image_display\":",
-            "context": "6\"],\"category_name\":[\"(Deleted Category)\",\"Human Services\"],\"image_display\":{},\"cardStyle\":\"stacked\"},\"id\":\"11\",\"title\":\"Property Tax Re"
-          },
-          {
-            "match": "\"cardStyle\":",
-            "context": ":[\"(Deleted Category)\",\"Human Services\"],\"image_display\":{},\"cardStyle\":\"stacked\"},\"id\":\"11\",\"title\":\"Property Tax Relief Grant\"},\"1"
-          },
-          {
-            "match": "\"id\":",
-            "context": "\"Human Services\"],\"image_display\":{},\"cardStyle\":\"stacked\"},\"id\":\"11\",\"title\":\"Property Tax Relief Grant\"},\"13\":{\"date\":\"May"
-          },
-          {
-            "match": "\"title\":",
-            "context": "vices\"],\"image_display\":{},\"cardStyle\":\"stacked\"},\"id\":\"11\",\"title\":\"Property Tax Relief Grant\"},\"13\":{\"date\":\"May 5, 2026\",\"bri"
-          }
-        ],
-        "\"(?:title|name|headline)\"\\s*:\\s*\"[^\"]{1,90}": [
-          {
-            "match": "\"title\":\"Property Tax Relief Grant",
-            "context": "vices\"],\"image_display\":{},\"cardStyle\":\"stacked\"},\"id\":\"11\",\"title\":\"Property Tax Relief Grant\"},\"13\":{\"date\":\"May 5, 2026\",\"brief\":\"\",\"seq_no\":\"0.00\",\"im"
-          },
-          {
-            "match": "\"title\":\"Mount Prospect Update - November 21, 2025",
-            "context": "gory)\"],\"image_display\":{},\"cardStyle\":\"stacked\"},\"id\":\"13\",\"title\":\"Mount Prospect Update - November 21, 2025\"},\"47\":{\"date\":\"Aug 19, 2026\",\"brief\":\"Training Blog 2\",\"se"
-          },
-          {
-            "match": "\"title\":\"Training Blog 2",
-            "context": "chive\"],\"image_display\":{},\"cardStyle\":\"stacked\"},\"id\":\"47\",\"title\":\"Training Blog 2\"},\"15\":{\"date\":\"Sep 28, 2026\",\"brief\":\"The Village&rsquo;s"
-          },
-          {
-            "match": "\"title\":\"Leaf Collection Starting October 19",
-            "context": "\\/ENG\"],\"image_display\":{},\"cardStyle\":\"stacked\"},\"id\":\"15\",\"title\":\"Leaf Collection Starting October 19\"},\"17\":{\"date\":\"May 5, 2026\",\"brief\":\"\",\"seq_no\":\"0.00\",\"im"
-          },
-          {
-            "match": "\"title\":\"Thanksgiving Closures",
-            "context": "gory)\"],\"image_display\":{},\"cardStyle\":\"stacked\"},\"id\":\"17\",\"title\":\"Thanksgiving Closures\"},\"140\":{\"date\":\"Sep 28, 2026\",\"brief\":\"\",\"seq_no\":\"10.00\","
-          },
-          {
-            "match": "\"title\":\"Village Offices Closed Monday, October 12",
-            "context": "Fire\"],\"image_display\":{},\"cardStyle\":\"stacked\"},\"id\":\"140\",\"title\":\"Village Offices Closed Monday, October 12\"},\"142\":{\"date\":\"Sep 30, 2026\",\"brief\":\"\",\"seq_no\":\"-1.00\","
-          },
-          {
-            "match": "\"title\":\"October 2026 Village Newsletter",
-            "context": "Fire\"],\"image_display\":{},\"cardStyle\":\"stacked\"},\"id\":\"142\",\"title\":\"October 2026 Village Newsletter\"},\"122\":{\"date\":\"Sep 28, 2026\",\"brief\":\"On Tuesday, April 6"
-          },
-          {
-            "match": "\"title\":\"Mount Prospect Village Board Candidates | Petition circulation began August 25, 2026 for t",
-            "context": "Main\"],\"image_display\":{},\"cardStyle\":\"stacked\"},\"id\":\"122\",\"title\":\"Mount Prospect Village Board Candidates | Petition circulation began August 25, 2026 for the April 6, 2027 Consolidated Election\"},\"111\":{\"date\":\"Sep"
-          },
-          {
-            "match": "\"title\":\"2026 Employee Flu Vaccine Schedule",
-            "context": "anet\"],\"image_display\":{},\"cardStyle\":\"stacked\"},\"id\":\"111\",\"title\":\"2026 Employee Flu Vaccine Schedule\"},\"134\":{\"date\":\"Sep 28, 2026\",\"brief\":\"\",\"seq_no\":\"1.00\",\""
-          },
-          {
-            "match": "\"title\":\"Finance Department Receives Fifth Triple Crown Award",
-            "context": "Main\"],\"image_display\":{},\"cardStyle\":\"stacked\"},\"id\":\"134\",\"title\":\"Finance Department Receives Fifth Triple Crown Award\"},\"146\":{\"date\":\"Oct 1, 2026\",\"brief\":\"<p>Brian Miller, our"
-          },
-          {
-            "match": "\"title\":\"Nationwide Meetings at Village of Mount Prospect",
-            "context": "anet\"],\"image_display\":{},\"cardStyle\":\"stacked\"},\"id\":\"146\",\"title\":\"Nationwide Meetings at Village of Mount Prospect\"},\"113\":{\"date\":\"Sep 25, 2026\",\"brief\":\"\",\"seq_no\":\"2.00\",\""
-          },
-          {
-            "match": "\"title\":\"Mail Ballot, Early Voting\\/Grace Period Voter Registration and Election Day Information fo",
-            "context": "Main\"],\"image_display\":{},\"cardStyle\":\"stacked\"},\"id\":\"113\",\"title\":\"Mail Ballot, Early Voting\\/Grace Period Voter Registration and Election Day Information for the November 3, 2026 Gubernatorial Election\"},\"136\":{\"date"
-          },
-          {
-            "match": "\"title\":\"Randhurst Village Acquired by Rhino Investments Group",
-            "context": "Main\"],\"image_display\":{},\"cardStyle\":\"stacked\"},\"id\":\"136\",\"title\":\"Randhurst Village Acquired by Rhino Investments Group\"},\"138\":{\"date\":\"Sep 28, 2026\",\"brief\":\"\",\"seq_no\":\"4.00\",\""
-          },
-          {
-            "match": "\"title\":\"Village Announces New Director of Building & Inspection Services",
-            "context": "Main\"],\"image_display\":{},\"cardStyle\":\"stacked\"},\"id\":\"138\",\"title\":\"Village Announces New Director of Building & Inspection Services\"},\"70\":{\"date\":\"Jun 29, 2026\",\"brief\":\"<p>The National Weat"
-          },
-          {
-            "match": "\"title\":\"Cooling Sites Available",
-            "context": "chive\"],\"image_display\":{},\"cardStyle\":\"stacked\"},\"id\":\"70\",\"title\":\"Cooling Sites Available\"},\"9\":{\"date\":\"May 5, 2026\",\"brief\":\"\",\"seq_no\":\"0.00\",\"ima"
-          },
-          {
-            "match": "\"title\":\"Police-Department-Investigating-Fatal-Traffic-Cras",
-            "context": "olice\"],\"image_display\":{},\"cardStyle\":\"stacked\"},\"id\":\"60\",\"title\":\"Police-Department-Investigating-Fatal-Traffic-Cras\"},\"82\":{\"date\":\"Jul 22, 2026\",\"brief\":\"\",\"seq_no\":\"0.00\",\"i"
-          },
-          {
-            "match": "\"title\":\"Melas-Meadows Pedestrian Bridge Construction to Begin",
-            "context": "\\/ENG\"],\"image_display\":{},\"cardStyle\":\"stacked\"},\"id\":\"82\",\"title\":\"Melas-Meadows Pedestrian Bridge Construction to Begin\"},\"72\":{\"date\":\"Jun 29, 2026\",\"brief\":\"\",\"seq_no\":\"0.00\",\"i"
-          },
-          {
-            "match": "\"title\":\"Police-Department-Charges-Person-With-Endangering-",
-            "context": "olice\"],\"image_display\":{},\"cardStyle\":\"stacked\"},\"id\":\"62\",\"title\":\"Police-Department-Charges-Person-With-Endangering-\"},\"84\":{\"date\":\"Jun 16, 2026\",\"brief\":\"\",\"seq_no\":\"0.00\",\"i"
-          },
-          {
-            "match": "\"title\":\"2025 Consumer Confidence Report (Water Quality Report)",
-            "context": "\\/ENG\"],\"image_display\":{},\"cardStyle\":\"stacked\"},\"id\":\"84\",\"title\":\"2025 Consumer Confidence Report (Water Quality Report)\"},\"86\":{\"date\":\"Aug 27, 2026\",\"brief\":\"\",\"seq_no\":\"0.00\",\"i"
-          },
-          {
-            "match": "\"title\":\"Maple Scale Causing Sticky Residue and Sooty Mold in Mount Prospect",
-            "context": "\\/ENG\"],\"image_display\":{},\"cardStyle\":\"stacked\"},\"id\":\"86\",\"title\":\"Maple Scale Causing Sticky Residue and Sooty Mold in Mount Prospect\"},\"64\":{\"date\":\"Jul 27, 2026\",\"brief\":\"<p><img style=\\\"disp"
-          }
-        ],
-        "\"(?:date|pubdate|published|created|post_date|start)[A-Za-z_]*\"\\s*:\\s*\"[^\"]{1,40}": [
-          {
-            "match": "\"date\":\"May 5, 2026",
-            "context": "{\"11\":{\"date\":\"May 5, 2026\",\"brief\":\"\",\"seq_no\":\"0.00\",\"image\":\"website_assets\\/news-2"
-          },
-          {
-            "match": "\"date\":\"Aug 19, 2026",
-            "context": ",\"title\":\"Mount Prospect Update - November 21, 2025\"},\"47\":{\"date\":\"Aug 19, 2026\",\"brief\":\"Training Blog 2\",\"seq_no\":\"0.00\",\"image\":\"website"
-          },
-          {
-            "match": "\"date\":\"Sep 28, 2026",
-            "context": "tyle\":\"stacked\"},\"id\":\"47\",\"title\":\"Training Blog 2\"},\"15\":{\"date\":\"Sep 28, 2026\",\"brief\":\"The Village&rsquo;s fall loose-leaf collection pr"
-          },
-          {
-            "match": "\"date\":\"Sep 30, 2026",
-            "context": "\"title\":\"Village Offices Closed Monday, October 12\"},\"142\":{\"date\":\"Sep 30, 2026\",\"brief\":\"\",\"seq_no\":\"-1.00\",\"image\":\"Images\\/Community\\/St"
-          },
-          {
-            "match": "\"date\":\"Sep 24, 2026",
-            "context": ", 2026 for the April 6, 2027 Consolidated Election\"},\"111\":{\"date\":\"Sep 24, 2026\",\"brief\":\"<p>Open to all Village employees; attend a Flu Va"
-          },
-          {
-            "match": "\"date\":\"Oct 1, 2026",
-            "context": "nance Department Receives Fifth Triple Crown Award\"},\"146\":{\"date\":\"Oct 1, 2026\",\"brief\":\"<p>Brian Miller, our Nationwide representative, w"
-          },
-          {
-            "match": "\"date\":\"Sep 25, 2026",
-            "context": ":\"Nationwide Meetings at Village of Mount Prospect\"},\"113\":{\"date\":\"Sep 25, 2026\",\"brief\":\"\",\"seq_no\":\"2.00\",\"image\":\"vote%202026.jpg?t=2026"
-          },
-          {
-            "match": "\"date\":\"Jun 29, 2026",
-            "context": "nces New Director of Building & Inspection Services\"},\"70\":{\"date\":\"Jun 29, 2026\",\"brief\":\"<p>The National Weather Service issued an Excessi"
-          },
-          {
-            "match": "\"date\":\"Aug 20, 2026",
-            "context": ":\"stacked\"},\"id\":\"9\",\"title\":\"Thanksgiving Closures\"},\"60\":{\"date\":\"Aug 20, 2026\",\"brief\":\"\",\"seq_no\":\"0.00\",\"image\":\"Images\\/Departments\\/P"
-          },
-          {
-            "match": "\"date\":\"Jul 22, 2026",
-            "context": "\"Police-Department-Investigating-Fatal-Traffic-Cras\"},\"82\":{\"date\":\"Jul 22, 2026\",\"brief\":\"\",\"seq_no\":\"0.00\",\"image\":\"Images\\/Departments\\/P"
-          },
-          {
-            "match": "\"date\":\"Jun 16, 2026",
-            "context": "\"Police-Department-Charges-Person-With-Endangering-\"},\"84\":{\"date\":\"Jun 16, 2026\",\"brief\":\"\",\"seq_no\":\"0.00\",\"image\":\"Images\\/Village%20Stoc"
-          },
-          {
-            "match": "\"date\":\"Aug 27, 2026",
-            "context": "5 Consumer Confidence Report (Water Quality Report)\"},\"86\":{\"date\":\"Aug 27, 2026\",\"brief\":\"\",\"seq_no\":\"0.00\",\"image\":\"Images\\/Departments\\/P"
-          },
-          {
-            "match": "\"date\":\"Jul 27, 2026",
-            "context": "ing Sticky Residue and Sooty Mold in Mount Prospect\"},\"64\":{\"date\":\"Jul 27, 2026\",\"brief\":\"<p><img style=\\\"display: block; margin-left: auto"
-          }
-        ],
-        "\"(?:url|link|href|path)\"\\s*:\\s*\"[^\"]{1,120}": [
-          {
-            "match": "\"link\":\"\\/articles\\/Property-Tax-Relief-Grant-11.php",
-            "context": ".00\",\"image\":\"website_assets\\/news-2.jpg?t=202608191703420\",\"link\":\"\\/articles\\/Property-Tax-Relief-Grant-11.php\",\"options\":{\"category_rid\":[\"20\",\"1436\"],\"category_name\":[\""
-          },
-          {
-            "match": "\"link\":\"\\/articles\\/Mount-Prospect-Update-November-21-2025-13.php",
-            "context": ".00\",\"image\":\"website_assets\\/news-3.jpg?t=202605051405160\",\"link\":\"\\/articles\\/Mount-Prospect-Update-November-21-2025-13.php\",\"options\":{\"category_rid\":[\"20\"],\"category_name\":[\"(Delete"
-          },
-          {
-            "match": "\"link\":\"\\/articles\\/Training-Blog-2-47.php",
-            "context": ".00\",\"image\":\"website_assets\\/news-1.jpg?t=202609281816310\",\"link\":\"\\/articles\\/Training-Blog-2-47.php\",\"options\":{\"category_rid\":[\"1347\"],\"category_name\":[\"Archi"
-          },
-          {
-            "match": "\"link\":\"\\/articles\\/Leaf-Collection-15.php",
-            "context": ".00\",\"image\":\"website_assets\\/news-4.jpg?t=202605051405300\",\"link\":\"\\/articles\\/Leaf-Collection-15.php\",\"options\":{\"category_rid\":[\"1344\",\"1364\"],\"category_name\":"
-          },
-          {
-            "match": "\"link\":\"\\/articles\\/Thanksgiving-Closures-17.php",
-            "context": ".00\",\"image\":\"website_assets\\/news-1.jpg?t=202609281816310\",\"link\":\"\\/articles\\/Thanksgiving-Closures-17.php\",\"options\":{\"category_rid\":[\"20\"],\"category_name\":[\"(Delete"
-          },
-          {
-            "match": "\"link\":\"\\/articles\\/Village-Offices-Closed-Monday-October-12-140.php",
-            "context": ".00\",\"image\":\"website_assets\\/news-1.jpg?t=202609281816310\",\"link\":\"\\/articles\\/Village-Offices-Closed-Monday-October-12-140.php\",\"options\":{\"category_rid\":[\"1344\",\"1351\",\"1364\",\"1436\",\"14"
-          },
-          {
-            "match": "\"link\":\"\\/articles\\/October-2026-Village-Newsletter-142.php",
-            "context": "ed\\/Cover%20October%202026-FINAL%205.png?t=202609301214190\",\"link\":\"\\/articles\\/October-2026-Village-Newsletter-142.php\",\"options\":{\"category_rid\":[\"1344\",\"1351\",\"1364\",\"1436\",\"14"
-          },
-          {
-            "match": "\"link\":\"\\/articles\\/Mount-Prospect-Village-Board-Candidates-Petition-circulation-began-August-25-2026-for-the-April-6-2027-Conso",
-            "context": "th%20Correct%20Brown%20PMS%204625315.png?t=202610011611480\",\"link\":\"\\/articles\\/Mount-Prospect-Village-Board-Candidates-Petition-circulation-began-August-25-2026-for-the-April-6-2027-Consolidated-Election-122.php\",\"options\":{\"category_rid\":[\"1344\"]"
-          },
-          {
-            "match": "\"link\":\"\\/articles\\/2026-Employee-Flu-Vaccine-Schedule-111.php",
-            "context": "ges\\/Intranet\\/Flu%20Vaccine%20Cover.jpg?t=202609241731240\",\"link\":\"\\/articles\\/2026-Employee-Flu-Vaccine-Schedule-111.php\",\"options\":{\"category_rid\":[\"1473\"],\"category_name\":[\"Intra"
-          },
-          {
-            "match": "\"link\":\"\\/articles\\/Finance-Department-Receives-Fifth-Triple-Crown-Award-134.php",
-            "context": ",\"seq_no\":\"1.00\",\"image\":\"Images\\/VH.jpg?t=202609281802250\",\"link\":\"\\/articles\\/Finance-Department-Receives-Fifth-Triple-Crown-Award-134.php\",\"options\":{\"category_rid\":[\"1344\"],\"category_name\":[\"Main\""
-          },
-          {
-            "match": "\"link\":\"\\/articles\\/Nationwide-Meetings-at-Village-of-Mount-Prospect-146.php",
-            "context": "image\":\"Images\\/Intranet\\/Nationwide.png?t=202610011425060\",\"link\":\"\\/articles\\/Nationwide-Meetings-at-Village-of-Mount-Prospect-146.php\",\"options\":{\"category_rid\":[\"1473\"],\"category_name\":[\"Intra"
-          },
-          {
-            "match": "\"link\":\"\\/articles\\/Mail-Ballot-Early-VotingGrace-Period-Voter-Registration-and-Election-Day-Information-for-the-November-3-2026",
-            "context": "\"seq_no\":\"2.00\",\"image\":\"vote%202026.jpg?t=202609251443490\",\"link\":\"\\/articles\\/Mail-Ballot-Early-VotingGrace-Period-Voter-Registration-and-Election-Day-Information-for-the-November-3-2026-Gubernatorial-Election-113.php\",\"options\":{\"category_rid\":["
-          },
-          {
-            "match": "\"link\":\"\\/articles\\/Randhurst-Village-Acquired-by-Rhino-Investments-Group-136.php",
-            "context": "c%20Development\\/Randhurst%20Village.jpg?t=202609281804180\",\"link\":\"\\/articles\\/Randhurst-Village-Acquired-by-Rhino-Investments-Group-136.php\",\"options\":{\"category_rid\":[\"1344\"],\"category_name\":[\"Main\""
-          },
-          {
-            "match": "\"link\":\"\\/articles\\/Village-Announces-New-Director-of-Building-Inspection-Services-138.php",
-            "context": "th%20Correct%20Brown%20PMS%204625315.png?t=202610011611480\",\"link\":\"\\/articles\\/Village-Announces-New-Director-of-Building-Inspection-Services-138.php\",\"options\":{\"category_rid\":[\"1344\"],\"category_name\":[\"Main\""
-          },
-          {
-            "match": "\"link\":\"\\/articles\\/Police-Department-Investigating-Fatal-Traffic-Cras-60.php",
-            "context": "lice\\/News%20and%20Information\\/NEWS.jpg?t=202608251154580\",\"link\":\"\\/articles\\/Police-Department-Investigating-Fatal-Traffic-Cras-60.php\",\"options\":{\"category_rid\":[\"1351\"],\"category_name\":[\"Polic"
-          },
-          {
-            "match": "\"link\":\"\\/articles\\/Melas-Meadows-Pedestrian-Bridge-Construction-to-Begin-82.php",
-            "context": "ms\\/Screenshot%202026-08-27%20113202.png?t=202608271232540\",\"link\":\"\\/articles\\/Melas-Meadows-Pedestrian-Bridge-Construction-to-Begin-82.php\",\"options\":{\"category_rid\":[\"1364\"],\"category_name\":[\"PW\\/E"
-          },
-          {
-            "match": "\"link\":\"\\/articles\\/Cooling-Sites-Available-72.php",
-            "context": "p%20of%20firefighters%20in%20uniform.jpg?t=202609241058400\",\"link\":\"\\/articles\\/Cooling-Sites-Available-72.php\",\"options\":{\"category_rid\":[\"1436\",\"1438\"],\"category_name\":"
-          },
-          {
-            "match": "\"link\":\"\\/articles\\/2025-Consumer-Confidence-Report-Water-Quality-Report-84.php",
-            "context": "-Water%20Tower%20LR%20(52%20of%2074).png?t=202608271236260\",\"link\":\"\\/articles\\/2025-Consumer-Confidence-Report-Water-Quality-Report-84.php\",\"options\":{\"category_rid\":[\"1364\"],\"category_name\":[\"PW\\/E"
-          },
-          {
-            "match": "\"link\":\"\\/articles\\/Maple-Scale-Causing-Sticky-Residue-and-Sooty-Mold-in-Mount-Prospect-86.php",
-            "context": "%20Works\\/Arbor%20Day\\/maple%20scale.png?t=202608271238520\",\"link\":\"\\/articles\\/Maple-Scale-Causing-Sticky-Residue-and-Sooty-Mold-in-Mount-Prospect-86.php\",\"options\":{\"category_rid\":[\"1364\"],\"category_name\":[\"PW\\/E"
-          }
-        ]
-      }
+      "final_url": "https://www.sd25.org/fs/calendar-manager/events.ics?calendar_ids%5B%5D=361",
+      "content_type": "text/calendar; charset=utf-8",
+      "bytes": 447,
+      "ics_event_count": 0
     },
     {
-      "url": "https://www.wheelingil.gov/common/modules/iCalendar/iCalendar.aspx?catID=14&feed=calendar",
-      "purpose": "Wheeling Main Calendar iCal - event count (now the configured source)",
-      "item": 221,
-      "probed_at": "2026-10-02T14:18:29+00:00",
+      "url": "https://www.sd25.org/fs/calendar-manager/events.ics?calendar_ids[]=349",
+      "purpose": "D25 - Finalsite iCal for calendar ID 349 alone",
+      "item": 198,
+      "probed_at": "2026-10-02T14:27:02+00:00",
       "status": 200,
-      "final_url": "https://www.wheelingil.gov/common/modules/iCalendar/iCalendar.aspx?catID=14&feed=calendar",
+      "final_url": "https://www.sd25.org/fs/calendar-manager/events.ics?calendar_ids%5B%5D=349",
       "content_type": "text/calendar; charset=utf-8",
-      "bytes": 65722,
-      "ics_event_count": 127
+      "bytes": 447,
+      "ics_event_count": 0
+    },
+    {
+      "url": "https://www.sd25.org/fs/calendar-manager/events.ics?calendar_ids[]=360",
+      "purpose": "D25 - Finalsite iCal for calendar ID 360 alone",
+      "item": 198,
+      "probed_at": "2026-10-02T14:27:03+00:00",
+      "status": 200,
+      "final_url": "https://www.sd25.org/fs/calendar-manager/events.ics?calendar_ids%5B%5D=360",
+      "content_type": "text/calendar; charset=utf-8",
+      "bytes": 447,
+      "ics_event_count": 0
     }
   ]
 }
