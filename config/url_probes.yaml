@@ -17,28 +17,63 @@
 #             probed too (same patterns, one level deep, never further).
 
 probes:
-  # Round 7 (2026-10-01). Round 6 found CCSD 15's Finalsite iCal (8 IDs: 64
-  # events; now the configured source) and that mountprospect.org moved to
-  # the Revize CMS and is reachable again (200, not a bot wall). Its news
-  # is at /news/index.php and its calendar at /calendar/index.php, but the
-  # Revize calendar is JavaScript-rendered, so find the link shape of a
-  # real news item and any calendar data/feed endpoint before swapping.
+  # Round 8 (2026-10-02). Item 221: Palatine is the last town with zero
+  # weekend events. palatine.il.us and wheelingil.gov run CivicPlus
+  # CivicEngage, which conventionally publishes RSS/iCal for calendar and
+  # news. The feed URLs below are recalled conventions; each site's own
+  # /rss.aspx index is probed too, so a real URL can replace a guess.
 
-  # Item 192: Village of Mount Prospect news - what does one article link look like?
-  - url: https://www.mountprospect.org/news/index.php
-    item: 192
-    purpose: Village news index - href shape of individual news items (for detail_link_pattern) and any RSS
+  # Item 221: Village of Palatine (CivicPlus; Main Calendar is CID=14).
+  - url: https://www.palatine.il.us/rss.aspx
+    item: 221
+    purpose: Palatine - CivicPlus feed index; lists the site's own RSSFeed.aspx URLs
+    patterns: &civic_feed_index
+      - '(?i)RSSFeed\.aspx\?[^"''\s<]*'
+      - '(?i)iCalendar\.aspx\?[^"''\s<]*'
+  - url: https://www.palatine.il.us/RSSFeed.aspx?ModID=58&CID=All-calendar.xml
+    item: 221
+    purpose: Palatine - CivicPlus calendar RSS (recalled convention; candidate new source)
+    patterns: &rss_items
+      - '<item>'
+      - '<title>[^<]{1,90}'
+  - url: https://www.palatine.il.us/RSSFeed.aspx?ModID=1&CID=All-newsflash.xml
+    item: 221
+    purpose: Palatine - CivicPlus news RSS (recalled convention; candidate swap for the 0-item news scrape)
+    patterns: *rss_items
+  - url: https://www.palatine.il.us/common/modules/iCalendar/iCalendar.aspx?catID=14&feed=calendar
+    item: 221
+    purpose: Palatine - CivicPlus iCal for the Main Calendar, catID=14 (recalled convention)
+
+  # Item 221: Village of Wheeling (CivicPlus; its calendar scrape returns 2-3 items).
+  - url: https://www.wheelingil.gov/rss.aspx
+    item: 221
+    purpose: Wheeling - CivicPlus feed index; lists the site's own RSSFeed.aspx URLs
+    patterns: *civic_feed_index
+  - url: https://www.wheelingil.gov/RSSFeed.aspx?ModID=58&CID=All-calendar.xml
+    item: 221
+    purpose: Wheeling - CivicPlus calendar RSS (recalled convention; candidate swap)
+    patterns: *rss_items
+
+  # Item 223: Palatine Park District's special events in Vermont Systems WebTrac.
+  - url: https://ilpalatineweb.myvscloud.com/webtrac/web/search.html?module=AR&type=SPECEVNT
+    item: 223
+    purpose: Palatine Park District special events (WebTrac) - result rows, dates, any export link
     patterns:
-      - '(?i)href="[^"]*news[^"]*(?:\?|/)[^"]*"'
-      - '(?i)href="[^"]*(?:rss|feed)[^"]*"'
-  # Item 192: Village calendar - Revize's calendar loads events from a data endpoint.
+      - '(?i)\b(?:Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)[a-z]*\.? \d{1,2},? 20\d\d'
+      - '\b\d{1,2}/\d{1,2}/20\d\d\b'
+      - '(?i)(?:export|ical|\.ics|rss|csv)[^"''\s<]{0,60}'
+
+  # Item 192: round 7 found the Village of Mount Prospect's news and calendar
+  # pages render in JavaScript (Revize RZ.* config, no static item links).
+  # One more look for the data the calendar app loads.
   - url: https://www.mountprospect.org/calendar/index.php
     item: 192
-    purpose: Village calendar - Revize calendar data/feed/iCal endpoint
+    purpose: Village calendar (Revize) - the calendar app's data/source URL
     patterns:
-      - '(?i)[^"''\s<=]*\.ics\b[^"''\s<]*'
-      - '(?i)[^"''\s<=(]*(?:calendar_data|getEvents|events?\.(?:json|php)|revize_calendar/[^"''\s<]*\.php|webspace[^"''\s<]*)[^"''\s<)]*'
-      - '(?i)(?:url|source|events)\s*:\s*["''][^"'']+["'']'
+      - '(?i)calendar_app[^"''\s<]*'
+      - '(?i)[^"''\s<=(]*\.json\b[^"''\s<)]*'
+      - '(?i)RZ\.webspace\s*=\s*["''][^"'']+'
+      - '(?i)calendar_options[^;]{0,160}'
 
   # Answered and removed (see ROADMAP.md items 212 and 215):
   # - The five 403 sources: bot walls (Access Denied / Cloudflare) from a runner too.
@@ -52,3 +87,4 @@ probes:
   #   path in five rounds of patterns - next step is asking the library (item 152).
   # - www.ccsd15.net: Finalsite; the 8-ID calendar iCal is now the configured source (round 6).
   # - www.mountprospect.org/: moved to Revize, reachable (200); news and calendar paths found (round 6).
+  # - mountprospect.org/news/index.php: JavaScript-rendered (Revize); no static article links (round 7).

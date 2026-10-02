@@ -12178,6 +12178,16 @@ but not the questions the probes were asked.
      library (no feed path; ask the library, item 152), and the Village
      of Mount Prospect (round 7).
 
+     **Round 7 results (`cc573db`): both Village of Mount Prospect pages
+     are JavaScript-rendered.** `/news/index.php` has no per-article
+     links in its static HTML, only nav and department "news and
+     information" links. `/calendar/index.php` has no `.ics` and only
+     Revize `RZ.webspace_config.*` objects. Swapping either to an
+     `html_events` scrape would publish navigation links, so neither was
+     swapped. Round 8 looks once more for the calendar app's data URL,
+     alongside item 221's CivicPlus feed probes for Palatine and
+     Wheeling and item 223's WebTrac page.
+
 #### P2 (new)
 
 216. **Render a weekly "this weekend in [town]" share card per region.**
