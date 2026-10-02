@@ -17,26 +17,22 @@
 #             probed too (same patterns, one level deep, never further).
 
 probes:
-  # Round 9 (2026-10-02). Round 8 answered item 221: both villages' CivicPlus
-  # feeds work, and Palatine's news RSS, Palatine's Main Calendar iCal (19
-  # events) and Wheeling's Main Calendar iCal are now configured sources.
-  # It also found the Village of Mount Prospect's Revize site publishes
-  # _includes_/published/news_list.json.
+  # Round 10 (2026-10-02). Round 9 answered the rest: Wheeling's Main
+  # Calendar iCal has 127 events, and Mount Prospect's news_list.json is a
+  # clean per-article feed (now read by the new revize_news_json fetcher).
+  # The one open school question: D25's iCal for its page's three calendar
+  # IDs together was valid but empty. Ask each ID on its own.
 
-  # Item 192: the shape of Mount Prospect's news JSON, for a json fetcher.
-  - url: https://www.mountprospect.org/_includes_/published/news_list.json
-    item: 192
-    purpose: Village of Mount Prospect news JSON (Revize) - its keys and one item's shape
-    patterns:
-      - '"[A-Za-z_]+"\s*:'
-      - '"(?:title|name|headline)"\s*:\s*"[^"]{1,90}'
-      - '"(?:date|pubdate|published|created|post_date|start)[A-Za-z_]*"\s*:\s*"[^"]{1,40}'
-      - '"(?:url|link|href|path)"\s*:\s*"[^"]{1,120}'
-
-  # Item 221: confirm Wheeling's Main Calendar iCal returns events, as Palatine's did.
-  - url: https://www.wheelingil.gov/common/modules/iCalendar/iCalendar.aspx?catID=14&feed=calendar
-    item: 221
-    purpose: Wheeling Main Calendar iCal - event count (now the configured source)
+  # Item 198: D25, one Finalsite calendar ID at a time.
+  - url: https://www.sd25.org/fs/calendar-manager/events.ics?calendar_ids[]=361
+    item: 198
+    purpose: D25 - Finalsite iCal for calendar ID 361 alone
+  - url: https://www.sd25.org/fs/calendar-manager/events.ics?calendar_ids[]=349
+    item: 198
+    purpose: D25 - Finalsite iCal for calendar ID 349 alone
+  - url: https://www.sd25.org/fs/calendar-manager/events.ics?calendar_ids[]=360
+    item: 198
+    purpose: D25 - Finalsite iCal for calendar ID 360 alone
 
   # Answered and removed (see ROADMAP.md items 212 and 215):
   # - The five 403 sources: bot walls (Access Denied / Cloudflare) from a runner too.
@@ -56,3 +52,5 @@ probes:
   # - ilpalatineweb.myvscloud.com (WebTrac): 403 from a runner (round 8, item 223).
   # - mountprospect.org/calendar/index.php: no calendar data URL; it lists only
   #   catalogue/news/job/bids JSON (round 8).
+  # - wheelingil.gov Main Calendar iCal: 127 events (round 9); configured.
+  # - mountprospect.org news_list.json: per-article JSON (round 9); configured as revize_news_json.

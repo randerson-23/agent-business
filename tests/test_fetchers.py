@@ -15,6 +15,7 @@ from fetchers import (  # noqa: E402
     _record_failure,
     fetch_html_events,
     fetch_ics,
+    fetch_revize_news_json,
     fetch_rss,
     fetch_weather,
     submit_indexnow,
@@ -809,3 +810,53 @@ def test_submit_indexnow_fails_soft_on_error(mock_post):
         urls=["https://withintenmiles.com/"],
     )
     assert ok is False
+
+
+# Mirrors the real structure of mountprospect.org/_includes_/published/
+# news_list.json (URL-probe round 9, 2026-10-02): an object keyed by
+# article ID, a "Mon D, YYYY" date, a site-relative link with escaped
+# slashes, and an HTML brief. Stale items sit beside current ones.
+REVIZE_NEWS_JSON = """{
+  "13": {"date": "Nov 21, 2025", "title": "Mount Prospect Update - November 21, 2025",
+         "link": "\\/articles\\/Mount-Prospect-Update-November-21-2025-13.php", "brief": ""},
+  "15": {"date": "Sep 28, 2026", "title": "Leaf Collection Starting October 19",
+         "link": "\\/articles\\/Leaf-Collection-15.php", "brief": "<p>Curbside leaf pickup &amp; more.</p>"},
+  "142": {"date": "Oct 1, 2026", "title": "October 2026 Village Newsletter",
+          "link": "\\/articles\\/October-2026-Village-Newsletter-142.php", "brief": "", "seq_no": "0.00"},
+  "99": {"date": "", "title": "", "link": "\\/articles\\/untitled.php"}
+}"""
+
+
+@patch("fetchers.requests.get")
+def test_fetch_revize_news_json_parses_sorts_newest_first_and_resolves_links(mock_get):
+    mock_get.return_value = _mock_response(REVIZE_NEWS_JSON, url="https://www.mountprospect.org/_includes_/published/news_list.json")
+    items = fetch_revize_news_json("https://www.mountprospect.org/_includes_/published/news_list.json")
+    assert [i["title"] for i in items] == [
+        "October 2026 Village Newsletter",
+        "Leaf Collection Starting October 19",
+        "Mount Prospect Update - November 21, 2025",
+    ]
+    assert items[0]["url"] == "https://www.mountprospect.org/articles/October-2026-Village-Newsletter-142.php"
+    assert items[0]["date"] == "Oct 1, 2026"
+    assert items[1]["detail"] == "Curbside leaf pickup & more."
+    assert all("_sort" not in i for i in items)
+
+
+@patch("fetchers.requests.get")
+def test_fetch_revize_news_json_applies_the_limit_after_sorting(mock_get):
+    mock_get.return_value = _mock_response(REVIZE_NEWS_JSON)
+    items = fetch_revize_news_json("https://example.org/news_list.json", limit=1)
+    assert [i["title"] for i in items] == ["October 2026 Village Newsletter"]
+
+
+@patch("fetchers.requests.get")
+def test_fetch_revize_news_json_fails_soft_with_failure_info(mock_get):
+    mock_get.return_value = _mock_response("<html>not json</html>")
+    info = {}
+    assert fetch_revize_news_json("https://example.org/news_list.json", failure_info=info) is None
+    assert info["exception_class"] == "JSONDecodeError"
+
+
+def test_revize_news_json_is_a_registered_source_type():
+    from fetchers import FETCHERS
+    assert FETCHERS["revize_news_json"] is fetch_revize_news_json
