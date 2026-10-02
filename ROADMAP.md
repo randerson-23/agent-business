@@ -12389,6 +12389,119 @@ weekday check exposes; one 2026 date confirmed), and **fall farm guides**
 *within ten miles*).
 
 
+#### Research pass 2026-10-02 (fifty-fourth pass)
+
+The build loop's best day yet. Item 215 shipped, and seven probe rounds
+in a single run turned "needs a real page fetch" into **three source
+swaps**: Des Plaines Public Library → Communico RSS, D211 → Finalsite
+iCal, and CCSD 15 → Finalsite iCal (the 8-calendar feed, 64 events,
+deliberately not the 677-event one). **Des Plaines registered weekend
+events for the first time in its recorded history**, going from 0 to 4,
+and has held there for three builds. Item 217's event-led subject line
+also shipped. The probes found that the Village of Mount Prospect has
+moved to the Revize CMS and now returns 200, so its bot wall is gone.
+
+That leaves **Palatine as the only town with zero weekend events**, now
+for every recorded build.
+
+| Angle | Finding | Consequence |
+|---|---|---|
+| **The Village of Palatine's platform** | `palatine.il.us/Calendar.aspx`, `Calendar.aspx?CID=14` ("Main Calendar") and `Calendar.aspx?EID=1407` (Hometown Fest) are **CivicPlus CivicEngage** URLs, and its news page is `CivicAlerts.aspx`. Wheeling's `wheelingil.gov/calendar.aspx` has the same shape, and both were already recorded as "civicplus-platform domains" in this file's nav-denylist work | CivicEngage is one of the most widely deployed municipal CMSes, and it conventionally exposes RSS and iCal endpoints for its calendar and news modules. Palatine's village layer is scraped as HTML and returns **0** items. A village calendar is the most weekend-heavy source a town has (item 221) |
+| **Palatine Park District's events** | Its special events are listed through **Vermont Systems WebTrac** (`ilpalatineweb.myvscloud.com/webtrac/web/search.html?module=AR&type=SPECEVNT`), the registration system, not on its main site. The current `palatineparks.org/events` scrape returns 13 items and **0 weekend events** | The events the scrape misses may be the dated special events in WebTrac (item 223) |
+| **Revize calendar feeds** | Searched for Revize's iCal or export URL. It is not publicly documented. Revize's calendar app *imports* from Google, Outlook and Apple, and its display URLs use a hash route (`calendar_app/index.html#{calendarName}`) | No shortcut for the Village of Mount Prospect. The build loop's own round-7 probe is the right tool, and it is already queued |
+| **The new subject line, read** | Item 217 is live: the current subject is *"Life Drawing at the Library 2026 and 20 more this weekend"*. The lead event is chosen by **round-robin order across regions**, not by how notable it is, and the title carries a stray **"2026"** | The format is right but the pick is weak. A weekly drop-in art class leads, while festivals in the same issue are buried in "20 more" (item 222) |
+
+#### P1 (new)
+
+221. **Read the Village of Palatine through CivicPlus's own feeds. It
+     is the last empty town.** Palatine has contributed zero weekend
+     events on every recorded build. Its library has no feed path (the
+     build loop's round 5 concluded "ask the library", via item 152).
+     The likeliest fast fix is a different source entirely: the
+     **village**. `palatine.il.us` runs CivicPlus CivicEngage
+     (`Calendar.aspx`, `CivicAlerts.aspx`), and its calendar carries
+     exactly the community events a weekend digest wants, such as
+     Hometown Fest (`Calendar.aspx?EID=1407`). The current source scrapes
+     `CivicAlerts.aspx` as HTML and has returned **0** for every recorded
+     build, which is one of item 185's two genuine dead scrapers.
+
+     CivicEngage conventionally publishes machine-readable feeds for
+     both modules. The shapes commonly seen on CivicPlus sites are:
+
+     - calendar RSS: `/RSSFeed.aspx?ModID=58&CID=All-calendar.xml`
+     - news RSS: `/RSSFeed.aspx?ModID=1&CID=All-newsflash.xml`
+     - calendar iCal: `/common/modules/iCalendar/iCalendar.aspx?catID=<CID>&feed=calendar`
+       (with `catID=14` for the Main Calendar)
+
+     **These are recalled conventions, not verified for this site.**
+     Probe each one with item 215's machinery (status, content type,
+     and `BEGIN:VEVENT` / `<item>` counts) before changing any config.
+     If they validate:
+
+     1. Swap *Village of Palatine — News* to the news RSS.
+     2. **Add** a *Village of Palatine — Calendar* source on the calendar
+        feed. This is a new source, not a swap.
+     3. Run the same probe against `wheelingil.gov`, the other CivicPlus
+        town. Its *Village of Wheeling — Calendar* scrape returns only 2–3
+        items, and a feed may well return more.
+
+     Success criterion: Palatine names at least one dated weekend event,
+     which is item 213's original goal, reached through the village
+     rather than the library.
+
+222. **Pick the subject's lead event by how notable it is, not by
+     round-robin order.** Item 217 got the format right. The current
+     subject is *"Life Drawing at the Library 2026 and 20 more this
+     weekend"*. `_round_robin_attendable()` interleaves regions in order,
+     so the first non-recurring attendable item in the first region
+     leads. This week that was a library art session, with a stray
+     year in its title, ahead of whatever festivals the other 20 items
+     held. Specific subjects only beat generic ones (item 217's
+     research) when the specific thing is worth opening for.
+
+     What to build:
+
+     - **An occasion score for subject candidates.** Rank up titles
+       naming one-off community occasions (fest/festival, fair, parade,
+       market, concert, tree lighting, trick-or-treat, carnival,
+       celebration), sources at the village or park-district level, and
+       family or free tags. Rank down weekly recurring programmes
+       (`series`), classes, meetings and closures. Keep the existing
+       dedupe (item 86) and the non-recurring rule (item 141).
+     - **Clean titles for the subject only.** Strip trailing years and
+       edition tokens (`2026`, `(2026)`, `– 2026`) and session suffixes
+       such as "(Week 5 of 5)". Leave the card titles as published.
+     - **Tests:** a fixture weekend with a festival and a library class
+       must lead with the festival; a title ending in "2026" must render
+       without it.
+
+#### P2 (new)
+
+223. **Probe Palatine Park District's WebTrac special-events list.** The
+     park district's dated special events appear to live in its Vermont
+     Systems WebTrac registration system
+     (`ilpalatineweb.myvscloud.com/webtrac/web/search.html?module=AR&type=SPECEVNT`),
+     not on `palatineparks.org/events`. The current scrape of that page
+     returns 13 items and has never produced a weekend event. Add the
+     WebTrac URL to `config/url_probes.yaml` with `patterns` for date
+     strings and result-row markup, and look for any export or feed
+     link. WebTrac is used by many park districts, so a working parser
+     is reusable. Lower priority than item 221, since a village calendar
+     is the bigger and more reliable source of weekend events. Respect
+     WebTrac's terms of use: the probe and any scrape stay one polite,
+     identified request per build.
+
+Competitors reviewed this pass: **CivicPlus CivicEngage** as a feed
+platform (Palatine and Wheeling village sites; conventional calendar and
+news RSS/iCal endpoints, to verify by probe), **Vermont Systems WebTrac**
+(park-district registration and special-events listings, a likely home
+of Palatine Park District's dated events), and **Revize** (the Village
+of Mount Prospect's new CMS; no documented calendar export, so the
+build loop's probe remains the route). Design/UX angle: **subject-line
+lead selection**, where a specific subject is only as good as the event
+it names.
+
+
 ## Working agreements for autonomous iteration
 
 - Cadence is once a day at 13:51 UTC, about two hours after the daily
