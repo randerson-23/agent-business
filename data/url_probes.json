@@ -1,149 +1,487 @@
 {
   "results": [
     {
-      "url": "https://www.mountprospect.org/news/index.php",
-      "purpose": "Village news index - href shape of individual news items (for detail_link_pattern) and any RSS",
-      "item": 192,
-      "probed_at": "2026-10-01T14:55:19+00:00",
+      "url": "https://www.palatine.il.us/rss.aspx",
+      "purpose": "Palatine - CivicPlus feed index; lists the site's own RSSFeed.aspx URLs",
+      "item": 221,
+      "probed_at": "2026-10-02T14:01:42+00:00",
       "status": 200,
-      "final_url": "https://www.mountprospect.org/news/index.php",
-      "content_type": "text/html; charset=UTF-8",
-      "bytes": 149661,
-      "title": "Mount Prospect, IL",
+      "final_url": "https://www.palatine.il.us/rss.aspx",
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 127585,
+      "title": "RSS • Palatine, IL • CivicEngageArrow LeftArrow RightSlideshow Left ArrowSlideshow Right Arrow",
       "feed_links": [],
       "calendar_links": [
-        "https://www.mountprospect.org/news/plans_and_reports/community_information_and_fact_check_portal/prestige_feed.php"
+        "https://www.palatine.il.us/RSSFeed.aspx?ModID=76&CID=All-0",
+        "https://www.palatine.il.us/RSSFeed.aspx?ModID=63&CID=All-0",
+        "https://www.palatine.il.us/RSSFeed.aspx?ModID=63&CID=Emergency-Alerts-5",
+        "https://www.palatine.il.us/RSSFeed.aspx?ModID=92&CID=All-civicmedia.xml",
+        "https://www.palatine.il.us/RSSFeed.aspx?ModID=92&CID=Fire-Department-24",
+        "https://www.palatine.il.us/RSSFeed.aspx?ModID=92&CID=Police-Department-25",
+        "https://www.palatine.il.us/RSSFeed.aspx?ModID=58&CID=All-calendar.xml",
+        "https://www.palatine.il.us/RSSFeed.aspx?ModID=58&CID=Main-Calendar-14",
+        "https://www.palatine.il.us/RSSFeed.aspx?ModID=58&CID=Public-Event-Submissions-30",
+        "https://www.palatine.il.us/RSSFeed.aspx?ModID=58&CID=Public-Meetings-40",
+        "https://www.palatine.il.us/RSSFeed.aspx?ModID=1&CID=All-newsflash.xml",
+        "https://www.palatine.il.us/RSSFeed.aspx?ModID=1&CID=Home-1",
+        "https://www.palatine.il.us/RSSFeed.aspx?ModID=53&CID=All-0",
+        "https://www.palatine.il.us/RSSFeed.aspx?ModID=53&CID=2016-Ben-Franklin-Fire-Memorial-Ceremony-15",
+        "https://www.palatine.il.us/RSSFeed.aspx?ModID=53&CID=Budweiser-Clydesdales-Visit-Palatine-7",
+        "https://www.palatine.il.us/RSSFeed.aspx?ModID=53&CID=Fire-Department-4",
+        "https://www.palatine.il.us/RSSFeed.aspx?ModID=53&CID=Holiday-Tree-Lighting-2009-8",
+        "https://www.palatine.il.us/RSSFeed.aspx?ModID=53&CID=Police-Department-CrimeFree-MultiHousing-6",
+        "https://www.palatine.il.us/RSSFeed.aspx?ModID=53&CID=Police-Department-Headquarters-Construct-9",
+        "https://www.palatine.il.us/RSSFeed.aspx?ModID=53&CID=Police-Department-Patrol-Division-2",
+        "https://www.palatine.il.us/RSSFeed.aspx?ModID=53&CID=Police-Department-Specialty-Units-5",
+        "https://www.palatine.il.us/RSSFeed.aspx?ModID=53&CID=Police-Department-Traffic-Unit-Teaching--3",
+        "https://www.palatine.il.us/RSSFeed.aspx?ModID=53&CID=Street-Fest-2014-13",
+        "https://www.palatine.il.us/RSSFeed.aspx?ModID=53&CID=Village-Hall-Renovation-Project-14",
+        "https://www.palatine.il.us/RSSFeed.aspx?ModID=53&CID=Winter-Storm-2011-11",
+        "http://feedly.com"
       ],
       "pattern_matches": {
-        "(?i)href=\"[^\"]*news[^\"]*(?:\\?|/)[^\"]*\"": [
+        "(?i)RSSFeed\\.aspx\\?[^\"'\\s<]*": [
           {
-            "match": "href=\"news/index.php#rz-content-wrap\"",
-            "context": "n btn-light bg-white px-4 p-3 gap-4 align-items-center\" href=\"news/index.php#rz-content-wrap\"> <span class=\"d-inline-flex align-items-center gap-2\">"
+            "match": "RSSFeed.aspx?ModID=76&CID=All-0",
+            "context": "name=\"pages\">Pages</a></h2> <div> <span><a href=\"/RSSFeed.aspx?ModID=76&CID=All-0\" id=\"ctl00_ctl00_MainContent_ModuleContent_ctl00_PagesFeed\""
           },
           {
-            "match": "href=\"news/index.php\"",
-            "context": "evel1 menuHidden li-224\"><a class=\"menuA level1 menuHidden\" href=\"news/index.php\" target=\"_self\">News</a></li> <li class=\"menuLI level1 m"
+            "match": "RSSFeed.aspx?ModID=63&CID=All-0",
+            "context": "a name=\"alertCenter\">Alert Center</a></h2><ol><li><a href=\"/RSSFeed.aspx?ModID=63&CID=All-0\" target=\"_blank\">All</a></li></ol><ol><li><a href=\"/RSSFeed"
           },
           {
-            "match": "href=\"departments/fire/news_and_information/index.php\"",
-            "context": "evel2 menuHidden li-287\"><a class=\"menuA level2 menuHidden\" href=\"departments/fire/news_and_information/index.php\" target=\"_self\">News and Information</a></li> </ul>"
+            "match": "RSSFeed.aspx?ModID=63&CID=Emergency-Alerts-5",
+            "context": "D=All-0\" target=\"_blank\">All</a></li></ol><ol><li><a href=\"/RSSFeed.aspx?ModID=63&CID=Emergency-Alerts-5\" target=\"_blank\">Emergency Alerts</a></li></ol></div>"
           },
           {
-            "match": "href=\"departments/police/news_and_information/index.php\"",
-            "context": "evel2 menuHidden li-307\"><a class=\"menuA level2 menuHidden\" href=\"departments/police/news_and_information/index.php\" target=\"_self\">News and Information</a></li> </ul>"
+            "match": "RSSFeed.aspx?ModID=92&CID=All-civicmedia.xml",
+            "context": "><a name=\"civicMedia\">CivicMedia™</a></h2><ol><li><a href=\"/RSSFeed.aspx?ModID=92&CID=All-civicmedia.xml\" target=\"_blank\">All</a></li><li><a href=\"/RSSFeed.aspx?Mod"
           },
           {
-            "match": "href=\"https://builder1.revize.com/revize/security/index.jsp?webspace=mountprospectil&filename=/news/index.php\"",
-            "context": "the Government Website Experts <i class=\"bi bi-dot\"></i> <a href=\"https://builder1.revize.com/revize/security/index.jsp?webspace=mountprospectil&filename=/news/index.php\" class=\"btn btn-primary btn-primary-rz btn-sm rounded-1\">Sta"
+            "match": "RSSFeed.aspx?ModID=92&CID=Fire-Department-24",
+            "context": "l-civicmedia.xml\" target=\"_blank\">All</a></li><li><a href=\"/RSSFeed.aspx?ModID=92&CID=Fire-Department-24\" target=\"_blank\">Fire Department</a></li></ol><ol><li><a hr"
+          },
+          {
+            "match": "RSSFeed.aspx?ModID=92&CID=Police-Department-25",
+            "context": "get=\"_blank\">Fire Department</a></li></ol><ol><li><a href=\"/RSSFeed.aspx?ModID=92&CID=Police-Department-25\" target=\"_blank\">Police Department</a></li></ol></div>"
+          },
+          {
+            "match": "RSSFeed.aspx?ModID=58&CID=All-calendar.xml",
+            "context": "\"><h2><a name=\"calendar\">Calendar</a></h2><ol><li><a href=\"/RSSFeed.aspx?ModID=58&CID=All-calendar.xml\" target=\"_blank\">All</a></li><li><a href=\"/RSSFeed.aspx?Mod"
+          },
+          {
+            "match": "RSSFeed.aspx?ModID=58&CID=Main-Calendar-14",
+            "context": "All-calendar.xml\" target=\"_blank\">All</a></li><li><a href=\"/RSSFeed.aspx?ModID=58&CID=Main-Calendar-14\" target=\"_blank\">Main Calendar</a></li></ol><ol><li><a href"
+          },
+          {
+            "match": "RSSFeed.aspx?ModID=58&CID=Public-Event-Submissions-30",
+            "context": "arget=\"_blank\">Main Calendar</a></li></ol><ol><li><a href=\"/RSSFeed.aspx?ModID=58&CID=Public-Event-Submissions-30\" target=\"_blank\">Public Event Submissions</a></li><li><a hr"
+          },
+          {
+            "match": "RSSFeed.aspx?ModID=58&CID=Public-Meetings-40",
+            "context": "get=\"_blank\">Public Event Submissions</a></li><li><a href=\"/RSSFeed.aspx?ModID=58&CID=Public-Meetings-40\" target=\"_blank\">Public Meetings</a></li></ol></div>"
+          },
+          {
+            "match": "RSSFeed.aspx?ModID=1&CID=All-newsflash.xml",
+            "context": "h2><a name=\"newsFlash\">News Flash</a></h2><ol><li><a href=\"/RSSFeed.aspx?ModID=1&CID=All-newsflash.xml\" target=\"_blank\">All</a></li></ol><ol><li><a href=\"/RSSFeed"
+          },
+          {
+            "match": "RSSFeed.aspx?ModID=1&CID=Home-1",
+            "context": "ash.xml\" target=\"_blank\">All</a></li></ol><ol><li><a href=\"/RSSFeed.aspx?ModID=1&CID=Home-1\" target=\"_blank\">Home</a></li></ol></div> <div id=\"c"
+          },
+          {
+            "match": "RSSFeed.aspx?ModID=53&CID=All-0",
+            "context": "name=\"photoGallery\">Photo Gallery</a></h2><ol><li><a href=\"/RSSFeed.aspx?ModID=53&CID=All-0\" target=\"_blank\">All</a></li><li><a href=\"/RSSFeed.aspx?Mod"
+          },
+          {
+            "match": "RSSFeed.aspx?ModID=53&CID=2016-Ben-Franklin-Fire-Memorial-Ceremony-15",
+            "context": "dID=53&CID=All-0\" target=\"_blank\">All</a></li><li><a href=\"/RSSFeed.aspx?ModID=53&CID=2016-Ben-Franklin-Fire-Memorial-Ceremony-15\" target=\"_blank\">2016 Ben Franklin Fire Memorial Ceremony</"
+          },
+          {
+            "match": "RSSFeed.aspx?ModID=53&CID=Budweiser-Clydesdales-Visit-Palatine-7",
+            "context": "6 Ben Franklin Fire Memorial Ceremony</a></li><li><a href=\"/RSSFeed.aspx?ModID=53&CID=Budweiser-Clydesdales-Visit-Palatine-7\" target=\"_blank\">Budweiser Clydesdales Visit Palatine</a></"
+          },
+          {
+            "match": "RSSFeed.aspx?ModID=53&CID=Fire-Department-4",
+            "context": ">Budweiser Clydesdales Visit Palatine</a></li><li><a href=\"/RSSFeed.aspx?ModID=53&CID=Fire-Department-4\" target=\"_blank\">Fire Department</a></li><li><a href=\"/RSSF"
+          },
+          {
+            "match": "RSSFeed.aspx?ModID=53&CID=Holiday-Tree-Lighting-2009-8",
+            "context": "nt-4\" target=\"_blank\">Fire Department</a></li><li><a href=\"/RSSFeed.aspx?ModID=53&CID=Holiday-Tree-Lighting-2009-8\" target=\"_blank\">Holiday Tree Lighting 2009</a></li><li><a"
+          },
+          {
+            "match": "RSSFeed.aspx?ModID=53&CID=Police-Department-CrimeFree-MultiHousing-6",
+            "context": "t=\"_blank\">Holiday Tree Lighting 2009</a></li><li><a href=\"/RSSFeed.aspx?ModID=53&CID=Police-Department-CrimeFree-MultiHousing-6\" target=\"_blank\">Police Department - Crime-Free Multi-Housi"
+          },
+          {
+            "match": "RSSFeed.aspx?ModID=53&CID=Police-Department-Headquarters-Construct-9",
+            "context": "Department - Crime-Free Multi-Housing</a></li><li><a href=\"/RSSFeed.aspx?ModID=53&CID=Police-Department-Headquarters-Construct-9\" target=\"_blank\">Police Department - Headquarters Construct"
+          },
+          {
+            "match": "RSSFeed.aspx?ModID=53&CID=Police-Department-Patrol-Division-2",
+            "context": "- Headquarters Construction</a></li></ol><ol><li><a href=\"/RSSFeed.aspx?ModID=53&CID=Police-Department-Patrol-Division-2\" target=\"_blank\">Police Department - Patrol Division</a></l"
           }
         ],
-        "(?i)href=\"[^\"]*(?:rss|feed)[^\"]*\"": [
+        "(?i)iCalendar\\.aspx\\?[^\"'\\s<]*": []
+      }
+    },
+    {
+      "url": "https://www.palatine.il.us/RSSFeed.aspx?ModID=58&CID=All-calendar.xml",
+      "purpose": "Palatine - CivicPlus calendar RSS (recalled convention; candidate new source)",
+      "item": 221,
+      "probed_at": "2026-10-02T14:01:43+00:00",
+      "status": 200,
+      "final_url": "https://www.palatine.il.us/RSSFeed.aspx?ModID=58&CID=All-calendar.xml",
+      "content_type": "text/xml; charset=utf-8",
+      "bytes": 8755,
+      "pattern_matches": {
+        "<item>": [
           {
-            "match": "href=\"plans_and_reports/community_information_and_fact_check_portal/prestige_feed.php\"",
-            "context": "evel2 menuHidden li-171\"><a class=\"menuA level2 menuHidden\" href=\"plans_and_reports/community_information_and_fact_check_portal/prestige_feed.php\" target=\"_self\">Prestige Feed</a></li> <li class=\"menu"
+            "match": "<item>",
+            "context": "latest events</description> <language>en-us</language> <item> <title>Tales for Tots</title> <link>https://www.palat"
+          }
+        ],
+        "<title>[^<]{1,90}": [
+          {
+            "match": "<title>Palatine, IL - Calendar",
+            "context": "vent=\"https://www.palatine.il.us/Calendar.aspx\"><channel> <title>Palatine, IL - Calendar</title> <link>https://www.palatine.il.us/Calendar.aspx</l"
+          },
+          {
+            "match": "<title>Tales for Tots",
+            "context": "ents</description> <language>en-us</language> <item> <title>Tales for Tots</title> <link>https://www.palatine.il.us/Calendar.aspx?E"
+          },
+          {
+            "match": "<title>Play On!",
+            "context": "px?EID=2185/639262012730000000</guid> </item> <item> <title>Play On!</title> <link>https://www.palatine.il.us/Calendar.aspx?E"
+          },
+          {
+            "match": "<title>Textile Recycling Event at Palatine Township",
+            "context": "px?EID=2181/639259314610000000</guid> </item> <item> <title>Textile Recycling Event at Palatine Township</title> <link>https://www.palatine.il.us/Calendar.aspx?E"
+          },
+          {
+            "match": "<title>Palatine Fire Department Open House",
+            "context": "px?EID=2159/639239520990000000</guid> </item> <item> <title>Palatine Fire Department Open House</title> <link>https://www.palatine.il.us/Calendar.aspx?E"
+          },
+          {
+            "match": "<title>Blessing of the Animals and Pets at St. Philip&#39;s Episcopal Church ",
+            "context": "px?EID=2180/639259314410000000</guid> </item> <item> <title>Blessing of the Animals and Pets at St. Philip&#39;s Episcopal Church </title> <link>https://www.palatine.il.us/Calendar.aspx?E"
+          },
+          {
+            "match": "<title>Downtown Palatine Grand Re-Opening",
+            "context": "px?EID=2186/639262012970000000</guid> </item> <item> <title>Downtown Palatine Grand Re-Opening</title> <link>https://www.palatine.il.us/Calendar.aspx?E"
+          },
+          {
+            "match": "<title>District 1 and 2 Residents&#39; Advisory Meeting Fall 2026",
+            "context": "px?EID=2175/639262802640000000</guid> </item> <item> <title>District 1 and 2 Residents&#39; Advisory Meeting Fall 2026</title> <link>https://www.palatine.il.us/Calendar.aspx?E"
           }
         ]
       }
     },
     {
+      "url": "https://www.palatine.il.us/RSSFeed.aspx?ModID=1&CID=All-newsflash.xml",
+      "purpose": "Palatine - CivicPlus news RSS (recalled convention; candidate swap for the 0-item news scrape)",
+      "item": 221,
+      "probed_at": "2026-10-02T14:01:43+00:00",
+      "status": 200,
+      "final_url": "https://www.palatine.il.us/RSSFeed.aspx?ModID=1&CID=All-newsflash.xml",
+      "content_type": "text/xml; charset=utf-8",
+      "bytes": 2269,
+      "pattern_matches": {
+        "<item>": [
+          {
+            "match": "<item>",
+            "context": "he latest news</description> <language>en-us</language> <item> <title>Rewatch the Village&#39;s Virtual Community Resou"
+          }
+        ],
+        "<title>[^<]{1,90}": [
+          {
+            "match": "<title>Palatine, IL - News Flash",
+            "context": "<?xml version=\"1.0\"?><rss version=\"2.0\"><channel> <title>Palatine, IL - News Flash</title> <link>https://www.palatine.il.us/CivicAlerts.aspx"
+          },
+          {
+            "match": "<title>Rewatch the Village&#39;s Virtual Community Resource Forum",
+            "context": "news</description> <language>en-us</language> <item> <title>Rewatch the Village&#39;s Virtual Community Resource Forum</title> <link>https://www.palatine.il.us/CivicAlerts.asp"
+          },
+          {
+            "match": "<title>Village Recommended Trick-or-Treating Hours",
+            "context": "\" length=\"66560\" type=\"image/jpeg\" /> </item> <item> <title>Village Recommended Trick-or-Treating Hours</title> <link>https://www.palatine.il.us/CivicAlerts.asp"
+          },
+          {
+            "match": "<title>AT&amp;T Installing Fiber Optic Infrastructure",
+            "context": "\" length=\"32768\" type=\"image/jpeg\" /> </item> <item> <title>AT&amp;T Installing Fiber Optic Infrastructure</title> <link>https://www.palatine.il.us/CivicAlerts.asp"
+          },
+          {
+            "match": "<title>Annual Palatine Fire Department Open House October 3, 2026",
+            "context": "2\" length=\"25600\" type=\"image/png\" /> </item> <item> <title>Annual Palatine Fire Department Open House October 3, 2026</title> <link>https://www.palatine.il.us/CivicAlerts.asp"
+          }
+        ]
+      }
+    },
+    {
+      "url": "https://www.palatine.il.us/common/modules/iCalendar/iCalendar.aspx?catID=14&feed=calendar",
+      "purpose": "Palatine - CivicPlus iCal for the Main Calendar, catID=14 (recalled convention)",
+      "item": 221,
+      "probed_at": "2026-10-02T14:01:44+00:00",
+      "status": 200,
+      "final_url": "https://www.palatine.il.us/common/modules/iCalendar/iCalendar.aspx?catID=14&feed=calendar",
+      "content_type": "text/calendar; charset=utf-8",
+      "bytes": 10600,
+      "ics_event_count": 19
+    },
+    {
+      "url": "https://www.wheelingil.gov/rss.aspx",
+      "purpose": "Wheeling - CivicPlus feed index; lists the site's own RSSFeed.aspx URLs",
+      "item": 221,
+      "probed_at": "2026-10-02T14:01:44+00:00",
+      "status": 200,
+      "final_url": "https://www.wheelingil.gov/rss.aspx",
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 124167,
+      "title": "RSS • Wheeling, IL • CivicEngageArrow LeftArrow RightSlideshow Left ArrowSlideshow Right Arrow",
+      "feed_links": [],
+      "calendar_links": [
+        "https://www.wheelingil.gov/RSSFeed.aspx?ModID=76&CID=All-0",
+        "https://www.wheelingil.gov/RSSFeed.aspx?ModID=65&CID=All-0",
+        "https://www.wheelingil.gov/RSSFeed.aspx?ModID=65&CID=Chicago-Executive-Board-Meetings-17",
+        "https://www.wheelingil.gov/RSSFeed.aspx?ModID=65&CID=Joint-Review-Board-16",
+        "https://www.wheelingil.gov/RSSFeed.aspx?ModID=65&CID=Wheeling-Agenda-Center-Board-of-Fire-and-2",
+        "https://www.wheelingil.gov/RSSFeed.aspx?ModID=65&CID=Wheeling-Agenda-Center-Board-of-Trustees-11",
+        "https://www.wheelingil.gov/RSSFeed.aspx?ModID=65&CID=Wheeling-Agenda-Center-Firefighters-Pens-12",
+        "https://www.wheelingil.gov/RSSFeed.aspx?ModID=65&CID=Wheeling-Agenda-Center-Liquor-Control-Co-7",
+        "https://www.wheelingil.gov/RSSFeed.aspx?ModID=65&CID=Wheeling-Agenda-Center-Plan-Commission-A-8",
+        "https://www.wheelingil.gov/RSSFeed.aspx?ModID=65&CID=Wheeling-Agenda-Center-Police-Pension-Bo-9",
+        "https://www.wheelingil.gov/RSSFeed.aspx?ModID=63&CID=All-0",
+        "https://www.wheelingil.gov/RSSFeed.aspx?ModID=63&CID=Village-of-Wheeling-Alert-5",
+        "https://www.wheelingil.gov/RSSFeed.aspx?ModID=51&CID=All-blog.xml",
+        "https://www.wheelingil.gov/RSSFeed.aspx?ModID=58&CID=All-calendar.xml",
+        "https://www.wheelingil.gov/RSSFeed.aspx?ModID=58&CID=Main-Calendar-14",
+        "https://www.wheelingil.gov/RSSFeed.aspx?CommunityJobs=False&ModID=66&CID=All-0",
+        "https://www.wheelingil.gov/RSSFeed.aspx?CommunityJobs=False&ModID=66&CID=Full-Time-Positions-100",
+        "https://www.wheelingil.gov/RSSFeed.aspx?CommunityJobs=False&ModID=66&CID=Police-Officer-Lateral-102",
+        "https://www.wheelingil.gov/RSSFeed.aspx?CommunityJobs=False&ModID=66&CID=Police-Officer-Entry-105",
+        "https://www.wheelingil.gov/RSSFeed.aspx?ModID=1&CID=All-newsflash.xml",
+        "https://www.wheelingil.gov/RSSFeed.aspx?ModID=1&CID=Latest-News-1",
+        "https://www.wheelingil.gov/RSSFeed.aspx?ModID=1&CID=Spotlights-10",
+        "https://www.wheelingil.gov/RSSFeed.aspx?ModID=64&CID=All-0",
+        "https://www.wheelingil.gov/RSSFeed.aspx?ModID=64&CID=Commercial-Properties-For-Rent-2",
+        "https://www.wheelingil.gov/RSSFeed.aspx?ModID=64&CID=Commercial-Properties-For-Sale-1",
+        "https://www.wheelingil.gov/RSSFeed.aspx?ModID=64&CID=Residential-Properties-For-Rent-4",
+        "https://www.wheelingil.gov/RSSFeed.aspx?ModID=64&CID=Residential-Properties-For-Sale-3",
+        "https://www.wheelingil.gov/RSSFeed.aspx?ModID=53&CID=All-0",
+        "http://www.feeddemon.com/",
+        "https://www.wheelingil.gov/civicalerts.aspx",
+        "https://www.wheelingil.gov/2348/Feedback-Form"
+      ],
+      "pattern_matches": {
+        "(?i)RSSFeed\\.aspx\\?[^\"'\\s<]*": [
+          {
+            "match": "RSSFeed.aspx?ModID=76&CID=All-0",
+            "context": "name=\"pages\">Pages</a></h2> <div> <span><a href=\"/RSSFeed.aspx?ModID=76&CID=All-0\" id=\"ctl00_ctl00_MainContent_ModuleContent_ctl00_PagesFeed\""
+          },
+          {
+            "match": "RSSFeed.aspx?ModID=65&CID=All-0",
+            "context": "name=\"agendaCenter\">Agenda Center</a></h2><ol><li><a href=\"/RSSFeed.aspx?ModID=65&CID=All-0\" target=\"_blank\">All</a></li><li><a href=\"/RSSFeed.aspx?Mod"
+          },
+          {
+            "match": "RSSFeed.aspx?ModID=65&CID=Chicago-Executive-Board-Meetings-17",
+            "context": "dID=65&CID=All-0\" target=\"_blank\">All</a></li><li><a href=\"/RSSFeed.aspx?ModID=65&CID=Chicago-Executive-Board-Meetings-17\" target=\"_blank\">Chicago Executive Board Meetings</a></li><"
+          },
+          {
+            "match": "RSSFeed.aspx?ModID=65&CID=Joint-Review-Board-16",
+            "context": "ank\">Chicago Executive Board Meetings</a></li><li><a href=\"/RSSFeed.aspx?ModID=65&CID=Joint-Review-Board-16\" target=\"_blank\">Joint Review Board</a></li><li><a href=\"/R"
+          },
+          {
+            "match": "RSSFeed.aspx?ModID=65&CID=Wheeling-Agenda-Center-Board-of-Fire-and-2",
+            "context": "6\" target=\"_blank\">Joint Review Board</a></li><li><a href=\"/RSSFeed.aspx?ModID=65&CID=Wheeling-Agenda-Center-Board-of-Fire-and-2\" target=\"_blank\">Wheeling Agenda Center - Board of Fire and"
+          },
+          {
+            "match": "RSSFeed.aspx?ModID=65&CID=Wheeling-Agenda-Center-Board-of-Trustees-11",
+            "context": "oard of Fire and Police Commissioners</a></li><li><a href=\"/RSSFeed.aspx?ModID=65&CID=Wheeling-Agenda-Center-Board-of-Trustees-11\" target=\"_blank\">Wheeling Agenda Center - Board of Trustees"
+          },
+          {
+            "match": "RSSFeed.aspx?ModID=65&CID=Wheeling-Agenda-Center-Firefighters-Pens-12",
+            "context": "- Board of Trustees Agendas</a></li></ol><ol><li><a href=\"/RSSFeed.aspx?ModID=65&CID=Wheeling-Agenda-Center-Firefighters-Pens-12\" target=\"_blank\">Wheeling Agenda Center - Firefighters Pens"
+          },
+          {
+            "match": "RSSFeed.aspx?ModID=65&CID=Wheeling-Agenda-Center-Liquor-Control-Co-7",
+            "context": "a Center - Firefighters Pension Board</a></li><li><a href=\"/RSSFeed.aspx?ModID=65&CID=Wheeling-Agenda-Center-Liquor-Control-Co-7\" target=\"_blank\">Wheeling Agenda Center - Liquor Control Co"
+          },
+          {
+            "match": "RSSFeed.aspx?ModID=65&CID=Wheeling-Agenda-Center-Plan-Commission-A-8",
+            "context": "da Center - Liquor Control Commission</a></li><li><a href=\"/RSSFeed.aspx?ModID=65&CID=Wheeling-Agenda-Center-Plan-Commission-A-8\" target=\"_blank\">Wheeling Agenda Center - Plan Commission A"
+          },
+          {
+            "match": "RSSFeed.aspx?ModID=65&CID=Wheeling-Agenda-Center-Police-Pension-Bo-9",
+            "context": "enda Center - Plan Commission Agendas</a></li><li><a href=\"/RSSFeed.aspx?ModID=65&CID=Wheeling-Agenda-Center-Police-Pension-Bo-9\" target=\"_blank\">Wheeling Agenda Center - Police Pension Bo"
+          },
+          {
+            "match": "RSSFeed.aspx?ModID=63&CID=All-0",
+            "context": "a name=\"alertCenter\">Alert Center</a></h2><ol><li><a href=\"/RSSFeed.aspx?ModID=63&CID=All-0\" target=\"_blank\">All</a></li></ol><ol><li><a href=\"/RSSFeed"
+          },
+          {
+            "match": "RSSFeed.aspx?ModID=63&CID=Village-of-Wheeling-Alert-5",
+            "context": "D=All-0\" target=\"_blank\">All</a></li></ol><ol><li><a href=\"/RSSFeed.aspx?ModID=63&CID=Village-of-Wheeling-Alert-5\" target=\"_blank\">Village of Wheeling Alert</a></li></ol></d"
+          },
+          {
+            "match": "RSSFeed.aspx?ModID=51&CID=All-blog.xml",
+            "context": "\"blog\"><h2><a name=\"blog\">Blog</a></h2><div><span><a href=\"/RSSFeed.aspx?ModID=51&CID=All-blog.xml\" target=\"_blank\">All</a></span></div></div> <div"
+          },
+          {
+            "match": "RSSFeed.aspx?ModID=58&CID=All-calendar.xml",
+            "context": "\"><h2><a name=\"calendar\">Calendar</a></h2><ol><li><a href=\"/RSSFeed.aspx?ModID=58&CID=All-calendar.xml\" target=\"_blank\">All</a></li></ol><ol><li><a href=\"/RSSFeed"
+          },
+          {
+            "match": "RSSFeed.aspx?ModID=58&CID=Main-Calendar-14",
+            "context": "dar.xml\" target=\"_blank\">All</a></li></ol><ol><li><a href=\"/RSSFeed.aspx?ModID=58&CID=Main-Calendar-14\" target=\"_blank\">Main Calendar</a></li></ol></div> <"
+          },
+          {
+            "match": "RSSFeed.aspx?CommunityJobs=False&ModID=66&CID=All-0",
+            "context": "ment\"><h2><a name=\"cityJobs\">Jobs</a></h2><ol><li><a href=\"/RSSFeed.aspx?CommunityJobs=False&ModID=66&CID=All-0\" target=\"_blank\">All</a></li><li><a href=\"/RSSFeed.aspx?Com"
+          },
+          {
+            "match": "RSSFeed.aspx?CommunityJobs=False&ModID=66&CID=Full-Time-Positions-100",
+            "context": "dID=66&CID=All-0\" target=\"_blank\">All</a></li><li><a href=\"/RSSFeed.aspx?CommunityJobs=False&ModID=66&CID=Full-Time-Positions-100\" target=\"_blank\">Full Time Positions</a></li></ol><ol><li><"
+          },
+          {
+            "match": "RSSFeed.aspx?CommunityJobs=False&ModID=66&CID=Police-Officer-Lateral-102",
+            "context": "\"_blank\">Full Time Positions</a></li></ol><ol><li><a href=\"/RSSFeed.aspx?CommunityJobs=False&ModID=66&CID=Police-Officer-Lateral-102\" target=\"_blank\">Police Officer - Lateral</a></li><li><a hr"
+          },
+          {
+            "match": "RSSFeed.aspx?CommunityJobs=False&ModID=66&CID=Police-Officer-Entry-105",
+            "context": "get=\"_blank\">Police Officer - Lateral</a></li><li><a href=\"/RSSFeed.aspx?CommunityJobs=False&ModID=66&CID=Police-Officer-Entry-105\" target=\"_blank\">Police Officer- Entry</a></li></ol></div>"
+          },
+          {
+            "match": "RSSFeed.aspx?ModID=1&CID=All-newsflash.xml",
+            "context": "h2><a name=\"newsFlash\">News Flash</a></h2><ol><li><a href=\"/RSSFeed.aspx?ModID=1&CID=All-newsflash.xml\" target=\"_blank\">All</a></li><li><a href=\"/RSSFeed.aspx?Mod"
+          }
+        ],
+        "(?i)iCalendar\\.aspx\\?[^\"'\\s<]*": []
+      }
+    },
+    {
+      "url": "https://www.wheelingil.gov/RSSFeed.aspx?ModID=58&CID=All-calendar.xml",
+      "purpose": "Wheeling - CivicPlus calendar RSS (recalled convention; candidate swap)",
+      "item": 221,
+      "probed_at": "2026-10-02T14:01:45+00:00",
+      "status": 200,
+      "final_url": "https://www.wheelingil.gov/RSSFeed.aspx?ModID=58&CID=All-calendar.xml",
+      "content_type": "text/xml; charset=utf-8",
+      "bytes": 3798,
+      "pattern_matches": {
+        "<item>": [
+          {
+            "match": "<item>",
+            "context": "latest events</description> <language>en-us</language> <item> <title>Pancake Breakfast Hosted by Wheeling&#39;s Villag"
+          }
+        ],
+        "<title>[^<]{1,90}": [
+          {
+            "match": "<title>Wheeling, IL - Calendar",
+            "context": "vent=\"https://www.wheelingil.gov/Calendar.aspx\"><channel> <title>Wheeling, IL - Calendar</title> <link>https://www.wheelingil.gov/Calendar.aspx</l"
+          },
+          {
+            "match": "<title>Pancake Breakfast Hosted by Wheeling&#39;s Village Board",
+            "context": "ents</description> <language>en-us</language> <item> <title>Pancake Breakfast Hosted by Wheeling&#39;s Village Board</title> <link>https://www.wheelingil.gov/Calendar.aspx?E"
+          },
+          {
+            "match": "<title>Village Board Regular Meeting ",
+            "context": "px?EID=2205/639256643460000000</guid> </item> <item> <title>Village Board Regular Meeting </title> <link>https://www.wheelingil.gov/Calendar.aspx?E"
+          },
+          {
+            "match": "<title>Columbus Day - Village Offices are Closed for the Columbus Day Holiday",
+            "context": "px?EID=2004/639089267300000000</guid> </item> <item> <title>Columbus Day - Village Offices are Closed for the Columbus Day Holiday</title> <link>https://www.wheelingil.gov/Calendar.aspx?E"
+          },
+          {
+            "match": "<title>Plan Commission Meeting",
+            "context": "px?EID=1952/639015733020000000</guid> </item> <item> <title>Plan Commission Meeting</title> <link>https://www.wheelingil.gov/Calendar.aspx?E"
+          }
+        ]
+      }
+    },
+    {
+      "url": "https://ilpalatineweb.myvscloud.com/webtrac/web/search.html?module=AR&type=SPECEVNT",
+      "purpose": "Palatine Park District special events (WebTrac) - result rows, dates, any export link",
+      "item": 223,
+      "probed_at": "2026-10-02T14:01:46+00:00",
+      "status": 403,
+      "final_url": "https://ilpalatineweb.myvscloud.com/webtrac/web/search.html?module=AR&type=SPECEVNT",
+      "content_type": "text/html; charset=UTF-8",
+      "bytes": 5802,
+      "title": "Just a moment...",
+      "feed_links": [],
+      "calendar_links": [],
+      "pattern_matches": {
+        "(?i)\\b(?:Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)[a-z]*\\.? \\d{1,2},? 20\\d\\d": [],
+        "\\b\\d{1,2}/\\d{1,2}/20\\d\\d\\b": [],
+        "(?i)(?:export|ical|\\.ics|rss|csv)[^\"'\\s<]{0,60}": []
+      }
+    },
+    {
       "url": "https://www.mountprospect.org/calendar/index.php",
-      "purpose": "Village calendar - Revize calendar data/feed/iCal endpoint",
+      "purpose": "Village calendar (Revize) - the calendar app's data/source URL",
       "item": 192,
-      "probed_at": "2026-10-01T14:55:19+00:00",
+      "probed_at": "2026-10-02T14:01:46+00:00",
       "status": 200,
       "final_url": "https://www.mountprospect.org/calendar/index.php",
       "content_type": "text/html; charset=UTF-8",
-      "bytes": 150170,
+      "bytes": 150194,
       "title": "Mount Prospect, IL",
       "feed_links": [],
       "calendar_links": [
         "https://www.mountprospect.org/calendar/plans_and_reports/community_information_and_fact_check_portal/prestige_feed.php"
       ],
       "pattern_matches": {
-        "(?i)[^\"'\\s<=]*\\.ics\\b[^\"'\\s<]*": [],
-        "(?i)[^\"'\\s<=(]*(?:calendar_data|getEvents|events?\\.(?:json|php)|revize_calendar/[^\"'\\s<]*\\.php|webspace[^\"'\\s<]*)[^\"'\\s<)]*": [
+        "(?i)calendar_app[^\"'\\s<]*": [],
+        "(?i)[^\"'\\s<=(]*\\.json\\b[^\"'\\s<)]*": [
           {
-            "match": "webspace_page_permissions",
-            "context": "rmissions_options = 'warningsOFF' RZ.permissions_module = 'webspace_page_permissions' RZ.webspace = \"mountprospectil\" RZ.webspacedesc = \"\";"
+            "match": "res.json(",
+            "context": "deURIComponent(rid) + '.php?display=json') .then(res => res.json()) .then(data => { const html = (data && data.detai"
           },
           {
-            "match": "RZ.webspace",
-            "context": "sOFF' RZ.permissions_module = 'webspace_page_permissions' RZ.webspace = \"mountprospectil\" RZ.webspacedesc = \"\"; RZ.featurespa"
+            "match": "_includes_/published/catalogue.json",
+            "context": "rySelector(\"#businessDetailslightgallery\"), }; fetch('_includes_/published/catalogue.json') .then(res => res.json()) .then(data => { catalogueJ"
           },
           {
-            "match": "RZ.webspacedesc",
-            "context": "ebspace_page_permissions' RZ.webspace = \"mountprospectil\" RZ.webspacedesc = \"\"; RZ.featurespattern = '(EZ)'; null RZ.webspacel"
+            "match": "catalogue.json",
+            "context": "w('catalogueDetails'); }) .catch((e) => { console.error('catalogue.json load failed', e); catalogueJSONData = {}; }); }); </scrip"
           },
           {
-            "match": "RZ.webspacelinksurl",
-            "context": "webspacedesc = \"\"; RZ.featurespattern = '(EZ)'; null RZ.webspacelinksurl = '' RZ.webspacelinksurl = './webspace/links.html' RZ.wor"
+            "match": "_includes_/published/news_list.json",
+            "context": "ress(); }); updateScrollProgress(); } fetch('_includes_/published/news_list.json') .then(res => res.json()) .then(data => { newsJSONDa"
           },
           {
-            "match": "./webspace/links.html",
-            "context": "; null RZ.webspacelinksurl = '' RZ.webspacelinksurl = './webspace/links.html' RZ.workflowlist = 'Default Workflow,Public Works Workflow"
+            "match": "news_list.json",
+            "context": "inkNow('newsDetails'); }) .catch((e) => { console.error('news_list.json load failed', e); newsJSONData = {}; }); }); </script><di"
           },
           {
-            "match": "RZ.webspace_config",
-            "context": "if (!RZ.nextseq) RZ.nextseq = {linknames:{},modules:{}}; RZ.webspace_config = new Object(); RZ.webspace_config.admin_email = \"noreply@"
+            "match": "_includes_/published/job_list.json",
+            "context": "apply: modal.querySelector(\".apply-link\") }; fetch('_includes_/published/job_list.json') .then(res => res.json()) .then(data => { jobJSONDat"
           },
           {
-            "match": "RZ.webspace_config.admin_email",
-            "context": "ames:{},modules:{}}; RZ.webspace_config = new Object(); RZ.webspace_config.admin_email = \"noreply@revize.com\"; RZ.webspace_config.calendar_option"
+            "match": "job_list.json",
+            "context": "LinkNow('jobDetails'); }) .catch((e) => { console.error('job_list.json load failed', e); jobJSONData = {}; }); }); </script>"
           },
           {
-            "match": "RZ.webspace_config.calendar_options",
-            "context": "); RZ.webspace_config.admin_email = \"noreply@revize.com\"; RZ.webspace_config.calendar_options = \"max_events=6\"; RZ.webspace_config.form_captcha = \"yes\";"
+            "match": "_includes_/published/bids_list.json",
+            "context": "apply: modal.querySelector(\".apply-link\") }; fetch('_includes_/published/bids_list.json') .then(function(res){ return res.json(); }) .then(fu"
           },
           {
-            "match": "RZ.webspace_config.form_captcha",
-            "context": "m\"; RZ.webspace_config.calendar_options = \"max_events=6\"; RZ.webspace_config.form_captcha = \"yes\"; RZ.webspace_config.form_server = \"revizeserver\";"
-          },
-          {
-            "match": "RZ.webspace_config.form_server",
-            "context": "\"max_events=6\"; RZ.webspace_config.form_captcha = \"yes\"; RZ.webspace_config.form_server = \"revizeserver\"; RZ.webspace_config.form_technology = \"js"
-          },
-          {
-            "match": "RZ.webspace_config.form_technology",
-            "context": "= \"yes\"; RZ.webspace_config.form_server = \"revizeserver\"; RZ.webspace_config.form_technology = \"jsp\"; RZ.webspace_config.formwizard_ftp_password = \"\";"
-          },
-          {
-            "match": "RZ.webspace_config.formwizard_ftp_password",
-            "context": "evizeserver\"; RZ.webspace_config.form_technology = \"jsp\"; RZ.webspace_config.formwizard_ftp_password = \"\"; RZ.webspace_config.formwizard_ftp_port = \"\"; RZ.web"
-          },
-          {
-            "match": "RZ.webspace_config.formwizard_ftp_port",
-            "context": "= \"jsp\"; RZ.webspace_config.formwizard_ftp_password = \"\"; RZ.webspace_config.formwizard_ftp_port = \"\"; RZ.webspace_config.formwizard_ftp_server = \"\"; RZ.w"
-          },
-          {
-            "match": "RZ.webspace_config.formwizard_ftp_server",
-            "context": "ssword = \"\"; RZ.webspace_config.formwizard_ftp_port = \"\"; RZ.webspace_config.formwizard_ftp_server = \"\"; RZ.webspace_config.formwizard_ftp_user = \"\"; RZ.web"
-          },
-          {
-            "match": "RZ.webspace_config.formwizard_ftp_user",
-            "context": "port = \"\"; RZ.webspace_config.formwizard_ftp_server = \"\"; RZ.webspace_config.formwizard_ftp_user = \"\"; RZ.webspace_config.formwizard_setup = \"yes\"; RZ.web"
-          },
-          {
-            "match": "RZ.webspace_config.formwizard_setup",
-            "context": "server = \"\"; RZ.webspace_config.formwizard_ftp_user = \"\"; RZ.webspace_config.formwizard_setup = \"yes\"; RZ.webspace_config.formwizard_smtp_password = \"xx"
-          },
-          {
-            "match": "RZ.webspace_config.formwizard_smtp_password",
-            "context": "p_user = \"\"; RZ.webspace_config.formwizard_setup = \"yes\"; RZ.webspace_config.formwizard_smtp_password = \"xxx\"; RZ.webspace_config.formwizard_smtp_server = \"xxx\""
-          },
-          {
-            "match": "RZ.webspace_config.formwizard_smtp_server",
-            "context": "es\"; RZ.webspace_config.formwizard_smtp_password = \"xxx\"; RZ.webspace_config.formwizard_smtp_server = \"xxx\"; RZ.webspace_config.formwizard_smtp_user = \"xxx\";"
-          },
-          {
-            "match": "RZ.webspace_config.formwizard_smtp_user",
-            "context": "\"xxx\"; RZ.webspace_config.formwizard_smtp_server = \"xxx\"; RZ.webspace_config.formwizard_smtp_user = \"xxx\"; RZ.webspace_config.google_analytics = \"\"; RZ.web"
-          },
-          {
-            "match": "RZ.webspace_config.google_analytics",
-            "context": "= \"xxx\"; RZ.webspace_config.formwizard_smtp_user = \"xxx\"; RZ.webspace_config.google_analytics = \"\"; RZ.webspace_config.home_pageid = \"0\"; RZ.webspace_c"
+            "match": "bids_list.json",
+            "context": "'bidDetails'); }) .catch(function(e){ console.error('bids_list.json load failed', e); bidJSONData = {}; }); }); </scri"
           }
         ],
-        "(?i)(?:url|source|events)\\s*:\\s*[\"'][^\"']+[\"']": []
+        "(?i)RZ\\.webspace\\s*=\\s*[\"'][^\"']+": [
+          {
+            "match": "RZ.webspace = \"mountprospectil",
+            "context": "sOFF' RZ.permissions_module = 'webspace_page_permissions' RZ.webspace = \"mountprospectil\" RZ.webspacedesc = \"\"; RZ.featurespattern = '(EZ)'; nu"
+          }
+        ],
+        "(?i)calendar_options[^;]{0,160}": [
+          {
+            "match": "calendar_options = \"max_events=6\"",
+            "context": "fig.admin_email = \"noreply@revize.com\"; RZ.webspace_config.calendar_options = \"max_events=6\"; RZ.webspace_config.form_captcha = \"yes\"; RZ.webspace_con"
+          }
+        ]
       }
     }
   ]
