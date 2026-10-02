@@ -3,8 +3,8 @@
 <channel>
   <title>Within Ten — Upcoming Local Events</title>
   <link>https://withintenmiles.com/</link>
-  <description>Upcoming events across every Within Ten region, soonest first - aggregated automatically from village, library, park district and school-district calendars. This build reached 17 of 25 configured sources.</description>
-  <lastBuildDate>Fri, 02 Oct 2026 14:01:44 +0000</lastBuildDate>
+  <description>Upcoming events across every Within Ten region, soonest first - aggregated automatically from village, library, park district and school-district calendars. This build reached 19 of 25 configured sources.</description>
+  <lastBuildDate>Fri, 02 Oct 2026 14:10:57 +0000</lastBuildDate>
   <item>
     <title>Arlington Heights: Harmony Fest &amp; Taste of Arlington Heights (Friday)</title>
     <link>https://downtownarlingtonheights.us/events/harmony-fest-taste-of-arlington-heights-2026</link>
@@ -370,6 +370,13 @@ Ages 9-12.</description>
     <pubDate>Tue, 06 Oct 2026 16:30:00 +0000</pubDate>
   </item>
   <item>
+    <title>Arlington Heights: Community Input Meeting - Carefree Park</title>
+    <link>https://www.ahpd.org/event/community-input-meeting-carefree-park/</link>
+    <guid isPermaLink="true">https://www.ahpd.org/event/community-input-meeting-carefree-park/</guid>
+    <description>Help shape the future of Carefree Park! Join us for a community input meeting where residents can share their feedback and vote on their favorite playground…</description>
+    <pubDate>Tue, 06 Oct 2026 17:30:00 +0000</pubDate>
+  </item>
+  <item>
     <title>Wheeling: Resume Review &amp; Career Coaching Appointments</title>
     <link>https://indiantrails.libnet.info/event/16654161</link>
     <guid isPermaLink="true">https://indiantrails.libnet.info/event/16654161</guid>
@@ -392,14 +399,6 @@ Ages 9-12.</description>
     <description>Tuesday, October 06 2026 6:30pm - 8:45pm 
  Share your work with others in a supportive atmosphere at this monthly community writers group led by author Ginnie…</description>
     <pubDate>Tue, 06 Oct 2026 18:30:00 +0000</pubDate>
-  </item>
-  <item>
-    <title>Des Plaines: Medicare 101</title>
-    <link>https://desplaines.libnet.info/event/16814039</link>
-    <guid isPermaLink="true">https://desplaines.libnet.info/event/16814039</guid>
-    <description>Tuesday, October 06 2026 7:00pm - 8:30pm 
- What Medicare covers, what it doesn't, and your potential out-of-pocket exposure.</description>
-    <pubDate>Tue, 06 Oct 2026 19:00:00 +0000</pubDate>
   </item>
 </channel>
 </rss>
