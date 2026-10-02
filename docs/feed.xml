@@ -3,8 +3,8 @@
 <channel>
   <title>Within Ten — Upcoming Local Events</title>
   <link>https://withintenmiles.com/</link>
-  <description>Upcoming events across every Within Ten region, soonest first - aggregated automatically from village, library, park district and school-district calendars. This build reached 19 of 25 configured sources.</description>
-  <lastBuildDate>Fri, 02 Oct 2026 14:10:57 +0000</lastBuildDate>
+  <description>Upcoming events across every Within Ten region, soonest first - aggregated automatically from village, library, park district and school-district calendars. This build reached 19 of 26 configured sources.</description>
+  <lastBuildDate>Fri, 02 Oct 2026 14:18:32 +0000</lastBuildDate>
   <item>
     <title>Arlington Heights: Harmony Fest &amp; Taste of Arlington Heights (Friday)</title>
     <link>https://downtownarlingtonheights.us/events/harmony-fest-taste-of-arlington-heights-2026</link>
@@ -18,6 +18,13 @@
     <guid isPermaLink="true">https://www.ahml.info/scheduling/reservation/224943</guid>
     <description></description>
     <pubDate>Fri, 02 Oct 2026 00:00:00 +0000</pubDate>
+  </item>
+  <item>
+    <title>Palatine: Tales for Tots</title>
+    <link>https://www.palatine.il.us/common/modules/iCalendar/iCalendar.aspx?feed=calendar&amp;catID=14</link>
+    <guid isPermaLink="false">https://www.palatine.il.us/common/modules/iCalendar/iCalendar.aspx?feed=calendar&amp;catID=14#2026-10-02T09:30:00</guid>
+    <description>FREE interactive story time for tots and grown-ups https://www.</description>
+    <pubDate>Fri, 02 Oct 2026 09:30:00 +0000</pubDate>
   </item>
   <item>
     <title>Mount Prospect: World Language Storytime: Filipino</title>
@@ -76,6 +83,13 @@
     <pubDate>Fri, 02 Oct 2026 18:00:00 +0000</pubDate>
   </item>
   <item>
+    <title>Palatine: Play On!</title>
+    <link>https://www.palatine.il.us/common/modules/iCalendar/iCalendar.aspx?feed=calendar&amp;catID=14</link>
+    <guid isPermaLink="false">https://www.palatine.il.us/common/modules/iCalendar/iCalendar.aspx?feed=calendar&amp;catID=14#2026-10-02T19:00:00</guid>
+    <description>Palatine High School Fall Play https://www.palatine.il.us/calen</description>
+    <pubDate>Fri, 02 Oct 2026 19:00:00 +0000</pubDate>
+  </item>
+  <item>
     <title>Arlington Heights: Harmony Fest &amp; Taste of Arlington Heights (Saturday)</title>
     <link>https://downtownarlingtonheights.us/events/harmony-fest-taste-of-arlington-heights-2026</link>
     <guid isPermaLink="false">https://downtownarlingtonheights.us/events/harmony-fest-taste-of-arlington-heights-2026#2026-10-03T00:00:00</guid>
@@ -88,6 +102,20 @@
     <guid isPermaLink="true">https://www.ahml.info/scheduling/reservation/208270</guid>
     <description></description>
     <pubDate>Sat, 03 Oct 2026 00:00:00 +0000</pubDate>
+  </item>
+  <item>
+    <title>Palatine: Textile Recycling Event at Palatine Township</title>
+    <link>https://www.palatine.il.us/common/modules/iCalendar/iCalendar.aspx?feed=calendar&amp;catID=14</link>
+    <guid isPermaLink="false">https://www.palatine.il.us/common/modules/iCalendar/iCalendar.aspx?feed=calendar&amp;catID=14#2026-10-03T08:00:00</guid>
+    <description>Co-Hosted by Palatine Township and Palatine Lion's Club https:/</description>
+    <pubDate>Sat, 03 Oct 2026 08:00:00 +0000</pubDate>
+  </item>
+  <item>
+    <title>Wheeling: Pancake Breakfast Hosted by Wheeling's Village Board</title>
+    <link>https://www.wheelingil.gov/common/modules/iCalendar/iCalendar.aspx?feed=calendar&amp;catID=14</link>
+    <guid isPermaLink="false">https://www.wheelingil.gov/common/modules/iCalendar/iCalendar.aspx?feed=calendar&amp;catID=14#2026-10-03T08:00:00</guid>
+    <description>https://www.wheelingil.gov/calendar.aspx?EID=2205</description>
+    <pubDate>Sat, 03 Oct 2026 08:00:00 +0000</pubDate>
   </item>
   <item>
     <title>Mount Prospect: Trick or Treat Trail</title>
@@ -103,6 +131,13 @@
     <description>Saturday, October 03 2026 10:00am - 12:00pm 
  Learn to draw the human body with a clothed model, located in The Canvas on the 4th floor. Drop in with no…</description>
     <pubDate>Sat, 03 Oct 2026 10:00:00 +0000</pubDate>
+  </item>
+  <item>
+    <title>Palatine: Palatine Fire Department Open House</title>
+    <link>https://www.palatine.il.us/common/modules/iCalendar/iCalendar.aspx?feed=calendar&amp;catID=14</link>
+    <guid isPermaLink="false">https://www.palatine.il.us/common/modules/iCalendar/iCalendar.aspx?feed=calendar&amp;catID=14#2026-10-03T10:30:00</guid>
+    <description>Mark your calendar for the annual Palatine Fire Department Open</description>
+    <pubDate>Sat, 03 Oct 2026 10:30:00 +0000</pubDate>
   </item>
   <item>
     <title>Des Plaines: Film Screening</title>
@@ -127,6 +162,13 @@
     <description>Saturday, October 03 2026 2:00pm - 3:30pm 
  Join other chess fans for a mini lesson and guided instruction to sharpen your skills, or just stop by for a match!</description>
     <pubDate>Sat, 03 Oct 2026 14:00:00 +0000</pubDate>
+  </item>
+  <item>
+    <title>Palatine: Play On!</title>
+    <link>https://www.palatine.il.us/common/modules/iCalendar/iCalendar.aspx?feed=calendar&amp;catID=14</link>
+    <guid isPermaLink="false">https://www.palatine.il.us/common/modules/iCalendar/iCalendar.aspx?feed=calendar&amp;catID=14#2026-10-03T19:00:00</guid>
+    <description>Palatine High School Fall Play https://www.palatine.il.us/calen</description>
+    <pubDate>Sat, 03 Oct 2026 19:00:00 +0000</pubDate>
   </item>
   <item>
     <title>Arlington Heights: Culinary: Smashburgers</title>
@@ -157,6 +199,13 @@
     <description>Sunday, October 04 2026 2:00pm - 3:00pm 
  Conoce tu iPhone con consejos para navegar tu celular.</description>
     <pubDate>Sun, 04 Oct 2026 14:00:00 +0000</pubDate>
+  </item>
+  <item>
+    <title>Palatine: Blessing of the Animals and Pets at St. Philip's Episcopal Church</title>
+    <link>https://www.palatine.il.us/common/modules/iCalendar/iCalendar.aspx?feed=calendar&amp;catID=14</link>
+    <guid isPermaLink="false">https://www.palatine.il.us/common/modules/iCalendar/iCalendar.aspx?feed=calendar&amp;catID=14#2026-10-04T16:00:00</guid>
+    <description>Blessing of the Animals at St. Philip's https://www.palatine.il</description>
+    <pubDate>Sun, 04 Oct 2026 16:00:00 +0000</pubDate>
   </item>
   <item>
     <title>Arlington Heights: Kids' Time</title>
@@ -273,6 +322,13 @@ Ages 9-12.</description>
     <pubDate>Mon, 05 Oct 2026 18:00:00 +0000</pubDate>
   </item>
   <item>
+    <title>Wheeling: Village Board Regular Meeting</title>
+    <link>https://www.wheelingil.gov/common/modules/iCalendar/iCalendar.aspx?feed=calendar&amp;catID=14</link>
+    <guid isPermaLink="false">https://www.wheelingil.gov/common/modules/iCalendar/iCalendar.aspx?feed=calendar&amp;catID=14#2026-10-05T18:30:00</guid>
+    <description>https://www.wheelingil.gov/calendar.aspx?EID=2004</description>
+    <pubDate>Mon, 05 Oct 2026 18:30:00 +0000</pubDate>
+  </item>
+  <item>
     <title>Des Plaines: Des Plaines Shambhala Meditation Group</title>
     <link>https://desplaines.libnet.info/event/17253015</link>
     <guid isPermaLink="true">https://desplaines.libnet.info/event/17253015</guid>
@@ -336,69 +392,6 @@ Ages 9-12.</description>
     <description>Tuesday, October 06 2026 10:30am - 11:00am 
  Bring the whole family and join us for an interactive storytime with high-energy stories, songs, and activities.</description>
     <pubDate>Tue, 06 Oct 2026 10:30:00 +0000</pubDate>
-  </item>
-  <item>
-    <title>Mount Prospect: Play and Learn</title>
-    <link>https://mppl.libnet.info/event/16749800</link>
-    <guid isPermaLink="true">https://mppl.libnet.info/event/16749800</guid>
-    <description>Tuesday, October 06 2026 11:30am - 12:15pm 
- Join us each week for storytime, sing-alongs, and developmental play experiences that encourage learning through…</description>
-    <pubDate>Tue, 06 Oct 2026 11:30:00 +0000</pubDate>
-  </item>
-  <item>
-    <title>Mount Prospect: Big Kids Storytime</title>
-    <link>https://mppl.libnet.info/event/16553392</link>
-    <guid isPermaLink="true">https://mppl.libnet.info/event/16553392</guid>
-    <description>Tuesday, October 06 2026 1:30pm - 2:15pm 
- Grow into a super reader through playful books and fun with friends! This storytime is the perfect fit for…</description>
-    <pubDate>Tue, 06 Oct 2026 13:30:00 +0000</pubDate>
-  </item>
-  <item>
-    <title>Mount Prospect: Choosing Your Medicare Supplement Insurance Policy</title>
-    <link>https://mppl.libnet.info/event/16332683</link>
-    <guid isPermaLink="true">https://mppl.libnet.info/event/16332683</guid>
-    <description>Tuesday, October 06 2026 2:00pm - 3:00pm 
- This program will provide helpful guidance needed to navigate Medicare supplement options with a Medicare…</description>
-    <pubDate>Tue, 06 Oct 2026 14:00:00 +0000</pubDate>
-  </item>
-  <item>
-    <title>Wheeling: Cooking 101: Mac and Cheese</title>
-    <link>https://indiantrails.libnet.info/event/16708801</link>
-    <guid isPermaLink="true">https://indiantrails.libnet.info/event/16708801</guid>
-    <description>Tuesday, October 06 2026 4:30pm - 5:30pm 
- Receive a recipe card case at your first Cooking 101 program and a new recipe card at each future program to…</description>
-    <pubDate>Tue, 06 Oct 2026 16:30:00 +0000</pubDate>
-  </item>
-  <item>
-    <title>Arlington Heights: Community Input Meeting - Carefree Park</title>
-    <link>https://www.ahpd.org/event/community-input-meeting-carefree-park/</link>
-    <guid isPermaLink="true">https://www.ahpd.org/event/community-input-meeting-carefree-park/</guid>
-    <description>Help shape the future of Carefree Park! Join us for a community input meeting where residents can share their feedback and vote on their favorite playground…</description>
-    <pubDate>Tue, 06 Oct 2026 17:30:00 +0000</pubDate>
-  </item>
-  <item>
-    <title>Wheeling: Resume Review &amp; Career Coaching Appointments</title>
-    <link>https://indiantrails.libnet.info/event/16654161</link>
-    <guid isPermaLink="true">https://indiantrails.libnet.info/event/16654161</guid>
-    <description>Tuesday, October 06 2026 6:00pm - 7:00pm 
- Kickstart your career with a one-hour resume review with a career specialist. Resume Review and Career Coaching…</description>
-    <pubDate>Tue, 06 Oct 2026 18:00:00 +0000</pubDate>
-  </item>
-  <item>
-    <title>Des Plaines: Spooky Stickers - Learn to Make Stickers on the Cricut!</title>
-    <link>https://desplaines.libnet.info/event/16752190</link>
-    <guid isPermaLink="true">https://desplaines.libnet.info/event/16752190</guid>
-    <description>Tuesday, October 06 2026 6:30pm - 8:00pm 
- Learn how to make custom stickers using the Canvas's Cricut machine, just in time for Halloween!</description>
-    <pubDate>Tue, 06 Oct 2026 18:30:00 +0000</pubDate>
-  </item>
-  <item>
-    <title>Wheeling: Writers Workshop</title>
-    <link>https://indiantrails.libnet.info/event/15836551</link>
-    <guid isPermaLink="true">https://indiantrails.libnet.info/event/15836551</guid>
-    <description>Tuesday, October 06 2026 6:30pm - 8:45pm 
- Share your work with others in a supportive atmosphere at this monthly community writers group led by author Ginnie…</description>
-    <pubDate>Tue, 06 Oct 2026 18:30:00 +0000</pubDate>
   </item>
 </channel>
 </rss>
