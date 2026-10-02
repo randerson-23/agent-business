@@ -12482,6 +12482,27 @@ for every recorded build.
        before filling in Palatine's `trick_or_treat.hours`, and check
        the weekday against 2026 (item 219).
 
+     **Confirmed by #277's real CI build:** all three village feeds
+     fetched without a failure, and the new Palatine calendar was
+     recorded on its first build. The "Region zero weekend contribution"
+     warning, which had named Palatine on every previous build, was
+     gone entirely. **Every town now contributes weekend events.**
+
+     **Probe round 9 (`d595454`):** Wheeling's Main Calendar iCal has
+     **127 events**. The Village of Mount Prospect's Revize news JSON
+     (`_includes_/published/news_list.json`, 200 `application/json`) is
+     an object keyed by article ID, each entry carrying `title`, a
+     `date` like `"Oct 1, 2026"`, a site-relative `/articles/….php`
+     `link`, a `brief` and a `category_name`. **Acted on in the next
+     PR:** a new `revize_news_json` source type
+     (`fetchers.fetch_revize_news_json`) reads it, sorting newest first
+     before the per-source limit since the list keeps stale entries
+     (a November 2025 update sits beside October 2026 ones). *Village of
+     Mount Prospect — News* now uses it, after 34+ builds of 403 and
+     then 404. The Village calendar is unchanged: it renders in
+     JavaScript and the site publishes no calendar data URL, so a
+     scrape would publish nav links.
+
 222. ✅ **DONE — Pick the subject's lead event by how notable it is, not by
      round-robin order.** Item 217 got the format right. The current
      subject is *"Life Drawing at the Library 2026 and 20 more this

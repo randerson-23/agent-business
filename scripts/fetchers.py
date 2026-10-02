@@ -17,6 +17,8 @@ source-health tracking.
 """
 from __future__ import annotations
 
+import html
+import json
 import logging
 import re
 import time
@@ -241,6 +243,64 @@ def fetch_rss(
         return items
     except Exception as exc:  # noqa: BLE001 - fail soft by design
         logger.warning("RSS fetch failed for %s: %s", url, exc)
+        _record_failure(exc, failure_info)
+        return None
+
+
+_REVIZE_NEWS_DATE_FORMATS = ("%b %d, %Y", "%B %d, %Y")
+
+
+def _parse_revize_news_date(raw: str) -> datetime | None:
+    for fmt in _REVIZE_NEWS_DATE_FORMATS:
+        try:
+            return datetime.strptime(raw.strip(), fmt)
+        except ValueError:
+            continue
+    return None
+
+
+def fetch_revize_news_json(
+    url: str, limit: int = MAX_ITEMS_PER_SOURCE, *, failure_info: dict | None = None, **_ignored
+) -> list[dict] | None:
+    """Read a Revize CMS site's published news list (ROADMAP.md item 192).
+
+    The Village of Mount Prospect moved to Revize, which renders its news
+    page in JavaScript from `_includes_/published/news_list.json`: an object
+    keyed by article ID, each value carrying `title`, `date` ("Oct 1,
+    2026"), a site-relative `link` and an HTML `brief`. Found by the
+    URL-probe workflow (round 9, 2026-10-02). The list keeps stale items
+    (a November 2025 update sat beside October 2026 ones), so items are
+    sorted newest first before `limit` applies. Same `None`-on-failure
+    contract as fetch_rss.
+    """
+    try:
+        resp = _get(url)
+        data = json.loads(resp.content)
+        records = list(data.values()) if isinstance(data, dict) else list(data)
+        items = []
+        for rec in records:
+            if not isinstance(rec, dict):
+                continue
+            title = html.unescape(str(rec.get("title") or "")).strip()
+            if not title:
+                continue
+            raw_date = str(rec.get("date") or "").strip()
+            brief = html.unescape(re.sub(r"<[^>]+>", " ", str(rec.get("brief") or "")))
+            items.append(
+                {
+                    "title": title,
+                    "detail": " ".join(brief.split()),
+                    "url": _resolve_url(resp.url, str(rec.get("link") or "")),
+                    "date": raw_date or None,
+                    "_sort": _parse_revize_news_date(raw_date) if raw_date else None,
+                }
+            )
+        items.sort(key=lambda i: i["_sort"] or datetime.min, reverse=True)
+        for item in items:
+            del item["_sort"]
+        return items[:limit]
+    except Exception as exc:  # noqa: BLE001 - fail soft by design
+        logger.warning("Revize news JSON fetch failed for %s: %s", url, exc)
         _record_failure(exc, failure_info)
         return None
 
@@ -697,4 +757,5 @@ FETCHERS = {
     "rss": fetch_rss,
     "ics": fetch_ics,
     "html_events": fetch_html_events,
+    "revize_news_json": fetch_revize_news_json,
 }

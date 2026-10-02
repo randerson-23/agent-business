@@ -80,10 +80,14 @@ region:
 
 sources:
   - name: "Village of Mount Prospect — News"
-    type: html_events
-    url: "https://www.mountprospect.org/services/news"
-    # Tuned for news-listing link text instead of the events default.
-    keywords: ["news", "board", "meeting", "closure", "closed", "notice", "advisory", "alert", "update"]
+    type: revize_news_json
+    # ROADMAP.md item 192: /services/news 403'd for 34+ builds, then 404'd once
+    # the Village moved to the Revize CMS - and the new /news/index.php
+    # renders in JavaScript, so a scrape would only publish nav links. The
+    # page loads this published JSON instead: one entry per article with a
+    # title, a "Oct 1, 2026" date and a /articles/... link. URL-probe round 9
+    # (2026-10-02) fetched it from a GitHub runner: 200 application/json.
+    url: "https://www.mountprospect.org/_includes_/published/news_list.json"
     section: "Village News"
     enabled: true
 
