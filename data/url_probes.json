@@ -1,37 +1,210 @@
 {
   "results": [
     {
-      "url": "https://www.sd25.org/fs/calendar-manager/events.ics?calendar_ids[]=361",
-      "purpose": "D25 - Finalsite iCal for calendar ID 361 alone",
-      "item": 198,
-      "probed_at": "2026-10-02T14:27:02+00:00",
+      "url": "https://withintenmiles.com/f3b7799bed06aac4295ec9134d53b014.txt",
+      "purpose": "IndexNow key file on the live domain - status, content type, does the body equal the key?",
+      "item": 224,
+      "probed_at": "2026-10-03T14:05:07+00:00",
       "status": 200,
-      "final_url": "https://www.sd25.org/fs/calendar-manager/events.ics?calendar_ids%5B%5D=361",
-      "content_type": "text/calendar; charset=utf-8",
-      "bytes": 447,
-      "ics_event_count": 0
+      "final_url": "https://withintenmiles.com/f3b7799bed06aac4295ec9134d53b014.txt",
+      "content_type": "text/plain; charset=utf-8",
+      "bytes": 32,
+      "pattern_matches": {
+        "f3b7799bed06aac4295ec9134d53b014": [
+          {
+            "match": "f3b7799bed06aac4295ec9134d53b014",
+            "context": "f3b7799bed06aac4295ec9134d53b014"
+          }
+        ]
+      }
     },
     {
-      "url": "https://www.sd25.org/fs/calendar-manager/events.ics?calendar_ids[]=349",
-      "purpose": "D25 - Finalsite iCal for calendar ID 349 alone",
-      "item": 198,
-      "probed_at": "2026-10-02T14:27:02+00:00",
+      "url": "https://withintenmiles.com/",
+      "purpose": "Live home page - status, final URL after redirects, title, robots meta",
+      "item": 224,
+      "probed_at": "2026-10-03T14:05:07+00:00",
       "status": 200,
-      "final_url": "https://www.sd25.org/fs/calendar-manager/events.ics?calendar_ids%5B%5D=349",
-      "content_type": "text/calendar; charset=utf-8",
-      "bytes": 447,
-      "ics_event_count": 0
+      "final_url": "https://withintenmiles.com/",
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 22487,
+      "title": "Within Ten — Everything worth doing, ten miles out",
+      "feed_links": [
+        {
+          "href": "https://withintenmiles.com/feed.xml",
+          "type": "application/rss+xml",
+          "title": "Within Ten — Upcoming Local Events"
+        }
+      ],
+      "calendar_links": [],
+      "pattern_matches": {
+        "(?i)<meta name=\"robots\"[^>]*>": [],
+        "(?i)<link rel=\"canonical\"[^>]*>": [
+          {
+            "match": "<link rel=\"canonical\" href=\"https://withintenmiles.com/\">",
+            "context": "image\" content=\"https://withintenmiles.com/og/default.png\"> <link rel=\"canonical\" href=\"https://withintenmiles.com/\"> <link rel=\"alternate\" type=\"application/rss+xml\" title=\"Wit"
+          }
+        ]
+      }
     },
     {
-      "url": "https://www.sd25.org/fs/calendar-manager/events.ics?calendar_ids[]=360",
-      "purpose": "D25 - Finalsite iCal for calendar ID 360 alone",
-      "item": 198,
-      "probed_at": "2026-10-02T14:27:03+00:00",
+      "url": "https://withintenmiles.com/sitemap.xml",
+      "purpose": "Live sitemap - served, and which host its <loc> URLs use",
+      "item": 224,
+      "probed_at": "2026-10-03T14:05:07+00:00",
       "status": 200,
-      "final_url": "https://www.sd25.org/fs/calendar-manager/events.ics?calendar_ids%5B%5D=360",
-      "content_type": "text/calendar; charset=utf-8",
-      "bytes": 447,
-      "ics_event_count": 0
+      "final_url": "https://withintenmiles.com/sitemap.xml",
+      "content_type": "application/xml",
+      "bytes": 7720,
+      "pattern_matches": {
+        "<loc>[^<]{1,100}": [
+          {
+            "match": "<loc>https://withintenmiles.com/",
+            "context": "=\"http://www.sitemaps.org/schemas/sitemap/0.9\"> <url> <loc>https://withintenmiles.com/</loc> <lastmod>2026-10-03</lastmod> </url> <url>"
+          },
+          {
+            "match": "<loc>https://withintenmiles.com/this-weekend/",
+            "context": "loc> <lastmod>2026-10-03</lastmod> </url> <url> <loc>https://withintenmiles.com/this-weekend/</loc> <lastmod>2026-10-03</lastmod> </url> <url>"
+          },
+          {
+            "match": "<loc>https://withintenmiles.com/today/",
+            "context": "loc> <lastmod>2026-10-03</lastmod> </url> <url> <loc>https://withintenmiles.com/today/</loc> <lastmod>2026-10-03</lastmod> </url> <url>"
+          },
+          {
+            "match": "<loc>https://withintenmiles.com/free/",
+            "context": "loc> <lastmod>2026-10-03</lastmod> </url> <url> <loc>https://withintenmiles.com/free/</loc> <lastmod>2026-10-03</lastmod> </url> <url>"
+          },
+          {
+            "match": "<loc>https://withintenmiles.com/sponsor/",
+            "context": "loc> <lastmod>2026-10-03</lastmod> </url> <url> <loc>https://withintenmiles.com/sponsor/</loc> <lastmod>2026-10-03</lastmod> </url> <url>"
+          },
+          {
+            "match": "<loc>https://withintenmiles.com/about/",
+            "context": "loc> <lastmod>2026-10-03</lastmod> </url> <url> <loc>https://withintenmiles.com/about/</loc> <lastmod>2026-10-03</lastmod> </url> <url>"
+          },
+          {
+            "match": "<loc>https://withintenmiles.com/trick-or-treat/",
+            "context": "loc> <lastmod>2026-10-03</lastmod> </url> <url> <loc>https://withintenmiles.com/trick-or-treat/</loc> <lastmod>2026-10-03</lastmod> </url> <url>"
+          },
+          {
+            "match": "<loc>https://withintenmiles.com/arlington-heights-60005/",
+            "context": "loc> <lastmod>2026-10-03</lastmod> </url> <url> <loc>https://withintenmiles.com/arlington-heights-60005/</loc> <lastmod>2026-10-03</lastmod> </url> <url>"
+          },
+          {
+            "match": "<loc>https://withintenmiles.com/arlington-heights-60005/this-weekend/",
+            "context": "loc> <lastmod>2026-10-03</lastmod> </url> <url> <loc>https://withintenmiles.com/arlington-heights-60005/this-weekend/</loc> <lastmod>2026-10-03</lastmod> </url> <url>"
+          },
+          {
+            "match": "<loc>https://withintenmiles.com/arlington-heights-60005/today/",
+            "context": "loc> <lastmod>2026-10-03</lastmod> </url> <url> <loc>https://withintenmiles.com/arlington-heights-60005/today/</loc> <lastmod>2026-10-03</lastmod> </url> <url>"
+          },
+          {
+            "match": "<loc>https://withintenmiles.com/arlington-heights-60005/free/",
+            "context": "loc> <lastmod>2026-10-03</lastmod> </url> <url> <loc>https://withintenmiles.com/arlington-heights-60005/free/</loc> <lastmod>2026-10-03</lastmod> </url> <url>"
+          },
+          {
+            "match": "<loc>https://withintenmiles.com/arlington-heights-60005/directory/",
+            "context": "loc> <lastmod>2026-10-03</lastmod> </url> <url> <loc>https://withintenmiles.com/arlington-heights-60005/directory/</loc> <lastmod>2026-10-03</lastmod> </url> <url>"
+          },
+          {
+            "match": "<loc>https://withintenmiles.com/arlington-heights-60005/things-to-do/",
+            "context": "loc> <lastmod>2026-10-03</lastmod> </url> <url> <loc>https://withintenmiles.com/arlington-heights-60005/things-to-do/</loc> <lastmod>2026-10-03</lastmod> </url> <url>"
+          },
+          {
+            "match": "<loc>https://withintenmiles.com/arlington-heights-60005/guides/",
+            "context": "loc> <lastmod>2026-10-03</lastmod> </url> <url> <loc>https://withintenmiles.com/arlington-heights-60005/guides/</loc> <lastmod>2026-10-03</lastmod> </url> <url>"
+          },
+          {
+            "match": "<loc>https://withintenmiles.com/arlington-heights-60005/guides/fall-family-guide/",
+            "context": "loc> <lastmod>2026-10-03</lastmod> </url> <url> <loc>https://withintenmiles.com/arlington-heights-60005/guides/fall-family-guide/</loc> <lastmod>2026-10-03</lastmod> </url> <url>"
+          },
+          {
+            "match": "<loc>https://withintenmiles.com/arlington-heights-60005/guides/birthday-parties-and-kids-classes/",
+            "context": "loc> <lastmod>2026-10-03</lastmod> </url> <url> <loc>https://withintenmiles.com/arlington-heights-60005/guides/birthday-parties-and-kids-classes/</loc> <lastmod>2026-10-03</lastmod> </url> <url>"
+          },
+          {
+            "match": "<loc>https://withintenmiles.com/arlington-heights-60005/guides/seasonal-circuit-guide/",
+            "context": "loc> <lastmod>2026-10-03</lastmod> </url> <url> <loc>https://withintenmiles.com/arlington-heights-60005/guides/seasonal-circuit-guide/</loc> <lastmod>2026-10-03</lastmod> </url> <url>"
+          },
+          {
+            "match": "<loc>https://withintenmiles.com/arlington-heights-60005/guides/new-to-town/",
+            "context": "loc> <lastmod>2026-10-03</lastmod> </url> <url> <loc>https://withintenmiles.com/arlington-heights-60005/guides/new-to-town/</loc> <lastmod>2026-10-03</lastmod> </url> <url>"
+          },
+          {
+            "match": "<loc>https://withintenmiles.com/des-plaines-60016/",
+            "context": "loc> <lastmod>2026-10-03</lastmod> </url> <url> <loc>https://withintenmiles.com/des-plaines-60016/</loc> <lastmod>2026-10-03</lastmod> </url> <url>"
+          },
+          {
+            "match": "<loc>https://withintenmiles.com/des-plaines-60016/this-weekend/",
+            "context": "loc> <lastmod>2026-10-03</lastmod> </url> <url> <loc>https://withintenmiles.com/des-plaines-60016/this-weekend/</loc> <lastmod>2026-10-03</lastmod> </url> <url>"
+          }
+        ]
+      }
+    },
+    {
+      "url": "https://withintenmiles.com/robots.txt",
+      "purpose": "Live robots.txt - any Disallow that could block crawlers",
+      "item": 224,
+      "probed_at": "2026-10-03T14:05:07+00:00",
+      "status": 200,
+      "final_url": "https://withintenmiles.com/robots.txt",
+      "content_type": "text/plain; charset=utf-8",
+      "bytes": 412,
+      "pattern_matches": {
+        "(?im)^(?:user-agent|disallow|allow|sitemap):[^\\n]*": [
+          {
+            "match": "User-agent: *",
+            "context": "User-agent: * Allow: / User-agent: GPTBot Allow: / User-agent: ChatGPT-"
+          },
+          {
+            "match": "Allow: /",
+            "context": "User-agent: * Allow: / User-agent: GPTBot Allow: / User-agent: ChatGPT-User Allo"
+          },
+          {
+            "match": "User-agent: GPTBot",
+            "context": "User-agent: * Allow: / User-agent: GPTBot Allow: / User-agent: ChatGPT-User Allow: / User-agent: OA"
+          },
+          {
+            "match": "User-agent: ChatGPT-User",
+            "context": "User-agent: * Allow: / User-agent: GPTBot Allow: / User-agent: ChatGPT-User Allow: / User-agent: OAI-SearchBot Allow: / User-agent: C"
+          },
+          {
+            "match": "User-agent: OAI-SearchBot",
+            "context": "-agent: GPTBot Allow: / User-agent: ChatGPT-User Allow: / User-agent: OAI-SearchBot Allow: / User-agent: ClaudeBot Allow: / User-agent: Claud"
+          },
+          {
+            "match": "User-agent: ClaudeBot",
+            "context": "ChatGPT-User Allow: / User-agent: OAI-SearchBot Allow: / User-agent: ClaudeBot Allow: / User-agent: Claude-Web Allow: / User-agent: anth"
+          },
+          {
+            "match": "User-agent: Claude-Web",
+            "context": "nt: OAI-SearchBot Allow: / User-agent: ClaudeBot Allow: / User-agent: Claude-Web Allow: / User-agent: anthropic-ai Allow: / User-agent: Pe"
+          },
+          {
+            "match": "User-agent: anthropic-ai",
+            "context": "agent: ClaudeBot Allow: / User-agent: Claude-Web Allow: / User-agent: anthropic-ai Allow: / User-agent: PerplexityBot Allow: / User-agent: P"
+          },
+          {
+            "match": "User-agent: PerplexityBot",
+            "context": "nt: Claude-Web Allow: / User-agent: anthropic-ai Allow: / User-agent: PerplexityBot Allow: / User-agent: Perplexity-User Allow: / User-agent:"
+          },
+          {
+            "match": "User-agent: Perplexity-User",
+            "context": "anthropic-ai Allow: / User-agent: PerplexityBot Allow: / User-agent: Perplexity-User Allow: / User-agent: Google-Extended Allow: / User-agent:"
+          },
+          {
+            "match": "User-agent: Google-Extended",
+            "context": "rplexityBot Allow: / User-agent: Perplexity-User Allow: / User-agent: Google-Extended Allow: / User-agent: CCBot Allow: / Sitemap: https://with"
+          },
+          {
+            "match": "User-agent: CCBot",
+            "context": "lexity-User Allow: / User-agent: Google-Extended Allow: / User-agent: CCBot Allow: / Sitemap: https://withintenmiles.com/sitemap.xml"
+          },
+          {
+            "match": "Sitemap: https://withintenmiles.com/sitemap.xml",
+            "context": "gent: Google-Extended Allow: / User-agent: CCBot Allow: / Sitemap: https://withintenmiles.com/sitemap.xml"
+          }
+        ]
+      }
     }
   ]
 }
