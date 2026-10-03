@@ -425,6 +425,13 @@ Cloudflare Email Routing later. No merge needed.
 Webmaster Tools (part of item 73). It skips re-verification entirely and
 covers Bing, Yahoo and DuckDuckGo - and Bing's index feeds ChatGPT
 search, which item 22's whole AI-citation effort depends on.
+**Item 224 (fifty-fifth pass, 2026-10-03):** while doing the Bing
+import below, also note **Google Search Console → Indexing → Pages →
+"Indexed" count**. This loop's own web search finds no pages on
+withintenmiles.com yet. And **item 226:** rename the Buttondown handle
+from `andersonryant` to the brand (one minute; the build loop updates
+the config to match).
+
 **Moved up by item 204 (forty-eighth pass, 2026-09-26):** this is now
 the most useful two-minute action on this list. Bing's index is the
 source for ChatGPT search, Copilot, Edge and DuckDuckGo, and is reported
@@ -12586,6 +12593,117 @@ of Mount Prospect's new CMS; no documented calendar export, so the
 build loop's probe remains the route). Design/UX angle: **subject-line
 lead selection**, where a specific subject is only as good as the event
 it names.
+
+
+#### Research pass 2026-10-03 (fifty-fifth pass)
+
+**Every town now has weekend events, for the first time in this
+project's recorded history.** The build loop shipped items 221 and 222,
+and probe round 8 found Palatine's and Wheeling's CivicPlus feeds and
+the Village of Mount Prospect's news JSON (item 192). Weekend counts
+this build: Arlington Heights **5**, Des Plaines **4**, Mount Prospect
+**7**, Palatine **6** (from zero on every prior build), Wheeling **6**.
+The subject line now leads with the weekend's biggest event: *"Harmony
+Fest & Taste of Arlington… and 27 more this weekend"*.
+
+That changes what matters. The product now covers what it promises.
+The bottleneck is whether anyone can **find** it, and this pass checked.
+
+| Angle | Finding | Consequence |
+|---|---|---|
+| **Is the site in the index?** | A `site:withintenmiles.com` search returned **no pages from the domain**. A brand search (*"Within Ten" withintenmiles Mount Prospect*) returned the **Buttondown archive copy of the first newsletter**, `buttondown.com/andersonryant/archive/this-weekend-across-arlington-heights-des-plaines/`, alongside Eventbrite, AllEvents and Kidlist, but nothing on the site's own domain | About 2.5 weeks after Google Search Console verification and sitemap submission (2026-09-16), the web search this loop can run does not surface the site. This search backend is not Google, so this is not proof Google has not indexed it. It is a signal, and only the owner can see the real numbers (item 224) |
+| **What *is* indexed** | The Buttondown public archive. That builds authority for `buttondown.com`, not the domain, and its URL carries the owner's personal handle, **`andersonryant`**, which is also in every signup form's action URL (`config/newsletter.yaml: buttondown_username`) | Readers subscribing see a personal username, not the brand. Item 51's unsubscribe research found **54.9%** leave senders they do not recognise (item 226) |
+| **Buttondown archive options** | Archive hosting on a custom domain needs the **Professional plan ($29/month)**. A **free crawling toggle** (Settings → Archives) can `noindex` the archive and subscribe pages on any plan | Do **not** turn the archive off yet: it is currently the only indexed surface carrying the brand. Do not pay $29/month either. Revisit once the domain itself is indexed |
+| **IndexNow, observable?** | `submit_indexnow()` in `fetchers.py` logs success or failure and returns a boolean, but **nothing is persisted**. No record shows whether Bing has accepted a single ping since item 72 shipped | The one automated "tell search engines" mechanism has no history to check (item 224) |
+| **The new subject, read (design/UX)** | *"Harmony Fest & Taste of Arlington… and 27 more this weekend"* cuts **one event's title off mid-word**. "Harmony Fest & Taste of Arlington Heights" is a single event, and the ellipsis lands inside it | A truncated proper name in the most-read line of the email reads as broken (item 225) |
+
+#### P1 (new)
+
+224. **Find out whether the site is indexed, and make the answer
+     visible.** Now that every town has weekend events, being found is
+     the constraint. This loop's web search returns nothing for
+     `site:withintenmiles.com`, while the Buttondown archive copy of the
+     first issue *is* found. That is a different search backend from
+     Google, so it is a warning sign, not a verdict. Two halves:
+
+     **Owner, about two minutes, no decision involved:**
+     - In **Google Search Console → Indexing → Pages**, note the
+       "Indexed" count and the top "Why pages aren't indexed" reason. One
+       number settles this.
+     - Do the **Bing Webmaster Tools import** (item 204: *Import from
+       Google Search Console*). It has been pending since 2026-09-16, and
+       Bing feeds ChatGPT search, Copilot and DuckDuckGo.
+
+     **Build loop, zero owner time:**
+     - **Persist IndexNow responses.** `submit_indexnow()` already gets
+       a status code on every build and only logs it. Append
+       `{timestamp, url_count, status}` to a small `data/indexnow_log.json`
+       (trailing 20 entries, committed with item 206's retry push), so a
+       `403` (key mismatch) or a `422` is visible instead of disappearing
+       into a CI log.
+     - **Re-run the `site:` check** in a research pass each week and
+       record it here. It is the one external indexing signal this
+       loop can see.
+
+     Why P1: the press pitch, the civic outreach emails and every
+     sponsor conversation assume a reader can find the site after
+     hearing about it. Right now this loop's search shows the newsletter
+     archive and not the site.
+
+#### P2 (new)
+
+225. **Never cut an event title off in the subject line.** Item 222
+     picked the right lead event: *"Harmony Fest & Taste of Arlington…
+     and 27 more this weekend"*. But `_fit_subject()` truncated inside a
+     title to fit the length budget. "Harmony Fest & Taste of Arlington
+     Heights" is one event's name, so the cut lands mid-name, and the
+     "&" inside it also reads like a list of two events.
+
+     Fix: fit whole titles only. If the lead title plus the count does
+     not fit, use the lead title alone with the count (*"Harmony Fest &
+     Taste of Arlington Heights + 27 more"*). If even that is too long,
+     shorten by dropping trailing words at a word boundary, never
+     mid-word, and never inside a proper name where avoidable. Add a
+     test with this exact title. It is a one-function change with a
+     direct effect on the most-read line in every issue.
+
+226. **Rename the Buttondown handle from `andersonryant` to the brand.**
+     The handle appears in every signup form's action URL, on the hosted
+     subscribe page item 183's footer links to, and in the indexed
+     archive URLs. A reader joining "Within Ten" lands on
+     `buttondown.com/andersonryant`. Item 51's research found
+     unrecognised senders are a top reason people unsubscribe (54.9%),
+     and item 130 put a real name on the About page *as a person*. The
+     newsletter's address should carry the brand, not the owner's
+     username.
+
+     - **Owner, about one minute:** in Buttondown settings, change the
+       username to the brand (for example `withinten`, if available).
+     - **Build loop:** update `config/newsletter.yaml:
+       buttondown_username` in the same cycle, then check that the
+       region-page form, the hosted subscribe link and the email footer
+       all point at the new handle. Also confirm whether Buttondown
+       redirects old archive URLs. If it does not, the one indexed page
+       becomes a 404, which is acceptable now while it is a single page
+       but a reason to do this soon rather than later.
+
+     Listed under the Needs Ryan section's "small, no-decision" actions,
+     not as a ranked decision.
+
+**Re-ranking note for Needs Ryan.** The civic outreach emails (item 152,
+still the named next action) now have a materially better opening:
+every one of the five towns, including the recipient's, has dated
+weekend events this week. The Palatine and Des Plaines libraries can be
+shown their own events in the issue instead of a "nothing dated yet"
+row. Nothing in the ordering changes. The case for sending them this
+week got stronger.
+
+Competitors reviewed this pass: **search visibility, checked** (a
+`site:` query on the domain returns nothing in this loop's search
+backend, while the Buttondown archive copy of issue one is indexed),
+**Buttondown archive hosting** (custom archive domain on the $29/month
+Professional plan; a free per-plan crawling toggle; deliberately left
+indexed for now), and **subject-line truncation** as a design/UX angle.
 
 
 ## Working agreements for autonomous iteration
