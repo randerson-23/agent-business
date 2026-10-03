@@ -119,6 +119,52 @@ minutes/month budget below as this scales past one sponsor.
 Break-even is trivial: hosting is free (GitHub Pages), the only cost is time.
 One Annual Partner already covers years of hosting and any tooling.
 
+#### Monetization in the agent era (added 2026-10-03)
+
+Consumer AI agents (Meta Muse, Grok's agent, Dot and others) increasingly
+answer "what's happening near me this weekend?" for people, often
+without anyone visiting the site. For an impression-based ad business
+that is a straight loss. For this one it is mostly a change of where
+the value sits, because none of the tiers above sell impressions. They
+sell **association with being the local source**. In an agent world
+that asset moves from "seen on a banner" to **"present in the answer"**.
+
+What that means for the plan:
+
+- **The goal is to be the source agents read, and cite.** The site is
+  built so agents can find it, parse it and link back to it: stable
+  per-event links, a clean machine-readable event feed, and
+  `llms.txt`. A citation that names Within Ten carries the brand, and
+  the sponsors on that page, to a reader who never visited.
+- **What sponsors buy expands to include presence in the data.** Annual
+  Partner and Neighborhood Authority holders get complete, accurate
+  entries in the site's structured local directory, the data AI
+  assistants read. Event Promo items are marked as sponsored in that
+  data, and a "presented by" line appears in the weekend summary.
+  Placement in the data is guaranteed; being named by any particular
+  assistant is not, and the sponsor kit says so.
+- **Sponsorship is always visible and labelled.** Nothing is hidden
+  from human readers or aimed at manipulating AI systems. The business
+  depends on being trusted as an accurate local source, and that rule
+  protects it.
+- **Platform payments are a small, passive bonus, not the plan.** An
+  open licence (RSL) states that AI answers are free with attribution
+  and that training is reserved, and the site applies to programmes
+  such as Perplexity's Comet Plus that pay publishers when content drives
+  agent activity. Charging bots per visit is deliberately avoided: at
+  this scale it would earn a few dollars a month and push agents to
+  cite someone else.
+- **Measurement comes first.** None of this is sellable without a
+  number. Free, cookie-free analytics (GoatCounter) shows AI-referred
+  readers, since assistants such as ChatGPT tag the links they send.
+- **Later, if the numbers justify it:** a Within Ten connector inside
+  assistants like ChatGPT or Claude, with clearly labelled sponsored
+  results, would be the agent-era version of the Weekly Spot. It needs
+  a small server, so it waits until traffic proves demand.
+
+Details, sources and the build sequence are in ROADMAP.md (owner-requested
+research, 2026-10-03, items 227–233).
+
 ### Time budget
 
 - **Build (this repo, now)**: automation pipeline, site, sponsor kit — done
