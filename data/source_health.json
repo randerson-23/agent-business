@@ -2,7 +2,7 @@
   "arlington-heights-60005:Arlington Heights Memorial Library \u2014 Events": [
     255,
     255,
-    255,
+    256,
     256,
     256,
     256,
@@ -15,7 +15,7 @@
     17,
     17,
     17,
-    17,
+    19,
     19,
     19,
     19,
@@ -74,12 +74,12 @@
   "des-plaines-60016:Des Plaines Public Library \u2014 Events": [
     483,
     483,
-    483,
     473,
     473,
     473,
     473,
     473,
+    474,
     474,
     474
   ],
@@ -117,12 +117,12 @@
   "mount-prospect-60056:Mount Prospect Public Library \u2014 Events": [
     259,
     259,
-    259,
     250,
     250,
     250,
     250,
     250,
+    247,
     247,
     247
   ],
@@ -165,10 +165,12 @@
     0,
     23,
     24,
+    24,
     24
   ],
   "palatine-60067:Community Consolidated School District 15 \u2014 Calendar": [
     48,
+    47,
     47,
     47,
     47,
@@ -210,11 +212,13 @@
     15,
     15,
     15,
+    15,
     15
   ],
   "palatine-60067:Village of Palatine \u2014 Calendar": [
     19,
     19,
+    17,
     17,
     17
   ],
@@ -224,7 +228,7 @@
     0,
     0,
     0,
-    0,
+    4,
     4,
     4,
     4,
@@ -233,12 +237,12 @@
   "wheeling-60090:Indian Trails Public Library \u2014 Events": [
     379,
     379,
-    379,
     376,
     376,
     376,
     376,
     376,
+    373,
     373,
     373
   ],
@@ -248,7 +252,7 @@
     6,
     6,
     6,
-    6,
+    127,
     127,
     127,
     127,
