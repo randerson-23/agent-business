@@ -2726,7 +2726,9 @@ def _fit_subject(titles: list[str], total: int, lone_leads: list[str] | None = N
 
     Prefers whole real titles over clipped ones: the first pair that
     fits, else the first single title that fits, and only then a clipped
-    first title. "and" rather than "&" because real titles contain "&"
+    first title - and before clipping, a compact "{title} + N more" (item
+    225), so a lead title is cut only when it can't fit even alone. "and"
+    rather than "&" because real titles contain "&"
     themselves ("Harmony Fest & Taste of Arlington Heights (Friday)" is
     one event), and a clipped one followed by another "&" read as
     nonsense in a real build.
@@ -2738,16 +2740,27 @@ def _fit_subject(titles: list[str], total: int, lone_leads: list[str] | None = N
         lead = f"{named[0]}, {named[1]}" if more else f"{named[0]} and {named[1]}"
         return f"{lead} and {more} more this weekend" if more else f"{lead} this weekend"
 
-    attempts = [titles[:2]] if len(titles) >= 2 else []
+    def compact(title: str) -> str:
+        # Item 225: "{title} + N more" drops "this weekend" (13 characters)
+        # so a long lead title can stay whole instead of being cut mid-name.
+        more = total - 1
+        return f"This weekend: {title}" if more == 0 else f"{title} + {more} more"
+
+    leads = lone_leads if lone_leads is not None else titles
+    candidates = [compose(titles[:2])] if len(titles) >= 2 else []
     # Item 222: only a top-ranked title may lead alone, so a shorter but
-    # less notable title can't win just by fitting - clip the top one instead.
-    attempts += [[title] for title in (lone_leads if lone_leads is not None else titles)]
-    for named in attempts:
-        subject = compose(named)
+    # less notable title can't win just by fitting. Item 225: each lead
+    # gets its compact form before the next lead is tried, so the lead
+    # stays the lead rather than yielding to a shorter tie.
+    for title in leads:
+        candidates += [compose([title]), compact(title)]
+    for subject in candidates:
         if len(subject) <= SUBJECT_MAX_LEN:
             return subject
-    room = SUBJECT_MAX_LEN - (len(compose(titles[:1])) - len(titles[0]))
-    return compose([truncate(titles[0], room)])
+    # Last resort, only for a title too long even on its own: shorten at a
+    # word boundary (truncate never cuts inside a word).
+    room = SUBJECT_MAX_LEN - (len(compact(titles[0])) - len(titles[0]))
+    return compact(truncate(titles[0], room))
 
 
 def build_combined_email_subject_line(sections: list[dict]) -> str:
@@ -3083,6 +3096,34 @@ def filter_free_items(blocks: list[dict], evergreen: list[dict]) -> list[dict]:
     matched = [e for b in blocks for e in b["events"] if "free" in e.get("tags", [])]
     matched += [e for e in evergreen if "free" in e.get("tags", [])]
     return matched
+
+
+# ROADMAP.md item 224: IndexNow is the build's one automated "tell search
+# engines" step, and every real build logged a 403 that nothing kept. A
+# short trailing history makes "has Bing accepted a single ping?" a lookup.
+INDEXNOW_LOG_PATH = ROOT / "data" / "indexnow_log.json"
+INDEXNOW_LOG_KEEP = 20
+
+
+def record_indexnow_outcome(path: Path, now: datetime, url_count: int, ok: bool, outcome: dict) -> list[dict]:
+    """Append this build's IndexNow result to `path`, keeping the last
+    INDEXNOW_LOG_KEEP entries. A missing or unreadable file starts fresh."""
+    try:
+        history = json.loads(path.read_text(encoding="utf-8"))
+        if not isinstance(history, list):
+            history = []
+    except (OSError, ValueError):
+        history = []
+    history.append({
+        "timestamp": now.isoformat(timespec="seconds"),
+        "url_count": url_count,
+        "ok": ok,
+        "status": outcome.get("status"),
+        "error": outcome.get("error"),
+    })
+    history = history[-INDEXNOW_LOG_KEEP:]
+    path.write_text(json.dumps(history, indent=2) + "\n", encoding="utf-8")
+    return history
 
 
 def main() -> None:
@@ -3654,12 +3695,15 @@ def main() -> None:
         image.save(icons_dir / f"icon-{size}.png", "PNG")
     (OUTPUT_DIR / "manifest.webmanifest").write_text(build_web_manifest(), encoding="utf-8")
     logger.info("Wrote manifest.webmanifest and %d app icon(s) to %s", len(APP_ICON_SIZES), icons_dir)
-    submit_indexnow(
+    indexnow_outcome: dict = {}
+    indexnow_ok = submit_indexnow(
         host=CUSTOM_DOMAIN,
         key=INDEXNOW_KEY,
         key_location=f"{SITE_BASE_URL}{INDEXNOW_KEY}.txt",
         urls=sitemap_urls,
+        outcome=indexnow_outcome,
     )
+    record_indexnow_outcome(INDEXNOW_LOG_PATH, now, len(sitemap_urls), indexnow_ok, indexnow_outcome)
     if total_events:
         logger.info(
             "TOTAL structured-date coverage: %d/%d events (%.0f%%) have a machine-readable start date",

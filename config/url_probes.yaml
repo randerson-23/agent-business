@@ -17,22 +17,33 @@
 #             probed too (same patterns, one level deep, never further).
 
 probes:
-  # Round 10 (2026-10-02). Round 9 answered the rest: Wheeling's Main
-  # Calendar iCal has 127 events, and Mount Prospect's news_list.json is a
-  # clean per-article feed (now read by the new revize_news_json fetcher).
-  # The one open school question: D25's iCal for its page's three calendar
-  # IDs together was valid but empty. Ask each ID on its own.
+  # Round 11 (2026-10-03). Item 224: every real build logs "IndexNow
+  # submission failed ... 403 Client Error: Forbidden". IndexNow answers 403
+  # when it can't verify the key at keyLocation. The key file is generated
+  # and committed (docs/f3b7799bed06aac4295ec9134d53b014.txt), so the question is what the live domain
+  # actually serves - and whether the site answers at all.
 
-  # Item 198: D25, one Finalsite calendar ID at a time.
-  - url: https://www.sd25.org/fs/calendar-manager/events.ics?calendar_ids[]=361
-    item: 198
-    purpose: D25 - Finalsite iCal for calendar ID 361 alone
-  - url: https://www.sd25.org/fs/calendar-manager/events.ics?calendar_ids[]=349
-    item: 198
-    purpose: D25 - Finalsite iCal for calendar ID 349 alone
-  - url: https://www.sd25.org/fs/calendar-manager/events.ics?calendar_ids[]=360
-    item: 198
-    purpose: D25 - Finalsite iCal for calendar ID 360 alone
+  - url: https://withintenmiles.com/f3b7799bed06aac4295ec9134d53b014.txt
+    item: 224
+    purpose: IndexNow key file on the live domain - status, content type, does the body equal the key?
+    patterns:
+      - 'f3b7799bed06aac4295ec9134d53b014'
+  - url: https://withintenmiles.com/
+    item: 224
+    purpose: Live home page - status, final URL after redirects, title, robots meta
+    patterns:
+      - '(?i)<meta name="robots"[^>]*>'
+      - '(?i)<link rel="canonical"[^>]*>'
+  - url: https://withintenmiles.com/sitemap.xml
+    item: 224
+    purpose: Live sitemap - served, and which host its <loc> URLs use
+    patterns:
+      - '<loc>[^<]{1,100}'
+  - url: https://withintenmiles.com/robots.txt
+    item: 224
+    purpose: Live robots.txt - any Disallow that could block crawlers
+    patterns:
+      - '(?im)^(?:user-agent|disallow|allow|sitemap):[^\n]*'
 
   # Answered and removed (see ROADMAP.md items 212 and 215):
   # - The five 403 sources: bot walls (Access Denied / Cloudflare) from a runner too.
@@ -54,3 +65,5 @@ probes:
   #   catalogue/news/job/bids JSON (round 8).
   # - wheelingil.gov Main Calendar iCal: 127 events (round 9); configured.
   # - mountprospect.org news_list.json: per-article JSON (round 9); configured as revize_news_json.
+  # - sd25.org Finalsite iCal: valid but empty for 361, 349 and 360, together and each
+  #   alone (rounds 5 and 10). D25 publishes nothing by iCal; ask the district (item 152).

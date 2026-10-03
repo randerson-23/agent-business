@@ -12650,9 +12650,29 @@ The bottleneck is whether anyone can **find** it, and this pass checked.
      hearing about it. Right now this loop's search shows the newsletter
      archive and not the site.
 
+     **Build-loop half shipped 2026-10-03.** One finding before any code:
+     every real CI build log already showed **"IndexNow submission failed
+     for 61 URL(s): 403 Client Error: Forbidden"**, so Bing has never
+     accepted a ping. IndexNow returns 403 when it cannot verify the key
+     at `keyLocation`. The key file (`docs/f3b7799b….txt`) is generated
+     and committed, and `docs/CNAME` is `withintenmiles.com`, so the
+     question is what the live domain serves. Probe round 11 fetches the
+     live key file, home page, sitemap and `robots.txt` from a GitHub
+     runner to answer it.
+     - `submit_indexnow()` takes an optional `outcome` dict (HTTP status
+       and exception class), following `fetch_rss`'s `failure_info`
+       pattern. Its boolean return is unchanged.
+     - `record_indexnow_outcome()` appends `{timestamp, url_count, ok,
+       status, error}` to `data/indexnow_log.json`, keeping the last 20.
+       `build-digest.yml` commits it with the other generated data files.
+     - **Owner half still open:** the Search Console "Indexed" count and
+       the Bing import (item 204). If round 11 shows the live domain
+       serving the key correctly, a persistent 403 points at Bing's side,
+       and the Bing Webmaster import is the next step.
+
 #### P2 (new)
 
-225. **Never cut an event title off in the subject line.** Item 222
+225. ✅ **DONE — Never cut an event title off in the subject line.** Item 222
      picked the right lead event: *"Harmony Fest & Taste of Arlington…
      and 27 more this weekend"*. But `_fit_subject()` truncated inside a
      title to fit the length budget. "Harmony Fest & Taste of Arlington
@@ -12666,6 +12686,18 @@ The bottleneck is whether anyone can **find** it, and this pass checked.
      mid-word, and never inside a proper name where avoidable. Add a
      test with this exact title. It is a one-function change with a
      direct effect on the most-read line in every issue.
+
+     ✅ **Shipped 2026-10-03.** `_fit_subject()` now tries a compact
+     *"{title} + N more"* form before shortening any title. Dropping
+     "this weekend" frees 13 characters. Order: the full form with a
+     pair, then for each top-ranked title in turn, its full form and then
+     its compact form, so the lead keeps its place instead of yielding to
+     a shorter title tied on score (today's real data had exactly that
+     tie, with "Trick or Treat Trail"). Only a title too long
+     even in the compact form is shortened (at a word boundary, by
+     `truncate()`). This week's subject becomes *"Harmony Fest & Taste
+     of Arlington Heights + 27 more"* (51 characters, nothing cut). The
+     test uses that exact title. 2 new tests and 1 updated.
 
 226. **Rename the Buttondown handle from `andersonryant` to the brand.**
      The handle appears in every signup form's action URL, on the hosted
@@ -12730,8 +12762,11 @@ indexed for now), and **subject-line truncation** as a design/UX angle.
   build for the first time 2026-09-25 — `git restore` it like the
   others now, not `rm`), and `data/weekend_signal.json` (also
   committed by build-digest.yml, missing from this list until
-  2026-09-28) — always `git restore` all six after a local build in
-  this sandbox, never stage any of them.
+  2026-09-28), and `data/indexnow_log.json` (item 224, from
+  2026-10-03) — always `git restore` all seven after a local build in
+  this sandbox, never stage any of them. Before CI's first commit of
+  `indexnow_log.json`, a local build creates it untracked, so delete it
+  (`rm`) rather than `git restore` it.
 - `data/url_probes.json` (item 212) is written only by
   `probe-urls.yml` on a GitHub runner. Never commit a local run of
   `scripts/probe_urls.py`: in this sandbox every probe returns
