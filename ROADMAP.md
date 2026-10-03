@@ -12670,6 +12670,27 @@ The bottleneck is whether anyone can **find** it, and this pass checked.
        serving the key correctly, a persistent 403 points at Bing's side,
        and the Bing Webmaster import is the next step.
 
+     **Round 11 answer (2026-10-03): the site side is correct, so the
+     403 is on IndexNow/Bing's side.** Fetched from a GitHub runner:
+     - the key file returns **200 `text/plain`, 32 bytes, and its body
+       equals the key**;
+     - the home page returns **200** with `<link rel="canonical"
+       href="https://withintenmiles.com/">` and no robots meta;
+     - `sitemap.xml` is served and its `<loc>`s are on
+       `withintenmiles.com`;
+     - `robots.txt` has `User-agent: *` / `Allow: /` and **no
+       `Disallow` at all**, plus the sitemap line.
+
+     Nothing the build loop controls explains the 403. Two candidates,
+     neither checkable from here: IndexNow caching a failed key check
+     from before the domain went live, or Bing wanting the site claimed
+     first. **Owner, about 2 minutes:** in Bing Webmaster Tools, do the
+     Search Console import (item 204), then open *IndexNow* in the left
+     menu, which shows submission history and any key error. The new
+     `data/indexnow_log.json` will show when the status turns from 403
+     to 200 or 202. Re-probing isn't useful until something changes on
+     Bing's side.
+
 #### P2 (new)
 
 225. ✅ **DONE — Never cut an event title off in the subject line.** Item 222
