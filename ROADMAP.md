@@ -314,6 +314,12 @@ effort. Now that a real name is attached, `OUTREACH_TEMPLATES.md`'s
   principle, but a spend decision `BUSINESS_PLAN.md` doesn't assume,
   parked alongside the other two money questions rather than competing
   with the two free, no-deadline actions above.
+- **Perplexity publisher programme / Comet Plus application** (item
+  231) — the one AI-platform programme that pays when content drives an
+  agent action. One form, uncertain odds.
+- **Cloudflare proxy for AI-bot analytics** (item 232) — measurement
+  only; must be paired with explicitly allowing AI crawlers, or
+  Cloudflare's 2026-09-15 default blocks them.
 - **Peachjar school e-flyers** (item 211, fiftieth pass) — flyers
   delivered to every parent's inbox in a school district, at $25 per
   school, after district approval. The audience fit is close to perfect,
@@ -321,6 +327,13 @@ effort. Now that a real name is attached, `OUTREACH_TEMPLATES.md`'s
   confirmed), it is a spend decision, and it is a list spike that
   belongs after the signup and delivery path is proven. It sits in the
   same slot as the press pitch.
+
+**Top of the list below (item 227, 2026-10-03): turn on GoatCounter.**
+The site has never measured a visit. Five minutes: create a free
+GoatCounter account and paste the site code into
+`config/analytics.yaml: goatcounter_code`. Every agent-era idea in the
+"designing for consumer agents" section, and every sponsor
+conversation, needs a number this produces.
 
 **Small, no-decision-required — do whenever convenient, no ranking
 needed because none of these compete with anything above:**
@@ -12757,6 +12770,236 @@ backend, while the Buttondown archive copy of issue one is indexed),
 **Buttondown archive hosting** (custom archive domain on the $29/month
 Professional plan; a free per-plan crawling toggle; deliberately left
 indexed for now), and **subject-line truncation** as a design/UX angle.
+
+
+#### Owner-requested research, 2026-10-03: designing for consumer agents, and monetizing them
+
+**The ask (Ryan, 2026-10-03):** with consumer agents like Meta Muse,
+Grok's agent and Dot on the rise, design the site so these agents can
+easily find it and pull useful links and content from it. The concern
+is that agents reading the site replace human eyes on sponsor slots,
+and the question is whether attracting bots can be monetized.
+
+**The short answer, before the detail.** For *this* business, agents
+are much less of a threat than they are to an ad-supported publisher,
+because Within Ten does not sell impressions. `BUSINESS_PLAN.md` sells
+local businesses an *association with being the local source* (Annual
+Partner, Neighbourhood Authority, the directory, Event Promo). In an
+agent world that asset still exists, in a different place: it moves
+from "eyes on a banner" to **"presence in the answer"**. The work
+splits three ways:
+
+1. Make the site the source agents read and **cite back**. Today they
+   would cite the village or library page instead.
+2. Put clearly labelled sponsorship **inside the data agents read**,
+   and sell that, honestly, to local businesses already anxious about
+   "showing up in ChatGPT".
+3. Collect what AI platforms pay small publishers. That money is real
+   but small, so it is passive income, not the plan.
+
+None of it is sellable until the site can **measure** traffic. Right
+now it measures nothing.
+
+| Angle | Finding | Consequence |
+|---|---|---|
+| **The consumer-agent wave** | **Meta Muse** launched 2026-09-08 as an autonomous agent that "finishes real work". SpaceX AI's agent shipped in August; Poke, Lindy, Instinct and Dot compete. When Muse browses, Meta says it "will appear as your activity". Amazon has already blocked Muse | These agents mostly arrive looking like a person using a browser, not as a crawler with a user-agent that robots.txt can address. The page's own HTML has to be agent-legible, and agent visits will be largely indistinguishable from human ones in any analytics |
+| **What the site exposes today** | `robots.txt` explicitly allows GPTBot, ChatGPT-User, OAI-SearchBot, ClaudeBot, PerplexityBot, Google-Extended and CCBot. `llms.txt` exists and lists every region, weekend and today page. Event JSON-LD is on the weekend pages. But **no event card has an anchor ID** (0 on the Mount Prospect weekend page), the directory has **no `LocalBusiness` schema**, the sponsor slot exists **only as visible HTML** with nothing structured, and **`config/analytics.yaml: goatcounter_code: null`**: no analytics at all | An agent citing a specific event has nothing on this site to link to, so it links to the source's page. Sponsorship is invisible to anything reading data. And no number exists to put in front of a sponsor or a platform |
+| **Is Cloudflare blocking agents?** | Cloudflare announced that from **2026-09-15**, AI training and agent bots are **blocked by default** on ad-supported pages for new domains. Checked with a direct DNS lookup: the domain's nameservers are Cloudflare, but `withintenmiles.com` resolves to **GitHub Pages IPs (185.199.108–111.153)**, so it is **DNS-only, not proxied**. Cloudflare's bot rules do not apply | Verified safe. Nothing currently blocks agents. If the proxy is ever turned on (see item 232), that default must be explicitly overridden to Allow |
+| **Paid-crawl and licensing markets** | **Cloudflare Pay Per Crawl**: per-request pricing enforced with HTTP 402, minimum $0.001, moving toward "pay per use" (charging when content is cited or used by an agent). **x402** (Coinbase and Cloudflare): HTTP-402 micropayments in USDC, live for data APIs. **RSL 1.0**: machine-readable licence terms referenced from `robots.txt`, with free, pay-per-crawl or pay-per-inference options; 50+ partners including Yahoo, Medium, BuzzFeed and Vox. **TollBit** (3,000+ publishers, free to publishers) and **ProRata/Gist** (50% revenue share by citation share) | Real infrastructure, but sized for large publishers. Google's own AI payment pilot pays small sites **under 0.1% of ad revenue**, some under $1,000 over months. At $0.001 per request, 10,000 agent fetches a month is **$10**. Charging would also make agents skip the site, which costs the citation reach that is the actual asset |
+| **Platform revenue shares** | **Perplexity Comet Plus** pays enrolled publishers **80%** of a $42.5M pool when their content drives a human visit, a search citation *or an agent action*. One tracker estimates ~2,400 publishers enrolled | The one programme that pays specifically for agent use. Enrolment is by application to a "trusted" group, so odds are uncertain, but it costs one form (item 231) |
+| **Agent-ready standards** | **NLWeb** (Microsoft, led by R.V. Guha, the creator of Schema.org) turns a site's Schema.org data and feeds into a natural-language `/ask` endpoint and an **MCP** server agents can query. Schema.org is its native model. **MCP** is how Claude and ChatGPT apps connect to outside sources | The site is already most of the way there in data terms (Event JSON-LD, ICS, RSS, sitemap). What is missing is a clean machine-readable index, and, for MCP or NLWeb, a server, which the static-site constraint does not provide. That one is deferred (item 233) |
+
+#### P1 (new)
+
+227. **Turn on analytics. Everything else in this section depends on it.**
+     `config/analytics.yaml` has carried `goatcounter_code: null` since
+     item 23. The site has never measured a single visit, human or
+     agent. That blocks the agent question twice:
+
+     - **Agent-referred humans are measurable, but only with analytics
+       on.** ChatGPT appends `utm_source=chatgpt.com` to outbound links,
+       and Perplexity, Copilot and others show up as referrers.
+       GoatCounter (free, cookie-free, already wired in) records both.
+       That is the number that shows whether agents are a source of
+       readers or only a replacement for them.
+     - **Nothing here is sellable without a number.** "The local guide
+       AI assistants read" is a pitch, and a pitch needs at least a
+       count of AI-referred visits behind it.
+
+     **Owner action, about five minutes, no decision:** create a free
+     GoatCounter account and paste the site code into
+     `config/analytics.yaml`. Everything else is already built.
+     This pass has moved it to the **top of the Needs Ryan
+     "small, no-decision" list**. **Build loop, once set:** add an
+     "AI-referred" breakdown (referrer or `utm_source` matching
+     chatgpt, perplexity, copilot, gemini, claude or meta) to whatever
+     weekly summary the site already produces.
+
+228. **Give every event card a stable, citable anchor, so citations
+     land on this site.** Today a card's only link goes *out* to the
+     village, library or park-district page, and the card has no `id`
+     (zero anchors on the Mount Prospect weekend page). An agent that
+     quotes "Trick or Treat Trail, Saturday" cites the source's page.
+     That page is free of sponsors and never mentions Within Ten.
+
+     What to build:
+
+     - **`id="ev-<slug>-<yyyy-mm-dd>"` on every card** on the region,
+       weekend, today and free pages. The slug comes from the title and
+       the id is stable across rebuilds for the same event and date.
+     - **Point each event's JSON-LD `url` at the on-site anchor**
+       (`https://withintenmiles.com/<region>/this-weekend/#ev-…`), and
+       keep the source's URL in `sameAs`. The source still gets credit
+       and the click-out stays one tap away. The citation an agent
+       copies becomes this site's.
+     - **No new per-event pages.** Items 158 and 160 settled that a new
+       URL per event instance dilutes authority. Anchors give a citable
+       address without creating URL sprawl.
+
+     Zero owner time. This is the precondition for item 229's sponsor
+     data ever being seen.
+
+229. **Put clearly labelled sponsorship *into* the structured data, and
+     sell "presence in the guide AI assistants read".** This is the
+     monetization path that fits this business. Agents do not see a
+     banner, but they do read structured data and the visible text of
+     the page they are summarising. Three Schema.org-standard places
+     sponsorship can live, all visible and labelled:
+
+     - **Directory → `LocalBusiness` JSON-LD for every listing**
+       (`/<region>/directory/` currently has none), with Annual Partners
+       and Neighbourhood Authority holders carrying complete, accurate
+       entries: hours, `areaServed`, a description, links. A business in
+       a well-structured local directory that agents read is the
+       product.
+     - **Sponsored events → Schema.org `sponsor`** on an Event Promo
+       ($20) item's JSON-LD, plus the visible "Sponsored" label it
+       already needs.
+     - **A one-line "Presented by [sponsor]" in the visible weekend
+       summary text**, the sentence an agent is likely to quote, labelled
+       as sponsorship.
+
+     **The line that must not be crossed:** no hidden text, no
+     instructions aimed at AI models, nothing that does not appear
+     identically to a human reader. That is prompt injection, and it is
+     both wrong and self-defeating: agent platforms and search engines
+     treat it as manipulation, and it would put at risk item 131's
+     provenance claim, which is this business's whole differentiator.
+     Visible, labelled, standard sponsorship is the only kind worth
+     selling.
+
+     **The sales line, for `SPONSOR_KIT.md`:** *"Annual Partners appear
+     in Within Ten's structured local directory, the same data AI
+     assistants like ChatGPT and Meta's Muse read when someone asks
+     what to do near Mount Prospect."* Small local businesses in 2026
+     are anxious about AI visibility. Pass 48's Bing research found a
+     whole cottage industry selling "show up in ChatGPT" to them. **Be
+     honest in the kit:** placement in the data is guaranteed; being
+     cited by any particular assistant is not. Do not quote an
+     AI-traffic number until item 227 has produced one.
+
+#### P2 (new)
+
+230. **Publish a clean machine-readable event index alongside the
+     pages.** The data already exists in three shapes (JSON-LD
+     fragments, ICS, RSS). Add the one agents and NLWeb-style tools use
+     most easily:
+
+     - **`/<region>/events.json` and `/events.json`**: a Schema.org
+       `ItemList` of `Event`s for the next 14 days. Include start and
+       end, `location` with address, `isAccessibleForFree`, the anchor
+       `url` from item 228, the source in `sameAs`, any `sponsor` from
+       item 229, and a top-level `dateModified`.
+     - **Advertise it** with `<link rel="alternate"
+       type="application/ld+json">` in each page head, and as a line in
+       `llms.txt` under each region.
+     - **`/llms-full.txt`**: this weekend's events in plain text,
+       grouped by town, so an agent that fetches the llms.txt family
+       gets the content directly and not only links.
+     - **robots.txt:** add `Meta-ExternalAgent`, `Meta-ExternalFetcher`
+       and `Applebot-Extended` as explicit Allows, alongside the existing
+       list. This is mostly documentation, since `*` already allows
+       everything, but it states intent clearly to anyone checking.
+       Do not invent user-agent names for agents whose crawlers are not
+       published.
+
+     Zero owner time, static files only, and the same data an MCP
+     endpoint (item 233) would serve later.
+
+231. **Collect the platform payments that need no change to the site.**
+     Small, passive, and each one is a form, not a project.
+
+     - **Publish an RSL licence** (`/license.xml`, referenced from
+       `robots.txt` per the RSL 1.0 specification; check the exact
+       directive against rslstandard.org before shipping). Terms: free
+       for AI search and agent answers **with attribution and a link**,
+       with model *training* reserved. That keeps citation reach intact,
+       states the attribution expectation in machine-readable form, and
+       makes the site eligible for any RSL Collective payouts. Build
+       loop, zero owner time.
+     - **Apply to Perplexity's publisher programme / Comet Plus.** It is
+       the one programme that pays when content drives an *agent action*.
+       Odds are uncertain, but it is one owner form, parked under Needs
+       Ryan.
+     - **Do not** put the site behind Cloudflare Pay Per Crawl or TollBit
+       now. At this scale it would earn dollars a month and push agents
+       to cite someone else.
+
+#### P3 (new)
+
+232. **Proxy through Cloudflare for AI-bot analytics. Measurement, not
+     charging.** The DNS is already on Cloudflare (nameservers
+     `hal`/`sneh.ns.cloudflare.com`) with the site in DNS-only mode.
+     Turning the proxy on, which works with GitHub Pages using SSL
+     "Full", gives Cloudflare's **AI Crawl Control** dashboard: which AI
+     crawlers and fetchers hit which pages, and how often. That is the
+     bot-side counterpart to item 227's human-side numbers, and the
+     evidence any future pay-per-use or licensing decision would need.
+
+     **Risk to manage:** Cloudflare's post-2026-09-15 default blocks AI
+     and agent bots on new domains. Turning the proxy on **must** be paired
+     with explicitly setting AI crawlers to **Allow**, or the change
+     silently undoes this whole section. Owner action with a real
+     setting to get right, so it goes in the Parked list, after item 227.
+
+233. **A Within Ten MCP server or ChatGPT app: the agent-native version
+     of the product.** This is the bigger idea, filed honestly at P3.
+     Someone asks their assistant, "what's happening near Mount Prospect
+     this weekend?", and the assistant queries Within Ten directly
+     through an MCP connector or a ChatGPT app, built on item 230's
+     `events.json`. Inside that surface, a clearly labelled sponsored
+     result is the agent-era Weekly Spot, and it is the one place where
+     "a bot read it" and "a sponsor paid for it" line up directly.
+
+     Why P3 and not now: it needs a server (for example a free-tier
+     Cloudflare Worker reading `events.json`), which breaks the
+     static-site, no-build-step constraint. It needs a listing in each
+     platform's directory. And there is no evidence yet that anyone
+     would use it. **Revisit when** item 227 shows real AI-referred
+     traffic, or item 232 shows agent fetches in volume. Until then,
+     items 228–230 capture most of the value with none of the
+     infrastructure.
+
+**How this changes the plan, stated plainly.** The sponsor model in
+`BUSINESS_PLAN.md` survives the agent era better than impression-based
+ads, provided what is sold is presence in the trusted local source (the
+directory, featured placement, labelled sponsorship in the data) rather
+than banner impressions. That suggests a short "agent era" paragraph in
+`BUSINESS_PLAN.md`'s Monetization section. It is left for Ryan to
+approve rather than written here, since the business plan is his
+document.
+
+Sources reviewed for this section: Axios on the 2026 assistant race
+(Meta Muse, SpaceX AI, Apple); Meta's crawler documentation
+(Meta-ExternalAgent honours robots.txt; Meta-ExternalFetcher acts on
+user request and may not); Cloudflare Pay Per Crawl and AI Crawl Control
+docs and coverage (HTTP 402, $0.001 minimum, pay-per-use direction, the
+2026-09-15 default); x402 (Coinbase whitepaper, Cloudflare x402
+Foundation); RSL 1.0 (rslstandard.org, Digiday on adopters); TollBit and
+ProRata comparisons; Perplexity Comet Plus coverage (80% of a $42.5M
+pool; human visit, citation or agent action); reporting on Google's AI
+contribution pilot (under 0.1% of ad revenue for small sites); NLWeb
+(Microsoft; GitHub reference implementation).
 
 
 ## Working agreements for autonomous iteration
