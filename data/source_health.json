@@ -3,7 +3,7 @@
     255,
     255,
     255,
-    255,
+    256,
     256,
     256,
     256,
@@ -72,7 +72,6 @@
     20
   ],
   "des-plaines-60016:Des Plaines Public Library \u2014 Events": [
-    3,
     483,
     483,
     483,
@@ -81,6 +80,7 @@
     473,
     473,
     473,
+    474,
     474
   ],
   "mount-prospect-60056:Downtown Mount Prospect \u2014 Events": [
@@ -118,12 +118,12 @@
     259,
     259,
     259,
-    259,
     250,
     250,
     250,
     250,
     250,
+    247,
     247
   ],
   "mount-prospect-60056:Mount Prospect School District 57 \u2014 Calendar": [
@@ -164,10 +164,12 @@
     0,
     0,
     23,
+    24,
     24
   ],
   "palatine-60067:Community Consolidated School District 15 \u2014 Calendar": [
     48,
+    47,
     47,
     47,
     47,
@@ -192,14 +194,15 @@
     14,
     14,
     14,
-    14,
     13,
     13,
     13,
     13,
+    12,
     12
   ],
   "palatine-60067:Township High School District 211 \u2014 Calendar": [
+    15,
     15,
     15,
     15,
@@ -212,6 +215,7 @@
   "palatine-60067:Village of Palatine \u2014 Calendar": [
     19,
     19,
+    17,
     17
   ],
   "palatine-60067:Village of Palatine \u2014 News": [
@@ -221,7 +225,7 @@
     0,
     0,
     0,
-    0,
+    4,
     4,
     4,
     4
@@ -230,12 +234,12 @@
     379,
     379,
     379,
-    379,
     376,
     376,
     376,
     376,
     376,
+    373,
     373
   ],
   "wheeling-60090:Village of Wheeling \u2014 Calendar": [
@@ -245,7 +249,7 @@
     6,
     6,
     6,
-    6,
+    127,
     127,
     127,
     127
