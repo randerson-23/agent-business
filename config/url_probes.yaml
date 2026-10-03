@@ -17,33 +17,16 @@
 #             probed too (same patterns, one level deep, never further).
 
 probes:
-  # Round 11 (2026-10-03). Item 224: every real build logs "IndexNow
-  # submission failed ... 403 Client Error: Forbidden". IndexNow answers 403
-  # when it can't verify the key at keyLocation. The key file is generated
-  # and committed (docs/f3b7799bed06aac4295ec9134d53b014.txt), so the question is what the live domain
-  # actually serves - and whether the site answers at all.
-
+  # No open questions right now. Round 11 (2026-10-03) answered item 224's
+  # site-side question: the live key file, home page, sitemap and robots.txt
+  # are all correct, so the IndexNow 403 is on Bing's side (owner step,
+  # item 204). Kept as a single cheap health check of the key file, since
+  # the probe tests require at least one entry.
   - url: https://withintenmiles.com/f3b7799bed06aac4295ec9134d53b014.txt
     item: 224
-    purpose: IndexNow key file on the live domain - status, content type, does the body equal the key?
+    purpose: IndexNow key file on the live domain - still served and still equal to the key?
     patterns:
       - 'f3b7799bed06aac4295ec9134d53b014'
-  - url: https://withintenmiles.com/
-    item: 224
-    purpose: Live home page - status, final URL after redirects, title, robots meta
-    patterns:
-      - '(?i)<meta name="robots"[^>]*>'
-      - '(?i)<link rel="canonical"[^>]*>'
-  - url: https://withintenmiles.com/sitemap.xml
-    item: 224
-    purpose: Live sitemap - served, and which host its <loc> URLs use
-    patterns:
-      - '<loc>[^<]{1,100}'
-  - url: https://withintenmiles.com/robots.txt
-    item: 224
-    purpose: Live robots.txt - any Disallow that could block crawlers
-    patterns:
-      - '(?im)^(?:user-agent|disallow|allow|sitemap):[^\n]*'
 
   # Answered and removed (see ROADMAP.md items 212 and 215):
   # - The five 403 sources: bot walls (Access Denied / Cloudflare) from a runner too.
@@ -67,3 +50,4 @@ probes:
   # - mountprospect.org news_list.json: per-article JSON (round 9); configured as revize_news_json.
   # - sd25.org Finalsite iCal: valid but empty for 361, 349 and 360, together and each
   #   alone (rounds 5 and 10). D25 publishes nothing by iCal; ask the district (item 152).
+  # - withintenmiles.com: key file, home page, sitemap and robots.txt all correct (round 11).
