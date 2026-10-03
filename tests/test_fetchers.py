@@ -860,3 +860,34 @@ def test_fetch_revize_news_json_fails_soft_with_failure_info(mock_get):
 def test_revize_news_json_is_a_registered_source_type():
     from fetchers import FETCHERS
     assert FETCHERS["revize_news_json"] is fetch_revize_news_json
+
+
+@patch("fetchers.requests.post")
+def test_submit_indexnow_records_the_http_status_of_a_rejection(mock_post):
+    # ROADMAP.md item 224: every real build logged "403 Client Error" and
+    # nothing kept it. The outcome dict now carries the status.
+    rejected = Mock()
+    rejected.status_code = 403
+    rejected.raise_for_status = Mock(side_effect=requests.HTTPError("403 Client Error", response=rejected))
+    mock_post.return_value = rejected
+    outcome = {}
+    ok = submit_indexnow("withintenmiles.com", "abc123", "https://withintenmiles.com/abc123.txt",
+                         ["https://withintenmiles.com/"], outcome=outcome)
+    assert ok is False
+    assert outcome == {"status": 403, "error": "HTTPError"}
+
+
+@patch("fetchers.requests.post")
+def test_submit_indexnow_records_success_and_transport_errors(mock_post):
+    accepted = Mock()
+    accepted.status_code = 202
+    accepted.raise_for_status = Mock()
+    mock_post.return_value = accepted
+    outcome = {}
+    assert submit_indexnow("h", "k", "https://h/k.txt", ["https://h/"], outcome=outcome) is True
+    assert outcome == {"status": 202, "error": None}
+
+    mock_post.side_effect = requests.ConnectTimeout("slow")
+    outcome = {}
+    assert submit_indexnow("h", "k", "https://h/k.txt", ["https://h/"], outcome=outcome) is False
+    assert outcome == {"status": None, "error": "ConnectTimeout"}

@@ -4199,14 +4199,15 @@ def test_combined_subject_skips_recurring_and_near_duplicate_titles():
 
 
 def test_combined_subject_never_exceeds_the_safe_length():
-    long_a = "The Annual Northwest Suburban Harvest and Heritage Celebration"
-    long_b = "Community Chamber Orchestra Autumn Concert Series"
+    long_a = "The Annual Northwest Suburban Harvest and Heritage Celebration Weekend"
+    long_b = "Community Chamber Orchestra Autumn Concert Series Finale and Reception"
     sections = [_section("A", {"title": long_a}), _section("B", {"title": long_b})]
     subject = build_digest.build_combined_email_subject_line(sections)
-    # Neither title fits whole, so the first is clipped as a last resort.
+    # Neither title fits whole even in the compact "+ N more" form (item
+    # 225), so the first is shortened at a word boundary as a last resort.
     assert len(subject) <= build_digest.SUBJECT_MAX_LEN
     assert subject.startswith("The Annual Northwest")
-    assert subject.endswith("… and 1 more this weekend")
+    assert subject.endswith("… + 1 more")
 
 
 def test_combined_subject_drops_the_second_title_before_clipping_the_first():
@@ -4324,3 +4325,52 @@ def test_a_long_top_ranked_title_is_clipped_rather_than_replaced_by_a_shorter_we
 
 def test_subject_titles_drop_a_trailing_weekday_marker():
     assert build_digest._clean_subject_title("Harmony Fest (Saturday)") == "Harmony Fest"
+
+
+def test_a_long_lead_title_stays_whole_in_the_compact_form():
+    # ROADMAP.md item 225: the live subject read "Harmony Fest & Taste of
+    # Arlington… and 27 more this weekend", cutting one event's name in
+    # half. The compact form keeps it whole.
+    sections = [
+        _section("Arlington Heights", {"title": "Harmony Fest & Taste of Arlington Heights (Friday)"},
+                 *[{"title": f"Library Program {n}"} for n in range(13)]),
+        _section("Mount Prospect", *[{"title": f"Story Session {n}"} for n in range(14)]),
+    ]
+    subject = build_digest.build_combined_email_subject_line(sections)
+    assert subject == "Harmony Fest & Taste of Arlington Heights + 27 more"
+    assert "…" not in subject
+
+
+def test_compact_form_is_only_used_when_the_full_form_does_not_fit():
+    sections = [_section("A", {"title": "Harmony Fest"}), _section("B", {"title": "Book Swap"})]
+    assert build_digest.build_combined_email_subject_line(sections) == "Harmony Fest and Book Swap this weekend"
+
+
+def test_record_indexnow_outcome_appends_and_keeps_a_trailing_window(tmp_path):
+    path = tmp_path / "indexnow_log.json"
+    now = datetime(2026, 10, 3, 14, 0, tzinfo=timezone.utc)
+    for _ in range(build_digest.INDEXNOW_LOG_KEEP + 3):
+        history = build_digest.record_indexnow_outcome(path, now, 61, False, {"status": 403, "error": "HTTPError"})
+    assert len(history) == build_digest.INDEXNOW_LOG_KEEP
+    assert history[-1] == {"timestamp": "2026-10-03T14:00:00+00:00", "url_count": 61, "ok": False,
+                           "status": 403, "error": "HTTPError"}
+    assert json.loads(path.read_text()) == history
+
+
+def test_record_indexnow_outcome_starts_fresh_on_a_corrupt_file(tmp_path):
+    path = tmp_path / "indexnow_log.json"
+    path.write_text("{not json")
+    now = datetime(2026, 10, 3, 14, 0, tzinfo=timezone.utc)
+    history = build_digest.record_indexnow_outcome(path, now, 5, True, {"status": 200, "error": None})
+    assert [h["ok"] for h in history] == [True]
+
+
+def test_the_lead_keeps_its_place_in_compact_form_over_a_shorter_tie():
+    # The real 2026-10-03 data: Harmony Fest and "Trick or Treat Trail" both
+    # score as occasions. The lead should stay the lead in compact form
+    # (item 225's spec) rather than yield to the shorter tie.
+    sections = [
+        _section("Arlington Heights", {"title": "Harmony Fest & Taste of Arlington Heights (Friday)"}),
+        _section("Mount Prospect", {"title": "Trick or Treat Trail"}, {"title": "Book Club"}),
+    ]
+    assert build_digest.build_combined_email_subject_line(sections) == "Harmony Fest & Taste of Arlington Heights + 2 more"

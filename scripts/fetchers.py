@@ -724,7 +724,9 @@ def fetch_weather(lat: float, lon: float, timezone_name: str = "America/Chicago"
         return []
 
 
-def submit_indexnow(host: str, key: str, key_location: str, urls: list[str]) -> bool:
+def submit_indexnow(
+    host: str, key: str, key_location: str, urls: list[str], *, outcome: dict | None = None
+) -> bool:
     """Tell IndexNow's single shared endpoint (ROADMAP.md Phase 11 #72) that
     these URLs changed, so Bing, Yandex and Seznam can recrawl promptly
     instead of waiting on their own schedule - Bing's index in turn feeds
@@ -738,7 +740,13 @@ def submit_indexnow(host: str, key: str, key_location: str, urls: list[str]) -> 
     True/False only for the caller's own log line, not for any control
     flow - IndexNow is a courtesy notification, not something the build
     depends on succeeding.
+
+    `outcome`, if given, gets the HTTP status (None if no response came
+    back) and the exception class on failure (ROADMAP.md item 224): every
+    real build was logging a 403 that nothing recorded anywhere.
     """
+    if outcome is not None:
+        outcome.update({"status": None, "error": None})
     try:
         resp = requests.post(
             "https://api.indexnow.org/indexnow",
@@ -746,10 +754,17 @@ def submit_indexnow(host: str, key: str, key_location: str, urls: list[str]) -> 
             timeout=REQUEST_TIMEOUT,
             headers={"User-Agent": USER_AGENT, "Content-Type": "application/json; charset=utf-8"},
         )
+        if outcome is not None:
+            outcome["status"] = getattr(resp, "status_code", None)
         resp.raise_for_status()
         return True
     except Exception as exc:  # noqa: BLE001 - fail soft by design
         logger.warning("IndexNow submission failed for %d URL(s): %s", len(urls), exc)
+        if outcome is not None:
+            outcome["error"] = type(exc).__name__
+            response = getattr(exc, "response", None)
+            if outcome["status"] is None and response is not None:
+                outcome["status"] = getattr(response, "status_code", None)
         return False
 
 
