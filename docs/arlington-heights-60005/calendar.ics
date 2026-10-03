@@ -6,20 +6,9 @@ X-WR-CALNAME:Within Ten — Arlington Heights
 REFRESH-INTERVAL;VALUE=DURATION:PT12H
 X-PUBLISHED-TTL:PT12H
 BEGIN:VEVENT
-UID:arlington-heights-60005-2026-10-02-harmony-fest-taste-of-arlington-heights-friday@withintenmiles.com
-DTSTAMP:20261002T142707Z
-LAST-MODIFIED:20261002T142707Z
-SEQUENCE:0
-DTSTART:20261002T000000
-DTEND:20261002T010000
-SUMMARY:Harmony Fest & Taste of Arlington Heights (Friday)
-DESCRIPTION:Free live concerts in Harmony Park plus food & drink from local restaurants. 5–11pm\, Downtown Arlington Heights.
-URL:https://downtownarlingtonheights.us/events/harmony-fest-taste-of-arlington-heights-2026
-END:VEVENT
-BEGIN:VEVENT
 UID:arlington-heights-60005-2026-10-03-harmony-fest-taste-of-arlington-heights-saturday@withintenmiles.com
-DTSTAMP:20261002T142707Z
-LAST-MODIFIED:20261002T142707Z
+DTSTAMP:20261003T114830Z
+LAST-MODIFIED:20261003T114830Z
 SEQUENCE:0
 DTSTART:20261003T000000
 DTEND:20261003T010000
@@ -28,19 +17,9 @@ DESCRIPTION:Free live concerts\, food & drink\, plus a kids' zone. 3–11pm\, Do
 URL:https://downtownarlingtonheights.us/events/harmony-fest-taste-of-arlington-heights-2026
 END:VEVENT
 BEGIN:VEVENT
-UID:arlington-heights-60005-2026-10-02-improv-workshop-for-brain-health@withintenmiles.com
-DTSTAMP:20261002T142707Z
-LAST-MODIFIED:20261002T142707Z
-SEQUENCE:0
-DTSTART:20261002T000000
-DTEND:20261002T010000
-SUMMARY:Improv Workshop for Brain Health
-URL:https://www.ahml.info/scheduling/reservation/195033
-END:VEVENT
-BEGIN:VEVENT
 UID:arlington-heights-60005-2026-10-03-birding-on-the-trail-fall-migrations@withintenmiles.com
-DTSTAMP:20261002T142707Z
-LAST-MODIFIED:20261002T142707Z
+DTSTAMP:20261003T114830Z
+LAST-MODIFIED:20261003T114830Z
 SEQUENCE:0
 DTSTART:20261003T000000
 DTEND:20261003T010000
@@ -49,8 +28,8 @@ URL:https://www.ahml.info/scheduling/reservation/208270
 END:VEVENT
 BEGIN:VEVENT
 UID:arlington-heights-60005-2026-10-04-culinary-smashburgers@withintenmiles.com
-DTSTAMP:20261002T142707Z
-LAST-MODIFIED:20261002T142707Z
+DTSTAMP:20261003T114830Z
+LAST-MODIFIED:20261003T114830Z
 SEQUENCE:0
 DTSTART:20261004T000000
 DTEND:20261004T010000
@@ -59,8 +38,8 @@ URL:https://www.ahml.info/scheduling/reservation/217341
 END:VEVENT
 BEGIN:VEVENT
 UID:arlington-heights-60005-2026-10-05-kids-time@withintenmiles.com
-DTSTAMP:20261002T142707Z
-LAST-MODIFIED:20261002T142707Z
+DTSTAMP:20261003T114830Z
+LAST-MODIFIED:20261003T114830Z
 SEQUENCE:0
 DTSTART:20261005T000000
 DTEND:20261005T010000
@@ -69,8 +48,8 @@ URL:https://www.ahml.info/scheduling/reservation/224208
 END:VEVENT
 BEGIN:VEVENT
 UID:arlington-heights-60005-2026-10-06-read-to-learn-district-214@withintenmiles.com
-DTSTAMP:20261002T142707Z
-LAST-MODIFIED:20261002T142707Z
+DTSTAMP:20261003T114830Z
+LAST-MODIFIED:20261003T114830Z
 SEQUENCE:0
 DTSTART:20261006T000000
 DTEND:20261006T010000
@@ -79,8 +58,8 @@ URL:https://www.ahml.info/scheduling/reservation/194390
 END:VEVENT
 BEGIN:VEVENT
 UID:arlington-heights-60005-2026-10-07-baby-time@withintenmiles.com
-DTSTAMP:20261002T142707Z
-LAST-MODIFIED:20261002T142707Z
+DTSTAMP:20261003T114830Z
+LAST-MODIFIED:20261003T114830Z
 SEQUENCE:0
 DTSTART:20261007T000000
 DTEND:20261007T010000
@@ -89,8 +68,8 @@ URL:https://www.ahml.info/scheduling/reservation/224128
 END:VEVENT
 BEGIN:VEVENT
 UID:arlington-heights-60005-2026-10-08-toddler-time@withintenmiles.com
-DTSTAMP:20261002T142707Z
-LAST-MODIFIED:20261002T142707Z
+DTSTAMP:20261003T114830Z
+LAST-MODIFIED:20261003T114830Z
 SEQUENCE:0
 DTSTART:20261008T000000
 DTEND:20261008T010000
@@ -98,19 +77,19 @@ SUMMARY:Toddler Time
 URL:https://www.ahml.info/scheduling/reservation/224172
 END:VEVENT
 BEGIN:VEVENT
-UID:arlington-heights-60005-2026-10-09-japanese-language-storytime@withintenmiles.com
-DTSTAMP:20261002T142707Z
-LAST-MODIFIED:20261002T142707Z
+UID:arlington-heights-60005-2026-10-09-senior-center-travelogue@withintenmiles.com
+DTSTAMP:20261003T114830Z
+LAST-MODIFIED:20261003T114830Z
 SEQUENCE:0
 DTSTART:20261009T000000
 DTEND:20261009T010000
-SUMMARY:日本語のストーリータイム | Japanese Language Storytime
-URL:https://www.ahml.info/scheduling/reservation/227647
+SUMMARY:Senior Center: Travelogue
+URL:https://www.ahml.info/scheduling/reservation/224944
 END:VEVENT
 BEGIN:VEVENT
 UID:arlington-heights-60005-2026-10-10-family-time@withintenmiles.com
-DTSTAMP:20261002T142707Z
-LAST-MODIFIED:20261002T142707Z
+DTSTAMP:20261003T114830Z
+LAST-MODIFIED:20261003T114830Z
 SEQUENCE:0
 DTSTART:20261010T000000
 DTEND:20261010T010000
@@ -119,8 +98,8 @@ URL:https://www.ahml.info/scheduling/reservation/224193
 END:VEVENT
 BEGIN:VEVENT
 UID:arlington-heights-60005-2026-10-11-tech-fair@withintenmiles.com
-DTSTAMP:20261002T142707Z
-LAST-MODIFIED:20261002T142707Z
+DTSTAMP:20261003T114830Z
+LAST-MODIFIED:20261003T114830Z
 SEQUENCE:0
 DTSTART:20261011T000000
 DTEND:20261011T010000
@@ -129,8 +108,8 @@ URL:https://www.ahml.info/scheduling/reservation/212679
 END:VEVENT
 BEGIN:VEVENT
 UID:arlington-heights-60005-2026-10-12-kids-time@withintenmiles.com
-DTSTAMP:20261002T142707Z
-LAST-MODIFIED:20261002T142707Z
+DTSTAMP:20261003T114830Z
+LAST-MODIFIED:20261003T114830Z
 SEQUENCE:0
 DTSTART:20261012T000000
 DTEND:20261012T010000
@@ -139,8 +118,8 @@ URL:https://www.ahml.info/scheduling/reservation/224210
 END:VEVENT
 BEGIN:VEVENT
 UID:arlington-heights-60005-2026-10-13-read-to-learn-district-214@withintenmiles.com
-DTSTAMP:20261002T142707Z
-LAST-MODIFIED:20261002T142707Z
+DTSTAMP:20261003T114830Z
+LAST-MODIFIED:20261003T114830Z
 SEQUENCE:0
 DTSTART:20261013T000000
 DTEND:20261013T010000
@@ -149,8 +128,8 @@ URL:https://www.ahml.info/scheduling/reservation/194391
 END:VEVENT
 BEGIN:VEVENT
 UID:arlington-heights-60005-2026-10-14-baby-time@withintenmiles.com
-DTSTAMP:20261002T142707Z
-LAST-MODIFIED:20261002T142707Z
+DTSTAMP:20261003T114830Z
+LAST-MODIFIED:20261003T114830Z
 SEQUENCE:0
 DTSTART:20261014T000000
 DTEND:20261014T010000
@@ -159,8 +138,8 @@ URL:https://www.ahml.info/scheduling/reservation/224130
 END:VEVENT
 BEGIN:VEVENT
 UID:arlington-heights-60005-2026-10-15-toddler-time@withintenmiles.com
-DTSTAMP:20261002T142707Z
-LAST-MODIFIED:20261002T142707Z
+DTSTAMP:20261003T114830Z
+LAST-MODIFIED:20261003T114830Z
 SEQUENCE:0
 DTSTART:20261015T000000
 DTEND:20261015T010000
@@ -169,8 +148,8 @@ URL:https://www.ahml.info/scheduling/reservation/224174
 END:VEVENT
 BEGIN:VEVENT
 UID:arlington-heights-60005-2026-10-16-senior-center-travelogue@withintenmiles.com
-DTSTAMP:20261002T142707Z
-LAST-MODIFIED:20261002T142707Z
+DTSTAMP:20261003T114830Z
+LAST-MODIFIED:20261003T114830Z
 SEQUENCE:0
 DTSTART:20261016T000000
 DTEND:20261016T010000
@@ -179,8 +158,8 @@ URL:https://www.ahml.info/scheduling/reservation/224945
 END:VEVENT
 BEGIN:VEVENT
 UID:arlington-heights-60005-2026-10-17-family-time@withintenmiles.com
-DTSTAMP:20261002T142707Z
-LAST-MODIFIED:20261002T142707Z
+DTSTAMP:20261003T114830Z
+LAST-MODIFIED:20261003T114830Z
 SEQUENCE:0
 DTSTART:20261017T000000
 DTEND:20261017T010000
@@ -189,8 +168,8 @@ URL:https://www.ahml.info/scheduling/reservation/224194
 END:VEVENT
 BEGIN:VEVENT
 UID:arlington-heights-60005-2026-10-18-makerplace-wire-wrapped-jewelry-symmetrical-ear-wires-and-dangle-earrings@withintenmiles.com
-DTSTAMP:20261002T142707Z
-LAST-MODIFIED:20261002T142707Z
+DTSTAMP:20261003T114830Z
+LAST-MODIFIED:20261003T114830Z
 SEQUENCE:0
 DTSTART:20261018T000000
 DTEND:20261018T010000
@@ -199,8 +178,8 @@ URL:https://www.ahml.info/scheduling/reservation/210083
 END:VEVENT
 BEGIN:VEVENT
 UID:arlington-heights-60005-2026-10-19-kids-time@withintenmiles.com
-DTSTAMP:20261002T142707Z
-LAST-MODIFIED:20261002T142707Z
+DTSTAMP:20261003T114830Z
+LAST-MODIFIED:20261003T114830Z
 SEQUENCE:0
 DTSTART:20261019T000000
 DTEND:20261019T010000
@@ -209,8 +188,8 @@ URL:https://www.ahml.info/scheduling/reservation/224212
 END:VEVENT
 BEGIN:VEVENT
 UID:arlington-heights-60005-2026-10-20-read-to-learn-district-214@withintenmiles.com
-DTSTAMP:20261002T142707Z
-LAST-MODIFIED:20261002T142707Z
+DTSTAMP:20261003T114830Z
+LAST-MODIFIED:20261003T114830Z
 SEQUENCE:0
 DTSTART:20261020T000000
 DTEND:20261020T010000
@@ -219,8 +198,8 @@ URL:https://www.ahml.info/scheduling/reservation/194395
 END:VEVENT
 BEGIN:VEVENT
 UID:arlington-heights-60005-2026-10-21-baby-time@withintenmiles.com
-DTSTAMP:20261002T142707Z
-LAST-MODIFIED:20261002T142707Z
+DTSTAMP:20261003T114830Z
+LAST-MODIFIED:20261003T114830Z
 SEQUENCE:0
 DTSTART:20261021T000000
 DTEND:20261021T010000
@@ -229,8 +208,8 @@ URL:https://www.ahml.info/scheduling/reservation/224133
 END:VEVENT
 BEGIN:VEVENT
 UID:arlington-heights-60005-2026-10-22-toddler-time@withintenmiles.com
-DTSTAMP:20261002T142707Z
-LAST-MODIFIED:20261002T142707Z
+DTSTAMP:20261003T114830Z
+LAST-MODIFIED:20261003T114830Z
 SEQUENCE:0
 DTSTART:20261022T000000
 DTEND:20261022T010000
@@ -239,8 +218,8 @@ URL:https://www.ahml.info/scheduling/reservation/224176
 END:VEVENT
 BEGIN:VEVENT
 UID:arlington-heights-60005-2026-10-23-senior-center-travelogue@withintenmiles.com
-DTSTAMP:20261002T142707Z
-LAST-MODIFIED:20261002T142707Z
+DTSTAMP:20261003T114830Z
+LAST-MODIFIED:20261003T114830Z
 SEQUENCE:0
 DTSTART:20261023T000000
 DTEND:20261023T010000
@@ -249,8 +228,8 @@ URL:https://www.ahml.info/scheduling/reservation/224946
 END:VEVENT
 BEGIN:VEVENT
 UID:arlington-heights-60005-2026-10-24-games-gab@withintenmiles.com
-DTSTAMP:20261002T142707Z
-LAST-MODIFIED:20261002T142707Z
+DTSTAMP:20261003T114830Z
+LAST-MODIFIED:20261003T114830Z
 SEQUENCE:0
 DTSTART:20261024T000000
 DTEND:20261024T010000
@@ -259,8 +238,8 @@ URL:https://www.ahml.info/scheduling/reservation/234245
 END:VEVENT
 BEGIN:VEVENT
 UID:arlington-heights-60005-2026-10-25-makerplace-using-canva-ai-laser-etch-a-glass@withintenmiles.com
-DTSTAMP:20261002T142707Z
-LAST-MODIFIED:20261002T142707Z
+DTSTAMP:20261003T114830Z
+LAST-MODIFIED:20261003T114830Z
 SEQUENCE:0
 DTSTART:20261025T000000
 DTEND:20261025T010000
@@ -269,8 +248,8 @@ URL:https://www.ahml.info/scheduling/reservation/224151
 END:VEVENT
 BEGIN:VEVENT
 UID:arlington-heights-60005-2026-10-26-kids-time@withintenmiles.com
-DTSTAMP:20261002T142707Z
-LAST-MODIFIED:20261002T142707Z
+DTSTAMP:20261003T114830Z
+LAST-MODIFIED:20261003T114830Z
 SEQUENCE:0
 DTSTART:20261026T000000
 DTEND:20261026T010000
@@ -279,8 +258,8 @@ URL:https://www.ahml.info/scheduling/reservation/224214
 END:VEVENT
 BEGIN:VEVENT
 UID:arlington-heights-60005-2026-10-27-the-nonprofit-exchange@withintenmiles.com
-DTSTAMP:20261002T142707Z
-LAST-MODIFIED:20261002T142707Z
+DTSTAMP:20261003T114830Z
+LAST-MODIFIED:20261003T114830Z
 SEQUENCE:0
 DTSTART:20261027T000000
 DTEND:20261027T010000
@@ -289,8 +268,8 @@ URL:https://www.ahml.info/scheduling/reservation/193749
 END:VEVENT
 BEGIN:VEVENT
 UID:arlington-heights-60005-2026-10-28-senior-center-iphone-ipad-beyond-basics-day-2@withintenmiles.com
-DTSTAMP:20261002T142707Z
-LAST-MODIFIED:20261002T142707Z
+DTSTAMP:20261003T114830Z
+LAST-MODIFIED:20261003T114830Z
 SEQUENCE:0
 DTSTART:20261028T000000
 DTEND:20261028T010000
@@ -299,8 +278,8 @@ URL:https://www.ahml.info/scheduling/reservation/225333
 END:VEVENT
 BEGIN:VEVENT
 UID:arlington-heights-60005-2026-10-29-toddler-time@withintenmiles.com
-DTSTAMP:20261002T142707Z
-LAST-MODIFIED:20261002T142707Z
+DTSTAMP:20261003T114830Z
+LAST-MODIFIED:20261003T114830Z
 SEQUENCE:0
 DTSTART:20261029T000000
 DTEND:20261029T010000
@@ -309,8 +288,8 @@ URL:https://www.ahml.info/scheduling/reservation/224178
 END:VEVENT
 BEGIN:VEVENT
 UID:arlington-heights-60005-2026-10-30-senior-center-travelogue@withintenmiles.com
-DTSTAMP:20261002T142707Z
-LAST-MODIFIED:20261002T142707Z
+DTSTAMP:20261003T114830Z
+LAST-MODIFIED:20261003T114830Z
 SEQUENCE:0
 DTSTART:20261030T000000
 DTEND:20261030T010000
@@ -319,221 +298,12 @@ URL:https://www.ahml.info/scheduling/reservation/224947
 END:VEVENT
 BEGIN:VEVENT
 UID:arlington-heights-60005-2026-10-31-beginning-esl@withintenmiles.com
-DTSTAMP:20261002T142707Z
-LAST-MODIFIED:20261002T142707Z
+DTSTAMP:20261003T114830Z
+LAST-MODIFIED:20261003T114830Z
 SEQUENCE:0
 DTSTART:20261031T000000
 DTEND:20261031T010000
 SUMMARY:Beginning ESL
 URL:https://www.ahml.info/scheduling/reservation/234688
-END:VEVENT
-BEGIN:VEVENT
-UID:arlington-heights-60005-2026-10-06-community-input-meeting-carefree-park@withintenmiles.com
-DTSTAMP:20261002T142707Z
-LAST-MODIFIED:20261002T142707Z
-SEQUENCE:0
-DTSTART:20261006T173000
-DTEND:20261006T183000
-SUMMARY:Community Input Meeting - Carefree Park
-DESCRIPTION:Help shape the future of Carefree Park! Join us for a community input meeting where residents can share their feedback and vote on their favorite playground…
-URL:https://www.ahpd.org/event/community-input-meeting-carefree-park/
-END:VEVENT
-BEGIN:VEVENT
-UID:arlington-heights-60005-2026-10-10-autumn-harvest@withintenmiles.com
-DTSTAMP:20261002T142707Z
-LAST-MODIFIED:20261002T142707Z
-SEQUENCE:0
-DTSTART:20261010T110000
-DTEND:20261010T120000
-SUMMARY:Autumn Harvest
-DESCRIPTION:Don’t miss fall family fun with crafts\, games\, hayrides\, a scarecrow building contest\, live music and entertainment\, and food available for purchase from…
-URL:https://www.ahpd.org/event/autumn-harvest-2026/
-END:VEVENT
-BEGIN:VEVENT
-UID:arlington-heights-60005-2026-10-14-ahpd-senior-art-show@withintenmiles.com
-DTSTAMP:20261002T142707Z
-LAST-MODIFIED:20261002T142707Z
-SEQUENCE:0
-DTSTART:20261014T160000
-DTEND:20261014T170000
-SUMMARY:AHPD Senior Art Show
-DESCRIPTION:Take in an evening of art and enjoyment! Peruse AHPD adult students’ creations at the annual Art Show. Visual art\, fiber arts and woodcraft will be on display…
-URL:https://www.ahpd.org/event/ahpd-senior-art-show/
-END:VEVENT
-BEGIN:VEVENT
-UID:arlington-heights-60005-2026-10-16-oddities-night@withintenmiles.com
-DTSTAMP:20261002T142707Z
-LAST-MODIFIED:20261002T142707Z
-SEQUENCE:0
-DTSTART:20261016T190000
-DTEND:20261016T200000
-SUMMARY:Oddities Night
-DESCRIPTION:Step into the strange and mysterious at Oddities Night! Explore unusual objects from local museum collections\, enjoy treats and themed drinks and experience a…
-URL:https://www.ahpd.org/event/oddities-night/
-END:VEVENT
-BEGIN:VEVENT
-UID:arlington-heights-60005-2026-10-17-tell-your-cellar-story@withintenmiles.com
-DTSTAMP:20261002T142707Z
-LAST-MODIFIED:20261002T142707Z
-SEQUENCE:0
-DTSTART:20261017T140000
-DTEND:20261017T150000
-SUMMARY:Tell Your Cellar Story
-DESCRIPTION:Step back in time and share your memories of The Cellar\, Arlington Heights’ iconic historic music venue! Whether you spent nights in the crowd\, worked behind…
-URL:https://www.ahpd.org/event/tell-your-cellar-story/
-END:VEVENT
-BEGIN:VEVENT
-UID:arlington-heights-60005-2026-10-18-pumpkin-splash@withintenmiles.com
-DTSTAMP:20261002T142707Z
-LAST-MODIFIED:20261002T142707Z
-SEQUENCE:0
-DTSTART:20261018T130000
-DTEND:20261018T140000
-SUMMARY:Pumpkin Splash
-DESCRIPTION:Skip the pumpkin patch and pick your pumpkin in the Arlington Ridge Center Family Activity Pool! Each registered child takes home a real pumpkin to decorate!…
-URL:https://www.ahpd.org/event/pumpkin-splash-2026/
-END:VEVENT
-BEGIN:VEVENT
-UID:arlington-heights-60005-2026-10-21-community-input-meeting-creekside-park@withintenmiles.com
-DTSTAMP:20261002T142707Z
-LAST-MODIFIED:20261002T142707Z
-SEQUENCE:0
-DTSTART:20261021T170000
-DTEND:20261021T180000
-SUMMARY:Community Input Meeting - Creekside Park
-DESCRIPTION:Help shape the future of Creekside Park! Join us for a community input meeting where residents can share their feedback and vote on their favorite playground…
-URL:https://www.ahpd.org/event/community-input-meeting-creekside-park/
-END:VEVENT
-BEGIN:VEVENT
-UID:arlington-heights-60005-2026-10-21-halloween-pumpkin-carving@withintenmiles.com
-DTSTAMP:20261002T142707Z
-LAST-MODIFIED:20261002T142707Z
-SEQUENCE:0
-DTSTART:20261021T183000
-DTEND:20261021T193000
-SUMMARY:Halloween Pumpkin Carving
-DESCRIPTION:Looking for a fun\, Halloween themed night out with the family? Join us to continue a well-loved tradition– pumpkin carving! Bring your favorite carving knives…
-URL:https://www.ahpd.org/event/halloween-pumpkin-carving/
-END:VEVENT
-BEGIN:VEVENT
-UID:arlington-heights-60005-2026-10-24-trunk-or-treat@withintenmiles.com
-DTSTAMP:20261002T142707Z
-LAST-MODIFIED:20261002T142707Z
-SEQUENCE:0
-DTSTART:20261024T100000
-DTEND:20261024T110000
-SUMMARY:Trunk or Treat
-DESCRIPTION:Join us for Trunk or Treat on Saturday\, October 24th\, at Pioneer Park from 10:00am to 12:30pm! Dress in your favorite costume to trick-or-treat at 40+ trunks\,…
-URL:https://www.ahpd.org/event/trunk-or-treat-2026/
-END:VEVENT
-BEGIN:VEVENT
-UID:arlington-heights-60005-2026-10-24-the-music-man-sr@withintenmiles.com
-DTSTAMP:20261002T142707Z
-LAST-MODIFIED:20261002T142707Z
-SEQUENCE:0
-DTSTART:20261024T170000
-DTEND:20261024T180000
-SUMMARY:The Music Man Sr.
-DESCRIPTION:Step into the lively world of River City with Music Man Sr.! Enjoy a shorter\, more informal take on the beloved musical\, filled with toe-tapping music\,…
-URL:https://www.ahpd.org/event/the-music-man-sr/
-END:VEVENT
-BEGIN:VEVENT
-UID:arlington-heights-60005-2026-10-25-the-music-man-sr@withintenmiles.com
-DTSTAMP:20261002T142707Z
-LAST-MODIFIED:20261002T142707Z
-SEQUENCE:0
-DTSTART:20261025T140000
-DTEND:20261025T150000
-SUMMARY:The Music Man Sr.
-DESCRIPTION:Step into the lively world of River City with Music Man Sr.! Enjoy a shorter\, more informal take on the beloved musical\, filled with toe-tapping music\,…
-URL:https://www.ahpd.org/event/the-music-man-sr-2/
-END:VEVENT
-BEGIN:VEVENT
-UID:arlington-heights-60005-2026-11-07-pumpkin-smash-from-gourd-to-garden@withintenmiles.com
-DTSTAMP:20261002T142707Z
-LAST-MODIFIED:20261002T142707Z
-SEQUENCE:0
-DTSTART:20261107T090000
-DTEND:20261107T100000
-SUMMARY:Pumpkin Smash: From Gourd to Garden
-DESCRIPTION:Pumpkins are 90% water\, which makes them bad for landfills but great for soil and gardens! Bring your post-Halloween jack-o-lanterns\, gourds\, and pumpkins to…
-URL:https://www.ahpd.org/event/pumpkin-smash-2026/
-END:VEVENT
-BEGIN:VEVENT
-UID:arlington-heights-60005-2026-11-11-veterans-day-at-the-museum@withintenmiles.com
-DTSTAMP:20261002T142707Z
-LAST-MODIFIED:20261002T142707Z
-SEQUENCE:0
-DTSTART:20261111T100000
-DTEND:20261111T110000
-SUMMARY:Veterans Day at the Museum
-DESCRIPTION:Drop in anytime between 10AM-7PM to honor our Arlington Heights’ Veterans. View our current exhibit\, “Stars & Stories: Arlington Heights’ Old Glory\,” make a…
-URL:https://www.ahpd.org/event/veterans-day-at-the-museum/
-END:VEVENT
-BEGIN:VEVENT
-UID:arlington-heights-60005-2026-11-13-teen-night-bikini-bottom-bash@withintenmiles.com
-DTSTAMP:20261002T142707Z
-LAST-MODIFIED:20261002T142707Z
-SEQUENCE:0
-DTSTART:20261113T070000
-DTEND:20261113T080000
-SUMMARY:Teen Night - Bikini Bottom Bash
-DESCRIPTION:Calling all 6th-8th graders – we’re opening the Arlington Ridge Center just for you! Join us for a night of open swim\, open gym\, pizza\, and Spongebob the…
-URL:https://www.ahpd.org/event/teen-night-bikini-bottom-bash/
-END:VEVENT
-BEGIN:VEVENT
-UID:arlington-heights-60005-2026-11-27-holiday-tree-lighting@withintenmiles.com
-DTSTAMP:20261002T142707Z
-LAST-MODIFIED:20261002T142707Z
-SEQUENCE:0
-DTSTART:20261127T163000
-DTEND:20261127T173000
-SUMMARY:Holiday Tree Lighting
-DESCRIPTION:Kick off the holiday season with the Arlington Heights Park District and the Village of Arlington Heights Special Events Commission at our annual North School…
-URL:https://www.ahpd.org/event/holiday-tree-lighting-2026/
-END:VEVENT
-BEGIN:VEVENT
-UID:arlington-heights-60005-2026-12-06-holly-jolly-trolly@withintenmiles.com
-DTSTAMP:20261002T142707Z
-LAST-MODIFIED:20261002T142707Z
-SEQUENCE:0
-DTSTART:20261206T164500
-DTEND:20261206T174500
-SUMMARY:Holly Jolly Trolly
-DESCRIPTION:Join us in your holiday best or favorite PJs for a ride on the Holly Jolly Trolley to visit Santa! Your adventure begins at Pioneer Park where our Elf Ticket…
-URL:https://www.ahpd.org/event/holly-jolly-trolly/
-END:VEVENT
-BEGIN:VEVENT
-UID:arlington-heights-60005-2026-12-12-frostival@withintenmiles.com
-DTSTAMP:20261002T142707Z
-LAST-MODIFIED:20261002T142707Z
-SEQUENCE:0
-DTSTART:20261212T100000
-DTEND:20261212T110000
-SUMMARY:Frostival
-DESCRIPTION:Come celebrate winter Jack Frost style at the Arlington Heights Historical Museum! Mail a letter to the North Pole\, meet a real-life Ice Princess\, Ice Queen…
-URL:https://www.ahpd.org/event/frostival-2026/
-END:VEVENT
-BEGIN:VEVENT
-UID:arlington-heights-60005-2026-12-18-family-gingerbread-house-decorating@withintenmiles.com
-DTSTAMP:20261002T142707Z
-LAST-MODIFIED:20261002T142707Z
-SEQUENCE:0
-DTSTART:20261218T180000
-DTEND:20261218T190000
-SUMMARY:Family Gingerbread House Decorating
-DESCRIPTION:Helping to continue a well-loved tradition\, families will receive all of the materials to build their very own gingerbread house! Hopefully you use more candy…
-URL:https://www.ahpd.org/event/family-gingerbread-house-decorating-2026/
-END:VEVENT
-BEGIN:VEVENT
-UID:arlington-heights-60005-2026-12-19-winter-express-storytime-train-9-15am@withintenmiles.com
-DTSTAMP:20261002T142707Z
-LAST-MODIFIED:20261002T142707Z
-SEQUENCE:0
-DTSTART:20261219T090000
-DTEND:20261219T100000
-SUMMARY:Winter Express Storytime Train (9:15AM)
-DESCRIPTION:All aboard our Storytime Train! On the train to and from Harvard\, our conductor will read the Polar Express storybook\, and we’ll enjoy music\, a snack\, and a…
-URL:https://www.ahpd.org/event/winter-express-storytime-train-am/
 END:VEVENT
 END:VCALENDAR
