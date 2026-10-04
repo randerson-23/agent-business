@@ -1860,6 +1860,7 @@ def render_region_page(
         available_tags=all_tags_present(all_events_flat),
         canonical_url=canonical_url,
         event_json_ld=build_event_json_ld(blocks, page_url=canonical_url),
+        events_json_url=region_base_url + "events.json",
         freshness_json_ld=build_freshness_json_ld(region, canonical_url, now),
         answer_block=answer_block,
         last_checked_label=last_checked_label,
@@ -2327,6 +2328,67 @@ def build_feed_xml(feed_items: list[dict], now: datetime, source_completeness: d
     )
 
 
+# ROADMAP.md item 230: how far ahead the machine-readable event index looks.
+EVENTS_JSON_DAYS = 14
+
+
+def _event_list_item(event: dict, page_url: str, position: int) -> dict:
+    """One schema.org ListItem wrapping an Event. `url` is the event's card
+    on this site (item 228's anchor), with the source in `sameAs`. Like
+    build_event_json_ld, no `location`: only the town is known, and a
+    town asserted as an event's location reads as wrong, not approximate."""
+    entry = {
+        "@type": "Event",
+        "name": event["title"],
+        "startDate": event["date_iso"],
+        "url": f"{page_url}#{event.get('anchor_id') or event_anchor_id(event)}",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+    }
+    if event.get("url"):
+        entry["sameAs"] = event["url"]
+    if event.get("detail"):
+        entry["description"] = event["detail"]
+    if "free" in (event.get("tags") or []):
+        entry["isAccessibleForFree"] = True
+    return {"@type": "ListItem", "position": position, "item": entry}
+
+
+def build_events_json(groups: list[tuple[str, str, list[dict]]], name: str, now: datetime) -> str:
+    """A schema.org ItemList of upcoming Events (ROADMAP.md item 230) - the
+    clean machine-readable index agents and NLWeb-style tools read most
+    easily. `groups` is [(region_name, region_page_url, events)]; events
+    are ordered by start date across groups."""
+    rows = [(e, page_url) for _name, page_url, events in groups for e in events if e.get("title") and e.get("date_iso")]
+    rows.sort(key=lambda r: r[0]["date_iso"])
+    payload = {
+        "@context": "https://schema.org",
+        "@type": "ItemList",
+        "name": name,
+        "dateModified": now.isoformat(timespec="seconds"),
+        "numberOfItems": len(rows),
+        "itemListElement": [_event_list_item(e, page_url, i) for i, (e, page_url) in enumerate(rows, start=1)],
+    }
+    return json.dumps(payload, ensure_ascii=False, indent=2) + "\n"
+
+
+def build_llms_full_txt(groups: list[tuple[str, str, list[dict]]], weekend_date_range: str) -> str:
+    """llms-full.txt (ROADMAP.md item 230): this weekend's events as plain
+    text, grouped by town, so an agent fetching the llms.txt family gets
+    the content itself and not only links. Each line links to the
+    event's card on this site."""
+    lines = [f"# {SITE_NAME} — this weekend ({weekend_date_range})", ""]
+    for region_name, page_url, events in groups:
+        lines.append(f"## {region_name}")
+        dated = [e for e in events if e.get("title") and e.get("date_iso")]
+        if not dated:
+            lines.append("- Nothing dated yet this weekend.")
+        for e in sorted(dated, key=lambda e: e["date_iso"]):
+            label = event_date_label(e["date_iso"]) or ""
+            lines.append(f"- {label}: {e['title']} — {page_url}#{event_anchor_id(e)}")
+        lines.append("")
+    return "\n".join(lines).rstrip() + "\n"
+
+
 def build_llms_txt(region_summaries: list[dict], source_completeness: dict | None = None) -> str:
     """llms.txt (llmstxt.org convention, ROADMAP.md Phase 11 #22 - GEO):
     a plain-language map of the site for an AI agent/crawler to read
@@ -2392,6 +2454,15 @@ def build_llms_txt(region_summaries: list[dict], source_completeness: dict | Non
     lines += ["", "## About", f"- [Who publishes this, and why]({SITE_BASE_URL}about/)"]
     lines += ["", "## Seasonal", f"- [Trick-or-treat hours, all {len(region_summaries)} towns]({SITE_BASE_URL}trick-or-treat/)"]
     lines += ["", "## Feed", f"- [RSS: upcoming events across every region]({SITE_BASE_URL}feed.xml)"]
+    # ROADMAP.md item 230: the machine-readable index, and the plain-text
+    # content itself, for agents that read this file family.
+    lines += [
+        "",
+        f"## Machine-readable events (schema.org JSON-LD, next {EVENTS_JSON_DAYS} days)",
+        f"- [Every region]({SITE_BASE_URL}events.json)",
+    ]
+    lines += [f"- [{r['name']}]({SITE_BASE_URL}{r['path']}events.json)" for r in region_summaries]
+    lines += ["", "## Full text", f"- [This weekend's events, as plain text]({SITE_BASE_URL}llms-full.txt)"]
     return "\n".join(lines) + "\n"
 
 
@@ -2407,6 +2478,9 @@ _AI_CRAWLERS = (
     "PerplexityBot", "Perplexity-User",  # Perplexity
     "Google-Extended",  # Google Gemini / AI Overviews training+grounding
     "CCBot",  # Common Crawl, widely used to train/ground other models
+    # ROADMAP.md item 230: published Meta and Apple agent/crawler names.
+    "Meta-ExternalAgent", "Meta-ExternalFetcher",  # Meta (incl. Muse fetches)
+    "Applebot-Extended",  # Apple Intelligence
 )
 
 
@@ -3225,6 +3299,8 @@ def main() -> None:
     hub_free_sections = []
     hub_today_sections = []
     feed_items = []
+    events_json_groups: list[tuple[str, str, list[dict]]] = []
+    llms_full_groups: list[tuple[str, str, list[dict]]] = []
     trick_or_treat_entries = []
     combined_email_sections = []
     total_dated, total_events = 0, 0
@@ -3326,6 +3402,21 @@ def main() -> None:
         (region_dir / "calendar.ics").write_text(calendar_ics, encoding="utf-8")
         logger.info("Wrote %s", region_dir / "calendar.ics")
 
+        # ROADMAP.md item 230: anchors as the region index page assigns them,
+        # so each event's url in the index lands on its card there.
+        prepare_event_cards(blocks)
+        region_page_url = SITE_BASE_URL + region_id + "/"
+        upcoming = filter_events_by_dates(blocks, {local_today + timedelta(days=i) for i in range(EVENTS_JSON_DAYS)})
+        # Copies, so later page renders re-assigning anchor_id on the shared
+        # event objects can't change the site-wide index built after the loop.
+        upcoming = [dict(e) for e in upcoming]
+        events_json_groups.append((region["name"], region_page_url, upcoming))
+        (region_dir / "events.json").write_text(
+            build_events_json([(region["name"], region_page_url, upcoming)], f"Upcoming events in {region['name']} — {SITE_NAME}", now),
+            encoding="utf-8",
+        )
+        logger.info("Wrote %s (%d events)", region_dir / "events.json", len(upcoming))
+
         friday, saturday, sunday = weekend_dates(local_today)
         weekend_events = filter_events_by_dates(blocks, {friday, saturday, sunday})
         weekend_event_counts[region_id] = len(weekend_events)
@@ -3384,6 +3475,7 @@ def main() -> None:
         # nothing dated this weekend, so every subscriber finds their
         # town in the same issue rather than four subscriber-specific
         # ones Buttondown's free plan can't send anyway.
+        llms_full_groups.append((region["name"], SITE_BASE_URL + region_id + "/this-weekend/", weekend_events))
         combined_email_sections.append(
             {
                 "region_name": region["name"],
@@ -3728,6 +3820,10 @@ def main() -> None:
     (OUTPUT_DIR / "sitemap.xml").write_text(build_sitemap_xml(region_summaries, now), encoding="utf-8")
     (OUTPUT_DIR / "robots.txt").write_text(build_robots_txt(), encoding="utf-8")
     (OUTPUT_DIR / "llms.txt").write_text(build_llms_txt(region_summaries, source_completeness), encoding="utf-8")
+    (OUTPUT_DIR / "events.json").write_text(
+        build_events_json(events_json_groups, f"Upcoming events across every region — {SITE_NAME}", now), encoding="utf-8"
+    )
+    (OUTPUT_DIR / "llms-full.txt").write_text(build_llms_full_txt(llms_full_groups, weekend_date_range), encoding="utf-8")
     (OUTPUT_DIR / "CNAME").write_text(CUSTOM_DOMAIN + "\n", encoding="utf-8")
     (OUTPUT_DIR / f"{INDEXNOW_KEY}.txt").write_text(INDEXNOW_KEY, encoding="utf-8")
     (OUTPUT_DIR / "feed.xml").write_text(build_feed_xml(feed_items, now, source_completeness), encoding="utf-8")

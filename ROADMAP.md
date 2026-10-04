@@ -12911,7 +12911,7 @@ now it measures nothing.
 
 #### P2 (new)
 
-230. **Publish a clean machine-readable event index alongside the
+230. ✅ **DONE — Publish a clean machine-readable event index alongside the
      pages.** The data already exists in three shapes (JSON-LD
      fragments, ICS, RSS). Add the one agents and NLWeb-style tools use
      most easily:
@@ -12936,6 +12936,31 @@ now it measures nothing.
 
      Zero owner time, static files only, and the same data an MCP
      endpoint (item 233) would serve later.
+
+     ✅ **Shipped 2026-10-04.**
+     - **`/<region>/events.json` and `/events.json`:** a schema.org
+       `ItemList` of `Event`s dated within the next `EVENTS_JSON_DAYS = 14`
+       days, sorted by start, with `numberOfItems` and `dateModified`.
+       Each Event's `url` is its card on the region page (item 228's
+       anchor). Anchors are computed as that page assigns them and
+       frozen in copies, so a later page render can't change them. Each
+       Event also has `sameAs` (the source), `description` and
+       `isAccessibleForFree` for `free`-tagged events. **One deliberate
+       omission:** no `location`, the same rule as the page JSON-LD (only
+       the town is known, and a town asserted as an event's location
+       reads as wrong). Each region page `<head>` and the hub page carry
+       `<link rel="alternate" type="application/ld+json">` to their index.
+     - **`/llms-full.txt`:** this weekend's events, grouped by town, one
+       line each (*"Sun, Oct 4: Mount Prospect Farmers Market —
+       …/this-weekend/#ev-…"*), with a "nothing dated yet" line for an
+       empty town. `llms.txt` gains sections for the event indexes and
+       for the full text.
+     - **`robots.txt`:** explicit `Allow` for `Meta-ExternalAgent`,
+       `Meta-ExternalFetcher` and `Applebot-Extended`. All three names are
+       published by Meta and Apple; none were invented.
+     - Checked on a build: every `events.json` anchor resolves to a card
+       on its page, and the `llms-full.txt` anchors resolve on the
+       this-weekend pages. 5 new tests; 603 pass.
 
 231. **Collect the platform payments that need no change to the site.**
      Small, passive, and each one is a form, not a project.

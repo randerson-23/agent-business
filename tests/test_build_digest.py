@@ -4427,3 +4427,59 @@ def test_region_page_cards_are_articles_with_ids_and_time_elements():
     assert '<time datetime="2026-10-04T10:00:00">Sun, Oct 4</time>' in html
     assert '<span class="where">Mount Prospect</span>' in html
     assert 'data-date-iso="2026-10-04T10:00:00"' in html
+
+
+def test_events_json_is_an_itemlist_of_events_linking_to_on_site_cards():
+    # ROADMAP.md item 230: the machine-readable index agents read.
+    now = datetime(2026, 10, 3, 14, 0, tzinfo=timezone.utc)
+    later = {"title": "Movie Night", "date_iso": "2026-10-05T19:00:00", "url": "https://lib.example/movie"}
+    sooner = {"title": "Fall Fest", "date_iso": "2026-10-04T10:00:00", "url": "https://village.example/fest",
+              "detail": "Rides and food.", "tags": ["free"]}
+    payload = json.loads(build_digest.build_events_json(
+        [("Mount Prospect", "https://withintenmiles.com/mount-prospect-60056/", [later, sooner])], "Upcoming", now))
+    assert payload["@type"] == "ItemList"
+    assert payload["numberOfItems"] == 2
+    assert payload["dateModified"] == "2026-10-03T14:00:00+00:00"
+    first = payload["itemListElement"][0]
+    assert first["position"] == 1
+    assert first["item"]["name"] == "Fall Fest"
+    assert first["item"]["url"] == "https://withintenmiles.com/mount-prospect-60056/#ev-fall-fest-2026-10-04"
+    assert first["item"]["sameAs"] == "https://village.example/fest"
+    assert first["item"]["isAccessibleForFree"] is True
+    assert "location" not in first["item"]
+    assert "isAccessibleForFree" not in payload["itemListElement"][1]["item"]
+
+
+def test_events_json_skips_undated_items_and_uses_a_dedupe_suffixed_anchor():
+    now = datetime(2026, 10, 3, 14, 0, tzinfo=timezone.utc)
+    undated = {"title": "Library"}
+    e = {"title": "Story Time", "date_iso": "2026-10-04T10:00:00", "anchor_id": "ev-story-time-2026-10-04-2"}
+    payload = json.loads(build_digest.build_events_json([("A", "https://x/a/", [undated, e])], "n", now))
+    assert payload["numberOfItems"] == 1
+    assert payload["itemListElement"][0]["item"]["url"] == "https://x/a/#ev-story-time-2026-10-04-2"
+
+
+def test_llms_full_txt_lists_weekend_events_by_town_with_card_links():
+    groups = [
+        ("Mount Prospect", "https://withintenmiles.com/mount-prospect-60056/this-weekend/",
+         [{"title": "Fall Fest", "date_iso": "2026-10-04T10:00:00"}]),
+        ("Palatine", "https://withintenmiles.com/palatine-60067/this-weekend/", []),
+    ]
+    text = build_digest.build_llms_full_txt(groups, "Oct 2–4")
+    assert text.startswith("# Within Ten — this weekend (Oct 2–4)")
+    assert "- Sun, Oct 4: Fall Fest — https://withintenmiles.com/mount-prospect-60056/this-weekend/#ev-fall-fest-2026-10-04" in text
+    assert "## Palatine\n- Nothing dated yet this weekend." in text
+
+
+def test_robots_txt_names_meta_and_apple_agents():
+    robots = build_digest.build_robots_txt()
+    for bot in ("Meta-ExternalAgent", "Meta-ExternalFetcher", "Applebot-Extended"):
+        assert f"User-agent: {bot}\nAllow: /" in robots
+
+
+def test_llms_txt_lists_the_event_indexes_and_full_text():
+    summaries = [{"name": "Mount Prospect", "zip": "60056", "tagline": "t", "path": "mount-prospect-60056/"}]
+    text = build_digest.build_llms_txt(summaries)
+    assert "(https://withintenmiles.com/events.json)" in text
+    assert "(https://withintenmiles.com/mount-prospect-60056/events.json)" in text
+    assert "(https://withintenmiles.com/llms-full.txt)" in text
