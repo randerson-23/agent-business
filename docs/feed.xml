@@ -3,8 +3,8 @@
 <channel>
   <title>Within Ten — Upcoming Local Events</title>
   <link>https://withintenmiles.com/</link>
-  <description>Upcoming events across every Within Ten region, soonest first - aggregated automatically from village, library, park district and school-district calendars. This build reached 19 of 26 configured sources.</description>
-  <lastBuildDate>Sun, 04 Oct 2026 14:03:10 +0000</lastBuildDate>
+  <description>Upcoming events across every Within Ten region, soonest first - aggregated automatically from village, library, park district and school-district calendars. This build reached 20 of 26 configured sources.</description>
+  <lastBuildDate>Sun, 04 Oct 2026 14:11:33 +0000</lastBuildDate>
   <item>
     <title>Arlington Heights: Culinary: Smashburgers</title>
     <link>https://www.ahml.info/scheduling/reservation/217341</link>
@@ -261,6 +261,13 @@ Ages 9-12.</description>
     <pubDate>Tue, 06 Oct 2026 16:30:00 +0000</pubDate>
   </item>
   <item>
+    <title>Arlington Heights: Community Input Meeting - Carefree Park</title>
+    <link>https://www.ahpd.org/event/community-input-meeting-carefree-park/</link>
+    <guid isPermaLink="true">https://www.ahpd.org/event/community-input-meeting-carefree-park/</guid>
+    <description>Help shape the future of Carefree Park! Join us for a community input meeting where residents can share their feedback and vote on their favorite playground…</description>
+    <pubDate>Tue, 06 Oct 2026 17:30:00 +0000</pubDate>
+  </item>
+  <item>
     <title>Wheeling: Resume Review &amp; Career Coaching Appointments</title>
     <link>https://indiantrails.libnet.info/event/16654161</link>
     <guid isPermaLink="true">https://indiantrails.libnet.info/event/16654161</guid>
@@ -394,14 +401,6 @@ Ages 9-12.</description>
     <description>Wednesday, October 07 2026 6:00pm - 7:30pm 
  Instructor Bhavya Nanjundaiyer, will teach how to make hair accessories for Navratri while sharing the cultural…</description>
     <pubDate>Wed, 07 Oct 2026 18:00:00 +0000</pubDate>
-  </item>
-  <item>
-    <title>Des Plaines: Family Storytime</title>
-    <link>https://desplaines.libnet.info/event/17004253</link>
-    <guid isPermaLink="true">https://desplaines.libnet.info/event/17004253</guid>
-    <description>Wednesday, October 07 2026 7:00pm - 7:30pm 
- Best for families with children ages 2-7, but all are welcome. See full description for details. Registration…</description>
-    <pubDate>Wed, 07 Oct 2026 19:00:00 +0000</pubDate>
   </item>
 </channel>
 </rss>

@@ -1,0 +1,784 @@
+{
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  "name": "Upcoming events in Mount Prospect — Within Ten",
+  "dateModified": "2026-10-04T14:11:33+00:00",
+  "numberOfItems": 60,
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "item": {
+        "@type": "Event",
+        "name": "Mount Prospect Farmers Market",
+        "startDate": "2026-10-04T08:00:00",
+        "url": "https://withintenmiles.com/mount-prospect-60056/#ev-mount-prospect-farmers-market-2026-10-04",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "sameAs": "https://mplions.org/event/farmers-market/",
+        "description": "Local produce and vendors, organized by the Mount Prospect Lions Club, rain or shine. West Metra commuter lot, Northwest Hwy & Main St (Rte 83)."
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "item": {
+        "@type": "Event",
+        "name": "Family Storytime",
+        "startDate": "2026-10-05T09:30:00+00:00",
+        "url": "https://withintenmiles.com/mount-prospect-60056/#ev-family-storytime-2026-10-05",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "sameAs": "https://mppl.libnet.info/event/16553298",
+        "description": "Monday, October 05 2026 9:30am - 10:00am \n Bring the whole family and join us for an interactive storytime with high-energy stories, songs, and activities."
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "item": {
+        "@type": "Event",
+        "name": "Toddler Storytime",
+        "startDate": "2026-10-05T10:30:00+00:00",
+        "url": "https://withintenmiles.com/mount-prospect-60056/#ev-toddler-storytime-2026-10-05",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "sameAs": "https://mppl.libnet.info/event/16553328",
+        "description": "Monday, October 05 2026 10:30am - 11:00am \n Grow your little learner's literacy and language skills at this playful storytime full of wiggles, wonder, and fun!"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 4,
+      "item": {
+        "@type": "Event",
+        "name": "3D Printing for Kids: Learn Tinkercad",
+        "startDate": "2026-10-05T16:30:00+00:00",
+        "url": "https://withintenmiles.com/mount-prospect-60056/#ev-3d-printing-for-kids-learn-tinkercad-2026-10-05",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "sameAs": "https://mppl.libnet.info/event/16391863",
+        "description": "Monday, October 05 2026 4:30pm - 5:30pm \n Learn how to create objects using Tinkercad, a digital-design computer software."
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 5,
+      "item": {
+        "@type": "Event",
+        "name": "Creation Station: Mini Monsters",
+        "startDate": "2026-10-05T18:00:00+00:00",
+        "url": "https://withintenmiles.com/mount-prospect-60056/#ev-creation-station-mini-monsters-2026-10-05",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "sameAs": "https://mppl.libnet.info/event/16640906",
+        "description": "Monday, October 05 2026 6:00pm - 7:00pm \n Craft and create with us! We'll provide an idea and supplies; you create your own masterpiece."
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 6,
+      "item": {
+        "@type": "Event",
+        "name": "Baby Storytime",
+        "startDate": "2026-10-06T09:30:00+00:00",
+        "url": "https://withintenmiles.com/mount-prospect-60056/#ev-baby-storytime-2026-10-06",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "sameAs": "https://mppl.libnet.info/event/16553351",
+        "description": "Tuesday, October 06 2026 9:30am - 10:00am \n A lifelong love of reading starts at birth! Join us for songs, rhymes, stories, and playtime made specially for…"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 7,
+      "item": {
+        "@type": "Event",
+        "name": "Family Storytime",
+        "startDate": "2026-10-06T10:30:00+00:00",
+        "url": "https://withintenmiles.com/mount-prospect-60056/#ev-family-storytime-2026-10-06",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "sameAs": "https://mppl.libnet.info/event/16553375",
+        "description": "Tuesday, October 06 2026 10:30am - 11:00am \n Bring the whole family and join us for an interactive storytime with high-energy stories, songs, and activities."
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 8,
+      "item": {
+        "@type": "Event",
+        "name": "Play and Learn",
+        "startDate": "2026-10-06T11:30:00+00:00",
+        "url": "https://withintenmiles.com/mount-prospect-60056/#ev-play-and-learn-2026-10-06",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "sameAs": "https://mppl.libnet.info/event/16749800",
+        "description": "Tuesday, October 06 2026 11:30am - 12:15pm \n Join us each week for storytime, sing-alongs, and developmental play experiences that encourage learning through…"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 9,
+      "item": {
+        "@type": "Event",
+        "name": "Big Kids Storytime",
+        "startDate": "2026-10-06T13:30:00+00:00",
+        "url": "https://withintenmiles.com/mount-prospect-60056/#ev-big-kids-storytime-2026-10-06",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "sameAs": "https://mppl.libnet.info/event/16553392",
+        "description": "Tuesday, October 06 2026 1:30pm - 2:15pm \n Grow into a super reader through playful books and fun with friends! This storytime is the perfect fit for…"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 10,
+      "item": {
+        "@type": "Event",
+        "name": "Choosing Your Medicare Supplement Insurance Policy",
+        "startDate": "2026-10-06T14:00:00+00:00",
+        "url": "https://withintenmiles.com/mount-prospect-60056/#ev-choosing-your-medicare-supplement-insurance-policy-2026-10-06",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "sameAs": "https://mppl.libnet.info/event/16332683",
+        "description": "Tuesday, October 06 2026 2:00pm - 3:00pm \n This program will provide helpful guidance needed to navigate Medicare supplement options with a Medicare…"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 11,
+      "item": {
+        "@type": "Event",
+        "name": "Galaxy Pumpkins Adult Craft",
+        "startDate": "2026-10-06T19:00:00+00:00",
+        "url": "https://withintenmiles.com/mount-prospect-60056/#ev-galaxy-pumpkins-adult-craft-2026-10-06",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "sameAs": "https://mppl.libnet.info/event/15766207",
+        "description": "Tuesday, October 06 2026 7:00pm - 8:00pm \n Adults, celebrate One Book, One Village and the holiday season by painting your very own space pumpkin."
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 12,
+      "item": {
+        "@type": "Event",
+        "name": "Toddler Storytime",
+        "startDate": "2026-10-07T09:30:00+00:00",
+        "url": "https://withintenmiles.com/mount-prospect-60056/#ev-toddler-storytime-2026-10-07",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "sameAs": "https://mppl.libnet.info/event/16553439",
+        "description": "Wednesday, October 07 2026 9:30am - 10:00am \n Grow your little learner's literacy and language skills at this playful storytime full of wiggles, wonder, and…"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 13,
+      "item": {
+        "@type": "Event",
+        "name": "Drop-In Tech Help",
+        "startDate": "2026-10-07T10:00:00+00:00",
+        "url": "https://withintenmiles.com/mount-prospect-60056/#ev-drop-in-tech-help-2026-10-07",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "sameAs": "https://mppl.libnet.info/event/14756159",
+        "description": "Wednesday, October 07 2026 10:00am - 11:00am \n Stop in and bring your questions about technology-related subjects such as smartphones, computers, email,…"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 14,
+      "item": {
+        "@type": "Event",
+        "name": "Wednesday Morning Book Group",
+        "startDate": "2026-10-07T11:00:00+00:00",
+        "url": "https://withintenmiles.com/mount-prospect-60056/#ev-wednesday-morning-book-group-2026-10-07",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "sameAs": "https://mppl.libnet.info/event/15979949",
+        "description": "Wednesday, October 07 2026 11:00am - 12:00pm \n Join others in the community for a casual discussion of our One Book, One Village read, Project Hail Mary by…"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 15,
+      "item": {
+        "@type": "Event",
+        "name": "Potions Lab",
+        "startDate": "2026-10-07T16:30:00+00:00",
+        "url": "https://withintenmiles.com/mount-prospect-60056/#ev-potions-lab-2026-10-07",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "sameAs": "https://mppl.libnet.info/event/16640911",
+        "description": "Wednesday, October 07 2026 4:30pm - 5:15pm \n Fizzy, frothy, or bubbly? What kind of colorful concoction will you mix today? Each month will feature different…"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 16,
+      "item": {
+        "@type": "Event",
+        "name": "Galaxy Pumpkins Adult Craft",
+        "startDate": "2026-10-07T19:00:00+00:00",
+        "url": "https://withintenmiles.com/mount-prospect-60056/#ev-galaxy-pumpkins-adult-craft-2026-10-07",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "sameAs": "https://mppl.libnet.info/event/15956577",
+        "description": "Wednesday, October 07 2026 7:00pm - 8:00pm \n Adults, celebrate One Book, One Village and the holiday season by painting your very own space pumpkin."
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 17,
+      "item": {
+        "@type": "Event",
+        "name": "Baby Storytime",
+        "startDate": "2026-10-08T09:30:00+00:00",
+        "url": "https://withintenmiles.com/mount-prospect-60056/#ev-baby-storytime-2026-10-08",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "sameAs": "https://mppl.libnet.info/event/16553491",
+        "description": "Thursday, October 08 2026 9:30am - 10:00am \n A lifelong love of reading starts at birth! Join us for songs, rhymes, stories, and playtime made specially for…"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 18,
+      "item": {
+        "@type": "Event",
+        "name": "Family Storytime",
+        "startDate": "2026-10-08T10:30:00+00:00",
+        "url": "https://withintenmiles.com/mount-prospect-60056/#ev-family-storytime-2026-10-08",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "sameAs": "https://mppl.libnet.info/event/16553520",
+        "description": "Thursday, October 08 2026 10:30am - 11:00am \n Bring the whole family and join us for an interactive storytime with high-energy stories, songs, and activities."
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 19,
+      "item": {
+        "@type": "Event",
+        "name": "Movies @ MPPL: Project Hail Mary",
+        "startDate": "2026-10-08T14:00:00+00:00",
+        "url": "https://withintenmiles.com/mount-prospect-60056/#ev-movies-mppl-project-hail-mary-2026-10-08",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "sameAs": "https://mppl.libnet.info/event/14038363",
+        "description": "Thursday, October 08 2026 2:00pm - 5:00pm \n Join us for a screening of \"Project Hail Mary.\""
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 20,
+      "item": {
+        "@type": "Event",
+        "name": "SCORE Business Mentoring",
+        "startDate": "2026-10-08T15:00:00+00:00",
+        "url": "https://withintenmiles.com/mount-prospect-60056/#ev-score-business-mentoring-2026-10-08",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "sameAs": "https://mppl.libnet.info/event/16031174",
+        "description": "Thursday, October 08 2026 3:00pm - 4:00pm \n Local entrepreneurs and small businesses can get one-on-one support  by meeting with an experienced mentor from…"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 21,
+      "item": {
+        "@type": "Event",
+        "name": "CodeBuilders",
+        "startDate": "2026-10-08T18:00:00+00:00",
+        "url": "https://withintenmiles.com/mount-prospect-60056/#ev-codebuilders-2026-10-08",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "sameAs": "https://mppl.libnet.info/event/16391904",
+        "description": "Thursday, October 08 2026 6:00pm - 7:00pm \n Experience the thrill of telling a computer what to do and watching your instructions come to life!"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 22,
+      "item": {
+        "@type": "Event",
+        "name": "Mount Prospect Stories",
+        "startDate": "2026-10-08T19:00:00+00:00",
+        "url": "https://withintenmiles.com/mount-prospect-60056/#ev-mount-prospect-stories-2026-10-08",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "sameAs": "https://mppl.libnet.info/event/15786788",
+        "description": "Thursday, October 08 2026 7:00pm - 8:00pm \n Learn how Mount Prospect's business environment has changed from rural to high tech."
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 23,
+      "item": {
+        "@type": "Event",
+        "name": "Storytime Playdate: Star Party",
+        "startDate": "2026-10-09T10:00:00+00:00",
+        "url": "https://withintenmiles.com/mount-prospect-60056/#ev-storytime-playdate-star-party-2026-10-09",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "sameAs": "https://mppl.libnet.info/event/16553541",
+        "description": "Friday, October 09 2026 10:00am - 11:30am \n Enjoy the magic of storytime plus the joy of hands-on sensory fun! You and your child will enjoy time together…"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 24,
+      "item": {
+        "@type": "Event",
+        "name": "Build and Watch: The Addams Family",
+        "startDate": "2026-10-09T17:00:00+00:00",
+        "url": "https://withintenmiles.com/mount-prospect-60056/#ev-build-and-watch-the-addams-family-2026-10-09",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "sameAs": "https://mppl.libnet.info/event/16749793",
+        "description": "Friday, October 09 2026 5:00pm - 7:00pm \n Enjoy a movie night at the library and have fun building with LEGO bricks and other various toys!"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 25,
+      "item": {
+        "@type": "Event",
+        "name": "Fishing Derby",
+        "startDate": "2026-10-10T08:00:00",
+        "url": "https://withintenmiles.com/mount-prospect-60056/#ev-fishing-derby-2026-10-10",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "sameAs": "https://www.mppd.org/event/fishing-derby-4/",
+        "description": "Rescheduled! Fishing Derby (Ages 3-16) Grab your gear and make your way to Clearwater Park for a morning of family fishing! Test your skills and maybe even…"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 26,
+      "item": {
+        "@type": "Event",
+        "name": "Spooky Scary Studio",
+        "startDate": "2026-10-10T09:30:00",
+        "url": "https://withintenmiles.com/mount-prospect-60056/#ev-spooky-scary-studio-2026-10-10",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "sameAs": "https://www.mppd.org/event/31551/",
+        "description": "Spooky Scary Studio (Ages 5-10) The Studio has been overrun by spooky, yet friendly, skeletons just in time for Halloween! Join us for a workshop filled with…"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 27,
+      "item": {
+        "@type": "Event",
+        "name": "Digitizing Photos, Slides, and Negatives",
+        "startDate": "2026-10-10T10:00:00+00:00",
+        "url": "https://withintenmiles.com/mount-prospect-60056/#ev-digitizing-photos-slides-and-negatives-2026-10-10",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "sameAs": "https://mppl.libnet.info/event/16452806",
+        "description": "Saturday, October 10 2026 10:00am - 11:00am \n Learn how to digitize old photos, slides, and negatives using the library's Mac Studio equipment. It's a great…"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 28,
+      "item": {
+        "@type": "Event",
+        "name": "Afternoon Tea Social",
+        "startDate": "2026-10-10T12:00:00+00:00",
+        "url": "https://withintenmiles.com/mount-prospect-60056/#ev-afternoon-tea-social-2026-10-10",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "sameAs": "https://mppl.libnet.info/event/16124662",
+        "description": "Saturday, October 10 2026 12:00pm - 1:00pm \n Come join us for an afternoon event celebrating our One Book, One Village community read!"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 29,
+      "item": {
+        "@type": "Event",
+        "name": "Mount Prospect Farmers Market",
+        "startDate": "2026-10-11T08:00:00",
+        "url": "https://withintenmiles.com/mount-prospect-60056/#ev-mount-prospect-farmers-market-2026-10-11",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "sameAs": "https://mplions.org/event/farmers-market/",
+        "description": "Local produce and vendors, organized by the Mount Prospect Lions Club, rain or shine. West Metra commuter lot, Northwest Hwy & Main St (Rte 83)."
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 30,
+      "item": {
+        "@type": "Event",
+        "name": "Student and Staff Non-Attendance/Buildings Closed",
+        "startDate": "2026-10-12T00:00:00",
+        "url": "https://withintenmiles.com/mount-prospect-60056/#ev-student-and-staff-non-attendance-buildings-closed-2026-10-12",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 31,
+      "item": {
+        "@type": "Event",
+        "name": "Family Storytime",
+        "startDate": "2026-10-12T09:30:00+00:00",
+        "url": "https://withintenmiles.com/mount-prospect-60056/#ev-family-storytime-2026-10-12",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "sameAs": "https://mppl.libnet.info/event/16553299",
+        "description": "Monday, October 12 2026 9:30am - 10:00am \n Bring the whole family and join us for an interactive storytime with high-energy stories, songs, and activities."
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 32,
+      "item": {
+        "@type": "Event",
+        "name": "Creation Station: Mini Monsters",
+        "startDate": "2026-10-12T10:00:00+00:00",
+        "url": "https://withintenmiles.com/mount-prospect-60056/#ev-creation-station-mini-monsters-2026-10-12",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "sameAs": "https://mppl.libnet.info/event/16288686",
+        "description": "Monday, October 12 2026 10:00am - 11:30am \n Craft and create with us! We'll provide an idea and supplies; then you create your own masterpiece."
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 33,
+      "item": {
+        "@type": "Event",
+        "name": "Toddler Storytime",
+        "startDate": "2026-10-12T10:30:00+00:00",
+        "url": "https://withintenmiles.com/mount-prospect-60056/#ev-toddler-storytime-2026-10-12",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "sameAs": "https://mppl.libnet.info/event/16553329",
+        "description": "Monday, October 12 2026 10:30am - 11:00am \n Grow your little learner's literacy and language skills at this playful storytime full of wiggles, wonder, and fun!"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 34,
+      "item": {
+        "@type": "Event",
+        "name": "Gross Science",
+        "startDate": "2026-10-12T16:30:00+00:00",
+        "url": "https://withintenmiles.com/mount-prospect-60056/#ev-gross-science-2026-10-12",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "sameAs": "https://mppl.libnet.info/event/16640961",
+        "description": "Monday, October 12 2026 4:30pm - 5:15pm \n Let's explore our weird and wacky world with hands-on activities that might make you laugh, wrinkle your nose, or…"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 35,
+      "item": {
+        "@type": "Event",
+        "name": "Teen Volunteering",
+        "startDate": "2026-10-12T17:00:00+00:00",
+        "url": "https://withintenmiles.com/mount-prospect-60056/#ev-teen-volunteering-2026-10-12",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "sameAs": "https://mppl.libnet.info/event/16749798",
+        "description": "Monday, October 12 2026 5:00pm - 6:00pm \n Give back to the community and earn volunteer hours at the same time."
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 36,
+      "item": {
+        "@type": "Event",
+        "name": "Understanding Medicare Choices",
+        "startDate": "2026-10-12T19:00:00+00:00",
+        "url": "https://withintenmiles.com/mount-prospect-60056/#ev-understanding-medicare-choices-2026-10-12",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "sameAs": "https://mppl.libnet.info/event/15371247",
+        "description": "Monday, October 12 2026 7:00pm - 8:30pm \n  Join financial educator Karen Chan for an overview of Medicare options to help you understand your choices, avoid…"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 37,
+      "item": {
+        "@type": "Event",
+        "name": "Monday Night Book Group",
+        "startDate": "2026-10-12T19:00:00+00:00",
+        "url": "https://withintenmiles.com/mount-prospect-60056/#ev-monday-night-book-group-2026-10-12",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "sameAs": "https://mppl.libnet.info/event/15980022",
+        "description": "Monday, October 12 2026 7:00pm - 8:00pm \n Join others in the community for a casual discussion of our One Book, One Village read, Project Hail Mary by Andy…"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 38,
+      "item": {
+        "@type": "Event",
+        "name": "Student Non-Attendance/ Institute Day",
+        "startDate": "2026-10-13T00:00:00",
+        "url": "https://withintenmiles.com/mount-prospect-60056/#ev-student-non-attendance-institute-day-2026-10-13",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 39,
+      "item": {
+        "@type": "Event",
+        "name": "Baby Storytime",
+        "startDate": "2026-10-13T09:30:00+00:00",
+        "url": "https://withintenmiles.com/mount-prospect-60056/#ev-baby-storytime-2026-10-13",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "sameAs": "https://mppl.libnet.info/event/16553352",
+        "description": "Tuesday, October 13 2026 9:30am - 10:00am \n A lifelong love of reading starts at birth! Join us for songs, rhymes, stories, and playtime made specially for…"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 40,
+      "item": {
+        "@type": "Event",
+        "name": "Family Storytime",
+        "startDate": "2026-10-13T10:30:00+00:00",
+        "url": "https://withintenmiles.com/mount-prospect-60056/#ev-family-storytime-2026-10-13",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "sameAs": "https://mppl.libnet.info/event/16553376",
+        "description": "Tuesday, October 13 2026 10:30am - 11:00am \n Bring the whole family and join us for an interactive storytime with high-energy stories, songs, and activities."
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 41,
+      "item": {
+        "@type": "Event",
+        "name": "Play and Learn",
+        "startDate": "2026-10-13T11:30:00+00:00",
+        "url": "https://withintenmiles.com/mount-prospect-60056/#ev-play-and-learn-2026-10-13",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "sameAs": "https://mppl.libnet.info/event/16749801",
+        "description": "Tuesday, October 13 2026 11:30am - 12:15pm \n Join us each week for storytime, sing-alongs, and developmental play experiences that encourage learning through…"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 42,
+      "item": {
+        "@type": "Event",
+        "name": "Big Kids Storytime",
+        "startDate": "2026-10-13T13:30:00+00:00",
+        "url": "https://withintenmiles.com/mount-prospect-60056/#ev-big-kids-storytime-2026-10-13",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "sameAs": "https://mppl.libnet.info/event/16553393",
+        "description": "Tuesday, October 13 2026 1:30pm - 2:15pm \n Grow into a super reader through playful books and fun with friends! This storytime is the perfect fit for…"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 43,
+      "item": {
+        "@type": "Event",
+        "name": "Introduction to Web Resources",
+        "startDate": "2026-10-13T14:00:00+00:00",
+        "url": "https://withintenmiles.com/mount-prospect-60056/#ev-introduction-to-web-resources-2026-10-13",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "sameAs": "https://mppl.libnet.info/event/16505448",
+        "description": "Tuesday, October 13 2026 2:00pm - 3:00pm \n Discover the extensive collection of free online resources available with your library card.",
+        "isAccessibleForFree": true
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 44,
+      "item": {
+        "@type": "Event",
+        "name": "Teen Astronaut Food Taste Test",
+        "startDate": "2026-10-13T16:30:00+00:00",
+        "url": "https://withintenmiles.com/mount-prospect-60056/#ev-teen-astronaut-food-taste-test-2026-10-13",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "sameAs": "https://mppl.libnet.info/event/16583547",
+        "description": "Tuesday, October 13 2026 4:30pm - 5:30pm \n Curious about what astronauts eat? Join us as we sample a variety of astronaut food to celebrate our One Book, One…"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 45,
+      "item": {
+        "@type": "Event",
+        "name": "Adult Astronaut Food Taste Test",
+        "startDate": "2026-10-13T18:30:00+00:00",
+        "url": "https://withintenmiles.com/mount-prospect-60056/#ev-adult-astronaut-food-taste-test-2026-10-13",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "sameAs": "https://mppl.libnet.info/event/15766141",
+        "description": "Tuesday, October 13 2026 6:30pm - 7:30pm \n Curious about what astronauts eat? Join us as we sample a variety of astronaut food to celebrate our One Book, One…"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 46,
+      "item": {
+        "@type": "Event",
+        "name": "Toddler Storytime",
+        "startDate": "2026-10-14T09:30:00+00:00",
+        "url": "https://withintenmiles.com/mount-prospect-60056/#ev-toddler-storytime-2026-10-14",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "sameAs": "https://mppl.libnet.info/event/16553440",
+        "description": "Wednesday, October 14 2026 9:30am - 10:00am \n Grow your little learner's literacy and language skills at this playful storytime full of wiggles, wonder, and…"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 47,
+      "item": {
+        "@type": "Event",
+        "name": "Elected Officials Office Hours",
+        "startDate": "2026-10-14T10:00:00+00:00",
+        "url": "https://withintenmiles.com/mount-prospect-60056/#ev-elected-officials-office-hours-2026-10-14",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "sameAs": "https://mppl.libnet.info/event/15554310",
+        "description": "Wednesday, October 14 2026 10:00am - 12:00pm \n Learn about services and resources provided by Cook County."
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 48,
+      "item": {
+        "@type": "Event",
+        "name": "Inglés para Hispanohablantes",
+        "startDate": "2026-10-14T11:00:00+00:00",
+        "url": "https://withintenmiles.com/mount-prospect-60056/#ev-ingl-s-para-hispanohablantes-2026-10-14",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "sameAs": "https://mppl.libnet.info/event/17476743",
+        "description": "Wednesday, October 14 2026 11:00am - 12:00pm \n Una clase virtual vía Zoom, de conversación, para hispanohablantes que buscan mejorar su inglés. \n\nA virtual…"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 49,
+      "item": {
+        "@type": "Event",
+        "name": "Animal Investigators Junior: Jellyfish",
+        "startDate": "2026-10-14T16:30:00+00:00",
+        "url": "https://withintenmiles.com/mount-prospect-60056/#ev-animal-investigators-junior-jellyfish-2026-10-14",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "sameAs": "https://mppl.libnet.info/event/16640992",
+        "description": "Wednesday, October 14 2026 4:30pm - 5:30pm \n Let's hang out and admire incredible animals together!"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 50,
+      "item": {
+        "@type": "Event",
+        "name": "Movie Screening: Project Hail Mary",
+        "startDate": "2026-10-14T16:30:00+00:00",
+        "url": "https://withintenmiles.com/mount-prospect-60056/#ev-movie-screening-project-hail-mary-2026-10-14",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "sameAs": "https://mppl.libnet.info/event/16760346",
+        "description": "Wednesday, October 14 2026 4:30pm - 7:30pm \n Join us for a screening of Project Hail Mary."
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 51,
+      "item": {
+        "@type": "Event",
+        "name": "Intro to Adobe Premier: Part 1",
+        "startDate": "2026-10-14T18:30:00+00:00",
+        "url": "https://withintenmiles.com/mount-prospect-60056/#ev-intro-to-adobe-premier-part-1-2026-10-14",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "sameAs": "https://mppl.libnet.info/event/16278627",
+        "description": "Wednesday, October 14 2026 6:30pm - 8:00pm \n Curious about editing videos with Adobe Premiere? In this two-part program, we will cover the basics of adobe…"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 52,
+      "item": {
+        "@type": "Event",
+        "name": "Baby Storytime",
+        "startDate": "2026-10-15T09:30:00+00:00",
+        "url": "https://withintenmiles.com/mount-prospect-60056/#ev-baby-storytime-2026-10-15",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "sameAs": "https://mppl.libnet.info/event/16553492",
+        "description": "Thursday, October 15 2026 9:30am - 10:00am \n A lifelong love of reading starts at birth! Join us for songs, rhymes, stories, and playtime made specially for…"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 53,
+      "item": {
+        "@type": "Event",
+        "name": "Coin Collecting Appraisals",
+        "startDate": "2026-10-15T10:00:00+00:00",
+        "url": "https://withintenmiles.com/mount-prospect-60056/#ev-coin-collecting-appraisals-2026-10-15",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "sameAs": "https://mppl.libnet.info/event/16607413",
+        "description": "Thursday, October 15 2026 10:00am - 4:00pm \n Meet privately with lifelong coin collector Dave Ekstrom to appraise your old coins."
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 54,
+      "item": {
+        "@type": "Event",
+        "name": "Family Storytime",
+        "startDate": "2026-10-15T10:30:00+00:00",
+        "url": "https://withintenmiles.com/mount-prospect-60056/#ev-family-storytime-2026-10-15",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "sameAs": "https://mppl.libnet.info/event/16553521",
+        "description": "Thursday, October 15 2026 10:30am - 11:00am \n Bring the whole family and join us for an interactive storytime with high-energy stories, songs, and activities."
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 55,
+      "item": {
+        "@type": "Event",
+        "name": "Drop-In Tech Help",
+        "startDate": "2026-10-15T14:00:00+00:00",
+        "url": "https://withintenmiles.com/mount-prospect-60056/#ev-drop-in-tech-help-2026-10-15",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "sameAs": "https://mppl.libnet.info/event/14756228",
+        "description": "Thursday, October 15 2026 2:00pm - 3:00pm \n Stop in and bring your questions about technology-related subjects such as smartphones, computers, email,…"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 56,
+      "item": {
+        "@type": "Event",
+        "name": "Regular Library Board Meeting",
+        "startDate": "2026-10-15T18:00:00+00:00",
+        "url": "https://withintenmiles.com/mount-prospect-60056/#ev-regular-library-board-meeting-2026-10-15",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "sameAs": "https://mppl.libnet.info/event/15915285",
+        "description": "Thursday, October 15 2026 6:00pm - 9:00pm \n The Board of Library Trustees meets the third Thursday of each month at 6 p.m. at the library."
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 57,
+      "item": {
+        "@type": "Event",
+        "name": "Career Coaching Appointment",
+        "startDate": "2026-10-15T18:00:00+00:00",
+        "url": "https://withintenmiles.com/mount-prospect-60056/#ev-career-coaching-appointment-2026-10-15",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "sameAs": "https://mppl.libnet.info/event/16514103",
+        "description": "Thursday, October 15 2026 6:00pm - 7:00pm \n Jumpstart your job search with a virtual one-hour session with an experienced career coach."
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 58,
+      "item": {
+        "@type": "Event",
+        "name": "Board of Education Closed Meeting - Board Governance",
+        "startDate": "2026-10-15T19:00:00",
+        "url": "https://withintenmiles.com/mount-prospect-60056/#ev-board-of-education-closed-meeting-board-governance-2026-10-15",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 59,
+      "item": {
+        "@type": "Event",
+        "name": "Storytime Playdate: Space Explorers",
+        "startDate": "2026-10-16T10:00:00+00:00",
+        "url": "https://withintenmiles.com/mount-prospect-60056/#ev-storytime-playdate-space-explorers-2026-10-16",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "sameAs": "https://mppl.libnet.info/event/16553592",
+        "description": "Friday, October 16 2026 10:00am - 11:30am \n Enjoy the magic of storytime plus the joy of hands-on sensory fun! You and your child will enjoy time together…"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 60,
+      "item": {
+        "@type": "Event",
+        "name": "Friends Book Sale",
+        "startDate": "2026-10-17T09:00:00+00:00",
+        "url": "https://withintenmiles.com/mount-prospect-60056/#ev-friends-book-sale-2026-10-17",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "sameAs": "https://mppl.libnet.info/event/13845865",
+        "description": "Saturday, October 17 2026 9:00am - 4:30pm \n Stock up on great books at bargain prices during the Friends of the Library's used book sale."
+      }
+    }
+  ]
+}

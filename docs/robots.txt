@@ -31,4 +31,13 @@ Allow: /
 User-agent: CCBot
 Allow: /
 
+User-agent: Meta-ExternalAgent
+Allow: /
+
+User-agent: Meta-ExternalFetcher
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
 Sitemap: https://withintenmiles.com/sitemap.xml
