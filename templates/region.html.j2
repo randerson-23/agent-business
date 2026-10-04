@@ -874,7 +874,11 @@
         <!-- id folds in date_iso - see the Editor's Pick tray_item above
              for why (ROADMAP.md item 146). -->
         {% set tray_item = {"id": (item.url or item.title) ~ ("|" ~ item.date_iso if item.date_iso else ""), "title": item.title, "url": item.url or "", "date": item.date or None, "date_iso": item.date_iso or None, "detail": item.detail or "", "region_name": region.name, "region_url": region_base_url} %}
-        <div class="card{% if item.attendable == false %} card-informational{% endif %}" data-tags="{{ item.tags|join(',') }}" data-date-iso="{{ item.date_iso or '' }}">
+        {# ROADMAP.md items 228/234: an <article> with a stable id is a card an
+           agent can read as one unit and cite by anchor; <time datetime>
+           makes the date machine-readable in the visible markup itself.
+           data-date-iso stays - item 200's client-side script reads it. #}
+        <article class="card{% if item.attendable == false %} card-informational{% endif %}" id="{{ item.anchor_id }}" data-tags="{{ item.tags|join(',') }}" data-date-iso="{{ item.date_iso or '' }}">
           {% if nav_current != "guides" and item.attendable != false %}
           <!-- ROADMAP.md Phase 11 #63: My Weekend is for dated events -
                offering to add "Find your school district" or a guide's
@@ -886,7 +890,7 @@
           {% endif %}
           {% if item.attendable == false %}<div class="informational-label">Informational</div>{% endif %}
           {% if item.series %}<div class="series">{{ item.series }}</div>{% endif %}
-          {% if item.date %}<div class="date">{{ item.date }}</div>{% endif %}
+          {% if item.date %}<div class="date">{% if item.date_iso %}<time datetime="{{ item.date_iso }}">{{ item.date_label or item.date }}</time>{% else %}{{ item.date }}{% endif %} · <span class="where">{{ region.name }}</span></div>{% endif %}
           <h3>{% if item.url %}<a href="{{ item.url }}">{{ item.title }}</a>{% else %}{{ item.title }}{% endif %}</h3>
           {% if item.recurrence_note %}<div class="recurrence-note">{{ item.recurrence_note }}</div>{% endif %}
           {% if item.detail %}<p class="detail">{{ item.detail }}</p>{% endif %}
@@ -901,7 +905,7 @@
             <a href="{{ item.google_calendar_url }}" target="_blank" rel="noopener">Google Calendar</a>
           </div>
           {% endif %}
-        </div>
+        </article>
         {% endfor %}
         </div>
       {% else %}
