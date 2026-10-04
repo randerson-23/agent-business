@@ -3,89 +3,8 @@
 <channel>
   <title>Within Ten — Upcoming Local Events</title>
   <link>https://withintenmiles.com/</link>
-  <description>Upcoming events across every Within Ten region, soonest first - aggregated automatically from village, library, park district and school-district calendars. This build reached 20 of 26 configured sources.</description>
-  <lastBuildDate>Sat, 03 Oct 2026 14:14:29 +0000</lastBuildDate>
-  <item>
-    <title>Arlington Heights: Harmony Fest &amp; Taste of Arlington Heights (Saturday)</title>
-    <link>https://downtownarlingtonheights.us/events/harmony-fest-taste-of-arlington-heights-2026</link>
-    <guid isPermaLink="true">https://downtownarlingtonheights.us/events/harmony-fest-taste-of-arlington-heights-2026</guid>
-    <description>Free live concerts, food &amp; drink, plus a kids' zone. 3–11pm, Downtown Arlington Heights.</description>
-    <pubDate>Sat, 03 Oct 2026 00:00:00 +0000</pubDate>
-  </item>
-  <item>
-    <title>Arlington Heights: Birding on the Trail: Fall Migrations</title>
-    <link>https://www.ahml.info/scheduling/reservation/208270</link>
-    <guid isPermaLink="true">https://www.ahml.info/scheduling/reservation/208270</guid>
-    <description></description>
-    <pubDate>Sat, 03 Oct 2026 00:00:00 +0000</pubDate>
-  </item>
-  <item>
-    <title>Palatine: Textile Recycling Event at Palatine Township</title>
-    <link>https://www.palatine.il.us/common/modules/iCalendar/iCalendar.aspx?feed=calendar&amp;catID=14</link>
-    <guid isPermaLink="false">https://www.palatine.il.us/common/modules/iCalendar/iCalendar.aspx?feed=calendar&amp;catID=14#2026-10-03T08:00:00</guid>
-    <description>Co-Hosted by Palatine Township and Palatine Lion's Club https:/</description>
-    <pubDate>Sat, 03 Oct 2026 08:00:00 +0000</pubDate>
-  </item>
-  <item>
-    <title>Wheeling: Pancake Breakfast Hosted by Wheeling's Village Board</title>
-    <link>https://www.wheelingil.gov/common/modules/iCalendar/iCalendar.aspx?feed=calendar&amp;catID=14</link>
-    <guid isPermaLink="false">https://www.wheelingil.gov/common/modules/iCalendar/iCalendar.aspx?feed=calendar&amp;catID=14#2026-10-03T08:00:00</guid>
-    <description>https://www.wheelingil.gov/calendar.aspx?EID=2205</description>
-    <pubDate>Sat, 03 Oct 2026 08:00:00 +0000</pubDate>
-  </item>
-  <item>
-    <title>Mount Prospect: Trick or Treat Trail</title>
-    <link>https://www.mppd.org/event/trick-or-treat-trail-3/</link>
-    <guid isPermaLink="true">https://www.mppd.org/event/trick-or-treat-trail-3/</guid>
-    <description>Trick or Treat Trail (Suggested Ages 3-10) Location RecPlex Enjoy a fun-filled trail of Halloween games and treats! Pick up your bag at check-in and continue…</description>
-    <pubDate>Sat, 03 Oct 2026 08:30:00 +0000</pubDate>
-  </item>
-  <item>
-    <title>Des Plaines: Life Drawing at the Library 2026</title>
-    <link>https://desplaines.libnet.info/event/15980372</link>
-    <guid isPermaLink="true">https://desplaines.libnet.info/event/15980372</guid>
-    <description>Saturday, October 03 2026 10:00am - 12:00pm 
- Learn to draw the human body with a clothed model, located in The Canvas on the 4th floor. Drop in with no…</description>
-    <pubDate>Sat, 03 Oct 2026 10:00:00 +0000</pubDate>
-  </item>
-  <item>
-    <title>Palatine: Palatine Fire Department Open House</title>
-    <link>https://www.palatine.il.us/common/modules/iCalendar/iCalendar.aspx?feed=calendar&amp;catID=14</link>
-    <guid isPermaLink="false">https://www.palatine.il.us/common/modules/iCalendar/iCalendar.aspx?feed=calendar&amp;catID=14#2026-10-03T10:30:00</guid>
-    <description>Mark your calendar for the annual Palatine Fire Department Open</description>
-    <pubDate>Sat, 03 Oct 2026 10:30:00 +0000</pubDate>
-  </item>
-  <item>
-    <title>Des Plaines: Film Screening</title>
-    <link>https://desplaines.libnet.info/event/16023166</link>
-    <guid isPermaLink="true">https://desplaines.libnet.info/event/16023166</guid>
-    <description>Saturday, October 03 2026 1:30pm - 3:30pm 
- A free screening of the feature length film The Devil Wears Prada 2.</description>
-    <pubDate>Sat, 03 Oct 2026 13:30:00 +0000</pubDate>
-  </item>
-  <item>
-    <title>Des Plaines: Tinkercad for Adults</title>
-    <link>https://desplaines.libnet.info/event/17349449</link>
-    <guid isPermaLink="true">https://desplaines.libnet.info/event/17349449</guid>
-    <description>Saturday, October 03 2026 2:00pm - 4:00pm 
- Interested in getting into 3D modeling and 3D printers? Let me introduce you to Tinkercad!</description>
-    <pubDate>Sat, 03 Oct 2026 14:00:00 +0000</pubDate>
-  </item>
-  <item>
-    <title>Mount Prospect: CheckMates Meetup</title>
-    <link>https://mppl.libnet.info/event/16648940</link>
-    <guid isPermaLink="true">https://mppl.libnet.info/event/16648940</guid>
-    <description>Saturday, October 03 2026 2:00pm - 3:30pm 
- Join other chess fans for a mini lesson and guided instruction to sharpen your skills, or just stop by for a match!</description>
-    <pubDate>Sat, 03 Oct 2026 14:00:00 +0000</pubDate>
-  </item>
-  <item>
-    <title>Palatine: Play On!</title>
-    <link>https://www.palatine.il.us/common/modules/iCalendar/iCalendar.aspx?feed=calendar&amp;catID=14</link>
-    <guid isPermaLink="false">https://www.palatine.il.us/common/modules/iCalendar/iCalendar.aspx?feed=calendar&amp;catID=14#2026-10-03T19:00:00</guid>
-    <description>Palatine High School Fall Play https://www.palatine.il.us/calen</description>
-    <pubDate>Sat, 03 Oct 2026 19:00:00 +0000</pubDate>
-  </item>
+  <description>Upcoming events across every Within Ten region, soonest first - aggregated automatically from village, library, park district and school-district calendars. This build reached 19 of 26 configured sources.</description>
+  <lastBuildDate>Sun, 04 Oct 2026 12:32:41 +0000</lastBuildDate>
   <item>
     <title>Arlington Heights: Culinary: Smashburgers</title>
     <link>https://www.ahml.info/scheduling/reservation/217341</link>
@@ -119,7 +38,7 @@
   <item>
     <title>Palatine: Blessing of the Animals and Pets at St. Philip's Episcopal Church</title>
     <link>https://www.palatine.il.us/common/modules/iCalendar/iCalendar.aspx?feed=calendar&amp;catID=14</link>
-    <guid isPermaLink="false">https://www.palatine.il.us/common/modules/iCalendar/iCalendar.aspx?feed=calendar&amp;catID=14#2026-10-04T16:00:00</guid>
+    <guid isPermaLink="true">https://www.palatine.il.us/common/modules/iCalendar/iCalendar.aspx?feed=calendar&amp;catID=14</guid>
     <description>Blessing of the Animals at St. Philip's https://www.palatine.il</description>
     <pubDate>Sun, 04 Oct 2026 16:00:00 +0000</pubDate>
   </item>
@@ -240,7 +159,7 @@ Ages 9-12.</description>
   <item>
     <title>Wheeling: Village Board Regular Meeting</title>
     <link>https://www.wheelingil.gov/common/modules/iCalendar/iCalendar.aspx?feed=calendar&amp;catID=14</link>
-    <guid isPermaLink="false">https://www.wheelingil.gov/common/modules/iCalendar/iCalendar.aspx?feed=calendar&amp;catID=14#2026-10-05T18:30:00</guid>
+    <guid isPermaLink="true">https://www.wheelingil.gov/common/modules/iCalendar/iCalendar.aspx?feed=calendar&amp;catID=14</guid>
     <description>https://www.wheelingil.gov/calendar.aspx?EID=2004</description>
     <pubDate>Mon, 05 Oct 2026 18:30:00 +0000</pubDate>
   </item>
@@ -342,13 +261,6 @@ Ages 9-12.</description>
     <pubDate>Tue, 06 Oct 2026 16:30:00 +0000</pubDate>
   </item>
   <item>
-    <title>Arlington Heights: Community Input Meeting - Carefree Park</title>
-    <link>https://www.ahpd.org/event/community-input-meeting-carefree-park/</link>
-    <guid isPermaLink="true">https://www.ahpd.org/event/community-input-meeting-carefree-park/</guid>
-    <description>Help shape the future of Carefree Park! Join us for a community input meeting where residents can share their feedback and vote on their favorite playground…</description>
-    <pubDate>Tue, 06 Oct 2026 17:30:00 +0000</pubDate>
-  </item>
-  <item>
     <title>Wheeling: Resume Review &amp; Career Coaching Appointments</title>
     <link>https://indiantrails.libnet.info/event/16654161</link>
     <guid isPermaLink="true">https://indiantrails.libnet.info/event/16654161</guid>
@@ -395,6 +307,101 @@ Ages 9-12.</description>
     <description>Tuesday, October 06 2026 7:00pm - 8:00pm 
  Adults, celebrate One Book, One Village and the holiday season by painting your very own space pumpkin.</description>
     <pubDate>Tue, 06 Oct 2026 19:00:00 +0000</pubDate>
+  </item>
+  <item>
+    <title>Arlington Heights: Baby Time</title>
+    <link>https://www.ahml.info/scheduling/reservation/224128</link>
+    <guid isPermaLink="true">https://www.ahml.info/scheduling/reservation/224128</guid>
+    <description></description>
+    <pubDate>Wed, 07 Oct 2026 00:00:00 +0000</pubDate>
+  </item>
+  <item>
+    <title>Wheeling: Read to Learn</title>
+    <link>https://indiantrails.libnet.info/event/11861199</link>
+    <guid isPermaLink="true">https://indiantrails.libnet.info/event/11861199</guid>
+    <description>Wednesday, October 07 2026 9:00am - 12:00pm 
+ District 214 Read to Learn Adult Literacy Program.</description>
+    <pubDate>Wed, 07 Oct 2026 09:00:00 +0000</pubDate>
+  </item>
+  <item>
+    <title>Mount Prospect: Toddler Storytime</title>
+    <link>https://mppl.libnet.info/event/16553439</link>
+    <guid isPermaLink="true">https://mppl.libnet.info/event/16553439</guid>
+    <description>Wednesday, October 07 2026 9:30am - 10:00am 
+ Grow your little learner's literacy and language skills at this playful storytime full of wiggles, wonder, and…</description>
+    <pubDate>Wed, 07 Oct 2026 09:30:00 +0000</pubDate>
+  </item>
+  <item>
+    <title>Des Plaines: Baby Book Time</title>
+    <link>https://desplaines.libnet.info/event/16431777</link>
+    <guid isPermaLink="true">https://desplaines.libnet.info/event/16431777</guid>
+    <description>Wednesday, October 07 2026 10:00am - 11:00am 
+ To register, please contact Irene Tripkos at 847-789-5623. Verbal confirmation from Irene Tripkos is needed in…</description>
+    <pubDate>Wed, 07 Oct 2026 10:00:00 +0000</pubDate>
+  </item>
+  <item>
+    <title>Mount Prospect: Drop-In Tech Help</title>
+    <link>https://mppl.libnet.info/event/14756159</link>
+    <guid isPermaLink="true">https://mppl.libnet.info/event/14756159</guid>
+    <description>Wednesday, October 07 2026 10:00am - 11:00am 
+ Stop in and bring your questions about technology-related subjects such as smartphones, computers, email,…</description>
+    <pubDate>Wed, 07 Oct 2026 10:00:00 +0000</pubDate>
+  </item>
+  <item>
+    <title>Mount Prospect: Wednesday Morning Book Group</title>
+    <link>https://mppl.libnet.info/event/15979949</link>
+    <guid isPermaLink="true">https://mppl.libnet.info/event/15979949</guid>
+    <description>Wednesday, October 07 2026 11:00am - 12:00pm 
+ Join others in the community for a casual discussion of our One Book, One Village read, Project Hail Mary by…</description>
+    <pubDate>Wed, 07 Oct 2026 11:00:00 +0000</pubDate>
+  </item>
+  <item>
+    <title>Des Plaines: Preschool Storytime</title>
+    <link>https://desplaines.libnet.info/event/17004186</link>
+    <guid isPermaLink="true">https://desplaines.libnet.info/event/17004186</guid>
+    <description>Wednesday, October 07 2026 1:30pm - 2:00pm 
+ Ages 3-5, but all are welcome. Storytime is a fun and play-filled way to foster a lifelong love of reading and…</description>
+    <pubDate>Wed, 07 Oct 2026 13:30:00 +0000</pubDate>
+  </item>
+  <item>
+    <title>Wheeling: Jewelry Making Extravaganza</title>
+    <link>https://indiantrails.libnet.info/event/16276068</link>
+    <guid isPermaLink="true">https://indiantrails.libnet.info/event/16276068</guid>
+    <description>Wednesday, October 07 2026 4:00pm - 5:30pm 
+ Learn jewelry making techniques using our collection of beads and jewelry supplies to create a unique piece to…</description>
+    <pubDate>Wed, 07 Oct 2026 16:00:00 +0000</pubDate>
+  </item>
+  <item>
+    <title>Wheeling: Papel Picado</title>
+    <link>https://indiantrails.libnet.info/event/16787382</link>
+    <guid isPermaLink="true">https://indiantrails.libnet.info/event/16787382</guid>
+    <description>Wednesday, October 07 2026 4:00pm - 5:00pm 
+ Learn to make Mexican paper banners that are traditionally used for Día de los Muertos and Cinco de Mayo. R</description>
+    <pubDate>Wed, 07 Oct 2026 16:00:00 +0000</pubDate>
+  </item>
+  <item>
+    <title>Mount Prospect: Potions Lab</title>
+    <link>https://mppl.libnet.info/event/16640911</link>
+    <guid isPermaLink="true">https://mppl.libnet.info/event/16640911</guid>
+    <description>Wednesday, October 07 2026 4:30pm - 5:15pm 
+ Fizzy, frothy, or bubbly? What kind of colorful concoction will you mix today? Each month will feature different…</description>
+    <pubDate>Wed, 07 Oct 2026 16:30:00 +0000</pubDate>
+  </item>
+  <item>
+    <title>Wheeling: Navratri Hair Accessories</title>
+    <link>https://indiantrails.libnet.info/event/16505295</link>
+    <guid isPermaLink="true">https://indiantrails.libnet.info/event/16505295</guid>
+    <description>Wednesday, October 07 2026 6:00pm - 7:30pm 
+ Instructor Bhavya Nanjundaiyer, will teach how to make hair accessories for Navratri while sharing the cultural…</description>
+    <pubDate>Wed, 07 Oct 2026 18:00:00 +0000</pubDate>
+  </item>
+  <item>
+    <title>Des Plaines: Family Storytime</title>
+    <link>https://desplaines.libnet.info/event/17004253</link>
+    <guid isPermaLink="true">https://desplaines.libnet.info/event/17004253</guid>
+    <description>Wednesday, October 07 2026 7:00pm - 7:30pm 
+ Best for families with children ages 2-7, but all are welcome. See full description for details. Registration…</description>
+    <pubDate>Wed, 07 Oct 2026 19:00:00 +0000</pubDate>
   </item>
 </channel>
 </rss>
