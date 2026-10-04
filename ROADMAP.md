@@ -13177,9 +13177,10 @@ per a July 2026 agent-ready-websites framework paper).
   committed by build-digest.yml, missing from this list until
   2026-09-28), and `data/indexnow_log.json` (item 224, from
   2026-10-03) — always `git restore` all seven after a local build in
-  this sandbox, never stage any of them. Before CI's first commit of
-  `indexnow_log.json`, a local build creates it untracked, so delete it
-  (`rm`) rather than `git restore` it.
+  this sandbox, never stage any of them. `indexnow_log.json` has been
+  tracked since CI first committed it on 2026-10-03, so `git restore`
+  it like the others. **Do not `rm` it**: that deletes a real,
+  tracked history file (it nearly happened on 2026-10-04).
 - `data/url_probes.json` (item 212) is written only by
   `probe-urls.yml` on a GitHub runner. Never commit a local run of
   `scripts/probe_urls.py`: in this sandbox every probe returns
