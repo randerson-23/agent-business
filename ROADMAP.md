@@ -13002,6 +13002,127 @@ contribution pilot (under 0.1% of ad revenue for small sites); NLWeb
 (Microsoft; GitHub reference implementation).
 
 
+#### Research pass 2026-10-04 (fifty-sixth pass)
+
+The build loop shipped items 224 and 225. Subjects now keep titles
+whole (*"Harmony Fest & Taste of Arlington Heights + 15 more"*), and
+IndexNow responses are recorded in `data/indexnow_log.json`. That log
+answered item 224 immediately: **every IndexNow submission returns
+`403`**, and has probably done so since item 72 shipped. The build
+loop's probe round 11 confirmed the site side is correct: the key file
+returns 200 with the right body, there is an apex canonical, the
+sitemap is on the apex, and robots.txt has no disallows. Items 227–233
+(the owner-requested agent work) were filed after yesterday's build run
+and are first in line today.
+
+This pass follows the agent work into the two places it was still thin:
+how an agent reads a card, and what local businesses already pay for AI
+visibility.
+
+| Angle | Finding | Consequence |
+|---|---|---|
+| **How a card reads to an agent** | On the Mount Prospect weekend page, cards are `<div class="card">` with the date in a `data-date-iso` attribute and the visible text *"Oct 4"*: **0 `<time>` elements, 0 `datetime` attributes, 0 `<article>` elements**. A July 2026 framework paper on agent-ready websites (arXiv 2607.12056) puts semantic HTML, DOM structure and accessibility roles alongside JSON-LD as what decides whether an agent reads a page correctly | Agents like Meta Muse browse as a user and read the rendered page. They see "Oct 4" with no year and no weekday, inside an anonymous `div`. JSON-LD helps tools that parse it, and the visible markup is what everything else reads (item 234) |
+| **IndexNow 403, researched** | IndexNow documents `403` as *"key not valid (key not found, or file found but key not in it)"*. The usual causes are a keyLocation host mismatch (www vs apex) or an unreachable key file, and round 11 ruled both out. A public August 2026 devlog reports the same thing: apex keyLocation confirmed correct, **Bing still returning 403** | Consistent with a Bing-side state for new or unclaimed sites. The owner's Bing Webmaster import (items 204/224) remains the most likely fix. One cheap diagnostic can still narrow it (item 235) |
+| **What small businesses pay for "AI visibility"** | Tools that only **track** whether a business appears in AI answers: OtterlyAI **$29/month**, AI Peekaboo **$50**, LLMrefs **$79**, Searchable **$125**, SE Visible **$189**, AthenaHQ **$295**, Profound **$399+** | A local business already pays **$29–$125 a month just to watch** for AI mentions. Annual Partner at **$1,200/year is $100 a month** for *being in* a structured local source agents read. That gives item 229's pitch a concrete comparison (item 236) |
+
+#### P1 (new)
+
+234. **Make each event card legible to an agent reading the page, not
+     just to JSON-LD parsers.** This is the design/UX angle, and the
+     on-page half of items 228–230. Consumer agents such as Meta Muse
+     browse as the user and read the rendered page. Today a card is an
+     anonymous `<div>` whose only visible date is *"Oct 4"*, with no
+     year and no weekday. The machine-readable date sits in a
+     `data-date-iso` attribute that no standard tool treats as a date.
+
+     What to build (template only; no new data):
+
+     - **`<article class="card" id="ev-…">`** for each event (the `id`
+       is item 228's anchor), with the title as its heading.
+     - **`<time datetime="2026-10-04T08:00">Sat, Oct 4 · 8 AM</time>`**
+       for the visible date: a full ISO value in `datetime`, and a
+       weekday in the text. A reader seeing "Sat" also catches a wrong
+       date faster, which is item 219's lesson applied to the page.
+     - **A visible venue/town line** in each card (the town is often
+       only implied by which page the card is on), so a card quoted on
+       its own still says where.
+     - **Keep `data-date-iso`**, since item 200's client-side date
+       correction reads it. This is additive.
+
+     Tests: every card on a built weekend page has one `<time
+     datetime>` whose value parses and matches the card's
+     `date_iso`. Zero owner time. Combined with item 228, a single card
+     becomes a self-contained, citable answer: what, when, where, and a
+     link back here.
+
+#### P2 (new)
+
+235. **Narrow the IndexNow 403 with one per-engine probe, and stop
+     resubmitting every URL.** Item 224's log shows `403` on every build.
+     The site side checks out, and the public evidence points to Bing.
+     Two small changes:
+
+     - **A one-off probe** (item 212's workflow) posting the same small
+       payload to each engine's own endpoint, `https://www.bing.com/indexnow`
+       and `https://yandex.com/indexnow`, and recording each status. If
+       Yandex accepts while Bing returns 403, the problem is confirmed as
+       Bing-side and the owner's Bing Webmaster import (item 204) is the
+       fix. If both return 403, look at the key itself again.
+     - **Submit only changed URLs.** Every build currently submits all
+       ~61 sitemap URLs. IndexNow's guidance is to submit URLs that
+       changed, and a site submitting its whole sitemap daily looks like
+       noise. Diff the sitemap's `<lastmod>` (or page hashes) against the
+       previous build and submit only what moved. It is unlikely to be
+       the cause of the 403, but it is how the protocol is meant to be
+       used once the 403 clears.
+
+236. **Price item 229's sponsor offer against what businesses already
+     pay just to *track* AI visibility.** Small businesses already pay
+     **$29–$125 a month** (OtterlyAI, AI Peekaboo, LLMrefs, Searchable)
+     for tools that only *report* whether they appear in ChatGPT,
+     Perplexity or Google's AI answers. Those tools do not put them
+     anywhere. The Annual Partner tier at **$1,200/year ($100/month)**
+     buys *presence* in a structured local source agents read.
+
+     What to build, in `SPONSOR_KIT.md` with zero owner time:
+
+     - Add one line beside the Annual Partner tier: *"Businesses pay
+       $29–$125 a month for tools that only tell them whether AI
+       assistants mention them. An Annual Partnership puts your business
+       in the local guide those assistants read."* No traffic or
+       citation claims until item 227 produces numbers. That is item
+       229's rule, unchanged.
+     - Do **not** reprice. The comparison supports the existing price;
+       it does not argue for a higher one at this audience size.
+
+#### P3 (new)
+
+237. **A monthly "AI presence check" for Annual Partners, once there is
+     one.** The tools above sell tracking. Within Ten could include a
+     narrow version in the partnership: each month, ask one AI
+     assistant through its API a handful of category questions for the
+     partner's town (*"kid-friendly restaurants near Mount Prospect"*,
+     *"birthday party places in Arlington Heights"*), and record whether
+     the partner or Within Ten is mentioned or cited. Send the result as
+     a short email.
+
+     Why P3: it costs a small amount of API spend per run, it is only
+     worth building for a paying partner, and an assistant's answers
+     vary from run to run, so a single monthly check is an indicator,
+     not a measurement. The report must say so plainly. Build it only
+     after the first Annual Partner signs, as a retention feature for
+     them, not as a pitch to a prospect.
+
+Competitors reviewed this pass: **AI-visibility tracking tools**
+(OtterlyAI, AI Peekaboo, LLMrefs, Searchable, SE Visible, AthenaHQ,
+Profound; $29–$399+ a month, all tracking-only, which gives a local
+price anchor for item 229), **IndexNow's 403 behaviour** (documented
+meaning, plus public reports of Bing returning 403 for correctly
+configured new sites), and **agent-legible page markup** as the
+design/UX angle (semantic HTML and `<time datetime>` alongside JSON-LD,
+per a July 2026 agent-ready-websites framework paper).
+
+
 ## Working agreements for autonomous iteration
 
 - Cadence is once a day at 13:51 UTC, about two hours after the daily
