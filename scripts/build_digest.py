@@ -1707,7 +1707,48 @@ def build_organization_json_ld() -> str:
     return json.dumps(payload, ensure_ascii=False).replace("</", "<\\/")
 
 
-def build_event_json_ld(blocks: list[dict]) -> str | None:
+def event_anchor_id(event: dict) -> str:
+    """A stable, citable fragment id for one event card (ROADMAP.md item
+    228): "ev-<title-slug>-<yyyy-mm-dd>", the same for the same event and
+    date on every rebuild. An agent quoting an event can then cite this
+    site's card rather than the source's page. Undated items get the slug
+    alone."""
+    slug = re.sub(r"[^a-z0-9]+", "-", (event.get("title") or "").lower()).strip("-")[:60].rstrip("-") or "event"
+    day = (event.get("date_iso") or "")[:10]
+    return f"ev-{slug}-{day}" if day else f"ev-{slug}"
+
+
+def event_date_label(date_iso: str | None) -> str | None:
+    """"Sat, Oct 4" for a card's visible date (ROADMAP.md item 234): the
+    weekday lets a reader, or an agent quoting the card, catch a wrong
+    date at a glance (item 219's lesson). Deliberately no time of day:
+    ICS times often parse to a naive UTC value, so "7 PM" could be five
+    hours off - the date is what every source states reliably."""
+    if not date_iso:
+        return None
+    try:
+        day = date.fromisoformat(date_iso[:10])
+    except ValueError:
+        return None
+    return day.strftime("%a, %b %-d")
+
+
+def prepare_event_cards(blocks: list[dict]) -> None:
+    """Set `anchor_id` and `date_label` on every event card about to be
+    rendered on one page. Ids are deduplicated within the page (a repeat
+    gets "-2", "-3"), since an HTML id must be unique there; recomputed on
+    every render, so the same event object can appear on several pages."""
+    seen: dict[str, int] = {}
+    for block in blocks:
+        for event in block.get("events", []):
+            base = event_anchor_id(event)
+            seen[base] = seen.get(base, 0) + 1
+            event["anchor_id"] = base if seen[base] == 1 else f"{base}-{seen[base]}"
+            event["date_label"] = event_date_label(event.get("date_iso"))
+
+
+
+def build_event_json_ld(blocks: list[dict], page_url: str | None = None) -> str | None:
     """schema.org/Event structured data for fetched events that have a
     real date (not the evergreen resource listings, and not an
     undated item - an "Event" with no date isn't a meaningful event,
@@ -1739,6 +1780,12 @@ def build_event_json_ld(blocks: list[dict]) -> str | None:
             "url": e["url"],
             "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
         }
+        # ROADMAP.md item 228: point `url` at this page's own card so a
+        # citation lands here, and keep the source's page in `sameAs` -
+        # it still gets the credit and the click-out stays one tap away.
+        if page_url and e.get("anchor_id"):
+            entry["url"] = f"{page_url}#{e['anchor_id']}"
+            entry["sameAs"] = e["url"]
         if e.get("detail"):
             entry["description"] = e["detail"]
         if e.get("date_iso"):
@@ -1802,6 +1849,7 @@ def render_region_page(
     # actually true - this build did run) rather than "last updated"
     # (which would imply content changed, unverified here).
     last_checked_label = region_local_date(region, now).strftime("%A, %B %-d")
+    prepare_event_cards(blocks)
     return template.render(
         region=region,
         issue_date=now.strftime("%B %d, %Y"),
@@ -1811,7 +1859,7 @@ def render_region_page(
         evergreen=evergreen,
         available_tags=all_tags_present(all_events_flat),
         canonical_url=canonical_url,
-        event_json_ld=build_event_json_ld(blocks),
+        event_json_ld=build_event_json_ld(blocks, page_url=canonical_url),
         freshness_json_ld=build_freshness_json_ld(region, canonical_url, now),
         answer_block=answer_block,
         last_checked_label=last_checked_label,
@@ -1992,6 +2040,7 @@ def render_merged_hub_page(
     """
     env = get_template_env()
     template = env.get_template("merged_hub.html.j2")
+    prepare_event_cards([{"events": s["events"]} for s in region_sections])
     return template.render(
         region_sections=region_sections,
         heading=heading,

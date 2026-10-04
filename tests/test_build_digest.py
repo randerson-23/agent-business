@@ -4374,3 +4374,56 @@ def test_the_lead_keeps_its_place_in_compact_form_over_a_shorter_tie():
         _section("Mount Prospect", {"title": "Trick or Treat Trail"}, {"title": "Book Club"}),
     ]
     assert build_digest.build_combined_email_subject_line(sections) == "Harmony Fest & Taste of Arlington Heights + 2 more"
+
+
+def test_event_anchor_id_is_stable_slug_plus_date():
+    # ROADMAP.md item 228: a citable id, the same on every rebuild.
+    e = {"title": "Trick or Treat Trail!", "date_iso": "2026-10-04T08:00:00"}
+    assert build_digest.event_anchor_id(e) == "ev-trick-or-treat-trail-2026-10-04"
+    assert build_digest.event_anchor_id({"title": "Library"}) == "ev-library"
+    assert build_digest.event_anchor_id({"title": "!!!"}) == "ev-event"
+
+
+def test_event_date_label_names_the_weekday_and_never_a_time():
+    # ROADMAP.md item 234. 2026-10-04 is a Sunday. No time of day: ICS
+    # times often parse to naive UTC, so "7 PM" could be hours off.
+    assert build_digest.event_date_label("2026-10-04T19:00:00") == "Sun, Oct 4"
+    assert build_digest.event_date_label(None) is None
+    assert build_digest.event_date_label("not-a-date") is None
+
+
+def test_prepare_event_cards_dedupes_ids_within_a_page():
+    a = {"title": "Story Time", "date_iso": "2026-10-04T10:00:00"}
+    b = {"title": "Story Time", "date_iso": "2026-10-04T14:00:00"}
+    build_digest.prepare_event_cards([{"events": [a]}, {"events": [b]}])
+    assert (a["anchor_id"], b["anchor_id"]) == ("ev-story-time-2026-10-04", "ev-story-time-2026-10-04-2")
+    assert a["date_label"] == "Sun, Oct 4"
+
+
+def test_event_json_ld_points_url_at_the_on_page_anchor_and_keeps_the_source():
+    e = {"title": "Fall Fest", "url": "https://village.example/fest", "date_iso": "2026-10-04T10:00:00"}
+    blocks = [{"events": [e]}]
+    build_digest.prepare_event_cards(blocks)
+    graph = json.loads(build_digest.build_event_json_ld(blocks, page_url="https://withintenmiles.com/x/this-weekend/"))["@graph"]
+    assert graph[0]["url"] == "https://withintenmiles.com/x/this-weekend/#ev-fall-fest-2026-10-04"
+    assert graph[0]["sameAs"] == "https://village.example/fest"
+
+
+def test_event_json_ld_without_a_page_url_keeps_the_source_url():
+    e = {"title": "Fall Fest", "url": "https://village.example/fest", "date_iso": "2026-10-04T10:00:00"}
+    graph = json.loads(build_digest.build_event_json_ld([{"events": [e]}]))["@graph"]
+    assert graph[0]["url"] == "https://village.example/fest"
+    assert "sameAs" not in graph[0]
+
+
+def test_region_page_cards_are_articles_with_ids_and_time_elements():
+    region_cfg = {"region": {"id": "mount-prospect-60056", "name": "Mount Prospect", "state": "IL", "zip": "60056",
+                             "tagline": "t", "timezone": "America/Chicago"}}
+    e = {"title": "Fall Fest", "url": "https://village.example/fest", "date": "Oct 4",
+         "date_iso": "2026-10-04T10:00:00", "tags": [], "tag_badges": []}
+    html = build_digest.render_region_page(region_cfg, [{"section": "Events", "events": [e]}], {}, [],
+                                           datetime(2026, 10, 3, 14, 0, tzinfo=timezone.utc))
+    assert '<article class="card" id="ev-fall-fest-2026-10-04"' in html
+    assert '<time datetime="2026-10-04T10:00:00">Sun, Oct 4</time>' in html
+    assert '<span class="where">Mount Prospect</span>' in html
+    assert 'data-date-iso="2026-10-04T10:00:00"' in html

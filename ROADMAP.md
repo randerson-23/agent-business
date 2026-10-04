@@ -12835,7 +12835,7 @@ now it measures nothing.
      chatgpt, perplexity, copilot, gemini, claude or meta) to whatever
      weekly summary the site already produces.
 
-228. **Give every event card a stable, citable anchor, so citations
+228. ✅ **DONE — Give every event card a stable, citable anchor, so citations
      land on this site.** Today a card's only link goes *out* to the
      village, library or park-district page, and the card has no `id`
      (zero anchors on the Mount Prospect weekend page). An agent that
@@ -12858,6 +12858,17 @@ now it measures nothing.
 
      Zero owner time. This is the precondition for item 229's sponsor
      data ever being seen.
+
+     ✅ **Shipped 2026-10-04, together with item 234.**
+     `event_anchor_id()` gives each card `ev-<title-slug>-<yyyy-mm-dd>`
+     (the slug alone for an undated item). `prepare_event_cards()` sets
+     it on every card of the page being rendered and adds `-2`, `-3` if
+     one page repeats an id, so ids stay unique per page. Each Event's
+     JSON-LD `url` is now `<page canonical>#<anchor>`, and the source's
+     page moved to `sameAs`. Checked on a full build: 40 pages, 173
+     event cards, every id unique per page, every JSON-LD anchor
+     resolving to a real card on its page. No new URLs were created,
+     which keeps items 158 and 160's no-URL-sprawl rule.
 
 229. **Put clearly labelled sponsorship *into* the structured data, and
      sell "presence in the guide AI assistants read".** This is the
@@ -13027,7 +13038,7 @@ visibility.
 
 #### P1 (new)
 
-234. **Make each event card legible to an agent reading the page, not
+234. ✅ **DONE — Make each event card legible to an agent reading the page, not
      just to JSON-LD parsers.** This is the design/UX angle, and the
      on-page half of items 228–230. Consumer agents such as Meta Muse
      browse as the user and read the rendered page. Today a card is an
@@ -13054,6 +13065,23 @@ visibility.
      `date_iso`. Zero owner time. Combined with item 228, a single card
      becomes a self-contained, citable answer: what, when, where, and a
      link back here.
+
+     ✅ **Shipped 2026-10-04, with item 228.** Event cards on the region
+     pages and the merged hub pages are `<article class="card"
+     id="ev-…">`. The visible date is `<time datetime="<date_iso>">Sun,
+     Oct 4</time> · <span class="where">Mount Prospect</span>`, giving a
+     weekday and the town on every card. `data-date-iso` is kept, since
+     item 200's script and the filter script read it. One deliberate
+     difference from the spec: **no time of day** is shown. ICS times
+     often parse to a naive UTC value (`20261004T190000Z` becomes
+     19:00), so a displayed "7 PM" would be five hours off for Chicago,
+     the same kind of wrong date this item exists to prevent. Showing
+     local times correctly needs timezone-aware parsing in the
+     fetchers, which is a separate item if it's wanted. Evergreen
+     resource cards (library, park district and so on) stay `<div>`,
+     since they aren't events. Checked on the full build: every
+     `<time datetime>` equals its card's `data-date-iso` and parses as
+     a date.
 
 #### P2 (new)
 
@@ -13149,9 +13177,10 @@ per a July 2026 agent-ready-websites framework paper).
   committed by build-digest.yml, missing from this list until
   2026-09-28), and `data/indexnow_log.json` (item 224, from
   2026-10-03) — always `git restore` all seven after a local build in
-  this sandbox, never stage any of them. Before CI's first commit of
-  `indexnow_log.json`, a local build creates it untracked, so delete it
-  (`rm`) rather than `git restore` it.
+  this sandbox, never stage any of them. `indexnow_log.json` has been
+  tracked since CI first committed it on 2026-10-03, so `git restore`
+  it like the others. **Do not `rm` it**: that deletes a real,
+  tracked history file (it nearly happened on 2026-10-04).
 - `data/url_probes.json` (item 212) is written only by
   `probe-urls.yml` on a GitHub runner. Never commit a local run of
   `scripts/probe_urls.py`: in this sandbox every probe returns
