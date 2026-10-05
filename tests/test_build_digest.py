@@ -284,6 +284,14 @@ def test_parse_event_date_iso_parses_rfc822():
     assert iso.startswith("2026-08-24")
 
 
+def test_parse_event_date_iso_keeps_rss_pubdate_wall_clock():
+    # Communico's real shape: the description says "4:00pm - 6:00pm" and
+    # the pubDate carries 16:00 with a fake +0000. It stays 4 PM local.
+    iso = build_digest.parse_event_date_iso("Wed, 28 Oct 2026 16:00:00 +0000")
+    assert iso == "2026-10-28T16:00:00"
+    assert build_digest.schema_start_date(iso) == "2026-10-28T16:00:00-05:00"
+
+
 def test_parse_event_date_iso_parses_ics_datetime():
     iso = build_digest.parse_event_date_iso("20260901T100000Z")
     assert iso.startswith("2026-09-01")

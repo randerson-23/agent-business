@@ -13278,6 +13278,19 @@ because an agent will read them literally.
        `location`, 0 `T00:00:00`, 0 timed values without an offset, in
        both `events.json` and the page JSON-LD. 4 new tests and 2
        superseded tests updated; 607 pass.
+     - **Regression, found and fixed the same day.** The post-merge
+       audit of the CI build (216 events, 0 without a `location`, 0
+       `T00:00:00`) also compared each Communico event's `startDate`
+       with the time printed in its own description: **170 of 216 were
+       five hours early.** Communico's RSS (MPPL, DPPL) stamps the
+       *local* start time with a fake `+0000` (*"4:00pm – 6:00pm"*
+       arrives as `16:00:00 +0000`). Converting zone-aware times to
+       Chicago time turned that into 11 AM. An RSS `pubDate`'s offset is
+       now ignored and its wall-clock time kept, as before #283. ICS
+       `…Z` times stay real UTC. The new test uses the real feed shape.
+       **The lesson for future audits:** check a parsed time against
+       the source's own human-readable time, not just the offset's
+       format.
 
 239. **Two issues, zero opens. Check the spam folder once.** The only
      subscriber is the owner, on Yahoo Mail. Both scheduled sends
