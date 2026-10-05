@@ -144,6 +144,8 @@ SITE_BASE_URL = "https://withintenmiles.com/"
 # rebuild after setup would silently drop the domain and the site would
 # fall back to github.io.
 CUSTOM_DOMAIN = "withintenmiles.com"
+# Every region is in the Chicago area; event times are shown and serialised in it.
+LOCAL_TZ = ZoneInfo("America/Chicago")
 
 # IndexNow key (ROADMAP.md Phase 11 #72) - not a secret, just a value that
 # has to match between this constant and the key file published at the
@@ -294,9 +296,12 @@ def _try_parse_date(raw: str | None) -> datetime | None:
         pass
     for fmt in _EXTRA_DATE_FORMATS:
         try:
-            return datetime.strptime(raw, fmt)
+            parsed = datetime.strptime(raw, fmt)
         except ValueError:
             continue
+        # ROADMAP.md item 238: an ICS "...Z" time is UTC, not local - left
+        # naive, 19:00Z was shown and exported as 7 PM in Chicago.
+        return parsed.replace(tzinfo=timezone.utc) if fmt.endswith("Z") else parsed
     return None
 
 
@@ -320,7 +325,46 @@ def parse_event_date_iso(raw: str | None) -> str | None:
     from structured data is valid; a wrong one isn't.
     """
     parsed = _try_parse_date(raw)
-    return parsed.isoformat() if parsed else None
+    if parsed is None:
+        return None
+    # ROADMAP.md item 238: a time that carries a zone is converted to the
+    # site's local time, so every consumer (cards, filters, .ics exports)
+    # sees the local date and hour. Naive values are already local.
+    if parsed.tzinfo is not None:
+        parsed = parsed.astimezone(LOCAL_TZ)
+    return parsed.isoformat()
+
+
+def schema_start_date(date_iso: str) -> str:
+    """startDate for schema.org Event (ROADMAP.md item 238). Google asks for
+    ISO 8601 with a timezone offset, or a date alone when the time is
+    unknown. A midnight time is how the pipeline represents "no time
+    given" (date-only sources, placeholder times), so it becomes a bare
+    date - never "T00:00:00", which an agent could read as midnight."""
+    dt = datetime.fromisoformat(date_iso)
+    if dt.tzinfo is None:
+        dt = dt.replace(tzinfo=LOCAL_TZ)
+    local = dt.astimezone(LOCAL_TZ)
+    if local.time() == time(0, 0):
+        return local.date().isoformat()
+    return local.isoformat()
+
+
+def schema_location(event: dict, region: dict | None = None) -> dict:
+    """schema.org Place for an Event (ROADMAP.md item 238 - Google requires
+    `location`). The source config's `venue_name` when the source's events
+    happen at one known building (a library), else the town itself. Only the town
+    and state go in the address: no invented street address, and no ZIP,
+    since a town spans several."""
+    town = event.get("town") or (region or {}).get("name")
+    state = event.get("state") or (region or {}).get("state")
+    address = {"@type": "PostalAddress", "addressCountry": "US"}
+    if town:
+        address["addressLocality"] = town
+    if state:
+        address["addressRegion"] = state
+    name = event.get("venue") or (f"{town}, {state}" if town and state else town) or SITE_NAME
+    return {"@type": "Place", "name": name, "address": address}
 
 
 def truncate(text: str, max_len: int = DETAIL_MAX_LEN) -> str:
@@ -859,6 +903,13 @@ def fetch_region_sections(
                 "tags": tags,
                 "tag_badges": [{"id": t, **tag_display(t)} for t in tags],
                 "attendable": attendable,
+                # ROADMAP.md item 238: where it happens, for Event markup.
+                # From config only - never the feed's own LOCATION, which
+                # item 115 keeps out of the parser because it can carry
+                # text not meant for republication (rooms, staff entrances).
+                "venue": source.get("venue_name"),
+                "town": region_name,
+                "state": region_cfg["region"].get("state"),
             }
             event["ics_href"] = build_ics_data_uri(event)
             event["google_calendar_url"] = build_google_calendar_url(event, region_name)
@@ -1748,7 +1799,7 @@ def prepare_event_cards(blocks: list[dict]) -> None:
 
 
 
-def build_event_json_ld(blocks: list[dict], page_url: str | None = None) -> str | None:
+def build_event_json_ld(blocks: list[dict], page_url: str | None = None, region: dict | None = None) -> str | None:
     """schema.org/Event structured data for fetched events that have a
     real date (not the evergreen resource listings, and not an
     undated item - an "Event" with no date isn't a meaningful event,
@@ -1789,7 +1840,10 @@ def build_event_json_ld(blocks: list[dict], page_url: str | None = None) -> str 
         if e.get("detail"):
             entry["description"] = e["detail"]
         if e.get("date_iso"):
-            entry["startDate"] = e["date_iso"]
+            entry["startDate"] = schema_start_date(e["date_iso"])
+        entry["location"] = schema_location(e, region)
+        if "free" in (e.get("tags") or []):
+            entry["isAccessibleForFree"] = True
         graph.append(entry)
     payload = {"@context": "https://schema.org", "@graph": graph}
     # Escape "</" so an event title/description containing it can't break
@@ -1859,7 +1913,7 @@ def render_region_page(
         evergreen=evergreen,
         available_tags=all_tags_present(all_events_flat),
         canonical_url=canonical_url,
-        event_json_ld=build_event_json_ld(blocks, page_url=canonical_url),
+        event_json_ld=build_event_json_ld(blocks, page_url=canonical_url, region=region),
         events_json_url=region_base_url + "events.json",
         freshness_json_ld=build_freshness_json_ld(region, canonical_url, now),
         answer_block=answer_block,
@@ -2340,9 +2394,10 @@ def _event_list_item(event: dict, page_url: str, position: int) -> dict:
     entry = {
         "@type": "Event",
         "name": event["title"],
-        "startDate": event["date_iso"],
+        "startDate": schema_start_date(event["date_iso"]),
         "url": f"{page_url}#{event.get('anchor_id') or event_anchor_id(event)}",
         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": schema_location(event),
     }
     if event.get("url"):
         entry["sameAs"] = event["url"]
@@ -3409,7 +3464,7 @@ def main() -> None:
         upcoming = filter_events_by_dates(blocks, {local_today + timedelta(days=i) for i in range(EVENTS_JSON_DAYS)})
         # Copies, so later page renders re-assigning anchor_id on the shared
         # event objects can't change the site-wide index built after the loop.
-        upcoming = [dict(e) for e in upcoming]
+        upcoming = [dict(e, town=e.get("town") or region["name"], state=e.get("state") or region.get("state")) for e in upcoming]
         events_json_groups.append((region["name"], region_page_url, upcoming))
         (region_dir / "events.json").write_text(
             build_events_json([(region["name"], region_page_url, upcoming)], f"Upcoming events in {region['name']} — {SITE_NAME}", now),

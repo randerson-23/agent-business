@@ -2575,15 +2575,15 @@ def test_build_event_json_ld_produces_valid_json_with_expected_fields():
     event = payload["@graph"][0]
     assert event["@type"] == "Event"
     assert event["name"] == "Fishing Derby"
-    assert event["startDate"] == "2026-09-19T10:00:00"
+    # ROADMAP.md item 238: a timed startDate carries the Chicago offset.
+    assert event["startDate"] == "2026-09-19T10:00:00-05:00"
 
 
-def test_build_event_json_ld_omits_location_without_a_real_venue():
-    # ROADMAP.md's seventh research pass: region-level location (town
-    # centre) used to be emitted as an approximation. Once AI systems
-    # cross-reference schema against live sources, an event at a specific
-    # venue marked up with the town centre reads as wrong, not
-    # approximate - so no venue data means no location claim at all.
+def test_build_event_json_ld_location_falls_back_to_the_town_without_inventing_an_address():
+    # ROADMAP.md item 238 supersedes the seventh pass's "no location at
+    # all": Google requires `location` for Event results. Without a known
+    # venue the Place is the town itself - locality and state only, never
+    # a street address or a ZIP the site can't back up.
     blocks = [
         {
             "section": "Park District Events",
@@ -2599,8 +2599,14 @@ def test_build_event_json_ld_omits_location_without_a_real_venue():
     ]
     import json as _json
 
-    payload = _json.loads(build_digest.build_event_json_ld(blocks))
-    assert "location" not in payload["@graph"][0]
+    region = {"name": "Mount Prospect", "state": "IL"}
+    location = _json.loads(build_digest.build_event_json_ld(blocks, region=region))["@graph"][0]["location"]
+    assert location == {
+        "@type": "Place",
+        "name": "Mount Prospect, IL",
+        "address": {"@type": "PostalAddress", "addressCountry": "US",
+                    "addressLocality": "Mount Prospect", "addressRegion": "IL"},
+    }
 
 
 def test_build_event_json_ld_escapes_script_close_tag():
@@ -4446,7 +4452,8 @@ def test_events_json_is_an_itemlist_of_events_linking_to_on_site_cards():
     assert first["item"]["url"] == "https://withintenmiles.com/mount-prospect-60056/#ev-fall-fest-2026-10-04"
     assert first["item"]["sameAs"] == "https://village.example/fest"
     assert first["item"]["isAccessibleForFree"] is True
-    assert "location" not in first["item"]
+    assert first["item"]["location"]["@type"] == "Place"
+    assert first["item"]["startDate"] == "2026-10-04T10:00:00-05:00"
     assert "isAccessibleForFree" not in payload["itemListElement"][1]["item"]
 
 
@@ -4483,3 +4490,33 @@ def test_llms_txt_lists_the_event_indexes_and_full_text():
     assert "(https://withintenmiles.com/events.json)" in text
     assert "(https://withintenmiles.com/mount-prospect-60056/events.json)" in text
     assert "(https://withintenmiles.com/llms-full.txt)" in text
+
+
+def test_ics_utc_times_are_converted_to_chicago_local():
+    # ROADMAP.md item 238: "...Z" is UTC. 19:00Z on Oct 4 is 2 PM CDT.
+    assert build_digest.parse_event_date_iso("20261004T190000Z") == "2026-10-04T14:00:00-05:00"
+    # A late-evening UTC time can land on the previous local day.
+    assert build_digest.parse_event_date_iso("20261005T030000Z").startswith("2026-10-04T22:00:00")
+    # Naive local values are unchanged.
+    assert build_digest.parse_event_date_iso("20261004T080000") == "2026-10-04T08:00:00"
+
+
+def test_schema_start_date_carries_an_offset_and_never_a_placeholder_midnight():
+    f = build_digest.schema_start_date
+    assert f("2026-10-04T08:00:00") == "2026-10-04T08:00:00-05:00"
+    assert f("2026-11-07T08:00:00") == "2026-11-07T08:00:00-06:00"  # after DST ends
+    assert f("2026-10-04T00:00:00") == "2026-10-04"
+    assert f("2026-10-04T14:00:00-05:00") == "2026-10-04T14:00:00-05:00"
+
+
+def test_schema_location_prefers_the_configured_venue():
+    loc = build_digest.schema_location({"venue": "Mount Prospect Public Library", "town": "Mount Prospect", "state": "IL"})
+    assert loc["name"] == "Mount Prospect Public Library"
+    assert loc["address"]["addressLocality"] == "Mount Prospect"
+    assert "streetAddress" not in loc["address"] and "postalCode" not in loc["address"]
+
+
+def test_event_json_ld_marks_free_events():
+    e = {"title": "Story Time", "url": "https://x/1", "date_iso": "2026-10-04T10:00:00", "tags": ["free"]}
+    graph = json.loads(build_digest.build_event_json_ld([{"events": [e]}]))["@graph"]
+    assert graph[0]["isAccessibleForFree"] is True
