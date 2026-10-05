@@ -2,7 +2,7 @@
   "@context": "https://schema.org",
   "@type": "ItemList",
   "name": "Upcoming events across every region — Within Ten",
-  "dateModified": "2026-10-05T14:11:47+00:00",
+  "dateModified": "2026-10-05T14:19:38+00:00",
   "numberOfItems": 215,
   "itemListElement": [
     {
@@ -1613,9 +1613,9 @@
       "position": 71,
       "item": {
         "@type": "Event",
-        "name": "Using Your Mac: Basics",
+        "name": "ESL Social Hour",
         "startDate": "2026-10-09",
-        "url": "https://withintenmiles.com/arlington-heights-60005/#ev-using-your-mac-basics-2026-10-09",
+        "url": "https://withintenmiles.com/arlington-heights-60005/#ev-esl-social-hour-2026-10-09",
         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
         "location": {
           "@type": "Place",
@@ -1627,7 +1627,7 @@
             "addressRegion": "IL"
           }
         },
-        "sameAs": "https://www.ahml.info/scheduling/reservation/231799"
+        "sameAs": "https://www.ahml.info/scheduling/reservation/198387"
       }
     },
     {
@@ -2597,9 +2597,9 @@
       "position": 114,
       "item": {
         "@type": "Event",
-        "name": "Social Worker in the Library",
+        "name": "Read to Learn (District 214)",
         "startDate": "2026-10-13",
-        "url": "https://withintenmiles.com/arlington-heights-60005/#ev-social-worker-in-the-library-2026-10-13",
+        "url": "https://withintenmiles.com/arlington-heights-60005/#ev-read-to-learn-district-214-2026-10-13",
         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
         "location": {
           "@type": "Place",
@@ -2611,7 +2611,7 @@
             "addressRegion": "IL"
           }
         },
-        "sameAs": "https://www.ahml.info/scheduling/reservation/218147"
+        "sameAs": "https://www.ahml.info/scheduling/reservation/194391"
       }
     },
     {
@@ -4311,9 +4311,9 @@
       "position": 189,
       "item": {
         "@type": "Event",
-        "name": "First-Time Parents' Meetup",
+        "name": "Senior Center: Travelogue",
         "startDate": "2026-10-16",
-        "url": "https://withintenmiles.com/arlington-heights-60005/#ev-first-time-parents-meetup-2026-10-16",
+        "url": "https://withintenmiles.com/arlington-heights-60005/#ev-senior-center-travelogue-2026-10-16",
         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
         "location": {
           "@type": "Place",
@@ -4325,7 +4325,7 @@
             "addressRegion": "IL"
           }
         },
-        "sameAs": "https://www.ahml.info/scheduling/reservation/224295"
+        "sameAs": "https://www.ahml.info/scheduling/reservation/224945"
       }
     },
     {
@@ -4586,9 +4586,9 @@
       "position": 201,
       "item": {
         "@type": "Event",
-        "name": "Beginning ESL",
+        "name": "Family Time",
         "startDate": "2026-10-17",
-        "url": "https://withintenmiles.com/arlington-heights-60005/#ev-beginning-esl-2026-10-17",
+        "url": "https://withintenmiles.com/arlington-heights-60005/#ev-family-time-2026-10-17",
         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
         "location": {
           "@type": "Place",
@@ -4600,7 +4600,7 @@
             "addressRegion": "IL"
           }
         },
-        "sameAs": "https://www.ahml.info/scheduling/reservation/234242"
+        "sameAs": "https://www.ahml.info/scheduling/reservation/224194"
       }
     },
     {
