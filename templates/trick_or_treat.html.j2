@@ -24,18 +24,18 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Trick-or-Treat Hours — Four Towns — Within Ten</title>
-<meta name="description" content="Official trick-or-treat hours for Mount Prospect, Arlington Heights, Des Plaines, and Palatine, in one place.">
+<title>Trick-or-Treat Hours — {{ towns_label }} — Within Ten</title>
+<meta name="description" content="Official trick-or-treat hours for {{ town_names }}, in one place.">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Within Ten">
-<meta property="og:title" content="Trick-or-Treat Hours — Four Towns — Within Ten">
-<meta property="og:description" content="Official trick-or-treat hours for Mount Prospect, Arlington Heights, Des Plaines, and Palatine, in one place.">
+<meta property="og:title" content="Trick-or-Treat Hours — {{ towns_label }} — Within Ten">
+<meta property="og:description" content="Official trick-or-treat hours for {{ town_names }}, in one place.">
 <meta property="og:image" content="{{ og_image_url }}">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Trick-or-Treat Hours — Four Towns — Within Ten">
-<meta name="twitter:description" content="Official trick-or-treat hours for Mount Prospect, Arlington Heights, Des Plaines, and Palatine, in one place.">
+<meta name="twitter:title" content="Trick-or-Treat Hours — {{ towns_label }} — Within Ten">
+<meta name="twitter:description" content="Official trick-or-treat hours for {{ town_names }}, in one place.">
 <meta name="twitter:image" content="{{ og_image_url }}">
 <link rel="canonical" href="{{ canonical_url }}">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%23201e1d'/%3E%3Ctext x='50' y='66' font-family='Arial,sans-serif' font-weight='800' font-size='58' fill='%23ec3013' text-anchor='middle'%3EW%3C/text%3E%3C/svg%3E">
@@ -125,6 +125,9 @@
   .entry .region a { color: var(--ink); font-weight: 700; text-decoration: none; }
   .entry .region a:hover { color: var(--accent-2-text); }
   .entry .hours { font-weight: 700; color: var(--accent-2-text); font-size: 14.5px; text-align: right; }
+  .entry .hours a { color: inherit; text-decoration: none; }
+  .entry .hours a:hover { text-decoration: underline; }
+  .entry .hours-note { display: block; color: var(--muted); font-weight: 400; font-size: 13px; }
   .entry .not-posted { color: var(--muted); font-size: 13.5px; text-align: right; }
   .entry .not-posted a { color: var(--accent-2-text); font-weight: 700; text-decoration: none; }
   .entry .not-posted a:hover { text-decoration: underline; }
@@ -139,8 +142,8 @@
   <div class="hero-inner">
     <a class="back" href="{{ hub_url }}">&larr; All regions</a>
     <span class="kicker">Seasonal</span>
-    <h1>Trick-or-Treat Hours — Four Towns</h1>
-    <div class="sub">Official hours for Mount Prospect, Arlington Heights, Des Plaines, and Palatine, in one place — updated automatically as each village posts them.</div>
+    <h1>Trick-or-Treat Hours — {{ towns_label }}</h1>
+    <div class="sub">Official hours for {{ town_names }}, in one place, each linked to the village page it came from.</div>
   </div>
 </header>
 
@@ -151,14 +154,14 @@
     <div class="entry">
       <span class="region"><a href="{{ entry.region_url }}">{{ entry.region_name }}</a></span>
       {% if entry.hours %}
-      <span class="hours">{{ entry.hours }}</span>
+      <span class="hours"><a href="{{ entry.url }}">{{ entry.hours }}</a>{% if entry.note %}<span class="hours-note">{{ entry.note }}</span>{% endif %}</span>
       {% else %}
       <span class="not-posted">Not yet posted for this year — <a href="{{ entry.url }}">check the village's page</a></span>
       {% endif %}
     </div>
     {% endfor %}
   </div>
-  <p class="note">Villages typically post official trick-or-treat hours in late September or early October. This page rebuilds automatically along with the rest of the site, so real hours appear here as soon as each village posts them — no need to check back on a schedule.</p>
+  <p class="note">Villages typically post official trick-or-treat hours in late September or early October. Hours are added here once a village posts them, and each one links to the village page it came from. A town showing "not yet posted" has no announcement for this year that we could confirm, so check its page directly.</p>
   </main>
 
   <footer>

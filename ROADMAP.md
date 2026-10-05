@@ -12343,7 +12343,7 @@ send went out on schedule (2026-10-01 01:33 UTC, `pre_send_subscriber_count:
      Mount Prospect, Palatine, and Wheeling"**. The single-region
      builders are unchanged. 10 new or updated tests; 574 pass.
 
-218. **Fill in trick-or-treat hours now. The page peaks in 30 days and
+218. 🟡 **PARTLY DONE (3 of 5 towns) — Fill in trick-or-treat hours now. The page peaks in 30 days and
      every town is still `null`.** Item 101's `/trick-or-treat/` page
      shows an honest "not yet posted" state while `hours` is `null`.
      That was the right design in September. On October 1, with the page
@@ -12373,6 +12373,39 @@ send went out on schedule (2026-10-01 01:33 UTC, `pre_send_subscriber_count:
 
      Zero owner time. The build loop fills in config values, and the
      page and Event schema update on the next build.
+
+     🟡 **Shipped 2026-10-05 for three towns; two still open.** Each
+     value was checked against item 219's weekday rule (October 31,
+     2026 is a **Saturday**):
+
+     | Town | Hours shown | Evidence | Status |
+     |---|---|---|---|
+     | **Palatine** | 3:00–7:00 PM, Sat Oct 31 | The Village's news post *"Village Recommended Trick-or-Treating Hours"* (`CivicAlerts.aspx?AID=503`) says *Saturday, October 31, 3–7 p.m.*, a 2026 weekday. Its Main Calendar feed, already a configured source, carries *"Village Trick-or-Treating Hours"* starting **2026-10-31 at 3 p.m.** | ✅ Confirmed for 2026 |
+     | **Arlington Heights** | 3:00–7:00 PM, Sat Oct 31 | `vah.com/news_detail_T13_R32.php`, titled *"…in Arlington Heights 2026"*, recommends 3–7 p.m. on October 31. But its body still mentions a Trunk-or-Treat on *"Saturday, Oct. 25th"* (2025's; 2026's is Saturday, October 24). | Shown with the note *"recommended hours, not an ordinance"*. Probe added. |
+     | **Mount Prospect** | 3:00–8:00 PM, Sat Oct 31 | The Village's standing calendar entry *"Halloween Trick or Treat Hours ~ 3:00pm -8:00pm"* (`Event/10985`). A search summary quoted *"Friday, October 31st"*, a **2025** weekday, so it does not count. | Shown with the note *"standing hours, not yet confirmed for 2026"*. Probe added on the newer entry `Event/22639`. |
+     | Des Plaines | — | No official hours found | "Not yet posted" |
+     | Wheeling | — | Only an aggregator's 2025 hours (3–7 p.m.), not first-party | "Not yet posted" |
+
+     Page and config changes:
+     - A new optional `trick_or_treat.note` field holds a one-line caveat,
+       shown under the hours (and dropped when there are no hours).
+     - Each town's hours now link to the page they came from.
+     - The page title said **"Four Towns"** over five entries, the same
+       hardcoded-count bug item 170 fixed elsewhere. The count and the
+       town names now come from the entries.
+     - The page's closing note no longer claims hours update "automatically
+       as each village posts them". The loop adds them, and the note now
+       says that. The guide cards' copy, which named four towns, is
+       corrected the same way.
+     - The config example's *"Friday, October 31"* is now Saturday.
+     - A new test checks every configured `hours` weekday against 2026.
+       It is a first slice of item 219, limited to this one field.
+
+     **Next:** read the two new probes' answers (Arlington Heights,
+     Mount Prospect) and drop each note once the page is confirmed as
+     2026's. Search again for Des Plaines and Wheeling closer to the
+     date: their village news, and Wheeling's Main Calendar iCal
+     (already configured), which is where Palatine's entry turned up.
 
 #### P2 (new)
 
