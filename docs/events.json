@@ -2,7 +2,7 @@
   "@context": "https://schema.org",
   "@type": "ItemList",
   "name": "Upcoming events across every region — Within Ten",
-  "dateModified": "2026-10-05T14:19:38+00:00",
+  "dateModified": "2026-10-05T14:55:33+00:00",
   "numberOfItems": 215,
   "itemListElement": [
     {
@@ -1613,9 +1613,9 @@
       "position": 71,
       "item": {
         "@type": "Event",
-        "name": "ESL Social Hour",
+        "name": "日本語のストーリータイム | Japanese Language Storytime",
         "startDate": "2026-10-09",
-        "url": "https://withintenmiles.com/arlington-heights-60005/#ev-esl-social-hour-2026-10-09",
+        "url": "https://withintenmiles.com/arlington-heights-60005/#ev-japanese-language-storytime-2026-10-09",
         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
         "location": {
           "@type": "Place",
@@ -1627,7 +1627,7 @@
             "addressRegion": "IL"
           }
         },
-        "sameAs": "https://www.ahml.info/scheduling/reservation/198387"
+        "sameAs": "https://www.ahml.info/scheduling/reservation/227647"
       }
     },
     {
@@ -1868,9 +1868,9 @@
       "position": 82,
       "item": {
         "@type": "Event",
-        "name": "Games & Gab",
+        "name": "Family Time",
         "startDate": "2026-10-10",
-        "url": "https://withintenmiles.com/arlington-heights-60005/#ev-games-gab-2026-10-10",
+        "url": "https://withintenmiles.com/arlington-heights-60005/#ev-family-time-2026-10-10",
         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
         "location": {
           "@type": "Place",
@@ -1882,7 +1882,7 @@
             "addressRegion": "IL"
           }
         },
-        "sameAs": "https://www.ahml.info/scheduling/reservation/221909"
+        "sameAs": "https://www.ahml.info/scheduling/reservation/224193"
       }
     },
     {
