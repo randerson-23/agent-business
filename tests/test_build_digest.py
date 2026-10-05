@@ -454,7 +454,7 @@ def test_prepare_trick_or_treat_honest_when_hours_not_yet_posted():
     # late Sept/early Oct - must come back as None, never a guess.
     region_cfg = {"trick_or_treat": {"url": "https://x/news", "hours": None}}
     result = build_digest.prepare_trick_or_treat(region_cfg)
-    assert result == {"url": "https://x/news", "hours": None}
+    assert result == {"url": "https://x/news", "hours": None, "note": None}
 
 
 def test_prepare_trick_or_treat_passes_through_real_hours_once_posted():
@@ -483,6 +483,47 @@ def test_render_trick_or_treat_page_shows_real_hours_once_posted():
     html = build_digest.render_trick_or_treat_page(entries, datetime.now(timezone.utc))
     assert "3:00-7:00 PM, Saturday, October 31" in html
     assert "Not yet posted" not in html
+
+
+def test_prepare_trick_or_treat_note_needs_hours():
+    # ROADMAP.md item 218: a caveat only makes sense under real hours.
+    with_hours = {"trick_or_treat": {"url": "https://x", "hours": "3:00–8:00 PM", "note": " Standing hours. "}}
+    assert build_digest.prepare_trick_or_treat(with_hours)["note"] == "Standing hours."
+    without = {"trick_or_treat": {"url": "https://x", "hours": None, "note": "Standing hours."}}
+    assert build_digest.prepare_trick_or_treat(without)["note"] is None
+
+
+def test_render_trick_or_treat_page_counts_its_towns_and_shows_notes():
+    # ROADMAP.md item 218: the title said "Four Towns" over five entries.
+    names = ["Mount Prospect", "Arlington Heights", "Des Plaines", "Palatine", "Wheeling"]
+    entries = [
+        {"region_name": n, "region_url": f"https://x/{i}/", "url": f"https://v/{i}", "hours": None, "note": None}
+        for i, n in enumerate(names)
+    ]
+    entries[0].update(hours="3:00–8:00 PM, Saturday, October 31", note="The Village's standing hours.")
+    html = build_digest.render_trick_or_treat_page(entries, datetime.now(timezone.utc))
+    assert "<title>Trick-or-Treat Hours — Five Towns — Within Ten</title>" in html
+    assert "Four" not in html
+    assert "Des Plaines, Palatine, and Wheeling" in html
+    assert "The Village&#39;s standing hours." in html or "The Village's standing hours." in html
+    assert '<a href="https://v/0">3:00–8:00 PM, Saturday, October 31</a>' in html
+
+
+def test_configured_trick_or_treat_hours_name_the_right_weekday():
+    # ROADMAP.md items 218/219: search results kept presenting 2025 dates
+    # as 2026, and the config's own example said "Friday, October 31" for
+    # a year when it is a Saturday. Any "<Weekday>, <Month> <day>" in a
+    # configured hours string must match the year the hours are for.
+    year = 2026
+    pattern = re.compile(r"(Monday|Tuesday|Wednesday|Thursday|Friday|Saturday|Sunday),\s+([A-Z][a-z]+)\s+(\d{1,2})")
+    checked = 0
+    for region_cfg in build_digest.load_regions():
+        tot = region_cfg.get("trick_or_treat") or {}
+        for weekday, month, day in pattern.findall(tot.get("hours") or ""):
+            actual = datetime.strptime(f"{month} {day} {year}", "%B %d %Y").strftime("%A")
+            assert actual == weekday, f"{region_cfg['region']['id']}: {month} {day}, {year} is a {actual}, not {weekday}"
+            checked += 1
+    assert checked >= 1
 
 
 def test_prepare_annual_events_returns_none_when_none_configured():

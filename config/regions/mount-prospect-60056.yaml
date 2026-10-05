@@ -325,11 +325,20 @@ evergreen:
 # the Village actually posts it (typically late Sept/early Oct) - the
 # page shows the honest "not yet posted" state until then, never a
 # guessed time. Set `hours` to the real string once posted (e.g.
-# "3:00–7:00 PM, Friday, October 31") and the page + Event schema pick
-# it up automatically on the next build.
+# "3:00–7:00 PM, Saturday, October 31" - check the weekday against the
+# year, ROADMAP.md item 219) and point `url` at the page it came from.
+# `note` (optional) is a one-line caveat shown under the hours, for
+# hours that are a standing rule rather than this year's announcement.
+#
+# Mount Prospect (ROADMAP.md item 218): the Village's own calendar entry
+# "Halloween Trick or Treat Hours ~ 3:00pm -8:00pm" gives its standing
+# hours. Nothing found yet is dated 2026 - search's "Friday, October 31st"
+# is a 2025 weekday (item 219) - so the note says so until the 2026 post
+# confirms it. config/url_probes.yaml checks the newer calendar entry.
 trick_or_treat:
-  url: "https://www.mountprospect.org/services/news"
-  hours: null
+  url: "https://www.mountprospect.org/Home/Components/Calendar/Event/10985/1044"
+  hours: "3:00–8:00 PM, Saturday, October 31"
+  note: "The Village's standing hours, not yet confirmed for 2026."
 
 # Seasonal/evergreen guides (ROADMAP.md Phase 11 #5) - grouped, linkable
 # pages that don't expire every Monday the way a dated event listing does.
@@ -350,7 +359,7 @@ guides:
         url: "https://mppl.org/"
         tags: ["indoor", "kid_friendly", "free"]
       - title: "Official trick-or-treat hours — all five towns"
-        detail: "Combined trick-or-treat hours for Mount Prospect, Arlington Heights, Des Plaines, and Palatine, updated automatically as each village posts them."
+        detail: "Trick-or-treat hours for Mount Prospect, Arlington Heights, Des Plaines, Palatine, and Wheeling in one place, each linked to the village page it came from."
         url: "https://withintenmiles.com/trick-or-treat/"
         tags: ["kid_friendly", "free"]
 

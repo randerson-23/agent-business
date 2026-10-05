@@ -1022,7 +1022,14 @@ def prepare_trick_or_treat(region_cfg: dict) -> dict | None:
     tot = region_cfg.get("trick_or_treat")
     if not tot or not isinstance(tot, dict) or not tot.get("url"):
         return None
-    return {"url": tot["url"], "hours": (tot.get("hours") or "").strip() or None}
+    hours = (tot.get("hours") or "").strip() or None
+    # ROADMAP.md item 218: a one-line caveat for hours that are a standing
+    # rule rather than this year's announcement. Meaningless without hours.
+    note = (tot.get("note") or "").strip() or None if hours else None
+    return {"url": tot["url"], "hours": hours, "note": note}
+
+
+_COUNT_WORDS = {2: "Two", 3: "Three", 4: "Four", 5: "Five", 6: "Six", 7: "Seven", 8: "Eight", 9: "Nine", 10: "Ten"}
 
 
 def render_trick_or_treat_page(entries: list[dict], now: datetime, analytics: dict | None = None) -> str:
@@ -1036,8 +1043,13 @@ def render_trick_or_treat_page(entries: list[dict], now: datetime, analytics: di
     """
     env = get_template_env()
     template = env.get_template("trick_or_treat.html.j2")
+    # ROADMAP.md item 218: the title said "Four Towns" over five entries -
+    # same hardcoded-count bug item 170 fixed elsewhere.
+    count = len(entries)
     return template.render(
         entries=entries,
+        towns_label=f"{_COUNT_WORDS.get(count, str(count))} Towns" if count != 1 else "One Town",
+        town_names=_join_names([e["region_name"] for e in entries]),
         hub_url=SITE_BASE_URL,
         canonical_url=SITE_BASE_URL + "trick-or-treat/",
         generated_at=now.strftime("%Y-%m-%d %H:%M UTC"),

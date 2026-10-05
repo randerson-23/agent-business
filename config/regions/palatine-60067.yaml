@@ -203,9 +203,15 @@ evergreen:
 
 # Structured trick-or-treat data (ROADMAP.md Phase 11 #101) - see the
 # Mount Prospect config for the rationale.
+#
+# Palatine (ROADMAP.md item 218): confirmed for 2026 twice over. The
+# Village's news post "Village Recommended Trick-or-Treating Hours" says
+# Saturday, October 31, 3-7 p.m. (Saturday is right for 2026, not 2025),
+# and its Main Calendar feed carries "Village Trick-or-Treating Hours"
+# starting 2026-10-31 at 3 p.m.
 trick_or_treat:
-  url: "https://www.palatine.il.us/CivicAlerts.aspx"
-  hours: null
+  url: "https://www.palatine.il.us/CivicAlerts.aspx?AID=503"
+  hours: "3:00–7:00 PM, Saturday, October 31"
 
 # Seasonal/evergreen guides (ROADMAP.md Phase 11 #5) - see the Mount
 # Prospect config for the rationale; same civic-source-only approach here.
@@ -223,7 +229,7 @@ guides:
         url: "https://www.palatinelibrary.org/"
         tags: ["indoor", "kid_friendly", "free"]
       - title: "Official trick-or-treat hours — all five towns"
-        detail: "Combined trick-or-treat hours for Mount Prospect, Arlington Heights, Des Plaines, and Palatine, updated automatically as each village posts them."
+        detail: "Trick-or-treat hours for Mount Prospect, Arlington Heights, Des Plaines, Palatine, and Wheeling in one place, each linked to the village page it came from."
         url: "https://withintenmiles.com/trick-or-treat/"
         tags: ["kid_friendly", "free"]
 
