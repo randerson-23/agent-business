@@ -2,20 +2,30 @@
   "@context": "https://schema.org",
   "@type": "ItemList",
   "name": "Upcoming events in Des Plaines — Within Ten",
-  "dateModified": "2026-10-04T14:11:33+00:00",
-  "numberOfItems": 62,
+  "dateModified": "2026-10-05T14:02:38+00:00",
+  "numberOfItems": 64,
   "itemListElement": [
     {
       "@type": "ListItem",
       "position": 1,
       "item": {
         "@type": "Event",
-        "name": "Clase de iPhone iOS 27",
-        "startDate": "2026-10-04T14:00:00+00:00",
-        "url": "https://withintenmiles.com/des-plaines-60016/#ev-clase-de-iphone-ios-27-2026-10-04",
+        "name": "Baby Book Time",
+        "startDate": "2026-10-05T05:00:00-05:00",
+        "url": "https://withintenmiles.com/des-plaines-60016/#ev-baby-book-time-2026-10-05",
         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "sameAs": "https://desplaines.libnet.info/event/17391247",
-        "description": "Sunday, October 04 2026 2:00pm - 3:00pm \n Conoce tu iPhone con consejos para navegar tu celular."
+        "location": {
+          "@type": "Place",
+          "name": "Des Plaines Public Library",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Des Plaines",
+            "addressRegion": "IL"
+          }
+        },
+        "sameAs": "https://desplaines.libnet.info/event/16431776",
+        "description": "Monday, October 05 2026 10:00am - 11:00am \n To register, please contact Irene Tripkos at 847-789-5623. Verbal confirmation from Irene Tripkos is needed in…"
       }
     },
     {
@@ -23,12 +33,22 @@
       "position": 2,
       "item": {
         "@type": "Event",
-        "name": "Baby Book Time",
-        "startDate": "2026-10-05T10:00:00+00:00",
-        "url": "https://withintenmiles.com/des-plaines-60016/#ev-baby-book-time-2026-10-05",
+        "name": "Marko Polo Concert",
+        "startDate": "2026-10-05T11:00:00-05:00",
+        "url": "https://withintenmiles.com/des-plaines-60016/#ev-marko-polo-concert-2026-10-05",
         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "sameAs": "https://desplaines.libnet.info/event/16431776",
-        "description": "Monday, October 05 2026 10:00am - 11:00am \n To register, please contact Irene Tripkos at 847-789-5623. Verbal confirmation from Irene Tripkos is needed in…"
+        "location": {
+          "@type": "Place",
+          "name": "Des Plaines Public Library",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Des Plaines",
+            "addressRegion": "IL"
+          }
+        },
+        "sameAs": "https://desplaines.libnet.info/event/17348915",
+        "description": "Monday, October 05 2026 4:00pm - 5:00pm \n Join us for a fun family-friendly concert from Marko Polo! \nAll ages. Drop-in, space is limited."
       }
     },
     {
@@ -36,12 +56,22 @@
       "position": 3,
       "item": {
         "@type": "Event",
-        "name": "Marko Polo Concert",
-        "startDate": "2026-10-05T16:00:00+00:00",
-        "url": "https://withintenmiles.com/des-plaines-60016/#ev-marko-polo-concert-2026-10-05",
+        "name": "Munch Madness",
+        "startDate": "2026-10-05T11:00:00-05:00",
+        "url": "https://withintenmiles.com/des-plaines-60016/#ev-munch-madness-2026-10-05",
         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "sameAs": "https://desplaines.libnet.info/event/17348915",
-        "description": "Monday, October 05 2026 4:00pm - 5:00pm \n Join us for a fun family-friendly concert from Marko Polo! \nAll ages. Drop-in, space is limited."
+        "location": {
+          "@type": "Place",
+          "name": "Des Plaines Public Library",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Des Plaines",
+            "addressRegion": "IL"
+          }
+        },
+        "sameAs": "https://desplaines.libnet.info/event/17187672",
+        "description": "Monday, October 05 2026 4:00pm - 5:00pm \n Come to this taste-test, you will be surprised by what awaits you.\nAges 9-12."
       }
     },
     {
@@ -49,12 +79,22 @@
       "position": 4,
       "item": {
         "@type": "Event",
-        "name": "Munch Madness",
-        "startDate": "2026-10-05T16:00:00+00:00",
-        "url": "https://withintenmiles.com/des-plaines-60016/#ev-munch-madness-2026-10-05",
+        "name": "Book a Teen Librarian",
+        "startDate": "2026-10-05T12:00:00-05:00",
+        "url": "https://withintenmiles.com/des-plaines-60016/#ev-book-a-teen-librarian-2026-10-05",
         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "sameAs": "https://desplaines.libnet.info/event/17187672",
-        "description": "Monday, October 05 2026 4:00pm - 5:00pm \n Come to this taste-test, you will be surprised by what awaits you.\nAges 9-12."
+        "location": {
+          "@type": "Place",
+          "name": "Des Plaines Public Library",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Des Plaines",
+            "addressRegion": "IL"
+          }
+        },
+        "sameAs": "https://desplaines.libnet.info/event/15509794",
+        "description": "Monday, October 05 2026 5:00pm - 6:00pm \n Want some career, college, or scholarship advice? Need some book recommendations? Maybe sit back, relax, and play…"
       }
     },
     {
@@ -62,12 +102,22 @@
       "position": 5,
       "item": {
         "@type": "Event",
-        "name": "Book a Teen Librarian",
-        "startDate": "2026-10-05T17:00:00+00:00",
-        "url": "https://withintenmiles.com/des-plaines-60016/#ev-book-a-teen-librarian-2026-10-05",
+        "name": "Des Plaines Shambhala Meditation Group",
+        "startDate": "2026-10-05T13:30:00-05:00",
+        "url": "https://withintenmiles.com/des-plaines-60016/#ev-des-plaines-shambhala-meditation-group-2026-10-05",
         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "sameAs": "https://desplaines.libnet.info/event/15509794",
-        "description": "Monday, October 05 2026 5:00pm - 6:00pm \n Want some career, college, or scholarship advice? Need some book recommendations? Maybe sit back, relax, and play…"
+        "location": {
+          "@type": "Place",
+          "name": "Des Plaines Public Library",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Des Plaines",
+            "addressRegion": "IL"
+          }
+        },
+        "sameAs": "https://desplaines.libnet.info/event/17253015",
+        "description": "Monday, October 05 2026 6:30pm - 8:30pm \n For more information, please call 773-743-8147"
       }
     },
     {
@@ -75,12 +125,22 @@
       "position": 6,
       "item": {
         "@type": "Event",
-        "name": "Des Plaines Shambhala Meditation Group",
-        "startDate": "2026-10-05T18:30:00+00:00",
-        "url": "https://withintenmiles.com/des-plaines-60016/#ev-des-plaines-shambhala-meditation-group-2026-10-05",
+        "name": "Reading/Literacy Class",
+        "startDate": "2026-10-06T04:15:00-05:00",
+        "url": "https://withintenmiles.com/des-plaines-60016/#ev-reading-literacy-class-2026-10-06",
         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "sameAs": "https://desplaines.libnet.info/event/17253015",
-        "description": "Monday, October 05 2026 6:30pm - 8:30pm \n For more information, please call 773-743-8147"
+        "location": {
+          "@type": "Place",
+          "name": "Des Plaines Public Library",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Des Plaines",
+            "addressRegion": "IL"
+          }
+        },
+        "sameAs": "https://desplaines.libnet.info/event/15801722",
+        "description": "Tuesday, October 06 2026 9:15am - 12:15pm \n For more information, please contact Oakton College at 847-635-1426"
       }
     },
     {
@@ -88,12 +148,22 @@
       "position": 7,
       "item": {
         "@type": "Event",
-        "name": "Reading/Literacy Class",
-        "startDate": "2026-10-06T09:15:00+00:00",
-        "url": "https://withintenmiles.com/des-plaines-60016/#ev-reading-literacy-class-2026-10-06",
+        "name": "ESL (English as a Second Language) Class - Oakton College",
+        "startDate": "2026-10-06T04:15:00-05:00",
+        "url": "https://withintenmiles.com/des-plaines-60016/#ev-esl-english-as-a-second-language-class-oakton-college-2026-10-06",
         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "sameAs": "https://desplaines.libnet.info/event/15801722",
-        "description": "Tuesday, October 06 2026 9:15am - 12:15pm \n For more information, please contact Oakton College at 847-635-1426"
+        "location": {
+          "@type": "Place",
+          "name": "Des Plaines Public Library",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Des Plaines",
+            "addressRegion": "IL"
+          }
+        },
+        "sameAs": "https://desplaines.libnet.info/event/15803231",
+        "description": "Tuesday, October 06 2026 9:15am - 12:15pm \n ESL (English as a Second Language) Class - Oakton College\n\n Teaches listening, speaking, reading, writing, and…"
       }
     },
     {
@@ -101,12 +171,22 @@
       "position": 8,
       "item": {
         "@type": "Event",
-        "name": "ESL (English as a Second Language) Class - Oakton College",
-        "startDate": "2026-10-06T09:15:00+00:00",
-        "url": "https://withintenmiles.com/des-plaines-60016/#ev-esl-english-as-a-second-language-class-oakton-college-2026-10-06",
+        "name": "Toddler Time",
+        "startDate": "2026-10-06T05:00:00-05:00",
+        "url": "https://withintenmiles.com/des-plaines-60016/#ev-toddler-time-2026-10-06",
         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "sameAs": "https://desplaines.libnet.info/event/15803231",
-        "description": "Tuesday, October 06 2026 9:15am - 12:15pm \n ESL (English as a Second Language) Class - Oakton College\n\n Teaches listening, speaking, reading, writing, and…"
+        "location": {
+          "@type": "Place",
+          "name": "Des Plaines Public Library",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Des Plaines",
+            "addressRegion": "IL"
+          }
+        },
+        "sameAs": "https://desplaines.libnet.info/event/17001893",
+        "description": "Tuesday, October 06 2026 10:00am - 10:30am \n Ages 18-36 months. Drop-in at the Poet Tree Corner! Enjoy stories, songs, rhymes, movement, and more at Toddler…"
       }
     },
     {
@@ -114,12 +194,22 @@
       "position": 9,
       "item": {
         "@type": "Event",
-        "name": "Toddler Time",
-        "startDate": "2026-10-06T10:00:00+00:00",
-        "url": "https://withintenmiles.com/des-plaines-60016/#ev-toddler-time-2026-10-06",
+        "name": "Spooky Stickers - Learn to Make Stickers on the Cricut!",
+        "startDate": "2026-10-06T13:30:00-05:00",
+        "url": "https://withintenmiles.com/des-plaines-60016/#ev-spooky-stickers-learn-to-make-stickers-on-the-cricut-2026-10-06",
         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "sameAs": "https://desplaines.libnet.info/event/17001893",
-        "description": "Tuesday, October 06 2026 10:00am - 10:30am \n Ages 18-36 months. Drop-in at the Poet Tree Corner! Enjoy stories, songs, rhymes, movement, and more at Toddler…"
+        "location": {
+          "@type": "Place",
+          "name": "Des Plaines Public Library",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Des Plaines",
+            "addressRegion": "IL"
+          }
+        },
+        "sameAs": "https://desplaines.libnet.info/event/16752190",
+        "description": "Tuesday, October 06 2026 6:30pm - 8:00pm \n Learn how to make custom stickers using the Canvas's Cricut machine, just in time for Halloween!"
       }
     },
     {
@@ -127,12 +217,22 @@
       "position": 10,
       "item": {
         "@type": "Event",
-        "name": "Spooky Stickers - Learn to Make Stickers on the Cricut!",
-        "startDate": "2026-10-06T18:30:00+00:00",
-        "url": "https://withintenmiles.com/des-plaines-60016/#ev-spooky-stickers-learn-to-make-stickers-on-the-cricut-2026-10-06",
+        "name": "Medicare 101",
+        "startDate": "2026-10-06T14:00:00-05:00",
+        "url": "https://withintenmiles.com/des-plaines-60016/#ev-medicare-101-2026-10-06",
         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "sameAs": "https://desplaines.libnet.info/event/16752190",
-        "description": "Tuesday, October 06 2026 6:30pm - 8:00pm \n Learn how to make custom stickers using the Canvas's Cricut machine, just in time for Halloween!"
+        "location": {
+          "@type": "Place",
+          "name": "Des Plaines Public Library",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Des Plaines",
+            "addressRegion": "IL"
+          }
+        },
+        "sameAs": "https://desplaines.libnet.info/event/16814039",
+        "description": "Tuesday, October 06 2026 7:00pm - 8:30pm \n What Medicare covers, what it doesn't, and your potential out-of-pocket exposure."
       }
     },
     {
@@ -140,12 +240,22 @@
       "position": 11,
       "item": {
         "@type": "Event",
-        "name": "Medicare 101",
-        "startDate": "2026-10-06T19:00:00+00:00",
-        "url": "https://withintenmiles.com/des-plaines-60016/#ev-medicare-101-2026-10-06",
+        "name": "Des Plaines Lunkerbusters Fishing Club",
+        "startDate": "2026-10-06T14:00:00-05:00",
+        "url": "https://withintenmiles.com/des-plaines-60016/#ev-des-plaines-lunkerbusters-fishing-club-2026-10-06",
         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "sameAs": "https://desplaines.libnet.info/event/16814039",
-        "description": "Tuesday, October 06 2026 7:00pm - 8:30pm \n What Medicare covers, what it doesn't, and your potential out-of-pocket exposure."
+        "location": {
+          "@type": "Place",
+          "name": "Des Plaines Public Library",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Des Plaines",
+            "addressRegion": "IL"
+          }
+        },
+        "sameAs": "https://desplaines.libnet.info/event/17520079",
+        "description": "Tuesday, October 06 2026 7:00pm - 8:45pm \n Stan Z. 847-824-6315"
       }
     },
     {
@@ -153,12 +263,22 @@
       "position": 12,
       "item": {
         "@type": "Event",
-        "name": "Des Plaines Lunkerbusters Fishing Club",
-        "startDate": "2026-10-06T19:00:00+00:00",
-        "url": "https://withintenmiles.com/des-plaines-60016/#ev-des-plaines-lunkerbusters-fishing-club-2026-10-06",
+        "name": "Baby Book Time",
+        "startDate": "2026-10-07T05:00:00-05:00",
+        "url": "https://withintenmiles.com/des-plaines-60016/#ev-baby-book-time-2026-10-07",
         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "sameAs": "https://desplaines.libnet.info/event/17520079",
-        "description": "Tuesday, October 06 2026 7:00pm - 8:45pm \n Stan Z. 847-824-6315"
+        "location": {
+          "@type": "Place",
+          "name": "Des Plaines Public Library",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Des Plaines",
+            "addressRegion": "IL"
+          }
+        },
+        "sameAs": "https://desplaines.libnet.info/event/16431777",
+        "description": "Wednesday, October 07 2026 10:00am - 11:00am \n To register, please contact Irene Tripkos at 847-789-5623. Verbal confirmation from Irene Tripkos is needed in…"
       }
     },
     {
@@ -166,12 +286,22 @@
       "position": 13,
       "item": {
         "@type": "Event",
-        "name": "Baby Book Time",
-        "startDate": "2026-10-07T10:00:00+00:00",
-        "url": "https://withintenmiles.com/des-plaines-60016/#ev-baby-book-time-2026-10-07",
+        "name": "Preschool Storytime",
+        "startDate": "2026-10-07T08:30:00-05:00",
+        "url": "https://withintenmiles.com/des-plaines-60016/#ev-preschool-storytime-2026-10-07",
         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "sameAs": "https://desplaines.libnet.info/event/16431777",
-        "description": "Wednesday, October 07 2026 10:00am - 11:00am \n To register, please contact Irene Tripkos at 847-789-5623. Verbal confirmation from Irene Tripkos is needed in…"
+        "location": {
+          "@type": "Place",
+          "name": "Des Plaines Public Library",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Des Plaines",
+            "addressRegion": "IL"
+          }
+        },
+        "sameAs": "https://desplaines.libnet.info/event/17004186",
+        "description": "Wednesday, October 07 2026 1:30pm - 2:00pm \n Ages 3-5, but all are welcome. Storytime is a fun and play-filled way to foster a lifelong love of reading and…"
       }
     },
     {
@@ -179,12 +309,22 @@
       "position": 14,
       "item": {
         "@type": "Event",
-        "name": "Preschool Storytime",
-        "startDate": "2026-10-07T13:30:00+00:00",
-        "url": "https://withintenmiles.com/des-plaines-60016/#ev-preschool-storytime-2026-10-07",
+        "name": "Family Storytime",
+        "startDate": "2026-10-07T14:00:00-05:00",
+        "url": "https://withintenmiles.com/des-plaines-60016/#ev-family-storytime-2026-10-07",
         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "sameAs": "https://desplaines.libnet.info/event/17004186",
-        "description": "Wednesday, October 07 2026 1:30pm - 2:00pm \n Ages 3-5, but all are welcome. Storytime is a fun and play-filled way to foster a lifelong love of reading and…"
+        "location": {
+          "@type": "Place",
+          "name": "Des Plaines Public Library",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Des Plaines",
+            "addressRegion": "IL"
+          }
+        },
+        "sameAs": "https://desplaines.libnet.info/event/17004253",
+        "description": "Wednesday, October 07 2026 7:00pm - 7:30pm \n Best for families with children ages 2-7, but all are welcome. See full description for details. Registration…"
       }
     },
     {
@@ -192,12 +332,22 @@
       "position": 15,
       "item": {
         "@type": "Event",
-        "name": "Family Storytime",
-        "startDate": "2026-10-07T19:00:00+00:00",
-        "url": "https://withintenmiles.com/des-plaines-60016/#ev-family-storytime-2026-10-07",
+        "name": "Reading/Literacy Class",
+        "startDate": "2026-10-08T04:15:00-05:00",
+        "url": "https://withintenmiles.com/des-plaines-60016/#ev-reading-literacy-class-2026-10-08",
         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "sameAs": "https://desplaines.libnet.info/event/17004253",
-        "description": "Wednesday, October 07 2026 7:00pm - 7:30pm \n Best for families with children ages 2-7, but all are welcome. See full description for details. Registration…"
+        "location": {
+          "@type": "Place",
+          "name": "Des Plaines Public Library",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Des Plaines",
+            "addressRegion": "IL"
+          }
+        },
+        "sameAs": "https://desplaines.libnet.info/event/15801723",
+        "description": "Thursday, October 08 2026 9:15am - 12:15pm \n For more information, please contact Oakton College at 847-635-1426"
       }
     },
     {
@@ -205,12 +355,22 @@
       "position": 16,
       "item": {
         "@type": "Event",
-        "name": "Reading/Literacy Class",
-        "startDate": "2026-10-08T09:15:00+00:00",
-        "url": "https://withintenmiles.com/des-plaines-60016/#ev-reading-literacy-class-2026-10-08",
+        "name": "ESL (English as a Second Language) Class - Oakton College",
+        "startDate": "2026-10-08T04:15:00-05:00",
+        "url": "https://withintenmiles.com/des-plaines-60016/#ev-esl-english-as-a-second-language-class-oakton-college-2026-10-08",
         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "sameAs": "https://desplaines.libnet.info/event/15801723",
-        "description": "Thursday, October 08 2026 9:15am - 12:15pm \n For more information, please contact Oakton College at 847-635-1426"
+        "location": {
+          "@type": "Place",
+          "name": "Des Plaines Public Library",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Des Plaines",
+            "addressRegion": "IL"
+          }
+        },
+        "sameAs": "https://desplaines.libnet.info/event/15803232",
+        "description": "Thursday, October 08 2026 9:15am - 12:15pm \n ESL (English as a Second Language) Class - Oakton College\n\n Teaches listening, speaking, reading, writing, and…"
       }
     },
     {
@@ -218,12 +378,22 @@
       "position": 17,
       "item": {
         "@type": "Event",
-        "name": "ESL (English as a Second Language) Class - Oakton College",
-        "startDate": "2026-10-08T09:15:00+00:00",
-        "url": "https://withintenmiles.com/des-plaines-60016/#ev-esl-english-as-a-second-language-class-oakton-college-2026-10-08",
+        "name": "Medicare Supplement Insurance Buyers' Guide",
+        "startDate": "2026-10-08T05:00:00-05:00",
+        "url": "https://withintenmiles.com/des-plaines-60016/#ev-medicare-supplement-insurance-buyers-guide-2026-10-08",
         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "sameAs": "https://desplaines.libnet.info/event/15803232",
-        "description": "Thursday, October 08 2026 9:15am - 12:15pm \n ESL (English as a Second Language) Class - Oakton College\n\n Teaches listening, speaking, reading, writing, and…"
+        "location": {
+          "@type": "Place",
+          "name": "Des Plaines Public Library",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Des Plaines",
+            "addressRegion": "IL"
+          }
+        },
+        "sameAs": "https://desplaines.libnet.info/event/16460665",
+        "description": "Thursday, October 08 2026 10:00am - 11:00am \n TBA"
       }
     },
     {
@@ -231,12 +401,22 @@
       "position": 18,
       "item": {
         "@type": "Event",
-        "name": "Medicare Supplement Insurance Buyers' Guide",
-        "startDate": "2026-10-08T10:00:00+00:00",
-        "url": "https://withintenmiles.com/des-plaines-60016/#ev-medicare-supplement-insurance-buyers-guide-2026-10-08",
+        "name": "Toddler Time",
+        "startDate": "2026-10-08T05:00:00-05:00",
+        "url": "https://withintenmiles.com/des-plaines-60016/#ev-toddler-time-2026-10-08",
         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "sameAs": "https://desplaines.libnet.info/event/16460665",
-        "description": "Thursday, October 08 2026 10:00am - 11:00am \n TBA"
+        "location": {
+          "@type": "Place",
+          "name": "Des Plaines Public Library",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Des Plaines",
+            "addressRegion": "IL"
+          }
+        },
+        "sameAs": "https://desplaines.libnet.info/event/17001894",
+        "description": "Thursday, October 08 2026 10:00am - 10:30am \n Ages 18-36 months. Drop-in at the Poet Tree Corner! Enjoy stories, songs, rhymes, movement, and more at Toddler…"
       }
     },
     {
@@ -244,12 +424,22 @@
       "position": 19,
       "item": {
         "@type": "Event",
-        "name": "Toddler Time",
-        "startDate": "2026-10-08T10:00:00+00:00",
-        "url": "https://withintenmiles.com/des-plaines-60016/#ev-toddler-time-2026-10-08",
+        "name": "Foodies Unite!",
+        "startDate": "2026-10-08T09:00:00-05:00",
+        "url": "https://withintenmiles.com/des-plaines-60016/#ev-foodies-unite-2026-10-08",
         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "sameAs": "https://desplaines.libnet.info/event/17001894",
-        "description": "Thursday, October 08 2026 10:00am - 10:30am \n Ages 18-36 months. Drop-in at the Poet Tree Corner! Enjoy stories, songs, rhymes, movement, and more at Toddler…"
+        "location": {
+          "@type": "Place",
+          "name": "Des Plaines Public Library",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Des Plaines",
+            "addressRegion": "IL"
+          }
+        },
+        "sameAs": "https://desplaines.libnet.info/event/17139086",
+        "description": "Thursday, October 08 2026 2:00pm - 3:00pm \n Pick up the special ingredient and join the program to share your cooking experience."
       }
     },
     {
@@ -257,12 +447,22 @@
       "position": 20,
       "item": {
         "@type": "Event",
-        "name": "Foodies Unite!",
-        "startDate": "2026-10-08T14:00:00+00:00",
-        "url": "https://withintenmiles.com/des-plaines-60016/#ev-foodies-unite-2026-10-08",
+        "name": "Mexican Candy Taste Test for Teens",
+        "startDate": "2026-10-08T11:00:00-05:00",
+        "url": "https://withintenmiles.com/des-plaines-60016/#ev-mexican-candy-taste-test-for-teens-2026-10-08",
         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "sameAs": "https://desplaines.libnet.info/event/17139086",
-        "description": "Thursday, October 08 2026 2:00pm - 3:00pm \n Pick up the special ingredient and join the program to share your cooking experience."
+        "location": {
+          "@type": "Place",
+          "name": "Des Plaines Public Library",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Des Plaines",
+            "addressRegion": "IL"
+          }
+        },
+        "sameAs": "https://desplaines.libnet.info/event/16341260",
+        "description": "Thursday, October 08 2026 4:00pm - 5:00pm \n Join us to taste different types of Mexican candy!"
       }
     },
     {
@@ -270,12 +470,22 @@
       "position": 21,
       "item": {
         "@type": "Event",
-        "name": "Mexican Candy Taste Test for Teens",
-        "startDate": "2026-10-08T16:00:00+00:00",
-        "url": "https://withintenmiles.com/des-plaines-60016/#ev-mexican-candy-taste-test-for-teens-2026-10-08",
+        "name": "Book a Teen Librarian",
+        "startDate": "2026-10-08T12:00:00-05:00",
+        "url": "https://withintenmiles.com/des-plaines-60016/#ev-book-a-teen-librarian-2026-10-08",
         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "sameAs": "https://desplaines.libnet.info/event/16341260",
-        "description": "Thursday, October 08 2026 4:00pm - 5:00pm \n Join us to taste different types of Mexican candy!"
+        "location": {
+          "@type": "Place",
+          "name": "Des Plaines Public Library",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Des Plaines",
+            "addressRegion": "IL"
+          }
+        },
+        "sameAs": "https://desplaines.libnet.info/event/16339445",
+        "description": "Thursday, October 08 2026 5:00pm - 6:00pm \n Come in and get to know your teen librarians!"
       }
     },
     {
@@ -283,12 +493,22 @@
       "position": 22,
       "item": {
         "@type": "Event",
-        "name": "Book a Teen Librarian",
-        "startDate": "2026-10-08T17:00:00+00:00",
-        "url": "https://withintenmiles.com/des-plaines-60016/#ev-book-a-teen-librarian-2026-10-08",
+        "name": "iPhone iOS 27",
+        "startDate": "2026-10-08T13:30:00-05:00",
+        "url": "https://withintenmiles.com/des-plaines-60016/#ev-iphone-ios-27-2026-10-08",
         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "sameAs": "https://desplaines.libnet.info/event/16339445",
-        "description": "Thursday, October 08 2026 5:00pm - 6:00pm \n Come in and get to know your teen librarians!"
+        "location": {
+          "@type": "Place",
+          "name": "Des Plaines Public Library",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Des Plaines",
+            "addressRegion": "IL"
+          }
+        },
+        "sameAs": "https://desplaines.libnet.info/event/17391178",
+        "description": "Thursday, October 08 2026 6:30pm - 7:30pm \n Discover Apples new operating system iOS 27. Get started with your iPhone by exploring helpful tips on iOS 27.…"
       }
     },
     {
@@ -296,12 +516,22 @@
       "position": 23,
       "item": {
         "@type": "Event",
-        "name": "iPhone iOS 27",
-        "startDate": "2026-10-08T18:30:00+00:00",
-        "url": "https://withintenmiles.com/des-plaines-60016/#ev-iphone-ios-27-2026-10-08",
+        "name": "River's Edge Condo Assoc.",
+        "startDate": "2026-10-08T14:00:00-05:00",
+        "url": "https://withintenmiles.com/des-plaines-60016/#ev-river-s-edge-condo-assoc-2026-10-08",
         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "sameAs": "https://desplaines.libnet.info/event/17391178",
-        "description": "Thursday, October 08 2026 6:30pm - 7:30pm \n Discover Apples new operating system iOS 27. Get started with your iPhone by exploring helpful tips on iOS 27.…"
+        "location": {
+          "@type": "Place",
+          "name": "Des Plaines Public Library",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Des Plaines",
+            "addressRegion": "IL"
+          }
+        },
+        "sameAs": "https://desplaines.libnet.info/event/17184069",
+        "description": "Thursday, October 08 2026 7:00pm - 8:45pm \n Lisa- Espire Property Management 847-634-9659"
       }
     },
     {
@@ -309,12 +539,22 @@
       "position": 24,
       "item": {
         "@type": "Event",
-        "name": "River's Edge Condo Assoc.",
-        "startDate": "2026-10-08T19:00:00+00:00",
-        "url": "https://withintenmiles.com/des-plaines-60016/#ev-river-s-edge-condo-assoc-2026-10-08",
+        "name": "Mont Clare Condo Assoc.",
+        "startDate": "2026-10-08T14:00:00-05:00",
+        "url": "https://withintenmiles.com/des-plaines-60016/#ev-mont-clare-condo-assoc-2026-10-08",
         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "sameAs": "https://desplaines.libnet.info/event/17184069",
-        "description": "Thursday, October 08 2026 7:00pm - 8:45pm \n Lisa- Espire Property Management 847-634-9659"
+        "location": {
+          "@type": "Place",
+          "name": "Des Plaines Public Library",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Des Plaines",
+            "addressRegion": "IL"
+          }
+        },
+        "sameAs": "https://desplaines.libnet.info/event/17426723",
+        "description": "Thursday, October 08 2026 7:00pm - 8:45pm \n Jennifer K / American Property Mgmt. 847-985-6464"
       }
     },
     {
@@ -322,12 +562,22 @@
       "position": 25,
       "item": {
         "@type": "Event",
-        "name": "Mont Clare Condo Assoc.",
-        "startDate": "2026-10-08T19:00:00+00:00",
-        "url": "https://withintenmiles.com/des-plaines-60016/#ev-mont-clare-condo-assoc-2026-10-08",
+        "name": "Baby Book Time",
+        "startDate": "2026-10-09T05:00:00-05:00",
+        "url": "https://withintenmiles.com/des-plaines-60016/#ev-baby-book-time-2026-10-09",
         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "sameAs": "https://desplaines.libnet.info/event/17426723",
-        "description": "Thursday, October 08 2026 7:00pm - 8:45pm \n Jennifer K / American Property Mgmt. 847-985-6464"
+        "location": {
+          "@type": "Place",
+          "name": "Des Plaines Public Library",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Des Plaines",
+            "addressRegion": "IL"
+          }
+        },
+        "sameAs": "https://desplaines.libnet.info/event/16431778",
+        "description": "Friday, October 09 2026 10:00am - 11:00am \n To register, please contact Irene Tripkos at 847-789-5623. Verbal confirmation from Irene Tripkos is needed in…"
       }
     },
     {
@@ -335,12 +585,22 @@
       "position": 26,
       "item": {
         "@type": "Event",
-        "name": "Baby Book Time",
-        "startDate": "2026-10-09T10:00:00+00:00",
-        "url": "https://withintenmiles.com/des-plaines-60016/#ev-baby-book-time-2026-10-09",
+        "name": "Ain't Wii Got Fun!",
+        "startDate": "2026-10-09T05:00:00-05:00",
+        "url": "https://withintenmiles.com/des-plaines-60016/#ev-ain-t-wii-got-fun-2026-10-09",
         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "sameAs": "https://desplaines.libnet.info/event/16431778",
-        "description": "Friday, October 09 2026 10:00am - 11:00am \n To register, please contact Irene Tripkos at 847-789-5623. Verbal confirmation from Irene Tripkos is needed in…"
+        "location": {
+          "@type": "Place",
+          "name": "Des Plaines Public Library",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Des Plaines",
+            "addressRegion": "IL"
+          }
+        },
+        "sameAs": "https://desplaines.libnet.info/event/16742527",
+        "description": "Friday, October 09 2026 10:00am - 12:00pm \n Come join us for fun, good company, and bowling on the Wii U in The Commons on the 3rd Floor."
       }
     },
     {
@@ -348,12 +608,22 @@
       "position": 27,
       "item": {
         "@type": "Event",
-        "name": "Ain't Wii Got Fun!",
-        "startDate": "2026-10-09T10:00:00+00:00",
-        "url": "https://withintenmiles.com/des-plaines-60016/#ev-ain-t-wii-got-fun-2026-10-09",
+        "name": "School's Out Drop-in Craft",
+        "startDate": "2026-10-09T05:30:00-05:00",
+        "url": "https://withintenmiles.com/des-plaines-60016/#ev-school-s-out-drop-in-craft-2026-10-09",
         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "sameAs": "https://desplaines.libnet.info/event/16742527",
-        "description": "Friday, October 09 2026 10:00am - 12:00pm \n Come join us for fun, good company, and bowling on the Wii U in The Commons on the 3rd Floor."
+        "location": {
+          "@type": "Place",
+          "name": "Des Plaines Public Library",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Des Plaines",
+            "addressRegion": "IL"
+          }
+        },
+        "sameAs": "https://desplaines.libnet.info/event/17057206",
+        "description": "Friday, October 09 2026 10:30am - 11:30am \n Need something to do on your day off from school? Stop by the Program Room for a fun craft! All ages. No…"
       }
     },
     {
@@ -361,23 +631,20 @@
       "position": 28,
       "item": {
         "@type": "Event",
-        "name": "School's Out Drop-in Craft",
-        "startDate": "2026-10-09T10:30:00+00:00",
-        "url": "https://withintenmiles.com/des-plaines-60016/#ev-school-s-out-drop-in-craft-2026-10-09",
-        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "sameAs": "https://desplaines.libnet.info/event/17057206",
-        "description": "Friday, October 09 2026 10:30am - 11:30am \n Need something to do on your day off from school? Stop by the Program Room for a fun craft! All ages. No…"
-      }
-    },
-    {
-      "@type": "ListItem",
-      "position": 29,
-      "item": {
-        "@type": "Event",
         "name": "Friday Night Films",
-        "startDate": "2026-10-09T18:30:00+00:00",
+        "startDate": "2026-10-09T13:30:00-05:00",
         "url": "https://withintenmiles.com/des-plaines-60016/#ev-friday-night-films-2026-10-09",
         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Des Plaines Public Library",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Des Plaines",
+            "addressRegion": "IL"
+          }
+        },
         "sameAs": "https://desplaines.libnet.info/event/16020296",
         "description": "Friday, October 09 2026 6:30pm - 8:20pm \n A free screening of the independent film If I Had Legs I'd Kick You.",
         "isAccessibleForFree": true
@@ -385,15 +652,48 @@
     },
     {
       "@type": "ListItem",
-      "position": 30,
+      "position": 29,
       "item": {
         "@type": "Event",
         "name": "The Librarians",
-        "startDate": "2026-10-10T13:30:00+00:00",
+        "startDate": "2026-10-10T08:30:00-05:00",
         "url": "https://withintenmiles.com/des-plaines-60016/#ev-the-librarians-2026-10-10",
         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Des Plaines Public Library",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Des Plaines",
+            "addressRegion": "IL"
+          }
+        },
         "sameAs": "https://desplaines.libnet.info/event/17434052",
         "description": "Saturday, October 10 2026 1:30pm - 3:30pm \n A screening of the award winning documentary film The Librarians."
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 30,
+      "item": {
+        "@type": "Event",
+        "name": "Small Claims Court and Arbitration Proceedings",
+        "startDate": "2026-10-10T09:00:00-05:00",
+        "url": "https://withintenmiles.com/des-plaines-60016/#ev-small-claims-court-and-arbitration-proceedings-2026-10-10",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Des Plaines Public Library",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Des Plaines",
+            "addressRegion": "IL"
+          }
+        },
+        "sameAs": "https://desplaines.libnet.info/event/16483424",
+        "description": "Saturday, October 10 2026 2:00pm - 3:00pm \n What to expect in a small claims lawsuit."
       }
     },
     {
@@ -401,12 +701,22 @@
       "position": 31,
       "item": {
         "@type": "Event",
-        "name": "Small Claims Court and Arbitration Proceedings",
-        "startDate": "2026-10-10T14:00:00+00:00",
-        "url": "https://withintenmiles.com/des-plaines-60016/#ev-small-claims-court-and-arbitration-proceedings-2026-10-10",
+        "name": "Book a Teen Librarian",
+        "startDate": "2026-10-12T12:00:00-05:00",
+        "url": "https://withintenmiles.com/des-plaines-60016/#ev-book-a-teen-librarian-2026-10-12",
         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "sameAs": "https://desplaines.libnet.info/event/16483424",
-        "description": "Saturday, October 10 2026 2:00pm - 3:00pm \n What to expect in a small claims lawsuit."
+        "location": {
+          "@type": "Place",
+          "name": "Des Plaines Public Library",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Des Plaines",
+            "addressRegion": "IL"
+          }
+        },
+        "sameAs": "https://desplaines.libnet.info/event/15509795",
+        "description": "Monday, October 12 2026 5:00pm - 6:00pm \n Want some career, college, or scholarship advice? Need some book recommendations? Maybe sit back, relax, and play…"
       }
     },
     {
@@ -414,12 +724,22 @@
       "position": 32,
       "item": {
         "@type": "Event",
-        "name": "Book a Teen Librarian",
-        "startDate": "2026-10-12T17:00:00+00:00",
-        "url": "https://withintenmiles.com/des-plaines-60016/#ev-book-a-teen-librarian-2026-10-12",
+        "name": "Franken-Bully! A Bright Star Theatre Production",
+        "startDate": "2026-10-12T12:00:00-05:00",
+        "url": "https://withintenmiles.com/des-plaines-60016/#ev-franken-bully-a-bright-star-theatre-production-2026-10-12",
         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "sameAs": "https://desplaines.libnet.info/event/15509795",
-        "description": "Monday, October 12 2026 5:00pm - 6:00pm \n Want some career, college, or scholarship advice? Need some book recommendations? Maybe sit back, relax, and play…"
+        "location": {
+          "@type": "Place",
+          "name": "Des Plaines Public Library",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Des Plaines",
+            "addressRegion": "IL"
+          }
+        },
+        "sameAs": "https://desplaines.libnet.info/event/17134025",
+        "description": "Monday, October 12 2026 5:00pm - 6:00pm \n Bright Star Theatre is back for a fun family-friendly performance! All ages. Registration required beginning October…"
       }
     },
     {
@@ -427,12 +747,22 @@
       "position": 33,
       "item": {
         "@type": "Event",
-        "name": "Franken-Bully! A Bright Star Theatre Production",
-        "startDate": "2026-10-12T17:00:00+00:00",
-        "url": "https://withintenmiles.com/des-plaines-60016/#ev-franken-bully-a-bright-star-theatre-production-2026-10-12",
+        "name": "River Pointe Condo Assoc.",
+        "startDate": "2026-10-12T13:30:00-05:00",
+        "url": "https://withintenmiles.com/des-plaines-60016/#ev-river-pointe-condo-assoc-2026-10-12",
         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "sameAs": "https://desplaines.libnet.info/event/17134025",
-        "description": "Monday, October 12 2026 5:00pm - 6:00pm \n Bright Star Theatre is back for a fun family-friendly performance! All ages. Registration required beginning October…"
+        "location": {
+          "@type": "Place",
+          "name": "Des Plaines Public Library",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Des Plaines",
+            "addressRegion": "IL"
+          }
+        },
+        "sameAs": "https://desplaines.libnet.info/event/17157731",
+        "description": "Monday, October 12 2026 6:30pm - 8:30pm \n Donna 847-813-6915"
       }
     },
     {
@@ -440,12 +770,22 @@
       "position": 34,
       "item": {
         "@type": "Event",
-        "name": "River Pointe Condo Assoc.",
-        "startDate": "2026-10-12T18:30:00+00:00",
-        "url": "https://withintenmiles.com/des-plaines-60016/#ev-river-pointe-condo-assoc-2026-10-12",
+        "name": "Reading/Literacy Class",
+        "startDate": "2026-10-13T04:15:00-05:00",
+        "url": "https://withintenmiles.com/des-plaines-60016/#ev-reading-literacy-class-2026-10-13",
         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "sameAs": "https://desplaines.libnet.info/event/17157731",
-        "description": "Monday, October 12 2026 6:30pm - 8:30pm \n Donna 847-813-6915"
+        "location": {
+          "@type": "Place",
+          "name": "Des Plaines Public Library",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Des Plaines",
+            "addressRegion": "IL"
+          }
+        },
+        "sameAs": "https://desplaines.libnet.info/event/15801724",
+        "description": "Tuesday, October 13 2026 9:15am - 12:15pm \n For more information, please contact Oakton College at 847-635-1426"
       }
     },
     {
@@ -453,12 +793,22 @@
       "position": 35,
       "item": {
         "@type": "Event",
-        "name": "Reading/Literacy Class",
-        "startDate": "2026-10-13T09:15:00+00:00",
-        "url": "https://withintenmiles.com/des-plaines-60016/#ev-reading-literacy-class-2026-10-13",
+        "name": "ESL (English as a Second Language) Class - Oakton College",
+        "startDate": "2026-10-13T04:15:00-05:00",
+        "url": "https://withintenmiles.com/des-plaines-60016/#ev-esl-english-as-a-second-language-class-oakton-college-2026-10-13",
         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "sameAs": "https://desplaines.libnet.info/event/15801724",
-        "description": "Tuesday, October 13 2026 9:15am - 12:15pm \n For more information, please contact Oakton College at 847-635-1426"
+        "location": {
+          "@type": "Place",
+          "name": "Des Plaines Public Library",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Des Plaines",
+            "addressRegion": "IL"
+          }
+        },
+        "sameAs": "https://desplaines.libnet.info/event/15803233",
+        "description": "Tuesday, October 13 2026 9:15am - 12:15pm \n ESL (English as a Second Language) Class - Oakton College\n\n Teaches listening, speaking, reading, writing, and…"
       }
     },
     {
@@ -466,12 +816,22 @@
       "position": 36,
       "item": {
         "@type": "Event",
-        "name": "ESL (English as a Second Language) Class - Oakton College",
-        "startDate": "2026-10-13T09:15:00+00:00",
-        "url": "https://withintenmiles.com/des-plaines-60016/#ev-esl-english-as-a-second-language-class-oakton-college-2026-10-13",
+        "name": "Meet with Your Government Representatives",
+        "startDate": "2026-10-13T04:30:00-05:00",
+        "url": "https://withintenmiles.com/des-plaines-60016/#ev-meet-with-your-government-representatives-2026-10-13",
         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "sameAs": "https://desplaines.libnet.info/event/15803233",
-        "description": "Tuesday, October 13 2026 9:15am - 12:15pm \n ESL (English as a Second Language) Class - Oakton College\n\n Teaches listening, speaking, reading, writing, and…"
+        "location": {
+          "@type": "Place",
+          "name": "Des Plaines Public Library",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Des Plaines",
+            "addressRegion": "IL"
+          }
+        },
+        "sameAs": "https://desplaines.libnet.info/event/15202445",
+        "description": "Tuesday, October 13 2026 9:30am - 11:30am \n Come to the 1st floor lobby to meet representatives from federal and state offices."
       }
     },
     {
@@ -479,12 +839,22 @@
       "position": 37,
       "item": {
         "@type": "Event",
-        "name": "Meet with Your Government Representatives",
-        "startDate": "2026-10-13T09:30:00+00:00",
-        "url": "https://withintenmiles.com/des-plaines-60016/#ev-meet-with-your-government-representatives-2026-10-13",
+        "name": "Flu Clinic Sponsored by Senator Laura Murphy",
+        "startDate": "2026-10-13T04:30:00-05:00",
+        "url": "https://withintenmiles.com/des-plaines-60016/#ev-flu-clinic-sponsored-by-senator-laura-murphy-2026-10-13",
         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "sameAs": "https://desplaines.libnet.info/event/15202445",
-        "description": "Tuesday, October 13 2026 9:30am - 11:30am \n Come to the 1st floor lobby to meet representatives from federal and state offices."
+        "location": {
+          "@type": "Place",
+          "name": "Des Plaines Public Library",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Des Plaines",
+            "addressRegion": "IL"
+          }
+        },
+        "sameAs": "https://desplaines.libnet.info/event/16771553",
+        "description": "Tuesday, October 13 2026 9:30am - 12:00pm \n Senator Laura Murphy Office 847-718-1110"
       }
     },
     {
@@ -492,12 +862,22 @@
       "position": 38,
       "item": {
         "@type": "Event",
-        "name": "Flu Clinic Sponsored by Senator Laura Murphy",
-        "startDate": "2026-10-13T09:30:00+00:00",
-        "url": "https://withintenmiles.com/des-plaines-60016/#ev-flu-clinic-sponsored-by-senator-laura-murphy-2026-10-13",
+        "name": "Makerspace Orientations: On-Zoom 2026-2027",
+        "startDate": "2026-10-13T05:00:00-05:00",
+        "url": "https://withintenmiles.com/des-plaines-60016/#ev-makerspace-orientations-on-zoom-2026-2027-2026-10-13",
         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "sameAs": "https://desplaines.libnet.info/event/16771553",
-        "description": "Tuesday, October 13 2026 9:30am - 12:00pm \n Senator Laura Murphy Office 847-718-1110"
+        "location": {
+          "@type": "Place",
+          "name": "Des Plaines Public Library",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Des Plaines",
+            "addressRegion": "IL"
+          }
+        },
+        "sameAs": "https://desplaines.libnet.info/event/15981571",
+        "description": "Tuesday, October 13 2026 10:00am - 11:30am \n Interested in using the machines in the brand new Canvas Makerspace? Des Plaines Public Library cardholders must…"
       }
     },
     {
@@ -505,12 +885,22 @@
       "position": 39,
       "item": {
         "@type": "Event",
-        "name": "Makerspace Orientations: On-Zoom 2026-2027",
-        "startDate": "2026-10-13T10:00:00+00:00",
-        "url": "https://withintenmiles.com/des-plaines-60016/#ev-makerspace-orientations-on-zoom-2026-2027-2026-10-13",
+        "name": "Toddler Time",
+        "startDate": "2026-10-13T05:00:00-05:00",
+        "url": "https://withintenmiles.com/des-plaines-60016/#ev-toddler-time-2026-10-13",
         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "sameAs": "https://desplaines.libnet.info/event/15981571",
-        "description": "Tuesday, October 13 2026 10:00am - 11:30am \n Interested in using the machines in the brand new Canvas Makerspace? Des Plaines Public Library cardholders must…"
+        "location": {
+          "@type": "Place",
+          "name": "Des Plaines Public Library",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Des Plaines",
+            "addressRegion": "IL"
+          }
+        },
+        "sameAs": "https://desplaines.libnet.info/event/17001895",
+        "description": "Tuesday, October 13 2026 10:00am - 10:30am \n Ages 18-36 months. Drop-in at the Poet Tree Corner! Enjoy stories, songs, rhymes, movement, and more at Toddler…"
       }
     },
     {
@@ -518,12 +908,22 @@
       "position": 40,
       "item": {
         "@type": "Event",
-        "name": "Toddler Time",
-        "startDate": "2026-10-13T10:00:00+00:00",
-        "url": "https://withintenmiles.com/des-plaines-60016/#ev-toddler-time-2026-10-13",
+        "name": "Tuesday Morning Book Discussion: Yesteryear by Caro Burke",
+        "startDate": "2026-10-13T05:00:00-05:00",
+        "url": "https://withintenmiles.com/des-plaines-60016/#ev-tuesday-morning-book-discussion-yesteryear-by-caro-burke-2026-10-13",
         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "sameAs": "https://desplaines.libnet.info/event/17001895",
-        "description": "Tuesday, October 13 2026 10:00am - 10:30am \n Ages 18-36 months. Drop-in at the Poet Tree Corner! Enjoy stories, songs, rhymes, movement, and more at Toddler…"
+        "location": {
+          "@type": "Place",
+          "name": "Des Plaines Public Library",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Des Plaines",
+            "addressRegion": "IL"
+          }
+        },
+        "sameAs": "https://desplaines.libnet.info/event/17340902",
+        "description": "Tuesday, October 13 2026 10:00am - 11:00am \n A staff member will lead a book discussion. Books are available at the 3rd floor info desk in the public library…"
       }
     },
     {
@@ -531,12 +931,22 @@
       "position": 41,
       "item": {
         "@type": "Event",
-        "name": "Tuesday Morning Book Discussion: Yesteryear by Caro Burke",
-        "startDate": "2026-10-13T10:00:00+00:00",
-        "url": "https://withintenmiles.com/des-plaines-60016/#ev-tuesday-morning-book-discussion-yesteryear-by-caro-burke-2026-10-13",
+        "name": "Loteria",
+        "startDate": "2026-10-13T11:00:00-05:00",
+        "url": "https://withintenmiles.com/des-plaines-60016/#ev-loteria-2026-10-13",
         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "sameAs": "https://desplaines.libnet.info/event/17340902",
-        "description": "Tuesday, October 13 2026 10:00am - 11:00am \n A staff member will lead a book discussion. Books are available at the 3rd floor info desk in the public library…"
+        "location": {
+          "@type": "Place",
+          "name": "Des Plaines Public Library",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Des Plaines",
+            "addressRegion": "IL"
+          }
+        },
+        "sameAs": "https://desplaines.libnet.info/event/17414201",
+        "description": "Tuesday, October 13 2026 4:00pm - 5:00pm \n Celebrate Hispanic Heritage Month with a game of Lotería and a chance to win a gift card! For teens in grades 7-12."
       }
     },
     {
@@ -544,12 +954,22 @@
       "position": 42,
       "item": {
         "@type": "Event",
-        "name": "Loteria",
-        "startDate": "2026-10-13T16:00:00+00:00",
-        "url": "https://withintenmiles.com/des-plaines-60016/#ev-loteria-2026-10-13",
+        "name": "Tween Dungeons and Dragons",
+        "startDate": "2026-10-13T12:00:00-05:00",
+        "url": "https://withintenmiles.com/des-plaines-60016/#ev-tween-dungeons-and-dragons-2026-10-13",
         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "sameAs": "https://desplaines.libnet.info/event/17414201",
-        "description": "Tuesday, October 13 2026 4:00pm - 5:00pm \n Celebrate Hispanic Heritage Month with a game of Lotería and a chance to win a gift card! For teens in grades 7-12."
+        "location": {
+          "@type": "Place",
+          "name": "Des Plaines Public Library",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Des Plaines",
+            "addressRegion": "IL"
+          }
+        },
+        "sameAs": "https://desplaines.libnet.info/event/17120062",
+        "description": "Tuesday, October 13 2026 5:00pm - 6:30pm \n Ever wanted to try out Dungeons and Dragons? Now's your chance! Come to the library to learn how to play and have…"
       }
     },
     {
@@ -557,12 +977,22 @@
       "position": 43,
       "item": {
         "@type": "Event",
-        "name": "Tween Dungeons and Dragons",
-        "startDate": "2026-10-13T17:00:00+00:00",
-        "url": "https://withintenmiles.com/des-plaines-60016/#ev-tween-dungeons-and-dragons-2026-10-13",
+        "name": "Tech in the Forum",
+        "startDate": "2026-10-13T12:30:00-05:00",
+        "url": "https://withintenmiles.com/des-plaines-60016/#ev-tech-in-the-forum-2026-10-13",
         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "sameAs": "https://desplaines.libnet.info/event/17120062",
-        "description": "Tuesday, October 13 2026 5:00pm - 6:30pm \n Ever wanted to try out Dungeons and Dragons? Now's your chance! Come to the library to learn how to play and have…"
+        "location": {
+          "@type": "Place",
+          "name": "Des Plaines Public Library",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Des Plaines",
+            "addressRegion": "IL"
+          }
+        },
+        "sameAs": "https://desplaines.libnet.info/event/17391180",
+        "description": "Tuesday, October 13 2026 5:30pm - 7:30pm \n Do you have a question about technology or how to use the library's services? Assistance is provided on a…"
       }
     },
     {
@@ -570,12 +1000,22 @@
       "position": 44,
       "item": {
         "@type": "Event",
-        "name": "Tech in the Forum",
-        "startDate": "2026-10-13T17:30:00+00:00",
-        "url": "https://withintenmiles.com/des-plaines-60016/#ev-tech-in-the-forum-2026-10-13",
+        "name": "Adult Board Game Night",
+        "startDate": "2026-10-13T13:00:00-05:00",
+        "url": "https://withintenmiles.com/des-plaines-60016/#ev-adult-board-game-night-2026-10-13",
         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "sameAs": "https://desplaines.libnet.info/event/17391180",
-        "description": "Tuesday, October 13 2026 5:30pm - 7:30pm \n Do you have a question about technology or how to use the library's services? Assistance is provided on a…"
+        "location": {
+          "@type": "Place",
+          "name": "Des Plaines Public Library",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Des Plaines",
+            "addressRegion": "IL"
+          }
+        },
+        "sameAs": "https://desplaines.libnet.info/event/17033764",
+        "description": "Tuesday, October 13 2026 6:00pm - 8:00pm \n Meet fellow board gamers! Play our games or bring your own."
       }
     },
     {
@@ -583,12 +1023,22 @@
       "position": 45,
       "item": {
         "@type": "Event",
-        "name": "Adult Board Game Night",
-        "startDate": "2026-10-13T18:00:00+00:00",
-        "url": "https://withintenmiles.com/des-plaines-60016/#ev-adult-board-game-night-2026-10-13",
+        "name": "Baby Book Time",
+        "startDate": "2026-10-14T05:00:00-05:00",
+        "url": "https://withintenmiles.com/des-plaines-60016/#ev-baby-book-time-2026-10-14",
         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "sameAs": "https://desplaines.libnet.info/event/17033764",
-        "description": "Tuesday, October 13 2026 6:00pm - 8:00pm \n Meet fellow board gamers! Play our games or bring your own."
+        "location": {
+          "@type": "Place",
+          "name": "Des Plaines Public Library",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Des Plaines",
+            "addressRegion": "IL"
+          }
+        },
+        "sameAs": "https://desplaines.libnet.info/event/16431779",
+        "description": "Wednesday, October 14 2026 10:00am - 11:00am \n To register, please contact Irene Tripkos at 847-789-5623. Verbal confirmation from Irene Tripkos is needed in…"
       }
     },
     {
@@ -596,12 +1046,22 @@
       "position": 46,
       "item": {
         "@type": "Event",
-        "name": "Baby Book Time",
-        "startDate": "2026-10-14T10:00:00+00:00",
-        "url": "https://withintenmiles.com/des-plaines-60016/#ev-baby-book-time-2026-10-14",
+        "name": "Meal Planning on a Budget",
+        "startDate": "2026-10-14T06:00:00-05:00",
+        "url": "https://withintenmiles.com/des-plaines-60016/#ev-meal-planning-on-a-budget-2026-10-14",
         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "sameAs": "https://desplaines.libnet.info/event/16431779",
-        "description": "Wednesday, October 14 2026 10:00am - 11:00am \n To register, please contact Irene Tripkos at 847-789-5623. Verbal confirmation from Irene Tripkos is needed in…"
+        "location": {
+          "@type": "Place",
+          "name": "Des Plaines Public Library",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Des Plaines",
+            "addressRegion": "IL"
+          }
+        },
+        "sameAs": "https://desplaines.libnet.info/event/16537414",
+        "description": "Wednesday, October 14 2026 11:00am - 12:00pm \n Learn about affordable diabetes friendly food, grocery shopping tips, and culturally appropriate meals."
       }
     },
     {
@@ -609,12 +1069,22 @@
       "position": 47,
       "item": {
         "@type": "Event",
-        "name": "Meal Planning on a Budget",
-        "startDate": "2026-10-14T11:00:00+00:00",
-        "url": "https://withintenmiles.com/des-plaines-60016/#ev-meal-planning-on-a-budget-2026-10-14",
+        "name": "Preschool Storytime",
+        "startDate": "2026-10-14T08:30:00-05:00",
+        "url": "https://withintenmiles.com/des-plaines-60016/#ev-preschool-storytime-2026-10-14",
         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "sameAs": "https://desplaines.libnet.info/event/16537414",
-        "description": "Wednesday, October 14 2026 11:00am - 12:00pm \n Learn about affordable diabetes friendly food, grocery shopping tips, and culturally appropriate meals."
+        "location": {
+          "@type": "Place",
+          "name": "Des Plaines Public Library",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Des Plaines",
+            "addressRegion": "IL"
+          }
+        },
+        "sameAs": "https://desplaines.libnet.info/event/17004187",
+        "description": "Wednesday, October 14 2026 1:30pm - 2:00pm \n Ages 3-5, but all are welcome. Storytime is a fun and play-filled way to foster a lifelong love of reading and…"
       }
     },
     {
@@ -622,12 +1092,22 @@
       "position": 48,
       "item": {
         "@type": "Event",
-        "name": "Preschool Storytime",
-        "startDate": "2026-10-14T13:30:00+00:00",
-        "url": "https://withintenmiles.com/des-plaines-60016/#ev-preschool-storytime-2026-10-14",
+        "name": "The Queer Canvas: LGBTQIA+ Art Club",
+        "startDate": "2026-10-14T12:00:00-05:00",
+        "url": "https://withintenmiles.com/des-plaines-60016/#ev-the-queer-canvas-lgbtqia-art-club-2026-10-14",
         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "sameAs": "https://desplaines.libnet.info/event/17004187",
-        "description": "Wednesday, October 14 2026 1:30pm - 2:00pm \n Ages 3-5, but all are welcome. Storytime is a fun and play-filled way to foster a lifelong love of reading and…"
+        "location": {
+          "@type": "Place",
+          "name": "Des Plaines Public Library",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Des Plaines",
+            "addressRegion": "IL"
+          }
+        },
+        "sameAs": "https://desplaines.libnet.info/event/15980659",
+        "description": "Wednesday, October 14 2026 5:00pm - 7:00pm \n Looking for a place for LGBTQ+ adults to hang out, create art, and connect? Bring your sketchbook or any art…"
       }
     },
     {
@@ -635,12 +1115,22 @@
       "position": 49,
       "item": {
         "@type": "Event",
-        "name": "The Queer Canvas: LGBTQIA+ Art Club",
-        "startDate": "2026-10-14T17:00:00+00:00",
-        "url": "https://withintenmiles.com/des-plaines-60016/#ev-the-queer-canvas-lgbtqia-art-club-2026-10-14",
+        "name": "Family Storytime",
+        "startDate": "2026-10-14T14:00:00-05:00",
+        "url": "https://withintenmiles.com/des-plaines-60016/#ev-family-storytime-2026-10-14",
         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "sameAs": "https://desplaines.libnet.info/event/15980659",
-        "description": "Wednesday, October 14 2026 5:00pm - 7:00pm \n Looking for a place for LGBTQ+ adults to hang out, create art, and connect? Bring your sketchbook or any art…"
+        "location": {
+          "@type": "Place",
+          "name": "Des Plaines Public Library",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Des Plaines",
+            "addressRegion": "IL"
+          }
+        },
+        "sameAs": "https://desplaines.libnet.info/event/17004254",
+        "description": "Wednesday, October 14 2026 7:00pm - 7:30pm \n Best for families with children ages 2-7, but all are welcome. See full description for details. Registration…"
       }
     },
     {
@@ -648,12 +1138,22 @@
       "position": 50,
       "item": {
         "@type": "Event",
-        "name": "Family Storytime",
-        "startDate": "2026-10-14T19:00:00+00:00",
-        "url": "https://withintenmiles.com/des-plaines-60016/#ev-family-storytime-2026-10-14",
+        "name": "Reading/Literacy Class",
+        "startDate": "2026-10-15T04:15:00-05:00",
+        "url": "https://withintenmiles.com/des-plaines-60016/#ev-reading-literacy-class-2026-10-15",
         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "sameAs": "https://desplaines.libnet.info/event/17004254",
-        "description": "Wednesday, October 14 2026 7:00pm - 7:30pm \n Best for families with children ages 2-7, but all are welcome. See full description for details. Registration…"
+        "location": {
+          "@type": "Place",
+          "name": "Des Plaines Public Library",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Des Plaines",
+            "addressRegion": "IL"
+          }
+        },
+        "sameAs": "https://desplaines.libnet.info/event/15801725",
+        "description": "Thursday, October 15 2026 9:15am - 12:15pm \n For more information, please contact Oakton College at 847-635-1426"
       }
     },
     {
@@ -661,12 +1161,22 @@
       "position": 51,
       "item": {
         "@type": "Event",
-        "name": "Reading/Literacy Class",
-        "startDate": "2026-10-15T09:15:00+00:00",
-        "url": "https://withintenmiles.com/des-plaines-60016/#ev-reading-literacy-class-2026-10-15",
+        "name": "ESL (English as a Second Language) Class - Oakton College",
+        "startDate": "2026-10-15T04:15:00-05:00",
+        "url": "https://withintenmiles.com/des-plaines-60016/#ev-esl-english-as-a-second-language-class-oakton-college-2026-10-15",
         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "sameAs": "https://desplaines.libnet.info/event/15801725",
-        "description": "Thursday, October 15 2026 9:15am - 12:15pm \n For more information, please contact Oakton College at 847-635-1426"
+        "location": {
+          "@type": "Place",
+          "name": "Des Plaines Public Library",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Des Plaines",
+            "addressRegion": "IL"
+          }
+        },
+        "sameAs": "https://desplaines.libnet.info/event/15803234",
+        "description": "Thursday, October 15 2026 9:15am - 12:15pm \n ESL (English as a Second Language) Class - Oakton College\n\n Teaches listening, speaking, reading, writing, and…"
       }
     },
     {
@@ -674,12 +1184,22 @@
       "position": 52,
       "item": {
         "@type": "Event",
-        "name": "ESL (English as a Second Language) Class - Oakton College",
-        "startDate": "2026-10-15T09:15:00+00:00",
-        "url": "https://withintenmiles.com/des-plaines-60016/#ev-esl-english-as-a-second-language-class-oakton-college-2026-10-15",
+        "name": "Toddler Time",
+        "startDate": "2026-10-15T05:00:00-05:00",
+        "url": "https://withintenmiles.com/des-plaines-60016/#ev-toddler-time-2026-10-15",
         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "sameAs": "https://desplaines.libnet.info/event/15803234",
-        "description": "Thursday, October 15 2026 9:15am - 12:15pm \n ESL (English as a Second Language) Class - Oakton College\n\n Teaches listening, speaking, reading, writing, and…"
+        "location": {
+          "@type": "Place",
+          "name": "Des Plaines Public Library",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Des Plaines",
+            "addressRegion": "IL"
+          }
+        },
+        "sameAs": "https://desplaines.libnet.info/event/17001896",
+        "description": "Thursday, October 15 2026 10:00am - 10:30am \n Ages 18-36 months. Drop-in at the Poet Tree Corner! Enjoy stories, songs, rhymes, movement, and more at Toddler…"
       }
     },
     {
@@ -687,12 +1207,22 @@
       "position": 53,
       "item": {
         "@type": "Event",
-        "name": "Toddler Time",
-        "startDate": "2026-10-15T10:00:00+00:00",
-        "url": "https://withintenmiles.com/des-plaines-60016/#ev-toddler-time-2026-10-15",
+        "name": "Happy Notes",
+        "startDate": "2026-10-15T11:00:00-05:00",
+        "url": "https://withintenmiles.com/des-plaines-60016/#ev-happy-notes-2026-10-15",
         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "sameAs": "https://desplaines.libnet.info/event/17001896",
-        "description": "Thursday, October 15 2026 10:00am - 10:30am \n Ages 18-36 months. Drop-in at the Poet Tree Corner! Enjoy stories, songs, rhymes, movement, and more at Toddler…"
+        "location": {
+          "@type": "Place",
+          "name": "Des Plaines Public Library",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Des Plaines",
+            "addressRegion": "IL"
+          }
+        },
+        "sameAs": "https://desplaines.libnet.info/event/17241857",
+        "description": "Thursday, October 15 2026 4:00pm - 5:00pm \n Earn service hours by making uplifting cards for hospitalized kids! Materials will be provided. For teens in…"
       }
     },
     {
@@ -700,12 +1230,22 @@
       "position": 54,
       "item": {
         "@type": "Event",
-        "name": "Happy Notes",
-        "startDate": "2026-10-15T16:00:00+00:00",
-        "url": "https://withintenmiles.com/des-plaines-60016/#ev-happy-notes-2026-10-15",
+        "name": "Book a Teen Librarian",
+        "startDate": "2026-10-15T12:00:00-05:00",
+        "url": "https://withintenmiles.com/des-plaines-60016/#ev-book-a-teen-librarian-2026-10-15",
         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "sameAs": "https://desplaines.libnet.info/event/17241857",
-        "description": "Thursday, October 15 2026 4:00pm - 5:00pm \n Earn service hours by making uplifting cards for hospitalized kids! Materials will be provided. For teens in…"
+        "location": {
+          "@type": "Place",
+          "name": "Des Plaines Public Library",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Des Plaines",
+            "addressRegion": "IL"
+          }
+        },
+        "sameAs": "https://desplaines.libnet.info/event/16339446",
+        "description": "Thursday, October 15 2026 5:00pm - 6:00pm \n Come in and get to know your teen librarians!"
       }
     },
     {
@@ -713,12 +1253,22 @@
       "position": 55,
       "item": {
         "@type": "Event",
-        "name": "Book a Teen Librarian",
-        "startDate": "2026-10-15T17:00:00+00:00",
-        "url": "https://withintenmiles.com/des-plaines-60016/#ev-book-a-teen-librarian-2026-10-15",
+        "name": "MS Excel: Getting Started",
+        "startDate": "2026-10-15T13:30:00-05:00",
+        "url": "https://withintenmiles.com/des-plaines-60016/#ev-ms-excel-getting-started-2026-10-15",
         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "sameAs": "https://desplaines.libnet.info/event/16339446",
-        "description": "Thursday, October 15 2026 5:00pm - 6:00pm \n Come in and get to know your teen librarians!"
+        "location": {
+          "@type": "Place",
+          "name": "Des Plaines Public Library",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Des Plaines",
+            "addressRegion": "IL"
+          }
+        },
+        "sameAs": "https://desplaines.libnet.info/event/17391179",
+        "description": "Thursday, October 15 2026 6:30pm - 7:30pm \n In this session you will be learning a variety of fundamental skills necessary for Excel. The class covers Data…"
       }
     },
     {
@@ -726,12 +1276,22 @@
       "position": 56,
       "item": {
         "@type": "Event",
-        "name": "MS Excel: Getting Started",
-        "startDate": "2026-10-15T18:30:00+00:00",
-        "url": "https://withintenmiles.com/des-plaines-60016/#ev-ms-excel-getting-started-2026-10-15",
+        "name": "Library Board of Trustees Open Meeting",
+        "startDate": "2026-10-15T14:00:00-05:00",
+        "url": "https://withintenmiles.com/des-plaines-60016/#ev-library-board-of-trustees-open-meeting-2026-10-15",
         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "sameAs": "https://desplaines.libnet.info/event/17391179",
-        "description": "Thursday, October 15 2026 6:30pm - 7:30pm \n In this session you will be learning a variety of fundamental skills necessary for Excel. The class covers Data…"
+        "location": {
+          "@type": "Place",
+          "name": "Des Plaines Public Library",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Des Plaines",
+            "addressRegion": "IL"
+          }
+        },
+        "sameAs": "https://desplaines.libnet.info/event/13759882",
+        "description": "Thursday, October 15 2026 7:00pm - 8:00pm \n The Library Board meets on the third Thursday of every month."
       }
     },
     {
@@ -739,12 +1299,22 @@
       "position": 57,
       "item": {
         "@type": "Event",
-        "name": "Library Board of Trustees Open Meeting",
-        "startDate": "2026-10-15T19:00:00+00:00",
-        "url": "https://withintenmiles.com/des-plaines-60016/#ev-library-board-of-trustees-open-meeting-2026-10-15",
+        "name": "Baby Book Time",
+        "startDate": "2026-10-16T05:00:00-05:00",
+        "url": "https://withintenmiles.com/des-plaines-60016/#ev-baby-book-time-2026-10-16",
         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "sameAs": "https://desplaines.libnet.info/event/13759882",
-        "description": "Thursday, October 15 2026 7:00pm - 8:00pm \n The Library Board meets on the third Thursday of every month."
+        "location": {
+          "@type": "Place",
+          "name": "Des Plaines Public Library",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Des Plaines",
+            "addressRegion": "IL"
+          }
+        },
+        "sameAs": "https://desplaines.libnet.info/event/16431780",
+        "description": "Friday, October 16 2026 10:00am - 11:00am \n To register, please contact Irene Tripkos at 847-789-5623. Verbal confirmation from Irene Tripkos is needed in…"
       }
     },
     {
@@ -752,12 +1322,22 @@
       "position": 58,
       "item": {
         "@type": "Event",
-        "name": "Baby Book Time",
-        "startDate": "2026-10-16T10:00:00+00:00",
-        "url": "https://withintenmiles.com/des-plaines-60016/#ev-baby-book-time-2026-10-16",
+        "name": "Indivisible Des Plaines",
+        "startDate": "2026-10-16T14:00:00-05:00",
+        "url": "https://withintenmiles.com/des-plaines-60016/#ev-indivisible-des-plaines-2026-10-16",
         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "sameAs": "https://desplaines.libnet.info/event/16431780",
-        "description": "Friday, October 16 2026 10:00am - 11:00am \n To register, please contact Irene Tripkos at 847-789-5623. Verbal confirmation from Irene Tripkos is needed in…"
+        "location": {
+          "@type": "Place",
+          "name": "Des Plaines Public Library",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Des Plaines",
+            "addressRegion": "IL"
+          }
+        },
+        "sameAs": "https://desplaines.libnet.info/event/17174492",
+        "description": "Friday, October 16 2026 7:00pm - 8:30pm \n Regina - Indivisible\nnwprogressivedems@gmail.com"
       }
     },
     {
@@ -765,12 +1345,22 @@
       "position": 59,
       "item": {
         "@type": "Event",
-        "name": "Indivisible Des Plaines",
-        "startDate": "2026-10-16T19:00:00+00:00",
-        "url": "https://withintenmiles.com/des-plaines-60016/#ev-indivisible-des-plaines-2026-10-16",
+        "name": "Service Hour Drop In",
+        "startDate": "2026-10-16T19:00:00-05:00",
+        "url": "https://withintenmiles.com/des-plaines-60016/#ev-service-hour-drop-in-2026-10-16",
         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "sameAs": "https://desplaines.libnet.info/event/17174492",
-        "description": "Friday, October 16 2026 7:00pm - 8:30pm \n Regina - Indivisible\nnwprogressivedems@gmail.com"
+        "location": {
+          "@type": "Place",
+          "name": "Des Plaines Public Library",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Des Plaines",
+            "addressRegion": "IL"
+          }
+        },
+        "sameAs": "https://desplaines.libnet.info/event/16341087",
+        "description": "Saturday, October 17 2026 12:00am - 11:59pm \n Need some service hours? Join us in The Commons where we will have different service options once a month. For…"
       }
     },
     {
@@ -778,12 +1368,22 @@
       "position": 60,
       "item": {
         "@type": "Event",
-        "name": "Service Hour Drop In",
-        "startDate": "2026-10-17T00:00:00+00:00",
-        "url": "https://withintenmiles.com/des-plaines-60016/#ev-service-hour-drop-in-2026-10-17",
+        "name": "Des Plaines Lions Club Volunteer Hour",
+        "startDate": "2026-10-17T05:00:00-05:00",
+        "url": "https://withintenmiles.com/des-plaines-60016/#ev-des-plaines-lions-club-volunteer-hour-2026-10-17",
         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "sameAs": "https://desplaines.libnet.info/event/16341087",
-        "description": "Saturday, October 17 2026 12:00am - 11:59pm \n Need some service hours? Join us in The Commons where we will have different service options once a month. For…"
+        "location": {
+          "@type": "Place",
+          "name": "Des Plaines Public Library",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Des Plaines",
+            "addressRegion": "IL"
+          }
+        },
+        "sameAs": "https://desplaines.libnet.info/event/17218186",
+        "description": "Saturday, October 17 2026 10:00am - 11:15am \n  DesPlainesLionsClub@gmail.com\nThe Des Plaines Lions Club is hosting a volunteer hour! All are welcome to help…"
       }
     },
     {
@@ -791,12 +1391,22 @@
       "position": 61,
       "item": {
         "@type": "Event",
-        "name": "Des Plaines Lions Club Volunteer Hour",
-        "startDate": "2026-10-17T10:00:00+00:00",
-        "url": "https://withintenmiles.com/des-plaines-60016/#ev-des-plaines-lions-club-volunteer-hour-2026-10-17",
+        "name": "Build a Pinecone Bird Feeder",
+        "startDate": "2026-10-17T09:00:00-05:00",
+        "url": "https://withintenmiles.com/des-plaines-60016/#ev-build-a-pinecone-bird-feeder-2026-10-17",
         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "sameAs": "https://desplaines.libnet.info/event/17218186",
-        "description": "Saturday, October 17 2026 10:00am - 11:15am \n  DesPlainesLionsClub@gmail.com\nThe Des Plaines Lions Club is hosting a volunteer hour! All are welcome to help…"
+        "location": {
+          "@type": "Place",
+          "name": "Des Plaines Public Library",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Des Plaines",
+            "addressRegion": "IL"
+          }
+        },
+        "sameAs": "https://desplaines.libnet.info/event/16864895",
+        "description": "Saturday, October 17 2026 2:00pm - 3:00pm \n Build a Pinecone Birdfeeder \n\nMake a pine cone suet feeder while you listen to Alyse Burman from the Wildbird…"
       }
     },
     {
@@ -804,12 +1414,68 @@
       "position": 62,
       "item": {
         "@type": "Event",
-        "name": "Build a Pinecone Bird Feeder",
-        "startDate": "2026-10-17T14:00:00+00:00",
-        "url": "https://withintenmiles.com/des-plaines-60016/#ev-build-a-pinecone-bird-feeder-2026-10-17",
+        "name": "Wicked Good Writing Contest",
+        "startDate": "2026-10-17T19:00:00-05:00",
+        "url": "https://withintenmiles.com/des-plaines-60016/#ev-wicked-good-writing-contest-2026-10-17",
         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "sameAs": "https://desplaines.libnet.info/event/16864895",
-        "description": "Saturday, October 17 2026 2:00pm - 3:00pm \n Build a Pinecone Birdfeeder \n\nMake a pine cone suet feeder while you listen to Alyse Burman from the Wildbird…"
+        "location": {
+          "@type": "Place",
+          "name": "Des Plaines Public Library",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Des Plaines",
+            "addressRegion": "IL"
+          }
+        },
+        "sameAs": "https://desplaines.libnet.info/event/17138186",
+        "description": "Sunday, October 18 2026 12:00am - 11:59pm \n Enter our 4th annual Wicked Good Writing Contest!\nFor grades K-8."
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 63,
+      "item": {
+        "@type": "Event",
+        "name": "MS Excel: Principantes (Spanish)",
+        "startDate": "2026-10-18T09:00:00-05:00",
+        "url": "https://withintenmiles.com/des-plaines-60016/#ev-ms-excel-principantes-spanish-2026-10-18",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Des Plaines Public Library",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Des Plaines",
+            "addressRegion": "IL"
+          }
+        },
+        "sameAs": "https://desplaines.libnet.info/event/17391232",
+        "description": "Sunday, October 18 2026 2:00pm - 3:00pm \n Empieza con tareas básicas en Excel, como crear hojas de calculo y agregar y editar datos, y familiarizarte con las…"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 64,
+      "item": {
+        "@type": "Event",
+        "name": "Wicked Good Writing Contest",
+        "startDate": "2026-10-18T19:00:00-05:00",
+        "url": "https://withintenmiles.com/des-plaines-60016/#ev-wicked-good-writing-contest-2026-10-18",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Des Plaines Public Library",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Des Plaines",
+            "addressRegion": "IL"
+          }
+        },
+        "sameAs": "https://desplaines.libnet.info/event/17138187",
+        "description": "Monday, October 19 2026 12:00am - 11:59pm \n Enter our 4th annual Wicked Good Writing Contest!\nFor grades K-8."
       }
     }
   ]

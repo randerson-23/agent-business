@@ -2,20 +2,29 @@
   "@context": "https://schema.org",
   "@type": "ItemList",
   "name": "Upcoming events in Palatine — Within Ten",
-  "dateModified": "2026-10-04T14:11:33+00:00",
-  "numberOfItems": 17,
+  "dateModified": "2026-10-05T14:02:38+00:00",
+  "numberOfItems": 16,
   "itemListElement": [
     {
       "@type": "ListItem",
       "position": 1,
       "item": {
         "@type": "Event",
-        "name": "Blessing of the Animals and Pets at St. Philip's Episcopal Church",
-        "startDate": "2026-10-04T16:00:00",
-        "url": "https://withintenmiles.com/palatine-60067/#ev-blessing-of-the-animals-and-pets-at-st-philip-s-episcopal-ch-2026-10-04",
+        "name": "NWSC PTA/PTSA Reflections Kickoff",
+        "startDate": "2026-10-06T18:30:00-05:00",
+        "url": "https://withintenmiles.com/palatine-60067/#ev-nwsc-pta-ptsa-reflections-kickoff-2026-10-06",
         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "sameAs": "https://www.palatine.il.us/common/modules/iCalendar/iCalendar.aspx?feed=calendar&catID=14",
-        "description": "Blessing of the Animals at St. Philip's https://www.palatine.il"
+        "location": {
+          "@type": "Place",
+          "name": "Palatine, IL",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Palatine",
+            "addressRegion": "IL"
+          }
+        },
+        "description": "Open to all D15 Families!Northwest Suburban Council of PTA/PTSA"
       }
     },
     {
@@ -23,11 +32,21 @@
       "position": 2,
       "item": {
         "@type": "Event",
-        "name": "NWSC PTA/PTSA Reflections Kickoff",
-        "startDate": "2026-10-06T18:30:00",
-        "url": "https://withintenmiles.com/palatine-60067/#ev-nwsc-pta-ptsa-reflections-kickoff-2026-10-06",
+        "name": "D15 Job Fair",
+        "startDate": "2026-10-07T10:00:00-05:00",
+        "url": "https://withintenmiles.com/palatine-60067/#ev-d15-job-fair-2026-10-07",
         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "description": "Open to all D15 Families!Northwest Suburban Council of PTA/PTSA"
+        "location": {
+          "@type": "Place",
+          "name": "Palatine, IL",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Palatine",
+            "addressRegion": "IL"
+          }
+        },
+        "description": "Mark your calendar for an upcoming CCSD15 Job Fair!Date: Every"
       }
     },
     {
@@ -35,11 +54,21 @@
       "position": 3,
       "item": {
         "@type": "Event",
-        "name": "D15 Job Fair",
-        "startDate": "2026-10-07T10:00:00",
-        "url": "https://withintenmiles.com/palatine-60067/#ev-d15-job-fair-2026-10-07",
+        "name": "NSSEO - Let's Talk Social Security",
+        "startDate": "2026-10-08T11:30:00-05:00",
+        "url": "https://withintenmiles.com/palatine-60067/#ev-nsseo-let-s-talk-social-security-2026-10-08",
         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "description": "Mark your calendar for an upcoming CCSD15 Job Fair!Date: Every"
+        "location": {
+          "@type": "Place",
+          "name": "Palatine, IL",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Palatine",
+            "addressRegion": "IL"
+          }
+        },
+        "description": "NSSEO - Let's Talk Social SecurityOctober 8, 202611:30 am - 1:"
       }
     },
     {
@@ -47,22 +76,20 @@
       "position": 4,
       "item": {
         "@type": "Event",
-        "name": "NSSEO - Let's Talk Social Security",
-        "startDate": "2026-10-08T11:30:00",
-        "url": "https://withintenmiles.com/palatine-60067/#ev-nsseo-let-s-talk-social-security-2026-10-08",
-        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "description": "NSSEO - Let's Talk Social SecurityOctober 8, 202611:30 am - 1:"
-      }
-    },
-    {
-      "@type": "ListItem",
-      "position": 5,
-      "item": {
-        "@type": "Event",
         "name": "Tales for Tots",
-        "startDate": "2026-10-09T09:30:00",
+        "startDate": "2026-10-09T09:30:00-05:00",
         "url": "https://withintenmiles.com/palatine-60067/#ev-tales-for-tots-2026-10-09",
         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Palatine, IL",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Palatine",
+            "addressRegion": "IL"
+          }
+        },
         "sameAs": "https://www.palatine.il.us/common/modules/iCalendar/iCalendar.aspx?feed=calendar&catID=14",
         "description": "FREE interactive story time for tots and grown-ups https://www.",
         "isAccessibleForFree": true
@@ -70,15 +97,47 @@
     },
     {
       "@type": "ListItem",
-      "position": 6,
+      "position": 5,
       "item": {
         "@type": "Event",
         "name": "Downtown Palatine Grand Re-Opening",
-        "startDate": "2026-10-10T15:00:00",
+        "startDate": "2026-10-10T15:00:00-05:00",
         "url": "https://withintenmiles.com/palatine-60067/#ev-downtown-palatine-grand-re-opening-2026-10-10",
         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Palatine, IL",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Palatine",
+            "addressRegion": "IL"
+          }
+        },
         "sameAs": "https://www.palatine.il.us/common/modules/iCalendar/iCalendar.aspx?feed=calendar&catID=14",
         "description": "The Village is hosting a Grand Re-Opening event for residents a"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 6,
+      "item": {
+        "@type": "Event",
+        "name": "No School | Holiday - Indigenous Peoples’ Day",
+        "startDate": "2026-10-12",
+        "url": "https://withintenmiles.com/palatine-60067/#ev-no-school-holiday-indigenous-peoples-day-2026-10-12",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Palatine, IL",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Palatine",
+            "addressRegion": "IL"
+          }
+        },
+        "description": "2026-27 Official School Calendar (English) | (Spanish)"
       }
     },
     {
@@ -86,11 +145,21 @@
       "position": 7,
       "item": {
         "@type": "Event",
-        "name": "No School | Holiday - Indigenous Peoples’ Day",
-        "startDate": "2026-10-12T00:00:00",
-        "url": "https://withintenmiles.com/palatine-60067/#ev-no-school-holiday-indigenous-peoples-day-2026-10-12",
+        "name": "Holiday Closure - All D211 Buildings Closed",
+        "startDate": "2026-10-12",
+        "url": "https://withintenmiles.com/palatine-60067/#ev-holiday-closure-all-d211-buildings-closed-2026-10-12",
         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "description": "2026-27 Official School Calendar (English) | (Spanish)"
+        "location": {
+          "@type": "Place",
+          "name": "Palatine, IL",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Palatine",
+            "addressRegion": "IL"
+          }
+        },
+        "description": "All District 211 buildings will be closed."
       }
     },
     {
@@ -98,11 +167,21 @@
       "position": 8,
       "item": {
         "@type": "Event",
-        "name": "Holiday Closure - All D211 Buildings Closed",
-        "startDate": "2026-10-12T00:00:00",
-        "url": "https://withintenmiles.com/palatine-60067/#ev-holiday-closure-all-d211-buildings-closed-2026-10-12",
+        "name": "No School | Teacher Plan Day",
+        "startDate": "2026-10-13",
+        "url": "https://withintenmiles.com/palatine-60067/#ev-no-school-teacher-plan-day-2026-10-13",
         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "description": "All District 211 buildings will be closed."
+        "location": {
+          "@type": "Place",
+          "name": "Palatine, IL",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Palatine",
+            "addressRegion": "IL"
+          }
+        },
+        "description": "2026-27 Official School Calendar (English) | (Spanish)"
       }
     },
     {
@@ -110,11 +189,21 @@
       "position": 9,
       "item": {
         "@type": "Event",
-        "name": "No School | Teacher Plan Day",
-        "startDate": "2026-10-13T00:00:00",
-        "url": "https://withintenmiles.com/palatine-60067/#ev-no-school-teacher-plan-day-2026-10-13",
+        "name": "Teacher Institute - No Classes",
+        "startDate": "2026-10-13",
+        "url": "https://withintenmiles.com/palatine-60067/#ev-teacher-institute-no-classes-2026-10-13",
         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "description": "2026-27 Official School Calendar (English) | (Spanish)"
+        "location": {
+          "@type": "Place",
+          "name": "Palatine, IL",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Palatine",
+            "addressRegion": "IL"
+          }
+        },
+        "description": "Teacher Institute. Classes will not be in session on this date"
       }
     },
     {
@@ -122,11 +211,21 @@
       "position": 10,
       "item": {
         "@type": "Event",
-        "name": "Teacher Institute - No Classes",
-        "startDate": "2026-10-13T00:00:00",
-        "url": "https://withintenmiles.com/palatine-60067/#ev-teacher-institute-no-classes-2026-10-13",
+        "name": "D15 Job Fair",
+        "startDate": "2026-10-14T10:00:00-05:00",
+        "url": "https://withintenmiles.com/palatine-60067/#ev-d15-job-fair-2026-10-14",
         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "description": "Teacher Institute. Classes will not be in session on this date"
+        "location": {
+          "@type": "Place",
+          "name": "Palatine, IL",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Palatine",
+            "addressRegion": "IL"
+          }
+        },
+        "description": "Mark your calendar for an upcoming CCSD15 Job Fair!Date: Every"
       }
     },
     {
@@ -134,11 +233,22 @@
       "position": 11,
       "item": {
         "@type": "Event",
-        "name": "D15 Job Fair",
-        "startDate": "2026-10-14T10:00:00",
-        "url": "https://withintenmiles.com/palatine-60067/#ev-d15-job-fair-2026-10-14",
+        "name": "District 1 and 2 Residents' Advisory Meeting Fall 2026",
+        "startDate": "2026-10-14T19:00:00-05:00",
+        "url": "https://withintenmiles.com/palatine-60067/#ev-district-1-and-2-residents-advisory-meeting-fall-2026-2026-10-14",
         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "description": "Mark your calendar for an upcoming CCSD15 Job Fair!Date: Every"
+        "location": {
+          "@type": "Place",
+          "name": "Palatine, IL",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Palatine",
+            "addressRegion": "IL"
+          }
+        },
+        "sameAs": "https://www.palatine.il.us/common/modules/iCalendar/iCalendar.aspx?feed=calendar&catID=14",
+        "description": "https://www.palatine.il.us/calendar.aspx?EID=2177"
       }
     },
     {
@@ -146,12 +256,21 @@
       "position": 12,
       "item": {
         "@type": "Event",
-        "name": "District 1 and 2 Residents' Advisory Meeting Fall 2026",
-        "startDate": "2026-10-14T19:00:00",
-        "url": "https://withintenmiles.com/palatine-60067/#ev-district-1-and-2-residents-advisory-meeting-fall-2026-2026-10-14",
+        "name": "Regular Board of Education Meeting",
+        "startDate": "2026-10-14T19:00:00-05:00",
+        "url": "https://withintenmiles.com/palatine-60067/#ev-regular-board-of-education-meeting-2026-10-14",
         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "sameAs": "https://www.palatine.il.us/common/modules/iCalendar/iCalendar.aspx?feed=calendar&catID=14",
-        "description": "https://www.palatine.il.us/calendar.aspx?EID=2177"
+        "location": {
+          "@type": "Place",
+          "name": "Palatine, IL",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Palatine",
+            "addressRegion": "IL"
+          }
+        },
+        "description": "All Board meeting Notices, Agendas, Attachments, and Minutes"
       }
     },
     {
@@ -159,11 +278,21 @@
       "position": 13,
       "item": {
         "@type": "Event",
-        "name": "Regular Board of Education Meeting",
-        "startDate": "2026-10-14T19:00:00",
-        "url": "https://withintenmiles.com/palatine-60067/#ev-regular-board-of-education-meeting-2026-10-14",
+        "name": "Health Exam Due Date",
+        "startDate": "2026-10-15",
+        "url": "https://withintenmiles.com/palatine-60067/#ev-health-exam-due-date-2026-10-15",
         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "description": "All Board meeting Notices, Agendas, Attachments, and Minutes"
+        "location": {
+          "@type": "Place",
+          "name": "Palatine, IL",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Palatine",
+            "addressRegion": "IL"
+          }
+        },
+        "description": "Required health documentation for the 2026-27 school year is d"
       }
     },
     {
@@ -171,11 +300,21 @@
       "position": 14,
       "item": {
         "@type": "Event",
-        "name": "Health Exam Due Date",
-        "startDate": "2026-10-15T00:00:00",
-        "url": "https://withintenmiles.com/palatine-60067/#ev-health-exam-due-date-2026-10-15",
+        "name": "D211 Board of Education Meeting",
+        "startDate": "2026-10-15T18:00:00-05:00",
+        "url": "https://withintenmiles.com/palatine-60067/#ev-d211-board-of-education-meeting-2026-10-15",
         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "description": "Required health documentation for the 2026-27 school year is d"
+        "location": {
+          "@type": "Place",
+          "name": "Palatine, IL",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Palatine",
+            "addressRegion": "IL"
+          }
+        },
+        "description": "All regular Board of Education meetings are held in the Anne Ko"
       }
     },
     {
@@ -183,11 +322,22 @@
       "position": 15,
       "item": {
         "@type": "Event",
-        "name": "D211 Board of Education Meeting",
-        "startDate": "2026-10-15T18:00:00",
-        "url": "https://withintenmiles.com/palatine-60067/#ev-d211-board-of-education-meeting-2026-10-15",
+        "name": "St. Paul United Church of Christ Fall Rummage Sale",
+        "startDate": "2026-10-17T09:00:00-05:00",
+        "url": "https://withintenmiles.com/palatine-60067/#ev-st-paul-united-church-of-christ-fall-rummage-sale-2026-10-17",
         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "description": "All regular Board of Education meetings are held in the Anne Ko"
+        "location": {
+          "@type": "Place",
+          "name": "Palatine, IL",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Palatine",
+            "addressRegion": "IL"
+          }
+        },
+        "sameAs": "https://www.palatine.il.us/common/modules/iCalendar/iCalendar.aspx?feed=calendar&catID=14",
+        "description": "Fall Rummage Sale and Palatine Food Pantry Drive https://www.pa"
       }
     },
     {
@@ -195,23 +345,20 @@
       "position": 16,
       "item": {
         "@type": "Event",
-        "name": "St. Paul United Church of Christ Fall Rummage Sale",
-        "startDate": "2026-10-17T09:00:00",
-        "url": "https://withintenmiles.com/palatine-60067/#ev-st-paul-united-church-of-christ-fall-rummage-sale-2026-10-17",
-        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "sameAs": "https://www.palatine.il.us/common/modules/iCalendar/iCalendar.aspx?feed=calendar&catID=14",
-        "description": "Fall Rummage Sale and Palatine Food Pantry Drive https://www.pa"
-      }
-    },
-    {
-      "@type": "ListItem",
-      "position": 17,
-      "item": {
-        "@type": "Event",
         "name": "Roper Romp - People Helping People-Palatine",
-        "startDate": "2026-10-17T13:00:00",
+        "startDate": "2026-10-17T13:00:00-05:00",
         "url": "https://withintenmiles.com/palatine-60067/#ev-roper-romp-people-helping-people-palatine-2026-10-17",
         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Palatine, IL",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Palatine",
+            "addressRegion": "IL"
+          }
+        },
         "sameAs": "https://www.palatine.il.us/common/modules/iCalendar/iCalendar.aspx?feed=calendar&catID=14",
         "description": "Fun fundraiser in downtown Palatine to support those in need in"
       }
