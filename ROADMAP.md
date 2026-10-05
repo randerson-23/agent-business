@@ -13203,7 +13203,7 @@ because an agent will read them literally.
 
 #### P1 (new)
 
-238. **Give every Event a `location` and an honest time, in the page
+238. ✅ **DONE — Give every Event a `location` and an honest time, in the page
      JSON-LD and in `events.json`.** Measured on the current build: 0 of
      214 events in `docs/events.json` have a `location`, and the pages'
      own Event JSON-LD carries `"location": null`. Google's Event
@@ -13242,6 +13242,42 @@ because an agent will read them literally.
      into Google's Rich Results Test afterwards. Search Console's
      Enhancements report will also show the Event count once Google
      recrawls.
+
+     ✅ **Shipped 2026-10-05.**
+     - **Times.** The audit's root cause was upstream of the markup.
+       `_try_parse_date` read an ICS `…Z` time as a *naive* value, so
+       `19:00Z` became 7 PM local. That was wrong in the JSON-LD, but
+       also in the `.ics` exports, the Google Calendar links and the date
+       filters (a late-evening UTC event could land on the wrong day).
+       `Z` times are now UTC, and `parse_event_date_iso` converts any
+       zone-aware time to America/Chicago (`LOCAL_TZ`), so every consumer
+       sees local time. For Event markup only, `schema_start_date()`
+       emits ISO 8601 with the Chicago offset (`-05:00`, or `-06:00`
+       after 2026-11-01). A midnight time, which is how the pipeline
+       represents "no time given", becomes a bare date instead of
+       `T00:00:00`.
+     - **Location.** `schema_location()` returns a `Place` named by the
+       source's configured `venue_name`, now set on the five library
+       sources, whose events happen at the library. Otherwise the Place
+       is the town itself (*"Mount Prospect, IL"*). The address is
+       always locality, state and country only: no invented street
+       address, and no ZIP, since a town spans several. Both the page
+       JSON-LD and `events.json` carry it.
+     - **Deliberately not done:** reading the venue from the feed's own
+       ICS `LOCATION`. Item 115 keeps `LOCATION` out of the parser on
+       purpose, because anything parsed is republished publicly
+       (`calendar.ics`, and now `events.json`), and a feed's `LOCATION`
+       can hold text like *"Room 204B, private staff entrance"*. Its guard
+       test caught the attempt. Lifting that needs a deliberate decision
+       with a sanitiser, not a quiet change. This supersedes the seventh
+       pass's "no location at all": town-level is truthful, and Google
+       requires the field.
+     - `isAccessibleForFree` is now set on page JSON-LD as well as in
+       `events.json`, for `free`-tagged events.
+     - Audited a build with this pass's metrics: 0 Events without a
+       `location`, 0 `T00:00:00`, 0 timed values without an offset, in
+       both `events.json` and the page JSON-LD. 4 new tests and 2
+       superseded tests updated; 607 pass.
 
 239. **Two issues, zero opens. Check the spam folder once.** The only
      subscriber is the owner, on Yahoo Mail. Both scheduled sends

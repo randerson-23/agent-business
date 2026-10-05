@@ -83,6 +83,8 @@ sources:
     detail_link_pattern: "scheduling/reservation/\\d+"
     keywords: ["event", "class", "program", "story", "camp", "concert", "workshop", "book"]
     section: "Library Events"
+    # ROADMAP.md item 238: schema.org Event location for this source.
+    venue_name: "Arlington Heights Memorial Library"
     enabled: true
 
   - name: "Arlington Heights Park District — Events"

@@ -105,6 +105,8 @@ sources:
     # weekend events on every recorded build before this.
     url: "https://calendar.dppl.org/feeds?data=eyJmZWVkVHlwZSI6InJzcyIsImZpbHRlcnMiOnsibG9jYXRpb24iOlsiYWxsIl0sImFnZXMiOlsiYWxsIl0sInR5cGVzIjpbImFsbCJdLCJ0YWdzIjpbXSwidGVybSI6IiIsImRheXMiOjMwfX0="
     section: "Library Events"
+    # ROADMAP.md item 238: schema.org Event location for this source.
+    venue_name: "Des Plaines Public Library"
     enabled: true
 
   - name: "Des Plaines Park District — Events"
