@@ -320,6 +320,10 @@ effort. Now that a real name is attached, `OUTREACH_TEMPLATES.md`'s
 - **Cloudflare proxy for AI-bot analytics** (item 232) — measurement
   only; must be paired with explicitly allowing AI crawlers, or
   Cloudflare's 2026-09-15 default blocks them.
+- **Free Event Promo for nonprofit fundraisers** (item 240) — one a
+  month per service club (Lions, Rotary, Kiwanis), to seed the first
+  sponsor transactions and testimonials. A pricing exception, so it is
+  Ryan's call.
 - **Peachjar school e-flyers** (item 211, fiftieth pass) — flyers
   delivered to every parent's inbox in a school district, at $25 per
   school, after district approval. The audience fit is close to perfect,
@@ -327,6 +331,11 @@ effort. Now that a real name is attached, `OUTREACH_TEMPLATES.md`'s
   confirmed), it is a spend decision, and it is a list spike that
   belongs after the signup and delivery path is proven. It sits in the
   same slot as the press pitch.
+
+**Also near the top (item 239, 2026-10-05): check Yahoo's Spam folder
+for the newsletter.** Two issues delivered, zero opens. Search Yahoo
+Mail, including Spam, for "this weekend" from Buttondown, and mark any
+copy "Not spam". 30 seconds.
 
 **Top of the list below (item 227, 2026-10-03): turn on GoatCounter.**
 The site has never measured a visit. Five minutes: create a free
@@ -13174,6 +13183,132 @@ meaning, plus public reports of Bing returning 403 for correctly
 configured new sites), and **agent-legible page markup** as the
 design/UX angle (semantic HTML and `<time datetime>` alongside JSON-LD,
 per a July 2026 agent-ready-websites framework paper).
+
+
+#### Research pass 2026-10-05 (fifty-seventh pass)
+
+The build loop shipped three of the owner-requested agent items in one
+run: **228** (stable `#ev-…` anchors, with JSON-LD `url` pointing to them
+and the source in `sameAs`), **234** (`<article>` and `<time datetime>` on
+cards), and **230** (`/events.json` per region and site-wide, plus
+`/llms-full.txt`). This pass audited what those files actually say,
+because an agent will read them literally.
+
+| Angle | Finding | Consequence |
+|---|---|---|
+| **`docs/events.json`, measured** | **214 events. 0 have a `location`.** 46 have a `startDate` with **no timezone offset**, and **21 have a placeholder midnight time** (`"2026-10-04T00:00:00"` for a cooking class whose time is unknown). Only 5 carry `isAccessibleForFree` | An agent answering "where is it?" gets nothing, and one reading `T00:00:00` may tell a parent the event is at midnight (item 238) |
+| **The pages' own Event JSON-LD** | Same gap. The Mount Prospect weekend page's Farmers Market Event has `"location": null` and `startDate: "2026-10-04T08:00:00"`, with no offset | **Google requires `name`, `startDate` and `location` for Event rich results**, and asks for an ISO-8601 time **with a timezone offset**, or a date-only value when the time is unknown. Without `location`, every Event on the site is ineligible for Google's event features, and has probably been since the markup was added (item 238) |
+| **Opens, second data point** | `send_history.json`: the 2026-09-24 and 2026-10-01 sends both show **`recipients: 1, opens: 0`** | Two for two. At n=1 it is still not a statistic, but it is now a pattern worth one look. Either the owner did not open either issue, or neither reached the inbox (item 239) |
+| **Service clubs** | The **Mount Prospect Lions Club** (`mplions.org`) runs the town's biggest annual event, the **87th annual 4th of July Festival** (July 1–5, 2026, Melas Park), plus the Farmers Market, a corned beef dinner, an Easter egg hunt, and a tree-lighting listed on its own events calendar. **Palatine Rotary** runs Oktoberfest, already a config entry. Rotary and Lions pancake breakfasts are a standard fundraiser format across the suburbs | Service clubs are both a *source* (big, family-heavy community events that village and library feeds may not carry) and the most natural *first customer*, since they promote fundraisers constantly (item 240) |
+
+#### P1 (new)
+
+238. **Give every Event a `location` and an honest time, in the page
+     JSON-LD and in `events.json`.** Measured on the current build: 0 of
+     214 events in `docs/events.json` have a `location`, and the pages'
+     own Event JSON-LD carries `"location": null`. Google's Event
+     documentation lists `location` as **required**, alongside `name`
+     and `startDate`, and asks for times with a timezone offset. So the
+     site's Event markup has likely never been eligible for Google's
+     event results, and the agent index that item 230 just published
+     cannot answer "where?".
+
+     What to build:
+
+     - **`location` from the source when it has one.** ICS feeds carry
+       `LOCATION`. Communico, LibCal and The Events Calendar feeds
+       usually carry a venue. Map it to a Schema.org `Place` with
+       `name` and a `PostalAddress`.
+     - **A truthful fallback when the source has none:** a `Place` whose
+       `name` is the publishing organisation (for example *"Mount
+       Prospect Public Library"*), with an address from a small
+       per-source `venue:` block in the region config. Every source in
+       this pipeline is an organisation with a known building, so the
+       fallback is almost always right. Where it is not (a park
+       district event at an unspecified park), use the town as
+       `addressLocality` plus `addressRegion: "IL"` and the region's ZIP,
+       rather than inventing a street address.
+     - **Times:** always serialise with the America/Chicago offset
+       (`2026-10-04T08:00:00-05:00`, and `-06:00` after 2026-11-01). When
+       a source gives no time, emit a **date-only** `startDate`
+       (`"2026-10-04"`), never `T00:00:00`.
+     - **`isAccessibleForFree`** wherever the card already shows the
+       free tag (it carries a `free` tag far more often than 5 times).
+     - **Tests:** every Event in `events.json` and every page's JSON-LD
+       has a non-null `location`. No `startDate` ends in `T00:00:00`,
+       and every timed `startDate` carries an offset.
+
+     Zero owner time. Optionally, the owner can paste one weekend page
+     into Google's Rich Results Test afterwards. Search Console's
+     Enhancements report will also show the Event count once Google
+     recrawls.
+
+239. **Two issues, zero opens. Check the spam folder once.** The only
+     subscriber is the owner, on Yahoo Mail. Both scheduled sends
+     (2026-09-24 and 2026-10-01) were delivered to 1 recipient and
+     recorded 0 opens. Two possibilities, and only the inbox can say
+     which:
+
+     - The issues arrived and were not opened. Fine, and nothing to fix.
+     - They went to **spam**, or were filtered. That matters a great
+       deal before the outreach emails and the press pitch send people
+       to sign up (items 152, 77, 196).
+
+     **Owner, 30 seconds:** search Yahoo Mail, including Spam, for
+     *"this weekend"* from Buttondown. If an issue is in Spam, mark it
+     "Not spam". That one action is also the strongest positive signal
+     a new sending domain can get (item 155's warm-up research). Added
+     to the Needs Ryan "small, no-decision" list. If it is in Spam,
+     item 196 (seed-list placement and SPF/DKIM/DMARC alignment) moves
+     ahead of the press pitch.
+
+#### P2 (new)
+
+240. **Add service clubs as sources, and treat them as the first
+     customers.** The Mount Prospect Lions Club runs the town's flagship
+     **4th of July Festival** (87th year in 2026), the Farmers Market
+     the site already links to, and a steady calendar of fundraisers.
+     Palatine Rotary runs Oktoberfest, already in config. Rotary and
+     Lions pancake breakfasts are a fixture across the suburbs. These
+     events are exactly the family weekend content this site exists
+     for, and club calendars are often *not* mirrored in village or
+     library feeds.
+
+     What to build:
+
+     - **Probe `mplions.org/events/`** with item 215's machinery. The URL
+       shape (`/event/<slug>/`) suggests WordPress with The Events
+       Calendar, which conventionally exposes `?ical=1`. Add it as an
+       `ics` source for Mount Prospect if it validates.
+     - **Find the equivalent clubs for the other four towns** (Rotary,
+       Lions, Kiwanis, Junior Women's clubs). Search, then probe, then
+       add only the ones with a real calendar or feed.
+
+     **And as customers:** service clubs advertise fundraisers
+     constantly and on small budgets, which makes them the natural first
+     **$20 Event Promo** buyers. Consider a standing **free Event Promo
+     for registered nonprofits' fundraisers**, limited to one a month per
+     club. It seeds the first real sponsor transactions, the first
+     testimonials ("featured by Within Ten"), and civic goodwill, at
+     no real cost. Add the clubs to item 152's outreach list rather than
+     creating a new outreach task. That one is an owner decision (a
+     pricing exception), so it goes to the Needs Ryan *Parked* list.
+
+**Re-ranking note: item 218 (trick-or-treat hours) is now urgent.** All
+five towns' `trick_or_treat.hours` are still `null`, with **26 days** to
+the page's one day of peak demand. Item 218 listed what is already known
+(Mount Prospect's standing 3–8 p.m. hours, with a caveat, and the
+Downtown Trick-or-Treat on Wednesday, October 28, 2026, 4–6 p.m.).
+Treat it as ahead of every P2 in this pass.
+
+Competitors reviewed this pass: **Google's Event structured-data
+requirements, re-checked** (`name`, `startDate` and `location` required;
+ISO-8601 with a timezone offset; date-only when the time is unknown),
+**local service clubs as sources and first customers** (Mount Prospect
+Lions Club's 87th 4th of July Festival and year-round fundraisers;
+Palatine Rotary's Oktoberfest; Rotary and Lions pancake breakfasts), and
+**agent-facing data quality** as the design/UX angle: an audit of the
+files item 230 just published.
 
 
 ## Working agreements for autonomous iteration
