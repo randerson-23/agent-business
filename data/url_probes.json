@@ -4,7 +4,7 @@
       "url": "https://withintenmiles.com/f3b7799bed06aac4295ec9134d53b014.txt",
       "purpose": "IndexNow key file on the live domain - still served and still equal to the key?",
       "item": 224,
-      "probed_at": "2026-10-03T14:14:28+00:00",
+      "probed_at": "2026-10-05T14:19:32+00:00",
       "status": 200,
       "final_url": "https://withintenmiles.com/f3b7799bed06aac4295ec9134d53b014.txt",
       "content_type": "text/plain; charset=utf-8",
@@ -14,6 +14,148 @@
           {
             "match": "f3b7799bed06aac4295ec9134d53b014",
             "context": "f3b7799bed06aac4295ec9134d53b014"
+          }
+        ]
+      }
+    },
+    {
+      "url": "https://www.vah.com/news_detail_T13_R32.php",
+      "purpose": "Arlington Heights trick-or-treat page - are the 3-7 p.m. hours and its dates 2026's?",
+      "item": 218,
+      "probed_at": "2026-10-05T14:19:33+00:00",
+      "status": 200,
+      "final_url": "https://www.vah.com/news_detail_T13_R32.php",
+      "content_type": "text/html; charset=UTF-8",
+      "bytes": 224011,
+      "title": "Halloween and Trick-or-Treating in Arlington Heights 2026",
+      "feed_links": [],
+      "calendar_links": [
+        "https://www.vah.com/news_detail_T13_R32.php#services-feed",
+        "https://www.vah.com/news_detail_T13_R32.php#documents-feed",
+        "https://www.vah.com/news_detail_T13_R32.php#all-of-bhamgov-feed"
+      ],
+      "pattern_matches": {
+        "(?i)trick.or.treat[^<]{0,160}": [
+          {
+            "match": "Trick-or-Treating in Arlington Heights 2026",
+            "context": "<!-- Metadata Area Starts --> <title>Halloween and Trick-or-Treating in Arlington Heights 2026</title> <meta property=\"og:title\" content=\"Halloween and"
+          },
+          {
+            "match": "Trick-or-Treating in Arlington Heights 2026\" />\r\n\t",
+            "context": "</title> <meta property=\"og:title\" content=\"Halloween and Trick-or-Treating in Arlington Heights 2026\" /> <meta property=\"og:image\" content=\"//cms2.revize.com/revize/"
+          },
+          {
+            "match": "trick or treat news item halloween\">\r\n\t\r\n\t",
+            "context": "treat%20news%20item%20halloween.png?t=202308281223340\" alt=\"trick or treat news item halloween\"> <strong>What are Trick-or-Treating Hours in Arlington Height"
+          },
+          {
+            "match": "Trick-or-Treating Hours in Arlington Heights?",
+            "context": "\"trick or treat news item halloween\"> <strong>What are Trick-or-Treating Hours in Arlington Heights?</strong>&nbsp;<br />For those who choose to participate in"
+          },
+          {
+            "match": "trick-or-treating to 3-7 p.m., on October 31st.",
+            "context": "oween activities, the Village recommends residents limiting trick-or-treating to 3-7 p.m., on October 31st.<br /><br /><strong>What if I don&rsquo;t want to participat"
+          },
+          {
+            "match": "Trick-or-Treating this year.",
+            "context": "thers and their decisions to participate/not participate in Trick-or-Treating this year.<br /><br /><strong>Will the Village change trick-or-treatin"
+          },
+          {
+            "match": "trick-or-treating hours if the weather is bad?",
+            "context": "ating this year.<br /><br /><strong>Will the Village change trick-or-treating hours if the weather is bad?</strong>&nbsp;<br />The Village does not intend on moving t"
+          },
+          {
+            "match": "trick-or-treating hours due to bad weather conditions due to the following reasons:",
+            "context": "?</strong>&nbsp;<br />The Village does not intend on moving trick-or-treating hours due to bad weather conditions due to the following reasons:<br /> <ul> <li>The Village cannot prohibit children from tr"
+          },
+          {
+            "match": "trick-or-treating on Halloween night. If the date was changed, it is highly likely that many children will still trick-or-treat on October 31st. &nbsp;An alternate date will ",
+            "context": "s:<br /> <ul> <li>The Village cannot prohibit children from trick-or-treating on Halloween night. If the date was changed, it is highly likely that many children will still trick-or-treat on October 31st. &nbsp;An alternate date will create additional time and candy burdens for homeowners.</li"
+          },
+          {
+            "match": "trick-or-treating hours from 3-7 p.m., to encourage safety. &nbsp;However, there is no official policy or ordinance in place with designated or enforceable hours, beyond reco",
+            "context": "r homeowners.</li> <li>The Village has publicly recommended trick-or-treating hours from 3-7 p.m., to encourage safety. &nbsp;However, there is no official policy or ordinance in place with designated or enforceable hours, beyond recommended guidance. Therefore, the Village does not have offic"
+          },
+          {
+            "match": "trick-or-treating.",
+            "context": "ch Halloween is recognized through the cultural practice of trick-or-treating.</li> <li>Drivers on Halloween night generally anticipate tr"
+          },
+          {
+            "match": "trick-or-treaters. Not all drivers on a different day would be aware of the rescheduled trick-or-treating hours and may not anticipate children, creating an unnecessary risk.",
+            "context": "g.</li> <li>Drivers on Halloween night generally anticipate trick-or-treaters. Not all drivers on a different day would be aware of the rescheduled trick-or-treating hours and may not anticipate children, creating an unnecessary risk.</li> </ul> <strong>Are there any festive alternatives to tr"
+          },
+          {
+            "match": "trick-or-treating?",
+            "context": "k.</li> </ul> <strong>Are there any festive alternatives to trick-or-treating?</strong>&nbsp;<br /> <ul> <li><strong>Trunk-or-Treat</stron"
+          },
+          {
+            "match": "Trick-or-Treating:",
+            "context": "i> <li><strong>Downtown Arlington Heights Festivities &amp; Trick-or-Treating:</strong><br />Downtown Arlington Heights has traditionally"
+          },
+          {
+            "match": "Trick-or-Treating for Halloween. No details have been shared about a potential 2026 participation as of yet. This potential event is hosted by the ",
+            "context": "ghts has traditionally hosted family friendly events and/or Trick-or-Treating for Halloween. No details have been shared about a potential 2026 participation as of yet. This potential event is hosted by the <a href=\"https://www.downtownarlingtonheightsfindyourfun.com"
+          },
+          {
+            "match": "trick-or-treating or attending Halloween events, stick to well-lit streets and use sidewalks. Carry a flashlight or glow sticks for added visibility.",
+            "context": "6eveu-0-0\">2&#65039;&#8419; Plan Well-Lit Routes: If you're trick-or-treating or attending Halloween events, stick to well-lit streets and use sidewalks. Carry a flashlight or glow sticks for added visibility.</span></span></span></div> </div> <div class=\"\" data-block="
+          },
+          {
+            "match": "trick-or-treating. Keep a close eye on younger children. ",
+            "context": "ould always be accompanied by an adult or go in groups when trick-or-treating. Keep a close eye on younger children. </span></span>Map out a Trick-or-Treat route for your childr"
+          },
+          {
+            "match": "Trick-or-Treat route for your children to follow.",
+            "context": "ep a close eye on younger children. </span></span>Map out a Trick-or-Treat route for your children to follow.</div> </div> <div class=\"\" data-block=\"true\" data-editor=\"9"
+          }
+        ],
+        "(?i)Oct(?:ober|\\.)?\\s+\\d{1,2}(?:st|nd|rd|th)?[^<]{0,60}": [
+          {
+            "match": "October 31st.",
+            "context": "mmends residents limiting trick-or-treating to 3-7 p.m., on October 31st.<br /><br /><strong>What if I don&rsquo;t want to participat"
+          },
+          {
+            "match": "October 31st. &nbsp;An alternate date will create additional time and ca",
+            "context": "ghly likely that many children will still trick-or-treat on October 31st. &nbsp;An alternate date will create additional time and candy burdens for homeowners.</li> <li>The Village has publicl"
+          },
+          {
+            "match": "Oct. 25th, from 10 a.m. - 12:30 p.m. at Pioneer Park, 500 S. Fernande",
+            "context": "t is once again hosting a Trunk-or-Treat event On Saturday, Oct. 25th, from 10 a.m. - 12:30 p.m. at Pioneer Park, 500 S. Fernandez Ave. <a href=\"https://www.ahpd.org/event/trunk-or-treat-20"
+          }
+        ],
+        "20(?:25|26)": [
+          {
+            "match": "2026",
+            "context": "<title>Halloween and Trick-or-Treating in Arlington Heights 2026</title> <meta property=\"og:title\" content=\"Halloween and"
+          },
+          {
+            "match": "2025",
+            "context": "vel2 menuHidden\" href=\"government/national_community_survey_2025.php\" target=\"_self\">National Community Survey 2025</a></li>"
+          }
+        ]
+      }
+    },
+    {
+      "url": "https://www.mountprospect.org/Home/Components/Calendar/Event/22639/1044",
+      "purpose": "Mount Prospect trick-or-treat calendar entry - which year, and which hours?",
+      "item": 218,
+      "probed_at": "2026-10-05T14:19:33+00:00",
+      "status": 404,
+      "final_url": "https://www.mountprospect.org/Home/Components/Calendar/Event/22639/1044",
+      "content_type": "text/html; charset=UTF-8",
+      "bytes": 145939,
+      "title": "Mount Prospect, IL",
+      "feed_links": [],
+      "calendar_links": [
+        "https://www.mountprospect.org/Home/Components/Calendar/Event/22639/plans_and_reports/community_information_and_fact_check_portal/prestige_feed.php"
+      ],
+      "pattern_matches": {
+        "(?i)trick.or.treat[^<]{0,160}": [],
+        "(?i)(?:Mon|Tues|Wednes|Thurs|Fri|Satur|Sun)day,?\\s+Oct(?:ober|\\.)?\\s+\\d{1,2}[^<]{0,40}": [],
+        "20(?:25|26)": [
+          {
+            "match": "2026",
+            "context": "nt=\"https://www.mountprospect.org/website_assets/logo.png?t=202607240230110\" /> <link href=\"/revize/plugins/setup/css/r"
           }
         ]
       }
