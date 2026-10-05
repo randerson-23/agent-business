@@ -291,7 +291,12 @@ def _try_parse_date(raw: str | None) -> datetime | None:
     if not raw:
         return None
     try:
-        return parsedate_to_datetime(raw)
+        # An RSS pubDate's offset is not trusted: Communico library feeds
+        # (MPPL, DPPL) stamp each event's local start time with "+0000" -
+        # a 4:00pm program arrives as "16:00:00 +0000". Read as UTC, every
+        # one moved five hours early. The wall-clock time is what the
+        # feed means, so keep it and drop the offset.
+        return parsedate_to_datetime(raw).replace(tzinfo=None)
     except (TypeError, ValueError):
         pass
     for fmt in _EXTRA_DATE_FORMATS:
