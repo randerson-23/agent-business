@@ -3,8 +3,8 @@
 <channel>
   <title>Within Ten — Upcoming Local Events</title>
   <link>https://withintenmiles.com/</link>
-  <description>Upcoming events across every Within Ten region, soonest first - aggregated automatically from village, library, park district and school-district calendars. This build reached 19 of 26 configured sources.</description>
-  <lastBuildDate>Mon, 05 Oct 2026 14:55:33 +0000</lastBuildDate>
+  <description>Upcoming events across every Within Ten region, soonest first - aggregated automatically from village, library, park district and school-district calendars. This build reached 21 of 26 configured sources.</description>
+  <lastBuildDate>Mon, 05 Oct 2026 17:10:29 +0000</lastBuildDate>
   <item>
     <title>Arlington Heights: Kids' Time</title>
     <link>https://www.ahml.info/scheduling/reservation/224208</link>
@@ -44,6 +44,13 @@ Complete and return a volunteer craft kit by the end of the month to count towar
     <description>Monday, October 05 2026 10:30am - 11:00am 
  Grow your little learner's literacy and language skills at this playful storytime full of wiggles, wonder, and fun!</description>
     <pubDate>Mon, 05 Oct 2026 10:30:00 +0000</pubDate>
+  </item>
+  <item>
+    <title>Palatine: Downtown Palatine Grand Re-Opening Event</title>
+    <link>https://www.palatine.il.us/CivicAlerts.aspx?aid=504</link>
+    <guid isPermaLink="true">https://www.palatine.il.us/CivicAlerts.aspx?aid=504</guid>
+    <description></description>
+    <pubDate>Mon, 05 Oct 2026 10:38:31 +0000</pubDate>
   </item>
   <item>
     <title>Wheeling: Charcoal Drawing</title>
@@ -396,13 +403,6 @@ Ages 9-12.</description>
     <description>Wednesday, October 07 2026 7:00pm - 8:00pm 
  Learn the parts of a computer, how to use the keyboard and mouse, and resources to practice typing. This class is…</description>
     <pubDate>Wed, 07 Oct 2026 19:00:00 +0000</pubDate>
-  </item>
-  <item>
-    <title>Arlington Heights: Toddler Time</title>
-    <link>https://www.ahml.info/scheduling/reservation/224172</link>
-    <guid isPermaLink="true">https://www.ahml.info/scheduling/reservation/224172</guid>
-    <description></description>
-    <pubDate>Thu, 08 Oct 2026 00:00:00 +0000</pubDate>
   </item>
 </channel>
 </rss>
