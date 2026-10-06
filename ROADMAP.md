@@ -220,246 +220,100 @@ doesn't re-suggest something already shipped.
 
 #### Needs Ryan
 
-Everything below blocks on one person taking a real action outside this
-repo. **Restructured per item 165, 2026-09-21.** The flat list this
-section used to be had grown to ten rows, six of them real judgment
-calls, none acted on in a week — and item 165's finding was that
-presenting six roughly-equal-looking options is itself why nothing gets
-picked: a queue that size in front of someone with an hour a month
-functionally reads as no queue at all. The fix is the research loop's
-own job, not the owner's: rank the decisions and name **one** next
-action instead of handing back a list. Standing rule (also in the
-working agreements below): the research loop leaves at most three open
-owner *decisions* at a time, ranked, not appended to indefinitely.
+Everything below needs the owner to take an action outside this repo.
+**Cleaned up 2026-10-06 at Ryan's request:** stale and closed entries
+were removed, so this section lists only what is live. It is ranked by
+value per minute. Standing rule (item 165, also in the working
+agreements): the research loop keeps at most **three open owner
+*decisions*** here, ranked, and does not append to the list
+indefinitely. Quick actions that need no decision do not count against
+that limit.
 
-**Item 130 done, 2026-09-22 — a real name (Ryan Anderson) is now on
-the About page and in the Organization schema.** Ryan confirmed and
-answered the naming question directly in this session; see item 130's
-own 🟢 write-up above for what shipped. That clears the one
-prerequisite the two actions below were waiting on.
+**Quick account actions — about 15 minutes in total, no decisions:**
 
-**Next action.** **Send the outreach emails** — six civic-source
-link-back emails (item 152, `OUTREACH_TEMPLATES.md` §11, one per
-village/library/park district across all five regions) plus the two
-already-drafted, ready-to-send Mount Prospect emails (item 161, §12a/
-12b — send Experience Mount Prospect first, let its reply inform
-Downtown Mount Prospect's). No cost, repeatable, no deadline, and the
-most durable result of anything in this section: item 131 verified
-19/19 event cards already link out to the publisher that posted the
-event, so every issue already sends these organizations readers — a
-community-links-page entry, once added, keeps working without further
-effort. Now that a real name is attached, `OUTREACH_TEMPLATES.md`'s
-`[Your name]` signature placeholder is ready to fill in as-is.
+1. **Check Yahoo's Spam folder (30 sec, item 239).** Search Yahoo Mail,
+   including Spam, for "this weekend" from Buttondown, and mark any copy
+   "Not spam". Both scheduled sends show 1 recipient and 0 opens. This
+   needs settling before outreach or press sends anyone to the signup.
+2. **Turn on GoatCounter (5 min, item 227).** Create a free account at
+   goatcounter.com and paste the site code into
+   `config/analytics.yaml: goatcounter_code`. The site has never measured
+   a visit. Every sponsor conversation and every agent-era idea (items
+   227–237) needs the number this produces, including AI-referred visits.
+3. **Bing Webmaster Tools (2–3 min, items 204, 224, 235).** Choose
+   *Import from Google Search Console*, then open *IndexNow* in Bing's
+   left menu. Every IndexNow ping currently returns `403`, the site side
+   has been verified correct, and claiming the site in Bing is the most
+   likely fix. While in **Google Search Console**, note the
+   *Indexing → Pages → Indexed* count. This loop's web search still finds
+   no pages on the domain.
+4. **Rename the Buttondown handle (1 min, item 226)** from
+   `andersonryant` to the brand (for example `withinten`). Then tell the
+   build loop the new handle so it updates `config/newsletter.yaml`.
+5. **Three Buttondown settings checks (2 min):**
+   - **Tracking is on** (item 187). With tracking off, opens always read 0.
+   - The **`withintenmiles.com` sending domain shows as verified** (item 47).
+   - Settings → Subscribing → **Welcome**: enable one welcome email if the
+     free plan allows it (item 106).
+6. **Cloudflare DMARC Management (1 min, item 156).** A dashboard
+   toggle that gives deliverability reports. Do it before any
+   press-driven spike.
+
+**Next action — about an hour, no cost:**
+
+7. **Send the outreach emails (items 152, 161).** Six civic link-back
+   emails, one per village, library and park district
+   (`OUTREACH_TEMPLATES.md` §11), plus the two Mount Prospect emails
+   (§12a first, then §12b once its reply is in). Every town, including
+   each recipient's own, now has dated weekend events, so each email can
+   point at the recipient's own listings. In the Experience Mount
+   Prospect email, also ask for a feed URL, since its site 403s this
+   pipeline (item 192). Add the Mount Prospect Lions Club and Palatine
+   Rotary to the same batch (item 240).
 
 **After that:**
 
-1. **Send the local press pitch** to the **Daily Herald first** (item
-   125 found Journal & Topics runs a competing Event Calendar, so
-   Daily Herald is the first attempt, not the second; template in
-   `OUTREACH_TEMPLATES.md` §7). The single highest-yield action
-   available — 100-500 subscribers from one email (seventeenth pass) —
-   but one-shot, and item 155 argues it should follow gradual list
-   growth (the outreach emails above) rather than lead it, so a
-   press-driven spike lands on a domain with real sends behind it
-   already. Every technical dependency is cleared: domain, HTTPS,
-   signup form, sponsor CTA, Google's sitemap, a proven live send, and
-   now a named byline for the story to actually be about — all work.
+8. **Daily Herald press pitch** (item 77, `OUTREACH_TEMPLATES.md` §7;
+   Daily Herald first per item 125). It is one-shot and the
+   highest-yield action available. Send it **after** items 1 and 7, so
+   the signup spike lands on a sending address known to reach inboxes
+   (items 155, 196).
+9. **Franchise sponsor outreach** (item 242), a few emails at a time,
+   once the build loop has the prospect list and template ready.
+   Kids-enrichment franchisees are contractually required to spend on
+   local marketing.
 
-   ⚠️ **One of those dependencies is now in doubt (item 190,
-   forty-fifth pass).** "A proven live send" assumes the 2026-09-17
-   send reached someone; item 187's metrics call says it reached
-   **zero recipients**, and item 190 names the likely mechanism —
-   Buttondown enforces double opt-in, an unconfirmed address is not a
-   subscriber, and the signup flow never tells anyone a confirmation
-   email is coming (item 191). The pitch is one-shot and is the
-   highest-yield action available, so it should not be spent pointing
-   100–500 people at a funnel that may be silently dropping them.
-   **Confirm the list state and fix the confirmation flow first.**
-   *Update (forty-seventh pass, 2026-09-25): the list state is
-   confirmed. The 2026-09-24 send recorded `pre_send_subscriber_count:
-   1` and passed item 190's guard, and item 191's flow shipped. Inbox
-   placement remains unproven until item 196's seed check or the
-   2026-09-27 metrics backfill.*
+**Open decisions (at most three):**
 
-   **Update, 2026-09-27 — the metrics backfill ran; it does not settle
-   the question.** `backfill_send_metrics.py`'s own real, one-time
-   (per item's design, never re-checked) run recorded
-   `recipients: 1, opens: 0, clicks: 0` for the 2026-09-24 send —
-   confirmed by reading the real committed `data/send_history.json`,
-   not assumed. Stated honestly: `opens: 0` on `n=1` is not a
-   placement verdict either way. A tracking pixel firing zero times
-   is consistent with the message sitting unread in the inbox just as
-   much as with it landing in spam — the metric cannot distinguish
-   those two, and a sample of one subscriber is not evidence of a
-   pattern regardless. This neither confirms nor clears item 196's
-   seed-list deliverability question; it only means the one real send
-   this business has made has, so far, not been opened by its one
-   real subscriber. Recorded so no future pass reads a real `opens: 0`
-   entry and either overclaims a placement problem or wrongly treats
-   the number as good news.
-   This does not change the ordering above — the outreach emails were
-   already first, and they are exactly the slow, repeatable growth
-   that proves the flow works before the pitch depends on it.
+- **Free Event Promo for nonprofit fundraisers** (item 240): one a month
+  per service club, to seed the first sponsor listings and testimonials.
+  A pricing exception.
+- **Perplexity publisher programme / Comet Plus application** (item 231):
+  one form, uncertain odds. It is the one programme that pays when
+  content drives an agent action.
+- **Cloudflare proxy for AI-bot analytics** (item 232): measurement
+  only. It must be paired with explicitly allowing AI crawlers, or
+  Cloudflare's 2026-09-15 default blocks them. Best done after item 2.
 
-**Parked — real, but shouldn't compete with the two above:**
-- **Chamber of Commerce membership** (item 153) — a real backlink and a
-  prospect directory, but a recurring cost, and `BUSINESS_PLAN.md`
-  assumes zero spend.
-- **Illinois DBA / Fictitious Business Name filing** (item 154) — the
-  real blocker to Nextdoor's free Business Page, per that item's own
-  investigation. $50 plus a three-week newspaper-publication
-  requirement — a real cost and multi-week timeline, not a quick
-  decision.
-- **Meta geo-targeted ads** (item 78) — a bounded, low-cost test in
-  principle, but a spend decision `BUSINESS_PLAN.md` doesn't assume,
-  parked alongside the other two money questions rather than competing
-  with the two free, no-deadline actions above.
-- **Perplexity publisher programme / Comet Plus application** (item
-  231) — the one AI-platform programme that pays when content drives an
-  agent action. One form, uncertain odds.
-- **Cloudflare proxy for AI-bot analytics** (item 232) — measurement
-  only; must be paired with explicitly allowing AI crawlers, or
-  Cloudflare's 2026-09-15 default blocks them.
-- **Free Event Promo for nonprofit fundraisers** (item 240) — one a
-  month per service club (Lions, Rotary, Kiwanis), to seed the first
-  sponsor transactions and testimonials. A pricing exception, so it is
-  Ryan's call.
-- **Peachjar school e-flyers** (item 211, fiftieth pass) — flyers
-  delivered to every parent's inbox in a school district, at $25 per
-  school, after district approval. The audience fit is close to perfect,
-  but it is unverified (which local districts use it is not yet
-  confirmed), it is a spend decision, and it is a list spike that
-  belongs after the signup and delivery path is proven. It sits in the
-  same slot as the press pitch.
+**Parked (spend decisions; not competing with the above):**
+Chamber of Commerce membership (item 153); Illinois DBA filing, the
+blocker to a Nextdoor Business Page (item 154); Meta geo-targeted ads
+(item 78); Peachjar school e-flyers (item 211, unverified, same slot as
+the press pitch).
 
-**Also near the top (item 239, 2026-10-05): check Yahoo's Spam folder
-for the newsletter.** Two issues delivered, zero opens. Search Yahoo
-Mail, including Spam, for "this weekend" from Buttondown, and mark any
-copy "Not spam". 30 seconds.
+**Whenever convenient:** a real trademark clearance search before any
+print, signage or sponsor contract (item 69); the Northwest Neighbor
+cross-recommendation email (item 25, `OUTREACH_TEMPLATES.md` §10).
 
-**Top of the list below (item 227, 2026-10-03): turn on GoatCounter.**
-The site has never measured a visit. Five minutes: create a free
-GoatCounter account and paste the site code into
-`config/analytics.yaml: goatcounter_code`. Every agent-era idea in the
-"designing for consumer agents" section, and every sponsor
-conversation, needs a number this produces.
-
-**Small, no-decision-required — do whenever convenient, no ranking
-needed because none of these compete with anything above:**
-- Run a real trademark search before spending on signage, print, or
-  sponsor contracts (item 69) — "Within Ten"/"WithinTen" turned up no
-  registered mark by web search, materially cleaner than the rejected
-  "PORCHLIGHT" name, but a web search isn't a clearance search.
-- Check **Settings → Subscribing → Welcome** in Buttondown's dashboard
-  and enable one welcome email if free-plan-available (item 106) —
-  welcome emails average 34.79% opens, up to 4× a regular issue's; the
-  cost question (is the one-off transactional toggle free, distinct
-  from the confirmed-$29/month automations feature) can only be
-  answered inside the account.
-- Send the newsletter cross-recommendation email to Northwest Neighbor
-  (item 25, `OUTREACH_TEMPLATES.md` §10) — a free weekly newsletter
-  covering overlapping northwest suburbs, complementary rather than
-  competing; publishers who recommend others are 32× more likely to be
-  recommended back.
-- Enable Cloudflare's free DMARC Management (item 156; Postmark's free
-  digest is the named fallback) — the owner currently gets zero
-  deliverability reporting; a dashboard toggle, not a hand-written DNS
-  record, best done before item 77's press-driven volume spike.
-- Open **mountprospect.org/community/hidden-page/new-advanced-components/list-all-rss-feed**
-  (item 179) and paste back the actual "Village News" feed URL it
-  links to — confirmed real and live by WebSearch, but the click-
-  through URL itself isn't something this loop can reach from its own
-  blocked sandbox (confirmed directly: both `requests` and this
-  sandbox's own Playwright/Chromium hit the same tunnel block against
-  external domains, not just the `requests`-only limitation earlier
-  passes assumed). Thirty seconds in a browser; unblocks a real fix
-  for Mount Prospect's dead Village News source without guessing a
-  feed-URL pattern.
-
-**Time-boxed, not a decision:** check Buttondown's dashboard on
-2026-09-23 (send-newsletter.yml's cron fires ~5:37pm Chicago Wednesday
-the night before) to confirm item 110's `schedule` mode actually
-worked — item 151 fixed a real `publish_date` format mismatch against
-Buttondown's documented API shape, so this is now docs-verified but
-still not live-API-verified; a failed run surfaces loudly by design, so
-check either way.
-
-**A real surprise surfaced 2026-09-22 (item 187), worth a 30-second
-check:** manually ran the new metrics backfill
-(`backfill-send-metrics.yml`) to verify it against the live Buttondown
-API, and the real response for the one send this repo has made came
-back `recipients: 0, opens: 0, clicks: 0` — the API call itself
-succeeded; this isn't a script bug. Two real possibilities, and only
-Ryan can tell which from inside the account: either Buttondown's
-**Tracking** setting is off (their own docs say a disabled-tracking
-account still returns a successful, empty response — exactly this
-shape), or the list genuinely has zero confirmed subscribers, which
-would mean the "the owner is the only subscriber" framing used
-throughout this file's earlier passes was never actually true. Worth
-checking before quoting any number from this pipeline to a sponsor.
-
-Update, same day (item 172): that Wednesday run will very likely fail
-by design, not by accident. The live build this pass produced counted
-only 1 dated event across all five regions — well under the floor
-item 172 just added — so `send_newsletter.py` will refuse and the
-workflow will show red. That is the intended behavior, not a bug to
-chase: it is the guard stopping the first-ever scheduled send from
-going out as a one-event issue. If Wednesday's real count is still
-under the floor, this is exactly item 172's second decision, now live
-rather than hypothetical: let it skip (recommended — nothing else to
-do), or run `python scripts/send_newsletter.py --force-thin` by hand
-to send anyway. Either way it's a one-line decision, not new
-investigation, since item 159's source-health re-verification is the
-actual fix and is already the loop's own standing work.
-
-**Closed since the last check:** `BUTTONDOWN_API_KEY` — the owner added
-it, and it works. Real evidence, checked directly against GitHub
-Actions rather than assumed: workflow run `35176614362` (2026-09-17
-03:02 UTC) shows `=== LIVE: this will SEND to every subscriber ===`,
-`Region: combined`, `Subject: This weekend across Arlington Heights,
-Des Plaines, Mount Prospect, and Palatine`, and `Sent. Buttondown id:
-em_5hgyjgfytf8hws9xxpw6b0fesk` — a genuine successful live send of
-item 105's combined template, not a dry run. (One earlier manual run,
-`35176398162`, failed on a `400 sending_requires_confirmation` from
-Buttondown's own first-API-call interlock; the very next commit added
-the required header and the next run succeeded.)
-
-**Closed since the last check:** "Allow GitHub Actions to create and
-approve pull requests" (item 13) — Ryan flipped it 2026-09-20. Not
-just trusted: live-verified with a third test issue (#199, closed)
-immediately after. It worked completely — real run `35509989841`
-succeeded, and the resulting PR (#200) had a clean, correctly-formed
-7-line diff to `config/regions/palatine-60067.yaml`, nothing corrupted.
-Closed #200 without merging (test content) and #199 with the
-confirmation. The community event-submission feature now works
-end-to-end for the first time since it shipped in PR #31.
-
-**Nearly done, no longer blocking:** Buttondown's sending domain (item
-47). The owner added `withintenmiles.com` and its managed-delegation NS
-records on 2026-09-16 and confirmed them in place; what remains is
-checking that Buttondown's own settings show it verified, which is a
-look rather than a task. Worth noting the managed option **avoided** the
-SPF collision this file warned about earlier: because Buttondown's
-records live inside a delegated subdomain, the apex SPF stays free for
-Cloudflare Email Routing later. No merge needed.
-
-**Also worth doing, not blocking:** import the GSC property into Bing
-Webmaster Tools (part of item 73). It skips re-verification entirely and
-covers Bing, Yahoo and DuckDuckGo - and Bing's index feeds ChatGPT
-search, which item 22's whole AI-citation effort depends on.
-**Item 224 (fifty-fifth pass, 2026-10-03):** while doing the Bing
-import below, also note **Google Search Console → Indexing → Pages →
-"Indexed" count**. This loop's own web search finds no pages on
-withintenmiles.com yet. And **item 226:** rename the Buttondown handle
-from `andersonryant` to the brand (one minute; the build loop updates
-the config to match).
-
-**Moved up by item 204 (forty-eighth pass, 2026-09-26):** this is now
-the most useful two-minute action on this list. Bing's index is the
-source for ChatGPT search, Copilot, Edge and DuckDuckGo, and is reported
-to drive about 30% of AI-referred local traffic. In Bing Webmaster
-Tools, choose **Import from Google Search Console**. It is an action,
-not a decision, so it does not count against the three-decision limit.
+**Closed (kept here only as a record):** real name on the About page
+(item 130, 2026-09-22); `BUTTONDOWN_API_KEY` added and live sends
+verified (2026-09-17); GitHub Actions allowed to create PRs (item 13,
+2026-09-20); Google Search Console verified with sitemap submitted
+(item 73, 2026-09-16); list state confirmed, with a real confirmed
+subscriber on the 2026-09-24 and 2026-10-01 sends (items 190, 191); the
+Mount Prospect Village News feed lookup (item 179), made unnecessary
+when the Village's Revize JSON was found (item 192); and the dated
+check-ins for 2026-09-22/23, which have passed.
 
 #### Competitors reviewed (2026-08-27)
 
