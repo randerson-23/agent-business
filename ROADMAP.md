@@ -13556,9 +13556,17 @@ local Halloween events on one page).
 
 ## Working agreements for autonomous iteration
 
-- Cadence is once a day at 13:51 UTC, about two hours after the daily
-  research loop (11:33 UTC). The owner changed it from hourly to every
-  6 hours on 2026-09-25, then to daily on 2026-09-28. The platform's
+- Cadence is three times a day (05:51, 13:51 and 21:51 UTC) for this
+  build loop, the "Worker Bot" session, which runs on Sonnet 5.5. The
+  research loop, the "Product Manager" session, runs twice a day (11:33
+  and 23:33 UTC) on Opus 5.5. A research pass is often waiting, but with
+  more build firings than research passes it is not always: when none
+  has landed, work the open items already in this file. The owner
+  changed the build loop from hourly to every 6 hours on 2026-09-25, to
+  daily on 2026-09-28, and to three times a day on 2026-10-06, when the
+  research loop went from daily to twice a day. Each loop's model is its
+  session's model: both triggers fire into a persistent session, so a
+  trigger-level model setting would not apply. The platform's
   durable scheduler has a 1-hour floor, and
   a faster session-local scheduler was tried earlier and doesn't
   survive this environment's container lifecycle, confirmed empty
