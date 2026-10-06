@@ -2,8 +2,8 @@
   "@context": "https://schema.org",
   "@type": "ItemList",
   "name": "Upcoming events in Arlington Heights — Within Ten",
-  "dateModified": "2026-10-06T13:25:28+00:00",
-  "numberOfItems": 14,
+  "dateModified": "2026-10-06T14:02:52+00:00",
+  "numberOfItems": 20,
   "itemListElement": [
     {
       "@type": "ListItem",
@@ -32,6 +32,29 @@
       "position": 2,
       "item": {
         "@type": "Event",
+        "name": "Community Input Meeting - Carefree Park",
+        "startDate": "2026-10-06T17:30:00-05:00",
+        "url": "https://withintenmiles.com/arlington-heights-60005/#ev-community-input-meeting-carefree-park-2026-10-06",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Arlington Heights, IL",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Arlington Heights",
+            "addressRegion": "IL"
+          }
+        },
+        "sameAs": "https://www.ahpd.org/event/community-input-meeting-carefree-park/",
+        "description": "Help shape the future of Carefree Park! Join us for a community input meeting where residents can share their feedback and vote on their favorite playground…"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "item": {
+        "@type": "Event",
         "name": "Baby Time",
         "startDate": "2026-10-07",
         "url": "https://withintenmiles.com/arlington-heights-60005/#ev-baby-time-2026-10-07",
@@ -51,7 +74,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 3,
+      "position": 4,
       "item": {
         "@type": "Event",
         "name": "Toddler Time",
@@ -73,7 +96,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 4,
+      "position": 5,
       "item": {
         "@type": "Event",
         "name": "Using Your Mac: Basics",
@@ -95,12 +118,12 @@
     },
     {
       "@type": "ListItem",
-      "position": 5,
+      "position": 6,
       "item": {
         "@type": "Event",
-        "name": "Family Time",
+        "name": "Games & Gab",
         "startDate": "2026-10-10",
-        "url": "https://withintenmiles.com/arlington-heights-60005/#ev-family-time-2026-10-10",
+        "url": "https://withintenmiles.com/arlington-heights-60005/#ev-games-gab-2026-10-10",
         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
         "location": {
           "@type": "Place",
@@ -112,12 +135,35 @@
             "addressRegion": "IL"
           }
         },
-        "sameAs": "https://www.ahml.info/scheduling/reservation/224193"
+        "sameAs": "https://www.ahml.info/scheduling/reservation/221909"
       }
     },
     {
       "@type": "ListItem",
-      "position": 6,
+      "position": 7,
+      "item": {
+        "@type": "Event",
+        "name": "Autumn Harvest",
+        "startDate": "2026-10-10T11:00:00-05:00",
+        "url": "https://withintenmiles.com/arlington-heights-60005/#ev-autumn-harvest-2026-10-10",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Arlington Heights, IL",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Arlington Heights",
+            "addressRegion": "IL"
+          }
+        },
+        "sameAs": "https://www.ahpd.org/event/autumn-harvest-2026/",
+        "description": "Don’t miss fall family fun with crafts, games, hayrides, a scarecrow building contest, live music and entertainment, and food available for purchase from…"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 8,
       "item": {
         "@type": "Event",
         "name": "Tech Fair",
@@ -139,7 +185,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 7,
+      "position": 9,
       "item": {
         "@type": "Event",
         "name": "Kids' Time",
@@ -161,12 +207,12 @@
     },
     {
       "@type": "ListItem",
-      "position": 8,
+      "position": 10,
       "item": {
         "@type": "Event",
-        "name": "Read to Learn (District 214)",
+        "name": "Social Worker in the Library",
         "startDate": "2026-10-13",
-        "url": "https://withintenmiles.com/arlington-heights-60005/#ev-read-to-learn-district-214-2026-10-13",
+        "url": "https://withintenmiles.com/arlington-heights-60005/#ev-social-worker-in-the-library-2026-10-13",
         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
         "location": {
           "@type": "Place",
@@ -178,12 +224,12 @@
             "addressRegion": "IL"
           }
         },
-        "sameAs": "https://www.ahml.info/scheduling/reservation/194391"
+        "sameAs": "https://www.ahml.info/scheduling/reservation/218147"
       }
     },
     {
       "@type": "ListItem",
-      "position": 9,
+      "position": 11,
       "item": {
         "@type": "Event",
         "name": "Baby Time",
@@ -205,7 +251,31 @@
     },
     {
       "@type": "ListItem",
-      "position": 10,
+      "position": 12,
+      "item": {
+        "@type": "Event",
+        "name": "AHPD Senior Art Show",
+        "startDate": "2026-10-14T16:00:00-05:00",
+        "url": "https://withintenmiles.com/arlington-heights-60005/#ev-ahpd-senior-art-show-2026-10-14",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Arlington Heights, IL",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Arlington Heights",
+            "addressRegion": "IL"
+          }
+        },
+        "sameAs": "https://www.ahpd.org/event/ahpd-senior-art-show/",
+        "description": "Take in an evening of art and enjoyment! Peruse AHPD adult students’ creations at the annual Art Show. Visual art, fiber arts and woodcraft will be on display…",
+        "isAccessibleForFree": true
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 13,
       "item": {
         "@type": "Event",
         "name": "Toddler Time",
@@ -227,7 +297,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 11,
+      "position": 14,
       "item": {
         "@type": "Event",
         "name": "Senior Center: Travelogue",
@@ -249,12 +319,35 @@
     },
     {
       "@type": "ListItem",
-      "position": 12,
+      "position": 15,
       "item": {
         "@type": "Event",
-        "name": "Beginning ESL",
+        "name": "Oddities Night",
+        "startDate": "2026-10-16T19:00:00-05:00",
+        "url": "https://withintenmiles.com/arlington-heights-60005/#ev-oddities-night-2026-10-16",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Arlington Heights, IL",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Arlington Heights",
+            "addressRegion": "IL"
+          }
+        },
+        "sameAs": "https://www.ahpd.org/event/oddities-night/",
+        "description": "Step into the strange and mysterious at Oddities Night! Explore unusual objects from local museum collections, enjoy treats and themed drinks and experience a…"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 16,
+      "item": {
+        "@type": "Event",
+        "name": "Family Time",
         "startDate": "2026-10-17",
-        "url": "https://withintenmiles.com/arlington-heights-60005/#ev-beginning-esl-2026-10-17",
+        "url": "https://withintenmiles.com/arlington-heights-60005/#ev-family-time-2026-10-17",
         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
         "location": {
           "@type": "Place",
@@ -266,12 +359,35 @@
             "addressRegion": "IL"
           }
         },
-        "sameAs": "https://www.ahml.info/scheduling/reservation/234242"
+        "sameAs": "https://www.ahml.info/scheduling/reservation/224194"
       }
     },
     {
       "@type": "ListItem",
-      "position": 13,
+      "position": 17,
+      "item": {
+        "@type": "Event",
+        "name": "Tell Your Cellar Story",
+        "startDate": "2026-10-17T14:00:00-05:00",
+        "url": "https://withintenmiles.com/arlington-heights-60005/#ev-tell-your-cellar-story-2026-10-17",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Arlington Heights, IL",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Arlington Heights",
+            "addressRegion": "IL"
+          }
+        },
+        "sameAs": "https://www.ahpd.org/event/tell-your-cellar-story/",
+        "description": "Step back in time and share your memories of The Cellar, Arlington Heights’ iconic historic music venue! Whether you spent nights in the crowd, worked behind…"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 18,
       "item": {
         "@type": "Event",
         "name": "Makerplace Wire Wrapped Jewelry: Symmetrical Ear Wires and Dangle Earrings",
@@ -293,7 +409,30 @@
     },
     {
       "@type": "ListItem",
-      "position": 14,
+      "position": 19,
+      "item": {
+        "@type": "Event",
+        "name": "Pumpkin Splash",
+        "startDate": "2026-10-18T13:00:00-05:00",
+        "url": "https://withintenmiles.com/arlington-heights-60005/#ev-pumpkin-splash-2026-10-18",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Arlington Heights, IL",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Arlington Heights",
+            "addressRegion": "IL"
+          }
+        },
+        "sameAs": "https://www.ahpd.org/event/pumpkin-splash-2026/",
+        "description": "Skip the pumpkin patch and pick your pumpkin in the Arlington Ridge Center Family Activity Pool! Each registered child takes home a real pumpkin to decorate!…"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 20,
       "item": {
         "@type": "Event",
         "name": "Kids' Time",
