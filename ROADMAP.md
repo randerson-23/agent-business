@@ -6,13 +6,13 @@ each pickup to see current phase and what's next, and update it as phases
 complete).
 
 Two loops write to this file:
-- a **daily build loop** (13:51 UTC; hourly until 2026-09-25, then
-  6-hourly until 2026-09-28) that implements the next phase item and ships
-  PRs;
-- a **daily research loop** (11:33 UTC; added 2026-08-27; 6-hourly until
-  2026-09-25)
-  that re-reads `BUSINESS_PLAN.md`, reviews competitor sites, and refreshes
-  the idea backlog in **Phase 11**. It only edits this file — it never
+- a **build loop**, three times a day (05:51, 13:51 and 21:51 UTC since
+  2026-10-06; previously hourly, then 6-hourly, then daily), that
+  implements the next item and ships PRs;
+- a **research loop**, twice a day (11:33 and 23:33 UTC since
+  2026-10-06; added 2026-08-27 as 6-hourly, then daily), that re-reads
+  `BUSINESS_PLAN.md`, reviews competitor sites, and refreshes the idea
+  backlog in **Phase 11**. It only edits this file — it never
   implements.
 
 ## Vision
@@ -229,7 +229,7 @@ agreements): the research loop keeps at most **three open owner
 indefinitely. Quick actions that need no decision do not count against
 that limit.
 
-**Quick account actions — about 15 minutes in total, no decisions:**
+**Quick account actions — about 25 minutes in total, no decisions:**
 
 1. **Check Yahoo's Spam folder (30 sec, item 239).** Search Yahoo Mail,
    including Spam, for "this weekend" from Buttondown, and mark any copy
@@ -255,13 +255,16 @@ that limit.
    - The **`withintenmiles.com` sending domain shows as verified** (item 47).
    - Settings → Subscribing → **Welcome**: enable one welcome email if the
      free plan allows it (item 106).
-6. **Cloudflare DMARC Management (1 min, item 156).** A dashboard
+6. **Create the event-submission Google Form (10 min, item 246)**, once
+   the build loop has the CSV reader ready. Organisers can then list
+   events without a GitHub account.
+7. **Cloudflare DMARC Management (1 min, item 156).** A dashboard
    toggle that gives deliverability reports. Do it before any
    press-driven spike.
 
 **Next action — about an hour, no cost:**
 
-7. **Send the outreach emails (items 152, 161).** Six civic link-back
+8. **Send the outreach emails (items 152, 161).** Six civic link-back
    emails, one per village, library and park district
    (`OUTREACH_TEMPLATES.md` §11), plus the two Mount Prospect emails
    (§12a first, then §12b once its reply is in). Every town, including
@@ -273,12 +276,12 @@ that limit.
 
 **After that:**
 
-8. **Daily Herald press pitch** (item 77, `OUTREACH_TEMPLATES.md` §7;
+9. **Daily Herald press pitch** (item 77, `OUTREACH_TEMPLATES.md` §7;
    Daily Herald first per item 125). It is one-shot and the
-   highest-yield action available. Send it **after** items 1 and 7, so
+   highest-yield action available. Send it **after** items 1 and 8, so
    the signup spike lands on a sending address known to reach inboxes
    (items 155, 196).
-9. **Franchise sponsor outreach** (item 242), a few emails at a time,
+10. **Franchise sponsor outreach** (item 242), a few emails at a time,
    once the build loop has the prospect list and template ready.
    Kids-enrichment franchisees are contractually required to spend on
    local marketing.
@@ -291,12 +294,15 @@ that limit.
 - **Perplexity publisher programme / Comet Plus application** (item 231):
   one form, uncertain odds. It is the one programme that pays when
   content drives an agent action.
-- **Cloudflare proxy for AI-bot analytics** (item 232): measurement
-  only. It must be paired with explicitly allowing AI crawlers, or
-  Cloudflare's 2026-09-15 default blocks them. Best done after item 2.
+- **Stripe Payment Links for the $20 Event Promo and $50 Weekly Spot**
+  (item 244, about 15 minutes): self-serve checkout, so a sale is not an
+  email thread and a manual invoice. It replaces the Cloudflare
+  AI-analytics proxy (item 232) in this list, which moves to Parked.
 
 **Parked (spend decisions; not competing with the above):**
-Chamber of Commerce membership (item 153); Illinois DBA filing, the
+Cloudflare proxy for AI-bot analytics (item 232, measurement only, and
+it must be paired with explicitly allowing AI crawlers); Chamber of
+Commerce membership (item 153); Illinois DBA filing, the
 blocker to a Nextdoor Business Page (item 154); Meta geo-targeted ads
 (item 78); Peachjar school e-flyers (item 211, unverified, same slot as
 the press pitch).
@@ -13431,6 +13437,122 @@ Kumon, Goldfish Swim School and The Little Gym, per franchise-disclosure
 reporting; the strongest Annual Partner prospect category found so far),
 and **seasonal landing pages** as the design/UX angle (hours plus dated
 local Halloween events on one page).
+
+
+#### Research pass 2026-10-06, evening (fifty-ninth pass)
+
+The owner moved the research loop to **twice a day** (11:33 and 23:33
+UTC) and the build loop to **three times a day** (#287). Since this
+morning's pass the build loop shipped items 241 and 243 (all five
+towns' trick-or-treat states, with Des Plaines correctly shown as having
+no official hours, plus Halloween events on the page) and item 219 (the
+weekday-date guard).
+
+This pass followed the money from the last several passes to the point
+of sale. Small Business Saturday (item 208), service clubs (item 240),
+franchises (item 242) and the agent-era pitch (item 229) all end in "buy
+a $20 Event Promo or a partnership". This pass checked whether a
+customer actually can.
+
+| Angle | Finding | Consequence |
+|---|---|---|
+| **Can anyone buy the $20 Event Promo?** | It exists only as **one line in the sponsor pricing table**. `config/sponsors.yaml` has no field for a promoted event, and `build_digest.py` has no code that renders one. Nothing in the pipeline can place a paid event "at the top of This Week" | The product every recent sales item points to cannot be delivered without someone hand-editing code. Build it before selling it (item 245) |
+| **How a sponsor pays** | The sponsor page's only call to action is a `mailto:` to the owner's **personal Gmail** (`config/sponsors.yaml: contact_email`). The config comment says it was set "for now", to be swapped for `hello@withintenmiles.com` once Cloudflare Email Routing exists, and that routing has been live since September. Item 3 (August) already noted that self-serve checkout needs a Stripe account and Payment Link, and it was never done | Every sale is an email thread plus a manual invoice, which is owner time on every $20 order, and the personal address is published to scrapers. 6AM City built self-serve ads precisely because small orders do not justify sales time (reviewed-competitors table) (item 244) |
+| **AllEvents.in's organiser funnel** | AllEvents lists events for free, then sells **promotion to the organiser: $6–$180 per campaign**, self-serve. It is currently running a **multi-channel Halloween campaign** featuring local Halloween events on city pages, in its app and newsletters | The same funnel, free listing then a paid boost, is how this site's Event Promo should be sold, and $20 sits at the low, easy end of that market. The funnel starts with organisers submitting events (item 246) |
+| **Event submission today (design/UX)** | Submitting an event means opening **a GitHub issue**, which requires a GitHub account. The only link is a single line on the About page. Issues labelled `event-submission`: **4 ever, all owner test runs** | A library programme coordinator or a Lions Club volunteer will not create a GitHub account to list a pancake breakfast. The organiser half of the funnel does not exist in practice (item 246) |
+
+#### P1 (new)
+
+244. **Let a sponsor pay without an email thread, and stop publishing the
+     personal Gmail.** Two parts, one for the build loop and one for
+     the owner:
+
+     - **Build loop, now, with zero owner time:** change
+       `config/sponsors.yaml: contact_email` to
+       `hello@withintenmiles.com`. The config's own comment anticipates
+       exactly this one-line swap once Cloudflare Email Routing exists,
+       and it has existed since September. Inquiries still reach the
+       owner's inbox through the forward. Then add optional
+       `payment_links:` fields (`event_promo`, `weekly_spot`) to
+       `sponsors.yaml`, and render a **"Buy now"** button beside each
+       tier on `/sponsor/` only when a link is set. The page stays as it
+       is until links exist.
+     - **Owner, about 15 minutes (a decision):** create a Stripe account
+       and two **Payment Links**, $20 Event Promo and $50 Weekly Spot.
+       Payment Links need no code and no server, work from a static page,
+       and Stripe's form can ask the buyer for the event name, date and
+       link. Paste the two URLs into `sponsors.yaml`.
+
+     Why P1: every sales item filed in the last ten days ends at this
+     step, and today that step is an email to a personal address
+     followed by a manual invoice. The research loop has moved this to
+     the Needs Ryan open decisions, **replacing** the Cloudflare
+     AI-analytics proxy (item 232), which goes to Parked. Taking money
+     outranks measuring bots.
+
+245. **Build the $20 Event Promo so it can actually be delivered.**
+     Today it is a pricing-table line with no implementation. What to
+     build:
+
+     - **A `promotions:` list in `config/sponsors.yaml`**: event title,
+       date, URL, region, the sponsor's name, an optional one-line blurb,
+       and `starts`/`ends` dates.
+     - **Rendering:** the promoted event appears **first** in that
+       region's "This weekend" list on the site and in the email, with a
+       visible **"Featured"** label. Per item 229, it is labelled in the
+       page and carries Schema.org `sponsor` in its JSON-LD and in
+       `events.json`. It expires automatically after `ends`.
+     - **Guardrails:** at most one promoted event per region per
+       weekend, so the list stays useful; a promotion for a date outside
+       the window is skipped with a warning, not shown; tests for the
+       label, the ordering, expiry and the JSON-LD `sponsor`.
+
+     Zero owner time to build. When a sale comes in (item 244), filling
+     in one YAML entry delivers the product. This is the precondition
+     for items 208, 240 and 242 producing revenue.
+
+246. **Let organisers submit events without a GitHub account, and offer
+     the boost right after.** This is the design/UX angle. The current
+     path (a GitHub issue form, linked once on the About page) has
+     produced zero real submissions. The fix keeps the existing,
+     reviewed PR pipeline (`event-submission.yml`) and changes only the
+     front door:
+
+     - **A Google Form** (no account needed to submit) collecting only
+       event fields (title, date, time, venue, town, link, free/paid,
+       one-line description) plus an organiser contact email.
+     - **Its response Sheet**, with a second tab that excludes the
+       contact column, **published as CSV**. That gives a public URL with
+       no personal data.
+     - **A daily GitHub Action** that reads the CSV and opens one PR per
+       new row through the same code path as the issue form, so each
+       submission still gets a human review before it goes live. That
+       review exists because public forms attract spam.
+     - **A visible "Add your event: free" link** on every region page
+       and in the newsletter footer, not just the About page.
+     - **The upsell:** the form's confirmation message says *"Want it at
+       the top of This Weekend? Feature it for $20,"* linking item 244's
+       Payment Link. That is the AllEvents funnel, at the low end of its
+       $6–$180 range.
+
+     **Owner, about 10 minutes, once:** create the Form and publish the
+     event-fields tab as CSV. After that, owner time is reviewing each
+     submission's PR, which the current design already requires. Item
+     240's service clubs and item 152's civic outreach emails are the
+     natural first people to point at it.
+
+**Housekeeping in this pass:** the top-of-file "Two loops" lines still
+said "daily build loop (13:51 UTC)" and "daily research loop (11:33
+UTC)". They are updated to the owner's new cadences, to match the
+working-agreements note added in #287.
+
+Competitors reviewed this pass: **AllEvents.in's organiser funnel** (a
+free listing, then self-serve paid promotion at $6–$180 per campaign,
+plus a running multi-channel Halloween campaign), **Stripe Payment
+Links** as the no-code checkout for a static site (re-raised from item
+3; still not set up), and **event submission UX** as the design/UX
+angle (a GitHub-account-gated form with zero real submissions, against
+a no-account form feeding the existing reviewed pipeline).
 
 
 ## Working agreements for autonomous iteration
