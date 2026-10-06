@@ -454,7 +454,7 @@ def test_prepare_trick_or_treat_honest_when_hours_not_yet_posted():
     # late Sept/early Oct - must come back as None, never a guess.
     region_cfg = {"trick_or_treat": {"url": "https://x/news", "hours": None}}
     result = build_digest.prepare_trick_or_treat(region_cfg)
-    assert result == {"url": "https://x/news", "hours": None, "note": None}
+    assert result == {"url": "https://x/news", "hours": None, "no_official_hours": False, "note": None}
 
 
 def test_prepare_trick_or_treat_passes_through_real_hours_once_posted():
@@ -507,6 +507,84 @@ def test_render_trick_or_treat_page_counts_its_towns_and_shows_notes():
     assert "Des Plaines, Palatine, and Wheeling" in html
     assert "The Village&#39;s standing hours." in html or "The Village's standing hours." in html
     assert '<a href="https://v/0">3:00–8:00 PM, Saturday, October 31</a>' in html
+
+
+def test_trick_or_treat_no_official_hours_is_its_own_state():
+    # ROADMAP.md item 241: Des Plaines never sets hours, so "not yet
+    # posted" would never change. Its note survives without hours.
+    cfg = {"trick_or_treat": {"url": "https://x/halloween", "hours": None, "no_official_hours": True, "note": "Urges care after sunset."}}
+    entry = build_digest.prepare_trick_or_treat(cfg)
+    assert entry["no_official_hours"] is True and entry["note"] == "Urges care after sunset."
+    html = build_digest.render_trick_or_treat_page(
+        [{"region_id": "dp", "region_name": "Des Plaines", "region_url": "https://x/dp/", **entry}], datetime.now(timezone.utc)
+    )
+    assert '<a href="https://x/halloween">No official hours</a>' in html
+    assert "Urges care after sunset." in html
+    assert "Not yet posted" not in html
+    # Real hours win over the flag.
+    cfg["trick_or_treat"]["hours"] = "3:00–7:00 PM"
+    assert build_digest.prepare_trick_or_treat(cfg)["no_official_hours"] is False
+
+
+def _halloween_event(title, day, url=None):
+    return {"title": title, "url": url or f"https://src/{title}", "date_iso": f"{day}T16:00:00", "detail": ""}
+
+
+def test_select_halloween_events_matches_titles_in_the_window():
+    # ROADMAP.md item 243.
+    events = [
+        _halloween_event("Mount Prospect Downtown Merchants Trick-or-Treat", "2026-10-28"),
+        _halloween_event("Trunk or Treat", "2026-10-24"),
+        _halloween_event("Halloween Storytime", "2026-10-29"),
+        _halloween_event("Pumpkin Painting", "2026-10-10"),
+        _halloween_event("Toddler Storytime", "2026-10-28"),  # not Halloween
+        _halloween_event("Halloween Hangover Yoga", "2026-11-02"),  # after Nov 1
+        _halloween_event("Costume Swap", "2026-10-05"),  # already past
+        {"title": "Halloween Safety Tips", "url": "https://src/tips", "date_iso": None},  # undated
+    ]
+    events[4]["detail"] = "Halloween costumes welcome"  # detail alone doesn't count
+    picked = build_digest.select_halloween_events([{"events": events}], date(2026, 10, 6))
+    assert [e["title"] for e in picked] == [
+        "Pumpkin Painting",
+        "Trunk or Treat",
+        "Mount Prospect Downtown Merchants Trick-or-Treat",
+        "Halloween Storytime",
+    ]
+
+
+def test_select_halloween_events_caps_each_town():
+    events = [_halloween_event(f"Halloween Craft {i}", f"2026-10-{10 + i}") for i in range(20)]
+    picked = build_digest.select_halloween_events([{"events": events}], date(2026, 10, 6))
+    assert len(picked) == build_digest.HALLOWEEN_EVENTS_PER_TOWN
+    assert picked[0]["title"] == "Halloween Craft 0"
+
+
+def test_render_trick_or_treat_page_lists_halloween_events_with_markup():
+    event = dict(_halloween_event("Trunk or Treat", "2026-10-24"), town="Arlington Heights", state="IL")
+    build_digest.prepare_event_cards([{"events": [event]}])
+    entries = [
+        {"region_id": "arlington-heights-60005", "region_name": "Arlington Heights", "region_url": "https://x/ah/",
+         "url": "https://v/ah", "hours": "3:00–7:00 PM, Saturday, October 31", "note": None, "events": [event]},
+        {"region_id": "wheeling-60090", "region_name": "Wheeling", "region_url": "https://x/wh/",
+         "url": "https://v/wh", "hours": None, "note": None, "events": []},
+    ]
+    html = build_digest.render_trick_or_treat_page(entries, datetime.now(timezone.utc))
+    assert '<section class="town" id="arlington-heights-60005">' in html
+    assert 'id="wheeling-60090"' not in html  # no events, no empty section
+    assert '<a href="https://x/ah/#ev-trunk-or-treat-2026-10-24">Trunk or Treat</a>' in html
+    assert "Sat, Oct 24" in html
+    payload = json.loads(re.search(r'<script type="application/ld\+json">(.*?)</script>', html, re.S).group(1))
+    (ev,) = payload["@graph"]
+    assert ev["url"] == "https://x/ah/#ev-trunk-or-treat-2026-10-24"
+    assert ev["startDate"] == "2026-10-24T16:00:00-05:00"
+    assert ev["location"]["address"]["addressLocality"] == "Arlington Heights"
+
+
+def test_render_trick_or_treat_page_without_events_has_no_events_section():
+    entries = [{"region_id": "dp", "region_name": "Des Plaines", "region_url": "https://x/dp/", "url": "https://v", "hours": None, "note": None}]
+    html = build_digest.render_trick_or_treat_page(entries, datetime.now(timezone.utc))
+    assert "Halloween events, town by town" not in html
+    assert "application/ld+json" not in html
 
 
 def test_configured_trick_or_treat_hours_name_the_right_weekday():

@@ -213,9 +213,16 @@ evergreen:
 
 # Structured trick-or-treat data (ROADMAP.md Phase 11 #101) - see the
 # Mount Prospect config for the rationale.
+#
+# Des Plaines (ROADMAP.md item 241): the City sets no designated
+# trick-or-treat hours - its police department's "Halloween in Des
+# Plaines" page says so - so the page shows "No official hours" rather
+# than a "not yet posted" that would never change.
 trick_or_treat:
-  url: "https://www.desplainesil.gov/Residents/News"
+  url: "https://www.desplainesil.gov/access-your-government/city-departments/police-department/public-safety/halloween-in-des-plaines"
   hours: null
+  no_official_hours: true
+  note: "The City doesn't set hours and urges extra care after sunset."
 
 # Seasonal/evergreen guides (ROADMAP.md Phase 11 #5) - see the Mount
 # Prospect config for the rationale; same civic-source-only approach here.

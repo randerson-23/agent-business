@@ -28,31 +28,6 @@ probes:
     patterns:
       - 'f3b7799bed06aac4295ec9134d53b014'
 
-  # Item 218: the Arlington Heights Halloween page recommends 3-7 p.m. on
-  # October 31, but part of its body reads as 2025 (a Trunk-or-Treat on
-  # "Saturday, Oct. 25th"). Capture the hours sentence, every October
-  # date it gives, and any year, so the note on /trick-or-treat/ can be
-  # dropped once the page is confirmed as 2026's.
-  - url: https://www.vah.com/news_detail_T13_R32.php
-    item: 218
-    purpose: Arlington Heights trick-or-treat page - are the 3-7 p.m. hours and its dates 2026's?
-    patterns:
-      - '(?i)trick.or.treat[^<]{0,160}'
-      - '(?i)Oct(?:ober|\.)?\s+\d{1,2}(?:st|nd|rd|th)?[^<]{0,60}'
-      - '20(?:25|26)'
-
-  # Item 218: Mount Prospect's hours (3-8 p.m.) come from an undated
-  # standing calendar entry; search also found a newer "Halloween
-  # Trick-or-Treating" entry, quoted with "Friday, October 31st" (a 2025
-  # weekday). Is this entry 2026's, and does it say 3-8 p.m.?
-  - url: https://www.mountprospect.org/Home/Components/Calendar/Event/22639/1044
-    item: 218
-    purpose: Mount Prospect trick-or-treat calendar entry - which year, and which hours?
-    patterns:
-      - '(?i)trick.or.treat[^<]{0,160}'
-      - '(?i)(?:Mon|Tues|Wednes|Thurs|Fri|Satur|Sun)day,?\s+Oct(?:ober|\.)?\s+\d{1,2}[^<]{0,40}'
-      - '20(?:25|26)'
-
   # Answered and removed (see ROADMAP.md items 212 and 215):
   # - The five 403 sources: bot walls (Access Denied / Cloudflare) from a runner too.
   # - mppd.org/events/?ical=1: 200 with 0 bytes. Keep the configured webcal feed.
@@ -76,3 +51,6 @@ probes:
   # - sd25.org Finalsite iCal: valid but empty for 361, 349 and 360, together and each
   #   alone (rounds 5 and 10). D25 publishes nothing by iCal; ask the district (item 152).
   # - withintenmiles.com: key file, home page, sitemap and robots.txt all correct (round 11).
+  # - vah.com Halloween page: 2026's page; 3-7 p.m. is standing guidance, not an
+  #   ordinance; its Trunk-or-Treat date is still 2025's (round 12, item 218).
+  # - mountprospect.org Calendar Event/22639: 404 (round 12, item 218).
