@@ -10,6 +10,20 @@ covering, named once, with the lead time it needs — so a future pass
 checks this list instead of re-discovering the next one under time
 pressure.
 
+**Dates found by search are "unverified" until they pass two checks**
+(ROADMAP.md item 219). Search results routinely present a past year's
+date as the current one: one research pass got 2025 dates labelled 2026
+three times out of four, plus a 2024 date. A date counts only if (1) it
+comes from a page dated for the target year, and (2) its weekday matches
+that year (October 31, 2026 is a Saturday; the results' "Friday,
+October 31, 2025" was last year's). Otherwise it stays "unverified" whatever the
+snippet says, and the page shows "not yet posted" rather than the date.
+`tests/test_weekday_dates.py` enforces the second check on every
+"<Weekday>, <Month> <day>" written in `config/`, `templates/`,
+`SEASONAL_CALENDAR.md`, `SPONSOR_KIT.md` and `OUTREACH_TEMPLATES.md`. A
+line with no year is checked against the current season, so bump
+`DEFAULT_YEAR` there each January.
+
 **How to use this**: at the start of each month, check whether anything
 below falls inside its lead-time window and, if so, treat starting it as
 a live task even if nothing else on ROADMAP.md points to it that day.
