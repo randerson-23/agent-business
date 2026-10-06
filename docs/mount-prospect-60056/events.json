@@ -2,104 +2,12 @@
   "@context": "https://schema.org",
   "@type": "ItemList",
   "name": "Upcoming events in Mount Prospect — Within Ten",
-  "dateModified": "2026-10-05T17:10:29+00:00",
-  "numberOfItems": 61,
+  "dateModified": "2026-10-06T13:25:28+00:00",
+  "numberOfItems": 65,
   "itemListElement": [
     {
       "@type": "ListItem",
       "position": 1,
-      "item": {
-        "@type": "Event",
-        "name": "Family Storytime",
-        "startDate": "2026-10-05T09:30:00-05:00",
-        "url": "https://withintenmiles.com/mount-prospect-60056/#ev-family-storytime-2026-10-05",
-        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "location": {
-          "@type": "Place",
-          "name": "Mount Prospect Public Library",
-          "address": {
-            "@type": "PostalAddress",
-            "addressCountry": "US",
-            "addressLocality": "Mount Prospect",
-            "addressRegion": "IL"
-          }
-        },
-        "sameAs": "https://mppl.libnet.info/event/16553298",
-        "description": "Monday, October 05 2026 9:30am - 10:00am \n Bring the whole family and join us for an interactive storytime with high-energy stories, songs, and activities."
-      }
-    },
-    {
-      "@type": "ListItem",
-      "position": 2,
-      "item": {
-        "@type": "Event",
-        "name": "Toddler Storytime",
-        "startDate": "2026-10-05T10:30:00-05:00",
-        "url": "https://withintenmiles.com/mount-prospect-60056/#ev-toddler-storytime-2026-10-05",
-        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "location": {
-          "@type": "Place",
-          "name": "Mount Prospect Public Library",
-          "address": {
-            "@type": "PostalAddress",
-            "addressCountry": "US",
-            "addressLocality": "Mount Prospect",
-            "addressRegion": "IL"
-          }
-        },
-        "sameAs": "https://mppl.libnet.info/event/16553328",
-        "description": "Monday, October 05 2026 10:30am - 11:00am \n Grow your little learner's literacy and language skills at this playful storytime full of wiggles, wonder, and fun!"
-      }
-    },
-    {
-      "@type": "ListItem",
-      "position": 3,
-      "item": {
-        "@type": "Event",
-        "name": "3D Printing for Kids: Learn Tinkercad",
-        "startDate": "2026-10-05T16:30:00-05:00",
-        "url": "https://withintenmiles.com/mount-prospect-60056/#ev-3d-printing-for-kids-learn-tinkercad-2026-10-05",
-        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "location": {
-          "@type": "Place",
-          "name": "Mount Prospect Public Library",
-          "address": {
-            "@type": "PostalAddress",
-            "addressCountry": "US",
-            "addressLocality": "Mount Prospect",
-            "addressRegion": "IL"
-          }
-        },
-        "sameAs": "https://mppl.libnet.info/event/16391863",
-        "description": "Monday, October 05 2026 4:30pm - 5:30pm \n Learn how to create objects using Tinkercad, a digital-design computer software."
-      }
-    },
-    {
-      "@type": "ListItem",
-      "position": 4,
-      "item": {
-        "@type": "Event",
-        "name": "Creation Station: Mini Monsters",
-        "startDate": "2026-10-05T18:00:00-05:00",
-        "url": "https://withintenmiles.com/mount-prospect-60056/#ev-creation-station-mini-monsters-2026-10-05",
-        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "location": {
-          "@type": "Place",
-          "name": "Mount Prospect Public Library",
-          "address": {
-            "@type": "PostalAddress",
-            "addressCountry": "US",
-            "addressLocality": "Mount Prospect",
-            "addressRegion": "IL"
-          }
-        },
-        "sameAs": "https://mppl.libnet.info/event/16640906",
-        "description": "Monday, October 05 2026 6:00pm - 7:00pm \n Craft and create with us! We'll provide an idea and supplies; you create your own masterpiece."
-      }
-    },
-    {
-      "@type": "ListItem",
-      "position": 5,
       "item": {
         "@type": "Event",
         "name": "Baby Storytime",
@@ -122,7 +30,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 6,
+      "position": 2,
       "item": {
         "@type": "Event",
         "name": "Family Storytime",
@@ -145,7 +53,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 7,
+      "position": 3,
       "item": {
         "@type": "Event",
         "name": "Play and Learn",
@@ -168,7 +76,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 8,
+      "position": 4,
       "item": {
         "@type": "Event",
         "name": "Big Kids Storytime",
@@ -191,7 +99,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 9,
+      "position": 5,
       "item": {
         "@type": "Event",
         "name": "Choosing Your Medicare Supplement Insurance Policy",
@@ -214,7 +122,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 10,
+      "position": 6,
       "item": {
         "@type": "Event",
         "name": "Galaxy Pumpkins Adult Craft",
@@ -237,7 +145,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 11,
+      "position": 7,
       "item": {
         "@type": "Event",
         "name": "Toddler Storytime",
@@ -260,7 +168,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 12,
+      "position": 8,
       "item": {
         "@type": "Event",
         "name": "Drop-In Tech Help",
@@ -283,7 +191,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 13,
+      "position": 9,
       "item": {
         "@type": "Event",
         "name": "Wednesday Morning Book Group",
@@ -306,7 +214,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 14,
+      "position": 10,
       "item": {
         "@type": "Event",
         "name": "Potions Lab",
@@ -329,7 +237,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 15,
+      "position": 11,
       "item": {
         "@type": "Event",
         "name": "Galaxy Pumpkins Adult Craft",
@@ -352,7 +260,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 16,
+      "position": 12,
       "item": {
         "@type": "Event",
         "name": "Baby Storytime",
@@ -375,7 +283,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 17,
+      "position": 13,
       "item": {
         "@type": "Event",
         "name": "Family Storytime",
@@ -398,7 +306,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 18,
+      "position": 14,
       "item": {
         "@type": "Event",
         "name": "Movies @ MPPL: Project Hail Mary",
@@ -421,7 +329,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 19,
+      "position": 15,
       "item": {
         "@type": "Event",
         "name": "SCORE Business Mentoring",
@@ -444,7 +352,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 20,
+      "position": 16,
       "item": {
         "@type": "Event",
         "name": "CodeBuilders",
@@ -467,7 +375,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 21,
+      "position": 17,
       "item": {
         "@type": "Event",
         "name": "Mount Prospect Stories",
@@ -490,7 +398,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 22,
+      "position": 18,
       "item": {
         "@type": "Event",
         "name": "Storytime Playdate: Star Party",
@@ -513,7 +421,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 23,
+      "position": 19,
       "item": {
         "@type": "Event",
         "name": "Build and Watch: The Addams Family",
@@ -536,7 +444,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 24,
+      "position": 20,
       "item": {
         "@type": "Event",
         "name": "Fishing Derby",
@@ -559,7 +467,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 25,
+      "position": 21,
       "item": {
         "@type": "Event",
         "name": "Spooky Scary Studio",
@@ -582,7 +490,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 26,
+      "position": 22,
       "item": {
         "@type": "Event",
         "name": "Digitizing Photos, Slides, and Negatives",
@@ -605,7 +513,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 27,
+      "position": 23,
       "item": {
         "@type": "Event",
         "name": "Afternoon Tea Social",
@@ -628,7 +536,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 28,
+      "position": 24,
       "item": {
         "@type": "Event",
         "name": "Mount Prospect Farmers Market",
@@ -651,7 +559,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 29,
+      "position": 25,
       "item": {
         "@type": "Event",
         "name": "Student and Staff Non-Attendance/Buildings Closed",
@@ -672,7 +580,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 30,
+      "position": 26,
       "item": {
         "@type": "Event",
         "name": "Family Storytime",
@@ -695,7 +603,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 31,
+      "position": 27,
       "item": {
         "@type": "Event",
         "name": "Creation Station: Mini Monsters",
@@ -718,7 +626,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 32,
+      "position": 28,
       "item": {
         "@type": "Event",
         "name": "Toddler Storytime",
@@ -741,7 +649,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 33,
+      "position": 29,
       "item": {
         "@type": "Event",
         "name": "Gross Science",
@@ -764,7 +672,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 34,
+      "position": 30,
       "item": {
         "@type": "Event",
         "name": "Teen Volunteering",
@@ -787,7 +695,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 35,
+      "position": 31,
       "item": {
         "@type": "Event",
         "name": "Understanding Medicare Choices",
@@ -810,7 +718,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 36,
+      "position": 32,
       "item": {
         "@type": "Event",
         "name": "Monday Night Book Group",
@@ -833,7 +741,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 37,
+      "position": 33,
       "item": {
         "@type": "Event",
         "name": "Student Non-Attendance/ Institute Day",
@@ -854,7 +762,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 38,
+      "position": 34,
       "item": {
         "@type": "Event",
         "name": "Baby Storytime",
@@ -877,7 +785,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 39,
+      "position": 35,
       "item": {
         "@type": "Event",
         "name": "Family Storytime",
@@ -900,7 +808,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 40,
+      "position": 36,
       "item": {
         "@type": "Event",
         "name": "Play and Learn",
@@ -923,7 +831,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 41,
+      "position": 37,
       "item": {
         "@type": "Event",
         "name": "Big Kids Storytime",
@@ -946,7 +854,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 42,
+      "position": 38,
       "item": {
         "@type": "Event",
         "name": "Introduction to Web Resources",
@@ -970,7 +878,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 43,
+      "position": 39,
       "item": {
         "@type": "Event",
         "name": "Teen Astronaut Food Taste Test",
@@ -993,7 +901,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 44,
+      "position": 40,
       "item": {
         "@type": "Event",
         "name": "Adult Astronaut Food Taste Test",
@@ -1016,7 +924,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 45,
+      "position": 41,
       "item": {
         "@type": "Event",
         "name": "Toddler Storytime",
@@ -1039,7 +947,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 46,
+      "position": 42,
       "item": {
         "@type": "Event",
         "name": "Elected Officials Office Hours",
@@ -1062,7 +970,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 47,
+      "position": 43,
       "item": {
         "@type": "Event",
         "name": "Inglés para Hispanohablantes",
@@ -1085,7 +993,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 48,
+      "position": 44,
       "item": {
         "@type": "Event",
         "name": "Animal Investigators Junior: Jellyfish",
@@ -1108,7 +1016,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 49,
+      "position": 45,
       "item": {
         "@type": "Event",
         "name": "Movie Screening: Project Hail Mary",
@@ -1131,7 +1039,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 50,
+      "position": 46,
       "item": {
         "@type": "Event",
         "name": "Intro to Adobe Premier: Part 1",
@@ -1154,7 +1062,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 51,
+      "position": 47,
       "item": {
         "@type": "Event",
         "name": "Baby Storytime",
@@ -1177,7 +1085,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 52,
+      "position": 48,
       "item": {
         "@type": "Event",
         "name": "Coin Collecting Appraisals",
@@ -1200,7 +1108,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 53,
+      "position": 49,
       "item": {
         "@type": "Event",
         "name": "Family Storytime",
@@ -1223,7 +1131,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 54,
+      "position": 50,
       "item": {
         "@type": "Event",
         "name": "Drop-In Tech Help",
@@ -1246,7 +1154,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 55,
+      "position": 51,
       "item": {
         "@type": "Event",
         "name": "Board of Education Closed Meeting - Board Governance",
@@ -1267,7 +1175,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 56,
+      "position": 52,
       "item": {
         "@type": "Event",
         "name": "Regular Library Board Meeting",
@@ -1290,7 +1198,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 57,
+      "position": 53,
       "item": {
         "@type": "Event",
         "name": "Career Coaching Appointment",
@@ -1313,7 +1221,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 58,
+      "position": 54,
       "item": {
         "@type": "Event",
         "name": "Storytime Playdate: Space Explorers",
@@ -1336,7 +1244,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 59,
+      "position": 55,
       "item": {
         "@type": "Event",
         "name": "Friends Book Sale",
@@ -1359,7 +1267,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 60,
+      "position": 56,
       "item": {
         "@type": "Event",
         "name": "Mount Prospect Farmers Market",
@@ -1382,7 +1290,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 61,
+      "position": 57,
       "item": {
         "@type": "Event",
         "name": "Friends Book Sale",
@@ -1401,6 +1309,190 @@
         },
         "sameAs": "https://mppl.libnet.info/event/13845871",
         "description": "Sunday, October 18 2026 11:00am - 4:00pm \n Stock up on great books at bargain prices during the Friends of the Library's used book sale."
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 58,
+      "item": {
+        "@type": "Event",
+        "name": "Family Storytime",
+        "startDate": "2026-10-19T09:30:00-05:00",
+        "url": "https://withintenmiles.com/mount-prospect-60056/#ev-family-storytime-2026-10-19",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Mount Prospect Public Library",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Mount Prospect",
+            "addressRegion": "IL"
+          }
+        },
+        "sameAs": "https://mppl.libnet.info/event/16553300",
+        "description": "Monday, October 19 2026 9:30am - 10:00am \n Bring the whole family and join us for an interactive storytime with high-energy stories, songs, and activities."
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 59,
+      "item": {
+        "@type": "Event",
+        "name": "Drop-In Tech Help",
+        "startDate": "2026-10-19T10:00:00-05:00",
+        "url": "https://withintenmiles.com/mount-prospect-60056/#ev-drop-in-tech-help-2026-10-19",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Mount Prospect Public Library",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Mount Prospect",
+            "addressRegion": "IL"
+          }
+        },
+        "sameAs": "https://mppl.libnet.info/event/14756276",
+        "description": "Monday, October 19 2026 10:00am - 11:00am \n Stop in and bring your questions about technology-related subjects such as smartphones, computers, email,…"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 60,
+      "item": {
+        "@type": "Event",
+        "name": "Toddler Storytime",
+        "startDate": "2026-10-19T10:30:00-05:00",
+        "url": "https://withintenmiles.com/mount-prospect-60056/#ev-toddler-storytime-2026-10-19",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Mount Prospect Public Library",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Mount Prospect",
+            "addressRegion": "IL"
+          }
+        },
+        "sameAs": "https://mppl.libnet.info/event/16553330",
+        "description": "Monday, October 19 2026 10:30am - 11:00am \n Grow your little learner's literacy and language skills at this playful storytime full of wiggles, wonder, and fun!"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 61,
+      "item": {
+        "@type": "Event",
+        "name": "Listen to Your Heirlooms",
+        "startDate": "2026-10-19T14:00:00-05:00",
+        "url": "https://withintenmiles.com/mount-prospect-60056/#ev-listen-to-your-heirlooms-2026-10-19",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Mount Prospect Public Library",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Mount Prospect",
+            "addressRegion": "IL"
+          }
+        },
+        "sameAs": "https://mppl.libnet.info/event/16368490",
+        "description": "Monday, October 19 2026 2:00pm - 4:00pm \n Uncover the stories behind your family heirlooms with guidance from an antique appraiser."
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 62,
+      "item": {
+        "@type": "Event",
+        "name": "Animal Investigators Junior: Jellyfish",
+        "startDate": "2026-10-19T16:30:00-05:00",
+        "url": "https://withintenmiles.com/mount-prospect-60056/#ev-animal-investigators-junior-jellyfish-2026-10-19",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Mount Prospect Public Library",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Mount Prospect",
+            "addressRegion": "IL"
+          }
+        },
+        "sameAs": "https://mppl.libnet.info/event/16640995",
+        "description": "Monday, October 19 2026 4:30pm - 5:30pm \n Let's hang out and admire incredible animals together!"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 63,
+      "item": {
+        "@type": "Event",
+        "name": "Cricut Studio: DIY Stickers",
+        "startDate": "2026-10-19T18:00:00-05:00",
+        "url": "https://withintenmiles.com/mount-prospect-60056/#ev-cricut-studio-diy-stickers-2026-10-19",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Mount Prospect Public Library",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Mount Prospect",
+            "addressRegion": "IL"
+          }
+        },
+        "sameAs": "https://mppl.libnet.info/event/16278585",
+        "description": "Monday, October 19 2026 6:00pm - 8:00pm \n Learn the basics of Cricut Design Space and create your own custom stickers!"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 64,
+      "item": {
+        "@type": "Event",
+        "name": "Night Off? Game On!",
+        "startDate": "2026-10-19T19:00:00-05:00",
+        "url": "https://withintenmiles.com/mount-prospect-60056/#ev-night-off-game-on-2026-10-19",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Mount Prospect Public Library",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Mount Prospect",
+            "addressRegion": "IL"
+          }
+        },
+        "sameAs": "https://mppl.libnet.info/event/14039685",
+        "description": "Monday, October 19 2026 7:00pm - 8:30pm \n Spend your night off playing tabletop games with other gaming enthusiasts!"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 65,
+      "item": {
+        "@type": "Event",
+        "name": "MPPL Writers Group",
+        "startDate": "2026-10-19T19:00:00-05:00",
+        "url": "https://withintenmiles.com/mount-prospect-60056/#ev-mppl-writers-group-2026-10-19",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Mount Prospect Public Library",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Mount Prospect",
+            "addressRegion": "IL"
+          }
+        },
+        "sameAs": "https://mppl.libnet.info/event/14049842",
+        "description": "Monday, October 19 2026 7:00pm - 8:30pm \n Bring your current writing projects for thoughtful support and constructive critique from a group of fellow writers."
       }
     }
   ]

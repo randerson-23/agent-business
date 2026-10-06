@@ -2,173 +2,12 @@
   "@context": "https://schema.org",
   "@type": "ItemList",
   "name": "Upcoming events in Wheeling — Within Ten",
-  "dateModified": "2026-10-05T17:10:29+00:00",
-  "numberOfItems": 55,
+  "dateModified": "2026-10-06T13:25:28+00:00",
+  "numberOfItems": 53,
   "itemListElement": [
     {
       "@type": "ListItem",
       "position": 1,
-      "item": {
-        "@type": "Event",
-        "name": "High School Volunteer Kits",
-        "startDate": "2026-10-05T09:00:00-05:00",
-        "url": "https://withintenmiles.com/wheeling-60090/#ev-high-school-volunteer-kits-2026-10-05",
-        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "location": {
-          "@type": "Place",
-          "name": "Indian Trails Public Library",
-          "address": {
-            "@type": "PostalAddress",
-            "addressCountry": "US",
-            "addressLocality": "Wheeling",
-            "addressRegion": "IL"
-          }
-        },
-        "sameAs": "https://indiantrails.libnet.info/event/16623729",
-        "description": "Monday, October 05 2026 9:00am - 9:00pm \n Bag pickup: 9 am-9 pm. \nComplete and return a volunteer craft kit by the end of the month to count towards one hour…"
-      }
-    },
-    {
-      "@type": "ListItem",
-      "position": 2,
-      "item": {
-        "@type": "Event",
-        "name": "Charcoal Drawing",
-        "startDate": "2026-10-05T11:00:00-05:00",
-        "url": "https://withintenmiles.com/wheeling-60090/#ev-charcoal-drawing-2026-10-05",
-        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "location": {
-          "@type": "Place",
-          "name": "Indian Trails Public Library",
-          "address": {
-            "@type": "PostalAddress",
-            "addressCountry": "US",
-            "addressLocality": "Wheeling",
-            "addressRegion": "IL"
-          }
-        },
-        "sameAs": "https://indiantrails.libnet.info/event/16724299",
-        "description": "Monday, October 05 2026 11:00am - 1:00pm \n Learn charcoal drawing techniques in a step by step still life session. R"
-      }
-    },
-    {
-      "@type": "ListItem",
-      "position": 3,
-      "item": {
-        "@type": "Event",
-        "name": "Stitch Together Meet-Up",
-        "startDate": "2026-10-05T13:00:00-05:00",
-        "url": "https://withintenmiles.com/wheeling-60090/#ev-stitch-together-meet-up-2026-10-05",
-        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "location": {
-          "@type": "Place",
-          "name": "Indian Trails Public Library",
-          "address": {
-            "@type": "PostalAddress",
-            "addressCountry": "US",
-            "addressLocality": "Wheeling",
-            "addressRegion": "IL"
-          }
-        },
-        "sameAs": "https://indiantrails.libnet.info/event/16494402",
-        "description": "Monday, October 05 2026 1:00pm - 3:00pm \n If your craft of choice uses needles or hooks, this group is for you. Bring your knit, crochet, embroidery or cross…"
-      }
-    },
-    {
-      "@type": "ListItem",
-      "position": 4,
-      "item": {
-        "@type": "Event",
-        "name": "Tech Assistance / Assistencia de Tech",
-        "startDate": "2026-10-05T15:00:00-05:00",
-        "url": "https://withintenmiles.com/wheeling-60090/#ev-tech-assistance-assistencia-de-tech-2026-10-05",
-        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "location": {
-          "@type": "Place",
-          "name": "Indian Trails Public Library",
-          "address": {
-            "@type": "PostalAddress",
-            "addressCountry": "US",
-            "addressLocality": "Wheeling",
-            "addressRegion": "IL"
-          }
-        },
-        "sameAs": "https://indiantrails.libnet.info/event/16642223",
-        "description": "Monday, October 05 2026 3:00pm - 3:45pm \n Have a basic question about your mobile device or computer? We can help. ¿Tiene alguna pregunta básica sobre su…"
-      }
-    },
-    {
-      "@type": "ListItem",
-      "position": 5,
-      "item": {
-        "@type": "Event",
-        "name": "Bookworms Book Club | Grades 4-5",
-        "startDate": "2026-10-05T16:00:00-05:00",
-        "url": "https://withintenmiles.com/wheeling-60090/#ev-bookworms-book-club-grades-4-5-2026-10-05",
-        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "location": {
-          "@type": "Place",
-          "name": "Indian Trails Public Library",
-          "address": {
-            "@type": "PostalAddress",
-            "addressCountry": "US",
-            "addressLocality": "Wheeling",
-            "addressRegion": "IL"
-          }
-        },
-        "sameAs": "https://indiantrails.libnet.info/event/16831217",
-        "description": "Monday, October 05 2026 4:00pm - 5:00pm \n Book pickup September 14-28 at the Youth Services Desk. Kyle wants to be at the lock-in for the new library designed…"
-      }
-    },
-    {
-      "@type": "ListItem",
-      "position": 6,
-      "item": {
-        "@type": "Event",
-        "name": "Village Board Regular Meeting",
-        "startDate": "2026-10-05T18:30:00-05:00",
-        "url": "https://withintenmiles.com/wheeling-60090/#ev-village-board-regular-meeting-2026-10-05",
-        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "location": {
-          "@type": "Place",
-          "name": "Wheeling, IL",
-          "address": {
-            "@type": "PostalAddress",
-            "addressCountry": "US",
-            "addressLocality": "Wheeling",
-            "addressRegion": "IL"
-          }
-        },
-        "sameAs": "https://www.wheelingil.gov/common/modules/iCalendar/iCalendar.aspx?feed=calendar&catID=14",
-        "description": "https://www.wheelingil.gov/calendar.aspx?EID=2004"
-      }
-    },
-    {
-      "@type": "ListItem",
-      "position": 7,
-      "item": {
-        "@type": "Event",
-        "name": "Woodie Guthrie",
-        "startDate": "2026-10-05T19:00:00-05:00",
-        "url": "https://withintenmiles.com/wheeling-60090/#ev-woodie-guthrie-2026-10-05",
-        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "location": {
-          "@type": "Place",
-          "name": "Indian Trails Public Library",
-          "address": {
-            "@type": "PostalAddress",
-            "addressCountry": "US",
-            "addressLocality": "Wheeling",
-            "addressRegion": "IL"
-          }
-        },
-        "sameAs": "https://indiantrails.libnet.info/event/16586449",
-        "description": "Monday, October 05 2026 7:00pm - 8:00pm \n The life, times and rough and tumble story of Americas balladeer, Woody Guthrie is brought to life by Barry Cloyd. R"
-      }
-    },
-    {
-      "@type": "ListItem",
-      "position": 8,
       "item": {
         "@type": "Event",
         "name": "Cooking 101: Mac and Cheese",
@@ -191,30 +30,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 9,
-      "item": {
-        "@type": "Event",
-        "name": "Resume Review & Career Coaching Appointments",
-        "startDate": "2026-10-06T18:00:00-05:00",
-        "url": "https://withintenmiles.com/wheeling-60090/#ev-resume-review-career-coaching-appointments-2026-10-06",
-        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "location": {
-          "@type": "Place",
-          "name": "Indian Trails Public Library",
-          "address": {
-            "@type": "PostalAddress",
-            "addressCountry": "US",
-            "addressLocality": "Wheeling",
-            "addressRegion": "IL"
-          }
-        },
-        "sameAs": "https://indiantrails.libnet.info/event/16654161",
-        "description": "Tuesday, October 06 2026 6:00pm - 7:00pm \n Kickstart your career with a one-hour resume review with a career specialist. Resume Review and Career Coaching…"
-      }
-    },
-    {
-      "@type": "ListItem",
-      "position": 10,
+      "position": 2,
       "item": {
         "@type": "Event",
         "name": "Writers Workshop",
@@ -237,7 +53,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 11,
+      "position": 3,
       "item": {
         "@type": "Event",
         "name": "Read to Learn",
@@ -260,7 +76,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 12,
+      "position": 4,
       "item": {
         "@type": "Event",
         "name": "Jewelry Making Extravaganza",
@@ -283,7 +99,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 13,
+      "position": 5,
       "item": {
         "@type": "Event",
         "name": "Papel Picado",
@@ -306,7 +122,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 14,
+      "position": 6,
       "item": {
         "@type": "Event",
         "name": "Navratri Hair Accessories",
@@ -329,7 +145,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 15,
+      "position": 7,
       "item": {
         "@type": "Event",
         "name": "Library Board Workshop",
@@ -352,7 +168,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 16,
+      "position": 8,
       "item": {
         "@type": "Event",
         "name": "Back to Basics: Hardware & Typing",
@@ -375,7 +191,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 17,
+      "position": 9,
       "item": {
         "@type": "Event",
         "name": "Night Owls",
@@ -398,7 +214,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 18,
+      "position": 10,
       "item": {
         "@type": "Event",
         "name": "Babytime!",
@@ -421,7 +237,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 19,
+      "position": 11,
       "item": {
         "@type": "Event",
         "name": "Wonderful Walkers",
@@ -444,7 +260,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 20,
+      "position": 12,
       "item": {
         "@type": "Event",
         "name": "Introduction to Tinkercad",
@@ -468,7 +284,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 21,
+      "position": 13,
       "item": {
         "@type": "Event",
         "name": "Foundation Used Book Sale",
@@ -491,7 +307,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 22,
+      "position": 14,
       "item": {
         "@type": "Event",
         "name": "Home Maintenance 101",
@@ -514,7 +330,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 23,
+      "position": 15,
       "item": {
         "@type": "Event",
         "name": "Tech Assistance",
@@ -537,7 +353,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 24,
+      "position": 16,
       "item": {
         "@type": "Event",
         "name": "Columbus Day - Village Offices are Closed for the Columbus Day Holi",
@@ -560,7 +376,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 25,
+      "position": 17,
       "item": {
         "@type": "Event",
         "name": "Leslie Goddard as Eleanor Roosevelt",
@@ -583,7 +399,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 26,
+      "position": 18,
       "item": {
         "@type": "Event",
         "name": "Dungeons & Dragons",
@@ -606,7 +422,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 27,
+      "position": 19,
       "item": {
         "@type": "Event",
         "name": "The Full Job Search Life Cycle",
@@ -629,7 +445,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 28,
+      "position": 20,
       "item": {
         "@type": "Event",
         "name": "Noisy Time",
@@ -652,7 +468,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 29,
+      "position": 21,
       "item": {
         "@type": "Event",
         "name": "Rise & Read Morning Book Discussion",
@@ -675,7 +491,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 30,
+      "position": 22,
       "item": {
         "@type": "Event",
         "name": "Coloring Club",
@@ -698,7 +514,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 31,
+      "position": 23,
       "item": {
         "@type": "Event",
         "name": "Paper Craft Happy Hour",
@@ -721,7 +537,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 32,
+      "position": 24,
       "item": {
         "@type": "Event",
         "name": "Spanish Conversation Practice | At the Branch",
@@ -744,7 +560,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 33,
+      "position": 25,
       "item": {
         "@type": "Event",
         "name": "Resume Review & Career Coaching Appointments",
@@ -767,7 +583,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 34,
+      "position": 26,
       "item": {
         "@type": "Event",
         "name": "Family LEGO® Club",
@@ -790,7 +606,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 35,
+      "position": 27,
       "item": {
         "@type": "Event",
         "name": "Read to Learn",
@@ -813,7 +629,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 36,
+      "position": 28,
       "item": {
         "@type": "Event",
         "name": "Watercolor Landscape",
@@ -836,7 +652,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 37,
+      "position": 29,
       "item": {
         "@type": "Event",
         "name": "Paperback Pals Book Club | Grades 2-3",
@@ -859,7 +675,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 38,
+      "position": 30,
       "item": {
         "@type": "Event",
         "name": "Autumnal Pipe Cleaner Bouquets",
@@ -882,7 +698,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 39,
+      "position": 31,
       "item": {
         "@type": "Event",
         "name": "Plan Commission Meeting",
@@ -905,7 +721,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 40,
+      "position": 32,
       "item": {
         "@type": "Event",
         "name": "Foundation Board Meeting",
@@ -928,7 +744,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 41,
+      "position": 33,
       "item": {
         "@type": "Event",
         "name": "Back to Basics: Navigating Chrome",
@@ -951,7 +767,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 42,
+      "position": 34,
       "item": {
         "@type": "Event",
         "name": "Office Hours with Congressman Brad Schneider's Office",
@@ -974,7 +790,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 43,
+      "position": 35,
       "item": {
         "@type": "Event",
         "name": "Chat & Play Cafe",
@@ -997,7 +813,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 44,
+      "position": 36,
       "item": {
         "@type": "Event",
         "name": "Tech Assistance",
@@ -1020,7 +836,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 45,
+      "position": 37,
       "item": {
         "@type": "Event",
         "name": "Autumnal Pipe Cleaner Bouquets",
@@ -1043,7 +859,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 46,
+      "position": 38,
       "item": {
         "@type": "Event",
         "name": "Unbe-leaf-able Art",
@@ -1066,7 +882,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 47,
+      "position": 39,
       "item": {
         "@type": "Event",
         "name": "Custom Sweatshirt",
@@ -1089,7 +905,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 48,
+      "position": 40,
       "item": {
         "@type": "Event",
         "name": "Elephino Trivia",
@@ -1112,7 +928,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 49,
+      "position": 41,
       "item": {
         "@type": "Event",
         "name": "Toddler Storytime",
@@ -1135,7 +951,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 50,
+      "position": 42,
       "item": {
         "@type": "Event",
         "name": "Preschool Storytime",
@@ -1158,7 +974,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 51,
+      "position": 43,
       "item": {
         "@type": "Event",
         "name": "Movie Matinee: West Side Story (2021)",
@@ -1181,7 +997,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 52,
+      "position": 44,
       "item": {
         "@type": "Event",
         "name": "Family Craft Fridays | At The Branch",
@@ -1204,7 +1020,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 53,
+      "position": 45,
       "item": {
         "@type": "Event",
         "name": "Custom Candy Bag",
@@ -1227,7 +1043,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 54,
+      "position": 46,
       "item": {
         "@type": "Event",
         "name": "Chats & Food",
@@ -1250,7 +1066,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 55,
+      "position": 47,
       "item": {
         "@type": "Event",
         "name": "Super Saturday: ¡Being Bilingual Rocks!",
@@ -1269,6 +1085,144 @@
         },
         "sameAs": "https://indiantrails.libnet.info/event/16659178",
         "description": "Saturday, October 17 2026 11:00am - 11:45am \n All ages. Join Alina Celeste y Mi Amigo Hamlet for an interactive musical celebration in English and Spanish. Be…"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 48,
+      "item": {
+        "@type": "Event",
+        "name": "Protect Yourself from Identity Theft",
+        "startDate": "2026-10-19T10:00:00-05:00",
+        "url": "https://withintenmiles.com/wheeling-60090/#ev-protect-yourself-from-identity-theft-2026-10-19",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Indian Trails Public Library",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Wheeling",
+            "addressRegion": "IL"
+          }
+        },
+        "sameAs": "https://indiantrails.libnet.info/event/16653378",
+        "description": "Monday, October 19 2026 10:00am - 10:45am \n Alene Guzman, from Wheeling Bank & Trust, covers protecting yourself from identity theft. Alene Guzman, de…"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 49,
+      "item": {
+        "@type": "Event",
+        "name": "Autumnal Pipe Cleaner Bouquets",
+        "startDate": "2026-10-19T12:00:00-05:00",
+        "url": "https://withintenmiles.com/wheeling-60090/#ev-autumnal-pipe-cleaner-bouquets-2026-10-19",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Indian Trails Public Library",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Wheeling",
+            "addressRegion": "IL"
+          }
+        },
+        "sameAs": "https://indiantrails.libnet.info/event/16494430",
+        "description": "Monday, October 19 2026 12:00pm - 2:30pm \n Learn to make pipe cleaner flowers for an autumnal bouquet. R"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 50,
+      "item": {
+        "@type": "Event",
+        "name": "K9 Reading Buddies",
+        "startDate": "2026-10-19T16:00:00-05:00",
+        "url": "https://withintenmiles.com/wheeling-60090/#ev-k9-reading-buddies-2026-10-19",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Indian Trails Public Library",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Wheeling",
+            "addressRegion": "IL"
+          }
+        },
+        "sameAs": "https://indiantrails.libnet.info/event/16649321",
+        "description": "Monday, October 19 2026 4:00pm - 5:00pm \n Read a story to a licensed therapy dog in the library. Siblings and caregivers are asked to wait outside the reading…"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 51,
+      "item": {
+        "@type": "Event",
+        "name": "Village Board Regular Meeting",
+        "startDate": "2026-10-19T18:30:00-05:00",
+        "url": "https://withintenmiles.com/wheeling-60090/#ev-village-board-regular-meeting-2026-10-19",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Wheeling, IL",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Wheeling",
+            "addressRegion": "IL"
+          }
+        },
+        "sameAs": "https://www.wheelingil.gov/common/modules/iCalendar/iCalendar.aspx?feed=calendar&catID=14",
+        "description": "https://www.wheelingil.gov/calendar.aspx?EID=2159"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 52,
+      "item": {
+        "@type": "Event",
+        "name": "Resurrection Mary: Chicagos Most Beloved Spirit",
+        "startDate": "2026-10-19T19:00:00-05:00",
+        "url": "https://withintenmiles.com/wheeling-60090/#ev-resurrection-mary-chicago-s-most-beloved-spirit-2026-10-19",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Indian Trails Public Library",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Wheeling",
+            "addressRegion": "IL"
+          }
+        },
+        "sameAs": "https://indiantrails.libnet.info/event/16709030",
+        "description": "Monday, October 19 2026 7:00pm - 8:00pm \n Author and historian Ray Johnson explores the legend of Resurrection Mary. Learn how the story of 'Vanishing…"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 53,
+      "item": {
+        "@type": "Event",
+        "name": "Hot Glue Mask",
+        "startDate": "2026-10-19T19:00:00-05:00",
+        "url": "https://withintenmiles.com/wheeling-60090/#ev-hot-glue-mask-2026-10-19",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Indian Trails Public Library",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Wheeling",
+            "addressRegion": "IL"
+          }
+        },
+        "sameAs": "https://indiantrails.libnet.info/event/16623892",
+        "description": "Monday, October 19 2026 7:00pm - 8:00pm \n Craft a stunning, lace-like mask using hot glue. Create a wearable piece of 3D art. Perfect for costume lovers and…"
       }
     }
   ]
