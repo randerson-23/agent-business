@@ -12263,7 +12263,7 @@ send went out on schedule (2026-10-01 01:33 UTC, `pre_send_subscriber_count:
 
 #### P2 (new)
 
-219. **Reject any date whose weekday doesn't match its year.** This pass
+219. ✅ **DONE — Reject any date whose weekday doesn't match its year.** This pass
      caught search results presenting **2025 dates as 2026** three times
      out of four, plus a **2024** date, purely by checking the weekday.
      The repo's own config comment carries a wrong weekday too.
@@ -12286,6 +12286,31 @@ send went out on schedule (2026-10-01 01:33 UTC, `pre_send_subscriber_count:
      Small, permanent, and it protects the one claim this business
      defends against every competitor: accurate, current local
      information.
+
+     ✅ **Shipped 2026-10-06.**
+     - **`tests/test_weekday_dates.py`** scans `config/**/*.yaml`,
+       `templates/*.j2`, `SEASONAL_CALENDAR.md`, `SPONSOR_KIT.md` and
+       `OUTREACH_TEMPLATES.md` for `<Weekday>, <Month> <day>` and fails
+       on any weekday that is wrong for the year. The year comes from the
+       date itself (`..., 2025`), else any year on the same line (a
+       comment quoting *"2025's Saturday, Oct. 25th; 2026's is Saturday,
+       October 24"* passes), else `DEFAULT_YEAR = 2026`, which needs a
+       bump each January. Date ranges (`Oct 2-3`) and abbreviations are
+       skipped, since the weekday could belong to either end.
+     - **First run:** the scan found one mismatch in the repo, the
+       Mount Prospect config comment quoting a search result's *"Friday,
+       October 31st"* without its year. It now says *"Friday, October 31st,
+       2025"*. Everything else (the trick-or-treat hours, Small Business
+       Saturday, the festival comments) already passed.
+     - **`SEASONAL_CALENDAR.md`** gains the rule: a date found by search
+       is "unverified" until it comes from a page dated for the target
+       year **and** its weekday matches that year. Unverified dates show
+       "not yet posted".
+     - **Known limit:** the scan is line by line, so a date wrapped across
+       two lines (weekday at the end of one, year at the start of the
+       next) is not seen. Keep a date and its year on one line.
+     - ROADMAP.md is deliberately not scanned: it quotes wrong dates on
+       purpose when it explains what the check catches.
 
 220. **Holiday lights: one date confirmed, three to verify, start by late
      October.** `SEASONAL_CALENDAR.md`'s holiday row says to start by
