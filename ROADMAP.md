@@ -12343,7 +12343,7 @@ send went out on schedule (2026-10-01 01:33 UTC, `pre_send_subscriber_count:
      Mount Prospect, Palatine, and Wheeling"**. The single-region
      builders are unchanged. 10 new or updated tests; 574 pass.
 
-218. 🟡 **PARTLY DONE (3 of 5 towns) — Fill in trick-or-treat hours now. The page peaks in 30 days and
+218. ✅ **DONE (all five towns, with item 241) — Fill in trick-or-treat hours now. The page peaks in 30 days and
      every town is still `null`.** Item 101's `/trick-or-treat/` page
      shows an honest "not yet posted" state while `hours` is `null`.
      That was the right design in September. On October 1, with the page
@@ -13414,7 +13414,7 @@ Wheeling are still `null`, and this pass found both answers.
 
 #### P1 (new)
 
-241. **Finish trick-or-treat hours: Des Plaines and Wheeling.** 25 days
+241. ✅ **DONE — Finish trick-or-treat hours: Des Plaines and Wheeling.** 25 days
      to go. Both answers are found above:
 
      - **Des Plaines:** set the value to the honest state, *"No official
@@ -13430,6 +13430,31 @@ Wheeling are still `null`, and this pass found both answers.
 
      Zero owner time. Afterwards, all five towns answer the question the
      page exists for.
+
+     ✅ **Shipped 2026-10-06.**
+     - **Des Plaines** shows a new **"No official hours"** state, linked
+       to the police department's "Halloween in Des Plaines" page. Its
+       note reads *"The City doesn't set hours and urges extra care after
+       sunset"*. That wording is what search confirmed the page says. The
+       "daylight, home by dusk" wording above was not confirmed, so it
+       was not used. The state comes from `no_official_hours: true` in
+       the config, and real `hours` override it.
+     - **Wheeling** shows 3:00–7:00 PM, Saturday, October 31, linked to
+       the Village's news post *"Trick-or-Treat hours are 3:00-7:00 PM on
+       October 31st"* (`AID=226`). Its calendar entries from several years
+       (EIDs 718, 1204, 1841) agree. It carries Mount Prospect's caveat,
+       *"standing hours, not yet confirmed for 2026"*.
+     - **Probe round 12 (item 218's two probes)** answered both
+       questions:
+       - Arlington Heights' page is 2026's: it mentions *"a potential
+         2026 participation"*. The 3–7 p.m. hours are standing guidance
+         with *"no official policy or ordinance"*, so its existing note
+         is exactly right. Only the page's Trunk-or-Treat date is still
+         2025's.
+       - Mount Prospect's newer calendar entry (`Event/22639`) is a 404.
+         Its standing-hours caveat stays.
+
+       Both probes were removed.
 
 242. **Pitch kids-enrichment franchises first: they are required to
      spend on local marketing.** This is a sponsor-prospect finding with
@@ -13474,7 +13499,7 @@ Wheeling are still `null`, and this pass found both answers.
 
 #### P2 (new)
 
-243. **Turn `/trick-or-treat/` into the town's Halloween page.** This is
+243. ✅ **DONE — Turn `/trick-or-treat/` into the town's Halloween page.** This is
      the design/UX angle. The page answers "what are the hours?" A
      parent searching in late October also wants "what's on?". Extend it
      with a per-town list of **dated Halloween events from the existing
@@ -13489,6 +13514,36 @@ Wheeling are still `null`, and this pass found both answers.
      they remain the most-searched fact. Add Event JSON-LD for the listed
      events, which now carry valid locations. Ship by about October 15 so
      the page is indexed before the search peak. Zero owner time.
+
+     ✅ **Shipped 2026-10-06**, nine days ahead of the target.
+     - The hours list stays at the top.
+     - Below it, a **"Halloween events, town by town"** section has one
+       `<section id="<region-id>">` per town that has events. Towns
+       without events get no empty section.
+     - `select_halloween_events()` matches titles only, from today
+       through November 1, soonest first, capped at 12 per town. A
+       description saying "costumes welcome" is much looser than a title,
+       so descriptions don't count. The keywords are halloween,
+       trick-or-treat, trunk-or-treat, costume, haunted, pumpkin and
+       spooky. "monster" was left out because it matches non-Halloween
+       titles (Monster Jam, Cookie Monster).
+     - Each event links to its card on the town's page (item 228's
+       anchors), and the page carries Event JSON-LD with item 238's
+       locations and offsets.
+     - Simulated against the live `calendar.ics` exports:
+       - **Palatine:** Halloween Hustle, a Trunk-or-Treat and Community
+         Meal, Pirate Pete's Trick-or-Treat Festival, and the Village's
+         own "Village Trick-or-Treating Hours" entry.
+       - **Mount Prospect:** six events, including the Downtown
+         Merchants Trick-or-Treat.
+       - **Des Plaines:** three.
+       - **Wheeling:** one.
+       - **Arlington Heights:** none in that build, because its Park
+         District feed (the source of its Trunk or Treat) had a one-off
+         transport failure there. It returns on the next good fetch.
+     - Also fixed: two docstrings (`build_event_json_ld`,
+       `_event_list_item`) still said no `location` is emitted, which has
+       been untrue since item 238.
 
 Competitors reviewed this pass: **municipal trick-or-treat policies**
 (Des Plaines sets no official hours; Wheeling's standing 3–7 p.m.),

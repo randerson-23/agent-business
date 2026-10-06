@@ -334,7 +334,8 @@ evergreen:
 # "Halloween Trick or Treat Hours ~ 3:00pm -8:00pm" gives its standing
 # hours. Nothing found yet is dated 2026 - search's "Friday, October 31st"
 # is a 2025 weekday (item 219) - so the note says so until the 2026 post
-# confirms it. config/url_probes.yaml checks the newer calendar entry.
+# confirms it. The newer calendar entry search found (Event/22639) is
+# a 404 from a GitHub runner (probe round 12, 2026-10-05).
 trick_or_treat:
   url: "https://www.mountprospect.org/Home/Components/Calendar/Event/10985/1044"
   hours: "3:00–8:00 PM, Saturday, October 31"

@@ -1023,10 +1023,60 @@ def prepare_trick_or_treat(region_cfg: dict) -> dict | None:
     if not tot or not isinstance(tot, dict) or not tot.get("url"):
         return None
     hours = (tot.get("hours") or "").strip() or None
+    # ROADMAP.md item 241: a town that never sets hours (Des Plaines) is a
+    # different answer from one that hasn't posted them yet.
+    no_official_hours = bool(tot.get("no_official_hours")) and not hours
     # ROADMAP.md item 218: a one-line caveat for hours that are a standing
-    # rule rather than this year's announcement. Meaningless without hours.
-    note = (tot.get("note") or "").strip() or None if hours else None
-    return {"url": tot["url"], "hours": hours, "note": note}
+    # rule rather than this year's announcement, or for what a town with
+    # no official hours recommends instead.
+    note = (tot.get("note") or "").strip() or None if (hours or no_official_hours) else None
+    return {"url": tot["url"], "hours": hours, "no_official_hours": no_official_hours, "note": note}
+
+
+# ROADMAP.md item 243: the dated Halloween events a parent searching for
+# trick-or-treat hours also wants. Matched on the title only - a detail
+# line mentions "costume" or "pumpkin" far more loosely than a title does.
+HALLOWEEN_TITLE = re.compile(
+    r"\b(halloween|trick[- ]?or[- ]?treat\w*|trunk[- ]?or[- ]?treat\w*|costumes?|haunted|pumpkins?|spooky)\b",
+    re.IGNORECASE,
+)
+HALLOWEEN_EVENTS_PER_TOWN = 12
+
+
+def select_halloween_events(blocks: list[dict], local_today: date) -> list[dict]:
+    """A town's dated Halloween events from today through November 1
+    (ROADMAP.md item 243), soonest first, capped so one busy library
+    calendar can't bury the other towns on /trick-or-treat/."""
+    start = max(local_today, date(local_today.year, 10, 1))
+    end = date(local_today.year, 11, 1)
+    picked = []
+    for block in blocks:
+        for event in block.get("events", []):
+            if not (event.get("title") and event.get("url") and event.get("date_iso")):
+                continue
+            try:
+                day = datetime.fromisoformat(event["date_iso"]).date()
+            except ValueError:
+                continue
+            if start <= day <= end and HALLOWEEN_TITLE.search(event["title"]):
+                picked.append(event)
+    picked.sort(key=lambda e: e["date_iso"])
+    return picked[:HALLOWEEN_EVENTS_PER_TOWN]
+
+
+def build_halloween_json_ld(entries: list[dict]) -> str | None:
+    """Event markup for the Halloween events listed on /trick-or-treat/
+    (ROADMAP.md item 243). Each event's `url` is its card on the town's
+    own page, as in events.json."""
+    graph = [
+        _event_list_item(e, entry["region_url"], 0)["item"]
+        for entry in entries
+        for e in entry.get("events") or []
+    ]
+    if not graph:
+        return None
+    payload = {"@context": "https://schema.org", "@graph": graph}
+    return json.dumps(payload, ensure_ascii=False).replace("</", "<\\/")
 
 
 _COUNT_WORDS = {2: "Two", 3: "Three", 4: "Four", 5: "Five", 6: "Six", 7: "Seven", 8: "Eight", 9: "Nine", 10: "Ten"}
@@ -1050,6 +1100,8 @@ def render_trick_or_treat_page(entries: list[dict], now: datetime, analytics: di
         entries=entries,
         towns_label=f"{_COUNT_WORDS.get(count, str(count))} Towns" if count != 1 else "One Town",
         town_names=_join_names([e["region_name"] for e in entries]),
+        any_events=any(e.get("events") for e in entries),
+        event_json_ld=build_halloween_json_ld(entries),
         hub_url=SITE_BASE_URL,
         canonical_url=SITE_BASE_URL + "trick-or-treat/",
         generated_at=now.strftime("%Y-%m-%d %H:%M UTC"),
@@ -1825,17 +1877,8 @@ def build_event_json_ld(blocks: list[dict], page_url: str | None = None, region:
     them apart here). Returns None when there's nothing to embed rather
     than emitting an empty, pointless script block.
 
-    No `location` is emitted: we don't have structured per-venue addresses
-    from the fetchers, only the region (town + state + zip). Region-level
-    location used to be emitted as an honest approximation - fine while
-    the worst case was "less precise than it could be." ROADMAP.md's
-    seventh research pass flagged that this stops being sound once AI
-    systems cross-reference schema claims against live sources: an event
-    at a specific venue, marked up with the town centre as its location,
-    reads as *wrong* rather than *approximate*. A missing property costs
-    a rich-result opportunity; a false one costs trust - so this omits
-    location entirely rather than asserting one it can't back up. Revisit
-    once real per-venue addresses exist (Phase 8's parked geocoding note).
+    `location` comes from schema_location() (ROADMAP.md item 238): the
+    source's configured venue, else the town, never an invented address.
     """
     events = [e for b in blocks for e in b["events"] if e.get("title") and e.get("url") and e.get("date_iso")]
     if not events:
@@ -2405,9 +2448,8 @@ EVENTS_JSON_DAYS = 14
 
 def _event_list_item(event: dict, page_url: str, position: int) -> dict:
     """One schema.org ListItem wrapping an Event. `url` is the event's card
-    on this site (item 228's anchor), with the source in `sameAs`. Like
-    build_event_json_ld, no `location`: only the town is known, and a
-    town asserted as an event's location reads as wrong, not approximate."""
+    on this site (item 228's anchor), with the source in `sameAs`, and
+    `location` from schema_location() (item 238)."""
     entry = {
         "@type": "Event",
         "name": event["title"],
@@ -3390,6 +3432,7 @@ def main() -> None:
         if trick_or_treat:
             trick_or_treat_entries.append(
                 {
+                    "region_id": region_id,
                     "region_name": region["name"],
                     "region_url": SITE_BASE_URL + region_id + "/",
                     **trick_or_treat,
@@ -3482,6 +3525,13 @@ def main() -> None:
         # Copies, so later page renders re-assigning anchor_id on the shared
         # event objects can't change the site-wide index built after the loop.
         upcoming = [dict(e, town=e.get("town") or region["name"], state=e.get("state") or region.get("state")) for e in upcoming]
+        # ROADMAP.md item 243: copied now, while anchor_id matches this
+        # town's index page, like `upcoming` above.
+        if trick_or_treat:
+            trick_or_treat_entries[-1]["events"] = [
+                dict(e, town=e.get("town") or region["name"], state=e.get("state") or region.get("state"))
+                for e in select_halloween_events(blocks, local_today)
+            ]
         events_json_groups.append((region["name"], region_page_url, upcoming))
         (region_dir / "events.json").write_text(
             build_events_json([(region["name"], region_page_url, upcoming)], f"Upcoming events in {region['name']} — {SITE_NAME}", now),

@@ -162,7 +162,9 @@ evergreen:
 # October 31, as guidance rather than an ordinance. Part of its body still
 # reads as 2025 (a Trunk-or-Treat on "Saturday, Oct. 25th"; 2026's is
 # Saturday, October 24), so the note marks the hours as the standing
-# recommendation. config/url_probes.yaml checks the page text.
+# recommendation. Probe round 12 (2026-10-05) confirmed the page is
+# 2026's (it mentions "a potential 2026 participation") and that the
+# hours are standing guidance with "no official policy or ordinance".
 trick_or_treat:
   url: "https://www.vah.com/news_detail_T13_R32.php"
   hours: "3:00–7:00 PM, Saturday, October 31"

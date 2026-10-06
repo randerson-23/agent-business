@@ -162,9 +162,17 @@ evergreen:
 
 # Structured trick-or-treat data (ROADMAP.md Phase 11 #101) - see the
 # Mount Prospect config for the rationale.
+#
+# Wheeling (ROADMAP.md item 241): the Village's own news post "Trick-or-
+# Treat hours are 3:00-7:00 PM on October 31st" and its calendar entries
+# from several years (EIDs 718, 1204, 1841) all give 3-7 p.m. None is
+# dated 2026, so the note says so; the 2026 entry should arrive through
+# the Village's Main Calendar iCal, already a configured source, and then
+# show in the page's own Halloween events list.
 trick_or_treat:
-  url: "https://www.wheelingil.gov/calendar.aspx"
-  hours: null
+  url: "https://www.wheelingil.gov/CivicAlerts.aspx?AID=226"
+  hours: "3:00–7:00 PM, Saturday, October 31"
+  note: "The Village's standing hours, not yet confirmed for 2026."
 
 # Seasonal/evergreen guides (ROADMAP.md Phase 11 #5) - same civic-
 # source-only approach as the other three regions' guides.
