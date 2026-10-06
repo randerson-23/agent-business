@@ -13393,6 +13393,112 @@ Palatine Rotary's Oktoberfest; Rotary and Lions pancake breakfasts), and
 files item 230 just published.
 
 
+#### Research pass 2026-10-06 (fifty-eighth pass)
+
+The build loop shipped item 238 (#283, with a regression fix in #284).
+**All 218 events in `events.json` now carry a `location`**, and no
+placeholder midnights remain. That closes the gap that kept the site's
+Event markup out of Google's event results. One sub-point is still
+open: `isAccessibleForFree` appears on only **6** events, and that
+number did not move. Item 218 also shipped for three towns:
+**Arlington Heights 3–7, Mount Prospect 3–8 and Palatine 3–7 p.m. on
+Saturday, October 31** (the weekday is correct). Des Plaines and
+Wheeling are still `null`, and this pass found both answers.
+
+| Angle | Finding | Consequence |
+|---|---|---|
+| **Des Plaines trick-or-treat** | The City's own "Halloween in Des Plaines" page (police department) says **Des Plaines does not set designated trick-or-treat hours**. It recommends daylight hours, or being home by dusk. Related dated events: the **Des Plaines Park District Trunk or Treat** (`dpparks.org/event/trunk-or-treat/`), and Des Plaines Public Library "Trick or Treat" and "Halloween Fun!" events on `calendar.dppl.org` | `hours: null` is currently showing "not yet posted" for a town that will **never** post hours. The honest value is "no official hours; the City recommends daylight / home by dusk" (item 241) |
+| **Wheeling trick-or-treat** | The Village's own pages (Calendar `EID=1911`, News Flash `AID=226`) state **3:00–7:00 p.m. on October 31**. These are prior-year postings, but they are consistent, and third-party roundups match | Fill in as the Village's standing hours with the same caveat Mount Prospect got. The Village's CivicPlus calendar feed (item 221) should pick up the 2026 posting when it appears (item 241) |
+| **Kids-enrichment franchises' marketing obligations** | Franchise disclosure figures as reported: **Mathnasium** franchisees must spend **at least $6,000 every 3 months** on local advertising (on top of a 2% marketing fee). **Kumon** requires **at least $3,600/year** on local marketing and retention. **Goldfish Swim School** requires **2% of gross sales** on local advertising. **The Little Gym**, up to **~5–6%** of gross | These local businesses are **contractually required** to spend on local marketing, and their customers are exactly this site's audience: families with children in these towns. An Annual Partnership at $1,200/year is a third of a Kumon franchisee's required minimum. `SPONSOR_KIT.md` and `OUTREACH_TEMPLATES.md` mention none of them (item 242) |
+| **The Halloween page as a seasonal landing page (design/UX)** | `/trick-or-treat/` lists official hours only. The feeds already carry dated Halloween events: Mount Prospect's Downtown Trick-or-Treat (Wed Oct 28), Des Plaines' Trunk or Treat and library Halloween events, and others | "Trick or treat hours [town] 2026" is a predictable, once-a-year search peak. A page that answers the hours *and* lists the town's Halloween events within ten miles is the better landing page, and it is built from data already in the pipeline (item 243) |
+
+#### P1 (new)
+
+241. **Finish trick-or-treat hours: Des Plaines and Wheeling.** 25 days
+     to go. Both answers are found above:
+
+     - **Des Plaines:** set the value to the honest state, *"No official
+       trick-or-treat hours. The City recommends trick-or-treating in
+       daylight, home by dusk."*, sourced to the City's "Halloween in
+       Des Plaines" page. This needs a small template change so the page
+       can show a *"no designated hours"* state that is distinct from
+       *"not yet posted"*. A town that never posts hours should not show
+       "not yet posted" forever.
+     - **Wheeling:** *"3:00–7:00 PM, Saturday, October 31"*, as the
+       Village's standing hours, with the same caveat Mount Prospect got,
+       until the 2026 posting appears in the Village's CivicPlus feed.
+
+     Zero owner time. Afterwards, all five towns answer the question the
+     page exists for.
+
+242. **Pitch kids-enrichment franchises first: they are required to
+     spend on local marketing.** This is a sponsor-prospect finding with
+     direct money attached. Franchise agreements for the kids-enrichment
+     chains in these suburbs oblige franchisees to spend on local
+     advertising (figures as reported from franchise disclosure
+     documents):
+
+     | Brand | Local marketing obligation |
+     |---|---|
+     | Mathnasium | ≥ $6,000 every 3 months, plus a 2% marketing fee |
+     | Kumon | ≥ $3,600/year on local marketing and retention |
+     | Goldfish Swim School | 2% of gross sales |
+     | The Little Gym | up to ~5–6% of gross sales |
+
+     Every other prospect category in `SPONSOR_KIT.md` has to *decide* to
+     spend. These have to spend, they have to spend it locally, and their
+     customers are families with children in exactly these towns. A
+     $1,200 Annual Partnership is a third of Kumon's required minimum,
+     and less than one month of Mathnasium's.
+
+     What to build (zero owner time to prepare):
+
+     - **A prospect list** in `OUTREACH_TEMPLATES.md`: the
+       kids-enrichment franchise locations in or bordering the five towns
+       (tutoring, swim schools, gymnastics and play gyms, coding,
+       art/music). Use public location pages only: business name,
+       location address and public business contact page. No personal
+       contact details.
+     - **An outreach variant** that names the obligation without being
+       presumptuous: *"Most franchise agreements set aside a local
+       marketing budget. Here's what $100 a month of it buys you with
+       families within ten miles."* Pair it with item 236's AI-visibility
+       comparison.
+     - **A line in `SPONSOR_KIT.md`** naming kids-enrichment franchises as
+       the primary Annual Partner category.
+
+     The owner sends the emails, a handful at a time, fitting the
+     business plan's "few sponsor emails a month". Sequence them after
+     item 239's spam check, so pitch emails go out on a sending reputation
+     known to be clean.
+
+#### P2 (new)
+
+243. **Turn `/trick-or-treat/` into the town's Halloween page.** This is
+     the design/UX angle. The page answers "what are the hours?" A
+     parent searching in late October also wants "what's on?". Extend it
+     with a per-town list of **dated Halloween events from the existing
+     feeds**, selected by a keyword filter (`halloween`, `trick`,
+     `trunk`, `costume`, `haunted`, `pumpkin`, `monster`), restricted to
+     Oct 15–Nov 1, with item 228's anchors and item 238's locations.
+     Examples already in the data: Mount Prospect's Downtown
+     Trick-or-Treat (Wed Oct 28, 4–6 p.m.), Des Plaines' Park District
+     Trunk or Treat, and the Des Plaines library's Halloween events.
+
+     Give each town section an `id` and keep the hours at the top, since
+     they remain the most-searched fact. Add Event JSON-LD for the listed
+     events, which now carry valid locations. Ship by about October 15 so
+     the page is indexed before the search peak. Zero owner time.
+
+Competitors reviewed this pass: **municipal trick-or-treat policies**
+(Des Plaines sets no official hours; Wheeling's standing 3–7 p.m.),
+**kids-enrichment franchise local-marketing obligations** (Mathnasium,
+Kumon, Goldfish Swim School and The Little Gym, per franchise-disclosure
+reporting; the strongest Annual Partner prospect category found so far),
+and **seasonal landing pages** as the design/UX angle (hours plus dated
+local Halloween events on one page).
+
+
 ## Working agreements for autonomous iteration
 
 - Cadence is once a day at 13:51 UTC, about two hours after the daily
