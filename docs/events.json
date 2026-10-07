@@ -2,8 +2,8 @@
   "@context": "https://schema.org",
   "@type": "ItemList",
   "name": "Upcoming events across every region — Within Ten",
-  "dateModified": "2026-10-07T06:01:56+00:00",
-  "numberOfItems": 231,
+  "dateModified": "2026-10-07T13:35:42+00:00",
+  "numberOfItems": 226,
   "itemListElement": [
     {
       "@type": "ListItem",
@@ -811,9 +811,9 @@
       "position": 36,
       "item": {
         "@type": "Event",
-        "name": "ESL Social Hour",
+        "name": "Using Your Mac: Basics",
         "startDate": "2026-10-09",
-        "url": "https://withintenmiles.com/arlington-heights-60005/#ev-esl-social-hour-2026-10-09",
+        "url": "https://withintenmiles.com/arlington-heights-60005/#ev-using-your-mac-basics-2026-10-09",
         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
         "location": {
           "@type": "Place",
@@ -825,7 +825,7 @@
             "addressRegion": "IL"
           }
         },
-        "sameAs": "https://www.ahml.info/scheduling/reservation/198387"
+        "sameAs": "https://www.ahml.info/scheduling/reservation/231799"
       }
     },
     {
@@ -1180,29 +1180,6 @@
       "position": 52,
       "item": {
         "@type": "Event",
-        "name": "Autumn Harvest",
-        "startDate": "2026-10-10T11:00:00-05:00",
-        "url": "https://withintenmiles.com/arlington-heights-60005/#ev-autumn-harvest-2026-10-10",
-        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "location": {
-          "@type": "Place",
-          "name": "Arlington Heights, IL",
-          "address": {
-            "@type": "PostalAddress",
-            "addressCountry": "US",
-            "addressLocality": "Arlington Heights",
-            "addressRegion": "IL"
-          }
-        },
-        "sameAs": "https://www.ahpd.org/event/autumn-harvest-2026/",
-        "description": "Don’t miss fall family fun with crafts, games, hayrides, a scarecrow building contest, live music and entertainment, and food available for purchase from…"
-      }
-    },
-    {
-      "@type": "ListItem",
-      "position": 53,
-      "item": {
-        "@type": "Event",
         "name": "Afternoon Tea Social",
         "startDate": "2026-10-10T12:00:00-05:00",
         "url": "https://withintenmiles.com/mount-prospect-60056/#ev-afternoon-tea-social-2026-10-10",
@@ -1223,7 +1200,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 54,
+      "position": 53,
       "item": {
         "@type": "Event",
         "name": "The Librarians",
@@ -1246,7 +1223,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 55,
+      "position": 54,
       "item": {
         "@type": "Event",
         "name": "Small Claims Court and Arbitration Proceedings",
@@ -1269,7 +1246,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 56,
+      "position": 55,
       "item": {
         "@type": "Event",
         "name": "Downtown Palatine Grand Re-Opening",
@@ -1292,7 +1269,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 57,
+      "position": 56,
       "item": {
         "@type": "Event",
         "name": "Tech Fair",
@@ -1314,7 +1291,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 58,
+      "position": 57,
       "item": {
         "@type": "Event",
         "name": "Mount Prospect Farmers Market",
@@ -1337,7 +1314,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 59,
+      "position": 58,
       "item": {
         "@type": "Event",
         "name": "Home Maintenance 101",
@@ -1360,7 +1337,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 60,
+      "position": 59,
       "item": {
         "@type": "Event",
         "name": "Tech Assistance",
@@ -1383,7 +1360,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 61,
+      "position": 60,
       "item": {
         "@type": "Event",
         "name": "Kids' Time",
@@ -1405,7 +1382,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 62,
+      "position": 61,
       "item": {
         "@type": "Event",
         "name": "Student and Staff Non-Attendance/Buildings Closed",
@@ -1426,7 +1403,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 63,
+      "position": 62,
       "item": {
         "@type": "Event",
         "name": "No School | Holiday - Indigenous Peoples’ Day",
@@ -1448,7 +1425,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 64,
+      "position": 63,
       "item": {
         "@type": "Event",
         "name": "Holiday Closure - All D211 Buildings Closed",
@@ -1470,7 +1447,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 65,
+      "position": 64,
       "item": {
         "@type": "Event",
         "name": "Columbus Day - Village Offices are Closed for the Columbus Day Holi",
@@ -1493,7 +1470,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 66,
+      "position": 65,
       "item": {
         "@type": "Event",
         "name": "Family Storytime",
@@ -1516,7 +1493,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 67,
+      "position": 66,
       "item": {
         "@type": "Event",
         "name": "Creation Station: Mini Monsters",
@@ -1539,7 +1516,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 68,
+      "position": 67,
       "item": {
         "@type": "Event",
         "name": "Toddler Storytime",
@@ -1562,7 +1539,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 69,
+      "position": 68,
       "item": {
         "@type": "Event",
         "name": "Leslie Goddard as Eleanor Roosevelt",
@@ -1585,7 +1562,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 70,
+      "position": 69,
       "item": {
         "@type": "Event",
         "name": "Gross Science",
@@ -1608,7 +1585,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 71,
+      "position": 70,
       "item": {
         "@type": "Event",
         "name": "Book a Teen Librarian",
@@ -1631,7 +1608,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 72,
+      "position": 71,
       "item": {
         "@type": "Event",
         "name": "Franken-Bully! A Bright Star Theatre Production",
@@ -1654,7 +1631,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 73,
+      "position": 72,
       "item": {
         "@type": "Event",
         "name": "Teen Volunteering",
@@ -1677,7 +1654,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 74,
+      "position": 73,
       "item": {
         "@type": "Event",
         "name": "River Pointe Condo Assoc.",
@@ -1700,7 +1677,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 75,
+      "position": 74,
       "item": {
         "@type": "Event",
         "name": "Understanding Medicare Choices",
@@ -1723,7 +1700,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 76,
+      "position": 75,
       "item": {
         "@type": "Event",
         "name": "Monday Night Book Group",
@@ -1746,7 +1723,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 77,
+      "position": 76,
       "item": {
         "@type": "Event",
         "name": "Dungeons & Dragons",
@@ -1769,7 +1746,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 78,
+      "position": 77,
       "item": {
         "@type": "Event",
         "name": "The Full Job Search Life Cycle",
@@ -1792,7 +1769,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 79,
+      "position": 78,
       "item": {
         "@type": "Event",
         "name": "Read to Learn (District 214)",
@@ -1814,7 +1791,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 80,
+      "position": 79,
       "item": {
         "@type": "Event",
         "name": "Student Non-Attendance/ Institute Day",
@@ -1835,7 +1812,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 81,
+      "position": 80,
       "item": {
         "@type": "Event",
         "name": "No School | Teacher Plan Day",
@@ -1857,7 +1834,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 82,
+      "position": 81,
       "item": {
         "@type": "Event",
         "name": "Teacher Institute - No Classes",
@@ -1879,7 +1856,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 83,
+      "position": 82,
       "item": {
         "@type": "Event",
         "name": "American Legion Commander’s Coffee for All Veterans",
@@ -1903,7 +1880,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 84,
+      "position": 83,
       "item": {
         "@type": "Event",
         "name": "Reading/Literacy Class",
@@ -1926,7 +1903,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 85,
+      "position": 84,
       "item": {
         "@type": "Event",
         "name": "ESL (English as a Second Language) Class - Oakton College",
@@ -1949,7 +1926,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 86,
+      "position": 85,
       "item": {
         "@type": "Event",
         "name": "Meet with Your Government Representatives",
@@ -1972,7 +1949,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 87,
+      "position": 86,
       "item": {
         "@type": "Event",
         "name": "Flu Clinic Sponsored by Senator Laura Murphy",
@@ -1995,7 +1972,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 88,
+      "position": 87,
       "item": {
         "@type": "Event",
         "name": "Baby Storytime",
@@ -2018,7 +1995,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 89,
+      "position": 88,
       "item": {
         "@type": "Event",
         "name": "Makerspace Orientations: On-Zoom 2026-2027",
@@ -2041,7 +2018,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 90,
+      "position": 89,
       "item": {
         "@type": "Event",
         "name": "Toddler Time",
@@ -2064,7 +2041,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 91,
+      "position": 90,
       "item": {
         "@type": "Event",
         "name": "Tuesday Morning Book Discussion: Yesteryear by Caro Burke",
@@ -2087,7 +2064,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 92,
+      "position": 91,
       "item": {
         "@type": "Event",
         "name": "Noisy Time",
@@ -2110,7 +2087,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 93,
+      "position": 92,
       "item": {
         "@type": "Event",
         "name": "Family Storytime",
@@ -2133,7 +2110,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 94,
+      "position": 93,
       "item": {
         "@type": "Event",
         "name": "Rise & Read Morning Book Discussion",
@@ -2156,7 +2133,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 95,
+      "position": 94,
       "item": {
         "@type": "Event",
         "name": "Play and Learn",
@@ -2179,7 +2156,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 96,
+      "position": 95,
       "item": {
         "@type": "Event",
         "name": "Coloring Club",
@@ -2202,7 +2179,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 97,
+      "position": 96,
       "item": {
         "@type": "Event",
         "name": "Big Kids Storytime",
@@ -2225,7 +2202,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 98,
+      "position": 97,
       "item": {
         "@type": "Event",
         "name": "Introduction to Web Resources",
@@ -2249,7 +2226,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 99,
+      "position": 98,
       "item": {
         "@type": "Event",
         "name": "Loteria",
@@ -2272,7 +2249,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 100,
+      "position": 99,
       "item": {
         "@type": "Event",
         "name": "Paper Craft Happy Hour",
@@ -2295,7 +2272,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 101,
+      "position": 100,
       "item": {
         "@type": "Event",
         "name": "Teen Astronaut Food Taste Test",
@@ -2318,7 +2295,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 102,
+      "position": 101,
       "item": {
         "@type": "Event",
         "name": "Tween Dungeons and Dragons",
@@ -2341,7 +2318,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 103,
+      "position": 102,
       "item": {
         "@type": "Event",
         "name": "Book a Teen Librarian",
@@ -2364,7 +2341,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 104,
+      "position": 103,
       "item": {
         "@type": "Event",
         "name": "Spanish Conversation Practice | At the Branch",
@@ -2387,7 +2364,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 105,
+      "position": 104,
       "item": {
         "@type": "Event",
         "name": "Adult Board Game Night",
@@ -2410,7 +2387,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 106,
+      "position": 105,
       "item": {
         "@type": "Event",
         "name": "Resume Review & Career Coaching Appointments",
@@ -2433,7 +2410,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 107,
+      "position": 106,
       "item": {
         "@type": "Event",
         "name": "Adult Astronaut Food Taste Test",
@@ -2456,7 +2433,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 108,
+      "position": 107,
       "item": {
         "@type": "Event",
         "name": "Family LEGO® Club",
@@ -2479,7 +2456,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 109,
+      "position": 108,
       "item": {
         "@type": "Event",
         "name": "Baby Time",
@@ -2501,7 +2478,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 110,
+      "position": 109,
       "item": {
         "@type": "Event",
         "name": "Read to Learn",
@@ -2524,7 +2501,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 111,
+      "position": 110,
       "item": {
         "@type": "Event",
         "name": "Toddler Storytime",
@@ -2547,7 +2524,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 112,
+      "position": 111,
       "item": {
         "@type": "Event",
         "name": "Baby Book Time",
@@ -2570,7 +2547,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 113,
+      "position": 112,
       "item": {
         "@type": "Event",
         "name": "Elected Officials Office Hours",
@@ -2593,7 +2570,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 114,
+      "position": 113,
       "item": {
         "@type": "Event",
         "name": "D15 Job Fair",
@@ -2615,7 +2592,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 115,
+      "position": 114,
       "item": {
         "@type": "Event",
         "name": "Meal Planning on a Budget",
@@ -2638,7 +2615,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 116,
+      "position": 115,
       "item": {
         "@type": "Event",
         "name": "Inglés para Hispanohablantes",
@@ -2661,7 +2638,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 117,
+      "position": 116,
       "item": {
         "@type": "Event",
         "name": "Watercolor Landscape",
@@ -2684,7 +2661,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 118,
+      "position": 117,
       "item": {
         "@type": "Event",
         "name": "Preschool Storytime",
@@ -2707,31 +2684,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 119,
-      "item": {
-        "@type": "Event",
-        "name": "AHPD Senior Art Show",
-        "startDate": "2026-10-14T16:00:00-05:00",
-        "url": "https://withintenmiles.com/arlington-heights-60005/#ev-ahpd-senior-art-show-2026-10-14",
-        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "location": {
-          "@type": "Place",
-          "name": "Arlington Heights, IL",
-          "address": {
-            "@type": "PostalAddress",
-            "addressCountry": "US",
-            "addressLocality": "Arlington Heights",
-            "addressRegion": "IL"
-          }
-        },
-        "sameAs": "https://www.ahpd.org/event/ahpd-senior-art-show/",
-        "description": "Take in an evening of art and enjoyment! Peruse AHPD adult students’ creations at the annual Art Show. Visual art, fiber arts and woodcraft will be on display…",
-        "isAccessibleForFree": true
-      }
-    },
-    {
-      "@type": "ListItem",
-      "position": 120,
+      "position": 118,
       "item": {
         "@type": "Event",
         "name": "Paperback Pals Book Club | Grades 2-3",
@@ -2754,7 +2707,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 121,
+      "position": 119,
       "item": {
         "@type": "Event",
         "name": "Animal Investigators Junior: Jellyfish",
@@ -2777,7 +2730,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 122,
+      "position": 120,
       "item": {
         "@type": "Event",
         "name": "Movie Screening: Project Hail Mary",
@@ -2800,7 +2753,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 123,
+      "position": 121,
       "item": {
         "@type": "Event",
         "name": "The Queer Canvas: LGBTQIA+ Art Club",
@@ -2823,7 +2776,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 124,
+      "position": 122,
       "item": {
         "@type": "Event",
         "name": "Autumnal Pipe Cleaner Bouquets",
@@ -2846,7 +2799,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 125,
+      "position": 123,
       "item": {
         "@type": "Event",
         "name": "Intro to Adobe Premier: Part 1",
@@ -2869,7 +2822,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 126,
+      "position": 124,
       "item": {
         "@type": "Event",
         "name": "Plan Commission Meeting",
@@ -2892,7 +2845,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 127,
+      "position": 125,
       "item": {
         "@type": "Event",
         "name": "Family Storytime",
@@ -2915,7 +2868,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 128,
+      "position": 126,
       "item": {
         "@type": "Event",
         "name": "District 1 and 2 Residents' Advisory Meeting Fall 2026",
@@ -2938,7 +2891,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 129,
+      "position": 127,
       "item": {
         "@type": "Event",
         "name": "Regular Board of Education Meeting",
@@ -2960,7 +2913,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 130,
+      "position": 128,
       "item": {
         "@type": "Event",
         "name": "Foundation Board Meeting",
@@ -2983,7 +2936,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 131,
+      "position": 129,
       "item": {
         "@type": "Event",
         "name": "Back to Basics: Navigating Chrome",
@@ -3006,7 +2959,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 132,
+      "position": 130,
       "item": {
         "@type": "Event",
         "name": "Toddler Time",
@@ -3028,7 +2981,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 133,
+      "position": 131,
       "item": {
         "@type": "Event",
         "name": "Health Exam Due Date",
@@ -3050,7 +3003,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 134,
+      "position": 132,
       "item": {
         "@type": "Event",
         "name": "Reading/Literacy Class",
@@ -3073,7 +3026,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 135,
+      "position": 133,
       "item": {
         "@type": "Event",
         "name": "ESL (English as a Second Language) Class - Oakton College",
@@ -3096,7 +3049,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 136,
+      "position": 134,
       "item": {
         "@type": "Event",
         "name": "Baby Storytime",
@@ -3119,7 +3072,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 137,
+      "position": 135,
       "item": {
         "@type": "Event",
         "name": "Office Hours with Congressman Brad Schneider's Office",
@@ -3142,7 +3095,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 138,
+      "position": 136,
       "item": {
         "@type": "Event",
         "name": "Chat & Play Cafe",
@@ -3165,7 +3118,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 139,
+      "position": 137,
       "item": {
         "@type": "Event",
         "name": "Toddler Time",
@@ -3188,7 +3141,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 140,
+      "position": 138,
       "item": {
         "@type": "Event",
         "name": "Coin Collecting Appraisals",
@@ -3211,7 +3164,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 141,
+      "position": 139,
       "item": {
         "@type": "Event",
         "name": "Tech Assistance",
@@ -3234,7 +3187,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 142,
+      "position": 140,
       "item": {
         "@type": "Event",
         "name": "Family Storytime",
@@ -3257,7 +3210,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 143,
+      "position": 141,
       "item": {
         "@type": "Event",
         "name": "Autumnal Pipe Cleaner Bouquets",
@@ -3280,7 +3233,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 144,
+      "position": 142,
       "item": {
         "@type": "Event",
         "name": "Drop-In Tech Help",
@@ -3303,7 +3256,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 145,
+      "position": 143,
       "item": {
         "@type": "Event",
         "name": "Board of Education Closed Meeting - Board Governance",
@@ -3324,7 +3277,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 146,
+      "position": 144,
       "item": {
         "@type": "Event",
         "name": "Happy Notes",
@@ -3347,7 +3300,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 147,
+      "position": 145,
       "item": {
         "@type": "Event",
         "name": "Unbe-leaf-able Art",
@@ -3370,7 +3323,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 148,
+      "position": 146,
       "item": {
         "@type": "Event",
         "name": "Book a Teen Librarian",
@@ -3393,7 +3346,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 149,
+      "position": 147,
       "item": {
         "@type": "Event",
         "name": "Regular Library Board Meeting",
@@ -3416,7 +3369,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 150,
+      "position": 148,
       "item": {
         "@type": "Event",
         "name": "Career Coaching Appointment",
@@ -3439,7 +3392,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 151,
+      "position": 149,
       "item": {
         "@type": "Event",
         "name": "D211 Board of Education Meeting",
@@ -3461,7 +3414,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 152,
+      "position": 150,
       "item": {
         "@type": "Event",
         "name": "MS Excel: Getting Started",
@@ -3484,7 +3437,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 153,
+      "position": 151,
       "item": {
         "@type": "Event",
         "name": "Library Board of Trustees Open Meeting",
@@ -3507,7 +3460,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 154,
+      "position": 152,
       "item": {
         "@type": "Event",
         "name": "Custom Sweatshirt",
@@ -3530,12 +3483,12 @@
     },
     {
       "@type": "ListItem",
-      "position": 155,
+      "position": 153,
       "item": {
         "@type": "Event",
-        "name": "Senior Center: Travelogue",
+        "name": "First-Time Parents' Meetup",
         "startDate": "2026-10-16",
-        "url": "https://withintenmiles.com/arlington-heights-60005/#ev-senior-center-travelogue-2026-10-16",
+        "url": "https://withintenmiles.com/arlington-heights-60005/#ev-first-time-parents-meetup-2026-10-16",
         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
         "location": {
           "@type": "Place",
@@ -3547,12 +3500,12 @@
             "addressRegion": "IL"
           }
         },
-        "sameAs": "https://www.ahml.info/scheduling/reservation/224945"
+        "sameAs": "https://www.ahml.info/scheduling/reservation/224295"
       }
     },
     {
       "@type": "ListItem",
-      "position": 156,
+      "position": 154,
       "item": {
         "@type": "Event",
         "name": "Baby Book Time",
@@ -3575,7 +3528,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 157,
+      "position": 155,
       "item": {
         "@type": "Event",
         "name": "Storytime Playdate: Space Explorers",
@@ -3598,7 +3551,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 158,
+      "position": 156,
       "item": {
         "@type": "Event",
         "name": "Elephino Trivia",
@@ -3621,7 +3574,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 159,
+      "position": 157,
       "item": {
         "@type": "Event",
         "name": "Toddler Storytime",
@@ -3644,7 +3597,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 160,
+      "position": 158,
       "item": {
         "@type": "Event",
         "name": "Preschool Storytime",
@@ -3667,7 +3620,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 161,
+      "position": 159,
       "item": {
         "@type": "Event",
         "name": "Movie Matinee: West Side Story (2021)",
@@ -3690,7 +3643,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 162,
+      "position": 160,
       "item": {
         "@type": "Event",
         "name": "Family Craft Fridays | At The Branch",
@@ -3713,7 +3666,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 163,
+      "position": 161,
       "item": {
         "@type": "Event",
         "name": "Custom Candy Bag",
@@ -3736,7 +3689,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 164,
+      "position": 162,
       "item": {
         "@type": "Event",
         "name": "Chats & Food",
@@ -3759,30 +3712,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 165,
-      "item": {
-        "@type": "Event",
-        "name": "Oddities Night",
-        "startDate": "2026-10-16T19:00:00-05:00",
-        "url": "https://withintenmiles.com/arlington-heights-60005/#ev-oddities-night-2026-10-16",
-        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "location": {
-          "@type": "Place",
-          "name": "Arlington Heights, IL",
-          "address": {
-            "@type": "PostalAddress",
-            "addressCountry": "US",
-            "addressLocality": "Arlington Heights",
-            "addressRegion": "IL"
-          }
-        },
-        "sameAs": "https://www.ahpd.org/event/oddities-night/",
-        "description": "Step into the strange and mysterious at Oddities Night! Explore unusual objects from local museum collections, enjoy treats and themed drinks and experience a…"
-      }
-    },
-    {
-      "@type": "ListItem",
-      "position": 166,
+      "position": 163,
       "item": {
         "@type": "Event",
         "name": "Indivisible Des Plaines",
@@ -3805,12 +3735,12 @@
     },
     {
       "@type": "ListItem",
-      "position": 167,
+      "position": 164,
       "item": {
         "@type": "Event",
-        "name": "Family Time",
+        "name": "Beginning ESL",
         "startDate": "2026-10-17",
-        "url": "https://withintenmiles.com/arlington-heights-60005/#ev-family-time-2026-10-17",
+        "url": "https://withintenmiles.com/arlington-heights-60005/#ev-beginning-esl-2026-10-17",
         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
         "location": {
           "@type": "Place",
@@ -3822,12 +3752,12 @@
             "addressRegion": "IL"
           }
         },
-        "sameAs": "https://www.ahml.info/scheduling/reservation/224194"
+        "sameAs": "https://www.ahml.info/scheduling/reservation/234242"
       }
     },
     {
       "@type": "ListItem",
-      "position": 168,
+      "position": 165,
       "item": {
         "@type": "Event",
         "name": "Service Hour Drop In",
@@ -3850,7 +3780,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 169,
+      "position": 166,
       "item": {
         "@type": "Event",
         "name": "Friends Book Sale",
@@ -3873,7 +3803,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 170,
+      "position": 167,
       "item": {
         "@type": "Event",
         "name": "St. Paul United Church of Christ Fall Rummage Sale",
@@ -3896,7 +3826,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 171,
+      "position": 168,
       "item": {
         "@type": "Event",
         "name": "Des Plaines Lions Club Volunteer Hour",
@@ -3919,7 +3849,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 172,
+      "position": 169,
       "item": {
         "@type": "Event",
         "name": "Palatine Plaza Fall Fun Fest",
@@ -3942,7 +3872,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 173,
+      "position": 170,
       "item": {
         "@type": "Event",
         "name": "Super Saturday: ¡Being Bilingual Rocks!",
@@ -3965,7 +3895,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 174,
+      "position": 171,
       "item": {
         "@type": "Event",
         "name": "Roper Romp - People Helping People-Palatine",
@@ -3988,30 +3918,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 175,
-      "item": {
-        "@type": "Event",
-        "name": "Tell Your Cellar Story",
-        "startDate": "2026-10-17T14:00:00-05:00",
-        "url": "https://withintenmiles.com/arlington-heights-60005/#ev-tell-your-cellar-story-2026-10-17",
-        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "location": {
-          "@type": "Place",
-          "name": "Arlington Heights, IL",
-          "address": {
-            "@type": "PostalAddress",
-            "addressCountry": "US",
-            "addressLocality": "Arlington Heights",
-            "addressRegion": "IL"
-          }
-        },
-        "sameAs": "https://www.ahpd.org/event/tell-your-cellar-story/",
-        "description": "Step back in time and share your memories of The Cellar, Arlington Heights’ iconic historic music venue! Whether you spent nights in the crowd, worked behind…"
-      }
-    },
-    {
-      "@type": "ListItem",
-      "position": 176,
+      "position": 172,
       "item": {
         "@type": "Event",
         "name": "Build a Pinecone Bird Feeder",
@@ -4034,7 +3941,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 177,
+      "position": 173,
       "item": {
         "@type": "Event",
         "name": "Makerplace Wire Wrapped Jewelry: Symmetrical Ear Wires and Dangle Earrings",
@@ -4056,7 +3963,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 178,
+      "position": 174,
       "item": {
         "@type": "Event",
         "name": "Wicked Good Writing Contest",
@@ -4079,7 +3986,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 179,
+      "position": 175,
       "item": {
         "@type": "Event",
         "name": "Mount Prospect Farmers Market",
@@ -4102,7 +4009,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 180,
+      "position": 176,
       "item": {
         "@type": "Event",
         "name": "Friends Book Sale",
@@ -4125,30 +4032,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 181,
-      "item": {
-        "@type": "Event",
-        "name": "Pumpkin Splash",
-        "startDate": "2026-10-18T13:00:00-05:00",
-        "url": "https://withintenmiles.com/arlington-heights-60005/#ev-pumpkin-splash-2026-10-18",
-        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "location": {
-          "@type": "Place",
-          "name": "Arlington Heights, IL",
-          "address": {
-            "@type": "PostalAddress",
-            "addressCountry": "US",
-            "addressLocality": "Arlington Heights",
-            "addressRegion": "IL"
-          }
-        },
-        "sameAs": "https://www.ahpd.org/event/pumpkin-splash-2026/",
-        "description": "Skip the pumpkin patch and pick your pumpkin in the Arlington Ridge Center Family Activity Pool! Each registered child takes home a real pumpkin to decorate!…"
-      }
-    },
-    {
-      "@type": "ListItem",
-      "position": 182,
+      "position": 177,
       "item": {
         "@type": "Event",
         "name": "MS Excel: Principantes (Spanish)",
@@ -4171,7 +4055,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 183,
+      "position": 178,
       "item": {
         "@type": "Event",
         "name": "Kids' Time",
@@ -4193,7 +4077,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 184,
+      "position": 179,
       "item": {
         "@type": "Event",
         "name": "Wicked Good Writing Contest",
@@ -4216,7 +4100,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 185,
+      "position": 180,
       "item": {
         "@type": "Event",
         "name": "Early Voting",
@@ -4239,7 +4123,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 186,
+      "position": 181,
       "item": {
         "@type": "Event",
         "name": "Family Storytime",
@@ -4262,7 +4146,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 187,
+      "position": 182,
       "item": {
         "@type": "Event",
         "name": "Baby Book Time",
@@ -4285,7 +4169,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 188,
+      "position": 183,
       "item": {
         "@type": "Event",
         "name": "Drop-In Tech Help",
@@ -4308,7 +4192,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 189,
+      "position": 184,
       "item": {
         "@type": "Event",
         "name": "Protect Yourself from Identity Theft",
@@ -4331,7 +4215,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 190,
+      "position": 185,
       "item": {
         "@type": "Event",
         "name": "Toddler Storytime",
@@ -4354,7 +4238,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 191,
+      "position": 186,
       "item": {
         "@type": "Event",
         "name": "Autumnal Pipe Cleaner Bouquets",
@@ -4377,7 +4261,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 192,
+      "position": 187,
       "item": {
         "@type": "Event",
         "name": "Career & Job Counseling @ the library",
@@ -4400,7 +4284,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 193,
+      "position": 188,
       "item": {
         "@type": "Event",
         "name": "Listen to Your Heirlooms",
@@ -4423,7 +4307,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 194,
+      "position": 189,
       "item": {
         "@type": "Event",
         "name": "K9 Reading Buddies",
@@ -4446,7 +4330,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 195,
+      "position": 190,
       "item": {
         "@type": "Event",
         "name": "Animal Investigators Junior: Jellyfish",
@@ -4469,7 +4353,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 196,
+      "position": 191,
       "item": {
         "@type": "Event",
         "name": "Book a Teen Librarian",
@@ -4492,7 +4376,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 197,
+      "position": 192,
       "item": {
         "@type": "Event",
         "name": "Shakespeare Project of Chicago",
@@ -4515,7 +4399,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 198,
+      "position": 193,
       "item": {
         "@type": "Event",
         "name": "Cricut Studio: DIY Stickers",
@@ -4538,7 +4422,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 199,
+      "position": 194,
       "item": {
         "@type": "Event",
         "name": "LEGO League",
@@ -4561,7 +4445,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 200,
+      "position": 195,
       "item": {
         "@type": "Event",
         "name": "Village Board Regular Meeting",
@@ -4584,7 +4468,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 201,
+      "position": 196,
       "item": {
         "@type": "Event",
         "name": "Night Off? Game On!",
@@ -4607,7 +4491,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 202,
+      "position": 197,
       "item": {
         "@type": "Event",
         "name": "MPPL Writers Group",
@@ -4630,7 +4514,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 203,
+      "position": 198,
       "item": {
         "@type": "Event",
         "name": "Resurrection Mary: Chicagos Most Beloved Spirit",
@@ -4653,7 +4537,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 204,
+      "position": 199,
       "item": {
         "@type": "Event",
         "name": "Hot Glue Mask",
@@ -4676,7 +4560,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 205,
+      "position": 200,
       "item": {
         "@type": "Event",
         "name": "Read to Learn (District 214)",
@@ -4698,7 +4582,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 206,
+      "position": 201,
       "item": {
         "@type": "Event",
         "name": "Wicked Good Writing Contest",
@@ -4721,7 +4605,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 207,
+      "position": 202,
       "item": {
         "@type": "Event",
         "name": "Early Voting",
@@ -4744,7 +4628,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 208,
+      "position": 203,
       "item": {
         "@type": "Event",
         "name": "ESL (English as a Second Language) Class - Oakton College",
@@ -4767,7 +4651,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 209,
+      "position": 204,
       "item": {
         "@type": "Event",
         "name": "Reading/Literacy Class",
@@ -4790,7 +4674,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 210,
+      "position": 205,
       "item": {
         "@type": "Event",
         "name": "Baby Storytime",
@@ -4813,7 +4697,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 211,
+      "position": 206,
       "item": {
         "@type": "Event",
         "name": "Toddler Time",
@@ -4836,7 +4720,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 212,
+      "position": 207,
       "item": {
         "@type": "Event",
         "name": "Resources for Illinois Residents",
@@ -4859,7 +4743,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 213,
+      "position": 208,
       "item": {
         "@type": "Event",
         "name": "Family Storytime",
@@ -4882,7 +4766,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 214,
+      "position": 209,
       "item": {
         "@type": "Event",
         "name": "Play and Learn",
@@ -4905,7 +4789,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 215,
+      "position": 210,
       "item": {
         "@type": "Event",
         "name": "Monogrammed Tote Bags",
@@ -4928,7 +4812,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 216,
+      "position": 211,
       "item": {
         "@type": "Event",
         "name": "City of Des Plaines Blood Drive",
@@ -4951,7 +4835,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 217,
+      "position": 212,
       "item": {
         "@type": "Event",
         "name": "Big Kids Storytime",
@@ -4974,7 +4858,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 218,
+      "position": 213,
       "item": {
         "@type": "Event",
         "name": "Elected Officials Office Hours",
@@ -4997,7 +4881,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 219,
+      "position": 214,
       "item": {
         "@type": "Event",
         "name": "Multilingual Family Night @ Lions Park School",
@@ -5018,7 +4902,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 220,
+      "position": 215,
       "item": {
         "@type": "Event",
         "name": "Maker's Place",
@@ -5041,7 +4925,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 221,
+      "position": 216,
       "item": {
         "@type": "Event",
         "name": "Teen Craft: Paint a Pumpkin Goose",
@@ -5064,7 +4948,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 222,
+      "position": 217,
       "item": {
         "@type": "Event",
         "name": "Chapter One Book Club | Grades K-1",
@@ -5087,7 +4971,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 223,
+      "position": 218,
       "item": {
         "@type": "Event",
         "name": "3D Printing for Kids: Intermediate Tinkercad",
@@ -5110,7 +4994,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 224,
+      "position": 219,
       "item": {
         "@type": "Event",
         "name": "DIY Monster Heads",
@@ -5133,7 +5017,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 225,
+      "position": 220,
       "item": {
         "@type": "Event",
         "name": "Book a Teen Librarian",
@@ -5156,7 +5040,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 226,
+      "position": 221,
       "item": {
         "@type": "Event",
         "name": "Stitches on Miner",
@@ -5179,7 +5063,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 227,
+      "position": 222,
       "item": {
         "@type": "Event",
         "name": "Tech in the Forum",
@@ -5202,7 +5086,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 228,
+      "position": 223,
       "item": {
         "@type": "Event",
         "name": "Preserving History with Geoffrey Baer",
@@ -5225,7 +5109,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 229,
+      "position": 224,
       "item": {
         "@type": "Event",
         "name": "FilmTalkTuesdays: Rosemary's Baby (1968)",
@@ -5248,7 +5132,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 230,
+      "position": 225,
       "item": {
         "@type": "Event",
         "name": "Astrology 101: Birth Charts",
@@ -5271,7 +5155,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 231,
+      "position": 226,
       "item": {
         "@type": "Event",
         "name": "Illinois Libraries Present: Geoffrey Baer",

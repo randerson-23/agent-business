@@ -3,8 +3,8 @@
 <channel>
   <title>Within Ten — Upcoming Local Events</title>
   <link>https://withintenmiles.com/</link>
-  <description>Upcoming events across every Within Ten region, soonest first - aggregated automatically from village, library, park district and school-district calendars. This build reached 21 of 26 configured sources.</description>
-  <lastBuildDate>Wed, 07 Oct 2026 06:01:56 +0000</lastBuildDate>
+  <description>Upcoming events across every Within Ten region, soonest first - aggregated automatically from village, library, park district and school-district calendars. This build reached 19 of 26 configured sources.</description>
+  <lastBuildDate>Wed, 07 Oct 2026 13:35:42 +0000</lastBuildDate>
   <item>
     <title>Arlington Heights: Baby Time</title>
     <link>https://www.ahml.info/scheduling/reservation/224128</link>
@@ -270,9 +270,9 @@
     <pubDate>Thu, 08 Oct 2026 19:00:00 +0000</pubDate>
   </item>
   <item>
-    <title>Arlington Heights: ESL Social Hour</title>
-    <link>https://www.ahml.info/scheduling/reservation/198387</link>
-    <guid isPermaLink="true">https://www.ahml.info/scheduling/reservation/198387</guid>
+    <title>Arlington Heights: Using Your Mac: Basics</title>
+    <link>https://www.ahml.info/scheduling/reservation/231799</link>
+    <guid isPermaLink="true">https://www.ahml.info/scheduling/reservation/231799</guid>
     <description></description>
     <pubDate>Fri, 09 Oct 2026 00:00:00 +0000</pubDate>
   </item>
@@ -394,11 +394,12 @@ All proceeds benefit the library. Enter the sale through…</description>
     <pubDate>Sat, 10 Oct 2026 10:00:00 +0000</pubDate>
   </item>
   <item>
-    <title>Arlington Heights: Autumn Harvest</title>
-    <link>https://www.ahpd.org/event/autumn-harvest-2026/</link>
-    <guid isPermaLink="true">https://www.ahpd.org/event/autumn-harvest-2026/</guid>
-    <description>Don’t miss fall family fun with crafts, games, hayrides, a scarecrow building contest, live music and entertainment, and food available for purchase from…</description>
-    <pubDate>Sat, 10 Oct 2026 11:00:00 +0000</pubDate>
+    <title>Mount Prospect: Afternoon Tea Social</title>
+    <link>https://mppl.libnet.info/event/16124662</link>
+    <guid isPermaLink="true">https://mppl.libnet.info/event/16124662</guid>
+    <description>Saturday, October 10 2026 12:00pm - 1:00pm 
+ Come join us for an afternoon event celebrating our One Book, One Village community read!</description>
+    <pubDate>Sat, 10 Oct 2026 12:00:00 +0000</pubDate>
   </item>
 </channel>
 </rss>
