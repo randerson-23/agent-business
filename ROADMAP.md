@@ -13636,7 +13636,7 @@ visitor-side channel the site has never used.
 
 #### P1 (new)
 
-247. **Make /sponsor/ sell the Event Promo that now exists.** Build
+247. ✅ **DONE — Make /sponsor/ sell the Event Promo that now exists.** Build
      loop, templates and `SPONSOR_TIERS` only, no owner time. Four
      changes:
 
@@ -13668,6 +13668,40 @@ visitor-side channel the site has never used.
      promotion partial, and never appears on region pages, in
      `events.json`, or in `llms-full.txt`. A fake event must never leak
      into real data.
+
+     ✅ **Shipped 2026-10-07.**
+     - **Show it.** The Event Promo card now holds a dashed **"Example"**
+       card: *"Featured · Presented by Your Business Name"*, *"Fall Open
+       House & Pumpkin Painting"*, with a placeholder date and blurb, so no
+       real business or real date appears. The label comes from a new
+       shared macro, `templates/_featured.html.j2`, which
+       `region.html.j2` and `merged_hub.html.j2` now call for a real
+       promotion too. No template writes the label by hand any more, and a
+       test fails if one does. The email templates keep the same words in
+       their own inline-styled table markup.
+     - **Say what it delivers.** The card and `SPONSOR_KIT.md` now read:
+       *"Your event goes first on your town's page, and first in the
+       weekend list and weekly email when it falls on a weekend, labelled
+       'Presented by [you]' and marked as sponsored in the event data AI
+       assistants read. Runs until the event day. We guarantee the
+       placement, not any assistant's mention."* The "when it falls on a
+       weekend" clause is there because the emails only list the coming
+       weekend, so the item's draft ("in the weekly email") would have
+       overpromised for a Wednesday event.
+     - **Plain words.** "Gated by:" is now **"Value grows with:"** on the
+       page and in `SPONSOR_KIT.md`'s column header.
+     - **Payment line.** `build_payment_line()` says *"Payment:
+       Venmo/Zelle/check."* until a Payment Link is set. Once one is, it
+       names exactly the tiers that have a Buy-now button: *"Card (Stripe)
+       on Event Promo and Weekly Spot; Venmo, Zelle or check for anything
+       else."*, or just *"…on Event Promo;…"* if only one is set, so the
+       sentence always matches the buttons on the page.
+     - **Leak guard.** The sample lives in `SAMPLE_PROMOTION_EVENT`,
+       referenced only by its definition and `render_sponsor_page`. A test
+       checks it is absent from a region page, `events.json` and
+       `llms-full.txt`, and fails if a third reference to it appears.
+     - 7 new tests (`tests/test_sponsor_page_event_promo.py`), one updated;
+       641 pass.
 
 #### P2 (new)
 

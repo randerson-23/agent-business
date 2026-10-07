@@ -1,3 +1,4 @@
+{% from "_featured.html.j2" import featured_label -%}
 <!doctype html>
 <html lang="en">
 <head>
@@ -143,6 +144,15 @@
   .tier .price { color: var(--accent-2-text); font-weight: 700; font-size: 14px; margin-bottom: 2px; }
   .tier .gated-by { color: var(--muted); font-size: 11.5px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.03em; margin-bottom: 8px; }
   .tier p.detail { margin: 0; color: var(--muted); font-size: 13.5px; }
+  /* ROADMAP.md item 247: a sample of what the Event Promo looks like on a
+     town page. Same label markup as the real card (templates/_featured.html.j2),
+     visibly marked "Example" so it can never be mistaken for a listing. */
+  .sample-card { margin-top: 14px; padding: 12px 14px; border: 1px dashed var(--border); background: var(--bg); }
+  .sample-card .sample-tag { display: inline-block; font-size: 11px; font-weight: 800; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); margin-bottom: 6px; }
+  .sample-card .featured-label { color: var(--accent-2-text); font-size: 11px; font-weight: 800; letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 2px; }
+  .sample-card .date { color: var(--muted); font-size: 12.5px; }
+  .sample-card h4 { margin: 2px 0 4px; font-size: 15px; }
+  .sample-card p { margin: 0; color: var(--muted); font-size: 13px; }
 
   .stat-line {
     display: flex;
@@ -235,13 +245,22 @@
         {% if tier.recommended %}<span class="tier-badge">Recommended</span><br>{% endif %}
         <h3>{{ tier.name }}</h3>
         <div class="price">{{ tier.price }}</div>
-        {% if tier.gated_by %}<div class="gated-by">Gated by: {{ tier.gated_by }}</div>{% endif %}
+        {% if tier.gated_by %}<div class="gated-by">Value grows with: {{ tier.gated_by }}</div>{% endif %}
         <p class="detail">{{ tier.detail }}</p>
+        {% if tier.payment_key == "event_promo" and sample_event %}
+        <div class="sample-card" role="group" aria-label="Example of a featured event">
+          <span class="sample-tag">Example</span>
+          {{ featured_label(sample_event.sponsored_by) }}
+          <div class="date">{{ sample_event.date_label }}</div>
+          <h4>{{ sample_event.title }}</h4>
+          <p>{{ sample_event.detail }}</p>
+        </div>
+        {% endif %}
         {% if tier.buy_url %}<p style="margin: 12px 0 0;"><a class="cta" href="{{ tier.buy_url }}" rel="noopener">Buy now &rarr;</a></p>{% endif %}
       </div>
       {% endfor %}
     </div>
-    <p class="note" style="margin-top: 12px;">Payment: Venmo/Zelle/check. Annual and month-to-month options — no long-term contract on Weekly Spot or Event Promo, cancel anytime.</p>
+    <p class="note" style="margin-top: 12px;">{{ payment_line }} Annual and month-to-month options — no long-term contract on Weekly Spot or Event Promo, cancel anytime.</p>
     <p class="note" style="margin-top: 8px;"><strong>Founding partner rate:</strong> the first 3 businesses per region get 25% off Annual Partner or Neighborhood Authority, held for your first two years, in exchange for a short testimonial and permission to name you as a founding partner. Ask when you reach out how many spots remain in your region.</p>
   </section>
 

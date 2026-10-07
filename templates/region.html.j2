@@ -1,3 +1,4 @@
+{% from "_featured.html.j2" import featured_label -%}
 <!doctype html>
 <html lang="en">
 <head>
@@ -901,7 +902,7 @@
           <button type="button" class="tray-star" data-item='{{ tray_item | tojson }}' aria-pressed="false" aria-label="Add {{ item.title }} to My Weekend">☆</button>
           {% endif %}
           {% if item.attendable == false %}<div class="informational-label">Informational</div>{% endif %}
-          {% if item.sponsored_by %}<div class="featured-label">Featured · Presented by {{ item.sponsored_by }}</div>{% endif %}
+          {% if item.sponsored_by %}{{ featured_label(item.sponsored_by) }}{% endif %}
           {% if item.series %}<div class="series">{{ item.series }}</div>{% endif %}
           {% if item.date %}<div class="date">{% if item.date_iso %}<time datetime="{{ item.date_iso }}">{{ item.date_label or item.date }}</time>{% else %}{{ item.date }}{% endif %} · <span class="where">{{ region.name }}</span></div>{% endif %}
           <h3>{% if item.url %}<a href="{{ item.url }}">{{ item.title }}</a>{% else %}{{ item.title }}{% endif %}</h3>

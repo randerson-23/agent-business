@@ -1,0 +1,8 @@
+{#- ROADMAP.md items 245 and 247: the one place the paid-placement label is
+    written for HTML pages. region.html.j2 and merged_hub.html.j2 call it for
+    a real promotion and sponsor.html.j2 calls it for the "Example" card, so
+    the preview a buyer sees cannot drift from the product. (The email
+    templates carry the same words in inline-styled table markup.) -#}
+{% macro featured_label(sponsored_by) -%}
+<div class="featured-label">Featured · Presented by {{ sponsored_by }}</div>
+{%- endmacro %}

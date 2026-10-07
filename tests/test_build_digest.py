@@ -186,10 +186,13 @@ def test_render_sponsor_page_labels_each_tier_by_what_gates_it():
     # ROADMAP.md Phase 11 #118: newsletter tiers are audience-gated, but
     # the two membership tiers are delivered by the site itself (traffic
     # and search presence), not by list size - each tier card should say
-    # which one applies, matching SPONSOR_KIT.md's "Gated by" column.
+    # which one applies, matching SPONSOR_KIT.md's "Value grows with" column
+    # (renamed from "Gated by" in item 247: to a buyer "gated" read as
+    # "unavailable").
     html = build_digest.render_sponsor_page([], datetime.now(timezone.utc))
-    assert html.count("Gated by: Newsletter reach") == 2  # Event Promo, Weekly Spot
-    assert html.count("Gated by: Site traffic &amp; search presence") == 2  # Annual Partner, Neighborhood Authority
+    assert "Gated by" not in html
+    assert html.count("Value grows with: Newsletter reach") == 2  # Event Promo, Weekly Spot
+    assert html.count("Value grows with: Site traffic &amp; search presence") == 2  # Annual Partner, Neighborhood Authority
 
 
 def test_render_sponsor_page_states_the_founding_partner_rate():

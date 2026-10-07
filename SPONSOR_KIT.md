@@ -86,9 +86,9 @@ instead of needing to be re-sold every week. Prefer to start smaller?
 Weekly Spot and Event Promo get the same recommendation on a shorter
 commitment.
 
-| Placement | Price | Gated by | Details |
+| Placement | Price | Value grows with | Details |
 |---|---|---|---|
-| **Event Promo** | $20 one-time | Newsletter reach | Your single event or announcement boosted to the top of "This Week." |
+| **Event Promo** | $20 one-time | Newsletter reach | Your event goes first on your town's page, and first in the weekend list and weekly email when it falls on a weekend, labelled "Presented by [you]" and marked as sponsored in the event data AI assistants read. Runs until the event day. We guarantee the placement, not any assistant's mention. |
 | **Weekly Spot** | $50 / week, or $175 / month (4 weeks) | Newsletter reach | Top-of-page banner with your business name, a 2-sentence blurb, and a link, on that week's issue. Not ready for a year? Start here. |
 | **Annual Partner** ⭐ recommended | $1,200 / year | Site traffic & search presence | A permanent listing on the region's business directory, a spotlight placement inside one relevant seasonal guide, a live SEO backlink, and priority consideration for Editor's Pick. |
 | **Neighborhood Authority** | $5,000 / year, one business per region | Site traffic & search presence | Everything in Annual Partner, held exclusively for your region year-round. Built for real estate and other locally-budgeted categories after neighborhood-level presence, not just leads. |
