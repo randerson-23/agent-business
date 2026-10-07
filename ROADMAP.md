@@ -258,9 +258,15 @@ that limit.
    - The **`withintenmiles.com` sending domain shows as verified** (item 47).
    - Settings → Subscribing → **Welcome**: enable one welcome email if the
      free plan allows it (item 106).
+   - After the first real signup, open that subscriber and check that its
+     **town tag and UTM fields** arrived (item 252).
 6. **Create the event-submission Google Form (10 min, item 246)**, once
    the build loop has the CSV reader ready. Organisers can then list
    events without a GitHub account.
+   **Same sitting, once item 253 ships (10 min):** create a Pinterest
+   business account, paste its domain-verify code into
+   `config/analytics.yaml`, and add `https://withintenmiles.com/pins.xml`
+   under Auto-publish. It then posts a weekend Pin per town by itself.
 7. **Cloudflare DMARC Management (1 min, item 156).** A dashboard
    toggle that gives deliverability reports. Do it before any
    press-driven spike.
@@ -13800,6 +13806,123 @@ page itself** as the design/UX angle. Re-checks: the Mount Prospect
 head-term results (Patch plus foreign-domain Eventbrite; site still
 absent) and Google's 2026 structured-data removals (FAQ gone, Event
 not affected as far as primary coverage shows).
+
+
+#### Research pass 2026-10-07, evening (sixty-first pass)
+
+The build loop cleared all three of the morning pass's build items
+(247 on /sponsor/, 248 and 249 in `OUTREACH_TEMPLATES.md`). The selling
+side is now ahead of the audience side: the site can show, price and
+deliver a $20 placement, but the list is still one subscriber. This pass
+looks at the audience side: where a visitor can actually sign up, how
+to prove which town a subscriber belongs to, and one channel that reads
+an RSS feed and needs no owner time each week.
+
+| Angle | What it is / what we found | Why it matters here |
+|---|---|---|
+| **Where a visitor can sign up (design/UX)** | Counted in the built `docs/`. **`/this-weekend/`, `/trick-or-treat/`, `/free/` and `/today/` have no signup at all**: no form and no link. Those are the pages most likely to be a first visit, since the weekend hub answers the head query and the trick-or-treat page peaks in 24 days. Region pages have the in-page form (item 191's hidden-iframe pending state), but it sits **after all 286 cards** on Mount Prospect, the last 0.7% of the page (item 183's measurement still holds). The only above-the-fold path is item 183's **"Get it by email instead"** link, which sends readers **off-site** to `buttondown.com/andersonryant` | Every subscriber has to come from a page visit, because the plan says there is no organic growth channel. The pages built to attract visits have nowhere to convert them. Published benchmarks conflict and come from tool vendors, but one 2026 publisher report puts **inline content blocks at ~4.2% of readers against ~1.8% for modal popups**. That points to inline placement, not a popup (item 251) |
+| **Buttondown form attribution** | Buttondown's own docs: a hidden input named **`tag`** tags the new subscriber, and hidden **`utm_source` / `utm_campaign`** inputs are stored on the subscriber (form-body values take precedence over the query string). None of the site's forms send either | Without analytics (item 227 is still the owner's), the site cannot say which town a subscriber reads or which page signed them up. A sponsor buying a **regional** slot will ask exactly that: *"how many of your readers are in Mount Prospect?"* Tags answer it from data Buttondown already stores (item 252) |
+| **Pinterest RSS auto-publish** | Pinterest auto-creates Pins from an RSS feed. It requires **a business account and a claimed website**, the feed must be valid XML over HTTPS, and its validator rejects feeds whose **links are not under the claimed domain** and items without images. The site's `feed.xml` has **50 items, every one linking to the publisher's page** (library, park district) and **none carrying an image** | Pinterest is where parents plan seasonal outings (Halloween, holiday lights, fall festivals), and a Pin keeps sending traffic for months. The current feed would fail both checks, so this needs a small dedicated feed, not the existing one (item 253) |
+| **TAPinto** (franchised hyperlocal news, ~95 sites in NJ/NY/PA/FL) | Franchisees pay a fee (reported $5,000 up front plus $600–700/month by territory) and keep about **80% of ad revenue**. Revenue is advertising alone: branded content, sponsorships, email, plus a **self-service platform** where businesses and nonprofits submit sponsored events and press releases. Its **2025 additions were open-house listings and "Deals and Offers"** | Independent confirmation of this pass's and the last two passes' direction: self-serve event promotion (items 244–246) and **realtor open houses as a paid listing** (item 248) are what a 17-year-old hyperlocal network chose to build in 2025. Its franchise model is a non-item. Selling the pipeline to other towns would be a second business with support load, and that conflicts with the near-zero-time constraint |
+| **Re-check: tonight's send** | The Wednesday `37 22 * * 3` send had not started by 23:33 UTC. The workflow's own comment records scheduled runs at 1–7 hours late, and the last two sends ran at 00:51 and 01:32 UTC. The send watchdog (Sunday) covers a missed week | No action. Noted so the next pass checks `send_history.json` for a 2026-10-08 entry |
+
+#### P1 (new)
+
+251. **Put the signup on every page a first visit lands on, inline.**
+     Build loop, templates only. Two changes:
+
+     - **Extract the existing region-page form** (form, pending
+       message, hidden iframe and its script, from item 191) into
+       `templates/_signup.html.j2`, then include it on
+       **`/this-weekend/`, `/trick-or-treat/`, `/free/` and `/today/`**,
+       which have nothing today. Give each page a one-line heading
+       that matches what the visitor came for: trick-or-treat *"Halloween
+       is a Saturday this year. Get the weekend's events by email on
+       Thursday."*; this-weekend *"Get this list every Thursday."*;
+       free *"Free things to do, every Thursday."* Keep the headline
+       copy in the template, not in config.
+     - **Add one mid-list placement on region pages**, after the
+       "This weekend" block and before the long tail of later events,
+       using the same partial. Keep the bottom form. Replace the
+       above-the-fold **"Get it by email instead"** link's off-site
+       target with an in-page anchor to that block (`#newsletter-signup`),
+       so the first click keeps the reader on the domain.
+
+     One inline block per page, **no popup, no modal, no
+     scroll-triggered overlay**, consistent with item 157's one dominant
+     call to action per screen. Tests: each of the four pages contains
+     the form exactly once, the region page contains it twice with
+     distinct element ids (the `id="bd-email"` and `id="newsletter-signup"`
+     attributes must not repeat on one page), and the iframe and script
+     appear once per page. Verify at 390px with Playwright, as item 183
+     did, that the mid-list block lands in the first two screens of the
+     Mount Prospect page.
+
+#### P2 (new)
+
+252. **Tag every signup with its town and its page, so the list can say
+     where its readers are.** Build loop, one partial (item 251's) plus
+     the email footer link:
+
+     - Hidden `tag` input: the region id for region pages
+       (`town:mount-prospect-60056`), and **`town:all`** on the hub,
+       `/this-weekend/`, `/trick-or-treat/`, `/free/` and `/today/`.
+     - Hidden `utm_source=site` and `utm_campaign=<page-type>`
+       (`region`, `region-midlist`, `this-weekend`, `trick-or-treat`,
+       `free`, `today`, `hub`, `guide`).
+     - The email footer's "Forwarded this?" link (item 183) gets
+       `?utm_source=email&utm_campaign=forward`, so forwards are
+       counted too. The query string works on the hosted page.
+
+     Why it matters for revenue: the Weekly Spot and Event Promo are
+     **sold per town**, so the first number a sponsor needs is
+     subscribers in that town. Tags also let a future regional send
+     target one town without a second list. **Owner, 1 minute, once,
+     after the first real signup:** open the subscriber in Buttondown
+     and confirm the tag and UTM fields arrived. Buttondown's docs
+     describe both, but this site has never sent them. If either is
+     missing, tell the build loop, which drops that field rather than
+     guessing at another name.
+
+253. **Feed Pinterest a weekend Pin per town, from a feed built for
+     it.** Build loop: write `docs/pins.xml`, a small RSS 2.0 feed with
+     **one item per region per week**, linking to that region's
+     **`/this-weekend/` page on the site's own domain** (which passes
+     Pinterest's claimed-domain check), with the region's
+     **`docs/og/<region>.png` as an `<enclosure>`**. Add the
+     `/trick-or-treat/` page as one item from Sept 1 to Nov 5, the same
+     season gate as its homepage link. Add an optional
+     `pinterest_domain_verify` key in `config/analytics.yaml` that
+     renders Pinterest's `<meta name="p:domain_verify">` tag on the
+     homepage only when set. Validate the feed in tests (well-formed
+     XML, every link under `withintenmiles.com`, every item has an
+     image).
+
+     **Owner, about 10 minutes, once:** create a Pinterest business
+     account, paste the domain-verify code into `config/analytics.yaml`,
+     then add `https://withintenmiles.com/pins.xml` under *Auto-publish*
+     and pick one board per town. After that it runs itself.
+
+     **Honest about the image:** the OG images are landscape (about
+     1.91:1), and Pinterest favours tall 2:3 images, so these Pins
+     will be small in the grid. Item 216's weekly share card, still
+     open, should be rendered **1000×1500** so that one image serves
+     both Pinterest and social sharing. When 216 ships, `pins.xml`
+     switches its enclosure to that card. Do not build a second image
+     pipeline for this item.
+
+#### Re-ranked
+
+- **Item 216** (weekly share card) moves up in value, since item 253
+  makes its image do double duty. Its priority is unchanged, but the 1000×1500
+  size is now a requirement.
+
+Competitors reviewed this pass: **TAPinto** (franchised hyperlocal
+network; self-serve sponsored events, and 2025 open-house and
+deals listings that confirm items 246 and 248), **Pinterest RSS
+auto-publish** as a no-owner-time discovery channel, **Buttondown's
+form attribution fields**, and **signup placement across the site's
+own pages** as the design/UX angle.
 
 
 ## Working agreements for autonomous iteration
