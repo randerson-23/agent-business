@@ -235,6 +235,9 @@ that limit.
    including Spam, for "this weekend" from Buttondown, and mark any copy
    "Not spam". Both scheduled sends show 1 recipient and 0 opens. This
    needs settling before outreach or press sends anyone to the signup.
+   While in email, **send one test message to `hello@withintenmiles.com`**
+   and confirm it arrives (item 244). The sponsor page and every
+   corrections link now publish that address instead of the Gmail.
 2. **Turn on GoatCounter (5 min, item 227).** Create a free account at
    goatcounter.com and paste the site code into
    `config/analytics.yaml: goatcounter_code`. The site has never measured
@@ -272,7 +275,9 @@ that limit.
    point at the recipient's own listings. In the Experience Mount
    Prospect email, also ask for a feed URL, since its site 403s this
    pipeline (item 192). Add the Mount Prospect Lions Club and Palatine
-   Rotary to the same batch (item 240).
+   Rotary to the same batch (item 240), and the Chicago Northwest
+   visitors bureau once its template exists (item 249). It is the only
+   contact on the list that reaches visitors rather than residents.
 
 **After that:**
 
@@ -13607,6 +13612,135 @@ Links** as the no-code checkout for a static site (re-raised from item
 3; still not set up), and **event submission UX** as the design/UX
 angle (a GitHub-account-gated form with zero real submissions, against
 a no-account form feeding the existing reviewed pipeline).
+
+
+#### Research pass 2026-10-07, morning (sixtieth pass)
+
+Since the last pass the build loop shipped item 245 (the $20 Event Promo
+now renders end to end from one `promotions:` entry) and the build half
+of item 244 (`contact_email` is `hello@withintenmiles.com`, and
+`payment_links` adds a "Buy now" button once the owner pastes in a
+Stripe link). The product exists now. This pass looks at whether anyone
+will buy it: what the sponsor page tells a $20 buyer, which local
+category already pays for exactly this kind of presence, and one
+visitor-side channel the site has never used.
+
+| Angle | What it is / what we found | Why it matters here |
+|---|---|---|
+| **The /sponsor/ page as a $20 buyer sees it (design/UX)** | Read from the built `docs/sponsor/index.html`. The Event Promo card still says only *"boosted to the top of 'This Week'"*. Since item 245 it actually delivers more than that: first place in the region page, both emails, `weekly-summary.txt`, and `llms-full.txt`, plus a Schema.org `sponsor` in the event data. **No card shows what a Featured event looks like.** Every tier carries a **"Gated by: Newsletter reach"** label. That was an honest internal split (item 118), but to a buyer "gated" reads like "unavailable". The payment line says **"Venmo/Zelle/check"** even when a Buy-now button is present. The page's one call to action is the membership-style "Open a sponsor inquiry" | A $20 impulse buy is decided on this page in under a minute. The page undersells what was built, never shows it, and uses internal language. Fixable in templates alone (item 247) |
+| **'Burbs Report / Living Chicago Suburbs** (beehiiv newsletter + Instagram) | A "things to do, food, development, real estate" newsletter for the Chicago suburbs. Its author is **a Keller Williams broker** (REALTOR® Magazine 30 Under 30, 2024; ~$11M volume in 2023) who started the Instagram page to support local businesses and market himself through local content. He is DuPage-based (Glen Ellyn), not in this site's towns | Direct evidence for the business plan's realtor thesis: **agents already spend time and money producing local-events content to stay visible.** That gives `OUTREACH_TEMPLATES.md` §5 a better argument than "presence and authority": *you don't have to run your own; this one already runs itself.* It also suggests a weekly realtor product the plan has missed, the open house (item 248) |
+| **Front Porch Forum** (Vermont hyperlocal forum, public benefit corp.) | Free to residents. Revenue is **local-business ads**, targeted by town and native in format, so they read like posts (CPM from about $10–15), plus **featured directory listings**, a **$9/month business posting upgrade** above a free posting cap, and a **twice-yearly voluntary reader fundraiser** | Confirms the site's own choices: native, labelled placements (the Featured card), and directory listings as a paid product (item 6). The two parts it does not already have, reader contributions and a paid posting cap for organisers, both need an audience it does not have yet (item 250, parked) |
+| **Chicago Northwest CVB** (`chicagonorthwest.com`), visitor channel | The regional visitors bureau has a **"Weekend Events in Chicago Northwest"** page and an annual-festivals page. Its eight member towns include **Arlington Heights**, alongside Elk Grove Village, Itasca, Rolling Meadows, Roselle, Schaumburg, Streamwood and Wood Dale. Mount Prospect, Des Plaines, Palatine and Wheeling are **not** members (consistent with item 112's Restaurant Week correction). Earlier passes only used it as a Restaurant Week date source | The site's Vision names two audiences, locals and **visitors planning a trip across a few nearby towns**. Nothing so far reaches the second. A CVB covers one region's hotels, and its visitors routinely cross into the non-member towns next door, which is the trip this site is built for (item 249) |
+| **Re-check: "things to do in Mount Prospect IL this weekend"** | Still Patch's calendar plus **six Eventbrite results, mostly on foreign domains** (`eventbrite.com.au`, `.ca`, `.co.uk`) for a US query. The site does not appear | The competition for the head term is weak and partly mis-localised. The block is still discovery, not content: the owner's Bing import and Search Console check (items 204, 224, 235) remain the highest-value actions on the whole list |
+| **Re-check: Google structured-data deprecations** | FAQ rich results ended for all sites on **2026-05-07**, and a January 2026 round removed practice problems, nutrition facts, **nearby offers** and a few UI boxes. **Event rich results are not named** in either round as far as the primary coverage (Search Engine Land) shows. One secondary summary wrote "nearby offers and events"; the primary headline does not, so it is treated as unconfirmed | No change needed. The three Arlington Heights guide pages still emit `FAQPage`. Google says unused markup is harmless, and agents still read it, so it stays. Re-check the Event line next pass rather than acting on a secondary source |
+
+#### P1 (new)
+
+247. **Make /sponsor/ sell the Event Promo that now exists.** Build
+     loop, templates and `SPONSOR_TIERS` only, no owner time. Four
+     changes:
+
+     - **Show it.** Under the Event Promo card, render one sample
+       Featured event, labelled **"Example"** and using a made-up but
+       plausible event (no real business named). Render it with
+       **the same macro/partial `region.html.j2` uses for a real
+       promotion**, so the preview cannot drift from the product. A
+       buyer deciding on $20 should see the placement, not read a
+       description of it.
+     - **Say what it actually delivers.** Replace the one-line detail
+       with what item 245 built: *"Featured first on your town's page
+       and in the weekly email, labelled 'Presented by [you]', and
+       marked as sponsored in the event data AI assistants read.
+       Runs until the event day."* Every clause is true today. Keep
+       the "presence, not guaranteed AI mentions" honesty from the
+       business plan.
+     - **Replace "Gated by:" with plain words.** Keep item 118's honest
+       split but change the label to **"Value grows with:"** (newsletter
+       reach / search traffic), so the line reads as an explanation
+       instead of a lock. Update `SPONSOR_KIT.md`'s column header to
+       match.
+     - **Fix the payment line.** When any `payment_links` entry is set,
+       render *"Card (Stripe) on Event Promo and Weekly Spot; Venmo,
+       Zelle or check for anything else."* Otherwise keep the current
+       line. Add a test for both states.
+
+     Tests: the sample card renders with the "Example" label, uses the
+     promotion partial, and never appears on region pages, in
+     `events.json`, or in `llms-full.txt`. A fake event must never leak
+     into real data.
+
+#### P2 (new)
+
+248. **Sell realtors the open house as an Event Promo, and sharpen the
+     §5 pitch.** Realtors are the business plan's named
+     Neighborhood Authority buyer, but $5,000/year is a cold first
+     ask, and the 'Burbs Report shows agents already pay for local
+     presence in time and effort. Two parts, both build loop:
+
+     - **`OUTREACH_TEMPLATES.md` §5a, "Open house this weekend"**: a
+       short note offering a $20 Featured slot for a weekend open
+       house in the agent's own town. It is clearly labelled
+       ("Presented by [agent]"), and one promotion per region per day
+       already caps it (item 245), so readers never see a page of
+       listings. The weekly, cheap, self-serve purchase is how a
+       realtor tries the site before the annual tier.
+     - **§5 itself** gains one paragraph: *"Some agents run their own
+       local newsletter to stay visible. This one already exists,
+       goes out every week, and runs itself. You get the presence
+       without the writing."* No names, and no claim about subscriber
+       numbers the site does not have.
+
+     **Guardrail, stated in the template and in `sponsors.yaml`'s
+     comment:** a promoted open house still has to be a real, dated,
+     public event with an address and time window, the same test as
+     any other promotion. Nothing goes in without a date, so there are
+     no "call me for a valuation" posts. **Dependency:** the owner's
+     Stripe Payment Links (item 244). Until then it is a reply-by-email
+     sale, which is acceptable for a first test.
+
+249. **Reach the visitor audience through Chicago Northwest.** Build
+     loop: add a `§11a` to `OUTREACH_TEMPLATES.md` for the CVB, adapted
+     from §11's civic link-back ask. The CVB's visitors stay in
+     Arlington Heights and Schaumburg hotels and cross into Mount
+     Prospect, Des Plaines, Palatine and Wheeling, which its own
+     calendar does not cover because those towns are not members. The
+     ask is a "nearby towns this weekend" link from its weekend or
+     visitor-resources page to the site's `/this-weekend/` hub. The
+     offer: one page per weekend covering the four non-member towns its
+     calendar cannot, every event linking to its own publisher, with
+     the standard corrections line. Add the CVB to the owner's outreach
+     batch (Needs Ryan step 8), **one email, sent alongside the civic
+     ones**.
+
+     Honest about odds: a CVB exists to promote its members, so it may
+     decline to link outside them. The cost is one email, and the
+     payoff is the only channel on the list that reaches the Vision's
+     second audience. Do **not** add the CVB as a data source:
+     Arlington Heights is already covered from first-party feeds, and a
+     second copy only adds duplicates.
+
+#### P3 / parked (new)
+
+250. **Parked: reader contributions and an organiser posting tier, the
+     Front Porch Forum model.** FPF funds itself partly through a
+     twice-yearly voluntary reader drive and a $9/month upgrade for
+     businesses that post often. Both are real, but both need an
+     audience: a contribution drive to one subscriber is noise, and a
+     posting cap means nothing until item 246's form has real
+     submitters. **Revisit when** the list passes about 500 subscribers
+     (drive) or the form has seen about 20 organiser submissions
+     (posting tier), whichever comes first. Recorded so it is not
+     re-researched from scratch.
+
+Competitors reviewed this pass: **'Burbs Report / Living Chicago
+Suburbs** (a realtor-run suburbs newsletter on beehiiv, evidence for the
+realtor thesis), **Front Porch Forum** (native local-business ads,
+directory listings, a $9/month posting upgrade, reader fundraisers),
+**Chicago Northwest CVB** as a visitor channel, and **the /sponsor/
+page itself** as the design/UX angle. Re-checks: the Mount Prospect
+head-term results (Patch plus foreign-domain Eventbrite; site still
+absent) and Google's 2026 structured-data removals (FAQ gone, Event
+not affected as far as primary coverage shows).
 
 
 ## Working agreements for autonomous iteration
