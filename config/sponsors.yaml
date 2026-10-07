@@ -52,11 +52,50 @@
 # after being left unset deliberately - this is his own contact address,
 # not something the build loop should guess or invent.
 #
-# Stated as "for now": this is a personal Gmail published on a public
-# page, so it will be scraped. Swapping it for a forwarded
-# hello@withintenmiles.com (Cloudflare Email Routing, free) is a one-line
-# change here once that is set up - no other code touches this value.
-contact_email: "andersonryant@gmail.com"
+# Swapped 2026-10-07 (ROADMAP.md item 244) from the personal Gmail to the
+# forwarded hello@withintenmiles.com: Cloudflare Email Routing has been
+# live since September (item 93), and the personal address was published
+# on a public page where it gets scraped. Replies to the newsletter
+# already arrive through the same forward.
+contact_email: "hello@withintenmiles.com"
+
+# Self-serve checkout (ROADMAP.md item 244). Paste a Stripe Payment Link
+# here and /sponsor/ shows a "Buy now" button on that tier; leave it null
+# and the tier shows nothing extra. Payment Links need no server. Their
+# form can ask the buyer for the event name, date and link, which is
+# everything a `promotions:` entry below needs.
+payment_links:
+  event_promo: null
+  weekly_spot: null
+
+# The $20 Event Promo (ROADMAP.md item 245). One entry delivers the
+# product: the event appears FIRST in its region's lists on the site, the
+# weekly email and the weekend summary, labelled "Featured" with the
+# sponsor's name, and carries Schema.org `sponsor` in its JSON-LD and in
+# events.json. Fields:
+#   region:  a region id (must match config/regions/*.yaml)
+#   title:   the event's name
+#   url:     where a reader goes to learn more
+#   date:    the event's day, YYYY-MM-DD
+#   sponsor: who paid, shown as "Presented by <sponsor>"
+#   blurb:   optional one line shown under the title
+#   starts:  optional YYYY-MM-DD, the first day it is featured
+#   ends:    optional YYYY-MM-DD, the last day (default: the event's day)
+# At most ONE promotion per region is featured on a given day, so the
+# list stays useful (the earliest event wins; the rest are skipped with a
+# warning). An entry with a missing field, a date outside its own
+# starts/ends, or an event that has passed is skipped with a warning
+# rather than shown wrong. Nothing here changes which events are
+# fetched, and a paid event never decides the email's subject line.
+promotions: []
+#  - region: mount-prospect-60056
+#    title: "Pancake Breakfast"
+#    url: "https://example.org/pancakes"
+#    date: "2026-10-18"
+#    sponsor: "Example Lions Club"
+#    blurb: "All-you-can-eat, 8 to 11 a.m."
+#    starts: "2026-10-10"
+#    ends: "2026-10-18"
 
 default_house_ad:
   title: "Sponsor this spot"

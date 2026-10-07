@@ -237,6 +237,7 @@
         <div class="price">{{ tier.price }}</div>
         {% if tier.gated_by %}<div class="gated-by">Gated by: {{ tier.gated_by }}</div>{% endif %}
         <p class="detail">{{ tier.detail }}</p>
+        {% if tier.buy_url %}<p style="margin: 12px 0 0;"><a class="cta" href="{{ tier.buy_url }}" rel="noopener">Buy now &rarr;</a></p>{% endif %}
       </div>
       {% endfor %}
     </div>
