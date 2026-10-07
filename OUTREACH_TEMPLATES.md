@@ -111,8 +111,64 @@ authority, being the name families in [region] see every week, not a
 lead-gen funnel. Like most hyperlocal marketing, the return builds over
 time rather than showing up in month one.
 
+Some agents run their own local newsletter to stay visible in a town.
+This one already exists, goes out every week, and runs itself, so you
+get the presence without the writing.
+
 Worth a short call to see if it fits how you're already budgeting for
 [region]? Happy to send a sample issue either way.
+
+Thanks,
+[Your name]
+Within Ten — https://withintenmiles.com/
+
+## 5a. Real estate — "Open house this weekend" ($20 Featured slot) (ROADMAP.md Phase 11 #248)
+
+$5,000 a year is a cold first ask for an agent. The $20 Event Promo is
+the cheap way to try the site first: a weekend open house, featured
+first on the agent's own town's page and in that weekend's list and
+email, labelled "Presented by [agent]". It is the same product item 245
+built and `/sponsor/` now shows an example of, so this email can link
+straight to it.
+
+**The test every promoted open house has to pass** (the same one any
+`promotions:` entry passes, and stated in `config/sponsors.yaml`): it is
+a real, dated, public event, with an address and a time window on the
+listing the Featured card links to. No date, no promotion, so there are
+no "call me for a valuation" posts. Check the listing URL before adding
+the entry. One promotion per town per day is the cap, so readers never
+see a page of listings. If two agents want the same day, the earlier
+event is the one featured and the other is skipped, so confirm the day
+is free before taking payment, and say so if it isn't.
+
+Send it on a Monday or Tuesday, while an agent is lining up the coming
+weekend. Claim nothing about subscriber numbers: the only audience
+claims this site can make are the ones on `/sponsor/`.
+
+Subject: Feature your [town] open house this weekend? ($20)
+
+Hi [Agent Name],
+
+I saw you're holding an open house at [address] on [Saturday/Sunday].
+I run **Within Ten** (https://withintenmiles.com/), a free weekly digest
+of what's happening in [town]: village news, library events and park
+district programs, sent every week and published on the site.
+
+For $20 I can feature your open house first on the [town] page and at the
+top of that weekend's list and email, labelled "Presented by [your name
+or brokerage]". Here's what that looks like on the page:
+https://withintenmiles.com/sponsor/
+
+It has to be a real, public open house with the address and times on
+your listing, and only one event is featured per town per day, so I'll
+confirm your day is free first. Reply with the listing link and the one
+line you'd like under the title, and I'll set it up. [If a Stripe link is
+live: once I've confirmed the day is free, you can pay here:
+[Payment Link].]
+
+If it goes well, the same slot is also available weekly, and there's an
+annual option for agents who want to be the name in [town] all year. No
+pressure on either.
 
 Thanks,
 [Your name]
@@ -368,6 +424,65 @@ or removed, just say so — it's your information, and I'd rather fix it
 than have you find it wrong on your own.
 
 Thanks for everything [Organization Name] does for the town,
+[Your name]
+Within Ten — https://withintenmiles.com/
+
+## 11a. Chicago Northwest visitors bureau — "nearby towns this weekend" (ROADMAP.md Phase 11 #249)
+
+The one contact on the outreach list that reaches **visitors** rather
+than residents: the Vision's second audience, people planning a trip
+across a few nearby towns. Chicago Northwest (`chicagonorthwest.com`) is
+the regional visitors bureau. It has a "Weekend Events in Chicago
+Northwest" page, but its calendar covers its eight member towns. Of this
+site's five, only **Arlington Heights** is a member; **Mount Prospect,
+Des Plaines, Palatine and Wheeling are not** (the same finding as item
+112's Restaurant Week correction). A visitor staying in an Arlington
+Heights or Schaumburg hotel routinely crosses into those four, and the
+bureau's own calendar can't show them what's on there.
+
+The ask is small and specific: a "nearby towns this weekend" link from
+its weekend-events or visitor-resources page to
+`https://withintenmiles.com/this-weekend/`. The offer is one page per
+weekend, rebuilt automatically, that covers the four towns its calendar
+doesn't, plus Arlington Heights, where every event links back to its own
+publisher. Say plainly that the page covers five towns, not four, so the
+bureau doesn't think it is being asked to link to a competitor's
+calendar for its own members.
+
+Be honest about the odds, to yourself and in the email: a visitors
+bureau exists to promote its members, so it may decline to link outside
+them. The cost is one email, and it is the only channel on the list that
+reaches the second audience. **Do not offer it as a data source**:
+Arlington Heights is already covered from first-party feeds, and a second
+copy only adds duplicates. Send it alongside the civic emails in §11
+(one organisation, one email, not as part of a batch), and only after a
+real issue exists to point to (the same precondition as templates 8, 9,
+10 and 11).
+
+Subject: Weekend events in the towns next to your members
+
+Hi [Contact Name],
+
+I run **Within Ten** (https://withintenmiles.com/), a free weekly digest
+of village news, library events and park district programs. Your
+Weekend Events page covers Arlington Heights and your other member
+towns. Visitors staying nearby may well drive into Mount Prospect, Des
+Plaines, Palatine and Wheeling, which aren't on your calendar, and
+I'm not aware of a single place that shows them what's on there.
+
+This weekend's page covers those four towns plus Arlington Heights:
+https://withintenmiles.com/this-weekend/. It rebuilds automatically, and
+every event links straight to the library, village or park district that
+published it. If it would be useful, I'd be glad if you pointed visitors
+to it as a "nearby towns this weekend" link on your weekend-events or
+visitor-resources page.
+
+I know your focus is your member towns, so no hard feelings if this isn't
+a fit. And if anything on the page is wrong or you'd rather an event not
+appear, just tell me and I'll fix or remove it. It's your region's
+information as much as mine.
+
+Thanks for what you do for the area,
 [Your name]
 Within Ten — https://withintenmiles.com/
 

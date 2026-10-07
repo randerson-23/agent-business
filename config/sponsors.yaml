@@ -83,7 +83,10 @@ payment_links:
 #   ends:    optional YYYY-MM-DD, the last day (default: the event's day)
 # At most ONE promotion per region is featured on a given day, so the
 # list stays useful (the earliest event wins; the rest are skipped with a
-# warning). An entry with a missing field, a date outside its own
+# warning). Whoever the sponsor is, the event itself must be a real, dated,
+# public event whose listing at `url` shows its address and time window; a
+# realtor's open house is fine, a "call me for a valuation" post is not
+# (OUTREACH_TEMPLATES.md section 5a). An entry with a missing field, a date outside its own
 # starts/ends, or an event that has passed is skipped with a warning
 # rather than shown wrong. Nothing here changes which events are
 # fetched, and a paid event never decides the email's subject line.
