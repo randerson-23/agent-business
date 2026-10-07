@@ -1470,7 +1470,12 @@ SPONSOR_TIERS = [
         "payment_key": "event_promo",
         "price": "$20 one-time",
         "gated_by": "Newsletter reach",
-        "detail": "Your single event or announcement boosted to the top of \"This Week.\"",
+        "detail": (
+            "Your event goes first on your town's page, and first in the weekend list and weekly email "
+            "when it falls on a weekend, labelled \"Presented by [you]\" and marked as sponsored in the event "
+            "data AI assistants read. Runs until the event day. We guarantee the placement, not any "
+            "assistant's mention."
+        ),
     },
     {
         "name": "Weekly Spot",
@@ -1493,6 +1498,29 @@ SPONSOR_TIERS = [
         "detail": "Everything in Annual Partner, held exclusively for your region year-round — built for real estate and other locally-budgeted categories seeking neighborhood-level presence, not just leads.",
     },
 ]
+
+
+# ROADMAP.md item 247: the "Example" card on /sponsor/. Template-only: it is
+# passed to render_sponsor_page and nowhere else, so it can never reach a
+# region page, events.json or llms-full.txt. No real business or date.
+SAMPLE_PROMOTION_EVENT = {
+    "title": "Fall Open House & Pumpkin Painting",
+    "detail": "Free for families. Your one-line blurb goes here.",
+    "date_label": "Your event's date",
+    "sponsored_by": "Your Business Name",
+}
+
+
+def build_payment_line(tiers: list[dict]) -> str:
+    """The /sponsor/ page's payment sentence (ROADMAP.md item 247). Venmo,
+    Zelle or check until a Stripe Payment Link is configured; once one is,
+    say which tiers take a card so the sentence matches the Buy-now
+    buttons actually on the page."""
+    card_tiers = [t["name"] for t in tiers if t.get("buy_url")]
+    if not card_tiers:
+        return "Payment: Venmo/Zelle/check."
+    joined = " and ".join(card_tiers)
+    return f"Card (Stripe) on {joined}; Venmo, Zelle or check for anything else."
 
 
 SPONSOR_INQUIRY_FIELDS = (
@@ -1612,8 +1640,11 @@ def render_sponsor_page(
 ) -> str:
     env = get_template_env()
     template = env.get_template("sponsor.html.j2")
+    tiers = [{**t, "buy_url": (payment_links or {}).get(t.get("payment_key") or "") or None} for t in SPONSOR_TIERS]
     return template.render(
-        tiers=[{**t, "buy_url": (payment_links or {}).get(t.get("payment_key") or "") or None} for t in SPONSOR_TIERS],
+        tiers=tiers,
+        payment_line=build_payment_line(tiers),
+        sample_event=SAMPLE_PROMOTION_EVENT,
         availability=availability,
         generated_at=now.strftime("%Y-%m-%d %H:%M UTC"),
         canonical_url=SITE_BASE_URL + "sponsor/",
