@@ -3,8 +3,8 @@
 <channel>
   <title>Within Ten — Upcoming Local Events</title>
   <link>https://withintenmiles.com/</link>
-  <description>Upcoming events across every Within Ten region, soonest first - aggregated automatically from village, library, park district and school-district calendars. This build reached 19 of 26 configured sources.</description>
-  <lastBuildDate>Wed, 07 Oct 2026 14:01:01 +0000</lastBuildDate>
+  <description>Upcoming events across every Within Ten region, soonest first - aggregated automatically from village, library, park district and school-district calendars. This build reached 20 of 26 configured sources.</description>
+  <lastBuildDate>Wed, 07 Oct 2026 21:58:43 +0000</lastBuildDate>
   <item>
     <title>Arlington Heights: Baby Time</title>
     <link>https://www.ahml.info/scheduling/reservation/224128</link>
@@ -198,14 +198,6 @@
     <pubDate>Thu, 08 Oct 2026 14:00:00 +0000</pubDate>
   </item>
   <item>
-    <title>Mount Prospect: SCORE Business Mentoring</title>
-    <link>https://mppl.libnet.info/event/16031174</link>
-    <guid isPermaLink="true">https://mppl.libnet.info/event/16031174</guid>
-    <description>Thursday, October 08 2026 3:00pm - 4:00pm 
- Local entrepreneurs and small businesses can get one-on-one support  by meeting with an experienced mentor from…</description>
-    <pubDate>Thu, 08 Oct 2026 15:00:00 +0000</pubDate>
-  </item>
-  <item>
     <title>Des Plaines: Mexican Candy Taste Test for Teens</title>
     <link>https://desplaines.libnet.info/event/16341260</link>
     <guid isPermaLink="true">https://desplaines.libnet.info/event/16341260</guid>
@@ -270,9 +262,9 @@
     <pubDate>Thu, 08 Oct 2026 19:00:00 +0000</pubDate>
   </item>
   <item>
-    <title>Arlington Heights: Senior Center: Travelogue</title>
-    <link>https://www.ahml.info/scheduling/reservation/224944</link>
-    <guid isPermaLink="true">https://www.ahml.info/scheduling/reservation/224944</guid>
+    <title>Arlington Heights: Using Your Mac: Basics</title>
+    <link>https://www.ahml.info/scheduling/reservation/231799</link>
+    <guid isPermaLink="true">https://www.ahml.info/scheduling/reservation/231799</guid>
     <description></description>
     <pubDate>Fri, 09 Oct 2026 00:00:00 +0000</pubDate>
   </item>
@@ -356,9 +348,9 @@
     <pubDate>Fri, 09 Oct 2026 18:30:00 +0000</pubDate>
   </item>
   <item>
-    <title>Arlington Heights: Family Time</title>
-    <link>https://www.ahml.info/scheduling/reservation/224193</link>
-    <guid isPermaLink="true">https://www.ahml.info/scheduling/reservation/224193</guid>
+    <title>Arlington Heights: Games &amp; Gab</title>
+    <link>https://www.ahml.info/scheduling/reservation/221909</link>
+    <guid isPermaLink="true">https://www.ahml.info/scheduling/reservation/221909</guid>
     <description></description>
     <pubDate>Sat, 10 Oct 2026 00:00:00 +0000</pubDate>
   </item>
@@ -392,6 +384,13 @@
  Hosted by the Foundation for the Indian Trails Library.
 All proceeds benefit the library. Enter the sale through…</description>
     <pubDate>Sat, 10 Oct 2026 10:00:00 +0000</pubDate>
+  </item>
+  <item>
+    <title>Arlington Heights: Autumn Harvest</title>
+    <link>https://www.ahpd.org/event/autumn-harvest-2026/</link>
+    <guid isPermaLink="true">https://www.ahpd.org/event/autumn-harvest-2026/</guid>
+    <description>Don’t miss fall family fun with crafts, games, hayrides, a scarecrow building contest, live music and entertainment, and food available for purchase from…</description>
+    <pubDate>Sat, 10 Oct 2026 11:00:00 +0000</pubDate>
   </item>
   <item>
     <title>Mount Prospect: Afternoon Tea Social</title>
