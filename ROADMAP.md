@@ -276,8 +276,8 @@ that limit.
    Prospect email, also ask for a feed URL, since its site 403s this
    pipeline (item 192). Add the Mount Prospect Lions Club and Palatine
    Rotary to the same batch (item 240), and the Chicago Northwest
-   visitors bureau once its template exists (item 249). It is the only
-   contact on the list that reaches visitors rather than residents.
+   visitors bureau (item 249, `OUTREACH_TEMPLATES.md` §11a). It is the
+   only contact on the list that reaches visitors rather than residents.
 
 **After that:**
 
@@ -13705,7 +13705,7 @@ visitor-side channel the site has never used.
 
 #### P2 (new)
 
-248. **Sell realtors the open house as an Event Promo, and sharpen the
+248. ✅ **DONE — Sell realtors the open house as an Event Promo, and sharpen the
      §5 pitch.** Realtors are the business plan's named
      Neighborhood Authority buyer, but $5,000/year is a cold first
      ask, and the 'Burbs Report shows agents already pay for local
@@ -13732,7 +13732,7 @@ visitor-side channel the site has never used.
      Stripe Payment Links (item 244). Until then it is a reply-by-email
      sale, which is acceptable for a first test.
 
-249. **Reach the visitor audience through Chicago Northwest.** Build
+249. ✅ **DONE — Reach the visitor audience through Chicago Northwest.** Build
      loop: add a `§11a` to `OUTREACH_TEMPLATES.md` for the CVB, adapted
      from §11's civic link-back ask. The CVB's visitors stay in
      Arlington Heights and Schaumburg hotels and cross into Mount
@@ -13752,6 +13752,31 @@ visitor-side channel the site has never used.
      second audience. Do **not** add the CVB as a data source:
      Arlington Heights is already covered from first-party feeds, and a
      second copy only adds duplicates.
+
+     ✅ **Shipped 2026-10-07** (items 248 and 249 together, both text in
+     `OUTREACH_TEMPLATES.md`; no code).
+     - **§5a "Open house this weekend"** is the cheap first purchase for an
+       agent: the $20 Featured slot for a real open house, linking to
+       `/sponsor/` where the example card now shows what it looks like.
+       The template states the guardrail: the event must be real, dated and
+       public, with an address and time window on the listing it links to,
+       so there are no "call me for a valuation" posts. The same rule is now
+       written in `config/sponsors.yaml`'s `promotions:` comment. **One
+       correction to the item as filed:** it said one promotion per town per
+       day caps the page; the code features the *earlier event* when two
+       collide, not the first buyer, so the template tells whoever sends it
+       to confirm the day is free before taking payment.
+     - **§5** gains the "some agents run their own local newsletter; this
+       one already exists and runs itself" paragraph. No subscriber
+       numbers, no names.
+     - **§11a, Chicago Northwest.** Asks for one "nearby towns this
+       weekend" link to `/this-weekend/`. The email says plainly that the
+       page covers five towns, Arlington Heights included, not only the
+       four the bureau's calendar misses, so the bureau does not think it
+       is being asked to link to a rival calendar for its own members. It
+       does not offer the site as a data source, and it says no hard
+       feelings if the bureau declines. Needs Ryan step 8 now points at
+       §11a; it is still one email, sent alongside the civic ones.
 
 #### P3 / parked (new)
 
