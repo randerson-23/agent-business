@@ -128,6 +128,13 @@ This weekend in {{ region.name }}
 <tr>
 <td class="wt-border" style="padding:10px 0; border-top:1px solid #d7d3d3;">
 <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+{% if event.sponsored_by %}
+<tr>
+<td class="wt-accent" style="font-family:Arial, Helvetica, sans-serif; font-size:12px; font-weight:bold; letter-spacing:0.5px; text-transform:uppercase; color:#ae1800; padding-bottom:2px;">
+Featured &middot; Presented by {{ event.sponsored_by }}
+</td>
+</tr>
+{% endif %}
 <tr>
 <td class="wt-ink" style="font-family:Arial, Helvetica, sans-serif; font-size:16px; color:#201e1d; padding-bottom:2px;">
 <a href="{{ event.url }}" class="wt-ink" style="color:#201e1d; text-decoration:none; font-weight:bold;">{{ event.title }}</a>

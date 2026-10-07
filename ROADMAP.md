@@ -13463,7 +13463,7 @@ customer actually can.
 
 #### P1 (new)
 
-244. **Let a sponsor pay without an email thread, and stop publishing the
+244. 🟡 **BUILD HALF DONE; owner half open — Let a sponsor pay without an email thread, and stop publishing the
      personal Gmail.** Two parts, one for the build loop and one for
      the owner:
 
@@ -13490,7 +13490,24 @@ customer actually can.
      AI-analytics proxy (item 232), which goes to Parked. Taking money
      outranks measuring bots.
 
-245. **Build the $20 Event Promo so it can actually be delivered.**
+     🟡 **Build half shipped 2026-10-07; the owner half is still open.**
+     - `contact_email` is now `hello@withintenmiles.com`. Every mailto on
+       the site (sponsor inquiry, corrections) uses it, so the personal
+       Gmail is no longer published. **Owner check, 30 seconds:** send one
+       test mail to `hello@withintenmiles.com` and confirm it arrives. MX
+       has been verified since item 93, but whether the forward rule
+       reaches the right inbox has only been shown by newsletter replies.
+       If it does not arrive, revert that one line in
+       `config/sponsors.yaml`.
+     - `config/sponsors.yaml` has `payment_links: {event_promo, weekly_spot}`,
+       both `null`. `/sponsor/` shows a **"Buy now"** button on a tier only
+       when its link is set. Nothing changes on the page until the owner
+       pastes in the two Stripe Payment Link URLs.
+     - **Still the owner's, about 15 minutes:** create the Stripe account
+       and the two Payment Links ($20 Event Promo, $50 Weekly Spot), with
+       the form asking for the event name, date and link.
+
+245. ✅ **DONE — Build the $20 Event Promo so it can actually be delivered.**
      Today it is a pricing-table line with no implementation. What to
      build:
 
@@ -13510,6 +13527,43 @@ customer actually can.
      Zero owner time to build. When a sale comes in (item 244), filling
      in one YAML entry delivers the product. This is the precondition
      for items 208, 240 and 242 producing revenue.
+
+     ✅ **Shipped 2026-10-07.** One `promotions:` entry in
+     `config/sponsors.yaml` (documented there, currently empty) now
+     delivers the product:
+     - **Fields:** `region`, `title`, `url`, `date`, `sponsor`, and
+       optional `blurb`, `starts`, `ends` (default: the event's own day).
+     - **Placement:** `build_promotion_event()` makes an ordinary event
+       dict plus `sponsored_by`, and `apply_promotion()` inserts it as a
+       **"Featured" block first**, after dedupe and the past-event filter,
+       so nothing can drop it. A feed's copy of the same event (same link,
+       or a near-identical title on the same day) is removed so the
+       labelled one is the one shown. Weekend views read blocks in order,
+       so it leads them too.
+     - **Label, everywhere it appears:** *"Featured · Presented by
+       \<sponsor>"* on region and hub cards, in both emails, in
+       `weekly-summary.txt` and in `llms-full.txt`. Its JSON-LD and
+       `events.json` entry carry `sponsor` (an `Organization`). Its
+       `startDate` is the bare date, as item 238 requires for an event
+       with no time.
+     - **Guardrails:** one featured event per region per day (the
+       earliest wins; the others are skipped with a warning). An entry
+       with a missing field, an unreadable date, `ends` before `starts`,
+       or an event before `starts` is skipped with a warning, never shown
+       wrong. It expires automatically.
+     - **Beyond the item's list:** a paid event **never decides the
+       email's subject line** (it is excluded from the per-region and
+       combined subject picks) and is **never the Editor's Pick**. A
+       sponsor's name in a subject line, unlabelled, is the one place the
+       label could not travel with it.
+     - Checked end to end with a temporary entry through a real build: the
+       card, `this-weekend`, the region email, `weekly-summary.txt`,
+       `llms-full.txt`, the page JSON-LD and `events.json` all showed the
+       label and `sponsor`. 14 new tests (`tests/test_promotions.py`); 634
+       pass.
+     - **To use it:** when a $20 order arrives, add one entry and merge.
+       The build loop can do that from the owner's note of the event's
+       details.
 
 246. **Let organisers submit events without a GitHub account, and offer
      the boost right after.** This is the design/UX angle. The current

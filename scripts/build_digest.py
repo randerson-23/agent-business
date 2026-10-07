@@ -1343,6 +1343,98 @@ def build_business_directory(sponsors_cfg: dict, region_id: str) -> list[dict]:
     return directory
 
 
+def _parse_promo_day(value) -> date | None:
+    """A promotion's YYYY-MM-DD field. YAML turns an unquoted date into a
+    date object, so accept that as well as a string."""
+    if isinstance(value, datetime):
+        return value.date()
+    if isinstance(value, date):
+        return value
+    try:
+        return date.fromisoformat(str(value).strip())
+    except (TypeError, ValueError):
+        return None
+
+
+def build_promotion_event(sponsors_cfg: dict, region_cfg: dict, today: date) -> dict | None:
+    """The one paid Event Promo featured for a region today (ROADMAP.md
+    item 245), as an ordinary event dict plus `sponsored_by`, or None.
+
+    A promotion is featured while `starts` <= today <= `ends` (default:
+    from the start, until the event's own day). Anything malformed is
+    skipped with a warning, never shown wrong: a missing field, an
+    unreadable date, an `ends` before `starts`, an event on a day before
+    `starts` (it would be featured only after it happened), or a window
+    that has closed. When several are live for one region, the earliest
+    event is featured and the rest are skipped with a warning - one
+    paid event at the top keeps the list useful.
+    """
+    region = region_cfg["region"]
+    live = []
+    for index, promo in enumerate(sponsors_cfg.get("promotions") or []):
+        if promo.get("region") != region["id"]:
+            continue
+        label = f"promotions[{index}] ({promo.get('title') or 'untitled'})"
+        missing = [f for f in ("title", "url", "date", "sponsor") if not str(promo.get(f) or "").strip()]
+        if missing:
+            logger.warning("Skipping %s: missing %s", label, ", ".join(missing))
+            continue
+        event_day = _parse_promo_day(promo["date"])
+        starts = _parse_promo_day(promo["starts"]) if promo.get("starts") else None
+        ends = _parse_promo_day(promo["ends"]) if promo.get("ends") else event_day
+        if event_day is None or (promo.get("starts") and starts is None) or (promo.get("ends") and ends is None):
+            logger.warning("Skipping %s: a date is not YYYY-MM-DD", label)
+            continue
+        if starts and ends and ends < starts:
+            logger.warning("Skipping %s: ends %s is before starts %s", label, ends, starts)
+            continue
+        if starts and event_day < starts:
+            logger.warning("Skipping %s: the event (%s) is before the promotion starts (%s)", label, event_day, starts)
+            continue
+        if (starts and today < starts) or today > ends or event_day < today:
+            continue
+        live.append((event_day, index, label, promo))
+    if not live:
+        return None
+    live.sort(key=lambda row: (row[0], row[1]))
+    for _day, _index, label, _promo in live[1:]:
+        logger.warning("Skipping %s: %s already has a featured promotion today", label, region["name"])
+    promo = live[0][3]
+    tags = promo.get("tags")
+    event = _build_annual_event_dict(
+        {
+            "title": str(promo["title"]).strip(),
+            "detail": str(promo.get("blurb") or "").strip(),
+            "url": str(promo["url"]).strip(),
+            "tags": tags,
+        },
+        region["name"],
+        date_display=format_event_date(live[0][0].isoformat()),
+        date_iso=live[0][0].isoformat() + "T00:00:00",
+    )
+    event["sponsored_by"] = str(promo["sponsor"]).strip()
+    event["attendable"] = True
+    return event
+
+
+def apply_promotion(blocks: list[dict], promotion: dict | None) -> list[dict]:
+    """A "Featured" block holding `promotion` placed FIRST, after removing
+    the same event if a source also carries it (same link, or a
+    near-identical title on the same day), so the labelled copy is the one
+    shown rather than a bare duplicate beside it."""
+    if not promotion:
+        return blocks
+    day = promotion["date_iso"][:10]
+
+    def same_event(event: dict) -> bool:
+        if event.get("url") and event["url"] == promotion["url"]:
+            return True
+        return (event.get("date_iso") or "")[:10] == day and _is_near_duplicate_title(event.get("title", ""), promotion["title"])
+
+    kept = [{**b, "events": [e for e in b["events"] if not same_event(e)]} for b in blocks]
+    return [{"section": "Featured", "events": [promotion]}] + kept
+
+
 # Keep in sync with SPONSOR_KIT.md's "Placements & pricing" table - that
 # file is the canonical human-facing writeup, this is the same numbers
 # rendered as a live page.
@@ -1375,12 +1467,14 @@ def build_business_directory(sponsors_cfg: dict, region_id: str) -> list[dict]:
 SPONSOR_TIERS = [
     {
         "name": "Event Promo",
+        "payment_key": "event_promo",
         "price": "$20 one-time",
         "gated_by": "Newsletter reach",
         "detail": "Your single event or announcement boosted to the top of \"This Week.\"",
     },
     {
         "name": "Weekly Spot",
+        "payment_key": "weekly_spot",
         "price": "$50/week or $175/month",
         "gated_by": "Newsletter reach",
         "detail": "Not ready for a year? The same top-of-page recommendation, available week-to-week or month-to-month.",
@@ -1514,11 +1608,12 @@ def render_sponsor_page(
     analytics: dict | None = None,
     contact_email: str | None = None,
     stats: dict | None = None,
+    payment_links: dict | None = None,
 ) -> str:
     env = get_template_env()
     template = env.get_template("sponsor.html.j2")
     return template.render(
-        tiers=SPONSOR_TIERS,
+        tiers=[{**t, "buy_url": (payment_links or {}).get(t.get("payment_key") or "") or None} for t in SPONSOR_TIERS],
         availability=availability,
         generated_at=now.strftime("%Y-%m-%d %H:%M UTC"),
         canonical_url=SITE_BASE_URL + "sponsor/",
@@ -1556,7 +1651,9 @@ def select_editors_pick(region_cfg: dict, blocks: list[dict], evergreen: list[di
     slot. `editors_pick_url` can still target one explicitly if an owner
     ever wants to feature it - only the automatic pick avoids it.
     """
-    candidates = [e for b in blocks for e in b["events"]] + evergreen
+    # An Editor's Pick is an editorial choice; a paid Featured event (item
+    # 245) is already labelled as one and never doubles as the other.
+    candidates = [e for b in blocks for e in b["events"] if not e.get("sponsored_by")] + evergreen
     candidates = [c for c in candidates if c.get("title") and c.get("url")]
     if not candidates:
         return None
@@ -1904,6 +2001,8 @@ def build_event_json_ld(blocks: list[dict], page_url: str | None = None, region:
         entry["location"] = schema_location(e, region)
         if "free" in (e.get("tags") or []):
             entry["isAccessibleForFree"] = True
+        if e.get("sponsored_by"):
+            entry["sponsor"] = {"@type": "Organization", "name": e["sponsored_by"]}
         graph.append(entry)
     payload = {"@context": "https://schema.org", "@graph": graph}
     # Escape "</" so an event title/description containing it can't break
@@ -2464,6 +2563,8 @@ def _event_list_item(event: dict, page_url: str, position: int) -> dict:
         entry["description"] = event["detail"]
     if "free" in (event.get("tags") or []):
         entry["isAccessibleForFree"] = True
+    if event.get("sponsored_by"):
+        entry["sponsor"] = {"@type": "Organization", "name": event["sponsored_by"]}
     return {"@type": "ListItem", "position": position, "item": entry}
 
 
@@ -2498,7 +2599,8 @@ def build_llms_full_txt(groups: list[tuple[str, str, list[dict]]], weekend_date_
             lines.append("- Nothing dated yet this weekend.")
         for e in sorted(dated, key=lambda e: e["date_iso"]):
             label = event_date_label(e["date_iso"]) or ""
-            lines.append(f"- {label}: {e['title']} — {page_url}#{event_anchor_id(e)}")
+            featured = f" (Featured, presented by {e['sponsored_by']})" if e.get("sponsored_by") else ""
+            lines.append(f"- {label}: {e['title']}{featured} — {page_url}#{event_anchor_id(e)}")
         lines.append("")
     return "\n".join(lines).rstrip() + "\n"
 
@@ -2671,7 +2773,8 @@ def build_weekly_summary_txt(
     if weekend_events:
         for event in weekend_events[:6]:
             prefix = f"{event['date']} — " if event.get("date") else ""
-            post_lines.append(f"- {prefix}{event['title']}")
+            featured = f" (Featured, presented by {event['sponsored_by']})" if event.get("sponsored_by") else ""
+            post_lines.append(f"- {prefix}{event['title']}{featured}")
     else:
         highlights = [e for e in evergreen if "free" in e.get("tags", [])][:3]
         if highlights:
@@ -2749,7 +2852,8 @@ def build_email_subject_line(region: dict, weekend_events: list[dict]) -> str:
     at all - two different kinds of "real, but not the headline."
     """
     name = region["name"]
-    attendable = [e for e in weekend_events if e.get("attendable", True)]
+    # A paid Featured event never decides the subject line (item 245).
+    attendable = [e for e in weekend_events if e.get("attendable", True) and not e.get("sponsored_by")]
     if not attendable:
         return f"This weekend in {name}: what's coming up"
 
@@ -2901,7 +3005,8 @@ def _round_robin_attendable(sections: list[dict]) -> list[dict]:
     """Every attendable event, interleaved across regions (first from
     each region, then second from each, ...), so the titles a subject
     line picks aren't all from whichever town sorts first."""
-    per_region = [[e for e in s["weekend_events"] if e.get("attendable", True)] for s in sections]
+    # A paid Featured event never decides the subject line (item 245).
+    per_region = [[e for e in s["weekend_events"] if e.get("attendable", True) and not e.get("sponsored_by")] for s in sections]
     interleaved = []
     for i in range(max((len(r) for r in per_region), default=0)):
         interleaved.extend(r[i] for r in per_region if i < len(r))
@@ -3466,6 +3571,9 @@ def main() -> None:
         # the RSS feed, calendar.ics, and every date-scoped view all see
         # the same deduped list instead of needing their own pass.
         blocks = dedupe_events(blocks)
+        # ROADMAP.md item 245: a paid Event Promo goes in after the filters
+        # above, so it can never be deduped away or dropped, and goes first.
+        blocks = apply_promotion(blocks, build_promotion_event(sponsors_cfg, region_cfg, local_today))
         feed_items += [
             {**e, "region_name": region["name"]}
             for b in blocks
@@ -3920,6 +4028,7 @@ def main() -> None:
         analytics,
         contact_email=contact_email,
         stats=sponsor_stats,
+        payment_links=sponsors_cfg.get("payment_links"),
     )
     sponsor_dir = OUTPUT_DIR / "sponsor"
     sponsor_dir.mkdir(parents=True, exist_ok=True)
