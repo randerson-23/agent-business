@@ -574,46 +574,6 @@
   .faq-item p { margin: 8px 0 0; color: var(--muted); font-size: 13.5px; line-height: 1.6; }
   .faq-item p a { color: var(--accent-2-text); font-weight: 600; }
 
-  .newsletter {
-    background: var(--card);
-    border: 2px solid var(--ink);
-    border-radius: var(--radius-lg);
-    box-shadow: var(--shadow-sm);
-    padding: 20px 24px;
-    margin-top: 30px;
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: space-between;
-    gap: 14px;
-  }
-  .newsletter form { display: contents; }
-  .newsletter-copy strong { font-size: 15px; }
-  .newsletter-copy p { margin: 3px 0 0; color: var(--muted); font-size: 13.5px; }
-  .newsletter-copy .newsletter-note { font-size: 12px; margin-top: 6px; }
-  .newsletter-pending { margin: 0; font-size: 13.5px; font-weight: 600; }
-  .newsletter-form-row { display: flex; gap: 0; flex-wrap: wrap; }
-  .newsletter-form-row input[type="email"] {
-    font: inherit;
-    border: 2px solid var(--ink);
-    border-right: 0;
-    border-radius: 0;
-    padding: 8px 14px;
-    min-width: 200px;
-    background: var(--bg);
-    color: var(--ink);
-  }
-  .newsletter-form-row button {
-    font: inherit;
-    font-weight: 800;
-    color: var(--bg);
-    background: var(--accent-soft);
-    border: 2px solid var(--accent-soft);
-    border-radius: 0;
-    padding: 8px 18px;
-    cursor: pointer;
-  }
-  .newsletter-form-row button:hover { background: var(--accent-2-text); border-color: var(--accent-2-text); }
 
   footer {
     text-align: center;
@@ -679,6 +639,53 @@
     .hero h1 { font-size: 27px; }
     .wrap { padding: 0 14px 88px; }
   }
+</style>
+<style>
+  .newsletter {
+    background: var(--card);
+    border: 2px solid var(--ink);
+    border-radius: var(--radius-lg, 0);
+    box-shadow: var(--shadow-sm, none);
+    padding: 20px 24px;
+    margin-top: 30px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 14px;
+  }
+  .newsletter form { display: contents; }
+  .newsletter-copy strong { font-size: 15px; }
+  .newsletter-copy p { margin: 3px 0 0; color: var(--muted); font-size: 13.5px; }
+  .newsletter-copy .newsletter-note { font-size: 12px; margin-top: 6px; }
+  .newsletter-pending { margin: 0; font-size: 13.5px; font-weight: 600; }
+  .newsletter-done p { margin: 0 0 6px; }
+  .newsletter-open { display: inline-block; font-weight: 800; color: var(--bg); background: var(--accent-soft); border: 2px solid var(--accent-soft); padding: 8px 18px; text-decoration: none; }
+  .newsletter-open[hidden] { display: none; }
+  .newsletter-open:hover { background: var(--accent-2-text); border-color: var(--accent-2-text); }
+  .newsletter-done .newsletter-note { font-size: 12px; color: var(--muted); }
+  .newsletter-form-row { display: flex; gap: 0; flex-wrap: wrap; }
+  .newsletter-form-row input[type="email"] {
+    font: inherit;
+    border: 2px solid var(--ink);
+    border-right: 0;
+    border-radius: 0;
+    padding: 8px 14px;
+    min-width: 200px;
+    background: var(--bg);
+    color: var(--ink);
+  }
+  .newsletter-form-row button {
+    font: inherit;
+    font-weight: 800;
+    color: var(--bg);
+    background: var(--accent-soft);
+    border: 2px solid var(--accent-soft);
+    border-radius: 0;
+    padding: 8px 18px;
+    cursor: pointer;
+  }
+  .newsletter-form-row button:hover { background: var(--accent-2-text); border-color: var(--accent-2-text); }
 </style>
 </head>
 <body>
@@ -763,8 +770,24 @@
   
   <div class="filter-bar" role="group" aria-label="Filter events">
     
+    <button type="button" class="filter-chip" data-tag="art_culture" aria-pressed="false">
+      <span aria-hidden="true">🎨</span>Arts &amp; culture
+    </button>
+    
+    <button type="button" class="filter-chip" data-tag="food" aria-pressed="false">
+      <span aria-hidden="true">🍽️</span>Food &amp; drink
+    </button>
+    
     <button type="button" class="filter-chip" data-tag="indoor" aria-pressed="false">
       <span aria-hidden="true">🏠</span>Indoor
+    </button>
+    
+    <button type="button" class="filter-chip" data-tag="kid_friendly" aria-pressed="false">
+      <span aria-hidden="true">🧒</span>Kid-friendly
+    </button>
+    
+    <button type="button" class="filter-chip" data-tag="outdoor" aria-pressed="false">
+      <span aria-hidden="true">🌳</span>Outdoor
     </button>
     
     <button type="button" class="filter-chip clear" id="clear-filters">Clear filters</button>
@@ -792,7 +815,7 @@
              for why (ROADMAP.md item 146). -->
         
         
-        <article class="card" id="ev-using-your-mac-basics-2026-10-09" data-tags="indoor" data-date-iso="2026-10-09T00:00:00">
+        <article class="card" id="ev-japanese-language-storytime-2026-10-09" data-tags="indoor,kid_friendly" data-date-iso="2026-10-09T00:00:00">
           
           <!-- ROADMAP.md Phase 11 #63: My Weekend is for dated events -
                offering to add "Find your school district" or a guide's
@@ -800,24 +823,24 @@
                guide index have nothing to do with weekend planning.
                #90: nor does a school half-day belong in it - it's real
                and worth knowing, but nobody plans a weekend around one. -->
-          <button type="button" class="tray-star" data-item='{"date": "Oct 9", "date_iso": "2026-10-09T00:00:00", "detail": "", "id": "https://www.ahml.info/scheduling/reservation/231799|2026-10-09T00:00:00", "region_name": "Arlington Heights", "region_url": "https://withintenmiles.com/arlington-heights-60005/", "title": "Using Your Mac: Basics", "url": "https://www.ahml.info/scheduling/reservation/231799"}' aria-pressed="false" aria-label="Add Using Your Mac: Basics to My Weekend">☆</button>
+          <button type="button" class="tray-star" data-item='{"date": "Oct 9", "date_iso": "2026-10-09T00:00:00", "detail": "", "id": "https://www.ahml.info/scheduling/reservation/227647|2026-10-09T00:00:00", "region_name": "Arlington Heights", "region_url": "https://withintenmiles.com/arlington-heights-60005/", "title": "\u65e5\u672c\u8a9e\u306e\u30b9\u30c8\u30fc\u30ea\u30fc\u30bf\u30a4\u30e0 | Japanese Language Storytime", "url": "https://www.ahml.info/scheduling/reservation/227647"}' aria-pressed="false" aria-label="Add 日本語のストーリータイム | Japanese Language Storytime to My Weekend">☆</button>
           
           
           
           
           <div class="date"><time datetime="2026-10-09T00:00:00">Fri, Oct 9</time> · <span class="where">Arlington Heights</span></div>
-          <h3><a href="https://www.ahml.info/scheduling/reservation/231799">Using Your Mac: Basics</a></h3>
+          <h3><a href="https://www.ahml.info/scheduling/reservation/227647">日本語のストーリータイム | Japanese Language Storytime</a></h3>
           
           
           
           <div class="tag-row">
-            <span class="tag-badge" style="background: var(--hue-blue-bg); color: var(--hue-blue-ink);">🏠 Indoor</span>
+            <span class="tag-badge" style="background: var(--hue-blue-bg); color: var(--hue-blue-ink);">🏠 Indoor</span><span class="tag-badge" style="background: var(--hue-pink-bg); color: var(--hue-pink-ink);">🧒 Kid-friendly</span>
           </div>
           
           
           <div class="cal-row">
-            <a href="data:text/calendar;charset=utf-8,BEGIN%3AVCALENDAR%0D%0AVERSION%3A2.0%0D%0APRODID%3A-//Within%20Ten//EN%0D%0ABEGIN%3AVEVENT%0D%0ADTSTART%3A20261009T000000%0D%0ADTEND%3A20261009T010000%0D%0ASUMMARY%3AUsing%20Your%20Mac%3A%20Basics%0D%0AURL%3Ahttps%3A//www.ahml.info/scheduling/reservation/231799%0D%0AEND%3AVEVENT%0D%0AEND%3AVCALENDAR%0D%0A" download="event.ics">📅 Add to calendar</a>
-            <a href="https://www.google.com/calendar/render?action=TEMPLATE&amp;text=Using+Your+Mac%3A+Basics&amp;dates=20261009T000000%2F20261009T010000&amp;details=&amp;location=Arlington+Heights" target="_blank" rel="noopener">Google Calendar</a>
+            <a href="data:text/calendar;charset=utf-8,BEGIN%3AVCALENDAR%0D%0AVERSION%3A2.0%0D%0APRODID%3A-//Within%20Ten//EN%0D%0ABEGIN%3AVEVENT%0D%0ADTSTART%3A20261009T000000%0D%0ADTEND%3A20261009T010000%0D%0ASUMMARY%3A%E6%97%A5%E6%9C%AC%E8%AA%9E%E3%81%AE%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AA%E3%83%BC%E3%82%BF%E3%82%A4%E3%83%A0%20%7C%20Japanese%20Language%20Storytime%0D%0AURL%3Ahttps%3A//www.ahml.info/scheduling/reservation/227647%0D%0AEND%3AVEVENT%0D%0AEND%3AVCALENDAR%0D%0A" download="event.ics">📅 Add to calendar</a>
+            <a href="https://www.google.com/calendar/render?action=TEMPLATE&amp;text=%E6%97%A5%E6%9C%AC%E8%AA%9E%E3%81%AE%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AA%E3%83%BC%E3%82%BF%E3%82%A4%E3%83%A0+%7C+Japanese+Language+Storytime&amp;dates=20261009T000000%2F20261009T010000&amp;details=&amp;location=Arlington+Heights" target="_blank" rel="noopener">Google Calendar</a>
           </div>
           
         </article>
@@ -826,7 +849,7 @@
              for why (ROADMAP.md item 146). -->
         
         
-        <article class="card" id="ev-games-gab-2026-10-10" data-tags="indoor" data-date-iso="2026-10-10T00:00:00">
+        <article class="card" id="ev-family-time-2026-10-10" data-tags="indoor,kid_friendly" data-date-iso="2026-10-10T00:00:00">
           
           <!-- ROADMAP.md Phase 11 #63: My Weekend is for dated events -
                offering to add "Find your school district" or a guide's
@@ -834,24 +857,24 @@
                guide index have nothing to do with weekend planning.
                #90: nor does a school half-day belong in it - it's real
                and worth knowing, but nobody plans a weekend around one. -->
-          <button type="button" class="tray-star" data-item='{"date": "Oct 10", "date_iso": "2026-10-10T00:00:00", "detail": "", "id": "https://www.ahml.info/scheduling/reservation/221909|2026-10-10T00:00:00", "region_name": "Arlington Heights", "region_url": "https://withintenmiles.com/arlington-heights-60005/", "title": "Games \u0026 Gab", "url": "https://www.ahml.info/scheduling/reservation/221909"}' aria-pressed="false" aria-label="Add Games &amp; Gab to My Weekend">☆</button>
+          <button type="button" class="tray-star" data-item='{"date": "Oct 10", "date_iso": "2026-10-10T00:00:00", "detail": "", "id": "https://www.ahml.info/scheduling/reservation/224193|2026-10-10T00:00:00", "region_name": "Arlington Heights", "region_url": "https://withintenmiles.com/arlington-heights-60005/", "title": "Family Time", "url": "https://www.ahml.info/scheduling/reservation/224193"}' aria-pressed="false" aria-label="Add Family Time to My Weekend">☆</button>
           
           
           
           
           <div class="date"><time datetime="2026-10-10T00:00:00">Sat, Oct 10</time> · <span class="where">Arlington Heights</span></div>
-          <h3><a href="https://www.ahml.info/scheduling/reservation/221909">Games &amp; Gab</a></h3>
+          <h3><a href="https://www.ahml.info/scheduling/reservation/224193">Family Time</a></h3>
           
           
           
           <div class="tag-row">
-            <span class="tag-badge" style="background: var(--hue-blue-bg); color: var(--hue-blue-ink);">🏠 Indoor</span>
+            <span class="tag-badge" style="background: var(--hue-blue-bg); color: var(--hue-blue-ink);">🏠 Indoor</span><span class="tag-badge" style="background: var(--hue-pink-bg); color: var(--hue-pink-ink);">🧒 Kid-friendly</span>
           </div>
           
           
           <div class="cal-row">
-            <a href="data:text/calendar;charset=utf-8,BEGIN%3AVCALENDAR%0D%0AVERSION%3A2.0%0D%0APRODID%3A-//Within%20Ten//EN%0D%0ABEGIN%3AVEVENT%0D%0ADTSTART%3A20261010T000000%0D%0ADTEND%3A20261010T010000%0D%0ASUMMARY%3AGames%20%26%20Gab%0D%0AURL%3Ahttps%3A//www.ahml.info/scheduling/reservation/221909%0D%0AEND%3AVEVENT%0D%0AEND%3AVCALENDAR%0D%0A" download="event.ics">📅 Add to calendar</a>
-            <a href="https://www.google.com/calendar/render?action=TEMPLATE&amp;text=Games+%26+Gab&amp;dates=20261010T000000%2F20261010T010000&amp;details=&amp;location=Arlington+Heights" target="_blank" rel="noopener">Google Calendar</a>
+            <a href="data:text/calendar;charset=utf-8,BEGIN%3AVCALENDAR%0D%0AVERSION%3A2.0%0D%0APRODID%3A-//Within%20Ten//EN%0D%0ABEGIN%3AVEVENT%0D%0ADTSTART%3A20261010T000000%0D%0ADTEND%3A20261010T010000%0D%0ASUMMARY%3AFamily%20Time%0D%0AURL%3Ahttps%3A//www.ahml.info/scheduling/reservation/224193%0D%0AEND%3AVEVENT%0D%0AEND%3AVCALENDAR%0D%0A" download="event.ics">📅 Add to calendar</a>
+            <a href="https://www.google.com/calendar/render?action=TEMPLATE&amp;text=Family+Time&amp;dates=20261010T000000%2F20261010T010000&amp;details=&amp;location=Arlington+Heights" target="_blank" rel="noopener">Google Calendar</a>
           </div>
           
         </article>
@@ -890,6 +913,40 @@
           
         </article>
         
+        <!-- id folds in date_iso - see the Editor's Pick tray_item above
+             for why (ROADMAP.md item 146). -->
+        
+        
+        <article class="card" id="ev-autumn-harvest-2026-10-10" data-tags="art_culture,food,kid_friendly,outdoor" data-date-iso="2026-10-10T11:00:00">
+          
+          <!-- ROADMAP.md Phase 11 #63: My Weekend is for dated events -
+               offering to add "Find your school district" or a guide's
+               own title to it made no sense, since guide items and the
+               guide index have nothing to do with weekend planning.
+               #90: nor does a school half-day belong in it - it's real
+               and worth knowing, but nobody plans a weekend around one. -->
+          <button type="button" class="tray-star" data-item='{"date": "Oct 10", "date_iso": "2026-10-10T11:00:00", "detail": "Don\u2019t miss fall family fun with crafts, games, hayrides, a scarecrow building contest, live music and entertainment, and food available for purchase from\u2026", "id": "https://www.ahpd.org/event/autumn-harvest-2026/|2026-10-10T11:00:00", "region_name": "Arlington Heights", "region_url": "https://withintenmiles.com/arlington-heights-60005/", "title": "Autumn Harvest", "url": "https://www.ahpd.org/event/autumn-harvest-2026/"}' aria-pressed="false" aria-label="Add Autumn Harvest to My Weekend">☆</button>
+          
+          
+          
+          
+          <div class="date"><time datetime="2026-10-10T11:00:00">Sat, Oct 10</time> · <span class="where">Arlington Heights</span></div>
+          <h3><a href="https://www.ahpd.org/event/autumn-harvest-2026/">Autumn Harvest</a></h3>
+          
+          <p class="detail">Don’t miss fall family fun with crafts, games, hayrides, a scarecrow building contest, live music and entertainment, and food available for purchase from…</p>
+          
+          <div class="tag-row">
+            <span class="tag-badge" style="background: var(--hue-purple-bg); color: var(--hue-purple-ink);">🎨 Arts &amp; culture</span><span class="tag-badge" style="background: var(--hue-orange-bg); color: var(--hue-orange-ink);">🍽️ Food &amp; drink</span><span class="tag-badge" style="background: var(--hue-pink-bg); color: var(--hue-pink-ink);">🧒 Kid-friendly</span><span class="tag-badge" style="background: var(--hue-teal-bg); color: var(--hue-teal-ink);">🌳 Outdoor</span>
+          </div>
+          
+          
+          <div class="cal-row">
+            <a href="data:text/calendar;charset=utf-8,BEGIN%3AVCALENDAR%0D%0AVERSION%3A2.0%0D%0APRODID%3A-//Within%20Ten//EN%0D%0ABEGIN%3AVEVENT%0D%0ADTSTART%3A20261010T110000%0D%0ADTEND%3A20261010T120000%0D%0ASUMMARY%3AAutumn%20Harvest%0D%0ADESCRIPTION%3ADon%E2%80%99t%20miss%20fall%20family%20fun%20with%20crafts%5C%2C%20games%5C%2C%20hayrides%5C%2C%20a%20scarecrow%20building%20contest%5C%2C%20live%20music%20and%20entertainment%5C%2C%20and%20food%20available%20for%20purchase%20from%E2%80%A6%0D%0AURL%3Ahttps%3A//www.ahpd.org/event/autumn-harvest-2026/%0D%0AEND%3AVEVENT%0D%0AEND%3AVCALENDAR%0D%0A" download="event.ics">📅 Add to calendar</a>
+            <a href="https://www.google.com/calendar/render?action=TEMPLATE&amp;text=Autumn+Harvest&amp;dates=20261010T110000%2F20261010T120000&amp;details=Don%E2%80%99t+miss+fall+family+fun+with+crafts%2C+games%2C+hayrides%2C+a+scarecrow+building+contest%2C+live+music+and+entertainment%2C+and+food+available+for+purchase+from%E2%80%A6&amp;location=Arlington+Heights" target="_blank" rel="noopener">Google Calendar</a>
+          </div>
+          
+        </article>
+        
         </div>
       
     </section>
@@ -924,15 +981,26 @@
       <button type="submit">Subscribe</button>
     </div>
   </form>
-  <p class="newsletter-pending" hidden>Almost there — check your email and click the confirmation link.</p>
+  <div class="newsletter-done" hidden>
+    <p class="newsletter-pending">Almost there — check your email and click the confirmation link.</p>
+    <p class="newsletter-open-row"><a class="newsletter-open" href="#" target="_blank" rel="noopener" hidden></a></p>
+    <p class="newsletter-note">Not there in two minutes? Check Spam or Promotions for a message from Within Ten via Buttondown.</p>
+  </div>
 </div>
   
   <iframe name="bd-hidden-frame" title="Newsletter signup" style="display:none" aria-hidden="true"></iframe>
 <script>
+var WM = [["Open Gmail", "https://mail.google.com/mail/u/0/#search/from%3Abuttondown", ["gmail.com", "googlemail.com"]], ["Open Yahoo Mail", "https://mail.yahoo.com/", ["yahoo.com", "ymail.com"]], ["Open AOL Mail", "https://mail.aol.com/", ["aol.com"]], ["Open Outlook", "https://outlook.live.com/mail/0/", ["outlook.com", "hotmail.com", "live.com", "msn.com"]], ["Open iCloud Mail", "https://www.icloud.com/mail/", ["icloud.com", "me.com", "mac.com"]]];
 document.querySelectorAll(".newsletter-form").forEach(function (f) {
   f.addEventListener("submit", function () {
+    var d = (f.email.value.split("@").pop() || "").trim().toLowerCase(),
+      done = f.parentNode.querySelector(".newsletter-done"),
+      a = done.querySelector(".newsletter-open");
+    WM.forEach(function (p) {
+      if (p[2].indexOf(d) > -1) { a.textContent = p[0]; a.href = p[1]; a.hidden = false; }
+    });
     f.hidden = true;
-    f.parentNode.querySelector(".newsletter-pending").hidden = false;
+    done.hidden = false;
   });
 });
 </script>
@@ -942,8 +1010,9 @@ document.querySelectorAll(".newsletter-form").forEach(function (f) {
     Local business? See the
     <a href="https://withintenmiles.com/sponsor/">sponsor page</a>.
     <a href="https://withintenmiles.com/about/">About</a>.
+    <a href="https://google.com/preferences/source?q=withintenmiles.com" rel="noopener">Add us as a preferred source on Google</a>.
     <a href="https://withintenmiles.com/trick-or-treat/">Trick-or-treat hours</a>.
-    <br>Generated 2026-10-08 13:41 UTC.
+    <br>Generated 2026-10-08 14:02 UTC.
     
     <br><a href="https://withintenmiles.com/arlington-heights-60005/weekly-summary.txt">Copy this week's summary</a> — a plain-text block ready to paste into a local group.
   </footer>
@@ -966,10 +1035,10 @@ document.querySelectorAll(".newsletter-form").forEach(function (f) {
 </div>
 
 
-<script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "Event", "name": "Using Your Mac: Basics", "url": "https://withintenmiles.com/arlington-heights-60005/this-weekend/#ev-using-your-mac-basics-2026-10-09", "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode", "sameAs": "https://www.ahml.info/scheduling/reservation/231799", "startDate": "2026-10-09", "location": {"@type": "Place", "name": "Arlington Heights Memorial Library", "address": {"@type": "PostalAddress", "addressCountry": "US", "addressLocality": "Arlington Heights", "addressRegion": "IL"}}}, {"@type": "Event", "name": "Games & Gab", "url": "https://withintenmiles.com/arlington-heights-60005/this-weekend/#ev-games-gab-2026-10-10", "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode", "sameAs": "https://www.ahml.info/scheduling/reservation/221909", "startDate": "2026-10-10", "location": {"@type": "Place", "name": "Arlington Heights Memorial Library", "address": {"@type": "PostalAddress", "addressCountry": "US", "addressLocality": "Arlington Heights", "addressRegion": "IL"}}}, {"@type": "Event", "name": "Tech Fair", "url": "https://withintenmiles.com/arlington-heights-60005/this-weekend/#ev-tech-fair-2026-10-11", "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode", "sameAs": "https://www.ahml.info/scheduling/reservation/212679", "startDate": "2026-10-11", "location": {"@type": "Place", "name": "Arlington Heights Memorial Library", "address": {"@type": "PostalAddress", "addressCountry": "US", "addressLocality": "Arlington Heights", "addressRegion": "IL"}}}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "Event", "name": "日本語のストーリータイム | Japanese Language Storytime", "url": "https://withintenmiles.com/arlington-heights-60005/this-weekend/#ev-japanese-language-storytime-2026-10-09", "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode", "sameAs": "https://www.ahml.info/scheduling/reservation/227647", "startDate": "2026-10-09", "location": {"@type": "Place", "name": "Arlington Heights Memorial Library", "address": {"@type": "PostalAddress", "addressCountry": "US", "addressLocality": "Arlington Heights", "addressRegion": "IL"}}}, {"@type": "Event", "name": "Family Time", "url": "https://withintenmiles.com/arlington-heights-60005/this-weekend/#ev-family-time-2026-10-10", "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode", "sameAs": "https://www.ahml.info/scheduling/reservation/224193", "startDate": "2026-10-10", "location": {"@type": "Place", "name": "Arlington Heights Memorial Library", "address": {"@type": "PostalAddress", "addressCountry": "US", "addressLocality": "Arlington Heights", "addressRegion": "IL"}}}, {"@type": "Event", "name": "Tech Fair", "url": "https://withintenmiles.com/arlington-heights-60005/this-weekend/#ev-tech-fair-2026-10-11", "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode", "sameAs": "https://www.ahml.info/scheduling/reservation/212679", "startDate": "2026-10-11", "location": {"@type": "Place", "name": "Arlington Heights Memorial Library", "address": {"@type": "PostalAddress", "addressCountry": "US", "addressLocality": "Arlington Heights", "addressRegion": "IL"}}}, {"@type": "Event", "name": "Autumn Harvest", "url": "https://withintenmiles.com/arlington-heights-60005/this-weekend/#ev-autumn-harvest-2026-10-10", "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode", "sameAs": "https://www.ahpd.org/event/autumn-harvest-2026/", "description": "Don’t miss fall family fun with crafts, games, hayrides, a scarecrow building contest, live music and entertainment, and food available for purchase from…", "startDate": "2026-10-10T11:00:00-05:00", "location": {"@type": "Place", "name": "Arlington Heights, IL", "address": {"@type": "PostalAddress", "addressCountry": "US", "addressLocality": "Arlington Heights", "addressRegion": "IL"}}}]}</script>
 
 
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebPage", "name": "Arlington Heights — Within Ten", "url": "https://withintenmiles.com/arlington-heights-60005/this-weekend/", "dateModified": "2026-10-08T13:41:10.561812+00:00", "isPartOf": {"@type": "WebSite", "name": "Within Ten", "url": "https://withintenmiles.com/", "publisher": {"@id": "https://withintenmiles.com/about/#organization"}}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebPage", "name": "Arlington Heights — Within Ten", "url": "https://withintenmiles.com/arlington-heights-60005/this-weekend/", "dateModified": "2026-10-08T14:02:22.185087+00:00", "isPartOf": {"@type": "WebSite", "name": "Within Ten", "url": "https://withintenmiles.com/", "publisher": {"@id": "https://withintenmiles.com/about/#organization"}}}</script>
 <script>
 (function () {
   var activeTags = new Set();

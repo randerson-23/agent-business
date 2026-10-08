@@ -574,46 +574,6 @@
   .faq-item p { margin: 8px 0 0; color: var(--muted); font-size: 13.5px; line-height: 1.6; }
   .faq-item p a { color: var(--accent-2-text); font-weight: 600; }
 
-  .newsletter {
-    background: var(--card);
-    border: 2px solid var(--ink);
-    border-radius: var(--radius-lg);
-    box-shadow: var(--shadow-sm);
-    padding: 20px 24px;
-    margin-top: 30px;
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: space-between;
-    gap: 14px;
-  }
-  .newsletter form { display: contents; }
-  .newsletter-copy strong { font-size: 15px; }
-  .newsletter-copy p { margin: 3px 0 0; color: var(--muted); font-size: 13.5px; }
-  .newsletter-copy .newsletter-note { font-size: 12px; margin-top: 6px; }
-  .newsletter-pending { margin: 0; font-size: 13.5px; font-weight: 600; }
-  .newsletter-form-row { display: flex; gap: 0; flex-wrap: wrap; }
-  .newsletter-form-row input[type="email"] {
-    font: inherit;
-    border: 2px solid var(--ink);
-    border-right: 0;
-    border-radius: 0;
-    padding: 8px 14px;
-    min-width: 200px;
-    background: var(--bg);
-    color: var(--ink);
-  }
-  .newsletter-form-row button {
-    font: inherit;
-    font-weight: 800;
-    color: var(--bg);
-    background: var(--accent-soft);
-    border: 2px solid var(--accent-soft);
-    border-radius: 0;
-    padding: 8px 18px;
-    cursor: pointer;
-  }
-  .newsletter-form-row button:hover { background: var(--accent-2-text); border-color: var(--accent-2-text); }
 
   footer {
     text-align: center;
@@ -679,6 +639,53 @@
     .hero h1 { font-size: 27px; }
     .wrap { padding: 0 14px 88px; }
   }
+</style>
+<style>
+  .newsletter {
+    background: var(--card);
+    border: 2px solid var(--ink);
+    border-radius: var(--radius-lg, 0);
+    box-shadow: var(--shadow-sm, none);
+    padding: 20px 24px;
+    margin-top: 30px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 14px;
+  }
+  .newsletter form { display: contents; }
+  .newsletter-copy strong { font-size: 15px; }
+  .newsletter-copy p { margin: 3px 0 0; color: var(--muted); font-size: 13.5px; }
+  .newsletter-copy .newsletter-note { font-size: 12px; margin-top: 6px; }
+  .newsletter-pending { margin: 0; font-size: 13.5px; font-weight: 600; }
+  .newsletter-done p { margin: 0 0 6px; }
+  .newsletter-open { display: inline-block; font-weight: 800; color: var(--bg); background: var(--accent-soft); border: 2px solid var(--accent-soft); padding: 8px 18px; text-decoration: none; }
+  .newsletter-open[hidden] { display: none; }
+  .newsletter-open:hover { background: var(--accent-2-text); border-color: var(--accent-2-text); }
+  .newsletter-done .newsletter-note { font-size: 12px; color: var(--muted); }
+  .newsletter-form-row { display: flex; gap: 0; flex-wrap: wrap; }
+  .newsletter-form-row input[type="email"] {
+    font: inherit;
+    border: 2px solid var(--ink);
+    border-right: 0;
+    border-radius: 0;
+    padding: 8px 14px;
+    min-width: 200px;
+    background: var(--bg);
+    color: var(--ink);
+  }
+  .newsletter-form-row button {
+    font: inherit;
+    font-weight: 800;
+    color: var(--bg);
+    background: var(--accent-soft);
+    border: 2px solid var(--accent-soft);
+    border-radius: 0;
+    padding: 8px 18px;
+    cursor: pointer;
+  }
+  .newsletter-form-row button:hover { background: var(--accent-2-text); border-color: var(--accent-2-text); }
 </style>
 </head>
 <body>
@@ -913,15 +920,26 @@
       <button type="submit">Subscribe</button>
     </div>
   </form>
-  <p class="newsletter-pending" hidden>Almost there — check your email and click the confirmation link.</p>
+  <div class="newsletter-done" hidden>
+    <p class="newsletter-pending">Almost there — check your email and click the confirmation link.</p>
+    <p class="newsletter-open-row"><a class="newsletter-open" href="#" target="_blank" rel="noopener" hidden></a></p>
+    <p class="newsletter-note">Not there in two minutes? Check Spam or Promotions for a message from Within Ten via Buttondown.</p>
+  </div>
 </div>
   
   <iframe name="bd-hidden-frame" title="Newsletter signup" style="display:none" aria-hidden="true"></iframe>
 <script>
+var WM = [["Open Gmail", "https://mail.google.com/mail/u/0/#search/from%3Abuttondown", ["gmail.com", "googlemail.com"]], ["Open Yahoo Mail", "https://mail.yahoo.com/", ["yahoo.com", "ymail.com"]], ["Open AOL Mail", "https://mail.aol.com/", ["aol.com"]], ["Open Outlook", "https://outlook.live.com/mail/0/", ["outlook.com", "hotmail.com", "live.com", "msn.com"]], ["Open iCloud Mail", "https://www.icloud.com/mail/", ["icloud.com", "me.com", "mac.com"]]];
 document.querySelectorAll(".newsletter-form").forEach(function (f) {
   f.addEventListener("submit", function () {
+    var d = (f.email.value.split("@").pop() || "").trim().toLowerCase(),
+      done = f.parentNode.querySelector(".newsletter-done"),
+      a = done.querySelector(".newsletter-open");
+    WM.forEach(function (p) {
+      if (p[2].indexOf(d) > -1) { a.textContent = p[0]; a.href = p[1]; a.hidden = false; }
+    });
     f.hidden = true;
-    f.parentNode.querySelector(".newsletter-pending").hidden = false;
+    done.hidden = false;
   });
 });
 </script>
@@ -931,8 +949,9 @@ document.querySelectorAll(".newsletter-form").forEach(function (f) {
     Local business? See the
     <a href="https://withintenmiles.com/sponsor/">sponsor page</a>.
     <a href="https://withintenmiles.com/about/">About</a>.
+    <a href="https://google.com/preferences/source?q=withintenmiles.com" rel="noopener">Add us as a preferred source on Google</a>.
     <a href="https://withintenmiles.com/trick-or-treat/">Trick-or-treat hours</a>.
-    <br>Generated 2026-10-08 13:41 UTC.
+    <br>Generated 2026-10-08 14:02 UTC.
     
     <br><a href="https://withintenmiles.com/des-plaines-60016/weekly-summary.txt">Copy this week's summary</a> — a plain-text block ready to paste into a local group.
   </footer>
@@ -958,7 +977,7 @@ document.querySelectorAll(".newsletter-form").forEach(function (f) {
 
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "How current is this guide?", "acceptedAnswer": {"@type": "Answer", "text": "It's regenerated automatically from the village, library, and park district's own listings, typically several times a week - not a one-time write-up that goes stale."}}, {"@type": "Question", "name": "Is this every event or business, or just what's listed here?", "acceptedAnswer": {"@type": "Answer", "text": "Only what the linked public sources publish. For full details, hours, or anything not listed here, check the official page each item links to."}}, {"@type": "Question", "name": "How do I see what's happening in Des Plaines this specific weekend?", "acceptedAnswer": {"@type": "Answer", "text": "See the <a href=\"https://withintenmiles.com/des-plaines-60016/this-weekend/\">weekend view<\/a>, which only shows items with a known date in the coming Friday-Sunday."}}, {"@type": "Question", "name": "Can I add an event, or suggest a business for the directory?", "acceptedAnswer": {"@type": "Answer", "text": "Yes - <a href=\"https://github.com/randerson-23/agent-business/issues/new?template=event-submission.yml\">submit an event<\/a> and a person reviews it before it goes live, or a business owner can <a href=\"https://withintenmiles.com/sponsor/\">inquire about a listing<\/a>."}}]}</script>
 
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebPage", "name": "Des Plaines — Within Ten", "url": "https://withintenmiles.com/des-plaines-60016/guides/birthday-parties-and-kids-classes/", "dateModified": "2026-10-08T13:41:10.561812+00:00", "isPartOf": {"@type": "WebSite", "name": "Within Ten", "url": "https://withintenmiles.com/", "publisher": {"@id": "https://withintenmiles.com/about/#organization"}}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebPage", "name": "Des Plaines — Within Ten", "url": "https://withintenmiles.com/des-plaines-60016/guides/birthday-parties-and-kids-classes/", "dateModified": "2026-10-08T14:02:22.185087+00:00", "isPartOf": {"@type": "WebSite", "name": "Within Ten", "url": "https://withintenmiles.com/", "publisher": {"@id": "https://withintenmiles.com/about/#organization"}}}</script>
 <script>
 (function () {
   var activeTags = new Set();

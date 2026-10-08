@@ -574,46 +574,6 @@
   .faq-item p { margin: 8px 0 0; color: var(--muted); font-size: 13.5px; line-height: 1.6; }
   .faq-item p a { color: var(--accent-2-text); font-weight: 600; }
 
-  .newsletter {
-    background: var(--card);
-    border: 2px solid var(--ink);
-    border-radius: var(--radius-lg);
-    box-shadow: var(--shadow-sm);
-    padding: 20px 24px;
-    margin-top: 30px;
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: space-between;
-    gap: 14px;
-  }
-  .newsletter form { display: contents; }
-  .newsletter-copy strong { font-size: 15px; }
-  .newsletter-copy p { margin: 3px 0 0; color: var(--muted); font-size: 13.5px; }
-  .newsletter-copy .newsletter-note { font-size: 12px; margin-top: 6px; }
-  .newsletter-pending { margin: 0; font-size: 13.5px; font-weight: 600; }
-  .newsletter-form-row { display: flex; gap: 0; flex-wrap: wrap; }
-  .newsletter-form-row input[type="email"] {
-    font: inherit;
-    border: 2px solid var(--ink);
-    border-right: 0;
-    border-radius: 0;
-    padding: 8px 14px;
-    min-width: 200px;
-    background: var(--bg);
-    color: var(--ink);
-  }
-  .newsletter-form-row button {
-    font: inherit;
-    font-weight: 800;
-    color: var(--bg);
-    background: var(--accent-soft);
-    border: 2px solid var(--accent-soft);
-    border-radius: 0;
-    padding: 8px 18px;
-    cursor: pointer;
-  }
-  .newsletter-form-row button:hover { background: var(--accent-2-text); border-color: var(--accent-2-text); }
 
   footer {
     text-align: center;
@@ -680,6 +640,53 @@
     .wrap { padding: 0 14px 88px; }
   }
 </style>
+<style>
+  .newsletter {
+    background: var(--card);
+    border: 2px solid var(--ink);
+    border-radius: var(--radius-lg, 0);
+    box-shadow: var(--shadow-sm, none);
+    padding: 20px 24px;
+    margin-top: 30px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 14px;
+  }
+  .newsletter form { display: contents; }
+  .newsletter-copy strong { font-size: 15px; }
+  .newsletter-copy p { margin: 3px 0 0; color: var(--muted); font-size: 13.5px; }
+  .newsletter-copy .newsletter-note { font-size: 12px; margin-top: 6px; }
+  .newsletter-pending { margin: 0; font-size: 13.5px; font-weight: 600; }
+  .newsletter-done p { margin: 0 0 6px; }
+  .newsletter-open { display: inline-block; font-weight: 800; color: var(--bg); background: var(--accent-soft); border: 2px solid var(--accent-soft); padding: 8px 18px; text-decoration: none; }
+  .newsletter-open[hidden] { display: none; }
+  .newsletter-open:hover { background: var(--accent-2-text); border-color: var(--accent-2-text); }
+  .newsletter-done .newsletter-note { font-size: 12px; color: var(--muted); }
+  .newsletter-form-row { display: flex; gap: 0; flex-wrap: wrap; }
+  .newsletter-form-row input[type="email"] {
+    font: inherit;
+    border: 2px solid var(--ink);
+    border-right: 0;
+    border-radius: 0;
+    padding: 8px 14px;
+    min-width: 200px;
+    background: var(--bg);
+    color: var(--ink);
+  }
+  .newsletter-form-row button {
+    font: inherit;
+    font-weight: 800;
+    color: var(--bg);
+    background: var(--accent-soft);
+    border: 2px solid var(--accent-soft);
+    border-radius: 0;
+    padding: 8px 18px;
+    cursor: pointer;
+  }
+  .newsletter-form-row button:hover { background: var(--accent-2-text); border-color: var(--accent-2-text); }
+</style>
 </head>
 <body>
 
@@ -737,6 +744,10 @@
   
   <div class="filter-bar" role="group" aria-label="Filter events">
     
+    <button type="button" class="filter-chip" data-tag="art_culture" aria-pressed="false">
+      <span aria-hidden="true">🎨</span>Arts &amp; culture
+    </button>
+    
     <button type="button" class="filter-chip" data-tag="free" aria-pressed="false">
       <span aria-hidden="true">💵</span>Free
     </button>
@@ -747,6 +758,10 @@
     
     <button type="button" class="filter-chip" data-tag="kid_friendly" aria-pressed="false">
       <span aria-hidden="true">🧒</span>Kid-friendly
+    </button>
+    
+    <button type="button" class="filter-chip" data-tag="outdoor" aria-pressed="false">
+      <span aria-hidden="true">🌳</span>Outdoor
     </button>
     
     <button type="button" class="filter-chip clear" id="clear-filters">Clear filters</button>
@@ -769,6 +784,108 @@
       <h2>Free things to do in Arlington Heights</h2>
       
         <div class="card-grid">
+        
+        <!-- id folds in date_iso - see the Editor's Pick tray_item above
+             for why (ROADMAP.md item 146). -->
+        
+        
+        <article class="card" id="ev-ahpd-senior-art-show-2026-10-14" data-tags="art_culture,free,kid_friendly,outdoor" data-date-iso="2026-10-14T16:00:00">
+          
+          <!-- ROADMAP.md Phase 11 #63: My Weekend is for dated events -
+               offering to add "Find your school district" or a guide's
+               own title to it made no sense, since guide items and the
+               guide index have nothing to do with weekend planning.
+               #90: nor does a school half-day belong in it - it's real
+               and worth knowing, but nobody plans a weekend around one. -->
+          <button type="button" class="tray-star" data-item='{"date": "Oct 14", "date_iso": "2026-10-14T16:00:00", "detail": "Take in an evening of art and enjoyment! Peruse AHPD adult students\u2019 creations at the annual Art Show. Visual art, fiber arts and woodcraft will be on display\u2026", "id": "https://www.ahpd.org/event/ahpd-senior-art-show/|2026-10-14T16:00:00", "region_name": "Arlington Heights", "region_url": "https://withintenmiles.com/arlington-heights-60005/", "title": "AHPD Senior Art Show", "url": "https://www.ahpd.org/event/ahpd-senior-art-show/"}' aria-pressed="false" aria-label="Add AHPD Senior Art Show to My Weekend">☆</button>
+          
+          
+          
+          
+          <div class="date"><time datetime="2026-10-14T16:00:00">Wed, Oct 14</time> · <span class="where">Arlington Heights</span></div>
+          <h3><a href="https://www.ahpd.org/event/ahpd-senior-art-show/">AHPD Senior Art Show</a></h3>
+          
+          <p class="detail">Take in an evening of art and enjoyment! Peruse AHPD adult students’ creations at the annual Art Show. Visual art, fiber arts and woodcraft will be on display…</p>
+          
+          <div class="tag-row">
+            <span class="tag-badge" style="background: var(--hue-purple-bg); color: var(--hue-purple-ink);">🎨 Arts &amp; culture</span><span class="tag-badge" style="background: var(--hue-green-bg); color: var(--hue-green-ink);">💵 Free</span><span class="tag-badge" style="background: var(--hue-pink-bg); color: var(--hue-pink-ink);">🧒 Kid-friendly</span><span class="tag-badge" style="background: var(--hue-teal-bg); color: var(--hue-teal-ink);">🌳 Outdoor</span>
+          </div>
+          
+          
+          <div class="cal-row">
+            <a href="data:text/calendar;charset=utf-8,BEGIN%3AVCALENDAR%0D%0AVERSION%3A2.0%0D%0APRODID%3A-//Within%20Ten//EN%0D%0ABEGIN%3AVEVENT%0D%0ADTSTART%3A20261014T160000%0D%0ADTEND%3A20261014T170000%0D%0ASUMMARY%3AAHPD%20Senior%20Art%20Show%0D%0ADESCRIPTION%3ATake%20in%20an%20evening%20of%20art%20and%20enjoyment%21%20Peruse%20AHPD%20adult%20students%E2%80%99%20creations%20at%20the%20annual%20Art%20Show.%20Visual%20art%5C%2C%20fiber%20arts%20and%20woodcraft%20will%20be%20on%20display%E2%80%A6%0D%0AURL%3Ahttps%3A//www.ahpd.org/event/ahpd-senior-art-show/%0D%0AEND%3AVEVENT%0D%0AEND%3AVCALENDAR%0D%0A" download="event.ics">📅 Add to calendar</a>
+            <a href="https://www.google.com/calendar/render?action=TEMPLATE&amp;text=AHPD+Senior+Art+Show&amp;dates=20261014T160000%2F20261014T170000&amp;details=Take+in+an+evening+of+art+and+enjoyment%21+Peruse+AHPD+adult+students%E2%80%99+creations+at+the+annual+Art+Show.+Visual+art%2C+fiber+arts+and+woodcraft+will+be+on+display%E2%80%A6&amp;location=Arlington+Heights" target="_blank" rel="noopener">Google Calendar</a>
+          </div>
+          
+        </article>
+        
+        <!-- id folds in date_iso - see the Editor's Pick tray_item above
+             for why (ROADMAP.md item 146). -->
+        
+        
+        <article class="card" id="ev-pumpkin-smash-from-gourd-to-garden-2026-11-07" data-tags="free,outdoor" data-date-iso="2026-11-07T09:00:00">
+          
+          <!-- ROADMAP.md Phase 11 #63: My Weekend is for dated events -
+               offering to add "Find your school district" or a guide's
+               own title to it made no sense, since guide items and the
+               guide index have nothing to do with weekend planning.
+               #90: nor does a school half-day belong in it - it's real
+               and worth knowing, but nobody plans a weekend around one. -->
+          <button type="button" class="tray-star" data-item='{"date": "Nov 7", "date_iso": "2026-11-07T09:00:00", "detail": "Pumpkins are 90% water, which makes them bad for landfills but great for soil and gardens! Bring your post-Halloween jack-o-lanterns, gourds, and pumpkins to\u2026", "id": "https://www.ahpd.org/event/pumpkin-smash-2026/|2026-11-07T09:00:00", "region_name": "Arlington Heights", "region_url": "https://withintenmiles.com/arlington-heights-60005/", "title": "Pumpkin Smash: From Gourd to Garden", "url": "https://www.ahpd.org/event/pumpkin-smash-2026/"}' aria-pressed="false" aria-label="Add Pumpkin Smash: From Gourd to Garden to My Weekend">☆</button>
+          
+          
+          
+          
+          <div class="date"><time datetime="2026-11-07T09:00:00">Sat, Nov 7</time> · <span class="where">Arlington Heights</span></div>
+          <h3><a href="https://www.ahpd.org/event/pumpkin-smash-2026/">Pumpkin Smash: From Gourd to Garden</a></h3>
+          
+          <p class="detail">Pumpkins are 90% water, which makes them bad for landfills but great for soil and gardens! Bring your post-Halloween jack-o-lanterns, gourds, and pumpkins to…</p>
+          
+          <div class="tag-row">
+            <span class="tag-badge" style="background: var(--hue-green-bg); color: var(--hue-green-ink);">💵 Free</span><span class="tag-badge" style="background: var(--hue-teal-bg); color: var(--hue-teal-ink);">🌳 Outdoor</span>
+          </div>
+          
+          
+          <div class="cal-row">
+            <a href="data:text/calendar;charset=utf-8,BEGIN%3AVCALENDAR%0D%0AVERSION%3A2.0%0D%0APRODID%3A-//Within%20Ten//EN%0D%0ABEGIN%3AVEVENT%0D%0ADTSTART%3A20261107T090000%0D%0ADTEND%3A20261107T100000%0D%0ASUMMARY%3APumpkin%20Smash%3A%20From%20Gourd%20to%20Garden%0D%0ADESCRIPTION%3APumpkins%20are%2090%25%20water%5C%2C%20which%20makes%20them%20bad%20for%20landfills%20but%20great%20for%20soil%20and%20gardens%21%20Bring%20your%20post-Halloween%20jack-o-lanterns%5C%2C%20gourds%5C%2C%20and%20pumpkins%20to%E2%80%A6%0D%0AURL%3Ahttps%3A//www.ahpd.org/event/pumpkin-smash-2026/%0D%0AEND%3AVEVENT%0D%0AEND%3AVCALENDAR%0D%0A" download="event.ics">📅 Add to calendar</a>
+            <a href="https://www.google.com/calendar/render?action=TEMPLATE&amp;text=Pumpkin+Smash%3A+From+Gourd+to+Garden&amp;dates=20261107T090000%2F20261107T100000&amp;details=Pumpkins+are+90%25+water%2C+which+makes+them+bad+for+landfills+but+great+for+soil+and+gardens%21+Bring+your+post-Halloween+jack-o-lanterns%2C+gourds%2C+and+pumpkins+to%E2%80%A6&amp;location=Arlington+Heights" target="_blank" rel="noopener">Google Calendar</a>
+          </div>
+          
+        </article>
+        
+        <!-- id folds in date_iso - see the Editor's Pick tray_item above
+             for why (ROADMAP.md item 146). -->
+        
+        
+        <article class="card" id="ev-holiday-tree-lighting-2026-11-27" data-tags="art_culture,free,indoor,kid_friendly,outdoor" data-date-iso="2026-11-27T16:30:00">
+          
+          <!-- ROADMAP.md Phase 11 #63: My Weekend is for dated events -
+               offering to add "Find your school district" or a guide's
+               own title to it made no sense, since guide items and the
+               guide index have nothing to do with weekend planning.
+               #90: nor does a school half-day belong in it - it's real
+               and worth knowing, but nobody plans a weekend around one. -->
+          <button type="button" class="tray-star" data-item='{"date": "Nov 27", "date_iso": "2026-11-27T16:30:00", "detail": "Kick off the holiday season with the Arlington Heights Park District and the Village of Arlington Heights Special Events Commission at our annual North School\u2026", "id": "https://www.ahpd.org/event/holiday-tree-lighting-2026/|2026-11-27T16:30:00", "region_name": "Arlington Heights", "region_url": "https://withintenmiles.com/arlington-heights-60005/", "title": "Holiday Tree Lighting", "url": "https://www.ahpd.org/event/holiday-tree-lighting-2026/"}' aria-pressed="false" aria-label="Add Holiday Tree Lighting to My Weekend">☆</button>
+          
+          
+          
+          
+          <div class="date"><time datetime="2026-11-27T16:30:00">Fri, Nov 27</time> · <span class="where">Arlington Heights</span></div>
+          <h3><a href="https://www.ahpd.org/event/holiday-tree-lighting-2026/">Holiday Tree Lighting</a></h3>
+          
+          <p class="detail">Kick off the holiday season with the Arlington Heights Park District and the Village of Arlington Heights Special Events Commission at our annual North School…</p>
+          
+          <div class="tag-row">
+            <span class="tag-badge" style="background: var(--hue-purple-bg); color: var(--hue-purple-ink);">🎨 Arts &amp; culture</span><span class="tag-badge" style="background: var(--hue-green-bg); color: var(--hue-green-ink);">💵 Free</span><span class="tag-badge" style="background: var(--hue-blue-bg); color: var(--hue-blue-ink);">🏠 Indoor</span><span class="tag-badge" style="background: var(--hue-pink-bg); color: var(--hue-pink-ink);">🧒 Kid-friendly</span><span class="tag-badge" style="background: var(--hue-teal-bg); color: var(--hue-teal-ink);">🌳 Outdoor</span>
+          </div>
+          
+          
+          <div class="cal-row">
+            <a href="data:text/calendar;charset=utf-8,BEGIN%3AVCALENDAR%0D%0AVERSION%3A2.0%0D%0APRODID%3A-//Within%20Ten//EN%0D%0ABEGIN%3AVEVENT%0D%0ADTSTART%3A20261127T163000%0D%0ADTEND%3A20261127T173000%0D%0ASUMMARY%3AHoliday%20Tree%20Lighting%0D%0ADESCRIPTION%3AKick%20off%20the%20holiday%20season%20with%20the%20Arlington%20Heights%20Park%20District%20and%20the%20Village%20of%20Arlington%20Heights%20Special%20Events%20Commission%20at%20our%20annual%20North%20School%E2%80%A6%0D%0AURL%3Ahttps%3A//www.ahpd.org/event/holiday-tree-lighting-2026/%0D%0AEND%3AVEVENT%0D%0AEND%3AVCALENDAR%0D%0A" download="event.ics">📅 Add to calendar</a>
+            <a href="https://www.google.com/calendar/render?action=TEMPLATE&amp;text=Holiday+Tree+Lighting&amp;dates=20261127T163000%2F20261127T173000&amp;details=Kick+off+the+holiday+season+with+the+Arlington+Heights+Park+District+and+the+Village+of+Arlington+Heights+Special+Events+Commission+at+our+annual+North+School%E2%80%A6&amp;location=Arlington+Heights" target="_blank" rel="noopener">Google Calendar</a>
+          </div>
+          
+        </article>
         
         <!-- id folds in date_iso - see the Editor's Pick tray_item above
              for why (ROADMAP.md item 146). -->
@@ -833,15 +950,26 @@
       <button type="submit">Subscribe</button>
     </div>
   </form>
-  <p class="newsletter-pending" hidden>Almost there — check your email and click the confirmation link.</p>
+  <div class="newsletter-done" hidden>
+    <p class="newsletter-pending">Almost there — check your email and click the confirmation link.</p>
+    <p class="newsletter-open-row"><a class="newsletter-open" href="#" target="_blank" rel="noopener" hidden></a></p>
+    <p class="newsletter-note">Not there in two minutes? Check Spam or Promotions for a message from Within Ten via Buttondown.</p>
+  </div>
 </div>
   
   <iframe name="bd-hidden-frame" title="Newsletter signup" style="display:none" aria-hidden="true"></iframe>
 <script>
+var WM = [["Open Gmail", "https://mail.google.com/mail/u/0/#search/from%3Abuttondown", ["gmail.com", "googlemail.com"]], ["Open Yahoo Mail", "https://mail.yahoo.com/", ["yahoo.com", "ymail.com"]], ["Open AOL Mail", "https://mail.aol.com/", ["aol.com"]], ["Open Outlook", "https://outlook.live.com/mail/0/", ["outlook.com", "hotmail.com", "live.com", "msn.com"]], ["Open iCloud Mail", "https://www.icloud.com/mail/", ["icloud.com", "me.com", "mac.com"]]];
 document.querySelectorAll(".newsletter-form").forEach(function (f) {
   f.addEventListener("submit", function () {
+    var d = (f.email.value.split("@").pop() || "").trim().toLowerCase(),
+      done = f.parentNode.querySelector(".newsletter-done"),
+      a = done.querySelector(".newsletter-open");
+    WM.forEach(function (p) {
+      if (p[2].indexOf(d) > -1) { a.textContent = p[0]; a.href = p[1]; a.hidden = false; }
+    });
     f.hidden = true;
-    f.parentNode.querySelector(".newsletter-pending").hidden = false;
+    done.hidden = false;
   });
 });
 </script>
@@ -851,8 +979,9 @@ document.querySelectorAll(".newsletter-form").forEach(function (f) {
     Local business? See the
     <a href="https://withintenmiles.com/sponsor/">sponsor page</a>.
     <a href="https://withintenmiles.com/about/">About</a>.
+    <a href="https://google.com/preferences/source?q=withintenmiles.com" rel="noopener">Add us as a preferred source on Google</a>.
     <a href="https://withintenmiles.com/trick-or-treat/">Trick-or-treat hours</a>.
-    <br>Generated 2026-10-08 13:41 UTC.
+    <br>Generated 2026-10-08 14:02 UTC.
     
     <br><a href="https://withintenmiles.com/arlington-heights-60005/weekly-summary.txt">Copy this week's summary</a> — a plain-text block ready to paste into a local group.
   </footer>
@@ -875,8 +1004,10 @@ document.querySelectorAll(".newsletter-form").forEach(function (f) {
 </div>
 
 
+<script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "Event", "name": "AHPD Senior Art Show", "url": "https://withintenmiles.com/arlington-heights-60005/free/#ev-ahpd-senior-art-show-2026-10-14", "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode", "sameAs": "https://www.ahpd.org/event/ahpd-senior-art-show/", "description": "Take in an evening of art and enjoyment! Peruse AHPD adult students’ creations at the annual Art Show. Visual art, fiber arts and woodcraft will be on display…", "startDate": "2026-10-14T16:00:00-05:00", "location": {"@type": "Place", "name": "Arlington Heights, IL", "address": {"@type": "PostalAddress", "addressCountry": "US", "addressLocality": "Arlington Heights", "addressRegion": "IL"}}, "isAccessibleForFree": true}, {"@type": "Event", "name": "Pumpkin Smash: From Gourd to Garden", "url": "https://withintenmiles.com/arlington-heights-60005/free/#ev-pumpkin-smash-from-gourd-to-garden-2026-11-07", "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode", "sameAs": "https://www.ahpd.org/event/pumpkin-smash-2026/", "description": "Pumpkins are 90% water, which makes them bad for landfills but great for soil and gardens! Bring your post-Halloween jack-o-lanterns, gourds, and pumpkins to…", "startDate": "2026-11-07T09:00:00-06:00", "location": {"@type": "Place", "name": "Arlington Heights, IL", "address": {"@type": "PostalAddress", "addressCountry": "US", "addressLocality": "Arlington Heights", "addressRegion": "IL"}}, "isAccessibleForFree": true}, {"@type": "Event", "name": "Holiday Tree Lighting", "url": "https://withintenmiles.com/arlington-heights-60005/free/#ev-holiday-tree-lighting-2026-11-27", "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode", "sameAs": "https://www.ahpd.org/event/holiday-tree-lighting-2026/", "description": "Kick off the holiday season with the Arlington Heights Park District and the Village of Arlington Heights Special Events Commission at our annual North School…", "startDate": "2026-11-27T16:30:00-06:00", "location": {"@type": "Place", "name": "Arlington Heights, IL", "address": {"@type": "PostalAddress", "addressCountry": "US", "addressLocality": "Arlington Heights", "addressRegion": "IL"}}, "isAccessibleForFree": true}]}</script>
 
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebPage", "name": "Arlington Heights — Within Ten", "url": "https://withintenmiles.com/arlington-heights-60005/free/", "dateModified": "2026-10-08T13:41:10.561812+00:00", "isPartOf": {"@type": "WebSite", "name": "Within Ten", "url": "https://withintenmiles.com/", "publisher": {"@id": "https://withintenmiles.com/about/#organization"}}}</script>
+
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebPage", "name": "Arlington Heights — Within Ten", "url": "https://withintenmiles.com/arlington-heights-60005/free/", "dateModified": "2026-10-08T14:02:22.185087+00:00", "isPartOf": {"@type": "WebSite", "name": "Within Ten", "url": "https://withintenmiles.com/", "publisher": {"@id": "https://withintenmiles.com/about/#organization"}}}</script>
 <script>
 (function () {
   var activeTags = new Set();

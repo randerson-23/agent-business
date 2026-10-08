@@ -574,46 +574,6 @@
   .faq-item p { margin: 8px 0 0; color: var(--muted); font-size: 13.5px; line-height: 1.6; }
   .faq-item p a { color: var(--accent-2-text); font-weight: 600; }
 
-  .newsletter {
-    background: var(--card);
-    border: 2px solid var(--ink);
-    border-radius: var(--radius-lg);
-    box-shadow: var(--shadow-sm);
-    padding: 20px 24px;
-    margin-top: 30px;
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: space-between;
-    gap: 14px;
-  }
-  .newsletter form { display: contents; }
-  .newsletter-copy strong { font-size: 15px; }
-  .newsletter-copy p { margin: 3px 0 0; color: var(--muted); font-size: 13.5px; }
-  .newsletter-copy .newsletter-note { font-size: 12px; margin-top: 6px; }
-  .newsletter-pending { margin: 0; font-size: 13.5px; font-weight: 600; }
-  .newsletter-form-row { display: flex; gap: 0; flex-wrap: wrap; }
-  .newsletter-form-row input[type="email"] {
-    font: inherit;
-    border: 2px solid var(--ink);
-    border-right: 0;
-    border-radius: 0;
-    padding: 8px 14px;
-    min-width: 200px;
-    background: var(--bg);
-    color: var(--ink);
-  }
-  .newsletter-form-row button {
-    font: inherit;
-    font-weight: 800;
-    color: var(--bg);
-    background: var(--accent-soft);
-    border: 2px solid var(--accent-soft);
-    border-radius: 0;
-    padding: 8px 18px;
-    cursor: pointer;
-  }
-  .newsletter-form-row button:hover { background: var(--accent-2-text); border-color: var(--accent-2-text); }
 
   footer {
     text-align: center;
@@ -680,6 +640,53 @@
     .wrap { padding: 0 14px 88px; }
   }
 </style>
+<style>
+  .newsletter {
+    background: var(--card);
+    border: 2px solid var(--ink);
+    border-radius: var(--radius-lg, 0);
+    box-shadow: var(--shadow-sm, none);
+    padding: 20px 24px;
+    margin-top: 30px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 14px;
+  }
+  .newsletter form { display: contents; }
+  .newsletter-copy strong { font-size: 15px; }
+  .newsletter-copy p { margin: 3px 0 0; color: var(--muted); font-size: 13.5px; }
+  .newsletter-copy .newsletter-note { font-size: 12px; margin-top: 6px; }
+  .newsletter-pending { margin: 0; font-size: 13.5px; font-weight: 600; }
+  .newsletter-done p { margin: 0 0 6px; }
+  .newsletter-open { display: inline-block; font-weight: 800; color: var(--bg); background: var(--accent-soft); border: 2px solid var(--accent-soft); padding: 8px 18px; text-decoration: none; }
+  .newsletter-open[hidden] { display: none; }
+  .newsletter-open:hover { background: var(--accent-2-text); border-color: var(--accent-2-text); }
+  .newsletter-done .newsletter-note { font-size: 12px; color: var(--muted); }
+  .newsletter-form-row { display: flex; gap: 0; flex-wrap: wrap; }
+  .newsletter-form-row input[type="email"] {
+    font: inherit;
+    border: 2px solid var(--ink);
+    border-right: 0;
+    border-radius: 0;
+    padding: 8px 14px;
+    min-width: 200px;
+    background: var(--bg);
+    color: var(--ink);
+  }
+  .newsletter-form-row button {
+    font: inherit;
+    font-weight: 800;
+    color: var(--bg);
+    background: var(--accent-soft);
+    border: 2px solid var(--accent-soft);
+    border-radius: 0;
+    padding: 8px 18px;
+    cursor: pointer;
+  }
+  .newsletter-form-row button:hover { background: var(--accent-2-text); border-color: var(--accent-2-text); }
+</style>
 </head>
 <body>
 
@@ -723,6 +730,32 @@
   
 
   
+  <div class="weather-bar">
+    
+    <div class="weather-day">
+      <span class="wx-emoji" aria-hidden="true">☁️</span>
+      <span class="wx-name">Friday</span>
+      <span class="wx-temp">72&deg; / 48&deg;</span>
+      <span class="wx-label">Overcast &middot; 36% precip</span>
+    </div>
+    
+    <div class="weather-day">
+      <span class="wx-emoji" aria-hidden="true">☁️</span>
+      <span class="wx-name">Saturday</span>
+      <span class="wx-temp">79&deg; / 62&deg;</span>
+      <span class="wx-label">Overcast &middot; 1% precip</span>
+    </div>
+    
+    <div class="weather-day">
+      <span class="wx-emoji" aria-hidden="true">☁️</span>
+      <span class="wx-name">Sunday</span>
+      <span class="wx-temp">70&deg; / 62&deg;</span>
+      <span class="wx-label">Overcast &middot; 12% precip</span>
+    </div>
+    
+    
+  </div>
+  
 
   
 
@@ -736,6 +769,14 @@
 
   
   <div class="filter-bar" role="group" aria-label="Filter events">
+    
+    <button type="button" class="filter-chip" data-tag="art_culture" aria-pressed="false">
+      <span aria-hidden="true">🎨</span>Arts &amp; culture
+    </button>
+    
+    <button type="button" class="filter-chip" data-tag="elementary" aria-pressed="false">
+      <span aria-hidden="true">🎒</span>Elementary age
+    </button>
     
     <button type="button" class="filter-chip" data-tag="food" aria-pressed="false">
       <span aria-hidden="true">🍽️</span>Food &amp; drink
@@ -948,6 +989,74 @@
           
         </article>
         
+        <!-- id folds in date_iso - see the Editor's Pick tray_item above
+             for why (ROADMAP.md item 146). -->
+        
+        
+        <article class="card" id="ev-fishing-derby-2026-10-10" data-tags="kid_friendly,outdoor" data-date-iso="2026-10-10T08:00:00">
+          
+          <!-- ROADMAP.md Phase 11 #63: My Weekend is for dated events -
+               offering to add "Find your school district" or a guide's
+               own title to it made no sense, since guide items and the
+               guide index have nothing to do with weekend planning.
+               #90: nor does a school half-day belong in it - it's real
+               and worth knowing, but nobody plans a weekend around one. -->
+          <button type="button" class="tray-star" data-item='{"date": "Oct 10", "date_iso": "2026-10-10T08:00:00", "detail": "Rescheduled! Fishing Derby (Ages 3-16) Grab your gear and make your way to Clearwater Park for a morning of family fishing! Test your skills and maybe even\u2026", "id": "https://www.mppd.org/event/fishing-derby-4/|2026-10-10T08:00:00", "region_name": "Mount Prospect", "region_url": "https://withintenmiles.com/mount-prospect-60056/", "title": "Fishing Derby", "url": "https://www.mppd.org/event/fishing-derby-4/"}' aria-pressed="false" aria-label="Add Fishing Derby to My Weekend">☆</button>
+          
+          
+          
+          
+          <div class="date"><time datetime="2026-10-10T08:00:00">Sat, Oct 10</time> · <span class="where">Mount Prospect</span></div>
+          <h3><a href="https://www.mppd.org/event/fishing-derby-4/">Fishing Derby</a></h3>
+          
+          <p class="detail">Rescheduled! Fishing Derby (Ages 3-16) Grab your gear and make your way to Clearwater Park for a morning of family fishing! Test your skills and maybe even…</p>
+          
+          <div class="tag-row">
+            <span class="tag-badge" style="background: var(--hue-pink-bg); color: var(--hue-pink-ink);">🧒 Kid-friendly</span><span class="tag-badge" style="background: var(--hue-teal-bg); color: var(--hue-teal-ink);">🌳 Outdoor</span>
+          </div>
+          
+          
+          <div class="cal-row">
+            <a href="data:text/calendar;charset=utf-8,BEGIN%3AVCALENDAR%0D%0AVERSION%3A2.0%0D%0APRODID%3A-//Within%20Ten//EN%0D%0ABEGIN%3AVEVENT%0D%0ADTSTART%3A20261010T080000%0D%0ADTEND%3A20261010T090000%0D%0ASUMMARY%3AFishing%20Derby%0D%0ADESCRIPTION%3ARescheduled%21%20Fishing%20Derby%20%28Ages%203-16%29%20Grab%20your%20gear%20and%20make%20your%20way%20to%20Clearwater%20Park%20for%20a%20morning%20of%20family%20fishing%21%20Test%20your%20skills%20and%20maybe%20even%E2%80%A6%0D%0AURL%3Ahttps%3A//www.mppd.org/event/fishing-derby-4/%0D%0AEND%3AVEVENT%0D%0AEND%3AVCALENDAR%0D%0A" download="event.ics">📅 Add to calendar</a>
+            <a href="https://www.google.com/calendar/render?action=TEMPLATE&amp;text=Fishing+Derby&amp;dates=20261010T080000%2F20261010T090000&amp;details=Rescheduled%21+Fishing+Derby+%28Ages+3-16%29+Grab+your+gear+and+make+your+way+to+Clearwater+Park+for+a+morning+of+family+fishing%21+Test+your+skills+and+maybe+even%E2%80%A6&amp;location=Mount+Prospect" target="_blank" rel="noopener">Google Calendar</a>
+          </div>
+          
+        </article>
+        
+        <!-- id folds in date_iso - see the Editor's Pick tray_item above
+             for why (ROADMAP.md item 146). -->
+        
+        
+        <article class="card" id="ev-spooky-scary-studio-2026-10-10" data-tags="art_culture,elementary,kid_friendly,outdoor" data-date-iso="2026-10-10T09:30:00">
+          
+          <!-- ROADMAP.md Phase 11 #63: My Weekend is for dated events -
+               offering to add "Find your school district" or a guide's
+               own title to it made no sense, since guide items and the
+               guide index have nothing to do with weekend planning.
+               #90: nor does a school half-day belong in it - it's real
+               and worth knowing, but nobody plans a weekend around one. -->
+          <button type="button" class="tray-star" data-item='{"date": "Oct 10", "date_iso": "2026-10-10T09:30:00", "detail": "Spooky Scary Studio (Ages 5-10) The Studio has been overrun by spooky, yet friendly, skeletons just in time for Halloween! Join us for a workshop filled with\u2026", "id": "https://www.mppd.org/event/31551/|2026-10-10T09:30:00", "region_name": "Mount Prospect", "region_url": "https://withintenmiles.com/mount-prospect-60056/", "title": "Spooky Scary Studio", "url": "https://www.mppd.org/event/31551/"}' aria-pressed="false" aria-label="Add Spooky Scary Studio to My Weekend">☆</button>
+          
+          
+          
+          
+          <div class="date"><time datetime="2026-10-10T09:30:00">Sat, Oct 10</time> · <span class="where">Mount Prospect</span></div>
+          <h3><a href="https://www.mppd.org/event/31551/">Spooky Scary Studio</a></h3>
+          
+          <p class="detail">Spooky Scary Studio (Ages 5-10) The Studio has been overrun by spooky, yet friendly, skeletons just in time for Halloween! Join us for a workshop filled with…</p>
+          
+          <div class="tag-row">
+            <span class="tag-badge" style="background: var(--hue-purple-bg); color: var(--hue-purple-ink);">🎨 Arts &amp; culture</span><span class="tag-badge" style="background: var(--hue-cyan-bg); color: var(--hue-cyan-ink);">🎒 Elementary age</span><span class="tag-badge" style="background: var(--hue-pink-bg); color: var(--hue-pink-ink);">🧒 Kid-friendly</span><span class="tag-badge" style="background: var(--hue-teal-bg); color: var(--hue-teal-ink);">🌳 Outdoor</span>
+          </div>
+          
+          
+          <div class="cal-row">
+            <a href="data:text/calendar;charset=utf-8,BEGIN%3AVCALENDAR%0D%0AVERSION%3A2.0%0D%0APRODID%3A-//Within%20Ten//EN%0D%0ABEGIN%3AVEVENT%0D%0ADTSTART%3A20261010T093000%0D%0ADTEND%3A20261010T103000%0D%0ASUMMARY%3ASpooky%20Scary%20Studio%0D%0ADESCRIPTION%3ASpooky%20Scary%20Studio%20%28Ages%205-10%29%20The%20Studio%20has%20been%20overrun%20by%20spooky%5C%2C%20yet%20friendly%5C%2C%20skeletons%20just%20in%20time%20for%20Halloween%21%20Join%20us%20for%20a%20workshop%20filled%20with%E2%80%A6%0D%0AURL%3Ahttps%3A//www.mppd.org/event/31551/%0D%0AEND%3AVEVENT%0D%0AEND%3AVCALENDAR%0D%0A" download="event.ics">📅 Add to calendar</a>
+            <a href="https://www.google.com/calendar/render?action=TEMPLATE&amp;text=Spooky+Scary+Studio&amp;dates=20261010T093000%2F20261010T103000&amp;details=Spooky+Scary+Studio+%28Ages+5-10%29+The+Studio+has+been+overrun+by+spooky%2C+yet+friendly%2C+skeletons+just+in+time+for+Halloween%21+Join+us+for+a+workshop+filled+with%E2%80%A6&amp;location=Mount+Prospect" target="_blank" rel="noopener">Google Calendar</a>
+          </div>
+          
+        </article>
+        
         </div>
       
     </section>
@@ -982,15 +1091,26 @@
       <button type="submit">Subscribe</button>
     </div>
   </form>
-  <p class="newsletter-pending" hidden>Almost there — check your email and click the confirmation link.</p>
+  <div class="newsletter-done" hidden>
+    <p class="newsletter-pending">Almost there — check your email and click the confirmation link.</p>
+    <p class="newsletter-open-row"><a class="newsletter-open" href="#" target="_blank" rel="noopener" hidden></a></p>
+    <p class="newsletter-note">Not there in two minutes? Check Spam or Promotions for a message from Within Ten via Buttondown.</p>
+  </div>
 </div>
   
   <iframe name="bd-hidden-frame" title="Newsletter signup" style="display:none" aria-hidden="true"></iframe>
 <script>
+var WM = [["Open Gmail", "https://mail.google.com/mail/u/0/#search/from%3Abuttondown", ["gmail.com", "googlemail.com"]], ["Open Yahoo Mail", "https://mail.yahoo.com/", ["yahoo.com", "ymail.com"]], ["Open AOL Mail", "https://mail.aol.com/", ["aol.com"]], ["Open Outlook", "https://outlook.live.com/mail/0/", ["outlook.com", "hotmail.com", "live.com", "msn.com"]], ["Open iCloud Mail", "https://www.icloud.com/mail/", ["icloud.com", "me.com", "mac.com"]]];
 document.querySelectorAll(".newsletter-form").forEach(function (f) {
   f.addEventListener("submit", function () {
+    var d = (f.email.value.split("@").pop() || "").trim().toLowerCase(),
+      done = f.parentNode.querySelector(".newsletter-done"),
+      a = done.querySelector(".newsletter-open");
+    WM.forEach(function (p) {
+      if (p[2].indexOf(d) > -1) { a.textContent = p[0]; a.href = p[1]; a.hidden = false; }
+    });
     f.hidden = true;
-    f.parentNode.querySelector(".newsletter-pending").hidden = false;
+    done.hidden = false;
   });
 });
 </script>
@@ -1000,8 +1120,9 @@ document.querySelectorAll(".newsletter-form").forEach(function (f) {
     Local business? See the
     <a href="https://withintenmiles.com/sponsor/">sponsor page</a>.
     <a href="https://withintenmiles.com/about/">About</a>.
+    <a href="https://google.com/preferences/source?q=withintenmiles.com" rel="noopener">Add us as a preferred source on Google</a>.
     <a href="https://withintenmiles.com/trick-or-treat/">Trick-or-treat hours</a>.
-    <br>Generated 2026-10-08 13:41 UTC.
+    <br>Generated 2026-10-08 14:02 UTC.
     
     <br><a href="https://withintenmiles.com/mount-prospect-60056/weekly-summary.txt">Copy this week's summary</a> — a plain-text block ready to paste into a local group.
   </footer>
@@ -1024,10 +1145,10 @@ document.querySelectorAll(".newsletter-form").forEach(function (f) {
 </div>
 
 
-<script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "Event", "name": "Mount Prospect Farmers Market", "url": "https://withintenmiles.com/mount-prospect-60056/this-weekend/#ev-mount-prospect-farmers-market-2026-10-11", "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode", "sameAs": "https://mplions.org/event/farmers-market/", "description": "Local produce and vendors, organized by the Mount Prospect Lions Club, rain or shine. West Metra commuter lot, Northwest Hwy & Main St (Rte 83).", "startDate": "2026-10-11T08:00:00-05:00", "location": {"@type": "Place", "name": "Mount Prospect, IL", "address": {"@type": "PostalAddress", "addressCountry": "US", "addressLocality": "Mount Prospect", "addressRegion": "IL"}}}, {"@type": "Event", "name": "Storytime Playdate: Star Party", "url": "https://withintenmiles.com/mount-prospect-60056/this-weekend/#ev-storytime-playdate-star-party-2026-10-09", "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode", "sameAs": "https://mppl.libnet.info/event/16553541", "description": "Friday, October 09 2026 10:00am - 11:30am \n Enjoy the magic of storytime plus the joy of hands-on sensory fun! You and your child will enjoy time together…", "startDate": "2026-10-09T10:00:00-05:00", "location": {"@type": "Place", "name": "Mount Prospect Public Library", "address": {"@type": "PostalAddress", "addressCountry": "US", "addressLocality": "Mount Prospect", "addressRegion": "IL"}}}, {"@type": "Event", "name": "Build and Watch: The Addams Family", "url": "https://withintenmiles.com/mount-prospect-60056/this-weekend/#ev-build-and-watch-the-addams-family-2026-10-09", "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode", "sameAs": "https://mppl.libnet.info/event/16749793", "description": "Friday, October 09 2026 5:00pm - 7:00pm \n Enjoy a movie night at the library and have fun building with LEGO bricks and other various toys!", "startDate": "2026-10-09T17:00:00-05:00", "location": {"@type": "Place", "name": "Mount Prospect Public Library", "address": {"@type": "PostalAddress", "addressCountry": "US", "addressLocality": "Mount Prospect", "addressRegion": "IL"}}}, {"@type": "Event", "name": "Digitizing Photos, Slides, and Negatives", "url": "https://withintenmiles.com/mount-prospect-60056/this-weekend/#ev-digitizing-photos-slides-and-negatives-2026-10-10", "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode", "sameAs": "https://mppl.libnet.info/event/16452806", "description": "Saturday, October 10 2026 10:00am - 11:00am \n Learn how to digitize old photos, slides, and negatives using the library's Mac Studio equipment. It's a great…", "startDate": "2026-10-10T10:00:00-05:00", "location": {"@type": "Place", "name": "Mount Prospect Public Library", "address": {"@type": "PostalAddress", "addressCountry": "US", "addressLocality": "Mount Prospect", "addressRegion": "IL"}}}, {"@type": "Event", "name": "Afternoon Tea Social", "url": "https://withintenmiles.com/mount-prospect-60056/this-weekend/#ev-afternoon-tea-social-2026-10-10", "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode", "sameAs": "https://mppl.libnet.info/event/16124662", "description": "Saturday, October 10 2026 12:00pm - 1:00pm \n Come join us for an afternoon event celebrating our One Book, One Village community read!", "startDate": "2026-10-10T12:00:00-05:00", "location": {"@type": "Place", "name": "Mount Prospect Public Library", "address": {"@type": "PostalAddress", "addressCountry": "US", "addressLocality": "Mount Prospect", "addressRegion": "IL"}}}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "Event", "name": "Mount Prospect Farmers Market", "url": "https://withintenmiles.com/mount-prospect-60056/this-weekend/#ev-mount-prospect-farmers-market-2026-10-11", "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode", "sameAs": "https://mplions.org/event/farmers-market/", "description": "Local produce and vendors, organized by the Mount Prospect Lions Club, rain or shine. West Metra commuter lot, Northwest Hwy & Main St (Rte 83).", "startDate": "2026-10-11T08:00:00-05:00", "location": {"@type": "Place", "name": "Mount Prospect, IL", "address": {"@type": "PostalAddress", "addressCountry": "US", "addressLocality": "Mount Prospect", "addressRegion": "IL"}}}, {"@type": "Event", "name": "Storytime Playdate: Star Party", "url": "https://withintenmiles.com/mount-prospect-60056/this-weekend/#ev-storytime-playdate-star-party-2026-10-09", "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode", "sameAs": "https://mppl.libnet.info/event/16553541", "description": "Friday, October 09 2026 10:00am - 11:30am \n Enjoy the magic of storytime plus the joy of hands-on sensory fun! You and your child will enjoy time together…", "startDate": "2026-10-09T10:00:00-05:00", "location": {"@type": "Place", "name": "Mount Prospect Public Library", "address": {"@type": "PostalAddress", "addressCountry": "US", "addressLocality": "Mount Prospect", "addressRegion": "IL"}}}, {"@type": "Event", "name": "Build and Watch: The Addams Family", "url": "https://withintenmiles.com/mount-prospect-60056/this-weekend/#ev-build-and-watch-the-addams-family-2026-10-09", "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode", "sameAs": "https://mppl.libnet.info/event/16749793", "description": "Friday, October 09 2026 5:00pm - 7:00pm \n Enjoy a movie night at the library and have fun building with LEGO bricks and other various toys!", "startDate": "2026-10-09T17:00:00-05:00", "location": {"@type": "Place", "name": "Mount Prospect Public Library", "address": {"@type": "PostalAddress", "addressCountry": "US", "addressLocality": "Mount Prospect", "addressRegion": "IL"}}}, {"@type": "Event", "name": "Digitizing Photos, Slides, and Negatives", "url": "https://withintenmiles.com/mount-prospect-60056/this-weekend/#ev-digitizing-photos-slides-and-negatives-2026-10-10", "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode", "sameAs": "https://mppl.libnet.info/event/16452806", "description": "Saturday, October 10 2026 10:00am - 11:00am \n Learn how to digitize old photos, slides, and negatives using the library's Mac Studio equipment. It's a great…", "startDate": "2026-10-10T10:00:00-05:00", "location": {"@type": "Place", "name": "Mount Prospect Public Library", "address": {"@type": "PostalAddress", "addressCountry": "US", "addressLocality": "Mount Prospect", "addressRegion": "IL"}}}, {"@type": "Event", "name": "Afternoon Tea Social", "url": "https://withintenmiles.com/mount-prospect-60056/this-weekend/#ev-afternoon-tea-social-2026-10-10", "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode", "sameAs": "https://mppl.libnet.info/event/16124662", "description": "Saturday, October 10 2026 12:00pm - 1:00pm \n Come join us for an afternoon event celebrating our One Book, One Village community read!", "startDate": "2026-10-10T12:00:00-05:00", "location": {"@type": "Place", "name": "Mount Prospect Public Library", "address": {"@type": "PostalAddress", "addressCountry": "US", "addressLocality": "Mount Prospect", "addressRegion": "IL"}}}, {"@type": "Event", "name": "Fishing Derby", "url": "https://withintenmiles.com/mount-prospect-60056/this-weekend/#ev-fishing-derby-2026-10-10", "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode", "sameAs": "https://www.mppd.org/event/fishing-derby-4/", "description": "Rescheduled! Fishing Derby (Ages 3-16) Grab your gear and make your way to Clearwater Park for a morning of family fishing! Test your skills and maybe even…", "startDate": "2026-10-10T08:00:00-05:00", "location": {"@type": "Place", "name": "Mount Prospect, IL", "address": {"@type": "PostalAddress", "addressCountry": "US", "addressLocality": "Mount Prospect", "addressRegion": "IL"}}}, {"@type": "Event", "name": "Spooky Scary Studio", "url": "https://withintenmiles.com/mount-prospect-60056/this-weekend/#ev-spooky-scary-studio-2026-10-10", "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode", "sameAs": "https://www.mppd.org/event/31551/", "description": "Spooky Scary Studio (Ages 5-10) The Studio has been overrun by spooky, yet friendly, skeletons just in time for Halloween! Join us for a workshop filled with…", "startDate": "2026-10-10T09:30:00-05:00", "location": {"@type": "Place", "name": "Mount Prospect, IL", "address": {"@type": "PostalAddress", "addressCountry": "US", "addressLocality": "Mount Prospect", "addressRegion": "IL"}}}]}</script>
 
 
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebPage", "name": "Mount Prospect — Within Ten", "url": "https://withintenmiles.com/mount-prospect-60056/this-weekend/", "dateModified": "2026-10-08T13:41:10.561812+00:00", "isPartOf": {"@type": "WebSite", "name": "Within Ten", "url": "https://withintenmiles.com/", "publisher": {"@id": "https://withintenmiles.com/about/#organization"}}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebPage", "name": "Mount Prospect — Within Ten", "url": "https://withintenmiles.com/mount-prospect-60056/this-weekend/", "dateModified": "2026-10-08T14:02:22.185087+00:00", "isPartOf": {"@type": "WebSite", "name": "Within Ten", "url": "https://withintenmiles.com/", "publisher": {"@id": "https://withintenmiles.com/about/#organization"}}}</script>
 <script>
 (function () {
   var activeTags = new Set();

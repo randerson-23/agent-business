@@ -574,46 +574,6 @@
   .faq-item p { margin: 8px 0 0; color: var(--muted); font-size: 13.5px; line-height: 1.6; }
   .faq-item p a { color: var(--accent-2-text); font-weight: 600; }
 
-  .newsletter {
-    background: var(--card);
-    border: 2px solid var(--ink);
-    border-radius: var(--radius-lg);
-    box-shadow: var(--shadow-sm);
-    padding: 20px 24px;
-    margin-top: 30px;
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: space-between;
-    gap: 14px;
-  }
-  .newsletter form { display: contents; }
-  .newsletter-copy strong { font-size: 15px; }
-  .newsletter-copy p { margin: 3px 0 0; color: var(--muted); font-size: 13.5px; }
-  .newsletter-copy .newsletter-note { font-size: 12px; margin-top: 6px; }
-  .newsletter-pending { margin: 0; font-size: 13.5px; font-weight: 600; }
-  .newsletter-form-row { display: flex; gap: 0; flex-wrap: wrap; }
-  .newsletter-form-row input[type="email"] {
-    font: inherit;
-    border: 2px solid var(--ink);
-    border-right: 0;
-    border-radius: 0;
-    padding: 8px 14px;
-    min-width: 200px;
-    background: var(--bg);
-    color: var(--ink);
-  }
-  .newsletter-form-row button {
-    font: inherit;
-    font-weight: 800;
-    color: var(--bg);
-    background: var(--accent-soft);
-    border: 2px solid var(--accent-soft);
-    border-radius: 0;
-    padding: 8px 18px;
-    cursor: pointer;
-  }
-  .newsletter-form-row button:hover { background: var(--accent-2-text); border-color: var(--accent-2-text); }
 
   footer {
     text-align: center;
@@ -679,6 +639,53 @@
     .hero h1 { font-size: 27px; }
     .wrap { padding: 0 14px 88px; }
   }
+</style>
+<style>
+  .newsletter {
+    background: var(--card);
+    border: 2px solid var(--ink);
+    border-radius: var(--radius-lg, 0);
+    box-shadow: var(--shadow-sm, none);
+    padding: 20px 24px;
+    margin-top: 30px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 14px;
+  }
+  .newsletter form { display: contents; }
+  .newsletter-copy strong { font-size: 15px; }
+  .newsletter-copy p { margin: 3px 0 0; color: var(--muted); font-size: 13.5px; }
+  .newsletter-copy .newsletter-note { font-size: 12px; margin-top: 6px; }
+  .newsletter-pending { margin: 0; font-size: 13.5px; font-weight: 600; }
+  .newsletter-done p { margin: 0 0 6px; }
+  .newsletter-open { display: inline-block; font-weight: 800; color: var(--bg); background: var(--accent-soft); border: 2px solid var(--accent-soft); padding: 8px 18px; text-decoration: none; }
+  .newsletter-open[hidden] { display: none; }
+  .newsletter-open:hover { background: var(--accent-2-text); border-color: var(--accent-2-text); }
+  .newsletter-done .newsletter-note { font-size: 12px; color: var(--muted); }
+  .newsletter-form-row { display: flex; gap: 0; flex-wrap: wrap; }
+  .newsletter-form-row input[type="email"] {
+    font: inherit;
+    border: 2px solid var(--ink);
+    border-right: 0;
+    border-radius: 0;
+    padding: 8px 14px;
+    min-width: 200px;
+    background: var(--bg);
+    color: var(--ink);
+  }
+  .newsletter-form-row button {
+    font: inherit;
+    font-weight: 800;
+    color: var(--bg);
+    background: var(--accent-soft);
+    border: 2px solid var(--accent-soft);
+    border-radius: 0;
+    padding: 8px 18px;
+    cursor: pointer;
+  }
+  .newsletter-form-row button:hover { background: var(--accent-2-text); border-color: var(--accent-2-text); }
 </style>
 </head>
 <body>
@@ -1164,15 +1171,26 @@
       <button type="submit">Subscribe</button>
     </div>
   </form>
-  <p class="newsletter-pending" hidden>Almost there — check your email and click the confirmation link.</p>
+  <div class="newsletter-done" hidden>
+    <p class="newsletter-pending">Almost there — check your email and click the confirmation link.</p>
+    <p class="newsletter-open-row"><a class="newsletter-open" href="#" target="_blank" rel="noopener" hidden></a></p>
+    <p class="newsletter-note">Not there in two minutes? Check Spam or Promotions for a message from Within Ten via Buttondown.</p>
+  </div>
 </div>
   
   <iframe name="bd-hidden-frame" title="Newsletter signup" style="display:none" aria-hidden="true"></iframe>
 <script>
+var WM = [["Open Gmail", "https://mail.google.com/mail/u/0/#search/from%3Abuttondown", ["gmail.com", "googlemail.com"]], ["Open Yahoo Mail", "https://mail.yahoo.com/", ["yahoo.com", "ymail.com"]], ["Open AOL Mail", "https://mail.aol.com/", ["aol.com"]], ["Open Outlook", "https://outlook.live.com/mail/0/", ["outlook.com", "hotmail.com", "live.com", "msn.com"]], ["Open iCloud Mail", "https://www.icloud.com/mail/", ["icloud.com", "me.com", "mac.com"]]];
 document.querySelectorAll(".newsletter-form").forEach(function (f) {
   f.addEventListener("submit", function () {
+    var d = (f.email.value.split("@").pop() || "").trim().toLowerCase(),
+      done = f.parentNode.querySelector(".newsletter-done"),
+      a = done.querySelector(".newsletter-open");
+    WM.forEach(function (p) {
+      if (p[2].indexOf(d) > -1) { a.textContent = p[0]; a.href = p[1]; a.hidden = false; }
+    });
     f.hidden = true;
-    f.parentNode.querySelector(".newsletter-pending").hidden = false;
+    done.hidden = false;
   });
 });
 </script>
@@ -1182,8 +1200,9 @@ document.querySelectorAll(".newsletter-form").forEach(function (f) {
     Local business? See the
     <a href="https://withintenmiles.com/sponsor/">sponsor page</a>.
     <a href="https://withintenmiles.com/about/">About</a>.
+    <a href="https://google.com/preferences/source?q=withintenmiles.com" rel="noopener">Add us as a preferred source on Google</a>.
     <a href="https://withintenmiles.com/trick-or-treat/">Trick-or-treat hours</a>.
-    <br>Generated 2026-10-08 13:41 UTC.
+    <br>Generated 2026-10-08 14:02 UTC.
     
     <br><a href="https://withintenmiles.com/des-plaines-60016/weekly-summary.txt">Copy this week's summary</a> — a plain-text block ready to paste into a local group.
   </footer>
@@ -1209,7 +1228,7 @@ document.querySelectorAll(".newsletter-form").forEach(function (f) {
 <script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "Event", "name": "Reading/Literacy Class", "url": "https://withintenmiles.com/des-plaines-60016/today/#ev-reading-literacy-class-2026-10-08", "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode", "sameAs": "https://desplaines.libnet.info/event/15801723", "description": "Thursday, October 08 2026 9:15am - 12:15pm \n For more information, please contact Oakton College at 847-635-1426", "startDate": "2026-10-08T09:15:00-05:00", "location": {"@type": "Place", "name": "Des Plaines Public Library", "address": {"@type": "PostalAddress", "addressCountry": "US", "addressLocality": "Des Plaines", "addressRegion": "IL"}}}, {"@type": "Event", "name": "ESL (English as a Second Language) Class - Oakton College", "url": "https://withintenmiles.com/des-plaines-60016/today/#ev-esl-english-as-a-second-language-class-oakton-college-2026-10-08", "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode", "sameAs": "https://desplaines.libnet.info/event/15803232", "description": "Thursday, October 08 2026 9:15am - 12:15pm \n ESL (English as a Second Language) Class - Oakton College\n\n Teaches listening, speaking, reading, writing, and…", "startDate": "2026-10-08T09:15:00-05:00", "location": {"@type": "Place", "name": "Des Plaines Public Library", "address": {"@type": "PostalAddress", "addressCountry": "US", "addressLocality": "Des Plaines", "addressRegion": "IL"}}}, {"@type": "Event", "name": "Medicare Supplement Insurance Buyers' Guide", "url": "https://withintenmiles.com/des-plaines-60016/today/#ev-medicare-supplement-insurance-buyers-guide-2026-10-08", "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode", "sameAs": "https://desplaines.libnet.info/event/16460665", "description": "Thursday, October 08 2026 10:00am - 11:00am \n TBA", "startDate": "2026-10-08T10:00:00-05:00", "location": {"@type": "Place", "name": "Des Plaines Public Library", "address": {"@type": "PostalAddress", "addressCountry": "US", "addressLocality": "Des Plaines", "addressRegion": "IL"}}}, {"@type": "Event", "name": "Toddler Time", "url": "https://withintenmiles.com/des-plaines-60016/today/#ev-toddler-time-2026-10-08", "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode", "sameAs": "https://desplaines.libnet.info/event/17001894", "description": "Thursday, October 08 2026 10:00am - 10:30am \n Ages 18-36 months. Drop-in at the Poet Tree Corner! Enjoy stories, songs, rhymes, movement, and more at Toddler…", "startDate": "2026-10-08T10:00:00-05:00", "location": {"@type": "Place", "name": "Des Plaines Public Library", "address": {"@type": "PostalAddress", "addressCountry": "US", "addressLocality": "Des Plaines", "addressRegion": "IL"}}}, {"@type": "Event", "name": "Foodies Unite!", "url": "https://withintenmiles.com/des-plaines-60016/today/#ev-foodies-unite-2026-10-08", "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode", "sameAs": "https://desplaines.libnet.info/event/17139086", "description": "Thursday, October 08 2026 2:00pm - 3:00pm \n Pick up the special ingredient and join the program to share your cooking experience.", "startDate": "2026-10-08T14:00:00-05:00", "location": {"@type": "Place", "name": "Des Plaines Public Library", "address": {"@type": "PostalAddress", "addressCountry": "US", "addressLocality": "Des Plaines", "addressRegion": "IL"}}}, {"@type": "Event", "name": "Mexican Candy Taste Test for Teens", "url": "https://withintenmiles.com/des-plaines-60016/today/#ev-mexican-candy-taste-test-for-teens-2026-10-08", "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode", "sameAs": "https://desplaines.libnet.info/event/16341260", "description": "Thursday, October 08 2026 4:00pm - 5:00pm \n Join us to taste different types of Mexican candy!", "startDate": "2026-10-08T16:00:00-05:00", "location": {"@type": "Place", "name": "Des Plaines Public Library", "address": {"@type": "PostalAddress", "addressCountry": "US", "addressLocality": "Des Plaines", "addressRegion": "IL"}}}, {"@type": "Event", "name": "Book a Teen Librarian", "url": "https://withintenmiles.com/des-plaines-60016/today/#ev-book-a-teen-librarian-2026-10-08", "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode", "sameAs": "https://desplaines.libnet.info/event/16339445", "description": "Thursday, October 08 2026 5:00pm - 6:00pm \n Come in and get to know your teen librarians!", "startDate": "2026-10-08T17:00:00-05:00", "location": {"@type": "Place", "name": "Des Plaines Public Library", "address": {"@type": "PostalAddress", "addressCountry": "US", "addressLocality": "Des Plaines", "addressRegion": "IL"}}}, {"@type": "Event", "name": "iPhone iOS 27", "url": "https://withintenmiles.com/des-plaines-60016/today/#ev-iphone-ios-27-2026-10-08", "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode", "sameAs": "https://desplaines.libnet.info/event/17391178", "description": "Thursday, October 08 2026 6:30pm - 7:30pm \n Discover Apples new operating system iOS 27. Get started with your iPhone by exploring helpful tips on iOS 27.…", "startDate": "2026-10-08T18:30:00-05:00", "location": {"@type": "Place", "name": "Des Plaines Public Library", "address": {"@type": "PostalAddress", "addressCountry": "US", "addressLocality": "Des Plaines", "addressRegion": "IL"}}}, {"@type": "Event", "name": "River's Edge Condo Assoc.", "url": "https://withintenmiles.com/des-plaines-60016/today/#ev-river-s-edge-condo-assoc-2026-10-08", "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode", "sameAs": "https://desplaines.libnet.info/event/17184069", "description": "Thursday, October 08 2026 7:00pm - 8:45pm \n Lisa- Espire Property Management 847-634-9659", "startDate": "2026-10-08T19:00:00-05:00", "location": {"@type": "Place", "name": "Des Plaines Public Library", "address": {"@type": "PostalAddress", "addressCountry": "US", "addressLocality": "Des Plaines", "addressRegion": "IL"}}}, {"@type": "Event", "name": "Mont Clare Condo Assoc.", "url": "https://withintenmiles.com/des-plaines-60016/today/#ev-mont-clare-condo-assoc-2026-10-08", "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode", "sameAs": "https://desplaines.libnet.info/event/17426723", "description": "Thursday, October 08 2026 7:00pm - 8:45pm \n Jennifer K / American Property Mgmt. 847-985-6464", "startDate": "2026-10-08T19:00:00-05:00", "location": {"@type": "Place", "name": "Des Plaines Public Library", "address": {"@type": "PostalAddress", "addressCountry": "US", "addressLocality": "Des Plaines", "addressRegion": "IL"}}}]}</script>
 
 
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebPage", "name": "Des Plaines — Within Ten", "url": "https://withintenmiles.com/des-plaines-60016/today/", "dateModified": "2026-10-08T13:41:10.561812+00:00", "isPartOf": {"@type": "WebSite", "name": "Within Ten", "url": "https://withintenmiles.com/", "publisher": {"@id": "https://withintenmiles.com/about/#organization"}}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebPage", "name": "Des Plaines — Within Ten", "url": "https://withintenmiles.com/des-plaines-60016/today/", "dateModified": "2026-10-08T14:02:22.185087+00:00", "isPartOf": {"@type": "WebSite", "name": "Within Ten", "url": "https://withintenmiles.com/", "publisher": {"@id": "https://withintenmiles.com/about/#organization"}}}</script>
 <script>
 (function () {
   var activeTags = new Set();
