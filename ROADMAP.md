@@ -253,11 +253,13 @@ that limit.
 4. **Rename the Buttondown handle (1 min, item 226)** from
    `andersonryant` to the brand (for example `withinten`). Then tell the
    build loop the new handle so it updates `config/newsletter.yaml`.
-5. **Three Buttondown settings checks (2 min):**
+5. **Four Buttondown settings checks (2 min):**
    - **Tracking is on** (item 187). With tracking off, opens always read 0.
    - The **`withintenmiles.com` sending domain shows as verified** (item 47).
    - Settings → Subscribing → **Welcome**: enable one welcome email if the
      free plan allows it (item 106).
+   - Same page: **turn on the automatic confirmation reminder** for
+     unconfirmed subscribers (item 256), then tell the build loop it is on.
    - After the first real signup, open that subscriber and check that its
      **town tag and UTM fields** arrived (item 252).
 6. **Create the event-submission Google Form (10 min, item 246)**, once
@@ -13972,6 +13974,92 @@ deals listings that confirm items 246 and 248), **Pinterest RSS
 auto-publish** as a no-owner-time discovery channel, **Buttondown's
 form attribution fields**, and **signup placement across the site's
 own pages** as the design/UX angle.
+
+
+#### Research pass 2026-10-08, morning (sixty-second pass)
+
+Since the last pass the build loop shipped items 251 and 252: every
+landing page now has the inline signup, and every signup carries a town
+tag and UTM fields. The Wednesday send ran at 02:16 UTC with an
+event-led subject (*"Autumn Harvest, Tech Fair and 23 more this
+weekend"*, item 217) to one subscriber. Signups can now happen anywhere
+on the site. This pass looks at the two steps after a visitor types an
+address: **confirming** (Buttondown requires double opt-in) and
+**coming back** (whether Google shows the site to that reader again).
+
+| Angle | What it is / what we found | Why it matters here |
+|---|---|---|
+| **Google Preferred Sources, now in AI Mode** | Readers can mark a site as a *preferred source*. Since **2026-05-27** those sources appear, labelled "preferred", in **AI Overviews and AI Mode**, not just Top Stories. Google says readers are **about twice as likely to click** a source they chose. On **2026-08-20** Google published an embeddable button plus a **plain deeplink**, `https://google.com/preferences/source?q=<domain>`, for sites that do not run JavaScript. Eligibility is **domain-level or subdomain-level** (this site qualifies), and Google notes that sources "not updated regularly may be unavailable". More than 600,000 sources have been selected. Google does not tell publishers how many readers chose them | This is the one Google mechanism that gives a small site a lasting place in AI answers **for the people who already like it**. It turns a subscriber into a repeat Google visitor as well. It costs one link, no script, and no tracking (item 255). **Dependency:** Google has to know the domain. The owner's Search Console check (items 224, 235) settles that, and the link does no harm before then |
+| **Buttondown double opt-in, the step after "Subscribe" (design/UX)** | Buttondown requires confirmation for every subscriber, and cannot turn it off. The site's pending message reads *"Almost there — check your email and click the confirmation link."* It gives no hint where the email went, who it is from, or what to do if it is not there. Buttondown has an **automatic confirmation reminder**, sent about **24 hours after signup** to anyone unconfirmed, but it is **off until the author enables it** (Settings → Subscribing). The repo has no record that it was ever enabled | Every signup that does not confirm is lost, and this site's whole subscriber history is sends with **0 and then 1 recipient** (item 239). The cheapest audience growth available is not losing the people who already typed their address in. A common pattern is an **"Open Gmail / Open Yahoo Mail"** button chosen from the address's domain (items 254, 256) |
+| **What AI Overviews cite** (arXiv measurement study, 55,393 queries, Mar–Apr 2026) | Most-cited hosts: YouTube 5.5%, Wikipedia 4.4%, **Facebook 3.7%, Instagram 3.7%**, USA Today 2.8%. **29.8%** of cited domains were not on the first results page, and **about 1 in 9 claims was unsupported** by its citation. The study did not test local or time-bound queries | Two takeaways. Being cited does not require ranking on page one, so structured, crawlable event data still counts. And accuracy is a selling point: a page whose every card links to its publisher (item 131) is the opposite of an unsupported claim. **No new item.** Facebook's citation share backs the existing group-posting items (107) rather than creating a new one |
+| **Luma** (`luma.com/discover`) | City-level discovery pages only, with a curated set of about **20–40 featured events per city**. No suburb-level pages were found, and no documented public ICS feed. Organiser calendars are per-slug | **Non-item.** It is not a source (Chicago-level curation, with almost none of this site's towns' library and park events) and not a competitor for suburban family weekends. Recorded so a later pass does not re-research it |
+
+#### P1 (new)
+
+254. **Turn the pending message into an "open your inbox" step.**
+     Design/UX, build loop, `templates/_signup.html.j2` only. When the
+     form submits, the existing script already swaps in the pending
+     message. Extend it to read the **domain of the address just
+     typed** (client-side only, never sent anywhere else) and show
+     **one** button:
+
+     | Domain | Button | Link |
+     |---|---|---|
+     | `gmail.com`, `googlemail.com` | Open Gmail | `https://mail.google.com/mail/u/0/#search/from%3Abuttondown` |
+     | `yahoo.com`, `ymail.com`, `aol.com` | Open Yahoo Mail / AOL Mail | `https://mail.yahoo.com/` / `https://mail.aol.com/` |
+     | `outlook.com`, `hotmail.com`, `live.com`, `msn.com` | Open Outlook | `https://outlook.live.com/mail/0/` |
+     | `icloud.com`, `me.com`, `mac.com` | Open iCloud Mail | `https://www.icloud.com/mail/` |
+     | anything else | no button | — |
+
+     Below it, one line: *"Not there in two minutes? Check Spam or
+     Promotions for a message from Within Ten via Buttondown."* The
+     no-JS fallback stays as it is. Tests: the mapping function handles
+     upper case, subdomains (`mail.yahoo.com` is not an address domain,
+     so only the part after `@` counts) and unknown domains, and the
+     link opens in a new tab with `rel="noopener"`. This is the step
+     where the one subscriber the site ever had might have been lost.
+
+255. **Ask readers to make Within Ten a preferred source on Google.**
+     Build loop. Use the **plain deeplink**
+     `https://google.com/preferences/source?q=withintenmiles.com`, not
+     Google's embed script: the site loads no third-party JavaScript,
+     and this keeps it that way. Placement:
+
+     - **Both email templates' footer:** one line, *"See Within Ten
+       first when you search: add us as a preferred source on Google →"*.
+       It goes below the forward line (item 183), so the order stays
+       forward, then preferred source, then Buttondown's unsubscribe.
+     - **The site footer** (one link, every page) and the **About page**,
+       with one sentence on what it does.
+     - **Not** in the signup pending message. That moment has one job,
+       confirming (item 254).
+
+     Tests: the link appears once per email and once per page footer,
+     with the domain taken from `CUSTOM_DOMAIN`, not hard-coded twice.
+     **Honest about the payoff:** Google gives publishers no count, so
+     success cannot be measured directly. GoatCounter (item 227) will
+     at most show Google referrals rising. It is still the cheapest
+     re-visit lever available, and it lands in exactly the AI answers
+     the business plan's agent-era section is about.
+
+#### P1, owner (new)
+
+256. **Turn on Buttondown's confirmation reminder (30 seconds).**
+     Settings → Subscribing → enable the automatic reminder for
+     unconfirmed subscribers. Optionally edit its text to name the
+     towns. It sends **one** reminder about 24 hours after signup.
+     No build-loop work; added to the Needs Ryan Buttondown checks.
+     Once the owner confirms it is on, the build loop can add *"We'll
+     send one reminder tomorrow if it gets buried"* to item 254's
+     pending line. Not before, because the site must not promise an
+     email that is not set up.
+
+Competitors reviewed this pass: **Google Preferred Sources** (now in AI
+Mode and AI Overviews, with a no-JavaScript deeplink), **Buttondown's
+double opt-in and confirmation reminder**, **an AI Overviews citation
+study** (Facebook and Instagram among the most-cited hosts, and about 1
+in 9 claims unsupported), and **Luma** (city-level only, a non-item).
+The design/UX angle is the **post-signup confirmation step**.
 
 
 ## Working agreements for autonomous iteration
