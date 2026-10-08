@@ -40,5 +40,13 @@
       "open_rate": 0.0,
       "click_rate": 0.0
     }
+  },
+  {
+    "timestamp": "2026-10-08T02:16:13.937092+00:00",
+    "subject": "Autumn Harvest, Tech Fair and 23 more this weekend",
+    "buttondown_id": "em_558zga1ptm9pfr8nrf36phb8c4",
+    "region": "combined",
+    "mode": "schedule",
+    "pre_send_subscriber_count": 1
   }
 ]
