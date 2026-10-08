@@ -179,6 +179,35 @@ SITE_NAME = "Within Ten"
 ORGANIZATION_ID = SITE_BASE_URL + "about/#organization"
 
 
+# ROADMAP.md item 255: Google's plain "preferred source" deeplink (no script),
+# built from the one domain constant so it can never disagree with CNAME.
+PREFERRED_SOURCE_URL = f"https://google.com/preferences/source?q={CUSTOM_DOMAIN}"
+
+# ROADMAP.md item 254: after "Subscribe", the signup shows one button to open
+# the reader's own inbox, chosen from the part of the address after "@". Each
+# row is (button label, URL, domains). The same table is rendered into the page
+# for the script, so Python (tested) and the browser cannot disagree.
+WEBMAIL_PROVIDERS = (
+    ("Open Gmail", "https://mail.google.com/mail/u/0/#search/from%3Abuttondown", ("gmail.com", "googlemail.com")),
+    ("Open Yahoo Mail", "https://mail.yahoo.com/", ("yahoo.com", "ymail.com")),
+    ("Open AOL Mail", "https://mail.aol.com/", ("aol.com",)),
+    ("Open Outlook", "https://outlook.live.com/mail/0/", ("outlook.com", "hotmail.com", "live.com", "msn.com")),
+    ("Open iCloud Mail", "https://www.icloud.com/mail/", ("icloud.com", "me.com", "mac.com")),
+)
+
+
+def webmail_provider(address: str) -> tuple[str, str] | None:
+    """(button label, URL) for an email address's webmail, or None when the
+    domain is not one we know. Only the part after the last "@" counts and
+    case does not, so "Ann@GMAIL.com" matches and "ann@mail.yahoo.com" (not
+    an address domain) does not."""
+    domain = address.rsplit("@", 1)[-1].strip().lower() if "@" in address else ""
+    for label, url, domains in WEBMAIL_PROVIDERS:
+        if domain in domains:
+            return label, url
+    return None
+
+
 @lru_cache(maxsize=1)
 def get_template_env() -> Environment:
     """The one Jinja2 Environment every render_* function in this module
@@ -188,7 +217,10 @@ def get_template_env() -> Environment:
     page render for no reason a single build ever needed. `lru_cache`
     makes this a one-time cost per process.
     """
-    return Environment(loader=FileSystemLoader(str(TEMPLATES_DIR)), autoescape=True)
+    env = Environment(loader=FileSystemLoader(str(TEMPLATES_DIR)), autoescape=True)
+    env.globals["preferred_source_url"] = PREFERRED_SOURCE_URL
+    env.globals["webmail_providers"] = [[label, url, list(domains)] for label, url, domains in WEBMAIL_PROVIDERS]
+    return env
 
 
 def load_yaml(path: Path) -> dict:

@@ -1,4 +1,4 @@
-{% from "_signup.html.j2" import signup_form, signup_runtime -%}
+{% from "_signup.html.j2" import signup_css, signup_form, signup_runtime -%}
 <!doctype html>
 <html lang="en">
 <head>
@@ -279,46 +279,6 @@
     box-shadow: var(--shadow-sm);
   }
 
-  .newsletter {
-    background: var(--card);
-    border: 2px solid var(--ink);
-    border-radius: var(--radius-lg);
-    box-shadow: var(--shadow-sm);
-    padding: 20px 24px;
-    margin-top: 18px;
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: space-between;
-    gap: 14px;
-  }
-  .newsletter form { display: contents; }
-  .newsletter-copy strong { font-size: 15px; }
-  .newsletter-copy p { margin: 3px 0 0; color: var(--muted); font-size: 13.5px; }
-  .newsletter-copy .newsletter-note { font-size: 12px; margin-top: 6px; }
-  .newsletter-pending { margin: 0; font-size: 13.5px; font-weight: 600; }
-  .newsletter-form-row { display: flex; gap: 0; flex-wrap: wrap; }
-  .newsletter-form-row input[type="email"] {
-    font: inherit;
-    border: 2px solid var(--ink);
-    border-right: 0;
-    border-radius: 0;
-    padding: 8px 14px;
-    min-width: 200px;
-    background: var(--bg);
-    color: var(--ink);
-  }
-  .newsletter-form-row button {
-    font: inherit;
-    font-weight: 800;
-    color: var(--bg);
-    background: var(--accent-soft);
-    border: 2px solid var(--accent-soft);
-    border-radius: 0;
-    padding: 8px 18px;
-    cursor: pointer;
-  }
-  .newsletter-form-row button:hover { background: var(--accent-2-text); border-color: var(--accent-2-text); }
 
   a:focus-visible, button:focus-visible, input:focus-visible {
     outline: 2px solid var(--accent);
@@ -350,6 +310,7 @@
     .wrap { padding: 24px 14px 48px; }
   }
 </style>
+{{ signup_css() }}
 </head>
 <body>
   <div class="topnav">
@@ -447,6 +408,7 @@
     Want your ZIP added, or want to sponsor a region?
     <a href="sponsor/">See pricing &amp; availability</a>.
     <a href="about/">About</a>.
+    <a href="{{ preferred_source_url }}" rel="noopener">Add us as a preferred source on Google</a>.
     {% if trick_or_treat_in_season %}<a href="trick-or-treat/">Trick-or-treat hours</a>.{% endif %}
     <br>See something wrong or missing? <a href="{{ corrections_cta_url }}">Email us</a> — corrections get made the same week.
     <br>Generated {{ generated_at }}.

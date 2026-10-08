@@ -12,10 +12,14 @@ from pathlib import Path
 REPO_ROOT = Path(__file__).resolve().parents[1]
 DOCS_DIR = REPO_ROOT / "docs"
 
-# Current heaviest page (a region's main view, with the tray widget, filter
-# chips, and distance sort all inline) sits around 7.1KB. This budget leaves
-# real headroom for the next feature while still catching genuine bloat.
-MAX_INLINE_JS_BYTES = 12_288
+# The heaviest page is a region's main view (tray widget, filter chips,
+# distance sort and the signup runtime all inline). It was ~7.1KB when this
+# budget was first set and had grown to 12,115 bytes by 2026-10-08, close
+# enough to the old 12,288 cap that the post-signup "open your inbox" button
+# (ROADMAP.md item 254, a P1 conversion step) could not fit. Raised to 13,312
+# (13KB) for that one feature; the next increase should come out of what is
+# already here, not out of this number.
+MAX_INLINE_JS_BYTES = 13_312
 
 _SCRIPT_BLOCK = re.compile(
     r'<script(?![^>]*type="application/ld\+json")[^>]*>(.*?)</script>',

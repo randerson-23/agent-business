@@ -138,3 +138,94 @@ def test_the_forward_link_in_emails_is_tracked():
     for name in ("email_digest.html.j2", "combined_email_digest.html.j2"):
         source = (ROOT / "templates" / name).read_text(encoding="utf-8")
         assert "?utm_source=email&utm_campaign=forward" in source, name
+
+
+# ---- ROADMAP.md item 254: the "open your inbox" step after Subscribe --------
+
+
+def test_webmail_provider_maps_the_address_domain():
+    wp = build_digest.webmail_provider
+    assert wp("ann@gmail.com") == ("Open Gmail", "https://mail.google.com/mail/u/0/#search/from%3Abuttondown")
+    assert wp("ann@googlemail.com")[0] == "Open Gmail"
+    assert wp("ann@yahoo.com") == ("Open Yahoo Mail", "https://mail.yahoo.com/")
+    assert wp("ann@ymail.com")[0] == "Open Yahoo Mail"
+    assert wp("ann@aol.com") == ("Open AOL Mail", "https://mail.aol.com/")
+    for domain in ("outlook.com", "hotmail.com", "live.com", "msn.com"):
+        assert wp(f"ann@{domain}") == ("Open Outlook", "https://outlook.live.com/mail/0/")
+    for domain in ("icloud.com", "me.com", "mac.com"):
+        assert wp(f"ann@{domain}") == ("Open iCloud Mail", "https://www.icloud.com/mail/")
+
+
+def test_webmail_provider_ignores_case_and_only_reads_after_the_at_sign():
+    wp = build_digest.webmail_provider
+    assert wp("Ann@GMAIL.COM")[0] == "Open Gmail"
+    assert wp("  ann@gmail.com ")[0] == "Open Gmail"
+    assert wp("gmail.com@school.org") is None  # the part before "@" is not a domain
+    assert wp("ann@mail.yahoo.com") is None  # a subdomain is not an address domain
+    assert wp("ann@mygmail.com") is None  # suffix match would be wrong
+    assert wp("ann@example.org") is None
+    assert wp("not an address") is None
+    assert wp("") is None
+
+
+def test_the_page_script_uses_the_same_table_as_python():
+    html = region_page()
+    import json
+    table = json.loads(re.search(r"var WM = (\[.*?\]);", html, re.S).group(1))
+    assert table == [[label, url, list(domains)] for label, url, domains in build_digest.WEBMAIL_PROVIDERS]
+
+
+def test_the_pending_step_has_one_hidden_button_and_the_spam_hint():
+    html = tot_page()
+    done = re.search(r'<div class="newsletter-done" hidden>.*?</div>', html, re.S).group(0)
+    assert "Almost there — check your email and click the confirmation link." in done
+    assert 'class="newsletter-open" href="#" target="_blank" rel="noopener" hidden' in done
+    assert "Not there in two minutes? Check Spam or Promotions for a message from Within Ten via Buttondown." in done
+    # Hidden until the script fills it in for a known provider; no-JS readers see the form's own note.
+    assert "We'll send one email to confirm." in html
+
+
+def test_the_inline_js_budget_is_the_deliberate_one():
+    sys.path.insert(0, str(ROOT / "scripts"))
+    import check_perf_budget
+    assert check_perf_budget.MAX_INLINE_JS_BYTES == 13_312
+
+
+# ---- ROADMAP.md item 255: preferred source on Google -------------------------
+
+
+def test_preferred_source_link_is_built_from_the_one_domain_constant():
+    assert build_digest.PREFERRED_SOURCE_URL == f"https://google.com/preferences/source?q={build_digest.CUSTOM_DOMAIN}"
+    # No template hard-codes the domain into the link.
+    for path in (ROOT / "templates").glob("*.j2"):
+        assert "google.com/preferences/source" not in path.read_text(encoding="utf-8"), path.name
+
+
+def test_every_page_footer_links_the_preferred_source_once():
+    url = build_digest.PREFERRED_SOURCE_URL
+    pages = {
+        "region": region_page(),
+        "region-free": region_page(nav_current="free"),
+        "this-weekend": hub_page("this-weekend", "x"),
+        "trick-or-treat": tot_page(),
+        "sponsor": build_digest.render_sponsor_page([], NOW),
+    }
+    for name, html in pages.items():
+        assert html.count(f'href="{url}"') == 1, name
+        assert "Add us as a preferred source on Google" in html.split("<footer>")[-1], name
+    about = build_digest.render_about_page(NOW, None)
+    assert about.count(f'href="{url}"') == 2  # the explanatory section and the footer
+    assert "See us first on Google" in about
+
+
+def test_both_emails_link_the_preferred_source_once_after_the_forward_line():
+    url = build_digest.PREFERRED_SOURCE_URL
+    for name in ("email_digest.html.j2", "combined_email_digest.html.j2"):
+        source = (ROOT / "templates" / name).read_text(encoding="utf-8")
+        assert source.count("{{ preferred_source_url }}") == 1, name
+        assert source.index("utm_campaign=forward") < source.index("{{ preferred_source_url }}"), name
+    region = {"id": "r", "name": "Mount Prospect"}
+    single = build_digest.render_email_digest(region, [], [], "https://x/r/", "Oct 10-11", None, NEWSLETTER)
+    assert single.count(f'href="{url}"') == 1
+    combined = build_digest.render_combined_email_digest([], "Oct 10-11", NOW, NEWSLETTER)
+    assert combined.count(f'href="{url}"') == 1

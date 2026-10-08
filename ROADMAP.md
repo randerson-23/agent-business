@@ -13996,7 +13996,7 @@ address: **confirming** (Buttondown requires double opt-in) and
 
 #### P1 (new)
 
-254. **Turn the pending message into an "open your inbox" step.**
+254. ✅ **DONE — Turn the pending message into an "open your inbox" step.**
      Design/UX, build loop, `templates/_signup.html.j2` only. When the
      form submits, the existing script already swaps in the pending
      message. Extend it to read the **domain of the address just
@@ -14019,7 +14019,33 @@ address: **confirming** (Buttondown requires double opt-in) and
      link opens in a new tab with `rel="noopener"`. This is the step
      where the one subscriber the site ever had might have been lost.
 
-255. **Ask readers to make Within Ten a preferred source on Google.**
+     ✅ **Shipped 2026-10-08.**
+     - `WEBMAIL_PROVIDERS` in `build_digest.py` is the one table (Gmail and
+       Googlemail; Yahoo and Ymail; AOL; Outlook, Hotmail, Live and MSN;
+       iCloud, Me and Mac). `webmail_provider(address)` is the tested
+       Python version, and the same table is rendered into the page for the
+       script, with a test that the two match. Only the part after `@`
+       counts, case is ignored, and `mail.yahoo.com`, `mygmail.com` and a
+       domain in the local part do not match.
+     - The pending state is now a hidden `.newsletter-done` block: the
+       existing line, **one** button (new tab, `rel="noopener"`, shown only
+       for a known provider) and *"Not there in two minutes? Check Spam or
+       Promotions for a message from Within Ten via Buttondown."* The
+       address is read in the browser and sent nowhere. No-JS readers keep
+       the form's own "We'll send one email to confirm" note.
+     - Driven in Chromium at 390px: `Ann@GMAIL.com` shows "Open Gmail",
+       `c@icloud.com` shows "Open iCloud Mail", `bob@example.org` shows no
+       button and still shows the hint, and only the submitted block
+       changes when a page has two.
+     - **The inline JS budget went from 12,288 to 13,312 bytes**, the one
+       deliberate exception. The heaviest page was already at 12,115 bytes
+       (the budget text still said ~7.1KB) and this step adds about 720
+       bytes. A test pins the number so it cannot creep: the next increase
+       has to come out of what is already inline.
+     - The signup CSS now lives only in the shared partial; region and hub
+       pages dropped their duplicate copies.
+
+255. ✅ **DONE — Ask readers to make Within Ten a preferred source on Google.**
      Build loop. Use the **plain deeplink**
      `https://google.com/preferences/source?q=withintenmiles.com`, not
      Google's embed script: the site loads no third-party JavaScript,
@@ -14041,6 +14067,18 @@ address: **confirming** (Buttondown requires double opt-in) and
      at most show Google referrals rising. It is still the cheapest
      re-visit lever available, and it lands in exactly the AI answers
      the business plan's agent-era section is about.
+
+     ✅ **Shipped 2026-10-08.** `PREFERRED_SOURCE_URL` is built from
+     `CUSTOM_DOMAIN` and exposed to every template as a Jinja global, so
+     no template names the domain (a test fails if one writes the Google
+     address by hand). It appears once in each page footer (region views,
+     hub, this-weekend/today/free, trick-or-treat, sponsor, About), once in
+     both emails after the forward line and before Buttondown's
+     unsubscribe, and in a new "See us first on Google" section on About,
+     which explains in one sentence what the setting does and that it is
+     on the reader's own Google account. It is not in the signup pending
+     message. No script is loaded. Whether Google lists the domain at all
+     still depends on the owner's Search Console check (items 224, 235).
 
 #### P1, owner (new)
 
