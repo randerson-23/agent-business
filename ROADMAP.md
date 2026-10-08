@@ -13828,7 +13828,7 @@ an RSS feed and needs no owner time each week.
 
 #### P1 (new)
 
-251. **Put the signup on every page a first visit lands on, inline.**
+251. ✅ **DONE — Put the signup on every page a first visit lands on, inline.**
      Build loop, templates only. Two changes:
 
      - **Extract the existing region-page form** (form, pending
@@ -13858,9 +13858,47 @@ an RSS feed and needs no owner time each week.
      did, that the mid-list block lands in the first two screens of the
      Mount Prospect page.
 
+     ✅ **Shipped 2026-10-08.**
+     - **`templates/_signup.html.j2`** holds the one signup block as macros:
+       `signup_form()`, `signup_runtime()` (the single hidden iframe plus one
+       script serving every block on the page) and `signup_css()`. Region
+       pages and the root hub now use it, and **`/this-weekend/`, `/today/`,
+       `/free/` and `/trick-or-treat/` gained a form for the first time**
+       (checked in the built `docs/`: each had none; each now has exactly
+       one, with one iframe). Headings: *"Get this list every Thursday."*,
+       *"Get the weekend's events by email on Thursday."*, *"Free things to
+       do, every Thursday."* and, on trick-or-treat, *"Halloween falls on a
+       Saturday this year. Get the weekend's events by email on Thursday."*
+       The weekday is computed from the year, so it is right next October
+       too.
+     - **Region main page: two blocks, distinct ids.** A mid-list block,
+       `id="newsletter-signup"` / `bd-email`, and the original at the
+       bottom, `newsletter-signup-end` / `bd-email-end`. Every other region
+       view keeps a single bottom form, which then takes `newsletter-signup`
+       so the link below always lands.
+     - **"Get it by email instead"** now jumps to `#newsletter-signup`, so
+       the first click stays on the domain.
+     - **Placement, measured, not assumed.** The item asked for the block
+       "after the This weekend block". The main page has no such block (it
+       lists events by source), and after the first events block the form
+       sat **2250px** down at 390px, almost three screens, because the
+       header, map, Editor's Pick and sponsor box come first. It now sits
+       **just before the first block of events, at about 1470px** (viewport
+       844px, so inside the first two screens), measured in Chromium at
+       390px. The sandbox build has only 3 cards; the live page has far
+       more, and this position does not depend on them.
+     - No popup, modal or scroll-triggered overlay: a test fails if the
+       partial's code contains any, or `setTimeout`, `window.open` or a
+       fixed position.
+     - 9 new tests (`tests/test_signup_placement.py`), one updated; 650
+       pass.
+     - Not done: the 390px check was by hand with Playwright, not a
+       permanent test, since it needs a browser and the sandbox page has
+       too few events for the number to mean much.
+
 #### P2 (new)
 
-252. **Tag every signup with its town and its page, so the list can say
+252. ✅ **DONE (owner check pending) — Tag every signup with its town and its page, so the list can say
      where its readers are.** Build loop, one partial (item 251's) plus
      the email footer link:
 
@@ -13873,6 +13911,17 @@ an RSS feed and needs no owner time each week.
      - The email footer's "Forwarded this?" link (item 183) gets
        `?utm_source=email&utm_campaign=forward`, so forwards are
        counted too. The query string works on the hosted page.
+
+     ✅ **Shipped 2026-10-08, together with item 251.** Every signup block
+     carries hidden `tag` (`town:<region-id>`, or `town:all` on the hub,
+     weekend, today, free and trick-or-treat pages), `utm_source=site` and
+     `utm_campaign`: `region-midlist` and `region` on the main page's two
+     blocks, `this-weekend`, `today`, `free`, `trick-or-treat` and `hub`
+     elsewhere, and `guide` on guide views. Both email templates'
+     "Forwarded this?" link now ends `?utm_source=email&utm_campaign=forward`.
+     Tests read the hidden inputs back per page. **Not yet confirmed
+     against Buttondown:** the field names come from its docs and have
+     never been sent from this site. The owner check below settles it.
 
      Why it matters for revenue: the Weekly Spot and Event Promo are
      **sold per town**, so the first number a sponsor needs is

@@ -1,4 +1,5 @@
 {% from "_featured.html.j2" import featured_label -%}
+{% from "_signup.html.j2" import signup_css, signup_form, signup_runtime -%}
 <!doctype html>
 <html lang="en">
 <head>
@@ -250,6 +251,7 @@
     .wrap { padding: 0 14px 88px; }
   }
 </style>
+{{ signup_css() }}
 </head>
 <body>
 <!-- header, not div (ROADMAP.md Phase 11 #62, found by a real axe-core
@@ -310,6 +312,10 @@
   {% else %}
     <div class="empty-state">{{ empty_message }}</div>
   {% endif %}
+  {# ROADMAP.md items 251/252: these pages answer the head queries, so they
+     are the likeliest first visit - and had no way to subscribe. #}
+  {{ signup_form(newsletter, "newsletter-signup", "bd-email", "town:all", slug, signup_headline) }}
+  {{ signup_runtime(newsletter) }}
   </main>
 
   <footer>

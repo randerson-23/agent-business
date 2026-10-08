@@ -1,3 +1,4 @@
+{% from "_signup.html.j2" import signup_css, signup_form, signup_runtime -%}
 <!--
   ROADMAP.md Phase 11 #101 - the single highest-volume hyperlocal query
   of Q4, and one no competitor aggregates (Eventbrite/AllEvents list
@@ -146,6 +147,7 @@
   footer { text-align: center; color: var(--muted); font-size: 12.5px; margin-top: 32px; border-top: 2px solid var(--border); padding-top: 18px; }
   footer a { color: var(--accent-2-text); font-weight: 700; }
 </style>
+{{ signup_css() }}
 </head>
 <body>
 <header class="hero">
@@ -188,6 +190,8 @@
   {% endfor %}
   <p class="note">Every event above comes from that town's library, park district, or village calendar, and links to its listing on the town's page.</p>
   {% endif %}
+  {{ signup_form(newsletter, "newsletter-signup", "bd-email", "town:all", "trick-or-treat", signup_headline) }}
+  {{ signup_runtime(newsletter) }}
   </main>
 
   <footer>
