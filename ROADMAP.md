@@ -253,7 +253,7 @@ that limit.
 4. **Rename the Buttondown handle (1 min, item 226)** from
    `andersonryant` to the brand (for example `withinten`). Then tell the
    build loop the new handle so it updates `config/newsletter.yaml`.
-5. **Four Buttondown settings checks (2 min):**
+5. **Four Buttondown settings checks now, one after the first signup (3 min):**
    - **Tracking is on** (item 187). With tracking off, opens always read 0.
    - The **`withintenmiles.com` sending domain shows as verified** (item 47).
    - Settings → Subscribing → **Welcome**: enable one welcome email if the
