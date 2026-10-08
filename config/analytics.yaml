@@ -13,3 +13,12 @@
 # never claims a privacy practice it isn't following.
 
 goatcounter_code: null
+
+# Pinterest site claim (ROADMAP.md item 253). The weekend Pin feed at
+# /pins.xml is built on every deploy; Pinterest will only auto-publish it
+# once the owner has a business account, claims withintenmiles.com and pastes
+# the verification code Pinterest shows here. Set, it is rendered as a
+# <meta name="p:domain_verify"> on the home page only. Unset, nothing renders.
+# Then add https://withintenmiles.com/pins.xml under Auto-publish and pick a
+# board per town.
+pinterest_domain_verify: null

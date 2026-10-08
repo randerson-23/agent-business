@@ -276,7 +276,13 @@ def load_analytics_config(analytics_cfg: dict) -> dict:
     on its own, same pattern as load_newsletter_config() above.
     """
     code = (analytics_cfg.get("goatcounter_code") or "").strip()
-    return {"configured": bool(code), "goatcounter_code": code}
+    return {
+        "configured": bool(code),
+        "goatcounter_code": code,
+        # ROADMAP.md item 253: Pinterest's site-claim token, rendered as a
+        # <meta> on the home page only when the owner sets it.
+        "pinterest_domain_verify": (analytics_cfg.get("pinterest_domain_verify") or "").strip(),
+    }
 
 
 def load_maps_config(maps_cfg: dict) -> dict:
@@ -2537,6 +2543,76 @@ def build_sitemap_xml(region_summaries: list[dict], now: datetime) -> str:
 FEED_MAX_ITEMS = 50
 
 
+def build_pins_xml(
+    groups: list[tuple[str, str, str, list[dict]]],
+    friday: date,
+    weekend_date_range: str,
+    now: datetime,
+    image_sizes: dict[str, int],
+    trick_or_treat_in_season: bool = False,
+) -> str:
+    """A small RSS 2.0 feed at /pins.xml for Pinterest's auto-publish
+    (ROADMAP.md item 253), separate from /feed.xml on purpose: Pinterest
+    rejects a feed whose item links are not on the claimed domain, and
+    /feed.xml links every event to its publisher. Here every link is a page
+    on this site and every item has an image.
+
+    `groups` is [(region_id, region_name, region_page_url, weekend_events)].
+    One item per town that actually has events this weekend (a Pin for an
+    empty weekend would send people to nothing), guid'd by the Friday so each
+    week is a new Pin. Plus one /trick-or-treat/ item while that page's
+    season runs. `image_sizes` maps an OG image name ("default" or a region
+    id) to its byte size, for the <enclosure>.
+    """
+    def enclosure(name: str) -> str:
+        return (
+            f'    <enclosure url="{xml_escape(SITE_BASE_URL + "og/" + name + ".png")}" '
+            f'type="image/png" length="{image_sizes.get(name, 0)}"/>\n'
+        )
+
+    pub_date = format_datetime(now.astimezone(timezone.utc))
+    items = []
+    for region_id, region_name, page_url, events in groups:
+        dated = [e for e in events if e.get("title") and e.get("date_iso")]
+        if not dated or region_id not in image_sizes:
+            continue
+        titles = [e["title"] for e in sorted(dated, key=lambda e: e["date_iso"])]
+        shown = titles[:3]
+        more = f" and {len(titles) - 3} more" if len(titles) > 3 else ""
+        description = f"{weekend_date_range} in {region_name}: " + "; ".join(shown) + more + "."
+        items.append(
+            "  <item>\n"
+            f"    <title>{xml_escape(f'This weekend in {region_name} ({weekend_date_range})')}</title>\n"
+            f"    <link>{xml_escape(page_url + 'this-weekend/')}</link>\n"
+            f'    <guid isPermaLink="false">{xml_escape(page_url + "this-weekend/#" + friday.isoformat())}</guid>\n'
+            f"    <description>{xml_escape(description)}</description>\n"
+            f"    <pubDate>{pub_date}</pubDate>\n"
+            + enclosure(region_id)
+            + "  </item>\n"
+        )
+    if trick_or_treat_in_season:
+        items.append(
+            "  <item>\n"
+            "    <title>Trick-or-treat hours in every town</title>\n"
+            f"    <link>{xml_escape(SITE_BASE_URL + 'trick-or-treat/')}</link>\n"
+            f'    <guid isPermaLink="false">{xml_escape(SITE_BASE_URL + "trick-or-treat/#" + str(now.year))}</guid>\n'
+            "    <description>Each village's official trick-or-treat hours, plus the Halloween events nearby.</description>\n"
+            f"    <pubDate>{pub_date}</pubDate>\n"
+            + enclosure("default")
+            + "  </item>\n"
+        )
+    return (
+        '<?xml version="1.0" encoding="UTF-8"?>\n'
+        '<rss version="2.0">\n<channel>\n'
+        f"  <title>{xml_escape(SITE_NAME)} - weekend Pins</title>\n"
+        f"  <link>{xml_escape(SITE_BASE_URL)}</link>\n"
+        "  <description>One weekend guide per town, for Pinterest.</description>\n"
+        f"  <lastBuildDate>{pub_date}</lastBuildDate>\n"
+        + "".join(items)
+        + "</channel>\n</rss>\n"
+    )
+
+
 def build_feed_xml(feed_items: list[dict], now: datetime, source_completeness: dict | None = None) -> str:
     """A real RSS 2.0 feed at /feed.xml (ROADMAP.md Phase 11 #79) - the
     site syndicating its *own* aggregated events, not republishing onto
@@ -3599,6 +3675,7 @@ def main() -> None:
     feed_items = []
     events_json_groups: list[tuple[str, str, list[dict]]] = []
     llms_full_groups: list[tuple[str, str, list[dict]]] = []
+    pins_groups: list[tuple[str, str, str, list[dict]]] = []
     trick_or_treat_entries = []
     combined_email_sections = []
     total_dated, total_events = 0, 0
@@ -3785,6 +3862,7 @@ def main() -> None:
         # town in the same issue rather than four subscriber-specific
         # ones Buttondown's free plan can't send anyway.
         llms_full_groups.append((region["name"], SITE_BASE_URL + region_id + "/this-weekend/", weekend_events))
+        pins_groups.append((region_id, region["name"], SITE_BASE_URL + region_id + "/", weekend_events))
         combined_email_sections.append(
             {
                 "region_name": region["name"],
@@ -4150,6 +4228,19 @@ def main() -> None:
     for name, image in og_images.items():
         image.save(og_dir / f"{name}.png", "PNG")
     logger.info("Wrote %d Open Graph image(s) to %s", len(og_images), og_dir)
+    pins_friday, _pins_sat, _pins_sun = weekend_dates(region_local_date(regions[0]["region"], now))
+    (OUTPUT_DIR / "pins.xml").write_text(
+        build_pins_xml(
+            pins_groups,
+            pins_friday,
+            format_date_range(pins_friday, pins_friday + timedelta(days=2)),
+            now,
+            {name: (og_dir / f"{name}.png").stat().st_size for name in og_images},
+            is_trick_or_treat_season(now),
+        ),
+        encoding="utf-8",
+    )
+    logger.info("Wrote pins.xml")
     icons_dir = OUTPUT_DIR / "icons"
     icons_dir.mkdir(parents=True, exist_ok=True)
     for size, image in build_app_icons().items():
