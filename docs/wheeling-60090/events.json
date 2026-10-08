@@ -2,150 +2,12 @@
   "@context": "https://schema.org",
   "@type": "ItemList",
   "name": "Upcoming events in Wheeling — Within Ten",
-  "dateModified": "2026-10-07T21:58:43+00:00",
-  "numberOfItems": 55,
+  "dateModified": "2026-10-08T06:07:39+00:00",
+  "numberOfItems": 54,
   "itemListElement": [
     {
       "@type": "ListItem",
       "position": 1,
-      "item": {
-        "@type": "Event",
-        "name": "Read to Learn",
-        "startDate": "2026-10-07T09:00:00-05:00",
-        "url": "https://withintenmiles.com/wheeling-60090/#ev-read-to-learn-2026-10-07",
-        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "location": {
-          "@type": "Place",
-          "name": "Indian Trails Public Library",
-          "address": {
-            "@type": "PostalAddress",
-            "addressCountry": "US",
-            "addressLocality": "Wheeling",
-            "addressRegion": "IL"
-          }
-        },
-        "sameAs": "https://indiantrails.libnet.info/event/11861199",
-        "description": "Wednesday, October 07 2026 9:00am - 12:00pm \n District 214 Read to Learn Adult Literacy Program."
-      }
-    },
-    {
-      "@type": "ListItem",
-      "position": 2,
-      "item": {
-        "@type": "Event",
-        "name": "Jewelry Making Extravaganza",
-        "startDate": "2026-10-07T16:00:00-05:00",
-        "url": "https://withintenmiles.com/wheeling-60090/#ev-jewelry-making-extravaganza-2026-10-07",
-        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "location": {
-          "@type": "Place",
-          "name": "Indian Trails Public Library",
-          "address": {
-            "@type": "PostalAddress",
-            "addressCountry": "US",
-            "addressLocality": "Wheeling",
-            "addressRegion": "IL"
-          }
-        },
-        "sameAs": "https://indiantrails.libnet.info/event/16276068",
-        "description": "Wednesday, October 07 2026 4:00pm - 5:30pm \n Learn jewelry making techniques using our collection of beads and jewelry supplies to create a unique piece to…"
-      }
-    },
-    {
-      "@type": "ListItem",
-      "position": 3,
-      "item": {
-        "@type": "Event",
-        "name": "Papel Picado",
-        "startDate": "2026-10-07T16:00:00-05:00",
-        "url": "https://withintenmiles.com/wheeling-60090/#ev-papel-picado-2026-10-07",
-        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "location": {
-          "@type": "Place",
-          "name": "Indian Trails Public Library",
-          "address": {
-            "@type": "PostalAddress",
-            "addressCountry": "US",
-            "addressLocality": "Wheeling",
-            "addressRegion": "IL"
-          }
-        },
-        "sameAs": "https://indiantrails.libnet.info/event/16787382",
-        "description": "Wednesday, October 07 2026 4:00pm - 5:00pm \n Learn to make Mexican paper banners that are traditionally used for Día de los Muertos and Cinco de Mayo. R"
-      }
-    },
-    {
-      "@type": "ListItem",
-      "position": 4,
-      "item": {
-        "@type": "Event",
-        "name": "Navratri Hair Accessories",
-        "startDate": "2026-10-07T18:00:00-05:00",
-        "url": "https://withintenmiles.com/wheeling-60090/#ev-navratri-hair-accessories-2026-10-07",
-        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "location": {
-          "@type": "Place",
-          "name": "Indian Trails Public Library",
-          "address": {
-            "@type": "PostalAddress",
-            "addressCountry": "US",
-            "addressLocality": "Wheeling",
-            "addressRegion": "IL"
-          }
-        },
-        "sameAs": "https://indiantrails.libnet.info/event/16505295",
-        "description": "Wednesday, October 07 2026 6:00pm - 7:30pm \n Instructor Bhavya Nanjundaiyer, will teach how to make hair accessories for Navratri while sharing the cultural…"
-      }
-    },
-    {
-      "@type": "ListItem",
-      "position": 5,
-      "item": {
-        "@type": "Event",
-        "name": "Library Board Workshop",
-        "startDate": "2026-10-07T19:00:00-05:00",
-        "url": "https://withintenmiles.com/wheeling-60090/#ev-library-board-workshop-2026-10-07",
-        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "location": {
-          "@type": "Place",
-          "name": "Indian Trails Public Library",
-          "address": {
-            "@type": "PostalAddress",
-            "addressCountry": "US",
-            "addressLocality": "Wheeling",
-            "addressRegion": "IL"
-          }
-        },
-        "sameAs": "https://indiantrails.libnet.info/event/16202831",
-        "description": "Wednesday, October 07 2026 7:00pm - 9:00pm \n The Board of Trustees meet for its monthly workshop and planning session. This meeting is open to the public. The…"
-      }
-    },
-    {
-      "@type": "ListItem",
-      "position": 6,
-      "item": {
-        "@type": "Event",
-        "name": "Back to Basics: Hardware & Typing",
-        "startDate": "2026-10-07T19:00:00-05:00",
-        "url": "https://withintenmiles.com/wheeling-60090/#ev-back-to-basics-hardware-typing-2026-10-07",
-        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "location": {
-          "@type": "Place",
-          "name": "Indian Trails Public Library",
-          "address": {
-            "@type": "PostalAddress",
-            "addressCountry": "US",
-            "addressLocality": "Wheeling",
-            "addressRegion": "IL"
-          }
-        },
-        "sameAs": "https://indiantrails.libnet.info/event/16642629",
-        "description": "Wednesday, October 07 2026 7:00pm - 8:00pm \n Learn the parts of a computer, how to use the keyboard and mouse, and resources to practice typing. This class is…"
-      }
-    },
-    {
-      "@type": "ListItem",
-      "position": 7,
       "item": {
         "@type": "Event",
         "name": "Night Owls",
@@ -168,7 +30,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 8,
+      "position": 2,
       "item": {
         "@type": "Event",
         "name": "Babytime!",
@@ -191,7 +53,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 9,
+      "position": 3,
       "item": {
         "@type": "Event",
         "name": "Wonderful Walkers",
@@ -214,7 +76,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 10,
+      "position": 4,
       "item": {
         "@type": "Event",
         "name": "Introduction to Tinkercad",
@@ -238,7 +100,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 11,
+      "position": 5,
       "item": {
         "@type": "Event",
         "name": "Foundation Used Book Sale",
@@ -261,7 +123,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 12,
+      "position": 6,
       "item": {
         "@type": "Event",
         "name": "Home Maintenance 101",
@@ -284,7 +146,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 13,
+      "position": 7,
       "item": {
         "@type": "Event",
         "name": "Tech Assistance",
@@ -307,7 +169,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 14,
+      "position": 8,
       "item": {
         "@type": "Event",
         "name": "Columbus Day - Village Offices are Closed for the Columbus Day Holi",
@@ -330,7 +192,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 15,
+      "position": 9,
       "item": {
         "@type": "Event",
         "name": "Leslie Goddard as Eleanor Roosevelt",
@@ -353,7 +215,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 16,
+      "position": 10,
       "item": {
         "@type": "Event",
         "name": "Dungeons & Dragons",
@@ -376,7 +238,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 17,
+      "position": 11,
       "item": {
         "@type": "Event",
         "name": "The Full Job Search Life Cycle",
@@ -399,7 +261,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 18,
+      "position": 12,
       "item": {
         "@type": "Event",
         "name": "Noisy Time",
@@ -422,7 +284,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 19,
+      "position": 13,
       "item": {
         "@type": "Event",
         "name": "Rise & Read Morning Book Discussion",
@@ -445,7 +307,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 20,
+      "position": 14,
       "item": {
         "@type": "Event",
         "name": "Coloring Club",
@@ -468,7 +330,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 21,
+      "position": 15,
       "item": {
         "@type": "Event",
         "name": "Paper Craft Happy Hour",
@@ -491,7 +353,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 22,
+      "position": 16,
       "item": {
         "@type": "Event",
         "name": "Spanish Conversation Practice | At the Branch",
@@ -514,7 +376,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 23,
+      "position": 17,
       "item": {
         "@type": "Event",
         "name": "Resume Review & Career Coaching Appointments",
@@ -537,7 +399,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 24,
+      "position": 18,
       "item": {
         "@type": "Event",
         "name": "Family LEGO® Club",
@@ -560,7 +422,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 25,
+      "position": 19,
       "item": {
         "@type": "Event",
         "name": "Read to Learn",
@@ -583,7 +445,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 26,
+      "position": 20,
       "item": {
         "@type": "Event",
         "name": "Watercolor Landscape",
@@ -606,7 +468,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 27,
+      "position": 21,
       "item": {
         "@type": "Event",
         "name": "Paperback Pals Book Club | Grades 2-3",
@@ -629,7 +491,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 28,
+      "position": 22,
       "item": {
         "@type": "Event",
         "name": "Autumnal Pipe Cleaner Bouquets",
@@ -652,7 +514,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 29,
+      "position": 23,
       "item": {
         "@type": "Event",
         "name": "Plan Commission Meeting",
@@ -675,7 +537,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 30,
+      "position": 24,
       "item": {
         "@type": "Event",
         "name": "Foundation Board Meeting",
@@ -698,7 +560,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 31,
+      "position": 25,
       "item": {
         "@type": "Event",
         "name": "Back to Basics: Navigating Chrome",
@@ -721,7 +583,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 32,
+      "position": 26,
       "item": {
         "@type": "Event",
         "name": "Office Hours with Congressman Brad Schneider's Office",
@@ -744,7 +606,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 33,
+      "position": 27,
       "item": {
         "@type": "Event",
         "name": "Chat & Play Cafe",
@@ -767,7 +629,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 34,
+      "position": 28,
       "item": {
         "@type": "Event",
         "name": "Tech Assistance",
@@ -790,7 +652,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 35,
+      "position": 29,
       "item": {
         "@type": "Event",
         "name": "Autumnal Pipe Cleaner Bouquets",
@@ -813,7 +675,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 36,
+      "position": 30,
       "item": {
         "@type": "Event",
         "name": "Unbe-leaf-able Art",
@@ -836,7 +698,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 37,
+      "position": 31,
       "item": {
         "@type": "Event",
         "name": "Custom Sweatshirt",
@@ -859,7 +721,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 38,
+      "position": 32,
       "item": {
         "@type": "Event",
         "name": "Elephino Trivia",
@@ -882,7 +744,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 39,
+      "position": 33,
       "item": {
         "@type": "Event",
         "name": "Toddler Storytime",
@@ -905,7 +767,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 40,
+      "position": 34,
       "item": {
         "@type": "Event",
         "name": "Preschool Storytime",
@@ -928,7 +790,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 41,
+      "position": 35,
       "item": {
         "@type": "Event",
         "name": "Movie Matinee: West Side Story (2021)",
@@ -951,7 +813,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 42,
+      "position": 36,
       "item": {
         "@type": "Event",
         "name": "Family Craft Fridays | At The Branch",
@@ -974,7 +836,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 43,
+      "position": 37,
       "item": {
         "@type": "Event",
         "name": "Custom Candy Bag",
@@ -997,7 +859,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 44,
+      "position": 38,
       "item": {
         "@type": "Event",
         "name": "Chats & Food",
@@ -1020,7 +882,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 45,
+      "position": 39,
       "item": {
         "@type": "Event",
         "name": "Super Saturday: ¡Being Bilingual Rocks!",
@@ -1043,7 +905,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 46,
+      "position": 40,
       "item": {
         "@type": "Event",
         "name": "Protect Yourself from Identity Theft",
@@ -1066,7 +928,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 47,
+      "position": 41,
       "item": {
         "@type": "Event",
         "name": "Autumnal Pipe Cleaner Bouquets",
@@ -1089,7 +951,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 48,
+      "position": 42,
       "item": {
         "@type": "Event",
         "name": "K9 Reading Buddies",
@@ -1112,7 +974,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 49,
+      "position": 43,
       "item": {
         "@type": "Event",
         "name": "Village Board Regular Meeting",
@@ -1135,7 +997,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 50,
+      "position": 44,
       "item": {
         "@type": "Event",
         "name": "Resurrection Mary: Chicagos Most Beloved Spirit",
@@ -1158,7 +1020,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 51,
+      "position": 45,
       "item": {
         "@type": "Event",
         "name": "Hot Glue Mask",
@@ -1181,7 +1043,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 52,
+      "position": 46,
       "item": {
         "@type": "Event",
         "name": "Monogrammed Tote Bags",
@@ -1204,7 +1066,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 53,
+      "position": 47,
       "item": {
         "@type": "Event",
         "name": "Chapter One Book Club | Grades K-1",
@@ -1227,7 +1089,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 54,
+      "position": 48,
       "item": {
         "@type": "Event",
         "name": "DIY Monster Heads",
@@ -1250,7 +1112,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 55,
+      "position": 49,
       "item": {
         "@type": "Event",
         "name": "Illinois Libraries Present: Geoffrey Baer",
@@ -1269,6 +1131,121 @@
         },
         "sameAs": "https://indiantrails.libnet.info/event/16710758",
         "description": "Tuesday, October 20 2026 7:00pm - 8:00pm \n Join Geoffrey Baer, beloved Chicago historian, storyteller, and host of numerous PBS programs exploring the…"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 50,
+      "item": {
+        "@type": "Event",
+        "name": "Read to Learn",
+        "startDate": "2026-10-21T09:00:00-05:00",
+        "url": "https://withintenmiles.com/wheeling-60090/#ev-read-to-learn-2026-10-21",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Indian Trails Public Library",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Wheeling",
+            "addressRegion": "IL"
+          }
+        },
+        "sameAs": "https://indiantrails.libnet.info/event/11861201",
+        "description": "Wednesday, October 21 2026 9:00am - 12:00pm \n District 214 Read to Learn Adult Literacy Program."
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 51,
+      "item": {
+        "@type": "Event",
+        "name": "Chess Club",
+        "startDate": "2026-10-21T17:30:00-05:00",
+        "url": "https://withintenmiles.com/wheeling-60090/#ev-chess-club-2026-10-21",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Indian Trails Public Library",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Wheeling",
+            "addressRegion": "IL"
+          }
+        },
+        "sameAs": "https://indiantrails.libnet.info/event/15916607",
+        "description": "Wednesday, October 21 2026 5:30pm - 6:15pm \n Discover chess moves, strategies, and checkmate techniques with international Chess Master Arjun Vishnuvardhan of…"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 52,
+      "item": {
+        "@type": "Event",
+        "name": "Stitch Together Meet-Up",
+        "startDate": "2026-10-21T18:00:00-05:00",
+        "url": "https://withintenmiles.com/wheeling-60090/#ev-stitch-together-meet-up-2026-10-21",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Indian Trails Public Library",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Wheeling",
+            "addressRegion": "IL"
+          }
+        },
+        "sameAs": "https://indiantrails.libnet.info/event/16493181",
+        "description": "Wednesday, October 21 2026 6:00pm - 8:00pm \n If your craft of choice uses needles or hooks, this group is for you. Bring your knit, crochet, embroidery or…"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 53,
+      "item": {
+        "@type": "Event",
+        "name": "Library Board Meeting",
+        "startDate": "2026-10-21T19:00:00-05:00",
+        "url": "https://withintenmiles.com/wheeling-60090/#ev-library-board-meeting-2026-10-21",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Indian Trails Public Library",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Wheeling",
+            "addressRegion": "IL"
+          }
+        },
+        "sameAs": "https://indiantrails.libnet.info/event/16198755",
+        "description": "Wednesday, October 21 2026 7:00pm - 9:00pm \n The Board of Trustees meet for its monthly workshop and planning session. This meeting is open to the public. The…"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 54,
+      "item": {
+        "@type": "Event",
+        "name": "Scam Safety",
+        "startDate": "2026-10-21T19:00:00-05:00",
+        "url": "https://withintenmiles.com/wheeling-60090/#ev-scam-safety-2026-10-21",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Indian Trails Public Library",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Wheeling",
+            "addressRegion": "IL"
+          }
+        },
+        "sameAs": "https://indiantrails.libnet.info/event/16642742",
+        "description": "Wednesday, October 21 2026 7:00pm - 8:00pm \n Learn to protect your personal information and stay safe online from phishing attempts, pop-ups and other scams.…"
       }
     }
   ]

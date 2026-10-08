@@ -718,7 +718,7 @@
 
   
 
-  <p class="freshness-note">Updated automatically — last checked Wednesday, October 7.</p>
+  <p class="freshness-note">Updated automatically — last checked Thursday, October 8.</p>
 
   
 
@@ -763,6 +763,11 @@
   
 
   
+  
+  
+  
+  
+    
     
     <section class="block">
       <h2>What&#39;s inside</h2>
@@ -906,33 +911,33 @@
   
   
   <div class="newsletter" id="newsletter-signup">
-    <form class="newsletter-form" action="https://buttondown.com/api/emails/embed-subscribe/andersonryant" method="post" target="bd-hidden-frame">
-      <div class="newsletter-copy">
-        <strong>Get it in your inbox</strong>
-        <p>One email, Thursday mornings, covering Arlington Heights, Des Plaines, Mount Prospect, Palatine, and Wheeling. No spam, unsubscribe anytime.</p>
-        <p class="newsletter-note">We'll send one email to confirm.</p>
-      </div>
-      <div class="newsletter-form-row">
-        <label class="sr-only" for="bd-email">Email address</label>
-        <input type="email" name="email" id="bd-email" placeholder="you@example.com" required>
-        <button type="submit">Subscribe</button>
-      </div>
-    </form>
-    <p class="newsletter-pending" hidden>Almost there — check your email and click the confirmation link.</p>
-  </div>
-  <iframe name="bd-hidden-frame" title="Newsletter signup" style="display:none" aria-hidden="true"></iframe>
-  <script>
-  (function () {
-    var form = document.querySelector("#newsletter-signup .newsletter-form");
-    var pending = document.querySelector("#newsletter-signup .newsletter-pending");
-    if (!form || !pending) return;
-    form.addEventListener("submit", function () {
-      form.hidden = true;
-      pending.hidden = false;
-    });
-  })();
-  </script>
+  <form class="newsletter-form" action="https://buttondown.com/api/emails/embed-subscribe/andersonryant" method="post" target="bd-hidden-frame">
+    <input type="hidden" name="tag" value="town:palatine-60067">
+    <input type="hidden" name="utm_source" value="site">
+    <input type="hidden" name="utm_campaign" value="guide">
+    <div class="newsletter-copy">
+      <strong>Get it in your inbox</strong>
+      <p>One email, Thursday mornings, covering Arlington Heights, Des Plaines, Mount Prospect, Palatine, and Wheeling. No spam, unsubscribe anytime.</p>
+      <p class="newsletter-note">We'll send one email to confirm.</p>
+    </div>
+    <div class="newsletter-form-row">
+      <label class="sr-only" for="bd-email">Email address</label>
+      <input type="email" name="email" id="bd-email" placeholder="you@example.com" required>
+      <button type="submit">Subscribe</button>
+    </div>
+  </form>
+  <p class="newsletter-pending" hidden>Almost there — check your email and click the confirmation link.</p>
+</div>
   
+  <iframe name="bd-hidden-frame" title="Newsletter signup" style="display:none" aria-hidden="true"></iframe>
+<script>
+document.querySelectorAll(".newsletter-form").forEach(function (f) {
+  f.addEventListener("submit", function () {
+    f.hidden = true;
+    f.parentNode.querySelector(".newsletter-pending").hidden = false;
+  });
+});
+</script>
   </main>
 
   <footer>
@@ -940,7 +945,7 @@
     <a href="https://withintenmiles.com/sponsor/">sponsor page</a>.
     <a href="https://withintenmiles.com/about/">About</a>.
     <a href="https://withintenmiles.com/trick-or-treat/">Trick-or-treat hours</a>.
-    <br>Generated 2026-10-07 21:58 UTC.
+    <br>Generated 2026-10-08 06:07 UTC.
     
     <br><a href="https://withintenmiles.com/palatine-60067/weekly-summary.txt">Copy this week's summary</a> — a plain-text block ready to paste into a local group.
   </footer>
@@ -966,7 +971,7 @@
 
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "How current is this guide?", "acceptedAnswer": {"@type": "Answer", "text": "It's regenerated automatically from the village, library, and park district's own listings, typically several times a week - not a one-time write-up that goes stale."}}, {"@type": "Question", "name": "Is this every event or business, or just what's listed here?", "acceptedAnswer": {"@type": "Answer", "text": "Only what the linked public sources publish. For full details, hours, or anything not listed here, check the official page each item links to."}}, {"@type": "Question", "name": "How do I see what's happening in Palatine this specific weekend?", "acceptedAnswer": {"@type": "Answer", "text": "See the <a href=\"https://withintenmiles.com/palatine-60067/this-weekend/\">weekend view<\/a>, which only shows items with a known date in the coming Friday-Sunday."}}, {"@type": "Question", "name": "Can I add an event, or suggest a business for the directory?", "acceptedAnswer": {"@type": "Answer", "text": "Yes - <a href=\"https://github.com/randerson-23/agent-business/issues/new?template=event-submission.yml\">submit an event<\/a> and a person reviews it before it goes live, or a business owner can <a href=\"https://withintenmiles.com/sponsor/\">inquire about a listing<\/a>."}}]}</script>
 
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebPage", "name": "Palatine — Within Ten", "url": "https://withintenmiles.com/palatine-60067/guides/new-to-town/", "dateModified": "2026-10-07T21:58:43.935893+00:00", "isPartOf": {"@type": "WebSite", "name": "Within Ten", "url": "https://withintenmiles.com/", "publisher": {"@id": "https://withintenmiles.com/about/#organization"}}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebPage", "name": "Palatine — Within Ten", "url": "https://withintenmiles.com/palatine-60067/guides/new-to-town/", "dateModified": "2026-10-08T06:07:39.253974+00:00", "isPartOf": {"@type": "WebSite", "name": "Within Ten", "url": "https://withintenmiles.com/", "publisher": {"@id": "https://withintenmiles.com/about/#organization"}}}</script>
 <script>
 (function () {
   var activeTags = new Set();

@@ -718,38 +718,10 @@
 
   
 
-  <p class="freshness-note">Updated automatically — last checked Wednesday, October 7.</p>
+  <p class="freshness-note">Updated automatically — last checked Thursday, October 8.</p>
 
   
 
-  
-  <div class="weather-bar">
-    
-    <div class="weather-day">
-      <span class="wx-emoji" aria-hidden="true">🌦️</span>
-      <span class="wx-name">Friday</span>
-      <span class="wx-temp">72&deg; / 48&deg;</span>
-      <span class="wx-label">Light drizzle &middot; 15% precip</span>
-    </div>
-    
-    <div class="weather-day">
-      <span class="wx-emoji" aria-hidden="true">☁️</span>
-      <span class="wx-name">Saturday</span>
-      <span class="wx-temp">80&deg; / 65&deg;</span>
-      <span class="wx-label">Overcast &middot; 1% precip</span>
-    </div>
-    
-    <div class="weather-day">
-      <span class="wx-emoji" aria-hidden="true">☁️</span>
-      <span class="wx-name">Sunday</span>
-      <span class="wx-temp">77&deg; / 62&deg;</span>
-      <span class="wx-label">Overcast &middot; 16% precip</span>
-    </div>
-    
-    
-    <div class="wx-note">Rain (or worse) in the forecast — the Indoor filter below can help plan around it.</div>
-    
-  </div>
   
 
   
@@ -787,6 +759,11 @@
   
 
   
+  
+  
+  
+  
+    
     
     <section class="block">
       <h2>This weekend in Wheeling</h2>
@@ -1025,33 +1002,33 @@ Hoopla or another library app? Talk…</p>
   
   
   <div class="newsletter" id="newsletter-signup">
-    <form class="newsletter-form" action="https://buttondown.com/api/emails/embed-subscribe/andersonryant" method="post" target="bd-hidden-frame">
-      <div class="newsletter-copy">
-        <strong>Get it in your inbox</strong>
-        <p>One email, Thursday mornings, covering Arlington Heights, Des Plaines, Mount Prospect, Palatine, and Wheeling. No spam, unsubscribe anytime.</p>
-        <p class="newsletter-note">We'll send one email to confirm.</p>
-      </div>
-      <div class="newsletter-form-row">
-        <label class="sr-only" for="bd-email">Email address</label>
-        <input type="email" name="email" id="bd-email" placeholder="you@example.com" required>
-        <button type="submit">Subscribe</button>
-      </div>
-    </form>
-    <p class="newsletter-pending" hidden>Almost there — check your email and click the confirmation link.</p>
-  </div>
-  <iframe name="bd-hidden-frame" title="Newsletter signup" style="display:none" aria-hidden="true"></iframe>
-  <script>
-  (function () {
-    var form = document.querySelector("#newsletter-signup .newsletter-form");
-    var pending = document.querySelector("#newsletter-signup .newsletter-pending");
-    if (!form || !pending) return;
-    form.addEventListener("submit", function () {
-      form.hidden = true;
-      pending.hidden = false;
-    });
-  })();
-  </script>
+  <form class="newsletter-form" action="https://buttondown.com/api/emails/embed-subscribe/andersonryant" method="post" target="bd-hidden-frame">
+    <input type="hidden" name="tag" value="town:wheeling-60090">
+    <input type="hidden" name="utm_source" value="site">
+    <input type="hidden" name="utm_campaign" value="this-weekend">
+    <div class="newsletter-copy">
+      <strong>Get it in your inbox</strong>
+      <p>One email, Thursday mornings, covering Arlington Heights, Des Plaines, Mount Prospect, Palatine, and Wheeling. No spam, unsubscribe anytime.</p>
+      <p class="newsletter-note">We'll send one email to confirm.</p>
+    </div>
+    <div class="newsletter-form-row">
+      <label class="sr-only" for="bd-email">Email address</label>
+      <input type="email" name="email" id="bd-email" placeholder="you@example.com" required>
+      <button type="submit">Subscribe</button>
+    </div>
+  </form>
+  <p class="newsletter-pending" hidden>Almost there — check your email and click the confirmation link.</p>
+</div>
   
+  <iframe name="bd-hidden-frame" title="Newsletter signup" style="display:none" aria-hidden="true"></iframe>
+<script>
+document.querySelectorAll(".newsletter-form").forEach(function (f) {
+  f.addEventListener("submit", function () {
+    f.hidden = true;
+    f.parentNode.querySelector(".newsletter-pending").hidden = false;
+  });
+});
+</script>
   </main>
 
   <footer>
@@ -1059,7 +1036,7 @@ Hoopla or another library app? Talk…</p>
     <a href="https://withintenmiles.com/sponsor/">sponsor page</a>.
     <a href="https://withintenmiles.com/about/">About</a>.
     <a href="https://withintenmiles.com/trick-or-treat/">Trick-or-treat hours</a>.
-    <br>Generated 2026-10-07 21:58 UTC.
+    <br>Generated 2026-10-08 06:07 UTC.
     
     <br><a href="https://withintenmiles.com/wheeling-60090/weekly-summary.txt">Copy this week's summary</a> — a plain-text block ready to paste into a local group.
   </footer>
@@ -1085,7 +1062,7 @@ Hoopla or another library app? Talk…</p>
 <script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "Event", "name": "Babytime!", "url": "https://withintenmiles.com/wheeling-60090/this-weekend/#ev-babytime-2026-10-09", "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode", "sameAs": "https://indiantrails.libnet.info/event/16709457", "description": "Friday, October 09 2026 9:30am - 10:00am \n Stories, songs and fingerplays. TR", "startDate": "2026-10-09T09:30:00-05:00", "location": {"@type": "Place", "name": "Indian Trails Public Library", "address": {"@type": "PostalAddress", "addressCountry": "US", "addressLocality": "Wheeling", "addressRegion": "IL"}}}, {"@type": "Event", "name": "Wonderful Walkers", "url": "https://withintenmiles.com/wheeling-60090/this-weekend/#ev-wonderful-walkers-2026-10-09", "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode", "sameAs": "https://indiantrails.libnet.info/event/16709479", "description": "Friday, October 09 2026 10:30am - 11:00am \n Stories, songs, fingerplays and movement activities. TR", "startDate": "2026-10-09T10:30:00-05:00", "location": {"@type": "Place", "name": "Indian Trails Public Library", "address": {"@type": "PostalAddress", "addressCountry": "US", "addressLocality": "Wheeling", "addressRegion": "IL"}}}, {"@type": "Event", "name": "Introduction to Tinkercad", "url": "https://withintenmiles.com/wheeling-60090/this-weekend/#ev-introduction-to-tinkercad-2026-10-09", "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode", "sameAs": "https://indiantrails.libnet.info/event/16661573", "description": "Friday, October 09 2026 5:30pm - 6:30pm \n Get started with TinkerCAD, a free 3D modeling program. Learn the basics of building with this easy-to-use software. R", "startDate": "2026-10-09T17:30:00-05:00", "location": {"@type": "Place", "name": "Indian Trails Public Library", "address": {"@type": "PostalAddress", "addressCountry": "US", "addressLocality": "Wheeling", "addressRegion": "IL"}}, "isAccessibleForFree": true}, {"@type": "Event", "name": "Foundation Used Book Sale", "url": "https://withintenmiles.com/wheeling-60090/this-weekend/#ev-foundation-used-book-sale-2026-10-10", "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode", "sameAs": "https://indiantrails.libnet.info/event/11209704", "description": "Saturday, October 10 2026 10:00am - 2:00pm \n Hosted by the Foundation for the Indian Trails Library.\nAll proceeds benefit the library. Enter the sale through…", "startDate": "2026-10-10T10:00:00-05:00", "location": {"@type": "Place", "name": "Indian Trails Public Library", "address": {"@type": "PostalAddress", "addressCountry": "US", "addressLocality": "Wheeling", "addressRegion": "IL"}}}, {"@type": "Event", "name": "Home Maintenance 101", "url": "https://withintenmiles.com/wheeling-60090/this-weekend/#ev-home-maintenance-101-2026-10-11", "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode", "sameAs": "https://indiantrails.libnet.info/event/16652984", "description": "Sunday, October 11 2026 1:00pm - 2:00pm \n David Dulin, Adjunct Professor of HVACR at Oakton College, reviews general home maintenance for new and existing…", "startDate": "2026-10-11T13:00:00-05:00", "location": {"@type": "Place", "name": "Indian Trails Public Library", "address": {"@type": "PostalAddress", "addressCountry": "US", "addressLocality": "Wheeling", "addressRegion": "IL"}}}, {"@type": "Event", "name": "Tech Assistance", "url": "https://withintenmiles.com/wheeling-60090/this-weekend/#ev-tech-assistance-2026-10-11", "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode", "sameAs": "https://indiantrails.libnet.info/event/16642203", "description": "Sunday, October 11 2026 1:00pm - 1:45pm \n Have a basic question about your device\nand thinking of trying Cloud Library,\nHoopla or another library app? Talk…", "startDate": "2026-10-11T13:00:00-05:00", "location": {"@type": "Place", "name": "Indian Trails Public Library", "address": {"@type": "PostalAddress", "addressCountry": "US", "addressLocality": "Wheeling", "addressRegion": "IL"}}}]}</script>
 
 
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebPage", "name": "Wheeling — Within Ten", "url": "https://withintenmiles.com/wheeling-60090/this-weekend/", "dateModified": "2026-10-07T21:58:43.935893+00:00", "isPartOf": {"@type": "WebSite", "name": "Within Ten", "url": "https://withintenmiles.com/", "publisher": {"@id": "https://withintenmiles.com/about/#organization"}}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebPage", "name": "Wheeling — Within Ten", "url": "https://withintenmiles.com/wheeling-60090/this-weekend/", "dateModified": "2026-10-08T06:07:39.253974+00:00", "isPartOf": {"@type": "WebSite", "name": "Within Ten", "url": "https://withintenmiles.com/", "publisher": {"@id": "https://withintenmiles.com/about/#organization"}}}</script>
 <script>
 (function () {
   var activeTags = new Set();
