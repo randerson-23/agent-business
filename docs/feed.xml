@@ -4,12 +4,19 @@
   <title>Within Ten — Upcoming Local Events</title>
   <link>https://withintenmiles.com/</link>
   <description>Upcoming events across every Within Ten region, soonest first - aggregated automatically from village, library, park district and school-district calendars. This build reached 21 of 26 configured sources.</description>
-  <lastBuildDate>Thu, 08 Oct 2026 14:02:22 +0000</lastBuildDate>
+  <lastBuildDate>Thu, 08 Oct 2026 22:01:45 +0000</lastBuildDate>
   <item>
     <title>Arlington Heights: Toddler Time</title>
     <link>https://www.ahml.info/scheduling/reservation/224172</link>
     <guid isPermaLink="true">https://www.ahml.info/scheduling/reservation/224172</guid>
     <description></description>
+    <pubDate>Thu, 08 Oct 2026 00:00:00 +0000</pubDate>
+  </item>
+  <item>
+    <title>Mount Prospect: Mission Square On-Site Visits (Oct 26 - Oct 30)</title>
+    <link>https://www.mountprospect.org/articles/Mission-Square-On-Site-Visits-Oct-26-Oct-30-153.php</link>
+    <guid isPermaLink="true">https://www.mountprospect.org/articles/Mission-Square-On-Site-Visits-Oct-26-Oct-30-153.php</guid>
+    <description>Jeff Cook, Retirement Plans Specialist for the Village’s Mission Square 457 and RHS Plans will be at a variety of Village locations during the week of October…</description>
     <pubDate>Thu, 08 Oct 2026 00:00:00 +0000</pubDate>
   </item>
   <item>
@@ -61,6 +68,13 @@
     <description>Thursday, October 08 2026 10:30am - 11:00am 
  Bring the whole family and join us for an interactive storytime with high-energy stories, songs, and activities.</description>
     <pubDate>Thu, 08 Oct 2026 10:30:00 +0000</pubDate>
+  </item>
+  <item>
+    <title>Palatine: Early Voting: October 19 - November 2, 2026</title>
+    <link>https://www.palatine.il.us/CivicAlerts.aspx?aid=505</link>
+    <guid isPermaLink="true">https://www.palatine.il.us/CivicAlerts.aspx?aid=505</guid>
+    <description></description>
+    <pubDate>Thu, 08 Oct 2026 12:39:26 +0000</pubDate>
   </item>
   <item>
     <title>Des Plaines: Foodies Unite!</title>
@@ -143,9 +157,9 @@
     <pubDate>Thu, 08 Oct 2026 19:00:00 +0000</pubDate>
   </item>
   <item>
-    <title>Arlington Heights: 日本語のストーリータイム | Japanese Language Storytime</title>
-    <link>https://www.ahml.info/scheduling/reservation/227647</link>
-    <guid isPermaLink="true">https://www.ahml.info/scheduling/reservation/227647</guid>
+    <title>Arlington Heights: Using Your Mac: Basics</title>
+    <link>https://www.ahml.info/scheduling/reservation/231799</link>
+    <guid isPermaLink="true">https://www.ahml.info/scheduling/reservation/231799</guid>
     <description></description>
     <pubDate>Fri, 09 Oct 2026 00:00:00 +0000</pubDate>
   </item>
@@ -229,9 +243,9 @@
     <pubDate>Fri, 09 Oct 2026 18:30:00 +0000</pubDate>
   </item>
   <item>
-    <title>Arlington Heights: Family Time</title>
-    <link>https://www.ahml.info/scheduling/reservation/224193</link>
-    <guid isPermaLink="true">https://www.ahml.info/scheduling/reservation/224193</guid>
+    <title>Arlington Heights: Games &amp; Gab</title>
+    <link>https://www.ahml.info/scheduling/reservation/221909</link>
+    <guid isPermaLink="true">https://www.ahml.info/scheduling/reservation/221909</guid>
     <description></description>
     <pubDate>Sat, 10 Oct 2026 00:00:00 +0000</pubDate>
   </item>
@@ -381,22 +395,6 @@ Hoopla or another library app? Talk…</description>
     <description>Monday, October 12 2026 2:00pm - 3:15pm 
  Leslie Goddard portrays Eleanor Roosevelt. R</description>
     <pubDate>Mon, 12 Oct 2026 14:00:00 +0000</pubDate>
-  </item>
-  <item>
-    <title>Mount Prospect: Gross Science</title>
-    <link>https://mppl.libnet.info/event/16640961</link>
-    <guid isPermaLink="true">https://mppl.libnet.info/event/16640961</guid>
-    <description>Monday, October 12 2026 4:30pm - 5:15pm 
- Let's explore our weird and wacky world with hands-on activities that might make you laugh, wrinkle your nose, or…</description>
-    <pubDate>Mon, 12 Oct 2026 16:30:00 +0000</pubDate>
-  </item>
-  <item>
-    <title>Des Plaines: Book a Teen Librarian</title>
-    <link>https://desplaines.libnet.info/event/15509795</link>
-    <guid isPermaLink="true">https://desplaines.libnet.info/event/15509795</guid>
-    <description>Monday, October 12 2026 5:00pm - 6:00pm 
- Want some career, college, or scholarship advice? Need some book recommendations? Maybe sit back, relax, and play…</description>
-    <pubDate>Mon, 12 Oct 2026 17:00:00 +0000</pubDate>
   </item>
 </channel>
 </rss>

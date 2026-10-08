@@ -2,8 +2,8 @@
   "@context": "https://schema.org",
   "@type": "ItemList",
   "name": "Upcoming events in Palatine — Within Ten",
-  "dateModified": "2026-10-08T14:02:22+00:00",
-  "numberOfItems": 17,
+  "dateModified": "2026-10-08T22:01:45+00:00",
+  "numberOfItems": 18,
   "itemListElement": [
     {
       "@type": "ListItem",
@@ -32,6 +32,28 @@
       "position": 2,
       "item": {
         "@type": "Event",
+        "name": "Early Voting: October 19 - November 2, 2026",
+        "startDate": "2026-10-08T12:39:26-05:00",
+        "url": "https://withintenmiles.com/palatine-60067/#ev-early-voting-october-19-november-2-2026-2026-10-08",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Palatine, IL",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Palatine",
+            "addressRegion": "IL"
+          }
+        },
+        "sameAs": "https://www.palatine.il.us/CivicAlerts.aspx?aid=505"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "item": {
+        "@type": "Event",
         "name": "Tales for Tots",
         "startDate": "2026-10-09T09:30:00-05:00",
         "url": "https://withintenmiles.com/palatine-60067/#ev-tales-for-tots-2026-10-09",
@@ -53,7 +75,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 3,
+      "position": 4,
       "item": {
         "@type": "Event",
         "name": "Downtown Palatine Grand Re-Opening",
@@ -76,7 +98,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 4,
+      "position": 5,
       "item": {
         "@type": "Event",
         "name": "No School | Holiday - Indigenous Peoples’ Day",
@@ -98,7 +120,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 5,
+      "position": 6,
       "item": {
         "@type": "Event",
         "name": "Holiday Closure - All D211 Buildings Closed",
@@ -120,7 +142,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 6,
+      "position": 7,
       "item": {
         "@type": "Event",
         "name": "No School | Teacher Plan Day",
@@ -142,7 +164,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 7,
+      "position": 8,
       "item": {
         "@type": "Event",
         "name": "Teacher Institute - No Classes",
@@ -164,7 +186,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 8,
+      "position": 9,
       "item": {
         "@type": "Event",
         "name": "American Legion Commander’s Coffee for All Veterans",
@@ -188,7 +210,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 9,
+      "position": 10,
       "item": {
         "@type": "Event",
         "name": "D15 Job Fair",
@@ -210,7 +232,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 10,
+      "position": 11,
       "item": {
         "@type": "Event",
         "name": "District 1 and 2 Residents' Advisory Meeting Fall 2026",
@@ -233,7 +255,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 11,
+      "position": 12,
       "item": {
         "@type": "Event",
         "name": "Regular Board of Education Meeting",
@@ -255,7 +277,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 12,
+      "position": 13,
       "item": {
         "@type": "Event",
         "name": "Health Exam Due Date",
@@ -277,7 +299,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 13,
+      "position": 14,
       "item": {
         "@type": "Event",
         "name": "D211 Board of Education Meeting",
@@ -299,7 +321,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 14,
+      "position": 15,
       "item": {
         "@type": "Event",
         "name": "St. Paul United Church of Christ Fall Rummage Sale",
@@ -322,7 +344,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 15,
+      "position": 16,
       "item": {
         "@type": "Event",
         "name": "Palatine Plaza Fall Fun Fest",
@@ -345,7 +367,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 16,
+      "position": 17,
       "item": {
         "@type": "Event",
         "name": "Roper Romp - People Helping People-Palatine",
@@ -368,7 +390,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 17,
+      "position": 18,
       "item": {
         "@type": "Event",
         "name": "D15 Job Fair",
