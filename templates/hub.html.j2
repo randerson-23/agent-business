@@ -6,7 +6,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Within Ten — Everything worth doing, ten miles out</title>
 <meta name="description" content="Plan a weekend or a trip: local events and news across Chicago-area ZIP codes, pulled automatically from each town's village, library, and park district.">
-<meta property="og:type" content="website">
+{% if analytics and analytics.pinterest_domain_verify %}<meta name="p:domain_verify" content="{{ analytics.pinterest_domain_verify }}">
+{% endif %}<meta property="og:type" content="website">
 <meta property="og:site_name" content="Within Ten">
 <meta property="og:title" content="Within Ten — Everything worth doing, ten miles out">
 <meta property="og:description" content="Plan a weekend or a trip: local events and news across Chicago-area ZIP codes, pulled automatically from each town's village, library, and park district.">

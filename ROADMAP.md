@@ -13935,7 +13935,7 @@ an RSS feed and needs no owner time each week.
      missing, tell the build loop, which drops that field rather than
      guessing at another name.
 
-253. **Feed Pinterest a weekend Pin per town, from a feed built for
+253. 🟡 **BUILD HALF DONE; owner half open — Feed Pinterest a weekend Pin per town, from a feed built for
      it.** Build loop: write `docs/pins.xml`, a small RSS 2.0 feed with
      **one item per region per week**, linking to that region's
      **`/this-weekend/` page on the site's own domain** (which passes
@@ -13961,6 +13961,37 @@ an RSS feed and needs no owner time each week.
      both Pinterest and social sharing. When 216 ships, `pins.xml`
      switches its enclosure to that card. Do not build a second image
      pipeline for this item.
+
+     🟡 **Build half shipped 2026-10-08; the owner half is still open.**
+     - **`/pins.xml`** (`build_pins_xml()`): RSS 2.0, one item per town
+       **that has events this weekend** (a Pin for an empty weekend would
+       send people to nothing; the item did not say this), linking to that
+       town's `/this-weekend/` page on the site's own domain, with the
+       town's `og/<region>.png` as the `<enclosure>` (real byte length,
+       read from the file after the images are written). The guid ends in
+       the Friday's date, so each week is a new Pin. Descriptions name real
+       events (*"Oct 9–11 in Palatine: Oktoberfest."*, or the first three
+       and "and N more"). A town whose image is missing is left out, not
+       published blank. While `is_trick_or_treat_season()` is true (Sept 1
+       to Nov 5), one more item points at `/trick-or-treat/` with the
+       default image.
+     - **`pinterest_domain_verify`** in `config/analytics.yaml` (null)
+       renders `<meta name="p:domain_verify">` on the home page only, and
+       only when set.
+     - 8 tests (`tests/test_pins_feed.py`): well-formed XML, every link on
+       `withintenmiles.com`, every item an image, nothing pointing at a
+       publisher, new guid per week, XML-special characters in titles.
+       666 tests pass.
+     - **Still the owner's, about 10 minutes:** create a Pinterest business
+       account, claim the domain, paste the code into
+       `pinterest_domain_verify`, then add `…/pins.xml` under Auto-publish
+       and pick a board per town. **Not verified:** the sandbox has no
+       network, so Pinterest's own feed validator has not seen this file;
+       the owner's first import is the real check, and any complaint it
+       raises goes back to the build loop.
+     - The enclosure is still the landscape OG image (item 216's 1000×1500
+       share card is the fix, as the item says), so Pins will be small in
+       the grid.
 
 #### Re-ranked
 
