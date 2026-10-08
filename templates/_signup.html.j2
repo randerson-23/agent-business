@@ -87,18 +87,12 @@
 {% if newsletter and newsletter.configured -%}
 <iframe name="bd-hidden-frame" title="Newsletter signup" style="display:none" aria-hidden="true"></iframe>
 <script>
-(function () {
-  var blocks = document.querySelectorAll(".newsletter");
-  Array.prototype.forEach.call(blocks, function (block) {
-    var form = block.querySelector(".newsletter-form");
-    var pending = block.querySelector(".newsletter-pending");
-    if (!form || !pending) return;
-    form.addEventListener("submit", function () {
-      form.hidden = true;
-      pending.hidden = false;
-    });
+document.querySelectorAll(".newsletter-form").forEach(function (f) {
+  f.addEventListener("submit", function () {
+    f.hidden = true;
+    f.parentNode.querySelector(".newsletter-pending").hidden = false;
   });
-})();
+});
 </script>
 {%- endif %}
 {%- endmacro %}

@@ -46,7 +46,7 @@ def tot_page(newsletter=NEWSLETTER):
 
 def assert_one_runtime(html):
     assert html.count('name="bd-hidden-frame"') == 1
-    assert html.count("<script>\n(function () {\n  var blocks = document.querySelectorAll") == 1
+    assert html.count('document.querySelectorAll(".newsletter-form")') == 1
 
 
 def all_ids(html):
