@@ -1,4 +1,5 @@
 {% from "_featured.html.j2" import featured_label -%}
+{% from "_signup.html.j2" import signup_form, signup_runtime -%}
 <!doctype html>
 <html lang="en">
 <head>
@@ -770,7 +771,7 @@
        same hosted subscribe page the email footer (item 183) already
        uses, folded into this existing box instead of a new one. #}
     {% if newsletter and newsletter.configured %}
-    <a href="https://buttondown.com/{{ newsletter.buttondown_username }}">📬 Get it by email instead</a>
+    <a href="#newsletter-signup">📬 Get it by email instead</a>
     {% endif %}
   </div>
   {% endif %}
@@ -877,7 +878,22 @@
   {{ evergreen_section() }}
   {% endif %}
 
+  {# ROADMAP.md items 251/252: where this page's signup blocks sit and how
+     they are attributed. On the main page (nav_current "all") there are two:
+     one just before the first block of events (measured at 390px: about
+     1450px down, inside the first two screens; after that block it was
+     2250px, because the page's own header, map and Editor's Pick come first),
+     with the id the above-the-fold "Get it by email" link jumps to, and the
+     original at the bottom. Every other view has just the bottom one, which
+     then takes the `newsletter-signup` id so that link still lands. #}
+  {% set signup_tag = "town:" ~ region.id %}
+  {% set signup_campaign = {"weekend": "this-weekend", "today": "today", "free": "free", "guides": "guide"}.get(nav_current, "region") %}
+  {% set mid = namespace(placed=false) %}
   {% for block in blocks %}
+    {% if nav_current == "all" and block.events and not mid.placed %}
+    {% set mid.placed = true %}
+    {{ signup_form(newsletter, "newsletter-signup", "bd-email", signup_tag, "region-midlist") }}
+    {% endif %}
     {% if block.events or nav_current != "all" %}
     <section class="block">
       <h2>{{ block.section }}</h2>
@@ -959,35 +975,12 @@
      gave a reader zero feedback when blocked. The submit-time swap to
      the pending message below is a JS enhancement on top; the note
      under the input is the no-JS fallback disclosure. #}
-  {% if newsletter and newsletter.configured %}
-  <div class="newsletter" id="newsletter-signup">
-    <form class="newsletter-form" action="https://buttondown.com/api/emails/embed-subscribe/{{ newsletter.buttondown_username }}" method="post" target="bd-hidden-frame">
-      <div class="newsletter-copy">
-        <strong>{{ newsletter.headline }}</strong>
-        <p>{{ newsletter.detail }}</p>
-        <p class="newsletter-note">We'll send one email to confirm.</p>
-      </div>
-      <div class="newsletter-form-row">
-        <label class="sr-only" for="bd-email">Email address</label>
-        <input type="email" name="email" id="bd-email" placeholder="you@example.com" required>
-        <button type="submit">Subscribe</button>
-      </div>
-    </form>
-    <p class="newsletter-pending" hidden>Almost there — check your email and click the confirmation link.</p>
-  </div>
-  <iframe name="bd-hidden-frame" title="Newsletter signup" style="display:none" aria-hidden="true"></iframe>
-  <script>
-  (function () {
-    var form = document.querySelector("#newsletter-signup .newsletter-form");
-    var pending = document.querySelector("#newsletter-signup .newsletter-pending");
-    if (!form || !pending) return;
-    form.addEventListener("submit", function () {
-      form.hidden = true;
-      pending.hidden = false;
-    });
-  })();
-  </script>
+  {% if nav_current == "all" and mid.placed %}
+  {{ signup_form(newsletter, "newsletter-signup-end", "bd-email-end", signup_tag, "region") }}
+  {% else %}
+  {{ signup_form(newsletter, "newsletter-signup", "bd-email", signup_tag, signup_campaign) }}
   {% endif %}
+  {{ signup_runtime(newsletter) }}
   </main>
 
   <footer>

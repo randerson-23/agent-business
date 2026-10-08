@@ -1,3 +1,4 @@
+{% from "_signup.html.j2" import signup_form, signup_runtime -%}
 <!doctype html>
 <html lang="en">
 <head>
@@ -438,35 +439,8 @@
      got blocked with zero feedback. The submit-time swap to the
      pending message is a JS enhancement; the note under the input is
      the no-JS fallback disclosure. #}
-  {% if newsletter and newsletter.configured %}
-  <div class="newsletter" id="newsletter-signup">
-    <form class="newsletter-form" action="https://buttondown.com/api/emails/embed-subscribe/{{ newsletter.buttondown_username }}" method="post" target="bd-hidden-frame">
-      <div class="newsletter-copy">
-        <strong>{{ newsletter.headline }}</strong>
-        <p>{{ newsletter.detail }}</p>
-        <p class="newsletter-note">We'll send one email to confirm.</p>
-      </div>
-      <div class="newsletter-form-row">
-        <label class="sr-only" for="bd-email">Email address</label>
-        <input type="email" name="email" id="bd-email" placeholder="you@example.com" required>
-        <button type="submit">Subscribe</button>
-      </div>
-    </form>
-    <p class="newsletter-pending" hidden>Almost there — check your email and click the confirmation link.</p>
-  </div>
-  <iframe name="bd-hidden-frame" title="Newsletter signup" style="display:none" aria-hidden="true"></iframe>
-  <script>
-  (function () {
-    var form = document.querySelector("#newsletter-signup .newsletter-form");
-    var pending = document.querySelector("#newsletter-signup .newsletter-pending");
-    if (!form || !pending) return;
-    form.addEventListener("submit", function () {
-      form.hidden = true;
-      pending.hidden = false;
-    });
-  })();
-  </script>
-  {% endif %}
+  {{ signup_form(newsletter, "newsletter-signup", "bd-email", "town:all", "hub") }}
+  {{ signup_runtime(newsletter) }}
   </main>
 
   <footer>

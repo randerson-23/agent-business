@@ -1,0 +1,104 @@
+{#- ROADMAP.md items 251 and 252: the one newsletter signup block, used by every
+    page that offers one. Written once so the form, its pending message and its
+    attribution fields cannot drift apart across the region, hub, weekend, free,
+    today and trick-or-treat pages.
+
+    Every page that uses signup_form() must also call signup_runtime() exactly
+    once (a single hidden iframe and one script that serves all blocks on the
+    page), and give each block its own block_id and input_id: ids may not repeat.
+
+    Hidden fields (item 252, per Buttondown's embed-subscribe docs): `tag` is
+    the town the page is about ("town:<region-id>", or "town:all" for pages
+    that span every town), and `utm_source` / `utm_campaign` record where the
+    signup happened. -#}
+{% macro signup_css() -%}
+<style>
+  .newsletter {
+    background: var(--card);
+    border: 2px solid var(--ink);
+    border-radius: var(--radius-lg, 0);
+    box-shadow: var(--shadow-sm, none);
+    padding: 20px 24px;
+    margin-top: 30px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 14px;
+  }
+  .newsletter form { display: contents; }
+  .newsletter-copy strong { font-size: 15px; }
+  .newsletter-copy p { margin: 3px 0 0; color: var(--muted); font-size: 13.5px; }
+  .newsletter-copy .newsletter-note { font-size: 12px; margin-top: 6px; }
+  .newsletter-pending { margin: 0; font-size: 13.5px; font-weight: 600; }
+  .newsletter-form-row { display: flex; gap: 0; flex-wrap: wrap; }
+  .newsletter-form-row input[type="email"] {
+    font: inherit;
+    border: 2px solid var(--ink);
+    border-right: 0;
+    border-radius: 0;
+    padding: 8px 14px;
+    min-width: 200px;
+    background: var(--bg);
+    color: var(--ink);
+  }
+  .newsletter-form-row button {
+    font: inherit;
+    font-weight: 800;
+    color: var(--bg);
+    background: var(--accent-soft);
+    border: 2px solid var(--accent-soft);
+    border-radius: 0;
+    padding: 8px 18px;
+    cursor: pointer;
+  }
+  .newsletter-form-row button:hover { background: var(--accent-2-text); border-color: var(--accent-2-text); }
+</style>
+{%- endmacro %}
+
+{% macro signup_form(newsletter, block_id, input_id, tag, campaign, headline=none) -%}
+{% if newsletter and newsletter.configured -%}
+<div class="newsletter" id="{{ block_id }}">
+  <form class="newsletter-form" action="https://buttondown.com/api/emails/embed-subscribe/{{ newsletter.buttondown_username }}" method="post" target="bd-hidden-frame">
+    <input type="hidden" name="tag" value="{{ tag }}">
+    <input type="hidden" name="utm_source" value="site">
+    <input type="hidden" name="utm_campaign" value="{{ campaign }}">
+    <div class="newsletter-copy">
+      <strong>{{ headline or newsletter.headline }}</strong>
+      <p>{{ newsletter.detail }}</p>
+      <p class="newsletter-note">We'll send one email to confirm.</p>
+    </div>
+    <div class="newsletter-form-row">
+      <label class="sr-only" for="{{ input_id }}">Email address</label>
+      <input type="email" name="email" id="{{ input_id }}" placeholder="you@example.com" required>
+      <button type="submit">Subscribe</button>
+    </div>
+  </form>
+  <p class="newsletter-pending" hidden>Almost there — check your email and click the confirmation link.</p>
+</div>
+{%- endif %}
+{%- endmacro %}
+
+{# Targets a hidden iframe rather than a popup window (item 191): plain HTML,
+   works with no JS, and a reader whose popup was blocked is never left with
+   no feedback. The submit-time swap to the pending message is a JS
+   enhancement; the note under the input is the no-JS fallback disclosure. #}
+{% macro signup_runtime(newsletter) -%}
+{% if newsletter and newsletter.configured -%}
+<iframe name="bd-hidden-frame" title="Newsletter signup" style="display:none" aria-hidden="true"></iframe>
+<script>
+(function () {
+  var blocks = document.querySelectorAll(".newsletter");
+  Array.prototype.forEach.call(blocks, function (block) {
+    var form = block.querySelector(".newsletter-form");
+    var pending = block.querySelector(".newsletter-pending");
+    if (!form || !pending) return;
+    form.addEventListener("submit", function () {
+      form.hidden = true;
+      pending.hidden = false;
+    });
+  });
+})();
+</script>
+{%- endif %}
+{%- endmacro %}

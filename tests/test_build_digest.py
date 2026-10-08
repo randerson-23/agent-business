@@ -2127,7 +2127,11 @@ def test_render_region_page_calendar_box_includes_email_link_when_configured():
         newsletter=newsletter,
     )
     assert "Get it by email instead" in html
-    assert 'href="https://buttondown.com/planner"' in html
+    # ROADMAP.md item 251: the link now stays on the domain, jumping to the
+    # signup block on the page instead of sending the reader to buttondown.com.
+    assert '<a href="#newsletter-signup">' in html
+    assert 'href="https://buttondown.com/planner"' not in html
+    assert html.count('id="newsletter-signup"') == 1
 
 
 def test_render_region_page_calendar_box_omits_email_link_when_unconfigured():

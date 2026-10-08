@@ -1064,6 +1064,13 @@ def select_halloween_events(blocks: list[dict], local_today: date) -> list[dict]
     return picked[:HALLOWEEN_EVENTS_PER_TOWN]
 
 
+def build_halloween_signup_headline(now: datetime) -> str:
+    """The signup heading on /trick-or-treat/ (ROADMAP.md item 251): names the
+    weekday Halloween falls on this year, computed so it is right every year."""
+    weekday = date(now.year, 10, 31).strftime("%A")
+    return f"Halloween falls on a {weekday} this year. Get the weekend's events by email on Thursday."
+
+
 def build_halloween_json_ld(entries: list[dict]) -> str | None:
     """Event markup for the Halloween events listed on /trick-or-treat/
     (ROADMAP.md item 243). Each event's `url` is its card on the town's
@@ -1082,7 +1089,9 @@ def build_halloween_json_ld(entries: list[dict]) -> str | None:
 _COUNT_WORDS = {2: "Two", 3: "Three", 4: "Four", 5: "Five", 6: "Six", 7: "Seven", 8: "Eight", 9: "Nine", 10: "Ten"}
 
 
-def render_trick_or_treat_page(entries: list[dict], now: datetime, analytics: dict | None = None) -> str:
+def render_trick_or_treat_page(
+    entries: list[dict], now: datetime, analytics: dict | None = None, newsletter: dict | None = None
+) -> str:
     """The cross-region trick-or-treat hours page (ROADMAP.md Phase 11
     #101) - the single highest-volume hyperlocal query of Q4, and one no
     competitor aggregates (Eventbrite/AllEvents list ticketed events;
@@ -1102,6 +1111,8 @@ def render_trick_or_treat_page(entries: list[dict], now: datetime, analytics: di
         town_names=_join_names([e["region_name"] for e in entries]),
         any_events=any(e.get("events") for e in entries),
         event_json_ld=build_halloween_json_ld(entries),
+        newsletter=newsletter or {"configured": False},
+        signup_headline=build_halloween_signup_headline(now),
         hub_url=SITE_BASE_URL,
         canonical_url=SITE_BASE_URL + "trick-or-treat/",
         generated_at=now.strftime("%Y-%m-%d %H:%M UTC"),
@@ -2275,6 +2286,8 @@ def render_merged_hub_page(
     stale_empty_message: str | None = None,
     empty_follow_url: str | None = None,
     empty_follow_label: str | None = None,
+    newsletter: dict | None = None,
+    signup_headline: str | None = None,
 ) -> str:
     """A hub-level page merging one date/price-scoped view across every
     region, grouped by region so it's still clear where each one is.
@@ -2302,6 +2315,9 @@ def render_merged_hub_page(
         stale_empty_message=stale_empty_message,
         empty_follow_url=empty_follow_url,
         empty_follow_label=empty_follow_label,
+        slug=slug,
+        newsletter=newsletter or {"configured": False},
+        signup_headline=signup_headline,
     )
 
 
@@ -3979,6 +3995,8 @@ def main() -> None:
         hub_weekend_sections,
         now,
         analytics,
+        newsletter=newsletter,
+        signup_headline="Get this list every Thursday.",
         slug="this-weekend",
         heading="This Weekend Near You",
         subheading=f"{hub_weekend_date_range or ''} — everything with a known date, across every region.",
@@ -4002,6 +4020,8 @@ def main() -> None:
         hub_today_sections,
         now,
         analytics,
+        newsletter=newsletter,
+        signup_headline="Get the weekend's events by email on Thursday.",
         slug="today",
         heading="Happening Today Near You",
         subheading=f"{hub_today_label or ''} — everything happening today, across every region.",
@@ -4021,6 +4041,8 @@ def main() -> None:
         hub_free_sections,
         now,
         analytics,
+        newsletter=newsletter,
+        signup_headline="Free things to do, every Thursday.",
         slug="free",
         heading="Free Things To Do Near You",
         subheading="Everything tagged free, any date, across every region.",
@@ -4072,7 +4094,7 @@ def main() -> None:
     (about_dir / "index.html").write_text(about_html, encoding="utf-8")
     logger.info("Wrote %s", about_dir / "index.html")
 
-    trick_or_treat_html = render_trick_or_treat_page(trick_or_treat_entries, now, analytics)
+    trick_or_treat_html = render_trick_or_treat_page(trick_or_treat_entries, now, analytics, newsletter)
     trick_or_treat_dir = OUTPUT_DIR / "trick-or-treat"
     trick_or_treat_dir.mkdir(parents=True, exist_ok=True)
     (trick_or_treat_dir / "index.html").write_text(trick_or_treat_html, encoding="utf-8")
