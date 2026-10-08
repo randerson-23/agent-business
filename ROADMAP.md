@@ -304,15 +304,19 @@ that limit.
 - **Free Event Promo for nonprofit fundraisers** (item 240): one a month
   per service club, to seed the first sponsor listings and testimonials.
   A pricing exception.
-- **Perplexity publisher programme / Comet Plus application** (item 231):
-  one form, uncertain odds. It is the one programme that pays when
-  content drives an agent action.
+- **Substack mirror pilot, 8 weeks** (item 261): about 5 minutes a week
+  to paste each issue into a free Substack edition, to test whether
+  Substack's discovery network does for this list what it did for Don't
+  Miss Margate (1,000 subscribers in three months). It replaces the
+  Perplexity Comet Plus application (item 231), which moves to Parked.
 - **Stripe Payment Links for the $20 Event Promo and $50 Weekly Spot**
   (item 244, about 15 minutes): self-serve checkout, so a sale is not an
   email thread and a manual invoice. It replaces the Cloudflare
   AI-analytics proxy (item 232) in this list, which moves to Parked.
 
 **Parked (spend decisions; not competing with the above):**
+Perplexity publisher programme / Comet Plus application (item 231,
+one form, uncertain odds);
 Cloudflare proxy for AI-bot analytics (item 232, measurement only, and
 it must be paired with explicitly allowing AI crawlers); Chamber of
 Commerce membership (item 153); Illinois DBA filing, the
@@ -14129,6 +14133,131 @@ double opt-in and confirmation reminder**, **an AI Overviews citation
 study** (Facebook and Instagram among the most-cited hosts, and about 1
 in 9 claims unsupported), and **Luma** (city-level only, a non-item).
 The design/UX angle is the **post-signup confirmation step**.
+
+
+#### Research pass 2026-10-08, evening (sixty-third pass)
+
+The build loop shipped items 254 and 255 (the open-your-inbox step and
+the preferred-source links) and the build half of item 253 (the Pinterest
+feed). The site's conversion path is now about as complete as a static
+site can make it. Two things limit revenue: the site is **still
+invisible to search**, and the email is **thin**. An exact-match web
+search for `"withintenmiles.com"` returns nothing from the domain, which
+keeps the owner's Search Console and Bing steps (items 224, 204, 235) at
+the top of the Needs Ryan list. This pass looks at what makes a small
+local events newsletter worth keeping, using the clearest public case of
+one that worked, and at the two seasonal products the next ten weeks
+offer.
+
+| Angle | What it is / what we found | Why it matters here |
+|---|---|---|
+| **Don't Miss Margate** (UK, Substack, Press Gazette profile, March 2026) | A weekly "what's on" newsletter for one English seaside town. It launched May 2024 and reached **1,000 organic subscribers in three months**, then **about 3,000** (around 150 paid). Open rates are **65–70%**, and it is on track for **about £85,000 a year** from the first town in under two years. It expanded to Ramsgate (about 1,000 subscribers within months) and Broadstairs. The founder's framing: readers were missing local events and relying on **Facebook pages and Instagram**. Each issue is a curated **"best events this week"**, and organisers are asked to email details with price, times and booking link | The closest public proof that this exact product, one town's weekend events by email, can reach real numbers. It also challenges one line of `BUSINESS_PLAN.md`. The plan rejects Substack mainly because Substack "takes 10% of paid revenue and owns the reader relationship". This business has **no paid tier**, so the 10% never applies, and Substack exports subscriber lists. What Margate shows, and this list (one subscriber after four sends) does not, is Substack's discovery network working for a town-sized events letter. That makes it an owner decision worth reopening, with its real cost: Substack has no posting API, so a mirror costs the owner about 5 minutes a week (item 261) |
+| **The weekly email, read as a reader (design/UX)** | Read from the built `docs/combined-email-send.html`. Each event is **a title and a date only**, with **no start time, no venue, no line saying what it is**. *"Wonderful Walkers"*, *"Games & Gab"* and *"Babytime!"* mean nothing without one. Order within a town is not by date (Arlington Heights runs Oct 9, 10, 11, 10). About **4.4 KB of the 25 KB** send file is HTML comments, including internal notes such as *"item 34's load_newsletter_config"*, shipped to every inbox | Margate's open rates come from an issue a reader can act on without clicking. This email makes the reader click to learn what an event is, which is exactly what the site's design goals say a card should avoid. The data to fix it (start time, venue, description, tags) already exists for most events; the email template drops it (items 257, 260) |
+| **Macaroni Kid holiday guide** (per-town franchised parent newsletters) | Sells a **"Get listed in the Holiday Guide"** product to local businesses: **$20.25 early-bird** until mid-November, **$75** after. The listing stays up for the year | The same price point as the Event Promo, sold seasonally, to the shops that Small Business Saturday (item 208, **2026-11-28**) already targets. It is a second $20 product that needs no new audience claim, since a local listing for the season is goodwill as much as reach (item 258) |
+| **Winter-break camps** (search check) | A search for December 2026 winter-break camps in Arlington Heights and Mount Prospect turns up **no local roundup**, only out-of-state "Arlington" results and one 2025–26 Chicago-area list that includes a **Breakaway Basketball camp at Mount Prospect's Lions Rec Center**. Park districts list camps inside their own catalogues | An unserved, dated query parents search in November, the same buyers as the kids-enrichment franchise pitch (item 242). The site's feeds already carry park-district and library programmes in that window (item 259) |
+
+#### P1 (new)
+
+257. **Make each event in the email readable without a click.** Design/UX,
+     build loop, both email templates. For every event entry:
+
+     - **Start time** after the date (*"Sat Oct 10 · 10:00 AM"*). All-day
+       or untimed events show the date only. Never invent a time.
+     - **Venue or source** in muted text (*"Mount Prospect Public
+       Library"*). The source name is enough when no venue is parsed.
+     - **One line of description**, trimmed to about 90 characters at
+       a word boundary, from the same text the site cards use, only when
+       one exists. No description means no line, not a placeholder.
+     - **Sort within each town by date, then start time**, after any
+       Featured promotion (item 245), which stays first.
+
+     Keep the existing 4-per-town cap and "See everything in [town]"
+     link, so the email stays short. Tests: time formatting
+     (timed/untimed), description trimming at a word boundary, the sort
+     order with a promotion present, and the existing 102 KB Gmail
+     clip check still passing on the combined issue with every field
+     filled. This is the change most likely to move opens and clicks,
+     the numbers a sponsor will ask for.
+
+#### P2 (new)
+
+258. **A holiday "shop local" listing page, sold like Macaroni Kid's.**
+     Build loop: a `holiday_listings:` list per region in
+     `config/sponsors.yaml` (business name, one line, URL, optional
+     address and category) renders a **`/<region>/holiday/`** page
+     between **Nov 1 and Dec 31**. Paid listings are clearly labelled
+     *"Local business listing"*. The page also collects a free
+     **"Holiday events"** section from the region's own feeds by
+     keyword (tree lighting, holiday market, Santa, menorah, Kris
+     Kringle, Small Business Saturday) within the date window. Link it
+     from the region page and the email only in season (the
+     trick-or-treat page's pattern). Expired listings drop off
+     automatically.
+
+     **Pricing, set in `SPONSOR_KIT.md` and on /sponsor/:** **$20
+     before Nov 15, $50 after**, the Macaroni Kid structure at this
+     site's Event Promo price. Sold through the Event Promo's Payment
+     Link (item 244) or by reply email. **Owner time:** pasting one
+     YAML entry per sale. **Dependency:** none to build. Selling it
+     rides on the outreach batch (Needs Ryan step 8) and the Small
+     Business Saturday email (`OUTREACH_TEMPLATES.md` §13). Build it
+     by **Oct 25** so early-bird pricing has three weeks to work.
+
+259. **A winter-break camps page per region, published by mid-November.**
+     Build loop: **`/<region>/winter-break/`**, live from Nov 1 to Jan 4,
+     listing feed events from **Dec 21 to Jan 3** that match camp or
+     school-break keywords (camp, winter break, no school, school's out,
+     day off) plus any `evergreen` entries the region config already
+     carries for park-district camp catalogues. Each card links to its
+     publisher as usual. One **sponsor slot** at the top uses the
+     existing Weekly Spot rendering and is priced as a Weekly Spot for
+     the window. That is the natural first ask for item 242's
+     kids-enrichment franchises, who run winter camps themselves.
+     **Honest about content:** library "School's Out" programmes
+     already appear in the feeds (one is in this week's issue).
+     Multi-day park-district camps may sit in catalogues the feeds do
+     not reach, so the page must read well with only a handful of
+     entries, as item 214's nearby-town fallback already does.
+
+#### P3 (new)
+
+260. **Strip HTML comments from the email send files.** Build loop: in
+     `email_digest.html.j2` and `combined_email_digest.html.j2`, turn
+     every `<!-- ... -->` that is a note to developers into a Jinja
+     `{# ... #}` comment. Keep only the `<!--[if mso]>` conditional
+     blocks Outlook needs. This removes about 4.4 KB (17%) from each
+     send and stops internal roadmap notes reaching subscribers' "view
+     source". Test: the send files contain no `<!--` other than
+     `<!--[if mso]>` / `<![endif]-->`.
+
+#### Owner decision (new)
+
+261. **Reopen the Substack question with Margate's numbers, as an
+     8-week mirror pilot.** Keep Buttondown as the list of record. Run a
+     **free** Substack edition (same name, no paid tier, so Substack's
+     10% never applies) that carries each Wednesday issue, and turn on
+     Substack Recommendations with Chicago-suburb Substacks such as The
+     Burb Report and Western Springs Tribune (both Substack-hosted,
+     found in this loop's searches). Build
+     loop: write a **`docs/substack-paste.html`** each week, the
+     combined issue in plain formatting that Substack's editor accepts
+     on paste. **Owner: about 5 minutes a week** to paste and publish,
+     which is the real cost, since Substack has no posting API. **Judge
+     it after 8 weeks** on Substack subscribers gained versus Buttondown
+     signups over the same period. If it wins, export and consolidate
+     (both platforms import and export CSV). If it does not, stop, and
+     `BUSINESS_PLAN.md`'s current reasoning stands with evidence behind
+     it. This replaces the Perplexity Comet Plus application (item 231)
+     in the three open decisions. That one moves to Parked, since its
+     odds were always the least certain.
+
+Competitors reviewed this pass: **Don't Miss Margate** (a one-town
+weekly events newsletter that reached 1,000 subscribers in three
+months and about £85k a year on Substack), **Macaroni Kid's holiday
+guide listings** ($20.25 early-bird, $75 after), and **winter-break
+camp search results** (no local roundup for these towns). The
+design/UX angle is **the weekly email, read as a reader**. Re-check:
+an exact-domain search still finds no page from `withintenmiles.com`.
 
 
 ## Working agreements for autonomous iteration
