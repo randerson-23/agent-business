@@ -249,6 +249,15 @@ that limit.
    likely fix. While in **Google Search Console**, note the
    *Indexing → Pages → Indexed* count. This loop's web search still finds
    no pages on the domain.
+3a. ✅ *Search Console, read by the owner 2026-10-09 (item 224): **48 pages
+   indexed**, 18 not indexed: 15 "Discovered – currently not indexed"
+   (normal crawl lag for a new domain), 2 "Page with redirect", 1
+   "Alternate page with proper canonical tag" (both expected, not
+   errors). This **corrects** the research loop's repeated "the site is
+   not indexed / invisible to search" claims (passes 54–63): those came
+   from this loop's web-search tool, which is not Google's index and
+   cannot see a new domain. The Bing import failed, so Bing is being
+   verified by DNS CNAME instead.*
 4. ✅ *Done 2026-10-09: the Buttondown handle is now `withinten`, and
    `config/newsletter.yaml` is updated (item 226). Yahoo spam check (item
    239) and the Buttondown settings below are also done: tracking on,
