@@ -10553,7 +10553,7 @@ The tonight-relevant part: this repo's newsletter cron fires **today at
 
 #### P1 (new)
 
-194. ⬆️ **P1 since the sixty-fourth pass (still alternating, now HTTP 403 on AHPD; see item 262).** **The three park districts alternate pass/fail every build, and no
+194. 🟡 **DETECTOR DONE (rate window + lockstep); cause still open (retry is item 195) — ⬆️ P1 since the sixty-fourth pass (still alternating, now HTTP 403 on AHPD; see item 262).** **The three park districts alternate pass/fail every build, and no
      detector in this repo can represent that.** Traced through the
      committed data rather than inferred, one build commit at a time:
 
@@ -10613,6 +10613,39 @@ The tonight-relevant part: this repo's newsletter cron fires **today at
        about headers, paths or parsing is implicated. Needs a
        network-capable run, which the build loop has and this loop
        does not.
+
+     🟡 **Detector shipped 2026-10-09** (the first two "what to build"
+     bullets); the third, finding the cause, still needs a network-capable
+     run. Item 195 (retry) is the likeliest fix.
+     - **`data/source_failure_window.json`**: for every source, one
+       character per build (`1` = transport failure), the newest 24, kept
+       beside item 181's streaks, which are untouched. **Seeded from the
+       last 24 committed builds** of `source_transport_failures.json`, so
+       it works from the first build instead of after two days of waiting.
+       The seed matches the item's own table: Arlington Heights Park
+       District `100000010101100100111010` (10 failures in 24).
+     - **`detect_flapping_sources`**: at least 8 builds of history, a
+       failure rate of **one in five or more**, and **not already failing
+       its last three builds** (that is the chronic check's job). On the
+       seed it flags **three** sources: Arlington Heights Park District
+       (10 of 24), Des Plaines Park District (11 of 24) and Palatine Public
+       Library District (6 of 24). Mount Prospect Park District (4 of 24)
+       is just under the line. The streak check, run against an
+       alternating history, flags none: a test shows both. The line is one
+       in five (the first guess was one in four) because, with only 24
+       builds of history, a source sitting at 25% would drop out of view
+       after a single good build.
+     - **`detect_lockstep_failures`**: groups of two or more sources whose
+       failures fall on **exactly** the same builds. None exists in the
+       real history today (the three park districts that moved together on
+       Sept 26 no longer do), so this is a guard for the next time. Sources
+       that always fail, or never fail, are left out: they say nothing
+       about timing.
+     - Both log a `WARNING` and never fail the build, like the streak
+       warning. The workflow commits the new file; a local sandbox build
+       appends all-failure outcomes to it, so it is `git restore`d like the
+       other data files, and its sandbox lockstep warning is not real.
+     - 8 tests (`tests/test_failure_window.py`); 700 pass.
 
 195. **`fetchers.py` has no retry, and that is what turns a flaky host
      into a missing park district.** Checked directly: no retry, no
@@ -14479,7 +14512,10 @@ is **the email's missing seasonal link**. The pass also rechecked
   2026-10-03) — always `git restore` all seven after a local build in
   this sandbox, never stage any of them. `data/source_last_good/`
   (item 262) is the same: CI writes it, a local sandbox build never does,
-  and nothing under it is hand-committed except the `.gitkeep`. `indexnow_log.json` has been
+  and nothing under it is hand-committed except the `.gitkeep`. Likewise
+  `data/source_failure_window.json` (item 194): CI appends to it, a sandbox
+  build would append all-failure outcomes, so `git restore` it after a
+  local build and never stage it. `indexnow_log.json` has been
   tracked since CI first committed it on 2026-10-03, so `git restore`
   it like the others. **Do not `rm` it**: that deletes a real,
   tracked history file (it nearly happened on 2026-10-04).
