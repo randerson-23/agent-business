@@ -84,6 +84,18 @@ def should_exit_for_health_regression(
 # that is never polluted with transport-failure noise) stay untouched -
 # this is an addition, not a rework.
 TRANSPORT_FAILURE_PATH = ROOT / "data" / "source_transport_failures.json"
+
+# ROADMAP.md item 194: the streak above answers "is it down right now" and
+# can never see a source that fails every other build (its streak never
+# passes 1, and the chronic threshold is 3). This is the trailing window the
+# item asked for: for each source, one character per recent build, "1" for a
+# transport failure and "0" for a success, oldest first. Kept in its own file
+# so item 181's integer streaks, and everything that reads them, are
+# untouched.
+FAILURE_WINDOW_PATH = ROOT / "data" / "source_failure_window.json"
+FAILURE_WINDOW_SIZE = 24
+FLAPPING_MIN_BUILDS = 8
+FLAPPING_MIN_RATE = 0.2
 CONSECUTIVE_TRANSPORT_FAILURE_ALERT_THRESHOLD = 3
 
 # ROADMAP.md item 185 (forty-fourth research pass): the streak above
@@ -703,6 +715,63 @@ def update_transport_failures(failures: dict, source_key: str, transport_failed:
     failures[source_key] = failures.get(source_key, 0) + 1 if transport_failed else 0
 
 
+def load_failure_window() -> dict:
+    """Load FAILURE_WINDOW_PATH; a missing or damaged file starts fresh."""
+    if FAILURE_WINDOW_PATH.exists():
+        try:
+            data = json.loads(FAILURE_WINDOW_PATH.read_text(encoding="utf-8"))
+            if isinstance(data, dict):
+                return {k: v for k, v in data.items() if isinstance(v, str)}
+        except (json.JSONDecodeError, OSError) as exc:
+            logger.warning("Could not read %s, starting fresh: %s", FAILURE_WINDOW_PATH, exc)
+    return {}
+
+
+def update_failure_window(window: dict, source_key: str, transport_failed: bool) -> None:
+    """Append this build's outcome for a source, keeping the newest
+    FAILURE_WINDOW_SIZE characters."""
+    window[source_key] = (window.get(source_key, "") + ("1" if transport_failed else "0"))[-FAILURE_WINDOW_SIZE:]
+
+
+def save_failure_window(window: dict) -> None:
+    FAILURE_WINDOW_PATH.parent.mkdir(parents=True, exist_ok=True)
+    FAILURE_WINDOW_PATH.write_text(json.dumps(window, indent=2, sort_keys=True) + "\n", encoding="utf-8")
+
+
+def detect_flapping_sources(
+    window: dict, min_builds: int = FLAPPING_MIN_BUILDS, min_rate: float = FLAPPING_MIN_RATE
+) -> list[tuple[str, int, int]]:
+    """(source key, failures, builds) for every source that fails a
+    meaningful share of recent builds without being down right now:
+    at least `min_builds` of history, a failure rate of `min_rate` or more,
+    and not already failing its last three builds (that is the chronic
+    detector's job). A source that fails every other build has a streak of
+    1 forever and is invisible to every streak-based check; this finds it."""
+    flapping = []
+    for key, history in sorted(window.items()):
+        if len(history) < min_builds or "1" not in history:
+            continue
+        if history.endswith("111"):
+            continue
+        failures = history.count("1")
+        if failures / len(history) >= min_rate:
+            flapping.append((key, failures, len(history)))
+    return flapping
+
+
+def detect_lockstep_failures(window: dict, min_builds: int = FLAPPING_MIN_BUILDS) -> list[list[str]]:
+    """Groups of two or more sources whose failures fall on exactly the
+    same builds, over the same stretch. Unrelated hosts failing and
+    recovering together is one cause (the runner's egress, a shared CDN,
+    per-IP rate limiting), not several coincidences. A history that is all
+    successes or all failures says nothing about timing and is left out."""
+    by_pattern: dict[str, list[str]] = {}
+    for key, history in sorted(window.items()):
+        if len(history) >= min_builds and "1" in history and "0" in history:
+            by_pattern.setdefault(history, []).append(key)
+    return [keys for keys in by_pattern.values() if len(keys) >= 2]
+
+
 def save_transport_failures(failures: dict) -> None:
     TRANSPORT_FAILURE_PATH.parent.mkdir(parents=True, exist_ok=True)
     TRANSPORT_FAILURE_PATH.write_text(
@@ -970,6 +1039,7 @@ def fetch_region_sections(
     *,
     last_good_dir: Path | None = None,
     now: datetime | None = None,
+    failure_window: dict | None = None,
 ) -> list[dict]:
     region_id = region_cfg["region"]["id"]
     region_name = region_cfg["region"]["name"]
@@ -1035,6 +1105,8 @@ def fetch_region_sections(
             # every success too, to reset back to 0.
             if transport_failures is not None:
                 update_transport_failures(transport_failures, source_key, transport_failed)
+            if failure_window is not None:
+                update_failure_window(failure_window, source_key, transport_failed)
             # ROADMAP.md item 185: the *kind* of transport failure, not
             # just that one happened - failure_info is only ever
             # populated when transport_failed is true (fetchers.py only
@@ -3856,6 +3928,7 @@ def main() -> None:
 
     source_health = load_source_health()
     transport_failures = load_transport_failures()
+    failure_window = load_failure_window()
     transport_failure_details = load_transport_failure_details()
     weekend_history = load_weekend_history()
     # ROADMAP.md item 197: numerator/denominator for this build's
@@ -3928,6 +4001,7 @@ def main() -> None:
             completeness=source_completeness,
             last_good_dir=LAST_GOOD_DIR,
             now=now,
+            failure_window=failure_window,
         )
         annual_block = prepare_annual_events(region_cfg, now)
         if annual_block:
@@ -4487,6 +4561,7 @@ def main() -> None:
 
     save_source_health(source_health)
     save_transport_failures(transport_failures)
+    save_failure_window(failure_window)
     save_transport_failure_details(transport_failure_details)
     save_weekend_history(weekend_history)
     write_source_completeness(source_completeness["reporting"], source_completeness["expected"], now)
@@ -4541,6 +4616,21 @@ def main() -> None:
         logger.warning(
             "Source chronic transport failure: %s has failed transport on %d+ consecutive builds.%s%s",
             key, transport_failures[key], stale_note, detail_note,
+        )
+
+    # ROADMAP.md item 194: sources that fail often without being down right
+    # now, which the streak check above cannot represent, and groups of
+    # sources that fail on exactly the same builds. Non-blocking, like the
+    # streak warning: the log line existing is the signal.
+    for key, failures, builds in detect_flapping_sources(failure_window):
+        logger.warning(
+            "Source flapping: %s failed transport on %d of its last %d builds without being down now (last good copy: item 262 covers the reader; the cause is still open).",
+            key, failures, builds,
+        )
+    for group in detect_lockstep_failures(failure_window):
+        logger.warning(
+            "Lockstep transport failures: %s failed on exactly the same builds - one shared cause (the runner's egress, a shared CDN, per-IP rate limiting), not %d separate ones.",
+            ", ".join(group), len(group),
         )
 
     # ROADMAP.md item 186 (forty-fourth research pass): non-blocking for
