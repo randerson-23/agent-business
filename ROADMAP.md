@@ -10631,10 +10631,10 @@ The tonight-relevant part: this repo's newsletter cron fires **today at
        (10 of 24), Des Plaines Park District (11 of 24) and Palatine Public
        Library District (6 of 24). Mount Prospect Park District (4 of 24)
        is just under the line. The streak check, run against an
-       alternating history, flags none: a test shows both. One in five
-       rather than the first-guess one in four, because one in four would
-       have missed Palatine Public Library (25%, borderline) the moment its
-       rate dipped.
+       alternating history, flags none: a test shows both. The line is one
+       in five (the first guess was one in four) because, with only 24
+       builds of history, a source sitting at 25% would drop out of view
+       after a single good build.
      - **`detect_lockstep_failures`**: groups of two or more sources whose
        failures fall on **exactly** the same builds. None exists in the
        real history today (the three park districts that moved together on
