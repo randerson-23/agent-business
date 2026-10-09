@@ -235,9 +235,8 @@ that limit.
    including Spam, for "this weekend" from Buttondown, and mark any copy
    "Not spam". Both scheduled sends show 1 recipient and 0 opens. This
    needs settling before outreach or press sends anyone to the signup.
-   While in email, **send one test message to `hello@withintenmiles.com`**
-   and confirm it arrives (item 244). The sponsor page and every
-   corrections link now publish that address instead of the Gmail.
+   ✅ *The `hello@withintenmiles.com` forward was confirmed working by the
+   owner on 2026-10-09 (item 244).*
 2. **Turn on GoatCounter (5 min, item 227).** Create a free account at
    goatcounter.com and paste the site code into
    `config/analytics.yaml: goatcounter_code`. The site has never measured
@@ -263,9 +262,9 @@ that limit.
    - After the first real signup, open that subscriber and check that its
      **town tag and UTM fields** arrived (item 252).
 6. **Create the event-submission Google Form (10 min, item 246)**, once
-   the build loop has the CSV reader ready. Organisers can then list
-   events without a GitHub account.
-   **Same sitting, once item 253 ships (10 min):** create a Pinterest
+   the build loop has the CSV reader ready (not built yet). Organisers
+   can then list events without a GitHub account.
+   **Ready now (10 min; `docs/pins.xml` shipped with item 253):** create a Pinterest
    business account, paste its domain-verify code into
    `config/analytics.yaml`, and add `https://withintenmiles.com/pins.xml`
    under Auto-publish. It then posts a weekend Pin per town by itself.
