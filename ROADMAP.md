@@ -10538,7 +10538,7 @@ The tonight-relevant part: this repo's newsletter cron fires **today at
 
 #### P1 (new)
 
-194. **The three park districts alternate pass/fail every build, and no
+194. ⬆️ **P1 since the sixty-fourth pass (still alternating, now HTTP 403 on AHPD; see item 262).** **The three park districts alternate pass/fail every build, and no
      detector in this repo can represent that.** Traced through the
      committed data rather than inferred, one build commit at a time:
 
@@ -14289,6 +14289,96 @@ guide listings** ($20.25 early-bird, $75 after), and **winter-break
 camp search results** (no local roundup for these towns). The
 design/UX angle is **the weekly email, read as a reader**. Re-check:
 an exact-domain search still finds no page from `withintenmiles.com`.
+
+
+#### Research pass 2026-10-09, morning (sixty-fourth pass)
+
+The build loop shipped items 257 and 260: email entries now carry
+time, venue and a line of description, and developer comments no
+longer ship to inboxes. This pass started on seasonal search
+(October's biggest family query is pumpkins) and found a
+reliability fault on the way. That fault is the most important thing
+in it, because it decides what a reader sees **this weekend**.
+
+| Angle | What it is / what we found | Why it matters here |
+|---|---|---|
+| **Arlington Heights Park District, read build by build** | Counted the AHPD event links in the last **30 committed builds** of `docs/arlington-heights-60005/index.html` (2026-10-01 → today). **12 of 30 builds have none**: the park district's 18–20 events disappear entirely, then return on the next build. `data/source_transport_failure_details.json` now records the failure as **HTTP 403**, not the `ConnectTimeout` item 194 traced. The current streak is 1, so no detector fires (item 194's own point: an alternating source never reaches a streak of 3). The build live as of 06:05 UTC today is one of the empty ones. Arlington Heights' page for the Columbus Day weekend is **the library plus village news, with no park district**. `source_health.json` does not show it, by design (item 55 skips transport failures rather than record a 0) | Item 194 found this pattern on Sept 26 and is still open. What has changed is the cost: it now decides whether a reader's weekend page is complete, and it hits a different build every day. A fix for the cause needs a network-capable run. A fix for **what the reader sees** does not: keep the last good copy (item 262). Item 194 moves to P1 below |
+| **"pumpkin patch near Arlington Heights" (seasonal search)** | The results are **AHPD's raw `?ical=1` export URLs**, **Patch articles from about 2021** listing farms (Sonny Acres, Kroll's, Goebbert's, Bengtson's, Richardson, All Seasons Orchard), and **Macaroni Kid Schaumburg's** listing of AHPD's **Pumpkin Splash** (Oct 18, Arlington Ridge Center, ages 2–7). **No current roundup ranks** | A seasonal query answered by calendar export files and five-year-old articles is weak competition. Most of those farms are **farther than ten miles**, though, so a farm list would stretch the brand. The local half of the answer (pool pumpkins, carving nights, library pumpkin programmes) is exactly what the site's feeds carry, **when the AHPD feed comes through** (item 262). Planning for next year is item 264 |
+| **Neighborhood Parents Network (NPN, Chicago)** | A membership parent network with an **advertising rate kit** and a **hand-picked events calendar**. Its focus is the city, not the northwest suburbs | An analogue, not a competitor: parents' organisations sell advertising on a curated calendar, which supports the Event Promo framing. **No item.** Chicago Parent's own 2026 rate card could not be found (only a 2016 contact), so it stays unpriced in the competitor table |
+| **The weekly email between Oct 14 and Oct 28 (design/UX)** | Read from the built combined send. The email **never links the `/trick-or-treat/` page**, even though the homepage and region pages do (item 243) and it is the site's most seasonal page. Halloween is **Saturday Oct 31**, so the **Oct 14, 21 and 28 sends** are the only three that can carry it. The same gap will repeat for item 258's holiday page and item 259's winter-break page | An email reader is the most engaged reader the site has. A one-line seasonal link is the cheapest way to make those pages, built for exactly this weekend, reach them (item 263) |
+
+#### P1 (new)
+
+262. **Keep each source's last good copy, so a failed fetch does not
+     empty a town.** Build loop, `scripts/build_digest.py`.
+
+     - After every **successful** fetch, write that source's
+       normalised **future** events to
+       `data/source_last_good/<region>__<source-slug>.json` with a
+       `fetched_at` timestamp.
+     - On a **transport failure** (any status or exception that item 55
+       already treats as "skip, don't record 0"), load that file if it
+       is **under 72 hours old** and use its events, dropping any
+       that are now past. Older than 72 hours: use nothing, as today.
+     - These events render exactly like fresh ones, since they are real
+       events linking to their own publisher. The completeness note
+       (item 197) says so honestly: *"1 source shown from its last
+       update, 14 hours ago."* `source_health.json` is untouched, so
+       item 55's history stays clean.
+     - Tests: success writes the file; a failure under 72 hours uses it
+       and drops past events; a failure over 72 hours uses nothing; a
+       source that has never succeeded (Wheeling Park District, 65
+       straight 403s) is unaffected; the completeness note counts
+       last-good sources separately.
+
+     This turns item 194's alternating fault, AHPD's today and the three
+     park districts' in September, from "half the builds lose a town's
+     park district" into "nothing a reader can see". It does **not**
+     replace finding the cause, which stays in item 194.
+
+263. **Link the season's page from the email.** Design/UX, build loop.
+     A small registry in `build_digest.py` of **seasonal pages with a
+     send window**, for example `/trick-or-treat/` from **Oct 12 to
+     Oct 31**, item 258's `/<region>/holiday/` from Nov 1 to Dec 24,
+     and item 259's `/<region>/winter-break/` from Nov 15 to Jan 3.
+     Both email templates render **one line** under the intro when a
+     window is open: *"🎃 Trick-or-treat hours for all five towns →"*.
+     It links to the site page with
+     `?utm_source=email&utm_campaign=seasonal`. One line only, never
+     a block, so the event list stays the email. The pages that do not
+     exist yet are added when their items ship. Tests: inside and
+     outside the window; at most one line when two windows overlap
+     (the earlier-ending wins); the 102 KB check still passes. **Ship
+     before the Oct 14 send** to get all three Halloween issues.
+
+#### P3 (new)
+
+264. **For 2027: plan October around what parents search, starting
+     Sept 1.** Not build work now, since three weekends are too late to
+     rank. Add a `SEASONAL_CALENDAR.md` row: by **Sept 1**, the fall
+     guide gains a short **"Pumpkins near [town]"** section built from
+     the region's own feeds (pumpkin, carving, harvest, hayride
+     keywords). Farms more than ten miles away appear only as a
+     clearly marked *"worth the drive"* list of links, no claimed
+     hours. In the same row, record that **farms advertise every
+     October**, which makes them a natural Event Promo prospect list for
+     the September outreach batch.
+
+#### Re-ranked
+
+- **Item 194** (alternating source failures) **moves to P1**, directly
+  after item 262. The evidence is now 12 empty Arlington Heights builds
+  in 30, and the failure has changed from `ConnectTimeout` to HTTP 403.
+  The rate-based detector it proposes would have flagged AHPD days ago.
+  Item 262 hides the damage; item 194 is what explains it.
+
+Competitors reviewed this pass: **seasonal search results for
+"pumpkin patch near Arlington Heights"** (calendar export files, a
+five-year-old Patch list and Macaroni Kid Schaumburg; no current
+roundup) and the **Neighborhood Parents Network** (a parent network
+selling ads on a curated calendar; city-focused). The design/UX angle
+is **the email's missing seasonal link**. The pass also rechecked
+**Arlington Heights Park District's feed** across 30 builds.
 
 
 ## Working agreements for autonomous iteration
