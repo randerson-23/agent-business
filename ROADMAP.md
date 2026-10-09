@@ -288,6 +288,13 @@ that limit.
    toggle that gives deliverability reports. Do it before any
    press-driven spike.
 
+8a. **GoatCounter API key → GitHub secret (2 min, item 266).** In
+   GoatCounter → Settings → API, create a key with *read statistics*
+   only, then add it as the repository secret `GOATCOUNTER_TOKEN`
+   (GitHub → Settings → Secrets and variables → Actions). That lets the
+   site show a real audience number on /sponsor/ once it is worth
+   showing.
+
 **Next action — about an hour, no cost:**
 
 8. **Send the outreach emails (items 152, 161).** Six civic link-back
@@ -13102,7 +13109,7 @@ visibility.
 
 #### P2 (new)
 
-235. **Narrow the IndexNow 403 with one per-engine probe, and stop
+235. ↪️ **Folded into item 265 (sixty-fifth pass): the probe is superseded by logging the 403 body; the changed-URLs half ships with 265.** **Narrow the IndexNow 403 with one per-engine probe, and stop
      resubmitting every URL.** Item 224's log shows `403` on every build.
      The site side checks out, and the public evidence points to Bing.
      Two small changes:
@@ -14474,6 +14481,120 @@ roundup) and the **Neighborhood Parents Network** (a parent network
 selling ads on a curated calendar; city-focused). The design/UX angle
 is **the email's missing seasonal link**. The pass also rechecked
 **Arlington Heights Park District's feed** across 30 builds.
+
+
+#### Research pass 2026-10-09, evening (sixty-fifth pass)
+
+A big day for the owner's list. Search Console shows **48 pages
+indexed**, 15 more "Discovered" (normal for a new domain), and five
+requested for indexing. Bing is verified by CNAME and the sitemap
+submitted. DMARC reporting is on. The Buttondown handle is now
+`withinten`, with tracking, domain, welcome email and confirmation
+reminder all confirmed. The one issue sent so far was found in Yahoo's
+Spam folder and moved out. **GoatCounter is live** (`withinten`). The
+build loop shipped items 262 (last-good copy per source) and 194 (the
+failure-rate window). The site can now be found, and for the first time
+it can be measured. This pass is about turning those measurements into
+the two things that earn money: an audience number a sponsor believes,
+and search engines that keep coming back.
+
+| Angle | What it is / what we found | Why it matters here |
+|---|---|---|
+| **IndexNow 403 after Bing verification** | `data/indexnow_log.json` still records **403** at 20:35 and 22:02 UTC, after the owner verified the site in Bing. Field reports from other static sites (GitHub issues and pull requests, a developer log from 2026-08-08) agree on three causes: (1) the key file **not yet live** when the ping fires, a CDN timing issue in the same deploy, which does not apply here because the key file has been live for weeks; (2) a **robots.txt rule blocking `.txt`**, which also does not apply (`robots.txt` allows everything); and (3) **Bing having bound the key while the site was unverified or marked invalid**. For (3), the fix that worked was **generating a new key in Bing Webmaster Tools** and redeploying. The 403 body carries a reason code (for example `UserForbiddedToAccessSite`), and **this pipeline never records it** | The cheap explanations are ruled out, so this is most likely cause (3). It can be confirmed in one build by logging the response body, and fixed in one owner minute plus one build-loop change (item 265). Every Bing crawl the site gets also feeds DuckDuckGo, Yahoo and ChatGPT search |
+| **GoatCounter's API** | Bearer-token API at `/api/v0`, with **totals by date range** (`/stats/total`), per-path stats with **referrers**, and a full **CSV export** (once an hour, kept 24 hours). Keys are created in the GoatCounter account settings | Visits can now be counted, but only the owner can see the dashboard. The sponsor page, the sponsor kit and this loop cannot. A weekly snapshot committed to the repo makes the audience number something the site can show, and something future passes can use instead of guessing (item 266) |
+| **Newsletter sponsorship pricing at small list sizes** (vendor guides, Paved Q3 2026 benchmarks via PPC Land) | Below about 3,000–5,000 subscribers, guides consistently recommend a **flat fee per issue, roughly $50–$200**, not CPM. Paved's benchmarks put **Lifestyle lists at about $1.22 per 1,000 subscribers**, against $18.47 for HR. One writer argues sponsorship alone is rarely worth the admin below about 5,000 engaged subscribers | Confirms the plan's pricing shape: a **$50 Weekly Spot** sits at the bottom of the flat-fee band, and pricing by CPM would earn almost nothing at this scale. It also supports the plan's reliance on low-admin, self-serve sales (items 244–246). **No pricing change.** `SPONSOR_KIT.md` can say "flat weekly, not per-impression" (part of item 266) |
+| **The sponsor page's proof block (design/UX)** | `/sponsor/` shows **"1600 live updates indexed this week"** and **"5 regions covered"**, both supply-side numbers. Nothing on it says how many **people** see the placement, because until today nothing measured that | A buyer's first question is "how many people will see this?" Showing an honest, measured number **once it is worth showing**, and nothing before then, beats both silence and a vanity count (item 266) |
+
+#### P1 (new)
+
+265. **Record why IndexNow says 403, then rotate the key once.** Build
+     loop, `scripts/fetchers.py` and `build_digest.py`:
+
+     - In `submit_indexnow()`, store the **first 300 characters of the
+       response body** in `outcome["body"]` and log it in
+       `data/indexnow_log.json`. That turns "403" into Bing's own reason
+       code.
+     - Before posting, **GET the key URL** and record whether it returns
+       200 with exactly the key (`outcome["key_file_ok"]`). That rules out
+       the file side with evidence, every build, instead of by
+       inspection.
+     - **Owner, 1 minute, only if the logged reason says the key is
+       invalid or the site is forbidden after the next build:** in Bing
+       Webmaster Tools → IndexNow, generate a new key and paste it here.
+       The build loop then changes `INDEXNOW_KEY`. Keep writing the
+       **old** key file for 30 days as well, since keys already submitted
+       are checked against it.
+
+     This supersedes item 235's per-engine probe, which is unnecessary
+     once the body is logged. Item 235's other half, **submitting only
+     changed URLs**, still stands and should ship in the same PR.
+
+266. **A weekly audience snapshot, and a sponsor-page number once it
+     earns its place.**
+
+     - **Build loop:** a Monday step in `build-watchdog.yml` (or its own
+       small workflow) that calls GoatCounter's `/api/v0/stats/total`
+       for the last 7 and 30 days and the referrer list, then writes
+       `data/audience.json` with: visits (7d, 30d), the top 10
+       referrers, an **AI-assistant referral count** (chatgpt.com,
+       perplexity.ai, claude.ai, gemini.google.com, copilot.microsoft.com),
+       and the `sponsor-click-*` event counts. Add the latest Buttondown
+       subscriber count from `send_history.json`. If the secret is
+       missing it skips quietly, like every other optional integration
+       here.
+     - **Design/UX, on `/sponsor/`:** an **"Audience, last 30 days"** line
+       (visits, subscribers, and AI-assistant referrals when nonzero),
+       shown **only above a floor**: at least 500 visits in 30 days, or at
+       least 50 subscribers. Below the floor the block does not render,
+       and the existing supply-side stats stay. **Never show a number
+       that would embarrass the pitch, and never round up.** Put the
+       same numbers in `SPONSOR_KIT.md`'s "Reach" section, with the date.
+     - **Owner, 2 minutes, once:** in GoatCounter → Settings → API, create
+       a key with **read statistics** permission only, then add it as a
+       GitHub repository secret named `GOATCOUNTER_TOKEN`
+       (Settings → Secrets and variables → Actions).
+
+     It also gives this loop a real number for every later
+     pricing and channel decision. Item 224's "is it indexed" question
+     has just been answered by the owner; "is anyone visiting" is the
+     next one.
+
+#### P2 (new)
+
+267. **Count the readers the site sends to each publisher, so the
+     outreach emails can cite it.** Build loop. One delegated click
+     listener on event-card links calls
+     `goatcounter.count({path: 'out/' + hostname, event: true})`, so
+     GoatCounter records outbound clicks per publisher domain (ahml.info,
+     mppl.org, ahpd.org…). Nothing is sent about the reader. Item 266's
+     snapshot picks these up as `out/*` counts.
+
+     **Why it is worth a few hundred bytes:** the civic link-back emails
+     (`OUTREACH_TEMPLATES.md` §11) currently argue *"we already send you
+     readers every week"* with no number. After a month they can say
+     *"we sent 140 people to your programme pages in September."* That is
+     the strongest possible case for a link from a `.gov` or library
+     site. **Constraint:** the inline-JS budget has **about 470 bytes
+     left** (12,838 of 13,312 in the last check), so the listener must
+     be a single short function added to the existing script, not a new
+     block. If it does not fit, raise the budget deliberately in the same
+     PR with a one-line reason, rather than trimming something else
+     silently.
+
+#### Re-ranked
+
+- **Item 235** is folded into item 265: its probe half is superseded,
+  and its changed-URLs-only half ships with item 265.
+- **Item 224** (is the site indexed?) is **answered**: 48 indexed, per
+  the owner's Search Console on 2026-10-09. Its remaining value is the
+  Search Console count recorded in Needs Ryan.
+
+Competitors reviewed this pass: **IndexNow 403 field reports** from
+other static sites (key-binding as the remaining cause), **GoatCounter's
+API** as the measurement source, and **2026 newsletter sponsorship
+pricing benchmarks** for small lists (flat fees of $50–$200 per issue,
+CPM nearly worthless for lifestyle lists). The design/UX angle is
+**the sponsor page's missing audience number**.
 
 
 ## Working agreements for autonomous iteration
