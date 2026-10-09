@@ -257,7 +257,11 @@ that limit.
    not indexed / invisible to search" claims (passes 54–63): those came
    from this loop's web-search tool, which is not Google's index and
    cannot see a new domain. The Bing import failed, so Bing is being
-   verified by DNS CNAME instead.*
+   verified by DNS CNAME instead.* ✅ *Bing verified by CNAME and the
+   sitemap submitted, 2026-10-09. The IndexNow 403s (items 204, 235)
+   should stop now; the build loop should check the next
+   `data/indexnow_log.json` entries. Five waiting pages were sent through
+   Search Console's "Request indexing" the same day.*
 4. ✅ *Done 2026-10-09: the Buttondown handle is now `withinten`, and
    `config/newsletter.yaml` is updated (item 226). Yahoo spam check (item
    239) and the Buttondown settings below are also done: tracking on,
@@ -280,7 +284,7 @@ that limit.
    business account, paste its domain-verify code into
    `config/analytics.yaml`, and add `https://withintenmiles.com/pins.xml`
    under Auto-publish. It then posts a weekend Pin per town by itself.
-7. **Cloudflare DMARC Management (1 min, item 156).** A dashboard
+7. ✅ *Done 2026-10-09.* **Cloudflare DMARC Management (1 min, item 156).** A dashboard
    toggle that gives deliverability reports. Do it before any
    press-driven spike.
 
