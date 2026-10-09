@@ -1,47 +1,4 @@
-<!--
-  ROADMAP.md Phase 11 #105 - the automated Thursday send (items 24/31)
-  only ever mailed Mount Prospect's digest, since Buttondown's free plan
-  is one undifferentiated list with no per-region segmentation. The
-  signup form is on every region page, so a subscriber from any other
-  region got the wrong town's weekend - a real defect the moment the
-  list has anyone on it besides the owner. This is the fix: one issue,
-  one short block per region, so every subscriber finds their own town
-  in the same email.
 
-  Same email-client constraints as email_digest.html.j2 (tables only,
-  system fonts, explicit colors everywhere) and the same preview/send
-  split (item 91). The dark-mode CSS (item 92) is the one piece
-  actually shared, via 
-[data-ogsc] .wt-bg, [data-ogsb] .wt-bg { background-color:#f3f2f2 !important; }
-[data-ogsc] .wt-card, [data-ogsb] .wt-card { background-color:#eae9e9 !important; }
-[data-ogsc] .wt-card-sponsor, [data-ogsb] .wt-card-sponsor { background-color:#fff2ef !important; }
-[data-ogsc] .wt-cta-bg, [data-ogsb] .wt-cta-bg { background-color:#ec3013 !important; }
-[data-ogsc] .wt-ink, [data-ogsb] .wt-ink { color:#201e1d !important; }
-[data-ogsc] .wt-muted, [data-ogsb] .wt-muted { color:#605d5d !important; }
-[data-ogsc] .wt-accent, [data-ogsb] .wt-accent { color:#ae1800 !important; }
-[data-ogsc] .wt-brand, [data-ogsb] .wt-brand { color:#ae1800 !important; }
-[data-ogsc] .wt-border, [data-ogsb] .wt-border { border-color:#d7d3d3 !important; }
-@media (prefers-color-scheme: dark) {
-  .wt-bg { background-color:#f3f2f2 !important; }
-  .wt-card { background-color:#eae9e9 !important; }
-  .wt-card-sponsor { background-color:#fff2ef !important; }
-  .wt-cta-bg { background-color:#ec3013 !important; }
-  .wt-ink { color:#201e1d !important; }
-  .wt-muted { color:#605d5d !important; }
-  .wt-accent { color:#ae1800 !important; }
-  .wt-brand { color:#ae1800 !important; }
-  .wt-border { border-color:#d7d3d3 !important; }
-} below -
-  a code-review pass found the two copies had drifted apart in comments
-  (though not in the rules themselves) and that "Jinja2 has no
-  cross-template partial mechanism" was simply wrong: both templates
-  already render through the same FileSystemLoader Environment in
-  scripts/build_digest.py, so an include resolves fine. Everything else
-  below stays a second self-contained file rather than a shared
-  fragment - the table markup differs enough (one region block that
-  repeats vs. one flat body) that forcing it through shared partials
-  would cost more in indirection than it saves in duplication.
--->
 <!doctype html>
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
 <head>
@@ -50,7 +7,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="color-scheme" content="light">
 <meta name="supported-color-schemes" content="light">
-<title>Autumn Harvest, Tech Fair and 23 more this weekend</title>
+<title>Tech Fair, Tales for Tots and 22 more this weekend</title>
 <style>
 
 [data-ogsc] .wt-bg, [data-ogsb] .wt-bg { background-color:#f3f2f2 !important; }
@@ -85,8 +42,7 @@
 <![endif]-->
 </head>
 <body class="wt-bg" style="margin:0; padding:0; background-color:#f3f2f2;" bgcolor="#f3f2f2">
-<!-- ROADMAP.md item 207: hidden preheader - see email_digest.html.j2's
-     own copy of this comment for the full rationale. -->
+
 <div style="display:none; font-size:1px; line-height:1px; max-height:0px; max-width:0px; opacity:0; overflow:hidden; mso-hide:all;">Across Arlington Heights, Des Plaines, Mount Prospect, Palatine, and Wheeling&#8203;&zwnj;&nbsp;&zwnj;&#8203;</div>
 <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" bgcolor="#f3f2f2" class="wt-bg" style="background-color:#f3f2f2;">
 <tr>
@@ -95,14 +51,14 @@
 
 
 
-<!-- Wordmark -->
+
 <tr>
 <td style="padding:0 8px 16px 8px;">
 <span class="wt-brand" style="font-family:Arial, Helvetica, sans-serif; font-size:13px; font-weight:bold; letter-spacing:1px; color:#ae1800;">WITHIN TEN</span>
 </td>
 </tr>
 
-<!-- Intro -->
+
 <tr>
 <td style="font-family:Arial, Helvetica, sans-serif; font-size:22px; font-weight:bold; line-height:1.2; color:#201e1d; padding-bottom:6px;" class="wt-ink">
 This weekend, across the northwest suburbs
@@ -115,7 +71,7 @@ Oct 9–11
 </tr>
 
 
-<!-- Region block: Arlington Heights -->
+
 <tr>
 <td bgcolor="#eae9e9" class="wt-card wt-border" style="background-color:#eae9e9; border:2px solid #d7d3d3; border-radius:0; padding:20px; margin-bottom:16px;">
 <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
@@ -139,9 +95,17 @@ Oct 9–11
 
 <tr>
 <td class="wt-accent" style="font-family:Arial, Helvetica, sans-serif; font-size:14px; color:#ae1800;">
-Oct 9
+Fri Oct 9
 </td>
 </tr>
+
+
+<tr>
+<td class="wt-muted" style="font-family:Arial, Helvetica, sans-serif; font-size:13px; color:#605d5d;">
+Arlington Heights Memorial Library
+</td>
+</tr>
+
 
 
 </table>
@@ -160,9 +124,17 @@ Oct 9
 
 <tr>
 <td class="wt-accent" style="font-family:Arial, Helvetica, sans-serif; font-size:14px; color:#ae1800;">
-Oct 10
+Sat Oct 10
 </td>
 </tr>
+
+
+<tr>
+<td class="wt-muted" style="font-family:Arial, Helvetica, sans-serif; font-size:13px; color:#605d5d;">
+Arlington Heights Memorial Library
+</td>
+</tr>
+
 
 
 </table>
@@ -181,30 +153,17 @@ Oct 10
 
 <tr>
 <td class="wt-accent" style="font-family:Arial, Helvetica, sans-serif; font-size:14px; color:#ae1800;">
-Oct 11
+Sun Oct 11
 </td>
 </tr>
 
-
-</table>
-</td>
-</tr>
 
 <tr>
-<td class="wt-border" style="padding:8px 0; border-top:1px solid #d7d3d3;">
-<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
-
-<tr>
-<td class="wt-ink" style="font-family:Arial, Helvetica, sans-serif; font-size:16px; color:#201e1d;">
-<a href="https://www.ahpd.org/event/autumn-harvest-2026/" class="wt-ink" style="color:#201e1d; text-decoration:none; font-weight:bold;">Autumn Harvest</a>
+<td class="wt-muted" style="font-family:Arial, Helvetica, sans-serif; font-size:13px; color:#605d5d;">
+Arlington Heights Memorial Library
 </td>
 </tr>
 
-<tr>
-<td class="wt-accent" style="font-family:Arial, Helvetica, sans-serif; font-size:14px; color:#ae1800;">
-Oct 10
-</td>
-</tr>
 
 
 </table>
@@ -228,7 +187,7 @@ Oct 10
 </tr>
 <tr><td style="padding:0 0 16px 0;"></td></tr>
 
-<!-- Region block: Des Plaines -->
+
 <tr>
 <td bgcolor="#eae9e9" class="wt-card wt-border" style="background-color:#eae9e9; border:2px solid #d7d3d3; border-radius:0; padding:20px; margin-bottom:16px;">
 <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
@@ -252,7 +211,21 @@ Oct 10
 
 <tr>
 <td class="wt-accent" style="font-family:Arial, Helvetica, sans-serif; font-size:14px; color:#ae1800;">
-Oct 9
+Fri Oct 9 · 10:00 AM
+</td>
+</tr>
+
+
+<tr>
+<td class="wt-muted" style="font-family:Arial, Helvetica, sans-serif; font-size:13px; color:#605d5d;">
+Des Plaines Public Library
+</td>
+</tr>
+
+
+<tr>
+<td class="wt-muted" style="font-family:Arial, Helvetica, sans-serif; font-size:13px; color:#605d5d; padding-top:2px;">
+To register, please contact Irene Tripkos at 847-789-5623. Verbal confirmation from…
 </td>
 </tr>
 
@@ -273,7 +246,21 @@ Oct 9
 
 <tr>
 <td class="wt-accent" style="font-family:Arial, Helvetica, sans-serif; font-size:14px; color:#ae1800;">
-Oct 9
+Fri Oct 9 · 10:00 AM
+</td>
+</tr>
+
+
+<tr>
+<td class="wt-muted" style="font-family:Arial, Helvetica, sans-serif; font-size:13px; color:#605d5d;">
+Des Plaines Public Library
+</td>
+</tr>
+
+
+<tr>
+<td class="wt-muted" style="font-family:Arial, Helvetica, sans-serif; font-size:13px; color:#605d5d; padding-top:2px;">
+Come join us for fun, good company, and bowling on the Wii U in The Commons on the 3rd…
 </td>
 </tr>
 
@@ -294,7 +281,21 @@ Oct 9
 
 <tr>
 <td class="wt-accent" style="font-family:Arial, Helvetica, sans-serif; font-size:14px; color:#ae1800;">
-Oct 9
+Fri Oct 9 · 10:30 AM
+</td>
+</tr>
+
+
+<tr>
+<td class="wt-muted" style="font-family:Arial, Helvetica, sans-serif; font-size:13px; color:#605d5d;">
+Des Plaines Public Library
+</td>
+</tr>
+
+
+<tr>
+<td class="wt-muted" style="font-family:Arial, Helvetica, sans-serif; font-size:13px; color:#605d5d; padding-top:2px;">
+Need something to do on your day off from school? Stop by the Program Room for a fun…
 </td>
 </tr>
 
@@ -315,7 +316,21 @@ Oct 9
 
 <tr>
 <td class="wt-accent" style="font-family:Arial, Helvetica, sans-serif; font-size:14px; color:#ae1800;">
-Oct 9
+Fri Oct 9 · 6:30 PM
+</td>
+</tr>
+
+
+<tr>
+<td class="wt-muted" style="font-family:Arial, Helvetica, sans-serif; font-size:13px; color:#605d5d;">
+Des Plaines Public Library
+</td>
+</tr>
+
+
+<tr>
+<td class="wt-muted" style="font-family:Arial, Helvetica, sans-serif; font-size:13px; color:#605d5d; padding-top:2px;">
+A free screening of the independent film If I Had Legs I&#39;d Kick You.
 </td>
 </tr>
 
@@ -341,7 +356,7 @@ Oct 9
 </tr>
 <tr><td style="padding:0 0 16px 0;"></td></tr>
 
-<!-- Region block: Mount Prospect -->
+
 <tr>
 <td bgcolor="#eae9e9" class="wt-card wt-border" style="background-color:#eae9e9; border:2px solid #d7d3d3; border-radius:0; padding:20px; margin-bottom:16px;">
 <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
@@ -359,41 +374,27 @@ Oct 9
 
 <tr>
 <td class="wt-ink" style="font-family:Arial, Helvetica, sans-serif; font-size:16px; color:#201e1d;">
-<a href="https://mplions.org/event/farmers-market/" class="wt-ink" style="color:#201e1d; text-decoration:none; font-weight:bold;">Mount Prospect Farmers Market</a>
-</td>
-</tr>
-
-<tr>
-<td class="wt-accent" style="font-family:Arial, Helvetica, sans-serif; font-size:14px; color:#ae1800;">
-Oct 11
-</td>
-</tr>
-
-
-<!-- ROADMAP.md item 141: same muted treatment as email_digest.html.j2. -->
-<tr>
-<td class="wt-muted" style="font-family:Arial, Helvetica, sans-serif; font-size:12px; font-style:italic; color:#605d5d;">
-Every Sunday through Oct 25
-</td>
-</tr>
-
-</table>
-</td>
-</tr>
-
-<tr>
-<td class="wt-border" style="padding:8px 0; border-top:1px solid #d7d3d3;">
-<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
-
-<tr>
-<td class="wt-ink" style="font-family:Arial, Helvetica, sans-serif; font-size:16px; color:#201e1d;">
 <a href="https://mppl.libnet.info/event/16553541" class="wt-ink" style="color:#201e1d; text-decoration:none; font-weight:bold;">Storytime Playdate: Star Party</a>
 </td>
 </tr>
 
 <tr>
 <td class="wt-accent" style="font-family:Arial, Helvetica, sans-serif; font-size:14px; color:#ae1800;">
-Oct 9
+Fri Oct 9 · 10:00 AM
+</td>
+</tr>
+
+
+<tr>
+<td class="wt-muted" style="font-family:Arial, Helvetica, sans-serif; font-size:13px; color:#605d5d;">
+Mount Prospect Public Library
+</td>
+</tr>
+
+
+<tr>
+<td class="wt-muted" style="font-family:Arial, Helvetica, sans-serif; font-size:13px; color:#605d5d; padding-top:2px;">
+Enjoy the magic of storytime plus the joy of hands-on sensory fun! You and your child…
 </td>
 </tr>
 
@@ -414,7 +415,21 @@ Oct 9
 
 <tr>
 <td class="wt-accent" style="font-family:Arial, Helvetica, sans-serif; font-size:14px; color:#ae1800;">
-Oct 9
+Fri Oct 9 · 5:00 PM
+</td>
+</tr>
+
+
+<tr>
+<td class="wt-muted" style="font-family:Arial, Helvetica, sans-serif; font-size:13px; color:#605d5d;">
+Mount Prospect Public Library
+</td>
+</tr>
+
+
+<tr>
+<td class="wt-muted" style="font-family:Arial, Helvetica, sans-serif; font-size:13px; color:#605d5d; padding-top:2px;">
+Enjoy a movie night at the library and have fun building with LEGO bricks and other…
 </td>
 </tr>
 
@@ -429,13 +444,62 @@ Oct 9
 
 <tr>
 <td class="wt-ink" style="font-family:Arial, Helvetica, sans-serif; font-size:16px; color:#201e1d;">
-<a href="https://mppl.libnet.info/event/16452806" class="wt-ink" style="color:#201e1d; text-decoration:none; font-weight:bold;">Digitizing Photos, Slides, and Negatives</a>
+<a href="https://www.mppd.org/event/fishing-derby-4/" class="wt-ink" style="color:#201e1d; text-decoration:none; font-weight:bold;">Fishing Derby</a>
 </td>
 </tr>
 
 <tr>
 <td class="wt-accent" style="font-family:Arial, Helvetica, sans-serif; font-size:14px; color:#ae1800;">
-Oct 10
+Sat Oct 10 · 8:00 AM
+</td>
+</tr>
+
+
+<tr>
+<td class="wt-muted" style="font-family:Arial, Helvetica, sans-serif; font-size:13px; color:#605d5d;">
+Mount Prospect Park District
+</td>
+</tr>
+
+
+<tr>
+<td class="wt-muted" style="font-family:Arial, Helvetica, sans-serif; font-size:13px; color:#605d5d; padding-top:2px;">
+Rescheduled! Fishing Derby (Ages 3-16) Grab your gear and make your way to Clearwater…
+</td>
+</tr>
+
+
+</table>
+</td>
+</tr>
+
+<tr>
+<td class="wt-border" style="padding:8px 0; border-top:1px solid #d7d3d3;">
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+
+<tr>
+<td class="wt-ink" style="font-family:Arial, Helvetica, sans-serif; font-size:16px; color:#201e1d;">
+<a href="https://www.mppd.org/event/31551/" class="wt-ink" style="color:#201e1d; text-decoration:none; font-weight:bold;">Spooky Scary Studio</a>
+</td>
+</tr>
+
+<tr>
+<td class="wt-accent" style="font-family:Arial, Helvetica, sans-serif; font-size:14px; color:#ae1800;">
+Sat Oct 10 · 9:30 AM
+</td>
+</tr>
+
+
+<tr>
+<td class="wt-muted" style="font-family:Arial, Helvetica, sans-serif; font-size:13px; color:#605d5d;">
+Mount Prospect Park District
+</td>
+</tr>
+
+
+<tr>
+<td class="wt-muted" style="font-family:Arial, Helvetica, sans-serif; font-size:13px; color:#605d5d; padding-top:2px;">
+Spooky Scary Studio (Ages 5-10) The Studio has been overrun by spooky, yet friendly…
 </td>
 </tr>
 
@@ -461,7 +525,7 @@ Oct 10
 </tr>
 <tr><td style="padding:0 0 16px 0;"></td></tr>
 
-<!-- Region block: Palatine -->
+
 <tr>
 <td bgcolor="#eae9e9" class="wt-card wt-border" style="background-color:#eae9e9; border:2px solid #d7d3d3; border-radius:0; padding:20px; margin-bottom:16px;">
 <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
@@ -485,7 +549,21 @@ Oct 10
 
 <tr>
 <td class="wt-accent" style="font-family:Arial, Helvetica, sans-serif; font-size:14px; color:#ae1800;">
-Oct 9
+Fri Oct 9 · 9:30 AM
+</td>
+</tr>
+
+
+<tr>
+<td class="wt-muted" style="font-family:Arial, Helvetica, sans-serif; font-size:13px; color:#605d5d;">
+Village of Palatine
+</td>
+</tr>
+
+
+<tr>
+<td class="wt-muted" style="font-family:Arial, Helvetica, sans-serif; font-size:13px; color:#605d5d; padding-top:2px;">
+FREE interactive story time for tots and grown-ups https://www.
 </td>
 </tr>
 
@@ -506,7 +584,21 @@ Oct 9
 
 <tr>
 <td class="wt-accent" style="font-family:Arial, Helvetica, sans-serif; font-size:14px; color:#ae1800;">
-Oct 10
+Sat Oct 10 · 3:00 PM
+</td>
+</tr>
+
+
+<tr>
+<td class="wt-muted" style="font-family:Arial, Helvetica, sans-serif; font-size:13px; color:#605d5d;">
+Village of Palatine
+</td>
+</tr>
+
+
+<tr>
+<td class="wt-muted" style="font-family:Arial, Helvetica, sans-serif; font-size:13px; color:#605d5d; padding-top:2px;">
+The Village is hosting a Grand Re-Opening event for residents a
 </td>
 </tr>
 
@@ -532,7 +624,7 @@ Oct 10
 </tr>
 <tr><td style="padding:0 0 16px 0;"></td></tr>
 
-<!-- Region block: Wheeling -->
+
 <tr>
 <td bgcolor="#eae9e9" class="wt-card wt-border" style="background-color:#eae9e9; border:2px solid #d7d3d3; border-radius:0; padding:20px; margin-bottom:16px;">
 <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
@@ -556,7 +648,21 @@ Oct 10
 
 <tr>
 <td class="wt-accent" style="font-family:Arial, Helvetica, sans-serif; font-size:14px; color:#ae1800;">
-Oct 9
+Fri Oct 9 · 9:30 AM
+</td>
+</tr>
+
+
+<tr>
+<td class="wt-muted" style="font-family:Arial, Helvetica, sans-serif; font-size:13px; color:#605d5d;">
+Indian Trails Public Library
+</td>
+</tr>
+
+
+<tr>
+<td class="wt-muted" style="font-family:Arial, Helvetica, sans-serif; font-size:13px; color:#605d5d; padding-top:2px;">
+Stories, songs and fingerplays. TR
 </td>
 </tr>
 
@@ -577,7 +683,21 @@ Oct 9
 
 <tr>
 <td class="wt-accent" style="font-family:Arial, Helvetica, sans-serif; font-size:14px; color:#ae1800;">
-Oct 9
+Fri Oct 9 · 10:30 AM
+</td>
+</tr>
+
+
+<tr>
+<td class="wt-muted" style="font-family:Arial, Helvetica, sans-serif; font-size:13px; color:#605d5d;">
+Indian Trails Public Library
+</td>
+</tr>
+
+
+<tr>
+<td class="wt-muted" style="font-family:Arial, Helvetica, sans-serif; font-size:13px; color:#605d5d; padding-top:2px;">
+Stories, songs, fingerplays and movement activities. TR
 </td>
 </tr>
 
@@ -598,7 +718,21 @@ Oct 9
 
 <tr>
 <td class="wt-accent" style="font-family:Arial, Helvetica, sans-serif; font-size:14px; color:#ae1800;">
-Oct 9
+Fri Oct 9 · 5:30 PM
+</td>
+</tr>
+
+
+<tr>
+<td class="wt-muted" style="font-family:Arial, Helvetica, sans-serif; font-size:13px; color:#605d5d;">
+Indian Trails Public Library
+</td>
+</tr>
+
+
+<tr>
+<td class="wt-muted" style="font-family:Arial, Helvetica, sans-serif; font-size:13px; color:#605d5d; padding-top:2px;">
+Get started with TinkerCAD, a free 3D modeling program. Learn the basics of building…
 </td>
 </tr>
 
@@ -619,7 +753,21 @@ Oct 9
 
 <tr>
 <td class="wt-accent" style="font-family:Arial, Helvetica, sans-serif; font-size:14px; color:#ae1800;">
-Oct 10
+Sat Oct 10 · 10:00 AM
+</td>
+</tr>
+
+
+<tr>
+<td class="wt-muted" style="font-family:Arial, Helvetica, sans-serif; font-size:13px; color:#605d5d;">
+Indian Trails Public Library
+</td>
+</tr>
+
+
+<tr>
+<td class="wt-muted" style="font-family:Arial, Helvetica, sans-serif; font-size:13px; color:#605d5d; padding-top:2px;">
+Hosted by the Foundation for the Indian Trails Library. All proceeds benefit the…
 </td>
 </tr>
 
@@ -649,15 +797,7 @@ Oct 10
 
 
 
-<!-- ROADMAP.md item 169: house ads are inventory notices, not content -
-     they appear at most once per artifact, regardless of how many
-     regions have nothing sold. Item 88's rationale for showing an
-     unsold slot at all still applies (this shouldn't be the one
-     artifact that never mentions a slot is for sale) - what changed is
-     that a real paying sponsor still gets a per-region block above
-     (that placement is what the tier sells), while the free "nothing's
-     sold here yet" notice runs once for the whole issue instead of
-     once per region. -->
+
 <tr>
 <td style="padding-bottom:16px;">
 <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
@@ -673,17 +813,9 @@ Oct 10
 </tr>
 
 
-<!-- Footer -->
 
-<!-- ROADMAP.md item 183: a subscriber forwarding this email is the one
-     growth channel that costs nothing and works at any list size, but
-     the email had zero subscribe links among its 16 real hrefs - a
-     forward dead-ends the moment it reaches someone who isn't already
-     on the list. One quiet line, gated the same way the rest of the
-     newsletter feature is (item 34's load_newsletter_config), pointing
-     at Buttondown's own hosted page rather than an embedded <form> -
-     forms are unreliably stripped across email clients, a plain link
-     is not. -->
+
+
 <tr>
 <td align="center" class="wt-muted" style="padding:8px 8px 0 8px; font-family:Arial, Helvetica, sans-serif; font-size:12px; color:#605d5d;">
 Forwarded this? <a href="https://buttondown.com/andersonryant?utm_source=email&utm_campaign=forward" class="wt-brand" style="color:#ae1800; text-decoration:underline; font-weight:bold;">Get your own weekend guide every Thursday &rarr;</a>
@@ -695,10 +827,7 @@ Forwarded this? <a href="https://buttondown.com/andersonryant?utm_source=email&u
 See Within Ten first when you search: <a href="https://google.com/preferences/source?q=withintenmiles.com" class="wt-brand" style="color:#ae1800; text-decoration:underline; font-weight:bold;">add us as a preferred source on Google &rarr;</a>
 </td>
 </tr>
-<!-- ROADMAP.md item 157: a reply is a stronger deliverability signal
-     than the click-through CTA above, and replies now reach a real
-     inbox (item 93) - a quiet secondary line, not a competing button,
-     per the item's own "one dominant CTA per screen" reasoning. -->
+
 <tr>
 <td align="center" class="wt-muted" style="padding:8px 8px 0 8px; font-family:Arial, Helvetica, sans-serif; font-size:12px; color:#605d5d;">
 Know about something we missed? Hit reply — we read every one.

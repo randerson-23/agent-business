@@ -53,7 +53,7 @@
     5,
     5,
     5,
-    5,
+    6,
     6,
     6,
     6,
@@ -73,7 +73,6 @@
   ],
   "des-plaines-60016:Des Plaines Public Library \u2014 Events": [
     466,
-    466,
     462,
     462,
     462,
@@ -81,7 +80,8 @@
     459,
     459,
     459,
-    461
+    461,
+    450
   ],
   "mount-prospect-60056:Downtown Mount Prospect \u2014 Events": [
     0,
@@ -116,7 +116,6 @@
   ],
   "mount-prospect-60056:Mount Prospect Public Library \u2014 Events": [
     242,
-    242,
     235,
     235,
     235,
@@ -124,7 +123,8 @@
     225,
     225,
     225,
-    225
+    225,
+    220
   ],
   "mount-prospect-60056:Mount Prospect School District 57 \u2014 Calendar": [
     66,
@@ -166,12 +166,11 @@
     24,
     24,
     24,
-    24,
+    25,
     25
   ],
   "palatine-60067:Community Consolidated School District 15 \u2014 Calendar": [
     47,
-    47,
     46,
     46,
     46,
@@ -179,7 +178,8 @@
     46,
     46,
     46,
-    46
+    46,
+    45
   ],
   "palatine-60067:Palatine Park District \u2014 Events": [
     13,
@@ -218,7 +218,7 @@
     15
   ],
   "palatine-60067:Village of Palatine \u2014 Calendar": [
-    20,
+    21,
     21,
     21,
     21,
@@ -238,16 +238,16 @@
     4,
     4,
     4,
-    4,
+    5,
     5
   ],
   "wheeling-60090:Indian Trails Public Library \u2014 Events": [
     361,
-    361,
     359,
     359,
     359,
     359,
+    353,
     353,
     353,
     353,
@@ -258,7 +258,7 @@
     126,
     126,
     126,
-    126,
+    149,
     149,
     149,
     149,

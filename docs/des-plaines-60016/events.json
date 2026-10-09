@@ -2,242 +2,12 @@
   "@context": "https://schema.org",
   "@type": "ItemList",
   "name": "Upcoming events in Des Plaines — Within Ten",
-  "dateModified": "2026-10-08T22:01:45+00:00",
+  "dateModified": "2026-10-09T06:04:08+00:00",
   "numberOfItems": 77,
   "itemListElement": [
     {
       "@type": "ListItem",
       "position": 1,
-      "item": {
-        "@type": "Event",
-        "name": "Reading/Literacy Class",
-        "startDate": "2026-10-08T09:15:00-05:00",
-        "url": "https://withintenmiles.com/des-plaines-60016/#ev-reading-literacy-class-2026-10-08",
-        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "location": {
-          "@type": "Place",
-          "name": "Des Plaines Public Library",
-          "address": {
-            "@type": "PostalAddress",
-            "addressCountry": "US",
-            "addressLocality": "Des Plaines",
-            "addressRegion": "IL"
-          }
-        },
-        "sameAs": "https://desplaines.libnet.info/event/15801723",
-        "description": "Thursday, October 08 2026 9:15am - 12:15pm \n For more information, please contact Oakton College at 847-635-1426"
-      }
-    },
-    {
-      "@type": "ListItem",
-      "position": 2,
-      "item": {
-        "@type": "Event",
-        "name": "ESL (English as a Second Language) Class - Oakton College",
-        "startDate": "2026-10-08T09:15:00-05:00",
-        "url": "https://withintenmiles.com/des-plaines-60016/#ev-esl-english-as-a-second-language-class-oakton-college-2026-10-08",
-        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "location": {
-          "@type": "Place",
-          "name": "Des Plaines Public Library",
-          "address": {
-            "@type": "PostalAddress",
-            "addressCountry": "US",
-            "addressLocality": "Des Plaines",
-            "addressRegion": "IL"
-          }
-        },
-        "sameAs": "https://desplaines.libnet.info/event/15803232",
-        "description": "Thursday, October 08 2026 9:15am - 12:15pm \n ESL (English as a Second Language) Class - Oakton College\n\n Teaches listening, speaking, reading, writing, and…"
-      }
-    },
-    {
-      "@type": "ListItem",
-      "position": 3,
-      "item": {
-        "@type": "Event",
-        "name": "Medicare Supplement Insurance Buyers' Guide",
-        "startDate": "2026-10-08T10:00:00-05:00",
-        "url": "https://withintenmiles.com/des-plaines-60016/#ev-medicare-supplement-insurance-buyers-guide-2026-10-08",
-        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "location": {
-          "@type": "Place",
-          "name": "Des Plaines Public Library",
-          "address": {
-            "@type": "PostalAddress",
-            "addressCountry": "US",
-            "addressLocality": "Des Plaines",
-            "addressRegion": "IL"
-          }
-        },
-        "sameAs": "https://desplaines.libnet.info/event/16460665",
-        "description": "Thursday, October 08 2026 10:00am - 11:00am \n TBA"
-      }
-    },
-    {
-      "@type": "ListItem",
-      "position": 4,
-      "item": {
-        "@type": "Event",
-        "name": "Toddler Time",
-        "startDate": "2026-10-08T10:00:00-05:00",
-        "url": "https://withintenmiles.com/des-plaines-60016/#ev-toddler-time-2026-10-08",
-        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "location": {
-          "@type": "Place",
-          "name": "Des Plaines Public Library",
-          "address": {
-            "@type": "PostalAddress",
-            "addressCountry": "US",
-            "addressLocality": "Des Plaines",
-            "addressRegion": "IL"
-          }
-        },
-        "sameAs": "https://desplaines.libnet.info/event/17001894",
-        "description": "Thursday, October 08 2026 10:00am - 10:30am \n Ages 18-36 months. Drop-in at the Poet Tree Corner! Enjoy stories, songs, rhymes, movement, and more at Toddler…"
-      }
-    },
-    {
-      "@type": "ListItem",
-      "position": 5,
-      "item": {
-        "@type": "Event",
-        "name": "Foodies Unite!",
-        "startDate": "2026-10-08T14:00:00-05:00",
-        "url": "https://withintenmiles.com/des-plaines-60016/#ev-foodies-unite-2026-10-08",
-        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "location": {
-          "@type": "Place",
-          "name": "Des Plaines Public Library",
-          "address": {
-            "@type": "PostalAddress",
-            "addressCountry": "US",
-            "addressLocality": "Des Plaines",
-            "addressRegion": "IL"
-          }
-        },
-        "sameAs": "https://desplaines.libnet.info/event/17139086",
-        "description": "Thursday, October 08 2026 2:00pm - 3:00pm \n Pick up the special ingredient and join the program to share your cooking experience."
-      }
-    },
-    {
-      "@type": "ListItem",
-      "position": 6,
-      "item": {
-        "@type": "Event",
-        "name": "Mexican Candy Taste Test for Teens",
-        "startDate": "2026-10-08T16:00:00-05:00",
-        "url": "https://withintenmiles.com/des-plaines-60016/#ev-mexican-candy-taste-test-for-teens-2026-10-08",
-        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "location": {
-          "@type": "Place",
-          "name": "Des Plaines Public Library",
-          "address": {
-            "@type": "PostalAddress",
-            "addressCountry": "US",
-            "addressLocality": "Des Plaines",
-            "addressRegion": "IL"
-          }
-        },
-        "sameAs": "https://desplaines.libnet.info/event/16341260",
-        "description": "Thursday, October 08 2026 4:00pm - 5:00pm \n Join us to taste different types of Mexican candy!"
-      }
-    },
-    {
-      "@type": "ListItem",
-      "position": 7,
-      "item": {
-        "@type": "Event",
-        "name": "Book a Teen Librarian",
-        "startDate": "2026-10-08T17:00:00-05:00",
-        "url": "https://withintenmiles.com/des-plaines-60016/#ev-book-a-teen-librarian-2026-10-08",
-        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "location": {
-          "@type": "Place",
-          "name": "Des Plaines Public Library",
-          "address": {
-            "@type": "PostalAddress",
-            "addressCountry": "US",
-            "addressLocality": "Des Plaines",
-            "addressRegion": "IL"
-          }
-        },
-        "sameAs": "https://desplaines.libnet.info/event/16339445",
-        "description": "Thursday, October 08 2026 5:00pm - 6:00pm \n Come in and get to know your teen librarians!"
-      }
-    },
-    {
-      "@type": "ListItem",
-      "position": 8,
-      "item": {
-        "@type": "Event",
-        "name": "iPhone iOS 27",
-        "startDate": "2026-10-08T18:30:00-05:00",
-        "url": "https://withintenmiles.com/des-plaines-60016/#ev-iphone-ios-27-2026-10-08",
-        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "location": {
-          "@type": "Place",
-          "name": "Des Plaines Public Library",
-          "address": {
-            "@type": "PostalAddress",
-            "addressCountry": "US",
-            "addressLocality": "Des Plaines",
-            "addressRegion": "IL"
-          }
-        },
-        "sameAs": "https://desplaines.libnet.info/event/17391178",
-        "description": "Thursday, October 08 2026 6:30pm - 7:30pm \n Discover Apples new operating system iOS 27. Get started with your iPhone by exploring helpful tips on iOS 27.…"
-      }
-    },
-    {
-      "@type": "ListItem",
-      "position": 9,
-      "item": {
-        "@type": "Event",
-        "name": "River's Edge Condo Assoc.",
-        "startDate": "2026-10-08T19:00:00-05:00",
-        "url": "https://withintenmiles.com/des-plaines-60016/#ev-river-s-edge-condo-assoc-2026-10-08",
-        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "location": {
-          "@type": "Place",
-          "name": "Des Plaines Public Library",
-          "address": {
-            "@type": "PostalAddress",
-            "addressCountry": "US",
-            "addressLocality": "Des Plaines",
-            "addressRegion": "IL"
-          }
-        },
-        "sameAs": "https://desplaines.libnet.info/event/17184069",
-        "description": "Thursday, October 08 2026 7:00pm - 8:45pm \n Lisa- Espire Property Management 847-634-9659"
-      }
-    },
-    {
-      "@type": "ListItem",
-      "position": 10,
-      "item": {
-        "@type": "Event",
-        "name": "Mont Clare Condo Assoc.",
-        "startDate": "2026-10-08T19:00:00-05:00",
-        "url": "https://withintenmiles.com/des-plaines-60016/#ev-mont-clare-condo-assoc-2026-10-08",
-        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "location": {
-          "@type": "Place",
-          "name": "Des Plaines Public Library",
-          "address": {
-            "@type": "PostalAddress",
-            "addressCountry": "US",
-            "addressLocality": "Des Plaines",
-            "addressRegion": "IL"
-          }
-        },
-        "sameAs": "https://desplaines.libnet.info/event/17426723",
-        "description": "Thursday, October 08 2026 7:00pm - 8:45pm \n Jennifer K / American Property Mgmt. 847-985-6464"
-      }
-    },
-    {
-      "@type": "ListItem",
-      "position": 11,
       "item": {
         "@type": "Event",
         "name": "Baby Book Time",
@@ -260,7 +30,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 12,
+      "position": 2,
       "item": {
         "@type": "Event",
         "name": "Ain't Wii Got Fun!",
@@ -283,7 +53,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 13,
+      "position": 3,
       "item": {
         "@type": "Event",
         "name": "School's Out Drop-in Craft",
@@ -306,7 +76,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 14,
+      "position": 4,
       "item": {
         "@type": "Event",
         "name": "Friday Night Films",
@@ -330,7 +100,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 15,
+      "position": 5,
       "item": {
         "@type": "Event",
         "name": "The Librarians",
@@ -353,7 +123,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 16,
+      "position": 6,
       "item": {
         "@type": "Event",
         "name": "Small Claims Court and Arbitration Proceedings",
@@ -376,7 +146,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 17,
+      "position": 7,
       "item": {
         "@type": "Event",
         "name": "Book a Teen Librarian",
@@ -399,7 +169,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 18,
+      "position": 8,
       "item": {
         "@type": "Event",
         "name": "Franken-Bully! A Bright Star Theatre Production",
@@ -422,7 +192,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 19,
+      "position": 9,
       "item": {
         "@type": "Event",
         "name": "River Pointe Condo Assoc.",
@@ -445,7 +215,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 20,
+      "position": 10,
       "item": {
         "@type": "Event",
         "name": "Reading/Literacy Class",
@@ -468,7 +238,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 21,
+      "position": 11,
       "item": {
         "@type": "Event",
         "name": "ESL (English as a Second Language) Class - Oakton College",
@@ -491,7 +261,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 22,
+      "position": 12,
       "item": {
         "@type": "Event",
         "name": "Meet with Your Government Representatives",
@@ -514,7 +284,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 23,
+      "position": 13,
       "item": {
         "@type": "Event",
         "name": "Flu Clinic Sponsored by Senator Laura Murphy",
@@ -537,7 +307,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 24,
+      "position": 14,
       "item": {
         "@type": "Event",
         "name": "Makerspace Orientations: On-Zoom 2026-2027",
@@ -560,7 +330,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 25,
+      "position": 15,
       "item": {
         "@type": "Event",
         "name": "Toddler Time",
@@ -583,7 +353,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 26,
+      "position": 16,
       "item": {
         "@type": "Event",
         "name": "Tuesday Morning Book Discussion: Yesteryear by Caro Burke",
@@ -606,7 +376,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 27,
+      "position": 17,
       "item": {
         "@type": "Event",
         "name": "Loteria",
@@ -629,7 +399,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 28,
+      "position": 18,
       "item": {
         "@type": "Event",
         "name": "Tween Dungeons and Dragons",
@@ -652,7 +422,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 29,
+      "position": 19,
       "item": {
         "@type": "Event",
         "name": "Book a Teen Librarian",
@@ -675,7 +445,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 30,
+      "position": 20,
       "item": {
         "@type": "Event",
         "name": "Adult Board Game Night",
@@ -698,7 +468,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 31,
+      "position": 21,
       "item": {
         "@type": "Event",
         "name": "Baby Book Time",
@@ -721,7 +491,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 32,
+      "position": 22,
       "item": {
         "@type": "Event",
         "name": "Meal Planning on a Budget",
@@ -744,7 +514,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 33,
+      "position": 23,
       "item": {
         "@type": "Event",
         "name": "Preschool Storytime",
@@ -767,7 +537,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 34,
+      "position": 24,
       "item": {
         "@type": "Event",
         "name": "The Queer Canvas: LGBTQIA+ Art Club",
@@ -790,7 +560,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 35,
+      "position": 25,
       "item": {
         "@type": "Event",
         "name": "Family Storytime",
@@ -813,7 +583,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 36,
+      "position": 26,
       "item": {
         "@type": "Event",
         "name": "Reading/Literacy Class",
@@ -836,7 +606,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 37,
+      "position": 27,
       "item": {
         "@type": "Event",
         "name": "ESL (English as a Second Language) Class - Oakton College",
@@ -859,7 +629,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 38,
+      "position": 28,
       "item": {
         "@type": "Event",
         "name": "Toddler Time",
@@ -882,7 +652,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 39,
+      "position": 29,
       "item": {
         "@type": "Event",
         "name": "Happy Notes",
@@ -905,7 +675,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 40,
+      "position": 30,
       "item": {
         "@type": "Event",
         "name": "Book a Teen Librarian",
@@ -928,7 +698,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 41,
+      "position": 31,
       "item": {
         "@type": "Event",
         "name": "MS Excel: Getting Started",
@@ -951,7 +721,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 42,
+      "position": 32,
       "item": {
         "@type": "Event",
         "name": "Library Board of Trustees Open Meeting",
@@ -974,7 +744,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 43,
+      "position": 33,
       "item": {
         "@type": "Event",
         "name": "Baby Book Time",
@@ -997,7 +767,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 44,
+      "position": 34,
       "item": {
         "@type": "Event",
         "name": "The Next Chapter",
@@ -1020,7 +790,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 45,
+      "position": 35,
       "item": {
         "@type": "Event",
         "name": "Indivisible Des Plaines",
@@ -1043,7 +813,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 46,
+      "position": 36,
       "item": {
         "@type": "Event",
         "name": "Service Hour Drop In",
@@ -1066,7 +836,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 47,
+      "position": 37,
       "item": {
         "@type": "Event",
         "name": "Des Plaines Lions Club Volunteer Hour",
@@ -1089,7 +859,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 48,
+      "position": 38,
       "item": {
         "@type": "Event",
         "name": "Build a Pinecone Bird Feeder",
@@ -1112,7 +882,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 49,
+      "position": 39,
       "item": {
         "@type": "Event",
         "name": "Wicked Good Writing Contest",
@@ -1135,7 +905,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 50,
+      "position": 40,
       "item": {
         "@type": "Event",
         "name": "MS Excel: Principantes (Spanish)",
@@ -1158,7 +928,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 51,
+      "position": 41,
       "item": {
         "@type": "Event",
         "name": "Wicked Good Writing Contest",
@@ -1181,7 +951,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 52,
+      "position": 42,
       "item": {
         "@type": "Event",
         "name": "Early Voting",
@@ -1204,7 +974,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 53,
+      "position": 43,
       "item": {
         "@type": "Event",
         "name": "Baby Book Time",
@@ -1227,7 +997,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 54,
+      "position": 44,
       "item": {
         "@type": "Event",
         "name": "Career & Job Counseling @ the library",
@@ -1250,7 +1020,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 55,
+      "position": 45,
       "item": {
         "@type": "Event",
         "name": "Book a Teen Librarian",
@@ -1273,7 +1043,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 56,
+      "position": 46,
       "item": {
         "@type": "Event",
         "name": "Shakespeare Project of Chicago",
@@ -1296,7 +1066,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 57,
+      "position": 47,
       "item": {
         "@type": "Event",
         "name": "LEGO League",
@@ -1319,7 +1089,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 58,
+      "position": 48,
       "item": {
         "@type": "Event",
         "name": "Wicked Good Writing Contest",
@@ -1342,7 +1112,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 59,
+      "position": 49,
       "item": {
         "@type": "Event",
         "name": "Early Voting",
@@ -1365,7 +1135,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 60,
+      "position": 50,
       "item": {
         "@type": "Event",
         "name": "ESL (English as a Second Language) Class - Oakton College",
@@ -1388,7 +1158,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 61,
+      "position": 51,
       "item": {
         "@type": "Event",
         "name": "Reading/Literacy Class",
@@ -1411,7 +1181,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 62,
+      "position": 52,
       "item": {
         "@type": "Event",
         "name": "Toddler Time",
@@ -1434,7 +1204,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 63,
+      "position": 53,
       "item": {
         "@type": "Event",
         "name": "City of Des Plaines Blood Drive",
@@ -1457,7 +1227,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 64,
+      "position": 54,
       "item": {
         "@type": "Event",
         "name": "Maker's Place",
@@ -1480,7 +1250,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 65,
+      "position": 55,
       "item": {
         "@type": "Event",
         "name": "Book a Teen Librarian",
@@ -1503,7 +1273,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 66,
+      "position": 56,
       "item": {
         "@type": "Event",
         "name": "Stitches on Miner",
@@ -1526,7 +1296,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 67,
+      "position": 57,
       "item": {
         "@type": "Event",
         "name": "Tech in the Forum",
@@ -1549,7 +1319,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 68,
+      "position": 58,
       "item": {
         "@type": "Event",
         "name": "Preserving History with Geoffrey Baer",
@@ -1572,7 +1342,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 69,
+      "position": 59,
       "item": {
         "@type": "Event",
         "name": "FilmTalkTuesdays: Rosemary's Baby (1968)",
@@ -1595,7 +1365,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 70,
+      "position": 60,
       "item": {
         "@type": "Event",
         "name": "Wicked Good Writing Contest",
@@ -1618,7 +1388,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 71,
+      "position": 61,
       "item": {
         "@type": "Event",
         "name": "Early Voting",
@@ -1641,7 +1411,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 72,
+      "position": 62,
       "item": {
         "@type": "Event",
         "name": "Baby Book Time",
@@ -1664,7 +1434,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 73,
+      "position": 63,
       "item": {
         "@type": "Event",
         "name": "Chicago: Shaping the Airline Industry",
@@ -1687,7 +1457,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 74,
+      "position": 64,
       "item": {
         "@type": "Event",
         "name": "Preschool Storytime",
@@ -1710,7 +1480,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 75,
+      "position": 65,
       "item": {
         "@type": "Event",
         "name": "Teen Crafternoons",
@@ -1733,7 +1503,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 76,
+      "position": 66,
       "item": {
         "@type": "Event",
         "name": "Makerspace Orientations: In-Person",
@@ -1756,7 +1526,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 77,
+      "position": 67,
       "item": {
         "@type": "Event",
         "name": "Family Storytime",
@@ -1775,6 +1545,236 @@
         },
         "sameAs": "https://desplaines.libnet.info/event/17004255",
         "description": "Wednesday, October 21 2026 7:00pm - 7:30pm \n Best for families with children ages 2-7, but all are welcome. See full description for details. Registration…"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 68,
+      "item": {
+        "@type": "Event",
+        "name": "Wicked Good Writing Contest",
+        "startDate": "2026-10-22",
+        "url": "https://withintenmiles.com/des-plaines-60016/#ev-wicked-good-writing-contest-2026-10-22",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Des Plaines Public Library",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Des Plaines",
+            "addressRegion": "IL"
+          }
+        },
+        "sameAs": "https://desplaines.libnet.info/event/17138190",
+        "description": "Thursday, October 22 2026 12:00am - 11:59pm \n Enter our 4th annual Wicked Good Writing Contest!\nFor grades K-8."
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 69,
+      "item": {
+        "@type": "Event",
+        "name": "Early Voting",
+        "startDate": "2026-10-22T09:00:00-05:00",
+        "url": "https://withintenmiles.com/des-plaines-60016/#ev-early-voting-2026-10-22",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Des Plaines Public Library",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Des Plaines",
+            "addressRegion": "IL"
+          }
+        },
+        "sameAs": "https://desplaines.libnet.info/event/14863284",
+        "description": "Thursday, October 22 2026 9:00am - 5:00pm \n Gubernatorial Election"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 70,
+      "item": {
+        "@type": "Event",
+        "name": "Reading/Literacy Class",
+        "startDate": "2026-10-22T09:15:00-05:00",
+        "url": "https://withintenmiles.com/des-plaines-60016/#ev-reading-literacy-class-2026-10-22",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Des Plaines Public Library",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Des Plaines",
+            "addressRegion": "IL"
+          }
+        },
+        "sameAs": "https://desplaines.libnet.info/event/15801726",
+        "description": "Thursday, October 22 2026 9:15am - 12:15pm \n For more information, please contact Oakton College at 847-635-1426"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 71,
+      "item": {
+        "@type": "Event",
+        "name": "ESL (English as a Second Language) Class - Oakton College",
+        "startDate": "2026-10-22T09:15:00-05:00",
+        "url": "https://withintenmiles.com/des-plaines-60016/#ev-esl-english-as-a-second-language-class-oakton-college-2026-10-22",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Des Plaines Public Library",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Des Plaines",
+            "addressRegion": "IL"
+          }
+        },
+        "sameAs": "https://desplaines.libnet.info/event/15803236",
+        "description": "Thursday, October 22 2026 9:15am - 12:15pm \n ESL (English as a Second Language) Class - Oakton College\n\n Teaches listening, speaking, reading, writing, and…"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 72,
+      "item": {
+        "@type": "Event",
+        "name": "Toddler Time",
+        "startDate": "2026-10-22T10:00:00-05:00",
+        "url": "https://withintenmiles.com/des-plaines-60016/#ev-toddler-time-2026-10-22",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Des Plaines Public Library",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Des Plaines",
+            "addressRegion": "IL"
+          }
+        },
+        "sameAs": "https://desplaines.libnet.info/event/17001898",
+        "description": "Thursday, October 22 2026 10:00am - 10:30am \n Ages 18-36 months. Drop-in at the Poet Tree Corner! Enjoy stories, songs, rhymes, movement, and more at Toddler…"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 73,
+      "item": {
+        "@type": "Event",
+        "name": "Q & A One on One Appointment",
+        "startDate": "2026-10-22T14:00:00-05:00",
+        "url": "https://withintenmiles.com/des-plaines-60016/#ev-q-a-one-on-one-appointment-2026-10-22",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Des Plaines Public Library",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Des Plaines",
+            "addressRegion": "IL"
+          }
+        },
+        "sameAs": "https://desplaines.libnet.info/event/17284757",
+        "description": "Thursday, October 22 2026 2:00pm - 2:15pm \n Book a 15 minute appointment to discuss a research or tech topic."
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 74,
+      "item": {
+        "@type": "Event",
+        "name": "Liberation Bookmarks",
+        "startDate": "2026-10-22T16:00:00-05:00",
+        "url": "https://withintenmiles.com/des-plaines-60016/#ev-liberation-bookmarks-2026-10-22",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Des Plaines Public Library",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Des Plaines",
+            "addressRegion": "IL"
+          }
+        },
+        "sameAs": "https://desplaines.libnet.info/event/17036423",
+        "description": "Thursday, October 22 2026 4:00pm - 5:00pm \n Earn service hours by making bookmarks for incarcerated youth! Materials will be provided. For teens in grades 7-12."
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 75,
+      "item": {
+        "@type": "Event",
+        "name": "Book a Teen Librarian",
+        "startDate": "2026-10-22T17:00:00-05:00",
+        "url": "https://withintenmiles.com/des-plaines-60016/#ev-book-a-teen-librarian-2026-10-22",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Des Plaines Public Library",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Des Plaines",
+            "addressRegion": "IL"
+          }
+        },
+        "sameAs": "https://desplaines.libnet.info/event/16339447",
+        "description": "Thursday, October 22 2026 5:00pm - 6:00pm \n Come in and get to know your teen librarians!"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 76,
+      "item": {
+        "@type": "Event",
+        "name": "Mac Basics",
+        "startDate": "2026-10-22T18:30:00-05:00",
+        "url": "https://withintenmiles.com/des-plaines-60016/#ev-mac-basics-2026-10-22",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Des Plaines Public Library",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Des Plaines",
+            "addressRegion": "IL"
+          }
+        },
+        "sameAs": "https://desplaines.libnet.info/event/17391054",
+        "description": "Thursday, October 22 2026 6:30pm - 7:30pm \n Get started with your mac (iMac or Laptop) by exploring helpful tips. Learn how to customize your desktop, add…"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 77,
+      "item": {
+        "@type": "Event",
+        "name": "Thursday Evening Book Discussion",
+        "startDate": "2026-10-22T19:30:00-05:00",
+        "url": "https://withintenmiles.com/des-plaines-60016/#ev-thursday-evening-book-discussion-2026-10-22",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Des Plaines Public Library",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Des Plaines",
+            "addressRegion": "IL"
+          }
+        },
+        "sameAs": "https://desplaines.libnet.info/event/17341094",
+        "description": "Thursday, October 22 2026 7:30pm - 8:30pm \n A staff member will lead a book discussion. Books are available at the 3rd floor info desk in the public library…"
       }
     }
   ]
