@@ -3,12 +3,12 @@
 <channel>
   <title>Within Ten — Upcoming Local Events</title>
   <link>https://withintenmiles.com/</link>
-  <description>Upcoming events across every Within Ten region, soonest first - aggregated automatically from village, library, park district and school-district calendars. This build reached 18 of 26 configured sources.</description>
-  <lastBuildDate>Fri, 09 Oct 2026 14:00:16 +0000</lastBuildDate>
+  <description>Upcoming events across every Within Ten region, soonest first - aggregated automatically from village, library, park district and school-district calendars. This build reached 20 of 26 configured sources.</description>
+  <lastBuildDate>Fri, 09 Oct 2026 14:08:47 +0000</lastBuildDate>
   <item>
-    <title>Arlington Heights: Senior Center: Travelogue</title>
-    <link>https://www.ahml.info/scheduling/reservation/224944</link>
-    <guid isPermaLink="true">https://www.ahml.info/scheduling/reservation/224944</guid>
+    <title>Arlington Heights: Using Your Mac: Basics</title>
+    <link>https://www.ahml.info/scheduling/reservation/231799</link>
+    <guid isPermaLink="true">https://www.ahml.info/scheduling/reservation/231799</guid>
     <description></description>
     <pubDate>Fri, 09 Oct 2026 00:00:00 +0000</pubDate>
   </item>
@@ -92,11 +92,25 @@
     <pubDate>Fri, 09 Oct 2026 18:30:00 +0000</pubDate>
   </item>
   <item>
-    <title>Arlington Heights: Family Time</title>
-    <link>https://www.ahml.info/scheduling/reservation/224193</link>
-    <guid isPermaLink="true">https://www.ahml.info/scheduling/reservation/224193</guid>
+    <title>Arlington Heights: Games &amp; Gab</title>
+    <link>https://www.ahml.info/scheduling/reservation/221909</link>
+    <guid isPermaLink="true">https://www.ahml.info/scheduling/reservation/221909</guid>
     <description></description>
     <pubDate>Sat, 10 Oct 2026 00:00:00 +0000</pubDate>
+  </item>
+  <item>
+    <title>Mount Prospect: Fishing Derby</title>
+    <link>https://www.mppd.org/event/fishing-derby-4/</link>
+    <guid isPermaLink="true">https://www.mppd.org/event/fishing-derby-4/</guid>
+    <description>Rescheduled! Fishing Derby (Ages 3-16) Grab your gear and make your way to Clearwater Park for a morning of family fishing! Test your skills and maybe even…</description>
+    <pubDate>Sat, 10 Oct 2026 08:00:00 +0000</pubDate>
+  </item>
+  <item>
+    <title>Mount Prospect: Spooky Scary Studio</title>
+    <link>https://www.mppd.org/event/31551/</link>
+    <guid isPermaLink="true">https://www.mppd.org/event/31551/</guid>
+    <description>Spooky Scary Studio (Ages 5-10) The Studio has been overrun by spooky, yet friendly, skeletons just in time for Halloween! Join us for a workshop filled with…</description>
+    <pubDate>Sat, 10 Oct 2026 09:30:00 +0000</pubDate>
   </item>
   <item>
     <title>Mount Prospect: Digitizing Photos, Slides, and Negatives</title>
@@ -114,6 +128,13 @@
  Hosted by the Foundation for the Indian Trails Library.
 All proceeds benefit the library. Enter the sale through…</description>
     <pubDate>Sat, 10 Oct 2026 10:00:00 +0000</pubDate>
+  </item>
+  <item>
+    <title>Arlington Heights: Autumn Harvest</title>
+    <link>https://www.ahpd.org/event/autumn-harvest-2026/</link>
+    <guid isPermaLink="true">https://www.ahpd.org/event/autumn-harvest-2026/</guid>
+    <description>Don’t miss fall family fun with crafts, games, hayrides, a scarecrow building contest, live music and entertainment, and food available for purchase from…</description>
+    <pubDate>Sat, 10 Oct 2026 11:00:00 +0000</pubDate>
   </item>
   <item>
     <title>Mount Prospect: Afternoon Tea Social</title>
@@ -297,9 +318,9 @@ Hoopla or another library app? Talk…</description>
     <pubDate>Mon, 12 Oct 2026 19:00:00 +0000</pubDate>
   </item>
   <item>
-    <title>Arlington Heights: Read to Learn (District 214)</title>
-    <link>https://www.ahml.info/scheduling/reservation/194391</link>
-    <guid isPermaLink="true">https://www.ahml.info/scheduling/reservation/194391</guid>
+    <title>Arlington Heights: Social Worker in the Library</title>
+    <link>https://www.ahml.info/scheduling/reservation/218147</link>
+    <guid isPermaLink="true">https://www.ahml.info/scheduling/reservation/218147</guid>
     <description></description>
     <pubDate>Tue, 13 Oct 2026 00:00:00 +0000</pubDate>
   </item>
@@ -375,30 +396,6 @@ Hoopla or another library app? Talk…</description>
     <description>Tuesday, October 13 2026 10:00am - 11:00am 
  A staff member will lead a book discussion. Books are available at the 3rd floor info desk in the public library…</description>
     <pubDate>Tue, 13 Oct 2026 10:00:00 +0000</pubDate>
-  </item>
-  <item>
-    <title>Wheeling: Noisy Time</title>
-    <link>https://indiantrails.libnet.info/event/16550238</link>
-    <guid isPermaLink="true">https://indiantrails.libnet.info/event/16550238</guid>
-    <description>Tuesday, October 13 2026 10:00am - 10:30am 
- Explore the world around us with stories, rhymes and lots of music and movement. TR</description>
-    <pubDate>Tue, 13 Oct 2026 10:00:00 +0000</pubDate>
-  </item>
-  <item>
-    <title>Mount Prospect: Family Storytime</title>
-    <link>https://mppl.libnet.info/event/16553376</link>
-    <guid isPermaLink="true">https://mppl.libnet.info/event/16553376</guid>
-    <description>Tuesday, October 13 2026 10:30am - 11:00am 
- Bring the whole family and join us for an interactive storytime with high-energy stories, songs, and activities.</description>
-    <pubDate>Tue, 13 Oct 2026 10:30:00 +0000</pubDate>
-  </item>
-  <item>
-    <title>Wheeling: Rise &amp; Read Morning Book Discussion</title>
-    <link>https://indiantrails.libnet.info/event/14170839</link>
-    <guid isPermaLink="true">https://indiantrails.libnet.info/event/14170839</guid>
-    <description>Tuesday, October 13 2026 10:30am - 11:30am 
- Registration and book pickup begins September 8. A haunting and powerful story of female friendships and secrets…</description>
-    <pubDate>Tue, 13 Oct 2026 10:30:00 +0000</pubDate>
   </item>
 </channel>
 </rss>
