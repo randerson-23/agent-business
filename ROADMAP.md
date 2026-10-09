@@ -249,9 +249,12 @@ that limit.
    likely fix. While in **Google Search Console**, note the
    *Indexing → Pages → Indexed* count. This loop's web search still finds
    no pages on the domain.
-4. **Rename the Buttondown handle (1 min, item 226)** from
-   `andersonryant` to the brand (for example `withinten`). Then tell the
-   build loop the new handle so it updates `config/newsletter.yaml`.
+4. ✅ *Done 2026-10-09: the Buttondown handle is now `withinten`, and
+   `config/newsletter.yaml` is updated (item 226). Yahoo spam check (item
+   239) and the Buttondown settings below are also done: tracking on,
+   domain verified, confirmation reminder (item 256) and welcome email
+   enabled. The issue was found in Spam and moved out, so the 0-opens
+   history was at least partly a spam-placement problem.*
 5. **Four Buttondown settings checks now, one after the first signup (3 min):**
    - **Tracking is on** (item 187). With tracking off, opens always read 0.
    - The **`withintenmiles.com` sending domain shows as verified** (item 47).

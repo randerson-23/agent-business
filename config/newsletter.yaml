@@ -14,7 +14,7 @@
 # headline/detail are shown either way (with or without a working form),
 # so they're worth keeping accurate regardless of signup status.
 
-buttondown_username: "andersonryant"
+buttondown_username: "withinten"  # renamed from andersonryant by the owner, 2026-10-09 (item 226)
 headline: "Get it in your inbox"
 # ROADMAP.md Phase 11 #108: this used to say "the weekly digest", singular,
 # which was a promise the signup form couldn't keep once item 105 made
