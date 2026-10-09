@@ -2,8 +2,8 @@
   "@context": "https://schema.org",
   "@type": "ItemList",
   "name": "Upcoming events in Wheeling — Within Ten",
-  "dateModified": "2026-10-09T14:54:28+00:00",
-  "numberOfItems": 57,
+  "dateModified": "2026-10-09T20:35:07+00:00",
+  "numberOfItems": 58,
   "itemListElement": [
     {
       "@type": "ListItem",
@@ -1276,6 +1276,29 @@
       "position": 56,
       "item": {
         "@type": "Event",
+        "name": "League of Women Voters Build Your Own Ballot",
+        "startDate": "2026-10-22T15:00:00-05:00",
+        "url": "https://withintenmiles.com/wheeling-60090/#ev-league-of-women-voters-build-your-own-ballot-2026-10-22",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Indian Trails Public Library",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Wheeling",
+            "addressRegion": "IL"
+          }
+        },
+        "sameAs": "https://indiantrails.libnet.info/event/17629377",
+        "description": "Thursday, October 22 2026 3:00pm - 5:00pm \n The local League of Women Voters chapter will be on site to share information on the VOTE 411 tool."
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 57,
+      "item": {
+        "@type": "Event",
         "name": "Halloween Pony Bead Keychains",
         "startDate": "2026-10-22T18:00:00-05:00",
         "url": "https://withintenmiles.com/wheeling-60090/#ev-halloween-pony-bead-keychains-2026-10-22",
@@ -1296,7 +1319,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 57,
+      "position": 58,
       "item": {
         "@type": "Event",
         "name": "Medicare Part D",

@@ -3,21 +3,21 @@
 <channel>
   <title>Within Ten — Upcoming Local Events</title>
   <link>https://withintenmiles.com/</link>
-  <description>Upcoming events across every Within Ten region, soonest first - aggregated automatically from village, library, park district and school-district calendars. This build reached 18 of 26 configured sources. 2 sources are shown from their last update, up to 1 hour ago.</description>
-  <lastBuildDate>Fri, 09 Oct 2026 14:54:28 +0000</lastBuildDate>
+  <description>Upcoming events across every Within Ten region, soonest first - aggregated automatically from village, library, park district and school-district calendars. This build reached 21 of 26 configured sources.</description>
+  <lastBuildDate>Fri, 09 Oct 2026 20:35:07 +0000</lastBuildDate>
   <item>
-    <title>Arlington Heights: Using Your Mac: Basics</title>
-    <link>https://www.ahml.info/scheduling/reservation/231799</link>
-    <guid isPermaLink="true">https://www.ahml.info/scheduling/reservation/231799</guid>
+    <title>Arlington Heights: Senior Center: Travelogue</title>
+    <link>https://www.ahml.info/scheduling/reservation/224944</link>
+    <guid isPermaLink="true">https://www.ahml.info/scheduling/reservation/224944</guid>
     <description></description>
     <pubDate>Fri, 09 Oct 2026 00:00:00 +0000</pubDate>
   </item>
   <item>
-    <title>Palatine: Tales for Tots</title>
-    <link>https://www.palatine.il.us/common/modules/iCalendar/iCalendar.aspx?feed=calendar&amp;catID=14</link>
-    <guid isPermaLink="false">https://www.palatine.il.us/common/modules/iCalendar/iCalendar.aspx?feed=calendar&amp;catID=14#2026-10-09T09:30:00</guid>
-    <description>FREE interactive story time for tots and grown-ups https://www.</description>
-    <pubDate>Fri, 09 Oct 2026 09:30:00 +0000</pubDate>
+    <title>Mount Prospect: Mount Prospect Update - October 9, 2026</title>
+    <link>https://www.mountprospect.org/articles/Mount-Prospect-Update-October-9-2026-155.php</link>
+    <guid isPermaLink="true">https://www.mountprospect.org/articles/Mount-Prospect-Update-October-9-2026-155.php</guid>
+    <description>Plenty of things to do during the Fall. Catch the latest episode of the Mount Prospect Update and find out what is happening in your town.</description>
+    <pubDate>Fri, 09 Oct 2026 00:00:00 +0000</pubDate>
   </item>
   <item>
     <title>Wheeling: Babytime!</title>
@@ -92,9 +92,9 @@
     <pubDate>Fri, 09 Oct 2026 18:30:00 +0000</pubDate>
   </item>
   <item>
-    <title>Arlington Heights: Games &amp; Gab</title>
-    <link>https://www.ahml.info/scheduling/reservation/221909</link>
-    <guid isPermaLink="true">https://www.ahml.info/scheduling/reservation/221909</guid>
+    <title>Arlington Heights: Family Time</title>
+    <link>https://www.ahml.info/scheduling/reservation/224193</link>
+    <guid isPermaLink="true">https://www.ahml.info/scheduling/reservation/224193</guid>
     <description></description>
     <pubDate>Sat, 10 Oct 2026 00:00:00 +0000</pubDate>
   </item>
@@ -318,9 +318,9 @@ Hoopla or another library app? Talk…</description>
     <pubDate>Mon, 12 Oct 2026 19:00:00 +0000</pubDate>
   </item>
   <item>
-    <title>Arlington Heights: Social Worker in the Library</title>
-    <link>https://www.ahml.info/scheduling/reservation/218147</link>
-    <guid isPermaLink="true">https://www.ahml.info/scheduling/reservation/218147</guid>
+    <title>Arlington Heights: Read to Learn (District 214)</title>
+    <link>https://www.ahml.info/scheduling/reservation/194391</link>
+    <guid isPermaLink="true">https://www.ahml.info/scheduling/reservation/194391</guid>
     <description></description>
     <pubDate>Tue, 13 Oct 2026 00:00:00 +0000</pubDate>
   </item>

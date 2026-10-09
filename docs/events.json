@@ -2,17 +2,17 @@
   "@context": "https://schema.org",
   "@type": "ItemList",
   "name": "Upcoming events across every region — Within Ten",
-  "dateModified": "2026-10-09T14:54:28+00:00",
-  "numberOfItems": 242,
+  "dateModified": "2026-10-09T20:35:07+00:00",
+  "numberOfItems": 243,
   "itemListElement": [
     {
       "@type": "ListItem",
       "position": 1,
       "item": {
         "@type": "Event",
-        "name": "Using Your Mac: Basics",
+        "name": "Senior Center: Travelogue",
         "startDate": "2026-10-09",
-        "url": "https://withintenmiles.com/arlington-heights-60005/#ev-using-your-mac-basics-2026-10-09",
+        "url": "https://withintenmiles.com/arlington-heights-60005/#ev-senior-center-travelogue-2026-10-09",
         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
         "location": {
           "@type": "Place",
@@ -24,7 +24,7 @@
             "addressRegion": "IL"
           }
         },
-        "sameAs": "https://www.ahml.info/scheduling/reservation/231799"
+        "sameAs": "https://www.ahml.info/scheduling/reservation/224944"
       }
     },
     {
@@ -32,23 +32,22 @@
       "position": 2,
       "item": {
         "@type": "Event",
-        "name": "Tales for Tots",
-        "startDate": "2026-10-09T09:30:00-05:00",
-        "url": "https://withintenmiles.com/palatine-60067/#ev-tales-for-tots-2026-10-09",
+        "name": "Mount Prospect Update - October 9, 2026",
+        "startDate": "2026-10-09",
+        "url": "https://withintenmiles.com/mount-prospect-60056/#ev-mount-prospect-update-october-9-2026-2026-10-09",
         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
         "location": {
           "@type": "Place",
-          "name": "Palatine, IL",
+          "name": "Mount Prospect, IL",
           "address": {
             "@type": "PostalAddress",
             "addressCountry": "US",
-            "addressLocality": "Palatine",
+            "addressLocality": "Mount Prospect",
             "addressRegion": "IL"
           }
         },
-        "sameAs": "https://www.palatine.il.us/common/modules/iCalendar/iCalendar.aspx?feed=calendar&catID=14",
-        "description": "FREE interactive story time for tots and grown-ups https://www.",
-        "isAccessibleForFree": true
+        "sameAs": "https://www.mountprospect.org/articles/Mount-Prospect-Update-October-9-2026-155.php",
+        "description": "Plenty of things to do during the Fall. Catch the latest episode of the Mount Prospect Update and find out what is happening in your town."
       }
     },
     {
@@ -265,9 +264,9 @@
       "position": 12,
       "item": {
         "@type": "Event",
-        "name": "Games & Gab",
+        "name": "Family Time",
         "startDate": "2026-10-10",
-        "url": "https://withintenmiles.com/arlington-heights-60005/#ev-games-gab-2026-10-10",
+        "url": "https://withintenmiles.com/arlington-heights-60005/#ev-family-time-2026-10-10",
         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
         "location": {
           "@type": "Place",
@@ -279,7 +278,7 @@
             "addressRegion": "IL"
           }
         },
-        "sameAs": "https://www.ahml.info/scheduling/reservation/221909"
+        "sameAs": "https://www.ahml.info/scheduling/reservation/224193"
       }
     },
     {
@@ -994,9 +993,9 @@
       "position": 44,
       "item": {
         "@type": "Event",
-        "name": "Social Worker in the Library",
+        "name": "Read to Learn (District 214)",
         "startDate": "2026-10-13",
-        "url": "https://withintenmiles.com/arlington-heights-60005/#ev-social-worker-in-the-library-2026-10-13",
+        "url": "https://withintenmiles.com/arlington-heights-60005/#ev-read-to-learn-district-214-2026-10-13",
         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
         "location": {
           "@type": "Place",
@@ -1008,7 +1007,7 @@
             "addressRegion": "IL"
           }
         },
-        "sameAs": "https://www.ahml.info/scheduling/reservation/218147"
+        "sameAs": "https://www.ahml.info/scheduling/reservation/194391"
       }
     },
     {
@@ -2954,7 +2953,7 @@
           }
         },
         "sameAs": "https://desplaines.libnet.info/event/17616372",
-        "description": "Friday, October 16 2026 6:00pm - 8:00pm \n A Young Adult Round Table on College, Careers, & Everything In Between"
+        "description": "Friday, October 16 2026 6:00pm - 8:00pm \n A Young Adult Round Table on College, Careers, & Everything In Between\nAges 16-30\nFree\nLight refreshments will be…"
       }
     },
     {
@@ -5322,6 +5321,29 @@
       "position": 233,
       "item": {
         "@type": "Event",
+        "name": "League of Women Voters Build Your Own Ballot",
+        "startDate": "2026-10-22T15:00:00-05:00",
+        "url": "https://withintenmiles.com/wheeling-60090/#ev-league-of-women-voters-build-your-own-ballot-2026-10-22",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Indian Trails Public Library",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Wheeling",
+            "addressRegion": "IL"
+          }
+        },
+        "sameAs": "https://indiantrails.libnet.info/event/17629377",
+        "description": "Thursday, October 22 2026 3:00pm - 5:00pm \n The local League of Women Voters chapter will be on site to share information on the VOTE 411 tool."
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 234,
+      "item": {
+        "@type": "Event",
         "name": "Liberation Bookmarks",
         "startDate": "2026-10-22T16:00:00-05:00",
         "url": "https://withintenmiles.com/des-plaines-60016/#ev-liberation-bookmarks-2026-10-22",
@@ -5342,7 +5364,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 234,
+      "position": 235,
       "item": {
         "@type": "Event",
         "name": "Education Foundation Meeting",
@@ -5363,7 +5385,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 235,
+      "position": 236,
       "item": {
         "@type": "Event",
         "name": "Book a Teen Librarian",
@@ -5386,7 +5408,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 236,
+      "position": 237,
       "item": {
         "@type": "Event",
         "name": "3D Printing for Kids: Learn Tinkercad",
@@ -5409,7 +5431,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 237,
+      "position": 238,
       "item": {
         "@type": "Event",
         "name": "BPAC Parent Workshop: What Values Do You Want Your Children to Live",
@@ -5431,7 +5453,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 238,
+      "position": 239,
       "item": {
         "@type": "Event",
         "name": "Halloween Pony Bead Keychains",
@@ -5454,7 +5476,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 239,
+      "position": 240,
       "item": {
         "@type": "Event",
         "name": "Mac Basics",
@@ -5477,7 +5499,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 240,
+      "position": 241,
       "item": {
         "@type": "Event",
         "name": "Making Sense of Menopause",
@@ -5500,7 +5522,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 241,
+      "position": 242,
       "item": {
         "@type": "Event",
         "name": "Medicare Part D",
@@ -5523,7 +5545,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 242,
+      "position": 243,
       "item": {
         "@type": "Event",
         "name": "Thursday Evening Book Discussion",
