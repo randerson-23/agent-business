@@ -129,3 +129,59 @@ def test_send_files_carry_no_developer_comments():
     for html in rendered:
         assert re.findall(r"<!--(?!\[if mso\])", html) == []
         assert "ROADMAP.md" not in html and "item 1" not in html.lower()
+
+
+# ---- ROADMAP.md item 263: the season's page, linked from the email -----------
+
+
+def at(month, day):
+    return datetime(2026, month, day, 13, tzinfo=timezone.utc)
+
+
+def test_seasonal_link_follows_its_send_window():
+    link = build_digest.seasonal_email_link
+    assert link(at(10, 11)) is None  # the day before the window opens
+    assert link(at(10, 12))["url"].startswith(build_digest.SITE_BASE_URL + "trick-or-treat/")
+    assert link(at(10, 14)) and link(at(10, 21)) and link(at(10, 28))  # the three Halloween sends
+    assert link(at(10, 31))
+    assert link(at(11, 1)) is None
+    assert link(at(7, 4)) is None
+
+
+def test_seasonal_link_is_tagged_for_analytics_and_is_one_line():
+    link = build_digest.seasonal_email_link(at(10, 14))
+    assert link["url"].endswith("?utm_source=email&utm_campaign=seasonal")
+    assert "\n" not in link["label"]
+
+
+def test_when_two_windows_overlap_the_one_closing_first_wins():
+    rows = (
+        ("holiday/", (10, 20), (12, 24), "Holiday listings"),
+        ("trick-or-treat/", (10, 12), (10, 31), "Trick-or-treat"),
+    )
+    original = build_digest.SEASONAL_EMAIL_LINKS
+    build_digest.SEASONAL_EMAIL_LINKS = rows
+    try:
+        assert build_digest.seasonal_email_link(at(10, 25))["label"] == "Trick-or-treat"
+        assert build_digest.seasonal_email_link(at(11, 5))["label"] == "Holiday listings"
+    finally:
+        build_digest.SEASONAL_EMAIL_LINKS = original
+
+
+def test_both_emails_show_the_line_once_inside_the_window_and_never_outside():
+    region = {"id": "r", "name": "Palatine"}
+    events = [ev("A", "2026-10-10T10:00:00")]
+    url = build_digest.SITE_BASE_URL + "trick-or-treat/?utm_source=email&amp;utm_campaign=seasonal"
+    single_in = build_digest.render_email_digest(region, events, [], "https://x/", "Oct 9–11", None, NEWSLETTER, now=at(10, 14))
+    single_out = build_digest.render_email_digest(region, events, [], "https://x/", "Oct 9–11", None, NEWSLETTER, now=at(11, 4))
+    sections = [{"region_name": "Palatine", "region_url": "https://x/p/", "weekend_events": events, "evergreen": [], "sponsor": None}]
+    comb_in = build_digest.render_combined_email_digest(sections, "Oct 9–11", at(10, 14), NEWSLETTER)
+    comb_out = build_digest.render_combined_email_digest(sections, "Oct 9–11", at(11, 4), NEWSLETTER)
+    for html in (single_in, comb_in):
+        assert html.count(url) == 1
+        assert "Trick-or-treat hours for every town we cover" in html
+    for html in (single_out, comb_out):
+        assert "trick-or-treat" not in html
+    # The line sits under the date range, above the first event.
+    assert comb_in.index(url) < comb_in.index(">A</a>")
+    assert len(comb_in.encode("utf-8")) < 90_000

@@ -14336,7 +14336,7 @@ in it, because it decides what a reader sees **this weekend**.
      park district" into "nothing a reader can see". It does **not**
      replace finding the cause, which stays in item 194.
 
-263. **Link the season's page from the email.** Design/UX, build loop.
+263. ✅ **DONE — Link the season's page from the email.** Design/UX, build loop.
      A small registry in `build_digest.py` of **seasonal pages with a
      send window**, for example `/trick-or-treat/` from **Oct 12 to
      Oct 31**, item 258's `/<region>/holiday/` from Nov 1 to Dec 24,
@@ -14350,6 +14350,20 @@ in it, because it decides what a reader sees **this weekend**.
      outside the window; at most one line when two windows overlap
      (the earlier-ending wins); the 102 KB check still passes. **Ship
      before the Oct 14 send** to get all three Halloween issues.
+
+     ✅ **Shipped 2026-10-09**, five days before the Oct 14 send.
+     `SEASONAL_EMAIL_LINKS` is the registry: (page path, first and last
+     month-day, line). Today it holds `/trick-or-treat/` from **Oct 12 to
+     Oct 31**, so the Oct 14, 21 and 28 sends all carry it. Items 258 and
+     259 add their pages here when they ship. `seasonal_email_link(now)`
+     picks one line (the window that closes first wins an overlap) with
+     `?utm_source=email&utm_campaign=seasonal`, and both emails render it
+     once, under the date range and above the first event. The line reads
+     *"🎃 Trick-or-treat hours for every town we cover →"*: the item said
+     "all five towns", but a number in the copy would go stale the day a
+     sixth town is added. `render_email_digest` gained a `now` argument
+     (defaulting to the clock) so the window is decided by the build's own
+     time. 4 new tests; the size check still passes.
 
 #### P3 (new)
 

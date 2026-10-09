@@ -3092,6 +3092,7 @@ def render_email_digest(
     newsletter: dict | None = None,
     *,
     preview: bool = False,
+    now: datetime | None = None,
 ) -> str:
     """The actual email HTML (ROADMAP.md Phase 11 #36) - a gate on items
     24/31, not a standalone feature, since nothing sends yet without
@@ -3132,6 +3133,7 @@ def render_email_digest(
         preheader=build_email_preheader(len(attendable_events), _pick_preheader_titles(attendable_events)),
         newsletter=newsletter or {"configured": False},
         preview=preview,
+        seasonal_link=seasonal_email_link(now or datetime.now(timezone.utc)),
     )
 
 
@@ -3378,6 +3380,29 @@ def prepare_email_events(events: list[dict]) -> list[dict]:
     return sorted(prepared, key=lambda e: (not e.get("sponsored_by"), e.get("date_iso") or "9999"))
 
 
+# ROADMAP.md item 263: seasonal pages the weekly email links while their send
+# window is open - the email is the most engaged reader the site has, and these
+# pages exist for exactly one stretch of the year. Each entry is
+# (page path, first (month, day), last (month, day), line shown). Items 258 and
+# 259 add their pages here when they ship. One line only, never a block.
+SEASONAL_EMAIL_LINKS = (
+    ("trick-or-treat/", (10, 12), (10, 31), "🎃 Trick-or-treat hours for every town we cover →"),
+)
+
+
+def seasonal_email_link(now: datetime) -> dict | None:
+    """The one seasonal line to show in this week's emails, or None.
+    When two windows overlap, the one that closes first wins: it has the
+    fewest sends left. The URL carries utm_source=email&utm_campaign=seasonal
+    so the email's pull can be told apart in analytics."""
+    today = (now.month, now.day)
+    open_now = [row for row in SEASONAL_EMAIL_LINKS if row[1] <= today <= row[2]]
+    if not open_now:
+        return None
+    path, _start, _end, label = min(open_now, key=lambda row: row[2])
+    return {"url": f"{SITE_BASE_URL}{path}?utm_source=email&utm_campaign=seasonal", "label": label}
+
+
 def _pick_evergreen_highlights(evergreen: list[dict], limit: int) -> list[dict]:
     """Fallback picks for a region with nothing dated this weekend
     (ROADMAP.md item 177). Every region's `evergreen:` list is
@@ -3482,6 +3507,7 @@ def render_combined_email_digest(sections: list[dict], weekend_date_range: str, 
         preheader=build_combined_email_preheader(sections),
         newsletter=newsletter or {"configured": False},
         preview=preview,
+        seasonal_link=seasonal_email_link(now),
     )
 
 
@@ -3917,10 +3943,10 @@ def main() -> None:
         # ROADMAP.md Phase 11 #91: two files, byte-identical except for
         # the annotation row - email-send.html is the one to paste into
         # Buttondown, email-preview.html is the one to read in a browser.
-        (region_dir / "email-send.html").write_text(render_email_digest(*email_digest_args), encoding="utf-8")
+        (region_dir / "email-send.html").write_text(render_email_digest(*email_digest_args, now=now), encoding="utf-8")
         logger.info("Wrote %s", region_dir / "email-send.html")
         (region_dir / "email-preview.html").write_text(
-            render_email_digest(*email_digest_args, preview=True), encoding="utf-8"
+            render_email_digest(*email_digest_args, preview=True, now=now), encoding="utf-8"
         )
         logger.info("Wrote %s", region_dir / "email-preview.html")
         if weekend_events:
