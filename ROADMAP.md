@@ -14309,7 +14309,7 @@ in it, because it decides what a reader sees **this weekend**.
 
 #### P1 (new)
 
-262. **Keep each source's last good copy, so a failed fetch does not
+262. ✅ **DONE — Keep each source's last good copy, so a failed fetch does not
      empty a town.** Build loop, `scripts/build_digest.py`.
 
      - After every **successful** fetch, write that source's
@@ -14335,6 +14335,39 @@ in it, because it decides what a reader sees **this weekend**.
      park districts' in September, from "half the builds lose a town's
      park district" into "nothing a reader can see". It does **not**
      replace finding the cause, which stays in item 194.
+
+     ✅ **Shipped 2026-10-09.** Item 194 (the cause) is still open.
+     - `data/source_last_good/<region>__<source-slug>.json`, one per
+       source, written by `fetch_region_sections` after a **successful**
+       fetch: the source's raw items dated today or later (soonest first),
+       then undated ones, capped at **60**. (Raw items, not built events,
+       so the fallback goes through exactly the same event-building,
+       tagging and filtering as a fresh fetch.) An **empty** result is
+       never saved, so it cannot overwrite a useful copy. An unchanged copy
+       is rewritten only after **6 hours**, so a quiet source does not add a
+       commit to every build while its age stays far under the limit.
+     - On a **transport failure**, a copy **under 72 hours** old is used;
+       older, unreadable or missing means nothing, as before. Past events
+       in it drop out in the normal `filter_past_events` step. A source that
+       has never succeeded (Wheeling Park District) has no copy and is
+       unaffected.
+     - **Nothing else changes:** `source_health.json` and the transport
+       failure streaks are untouched (the failure still counts as a
+       failure), and a last-good source is **not** counted as having
+       reported. The completeness line says so wherever it is stated, in
+       the About page, `feed.xml` and `llms.txt`: *"1 source is shown from
+       its last update, up to 14 hours ago."*
+     - `build-digest.yml` now commits `data/source_last_good/` (with a
+       `.gitkeep` so the directory exists). The sandbox never writes these
+       files, since every fetch fails here, so the working-agreements list
+       still means `git restore` after a local build.
+     - Checked end to end with a synthetic 14-hour-old copy: the event
+       rendered on the Arlington Heights page and the note appeared on all
+       three surfaces. 11 new tests (`tests/test_last_good.py`); 692 pass.
+     - **First real check is the next CI build.** The first successful
+       fetch of each source creates its copy, so Arlington Heights'
+       protection begins one good build after this merges. It would not
+       have covered a failure that started before then.
 
 263. ✅ **DONE — Link the season's page from the email.** Design/UX, build loop.
      A small registry in `build_digest.py` of **seasonal pages with a
@@ -14429,7 +14462,9 @@ is **the email's missing seasonal link**. The pass also rechecked
   committed by build-digest.yml, missing from this list until
   2026-09-28), and `data/indexnow_log.json` (item 224, from
   2026-10-03) — always `git restore` all seven after a local build in
-  this sandbox, never stage any of them. `indexnow_log.json` has been
+  this sandbox, never stage any of them. `data/source_last_good/`
+  (item 262) is the same: CI writes it, a local sandbox build never does,
+  and nothing under it is hand-committed except the `.gitkeep`. `indexnow_log.json` has been
   tracked since CI first committed it on 2026-10-03, so `git restore`
   it like the others. **Do not `rm` it**: that deletes a real,
   tracked history file (it nearly happened on 2026-10-04).
