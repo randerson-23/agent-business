@@ -237,7 +237,7 @@ that limit.
    needs settling before outreach or press sends anyone to the signup.
    ✅ *The `hello@withintenmiles.com` forward was confirmed working by the
    owner on 2026-10-09 (item 244).*
-2. **Turn on GoatCounter (5 min, item 227).** Create a free account at
+2. ✅ *Done 2026-10-09: `goatcounter_code: "withinten"` is set; dashboard at withinten.goatcounter.com.* **Turn on GoatCounter (5 min, item 227).** Create a free account at
    goatcounter.com and paste the site code into
    `config/analytics.yaml: goatcounter_code`. The site has never measured
    a visit. Every sponsor conversation and every agent-era idea (items

@@ -12,7 +12,7 @@
 # footer note only appears once this is actually configured, so the site
 # never claims a privacy practice it isn't following.
 
-goatcounter_code: null
+goatcounter_code: "withinten"  # set by the owner 2026-10-09 (item 227): https://withinten.goatcounter.com
 
 # Pinterest site claim (ROADMAP.md item 253). The weekend Pin feed at
 # /pins.xml is built on every deploy; Pinterest will only auto-publish it
