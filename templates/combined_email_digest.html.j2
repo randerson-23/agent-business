@@ -1,4 +1,4 @@
-<!--
+{#
   ROADMAP.md Phase 11 #105 - the automated Thursday send (items 24/31)
   only ever mailed Mount Prospect's digest, since Buttondown's free plan
   is one undifferentiated list with no per-region segmentation. The
@@ -21,7 +21,7 @@
   fragment - the table markup differs enough (one region block that
   repeats vs. one flat body) that forcing it through shared partials
   would cost more in indirection than it saves in duplication.
--->
+#}
 <!doctype html>
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
 <head>
@@ -45,8 +45,8 @@
 <![endif]-->
 </head>
 <body class="wt-bg" style="margin:0; padding:0; background-color:#f3f2f2;" bgcolor="#f3f2f2">
-<!-- ROADMAP.md item 207: hidden preheader - see email_digest.html.j2's
-     own copy of this comment for the full rationale. -->
+{# ROADMAP.md item 207: hidden preheader - see email_digest.html.j2's
+     own copy of this comment for the full rationale. #}
 <div style="display:none; font-size:1px; line-height:1px; max-height:0px; max-width:0px; opacity:0; overflow:hidden; mso-hide:all;">{{ preheader }}&#8203;&zwnj;&nbsp;&zwnj;&#8203;</div>
 <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" bgcolor="#f3f2f2" class="wt-bg" style="background-color:#f3f2f2;">
 <tr>
@@ -61,14 +61,14 @@ PREVIEW ONLY, NOT PART OF THE EMAIL — SUBJECT LINE: {{ subject_line }}
 </tr>
 {% endif %}
 
-<!-- Wordmark -->
+{# Wordmark #}
 <tr>
 <td style="padding:0 8px 16px 8px;">
 <span class="wt-brand" style="font-family:Arial, Helvetica, sans-serif; font-size:13px; font-weight:bold; letter-spacing:1px; color:#ae1800;">WITHIN TEN</span>
 </td>
 </tr>
 
-<!-- Intro -->
+{# Intro #}
 <tr>
 <td style="font-family:Arial, Helvetica, sans-serif; font-size:22px; font-weight:bold; line-height:1.2; color:#201e1d; padding-bottom:6px;" class="wt-ink">
 This weekend, across the northwest suburbs
@@ -81,7 +81,7 @@ This weekend, across the northwest suburbs
 </tr>
 
 {% for block in region_blocks %}
-<!-- Region block: {{ block.region_name }} -->
+{# Region block: {{ block.region_name }} #}
 <tr>
 <td bgcolor="#eae9e9" class="wt-card wt-border" style="background-color:#eae9e9; border:2px solid #d7d3d3; border-radius:0; padding:20px; margin-bottom:16px;">
 <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
@@ -108,15 +108,29 @@ Featured &middot; Presented by {{ event.sponsored_by }}
 <a href="{{ event.url }}" class="wt-ink" style="color:#201e1d; text-decoration:none; font-weight:bold;">{{ event.title }}</a>
 </td>
 </tr>
-{% if event.date %}
+{% if event.email_when or event.date %}
 <tr>
 <td class="wt-accent" style="font-family:Arial, Helvetica, sans-serif; font-size:14px; color:#ae1800;">
-{{ event.date }}
+{{ event.email_when or event.date }}
+</td>
+</tr>
+{% endif %}
+{% if event.email_where %}
+<tr>
+<td class="wt-muted" style="font-family:Arial, Helvetica, sans-serif; font-size:13px; color:#605d5d;">
+{{ event.email_where }}
+</td>
+</tr>
+{% endif %}
+{% if event.email_blurb %}
+<tr>
+<td class="wt-muted" style="font-family:Arial, Helvetica, sans-serif; font-size:13px; color:#605d5d; padding-top:2px;">
+{{ event.email_blurb }}
 </td>
 </tr>
 {% endif %}
 {% if event.recurrence_note %}
-<!-- ROADMAP.md item 141: same muted treatment as email_digest.html.j2. -->
+{# ROADMAP.md item 141: same muted treatment as email_digest.html.j2. #}
 <tr>
 <td class="wt-muted" style="font-family:Arial, Helvetica, sans-serif; font-size:12px; font-style:italic; color:#605d5d;">
 {{ event.recurrence_note }}
@@ -149,12 +163,12 @@ Nothing dated for this weekend yet — the full guide has what's coming up.
 {% endif %}
 
 {% if block.informational_events %}
-<!-- ROADMAP.md Phase 11 #90, applied here independently of the branch
+{# ROADMAP.md Phase 11 #90, applied here independently of the branch
      above (a real bug this template shipped with: it only checked
      informational_events inside the attendable_events branch, so a
      region with only a half-day/closure and no attendable events
      silently dropped it - email_digest.html.j2 checks it in both
-     branches for the same reason). -->
+     branches for the same reason). #}
 <tr>
 <td class="wt-accent wt-border" style="padding:8px 0 2px 0; border-top:1px solid #d7d3d3; font-family:Arial, Helvetica, sans-serif; font-size:12px; font-weight:bold; letter-spacing:0.5px; color:#ae1800;">
 ALSO THIS WEEK
@@ -197,11 +211,11 @@ ALSO THIS WEEK
 {% endfor %}
 
 {% if empty_regions_summary %}
-<!-- ROADMAP.md item 177: regions with nothing dated, no informational
+{# ROADMAP.md item 177: regions with nothing dated, no informational
      note, and no active sponsor collapse into one shared block instead
      of repeating "Nothing new dated..." as a full card per region -
      built in build_digest.py only once 2+ regions qualify at once, so
-     a single quiet region still gets its own ordinary card above. -->
+     a single quiet region still gets its own ordinary card above. #}
 <tr>
 <td bgcolor="#eae9e9" class="wt-card wt-border" style="background-color:#eae9e9; border:2px solid #d7d3d3; border-radius:0; padding:20px; margin-bottom:16px;">
 <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
@@ -224,7 +238,7 @@ Nothing dated yet in {{ empty_regions_summary.names }} — worth knowing about:
 {% endif %}
 
 {% if house_ad %}
-<!-- ROADMAP.md item 169: house ads are inventory notices, not content -
+{# ROADMAP.md item 169: house ads are inventory notices, not content -
      they appear at most once per artifact, regardless of how many
      regions have nothing sold. Item 88's rationale for showing an
      unsold slot at all still applies (this shouldn't be the one
@@ -232,7 +246,7 @@ Nothing dated yet in {{ empty_regions_summary.names }} — worth knowing about:
      that a real paying sponsor still gets a per-region block above
      (that placement is what the tier sells), while the free "nothing's
      sold here yet" notice runs once for the whole issue instead of
-     once per region. -->
+     once per region. #}
 <tr>
 <td style="padding-bottom:16px;">
 <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
@@ -248,9 +262,9 @@ Nothing dated yet in {{ empty_regions_summary.names }} — worth knowing about:
 </tr>
 {% endif %}
 
-<!-- Footer -->
+{# Footer #}
 {% if newsletter.configured %}
-<!-- ROADMAP.md item 183: a subscriber forwarding this email is the one
+{# ROADMAP.md item 183: a subscriber forwarding this email is the one
      growth channel that costs nothing and works at any list size, but
      the email had zero subscribe links among its 16 real hrefs - a
      forward dead-ends the moment it reaches someone who isn't already
@@ -258,7 +272,7 @@ Nothing dated yet in {{ empty_regions_summary.names }} — worth knowing about:
      newsletter feature is (item 34's load_newsletter_config), pointing
      at Buttondown's own hosted page rather than an embedded <form> -
      forms are unreliably stripped across email clients, a plain link
-     is not. -->
+     is not. #}
 <tr>
 <td align="center" class="wt-muted" style="padding:8px 8px 0 8px; font-family:Arial, Helvetica, sans-serif; font-size:12px; color:#605d5d;">
 Forwarded this? <a href="https://buttondown.com/{{ newsletter.buttondown_username }}?utm_source=email&utm_campaign=forward" class="wt-brand" style="color:#ae1800; text-decoration:underline; font-weight:bold;">Get your own weekend guide every Thursday &rarr;</a>
@@ -270,10 +284,10 @@ Forwarded this? <a href="https://buttondown.com/{{ newsletter.buttondown_usernam
 See Within Ten first when you search: <a href="{{ preferred_source_url }}" class="wt-brand" style="color:#ae1800; text-decoration:underline; font-weight:bold;">add us as a preferred source on Google &rarr;</a>
 </td>
 </tr>
-<!-- ROADMAP.md item 157: a reply is a stronger deliverability signal
+{# ROADMAP.md item 157: a reply is a stronger deliverability signal
      than the click-through CTA above, and replies now reach a real
      inbox (item 93) - a quiet secondary line, not a competing button,
-     per the item's own "one dominant CTA per screen" reasoning. -->
+     per the item's own "one dominant CTA per screen" reasoning. #}
 <tr>
 <td align="center" class="wt-muted" style="padding:8px 8px 0 8px; font-family:Arial, Helvetica, sans-serif; font-size:12px; color:#605d5d;">
 Know about something we missed? Hit reply — we read every one.

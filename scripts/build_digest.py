@@ -951,6 +951,7 @@ def fetch_region_sections(
                 # item 115 keeps out of the parser because it can carry
                 # text not meant for republication (rooms, staff entrances).
                 "venue": source.get("venue_name"),
+                "source": source["name"],
                 "town": region_name,
                 "state": region_cfg["region"].get("state"),
             }
@@ -3121,7 +3122,7 @@ def render_email_digest(
     informational_events = [e for e in weekend_events if not e.get("attendable", True)]
     return template.render(
         region=region,
-        weekend_events=attendable_events,
+        weekend_events=prepare_email_events(attendable_events),
         informational_events=informational_events,
         evergreen_highlights=evergreen_highlights,
         region_url=region_url,
@@ -3303,6 +3304,80 @@ def build_combined_email_preheader(sections: list[dict]) -> str:
     return truncate(f"Across {_join_names([s['region_name'] for s in sections])}", PREHEADER_MAX_LEN)
 
 
+# ROADMAP.md item 257: an email entry a reader can act on without clicking.
+# Communico library feeds (MPPL, DPPL) start their description with the
+# event's own date and time ("Sunday, October 04 2026 12:15pm - 1:15pm"),
+# which the email already shows in its own line, so it is dropped here.
+_DESCRIPTION_DATE_PREFIX = re.compile(
+    r"^\s*(?:Mon|Tues|Wednes|Thurs|Fri|Satur|Sun)day,?\s+[A-Za-z]+\s+\d{1,2},?\s+\d{4}"
+    r"(?:\s+\d{1,2}(?::\d{2})?\s*[ap]m(?:\s*[-–]\s*\d{1,2}(?::\d{2})?\s*[ap]m)?)?\s*",
+    re.I,
+)
+EMAIL_BLURB_MAX_LEN = 90
+
+
+def event_time_label(date_iso: str | None) -> str | None:
+    """"10:00 AM" for a timed event, None for an all-day or untimed one. A
+    midnight time is how the pipeline represents "no time given" (the same
+    rule as schema_start_date), so it is never shown as 12:00 AM."""
+    if not date_iso or "T" not in date_iso:
+        return None
+    try:
+        dt = datetime.fromisoformat(date_iso)
+    except ValueError:
+        return None
+    if dt.time() == time(0, 0):
+        return None
+    return dt.strftime("%-I:%M %p")
+
+
+def email_blurb(detail: str | None, title: str = "", max_len: int = EMAIL_BLURB_MAX_LEN) -> str | None:
+    """One line of description for an email entry: whitespace collapsed, a
+    leading Communico date/time header removed, trimmed to `max_len` at a
+    word boundary. None when nothing useful is left, or the text only
+    repeats the title - never a placeholder."""
+    text = _DESCRIPTION_DATE_PREFIX.sub("", detail or "")
+    text = re.sub(r"\s+", " ", text).strip(" -–:")
+    if not text or text.lower().rstrip(".…") == (title or "").strip().lower():
+        return None
+    if len(text) <= max_len:
+        return text
+    cut = text[: max_len - 1].rsplit(" ", 1)[0].rstrip(" ,;:-–")
+    return (cut or text[: max_len - 1]) + "…"
+
+
+def email_event_where(event: dict) -> str | None:
+    """Where the event is, as plainly as we know: the configured venue (a
+    library's events happen at the library), else the publishing source's
+    short name ("Village of Palatine" from "Village of Palatine — News")."""
+    where = event.get("venue") or (event.get("source") or "").split(" — ")[0].strip()
+    return where or None
+
+
+def prepare_email_events(events: list[dict]) -> list[dict]:
+    """Copies of `events` ready for an email (ROADMAP.md item 257): a paid
+    Featured event first (item 245), then by date and start time, each with
+    `email_when` ("Sat Oct 10 · 10:00 AM", or the date alone when untimed),
+    `email_where` and `email_blurb`. Sorted before the per-town cap is
+    applied, so the entries shown are the soonest ones."""
+    prepared = []
+    for e in events:
+        when = None
+        if e.get("date_iso"):
+            try:
+                when = datetime.fromisoformat(e["date_iso"]).strftime("%a %b %-d")
+            except ValueError:
+                when = None
+        when = when or e.get("date")
+        clock = event_time_label(e.get("date_iso"))
+        if when and clock:
+            when = f"{when} · {clock}"
+        prepared.append(
+            dict(e, email_when=when, email_where=email_event_where(e), email_blurb=email_blurb(e.get("detail"), e.get("title", "")))
+        )
+    return sorted(prepared, key=lambda e: (not e.get("sponsored_by"), e.get("date_iso") or "9999"))
+
+
 def _pick_evergreen_highlights(evergreen: list[dict], limit: int) -> list[dict]:
     """Fallback picks for a region with nothing dated this weekend
     (ROADMAP.md item 177). Every region's `evergreen:` list is
@@ -3364,7 +3439,7 @@ def render_combined_email_digest(sections: list[dict], weekend_date_range: str, 
         block = {
             "region_name": s["region_name"],
             "region_url": s["region_url"],
-            "attendable_events": attendable_events,
+            "attendable_events": prepare_email_events(attendable_events),
             "informational_events": informational_events,
             "evergreen_highlights": _pick_evergreen_highlights(s.get("evergreen", []), limit=2),
             "sponsor": sponsor,
