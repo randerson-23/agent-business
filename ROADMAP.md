@@ -14158,7 +14158,7 @@ offer.
 
 #### P1 (new)
 
-257. **Make each event in the email readable without a click.** Design/UX,
+257. ✅ **DONE — Make each event in the email readable without a click.** Design/UX,
      build loop, both email templates. For every event entry:
 
      - **Start time** after the date (*"Sat Oct 10 · 10:00 AM"*). All-day
@@ -14178,6 +14178,37 @@ offer.
      clip check still passing on the combined issue with every field
      filled. This is the change most likely to move opens and clicks,
      the numbers a sponsor will ask for.
+
+     ✅ **Shipped 2026-10-09**, with item 260.
+     - `prepare_email_events()` (used by both emails) returns copies with
+       `email_when` (*"Sat Oct 10 · 10:00 AM"*, or the date alone when the
+       event has no time; midnight counts as "no time", never 12:00 AM),
+       `email_where` (the configured venue, else the short source name, so
+       *"Village of Palatine"* from *"Village of Palatine — News"*) and
+       `email_blurb`. Events now carry their source name (`source`) for this.
+     - **Blurb:** whitespace collapsed, cut at a word boundary at 90
+       characters, and nothing at all when no description exists or it only
+       repeats the title. **One thing the item did not anticipate:** the
+       Mount Prospect and Des Plaines library feeds start every description
+       with the event's own date and time (*"Sunday, October 04 2026 12:15pm
+       - 1:15pm"*), which would have repeated the line above it, so that
+       header is removed before trimming.
+     - **Order:** a Featured promotion first, then date and start time, and
+       the sort happens **before** the 4-per-town cap, so the four shown are
+       the soonest ones. An untimed event sorts ahead of timed ones the same
+       day. The subject line and preheader still choose their titles as
+       before.
+     - Checked against the live `events.json` (216 events): the combined
+       issue renders at about 26.9 KB, well inside Gmail's ~102 KB clip, and
+       a synthetic worst case (5 towns, 12 events each, long descriptions)
+       stays under 90 KB.
+     - **Item 260:** 26 developer notes in the two templates (about 9.9 KB
+       of source) are now Jinja `{# #}` comments, so each send file now has
+       a single `<!--`, Outlook's `<!--[if mso]>` block. A test fails if any
+       other HTML comment or any "ROADMAP.md" text reaches a rendered email.
+       `send_newsletter.py` strips comments itself, so nothing depended on
+       them.
+     - 11 new tests (`tests/test_email_entries.py`); 677 pass.
 
 #### P2 (new)
 
@@ -14221,7 +14252,7 @@ offer.
 
 #### P3 (new)
 
-260. **Strip HTML comments from the email send files.** Build loop: in
+260. ✅ **DONE — Strip HTML comments from the email send files.** Build loop: in
      `email_digest.html.j2` and `combined_email_digest.html.j2`, turn
      every `<!-- ... -->` that is a note to developers into a Jinja
      `{# ... #}` comment. Keep only the `<!--[if mso]>` conditional
