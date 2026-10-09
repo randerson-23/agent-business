@@ -742,6 +742,101 @@ def save_transport_failure_details(details: dict) -> None:
     )
 
 
+# ROADMAP.md item 262: the last good copy of each source. A source that
+# alternates between answering and failing (Arlington Heights Park District
+# was missing from 12 of 30 builds) used to take its town's events off the
+# page for as long as the failure lasted. After every successful fetch the
+# source's upcoming items are saved here; if the next fetch fails at the
+# transport level, a copy under LAST_GOOD_MAX_AGE is used instead, so a
+# reader sees nothing different. It never replaces finding the cause
+# (item 194), and a source that has never succeeded has no copy to use.
+LAST_GOOD_DIR = ROOT / "data" / "source_last_good"
+LAST_GOOD_MAX_AGE = timedelta(hours=72)
+LAST_GOOD_MAX_ITEMS = 60
+# Rewrite an unchanged copy at most this often, so a quiet source does not
+# produce a commit on every build but its age still stays well under 72 hours.
+LAST_GOOD_REFRESH = timedelta(hours=6)
+
+
+def last_good_path(directory: Path, region_id: str, source_name: str) -> Path:
+    slug = re.sub(r"[^a-z0-9]+", "-", source_name.lower()).strip("-") or "source"
+    return directory / f"{region_id}__{slug}.json"
+
+
+def select_last_good_items(raw_items: list[dict], today: date) -> list[dict]:
+    """Which of a source's fetched items are worth keeping: those dated today
+    or later, soonest first, then undated ones (news), capped so one large
+    library calendar cannot make a large file."""
+    dated, undated = [], []
+    for item in raw_items:
+        iso = parse_event_date_iso(item.get("date"))
+        if iso is None:
+            undated.append(item)
+            continue
+        try:
+            day = datetime.fromisoformat(iso).date()
+        except ValueError:
+            undated.append(item)
+            continue
+        if day >= today:
+            dated.append((iso, item))
+    dated.sort(key=lambda pair: pair[0])
+    return ([item for _iso, item in dated] + undated)[:LAST_GOOD_MAX_ITEMS]
+
+
+def save_last_good(directory: Path, region_id: str, source_name: str, raw_items: list[dict], now: datetime, today: date) -> bool:
+    """Record a successful fetch. Returns True when a file was written. An
+    empty result is not recorded: it never overwrites a useful copy. An
+    unchanged copy is only rewritten once it is LAST_GOOD_REFRESH old."""
+    items = select_last_good_items(raw_items, today)
+    if not items:
+        return False
+    path = last_good_path(directory, region_id, source_name)
+    try:
+        existing = json.loads(path.read_text(encoding="utf-8"))
+        age = now - datetime.fromisoformat(existing["fetched_at"])
+        if existing.get("items") == items and age < LAST_GOOD_REFRESH:
+            return False
+    except (OSError, ValueError, KeyError, TypeError):
+        pass
+    directory.mkdir(parents=True, exist_ok=True)
+    path.write_text(
+        json.dumps({"source": source_name, "fetched_at": now.isoformat(timespec="seconds"), "items": items}, indent=1, ensure_ascii=False, sort_keys=True) + "\n",
+        encoding="utf-8",
+    )
+    return True
+
+
+def load_last_good(directory: Path, region_id: str, source_name: str, now: datetime) -> tuple[list[dict], timedelta] | None:
+    """(items, age) for a copy younger than LAST_GOOD_MAX_AGE, else None.
+    Anything unreadable counts as no copy: this must never break a build."""
+    path = last_good_path(directory, region_id, source_name)
+    try:
+        data = json.loads(path.read_text(encoding="utf-8"))
+        fetched = datetime.fromisoformat(data["fetched_at"])
+        items = data["items"]
+    except (OSError, ValueError, KeyError, TypeError):
+        return None
+    if not isinstance(items, list):
+        return None
+    age = now - fetched
+    if age < timedelta(0) or age >= LAST_GOOD_MAX_AGE:
+        return None
+    return items, age
+
+
+def last_good_sentence(completeness: dict | None) -> str:
+    """"1 source is shown from its last update, 14 hours ago." - appended to
+    the completeness line wherever it is stated, or "" when none applies."""
+    used = (completeness or {}).get("last_good") or []
+    if not used:
+        return ""
+    hours = max(1, round(max(u["age_hours"] for u in used)))
+    noun = "source is" if len(used) == 1 else "sources are"
+    unit = "hour" if hours == 1 else "hours"
+    return f" {len(used)} {noun} shown from {'its' if len(used) == 1 else 'their'} last update, up to {hours} {unit} ago."
+
+
 def write_source_completeness(reporting: int, expected: int, now: datetime) -> None:
     """Persist "N of M sources reported" for the build that just ran
     (ROADMAP.md item 197) - a single build-wide snapshot, not a history,
@@ -872,6 +967,9 @@ def fetch_region_sections(
     transport_failures: dict | None = None,
     transport_failure_details: dict | None = None,
     completeness: dict | None = None,
+    *,
+    last_good_dir: Path | None = None,
+    now: datetime | None = None,
 ) -> list[dict]:
     region_id = region_cfg["region"]["id"]
     region_name = region_cfg["region"]["name"]
@@ -904,6 +1002,24 @@ def fetch_region_sections(
             # scraper.
             transport_failed = raw_items is None
             raw_items = raw_items or []
+            if last_good_dir is not None and now is not None:
+                if not transport_failed:
+                    try:
+                        save_last_good(last_good_dir, region_id, source["name"], raw_items, now, region_local_date(region_cfg["region"], now))
+                    except OSError as exc:
+                        logger.warning("Could not save last-good copy for %s: %s", source["name"], exc)
+                else:
+                    saved = load_last_good(last_good_dir, region_id, source["name"], now)
+                    if saved is not None:
+                        raw_items, age = saved
+                        logger.warning(
+                            "%s failed; using its last good copy from %.1f hours ago (%d item(s))",
+                            source["name"], age.total_seconds() / 3600, len(raw_items),
+                        )
+                        if completeness is not None:
+                            completeness.setdefault("last_good", []).append(
+                                {"source": f"{region_id}:{source['name']}", "age_hours": age.total_seconds() / 3600}
+                            )
             logger.info(
                 "  -> %d item(s)%s",
                 len(raw_items),
@@ -1677,6 +1793,7 @@ def render_about_page(
         organization_json_ld=build_organization_json_ld(),
         corrections_cta_url=build_corrections_cta_url(contact_email),
         source_completeness=source_completeness,
+        last_good_note=last_good_sentence(source_completeness).strip(),
     )
 
 
@@ -2662,6 +2779,7 @@ def build_feed_xml(feed_items: list[dict], now: datetime, source_completeness: d
         description += (
             f" This build reached {source_completeness.get('reporting', 0)} of "
             f"{source_completeness.get('expected', 0)} configured sources."
+            + last_good_sentence(source_completeness)
         )
     items = []
     for e in dated:
@@ -2783,7 +2901,7 @@ def build_llms_txt(region_summaries: list[dict], source_completeness: dict | Non
             f"As of this build, {source_completeness.get('reporting', 0)} of "
             f"{source_completeness.get('expected', 0)} configured sources reported "
             "successfully; the rest is a source that didn't answer this time, not "
-            "missing coverage.",
+            "missing coverage." + last_good_sentence(source_completeness),
             "",
         ]
     lines.append("## Regions")
@@ -3808,6 +3926,8 @@ def main() -> None:
             transport_failures=transport_failures,
             transport_failure_details=transport_failure_details,
             completeness=source_completeness,
+            last_good_dir=LAST_GOOD_DIR,
+            now=now,
         )
         annual_block = prepare_annual_events(region_cfg, now)
         if annual_block:
