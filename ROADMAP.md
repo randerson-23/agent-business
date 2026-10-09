@@ -10623,18 +10623,18 @@ The tonight-relevant part: this repo's newsletter cron fires **today at
        last 24 committed builds** of `source_transport_failures.json`, so
        it works from the first build instead of after two days of waiting.
        The seed matches the item's own table: Arlington Heights Park
-       District `100000010101100100111010` (10 failures), Des Plaines Park
-       District 11, Palatine Public Library 7 (from the build itself,
-       which also adds this build's outcome), Mount Prospect Park District
-       5.
+       District `100000010101100100111010` (10 failures in 24).
      - **`detect_flapping_sources`**: at least 8 builds of history, a
        failure rate of **one in five or more**, and **not already failing
-       its last three builds** (that is the chronic check's job). It
-       flags those four sources on the seed data. The streak check, run
-       against the same alternating history, flags none: a test shows both.
-       One in five rather than the first-guess one in four, because it
-       would have missed Mount Prospect Park District and Palatine Public
-       Library, both real.
+       its last three builds** (that is the chronic check's job). On the
+       seed it flags **three** sources: Arlington Heights Park District
+       (10 of 24), Des Plaines Park District (11 of 24) and Palatine Public
+       Library District (6 of 24). Mount Prospect Park District (4 of 24)
+       is just under the line. The streak check, run against an
+       alternating history, flags none: a test shows both. One in five
+       rather than the first-guess one in four, because one in four would
+       have missed Palatine Public Library (25%, borderline) the moment its
+       rate dipped.
      - **`detect_lockstep_failures`**: groups of two or more sources whose
        failures fall on **exactly** the same builds. None exists in the
        real history today (the three park districts that moved together on
