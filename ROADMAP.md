@@ -262,6 +262,16 @@ that limit.
    should stop now; the build loop should check the next
    `data/indexnow_log.json` entries. Five waiting pages were sent through
    Search Console's "Request indexing" the same day.*
+3b. **Generate a new IndexNow key in Bing (1 min, item 265).** The
+   build now logs Bing's reason. As of 2026-10-10 it is
+   `UserForbiddedToAccessSite` ("verify the site using the key") although
+   the key file is confirmed live and correct, so Bing bound this key
+   while the site was unverified. In Bing Webmaster Tools → *IndexNow*,
+   generate a new key and send it to the build loop (paste it into a
+   session or a note). The loop changes `INDEXNOW_KEY` and keeps the old
+   key file for 30 days. Until then IndexNow stays refused, which costs
+   only Bing/DuckDuckGo/Yahoo/ChatGPT-search recrawl speed; Google is
+   unaffected (48 pages indexed).
 4. ✅ *Done 2026-10-09: the Buttondown handle is now `withinten`, and
    `config/newsletter.yaml` is updated (item 226). Yahoo spam check (item
    239) and the Buttondown settings below are also done: tracking on,
@@ -14553,6 +14563,17 @@ and search engines that keep coming back.
        build sends nothing and logs `skipped`.
      - 10 new tests; 710 pass. `submit_indexnow`'s existing tests now
        mock the key-file request, so no test touches the network.
+     - **First real answer, from the build right after this merged
+       (2026-10-10 06:00 UTC):** `status` 403, `key_file_ok` **`true`**,
+       `body` `{"errorCode":"UserForbiddedToAccessSite","message":"User is
+       unauthorized to access the site. Please verify the site using the
+       key and try again"}`. So the file side is **proven fine from the
+       runner**, and Bing is refusing the site for this key even though the
+       site is verified in Bing (CNAME, 2026-10-09). That is the item's
+       cause (3): the key was bound while the site was unverified. The owner
+       step below now applies (Needs Ryan 3b). One thing this does **not**
+       prove: that Bing's own fetch of the key file succeeds; only the
+       runner's does.
      - **Owner step, only if needed (1 minute):** read the next entries in
        `data/indexnow_log.json` on main. If `key_file_ok` is `true` and
        `body` names the key or the site as invalid or forbidden, generate a
