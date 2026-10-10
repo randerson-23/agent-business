@@ -875,7 +875,8 @@ def test_submit_indexnow_records_the_http_status_of_a_rejection(mock_post, _mock
     ok = submit_indexnow("withintenmiles.com", "abc123", "https://withintenmiles.com/abc123.txt",
                          ["https://withintenmiles.com/"], outcome=outcome)
     assert ok is False
-    assert outcome == {"status": 403, "error": "HTTPError", "body": None, "key_file_ok": None}
+    assert outcome == {"status": 403, "error": "HTTPError", "body": None, "key_file_ok": None,
+                       "bing_status": 403, "bing_body": None, "accepted_by": None}
 
 
 @patch("fetchers.requests.get", side_effect=requests.ConnectionError("offline"))
@@ -887,12 +888,15 @@ def test_submit_indexnow_records_success_and_transport_errors(mock_post, _mock_g
     mock_post.return_value = accepted
     outcome = {}
     assert submit_indexnow("h", "k", "https://h/k.txt", ["https://h/"], outcome=outcome) is True
-    assert outcome == {"status": 202, "error": None, "body": None, "key_file_ok": None}
+    assert outcome == {"status": 202, "error": None, "body": None, "key_file_ok": None,
+                       "bing_status": None, "bing_body": None, "accepted_by": "api.indexnow.org"}
 
     mock_post.side_effect = requests.ConnectTimeout("slow")
     outcome = {}
     assert submit_indexnow("h", "k", "https://h/k.txt", ["https://h/"], outcome=outcome) is False
-    assert outcome == {"status": None, "error": "ConnectTimeout", "body": None, "key_file_ok": None}
+    assert outcome == {"status": None, "error": "ConnectTimeout", "body": None, "key_file_ok": None,
+                       "bing_status": None, "bing_body": None, "accepted_by": None}
+    assert mock_post.call_count == 2  # the accepted call, then the timeout: no second attempt after a network error
 
 
 # ---- ROADMAP.md item 265: say why IndexNow refused, and prove the key file is fine ----
@@ -953,6 +957,48 @@ def test_submit_indexnow_does_not_keep_a_body_for_an_accepted_ping(mock_post, mo
     outcome = {}
     assert submit_indexnow("h", "k", "https://h/k.txt", ["https://h/"], outcome=outcome) is True
     assert outcome["body"] is None and outcome["key_file_ok"] is True
+
+
+def _accepted(status=202):
+    resp = Mock()
+    resp.status_code = status
+    resp.text = ""
+    resp.raise_for_status = Mock()
+    return resp
+
+
+@patch("fetchers.requests.get", return_value=_key_file(200, "k"))
+@patch("fetchers.requests.post")
+def test_a_refusal_from_the_shared_endpoint_is_retried_directly_with_bing(mock_post, _mock_get):
+    mock_post.side_effect = [_rejection(403, '{"errorCode":"UserForbiddedToAccessSite"}'), _accepted(200)]
+    outcome = {}
+    assert submit_indexnow("h", "k", "https://h/k.txt", ["https://h/"], outcome=outcome) is True
+    assert [c.args[0] for c in mock_post.call_args_list] == ["https://api.indexnow.org/indexnow", "https://www.bing.com/indexnow"]
+    assert outcome["status"] == 403 and outcome["bing_status"] == 200 and outcome["accepted_by"] == "www.bing.com"
+    assert "UserForbiddedToAccessSite" in outcome["body"]
+
+
+@patch("fetchers.requests.get", return_value=_key_file(200, "k"))
+@patch("fetchers.requests.post")
+def test_when_bing_refuses_too_both_answers_are_on_record(mock_post, _mock_get):
+    mock_post.side_effect = [_rejection(403, "shared says no"), _rejection(403, '{"errorCode":"X","message":"bing says no"}')]
+    outcome = {}
+    assert submit_indexnow("h", "k", "https://h/k.txt", ["https://h/"], outcome=outcome) is False
+    assert outcome["body"] == "shared says no"
+    assert outcome["bing_status"] == 403 and "bing says no" in outcome["bing_body"] and outcome["accepted_by"] is None
+
+
+@patch("fetchers.requests.get", return_value=_key_file(200, "k"))
+@patch("fetchers.requests.post")
+def test_no_direct_attempt_after_a_network_error_or_without_an_outcome(mock_post, _mock_get):
+    mock_post.side_effect = requests.ConnectTimeout("slow")
+    outcome = {}
+    assert submit_indexnow("h", "k", "https://h/k.txt", ["https://h/"], outcome=outcome) is False
+    assert mock_post.call_count == 1 and outcome["bing_status"] is None
+    mock_post.reset_mock()
+    mock_post.side_effect = [_rejection(403, "no")]
+    assert submit_indexnow("h", "k", "https://h/k.txt", ["https://h/"]) is False
+    assert mock_post.call_count == 1  # callers that do not record an outcome get the old single request
 
 
 @patch("fetchers.requests.get")

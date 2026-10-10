@@ -746,7 +746,10 @@ def submit_indexnow(
     real build was logging a 403 that nothing recorded anywhere.
     """
     if outcome is not None:
-        outcome.update({"status": None, "error": None, "body": None, "key_file_ok": None})
+        outcome.update(
+            {"status": None, "error": None, "body": None, "key_file_ok": None,
+             "bing_status": None, "bing_body": None, "accepted_by": None}
+        )
         # ROADMAP.md item 265: rule the file side in or out with evidence on
         # every build. True only when the live key URL answers 200 with
         # exactly the key; None when it could not be fetched at all.
@@ -770,6 +773,8 @@ def submit_indexnow(
                 text = getattr(resp, "text", "")
                 outcome["body"] = text[:300] if isinstance(text, str) and text else None
         resp.raise_for_status()
+        if outcome is not None:
+            outcome["accepted_by"] = "api.indexnow.org"
         return True
     except Exception as exc:  # noqa: BLE001 - fail soft by design
         logger.warning("IndexNow submission failed for %d URL(s): %s", len(urls), exc)
@@ -778,7 +783,37 @@ def submit_indexnow(
             response = getattr(exc, "response", None)
             if outcome["status"] is None and response is not None:
                 outcome["status"] = getattr(response, "status_code", None)
+        # ROADMAP.md item 265: the shared endpoint relays to every engine, and
+        # one engine's refusal (Bing's, here) fails the whole call. Ask Bing
+        # directly, once, so its own answer is on record and the submission
+        # still lands if Bing accepts it. Only when the shared call answered
+        # with a refusal: a network error says nothing about either engine.
+        if outcome is not None and (outcome.get("status") or 0) >= 400:
+            return _submit_indexnow_to_bing(host, key, key_location, urls, outcome)
         return False
+
+
+def _submit_indexnow_to_bing(host: str, key: str, key_location: str, urls: list[str], outcome: dict) -> bool:
+    try:
+        resp = requests.post(
+            "https://www.bing.com/indexnow",
+            json={"host": host, "key": key, "keyLocation": key_location, "urlList": urls},
+            timeout=REQUEST_TIMEOUT,
+            headers={"User-Agent": USER_AGENT, "Content-Type": "application/json; charset=utf-8"},
+        )
+    except Exception as exc:  # noqa: BLE001 - advisory second attempt
+        logger.warning("IndexNow direct-to-Bing submission failed: %s", exc)
+        return False
+    status = getattr(resp, "status_code", None)
+    outcome["bing_status"] = status
+    if isinstance(status, int) and status >= 400:
+        text = getattr(resp, "text", "")
+        outcome["bing_body"] = text[:300] if isinstance(text, str) and text else None
+        return False
+    if isinstance(status, int) and status < 300:
+        outcome["accepted_by"] = "www.bing.com"
+        return True
+    return False
 
 
 FETCHERS = {

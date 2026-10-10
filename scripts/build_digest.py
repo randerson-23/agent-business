@@ -4148,6 +4148,11 @@ def record_indexnow_outcome(path: Path, now: datetime, url_count: int, ok: bool,
         "body": outcome.get("body"),
         "key_file_ok": outcome.get("key_file_ok"),
         "skipped": outcome.get("skipped"),
+        # The same submission sent straight to Bing when the shared endpoint
+        # refused it, and who ended up accepting it.
+        "bing_status": outcome.get("bing_status"),
+        "bing_body": outcome.get("bing_body"),
+        "accepted_by": outcome.get("accepted_by"),
     })
     history = history[-INDEXNOW_LOG_KEEP:]
     path.write_text(json.dumps(history, indent=2) + "\n", encoding="utf-8")

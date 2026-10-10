@@ -4493,7 +4493,8 @@ def test_record_indexnow_outcome_appends_and_keeps_a_trailing_window(tmp_path):
         history = build_digest.record_indexnow_outcome(path, now, 61, False, {"status": 403, "error": "HTTPError"})
     assert len(history) == build_digest.INDEXNOW_LOG_KEEP
     assert history[-1] == {"timestamp": "2026-10-03T14:00:00+00:00", "url_count": 61, "ok": False,
-                           "status": 403, "error": "HTTPError", "body": None, "key_file_ok": None, "skipped": None}
+                           "status": 403, "error": "HTTPError", "body": None, "key_file_ok": None, "skipped": None,
+                           "bing_status": None, "bing_body": None, "accepted_by": None}
     assert json.loads(path.read_text()) == history
 
 
