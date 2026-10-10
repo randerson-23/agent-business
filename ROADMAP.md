@@ -262,7 +262,7 @@ that limit.
    should stop now; the build loop should check the next
    `data/indexnow_log.json` entries. Five waiting pages were sent through
    Search Console's "Request indexing" the same day.*
-3b. **Generate a new IndexNow key in Bing (1 min, item 265).** The
+3b. ✅ *Done 2026-10-10: the owner generated `c0dde656…a255` in Bing; `INDEXNOW_KEY` is switched and the old key file stays published until 2026-11-09. The first build after this may still log 403 (its own new key file is not live until that build deploys); judge from the build after.* **Generate a new IndexNow key in Bing (1 min, item 265).** The
    build now logs Bing's reason. As of 2026-10-10 it is
    `UserForbiddedToAccessSite` ("verify the site using the key") although
    the key file is confirmed live and correct, so Bing bound this key

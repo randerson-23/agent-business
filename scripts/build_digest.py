@@ -166,8 +166,18 @@ LOCAL_TZ = ZoneInfo("America/Chicago")
 # actually controls the domain. Fixed rather than regenerated per build,
 # same reasoning as CUSTOM_DOMAIN: a value CI re-derives differently every
 # run would break its own verification. Any 8-128 char [A-Za-z0-9-] string
-# works; this one was generated once with `secrets.token_hex(16)`.
-INDEXNOW_KEY = "f3b7799bed06aac4295ec9134d53b014"
+# works.
+#
+# ROADMAP.md item 265: the first key (f3b7799b..., generated with
+# `secrets.token_hex(16)`) was bound by Bing while the site was still
+# unverified, and every ping returned 403 UserForbiddedToAccessSite even
+# with the key file live. Replaced 2026-10-10 by a key the owner generated
+# in Bing Webmaster Tools -> IndexNow after verifying the site. The old key
+# file keeps being published until RETIRED_INDEXNOW_KEYS_UNTIL, since
+# submissions already made under it are checked against it.
+INDEXNOW_KEY = "c0dde656278c4dbbad752d8e9475a255"
+RETIRED_INDEXNOW_KEYS = ("f3b7799bed06aac4295ec9134d53b014",)
+RETIRED_INDEXNOW_KEYS_UNTIL = date(2026, 11, 9)
 
 # The site's real first launch (PR #1, 2026-08-26) - used for the honest
 # "running since" line on /sponsor (ROADMAP.md Phase 11 #58). Fixed, not
@@ -4572,6 +4582,9 @@ def main() -> None:
     (OUTPUT_DIR / "llms-full.txt").write_text(build_llms_full_txt(llms_full_groups, weekend_date_range), encoding="utf-8")
     (OUTPUT_DIR / "CNAME").write_text(CUSTOM_DOMAIN + "\n", encoding="utf-8")
     (OUTPUT_DIR / f"{INDEXNOW_KEY}.txt").write_text(INDEXNOW_KEY, encoding="utf-8")
+    if now.astimezone(LOCAL_TZ).date() <= RETIRED_INDEXNOW_KEYS_UNTIL:
+        for old_key in RETIRED_INDEXNOW_KEYS:
+            (OUTPUT_DIR / f"{old_key}.txt").write_text(old_key, encoding="utf-8")
     (OUTPUT_DIR / "feed.xml").write_text(build_feed_xml(feed_items, now, source_completeness), encoding="utf-8")
     logger.info("Wrote sitemap.xml, robots.txt, llms.txt, CNAME, feed.xml, and IndexNow key file")
     og_dir = OUTPUT_DIR / "og"
