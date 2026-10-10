@@ -13109,7 +13109,7 @@ visibility.
 
 #### P2 (new)
 
-235. ↪️ **Folded into item 265 (sixty-fifth pass): the probe is superseded by logging the 403 body; the changed-URLs half ships with 265.** **Narrow the IndexNow 403 with one per-engine probe, and stop
+235. ✅ **DONE, folded into item 265 (shipped 2026-10-10): the probe is superseded by logging the 403 body; the changed-URLs half shipped with 265.** **Narrow the IndexNow 403 with one per-engine probe, and stop
      resubmitting every URL.** Item 224's log shows `403` on every build.
      The site side checks out, and the public evidence points to Bing.
      Two small changes:
@@ -14507,7 +14507,7 @@ and search engines that keep coming back.
 
 #### P1 (new)
 
-265. **Record why IndexNow says 403, then rotate the key once.** Build
+265. 🟡 **BUILD DONE; owner step conditional on what the log says — Record why IndexNow says 403, then rotate the key once.** Build
      loop, `scripts/fetchers.py` and `build_digest.py`:
 
      - In `submit_indexnow()`, store the **first 300 characters of the
@@ -14528,6 +14528,38 @@ and search engines that keep coming back.
      This supersedes item 235's per-engine probe, which is unnecessary
      once the body is logged. Item 235's other half, **submitting only
      changed URLs**, still stands and should ship in the same PR.
+
+     🟡 **Shipped 2026-10-10.**
+     - **The reason is now recorded.** On a rejection (status 400 or
+       above), the first 300 characters of the response body go into
+       `outcome["body"]` and `data/indexnow_log.json`. An accepted ping
+       keeps no body.
+     - **The file side is now checked every build.** Before posting, the
+       live key URL is fetched: `key_file_ok` is `true` only for a 200
+       answer that is exactly the key, `false` for anything else that
+       answered, and `null` when it could not be fetched at all (which is
+       what this sandbox records). The check is skipped when no outcome is
+       being recorded.
+     - **Changed pages only (item 235's second half).** Each sitemap page
+       gets a fingerprint (`data/indexnow_hashes.json`, committed by CI,
+       seeded empty so the first run sends everything once). The "Generated
+       <time>" footer and the WebPage `dateModified` are stripped first,
+       since they change on every build. Measured on two consecutive real
+       builds, 48 of 61 pages came out identical and 13 had genuinely
+       changed. The fingerprints are written **only after IndexNow accepts
+       a submission**, so while it keeps answering 403 every changed page
+       stays pending rather than being dropped, and the behaviour today
+       is "send them all" until the 403 clears. When nothing changed, the
+       build sends nothing and logs `skipped`.
+     - 10 new tests; 710 pass. `submit_indexnow`'s existing tests now
+       mock the key-file request, so no test touches the network.
+     - **Owner step, only if needed (1 minute):** read the next entries in
+       `data/indexnow_log.json` on main. If `key_file_ok` is `true` and
+       `body` names the key or the site as invalid or forbidden, generate a
+       new key in Bing Webmaster Tools → IndexNow and paste it here; the
+       build loop will then change `INDEXNOW_KEY` and keep the old key file
+       for 30 days. If `key_file_ok` is `false`, that is a build-loop
+       fault, not an owner one.
 
 266. **A weekly audience snapshot, and a sponsor-page number once it
      earns its place.**
