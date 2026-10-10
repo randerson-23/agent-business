@@ -3,28 +3,14 @@
 <channel>
   <title>Within Ten — Upcoming Local Events</title>
   <link>https://withintenmiles.com/</link>
-  <description>Upcoming events across every Within Ten region, soonest first - aggregated automatically from village, library, park district and school-district calendars. This build reached 20 of 26 configured sources. 1 source is shown from its last update, up to 1 hour ago.</description>
-  <lastBuildDate>Sat, 10 Oct 2026 14:15:11 +0000</lastBuildDate>
+  <description>Upcoming events across every Within Ten region, soonest first - aggregated automatically from village, library, park district and school-district calendars. This build reached 19 of 26 configured sources. 2 sources are shown from their last update, up to 8 hours ago.</description>
+  <lastBuildDate>Sat, 10 Oct 2026 22:00:05 +0000</lastBuildDate>
   <item>
     <title>Arlington Heights: Family Time</title>
     <link>https://www.ahml.info/scheduling/reservation/224193</link>
     <guid isPermaLink="true">https://www.ahml.info/scheduling/reservation/224193</guid>
     <description></description>
     <pubDate>Sat, 10 Oct 2026 00:00:00 +0000</pubDate>
-  </item>
-  <item>
-    <title>Mount Prospect: Fishing Derby</title>
-    <link>https://www.mppd.org/event/fishing-derby-4/</link>
-    <guid isPermaLink="true">https://www.mppd.org/event/fishing-derby-4/</guid>
-    <description>Rescheduled! Fishing Derby (Ages 3-16) Grab your gear and make your way to Clearwater Park for a morning of family fishing! Test your skills and maybe even…</description>
-    <pubDate>Sat, 10 Oct 2026 08:00:00 +0000</pubDate>
-  </item>
-  <item>
-    <title>Mount Prospect: Spooky Scary Studio</title>
-    <link>https://www.mppd.org/event/31551/</link>
-    <guid isPermaLink="true">https://www.mppd.org/event/31551/</guid>
-    <description>Spooky Scary Studio (Ages 5-10) The Studio has been overrun by spooky, yet friendly, skeletons just in time for Halloween! Join us for a workshop filled with…</description>
-    <pubDate>Sat, 10 Oct 2026 09:30:00 +0000</pubDate>
   </item>
   <item>
     <title>Mount Prospect: Digitizing Photos, Slides, and Negatives</title>
@@ -398,6 +384,22 @@ Hoopla or another library app? Talk…</description>
     <description>Tuesday, October 13 2026 5:00pm - 6:30pm 
  Ever wanted to try out Dungeons and Dragons? Now's your chance! Come to the library to learn how to play and have…</description>
     <pubDate>Tue, 13 Oct 2026 17:00:00 +0000</pubDate>
+  </item>
+  <item>
+    <title>Des Plaines: Book a Teen Librarian</title>
+    <link>https://desplaines.libnet.info/event/17604769</link>
+    <guid isPermaLink="true">https://desplaines.libnet.info/event/17604769</guid>
+    <description>Tuesday, October 13 2026 5:00pm - 6:00pm 
+ Come in and get to know your teen librarians!</description>
+    <pubDate>Tue, 13 Oct 2026 17:00:00 +0000</pubDate>
+  </item>
+  <item>
+    <title>Wheeling: Spanish Conversation Practice | At the Branch</title>
+    <link>https://indiantrails.libnet.info/event/16568748</link>
+    <guid isPermaLink="true">https://indiantrails.libnet.info/event/16568748</guid>
+    <description>Tuesday, October 13 2026 5:30pm - 6:30pm 
+ Informal Spanish conversation session to practice and improve your speaking skills by talking to native…</description>
+    <pubDate>Tue, 13 Oct 2026 17:30:00 +0000</pubDate>
   </item>
 </channel>
 </rss>
