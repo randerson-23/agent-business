@@ -3,403 +3,454 @@
 <channel>
   <title>Within Ten — Upcoming Local Events</title>
   <link>https://withintenmiles.com/</link>
-  <description>Upcoming events across every Within Ten region, soonest first - aggregated automatically from village, library, park district and school-district calendars. This build reached 19 of 26 configured sources. 2 sources are shown from their last update, up to 8 hours ago.</description>
-  <lastBuildDate>Sat, 10 Oct 2026 22:00:05 +0000</lastBuildDate>
+  <description>Upcoming events across every Within Ten region, soonest first - aggregated automatically from village, library, park district and school-district calendars. This build reached 21 of 26 configured sources.</description>
+  <lastBuildDate>Sat, 10 Oct 2026 22:10:34 +0000</lastBuildDate>
   <item>
     <title>Arlington Heights: Family Time</title>
-    <link>https://www.ahml.info/scheduling/reservation/224193</link>
-    <guid isPermaLink="true">https://www.ahml.info/scheduling/reservation/224193</guid>
-    <description></description>
+    <link>https://withintenmiles.com/arlington-heights-60005/#ev-family-time-2026-10-10</link>
+    <guid isPermaLink="true">https://withintenmiles.com/arlington-heights-60005/#ev-family-time-2026-10-10</guid>
+    <description>Official listing: https://www.ahml.info/scheduling/reservation/224193</description>
     <pubDate>Sat, 10 Oct 2026 00:00:00 +0000</pubDate>
+    <source url="https://www.ahml.info/scheduling/reservation/224193">Arlington Heights Memorial Library — Events</source>
   </item>
   <item>
     <title>Mount Prospect: Digitizing Photos, Slides, and Negatives</title>
-    <link>https://mppl.libnet.info/event/16452806</link>
-    <guid isPermaLink="true">https://mppl.libnet.info/event/16452806</guid>
+    <link>https://withintenmiles.com/mount-prospect-60056/#ev-digitizing-photos-slides-and-negatives-2026-10-10</link>
+    <guid isPermaLink="true">https://withintenmiles.com/mount-prospect-60056/#ev-digitizing-photos-slides-and-negatives-2026-10-10</guid>
     <description>Saturday, October 10 2026 10:00am - 11:00am 
- Learn how to digitize old photos, slides, and negatives using the library's Mac Studio equipment. It's a great…</description>
+ Learn how to digitize old photos, slides, and negatives using the library's Mac Studio equipment. It's a great… Official listing: https://mppl.libnet.info/event/16452806</description>
     <pubDate>Sat, 10 Oct 2026 10:00:00 +0000</pubDate>
+    <source url="https://mppl.libnet.info/event/16452806">Mount Prospect Public Library — Events</source>
   </item>
   <item>
     <title>Wheeling: Foundation Used Book Sale</title>
-    <link>https://indiantrails.libnet.info/event/11209704</link>
-    <guid isPermaLink="true">https://indiantrails.libnet.info/event/11209704</guid>
+    <link>https://withintenmiles.com/wheeling-60090/#ev-foundation-used-book-sale-2026-10-10</link>
+    <guid isPermaLink="true">https://withintenmiles.com/wheeling-60090/#ev-foundation-used-book-sale-2026-10-10</guid>
     <description>Saturday, October 10 2026 10:00am - 2:00pm 
  Hosted by the Foundation for the Indian Trails Library.
-All proceeds benefit the library. Enter the sale through…</description>
+All proceeds benefit the library. Enter the sale through… Official listing: https://indiantrails.libnet.info/event/11209704</description>
     <pubDate>Sat, 10 Oct 2026 10:00:00 +0000</pubDate>
-  </item>
-  <item>
-    <title>Arlington Heights: Autumn Harvest</title>
-    <link>https://www.ahpd.org/event/autumn-harvest-2026/</link>
-    <guid isPermaLink="true">https://www.ahpd.org/event/autumn-harvest-2026/</guid>
-    <description>Don’t miss fall family fun with crafts, games, hayrides, a scarecrow building contest, live music and entertainment, and food available for purchase from…</description>
-    <pubDate>Sat, 10 Oct 2026 11:00:00 +0000</pubDate>
+    <source url="https://indiantrails.libnet.info/event/11209704">Indian Trails Public Library — Events</source>
   </item>
   <item>
     <title>Mount Prospect: Afternoon Tea Social</title>
-    <link>https://mppl.libnet.info/event/16124662</link>
-    <guid isPermaLink="true">https://mppl.libnet.info/event/16124662</guid>
+    <link>https://withintenmiles.com/mount-prospect-60056/#ev-afternoon-tea-social-2026-10-10</link>
+    <guid isPermaLink="true">https://withintenmiles.com/mount-prospect-60056/#ev-afternoon-tea-social-2026-10-10</guid>
     <description>Saturday, October 10 2026 12:00pm - 1:00pm 
- Come join us for an afternoon event celebrating our One Book, One Village community read!</description>
+ Come join us for an afternoon event celebrating our One Book, One Village community read! Official listing: https://mppl.libnet.info/event/16124662</description>
     <pubDate>Sat, 10 Oct 2026 12:00:00 +0000</pubDate>
+    <source url="https://mppl.libnet.info/event/16124662">Mount Prospect Public Library — Events</source>
   </item>
   <item>
     <title>Des Plaines: The Librarians</title>
-    <link>https://desplaines.libnet.info/event/17434052</link>
-    <guid isPermaLink="true">https://desplaines.libnet.info/event/17434052</guid>
+    <link>https://withintenmiles.com/des-plaines-60016/#ev-the-librarians-2026-10-10</link>
+    <guid isPermaLink="true">https://withintenmiles.com/des-plaines-60016/#ev-the-librarians-2026-10-10</guid>
     <description>Saturday, October 10 2026 1:30pm - 3:30pm 
- A screening of the award winning documentary film The Librarians.</description>
+ A screening of the award winning documentary film The Librarians. Official listing: https://desplaines.libnet.info/event/17434052</description>
     <pubDate>Sat, 10 Oct 2026 13:30:00 +0000</pubDate>
+    <source url="https://desplaines.libnet.info/event/17434052">Des Plaines Public Library — Events</source>
   </item>
   <item>
     <title>Des Plaines: Small Claims Court and Arbitration Proceedings</title>
-    <link>https://desplaines.libnet.info/event/16483424</link>
-    <guid isPermaLink="true">https://desplaines.libnet.info/event/16483424</guid>
+    <link>https://withintenmiles.com/des-plaines-60016/#ev-small-claims-court-and-arbitration-proceedings-2026-10-10</link>
+    <guid isPermaLink="true">https://withintenmiles.com/des-plaines-60016/#ev-small-claims-court-and-arbitration-proceedings-2026-10-10</guid>
     <description>Saturday, October 10 2026 2:00pm - 3:00pm 
- What to expect in a small claims lawsuit.</description>
+ What to expect in a small claims lawsuit. Official listing: https://desplaines.libnet.info/event/16483424</description>
     <pubDate>Sat, 10 Oct 2026 14:00:00 +0000</pubDate>
+    <source url="https://desplaines.libnet.info/event/16483424">Des Plaines Public Library — Events</source>
   </item>
   <item>
     <title>Palatine: Downtown Palatine Grand Re-Opening</title>
-    <link>https://www.palatine.il.us/common/modules/iCalendar/iCalendar.aspx?feed=calendar&amp;catID=14</link>
-    <guid isPermaLink="false">https://www.palatine.il.us/common/modules/iCalendar/iCalendar.aspx?feed=calendar&amp;catID=14#2026-10-10T15:00:00</guid>
-    <description>The Village is hosting a Grand Re-Opening event for residents a</description>
+    <link>https://withintenmiles.com/palatine-60067/#ev-downtown-palatine-grand-re-opening-2026-10-10</link>
+    <guid isPermaLink="true">https://withintenmiles.com/palatine-60067/#ev-downtown-palatine-grand-re-opening-2026-10-10</guid>
+    <description>The Village is hosting a Grand Re-Opening event for residents a Official listing: https://www.palatine.il.us/common/modules/iCalendar/iCalendar.aspx?feed=calendar&amp;catID=14</description>
     <pubDate>Sat, 10 Oct 2026 15:00:00 +0000</pubDate>
+    <source url="https://www.palatine.il.us/common/modules/iCalendar/iCalendar.aspx?feed=calendar&amp;catID=14">Village of Palatine — Calendar</source>
   </item>
   <item>
     <title>Arlington Heights: Tech Fair</title>
-    <link>https://www.ahml.info/scheduling/reservation/212679</link>
-    <guid isPermaLink="true">https://www.ahml.info/scheduling/reservation/212679</guid>
-    <description></description>
+    <link>https://withintenmiles.com/arlington-heights-60005/#ev-tech-fair-2026-10-11</link>
+    <guid isPermaLink="true">https://withintenmiles.com/arlington-heights-60005/#ev-tech-fair-2026-10-11</guid>
+    <description>Official listing: https://www.ahml.info/scheduling/reservation/212679</description>
     <pubDate>Sun, 11 Oct 2026 00:00:00 +0000</pubDate>
+    <source url="https://www.ahml.info/scheduling/reservation/212679">Arlington Heights Memorial Library — Events</source>
   </item>
   <item>
     <title>Mount Prospect: Mount Prospect Farmers Market</title>
-    <link>https://mplions.org/event/farmers-market/</link>
-    <guid isPermaLink="true">https://mplions.org/event/farmers-market/</guid>
-    <description>Local produce and vendors, organized by the Mount Prospect Lions Club, rain or shine. West Metra commuter lot, Northwest Hwy &amp; Main St (Rte 83).</description>
+    <link>https://withintenmiles.com/mount-prospect-60056/#ev-mount-prospect-farmers-market-2026-10-11</link>
+    <guid isPermaLink="true">https://withintenmiles.com/mount-prospect-60056/#ev-mount-prospect-farmers-market-2026-10-11</guid>
+    <description>Local produce and vendors, organized by the Mount Prospect Lions Club, rain or shine. West Metra commuter lot, Northwest Hwy &amp; Main St (Rte 83). Official listing: https://mplions.org/event/farmers-market/</description>
     <pubDate>Sun, 11 Oct 2026 08:00:00 +0000</pubDate>
+    <source url="https://mplions.org/event/farmers-market/">Mount Prospect</source>
   </item>
   <item>
     <title>Wheeling: Home Maintenance 101</title>
-    <link>https://indiantrails.libnet.info/event/16652984</link>
-    <guid isPermaLink="true">https://indiantrails.libnet.info/event/16652984</guid>
+    <link>https://withintenmiles.com/wheeling-60090/#ev-home-maintenance-101-2026-10-11</link>
+    <guid isPermaLink="true">https://withintenmiles.com/wheeling-60090/#ev-home-maintenance-101-2026-10-11</guid>
     <description>Sunday, October 11 2026 1:00pm - 2:00pm 
- David Dulin, Adjunct Professor of HVACR at Oakton College, reviews general home maintenance for new and existing…</description>
+ David Dulin, Adjunct Professor of HVACR at Oakton College, reviews general home maintenance for new and existing… Official listing: https://indiantrails.libnet.info/event/16652984</description>
     <pubDate>Sun, 11 Oct 2026 13:00:00 +0000</pubDate>
+    <source url="https://indiantrails.libnet.info/event/16652984">Indian Trails Public Library — Events</source>
   </item>
   <item>
     <title>Wheeling: Tech Assistance</title>
-    <link>https://indiantrails.libnet.info/event/16642203</link>
-    <guid isPermaLink="true">https://indiantrails.libnet.info/event/16642203</guid>
+    <link>https://withintenmiles.com/wheeling-60090/#ev-tech-assistance-2026-10-11</link>
+    <guid isPermaLink="true">https://withintenmiles.com/wheeling-60090/#ev-tech-assistance-2026-10-11</guid>
     <description>Sunday, October 11 2026 1:00pm - 1:45pm 
  Have a basic question about your device
 and thinking of trying Cloud Library,
-Hoopla or another library app? Talk…</description>
+Hoopla or another library app? Talk… Official listing: https://indiantrails.libnet.info/event/16642203</description>
     <pubDate>Sun, 11 Oct 2026 13:00:00 +0000</pubDate>
+    <source url="https://indiantrails.libnet.info/event/16642203">Indian Trails Public Library — Events</source>
   </item>
   <item>
     <title>Arlington Heights: Kids' Time</title>
-    <link>https://www.ahml.info/scheduling/reservation/224210</link>
-    <guid isPermaLink="true">https://www.ahml.info/scheduling/reservation/224210</guid>
-    <description></description>
+    <link>https://withintenmiles.com/arlington-heights-60005/#ev-kids-time-2026-10-12</link>
+    <guid isPermaLink="true">https://withintenmiles.com/arlington-heights-60005/#ev-kids-time-2026-10-12</guid>
+    <description>Official listing: https://www.ahml.info/scheduling/reservation/224210</description>
     <pubDate>Mon, 12 Oct 2026 00:00:00 +0000</pubDate>
+    <source url="https://www.ahml.info/scheduling/reservation/224210">Arlington Heights Memorial Library — Events</source>
   </item>
   <item>
     <title>Wheeling: Columbus Day - Village Offices are Closed for the Columbus Day Holi</title>
-    <link>https://www.wheelingil.gov/common/modules/iCalendar/iCalendar.aspx?feed=calendar&amp;catID=14</link>
-    <guid isPermaLink="true">https://www.wheelingil.gov/common/modules/iCalendar/iCalendar.aspx?feed=calendar&amp;catID=14</guid>
-    <description>https://www.wheelingil.gov/calendar.aspx?EID=1952</description>
+    <link>https://withintenmiles.com/wheeling-60090/#ev-columbus-day-village-offices-are-closed-for-the-columbus-day-2026-10-12</link>
+    <guid isPermaLink="true">https://withintenmiles.com/wheeling-60090/#ev-columbus-day-village-offices-are-closed-for-the-columbus-day-2026-10-12</guid>
+    <description>https://www.wheelingil.gov/calendar.aspx?EID=1952 Official listing: https://www.wheelingil.gov/common/modules/iCalendar/iCalendar.aspx?feed=calendar&amp;catID=14</description>
     <pubDate>Mon, 12 Oct 2026 08:00:00 +0000</pubDate>
+    <source url="https://www.wheelingil.gov/common/modules/iCalendar/iCalendar.aspx?feed=calendar&amp;catID=14">Village of Wheeling — Calendar</source>
   </item>
   <item>
     <title>Mount Prospect: Family Storytime</title>
-    <link>https://mppl.libnet.info/event/16553299</link>
-    <guid isPermaLink="true">https://mppl.libnet.info/event/16553299</guid>
+    <link>https://withintenmiles.com/mount-prospect-60056/#ev-family-storytime-2026-10-12</link>
+    <guid isPermaLink="true">https://withintenmiles.com/mount-prospect-60056/#ev-family-storytime-2026-10-12</guid>
     <description>Monday, October 12 2026 9:30am - 10:00am 
- Bring the whole family and join us for an interactive storytime with high-energy stories, songs, and activities.</description>
+ Bring the whole family and join us for an interactive storytime with high-energy stories, songs, and activities. Official listing: https://mppl.libnet.info/event/16553299</description>
     <pubDate>Mon, 12 Oct 2026 09:30:00 +0000</pubDate>
+    <source url="https://mppl.libnet.info/event/16553299">Mount Prospect Public Library — Events</source>
   </item>
   <item>
     <title>Mount Prospect: Creation Station: Mini Monsters</title>
-    <link>https://mppl.libnet.info/event/16288686</link>
-    <guid isPermaLink="true">https://mppl.libnet.info/event/16288686</guid>
+    <link>https://withintenmiles.com/mount-prospect-60056/#ev-creation-station-mini-monsters-2026-10-12</link>
+    <guid isPermaLink="true">https://withintenmiles.com/mount-prospect-60056/#ev-creation-station-mini-monsters-2026-10-12</guid>
     <description>Monday, October 12 2026 10:00am - 11:30am 
- Craft and create with us! We'll provide an idea and supplies; then you create your own masterpiece.</description>
+ Craft and create with us! We'll provide an idea and supplies; then you create your own masterpiece. Official listing: https://mppl.libnet.info/event/16288686</description>
     <pubDate>Mon, 12 Oct 2026 10:00:00 +0000</pubDate>
+    <source url="https://mppl.libnet.info/event/16288686">Mount Prospect Public Library — Events</source>
   </item>
   <item>
     <title>Mount Prospect: Toddler Storytime</title>
-    <link>https://mppl.libnet.info/event/16553329</link>
-    <guid isPermaLink="true">https://mppl.libnet.info/event/16553329</guid>
+    <link>https://withintenmiles.com/mount-prospect-60056/#ev-toddler-storytime-2026-10-12</link>
+    <guid isPermaLink="true">https://withintenmiles.com/mount-prospect-60056/#ev-toddler-storytime-2026-10-12</guid>
     <description>Monday, October 12 2026 10:30am - 11:00am 
- Grow your little learner's literacy and language skills at this playful storytime full of wiggles, wonder, and fun!</description>
+ Grow your little learner's literacy and language skills at this playful storytime full of wiggles, wonder, and fun! Official listing: https://mppl.libnet.info/event/16553329</description>
     <pubDate>Mon, 12 Oct 2026 10:30:00 +0000</pubDate>
+    <source url="https://mppl.libnet.info/event/16553329">Mount Prospect Public Library — Events</source>
   </item>
   <item>
     <title>Wheeling: Leslie Goddard as Eleanor Roosevelt</title>
-    <link>https://indiantrails.libnet.info/event/16655828</link>
-    <guid isPermaLink="true">https://indiantrails.libnet.info/event/16655828</guid>
+    <link>https://withintenmiles.com/wheeling-60090/#ev-leslie-goddard-as-eleanor-roosevelt-2026-10-12</link>
+    <guid isPermaLink="true">https://withintenmiles.com/wheeling-60090/#ev-leslie-goddard-as-eleanor-roosevelt-2026-10-12</guid>
     <description>Monday, October 12 2026 2:00pm - 3:15pm 
- Leslie Goddard portrays Eleanor Roosevelt. R</description>
+ Leslie Goddard portrays Eleanor Roosevelt. R Official listing: https://indiantrails.libnet.info/event/16655828</description>
     <pubDate>Mon, 12 Oct 2026 14:00:00 +0000</pubDate>
+    <source url="https://indiantrails.libnet.info/event/16655828">Indian Trails Public Library — Events</source>
   </item>
   <item>
     <title>Mount Prospect: Gross Science</title>
-    <link>https://mppl.libnet.info/event/16640961</link>
-    <guid isPermaLink="true">https://mppl.libnet.info/event/16640961</guid>
+    <link>https://withintenmiles.com/mount-prospect-60056/#ev-gross-science-2026-10-12</link>
+    <guid isPermaLink="true">https://withintenmiles.com/mount-prospect-60056/#ev-gross-science-2026-10-12</guid>
     <description>Monday, October 12 2026 4:30pm - 5:15pm 
- Let's explore our weird and wacky world with hands-on activities that might make you laugh, wrinkle your nose, or…</description>
+ Let's explore our weird and wacky world with hands-on activities that might make you laugh, wrinkle your nose, or… Official listing: https://mppl.libnet.info/event/16640961</description>
     <pubDate>Mon, 12 Oct 2026 16:30:00 +0000</pubDate>
+    <source url="https://mppl.libnet.info/event/16640961">Mount Prospect Public Library — Events</source>
   </item>
   <item>
     <title>Des Plaines: Book a Teen Librarian</title>
-    <link>https://desplaines.libnet.info/event/15509795</link>
-    <guid isPermaLink="true">https://desplaines.libnet.info/event/15509795</guid>
+    <link>https://withintenmiles.com/des-plaines-60016/#ev-book-a-teen-librarian-2026-10-12</link>
+    <guid isPermaLink="true">https://withintenmiles.com/des-plaines-60016/#ev-book-a-teen-librarian-2026-10-12</guid>
     <description>Monday, October 12 2026 5:00pm - 6:00pm 
- Want some career, college, or scholarship advice? Need some book recommendations? Maybe sit back, relax, and play…</description>
+ Want some career, college, or scholarship advice? Need some book recommendations? Maybe sit back, relax, and play… Official listing: https://desplaines.libnet.info/event/15509795</description>
     <pubDate>Mon, 12 Oct 2026 17:00:00 +0000</pubDate>
+    <source url="https://desplaines.libnet.info/event/15509795">Des Plaines Public Library — Events</source>
   </item>
   <item>
     <title>Des Plaines: Franken-Bully! A Bright Star Theatre Production</title>
-    <link>https://desplaines.libnet.info/event/17134025</link>
-    <guid isPermaLink="true">https://desplaines.libnet.info/event/17134025</guid>
+    <link>https://withintenmiles.com/des-plaines-60016/#ev-franken-bully-a-bright-star-theatre-production-2026-10-12</link>
+    <guid isPermaLink="true">https://withintenmiles.com/des-plaines-60016/#ev-franken-bully-a-bright-star-theatre-production-2026-10-12</guid>
     <description>Monday, October 12 2026 5:00pm - 6:00pm 
- Bright Star Theatre is back for a fun family-friendly performance! All ages. Registration required beginning October…</description>
+ Bright Star Theatre is back for a fun family-friendly performance! All ages. Registration required beginning October… Official listing: https://desplaines.libnet.info/event/17134025</description>
     <pubDate>Mon, 12 Oct 2026 17:00:00 +0000</pubDate>
+    <source url="https://desplaines.libnet.info/event/17134025">Des Plaines Public Library — Events</source>
   </item>
   <item>
     <title>Mount Prospect: Teen Volunteering</title>
-    <link>https://mppl.libnet.info/event/16749798</link>
-    <guid isPermaLink="true">https://mppl.libnet.info/event/16749798</guid>
+    <link>https://withintenmiles.com/mount-prospect-60056/#ev-teen-volunteering-2026-10-12</link>
+    <guid isPermaLink="true">https://withintenmiles.com/mount-prospect-60056/#ev-teen-volunteering-2026-10-12</guid>
     <description>Monday, October 12 2026 5:00pm - 6:00pm 
- Give back to the community and earn volunteer hours at the same time.</description>
+ Give back to the community and earn volunteer hours at the same time. Official listing: https://mppl.libnet.info/event/16749798</description>
     <pubDate>Mon, 12 Oct 2026 17:00:00 +0000</pubDate>
+    <source url="https://mppl.libnet.info/event/16749798">Mount Prospect Public Library — Events</source>
   </item>
   <item>
     <title>Des Plaines: River Pointe Condo Assoc.</title>
-    <link>https://desplaines.libnet.info/event/17157731</link>
-    <guid isPermaLink="true">https://desplaines.libnet.info/event/17157731</guid>
+    <link>https://withintenmiles.com/des-plaines-60016/#ev-river-pointe-condo-assoc-2026-10-12</link>
+    <guid isPermaLink="true">https://withintenmiles.com/des-plaines-60016/#ev-river-pointe-condo-assoc-2026-10-12</guid>
     <description>Monday, October 12 2026 6:30pm - 8:30pm 
- Donna 847-813-6915</description>
+ Donna 847-813-6915 Official listing: https://desplaines.libnet.info/event/17157731</description>
     <pubDate>Mon, 12 Oct 2026 18:30:00 +0000</pubDate>
+    <source url="https://desplaines.libnet.info/event/17157731">Des Plaines Public Library — Events</source>
   </item>
   <item>
     <title>Mount Prospect: Understanding Medicare Choices</title>
-    <link>https://mppl.libnet.info/event/15371247</link>
-    <guid isPermaLink="true">https://mppl.libnet.info/event/15371247</guid>
+    <link>https://withintenmiles.com/mount-prospect-60056/#ev-understanding-medicare-choices-2026-10-12</link>
+    <guid isPermaLink="true">https://withintenmiles.com/mount-prospect-60056/#ev-understanding-medicare-choices-2026-10-12</guid>
     <description>Monday, October 12 2026 7:00pm - 8:30pm 
-  Join financial educator Karen Chan for an overview of Medicare options to help you understand your choices, avoid…</description>
+  Join financial educator Karen Chan for an overview of Medicare options to help you understand your choices, avoid… Official listing: https://mppl.libnet.info/event/15371247</description>
     <pubDate>Mon, 12 Oct 2026 19:00:00 +0000</pubDate>
+    <source url="https://mppl.libnet.info/event/15371247">Mount Prospect Public Library — Events</source>
   </item>
   <item>
     <title>Mount Prospect: Monday Night Book Group</title>
-    <link>https://mppl.libnet.info/event/15980022</link>
-    <guid isPermaLink="true">https://mppl.libnet.info/event/15980022</guid>
+    <link>https://withintenmiles.com/mount-prospect-60056/#ev-monday-night-book-group-2026-10-12</link>
+    <guid isPermaLink="true">https://withintenmiles.com/mount-prospect-60056/#ev-monday-night-book-group-2026-10-12</guid>
     <description>Monday, October 12 2026 7:00pm - 8:00pm 
- Join others in the community for a casual discussion of our One Book, One Village read, Project Hail Mary by Andy…</description>
+ Join others in the community for a casual discussion of our One Book, One Village read, Project Hail Mary by Andy… Official listing: https://mppl.libnet.info/event/15980022</description>
     <pubDate>Mon, 12 Oct 2026 19:00:00 +0000</pubDate>
+    <source url="https://mppl.libnet.info/event/15980022">Mount Prospect Public Library — Events</source>
   </item>
   <item>
     <title>Wheeling: Dungeons &amp; Dragons</title>
-    <link>https://indiantrails.libnet.info/event/16614411</link>
-    <guid isPermaLink="true">https://indiantrails.libnet.info/event/16614411</guid>
+    <link>https://withintenmiles.com/wheeling-60090/#ev-dungeons-dragons-2026-10-12</link>
+    <guid isPermaLink="true">https://withintenmiles.com/wheeling-60090/#ev-dungeons-dragons-2026-10-12</guid>
     <description>Monday, October 12 2026 7:00pm - 8:00pm 
- If youre an expert or just starting out, join us for some D&amp;D. Bring your own character sheet or pick up a pre-made…</description>
+ If youre an expert or just starting out, join us for some D&amp;D. Bring your own character sheet or pick up a pre-made… Official listing: https://indiantrails.libnet.info/event/16614411</description>
     <pubDate>Mon, 12 Oct 2026 19:00:00 +0000</pubDate>
+    <source url="https://indiantrails.libnet.info/event/16614411">Indian Trails Public Library — Events</source>
   </item>
   <item>
     <title>Wheeling: The Full Job Search Life Cycle</title>
-    <link>https://indiantrails.libnet.info/event/16653052</link>
-    <guid isPermaLink="true">https://indiantrails.libnet.info/event/16653052</guid>
+    <link>https://withintenmiles.com/wheeling-60090/#ev-the-full-job-search-life-cycle-2026-10-12</link>
+    <guid isPermaLink="true">https://withintenmiles.com/wheeling-60090/#ev-the-full-job-search-life-cycle-2026-10-12</guid>
     <description>Monday, October 12 2026 7:00pm - 8:30pm 
- Erica Reckamp, of Job Search Like a Pro, covers from interest to offer in navigating a successful job search. R</description>
+ Erica Reckamp, of Job Search Like a Pro, covers from interest to offer in navigating a successful job search. R Official listing: https://indiantrails.libnet.info/event/16653052</description>
     <pubDate>Mon, 12 Oct 2026 19:00:00 +0000</pubDate>
+    <source url="https://indiantrails.libnet.info/event/16653052">Indian Trails Public Library — Events</source>
   </item>
   <item>
     <title>Arlington Heights: Read to Learn (District 214)</title>
-    <link>https://www.ahml.info/scheduling/reservation/194391</link>
-    <guid isPermaLink="true">https://www.ahml.info/scheduling/reservation/194391</guid>
-    <description></description>
+    <link>https://withintenmiles.com/arlington-heights-60005/#ev-read-to-learn-district-214-2026-10-13</link>
+    <guid isPermaLink="true">https://withintenmiles.com/arlington-heights-60005/#ev-read-to-learn-district-214-2026-10-13</guid>
+    <description>Official listing: https://www.ahml.info/scheduling/reservation/194391</description>
     <pubDate>Tue, 13 Oct 2026 00:00:00 +0000</pubDate>
+    <source url="https://www.ahml.info/scheduling/reservation/194391">Arlington Heights Memorial Library — Events</source>
   </item>
   <item>
     <title>Palatine: American Legion Commander’s Coffee for All Veterans</title>
-    <link>https://www.palatine.il.us/common/modules/iCalendar/iCalendar.aspx?feed=calendar&amp;catID=14</link>
-    <guid isPermaLink="false">https://www.palatine.il.us/common/modules/iCalendar/iCalendar.aspx?feed=calendar&amp;catID=14#2026-10-13T08:00:00</guid>
-    <description>Free Coffee and Donuts for Veterans. https://www.palatine.il.u</description>
+    <link>https://withintenmiles.com/palatine-60067/#ev-american-legion-commander-s-coffee-for-all-veterans-2026-10-13</link>
+    <guid isPermaLink="true">https://withintenmiles.com/palatine-60067/#ev-american-legion-commander-s-coffee-for-all-veterans-2026-10-13</guid>
+    <description>Free Coffee and Donuts for Veterans. https://www.palatine.il.u Official listing: https://www.palatine.il.us/common/modules/iCalendar/iCalendar.aspx?feed=calendar&amp;catID=14</description>
     <pubDate>Tue, 13 Oct 2026 08:00:00 +0000</pubDate>
+    <source url="https://www.palatine.il.us/common/modules/iCalendar/iCalendar.aspx?feed=calendar&amp;catID=14">Village of Palatine — Calendar</source>
   </item>
   <item>
     <title>Des Plaines: Reading/Literacy Class</title>
-    <link>https://desplaines.libnet.info/event/15801724</link>
-    <guid isPermaLink="true">https://desplaines.libnet.info/event/15801724</guid>
+    <link>https://withintenmiles.com/des-plaines-60016/#ev-reading-literacy-class-2026-10-13</link>
+    <guid isPermaLink="true">https://withintenmiles.com/des-plaines-60016/#ev-reading-literacy-class-2026-10-13</guid>
     <description>Tuesday, October 13 2026 9:15am - 12:15pm 
- For more information, please contact Oakton College at 847-635-1426</description>
+ For more information, please contact Oakton College at 847-635-1426 Official listing: https://desplaines.libnet.info/event/15801724</description>
     <pubDate>Tue, 13 Oct 2026 09:15:00 +0000</pubDate>
+    <source url="https://desplaines.libnet.info/event/15801724">Des Plaines Public Library — Events</source>
   </item>
   <item>
     <title>Des Plaines: ESL (English as a Second Language) Class - Oakton College</title>
-    <link>https://desplaines.libnet.info/event/15803233</link>
-    <guid isPermaLink="true">https://desplaines.libnet.info/event/15803233</guid>
+    <link>https://withintenmiles.com/des-plaines-60016/#ev-esl-english-as-a-second-language-class-oakton-college-2026-10-13</link>
+    <guid isPermaLink="true">https://withintenmiles.com/des-plaines-60016/#ev-esl-english-as-a-second-language-class-oakton-college-2026-10-13</guid>
     <description>Tuesday, October 13 2026 9:15am - 12:15pm 
  ESL (English as a Second Language) Class - Oakton College
 
- Teaches listening, speaking, reading, writing, and…</description>
+ Teaches listening, speaking, reading, writing, and… Official listing: https://desplaines.libnet.info/event/15803233</description>
     <pubDate>Tue, 13 Oct 2026 09:15:00 +0000</pubDate>
+    <source url="https://desplaines.libnet.info/event/15803233">Des Plaines Public Library — Events</source>
   </item>
   <item>
     <title>Des Plaines: Meet with Your Government Representatives</title>
-    <link>https://desplaines.libnet.info/event/15202445</link>
-    <guid isPermaLink="true">https://desplaines.libnet.info/event/15202445</guid>
+    <link>https://withintenmiles.com/des-plaines-60016/#ev-meet-with-your-government-representatives-2026-10-13</link>
+    <guid isPermaLink="true">https://withintenmiles.com/des-plaines-60016/#ev-meet-with-your-government-representatives-2026-10-13</guid>
     <description>Tuesday, October 13 2026 9:30am - 11:30am 
- Come to the 1st floor lobby to meet representatives from federal and state offices.</description>
+ Come to the 1st floor lobby to meet representatives from federal and state offices. Official listing: https://desplaines.libnet.info/event/15202445</description>
     <pubDate>Tue, 13 Oct 2026 09:30:00 +0000</pubDate>
+    <source url="https://desplaines.libnet.info/event/15202445">Des Plaines Public Library — Events</source>
   </item>
   <item>
     <title>Des Plaines: Flu Clinic Sponsored by Senator Laura Murphy</title>
-    <link>https://desplaines.libnet.info/event/16771553</link>
-    <guid isPermaLink="true">https://desplaines.libnet.info/event/16771553</guid>
+    <link>https://withintenmiles.com/des-plaines-60016/#ev-flu-clinic-sponsored-by-senator-laura-murphy-2026-10-13</link>
+    <guid isPermaLink="true">https://withintenmiles.com/des-plaines-60016/#ev-flu-clinic-sponsored-by-senator-laura-murphy-2026-10-13</guid>
     <description>Tuesday, October 13 2026 9:30am - 12:00pm 
- Senator Laura Murphy Office 847-718-1110</description>
+ Senator Laura Murphy Office 847-718-1110 Official listing: https://desplaines.libnet.info/event/16771553</description>
     <pubDate>Tue, 13 Oct 2026 09:30:00 +0000</pubDate>
+    <source url="https://desplaines.libnet.info/event/16771553">Des Plaines Public Library — Events</source>
   </item>
   <item>
     <title>Mount Prospect: Baby Storytime</title>
-    <link>https://mppl.libnet.info/event/16553352</link>
-    <guid isPermaLink="true">https://mppl.libnet.info/event/16553352</guid>
+    <link>https://withintenmiles.com/mount-prospect-60056/#ev-baby-storytime-2026-10-13</link>
+    <guid isPermaLink="true">https://withintenmiles.com/mount-prospect-60056/#ev-baby-storytime-2026-10-13</guid>
     <description>Tuesday, October 13 2026 9:30am - 10:00am 
- A lifelong love of reading starts at birth! Join us for songs, rhymes, stories, and playtime made specially for…</description>
+ A lifelong love of reading starts at birth! Join us for songs, rhymes, stories, and playtime made specially for… Official listing: https://mppl.libnet.info/event/16553352</description>
     <pubDate>Tue, 13 Oct 2026 09:30:00 +0000</pubDate>
+    <source url="https://mppl.libnet.info/event/16553352">Mount Prospect Public Library — Events</source>
   </item>
   <item>
     <title>Des Plaines: Makerspace Orientations: On-Zoom 2026-2027</title>
-    <link>https://desplaines.libnet.info/event/15981571</link>
-    <guid isPermaLink="true">https://desplaines.libnet.info/event/15981571</guid>
+    <link>https://withintenmiles.com/des-plaines-60016/#ev-makerspace-orientations-on-zoom-2026-2027-2026-10-13</link>
+    <guid isPermaLink="true">https://withintenmiles.com/des-plaines-60016/#ev-makerspace-orientations-on-zoom-2026-2027-2026-10-13</guid>
     <description>Tuesday, October 13 2026 10:00am - 11:30am 
- Interested in using the machines in the brand new Canvas Makerspace? Des Plaines Public Library cardholders must…</description>
+ Interested in using the machines in the brand new Canvas Makerspace? Des Plaines Public Library cardholders must… Official listing: https://desplaines.libnet.info/event/15981571</description>
     <pubDate>Tue, 13 Oct 2026 10:00:00 +0000</pubDate>
+    <source url="https://desplaines.libnet.info/event/15981571">Des Plaines Public Library — Events</source>
   </item>
   <item>
     <title>Des Plaines: Toddler Time</title>
-    <link>https://desplaines.libnet.info/event/17001895</link>
-    <guid isPermaLink="true">https://desplaines.libnet.info/event/17001895</guid>
+    <link>https://withintenmiles.com/des-plaines-60016/#ev-toddler-time-2026-10-13</link>
+    <guid isPermaLink="true">https://withintenmiles.com/des-plaines-60016/#ev-toddler-time-2026-10-13</guid>
     <description>Tuesday, October 13 2026 10:00am - 10:30am 
- Ages 18-36 months. Drop-in at the Poet Tree Corner! Enjoy stories, songs, rhymes, movement, and more at Toddler…</description>
+ Ages 18-36 months. Drop-in at the Poet Tree Corner! Enjoy stories, songs, rhymes, movement, and more at Toddler… Official listing: https://desplaines.libnet.info/event/17001895</description>
     <pubDate>Tue, 13 Oct 2026 10:00:00 +0000</pubDate>
+    <source url="https://desplaines.libnet.info/event/17001895">Des Plaines Public Library — Events</source>
   </item>
   <item>
     <title>Des Plaines: Tuesday Morning Book Discussion: Yesteryear by Caro Burke</title>
-    <link>https://desplaines.libnet.info/event/17340902</link>
-    <guid isPermaLink="true">https://desplaines.libnet.info/event/17340902</guid>
+    <link>https://withintenmiles.com/des-plaines-60016/#ev-tuesday-morning-book-discussion-yesteryear-by-caro-burke-2026-10-13</link>
+    <guid isPermaLink="true">https://withintenmiles.com/des-plaines-60016/#ev-tuesday-morning-book-discussion-yesteryear-by-caro-burke-2026-10-13</guid>
     <description>Tuesday, October 13 2026 10:00am - 11:00am 
- A staff member will lead a book discussion. Books are available at the 3rd floor info desk in the public library…</description>
+ A staff member will lead a book discussion. Books are available at the 3rd floor info desk in the public library… Official listing: https://desplaines.libnet.info/event/17340902</description>
     <pubDate>Tue, 13 Oct 2026 10:00:00 +0000</pubDate>
+    <source url="https://desplaines.libnet.info/event/17340902">Des Plaines Public Library — Events</source>
   </item>
   <item>
     <title>Wheeling: Noisy Time</title>
-    <link>https://indiantrails.libnet.info/event/16550238</link>
-    <guid isPermaLink="true">https://indiantrails.libnet.info/event/16550238</guid>
+    <link>https://withintenmiles.com/wheeling-60090/#ev-noisy-time-2026-10-13</link>
+    <guid isPermaLink="true">https://withintenmiles.com/wheeling-60090/#ev-noisy-time-2026-10-13</guid>
     <description>Tuesday, October 13 2026 10:00am - 10:30am 
- Explore the world around us with stories, rhymes and lots of music and movement. TR</description>
+ Explore the world around us with stories, rhymes and lots of music and movement. TR Official listing: https://indiantrails.libnet.info/event/16550238</description>
     <pubDate>Tue, 13 Oct 2026 10:00:00 +0000</pubDate>
+    <source url="https://indiantrails.libnet.info/event/16550238">Indian Trails Public Library — Events</source>
   </item>
   <item>
     <title>Mount Prospect: Family Storytime</title>
-    <link>https://mppl.libnet.info/event/16553376</link>
-    <guid isPermaLink="true">https://mppl.libnet.info/event/16553376</guid>
+    <link>https://withintenmiles.com/mount-prospect-60056/#ev-family-storytime-2026-10-13</link>
+    <guid isPermaLink="true">https://withintenmiles.com/mount-prospect-60056/#ev-family-storytime-2026-10-13</guid>
     <description>Tuesday, October 13 2026 10:30am - 11:00am 
- Bring the whole family and join us for an interactive storytime with high-energy stories, songs, and activities.</description>
+ Bring the whole family and join us for an interactive storytime with high-energy stories, songs, and activities. Official listing: https://mppl.libnet.info/event/16553376</description>
     <pubDate>Tue, 13 Oct 2026 10:30:00 +0000</pubDate>
+    <source url="https://mppl.libnet.info/event/16553376">Mount Prospect Public Library — Events</source>
   </item>
   <item>
     <title>Wheeling: Rise &amp; Read Morning Book Discussion</title>
-    <link>https://indiantrails.libnet.info/event/14170839</link>
-    <guid isPermaLink="true">https://indiantrails.libnet.info/event/14170839</guid>
+    <link>https://withintenmiles.com/wheeling-60090/#ev-rise-read-morning-book-discussion-2026-10-13</link>
+    <guid isPermaLink="true">https://withintenmiles.com/wheeling-60090/#ev-rise-read-morning-book-discussion-2026-10-13</guid>
     <description>Tuesday, October 13 2026 10:30am - 11:30am 
- Registration and book pickup begins September 8. A haunting and powerful story of female friendships and secrets…</description>
+ Registration and book pickup begins September 8. A haunting and powerful story of female friendships and secrets… Official listing: https://indiantrails.libnet.info/event/14170839</description>
     <pubDate>Tue, 13 Oct 2026 10:30:00 +0000</pubDate>
+    <source url="https://indiantrails.libnet.info/event/14170839">Indian Trails Public Library — Events</source>
   </item>
   <item>
     <title>Mount Prospect: Play and Learn</title>
-    <link>https://mppl.libnet.info/event/16749801</link>
-    <guid isPermaLink="true">https://mppl.libnet.info/event/16749801</guid>
+    <link>https://withintenmiles.com/mount-prospect-60056/#ev-play-and-learn-2026-10-13</link>
+    <guid isPermaLink="true">https://withintenmiles.com/mount-prospect-60056/#ev-play-and-learn-2026-10-13</guid>
     <description>Tuesday, October 13 2026 11:30am - 12:15pm 
- Join us each week for storytime, sing-alongs, and developmental play experiences that encourage learning through…</description>
+ Join us each week for storytime, sing-alongs, and developmental play experiences that encourage learning through… Official listing: https://mppl.libnet.info/event/16749801</description>
     <pubDate>Tue, 13 Oct 2026 11:30:00 +0000</pubDate>
+    <source url="https://mppl.libnet.info/event/16749801">Mount Prospect Public Library — Events</source>
   </item>
   <item>
     <title>Wheeling: Coloring Club</title>
-    <link>https://indiantrails.libnet.info/event/16505431</link>
-    <guid isPermaLink="true">https://indiantrails.libnet.info/event/16505431</guid>
+    <link>https://withintenmiles.com/wheeling-60090/#ev-coloring-club-2026-10-13</link>
+    <guid isPermaLink="true">https://withintenmiles.com/wheeling-60090/#ev-coloring-club-2026-10-13</guid>
     <description>Tuesday, October 13 2026 1:00pm - 2:30pm 
- Come color with us. We'll share tips, tricks and refreshments. Bring your own supplies or use ours. R</description>
+ Come color with us. We'll share tips, tricks and refreshments. Bring your own supplies or use ours. R Official listing: https://indiantrails.libnet.info/event/16505431</description>
     <pubDate>Tue, 13 Oct 2026 13:00:00 +0000</pubDate>
+    <source url="https://indiantrails.libnet.info/event/16505431">Indian Trails Public Library — Events</source>
   </item>
   <item>
     <title>Mount Prospect: Big Kids Storytime</title>
-    <link>https://mppl.libnet.info/event/16553393</link>
-    <guid isPermaLink="true">https://mppl.libnet.info/event/16553393</guid>
+    <link>https://withintenmiles.com/mount-prospect-60056/#ev-big-kids-storytime-2026-10-13</link>
+    <guid isPermaLink="true">https://withintenmiles.com/mount-prospect-60056/#ev-big-kids-storytime-2026-10-13</guid>
     <description>Tuesday, October 13 2026 1:30pm - 2:15pm 
- Grow into a super reader through playful books and fun with friends! This storytime is the perfect fit for…</description>
+ Grow into a super reader through playful books and fun with friends! This storytime is the perfect fit for… Official listing: https://mppl.libnet.info/event/16553393</description>
     <pubDate>Tue, 13 Oct 2026 13:30:00 +0000</pubDate>
+    <source url="https://mppl.libnet.info/event/16553393">Mount Prospect Public Library — Events</source>
   </item>
   <item>
     <title>Mount Prospect: Introduction to Web Resources</title>
-    <link>https://mppl.libnet.info/event/16505448</link>
-    <guid isPermaLink="true">https://mppl.libnet.info/event/16505448</guid>
+    <link>https://withintenmiles.com/mount-prospect-60056/#ev-introduction-to-web-resources-2026-10-13</link>
+    <guid isPermaLink="true">https://withintenmiles.com/mount-prospect-60056/#ev-introduction-to-web-resources-2026-10-13</guid>
     <description>Tuesday, October 13 2026 2:00pm - 3:00pm 
- Discover the extensive collection of free online resources available with your library card.</description>
+ Discover the extensive collection of free online resources available with your library card. Official listing: https://mppl.libnet.info/event/16505448</description>
     <pubDate>Tue, 13 Oct 2026 14:00:00 +0000</pubDate>
+    <source url="https://mppl.libnet.info/event/16505448">Mount Prospect Public Library — Events</source>
   </item>
   <item>
     <title>Des Plaines: Loteria</title>
-    <link>https://desplaines.libnet.info/event/17414201</link>
-    <guid isPermaLink="true">https://desplaines.libnet.info/event/17414201</guid>
+    <link>https://withintenmiles.com/des-plaines-60016/#ev-loteria-2026-10-13</link>
+    <guid isPermaLink="true">https://withintenmiles.com/des-plaines-60016/#ev-loteria-2026-10-13</guid>
     <description>Tuesday, October 13 2026 4:00pm - 5:00pm 
- Celebrate Hispanic Heritage Month with a game of Lotería and a chance to win a gift card! For teens in grades 7-12.</description>
+ Celebrate Hispanic Heritage Month with a game of Lotería and a chance to win a gift card! For teens in grades 7-12. Official listing: https://desplaines.libnet.info/event/17414201</description>
     <pubDate>Tue, 13 Oct 2026 16:00:00 +0000</pubDate>
+    <source url="https://desplaines.libnet.info/event/17414201">Des Plaines Public Library — Events</source>
   </item>
   <item>
     <title>Wheeling: Paper Craft Happy Hour</title>
-    <link>https://indiantrails.libnet.info/event/17044648</link>
-    <guid isPermaLink="true">https://indiantrails.libnet.info/event/17044648</guid>
+    <link>https://withintenmiles.com/wheeling-60090/#ev-paper-craft-happy-hour-2026-10-13</link>
+    <guid isPermaLink="true">https://withintenmiles.com/wheeling-60090/#ev-paper-craft-happy-hour-2026-10-13</guid>
     <description>Tuesday, October 13 2026 4:00pm - 6:00pm 
- Chat with fellow creatives, get inspired or discover a new paper craft tool during this self-guided crafting…</description>
+ Chat with fellow creatives, get inspired or discover a new paper craft tool during this self-guided crafting… Official listing: https://indiantrails.libnet.info/event/17044648</description>
     <pubDate>Tue, 13 Oct 2026 16:00:00 +0000</pubDate>
+    <source url="https://indiantrails.libnet.info/event/17044648">Indian Trails Public Library — Events</source>
   </item>
   <item>
     <title>Mount Prospect: Teen Astronaut Food Taste Test</title>
-    <link>https://mppl.libnet.info/event/16583547</link>
-    <guid isPermaLink="true">https://mppl.libnet.info/event/16583547</guid>
+    <link>https://withintenmiles.com/mount-prospect-60056/#ev-teen-astronaut-food-taste-test-2026-10-13</link>
+    <guid isPermaLink="true">https://withintenmiles.com/mount-prospect-60056/#ev-teen-astronaut-food-taste-test-2026-10-13</guid>
     <description>Tuesday, October 13 2026 4:30pm - 5:30pm 
- Curious about what astronauts eat? Join us as we sample a variety of astronaut food to celebrate our One Book, One…</description>
+ Curious about what astronauts eat? Join us as we sample a variety of astronaut food to celebrate our One Book, One… Official listing: https://mppl.libnet.info/event/16583547</description>
     <pubDate>Tue, 13 Oct 2026 16:30:00 +0000</pubDate>
+    <source url="https://mppl.libnet.info/event/16583547">Mount Prospect Public Library — Events</source>
   </item>
   <item>
     <title>Des Plaines: Tween Dungeons and Dragons</title>
-    <link>https://desplaines.libnet.info/event/17120062</link>
-    <guid isPermaLink="true">https://desplaines.libnet.info/event/17120062</guid>
+    <link>https://withintenmiles.com/des-plaines-60016/#ev-tween-dungeons-and-dragons-2026-10-13</link>
+    <guid isPermaLink="true">https://withintenmiles.com/des-plaines-60016/#ev-tween-dungeons-and-dragons-2026-10-13</guid>
     <description>Tuesday, October 13 2026 5:00pm - 6:30pm 
- Ever wanted to try out Dungeons and Dragons? Now's your chance! Come to the library to learn how to play and have…</description>
+ Ever wanted to try out Dungeons and Dragons? Now's your chance! Come to the library to learn how to play and have… Official listing: https://desplaines.libnet.info/event/17120062</description>
     <pubDate>Tue, 13 Oct 2026 17:00:00 +0000</pubDate>
+    <source url="https://desplaines.libnet.info/event/17120062">Des Plaines Public Library — Events</source>
   </item>
   <item>
     <title>Des Plaines: Book a Teen Librarian</title>
-    <link>https://desplaines.libnet.info/event/17604769</link>
-    <guid isPermaLink="true">https://desplaines.libnet.info/event/17604769</guid>
+    <link>https://withintenmiles.com/des-plaines-60016/#ev-book-a-teen-librarian-2026-10-13</link>
+    <guid isPermaLink="true">https://withintenmiles.com/des-plaines-60016/#ev-book-a-teen-librarian-2026-10-13</guid>
     <description>Tuesday, October 13 2026 5:00pm - 6:00pm 
- Come in and get to know your teen librarians!</description>
+ Come in and get to know your teen librarians! Official listing: https://desplaines.libnet.info/event/17604769</description>
     <pubDate>Tue, 13 Oct 2026 17:00:00 +0000</pubDate>
+    <source url="https://desplaines.libnet.info/event/17604769">Des Plaines Public Library — Events</source>
   </item>
   <item>
     <title>Wheeling: Spanish Conversation Practice | At the Branch</title>
-    <link>https://indiantrails.libnet.info/event/16568748</link>
-    <guid isPermaLink="true">https://indiantrails.libnet.info/event/16568748</guid>
+    <link>https://withintenmiles.com/wheeling-60090/#ev-spanish-conversation-practice-at-the-branch-2026-10-13</link>
+    <guid isPermaLink="true">https://withintenmiles.com/wheeling-60090/#ev-spanish-conversation-practice-at-the-branch-2026-10-13</guid>
     <description>Tuesday, October 13 2026 5:30pm - 6:30pm 
- Informal Spanish conversation session to practice and improve your speaking skills by talking to native…</description>
+ Informal Spanish conversation session to practice and improve your speaking skills by talking to native… Official listing: https://indiantrails.libnet.info/event/16568748</description>
     <pubDate>Tue, 13 Oct 2026 17:30:00 +0000</pubDate>
+    <source url="https://indiantrails.libnet.info/event/16568748">Indian Trails Public Library — Events</source>
+  </item>
+  <item>
+    <title>Des Plaines: Adult Board Game Night</title>
+    <link>https://withintenmiles.com/des-plaines-60016/#ev-adult-board-game-night-2026-10-13</link>
+    <guid isPermaLink="true">https://withintenmiles.com/des-plaines-60016/#ev-adult-board-game-night-2026-10-13</guid>
+    <description>Tuesday, October 13 2026 6:00pm - 8:00pm 
+ Meet fellow board gamers! Play our games or bring your own. Official listing: https://desplaines.libnet.info/event/17033764</description>
+    <pubDate>Tue, 13 Oct 2026 18:00:00 +0000</pubDate>
+    <source url="https://desplaines.libnet.info/event/17033764">Des Plaines Public Library — Events</source>
   </item>
 </channel>
 </rss>

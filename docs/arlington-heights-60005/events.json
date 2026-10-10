@@ -2,8 +2,8 @@
   "@context": "https://schema.org",
   "@type": "ItemList",
   "name": "Upcoming events in Arlington Heights — Within Ten",
-  "dateModified": "2026-10-10T22:00:05+00:00",
-  "numberOfItems": 21,
+  "dateModified": "2026-10-10T22:10:34+00:00",
+  "numberOfItems": 20,
   "itemListElement": [
     {
       "@type": "ListItem",
@@ -32,29 +32,6 @@
       "position": 2,
       "item": {
         "@type": "Event",
-        "name": "Autumn Harvest",
-        "startDate": "2026-10-10T11:00:00-05:00",
-        "url": "https://withintenmiles.com/arlington-heights-60005/#ev-autumn-harvest-2026-10-10",
-        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "location": {
-          "@type": "Place",
-          "name": "Arlington Heights, IL",
-          "address": {
-            "@type": "PostalAddress",
-            "addressCountry": "US",
-            "addressLocality": "Arlington Heights",
-            "addressRegion": "IL"
-          }
-        },
-        "sameAs": "https://www.ahpd.org/event/autumn-harvest-2026/",
-        "description": "Don’t miss fall family fun with crafts, games, hayrides, a scarecrow building contest, live music and entertainment, and food available for purchase from…"
-      }
-    },
-    {
-      "@type": "ListItem",
-      "position": 3,
-      "item": {
-        "@type": "Event",
         "name": "Tech Fair",
         "startDate": "2026-10-11",
         "url": "https://withintenmiles.com/arlington-heights-60005/#ev-tech-fair-2026-10-11",
@@ -74,7 +51,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 4,
+      "position": 3,
       "item": {
         "@type": "Event",
         "name": "Kids' Time",
@@ -96,7 +73,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 5,
+      "position": 4,
       "item": {
         "@type": "Event",
         "name": "Read to Learn (District 214)",
@@ -118,7 +95,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 6,
+      "position": 5,
       "item": {
         "@type": "Event",
         "name": "Baby Time",
@@ -140,7 +117,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 7,
+      "position": 6,
       "item": {
         "@type": "Event",
         "name": "AHPD Senior Art Show",
@@ -164,7 +141,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 8,
+      "position": 7,
       "item": {
         "@type": "Event",
         "name": "Toddler Time",
@@ -186,7 +163,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 9,
+      "position": 8,
       "item": {
         "@type": "Event",
         "name": "Senior Center: Travelogue",
@@ -208,7 +185,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 10,
+      "position": 9,
       "item": {
         "@type": "Event",
         "name": "Oddities Night",
@@ -231,7 +208,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 11,
+      "position": 10,
       "item": {
         "@type": "Event",
         "name": "Family Time",
@@ -253,7 +230,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 12,
+      "position": 11,
       "item": {
         "@type": "Event",
         "name": "Tell Your Cellar Story",
@@ -276,7 +253,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 13,
+      "position": 12,
       "item": {
         "@type": "Event",
         "name": "Makerplace Wire Wrapped Jewelry: Symmetrical Ear Wires and Dangle Earrings",
@@ -298,7 +275,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 14,
+      "position": 13,
       "item": {
         "@type": "Event",
         "name": "Pumpkin Splash",
@@ -321,7 +298,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 15,
+      "position": 14,
       "item": {
         "@type": "Event",
         "name": "Kids' Time",
@@ -343,7 +320,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 16,
+      "position": 15,
       "item": {
         "@type": "Event",
         "name": "Read to Learn (District 214)",
@@ -365,7 +342,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 17,
+      "position": 16,
       "item": {
         "@type": "Event",
         "name": "Baby Time",
@@ -387,7 +364,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 18,
+      "position": 17,
       "item": {
         "@type": "Event",
         "name": "Community Input Meeting - Creekside Park",
@@ -410,7 +387,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 19,
+      "position": 18,
       "item": {
         "@type": "Event",
         "name": "Halloween Pumpkin Carving",
@@ -433,7 +410,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 20,
+      "position": 19,
       "item": {
         "@type": "Event",
         "name": "Toddler Time",
@@ -455,7 +432,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 21,
+      "position": 20,
       "item": {
         "@type": "Event",
         "name": "Senior Center: Travelogue",
