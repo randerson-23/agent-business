@@ -320,6 +320,10 @@ that limit.
    site show a real audience number on /sponsor/ once it is worth
    showing.
 
+8b. **Daily Herald trick-or-treat hours note (5 min, by Oct 15, item 271)**,
+   once `OUTREACH_TEMPLATES.md` §7b exists. It is timely and factual,
+   and it warms up the desk the full press pitch (step 9) will go to.
+
 **Next action — about an hour, no cost:**
 
 8. **Send the outreach emails (items 152, 161).** Six civic link-back
@@ -14834,6 +14838,89 @@ design/UX angle is **the weekend hub on a Saturday morning**. The pass
 also recorded IndexNow's first logged reason
 (`UserForbiddedToAccessSite`), which the build loop has already turned
 into Needs Ryan 3b.
+
+
+#### Research pass 2026-10-10, evening (sixty-seventh pass)
+
+The build loop shipped items 268 (the weekend hub's order, times and
+family-first picks) and 269 (feeds that cite Within Ten, one per town).
+The owner asked for, and got, a redesigned weekly email: a bold hero,
+"Don't miss" picks, a colour per town, date chips and badges. It goes
+out with Wednesday's send. IndexNow still answers
+`UserForbiddedToAccessSite` with the new key, and the build loop has
+already written the owner's Bing check (Needs Ryan 3c). Halloween is a
+Saturday three weeks from today, which makes it the site's
+best-timed audience moment of the year, so this pass is about that.
+
+| Angle | What it is / what we found | Why it matters here |
+|---|---|---|
+| **Who answers "trick-or-treat hours" for these towns** | The **Daily Herald** publishes an annual *"Trick-or-treat times in the suburbs"* list (its 2024 edition ran Oct 18). **MyKidList's** hours tracker and **Frightmaps** (state-level hours pages) also rank. The tracker's current version lists Arlington Heights and Palatine as 3–7 p.m. and Mount Prospect, Des Plaines and Wheeling as **"not posted yet."** Within Ten's `/trick-or-treat/` already has **all five towns**, sourced: Mount Prospect 3–8, Des Plaines' "no official hours" stated as such (items 218, 241) | The site is **ahead of every competitor on its own best page**, and nobody knows it yet. The Daily Herald compiles exactly this list every October from village announcements. A short, sourced note to whoever compiles it is the timeliest press contact available, and a smaller ask than the full press pitch (item 271) |
+| **AllEvents' topic-by-town landing pages** | AllEvents ranks with pages titled ***"Trunk or Treat Events in Arlington Heights, IL 2026"*** and *"Events & Things To Do in Arlington Heights, IL in October 2026"*: one page per topic and town, with the year in the title | Searchers type the topic, the town and the year. The site's page title is *"Trick-or-Treat Hours — Five Towns — Within Ten"*, with **no year, no "trunk-or-treat" and no town names**, though the page carries all of them (item 272) |
+| **Trunk-or-treats on `/trick-or-treat/` (design/UX)** | The page's Halloween events already include the **AHPD Trunk or Treat (Sat Oct 24, Pioneer Park)**, a church trunk-or-treat with a community meal, and **four separate "FREE Trunk or Treat" cards from Napleton dealerships in Palatine**: one per brand (Mazda, Hyundai, Chevrolet, Subaru), the same group, the same day | Four near-identical cards in a row read as clutter and push other towns' events down. A **trunk-or-treat** search, the second-biggest Halloween query after hours, finds no labelled section to land on (item 272) |
+| **Car dealerships as a sponsor category** | The Napleton group runs **four community trunk-or-treats in one town on one Saturday** and lists them publicly | A dealer group that already spends on family community events is a better-fit buyer than most: it has a marketing budget, wants local family visibility, and **already produces the events the site lists**. The Event Promo ($20) was built for exactly "feature our event at the top" (item 273) |
+
+#### P1 (new)
+
+271. **Send the Daily Herald this year's five-town trick-or-treat hours, by
+     Oct 15.** Owner, about 5 minutes, plus the build loop. **Build loop:**
+     add `OUTREACH_TEMPLATES.md` §7b, a short note to the Daily Herald's
+     community or entertainment desk: *"For your annual trick-or-treat
+     times list: confirmed 2026 hours for Arlington Heights, Mount
+     Prospect, Palatine and Wheeling, plus Des Plaines' guidance, each
+     linked to the village's own announcement."* It includes the table
+     from `/trick-or-treat/` with source links and the page URL, and
+     offers corrections. It asks for nothing beyond the hours being
+     useful. A credit link is welcome, not required. **Owner:** send it
+     from `hello@withintenmiles.com` by **Oct 15**, ahead of the paper's
+     usual mid-October list. **Why now:** it is timely, factual and
+     checkable, and it introduces the site to the desk that the full press
+     pitch (Needs Ryan step 9) will later go to, which makes that pitch
+     a second contact rather than a cold one.
+
+272. **Make `/trick-or-treat/` match what people type, and tidy its
+     trunk-or-treats.** Build loop, `trick_or_treat.html.j2` and its
+     builder:
+
+     - **Title and H1 with the year and the towns:** *"Trick-or-Treat
+       Hours 2026: Arlington Heights, Mount Prospect, Palatine, Des Plaines
+       & Wheeling"*. Put the year in the meta description too, and derive
+       it from the season, not a literal, so 2027 updates itself.
+     - **A "Trunk-or-treats" section** above the general Halloween list:
+       events matching `trunk-or-treat`, `trunk or treat` or `trunk 'n
+       treat`, by date, each with its town. The heading gets its own
+       anchor (`#trunk-or-treat`) for search and sharing.
+     - **Collapse same-host duplicates:** two or more events on the same
+       day whose titles differ only by a brand or location suffix after
+       "at …" (the four Napleton cards) render as **one card**: *"Trunk or
+       Treat at Napleton dealerships (4 locations)"*, with each location
+       linked inside the card. A generic rule (same date, same title
+       before " at ", same source), not a Napleton special case.
+     - Tests: the year in title and H1; the section contains only
+       trunk-or-treats; four same-day "X at A/B/C/D" listings collapse to
+       one card with four links; different days or titles never collapse.
+
+#### P2 (new)
+
+273. **Add car dealerships to the sponsor prospect list, starting with
+     the ones already hosting events.** Build loop: a §15 in
+     `OUTREACH_TEMPLATES.md`, *"Your trunk-or-treat is on our Halloween
+     page"*, sent **after** the event appears on the site. It says the
+     event is listed free on the town's Halloween page and offers the $20
+     Event Promo to feature it first in that town's weekend email and
+     page. **Owner:** send it to the Napleton group's marketing contact
+     this month, with the live link. **Guardrail:** the free listing
+     stays whether or not they buy. The site never removes, demotes or
+     holds back an event to create a sale, and the template says so. This
+     is the same "list free, sell the boost" funnel as item 246, aimed at
+     a buyer who has already shown the budget.
+
+Competitors reviewed this pass: **the Daily Herald's annual
+trick-or-treat times list, MyKidList's hours tracker and Frightmaps**
+(none has all five towns for 2026; the site does), **AllEvents'
+topic-by-town landing pages** (year and town in the title), and **car
+dealerships as event-hosting sponsors**. The design/UX angle is
+**trunk-or-treats on the Halloween page**, including same-host
+duplicate cards.
 
 
 ## Working agreements for autonomous iteration
