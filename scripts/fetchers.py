@@ -746,7 +746,15 @@ def submit_indexnow(
     real build was logging a 403 that nothing recorded anywhere.
     """
     if outcome is not None:
-        outcome.update({"status": None, "error": None})
+        outcome.update({"status": None, "error": None, "body": None, "key_file_ok": None})
+        # ROADMAP.md item 265: rule the file side in or out with evidence on
+        # every build. True only when the live key URL answers 200 with
+        # exactly the key; None when it could not be fetched at all.
+        try:
+            check = requests.get(key_location, timeout=REQUEST_TIMEOUT, headers={"User-Agent": USER_AGENT})
+            outcome["key_file_ok"] = check.status_code == 200 and check.text.strip() == key
+        except Exception:  # noqa: BLE001 - the check is advisory; never let it stop the ping
+            pass
     try:
         resp = requests.post(
             "https://api.indexnow.org/indexnow",
@@ -756,6 +764,11 @@ def submit_indexnow(
         )
         if outcome is not None:
             outcome["status"] = getattr(resp, "status_code", None)
+            # The reason code (for example UserForbiddedToAccessSite) is in
+            # the body of a rejection and nowhere else; keep the start of it.
+            if (outcome["status"] or 0) >= 400:
+                text = getattr(resp, "text", "")
+                outcome["body"] = text[:300] if isinstance(text, str) and text else None
         resp.raise_for_status()
         return True
     except Exception as exc:  # noqa: BLE001 - fail soft by design

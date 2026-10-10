@@ -4493,8 +4493,69 @@ def test_record_indexnow_outcome_appends_and_keeps_a_trailing_window(tmp_path):
         history = build_digest.record_indexnow_outcome(path, now, 61, False, {"status": 403, "error": "HTTPError"})
     assert len(history) == build_digest.INDEXNOW_LOG_KEEP
     assert history[-1] == {"timestamp": "2026-10-03T14:00:00+00:00", "url_count": 61, "ok": False,
-                           "status": 403, "error": "HTTPError"}
+                           "status": 403, "error": "HTTPError", "body": None, "key_file_ok": None, "skipped": None}
     assert json.loads(path.read_text()) == history
+
+
+def test_record_indexnow_outcome_keeps_the_reason_and_the_key_file_check(tmp_path):
+    # ROADMAP.md item 265: Bing's own reason code, and evidence about the file side.
+    path = tmp_path / "indexnow_log.json"
+    now = datetime(2026, 10, 10, 6, 0, tzinfo=timezone.utc)
+    outcome = {"status": 403, "error": "HTTPError", "body": '{"code":"UserForbiddedToAccessSite"}', "key_file_ok": True}
+    entry = build_digest.record_indexnow_outcome(path, now, 4, False, outcome)[-1]
+    assert entry["body"] == '{"code":"UserForbiddedToAccessSite"}' and entry["key_file_ok"] is True and entry["url_count"] == 4
+
+
+# ---- ROADMAP.md item 265 (with item 235): submit only the pages that changed ----
+
+
+def _write_pages(root, pages):
+    for url_path, text in pages.items():
+        target = root / url_path / "index.html" if url_path else root / "index.html"
+        target.parent.mkdir(parents=True, exist_ok=True)
+        target.write_text(text, encoding="utf-8")
+
+
+def test_page_fingerprint_ignores_the_generated_time_and_modified_stamp():
+    a = '<p>Fest on Oct 10</p><br>Generated 2026-10-09 20:35 UTC.<script>{"dateModified": "2026-10-09T20:35:07.6+00:00"}</script>'
+    b = '<p>Fest on Oct 10</p><br>Generated 2026-10-09 22:02 UTC.<script>{"dateModified": "2026-10-09T22:02:47.1+00:00"}</script>'
+    assert build_digest.page_fingerprint(a) == build_digest.page_fingerprint(b)
+    assert build_digest.page_fingerprint(a) != build_digest.page_fingerprint(a.replace("Oct 10", "Oct 11"))
+
+
+def test_changed_urls_are_the_ones_whose_page_differs_from_the_last_accepted_run(tmp_path):
+    base = build_digest.SITE_BASE_URL
+    urls = [base, base + "about/", base + "palatine-60067/"]
+    _write_pages(tmp_path, {"": "home", "about": "about", "palatine-60067": "pal v1"})
+    changed, current = build_digest.changed_indexnow_urls(urls, {}, tmp_path)
+    assert changed == urls  # nothing recorded yet: send everything once
+    assert set(current) == set(urls)
+    _write_pages(tmp_path, {"palatine-60067": "pal v2"})
+    changed, current2 = build_digest.changed_indexnow_urls(urls, current, tmp_path)
+    assert changed == [base + "palatine-60067/"]
+    assert current2[base] == current[base]
+    changed, _ = build_digest.changed_indexnow_urls(urls, current2, tmp_path)
+    assert changed == []
+
+
+def test_an_unreadable_page_counts_as_changed_and_is_not_recorded(tmp_path):
+    base = build_digest.SITE_BASE_URL
+    changed, current = build_digest.changed_indexnow_urls([base + "missing/"], {base + "missing/": "old"}, tmp_path)
+    assert changed == [base + "missing/"] and current == {}
+
+
+def test_load_indexnow_hashes_survives_missing_or_damaged_files(tmp_path):
+    assert build_digest.load_indexnow_hashes(tmp_path / "none.json") == {}
+    (tmp_path / "bad.json").write_text("{nope")
+    assert build_digest.load_indexnow_hashes(tmp_path / "bad.json") == {}
+    (tmp_path / "ok.json").write_text(json.dumps({"https://x/": "abc", "https://y/": 3}))
+    assert build_digest.load_indexnow_hashes(tmp_path / "ok.json") == {"https://x/": "abc"}
+
+
+def test_the_hashes_file_is_committed_and_the_workflow_adds_it():
+    root = Path(__file__).resolve().parents[1]
+    assert isinstance(json.loads((root / "data" / "indexnow_hashes.json").read_text()), dict)
+    assert "data/indexnow_hashes.json" in (root / ".github" / "workflows" / "build-digest.yml").read_text()
 
 
 def test_record_indexnow_outcome_starts_fresh_on_a_corrupt_file(tmp_path):

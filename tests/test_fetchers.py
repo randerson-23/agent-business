@@ -862,8 +862,9 @@ def test_revize_news_json_is_a_registered_source_type():
     assert FETCHERS["revize_news_json"] is fetch_revize_news_json
 
 
+@patch("fetchers.requests.get", side_effect=requests.ConnectionError("offline"))
 @patch("fetchers.requests.post")
-def test_submit_indexnow_records_the_http_status_of_a_rejection(mock_post):
+def test_submit_indexnow_records_the_http_status_of_a_rejection(mock_post, _mock_get):
     # ROADMAP.md item 224: every real build logged "403 Client Error" and
     # nothing kept it. The outcome dict now carries the status.
     rejected = Mock()
@@ -874,20 +875,92 @@ def test_submit_indexnow_records_the_http_status_of_a_rejection(mock_post):
     ok = submit_indexnow("withintenmiles.com", "abc123", "https://withintenmiles.com/abc123.txt",
                          ["https://withintenmiles.com/"], outcome=outcome)
     assert ok is False
-    assert outcome == {"status": 403, "error": "HTTPError"}
+    assert outcome == {"status": 403, "error": "HTTPError", "body": None, "key_file_ok": None}
 
 
+@patch("fetchers.requests.get", side_effect=requests.ConnectionError("offline"))
 @patch("fetchers.requests.post")
-def test_submit_indexnow_records_success_and_transport_errors(mock_post):
+def test_submit_indexnow_records_success_and_transport_errors(mock_post, _mock_get):
     accepted = Mock()
     accepted.status_code = 202
     accepted.raise_for_status = Mock()
     mock_post.return_value = accepted
     outcome = {}
     assert submit_indexnow("h", "k", "https://h/k.txt", ["https://h/"], outcome=outcome) is True
-    assert outcome == {"status": 202, "error": None}
+    assert outcome == {"status": 202, "error": None, "body": None, "key_file_ok": None}
 
     mock_post.side_effect = requests.ConnectTimeout("slow")
     outcome = {}
     assert submit_indexnow("h", "k", "https://h/k.txt", ["https://h/"], outcome=outcome) is False
-    assert outcome == {"status": None, "error": "ConnectTimeout"}
+    assert outcome == {"status": None, "error": "ConnectTimeout", "body": None, "key_file_ok": None}
+
+
+# ---- ROADMAP.md item 265: say why IndexNow refused, and prove the key file is fine ----
+
+
+def _rejection(status, body):
+    resp = Mock()
+    resp.status_code = status
+    resp.text = body
+    resp.raise_for_status = Mock(side_effect=requests.HTTPError(f"{status} Client Error", response=resp))
+    return resp
+
+
+def _key_file(status, text):
+    resp = Mock()
+    resp.status_code = status
+    resp.text = text
+    return resp
+
+
+@patch("fetchers.requests.get")
+@patch("fetchers.requests.post")
+def test_submit_indexnow_keeps_the_reason_code_from_a_rejection(mock_post, mock_get):
+    mock_post.return_value = _rejection(403, '{"code":"UserForbiddedToAccessSite","message":"x"}' + " " * 400)
+    mock_get.return_value = _key_file(200, "abc123\n")
+    outcome = {}
+    assert submit_indexnow("h", "abc123", "https://h/abc123.txt", ["https://h/"], outcome=outcome) is False
+    assert outcome["status"] == 403
+    assert outcome["body"].startswith('{"code":"UserForbiddedToAccessSite"')
+    assert len(outcome["body"]) <= 300
+    assert outcome["key_file_ok"] is True
+
+
+@patch("fetchers.requests.get")
+@patch("fetchers.requests.post")
+def test_submit_indexnow_reports_a_wrong_or_missing_key_file(mock_post, mock_get):
+    mock_post.return_value = _rejection(403, "no")
+    for response, expected in ((_key_file(200, "something else"), False), (_key_file(404, "Not found"), False)):
+        mock_get.return_value = response
+        outcome = {}
+        submit_indexnow("h", "abc123", "https://h/abc123.txt", ["https://h/"], outcome=outcome)
+        assert outcome["key_file_ok"] is expected
+    mock_get.side_effect = requests.ConnectTimeout("slow")
+    outcome = {}
+    submit_indexnow("h", "abc123", "https://h/abc123.txt", ["https://h/"], outcome=outcome)
+    assert outcome["key_file_ok"] is None  # could not tell: not the same as wrong
+
+
+@patch("fetchers.requests.get")
+@patch("fetchers.requests.post")
+def test_submit_indexnow_does_not_keep_a_body_for_an_accepted_ping(mock_post, mock_get):
+    accepted = Mock()
+    accepted.status_code = 202
+    accepted.text = "ok"
+    accepted.raise_for_status = Mock()
+    mock_post.return_value = accepted
+    mock_get.return_value = _key_file(200, "k")
+    outcome = {}
+    assert submit_indexnow("h", "k", "https://h/k.txt", ["https://h/"], outcome=outcome) is True
+    assert outcome["body"] is None and outcome["key_file_ok"] is True
+
+
+@patch("fetchers.requests.get")
+@patch("fetchers.requests.post")
+def test_submit_indexnow_makes_no_extra_request_without_an_outcome(mock_post, mock_get):
+    accepted = Mock()
+    accepted.status_code = 202
+    accepted.raise_for_status = Mock()
+    mock_post.return_value = accepted
+    assert submit_indexnow("h", "k", "https://h/k.txt", ["https://h/"]) is True
+    mock_get.assert_not_called()
