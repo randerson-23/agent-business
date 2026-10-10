@@ -44,14 +44,21 @@
 </noscript>
 <![endif]-->
 </head>
-<body class="wt-bg" style="margin:0; padding:0; background-color:#f3f2f2;" bgcolor="#f3f2f2">
+<body class="wt-bg" style="margin:0; padding:0; background-color:#f6f1ea;" bgcolor="#f6f1ea">
 {# ROADMAP.md item 207: hidden preheader - see email_digest.html.j2's
      own copy of this comment for the full rationale. #}
 <div style="display:none; font-size:1px; line-height:1px; max-height:0px; max-width:0px; opacity:0; overflow:hidden; mso-hide:all;">{{ preheader }}&#8203;&zwnj;&nbsp;&zwnj;&#8203;</div>
-<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" bgcolor="#f3f2f2" class="wt-bg" style="background-color:#f3f2f2;">
+{# Owner request 2026-10-10: "make the newsletter more fun and eye
+     catching". Same email-safe rules as before (tables, inline styles,
+     bgcolor attributes, system fonts, no images to block), with a bold
+     hero, "Don't miss" picks, a colour per town, a date chip on every
+     event and pill badges. The 600px column is now fluid (width 100%,
+     max-width 600) so it no longer overflows a phone screen. #}
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" bgcolor="#f6f1ea" class="wt-bg" style="background-color:#f6f1ea;">
 <tr>
-<td align="center" style="padding:24px 16px;">
-<table role="presentation" width="600" cellpadding="0" cellspacing="0" border="0" style="width:600px; max-width:600px;">
+<td align="center" style="padding:16px 10px;">
+<!--[if mso]><table role="presentation" width="600" cellpadding="0" cellspacing="0" border="0"><tr><td><![endif]-->
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="width:100%; max-width:600px;">
 
 {% if preview %}
 <tr>
@@ -59,111 +66,158 @@
 PREVIEW ONLY, NOT PART OF THE EMAIL — SUBJECT LINE: {{ subject_line }}
 </td>
 </tr>
+<tr><td style="padding:0 0 12px 0;"></td></tr>
 {% endif %}
 
-{# Wordmark #}
+{# Hero #}
 <tr>
-<td style="padding:0 8px 16px 8px;">
-<span class="wt-brand" style="font-family:Arial, Helvetica, sans-serif; font-size:13px; font-weight:bold; letter-spacing:1px; color:#ae1800;">WITHIN TEN</span>
+<td bgcolor="#ec3013" class="wt-hero" style="background-color:#ec3013; border-radius:18px 18px 0 0; padding:26px 24px 22px 24px;">
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+<tr>
+<td style="font-family:Arial, Helvetica, sans-serif; font-size:12px; font-weight:bold; letter-spacing:2px; color:#ffe9b3; padding-bottom:10px;">
+WITHIN TEN &nbsp;·&nbsp; WEEKEND GUIDE
 </td>
 </tr>
-
-{# Intro #}
 <tr>
-<td style="font-family:Arial, Helvetica, sans-serif; font-size:22px; font-weight:bold; line-height:1.2; color:#201e1d; padding-bottom:6px;" class="wt-ink">
+<td style="font-family:Georgia, 'Times New Roman', serif; font-size:30px; font-weight:bold; line-height:1.15; color:#ffffff; padding-bottom:10px;">
 This weekend, across the northwest suburbs
 </td>
 </tr>
 <tr>
-<td class="wt-muted" style="font-family:Arial, Helvetica, sans-serif; font-size:14px; color:#605d5d; padding-bottom:18px;">
-{{ weekend_date_range }}
+<td style="padding-bottom:4px;">
+<table role="presentation" cellpadding="0" cellspacing="0" border="0">
+<tr>
+<td bgcolor="#ffd23f" style="background-color:#ffd23f; border-radius:999px; padding:6px 14px; font-family:Arial, Helvetica, sans-serif; font-size:15px; font-weight:bold; color:#201e1d; white-space:nowrap;">
+📅 {{ weekend_date_range }}
 </td>
 </tr>
-{% if seasonal_link %}
-<tr>
-<td class="wt-accent" style="font-family:Arial, Helvetica, sans-serif; font-size:15px; font-weight:bold; padding-bottom:16px;">
-<a href="{{ seasonal_link.url }}" class="wt-brand" style="color:#ae1800; text-decoration:underline;">{{ seasonal_link.label }}</a>
+</table>
 </td>
 </tr>
-{% endif %}
-
-{% for block in region_blocks %}
-{# Region block: {{ block.region_name }} #}
+{% if event_total %}
 <tr>
-<td bgcolor="#eae9e9" class="wt-card wt-border" style="background-color:#eae9e9; border:2px solid #d7d3d3; border-radius:0; padding:20px; margin-bottom:16px;">
-<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
-<tr>
-<td class="wt-ink" style="font-family:Arial, Helvetica, sans-serif; font-size:18px; font-weight:bold; color:#201e1d; padding-bottom:10px;">
-<a href="{{ block.region_url }}" class="wt-ink" style="color:#201e1d; text-decoration:none;">{{ block.region_name }}</a>
-</td>
-</tr>
-
-{% if block.attendable_events %}
-{% for event in block.attendable_events[:4] %}
-<tr>
-<td class="wt-border" style="padding:8px 0; border-top:1px solid #d7d3d3;">
-<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
-{% if event.sponsored_by %}
-<tr>
-<td class="wt-accent" style="font-family:Arial, Helvetica, sans-serif; font-size:12px; font-weight:bold; letter-spacing:0.5px; text-transform:uppercase; color:#ae1800; padding-bottom:2px;">
-Featured &middot; Presented by {{ event.sponsored_by }}
-</td>
-</tr>
-{% endif %}
-<tr>
-<td class="wt-ink" style="font-family:Arial, Helvetica, sans-serif; font-size:16px; color:#201e1d;">
-<a href="{{ event.url }}" class="wt-ink" style="color:#201e1d; text-decoration:none; font-weight:bold;">{{ event.title }}</a>
-</td>
-</tr>
-{% if event.email_when or event.date %}
-<tr>
-<td class="wt-accent" style="font-family:Arial, Helvetica, sans-serif; font-size:14px; color:#ae1800;">
-{{ event.email_when or event.date }}
-</td>
-</tr>
-{% endif %}
-{% if event.email_where %}
-<tr>
-<td class="wt-muted" style="font-family:Arial, Helvetica, sans-serif; font-size:13px; color:#605d5d;">
-{{ event.email_where }}
-</td>
-</tr>
-{% endif %}
-{% if event.email_blurb %}
-<tr>
-<td class="wt-muted" style="font-family:Arial, Helvetica, sans-serif; font-size:13px; color:#605d5d; padding-top:2px;">
-{{ event.email_blurb }}
-</td>
-</tr>
-{% endif %}
-{% if event.recurrence_note %}
-{# ROADMAP.md item 141: same muted treatment as email_digest.html.j2. #}
-<tr>
-<td class="wt-muted" style="font-family:Arial, Helvetica, sans-serif; font-size:12px; font-style:italic; color:#605d5d;">
-{{ event.recurrence_note }}
+<td style="font-family:Arial, Helvetica, sans-serif; font-size:15px; font-weight:bold; color:#ffffff; padding-top:8px;">
+{{ event_total }} thing{{ 's' if event_total != 1 else '' }} to do{% if town_total > 1 %} in {{ town_total }} towns{% endif %} 👇
 </td>
 </tr>
 {% endif %}
 </table>
 </td>
 </tr>
+<tr>
+<td bgcolor="#201e1d" style="background-color:#201e1d; border-radius:0 0 18px 18px; padding:10px 24px; font-family:Arial, Helvetica, sans-serif; font-size:13px; color:#f6f1ea;">
+{% for block in region_blocks %}<a href="{{ block.region_url }}" style="color:#ffffff; text-decoration:none; font-weight:bold; white-space:nowrap;"><span style="color:{{ block.tint }};">●</span> {{ block.region_name }}</a>{% if not loop.last %} &nbsp; {% endif %}{% endfor %}
+</td>
+</tr>
+<tr><td style="padding:0 0 16px 0;"></td></tr>
+
+{% if seasonal_link %}
+<tr>
+<td bgcolor="#fff4d6" class="wt-card-sponsor" style="background-color:#fff4d6; border:2px dashed #f0a500; border-radius:14px; padding:14px 18px; font-family:Arial, Helvetica, sans-serif; font-size:16px; font-weight:bold;">
+<a href="{{ seasonal_link.url }}" class="wt-brand" style="color:#ae1800; text-decoration:none;">{{ seasonal_link.label }}</a>
+</td>
+</tr>
+<tr><td style="padding:0 0 16px 0;"></td></tr>
+{% endif %}
+
+{% if top_picks %}
+{# "Don't miss": one standout per town, chosen by pick_email_top_picks(). #}
+<tr>
+<td bgcolor="#ffffff" class="wt-card" style="background-color:#ffffff; border-radius:18px; padding:20px 20px 8px 20px; border:2px solid #201e1d;">
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+<tr>
+<td style="font-family:Arial, Helvetica, sans-serif; font-size:13px; font-weight:bold; letter-spacing:1.5px; color:#ae1800; padding-bottom:12px;">
+⭐ DON'T MISS THIS WEEKEND
+</td>
+</tr>
+{% for pick in top_picks %}
+<tr>
+<td style="padding-bottom:14px;">
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+<tr>
+<td width="52" valign="top" style="width:52px; font-size:34px; line-height:40px; text-align:center;">{{ pick.email_emoji }}</td>
+<td valign="top" style="padding-left:10px;">
+<a href="{{ pick.url }}" style="font-family:Georgia, 'Times New Roman', serif; font-size:19px; font-weight:bold; line-height:1.25; color:#201e1d; text-decoration:none;">{{ pick.title }}</a>
+<div style="font-family:Arial, Helvetica, sans-serif; font-size:13px; font-weight:bold; color:{{ pick.pick_color }}; padding-top:3px;">{{ pick.pick_town }} &nbsp;·&nbsp; {{ pick.email_when or pick.date }}</div>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+{% endfor %}
+</table>
+</td>
+</tr>
+<tr><td style="padding:0 0 16px 0;"></td></tr>
+{% endif %}
+
+{% for block in region_blocks %}
+{# Region block: {{ block.region_name }} #}
+<tr>
+<td bgcolor="{{ block.color }}" style="background-color:{{ block.color }}; border-radius:16px 16px 0 0; padding:14px 20px;">
+<a href="{{ block.region_url }}" style="font-family:Georgia, 'Times New Roman', serif; font-size:22px; font-weight:bold; color:#ffffff; text-decoration:none;">{{ block.region_name }}</a>
+</td>
+</tr>
+<tr>
+<td bgcolor="#ffffff" class="wt-card" style="background-color:#ffffff; border-radius:0 0 16px 16px; padding:6px 20px 18px 20px;">
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+
+{% if block.attendable_events %}
+{% for event in block.attendable_events[:4] %}
+<tr>
+<td style="padding:12px 0;{% if not loop.first %} border-top:1px solid #eee6dc;{% endif %}">
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+<tr>
+<td width="54" valign="top" style="width:54px;">
+<table role="presentation" width="54" cellpadding="0" cellspacing="0" border="0">
+<tr><td align="center" bgcolor="{{ block.color }}" style="background-color:{{ block.color }}; border-radius:10px 10px 0 0; padding:3px 0; font-family:Arial, Helvetica, sans-serif; font-size:11px; font-weight:bold; letter-spacing:1px; color:#ffffff;">{{ event.email_dow or "WKND" }}</td></tr>
+<tr><td align="center" bgcolor="{{ block.tint }}" style="background-color:{{ block.tint }}; border-radius:0 0 10px 10px; padding:4px 0 5px 0; font-family:Georgia, 'Times New Roman', serif; font-size:22px; font-weight:bold; line-height:24px; color:#201e1d;">{{ event.email_daynum or event.email_emoji }}</td></tr>
+</table>
+</td>
+<td valign="top" style="padding-left:14px;">
+{% if event.sponsored_by %}
+<div class="wt-accent" style="font-family:Arial, Helvetica, sans-serif; font-size:11px; font-weight:bold; letter-spacing:0.5px; text-transform:uppercase; color:#ae1800; padding-bottom:3px;">Featured &middot; Presented by {{ event.sponsored_by }}</div>
+{% endif %}
+<span style="font-size:17px;">{{ event.email_emoji }}</span> <a href="{{ event.url }}" class="wt-ink" style="font-family:Arial, Helvetica, sans-serif; font-size:17px; font-weight:bold; line-height:1.3; color:#201e1d; text-decoration:none;">{{ event.title }}</a>
+{% if event.email_clock or event.email_where %}
+<div style="font-family:Arial, Helvetica, sans-serif; font-size:13px; color:#605d5d; padding-top:3px;">{% if event.email_clock %}<span style="font-weight:bold; color:{{ block.color }};">{{ event.email_clock }}</span>{% if event.email_where %} · {% endif %}{% endif %}{% if event.email_where %}{{ event.email_where }}{% endif %}</div>
+{% elif not event.email_dow and event.date %}
+<div style="font-family:Arial, Helvetica, sans-serif; font-size:13px; color:#605d5d; padding-top:3px;">{{ event.date }}</div>
+{% endif %}
+{% if event.email_blurb %}
+<div class="wt-muted" style="font-family:Arial, Helvetica, sans-serif; font-size:14px; line-height:1.45; color:#4a4646; padding-top:4px;">{{ event.email_blurb }}</div>
+{% endif %}
+{% if event.recurrence_note %}
+{# ROADMAP.md item 141: same muted treatment as email_digest.html.j2. #}
+<div class="wt-muted" style="font-family:Arial, Helvetica, sans-serif; font-size:12px; font-style:italic; color:#605d5d; padding-top:3px;">🔁 {{ event.recurrence_note }}</div>
+{% endif %}
+{% if event.email_badges %}
+<table role="presentation" cellpadding="0" cellspacing="0" border="0" style="margin-top:7px;"><tr>
+{% for badge in event.email_badges %}<td bgcolor="{{ block.tint }}" style="background-color:{{ block.tint }}; border:1px solid {{ block.color }}; border-radius:999px; padding:2px 10px; font-family:Arial, Helvetica, sans-serif; font-size:12px; font-weight:bold; color:{{ block.color }};">{{ badge.emoji }} {{ badge.label }}</td>{% if not loop.last %}<td style="width:6px;"></td>{% endif %}{% endfor %}
+</tr></table>
+{% endif %}
+</td>
+</tr>
+</table>
+</td>
+</tr>
 {% endfor %}
 {% elif block.evergreen_highlights %}
 <tr>
-<td class="wt-muted" style="font-family:Arial, Helvetica, sans-serif; font-size:14px; color:#605d5d; padding-bottom:6px;">
+<td class="wt-muted" style="font-family:Arial, Helvetica, sans-serif; font-size:14px; color:#605d5d; padding:12px 0 6px 0;">
 Nothing new dated for this weekend yet, but worth knowing about:
 </td>
 </tr>
 {% for item in block.evergreen_highlights %}
 <tr>
-<td class="wt-border" style="padding:6px 0; border-top:1px solid #d7d3d3; font-family:Arial, Helvetica, sans-serif; font-size:15px;">
-<a href="{{ item.url }}" class="wt-ink" style="color:#201e1d; text-decoration:none; font-weight:bold;">{{ item.title }}</a>
+<td style="padding:6px 0; font-family:Arial, Helvetica, sans-serif; font-size:15px;">
+✨ <a href="{{ item.url }}" class="wt-ink" style="color:#201e1d; text-decoration:none; font-weight:bold;">{{ item.title }}</a>
 </td>
 </tr>
 {% endfor %}
 {% elif not block.informational_events %}
 <tr>
-<td class="wt-muted" style="font-family:Arial, Helvetica, sans-serif; font-size:14px; color:#605d5d;">
+<td class="wt-muted" style="font-family:Arial, Helvetica, sans-serif; font-size:14px; color:#605d5d; padding-top:12px;">
 Nothing dated for this weekend yet — the full guide has what's coming up.
 </td>
 </tr>
@@ -171,32 +225,31 @@ Nothing dated for this weekend yet — the full guide has what's coming up.
 
 {% if block.informational_events %}
 {# ROADMAP.md Phase 11 #90, applied here independently of the branch
-     above (a real bug this template shipped with: it only checked
-     informational_events inside the attendable_events branch, so a
-     region with only a half-day/closure and no attendable events
-     silently dropped it - email_digest.html.j2 checks it in both
-     branches for the same reason). #}
+     above (a region with only a half-day/closure and no attendable
+     events must not silently drop it). #}
 <tr>
-<td class="wt-accent wt-border" style="padding:8px 0 2px 0; border-top:1px solid #d7d3d3; font-family:Arial, Helvetica, sans-serif; font-size:12px; font-weight:bold; letter-spacing:0.5px; color:#ae1800;">
-ALSO THIS WEEK
-</td>
-</tr>
+<td style="padding-top:12px;">
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+<tr>
+<td bgcolor="#f6f1ea" style="background-color:#f6f1ea; border-radius:10px; padding:10px 14px;">
+<div class="wt-accent" style="font-family:Arial, Helvetica, sans-serif; font-size:11px; font-weight:bold; letter-spacing:1px; color:#ae1800; padding-bottom:2px;">📌 ALSO THIS WEEK</div>
 {% for item in block.informational_events[:2] %}
-<tr>
-<td class="wt-muted" style="font-family:Arial, Helvetica, sans-serif; font-size:14px; color:#605d5d; padding-top:4px;">
-{{ item.title }}{% if item.date %} — {{ item.date }}{% endif %}
+<div class="wt-muted" style="font-family:Arial, Helvetica, sans-serif; font-size:14px; color:#4a4646; padding-top:3px;">{{ item.title }}{% if item.date %} — {{ item.date }}{% endif %}</div>
+{% endfor %}
 </td>
 </tr>
-{% endfor %}
+</table>
+</td>
+</tr>
 {% endif %}
 
 {% if block.sponsor and block.sponsor.is_active_sponsor %}
 <tr>
-<td style="padding-top:10px;">
+<td style="padding-top:12px;">
 <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
 <tr>
-<td bgcolor="#fff2ef" class="wt-card-sponsor wt-border" style="background-color:#fff2ef; border:2px solid #ec3013; border-radius:0; padding:10px 14px;">
-<span class="wt-accent" style="font-family:Arial, Helvetica, sans-serif; font-size:11px; font-weight:bold; letter-spacing:0.5px; color:#ae1800;">LOCAL RECOMMENDATION —</span>
+<td bgcolor="#fff2ef" class="wt-card-sponsor" style="background-color:#fff2ef; border:2px solid #ec3013; border-radius:12px; padding:10px 14px;">
+<span class="wt-accent" style="font-family:Arial, Helvetica, sans-serif; font-size:11px; font-weight:bold; letter-spacing:0.5px; color:#ae1800;">💛 LOCAL RECOMMENDATION —</span>
 <a href="{{ block.sponsor.url }}" class="wt-ink" style="color:#201e1d; text-decoration:none; font-weight:bold; font-family:Arial, Helvetica, sans-serif; font-size:14px;">{{ block.sponsor.title }}</a>
 </td>
 </tr>
@@ -206,8 +259,14 @@ ALSO THIS WEEK
 {% endif %}
 
 <tr>
-<td style="padding-top:12px;">
-<a href="{{ block.region_url }}" class="wt-brand" style="color:#ae1800; text-decoration:none; font-weight:bold; font-family:Arial, Helvetica, sans-serif; font-size:13px;">See everything in {{ block.region_name }} &rarr;</a>
+<td style="padding-top:14px;">
+<table role="presentation" cellpadding="0" cellspacing="0" border="0">
+<tr>
+<td bgcolor="{{ block.color }}" style="background-color:{{ block.color }}; border-radius:999px;">
+<a href="{{ block.region_url }}" style="display:inline-block; padding:9px 18px; font-family:Arial, Helvetica, sans-serif; font-size:14px; font-weight:bold; color:#ffffff; text-decoration:none;">See everything in {{ block.region_name }} &rarr;</a>
+</td>
+</tr>
+</table>
 </td>
 </tr>
 
@@ -218,23 +277,20 @@ ALSO THIS WEEK
 {% endfor %}
 
 {% if empty_regions_summary %}
-{# ROADMAP.md item 177: regions with nothing dated, no informational
-     note, and no active sponsor collapse into one shared block instead
-     of repeating "Nothing new dated..." as a full card per region -
-     built in build_digest.py only once 2+ regions qualify at once, so
-     a single quiet region still gets its own ordinary card above. #}
+{# ROADMAP.md item 177: regions with nothing dated collapse into one
+     shared block once 2+ qualify at once. #}
 <tr>
-<td bgcolor="#eae9e9" class="wt-card wt-border" style="background-color:#eae9e9; border:2px solid #d7d3d3; border-radius:0; padding:20px; margin-bottom:16px;">
+<td bgcolor="#ffffff" class="wt-card" style="background-color:#ffffff; border-radius:16px; padding:18px 20px;">
 <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
 <tr>
-<td class="wt-muted" style="font-family:Arial, Helvetica, sans-serif; font-size:14px; color:#605d5d; padding-bottom:10px;">
+<td class="wt-muted" style="font-family:Arial, Helvetica, sans-serif; font-size:14px; color:#605d5d; padding-bottom:8px;">
 Nothing dated yet in {{ empty_regions_summary.names }} — worth knowing about:
 </td>
 </tr>
 {% for entry in empty_regions_summary.entries %}
 <tr>
-<td class="wt-border" style="padding:6px 0; border-top:1px solid #d7d3d3; font-family:Arial, Helvetica, sans-serif; font-size:14px;">
-<a href="{{ entry.region_url }}" class="wt-ink" style="color:#201e1d; text-decoration:none; font-weight:bold;">{{ entry.region_name }}</a>{% if entry.highlight %} — <a href="{{ entry.highlight[0].url }}" class="wt-ink" style="color:#201e1d; text-decoration:none;">{{ entry.highlight[0].title }}</a>{% endif %}
+<td style="padding:6px 0; font-family:Arial, Helvetica, sans-serif; font-size:14px;">
+✨ <a href="{{ entry.region_url }}" class="wt-ink" style="color:#201e1d; text-decoration:none; font-weight:bold;">{{ entry.region_name }}</a>{% if entry.highlight %} — <a href="{{ entry.highlight[0].url }}" class="wt-ink" style="color:#201e1d; text-decoration:none;">{{ entry.highlight[0].title }}</a>{% endif %}
 </td>
 </tr>
 {% endfor %}
@@ -245,21 +301,13 @@ Nothing dated yet in {{ empty_regions_summary.names }} — worth knowing about:
 {% endif %}
 
 {% if house_ad %}
-{# ROADMAP.md item 169: house ads are inventory notices, not content -
-     they appear at most once per artifact, regardless of how many
-     regions have nothing sold. Item 88's rationale for showing an
-     unsold slot at all still applies (this shouldn't be the one
-     artifact that never mentions a slot is for sale) - what changed is
-     that a real paying sponsor still gets a per-region block above
-     (that placement is what the tier sells), while the free "nothing's
-     sold here yet" notice runs once for the whole issue instead of
-     once per region. #}
+{# ROADMAP.md item 169: house ads appear at most once per issue. #}
 <tr>
 <td style="padding-bottom:16px;">
 <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
 <tr>
-<td bgcolor="#f3f2f2" class="wt-bg wt-border" style="background-color:#f3f2f2; border:1px dashed #d7d3d3; border-radius:0; padding:10px 14px;">
-<span class="wt-muted" style="font-family:Arial, Helvetica, sans-serif; font-size:11px; font-weight:bold; letter-spacing:0.5px; color:#605d5d;">SPONSOR THIS SPOT —</span>
+<td bgcolor="#fffaf2" class="wt-bg" style="background-color:#fffaf2; border:2px dashed #e3c9a8; border-radius:14px; padding:12px 16px;">
+<span class="wt-muted" style="font-family:Arial, Helvetica, sans-serif; font-size:11px; font-weight:bold; letter-spacing:0.5px; color:#605d5d;">📣 SPONSOR THIS SPOT —</span>
 <span class="wt-muted" style="font-family:Arial, Helvetica, sans-serif; font-size:13px; color:#605d5d;">{{ house_ad.detail }}</span>
 {% if house_ad.url %} <a href="{{ house_ad.url }}" class="wt-brand" style="color:#ae1800; text-decoration:none; font-weight:bold; font-family:Arial, Helvetica, sans-serif; font-size:13px;">Learn more &rarr;</a>{% endif %}
 </td>
@@ -270,43 +318,53 @@ Nothing dated yet in {{ empty_regions_summary.names }} — worth knowing about:
 {% endif %}
 
 {# Footer #}
-{% if newsletter.configured %}
-{# ROADMAP.md item 183: a subscriber forwarding this email is the one
-     growth channel that costs nothing and works at any list size, but
-     the email had zero subscribe links among its 16 real hrefs - a
-     forward dead-ends the moment it reaches someone who isn't already
-     on the list. One quiet line, gated the same way the rest of the
-     newsletter feature is (item 34's load_newsletter_config), pointing
-     at Buttondown's own hosted page rather than an embedded <form> -
-     forms are unreliably stripped across email clients, a plain link
-     is not. #}
 <tr>
-<td align="center" class="wt-muted" style="padding:8px 8px 0 8px; font-family:Arial, Helvetica, sans-serif; font-size:12px; color:#605d5d;">
-Forwarded this? <a href="https://buttondown.com/{{ newsletter.buttondown_username }}?utm_source=email&utm_campaign=forward" class="wt-brand" style="color:#ae1800; text-decoration:underline; font-weight:bold;">Get your own weekend guide every Thursday &rarr;</a>
+<td bgcolor="#201e1d" style="background-color:#201e1d; border-radius:18px; padding:22px 20px;">
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+{% if newsletter.configured %}
+{# ROADMAP.md item 183: forwarding is the one free growth channel, so a
+     forwarded copy must carry a way to subscribe - a plain link to
+     Buttondown's hosted page, since forms are stripped by many clients. #}
+<tr>
+<td align="center" style="font-family:Georgia, 'Times New Roman', serif; font-size:18px; font-weight:bold; color:#ffffff; padding-bottom:12px;">
+Forwarded this? Get your own every Thursday 💌
+</td>
+</tr>
+<tr>
+<td align="center" style="padding-bottom:16px;">
+<table role="presentation" cellpadding="0" cellspacing="0" border="0">
+<tr>
+<td bgcolor="#ffd23f" style="background-color:#ffd23f; border-radius:999px;">
+<a href="https://buttondown.com/{{ newsletter.buttondown_username }}?utm_source=email&utm_campaign=forward" style="display:inline-block; padding:10px 22px; font-family:Arial, Helvetica, sans-serif; font-size:15px; font-weight:bold; color:#201e1d; text-decoration:none;">Get your own weekend guide &rarr;</a>
+</td>
+</tr>
+</table>
 </td>
 </tr>
 {% endif %}
+{# ROADMAP.md item 157: a reply is a stronger deliverability signal than
+     a click, and replies reach a real inbox (item 93). #}
 <tr>
-<td align="center" class="wt-muted" style="padding:6px 8px 0 8px; font-family:Arial, Helvetica, sans-serif; font-size:12px; color:#605d5d;">
-See Within Ten first when you search: <a href="{{ preferred_source_url }}" class="wt-brand" style="color:#ae1800; text-decoration:underline; font-weight:bold;">add us as a preferred source on Google &rarr;</a>
-</td>
-</tr>
-{# ROADMAP.md item 157: a reply is a stronger deliverability signal
-     than the click-through CTA above, and replies now reach a real
-     inbox (item 93) - a quiet secondary line, not a competing button,
-     per the item's own "one dominant CTA per screen" reasoning. #}
-<tr>
-<td align="center" class="wt-muted" style="padding:8px 8px 0 8px; font-family:Arial, Helvetica, sans-serif; font-size:12px; color:#605d5d;">
+<td align="center" style="font-family:Arial, Helvetica, sans-serif; font-size:13px; color:#f6f1ea; padding-bottom:8px;">
 Know about something we missed? Hit reply — we read every one.
 </td>
 </tr>
 <tr>
-<td align="center" class="wt-muted" style="padding:8px 8px 8px 8px; font-family:Arial, Helvetica, sans-serif; font-size:12px; color:#605d5d;">
+<td align="center" style="font-family:Arial, Helvetica, sans-serif; font-size:12px; color:#cfc7bd; padding-bottom:8px;">
+See Within Ten first when you search: <a href="{{ preferred_source_url }}" style="color:#ffd23f; text-decoration:underline; font-weight:bold;">add us as a preferred source on Google &rarr;</a>
+</td>
+</tr>
+<tr>
+<td align="center" style="font-family:Arial, Helvetica, sans-serif; font-size:12px; color:#cfc7bd;">
 Within Ten — local events within ten miles, pulled automatically from each village, library, and park district.
+</td>
+</tr>
+</table>
 </td>
 </tr>
 
 </table>
+<!--[if mso]></td></tr></table><![endif]-->
 </td>
 </tr>
 </table>

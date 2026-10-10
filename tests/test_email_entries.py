@@ -88,7 +88,10 @@ def combined(events_by_town):
 def test_the_combined_email_shows_time_place_and_blurb_for_each_entry():
     html = combined({"Palatine": [ev("Harvest Hustle", "2026-10-10T09:30:00", venue="Palatine Public Library", detail="Run or walk the course.")]})
     text = re.sub(r"\s+", " ", re.sub(r"<[^>]+>", " ", html))
-    assert "Sat Oct 10 · 9:30 AM Palatine Public Library Run or walk the course." in text
+    # Owner-requested redesign (2026-10-10): the day and date sit in a chip
+    # beside the title, and the time leads the venue line under it.
+    assert "SAT 10" in text
+    assert "Harvest Hustle 9:30 AM · Palatine Public Library Run or walk the course." in text
 
 
 def test_the_per_town_cap_applies_after_sorting_so_the_soonest_four_show():

@@ -3613,6 +3613,103 @@ def order_weekend_events(events: list[dict]) -> list[dict]:
     return sorted(events, key=weekend_display_key)
 
 
+# The weekly email's visual layer: an emoji per event, a day/date chip and up
+# to two badges. Emoji are chosen from the title first (what the event *is*),
+# then from its tags, so a "Spooky Scary Studio" reads as Halloween rather
+# than as a generic indoor programme. Plain Unicode, so every client renders
+# it with no images to block.
+_EMAIL_EMOJI_RULES: tuple[tuple[tuple[str, ...], str], ...] = (
+    (("halloween", "spooky", "trick-or-treat", "trick or treat", "costume", "haunted", "monster", "boo "), "🎃"),
+    (("pumpkin", "harvest", "hayride", "apple", "fall fest", "autumn", "scarecrow"), "🍂"),
+    (("farmers market", "market"), "🧺"),
+    (("fishing", "derby"), "🎣"),
+    (("concert", "music", "band", "jazz", "orchestra", "choir", "sing"), "🎵"),
+    (("movie", "film", "screening", "cinema"), "🎬"),
+    (("storytime", "story time", "book", "read", "author", "library"), "📚"),
+    (("craft", "paint", "art", "studio", "draw"), "🎨"),
+    (("lego", "stem", "science", "robot", "tinker", "coding", "tech"), "🔬"),
+    (("game", "trivia", "bingo", "wii"), "🎲"),
+    (("baby", "toddler", "tots", "babytime", "walkers"), "👶"),
+    (("dog", "pet", "puppy"), "🐕"),
+    (("run", "5k", "walk", "bike", "hike", "yoga", "fitness", "swim"), "🏃"),
+    (("food", "taste", "pancake", "breakfast", "dinner", "cook", "bake", "wine", "beer"), "🍽️"),
+    (("festival", "fest", "fair", "parade", "carnival", "celebration", "re-opening", "grand opening"), "🎉"),
+    (("sale", "shop"), "🛍️"),
+    (("computer", "digital", "photos", "device", "tablet", "phone"), "💻"),
+)
+_EMAIL_TAG_EMOJI_ORDER = ("kid_friendly", "outdoor", "food", "art_culture", "toddler", "dog_friendly", "elementary", "teen", "free", "indoor")
+_EMAIL_BADGE_ORDER = ("free", "kid_friendly", "outdoor", "dog_friendly")
+
+
+def email_event_emoji(event: dict) -> str:
+    """One emoji that says what the event is, for the weekly email."""
+    title = " " + (event.get("title") or "").lower() + " "
+    for keywords, emoji in _EMAIL_EMOJI_RULES:
+        if any(k in title for k in keywords):
+            return emoji
+    tags = set(event.get("tags") or [])
+    for tag in _EMAIL_TAG_EMOJI_ORDER:
+        if tag in tags:
+            return tag_display(tag).get("emoji") or "📍"
+    return "📍"
+
+
+def email_visuals(event: dict) -> dict:
+    """Display-only fields for the email's event row: `email_emoji`, a date
+    chip (`email_dow` "SAT", `email_daynum` "10"), `email_clock` ("10:00 AM"
+    or None) and up to two `email_badges` (label + emoji) from the tags that
+    matter most when choosing a weekend plan. Nothing here is invented: an
+    untimed event has no clock, an untagged one has no badges."""
+    dow = daynum = None
+    if event.get("date_iso"):
+        try:
+            d = datetime.fromisoformat(event["date_iso"])
+            dow, daynum = d.strftime("%a").upper(), str(d.day)
+        except ValueError:
+            pass
+    tags = set(event.get("tags") or [])
+    badges = [{"label": tag_display(t).get("label", t), "emoji": tag_display(t).get("emoji", "")} for t in _EMAIL_BADGE_ORDER if t in tags][:2]
+    return {
+        "email_emoji": email_event_emoji(event),
+        "email_dow": dow,
+        "email_daynum": daynum,
+        "email_clock": event_time_label(event.get("date_iso")),
+        "email_badges": badges,
+    }
+
+
+# Town colours for the email's region headers and date chips: dark enough for
+# white text (all at or above 4.5:1 on white), cycled in section order so the
+# same town keeps the same colour from week to week.
+EMAIL_TOWN_COLORS: tuple[tuple[str, str], ...] = (
+    ("#0f766e", "#effaf8"),  # teal
+    ("#6d28d9", "#f6f3fe"),  # violet
+    ("#c2410c", "#fff6ef"),  # burnt orange
+    ("#1d4ed8", "#f0f5ff"),  # blue
+    ("#be185d", "#fdf2f7"),  # raspberry
+)
+
+
+def pick_email_top_picks(blocks: list[dict], limit: int = 3) -> list[dict]:
+    """Up to `limit` "Don't miss" events for the top of the combined email,
+    at most one per town: the most family-relevant attendable event in each
+    town (paid promotions excluded, since they already lead their own town's
+    list and must never be presented as an editorial pick), then the
+    strongest of those across towns. Ties go to the earlier event. Needs at
+    least two towns with something to pick, or the section is skipped."""
+    candidates = []
+    for block in blocks:
+        pool = [e for e in block.get("attendable_events") or [] if not e.get("sponsored_by")]
+        if not pool:
+            continue
+        best = sorted(pool, key=lambda e: (-family_relevance(e), e.get("date_iso") or "9999"))[0]
+        candidates.append(dict(best, pick_town=block["region_name"], pick_color=block.get("color", EMAIL_TOWN_COLORS[0][0])))
+    if len(candidates) < 2:
+        return []
+    candidates.sort(key=lambda e: (-family_relevance(e), e.get("date_iso") or "9999"))
+    return candidates[:limit]
+
+
 def prepare_email_events(events: list[dict], limit: int | None = None) -> list[dict]:
     """Copies of `events` ready for an email (ROADMAP.md item 257): a paid
     Featured event first (item 245), then by date and start time, each with
@@ -3632,7 +3729,13 @@ def prepare_email_events(events: list[dict], limit: int | None = None) -> list[d
         if when and clock:
             when = f"{when} · {clock}"
         prepared.append(
-            dict(e, email_when=when, email_where=email_event_where(e), email_blurb=email_blurb(e.get("detail"), e.get("title", "")))
+            dict(
+                e,
+                email_when=when,
+                email_where=email_event_where(e),
+                email_blurb=email_blurb(e.get("detail"), e.get("title", "")),
+                **email_visuals(e),
+            )
         )
     if limit is not None and len(prepared) > limit:
         # Which entries make the cap: Featured, then the most family-relevant,
@@ -3746,8 +3849,13 @@ def render_combined_email_digest(sections: list[dict], weekend_date_range: str, 
         if house_ad is None and sponsor and not sponsor.get("is_active_sponsor"):
             house_ad = sponsor
 
+    for i, block in enumerate(all_blocks):
+        block["color"], block["tint"] = EMAIL_TOWN_COLORS[i % len(EMAIL_TOWN_COLORS)]
     collapse = len(empty_candidates) >= 2
     region_blocks = [b for b in all_blocks if not (collapse and b in empty_candidates)]
+    top_picks = pick_email_top_picks(region_blocks)
+    event_total = sum(len([e for e in s["weekend_events"] if e.get("attendable", True)]) for s in sections)
+    town_total = sum(1 for s in sections if any(e.get("attendable", True) for e in s["weekend_events"]))
     empty_regions_summary = None
     if collapse:
         empty_regions_summary = {
@@ -3763,6 +3871,9 @@ def render_combined_email_digest(sections: list[dict], weekend_date_range: str, 
         }
     return template.render(
         region_blocks=region_blocks,
+        top_picks=top_picks,
+        event_total=event_total,
+        town_total=town_total,
         empty_regions_summary=empty_regions_summary,
         house_ad=house_ad,
         weekend_date_range=weekend_date_range,
