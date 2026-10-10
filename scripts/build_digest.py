@@ -2362,6 +2362,7 @@ def render_region_page(
         canonical_url=canonical_url,
         event_json_ld=build_event_json_ld(blocks, page_url=canonical_url, region=region),
         events_json_url=region_base_url + "events.json",
+        feed_url=region_base_url + "feed.xml",
         freshness_json_ld=build_freshness_json_ld(region, canonical_url, now),
         answer_block=answer_block,
         last_checked_label=last_checked_label,
@@ -2821,7 +2822,15 @@ def build_pins_xml(
     )
 
 
-def build_feed_xml(feed_items: list[dict], now: datetime, source_completeness: dict | None = None) -> str:
+def build_feed_xml(
+    feed_items: list[dict],
+    now: datetime,
+    source_completeness: dict | None = None,
+    *,
+    title: str | None = None,
+    scope: str = "every",
+    self_url: str | None = None,
+) -> str:
     """A real RSS 2.0 feed at /feed.xml (ROADMAP.md Phase 11 #79) - the
     site syndicating its *own* aggregated events, not republishing onto
     a third-party platform (that's item 48, correctly skipped for a
@@ -2861,8 +2870,14 @@ def build_feed_xml(feed_items: list[dict], now: datetime, source_completeness: d
     """
     dated = sorted(feed_items, key=lambda e: e["date_iso"])[:FEED_MAX_ITEMS]
     url_counts = Counter(e["url"] for e in dated)
+    # ROADMAP.md item 269: an item may carry `site_url`, its card on this site
+    # (the same URL events.json uses). Then <link> and <guid> point there, so
+    # anything built on the feed cites Within Ten, and the publisher moves to
+    # the description ("Official listing: ...") and <source url>. Without it
+    # (older callers) the item links to the publisher as before.
+    where = f"across every {SITE_NAME} region" if scope == "every" else f"in {scope}"
     description = (
-        f"Upcoming events across every {SITE_NAME} region, soonest first - "
+        f"Upcoming events {where}, soonest first - "
         "aggregated automatically from village, library, park district and school-district calendars."
     )
     if source_completeness:
@@ -2876,25 +2891,36 @@ def build_feed_xml(feed_items: list[dict], now: datetime, source_completeness: d
         pub_dt = datetime.fromisoformat(e["date_iso"])
         if pub_dt.tzinfo is None:
             pub_dt = pub_dt.replace(tzinfo=timezone.utc)
-        title = xml_escape(f"{e['region_name']}: {e['title']}")
-        if url_counts[e["url"]] > 1:
-            guid_value, is_permalink = f"{e['url']}#{e['date_iso']}", "false"
+        item_title = xml_escape(f"{e['region_name']}: {e['title']}")
+        site_url = e.get("site_url")
+        if site_url:
+            link, guid_value, is_permalink = site_url, site_url, "true"
+            body = (e.get("detail") or "").strip()
+            body = (body + " " if body else "") + f"Official listing: {e['url']}"
+            source = f'    <source url="{xml_escape(e["url"])}">{xml_escape(e.get("source") or e["region_name"])}</source>\n'
         else:
-            guid_value, is_permalink = e["url"], "true"
+            link = e["url"]
+            if url_counts[e["url"]] > 1:
+                guid_value, is_permalink = f"{e['url']}#{e['date_iso']}", "false"
+            else:
+                guid_value, is_permalink = e["url"], "true"
+            body = e.get("detail") or ""
+            source = ""
         items.append(
             "  <item>\n"
-            f"    <title>{title}</title>\n"
-            f"    <link>{xml_escape(e['url'])}</link>\n"
+            f"    <title>{item_title}</title>\n"
+            f"    <link>{xml_escape(link)}</link>\n"
             f"    <guid isPermaLink=\"{is_permalink}\">{xml_escape(guid_value)}</guid>\n"
-            f"    <description>{xml_escape(e.get('detail') or '')}</description>\n"
+            f"    <description>{xml_escape(body)}</description>\n"
             f"    <pubDate>{format_datetime(pub_dt)}</pubDate>\n"
-            "  </item>"
+            + source
+            + "  </item>"
         )
     return (
         '<?xml version="1.0" encoding="UTF-8"?>\n'
         '<rss version="2.0">\n'
         "<channel>\n"
-        f"  <title>{SITE_NAME} — Upcoming Local Events</title>\n"
+        f"  <title>{xml_escape(title or f'{SITE_NAME} — Upcoming Local Events')}</title>\n"
         f"  <link>{SITE_BASE_URL}</link>\n"
         f"  <description>{xml_escape(description)}</description>\n"
         f"  <lastBuildDate>{format_datetime(now)}</lastBuildDate>\n"
@@ -3034,6 +3060,7 @@ def build_llms_txt(region_summaries: list[dict], source_completeness: dict | Non
     lines += ["", "## About", f"- [Who publishes this, and why]({SITE_BASE_URL}about/)"]
     lines += ["", "## Seasonal", f"- [Trick-or-treat hours, all {len(region_summaries)} towns]({SITE_BASE_URL}trick-or-treat/)"]
     lines += ["", "## Feed", f"- [RSS: upcoming events across every region]({SITE_BASE_URL}feed.xml)"]
+    lines += [f"- [RSS: {r['name']}]({SITE_BASE_URL}{r['path']}feed.xml)" for r in region_summaries]
     # ROADMAP.md item 230: the machine-readable index, and the plain-text
     # content itself, for agents that read this file family.
     lines += [
@@ -4270,12 +4297,6 @@ def main() -> None:
         # ROADMAP.md item 245: a paid Event Promo goes in after the filters
         # above, so it can never be deduped away or dropped, and goes first.
         blocks = apply_promotion(blocks, build_promotion_event(sponsors_cfg, region_cfg, local_today))
-        feed_items += [
-            {**e, "region_name": region["name"]}
-            for b in blocks
-            for e in b["events"]
-            if e.get("title") and e.get("url") and e.get("date_iso")
-        ]
         evergreen = prepare_evergreen(region_cfg)
         guides = prepare_guides(region_cfg)
         directory = build_business_directory(sponsors_cfg, region_id)
@@ -4336,6 +4357,23 @@ def main() -> None:
                 dict(e, town=e.get("town") or region["name"], state=e.get("state") or region.get("state"))
                 for e in select_halloween_events(blocks, local_today)
             ]
+        # ROADMAP.md item 269: feed items point at this site's own cards (the
+        # anchors just assigned), copied now like `upcoming` above. The
+        # site-wide feed and this town's own feed share them.
+        region_feed_items = [
+            {**e, "region_name": region["name"], "site_url": f"{region_page_url}#{e['anchor_id']}"}
+            for b in blocks
+            for e in b["events"]
+            if e.get("title") and e.get("url") and e.get("date_iso")
+        ]
+        feed_items += region_feed_items
+        (region_dir / "feed.xml").write_text(
+            build_feed_xml(
+                region_feed_items, now, source_completeness,
+                title=f"{SITE_NAME} — Upcoming events in {region['name']}", scope=region["name"],
+            ),
+            encoding="utf-8",
+        )
         events_json_groups.append((region["name"], region_page_url, upcoming))
         (region_dir / "events.json").write_text(
             build_events_json([(region["name"], region_page_url, upcoming)], f"Upcoming events in {region['name']} — {SITE_NAME}", now),
