@@ -14650,6 +14650,99 @@ CPM nearly worthless for lifestyle lists). The design/UX angle is
 **the sponsor page's missing audience number**.
 
 
+#### Research pass 2026-10-10, morning (sixty-sixth pass)
+
+The build loop shipped items 265 and 235's second half. IndexNow now
+records Bing's reason, **`UserForbiddedToAccessSite`**, with the key
+file confirmed live from the runner, so the fix is the owner's
+one-minute key regeneration (Needs Ryan 3b). Today is Saturday, so this
+pass reads the site the way a parent does on a weekend morning, and
+looks at two sources of demand the site has not used: agents that track
+a topic over time, and school PTOs that already sell family reach to
+local businesses.
+
+| Angle | What it is / what we found | Why it matters here |
+|---|---|---|
+| **The `/this-weekend/` hub on a Saturday morning (design/UX)** | Read from the built page at 06:00 UTC. Cards within a town are **not in date order** (Arlington Heights: Sat, Sun, Sat). Most cards show **no start time**; a time appears only when it happens to be inside the description text (*"Saturday, October 10 2026 1:30pm - 3:30pm"*). Des Plaines' two weekend picks are a documentary screening and **"Small Claims Court and Arbitration Proceedings"**, an adult legal talk, on a page whose audience is families. The header still says **"Oct 9–11"** on Saturday, with Friday's events included. Item 257 already fixed exactly these problems **in the email** (`prepare_email_events()`: date-then-time sort, `event_time_label()`, a description with the date header removed); the hub never got it | This is the page that answers the site's head query, and on the busiest morning of the week it reads less well than the email. The fix is mostly **reusing code that already exists**, plus one small relevance rule (item 268) |
+| **Google AI Mode "information agents"** (I/O 2026 coverage) | Google said AI Mode passed **1 billion monthly users**, and announced **information agents** for summer 2026: US-only at first and limited to AI Pro/Ultra subscribers. They **track a topic the user describes over time**, choosing their own data sources | "Tell me about family events in Mount Prospect each weekend" is exactly the kind of standing request these agents serve. An agent that picks sources wants something **regular, machine-readable and linkable**. The site has most of this already. `events.json` items use the site's own card URL with the publisher in `sameAs`, but `feed.xml` (the RSS feed agents and readers poll) **links every item to the publisher's page**, so anything built on it cites the library, not Within Ten. There is **no per-town feed** either (item 269) |
+| **School PTO business sponsorships** (Zeffy-hosted PTO sponsorship pages, many districts) | PTOs routinely sell local businesses tiers that include **newsletter mentions, logos in every monthly newsletter, spotlights**, often alongside t-shirt logos and event signage. These pages are public and list the tiers, and many list the businesses that bought them | Two uses. **(1) A prospect list:** a business already paying a PTO for "school families see our name" has shown the exact budget and intent the Event Promo and Weekly Spot sell to, across five towns instead of one school. **(2) A pitch line:** *"You already support [school]'s PTO; this reaches the same families across five towns every week, for $50."* Neither needs this site to compete with the PTO, which keeps its sponsorship (item 270) |
+
+#### P1 (new)
+
+268. **Give the weekend hub what the email already has: order, times,
+     and family-first picks.** Design/UX, build loop,
+     `render_merged_hub_page()` and its callers:
+
+     - **Reuse item 257's helpers**: sort each town's cards with the
+       same key as `prepare_email_events()` (Featured first, then date
+       and start time), show `event_time_label()` beside the date, and
+       use `email_blurb()`'s date-header stripping for the card text so
+       the time is not repeated inside the description.
+     - **A small family-relevance rule** for which cards make each town's
+       short list, applied **before** the cap and used by **both** the hub
+       and the email. Score up for the tags `kid-friendly`, `free`,
+       `outdoor`, `family`; score down for adult-programme keywords in
+       the title (court, legal, Medicare, tax, retirement, résumé,
+       investing, ESL, "adults only"). It only reorders, never hides: an
+       adult event still appears on the town page and in "see everything".
+       Keep the keyword list in config, so a wrong call is a one-line fix.
+     - **Drop past days on the weekend pages.** On Saturday the header
+       reads "Sat–Sun, Oct 10–11" and Friday's events leave the hub. The
+       pages rebuild three times a day, so this is a build-time filter,
+       not a script.
+
+     Tests: date-and-time order within a town; a kid-friendly Saturday
+     event outranks a legal talk at the same time; an adult event still
+     appears on the region page; the Saturday header and Friday filter;
+     and the email and hub pick the same short list from the same input.
+
+#### P2 (new)
+
+269. **Make the feeds cite Within Ten, and give each town its own.**
+     Build loop:
+
+     - In `feed.xml`, set each item's `<link>` and `<guid>` to the
+       **site's own card URL** (`…/<region>/#ev-<slug>-<date>`, the same
+       URL `events.json` already uses). Put the publisher's URL in the
+       description as *"Official listing: <url>"* and in RSS `<source
+       url="…">`. Readers still get to the publisher in one click, and
+       anything built on the feed, from feed readers to Google's
+       tracking agents, cites the site.
+     - Write **`/<region>/feed.xml`** for each town and add
+       `<link rel="alternate" type="application/rss+xml">` to each region
+       page's `<head>`, next to the existing `events.json` link. List the
+       five feeds in `llms.txt` under the existing `events.json` list.
+     - Tests: every `<link>` is under `withintenmiles.com`; every item
+       still carries the publisher URL; each region feed contains only
+       that town's events; the feeds validate as RSS 2.0.
+
+     This keeps `guid` values stable for the same event across builds,
+     which the current publisher-URL guids already do. The card anchor
+     is stable by design (item 131's anchors), so nothing re-notifies
+     subscribers.
+
+270. **Use public PTO sponsor lists as the Event Promo's first prospect
+     list.** Owner plus build loop. **Build loop:** add
+     `OUTREACH_TEMPLATES.md` §14, *"You already support [school]'s
+     PTO"*, offering the $20 Event Promo or $50 Weekly Spot for the same
+     families across five towns. It names the PTO only as the reason
+     for writing, never as a partner. **Owner, about 10 minutes, once:**
+     open the PTO or PTA sponsor pages for a few schools in D25, D57,
+     CCSD 15 and D62 (search "<school> PTO sponsors"), note the local
+     businesses listed, and send each the template, a few a week, the
+     same pace as item 242's franchise batch. **Guardrail:** never imply
+     a school or PTO endorses the site, and never contact a PTO to ask
+     for its sponsor list. These are published pages, read as published.
+
+Competitors reviewed this pass: **Google AI Mode's information agents**
+(standing, source-choosing agents, US and paid tiers first), and **school
+PTO sponsorship pages** as both a prospect list and a pitch. The
+design/UX angle is **the weekend hub on a Saturday morning**. The pass
+also recorded IndexNow's first logged reason
+(`UserForbiddedToAccessSite`), which the build loop has already turned
+into Needs Ryan 3b.
+
+
 ## Working agreements for autonomous iteration
 
 - Cadence is three times a day (05:51, 13:51 and 21:51 UTC) for this
