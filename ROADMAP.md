@@ -262,7 +262,7 @@ that limit.
    should stop now; the build loop should check the next
    `data/indexnow_log.json` entries. Five waiting pages were sent through
    Search Console's "Request indexing" the same day.*
-3b. ✅ *Done 2026-10-10: the owner generated `c0dde656…a255` in Bing; `INDEXNOW_KEY` is switched and the old key file stays published until 2026-11-09. The first build after this may still log 403 (its own new key file is not live until that build deploys); judge from the build after.* **Generate a new IndexNow key in Bing (1 min, item 265).** The
+3b. *Done 2026-10-10 ✅: the owner generated `c0dde656…a255` in Bing; `INDEXNOW_KEY` is switched and the old key file stays published until 2026-11-09. The first build after this may still log 403 (its own new key file is not live until that build deploys); judge from the build after.* **Generate a new IndexNow key in Bing (1 min, item 265).** The
    build now logs Bing's reason. As of 2026-10-10 it is
    `UserForbiddedToAccessSite` ("verify the site using the key") although
    the key file is confirmed live and correct, so Bing bound this key
@@ -14669,7 +14669,7 @@ local businesses.
 
 #### P1 (new)
 
-268. **Give the weekend hub what the email already has: order, times,
+268. ✅ **DONE — Give the weekend hub what the email already has: order, times,
      and family-first picks.** Design/UX, build loop,
      `render_merged_hub_page()` and its callers:
 
@@ -14695,6 +14695,43 @@ local businesses.
      event outranks a legal talk at the same time; an adult event still
      appears on the region page; the Saturday header and Friday filter;
      and the email and hub pick the same short list from the same input.
+
+     ✅ **Shipped 2026-10-10** (a Saturday, so the Saturday header was
+     checked against the real build: it now reads "Oct 10–11").
+     - **One ordering key, `weekend_display_key`**: Featured first, then
+       date and start time, then the more family-relevant of two events at
+       the same moment. `order_weekend_events()` applies it once where each
+       town's weekend list is built, so the hub, the weekend pages and the
+       emails share it and cannot disagree.
+     - **Relevance lives in `config/relevance.yaml`**: `boost_tags`
+       (`kid_friendly`, `free`, `outdoor`: +1 each) and `adult_title_keywords`
+       (court, arbitration, legal, Medicare, tax(es), retirement, resume,
+       investing, ESL, adults only, senior(s): −2 each, whole words only, so
+       "Courtney" and "Taxidermy" are untouched). It only reorders; the item's
+       own example, the Des Plaines small-claims talk, still appears, just
+       after a family event at the same time. The tag list differs from the
+       item's: the repo's tag ids are `kid_friendly`, `free` and `outdoor`
+       (there is no `family` tag).
+     - **The email cap now picks by relevance**: `prepare_email_events(limit=)`
+       takes Featured, then the most family-relevant, then the soonest, up to
+       4 per town (6 in the single-town email), and then shows them in date
+       order. The templates' own `[:4]` / `[:6]` slices are now no-ops.
+     - **Cards show the start time** beside the date (*"Sat, Oct 10 ·
+       1:30 PM"*; nothing when untimed) and the description **without** its
+       leading date-and-time header (`strip_description_header`, shared with
+       the email's blurb). The "My Weekend" tray gets the cleaned text too.
+       `event_date_label`'s old "deliberately no time of day" note is
+       retired: it predates item 238 and the RSS fix, after which times are
+       local and were checked (0 mismatches in 167 events).
+     - **Past days drop out.** `window_days` is the weekend's days that are
+       today or later, so on Saturday the hub, region weekend pages, email
+       and weather cover Saturday and Sunday, and on Sunday the header is
+       the single date ("Oct 11", not "Oct 11–11"). The Pinterest feed's
+       date range uses the same window.
+     - 10 new tests (`tests/test_weekend_hub.py`), one updated; 720 pass.
+     - **Also fixed on the way:** a `✅ Done` marker in Needs Ryan 3b made
+       `tests/test_roadmap_consistency.py` fail on `main`, which would have
+       failed every PR's CI. It now reads "Done 2026-10-10 ✅".
 
 #### P2 (new)
 

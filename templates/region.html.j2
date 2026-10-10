@@ -863,7 +863,7 @@
         {% for item in block.events %}
         <!-- id folds in date_iso - see the Editor's Pick tray_item above
              for why (ROADMAP.md item 146). -->
-        {% set tray_item = {"id": (item.url or item.title) ~ ("|" ~ item.date_iso if item.date_iso else ""), "title": item.title, "url": item.url or "", "date": item.date or None, "date_iso": item.date_iso or None, "detail": item.detail or "", "region_name": region.name, "region_url": region_base_url} %}
+        {% set tray_item = {"id": (item.url or item.title) ~ ("|" ~ item.date_iso if item.date_iso else ""), "title": item.title, "url": item.url or "", "date": item.date or None, "date_iso": item.date_iso or None, "detail": (item.card_detail if item.card_detail is defined else item.detail) or "", "region_name": region.name, "region_url": region_base_url} %}
         {# ROADMAP.md items 228/234: an <article> with a stable id is a card an
            agent can read as one unit and cite by anchor; <time datetime>
            makes the date machine-readable in the visible markup itself.
@@ -881,10 +881,11 @@
           {% if item.attendable == false %}<div class="informational-label">Informational</div>{% endif %}
           {% if item.sponsored_by %}{{ featured_label(item.sponsored_by) }}{% endif %}
           {% if item.series %}<div class="series">{{ item.series }}</div>{% endif %}
-          {% if item.date %}<div class="date">{% if item.date_iso %}<time datetime="{{ item.date_iso }}">{{ item.date_label or item.date }}</time>{% else %}{{ item.date }}{% endif %} · <span class="where">{{ region.name }}</span></div>{% endif %}
+          {% if item.date %}<div class="date">{% if item.date_iso %}<time datetime="{{ item.date_iso }}">{{ item.date_label or item.date }}{% if item.time_label %} · {{ item.time_label }}{% endif %}</time>{% else %}{{ item.date }}{% endif %} · <span class="where">{{ region.name }}</span></div>{% endif %}
           <h3>{% if item.url %}<a href="{{ item.url }}">{{ item.title }}</a>{% else %}{{ item.title }}{% endif %}</h3>
           {% if item.recurrence_note %}<div class="recurrence-note">{{ item.recurrence_note }}</div>{% endif %}
-          {% if item.detail %}<p class="detail">{{ item.detail }}</p>{% endif %}
+          {% set card_text = item.card_detail if item.card_detail is defined else item.detail %}
+        {% if card_text %}<p class="detail">{{ card_text }}</p>{% endif %}
           {% if item.tag_badges %}
           <div class="tag-row">
             {% for tag in item.tag_badges %}<span class="tag-badge" style="background: var(--hue-{{ tag.hue }}-bg); color: var(--hue-{{ tag.hue }}-ink);">{{ tag.emoji }} {{ tag.label }}</span>{% endfor %}

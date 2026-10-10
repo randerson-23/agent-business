@@ -2219,9 +2219,11 @@ def event_anchor_id(event: dict) -> str:
 def event_date_label(date_iso: str | None) -> str | None:
     """"Sat, Oct 4" for a card's visible date (ROADMAP.md item 234): the
     weekday lets a reader, or an agent quoting the card, catch a wrong
-    date at a glance (item 219's lesson). Deliberately no time of day:
-    ICS times often parse to a naive UTC value, so "7 PM" could be five
-    hours off - the date is what every source states reliably."""
+    date at a glance (item 219's lesson). The label is the date alone; the
+    start time is a separate `time_label` (item 268). That used to be left
+    out because ICS times parsed as naive UTC and could read five hours
+    off; items 238 and the RSS fix that followed it made times local and
+    checked, so the card now shows them."""
     if not date_iso:
         return None
     try:
@@ -2243,6 +2245,11 @@ def prepare_event_cards(blocks: list[dict]) -> None:
             seen[base] = seen.get(base, 0) + 1
             event["anchor_id"] = base if seen[base] == 1 else f"{base}-{seen[base]}"
             event["date_label"] = event_date_label(event.get("date_iso"))
+            # ROADMAP.md item 268: the start time beside the date, and the
+            # card text without the date-and-time header that library feeds
+            # put at the start of a description (it would repeat both).
+            event["time_label"] = event_time_label(event.get("date_iso"))
+            event["card_detail"] = strip_description_header(event.get("detail"))
 
 
 
@@ -3096,6 +3103,8 @@ def format_date_range(start: date, end: date) -> str:
     they don't - avoids the redundant "Aug 29–Aug 30" a naive per-date
     format would produce.
     """
+    if start == end:
+        return start.strftime("%b %-d")
     if start.month == end.month:
         return f"{start.strftime('%b %-d')}–{end.day}"
     return f"{start.strftime('%b %-d')}–{end.strftime('%b %-d')}"
@@ -3324,7 +3333,7 @@ def render_email_digest(
     informational_events = [e for e in weekend_events if not e.get("attendable", True)]
     return template.render(
         region=region,
-        weekend_events=prepare_email_events(attendable_events),
+        weekend_events=prepare_email_events(attendable_events, limit=6),
         informational_events=informational_events,
         evergreen_highlights=evergreen_highlights,
         region_url=region_url,
@@ -3534,13 +3543,20 @@ def event_time_label(date_iso: str | None) -> str | None:
     return dt.strftime("%-I:%M %p")
 
 
+def strip_description_header(detail: str | None) -> str:
+    """A description with its leading Communico date/time header removed and
+    whitespace collapsed - what a card shows beneath the date and time it
+    already displays."""
+    text = _DESCRIPTION_DATE_PREFIX.sub("", detail or "")
+    return re.sub(r"\s+", " ", text).strip(" -–:")
+
+
 def email_blurb(detail: str | None, title: str = "", max_len: int = EMAIL_BLURB_MAX_LEN) -> str | None:
     """One line of description for an email entry: whitespace collapsed, a
     leading Communico date/time header removed, trimmed to `max_len` at a
     word boundary. None when nothing useful is left, or the text only
     repeats the title - never a placeholder."""
-    text = _DESCRIPTION_DATE_PREFIX.sub("", detail or "")
-    text = re.sub(r"\s+", " ", text).strip(" -–:")
+    text = strip_description_header(detail)
     if not text or text.lower().rstrip(".…") == (title or "").strip().lower():
         return None
     if len(text) <= max_len:
@@ -3557,7 +3573,47 @@ def email_event_where(event: dict) -> str | None:
     return where or None
 
 
-def prepare_email_events(events: list[dict]) -> list[dict]:
+# ROADMAP.md item 268: which events lead a family-facing weekend list. Words
+# and tags live in config/relevance.yaml so a wrong call is a one-line fix.
+RELEVANCE_PATH = CONFIG_DIR / "relevance.yaml"
+
+
+@lru_cache(maxsize=1)
+def load_relevance_config() -> dict:
+    try:
+        data = load_yaml(RELEVANCE_PATH)
+    except OSError:
+        data = {}
+    boost = [str(t) for t in data.get("boost_tags") or []]
+    words = [str(w).lower() for w in data.get("adult_title_keywords") or []]
+    pattern = re.compile(r"(?<!\w)(?:" + "|".join(re.escape(w) for w in words) + r")(?!\w)", re.I) if words else None
+    return {"boost_tags": boost, "adult_pattern": pattern}
+
+
+def family_relevance(event: dict) -> int:
+    """A small score for ordering: +1 for each boost tag the event carries
+    (kid-friendly, free, outdoor), -2 for each adult-programme word in the
+    title. Reorders only; nothing is ever hidden by it."""
+    cfg = load_relevance_config()
+    tags = set(event.get("tags") or [])
+    score = sum(1 for t in cfg["boost_tags"] if t in tags)
+    if cfg["adult_pattern"] is not None:
+        score -= 2 * len(cfg["adult_pattern"].findall(event.get("title") or ""))
+    return score
+
+
+def weekend_display_key(event: dict) -> tuple:
+    """Featured first, then date and start time, then the more family-relevant
+    of two events at the same moment. One key for the weekend hub, the
+    region weekend pages and both emails, so they cannot disagree."""
+    return (not event.get("sponsored_by"), event.get("date_iso") or "9999", -family_relevance(event))
+
+
+def order_weekend_events(events: list[dict]) -> list[dict]:
+    return sorted(events, key=weekend_display_key)
+
+
+def prepare_email_events(events: list[dict], limit: int | None = None) -> list[dict]:
     """Copies of `events` ready for an email (ROADMAP.md item 257): a paid
     Featured event first (item 245), then by date and start time, each with
     `email_when` ("Sat Oct 10 · 10:00 AM", or the date alone when untimed),
@@ -3578,7 +3634,13 @@ def prepare_email_events(events: list[dict]) -> list[dict]:
         prepared.append(
             dict(e, email_when=when, email_where=email_event_where(e), email_blurb=email_blurb(e.get("detail"), e.get("title", "")))
         )
-    return sorted(prepared, key=lambda e: (not e.get("sponsored_by"), e.get("date_iso") or "9999"))
+    if limit is not None and len(prepared) > limit:
+        # Which entries make the cap: Featured, then the most family-relevant,
+        # then the soonest. They are then shown in date order like the rest.
+        chosen = sorted(prepared, key=lambda e: (not e.get("sponsored_by"), -family_relevance(e), e.get("date_iso") or "9999"))[:limit]
+        chosen_ids = {id(e) for e in chosen}
+        prepared = [e for e in prepared if id(e) in chosen_ids]
+    return sorted(prepared, key=weekend_display_key)
 
 
 # ROADMAP.md item 263: seasonal pages the weekly email links while their send
@@ -3665,7 +3727,7 @@ def render_combined_email_digest(sections: list[dict], weekend_date_range: str, 
         block = {
             "region_name": s["region_name"],
             "region_url": s["region_url"],
-            "attendable_events": prepare_email_events(attendable_events),
+            "attendable_events": prepare_email_events(attendable_events, limit=4),
             "informational_events": informational_events,
             "evergreen_highlights": _pick_evergreen_highlights(s.get("evergreen", []), limit=2),
             "sponsor": sponsor,
@@ -4166,7 +4228,10 @@ def main() -> None:
         logger.info("Wrote %s (%d events)", region_dir / "events.json", len(upcoming))
 
         friday, saturday, sunday = weekend_dates(local_today)
-        weekend_events = filter_events_by_dates(blocks, {friday, saturday, sunday})
+        # ROADMAP.md item 268: on Saturday the page is for Saturday and Sunday;
+        # Friday's events have passed and leave it.
+        window_days = [d for d in (friday, saturday, sunday) if d >= local_today]
+        weekend_events = order_weekend_events(filter_events_by_dates(blocks, set(window_days)))
         weekend_event_counts[region_id] = len(weekend_events)
         update_weekend_history(weekend_history, region_id, len(weekend_events))
         # ROADMAP.md item 186: the three-stage funnel a zero-contribution
@@ -4182,8 +4247,8 @@ def main() -> None:
             "  Weekend funnel for %s: %d fetched -> %d dated -> %d in this weekend's window",
             region_id, _fetched_count, _dated_count, len(weekend_events),
         )
-        weekend_weather = build_weekend_weather(region, friday, saturday, sunday)
-        weekend_date_range = format_date_range(friday, sunday)
+        weekend_weather = [w for w in build_weekend_weather(region, friday, saturday, sunday) if w.get("date", "") >= local_today.isoformat()]
+        weekend_date_range = format_date_range(window_days[0], sunday)
         if hub_weekend_date_range is None:
             hub_weekend_date_range = weekend_date_range  # regions share a timezone today
             hub_weekend_end_iso = sunday.isoformat()
@@ -4593,12 +4658,13 @@ def main() -> None:
     for name, image in og_images.items():
         image.save(og_dir / f"{name}.png", "PNG")
     logger.info("Wrote %d Open Graph image(s) to %s", len(og_images), og_dir)
-    pins_friday, _pins_sat, _pins_sun = weekend_dates(region_local_date(regions[0]["region"], now))
+    pins_today = region_local_date(regions[0]["region"], now)
+    pins_friday, _pins_sat, pins_sunday = weekend_dates(pins_today)
     (OUTPUT_DIR / "pins.xml").write_text(
         build_pins_xml(
             pins_groups,
             pins_friday,
-            format_date_range(pins_friday, pins_friday + timedelta(days=2)),
+            format_date_range(max(pins_friday, pins_today), pins_sunday),
             now,
             {name: (og_dir / f"{name}.png").stat().st_size for name in og_images},
             is_trick_or_treat_season(now),
