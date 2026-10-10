@@ -1,12 +1,6 @@
 {
- "fetched_at": "2026-10-09T22:02:47+00:00",
+ "fetched_at": "2026-10-10T06:00:31+00:00",
  "items": [
-  {
-   "date": "2026-10-09",
-   "detail": "",
-   "title": "ESL Social Hour",
-   "url": "https://www.ahml.info/scheduling/reservation/198387"
-  },
   {
    "date": "2026-10-10",
    "detail": "",
@@ -28,8 +22,8 @@
   {
    "date": "2026-10-13",
    "detail": "",
-   "title": "Read to Learn (District 214)",
-   "url": "https://www.ahml.info/scheduling/reservation/194391"
+   "title": "Social Worker in the Library",
+   "url": "https://www.ahml.info/scheduling/reservation/218147"
   },
   {
    "date": "2026-10-14",
@@ -160,14 +154,14 @@
   {
    "date": null,
    "detail": "",
-   "title": "Beginning ESL",
-   "url": "https://www.ahml.info/scheduling/reservation/198109"
+   "title": "Culture & Conversation (level: intermediate +)",
+   "url": "https://www.ahml.info/scheduling/reservation/198079"
   },
   {
    "date": null,
    "detail": "",
-   "title": "Culture & Conversation (level: intermediate +)",
-   "url": "https://www.ahml.info/scheduling/reservation/198079"
+   "title": "Beginning ESL",
+   "url": "https://www.ahml.info/scheduling/reservation/198109"
   },
   {
    "date": null,
@@ -220,14 +214,14 @@
   {
    "date": null,
    "detail": "",
-   "title": "Beginning ESL",
-   "url": "https://www.ahml.info/scheduling/reservation/221904"
+   "title": "Family Time",
+   "url": "https://www.ahml.info/scheduling/reservation/224192"
   },
   {
    "date": null,
    "detail": "",
-   "title": "Family Time",
-   "url": "https://www.ahml.info/scheduling/reservation/224192"
+   "title": "Beginning ESL",
+   "url": "https://www.ahml.info/scheduling/reservation/221904"
   },
   {
    "date": null,
@@ -250,14 +244,14 @@
   {
    "date": null,
    "detail": "",
-   "title": "Play Time",
-   "url": "https://www.ahml.info/scheduling/reservation/224255"
+   "title": "How to Use Your iPad/iPhone",
+   "url": "https://www.ahml.info/scheduling/reservation/231793"
   },
   {
    "date": null,
    "detail": "",
-   "title": "How to Use Your iPad/iPhone",
-   "url": "https://www.ahml.info/scheduling/reservation/231793"
+   "title": "Play Time",
+   "url": "https://www.ahml.info/scheduling/reservation/224255"
   },
   {
    "date": null,
@@ -280,12 +274,6 @@
   {
    "date": null,
    "detail": "",
-   "title": "Genealogy Gumshoes: Family History Discussion Group",
-   "url": "https://www.ahml.info/scheduling/reservation/201132"
-  },
-  {
-   "date": null,
-   "detail": "",
    "title": "Hablemos Español (Let's Speak Spanish)",
    "url": "https://www.ahml.info/scheduling/reservation/230944"
   },
@@ -294,6 +282,12 @@
    "detail": "",
    "title": "Clases de Computación Básica",
    "url": "https://www.ahml.info/scheduling/reservation/230155"
+  },
+  {
+   "date": null,
+   "detail": "",
+   "title": "Genealogy Gumshoes: Family History Discussion Group",
+   "url": "https://www.ahml.info/scheduling/reservation/201132"
   },
   {
    "date": null,
@@ -322,14 +316,14 @@
   {
    "date": null,
    "detail": "",
-   "title": "Senior Center: Film Discussion Circle",
-   "url": "https://www.ahml.info/scheduling/reservation/224982"
+   "title": "Makerplace Custom Cricut Tote Bag",
+   "url": "https://www.ahml.info/scheduling/reservation/224141"
   },
   {
    "date": null,
    "detail": "",
-   "title": "Makerplace Custom Cricut Tote Bag",
-   "url": "https://www.ahml.info/scheduling/reservation/224141"
+   "title": "Senior Center: Film Discussion Circle",
+   "url": "https://www.ahml.info/scheduling/reservation/224982"
   },
   {
    "date": null,
@@ -360,6 +354,12 @@
    "detail": "",
    "title": "Play Time",
    "url": "https://www.ahml.info/scheduling/reservation/224257"
+  },
+  {
+   "date": null,
+   "detail": "",
+   "title": "Excel: Basics",
+   "url": "https://www.ahml.info/scheduling/reservation/231796"
   }
  ],
  "source": "Arlington Heights Memorial Library — Events"

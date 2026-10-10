@@ -1,24 +1,6 @@
 {
- "fetched_at": "2026-10-09T20:35:07+00:00",
+ "fetched_at": "2026-10-10T06:00:31+00:00",
  "items": [
-  {
-   "date": "Fri, 09 Oct 2026 09:30:00 +0000",
-   "detail": "Friday, October 09 2026 9:30am - 10:00am \n Stories, songs and fingerplays. TR",
-   "title": "Babytime!",
-   "url": "https://indiantrails.libnet.info/event/16709457"
-  },
-  {
-   "date": "Fri, 09 Oct 2026 10:30:00 +0000",
-   "detail": "Friday, October 09 2026 10:30am - 11:00am \n Stories, songs, fingerplays and movement activities. TR",
-   "title": "Wonderful Walkers",
-   "url": "https://indiantrails.libnet.info/event/16709479"
-  },
-  {
-   "date": "Fri, 09 Oct 2026 17:30:00 +0000",
-   "detail": "Friday, October 09 2026 5:30pm - 6:30pm \n Get started with TinkerCAD, a free 3D modeling program. Learn the basics of building with this easy-to-use software. R",
-   "title": "Introduction to Tinkercad",
-   "url": "https://indiantrails.libnet.info/event/16661573"
-  },
   {
    "date": "Sat, 10 Oct 2026 10:00:00 +0000",
    "detail": "Saturday, October 10 2026 10:00am - 2:00pm \n Hosted by the Foundation for the Indian Trails Library.\nAll proceeds benefit the library. Enter the sale through the library. Due to limited space, the use of ISBN scanners is only allowed 12-2 pm.",
@@ -360,6 +342,24 @@
    "detail": "Thursday, October 22 2026 6:00pm - 7:30pm \n Get into the spooky spirit and learn to make a keychain out of pony beads. Create a design you can attach to your keys, lanyard or backpack. R",
    "title": "Halloween Pony Bead Keychains",
    "url": "https://indiantrails.libnet.info/event/16726181"
+  },
+  {
+   "date": "Thu, 22 Oct 2026 19:00:00 +0000",
+   "detail": "Thursday, October 22 2026 7:00pm - 8:00pm \n  Whether you are already enrolled in Medicare  or will be soon  join Wheeling Townships SHIP Counselor Bob Kerr for a review of the various options for drug coverage provided by Medicare. R",
+   "title": "Medicare Part D",
+   "url": "https://indiantrails.libnet.info/event/16583360"
+  },
+  {
+   "date": "Fri, 23 Oct 2026 09:30:00 +0000",
+   "detail": "Friday, October 23 2026 9:30am - 10:00am \n Stories, songs and fingerplays. TR",
+   "title": "Babytime!",
+   "url": "https://indiantrails.libnet.info/event/16709458"
+  },
+  {
+   "date": "Fri, 23 Oct 2026 10:30:00 +0000",
+   "detail": "Friday, October 23 2026 10:30am - 11:00am \n Stories, songs, fingerplays and movement activities. TR",
+   "title": "Wonderful Walkers",
+   "url": "https://indiantrails.libnet.info/event/16709480"
   }
  ],
  "source": "Indian Trails Public Library — Events"

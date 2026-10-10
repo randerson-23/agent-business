@@ -1,12 +1,5 @@
 [
   {
-    "timestamp": "2026-10-05T14:55:33+00:00",
-    "url_count": 61,
-    "ok": false,
-    "status": 403,
-    "error": "HTTPError"
-  },
-  {
     "timestamp": "2026-10-05T17:10:29+00:00",
     "url_count": 61,
     "ok": false,
@@ -138,5 +131,15 @@
     "ok": false,
     "status": 403,
     "error": "HTTPError"
+  },
+  {
+    "timestamp": "2026-10-10T06:00:31+00:00",
+    "url_count": 61,
+    "ok": false,
+    "status": 403,
+    "error": "HTTPError",
+    "body": "{\"errorCode\":\"UserForbiddedToAccessSite\",\"message\":\"User is unauthorized to access the site. Please verify the site using the key and try again\",\"details\":null}",
+    "key_file_ok": true,
+    "skipped": null
   }
 ]

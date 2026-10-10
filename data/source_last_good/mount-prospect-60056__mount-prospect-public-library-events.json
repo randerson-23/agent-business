@@ -1,18 +1,6 @@
 {
- "fetched_at": "2026-10-09T20:35:07+00:00",
+ "fetched_at": "2026-10-10T06:00:31+00:00",
  "items": [
-  {
-   "date": "Fri, 09 Oct 2026 10:00:00 +0000",
-   "detail": "Friday, October 09 2026 10:00am - 11:30am \n Enjoy the magic of storytime plus the joy of hands-on sensory fun! You and your child will enjoy time together full of new learning experiences with the flexible arrival time your family needs.",
-   "title": "Storytime Playdate: Star Party",
-   "url": "https://mppl.libnet.info/event/16553541"
-  },
-  {
-   "date": "Fri, 09 Oct 2026 17:00:00 +0000",
-   "detail": "Friday, October 09 2026 5:00pm - 7:00pm \n Enjoy a movie night at the library and have fun building with LEGO bricks and other various toys!",
-   "title": "Build and Watch: The Addams Family",
-   "url": "https://mppl.libnet.info/event/16749793"
-  },
   {
    "date": "Sat, 10 Oct 2026 10:00:00 +0000",
    "detail": "Saturday, October 10 2026 10:00am - 11:00am \n Learn how to digitize old photos, slides, and negatives using the library's Mac Studio equipment. It's a great way to preserve and share your memories.",
@@ -360,6 +348,18 @@
    "detail": "Wednesday, October 21 2026 6:00pm - 9:00pm \n Join us for a screening of \"Project Hail Mary.\"",
    "title": "Movies @ MPPL: Project Hail Mary",
    "url": "https://mppl.libnet.info/event/16676542"
+  },
+  {
+   "date": "Wed, 21 Oct 2026 18:00:00 +0000",
+   "detail": "Wednesday, October 21 2026 6:00pm - 7:00pm \n If you've read the book, watched the movie, or both, you are welcome to join us for a casual discussion in Spanish of our One Book, One Village community read title Project Hail Mary by Andy Weir.",
+   "title": "Spanish Book and Movie Discussion: Project Hail Mary",
+   "url": "https://mppl.libnet.info/event/16760505"
+  },
+  {
+   "date": "Wed, 21 Oct 2026 18:30:00 +0000",
+   "detail": "Wednesday, October 21 2026 6:30pm - 8:00pm \n Curious about editing videos with Adobe Premiere? In this two-part program, we will cover the basics of Adobe Premiere to get you editing your projects with ease.",
+   "title": "Intro to Adobe Premier: Part 2",
+   "url": "https://mppl.libnet.info/event/16104608"
   }
  ],
  "source": "Mount Prospect Public Library — Events"
