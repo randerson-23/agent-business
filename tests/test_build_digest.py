@@ -4625,7 +4625,8 @@ def test_region_page_cards_are_articles_with_ids_and_time_elements():
     html = build_digest.render_region_page(region_cfg, [{"section": "Events", "events": [e]}], {}, [],
                                            datetime(2026, 10, 3, 14, 0, tzinfo=timezone.utc))
     assert '<article class="card" id="ev-fall-fest-2026-10-04"' in html
-    assert '<time datetime="2026-10-04T10:00:00">Sun, Oct 4</time>' in html
+    # Item 268: the start time sits beside the date inside the same <time>.
+    assert '<time datetime="2026-10-04T10:00:00">Sun, Oct 4 · 10:00 AM</time>' in html
     assert '<span class="where">Mount Prospect</span>' in html
     assert 'data-date-iso="2026-10-04T10:00:00"' in html
 

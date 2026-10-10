@@ -1,0 +1,32 @@
+# Which events lead a town's short list (ROADMAP.md item 268). This only
+# REORDERS: an adult event still appears on its town's page and under "see
+# everything". It decides which entries make the email's per-town cap and
+# which of two events at the same time comes first on the weekend hub.
+#
+# A wrong call is a one-line fix here, no code change.
+
+# Tags (config of tagging.py) that make an event more likely to suit a family
+# looking at a weekend page. Each match adds one point.
+boost_tags:
+  - kid_friendly
+  - free
+  - outdoor
+
+# Words in an event's title that mark an adult-programme event on a page whose
+# audience is families. Each match subtracts two points. Matched whole-word,
+# case-insensitively.
+adult_title_keywords:
+  - court
+  - arbitration
+  - legal
+  - medicare
+  - tax
+  - taxes
+  - retirement
+  - resume
+  - résumé
+  - investing
+  - esl
+  - adults only
+  - senior
+  - seniors
