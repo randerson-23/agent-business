@@ -272,6 +272,21 @@ that limit.
    key file for 30 days. Until then IndexNow stays refused, which costs
    only Bing/DuckDuckGo/Yahoo/ChatGPT-search recrawl speed; Google is
    unaffected (48 pages indexed).
+3c. **Bing still refuses IndexNow with the new key — check the Bing property (3 min, item 265).**
+   As of the 2026-10-10 22:00 UTC build, both `api.indexnow.org` and
+   `www.bing.com/indexnow` answer `UserForbiddedToAccessSite` ("verify the
+   site using the key"), with the new key file live and exactly correct
+   (`key_file_ok` true), so the file, the key and the relay are ruled out.
+   In Bing Webmaster Tools, please check and tell the build loop:
+   (a) the site list shows **`https://withintenmiles.com/`** exactly, with
+   no `www`, no `http://`, and a green "verified" state (CNAME
+   verification can be pending for a day); (b) the **IndexNow** page lists
+   the new key as active, not "pending" or "invalid"; (c) the account that
+   generated the key is the same account that owns the verified site. If
+   (a) is wrong, add the correct property and verify it. If everything
+   looks right, wait a day and look at `data/indexnow_log.json` again;
+   Bing sometimes takes that long to bind a new key. This costs only
+   Bing/DuckDuckGo/Yahoo/ChatGPT-search recrawl speed. Google is unaffected.
 4. ✅ *Done 2026-10-09: the Buttondown handle is now `withinten`, and
    `config/newsletter.yaml` is updated (item 226). Yahoo spam check (item
    239) and the Buttondown settings below are also done: tracking on,
