@@ -14586,7 +14586,10 @@ and search engines that keep coming back.
        fingerprints are saved) and the log says `accepted_by:
        "www.bing.com"`. If it refuses too, its own message is on record.
        Not retried after a network error. 3 new tests; 723 pass.
-       **What to look at next:** a Bing Webmaster Tools property that does
+       **Answer, from the build at 22:00 UTC:** Bing's own endpoint refuses
+       with the identical `UserForbiddedToAccessSite`, `key_file_ok` `true`.
+       So it is Bing's side, not the shared relay, and not the key file or
+       the new key. **What to look at next:** a Bing Webmaster Tools property that does
        not match `withintenmiles.com` exactly (for example the `www` host or
        `http://`) would produce this refusal, and only the owner can see
        it.
@@ -14751,7 +14754,7 @@ local businesses.
 
 #### P2 (new)
 
-269. **Make the feeds cite Within Ten, and give each town its own.**
+269. ✅ **DONE — Make the feeds cite Within Ten, and give each town its own.**
      Build loop:
 
      - In `feed.xml`, set each item's `<link>` and `<guid>` to the
@@ -14773,6 +14776,28 @@ local businesses.
      which the current publisher-URL guids already do. The card anchor
      is stable by design (item 131's anchors), so nothing re-notifies
      subscribers.
+
+     ✅ **Shipped 2026-10-10.**
+     - `feed.xml` items now carry `site_url`, the card on this site that
+       `events.json` uses (anchors taken right after `prepare_event_cards`,
+       copied so later renders cannot change them). `<link>` and `<guid>`
+       are that URL (`isPermaLink="true"`); the description ends *"Official
+       listing: <publisher url>"*; and `<source url="<publisher url>">`
+       names the source feed. An item without `site_url` (an older caller)
+       still links to the publisher.
+     - **`/<region>/feed.xml`** for each of the five towns, built by the
+       same function (`scope=` and `title=` set the channel text), with
+       `<link rel="alternate" type="application/rss+xml">` in each region
+       page's head. `llms.txt`'s Feed section lists all six.
+     - Checked on a real build: 50 items in the site-wide feed and 50 in
+       Mount Prospect's, with **0 off-domain links**.
+     - **Guids change once.** They used to be the publisher's URL (or
+       URL#date), now the card URL, so a reader that already subscribed to
+       `feed.xml` will see its current items as new once. Stable after that:
+       the same event keeps the same card URL build to build. With one
+       subscriber and no known feed readers, that one-time re-notification
+       is cheap now and only gets dearer.
+     - 7 new tests (`tests/test_feeds.py`); 730 pass.
 
 270. **Use public PTO sponsor lists as the Event Promo's first prospect
      list.** Owner plus build loop. **Build loop:** add
