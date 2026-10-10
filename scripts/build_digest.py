@@ -13,6 +13,7 @@ is best-effort in the same spirit: a missed tag never blocks a build.
 """
 from __future__ import annotations
 
+import hashlib
 import json
 import logging
 import math
@@ -3893,6 +3894,57 @@ INDEXNOW_LOG_PATH = ROOT / "data" / "indexnow_log.json"
 INDEXNOW_LOG_KEEP = 20
 
 
+# ROADMAP.md item 265 (folding in item 235's second half): IndexNow's guidance
+# is to submit URLs that changed, not the whole sitemap on every build. One
+# fingerprint per sitemap page, committed by CI, is the "what changed" record.
+# Only written after a submission IndexNow accepted, so a rejected build keeps
+# its changes pending instead of losing them.
+INDEXNOW_HASHES_PATH = ROOT / "data" / "indexnow_hashes.json"
+
+# Parts of a built page that change on every build whatever the content: the
+# footer's "Generated <time>" line and the WebPage JSON-LD's dateModified.
+_FINGERPRINT_NOISE = (
+    re.compile(r"Generated \d{4}-\d{2}-\d{2} \d{2}:\d{2} UTC"),
+    re.compile(r'"dateModified": "[^"]*"'),
+)
+
+
+def page_fingerprint(html: str) -> str:
+    for pattern in _FINGERPRINT_NOISE:
+        html = pattern.sub("", html)
+    return hashlib.sha256(html.encode("utf-8")).hexdigest()[:16]
+
+
+def sitemap_url_to_file(url: str, output_dir: Path) -> Path:
+    path = url[len(SITE_BASE_URL):] if url.startswith(SITE_BASE_URL) else url.lstrip("/")
+    return output_dir / path / "index.html"
+
+
+def changed_indexnow_urls(urls: list[str], previous: dict, output_dir: Path) -> tuple[list[str], dict]:
+    """(urls whose page differs from the last accepted submission, the
+    fingerprint of every url now). A page that cannot be read counts as
+    changed and is left out of the new map, so it is retried."""
+    current, changed = {}, []
+    for url in urls:
+        try:
+            fingerprint = page_fingerprint(sitemap_url_to_file(url, output_dir).read_text(encoding="utf-8"))
+        except OSError:
+            changed.append(url)
+            continue
+        current[url] = fingerprint
+        if previous.get(url) != fingerprint:
+            changed.append(url)
+    return changed, current
+
+
+def load_indexnow_hashes(path: Path = INDEXNOW_HASHES_PATH) -> dict:
+    try:
+        data = json.loads(path.read_text(encoding="utf-8"))
+        return {k: v for k, v in data.items() if isinstance(v, str)} if isinstance(data, dict) else {}
+    except (OSError, ValueError):
+        return {}
+
+
 def record_indexnow_outcome(path: Path, now: datetime, url_count: int, ok: bool, outcome: dict) -> list[dict]:
     """Append this build's IndexNow result to `path`, keeping the last
     INDEXNOW_LOG_KEEP entries. A missing or unreadable file starts fresh."""
@@ -3908,6 +3960,11 @@ def record_indexnow_outcome(path: Path, now: datetime, url_count: int, ok: bool,
         "ok": ok,
         "status": outcome.get("status"),
         "error": outcome.get("error"),
+        # Item 265: Bing's own reason for a rejection, whether the live key
+        # file answered correctly, and why a build sent nothing.
+        "body": outcome.get("body"),
+        "key_file_ok": outcome.get("key_file_ok"),
+        "skipped": outcome.get("skipped"),
     })
     history = history[-INDEXNOW_LOG_KEEP:]
     path.write_text(json.dumps(history, indent=2) + "\n", encoding="utf-8")
@@ -4543,14 +4600,22 @@ def main() -> None:
     (OUTPUT_DIR / "manifest.webmanifest").write_text(build_web_manifest(), encoding="utf-8")
     logger.info("Wrote manifest.webmanifest and %d app icon(s) to %s", len(APP_ICON_SIZES), icons_dir)
     indexnow_outcome: dict = {}
-    indexnow_ok = submit_indexnow(
-        host=CUSTOM_DOMAIN,
-        key=INDEXNOW_KEY,
-        key_location=f"{SITE_BASE_URL}{INDEXNOW_KEY}.txt",
-        urls=sitemap_urls,
-        outcome=indexnow_outcome,
-    )
-    record_indexnow_outcome(INDEXNOW_LOG_PATH, now, len(sitemap_urls), indexnow_ok, indexnow_outcome)
+    indexnow_urls, indexnow_current = changed_indexnow_urls(sitemap_urls, load_indexnow_hashes(), OUTPUT_DIR)
+    if indexnow_urls:
+        indexnow_ok = submit_indexnow(
+            host=CUSTOM_DOMAIN,
+            key=INDEXNOW_KEY,
+            key_location=f"{SITE_BASE_URL}{INDEXNOW_KEY}.txt",
+            urls=indexnow_urls,
+            outcome=indexnow_outcome,
+        )
+        if indexnow_ok:
+            INDEXNOW_HASHES_PATH.write_text(json.dumps(indexnow_current, indent=1, sort_keys=True) + "\n", encoding="utf-8")
+    else:
+        indexnow_ok = True
+        indexnow_outcome = {"status": None, "error": None, "skipped": "no page changed since the last accepted submission"}
+        logger.info("IndexNow: no page changed since the last accepted submission; nothing sent.")
+    record_indexnow_outcome(INDEXNOW_LOG_PATH, now, len(indexnow_urls), indexnow_ok, indexnow_outcome)
     if total_events:
         logger.info(
             "TOTAL structured-date coverage: %d/%d events (%.0f%%) have a machine-readable start date",
