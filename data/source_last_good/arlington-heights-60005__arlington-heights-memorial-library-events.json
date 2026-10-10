@@ -1,11 +1,11 @@
 {
- "fetched_at": "2026-10-10T14:03:56+00:00",
+ "fetched_at": "2026-10-10T14:15:11+00:00",
  "items": [
   {
    "date": "2026-10-10",
    "detail": "",
-   "title": "Games & Gab",
-   "url": "https://www.ahml.info/scheduling/reservation/221909"
+   "title": "Family Time",
+   "url": "https://www.ahml.info/scheduling/reservation/224193"
   },
   {
    "date": "2026-10-11",
@@ -22,8 +22,8 @@
   {
    "date": "2026-10-13",
    "detail": "",
-   "title": "Social Worker in the Library",
-   "url": "https://www.ahml.info/scheduling/reservation/218147"
+   "title": "Read to Learn (District 214)",
+   "url": "https://www.ahml.info/scheduling/reservation/194391"
   },
   {
    "date": "2026-10-14",
@@ -40,14 +40,14 @@
   {
    "date": "2026-10-16",
    "detail": "",
-   "title": "Senior Center: Travelogue",
-   "url": "https://www.ahml.info/scheduling/reservation/224945"
+   "title": "First-Time Parents' Meetup",
+   "url": "https://www.ahml.info/scheduling/reservation/224295"
   },
   {
    "date": "2026-10-17",
    "detail": "",
-   "title": "Family Time",
-   "url": "https://www.ahml.info/scheduling/reservation/224194"
+   "title": "Beginning ESL",
+   "url": "https://www.ahml.info/scheduling/reservation/234242"
   },
   {
    "date": "2026-10-18",
@@ -88,8 +88,8 @@
   {
    "date": "2026-10-24",
    "detail": "",
-   "title": "One Book, One Village at Arlington Heights' Community Open House",
-   "url": "https://www.ahml.info/scheduling/reservation/226814"
+   "title": "Family Time",
+   "url": "https://www.ahml.info/scheduling/reservation/224195"
   },
   {
    "date": "2026-10-25",
@@ -136,14 +136,14 @@
   {
    "date": null,
    "detail": "",
-   "title": "Senior Center: Current Events",
-   "url": "https://www.ahml.info/scheduling/reservation/224971"
+   "title": "Play Time",
+   "url": "https://www.ahml.info/scheduling/reservation/224254"
   },
   {
    "date": null,
    "detail": "",
-   "title": "Play Time",
-   "url": "https://www.ahml.info/scheduling/reservation/224254"
+   "title": "Senior Center: Current Events",
+   "url": "https://www.ahml.info/scheduling/reservation/224971"
   },
   {
    "date": null,
@@ -178,14 +178,14 @@
   {
    "date": null,
    "detail": "",
-   "title": "Culture & Conversation (intermediate +)",
-   "url": "https://www.ahml.info/scheduling/reservation/232399"
+   "title": "Murder, Mayhem, and the Mob Part 4: An Offer You Can't Refuse",
+   "url": "https://www.ahml.info/scheduling/reservation/214578"
   },
   {
    "date": null,
    "detail": "",
-   "title": "Murder, Mayhem, and the Mob Part 4: An Offer You Can't Refuse",
-   "url": "https://www.ahml.info/scheduling/reservation/214578"
+   "title": "Culture & Conversation (intermediate +)",
+   "url": "https://www.ahml.info/scheduling/reservation/232399"
   },
   {
    "date": null,
@@ -274,12 +274,6 @@
   {
    "date": null,
    "detail": "",
-   "title": "Hablemos Español (Let's Speak Spanish)",
-   "url": "https://www.ahml.info/scheduling/reservation/230944"
-  },
-  {
-   "date": null,
-   "detail": "",
    "title": "Clases de Computación Básica",
    "url": "https://www.ahml.info/scheduling/reservation/230155"
   },
@@ -292,14 +286,20 @@
   {
    "date": null,
    "detail": "",
-   "title": "Read to Learn (District 214)",
-   "url": "https://www.ahml.info/scheduling/reservation/194366"
+   "title": "Hablemos Español (Let's Speak Spanish)",
+   "url": "https://www.ahml.info/scheduling/reservation/230944"
   },
   {
    "date": null,
    "detail": "",
    "title": "Tiny Tunes (Week 1 of 4)",
    "url": "https://www.ahml.info/scheduling/reservation/224281"
+  },
+  {
+   "date": null,
+   "detail": "",
+   "title": "Read to Learn (District 214)",
+   "url": "https://www.ahml.info/scheduling/reservation/194366"
   },
   {
    "date": null,
@@ -328,12 +328,6 @@
   {
    "date": null,
    "detail": "",
-   "title": "Beginning ESL",
-   "url": "https://www.ahml.info/scheduling/reservation/198032"
-  },
-  {
-   "date": null,
-   "detail": "",
    "title": "Mindful Movements",
    "url": "https://www.ahml.info/scheduling/reservation/200994"
   },
@@ -346,20 +340,26 @@
   {
    "date": null,
    "detail": "",
+   "title": "Beginning ESL",
+   "url": "https://www.ahml.info/scheduling/reservation/198032"
+  },
+  {
+   "date": null,
+   "detail": "",
    "title": "Makerplace Sew a Custom Pillow Cover",
    "url": "https://www.ahml.info/scheduling/reservation/224143"
   },
   {
    "date": null,
    "detail": "",
-   "title": "Play Time",
-   "url": "https://www.ahml.info/scheduling/reservation/224257"
+   "title": "Excel: Basics",
+   "url": "https://www.ahml.info/scheduling/reservation/231796"
   },
   {
    "date": null,
    "detail": "",
-   "title": "Excel: Basics",
-   "url": "https://www.ahml.info/scheduling/reservation/231796"
+   "title": "Play Time",
+   "url": "https://www.ahml.info/scheduling/reservation/224257"
   }
  ],
  "source": "Arlington Heights Memorial Library — Events"
