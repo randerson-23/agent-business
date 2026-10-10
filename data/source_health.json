@@ -6,14 +6,14 @@
     256,
     256,
     256,
-    256,
+    259,
     259,
     259,
     259
   ],
   "arlington-heights-60005:Arlington Heights Park District \u2014 Events": [
     19,
-    19,
+    18,
     18,
     18,
     18,
@@ -56,7 +56,7 @@
     6,
     6,
     6,
-    6,
+    5,
     5
   ],
   "des-plaines-60016:Des Plaines Park District \u2014 Events": [
@@ -72,7 +72,6 @@
     20
   ],
   "des-plaines-60016:Des Plaines Public Library \u2014 Events": [
-    459,
     461,
     450,
     450,
@@ -81,6 +80,7 @@
     450,
     452,
     452,
+    447,
     447
   ],
   "mount-prospect-60056:Downtown Mount Prospect \u2014 Events": [
@@ -116,7 +116,6 @@
   ],
   "mount-prospect-60056:Mount Prospect Public Library \u2014 Events": [
     225,
-    225,
     220,
     220,
     220,
@@ -124,6 +123,7 @@
     220,
     220,
     220,
+    218,
     218
   ],
   "mount-prospect-60056:Mount Prospect School District 57 \u2014 Calendar": [
@@ -158,7 +158,6 @@
     0
   ],
   "mount-prospect-60056:Village of Mount Prospect \u2014 News": [
-    24,
     25,
     25,
     25,
@@ -167,11 +166,12 @@
     25,
     26,
     27,
+    27,
     27
   ],
   "palatine-60067:Community Consolidated School District 15 \u2014 Calendar": [
     46,
-    46,
+    45,
     45,
     45,
     45,
@@ -196,14 +196,14 @@
   "palatine-60067:Palatine Public Library District \u2014 Events": [
     16,
     16,
-    16,
     17,
     17,
     17,
     17,
     17,
     17,
-    17
+    17,
+    16
   ],
   "palatine-60067:Township High School District 211 \u2014 Calendar": [
     15,
@@ -223,14 +223,14 @@
     21,
     21,
     21,
-    21,
     26,
+    25,
     25,
     25,
     25
   ],
   "palatine-60067:Village of Palatine \u2014 News": [
-    4,
+    5,
     5,
     5,
     5,
@@ -248,9 +248,9 @@
     353,
     353,
     353,
-    353,
     354,
     354,
+    351,
     351
   ],
   "wheeling-60090:Village of Wheeling \u2014 Calendar": [
