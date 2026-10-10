@@ -14574,6 +14574,22 @@ and search engines that keep coming back.
        step below now applies (Needs Ryan 3b). One thing this does **not**
        prove: that Bing's own fetch of the key file succeeds; only the
        runner's does.
+     - **2026-10-10 21:50 UTC, after the owner's new key:** still 403 with
+       the same `UserForbiddedToAccessSite`, and `key_file_ok` `true` on the
+       build that had the new key file live (14:15 UTC; the 14:03 build,
+       which did not yet, correctly read `false`). So the key was not the
+       whole story. Added a diagnostic: when the shared `api.indexnow.org`
+       endpoint refuses, the same submission is sent **once straight to
+       `https://www.bing.com/indexnow`**, and the log now also records
+       `bing_status`, `bing_body` and `accepted_by`. If Bing's own endpoint
+       accepts, the submission counts as accepted (the changed-page
+       fingerprints are saved) and the log says `accepted_by:
+       "www.bing.com"`. If it refuses too, its own message is on record.
+       Not retried after a network error. 3 new tests; 723 pass.
+       **What to look at next:** a Bing Webmaster Tools property that does
+       not match `withintenmiles.com` exactly (for example the `www` host or
+       `http://`) would produce this refusal, and only the owner can see
+       it.
      - **Owner step, only if needed (1 minute):** read the next entries in
        `data/indexnow_log.json` on main. If `key_file_ok` is `true` and
        `body` names the key or the site as invalid or forbidden, generate a
