@@ -2,58 +2,12 @@
   "@context": "https://schema.org",
   "@type": "ItemList",
   "name": "Upcoming events in Des Plaines — Within Ten",
-  "dateModified": "2026-10-10T22:10:34+00:00",
-  "numberOfItems": 78,
+  "dateModified": "2026-10-11T06:04:45+00:00",
+  "numberOfItems": 80,
   "itemListElement": [
     {
       "@type": "ListItem",
       "position": 1,
-      "item": {
-        "@type": "Event",
-        "name": "The Librarians",
-        "startDate": "2026-10-10T13:30:00-05:00",
-        "url": "https://withintenmiles.com/des-plaines-60016/#ev-the-librarians-2026-10-10",
-        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "location": {
-          "@type": "Place",
-          "name": "Des Plaines Public Library",
-          "address": {
-            "@type": "PostalAddress",
-            "addressCountry": "US",
-            "addressLocality": "Des Plaines",
-            "addressRegion": "IL"
-          }
-        },
-        "sameAs": "https://desplaines.libnet.info/event/17434052",
-        "description": "Saturday, October 10 2026 1:30pm - 3:30pm \n A screening of the award winning documentary film The Librarians."
-      }
-    },
-    {
-      "@type": "ListItem",
-      "position": 2,
-      "item": {
-        "@type": "Event",
-        "name": "Small Claims Court and Arbitration Proceedings",
-        "startDate": "2026-10-10T14:00:00-05:00",
-        "url": "https://withintenmiles.com/des-plaines-60016/#ev-small-claims-court-and-arbitration-proceedings-2026-10-10",
-        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "location": {
-          "@type": "Place",
-          "name": "Des Plaines Public Library",
-          "address": {
-            "@type": "PostalAddress",
-            "addressCountry": "US",
-            "addressLocality": "Des Plaines",
-            "addressRegion": "IL"
-          }
-        },
-        "sameAs": "https://desplaines.libnet.info/event/16483424",
-        "description": "Saturday, October 10 2026 2:00pm - 3:00pm \n What to expect in a small claims lawsuit."
-      }
-    },
-    {
-      "@type": "ListItem",
-      "position": 3,
       "item": {
         "@type": "Event",
         "name": "Book a Teen Librarian",
@@ -76,7 +30,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 4,
+      "position": 2,
       "item": {
         "@type": "Event",
         "name": "Franken-Bully! A Bright Star Theatre Production",
@@ -99,7 +53,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 5,
+      "position": 3,
       "item": {
         "@type": "Event",
         "name": "River Pointe Condo Assoc.",
@@ -122,7 +76,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 6,
+      "position": 4,
       "item": {
         "@type": "Event",
         "name": "Reading/Literacy Class",
@@ -145,7 +99,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 7,
+      "position": 5,
       "item": {
         "@type": "Event",
         "name": "ESL (English as a Second Language) Class - Oakton College",
@@ -168,7 +122,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 8,
+      "position": 6,
       "item": {
         "@type": "Event",
         "name": "Meet with Your Government Representatives",
@@ -191,7 +145,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 9,
+      "position": 7,
       "item": {
         "@type": "Event",
         "name": "Flu Clinic Sponsored by Senator Laura Murphy",
@@ -214,7 +168,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 10,
+      "position": 8,
       "item": {
         "@type": "Event",
         "name": "Makerspace Orientations: On-Zoom 2026-2027",
@@ -237,7 +191,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 11,
+      "position": 9,
       "item": {
         "@type": "Event",
         "name": "Toddler Time",
@@ -260,7 +214,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 12,
+      "position": 10,
       "item": {
         "@type": "Event",
         "name": "Tuesday Morning Book Discussion: Yesteryear by Caro Burke",
@@ -283,7 +237,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 13,
+      "position": 11,
       "item": {
         "@type": "Event",
         "name": "Loteria",
@@ -306,7 +260,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 14,
+      "position": 12,
       "item": {
         "@type": "Event",
         "name": "Tween Dungeons and Dragons",
@@ -329,7 +283,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 15,
+      "position": 13,
       "item": {
         "@type": "Event",
         "name": "Book a Teen Librarian",
@@ -352,7 +306,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 16,
+      "position": 14,
       "item": {
         "@type": "Event",
         "name": "Adult Board Game Night",
@@ -375,7 +329,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 17,
+      "position": 15,
       "item": {
         "@type": "Event",
         "name": "Baby Book Time",
@@ -398,7 +352,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 18,
+      "position": 16,
       "item": {
         "@type": "Event",
         "name": "Meal Planning on a Budget",
@@ -421,7 +375,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 19,
+      "position": 17,
       "item": {
         "@type": "Event",
         "name": "Preschool Storytime",
@@ -444,7 +398,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 20,
+      "position": 18,
       "item": {
         "@type": "Event",
         "name": "The Queer Canvas: LGBTQIA+ Art Club",
@@ -467,7 +421,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 21,
+      "position": 19,
       "item": {
         "@type": "Event",
         "name": "Family Storytime",
@@ -490,7 +444,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 22,
+      "position": 20,
       "item": {
         "@type": "Event",
         "name": "Reading/Literacy Class",
@@ -513,7 +467,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 23,
+      "position": 21,
       "item": {
         "@type": "Event",
         "name": "ESL (English as a Second Language) Class - Oakton College",
@@ -536,7 +490,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 24,
+      "position": 22,
       "item": {
         "@type": "Event",
         "name": "Toddler Time",
@@ -559,7 +513,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 25,
+      "position": 23,
       "item": {
         "@type": "Event",
         "name": "Happy Notes",
@@ -582,7 +536,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 26,
+      "position": 24,
       "item": {
         "@type": "Event",
         "name": "Book a Teen Librarian",
@@ -605,7 +559,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 27,
+      "position": 25,
       "item": {
         "@type": "Event",
         "name": "MS Excel: Getting Started",
@@ -628,7 +582,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 28,
+      "position": 26,
       "item": {
         "@type": "Event",
         "name": "Library Board of Trustees Open Meeting",
@@ -651,7 +605,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 29,
+      "position": 27,
       "item": {
         "@type": "Event",
         "name": "Baby Book Time",
@@ -674,7 +628,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 30,
+      "position": 28,
       "item": {
         "@type": "Event",
         "name": "The Next Chapter",
@@ -697,7 +651,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 31,
+      "position": 29,
       "item": {
         "@type": "Event",
         "name": "Indivisible Des Plaines",
@@ -720,7 +674,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 32,
+      "position": 30,
       "item": {
         "@type": "Event",
         "name": "Service Hour Drop In",
@@ -743,7 +697,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 33,
+      "position": 31,
       "item": {
         "@type": "Event",
         "name": "Des Plaines Lions Club Volunteer Hour",
@@ -766,7 +720,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 34,
+      "position": 32,
       "item": {
         "@type": "Event",
         "name": "Build a Pinecone Bird Feeder",
@@ -789,7 +743,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 35,
+      "position": 33,
       "item": {
         "@type": "Event",
         "name": "Wicked Good Writing Contest",
@@ -812,7 +766,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 36,
+      "position": 34,
       "item": {
         "@type": "Event",
         "name": "MS Excel: Principantes (Spanish)",
@@ -835,7 +789,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 37,
+      "position": 35,
       "item": {
         "@type": "Event",
         "name": "Wicked Good Writing Contest",
@@ -858,7 +812,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 38,
+      "position": 36,
       "item": {
         "@type": "Event",
         "name": "Early Voting",
@@ -881,7 +835,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 39,
+      "position": 37,
       "item": {
         "@type": "Event",
         "name": "Baby Book Time",
@@ -904,7 +858,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 40,
+      "position": 38,
       "item": {
         "@type": "Event",
         "name": "Career & Job Counseling @ the library",
@@ -927,7 +881,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 41,
+      "position": 39,
       "item": {
         "@type": "Event",
         "name": "Book a Teen Librarian",
@@ -950,7 +904,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 42,
+      "position": 40,
       "item": {
         "@type": "Event",
         "name": "Shakespeare Project of Chicago",
@@ -973,7 +927,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 43,
+      "position": 41,
       "item": {
         "@type": "Event",
         "name": "LEGO League",
@@ -996,7 +950,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 44,
+      "position": 42,
       "item": {
         "@type": "Event",
         "name": "Wicked Good Writing Contest",
@@ -1019,7 +973,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 45,
+      "position": 43,
       "item": {
         "@type": "Event",
         "name": "Early Voting",
@@ -1042,7 +996,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 46,
+      "position": 44,
       "item": {
         "@type": "Event",
         "name": "ESL (English as a Second Language) Class - Oakton College",
@@ -1065,7 +1019,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 47,
+      "position": 45,
       "item": {
         "@type": "Event",
         "name": "Reading/Literacy Class",
@@ -1088,7 +1042,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 48,
+      "position": 46,
       "item": {
         "@type": "Event",
         "name": "Toddler Time",
@@ -1111,7 +1065,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 49,
+      "position": 47,
       "item": {
         "@type": "Event",
         "name": "City of Des Plaines Blood Drive",
@@ -1134,7 +1088,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 50,
+      "position": 48,
       "item": {
         "@type": "Event",
         "name": "Maker's Place",
@@ -1157,7 +1111,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 51,
+      "position": 49,
       "item": {
         "@type": "Event",
         "name": "Book a Teen Librarian",
@@ -1180,7 +1134,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 52,
+      "position": 50,
       "item": {
         "@type": "Event",
         "name": "Stitches on Miner",
@@ -1203,7 +1157,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 53,
+      "position": 51,
       "item": {
         "@type": "Event",
         "name": "Tech in the Forum",
@@ -1226,7 +1180,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 54,
+      "position": 52,
       "item": {
         "@type": "Event",
         "name": "Preserving History with Geoffrey Baer",
@@ -1249,7 +1203,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 55,
+      "position": 53,
       "item": {
         "@type": "Event",
         "name": "FilmTalkTuesdays: Rosemary's Baby (1968)",
@@ -1272,7 +1226,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 56,
+      "position": 54,
       "item": {
         "@type": "Event",
         "name": "Wicked Good Writing Contest",
@@ -1295,7 +1249,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 57,
+      "position": 55,
       "item": {
         "@type": "Event",
         "name": "Early Voting",
@@ -1318,7 +1272,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 58,
+      "position": 56,
       "item": {
         "@type": "Event",
         "name": "Baby Book Time",
@@ -1341,7 +1295,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 59,
+      "position": 57,
       "item": {
         "@type": "Event",
         "name": "Chicago: Shaping the Airline Industry",
@@ -1364,7 +1318,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 60,
+      "position": 58,
       "item": {
         "@type": "Event",
         "name": "Preschool Storytime",
@@ -1387,7 +1341,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 61,
+      "position": 59,
       "item": {
         "@type": "Event",
         "name": "Teen Crafternoons",
@@ -1410,7 +1364,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 62,
+      "position": 60,
       "item": {
         "@type": "Event",
         "name": "Makerspace Orientations: In-Person",
@@ -1433,7 +1387,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 63,
+      "position": 61,
       "item": {
         "@type": "Event",
         "name": "Family Storytime",
@@ -1456,7 +1410,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 64,
+      "position": 62,
       "item": {
         "@type": "Event",
         "name": "Wicked Good Writing Contest",
@@ -1479,7 +1433,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 65,
+      "position": 63,
       "item": {
         "@type": "Event",
         "name": "Early Voting",
@@ -1502,7 +1456,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 66,
+      "position": 64,
       "item": {
         "@type": "Event",
         "name": "Reading/Literacy Class",
@@ -1525,7 +1479,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 67,
+      "position": 65,
       "item": {
         "@type": "Event",
         "name": "ESL (English as a Second Language) Class - Oakton College",
@@ -1548,7 +1502,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 68,
+      "position": 66,
       "item": {
         "@type": "Event",
         "name": "Toddler Time",
@@ -1571,7 +1525,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 69,
+      "position": 67,
       "item": {
         "@type": "Event",
         "name": "Q & A One on One Appointment",
@@ -1594,7 +1548,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 70,
+      "position": 68,
       "item": {
         "@type": "Event",
         "name": "Liberation Bookmarks",
@@ -1617,7 +1571,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 71,
+      "position": 69,
       "item": {
         "@type": "Event",
         "name": "Book a Teen Librarian",
@@ -1640,7 +1594,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 72,
+      "position": 70,
       "item": {
         "@type": "Event",
         "name": "Mac Basics",
@@ -1663,7 +1617,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 73,
+      "position": 71,
       "item": {
         "@type": "Event",
         "name": "Thursday Evening Book Discussion",
@@ -1686,7 +1640,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 74,
+      "position": 72,
       "item": {
         "@type": "Event",
         "name": "Wicked Good Writing Contest",
@@ -1709,7 +1663,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 75,
+      "position": 73,
       "item": {
         "@type": "Event",
         "name": "Early Voting",
@@ -1732,7 +1686,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 76,
+      "position": 74,
       "item": {
         "@type": "Event",
         "name": "Baby Book Time",
@@ -1755,7 +1709,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 77,
+      "position": 75,
       "item": {
         "@type": "Event",
         "name": "Ain't Wii Got Fun!",
@@ -1778,7 +1732,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 78,
+      "position": 76,
       "item": {
         "@type": "Event",
         "name": "Indivisible Des Plaines",
@@ -1797,6 +1751,98 @@
         },
         "sameAs": "https://desplaines.libnet.info/event/17172777",
         "description": "Friday, October 23 2026 7:00pm - 8:30pm \n Indivisible\nnwprogressivedems@gmail.com"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 77,
+      "item": {
+        "@type": "Event",
+        "name": "DIY with DPPL",
+        "startDate": "2026-10-24",
+        "url": "https://withintenmiles.com/des-plaines-60016/#ev-diy-with-dppl-2026-10-24",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Des Plaines Public Library",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Des Plaines",
+            "addressRegion": "IL"
+          }
+        },
+        "sameAs": "https://desplaines.libnet.info/event/17004638",
+        "description": "Saturday, October 24 2026 12:00am - 11:59pm \n Grades 1-6. Pick up a kit at the YS desk and use the materials to do the project we show you step-by-step in the…"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 78,
+      "item": {
+        "@type": "Event",
+        "name": "Play Packs",
+        "startDate": "2026-10-24",
+        "url": "https://withintenmiles.com/des-plaines-60016/#ev-play-packs-2026-10-24",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Des Plaines Public Library",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Des Plaines",
+            "addressRegion": "IL"
+          }
+        },
+        "sameAs": "https://desplaines.libnet.info/event/17004648",
+        "description": "Saturday, October 24 2026 12:00am - 11:59pm \n Toddlers - Kindergarten, pick up a pack at the Youth Services desk for a hands-on activity to encourage…"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 79,
+      "item": {
+        "@type": "Event",
+        "name": "Wicked Good Writing Contest",
+        "startDate": "2026-10-24",
+        "url": "https://withintenmiles.com/des-plaines-60016/#ev-wicked-good-writing-contest-2026-10-24",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Des Plaines Public Library",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Des Plaines",
+            "addressRegion": "IL"
+          }
+        },
+        "sameAs": "https://desplaines.libnet.info/event/17138192",
+        "description": "Saturday, October 24 2026 12:00am - 11:59pm \n Enter our 4th annual Wicked Good Writing Contest!\nFor grades K-8."
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 80,
+      "item": {
+        "@type": "Event",
+        "name": "Early Voting",
+        "startDate": "2026-10-24T09:00:00-05:00",
+        "url": "https://withintenmiles.com/des-plaines-60016/#ev-early-voting-2026-10-24",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Des Plaines Public Library",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Des Plaines",
+            "addressRegion": "IL"
+          }
+        },
+        "sameAs": "https://desplaines.libnet.info/event/14863286",
+        "description": "Saturday, October 24 2026 9:00am - 5:00pm \n Gubernatorial Election"
       }
     }
   ]

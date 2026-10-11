@@ -3,16 +3,8 @@
 <channel>
   <title>Within Ten — Upcoming events in Arlington Heights</title>
   <link>https://withintenmiles.com/</link>
-  <description>Upcoming events in Arlington Heights, soonest first - aggregated automatically from village, library, park district and school-district calendars. This build reached 3 of 4 configured sources.</description>
-  <lastBuildDate>Sat, 10 Oct 2026 22:10:34 +0000</lastBuildDate>
-  <item>
-    <title>Arlington Heights: Family Time</title>
-    <link>https://withintenmiles.com/arlington-heights-60005/#ev-family-time-2026-10-10</link>
-    <guid isPermaLink="true">https://withintenmiles.com/arlington-heights-60005/#ev-family-time-2026-10-10</guid>
-    <description>Official listing: https://www.ahml.info/scheduling/reservation/224193</description>
-    <pubDate>Sat, 10 Oct 2026 00:00:00 +0000</pubDate>
-    <source url="https://www.ahml.info/scheduling/reservation/224193">Arlington Heights Memorial Library — Events</source>
-  </item>
+  <description>Upcoming events in Arlington Heights, soonest first - aggregated automatically from village, library, park district and school-district calendars. This build reached 2 of 4 configured sources. 1 source is shown from its last update, up to 8 hours ago.</description>
+  <lastBuildDate>Sun, 11 Oct 2026 06:04:45 +0000</lastBuildDate>
   <item>
     <title>Arlington Heights: Tech Fair</title>
     <link>https://withintenmiles.com/arlington-heights-60005/#ev-tech-fair-2026-10-11</link>
@@ -222,12 +214,12 @@
     <source url="https://www.ahml.info/scheduling/reservation/193749">Arlington Heights Memorial Library — Events</source>
   </item>
   <item>
-    <title>Arlington Heights: Senior Center: iPhone &amp; iPad Beyond Basics (Day 2)</title>
-    <link>https://withintenmiles.com/arlington-heights-60005/#ev-senior-center-iphone-ipad-beyond-basics-day-2-2026-10-28</link>
-    <guid isPermaLink="true">https://withintenmiles.com/arlington-heights-60005/#ev-senior-center-iphone-ipad-beyond-basics-day-2-2026-10-28</guid>
-    <description>Official listing: https://www.ahml.info/scheduling/reservation/225333</description>
+    <title>Arlington Heights: Halloween Fun</title>
+    <link>https://withintenmiles.com/arlington-heights-60005/#ev-halloween-fun-2026-10-28</link>
+    <guid isPermaLink="true">https://withintenmiles.com/arlington-heights-60005/#ev-halloween-fun-2026-10-28</guid>
+    <description>Official listing: https://www.ahml.info/scheduling/reservation/212249</description>
     <pubDate>Wed, 28 Oct 2026 00:00:00 +0000</pubDate>
-    <source url="https://www.ahml.info/scheduling/reservation/225333">Arlington Heights Memorial Library — Events</source>
+    <source url="https://www.ahml.info/scheduling/reservation/212249">Arlington Heights Memorial Library — Events</source>
   </item>
   <item>
     <title>Arlington Heights: Toddler Time</title>

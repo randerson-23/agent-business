@@ -3,26 +3,8 @@
 <channel>
   <title>Within Ten — Upcoming events in Mount Prospect</title>
   <link>https://withintenmiles.com/</link>
-  <description>Upcoming events in Mount Prospect, soonest first - aggregated automatically from village, library, park district and school-district calendars. This build reached 13 of 16 configured sources.</description>
-  <lastBuildDate>Sat, 10 Oct 2026 22:10:34 +0000</lastBuildDate>
-  <item>
-    <title>Mount Prospect: Digitizing Photos, Slides, and Negatives</title>
-    <link>https://withintenmiles.com/mount-prospect-60056/#ev-digitizing-photos-slides-and-negatives-2026-10-10</link>
-    <guid isPermaLink="true">https://withintenmiles.com/mount-prospect-60056/#ev-digitizing-photos-slides-and-negatives-2026-10-10</guid>
-    <description>Saturday, October 10 2026 10:00am - 11:00am 
- Learn how to digitize old photos, slides, and negatives using the library's Mac Studio equipment. It's a great… Official listing: https://mppl.libnet.info/event/16452806</description>
-    <pubDate>Sat, 10 Oct 2026 10:00:00 +0000</pubDate>
-    <source url="https://mppl.libnet.info/event/16452806">Mount Prospect Public Library — Events</source>
-  </item>
-  <item>
-    <title>Mount Prospect: Afternoon Tea Social</title>
-    <link>https://withintenmiles.com/mount-prospect-60056/#ev-afternoon-tea-social-2026-10-10</link>
-    <guid isPermaLink="true">https://withintenmiles.com/mount-prospect-60056/#ev-afternoon-tea-social-2026-10-10</guid>
-    <description>Saturday, October 10 2026 12:00pm - 1:00pm 
- Come join us for an afternoon event celebrating our One Book, One Village community read! Official listing: https://mppl.libnet.info/event/16124662</description>
-    <pubDate>Sat, 10 Oct 2026 12:00:00 +0000</pubDate>
-    <source url="https://mppl.libnet.info/event/16124662">Mount Prospect Public Library — Events</source>
-  </item>
+  <description>Upcoming events in Mount Prospect, soonest first - aggregated automatically from village, library, park district and school-district calendars. This build reached 11 of 16 configured sources. 2 sources are shown from their last update, up to 8 hours ago.</description>
+  <lastBuildDate>Sun, 11 Oct 2026 06:04:45 +0000</lastBuildDate>
   <item>
     <title>Mount Prospect: Mount Prospect Farmers Market</title>
     <link>https://withintenmiles.com/mount-prospect-60056/#ev-mount-prospect-farmers-market-2026-10-11</link>
@@ -454,6 +436,24 @@ A virtual… Official listing: https://mppl.libnet.info/event/17476743</descript
  Learn what your personal star alignment means for you! Official listing: https://mppl.libnet.info/event/15766208</description>
     <pubDate>Tue, 20 Oct 2026 19:00:00 +0000</pubDate>
     <source url="https://mppl.libnet.info/event/15766208">Mount Prospect Public Library — Events</source>
+  </item>
+  <item>
+    <title>Mount Prospect: Toddler Storytime</title>
+    <link>https://withintenmiles.com/mount-prospect-60056/#ev-toddler-storytime-2026-10-21</link>
+    <guid isPermaLink="true">https://withintenmiles.com/mount-prospect-60056/#ev-toddler-storytime-2026-10-21</guid>
+    <description>Wednesday, October 21 2026 9:30am - 10:00am 
+ Grow your little learner's literacy and language skills at this playful storytime full of wiggles, wonder, and… Official listing: https://mppl.libnet.info/event/16553441</description>
+    <pubDate>Wed, 21 Oct 2026 09:30:00 +0000</pubDate>
+    <source url="https://mppl.libnet.info/event/16553441">Mount Prospect Public Library — Events</source>
+  </item>
+  <item>
+    <title>Mount Prospect: Growing Into Graphic Novels</title>
+    <link>https://withintenmiles.com/mount-prospect-60056/#ev-growing-into-graphic-novels-2026-10-21</link>
+    <guid isPermaLink="true">https://withintenmiles.com/mount-prospect-60056/#ev-growing-into-graphic-novels-2026-10-21</guid>
+    <description>Wednesday, October 21 2026 5:00pm - 5:45pm 
+ Growing readers will enjoy fun, hands-on activities related to a graphic novel. Graphic novels help build… Official listing: https://mppl.libnet.info/event/16508080</description>
+    <pubDate>Wed, 21 Oct 2026 17:00:00 +0000</pubDate>
+    <source url="https://mppl.libnet.info/event/16508080">Mount Prospect Public Library — Events</source>
   </item>
 </channel>
 </rss>

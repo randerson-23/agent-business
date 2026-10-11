@@ -3,26 +3,8 @@
 <channel>
   <title>Within Ten — Upcoming events in Des Plaines</title>
   <link>https://withintenmiles.com/</link>
-  <description>Upcoming events in Des Plaines, soonest first - aggregated automatically from village, library, park district and school-district calendars. This build reached 7 of 8 configured sources.</description>
-  <lastBuildDate>Sat, 10 Oct 2026 22:10:34 +0000</lastBuildDate>
-  <item>
-    <title>Des Plaines: The Librarians</title>
-    <link>https://withintenmiles.com/des-plaines-60016/#ev-the-librarians-2026-10-10</link>
-    <guid isPermaLink="true">https://withintenmiles.com/des-plaines-60016/#ev-the-librarians-2026-10-10</guid>
-    <description>Saturday, October 10 2026 1:30pm - 3:30pm 
- A screening of the award winning documentary film The Librarians. Official listing: https://desplaines.libnet.info/event/17434052</description>
-    <pubDate>Sat, 10 Oct 2026 13:30:00 +0000</pubDate>
-    <source url="https://desplaines.libnet.info/event/17434052">Des Plaines Public Library — Events</source>
-  </item>
-  <item>
-    <title>Des Plaines: Small Claims Court and Arbitration Proceedings</title>
-    <link>https://withintenmiles.com/des-plaines-60016/#ev-small-claims-court-and-arbitration-proceedings-2026-10-10</link>
-    <guid isPermaLink="true">https://withintenmiles.com/des-plaines-60016/#ev-small-claims-court-and-arbitration-proceedings-2026-10-10</guid>
-    <description>Saturday, October 10 2026 2:00pm - 3:00pm 
- What to expect in a small claims lawsuit. Official listing: https://desplaines.libnet.info/event/16483424</description>
-    <pubDate>Sat, 10 Oct 2026 14:00:00 +0000</pubDate>
-    <source url="https://desplaines.libnet.info/event/16483424">Des Plaines Public Library — Events</source>
-  </item>
+  <description>Upcoming events in Des Plaines, soonest first - aggregated automatically from village, library, park district and school-district calendars. This build reached 5 of 8 configured sources. 2 sources are shown from their last update, up to 8 hours ago.</description>
+  <lastBuildDate>Sun, 11 Oct 2026 06:04:45 +0000</lastBuildDate>
   <item>
     <title>Des Plaines: Book a Teen Librarian</title>
     <link>https://withintenmiles.com/des-plaines-60016/#ev-book-a-teen-librarian-2026-10-12</link>
@@ -472,6 +454,24 @@ For grades K-8. Official listing: https://desplaines.libnet.info/event/17138188<
  Come to the Maker's Place to make something cool and hang out. Official listing: https://desplaines.libnet.info/event/17194650</description>
     <pubDate>Tue, 20 Oct 2026 16:00:00 +0000</pubDate>
     <source url="https://desplaines.libnet.info/event/17194650">Des Plaines Public Library — Events</source>
+  </item>
+  <item>
+    <title>Des Plaines: Book a Teen Librarian</title>
+    <link>https://withintenmiles.com/des-plaines-60016/#ev-book-a-teen-librarian-2026-10-20</link>
+    <guid isPermaLink="true">https://withintenmiles.com/des-plaines-60016/#ev-book-a-teen-librarian-2026-10-20</guid>
+    <description>Tuesday, October 20 2026 5:00pm - 6:00pm 
+ Come in and get to know your teen librarians! Official listing: https://desplaines.libnet.info/event/17604767</description>
+    <pubDate>Tue, 20 Oct 2026 17:00:00 +0000</pubDate>
+    <source url="https://desplaines.libnet.info/event/17604767">Des Plaines Public Library — Events</source>
+  </item>
+  <item>
+    <title>Des Plaines: Stitches on Miner</title>
+    <link>https://withintenmiles.com/des-plaines-60016/#ev-stitches-on-miner-2026-10-20</link>
+    <guid isPermaLink="true">https://withintenmiles.com/des-plaines-60016/#ev-stitches-on-miner-2026-10-20</guid>
+    <description>Tuesday, October 20 2026 5:30pm - 7:30pm 
+ Come join us for a few hours of dedicated crafting time, perfect for working on those eternal works-in-progress or… Official listing: https://desplaines.libnet.info/event/16742517</description>
+    <pubDate>Tue, 20 Oct 2026 17:30:00 +0000</pubDate>
+    <source url="https://desplaines.libnet.info/event/16742517">Des Plaines Public Library — Events</source>
   </item>
 </channel>
 </rss>

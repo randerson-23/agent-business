@@ -3,18 +3,8 @@
 <channel>
   <title>Within Ten — Upcoming events in Wheeling</title>
   <link>https://withintenmiles.com/</link>
-  <description>Upcoming events in Wheeling, soonest first - aggregated automatically from village, library, park district and school-district calendars. This build reached 21 of 26 configured sources.</description>
-  <lastBuildDate>Sat, 10 Oct 2026 22:10:34 +0000</lastBuildDate>
-  <item>
-    <title>Wheeling: Foundation Used Book Sale</title>
-    <link>https://withintenmiles.com/wheeling-60090/#ev-foundation-used-book-sale-2026-10-10</link>
-    <guid isPermaLink="true">https://withintenmiles.com/wheeling-60090/#ev-foundation-used-book-sale-2026-10-10</guid>
-    <description>Saturday, October 10 2026 10:00am - 2:00pm 
- Hosted by the Foundation for the Indian Trails Library.
-All proceeds benefit the library. Enter the sale through… Official listing: https://indiantrails.libnet.info/event/11209704</description>
-    <pubDate>Sat, 10 Oct 2026 10:00:00 +0000</pubDate>
-    <source url="https://indiantrails.libnet.info/event/11209704">Indian Trails Public Library — Events</source>
-  </item>
+  <description>Upcoming events in Wheeling, soonest first - aggregated automatically from village, library, park district and school-district calendars. This build reached 19 of 26 configured sources. 2 sources are shown from their last update, up to 8 hours ago.</description>
+  <lastBuildDate>Sun, 11 Oct 2026 06:04:45 +0000</lastBuildDate>
   <item>
     <title>Wheeling: Home Maintenance 101</title>
     <link>https://withintenmiles.com/wheeling-60090/#ev-home-maintenance-101-2026-10-11</link>
@@ -456,6 +446,15 @@ Hoopla or another library app?… Official listing: https://indiantrails.libnet.
  Learn to protect your personal information and stay safe online from phishing attempts, pop-ups and other scams.… Official listing: https://indiantrails.libnet.info/event/16642742</description>
     <pubDate>Wed, 21 Oct 2026 19:00:00 +0000</pubDate>
     <source url="https://indiantrails.libnet.info/event/16642742">Indian Trails Public Library — Events</source>
+  </item>
+  <item>
+    <title>Wheeling: My Grown Up And Me: Apple Investigation</title>
+    <link>https://withintenmiles.com/wheeling-60090/#ev-my-grown-up-and-me-apple-investigation-2026-10-22</link>
+    <guid isPermaLink="true">https://withintenmiles.com/wheeling-60090/#ev-my-grown-up-and-me-apple-investigation-2026-10-22</guid>
+    <description>Thursday, October 22 2026 10:00am - 10:45am 
+ Take a closer look at apples before turning them into art supplies. Katie will join us with songs and a story. TR Official listing: https://indiantrails.libnet.info/event/16724239</description>
+    <pubDate>Thu, 22 Oct 2026 10:00:00 +0000</pubDate>
+    <source url="https://indiantrails.libnet.info/event/16724239">Indian Trails Public Library — Events</source>
   </item>
 </channel>
 </rss>
