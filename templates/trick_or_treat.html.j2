@@ -25,17 +25,17 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Trick-or-Treat Hours — {{ towns_label }} — Within Ten</title>
+<title>Trick-or-Treat Hours {{ year }}: {{ title_towns }} — Within Ten</title>
 <meta name="description" content="Official trick-or-treat hours for {{ town_names }}, in one place{% if any_events %}, plus each town's Halloween events{% endif %}.">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Within Ten">
-<meta property="og:title" content="Trick-or-Treat Hours — {{ towns_label }} — Within Ten">
+<meta property="og:title" content="Trick-or-Treat Hours {{ year }}: {{ title_towns }} — Within Ten">
 <meta property="og:description" content="Official trick-or-treat hours for {{ town_names }}, in one place.">
 <meta property="og:image" content="{{ og_image_url }}">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Trick-or-Treat Hours — {{ towns_label }} — Within Ten">
+<meta name="twitter:title" content="Trick-or-Treat Hours {{ year }}: {{ title_towns }} — Within Ten">
 <meta name="twitter:description" content="Official trick-or-treat hours for {{ town_names }}, in one place.">
 <meta name="twitter:image" content="{{ og_image_url }}">
 <link rel="canonical" href="{{ canonical_url }}">
@@ -154,7 +154,7 @@
   <div class="hero-inner">
     <a class="back" href="{{ hub_url }}">&larr; All regions</a>
     <span class="kicker">Seasonal</span>
-    <h1>Trick-or-Treat Hours — {{ towns_label }}</h1>
+    <h1>Trick-or-Treat Hours {{ year }}: {{ title_towns }}</h1>
     <div class="sub">Official hours for {{ town_names }}, in one place, each linked to the village page it came from.</div>
   </div>
 </header>
@@ -176,14 +176,22 @@
     {% endfor %}
   </div>
   <p class="note">Villages typically post official trick-or-treat hours in late September or early October. Hours are added here once a village posts them, and each one links to the village page it came from. A town showing "not yet posted" has no announcement for this year that we could confirm, so check its page directly.</p>
+  {% if trunk_events %}
+  <h2 class="events-heading" id="trunk-or-treat">Trunk-or-treats</h2>
+  <ul class="events">
+    {% for event in trunk_events %}
+    <li><time datetime="{{ event.date_iso }}">{{ event.date_label }}</time> <a href="{{ event.region_url }}#{{ event.anchor_id }}">{{ event.title }}</a> <span class="hours-note">({{ event.region_name }})</span>{% if event.also_at %} <span class="hours-note">Also at: {% for a in event.also_at %}<a href="{{ event.region_url }}#{{ a.anchor_id }}">{{ a.label }}</a>{% if not loop.last %}, {% endif %}{% endfor %}</span>{% endif %}</li>
+    {% endfor %}
+  </ul>
+  {% endif %}
   {% if any_events %}
   <h2 class="events-heading">Halloween events, town by town</h2>
-  {% for entry in entries if entry.events %}
+  {% for entry in town_entries if entry.events %}
   <section class="town" id="{{ entry.region_id }}">
     <h3><a href="{{ entry.region_url }}">{{ entry.region_name }}</a></h3>
     <ul class="events">
       {% for event in entry.events %}
-      <li><time datetime="{{ event.date_iso }}">{{ event.date_label }}</time> <a href="{{ entry.region_url }}#{{ event.anchor_id }}">{{ event.title }}</a></li>
+      <li><time datetime="{{ event.date_iso }}">{{ event.date_label }}</time> <a href="{{ entry.region_url }}#{{ event.anchor_id }}">{{ event.title }}</a>{% if event.also_at %} <span class="hours-note">Also at: {% for a in event.also_at %}<a href="{{ entry.region_url }}#{{ a.anchor_id }}">{{ a.label }}</a>{% if not loop.last %}, {% endif %}{% endfor %}</span>{% endif %}</li>
       {% endfor %}
     </ul>
   </section>

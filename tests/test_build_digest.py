@@ -505,7 +505,7 @@ def test_render_trick_or_treat_page_counts_its_towns_and_shows_notes():
     ]
     entries[0].update(hours="3:00–8:00 PM, Saturday, October 31", note="The Village's standing hours.")
     html = build_digest.render_trick_or_treat_page(entries, datetime.now(timezone.utc))
-    assert "<title>Trick-or-Treat Hours — Five Towns — Within Ten</title>" in html
+    assert "<title>Trick-or-Treat Hours %d: Arlington Heights, Des Plaines, Mount Prospect, Palatine, Wheeling — Within Ten</title>" % datetime.now(timezone.utc).year in html
     assert "Four" not in html
     assert "Des Plaines, Palatine, and Wheeling" in html
     assert "The Village&#39;s standing hours." in html or "The Village's standing hours." in html
@@ -563,7 +563,7 @@ def test_select_halloween_events_caps_each_town():
 
 
 def test_render_trick_or_treat_page_lists_halloween_events_with_markup():
-    event = dict(_halloween_event("Trunk or Treat", "2026-10-24"), town="Arlington Heights", state="IL")
+    event = dict(_halloween_event("Halloween Craft", "2026-10-24"), town="Arlington Heights", state="IL")
     build_digest.prepare_event_cards([{"events": [event]}])
     entries = [
         {"region_id": "arlington-heights-60005", "region_name": "Arlington Heights", "region_url": "https://x/ah/",
@@ -574,11 +574,11 @@ def test_render_trick_or_treat_page_lists_halloween_events_with_markup():
     html = build_digest.render_trick_or_treat_page(entries, datetime.now(timezone.utc))
     assert '<section class="town" id="arlington-heights-60005">' in html
     assert 'id="wheeling-60090"' not in html  # no events, no empty section
-    assert '<a href="https://x/ah/#ev-trunk-or-treat-2026-10-24">Trunk or Treat</a>' in html
+    assert '<a href="https://x/ah/#ev-halloween-craft-2026-10-24">Halloween Craft</a>' in html
     assert "Sat, Oct 24" in html
     payload = json.loads(re.search(r'<script type="application/ld\+json">(.*?)</script>', html, re.S).group(1))
     (ev,) = payload["@graph"]
-    assert ev["url"] == "https://x/ah/#ev-trunk-or-treat-2026-10-24"
+    assert ev["url"] == "https://x/ah/#ev-halloween-craft-2026-10-24"
     assert ev["startDate"] == "2026-10-24T16:00:00-05:00"
     assert ev["location"]["address"]["addressLocality"] == "Arlington Heights"
 
@@ -4717,3 +4717,28 @@ def test_event_json_ld_marks_free_events():
     e = {"title": "Story Time", "url": "https://x/1", "date_iso": "2026-10-04T10:00:00", "tags": ["free"]}
     graph = json.loads(build_digest.build_event_json_ld([{"events": [e]}]))["@graph"]
     assert graph[0]["isAccessibleForFree"] is True
+
+
+def test_select_halloween_events_collapses_same_day_same_title_across_locations():
+    # ROADMAP.md item 272.
+    events = [
+        dict(_halloween_event("Napleton Trunk or Treat at Arlington Heights Kia", "2026-10-24"), anchor_id="a1"),
+        dict(_halloween_event("Napleton Trunk or Treat at Napleton Honda", "2026-10-24"), anchor_id="a2"),
+        dict(_halloween_event("Napleton Trunk or Treat at Napleton Ford", "2026-10-25"), anchor_id="a3"),
+    ]
+    picked = build_digest.select_halloween_events([{"events": events}], date(2026, 10, 6))
+    assert len(picked) == 2
+    assert picked[0]["also_at"] == [{"label": "Napleton Honda", "anchor_id": "a2"}]
+    assert "also_at" not in picked[1]
+
+
+def test_trick_or_treat_page_has_trunk_or_treat_section():
+    trunk = dict(_halloween_event("Trunk or Treat", "2026-10-24"), anchor_id="t1", date_label="Sat, Oct 24")
+    craft = dict(_halloween_event("Halloween Craft", "2026-10-25"), anchor_id="c1", date_label="Sun, Oct 25")
+    entries = [{"region_id": "ah", "region_name": "Arlington Heights", "region_url": "https://x/ah/", "url": "https://v", "hours": None, "note": None, "events": [trunk, craft]}]
+    html = build_digest.render_trick_or_treat_page(entries, datetime(2026, 10, 11, tzinfo=timezone.utc))
+    assert 'id="trunk-or-treat"' in html
+    body = html.split('id="trunk-or-treat"')[1].split("<script")[0]
+    section, town = body.split("Halloween events, town by town")
+    assert "Trunk or Treat" in section and "Halloween Craft" not in section
+    assert "Halloween Craft" in town and "Trunk or Treat" not in town

@@ -14861,7 +14861,8 @@ best-timed audience moment of the year, so this pass is about that.
 
 #### P1 (new)
 
-271. **Send the Daily Herald this year's five-town trick-or-treat hours, by
+271. ✅ **BUILD DONE — owner sends by Oct 15.** `OUTREACH_TEMPLATES.md` §7b added.
+     Original brief: **Send the Daily Herald this year's five-town trick-or-treat hours, by
      Oct 15.** Owner, about 5 minutes, plus the build loop. **Build loop:**
      add `OUTREACH_TEMPLATES.md` §7b, a short note to the Daily Herald's
      community or entertainment desk: *"For your annual trick-or-treat
@@ -14877,7 +14878,8 @@ best-timed audience moment of the year, so this pass is about that.
      pitch (Needs Ryan step 9) will later go to, which makes that pitch
      a second contact rather than a cold one.
 
-272. **Make `/trick-or-treat/` match what people type, and tidy its
+272. ✅ **DONE.** Title/H1/description carry the year and sorted town names (year from `now`); `#trunk-or-treat` section above the town lists; same-day same-title-before-" at " cards collapse into one line with an "Also at:" list; tests added.
+     Original brief: **Make `/trick-or-treat/` match what people type, and tidy its
      trunk-or-treats.** Build loop, `trick_or_treat.html.j2` and its
      builder:
 
@@ -14901,7 +14903,8 @@ best-timed audience moment of the year, so this pass is about that.
 
 #### P2 (new)
 
-273. **Add car dealerships to the sponsor prospect list, starting with
+273. ✅ **BUILD DONE — owner sends this month, after the event is live.** `OUTREACH_TEMPLATES.md` §15 added, with the free-listing guardrail.
+     Original brief: **Add car dealerships to the sponsor prospect list, starting with
      the ones already hosting events.** Build loop: a §15 in
      `OUTREACH_TEMPLATES.md`, *"Your trunk-or-treat is on our Halloween
      page"*, sent **after** the event appears on the site. It says the
