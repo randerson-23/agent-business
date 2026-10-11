@@ -355,9 +355,11 @@ that limit.
 
 **Open decisions (at most three):**
 
-- **Free Event Promo for nonprofit fundraisers** (item 240): one a month
-  per service club, to seed the first sponsor listings and testimonials.
-  A pricing exception.
+- **A $50 Meta ads test** (item 276, about 30 min setup): $5/day for 10
+  days, feed placements only, aimed at the five towns' ZIP codes. Local
+  newsletters report $0.23–1 per subscriber. Success means under $1 per
+  *confirmed* subscriber. Needs a minimal Facebook Page. This replaces
+  the free nonprofit Event Promo (item 240), which moves to Parked.
 - **Substack mirror pilot, 8 weeks** (item 261): about 5 minutes a week
   to paste each issue into a free Substack edition, to test whether
   Substack's discovery network does for this list what it did for Don't
@@ -369,13 +371,14 @@ that limit.
   AI-analytics proxy (item 232) in this list, which moves to Parked.
 
 **Parked (spend decisions; not competing with the above):**
+Free Event Promo for nonprofit fundraisers (item 240, once there is an
+audience to promote to);
 Perplexity publisher programme / Comet Plus application (item 231,
 one form, uncertain odds);
 Cloudflare proxy for AI-bot analytics (item 232, measurement only, and
 it must be paired with explicitly allowing AI crawlers); Chamber of
 Commerce membership (item 153); Illinois DBA filing, the
-blocker to a Nextdoor Business Page (item 154); Meta geo-targeted ads
-(item 78); Peachjar school e-flyers (item 211, unverified, same slot as
+blocker to a Nextdoor Business Page (item 154); Peachjar school e-flyers (item 211, unverified, same slot as
 the press pitch).
 
 **Whenever convenient:** a real trademark clearance search before any
@@ -3179,7 +3182,7 @@ This pass went looking at distribution.
 
 #### P2 (new)
 
-78. **Meta geo-targeted ads — a bounded test, and the first thing here
+78. ⬆️ **Re-ranked to an open decision as item 276 (sixty-ninth pass): its "only after sends happen" gate is met.** **Meta geo-targeted ads — a bounded test, and the first thing here
     that costs money.** Local targeting reportedly buys subscribers at
     $0.25–0.50 each, so $50 is roughly 100–200 local addresses: enough to
     answer "does anyone in these four towns actually want this" far faster
@@ -15009,6 +15012,96 @@ three still on prior-year dates) and **the Daily Herald's annual
 tree-lighting roundup** as a second timely press contact. The
 design/UX angle is **the welcome email**, the most-opened email any
 subscriber receives.
+
+
+#### Research pass 2026-10-11, evening (sixty-ninth pass)
+
+The build loop shipped items 258 (per-town `/holiday/` pages with free
+holiday events and paid listings), 274 (the cross-town `/holidays/` page
+with tree-lighting dates, the seasonal email line and outreach §7c) and
+275 (`WELCOME_EMAIL.md`). That is the whole holiday plan, two weeks
+early. The site now has more to offer than people to offer it to.
+`send_history.json` shows the Oct 8 send went to **1 recipient with 0
+opens**. That send left before the owner turned tracking on (Oct 9), so
+it measured nothing. **The Oct 14 send is the first real open
+measurement.** That one recipient is very likely the owner. This pass
+looks at the one growth channel the plan has deliberately left unused:
+paying for subscribers.
+
+| Angle | What it is / what we found | Why it matters here |
+|---|---|---|
+| **Facebook/Instagram ads for local newsletters, 2025–26 reports** | **Marin Buzz** (local newsletter, Nieman Lab roundup, Feb 2025): about **$0.23 per subscriber**, which it credits to hyper-local targeting. **Arlington Bagel** (Billy Howell, Local Media HQ): grew to **about 3,500 subscribers** mainly on Facebook ads. Costs started at **$5–6 per subscriber** and fell to **under $1** after tuning; the biggest single fix was **turning off automatic placements**. General 2026 benchmarks: about $0.70 per click for traffic campaigns. All of this is anecdote, not data | Item 78 (parked since pass 19) estimated $0.25–0.50 per subscriber and was gated on "only after sends actually happen". **Sends now happen every week**, deliverability is set up (DMARC, verified domain, welcome email), and the site has a page for every kind of visit. At $0.25–1.00, **$50 buys roughly 50–200 local subscribers**. That is the difference between "1 subscriber, probably the owner" and item 266's 50-subscriber floor for showing an audience number to sponsors. It moves from Parked to an open decision (item 276) |
+| **Mom/family Instagram accounts as a channel** | Searching found **no identifiable northwest-suburbs family-events Instagram accounts**, only Macaroni KID Schaumburg (which covers Arlington Heights, Elk Grove Village, Rolling Meadows and Schaumburg), Kidlist, and the Chicago Northwest CVB's annual Family Day at Woodfield Mall | **No item.** There is no obvious local influencer to barter with, which leaves paid ads and the press as the fast channels. Macaroni KID Schaumburg is already in the competitor table |
+| **Where a paid or press visitor lands (design/UX)** | Today an ad or a press mention would point at the homepage, `/this-weekend/` or a region page: full sites with navigation, filters, maps and 25–286 cards, where the signup is one block among many (item 251). Landing-page conversion benchmarks gathered in pass 61 put **dedicated single-purpose pages at about 5–15%**, well above inline forms on content pages (1–4%) | When every visit costs money, the page it lands on decides the price per subscriber more than the ad does. Arlington Bagel's lesson, that settings matter more than spend, applies to the page too (item 277) |
+
+#### P1, owner decision (re-ranked from Parked)
+
+276. **A bounded $50 Meta ads test, now that the sends are real
+     (supersedes item 78's gate).** Owner, about 30 minutes to set up,
+     then nothing.
+
+     - **Setup:** a Facebook Page for Within Ten, which ads require (it
+       can stay minimal), and a Meta ad account with a card.
+     - **Campaign:** "Leads" or "Traffic to landing page", **$5/day for
+       10 days**. Target the five towns' ZIP codes (60004/60005, 60016,
+       60056, 60067, 60090) with a few miles' radius, ages 25–54.
+       **Placements: Facebook and Instagram feeds only**, not automatic
+       (Arlington Bagel's single biggest fix). Two images, made by the
+       build loop (item 278).
+     - **Success line, written down before spending:** under **$1 per
+       *confirmed* subscriber**, counted from item 252's
+       `utm_source=meta` tag in Buttondown, not from Meta's own clicks.
+       Above $3, stop and keep the lesson.
+     - **Why now and not before:** item 78's own condition, "only after
+       the sends actually happen", has been met for four weeks. The plan's
+       zero-spend rule is the owner's to break, and this is the smallest
+       test that answers a real question.
+
+     This takes item 240's place among the three open decisions. Item
+     240 (free Event Promo for nonprofits) moves to Parked, because a free
+     promotion only has value once there is an audience to promote to.
+
+#### P1 (new)
+
+277. **A `/join/` landing page for paid and press traffic.** Design/UX,
+     build loop. A single-purpose page, built every run, with:
+
+     - one headline (*"What's on this weekend in your town, every
+       Thursday morning"*);
+     - **this weekend's three "Don't miss" picks**, the same
+       `pick_email_top_picks()` choice as the email, rendered as real
+       cards, so a visitor sees the product rather than a description;
+     - **the signup form** (item 251's partial), with a **town picker**
+       whose value fills item 252's `town:` tag;
+     - one line of trust: *"Free. One email a week. Unsubscribe anytime.
+       Pulled from your village, library and park district."*
+
+     No navigation bar, no filters, no map. `noindex`, since it is for
+     traffic sent on purpose, not search. It reads `utm_source` and
+     `utm_campaign` from the URL into the form's hidden fields, so Meta,
+     the Daily Herald and outreach links are each counted. Tests: the
+     three picks render, the form appears exactly once, the UTM values
+     pass through, and the page carries `noindex`.
+
+#### P2 (new)
+
+278. **Weekly ad and social images, from the share-card pipeline.**
+     Build loop: extend item 216's share card (still open) to render
+     **1080×1080** and **1080×1350** variants of *"This weekend: 3 picks
+     near you"*, using the email's town colours and emoji, to
+     `docs/og/weekly-square.png` and `weekly-portrait.png` every build.
+     The owner uploads them to the ad and swaps them weekly if the test
+     continues. Rendering stays in Python (Pillow, already used for the
+     app icons), with no external service. If item 216 ships first, this
+     is two more sizes. If this ships first, it *is* item 216, at 1000×1500
+     for Pinterest (item 253) as well.
+
+Competitors reviewed this pass: **local newsletters that grew on
+Facebook ads** (Marin Buzz at about $0.23 per subscriber; Arlington Bagel
+to about 3,500 subscribers, under $1 each after tuning placements), and
+**northwest-suburbs family Instagram accounts** (none found; not a
+channel). The design/UX angle is **a single-purpose landing page for
+traffic someone pays for**.
 
 
 ## Working agreements for autonomous iteration
