@@ -259,6 +259,37 @@ Thanks for your time either way,
 [Your name]
 Within Ten — https://withintenmiles.com/
 
+## 7b. Daily Herald — trick-or-treat hours for your annual list (ROADMAP.md Phase 11 #271)
+
+Send by **Oct 15**, ahead of the paper's usual mid-October list. This is
+a small factual note, not a pitch: it asks for nothing beyond the hours
+being useful, and it makes the later full press pitch (§7) a second
+contact rather than a cold one. Paste only hours that `/trick-or-treat/`
+shows as confirmed, with the village link beside each. A town showing
+"not yet posted" or "no official hours" is passed on exactly that way;
+never fill a gap from memory.
+
+Subject: 2026 trick-or-treat hours for [Arlington Heights, Mount Prospect, Palatine, Wheeling, Des Plaines], each linked to the village's announcement
+
+Hi [Desk / editor name],
+
+For your annual trick-or-treat times list: I've gathered this year's
+hours for five northwest-suburb towns in one place, each linked to the
+village's own announcement.
+
+[Paste the table from https://withintenmiles.com/trick-or-treat/ —
+town, hours, source link. Keep the "no official hours" wording for Des
+Plaines.]
+
+The page is https://withintenmiles.com/trick-or-treat/ and it updates
+if a village changes anything. If you spot something wrong, tell me and
+I'll fix it the same day. Use any of it you like; a credit link is
+welcome but not required.
+
+Thanks,
+[Your name]
+Within Ten — https://withintenmiles.com/
+
 ## 8. Trade a mention for a mention (ROADMAP.md Phase 11 #94)
 
 Send to 3–5 local businesses a month — the same dentist/ice cream
@@ -607,6 +638,42 @@ No subscription, no renewal, just that one placement.
 
 Want in? Just send me a line or two on your offer and I'll have it up
 before the weekend.
+
+Thanks,
+[Your name]
+Within Ten — https://withintenmiles.com/
+
+## 15. Car dealership — "Your trunk-or-treat is on our Halloween page" (ROADMAP.md Phase 11 #273)
+
+Send **after** the event appears on `/trick-or-treat/` (check the live
+page first, and put its link in the email). Dealerships hosting
+trunk-or-treats have already shown they pay for local reach. The ask is
+the $20 Event Promo: featured first in that town's weekend email and
+page for the event's weekend.
+
+**Guardrail, and the email says it:** the free listing stays whether or
+not they buy. The site never removes, demotes or holds back an event to
+create a sale. The promotion test is the same as everywhere else: a
+real, dated, public event with the time and place on the listing it
+links to. One promotion per town per day.
+
+Subject: Your trunk-or-treat is on our [town] Halloween page
+
+Hi [Name],
+
+I run **Within Ten** (https://withintenmiles.com/), a free weekly guide
+to what's happening in the northwest suburbs. Your trunk-or-treat on
+[date] is already listed, free, on our Halloween page:
+[live link]. That listing stays up whatever you decide.
+
+If you'd like more families to see it, for $20 I can feature it first
+on the [town] page and at the top of that weekend's list and email,
+labelled "Presented by [dealership]". Here is what that looks like:
+https://withintenmiles.com/sponsor/
+
+Reply with anything you'd like corrected on the listing and, if you want
+the feature, the one line to put under the title. I'll confirm your day
+is free before taking payment.
 
 Thanks,
 [Your name]

@@ -1299,7 +1299,25 @@ def select_halloween_events(blocks: list[dict], local_today: date) -> list[dict]
             if start <= day <= end and HALLOWEEN_TITLE.search(event["title"]):
                 picked.append(event)
     picked.sort(key=lambda e: e["date_iso"])
-    return picked[:HALLOWEEN_EVENTS_PER_TOWN]
+    # ROADMAP.md item 272: one dealer's trunk-or-treat at four lots is four
+    # cards on the source calendar; here it is one line linking each location.
+    collapsed: list[dict] = []
+    seen: dict[tuple, dict] = {}
+    for event in picked:
+        head, sep, place = event["title"].partition(" at ")
+        key = (event["date_iso"][:10], head.strip().lower())
+        first = seen.get(key)
+        if first is None:
+            seen[key] = event = dict(event)
+            collapsed.append(event)
+        else:
+            first.setdefault("also_at", []).append(
+                {"label": place.strip() if sep and place.strip() else "another location", "anchor_id": event.get("anchor_id")}
+            )
+    return collapsed[:HALLOWEEN_EVENTS_PER_TOWN]
+
+
+TRUNK_OR_TREAT = re.compile(r"trunk[- ]?or[- ]?treat", re.IGNORECASE)
 
 
 def build_halloween_signup_headline(now: datetime) -> str:
@@ -1343,8 +1361,27 @@ def render_trick_or_treat_page(
     # ROADMAP.md item 218: the title said "Four Towns" over five entries -
     # same hardcoded-count bug item 170 fixed elsewhere.
     count = len(entries)
+    # ROADMAP.md item 272: trunk-or-treats get their own section (a separate
+    # query); the per-town lists keep the rest.
+    trunk_events = sorted(
+        (
+            {**e, "region_name": entry["region_name"], "region_url": entry["region_url"]}
+            for entry in entries
+            for e in entry.get("events") or []
+            if TRUNK_OR_TREAT.search(e["title"])
+        ),
+        key=lambda e: e["date_iso"],
+    )
+    town_entries = [
+        {**entry, "events": [e for e in entry.get("events") or [] if not TRUNK_OR_TREAT.search(e["title"])]}
+        for entry in entries
+    ]
     return template.render(
         entries=entries,
+        town_entries=town_entries,
+        trunk_events=trunk_events,
+        year=now.year,
+        title_towns=", ".join(sorted(e["region_name"] for e in entries)),
         towns_label=f"{_COUNT_WORDS.get(count, str(count))} Towns" if count != 1 else "One Town",
         town_names=_join_names([e["region_name"] for e in entries]),
         any_events=any(e.get("events") for e in entries),
