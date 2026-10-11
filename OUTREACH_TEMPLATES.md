@@ -290,6 +290,36 @@ Thanks,
 [Your name]
 Within Ten — https://withintenmiles.com/
 
+## 7c. Daily Herald — tree lighting dates for your annual roundup (ROADMAP.md Phase 11 #274)
+
+The tree-lighting version of §7b. Send by **Nov 12**, ahead of the
+paper's usual roundup (Nov 19 in 2024 and 2025). Paste only the dates
+`/holidays/` shows as confirmed, each with its source link; a town that
+shows "not yet posted" is passed on exactly that way. Never fill a gap
+from memory or from a search result: those regularly show last year's
+date. Asks for nothing beyond the dates being useful; a credit link is
+welcome, not required.
+
+Subject: 2026 tree lighting dates for [Arlington Heights, Palatine, ...], each linked to the town's own listing
+
+Hi [Desk / editor name],
+
+For your annual tree-lighting roundup: here are this year's dates for
+the northwest-suburb towns I cover, each linked to the town's own
+listing.
+
+[Paste the table from https://withintenmiles.com/holidays/ — town,
+date and time, source link. Keep "not yet posted" for any town without
+a 2026 date.]
+
+The page is https://withintenmiles.com/holidays/ and it updates when a
+town posts or changes anything. If you spot a mistake, tell me and I'll
+fix it the same day. Use any of it you like.
+
+Thanks,
+[Your name]
+Within Ten — https://withintenmiles.com/
+
 ## 8. Trade a mention for a mention (ROADMAP.md Phase 11 #94)
 
 Send to 3–5 local businesses a month — the same dentist/ice cream

@@ -4780,3 +4780,36 @@ def test_is_holiday_season_and_sitemap():
     urls = build_digest.collect_sitemap_urls([{"path": "a/", "holiday": True}, {"path": "b/", "holiday": False}])
     assert build_digest.SITE_BASE_URL + "a/holiday/" in urls
     assert build_digest.SITE_BASE_URL + "b/holiday/" not in urls
+
+
+def test_prepare_tree_lighting_computes_weekday_and_rejects_old_years():
+    # ROADMAP.md item 274.
+    cfg = {"tree_lighting": {"url": "https://v", "date": "2026-11-21", "time": "4–7 PM", "place": "Towne Square"}}
+    assert build_digest.prepare_tree_lighting(cfg, 2026)["label"] == "Saturday, November 21, 4–7 PM, Towne Square"
+    assert build_digest.prepare_tree_lighting(cfg, 2027)["label"] is None  # last year's date is never shown
+    assert build_digest.prepare_tree_lighting({"tree_lighting": {"url": "https://v", "date": None}}, 2026)["label"] is None
+    assert build_digest.prepare_tree_lighting({"tree_lighting": {"date": "2026-11-21"}}, 2026) is None
+    assert build_digest.prepare_tree_lighting({}, 2026) is None
+
+
+def test_every_configured_tree_lighting_date_is_a_real_weekday_in_the_current_season():
+    import glob, yaml
+    for path in glob.glob(str(build_digest.CONFIG_DIR / "regions" / "*.yaml")):
+        block = (yaml.safe_load(open(path)) or {}).get("tree_lighting")
+        assert block and block.get("url"), path
+        if block.get("date"):
+            assert str(block["date"]).startswith("2026-1"), path  # Nov/Dec only
+
+
+def test_render_holidays_page_states_dates_and_not_posted():
+    entries = [
+        {"region_id": "p", "region_name": "Palatine", "region_url": "https://x/p/", "holiday_url": "https://x/p/holiday/",
+         "tree": {"url": "https://v/p", "label": "Saturday, November 21, 4–7 PM", "date_iso": "2026-11-21"}, "events": []},
+        {"region_id": "w", "region_name": "Wheeling", "region_url": "https://x/w/", "holiday_url": "https://x/w/holiday/",
+         "tree": {"url": "https://v/w", "label": None, "date_iso": None}, "events": []},
+    ]
+    html = build_digest.render_holidays_page(entries, datetime(2026, 10, 11, tzinfo=timezone.utc))
+    assert "<title>Holiday Tree Lightings 2026 — Palatine and Wheeling — Within Ten</title>" in html
+    assert '<a href="https://v/p">Saturday, November 21, 4–7 PM</a>' in html
+    assert "Not yet posted for 2026" in html and "https://v/w" in html
+    assert "Holiday events, town by town" not in html

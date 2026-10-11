@@ -14948,7 +14948,7 @@ one email every new subscriber opens.
 
 #### P1 (new)
 
-274. **Open the holiday season with the confirmed tree lightings, and
+274. ✅ **DONE — owner sends §7c by Nov 12.** `/holidays/` shipped with per-region `tree_lighting:` config (Arlington Heights Fri Nov 27 and Palatine Sat Nov 21 confirmed; Mount Prospect, Des Plaines, Wheeling "not yet posted"; weekday computed from the ISO date, other years never shown), sitemap entry, footer link in season, and a seasonal email line Nov 1–Dec 23. `OUTREACH_TEMPLATES.md` §7c added. Not done: URL probes for the three unposted towns (no confirmed event-page URLs to probe). **Open the holiday season with the confirmed tree lightings, and
      plan the Daily Herald note.** Build loop:
 
      - **Update item 220's table**: Palatine ✅ Sat **Nov 21, 2026**,

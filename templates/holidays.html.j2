@@ -1,0 +1,185 @@
+{% from "_signup.html.j2" import signup_css, signup_form, signup_runtime -%}
+{# ROADMAP.md item 274: cross-town tree lightings and holiday events. A confirmed date is built from the region config's ISO `date` (weekday computed), and anything not posted for this year stays honestly "not yet posted". Same self-contained shape as trick_or_treat.html.j2. #}
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Holiday Tree Lightings {{ year }} — {{ town_names }} — Within Ten</title>
+<meta name="description" content="Holiday tree lighting dates for {{ town_names }} in {{ year }}, each linked to the town's own listing{% if any_events %}, plus holiday events from their calendars{% endif %}.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Within Ten">
+<meta property="og:title" content="Holiday Tree Lightings {{ year }} — {{ town_names }} — Within Ten">
+<meta property="og:description" content="Holiday tree lighting dates for {{ town_names }} in {{ year }}, each linked to the town's own listing.">
+<meta property="og:image" content="{{ og_image_url }}">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Holiday Tree Lightings {{ year }} — {{ town_names }} — Within Ten">
+<meta name="twitter:description" content="Holiday tree lighting dates for {{ town_names }} in {{ year }}, each linked to the town's own listing.">
+<meta name="twitter:image" content="{{ og_image_url }}">
+<link rel="canonical" href="{{ canonical_url }}">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%23201e1d'/%3E%3Ctext x='50' y='66' font-family='Arial,sans-serif' font-weight='800' font-size='58' fill='%23ec3013' text-anchor='middle'%3EW%3C/text%3E%3C/svg%3E">
+<link rel="manifest" href="{{ hub_url }}manifest.webmanifest">
+<link rel="apple-touch-icon" href="{{ hub_url }}icons/icon-192.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;800&display=optional">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;800&display=optional" rel="stylesheet" media="print" onload="this.media='all'">
+<noscript><link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;800&display=optional" rel="stylesheet"></noscript>
+<style>
+  @view-transition {
+    navigation: auto;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    ::view-transition-group(*),
+    ::view-transition-old(*),
+    ::view-transition-new(*) {
+      animation: none !important;
+    }
+  }
+  :root {
+    /* ROADMAP.md redesign (2026-09-21): "Modernist" system - see
+       region.html.j2's own copy of this block for the full rationale. */
+    --bg: #f3f2f2;
+    --card: #eae9e9;
+    --ink: #201e1d;
+    --muted: #605d5d;
+    --accent: #ec3013;
+    --accent-soft: #cc280d;
+    --accent-2-text: #ae1800;
+    --border: color-mix(in srgb, var(--ink) 40%, transparent);
+    --radius-lg: 0px;
+    --shadow-sm: none;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #171615;
+      --card: #232120;
+      --ink: #f3f2f2;
+      --muted: #a9a5a5;
+      --accent: #ff563c;
+      --accent-soft: #ff563c;
+      --accent-2-text: #ff9783;
+      --border: color-mix(in srgb, var(--ink) 30%, transparent);
+    }
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'Archivo', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+  h1, h2 { font-family: 'Archivo', system-ui, sans-serif; font-weight: 800; letter-spacing: -0.02em; }
+  .wrap { max-width: 680px; margin: 0 auto; padding: 0 20px 64px; }
+  .hero {
+    background: var(--bg);
+    color: var(--ink);
+    padding: 20px 20px 28px;
+    margin-bottom: 0;
+    border-bottom: 2px solid var(--border);
+  }
+  .hero-inner { max-width: 680px; margin: 0 auto; }
+  a.back { color: var(--muted); text-decoration: none; font-size: 12px; font-weight: 800; letter-spacing: 0.06em; text-transform: uppercase; }
+  a.back:hover { color: var(--accent-2-text); }
+  .kicker { font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; font-size: 12px; color: var(--accent-2-text); }
+  .hero h1 { margin: 10px 0 8px; font-size: 30px; color: var(--ink); }
+  .hero .sub { color: var(--muted); font-size: 15px; max-width: 560px; }
+  .entry-list { display: flex; flex-direction: column; gap: 0; margin: 24px 0; }
+  .entry {
+    background: none;
+    border: 0;
+    border-bottom: 1px solid var(--border);
+    border-radius: 0;
+    box-shadow: none;
+    padding: 16px 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 14px;
+    flex-wrap: wrap;
+  }
+  .entry:last-child { border-bottom: 0; }
+  .entry .region a { color: var(--ink); font-weight: 700; text-decoration: none; }
+  .entry .region a:hover { color: var(--accent-2-text); }
+  .entry .hours { font-weight: 700; color: var(--accent-2-text); font-size: 14.5px; text-align: right; }
+  .entry .hours a { color: inherit; text-decoration: none; }
+  .entry .hours a:hover { text-decoration: underline; }
+  .entry .hours-note { display: block; color: var(--muted); font-weight: 400; font-size: 13px; }
+  .entry .not-posted { color: var(--muted); font-size: 13.5px; text-align: right; }
+  .entry .not-posted a { color: var(--accent-2-text); font-weight: 700; text-decoration: none; }
+  .entry .not-posted a:hover { text-decoration: underline; }
+  .note { color: var(--muted); font-size: 13.5px; margin: 24px 0; }
+  .events-heading { font-size: 22px; margin: 40px 0 0; }
+  .town h3 { font-size: 17px; margin: 24px 0 8px; }
+  .town h3 a { color: var(--ink); text-decoration: none; }
+  .town h3 a:hover { color: var(--accent-2-text); }
+  .events { list-style: none; margin: 0; padding: 0; }
+  .events li { padding: 6px 0; border-bottom: 1px solid var(--border); font-size: 14.5px; }
+  .events li:last-child { border-bottom: 0; }
+  .events time { display: inline-block; min-width: 92px; color: var(--muted); font-weight: 600; }
+  .events a { color: var(--ink); text-decoration: none; }
+  .events a:hover { color: var(--accent-2-text); text-decoration: underline; }
+  a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+  footer { text-align: center; color: var(--muted); font-size: 12.5px; margin-top: 32px; border-top: 2px solid var(--border); padding-top: 18px; }
+  footer a { color: var(--accent-2-text); font-weight: 700; }
+</style>
+{{ signup_css() }}
+</head>
+<body>
+<header class="hero">
+  <div class="hero-inner">
+    <a class="back" href="{{ hub_url }}">&larr; All regions</a>
+    <span class="kicker">Holidays</span>
+    <h1>Holiday Tree Lightings {{ year }}: {{ town_names }}</h1>
+    <div class="sub">Tree lighting dates for {{ town_names }}, each linked to the listing it came from.</div>
+  </div>
+</header>
+
+<div class="wrap">
+  <main>
+  <div class="entry-list">
+    {% for entry in entries %}
+    <div class="entry">
+      <span class="region"><a href="{{ entry.holiday_url }}">{{ entry.region_name }}</a></span>
+      {% if entry.tree.label %}
+      <span class="hours"><a href="{{ entry.tree.url }}">{{ entry.tree.label }}</a></span>
+      {% else %}
+      <span class="not-posted">Not yet posted for {{ year }} — <a href="{{ entry.tree.url }}">check the town's page</a></span>
+      {% endif %}
+    </div>
+    {% endfor %}
+  </div>
+  <p class="note">Towns usually post their tree lighting in the fall. A date appears here once the town's own {{ year }} listing names it, and each one links to that listing. A town showing "not yet posted" has no {{ year }} announcement we could confirm, so check its page directly. We never show a date from a previous year.</p>
+  {% if any_events %}
+  <h2 class="events-heading">Holiday events, town by town</h2>
+  {% for entry in entries if entry.events %}
+  <section class="town" id="{{ entry.region_id }}">
+    <h3><a href="{{ entry.region_url }}">{{ entry.region_name }}</a></h3>
+    <ul class="events">
+      {% for event in entry.events %}
+      <li><time datetime="{{ event.date_iso }}">{{ event.date_label }}</time> <a href="{{ entry.region_url }}#{{ event.anchor_id }}">{{ event.title }}</a>{% if event.also_at %} <span class="hours-note">Also at: {% for a in event.also_at %}<a href="{{ entry.region_url }}#{{ a.anchor_id }}">{{ a.label }}</a>{% if not loop.last %}, {% endif %}{% endfor %}</span>{% endif %}</li>
+      {% endfor %}
+    </ul>
+  </section>
+  {% endfor %}
+  <p class="note">Every event above comes from that town's library, park district, or village calendar, and links to its listing on the town's page.</p>
+  {% endif %}
+  {{ signup_form(newsletter, "newsletter-signup", "bd-email", "town:all", "holidays", "Get the weekend's events by email on Thursday.") }}
+  {{ signup_runtime(newsletter) }}
+  </main>
+
+  <footer>
+    Curious what else is happening? <a href="{{ hub_url }}">See a live region</a>.
+    <a href="{{ preferred_source_url }}" rel="noopener">Add us as a preferred source on Google</a>.
+    <br>Generated {{ generated_at }}.
+  </footer>
+</div>
+{% if analytics and analytics.configured %}
+<script data-goatcounter="https://{{ analytics.goatcounter_code }}.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+{% endif %}
+</body>
+</html>

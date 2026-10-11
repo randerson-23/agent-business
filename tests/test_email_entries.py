@@ -147,7 +147,8 @@ def test_seasonal_link_follows_its_send_window():
     assert link(at(10, 12))["url"].startswith(build_digest.SITE_BASE_URL + "trick-or-treat/")
     assert link(at(10, 14)) and link(at(10, 21)) and link(at(10, 28))  # the three Halloween sends
     assert link(at(10, 31))
-    assert link(at(11, 1)) is None
+    assert link(at(11, 1))["url"].startswith(build_digest.SITE_BASE_URL + "holidays/")  # item 274
+    assert link(at(12, 23)) and link(at(12, 24)) is None
     assert link(at(7, 4)) is None
 
 
