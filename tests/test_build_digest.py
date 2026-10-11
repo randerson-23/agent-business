@@ -4742,3 +4742,41 @@ def test_trick_or_treat_page_has_trunk_or_treat_section():
     section, town = body.split("Halloween events, town by town")
     assert "Trunk or Treat" in section and "Halloween Craft" not in section
     assert "Halloween Craft" in town and "Trunk or Treat" not in town
+
+
+def test_build_holiday_listings_labels_and_expires():
+    # ROADMAP.md item 258.
+    cfg = {"regions": {"r1": {"holiday_listings": [
+        {"name": "Bookshop", "url": "https://b", "category": "Bookstore", "address": "10 Main", "line": "Gift wrap."},
+        {"name": "Old Shop", "url": "https://o", "until": "2026-11-10"},
+        {"name": "", "url": "https://x"},
+        {"name": "No Link"},
+    ]}}}
+    listings = build_digest.build_holiday_listings(cfg, "r1", date(2026, 11, 20))
+    assert [l["title"] for l in listings] == ["Bookshop"]
+    assert listings[0]["detail"] == "Local business listing · Bookstore · 10 Main — Gift wrap."
+    assert [l["title"] for l in build_digest.build_holiday_listings(cfg, "r1", date(2026, 11, 5))] == ["Bookshop", "Old Shop"]
+    assert build_digest.build_holiday_listings(cfg, "other", date(2026, 11, 5)) == []
+    # Past December 31 of the listing year: default expiry drops it.
+    assert build_digest.build_holiday_listings(cfg, "r1", date(2027, 1, 2)) == []
+
+
+def test_select_holiday_events_window_and_titles():
+    events = [
+        _halloween_event("Village Tree Lighting", "2026-11-21"),
+        _halloween_event("Santa Breakfast", "2026-12-05"),
+        _halloween_event("Toddler Storytime", "2026-11-22"),
+        _halloween_event("Holiday Market", "2026-11-03"),  # already past
+        _halloween_event("Holiday Concert", "2027-01-05"),  # next year
+        _halloween_event("Halloween Party", "2026-11-14"),
+    ]
+    picked = build_digest.select_holiday_events([{"events": events}], date(2026, 11, 10))
+    assert [e["title"] for e in picked] == ["Village Tree Lighting", "Santa Breakfast"]
+
+
+def test_is_holiday_season_and_sitemap():
+    assert build_digest.is_holiday_season(datetime(2026, 11, 1)) and build_digest.is_holiday_season(datetime(2026, 12, 31))
+    assert not build_digest.is_holiday_season(datetime(2026, 10, 31))
+    urls = build_digest.collect_sitemap_urls([{"path": "a/", "holiday": True}, {"path": "b/", "holiday": False}])
+    assert build_digest.SITE_BASE_URL + "a/holiday/" in urls
+    assert build_digest.SITE_BASE_URL + "b/holiday/" not in urls

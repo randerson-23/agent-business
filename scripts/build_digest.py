@@ -1629,6 +1629,70 @@ def build_business_directory(sponsors_cfg: dict, region_id: str) -> list[dict]:
     return directory
 
 
+# ROADMAP.md item 258: the per-town /holiday/ page, live November 1 - December 31
+# (or earlier once a paid listing exists, so an early-bird buyer can see
+# what they bought). Paid listings are labelled; the "Holiday events"
+# half is free and comes from the town's own feeds.
+HOLIDAY_TITLE = re.compile(
+    r"\b(tree[- ]lighting|christmas|holiday|santa|menorah|hanukkah|chanukah|kris kringle|"
+    r"winter wonderland|reindeer|small business saturday|cookie walk|gingerbread|snow ?flake)\b",
+    re.IGNORECASE,
+)
+HOLIDAY_EVENTS_CAP = 30
+
+
+def is_holiday_season(now: datetime) -> bool:
+    return now.month in (11, 12)
+
+
+def build_holiday_listings(sponsors_cfg: dict, region_id: str, local_today: date) -> list[dict]:
+    """Paid "Local business listing" cards for a region's /holiday/ page, from
+    `holiday_listings:` in config/sponsors.yaml (ROADMAP.md item 258). An entry
+    needs `name` and `url`; optional `line`, `address`, `category`, and `until`
+    (the last day it runs; default December 31). Expired entries drop off."""
+    entries = sponsors_cfg.get("regions", {}).get(region_id, {}).get("holiday_listings") or []
+    listings = []
+    for entry in entries:
+        name, url = str(entry.get("name") or "").strip(), str(entry.get("url") or "").strip()
+        if not name or not url:
+            continue
+        until = _parse_promo_day(entry.get("until"))
+        # No `until`: runs through December 31, and never shows January
+        # through September, so last year's entry cannot reappear.
+        if until is None and local_today.month < 10:
+            continue
+        if until is not None and until < local_today:
+            continue
+        parts = [p for p in (entry.get("category"), entry.get("address")) if p]
+        detail = "Local business listing" + (" · " + " · ".join(str(p) for p in parts) if parts else "")
+        if entry.get("line"):
+            detail += f" — {str(entry['line']).strip()}"
+        listings.append(
+            {"title": name, "detail": detail, "url": url, "date": None, "tags": [], "tag_badges": [], "ics_href": None}
+        )
+    return listings
+
+
+def select_holiday_events(blocks: list[dict], local_today: date) -> list[dict]:
+    """A town's dated holiday events from today through December 31, soonest
+    first. Title match only, like select_halloween_events."""
+    start = max(local_today, date(local_today.year, 11, 1))
+    end = date(local_today.year, 12, 31)
+    picked = []
+    for block in blocks:
+        for event in block.get("events", []):
+            if not (event.get("title") and event.get("url") and event.get("date_iso")):
+                continue
+            try:
+                day = datetime.fromisoformat(event["date_iso"]).date()
+            except ValueError:
+                continue
+            if start <= day <= end and HOLIDAY_TITLE.search(event["title"]):
+                picked.append(dict(event))
+    picked.sort(key=lambda e: e["date_iso"])
+    return picked[:HOLIDAY_EVENTS_CAP]
+
+
 def _parse_promo_day(value) -> date | None:
     """A promotion's YYYY-MM-DD field. YAML turns an unquoted date into a
     date object, so accept that as well as a string."""
@@ -2429,6 +2493,7 @@ def render_region_page(
         analytics=analytics,
         og_image_url=SITE_BASE_URL + "og/" + region["id"] + ".png",
         trick_or_treat_in_season=is_trick_or_treat_season(now),
+        holiday_in_season=is_holiday_season(now),
         build_scope_end_iso=build_scope_end_iso,
         stale_empty_message=stale_empty_message,
         empty_follow_url=empty_follow_url,
@@ -2766,6 +2831,8 @@ def collect_sitemap_urls(region_summaries: list[dict]) -> list[str]:
             base + "directory/",
             base + "things-to-do/",
         ]
+        if r.get("holiday"):
+            urls.append(base + "holiday/")
         if r.get("guide_slugs"):
             urls.append(base + "guides/")
             urls += [base + f"guides/{slug}/" for slug in r["guide_slugs"]]
@@ -4659,6 +4726,39 @@ def main() -> None:
         (directory_dir / "index.html").write_text(directory_html, encoding="utf-8")
         logger.info("Wrote %s (%d listing%s)", directory_dir / "index.html", len(directory), "" if len(directory) == 1 else "s")
 
+        # ROADMAP.md item 258: the town's holiday page - free events from its
+        # own feeds plus any paid, labelled listings.
+        holiday_listings = build_holiday_listings(sponsors_cfg, region_id, local_today)
+        holiday_live = is_holiday_season(now) or bool(holiday_listings)
+        if holiday_live:
+            holiday_sections = []
+            holiday_events = select_holiday_events(blocks, local_today)
+            if holiday_events:
+                holiday_sections.append({"section": "Holiday events", "events": holiday_events})
+            if holiday_listings:
+                holiday_sections.append({"section": "Local business listings", "events": holiday_listings})
+            holiday_html = render_region_page(
+                region_cfg,
+                holiday_sections,
+                sponsor,
+                [],
+                now,
+                heading=f"Holiday Events and Shopping — {region['name']}",
+                subheading=f"Tree lightings, holiday markets and local shops in {region['name']}, November and December.",
+                empty_message="No holiday events posted yet. We list them here as the town's calendars publish them.",
+                nav_current="holiday",
+                canonical_suffix="holiday/",
+                guides_url=guides_url,
+                directory_url=directory_url,
+                things_to_do_url=things_to_do_url,
+                newsletter=newsletter,
+                analytics=analytics,
+            )
+            holiday_dir = region_dir / "holiday"
+            holiday_dir.mkdir(parents=True, exist_ok=True)
+            (holiday_dir / "index.html").write_text(holiday_html, encoding="utf-8")
+            logger.info("Wrote %s (%d event%s, %d listing%s)", holiday_dir / "index.html", len(holiday_events), "" if len(holiday_events) == 1 else "s", len(holiday_listings), "" if len(holiday_listings) == 1 else "s")
+
         # ROADMAP.md item 158: the evergreen answer to "what is there to do
         # here at all" - seeded from material already curated for
         # evergreen/guides rather than new prose, deduplicated across the two.
@@ -4703,6 +4803,7 @@ def main() -> None:
                 "event_count": event_count,
                 "path": f"{region_id}/",
                 "guide_slugs": [g["slug"] for g in guides],
+                "holiday": holiday_live,
                 "guides": [{"slug": g["slug"], "title": g["title"]} for g in guides],
             }
         )
