@@ -324,6 +324,9 @@ that limit.
    once `OUTREACH_TEMPLATES.md` §7b exists. It is timely and factual,
    and it warms up the desk the full press pitch (step 9) will go to.
 
+8c. **Paste the welcome email (2 min, item 275)** once `WELCOME_EMAIL.md`
+   exists: Buttondown → Settings → Subscribing → Welcome email.
+
 **Next action — about an hour, no cost:**
 
 8. **Send the outreach emails (items 152, 161).** Six civic link-back
@@ -12419,7 +12422,7 @@ send went out on schedule (2026-10-01 01:33 UTC, `pre_send_subscriber_count:
      - ROADMAP.md is deliberately not scanned: it quotes wrong dates on
        purpose when it explains what the check catches.
 
-220. **Holiday lights: one date confirmed, three to verify, start by late
+220. ↪️ **Superseded by item 274 (sixty-eighth pass): Palatine is now confirmed too.** **Holiday lights: one date confirmed, three to verify, start by late
      October.** `SEASONAL_CALENDAR.md`'s holiday row says to start by
      late October. Research for it now, with item 219's check applied:
 
@@ -14296,7 +14299,7 @@ offer.
 
 #### P2 (new)
 
-258. **A holiday "shop local" listing page, sold like Macaroni Kid's.**
+258. ⏰ **Next for the build loop (sixty-eighth pass): must be live by Oct 25.** **A holiday "shop local" listing page, sold like Macaroni Kid's.**
      Build loop: a `holiday_listings:` list per region in
      `config/sponsors.yaml` (business name, one line, URL, optional
      address and category) renders a **`/<region>/holiday/`** page
@@ -14924,6 +14927,88 @@ topic-by-town landing pages** (year and town in the title), and **car
 dealerships as event-hosting sponsors**. The design/UX angle is
 **trunk-or-treats on the Halloween page**, including same-host
 duplicate cards.
+
+
+#### Research pass 2026-10-11, morning (sixty-eighth pass)
+
+The build loop shipped item 272: `/trick-or-treat/` now has the year
+and towns in its title, a trunk-or-treat section, and collapsed
+duplicate cards. It also wrote outreach §7b (the Daily Herald hours
+note, owner to send by **Oct 15**) and §15 (dealerships). IndexNow still
+answers `UserForbiddedToAccessSite`, which waits on the owner's Bing
+check (Needs Ryan 3c). This pass looks past Halloween to the holiday
+season, the next six weeks the site can own the same way, and at the
+one email every new subscriber opens.
+
+| Angle | What it is / what we found | Why it matters here |
+|---|---|---|
+| **Holiday tree lightings, re-checked with item 219's weekday check** | **Palatine:** the Palatine Park District's event page lists the Village's annual tree lighting for **Saturday, November 21, 2026, 4–7 p.m., Towne Square**, with the countdown at 5 p.m. with the Mayor and Santa (Nov 21, 2026 *is* a Saturday ✅). **Arlington Heights:** **Friday, November 27, 2026, 4:30–6:30 p.m., North School Park**, now confirmed by both `ahpd.org` and `vah.com`, with trolleys to Harmony Park. **Mount Prospect, Des Plaines, Wheeling:** still only 2024/2025 listings. The **Daily Herald** runs an annual roundup of suburban tree lightings (Nov 19 in 2025, Nov 19 in 2024), the same pattern as its trick-or-treat list | Item 220 said one date was confirmed. It is now **two of five**, both checked. The Herald roundup is a second timely press contact after item 271, about four weeks away. And the holiday page (item 258) is due **Oct 25** for its early-bird listings, so its free "holiday events" half should open with these dates (item 274) |
+| **The welcome email (design/UX)** | The owner enabled Buttondown's welcome email on 2026-10-09. Its text is Buttondown's default, since nothing in the repo supplies one. Published 2026 benchmarks, all from email vendors and so only directional, put welcome-email open rates at **roughly 35–84%**, against about **31%** for a typical campaign, with clicks around 4x a normal newsletter. Recommended contents: confirm the signup, say exactly what arrives and when, and give **one** useful next step right away | This is the one email every subscriber opens, and right now it says nothing about the site. It is also the moment to ask for the two things that most help deliverability on a tiny list: **a reply** and **adding the sender to contacts**. The list's only issue so far was found in Spam (item 239), so this matters more than usual (item 275) |
+| **Calendar check: Oct 25 is two weeks out** | Item 258's holiday listings need **three weeks of early-bird pricing before Nov 15** and are due by **Oct 25**. Item 259 (winter-break camps) is due mid-November. Neither is built | Re-ranked below so the build loop takes item 258 next, before anything that has no date attached |
+
+#### P1 (new)
+
+274. **Open the holiday season with the confirmed tree lightings, and
+     plan the Daily Herald note.** Build loop:
+
+     - **Update item 220's table**: Palatine ✅ Sat **Nov 21, 2026**,
+       4–7 p.m., Towne Square (source: `palatineparks.org/event/village-annual-tree-lighting/`);
+       Arlington Heights ✅ Fri **Nov 27, 2026**, 4:30–6:30 p.m. (sources:
+       `ahpd.org/event/holiday-tree-lighting-2026/`, `vah.com/explore/tree_lighting_.php`).
+       Mount Prospect, Des Plaines and Wheeling stay "not yet posted".
+       Add their event pages to the URL probes (item 215) so a posted
+       2026 date is caught. Never publish a 2025 date.
+     - **Build item 220's page as the cross-town front of item 258**:
+       one `/holidays/` page with a **"Tree lightings, town by town"**
+       table (the trick-or-treat page's shape: confirmed date and source,
+       or an honest "not posted yet"), then each town's holiday events
+       from the feeds, then links to each town's `/holiday/` listings page
+       once item 258 ships. Live **Nov 1 – Dec 31**, with item 263's
+       seasonal email line pointing at it from the first November send.
+     - **`OUTREACH_TEMPLATES.md` §7c**: the tree-lighting version of
+       §7b, for the Herald's annual roundup. **Owner:** send it by **Nov 12**
+       with whichever dates are confirmed by then.
+
+275. **Write the welcome email, so the one email everyone opens does a
+     job.** Build loop writes `WELCOME_EMAIL.md` (subject and body,
+     plain text with links). The owner pastes it into Buttondown →
+     Settings → Subscribing → Welcome email (2 minutes). Contents, in
+     this order:
+
+     1. *"You're in. Every Thursday morning: what's on this weekend in
+        Arlington Heights, Des Plaines, Mount Prospect, Palatine and
+        Wheeling."* What arrives, and when.
+     2. **One next step:** *"Can't wait until Thursday? Here's this
+        weekend →"* linking to `/this-weekend/`, with
+        `?utm_source=email&utm_campaign=welcome`.
+     3. **Deliverability, in plain words:** *"Add hello@withintenmiles.com
+        to your contacts so Thursday's email doesn't land in Promotions
+        or Spam."*
+     4. **The reply ask:** *"Which town are you in, and what do you wish
+        we covered? Just reply."* A reply is the strongest inbox signal
+        a new sender can get, and it is also how the site learns what
+        its readers want.
+
+     Keep it evergreen, since Buttondown's welcome email is static: no
+     dates, no seasonal links. Under 120 words. **Owner time:** one paste.
+     It needs no code and no new tooling.
+
+#### Re-ranked
+
+- **Item 258** (holiday "shop local" listings) is now **next for the
+  build loop**, ahead of every undated item: its early-bird window needs
+  three weeks before Nov 15, so it must be live by **Oct 25**. Item 274's
+  `/holidays/` page shares its season and should ship with it or right
+  after.
+- **Item 220** is superseded by item 274, which carries its table
+  forward with Palatine now confirmed.
+
+Competitors reviewed this pass: **suburban holiday tree-lighting
+listings** (Palatine and Arlington Heights 2026 confirmed, the other
+three still on prior-year dates) and **the Daily Herald's annual
+tree-lighting roundup** as a second timely press contact. The
+design/UX angle is **the welcome email**, the most-opened email any
+subscriber receives.
 
 
 ## Working agreements for autonomous iteration
