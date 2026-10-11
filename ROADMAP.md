@@ -14299,7 +14299,7 @@ offer.
 
 #### P2 (new)
 
-258. ⏰ **Next for the build loop (sixty-eighth pass): must be live by Oct 25.** **A holiday "shop local" listing page, sold like Macaroni Kid's.**
+258. ✅ **BUILD DONE — owner pastes sales into `holiday_listings:`.** Shipped: `build_holiday_listings`, `select_holiday_events`, `/<region>/holiday/` (live Nov 1 – Dec 31, or earlier once a listing exists, in the sitemap and linked from the town footer in season), config documented in `config/sponsors.yaml`, pricing row in `SPONSOR_KIT.md`. Still open: a `/sponsor/` page row for the listing, and item 274's cross-town `/holidays/` page. Original brief: ** **A holiday "shop local" listing page, sold like Macaroni Kid's.**
      Build loop: a `holiday_listings:` list per region in
      `config/sponsors.yaml` (business name, one line, URL, optional
      address and category) renders a **`/<region>/holiday/`** page
@@ -14969,7 +14969,7 @@ one email every new subscriber opens.
        §7b, for the Herald's annual roundup. **Owner:** send it by **Nov 12**
        with whichever dates are confirmed by then.
 
-275. **Write the welcome email, so the one email everyone opens does a
+275. ✅ **DONE — `WELCOME_EMAIL.md` written; owner pastes it into Buttondown (2 minutes).** **Write the welcome email, so the one email everyone opens does a
      job.** Build loop writes `WELCOME_EMAIL.md` (subject and body,
      plain text with links). The owner pastes it into Buttondown →
      Settings → Subscribing → Welcome email (2 minutes). Contents, in

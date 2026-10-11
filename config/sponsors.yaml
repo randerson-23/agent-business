@@ -122,3 +122,20 @@ regions:
     active: none
     house_ad: null
     history: []
+
+# Holiday "shop local" listings (ROADMAP.md item 258). Per region, under
+# regions.<region id>.holiday_listings. Paste one entry per sale; the town's
+# /holiday/ page (live Nov 1 - Dec 31, or earlier once an entry exists)
+# renders each one labelled "Local business listing". Pricing: $20 before
+# Nov 15, $50 after (SPONSOR_KIT.md). Required: name, url. Optional: line,
+# address, category, until (last day it runs, YYYY-MM-DD; default Dec 31).
+# Never add an entry before payment, and never invent one.
+#   regions:
+#     mount-prospect-60056:
+#       holiday_listings:
+#         - name: "Example Bookshop"
+#           url: "https://example.com/"
+#           category: "Bookstore"
+#           address: "10 W Main St"
+#           line: "Gift wrapping on every order through Dec 23."
+#           until: "2026-12-24"
