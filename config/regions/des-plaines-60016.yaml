@@ -224,6 +224,11 @@ trick_or_treat:
   no_official_hours: true
   note: "The City doesn't set hours and urges extra care after sunset."
 
+# ROADMAP.md item 274: no 2026 date posted yet; set `date` once the City does.
+tree_lighting:
+  url: "https://www.desplainesil.gov/"
+  date: null
+
 # Seasonal/evergreen guides (ROADMAP.md Phase 11 #5) - see the Mount
 # Prospect config for the rationale; same civic-source-only approach here.
 guides:

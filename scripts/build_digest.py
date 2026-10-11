@@ -1629,6 +1629,45 @@ def build_business_directory(sponsors_cfg: dict, region_id: str) -> list[dict]:
     return directory
 
 
+def prepare_tree_lighting(region_cfg: dict, year: int) -> dict | None:
+    """A region's `tree_lighting:` block (ROADMAP.md item 274) for /holidays/.
+    `label` is built from the ISO `date`, so its weekday cannot be wrong, and
+    a date from any year but the current one counts as not posted - search
+    results presenting last year's date as this year's is what this guards."""
+    block = region_cfg.get("tree_lighting")
+    if not isinstance(block, dict) or not block.get("url"):
+        return None
+    day = _parse_promo_day(block.get("date"))
+    label = None
+    if day is not None and day.year == year:
+        label = day.strftime("%A, %B ") + str(day.day)
+        extra = [str(block[k]).strip() for k in ("time", "place") if block.get(k)]
+        label = ", ".join([label] + extra)
+    return {"url": block["url"], "label": label, "date_iso": day.isoformat() if label else None}
+
+
+def render_holidays_page(
+    entries: list[dict], now: datetime, analytics: dict | None = None, newsletter: dict | None = None
+) -> str:
+    """The cross-town /holidays/ page (ROADMAP.md item 274): tree lightings
+    town by town (a confirmed date with its source, or an honest "not posted
+    yet"), then each town's holiday events from its own feeds."""
+    env = get_template_env()
+    template = env.get_template("holidays.html.j2")
+    return template.render(
+        entries=entries,
+        year=now.year,
+        town_names=_join_names([e["region_name"] for e in entries]),
+        any_events=any(e.get("events") for e in entries),
+        newsletter=newsletter or {"configured": False},
+        hub_url=SITE_BASE_URL,
+        canonical_url=SITE_BASE_URL + "holidays/",
+        generated_at=now.strftime("%Y-%m-%d %H:%M UTC"),
+        analytics=analytics,
+        og_image_url=SITE_BASE_URL + "og/default.png",
+    )
+
+
 # ROADMAP.md item 258: the per-town /holiday/ page, live November 1 - December 31
 # (or earlier once a paid listing exists, so an early-bird buyer can see
 # what they bought). Paid listings are labelled; the "Holiday events"
@@ -2820,6 +2859,7 @@ def collect_sitemap_urls(region_summaries: list[dict]) -> list[str]:
         SITE_BASE_URL + "sponsor/",
         SITE_BASE_URL + "about/",
         SITE_BASE_URL + "trick-or-treat/",
+        SITE_BASE_URL + "holidays/",
     ]
     for r in region_summaries:
         base = SITE_BASE_URL + r["path"]
@@ -3884,6 +3924,7 @@ def prepare_email_events(events: list[dict], limit: int | None = None) -> list[d
 # 259 add their pages here when they ship. One line only, never a block.
 SEASONAL_EMAIL_LINKS = (
     ("trick-or-treat/", (10, 12), (10, 31), "🎃 Trick-or-treat hours for every town we cover →"),
+    ("holidays/", (11, 1), (12, 23), "🎄 Tree lightings and holiday events in every town we cover →"),
 )
 
 
@@ -4345,6 +4386,7 @@ def main() -> None:
     llms_full_groups: list[tuple[str, str, list[dict]]] = []
     pins_groups: list[tuple[str, str, str, list[dict]]] = []
     trick_or_treat_entries = []
+    holidays_entries = []
     combined_email_sections = []
     total_dated, total_events = 0, 0
     # ROADMAP.md item 172: how many dated events each region contributes
@@ -4357,6 +4399,18 @@ def main() -> None:
         region_id = region["id"]
         logger.info("=== Building region: %s (%s) ===", region["name"], region_id)
 
+        tree_lighting = prepare_tree_lighting(region_cfg, now.year)
+        if tree_lighting:
+            holidays_entries.append(
+                {
+                    "region_id": region_id,
+                    "region_name": region["name"],
+                    "region_url": SITE_BASE_URL + region_id + "/",
+                    "holiday_url": SITE_BASE_URL + region_id + "/holiday/",
+                    "tree": tree_lighting,
+                    "events": [],
+                }
+            )
         trick_or_treat = prepare_trick_or_treat(region_cfg)
         if trick_or_treat:
             trick_or_treat_entries.append(
@@ -4726,6 +4780,11 @@ def main() -> None:
         (directory_dir / "index.html").write_text(directory_html, encoding="utf-8")
         logger.info("Wrote %s (%d listing%s)", directory_dir / "index.html", len(directory), "" if len(directory) == 1 else "s")
 
+        if tree_lighting:
+            holidays_entries[-1]["events"] = [
+                dict(e, town=e.get("town") or region["name"], state=e.get("state") or region.get("state"))
+                for e in select_holiday_events(blocks, local_today)
+            ]
         # ROADMAP.md item 258: the town's holiday page - free events from its
         # own feeds plus any paid, labelled listings.
         holiday_listings = build_holiday_listings(sponsors_cfg, region_id, local_today)
@@ -4928,6 +4987,10 @@ def main() -> None:
     trick_or_treat_dir.mkdir(parents=True, exist_ok=True)
     (trick_or_treat_dir / "index.html").write_text(trick_or_treat_html, encoding="utf-8")
     logger.info("Wrote %s", trick_or_treat_dir / "index.html")
+    holidays_dir = OUTPUT_DIR / "holidays"
+    holidays_dir.mkdir(parents=True, exist_ok=True)
+    (holidays_dir / "index.html").write_text(render_holidays_page(holidays_entries, now, analytics, newsletter), encoding="utf-8")
+    logger.info("Wrote %s", holidays_dir / "index.html")
 
     sitemap_urls = collect_sitemap_urls(region_summaries)
     (OUTPUT_DIR / "sitemap.xml").write_text(build_sitemap_xml(region_summaries, now), encoding="utf-8")

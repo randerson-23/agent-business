@@ -170,6 +170,15 @@ trick_or_treat:
   hours: "3:00–7:00 PM, Saturday, October 31"
   note: "The Village's recommended hours, not an ordinance."
 
+# ROADMAP.md item 274: the town's annual tree lighting. `date` (ISO) is set only
+# once the town's own 2026 listing names it; the weekday on /holidays/ is
+# computed from it, and a date from a past year is never shown.
+tree_lighting:
+  url: "https://www.ahpd.org/event/holiday-tree-lighting-2026/"
+  date: "2026-11-27"
+  time: "4:30–6:30 PM"
+  place: "North School Park"
+
 # Seasonal/evergreen guides (ROADMAP.md Phase 11 #5) - see the Mount
 # Prospect config for the rationale; same civic-source-only approach here.
 guides:

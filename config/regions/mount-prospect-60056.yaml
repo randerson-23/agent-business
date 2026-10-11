@@ -341,6 +341,11 @@ trick_or_treat:
   hours: "3:00–8:00 PM, Saturday, October 31"
   note: "The Village's standing hours, not yet confirmed for 2026."
 
+# ROADMAP.md item 274: no 2026 date posted yet; set `date` once the Village does.
+tree_lighting:
+  url: "https://www.mountprospect.org/"
+  date: null
+
 # Seasonal/evergreen guides (ROADMAP.md Phase 11 #5) - grouped, linkable
 # pages that don't expire every Monday the way a dated event listing does.
 # Sourced from the same civic feeds as the weekly digest, not invented

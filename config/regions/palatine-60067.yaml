@@ -213,6 +213,13 @@ trick_or_treat:
   url: "https://www.palatine.il.us/CivicAlerts.aspx?AID=503"
   hours: "3:00–7:00 PM, Saturday, October 31"
 
+# ROADMAP.md item 274: see Arlington Heights' config for the field rules.
+tree_lighting:
+  url: "https://www.palatineparks.org/event/village-annual-tree-lighting/"
+  date: "2026-11-21"
+  time: "4–7 PM"
+  place: "Towne Square"
+
 # Seasonal/evergreen guides (ROADMAP.md Phase 11 #5) - see the Mount
 # Prospect config for the rationale; same civic-source-only approach here.
 guides:
