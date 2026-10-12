@@ -3,28 +3,8 @@
 <channel>
   <title>Within Ten — Upcoming events in Wheeling</title>
   <link>https://withintenmiles.com/</link>
-  <description>Upcoming events in Wheeling, soonest first - aggregated automatically from village, library, park district and school-district calendars. This build reached 20 of 26 configured sources. 1 source is shown from its last update, up to 9 hours ago.</description>
-  <lastBuildDate>Sun, 11 Oct 2026 22:01:30 +0000</lastBuildDate>
-  <item>
-    <title>Wheeling: Home Maintenance 101</title>
-    <link>https://withintenmiles.com/wheeling-60090/#ev-home-maintenance-101-2026-10-11</link>
-    <guid isPermaLink="true">https://withintenmiles.com/wheeling-60090/#ev-home-maintenance-101-2026-10-11</guid>
-    <description>Sunday, October 11 2026 1:00pm - 2:00pm 
- David Dulin, Adjunct Professor of HVACR at Oakton College, reviews general home maintenance for new and existing… Official listing: https://indiantrails.libnet.info/event/16652984</description>
-    <pubDate>Sun, 11 Oct 2026 13:00:00 +0000</pubDate>
-    <source url="https://indiantrails.libnet.info/event/16652984">Indian Trails Public Library — Events</source>
-  </item>
-  <item>
-    <title>Wheeling: Tech Assistance</title>
-    <link>https://withintenmiles.com/wheeling-60090/#ev-tech-assistance-2026-10-11</link>
-    <guid isPermaLink="true">https://withintenmiles.com/wheeling-60090/#ev-tech-assistance-2026-10-11</guid>
-    <description>Sunday, October 11 2026 1:00pm - 1:45pm 
- Have a basic question about your device
-and thinking of trying Cloud Library,
-Hoopla or another library app? Talk… Official listing: https://indiantrails.libnet.info/event/16642203</description>
-    <pubDate>Sun, 11 Oct 2026 13:00:00 +0000</pubDate>
-    <source url="https://indiantrails.libnet.info/event/16642203">Indian Trails Public Library — Events</source>
-  </item>
+  <description>Upcoming events in Wheeling, soonest first - aggregated automatically from village, library, park district and school-district calendars. This build reached 18 of 26 configured sources. 3 sources are shown from their last update, up to 8 hours ago.</description>
+  <lastBuildDate>Mon, 12 Oct 2026 06:01:35 +0000</lastBuildDate>
   <item>
     <title>Wheeling: Columbus Day - Village Offices are Closed for the Columbus Day Holi</title>
     <link>https://withintenmiles.com/wheeling-60090/#ev-columbus-day-village-offices-are-closed-for-the-columbus-day-2026-10-12</link>
@@ -455,6 +435,24 @@ Hoopla or another library app?… Official listing: https://indiantrails.libnet.
  Take a closer look at apples before turning them into art supplies. Katie will join us with songs and a story. TR Official listing: https://indiantrails.libnet.info/event/16724239</description>
     <pubDate>Thu, 22 Oct 2026 10:00:00 +0000</pubDate>
     <source url="https://indiantrails.libnet.info/event/16724239">Indian Trails Public Library — Events</source>
+  </item>
+  <item>
+    <title>Wheeling: Memory Cafe</title>
+    <link>https://withintenmiles.com/wheeling-60090/#ev-memory-cafe-2026-10-22</link>
+    <guid isPermaLink="true">https://withintenmiles.com/wheeling-60090/#ev-memory-cafe-2026-10-22</guid>
+    <description>Thursday, October 22 2026 2:00pm - 3:00pm 
+ If you or a loved one are experiencing memory loss, you are invited to join us for activities and socialization at… Official listing: https://indiantrails.libnet.info/event/14656887</description>
+    <pubDate>Thu, 22 Oct 2026 14:00:00 +0000</pubDate>
+    <source url="https://indiantrails.libnet.info/event/14656887">Indian Trails Public Library — Events</source>
+  </item>
+  <item>
+    <title>Wheeling: League of Women Voters Build Your Own Ballot</title>
+    <link>https://withintenmiles.com/wheeling-60090/#ev-league-of-women-voters-build-your-own-ballot-2026-10-22</link>
+    <guid isPermaLink="true">https://withintenmiles.com/wheeling-60090/#ev-league-of-women-voters-build-your-own-ballot-2026-10-22</guid>
+    <description>Thursday, October 22 2026 3:00pm - 5:00pm 
+ The local League of Women Voters chapter will be on site to share information on the VOTE 411 tool. Official listing: https://indiantrails.libnet.info/event/17629377</description>
+    <pubDate>Thu, 22 Oct 2026 15:00:00 +0000</pubDate>
+    <source url="https://indiantrails.libnet.info/event/17629377">Indian Trails Public Library — Events</source>
   </item>
 </channel>
 </rss>
