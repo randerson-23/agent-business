@@ -1,12 +1,5 @@
 [
   {
-    "timestamp": "2026-10-08T13:41:10+00:00",
-    "url_count": 61,
-    "ok": false,
-    "status": 403,
-    "error": "HTTPError"
-  },
-  {
     "timestamp": "2026-10-08T14:02:22+00:00",
     "url_count": 61,
     "ok": false,
@@ -179,6 +172,19 @@
   },
   {
     "timestamp": "2026-10-12T06:01:35+00:00",
+    "url_count": 62,
+    "ok": false,
+    "status": 403,
+    "error": "HTTPError",
+    "body": "{\"errorCode\":\"UserForbiddedToAccessSite\",\"message\":\"User is unauthorized to access the site. Please verify the site using the key and try again\",\"details\":null}",
+    "key_file_ok": true,
+    "skipped": null,
+    "bing_status": 403,
+    "bing_body": "{\"errorCode\":\"UserForbiddedToAccessSite\",\"message\":\"User is unauthorized to access the site. Please verify the site using the key and try again\",\"details\":null}",
+    "accepted_by": null
+  },
+  {
+    "timestamp": "2026-10-12T14:03:27+00:00",
     "url_count": 62,
     "ok": false,
     "status": 403,
