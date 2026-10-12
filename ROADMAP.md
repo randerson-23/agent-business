@@ -15186,6 +15186,87 @@ domain, is met. The design/UX angle is **the `/join/` page read at phone
 width**.
 
 
+#### Research pass 2026-10-12, evening (seventy-first pass)
+
+The build loop shipped items 279 (`/join/` now looks like the email:
+hero band, pick cards in town colours, a recent-issue link) and 280
+(every sent issue kept at `/issues/<date>/` on the site's own domain).
+Wednesday's send will be the first archived issue and the first one
+that measures opens. This pass fills a content gap no earlier pass
+touched. Every source the site reads is a village, library, park
+district or school, so **none of the five towns' arts venues or live
+music** appear, though they are some of the most-searched weekend plans
+and some of the likeliest $20 buyers.
+
+| Angle | What it is / what we found | Why it matters here |
+|---|---|---|
+| **Metropolis Performing Arts Centre** (Arlington Heights, 111 W. Campbell St.) | 2026–27 season (press release, repeated by BroadwayWorld and Buzz Center Stage): *Ride the Cyclone* (to mid/late Oct), **_The Christmas Schooner_, Nov 24 – Jan 3**, **_A Christmas Carol_ with Saturday 10 a.m. family performances Dec 5–19**, The Second City's holiday revue Dec 27–31, then *The Little Mermaid* in concert (Jan 27 – Feb 14) and *The Match Game*. Its own calendar page did not surface in search | Downtown Arlington Heights' anchor venue, never in the site's data. The **family holiday shows land exactly in the `/holidays/` window** (item 274). The *Ride the Cyclone* end date conflicts between sources (Oct 18 vs Oct 25), a reminder to take dates only from the venue's own page |
+| **Hey Nonny** (Arlington Heights, 10 S. Vail Ave.) | A live-music venue selling through **OpenDate** (`app.opendate.io/e/...`). Shows include *Andrew Cooney & Alex Theole*, **Thu Oct 15, all ages**. A standing **free Friday "HeyDay Happy Hour" with live music, 4–6 p.m.**, which is **sponsored by a local law office** (R.F. Wittmeyer, Ltd., per its own press release). A second stage is being added this fall | Two findings. It is a **recurring free weekly event**, the kind of thing a weekend guide should always carry. And it shows a **local professional-services firm already paying to sponsor a community event** in one of these towns, which is exactly the buyer profile item 270's prospect lists are built to find |
+| **Des Plaines Theatre** (1476 Miner St.) and **Harper College Performing Arts Center** (Palatine) | Des Plaines Theatre runs a full concert calendar (Songkick lists Jim Brickman Sep 25, Los Lonely Boys Oct 3, **Lou Gramm Dec 19**), with its own page at `desplainestheatre.com/events/`. Harper College's events run on **`events.harpercollege.edu`, a Localist calendar**: free summer concerts, ensembles, a guest-artist series. Localist calendars normally publish **iCal and RSS feeds and a public JSON API** | Harper is in Palatine, the town with the fewest weekend events (3 this weekend), and a Localist feed would slot straight into the existing `ics`/`rss` fetchers. Des Plaines Theatre is the city-owned downtown venue. Both are worth one probe each before any code (item 282) |
+| **One "night out" pick in the email (design/UX)** | The email, hub and `/join/` all lead with family-first picks (items 257, 268, 279). That is right for the core reader, but the five towns' median age is about 41 and **56.5% of residents are married** (`BUSINESS_PLAN.md`), and nothing in the email speaks to parents' own Saturday night | One clearly labelled *"Night out"* line at the end of the picks, drawn from the new venue sources, widens what the email is for without diluting the family focus. It is also the natural home for an arts venue's $20 Event Promo (item 284) |
+
+#### P1 (new)
+
+282. **Probe four arts venues, then add the ones that publish a feed.**
+     Build loop, two steps. **Step 1:** add probes to
+     `config/url_probes.yaml` (item 212's workflow). Run each against its
+     likely feed paths and look in the body for `BEGIN:VCALENDAR`,
+     `<rss`, `"@type": "Event"`, `opendate` and `localist`:
+     - `https://events.harpercollege.edu/calendar.ics` (also `/calendar.xml`
+       and `/api/2/events?days=60`), the Localist defaults;
+     - `https://desplainestheatre.com/events/`, with `follow` for an
+       `.ics` or a per-event page carrying JSON-LD;
+     - `https://metropolisarts.com/` with `follow` toward its calendar;
+     - `https://heynonny.com/` with `follow` toward its events or OpenDate
+       listing.
+
+     **Step 2:** add each venue that serves a parseable feed or JSON-LD
+     to its town's `sources:` (Harper → Palatine, Metropolis and Hey Nonny →
+     Arlington Heights, Des Plaines Theatre → Des Plaines), tagged
+     `art_culture`. Where none exists, add the venue as a single
+     `evergreen` entry linking to its own calendar, never with copied
+     dates. **Hey Nonny's free Friday happy-hour music** goes in as a
+     recurring evergreen item only if its own site confirms it is
+     current. Item 268's family scoring already keeps adult-only shows
+     out of the family picks, so nothing else needs to change.
+
+#### P2 (new)
+
+283. **Put the confirmed family holiday shows on `/holidays/`.** Build
+     loop, after item 282's probe. Add **Metropolis' _A Christmas Carol_
+     Saturday 10 a.m. family performances (Dec 5–19)** and **_The
+     Christmas Schooner_ (Nov 24 – Jan 3)** to the Arlington Heights
+     column of item 274's page, **only with dates read from the venue's
+     own page** (via the probe or the new source), never from the press
+     release copies, which already disagree on one closing date. Same
+     for Des Plaines Theatre's December shows if they are family-suitable.
+
+284. **A "Night out" line in the email, and venues as Event Promo
+     buyers.** Design/UX plus outreach, build loop:
+
+     - **Email:** after the "Don't miss" picks, one line, *"🎭 Night
+       out: [show] at [venue], [day]"*, chosen from `art_culture`-tagged
+       evening events (start time 6 p.m. or later) across all towns.
+       Never more than one, never paid unless labelled Featured (item
+       245's rules). Skip the line when nothing qualifies.
+     - **Outreach:** `OUTREACH_TEMPLATES.md` §16, *"Your show is on our
+       weekend page"*, the §15 pattern for venues: the free listing
+       stays regardless, and the $20 Event Promo puts one show first in
+       its town's email. Venues sell tickets every week, which makes them
+       the most natural repeat buyers of a per-event product.
+     - **Prospect note:** add *"businesses already sponsoring community
+       events"* (for example, the law office sponsoring Hey Nonny's
+       Friday happy hour) to item 270's prospect sources. They have shown
+       the budget and the intent.
+
+Competitors reviewed this pass: **Metropolis Performing Arts Centre**
+(2026–27 season, family holiday shows), **Hey Nonny** (OpenDate
+ticketing, a sponsored free weekly happy hour), **Des Plaines Theatre**
+and **Harper College's Localist calendar** as candidate sources. The
+design/UX angle is **a single "Night out" pick for the email's adult
+readers**.
+
+
 ## Working agreements for autonomous iteration
 
 - Cadence is three times a day (05:51, 13:51 and 21:51 UTC) for this
