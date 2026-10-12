@@ -96,6 +96,7 @@ import yaml
 REPO_ROOT = Path(__file__).resolve().parent.parent
 DOCS_DIR = REPO_ROOT / "docs"
 SEND_HISTORY_PATH = REPO_ROOT / "data" / "send_history.json"
+ISSUES_DIR = REPO_ROOT / "data" / "issues"
 # Written by build_digest.py's write_weekend_signal() (ROADMAP.md item 172).
 WEEKEND_SIGNAL_PATH = REPO_ROOT / "data" / "weekend_signal.json"
 # ROADMAP.md item 172: the fortieth research pass's own floor - "an issue
@@ -692,6 +693,16 @@ def main(argv: list[str] | None = None) -> int:
         pre_send_subscriber_count=regular_subscriber_count,
     )
     save_send_history(history)
+
+    # ROADMAP.md item 280: a frozen copy of what was sent, for the site's own
+    # /issues/ archive. Drafts are never archived; only mail that went out or
+    # is scheduled to. Written once and never overwritten.
+    if cfg["mode"] in ("send", "schedule"):
+        issue_day = now.astimezone(SEND_TIMEZONE).date() if cfg["mode"] == "send" else next_thursday_morning(now).date()
+        issue_path = ISSUES_DIR / f"{issue_day.isoformat()}.html"
+        if not issue_path.exists():
+            ISSUES_DIR.mkdir(parents=True, exist_ok=True)
+            issue_path.write_text(html, encoding="utf-8")
 
     if cfg["mode"] == "send":
         logger.info("Sent. Buttondown id: %s", result.get("id", "?"))

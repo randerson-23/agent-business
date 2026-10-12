@@ -27,6 +27,7 @@ from email.utils import format_datetime, parsedate_to_datetime
 from functools import lru_cache
 from pathlib import Path
 from urllib.parse import quote, urlencode
+from html import escape, unescape
 from xml.sax.saxutils import escape as xml_escape
 from zoneinfo import ZoneInfo
 
@@ -1646,6 +1647,83 @@ def prepare_tree_lighting(region_cfg: dict, year: int) -> dict | None:
     return {"url": block["url"], "label": label, "date_iso": day.isoformat() if label else None}
 
 
+ISSUES_DIR = ROOT / "data" / "issues"
+_ISSUE_FILE = re.compile(r"^(\d{4}-\d{2}-\d{2})\.html$")
+_PREHEADER = re.compile(r'<div style="display:none;[^>]*mso-hide:all;">.*?</div>\s*', re.DOTALL)
+
+
+def load_issues(directory: Path | None = None) -> list[dict]:
+    """Archived sent issues (ROADMAP.md item 280), newest first. Each is
+    `data/issues/<YYYY-MM-DD>.html`, the HTML exactly as it was sent, written
+    by send_newsletter.py. Never regenerated from current data."""
+    directory = ISSUES_DIR if directory is None else directory
+    issues = []
+    for path in sorted(directory.glob("*.html"), reverse=True) if directory.is_dir() else []:
+        m = _ISSUE_FILE.match(path.name)
+        if not m:
+            continue
+        html = path.read_text(encoding="utf-8")
+        title = re.search(r"<title>(.*?)</title>", html, re.DOTALL)
+        issues.append({"date": m.group(1), "subject": unescape(title.group(1)).strip() if title else m.group(1), "html": html})
+    return issues
+
+
+def render_issue_page(issue: dict) -> str:
+    """One archived issue as a page on this site: the sent HTML with its
+    hidden preheader removed, a self-canonical, and a small header bar. The
+    dated content is left exactly as sent."""
+    html = _PREHEADER.sub("", issue["html"], count=1)
+    canonical = f"{SITE_BASE_URL}issues/{issue['date']}/"
+    html = html.replace("</head>", f'<link rel="canonical" href="{canonical}">\n</head>', 1)
+    label = datetime.strptime(issue["date"], "%Y-%m-%d").strftime("%B %-d, %Y")
+    bar = (
+        '<div style="font-family:Arial,Helvetica,sans-serif;font-size:14px;text-align:center;padding:10px 16px;background:#f6f1ea;color:#201e1d;">'
+        f'Archived issue, sent {label}. <a href="{SITE_BASE_URL}issues/" style="color:#ae1800;">All issues</a> · '
+        f'<a href="{SITE_BASE_URL}join/" style="color:#ae1800;">Get it by email every Thursday</a></div>'
+    )
+    return re.sub(r"(<body[^>]*>)", lambda m: m.group(1) + "\n" + bar, html, count=1)
+
+
+def render_issues_index(issues: list[dict], now: datetime, analytics: dict | None = None) -> str:
+    items = "\n".join(
+        f'<li><a href="{SITE_BASE_URL}issues/{i["date"]}/">{escape(i["subject"])}</a> <span>{datetime.strptime(i["date"], "%Y-%m-%d").strftime("%B %-d, %Y")}</span></li>'
+        for i in issues
+    )
+    gc = (
+        f'<script data-goatcounter="https://{analytics["goatcounter_code"]}.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>'
+        if analytics and analytics.get("configured")
+        else ""
+    )
+    return f"""<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Past weekly issues — Within Ten</title>
+<meta name="description" content="Every weekly Within Ten email, newest first: what was on in Arlington Heights, Des Plaines, Mount Prospect, Palatine and Wheeling.">
+<link rel="canonical" href="{SITE_BASE_URL}issues/">
+<style>
+body {{ font-family: Arial, Helvetica, sans-serif; max-width: 680px; margin: 0 auto; padding: 20px; line-height: 1.6; color: #201e1d; background: #f3f2f2; }}
+h1 {{ font-family: Georgia, serif; }}
+li {{ margin: 10px 0; }} li span {{ color: #605d5d; font-size: 14px; display: block; }}
+a {{ color: #ae1800; font-weight: 700; }}
+@media (prefers-color-scheme: dark) {{ body {{ background: #171615; color: #f3f2f2; }} li span {{ color: #a9a5a5; }} a {{ color: #ff9783; }} }}
+</style>
+</head>
+<body>
+<p><a href="{SITE_BASE_URL}">&larr; Within Ten</a></p>
+<h1>Past weekly issues</h1>
+<p>Every weekly email, exactly as it was sent. <a href="{SITE_BASE_URL}join/">Get the next one by email.</a></p>
+<ul>
+{items}
+</ul>
+<p style="font-size:12.5px;color:#605d5d;">Generated {now.strftime("%Y-%m-%d %H:%M UTC")}.</p>
+{gc}
+</body>
+</html>
+"""
+
+
 def build_join_picks(sections: list[dict], limit: int = 3) -> list[dict]:
     """This weekend's "Don't miss" picks for /join/ (ROADMAP.md item 277): the
     same choice the combined email makes, from the same per-region sections."""
@@ -1666,6 +1744,7 @@ def build_join_picks(sections: list[dict], limit: int = 3) -> list[dict]:
 def render_join_page(
     sections: list[dict], now: datetime, analytics: dict | None = None, newsletter: dict | None = None,
     weekend_date_range: str = "",
+    recent_issue_url: str | None = None,
 ) -> str:
     """The /join/ landing page (ROADMAP.md item 277), for traffic sent on
     purpose: one headline, this weekend's picks, and the signup with a town
@@ -1678,6 +1757,7 @@ def render_join_page(
     return template.render(
         picks=build_join_picks(sections),
         weekend_date_range=weekend_date_range,
+        recent_issue_url=recent_issue_url or SITE_BASE_URL + "combined-email-preview.html",
         event_total=sum(1 for s in sections for e in s["weekend_events"] if e.get("attendable", True)),
         town_total=sum(1 for s in sections if any(e.get("attendable", True) for e in s["weekend_events"])),
         tag_options=tag_options,
@@ -2895,7 +2975,7 @@ def build_web_manifest() -> str:
     return json.dumps(manifest, indent=2) + "\n"
 
 
-def collect_sitemap_urls(region_summaries: list[dict]) -> list[str]:
+def collect_sitemap_urls(region_summaries: list[dict], issues: list[dict] | None = None) -> list[str]:
     urls = [
         SITE_BASE_URL,
         SITE_BASE_URL + "this-weekend/",
@@ -2921,12 +3001,15 @@ def collect_sitemap_urls(region_summaries: list[dict]) -> list[str]:
         if r.get("guide_slugs"):
             urls.append(base + "guides/")
             urls += [base + f"guides/{slug}/" for slug in r["guide_slugs"]]
+    if issues:
+        urls.append(SITE_BASE_URL + "issues/")
+        urls += [SITE_BASE_URL + f"issues/{i['date']}/" for i in issues]
     return urls
 
 
-def build_sitemap_xml(region_summaries: list[dict], now: datetime) -> str:
+def build_sitemap_xml(region_summaries: list[dict], now: datetime, issues: list[dict] | None = None) -> str:
     lastmod = now.strftime("%Y-%m-%d")
-    urls = collect_sitemap_urls(region_summaries)
+    urls = collect_sitemap_urls(region_summaries, issues)
     entries = "\n".join(
         f"  <url>\n    <loc>{u}</loc>\n    <lastmod>{lastmod}</lastmod>\n  </url>" for u in urls
     )
@@ -3184,7 +3267,7 @@ def build_llms_full_txt(groups: list[tuple[str, str, list[dict]]], weekend_date_
     return "\n".join(lines).rstrip() + "\n"
 
 
-def build_llms_txt(region_summaries: list[dict], source_completeness: dict | None = None) -> str:
+def build_llms_txt(region_summaries: list[dict], source_completeness: dict | None = None, issues: list[dict] | None = None) -> str:
     """llms.txt (llmstxt.org convention, ROADMAP.md Phase 11 #22 - GEO):
     a plain-language map of the site for an AI agent/crawler to read
     directly, generated at build time from the same region_summaries the
@@ -3259,6 +3342,9 @@ def build_llms_txt(region_summaries: list[dict], source_completeness: dict | Non
     ]
     lines += [f"- [{r['name']}]({SITE_BASE_URL}{r['path']}events.json)" for r in region_summaries]
     lines += ["", "## Full text", f"- [This weekend's events, as plain text]({SITE_BASE_URL}llms-full.txt)"]
+    if issues:
+        lines += ["", "## Past weekly issues", f"- [All issues, newest first]({SITE_BASE_URL}issues/)"]
+        lines += [f"- [{i['subject']}]({SITE_BASE_URL}issues/{i['date']}/)" for i in issues[:10]]
     return "\n".join(lines) + "\n"
 
 
@@ -5032,19 +5118,28 @@ def main() -> None:
     trick_or_treat_dir.mkdir(parents=True, exist_ok=True)
     (trick_or_treat_dir / "index.html").write_text(trick_or_treat_html, encoding="utf-8")
     logger.info("Wrote %s", trick_or_treat_dir / "index.html")
+    issues = load_issues()
+    for issue in issues:
+        issue_dir = OUTPUT_DIR / "issues" / issue["date"]
+        issue_dir.mkdir(parents=True, exist_ok=True)
+        (issue_dir / "index.html").write_text(render_issue_page(issue), encoding="utf-8")
+    if issues:
+        (OUTPUT_DIR / "issues" / "index.html").write_text(render_issues_index(issues, now, analytics), encoding="utf-8")
+        logger.info("Wrote %d archived issue(s) and the issues index", len(issues))
     join_dir = OUTPUT_DIR / "join"
     join_dir.mkdir(parents=True, exist_ok=True)
-    (join_dir / "index.html").write_text(render_join_page(combined_email_sections, now, analytics, newsletter, hub_weekend_date_range or ""), encoding="utf-8")
+    recent_issue_url = f"{SITE_BASE_URL}issues/{issues[0]['date']}/" if issues else None
+    (join_dir / "index.html").write_text(render_join_page(combined_email_sections, now, analytics, newsletter, hub_weekend_date_range or "", recent_issue_url), encoding="utf-8")
     logger.info("Wrote %s", join_dir / "index.html")
     holidays_dir = OUTPUT_DIR / "holidays"
     holidays_dir.mkdir(parents=True, exist_ok=True)
     (holidays_dir / "index.html").write_text(render_holidays_page(holidays_entries, now, analytics, newsletter), encoding="utf-8")
     logger.info("Wrote %s", holidays_dir / "index.html")
 
-    sitemap_urls = collect_sitemap_urls(region_summaries)
-    (OUTPUT_DIR / "sitemap.xml").write_text(build_sitemap_xml(region_summaries, now), encoding="utf-8")
+    sitemap_urls = collect_sitemap_urls(region_summaries, issues)
+    (OUTPUT_DIR / "sitemap.xml").write_text(build_sitemap_xml(region_summaries, now, issues), encoding="utf-8")
     (OUTPUT_DIR / "robots.txt").write_text(build_robots_txt(), encoding="utf-8")
-    (OUTPUT_DIR / "llms.txt").write_text(build_llms_txt(region_summaries, source_completeness), encoding="utf-8")
+    (OUTPUT_DIR / "llms.txt").write_text(build_llms_txt(region_summaries, source_completeness, issues), encoding="utf-8")
     (OUTPUT_DIR / "events.json").write_text(
         build_events_json(events_json_groups, f"Upcoming events across every region — {SITE_NAME}", now), encoding="utf-8"
     )
