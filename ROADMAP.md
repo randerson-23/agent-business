@@ -15123,7 +15123,7 @@ cheap channels and content sources the plan has not used.
 
 #### P1 (new)
 
-279. **Make `/join/` look like the email it is selling.** Design/UX,
+279. ✅ **DONE — shipped before the ad test.** `/join/` has the email's red hero with date pill and "N things to do in M towns", the form above the picks, three pick cards (emoji, town-coloured date chip, time, venue, badges) and a "See a recent issue →" link to `/combined-email-preview.html` (to be swapped for the newest `/issues/<date>/` when item 280 ships). **Make `/join/` look like the email it is selling.** Design/UX,
      build loop, `templates/join.html.j2`:
 
      - **A hero band** in the email's style: the red block with a yellow
