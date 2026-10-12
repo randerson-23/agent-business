@@ -15146,7 +15146,7 @@ cheap channels and content sources the plan has not used.
 
 #### P2 (new)
 
-280. **Keep every sent issue at `/issues/<date>/` on the site's own
+280. ✅ **BUILD DONE — owner turns on Buttondown's archive noindex after two issues are up.** `send_newsletter.py` now saves each sent or scheduled issue (never drafts) to `data/issues/<date>.html`, and the send workflow commits it with the send record. The build renders `docs/issues/<date>/index.html` (preheader stripped, self-canonical, small header bar, content as sent) and an `/issues/` index, lists them in the sitemap and `llms.txt`, and points `/join/`'s "See a recent issue" at the newest. The first archived issue appears after the next real send (Oct 14 or 15). **Keep every sent issue at `/issues/<date>/` on the site's own
      domain.** Build loop. When `send_newsletter.py` records a send in
      `data/send_history.json`, also copy that send's HTML to
      `docs/issues/<YYYY-MM-DD>/index.html` with these changes: strip the

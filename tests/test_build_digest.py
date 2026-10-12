@@ -4853,3 +4853,46 @@ def test_join_page_picks_are_cards_with_town_colours_and_a_recent_issue_link():
     assert "SAT" in html and "Oct 16–18" in html and "2 things to do in 2 towns" in html
     assert 'href="' + build_digest.SITE_BASE_URL + 'combined-email-preview.html">See a recent issue' in html
     assert 'noindex' in html and "<nav" not in html
+
+
+def _issue(date="2026-10-15", body="<p>Fall Fest</p>"):
+    html = (
+        "<!doctype html><html><head><title>Your Thursday guide</title></head><body>\n"
+        '<div style="display:none; font-size:1px; max-height:0px; opacity:0; overflow:hidden; mso-hide:all;">hidden preheader&#8203;</div>\n'
+        f"{body}</body></html>"
+    )
+    return {"date": date, "subject": "Your Thursday guide", "html": html}
+
+
+def test_render_issue_page_strips_preheader_adds_canonical_and_keeps_content():
+    # ROADMAP.md item 280.
+    page = build_digest.render_issue_page(_issue())
+    assert "hidden preheader" not in page
+    assert f'<link rel="canonical" href="{build_digest.SITE_BASE_URL}issues/2026-10-15/">' in page
+    assert "<p>Fall Fest</p>" in page
+    assert "Archived issue, sent October 15, 2026" in page
+
+
+def test_load_issues_newest_first_and_ignores_other_files(tmp_path):
+    (tmp_path / "2026-10-08.html").write_text("<title>A</title>", encoding="utf-8")
+    (tmp_path / "2026-10-15.html").write_text("<title>B &amp; C</title>", encoding="utf-8")
+    (tmp_path / "notes.html").write_text("x", encoding="utf-8")
+    issues = build_digest.load_issues(tmp_path)
+    assert [i["date"] for i in issues] == ["2026-10-15", "2026-10-08"]
+    assert issues[0]["subject"] == "B & C"
+    assert build_digest.load_issues(tmp_path / "missing") == []
+
+
+def test_issues_index_sitemap_and_llms_list_each_issue():
+    issues = [_issue("2026-10-15"), _issue("2026-10-08")]
+    index = build_digest.render_issues_index(issues, datetime(2026, 10, 16, tzinfo=timezone.utc))
+    assert index.index("2026-10-15") < index.index("2026-10-08")
+    urls = build_digest.collect_sitemap_urls([{"path": "a/"}], issues)
+    assert build_digest.SITE_BASE_URL + "issues/" in urls and build_digest.SITE_BASE_URL + "issues/2026-10-08/" in urls
+    assert build_digest.SITE_BASE_URL + "issues/" not in build_digest.collect_sitemap_urls([{"path": "a/"}])
+    assert "issues/2026-10-15/" in build_digest.build_llms_txt([{"name": "A", "zip": "1", "path": "a/", "tagline": "t"}], None, issues)
+
+
+def test_join_page_links_the_newest_issue_when_there_is_one():
+    html = build_digest.render_join_page(_join_sections(), datetime(2026, 10, 16, tzinfo=timezone.utc), None, None, "", build_digest.SITE_BASE_URL + "issues/2026-10-15/")
+    assert 'href="' + build_digest.SITE_BASE_URL + 'issues/2026-10-15/">See a recent issue' in html
