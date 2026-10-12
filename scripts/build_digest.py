@@ -1659,11 +1659,13 @@ def build_join_picks(sections: list[dict], limit: int = 3) -> list[dict]:
                 "color": EMAIL_TOWN_COLORS[i % len(EMAIL_TOWN_COLORS)][0],
             }
         )
-    return pick_email_top_picks(blocks, limit)
+    tints = dict(EMAIL_TOWN_COLORS)
+    return [dict(p, pick_tint=tints.get(p["pick_color"], "#f6f1ea")) for p in pick_email_top_picks(blocks, limit)]
 
 
 def render_join_page(
-    sections: list[dict], now: datetime, analytics: dict | None = None, newsletter: dict | None = None
+    sections: list[dict], now: datetime, analytics: dict | None = None, newsletter: dict | None = None,
+    weekend_date_range: str = "",
 ) -> str:
     """The /join/ landing page (ROADMAP.md item 277), for traffic sent on
     purpose: one headline, this weekend's picks, and the signup with a town
@@ -1675,6 +1677,9 @@ def render_join_page(
     ]
     return template.render(
         picks=build_join_picks(sections),
+        weekend_date_range=weekend_date_range,
+        event_total=sum(1 for s in sections for e in s["weekend_events"] if e.get("attendable", True)),
+        town_total=sum(1 for s in sections if any(e.get("attendable", True) for e in s["weekend_events"])),
         tag_options=tag_options,
         town_names=_join_names([s["region_name"] for s in sections]),
         newsletter=newsletter or {"configured": False},
@@ -5029,7 +5034,7 @@ def main() -> None:
     logger.info("Wrote %s", trick_or_treat_dir / "index.html")
     join_dir = OUTPUT_DIR / "join"
     join_dir.mkdir(parents=True, exist_ok=True)
-    (join_dir / "index.html").write_text(render_join_page(combined_email_sections, now, analytics, newsletter), encoding="utf-8")
+    (join_dir / "index.html").write_text(render_join_page(combined_email_sections, now, analytics, newsletter, hub_weekend_date_range or ""), encoding="utf-8")
     logger.info("Wrote %s", join_dir / "index.html")
     holidays_dir = OUTPUT_DIR / "holidays"
     holidays_dir.mkdir(parents=True, exist_ok=True)

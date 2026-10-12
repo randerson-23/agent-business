@@ -4842,3 +4842,14 @@ def test_join_page_is_noindex_with_picks_one_form_and_town_picker():
 
 def test_join_page_is_not_in_the_sitemap():
     assert not any("join" in u for u in build_digest.collect_sitemap_urls([{"path": "a/"}]))
+
+
+def test_join_page_picks_are_cards_with_town_colours_and_a_recent_issue_link():
+    # ROADMAP.md item 279.
+    html = build_digest.render_join_page(_join_sections(), datetime(2026, 10, 12, tzinfo=timezone.utc), None, None, "Oct 16–18")
+    assert html.count('<div class="pick">') == 2
+    colors = re.findall(r'<div class="dow" style="background:(#[0-9a-f]{6})">', html)
+    assert len(colors) == 2 and len(set(colors)) == 2  # one colour per town
+    assert "SAT" in html and "Oct 16–18" in html and "2 things to do in 2 towns" in html
+    assert 'href="' + build_digest.SITE_BASE_URL + 'combined-email-preview.html">See a recent issue' in html
+    assert 'noindex' in html and "<nav" not in html
