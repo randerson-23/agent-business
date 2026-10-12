@@ -4813,3 +4813,32 @@ def test_render_holidays_page_states_dates_and_not_posted():
     assert '<a href="https://v/p">Saturday, November 21, 4–7 PM</a>' in html
     assert "Not yet posted for 2026" in html and "https://v/w" in html
     assert "Holiday events, town by town" not in html
+
+
+def _join_sections():
+    def ev(title, day, url):
+        return {"title": title, "url": url, "date_iso": f"{day}T10:00:00", "date": day, "detail": "", "tags": ["kid_friendly"]}
+    return [
+        {"region_name": "Palatine", "region_url": build_digest.SITE_BASE_URL + "palatine-60067/",
+         "weekend_events": [ev("Family Fun Day", "2026-10-17", "https://src/p")]},
+        {"region_name": "Wheeling", "region_url": build_digest.SITE_BASE_URL + "wheeling-60090/",
+         "weekend_events": [ev("Pumpkin Patch", "2026-10-17", "https://src/w")]},
+    ]
+
+
+def test_join_page_is_noindex_with_picks_one_form_and_town_picker():
+    # ROADMAP.md item 277.
+    newsletter = {"configured": True, "buttondown_username": "withten", "headline": "H", "detail": "D"}
+    html = build_digest.render_join_page(_join_sections(), datetime(2026, 10, 12, tzinfo=timezone.utc), None, newsletter)
+    assert '<meta name="robots" content="noindex">' in html
+    assert html.count('<form class="newsletter-form"') == 1
+    assert '<option value="town:palatine-60067">Palatine</option>' in html
+    assert '<option value="town:all" selected>All towns</option>' in html
+    assert "Family Fun Day" in html and "Pumpkin Patch" in html
+    assert 'q.get(k)' in html  # UTM values pass through from the URL
+    assert 'name="utm_source"' in html and 'name="utm_campaign" value="join"' in html
+    assert "<nav" not in html
+
+
+def test_join_page_is_not_in_the_sitemap():
+    assert not any("join" in u for u in build_digest.collect_sitemap_urls([{"path": "a/"}]))

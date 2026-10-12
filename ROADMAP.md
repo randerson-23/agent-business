@@ -15063,7 +15063,7 @@ paying for subscribers.
 
 #### P1 (new)
 
-277. **A `/join/` landing page for paid and press traffic.** Design/UX,
+277. ✅ **DONE — `/join/` ships; use `https://withintenmiles.com/join/?utm_source=meta&utm_campaign=<name>` in ads.** noindex, not in the sitemap; headline, three picks (same choice as the email), signup with a town picker feeding the `town:` tag, UTM values read from the URL. Also fixed the single-town email's seasonal line (15px → 16px), which broke the 16px-floor test from Oct 12 when the trick-or-treat window opened. **A `/join/` landing page for paid and press traffic.** Design/UX,
      build loop. A single-purpose page, built every run, with:
 
      - one headline (*"What's on this weekend in your town, every
