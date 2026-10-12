@@ -15104,6 +15104,88 @@ channel). The design/UX angle is **a single-purpose landing page for
 traffic someone pays for**.
 
 
+#### Research pass 2026-10-12, morning (seventieth pass)
+
+The build loop shipped item 277, the `noindex` `/join/` landing page with
+this weekend's picks and a town picker. Weekend coverage is the
+healthiest it has been: **29 dated weekend events, every town between 3
+and 8**. IndexNow still answers 403 pending the owner's Bing check
+(Needs Ryan 3c). Wednesday's send is the first one that can measure
+opens. This pass checks the page paid traffic will land on, and two
+cheap channels and content sources the plan has not used.
+
+| Angle | What it is / what we found | Why it matters here |
+|---|---|---|
+| **`/join/` read at phone width (design/UX)** | Rendered from the built page at 390px. The headline and form are clear, but **the three picks are bare text lines**, with title, town and date run together (*"Pumpkin Splash Arlington Heights · Sun Oct 18 · 1:00 PM"*). There are no emoji, no town colours and no date chips. The page looks like the site's older plain style, **not the redesigned email** a subscriber will receive. Nothing shows what the email looks like | `/join/` exists to convert visitors someone paid for (item 276) or the press sent (items 271, 77). Its one persuasive element, "here is what you would get", is its weakest-looking part. The email's visual pieces (`email_visuals()`, `EMAIL_TOWN_COLORS`, `pick_email_top_picks()`) already exist and can be reused (item 279) |
+| **An archive of past issues on the site's own domain** | Item 224's table (pass 52) said **do not pay $29/month** for Buttondown's custom-domain archive and **revisit once the domain itself is indexed**. That condition is now met: **48 pages indexed** (owner, Search Console, 2026-10-09). Every send already writes `docs/combined-email-send.html`, the exact HTML that goes out | A dated copy of each sent issue on `withintenmiles.com/issues/` costs nothing. It gives `/join/` and the sponsor page a real **"see a recent issue"** link, and it gives search engines a weekly page of dated local events on the site's own domain instead of on `buttondown.com` (item 280) |
+| **Patch's posting rules** | Patch's own pages say free event and community posts are **for personal and non-commercial use**. Business events go to its advertising team, and paid regional featuring is **$1–2 per day per community** (the two figures conflict; Patch's instructions page says $2) | Patch's calendar ranks first for "things to do in Mount Prospect IL this weekend" (passes 60 and 66). But posting the weekly guide there free would breach its terms, and that is a guardrail worth recording. The paid feature is a possible **second paid arm** if Meta underperforms, at roughly $30 for five towns over a weekend (item 281) |
+| **Veterans Day, Wed Nov 11, 2026** | No 2026 ceremony listings found for any of the five towns. Past years show the hosts: **American Legion Post 690** (Palatine, Community Park) and the **Des Plaines Lake Park Veterans Memorial** ceremony at 11 a.m. | **No new item.** The posts that host these are exactly the kind of civic organisations item 240 treats as sources and first nonprofit sponsors. Add American Legion and VFW posts to item 240's list when it is next worked |
+
+#### P1 (new)
+
+279. **Make `/join/` look like the email it is selling.** Design/UX,
+     build loop, `templates/join.html.j2`:
+
+     - **A hero band** in the email's style: the red block with a yellow
+       date pill and *"N things to do in 5 towns"*, using the same
+       counts as the email.
+     - **The three picks as cards**, reusing `email_visuals()`: the
+       emoji, the title on its own line, a **town-coloured date chip**
+       (`EMAIL_TOWN_COLORS`, so a town has the same colour on the page as
+       in the inbox), the time and venue, and one badge.
+     - **"See a recent issue →"**, linking to the newest
+       `/issues/<date>/` once item 280 ships. Until then, link to
+       `/combined-email-preview.html`, which already exists.
+     - Keep it free of navigation and `noindex`, as item 277 specified,
+       and keep the form above the picks on phones.
+
+     Tests: three cards render with distinct town colours; the
+     recent-issue link resolves; the existing UTM pass-through still
+     works. Ship before the owner starts item 276's ad test, since that
+     traffic lands here.
+
+#### P2 (new)
+
+280. **Keep every sent issue at `/issues/<date>/` on the site's own
+     domain.** Build loop. When `send_newsletter.py` records a send in
+     `data/send_history.json`, also copy that send's HTML to
+     `docs/issues/<YYYY-MM-DD>/index.html` with these changes: strip the
+     hidden preheader, add a `<link rel="canonical">` to itself and a
+     small site header and footer, and keep the dated content exactly as
+     sent. Add an `/issues/` index (newest first) and list it in the
+     sitemap and `llms.txt`. Never regenerate an old issue from current
+     data, since an archive that changes after the fact is not an
+     archive.
+
+     **Owner, 1 minute, after the first two issues are up:** in
+     Buttondown → Settings → Archives, turn on the free **noindex**
+     toggle, so search engines index the site's copy rather than
+     `buttondown.com`'s. Item 224's reason for keeping Buttondown's
+     archive indexed, that it was "the only indexed surface carrying the
+     brand", no longer holds.
+
+#### P3 (new)
+
+281. **Patch: a paid fallback channel, and a rule.** **Rule, add to the
+     working agreements:** never post the weekly guide or site links to
+     Patch as free community content. Patch reserves free posts for
+     non-commercial use, and breaching that on the page that outranks
+     the site for its head term is the wrong trade. **Channel:** if item
+     276's Meta test misses its $1-per-confirmed-subscriber line, the next
+     $30 test is a **Patch featured event** for one weekend across the
+     five towns' Patch pages, linking to `/join/?utm_source=patch`, judged
+     by the same line. No build work beyond the UTM value, which `/join/`
+     already passes through.
+
+Competitors reviewed this pass: **Patch's posting rules and paid
+featuring** ($1–2 per day per community; free posts are non-commercial
+only), and **Veterans Day ceremony listings** (no 2026 dates yet;
+American Legion and VFW posts host them). The pass also revisited
+**Buttondown's archive** now that item 224's condition, an indexed
+domain, is met. The design/UX angle is **the `/join/` page read at phone
+width**.
+
+
 ## Working agreements for autonomous iteration
 
 - Cadence is three times a day (05:51, 13:51 and 21:51 UTC) for this
