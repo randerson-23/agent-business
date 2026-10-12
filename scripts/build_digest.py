@@ -1646,6 +1646,46 @@ def prepare_tree_lighting(region_cfg: dict, year: int) -> dict | None:
     return {"url": block["url"], "label": label, "date_iso": day.isoformat() if label else None}
 
 
+def build_join_picks(sections: list[dict], limit: int = 3) -> list[dict]:
+    """This weekend's "Don't miss" picks for /join/ (ROADMAP.md item 277): the
+    same choice the combined email makes, from the same per-region sections."""
+    blocks = []
+    for i, s in enumerate(sections):
+        attendable = [e for e in s["weekend_events"] if e.get("attendable", True)]
+        blocks.append(
+            {
+                "region_name": s["region_name"],
+                "attendable_events": prepare_email_events(attendable, limit=4),
+                "color": EMAIL_TOWN_COLORS[i % len(EMAIL_TOWN_COLORS)][0],
+            }
+        )
+    return pick_email_top_picks(blocks, limit)
+
+
+def render_join_page(
+    sections: list[dict], now: datetime, analytics: dict | None = None, newsletter: dict | None = None
+) -> str:
+    """The /join/ landing page (ROADMAP.md item 277), for traffic sent on
+    purpose: one headline, this weekend's picks, and the signup with a town
+    picker whose value becomes the subscriber's `town:` tag. noindex."""
+    env = get_template_env()
+    template = env.get_template("join.html.j2")
+    tag_options = [("town:all", "All towns")] + [
+        ("town:" + s["region_url"].rstrip("/").rsplit("/", 1)[-1], s["region_name"]) for s in sections
+    ]
+    return template.render(
+        picks=build_join_picks(sections),
+        tag_options=tag_options,
+        town_names=_join_names([s["region_name"] for s in sections]),
+        newsletter=newsletter or {"configured": False},
+        hub_url=SITE_BASE_URL,
+        canonical_url=SITE_BASE_URL + "join/",
+        generated_at=now.strftime("%Y-%m-%d %H:%M UTC"),
+        analytics=analytics,
+        og_image_url=SITE_BASE_URL + "og/default.png",
+    )
+
+
 def render_holidays_page(
     entries: list[dict], now: datetime, analytics: dict | None = None, newsletter: dict | None = None
 ) -> str:
@@ -4987,6 +5027,10 @@ def main() -> None:
     trick_or_treat_dir.mkdir(parents=True, exist_ok=True)
     (trick_or_treat_dir / "index.html").write_text(trick_or_treat_html, encoding="utf-8")
     logger.info("Wrote %s", trick_or_treat_dir / "index.html")
+    join_dir = OUTPUT_DIR / "join"
+    join_dir.mkdir(parents=True, exist_ok=True)
+    (join_dir / "index.html").write_text(render_join_page(combined_email_sections, now, analytics, newsletter), encoding="utf-8")
+    logger.info("Wrote %s", join_dir / "index.html")
     holidays_dir = OUTPUT_DIR / "holidays"
     holidays_dir.mkdir(parents=True, exist_ok=True)
     (holidays_dir / "index.html").write_text(render_holidays_page(holidays_entries, now, analytics, newsletter), encoding="utf-8")

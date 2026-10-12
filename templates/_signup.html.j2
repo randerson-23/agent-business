@@ -36,6 +36,7 @@
   .newsletter-open[hidden] { display: none; }
   .newsletter-open:hover { background: var(--accent-2-text); border-color: var(--accent-2-text); }
   .newsletter-done .newsletter-note { font-size: 12px; color: var(--muted); }
+  .newsletter-town { font: inherit; border: 2px solid var(--ink); border-radius: 0; padding: 8px 10px; background: var(--bg); color: var(--ink); }
   .newsletter-form-row { display: flex; gap: 0; flex-wrap: wrap; }
   .newsletter-form-row input[type="email"] {
     font: inherit;
@@ -61,11 +62,18 @@
 </style>
 {%- endmacro %}
 
-{% macro signup_form(newsletter, block_id, input_id, tag, campaign, headline=none) -%}
+{% macro signup_form(newsletter, block_id, input_id, tag, campaign, headline=none, tag_options=none) -%}
 {% if newsletter and newsletter.configured -%}
 <div class="newsletter" id="{{ block_id }}">
   <form class="newsletter-form" action="https://buttondown.com/api/emails/embed-subscribe/{{ newsletter.buttondown_username }}" method="post" target="bd-hidden-frame">
+    {% if tag_options -%}
+    <label class="sr-only" for="{{ input_id }}-town">Your town</label>
+    <select name="tag" id="{{ input_id }}-town" class="newsletter-town">
+      {% for value, label in tag_options %}<option value="{{ value }}"{% if value == tag %} selected{% endif %}>{{ label }}</option>{% endfor %}
+    </select>
+    {%- else -%}
     <input type="hidden" name="tag" value="{{ tag }}">
+    {%- endif %}
     <input type="hidden" name="utm_source" value="site">
     <input type="hidden" name="utm_campaign" value="{{ campaign }}">
     <div class="newsletter-copy">
