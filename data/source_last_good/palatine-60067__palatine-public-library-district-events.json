@@ -1,5 +1,5 @@
 {
- "fetched_at": "2026-10-12T15:42:29+00:00",
+ "fetched_at": "2026-10-12T17:58:51+00:00",
  "items": [
   {
    "date": null,
@@ -52,12 +52,6 @@
   {
    "date": null,
    "detail": "",
-   "title": "Spooky Comics Camp",
-   "url": "https://www.palatinelibrary.org/event/cartooning-workshop-227469"
-  },
-  {
-   "date": null,
-   "detail": "",
    "title": "Not-so-Spooky Storytime",
    "url": "https://www.palatinelibrary.org/event/not-so-spooky-storytime-crabtree-nature-center-228438"
   },
@@ -78,6 +72,12 @@
    "detail": "",
    "title": "Baby Storytime",
    "url": "https://www.palatinelibrary.org/event/baby-storytime-227056"
+  },
+  {
+   "date": null,
+   "detail": "",
+   "title": "Citizenship Class",
+   "url": "https://www.palatinelibrary.org/event/citizenship-class-225560"
   }
  ],
  "source": "Palatine Public Library District — Events"
