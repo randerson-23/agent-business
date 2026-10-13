@@ -4921,3 +4921,32 @@ def test_halloween_banner_leads_the_homepage_in_season_and_disappears_after():
     assert top < html.index('<header class="hero">')
     assert 'href="trick-or-treat/"' in html[top:]
     assert "Arlington Heights <strong>3–7 PM</strong>" in html
+
+
+def _holiday_entries():
+    return [
+        {"region_name": "Palatine", "tree": {"date_iso": "2026-11-21"}},
+        {"region_name": "Wheeling", "tree": {"date_iso": None}},
+    ]
+
+
+def test_holiday_banner_windows_and_handover_from_halloween():
+    # ROADMAP.md item 285.
+    banner = build_digest.build_holiday_banner
+    at = lambda m, d: datetime(2026, m, d, 18, tzinfo=timezone.utc)
+    assert banner(_holiday_entries(), at(10, 31)) is None  # Halloween banner's last day
+    assert banner(_holiday_entries(), at(11, 1)) is not None
+    assert banner(_holiday_entries(), at(12, 24)) is not None
+    assert banner(_holiday_entries(), at(12, 25)) is None
+    assert banner([], at(11, 5)) is None
+    # Only one banner at a time: wherever the Halloween banner shows, this one does not.
+    halloween = [{"region_name": "A", "hours": "3-7 PM"}]
+    for m, d in ((10, 12), (10, 31), (11, 1), (11, 3)):
+        assert not (build_digest.build_halloween_banner(halloween, at(m, d)) and banner(_holiday_entries(), at(m, d)))
+
+
+def test_holiday_banner_pills_and_early_bird_offer():
+    b = build_digest.build_holiday_banner(_holiday_entries(), datetime(2026, 11, 15, 18, tzinfo=timezone.utc))
+    assert b["towns"] == [{"name": "Palatine", "date": "Sat Nov 21"}, {"name": "Wheeling", "date": "date TBA"}]
+    assert b["offer"] is True
+    assert build_digest.build_holiday_banner(_holiday_entries(), datetime(2026, 11, 16, 18, tzinfo=timezone.utc))["offer"] is False

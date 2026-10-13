@@ -15286,7 +15286,7 @@ first time, and plans what replaces the Halloween banner on Nov 1.
 
 #### P1 (new)
 
-285. **Make the homepage banner seasonal: Halloween, then holidays,
+285. 🟡 **DONE for Nov 1 – Dec 24 (2026-10-13): the holiday banner (tree-lighting pills from item 274's config, "date TBA" where unposted, a $20 listing offer through Nov 15 linking to a mailto, handover from Halloween's last day, tests). The Dec 15 – Jan 3 winter-break banner waits for item 259's page.** **Make the homepage banner seasonal: Halloween, then holidays,
      then winter break.** Design/UX, build loop. Generalise today's
      `build_halloween_banner()` into one banner per window, with the
      windows taken from **item 263's email registry**, so the homepage
@@ -15330,7 +15330,7 @@ first time, and plans what replaces the Halloween banner on Nov 1.
 
 #### P2 (new)
 
-287. **Add Des Plaines Theatre and Metropolis through their iCal feeds,
+287. 🟡 **PARTLY DONE (2026-10-13): probes for both `?ical=1` URLs added to `config/url_probes.yaml` (read `data/url_probes.json` after the run, then add the sources that return `BEGIN:VCALENDAR`); Hey Nonny added as an Arlington Heights evergreen link to `heynonny.com/shows`, no dates.** **Add Des Plaines Theatre and Metropolis through their iCal feeds,
      and park Hey Nonny as a link.** Build loop, item 282 step 2.
      - **Des Plaines Theatre** (Des Plaines) and **Metropolis**
        (Arlington Heights): both run The Events Calendar, so add

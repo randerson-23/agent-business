@@ -94,3 +94,18 @@ probes:
       - 'BEGIN:VCALENDAR'
       - '"@type": ?"Event"'
     follow: '(?i)events|shows|opendate'
+
+  # Round 14 (item 287): the two Events Calendar exports, probed before they are
+  # added as sources, since a site can disable the export.
+  - url: https://desplainestheatre.com/events/?ical=1
+    item: 287
+    purpose: Des Plaines Theatre - does the Events Calendar iCal export return a calendar?
+    patterns:
+      - 'BEGIN:VCALENDAR'
+      - 'BEGIN:VEVENT'
+  - url: https://www.metropolisarts.com/events/?ical=1
+    item: 287
+    purpose: Metropolis - does the Events Calendar iCal export return a calendar?
+    patterns:
+      - 'BEGIN:VCALENDAR'
+      - 'BEGIN:VEVENT'

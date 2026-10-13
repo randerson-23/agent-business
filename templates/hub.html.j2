@@ -340,6 +340,31 @@
     .halloween .jack-glow { animation: jack-glow 3s ease-in-out infinite; }
     @keyframes jack-glow { 0%,100% { opacity: .95; } 50% { opacity: .6; } }
   }
+  /* Holiday banner (ROADMAP.md item 285): Nov 1 - Dec 24, fixed winter colours
+     (deep green, red, gold) that read the same in light and dark mode. Inline SVG. */
+  .holiday {
+    position: relative; overflow: hidden;
+    background: linear-gradient(135deg, #0f3d2e 0%, #14532d 60%, #7f1d1d 130%);
+    color: #fdf6e3; border-bottom: 4px solid #f5c542;
+  }
+  .holiday-lights { display: block; width: 100%; height: 22px; }
+  .holiday-inner { position: relative; max-width: 1080px; margin: 0 auto; padding: 8px 20px 22px; }
+  .holiday-kicker { font-size: 12px; font-weight: 800; letter-spacing: 2px; text-transform: uppercase; color: #f5c542; }
+  .holiday h2 { margin: 4px 0 10px; font-size: clamp(22px, 4.2vw, 32px); line-height: 1.15; color: #ffffff; }
+  .holiday h2 .gold { color: #f5c542; }
+  .holiday-dates { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 14px; padding: 0; list-style: none; }
+  .holiday-dates li { background: rgba(245,197,66,.14); border: 1px solid rgba(245,197,66,.55); border-radius: 999px; padding: 4px 12px; font-size: 14px; white-space: nowrap; }
+  .holiday-dates li strong { color: #f5c542; font-weight: 800; }
+  .holiday-cta { display: inline-block; background: #f5c542; color: #14301f; font-weight: 800; text-decoration: none; padding: 10px 18px; border-radius: 999px; box-shadow: 0 0 0 3px rgba(245,197,66,.25); margin: 0 10px 8px 0; }
+  .holiday-cta:hover, .holiday-cta:focus-visible { background: #ffd966; }
+  .holiday-offer { display: inline-block; color: #fdf6e3; font-weight: 700; font-size: 14px; text-decoration: underline; margin-bottom: 8px; }
+  .holiday-offer:hover, .holiday-offer:focus-visible { color: #f5c542; }
+  @media (prefers-reduced-motion: no-preference) {
+    .holiday-lights circle { animation: holiday-twinkle 2.6s ease-in-out infinite; }
+    .holiday-lights circle:nth-child(3n+2) { animation-delay: .9s; }
+    .holiday-lights circle:nth-child(3n) { animation-delay: 1.7s; }
+    @keyframes holiday-twinkle { 0%,100% { opacity: 1; } 50% { opacity: .45; } }
+  }
   @media (max-width: 560px) {
     .halloween-inner { flex-direction: column; align-items: flex-start; gap: 10px; padding: 18px 16px; }
     .halloween-art { width: 72px; height: 72px; }
@@ -390,6 +415,20 @@
         <a class="halloween-cta" href="trick-or-treat/">See hours, trunk-or-treats &amp; Halloween events &rarr;</a>
         <span class="halloween-countdown">👻 {{ halloween.countdown }}</span>
       </div>
+    </div>
+  </section>
+  {% endif %}
+{% if holiday %}
+  <section class="holiday" aria-labelledby="holiday-heading">
+    <svg class="holiday-lights" viewBox="0 0 1200 22" preserveAspectRatio="xMidYMin slice" aria-hidden="true"><path d="M0 4 Q300 20 600 6 T1200 4" stroke="#0a2a1f" stroke-width="2" fill="none"/><circle cx="20" cy="11" r="5" fill="#ef4444"/><circle cx="60" cy="15" r="5" fill="#f5c542"/><circle cx="100" cy="11" r="5" fill="#34d399"/><circle cx="140" cy="15" r="5" fill="#60a5fa"/><circle cx="180" cy="11" r="5" fill="#ef4444"/><circle cx="220" cy="15" r="5" fill="#f5c542"/><circle cx="260" cy="11" r="5" fill="#34d399"/><circle cx="300" cy="15" r="5" fill="#60a5fa"/><circle cx="340" cy="11" r="5" fill="#ef4444"/><circle cx="380" cy="15" r="5" fill="#f5c542"/><circle cx="420" cy="11" r="5" fill="#34d399"/><circle cx="460" cy="15" r="5" fill="#60a5fa"/><circle cx="500" cy="11" r="5" fill="#ef4444"/><circle cx="540" cy="15" r="5" fill="#f5c542"/><circle cx="580" cy="11" r="5" fill="#34d399"/><circle cx="620" cy="15" r="5" fill="#60a5fa"/><circle cx="660" cy="11" r="5" fill="#ef4444"/><circle cx="700" cy="15" r="5" fill="#f5c542"/><circle cx="740" cy="11" r="5" fill="#34d399"/><circle cx="780" cy="15" r="5" fill="#60a5fa"/><circle cx="820" cy="11" r="5" fill="#ef4444"/><circle cx="860" cy="15" r="5" fill="#f5c542"/><circle cx="900" cy="11" r="5" fill="#34d399"/><circle cx="940" cy="15" r="5" fill="#60a5fa"/><circle cx="980" cy="11" r="5" fill="#ef4444"/><circle cx="1020" cy="15" r="5" fill="#f5c542"/><circle cx="1060" cy="11" r="5" fill="#34d399"/><circle cx="1100" cy="15" r="5" fill="#60a5fa"/><circle cx="1140" cy="11" r="5" fill="#ef4444"/><circle cx="1180" cy="15" r="5" fill="#f5c542"/></svg>
+    <div class="holiday-inner">
+      <div class="holiday-kicker">🎄 The holidays &middot; November &amp; December</div>
+      <h2 id="holiday-heading">Tree lightings &amp; holiday events in all five towns, <span class="gold">in one place</span></h2>
+      <ul class="holiday-dates">
+        {% for t in holiday.towns %}<li>{{ t.name }} <strong>{{ t.date }}</strong></li>{% endfor %}
+      </ul>
+      <a class="holiday-cta" href="holidays/">See tree lightings &amp; holiday events &rarr;</a>
+      {% if holiday.offer and contact_email %}<a class="holiday-offer" href="mailto:{{ contact_email }}?subject=Holiday%20guide%20listing">Local business? List your shop in the holiday guide, $20 &rarr;</a>{% endif %}
     </div>
   </section>
   {% endif %}
