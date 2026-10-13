@@ -15267,6 +15267,95 @@ design/UX angle is **a single "Night out" pick for the email's adult
 readers**.
 
 
+#### Research pass 2026-10-13, morning (seventy-second pass)
+
+The build loop ran item 282's first step and probed four arts venues.
+The owner asked for, and got, a **Halloween banner at the top of the
+homepage**: every town's hours as pills, a countdown, and a button to
+`/trick-or-treat/`, shown Sept 1 – Oct 31. Tomorrow's send is the first
+with tracking on and the first to be archived at `/issues/`. This pass
+reads the probe answers so step 2 can add the sources correctly the
+first time, and plans what replaces the Halloween banner on Nov 1.
+
+| Angle | What it is / what we found | Why it matters here |
+|---|---|---|
+| **Item 282's probe answers** (`data/url_probes.json`, 2026-10-13 06:00 UTC) | **Harper College:** `events.harpercollege.edu/calendar.ics` returns **200 with 371 events** (Localist), and `/api/2/events?days=60` answers JSON. **Des Plaines Theatre** and **Metropolis**: both pages carry the JSON-LD array format and the *"Export .ics file"* labels of **WordPress's The Events Calendar plugin**, the same plugin behind the Arlington Heights Park District feed this pipeline already reads with `?ical=1`. Metropolis' homepage JSON-LD includes ***"Chicago Kids Company presents The Tortoise and the Hare"***, a family show. **Hey Nonny:** `/shows` loads OpenDate's embed script (`od_tag.js`) with **no JSON-LD and no iCal** | Three of four venues are a config line away, using a fetcher that already exists (`ics`). The open risk is **Harper's 371 events**: a college calendar is mostly classes, deadlines and student-only sessions, which must not become "things to do this weekend" in Palatine (item 286) |
+| **Localist's API** (developer.localist.com, Stanford and UCSB integration notes) | `/api/2/events` takes `days` (up to 370), `pp`/`page` paging, and filters including **`venue_id`**, **`type[]`** with `match=any`, and **`group_id`**. It is read-only and public | Harper can be filtered **at the source** to the Performing Arts Center or to public event types, instead of guessing from titles (item 286) |
+| **Turkey trots** (seasonal check) | No Thanksgiving 5K found in any of the five towns for 2026. Results are Chicago's Lincoln Park and Grant Park races, Evanston and Elmwood Park. One aggregator mentions an unnamed "Arlington Heights" turkey trot | **No item.** Nothing confirmed to list, and the nearest races are outside ten miles. Re-check in the Nov 1 pass |
+| **What the homepage leads with after Oct 31 (design/UX)** | The new banner hides on **Nov 1**. The holiday plan, `/holidays/` (tree lightings: **Palatine Sat Nov 21, Arlington Heights Fri Nov 27**), per-town `/holiday/` listings sold at **$20 until Nov 15**, and `/winter-break/` (item 259) from Nov 15, has **no homepage presence**, only item 263's one-line email link | The holiday listings are the season's one product for sale, with a deadline inside the first two weeks of November. A homepage that goes quiet on Nov 1 hides it exactly when it matters (item 285) |
+
+#### P1 (new)
+
+285. **Make the homepage banner seasonal: Halloween, then holidays,
+     then winter break.** Design/UX, build loop. Generalise today's
+     `build_halloween_banner()` into one banner per window, with the
+     windows taken from **item 263's email registry**, so the homepage
+     and the email always agree:
+     - **Sept 1 – Oct 31:** the Halloween banner as shipped.
+     - **Nov 1 – Dec 24:** *"🎄 Holiday tree lightings & events, all five
+       towns"*, with each town's tree-lighting date as a pill
+       (**Palatine Sat Nov 21 · Arlington Heights Fri Nov 27**, the others
+       "date TBA" until confirmed, with item 274's no-guessing rule),
+       linking to `/holidays/`. A winter palette (deep green and red, gold
+       accents) and inline-SVG string lights or snowflakes, still with no
+       image files, and motion only without `prefers-reduced-motion`.
+       **Until Nov 15**, a second smaller button: *"Local business? List
+       your shop in the holiday guide, $20 →"*, linking to item 258's
+       offer. That is the early-bird deadline in front of the readers
+       who know those shops.
+     - **Dec 15 – Jan 3:** a small *"Kids off school? Winter break camps
+       & activities →"* banner, once item 259's page exists.
+
+     Tests: each window's banner, the handover dates, at most one banner
+     at a time, and the earlier-ending window winning an overlap (item
+     263's rule). **Ship by Oct 31**, so the homepage never goes a day
+     without a seasonal lead.
+
+286. **Add Harper College as a Palatine source, filtered to public
+     events.** Build loop, item 282 step 2. Use the **Localist API**,
+     not the full `.ics`: call `/api/2/events?days=45&pp=100` filtered by
+     `venue_id` for the **Performing Arts Center (Building R)** and/or the
+     public types (`type[]=…&match=any`: concerts, theatre, community,
+     family). Discover the IDs once from the API's own responses and
+     record them in the region config with a comment. Then add a
+     **title/description exclusion list** as a second guard (class,
+     registration, deadline, advising, orientation, "students only",
+     faculty meeting). Cap Harper at **6 events per weekend** so one
+     campus calendar cannot crowd out the village and library in the
+     town with the fewest events. A new `localist` fetcher is about 40
+     lines (JSON in, the usual event dicts out). If that is more than
+     this PR wants, use the `.ics` with the same exclusion list and cap.
+     Tests: a class session and a registration deadline are dropped; a
+     concert is kept; the cap holds.
+
+#### P2 (new)
+
+287. **Add Des Plaines Theatre and Metropolis through their iCal feeds,
+     and park Hey Nonny as a link.** Build loop, item 282 step 2.
+     - **Des Plaines Theatre** (Des Plaines) and **Metropolis**
+       (Arlington Heights): both run The Events Calendar, so add
+       `https://desplainestheatre.com/events/?ical=1` and
+       `https://metropolisarts.com/events/?ical=1` as `ics` sources,
+       tagged `art_culture`. Probe both URLs first in the same PR's
+       `url_probes.yaml` round, since a site can disable the export, and
+       add only the ones that return `BEGIN:VCALENDAR`.
+     - **Hey Nonny** has no machine-readable feed (OpenDate's embed is
+       client-side). Add one `evergreen` entry, *"Live music most nights
+       at Hey Nonny, downtown Arlington Heights"*, linking to
+       `heynonny.com/shows`, with no copied dates. Its Friday free
+       happy-hour music goes in only if `/shows` itself confirms it,
+       as item 282 said.
+     - These two feeds are what item 283 (Metropolis' family holiday
+       shows on `/holidays/`) and item 284 (the email's "Night out" line)
+       read from, so neither needs dates typed in by hand.
+
+Competitors reviewed this pass: the **probe answers for four arts
+venues** (three publish iCal; Hey Nonny does not), **Localist's public
+API filters**, and **turkey trots** in the five towns (none found). The
+design/UX angle is **what the homepage leads with once Halloween is
+over**.
+
+
 ## Working agreements for autonomous iteration
 
 - Cadence is three times a day (05:51, 13:51 and 21:51 UTC) for this
