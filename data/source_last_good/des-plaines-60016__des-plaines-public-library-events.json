@@ -1,24 +1,6 @@
 {
- "fetched_at": "2026-10-12T22:03:24+00:00",
+ "fetched_at": "2026-10-13T02:47:34+00:00",
  "items": [
-  {
-   "date": "Mon, 12 Oct 2026 17:00:00 +0000",
-   "detail": "Monday, October 12 2026 5:00pm - 6:00pm \n Want some career, college, or scholarship advice? Need some book recommendations? Maybe sit back, relax, and play some board games or the PS5?",
-   "title": "Book a Teen Librarian",
-   "url": "https://desplaines.libnet.info/event/15509795"
-  },
-  {
-   "date": "Mon, 12 Oct 2026 17:00:00 +0000",
-   "detail": "Monday, October 12 2026 5:00pm - 6:00pm \n Bright Star Theatre is back for a fun family-friendly performance! All ages. Registration required beginning October 5th. See full description for show details.",
-   "title": "Franken-Bully! A Bright Star Theatre Production",
-   "url": "https://desplaines.libnet.info/event/17134025"
-  },
-  {
-   "date": "Mon, 12 Oct 2026 18:30:00 +0000",
-   "detail": "Monday, October 12 2026 6:30pm - 8:30pm \n Donna 847-813-6915",
-   "title": "River Pointe Condo Assoc.",
-   "url": "https://desplaines.libnet.info/event/17157731"
-  },
   {
    "date": "Tue, 13 Oct 2026 09:15:00 +0000",
    "detail": "Tuesday, October 13 2026 9:15am - 12:15pm \n For more information, please contact Oakton College at 847-635-1426",
@@ -360,6 +342,24 @@
    "detail": "Wednesday, October 21 2026 1:30pm - 2:00pm \n Ages 3-5, but all are welcome. Storytime is a fun and play-filled way to foster a lifelong love of reading and help children get ready for school. Registration required beginning September 16.",
    "title": "Preschool Storytime",
    "url": "https://desplaines.libnet.info/event/17004188"
+  },
+  {
+   "date": "Wed, 21 Oct 2026 16:00:00 +0000",
+   "detail": "Wednesday, October 21 2026 4:00pm - 5:00pm \n Open maker workshop. Sample our featured technology or bring your own project to work on. October Spotlight: hand sewn bats.",
+   "title": "Teen Crafternoons",
+   "url": "https://desplaines.libnet.info/event/17488080"
+  },
+  {
+   "date": "Wed, 21 Oct 2026 17:00:00 +0000",
+   "detail": "Wednesday, October 21 2026 5:00pm - 6:30pm \n Interested in using the machines in the brand new Canvas Makerspace? Des Plaines Public Library cardholders must attend an orientation and sign a waiver. Register for your orientation today!",
+   "title": "Makerspace Orientations: In-Person",
+   "url": "https://desplaines.libnet.info/event/15980141"
+  },
+  {
+   "date": "Wed, 21 Oct 2026 19:00:00 +0000",
+   "detail": "Wednesday, October 21 2026 7:00pm - 7:30pm \n Best for families with children ages 2-7, but all are welcome. See full description for details. Registration required beginning September 16.",
+   "title": "Family Storytime",
+   "url": "https://desplaines.libnet.info/event/17004255"
   }
  ],
  "source": "Des Plaines Public Library — Events"

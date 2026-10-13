@@ -308,6 +308,41 @@
     .hero h1 { font-size: 28px; }
     .wrap { padding: 24px 14px 48px; }
   }
+  /* Halloween banner (owner request 2026-10-13): front and centre from Sept 1
+     to Oct 31, in fixed Halloween colours that read
+     the same in light and dark mode. Art is inline SVG, no image files. */
+  .halloween {
+    position: relative; overflow: hidden;
+    background: radial-gradient(circle at 85% 20%, #3b1d5e 0%, #1a0f2b 55%, #120a1f 100%);
+    color: #fff4e6; border-bottom: 4px solid #ff7a00;
+  }
+  .halloween-inner { position: relative; max-width: 1080px; margin: 0 auto; padding: 22px 20px 20px; display: flex; gap: 18px; align-items: center; }
+  .halloween-art { flex: 0 0 auto; width: 140px; height: 140px; }
+  .halloween-art svg { width: 100%; height: 100%; display: block; }
+  .halloween-copy { flex: 1 1 auto; min-width: 0; }
+  .halloween-kicker { font-size: 12px; font-weight: 800; letter-spacing: 2px; text-transform: uppercase; color: #ffb347; }
+  .halloween h2 { margin: 4px 0 10px; font-size: clamp(22px, 4.2vw, 32px); line-height: 1.15; color: #ffffff; }
+  .halloween h2 .pumpkin-orange { color: #ff8c1a; }
+  .halloween-hours { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 14px; padding: 0; list-style: none; }
+  .halloween-hours li { background: rgba(255,122,0,.14); border: 1px solid rgba(255,140,26,.55); border-radius: 999px; padding: 4px 12px; font-size: 14px; white-space: nowrap; }
+  .halloween-hours li strong { color: #ffb347; font-weight: 800; }
+  .halloween-cta { display: inline-block; background: #ff7a00; color: #1a0f2b; font-weight: 800; text-decoration: none; padding: 10px 18px; border-radius: 999px; box-shadow: 0 0 0 3px rgba(255,122,0,.25); }
+  .halloween-cta:hover, .halloween-cta:focus-visible { background: #ffa040; }
+  .halloween-countdown { display: inline-block; margin-left: 10px; font-weight: 700; color: #d9c2ff; font-size: 14px; }
+  .halloween .bat { position: absolute; fill: #0b0613; opacity: .9; }
+  @media (prefers-reduced-motion: no-preference) {
+    .halloween .bat { animation: bat-flap 2.4s ease-in-out infinite; transform-origin: center; }
+    .halloween .bat.b2 { animation-delay: .8s; }
+    .halloween .bat.b3 { animation-delay: 1.5s; }
+    @keyframes bat-flap { 0%,100% { transform: translateY(0) scaleY(1); } 50% { transform: translateY(-4px) scaleY(.7); } }
+    .halloween .jack-glow { animation: jack-glow 3s ease-in-out infinite; }
+    @keyframes jack-glow { 0%,100% { opacity: .95; } 50% { opacity: .6; } }
+  }
+  @media (max-width: 560px) {
+    .halloween-inner { flex-direction: column; align-items: flex-start; gap: 10px; padding: 18px 16px; }
+    .halloween-art { width: 72px; height: 72px; }
+    .halloween-countdown { display: block; margin: 10px 0 0; }
+  }
 </style>
 <style>
   .newsletter {
@@ -369,6 +404,40 @@
       <a href="about/">About</a>
     </nav>
   </div>
+
+  <section class="halloween" aria-labelledby="halloween-heading">
+    <svg class="bat b1" viewBox="0 0 64 32" width="46" style="top:14px; right:18%;" aria-hidden="true"><path d="M32 12c-2-6-6-8-10-8 2 3 2 6 0 8-3-2-7-2-10 0 1-3 0-6-4-8-4 4-6 10-6 14 4-3 9-3 13 0 2-3 6-4 9-2 3-3 6-4 8-10 2 6 5 7 8 10 3-2 7-1 9 2 4-3 9-3 13 0 0-4-2-10-6-14-4 2-5 5-4 8-3-2-7-2-10 0-2-2-2-5 0-8-4 0-8 2-10 8z"/></svg>
+    <svg class="bat b2" viewBox="0 0 64 32" width="30" style="top:52px; right:9%;" aria-hidden="true"><path d="M32 12c-2-6-6-8-10-8 2 3 2 6 0 8-3-2-7-2-10 0 1-3 0-6-4-8-4 4-6 10-6 14 4-3 9-3 13 0 2-3 6-4 9-2 3-3 6-4 8-10 2 6 5 7 8 10 3-2 7-1 9 2 4-3 9-3 13 0 0-4-2-10-6-14-4 2-5 5-4 8-3-2-7-2-10 0-2-2-2-5 0-8-4 0-8 2-10 8z"/></svg>
+    <svg class="bat b3" viewBox="0 0 64 32" width="22" style="top:24px; right:4%;" aria-hidden="true"><path d="M32 12c-2-6-6-8-10-8 2 3 2 6 0 8-3-2-7-2-10 0 1-3 0-6-4-8-4 4-6 10-6 14 4-3 9-3 13 0 2-3 6-4 9-2 3-3 6-4 8-10 2 6 5 7 8 10 3-2 7-1 9 2 4-3 9-3 13 0 0-4-2-10-6-14-4 2-5 5-4 8-3-2-7-2-10 0-2-2-2-5 0-8-4 0-8 2-10 8z"/></svg>
+    <div class="halloween-inner">
+      <div class="halloween-art" aria-hidden="true">
+        <svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="92" cy="26" r="18" fill="#f7e7b4" opacity=".9"/>
+          <circle cx="98" cy="22" r="16" fill="#1a0f2b" opacity=".55"/>
+          <path d="M60 30c-2-8 2-14 8-16l3 5c-4 2-6 6-5 11z" fill="#4d7c0f"/>
+          <ellipse cx="38" cy="72" rx="24" ry="30" fill="#e8620c"/>
+          <ellipse cx="82" cy="72" rx="24" ry="30" fill="#e8620c"/>
+          <ellipse cx="60" cy="72" rx="26" ry="32" fill="#ff7a00"/>
+          <g class="jack-glow" fill="#ffd166">
+            <path d="M40 62l10-12 8 12z"/>
+            <path d="M62 62l8-12 10 12z"/>
+            <path d="M56 74l4-6 4 6z"/>
+            <path d="M34 82c8 10 44 10 52 0-4 10-12 16-26 16s-22-6-26-16zm12 3v6h6v-5zm16 1v6h6v-6z"/>
+          </g>
+        </svg>
+      </div>
+      <div class="halloween-copy">
+        <div class="halloween-kicker">🎃 Halloween &middot; Saturday, October 31</div>
+        <h2 id="halloween-heading">Trick-or-treat hours for all five towns, <span class="pumpkin-orange">in one place</span></h2>
+        <ul class="halloween-hours">
+          <li>Arlington Heights <strong>3–7 PM</strong></li><li>Des Plaines <strong>No set hours</strong></li><li>Mount Prospect <strong>3–8 PM</strong></li><li>Palatine <strong>3–7 PM</strong></li><li>Wheeling <strong>3–7 PM</strong></li>
+        </ul>
+        <a class="halloween-cta" href="trick-or-treat/">See hours, trunk-or-treats &amp; Halloween events &rarr;</a>
+        <span class="halloween-countdown">👻 19 days to go</span>
+      </div>
+    </div>
+  </section>
+  
   <!-- header, not div (ROADMAP.md Phase 11 #62, found by a real axe-core
        audit): everything in the hero previously sat outside any
        landmark - <main> only wraps the content below it. -->
@@ -399,7 +468,7 @@
     </a>
     <div class="bento-tile bento-stat">
       <span class="bento-stat-number">5</span>
-      <span class="bento-stat-label">towns · 1566 live updates this week</span>
+      <span class="bento-stat-label">towns · 1549 live updates this week</span>
     </div>
   </div>
 
@@ -409,7 +478,7 @@
        merged views + four region tiles is already the upper bound for a
        phone screen without these becoming full tiles too). -->
   <div class="hub-secondary-links">
-    <a href="today/">📍 Today (18) &rarr;</a>
+    <a href="today/">📍 Today (1) &rarr;</a>
     <a href="free/">🎟️ Free things to do (33) &rarr;</a>
   </div>
 
@@ -436,28 +505,28 @@
       <span class="zip">60016 · IL</span>
       <h2>Des Plaines</h2>
       <p>Pulled automatically from the City, Public Library, and Park District — plus Lake Park — several times a week, just north of O&#39;Hare.</p>
-      <span class="count">474 live updates this week</span>
+      <span class="count">471 live updates this week</span>
     </a>
     
     <a class="bento-tile region-card" href="mount-prospect-60056/">
       <span class="zip">60056 · IL</span>
       <h2>Mount Prospect</h2>
       <p>Pulled automatically from the Village, Public Library, and Park District — plus Randhurst Village, Melas Park, Lions Park, and downtown Emerson &amp; Busse — several times a week.</p>
-      <span class="count">269 live updates this week</span>
+      <span class="count">261 live updates this week</span>
     </a>
     
     <a class="bento-tile region-card" href="palatine-60067/">
       <span class="zip">60067 · IL</span>
       <h2>Palatine</h2>
       <p>Pulled automatically from the Village, Public Library District, and Park District — plus Downtown Palatine and the Train Station farmers&#39; market lot — several times a week, northwest of Mount Prospect.</p>
-      <span class="count">109 live updates this week</span>
+      <span class="count">107 live updates this week</span>
     </a>
     
     <a class="bento-tile region-card" href="wheeling-60090/">
       <span class="zip">60090 · IL</span>
       <h2>Wheeling</h2>
       <p>Pulled automatically from the Village, Indian Trails Public Library, and Wheeling Park District — plus Heritage Park and Chicago Executive Airport — several times a week.</p>
-      <span class="count">439 live updates this week</span>
+      <span class="count">435 live updates this week</span>
     </a>
     
   </div>
@@ -511,7 +580,7 @@ document.querySelectorAll(".newsletter-form").forEach(function (f) {
     <a href="https://google.com/preferences/source?q=withintenmiles.com" rel="noopener">Add us as a preferred source on Google</a>.
     <a href="trick-or-treat/">Trick-or-treat hours</a>.
     <br>See something wrong or missing? <a href="mailto:hello@withintenmiles.com?subject=Correction&amp;body=What%27s%20wrong%20or%20missing%2C%20and%20which%20region%2Fevent%3A%20">Email us</a> — corrections get made the same week.
-    <br>Generated 2026-10-12 22:03 UTC.
+    <br>Generated 2026-10-13 02:47 UTC.
     <br>Visits counted with privacy-first, cookie-free analytics — no personal data collected.
   </footer>
   </div>

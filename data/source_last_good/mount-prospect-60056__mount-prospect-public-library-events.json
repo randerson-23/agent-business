@@ -1,54 +1,6 @@
 {
- "fetched_at": "2026-10-12T22:03:24+00:00",
+ "fetched_at": "2026-10-13T02:47:34+00:00",
  "items": [
-  {
-   "date": "Mon, 12 Oct 2026 09:30:00 +0000",
-   "detail": "Monday, October 12 2026 9:30am - 10:00am \n Bring the whole family and join us for an interactive storytime with high-energy stories, songs, and activities.",
-   "title": "Family Storytime",
-   "url": "https://mppl.libnet.info/event/16553299"
-  },
-  {
-   "date": "Mon, 12 Oct 2026 10:00:00 +0000",
-   "detail": "Monday, October 12 2026 10:00am - 11:30am \n Craft and create with us! We'll provide an idea and supplies; then you create your own masterpiece.",
-   "title": "Creation Station: Mini Monsters",
-   "url": "https://mppl.libnet.info/event/16288686"
-  },
-  {
-   "date": "Mon, 12 Oct 2026 10:30:00 +0000",
-   "detail": "Monday, October 12 2026 10:30am - 11:00am \n Grow your little learner's literacy and language skills at this playful storytime full of wiggles, wonder, and fun!",
-   "title": "Toddler Storytime",
-   "url": "https://mppl.libnet.info/event/16553329"
-  },
-  {
-   "date": "Mon, 12 Oct 2026 16:30:00 +0000",
-   "detail": "Monday, October 12 2026 4:30pm - 5:15pm \n Let's explore our weird and wacky world with hands-on activities that might make you laugh, wrinkle your nose, or squeal with delight.",
-   "title": "Gross Science",
-   "url": "https://mppl.libnet.info/event/16640961"
-  },
-  {
-   "date": "Mon, 12 Oct 2026 17:00:00 +0000",
-   "detail": "Monday, October 12 2026 5:00pm - 6:00pm \n Give back to the community and earn volunteer hours at the same time.",
-   "title": "Teen Volunteering",
-   "url": "https://mppl.libnet.info/event/16749798"
-  },
-  {
-   "date": "Mon, 12 Oct 2026 18:00:00 +0000",
-   "detail": "Monday, October 12 2026 6:00pm - 6:45pm \n Let's explore our weird and wacky world with hands-on activities that might make you laugh, wrinkle your nose, or squeal with delight.",
-   "title": "Gross Science",
-   "url": "https://mppl.libnet.info/event/16640964"
-  },
-  {
-   "date": "Mon, 12 Oct 2026 19:00:00 +0000",
-   "detail": "Monday, October 12 2026 7:00pm - 8:30pm \n  Join financial educator Karen Chan for an overview of Medicare options to help you understand your choices, avoid costly mistakes, and select coverage that fits your healthcare needs.",
-   "title": "Understanding Medicare Choices",
-   "url": "https://mppl.libnet.info/event/15371247"
-  },
-  {
-   "date": "Mon, 12 Oct 2026 19:00:00 +0000",
-   "detail": "Monday, October 12 2026 7:00pm - 8:00pm \n Join others in the community for a casual discussion of our One Book, One Village read, Project Hail Mary by Andy Weir.",
-   "title": "Monday Night Book Group",
-   "url": "https://mppl.libnet.info/event/15980022"
-  },
   {
    "date": "Tue, 13 Oct 2026 09:30:00 +0000",
    "detail": "Tuesday, October 13 2026 9:30am - 10:00am \n A lifelong love of reading starts at birth! Join us for songs, rhymes, stories, and playtime made specially for infants.",
@@ -360,6 +312,54 @@
    "detail": "Thursday, October 22 2026 9:30am - 10:00am \n A lifelong love of reading starts at birth! Join us for songs, rhymes, stories, and playtime made specially for infants.",
    "title": "Baby Storytime",
    "url": "https://mppl.libnet.info/event/16553493"
+  },
+  {
+   "date": "Thu, 22 Oct 2026 10:30:00 +0000",
+   "detail": "Thursday, October 22 2026 10:30am - 11:00am \n Bring the whole family and join us for an interactive storytime with high-energy stories, songs, and activities.",
+   "title": "Family Storytime",
+   "url": "https://mppl.libnet.info/event/16553522"
+  },
+  {
+   "date": "Thu, 22 Oct 2026 18:00:00 +0000",
+   "detail": "Thursday, October 22 2026 6:00pm - 7:00pm \n Learn how to create objects using Tinkercad, a digital-design computer software.",
+   "title": "3D Printing for Kids: Learn Tinkercad",
+   "url": "https://mppl.libnet.info/event/16391958"
+  },
+  {
+   "date": "Thu, 22 Oct 2026 19:00:00 +0000",
+   "detail": "Thursday, October 22 2026 7:00pm - 8:00pm \n  Join us for an informative session about menopause with clinical pharmacist Erin Carson, coordinator of UIC Retzky College of Pharmacy's Women's Health course.",
+   "title": "Making Sense of Menopause",
+   "url": "https://mppl.libnet.info/event/16554197"
+  },
+  {
+   "date": "Fri, 23 Oct 2026 10:00:00 +0000",
+   "detail": "Friday, October 23 2026 10:00am - 11:30am \n Enjoy the magic of storytime plus the joy of hands-on sensory fun! You and your child will enjoy time together full of new learning experiences with the flexible arrival time your family needs.",
+   "title": "Storytime Playdate: Wonderful Worlds",
+   "url": "https://mppl.libnet.info/event/16553607"
+  },
+  {
+   "date": "Fri, 23 Oct 2026 17:00:00 +0000",
+   "detail": "Friday, October 23 2026 5:00pm - 6:00pm \n Give back to the community and earn volunteer hours at the same time.",
+   "title": "Teen Volunteering",
+   "url": "https://mppl.libnet.info/event/14701895"
+  },
+  {
+   "date": "Fri, 23 Oct 2026 19:00:00 +0000",
+   "detail": "Friday, October 23 2026 7:00pm - 8:30pm \n For ages 21+. Come join us at the library for an after-hours event celebrating our One Book, One Village community read!",
+   "title": "After Hours Social",
+   "url": "https://mppl.libnet.info/event/13273437"
+  },
+  {
+   "date": "Sun, 25 Oct 2026 13:45:00 +0000",
+   "detail": "Sunday, October 25 2026 1:45pm - 4:30pm \n Step into a world of ambition, madness, and prophecy. Come see Macbeth, where every shadow hides a dagger, and nothing is as it seems.",
+   "title": "The Shakespeare Project of Chicago: Macbeth",
+   "url": "https://mppl.libnet.info/event/16138104"
+  },
+  {
+   "date": "Mon, 26 Oct 2026 10:00:00 +0000",
+   "detail": "Monday, October 26 2026 10:00am - 10:30am \n Konnichiwa! Join us for an interactive, bilingual storytime with stories, songs, rhymes, and activities that celebrate the Japanese language and culture!",
+   "title": "World Language Storytime: Japanese",
+   "url": "https://mppl.libnet.info/event/16706890"
   }
  ],
  "source": "Mount Prospect Public Library — Events"

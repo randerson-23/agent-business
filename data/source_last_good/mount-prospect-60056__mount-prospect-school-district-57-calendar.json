@@ -1,12 +1,6 @@
 {
- "fetched_at": "2026-10-12T22:03:24+00:00",
+ "fetched_at": "2026-10-13T02:47:34+00:00",
  "items": [
-  {
-   "date": "20261012",
-   "detail": "",
-   "title": "Student and Staff Non-Attendance/Buildings Closed",
-   "url": ""
-  },
   {
    "date": "20261013",
    "detail": "",
@@ -359,6 +353,12 @@
    "date": "20270527",
    "detail": "",
    "title": "Last Day of Kindergarten",
+   "url": ""
+  },
+  {
+   "date": "20270528",
+   "detail": "",
+   "title": "End of 4th Quarter (Lincoln)",
    "url": ""
   }
  ],
