@@ -4,7 +4,7 @@
       "url": "https://withintenmiles.com/f3b7799bed06aac4295ec9134d53b014.txt",
       "purpose": "IndexNow key file on the live domain - still served and still equal to the key?",
       "item": 224,
-      "probed_at": "2026-10-13T06:00:29+00:00",
+      "probed_at": "2026-10-13T14:03:07+00:00",
       "status": 200,
       "final_url": "https://withintenmiles.com/f3b7799bed06aac4295ec9134d53b014.txt",
       "content_type": "text/plain; charset=utf-8",
@@ -22,7 +22,7 @@
       "url": "https://events.harpercollege.edu/calendar.ics",
       "purpose": "Harper College (Localist) - does the default iCal path serve a calendar?",
       "item": 282,
-      "probed_at": "2026-10-13T06:00:29+00:00",
+      "probed_at": "2026-10-13T14:03:07+00:00",
       "status": 200,
       "final_url": "https://events.harpercollege.edu/calendar.ics",
       "content_type": "text/calendar; charset=utf-8",
@@ -39,7 +39,7 @@
         "localist": [
           {
             "match": "localist",
-            "context": "& Canada) BEGIN:VEVENT DTSTAMP:20261013T055640Z UID:tag:localist.com\\,2008:EventInstance_53176851114949 DTSTART:20260914T00"
+            "context": "& Canada) BEGIN:VEVENT DTSTAMP:20261013T135626Z UID:tag:localist.com\\,2008:EventInstance_53176851114949 DTSTART:20260914T00"
           }
         ]
       }
@@ -48,7 +48,7 @@
       "url": "https://events.harpercollege.edu/api/2/events?days=60",
       "purpose": "Harper College (Localist) - does the public JSON API answer?",
       "item": 282,
-      "probed_at": "2026-10-13T06:00:30+00:00",
+      "probed_at": "2026-10-13T14:03:08+00:00",
       "status": 200,
       "final_url": "https://events.harpercollege.edu/api/2/events?days=60",
       "content_type": "application/json; charset=utf-8",
@@ -72,11 +72,11 @@
       "url": "https://desplainestheatre.com/events/",
       "purpose": "Des Plaines Theatre - any iCal link or per-event JSON-LD?",
       "item": 282,
-      "probed_at": "2026-10-13T06:00:31+00:00",
+      "probed_at": "2026-10-13T14:03:08+00:00",
       "status": 200,
       "final_url": "https://desplainestheatre.com/events/",
       "content_type": "text/html; charset=UTF-8",
-      "bytes": 274683,
+      "bytes": 274698,
       "title": "Events from October 13 – October 18 – Des Plaines TheatreSearchExpandExpandSearchToggle Menuonesti instagram pageonesti instagram pageonesti instagram pageonesti instagram pageonesti instagram pageExp",
       "feed_links": [
         {
@@ -134,7 +134,7 @@
         "url": "https://desplainestheatre.com/event/1-film-series-oh-brother-where-art-thou/",
         "purpose": "",
         "item": null,
-        "probed_at": "2026-10-13T06:00:33+00:00",
+        "probed_at": "2026-10-13T14:03:09+00:00",
         "status": 200,
         "final_url": "https://desplainestheatre.com/event/1-film-series-oh-brother-where-art-thou/",
         "content_type": "text/html; charset=UTF-8",
@@ -196,11 +196,11 @@
       "url": "https://metropolisarts.com/",
       "purpose": "Metropolis Performing Arts Centre - where is the calendar and does it have a feed?",
       "item": 282,
-      "probed_at": "2026-10-13T06:00:35+00:00",
+      "probed_at": "2026-10-13T14:03:11+00:00",
       "status": 200,
       "final_url": "https://www.metropolisarts.com/",
       "content_type": "text/html; charset=UTF-8",
-      "bytes": 1370593,
+      "bytes": 1370606,
       "title": "Metropolis Performing Arts Centre | Arlington Heights, IL",
       "feed_links": [
         {
@@ -254,11 +254,11 @@
         "url": "https://app.mainstreetsites.com/calendar.aspx?dmn=5012",
         "purpose": "",
         "item": null,
-        "probed_at": "2026-10-13T06:00:37+00:00",
+        "probed_at": "2026-10-13T14:03:11+00:00",
         "status": 200,
         "final_url": "https://app.mainstreetsites.com/calendar.aspx?dmn=5012",
         "content_type": "text/html; charset=utf-8",
-        "bytes": 70019,
+        "bytes": 70020,
         "title": "Metropolis School of the Performing Arts - Calendar",
         "feed_links": [],
         "calendar_links": [],
@@ -273,7 +273,7 @@
       "url": "https://heynonny.com/",
       "purpose": "Hey Nonny - events page, OpenDate listing, or a feed?",
       "item": 282,
-      "probed_at": "2026-10-13T06:00:38+00:00",
+      "probed_at": "2026-10-13T14:03:13+00:00",
       "status": 200,
       "final_url": "https://www.heynonny.com/",
       "content_type": "text/html; charset=utf-8",
@@ -295,7 +295,7 @@
         "url": "https://www.heynonny.com/shows",
         "purpose": "",
         "item": null,
-        "probed_at": "2026-10-13T06:00:39+00:00",
+        "probed_at": "2026-10-13T14:03:15+00:00",
         "status": 200,
         "final_url": "https://www.heynonny.com/shows",
         "content_type": "text/html; charset=utf-8",
@@ -313,6 +313,56 @@
           "BEGIN:VCALENDAR": [],
           "\"@type\": ?\"Event\"": []
         }
+      }
+    },
+    {
+      "url": "https://desplainestheatre.com/events/?ical=1",
+      "purpose": "Des Plaines Theatre - does the Events Calendar iCal export return a calendar?",
+      "item": 287,
+      "probed_at": "2026-10-13T14:03:16+00:00",
+      "status": 200,
+      "final_url": "https://desplainestheatre.com/events/?ical=1",
+      "content_type": "text/calendar; charset=UTF-8",
+      "bytes": 55316,
+      "ics_event_count": 30,
+      "pattern_matches": {
+        "BEGIN:VCALENDAR": [
+          {
+            "match": "BEGIN:VCALENDAR",
+            "context": "BEGIN:VCALENDAR VERSION:2.0 PRODID:-//Des Plaines Theatre - ECPv6.18.0//N"
+          }
+        ],
+        "BEGIN:VEVENT": [
+          {
+            "match": "BEGIN:VEVENT",
+            "context": ":CST DTSTART:20271107T070000 END:STANDARD END:VTIMEZONE BEGIN:VEVENT DTSTART;TZID=America/Chicago:20261013T190000 DTEND;TZID=A"
+          }
+        ]
+      }
+    },
+    {
+      "url": "https://www.metropolisarts.com/events/?ical=1",
+      "purpose": "Metropolis - does the Events Calendar iCal export return a calendar?",
+      "item": 287,
+      "probed_at": "2026-10-13T14:03:18+00:00",
+      "status": 200,
+      "final_url": "https://www.metropolisarts.com/events-calendar/?ical=1",
+      "content_type": "text/calendar; charset=UTF-8",
+      "bytes": 46442,
+      "ics_event_count": 21,
+      "pattern_matches": {
+        "BEGIN:VCALENDAR": [
+          {
+            "match": "BEGIN:VCALENDAR",
+            "context": "BEGIN:VCALENDAR VERSION:2.0 PRODID:-//Metropolis Performing Arts Centre -"
+          }
+        ],
+        "BEGIN:VEVENT": [
+          {
+            "match": "BEGIN:VEVENT",
+            "context": ":CST DTSTART:20271107T070000 END:STANDARD END:VTIMEZONE BEGIN:VEVENT DTSTART;VALUE=DATE:20261019 DTEND;VALUE=DATE:20261023 DT"
+          }
+        ]
       }
     }
   ]
