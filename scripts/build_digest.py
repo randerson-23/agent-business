@@ -2794,6 +2794,22 @@ def build_halloween_banner(entries: list[dict], now: datetime) -> dict | None:
     return {"weekday": halloween.strftime("%A"), "countdown": countdown, "towns": towns}
 
 
+def build_holiday_banner(entries: list[dict], now: datetime) -> dict | None:
+    """The homepage's holiday banner (ROADMAP.md item 285): Nov 1 - Dec 24,
+    after the Halloween banner's last day, so there is at most one banner at a
+    time. Each town shows its confirmed tree-lighting date ("Sat Nov 21") or
+    "date TBA", never a guess. `offer` is True through Nov 15, the early-bird
+    deadline for holiday-guide business listings."""
+    today = now.astimezone(LOCAL_TZ).date()
+    if not entries or not (date(today.year, 11, 1) <= today <= date(today.year, 12, 24)):
+        return None
+    towns = []
+    for e in entries:
+        day = _parse_promo_day((e.get("tree") or {}).get("date_iso"))
+        towns.append({"name": e["region_name"], "date": day.strftime("%a %b ") + str(day.day) if day else "date TBA"})
+    return {"towns": towns, "offer": today <= date(today.year, 11, 15)}
+
+
 def render_hub_page(
     regions: list[dict],
     region_summaries: list[dict],
@@ -2803,6 +2819,7 @@ def render_hub_page(
     stats: dict | None = None,
     contact_email: str | None = None,
     halloween: dict | None = None,
+    holiday: dict | None = None,
 ) -> str:
     env = get_template_env()
     template = env.get_template("hub.html.j2")
@@ -2817,6 +2834,8 @@ def render_hub_page(
         trick_or_treat_in_season=is_trick_or_treat_season(now),
         corrections_cta_url=build_corrections_cta_url(contact_email),
         halloween=halloween,
+        holiday=holiday,
+        contact_email=contact_email,
     )
 
 
@@ -5044,6 +5063,7 @@ def main() -> None:
     hub_html = render_hub_page(
         regions, region_summaries, now, newsletter, analytics, stats=hub_stats, contact_email=contact_email,
         halloween=build_halloween_banner(trick_or_treat_entries, now),
+        holiday=build_holiday_banner(holidays_entries, now),
     )
     (OUTPUT_DIR / "index.html").write_text(hub_html, encoding="utf-8")
     logger.info("Wrote %s", OUTPUT_DIR / "index.html")

@@ -153,6 +153,13 @@ evergreen:
     detail: "Hersey Huskies varsity & JV schedules, rosters, and ticket info. This site doesn't have a licensed schedule feed for game dates - Illinois HS schedules run mostly through MaxPreps, a commercial aggregator this site doesn't republish from - so this links to the school's own athletics page instead."
     url: "https://www.d214.org/o/jhhs/page/athletics"
     tags: []
+  # ROADMAP.md item 287: Hey Nonny sells shows through OpenDate's client-side
+  # embed (no iCal, no JSON-LD), so this links to its own schedule with no
+  # copied dates.
+  - title: "Hey Nonny — live music venue"
+    detail: "Live music venue and restaurant at 10 S. Vail Ave., downtown Arlington Heights. This site can't read its show list automatically, so this links to the venue's own current schedule."
+    url: "https://www.heynonny.com/shows"
+    tags: ["art_culture"]
 
 # Structured trick-or-treat data (ROADMAP.md Phase 11 #101) - see the
 # Mount Prospect config for the rationale.
