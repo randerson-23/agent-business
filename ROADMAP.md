@@ -15330,7 +15330,7 @@ first time, and plans what replaces the Halloween banner on Nov 1.
 
 #### P2 (new)
 
-287. 🟡 **PARTLY DONE (2026-10-13): probes for both `?ical=1` URLs added to `config/url_probes.yaml` (read `data/url_probes.json` after the run, then add the sources that return `BEGIN:VCALENDAR`); Hey Nonny added as an Arlington Heights evergreen link to `heynonny.com/shows`, no dates.** **Add Des Plaines Theatre and Metropolis through their iCal feeds,
+287. ✅ **DONE (2026-10-13): probes returned 200 with `BEGIN:VCALENDAR` (Des Plaines Theatre 30 events, Metropolis 21), so both are now `ics` sources tagged `art_culture` (Des Plaines Theatre → Des Plaines, Metropolis → Arlington Heights); Hey Nonny is an evergreen link.** Earlier note: (was PARTLY DONE: probes for both `?ical=1` URLs added to `config/url_probes.yaml` (read `data/url_probes.json` after the run, then add the sources that return `BEGIN:VCALENDAR`); Hey Nonny added as an Arlington Heights evergreen link to `heynonny.com/shows`, no dates.) **Add Des Plaines Theatre and Metropolis through their iCal feeds,
      and park Hey Nonny as a link.** Build loop, item 282 step 2.
      - **Des Plaines Theatre** (Des Plaines) and **Metropolis**
        (Arlington Heights): both run The Events Calendar, so add

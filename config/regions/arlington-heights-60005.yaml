@@ -93,6 +93,16 @@ sources:
     section: "Park District Events"
     enabled: true
 
+  - name: "Metropolis Performing Arts Centre — Shows"
+    type: ics
+    # ROADMAP.md item 287: The Events Calendar (WordPress) export. Probe round
+    # 14 (2026-10-13): 200, BEGIN:VCALENDAR, 21 events.
+    url: "https://www.metropolisarts.com/events/?ical=1"
+    section: "Arts & Culture"
+    default_tags: ["art_culture"]
+    venue_name: "Metropolis Performing Arts Centre"
+    enabled: true
+
   - name: "Arlington Heights School District 25 — Calendar"
     type: ics
     # ROADMAP.md Phase 11 #32 follow-up (fourteenth research pass,

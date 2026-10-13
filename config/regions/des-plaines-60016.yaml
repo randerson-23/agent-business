@@ -91,6 +91,16 @@ sources:
     section: "City News"
     enabled: true
 
+  - name: "Des Plaines Theatre — Events"
+    type: ics
+    # ROADMAP.md item 287: The Events Calendar (WordPress) export. Probe round
+    # 14 (2026-10-13): 200, BEGIN:VCALENDAR, 30 events.
+    url: "https://desplainestheatre.com/events/?ical=1"
+    section: "Arts & Culture"
+    default_tags: ["art_culture"]
+    venue_name: "Des Plaines Theatre"
+    enabled: true
+
   - name: "Des Plaines Public Library — Events"
     type: rss
     # ROADMAP.md items 213/215: calendar.dppl.org is Communico - the same
