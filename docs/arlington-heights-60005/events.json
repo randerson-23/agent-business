@@ -2,17 +2,17 @@
   "@context": "https://schema.org",
   "@type": "ItemList",
   "name": "Upcoming events in Arlington Heights — Within Ten",
-  "dateModified": "2026-10-13T14:22:35+00:00",
-  "numberOfItems": 23,
+  "dateModified": "2026-10-13T21:59:46+00:00",
+  "numberOfItems": 24,
   "itemListElement": [
     {
       "@type": "ListItem",
       "position": 1,
       "item": {
         "@type": "Event",
-        "name": "Social Worker in the Library",
+        "name": "Read to Learn (District 214)",
         "startDate": "2026-10-13",
-        "url": "https://withintenmiles.com/arlington-heights-60005/#ev-social-worker-in-the-library-2026-10-13",
+        "url": "https://withintenmiles.com/arlington-heights-60005/#ev-read-to-learn-district-214-2026-10-13",
         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
         "location": {
           "@type": "Place",
@@ -24,7 +24,7 @@
             "addressRegion": "IL"
           }
         },
-        "sameAs": "https://www.ahml.info/scheduling/reservation/218147"
+        "sameAs": "https://www.ahml.info/scheduling/reservation/194391"
       }
     },
     {
@@ -100,9 +100,9 @@
       "position": 5,
       "item": {
         "@type": "Event",
-        "name": "First-Time Parents' Meetup",
+        "name": "Senior Center: Travelogue",
         "startDate": "2026-10-16",
-        "url": "https://withintenmiles.com/arlington-heights-60005/#ev-first-time-parents-meetup-2026-10-16",
+        "url": "https://withintenmiles.com/arlington-heights-60005/#ev-senior-center-travelogue-2026-10-16",
         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
         "location": {
           "@type": "Place",
@@ -114,7 +114,7 @@
             "addressRegion": "IL"
           }
         },
-        "sameAs": "https://www.ahml.info/scheduling/reservation/224295"
+        "sameAs": "https://www.ahml.info/scheduling/reservation/224945"
       }
     },
     {
@@ -145,9 +145,9 @@
       "position": 7,
       "item": {
         "@type": "Event",
-        "name": "Beginning ESL",
+        "name": "Family Time",
         "startDate": "2026-10-17",
-        "url": "https://withintenmiles.com/arlington-heights-60005/#ev-beginning-esl-2026-10-17",
+        "url": "https://withintenmiles.com/arlington-heights-60005/#ev-family-time-2026-10-17",
         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
         "location": {
           "@type": "Place",
@@ -159,7 +159,7 @@
             "addressRegion": "IL"
           }
         },
-        "sameAs": "https://www.ahml.info/scheduling/reservation/234242"
+        "sameAs": "https://www.ahml.info/scheduling/reservation/224194"
       }
     },
     {
@@ -257,6 +257,29 @@
       "position": 12,
       "item": {
         "@type": "Event",
+        "name": "Chicago Kids Company presents The Tortoise and the Hare",
+        "startDate": "2026-10-19",
+        "url": "https://withintenmiles.com/arlington-heights-60005/#ev-chicago-kids-company-presents-the-tortoise-and-the-hare-2026-10-19",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Metropolis Performing Arts Centre",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Arlington Heights",
+            "addressRegion": "IL"
+          }
+        },
+        "sameAs": "https://www.metropolisarts.com/event/ckc-tortoise-hare/",
+        "description": "Purchase Tickets Chicago Kids Company presents The Tortoise and the Hare A part of Metropolis Family Series October 19 – October 22, 2026, 10:00 am & 12:00 pm…"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 13,
+      "item": {
+        "@type": "Event",
         "name": "Read to Learn (District 214)",
         "startDate": "2026-10-20",
         "url": "https://withintenmiles.com/arlington-heights-60005/#ev-read-to-learn-district-214-2026-10-20",
@@ -276,7 +299,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 13,
+      "position": 14,
       "item": {
         "@type": "Event",
         "name": "Baby Time",
@@ -298,7 +321,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 14,
+      "position": 15,
       "item": {
         "@type": "Event",
         "name": "Community Input Meeting - Creekside Park",
@@ -321,7 +344,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 15,
+      "position": 16,
       "item": {
         "@type": "Event",
         "name": "Halloween Pumpkin Carving",
@@ -344,7 +367,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 16,
+      "position": 17,
       "item": {
         "@type": "Event",
         "name": "Toddler Time",
@@ -366,7 +389,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 17,
+      "position": 18,
       "item": {
         "@type": "Event",
         "name": "Senior Center: Travelogue",
@@ -388,7 +411,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 18,
+      "position": 19,
       "item": {
         "@type": "Event",
         "name": "One Book, One Village at Arlington Heights' Community Open House",
@@ -410,7 +433,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 19,
+      "position": 20,
       "item": {
         "@type": "Event",
         "name": "Trunk or Treat",
@@ -433,7 +456,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 20,
+      "position": 21,
       "item": {
         "@type": "Event",
         "name": "The Music Man Sr.",
@@ -456,7 +479,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 21,
+      "position": 22,
       "item": {
         "@type": "Event",
         "name": "Makerplace Using Canva AI: Laser Etch a Glass",
@@ -478,7 +501,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 22,
+      "position": 23,
       "item": {
         "@type": "Event",
         "name": "The Music Man Sr.",
@@ -501,7 +524,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 23,
+      "position": 24,
       "item": {
         "@type": "Event",
         "name": "Kids' Time",

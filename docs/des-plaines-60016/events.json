@@ -2,8 +2,8 @@
   "@context": "https://schema.org",
   "@type": "ItemList",
   "name": "Upcoming events in Des Plaines — Within Ten",
-  "dateModified": "2026-10-13T14:22:35+00:00",
-  "numberOfItems": 85,
+  "dateModified": "2026-10-13T21:59:46+00:00",
+  "numberOfItems": 104,
   "itemListElement": [
     {
       "@type": "ListItem",
@@ -263,6 +263,29 @@
       "position": 12,
       "item": {
         "@type": "Event",
+        "name": "$1 FILM SERIES - \"O Brother, Where Art Thou?\"",
+        "startDate": "2026-10-13T19:00:00-05:00",
+        "url": "https://withintenmiles.com/des-plaines-60016/#ev-1-film-series-o-brother-where-art-thou-2026-10-13",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Des Plaines Theatre",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Des Plaines",
+            "addressRegion": "IL"
+          }
+        },
+        "sameAs": "https://desplainestheatre.com/event/1-film-series-oh-brother-where-art-thou/",
+        "description": "Join us for some family fun as we feature “O Brother, Where Art Thou?” on our huge video wall. Concessions will be available for purchase. Doors will open at…"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 13,
+      "item": {
+        "@type": "Event",
         "name": "Baby Book Time",
         "startDate": "2026-10-14T10:00:00-05:00",
         "url": "https://withintenmiles.com/des-plaines-60016/#ev-baby-book-time-2026-10-14",
@@ -283,7 +306,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 13,
+      "position": 14,
       "item": {
         "@type": "Event",
         "name": "Meal Planning on a Budget",
@@ -306,7 +329,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 14,
+      "position": 15,
       "item": {
         "@type": "Event",
         "name": "Preschool Storytime",
@@ -329,7 +352,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 15,
+      "position": 16,
       "item": {
         "@type": "Event",
         "name": "The Queer Canvas: LGBTQIA+ Art Club",
@@ -352,7 +375,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 16,
+      "position": 17,
       "item": {
         "@type": "Event",
         "name": "Family Storytime",
@@ -375,7 +398,53 @@
     },
     {
       "@type": "ListItem",
-      "position": 17,
+      "position": 18,
+      "item": {
+        "@type": "Event",
+        "name": "POSTPONED - GIPSY KINGS",
+        "startDate": "2026-10-14T19:30:00-05:00",
+        "url": "https://withintenmiles.com/des-plaines-60016/#ev-postponed-gipsy-kings-2026-10-14",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Des Plaines Theatre",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Des Plaines",
+            "addressRegion": "IL"
+          }
+        },
+        "sameAs": "https://desplainestheatre.com/event/gipsy-kings-3/",
+        "description": "THIS EVENT HAS BEEN POSTPONED. A RESCHEDULED DATE WILL BE ANNOUNCED SOON. Pablo Reyes grew up in the vibrant Gypsy community of Arles, in the south of France,…"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 19,
+      "item": {
+        "@type": "Event",
+        "name": "BOURBON 'N BRASS: LIVE JAZZ with the BOURBON 'N BRASS TRIO featuring DAKOTA HORVATH",
+        "startDate": "2026-10-14T19:30:00-05:00",
+        "url": "https://withintenmiles.com/des-plaines-60016/#ev-bourbon-n-brass-live-jazz-with-the-bourbon-n-brass-trio-feat-2026-10-14",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Des Plaines Theatre",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Des Plaines",
+            "addressRegion": "IL"
+          }
+        },
+        "sameAs": "https://desplainestheatre.com/event/bourbon-n-brass-live-jazz-with-the-bourbon-n-brass-trio-featuring-dakota-horvath-5/",
+        "description": "Join us in our intimate Bourbon ‘N Brass Speakeasy, located on the 2nd floor of the Des Plaines Theatre, for an evening of Jazz with the Bourbon ‘N Brass Trio…"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 20,
       "item": {
         "@type": "Event",
         "name": "Reading/Literacy Class",
@@ -398,7 +467,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 18,
+      "position": 21,
       "item": {
         "@type": "Event",
         "name": "ESL (English as a Second Language) Class - Oakton College",
@@ -421,7 +490,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 19,
+      "position": 22,
       "item": {
         "@type": "Event",
         "name": "Toddler Time",
@@ -444,7 +513,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 20,
+      "position": 23,
       "item": {
         "@type": "Event",
         "name": "Happy Notes",
@@ -467,7 +536,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 21,
+      "position": 24,
       "item": {
         "@type": "Event",
         "name": "Book a Teen Librarian",
@@ -490,7 +559,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 22,
+      "position": 25,
       "item": {
         "@type": "Event",
         "name": "MS Excel: Getting Started",
@@ -513,7 +582,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 23,
+      "position": 26,
       "item": {
         "@type": "Event",
         "name": "Library Board of Trustees Open Meeting",
@@ -536,7 +605,53 @@
     },
     {
       "@type": "ListItem",
-      "position": 24,
+      "position": 27,
+      "item": {
+        "@type": "Event",
+        "name": "KENNY WAYNE SHEPHERD: LEDBETTER HEIGHTS 30TH ANNIVERSARY TOUR",
+        "startDate": "2026-10-15T19:30:00-05:00",
+        "url": "https://withintenmiles.com/des-plaines-60016/#ev-kenny-wayne-shepherd-ledbetter-heights-30th-anniversary-tour-2026-10-15",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Des Plaines Theatre",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Des Plaines",
+            "addressRegion": "IL"
+          }
+        },
+        "sameAs": "https://desplainestheatre.com/event/kenny-wayne-shepherd-band-ledbetter-heights-30th-anniversary-tour/",
+        "description": "Thirty years ago, a Fender Strat-wielding teenager from Shreveport, Louisiana by the name of Kenny Wayne Shepherd brought the blues back to the mainstream. It…"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 28,
+      "item": {
+        "@type": "Event",
+        "name": "BOURBON 'N BRASS SPEAKEASY: BLUES SHOW WITH BRANDYE PHILLIPS",
+        "startDate": "2026-10-15T19:30:00-05:00",
+        "url": "https://withintenmiles.com/des-plaines-60016/#ev-bourbon-n-brass-speakeasy-blues-show-with-brandye-phillips-2026-10-15",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Des Plaines Theatre",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Des Plaines",
+            "addressRegion": "IL"
+          }
+        },
+        "sameAs": "https://desplainestheatre.com/event/bourbon-n-brass-speakeasy-blues-show-with-brandye-phillips-4/",
+        "description": "Join us in our intimate Bourbon ‘N Brass Speakeasy, located on the 2nd floor of the Des Plaines Theatre, for an evening of Blues with Brandye Phillips! Food…"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 29,
       "item": {
         "@type": "Event",
         "name": "Baby Book Time",
@@ -559,7 +674,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 25,
+      "position": 30,
       "item": {
         "@type": "Event",
         "name": "The Next Chapter",
@@ -582,7 +697,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 26,
+      "position": 31,
       "item": {
         "@type": "Event",
         "name": "Indivisible Des Plaines",
@@ -605,7 +720,53 @@
     },
     {
       "@type": "ListItem",
-      "position": 27,
+      "position": 32,
+      "item": {
+        "@type": "Event",
+        "name": "TAYLOR DAYNE",
+        "startDate": "2026-10-16T20:00:00-05:00",
+        "url": "https://withintenmiles.com/des-plaines-60016/#ev-taylor-dayne-2026-10-16",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Des Plaines Theatre",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Des Plaines",
+            "addressRegion": "IL"
+          }
+        },
+        "sameAs": "https://desplainestheatre.com/event/taylor-dayne/",
+        "description": "Taylor Dayne is a global pop icon with a career spanning three decades, Taylor’s groundbreaking debut single “Tell It To My Heart” turned her into an…"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 33,
+      "item": {
+        "@type": "Event",
+        "name": "BOURBON 'N BRASS SPEAKEASY: LIVE JAZZ with THE BOOTLEGGERS playing 20s & 30s DANCE FAVORITES",
+        "startDate": "2026-10-16T20:30:00-05:00",
+        "url": "https://withintenmiles.com/des-plaines-60016/#ev-bourbon-n-brass-speakeasy-live-jazz-with-the-bootleggers-pla-2026-10-16",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Des Plaines Theatre",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Des Plaines",
+            "addressRegion": "IL"
+          }
+        },
+        "sameAs": "https://desplainestheatre.com/event/bourbon-n-brass-speakeasy-live-jazz-with-the-bootleggers-3/",
+        "description": "Join us in our intimate Bourbon ‘N Brass Speakeasy, located on the 2nd floor of the Des Plaines Theatre, for an evening of Jazz with The Bootleggers playing…"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 34,
       "item": {
         "@type": "Event",
         "name": "Service Hour Drop In",
@@ -628,7 +789,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 28,
+      "position": 35,
       "item": {
         "@type": "Event",
         "name": "Des Plaines Lions Club Volunteer Hour",
@@ -651,7 +812,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 29,
+      "position": 36,
       "item": {
         "@type": "Event",
         "name": "Build a Pinecone Bird Feeder",
@@ -674,7 +835,53 @@
     },
     {
       "@type": "ListItem",
-      "position": 30,
+      "position": 37,
+      "item": {
+        "@type": "Event",
+        "name": "THE MUSICAL BOX proudly presents...AND THEN THERE WAS...PHIL",
+        "startDate": "2026-10-17T20:00:00-05:00",
+        "url": "https://withintenmiles.com/des-plaines-60016/#ev-the-musical-box-proudly-presents-and-then-there-was-phil-2026-10-17",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Des Plaines Theatre",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Des Plaines",
+            "addressRegion": "IL"
+          }
+        },
+        "sameAs": "https://desplainestheatre.com/event/the-musical-box-proudly-presents-and-then-there-was-phil-2/",
+        "description": "In yet its biggest and most daring production, The Musical Box, true to its reputation as a time machine, delivers an authentic live musical experience for…"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 38,
+      "item": {
+        "@type": "Event",
+        "name": "BOURBON 'N BRASS SPEAKEASY: LIVE JAZZ with DONNY DeMARCO & TUNE TOWN",
+        "startDate": "2026-10-17T21:30:00-05:00",
+        "url": "https://withintenmiles.com/des-plaines-60016/#ev-bourbon-n-brass-speakeasy-live-jazz-with-donny-demarco-tune-2026-10-17",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Des Plaines Theatre",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Des Plaines",
+            "addressRegion": "IL"
+          }
+        },
+        "sameAs": "https://desplainestheatre.com/event/bourbon-n-brass-speakeasy-live-jazz-with-donny-demarco-tune-town-4/",
+        "description": "Join us in our intimate Bourbon ‘N Brass Speakeasy, located on the 2nd floor of the Des Plaines Theatre, for an evening of Jazz with Donny DeMarco & Tune…"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 39,
       "item": {
         "@type": "Event",
         "name": "Wicked Good Writing Contest",
@@ -697,7 +904,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 31,
+      "position": 40,
       "item": {
         "@type": "Event",
         "name": "MS Excel: Principantes (Spanish)",
@@ -720,7 +927,30 @@
     },
     {
       "@type": "ListItem",
-      "position": 32,
+      "position": 41,
+      "item": {
+        "@type": "Event",
+        "name": "\"I AM HE SAID\" - A CELEBRATION OF NEIL DIAMOND starring MATT VEE",
+        "startDate": "2026-10-18T15:00:00-05:00",
+        "url": "https://withintenmiles.com/des-plaines-60016/#ev-i-am-he-said-a-celebration-of-neil-diamond-starring-matt-vee-2026-10-18",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Des Plaines Theatre",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Des Plaines",
+            "addressRegion": "IL"
+          }
+        },
+        "sameAs": "https://desplainestheatre.com/event/i-am-he-said-a-celebration-of-neil-diamond-2/",
+        "description": "Starring Matt Vee and The Killer Vees — This is Neil done right. A full-production show honoring the legendary Neil Diamond. Featuring all the hits, performed…"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 42,
       "item": {
         "@type": "Event",
         "name": "Wicked Good Writing Contest",
@@ -743,7 +973,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 33,
+      "position": 43,
       "item": {
         "@type": "Event",
         "name": "Early Voting",
@@ -766,7 +996,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 34,
+      "position": 44,
       "item": {
         "@type": "Event",
         "name": "Baby Book Time",
@@ -789,7 +1019,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 35,
+      "position": 45,
       "item": {
         "@type": "Event",
         "name": "Career & Job Counseling @ the library",
@@ -812,7 +1042,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 36,
+      "position": 46,
       "item": {
         "@type": "Event",
         "name": "Book a Teen Librarian",
@@ -835,7 +1065,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 37,
+      "position": 47,
       "item": {
         "@type": "Event",
         "name": "Shakespeare Project of Chicago",
@@ -858,7 +1088,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 38,
+      "position": 48,
       "item": {
         "@type": "Event",
         "name": "LEGO League",
@@ -881,7 +1111,30 @@
     },
     {
       "@type": "ListItem",
-      "position": 39,
+      "position": 49,
+      "item": {
+        "@type": "Event",
+        "name": "$10 SILENT FILM SERIES - \"The Man Who Laughs\" starring Mary Filbin and Conrad Veidt (1928), Presented by The Silent Film Society of Chicago",
+        "startDate": "2026-10-19T19:00:00-05:00",
+        "url": "https://withintenmiles.com/des-plaines-60016/#ev-10-silent-film-series-the-man-who-laughs-starring-mary-filbi-2026-10-19",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Des Plaines Theatre",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Des Plaines",
+            "addressRegion": "IL"
+          }
+        },
+        "sameAs": "https://desplainestheatre.com/event/10-silent-film-series-the-man-who-laughs-starring-mary-filbin-and-conrad-veidt-1928-presented-by-the-silent-film-society-of-chicago/",
+        "description": "The Des Plaines Theatre and The Silent Film Society of Chicago are pleased to announce our monthly $10 Silent Film Series. Join us as we visit the 1920s for…"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 50,
       "item": {
         "@type": "Event",
         "name": "Wicked Good Writing Contest",
@@ -904,7 +1157,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 40,
+      "position": 51,
       "item": {
         "@type": "Event",
         "name": "Early Voting",
@@ -927,7 +1180,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 41,
+      "position": 52,
       "item": {
         "@type": "Event",
         "name": "ESL (English as a Second Language) Class - Oakton College",
@@ -950,7 +1203,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 42,
+      "position": 53,
       "item": {
         "@type": "Event",
         "name": "Reading/Literacy Class",
@@ -973,7 +1226,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 43,
+      "position": 54,
       "item": {
         "@type": "Event",
         "name": "Toddler Time",
@@ -996,7 +1249,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 44,
+      "position": 55,
       "item": {
         "@type": "Event",
         "name": "City of Des Plaines Blood Drive",
@@ -1019,7 +1272,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 45,
+      "position": 56,
       "item": {
         "@type": "Event",
         "name": "Maker's Place",
@@ -1042,7 +1295,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 46,
+      "position": 57,
       "item": {
         "@type": "Event",
         "name": "Book a Teen Librarian",
@@ -1065,7 +1318,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 47,
+      "position": 58,
       "item": {
         "@type": "Event",
         "name": "Stitches on Miner",
@@ -1088,7 +1341,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 48,
+      "position": 59,
       "item": {
         "@type": "Event",
         "name": "Tech in the Forum",
@@ -1111,7 +1364,30 @@
     },
     {
       "@type": "ListItem",
-      "position": 49,
+      "position": 60,
+      "item": {
+        "@type": "Event",
+        "name": "$1 FILM SERIES - \"Contact\"",
+        "startDate": "2026-10-20T19:00:00-05:00",
+        "url": "https://withintenmiles.com/des-plaines-60016/#ev-1-film-series-contact-2026-10-20",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Des Plaines Theatre",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Des Plaines",
+            "addressRegion": "IL"
+          }
+        },
+        "sameAs": "https://desplainestheatre.com/event/1-film-series-contact/",
+        "description": "Join us for some family fun as we feature “Contact” on our huge video wall. Concessions will be available for purchase. Doors will open at 6PM | Movie will…"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 61,
       "item": {
         "@type": "Event",
         "name": "Preserving History with Geoffrey Baer",
@@ -1134,7 +1410,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 50,
+      "position": 62,
       "item": {
         "@type": "Event",
         "name": "FilmTalkTuesdays: Rosemary's Baby (1968)",
@@ -1157,7 +1433,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 51,
+      "position": 63,
       "item": {
         "@type": "Event",
         "name": "Wicked Good Writing Contest",
@@ -1180,7 +1456,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 52,
+      "position": 64,
       "item": {
         "@type": "Event",
         "name": "Early Voting",
@@ -1203,7 +1479,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 53,
+      "position": 65,
       "item": {
         "@type": "Event",
         "name": "Baby Book Time",
@@ -1226,7 +1502,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 54,
+      "position": 66,
       "item": {
         "@type": "Event",
         "name": "Chicago: Shaping the Airline Industry",
@@ -1249,7 +1525,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 55,
+      "position": 67,
       "item": {
         "@type": "Event",
         "name": "Preschool Storytime",
@@ -1272,7 +1548,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 56,
+      "position": 68,
       "item": {
         "@type": "Event",
         "name": "Teen Crafternoons",
@@ -1295,7 +1571,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 57,
+      "position": 69,
       "item": {
         "@type": "Event",
         "name": "Makerspace Orientations: In-Person",
@@ -1318,7 +1594,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 58,
+      "position": 70,
       "item": {
         "@type": "Event",
         "name": "Family Storytime",
@@ -1341,7 +1617,30 @@
     },
     {
       "@type": "ListItem",
-      "position": 59,
+      "position": 71,
+      "item": {
+        "@type": "Event",
+        "name": "BOURBON 'N BRASS: LIVE LATIN JAZZ with the BOURBON 'N BRASS TRIO featuring JOSE LUIS CONTRERAS",
+        "startDate": "2026-10-21T19:30:00-05:00",
+        "url": "https://withintenmiles.com/des-plaines-60016/#ev-bourbon-n-brass-live-latin-jazz-with-the-bourbon-n-brass-tri-2026-10-21",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Des Plaines Theatre",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Des Plaines",
+            "addressRegion": "IL"
+          }
+        },
+        "sameAs": "https://desplainestheatre.com/event/bourbon-n-brass-live-latin-jazz-with-the-bourbon-n-brass-trio-featuring-jose-luis-contreras/",
+        "description": "Join us in our intimate Bourbon ‘N Brass Speakeasy, located on the 2nd floor of the Des Plaines Theatre, for an evening of Jazz with the Bourbon ‘N Brass Trio…"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 72,
       "item": {
         "@type": "Event",
         "name": "Wicked Good Writing Contest",
@@ -1364,7 +1663,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 60,
+      "position": 73,
       "item": {
         "@type": "Event",
         "name": "Early Voting",
@@ -1387,7 +1686,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 61,
+      "position": 74,
       "item": {
         "@type": "Event",
         "name": "Reading/Literacy Class",
@@ -1410,7 +1709,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 62,
+      "position": 75,
       "item": {
         "@type": "Event",
         "name": "ESL (English as a Second Language) Class - Oakton College",
@@ -1433,7 +1732,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 63,
+      "position": 76,
       "item": {
         "@type": "Event",
         "name": "Toddler Time",
@@ -1456,7 +1755,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 64,
+      "position": 77,
       "item": {
         "@type": "Event",
         "name": "Q & A One on One Appointment",
@@ -1479,7 +1778,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 65,
+      "position": 78,
       "item": {
         "@type": "Event",
         "name": "Liberation Bookmarks",
@@ -1502,7 +1801,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 66,
+      "position": 79,
       "item": {
         "@type": "Event",
         "name": "Book a Teen Librarian",
@@ -1525,7 +1824,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 67,
+      "position": 80,
       "item": {
         "@type": "Event",
         "name": "Mac Basics",
@@ -1548,7 +1847,30 @@
     },
     {
       "@type": "ListItem",
-      "position": 68,
+      "position": 81,
+      "item": {
+        "@type": "Event",
+        "name": "BOURBON 'N BRASS SPEAKEASY: LIVE BLUES with the DOWNTOWN CHARLIE BROWN BAND",
+        "startDate": "2026-10-22T19:30:00-05:00",
+        "url": "https://withintenmiles.com/des-plaines-60016/#ev-bourbon-n-brass-speakeasy-live-blues-with-the-downtown-charl-2026-10-22",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Des Plaines Theatre",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Des Plaines",
+            "addressRegion": "IL"
+          }
+        },
+        "sameAs": "https://desplainestheatre.com/event/bourbon-n-brass-speakeasy-live-blues-with-the-downtown-charlie-brown-band-7/",
+        "description": "Join us in our intimate Bourbon ‘N Brass Speakeasy, located on the 2nd floor of the Des Plaines Theatre, for an evening of Blues with Downtown Charlie Brown…"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 82,
       "item": {
         "@type": "Event",
         "name": "Thursday Evening Book Discussion",
@@ -1571,7 +1893,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 69,
+      "position": 83,
       "item": {
         "@type": "Event",
         "name": "Wicked Good Writing Contest",
@@ -1594,7 +1916,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 70,
+      "position": 84,
       "item": {
         "@type": "Event",
         "name": "Early Voting",
@@ -1617,7 +1939,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 71,
+      "position": 85,
       "item": {
         "@type": "Event",
         "name": "Baby Book Time",
@@ -1640,7 +1962,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 72,
+      "position": 86,
       "item": {
         "@type": "Event",
         "name": "Ain't Wii Got Fun!",
@@ -1663,7 +1985,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 73,
+      "position": 87,
       "item": {
         "@type": "Event",
         "name": "Indivisible Des Plaines",
@@ -1686,7 +2008,30 @@
     },
     {
       "@type": "ListItem",
-      "position": 74,
+      "position": 88,
+      "item": {
+        "@type": "Event",
+        "name": "BOURBON 'N BRASS SPEAKEASY: LIVE JAZZ, RAT PACK, 70s, 80s, MOTOWN & DANCE with CASEY MYLES & THE BOOTLEGGERS",
+        "startDate": "2026-10-23T20:30:00-05:00",
+        "url": "https://withintenmiles.com/des-plaines-60016/#ev-bourbon-n-brass-speakeasy-live-jazz-rat-pack-70s-80s-motown-2026-10-23",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Des Plaines Theatre",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Des Plaines",
+            "addressRegion": "IL"
+          }
+        },
+        "sameAs": "https://desplainestheatre.com/event/bourbon-n-brass-speakeasy-live-jazz-rat-pack-70s-80s-motown-dance-with-casey-myles-the-bootleggers/",
+        "description": "Join us in our intimate Bourbon ‘N Brass Speakeasy, located on the 2nd floor of the Des Plaines Theatre, for an evening of Jazz with Casey Myles & The…"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 89,
       "item": {
         "@type": "Event",
         "name": "DIY with DPPL",
@@ -1709,7 +2054,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 75,
+      "position": 90,
       "item": {
         "@type": "Event",
         "name": "Play Packs",
@@ -1732,7 +2077,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 76,
+      "position": 91,
       "item": {
         "@type": "Event",
         "name": "Wicked Good Writing Contest",
@@ -1755,7 +2100,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 77,
+      "position": 92,
       "item": {
         "@type": "Event",
         "name": "Early Voting",
@@ -1778,7 +2123,53 @@
     },
     {
       "@type": "ListItem",
-      "position": 78,
+      "position": 93,
+      "item": {
+        "@type": "Event",
+        "name": "LIGHTS OUT: TRIBUTE TO UFO featuring ANDY PARKER with SPECIAL GUEST TRIANGLE PARK",
+        "startDate": "2026-10-24T20:00:00-05:00",
+        "url": "https://withintenmiles.com/des-plaines-60016/#ev-lights-out-tribute-to-ufo-featuring-andy-parker-with-special-2026-10-24",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Des Plaines Theatre",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Des Plaines",
+            "addressRegion": "IL"
+          }
+        },
+        "sameAs": "https://desplainestheatre.com/event/lights-out-tribute-to-ufo-featuring-andy-parker-2/",
+        "description": "Lights Out is an all-star tribute to UFO featuring Andy Parker, the original drummer of UFO. Other band members include Mark Boals (Vocalists of Yngwie…"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 94,
+      "item": {
+        "@type": "Event",
+        "name": "BOURBON 'N BRASS: LIVE BLUES WITH DAVE WELD & THE IMPERIAL FLAMES",
+        "startDate": "2026-10-24T20:30:00-05:00",
+        "url": "https://withintenmiles.com/des-plaines-60016/#ev-bourbon-n-brass-live-blues-with-dave-weld-the-imperial-flame-2026-10-24",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Des Plaines Theatre",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Des Plaines",
+            "addressRegion": "IL"
+          }
+        },
+        "sameAs": "https://desplainestheatre.com/event/bourbon-n-brass-live-blues-with-dave-weld-the-imperial-flames-9/",
+        "description": "Join us in our intimate Bourbon ‘N Brass Speakeasy, located on the 2nd floor of the Des Plaines Theatre, for an evening of Blues with Dave Weld & The Imperial…"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 95,
       "item": {
         "@type": "Event",
         "name": "Wicked Good Writing Contest",
@@ -1801,7 +2192,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 79,
+      "position": 96,
       "item": {
         "@type": "Event",
         "name": "Early Voting",
@@ -1824,7 +2215,53 @@
     },
     {
       "@type": "ListItem",
-      "position": 80,
+      "position": 97,
+      "item": {
+        "@type": "Event",
+        "name": "ITALIAN BRED: A CELEBRATION OF FAMILY, CULTURE & COMEDY",
+        "startDate": "2026-10-25T14:00:00-05:00",
+        "url": "https://withintenmiles.com/des-plaines-60016/#ev-italian-bred-a-celebration-of-family-culture-comedy-2026-10-25",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Des Plaines Theatre",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Des Plaines",
+            "addressRegion": "IL"
+          }
+        },
+        "sameAs": "https://desplainestheatre.com/event/italian-bred-a-heartlfelt-celebration-of-family-culture-comedy/",
+        "description": "Italian Bred, starring the incomparable Candice Guardino, is a vibrant, hilarious, and deeply relatable theatrical experience that has captivated audiences…"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 98,
+      "item": {
+        "@type": "Event",
+        "name": "THE BUDDY RICH BIG BAND \"HALLOWEEN\" MACHINE featuring GREGG POTTER AND CATHY RICH with SPECIAL GUEST BILLY SHEEHAN",
+        "startDate": "2026-10-25T19:00:00-05:00",
+        "url": "https://withintenmiles.com/des-plaines-60016/#ev-the-buddy-rich-big-band-halloween-machine-featuring-gregg-po-2026-10-25",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Des Plaines Theatre",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Des Plaines",
+            "addressRegion": "IL"
+          }
+        },
+        "sameAs": "https://desplainestheatre.com/event/the-buddy-rich-big-band-machine/",
+        "description": "What if, just what if a “MACHINE” existed that could toss you back in time into the heart of a sweat drenched club while a big, marvelous, magnificent, big…"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 99,
       "item": {
         "@type": "Event",
         "name": "Wicked Good Writing Contest",
@@ -1847,7 +2284,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 81,
+      "position": 100,
       "item": {
         "@type": "Event",
         "name": "Early Voting",
@@ -1870,7 +2307,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 82,
+      "position": 101,
       "item": {
         "@type": "Event",
         "name": "Baby Book Time",
@@ -1893,7 +2330,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 83,
+      "position": 102,
       "item": {
         "@type": "Event",
         "name": "Book a Teen Librarian",
@@ -1916,7 +2353,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 84,
+      "position": 103,
       "item": {
         "@type": "Event",
         "name": "Des Plaines Shambhala Meditation Group",
@@ -1939,7 +2376,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 85,
+      "position": 104,
       "item": {
         "@type": "Event",
         "name": "Happy Spinsters",

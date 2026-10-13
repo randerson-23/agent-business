@@ -3,8 +3,8 @@
 <channel>
   <title>Within Ten — Upcoming events in Des Plaines</title>
   <link>https://withintenmiles.com/</link>
-  <description>Upcoming events in Des Plaines, soonest first - aggregated automatically from village, library, park district and school-district calendars. This build reached 7 of 8 configured sources.</description>
-  <lastBuildDate>Tue, 13 Oct 2026 14:22:35 +0000</lastBuildDate>
+  <description>Upcoming events in Des Plaines, soonest first - aggregated automatically from village, library, park district and school-district calendars. This build reached 7 of 10 configured sources. 2 sources are shown from their last update, up to 8 hours ago.</description>
+  <lastBuildDate>Tue, 13 Oct 2026 21:59:46 +0000</lastBuildDate>
   <item>
     <title>Des Plaines: Reading/Literacy Class</title>
     <link>https://withintenmiles.com/des-plaines-60016/#ev-reading-literacy-class-2026-10-13</link>
@@ -107,6 +107,14 @@
     <source url="https://desplaines.libnet.info/event/17033764">Des Plaines Public Library — Events</source>
   </item>
   <item>
+    <title>Des Plaines: $1 FILM SERIES - "O Brother, Where Art Thou?"</title>
+    <link>https://withintenmiles.com/des-plaines-60016/#ev-1-film-series-o-brother-where-art-thou-2026-10-13</link>
+    <guid isPermaLink="true">https://withintenmiles.com/des-plaines-60016/#ev-1-film-series-o-brother-where-art-thou-2026-10-13</guid>
+    <description>Join us for some family fun as we feature “O Brother, Where Art Thou?” on our huge video wall. Concessions will be available for purchase. Doors will open at… Official listing: https://desplainestheatre.com/event/1-film-series-oh-brother-where-art-thou/</description>
+    <pubDate>Tue, 13 Oct 2026 19:00:00 +0000</pubDate>
+    <source url="https://desplainestheatre.com/event/1-film-series-oh-brother-where-art-thou/">Des Plaines Theatre — Events</source>
+  </item>
+  <item>
     <title>Des Plaines: Baby Book Time</title>
     <link>https://withintenmiles.com/des-plaines-60016/#ev-baby-book-time-2026-10-14</link>
     <guid isPermaLink="true">https://withintenmiles.com/des-plaines-60016/#ev-baby-book-time-2026-10-14</guid>
@@ -150,6 +158,22 @@
  Best for families with children ages 2-7, but all are welcome. See full description for details. Registration… Official listing: https://desplaines.libnet.info/event/17004254</description>
     <pubDate>Wed, 14 Oct 2026 19:00:00 +0000</pubDate>
     <source url="https://desplaines.libnet.info/event/17004254">Des Plaines Public Library — Events</source>
+  </item>
+  <item>
+    <title>Des Plaines: POSTPONED - GIPSY KINGS</title>
+    <link>https://withintenmiles.com/des-plaines-60016/#ev-postponed-gipsy-kings-2026-10-14</link>
+    <guid isPermaLink="true">https://withintenmiles.com/des-plaines-60016/#ev-postponed-gipsy-kings-2026-10-14</guid>
+    <description>THIS EVENT HAS BEEN POSTPONED. A RESCHEDULED DATE WILL BE ANNOUNCED SOON. Pablo Reyes grew up in the vibrant Gypsy community of Arles, in the south of France,… Official listing: https://desplainestheatre.com/event/gipsy-kings-3/</description>
+    <pubDate>Wed, 14 Oct 2026 19:30:00 +0000</pubDate>
+    <source url="https://desplainestheatre.com/event/gipsy-kings-3/">Des Plaines Theatre — Events</source>
+  </item>
+  <item>
+    <title>Des Plaines: BOURBON 'N BRASS: LIVE JAZZ with the BOURBON 'N BRASS TRIO featuring DAKOTA HORVATH</title>
+    <link>https://withintenmiles.com/des-plaines-60016/#ev-bourbon-n-brass-live-jazz-with-the-bourbon-n-brass-trio-feat-2026-10-14</link>
+    <guid isPermaLink="true">https://withintenmiles.com/des-plaines-60016/#ev-bourbon-n-brass-live-jazz-with-the-bourbon-n-brass-trio-feat-2026-10-14</guid>
+    <description>Join us in our intimate Bourbon ‘N Brass Speakeasy, located on the 2nd floor of the Des Plaines Theatre, for an evening of Jazz with the Bourbon ‘N Brass Trio… Official listing: https://desplainestheatre.com/event/bourbon-n-brass-live-jazz-with-the-bourbon-n-brass-trio-featuring-dakota-horvath-5/</description>
+    <pubDate>Wed, 14 Oct 2026 19:30:00 +0000</pubDate>
+    <source url="https://desplainestheatre.com/event/bourbon-n-brass-live-jazz-with-the-bourbon-n-brass-trio-featuring-dakota-horvath-5/">Des Plaines Theatre — Events</source>
   </item>
   <item>
     <title>Des Plaines: Reading/Literacy Class</title>
@@ -217,6 +241,22 @@
     <source url="https://desplaines.libnet.info/event/13759882">Des Plaines Public Library — Events</source>
   </item>
   <item>
+    <title>Des Plaines: KENNY WAYNE SHEPHERD: LEDBETTER HEIGHTS 30TH ANNIVERSARY TOUR</title>
+    <link>https://withintenmiles.com/des-plaines-60016/#ev-kenny-wayne-shepherd-ledbetter-heights-30th-anniversary-tour-2026-10-15</link>
+    <guid isPermaLink="true">https://withintenmiles.com/des-plaines-60016/#ev-kenny-wayne-shepherd-ledbetter-heights-30th-anniversary-tour-2026-10-15</guid>
+    <description>Thirty years ago, a Fender Strat-wielding teenager from Shreveport, Louisiana by the name of Kenny Wayne Shepherd brought the blues back to the mainstream. It… Official listing: https://desplainestheatre.com/event/kenny-wayne-shepherd-band-ledbetter-heights-30th-anniversary-tour/</description>
+    <pubDate>Thu, 15 Oct 2026 19:30:00 +0000</pubDate>
+    <source url="https://desplainestheatre.com/event/kenny-wayne-shepherd-band-ledbetter-heights-30th-anniversary-tour/">Des Plaines Theatre — Events</source>
+  </item>
+  <item>
+    <title>Des Plaines: BOURBON 'N BRASS SPEAKEASY: BLUES SHOW WITH BRANDYE PHILLIPS</title>
+    <link>https://withintenmiles.com/des-plaines-60016/#ev-bourbon-n-brass-speakeasy-blues-show-with-brandye-phillips-2026-10-15</link>
+    <guid isPermaLink="true">https://withintenmiles.com/des-plaines-60016/#ev-bourbon-n-brass-speakeasy-blues-show-with-brandye-phillips-2026-10-15</guid>
+    <description>Join us in our intimate Bourbon ‘N Brass Speakeasy, located on the 2nd floor of the Des Plaines Theatre, for an evening of Blues with Brandye Phillips! Food… Official listing: https://desplainestheatre.com/event/bourbon-n-brass-speakeasy-blues-show-with-brandye-phillips-4/</description>
+    <pubDate>Thu, 15 Oct 2026 19:30:00 +0000</pubDate>
+    <source url="https://desplainestheatre.com/event/bourbon-n-brass-speakeasy-blues-show-with-brandye-phillips-4/">Des Plaines Theatre — Events</source>
+  </item>
+  <item>
     <title>Des Plaines: Baby Book Time</title>
     <link>https://withintenmiles.com/des-plaines-60016/#ev-baby-book-time-2026-10-16</link>
     <guid isPermaLink="true">https://withintenmiles.com/des-plaines-60016/#ev-baby-book-time-2026-10-16</guid>
@@ -246,6 +286,22 @@ Light refreshments will be… Official listing: https://desplaines.libnet.info/e
 nwprogressivedems@gmail.com Official listing: https://desplaines.libnet.info/event/17174492</description>
     <pubDate>Fri, 16 Oct 2026 19:00:00 +0000</pubDate>
     <source url="https://desplaines.libnet.info/event/17174492">Des Plaines Public Library — Events</source>
+  </item>
+  <item>
+    <title>Des Plaines: TAYLOR DAYNE</title>
+    <link>https://withintenmiles.com/des-plaines-60016/#ev-taylor-dayne-2026-10-16</link>
+    <guid isPermaLink="true">https://withintenmiles.com/des-plaines-60016/#ev-taylor-dayne-2026-10-16</guid>
+    <description>Taylor Dayne is a global pop icon with a career spanning three decades, Taylor’s groundbreaking debut single “Tell It To My Heart” turned her into an… Official listing: https://desplainestheatre.com/event/taylor-dayne/</description>
+    <pubDate>Fri, 16 Oct 2026 20:00:00 +0000</pubDate>
+    <source url="https://desplainestheatre.com/event/taylor-dayne/">Des Plaines Theatre — Events</source>
+  </item>
+  <item>
+    <title>Des Plaines: BOURBON 'N BRASS SPEAKEASY: LIVE JAZZ with THE BOOTLEGGERS playing 20s &amp; 30s DANCE FAVORITES</title>
+    <link>https://withintenmiles.com/des-plaines-60016/#ev-bourbon-n-brass-speakeasy-live-jazz-with-the-bootleggers-pla-2026-10-16</link>
+    <guid isPermaLink="true">https://withintenmiles.com/des-plaines-60016/#ev-bourbon-n-brass-speakeasy-live-jazz-with-the-bootleggers-pla-2026-10-16</guid>
+    <description>Join us in our intimate Bourbon ‘N Brass Speakeasy, located on the 2nd floor of the Des Plaines Theatre, for an evening of Jazz with The Bootleggers playing… Official listing: https://desplainestheatre.com/event/bourbon-n-brass-speakeasy-live-jazz-with-the-bootleggers-3/</description>
+    <pubDate>Fri, 16 Oct 2026 20:30:00 +0000</pubDate>
+    <source url="https://desplainestheatre.com/event/bourbon-n-brass-speakeasy-live-jazz-with-the-bootleggers-3/">Des Plaines Theatre — Events</source>
   </item>
   <item>
     <title>Des Plaines: Service Hour Drop In</title>
@@ -278,6 +334,22 @@ Make a pine cone suet feeder while you listen to Alyse Burman from the Wildbird�
     <source url="https://desplaines.libnet.info/event/16864895">Des Plaines Public Library — Events</source>
   </item>
   <item>
+    <title>Des Plaines: THE MUSICAL BOX proudly presents...AND THEN THERE WAS...PHIL</title>
+    <link>https://withintenmiles.com/des-plaines-60016/#ev-the-musical-box-proudly-presents-and-then-there-was-phil-2026-10-17</link>
+    <guid isPermaLink="true">https://withintenmiles.com/des-plaines-60016/#ev-the-musical-box-proudly-presents-and-then-there-was-phil-2026-10-17</guid>
+    <description>In yet its biggest and most daring production, The Musical Box, true to its reputation as a time machine, delivers an authentic live musical experience for… Official listing: https://desplainestheatre.com/event/the-musical-box-proudly-presents-and-then-there-was-phil-2/</description>
+    <pubDate>Sat, 17 Oct 2026 20:00:00 +0000</pubDate>
+    <source url="https://desplainestheatre.com/event/the-musical-box-proudly-presents-and-then-there-was-phil-2/">Des Plaines Theatre — Events</source>
+  </item>
+  <item>
+    <title>Des Plaines: BOURBON 'N BRASS SPEAKEASY: LIVE JAZZ with DONNY DeMARCO &amp; TUNE TOWN</title>
+    <link>https://withintenmiles.com/des-plaines-60016/#ev-bourbon-n-brass-speakeasy-live-jazz-with-donny-demarco-tune-2026-10-17</link>
+    <guid isPermaLink="true">https://withintenmiles.com/des-plaines-60016/#ev-bourbon-n-brass-speakeasy-live-jazz-with-donny-demarco-tune-2026-10-17</guid>
+    <description>Join us in our intimate Bourbon ‘N Brass Speakeasy, located on the 2nd floor of the Des Plaines Theatre, for an evening of Jazz with Donny DeMarco &amp; Tune… Official listing: https://desplainestheatre.com/event/bourbon-n-brass-speakeasy-live-jazz-with-donny-demarco-tune-town-4/</description>
+    <pubDate>Sat, 17 Oct 2026 21:30:00 +0000</pubDate>
+    <source url="https://desplainestheatre.com/event/bourbon-n-brass-speakeasy-live-jazz-with-donny-demarco-tune-town-4/">Des Plaines Theatre — Events</source>
+  </item>
+  <item>
     <title>Des Plaines: Wicked Good Writing Contest</title>
     <link>https://withintenmiles.com/des-plaines-60016/#ev-wicked-good-writing-contest-2026-10-18</link>
     <guid isPermaLink="true">https://withintenmiles.com/des-plaines-60016/#ev-wicked-good-writing-contest-2026-10-18</guid>
@@ -295,6 +367,14 @@ For grades K-8. Official listing: https://desplaines.libnet.info/event/17138186<
  Empieza con tareas básicas en Excel, como crear hojas de calculo y agregar y editar datos, y familiarizarte con las… Official listing: https://desplaines.libnet.info/event/17391232</description>
     <pubDate>Sun, 18 Oct 2026 14:00:00 +0000</pubDate>
     <source url="https://desplaines.libnet.info/event/17391232">Des Plaines Public Library — Events</source>
+  </item>
+  <item>
+    <title>Des Plaines: "I AM HE SAID" - A CELEBRATION OF NEIL DIAMOND starring MATT VEE</title>
+    <link>https://withintenmiles.com/des-plaines-60016/#ev-i-am-he-said-a-celebration-of-neil-diamond-starring-matt-vee-2026-10-18</link>
+    <guid isPermaLink="true">https://withintenmiles.com/des-plaines-60016/#ev-i-am-he-said-a-celebration-of-neil-diamond-starring-matt-vee-2026-10-18</guid>
+    <description>Starring Matt Vee and The Killer Vees — This is Neil done right. A full-production show honoring the legendary Neil Diamond. Featuring all the hits, performed… Official listing: https://desplainestheatre.com/event/i-am-he-said-a-celebration-of-neil-diamond-2/</description>
+    <pubDate>Sun, 18 Oct 2026 15:00:00 +0000</pubDate>
+    <source url="https://desplainestheatre.com/event/i-am-he-said-a-celebration-of-neil-diamond-2/">Des Plaines Theatre — Events</source>
   </item>
   <item>
     <title>Des Plaines: Wicked Good Writing Contest</title>
@@ -363,6 +443,14 @@ Meet with a career expert for resume… Official listing: https://desplaines.lib
     <source url="https://desplaines.libnet.info/event/17060663">Des Plaines Public Library — Events</source>
   </item>
   <item>
+    <title>Des Plaines: $10 SILENT FILM SERIES - "The Man Who Laughs" starring Mary Filbin and Conrad Veidt (1928), Presented by The Silent Film Society of Chicago</title>
+    <link>https://withintenmiles.com/des-plaines-60016/#ev-10-silent-film-series-the-man-who-laughs-starring-mary-filbi-2026-10-19</link>
+    <guid isPermaLink="true">https://withintenmiles.com/des-plaines-60016/#ev-10-silent-film-series-the-man-who-laughs-starring-mary-filbi-2026-10-19</guid>
+    <description>The Des Plaines Theatre and The Silent Film Society of Chicago are pleased to announce our monthly $10 Silent Film Series. Join us as we visit the 1920s for… Official listing: https://desplainestheatre.com/event/10-silent-film-series-the-man-who-laughs-starring-mary-filbin-and-conrad-veidt-1928-presented-by-the-silent-film-society-of-chicago/</description>
+    <pubDate>Mon, 19 Oct 2026 19:00:00 +0000</pubDate>
+    <source url="https://desplainestheatre.com/event/10-silent-film-series-the-man-who-laughs-starring-mary-filbin-and-conrad-veidt-1928-presented-by-the-silent-film-society-of-chicago/">Des Plaines Theatre — Events</source>
+  </item>
+  <item>
     <title>Des Plaines: Wicked Good Writing Contest</title>
     <link>https://withintenmiles.com/des-plaines-60016/#ev-wicked-good-writing-contest-2026-10-20</link>
     <guid isPermaLink="true">https://withintenmiles.com/des-plaines-60016/#ev-wicked-good-writing-contest-2026-10-20</guid>
@@ -371,107 +459,6 @@ Meet with a career expert for resume… Official listing: https://desplaines.lib
 For grades K-8. Official listing: https://desplaines.libnet.info/event/17138188</description>
     <pubDate>Tue, 20 Oct 2026 00:00:00 +0000</pubDate>
     <source url="https://desplaines.libnet.info/event/17138188">Des Plaines Public Library — Events</source>
-  </item>
-  <item>
-    <title>Des Plaines: Early Voting</title>
-    <link>https://withintenmiles.com/des-plaines-60016/#ev-early-voting-2026-10-20</link>
-    <guid isPermaLink="true">https://withintenmiles.com/des-plaines-60016/#ev-early-voting-2026-10-20</guid>
-    <description>Tuesday, October 20 2026 9:00am - 5:00pm 
- Gubernatorial Election Official listing: https://desplaines.libnet.info/event/14863282</description>
-    <pubDate>Tue, 20 Oct 2026 09:00:00 +0000</pubDate>
-    <source url="https://desplaines.libnet.info/event/14863282">Des Plaines Public Library — Events</source>
-  </item>
-  <item>
-    <title>Des Plaines: ESL (English as a Second Language) Class - Oakton College</title>
-    <link>https://withintenmiles.com/des-plaines-60016/#ev-esl-english-as-a-second-language-class-oakton-college-2026-10-20</link>
-    <guid isPermaLink="true">https://withintenmiles.com/des-plaines-60016/#ev-esl-english-as-a-second-language-class-oakton-college-2026-10-20</guid>
-    <description>Tuesday, October 20 2026 9:15am - 12:15pm 
- ESL (English as a Second Language) Class - Oakton College
-
- Teaches listening, speaking, reading, writing, and… Official listing: https://desplaines.libnet.info/event/15803235</description>
-    <pubDate>Tue, 20 Oct 2026 09:15:00 +0000</pubDate>
-    <source url="https://desplaines.libnet.info/event/15803235">Des Plaines Public Library — Events</source>
-  </item>
-  <item>
-    <title>Des Plaines: Reading/Literacy Class</title>
-    <link>https://withintenmiles.com/des-plaines-60016/#ev-reading-literacy-class-2026-10-20</link>
-    <guid isPermaLink="true">https://withintenmiles.com/des-plaines-60016/#ev-reading-literacy-class-2026-10-20</guid>
-    <description>Tuesday, October 20 2026 9:15am - 12:15pm 
- For more information, please contact Oakton College at 847-635-1426. Official listing: https://desplaines.libnet.info/event/15850107</description>
-    <pubDate>Tue, 20 Oct 2026 09:15:00 +0000</pubDate>
-    <source url="https://desplaines.libnet.info/event/15850107">Des Plaines Public Library — Events</source>
-  </item>
-  <item>
-    <title>Des Plaines: Toddler Time</title>
-    <link>https://withintenmiles.com/des-plaines-60016/#ev-toddler-time-2026-10-20</link>
-    <guid isPermaLink="true">https://withintenmiles.com/des-plaines-60016/#ev-toddler-time-2026-10-20</guid>
-    <description>Tuesday, October 20 2026 10:00am - 10:30am 
- Ages 18-36 months. Drop-in at the Poet Tree Corner! Enjoy stories, songs, rhymes, movement, and more at Toddler… Official listing: https://desplaines.libnet.info/event/17001897</description>
-    <pubDate>Tue, 20 Oct 2026 10:00:00 +0000</pubDate>
-    <source url="https://desplaines.libnet.info/event/17001897">Des Plaines Public Library — Events</source>
-  </item>
-  <item>
-    <title>Des Plaines: City of Des Plaines Blood Drive</title>
-    <link>https://withintenmiles.com/des-plaines-60016/#ev-city-of-des-plaines-blood-drive-2026-10-20</link>
-    <guid isPermaLink="true">https://withintenmiles.com/des-plaines-60016/#ev-city-of-des-plaines-blood-drive-2026-10-20</guid>
-    <description>Tuesday, October 20 2026 1:00pm - 6:00pm 
- City Blood Drive - Please call Vitalant at 877-258-4825 or visit the website at www.vitalant.org to make an… Official listing: https://desplaines.libnet.info/event/14138491</description>
-    <pubDate>Tue, 20 Oct 2026 13:00:00 +0000</pubDate>
-    <source url="https://desplaines.libnet.info/event/14138491">Des Plaines Public Library — Events</source>
-  </item>
-  <item>
-    <title>Des Plaines: Maker's Place</title>
-    <link>https://withintenmiles.com/des-plaines-60016/#ev-maker-s-place-2026-10-20</link>
-    <guid isPermaLink="true">https://withintenmiles.com/des-plaines-60016/#ev-maker-s-place-2026-10-20</guid>
-    <description>Tuesday, October 20 2026 4:00pm - 5:30pm 
- Come to the Maker's Place to make something cool and hang out. Official listing: https://desplaines.libnet.info/event/17194650</description>
-    <pubDate>Tue, 20 Oct 2026 16:00:00 +0000</pubDate>
-    <source url="https://desplaines.libnet.info/event/17194650">Des Plaines Public Library — Events</source>
-  </item>
-  <item>
-    <title>Des Plaines: Book a Teen Librarian</title>
-    <link>https://withintenmiles.com/des-plaines-60016/#ev-book-a-teen-librarian-2026-10-20</link>
-    <guid isPermaLink="true">https://withintenmiles.com/des-plaines-60016/#ev-book-a-teen-librarian-2026-10-20</guid>
-    <description>Tuesday, October 20 2026 5:00pm - 6:00pm 
- Come in and get to know your teen librarians! Official listing: https://desplaines.libnet.info/event/17604767</description>
-    <pubDate>Tue, 20 Oct 2026 17:00:00 +0000</pubDate>
-    <source url="https://desplaines.libnet.info/event/17604767">Des Plaines Public Library — Events</source>
-  </item>
-  <item>
-    <title>Des Plaines: Stitches on Miner</title>
-    <link>https://withintenmiles.com/des-plaines-60016/#ev-stitches-on-miner-2026-10-20</link>
-    <guid isPermaLink="true">https://withintenmiles.com/des-plaines-60016/#ev-stitches-on-miner-2026-10-20</guid>
-    <description>Tuesday, October 20 2026 5:30pm - 7:30pm 
- Come join us for a few hours of dedicated crafting time, perfect for working on those eternal works-in-progress or… Official listing: https://desplaines.libnet.info/event/16742517</description>
-    <pubDate>Tue, 20 Oct 2026 17:30:00 +0000</pubDate>
-    <source url="https://desplaines.libnet.info/event/16742517">Des Plaines Public Library — Events</source>
-  </item>
-  <item>
-    <title>Des Plaines: Tech in the Forum</title>
-    <link>https://withintenmiles.com/des-plaines-60016/#ev-tech-in-the-forum-2026-10-20</link>
-    <guid isPermaLink="true">https://withintenmiles.com/des-plaines-60016/#ev-tech-in-the-forum-2026-10-20</guid>
-    <description>Tuesday, October 20 2026 5:30pm - 7:30pm 
- Do you have a question about technology or how to use the library's services? Assistance is provided on a… Official listing: https://desplaines.libnet.info/event/17604845</description>
-    <pubDate>Tue, 20 Oct 2026 17:30:00 +0000</pubDate>
-    <source url="https://desplaines.libnet.info/event/17604845">Des Plaines Public Library — Events</source>
-  </item>
-  <item>
-    <title>Des Plaines: Preserving History with Geoffrey Baer</title>
-    <link>https://withintenmiles.com/des-plaines-60016/#ev-preserving-history-with-geoffrey-baer-2026-10-20</link>
-    <guid isPermaLink="true">https://withintenmiles.com/des-plaines-60016/#ev-preserving-history-with-geoffrey-baer-2026-10-20</guid>
-    <description>Tuesday, October 20 2026 7:00pm - 8:00pm 
- Join Geoffrey Baer, beloved Chicago historian, storyteller, and host of numerous PBS programs for a conversation… Official listing: https://desplaines.libnet.info/event/17166557</description>
-    <pubDate>Tue, 20 Oct 2026 19:00:00 +0000</pubDate>
-    <source url="https://desplaines.libnet.info/event/17166557">Des Plaines Public Library — Events</source>
-  </item>
-  <item>
-    <title>Des Plaines: FilmTalkTuesdays: Rosemary's Baby (1968)</title>
-    <link>https://withintenmiles.com/des-plaines-60016/#ev-filmtalktuesdays-rosemary-s-baby-1968-2026-10-20</link>
-    <guid isPermaLink="true">https://withintenmiles.com/des-plaines-60016/#ev-filmtalktuesdays-rosemary-s-baby-1968-2026-10-20</guid>
-    <description>Tuesday, October 20 2026 7:00pm - 8:00pm 
- Join us every other Tuesday to discuss a film from Hoopla or Kanopy. Official listing: https://desplaines.libnet.info/event/17191483</description>
-    <pubDate>Tue, 20 Oct 2026 19:00:00 +0000</pubDate>
-    <source url="https://desplaines.libnet.info/event/17191483">Des Plaines Public Library — Events</source>
   </item>
 </channel>
 </rss>

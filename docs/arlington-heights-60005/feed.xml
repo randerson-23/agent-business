@@ -3,15 +3,15 @@
 <channel>
   <title>Within Ten — Upcoming events in Arlington Heights</title>
   <link>https://withintenmiles.com/</link>
-  <description>Upcoming events in Arlington Heights, soonest first - aggregated automatically from village, library, park district and school-district calendars. This build reached 3 of 4 configured sources.</description>
-  <lastBuildDate>Tue, 13 Oct 2026 14:22:35 +0000</lastBuildDate>
+  <description>Upcoming events in Arlington Heights, soonest first - aggregated automatically from village, library, park district and school-district calendars. This build reached 3 of 5 configured sources. 1 source is shown from its last update, up to 8 hours ago.</description>
+  <lastBuildDate>Tue, 13 Oct 2026 21:59:46 +0000</lastBuildDate>
   <item>
-    <title>Arlington Heights: Social Worker in the Library</title>
-    <link>https://withintenmiles.com/arlington-heights-60005/#ev-social-worker-in-the-library-2026-10-13</link>
-    <guid isPermaLink="true">https://withintenmiles.com/arlington-heights-60005/#ev-social-worker-in-the-library-2026-10-13</guid>
-    <description>Official listing: https://www.ahml.info/scheduling/reservation/218147</description>
+    <title>Arlington Heights: Read to Learn (District 214)</title>
+    <link>https://withintenmiles.com/arlington-heights-60005/#ev-read-to-learn-district-214-2026-10-13</link>
+    <guid isPermaLink="true">https://withintenmiles.com/arlington-heights-60005/#ev-read-to-learn-district-214-2026-10-13</guid>
+    <description>Official listing: https://www.ahml.info/scheduling/reservation/194391</description>
     <pubDate>Tue, 13 Oct 2026 00:00:00 +0000</pubDate>
-    <source url="https://www.ahml.info/scheduling/reservation/218147">Arlington Heights Memorial Library — Events</source>
+    <source url="https://www.ahml.info/scheduling/reservation/194391">Arlington Heights Memorial Library — Events</source>
   </item>
   <item>
     <title>Arlington Heights: Baby Time</title>
@@ -38,12 +38,12 @@
     <source url="https://www.ahml.info/scheduling/reservation/224174">Arlington Heights Memorial Library — Events</source>
   </item>
   <item>
-    <title>Arlington Heights: First-Time Parents' Meetup</title>
-    <link>https://withintenmiles.com/arlington-heights-60005/#ev-first-time-parents-meetup-2026-10-16</link>
-    <guid isPermaLink="true">https://withintenmiles.com/arlington-heights-60005/#ev-first-time-parents-meetup-2026-10-16</guid>
-    <description>Official listing: https://www.ahml.info/scheduling/reservation/224295</description>
+    <title>Arlington Heights: Senior Center: Travelogue</title>
+    <link>https://withintenmiles.com/arlington-heights-60005/#ev-senior-center-travelogue-2026-10-16</link>
+    <guid isPermaLink="true">https://withintenmiles.com/arlington-heights-60005/#ev-senior-center-travelogue-2026-10-16</guid>
+    <description>Official listing: https://www.ahml.info/scheduling/reservation/224945</description>
     <pubDate>Fri, 16 Oct 2026 00:00:00 +0000</pubDate>
-    <source url="https://www.ahml.info/scheduling/reservation/224295">Arlington Heights Memorial Library — Events</source>
+    <source url="https://www.ahml.info/scheduling/reservation/224945">Arlington Heights Memorial Library — Events</source>
   </item>
   <item>
     <title>Arlington Heights: Oddities Night</title>
@@ -54,12 +54,12 @@
     <source url="https://www.ahpd.org/event/oddities-night/">Arlington Heights Park District — Events</source>
   </item>
   <item>
-    <title>Arlington Heights: Beginning ESL</title>
-    <link>https://withintenmiles.com/arlington-heights-60005/#ev-beginning-esl-2026-10-17</link>
-    <guid isPermaLink="true">https://withintenmiles.com/arlington-heights-60005/#ev-beginning-esl-2026-10-17</guid>
-    <description>Official listing: https://www.ahml.info/scheduling/reservation/234242</description>
+    <title>Arlington Heights: Family Time</title>
+    <link>https://withintenmiles.com/arlington-heights-60005/#ev-family-time-2026-10-17</link>
+    <guid isPermaLink="true">https://withintenmiles.com/arlington-heights-60005/#ev-family-time-2026-10-17</guid>
+    <description>Official listing: https://www.ahml.info/scheduling/reservation/224194</description>
     <pubDate>Sat, 17 Oct 2026 00:00:00 +0000</pubDate>
-    <source url="https://www.ahml.info/scheduling/reservation/234242">Arlington Heights Memorial Library — Events</source>
+    <source url="https://www.ahml.info/scheduling/reservation/224194">Arlington Heights Memorial Library — Events</source>
   </item>
   <item>
     <title>Arlington Heights: Tell Your Cellar Story</title>
@@ -92,6 +92,14 @@
     <description>Official listing: https://www.ahml.info/scheduling/reservation/224212</description>
     <pubDate>Mon, 19 Oct 2026 00:00:00 +0000</pubDate>
     <source url="https://www.ahml.info/scheduling/reservation/224212">Arlington Heights Memorial Library — Events</source>
+  </item>
+  <item>
+    <title>Arlington Heights: Chicago Kids Company presents The Tortoise and the Hare</title>
+    <link>https://withintenmiles.com/arlington-heights-60005/#ev-chicago-kids-company-presents-the-tortoise-and-the-hare-2026-10-19</link>
+    <guid isPermaLink="true">https://withintenmiles.com/arlington-heights-60005/#ev-chicago-kids-company-presents-the-tortoise-and-the-hare-2026-10-19</guid>
+    <description>Purchase Tickets Chicago Kids Company presents The Tortoise and the Hare A part of Metropolis Family Series October 19 – October 22, 2026, 10:00 am &amp; 12:00 pm… Official listing: https://www.metropolisarts.com/event/ckc-tortoise-hare/</description>
+    <pubDate>Mon, 19 Oct 2026 00:00:00 +0000</pubDate>
+    <source url="https://www.metropolisarts.com/event/ckc-tortoise-hare/">Metropolis Performing Arts Centre — Shows</source>
   </item>
   <item>
     <title>Arlington Heights: Read to Learn (District 214)</title>
@@ -222,12 +230,36 @@
     <source url="https://www.ahml.info/scheduling/reservation/224947">Arlington Heights Memorial Library — Events</source>
   </item>
   <item>
+    <title>Arlington Heights: The Rock N' Horror Halloween Concert</title>
+    <link>https://withintenmiles.com/arlington-heights-60005/#ev-the-rock-n-horror-halloween-concert-2026-10-30</link>
+    <guid isPermaLink="true">https://withintenmiles.com/arlington-heights-60005/#ev-the-rock-n-horror-halloween-concert-2026-10-30</guid>
+    <description>Purchase Tickets October 30th, 2026: 7:30 PM October 31st, 2026: 7:30 PM Tickets: $40 ABOUT THE SHOW: A little ROCK, a little HORROR, a lot of Halloween fun,… Official listing: https://www.metropolisarts.com/event/the-rock-n-horror-halloween-concert/</description>
+    <pubDate>Fri, 30 Oct 2026 00:00:00 +0000</pubDate>
+    <source url="https://www.metropolisarts.com/event/the-rock-n-horror-halloween-concert/">Metropolis Performing Arts Centre — Shows</source>
+  </item>
+  <item>
     <title>Arlington Heights: Beginning ESL</title>
     <link>https://withintenmiles.com/arlington-heights-60005/#ev-beginning-esl-2026-10-31</link>
     <guid isPermaLink="true">https://withintenmiles.com/arlington-heights-60005/#ev-beginning-esl-2026-10-31</guid>
     <description>Official listing: https://www.ahml.info/scheduling/reservation/234688</description>
     <pubDate>Sat, 31 Oct 2026 00:00:00 +0000</pubDate>
     <source url="https://www.ahml.info/scheduling/reservation/234688">Arlington Heights Memorial Library — Events</source>
+  </item>
+  <item>
+    <title>Arlington Heights: The Lightning Thief: The Percy Jackson Musical</title>
+    <link>https://withintenmiles.com/arlington-heights-60005/#ev-the-lightning-thief-the-percy-jackson-musical-2026-11-05</link>
+    <guid isPermaLink="true">https://withintenmiles.com/arlington-heights-60005/#ev-the-lightning-thief-the-percy-jackson-musical-2026-11-05</guid>
+    <description>Purchase TicketsThe Lightning Thief: Theatre for Young Audiences Edition The Percy Jackson Musical Performances: Thursday 11/5 at 10:00 am and 12:30 pm Friday… Official listing: https://www.metropolisarts.com/event/lightning-thief-tya-edition/</description>
+    <pubDate>Thu, 05 Nov 2026 00:00:00 +0000</pubDate>
+    <source url="https://www.metropolisarts.com/event/lightning-thief-tya-edition/">Metropolis Performing Arts Centre — Shows</source>
+  </item>
+  <item>
+    <title>Arlington Heights: Myths and Mayhem</title>
+    <link>https://withintenmiles.com/arlington-heights-60005/#ev-myths-and-mayhem-2026-11-05</link>
+    <guid isPermaLink="true">https://withintenmiles.com/arlington-heights-60005/#ev-myths-and-mayhem-2026-11-05</guid>
+    <description>Purchase TicketsPerformance: November 8, 2026 at 10am ABOUT THE SHOW Dive into the Grecian Mythos in this collection of songs and scenes from musicals like… Official listing: https://www.metropolisarts.com/event/myths-and-mayhem/</description>
+    <pubDate>Thu, 05 Nov 2026 00:00:00 +0000</pubDate>
+    <source url="https://www.metropolisarts.com/event/myths-and-mayhem/">Metropolis Performing Arts Centre — Shows</source>
   </item>
   <item>
     <title>Arlington Heights: Pumpkin Smash: From Gourd to Garden</title>
@@ -254,12 +286,28 @@
     <source url="https://www.ahpd.org/event/teen-night-bikini-bottom-bash/">Arlington Heights Park District — Events</source>
   </item>
   <item>
+    <title>Arlington Heights: The Christmas Schooner</title>
+    <link>https://withintenmiles.com/arlington-heights-60005/#ev-the-christmas-schooner-2026-11-24</link>
+    <guid isPermaLink="true">https://withintenmiles.com/arlington-heights-60005/#ev-the-christmas-schooner-2026-11-24</guid>
+    <description>Purchase TicketsNovember 24, 2026 – January 3, 2027 American Sign Language interpreted performance: December 10, 2026, 7:30 pm Open Captioned performance:… Official listing: https://www.metropolisarts.com/event/christmas-schooner/</description>
+    <pubDate>Tue, 24 Nov 2026 00:00:00 +0000</pubDate>
+    <source url="https://www.metropolisarts.com/event/christmas-schooner/">Metropolis Performing Arts Centre — Shows</source>
+  </item>
+  <item>
     <title>Arlington Heights: Holiday Tree Lighting</title>
     <link>https://withintenmiles.com/arlington-heights-60005/#ev-holiday-tree-lighting-2026-11-27</link>
     <guid isPermaLink="true">https://withintenmiles.com/arlington-heights-60005/#ev-holiday-tree-lighting-2026-11-27</guid>
     <description>Kick off the holiday season with the Arlington Heights Park District and the Village of Arlington Heights Special Events Commission at our annual North School… Official listing: https://www.ahpd.org/event/holiday-tree-lighting-2026/</description>
     <pubDate>Fri, 27 Nov 2026 16:30:00 +0000</pubDate>
     <source url="https://www.ahpd.org/event/holiday-tree-lighting-2026/">Arlington Heights Park District — Events</source>
+  </item>
+  <item>
+    <title>Arlington Heights: A Christmas Carol</title>
+    <link>https://withintenmiles.com/arlington-heights-60005/#ev-a-christmas-carol-2026-12-03</link>
+    <guid isPermaLink="true">https://withintenmiles.com/arlington-heights-60005/#ev-a-christmas-carol-2026-12-03</guid>
+    <description>This year, we have three evening and matinee performances of our Main Stage production. We also have daytime matinees as a part of our Family Series, which… Official listing: https://www.metropolisarts.com/event/christmas-carol-2026/</description>
+    <pubDate>Thu, 03 Dec 2026 00:00:00 +0000</pubDate>
+    <source url="https://www.metropolisarts.com/event/christmas-carol-2026/">Metropolis Performing Arts Centre — Shows</source>
   </item>
   <item>
     <title>Arlington Heights: Holly Jolly Trolly</title>
@@ -270,12 +318,36 @@
     <source url="https://www.ahpd.org/event/holly-jolly-trolly/">Arlington Heights Park District — Events</source>
   </item>
   <item>
+    <title>Arlington Heights: THE 12 DAMES OF CHRISTMAS WITH ANGELA INGERSOLL</title>
+    <link>https://withintenmiles.com/arlington-heights-60005/#ev-the-12-dames-of-christmas-with-angela-ingersoll-2026-12-07</link>
+    <guid isPermaLink="true">https://withintenmiles.com/arlington-heights-60005/#ev-the-12-dames-of-christmas-with-angela-ingersoll-2026-12-07</guid>
+    <description>Purchase Tickets THE 12 DAMES OF CHRISTMAS WITH ANGELA INGERSOLL December 7, 2026, 7:30 pm December 8, 2026, 2:00 pm Tickets: Standard – $45 Emmy nominee… Official listing: https://www.metropolisarts.com/event/12-dames-of-christmas/</description>
+    <pubDate>Mon, 07 Dec 2026 00:00:00 +0000</pubDate>
+    <source url="https://www.metropolisarts.com/event/12-dames-of-christmas/">Metropolis Performing Arts Centre — Shows</source>
+  </item>
+  <item>
     <title>Arlington Heights: Frostival</title>
     <link>https://withintenmiles.com/arlington-heights-60005/#ev-frostival-2026-12-12</link>
     <guid isPermaLink="true">https://withintenmiles.com/arlington-heights-60005/#ev-frostival-2026-12-12</guid>
     <description>Come celebrate winter Jack Frost style at the Arlington Heights Historical Museum! Mail a letter to the North Pole, meet a real-life Ice Princess, Ice Queen… Official listing: https://www.ahpd.org/event/frostival-2026/</description>
     <pubDate>Sat, 12 Dec 2026 10:00:00 +0000</pubDate>
     <source url="https://www.ahpd.org/event/frostival-2026/">Arlington Heights Park District — Events</source>
+  </item>
+  <item>
+    <title>Arlington Heights: A Christmas Carol - Main Stage</title>
+    <link>https://withintenmiles.com/arlington-heights-60005/#ev-a-christmas-carol-main-stage-2026-12-13</link>
+    <guid isPermaLink="true">https://withintenmiles.com/arlington-heights-60005/#ev-a-christmas-carol-main-stage-2026-12-13</guid>
+    <description>Purchase TicketsDecember 13, 6:30 pm December 20, 6:30 pm December 24, 2:00 pm Limited Performances, Full-Length Production Tickets: Regular $50, Students $26… Official listing: https://www.metropolisarts.com/event/a-christmas-carol-main-stage/</description>
+    <pubDate>Sun, 13 Dec 2026 00:00:00 +0000</pubDate>
+    <source url="https://www.metropolisarts.com/event/a-christmas-carol-main-stage/">Metropolis Performing Arts Centre — Shows</source>
+  </item>
+  <item>
+    <title>Arlington Heights: Great Moments in Vinyl Plays The Hits of the Holidays</title>
+    <link>https://withintenmiles.com/arlington-heights-60005/#ev-great-moments-in-vinyl-plays-the-hits-of-the-holidays-2026-12-15</link>
+    <guid isPermaLink="true">https://withintenmiles.com/arlington-heights-60005/#ev-great-moments-in-vinyl-plays-the-hits-of-the-holidays-2026-12-15</guid>
+    <description>Purchase Tickets December 15th, 2026: 7:30 PM Tickets: $40 ABOUT THE SHOW: Great Moments in Vinyl brings you some of the best loved tunes of the holiday… Official listing: https://www.metropolisarts.com/event/greatest-hits-in-vinyl-plays-the-hits-of-the-holidays/</description>
+    <pubDate>Tue, 15 Dec 2026 00:00:00 +0000</pubDate>
+    <source url="https://www.metropolisarts.com/event/greatest-hits-in-vinyl-plays-the-hits-of-the-holidays/">Metropolis Performing Arts Centre — Shows</source>
   </item>
   <item>
     <title>Arlington Heights: Family Gingerbread House Decorating</title>
@@ -292,6 +364,46 @@
     <description>All aboard our Storytime Train! On the train to and from Harvard, our conductor will read the Polar Express storybook, and we’ll enjoy music, a snack, and a… Official listing: https://www.ahpd.org/event/winter-express-storytime-train-am/</description>
     <pubDate>Sat, 19 Dec 2026 09:00:00 +0000</pubDate>
     <source url="https://www.ahpd.org/event/winter-express-storytime-train-am/">Arlington Heights Park District — Events</source>
+  </item>
+  <item>
+    <title>Arlington Heights: The Second City's Nut-Cracking Holiday Revue</title>
+    <link>https://withintenmiles.com/arlington-heights-60005/#ev-the-second-city-s-nut-cracking-holiday-revue-2026-12-27</link>
+    <guid isPermaLink="true">https://withintenmiles.com/arlington-heights-60005/#ev-the-second-city-s-nut-cracking-holiday-revue-2026-12-27</guid>
+    <description>Purchase Tickets Sunday, December 27th, 2026 | 7:30pmMonday, December 28th, 2026 | 5:00pm &amp; 7:30pmTuesday, December 29th, 2026 | 5:00pm &amp; 7:30pmThursday,… Official listing: https://www.metropolisarts.com/event/the-second-city-nut-cracking-holiday-revue/</description>
+    <pubDate>Sun, 27 Dec 2026 00:00:00 +0000</pubDate>
+    <source url="https://www.metropolisarts.com/event/the-second-city-nut-cracking-holiday-revue/">Metropolis Performing Arts Centre — Shows</source>
+  </item>
+  <item>
+    <title>Arlington Heights: HELLO AGAIN: ERIC GUTMAN SINGS NEIL DIAMOND</title>
+    <link>https://withintenmiles.com/arlington-heights-60005/#ev-hello-again-eric-gutman-sings-neil-diamond-2027-01-17</link>
+    <guid isPermaLink="true">https://withintenmiles.com/arlington-heights-60005/#ev-hello-again-eric-gutman-sings-neil-diamond-2027-01-17</guid>
+    <description>Purchase Tickets HELLO AGAIN: ERIC GUTMAN SINGS NEIL DIAMOND January 17, 2027, 2:00 pm Tickets: Standard – $45 In an electrifying concert full of humor and… Official listing: https://www.metropolisarts.com/event/hello-again-eric-gutman/</description>
+    <pubDate>Sun, 17 Jan 2027 00:00:00 +0000</pubDate>
+    <source url="https://www.metropolisarts.com/event/hello-again-eric-gutman/">Metropolis Performing Arts Centre — Shows</source>
+  </item>
+  <item>
+    <title>Arlington Heights: Disney's The Little Mermaid</title>
+    <link>https://withintenmiles.com/arlington-heights-60005/#ev-disney-s-the-little-mermaid-2027-01-27</link>
+    <guid isPermaLink="true">https://withintenmiles.com/arlington-heights-60005/#ev-disney-s-the-little-mermaid-2027-01-27</guid>
+    <description>Purchase TicketsJanuary 27, 2027 – February 14, 2027 American Sign Language interpreted performance: February 5, 2027, 7:30 pm Open Captioned performance:… Official listing: https://www.metropolisarts.com/event/the-little-mermaid/</description>
+    <pubDate>Wed, 27 Jan 2027 00:00:00 +0000</pubDate>
+    <source url="https://www.metropolisarts.com/event/the-little-mermaid/">Metropolis Performing Arts Centre — Shows</source>
+  </item>
+  <item>
+    <title>Arlington Heights: Creole Stomp</title>
+    <link>https://withintenmiles.com/arlington-heights-60005/#ev-creole-stomp-2027-02-09</link>
+    <guid isPermaLink="true">https://withintenmiles.com/arlington-heights-60005/#ev-creole-stomp-2027-02-09</guid>
+    <description>Purchase Tickets Tuesday, February 9th, 2027: 7:30pm Tickets: $40 ABOUT THE SHOW: Creole Stomp has captured the ears and the feet of Louisiana music fans… Official listing: https://www.metropolisarts.com/event/creole-stomp-2027/</description>
+    <pubDate>Tue, 09 Feb 2027 00:00:00 +0000</pubDate>
+    <source url="https://www.metropolisarts.com/event/creole-stomp-2027/">Metropolis Performing Arts Centre — Shows</source>
+  </item>
+  <item>
+    <title>Arlington Heights: The Match Game</title>
+    <link>https://withintenmiles.com/arlington-heights-60005/#ev-the-match-game-2027-03-03</link>
+    <guid isPermaLink="true">https://withintenmiles.com/arlington-heights-60005/#ev-the-match-game-2027-03-03</guid>
+    <description>Purchase TicketsMarch 3, 2027 – March 21, 2027 American Sign Language interpreted performance: March 18, 2027, 7:30 pm Open Captioned performance: March 13,… Official listing: https://www.metropolisarts.com/event/the-match-game/</description>
+    <pubDate>Wed, 03 Mar 2027 00:00:00 +0000</pubDate>
+    <source url="https://www.metropolisarts.com/event/the-match-game/">Metropolis Performing Arts Centre — Shows</source>
   </item>
 </channel>
 </rss>
