@@ -4896,3 +4896,28 @@ def test_issues_index_sitemap_and_llms_list_each_issue():
 def test_join_page_links_the_newest_issue_when_there_is_one():
     html = build_digest.render_join_page(_join_sections(), datetime(2026, 10, 16, tzinfo=timezone.utc), None, None, "", build_digest.SITE_BASE_URL + "issues/2026-10-15/")
     assert 'href="' + build_digest.SITE_BASE_URL + 'issues/2026-10-15/">See a recent issue' in html
+
+
+def test_halloween_banner_leads_the_homepage_in_season_and_disappears_after():
+    # Owner request 2026-10-13: trick-or-treat hours at the very top of the
+    # homepage in October, not only as a footer link.
+    entries = [
+        {"region_name": "Arlington Heights", "hours": "3:00–7:00 PM, Saturday, October 31", "no_official_hours": False},
+        {"region_name": "Des Plaines", "hours": None, "no_official_hours": True},
+        {"region_name": "Elsewhere", "hours": None, "no_official_hours": False},
+    ]
+    oct13 = datetime(2026, 10, 13, 17, tzinfo=timezone.utc)
+    banner = build_digest.build_halloween_banner(entries, oct13)
+    assert banner["countdown"] == "18 days to go" and banner["weekday"] == "Saturday"
+    assert [t["hours"] for t in banner["towns"]] == ["3–7 PM", "No set hours", "Not posted yet"]
+    assert build_digest.build_halloween_banner(entries, datetime(2026, 10, 31, 17, tzinfo=timezone.utc))["countdown"] == "Tonight!"
+    assert build_digest.build_halloween_banner(entries, datetime(2026, 11, 1, 17, tzinfo=timezone.utc)) is None
+    assert build_digest.build_halloween_banner(entries, datetime(2026, 6, 1, tzinfo=timezone.utc)) is None
+    assert build_digest.build_halloween_banner([], oct13) is None
+
+    summaries = [{**REGION, "event_count": 3, "path": "mount-prospect-60056/"}]
+    html = build_digest.render_hub_page([], summaries, oct13, halloween=banner)
+    top = html.index('class="halloween"')
+    assert top < html.index('<header class="hero">')
+    assert 'href="trick-or-treat/"' in html[top:]
+    assert "Arlington Heights <strong>3–7 PM</strong>" in html

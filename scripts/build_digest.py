@@ -2761,6 +2761,39 @@ def build_nearby_regions(current: dict, all_regions: list[dict], limit: int = 3)
     ]
 
 
+def build_halloween_banner(entries: list[dict], now: datetime) -> dict | None:
+    """The homepage's Halloween banner (owner request, 2026-10-13: the
+    trick-or-treat link sat in the footer, and in October it belongs at the
+    very top). Shown from the start of trick-or-treat season through
+    Halloween itself, then hidden, since the page's job is done by Nov 1
+    even though the footer link stays a few more days. Each town's hours are
+    shortened to the time range ("3–7 PM"), with Des Plaines' "no official
+    hours" and a not-yet-posted town stated as such, never guessed."""
+    if not entries or not is_trick_or_treat_season(now):
+        return None
+    today = now.astimezone(LOCAL_TZ).date()
+    halloween = date(today.year, 10, 31)
+    if today > halloween:
+        return None
+    days = (halloween - today).days
+    towns = []
+    for e in entries:
+        if e.get("hours"):
+            short = e["hours"].split(",")[0].strip().replace(":00", "")
+        elif e.get("no_official_hours"):
+            short = "No set hours"
+        else:
+            short = "Not posted yet"
+        towns.append({"name": e["region_name"], "hours": short})
+    if days == 0:
+        countdown = "Tonight!"
+    elif days == 1:
+        countdown = "Tomorrow!"
+    else:
+        countdown = f"{days} days to go"
+    return {"weekday": halloween.strftime("%A"), "countdown": countdown, "towns": towns}
+
+
 def render_hub_page(
     regions: list[dict],
     region_summaries: list[dict],
@@ -2769,6 +2802,7 @@ def render_hub_page(
     analytics: dict | None = None,
     stats: dict | None = None,
     contact_email: str | None = None,
+    halloween: dict | None = None,
 ) -> str:
     env = get_template_env()
     template = env.get_template("hub.html.j2")
@@ -2782,6 +2816,7 @@ def render_hub_page(
         og_image_url=SITE_BASE_URL + "og/default.png",
         trick_or_treat_in_season=is_trick_or_treat_season(now),
         corrections_cta_url=build_corrections_cta_url(contact_email),
+        halloween=halloween,
     )
 
 
@@ -5006,7 +5041,10 @@ def main() -> None:
         "free_count": sum(len(s["events"]) for s in hub_free_sections),
         "today_count": sum(len(s["events"]) for s in hub_today_sections),
     }
-    hub_html = render_hub_page(regions, region_summaries, now, newsletter, analytics, stats=hub_stats, contact_email=contact_email)
+    hub_html = render_hub_page(
+        regions, region_summaries, now, newsletter, analytics, stats=hub_stats, contact_email=contact_email,
+        halloween=build_halloween_banner(trick_or_treat_entries, now),
+    )
     (OUTPUT_DIR / "index.html").write_text(hub_html, encoding="utf-8")
     logger.info("Wrote %s", OUTPUT_DIR / "index.html")
 

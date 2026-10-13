@@ -310,6 +310,41 @@
     .hero h1 { font-size: 28px; }
     .wrap { padding: 24px 14px 48px; }
   }
+  /* Halloween banner (owner request 2026-10-13): front and centre from Sept 1
+     to Oct 31, in fixed Halloween colours that read
+     the same in light and dark mode. Art is inline SVG, no image files. */
+  .halloween {
+    position: relative; overflow: hidden;
+    background: radial-gradient(circle at 85% 20%, #3b1d5e 0%, #1a0f2b 55%, #120a1f 100%);
+    color: #fff4e6; border-bottom: 4px solid #ff7a00;
+  }
+  .halloween-inner { position: relative; max-width: 1080px; margin: 0 auto; padding: 22px 20px 20px; display: flex; gap: 18px; align-items: center; }
+  .halloween-art { flex: 0 0 auto; width: 140px; height: 140px; }
+  .halloween-art svg { width: 100%; height: 100%; display: block; }
+  .halloween-copy { flex: 1 1 auto; min-width: 0; }
+  .halloween-kicker { font-size: 12px; font-weight: 800; letter-spacing: 2px; text-transform: uppercase; color: #ffb347; }
+  .halloween h2 { margin: 4px 0 10px; font-size: clamp(22px, 4.2vw, 32px); line-height: 1.15; color: #ffffff; }
+  .halloween h2 .pumpkin-orange { color: #ff8c1a; }
+  .halloween-hours { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 14px; padding: 0; list-style: none; }
+  .halloween-hours li { background: rgba(255,122,0,.14); border: 1px solid rgba(255,140,26,.55); border-radius: 999px; padding: 4px 12px; font-size: 14px; white-space: nowrap; }
+  .halloween-hours li strong { color: #ffb347; font-weight: 800; }
+  .halloween-cta { display: inline-block; background: #ff7a00; color: #1a0f2b; font-weight: 800; text-decoration: none; padding: 10px 18px; border-radius: 999px; box-shadow: 0 0 0 3px rgba(255,122,0,.25); }
+  .halloween-cta:hover, .halloween-cta:focus-visible { background: #ffa040; }
+  .halloween-countdown { display: inline-block; margin-left: 10px; font-weight: 700; color: #d9c2ff; font-size: 14px; }
+  .halloween .bat { position: absolute; fill: #0b0613; opacity: .9; }
+  @media (prefers-reduced-motion: no-preference) {
+    .halloween .bat { animation: bat-flap 2.4s ease-in-out infinite; transform-origin: center; }
+    .halloween .bat.b2 { animation-delay: .8s; }
+    .halloween .bat.b3 { animation-delay: 1.5s; }
+    @keyframes bat-flap { 0%,100% { transform: translateY(0) scaleY(1); } 50% { transform: translateY(-4px) scaleY(.7); } }
+    .halloween .jack-glow { animation: jack-glow 3s ease-in-out infinite; }
+    @keyframes jack-glow { 0%,100% { opacity: .95; } 50% { opacity: .6; } }
+  }
+  @media (max-width: 560px) {
+    .halloween-inner { flex-direction: column; align-items: flex-start; gap: 10px; padding: 18px 16px; }
+    .halloween-art { width: 72px; height: 72px; }
+    .halloween-countdown { display: block; margin: 10px 0 0; }
+  }
 </style>
 {{ signup_css() }}
 </head>
@@ -324,6 +359,40 @@
       <a href="about/">About</a>
     </nav>
   </div>
+{% if halloween %}
+  <section class="halloween" aria-labelledby="halloween-heading">
+    <svg class="bat b1" viewBox="0 0 64 32" width="46" style="top:14px; right:18%;" aria-hidden="true"><path d="M32 12c-2-6-6-8-10-8 2 3 2 6 0 8-3-2-7-2-10 0 1-3 0-6-4-8-4 4-6 10-6 14 4-3 9-3 13 0 2-3 6-4 9-2 3-3 6-4 8-10 2 6 5 7 8 10 3-2 7-1 9 2 4-3 9-3 13 0 0-4-2-10-6-14-4 2-5 5-4 8-3-2-7-2-10 0-2-2-2-5 0-8-4 0-8 2-10 8z"/></svg>
+    <svg class="bat b2" viewBox="0 0 64 32" width="30" style="top:52px; right:9%;" aria-hidden="true"><path d="M32 12c-2-6-6-8-10-8 2 3 2 6 0 8-3-2-7-2-10 0 1-3 0-6-4-8-4 4-6 10-6 14 4-3 9-3 13 0 2-3 6-4 9-2 3-3 6-4 8-10 2 6 5 7 8 10 3-2 7-1 9 2 4-3 9-3 13 0 0-4-2-10-6-14-4 2-5 5-4 8-3-2-7-2-10 0-2-2-2-5 0-8-4 0-8 2-10 8z"/></svg>
+    <svg class="bat b3" viewBox="0 0 64 32" width="22" style="top:24px; right:4%;" aria-hidden="true"><path d="M32 12c-2-6-6-8-10-8 2 3 2 6 0 8-3-2-7-2-10 0 1-3 0-6-4-8-4 4-6 10-6 14 4-3 9-3 13 0 2-3 6-4 9-2 3-3 6-4 8-10 2 6 5 7 8 10 3-2 7-1 9 2 4-3 9-3 13 0 0-4-2-10-6-14-4 2-5 5-4 8-3-2-7-2-10 0-2-2-2-5 0-8-4 0-8 2-10 8z"/></svg>
+    <div class="halloween-inner">
+      <div class="halloween-art" aria-hidden="true">
+        <svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="92" cy="26" r="18" fill="#f7e7b4" opacity=".9"/>
+          <circle cx="98" cy="22" r="16" fill="#1a0f2b" opacity=".55"/>
+          <path d="M60 30c-2-8 2-14 8-16l3 5c-4 2-6 6-5 11z" fill="#4d7c0f"/>
+          <ellipse cx="38" cy="72" rx="24" ry="30" fill="#e8620c"/>
+          <ellipse cx="82" cy="72" rx="24" ry="30" fill="#e8620c"/>
+          <ellipse cx="60" cy="72" rx="26" ry="32" fill="#ff7a00"/>
+          <g class="jack-glow" fill="#ffd166">
+            <path d="M40 62l10-12 8 12z"/>
+            <path d="M62 62l8-12 10 12z"/>
+            <path d="M56 74l4-6 4 6z"/>
+            <path d="M34 82c8 10 44 10 52 0-4 10-12 16-26 16s-22-6-26-16zm12 3v6h6v-5zm16 1v6h6v-6z"/>
+          </g>
+        </svg>
+      </div>
+      <div class="halloween-copy">
+        <div class="halloween-kicker">🎃 Halloween &middot; {{ halloween.weekday }}, October 31</div>
+        <h2 id="halloween-heading">Trick-or-treat hours for all five towns, <span class="pumpkin-orange">in one place</span></h2>
+        <ul class="halloween-hours">
+          {% for t in halloween.towns %}<li>{{ t.name }} <strong>{{ t.hours }}</strong></li>{% endfor %}
+        </ul>
+        <a class="halloween-cta" href="trick-or-treat/">See hours, trunk-or-treats &amp; Halloween events &rarr;</a>
+        <span class="halloween-countdown">👻 {{ halloween.countdown }}</span>
+      </div>
+    </div>
+  </section>
+  {% endif %}
   <!-- header, not div (ROADMAP.md Phase 11 #62, found by a real axe-core
        audit): everything in the hero previously sat outside any
        landmark - <main> only wraps the content below it. -->
