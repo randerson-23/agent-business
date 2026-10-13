@@ -3,16 +3,8 @@
 <channel>
   <title>Within Ten — Upcoming Local Events</title>
   <link>https://withintenmiles.com/</link>
-  <description>Upcoming events across every Within Ten region, soonest first - aggregated automatically from village, library, park district and school-district calendars. This build reached 20 of 26 configured sources. 1 source is shown from its last update, up to 9 hours ago.</description>
-  <lastBuildDate>Tue, 13 Oct 2026 02:47:34 +0000</lastBuildDate>
-  <item>
-    <title>Arlington Heights: Kids' Time</title>
-    <link>https://withintenmiles.com/arlington-heights-60005/#ev-kids-time-2026-10-12</link>
-    <guid isPermaLink="true">https://withintenmiles.com/arlington-heights-60005/#ev-kids-time-2026-10-12</guid>
-    <description>Official listing: https://www.ahml.info/scheduling/reservation/224210</description>
-    <pubDate>Mon, 12 Oct 2026 00:00:00 +0000</pubDate>
-    <source url="https://www.ahml.info/scheduling/reservation/224210">Arlington Heights Memorial Library — Events</source>
-  </item>
+  <description>Upcoming events across every Within Ten region, soonest first - aggregated automatically from village, library, park district and school-district calendars. This build reached 20 of 26 configured sources. 1 source is shown from its last update, up to 12 hours ago.</description>
+  <lastBuildDate>Tue, 13 Oct 2026 06:00:34 +0000</lastBuildDate>
   <item>
     <title>Arlington Heights: Read to Learn (District 214)</title>
     <link>https://withintenmiles.com/arlington-heights-60005/#ev-read-to-learn-district-214-2026-10-13</link>
@@ -450,6 +442,15 @@ A virtual… Official listing: https://mppl.libnet.info/event/17476743</descript
     <description>Official listing: https://www.ahml.info/scheduling/reservation/224174</description>
     <pubDate>Thu, 15 Oct 2026 00:00:00 +0000</pubDate>
     <source url="https://www.ahml.info/scheduling/reservation/224174">Arlington Heights Memorial Library — Events</source>
+  </item>
+  <item>
+    <title>Des Plaines: Reading/Literacy Class</title>
+    <link>https://withintenmiles.com/des-plaines-60016/#ev-reading-literacy-class-2026-10-15</link>
+    <guid isPermaLink="true">https://withintenmiles.com/des-plaines-60016/#ev-reading-literacy-class-2026-10-15</guid>
+    <description>Thursday, October 15 2026 9:15am - 12:15pm 
+ For more information, please contact Oakton College at 847-635-1426 Official listing: https://desplaines.libnet.info/event/15801725</description>
+    <pubDate>Thu, 15 Oct 2026 09:15:00 +0000</pubDate>
+    <source url="https://desplaines.libnet.info/event/15801725">Des Plaines Public Library — Events</source>
   </item>
 </channel>
 </rss>
