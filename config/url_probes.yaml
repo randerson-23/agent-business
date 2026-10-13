@@ -54,3 +54,43 @@ probes:
   # - vah.com Halloween page: 2026's page; 3-7 p.m. is standing guidance, not an
   #   ordinance; its Trunk-or-Treat date is still 2025's (round 12, item 218).
   # - mountprospect.org Calendar Event/22639: 404 (round 12, item 218).
+
+  # Round 13 (item 282): four arts venues. Each probe looks for a parseable feed
+  # (iCal, RSS, JSON-LD Event) before any source is added.
+  - url: https://events.harpercollege.edu/calendar.ics
+    item: 282
+    purpose: Harper College (Localist) - does the default iCal path serve a calendar?
+    patterns:
+      - 'BEGIN:VCALENDAR'
+      - '<rss'
+      - 'localist'
+  - url: https://events.harpercollege.edu/api/2/events?days=60
+    item: 282
+    purpose: Harper College (Localist) - does the public JSON API answer?
+    patterns:
+      - '"events"'
+      - '"event"'
+  - url: https://desplainestheatre.com/events/
+    item: 282
+    purpose: Des Plaines Theatre - any iCal link or per-event JSON-LD?
+    patterns:
+      - 'BEGIN:VCALENDAR'
+      - '"@type": ?"Event"'
+      - '\.ics'
+    follow: '(?i)\.ics|/event/'
+  - url: https://metropolisarts.com/
+    item: 282
+    purpose: Metropolis Performing Arts Centre - where is the calendar and does it have a feed?
+    patterns:
+      - 'BEGIN:VCALENDAR'
+      - '"@type": ?"Event"'
+      - '\.ics'
+    follow: '(?i)calendar|events|whats-on|shows'
+  - url: https://heynonny.com/
+    item: 282
+    purpose: Hey Nonny - events page, OpenDate listing, or a feed?
+    patterns:
+      - 'opendate'
+      - 'BEGIN:VCALENDAR'
+      - '"@type": ?"Event"'
+    follow: '(?i)events|shows|opendate'

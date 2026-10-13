@@ -15207,7 +15207,7 @@ and some of the likeliest $20 buyers.
 
 #### P1 (new)
 
-282. **Probe four arts venues, then add the ones that publish a feed.**
+282. 🟡 **STEP 1 DONE (2026-10-13): five probes added to `config/url_probes.yaml` (Harper iCal and JSON API, Des Plaines Theatre, Metropolis, Hey Nonny); read `data/url_probes.json` on origin/main after the probe run, then do step 2.** **Probe four arts venues, then add the ones that publish a feed.**
      Build loop, two steps. **Step 1:** add probes to
      `config/url_probes.yaml` (item 212's workflow). Run each against its
      likely feed paths and look in the body for `BEGIN:VCALENDAR`,
