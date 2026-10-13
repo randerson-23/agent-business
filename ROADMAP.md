@@ -327,6 +327,10 @@ that limit.
 8c. **Paste the welcome email (2 min, item 275)** once `WELCOME_EMAIL.md`
    exists: Buttondown → Settings → Subscribing → Welcome email.
 
+8d. **Holiday-listing outreach (about an hour, before Nov 15, item 288)**,
+   once `OUTREACH_PROSPECTS.md` exists: send §13 with the $20 holiday-
+   listing line to 10–15 shops per town through their own contact pages.
+
 **Next action — about an hour, no cost:**
 
 8. **Send the outreach emails (items 152, 161).** Six civic link-back
@@ -15354,6 +15358,75 @@ venues** (three publish iCal; Hey Nonny does not), **Localist's public
 API filters**, and **turkey trots** in the five towns (none found). The
 design/UX angle is **what the homepage leads with once Halloween is
 over**.
+
+
+#### Research pass 2026-10-13, evening (seventy-third pass)
+
+The build loop shipped item 285's holiday homepage banner (live Nov 1)
+and item 287, which added **Metropolis and Des Plaines Theatre** as
+iCal sources and Hey Nonny as a link. **Des Plaines now has 13 weekend
+events**, its best yet. Tomorrow (Wed Oct 14) is the first send with
+tracking on. The site's one product with a deadline is the **$20
+holiday listing, early-bird until Nov 15**, and nothing is selling it
+yet: the owner has no list of businesses to send it to. This pass is
+about closing that gap and about the two most valuable sends of the
+season.
+
+| Angle | What it is / what we found | Why it matters here |
+|---|---|---|
+| **Amex Small Business Saturday "Neighborhood Champions"** | American Express's annual programme invites **business associations, chambers of commerce and community organisations** to apply each fall. Champions receive a free Shop Small kit (bags, stickers, signage) and promote Small Business Saturday (**Nov 28, 2026**) locally. Applications historically run until mid-November or until spots fill. No 2026 announcement found yet | Downtown Mount Prospect, the downtown Arlington Heights merchants and the five chambers are the likeliest Champions. That makes **their member lists the right prospect list** for the holiday listing, and their Small Business Saturday events are content for `/holidays/` (item 208 already keys on the phrase). Within Ten applying itself is a stretch, since it is not a merchants' group. Noted, not filed |
+| **Downtown gift-card programmes** | No current "downtown dollars" or shop-local gift-card programme found for any of the five towns (only Giftly's generic pages) | **No item.** Nothing to feature. If one launches, it belongs on `/holidays/` |
+| **Who the holiday listing is sold to** | Item 258's page exists and item 285's banner will advertise it, but **no prospect list exists anywhere in the repo**. `OUTREACH_TEMPLATES.md` §6 (merchants association) and §13 (Small Business Saturday) are written but address no one. The downtown associations publish **public member and business directories** (Downtown Arlington Heights is already an evergreen source, `downtownarlingtonheights.us`) | A product with a deadline and no one to offer it to earns nothing. A directory page read through item 212's probe workflow becomes a list of shop names and websites, which the owner can work through in an hour (item 288) |
+| **The Oct 28 and Nov 25 issues (design/UX)** | The redesigned email uses the same red hero every week. **Oct 28** is the Halloween-weekend issue (trick-or-treat Saturday). **Nov 25** goes out the day before Thanksgiving, ahead of Arlington Heights' Friday tree lighting and Small Business Saturday. These are the two issues most likely to be opened, forwarded and kept | A seasonal "edition" look for those weeks costs one template branch, and it is exactly the "fun and eye-catching" direction the owner asked for (item 289) |
+
+#### P1 (new)
+
+288. **Build the holiday-listing prospect list from the downtown
+     directories, by Oct 25.** Build loop plus owner.
+     - **Build loop:** add probes (item 212) for the public business
+       directories of Downtown Arlington Heights
+       (`downtownarlingtonheights.us`), Downtown Mount Prospect, and the
+       Palatine, Des Plaines and Wheeling chambers' member directories.
+       Use `follow` toward "directory", "members" or "shop", and `patterns`
+       for business-card markup. From the answers, write
+       **`OUTREACH_PROSPECTS.md`**: one table per town with **business name,
+       category, website or public contact page**. Only what the
+       directory itself publishes. **No scraped personal emails, no
+       guessed addresses.** Order each town's list by the categories that
+       buy holiday visibility: gift shops, boutiques, bakeries,
+       restaurants, toy and book stores, salons.
+     - **Owner, about an hour, in two or three sittings before Nov 15:**
+       send §13 (Small Business Saturday) with the holiday-listing line
+       to the first 10–15 shops per town, through each shop's own contact
+       page or published email. Log replies in the file.
+     - **Guardrail:** this is a list of businesses, read from pages they
+       chose to publish in. It is never shared, sold or used for anything
+       but these outreach emails, and the file says so at the top.
+
+289. **A seasonal "edition" look for the Halloween and Thanksgiving
+     issues.** Design/UX, build loop, `combined_email_digest.html.j2`.
+     Reuse item 263/285's season registry so the email, homepage and
+     seasonal line agree:
+     - **Halloween edition, the send whose weekend contains Oct 31
+       (this year Oct 28):** the hero in deep purple and black with
+       orange, *"🎃 The Halloween weekend issue"* as the kicker, and the
+       five towns' trick-or-treat hours as the first block, the same
+       pills as the homepage banner, above "Don't miss".
+     - **Holiday kickoff edition, the send before Thanksgiving (Nov
+       25):** green and red with gold, *"🎄 Holiday kickoff"*, with the
+       tree-lighting dates and Small Business Saturday (Nov 28) as the
+       first block.
+     - Every other week keeps the standard red hero. Colours are inline,
+       with tables only, as before. **Tests:** which send gets which
+       edition (including a year when Oct 31 falls on a Sunday or a
+       Monday), and the 102 KB limit with the extra block. **Ship by Oct
+       27.**
+
+Competitors reviewed this pass: **Amex's Small Business Saturday
+Neighborhood Champions** programme (chambers and merchants' groups,
+free kits, applications each fall) and **downtown gift-card
+programmes** (none in these towns). The design/UX angle is **seasonal
+editions of the two biggest issues of the fall**.
 
 
 ## Working agreements for autonomous iteration
