@@ -15387,7 +15387,7 @@ season.
 
 #### P1 (new)
 
-288. 🟡 **ROUND 1 ANSWERED, ROUND 2 PROBES ADDED (2026-10-14): Downtown Mount Prospect has `/members/` (158 KB), the Palatine Chamber runs ChamberMaster at `business.palatinechamber.com`, Downtown Arlington Heights has `/restaurants/dining-map`; the Arlington Heights, Mount Prospect and Des Plaines chamber domains were wrong guesses (connection/SSL errors) and Wheeling's is a 1 KB stub. Round 2 samples each directory's markup so round 3 can extract names. Original note: seven probes added (two downtown sites, five guessed chamber domains); read `data/url_probes.json` after the run, then write `OUTREACH_PROSPECTS.md` (due Oct 25).** **Build the holiday-listing prospect list from the downtown
+288. 🟡 **STUCK AT THE PROBE ROUTE (2026-10-14 evening): round 2 showed the directories hold no static business markup (Downtown Arlington Heights is script-rendered; the Mount Prospect and Palatine pages list no names), so `OUTREACH_PROSPECTS.md` cannot be built from probes. Options for the owner or next pass: use each downtown group's or chamber's own printable directory/PDF, or the owner pastes 10–15 shops per town from walking downtown. Answered probes removed from the config.** Earlier note: (ROUND 1 ANSWERED, ROUND 2 PROBES ADDED (2026-10-14): Downtown Mount Prospect has `/members/` (158 KB), the Palatine Chamber runs ChamberMaster at `business.palatinechamber.com`, Downtown Arlington Heights has `/restaurants/dining-map`; the Arlington Heights, Mount Prospect and Des Plaines chamber domains were wrong guesses (connection/SSL errors) and Wheeling's is a 1 KB stub. Round 2 samples each directory's markup so round 3 can extract names.) Original note: seven probes added (two downtown sites, five guessed chamber domains); read `data/url_probes.json` after the run, then write `OUTREACH_PROSPECTS.md` (due Oct 25).** **Build the holiday-listing prospect list from the downtown
      directories, by Oct 25.** Build loop plus owner.
      - **Build loop:** add probes (item 212) for the public business
        directories of Downtown Arlington Heights
@@ -15490,7 +15490,7 @@ answer reaches people before Oct 31.
        stale forecast. **Tests:** dry and wet weekends, a failed fetch,
        and the 102 KB limit.
 
-292. 🟡 **PARTLY DONE (2026-10-14): `OUTREACH_TEMPLATES.md` §7b now covers NBC Chicago and WGN (owner sends by Oct 20, via each outlet's own contact page, no addresses invented); a probe for `mpdowntown.com/events/` looks for a 2026 downtown trick-or-treat (read `data/url_probes.json`, add it only if posted with a 2026 date).** **Send the trick-or-treat note to NBC Chicago and WGN too, and add
+292. 🟡 **PARTLY DONE (2026-10-14): `OUTREACH_TEMPLATES.md` §7b now covers NBC Chicago and WGN (owner sends by Oct 20, via each outlet's own contact page, no addresses invented); a probe for `mpdowntown.com/events/` looks for a 2026 downtown trick-or-treat (read `data/url_probes.json`, add it only if posted with a 2026 date). Round 16 found a "Downtown Trick-or-Treat" section on `mpdowntown.com/events/` but no date; round 17 captures its text.** **Send the trick-or-treat note to NBC Chicago and WGN too, and add
      Mount Prospect's downtown trick-or-treat.** Build loop plus owner.
      - **Build loop:** add the two outlets' tip addresses (from their own
        contact pages) to `OUTREACH_TEMPLATES.md` §7b's "send to" list. The
