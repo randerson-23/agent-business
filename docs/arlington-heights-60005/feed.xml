@@ -3,16 +3,8 @@
 <channel>
   <title>Within Ten — Upcoming events in Arlington Heights</title>
   <link>https://withintenmiles.com/</link>
-  <description>Upcoming events in Arlington Heights, soonest first - aggregated automatically from village, library, park district and school-district calendars. This build reached 3 of 5 configured sources. 1 source is shown from its last update, up to 8 hours ago.</description>
-  <lastBuildDate>Tue, 13 Oct 2026 21:59:46 +0000</lastBuildDate>
-  <item>
-    <title>Arlington Heights: Read to Learn (District 214)</title>
-    <link>https://withintenmiles.com/arlington-heights-60005/#ev-read-to-learn-district-214-2026-10-13</link>
-    <guid isPermaLink="true">https://withintenmiles.com/arlington-heights-60005/#ev-read-to-learn-district-214-2026-10-13</guid>
-    <description>Official listing: https://www.ahml.info/scheduling/reservation/194391</description>
-    <pubDate>Tue, 13 Oct 2026 00:00:00 +0000</pubDate>
-    <source url="https://www.ahml.info/scheduling/reservation/194391">Arlington Heights Memorial Library — Events</source>
-  </item>
+  <description>Upcoming events in Arlington Heights, soonest first - aggregated automatically from village, library, park district and school-district calendars. This build reached 4 of 5 configured sources.</description>
+  <lastBuildDate>Wed, 14 Oct 2026 06:00:08 +0000</lastBuildDate>
   <item>
     <title>Arlington Heights: Baby Time</title>
     <link>https://withintenmiles.com/arlington-heights-60005/#ev-baby-time-2026-10-14</link>
@@ -150,18 +142,18 @@
     <source url="https://www.ahml.info/scheduling/reservation/224946">Arlington Heights Memorial Library — Events</source>
   </item>
   <item>
-    <title>Arlington Heights: One Book, One Village at Arlington Heights' Community Open House</title>
-    <link>https://withintenmiles.com/arlington-heights-60005/#ev-one-book-one-village-at-arlington-heights-community-open-hou-2026-10-24</link>
-    <guid isPermaLink="true">https://withintenmiles.com/arlington-heights-60005/#ev-one-book-one-village-at-arlington-heights-community-open-hou-2026-10-24</guid>
-    <description>Official listing: https://www.ahml.info/scheduling/reservation/226814</description>
+    <title>Arlington Heights: Games &amp; Gab</title>
+    <link>https://withintenmiles.com/arlington-heights-60005/#ev-games-gab-2026-10-24</link>
+    <guid isPermaLink="true">https://withintenmiles.com/arlington-heights-60005/#ev-games-gab-2026-10-24</guid>
+    <description>Official listing: https://www.ahml.info/scheduling/reservation/234245</description>
     <pubDate>Sat, 24 Oct 2026 00:00:00 +0000</pubDate>
-    <source url="https://www.ahml.info/scheduling/reservation/226814">Arlington Heights Memorial Library — Events</source>
+    <source url="https://www.ahml.info/scheduling/reservation/234245">Arlington Heights Memorial Library — Events</source>
   </item>
   <item>
     <title>Arlington Heights: Trunk or Treat</title>
     <link>https://withintenmiles.com/arlington-heights-60005/#ev-trunk-or-treat-2026-10-24</link>
     <guid isPermaLink="true">https://withintenmiles.com/arlington-heights-60005/#ev-trunk-or-treat-2026-10-24</guid>
-    <description>Join us for Trunk or Treat on Saturday, October 24th, at Pioneer Park from 10:00am to 12:30pm! Dress in your favorite costume to trick-or-treat at 40+ trunks… Official listing: https://www.ahpd.org/event/trunk-or-treat-2026/</description>
+    <description>Join us for Trunk or Treat on Saturday, October 24th, at Pioneer Park from 10AM-12:30PM! Dress in your favorite costume to trick-or-treat at 40+ trunks and… Official listing: https://www.ahpd.org/event/trunk-or-treat-2026/</description>
     <pubDate>Sat, 24 Oct 2026 10:00:00 +0000</pubDate>
     <source url="https://www.ahpd.org/event/trunk-or-treat-2026/">Arlington Heights Park District — Events</source>
   </item>
@@ -404,6 +396,14 @@
     <description>Purchase TicketsMarch 3, 2027 – March 21, 2027 American Sign Language interpreted performance: March 18, 2027, 7:30 pm Open Captioned performance: March 13,… Official listing: https://www.metropolisarts.com/event/the-match-game/</description>
     <pubDate>Wed, 03 Mar 2027 00:00:00 +0000</pubDate>
     <source url="https://www.metropolisarts.com/event/the-match-game/">Metropolis Performing Arts Centre — Shows</source>
+  </item>
+  <item>
+    <title>Arlington Heights: Methtacular!</title>
+    <link>https://withintenmiles.com/arlington-heights-60005/#ev-methtacular-2027-03-08</link>
+    <guid isPermaLink="true">https://withintenmiles.com/arlington-heights-60005/#ev-methtacular-2027-03-08</guid>
+    <description>Purchase Tickets Monday, March 8th, 2027: 7:30 PM Tickets: $25 ABOUT THE SHOW: METHTACULAR! is Steven Strafford’s hilarious, harrowing, and ultimately hopeful… Official listing: https://www.metropolisarts.com/event/methtacular/</description>
+    <pubDate>Mon, 08 Mar 2027 00:00:00 +0000</pubDate>
+    <source url="https://www.metropolisarts.com/event/methtacular/">Metropolis Performing Arts Centre — Shows</source>
   </item>
 </channel>
 </rss>

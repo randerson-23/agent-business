@@ -1,12 +1,6 @@
 {
- "fetched_at": "2026-10-13T21:59:46+00:00",
+ "fetched_at": "2026-10-14T06:00:08+00:00",
  "items": [
-  {
-   "date": "2026-10-13",
-   "detail": "",
-   "title": "Read to Learn (District 214)",
-   "url": "https://www.ahml.info/scheduling/reservation/194391"
-  },
   {
    "date": "2026-10-14",
    "detail": "",
@@ -70,8 +64,8 @@
   {
    "date": "2026-10-24",
    "detail": "",
-   "title": "One Book, One Village at Arlington Heights' Community Open House",
-   "url": "https://www.ahml.info/scheduling/reservation/226814"
+   "title": "Games & Gab",
+   "url": "https://www.ahml.info/scheduling/reservation/234245"
   },
   {
    "date": "2026-10-25",
@@ -118,14 +112,14 @@
   {
    "date": null,
    "detail": "",
-   "title": "Senior Center: Current Events",
-   "url": "https://www.ahml.info/scheduling/reservation/224971"
+   "title": "Play Time",
+   "url": "https://www.ahml.info/scheduling/reservation/224254"
   },
   {
    "date": null,
    "detail": "",
-   "title": "Play Time",
-   "url": "https://www.ahml.info/scheduling/reservation/224254"
+   "title": "Senior Center: Current Events",
+   "url": "https://www.ahml.info/scheduling/reservation/224971"
   },
   {
    "date": null,
@@ -172,8 +166,8 @@
   {
    "date": null,
    "detail": "",
-   "title": "Improv Workshop for Brain Health",
-   "url": "https://www.ahml.info/scheduling/reservation/195033"
+   "title": "Senior Center: Travelogue",
+   "url": "https://www.ahml.info/scheduling/reservation/224943"
   },
   {
    "date": null,
@@ -256,6 +250,12 @@
   {
    "date": null,
    "detail": "",
+   "title": "Clases de Computación Básica",
+   "url": "https://www.ahml.info/scheduling/reservation/230155"
+  },
+  {
+   "date": null,
+   "detail": "",
    "title": "Genealogy Gumshoes: Family History Discussion Group",
    "url": "https://www.ahml.info/scheduling/reservation/201132"
   },
@@ -264,12 +264,6 @@
    "detail": "",
    "title": "Hablemos Español (Let's Speak Spanish)",
    "url": "https://www.ahml.info/scheduling/reservation/230944"
-  },
-  {
-   "date": null,
-   "detail": "",
-   "title": "Clases de Computación Básica",
-   "url": "https://www.ahml.info/scheduling/reservation/230155"
   },
   {
    "date": null,
@@ -310,12 +304,6 @@
   {
    "date": null,
    "detail": "",
-   "title": "Beginning ESL",
-   "url": "https://www.ahml.info/scheduling/reservation/198032"
-  },
-  {
-   "date": null,
-   "detail": "",
    "title": "Mindful Movements",
    "url": "https://www.ahml.info/scheduling/reservation/200994"
   },
@@ -324,6 +312,12 @@
    "detail": "",
    "title": "Senior Center: iPhone & iPad Camera Basics",
    "url": "https://www.ahml.info/scheduling/reservation/225340"
+  },
+  {
+   "date": null,
+   "detail": "",
+   "title": "Beginning ESL",
+   "url": "https://www.ahml.info/scheduling/reservation/198032"
   },
   {
    "date": null,
@@ -352,14 +346,20 @@
   {
    "date": null,
    "detail": "",
+   "title": "Community Blood Drive",
+   "url": "https://www.ahml.info/scheduling/reservation/207690"
+  },
+  {
+   "date": null,
+   "detail": "",
    "title": "Culinary: Making Mushroom Risotto",
    "url": "https://www.ahml.info/scheduling/reservation/223670"
   },
   {
    "date": null,
    "detail": "",
-   "title": "Community Blood Drive",
-   "url": "https://www.ahml.info/scheduling/reservation/207690"
+   "title": "English Language Review",
+   "url": "https://www.ahml.info/scheduling/reservation/234231"
   }
  ],
  "source": "Arlington Heights Memorial Library — Events"

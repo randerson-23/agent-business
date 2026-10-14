@@ -1,5 +1,5 @@
 {
- "fetched_at": "2026-10-13T14:22:35+00:00",
+ "fetched_at": "2026-10-14T06:00:08+00:00",
  "items": [
   {
    "date": null,
@@ -119,7 +119,7 @@
    "date": null,
    "detail": "",
    "title": "Previous Events",
-   "url": "https://www.dpparks.org/events/list/?posts_per_page=13&eventDisplay=past"
+   "url": "https://www.dpparks.org/events/list/?eventDisplay=past"
   }
  ],
  "source": "Des Plaines Park District — Events"

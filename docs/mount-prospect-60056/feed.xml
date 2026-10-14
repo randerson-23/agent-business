@@ -3,71 +3,8 @@
 <channel>
   <title>Within Ten — Upcoming events in Mount Prospect</title>
   <link>https://withintenmiles.com/</link>
-  <description>Upcoming events in Mount Prospect, soonest first - aggregated automatically from village, library, park district and school-district calendars. This build reached 12 of 18 configured sources. 3 sources are shown from their last update, up to 8 hours ago.</description>
-  <lastBuildDate>Tue, 13 Oct 2026 21:59:46 +0000</lastBuildDate>
-  <item>
-    <title>Mount Prospect: Baby Storytime</title>
-    <link>https://withintenmiles.com/mount-prospect-60056/#ev-baby-storytime-2026-10-13</link>
-    <guid isPermaLink="true">https://withintenmiles.com/mount-prospect-60056/#ev-baby-storytime-2026-10-13</guid>
-    <description>Tuesday, October 13 2026 9:30am - 10:00am 
- A lifelong love of reading starts at birth! Join us for songs, rhymes, stories, and playtime made specially for… Official listing: https://mppl.libnet.info/event/16553352</description>
-    <pubDate>Tue, 13 Oct 2026 09:30:00 +0000</pubDate>
-    <source url="https://mppl.libnet.info/event/16553352">Mount Prospect Public Library — Events</source>
-  </item>
-  <item>
-    <title>Mount Prospect: Family Storytime</title>
-    <link>https://withintenmiles.com/mount-prospect-60056/#ev-family-storytime-2026-10-13</link>
-    <guid isPermaLink="true">https://withintenmiles.com/mount-prospect-60056/#ev-family-storytime-2026-10-13</guid>
-    <description>Tuesday, October 13 2026 10:30am - 11:00am 
- Bring the whole family and join us for an interactive storytime with high-energy stories, songs, and activities. Official listing: https://mppl.libnet.info/event/16553376</description>
-    <pubDate>Tue, 13 Oct 2026 10:30:00 +0000</pubDate>
-    <source url="https://mppl.libnet.info/event/16553376">Mount Prospect Public Library — Events</source>
-  </item>
-  <item>
-    <title>Mount Prospect: Play and Learn</title>
-    <link>https://withintenmiles.com/mount-prospect-60056/#ev-play-and-learn-2026-10-13</link>
-    <guid isPermaLink="true">https://withintenmiles.com/mount-prospect-60056/#ev-play-and-learn-2026-10-13</guid>
-    <description>Tuesday, October 13 2026 11:30am - 12:15pm 
- Join us each week for storytime, sing-alongs, and developmental play experiences that encourage learning through… Official listing: https://mppl.libnet.info/event/16749801</description>
-    <pubDate>Tue, 13 Oct 2026 11:30:00 +0000</pubDate>
-    <source url="https://mppl.libnet.info/event/16749801">Mount Prospect Public Library — Events</source>
-  </item>
-  <item>
-    <title>Mount Prospect: Big Kids Storytime</title>
-    <link>https://withintenmiles.com/mount-prospect-60056/#ev-big-kids-storytime-2026-10-13</link>
-    <guid isPermaLink="true">https://withintenmiles.com/mount-prospect-60056/#ev-big-kids-storytime-2026-10-13</guid>
-    <description>Tuesday, October 13 2026 1:30pm - 2:15pm 
- Grow into a super reader through playful books and fun with friends! This storytime is the perfect fit for… Official listing: https://mppl.libnet.info/event/16553393</description>
-    <pubDate>Tue, 13 Oct 2026 13:30:00 +0000</pubDate>
-    <source url="https://mppl.libnet.info/event/16553393">Mount Prospect Public Library — Events</source>
-  </item>
-  <item>
-    <title>Mount Prospect: Introduction to Web Resources</title>
-    <link>https://withintenmiles.com/mount-prospect-60056/#ev-introduction-to-web-resources-2026-10-13</link>
-    <guid isPermaLink="true">https://withintenmiles.com/mount-prospect-60056/#ev-introduction-to-web-resources-2026-10-13</guid>
-    <description>Tuesday, October 13 2026 2:00pm - 3:00pm 
- Discover the extensive collection of free online resources available with your library card. Official listing: https://mppl.libnet.info/event/16505448</description>
-    <pubDate>Tue, 13 Oct 2026 14:00:00 +0000</pubDate>
-    <source url="https://mppl.libnet.info/event/16505448">Mount Prospect Public Library — Events</source>
-  </item>
-  <item>
-    <title>Mount Prospect: Teen Astronaut Food Taste Test</title>
-    <link>https://withintenmiles.com/mount-prospect-60056/#ev-teen-astronaut-food-taste-test-2026-10-13</link>
-    <guid isPermaLink="true">https://withintenmiles.com/mount-prospect-60056/#ev-teen-astronaut-food-taste-test-2026-10-13</guid>
-    <description>Tuesday, October 13 2026 4:30pm - 5:30pm 
- Curious about what astronauts eat? Join us as we sample a variety of astronaut food to celebrate our One Book, One… Official listing: https://mppl.libnet.info/event/16583547</description>
-    <pubDate>Tue, 13 Oct 2026 16:30:00 +0000</pubDate>
-    <source url="https://mppl.libnet.info/event/16583547">Mount Prospect Public Library — Events</source>
-  </item>
-  <item>
-    <title>Mount Prospect: Adult Astronaut Food Taste Test</title>
-    <link>https://withintenmiles.com/mount-prospect-60056/#ev-adult-astronaut-food-taste-test-2026-10-13</link>
-    <guid isPermaLink="true">https://withintenmiles.com/mount-prospect-60056/#ev-adult-astronaut-food-taste-test-2026-10-13</guid>
-    <description>Tuesday, October 13 2026 6:30pm - 7:30pm 
- Curious about what astronauts eat? Join us as we sample a variety of astronaut food to celebrate our One Book, One… Official listing: https://mppl.libnet.info/event/15766141</description>
-    <pubDate>Tue, 13 Oct 2026 18:30:00 +0000</pubDate>
-    <source url="https://mppl.libnet.info/event/15766141">Mount Prospect Public Library — Events</source>
-  </item>
+  <description>Upcoming events in Mount Prospect, soonest first - aggregated automatically from village, library, park district and school-district calendars. This build reached 15 of 18 configured sources.</description>
+  <lastBuildDate>Wed, 14 Oct 2026 06:00:08 +0000</lastBuildDate>
   <item>
     <title>Mount Prospect: Toddler Storytime</title>
     <link>https://withintenmiles.com/mount-prospect-60056/#ev-toddler-storytime-2026-10-14</link>
@@ -454,6 +391,67 @@ A virtual… Official listing: https://mppl.libnet.info/event/17476743</descript
  Learn how to create objects using Tinkercad, a digital-design computer software. Official listing: https://mppl.libnet.info/event/16391958</description>
     <pubDate>Thu, 22 Oct 2026 18:00:00 +0000</pubDate>
     <source url="https://mppl.libnet.info/event/16391958">Mount Prospect Public Library — Events</source>
+  </item>
+  <item>
+    <title>Mount Prospect: Making Sense of Menopause</title>
+    <link>https://withintenmiles.com/mount-prospect-60056/#ev-making-sense-of-menopause-2026-10-22</link>
+    <guid isPermaLink="true">https://withintenmiles.com/mount-prospect-60056/#ev-making-sense-of-menopause-2026-10-22</guid>
+    <description>Thursday, October 22 2026 7:00pm - 8:00pm 
+  Join us for an informative session about menopause with clinical pharmacist Erin Carson, coordinator of UIC… Official listing: https://mppl.libnet.info/event/16554197</description>
+    <pubDate>Thu, 22 Oct 2026 19:00:00 +0000</pubDate>
+    <source url="https://mppl.libnet.info/event/16554197">Mount Prospect Public Library — Events</source>
+  </item>
+  <item>
+    <title>Mount Prospect: Storytime Playdate: Wonderful Worlds</title>
+    <link>https://withintenmiles.com/mount-prospect-60056/#ev-storytime-playdate-wonderful-worlds-2026-10-23</link>
+    <guid isPermaLink="true">https://withintenmiles.com/mount-prospect-60056/#ev-storytime-playdate-wonderful-worlds-2026-10-23</guid>
+    <description>Friday, October 23 2026 10:00am - 11:30am 
+ Enjoy the magic of storytime plus the joy of hands-on sensory fun! You and your child will enjoy time together… Official listing: https://mppl.libnet.info/event/16553607</description>
+    <pubDate>Fri, 23 Oct 2026 10:00:00 +0000</pubDate>
+    <source url="https://mppl.libnet.info/event/16553607">Mount Prospect Public Library — Events</source>
+  </item>
+  <item>
+    <title>Mount Prospect: Teen Volunteering</title>
+    <link>https://withintenmiles.com/mount-prospect-60056/#ev-teen-volunteering-2026-10-23</link>
+    <guid isPermaLink="true">https://withintenmiles.com/mount-prospect-60056/#ev-teen-volunteering-2026-10-23</guid>
+    <description>Friday, October 23 2026 5:00pm - 6:00pm 
+ Give back to the community and earn volunteer hours at the same time. Official listing: https://mppl.libnet.info/event/14701895</description>
+    <pubDate>Fri, 23 Oct 2026 17:00:00 +0000</pubDate>
+    <source url="https://mppl.libnet.info/event/14701895">Mount Prospect Public Library — Events</source>
+  </item>
+  <item>
+    <title>Mount Prospect: Daddy Daughter Date Night</title>
+    <link>https://withintenmiles.com/mount-prospect-60056/#ev-daddy-daughter-date-night-2026-10-23</link>
+    <guid isPermaLink="true">https://withintenmiles.com/mount-prospect-60056/#ev-daddy-daughter-date-night-2026-10-23</guid>
+    <description>Daddy Daughter Date Night – Ties &amp; Tiaras (Ages 4-12) Step into an unforgettable evening of elegance, laughter, and special memories at our Daddy Daughter… Official listing: https://www.mppd.org/event/daddy-daughter-date-night-4/</description>
+    <pubDate>Fri, 23 Oct 2026 18:00:00 +0000</pubDate>
+    <source url="https://www.mppd.org/event/daddy-daughter-date-night-4/">Mount Prospect Park District — Events</source>
+  </item>
+  <item>
+    <title>Mount Prospect: After Hours Social</title>
+    <link>https://withintenmiles.com/mount-prospect-60056/#ev-after-hours-social-2026-10-23</link>
+    <guid isPermaLink="true">https://withintenmiles.com/mount-prospect-60056/#ev-after-hours-social-2026-10-23</guid>
+    <description>Friday, October 23 2026 7:00pm - 8:30pm 
+ For ages 21+. Come join us at the library for an after-hours event celebrating our One Book, One Village community… Official listing: https://mppl.libnet.info/event/13273437</description>
+    <pubDate>Fri, 23 Oct 2026 19:00:00 +0000</pubDate>
+    <source url="https://mppl.libnet.info/event/13273437">Mount Prospect Public Library — Events</source>
+  </item>
+  <item>
+    <title>Mount Prospect: Mount Prospect Farmers Market</title>
+    <link>https://withintenmiles.com/mount-prospect-60056/#ev-mount-prospect-farmers-market-2026-10-25</link>
+    <guid isPermaLink="true">https://withintenmiles.com/mount-prospect-60056/#ev-mount-prospect-farmers-market-2026-10-25</guid>
+    <description>Local produce and vendors, organized by the Mount Prospect Lions Club, rain or shine. West Metra commuter lot, Northwest Hwy &amp; Main St (Rte 83). Official listing: https://mplions.org/event/farmers-market/</description>
+    <pubDate>Sun, 25 Oct 2026 08:00:00 +0000</pubDate>
+    <source url="https://mplions.org/event/farmers-market/">Mount Prospect</source>
+  </item>
+  <item>
+    <title>Mount Prospect: The Shakespeare Project of Chicago: Macbeth</title>
+    <link>https://withintenmiles.com/mount-prospect-60056/#ev-the-shakespeare-project-of-chicago-macbeth-2026-10-25</link>
+    <guid isPermaLink="true">https://withintenmiles.com/mount-prospect-60056/#ev-the-shakespeare-project-of-chicago-macbeth-2026-10-25</guid>
+    <description>Sunday, October 25 2026 1:45pm - 4:30pm 
+ Step into a world of ambition, madness, and prophecy. Come see Macbeth, where every shadow hides a dagger, and… Official listing: https://mppl.libnet.info/event/16138104</description>
+    <pubDate>Sun, 25 Oct 2026 13:45:00 +0000</pubDate>
+    <source url="https://mppl.libnet.info/event/16138104">Mount Prospect Public Library — Events</source>
   </item>
 </channel>
 </rss>
