@@ -331,6 +331,12 @@ that limit.
    once `OUTREACH_PROSPECTS.md` exists: send §13 with the $20 holiday-
    listing line to 10–15 shops per town through their own contact pages.
 
+8e. **Search Console service account → GitHub secret (10 min, item 290).**
+   Create a Google Cloud service account with no roles, add its JSON key
+   as the secret `GSC_SERVICE_ACCOUNT_JSON`, and add its email as a
+   *Restricted* user in Search Console. The site then commits weekly
+   query and page numbers that every later decision can use.
+
 **Next action — about an hour, no cost:**
 
 8. **Send the outreach emails (items 152, 161).** Six civic link-back
@@ -15427,6 +15433,82 @@ Neighborhood Champions** programme (chambers and merchants' groups,
 free kits, applications each fall) and **downtown gift-card
 programmes** (none in these towns). The design/UX angle is **seasonal
 editions of the two biggest issues of the fall**.
+
+
+#### Research pass 2026-10-14, morning (seventy-fourth pass)
+
+The build loop shipped item 289 (Halloween and Thanksgiving email
+editions) and started item 288 by probing the downtown and chamber
+directories. Its earlier probes also confirmed **Des Plaines Theatre
+(30 events) and Metropolis (21 events) serve iCal** at `?ical=1`, and
+both are now sources. Today's send (Oct 14) is the first with tracking
+on. Three things still decide whether the site earns money in the next
+six weeks: whether people find it from search, whether a reader finds
+each issue useful enough to keep, and whether the trick-or-treat
+answer reaches people before Oct 31.
+
+| Angle | What it is / what we found | Why it matters here |
+|---|---|---|
+| **Search Console's API** | Google's Search Console API (`searchanalytics.query`) returns the **queries, pages, clicks, impressions and positions** the owner sees in the dashboard. It authenticates with a **service account** that the owner adds to the property as a user, has generous per-site quotas, and no price was found. The owner already reads the dashboard by hand (48 pages indexed on Oct 9) | Every content decision in these passes has been made **without knowing a single query the site appears for**. A weekly committed snapshot of the top queries and pages would show whether `/trick-or-treat/`, the town pages or `/holidays/` are what people find. That lets this loop rank items on evidence instead of guesses, and it gives the sponsor kit a second real number besides visits (item 290) |
+| **Who else publishes trick-or-treat hours lists** | Besides the Daily Herald (item 271), **NBC Chicago** (*"Halloween trick-or-treat hours … Chicago suburbs"*, 2024 and earlier) and **WGN** (*"Chicagoland trick-or-treat 2024"*) publish an annual suburbs list. WGN's 2024 list had Mount Prospect as **"10/23 4–6 p.m. (Downtown) / 10/31 3–8 p.m. (Community)"**: a **separate downtown merchants' trick-or-treat**. In 2025 that ran **Wed Oct 29, 4–6 p.m.** (orange pumpkins on participating doors, teal for non-food treats). No 2026 hours are published yet for Mount Prospect or Wheeling, which the site already marks as "standing hours, not yet confirmed" | Two more desks compile exactly the list the site has already sourced, so §7b can go to three outlets for the cost of one. The **downtown event** is a second, earlier family trick-or-treat the site's page does not mention at all, and it is run by the merchants' association the site is about to pitch (item 292) |
+| **The weekend weather in the email (design/UX)** | The site fetches a Friday–Sunday forecast for each region page (item 11), and region pages mention weather 13 times. **The email mentions weather zero times.** In late October and November, *"will it rain Saturday?"* is the first planning question, and the indoor/outdoor tags already sit on every event | A one-line weather note with indoor picks on wet weekends makes the issue more useful in the weeks it is most read, and it costs nothing: the forecast and the tags both already exist (item 291) |
+
+#### P1 (new)
+
+290. **A weekly Search Console snapshot in the repo.** Build loop plus
+     a 10-minute owner setup.
+     - **Owner, once:** in Google Cloud, create a project, enable the
+       *Search Console API*, and create a **service account** with no
+       roles. Download its JSON key and add it as the repository secret
+       **`GSC_SERVICE_ACCOUNT_JSON`**. In Search Console → Settings →
+       Users, add the service account's email as a **Restricted** user
+       of `withintenmiles.com`. Read-only all the way.
+     - **Build loop:** a Monday step (the same workflow as item 266's
+       GoatCounter snapshot) that queries the last 28 days by `query` and
+       by `page` (top 25 each, with clicks, impressions, CTR and position)
+       and writes `data/search_console.json`. It skips quietly if the
+       secret is missing. Never store anything about individual users,
+       since the API only returns aggregates anyway.
+     - **Use:** each research pass reads it. Items 266 and 290 together
+       give the sponsor page and `SPONSOR_KIT.md` a pair of honest numbers
+       ("N visits, M search impressions in the last 30 days") once they
+       clear item 266's floor.
+
+#### P2 (new)
+
+291. **A weekend-weather line in the email, with indoor picks when it
+     rains.** Design/UX, build loop. Reuse the region pages' existing
+     Friday–Sunday forecast (one region's coordinates is enough for five
+     neighbouring towns; Mount Prospect is central).
+     - **Always:** one line under the hero, *"☀️ Sat 58° · 🌧️ Sun 70%
+       rain"*, from the same source as the site.
+     - **When either weekend day has 60% or more chance of rain:** add
+       *"☔ Rain plan"*, three `indoor`-tagged events from across the towns
+       (family relevance first, then soonest), as one compact block above
+       the town sections.
+     - Fail soft: if the forecast fetch failed, no line at all, never a
+       stale forecast. **Tests:** dry and wet weekends, a failed fetch,
+       and the 102 KB limit.
+
+292. **Send the trick-or-treat note to NBC Chicago and WGN too, and add
+     Mount Prospect's downtown trick-or-treat.** Build loop plus owner.
+     - **Build loop:** add the two outlets' tip addresses (from their own
+       contact pages) to `OUTREACH_TEMPLATES.md` §7b's "send to" list. The
+       note is unchanged: sourced hours for all five towns, with the page
+       link and an offer of corrections. Add a probe (item 212) for
+       `mpdowntown.com` with `patterns` for "trick" and "pumpkin". If the
+       merchants' 2026 downtown trick-or-treat is posted, add it to
+       `/trick-or-treat/`'s Mount Prospect block and to the Halloween
+       events, sourced. Do not carry over 2025's date.
+     - **Owner:** send §7b to all three desks **by Oct 20** (the Daily
+       Herald's by Oct 15, as planned). It is the same 5 minutes, sent
+       three times.
+
+Competitors reviewed this pass: **Google's Search Console API** as the
+measurement the site lacks, and **NBC Chicago's and WGN's annual
+trick-or-treat lists**, which also surfaced Mount Prospect's separate
+downtown merchants' trick-or-treat. The design/UX angle is **the
+weekend weather, which the site has and the email ignores**.
 
 
 ## Working agreements for autonomous iteration
