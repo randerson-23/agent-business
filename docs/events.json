@@ -2,7 +2,7 @@
   "@context": "https://schema.org",
   "@type": "ItemList",
   "name": "Upcoming events across every region — Within Ten",
-  "dateModified": "2026-10-14T14:00:45+00:00",
+  "dateModified": "2026-10-14T22:02:25+00:00",
   "numberOfItems": 275,
   "itemListElement": [
     {
@@ -1154,9 +1154,9 @@
       "position": 51,
       "item": {
         "@type": "Event",
-        "name": "Senior Center: Travelogue",
+        "name": "First-Time Parents' Meetup",
         "startDate": "2026-10-16",
-        "url": "https://withintenmiles.com/arlington-heights-60005/#ev-senior-center-travelogue-2026-10-16",
+        "url": "https://withintenmiles.com/arlington-heights-60005/#ev-first-time-parents-meetup-2026-10-16",
         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
         "location": {
           "@type": "Place",
@@ -1168,7 +1168,7 @@
             "addressRegion": "IL"
           }
         },
-        "sameAs": "https://www.ahml.info/scheduling/reservation/224945"
+        "sameAs": "https://www.ahml.info/scheduling/reservation/224295"
       }
     },
     {
@@ -1498,9 +1498,9 @@
       "position": 66,
       "item": {
         "@type": "Event",
-        "name": "Family Time",
+        "name": "Beginning ESL",
         "startDate": "2026-10-17",
-        "url": "https://withintenmiles.com/arlington-heights-60005/#ev-family-time-2026-10-17",
+        "url": "https://withintenmiles.com/arlington-heights-60005/#ev-beginning-esl-2026-10-17",
         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
         "location": {
           "@type": "Place",
@@ -1512,7 +1512,7 @@
             "addressRegion": "IL"
           }
         },
-        "sameAs": "https://www.ahml.info/scheduling/reservation/224194"
+        "sameAs": "https://www.ahml.info/scheduling/reservation/234242"
       }
     },
     {
@@ -1751,7 +1751,7 @@
       "item": {
         "@type": "Event",
         "name": "BOURBON 'N BRASS SPEAKEASY: LIVE JAZZ with DONNY DeMARCO & TUNE TOWN",
-        "startDate": "2026-10-17T21:30:00-05:00",
+        "startDate": "2026-10-17T20:30:00-05:00",
         "url": "https://withintenmiles.com/des-plaines-60016/#ev-bourbon-n-brass-speakeasy-live-jazz-with-donny-demarco-tune-2026-10-17",
         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
         "location": {
@@ -2093,29 +2093,6 @@
       "position": 92,
       "item": {
         "@type": "Event",
-        "name": "Protect Yourself from Identity Theft",
-        "startDate": "2026-10-19T10:00:00-05:00",
-        "url": "https://withintenmiles.com/wheeling-60090/#ev-protect-yourself-from-identity-theft-2026-10-19",
-        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "location": {
-          "@type": "Place",
-          "name": "Indian Trails Public Library",
-          "address": {
-            "@type": "PostalAddress",
-            "addressCountry": "US",
-            "addressLocality": "Wheeling",
-            "addressRegion": "IL"
-          }
-        },
-        "sameAs": "https://indiantrails.libnet.info/event/16653378",
-        "description": "Monday, October 19 2026 10:00am - 10:45am \n Alene Guzman, from Wheeling Bank & Trust, covers protecting yourself from identity theft. Alene Guzman, de…"
-      }
-    },
-    {
-      "@type": "ListItem",
-      "position": 93,
-      "item": {
-        "@type": "Event",
         "name": "Toddler Storytime",
         "startDate": "2026-10-19T10:30:00-05:00",
         "url": "https://withintenmiles.com/mount-prospect-60056/#ev-toddler-storytime-2026-10-19",
@@ -2132,6 +2109,29 @@
         },
         "sameAs": "https://mppl.libnet.info/event/16553330",
         "description": "Monday, October 19 2026 10:30am - 11:00am \n Grow your little learner's literacy and language skills at this playful storytime full of wiggles, wonder, and fun!"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 93,
+      "item": {
+        "@type": "Event",
+        "name": "Protect Yourself from Identity Theft",
+        "startDate": "2026-10-19T11:00:00-05:00",
+        "url": "https://withintenmiles.com/wheeling-60090/#ev-protect-yourself-from-identity-theft-2026-10-19",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Indian Trails Public Library",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Wheeling",
+            "addressRegion": "IL"
+          }
+        },
+        "sameAs": "https://indiantrails.libnet.info/event/16653534",
+        "description": "Monday, October 19 2026 11:00am - 11:45am \n Alene Guzman, Branch Manager of Wheeling Bank & Trust, will cover the various avenues to protect yourself from…"
       }
     },
     {
@@ -6038,7 +6038,7 @@
       "item": {
         "@type": "Event",
         "name": "Teen Manga Hangout",
-        "startDate": "2026-10-27T16:00:00-05:00",
+        "startDate": "2026-10-27T16:30:00-05:00",
         "url": "https://withintenmiles.com/mount-prospect-60056/#ev-teen-manga-hangout-2026-10-27",
         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
         "location": {
@@ -6052,7 +6052,7 @@
           }
         },
         "sameAs": "https://mppl.libnet.info/event/16533457",
-        "description": "Tuesday, October 27 2026 4:00pm - 5:00pm \n Join other manga readers to share your recent reads! We'll chat about things we loved (or didn't) and get some…"
+        "description": "Tuesday, October 27 2026 4:30pm - 5:30pm \n Join other manga readers to share your recent reads! We'll chat about things we loved (or didn't) and get some…"
       }
     },
     {

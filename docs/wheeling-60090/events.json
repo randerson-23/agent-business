@@ -2,7 +2,7 @@
   "@context": "https://schema.org",
   "@type": "ItemList",
   "name": "Upcoming events in Wheeling — Within Ten",
-  "dateModified": "2026-10-14T14:00:45+00:00",
+  "dateModified": "2026-10-14T22:02:25+00:00",
   "numberOfItems": 55,
   "itemListElement": [
     {
@@ -494,7 +494,7 @@
       "item": {
         "@type": "Event",
         "name": "Protect Yourself from Identity Theft",
-        "startDate": "2026-10-19T10:00:00-05:00",
+        "startDate": "2026-10-19T11:00:00-05:00",
         "url": "https://withintenmiles.com/wheeling-60090/#ev-protect-yourself-from-identity-theft-2026-10-19",
         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
         "location": {
@@ -507,8 +507,8 @@
             "addressRegion": "IL"
           }
         },
-        "sameAs": "https://indiantrails.libnet.info/event/16653378",
-        "description": "Monday, October 19 2026 10:00am - 10:45am \n Alene Guzman, from Wheeling Bank & Trust, covers protecting yourself from identity theft. Alene Guzman, de…"
+        "sameAs": "https://indiantrails.libnet.info/event/16653534",
+        "description": "Monday, October 19 2026 11:00am - 11:45am \n Alene Guzman, Branch Manager of Wheeling Bank & Trust, will cover the various avenues to protect yourself from…"
       }
     },
     {

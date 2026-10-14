@@ -2,7 +2,7 @@
   "@context": "https://schema.org",
   "@type": "ItemList",
   "name": "Upcoming events in Mount Prospect — Within Ten",
-  "dateModified": "2026-10-14T14:00:45+00:00",
+  "dateModified": "2026-10-14T22:02:25+00:00",
   "numberOfItems": 65,
   "itemListElement": [
     {
@@ -1453,7 +1453,7 @@
       "item": {
         "@type": "Event",
         "name": "Teen Manga Hangout",
-        "startDate": "2026-10-27T16:00:00-05:00",
+        "startDate": "2026-10-27T16:30:00-05:00",
         "url": "https://withintenmiles.com/mount-prospect-60056/#ev-teen-manga-hangout-2026-10-27",
         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
         "location": {
@@ -1467,7 +1467,7 @@
           }
         },
         "sameAs": "https://mppl.libnet.info/event/16533457",
-        "description": "Tuesday, October 27 2026 4:00pm - 5:00pm \n Join other manga readers to share your recent reads! We'll chat about things we loved (or didn't) and get some…"
+        "description": "Tuesday, October 27 2026 4:30pm - 5:30pm \n Join other manga readers to share your recent reads! We'll chat about things we loved (or didn't) and get some…"
       }
     },
     {
