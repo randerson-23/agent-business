@@ -4,7 +4,7 @@
       "url": "https://withintenmiles.com/f3b7799bed06aac4295ec9134d53b014.txt",
       "purpose": "IndexNow key file on the live domain - still served and still equal to the key?",
       "item": 224,
-      "probed_at": "2026-10-14T06:00:03+00:00",
+      "probed_at": "2026-10-14T14:00:39+00:00",
       "status": 200,
       "final_url": "https://withintenmiles.com/f3b7799bed06aac4295ec9134d53b014.txt",
       "content_type": "text/plain; charset=utf-8",
@@ -22,11 +22,11 @@
       "url": "https://events.harpercollege.edu/calendar.ics",
       "purpose": "Harper College (Localist) - does the default iCal path serve a calendar?",
       "item": 282,
-      "probed_at": "2026-10-14T06:00:03+00:00",
+      "probed_at": "2026-10-14T14:00:40+00:00",
       "status": 200,
       "final_url": "https://events.harpercollege.edu/calendar.ics",
       "content_type": "text/calendar; charset=utf-8",
-      "bytes": 302029,
+      "bytes": 302302,
       "ics_event_count": 371,
       "pattern_matches": {
         "BEGIN:VCALENDAR": [
@@ -39,7 +39,7 @@
         "localist": [
           {
             "match": "localist",
-            "context": "& Canada) BEGIN:VEVENT DTSTAMP:20261014T055405Z UID:tag:localist.com\\,2008:EventInstance_53303531262102 DTSTART:20260914T16"
+            "context": "& Canada) BEGIN:VEVENT DTSTAMP:20261014T135228Z UID:tag:localist.com\\,2008:EventInstance_53303531262102 DTSTART:20260914T16"
           }
         ]
       }
@@ -48,7 +48,7 @@
       "url": "https://events.harpercollege.edu/api/2/events?days=60",
       "purpose": "Harper College (Localist) - does the public JSON API answer?",
       "item": 282,
-      "probed_at": "2026-10-14T06:00:04+00:00",
+      "probed_at": "2026-10-14T14:00:40+00:00",
       "status": 200,
       "final_url": "https://events.harpercollege.edu/api/2/events?days=60",
       "content_type": "application/json; charset=utf-8",
@@ -72,11 +72,11 @@
       "url": "https://desplainestheatre.com/events/",
       "purpose": "Des Plaines Theatre - any iCal link or per-event JSON-LD?",
       "item": 282,
-      "probed_at": "2026-10-14T06:00:05+00:00",
+      "probed_at": "2026-10-14T14:00:41+00:00",
       "status": 200,
       "final_url": "https://desplainestheatre.com/events/",
       "content_type": "text/html; charset=UTF-8",
-      "bytes": 275479,
+      "bytes": 304701,
       "title": "Events from October 14 – October 19 – Des Plaines TheatreSearchExpandExpandSearchToggle Menuonesti instagram pageonesti instagram pageonesti instagram pageonesti instagram pageonesti instagram pageExp",
       "feed_links": [
         {
@@ -134,11 +134,11 @@
         "url": "https://desplainestheatre.com/event/gipsy-kings-3/",
         "purpose": "",
         "item": null,
-        "probed_at": "2026-10-14T06:00:05+00:00",
+        "probed_at": "2026-10-14T14:00:41+00:00",
         "status": 200,
         "final_url": "https://desplainestheatre.com/event/gipsy-kings-3/",
         "content_type": "text/html; charset=UTF-8",
-        "bytes": 173010,
+        "bytes": 202436,
         "title": "POSTPONED - GIPSY KINGS - Des Plaines TheatreSearchExpandExpandSearchToggle Menuonesti instagram pageonesti instagram pageonesti instagram pageonesti instagram pageonesti instagram pageExpandToggle Me",
         "feed_links": [
           {
@@ -199,11 +199,11 @@
       "url": "https://metropolisarts.com/",
       "purpose": "Metropolis Performing Arts Centre - where is the calendar and does it have a feed?",
       "item": 282,
-      "probed_at": "2026-10-14T06:00:07+00:00",
+      "probed_at": "2026-10-14T14:00:42+00:00",
       "status": 200,
       "final_url": "https://www.metropolisarts.com/",
       "content_type": "text/html; charset=UTF-8",
-      "bytes": 1417225,
+      "bytes": 1417227,
       "title": "Metropolis Performing Arts Centre | Arlington Heights, IL",
       "feed_links": [
         {
@@ -257,11 +257,11 @@
         "url": "https://app.mainstreetsites.com/calendar.aspx?dmn=5012",
         "purpose": "",
         "item": null,
-        "probed_at": "2026-10-14T06:00:08+00:00",
+        "probed_at": "2026-10-14T14:00:43+00:00",
         "status": 200,
         "final_url": "https://app.mainstreetsites.com/calendar.aspx?dmn=5012",
         "content_type": "text/html; charset=utf-8",
-        "bytes": 70019,
+        "bytes": 70020,
         "title": "Metropolis School of the Performing Arts - Calendar",
         "feed_links": [],
         "calendar_links": [],
@@ -276,7 +276,7 @@
       "url": "https://heynonny.com/",
       "purpose": "Hey Nonny - events page, OpenDate listing, or a feed?",
       "item": 282,
-      "probed_at": "2026-10-14T06:00:09+00:00",
+      "probed_at": "2026-10-14T14:00:44+00:00",
       "status": 200,
       "final_url": "https://www.heynonny.com/",
       "content_type": "text/html; charset=utf-8",
@@ -298,7 +298,7 @@
         "url": "https://www.heynonny.com/shows",
         "purpose": "",
         "item": null,
-        "probed_at": "2026-10-14T06:00:10+00:00",
+        "probed_at": "2026-10-14T14:00:44+00:00",
         "status": 200,
         "final_url": "https://www.heynonny.com/shows",
         "content_type": "text/html; charset=utf-8",
@@ -322,7 +322,7 @@
       "url": "https://desplainestheatre.com/events/?ical=1",
       "purpose": "Des Plaines Theatre - does the Events Calendar iCal export return a calendar?",
       "item": 287,
-      "probed_at": "2026-10-14T06:00:10+00:00",
+      "probed_at": "2026-10-14T14:00:46+00:00",
       "status": 200,
       "final_url": "https://desplainestheatre.com/events/?ical=1",
       "content_type": "text/calendar; charset=UTF-8",
@@ -332,7 +332,7 @@
         "BEGIN:VCALENDAR": [
           {
             "match": "BEGIN:VCALENDAR",
-            "context": "BEGIN:VCALENDAR VERSION:2.0 PRODID:-//Des Plaines Theatre - ECPv6.18.0//N"
+            "context": "BEGIN:VCALENDAR VERSION:2.0 PRODID:-//Des Plaines Theatre - ECPv6.18.1//N"
           }
         ],
         "BEGIN:VEVENT": [
@@ -347,7 +347,7 @@
       "url": "https://www.metropolisarts.com/events/?ical=1",
       "purpose": "Metropolis - does the Events Calendar iCal export return a calendar?",
       "item": 287,
-      "probed_at": "2026-10-14T06:00:11+00:00",
+      "probed_at": "2026-10-14T14:00:46+00:00",
       "status": 200,
       "final_url": "https://www.metropolisarts.com/events-calendar/?ical=1",
       "content_type": "text/calendar; charset=UTF-8",
@@ -372,7 +372,7 @@
       "url": "https://downtownarlingtonheights.us/",
       "purpose": "Downtown Arlington Heights - where is the business or shop directory?",
       "item": 288,
-      "probed_at": "2026-10-14T06:00:12+00:00",
+      "probed_at": "2026-10-14T14:00:48+00:00",
       "status": 200,
       "final_url": "https://downtownarlingtonheights.us/",
       "content_type": "text/html; charset=utf-8",
@@ -397,7 +397,7 @@
         "url": "https://downtownarlingtonheights.us/restaurants/dining-map",
         "purpose": "",
         "item": null,
-        "probed_at": "2026-10-14T06:00:13+00:00",
+        "probed_at": "2026-10-14T14:00:48+00:00",
         "status": 200,
         "final_url": "https://downtownarlingtonheights.us/restaurants/dining-map",
         "content_type": "text/html; charset=utf-8",
@@ -422,11 +422,11 @@
       "url": "https://mpdowntown.com/",
       "purpose": "Downtown Mount Prospect - where is the business or shop directory?",
       "item": 288,
-      "probed_at": "2026-10-14T06:00:13+00:00",
+      "probed_at": "2026-10-14T14:00:49+00:00",
       "status": 200,
       "final_url": "https://mpdowntown.com/",
       "content_type": "text/html; charset=UTF-8",
-      "bytes": 57342,
+      "bytes": 123078,
       "title": "Mount Prospect Downtown Merchants | Play Gather Relax",
       "feed_links": [
         {
@@ -465,11 +465,11 @@
         "url": "https://mpdowntown.com/members/",
         "purpose": "",
         "item": null,
-        "probed_at": "2026-10-14T06:00:14+00:00",
+        "probed_at": "2026-10-14T14:00:50+00:00",
         "status": 200,
         "final_url": "https://mpdowntown.com/members/",
         "content_type": "text/html; charset=UTF-8",
-        "bytes": 158266,
+        "bytes": 158232,
         "title": "Members | Mount Prospect Downtown Merchants",
         "feed_links": [
           {
@@ -512,25 +512,25 @@
       "url": "https://www.arlingtonheightschamber.com/",
       "purpose": "Arlington Heights Chamber (guessed domain) - member directory?",
       "item": 288,
-      "probed_at": "2026-10-14T06:00:15+00:00",
+      "probed_at": "2026-10-14T14:00:51+00:00",
       "error": "ConnectionError"
     },
     {
       "url": "https://www.mountprospectchamber.com/",
       "purpose": "Mount Prospect Chamber (guessed domain) - member directory?",
       "item": 288,
-      "probed_at": "2026-10-14T06:00:15+00:00",
+      "probed_at": "2026-10-14T14:00:51+00:00",
       "error": "SSLError"
     },
     {
       "url": "https://www.palatinechamber.com/",
       "purpose": "Palatine Chamber (guessed domain) - member directory?",
       "item": 288,
-      "probed_at": "2026-10-14T06:00:16+00:00",
+      "probed_at": "2026-10-14T14:00:51+00:00",
       "status": 200,
       "final_url": "https://www.palatinechamber.com/",
       "content_type": "text/html; charset=UTF-8",
-      "bytes": 256287,
+      "bytes": 256288,
       "title": "Home - Palatine Area Chamber of Commerce",
       "feed_links": [
         {
@@ -579,11 +579,11 @@
         "url": "https://business.palatinechamber.com/member/newmemberapp",
         "purpose": "",
         "item": null,
-        "probed_at": "2026-10-14T06:00:16+00:00",
+        "probed_at": "2026-10-14T14:00:52+00:00",
         "status": 200,
         "final_url": "https://business.palatinechamber.com/member/newmemberapp",
         "content_type": "text/html; charset=utf-8",
-        "bytes": 333174,
+        "bytes": 333154,
         "title": "Member",
         "feed_links": [
           {
@@ -624,14 +624,14 @@
       "url": "https://www.desplaineschamber.com/",
       "purpose": "Des Plaines Chamber (guessed domain) - member directory?",
       "item": 288,
-      "probed_at": "2026-10-14T06:00:17+00:00",
+      "probed_at": "2026-10-14T14:00:52+00:00",
       "error": "SSLError"
     },
     {
       "url": "https://www.wheelingchamber.com/",
       "purpose": "Wheeling Chamber (guessed domain) - member directory?",
       "item": 288,
-      "probed_at": "2026-10-14T06:00:18+00:00",
+      "probed_at": "2026-10-14T14:00:53+00:00",
       "status": 200,
       "final_url": "https://www.wheelingchamber.com/",
       "content_type": "text/html",
@@ -645,6 +645,268 @@
         "(?i)shop local": []
       },
       "followed": null
+    },
+    {
+      "url": "https://mpdowntown.com/events/",
+      "purpose": "Downtown Mount Prospect - any 2026 merchants' trick-or-treat?",
+      "item": 292,
+      "probed_at": "2026-10-14T14:00:53+00:00",
+      "status": 200,
+      "final_url": "https://mpdowntown.com/events/",
+      "content_type": "text/html; charset=UTF-8",
+      "bytes": 124908,
+      "title": "Events | Mount Prospect Downtown Merchants",
+      "feed_links": [
+        {
+          "href": "https://mpdowntown.com/feed/",
+          "type": "application/rss+xml",
+          "title": "Mount Prospect Downtown Merchants » Feed"
+        },
+        {
+          "href": "https://mpdowntown.com/comments/feed/",
+          "type": "application/rss+xml",
+          "title": "Mount Prospect Downtown Merchants » Comments Feed"
+        },
+        {
+          "href": "https://mpdowntown.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fmpdowntown.com%2Fevents%2F",
+          "type": "application/json+oembed",
+          "title": "oEmbed (JSON)"
+        },
+        {
+          "href": "https://mpdowntown.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fmpdowntown.com%2Fevents%2F&format=xml",
+          "type": "text/xml+oembed",
+          "title": "oEmbed (XML)"
+        },
+        {
+          "href": "https://mpdowntown.com/wp-json/wp/v2/pages/2477",
+          "type": "application/json",
+          "title": "JSON"
+        }
+      ],
+      "calendar_links": [],
+      "pattern_matches": {
+        "(?i)trick[- ]or[- ]treat[^<]{0,80}": [
+          {
+            "match": "Trick-or-Treat",
+            "context": "pb_text_inner\"><h3 data-start=\"106\" data-end=\"138\">Downtown Trick-or-Treat</h3> <p data-start=\"139\" data-end=\"253\"><strong data-start="
+          },
+          {
+            "match": "Trick-or-Treating",
+            "context": "ternoon of <strong data-start=\"369\" data-end=\"399\">Downtown Trick-or-Treating</strong>! Little ghouls and goblins can stroll through down"
+          }
+        ],
+        "(?i)pumpkin[^<]{0,80}": [],
+        "2026": [
+          {
+            "match": "2026",
+            "context": "> <div class=\"et_pb_text_inner\"><h2>2026 Events</h2></div> </div><div class=\"et_pb_module et_pb_t"
+          }
+        ]
+      }
+    },
+    {
+      "url": "https://mpdowntown.com/members/",
+      "purpose": "Downtown Mount Prospect members page - sample the markup of a member entry",
+      "item": 288,
+      "probed_at": "2026-10-14T14:00:54+00:00",
+      "status": 200,
+      "final_url": "https://mpdowntown.com/members/",
+      "content_type": "text/html; charset=UTF-8",
+      "bytes": 158232,
+      "title": "Members | Mount Prospect Downtown Merchants",
+      "feed_links": [
+        {
+          "href": "https://mpdowntown.com/feed/",
+          "type": "application/rss+xml",
+          "title": "Mount Prospect Downtown Merchants » Feed"
+        },
+        {
+          "href": "https://mpdowntown.com/comments/feed/",
+          "type": "application/rss+xml",
+          "title": "Mount Prospect Downtown Merchants » Comments Feed"
+        },
+        {
+          "href": "https://mpdowntown.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fmpdowntown.com%2Fmembers%2F",
+          "type": "application/json+oembed",
+          "title": "oEmbed (JSON)"
+        },
+        {
+          "href": "https://mpdowntown.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fmpdowntown.com%2Fmembers%2F&format=xml",
+          "type": "text/xml+oembed",
+          "title": "oEmbed (XML)"
+        },
+        {
+          "href": "https://mpdowntown.com/wp-json/wp/v2/pages/2481",
+          "type": "application/json",
+          "title": "JSON"
+        }
+      ],
+      "calendar_links": [
+        "https://www.vandrielsmedical.com"
+      ],
+      "pattern_matches": {
+        "<h[2-4][^>]*>[^<]{3,60}</h[2-4]>": [
+          {
+            "match": "<h3 style=\"text-align: center;\">Play Gather Relax</h3>",
+            "context": "r;\"><strong>Mount Prospect Downtown Merchants</strong></h1> <h3 style=\"text-align: center;\">Play Gather Relax</h3> <p>&nbsp;</p></div> </div><div class=\"et_pb_module et_pb"
+          }
+        ],
+        "<a [^>]*href=\"[^\"]*(?:member|business|shop)[^\"]*\"[^>]*>[^<]{3,60}</a>": [
+          {
+            "match": "<a href=\"https://mpdowntown.com/members/\" aria-current=\"page\">Members</a>",
+            "context": "page_item page-item-2481 current_page_item menu-item-2489\"><a href=\"https://mpdowntown.com/members/\" aria-current=\"page\">Members</a></li> <li class=\"et_pb_menu_page_id-2483 menu-item menu-item"
+          }
+        ]
+      }
+    },
+    {
+      "url": "https://business.palatinechamber.com/list/",
+      "purpose": "Palatine Chamber (ChamberMaster) - business directory listing markup",
+      "item": 288,
+      "probed_at": "2026-10-14T14:00:54+00:00",
+      "status": 200,
+      "final_url": "https://business.palatinechamber.com/list/",
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 237292,
+      "title": "Business Directory Search",
+      "feed_links": [
+        {
+          "href": "https://www.palatinechamber.com/feed/",
+          "type": "application/rss+xml",
+          "title": "Palatine Area Chamber of Commerce » Feed"
+        },
+        {
+          "href": "https://www.palatinechamber.com/comments/feed/",
+          "type": "application/rss+xml",
+          "title": "Palatine Area Chamber of Commerce » Comments Feed"
+        },
+        {
+          "href": "https://www.palatinechamber.com/wp-json/wp/v2/pages/39228",
+          "type": "application/json",
+          "title": "JSON"
+        }
+      ],
+      "calendar_links": [
+        "https://business.palatinechamber.com/list/category/construction-electrical-home-improvement-23",
+        "https://business.palatinechamber.com/list/category/musical-instruments-71"
+      ],
+      "pattern_matches": {
+        "<a [^>]*href=\"[^\"]*/list/member/[^\"]*\"[^>]*>[^<]{3,60}</a>": [],
+        "(?i)gift[^<]{0,40}": []
+      }
+    },
+    {
+      "url": "https://downtownarlingtonheights.us/restaurants/dining-map",
+      "purpose": "Downtown Arlington Heights dining map - sample the markup of a listing",
+      "item": 288,
+      "probed_at": "2026-10-14T14:00:54+00:00",
+      "status": 200,
+      "final_url": "https://downtownarlingtonheights.us/restaurants/dining-map",
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 43053,
+      "title": "Arlington Heights Dining Map (2026) | Downtown Arlington Heights, IL",
+      "feed_links": [
+        {
+          "href": "https://downtownarlingtonheights.us/feed.xml",
+          "type": "application/rss+xml",
+          "title": "Downtown Arlington Heights — Events, Restaurants & News"
+        }
+      ],
+      "calendar_links": [],
+      "pattern_matches": {
+        "<h[2-4][^>]*>[^<]{3,60}</h[2-4]>": [
+          {
+            "match": "<h3 class=\"font-display text-2xl font-bold text-gold tracking-tight\">Downtown Arlington Heights</h3>",
+            "context": "ap-x-16 md:items-start\"><div class=\"md:min-w-0 md:max-w-xl\"><h3 class=\"font-display text-2xl font-bold text-gold tracking-tight\">Downtown Arlington Heights</h3><p class=\"mt-1 text-base text-gold/70\">Arlington Heights, IL"
+          },
+          {
+            "match": "<h4 class=\"text-xs font-bold uppercase tracking-widest text-gold\">Explore</h4>",
+            "context": "s, and things to do in the downtown district.</p></div><div><h4 class=\"text-xs font-bold uppercase tracking-widest text-gold\">Explore</h4><ul class=\"mt-4 space-y-2 text-base\"><li><a class=\"hover:tex"
+          },
+          {
+            "match": "<h4 class=\"text-xs font-bold uppercase tracking-widest text-gold\">Contact Us</h4>",
+            "context": "ion-colors\" href=\"/contact\">Contact</a></li></ul></div><div><h4 class=\"text-xs font-bold uppercase tracking-widest text-gold\">Contact Us</h4><address class=\"mt-4 text-base not-italic leading-relaxed sp"
+          },
+          {
+            "match": "<h4 class=\"text-xs font-bold uppercase tracking-widest text-gold\">Legal</h4>",
+            "context": "\">[email&#160;protected]</span></a></p></address></div><div><h4 class=\"text-xs font-bold uppercase tracking-widest text-gold\">Legal</h4><ul class=\"mt-4 space-y-2 text-base\"><li><a class=\"hover:tex"
+          },
+          {
+            "match": "<h4 class=\"text-xs font-bold uppercase tracking-widest text-gold mb-4\">Follow Us</h4>",
+            "context": "owntown Arlington Heights</p></div></div><div class=\"pb-16\"><h4 class=\"text-xs font-bold uppercase tracking-widest text-gold mb-4\">Follow Us</h4><div class=\"flex gap-4\"><a href=\"https://www.youtube.com/@Do"
+          },
+          {
+            "match": "<h4 class=\"text-xs font-bold uppercase tracking-widest text-gold mb-4\">Find us</h4>",
+            "context": "24 12.073z\"></path></svg></a></div></div><div class=\"pb-16\"><h4 class=\"text-xs font-bold uppercase tracking-widest text-gold mb-4\">Find us</h4><div class=\"relative w-full aspect-[16/9] min-h-[240px] max-"
+          }
+        ],
+        "<a [^>]*href=\"[^\"]*\"[^>]*>[^<]{3,60}</a>": [
+          {
+            "match": "<a class=\"hidden md:inline-flex ml-4 px-4 py-2 text-xs font-bold uppercase tracking-wider min-h-[44px] items-center justify-center rounded transition-colors bg-cta text-white hover:bg-cta-hover\" href=\"/news\">Latest News</a>",
+            "context": "-4/5\"></span></a></nav><div class=\"flex items-center gap-1\"><a class=\"hidden md:inline-flex ml-4 px-4 py-2 text-xs font-bold uppercase tracking-wider min-h-[44px] items-center justify-center rounded transition-colors bg-cta text-white hover:bg-cta-hover\" href=\"/news\">Latest News</a><button type=\"button\" class=\"md:hidden inline-flex items-cen"
+          },
+          {
+            "match": "<a class=\"px-3 py-3 text-sm font-bold uppercase tracking-wider transition-colors rounded-md min-h-[44px] flex items-center text-neutral-800 hover:text-cta hover:bg-neutral-50\" href=\"/\">Home</a>",
+            "context": "border-t border-neutral-100\" aria-label=\"Mobile navigation\"><a class=\"px-3 py-3 text-sm font-bold uppercase tracking-wider transition-colors rounded-md min-h-[44px] flex items-center text-neutral-800 hover:text-cta hover:bg-neutral-50\" href=\"/\">Home</a><a class=\"px-3 py-3 text-sm font-bold uppercase tracking-wid"
+          },
+          {
+            "match": "<a class=\"px-3 py-3 text-sm font-bold uppercase tracking-wider transition-colors rounded-md min-h-[44px] flex items-center text-neutral-800 hover:text-cta hover:bg-neutral-50\" href=\"/events\">Events</a>",
+            "context": "al-800 hover:text-cta hover:bg-neutral-50\" href=\"/\">Home</a><a class=\"px-3 py-3 text-sm font-bold uppercase tracking-wider transition-colors rounded-md min-h-[44px] flex items-center text-neutral-800 hover:text-cta hover:bg-neutral-50\" href=\"/events\">Events</a><a class=\"px-3 py-3 text-sm font-bold uppercase tracking-wid"
+          },
+          {
+            "match": "<a class=\"px-3 py-3 text-sm font-bold uppercase tracking-wider transition-colors rounded-md min-h-[44px] flex items-center text-neutral-800 hover:text-cta hover:bg-neutral-50\" href=\"/news\">News</a>",
+            "context": "over:text-cta hover:bg-neutral-50\" href=\"/events\">Events</a><a class=\"px-3 py-3 text-sm font-bold uppercase tracking-wider transition-colors rounded-md min-h-[44px] flex items-center text-neutral-800 hover:text-cta hover:bg-neutral-50\" href=\"/news\">News</a><a class=\"px-3 py-3 text-sm font-bold uppercase tracking-wid"
+          },
+          {
+            "match": "<a class=\"px-3 py-3 text-sm font-bold uppercase tracking-wider transition-colors rounded-md min-h-[44px] flex items-center text-neutral-800 hover:text-cta hover:bg-neutral-50\" href=\"/restaurants\">Restaurants</a>",
+            "context": "00 hover:text-cta hover:bg-neutral-50\" href=\"/news\">News</a><a class=\"px-3 py-3 text-sm font-bold uppercase tracking-wider transition-colors rounded-md min-h-[44px] flex items-center text-neutral-800 hover:text-cta hover:bg-neutral-50\" href=\"/restaurants\">Restaurants</a><a class=\"px-3 py-3 text-sm font-bold uppercase tracking-wid"
+          },
+          {
+            "match": "<a class=\"px-3 py-3 text-sm font-bold uppercase tracking-wider transition-colors rounded-md min-h-[44px] flex items-center text-neutral-800 hover:text-cta hover:bg-neutral-50\" href=\"/about\">About</a>",
+            "context": "cta hover:bg-neutral-50\" href=\"/restaurants\">Restaurants</a><a class=\"px-3 py-3 text-sm font-bold uppercase tracking-wider transition-colors rounded-md min-h-[44px] flex items-center text-neutral-800 hover:text-cta hover:bg-neutral-50\" href=\"/about\">About</a><a class=\"px-3 py-3 text-sm font-bold uppercase tracking-wid"
+          },
+          {
+            "match": "<a class=\"px-3 py-3 text-sm font-bold uppercase tracking-wider transition-colors rounded-md min-h-[44px] flex items-center text-neutral-800 hover:text-cta hover:bg-neutral-50\" href=\"/contact\">Contact</a>",
+            "context": "hover:text-cta hover:bg-neutral-50\" href=\"/about\">About</a><a class=\"px-3 py-3 text-sm font-bold uppercase tracking-wider transition-colors rounded-md min-h-[44px] flex items-center text-neutral-800 hover:text-cta hover:bg-neutral-50\" href=\"/contact\">Contact</a><a class=\"mt-2 bg-cta text-white px-4 py-3 text-xs font-bold"
+          },
+          {
+            "match": "<a class=\"mt-2 bg-cta text-white px-4 py-3 text-xs font-bold uppercase tracking-wider hover:bg-cta-hover transition-colors rounded-md min-h-[44px] flex items-center justify-center\" href=\"/news\">Latest News</a>",
+            "context": "er:text-cta hover:bg-neutral-50\" href=\"/contact\">Contact</a><a class=\"mt-2 bg-cta text-white px-4 py-3 text-xs font-bold uppercase tracking-wider hover:bg-cta-hover transition-colors rounded-md min-h-[44px] flex items-center justify-center\" href=\"/news\">Latest News</a></nav></div></div></header><div class=\"min-h-screen\"><main><"
+          },
+          {
+            "match": "<a class=\"hover:text-gold transition-colors\" href=\"/events\">Events</a>",
+            "context": "-gold\">Explore</h4><ul class=\"mt-4 space-y-2 text-base\"><li><a class=\"hover:text-gold transition-colors\" href=\"/events\">Events</a></li><li><a class=\"hover:text-gold transition-colors\" href=\""
+          },
+          {
+            "match": "<a class=\"hover:text-gold transition-colors\" href=\"/restaurants\">Restaurants</a>",
+            "context": "t-gold transition-colors\" href=\"/events\">Events</a></li><li><a class=\"hover:text-gold transition-colors\" href=\"/restaurants\">Restaurants</a></li><li><a class=\"hover:text-gold transition-colors\" href=\""
+          },
+          {
+            "match": "<a class=\"hover:text-gold transition-colors\" href=\"/news\">News</a>",
+            "context": "nsition-colors\" href=\"/restaurants\">Restaurants</a></li><li><a class=\"hover:text-gold transition-colors\" href=\"/news\">News</a></li><li><a class=\"hover:text-gold transition-colors\" href=\""
+          },
+          {
+            "match": "<a class=\"hover:text-gold transition-colors\" href=\"/about\">About</a>",
+            "context": ":text-gold transition-colors\" href=\"/news\">News</a></li><li><a class=\"hover:text-gold transition-colors\" href=\"/about\">About</a></li><li><a class=\"hover:text-gold transition-colors\" href=\""
+          },
+          {
+            "match": "<a class=\"hover:text-gold transition-colors\" href=\"/contact\">Contact</a>",
+            "context": "ext-gold transition-colors\" href=\"/about\">About</a></li><li><a class=\"hover:text-gold transition-colors\" href=\"/contact\">Contact</a></li></ul></div><div><h4 class=\"text-xs font-bold uppercase"
+          },
+          {
+            "match": "<a href=\"tel:+18475434605\" class=\"hover:text-gold transition-colors\">(847) 543-4605</a>",
+            "context": "y-2\"><p>110 E Wing St<br/>Arlington Heights, IL 60004</p><p><a href=\"tel:+18475434605\" class=\"hover:text-gold transition-colors\">(847) 543-4605</a></p><p><a href=\"/cdn-cgi/l/email-protection#7b131e1717143b1f"
+          },
+          {
+            "match": "<a class=\"hover:text-gold transition-colors\" href=\"/privacy-policy\">Privacy Policy</a>",
+            "context": "xt-gold\">Legal</h4><ul class=\"mt-4 space-y-2 text-base\"><li><a class=\"hover:text-gold transition-colors\" href=\"/privacy-policy\">Privacy Policy</a></li><li><a class=\"hover:text-gold transition-colors\" href=\""
+          },
+          {
+            "match": "<a class=\"hover:text-gold transition-colors\" href=\"/terms-of-service\">Terms of Service</a>",
+            "context": "n-colors\" href=\"/privacy-policy\">Privacy Policy</a></li><li><a class=\"hover:text-gold transition-colors\" href=\"/terms-of-service\">Terms of Service</a></li></ul><p class=\"mt-6 text-xs text-white/50\">© <!-- -->20"
+          }
+        ]
+      }
     }
   ]
 }
