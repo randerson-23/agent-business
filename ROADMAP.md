@@ -15511,6 +15511,83 @@ downtown merchants' trick-or-treat. The design/UX angle is **the
 weekend weather, which the site has and the email ignores**.
 
 
+#### Research pass 2026-10-14, evening (seventy-fifth pass)
+
+The build loop shipped item 292 (the trick-or-treat note now lists
+three desks: Daily Herald, NBC Chicago and WGN) and ran probe rounds
+for item 288's directories, Downtown Mount Prospect's trick-or-treat
+text and Harper's Localist filters. Tonight's send is the first with
+tracking on. This pass reads the two seasonal pages the homepage
+banners now send people to, and checks two celebrations the site's own
+feeds carry but never group.
+
+| Angle | What it is / what we found | Why it matters here |
+|---|---|---|
+| **`/trick-or-treat/` at phone width (design/UX)** | Rendered from the built page at 390px. It is the **plain grey house style**: a long black title, then each town as a heading with red hours text. There is **no Halloween colour, no art and no countdown**, and the town colours used everywhere else are missing. The homepage's new banner (purple night sky, jack-o'-lantern, bats, hour pills) **sends readers here, and the page they land on looks like a different site**. It is also the page the Daily Herald, NBC Chicago and WGN notes link to (items 271, 292) | This is the site's **highest-traffic page for the next 17 days**, and the one most likely to be shared in parent group chats. The banner sets an expectation and the page has to meet it. The markup pieces already exist in `hub.html.j2` (item 293) |
+| **`/holidays/` at phone width (design/UX)** | Same plain style. A six-line title, the tree-lighting dates as right-aligned red text, then a plain list of holiday events. Item 283's family shows are already flowing in from the new Metropolis feed (*The Christmas Schooner* Nov 24, *A Christmas Carol*, a family gingerbread night on Dec 18). There is **no prompt to the $20 holiday listing**, though it is the season's one product with a deadline (Nov 15) | The holiday banner (item 285) goes live Nov 1 and points here. The page needs the same lift before then, and it is where a shop owner who reads the guide should see the listing offer (item 294) |
+| **Diwali and Día de los Muertos in the site's own feeds** | Library calendars already carry these: **Des Plaines Public Library** (a Diwali talk with an Oakton religious-studies professor), **Mount Prospect Public Library** (a Diwali party with Bharatanatyam dance in 2025, and DIY ofrendas at its South Branch), **Indian Trails Library** in Wheeling (a Day of the Dead ofrenda display and a sugar-skull workshop in 2025), and the **Des Plaines Park District** (a skull craft on Nov 1, 2025). Mount Prospect is about **15% Asian and 16–18% Hispanic** (2020 Census; 2024 estimates). **Diwali 2026 falls in early November**, and Día de los Muertos is **Nov 1–2** | Large reader groups whose celebrations the site carries as scattered cards but never names. A small "Celebrations" grouping in the right weeks costs nothing to source and tells those readers the guide is for them too (item 295). Nothing is invented: the section shows only what the feeds already carry |
+
+#### P1 (new)
+
+293. **Give `/trick-or-treat/` the Halloween look the homepage banner
+     promises, by Oct 18.** Design/UX, build loop, `trick_or_treat.html.j2`:
+     - **A hero** that reuses the banner's palette and inline-SVG art
+       (night gradient, jack-o'-lantern, moon, bats; motion only without
+       `prefers-reduced-motion`), the countdown, and the title kept
+       exactly as item 272 set it for search.
+     - **One card per town**, with its hours in large type, the
+       standing-hours caveat in small type, a town-coloured edge
+       (`EMAIL_TOWN_COLORS`, the same colour as in the email), and the
+       source link. Des Plaines' "No set hours" card carries its
+       safety note, not a blank.
+     - The **trunk-or-treat section** (item 272) and the Halloween events
+       as cards with emoji and date chips (`email_visuals()`), not a list.
+     - **"Send this to a neighbour"**: a `navigator.share` button with a
+       copy-link fallback, under the hours. This page is shared more
+       than any other.
+     - The signup, worded *"Get the Halloween weekend issue on Wednesday
+       the 28th"*.
+
+     Keep it light: no external images or fonts, and inside the
+     inline-JS budget (the share button is a few lines). Tests: five town
+     cards, the share button's fallback, and the countdown on and after
+     Oct 31.
+
+294. **Give `/holidays/` a festive look and the $20 listing a place on
+     it, by Oct 31.** Design/UX, build loop, `holidays.html.j2`. A winter
+     hero with the holiday banner's palette (item 285) and inline-SVG
+     string lights; **tree-lighting cards** (confirmed date in large
+     type, "date TBA" for the rest, item 274's rules); holiday events
+     as cards with emoji and date chips. **Until Nov 15**, one clearly
+     marked box: *"Local shop? Get listed in the holiday guide, $20 until
+     Nov 15 →"*, linking to item 258's offer and Payment Link (item 244).
+     After Nov 15 it reads $50, the same pricing everywhere. Per-town
+     `/holiday/` pages get the same header. Tests: the box's price
+     switches on Nov 16; cards render; no layout regressions.
+
+#### P2 (new)
+
+295. **A "Celebrations" grouping for Diwali and Día de los Muertos,
+     from the existing feeds.** Build loop. A small keyword table in
+     config (`diwali`, `deepavali`, `rangoli`, `día de los muertos`,
+     `dia de muertos`, `day of the dead`, `ofrenda`, `sugar skull`), each
+     with a date window: Día de los Muertos Oct 25 – Nov 2; Diwali
+     derived from a configured date, so it never drifts. Matching events
+     get a **"Celebrations"** label in the email's Don't-miss scoring
+     (a small boost, never above Featured) and a short section on the
+     weekend hub during their window. The same table later carries Lunar
+     New Year, Eid, Hanukkah and Kwanzaa. **Honesty rule:** the section
+     only ever shows events the feeds carry; with none, there is no
+     section. Tests: keyword matching in English and Spanish spellings,
+     window boundaries, and the empty case.
+
+Competitors reviewed this pass: **cultural-celebration programming in
+the site's own library and park-district feeds** (Diwali, Día de los
+Muertos) against the towns' demographics. The design/UX angle is **the
+two seasonal landing pages, read at phone width**, which the new
+homepage banners now send all seasonal traffic to.
+
+
 ## Working agreements for autonomous iteration
 
 - Cadence is three times a day (05:51, 13:51 and 21:51 UTC) for this
