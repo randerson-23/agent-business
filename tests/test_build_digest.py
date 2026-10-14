@@ -4950,3 +4950,49 @@ def test_holiday_banner_pills_and_early_bird_offer():
     assert b["towns"] == [{"name": "Palatine", "date": "Sat Nov 21"}, {"name": "Wheeling", "date": "date TBA"}]
     assert b["offer"] is True
     assert build_digest.build_holiday_banner(_holiday_entries(), datetime(2026, 11, 16, 18, tzinfo=timezone.utc))["offer"] is False
+
+
+def _at_local(y, m, d, hour=21):
+    return datetime(y, m, d, hour, tzinfo=build_digest.LOCAL_TZ)
+
+
+def test_email_edition_picks_the_halloween_and_holiday_kickoff_weeks():
+    # ROADMAP.md item 289. Oct 31 is Saturday (2026), Sunday (2027) and Monday (2028).
+    ed = build_digest.email_edition
+    assert ed(_at_local(2026, 10, 28)) == "halloween"  # Friday Oct 30's weekend
+    assert ed(_at_local(2026, 10, 21)) is None
+    assert ed(_at_local(2027, 10, 27)) == "halloween"  # Friday Oct 29, Halloween Sunday
+    assert ed(_at_local(2028, 10, 25)) == "halloween"  # Friday Oct 27, Halloween Monday
+    assert ed(_at_local(2028, 11, 1)) is None
+    # Thanksgiving 2026 is Nov 26; the send before it covers Black Friday weekend.
+    assert ed(_at_local(2026, 11, 25)) == "holiday"
+    assert ed(_at_local(2026, 11, 18)) is None
+    assert ed(_at_local(2027, 11, 24)) == "holiday"  # Thanksgiving Nov 25, 2027
+
+
+def test_each_year_has_exactly_one_halloween_and_one_holiday_edition():
+    days = [datetime(2026, 1, 1, 12, tzinfo=build_digest.LOCAL_TZ) + timedelta(days=i) for i in range(365)]
+    editions = {}
+    for d in days:
+        editions.setdefault(build_digest.weekend_dates(d.date())[0], build_digest.email_edition(d))
+    assert sorted(v for v in editions.values() if v) == ["halloween", "holiday"]
+
+
+def test_edition_block_content_and_seasonal_line_suppression():
+    halloween = {"towns": [{"name": "Palatine", "hours": "3–7 PM"}, {"name": "Wheeling", "hours": "Not posted yet"}]}
+    holiday = {"towns": [{"name": "Palatine", "date": "Sat Nov 21"}], "offer": True}
+    h = build_digest.build_email_edition_block("halloween", halloween, holiday, _at_local(2026, 10, 28))
+    assert h["pills"] == ["Palatine 3–7 PM", "Wheeling Not posted yet"] and "trick-or-treat/" in h["link"]
+    k = build_digest.build_email_edition_block("holiday", halloween, holiday, _at_local(2026, 11, 25))
+    assert k["pills"] == ["Palatine Sat Nov 21", "Small Business Saturday Nov 28"]
+    assert build_digest.build_email_edition_block("holiday", halloween, None, _at_local(2026, 11, 25)) is None
+    assert build_digest.build_email_edition_block(None, halloween, holiday, _at_local(2026, 10, 28)) is None
+    html = build_digest.render_combined_email_digest(
+        _join_sections(), "Oct 30–Nov 1", _at_local(2026, 10, 28), None, halloween=halloween, holiday=holiday
+    )
+    assert "THE HALLOWEEN WEEKEND ISSUE" in html and "#2a1646" in html
+    assert "Palatine 3–7 PM" in html
+    assert html.count("trick-or-treat/") == 1  # the edition block replaces the seasonal line
+    plain = build_digest.render_combined_email_digest(_join_sections(), "Oct 16–18", _at_local(2026, 10, 14), None)
+    assert "WEEKEND GUIDE" in plain and "#2a1646" not in plain
+    assert len(html.encode("utf-8")) < 102_000

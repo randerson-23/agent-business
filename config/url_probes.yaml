@@ -109,3 +109,63 @@ probes:
     patterns:
       - 'BEGIN:VCALENDAR'
       - 'BEGIN:VEVENT'
+
+  # Round 15 (item 288): public business directories, for the holiday-listing
+  # prospect list. Downtown sites are known; the chamber domains are best
+  # guesses, so a failed probe means "find the real domain", not "no directory".
+  - url: https://downtownarlingtonheights.us/
+    item: 288
+    purpose: Downtown Arlington Heights - where is the business or shop directory?
+    patterns:
+      - '(?i)member directory'
+      - '(?i)business directory'
+      - '(?i)shop local'
+    follow: '(?i)directory|members|business|shop|dining|eat|stores'
+  - url: https://mpdowntown.com/
+    item: 288
+    purpose: Downtown Mount Prospect - where is the business or shop directory?
+    patterns:
+      - '(?i)member directory'
+      - '(?i)business directory'
+      - '(?i)shop local'
+    follow: '(?i)directory|members|business|shop|dining|eat|stores'
+  - url: https://www.arlingtonheightschamber.com/
+    item: 288
+    purpose: Arlington Heights Chamber (guessed domain) - member directory?
+    patterns:
+      - '(?i)member directory'
+      - '(?i)business directory'
+      - '(?i)shop local'
+    follow: '(?i)directory|members|business|shop|dining|eat|stores'
+  - url: https://www.mountprospectchamber.com/
+    item: 288
+    purpose: Mount Prospect Chamber (guessed domain) - member directory?
+    patterns:
+      - '(?i)member directory'
+      - '(?i)business directory'
+      - '(?i)shop local'
+    follow: '(?i)directory|members|business|shop|dining|eat|stores'
+  - url: https://www.palatinechamber.com/
+    item: 288
+    purpose: Palatine Chamber (guessed domain) - member directory?
+    patterns:
+      - '(?i)member directory'
+      - '(?i)business directory'
+      - '(?i)shop local'
+    follow: '(?i)directory|members|business|shop|dining|eat|stores'
+  - url: https://www.desplaineschamber.com/
+    item: 288
+    purpose: Des Plaines Chamber (guessed domain) - member directory?
+    patterns:
+      - '(?i)member directory'
+      - '(?i)business directory'
+      - '(?i)shop local'
+    follow: '(?i)directory|members|business|shop|dining|eat|stores'
+  - url: https://www.wheelingchamber.com/
+    item: 288
+    purpose: Wheeling Chamber (guessed domain) - member directory?
+    patterns:
+      - '(?i)member directory'
+      - '(?i)business directory'
+      - '(?i)shop local'
+    follow: '(?i)directory|members|business|shop|dining|eat|stores'
