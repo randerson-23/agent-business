@@ -15381,7 +15381,7 @@ season.
 
 #### P1 (new)
 
-288. **Build the holiday-listing prospect list from the downtown
+288. 🟡 **STEP 1 DONE (2026-10-14): seven probes added (two downtown sites, five guessed chamber domains); read `data/url_probes.json` after the run, then write `OUTREACH_PROSPECTS.md` (due Oct 25).** **Build the holiday-listing prospect list from the downtown
      directories, by Oct 25.** Build loop plus owner.
      - **Build loop:** add probes (item 212) for the public business
        directories of Downtown Arlington Heights
@@ -15403,7 +15403,7 @@ season.
        chose to publish in. It is never shared, sold or used for anything
        but these outreach emails, and the file says so at the top.
 
-289. **A seasonal "edition" look for the Halloween and Thanksgiving
+289. ✅ **DONE (2026-10-14): `email_edition()` (the Friday on or before Oct 31; the Friday after Thanksgiving), purple Halloween hero with trick-or-treat hours pills and green holiday hero with tree-lighting dates and Small Business Saturday, replacing the seasonal line on those weeks; tests cover Oct 31 on a Saturday, Sunday and Monday, and the 102 KB limit.** **A seasonal "edition" look for the Halloween and Thanksgiving
      issues.** Design/UX, build loop, `combined_email_digest.html.j2`.
      Reuse item 263/285's season registry so the email, homepage and
      seasonal line agree:

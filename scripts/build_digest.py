@@ -4144,7 +4144,7 @@ def _pick_evergreen_highlights(evergreen: list[dict], limit: int) -> list[dict]:
     return (free + rest)[:limit]
 
 
-def render_combined_email_digest(sections: list[dict], weekend_date_range: str, now: datetime, newsletter: dict | None = None, *, preview: bool = False) -> str:
+def render_combined_email_digest(sections: list[dict], weekend_date_range: str, now: datetime, newsletter: dict | None = None, *, preview: bool = False, halloween: dict | None = None, holiday: dict | None = None) -> str:
     """The combined, all-regions email (ROADMAP.md Phase 11 #105) - the
     signup form is on every region page, but the automated send (item
     24/31) only ever mailed Mount Prospect's digest, since Buttondown's
@@ -4226,6 +4226,8 @@ def render_combined_email_digest(sections: list[dict], weekend_date_range: str, 
                 for b in empty_candidates
             ],
         }
+    edition = email_edition(now)
+    edition_block = build_email_edition_block(edition, halloween, holiday, now)
     return template.render(
         region_blocks=region_blocks,
         top_picks=top_picks,
@@ -4238,8 +4240,54 @@ def render_combined_email_digest(sections: list[dict], weekend_date_range: str, 
         preheader=build_combined_email_preheader(sections),
         newsletter=newsletter or {"configured": False},
         preview=preview,
-        seasonal_link=seasonal_email_link(now),
+        seasonal_link=None if edition_block else seasonal_email_link(now),
+        edition=edition if edition_block else None,
+        edition_block=edition_block,
     )
+
+
+def _thanksgiving(year: int) -> date:
+    """The fourth Thursday of November."""
+    first = date(year, 11, 1)
+    return first + timedelta(days=(3 - first.weekday()) % 7 + 21)
+
+
+def email_edition(now: datetime) -> str | None:
+    """Which seasonal edition this week's issue is (ROADMAP.md item 289), by
+    the Friday of the weekend it covers: "halloween" when that Friday is the
+    last one on or before Oct 31 (so a Sunday or Monday Halloween still gets
+    the weekend before it), "holiday" when it is the Friday after
+    Thanksgiving (Small Business Saturday's weekend). Every other week is None."""
+    friday = weekend_dates(now.astimezone(LOCAL_TZ).date())[0]
+    if date(friday.year, 10, 25) <= friday <= date(friday.year, 10, 31):
+        return "halloween"
+    if friday == _thanksgiving(friday.year) + timedelta(days=1):
+        return "holiday"
+    return None
+
+
+def build_email_edition_block(edition: str | None, halloween: dict | None, holiday: dict | None, now: datetime) -> dict | None:
+    """The first block of a seasonal edition: Halloween's trick-or-treat hours
+    or the holidays' tree-lighting dates plus Small Business Saturday. None
+    when there is nothing true to show (no banner data)."""
+    if edition == "halloween" and halloween:
+        return {
+            "title": "Trick-or-treat hours, all five towns",
+            "pills": [f"{t['name']} {t['hours']}" for t in halloween["towns"]],
+            "link": SITE_BASE_URL + "trick-or-treat/?utm_source=email&utm_campaign=edition",
+            "link_label": "Hours, trunk-or-treats and Halloween events →",
+        }
+    if edition == "holiday" and holiday:
+        sbs = _thanksgiving(now.year) + timedelta(days=2)
+        pills = [f"{t['name']} {t['date']}" for t in holiday["towns"]]
+        pills.append(f"Small Business Saturday {sbs.strftime('%b')} {sbs.day}")
+        return {
+            "title": "Tree lightings and Small Business Saturday",
+            "pills": pills,
+            "link": SITE_BASE_URL + "holidays/?utm_source=email&utm_campaign=edition",
+            "link_label": "Tree lightings and holiday events →",
+        }
+    return None
 
 
 def weekend_dates(local_date: date) -> tuple[date, date, date]:
@@ -5137,12 +5185,16 @@ def main() -> None:
     # ones to. Same email-send/email-preview split as the single-region
     # digest (item 91).
     combined_email_args = (combined_email_sections, hub_weekend_date_range or "", now, newsletter)
+    combined_email_extra = {
+        "halloween": build_halloween_banner(trick_or_treat_entries, now),
+        "holiday": build_holiday_banner(holidays_entries, now),
+    }
     (OUTPUT_DIR / "combined-email-send.html").write_text(
-        render_combined_email_digest(*combined_email_args), encoding="utf-8"
+        render_combined_email_digest(*combined_email_args, **combined_email_extra), encoding="utf-8"
     )
     logger.info("Wrote %s", OUTPUT_DIR / "combined-email-send.html")
     (OUTPUT_DIR / "combined-email-preview.html").write_text(
-        render_combined_email_digest(*combined_email_args, preview=True), encoding="utf-8"
+        render_combined_email_digest(*combined_email_args, preview=True, **combined_email_extra), encoding="utf-8"
     )
     logger.info("Wrote %s", OUTPUT_DIR / "combined-email-preview.html")
 
