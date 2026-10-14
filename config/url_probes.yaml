@@ -169,3 +169,37 @@ probes:
       - '(?i)business directory'
       - '(?i)shop local'
     follow: '(?i)directory|members|business|shop|dining|eat|stores'
+
+  # Round 16 (items 288 and 292). Item 292: does Downtown Mount Prospect post a
+  # 2026 merchants' trick-or-treat? Item 288: round 15 found real directory
+  # pages for Downtown Mount Prospect (/members/) and the Palatine Chamber
+  # (business.palatinechamber.com, ChamberMaster); these sample their markup
+  # (first headings and links) so the next round can extract business names
+  # precisely. Round 15 also found: Arlington Heights, Mount Prospect and Des
+  # Plaines chamber domains guessed wrong (ConnectionError / SSLError), and
+  # wheelingchamber.com is a 1 KB stub.
+  - url: https://mpdowntown.com/events/
+    item: 292
+    purpose: Downtown Mount Prospect - any 2026 merchants' trick-or-treat?
+    patterns:
+      - '(?i)trick[- ]or[- ]treat[^<]{0,80}'
+      - '(?i)pumpkin[^<]{0,80}'
+      - '2026'
+  - url: https://mpdowntown.com/members/
+    item: 288
+    purpose: Downtown Mount Prospect members page - sample the markup of a member entry
+    patterns:
+      - '<h[2-4][^>]*>[^<]{3,60}</h[2-4]>'
+      - '<a [^>]*href="[^"]*(?:member|business|shop)[^"]*"[^>]*>[^<]{3,60}</a>'
+  - url: https://business.palatinechamber.com/list/
+    item: 288
+    purpose: Palatine Chamber (ChamberMaster) - business directory listing markup
+    patterns:
+      - '<a [^>]*href="[^"]*/list/member/[^"]*"[^>]*>[^<]{3,60}</a>'
+      - '(?i)gift[^<]{0,40}'
+  - url: https://downtownarlingtonheights.us/restaurants/dining-map
+    item: 288
+    purpose: Downtown Arlington Heights dining map - sample the markup of a listing
+    patterns:
+      - '<h[2-4][^>]*>[^<]{3,60}</h[2-4]>'
+      - '<a [^>]*href="[^"]*"[^>]*>[^<]{3,60}</a>'
