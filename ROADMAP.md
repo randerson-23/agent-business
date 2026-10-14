@@ -15476,7 +15476,7 @@ answer reaches people before Oct 31.
 
 #### P2 (new)
 
-291. **A weekend-weather line in the email, with indoor picks when it
+291. ✅ **DONE (2026-10-14): `build_email_weather_line` and `pick_rain_plan`; one line under the hero from Mount Prospect's forecast (else the first town with one), rain % shown from 30%, a "Rain plan: indoor picks" block (three indoor events, family relevance first, excluding paid and "Don't miss" picks) at 60% or more; nothing at all if the fetch failed; tests and the 102 KB check.** **A weekend-weather line in the email, with indoor picks when it
      rains.** Design/UX, build loop. Reuse the region pages' existing
      Friday–Sunday forecast (one region's coordinates is enough for five
      neighbouring towns; Mount Prospect is central).

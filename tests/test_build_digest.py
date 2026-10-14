@@ -4996,3 +4996,46 @@ def test_edition_block_content_and_seasonal_line_suppression():
     plain = build_digest.render_combined_email_digest(_join_sections(), "Oct 16–18", _at_local(2026, 10, 14), None)
     assert "WEEKEND GUIDE" in plain and "#2a1646" not in plain
     assert len(html.encode("utf-8")) < 102_000
+
+
+def _wx(day, high, precip, emoji="☀️"):
+    return {"day_name": day, "high_f": high, "precip_percent": precip, "emoji": emoji}
+
+
+def test_email_weather_line_dry_wet_and_missing():
+    # ROADMAP.md item 291.
+    dry = build_digest.build_email_weather_line([_wx("Friday", 60, 0), _wx("Saturday", 58.4, 10), _wx("Sunday", 61, 20)])
+    assert dry == {"text": "☀️ Sat 58° · ☀️ Sun 61°", "rain": False}
+    wet = build_digest.build_email_weather_line([_wx("Saturday", 58, 10), _wx("Sunday", 55, 70, "🌧️")])
+    assert wet == {"text": "☀️ Sat 58° · 🌧️ Sun 55° 70% rain", "rain": True}
+    assert build_digest.build_email_weather_line([_wx("Saturday", 50, 30)])["rain"] is False  # 30% is shown, not a rain plan
+    assert build_digest.build_email_weather_line([]) is None
+    assert build_digest.build_email_weather_line(None) is None
+
+
+def test_rain_plan_picks_indoor_events_only_and_skips_promos_and_picks():
+    def ev(title, tags, **kw):
+        return dict({"title": title, "url": f"https://x/{title}", "date_iso": "2026-10-17T10:00:00", "tags": tags}, **kw)
+    blocks = [{"region_name": "Palatine", "color": "#0f766e", "attendable_events": [
+        ev("Indoor Play", ["indoor", "kid_friendly"]), ev("Hike", ["outdoor"]), ev("Paid Show", ["indoor"], sponsored_by="Acme"),
+        ev("Already Picked", ["indoor", "kid_friendly"]),
+    ]}]
+    picks = build_digest.pick_rain_plan(blocks, [ev("Already Picked", [])])
+    assert [p["title"] for p in picks] == ["Indoor Play"]
+    assert picks[0]["pick_town"] == "Palatine"
+
+
+def test_email_shows_weather_line_and_rain_plan_only_when_wet():
+    sections = _join_sections()
+    for s in sections:
+        s["weekend_events"].append({"title": "Extra " + s["region_name"], "url": "https://src/x" + s["region_name"], "date_iso": "2026-10-18T10:00:00", "date": "2026-10-18", "detail": "", "tags": ["indoor"]})
+        for e in s["weekend_events"]:
+            e["tags"] = ["indoor", "kid_friendly"]
+    now = datetime(2026, 10, 14, 18, tzinfo=timezone.utc)
+    wet = build_digest.render_combined_email_digest(sections, "Oct 16–18", now, None, weather=[_wx("Saturday", 50, 80, "🌧️"), _wx("Sunday", 52, 20)])
+    assert "🌧️ Sat 50° 80% rain" in wet and "RAIN PLAN" in wet
+    dry = build_digest.render_combined_email_digest(sections, "Oct 16–18", now, None, weather=[_wx("Saturday", 60, 0), _wx("Sunday", 62, 10)])
+    assert "☀️ Sat 60°" in dry and "RAIN PLAN" not in dry
+    none = build_digest.render_combined_email_digest(sections, "Oct 16–18", now, None, weather=None)
+    assert "RAIN PLAN" not in none and "% rain" not in none and "Sat 6" not in none
+    assert len(wet.encode("utf-8")) < 102_000
