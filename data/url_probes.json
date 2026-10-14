@@ -4,7 +4,7 @@
       "url": "https://withintenmiles.com/f3b7799bed06aac4295ec9134d53b014.txt",
       "purpose": "IndexNow key file on the live domain - still served and still equal to the key?",
       "item": 224,
-      "probed_at": "2026-10-13T14:03:07+00:00",
+      "probed_at": "2026-10-14T06:00:03+00:00",
       "status": 200,
       "final_url": "https://withintenmiles.com/f3b7799bed06aac4295ec9134d53b014.txt",
       "content_type": "text/plain; charset=utf-8",
@@ -22,11 +22,11 @@
       "url": "https://events.harpercollege.edu/calendar.ics",
       "purpose": "Harper College (Localist) - does the default iCal path serve a calendar?",
       "item": 282,
-      "probed_at": "2026-10-13T14:03:07+00:00",
+      "probed_at": "2026-10-14T06:00:03+00:00",
       "status": 200,
       "final_url": "https://events.harpercollege.edu/calendar.ics",
       "content_type": "text/calendar; charset=utf-8",
-      "bytes": 302383,
+      "bytes": 302029,
       "ics_event_count": 371,
       "pattern_matches": {
         "BEGIN:VCALENDAR": [
@@ -39,7 +39,7 @@
         "localist": [
           {
             "match": "localist",
-            "context": "& Canada) BEGIN:VEVENT DTSTAMP:20261013T135626Z UID:tag:localist.com\\,2008:EventInstance_53176851114949 DTSTART:20260914T00"
+            "context": "& Canada) BEGIN:VEVENT DTSTAMP:20261014T055405Z UID:tag:localist.com\\,2008:EventInstance_53303531262102 DTSTART:20260914T16"
           }
         ]
       }
@@ -48,11 +48,11 @@
       "url": "https://events.harpercollege.edu/api/2/events?days=60",
       "purpose": "Harper College (Localist) - does the public JSON API answer?",
       "item": 282,
-      "probed_at": "2026-10-13T14:03:08+00:00",
+      "probed_at": "2026-10-14T06:00:04+00:00",
       "status": 200,
       "final_url": "https://events.harpercollege.edu/api/2/events?days=60",
       "content_type": "application/json; charset=utf-8",
-      "bytes": 33269,
+      "bytes": 34348,
       "pattern_matches": {
         "\"events\"": [
           {
@@ -72,12 +72,12 @@
       "url": "https://desplainestheatre.com/events/",
       "purpose": "Des Plaines Theatre - any iCal link or per-event JSON-LD?",
       "item": 282,
-      "probed_at": "2026-10-13T14:03:08+00:00",
+      "probed_at": "2026-10-14T06:00:05+00:00",
       "status": 200,
       "final_url": "https://desplainestheatre.com/events/",
       "content_type": "text/html; charset=UTF-8",
-      "bytes": 274698,
-      "title": "Events from October 13 – October 18 – Des Plaines TheatreSearchExpandExpandSearchToggle Menuonesti instagram pageonesti instagram pageonesti instagram pageonesti instagram pageonesti instagram pageExp",
+      "bytes": 275479,
+      "title": "Events from October 14 – October 19 – Des Plaines TheatreSearchExpandExpandSearchToggle Menuonesti instagram pageonesti instagram pageonesti instagram pageonesti instagram pageonesti instagram pageExp",
       "feed_links": [
         {
           "href": "https://desplainestheatre.com/feed/",
@@ -120,7 +120,7 @@
         "\"@type\": ?\"Event\"": [
           {
             "match": "\"@type\":\"Event\"",
-            "context": "ype=\"application/ld+json\"> [{\"@context\":\"http://schema.org\",\"@type\":\"Event\",\"name\":\"$1 FILM SERIES &#8211; &#8220;O Brother, Where Art"
+            "context": "ype=\"application/ld+json\"> [{\"@context\":\"http://schema.org\",\"@type\":\"Event\",\"name\":\"POSTPONED &#8211; GIPSY KINGS\",\"description\":\"&lt;p"
           }
         ],
         "\\.ics": [
@@ -131,15 +131,15 @@
         ]
       },
       "followed": {
-        "url": "https://desplainestheatre.com/event/1-film-series-oh-brother-where-art-thou/",
+        "url": "https://desplainestheatre.com/event/gipsy-kings-3/",
         "purpose": "",
         "item": null,
-        "probed_at": "2026-10-13T14:03:09+00:00",
+        "probed_at": "2026-10-14T06:00:05+00:00",
         "status": 200,
-        "final_url": "https://desplainestheatre.com/event/1-film-series-oh-brother-where-art-thou/",
+        "final_url": "https://desplainestheatre.com/event/gipsy-kings-3/",
         "content_type": "text/html; charset=UTF-8",
-        "bytes": 170076,
-        "title": "$1 FILM SERIES - \"O Brother, Where Art Thou?\" - Des Plaines TheatreSearchExpandExpandSearchToggle Menuonesti instagram pageonesti instagram pageonesti instagram pageonesti instagram pageonesti instagr",
+        "bytes": 173010,
+        "title": "POSTPONED - GIPSY KINGS - Des Plaines TheatreSearchExpandExpandSearchToggle Menuonesti instagram pageonesti instagram pageonesti instagram pageonesti instagram pageonesti instagram pageExpandToggle Me",
         "feed_links": [
           {
             "href": "https://desplainestheatre.com/feed/",
@@ -157,35 +157,38 @@
             "title": "Des Plaines Theatre » iCal Feed"
           },
           {
-            "href": "https://desplainestheatre.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fdesplainestheatre.com%2Fevent%2F1-film-series-oh-brother-where-art-thou%2F",
+            "href": "https://desplainestheatre.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fdesplainestheatre.com%2Fevent%2Fgipsy-kings-3%2F",
             "type": "application/json+oembed",
             "title": "oEmbed (JSON)"
           },
           {
-            "href": "https://desplainestheatre.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fdesplainestheatre.com%2Fevent%2F1-film-series-oh-brother-where-art-thou%2F&format=xml",
+            "href": "https://desplainestheatre.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fdesplainestheatre.com%2Fevent%2Fgipsy-kings-3%2F&format=xml",
             "type": "text/xml+oembed",
             "title": "oEmbed (XML)"
           },
           {
-            "href": "https://desplainestheatre.com/wp-json/wp/v2/tribe_events/17229",
+            "href": "https://desplainestheatre.com/wp-json/wp/v2/tribe_events/17041",
             "type": "application/json",
             "title": "JSON"
           },
           {
-            "href": "https://desplainestheatre.com/wp-json/tribe/events/v1/events/17229",
+            "href": "https://desplainestheatre.com/wp-json/tribe/events/v1/events/17041",
             "type": "",
             "title": ""
           }
         ],
         "calendar_links": [
-          "webcal://desplainestheatre.com/event/1-film-series-oh-brother-where-art-thou/?ical=1"
+          "https://www.google.com/calendar/event?action=TEMPLATE&dates=20261014T193000/20261014T193000&text=POSTPONED%20%26%238211%3B%20GIPSY%20KINGS&details=THIS+EVENT+HAS+BEEN+POSTPONED.++A+RESCHEDULED+DATE+WILL+BE+ANNOUNCED+SOON.+Pablo+Reyes+grew+up+in+the+vibrant+Gypsy+community+of+Arles%2C+in+the+south+of+France%2C+where+he+absorbed+the+art+and+passion+of+flamenco+from+childhood.+With+a+unique+style+blending+refined+melodies%2C+guitar+virtuosity%2C+and+intense%2C+soulful+vocals%2C+Pablo+established+himself+as+a+founding+member+of+the+legendary+Gipsy+Kings.+Together+with+the+group%2C+he+conquered+the+world+with+timeless+hits+like+%22Bamboleo%22+and+%22Djobi+Djoba%2C%22+which+became+true+anthems+of+Gypsy+musical+culture.+Marking+the+38th+anniversary+of+%22Bamboleo%2C%22+Pablo+Reyes+returns+to+the+stage+with+a+celebratory+world+tour+that+retraces+his+extraordinary+career+and+pays+tribute+to+the+Gipsy+Kings+legend.+It+is+a+musical+journey+weaving+together+past+and+present%2C+tradition+and+innovation%2C+reigniting+the+flame+that+has+made+generations+dance.+To+cap+off+this+significant+milestone%2C+Pablo+Reyes+received+two+prestigious+awards+during+the+2025+Sanremo+Fest+%28View+Full+event+Description+Here%3A+https%3A%2F%2Fdesplainestheatre.com%2Fevent%2Fgipsy-kings-3%2F%29&location=Des%20Plaines%20Theatre,%201476%20Miner%20St,%20Des%20Plaines,%20IL,%2060016,%20United%20States&trp=false&ctz=America/Chicago&sprop=website:https://desplainestheatre.com",
+          "webcal://desplainestheatre.com/event/gipsy-kings-3/?ical=1",
+          "https://outlook.office.com/owa/?path=/calendar/action/compose&rrv=addevent&startdt=2026-10-14T19%3A30%3A00-05%3A00&enddt=2026-10-14T19%3A30%3A00-05%3A00&location=Des%20Plaines%20Theatre,%201476%20Miner%20St,%20Des%20Plaines,%20IL,%2060016,%20United%20States&subject=POSTPONED%20-%20GIPSY%20KINGS&body=THIS%20EVENT%20HAS%20BEEN%20POSTPONED.%20%20A%20RESCHEDULED%20DATE%20WILL%20BE%20ANNOUNCED%20SOON.%20Pablo%20Reyes%20grew%20up%20in%20the%20vibrant%20Gypsy%20community%20of%20Arles%2C%20in%20the%20south%20of%20France%2C%20where%20he%20absorbed%20the%20art%20and%20passion%20of%20flamenco%20from%20childhood.%20With%20a%20unique%20style%20blending%20refined%20melodies%2C%20guitar%20virtuosity%2C%20and%20intense%2C%20soulful%20vocals%2C%20Pablo%20established%20himself%20as%20a%20founding%20member%20of%20the%20legendary%20Gipsy%20Kings.%20Together%20with%20the%20group%2C%20he%20conquered%20the%20world%20with%20timeless%20hits%20like%20%22Bamboleo%22%20and%20%22Djobi%20Djoba%2C%22%20which%20became%20true%20anthems%20of%20Gypsy%20musical%20culture.%20Marking%20the%2038th%20anniversary%20of%20%22Bamboleo%2C%22%20Pablo%20Reyes%20returns%20to%20the%20stage%20with%20a%20celebratory%20world%20tour%20that%20retraces%20his%20extraordinary%20career%20and%20pays%20tribute%20to%20the%20Gipsy%20Kings%20legend.%20It%20is%20a%20musical%20journey%20weaving%20together%20past%20and%20present%2C%20tradition%20and%20innovation%2C%20reigniting%20the%20flame%20that%20has%20made%20generations%20dance.%20To%20cap%20off%20this%20%28View%20Full%20Event%20Description%20Here%3A%20https%3A%2F%2Fdesplainestheatre.com%2Fevent%2Fgipsy-kings-3%2F%29",
+          "https://outlook.live.com/owa/?path=/calendar/action/compose&rrv=addevent&startdt=2026-10-14T19%3A30%3A00-05%3A00&enddt=2026-10-14T19%3A30%3A00-05%3A00&location=Des%20Plaines%20Theatre,%201476%20Miner%20St,%20Des%20Plaines,%20IL,%2060016,%20United%20States&subject=POSTPONED%20-%20GIPSY%20KINGS&body=THIS%20EVENT%20HAS%20BEEN%20POSTPONED.%20%20A%20RESCHEDULED%20DATE%20WILL%20BE%20ANNOUNCED%20SOON.%20Pablo%20Reyes%20grew%20up%20in%20the%20vibrant%20Gypsy%20community%20of%20Arles%2C%20in%20the%20south%20of%20France%2C%20where%20he%20absorbed%20the%20art%20and%20passion%20of%20flamenco%20from%20childhood.%20With%20a%20unique%20style%20blending%20refined%20melodies%2C%20guitar%20virtuosity%2C%20and%20intense%2C%20soulful%20vocals%2C%20Pablo%20established%20himself%20as%20a%20founding%20member%20of%20the%20legendary%20Gipsy%20Kings.%20Together%20with%20the%20group%2C%20he%20conquered%20the%20world%20with%20timeless%20hits%20like%20%22Bamboleo%22%20and%20%22Djobi%20Djoba%2C%22%20which%20became%20true%20anthems%20of%20Gypsy%20musical%20culture.%20Marking%20the%2038th%20anniversary%20of%20%22Bamboleo%2C%22%20Pablo%20Reyes%20returns%20to%20the%20stage%20with%20a%20celebratory%20world%20tour%20that%20retraces%20his%20extraordinary%20career%20and%20pays%20tribute%20to%20the%20Gipsy%20Kings%20legend.%20It%20is%20a%20musical%20journey%20weaving%20together%20past%20and%20present%2C%20tradition%20and%20innovation%2C%20reigniting%20the%20flame%20that%20has%20made%20generations%20dance.%20To%20cap%20off%20this%20%28View%20Full%20Event%20Description%20Here%3A%20https%3A%2F%2Fdesplainestheatre.com%2Fevent%2Fgipsy-kings-3%2F%29"
         ],
         "pattern_matches": {
           "BEGIN:VCALENDAR": [],
           "\"@type\": ?\"Event\"": [
             {
               "match": "\"@type\":\"Event\"",
-              "context": "tps:\\/\\/desplainestheatre.com\\/#\\/schema\\/logo\\/image\\/\"}},{\"@type\":\"Event\",\"name\":\"$1 FILM SERIES &#8211; &#8220;O Brother, Where Art"
+              "context": "tps:\\/\\/desplainestheatre.com\\/#\\/schema\\/logo\\/image\\/\"}},{\"@type\":\"Event\",\"name\":\"POSTPONED &#8211; GIPSY KINGS\",\"description\":\"THIS"
             }
           ],
           "\\.ics": []
@@ -196,11 +199,11 @@
       "url": "https://metropolisarts.com/",
       "purpose": "Metropolis Performing Arts Centre - where is the calendar and does it have a feed?",
       "item": 282,
-      "probed_at": "2026-10-13T14:03:11+00:00",
+      "probed_at": "2026-10-14T06:00:07+00:00",
       "status": 200,
       "final_url": "https://www.metropolisarts.com/",
       "content_type": "text/html; charset=UTF-8",
-      "bytes": 1370606,
+      "bytes": 1417225,
       "title": "Metropolis Performing Arts Centre | Arlington Heights, IL",
       "feed_links": [
         {
@@ -254,11 +257,11 @@
         "url": "https://app.mainstreetsites.com/calendar.aspx?dmn=5012",
         "purpose": "",
         "item": null,
-        "probed_at": "2026-10-13T14:03:11+00:00",
+        "probed_at": "2026-10-14T06:00:08+00:00",
         "status": 200,
         "final_url": "https://app.mainstreetsites.com/calendar.aspx?dmn=5012",
         "content_type": "text/html; charset=utf-8",
-        "bytes": 70020,
+        "bytes": 70019,
         "title": "Metropolis School of the Performing Arts - Calendar",
         "feed_links": [],
         "calendar_links": [],
@@ -273,11 +276,11 @@
       "url": "https://heynonny.com/",
       "purpose": "Hey Nonny - events page, OpenDate listing, or a feed?",
       "item": 282,
-      "probed_at": "2026-10-13T14:03:13+00:00",
+      "probed_at": "2026-10-14T06:00:09+00:00",
       "status": 200,
       "final_url": "https://www.heynonny.com/",
       "content_type": "text/html; charset=utf-8",
-      "bytes": 40579,
+      "bytes": 40581,
       "title": "Hey Nonny | Live Music Venue + Restaurant in Arlington Heights, IL",
       "feed_links": [],
       "calendar_links": [],
@@ -295,11 +298,11 @@
         "url": "https://www.heynonny.com/shows",
         "purpose": "",
         "item": null,
-        "probed_at": "2026-10-13T14:03:15+00:00",
+        "probed_at": "2026-10-14T06:00:10+00:00",
         "status": 200,
         "final_url": "https://www.heynonny.com/shows",
         "content_type": "text/html; charset=utf-8",
-        "bytes": 127121,
+        "bytes": 126853,
         "title": "Shows | Hey Nonny",
         "feed_links": [],
         "calendar_links": [],
@@ -319,11 +322,11 @@
       "url": "https://desplainestheatre.com/events/?ical=1",
       "purpose": "Des Plaines Theatre - does the Events Calendar iCal export return a calendar?",
       "item": 287,
-      "probed_at": "2026-10-13T14:03:16+00:00",
+      "probed_at": "2026-10-14T06:00:10+00:00",
       "status": 200,
       "final_url": "https://desplainestheatre.com/events/?ical=1",
       "content_type": "text/calendar; charset=UTF-8",
-      "bytes": 55316,
+      "bytes": 55696,
       "ics_event_count": 30,
       "pattern_matches": {
         "BEGIN:VCALENDAR": [
@@ -335,7 +338,7 @@
         "BEGIN:VEVENT": [
           {
             "match": "BEGIN:VEVENT",
-            "context": ":CST DTSTART:20271107T070000 END:STANDARD END:VTIMEZONE BEGIN:VEVENT DTSTART;TZID=America/Chicago:20261013T190000 DTEND;TZID=A"
+            "context": ":CST DTSTART:20271107T070000 END:STANDARD END:VTIMEZONE BEGIN:VEVENT DTSTART;TZID=America/Chicago:20261014T193000 DTEND;TZID=A"
           }
         ]
       }
@@ -344,7 +347,7 @@
       "url": "https://www.metropolisarts.com/events/?ical=1",
       "purpose": "Metropolis - does the Events Calendar iCal export return a calendar?",
       "item": 287,
-      "probed_at": "2026-10-13T14:03:18+00:00",
+      "probed_at": "2026-10-14T06:00:11+00:00",
       "status": 200,
       "final_url": "https://www.metropolisarts.com/events-calendar/?ical=1",
       "content_type": "text/calendar; charset=UTF-8",
@@ -364,6 +367,284 @@
           }
         ]
       }
+    },
+    {
+      "url": "https://downtownarlingtonheights.us/",
+      "purpose": "Downtown Arlington Heights - where is the business or shop directory?",
+      "item": 288,
+      "probed_at": "2026-10-14T06:00:12+00:00",
+      "status": 200,
+      "final_url": "https://downtownarlingtonheights.us/",
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 198344,
+      "title": "Downtown Arlington Heights, IL — Visitor Guide, Map & Events",
+      "feed_links": [
+        {
+          "href": "https://downtownarlingtonheights.us/feed.xml",
+          "type": "application/rss+xml",
+          "title": "Downtown Arlington Heights — Events, Restaurants & News"
+        }
+      ],
+      "calendar_links": [
+        "https://downtownarlingtonheights.us/events/farmers-market-historical-society-2026"
+      ],
+      "pattern_matches": {
+        "(?i)member directory": [],
+        "(?i)business directory": [],
+        "(?i)shop local": []
+      },
+      "followed": {
+        "url": "https://downtownarlingtonheights.us/restaurants/dining-map",
+        "purpose": "",
+        "item": null,
+        "probed_at": "2026-10-14T06:00:13+00:00",
+        "status": 200,
+        "final_url": "https://downtownarlingtonheights.us/restaurants/dining-map",
+        "content_type": "text/html; charset=utf-8",
+        "bytes": 43053,
+        "title": "Arlington Heights Dining Map (2026) | Downtown Arlington Heights, IL",
+        "feed_links": [
+          {
+            "href": "https://downtownarlingtonheights.us/feed.xml",
+            "type": "application/rss+xml",
+            "title": "Downtown Arlington Heights — Events, Restaurants & News"
+          }
+        ],
+        "calendar_links": [],
+        "pattern_matches": {
+          "(?i)member directory": [],
+          "(?i)business directory": [],
+          "(?i)shop local": []
+        }
+      }
+    },
+    {
+      "url": "https://mpdowntown.com/",
+      "purpose": "Downtown Mount Prospect - where is the business or shop directory?",
+      "item": 288,
+      "probed_at": "2026-10-14T06:00:13+00:00",
+      "status": 200,
+      "final_url": "https://mpdowntown.com/",
+      "content_type": "text/html; charset=UTF-8",
+      "bytes": 57342,
+      "title": "Mount Prospect Downtown Merchants | Play Gather Relax",
+      "feed_links": [
+        {
+          "href": "https://mpdowntown.com/feed/",
+          "type": "application/rss+xml",
+          "title": "Mount Prospect Downtown Merchants » Feed"
+        },
+        {
+          "href": "https://mpdowntown.com/comments/feed/",
+          "type": "application/rss+xml",
+          "title": "Mount Prospect Downtown Merchants » Comments Feed"
+        },
+        {
+          "href": "https://mpdowntown.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fmpdowntown.com%2F",
+          "type": "application/json+oembed",
+          "title": "oEmbed (JSON)"
+        },
+        {
+          "href": "https://mpdowntown.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fmpdowntown.com%2F&format=xml",
+          "type": "text/xml+oembed",
+          "title": "oEmbed (XML)"
+        },
+        {
+          "href": "https://mpdowntown.com/wp-json/wp/v2/pages/2581",
+          "type": "application/json",
+          "title": "JSON"
+        }
+      ],
+      "calendar_links": [],
+      "pattern_matches": {
+        "(?i)member directory": [],
+        "(?i)business directory": [],
+        "(?i)shop local": []
+      },
+      "followed": {
+        "url": "https://mpdowntown.com/members/",
+        "purpose": "",
+        "item": null,
+        "probed_at": "2026-10-14T06:00:14+00:00",
+        "status": 200,
+        "final_url": "https://mpdowntown.com/members/",
+        "content_type": "text/html; charset=UTF-8",
+        "bytes": 158266,
+        "title": "Members | Mount Prospect Downtown Merchants",
+        "feed_links": [
+          {
+            "href": "https://mpdowntown.com/feed/",
+            "type": "application/rss+xml",
+            "title": "Mount Prospect Downtown Merchants » Feed"
+          },
+          {
+            "href": "https://mpdowntown.com/comments/feed/",
+            "type": "application/rss+xml",
+            "title": "Mount Prospect Downtown Merchants » Comments Feed"
+          },
+          {
+            "href": "https://mpdowntown.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fmpdowntown.com%2Fmembers%2F",
+            "type": "application/json+oembed",
+            "title": "oEmbed (JSON)"
+          },
+          {
+            "href": "https://mpdowntown.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fmpdowntown.com%2Fmembers%2F&format=xml",
+            "type": "text/xml+oembed",
+            "title": "oEmbed (XML)"
+          },
+          {
+            "href": "https://mpdowntown.com/wp-json/wp/v2/pages/2481",
+            "type": "application/json",
+            "title": "JSON"
+          }
+        ],
+        "calendar_links": [
+          "https://www.vandrielsmedical.com"
+        ],
+        "pattern_matches": {
+          "(?i)member directory": [],
+          "(?i)business directory": [],
+          "(?i)shop local": []
+        }
+      }
+    },
+    {
+      "url": "https://www.arlingtonheightschamber.com/",
+      "purpose": "Arlington Heights Chamber (guessed domain) - member directory?",
+      "item": 288,
+      "probed_at": "2026-10-14T06:00:15+00:00",
+      "error": "ConnectionError"
+    },
+    {
+      "url": "https://www.mountprospectchamber.com/",
+      "purpose": "Mount Prospect Chamber (guessed domain) - member directory?",
+      "item": 288,
+      "probed_at": "2026-10-14T06:00:15+00:00",
+      "error": "SSLError"
+    },
+    {
+      "url": "https://www.palatinechamber.com/",
+      "purpose": "Palatine Chamber (guessed domain) - member directory?",
+      "item": 288,
+      "probed_at": "2026-10-14T06:00:16+00:00",
+      "status": 200,
+      "final_url": "https://www.palatinechamber.com/",
+      "content_type": "text/html; charset=UTF-8",
+      "bytes": 256287,
+      "title": "Home - Palatine Area Chamber of Commerce",
+      "feed_links": [
+        {
+          "href": "https://www.palatinechamber.com/feed/",
+          "type": "application/rss+xml",
+          "title": "Palatine Area Chamber of Commerce » Feed"
+        },
+        {
+          "href": "https://www.palatinechamber.com/comments/feed/",
+          "type": "application/rss+xml",
+          "title": "Palatine Area Chamber of Commerce » Comments Feed"
+        },
+        {
+          "href": "https://www.palatinechamber.com/wp-json/wp/v2/pages/39227",
+          "type": "application/json",
+          "title": "JSON"
+        },
+        {
+          "href": "https://www.palatinechamber.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fwww.palatinechamber.com%2F",
+          "type": "application/json+oembed",
+          "title": "oEmbed (JSON)"
+        },
+        {
+          "href": "https://www.palatinechamber.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fwww.palatinechamber.com%2F&format=xml",
+          "type": "text/xml+oembed",
+          "title": "oEmbed (XML)"
+        }
+      ],
+      "calendar_links": [],
+      "pattern_matches": {
+        "(?i)member directory": [
+          {
+            "match": "Member Directory",
+            "context": "_self\" class=\"fl-button\"> <span class=\"fl-button-text\">View Member Directory</span> </a></div></div></div></div></div></div></div></div>"
+          }
+        ],
+        "(?i)business directory": [
+          {
+            "match": "Business Directory",
+            "context": "\" content=\"WELCOME TO THE Palatine Area Chamber of Commerce Business Directory Events Become a Member Member Login Joining the Chamber has"
+          }
+        ],
+        "(?i)shop local": []
+      },
+      "followed": {
+        "url": "https://business.palatinechamber.com/member/newmemberapp",
+        "purpose": "",
+        "item": null,
+        "probed_at": "2026-10-14T06:00:16+00:00",
+        "status": 200,
+        "final_url": "https://business.palatinechamber.com/member/newmemberapp",
+        "content_type": "text/html; charset=utf-8",
+        "bytes": 333174,
+        "title": "Member",
+        "feed_links": [
+          {
+            "href": "https://www.palatinechamber.com/feed/",
+            "type": "application/rss+xml",
+            "title": "Palatine Area Chamber of Commerce » Feed"
+          },
+          {
+            "href": "https://www.palatinechamber.com/comments/feed/",
+            "type": "application/rss+xml",
+            "title": "Palatine Area Chamber of Commerce » Comments Feed"
+          },
+          {
+            "href": "https://www.palatinechamber.com/wp-json/wp/v2/pages/39228",
+            "type": "application/json",
+            "title": "JSON"
+          }
+        ],
+        "calendar_links": [],
+        "pattern_matches": {
+          "(?i)member directory": [
+            {
+              "match": "Member Directory",
+              "context": "></p><p><a href=\"https://business.palatinechamber.com/list\">Member Directory</a></p><p><a href=\"https://business.palatinechamber.com/mem"
+            }
+          ],
+          "(?i)business directory": [
+            {
+              "match": "Business Directory",
+              "context": "<a href=\"https://business.palatinechamber.com/list/\">Business Directory</a> <a href=\"https://business.pa"
+            }
+          ],
+          "(?i)shop local": []
+        }
+      }
+    },
+    {
+      "url": "https://www.desplaineschamber.com/",
+      "purpose": "Des Plaines Chamber (guessed domain) - member directory?",
+      "item": 288,
+      "probed_at": "2026-10-14T06:00:17+00:00",
+      "error": "SSLError"
+    },
+    {
+      "url": "https://www.wheelingchamber.com/",
+      "purpose": "Wheeling Chamber (guessed domain) - member directory?",
+      "item": 288,
+      "probed_at": "2026-10-14T06:00:18+00:00",
+      "status": 200,
+      "final_url": "https://www.wheelingchamber.com/",
+      "content_type": "text/html",
+      "bytes": 1018,
+      "title": "",
+      "feed_links": [],
+      "calendar_links": [],
+      "pattern_matches": {
+        "(?i)member directory": [],
+        "(?i)business directory": [],
+        "(?i)shop local": []
+      },
+      "followed": null
     }
   ]
 }
