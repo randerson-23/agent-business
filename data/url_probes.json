@@ -4,7 +4,7 @@
       "url": "https://withintenmiles.com/f3b7799bed06aac4295ec9134d53b014.txt",
       "purpose": "IndexNow key file on the live domain - still served and still equal to the key?",
       "item": 224,
-      "probed_at": "2026-10-14T14:00:39+00:00",
+      "probed_at": "2026-10-14T22:02:22+00:00",
       "status": 200,
       "final_url": "https://withintenmiles.com/f3b7799bed06aac4295ec9134d53b014.txt",
       "content_type": "text/plain; charset=utf-8",
@@ -19,642 +19,14 @@
       }
     },
     {
-      "url": "https://events.harpercollege.edu/calendar.ics",
-      "purpose": "Harper College (Localist) - does the default iCal path serve a calendar?",
-      "item": 282,
-      "probed_at": "2026-10-14T14:00:40+00:00",
-      "status": 200,
-      "final_url": "https://events.harpercollege.edu/calendar.ics",
-      "content_type": "text/calendar; charset=utf-8",
-      "bytes": 302302,
-      "ics_event_count": 371,
-      "pattern_matches": {
-        "BEGIN:VCALENDAR": [
-          {
-            "match": "BEGIN:VCALENDAR",
-            "context": "BEGIN:VCALENDAR VERSION:2.0 PRODID:icalendar-ruby CALSCALE:GREGORIAN X-"
-          }
-        ],
-        "<rss": [],
-        "localist": [
-          {
-            "match": "localist",
-            "context": "& Canada) BEGIN:VEVENT DTSTAMP:20261014T135228Z UID:tag:localist.com\\,2008:EventInstance_53303531262102 DTSTART:20260914T16"
-          }
-        ]
-      }
-    },
-    {
-      "url": "https://events.harpercollege.edu/api/2/events?days=60",
-      "purpose": "Harper College (Localist) - does the public JSON API answer?",
-      "item": 282,
-      "probed_at": "2026-10-14T14:00:40+00:00",
-      "status": 200,
-      "final_url": "https://events.harpercollege.edu/api/2/events?days=60",
-      "content_type": "application/json; charset=utf-8",
-      "bytes": 34348,
-      "pattern_matches": {
-        "\"events\"": [
-          {
-            "match": "\"events\"",
-            "context": "{\"events\":[{\"event\":{\"id\":53319374506362,\"title\":\"Illinois Benefits A"
-          }
-        ],
-        "\"event\"": [
-          {
-            "match": "\"event\"",
-            "context": "{\"events\":[{\"event\":{\"id\":53319374506362,\"title\":\"Illinois Benefits Application"
-          }
-        ]
-      }
-    },
-    {
-      "url": "https://desplainestheatre.com/events/",
-      "purpose": "Des Plaines Theatre - any iCal link or per-event JSON-LD?",
-      "item": 282,
-      "probed_at": "2026-10-14T14:00:41+00:00",
-      "status": 200,
-      "final_url": "https://desplainestheatre.com/events/",
-      "content_type": "text/html; charset=UTF-8",
-      "bytes": 304701,
-      "title": "Events from October 14 – October 19 – Des Plaines TheatreSearchExpandExpandSearchToggle Menuonesti instagram pageonesti instagram pageonesti instagram pageonesti instagram pageonesti instagram pageExp",
-      "feed_links": [
-        {
-          "href": "https://desplainestheatre.com/feed/",
-          "type": "application/rss+xml",
-          "title": "Des Plaines Theatre » Feed"
-        },
-        {
-          "href": "https://desplainestheatre.com/comments/feed/",
-          "type": "application/rss+xml",
-          "title": "Des Plaines Theatre » Comments Feed"
-        },
-        {
-          "href": "https://desplainestheatre.com/events/?ical=1",
-          "type": "text/calendar",
-          "title": "Des Plaines Theatre » iCal Feed"
-        },
-        {
-          "href": "https://desplainestheatre.com/events/feed/",
-          "type": "application/rss+xml",
-          "title": "Des Plaines Theatre » Events Feed"
-        },
-        {
-          "href": "https://desplainestheatre.com/wp-json/tribe/events/v1/",
-          "type": "",
-          "title": ""
-        }
-      ],
-      "calendar_links": [
-        "https://desplainestheatre.com/event/the-musical-box-proudly-presents-and-then-there-was-phil-2/",
-        "https://www.etix.com/ticket/p/73603309/musical-box-des-plaines-des-plaines-theatre",
-        "https://www.google.com/calendar/render?cid=webcal%3A%2F%2Fdesplainestheatre.com%2F%3Fpost_type%3Dtribe_events%26ical%3D1%26eventDisplay%3Dlist",
-        "webcal://desplainestheatre.com/?post_type=tribe_events&ical=1&eventDisplay=list",
-        "https://outlook.office.com/owa?path=/calendar/action/compose&rru=addsubscription&url=webcal%3A%2F%2Fdesplainestheatre.com%2F%3Fpost_type%3Dtribe_events%26ical%3D1%26eventDisplay%3Dlist&name=Des+Plaines+Theatre+Events+from+Des+Plains+Theatre",
-        "https://outlook.live.com/owa?path=/calendar/action/compose&rru=addsubscription&url=webcal%3A%2F%2Fdesplainestheatre.com%2F%3Fpost_type%3Dtribe_events%26ical%3D1%26eventDisplay%3Dlist&name=Des+Plaines+Theatre+Events+from+Des+Plains+Theatre",
-        "https://desplainestheatre.com/events/list/?ical=1",
-        "https://desplainestheatre.com/events/list/?outlook-ical=1"
-      ],
-      "pattern_matches": {
-        "BEGIN:VCALENDAR": [],
-        "\"@type\": ?\"Event\"": [
-          {
-            "match": "\"@type\":\"Event\"",
-            "context": "ype=\"application/ld+json\"> [{\"@context\":\"http://schema.org\",\"@type\":\"Event\",\"name\":\"POSTPONED &#8211; GIPSY KINGS\",\"description\":\"&lt;p"
-          }
-        ],
-        "\\.ics": [
-          {
-            "match": ".ics",
-            "context": ":true,\"block_slug\":\"hasOutlookLive\"},\"ics\":{\"label\":\"Export .ics file\",\"single_label\":\"Export .ics file\",\"visible\":true,\"blo"
-          }
-        ]
-      },
-      "followed": {
-        "url": "https://desplainestheatre.com/event/gipsy-kings-3/",
-        "purpose": "",
-        "item": null,
-        "probed_at": "2026-10-14T14:00:41+00:00",
-        "status": 200,
-        "final_url": "https://desplainestheatre.com/event/gipsy-kings-3/",
-        "content_type": "text/html; charset=UTF-8",
-        "bytes": 202436,
-        "title": "POSTPONED - GIPSY KINGS - Des Plaines TheatreSearchExpandExpandSearchToggle Menuonesti instagram pageonesti instagram pageonesti instagram pageonesti instagram pageonesti instagram pageExpandToggle Me",
-        "feed_links": [
-          {
-            "href": "https://desplainestheatre.com/feed/",
-            "type": "application/rss+xml",
-            "title": "Des Plaines Theatre » Feed"
-          },
-          {
-            "href": "https://desplainestheatre.com/comments/feed/",
-            "type": "application/rss+xml",
-            "title": "Des Plaines Theatre » Comments Feed"
-          },
-          {
-            "href": "https://desplainestheatre.com/events/?ical=1",
-            "type": "text/calendar",
-            "title": "Des Plaines Theatre » iCal Feed"
-          },
-          {
-            "href": "https://desplainestheatre.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fdesplainestheatre.com%2Fevent%2Fgipsy-kings-3%2F",
-            "type": "application/json+oembed",
-            "title": "oEmbed (JSON)"
-          },
-          {
-            "href": "https://desplainestheatre.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fdesplainestheatre.com%2Fevent%2Fgipsy-kings-3%2F&format=xml",
-            "type": "text/xml+oembed",
-            "title": "oEmbed (XML)"
-          },
-          {
-            "href": "https://desplainestheatre.com/wp-json/wp/v2/tribe_events/17041",
-            "type": "application/json",
-            "title": "JSON"
-          },
-          {
-            "href": "https://desplainestheatre.com/wp-json/tribe/events/v1/events/17041",
-            "type": "",
-            "title": ""
-          }
-        ],
-        "calendar_links": [
-          "https://www.google.com/calendar/event?action=TEMPLATE&dates=20261014T193000/20261014T193000&text=POSTPONED%20%26%238211%3B%20GIPSY%20KINGS&details=THIS+EVENT+HAS+BEEN+POSTPONED.++A+RESCHEDULED+DATE+WILL+BE+ANNOUNCED+SOON.+Pablo+Reyes+grew+up+in+the+vibrant+Gypsy+community+of+Arles%2C+in+the+south+of+France%2C+where+he+absorbed+the+art+and+passion+of+flamenco+from+childhood.+With+a+unique+style+blending+refined+melodies%2C+guitar+virtuosity%2C+and+intense%2C+soulful+vocals%2C+Pablo+established+himself+as+a+founding+member+of+the+legendary+Gipsy+Kings.+Together+with+the+group%2C+he+conquered+the+world+with+timeless+hits+like+%22Bamboleo%22+and+%22Djobi+Djoba%2C%22+which+became+true+anthems+of+Gypsy+musical+culture.+Marking+the+38th+anniversary+of+%22Bamboleo%2C%22+Pablo+Reyes+returns+to+the+stage+with+a+celebratory+world+tour+that+retraces+his+extraordinary+career+and+pays+tribute+to+the+Gipsy+Kings+legend.+It+is+a+musical+journey+weaving+together+past+and+present%2C+tradition+and+innovation%2C+reigniting+the+flame+that+has+made+generations+dance.+To+cap+off+this+significant+milestone%2C+Pablo+Reyes+received+two+prestigious+awards+during+the+2025+Sanremo+Fest+%28View+Full+event+Description+Here%3A+https%3A%2F%2Fdesplainestheatre.com%2Fevent%2Fgipsy-kings-3%2F%29&location=Des%20Plaines%20Theatre,%201476%20Miner%20St,%20Des%20Plaines,%20IL,%2060016,%20United%20States&trp=false&ctz=America/Chicago&sprop=website:https://desplainestheatre.com",
-          "webcal://desplainestheatre.com/event/gipsy-kings-3/?ical=1",
-          "https://outlook.office.com/owa/?path=/calendar/action/compose&rrv=addevent&startdt=2026-10-14T19%3A30%3A00-05%3A00&enddt=2026-10-14T19%3A30%3A00-05%3A00&location=Des%20Plaines%20Theatre,%201476%20Miner%20St,%20Des%20Plaines,%20IL,%2060016,%20United%20States&subject=POSTPONED%20-%20GIPSY%20KINGS&body=THIS%20EVENT%20HAS%20BEEN%20POSTPONED.%20%20A%20RESCHEDULED%20DATE%20WILL%20BE%20ANNOUNCED%20SOON.%20Pablo%20Reyes%20grew%20up%20in%20the%20vibrant%20Gypsy%20community%20of%20Arles%2C%20in%20the%20south%20of%20France%2C%20where%20he%20absorbed%20the%20art%20and%20passion%20of%20flamenco%20from%20childhood.%20With%20a%20unique%20style%20blending%20refined%20melodies%2C%20guitar%20virtuosity%2C%20and%20intense%2C%20soulful%20vocals%2C%20Pablo%20established%20himself%20as%20a%20founding%20member%20of%20the%20legendary%20Gipsy%20Kings.%20Together%20with%20the%20group%2C%20he%20conquered%20the%20world%20with%20timeless%20hits%20like%20%22Bamboleo%22%20and%20%22Djobi%20Djoba%2C%22%20which%20became%20true%20anthems%20of%20Gypsy%20musical%20culture.%20Marking%20the%2038th%20anniversary%20of%20%22Bamboleo%2C%22%20Pablo%20Reyes%20returns%20to%20the%20stage%20with%20a%20celebratory%20world%20tour%20that%20retraces%20his%20extraordinary%20career%20and%20pays%20tribute%20to%20the%20Gipsy%20Kings%20legend.%20It%20is%20a%20musical%20journey%20weaving%20together%20past%20and%20present%2C%20tradition%20and%20innovation%2C%20reigniting%20the%20flame%20that%20has%20made%20generations%20dance.%20To%20cap%20off%20this%20%28View%20Full%20Event%20Description%20Here%3A%20https%3A%2F%2Fdesplainestheatre.com%2Fevent%2Fgipsy-kings-3%2F%29",
-          "https://outlook.live.com/owa/?path=/calendar/action/compose&rrv=addevent&startdt=2026-10-14T19%3A30%3A00-05%3A00&enddt=2026-10-14T19%3A30%3A00-05%3A00&location=Des%20Plaines%20Theatre,%201476%20Miner%20St,%20Des%20Plaines,%20IL,%2060016,%20United%20States&subject=POSTPONED%20-%20GIPSY%20KINGS&body=THIS%20EVENT%20HAS%20BEEN%20POSTPONED.%20%20A%20RESCHEDULED%20DATE%20WILL%20BE%20ANNOUNCED%20SOON.%20Pablo%20Reyes%20grew%20up%20in%20the%20vibrant%20Gypsy%20community%20of%20Arles%2C%20in%20the%20south%20of%20France%2C%20where%20he%20absorbed%20the%20art%20and%20passion%20of%20flamenco%20from%20childhood.%20With%20a%20unique%20style%20blending%20refined%20melodies%2C%20guitar%20virtuosity%2C%20and%20intense%2C%20soulful%20vocals%2C%20Pablo%20established%20himself%20as%20a%20founding%20member%20of%20the%20legendary%20Gipsy%20Kings.%20Together%20with%20the%20group%2C%20he%20conquered%20the%20world%20with%20timeless%20hits%20like%20%22Bamboleo%22%20and%20%22Djobi%20Djoba%2C%22%20which%20became%20true%20anthems%20of%20Gypsy%20musical%20culture.%20Marking%20the%2038th%20anniversary%20of%20%22Bamboleo%2C%22%20Pablo%20Reyes%20returns%20to%20the%20stage%20with%20a%20celebratory%20world%20tour%20that%20retraces%20his%20extraordinary%20career%20and%20pays%20tribute%20to%20the%20Gipsy%20Kings%20legend.%20It%20is%20a%20musical%20journey%20weaving%20together%20past%20and%20present%2C%20tradition%20and%20innovation%2C%20reigniting%20the%20flame%20that%20has%20made%20generations%20dance.%20To%20cap%20off%20this%20%28View%20Full%20Event%20Description%20Here%3A%20https%3A%2F%2Fdesplainestheatre.com%2Fevent%2Fgipsy-kings-3%2F%29"
-        ],
-        "pattern_matches": {
-          "BEGIN:VCALENDAR": [],
-          "\"@type\": ?\"Event\"": [
-            {
-              "match": "\"@type\":\"Event\"",
-              "context": "tps:\\/\\/desplainestheatre.com\\/#\\/schema\\/logo\\/image\\/\"}},{\"@type\":\"Event\",\"name\":\"POSTPONED &#8211; GIPSY KINGS\",\"description\":\"THIS"
-            }
-          ],
-          "\\.ics": []
-        }
-      }
-    },
-    {
-      "url": "https://metropolisarts.com/",
-      "purpose": "Metropolis Performing Arts Centre - where is the calendar and does it have a feed?",
-      "item": 282,
-      "probed_at": "2026-10-14T14:00:42+00:00",
-      "status": 200,
-      "final_url": "https://www.metropolisarts.com/",
-      "content_type": "text/html; charset=UTF-8",
-      "bytes": 1417227,
-      "title": "Metropolis Performing Arts Centre | Arlington Heights, IL",
-      "feed_links": [
-        {
-          "href": "https://www.metropolisarts.com/feed/",
-          "type": "application/rss+xml",
-          "title": "Metropolis Performing Arts Centre » Feed"
-        },
-        {
-          "href": "https://www.metropolisarts.com/comments/feed/",
-          "type": "application/rss+xml",
-          "title": "Metropolis Performing Arts Centre » Comments Feed"
-        },
-        {
-          "href": "https://www.metropolisarts.com/events/?ical=1",
-          "type": "text/calendar",
-          "title": "Metropolis Performing Arts Centre » iCal Feed"
-        },
-        {
-          "href": "https://www.metropolisarts.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fwww.metropolisarts.com%2F",
-          "type": "application/json+oembed",
-          "title": "oEmbed (JSON)"
-        },
-        {
-          "href": "https://www.metropolisarts.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fwww.metropolisarts.com%2F&format=xml",
-          "type": "text/xml+oembed",
-          "title": "oEmbed (XML)"
-        },
-        {
-          "href": "https://www.metropolisarts.com/wp-json/wp/v2/pages/18072",
-          "type": "application/json",
-          "title": "JSON"
-        },
-        {
-          "href": "https://www.metropolisarts.com/wp-json/tribe/events/v1/",
-          "type": "",
-          "title": ""
-        }
-      ],
-      "calendar_links": [],
-      "pattern_matches": {
-        "BEGIN:VCALENDAR": [],
-        "\"@type\": ?\"Event\"": [
-          {
-            "match": "\"@type\":\"Event\"",
-            "context": "pe=\"application/ld+json\"> [{\"@context\":\"http://schema.org\",\"@type\":\"Event\",\"name\":\"Chicago Kids Company presents The Tortoise and the"
-          }
-        ],
-        "\\.ics": []
-      },
-      "followed": {
-        "url": "https://app.mainstreetsites.com/calendar.aspx?dmn=5012",
-        "purpose": "",
-        "item": null,
-        "probed_at": "2026-10-14T14:00:43+00:00",
-        "status": 200,
-        "final_url": "https://app.mainstreetsites.com/calendar.aspx?dmn=5012",
-        "content_type": "text/html; charset=utf-8",
-        "bytes": 70020,
-        "title": "Metropolis School of the Performing Arts - Calendar",
-        "feed_links": [],
-        "calendar_links": [],
-        "pattern_matches": {
-          "BEGIN:VCALENDAR": [],
-          "\"@type\": ?\"Event\"": [],
-          "\\.ics": []
-        }
-      }
-    },
-    {
-      "url": "https://heynonny.com/",
-      "purpose": "Hey Nonny - events page, OpenDate listing, or a feed?",
-      "item": 282,
-      "probed_at": "2026-10-14T14:00:44+00:00",
-      "status": 200,
-      "final_url": "https://www.heynonny.com/",
-      "content_type": "text/html; charset=utf-8",
-      "bytes": 40581,
-      "title": "Hey Nonny | Live Music Venue + Restaurant in Arlington Heights, IL",
-      "feed_links": [],
-      "calendar_links": [],
-      "pattern_matches": {
-        "opendate": [
-          {
-            "match": "opendate",
-            "context": "nt-awesome/6.5.1/css/all.min.css\"> <script src=\"https://app.opendate.io/packs/od_tag.js\"></script></head><body class=\"body\"><div"
-          }
-        ],
-        "BEGIN:VCALENDAR": [],
-        "\"@type\": ?\"Event\"": []
-      },
-      "followed": {
-        "url": "https://www.heynonny.com/shows",
-        "purpose": "",
-        "item": null,
-        "probed_at": "2026-10-14T14:00:44+00:00",
-        "status": 200,
-        "final_url": "https://www.heynonny.com/shows",
-        "content_type": "text/html; charset=utf-8",
-        "bytes": 126853,
-        "title": "Shows | Hey Nonny",
-        "feed_links": [],
-        "calendar_links": [],
-        "pattern_matches": {
-          "opendate": [
-            {
-              "match": "opendate",
-              "context": "nt-awesome/6.5.1/css/all.min.css\"> <script src=\"https://app.opendate.io/packs/od_tag.js\"></script> <style> *, *::before, *::aft"
-            }
-          ],
-          "BEGIN:VCALENDAR": [],
-          "\"@type\": ?\"Event\"": []
-        }
-      }
-    },
-    {
-      "url": "https://desplainestheatre.com/events/?ical=1",
-      "purpose": "Des Plaines Theatre - does the Events Calendar iCal export return a calendar?",
-      "item": 287,
-      "probed_at": "2026-10-14T14:00:46+00:00",
-      "status": 200,
-      "final_url": "https://desplainestheatre.com/events/?ical=1",
-      "content_type": "text/calendar; charset=UTF-8",
-      "bytes": 55696,
-      "ics_event_count": 30,
-      "pattern_matches": {
-        "BEGIN:VCALENDAR": [
-          {
-            "match": "BEGIN:VCALENDAR",
-            "context": "BEGIN:VCALENDAR VERSION:2.0 PRODID:-//Des Plaines Theatre - ECPv6.18.1//N"
-          }
-        ],
-        "BEGIN:VEVENT": [
-          {
-            "match": "BEGIN:VEVENT",
-            "context": ":CST DTSTART:20271107T070000 END:STANDARD END:VTIMEZONE BEGIN:VEVENT DTSTART;TZID=America/Chicago:20261014T193000 DTEND;TZID=A"
-          }
-        ]
-      }
-    },
-    {
-      "url": "https://www.metropolisarts.com/events/?ical=1",
-      "purpose": "Metropolis - does the Events Calendar iCal export return a calendar?",
-      "item": 287,
-      "probed_at": "2026-10-14T14:00:46+00:00",
-      "status": 200,
-      "final_url": "https://www.metropolisarts.com/events-calendar/?ical=1",
-      "content_type": "text/calendar; charset=UTF-8",
-      "bytes": 46442,
-      "ics_event_count": 21,
-      "pattern_matches": {
-        "BEGIN:VCALENDAR": [
-          {
-            "match": "BEGIN:VCALENDAR",
-            "context": "BEGIN:VCALENDAR VERSION:2.0 PRODID:-//Metropolis Performing Arts Centre -"
-          }
-        ],
-        "BEGIN:VEVENT": [
-          {
-            "match": "BEGIN:VEVENT",
-            "context": ":CST DTSTART:20271107T070000 END:STANDARD END:VTIMEZONE BEGIN:VEVENT DTSTART;VALUE=DATE:20261019 DTEND;VALUE=DATE:20261023 DT"
-          }
-        ]
-      }
-    },
-    {
-      "url": "https://downtownarlingtonheights.us/",
-      "purpose": "Downtown Arlington Heights - where is the business or shop directory?",
-      "item": 288,
-      "probed_at": "2026-10-14T14:00:48+00:00",
-      "status": 200,
-      "final_url": "https://downtownarlingtonheights.us/",
-      "content_type": "text/html; charset=utf-8",
-      "bytes": 198344,
-      "title": "Downtown Arlington Heights, IL — Visitor Guide, Map & Events",
-      "feed_links": [
-        {
-          "href": "https://downtownarlingtonheights.us/feed.xml",
-          "type": "application/rss+xml",
-          "title": "Downtown Arlington Heights — Events, Restaurants & News"
-        }
-      ],
-      "calendar_links": [
-        "https://downtownarlingtonheights.us/events/farmers-market-historical-society-2026"
-      ],
-      "pattern_matches": {
-        "(?i)member directory": [],
-        "(?i)business directory": [],
-        "(?i)shop local": []
-      },
-      "followed": {
-        "url": "https://downtownarlingtonheights.us/restaurants/dining-map",
-        "purpose": "",
-        "item": null,
-        "probed_at": "2026-10-14T14:00:48+00:00",
-        "status": 200,
-        "final_url": "https://downtownarlingtonheights.us/restaurants/dining-map",
-        "content_type": "text/html; charset=utf-8",
-        "bytes": 43053,
-        "title": "Arlington Heights Dining Map (2026) | Downtown Arlington Heights, IL",
-        "feed_links": [
-          {
-            "href": "https://downtownarlingtonheights.us/feed.xml",
-            "type": "application/rss+xml",
-            "title": "Downtown Arlington Heights — Events, Restaurants & News"
-          }
-        ],
-        "calendar_links": [],
-        "pattern_matches": {
-          "(?i)member directory": [],
-          "(?i)business directory": [],
-          "(?i)shop local": []
-        }
-      }
-    },
-    {
-      "url": "https://mpdowntown.com/",
-      "purpose": "Downtown Mount Prospect - where is the business or shop directory?",
-      "item": 288,
-      "probed_at": "2026-10-14T14:00:49+00:00",
-      "status": 200,
-      "final_url": "https://mpdowntown.com/",
-      "content_type": "text/html; charset=UTF-8",
-      "bytes": 123078,
-      "title": "Mount Prospect Downtown Merchants | Play Gather Relax",
-      "feed_links": [
-        {
-          "href": "https://mpdowntown.com/feed/",
-          "type": "application/rss+xml",
-          "title": "Mount Prospect Downtown Merchants » Feed"
-        },
-        {
-          "href": "https://mpdowntown.com/comments/feed/",
-          "type": "application/rss+xml",
-          "title": "Mount Prospect Downtown Merchants » Comments Feed"
-        },
-        {
-          "href": "https://mpdowntown.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fmpdowntown.com%2F",
-          "type": "application/json+oembed",
-          "title": "oEmbed (JSON)"
-        },
-        {
-          "href": "https://mpdowntown.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fmpdowntown.com%2F&format=xml",
-          "type": "text/xml+oembed",
-          "title": "oEmbed (XML)"
-        },
-        {
-          "href": "https://mpdowntown.com/wp-json/wp/v2/pages/2581",
-          "type": "application/json",
-          "title": "JSON"
-        }
-      ],
-      "calendar_links": [],
-      "pattern_matches": {
-        "(?i)member directory": [],
-        "(?i)business directory": [],
-        "(?i)shop local": []
-      },
-      "followed": {
-        "url": "https://mpdowntown.com/members/",
-        "purpose": "",
-        "item": null,
-        "probed_at": "2026-10-14T14:00:50+00:00",
-        "status": 200,
-        "final_url": "https://mpdowntown.com/members/",
-        "content_type": "text/html; charset=UTF-8",
-        "bytes": 158232,
-        "title": "Members | Mount Prospect Downtown Merchants",
-        "feed_links": [
-          {
-            "href": "https://mpdowntown.com/feed/",
-            "type": "application/rss+xml",
-            "title": "Mount Prospect Downtown Merchants » Feed"
-          },
-          {
-            "href": "https://mpdowntown.com/comments/feed/",
-            "type": "application/rss+xml",
-            "title": "Mount Prospect Downtown Merchants » Comments Feed"
-          },
-          {
-            "href": "https://mpdowntown.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fmpdowntown.com%2Fmembers%2F",
-            "type": "application/json+oembed",
-            "title": "oEmbed (JSON)"
-          },
-          {
-            "href": "https://mpdowntown.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fmpdowntown.com%2Fmembers%2F&format=xml",
-            "type": "text/xml+oembed",
-            "title": "oEmbed (XML)"
-          },
-          {
-            "href": "https://mpdowntown.com/wp-json/wp/v2/pages/2481",
-            "type": "application/json",
-            "title": "JSON"
-          }
-        ],
-        "calendar_links": [
-          "https://www.vandrielsmedical.com"
-        ],
-        "pattern_matches": {
-          "(?i)member directory": [],
-          "(?i)business directory": [],
-          "(?i)shop local": []
-        }
-      }
-    },
-    {
-      "url": "https://www.arlingtonheightschamber.com/",
-      "purpose": "Arlington Heights Chamber (guessed domain) - member directory?",
-      "item": 288,
-      "probed_at": "2026-10-14T14:00:51+00:00",
-      "error": "ConnectionError"
-    },
-    {
-      "url": "https://www.mountprospectchamber.com/",
-      "purpose": "Mount Prospect Chamber (guessed domain) - member directory?",
-      "item": 288,
-      "probed_at": "2026-10-14T14:00:51+00:00",
-      "error": "SSLError"
-    },
-    {
-      "url": "https://www.palatinechamber.com/",
-      "purpose": "Palatine Chamber (guessed domain) - member directory?",
-      "item": 288,
-      "probed_at": "2026-10-14T14:00:51+00:00",
-      "status": 200,
-      "final_url": "https://www.palatinechamber.com/",
-      "content_type": "text/html; charset=UTF-8",
-      "bytes": 256288,
-      "title": "Home - Palatine Area Chamber of Commerce",
-      "feed_links": [
-        {
-          "href": "https://www.palatinechamber.com/feed/",
-          "type": "application/rss+xml",
-          "title": "Palatine Area Chamber of Commerce » Feed"
-        },
-        {
-          "href": "https://www.palatinechamber.com/comments/feed/",
-          "type": "application/rss+xml",
-          "title": "Palatine Area Chamber of Commerce » Comments Feed"
-        },
-        {
-          "href": "https://www.palatinechamber.com/wp-json/wp/v2/pages/39227",
-          "type": "application/json",
-          "title": "JSON"
-        },
-        {
-          "href": "https://www.palatinechamber.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fwww.palatinechamber.com%2F",
-          "type": "application/json+oembed",
-          "title": "oEmbed (JSON)"
-        },
-        {
-          "href": "https://www.palatinechamber.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fwww.palatinechamber.com%2F&format=xml",
-          "type": "text/xml+oembed",
-          "title": "oEmbed (XML)"
-        }
-      ],
-      "calendar_links": [],
-      "pattern_matches": {
-        "(?i)member directory": [
-          {
-            "match": "Member Directory",
-            "context": "_self\" class=\"fl-button\"> <span class=\"fl-button-text\">View Member Directory</span> </a></div></div></div></div></div></div></div></div>"
-          }
-        ],
-        "(?i)business directory": [
-          {
-            "match": "Business Directory",
-            "context": "\" content=\"WELCOME TO THE Palatine Area Chamber of Commerce Business Directory Events Become a Member Member Login Joining the Chamber has"
-          }
-        ],
-        "(?i)shop local": []
-      },
-      "followed": {
-        "url": "https://business.palatinechamber.com/member/newmemberapp",
-        "purpose": "",
-        "item": null,
-        "probed_at": "2026-10-14T14:00:52+00:00",
-        "status": 200,
-        "final_url": "https://business.palatinechamber.com/member/newmemberapp",
-        "content_type": "text/html; charset=utf-8",
-        "bytes": 333154,
-        "title": "Member",
-        "feed_links": [
-          {
-            "href": "https://www.palatinechamber.com/feed/",
-            "type": "application/rss+xml",
-            "title": "Palatine Area Chamber of Commerce » Feed"
-          },
-          {
-            "href": "https://www.palatinechamber.com/comments/feed/",
-            "type": "application/rss+xml",
-            "title": "Palatine Area Chamber of Commerce » Comments Feed"
-          },
-          {
-            "href": "https://www.palatinechamber.com/wp-json/wp/v2/pages/39228",
-            "type": "application/json",
-            "title": "JSON"
-          }
-        ],
-        "calendar_links": [],
-        "pattern_matches": {
-          "(?i)member directory": [
-            {
-              "match": "Member Directory",
-              "context": "></p><p><a href=\"https://business.palatinechamber.com/list\">Member Directory</a></p><p><a href=\"https://business.palatinechamber.com/mem"
-            }
-          ],
-          "(?i)business directory": [
-            {
-              "match": "Business Directory",
-              "context": "<a href=\"https://business.palatinechamber.com/list/\">Business Directory</a> <a href=\"https://business.pa"
-            }
-          ],
-          "(?i)shop local": []
-        }
-      }
-    },
-    {
-      "url": "https://www.desplaineschamber.com/",
-      "purpose": "Des Plaines Chamber (guessed domain) - member directory?",
-      "item": 288,
-      "probed_at": "2026-10-14T14:00:52+00:00",
-      "error": "SSLError"
-    },
-    {
-      "url": "https://www.wheelingchamber.com/",
-      "purpose": "Wheeling Chamber (guessed domain) - member directory?",
-      "item": 288,
-      "probed_at": "2026-10-14T14:00:53+00:00",
-      "status": 200,
-      "final_url": "https://www.wheelingchamber.com/",
-      "content_type": "text/html",
-      "bytes": 1018,
-      "title": "",
-      "feed_links": [],
-      "calendar_links": [],
-      "pattern_matches": {
-        "(?i)member directory": [],
-        "(?i)business directory": [],
-        "(?i)shop local": []
-      },
-      "followed": null
-    },
-    {
       "url": "https://mpdowntown.com/events/",
-      "purpose": "Downtown Mount Prospect - any 2026 merchants' trick-or-treat?",
+      "purpose": "Downtown Mount Prospect - full text of the Downtown Trick-or-Treat section (is it a 2026 date?)",
       "item": 292,
-      "probed_at": "2026-10-14T14:00:53+00:00",
+      "probed_at": "2026-10-14T22:02:22+00:00",
       "status": 200,
       "final_url": "https://mpdowntown.com/events/",
       "content_type": "text/html; charset=UTF-8",
-      "bytes": 124908,
+      "bytes": 124904,
       "title": "Events | Mount Prospect Downtown Merchants",
       "feed_links": [
         {
@@ -685,225 +57,296 @@
       ],
       "calendar_links": [],
       "pattern_matches": {
-        "(?i)trick[- ]or[- ]treat[^<]{0,80}": [
+        "(?s)Downtown Trick-or-Treat</h3>.{0,900}": [
           {
-            "match": "Trick-or-Treat",
-            "context": "pb_text_inner\"><h3 data-start=\"106\" data-end=\"138\">Downtown Trick-or-Treat</h3> <p data-start=\"139\" data-end=\"253\"><strong data-start="
-          },
-          {
-            "match": "Trick-or-Treating",
-            "context": "ternoon of <strong data-start=\"369\" data-end=\"399\">Downtown Trick-or-Treating</strong>! Little ghouls and goblins can stroll through down"
+            "match": "Downtown Trick-or-Treat</h3>\n<p data-start=\"139\" data-end=\"253\"><strong data-start=\"139\" data-end=\"170\">Wednesday, October 28, 2026</strong><br data-start=\"170\" data-end=\"173\" /><strong data-start=\"173\" data-end=\"193\">4:00 – 6:00 p.m.</strong><br data-start=\"193\" data-end=\"196\" /><strong data-start=\"196\" data-end=\"223\">Downtown Mount Prospect</strong><br data-start=\"223\" data-end=\"226\" /><em data-start=\"226\" data-end=\"253\">Last Wednesday in October</em></p>\n<p data-start=\"255\" data-end=\"535\">Get your costumes ready and bring the whole family to <strong data-start=\"309\" data-end=\"336\">Downtown Mount Prospect</strong> for a spooktacular afternoon of <strong data-start=\"369\" data-end=\"399\">Downtown Trick-or-Treating</strong>! Little ghouls and goblins can stroll through downtown and collect treats from participating businesses in a safe, festive environment.</p>\n<p data-start=\"537\" data-end=\"713\">Enjoy the sights of c",
+            "context": "lass=\"et_pb_text_inner\"><h3 data-start=\"106\" data-end=\"138\">Downtown Trick-or-Treat</h3> <p data-start=\"139\" data-end=\"253\"><strong data-start=\"139\" data-end=\"170\">Wednesday, October 28, 2026</strong><br data-start=\"170\" data-end=\"173\" /><strong data-start=\"173\" data-end=\"193\">4:00 – 6:00 p.m.</strong><br data-start=\"193\" data-end=\"196\" /><strong data-start=\"196\" data-end=\"223\">Downtown Mount Prospect</strong><br data-start=\"223\" data-end=\"226\" /><em data-start=\"226\" data-end=\"253\">Last Wednesday in October</em></p> <p data-start=\"255\" data-end=\"535\">Get your costumes ready and bring the whole family to <strong data-start=\"309\" data-end=\"336\">Downtown Mount Prospect</strong> for a spooktacular afternoon of <strong data-start=\"369\" data-end=\"399\">Downtown Trick-or-Treating</strong>! Little ghouls and goblins can stroll through downtown and collect treats from participating businesses in a safe, festive environment.</p> <p data-start=\"537\" data-end=\"713\">Enjoy the sights of creatively decorated storefronts, friendly merchants, and a l"
           }
         ],
-        "(?i)pumpkin[^<]{0,80}": [],
-        "2026": [
+        "(?s)<h2>20\\d\\d Events</h2>.{0,200}": [
           {
-            "match": "2026",
-            "context": "> <div class=\"et_pb_text_inner\"><h2>2026 Events</h2></div> </div><div class=\"et_pb_module et_pb_t"
+            "match": "<h2>2026 Events</h2></div>\n\t\t\t</div><div class=\"et_pb_module et_pb_text et_pb_text_1  et_pb_text_align_left et_pb_bg_layout_light\">\n\t\t\t\t\n\t\t\t\t\n\t\t\t\t\n\t\t\t\t\n\t\t\t\t<div class=\"et_pb_text_inner\"><hr />\n</div>\n\t\t\t</div><div class=",
+            "context": "ght\"> <div class=\"et_pb_text_inner\"><h2>2026 Events</h2></div> </div><div class=\"et_pb_module et_pb_text et_pb_text_1 et_pb_text_align_left et_pb_bg_layout_light\"> <div class=\"et_pb_text_inner\"><hr /> </div> </div><div class=\"et_pb_module et_pb_text et_pb_text_2 et_pb_text_align_left"
           }
         ]
       }
     },
     {
-      "url": "https://mpdowntown.com/members/",
-      "purpose": "Downtown Mount Prospect members page - sample the markup of a member entry",
-      "item": 288,
-      "probed_at": "2026-10-14T14:00:54+00:00",
+      "url": "https://events.harpercollege.edu/api/2/events?days=60&pp=100",
+      "purpose": "Harper College (Localist) - venue ids, venue names and event types in use",
+      "item": 286,
+      "probed_at": "2026-10-14T22:02:23+00:00",
       "status": 200,
-      "final_url": "https://mpdowntown.com/members/",
-      "content_type": "text/html; charset=UTF-8",
-      "bytes": 158232,
-      "title": "Members | Mount Prospect Downtown Merchants",
-      "feed_links": [
-        {
-          "href": "https://mpdowntown.com/feed/",
-          "type": "application/rss+xml",
-          "title": "Mount Prospect Downtown Merchants » Feed"
-        },
-        {
-          "href": "https://mpdowntown.com/comments/feed/",
-          "type": "application/rss+xml",
-          "title": "Mount Prospect Downtown Merchants » Comments Feed"
-        },
-        {
-          "href": "https://mpdowntown.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fmpdowntown.com%2Fmembers%2F",
-          "type": "application/json+oembed",
-          "title": "oEmbed (JSON)"
-        },
-        {
-          "href": "https://mpdowntown.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fmpdowntown.com%2Fmembers%2F&format=xml",
-          "type": "text/xml+oembed",
-          "title": "oEmbed (XML)"
-        },
-        {
-          "href": "https://mpdowntown.com/wp-json/wp/v2/pages/2481",
-          "type": "application/json",
-          "title": "JSON"
-        }
-      ],
-      "calendar_links": [
-        "https://www.vandrielsmedical.com"
-      ],
+      "final_url": "https://events.harpercollege.edu/api/2/events?days=60&pp=100",
+      "content_type": "application/json; charset=utf-8",
+      "bytes": 336570,
       "pattern_matches": {
-        "<h[2-4][^>]*>[^<]{3,60}</h[2-4]>": [
+        "\"venue_id\":\\d+": [
           {
-            "match": "<h3 style=\"text-align: center;\">Play Gather Relax</h3>",
-            "context": "r;\"><strong>Mount Prospect Downtown Merchants</strong></h1> <h3 style=\"text-align: center;\">Play Gather Relax</h3> <p>&nbsp;</p></div> </div><div class=\"et_pb_module et_pb"
+            "match": "\"venue_id\":53736902137049",
+            "context": "e\":false,\"verified\":true,\"rejected\":false,\"sponsored\":false,\"venue_id\":53736902137049,\"ticket_url\":\"\",\"ticket_cost\":\"\",\"has_register\":false,\"keyw"
+          },
+          {
+            "match": "\"venue_id\":401070",
+            "context": "e\":false,\"verified\":true,\"rejected\":false,\"sponsored\":false,\"venue_id\":401070,\"ticket_url\":\"\",\"ticket_cost\":\"\",\"has_register\":false,\"keyw"
+          },
+          {
+            "match": "\"venue_id\":48250975467679",
+            "context": "e\":false,\"verified\":true,\"rejected\":false,\"sponsored\":false,\"venue_id\":48250975467679,\"ticket_url\":\"\",\"ticket_cost\":\"\",\"has_register\":false,\"keyw"
+          },
+          {
+            "match": "\"venue_id\":417176",
+            "context": "e\":false,\"verified\":true,\"rejected\":false,\"sponsored\":false,\"venue_id\":417176,\"ticket_url\":\"\",\"ticket_cost\":\"\",\"has_register\":false,\"keyw"
+          },
+          {
+            "match": "\"venue_id\":398863",
+            "context": "e\":false,\"verified\":true,\"rejected\":false,\"sponsored\":false,\"venue_id\":398863,\"ticket_url\":\"\",\"ticket_cost\":\"\",\"has_register\":false,\"keyw"
+          },
+          {
+            "match": "\"venue_id\":48226225335942",
+            "context": "e\":false,\"verified\":true,\"rejected\":false,\"sponsored\":false,\"venue_id\":48226225335942,\"ticket_url\":\"\",\"ticket_cost\":\"Free\",\"has_register\":false,\""
+          },
+          {
+            "match": "\"venue_id\":622708",
+            "context": "e\":false,\"verified\":true,\"rejected\":false,\"sponsored\":false,\"venue_id\":622708,\"ticket_url\":\"\",\"ticket_cost\":\"\",\"has_register\":false,\"keyw"
+          },
+          {
+            "match": "\"venue_id\":580433",
+            "context": "e\":false,\"verified\":true,\"rejected\":false,\"sponsored\":false,\"venue_id\":580433,\"ticket_url\":null,\"ticket_cost\":null,\"has_register\":true,\"k"
+          },
+          {
+            "match": "\"venue_id\":401055",
+            "context": "e\":false,\"verified\":true,\"rejected\":false,\"sponsored\":false,\"venue_id\":401055,\"ticket_url\":\"\",\"ticket_cost\":\"\",\"has_register\":false,\"keyw"
+          },
+          {
+            "match": "\"venue_id\":53736683158323",
+            "context": "e\":false,\"verified\":true,\"rejected\":false,\"sponsored\":false,\"venue_id\":53736683158323,\"ticket_url\":\"\",\"ticket_cost\":\"\",\"has_register\":false,\"keyw"
+          },
+          {
+            "match": "\"venue_id\":399067",
+            "context": "e\":false,\"verified\":true,\"rejected\":false,\"sponsored\":false,\"venue_id\":399067,\"ticket_url\":null,\"ticket_cost\":null,\"has_register\":true,\"k"
+          },
+          {
+            "match": "\"venue_id\":404965",
+            "context": "e\":false,\"verified\":true,\"rejected\":false,\"sponsored\":false,\"venue_id\":404965,\"ticket_url\":\"\",\"ticket_cost\":\"\",\"has_register\":false,\"keyw"
+          },
+          {
+            "match": "\"venue_id\":53737053966735",
+            "context": "e\":false,\"verified\":true,\"rejected\":false,\"sponsored\":false,\"venue_id\":53737053966735,\"ticket_url\":\"\",\"ticket_cost\":\"FREE \",\"has_register\":false,"
           }
         ],
-        "<a [^>]*href=\"[^\"]*(?:member|business|shop)[^\"]*\"[^>]*>[^<]{3,60}</a>": [
+        "\"location_name\":\"[^\"]{2,60}\"": [
           {
-            "match": "<a href=\"https://mpdowntown.com/members/\" aria-current=\"page\">Members</a>",
-            "context": "page_item page-item-2481 current_page_item menu-item-2489\"><a href=\"https://mpdowntown.com/members/\" aria-current=\"page\">Members</a></li> <li class=\"et_pb_menu_page_id-2483 menu-item menu-item"
-          }
-        ]
-      }
-    },
-    {
-      "url": "https://business.palatinechamber.com/list/",
-      "purpose": "Palatine Chamber (ChamberMaster) - business directory listing markup",
-      "item": 288,
-      "probed_at": "2026-10-14T14:00:54+00:00",
-      "status": 200,
-      "final_url": "https://business.palatinechamber.com/list/",
-      "content_type": "text/html; charset=utf-8",
-      "bytes": 237292,
-      "title": "Business Directory Search",
-      "feed_links": [
-        {
-          "href": "https://www.palatinechamber.com/feed/",
-          "type": "application/rss+xml",
-          "title": "Palatine Area Chamber of Commerce » Feed"
-        },
-        {
-          "href": "https://www.palatinechamber.com/comments/feed/",
-          "type": "application/rss+xml",
-          "title": "Palatine Area Chamber of Commerce » Comments Feed"
-        },
-        {
-          "href": "https://www.palatinechamber.com/wp-json/wp/v2/pages/39228",
-          "type": "application/json",
-          "title": "JSON"
-        }
-      ],
-      "calendar_links": [
-        "https://business.palatinechamber.com/list/category/construction-electrical-home-improvement-23",
-        "https://business.palatinechamber.com/list/category/musical-instruments-71"
-      ],
-      "pattern_matches": {
-        "<a [^>]*href=\"[^\"]*/list/member/[^\"]*\"[^>]*>[^<]{3,60}</a>": [],
-        "(?i)gift[^<]{0,40}": []
-      }
-    },
-    {
-      "url": "https://downtownarlingtonheights.us/restaurants/dining-map",
-      "purpose": "Downtown Arlington Heights dining map - sample the markup of a listing",
-      "item": 288,
-      "probed_at": "2026-10-14T14:00:54+00:00",
-      "status": 200,
-      "final_url": "https://downtownarlingtonheights.us/restaurants/dining-map",
-      "content_type": "text/html; charset=utf-8",
-      "bytes": 43053,
-      "title": "Arlington Heights Dining Map (2026) | Downtown Arlington Heights, IL",
-      "feed_links": [
-        {
-          "href": "https://downtownarlingtonheights.us/feed.xml",
-          "type": "application/rss+xml",
-          "title": "Downtown Arlington Heights — Events, Restaurants & News"
-        }
-      ],
-      "calendar_links": [],
-      "pattern_matches": {
-        "<h[2-4][^>]*>[^<]{3,60}</h[2-4]>": [
-          {
-            "match": "<h3 class=\"font-display text-2xl font-bold text-gold tracking-tight\">Downtown Arlington Heights</h3>",
-            "context": "ap-x-16 md:items-start\"><div class=\"md:min-w-0 md:max-w-xl\"><h3 class=\"font-display text-2xl font-bold text-gold tracking-tight\">Downtown Arlington Heights</h3><p class=\"mt-1 text-base text-gold/70\">Arlington Heights, IL"
+            "match": "\"location_name\":\"Hawks Care Resource Center\"",
+            "context": "\"allows_attendance\":true,\"location\":\"\",\"room_number\":\"D204\",\"location_name\":\"Hawks Care Resource Center\",\"status\":\"live\",\"experience\":\"inperson\",\"stream_url\":null,\""
           },
           {
-            "match": "<h4 class=\"text-xs font-bold uppercase tracking-widest text-gold\">Explore</h4>",
-            "context": "s, and things to do in the downtown district.</p></div><div><h4 class=\"text-xs font-bold uppercase tracking-widest text-gold\">Explore</h4><ul class=\"mt-4 space-y-2 text-base\"><li><a class=\"hover:tex"
+            "match": "\"location_name\":\"Harper Quad\"",
+            "context": "_attendance\":true,\"location\":\"Harper Quad\",\"room_number\":\"\",\"location_name\":\"Harper Quad\",\"status\":\"live\",\"experience\":\"inperson\",\"stream_url\":null,\""
           },
           {
-            "match": "<h4 class=\"text-xs font-bold uppercase tracking-widest text-gold\">Contact Us</h4>",
-            "context": "ion-colors\" href=\"/contact\">Contact</a></li></ul></div><div><h4 class=\"text-xs font-bold uppercase tracking-widest text-gold\">Contact Us</h4><address class=\"mt-4 text-base not-italic leading-relaxed sp"
+            "match": "\"location_name\":\"Job Placement Resource Center, Room I117\"",
+            "context": "\"allows_attendance\":true,\"location\":\"\",\"room_number\":\"I117\",\"location_name\":\"Job Placement Resource Center, Room I117\",\"status\":\"live\",\"experience\":\"hybrid\",\"stream_url\":\"\",\"stre"
           },
           {
-            "match": "<h4 class=\"text-xs font-bold uppercase tracking-widest text-gold\">Legal</h4>",
-            "context": "\">[email&#160;protected]</span></a></p></address></div><div><h4 class=\"text-xs font-bold uppercase tracking-widest text-gold\">Legal</h4><ul class=\"mt-4 space-y-2 text-base\"><li><a class=\"hover:tex"
+            "match": "\"location_name\":\"Building I\"",
+            "context": ",\"allows_attendance\":true,\"location\":\"\",\"room_number\":\"117\",\"location_name\":\"Building I\",\"status\":\"live\",\"experience\":\"hybrid\",\"stream_url\":\"https:/"
           },
           {
-            "match": "<h4 class=\"text-xs font-bold uppercase tracking-widest text-gold mb-4\">Follow Us</h4>",
-            "context": "owntown Arlington Heights</p></div></div><div class=\"pb-16\"><h4 class=\"text-xs font-bold uppercase tracking-widest text-gold mb-4\">Follow Us</h4><div class=\"flex gap-4\"><a href=\"https://www.youtube.com/@Do"
+            "match": "\"location_name\":\"Palatine, IL, Hawks' Soccer Field\"",
+            "context": "ion\":\"Palatine, IL, Hawks' Soccer Field\",\"room_number\":null,\"location_name\":\"Palatine, IL, Hawks' Soccer Field\",\"status\":\"live\",\"experience\":\"inperson\",\"stream_url\":null,\""
           },
           {
-            "match": "<h4 class=\"text-xs font-bold uppercase tracking-widest text-gold mb-4\">Find us</h4>",
-            "context": "24 12.073z\"></path></svg></a></div></div><div class=\"pb-16\"><h4 class=\"text-xs font-bold uppercase tracking-widest text-gold mb-4\">Find us</h4><div class=\"relative w-full aspect-[16/9] min-h-[240px] max-"
+            "match": "\"location_name\":\"Building D, Duchossois Family Educational Center\"",
+            "context": "\"allows_attendance\":true,\"location\":\"\",\"room_number\":\"D142\",\"location_name\":\"Building D, Duchossois Family Educational Center\",\"status\":\"live\",\"experience\":\"inperson\",\"stream_url\":null,\""
+          },
+          {
+            "match": "\"location_name\":\"Building W, Wojcik Conference Center\"",
+            "context": "rue,\"allows_attendance\":true,\"location\":\"\",\"room_number\":\"\",\"location_name\":\"Building W, Wojcik Conference Center\",\"status\":\"live\",\"experience\":\"inperson\",\"stream_url\":null,\""
+          },
+          {
+            "match": "\"location_name\":\"Film Lab, Building E, Room E109\"",
+            "context": "\"allows_attendance\":true,\"location\":\"\",\"room_number\":\"E019\",\"location_name\":\"Film Lab, Building E, Room E109\",\"status\":\"live\",\"experience\":\"inperson\",\"stream_url\":null,\""
+          },
+          {
+            "match": "\"location_name\":\"Palatine, IL, Hawks' Fieldhouse\"",
+            "context": "ation\":\"Palatine, IL, Hawks' Fieldhouse\",\"room_number\":null,\"location_name\":\"Palatine, IL, Hawks' Fieldhouse\",\"status\":\"live\",\"experience\":\"inperson\",\"stream_url\":null,\""
+          },
+          {
+            "match": "\"location_name\":\"Avante\"",
+            "context": "llows_attendance\":true,\"location\":\"Avante\",\"room_number\":\"\",\"location_name\":\"Avante\",\"status\":\"live\",\"experience\":\"inperson\",\"stream_url\":null,\""
+          },
+          {
+            "match": "\"location_name\":\"Virtual\"",
+            "context": "lows_attendance\":true,\"location\":\"Virtual\",\"room_number\":\"\",\"location_name\":\"Virtual\",\"status\":\"live\",\"experience\":\"inperson\",\"stream_url\":null,\""
+          },
+          {
+            "match": "\"location_name\":\"Palatine, IL, Hawks Softball Field\"",
+            "context": "on\":\"Palatine, IL, Hawks Softball Field\",\"room_number\":null,\"location_name\":\"Palatine, IL, Hawks Softball Field\",\"status\":\"live\",\"experience\":\"inperson\",\"stream_url\":null,\""
+          },
+          {
+            "match": "\"location_name\":\"Peoria, IL, Newman Golf Course\"",
+            "context": "cation\":\"Peoria, IL, Newman Golf Course\",\"room_number\":null,\"location_name\":\"Peoria, IL, Newman Golf Course\",\"status\":\"live\",\"experience\":\"inperson\",\"stream_url\":null,\""
+          },
+          {
+            "match": "\"location_name\":\"Elgin, IL, Lindner Center\"",
+            "context": "e,\"location\":\"Elgin, IL, Lindner Center\",\"room_number\":null,\"location_name\":\"Elgin, IL, Lindner Center\",\"status\":\"live\",\"experience\":\"inperson\",\"stream_url\":null,\""
+          },
+          {
+            "match": "\"location_name\":\"Des Plaines, IL , Owls' Soccer Field\"",
+            "context": "\":\"Des Plaines, IL , Owls' Soccer Field\",\"room_number\":null,\"location_name\":\"Des Plaines, IL , Owls' Soccer Field\",\"status\":\"live\",\"experience\":\"inperson\",\"stream_url\":null,\""
+          },
+          {
+            "match": "\"location_name\":\"Building F, David K. Hill Family Library\"",
+            "context": "allows_attendance\":true,\"location\":\"\",\"room_number\":\"F226 \",\"location_name\":\"Building F, David K. Hill Family Library\",\"status\":\"live\",\"experience\":\"inperson\",\"stream_url\":null,\""
+          },
+          {
+            "match": "\"location_name\":\"Building L\"",
+            "context": "rue,\"allows_attendance\":true,\"location\":\"\",\"room_number\":\"\",\"location_name\":\"Building L\",\"status\":\"live\",\"experience\":\"inperson\",\"stream_url\":null,\""
+          },
+          {
+            "match": "\"location_name\":\"Building Z, Avantè Center\"",
+            "context": "rue,\"allows_attendance\":true,\"location\":\"\",\"room_number\":\"\",\"location_name\":\"Building Z, Avantè Center\",\"status\":\"live\",\"experience\":\"inperson\",\"stream_url\":null,\""
+          },
+          {
+            "match": "\"location_name\":\"River Grove, IL , Multi-Purpose Field\"",
+            "context": ":\"River Grove, IL , Multi-Purpose Field\",\"room_number\":null,\"location_name\":\"River Grove, IL , Multi-Purpose Field\",\"status\":\"live\",\"experience\":\"inperson\",\"stream_url\":null,\""
+          },
+          {
+            "match": "\"location_name\":\"Building A\"",
+            "context": "llows_attendance\":true,\"location\":\"\",\"room_number\":\"Atrium\",\"location_name\":\"Building A\",\"status\":\"live\",\"experience\":\"inperson\",\"stream_url\":null,\""
           }
         ],
-        "<a [^>]*href=\"[^\"]*\"[^>]*>[^<]{3,60}</a>": [
+        "\"event_types\":\\[[^\\]]{0,200}\\]": [
           {
-            "match": "<a class=\"hidden md:inline-flex ml-4 px-4 py-2 text-xs font-bold uppercase tracking-wider min-h-[44px] items-center justify-center rounded transition-colors bg-cta text-white hover:bg-cta-hover\" href=\"/news\">Latest News</a>",
-            "context": "-4/5\"></span></a></nav><div class=\"flex items-center gap-1\"><a class=\"hidden md:inline-flex ml-4 px-4 py-2 text-xs font-bold uppercase tracking-wider min-h-[44px] items-center justify-center rounded transition-colors bg-cta text-white hover:bg-cta-hover\" href=\"/news\">Latest News</a><button type=\"button\" class=\"md:hidden inline-flex items-cen"
+            "match": "\"event_types\":[{\"name\":\"Training and How-Tos\",\"id\":53736839190237}]",
+            "context": "nts\":[{\"id\":49453020010424,\"name\":\"Hawks Care\"}],\"filters\":{\"event_types\":[{\"name\":\"Training and How-Tos\",\"id\":53736839190237}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\""
           },
           {
-            "match": "<a class=\"px-3 py-3 text-sm font-bold uppercase tracking-wider transition-colors rounded-md min-h-[44px] flex items-center text-neutral-800 hover:text-cta hover:bg-neutral-50\" href=\"/\">Home</a>",
-            "context": "border-t border-neutral-100\" aria-label=\"Mobile navigation\"><a class=\"px-3 py-3 text-sm font-bold uppercase tracking-wider transition-colors rounded-md min-h-[44px] flex items-center text-neutral-800 hover:text-cta hover:bg-neutral-50\" href=\"/\">Home</a><a class=\"px-3 py-3 text-sm font-bold uppercase tracking-wid"
+            "match": "\"event_types\":[{\"name\":\"Outdoor\",\"id\":53736835678859}]",
+            "context": "id\":33255234811198,\"name\":\"Student Engagement\"}],\"filters\":{\"event_types\":[{\"name\":\"Outdoor\",\"id\":53736835678859}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\""
           },
           {
-            "match": "<a class=\"px-3 py-3 text-sm font-bold uppercase tracking-wider transition-colors rounded-md min-h-[44px] flex items-center text-neutral-800 hover:text-cta hover:bg-neutral-50\" href=\"/events\">Events</a>",
-            "context": "al-800 hover:text-cta hover:bg-neutral-50\" href=\"/\">Home</a><a class=\"px-3 py-3 text-sm font-bold uppercase tracking-wider transition-colors rounded-md min-h-[44px] flex items-center text-neutral-800 hover:text-cta hover:bg-neutral-50\" href=\"/events\">Events</a><a class=\"px-3 py-3 text-sm font-bold uppercase tracking-wid"
+            "match": "\"event_types\":[{\"name\":\"Athletics\",\"id\":107041}]",
+            "context": "ty\":null,\"state\":null,\"country\":null,\"zip\":null},\"filters\":{\"event_types\":[{\"name\":\"Athletics\",\"id\":107041}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\""
           },
           {
-            "match": "<a class=\"px-3 py-3 text-sm font-bold uppercase tracking-wider transition-colors rounded-md min-h-[44px] flex items-center text-neutral-800 hover:text-cta hover:bg-neutral-50\" href=\"/news\">News</a>",
-            "context": "over:text-cta hover:bg-neutral-50\" href=\"/events\">Events</a><a class=\"px-3 py-3 text-sm font-bold uppercase tracking-wider transition-colors rounded-md min-h-[44px] flex items-center text-neutral-800 hover:text-cta hover:bg-neutral-50\" href=\"/news\">News</a><a class=\"px-3 py-3 text-sm font-bold uppercase tracking-wid"
+            "match": "\"event_types\":[{\"name\":\"Admission\",\"id\":44198994778312},{\"name\":\"Information Session\",\"id\":107035}]",
+            "context": "578,\"name\":\"Continuing Professional Education\"}],\"filters\":{\"event_types\":[{\"name\":\"Admission\",\"id\":44198994778312},{\"name\":\"Information Session\",\"id\":107035}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\""
           },
           {
-            "match": "<a class=\"px-3 py-3 text-sm font-bold uppercase tracking-wider transition-colors rounded-md min-h-[44px] flex items-center text-neutral-800 hover:text-cta hover:bg-neutral-50\" href=\"/restaurants\">Restaurants</a>",
-            "context": "00 hover:text-cta hover:bg-neutral-50\" href=\"/news\">News</a><a class=\"px-3 py-3 text-sm font-bold uppercase tracking-wider transition-colors rounded-md min-h-[44px] flex items-center text-neutral-800 hover:text-cta hover:bg-neutral-50\" href=\"/restaurants\">Restaurants</a><a class=\"px-3 py-3 text-sm font-bold uppercase tracking-wid"
+            "match": "\"event_types\":[{\"name\":\"Wellness and Health\",\"id\":46790322621181}]",
+            "context": "\"name\":\"Mental Health and Well-Being Services\"}],\"filters\":{\"event_types\":[{\"name\":\"Wellness and Health\",\"id\":46790322621181}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\""
           },
           {
-            "match": "<a class=\"px-3 py-3 text-sm font-bold uppercase tracking-wider transition-colors rounded-md min-h-[44px] flex items-center text-neutral-800 hover:text-cta hover:bg-neutral-50\" href=\"/about\">About</a>",
-            "context": "cta hover:bg-neutral-50\" href=\"/restaurants\">Restaurants</a><a class=\"px-3 py-3 text-sm font-bold uppercase tracking-wider transition-colors rounded-md min-h-[44px] flex items-center text-neutral-800 hover:text-cta hover:bg-neutral-50\" href=\"/about\">About</a><a class=\"px-3 py-3 text-sm font-bold uppercase tracking-wid"
+            "match": "\"event_types\":[{\"name\":\"Cultural Arts\",\"id\":128837},{\"name\":\"Film Screening / Series\",\"id\":44146602471710}]",
+            "context": "id\":44128605158525,\"name\":\"Mass Communication\"}],\"filters\":{\"event_types\":[{\"name\":\"Cultural Arts\",\"id\":128837},{\"name\":\"Film Screening / Series\",\"id\":44146602471710}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\""
           },
           {
-            "match": "<a class=\"px-3 py-3 text-sm font-bold uppercase tracking-wider transition-colors rounded-md min-h-[44px] flex items-center text-neutral-800 hover:text-cta hover:bg-neutral-50\" href=\"/contact\">Contact</a>",
-            "context": "hover:text-cta hover:bg-neutral-50\" href=\"/about\">About</a><a class=\"px-3 py-3 text-sm font-bold uppercase tracking-wider transition-colors rounded-md min-h-[44px] flex items-center text-neutral-800 hover:text-cta hover:bg-neutral-50\" href=\"/contact\">Contact</a><a class=\"mt-2 bg-cta text-white px-4 py-3 text-xs font-bold"
+            "match": "\"event_types\":[{\"name\":\"Virtual Events\",\"id\":128836},{\"name\":\"Training and How-Tos\",\"id\":53736839190237}]",
+            "context": "\":11536,\"name\":\"Job Placement Resource Center\"}],\"filters\":{\"event_types\":[{\"name\":\"Virtual Events\",\"id\":128836},{\"name\":\"Training and How-Tos\",\"id\":53736839190237}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\""
           },
           {
-            "match": "<a class=\"mt-2 bg-cta text-white px-4 py-3 text-xs font-bold uppercase tracking-wider hover:bg-cta-hover transition-colors rounded-md min-h-[44px] flex items-center justify-center\" href=\"/news\">Latest News</a>",
-            "context": "er:text-cta hover:bg-neutral-50\" href=\"/contact\">Contact</a><a class=\"mt-2 bg-cta text-white px-4 py-3 text-xs font-bold uppercase tracking-wider hover:bg-cta-hover transition-colors rounded-md min-h-[44px] flex items-center justify-center\" href=\"/news\">Latest News</a></nav></div></div></header><div class=\"min-h-screen\"><main><"
+            "match": "\"event_types\":[{\"name\":\"Cultural Arts\",\"id\":128837},{\"name\":\"Fairs / Expos\",\"id\":53736840270831}]",
+            "context": "\":\"Center for Global Education and Engagement\"}],\"filters\":{\"event_types\":[{\"name\":\"Cultural Arts\",\"id\":128837},{\"name\":\"Fairs / Expos\",\"id\":53736840270831}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\""
           },
           {
-            "match": "<a class=\"hover:text-gold transition-colors\" href=\"/events\">Events</a>",
-            "context": "-gold\">Explore</h4><ul class=\"mt-4 space-y-2 text-base\"><li><a class=\"hover:text-gold transition-colors\" href=\"/events\">Events</a></li><li><a class=\"hover:text-gold transition-colors\" href=\""
+            "match": "\"event_types\":[{\"name\":\"Cultural Arts\",\"id\":128837},{\"name\":\"Tabling\",\"id\":51896898230417},{\"name\":\"Fairs / Expos\",\"id\":53736840270831}]",
+            "context": "\":\"Center for Global Education and Engagement\"}],\"filters\":{\"event_types\":[{\"name\":\"Cultural Arts\",\"id\":128837},{\"name\":\"Tabling\",\"id\":51896898230417},{\"name\":\"Fairs / Expos\",\"id\":53736840270831}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\""
           },
           {
-            "match": "<a class=\"hover:text-gold transition-colors\" href=\"/restaurants\">Restaurants</a>",
-            "context": "t-gold transition-colors\" href=\"/events\">Events</a></li><li><a class=\"hover:text-gold transition-colors\" href=\"/restaurants\">Restaurants</a></li><li><a class=\"hover:text-gold transition-colors\" href=\""
+            "match": "\"event_types\":[{\"name\":\"Lectures/Panels\",\"id\":44021713318309}]",
+            "context": "\":\"Center for Global Education and Engagement\"}],\"filters\":{\"event_types\":[{\"name\":\"Lectures/Panels\",\"id\":44021713318309}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\""
           },
           {
-            "match": "<a class=\"hover:text-gold transition-colors\" href=\"/news\">News</a>",
-            "context": "nsition-colors\" href=\"/restaurants\">Restaurants</a></li><li><a class=\"hover:text-gold transition-colors\" href=\"/news\">News</a></li><li><a class=\"hover:text-gold transition-colors\" href=\""
+            "match": "\"event_types\":[{\"name\":\"Admission\",\"id\":44198994778312},{\"name\":\"Campus Tour\",\"id\":44198992944890}]",
+            "context": "[{\"id\":43969347273322,\"name\":\"Admissions Tour\"}],\"filters\":{\"event_types\":[{\"name\":\"Admission\",\"id\":44198994778312},{\"name\":\"Campus Tour\",\"id\":44198992944890}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\""
           },
           {
-            "match": "<a class=\"hover:text-gold transition-colors\" href=\"/about\">About</a>",
-            "context": ":text-gold transition-colors\" href=\"/news\">News</a></li><li><a class=\"hover:text-gold transition-colors\" href=\"/about\">About</a></li><li><a class=\"hover:text-gold transition-colors\" href=\""
+            "match": "\"event_types\":[{\"name\":\"Academic Calendar\",\"id\":30388862287004},{\"name\":\"Closure\",\"id\":43783825268721}]",
+            "context": "ty\":null,\"state\":null,\"country\":null,\"zip\":null},\"filters\":{\"event_types\":[{\"name\":\"Academic Calendar\",\"id\":30388862287004},{\"name\":\"Closure\",\"id\":43783825268721}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\""
+          }
+        ],
+        "\"filters\":\\{.{0,300}": [
+          {
+            "match": "\"filters\":{\"event_types\":[{\"name\":\"Training and How-Tos\",\"id\":53736839190237}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":53319374507388,\"event_id\":53319374506362,\"start\":\"2026-10-14T00:00:00-05:00\",\"end\":\"2026-10-14T00:00:00-05:00\",\"ranking\":0.29,\"all_day\":true,\"num_attending\":0}}],\"locali",
+            "context": "},\"departments\":[{\"id\":49453020010424,\"name\":\"Hawks Care\"}],\"filters\":{\"event_types\":[{\"name\":\"Training and How-Tos\",\"id\":53736839190237}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":53319374507388,\"event_id\":53319374506362,\"start\":\"2026-10-14T00:00:00-05:00\",\"end\":\"2026-10-14T00:00:00-05:00\",\"ranking\":0.29,\"all_day\":true,\"num_attending\":0}}],\"localist_url\":\"https://events.harpercollege.edu/event/illinois-ben"
           },
           {
-            "match": "<a class=\"hover:text-gold transition-colors\" href=\"/contact\">Contact</a>",
-            "context": "ext-gold transition-colors\" href=\"/about\">About</a></li><li><a class=\"hover:text-gold transition-colors\" href=\"/contact\">Contact</a></li></ul></div><div><h4 class=\"text-xs font-bold uppercase"
+            "match": "\"filters\":{\"event_types\":[{\"name\":\"Outdoor\",\"id\":53736835678859}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":53445608090465,\"event_id\":53445608089440,\"start\":\"2026-10-14T11:00:00-05:00\",\"end\":\"2026-10-14T14:00:00-05:00\",\"ranking\":0.29,\"all_day\":false,\"num_attending\":0}}],\"localist_url\":\"htt",
+            "context": "tments\":[{\"id\":33255234811198,\"name\":\"Student Engagement\"}],\"filters\":{\"event_types\":[{\"name\":\"Outdoor\",\"id\":53736835678859}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":53445608090465,\"event_id\":53445608089440,\"start\":\"2026-10-14T11:00:00-05:00\",\"end\":\"2026-10-14T14:00:00-05:00\",\"ranking\":0.29,\"all_day\":false,\"num_attending\":0}}],\"localist_url\":\"https://events.harpercollege.edu/event/fall-fest-7060\",\"localis"
           },
           {
-            "match": "<a href=\"tel:+18475434605\" class=\"hover:text-gold transition-colors\">(847) 543-4605</a>",
-            "context": "y-2\"><p>110 E Wing St<br/>Arlington Heights, IL 60004</p><p><a href=\"tel:+18475434605\" class=\"hover:text-gold transition-colors\">(847) 543-4605</a></p><p><a href=\"/cdn-cgi/l/email-protection#7b131e1717143b1f"
+            "match": "\"filters\":{\"event_types\":[{\"name\":\"Training and How-Tos\",\"id\":53736839190237}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":53514853074718,\"event_id\":53514853070614,\"start\":\"2026-10-14T12:00:00-05:00\",\"end\":\"2026-10-14T13:00:00-05:00\",\"ranking\":0.09,\"all_day\":false,\"num_attending\":0}}],\"local",
+            "context": "ents\":[{\"id\":11536,\"name\":\"Job Placement Resource Center\"}],\"filters\":{\"event_types\":[{\"name\":\"Training and How-Tos\",\"id\":53736839190237}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":53514853074718,\"event_id\":53514853070614,\"start\":\"2026-10-14T12:00:00-05:00\",\"end\":\"2026-10-14T13:00:00-05:00\",\"ranking\":0.09,\"all_day\":false,\"num_attending\":0}}],\"localist_url\":\"https://events.harpercollege.edu/event/jprc-wednes"
           },
           {
-            "match": "<a class=\"hover:text-gold transition-colors\" href=\"/privacy-policy\">Privacy Policy</a>",
-            "context": "xt-gold\">Legal</h4><ul class=\"mt-4 space-y-2 text-base\"><li><a class=\"hover:text-gold transition-colors\" href=\"/privacy-policy\">Privacy Policy</a></li><li><a class=\"hover:text-gold transition-colors\" href=\""
+            "match": "\"filters\":{},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":54135006404513,\"event_id\":54135006404512,\"start\":\"2026-10-14T12:00:00-05:00\",\"end\":\"2026-10-14T13:00:00-05:00\",\"ranking\":0.29,\"all_day\":false,\"num_attending\":0}}],\"localist_url\":\"https://events.harpercollege.edu/event/jprc-workshop-inte",
+            "context": "ents\":[{\"id\":11536,\"name\":\"Job Placement Resource Center\"}],\"filters\":{},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":54135006404513,\"event_id\":54135006404512,\"start\":\"2026-10-14T12:00:00-05:00\",\"end\":\"2026-10-14T13:00:00-05:00\",\"ranking\":0.29,\"all_day\":false,\"num_attending\":0}}],\"localist_url\":\"https://events.harpercollege.edu/event/jprc-workshop-interviewing\",\"localist_ics_url\":\"https://events.harpercollege.e"
           },
           {
-            "match": "<a class=\"hover:text-gold transition-colors\" href=\"/terms-of-service\">Terms of Service</a>",
-            "context": "n-colors\" href=\"/privacy-policy\">Privacy Policy</a></li><li><a class=\"hover:text-gold transition-colors\" href=\"/terms-of-service\">Terms of Service</a></li></ul><p class=\"mt-6 text-xs text-white/50\">© <!-- -->20"
+            "match": "\"filters\":{\"event_types\":[{\"name\":\"Athletics\",\"id\":107041}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":53617844395724,\"event_id\":53502839034539,\"start\":\"2026-10-14T14:00:00-05:00\",\"end\":\"2026-10-14T16:00:00-05:00\",\"ranking\":0.29,\"all_day\":false,\"num_attending\":0}}],\"localist_url\":\"https://e",
+            "context": "t\":null,\"city\":null,\"state\":null,\"country\":null,\"zip\":null},\"filters\":{\"event_types\":[{\"name\":\"Athletics\",\"id\":107041}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":53617844395724,\"event_id\":53502839034539,\"start\":\"2026-10-14T14:00:00-05:00\",\"end\":\"2026-10-14T16:00:00-05:00\",\"ranking\":0.29,\"all_day\":false,\"num_attending\":0}}],\"localist_url\":\"https://events.harpercollege.edu/event/harper-college-mens-soccer-vs-"
+          },
+          {
+            "match": "\"filters\":{\"event_types\":[{\"name\":\"Admission\",\"id\":44198994778312},{\"name\":\"Information Session\",\"id\":107035}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":54179817794811,\"event_id\":54179817794810,\"start\":\"2026-10-14T15:00:00-05:00\",\"end\":\"2026-10-14T16:00:00-05:00\",\"ranking\":0.29,\"all_day\":f",
+            "context": "43658394366578,\"name\":\"Continuing Professional Education\"}],\"filters\":{\"event_types\":[{\"name\":\"Admission\",\"id\":44198994778312},{\"name\":\"Information Session\",\"id\":107035}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":54179817794811,\"event_id\":54179817794810,\"start\":\"2026-10-14T15:00:00-05:00\",\"end\":\"2026-10-14T16:00:00-05:00\",\"ranking\":0.29,\"all_day\":false,\"num_attending\":0}}],\"localist_url\":\"https://events.har"
+          },
+          {
+            "match": "\"filters\":{\"event_types\":[{\"name\":\"Wellness and Health\",\"id\":46790322621181}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":53868653674988,\"event_id\":53868653670889,\"start\":\"2026-10-14T16:00:00-05:00\",\"end\":\"2026-10-14T17:30:00-05:00\",\"ranking\":0.29,\"all_day\":false,\"num_attending\":0}}],\"locali",
+            "context": "3016984923,\"name\":\"Mental Health and Well-Being Services\"}],\"filters\":{\"event_types\":[{\"name\":\"Wellness and Health\",\"id\":46790322621181}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":53868653674988,\"event_id\":53868653670889,\"start\":\"2026-10-14T16:00:00-05:00\",\"end\":\"2026-10-14T17:30:00-05:00\",\"ranking\":0.29,\"all_day\":false,\"num_attending\":0}}],\"localist_url\":\"https://events.harpercollege.edu/event/dungeons-dra"
+          },
+          {
+            "match": "\"filters\":{\"event_types\":[{\"name\":\"Athletics\",\"id\":107041}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":53573697669017,\"event_id\":53573697669016,\"start\":\"2026-10-14T16:00:00-05:00\",\"end\":\"2026-10-14T18:00:00-05:00\",\"ranking\":0.29,\"all_day\":false,\"num_attending\":0}}],\"localist_url\":\"https://e",
+            "context": "t\":null,\"city\":null,\"state\":null,\"country\":null,\"zip\":null},\"filters\":{\"event_types\":[{\"name\":\"Athletics\",\"id\":107041}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":53573697669017,\"event_id\":53573697669016,\"start\":\"2026-10-14T16:00:00-05:00\",\"end\":\"2026-10-14T18:00:00-05:00\",\"ranking\":0.29,\"all_day\":false,\"num_attending\":0}}],\"localist_url\":\"https://events.harpercollege.edu/event/harper-college-womens-soccer-v"
+          },
+          {
+            "match": "\"filters\":{\"event_types\":[{\"name\":\"Admission\",\"id\":44198994778312},{\"name\":\"Information Session\",\"id\":107035}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":53613741579399,\"event_id\":53613741575302,\"start\":\"2026-10-14T17:00:00-05:00\",\"end\":\"2026-10-14T19:30:00-05:00\",\"ranking\":0.29,\"all_day\":f",
+            "context": "epartments\":[{\"id\":43968335307329,\"name\":\"Adult Learners\"}],\"filters\":{\"event_types\":[{\"name\":\"Admission\",\"id\":44198994778312},{\"name\":\"Information Session\",\"id\":107035}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":53613741579399,\"event_id\":53613741575302,\"start\":\"2026-10-14T17:00:00-05:00\",\"end\":\"2026-10-14T19:30:00-05:00\",\"ranking\":0.29,\"all_day\":false,\"num_attending\":0}}],\"localist_url\":\"https://events.har"
+          },
+          {
+            "match": "\"filters\":{\"event_types\":[{\"name\":\"Cultural Arts\",\"id\":128837},{\"name\":\"Film Screening / Series\",\"id\":44146602471710}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":53452322341681,\"event_id\":53452322341680,\"start\":\"2026-10-14T18:00:00-05:00\",\"end\":\"2026-10-14T21:00:00-05:00\",\"ranking\":0.29,\"al",
+            "context": "tments\":[{\"id\":44128605158525,\"name\":\"Mass Communication\"}],\"filters\":{\"event_types\":[{\"name\":\"Cultural Arts\",\"id\":128837},{\"name\":\"Film Screening / Series\",\"id\":44146602471710}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":53452322341681,\"event_id\":53452322341680,\"start\":\"2026-10-14T18:00:00-05:00\",\"end\":\"2026-10-14T21:00:00-05:00\",\"ranking\":0.29,\"all_day\":false,\"num_attending\":0}}],\"localist_url\":\"https://ev"
+          },
+          {
+            "match": "\"filters\":{\"event_types\":[{\"name\":\"Athletics\",\"id\":107041}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":54069180910569,\"event_id\":54069180910568,\"start\":\"2026-10-14T19:00:00-05:00\",\"end\":\"2026-10-14T21:00:00-05:00\",\"ranking\":0.29,\"all_day\":false,\"num_attending\":0}}],\"localist_url\":\"https://e",
+            "context": "t\":null,\"city\":null,\"state\":null,\"country\":null,\"zip\":null},\"filters\":{\"event_types\":[{\"name\":\"Athletics\",\"id\":107041}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":54069180910569,\"event_id\":54069180910568,\"start\":\"2026-10-14T19:00:00-05:00\",\"end\":\"2026-10-14T21:00:00-05:00\",\"ranking\":0.29,\"all_day\":false,\"num_attending\":0}}],\"localist_url\":\"https://events.harpercollege.edu/event/harper-college-womens-basketba"
+          },
+          {
+            "match": "\"filters\":{\"event_types\":[{\"name\":\"Training and How-Tos\",\"id\":53736839190237}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":53319374508413,\"event_id\":53319374506362,\"start\":\"2026-10-15T00:00:00-05:00\",\"end\":\"2026-10-15T00:00:00-05:00\",\"ranking\":0.28,\"all_day\":true,\"num_attending\":0}}],\"locali",
+            "context": "},\"departments\":[{\"id\":49453020010424,\"name\":\"Hawks Care\"}],\"filters\":{\"event_types\":[{\"name\":\"Training and How-Tos\",\"id\":53736839190237}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":53319374508413,\"event_id\":53319374506362,\"start\":\"2026-10-15T00:00:00-05:00\",\"end\":\"2026-10-15T00:00:00-05:00\",\"ranking\":0.28,\"all_day\":true,\"num_attending\":0}}],\"localist_url\":\"https://events.harpercollege.edu/event/illinois-ben"
+          },
+          {
+            "match": "\"filters\":{\"event_types\":[{\"name\":\"Wellness and Health\",\"id\":46790322621181}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":54118158309121,\"event_id\":54118158308096,\"start\":\"2026-10-15T09:00:00-05:00\",\"end\":\"2026-10-15T16:00:00-05:00\",\"ranking\":0.28,\"all_day\":false,\"num_attending\":0}}],\"locali",
+            "context": "3016984923,\"name\":\"Mental Health and Well-Being Services\"}],\"filters\":{\"event_types\":[{\"name\":\"Wellness and Health\",\"id\":46790322621181}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":54118158309121,\"event_id\":54118158308096,\"start\":\"2026-10-15T09:00:00-05:00\",\"end\":\"2026-10-15T16:00:00-05:00\",\"ranking\":0.28,\"all_day\":false,\"num_attending\":0}}],\"localist_url\":\"https://events.harpercollege.edu/event/vaccine-clin"
+          },
+          {
+            "match": "\"filters\":{\"event_types\":[{\"name\":\"Virtual Events\",\"id\":128836},{\"name\":\"Training and How-Tos\",\"id\":53736839190237}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":53514879964881,\"event_id\":53514879959753,\"start\":\"2026-10-15T12:00:00-05:00\",\"end\":\"2026-10-15T13:00:00-05:00\",\"ranking\":0.08,\"all_",
+            "context": "ents\":[{\"id\":11536,\"name\":\"Job Placement Resource Center\"}],\"filters\":{\"event_types\":[{\"name\":\"Virtual Events\",\"id\":128836},{\"name\":\"Training and How-Tos\",\"id\":53736839190237}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":53514879964881,\"event_id\":53514879959753,\"start\":\"2026-10-15T12:00:00-05:00\",\"end\":\"2026-10-15T13:00:00-05:00\",\"ranking\":0.08,\"all_day\":false,\"num_attending\":0}}],\"localist_url\":\"https://even"
+          },
+          {
+            "match": "\"filters\":{},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":54135014047686,\"event_id\":54135014047685,\"start\":\"2026-10-15T12:00:00-05:00\",\"end\":\"2026-10-15T13:00:00-05:00\",\"ranking\":0.28,\"all_day\":false,\"num_attending\":0}}],\"localist_url\":\"https://events.harpercollege.edu/event/jprc-workshop-big-",
+            "context": "ents\":[{\"id\":11536,\"name\":\"Job Placement Resource Center\"}],\"filters\":{},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":54135014047686,\"event_id\":54135014047685,\"start\":\"2026-10-15T12:00:00-05:00\",\"end\":\"2026-10-15T13:00:00-05:00\",\"ranking\":0.28,\"all_day\":false,\"num_attending\":0}}],\"localist_url\":\"https://events.harpercollege.edu/event/jprc-workshop-big-interview\",\"localist_ics_url\":\"https://events.harpercollege."
+          },
+          {
+            "match": "\"filters\":{\"event_types\":[{\"name\":\"Wellness and Health\",\"id\":46790322621181}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":53843007578537,\"event_id\":53843007576486,\"start\":\"2026-10-15T12:00:00-05:00\",\"end\":\"2026-10-15T13:00:00-05:00\",\"ranking\":0.08,\"all_day\":false,\"num_attending\":0}}],\"locali",
+            "context": "3016984923,\"name\":\"Mental Health and Well-Being Services\"}],\"filters\":{\"event_types\":[{\"name\":\"Wellness and Health\",\"id\":46790322621181}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":53843007578537,\"event_id\":53843007576486,\"start\":\"2026-10-15T12:00:00-05:00\",\"end\":\"2026-10-15T13:00:00-05:00\",\"ranking\":0.08,\"all_day\":false,\"num_attending\":0}}],\"localist_url\":\"https://events.harpercollege.edu/event/pause-and-pl"
+          },
+          {
+            "match": "\"filters\":{\"event_types\":[{\"name\":\"Admission\",\"id\":44198994778312},{\"name\":\"Information Session\",\"id\":107035}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":53790490198710,\"event_id\":53790490198709,\"start\":\"2026-10-15T12:00:00-05:00\",\"end\":\"2026-10-15T13:00:00-05:00\",\"ranking\":0.28,\"all_day\":f",
+            "context": "d\":12740,\"name\":\"The University Center at Harper College\"}],\"filters\":{\"event_types\":[{\"name\":\"Admission\",\"id\":44198994778312},{\"name\":\"Information Session\",\"id\":107035}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":53790490198710,\"event_id\":53790490198709,\"start\":\"2026-10-15T12:00:00-05:00\",\"end\":\"2026-10-15T13:00:00-05:00\",\"ranking\":0.28,\"all_day\":false,\"num_attending\":0}}],\"localist_url\":\"https://events.har"
+          },
+          {
+            "match": "\"filters\":{\"event_types\":[{\"name\":\"Athletics\",\"id\":107041}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":54051513832101,\"event_id\":54051513831076,\"start\":\"2026-10-15T15:00:00-05:00\",\"end\":\"2026-10-15T17:00:00-05:00\",\"ranking\":0.28,\"all_day\":false,\"num_attending\":0}}],\"localist_url\":\"https://e",
+            "context": "t\":null,\"city\":null,\"state\":null,\"country\":null,\"zip\":null},\"filters\":{\"event_types\":[{\"name\":\"Athletics\",\"id\":107041}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":54051513832101,\"event_id\":54051513831076,\"start\":\"2026-10-15T15:00:00-05:00\",\"end\":\"2026-10-15T17:00:00-05:00\",\"ranking\":0.28,\"all_day\":false,\"num_attending\":0}}],\"localist_url\":\"https://events.harpercollege.edu/event/harper-college-womens-softball"
+          },
+          {
+            "match": "\"filters\":{\"event_types\":[{\"name\":\"Athletics\",\"id\":107041}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":53573697700769,\"event_id\":53573697700768,\"start\":\"2026-10-16T12:30:00-05:00\",\"end\":\"2026-10-16T15:30:00-05:00\",\"ranking\":0.27,\"all_day\":false,\"num_attending\":0}}],\"localist_url\":\"https://e",
+            "context": "t\":null,\"city\":null,\"state\":null,\"country\":null,\"zip\":null},\"filters\":{\"event_types\":[{\"name\":\"Athletics\",\"id\":107041}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":53573697700769,\"event_id\":53573697700768,\"start\":\"2026-10-16T12:30:00-05:00\",\"end\":\"2026-10-16T15:30:00-05:00\",\"ranking\":0.27,\"all_day\":false,\"num_attending\":0}}],\"localist_url\":\"https://events.harpercollege.edu/event/harper-college-mens-cross-coun"
+          },
+          {
+            "match": "\"filters\":{\"event_types\":[{\"name\":\"Athletics\",\"id\":107041}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":53573697685405,\"event_id\":53573697684380,\"start\":\"2026-10-16T12:30:00-05:00\",\"end\":\"2026-10-16T15:30:00-05:00\",\"ranking\":0.27,\"all_day\":false,\"num_attending\":0}}],\"localist_url\":\"https://e",
+            "context": "t\":null,\"city\":null,\"state\":null,\"country\":null,\"zip\":null},\"filters\":{\"event_types\":[{\"name\":\"Athletics\",\"id\":107041}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":53573697685405,\"event_id\":53573697684380,\"start\":\"2026-10-16T12:30:00-05:00\",\"end\":\"2026-10-16T15:30:00-05:00\",\"ranking\":0.27,\"all_day\":false,\"num_attending\":0}}],\"localist_url\":\"https://events.harpercollege.edu/event/harper-college-womens-cross-co"
           }
         ]
       }
