@@ -4144,7 +4144,7 @@ def _pick_evergreen_highlights(evergreen: list[dict], limit: int) -> list[dict]:
     return (free + rest)[:limit]
 
 
-def render_combined_email_digest(sections: list[dict], weekend_date_range: str, now: datetime, newsletter: dict | None = None, *, preview: bool = False, halloween: dict | None = None, holiday: dict | None = None) -> str:
+def render_combined_email_digest(sections: list[dict], weekend_date_range: str, now: datetime, newsletter: dict | None = None, *, preview: bool = False, halloween: dict | None = None, holiday: dict | None = None, weather: list[dict] | None = None) -> str:
     """The combined, all-regions email (ROADMAP.md Phase 11 #105) - the
     signup form is on every region page, but the automated send (item
     24/31) only ever mailed Mount Prospect's digest, since Buttondown's
@@ -4228,6 +4228,8 @@ def render_combined_email_digest(sections: list[dict], weekend_date_range: str, 
         }
     edition = email_edition(now)
     edition_block = build_email_edition_block(edition, halloween, holiday, now)
+    weather_line = build_email_weather_line(weather)
+    rain_plan = pick_rain_plan(region_blocks, top_picks) if weather_line and weather_line["rain"] else []
     return template.render(
         region_blocks=region_blocks,
         top_picks=top_picks,
@@ -4243,7 +4245,43 @@ def render_combined_email_digest(sections: list[dict], weekend_date_range: str, 
         seasonal_link=None if edition_block else seasonal_email_link(now),
         edition=edition if edition_block else None,
         edition_block=edition_block,
+        weather_line=weather_line["text"] if weather_line else None,
+        rain_plan=rain_plan,
     )
+
+
+def build_email_weather_line(weather: list[dict] | None) -> dict | None:
+    """The email's one weather line (ROADMAP.md item 291) from a region's
+    Friday-Sunday forecast: "☀️ Sat 58° · 🌧️ Sun 70% rain". Saturday and
+    Sunday only, and `rain` is True when either has a 60% or greater chance
+    of rain. None when there is no forecast, so a failed fetch shows nothing
+    rather than a stale line."""
+    days = [d for d in (weather or []) if d.get("day_name") in ("Saturday", "Sunday")]
+    if not days:
+        return None
+    parts = []
+    for d in days:
+        part = f"{d.get('emoji', '')} {d['day_name'][:3]} {round(d['high_f'])}°".strip()
+        if (d.get("precip_percent") or 0) >= 30:
+            part += f" {round(d['precip_percent'])}% rain"
+        parts.append(part)
+    rain = any((d.get("precip_percent") or 0) >= 60 for d in days)
+    return {"text": " · ".join(parts), "rain": rain}
+
+
+def pick_rain_plan(blocks: list[dict], exclude: list[dict] | None = None, limit: int = 3) -> list[dict]:
+    """Up to `limit` indoor events across the towns for a wet weekend (item
+    291): family relevance first, then soonest. Paid promotions and anything
+    already shown as a "Don't miss" pick are left out."""
+    skip = {(e.get("title"), e.get("url")) for e in exclude or []}
+    pool = []
+    for block in blocks:
+        for e in block.get("attendable_events") or []:
+            if e.get("sponsored_by") or "indoor" not in (e.get("tags") or []) or (e.get("title"), e.get("url")) in skip:
+                continue
+            pool.append(dict(e, pick_town=block["region_name"], pick_color=block.get("color", EMAIL_TOWN_COLORS[0][0])))
+    pool.sort(key=lambda e: (-family_relevance(e), e.get("date_iso") or "9999"))
+    return pool[:limit]
 
 
 def _thanksgiving(year: int) -> date:
@@ -4620,6 +4658,7 @@ def main() -> None:
     pins_groups: list[tuple[str, str, str, list[dict]]] = []
     trick_or_treat_entries = []
     holidays_entries = []
+    email_weather_by_region: dict[str, list[dict]] = {}
     combined_email_sections = []
     total_dated, total_events = 0, 0
     # ROADMAP.md item 172: how many dated events each region contributes
@@ -4793,6 +4832,7 @@ def main() -> None:
             region_id, _fetched_count, _dated_count, len(weekend_events),
         )
         weekend_weather = [w for w in build_weekend_weather(region, friday, saturday, sunday) if w.get("date", "") >= local_today.isoformat()]
+        email_weather_by_region[region_id] = weekend_weather
         weekend_date_range = format_date_range(window_days[0], sunday)
         if hub_weekend_date_range is None:
             hub_weekend_date_range = weekend_date_range  # regions share a timezone today
@@ -5188,6 +5228,10 @@ def main() -> None:
     combined_email_extra = {
         "halloween": build_halloween_banner(trick_or_treat_entries, now),
         "holiday": build_holiday_banner(holidays_entries, now),
+        # One region's forecast stands for the five neighbouring towns; Mount
+        # Prospect is central, else the first town that has one.
+        "weather": email_weather_by_region.get("mount-prospect-60056")
+        or next((w for w in email_weather_by_region.values() if w), None),
     }
     (OUTPUT_DIR / "combined-email-send.html").write_text(
         render_combined_email_digest(*combined_email_args, **combined_email_extra), encoding="utf-8"

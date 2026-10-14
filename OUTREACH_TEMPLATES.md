@@ -269,6 +269,15 @@ shows as confirmed, with the village link beside each. A town showing
 "not yet posted" or "no official hours" is passed on exactly that way;
 never fill a gap from memory.
 
+**Send it to three desks, not one** (ROADMAP.md item 292): the Daily
+Herald (by Oct 15), then **NBC Chicago** and **WGN**, each of which
+publishes its own annual Chicago-suburbs trick-or-treat list (WGN's 2024
+list gave Mount Prospect a separate downtown merchants' time as well as
+the Village's). Use each outlet's own tips or contact page at
+`nbcchicago.com` and `wgntv.com`; do not use an address from anywhere
+else. The note is identical, with the desk's name in the greeting. Send
+the second and third by **Oct 20**.
+
 Subject: 2026 trick-or-treat hours for [Arlington Heights, Mount Prospect, Palatine, Wheeling, Des Plaines], each linked to the village's announcement
 
 Hi [Desk / editor name],

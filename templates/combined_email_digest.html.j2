@@ -112,6 +112,24 @@ This weekend, across the northwest suburbs
 </tr>
 <tr><td style="padding:0 0 16px 0;"></td></tr>
 
+{% if weather_line %}
+{# ROADMAP.md item 291: one weather line, plus a rain plan when it will be wet. #}
+<tr>
+<td class="wt-ink" style="font-family:Arial, Helvetica, sans-serif; font-size:16px; font-weight:bold; color:#201e1d; padding:0 0 14px 0;">{{ weather_line }}</td>
+</tr>
+{% endif %}
+{% if rain_plan %}
+<tr>
+<td bgcolor="#eaf4ff" class="wt-card" style="background-color:#eaf4ff; border:2px solid #2563eb; border-radius:14px; padding:14px 18px; font-family:Arial, Helvetica, sans-serif;">
+<div style="font-size:13px; font-weight:bold; letter-spacing:1.5px; color:#1d4ed8; padding-bottom:8px;">☔ RAIN PLAN: INDOOR PICKS</div>
+{% for e in rain_plan %}
+<div style="padding:4px 0; font-size:16px;"><span>{{ e.email_emoji }}</span> <a href="{{ e.url }}" style="color:#201e1d; font-weight:bold; text-decoration:none;">{{ e.title }}</a> <span style="font-size:13px; color:{{ e.pick_color }}; font-weight:bold;">{{ e.pick_town }} · {{ e.email_when or e.date }}</span></div>
+{% endfor %}
+</td>
+</tr>
+<tr><td style="padding:0 0 16px 0;"></td></tr>
+{% endif %}
+
 {% if edition_block %}
 {# ROADMAP.md item 289: the seasonal edition's first block, above "Don't miss". #}
 <tr>
