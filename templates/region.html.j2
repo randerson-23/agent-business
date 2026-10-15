@@ -642,6 +642,17 @@
     .hero h1 { font-size: 27px; }
     .wrap { padding: 0 14px 88px; }
   }
+  .days-off { border: 1px solid var(--border); border-left: 6px solid var(--accent); background: var(--card); padding: 14px 16px; margin: 16px 0; }
+  .days-off h2 { margin: 0 0 8px; font-size: 18px; }
+  .days-off ul { list-style: none; margin: 0; padding: 0; }
+  .days-off li { padding: 8px 0; border-top: 1px solid var(--border); font-size: 14.5px; }
+  .days-off li:first-child { border-top: 0; }
+  .days-off .do-reason { display: block; color: var(--muted); }
+  .days-off .do-ideas { margin-top: 4px; }
+  .days-off .do-ideas a { color: var(--accent-2-text); font-weight: 700; text-decoration: none; }
+  .days-off .do-ideas a:hover { text-decoration: underline; }
+  .days-off .do-clock { color: var(--muted); }
+  .days-off .do-note { margin: 8px 0 0; font-size: 12.5px; color: var(--muted); }
 </style>
 {{ signup_css() }}
 </head>
@@ -739,6 +750,23 @@
   {% endif %}
 
   {% if answer_block %}<p class="answer-block">{{ answer_block }}</p>{% endif %}
+
+  {% if days_off %}
+  {# ROADMAP.md item 296: school days off in the next 45 days, from each district's own calendar. #}
+  <section class="days-off" id="days-off" aria-labelledby="days-off-heading">
+    <h2 id="days-off-heading">📚 Days off school</h2>
+    <ul>
+      {% for d in days_off %}
+      <li>
+        <strong>{{ d.label }}</strong>
+        {% for r in d.reasons %}<span class="do-reason">{{ r.district }}: {{ r.reason }}</span>{% endfor %}
+        {% if d.ideas %}<div class="do-ideas">What's on: {% for i in d.ideas %}<a href="{{ i.url }}">{{ i.title }}</a>{% if i.clock %} <span class="do-clock">{{ i.clock }}</span>{% endif %}{% if not loop.last %} · {% endif %}{% endfor %}</div>{% endif %}
+      </li>
+      {% endfor %}
+    </ul>
+    <p class="do-note">From each district's own calendar. Check your school's calendar for building-level changes.</p>
+  </section>
+  {% endif %}
 
   <p class="freshness-note">Updated automatically — last checked {{ last_checked_label }}.</p>
 

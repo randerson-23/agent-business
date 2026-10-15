@@ -118,6 +118,12 @@ This weekend, across the northwest suburbs
 <td class="wt-ink" style="font-family:Arial, Helvetica, sans-serif; font-size:16px; font-weight:bold; color:#201e1d; padding:0 0 14px 0;">{{ weather_line }}</td>
 </tr>
 {% endif %}
+{% if days_off_line %}
+{# ROADMAP.md item 296: one line when a district has a day off in the next 7 days. #}
+<tr>
+<td class="wt-ink" style="font-family:Arial, Helvetica, sans-serif; font-size:16px; font-weight:bold; color:#201e1d; padding:0 0 14px 0;"><a href="{{ days_off_line.url }}" class="wt-brand" style="color:#ae1800; text-decoration:underline;">{{ days_off_line.text }} &rarr;</a></td>
+</tr>
+{% endif %}
 {% if rain_plan %}
 <tr>
 <td bgcolor="#eaf4ff" class="wt-card" style="background-color:#eaf4ff; border:2px solid #2563eb; border-radius:14px; padding:14px 18px; font-family:Arial, Helvetica, sans-serif;">

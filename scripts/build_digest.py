@@ -2641,6 +2641,7 @@ def render_region_page(
     map_embed_url: str | None = None,
     nearby_regions: list[dict] | None = None,
     region_map: dict | None = None,
+    days_off: list[dict] | None = None,
     build_scope_end_iso: str | None = None,
     stale_empty_message: str | None = None,
     empty_follow_url: str | None = None,
@@ -2686,6 +2687,7 @@ def render_region_page(
         map_embed_url=map_embed_url,
         nearby_regions=nearby_regions,
         region_map=region_map,
+        days_off=days_off,
         faq=faq,
         faq_json_ld=build_faq_json_ld(faq) if faq else None,
         heading=heading,
@@ -4280,6 +4282,7 @@ def render_combined_email_digest(sections: list[dict], weekend_date_range: str, 
     edition = email_edition(now)
     edition_block = build_email_edition_block(edition, halloween, holiday, now)
     weather_line = build_email_weather_line(weather)
+    days_off_line = build_days_off_email_line(sections, now)
     rain_plan = pick_rain_plan(region_blocks, top_picks) if weather_line and weather_line["rain"] else []
     return template.render(
         region_blocks=region_blocks,
@@ -4297,8 +4300,96 @@ def render_combined_email_digest(sections: list[dict], weekend_date_range: str, 
         edition=edition if edition_block else None,
         edition_block=edition_block,
         weather_line=weather_line["text"] if weather_line else None,
+        days_off_line=days_off_line,
         rain_plan=rain_plan,
     )
+
+
+# ROADMAP.md item 296: a "Days off school" box. The district's own wording is
+# kept as the reason; nothing is inferred from a date alone.
+DAY_OFF_TITLE = re.compile(
+    r"no school|non-?attendance|institute|half[- ]day|early (?:release|dismissal)|conferences?|"
+    r"holiday|winter break|spring break|thanksgiving break|school closed|schools closed|staff development",
+    re.IGNORECASE,
+)
+DAYS_OFF_WINDOW = 45
+DAYS_OFF_MAX_DAYS = 6
+
+
+def short_district(source_name: str) -> str:
+    """"Mount Prospect School District 57 — Calendar" -> "D57"; "Wheeling CCSD
+    21 — Calendar" -> "CCSD 21"; anything else keeps its name before the dash."""
+    name = source_name.split(" — ")[0].strip()
+    m = re.search(r"\bCCSD\s*(\d+)", name)
+    if m:
+        return f"CCSD {m.group(1)}"
+    m = re.search(r"\bDistrict\s*(\d+)|\bSD\s*(\d+)|\bD(\d+)\b", name)
+    if m:
+        return "D" + next(g for g in m.groups() if g)
+    return name
+
+
+def build_days_off(blocks: list[dict], local_today: date, window: int = DAYS_OFF_WINDOW, ideas_per_day: int = 3) -> list[dict]:
+    """School days off in the next `window` days from the region's "School ..."
+    sections, grouped by date, each with up to `ideas_per_day` timed daytime
+    (before 5 p.m.) events from the other sections that day, family relevance
+    first. [] when no district lists a day off."""
+    end = local_today + timedelta(days=window)
+    days: dict[date, dict] = {}
+    for block in blocks:
+        if "school" not in (block.get("section") or "").lower():
+            continue
+        for e in block.get("events", []):
+            if not (e.get("title") and e.get("date_iso") and DAY_OFF_TITLE.search(e["title"])):
+                continue
+            try:
+                day = datetime.fromisoformat(e["date_iso"]).date()
+            except ValueError:
+                continue
+            if not (local_today <= day <= end):
+                continue
+            entry = days.setdefault(day, {"date": day, "label": day.strftime("%a %b ") + str(day.day), "reasons": []})
+            reason = {"district": short_district(e.get("source") or ""), "reason": e["title"].strip()}
+            if reason not in entry["reasons"]:
+                entry["reasons"].append(reason)
+    chosen = sorted(days.values(), key=lambda d: d["date"])[:DAYS_OFF_MAX_DAYS]
+    for entry in chosen:
+        pool = []
+        for block in blocks:
+            if "school" in (block.get("section") or "").lower():
+                continue
+            for e in block.get("events", []):
+                if not (e.get("title") and e.get("url") and e.get("date_iso")) or e.get("attendable") is False:
+                    continue
+                try:
+                    start = datetime.fromisoformat(e["date_iso"])
+                except ValueError:
+                    continue
+                if start.date() == entry["date"] and (start.hour, start.minute) != (0, 0) and start.hour < 17:
+                    pool.append(e)
+        pool.sort(key=lambda e: (-family_relevance(e), e["date_iso"]))
+        entry["ideas"] = [
+            {"title": e["title"], "url": e["url"], "clock": event_time_label(e["date_iso"])} for e in pool[:ideas_per_day]
+        ]
+    return chosen
+
+
+def build_days_off_email_line(sections: list[dict], now: datetime) -> dict | None:
+    """One email line when any town has a day off in the next 7 days (item
+    296): "📚 No school next week: D57 Wed Nov 11 · CCSD 15 Tue Nov 3"."""
+    today = now.astimezone(LOCAL_TZ).date()
+    parts, first_url = [], None
+    for s in sections:
+        for day in s.get("days_off") or []:
+            if today <= day["date"] <= today + timedelta(days=7):
+                for r in day["reasons"]:
+                    part = f"{r['district']} {day['label']}"
+                    if part not in parts:
+                        parts.append(part)
+                        first_url = first_url or s["region_url"] + "#days-off"
+    if not parts:
+        return None
+    return {"text": "📚 No school next week: " + " · ".join(parts[:4]), "url": first_url}
 
 
 def build_email_weather_line(weather: list[dict] | None) -> dict | None:
@@ -4794,6 +4885,7 @@ def main() -> None:
         # behind a conditional the way guides_url is.
         things_to_do_url = SITE_BASE_URL + region_id + "/things-to-do/"
         editors_pick = select_editors_pick(region_cfg, blocks, evergreen)
+        region_days_off = build_days_off(blocks, local_today)
 
         html = render_region_page(
             region_cfg,
@@ -4812,6 +4904,7 @@ def main() -> None:
             map_embed_url=build_region_map_embed_url(region, maps),
             nearby_regions=build_nearby_regions(region, all_regions_meta),
             region_map=build_region_map(all_regions_meta),
+            days_off=region_days_off,
         )
 
         region_dir = OUTPUT_DIR / region_id
@@ -4933,6 +5026,7 @@ def main() -> None:
                 "weekend_events": weekend_events,
                 "evergreen": evergreen,
                 "sponsor": sponsor,
+                "days_off": region_days_off,
             }
         )
         views = [

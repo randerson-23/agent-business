@@ -15608,7 +15608,7 @@ school, and what is there to do that day?**
 
 #### P1 (new)
 
-296. **A "Days off school" box, by town and district, with what's on
+296. ✅ **DONE (2026-10-15): `build_days_off` (45-day window, the districts' own wording as the reason, grouped by date, up to three timed daytime events that day by family relevance), a "Days off school" box on each region page (`#days-off`, with the honesty line) and one email line when a day off falls in the next 7 days; tests added. Not done: placing the box above the fold on weeks with a day off, and item 297's sponsor slot.** **A "Days off school" box, by town and district, with what's on
      those days.** Design/UX, build loop.
      - **Data:** from each region's school-district sources, take entries
        in the next **45 days** whose titles match the existing
