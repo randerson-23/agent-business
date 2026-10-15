@@ -340,6 +340,15 @@ trick_or_treat:
   url: "https://www.mountprospect.org/Home/Components/Calendar/Event/10985/1044"
   hours: "3:00–8:00 PM, Saturday, October 31"
   note: "The Village's standing hours, not yet confirmed for 2026."
+  # ROADMAP.md item 292: the Mount Prospect Downtown Merchants' own trick-or-treat,
+  # read from mpdowntown.com/events/ on 2026-10-15 ("Wednesday, October 28, 2026,
+  # 4:00 - 6:00 p.m., Downtown Mount Prospect"). The weekday is computed from `date`.
+  also:
+    - label: "Downtown merchants' trick-or-treat"
+      url: "https://mpdowntown.com/events/"
+      date: "2026-10-28"
+      time: "4–6 PM"
+      place: "Downtown Mount Prospect"
 
 # ROADMAP.md item 274: no 2026 date posted yet; set `date` once the Village does.
 tree_lighting:

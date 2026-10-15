@@ -457,7 +457,7 @@ def test_prepare_trick_or_treat_honest_when_hours_not_yet_posted():
     # late Sept/early Oct - must come back as None, never a guess.
     region_cfg = {"trick_or_treat": {"url": "https://x/news", "hours": None}}
     result = build_digest.prepare_trick_or_treat(region_cfg)
-    assert result == {"url": "https://x/news", "hours": None, "no_official_hours": False, "note": None}
+    assert result == {"url": "https://x/news", "hours": None, "no_official_hours": False, "note": None, "also": []}
 
 
 def test_prepare_trick_or_treat_passes_through_real_hours_once_posted():
@@ -5039,3 +5039,35 @@ def test_email_shows_weather_line_and_rain_plan_only_when_wet():
     none = build_digest.render_combined_email_digest(sections, "Oct 16–18", now, None, weather=None)
     assert "RAIN PLAN" not in none and "% rain" not in none and "Sat 6" not in none
     assert len(wet.encode("utf-8")) < 102_000
+
+
+def test_trick_or_treat_also_computes_weekday_and_drops_other_years():
+    # ROADMAP.md item 292.
+    also = {"label": "Downtown", "url": "https://d", "date": "2026-10-28", "time": "4–6 PM"}
+    cfg = {"trick_or_treat": {"url": "https://x", "hours": None, "also": [also, {"label": "No date", "url": "https://d"}]}}
+    assert build_digest.prepare_trick_or_treat(cfg, 2026)["also"] == [
+        {"label": "Downtown", "url": "https://d", "when": "Wednesday, October 28, 4–6 PM", "place": None}
+    ]
+    assert build_digest.prepare_trick_or_treat(cfg, 2027)["also"] == []  # last year's date is never shown
+
+
+def _tot_entries(n=5):
+    names = ["Mount Prospect", "Arlington Heights", "Des Plaines", "Palatine", "Wheeling"][:n]
+    return [{"region_id": f"r{i}", "region_name": nm, "region_url": f"https://x/{i}/", "url": f"https://v/{i}", "hours": "3–7 PM, Saturday, October 31", "note": None, "events": []} for i, nm in enumerate(names)]
+
+
+def test_trick_or_treat_page_has_the_halloween_hero_cards_share_button_and_countdown():
+    # ROADMAP.md item 293.
+    entries = _tot_entries()
+    entries[0]["also"] = [{"label": "Downtown merchants' trick-or-treat", "url": "https://d", "when": "Wednesday, October 28, 4–6 PM", "place": "Downtown Mount Prospect"}]
+    html = build_digest.render_trick_or_treat_page(entries, datetime(2026, 10, 18, 18, tzinfo=timezone.utc))
+    assert html.count('<div class="entry"') == 5
+    colors = re.findall(r'<div class="entry" style="--town:(#[0-9a-f]{6})">', html)
+    assert len(set(colors)) == 5  # a colour per town, as in the email
+    assert 'id="share-btn"' in html and "navigator.share" in html and "clipboard" in html  # copy-link fallback
+    assert "13 days to go" in html and "Saturday, October 31" in html
+    assert "Also: " in html and "Wednesday, October 28, 4–6 PM" in html and "https://d" in html
+    # On and after Oct 31 the countdown changes, then goes away.
+    assert "Tonight!" in build_digest.render_trick_or_treat_page(_tot_entries(), datetime(2026, 10, 31, 18, tzinfo=timezone.utc))
+    assert "days to go" not in build_digest.render_trick_or_treat_page(_tot_entries(), datetime(2026, 11, 1, 18, tzinfo=timezone.utc))
+    assert "👻" not in build_digest.render_trick_or_treat_page(_tot_entries(), datetime(2026, 11, 1, 18, tzinfo=timezone.utc))
