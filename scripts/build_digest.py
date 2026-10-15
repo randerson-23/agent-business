@@ -1801,17 +1801,38 @@ def render_join_page(
     )
 
 
+def build_holiday_listing_offer(now: datetime, contact_email: str | None) -> dict | None:
+    """The /holidays/ page's offer box (ROADMAP.md item 294): $20 through Nov
+    15, $50 after, until the guide ends on Dec 31, linking to an email to the
+    owner (no Payment Link exists yet). None when there is no contact address
+    or it is January through September."""
+    today = now.astimezone(LOCAL_TZ).date()
+    if not contact_email or today.month < 10:  # the offer runs October through December
+        return None
+    early = today <= date(today.year, 11, 15)
+    return {
+        "price": "$20" if early else "$50",
+        "early": early,
+        "url": f"mailto:{contact_email}?subject=Holiday%20guide%20listing",
+    }
+
+
 def render_holidays_page(
-    entries: list[dict], now: datetime, analytics: dict | None = None, newsletter: dict | None = None
+    entries: list[dict], now: datetime, analytics: dict | None = None, newsletter: dict | None = None,
+    contact_email: str | None = None,
 ) -> str:
     """The cross-town /holidays/ page (ROADMAP.md item 274): tree lightings
     town by town (a confirmed date with its source, or an honest "not posted
     yet"), then each town's holiday events from its own feeds."""
     env = get_template_env()
     template = env.get_template("holidays.html.j2")
+    # ROADMAP.md item 294: each town keeps its email colour, events get emoji.
+    entries = [{**e, "color": EMAIL_TOWN_COLORS[i % len(EMAIL_TOWN_COLORS)][0]} for i, e in enumerate(entries)]
+    entries = [{**e, "events": [{**ev, "emoji": email_event_emoji(ev)} for ev in e.get("events") or []]} for e in entries]
     return template.render(
         entries=entries,
         year=now.year,
+        listing_offer=build_holiday_listing_offer(now, contact_email),
         town_names=_join_names([e["region_name"] for e in entries]),
         any_events=any(e.get("events") for e in entries),
         newsletter=newsletter or {"configured": False},
@@ -5317,7 +5338,7 @@ def main() -> None:
     logger.info("Wrote %s", join_dir / "index.html")
     holidays_dir = OUTPUT_DIR / "holidays"
     holidays_dir.mkdir(parents=True, exist_ok=True)
-    (holidays_dir / "index.html").write_text(render_holidays_page(holidays_entries, now, analytics, newsletter), encoding="utf-8")
+    (holidays_dir / "index.html").write_text(render_holidays_page(holidays_entries, now, analytics, newsletter, contact_email), encoding="utf-8")
     logger.info("Wrote %s", holidays_dir / "index.html")
 
     sitemap_urls = collect_sitemap_urls(region_summaries, issues)
