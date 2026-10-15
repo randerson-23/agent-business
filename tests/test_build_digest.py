@@ -5100,3 +5100,64 @@ def test_holidays_page_has_festive_hero_town_colours_emoji_and_the_listing_box()
     late = build_digest.render_holidays_page(entries, datetime(2026, 11, 16, 18, tzinfo=timezone.utc), None, None, "h@x.com")
     assert "holiday guide, $50." in late and "until Nov 15" not in late.split('id="holiday-listing"')[1].split("</div>")[0]
     assert 'id="holiday-listing"' not in build_digest.render_holidays_page(entries, datetime(2026, 11, 16, 18, tzinfo=timezone.utc))
+
+
+def _school_block(*events):
+    return {"section": "School Calendar", "events": [dict(e, source=e.get("source", "Mount Prospect School District 57 — Calendar")) for e in events]}
+
+
+def test_short_district_names():
+    sd = build_digest.short_district
+    assert sd("Mount Prospect School District 57 — Calendar") == "D57"
+    assert sd("Wheeling CCSD 21 — Calendar") == "CCSD 21"
+    assert sd("Township High School District 214 — Calendar") == "D214"
+    assert sd("Some Academy — Calendar") == "Some Academy"
+
+
+def test_days_off_window_wording_grouping_and_daytime_ideas():
+    # ROADMAP.md item 296.
+    today = date(2026, 11, 2)
+    school = _school_block(
+        {"title": "No School - Veterans Day", "date_iso": "2026-11-11T00:00:00"},
+        {"title": "No School - Veterans Day", "date_iso": "2026-11-11T00:00:00", "source": "Wheeling CCSD 21 — Calendar"},
+        {"title": "Parent-Teacher Conferences", "date_iso": "2026-11-05T00:00:00"},
+        {"title": "Board of Education Meeting", "date_iso": "2026-11-09T19:00:00"},  # not a day off
+        {"title": "No School - Winter Break", "date_iso": "2026-12-23T00:00:00"},  # beyond 45 days (Dec 17)
+        {"title": "No School - Labor Day", "date_iso": "2026-09-07T00:00:00"},  # past
+    )
+    library = {"section": "Library Events", "events": [
+        {"title": "Toddler Storytime", "url": "https://l/1", "date_iso": "2026-11-11T10:00:00", "tags": ["kid_friendly"]},
+        {"title": "Evening Concert", "url": "https://l/2", "date_iso": "2026-11-11T19:00:00", "tags": []},  # after 5 p.m.
+        {"title": "All-day Exhibit", "url": "https://l/3", "date_iso": "2026-11-11T00:00:00", "tags": []},  # no time given
+    ]}
+    days = build_digest.build_days_off([school, library], today)
+    assert [d["label"] for d in days] == ["Thu Nov 5", "Wed Nov 11"]
+    veterans = days[1]
+    assert veterans["reasons"] == [
+        {"district": "D57", "reason": "No School - Veterans Day"},
+        {"district": "CCSD 21", "reason": "No School - Veterans Day"},
+    ]
+    assert [i["title"] for i in veterans["ideas"]] == ["Toddler Storytime"]
+    assert days[0]["ideas"] == []
+    assert build_digest.build_days_off([library], today) == []  # nothing shown when no day off is listed
+
+
+def test_days_off_email_line_only_within_seven_days():
+    sections = [{"region_url": "https://x/mp/", "days_off": [
+        {"date": date(2026, 11, 5), "label": "Thu Nov 5", "reasons": [{"district": "D57", "reason": "Conferences"}]},
+        {"date": date(2026, 11, 20), "label": "Fri Nov 20", "reasons": [{"district": "D57", "reason": "No School"}]},
+    ]}]
+    now = datetime(2026, 11, 2, 18, tzinfo=timezone.utc)
+    line = build_digest.build_days_off_email_line(sections, now)
+    assert line == {"text": "📚 No school next week: D57 Thu Nov 5", "url": "https://x/mp/#days-off"}
+    assert build_digest.build_days_off_email_line(sections, datetime(2026, 11, 8, 18, tzinfo=timezone.utc)) is None
+
+
+def test_region_page_shows_the_days_off_box_with_honesty_line():
+    days = [{"date": date(2026, 11, 11), "label": "Wed Nov 11", "reasons": [{"district": "D57", "reason": "No School"}],
+             "ideas": [{"title": "Toddler Storytime", "url": "https://l/1", "clock": "10:00 AM"}]}]
+    region_cfg = {"region": {"id": "mp", "name": "Mount Prospect", "zip": "60056", "state": "IL", "tagline": "t", "timezone": "America/Chicago"}}
+    html = build_digest.render_region_page(region_cfg, [], None, [], datetime(2026, 11, 2, 18, tzinfo=timezone.utc), days_off=days)
+    assert 'id="days-off"' in html and "D57: No School" in html and "Toddler Storytime" in html
+    assert "Check your school&#39;s calendar for building-level changes." in html or "Check your school's calendar for building-level changes." in html
+    assert 'id="days-off"' not in build_digest.render_region_page(region_cfg, [], None, [], datetime(2026, 11, 2, 18, tzinfo=timezone.utc))
