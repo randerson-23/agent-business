@@ -1,10 +1,16 @@
 {
- "fetched_at": "2026-10-15T13:59:24+00:00",
+ "fetched_at": "2026-10-15T22:03:20+00:00",
  "items": [
   {
    "date": "20261019T183000",
    "detail": "https://www.wheelingil.gov/calendar.aspx?EID=2159",
    "title": "Village Board Regular Meeting",
+   "url": "https://www.wheelingil.gov/common/modules/iCalendar/iCalendar.aspx?feed=calendar&catID=14"
+  },
+  {
+   "date": "20261021T130000",
+   "detail": "https://www.wheelingil.gov/calendar.aspx?EID=2231",
+   "title": "BOFPC-Notice of Cancellation",
    "url": "https://www.wheelingil.gov/common/modules/iCalendar/iCalendar.aspx?feed=calendar&catID=14"
   },
   {
@@ -353,12 +359,6 @@
    "date": "20270802T183000",
    "detail": "https://www.wheelingil.gov/calendar.aspx?EID=2014",
    "title": "Village Board Regular Meeting",
-   "url": "https://www.wheelingil.gov/common/modules/iCalendar/iCalendar.aspx?feed=calendar&catID=14"
-  },
-  {
-   "date": "20270802T183000",
-   "detail": "https://www.wheelingil.gov/calendar.aspx?EID=2220",
-   "title": "Village Board Meeting",
    "url": "https://www.wheelingil.gov/common/modules/iCalendar/iCalendar.aspx?feed=calendar&catID=14"
   }
  ],

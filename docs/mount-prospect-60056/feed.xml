@@ -3,8 +3,16 @@
 <channel>
   <title>Within Ten — Upcoming events in Mount Prospect</title>
   <link>https://withintenmiles.com/</link>
-  <description>Upcoming events in Mount Prospect, soonest first - aggregated automatically from village, library, park district and school-district calendars. This build reached 14 of 18 configured sources. 1 source is shown from its last update, up to 8 hours ago.</description>
-  <lastBuildDate>Thu, 15 Oct 2026 13:59:24 +0000</lastBuildDate>
+  <description>Upcoming events in Mount Prospect, soonest first - aggregated automatically from village, library, park district and school-district calendars. This build reached 12 of 18 configured sources. 3 sources are shown from their last update, up to 16 hours ago.</description>
+  <lastBuildDate>Thu, 15 Oct 2026 22:03:20 +0000</lastBuildDate>
+  <item>
+    <title>Mount Prospect: Property Tax Relief Grant</title>
+    <link>https://withintenmiles.com/mount-prospect-60056/#ev-property-tax-relief-grant-2026-10-15</link>
+    <guid isPermaLink="true">https://withintenmiles.com/mount-prospect-60056/#ev-property-tax-relief-grant-2026-10-15</guid>
+    <description>Official listing: https://www.mountprospect.org/articles/Property-Tax-Relief-Grant-170.php</description>
+    <pubDate>Thu, 15 Oct 2026 00:00:00 +0000</pubDate>
+    <source url="https://www.mountprospect.org/articles/Property-Tax-Relief-Grant-170.php">Village of Mount Prospect — News</source>
+  </item>
   <item>
     <title>Mount Prospect: Baby Storytime</title>
     <link>https://withintenmiles.com/mount-prospect-60056/#ev-baby-storytime-2026-10-15</link>
@@ -441,15 +449,6 @@
  Meet new friends, make a project, and find your next great read in this unique book club (no prior reading… Official listing: https://mppl.libnet.info/event/16641020</description>
     <pubDate>Mon, 26 Oct 2026 18:00:00 +0000</pubDate>
     <source url="https://mppl.libnet.info/event/16641020">Mount Prospect Public Library — Events</source>
-  </item>
-  <item>
-    <title>Mount Prospect: How to Prepare for the Rising Cost of College</title>
-    <link>https://withintenmiles.com/mount-prospect-60056/#ev-how-to-prepare-for-the-rising-cost-of-college-2026-10-26</link>
-    <guid isPermaLink="true">https://withintenmiles.com/mount-prospect-60056/#ev-how-to-prepare-for-the-rising-cost-of-college-2026-10-26</guid>
-    <description>Monday, October 26 2026 7:00pm - 8:30pm 
- Each year the price of college tuition rises higher than the yearly rate of inflation. Official listing: https://mppl.libnet.info/event/16376313</description>
-    <pubDate>Mon, 26 Oct 2026 19:00:00 +0000</pubDate>
-    <source url="https://mppl.libnet.info/event/16376313">Mount Prospect Public Library — Events</source>
   </item>
 </channel>
 </rss>
