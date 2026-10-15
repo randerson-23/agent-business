@@ -5071,3 +5071,32 @@ def test_trick_or_treat_page_has_the_halloween_hero_cards_share_button_and_count
     assert "Tonight!" in build_digest.render_trick_or_treat_page(_tot_entries(), datetime(2026, 10, 31, 18, tzinfo=timezone.utc))
     assert "days to go" not in build_digest.render_trick_or_treat_page(_tot_entries(), datetime(2026, 11, 1, 18, tzinfo=timezone.utc))
     assert "👻" not in build_digest.render_trick_or_treat_page(_tot_entries(), datetime(2026, 11, 1, 18, tzinfo=timezone.utc))
+
+
+def test_holiday_listing_offer_price_switches_on_nov_16():
+    # ROADMAP.md item 294.
+    offer = build_digest.build_holiday_listing_offer
+    at = lambda m, d: datetime(2026, m, d, 18, tzinfo=timezone.utc)
+    assert offer(at(10, 15), "h@x.com")["price"] == "$20" and offer(at(11, 15), "h@x.com")["early"] is True
+    assert offer(at(11, 16), "h@x.com")["price"] == "$50" and offer(at(11, 16), "h@x.com")["early"] is False
+    assert offer(at(12, 31), "h@x.com") is not None
+    assert offer(at(10, 15), None) is None
+    assert offer(datetime(2027, 1, 2, 18, tzinfo=timezone.utc), "h@x.com") is None  # the season is over
+
+
+def test_holidays_page_has_festive_hero_town_colours_emoji_and_the_listing_box():
+    entries = [
+        {"region_id": "p", "region_name": "Palatine", "region_url": "https://x/p/", "holiday_url": "https://x/p/holiday/",
+         "tree": {"url": "https://v/p", "label": "Saturday, November 21, 4–7 PM", "date_iso": "2026-11-21"},
+         "events": [{"title": "Santa Breakfast", "date_iso": "2026-12-05T09:00:00", "date_label": "Sat, Dec 5", "anchor_id": "ev-santa"}]},
+        {"region_id": "w", "region_name": "Wheeling", "region_url": "https://x/w/", "holiday_url": "https://x/w/holiday/",
+         "tree": {"url": "https://v/w", "label": None, "date_iso": None}, "events": []},
+    ]
+    early = build_digest.render_holidays_page(entries, datetime(2026, 11, 10, 18, tzinfo=timezone.utc), None, None, "h@x.com")
+    assert 'class="h-hero"' in early and early.count('<div class="entry"') == 2
+    assert len(set(re.findall(r'--town:(#[0-9a-f]{6})', early))) == 2
+    assert 'class="emoji"' in early
+    assert "Get listed in the holiday guide, $20 until Nov 15" in early and "mailto:h@x.com" in early
+    late = build_digest.render_holidays_page(entries, datetime(2026, 11, 16, 18, tzinfo=timezone.utc), None, None, "h@x.com")
+    assert "holiday guide, $50." in late and "until Nov 15" not in late.split('id="holiday-listing"')[1].split("</div>")[0]
+    assert 'id="holiday-listing"' not in build_digest.render_holidays_page(entries, datetime(2026, 11, 16, 18, tzinfo=timezone.utc))

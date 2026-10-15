@@ -15553,7 +15553,7 @@ feeds carry but never group.
      cards, the share button's fallback, and the countdown on and after
      Oct 31.
 
-294. **Give `/holidays/` a festive look and the $20 listing a place on
+294. ✅ **DONE for `/holidays/` (2026-10-15): winter hero with inline-SVG string lights, town-coloured tree-lighting cards, emoji on events, and a "Local shop? Get listed, $20 until Nov 15" box (an email link; $50 from Nov 16, shown Oct–Dec only); tests added. Not done: the per-town `/holiday/` pages' header, and a Payment Link once the owner creates one (item 244).** **Give `/holidays/` a festive look and the $20 listing a place on
      it, by Oct 31.** Design/UX, build loop, `holidays.html.j2`. A winter
      hero with the holiday banner's palette (item 285) and inline-SVG
      string lights; **tree-lighting cards** (confirmed date in large
