@@ -3,211 +3,8 @@
 <channel>
   <title>Within Ten — Upcoming Local Events</title>
   <link>https://withintenmiles.com/</link>
-  <description>Upcoming events across every Within Ten region, soonest first - aggregated automatically from village, library, park district and school-district calendars. This build reached 23 of 28 configured sources.</description>
-  <lastBuildDate>Wed, 14 Oct 2026 22:02:25 +0000</lastBuildDate>
-  <item>
-    <title>Arlington Heights: Baby Time</title>
-    <link>https://withintenmiles.com/arlington-heights-60005/#ev-baby-time-2026-10-14</link>
-    <guid isPermaLink="true">https://withintenmiles.com/arlington-heights-60005/#ev-baby-time-2026-10-14</guid>
-    <description>Official listing: https://www.ahml.info/scheduling/reservation/224130</description>
-    <pubDate>Wed, 14 Oct 2026 00:00:00 +0000</pubDate>
-    <source url="https://www.ahml.info/scheduling/reservation/224130">Arlington Heights Memorial Library — Events</source>
-  </item>
-  <item>
-    <title>Wheeling: Read to Learn</title>
-    <link>https://withintenmiles.com/wheeling-60090/#ev-read-to-learn-2026-10-14</link>
-    <guid isPermaLink="true">https://withintenmiles.com/wheeling-60090/#ev-read-to-learn-2026-10-14</guid>
-    <description>Wednesday, October 14 2026 9:00am - 12:00pm 
- District 214 Read to Learn Adult Literacy Program. Official listing: https://indiantrails.libnet.info/event/11861200</description>
-    <pubDate>Wed, 14 Oct 2026 09:00:00 +0000</pubDate>
-    <source url="https://indiantrails.libnet.info/event/11861200">Indian Trails Public Library — Events</source>
-  </item>
-  <item>
-    <title>Mount Prospect: Toddler Storytime</title>
-    <link>https://withintenmiles.com/mount-prospect-60056/#ev-toddler-storytime-2026-10-14</link>
-    <guid isPermaLink="true">https://withintenmiles.com/mount-prospect-60056/#ev-toddler-storytime-2026-10-14</guid>
-    <description>Wednesday, October 14 2026 9:30am - 10:00am 
- Grow your little learner's literacy and language skills at this playful storytime full of wiggles, wonder, and… Official listing: https://mppl.libnet.info/event/16553440</description>
-    <pubDate>Wed, 14 Oct 2026 09:30:00 +0000</pubDate>
-    <source url="https://mppl.libnet.info/event/16553440">Mount Prospect Public Library — Events</source>
-  </item>
-  <item>
-    <title>Des Plaines: Baby Book Time</title>
-    <link>https://withintenmiles.com/des-plaines-60016/#ev-baby-book-time-2026-10-14</link>
-    <guid isPermaLink="true">https://withintenmiles.com/des-plaines-60016/#ev-baby-book-time-2026-10-14</guid>
-    <description>Wednesday, October 14 2026 10:00am - 11:00am 
- To register, please contact Irene Tripkos at 847-789-5623. Verbal confirmation from Irene Tripkos is needed in… Official listing: https://desplaines.libnet.info/event/16431779</description>
-    <pubDate>Wed, 14 Oct 2026 10:00:00 +0000</pubDate>
-    <source url="https://desplaines.libnet.info/event/16431779">Des Plaines Public Library — Events</source>
-  </item>
-  <item>
-    <title>Mount Prospect: Elected Officials Office Hours</title>
-    <link>https://withintenmiles.com/mount-prospect-60056/#ev-elected-officials-office-hours-2026-10-14</link>
-    <guid isPermaLink="true">https://withintenmiles.com/mount-prospect-60056/#ev-elected-officials-office-hours-2026-10-14</guid>
-    <description>Wednesday, October 14 2026 10:00am - 12:00pm 
- Learn about services and resources provided by Cook County. Official listing: https://mppl.libnet.info/event/15554310</description>
-    <pubDate>Wed, 14 Oct 2026 10:00:00 +0000</pubDate>
-    <source url="https://mppl.libnet.info/event/15554310">Mount Prospect Public Library — Events</source>
-  </item>
-  <item>
-    <title>Des Plaines: Meal Planning on a Budget</title>
-    <link>https://withintenmiles.com/des-plaines-60016/#ev-meal-planning-on-a-budget-2026-10-14</link>
-    <guid isPermaLink="true">https://withintenmiles.com/des-plaines-60016/#ev-meal-planning-on-a-budget-2026-10-14</guid>
-    <description>Wednesday, October 14 2026 11:00am - 12:00pm 
- Learn about affordable diabetes friendly food, grocery shopping tips, and culturally appropriate meals. Official listing: https://desplaines.libnet.info/event/16537414</description>
-    <pubDate>Wed, 14 Oct 2026 11:00:00 +0000</pubDate>
-    <source url="https://desplaines.libnet.info/event/16537414">Des Plaines Public Library — Events</source>
-  </item>
-  <item>
-    <title>Mount Prospect: Inglés para Hispanohablantes</title>
-    <link>https://withintenmiles.com/mount-prospect-60056/#ev-ingl-s-para-hispanohablantes-2026-10-14</link>
-    <guid isPermaLink="true">https://withintenmiles.com/mount-prospect-60056/#ev-ingl-s-para-hispanohablantes-2026-10-14</guid>
-    <description>Wednesday, October 14 2026 11:00am - 12:00pm 
- Una clase virtual vía Zoom, de conversación, para hispanohablantes que buscan mejorar su inglés. 
-
-A virtual… Official listing: https://mppl.libnet.info/event/17476743</description>
-    <pubDate>Wed, 14 Oct 2026 11:00:00 +0000</pubDate>
-    <source url="https://mppl.libnet.info/event/17476743">Mount Prospect Public Library — Events</source>
-  </item>
-  <item>
-    <title>Wheeling: Watercolor Landscape</title>
-    <link>https://withintenmiles.com/wheeling-60090/#ev-watercolor-landscape-2026-10-14</link>
-    <guid isPermaLink="true">https://withintenmiles.com/wheeling-60090/#ev-watercolor-landscape-2026-10-14</guid>
-    <description>Wednesday, October 14 2026 1:00pm - 2:00pm 
- Beginner friendly. Learn watercolor techniques to paint a basic natural landscape. Materials provided. R Official listing: https://indiantrails.libnet.info/event/16724014</description>
-    <pubDate>Wed, 14 Oct 2026 13:00:00 +0000</pubDate>
-    <source url="https://indiantrails.libnet.info/event/16724014">Indian Trails Public Library — Events</source>
-  </item>
-  <item>
-    <title>Des Plaines: Preschool Storytime</title>
-    <link>https://withintenmiles.com/des-plaines-60016/#ev-preschool-storytime-2026-10-14</link>
-    <guid isPermaLink="true">https://withintenmiles.com/des-plaines-60016/#ev-preschool-storytime-2026-10-14</guid>
-    <description>Wednesday, October 14 2026 1:30pm - 2:00pm 
- Ages 3-5, but all are welcome. Storytime is a fun and play-filled way to foster a lifelong love of reading and… Official listing: https://desplaines.libnet.info/event/17004187</description>
-    <pubDate>Wed, 14 Oct 2026 13:30:00 +0000</pubDate>
-    <source url="https://desplaines.libnet.info/event/17004187">Des Plaines Public Library — Events</source>
-  </item>
-  <item>
-    <title>Arlington Heights: AHPD Senior Art Show</title>
-    <link>https://withintenmiles.com/arlington-heights-60005/#ev-ahpd-senior-art-show-2026-10-14</link>
-    <guid isPermaLink="true">https://withintenmiles.com/arlington-heights-60005/#ev-ahpd-senior-art-show-2026-10-14</guid>
-    <description>Take in an evening of art and enjoyment! Peruse AHPD adult students’ creations at the annual Art Show. Visual art, fiber arts and woodcraft will be on display… Official listing: https://www.ahpd.org/event/ahpd-senior-art-show/</description>
-    <pubDate>Wed, 14 Oct 2026 16:00:00 +0000</pubDate>
-    <source url="https://www.ahpd.org/event/ahpd-senior-art-show/">Arlington Heights Park District — Events</source>
-  </item>
-  <item>
-    <title>Wheeling: Paperback Pals Book Club | Grades 2-3</title>
-    <link>https://withintenmiles.com/wheeling-60090/#ev-paperback-pals-book-club-grades-2-3-2026-10-14</link>
-    <guid isPermaLink="true">https://withintenmiles.com/wheeling-60090/#ev-paperback-pals-book-club-grades-2-3-2026-10-14</guid>
-    <description>Wednesday, October 14 2026 4:00pm - 5:00pm 
- Book pickup September 9-October 7 at the Youth Services Desk. Chester the cat tries to warn his human family that… Official listing: https://indiantrails.libnet.info/event/16709063</description>
-    <pubDate>Wed, 14 Oct 2026 16:00:00 +0000</pubDate>
-    <source url="https://indiantrails.libnet.info/event/16709063">Indian Trails Public Library — Events</source>
-  </item>
-  <item>
-    <title>Mount Prospect: Animal Investigators Junior: Jellyfish</title>
-    <link>https://withintenmiles.com/mount-prospect-60056/#ev-animal-investigators-junior-jellyfish-2026-10-14</link>
-    <guid isPermaLink="true">https://withintenmiles.com/mount-prospect-60056/#ev-animal-investigators-junior-jellyfish-2026-10-14</guid>
-    <description>Wednesday, October 14 2026 4:30pm - 5:30pm 
- Let's hang out and admire incredible animals together! Official listing: https://mppl.libnet.info/event/16640992</description>
-    <pubDate>Wed, 14 Oct 2026 16:30:00 +0000</pubDate>
-    <source url="https://mppl.libnet.info/event/16640992">Mount Prospect Public Library — Events</source>
-  </item>
-  <item>
-    <title>Mount Prospect: Movie Screening: Project Hail Mary</title>
-    <link>https://withintenmiles.com/mount-prospect-60056/#ev-movie-screening-project-hail-mary-2026-10-14</link>
-    <guid isPermaLink="true">https://withintenmiles.com/mount-prospect-60056/#ev-movie-screening-project-hail-mary-2026-10-14</guid>
-    <description>Wednesday, October 14 2026 4:30pm - 7:30pm 
- Join us for a screening of Project Hail Mary. Official listing: https://mppl.libnet.info/event/16760346</description>
-    <pubDate>Wed, 14 Oct 2026 16:30:00 +0000</pubDate>
-    <source url="https://mppl.libnet.info/event/16760346">Mount Prospect Public Library — Events</source>
-  </item>
-  <item>
-    <title>Des Plaines: The Queer Canvas: LGBTQIA+ Art Club</title>
-    <link>https://withintenmiles.com/des-plaines-60016/#ev-the-queer-canvas-lgbtqia-art-club-2026-10-14</link>
-    <guid isPermaLink="true">https://withintenmiles.com/des-plaines-60016/#ev-the-queer-canvas-lgbtqia-art-club-2026-10-14</guid>
-    <description>Wednesday, October 14 2026 5:00pm - 7:00pm 
- Looking for a place for LGBTQ+ adults to hang out, create art, and connect? Bring your sketchbook or any art… Official listing: https://desplaines.libnet.info/event/15980659</description>
-    <pubDate>Wed, 14 Oct 2026 17:00:00 +0000</pubDate>
-    <source url="https://desplaines.libnet.info/event/15980659">Des Plaines Public Library — Events</source>
-  </item>
-  <item>
-    <title>Wheeling: Autumnal Pipe Cleaner Bouquets</title>
-    <link>https://withintenmiles.com/wheeling-60090/#ev-autumnal-pipe-cleaner-bouquets-2026-10-14</link>
-    <guid isPermaLink="true">https://withintenmiles.com/wheeling-60090/#ev-autumnal-pipe-cleaner-bouquets-2026-10-14</guid>
-    <description>Wednesday, October 14 2026 6:00pm - 8:30pm 
- Learn to make pipe cleaner flowers for an autumnal bouquet. R Official listing: https://indiantrails.libnet.info/event/16494502</description>
-    <pubDate>Wed, 14 Oct 2026 18:00:00 +0000</pubDate>
-    <source url="https://indiantrails.libnet.info/event/16494502">Indian Trails Public Library — Events</source>
-  </item>
-  <item>
-    <title>Mount Prospect: Intro to Adobe Premier: Part 1</title>
-    <link>https://withintenmiles.com/mount-prospect-60056/#ev-intro-to-adobe-premier-part-1-2026-10-14</link>
-    <guid isPermaLink="true">https://withintenmiles.com/mount-prospect-60056/#ev-intro-to-adobe-premier-part-1-2026-10-14</guid>
-    <description>Wednesday, October 14 2026 6:30pm - 8:00pm 
- Curious about editing videos with Adobe Premiere? In this two-part program, we will cover the basics of adobe… Official listing: https://mppl.libnet.info/event/16278627</description>
-    <pubDate>Wed, 14 Oct 2026 18:30:00 +0000</pubDate>
-    <source url="https://mppl.libnet.info/event/16278627">Mount Prospect Public Library — Events</source>
-  </item>
-  <item>
-    <title>Wheeling: Plan Commission Meeting</title>
-    <link>https://withintenmiles.com/wheeling-60090/#ev-plan-commission-meeting-2026-10-14</link>
-    <guid isPermaLink="true">https://withintenmiles.com/wheeling-60090/#ev-plan-commission-meeting-2026-10-14</guid>
-    <description>https://www.wheelingil.gov/calendar.aspx?EID=2135 Official listing: https://www.wheelingil.gov/common/modules/iCalendar/iCalendar.aspx?feed=calendar&amp;catID=14</description>
-    <pubDate>Wed, 14 Oct 2026 18:30:00 +0000</pubDate>
-    <source url="https://www.wheelingil.gov/common/modules/iCalendar/iCalendar.aspx?feed=calendar&amp;catID=14">Village of Wheeling — Calendar</source>
-  </item>
-  <item>
-    <title>Des Plaines: Family Storytime</title>
-    <link>https://withintenmiles.com/des-plaines-60016/#ev-family-storytime-2026-10-14</link>
-    <guid isPermaLink="true">https://withintenmiles.com/des-plaines-60016/#ev-family-storytime-2026-10-14</guid>
-    <description>Wednesday, October 14 2026 7:00pm - 7:30pm 
- Best for families with children ages 2-7, but all are welcome. See full description for details. Registration… Official listing: https://desplaines.libnet.info/event/17004254</description>
-    <pubDate>Wed, 14 Oct 2026 19:00:00 +0000</pubDate>
-    <source url="https://desplaines.libnet.info/event/17004254">Des Plaines Public Library — Events</source>
-  </item>
-  <item>
-    <title>Palatine: District 1 and 2 Residents' Advisory Meeting Fall 2026</title>
-    <link>https://withintenmiles.com/palatine-60067/#ev-district-1-and-2-residents-advisory-meeting-fall-2026-2026-10-14</link>
-    <guid isPermaLink="true">https://withintenmiles.com/palatine-60067/#ev-district-1-and-2-residents-advisory-meeting-fall-2026-2026-10-14</guid>
-    <description>https://www.palatine.il.us/calendar.aspx?EID=2177 Official listing: https://www.palatine.il.us/common/modules/iCalendar/iCalendar.aspx?feed=calendar&amp;catID=14</description>
-    <pubDate>Wed, 14 Oct 2026 19:00:00 +0000</pubDate>
-    <source url="https://www.palatine.il.us/common/modules/iCalendar/iCalendar.aspx?feed=calendar&amp;catID=14">Village of Palatine — Calendar</source>
-  </item>
-  <item>
-    <title>Wheeling: Foundation Board Meeting</title>
-    <link>https://withintenmiles.com/wheeling-60090/#ev-foundation-board-meeting-2026-10-14</link>
-    <guid isPermaLink="true">https://withintenmiles.com/wheeling-60090/#ev-foundation-board-meeting-2026-10-14</guid>
-    <description>Wednesday, October 14 2026 7:00pm - 8:30pm 
- Foundation Board Meeting Official listing: https://indiantrails.libnet.info/event/12499301</description>
-    <pubDate>Wed, 14 Oct 2026 19:00:00 +0000</pubDate>
-    <source url="https://indiantrails.libnet.info/event/12499301">Indian Trails Public Library — Events</source>
-  </item>
-  <item>
-    <title>Wheeling: Back to Basics: Navigating Chrome</title>
-    <link>https://withintenmiles.com/wheeling-60090/#ev-back-to-basics-navigating-chrome-2026-10-14</link>
-    <guid isPermaLink="true">https://withintenmiles.com/wheeling-60090/#ev-back-to-basics-navigating-chrome-2026-10-14</guid>
-    <description>Wednesday, October 14 2026 7:00pm - 8:00pm 
- Learn to use the web browser Google Chrome to access the Internet. This class is intended for those with little… Official listing: https://indiantrails.libnet.info/event/16642706</description>
-    <pubDate>Wed, 14 Oct 2026 19:00:00 +0000</pubDate>
-    <source url="https://indiantrails.libnet.info/event/16642706">Indian Trails Public Library — Events</source>
-  </item>
-  <item>
-    <title>Des Plaines: POSTPONED - GIPSY KINGS</title>
-    <link>https://withintenmiles.com/des-plaines-60016/#ev-postponed-gipsy-kings-2026-10-14</link>
-    <guid isPermaLink="true">https://withintenmiles.com/des-plaines-60016/#ev-postponed-gipsy-kings-2026-10-14</guid>
-    <description>THIS EVENT HAS BEEN POSTPONED. A RESCHEDULED DATE WILL BE ANNOUNCED SOON. Pablo Reyes grew up in the vibrant Gypsy community of Arles, in the south of France,… Official listing: https://desplainestheatre.com/event/gipsy-kings-3/</description>
-    <pubDate>Wed, 14 Oct 2026 19:30:00 +0000</pubDate>
-    <source url="https://desplainestheatre.com/event/gipsy-kings-3/">Des Plaines Theatre — Events</source>
-  </item>
-  <item>
-    <title>Des Plaines: BOURBON 'N BRASS: LIVE JAZZ with the BOURBON 'N BRASS TRIO featuring DAKOTA HORVATH</title>
-    <link>https://withintenmiles.com/des-plaines-60016/#ev-bourbon-n-brass-live-jazz-with-the-bourbon-n-brass-trio-feat-2026-10-14</link>
-    <guid isPermaLink="true">https://withintenmiles.com/des-plaines-60016/#ev-bourbon-n-brass-live-jazz-with-the-bourbon-n-brass-trio-feat-2026-10-14</guid>
-    <description>Join us in our intimate Bourbon ‘N Brass Speakeasy, located on the 2nd floor of the Des Plaines Theatre, for an evening of Jazz with the Bourbon ‘N Brass Trio… Official listing: https://desplainestheatre.com/event/bourbon-n-brass-live-jazz-with-the-bourbon-n-brass-trio-featuring-dakota-horvath-5/</description>
-    <pubDate>Wed, 14 Oct 2026 19:30:00 +0000</pubDate>
-    <source url="https://desplainestheatre.com/event/bourbon-n-brass-live-jazz-with-the-bourbon-n-brass-trio-featuring-dakota-horvath-5/">Des Plaines Theatre — Events</source>
-  </item>
+  <description>Upcoming events across every Within Ten region, soonest first - aggregated automatically from village, library, park district and school-district calendars. This build reached 22 of 28 configured sources. 1 source is shown from its last update, up to 8 hours ago.</description>
+  <lastBuildDate>Thu, 15 Oct 2026 06:02:40 +0000</lastBuildDate>
   <item>
     <title>Arlington Heights: Toddler Time</title>
     <link>https://withintenmiles.com/arlington-heights-60005/#ev-toddler-time-2026-10-15</link>
@@ -329,6 +126,15 @@ Hoopla or another library app?… Official listing: https://indiantrails.libnet.
     <source url="https://desplaines.libnet.info/event/17241857">Des Plaines Public Library — Events</source>
   </item>
   <item>
+    <title>Mount Prospect: Meet the Executive Director</title>
+    <link>https://withintenmiles.com/mount-prospect-60056/#ev-meet-the-executive-director-2026-10-15</link>
+    <guid isPermaLink="true">https://withintenmiles.com/mount-prospect-60056/#ev-meet-the-executive-director-2026-10-15</guid>
+    <description>Thursday, October 15 2026 4:00pm - 5:00pm 
+ Drop by for cookies and an informal chat with the Executive Director. Official listing: https://mppl.libnet.info/event/16621502</description>
+    <pubDate>Thu, 15 Oct 2026 16:00:00 +0000</pubDate>
+    <source url="https://mppl.libnet.info/event/16621502">Mount Prospect Public Library — Events</source>
+  </item>
+  <item>
     <title>Wheeling: Unbe-leaf-able Art</title>
     <link>https://withintenmiles.com/wheeling-60090/#ev-unbe-leaf-able-art-2026-10-15</link>
     <guid isPermaLink="true">https://withintenmiles.com/wheeling-60090/#ev-unbe-leaf-able-art-2026-10-15</guid>
@@ -408,12 +214,12 @@ Hoopla or another library app?… Official listing: https://indiantrails.libnet.
     <source url="https://desplainestheatre.com/event/bourbon-n-brass-speakeasy-blues-show-with-brandye-phillips-4/">Des Plaines Theatre — Events</source>
   </item>
   <item>
-    <title>Arlington Heights: First-Time Parents' Meetup</title>
-    <link>https://withintenmiles.com/arlington-heights-60005/#ev-first-time-parents-meetup-2026-10-16</link>
-    <guid isPermaLink="true">https://withintenmiles.com/arlington-heights-60005/#ev-first-time-parents-meetup-2026-10-16</guid>
-    <description>Official listing: https://www.ahml.info/scheduling/reservation/224295</description>
+    <title>Arlington Heights: Senior Center: Travelogue</title>
+    <link>https://withintenmiles.com/arlington-heights-60005/#ev-senior-center-travelogue-2026-10-16</link>
+    <guid isPermaLink="true">https://withintenmiles.com/arlington-heights-60005/#ev-senior-center-travelogue-2026-10-16</guid>
+    <description>Official listing: https://www.ahml.info/scheduling/reservation/224945</description>
     <pubDate>Fri, 16 Oct 2026 00:00:00 +0000</pubDate>
-    <source url="https://www.ahml.info/scheduling/reservation/224295">Arlington Heights Memorial Library — Events</source>
+    <source url="https://www.ahml.info/scheduling/reservation/224945">Arlington Heights Memorial Library — Events</source>
   </item>
   <item>
     <title>Des Plaines: Baby Book Time</title>
@@ -450,6 +256,201 @@ Hoopla or another library app?… Official listing: https://indiantrails.libnet.
  Start your day with books, rhymes and songs. TR Official listing: https://indiantrails.libnet.info/event/16550261</description>
     <pubDate>Fri, 16 Oct 2026 10:00:00 +0000</pubDate>
     <source url="https://indiantrails.libnet.info/event/16550261">Indian Trails Public Library — Events</source>
+  </item>
+  <item>
+    <title>Wheeling: Preschool Storytime</title>
+    <link>https://withintenmiles.com/wheeling-60090/#ev-preschool-storytime-2026-10-16</link>
+    <guid isPermaLink="true">https://withintenmiles.com/wheeling-60090/#ev-preschool-storytime-2026-10-16</guid>
+    <description>Friday, October 16 2026 11:00am - 11:30am 
+ Boost early literacy skills with books, movement and songs. TR Official listing: https://indiantrails.libnet.info/event/16550265</description>
+    <pubDate>Fri, 16 Oct 2026 11:00:00 +0000</pubDate>
+    <source url="https://indiantrails.libnet.info/event/16550265">Indian Trails Public Library — Events</source>
+  </item>
+  <item>
+    <title>Wheeling: Movie Matinee: West Side Story (2021)</title>
+    <link>https://withintenmiles.com/wheeling-60090/#ev-movie-matinee-west-side-story-2021-2026-10-16</link>
+    <guid isPermaLink="true">https://withintenmiles.com/wheeling-60090/#ev-movie-matinee-west-side-story-2021-2026-10-16</guid>
+    <description>Friday, October 16 2026 2:00pm - 4:40pm 
+ When young Tony and Maria fall in love in 1957 New York City, their romance helps to fuel the fire between the… Official listing: https://indiantrails.libnet.info/event/16658184</description>
+    <pubDate>Fri, 16 Oct 2026 14:00:00 +0000</pubDate>
+    <source url="https://indiantrails.libnet.info/event/16658184">Indian Trails Public Library — Events</source>
+  </item>
+  <item>
+    <title>Wheeling: Family Craft Fridays | At The Branch</title>
+    <link>https://withintenmiles.com/wheeling-60090/#ev-family-craft-fridays-at-the-branch-2026-10-16</link>
+    <guid isPermaLink="true">https://withintenmiles.com/wheeling-60090/#ev-family-craft-fridays-at-the-branch-2026-10-16</guid>
+    <description>Friday, October 16 2026 5:30pm - 7:00pm 
+ Create unique seasonal and theme-based projects. Materials provided. While supplies last. NR Official listing: https://indiantrails.libnet.info/event/16606750</description>
+    <pubDate>Fri, 16 Oct 2026 17:30:00 +0000</pubDate>
+    <source url="https://indiantrails.libnet.info/event/16606750">Indian Trails Public Library — Events</source>
+  </item>
+  <item>
+    <title>Wheeling: Custom Candy Bag</title>
+    <link>https://withintenmiles.com/wheeling-60090/#ev-custom-candy-bag-2026-10-16</link>
+    <guid isPermaLink="true">https://withintenmiles.com/wheeling-60090/#ev-custom-candy-bag-2026-10-16</guid>
+    <description>Friday, October 16 2026 5:30pm - 6:30pm 
+ Use the sublimation printer to design a custom Halloween candy bag.  R Official listing: https://indiantrails.libnet.info/event/16730448</description>
+    <pubDate>Fri, 16 Oct 2026 17:30:00 +0000</pubDate>
+    <source url="https://indiantrails.libnet.info/event/16730448">Indian Trails Public Library — Events</source>
+  </item>
+  <item>
+    <title>Des Plaines: The Next Chapter</title>
+    <link>https://withintenmiles.com/des-plaines-60016/#ev-the-next-chapter-2026-10-16</link>
+    <guid isPermaLink="true">https://withintenmiles.com/des-plaines-60016/#ev-the-next-chapter-2026-10-16</guid>
+    <description>Friday, October 16 2026 6:00pm - 8:00pm 
+ A Young Adult Round Table on College, Careers, &amp; Everything In Between
+Ages 16-30
+Free
+Light refreshments will be… Official listing: https://desplaines.libnet.info/event/17616372</description>
+    <pubDate>Fri, 16 Oct 2026 18:00:00 +0000</pubDate>
+    <source url="https://desplaines.libnet.info/event/17616372">Des Plaines Public Library — Events</source>
+  </item>
+  <item>
+    <title>Wheeling: Chats &amp; Food</title>
+    <link>https://withintenmiles.com/wheeling-60090/#ev-chats-food-2026-10-16</link>
+    <guid isPermaLink="true">https://withintenmiles.com/wheeling-60090/#ev-chats-food-2026-10-16</guid>
+    <description>Friday, October 16 2026 6:00pm - 7:30pm 
+ Spend time with your neighbors, enjoy traditional food, play games, and win prizes. Ven a compartir con tus vecinos,… Official listing: https://indiantrails.libnet.info/event/16817726</description>
+    <pubDate>Fri, 16 Oct 2026 18:00:00 +0000</pubDate>
+    <source url="https://indiantrails.libnet.info/event/16817726">Indian Trails Public Library — Events</source>
+  </item>
+  <item>
+    <title>Arlington Heights: Oddities Night</title>
+    <link>https://withintenmiles.com/arlington-heights-60005/#ev-oddities-night-2026-10-16</link>
+    <guid isPermaLink="true">https://withintenmiles.com/arlington-heights-60005/#ev-oddities-night-2026-10-16</guid>
+    <description>Step into the strange and mysterious at Oddities Night! Explore unusual objects from local museum collections, enjoy treats and themed drinks and experience a… Official listing: https://www.ahpd.org/event/oddities-night/</description>
+    <pubDate>Fri, 16 Oct 2026 19:00:00 +0000</pubDate>
+    <source url="https://www.ahpd.org/event/oddities-night/">Arlington Heights Park District — Events</source>
+  </item>
+  <item>
+    <title>Des Plaines: Indivisible Des Plaines</title>
+    <link>https://withintenmiles.com/des-plaines-60016/#ev-indivisible-des-plaines-2026-10-16</link>
+    <guid isPermaLink="true">https://withintenmiles.com/des-plaines-60016/#ev-indivisible-des-plaines-2026-10-16</guid>
+    <description>Friday, October 16 2026 7:00pm - 8:30pm 
+ Regina - Indivisible
+nwprogressivedems@gmail.com Official listing: https://desplaines.libnet.info/event/17174492</description>
+    <pubDate>Fri, 16 Oct 2026 19:00:00 +0000</pubDate>
+    <source url="https://desplaines.libnet.info/event/17174492">Des Plaines Public Library — Events</source>
+  </item>
+  <item>
+    <title>Des Plaines: TAYLOR DAYNE</title>
+    <link>https://withintenmiles.com/des-plaines-60016/#ev-taylor-dayne-2026-10-16</link>
+    <guid isPermaLink="true">https://withintenmiles.com/des-plaines-60016/#ev-taylor-dayne-2026-10-16</guid>
+    <description>Taylor Dayne is a global pop icon with a career spanning three decades, Taylor’s groundbreaking debut single “Tell It To My Heart” turned her into an… Official listing: https://desplainestheatre.com/event/taylor-dayne/</description>
+    <pubDate>Fri, 16 Oct 2026 20:00:00 +0000</pubDate>
+    <source url="https://desplainestheatre.com/event/taylor-dayne/">Des Plaines Theatre — Events</source>
+  </item>
+  <item>
+    <title>Des Plaines: BOURBON 'N BRASS SPEAKEASY: LIVE JAZZ with THE BOOTLEGGERS playing 20s &amp; 30s DANCE FAVORITES</title>
+    <link>https://withintenmiles.com/des-plaines-60016/#ev-bourbon-n-brass-speakeasy-live-jazz-with-the-bootleggers-pla-2026-10-16</link>
+    <guid isPermaLink="true">https://withintenmiles.com/des-plaines-60016/#ev-bourbon-n-brass-speakeasy-live-jazz-with-the-bootleggers-pla-2026-10-16</guid>
+    <description>Join us in our intimate Bourbon ‘N Brass Speakeasy, located on the 2nd floor of the Des Plaines Theatre, for an evening of Jazz with The Bootleggers playing… Official listing: https://desplainestheatre.com/event/bourbon-n-brass-speakeasy-live-jazz-with-the-bootleggers-3/</description>
+    <pubDate>Fri, 16 Oct 2026 20:30:00 +0000</pubDate>
+    <source url="https://desplainestheatre.com/event/bourbon-n-brass-speakeasy-live-jazz-with-the-bootleggers-3/">Des Plaines Theatre — Events</source>
+  </item>
+  <item>
+    <title>Arlington Heights: Beginning ESL</title>
+    <link>https://withintenmiles.com/arlington-heights-60005/#ev-beginning-esl-2026-10-17</link>
+    <guid isPermaLink="true">https://withintenmiles.com/arlington-heights-60005/#ev-beginning-esl-2026-10-17</guid>
+    <description>Official listing: https://www.ahml.info/scheduling/reservation/234242</description>
+    <pubDate>Sat, 17 Oct 2026 00:00:00 +0000</pubDate>
+    <source url="https://www.ahml.info/scheduling/reservation/234242">Arlington Heights Memorial Library — Events</source>
+  </item>
+  <item>
+    <title>Des Plaines: Service Hour Drop In</title>
+    <link>https://withintenmiles.com/des-plaines-60016/#ev-service-hour-drop-in-2026-10-17</link>
+    <guid isPermaLink="true">https://withintenmiles.com/des-plaines-60016/#ev-service-hour-drop-in-2026-10-17</guid>
+    <description>Saturday, October 17 2026 12:00am - 11:59pm 
+ Need some service hours? Join us in The Commons where we will have different service options once a month. For… Official listing: https://desplaines.libnet.info/event/16341087</description>
+    <pubDate>Sat, 17 Oct 2026 00:00:00 +0000</pubDate>
+    <source url="https://desplaines.libnet.info/event/16341087">Des Plaines Public Library — Events</source>
+  </item>
+  <item>
+    <title>Mount Prospect: Friends Book Sale</title>
+    <link>https://withintenmiles.com/mount-prospect-60056/#ev-friends-book-sale-2026-10-17</link>
+    <guid isPermaLink="true">https://withintenmiles.com/mount-prospect-60056/#ev-friends-book-sale-2026-10-17</guid>
+    <description>Saturday, October 17 2026 9:00am - 4:30pm 
+ Stock up on great books at bargain prices during the Friends of the Library's used book sale. Official listing: https://mppl.libnet.info/event/13845865</description>
+    <pubDate>Sat, 17 Oct 2026 09:00:00 +0000</pubDate>
+    <source url="https://mppl.libnet.info/event/13845865">Mount Prospect Public Library — Events</source>
+  </item>
+  <item>
+    <title>Palatine: St. Paul United Church of Christ Fall Rummage Sale</title>
+    <link>https://withintenmiles.com/palatine-60067/#ev-st-paul-united-church-of-christ-fall-rummage-sale-2026-10-17</link>
+    <guid isPermaLink="true">https://withintenmiles.com/palatine-60067/#ev-st-paul-united-church-of-christ-fall-rummage-sale-2026-10-17</guid>
+    <description>Fall Rummage Sale and Palatine Food Pantry Drive https://www.pa Official listing: https://www.palatine.il.us/common/modules/iCalendar/iCalendar.aspx?feed=calendar&amp;catID=14</description>
+    <pubDate>Sat, 17 Oct 2026 09:00:00 +0000</pubDate>
+    <source url="https://www.palatine.il.us/common/modules/iCalendar/iCalendar.aspx?feed=calendar&amp;catID=14">Village of Palatine — Calendar</source>
+  </item>
+  <item>
+    <title>Des Plaines: Des Plaines Lions Club Volunteer Hour</title>
+    <link>https://withintenmiles.com/des-plaines-60016/#ev-des-plaines-lions-club-volunteer-hour-2026-10-17</link>
+    <guid isPermaLink="true">https://withintenmiles.com/des-plaines-60016/#ev-des-plaines-lions-club-volunteer-hour-2026-10-17</guid>
+    <description>Saturday, October 17 2026 10:00am - 11:15am 
+  DesPlainesLionsClub@gmail.com
+The Des Plaines Lions Club is hosting a volunteer hour! All are welcome to help… Official listing: https://desplaines.libnet.info/event/17218186</description>
+    <pubDate>Sat, 17 Oct 2026 10:00:00 +0000</pubDate>
+    <source url="https://desplaines.libnet.info/event/17218186">Des Plaines Public Library — Events</source>
+  </item>
+  <item>
+    <title>Palatine: Palatine Plaza Fall Fun Fest</title>
+    <link>https://withintenmiles.com/palatine-60067/#ev-palatine-plaza-fall-fun-fest-2026-10-17</link>
+    <guid isPermaLink="true">https://withintenmiles.com/palatine-60067/#ev-palatine-plaza-fall-fun-fest-2026-10-17</guid>
+    <description>Trick or Treat Fest in Palatine Plaza https://www.palatine.il.u Official listing: https://www.palatine.il.us/common/modules/iCalendar/iCalendar.aspx?feed=calendar&amp;catID=14</description>
+    <pubDate>Sat, 17 Oct 2026 11:00:00 +0000</pubDate>
+    <source url="https://www.palatine.il.us/common/modules/iCalendar/iCalendar.aspx?feed=calendar&amp;catID=14">Village of Palatine — Calendar</source>
+  </item>
+  <item>
+    <title>Wheeling: Super Saturday: ¡Being Bilingual Rocks!</title>
+    <link>https://withintenmiles.com/wheeling-60090/#ev-super-saturday-being-bilingual-rocks-2026-10-17</link>
+    <guid isPermaLink="true">https://withintenmiles.com/wheeling-60090/#ev-super-saturday-being-bilingual-rocks-2026-10-17</guid>
+    <description>Saturday, October 17 2026 11:00am - 11:45am 
+ All ages. Join Alina Celeste y Mi Amigo Hamlet for an interactive musical celebration in English and Spanish. Be… Official listing: https://indiantrails.libnet.info/event/16659178</description>
+    <pubDate>Sat, 17 Oct 2026 11:00:00 +0000</pubDate>
+    <source url="https://indiantrails.libnet.info/event/16659178">Indian Trails Public Library — Events</source>
+  </item>
+  <item>
+    <title>Palatine: Roper Romp - People Helping People-Palatine</title>
+    <link>https://withintenmiles.com/palatine-60067/#ev-roper-romp-people-helping-people-palatine-2026-10-17</link>
+    <guid isPermaLink="true">https://withintenmiles.com/palatine-60067/#ev-roper-romp-people-helping-people-palatine-2026-10-17</guid>
+    <description>Fun fundraiser in downtown Palatine to support those in need in Official listing: https://www.palatine.il.us/common/modules/iCalendar/iCalendar.aspx?feed=calendar&amp;catID=14</description>
+    <pubDate>Sat, 17 Oct 2026 13:00:00 +0000</pubDate>
+    <source url="https://www.palatine.il.us/common/modules/iCalendar/iCalendar.aspx?feed=calendar&amp;catID=14">Village of Palatine — Calendar</source>
+  </item>
+  <item>
+    <title>Arlington Heights: Tell Your Cellar Story</title>
+    <link>https://withintenmiles.com/arlington-heights-60005/#ev-tell-your-cellar-story-2026-10-17</link>
+    <guid isPermaLink="true">https://withintenmiles.com/arlington-heights-60005/#ev-tell-your-cellar-story-2026-10-17</guid>
+    <description>Step back in time and share your memories of The Cellar, Arlington Heights’ iconic historic music venue! Whether you spent nights in the crowd, worked behind… Official listing: https://www.ahpd.org/event/tell-your-cellar-story/</description>
+    <pubDate>Sat, 17 Oct 2026 14:00:00 +0000</pubDate>
+    <source url="https://www.ahpd.org/event/tell-your-cellar-story/">Arlington Heights Park District — Events</source>
+  </item>
+  <item>
+    <title>Des Plaines: Build a Pinecone Bird Feeder</title>
+    <link>https://withintenmiles.com/des-plaines-60016/#ev-build-a-pinecone-bird-feeder-2026-10-17</link>
+    <guid isPermaLink="true">https://withintenmiles.com/des-plaines-60016/#ev-build-a-pinecone-bird-feeder-2026-10-17</guid>
+    <description>Saturday, October 17 2026 2:00pm - 3:00pm 
+ Build a Pinecone Birdfeeder 
+
+Make a pine cone suet feeder while you listen to Alyse Burman from the Wildbird… Official listing: https://desplaines.libnet.info/event/16864895</description>
+    <pubDate>Sat, 17 Oct 2026 14:00:00 +0000</pubDate>
+    <source url="https://desplaines.libnet.info/event/16864895">Des Plaines Public Library — Events</source>
+  </item>
+  <item>
+    <title>Des Plaines: THE MUSICAL BOX proudly presents...AND THEN THERE WAS...PHIL</title>
+    <link>https://withintenmiles.com/des-plaines-60016/#ev-the-musical-box-proudly-presents-and-then-there-was-phil-2026-10-17</link>
+    <guid isPermaLink="true">https://withintenmiles.com/des-plaines-60016/#ev-the-musical-box-proudly-presents-and-then-there-was-phil-2026-10-17</guid>
+    <description>In yet its biggest and most daring production, The Musical Box, true to its reputation as a time machine, delivers an authentic live musical experience for… Official listing: https://desplainestheatre.com/event/the-musical-box-proudly-presents-and-then-there-was-phil-2/</description>
+    <pubDate>Sat, 17 Oct 2026 20:00:00 +0000</pubDate>
+    <source url="https://desplainestheatre.com/event/the-musical-box-proudly-presents-and-then-there-was-phil-2/">Des Plaines Theatre — Events</source>
+  </item>
+  <item>
+    <title>Des Plaines: BOURBON 'N BRASS SPEAKEASY: LIVE JAZZ with DONNY DeMARCO &amp; TUNE TOWN</title>
+    <link>https://withintenmiles.com/des-plaines-60016/#ev-bourbon-n-brass-speakeasy-live-jazz-with-donny-demarco-tune-2026-10-17</link>
+    <guid isPermaLink="true">https://withintenmiles.com/des-plaines-60016/#ev-bourbon-n-brass-speakeasy-live-jazz-with-donny-demarco-tune-2026-10-17</guid>
+    <description>Join us in our intimate Bourbon ‘N Brass Speakeasy, located on the 2nd floor of the Des Plaines Theatre, for an evening of Jazz with Donny DeMarco &amp; Tune… Official listing: https://desplainestheatre.com/event/bourbon-n-brass-speakeasy-live-jazz-with-donny-demarco-tune-town-4/</description>
+    <pubDate>Sat, 17 Oct 2026 20:30:00 +0000</pubDate>
+    <source url="https://desplainestheatre.com/event/bourbon-n-brass-speakeasy-live-jazz-with-donny-demarco-tune-town-4/">Des Plaines Theatre — Events</source>
   </item>
 </channel>
 </rss>

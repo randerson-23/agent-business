@@ -145,6 +145,38 @@
   a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
   footer { text-align: center; color: var(--muted); font-size: 12.5px; margin-top: 32px; border-top: 2px solid var(--border); padding-top: 18px; }
   footer a { color: var(--accent-2-text); font-weight: 700; }
+  /* ROADMAP.md item 293: the Halloween look the homepage banner promises -
+     fixed colours that read the same in light and dark mode, inline SVG, no
+     image files. */
+  .tot-hero { position: relative; overflow: hidden; background: radial-gradient(circle at 85% 20%, #3b1d5e 0%, #1a0f2b 55%, #120a1f 100%); color: #fff4e6; border-bottom: 4px solid #ff7a00; padding: 20px 20px 24px; }
+  .tot-hero-inner { position: relative; max-width: 680px; margin: 0 auto; display: flex; gap: 16px; align-items: center; }
+  .tot-art { flex: 0 0 auto; width: 104px; height: 104px; }
+  .tot-art svg { width: 100%; height: 100%; display: block; }
+  .tot-hero a.back { color: #d9c2ff; }
+  .tot-hero a.back:hover { color: #ffb347; }
+  .tot-hero .kicker { color: #ffb347; letter-spacing: 0.14em; }
+  .tot-hero h1 { color: #fff; margin: 8px 0 8px; font-size: clamp(22px, 5vw, 30px); line-height: 1.15; }
+  .tot-hero .sub { color: #e8dcff; font-size: 15px; }
+  .tot-countdown { display: inline-block; margin-top: 10px; background: rgba(255,122,0,.18); border: 1px solid rgba(255,140,26,.6); border-radius: 999px; padding: 3px 12px; font-weight: 800; color: #ffb347; font-size: 14px; }
+  .tot-hero .bat { position: absolute; fill: #0b0613; opacity: .9; }
+  @media (prefers-reduced-motion: no-preference) {
+    .tot-hero .bat { animation: tot-bat 2.4s ease-in-out infinite; transform-origin: center; }
+    .tot-hero .bat.b2 { animation-delay: .8s; }
+    @keyframes tot-bat { 0%,100% { transform: translateY(0) scaleY(1); } 50% { transform: translateY(-4px) scaleY(.7); } }
+  }
+  @media (max-width: 480px) { .tot-art { width: 64px; height: 64px; } }
+  .entry { border: 1px solid var(--border); border-left: 6px solid var(--town, var(--accent)); background: var(--card); padding: 14px 16px; margin-bottom: 10px; }
+  .entry:last-child { border-bottom: 1px solid var(--border); }
+  .entry .region a { color: var(--town, var(--ink)); font-size: 17px; }
+  .entry .hours { font-size: 17px; }
+  .entry .also { flex-basis: 100%; font-size: 13.5px; color: var(--muted); border-top: 1px dashed var(--border); padding-top: 8px; margin-top: 2px; }
+  .entry .also a { color: var(--accent-2-text); font-weight: 700; text-decoration: none; }
+  .entry .also a:hover { text-decoration: underline; }
+  .events .emoji { display: inline-block; width: 1.6em; }
+  .share { margin: 4px 0 18px; }
+  .share button { font: inherit; font-weight: 800; color: #1a0f2b; background: #ff7a00; border: 0; border-radius: 999px; padding: 9px 18px; cursor: pointer; }
+  .share button:hover, .share button:focus-visible { background: #ffa040; }
+  .share .copied { margin-left: 10px; color: var(--muted); font-size: 13.5px; }
 </style>
 <style>
   .newsletter {
@@ -196,12 +228,28 @@
 </style>
 </head>
 <body>
-<header class="hero">
-  <div class="hero-inner">
-    <a class="back" href="https://withintenmiles.com/">&larr; All regions</a>
-    <span class="kicker">Seasonal</span>
-    <h1>Trick-or-Treat Hours 2026: Arlington Heights, Des Plaines, Mount Prospect, Palatine, Wheeling</h1>
-    <div class="sub">Official hours for Arlington Heights, Des Plaines, Mount Prospect, Palatine, and Wheeling, in one place, each linked to the village page it came from.</div>
+<header class="tot-hero">
+  <svg class="bat b1" viewBox="0 0 64 32" width="40" style="top:12px; right:16%;" aria-hidden="true"><path d="M32 12c-2-6-6-8-10-8 2 3 2 6 0 8-3-2-7-2-10 0 1-3 0-6-4-8-4 4-6 10-6 14 4-3 9-3 13 0 2-3 6-4 9-2 3-3 6-4 8-10 2 6 5 7 8 10 3-2 7-1 9 2 4-3 9-3 13 0 0-4-2-10-6-14-4 2-5 5-4 8-3-2-7-2-10 0-2-2-2-5 0-8-4 0-8 2-10 8z"/></svg>
+  <svg class="bat b2" viewBox="0 0 64 32" width="26" style="top:46px; right:6%;" aria-hidden="true"><path d="M32 12c-2-6-6-8-10-8 2 3 2 6 0 8-3-2-7-2-10 0 1-3 0-6-4-8-4 4-6 10-6 14 4-3 9-3 13 0 2-3 6-4 9-2 3-3 6-4 8-10 2 6 5 7 8 10 3-2 7-1 9 2 4-3 9-3 13 0 0-4-2-10-6-14-4 2-5 5-4 8-3-2-7-2-10 0-2-2-2-5 0-8-4 0-8 2-10 8z"/></svg>
+  <div class="tot-hero-inner">
+    <div class="tot-art" aria-hidden="true">
+      <svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="92" cy="26" r="18" fill="#f7e7b4" opacity=".9"/>
+        <circle cx="98" cy="22" r="16" fill="#1a0f2b" opacity=".55"/>
+        <path d="M60 30c-2-8 2-14 8-16l3 5c-4 2-6 6-5 11z" fill="#4d7c0f"/>
+        <ellipse cx="38" cy="72" rx="24" ry="30" fill="#e8620c"/>
+        <ellipse cx="82" cy="72" rx="24" ry="30" fill="#e8620c"/>
+        <ellipse cx="60" cy="72" rx="26" ry="32" fill="#ff7a00"/>
+        <g fill="#ffd166"><path d="M40 62l10-12 8 12z"/><path d="M62 62l8-12 10 12z"/><path d="M56 74l4-6 4 6z"/><path d="M34 82c8 10 44 10 52 0-4 10-12 16-26 16s-22-6-26-16zm12 3v6h6v-5zm16 1v6h6v-6z"/></g>
+      </svg>
+    </div>
+    <div>
+      <a class="back" href="https://withintenmiles.com/">&larr; All regions</a>
+      <div class="kicker">🎃 Halloween &middot; Saturday, October 31</div>
+      <h1>Trick-or-Treat Hours 2026: Arlington Heights, Des Plaines, Mount Prospect, Palatine, Wheeling</h1>
+      <div class="sub">Official hours for Arlington Heights, Des Plaines, Mount Prospect, Palatine, and Wheeling, in one place, each linked to the village page it came from.</div>
+      <span class="tot-countdown">👻 16 days to go</span>
+    </div>
   </div>
 </header>
 
@@ -209,52 +257,60 @@
   <main>
   <div class="entry-list">
     
-    <div class="entry">
+    <div class="entry" style="--town:#0f766e">
       <span class="region"><a href="https://withintenmiles.com/arlington-heights-60005/">Arlington Heights</a></span>
       
       <span class="hours"><a href="https://www.vah.com/news_detail_T13_R32.php">3:00–7:00 PM, Saturday, October 31</a><span class="hours-note">The Village&#39;s recommended hours, not an ordinance.</span></span>
       
+      
     </div>
     
-    <div class="entry">
+    <div class="entry" style="--town:#6d28d9">
       <span class="region"><a href="https://withintenmiles.com/des-plaines-60016/">Des Plaines</a></span>
       
       <span class="hours"><a href="https://www.desplainesil.gov/access-your-government/city-departments/police-department/public-safety/halloween-in-des-plaines">No official hours</a><span class="hours-note">The City doesn&#39;t set hours and urges extra care after sunset.</span></span>
       
+      
     </div>
     
-    <div class="entry">
+    <div class="entry" style="--town:#c2410c">
       <span class="region"><a href="https://withintenmiles.com/mount-prospect-60056/">Mount Prospect</a></span>
       
       <span class="hours"><a href="https://www.mountprospect.org/Home/Components/Calendar/Event/10985/1044">3:00–8:00 PM, Saturday, October 31</a><span class="hours-note">The Village&#39;s standing hours, not yet confirmed for 2026.</span></span>
       
+      
+      <span class="also">Also: <a href="https://mpdowntown.com/events/">Downtown merchants&#39; trick-or-treat</a>, Wednesday, October 28, 4–6 PM, Downtown Mount Prospect</span>
+      
     </div>
     
-    <div class="entry">
+    <div class="entry" style="--town:#1d4ed8">
       <span class="region"><a href="https://withintenmiles.com/palatine-60067/">Palatine</a></span>
       
       <span class="hours"><a href="https://www.palatine.il.us/CivicAlerts.aspx?AID=503">3:00–7:00 PM, Saturday, October 31</a></span>
       
+      
     </div>
     
-    <div class="entry">
+    <div class="entry" style="--town:#be185d">
       <span class="region"><a href="https://withintenmiles.com/wheeling-60090/">Wheeling</a></span>
       
       <span class="hours"><a href="https://www.wheelingil.gov/CivicAlerts.aspx?AID=226">3:00–7:00 PM, Saturday, October 31</a><span class="hours-note">The Village&#39;s standing hours, not yet confirmed for 2026.</span></span>
       
+      
     </div>
     
   </div>
+  <div class="share"><button type="button" id="share-btn">Send this to a neighbour</button><span class="copied" id="share-note" hidden>Link copied</span></div>
   <p class="note">Villages typically post official trick-or-treat hours in late September or early October. Hours are added here once a village posts them, and each one links to the village page it came from. A town showing "not yet posted" has no announcement for this year that we could confirm, so check its page directly.</p>
   
   <h2 class="events-heading" id="trunk-or-treat">Trunk-or-treats</h2>
   <ul class="events">
     
-    <li><time datetime="2026-10-24T10:00:00">Sat, Oct 24</time> <a href="https://withintenmiles.com/arlington-heights-60005/#ev-trunk-or-treat-2026-10-24">Trunk or Treat</a> <span class="hours-note">(Arlington Heights)</span></li>
+    <li><span class="emoji" aria-hidden="true">🏃</span><time datetime="2026-10-24T10:00:00">Sat, Oct 24</time> <a href="https://withintenmiles.com/arlington-heights-60005/#ev-trunk-or-treat-2026-10-24">Trunk or Treat</a> <span class="hours-note">(Arlington Heights)</span></li>
     
-    <li><time datetime="2026-10-24T12:00:00">Sat, Oct 24</time> <a href="https://withintenmiles.com/palatine-60067/#ev-free-trunk-or-treat-at-napleton-s-palatine-mazda-2026-10-24">FREE Trunk or Treat at Napleton&#39;s Palatine Mazda</a> <span class="hours-note">(Palatine)</span> <span class="hours-note">Also at: <a href="https://withintenmiles.com/palatine-60067/#ev-free-trunk-or-treat-at-napleton-palatine-hyundai-2026-10-24">Napleton Palatine Hyundai</a>, <a href="https://withintenmiles.com/palatine-60067/#ev-free-trunk-or-treat-at-napleton-palatine-chevrolet-2026-10-24">Napleton Palatine Chevrolet</a>, <a href="https://withintenmiles.com/palatine-60067/#ev-free-trunk-or-treat-at-napleton-s-palatine-subaru-2026-10-24">Napleton&#39;s Palatine Subaru</a></span></li>
+    <li><span class="emoji" aria-hidden="true">🏃</span><time datetime="2026-10-24T12:00:00">Sat, Oct 24</time> <a href="https://withintenmiles.com/palatine-60067/#ev-free-trunk-or-treat-at-napleton-s-palatine-mazda-2026-10-24">FREE Trunk or Treat at Napleton&#39;s Palatine Mazda</a> <span class="hours-note">(Palatine)</span> <span class="hours-note">Also at: <a href="https://withintenmiles.com/palatine-60067/#ev-free-trunk-or-treat-at-napleton-palatine-hyundai-2026-10-24">Napleton Palatine Hyundai</a>, <a href="https://withintenmiles.com/palatine-60067/#ev-free-trunk-or-treat-at-napleton-palatine-chevrolet-2026-10-24">Napleton Palatine Chevrolet</a>, <a href="https://withintenmiles.com/palatine-60067/#ev-free-trunk-or-treat-at-napleton-s-palatine-subaru-2026-10-24">Napleton&#39;s Palatine Subaru</a></span></li>
     
-    <li><time datetime="2026-10-25T14:00:00">Sun, Oct 25</time> <a href="https://withintenmiles.com/palatine-60067/#ev-trunk-or-treat-and-community-meal-2026-10-25">Trunk-or-Treat and Community Meal</a> <span class="hours-note">(Palatine)</span></li>
+    <li><span class="emoji" aria-hidden="true">🏃</span><time datetime="2026-10-25T14:00:00">Sun, Oct 25</time> <a href="https://withintenmiles.com/palatine-60067/#ev-trunk-or-treat-and-community-meal-2026-10-25">Trunk-or-Treat and Community Meal</a> <span class="hours-note">(Palatine)</span></li>
     
   </ul>
   
@@ -265,11 +321,11 @@
     <h3><a href="https://withintenmiles.com/arlington-heights-60005/">Arlington Heights</a></h3>
     <ul class="events">
       
-      <li><time datetime="2026-10-18T13:00:00">Sun, Oct 18</time> <a href="https://withintenmiles.com/arlington-heights-60005/#ev-pumpkin-splash-2026-10-18">Pumpkin Splash</a></li>
+      <li><span class="emoji" aria-hidden="true">🍂</span><time datetime="2026-10-18T13:00:00">Sun, Oct 18</time> <a href="https://withintenmiles.com/arlington-heights-60005/#ev-pumpkin-splash-2026-10-18">Pumpkin Splash</a></li>
       
-      <li><time datetime="2026-10-21T18:30:00">Wed, Oct 21</time> <a href="https://withintenmiles.com/arlington-heights-60005/#ev-halloween-pumpkin-carving-2026-10-21">Halloween Pumpkin Carving</a></li>
+      <li><span class="emoji" aria-hidden="true">🎃</span><time datetime="2026-10-21T18:30:00">Wed, Oct 21</time> <a href="https://withintenmiles.com/arlington-heights-60005/#ev-halloween-pumpkin-carving-2026-10-21">Halloween Pumpkin Carving</a></li>
       
-      <li><time datetime="2026-10-30T00:00:00">Fri, Oct 30</time> <a href="https://withintenmiles.com/arlington-heights-60005/#ev-the-rock-n-horror-halloween-concert-2026-10-30">The Rock N&#39; Horror Halloween Concert</a></li>
+      <li><span class="emoji" aria-hidden="true">🎃</span><time datetime="2026-10-30T00:00:00">Fri, Oct 30</time> <a href="https://withintenmiles.com/arlington-heights-60005/#ev-the-rock-n-horror-halloween-concert-2026-10-30">The Rock N&#39; Horror Halloween Concert</a></li>
       
     </ul>
   </section>
@@ -278,13 +334,13 @@
     <h3><a href="https://withintenmiles.com/des-plaines-60016/">Des Plaines</a></h3>
     <ul class="events">
       
-      <li><time datetime="2026-10-25T19:00:00">Sun, Oct 25</time> <a href="https://withintenmiles.com/des-plaines-60016/#ev-the-buddy-rich-big-band-halloween-machine-featuring-gregg-po-2026-10-25">THE BUDDY RICH BIG BAND &#34;HALLOWEEN&#34; MACHINE featuring GREGG POTTER AND CATHY RICH with SPECIAL GUEST BILLY SHEEHAN</a></li>
+      <li><span class="emoji" aria-hidden="true">🎃</span><time datetime="2026-10-25T19:00:00">Sun, Oct 25</time> <a href="https://withintenmiles.com/des-plaines-60016/#ev-the-buddy-rich-big-band-halloween-machine-featuring-gregg-po-2026-10-25">THE BUDDY RICH BIG BAND &#34;HALLOWEEN&#34; MACHINE featuring GREGG POTTER AND CATHY RICH with SPECIAL GUEST BILLY SHEEHAN</a></li>
       
-      <li><time datetime="2026-10-28T16:00:00">Wed, Oct 28</time> <a href="https://withintenmiles.com/des-plaines-60016/#ev-3d-print-paint-pumpkins-2026-10-28">3D Print &amp; Paint Pumpkins</a></li>
+      <li><span class="emoji" aria-hidden="true">🍂</span><time datetime="2026-10-28T16:00:00">Wed, Oct 28</time> <a href="https://withintenmiles.com/des-plaines-60016/#ev-3d-print-paint-pumpkins-2026-10-28">3D Print &amp; Paint Pumpkins</a></li>
       
-      <li><time datetime="2026-10-30T16:00:00">Fri, Oct 30</time> <a href="https://withintenmiles.com/des-plaines-60016/#ev-halloween-party-in-the-commons-2026-10-30">Halloween Party in the Commons</a></li>
+      <li><span class="emoji" aria-hidden="true">🎃</span><time datetime="2026-10-30T16:00:00">Fri, Oct 30</time> <a href="https://withintenmiles.com/des-plaines-60016/#ev-halloween-party-in-the-commons-2026-10-30">Halloween Party in the Commons</a></li>
       
-      <li><time datetime="2026-10-31T20:30:00">Sat, Oct 31</time> <a href="https://withintenmiles.com/des-plaines-60016/#ev-bourbon-n-brass-speakeasy-live-halloween-jazz-with-the-bourb-2026-10-31">BOURBON &#39;N BRASS SPEAKEASY: LIVE &#34;Halloween&#34; JAZZ with THE BOURBON &#39;N BRASS PROHIBITION BAND</a></li>
+      <li><span class="emoji" aria-hidden="true">🎃</span><time datetime="2026-10-31T20:30:00">Sat, Oct 31</time> <a href="https://withintenmiles.com/des-plaines-60016/#ev-bourbon-n-brass-speakeasy-live-halloween-jazz-with-the-bourb-2026-10-31">BOURBON &#39;N BRASS SPEAKEASY: LIVE &#34;Halloween&#34; JAZZ with THE BOURBON &#39;N BRASS PROHIBITION BAND</a></li>
       
     </ul>
   </section>
@@ -293,11 +349,11 @@
     <h3><a href="https://withintenmiles.com/mount-prospect-60056/">Mount Prospect</a></h3>
     <ul class="events">
       
-      <li><time datetime="2026-10-20T16:00:00">Tue, Oct 20</time> <a href="https://withintenmiles.com/mount-prospect-60056/#ev-teen-craft-paint-a-pumpkin-goose-2026-10-20">Teen Craft: Paint a Pumpkin Goose</a></li>
+      <li><span class="emoji" aria-hidden="true">🍂</span><time datetime="2026-10-20T16:00:00">Tue, Oct 20</time> <a href="https://withintenmiles.com/mount-prospect-60056/#ev-teen-craft-paint-a-pumpkin-goose-2026-10-20">Teen Craft: Paint a Pumpkin Goose</a></li>
       
-      <li><time datetime="2026-10-28T16:00:00">Wed, Oct 28</time> <a href="https://withintenmiles.com/mount-prospect-60056/#ev-mount-prospect-downtown-merchants-trick-or-treat-2026-10-28">Mount Prospect Downtown Merchants Trick-or-Treat</a></li>
+      <li><span class="emoji" aria-hidden="true">🎃</span><time datetime="2026-10-28T16:00:00">Wed, Oct 28</time> <a href="https://withintenmiles.com/mount-prospect-60056/#ev-mount-prospect-downtown-merchants-trick-or-treat-2026-10-28">Mount Prospect Downtown Merchants Trick-or-Treat</a></li>
       
-      <li><time datetime="2026-10-29T10:00:00">Thu, Oct 29</time> <a href="https://withintenmiles.com/mount-prospect-60056/#ev-halloween-storytime-2026-10-29">Halloween Storytime</a></li>
+      <li><span class="emoji" aria-hidden="true">🎃</span><time datetime="2026-10-29T10:00:00">Thu, Oct 29</time> <a href="https://withintenmiles.com/mount-prospect-60056/#ev-halloween-storytime-2026-10-29">Halloween Storytime</a></li>
       
     </ul>
   </section>
@@ -306,13 +362,13 @@
     <h3><a href="https://withintenmiles.com/palatine-60067/">Palatine</a></h3>
     <ul class="events">
       
-      <li><time datetime="2026-10-24T08:30:00">Sat, Oct 24</time> <a href="https://withintenmiles.com/palatine-60067/#ev-halloween-hustle-2026-10-24">Halloween Hustle</a></li>
+      <li><span class="emoji" aria-hidden="true">🎃</span><time datetime="2026-10-24T08:30:00">Sat, Oct 24</time> <a href="https://withintenmiles.com/palatine-60067/#ev-halloween-hustle-2026-10-24">Halloween Hustle</a></li>
       
-      <li><time datetime="2026-10-24T10:00:00">Sat, Oct 24</time> <a href="https://withintenmiles.com/palatine-60067/#ev-downtown-palatine-business-association-trick-or-treat-event-2026-10-24">Downtown Palatine Business Association Trick or Treat Event</a></li>
+      <li><span class="emoji" aria-hidden="true">🎃</span><time datetime="2026-10-24T10:00:00">Sat, Oct 24</time> <a href="https://withintenmiles.com/palatine-60067/#ev-downtown-palatine-business-association-trick-or-treat-event-2026-10-24">Downtown Palatine Business Association Trick or Treat Event</a></li>
       
-      <li><time datetime="2026-10-29T17:00:00">Thu, Oct 29</time> <a href="https://withintenmiles.com/palatine-60067/#ev-pirate-pete-s-trick-or-treat-festival-returns-2026-10-29">Pirate Pete&#39;s Trick-or-Treat Festival Returns</a></li>
+      <li><span class="emoji" aria-hidden="true">🎃</span><time datetime="2026-10-29T17:00:00">Thu, Oct 29</time> <a href="https://withintenmiles.com/palatine-60067/#ev-pirate-pete-s-trick-or-treat-festival-returns-2026-10-29">Pirate Pete&#39;s Trick-or-Treat Festival Returns</a></li>
       
-      <li><time datetime="2026-10-31T15:00:00">Sat, Oct 31</time> <a href="https://withintenmiles.com/palatine-60067/#ev-village-trick-or-treating-hours-2026-10-31">Village Trick-or-Treating Hours</a></li>
+      <li><span class="emoji" aria-hidden="true">🎃</span><time datetime="2026-10-31T15:00:00">Sat, Oct 31</time> <a href="https://withintenmiles.com/palatine-60067/#ev-village-trick-or-treating-hours-2026-10-31">Village Trick-or-Treating Hours</a></li>
       
     </ul>
   </section>
@@ -321,7 +377,7 @@
     <h3><a href="https://withintenmiles.com/wheeling-60090/">Wheeling</a></h3>
     <ul class="events">
       
-      <li><time datetime="2026-10-22T18:00:00">Thu, Oct 22</time> <a href="https://withintenmiles.com/wheeling-60090/#ev-halloween-pony-bead-keychains-2026-10-22">Halloween Pony Bead Keychains</a></li>
+      <li><span class="emoji" aria-hidden="true">🎃</span><time datetime="2026-10-22T18:00:00">Thu, Oct 22</time> <a href="https://withintenmiles.com/wheeling-60090/#ev-halloween-pony-bead-keychains-2026-10-22">Halloween Pony Bead Keychains</a></li>
       
     </ul>
   </section>
@@ -366,12 +422,20 @@ document.querySelectorAll(".newsletter-form").forEach(function (f) {
   });
 });
 </script>
+  <script>
+  document.getElementById("share-btn").addEventListener("click", function () {
+    var u = "https://withintenmiles.com/trick-or-treat/", n = document.getElementById("share-note");
+    if (navigator.share) { navigator.share({ title: document.title, url: u }).catch(function () {}); return; }
+    if (navigator.clipboard) navigator.clipboard.writeText(u).then(function () { n.hidden = false; });
+    else { n.textContent = u; n.hidden = false; }
+  });
+  </script>
   </main>
 
   <footer>
     Curious what else is happening? <a href="https://withintenmiles.com/">See a live region</a>.
     <a href="https://google.com/preferences/source?q=withintenmiles.com" rel="noopener">Add us as a preferred source on Google</a>.
-    <br>Generated 2026-10-14 22:02 UTC.
+    <br>Generated 2026-10-15 06:02 UTC.
   </footer>
 </div>
 

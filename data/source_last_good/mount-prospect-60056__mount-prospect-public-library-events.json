@@ -1,48 +1,6 @@
 {
- "fetched_at": "2026-10-14T22:02:25+00:00",
+ "fetched_at": "2026-10-15T06:02:40+00:00",
  "items": [
-  {
-   "date": "Wed, 14 Oct 2026 09:30:00 +0000",
-   "detail": "Wednesday, October 14 2026 9:30am - 10:00am \n Grow your little learner's literacy and language skills at this playful storytime full of wiggles, wonder, and fun!",
-   "title": "Toddler Storytime",
-   "url": "https://mppl.libnet.info/event/16553440"
-  },
-  {
-   "date": "Wed, 14 Oct 2026 10:00:00 +0000",
-   "detail": "Wednesday, October 14 2026 10:00am - 12:00pm \n Learn about services and resources provided by Cook County.",
-   "title": "Elected Officials Office Hours",
-   "url": "https://mppl.libnet.info/event/15554310"
-  },
-  {
-   "date": "Wed, 14 Oct 2026 10:30:00 +0000",
-   "detail": "Wednesday, October 14 2026 10:30am - 11:00am \n Grow your little learner's literacy and language skills at this playful storytime full of wiggles, wonder, and fun!",
-   "title": "Toddler Storytime",
-   "url": "https://mppl.libnet.info/event/16553464"
-  },
-  {
-   "date": "Wed, 14 Oct 2026 11:00:00 +0000",
-   "detail": "Wednesday, October 14 2026 11:00am - 12:00pm \n Una clase virtual vía Zoom, de conversación, para hispanohablantes que buscan mejorar su inglés. \n\nA virtual conversation class via Zoom for Spanish speakers who want to improve their English.",
-   "title": "Inglés para Hispanohablantes",
-   "url": "https://mppl.libnet.info/event/17476743"
-  },
-  {
-   "date": "Wed, 14 Oct 2026 16:30:00 +0000",
-   "detail": "Wednesday, October 14 2026 4:30pm - 5:30pm \n Let's hang out and admire incredible animals together!",
-   "title": "Animal Investigators Junior: Jellyfish",
-   "url": "https://mppl.libnet.info/event/16640992"
-  },
-  {
-   "date": "Wed, 14 Oct 2026 16:30:00 +0000",
-   "detail": "Wednesday, October 14 2026 4:30pm - 7:30pm \n Join us for a screening of Project Hail Mary.",
-   "title": "Movie Screening: Project Hail Mary",
-   "url": "https://mppl.libnet.info/event/16760346"
-  },
-  {
-   "date": "Wed, 14 Oct 2026 18:30:00 +0000",
-   "detail": "Wednesday, October 14 2026 6:30pm - 8:00pm \n Curious about editing videos with Adobe Premiere? In this two-part program, we will cover the basics of adobe Premiere to get you editing your projects with ease.",
-   "title": "Intro to Adobe Premier: Part 1",
-   "url": "https://mppl.libnet.info/event/16278627"
-  },
   {
    "date": "Thu, 15 Oct 2026 09:30:00 +0000",
    "detail": "Thursday, October 15 2026 9:30am - 10:00am \n A lifelong love of reading starts at birth! Join us for songs, rhymes, stories, and playtime made specially for infants.",
@@ -66,6 +24,12 @@
    "detail": "Thursday, October 15 2026 2:00pm - 3:00pm \n Stop in and bring your questions about technology-related subjects such as smartphones, computers, email, Microsoft Office, e-books, and more!",
    "title": "Drop-In Tech Help",
    "url": "https://mppl.libnet.info/event/14756228"
+  },
+  {
+   "date": "Thu, 15 Oct 2026 16:00:00 +0000",
+   "detail": "Thursday, October 15 2026 4:00pm - 5:00pm \n Drop by for cookies and an informal chat with the Executive Director.",
+   "title": "Meet the Executive Director",
+   "url": "https://mppl.libnet.info/event/16621502"
   },
   {
    "date": "Thu, 15 Oct 2026 18:00:00 +0000",
@@ -360,6 +324,42 @@
    "detail": "Tuesday, October 27 2026 4:30pm - 5:30pm \n Join other manga readers to share your recent reads! We'll chat about things we loved (or didn't) and get some recommendations. Bring your library card so you can check out your next great read.",
    "title": "Teen Manga Hangout",
    "url": "https://mppl.libnet.info/event/16533457"
+  },
+  {
+   "date": "Tue, 27 Oct 2026 18:00:00 +0000",
+   "detail": "Tuesday, October 27 2026 6:00pm - 8:00pm \n Heroes needed! Adventure, danger and treasure await the brave and the bold! Will you work with your team to solve this mystery?",
+   "title": "Dungeons & Dragons",
+   "url": "https://mppl.libnet.info/event/16641036"
+  },
+  {
+   "date": "Wed, 28 Oct 2026 11:00:00 +0000",
+   "detail": "Wednesday, October 28 2026 11:00am - 12:00pm \n Una clase virtual vía Zoom, de conversación, para hispanohablantes que buscan mejorar su inglés. \n\nA virtual conversation class via Zoom for Spanish speakers who want to improve their English.",
+   "title": "Inglés para Hispanohablantes",
+   "url": "https://mppl.libnet.info/event/17476744"
+  },
+  {
+   "date": "Wed, 28 Oct 2026 16:00:00 +0000",
+   "detail": "Wednesday, October 28 2026 4:00pm - 6:00pm \n Come out in your costume and get some goodies!",
+   "title": "Mount Prospect Downtown Merchants Trick-or-Treat",
+   "url": "https://mppl.libnet.info/event/16553873"
+  },
+  {
+   "date": "Wed, 28 Oct 2026 18:00:00 +0000",
+   "detail": "Wednesday, October 28 2026 6:00pm - 7:00pm \n Get your pickaxe ready! Build unique structures that solve various design challenges. Then share your digital handiwork with new friends.",
+   "title": "Minecraft Engineers",
+   "url": "https://mppl.libnet.info/event/16394676"
+  },
+  {
+   "date": "Wed, 28 Oct 2026 18:30:00 +0000",
+   "detail": "Wednesday, October 28 2026 6:30pm - 7:00pm \n Need legal advice but don't know where to start? Free legal consultations are available through a virtual meeting with an attorney from Chokshi Filippone Law, LLC.",
+   "title": "Lawyers at the Library: Your Legal Help Desk",
+   "url": "https://mppl.libnet.info/event/16565155"
+  },
+  {
+   "date": "Wed, 28 Oct 2026 19:00:00 +0000",
+   "detail": "Wednesday, October 28 2026 7:00pm - 7:30pm \n Need legal advice but don't know where to start? Free legal consultations are available through a virtual meeting with an attorney from Chokshi Filippone Law, LLC.",
+   "title": "Lawyers at the Library: Your Legal Help Desk",
+   "url": "https://mppl.libnet.info/event/16565191"
   }
  ],
  "source": "Mount Prospect Public Library — Events"

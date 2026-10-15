@@ -21,9 +21,10 @@
     17,
     17,
     17,
-    17
+    16
   ],
   "arlington-heights-60005:Metropolis Performing Arts Centre \u2014 Shows": [
+    21,
     21,
     21,
     21,
@@ -56,7 +57,7 @@
   ],
   "des-plaines-60016:Community Consolidated School District 62 \u2014 Calendar": [
     5,
-    5,
+    4,
     4,
     4,
     4,
@@ -79,7 +80,6 @@
     20
   ],
   "des-plaines-60016:Des Plaines Public Library \u2014 Events": [
-    455,
     452,
     452,
     452,
@@ -88,9 +88,11 @@
     441,
     441,
     441,
-    441
+    441,
+    436
   ],
   "des-plaines-60016:Des Plaines Theatre \u2014 Events": [
+    30,
     30,
     30,
     30,
@@ -129,7 +131,6 @@
     11
   ],
   "mount-prospect-60056:Mount Prospect Public Library \u2014 Events": [
-    216,
     208,
     208,
     208,
@@ -138,15 +139,16 @@
     201,
     201,
     201,
-    200
+    200,
+    194
   ],
   "mount-prospect-60056:Mount Prospect School District 57 \u2014 Calendar": [
-    66,
     65,
     65,
     65,
     65,
     65,
+    64,
     64,
     64,
     64,
@@ -181,10 +183,9 @@
     27,
     27,
     27,
-    27
+    29
   ],
   "palatine-60067:Community Consolidated School District 15 \u2014 Calendar": [
-    45,
     44,
     44,
     44,
@@ -193,7 +194,8 @@
     43,
     43,
     43,
-    43
+    43,
+    41
   ],
   "palatine-60067:Palatine Park District \u2014 Events": [
     14,
@@ -220,12 +222,12 @@
     14
   ],
   "palatine-60067:Township High School District 211 \u2014 Calendar": [
-    15,
     14,
     14,
     14,
     14,
     18,
+    16,
     16,
     16,
     16,
@@ -236,27 +238,26 @@
     24,
     24,
     24,
-    24,
     26,
     26,
     26,
     26,
-    26
+    26,
+    25
   ],
   "palatine-60067:Village of Palatine \u2014 News": [
     4,
     4,
     4,
     4,
-    4,
     6,
     6,
     6,
     6,
-    6
+    6,
+    5
   ],
   "wheeling-60090:Indian Trails Public Library \u2014 Events": [
-    348,
     345,
     345,
     345,
@@ -265,10 +266,10 @@
     336,
     336,
     336,
-    335
+    335,
+    329
   ],
   "wheeling-60090:Village of Wheeling \u2014 Calendar": [
-    149,
     148,
     148,
     148,
@@ -277,6 +278,7 @@
     148,
     148,
     148,
-    148
+    148,
+    147
   ]
 }
