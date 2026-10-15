@@ -15490,7 +15490,7 @@ answer reaches people before Oct 31.
        stale forecast. **Tests:** dry and wet weekends, a failed fetch,
        and the 102 KB limit.
 
-292. 🟡 **PARTLY DONE (2026-10-14): `OUTREACH_TEMPLATES.md` §7b now covers NBC Chicago and WGN (owner sends by Oct 20, via each outlet's own contact page, no addresses invented); a probe for `mpdowntown.com/events/` looks for a 2026 downtown trick-or-treat (read `data/url_probes.json`, add it only if posted with a 2026 date). Round 16 found a "Downtown Trick-or-Treat" section on `mpdowntown.com/events/` but no date; round 17 captures its text.** **Send the trick-or-treat note to NBC Chicago and WGN too, and add
+292. ✅ **DONE (2026-10-15): round 17 read `mpdowntown.com/events/`: Downtown Trick-or-Treat is Wednesday, October 28, 2026, 4:00–6:00 p.m., Downtown Mount Prospect (weekday checked: Oct 28, 2026 is a Wednesday). Added as an `also:` line on Mount Prospect's card (weekday computed from an ISO date; a date from any other year is dropped). Owner still sends §7b to NBC Chicago and WGN by Oct 20.** Earlier note: **PARTLY DONE (2026-10-14): `OUTREACH_TEMPLATES.md` §7b now covers NBC Chicago and WGN (owner sends by Oct 20, via each outlet's own contact page, no addresses invented); a probe for `mpdowntown.com/events/` looks for a 2026 downtown trick-or-treat (read `data/url_probes.json`, add it only if posted with a 2026 date). Round 16 found a "Downtown Trick-or-Treat" section on `mpdowntown.com/events/` but no date; round 17 captures its text.** **Send the trick-or-treat note to NBC Chicago and WGN too, and add
      Mount Prospect's downtown trick-or-treat.** Build loop plus owner.
      - **Build loop:** add the two outlets' tip addresses (from their own
        contact pages) to `OUTREACH_TEMPLATES.md` §7b's "send to" list. The
@@ -15529,7 +15529,7 @@ feeds carry but never group.
 
 #### P1 (new)
 
-293. **Give `/trick-or-treat/` the Halloween look the homepage banner
+293. ✅ **DONE (2026-10-15): purple night-sky hero with inline-SVG jack-o'-lantern and bats, countdown (Tonight!/Tomorrow!, gone after Oct 31), a town-coloured card per town, emoji on the trunk-or-treat and event lists, and a "Send this to a neighbour" share button with copy-link fallback; tests added. Not done: date chips on the event cards and the signup headline wording (left as item 251 set it).** **Give `/trick-or-treat/` the Halloween look the homepage banner
      promises, by Oct 18.** Design/UX, build loop, `trick_or_treat.html.j2`:
      - **A hero** that reuses the banner's palette and inline-SVG art
        (night gradient, jack-o'-lantern, moon, bats; motion only without
