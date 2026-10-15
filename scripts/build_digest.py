@@ -1250,7 +1250,7 @@ def is_trick_or_treat_season(now: datetime) -> bool:
     return now.month in (9, 10) or (now.month == 11 and now.day <= 5)
 
 
-def prepare_trick_or_treat(region_cfg: dict) -> dict | None:
+def prepare_trick_or_treat(region_cfg: dict, year: int | None = None) -> dict | None:
     """A region's `trick_or_treat:` block (ROADMAP.md Phase 11 #101), if
     configured - feeds the cross-region /trick-or-treat/ page. `hours`
     is None until the village actually posts it (typically late Sept/
@@ -1269,7 +1269,20 @@ def prepare_trick_or_treat(region_cfg: dict) -> dict | None:
     # rule rather than this year's announcement, or for what a town with
     # no official hours recommends instead.
     note = (tot.get("note") or "").strip() or None if (hours or no_official_hours) else None
-    return {"url": tot["url"], "hours": hours, "no_official_hours": no_official_hours, "note": note}
+    # ROADMAP.md item 292: a separate, sourced trick-or-treat in the same town
+    # (Downtown Mount Prospect's merchants). Built from an ISO `date` so the
+    # weekday is computed, and dropped when the date is not in `year`, so a
+    # previous year's date can never be shown as this year's.
+    also = []
+    for extra in tot.get("also") or []:
+        day = _parse_promo_day(extra.get("date"))
+        if not (extra.get("label") and extra.get("url") and day) or (year is not None and day.year != year):
+            continue
+        when = day.strftime("%A, %B ") + str(day.day)
+        if extra.get("time"):
+            when += ", " + str(extra["time"]).strip()
+        also.append({"label": extra["label"], "url": extra["url"], "when": when, "place": extra.get("place")})
+    return {"url": tot["url"], "hours": hours, "no_official_hours": no_official_hours, "note": note, "also": also}
 
 
 # ROADMAP.md item 243: the dated Halloween events a parent searching for
@@ -1377,10 +1390,27 @@ def render_trick_or_treat_page(
         {**entry, "events": [e for e in entry.get("events") or [] if not TRUNK_OR_TREAT.search(e["title"])]}
         for entry in entries
     ]
+    # ROADMAP.md item 293: each town keeps its email colour, and events get
+    # their emoji, so the page matches the homepage banner and the email.
+    colored = []
+    for i, entry in enumerate(entries):
+        colored.append({**entry, "color": EMAIL_TOWN_COLORS[i % len(EMAIL_TOWN_COLORS)][0]})
+    entries = colored
+    for lst in (trunk_events, *[t["events"] for t in town_entries]):
+        for e in lst:
+            e["emoji"] = email_event_emoji(e)
+    local_today = now.astimezone(LOCAL_TZ).date()
+    halloween_day = date(local_today.year, 10, 31)
+    days_left = (halloween_day - local_today).days
+    countdown = (
+        None if days_left < 0 else "Tonight!" if days_left == 0 else "Tomorrow!" if days_left == 1 else f"{days_left} days to go"
+    )
     return template.render(
         entries=entries,
         town_entries=town_entries,
         trunk_events=trunk_events,
+        countdown=countdown,
+        halloween_weekday=halloween_day.strftime("%A"),
         year=now.year,
         title_towns=", ".join(sorted(e["region_name"] for e in entries)),
         towns_label=f"{_COUNT_WORDS.get(count, str(count))} Towns" if count != 1 else "One Town",
@@ -4683,7 +4713,7 @@ def main() -> None:
                     "events": [],
                 }
             )
-        trick_or_treat = prepare_trick_or_treat(region_cfg)
+        trick_or_treat = prepare_trick_or_treat(region_cfg, now.year)
         if trick_or_treat:
             trick_or_treat_entries.append(
                 {
