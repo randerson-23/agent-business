@@ -15660,6 +15660,88 @@ off school as a first-class view**, built from feeds the site already
 reads.
 
 
+#### Research pass 2026-10-15, evening (seventy-seventh pass)
+
+The build loop shipped item 294 (a festive `/holidays/` with the $20
+listing box) and item 296 (the **"Days off school" box** and its email
+line). This pass reads the new box as a parent would, re-checks who
+ranks for trick-or-treat hours a fortnight out, and looks once more at
+the local subreddits.
+
+| Angle | What it is / what we found | Why it matters here |
+|---|---|---|
+| **The "Days off school" box, read on the built pages (design/UX)** | **Mount Prospect** shows D57's Nov 2 (conferences), Nov 3 (Election Day) and Nov 23 (fall break), each with "What's on". **Palatine** shows CCSD 15's **Nov 23–27 as five separate rows**, one per day, all reading *"No School | …"*. Three problems: (1) the picks for a no-school day include **"AARP Driver Safety Course"**, **"Baby Storytime"** and **"Toddler Storytime"**, which are not for a school-age child who is home that day; (2) consecutive days are not grouped; (3) **Arlington Heights, Des Plaines and Wheeling show no box at all** | The box exists for exactly one reader, a parent of a school-age child, and its picks should serve that child. Five identical rows read as a bug. And the box is missing in three of five towns (next row) |
+| **Why three towns have no box** | `source_transport_failures.json`: **Arlington Heights D25** has failed **98 builds in a row (404)**; its Finalsite iCal was found "valid but empty" for every calendar ID tried (`url_probes.yaml` notes). **Wheeling CCSD 21** has failed **98 builds (403)**, a known bot wall (item 192). **Des Plaines D62** returns only **4 events**. **High School District 214**, the high school for Arlington Heights, Mount Prospect and Wheeling, is only an evergreen link, not a source | Districts publish their **board-approved calendar once a year**, with about 15 dates off. Where no live feed works, a small dated list per district, entered once a year from that official calendar with its URL, gives the box complete coverage. That is the same "sourced, never guessed" rule as trick-or-treat hours (item 300) |
+| **Trick-or-treat hours, a fortnight out (search re-check)** | The results are the Daily Herald's 2024 and **2025** lists (the 2025 edition ran **Oct 22**), NBC Chicago, Frightmaps, Patch Palatine, and the villages' own pages. **Arlington Heights and Palatine** have confirmed 2026 hours. **Mount Prospect, Wheeling and Des Plaines** still show nothing posted for 2026. The site already says exactly that ("standing hours, not yet confirmed") | The Herald's list will likely run about **Oct 21**, so item 271's note, due today, is well timed. The open risk is a village posting its 2026 hours between loop runs and the site still showing last year's caveat during the busiest week (item 301) |
+| **Local subreddits, re-checked** | Items 84 and 164 settled that sustained Reddit participation does not fit the owner's time budget, and that still holds. One new case: **The 518** (Albany, NY) got roughly **600–800 of its first subscribers from its city subreddit**. The founder introduced it openly, and **moderators later featured it in the subreddit's sidebar** | The sidebar link is a **one-time, mod-granted** placement, the Reddit equivalent of item 152's civic link-back. It is not ongoing participation, so it fits as one more message in the outreach batch, without reopening items 84 and 164 (item 302) |
+
+#### P1 (new)
+
+299. **Make the "Days off school" picks fit the child who is home.**
+     Design/UX, build loop, `build_days_off()`:
+     - **Exclude** toddler and baby programmes (`toddler` tag, and
+       titles with baby, toddler, tots, lapsit or storytime aimed under
+       3), and adult programmes (item 268's adult keyword list plus
+       AARP, driver safety, Medicare and tax).
+     - **Prefer** `elementary` and `teen` tags, then `kid_friendly`,
+       then anything all-ages. If nothing qualifies, show *"No special
+       programmes listed. Check the library and park district."* with
+       both links, never a wrong-age pick.
+     - **Group consecutive days off from the same district** into one
+       row: *"Mon Nov 23 – Fri Nov 27 · D15: Conferences & Thanksgiving
+       recess"*. Pick "what's on" across the whole range, at most three.
+     - Tests: a toddler and an adult event are excluded on a school day
+       off; five consecutive CCSD 15 days render as one row; the empty
+       fallback.
+
+300. **Fill the three missing towns with each district's official
+     calendar.** Build loop. Where a district has no working feed (D25,
+     CCSD 21, D62's thin feed) and for **High School District 214**, add
+     a `days_off:` list to the region config: date, district and the
+     district's own reason wording, plus `source_url` pointing at the
+     **board-approved 2026–27 calendar** (page or PDF). Use the probe
+     workflow (item 212) with `patterns` on the calendar page to read the
+     dates **from the district's own document**, and enter only what it
+     says. `build_days_off()` merges the list with feed entries,
+     de-duplicating by date and district. Add a test that any list date
+     outside the school year fails the build, so a stale year cannot
+     slip through. **Once a year, in August**, the research loop flags
+     the lists for renewal, recorded in `SEASONAL_CALENDAR.md`.
+
+301. **Watch for villages posting their 2026 trick-or-treat hours, until
+     Oct 31.** Build loop. From Oct 1 to 31, scan each region's
+     **village news and calendar items** (already fetched: Mount
+     Prospect's Revize news JSON, the Wheeling and Palatine CivicPlus
+     feeds, the Des Plaines city pages) for titles matching
+     trick-or-treat. When a **2026-dated** item appears, show it on
+     `/trick-or-treat/` and in the homepage banner's town pill as
+     *"Village posted: [title] →"*, linking to it, beside the existing
+     hours. **Never auto-overwrite the configured hours** from parsed
+     text, since a misread time on this page is the worst possible
+     error. Instead, the build log and the next research pass flag the
+     config update. Tests: a matching 2026 item shows the link; a 2025
+     item is ignored; the configured hours never change.
+
+#### P3 (new)
+
+302. **Ask local subreddit moderators for a sidebar or wiki link, once
+     each.** Owner, one message per subreddit, in the outreach batch
+     (Needs Ryan step 8). Build loop: add `OUTREACH_TEMPLATES.md` §17,
+     a short modmail: *"I run a free, automated weekend guide for [town]
+     built from the village, library and park-district calendars. Would
+     you consider it for the sidebar or wiki's local-resources list? Happy
+     to correct anything."* No posts, no participation commitment, and
+     no follow-up if declined, which keeps items 84 and 164's decision
+     intact. Subreddits to check exist first: the five towns' own, and
+     the northwest-suburbs ones.
+
+Competitors reviewed this pass: **who ranks for 2026 trick-or-treat
+hours** (Daily Herald, NBC Chicago, Frightmaps, Patch, the villages),
+the **district calendar situation** behind the days-off box's gaps, and
+**The 518's subreddit-sidebar growth**. The design/UX angle is **the new
+"Days off school" box read as a parent of a school-age child**.
+
+
 ## Working agreements for autonomous iteration
 
 - Cadence is three times a day (05:51, 13:51 and 21:51 UTC) for this
