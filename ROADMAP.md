@@ -15588,6 +15588,78 @@ two seasonal landing pages, read at phone width**, which the new
 homepage banners now send all seasonal traffic to.
 
 
+#### Research pass 2026-10-15, morning (seventy-sixth pass)
+
+The build loop shipped item 293 (`/trick-or-treat/` now has the
+Halloween look) and added **Downtown Mount Prospect's merchants'
+trick-or-treat on Oct 28** (item 292). The Oct 14 send went out at
+00:54 UTC as *"Palatine Plaza Fall Fun Fest and 33 more this weekend"*.
+It is the first send with tracking on and the **first issue archived at
+`/issues/2026-10-15/`**. Its open metrics arrive with the next backfill.
+This pass looks at a parent question the site's own data can already
+answer and nobody else in these towns does: **when are the kids off
+school, and what is there to do that day?**
+
+| Angle | What it is / what we found | Why it matters here |
+|---|---|---|
+| **Days off school are decided district by district** | Illinois' State Board does **not** treat **Veterans Day (Nov 11)** as a legal school holiday. Districts may close and log it as a "not in attendance" day. For **Election Day (Nov 3, 2026)**, one district (Morton 709) reports the state is not requiring closure this year, while others (District 206) close. A pending bill (HB 1553) would let districts use both days with conditions. **So the answer differs by district**, and a family with an elementary and a high-schooler often has two different calendars | The site already reads **seven district calendars** (D25, D57, D62, CCSD 15, D211, CCSD 21, plus the village calendars), and those feeds already carry entries such as *"All Schools: No School (State Holiday)"*, *"10 Month Schools: No School (Parent-Teacher Conferences)"*, *"Staff Institute Day"* and *"No School & Winter Break Programming"*. Today these appear only as scattered informational lines (*"Also this week"*). Nobody puts them in one place by town and district (item 296) |
+| **"No school day" camps and programmes (search check)** | No current listing of no-school-day camps or drop-in programmes for these towns turned up. Park-district day camps found were summer-only, and results elsewhere were for other states. Libraries do run *"School's Out"* drop-ins that the feeds carry | The pairing *"no school Wednesday, and here is what's on that day"* is unserved. It is also the most natural paid placement for item 242's kids-enrichment franchises, which run exactly these camps (item 297) |
+| **Election Day, Tue Nov 3, 2026 (civic utility)** | A general election, with early voting run by the Cook County Clerk. Some districts close and others do not (above) | A single neutral line, *"🗳️ Election Day is Tuesday. Find your polling place →"* linking to the Clerk, is useful to every reader and costs nothing. It must stay strictly nonpartisan: no candidates, no measures, no endorsements (item 298) |
+
+#### P1 (new)
+
+296. **A "Days off school" box, by town and district, with what's on
+     those days.** Design/UX, build loop.
+     - **Data:** from each region's school-district sources, take entries
+       in the next **45 days** whose titles match the existing
+       informational patterns (`tagging.py`: no school, non-attendance,
+       institute, half day, conferences, holiday, winter break),
+       normalised to *date · district · reason* (*"Wed Nov 11 · D57 · No
+       school (Veterans Day)"*). Keep each district's own wording for the
+       reason, and never infer a closure from the date alone.
+     - **Pairing:** for each day off, up to **three daytime events that
+       day** (start before 5 p.m.) from the same town's library and park
+       district, family relevance first (item 268's scoring).
+     - **Where:** a compact box on each region page (above the fold on
+       weeks with a day off), and one line in the email when any town has
+       a day off in the next 7 days: *"📚 No school next week: D57 Wed Nov
+       11 · CCSD 15 Tue Nov 3 →"*, linking to the town's box.
+     - **Honesty line** under the box: *"From each district's own
+       calendar. Check your school's calendar for building-level
+       changes."*
+     - Tests: pattern matching across the seven districts' real wording,
+       the 45-day window, the daytime filter, and nothing shown when no
+       day off is listed.
+
+#### P2 (new)
+
+297. **Sell the "Days off school" box as the kids-enrichment sponsor
+     slot.** Build loop plus owner. One labelled slot in the box (*"No
+     school? Presented by [business]"*), using the Weekly Spot rendering
+     and priced as a Weekly Spot for the week containing the day off.
+     Add a line to item 242's franchise template: *"We list every
+     district's days off with what's on that day, and one camp can be
+     the featured option."* **Guardrail:** the slot is labelled as paid,
+     sits below the free listings, and never replaces them.
+
+#### P3 (new)
+
+298. **One neutral Election Day line, Nov 2–3 only.** Build loop: in the
+     season registry (items 263, 285), a window for **Nov 2–3, 2026**
+     that adds a single line to the region pages and the Oct 28 email:
+     *"🗳️ Election Day is Tue Nov 3. Find your polling place and early
+     voting →"*, linking to the Cook County Clerk's official page. No
+     candidates, measures or opinions, now or later, and the line says
+     nothing but the date and the link. **Test:** the window opens and
+     closes, and the link points at the official `.gov` site.
+
+Competitors reviewed this pass: **Illinois' district-by-district rules
+for Veterans Day and Election Day closures**, and **no-school-day camp
+listings** for these towns (none found). The design/UX angle is **days
+off school as a first-class view**, built from feeds the site already
+reads.
+
+
 ## Working agreements for autonomous iteration
 
 - Cadence is three times a day (05:51, 13:51 and 21:51 UTC) for this
