@@ -55,5 +55,13 @@
       "open_rate": 0.0,
       "click_rate": 0.0
     }
+  },
+  {
+    "timestamp": "2026-10-15T00:54:02.121566+00:00",
+    "subject": "Palatine Plaza Fall Fun Fest and 33 more this weekend",
+    "buttondown_id": "em_79m3c734ne96rsyqxy5s0wqx66",
+    "region": "combined",
+    "mode": "schedule",
+    "pre_send_subscriber_count": 1
   }
 ]
