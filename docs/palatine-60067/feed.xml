@@ -3,8 +3,8 @@
 <channel>
   <title>Within Ten — Upcoming events in Palatine</title>
   <link>https://withintenmiles.com/</link>
-  <description>Upcoming events in Palatine, soonest first - aggregated automatically from village, library, park district and school-district calendars. This build reached 21 of 24 configured sources.</description>
-  <lastBuildDate>Fri, 16 Oct 2026 22:24:14 +0000</lastBuildDate>
+  <description>Upcoming events in Palatine, soonest first - aggregated automatically from village, library, park district and school-district calendars. This build reached 21 of 25 configured sources. 1 source is shown from its last update, up to 1 hour ago.</description>
+  <lastBuildDate>Fri, 16 Oct 2026 22:33:32 +0000</lastBuildDate>
   <item>
     <title>Palatine: St. Paul United Church of Christ Fall Rummage Sale</title>
     <link>https://withintenmiles.com/palatine-60067/#ev-st-paul-united-church-of-christ-fall-rummage-sale-2026-10-17</link>
@@ -28,6 +28,54 @@
     <description>Fun fundraiser in downtown Palatine to support those in need in Official listing: https://www.palatine.il.us/common/modules/iCalendar/iCalendar.aspx?feed=calendar&amp;catID=14</description>
     <pubDate>Sat, 17 Oct 2026 13:00:00 +0000</pubDate>
     <source url="https://www.palatine.il.us/common/modules/iCalendar/iCalendar.aspx?feed=calendar&amp;catID=14">Village of Palatine — Calendar</source>
+  </item>
+  <item>
+    <title>Palatine: Armchair Travel Series: Iceland</title>
+    <link>https://withintenmiles.com/palatine-60067/#ev-armchair-travel-series-iceland-2026-10-19</link>
+    <guid isPermaLink="true">https://withintenmiles.com/palatine-60067/#ev-armchair-travel-series-iceland-2026-10-19</guid>
+    <description>Explore the world one story at a time. Armchair Travels brings the world to Harper through the voices of our own faculty, staff, and students. From cultural… Official listing: https://events.harpercollege.edu/event/international-education-week</description>
+    <pubDate>Mon, 19 Oct 2026 00:00:00 +0000</pubDate>
+    <source url="https://events.harpercollege.edu/event/international-education-week">Harper College — Public Events</source>
+  </item>
+  <item>
+    <title>Palatine: Language Tables: Where Can Harper Take You?</title>
+    <link>https://withintenmiles.com/palatine-60067/#ev-language-tables-where-can-harper-take-you-2026-10-19</link>
+    <guid isPermaLink="true">https://withintenmiles.com/palatine-60067/#ev-language-tables-where-can-harper-take-you-2026-10-19</guid>
+    <description>Language is about more than vocabulary, it is connecting with the world around you! Stop by Avanté Monday October 19th - Thursday, October 23rd from 11:00am -… Official listing: https://events.harpercollege.edu/event/language-tables-where-can-harper-take-you</description>
+    <pubDate>Mon, 19 Oct 2026 11:00:00 +0000</pubDate>
+    <source url="https://events.harpercollege.edu/event/language-tables-where-can-harper-take-you">Harper College — Public Events</source>
+  </item>
+  <item>
+    <title>Palatine: Language Tables: Where Can Harper Take You?</title>
+    <link>https://withintenmiles.com/palatine-60067/#ev-language-tables-where-can-harper-take-you-2026-10-20</link>
+    <guid isPermaLink="true">https://withintenmiles.com/palatine-60067/#ev-language-tables-where-can-harper-take-you-2026-10-20</guid>
+    <description>Language is about more than vocabulary, it is connecting with the world around you! Stop by Avanté Monday October 19th - Thursday, October 23rd from 11:00am -… Official listing: https://events.harpercollege.edu/event/language-tables-where-can-harper-take-you</description>
+    <pubDate>Tue, 20 Oct 2026 11:00:00 +0000</pubDate>
+    <source url="https://events.harpercollege.edu/event/language-tables-where-can-harper-take-you">Harper College — Public Events</source>
+  </item>
+  <item>
+    <title>Palatine: Armchair Travel Series: Costa Rica</title>
+    <link>https://withintenmiles.com/palatine-60067/#ev-armchair-travel-series-costa-rica-2026-10-20</link>
+    <guid isPermaLink="true">https://withintenmiles.com/palatine-60067/#ev-armchair-travel-series-costa-rica-2026-10-20</guid>
+    <description>Explore the world one story at a time. Armchair Travels brings the world to Harper through the voices of our own faculty, staff, and students. From cultural… Official listing: https://events.harpercollege.edu/event/armchair-travel-series-costa-rica</description>
+    <pubDate>Tue, 20 Oct 2026 13:00:00 +0000</pubDate>
+    <source url="https://events.harpercollege.edu/event/armchair-travel-series-costa-rica">Harper College — Public Events</source>
+  </item>
+  <item>
+    <title>Palatine: Language Tables: Where Can Harper Take You?</title>
+    <link>https://withintenmiles.com/palatine-60067/#ev-language-tables-where-can-harper-take-you-2026-10-21</link>
+    <guid isPermaLink="true">https://withintenmiles.com/palatine-60067/#ev-language-tables-where-can-harper-take-you-2026-10-21</guid>
+    <description>Language is about more than vocabulary, it is connecting with the world around you! Stop by Avanté Monday October 19th - Thursday, October 23rd from 11:00am -… Official listing: https://events.harpercollege.edu/event/language-tables-where-can-harper-take-you</description>
+    <pubDate>Wed, 21 Oct 2026 11:00:00 +0000</pubDate>
+    <source url="https://events.harpercollege.edu/event/language-tables-where-can-harper-take-you">Harper College — Public Events</source>
+  </item>
+  <item>
+    <title>Palatine: The Illiterate (Los Analfabetas)</title>
+    <link>https://withintenmiles.com/palatine-60067/#ev-the-illiterate-los-analfabetas-2026-10-21</link>
+    <guid isPermaLink="true">https://withintenmiles.com/palatine-60067/#ev-the-illiterate-los-analfabetas-2026-10-21</guid>
+    <description>Sometimes the most powerful stories are the quietest ones. The Illiterate tells the touching story of an older woman who has spent her life hiding the fact… Official listing: https://events.harpercollege.edu/event/the-illiterate-los-analfabetas</description>
+    <pubDate>Wed, 21 Oct 2026 18:00:00 +0000</pubDate>
+    <source url="https://events.harpercollege.edu/event/the-illiterate-los-analfabetas">Harper College — Public Events</source>
   </item>
   <item>
     <title>Palatine: Tales for Tots</title>
@@ -134,6 +182,14 @@
     <source url="https://www.palatine.il.us/common/modules/iCalendar/iCalendar.aspx?feed=calendar&amp;catID=14">Village of Palatine — Calendar</source>
   </item>
   <item>
+    <title>Palatine: Rope</title>
+    <link>https://withintenmiles.com/palatine-60067/#ev-rope-2026-10-28</link>
+    <guid isPermaLink="true">https://withintenmiles.com/palatine-60067/#ev-rope-2026-10-28</guid>
+    <description>A psychological thriller directed by Alfred Hitchcock that follows two young men who commit a murder and then host a dinner party with the victim's body… Official listing: https://events.harpercollege.edu/event/rope</description>
+    <pubDate>Wed, 28 Oct 2026 18:00:00 +0000</pubDate>
+    <source url="https://events.harpercollege.edu/event/rope">Harper College — Public Events</source>
+  </item>
+  <item>
     <title>Palatine: Pirate Pete's Trick-or-Treat Festival Returns</title>
     <link>https://withintenmiles.com/palatine-60067/#ev-pirate-pete-s-trick-or-treat-festival-returns-2026-10-29</link>
     <guid isPermaLink="true">https://withintenmiles.com/palatine-60067/#ev-pirate-pete-s-trick-or-treat-festival-returns-2026-10-29</guid>
@@ -158,12 +214,76 @@
     <source url="https://www.palatine.il.us/common/modules/iCalendar/iCalendar.aspx?feed=calendar&amp;catID=14">Village of Palatine — Calendar</source>
   </item>
   <item>
+    <title>Palatine: Almost Famous</title>
+    <link>https://withintenmiles.com/palatine-60067/#ev-almost-famous-2026-11-04</link>
+    <guid isPermaLink="true">https://withintenmiles.com/palatine-60067/#ev-almost-famous-2026-11-04</guid>
+    <description>A coming-of-age drama directed by Cameron Crowe that follows a teenage aspiring journalist who is given the opportunity to tour with a rising rock band while… Official listing: https://events.harpercollege.edu/event/almost-famous</description>
+    <pubDate>Wed, 04 Nov 2026 18:00:00 +0000</pubDate>
+    <source url="https://events.harpercollege.edu/event/almost-famous">Harper College — Public Events</source>
+  </item>
+  <item>
     <title>Palatine: Palatine Concert Band - 2026 Fall Concert "American Originals"</title>
     <link>https://withintenmiles.com/palatine-60067/#ev-palatine-concert-band-2026-fall-concert-american-originals-2026-11-08</link>
     <guid isPermaLink="true">https://withintenmiles.com/palatine-60067/#ev-palatine-concert-band-2026-fall-concert-american-originals-2026-11-08</guid>
     <description>Palatine Concert Band - 2026 Fall Concert "American Originals" Official listing: https://www.palatine.il.us/common/modules/iCalendar/iCalendar.aspx?feed=calendar&amp;catID=14</description>
     <pubDate>Sun, 08 Nov 2026 15:30:00 +0000</pubDate>
     <source url="https://www.palatine.il.us/common/modules/iCalendar/iCalendar.aspx?feed=calendar&amp;catID=14">Village of Palatine — Calendar</source>
+  </item>
+  <item>
+    <title>Palatine: The Fifth Element</title>
+    <link>https://withintenmiles.com/palatine-60067/#ev-the-fifth-element-2026-11-11</link>
+    <guid isPermaLink="true">https://withintenmiles.com/palatine-60067/#ev-the-fifth-element-2026-11-11</guid>
+    <description>A science-fiction adventure directed by Luc Besson that follows a futuristic taxi driver who becomes responsible for protecting a mysterious woman whose… Official listing: https://events.harpercollege.edu/event/the-fifth-element</description>
+    <pubDate>Wed, 11 Nov 2026 18:00:00 +0000</pubDate>
+    <source url="https://events.harpercollege.edu/event/the-fifth-element">Harper College — Public Events</source>
+  </item>
+  <item>
+    <title>Palatine: A Doll's House by Henrik Ibsen Adapted by Amy Herzog</title>
+    <link>https://withintenmiles.com/palatine-60067/#ev-a-doll-s-house-by-henrik-ibsen-adapted-by-amy-herzog-2026-11-13</link>
+    <guid isPermaLink="true">https://withintenmiles.com/palatine-60067/#ev-a-doll-s-house-by-henrik-ibsen-adapted-by-amy-herzog-2026-11-13</guid>
+    <description>A DOLL'S HOUSE by Henrik Ibsen Adapted by Amy Herzog Ibsen’s celebrated play thrust drama firmly into the modern age when it premiered in 1879. Now, nearly… Official listing: https://events.harpercollege.edu/event/a-dolls-house-by-henrik-ibsen-adapted-by-amy-herzog</description>
+    <pubDate>Fri, 13 Nov 2026 19:30:00 +0000</pubDate>
+    <source url="https://events.harpercollege.edu/event/a-dolls-house-by-henrik-ibsen-adapted-by-amy-herzog">Harper College — Public Events</source>
+  </item>
+  <item>
+    <title>Palatine: A Doll's House by Henrik Ibsen Adapted by Amy Herzog</title>
+    <link>https://withintenmiles.com/palatine-60067/#ev-a-doll-s-house-by-henrik-ibsen-adapted-by-amy-herzog-2026-11-14</link>
+    <guid isPermaLink="true">https://withintenmiles.com/palatine-60067/#ev-a-doll-s-house-by-henrik-ibsen-adapted-by-amy-herzog-2026-11-14</guid>
+    <description>A DOLL'S HOUSE by Henrik Ibsen Adapted by Amy Herzog Ibsen’s celebrated play thrust drama firmly into the modern age when it premiered in 1879. Now, nearly… Official listing: https://events.harpercollege.edu/event/a-dolls-house-by-henrik-ibsen-adapted-by-amy-herzog</description>
+    <pubDate>Sat, 14 Nov 2026 19:30:00 +0000</pubDate>
+    <source url="https://events.harpercollege.edu/event/a-dolls-house-by-henrik-ibsen-adapted-by-amy-herzog">Harper College — Public Events</source>
+  </item>
+  <item>
+    <title>Palatine: A Doll's House by Henrik Ibsen Adapted by Amy Herzog</title>
+    <link>https://withintenmiles.com/palatine-60067/#ev-a-doll-s-house-by-henrik-ibsen-adapted-by-amy-herzog-2026-11-15</link>
+    <guid isPermaLink="true">https://withintenmiles.com/palatine-60067/#ev-a-doll-s-house-by-henrik-ibsen-adapted-by-amy-herzog-2026-11-15</guid>
+    <description>A DOLL'S HOUSE by Henrik Ibsen Adapted by Amy Herzog Ibsen’s celebrated play thrust drama firmly into the modern age when it premiered in 1879. Now, nearly… Official listing: https://events.harpercollege.edu/event/a-dolls-house-by-henrik-ibsen-adapted-by-amy-herzog</description>
+    <pubDate>Sun, 15 Nov 2026 14:00:00 +0000</pubDate>
+    <source url="https://events.harpercollege.edu/event/a-dolls-house-by-henrik-ibsen-adapted-by-amy-herzog">Harper College — Public Events</source>
+  </item>
+  <item>
+    <title>Palatine: A Doll's House by Henrik Ibsen Adapted by Amy Herzog</title>
+    <link>https://withintenmiles.com/palatine-60067/#ev-a-doll-s-house-by-henrik-ibsen-adapted-by-amy-herzog-2026-11-20</link>
+    <guid isPermaLink="true">https://withintenmiles.com/palatine-60067/#ev-a-doll-s-house-by-henrik-ibsen-adapted-by-amy-herzog-2026-11-20</guid>
+    <description>A DOLL'S HOUSE by Henrik Ibsen Adapted by Amy Herzog Ibsen’s celebrated play thrust drama firmly into the modern age when it premiered in 1879. Now, nearly… Official listing: https://events.harpercollege.edu/event/a-dolls-house-by-henrik-ibsen-adapted-by-amy-herzog</description>
+    <pubDate>Fri, 20 Nov 2026 19:30:00 +0000</pubDate>
+    <source url="https://events.harpercollege.edu/event/a-dolls-house-by-henrik-ibsen-adapted-by-amy-herzog">Harper College — Public Events</source>
+  </item>
+  <item>
+    <title>Palatine: A Doll's House by Henrik Ibsen Adapted by Amy Herzog</title>
+    <link>https://withintenmiles.com/palatine-60067/#ev-a-doll-s-house-by-henrik-ibsen-adapted-by-amy-herzog-2026-11-21</link>
+    <guid isPermaLink="true">https://withintenmiles.com/palatine-60067/#ev-a-doll-s-house-by-henrik-ibsen-adapted-by-amy-herzog-2026-11-21</guid>
+    <description>A DOLL'S HOUSE by Henrik Ibsen Adapted by Amy Herzog Ibsen’s celebrated play thrust drama firmly into the modern age when it premiered in 1879. Now, nearly… Official listing: https://events.harpercollege.edu/event/a-dolls-house-by-henrik-ibsen-adapted-by-amy-herzog</description>
+    <pubDate>Sat, 21 Nov 2026 14:00:00 +0000</pubDate>
+    <source url="https://events.harpercollege.edu/event/a-dolls-house-by-henrik-ibsen-adapted-by-amy-herzog">Harper College — Public Events</source>
+  </item>
+  <item>
+    <title>Palatine: A Doll's House by Henrik Ibsen Adapted by Amy Herzog</title>
+    <link>https://withintenmiles.com/palatine-60067/#ev-a-doll-s-house-by-henrik-ibsen-adapted-by-amy-herzog-2026-11-22</link>
+    <guid isPermaLink="true">https://withintenmiles.com/palatine-60067/#ev-a-doll-s-house-by-henrik-ibsen-adapted-by-amy-herzog-2026-11-22</guid>
+    <description>A DOLL'S HOUSE by Henrik Ibsen Adapted by Amy Herzog Ibsen’s celebrated play thrust drama firmly into the modern age when it premiered in 1879. Now, nearly… Official listing: https://events.harpercollege.edu/event/a-dolls-house-by-henrik-ibsen-adapted-by-amy-herzog</description>
+    <pubDate>Sun, 22 Nov 2026 14:00:00 +0000</pubDate>
+    <source url="https://events.harpercollege.edu/event/a-dolls-house-by-henrik-ibsen-adapted-by-amy-herzog">Harper College — Public Events</source>
   </item>
   <item>
     <title>Palatine: Thanksgiving (Village Hall Offices Closed)</title>

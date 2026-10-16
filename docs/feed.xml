@@ -3,15 +3,15 @@
 <channel>
   <title>Within Ten — Upcoming Local Events</title>
   <link>https://withintenmiles.com/</link>
-  <description>Upcoming events across every Within Ten region, soonest first - aggregated automatically from village, library, park district and school-district calendars. This build reached 23 of 28 configured sources.</description>
-  <lastBuildDate>Fri, 16 Oct 2026 22:24:14 +0000</lastBuildDate>
+  <description>Upcoming events across every Within Ten region, soonest first - aggregated automatically from village, library, park district and school-district calendars. This build reached 23 of 29 configured sources. 1 source is shown from its last update, up to 1 hour ago.</description>
+  <lastBuildDate>Fri, 16 Oct 2026 22:33:32 +0000</lastBuildDate>
   <item>
-    <title>Arlington Heights: First-Time Parents' Meetup</title>
-    <link>https://withintenmiles.com/arlington-heights-60005/#ev-first-time-parents-meetup-2026-10-16</link>
-    <guid isPermaLink="true">https://withintenmiles.com/arlington-heights-60005/#ev-first-time-parents-meetup-2026-10-16</guid>
-    <description>Official listing: https://www.ahml.info/scheduling/reservation/224295</description>
+    <title>Arlington Heights: Senior Center: Travelogue</title>
+    <link>https://withintenmiles.com/arlington-heights-60005/#ev-senior-center-travelogue-2026-10-16</link>
+    <guid isPermaLink="true">https://withintenmiles.com/arlington-heights-60005/#ev-senior-center-travelogue-2026-10-16</guid>
+    <description>Official listing: https://www.ahml.info/scheduling/reservation/224945</description>
     <pubDate>Fri, 16 Oct 2026 00:00:00 +0000</pubDate>
-    <source url="https://www.ahml.info/scheduling/reservation/224295">Arlington Heights Memorial Library — Events</source>
+    <source url="https://www.ahml.info/scheduling/reservation/224945">Arlington Heights Memorial Library — Events</source>
   </item>
   <item>
     <title>Des Plaines: Baby Book Time</title>
@@ -141,12 +141,12 @@ nwprogressivedems@gmail.com Official listing: https://desplaines.libnet.info/eve
     <source url="https://desplainestheatre.com/event/bourbon-n-brass-speakeasy-live-jazz-with-the-bootleggers-3/">Des Plaines Theatre — Events</source>
   </item>
   <item>
-    <title>Arlington Heights: Beginning ESL</title>
-    <link>https://withintenmiles.com/arlington-heights-60005/#ev-beginning-esl-2026-10-17</link>
-    <guid isPermaLink="true">https://withintenmiles.com/arlington-heights-60005/#ev-beginning-esl-2026-10-17</guid>
-    <description>Official listing: https://www.ahml.info/scheduling/reservation/234242</description>
+    <title>Arlington Heights: Family Time</title>
+    <link>https://withintenmiles.com/arlington-heights-60005/#ev-family-time-2026-10-17</link>
+    <guid isPermaLink="true">https://withintenmiles.com/arlington-heights-60005/#ev-family-time-2026-10-17</guid>
+    <description>Official listing: https://www.ahml.info/scheduling/reservation/224194</description>
     <pubDate>Sat, 17 Oct 2026 00:00:00 +0000</pubDate>
-    <source url="https://www.ahml.info/scheduling/reservation/234242">Arlington Heights Memorial Library — Events</source>
+    <source url="https://www.ahml.info/scheduling/reservation/224194">Arlington Heights Memorial Library — Events</source>
   </item>
   <item>
     <title>Des Plaines: Service Hour Drop In</title>
@@ -331,6 +331,14 @@ For grades K-8. Official listing: https://desplaines.libnet.info/event/17138187<
     <source url="https://desplaines.libnet.info/event/17138187">Des Plaines Public Library — Events</source>
   </item>
   <item>
+    <title>Palatine: Armchair Travel Series: Iceland</title>
+    <link>https://withintenmiles.com/palatine-60067/#ev-armchair-travel-series-iceland-2026-10-19</link>
+    <guid isPermaLink="true">https://withintenmiles.com/palatine-60067/#ev-armchair-travel-series-iceland-2026-10-19</guid>
+    <description>Explore the world one story at a time. Armchair Travels brings the world to Harper through the voices of our own faculty, staff, and students. From cultural… Official listing: https://events.harpercollege.edu/event/international-education-week</description>
+    <pubDate>Mon, 19 Oct 2026 00:00:00 +0000</pubDate>
+    <source url="https://events.harpercollege.edu/event/international-education-week">Harper College — Public Events</source>
+  </item>
+  <item>
     <title>Des Plaines: Early Voting</title>
     <link>https://withintenmiles.com/des-plaines-60016/#ev-early-voting-2026-10-19</link>
     <guid isPermaLink="true">https://withintenmiles.com/des-plaines-60016/#ev-early-voting-2026-10-19</guid>
@@ -374,6 +382,14 @@ For grades K-8. Official listing: https://desplaines.libnet.info/event/17138187<
  Grow your little learner's literacy and language skills at this playful storytime full of wiggles, wonder, and fun! Official listing: https://mppl.libnet.info/event/16553330</description>
     <pubDate>Mon, 19 Oct 2026 10:30:00 +0000</pubDate>
     <source url="https://mppl.libnet.info/event/16553330">Mount Prospect Public Library — Events</source>
+  </item>
+  <item>
+    <title>Palatine: Language Tables: Where Can Harper Take You?</title>
+    <link>https://withintenmiles.com/palatine-60067/#ev-language-tables-where-can-harper-take-you-2026-10-19</link>
+    <guid isPermaLink="true">https://withintenmiles.com/palatine-60067/#ev-language-tables-where-can-harper-take-you-2026-10-19</guid>
+    <description>Language is about more than vocabulary, it is connecting with the world around you! Stop by Avanté Monday October 19th - Thursday, October 23rd from 11:00am -… Official listing: https://events.harpercollege.edu/event/language-tables-where-can-harper-take-you</description>
+    <pubDate>Mon, 19 Oct 2026 11:00:00 +0000</pubDate>
+    <source url="https://events.harpercollege.edu/event/language-tables-where-can-harper-take-you">Harper College — Public Events</source>
   </item>
   <item>
     <title>Wheeling: Protect Yourself from Identity Theft</title>
@@ -430,24 +446,6 @@ Meet with a career expert for resume… Official listing: https://desplaines.lib
  Let's hang out and admire incredible animals together! Official listing: https://mppl.libnet.info/event/16640995</description>
     <pubDate>Mon, 19 Oct 2026 16:30:00 +0000</pubDate>
     <source url="https://mppl.libnet.info/event/16640995">Mount Prospect Public Library — Events</source>
-  </item>
-  <item>
-    <title>Des Plaines: Book a Teen Librarian</title>
-    <link>https://withintenmiles.com/des-plaines-60016/#ev-book-a-teen-librarian-2026-10-19</link>
-    <guid isPermaLink="true">https://withintenmiles.com/des-plaines-60016/#ev-book-a-teen-librarian-2026-10-19</guid>
-    <description>Monday, October 19 2026 5:00pm - 6:00pm 
- Want some career, college, or scholarship advice? Need some book recommendations? Maybe sit back, relax, and play… Official listing: https://desplaines.libnet.info/event/15509796</description>
-    <pubDate>Mon, 19 Oct 2026 17:00:00 +0000</pubDate>
-    <source url="https://desplaines.libnet.info/event/15509796">Des Plaines Public Library — Events</source>
-  </item>
-  <item>
-    <title>Des Plaines: Shakespeare Project of Chicago</title>
-    <link>https://withintenmiles.com/des-plaines-60016/#ev-shakespeare-project-of-chicago-2026-10-19</link>
-    <guid isPermaLink="true">https://withintenmiles.com/des-plaines-60016/#ev-shakespeare-project-of-chicago-2026-10-19</guid>
-    <description>Monday, October 19 2026 6:00pm - 8:45pm 
- Practice for upcoming performances. Official listing: https://desplaines.libnet.info/event/17539276</description>
-    <pubDate>Mon, 19 Oct 2026 18:00:00 +0000</pubDate>
-    <source url="https://desplaines.libnet.info/event/17539276">Des Plaines Public Library — Events</source>
   </item>
 </channel>
 </rss>
