@@ -5417,3 +5417,24 @@ def test_outbound_click_listener_is_present_only_with_analytics_and_sends_only_t
     assert "goatcounter.count({path:\"out/" not in build_digest.render_region_page(region_cfg, [], None, [], now)
     hub = build_digest.render_merged_hub_page([], now, analytics, subheading="s", meta_description="m", empty_message="e")
     assert 'path:"out/"+a.hostname' in hub
+
+
+def test_audience_line_needs_a_snapshot_above_the_floor(tmp_path):
+    # ROADMAP.md item 266.
+    path = tmp_path / "audience.json"
+    assert build_digest.load_audience_line(path) is None  # no file
+    path.write_text(json.dumps({"as_of": "2026-11-02", "visits_30d": 499, "subscribers": 49, "ai_referrals_30d": 3}), encoding="utf-8")
+    assert build_digest.load_audience_line(path) is None  # below both floors
+    path.write_text(json.dumps({"as_of": "2026-11-02", "visits_30d": 500, "subscribers": None, "ai_referrals_30d": 0}), encoding="utf-8")
+    assert build_digest.load_audience_line(path) == {"visits": 500, "subscribers": None, "ai_referrals": None, "as_of": "2026-11-02"}
+    path.write_text(json.dumps({"visits_30d": 10, "subscribers": 50, "ai_referrals_30d": 4}), encoding="utf-8")
+    assert build_digest.load_audience_line(path)["ai_referrals"] == 4
+    path.write_text("not json", encoding="utf-8")
+    assert build_digest.load_audience_line(path) is None
+
+
+def test_sponsor_page_shows_the_audience_line_only_with_numbers():
+    now = datetime(2026, 11, 2, 18, tzinfo=timezone.utc)
+    with_a = build_digest.render_sponsor_page([], now, None, audience={"visits": 812, "subscribers": 61, "ai_referrals": 5, "as_of": "2026-11-02"})
+    assert 'id="audience"' in with_a and "<strong>812</strong> visits" in with_a and "<strong>61</strong> email subscribers" in with_a and "5</strong> visits from AI assistants" in with_a
+    assert 'id="audience"' not in build_digest.render_sponsor_page([], now, None)

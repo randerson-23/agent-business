@@ -2226,6 +2226,37 @@ def render_about_page(
     )
 
 
+AUDIENCE_PATH = ROOT / "data" / "audience.json"
+AUDIENCE_MIN_VISITS_30D = 500
+AUDIENCE_MIN_SUBSCRIBERS = 50
+
+
+def load_audience_line(path: Path = AUDIENCE_PATH) -> dict | None:
+    """The sponsor page's "Audience, last 30 days" numbers (ROADMAP.md item
+    266), only from a real snapshot and only above a floor (at least 500
+    visits in 30 days, or at least 50 subscribers). Below it nothing is shown:
+    never a number that would embarrass the pitch, never rounded up."""
+    try:
+        data = json.loads(path.read_text(encoding="utf-8"))
+    except (OSError, ValueError):
+        return None
+    if not isinstance(data, dict):
+        return None
+    visits = data.get("visits_30d")
+    subscribers = data.get("subscribers")
+    visits = visits if isinstance(visits, int) else None
+    subscribers = subscribers if isinstance(subscribers, int) else None
+    if not ((visits or 0) >= AUDIENCE_MIN_VISITS_30D or (subscribers or 0) >= AUDIENCE_MIN_SUBSCRIBERS):
+        return None
+    ai = data.get("ai_referrals_30d")
+    return {
+        "visits": visits,
+        "subscribers": subscribers,
+        "ai_referrals": ai if isinstance(ai, int) and ai > 0 else None,
+        "as_of": str(data.get("as_of") or ""),
+    }
+
+
 def render_sponsor_page(
     availability: list[dict],
     now: datetime,
@@ -2233,6 +2264,7 @@ def render_sponsor_page(
     contact_email: str | None = None,
     stats: dict | None = None,
     payment_links: dict | None = None,
+    audience: dict | None = None,
 ) -> str:
     env = get_template_env()
     template = env.get_template("sponsor.html.j2")
@@ -2248,6 +2280,7 @@ def render_sponsor_page(
         analytics=analytics,
         cta_url=build_sponsor_cta_url(contact_email),
         stats=stats,
+        audience=audience,
         og_image_url=SITE_BASE_URL + "og/default.png",
     )
 
@@ -5867,6 +5900,7 @@ def main() -> None:
         contact_email=contact_email,
         stats=sponsor_stats,
         payment_links=sponsors_cfg.get("payment_links"),
+        audience=load_audience_line(),
     )
     sponsor_dir = OUTPUT_DIR / "sponsor"
     sponsor_dir.mkdir(parents=True, exist_ok=True)

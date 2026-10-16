@@ -14641,7 +14641,7 @@ and search engines that keep coming back.
        for 30 days. If `key_file_ok` is `false`, that is a build-loop
        fault, not an owner one.
 
-266. **A weekly audience snapshot, and a sponsor-page number once it
+266. 🟡 **BUILD DONE, WAITING ON THE OWNER (2026-10-16): `scripts/audience_snapshot.py` plus `.github/workflows/audience-snapshot.yml` (Mondays 07:27 UTC; skips quietly without the secret; never overwrites the last good file on a failed fetch) write `data/audience.json` (visits 7d/30d, top referrers, AI-assistant referrals, `out/*` outbound clicks, sponsor-box clicks, subscribers); `/sponsor/` shows "Audience, last 30 days" only at 500+ visits or 50+ subscribers. Owner, 2 minutes: GoatCounter → Settings → API → key with read statistics only → repository secret `GOATCOUNTER_TOKEN`. The API response shapes are read defensively and untested against the live API, so check the first run's log.** **A weekly audience snapshot, and a sponsor-page number once it
      earns its place.**
 
      - **Build loop:** a Monday step in `build-watchdog.yml` (or its own
