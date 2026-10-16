@@ -653,6 +653,7 @@
   .days-off .do-ideas a:hover { text-decoration: underline; }
   .days-off .do-clock { color: var(--muted); }
   .days-off .do-note { margin: 8px 0 0; font-size: 12.5px; color: var(--muted); }
+  .do-sponsor { margin: 12px 0; font-size: 14px; }
   .days-off .do-sponsor { margin: 8px 0 0; padding-top: 8px; border-top: 1px dashed var(--border); font-size: 14px; }
   .days-off .do-paid { font-size: 11px; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); margin-right: 6px; }
   .election-line { margin: 12px 0; font-weight: 700; }
@@ -755,6 +756,9 @@
 
   {% if answer_block %}<p class="answer-block">{{ answer_block }}</p>{% endif %}
 
+  {% if days_off_sponsor and not days_off %}
+  <p class="do-sponsor"><span class="do-paid">Sponsored</span> Presented by <a href="{{ days_off_sponsor.url }}" rel="sponsored noopener">{{ days_off_sponsor.title }}</a>{% if days_off_sponsor.detail %} &mdash; {{ days_off_sponsor.detail }}{% endif %}</p>
+  {% endif %}
   {% if election_line %}<p class="election-line"><a href="{{ election_line.url }}" rel="noopener">{{ election_line.text }} &rarr;</a></p>{% endif %}
   {% if days_off %}
   {# ROADMAP.md item 296: school days off in the next 45 days, from each district's own calendar. #}
@@ -987,6 +991,7 @@
     <a href="{{ hub_url }}about/">About</a>.
     <a href="{{ preferred_source_url }}" rel="noopener">Add us as a preferred source on Google</a>.
     {% if trick_or_treat_in_season %}<a href="{{ hub_url }}trick-or-treat/">Trick-or-treat hours</a>.{% endif %}
+    {% if winter_in_season %}<a href="{{ region_base_url }}winter-break/">Winter break camps</a>.{% endif %}
     {% if holiday_in_season %}<a href="{{ region_base_url }}holiday/">Holiday events and shopping</a>, <a href="{{ hub_url }}holidays/">all towns' tree lightings</a>.{% endif %}
     <br>Generated {{ generated_at }}.
     {% if analytics and analytics.configured %}<br>Visits counted with privacy-first, cookie-free analytics — no personal data collected.{% endif %}

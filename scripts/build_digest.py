@@ -2744,6 +2744,7 @@ def render_region_page(
         og_image_url=SITE_BASE_URL + "og/" + region["id"] + ".png",
         trick_or_treat_in_season=is_trick_or_treat_season(now),
         holiday_in_season=is_holiday_season(now),
+        winter_in_season=winter_break_season(now),
         build_scope_end_iso=build_scope_end_iso,
         stale_empty_message=stale_empty_message,
         empty_follow_url=empty_follow_url,
@@ -3228,6 +3229,8 @@ def collect_sitemap_urls(region_summaries: list[dict], issues: list[dict] | None
         ]
         if r.get("holiday"):
             urls.append(base + "holiday/")
+        if r.get("winter_break"):
+            urls.append(base + "winter-break/")
         if r.get("guide_slugs"):
             urls.append(base + "guides/")
             urls += [base + f"guides/{slug}/" for slug in r["guide_slugs"]]
@@ -4615,13 +4618,56 @@ def _next_school_day(day: date) -> date:
     return nxt
 
 
-def build_days_off_sponsor(sponsors_cfg: dict, region_id: str, local_today: date) -> dict | None:
+# ROADMAP.md item 259: a per-town winter-break page, live Nov 1 - Jan 4, listing
+# feed events from Dec 21 to Jan 3 that look like camps or school-break programmes.
+WINTER_BREAK_TITLE = re.compile(
+    r"\b(camps?|winter break|no school|school'?s out|schools out|day off|break (?:camp|day|program))\b", re.IGNORECASE
+)
+
+
+def winter_break_season(now: datetime) -> bool:
+    today = now.astimezone(LOCAL_TZ).date()
+    return today.month in (11, 12) or (today.month == 1 and today.day <= 4)
+
+
+def winter_break_window(now: datetime) -> tuple[date, date]:
+    """Dec 21 through Jan 3 of the season now open (the year before in
+    January), so the same dates are used from November through Jan 4."""
+    today = now.astimezone(LOCAL_TZ).date()
+    year = today.year if today.month >= 11 else today.year - 1
+    return date(year, 12, 21), date(year + 1, 1, 3)
+
+
+def select_winter_break_events(blocks: list[dict], now: datetime, limit: int = 40) -> list[dict]:
+    start, end = winter_break_window(now)
+    picked = []
+    for block in blocks:
+        for e in block.get("events", []):
+            if not (e.get("title") and e.get("url") and e.get("date_iso")):
+                continue
+            try:
+                day = datetime.fromisoformat(e["date_iso"]).date()
+            except ValueError:
+                continue
+            if start <= day <= end and WINTER_BREAK_TITLE.search(e["title"]):
+                picked.append(dict(e))
+    picked.sort(key=lambda e: e["date_iso"])
+    return picked[:limit]
+
+
+def winter_break_catalogues(evergreen: list[dict]) -> list[dict]:
+    """Evergreen entries a region already carries that mention camps (park
+    district camp catalogues), shown even when no dated camp is in the feeds."""
+    return [e for e in evergreen if re.search(r"\bcamps?\b", f"{e.get('title', '')} {e.get('detail', '')}", re.IGNORECASE)]
+
+
+def build_days_off_sponsor(sponsors_cfg: dict, region_id: str, local_today: date, key: str = "days_off_sponsor") -> dict | None:
     """The paid slot under a region's "Days off school" box (ROADMAP.md item
     297): `days_off_sponsor:` in config/sponsors.yaml under the region, with
     `title`, `url`, an optional `detail`, and an optional `until` (the last day
     it runs; without one it never shows). Labelled as paid and rendered below
     the free listings, never in place of them."""
-    entry = sponsors_cfg.get("regions", {}).get(region_id, {}).get("days_off_sponsor")
+    entry = sponsors_cfg.get("regions", {}).get(region_id, {}).get(key)
     if not isinstance(entry, dict) or not str(entry.get("title") or "").strip() or not str(entry.get("url") or "").strip():
         return None
     until = _parse_promo_day(entry.get("until"))
@@ -5625,6 +5671,37 @@ def main() -> None:
             (holiday_dir / "index.html").write_text(holiday_html, encoding="utf-8")
             logger.info("Wrote %s (%d event%s, %d listing%s)", holiday_dir / "index.html", len(holiday_events), "" if len(holiday_events) == 1 else "s", len(holiday_listings), "" if len(holiday_listings) == 1 else "s")
 
+        # ROADMAP.md item 259: the winter-break camps page, Nov 1 - Jan 4.
+        winter_live = winter_break_season(now)
+        if winter_live:
+            winter_events = select_winter_break_events(blocks, now)
+            winter_sections = []
+            if winter_events:
+                winter_sections.append({"section": "Camps and school-break programmes", "events": winter_events})
+            catalogues = winter_break_catalogues(evergreen)
+            winter_html = render_region_page(
+                region_cfg,
+                winter_sections,
+                sponsor,
+                catalogues,
+                now,
+                heading=f"Winter Break Camps and Activities — {region['name']}",
+                subheading=f"Camps and things to do while school is out, December 21 – January 3 in {region['name']}.",
+                empty_message="No winter-break camps are listed in the town's calendars yet. We add them here as they are published; the park district's camp catalogue is linked below when it has one.",
+                nav_current="winter-break",
+                canonical_suffix="winter-break/",
+                guides_url=guides_url,
+                directory_url=directory_url,
+                things_to_do_url=things_to_do_url,
+                newsletter=newsletter,
+                analytics=analytics,
+                days_off_sponsor=build_days_off_sponsor(sponsors_cfg, region_id, local_today, key="winter_break_sponsor"),
+            )
+            winter_dir = region_dir / "winter-break"
+            winter_dir.mkdir(parents=True, exist_ok=True)
+            (winter_dir / "index.html").write_text(winter_html, encoding="utf-8")
+            logger.info("Wrote %s (%d event%s)", winter_dir / "index.html", len(winter_events), "" if len(winter_events) == 1 else "s")
+
         # ROADMAP.md item 158: the evergreen answer to "what is there to do
         # here at all" - seeded from material already curated for
         # evergreen/guides rather than new prose, deduplicated across the two.
@@ -5670,6 +5747,7 @@ def main() -> None:
                 "path": f"{region_id}/",
                 "guide_slugs": [g["slug"] for g in guides],
                 "holiday": holiday_live,
+                "winter_break": winter_live,
                 "guides": [{"slug": g["slug"], "title": g["title"]} for g in guides],
             }
         )
