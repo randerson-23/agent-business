@@ -370,6 +370,9 @@
     .halloween-art { width: 72px; height: 72px; }
     .halloween-countdown { display: block; margin: 10px 0 0; }
   }
+  .winter-strip { background: #e8f1fb; color: #14301f; border-bottom: 2px solid #2563eb; }
+  .winter-strip-inner { max-width: 1080px; margin: 0 auto; padding: 10px 20px; font-size: 14.5px; }
+  .winter-strip a { color: #1d4ed8; font-weight: 700; }
 </style>
 {{ signup_css() }}
 </head>
@@ -430,6 +433,11 @@
       <a class="holiday-cta" href="holidays/">See tree lightings &amp; holiday events &rarr;</a>
       {% if holiday.offer and contact_email %}<a class="holiday-offer" href="mailto:{{ contact_email }}?subject=Holiday%20guide%20listing">Local business? List your shop in the holiday guide, $20 &rarr;</a>{% endif %}
     </div>
+  </section>
+  {% endif %}
+{% if winter %}
+  <section class="winter-strip" aria-label="Winter break">
+    <div class="winter-strip-inner">❄️ <strong>Kids off school?</strong> Winter break camps &amp; activities: {% for l in winter.links %}<a href="{{ l.url }}">{{ l.name }}</a>{% if not loop.last %} &middot; {% endif %}{% endfor %}</div>
   </section>
   {% endif %}
   <!-- header, not div (ROADMAP.md Phase 11 #62, found by a real axe-core

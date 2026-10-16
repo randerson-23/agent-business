@@ -2914,6 +2914,17 @@ def build_halloween_banner(entries: list[dict], now: datetime) -> dict | None:
     return {"weekday": halloween.strftime("%A"), "countdown": countdown, "towns": towns}
 
 
+def build_winter_banner(region_summaries: list[dict], now: datetime) -> dict | None:
+    """The homepage's small "Kids off school?" strip, Dec 15 - Jan 3 (ROADMAP.md
+    item 285's third window), linking each town's winter-break page. It sits
+    under the holiday banner while that runs (to Dec 24) and alone after."""
+    today = now.astimezone(LOCAL_TZ).date()
+    start, end = date(today.year, 12, 15), date(today.year, 1, 3)
+    in_window = today >= start or today <= end
+    links = [{"name": r["name"], "url": r["path"] + "winter-break/"} for r in region_summaries if r.get("winter_break")]
+    return {"links": links} if in_window and links else None
+
+
 def build_holiday_banner(entries: list[dict], now: datetime) -> dict | None:
     """The homepage's holiday banner (ROADMAP.md item 285): Nov 1 - Dec 24,
     after the Halloween banner's last day, so there is at most one banner at a
@@ -2940,6 +2951,7 @@ def render_hub_page(
     contact_email: str | None = None,
     halloween: dict | None = None,
     holiday: dict | None = None,
+    winter: dict | None = None,
 ) -> str:
     env = get_template_env()
     template = env.get_template("hub.html.j2")
@@ -2955,6 +2967,7 @@ def render_hub_page(
         corrections_cta_url=build_corrections_cta_url(contact_email),
         halloween=halloween,
         holiday=holiday,
+        winter=winter,
         contact_email=contact_email,
     )
 
@@ -5797,6 +5810,7 @@ def main() -> None:
         regions, region_summaries, now, newsletter, analytics, stats=hub_stats, contact_email=contact_email,
         halloween=build_halloween_banner(trick_or_treat_entries, now),
         holiday=build_holiday_banner(holidays_entries, now),
+        winter=build_winter_banner(region_summaries, now),
     )
     (OUTPUT_DIR / "index.html").write_text(hub_html, encoding="utf-8")
     logger.info("Wrote %s", OUTPUT_DIR / "index.html")
