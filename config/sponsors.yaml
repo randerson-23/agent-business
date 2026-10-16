@@ -152,3 +152,8 @@ regions:
 #         url: "https://example.com/"
 #         detail: "Day camps on every district day off."
 #         until: "2026-11-13"
+
+# Winter-break camps page sponsor slot (ROADMAP.md item 259): the same shape as
+# days_off_sponsor above, under regions.<region id>.winter_break_sponsor, shown on
+# that town's /winter-break/ page (live Nov 1 - Jan 4), priced as a Weekly Spot.
+# Required: title, url, until (YYYY-MM-DD); optional: detail. Labelled as paid.

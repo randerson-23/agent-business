@@ -5374,3 +5374,33 @@ def test_days_off_sponsor_needs_a_current_until_date_and_is_labelled_paid():
     assert "Sponsored" in html and "No school? Presented by" in html and "Example Camps" in html
     assert html.index("D57: No School") < html.index("Presented by")  # below the free listings
     assert "Election Day is Tue Nov 3" in html  # Nov 2 render
+
+
+def test_winter_break_season_window_and_event_selection():
+    # ROADMAP.md item 259.
+    at = lambda y, m, d: datetime(y, m, d, 18, tzinfo=timezone.utc)
+    assert not build_digest.winter_break_season(at(2026, 10, 31)) and build_digest.winter_break_season(at(2026, 11, 1))
+    assert build_digest.winter_break_season(at(2027, 1, 4)) and not build_digest.winter_break_season(at(2027, 1, 5))
+    assert build_digest.winter_break_window(at(2026, 11, 20)) == (date(2026, 12, 21), date(2027, 1, 3))
+    assert build_digest.winter_break_window(at(2027, 1, 2)) == (date(2026, 12, 21), date(2027, 1, 3))  # still last year's break in January
+    events = [
+        {"title": "Winter Break Camp: Robotics", "url": "https://a", "date_iso": "2026-12-28T09:00:00"},
+        {"title": "School's Out Lego Day", "url": "https://b", "date_iso": "2027-01-02T10:00:00"},
+        {"title": "Camp Info Night", "url": "https://c", "date_iso": "2026-12-10T19:00:00"},  # before the break
+        {"title": "Toddler Storytime", "url": "https://d", "date_iso": "2026-12-28T10:00:00"},  # not a camp
+        {"title": "Holiday Camp", "url": "https://e", "date_iso": "2027-01-04T10:00:00"},  # after
+    ]
+    picked = build_digest.select_winter_break_events([{"events": events}], at(2026, 11, 20))
+    assert [e["title"] for e in picked] == ["Winter Break Camp: Robotics", "School's Out Lego Day"]
+    ever = [{"title": "Park District Camp Catalog", "detail": "", "url": "https://p"}, {"title": "Library", "detail": "Books and camp-fire stories", "url": "https://l"}, {"title": "Village Hall", "detail": "Permits", "url": "https://v"}]
+    assert [e["title"] for e in build_digest.winter_break_catalogues(ever)] == ["Park District Camp Catalog", "Library"]
+    assert "winter-break/" in " ".join(build_digest.collect_sitemap_urls([{"path": "a/", "winter_break": True}]))
+    assert "winter-break/" not in " ".join(build_digest.collect_sitemap_urls([{"path": "a/"}]))
+
+
+def test_winter_break_page_shows_the_labelled_sponsor_without_a_days_off_box():
+    region_cfg = {"region": {"id": "r", "name": "R", "zip": "60056", "state": "IL", "tagline": "t", "timezone": "America/Chicago"}}
+    sponsor = {"title": "Example Camps", "url": "https://c/", "detail": "Winter camps."}
+    html = build_digest.render_region_page(region_cfg, [], None, [], datetime(2026, 11, 20, 18, tzinfo=timezone.utc), days_off_sponsor=sponsor)
+    assert "Sponsored" in html and "Presented by" in html and "Example Camps" in html
+    assert "Winter break camps" in html  # footer link in season

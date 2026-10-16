@@ -14339,7 +14339,7 @@ offer.
      Business Saturday email (`OUTREACH_TEMPLATES.md` §13). Build it
      by **Oct 25** so early-bird pricing has three weeks to work.
 
-259. **A winter-break camps page per region, published by mid-November.**
+259. ✅ **DONE (2026-10-16): `/<region>/winter-break/`, live Nov 1 – Jan 4, listing feed events from Dec 21 – Jan 3 whose titles say camp, winter break, no school, school's out or day off, plus any evergreen entry that mentions camps; an honest empty message; a labelled `winter_break_sponsor:` slot in `config/sponsors.yaml` (Weekly Spot pricing); footer link in season and a sitemap entry; tests added. Not done: the homepage's Dec 15 – Jan 3 winter-break banner (item 285's third window) and an email line.** **A winter-break camps page per region, published by mid-November.**
      Build loop: **`/<region>/winter-break/`**, live from Nov 1 to Jan 4,
      listing feed events from **Dec 21 to Jan 3** that match camp or
      school-break keywords (camp, winter break, no school, school's out,
