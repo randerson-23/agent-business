@@ -12201,7 +12201,7 @@ but not the questions the probes were asked.
 
 #### P2 (new)
 
-216. **Render a weekly "this weekend in [town]" share card per region.**
+216. 🟡 **PARTLY DONE by item 278 (2026-10-16): one site-wide weekly card at 1000×1500 (`/og/weekly-pin.png`); a per-town card is still open.** **Render a weekly "this weekend in [town]" share card per region.**
      This is the design/UX angle for the pass, aimed at "can it be
      found". Research on local accounts is consistent: content that is
      recognisably about *this place* (named events, known venues,
@@ -15100,7 +15100,7 @@ paying for subscribers.
 
 #### P2 (new)
 
-278. ⬆️ **P1 since the seventy-eighth pass (feeds Nextdoor item 304, Pinterest and Meta).** **Weekly ad and social images, from the share-card pipeline.**
+278. ✅ **DONE (2026-10-16): `render_weekly_card` writes `docs/og/weekly-square.png` (1080×1080), `weekly-portrait.png` (1080×1350) and `weekly-pin.png` (1000×1500, which also covers item 216's site-wide card) every build, from the same three picks as the email and `/join/`: red hero, yellow date pill, white pick cards with town-coloured date chips, no emoji (the bundled font has none). Skipped when fewer than two towns have a pick. Owner: download from `https://withintenmiles.com/og/weekly-square.png` etc. for the Meta test. Item 304 can now use these as its feed image.** Earlier note: ⬆️ **P1 since the seventy-eighth pass (feeds Nextdoor item 304, Pinterest and Meta).** **Weekly ad and social images, from the share-card pipeline.**
      Build loop: extend item 216's share card (still open) to render
      **1080×1080** and **1080×1350** variants of *"This weekend: 3 picks
      near you"*, using the email's town colours and emoji, to

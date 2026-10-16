@@ -3019,6 +3019,81 @@ def render_og_image(title: str, subtitle: str) -> Image.Image:
     return img
 
 
+WEEKLY_CARD_SIZES: dict[str, tuple[int, int]] = {
+    "weekly-square": (1080, 1080),
+    "weekly-portrait": (1080, 1350),
+    "weekly-pin": (1000, 1500),
+}
+
+
+def _hex_rgb(value: str) -> tuple[int, int, int]:
+    value = value.lstrip("#")
+    return int(value[0:2], 16), int(value[2:4], 16), int(value[4:6], 16)
+
+
+def render_weekly_card(size: tuple[int, int], date_range: str, picks: list[dict]) -> Image.Image:
+    """The weekly ad and social image (ROADMAP.md items 278 and 216): the
+    email's red hero, a yellow date pill and up to three pick cards with the
+    email's town colours, drawn with the bundled DejaVu fonts (no emoji, no
+    external services). Rendered at 1080x1080, 1080x1350 and 1000x1500."""
+    width, height = size
+    k = width / 1080
+    img = Image.new("RGB", size, _hex_rgb("#ec3013"))
+    d = ImageDraw.Draw(img)
+    f = lambda name, px: _og_font(name, max(10, round(px * k)))
+    m = round(64 * k)
+    d.text((m, round(54 * k)), "WITHIN TEN  ·  WEEKEND GUIDE", font=f("DejaVuSans-Bold.ttf", 26), fill=_hex_rgb("#ffe9b3"))
+    y = round(104 * k)
+    d.text((m, y), "This weekend near you", font=f("DejaVuSans-Bold.ttf", 68), fill=(255, 255, 255))
+    y += round(92 * k)
+    pill_font = f("DejaVuSans-Bold.ttf", 34)
+    pill_w = int(d.textlength(date_range, font=pill_font)) + round(52 * k)
+    pill_h = round(58 * k)
+    d.rounded_rectangle([m, y + round(6 * k), m + pill_w, y + round(6 * k) + pill_h], radius=pill_h // 2, fill=_hex_rgb("#ffd23f"))
+    d.text((m + round(26 * k), y + round(6 * k) + round(9 * k)), date_range, font=pill_font, fill=_hex_rgb("#201e1d"))
+    y += pill_h + round(40 * k)
+
+    footer_h = round(96 * k)
+    shown = picks[:3]
+    if shown:
+        gap = round(22 * k)
+        card_h = min(round((230 if height / width < 1.2 else 330) * k), (height - footer_h - y - gap * (len(shown) - 1) - round(24 * k)) // len(shown))
+        for pick in shown:
+            d.rounded_rectangle([m, y, width - m, y + card_h], radius=round(22 * k), fill=(255, 255, 255))
+            chip_w, chip_x, chip_y = round(124 * k), m + round(28 * k), y + (card_h - round(138 * k)) // 2
+            d.rounded_rectangle([chip_x, chip_y, chip_x + chip_w, chip_y + round(138 * k)], radius=round(16 * k), fill=_hex_rgb(pick["pick_tint"]))
+            d.rounded_rectangle([chip_x, chip_y, chip_x + chip_w, chip_y + round(46 * k)], radius=round(16 * k), fill=_hex_rgb(pick["pick_color"]))
+            d.rectangle([chip_x, chip_y + round(30 * k), chip_x + chip_w, chip_y + round(46 * k)], fill=_hex_rgb(pick["pick_color"]))
+            dow = (pick.get("email_dow") or "WKND")
+            d.text((chip_x + chip_w // 2, chip_y + round(23 * k)), dow, font=f("DejaVuSans-Bold.ttf", 24), fill=(255, 255, 255), anchor="mm")
+            d.text((chip_x + chip_w // 2, chip_y + round(94 * k)), str(pick.get("email_daynum") or ""), font=f("DejaVuSans-Bold.ttf", 54), fill=_hex_rgb("#201e1d"), anchor="mm")
+            tx = chip_x + chip_w + round(32 * k)
+            title_font = f("DejaVuSans-Bold.ttf", 38)
+            lines = _wrap_og_text(d, pick["title"], title_font, width - m - round(28 * k) - tx)
+            if len(lines) > 2:
+                lines = lines[:2]
+                lines[1] = lines[1].rstrip(".,; ") + "…"
+            block_h = len(lines) * round(46 * k) + round(44 * k)
+            ty = y + (card_h - block_h) // 2
+            for line in lines:
+                d.text((tx, ty), line, font=title_font, fill=_hex_rgb("#201e1d"))
+                ty += round(46 * k)
+            meta = pick["pick_town"] + (f" · {pick['email_clock']}" if pick.get("email_clock") else "")
+            d.text((tx, ty + round(4 * k)), meta, font=f("DejaVuSans-Bold.ttf", 28), fill=_hex_rgb(pick["pick_color"]))
+            y += card_h + gap
+    d.text((width // 2, height - footer_h // 2), "withintenmiles.com", font=f("DejaVuSans-Bold.ttf", 36), fill=(255, 255, 255), anchor="mm")
+    return img
+
+
+def build_weekly_cards(sections: list[dict], date_range: str) -> dict[str, Image.Image]:
+    """One image per size from this weekend's picks; {} when there are not
+    enough picks to show (fewer than two towns with something to pick)."""
+    picks = build_join_picks(sections)
+    if not picks or not date_range:
+        return {}
+    return {name: render_weekly_card(size, date_range, picks) for name, size in WEEKLY_CARD_SIZES.items()}
+
+
 def build_og_images(region_summaries: list[dict]) -> dict[str, Image.Image]:
     images = {"default": render_og_image(SITE_NAME, "Everything worth doing, ten miles out")}
     for r in region_summaries:
@@ -5502,6 +5577,10 @@ def main() -> None:
     for name, image in og_images.items():
         image.save(og_dir / f"{name}.png", "PNG")
     logger.info("Wrote %d Open Graph image(s) to %s", len(og_images), og_dir)
+    # ROADMAP.md items 278 and 216: the weekly ad and social images.
+    for name, image in build_weekly_cards(combined_email_sections, hub_weekend_date_range or "").items():
+        image.save(og_dir / f"{name}.png", "PNG")
+        logger.info("Wrote weekly card %s (%dx%d)", name, *image.size)
     pins_today = region_local_date(regions[0]["region"], now)
     pins_friday, _pins_sat, pins_sunday = weekend_dates(pins_today)
     (OUTPUT_DIR / "pins.xml").write_text(

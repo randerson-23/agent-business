@@ -5193,3 +5193,14 @@ def test_days_off_box_falls_back_to_the_library_and_park_district_when_no_pick_f
                  {"title": "Mount Prospect Park District", "url": "https://pd/", "detail": "", "tags": []}]
     html = build_digest.render_region_page(region_cfg, [], None, evergreen, datetime(2026, 11, 2, 18, tzinfo=timezone.utc), days_off=days)
     assert "No special programmes listed. Check the" in html and 'href="https://lib/"' in html and 'href="https://pd/"' in html
+
+
+def test_weekly_cards_render_at_all_three_sizes_and_skip_when_there_are_no_picks():
+    # ROADMAP.md items 278 and 216.
+    cards = build_digest.build_weekly_cards(_join_sections(), "Oct 16–18")
+    assert {n: i.size for n, i in cards.items()} == {"weekly-square": (1080, 1080), "weekly-portrait": (1080, 1350), "weekly-pin": (1000, 1500)}
+    # Not blank: the red background plus white pick cards and a yellow pill.
+    colors = {c for _n, c in cards["weekly-square"].getcolors(maxcolors=100000)}
+    assert (236, 48, 19) in colors and (255, 255, 255) in colors and (255, 210, 63) in colors
+    assert build_digest.build_weekly_cards(_join_sections(), "") == {}
+    assert build_digest.build_weekly_cards([{"region_name": "A", "region_url": "https://x/a/", "weekend_events": []}], "Oct 16–18") == {}
