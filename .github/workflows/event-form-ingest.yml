@@ -1,0 +1,45 @@
+name: Event form ingest
+
+# ROADMAP.md item 246. Daily: read the event Google Form's published CSV (the
+# EVENT_FORM_CSV_URL secret, a tab with no contact column) and open ONE pull
+# request with the new rows as curated entries, through the same parser as the
+# GitHub Issue Form. Never merges anything: a person reviews every submission.
+# Skips quietly when the secret is not set.
+
+on:
+  schedule:
+    - cron: "17 12 * * *"
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  ingest:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v7
+        with:
+          python-version: "3.11"
+      - run: pip install -r requirements.txt
+      - name: Ingest
+        id: ingest
+        env:
+          EVENT_FORM_CSV_URL: ${{ secrets.EVENT_FORM_CSV_URL }}
+        run: python scripts/ingest_event_submissions.py
+      - name: Open a pull request for review
+        if: steps.ingest.outputs.accepted != '' && steps.ingest.outputs.accepted != '0'
+        uses: peter-evans/create-pull-request@v8
+        with:
+          commit-message: "Add community-submitted events from the event form"
+          branch: "event-form/daily"
+          title: "Community submissions from the event form"
+          body: |
+            Opened automatically from the event form's published CSV.
+
+            **This is unreviewed, publicly-submitted content. Read every entry before merging.**
+            The suggested dates are not written into the region files (evergreen entries carry none);
+            add a real dated source instead where an event is worth tracking.
+          labels: event-submission

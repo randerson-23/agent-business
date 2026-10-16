@@ -5450,3 +5450,17 @@ def test_winter_strip_window_and_links():
     assert f([{"name": "X", "path": "x/"}], at(2026, 12, 20)) is None  # no winter-break page, no strip
     html = build_digest.render_hub_page([], [{"name": "Palatine", "zip": "60067", "path": "palatine-60067/", "tagline": "t", "event_count": 1, "id": "p"}], at(2026, 12, 20), None, None, winter=f(towns, at(2026, 12, 20)))
     assert "Kids off school?" in html and 'href="palatine-60067/winter-break/"' in html
+
+
+def test_add_your_event_link_shows_only_once_the_form_url_is_configured():
+    # ROADMAP.md item 246.
+    region_cfg = {"region": {"id": "r", "name": "R", "zip": "60056", "state": "IL", "tagline": "t", "timezone": "America/Chicago"}}
+    now = datetime(2026, 10, 16, 18, tzinfo=timezone.utc)
+    cfg = build_digest.load_newsletter_config({"buttondown_username": "u", "event_form_url": " https://forms.gle/abc "})
+    assert cfg["event_form_url"] == "https://forms.gle/abc"
+    assert build_digest.load_newsletter_config({"buttondown_username": "u", "event_form_url": ""})["event_form_url"] is None
+    page = build_digest.render_region_page(region_cfg, [], None, [], now, newsletter=cfg)
+    assert 'href="https://forms.gle/abc" rel="noopener">Add your event, free' in page
+    assert "Add your event, free" not in build_digest.render_region_page(region_cfg, [], None, [], now, newsletter=build_digest.load_newsletter_config({"buttondown_username": "u"}))
+    email = build_digest.render_combined_email_digest(_join_sections(), "Oct 16–18", now, cfg)
+    assert 'href="https://forms.gle/abc" style="color:#ffd23f;">Add it free' in email

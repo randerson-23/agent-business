@@ -13687,7 +13687,7 @@ customer actually can.
        The build loop can do that from the owner's note of the event's
        details.
 
-246. **Let organisers submit events without a GitHub account, and offer
+246. 🟡 **BUILD DONE, WAITING ON THE OWNER (2026-10-16): `scripts/ingest_event_submissions.py` and `.github/workflows/event-form-ingest.yml` (daily 12:17 UTC) read the Form's published CSV from the `EVENT_FORM_CSV_URL` secret, run each new row through the same parser and region-file splice as the GitHub Issue Form (heading injection, unknown towns and bad links rejected; rows remembered in `data/event_submissions_seen.json`), and open ONE pull request a person reviews; skips quietly without the secret. `event_form_url` in `config/newsletter.yaml` adds "Add your event, free" to every region page and the email footer once set. Wheeling added to the issue form's town list. Owner, ~10 minutes: create the Google Form (questions named with "name", "town", "date", "description", "link"), publish the event-fields tab as CSV with no contact column, set the secret, paste the Form's link into `event_form_url`; the $20 upsell line goes in the Form's confirmation message with item 244's Payment Link.** **Let organisers submit events without a GitHub account, and offer
      the boost right after.** This is the design/UX angle. The current
      path (a GitHub issue form, linked once on the About page) has
      produced zero real submissions. The fix keeps the existing,

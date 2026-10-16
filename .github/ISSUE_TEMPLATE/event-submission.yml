@@ -20,6 +20,7 @@ body:
         - "Arlington Heights (60005)"
         - "Des Plaines (60016)"
         - "Palatine (60067)"
+        - "Wheeling (60090)"
     validations:
       required: true
   - type: input

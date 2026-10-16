@@ -288,6 +288,9 @@ def load_newsletter_config(newsletter_cfg: dict) -> dict:
         "buttondown_username": username,
         "headline": newsletter_cfg.get("headline") or "Get it in your inbox",
         "detail": newsletter_cfg.get("detail") or "",
+        # ROADMAP.md item 246: the no-account "Add your event" form, once the
+        # owner has created it.
+        "event_form_url": str(newsletter_cfg.get("event_form_url") or "").strip() or None,
     }
 
 

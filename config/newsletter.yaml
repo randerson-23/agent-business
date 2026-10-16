@@ -62,3 +62,10 @@ send:
   enabled: true
   region: "combined"
   mode: "schedule"
+
+# ROADMAP.md item 246: a Google Form (no account needed to submit) for organisers
+# to add an event. Paste its public link here and every region page and the
+# weekly email gain an "Add your event, free" link. Leave empty until the Form
+# exists. Submissions reach the site through scripts/ingest_event_submissions.py
+# (see its docstring), always through a pull request a person reviews.
+event_form_url: ""
