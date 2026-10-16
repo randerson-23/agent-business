@@ -1010,3 +1010,47 @@ def test_submit_indexnow_makes_no_extra_request_without_an_outcome(mock_post, mo
     mock_post.return_value = accepted
     assert submit_indexnow("h", "k", "https://h/k.txt", ["https://h/"]) is True
     mock_get.assert_not_called()
+
+
+def _localist_payload():
+    import json
+
+    def ev(title, start, all_day=False, types=None):
+        return {"event": {"title": title, "description_text": "Open to the public.", "localist_url": f"https://events.harpercollege.edu/event/{title.replace(' ', '-').lower()}",
+                          "event_instances": [{"event_instance": {"start": start, "all_day": all_day}}]}}
+    return json.dumps({"events": [
+        ev("Jazz Ensemble Concert", "2026-10-17T19:30:00-05:00"),
+        ev("Student Registration Deadline", "2026-10-17T00:00:00-05:00", all_day=True),
+        ev("Faculty Meeting", "2026-10-18T10:00:00-05:00"),
+        ev("Film Night", "2026-10-18T18:00:00-05:00"),
+        ev("Gallery Opening", "2026-10-19T12:00:00-05:00"),
+        ev("Art Show", "2026-10-26T11:00:00-05:00"),
+    ]})
+
+
+@patch("fetchers.requests.get")
+def test_fetch_localist_drops_excluded_titles_and_formats_local_dates(mock_get):
+    # ROADMAP.md item 286.
+    from fetchers import fetch_localist
+    mock_get.return_value = _mock_response(content=_localist_payload().encode("utf-8"))
+    items = fetch_localist("https://events.harpercollege.edu/api/2/events", exclude_patterns=[r"\b(registration|deadline|meeting)\b"])
+    assert [i["title"] for i in items] == ["Jazz Ensemble Concert", "Film Night", "Gallery Opening", "Art Show"]
+    assert items[0]["date"] == "20261017T193000" and items[0]["url"].endswith("jazz-ensemble-concert")
+    assert items[0]["detail"] == "Open to the public."
+
+
+@patch("fetchers.requests.get")
+def test_fetch_localist_caps_events_per_week_and_all_day_dates(mock_get):
+    from fetchers import fetch_localist
+    mock_get.return_value = _mock_response(content=_localist_payload().encode("utf-8"))
+    items = fetch_localist("https://x/api", max_per_week=2)
+    # Oct 17-18 are in one ISO week (2 kept of 4); Oct 19 and Oct 26 each start a new week.
+    assert [i["title"] for i in items] == ["Student Registration Deadline", "Jazz Ensemble Concert", "Gallery Opening", "Art Show"]
+    assert items[0]["date"] == "20261017"  # all-day: date only
+
+
+@patch("fetchers.requests.get")
+def test_fetch_localist_fails_soft(mock_get):
+    from fetchers import fetch_localist
+    mock_get.side_effect = RuntimeError("boom")
+    assert fetch_localist("https://x/api") is None

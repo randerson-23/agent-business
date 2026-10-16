@@ -15326,7 +15326,7 @@ first time, and plans what replaces the Halloween banner on Nov 1.
      263's rule). **Ship by Oct 31**, so the homepage never goes a day
      without a seasonal lead.
 
-286. **Add Harper College as a Palatine source, filtered to public
+286. ✅ **DONE (2026-10-16): a `localist` fetcher (JSON in, usual event dicts out, wall-clock dates, fail-soft) and a Harper College source for Palatine, filtered at the API to the "Cultural Arts" event type (id 128837, read from the probe's own responses), a title exclusion list (class, registration, deadline, advising, orientation, faculty, meeting, training, info session...) and `max_per_week: 6`; tagged `art_culture`. Not verified against the live feed from here; read the first CI build's source counts for Harper.** **Add Harper College as a Palatine source, filtered to public
      events.** Build loop, item 282 step 2. Use the **Localist API**,
      not the full `.ics`: call `/api/2/events?days=45&pp=100` filtered by
      `venue_id` for the **Performing Arts Center (Building R)** and/or the

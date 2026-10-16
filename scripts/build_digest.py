@@ -1073,6 +1073,8 @@ def fetch_region_sections(
                 keywords=source.get("keywords"),
                 detail_link_pattern=source.get("detail_link_pattern"),
                 failure_info=failure_info,
+                exclude_patterns=source.get("exclude_patterns"),
+                max_per_week=source.get("max_per_week"),
             )
             # A fetcher returns None on a transport/parse failure (network
             # error, non-2xx status) versus a real [] (reached the page,

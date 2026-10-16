@@ -305,6 +305,68 @@ def fetch_revize_news_json(
         return None
 
 
+def fetch_localist(
+    url: str,
+    limit: int = MAX_ITEMS_PER_SOURCE,
+    *,
+    failure_info: dict | None = None,
+    exclude_patterns: list[str] | None = None,
+    max_per_week: int | None = None,
+    **_ignored,
+) -> list[dict] | None:
+    """A Localist calendar's public JSON API (ROADMAP.md item 286), e.g. Harper
+    College's `events.harpercollege.edu/api/2/events?days=45&pp=100&type[]=128837`.
+    Filtering by event type happens in the URL, at the source. A second guard
+    drops titles matching `exclude_patterns` (class, registration, deadline...),
+    and `max_per_week` keeps at most that many events per ISO week so one
+    campus calendar cannot crowd out a town's village and library. Dates are
+    emitted as wall-clock `YYYYMMDDTHHMMSS` (Localist already returns local
+    time), or `YYYYMMDD` for all-day events. Same `None`-on-failure contract as
+    fetch_rss."""
+    try:
+        resp = _get(url)
+        data = json.loads(resp.content)
+        excludes = [re.compile(p, re.IGNORECASE) for p in exclude_patterns or []]
+        items = []
+        for wrapper in data.get("events", []):
+            ev = wrapper.get("event") if isinstance(wrapper, dict) else None
+            if not isinstance(ev, dict):
+                continue
+            title = html.unescape(str(ev.get("title") or "")).strip()
+            if not title or any(p.search(title) for p in excludes):
+                continue
+            for inst_wrapper in ev.get("event_instances") or []:
+                inst = inst_wrapper.get("event_instance") if isinstance(inst_wrapper, dict) else None
+                start = str((inst or {}).get("start") or "")
+                m = re.match(r"(\d{4})-(\d{2})-(\d{2})(?:T(\d{2}):(\d{2}):(\d{2}))?", start)
+                if not m:
+                    continue
+                all_day = bool(inst.get("all_day")) or m.group(4) is None
+                raw = "".join(m.group(1, 2, 3)) + ("" if all_day else "T" + "".join(m.group(4, 5, 6)))
+                items.append(
+                    {
+                        "title": title,
+                        "detail": " ".join(html.unescape(str(ev.get("description_text") or "")).split()),
+                        "url": str(ev.get("localist_url") or ev.get("url") or ""),
+                        "date": raw,
+                        "_week": datetime(int(m.group(1)), int(m.group(2)), int(m.group(3))).isocalendar()[:2],
+                    }
+                )
+        items.sort(key=lambda i: i["date"])
+        kept, per_week = [], {}
+        for item in items:
+            week = item.pop("_week")
+            if max_per_week is not None and per_week.get(week, 0) >= max_per_week:
+                continue
+            per_week[week] = per_week.get(week, 0) + 1
+            kept.append(item)
+        return kept[:limit]
+    except Exception as exc:  # noqa: BLE001 - fail soft by design
+        logger.warning("Localist fetch failed for %s: %s", url, exc)
+        _record_failure(exc, failure_info)
+        return None
+
+
 def fetch_ics(
     url: str, limit: int = MAX_ITEMS_PER_SOURCE, *, failure_info: dict | None = None, **_ignored
 ) -> list[dict] | None:
@@ -821,4 +883,5 @@ FETCHERS = {
     "ics": fetch_ics,
     "html_events": fetch_html_events,
     "revize_news_json": fetch_revize_news_json,
+    "localist": fetch_localist,
 }
