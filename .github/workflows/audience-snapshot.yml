@@ -1,0 +1,45 @@
+name: Audience snapshot
+
+# ROADMAP.md item 266. Mondays: read GoatCounter's statistics API with the
+# read-only GOATCOUNTER_TOKEN secret and commit data/audience.json. Skips quietly
+# when the secret is not set. The sponsor page shows the numbers only above a
+# floor (500 visits in 30 days or 50 subscribers).
+
+on:
+  schedule:
+    - cron: "27 7 * * 1"
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+jobs:
+  snapshot:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: pip install requests
+      - name: Snapshot
+        env:
+          GOATCOUNTER_TOKEN: ${{ secrets.GOATCOUNTER_TOKEN }}
+        run: python scripts/audience_snapshot.py
+      - name: Commit
+        run: |
+          git config user.name "local-planner-bot"
+          git config user.email "actions@users.noreply.github.com"
+          if [ -f data/audience.json ]; then git add data/audience.json; fi
+          if git diff --cached --quiet; then
+            echo "No changes to commit."
+          else
+            git commit -m "Weekly audience snapshot [skip ci]"
+            attempt=1
+            until git push; do
+              if [ "$attempt" -ge 5 ]; then echo "::error::Failed to push after $attempt attempts."; exit 1; fi
+              git fetch origin main
+              git rebase origin/main
+              attempt=$((attempt + 1))
+            done
+          fi

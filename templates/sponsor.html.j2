@@ -231,6 +231,14 @@
     <span>running since {{ stats.since }}</span>
   </p>
   {% endif %}
+  {% if audience %}
+  <p class="stat-line" id="audience">
+    <strong>Audience, last 30 days{% if audience.as_of %} (to {{ audience.as_of }}){% endif %}:</strong>
+    {% if audience.visits is not none %}<span><strong>{{ audience.visits }}</strong> visits</span>{% endif %}
+    {% if audience.subscribers is not none %}<span><strong>{{ audience.subscribers }}</strong> email subscribers</span>{% endif %}
+    {% if audience.ai_referrals %}<span><strong>{{ audience.ai_referrals }}</strong> visits from AI assistants</span>{% endif %}
+  </p>
+  {% endif %}
   <section class="block">
     <h2>Why a recommendation beats an ad</h2>
     <p>Nextdoor found that 79% of neighbors acted on a local recommendation they saw there, 81% of them within days — local recommendations consistently out-rank conventional business directories and ads for trust. That's the model here: your placement reads as "here's a local business worth knowing," not a banner. One business holds a region's slot at a time — whether for a week or a year — so readers see exactly one recommendation, never a wall of ads.</p>
