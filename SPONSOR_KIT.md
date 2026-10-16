@@ -148,6 +148,9 @@ narrower on purpose. A sponsor next to a hand-verified civic calendar
 for one town is a different placement than a sponsor inside a
 mass-produced newsletter running in 14,000 others.
 
+To put it in one line: PatchAM is AI-generated and carries national ads;
+this is first-party sources, local-only, with every sponsor labelled.
+
 Worth saying plainly given how many "local news" sites got caught
 publishing AI-generated stories under invented bylines this year:
 **nothing on Within Ten is written by AI.** Every listing links back

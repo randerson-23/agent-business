@@ -5204,3 +5204,48 @@ def test_weekly_cards_render_at_all_three_sizes_and_skip_when_there_are_no_picks
     assert (236, 48, 19) in colors and (255, 255, 255) in colors and (255, 210, 63) in colors
     assert build_digest.build_weekly_cards(_join_sections(), "") == {}
     assert build_digest.build_weekly_cards([{"region_name": "A", "region_url": "https://x/a/", "weekend_events": []}], "Oct 16–18") == {}
+
+
+def _weekly_events():
+    base = {"url": "https://src/{}", "date_iso": "2026-10-17T10:00:00", "date": "2026-10-17", "detail": "Fun for the family.", "tags": ["kid_friendly"]}
+    return [
+        dict(base, title="Family Fun Day", url="https://src/a"),
+        dict(base, title="Paid Promo", url="https://src/b", sponsored_by="Acme Dental"),
+        dict(base, title="Half-Day Notice", url="https://src/c", attendable=False),
+    ]
+
+
+def test_weekly_item_excludes_sponsored_and_non_events_and_skips_empty_towns():
+    # ROADMAP.md item 304.
+    now = datetime(2026, 10, 14, 18, tzinfo=timezone.utc)
+    item = build_digest.build_weekly_item("palatine-60067", "Palatine", _weekly_events(), date(2026, 10, 16), "Oct 16–18", now, {"url": "https://x/i.png", "length": 99})
+    assert item["title"] == "This weekend in Palatine: 1 thing to do (Oct 16–18)"
+    assert "Family Fun Day" in item["html"] and "Paid Promo" not in item["html"] and "Half-Day" not in item["html"]
+    assert "utm_source=nextdoor&amp;utm_campaign=weekly" in item["html"]
+    assert item["guid"].endswith("palatine-60067/this-weekend/#weekly-2026-10-16")
+    assert build_digest.build_weekly_item("p", "P", [_weekly_events()[1]], date(2026, 10, 16), "Oct 16–18", now, None) is None
+
+
+def test_weekly_feed_is_valid_rss_with_image_and_full_content():
+    import xml.etree.ElementTree as ET
+    now = datetime(2026, 10, 14, 18, tzinfo=timezone.utc)
+    item = build_digest.build_weekly_item("palatine-60067", "Palatine", _weekly_events(), date(2026, 10, 16), "Oct 16–18", now, {"url": "https://x/i.png", "length": 99})
+    xml = build_digest.build_weekly_feed_xml("Palatine", "palatine-60067", [item], now)
+    root = ET.fromstring(xml)
+    (it,) = root.findall("./channel/item")
+    ns = {"content": "http://purl.org/rss/1.0/modules/content/", "media": "http://search.yahoo.com/mrss/"}
+    assert "Family Fun Day" in it.find("content:encoded", ns).text
+    assert it.find("enclosure").attrib == {"url": "https://x/i.png", "type": "image/png", "length": "99"}
+    assert it.find("media:content", ns).attrib["url"] == "https://x/i.png"
+    assert it.find("guid").attrib["isPermaLink"] == "false"
+
+
+def test_weekly_history_keeps_eight_weekends_and_replaces_a_rebuilt_one():
+    history = {}
+    for i in range(10):
+        friday = date(2026, 9, 4) + timedelta(days=7 * i)
+        build_digest.record_weekly_feed_item(history, "r", {"guid": f"g{friday}", "weekend": friday.isoformat(), "title": f"w{i}"})
+    items = history["r"]
+    assert len(items) == 8 and items[0]["weekend"] == "2026-11-06" and items[-1]["weekend"] == "2026-09-18"
+    build_digest.record_weekly_feed_item(history, "r", {"guid": "g2026-11-06", "weekend": "2026-11-06", "title": "rebuilt"})
+    assert len(history["r"]) == 8 and history["r"][0]["title"] == "rebuilt"

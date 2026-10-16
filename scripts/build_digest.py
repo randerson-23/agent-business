@@ -3206,6 +3206,95 @@ def build_sitemap_xml(region_summaries: list[dict], now: datetime, issues: list[
 FEED_MAX_ITEMS = 50
 
 
+WEEKLY_FEED_HISTORY_PATH = ROOT / "data" / "weekly_feed_history.json"
+WEEKLY_FEED_KEEP = 8
+
+
+def load_weekly_feed_history(path: Path = WEEKLY_FEED_HISTORY_PATH) -> dict:
+    try:
+        data = json.loads(path.read_text(encoding="utf-8"))
+        return data if isinstance(data, dict) else {}
+    except (OSError, ValueError):
+        return {}
+
+
+def record_weekly_feed_item(history: dict, region_id: str, item: dict, keep: int = WEEKLY_FEED_KEEP) -> list[dict]:
+    """Add this weekend's item to a town's history (newest first, one per
+    guid, last `keep` weekends). The same weekend rebuilt many times replaces
+    its own item, so a feed reader never sees it twice."""
+    items = [i for i in history.get(region_id, []) if i.get("guid") != item["guid"]]
+    items.insert(0, item)
+    items = sorted(items, key=lambda i: i["weekend"], reverse=True)[:keep]
+    history[region_id] = items
+    return items
+
+
+def build_weekly_item(
+    region_id: str, region_name: str, events: list[dict], friday: date, date_range: str, now: datetime, image: dict | None
+) -> dict | None:
+    """One Nextdoor-ready item per town per weekend (ROADMAP.md item 304): the
+    town's top picks as a short article. Sponsored and promoted events are
+    left out, as Nextdoor requires, and a town with nothing to pick gets no
+    item rather than an empty post."""
+    plain = [e for e in events if e.get("attendable", True) and not e.get("sponsored_by")]
+    if not plain:
+        return None
+    prepared = prepare_email_events(plain, limit=6)
+    link = f"{SITE_BASE_URL}{region_id}/this-weekend/?utm_source=nextdoor&utm_campaign=weekly"
+    parts = [f"<p>What's on in {escape(region_name)} this weekend ({escape(date_range)}), from the village, library and park district calendars.</p>"]
+    for e in prepared:
+        when = " · ".join(x for x in (e.get("email_when"), e.get("email_where")) if x)
+        blurb = f" {escape(e['email_blurb'])}" if e.get("email_blurb") else ""
+        title = escape(e["title"])
+        parts.append(f'<h3><a href="{escape(e["url"])}">{title}</a></h3><p>{escape(when)}.{blurb}</p>')
+    parts.append(f'<p><a href="{escape(link)}">See everything happening this weekend in {escape(region_name)}</a></p>')
+    return {
+        "guid": f"{SITE_BASE_URL}{region_id}/this-weekend/#weekly-{friday.isoformat()}",
+        "weekend": friday.isoformat(),
+        "title": f"This weekend in {region_name}: {len(plain)} thing{'s' if len(plain) != 1 else ''} to do ({date_range})",
+        "link": link,
+        "pub_date": format_datetime(now.astimezone(timezone.utc)),
+        "html": "\n".join(parts),
+        "image": image,
+    }
+
+
+def build_weekly_feed_xml(region_name: str, region_id: str, items: list[dict], now: datetime) -> str:
+    """RSS 2.0 for Nextdoor News Accounts (item 304): full article HTML in
+    content:encoded and the featured image as both an enclosure and
+    media:content."""
+    out = []
+    for it in items:
+        img = it.get("image")
+        media = ""
+        if img:
+            media = (
+                f'    <enclosure url="{xml_escape(img["url"])}" type="image/png" length="{img["length"]}"/>\n'
+                f'    <media:content url="{xml_escape(img["url"])}" type="image/png" medium="image"/>\n'
+            )
+        out.append(
+            "  <item>\n"
+            f"    <title>{xml_escape(it['title'])}</title>\n"
+            f"    <link>{xml_escape(it['link'])}</link>\n"
+            f'    <guid isPermaLink="false">{xml_escape(it["guid"])}</guid>\n'
+            f"    <pubDate>{it['pub_date']}</pubDate>\n"
+            f"    <description>{xml_escape(it['title'])}</description>\n"
+            f"    <content:encoded><![CDATA[{it['html'].replace(']]>', ']]]]><![CDATA[>')}]]></content:encoded>\n"
+            + media
+            + "  </item>\n"
+        )
+    return (
+        '<?xml version="1.0" encoding="UTF-8"?>\n'
+        '<rss version="2.0" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:media="http://search.yahoo.com/mrss/">\n<channel>\n'
+        f"  <title>{xml_escape(SITE_NAME)} · {xml_escape(region_name)} weekly</title>\n"
+        f"  <link>{xml_escape(SITE_BASE_URL + region_id + '/this-weekend/')}</link>\n"
+        f"  <description>One post a week: what's on this weekend in {xml_escape(region_name)}.</description>\n"
+        f"  <lastBuildDate>{format_datetime(now.astimezone(timezone.utc))}</lastBuildDate>\n"
+        + "".join(out)
+        + "</channel>\n</rss>\n"
+    )
+
+
 def build_pins_xml(
     groups: list[tuple[str, str, str, list[dict]]],
     friday: date,
@@ -3515,6 +3604,8 @@ def build_llms_txt(region_summaries: list[dict], source_completeness: dict | Non
     lines += ["", "## Seasonal", f"- [Trick-or-treat hours, all {len(region_summaries)} towns]({SITE_BASE_URL}trick-or-treat/)"]
     lines += ["", "## Feed", f"- [RSS: upcoming events across every region]({SITE_BASE_URL}feed.xml)"]
     lines += [f"- [RSS: {r['name']}]({SITE_BASE_URL}{r['path']}feed.xml)" for r in region_summaries]
+    lines += ["", "## Weekly posts (one article a week per town)"]
+    lines += [f"- [RSS: {r['name']} this weekend]({SITE_BASE_URL}{r['path']}weekly.xml)" for r in region_summaries]
     # ROADMAP.md item 230: the machine-readable index, and the plain-text
     # content itself, for agents that read this file family.
     lines += [
@@ -5595,6 +5686,26 @@ def main() -> None:
         encoding="utf-8",
     )
     logger.info("Wrote pins.xml")
+    # ROADMAP.md item 304: one weekly, Nextdoor-ready feed per town.
+    weekly_history = load_weekly_feed_history()
+    weekly_range = format_date_range(max(pins_friday, pins_today), pins_sunday)
+    weekly_image_path = og_dir / "weekly-square.png"
+    for section in combined_email_sections:
+        region_id = section["region_url"].rstrip("/").rsplit("/", 1)[-1]
+        image_name = "weekly-square" if weekly_image_path.exists() else region_id
+        image_file = og_dir / f"{image_name}.png"
+        image = {"url": f"{SITE_BASE_URL}og/{image_name}.png", "length": image_file.stat().st_size} if image_file.exists() else None
+        item = build_weekly_item(region_id, section["region_name"], section["weekend_events"], pins_friday, weekly_range, now, image)
+        if item:
+            record_weekly_feed_item(weekly_history, region_id, item)
+        items = weekly_history.get(region_id, [])
+        if items:
+            (OUTPUT_DIR / region_id).mkdir(parents=True, exist_ok=True)
+            (OUTPUT_DIR / region_id / "weekly.xml").write_text(
+                build_weekly_feed_xml(section["region_name"], region_id, items, now), encoding="utf-8"
+            )
+    WEEKLY_FEED_HISTORY_PATH.write_text(json.dumps(weekly_history, indent=1, ensure_ascii=False) + "\n", encoding="utf-8")
+    logger.info("Wrote weekly.xml feeds for %d town(s)", sum(1 for v in weekly_history.values() if v))
     icons_dir = OUTPUT_DIR / "icons"
     icons_dir.mkdir(parents=True, exist_ok=True)
     for size, image in build_app_icons().items():
