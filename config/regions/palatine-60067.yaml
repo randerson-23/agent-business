@@ -78,6 +78,22 @@ region:
   # editors_pick_url: "https://www.palatinelibrary.org/"
 
 sources:
+  - name: "Harper College — Public Events"
+    type: localist
+    # ROADMAP.md item 286: Harper's Localist calendar (probe round 13, 2026-10-13: JSON API
+    # answers 200). Filtered at the source to the "Cultural Arts" event type (id 128837,
+    # performing arts, exhibitions and film; read from the API's own responses), then
+    # guarded by a title exclusion list and capped at 6 a week so one campus calendar
+    # cannot crowd out the village and library in the town with the fewest events.
+    url: "https://events.harpercollege.edu/api/2/events?days=45&pp=100&type[]=128837"
+    section: "Arts & Culture"
+    default_tags: ["art_culture"]
+    venue_name: "Harper College"
+    exclude_patterns:
+      - "\\b(class|classes|registration|deadline|advising|orientation|workshop for students|students only|faculty|staff|meeting|training|info session|information session)\\b"
+    max_per_week: 6
+    enabled: true
+
   - name: "Village of Palatine — News"
     type: rss
     # ROADMAP.md item 221: palatine.il.us runs CivicPlus CivicEngage. The
