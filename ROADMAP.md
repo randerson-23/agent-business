@@ -15392,7 +15392,7 @@ season.
 
 #### P1 (new)
 
-288. 🟡 **STUCK AT THE PROBE ROUTE (2026-10-14 evening): round 2 showed the directories hold no static business markup (Downtown Arlington Heights is script-rendered; the Mount Prospect and Palatine pages list no names), so `OUTREACH_PROSPECTS.md` cannot be built from probes. Options for the owner or next pass: use each downtown group's or chamber's own printable directory/PDF, or the owner pastes 10–15 shops per town from walking downtown. Answered probes removed from the config.** Earlier note: (ROUND 1 ANSWERED, ROUND 2 PROBES ADDED (2026-10-14): Downtown Mount Prospect has `/members/` (158 KB), the Palatine Chamber runs ChamberMaster at `business.palatinechamber.com`, Downtown Arlington Heights has `/restaurants/dining-map`; the Arlington Heights, Mount Prospect and Des Plaines chamber domains were wrong guesses (connection/SSL errors) and Wheeling's is a 1 KB stub. Round 2 samples each directory's markup so round 3 can extract names.) Original note: seven probes added (two downtown sites, five guessed chamber domains); read `data/url_probes.json` after the run, then write `OUTREACH_PROSPECTS.md` (due Oct 25).** **Build the holiday-listing prospect list from the downtown
+288. ↪️ **Unstuck by item 306 (seventy-ninth pass): OpenStreetMap Overpass replaces the probe route.** 🟡 **STUCK AT THE PROBE ROUTE (2026-10-14 evening): round 2 showed the directories hold no static business markup (Downtown Arlington Heights is script-rendered; the Mount Prospect and Palatine pages list no names), so `OUTREACH_PROSPECTS.md` cannot be built from probes. Options for the owner or next pass: use each downtown group's or chamber's own printable directory/PDF, or the owner pastes 10–15 shops per town from walking downtown. Answered probes removed from the config.** Earlier note: (ROUND 1 ANSWERED, ROUND 2 PROBES ADDED (2026-10-14): Downtown Mount Prospect has `/members/` (158 KB), the Palatine Chamber runs ChamberMaster at `business.palatinechamber.com`, Downtown Arlington Heights has `/restaurants/dining-map`; the Arlington Heights, Mount Prospect and Des Plaines chamber domains were wrong guesses (connection/SSL errors) and Wheeling's is a 1 KB stub. Round 2 samples each directory's markup so round 3 can extract names.) Original note: seven probes added (two downtown sites, five guessed chamber domains); read `data/url_probes.json` after the run, then write `OUTREACH_PROSPECTS.md` (due Oct 25).** **Build the holiday-listing prospect list from the downtown
      directories, by Oct 25.** Build loop plus owner.
      - **Build loop:** add probes (item 212) for the public business
        directories of Downtown Arlington Heights
@@ -15816,6 +15816,117 @@ publishers) and **PatchAM** (about 14,000 communities, nearly 1M
 subscribers, AI-generated, with national ads). The design/UX angle is
 **what a neighbour sees in a feed**: one weekly post with an image, not
 seventy event links.
+
+
+#### Research pass 2026-10-16, evening (seventy-ninth pass)
+
+The build loop's most productive day yet: **thirteen PRs since the last
+pass**:
+- items 278 and 216 (weekly images at three sizes);
+- 304 (weekly Nextdoor-ready feeds);
+- 301 (the village trick-or-treat post link);
+- 300 (official district days-off lists);
+- 284 (the "Night out" line) with templates 14, 14b, 16 and 17;
+- 295 (Celebrations);
+- 286 (a Localist fetcher, so Harper College now feeds Palatine);
+- 297 and 298 (the days-off sponsor slot and the Election Day line);
+- 259 (winter-break pages);
+- 267 (outbound click counts);
+- 266 (the GoatCounter snapshot with floor-gated sponsor numbers);
+- 290 (the Search Console snapshot);
+- 285 (the winter-break homepage strip);
+- 246 (Google Form event intake and "Add your event" links).
+
+**The build backlog is now almost empty.** What remains open is owner
+work (Stripe, Nextdoor, the Meta and Substack decisions, outreach), item
+283 (waiting on the venue feeds' December dates), and item 288, which is
+stuck. So this is a deeper pass, as the working agreements ask: it looks
+for the unglamorous problems a fast build run leaves behind, and
+unsticks the one blocked item.
+
+| Angle | What it is / what we found | Why it matters here |
+|---|---|---|
+| **Region-page weight (design/UX, measured in `docs/`)** | Raw HTML size and card count per town page: **Des Plaines 1,768 KB, 476 cards** (151 KB gzipped); **Wheeling 1,517 KB, 410 cards**; Mount Prospect 849 KB, 240 cards; Arlington Heights 640 KB, 291 cards; Palatine 385 KB, 127 cards. On the Des Plaines page alone: **952 HTML comments totalling 255 KB**, the same developer note repeated inside every card (*"ROADMAP.md Phase 11 #63: My Weekend is for dated events…"*); **477 `data-item` JSON blobs totalling 213 KB**, each repeating the title, description and URL already in the card's own markup; and **299 KB of JSON-LD**, one Event per card, out to the end of the build window | A 1.7 MB page with nearly 500 cards is slow to parse on a mid-range phone and heavy for the browser, which hurts the readers the site most wants (parents on phones) and Google's page-experience signals. Item 260 already did this cleanup for the email. The cards need it too, plus a sensible horizon (item 305) |
+| **OpenStreetMap as the prospect source for item 288** | Item 288 is stuck because the downtown and chamber directories are script-rendered or list no names. OpenStreetMap's **Overpass API** returns shops and amenities (`shop=*`, `amenity=cafe/restaurant/ice_cream`) inside a named town boundary, with name, category and often **`website`**. Its data is ODbL-licensed: **attribution is required for public use** ("Contains information from OpenStreetMap … under the ODbL"). Coverage varies by place, so it must be checked against a second source | A GitHub runner can query it in seconds, and the result is a real list of named local businesses with websites. That is exactly what item 288 needed for the holiday listing, due Oct 25 (item 306) |
+| **Holiday closures** (search check) | Arlington Heights Memorial Library's policy says it closes "on those holidays approved annually by the Board"; no 2026 Thanksgiving notice was found for either library yet. Libraries' event calendars (Communico) and village news **already post closures** as items (*"Library closed"*, refuse-collection delays) | "Is the library open Friday?" and "Is garbage pickup delayed?" are questions every household asks during Thanksgiving, Christmas and New Year weeks. The feeds carry the answers, but they are scattered (item 307) |
+| **Outbound links nobody checks** | Every card links to the publisher's page, and item 267 now counts those clicks. **Nothing checks that the linked pages still exist.** Event pages are removed or renamed once an event is cancelled or a CMS changes | A dead link on a card is the one error that makes a reader stop trusting an aggregator. It also undercuts the civic link-back pitch ("we send you readers") if those readers land on 404s (item 308) |
+
+#### P1 (new)
+
+305. **Cut region pages to a phone-friendly weight.** Build loop,
+     `region.html.j2` and its builder:
+     - **Turn the repeated per-card HTML comments into Jinja `{# #}`
+       comments** (item 260's fix, applied to the cards). That is about
+       250 KB off Des Plaines alone.
+     - **Shrink `data-item`** to the card's `id` plus fields not already in
+       its markup. The "My Weekend" script reads the title, date and link
+       from the card's own DOM. Keep behaviour identical, with a test.
+     - **A 21-day horizon** on the town page: cards beyond three weeks
+       move to a `/<region>/later/` page, linked at the bottom with a
+       count (*"142 more events after Nov 6 →"*). `calendar.ics`,
+       `events.json` and the feeds stay complete.
+     - **JSON-LD only for the cards on the page**, so the later events'
+       structured data lives on the later page.
+     - **Budget test:** each region page under **400 KB raw** in the
+       build, failing the build rather than drifting back.
+
+306. **Unstick item 288 with OpenStreetMap, by Oct 25.** Build loop: a
+     one-off GitHub Action (or a probe-style step) that runs an
+     **Overpass** query per town for `shop` in (gift, clothes, boutique,
+     bakery, toys, books, florist, jewelry, chocolate, confectionery) and
+     `amenity` in (cafe, restaurant, ice_cream), within the town's
+     `admin_level=8` boundary. Write **`OUTREACH_PROSPECTS.md`**, one table
+     per town with name, category and `website` (no emails, even when
+     OSM has them). The ODbL attribution goes at the top, with the
+     existing guardrail (outreach use only, never shared). Order by
+     holiday-buying category, mark rows with no website as "visit in
+     person", and **cross-check 5 names per town** against the downtown
+     groups' own pages. If coverage is clearly thin, say so in the file
+     rather than padding it. This replaces item 288's probe route.
+
+#### P2 (new)
+
+307. **A "Closed / changed this week" line in holiday weeks.** Build
+     loop. In the windows around Thanksgiving (Nov 23–29), Christmas
+     (Dec 21–27) and New Year (Dec 28 – Jan 3), collect **informational
+     items whose titles say closed, closes early, delayed or no
+     collection** from each town's library, village and park-district
+     feeds. Show them as one compact line or box on region pages and in
+     the email (*"🔒 MPPL closed Thu, closes 5 p.m. Wed · Refuse pickup
+     one day late"*), each linked to its source. **Only what a source
+     says**, never inferred from the holiday. Tests: matching titles,
+     windows, and nothing rendered when no source posts a closure.
+
+308. **A weekly outbound-link check.** Build loop: a Monday workflow
+     step that sends a polite `HEAD` request (falling back to `GET`, one
+     per host per second, with the site's honest user agent) to each
+     card's outbound URL for the next 14 days, de-duplicated. It writes
+     `data/link_health.json`. A link that returns **404 or 410 on two
+     consecutive checks** is replaced on its card by the **source's
+     calendar page** (from region config), with a small "listing moved"
+     note, and is reported in the build log. 403s and timeouts are
+     recorded but never acted on, since a bot wall is not a dead page.
+     Tests: two-strike replacement, 403 ignored, one host per second.
+
+#### P3 (new)
+
+309. **An accessibility pass over this month's new pages.** Build loop:
+     run the existing axe-based check (`build_digest.py` already
+     references it) and a contrast check over `/trick-or-treat/`,
+     `/holidays/`, `/join/`, the homepage banners and the per-town
+     `/winter-break/` and `/holiday/` pages, in both light and dark mode.
+     Fix any failure (the orange-on-purple pills and the gold-on-green
+     holiday text are the likeliest). Confirm every animation is off
+     under `prefers-reduced-motion`. Add these pages to whatever page
+     list the check iterates, so new seasonal pages are covered by
+     default.
+
+Competitors reviewed this pass: **OpenStreetMap's Overpass data** as a
+prospect source (ODbL; coverage to be verified), and **holiday-closure
+notices** on the libraries' own pages (none posted yet for 2026). The
+design/UX angle is **region-page weight**, measured in the built
+`docs/`: up to 1.77 MB and 476 cards, mostly repeated comments and
+duplicated JSON.
 
 
 ## Working agreements for autonomous iteration
