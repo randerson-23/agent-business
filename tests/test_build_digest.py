@@ -5249,3 +5249,53 @@ def test_weekly_history_keeps_eight_weekends_and_replaces_a_rebuilt_one():
     assert len(items) == 8 and items[0]["weekend"] == "2026-11-06" and items[-1]["weekend"] == "2026-09-18"
     build_digest.record_weekly_feed_item(history, "r", {"guid": "g2026-11-06", "weekend": "2026-11-06", "title": "rebuilt"})
     assert len(history["r"]) == 8 and history["r"][0]["title"] == "rebuilt"
+
+
+def test_find_village_post_requires_a_this_year_trick_or_treat_item_in_a_news_section():
+    # ROADMAP.md item 301.
+    def blk(section, *events):
+        return {"section": section, "events": [dict({"url": "https://v/" + e["title"]}, **e) for e in events]}
+    news = blk("Village News",
+               {"title": "Trick-or-Treat Hours Announced", "date_iso": "2026-10-14T00:00:00"},
+               {"title": "Trick-or-Treat Hours", "date_iso": "2025-10-10T00:00:00"},
+               {"title": "Trunk-or-Treat at the Park", "date_iso": "2026-10-20T00:00:00"},
+               {"title": "Leaf Collection", "date_iso": "2026-10-15T00:00:00"})
+    assert build_digest.find_village_post([news], 2026) == {"title": "Trick-or-Treat Hours Announced", "url": "https://v/Trick-or-Treat Hours Announced"}
+    assert build_digest.find_village_post([news], 2027) is None
+    assert build_digest.find_village_post([blk("Library Events", {"title": "Trick-or-Treat Storytime", "date_iso": "2026-10-14T00:00:00"})], 2026) is None
+    undated = blk("Village News", {"title": "Trick-or-Treat Hours", "date_iso": None})
+    assert build_digest.find_village_post([undated], 2026) is None
+
+
+def test_village_post_shows_beside_configured_hours_without_changing_them():
+    entries = _tot_entries(2)
+    entries[0]["village_post"] = {"title": "Hours Announced", "url": "https://v/post"}
+    html = build_digest.render_trick_or_treat_page(entries, datetime(2026, 10, 18, 18, tzinfo=timezone.utc))
+    assert 'Village posted: <a href="https://v/post">Hours Announced</a>' in html
+    assert html.count("3–7 PM, Saturday, October 31") == 2  # both towns' configured hours, unchanged
+    banner = build_digest.build_halloween_banner(entries, datetime(2026, 10, 18, 18, tzinfo=timezone.utc))
+    assert banner["towns"][0]["post"] == {"title": "Hours Announced", "url": "https://v/post"} and banner["towns"][1]["post"] is None
+
+
+def test_official_district_days_off_merge_with_feed_entries_without_duplicates():
+    # ROADMAP.md item 300.
+    feed = _school_block({"title": "No School - Veterans Day", "date_iso": "2026-11-11T00:00:00"})
+    official = [
+        {"date": "2026-11-11", "district": "D57", "reason": "No School | Veterans Day", "source_url": "https://x"},  # duplicate district and date
+        {"date": "2026-11-23", "district": "D25", "reason": "No School | Fall Break", "source_url": "https://x"},
+        {"date": "2026-11-25", "district": "", "reason": "No School", "source_url": "https://x"},  # no district: ignored
+    ]
+    days = build_digest.build_days_off([feed], date(2026, 11, 2), official=official)
+    assert [d["label"] for d in days] == ["Wed Nov 11", "Mon Nov 23"]
+    assert days[0]["reasons"] == [{"district": "D57", "reason": "No School - Veterans Day"}]  # the feed's own wording wins
+    assert days[1]["reasons"] == [{"district": "D25", "reason": "No School | Fall Break"}]
+
+
+def test_configured_official_days_off_are_in_the_current_school_year():
+    # ROADMAP.md item 300: a stale year cannot slip through.
+    import glob, yaml
+    for path in glob.glob(str(build_digest.CONFIG_DIR / "regions" / "*.yaml")):
+        for entry in (yaml.safe_load(open(path)) or {}).get("days_off") or []:
+            day = date.fromisoformat(str(entry["date"]))
+            assert date(2026, 8, 1) <= day <= date(2027, 7, 31), (path, entry)
+            assert entry.get("source_url", "").startswith("https://"), (path, entry)

@@ -84,3 +84,34 @@ probes:
       - '"location_name":"[^"]{2,60}"'
       - '"event_types":\[[^\]]{0,200}\]'
       - '"filters":\{.{0,300}'
+
+  # Round 18 (item 300): district calendar pages, to read days off from each
+  # district's own document where no live feed works (D25, CCSD 21, D62, D214).
+  - url: https://www.sd25.org/calendar
+    item: 300
+    purpose: Arlington Heights District 25 - does the calendar page list no-school dates in the HTML?
+    patterns:
+      - '(?i)no school[^<]{0,80}'
+      - '(?i)(?:board|approved)[^<]{0,40}calendar[^<]{0,60}'
+    follow: '(?i)calendar.*\.pdf|school-year-calendar|2026-?27'
+  - url: https://ccsd21.org/parent-resources/calendars/
+    item: 300
+    purpose: Wheeling CCSD 21 - does the calendars page link a 2026-27 calendar and list no-school dates?
+    patterns:
+      - '(?i)no school[^<]{0,80}'
+      - '(?i)2026[-–/ ]?(?:20)?27[^<]{0,60}'
+    follow: '(?i)2026-?27|\.pdf'
+  - url: https://www.d62.org/calendars
+    item: 300
+    purpose: Des Plaines District 62 - official 2026-27 calendar
+    patterns:
+      - '(?i)no school[^<]{0,80}'
+      - '(?i)2026[-–/ ]?(?:20)?27[^<]{0,60}'
+    follow: '(?i)2026-?27|\.pdf'
+  - url: https://www.d214.org/calendar
+    item: 300
+    purpose: High School District 214 - official 2026-27 calendar
+    patterns:
+      - '(?i)no school[^<]{0,80}'
+      - '(?i)2026[-–/ ]?(?:20)?27[^<]{0,60}'
+    follow: '(?i)2026-?27|\.pdf'
