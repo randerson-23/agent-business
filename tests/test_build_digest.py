@@ -5438,3 +5438,15 @@ def test_sponsor_page_shows_the_audience_line_only_with_numbers():
     with_a = build_digest.render_sponsor_page([], now, None, audience={"visits": 812, "subscribers": 61, "ai_referrals": 5, "as_of": "2026-11-02"})
     assert 'id="audience"' in with_a and "<strong>812</strong> visits" in with_a and "<strong>61</strong> email subscribers" in with_a and "5</strong> visits from AI assistants" in with_a
     assert 'id="audience"' not in build_digest.render_sponsor_page([], now, None)
+
+
+def test_winter_strip_window_and_links():
+    # ROADMAP.md item 285, third window.
+    at = lambda y, m, d: datetime(y, m, d, 18, tzinfo=timezone.utc)
+    towns = [{"name": "Palatine", "path": "palatine-60067/", "winter_break": True}, {"name": "Wheeling", "path": "wheeling-60090/", "winter_break": False}]
+    f = build_digest.build_winter_banner
+    assert f(towns, at(2026, 12, 14)) is None and f(towns, at(2026, 12, 15)) == {"links": [{"name": "Palatine", "url": "palatine-60067/winter-break/"}]}
+    assert f(towns, at(2027, 1, 3)) is not None and f(towns, at(2027, 1, 4)) is None
+    assert f([{"name": "X", "path": "x/"}], at(2026, 12, 20)) is None  # no winter-break page, no strip
+    html = build_digest.render_hub_page([], [{"name": "Palatine", "zip": "60067", "path": "palatine-60067/", "tagline": "t", "event_count": 1, "id": "p"}], at(2026, 12, 20), None, None, winter=f(towns, at(2026, 12, 20)))
+    assert "Kids off school?" in html and 'href="palatine-60067/winter-break/"' in html
