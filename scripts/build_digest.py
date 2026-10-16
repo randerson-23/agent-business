@@ -4476,6 +4476,7 @@ def render_combined_email_digest(sections: list[dict], weekend_date_range: str, 
     edition = email_edition(now)
     edition_block = build_email_edition_block(edition, halloween, holiday, now)
     weather_line = build_email_weather_line(weather)
+    night_out = pick_night_out(region_blocks)
     days_off_line = build_days_off_email_line(sections, now)
     rain_plan = pick_rain_plan(region_blocks, top_picks) if weather_line and weather_line["rain"] else []
     return template.render(
@@ -4495,6 +4496,7 @@ def render_combined_email_digest(sections: list[dict], weekend_date_range: str, 
         edition_block=edition_block,
         weather_line=weather_line["text"] if weather_line else None,
         days_off_line=days_off_line,
+        night_out=night_out,
         rain_plan=rain_plan,
     )
 
@@ -4643,6 +4645,37 @@ def build_days_off_email_line(sections: list[dict], now: datetime) -> dict | Non
     if not parts:
         return None
     return {"text": "📚 No school next week: " + " · ".join(parts[:4]), "url": first_url}
+
+
+def pick_night_out(blocks: list[dict]) -> dict | None:
+    """One "Night out" line for the email's adult readers (ROADMAP.md item
+    284): the earliest arts-and-culture event across the towns that starts at
+    6 p.m. or later on a Friday or Saturday. Never a paid promotion, and None
+    when nothing qualifies."""
+    best = None
+    for block in blocks:
+        for e in block.get("attendable_events") or []:
+            if e.get("sponsored_by") or "art_culture" not in (e.get("tags") or []) or not e.get("date_iso"):
+                continue
+            try:
+                start = datetime.fromisoformat(e["date_iso"])
+            except ValueError:
+                continue
+            if start.hour < 18 or start.weekday() not in (4, 5):
+                continue
+            if best is None or (e["date_iso"], e["title"]) < (best[0].get("date_iso"), best[0]["title"]):
+                best = (e, block, start)
+    if not best:
+        return None
+    e, block, start = best
+    venue = e.get("email_where") or e.get("venue")
+    return {
+        "title": e["title"],
+        "url": e["url"],
+        "venue": venue,
+        "when": f"{start.strftime('%A')} {event_time_label(e['date_iso']) or ''}".strip(),
+        "town": block["region_name"],
+    }
 
 
 def build_email_weather_line(weather: list[dict] | None) -> dict | None:

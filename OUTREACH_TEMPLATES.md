@@ -717,3 +717,91 @@ is free before taking payment.
 Thanks,
 [Your name]
 Within Ten — https://withintenmiles.com/
+
+## 14. "You already support [school]'s PTO" (ROADMAP.md Phase 11 #270)
+
+The prospects are local businesses listed on a school PTO's or PTA's
+**public** sponsor page. The owner reads those pages as published (search
+"<school> PTO sponsors"), notes the businesses, and sends each this note,
+a few a week. **Guardrails:** name the PTO only as the reason for writing,
+never as a partner; never imply a school or PTO endorses Within Ten; never
+contact a PTO to ask for its sponsor list.
+
+Subject: Reach the same [town] families as the [school] PTO, for $20
+
+Hi [Name],
+
+I saw [Business] on the [school] PTO's sponsor page, so you already
+spend on reaching local families. I run **Within Ten**
+(https://withintenmiles.com/), a free weekly guide to what's on in
+[town] from the village, library and park district calendars. The same
+families read it.
+
+Two small ways to try it:
+- **$20 Event Promo:** one event of yours featured first on the [town]
+  page and at the top of that weekend's email, labelled "Presented by
+  [Business]". See https://withintenmiles.com/sponsor/.
+- **$50 Weekly Spot:** your business as the labelled recommendation for a
+  week.
+
+It has to be a real, public event or offer with a date. If you'd like
+either, reply with the link and the one line you want under it.
+
+Thanks,
+[Your name]
+Within Ten — https://withintenmiles.com/
+
+### 14b. Kids-enrichment franchises (ROADMAP.md Phase 11 #242 and #297)
+
+Same note, for tutoring, swim, gym and coding franchises' local pages
+(public location pages and contact forms only). Replace the two options
+with: *"We list every district's days off with what's on that day, and one
+camp or class can be the featured option for that week ($50 Weekly Spot)."*
+The slot is labelled as paid and sits below the free listings.
+
+## 16. Arts venue — "Your show is on our weekend page" (ROADMAP.md Phase 11 #284)
+
+The §15 pattern, for theatres and music venues whose shows already appear
+on the site from their own calendar feeds. Send after the show is live on
+the page, with its link. **The free listing stays whether or not they
+buy.** The site never removes, demotes or holds back an event to create a
+sale.
+
+Subject: Your [show] is on our [town] weekend page
+
+Hi [Name],
+
+Your [show] on [date] is listed, free, on **Within Ten**
+(https://withintenmiles.com/), a weekly guide to what's on in [town]:
+[live link]. That listing stays up whatever you decide.
+
+If you'd like one show to lead, for $20 I can feature it first on the
+[town] page and at the top of that weekend's email, labelled "Presented
+by [venue]". Here is what that looks like:
+https://withintenmiles.com/sponsor/
+
+Reply with the show and the one line you'd like under the title, and I'll
+confirm the day is free before taking payment.
+
+Thanks,
+[Your name]
+Within Ten — https://withintenmiles.com/
+
+## 17. Local subreddit moderators (ROADMAP.md Phase 11 #302)
+
+One modmail per subreddit, once. No posts, no ongoing participation, and
+no follow-up if declined (items 84 and 164 stand). First check the
+subreddit exists and allows local-resource links in its rules.
+
+Subject: Local resource for the sidebar or wiki?
+
+Hi mods,
+
+I run a free, automated weekend guide for [town], built from the village,
+library and park-district calendars (https://withintenmiles.com/[region]/).
+Every listing links to the calendar it came from. Would you consider it
+for the sidebar or wiki's local-resources list? Happy to correct anything,
+and no problem at all if it doesn't fit.
+
+Thanks,
+[Your name]

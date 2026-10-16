@@ -14839,7 +14839,7 @@ local businesses.
        is cheap now and only gets dearer.
      - 7 new tests (`tests/test_feeds.py`); 730 pass.
 
-270. **Use public PTO sponsor lists as the Event Promo's first prospect
+270. ✅ **BUILD DONE (2026-10-16): `OUTREACH_TEMPLATES.md` §14 (and §14b for kids-enrichment franchises, items 242 and 297). Owner reads PTO sponsor pages as published and sends a few a week.** **Use public PTO sponsor lists as the Event Promo's first prospect
      list.** Owner plus build loop. **Build loop:** add
      `OUTREACH_TEMPLATES.md` §14, *"You already support [school]'s
      PTO"*, offering the $20 Event Promo or $50 Weekly Spot for the same
@@ -15256,7 +15256,7 @@ and some of the likeliest $20 buyers.
      release copies, which already disagree on one closing date. Same
      for Des Plaines Theatre's December shows if they are family-suitable.
 
-284. **A "Night out" line in the email, and venues as Event Promo
+284. ✅ **DONE (2026-10-16): `pick_night_out` (earliest art_culture event starting 6 p.m. or later on a Friday or Saturday, never a paid promotion, nothing when none qualifies) renders one "🎭 Night out" line above the town sections; `OUTREACH_TEMPLATES.md` §16 written. Owner: add "businesses already sponsoring community events" to item 270's prospects (noted in §14's guardrails).** **A "Night out" line in the email, and venues as Event Promo
      buyers.** Design/UX plus outreach, build loop:
 
      - **Email:** after the "Don't miss" picks, one line, *"🎭 Night
@@ -15729,7 +15729,7 @@ the local subreddits.
 
 #### P3 (new)
 
-302. **Ask local subreddit moderators for a sidebar or wiki link, once
+302. ✅ **BUILD DONE (2026-10-16): `OUTREACH_TEMPLATES.md` §17; owner sends in the outreach batch.** **Ask local subreddit moderators for a sidebar or wiki link, once
      each.** Owner, one message per subreddit, in the outreach batch
      (Needs Ryan step 8). Build loop: add `OUTREACH_TEMPLATES.md` §17,
      a short modmail: *"I run a free, automated weekend guide for [town]
