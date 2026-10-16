@@ -15301,7 +15301,7 @@ first time, and plans what replaces the Halloween banner on Nov 1.
 
 #### P1 (new)
 
-285. 🟡 **DONE for Nov 1 – Dec 24 (2026-10-13): the holiday banner (tree-lighting pills from item 274's config, "date TBA" where unposted, a $20 listing offer through Nov 15 linking to a mailto, handover from Halloween's last day, tests). The Dec 15 – Jan 3 winter-break banner waits for item 259's page.** **Make the homepage banner seasonal: Halloween, then holidays,
+285. ✅ **ALL THREE WINDOWS DONE (2026-10-16): the Dec 15 – Jan 3 "Kids off school?" strip links each town's winter-break page, under the holiday banner until Dec 24 and alone after.** Earlier: 🟡 **DONE for Nov 1 – Dec 24 (2026-10-13): the holiday banner (tree-lighting pills from item 274's config, "date TBA" where unposted, a $20 listing offer through Nov 15 linking to a mailto, handover from Halloween's last day, tests). The Dec 15 – Jan 3 winter-break banner waits for item 259's page.** **Make the homepage banner seasonal: Halloween, then holidays,
      then winter break.** Design/UX, build loop. Generalise today's
      `build_halloween_banner()` into one banner per window, with the
      windows taken from **item 263's email registry**, so the homepage
