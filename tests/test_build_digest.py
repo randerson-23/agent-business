@@ -5299,3 +5299,25 @@ def test_configured_official_days_off_are_in_the_current_school_year():
             day = date.fromisoformat(str(entry["date"]))
             assert date(2026, 8, 1) <= day <= date(2027, 7, 31), (path, entry)
             assert entry.get("source_url", "").startswith("https://"), (path, entry)
+
+
+def test_night_out_picks_the_earliest_evening_arts_event_and_never_a_promo():
+    # ROADMAP.md item 284. 2026-10-16 is a Friday, 10-17 a Saturday, 10-18 a Sunday.
+    def ev(title, day, hour, tags=("art_culture",), **kw):
+        return dict({"title": title, "url": "https://x/" + title, "date_iso": f"2026-10-{day}T{hour}:00:00", "tags": list(tags)}, **kw)
+    blocks = [{"region_name": "Arlington Heights", "attendable_events": [
+        ev("Late Show", 17, 20, email_where="Metropolis"), ev("Matinee", 17, 14), ev("Sunday Show", 18, 19),
+        ev("Paid Show", 16, 19, sponsored_by="Acme"), ev("Not Arts", 16, 19, tags=("indoor",)),
+    ]}, {"region_name": "Des Plaines", "attendable_events": [ev("Friday Concert", 16, 19, email_where="Des Plaines Theatre")]}]
+    pick = build_digest.pick_night_out(blocks)
+    assert pick["title"] == "Friday Concert" and pick["venue"] == "Des Plaines Theatre" and pick["when"].startswith("Friday")
+    assert build_digest.pick_night_out([{"region_name": "A", "attendable_events": [ev("Matinee", 17, 14), ev("Sunday Show", 18, 19)]}]) is None
+    html = build_digest.render_combined_email_digest(_join_sections(), "Oct 16–18", datetime(2026, 10, 14, 18, tzinfo=timezone.utc), None)
+    assert "Night out:" not in html
+
+
+def test_night_out_line_renders_in_the_email_when_an_evening_arts_event_exists():
+    sections = _join_sections()
+    sections[0]["weekend_events"].append({"title": "Opening Night", "url": "https://src/o", "date_iso": "2026-10-16T19:30:00", "date": "2026-10-16", "detail": "", "tags": ["art_culture"], "venue": "Metropolis"})
+    html = build_digest.render_combined_email_digest(sections, "Oct 16–18", datetime(2026, 10, 14, 18, tzinfo=timezone.utc), None)
+    assert "Night out:" in html and "Opening Night" in html and "Friday 7:30 PM" in html

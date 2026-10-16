@@ -188,6 +188,13 @@ This weekend, across the northwest suburbs
 <tr><td style="padding:0 0 16px 0;"></td></tr>
 {% endif %}
 
+{% if night_out %}
+{# ROADMAP.md item 284: one "Night out" line for the adult readers. #}
+<tr>
+<td class="wt-ink" style="font-family:Arial, Helvetica, sans-serif; font-size:16px; color:#201e1d; padding:0 0 16px 0;">🎭 <strong>Night out:</strong> <a href="{{ night_out.url }}" class="wt-brand" style="color:#ae1800; font-weight:bold; text-decoration:underline;">{{ night_out.title }}</a>{% if night_out.venue %} at {{ night_out.venue }}{% endif %}, {{ night_out.when }} ({{ night_out.town }})</td>
+</tr>
+{% endif %}
+
 {% for block in region_blocks %}
 {# Region block: {{ block.region_name }} #}
 <tr>
