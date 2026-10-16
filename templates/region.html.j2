@@ -653,6 +653,10 @@
   .days-off .do-ideas a:hover { text-decoration: underline; }
   .days-off .do-clock { color: var(--muted); }
   .days-off .do-note { margin: 8px 0 0; font-size: 12.5px; color: var(--muted); }
+  .days-off .do-sponsor { margin: 8px 0 0; padding-top: 8px; border-top: 1px dashed var(--border); font-size: 14px; }
+  .days-off .do-paid { font-size: 11px; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); margin-right: 6px; }
+  .election-line { margin: 12px 0; font-weight: 700; }
+  .election-line a { color: var(--accent-2-text); }
 </style>
 {{ signup_css() }}
 </head>
@@ -751,6 +755,7 @@
 
   {% if answer_block %}<p class="answer-block">{{ answer_block }}</p>{% endif %}
 
+  {% if election_line %}<p class="election-line"><a href="{{ election_line.url }}" rel="noopener">{{ election_line.text }} &rarr;</a></p>{% endif %}
   {% if days_off %}
   {# ROADMAP.md item 296: school days off in the next 45 days, from each district's own calendar. #}
   <section class="days-off" id="days-off" aria-labelledby="days-off-heading">
@@ -765,6 +770,7 @@
       </li>
       {% endfor %}
     </ul>
+    {% if days_off_sponsor %}<p class="do-sponsor"><span class="do-paid">Sponsored</span> No school? Presented by <a href="{{ days_off_sponsor.url }}" rel="sponsored noopener">{{ days_off_sponsor.title }}</a>{% if days_off_sponsor.detail %} &mdash; {{ days_off_sponsor.detail }}{% endif %}</p>{% endif %}
     <p class="do-note">From each district's own calendar. Check your school's calendar for building-level changes.</p>
   </section>
   {% endif %}

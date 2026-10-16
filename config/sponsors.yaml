@@ -139,3 +139,16 @@ regions:
 #           address: "10 W Main St"
 #           line: "Gift wrapping on every order through Dec 23."
 #           until: "2026-12-24"
+
+# "Days off school" sponsor slot (ROADMAP.md item 297), per region, under
+# regions.<region id>.days_off_sponsor. A labelled "No school? Presented by"
+# line below the free listings in that town's box, priced as a Weekly Spot for
+# the week containing the day off. Required: title, url, until (the last day it
+# runs, YYYY-MM-DD); optional: detail. It never replaces the free listings.
+#   regions:
+#     mount-prospect-60056:
+#       days_off_sponsor:
+#         title: "Example Camps"
+#         url: "https://example.com/"
+#         detail: "Day camps on every district day off."
+#         until: "2026-11-13"

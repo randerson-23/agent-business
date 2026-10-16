@@ -5348,3 +5348,29 @@ def test_celebration_windows_keywords_and_hub_block():
     block = build_digest.build_celebration_block(sections)
     assert [(g["name"], [e["title"] for e in g["events"]]) for g in block] == [("Día de los Muertos", ["DIY Ofrendas Workshop"]), ("Diwali", ["Craft Hour"])]
     assert build_digest.build_celebration_block([{"region_name": "A", "region_url": "u", "events": [{"title": "Chess Club"}]}]) == []
+
+
+def test_election_day_line_windows_and_official_link():
+    # ROADMAP.md item 298. Election Day 2026 is Tue Nov 3; 2027 has none in this rule's year-agnostic form: Nov 2.
+    at = lambda m, d, y=2026: datetime(y, m, d, 18, tzinfo=timezone.utc)
+    line = build_digest.election_day_line
+    assert line(at(11, 1)) is None and line(at(11, 2))["text"].startswith("🗳️ Election Day is Tue Nov 3") and line(at(11, 3)) is not None and line(at(11, 4)) is None
+    assert line(at(10, 26), email=True) is None and line(at(10, 27), email=True) is not None and line(at(11, 4), email=True) is None
+    assert line(at(11, 2))["url"].startswith("https://www.cookcountyclerkil.gov")
+    assert "candidate" not in line(at(11, 2))["text"].lower()
+    assert line(at(11, 1, 2027))["text"].startswith("🗳️ Election Day is Tue Nov 2")  # the first Tuesday after the first Monday
+
+
+def test_days_off_sponsor_needs_a_current_until_date_and_is_labelled_paid():
+    # ROADMAP.md item 297.
+    cfg = {"regions": {"r": {"days_off_sponsor": {"title": "Example Camps", "url": "https://c/", "detail": "Camps every day off.", "until": "2026-11-13"}}}}
+    assert build_digest.build_days_off_sponsor(cfg, "r", date(2026, 11, 13))["title"] == "Example Camps"
+    assert build_digest.build_days_off_sponsor(cfg, "r", date(2026, 11, 14)) is None
+    assert build_digest.build_days_off_sponsor(cfg, "other", date(2026, 11, 1)) is None
+    assert build_digest.build_days_off_sponsor({"regions": {"r": {"days_off_sponsor": {"title": "X", "url": "https://c/"}}}}, "r", date(2026, 11, 1)) is None  # no `until`
+    days = [{"date": date(2026, 11, 11), "end": date(2026, 11, 11), "label": "Wed Nov 11", "reasons": [{"district": "D57", "reason": "No School"}], "ideas": []}]
+    region_cfg = {"region": {"id": "r", "name": "R", "zip": "60056", "state": "IL", "tagline": "t", "timezone": "America/Chicago"}}
+    html = build_digest.render_region_page(region_cfg, [], None, [], datetime(2026, 11, 2, 18, tzinfo=timezone.utc), days_off=days, days_off_sponsor=build_digest.build_days_off_sponsor(cfg, "r", date(2026, 11, 2)))
+    assert "Sponsored" in html and "No school? Presented by" in html and "Example Camps" in html
+    assert html.index("D57: No School") < html.index("Presented by")  # below the free listings
+    assert "Election Day is Tue Nov 3" in html  # Nov 2 render

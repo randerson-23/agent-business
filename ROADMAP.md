@@ -15638,7 +15638,7 @@ school, and what is there to do that day?**
 
 #### P2 (new)
 
-297. **Sell the "Days off school" box as the kids-enrichment sponsor
+297. ✅ **BUILD DONE (2026-10-16): `days_off_sponsor:` per region in `config/sponsors.yaml` (title, url, detail, `until`), rendered as a labelled "Sponsored · No school? Presented by" line below the free listings; the franchise line is in `OUTREACH_TEMPLATES.md` §14b. Owner pastes one entry per sale.** **Sell the "Days off school" box as the kids-enrichment sponsor
      slot.** Build loop plus owner. One labelled slot in the box (*"No
      school? Presented by [business]"*), using the Weekly Spot rendering
      and priced as a Weekly Spot for the week containing the day off.
@@ -15649,7 +15649,7 @@ school, and what is there to do that day?**
 
 #### P3 (new)
 
-298. **One neutral Election Day line, Nov 2–3 only.** Build loop: in the
+298. ✅ **DONE (2026-10-16): `election_day_line` (first Tuesday after the first Monday in November): region pages on Nov 2–3, the email from Oct 27, date and a link to cookcountyclerkil.gov only; tests added.** **One neutral Election Day line, Nov 2–3 only.** Build loop: in the
      season registry (items 263, 285), a window for **Nov 2–3, 2026**
      that adds a single line to the region pages and the Oct 28 email:
      *"🗳️ Election Day is Tue Nov 3. Find your polling place and early

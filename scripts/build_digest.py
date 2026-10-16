@@ -2672,6 +2672,7 @@ def render_region_page(
     nearby_regions: list[dict] | None = None,
     region_map: dict | None = None,
     days_off: list[dict] | None = None,
+    days_off_sponsor: dict | None = None,
     build_scope_end_iso: str | None = None,
     stale_empty_message: str | None = None,
     empty_follow_url: str | None = None,
@@ -2718,6 +2719,8 @@ def render_region_page(
         nearby_regions=nearby_regions,
         region_map=region_map,
         days_off=days_off,
+        days_off_sponsor=days_off_sponsor,
+        election_line=election_day_line(now),
         faq=faq,
         faq_json_ld=build_faq_json_ld(faq) if faq else None,
         heading=heading,
@@ -4559,6 +4562,7 @@ def render_combined_email_digest(sections: list[dict], weekend_date_range: str, 
         weather_line=weather_line["text"] if weather_line else None,
         days_off_line=days_off_line,
         night_out=night_out,
+        election_line=election_day_line(now, email=True),
         rain_plan=rain_plan,
     )
 
@@ -4609,6 +4613,40 @@ def _next_school_day(day: date) -> date:
     while nxt.weekday() >= 5:
         nxt += timedelta(days=1)
     return nxt
+
+
+def build_days_off_sponsor(sponsors_cfg: dict, region_id: str, local_today: date) -> dict | None:
+    """The paid slot under a region's "Days off school" box (ROADMAP.md item
+    297): `days_off_sponsor:` in config/sponsors.yaml under the region, with
+    `title`, `url`, an optional `detail`, and an optional `until` (the last day
+    it runs; without one it never shows). Labelled as paid and rendered below
+    the free listings, never in place of them."""
+    entry = sponsors_cfg.get("regions", {}).get(region_id, {}).get("days_off_sponsor")
+    if not isinstance(entry, dict) or not str(entry.get("title") or "").strip() or not str(entry.get("url") or "").strip():
+        return None
+    until = _parse_promo_day(entry.get("until"))
+    if until is None or until < local_today:
+        return None
+    return {"title": str(entry["title"]).strip(), "url": str(entry["url"]).strip(), "detail": str(entry.get("detail") or "").strip()}
+
+
+ELECTION_DAY_URL = "https://www.cookcountyclerkil.gov/"
+
+
+def election_day_line(now: datetime, *, email: bool = False) -> dict | None:
+    """One neutral Election Day line (ROADMAP.md item 298): the date and a link
+    to the Cook County Clerk's official site, nothing else - no candidates,
+    measures or opinions. Pages show it on Nov 2-3; the email also carries it
+    for the issue sent the week before (Oct 27 on). First Tuesday after the
+    first Monday in November."""
+    today = now.astimezone(LOCAL_TZ).date()
+    nov1 = date(today.year, 11, 1)
+    first_monday = nov1 + timedelta(days=(0 - nov1.weekday()) % 7)
+    election = first_monday + timedelta(days=1)
+    start = election - timedelta(days=(7 if email else 1))
+    if not (start <= today <= election):
+        return None
+    return {"text": f"🗳️ Election Day is {election.strftime('%a %b')} {election.day}. Find your polling place and early voting", "url": ELECTION_DAY_URL}
 
 
 def build_days_off(
@@ -5254,6 +5292,7 @@ def main() -> None:
             nearby_regions=build_nearby_regions(region, all_regions_meta),
             region_map=build_region_map(all_regions_meta),
             days_off=region_days_off,
+            days_off_sponsor=build_days_off_sponsor(sponsors_cfg, region_id, local_today),
         )
 
         region_dir = OUTPUT_DIR / region_id
