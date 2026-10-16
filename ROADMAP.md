@@ -10704,7 +10704,7 @@ The tonight-relevant part: this repo's newsletter cron fires **today at
        other data files, and its sandbox lockstep warning is not real.
      - 8 tests (`tests/test_failure_window.py`); 700 pass.
 
-195. **`fetchers.py` has no retry, and that is what turns a flaky host
+195. ✅ **DONE (found already shipped, 2026-10-16): `_get()` makes 3 attempts with 1s and 2s backoff on transient failures only (`_is_retryable`), never on 403 or 404.** **`fetchers.py` has no retry, and that is what turns a flaky host
      into a missing park district.** Checked directly: no retry, no
      backoff, no `requests.Session` with an adapter, no
      `urllib3.Retry`. One attempt at `REQUEST_TIMEOUT = 15`, and any
@@ -14673,7 +14673,7 @@ and search engines that keep coming back.
 
 #### P2 (new)
 
-267. **Count the readers the site sends to each publisher, so the
+267. ✅ **DONE (2026-10-16): one delegated click listener on region pages and the merged hub pages sends GoatCounter an `out/<hostname>` event for links leaving the site (only when analytics is configured; nothing about the reader). 13,074 of 13,312 bytes of inline JS on the largest page, so the budget did not need raising. Item 266's snapshot will read the `out/*` counts once the owner adds the GoatCounter token.** **Count the readers the site sends to each publisher, so the
      outreach emails can cite it.** Build loop. One delegated click
      listener on event-card links calls
      `goatcounter.count({path: 'out/' + hostname, event: true})`, so

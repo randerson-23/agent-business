@@ -1315,6 +1315,8 @@
 })();
 </script>
 {% if analytics and analytics.configured %}
+{# ROADMAP.md item 267: one delegated listener counts outbound clicks per publisher domain (GoatCounter event out/<hostname>); nothing about the reader is sent. #}
+<script>document.addEventListener("click",function(e){var a=e.target.closest&&e.target.closest("a[href^=http]");if(a&&a.hostname!==location.hostname&&window.goatcounter&&goatcounter.count)goatcounter.count({path:"out/"+a.hostname,event:true})})</script>
 <script data-goatcounter="https://{{ analytics.goatcounter_code }}.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 {% endif %}
 </body>
