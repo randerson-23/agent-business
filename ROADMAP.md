@@ -15572,7 +15572,7 @@ feeds carry but never group.
 
 #### P2 (new)
 
-295. **A "Celebrations" grouping for Diwali and Día de los Muertos,
+295. ✅ **DONE (2026-10-16): `config/celebrations.yaml` (Día de los Muertos Oct 25 – Nov 2 every year; Diwali from a configured date, 2026-11-08, 21 days before to 3 after, to be renewed yearly), matching events get a `celebration` label and +1 in `family_relevance` (never above Featured), and `/this-weekend/` shows a "Celebrations" block only when matching events exist; tests added. The same table can take Lunar New Year, Eid, Hanukkah and Kwanzaa.** **A "Celebrations" grouping for Diwali and Día de los Muertos,
      from the existing feeds.** Build loop. A small keyword table in
      config (`diwali`, `deepavali`, `rangoli`, `día de los muertos`,
      `dia de muertos`, `day of the dead`, `ofrenda`, `sugar skull`), each

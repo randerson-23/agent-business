@@ -2920,6 +2920,20 @@ def render_hub_page(
     )
 
 
+def build_celebration_block(region_sections: list[dict]) -> list[dict]:
+    """The weekend hub's "Celebrations" block (item 295): events the feeds
+    carry that match an open celebration, grouped by celebration name, with
+    their town. [] (and no block) when none match."""
+    groups: dict[str, list[dict]] = {}
+    for section in region_sections:
+        for e in section["events"]:
+            if e.get("celebration"):
+                groups.setdefault(e["celebration"], []).append(
+                    {"title": e["title"], "url": e.get("url"), "town": section["region_name"], "date": e.get("date_label") or e.get("date"), "anchor": e.get("anchor_id"), "region_url": section["region_url"]}
+                )
+    return [{"name": name, "events": events} for name, events in groups.items()]
+
+
 def render_merged_hub_page(
     region_sections: list[dict],
     now: datetime,
@@ -2949,6 +2963,7 @@ def render_merged_hub_page(
     prepare_event_cards([{"events": s["events"]} for s in region_sections])
     return template.render(
         region_sections=region_sections,
+        celebrations=build_celebration_block(region_sections) if slug == "this-weekend" else None,
         heading=heading,
         subheading=subheading,
         page_title=heading,
@@ -4193,13 +4208,58 @@ def load_relevance_config() -> dict:
     return {"boost_tags": boost, "adult_pattern": pattern}
 
 
+CELEBRATIONS_PATH = CONFIG_DIR / "celebrations.yaml"
+
+
+@lru_cache(maxsize=1)
+def load_celebrations() -> list[dict]:
+    try:
+        data = load_yaml(CELEBRATIONS_PATH)
+    except OSError:
+        data = {}
+    return [c for c in (data.get("celebrations") or []) if c.get("name") and c.get("keywords")]
+
+
+def active_celebrations(day: date, celebrations: list[dict] | None = None) -> list[dict]:
+    """Celebrations whose window includes `day` (ROADMAP.md item 295)."""
+    active = []
+    for c in load_celebrations() if celebrations is None else celebrations:
+        if c.get("date"):
+            center = _parse_promo_day(c["date"])
+            if center and center - timedelta(days=int(c.get("days_before", 0))) <= day <= center + timedelta(days=int(c.get("days_after", 0))):
+                active.append(c)
+        elif c.get("start") and c.get("end"):
+            md = (day.month, day.day)
+            start = tuple(int(x) for x in str(c["start"]).split("-"))
+            end = tuple(int(x) for x in str(c["end"]).split("-"))
+            if start <= md <= end:
+                active.append(c)
+    return active
+
+
+def annotate_celebrations(blocks: list[dict], day: date, celebrations: list[dict] | None = None) -> None:
+    """Set `celebration` on every event that matches an open celebration's
+    keywords, in place. Matched on the title and description."""
+    active = active_celebrations(day, celebrations)
+    if not active:
+        return
+    for block in blocks:
+        for e in block.get("events", []):
+            text = f"{e.get('title') or ''} {e.get('detail') or ''}".lower()
+            for c in active:
+                if any(str(k).lower() in text for k in c["keywords"]):
+                    e["celebration"] = c["name"]
+                    break
+
+
 def family_relevance(event: dict) -> int:
     """A small score for ordering: +1 for each boost tag the event carries
-    (kid-friendly, free, outdoor), -2 for each adult-programme word in the
-    title. Reorders only; nothing is ever hidden by it."""
+    (kid-friendly, free, outdoor), +1 for a celebration the feeds carry (item
+    295), -2 for each adult-programme word in the title. Reorders only;
+    nothing is ever hidden by it."""
     cfg = load_relevance_config()
     tags = set(event.get("tags") or [])
-    score = sum(1 for t in cfg["boost_tags"] if t in tags)
+    score = sum(1 for t in cfg["boost_tags"] if t in tags) + (1 if event.get("celebration") else 0)
     if cfg["adult_pattern"] is not None:
         score -= 2 * len(cfg["adult_pattern"].findall(event.get("title") or ""))
     return score
@@ -5152,6 +5212,7 @@ def main() -> None:
         # the RSS feed, calendar.ics, and every date-scoped view all see
         # the same deduped list instead of needing their own pass.
         blocks = dedupe_events(blocks)
+        annotate_celebrations(blocks, local_today)
         # ROADMAP.md item 245: a paid Event Promo goes in after the filters
         # above, so it can never be deduped away or dropped, and goes first.
         blocks = apply_promotion(blocks, build_promotion_event(sponsors_cfg, region_cfg, local_today))
