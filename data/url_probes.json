@@ -4,7 +4,7 @@
       "url": "https://withintenmiles.com/f3b7799bed06aac4295ec9134d53b014.txt",
       "purpose": "IndexNow key file on the live domain - still served and still equal to the key?",
       "item": 224,
-      "probed_at": "2026-10-14T22:02:22+00:00",
+      "probed_at": "2026-10-16T22:06:27+00:00",
       "status": 200,
       "final_url": "https://withintenmiles.com/f3b7799bed06aac4295ec9134d53b014.txt",
       "content_type": "text/plain; charset=utf-8",
@@ -22,11 +22,11 @@
       "url": "https://mpdowntown.com/events/",
       "purpose": "Downtown Mount Prospect - full text of the Downtown Trick-or-Treat section (is it a 2026 date?)",
       "item": 292,
-      "probed_at": "2026-10-14T22:02:22+00:00",
+      "probed_at": "2026-10-16T22:06:27+00:00",
       "status": 200,
       "final_url": "https://mpdowntown.com/events/",
       "content_type": "text/html; charset=UTF-8",
-      "bytes": 124904,
+      "bytes": 124991,
       "title": "Events | Mount Prospect Downtown Merchants",
       "feed_links": [
         {
@@ -75,37 +75,13 @@
       "url": "https://events.harpercollege.edu/api/2/events?days=60&pp=100",
       "purpose": "Harper College (Localist) - venue ids, venue names and event types in use",
       "item": 286,
-      "probed_at": "2026-10-14T22:02:23+00:00",
+      "probed_at": "2026-10-16T22:06:27+00:00",
       "status": 200,
       "final_url": "https://events.harpercollege.edu/api/2/events?days=60&pp=100",
       "content_type": "application/json; charset=utf-8",
-      "bytes": 336570,
+      "bytes": 349460,
       "pattern_matches": {
         "\"venue_id\":\\d+": [
-          {
-            "match": "\"venue_id\":53736902137049",
-            "context": "e\":false,\"verified\":true,\"rejected\":false,\"sponsored\":false,\"venue_id\":53736902137049,\"ticket_url\":\"\",\"ticket_cost\":\"\",\"has_register\":false,\"keyw"
-          },
-          {
-            "match": "\"venue_id\":401070",
-            "context": "e\":false,\"verified\":true,\"rejected\":false,\"sponsored\":false,\"venue_id\":401070,\"ticket_url\":\"\",\"ticket_cost\":\"\",\"has_register\":false,\"keyw"
-          },
-          {
-            "match": "\"venue_id\":48250975467679",
-            "context": "e\":false,\"verified\":true,\"rejected\":false,\"sponsored\":false,\"venue_id\":48250975467679,\"ticket_url\":\"\",\"ticket_cost\":\"\",\"has_register\":false,\"keyw"
-          },
-          {
-            "match": "\"venue_id\":417176",
-            "context": "e\":false,\"verified\":true,\"rejected\":false,\"sponsored\":false,\"venue_id\":417176,\"ticket_url\":\"\",\"ticket_cost\":\"\",\"has_register\":false,\"keyw"
-          },
-          {
-            "match": "\"venue_id\":398863",
-            "context": "e\":false,\"verified\":true,\"rejected\":false,\"sponsored\":false,\"venue_id\":398863,\"ticket_url\":\"\",\"ticket_cost\":\"\",\"has_register\":false,\"keyw"
-          },
-          {
-            "match": "\"venue_id\":48226225335942",
-            "context": "e\":false,\"verified\":true,\"rejected\":false,\"sponsored\":false,\"venue_id\":48226225335942,\"ticket_url\":\"\",\"ticket_cost\":\"Free\",\"has_register\":false,\""
-          },
           {
             "match": "\"venue_id\":622708",
             "context": "e\":false,\"verified\":true,\"rejected\":false,\"sponsored\":false,\"venue_id\":622708,\"ticket_url\":\"\",\"ticket_cost\":\"\",\"has_register\":false,\"keyw"
@@ -119,12 +95,32 @@
             "context": "e\":false,\"verified\":true,\"rejected\":false,\"sponsored\":false,\"venue_id\":401055,\"ticket_url\":\"\",\"ticket_cost\":\"\",\"has_register\":false,\"keyw"
           },
           {
+            "match": "\"venue_id\":399067",
+            "context": "e\":false,\"verified\":true,\"rejected\":false,\"sponsored\":false,\"venue_id\":399067,\"ticket_url\":\"\",\"ticket_cost\":\"\",\"has_register\":false,\"keyw"
+          },
+          {
+            "match": "\"venue_id\":417176",
+            "context": "e\":false,\"verified\":true,\"rejected\":false,\"sponsored\":false,\"venue_id\":417176,\"ticket_url\":\"\",\"ticket_cost\":\"\",\"has_register\":false,\"keyw"
+          },
+          {
+            "match": "\"venue_id\":398863",
+            "context": "e\":false,\"verified\":true,\"rejected\":false,\"sponsored\":false,\"venue_id\":398863,\"ticket_url\":\"\",\"ticket_cost\":\"\",\"has_register\":false,\"keyw"
+          },
+          {
             "match": "\"venue_id\":53736683158323",
             "context": "e\":false,\"verified\":true,\"rejected\":false,\"sponsored\":false,\"venue_id\":53736683158323,\"ticket_url\":\"\",\"ticket_cost\":\"\",\"has_register\":false,\"keyw"
           },
           {
-            "match": "\"venue_id\":399067",
-            "context": "e\":false,\"verified\":true,\"rejected\":false,\"sponsored\":false,\"venue_id\":399067,\"ticket_url\":null,\"ticket_cost\":null,\"has_register\":true,\"k"
+            "match": "\"venue_id\":401070",
+            "context": "e\":false,\"verified\":true,\"rejected\":false,\"sponsored\":false,\"venue_id\":401070,\"ticket_url\":\"\",\"ticket_cost\":\"\",\"has_register\":false,\"keyw"
+          },
+          {
+            "match": "\"venue_id\":48250975467679",
+            "context": "e\":false,\"verified\":true,\"rejected\":false,\"sponsored\":false,\"venue_id\":48250975467679,\"ticket_url\":\"\",\"ticket_cost\":\"\",\"has_register\":false,\"keyw"
+          },
+          {
+            "match": "\"venue_id\":48226225335942",
+            "context": "e\":false,\"verified\":true,\"rejected\":false,\"sponsored\":false,\"venue_id\":48226225335942,\"ticket_url\":\"\",\"ticket_cost\":\"Free\",\"has_register\":false,\""
           },
           {
             "match": "\"venue_id\":404965",
@@ -137,60 +133,16 @@
         ],
         "\"location_name\":\"[^\"]{2,60}\"": [
           {
-            "match": "\"location_name\":\"Hawks Care Resource Center\"",
-            "context": "\"allows_attendance\":true,\"location\":\"\",\"room_number\":\"D204\",\"location_name\":\"Hawks Care Resource Center\",\"status\":\"live\",\"experience\":\"inperson\",\"stream_url\":null,\""
-          },
-          {
-            "match": "\"location_name\":\"Harper Quad\"",
-            "context": "_attendance\":true,\"location\":\"Harper Quad\",\"room_number\":\"\",\"location_name\":\"Harper Quad\",\"status\":\"live\",\"experience\":\"inperson\",\"stream_url\":null,\""
-          },
-          {
-            "match": "\"location_name\":\"Job Placement Resource Center, Room I117\"",
-            "context": "\"allows_attendance\":true,\"location\":\"\",\"room_number\":\"I117\",\"location_name\":\"Job Placement Resource Center, Room I117\",\"status\":\"live\",\"experience\":\"hybrid\",\"stream_url\":\"\",\"stre"
-          },
-          {
-            "match": "\"location_name\":\"Building I\"",
-            "context": ",\"allows_attendance\":true,\"location\":\"\",\"room_number\":\"117\",\"location_name\":\"Building I\",\"status\":\"live\",\"experience\":\"hybrid\",\"stream_url\":\"https:/"
-          },
-          {
-            "match": "\"location_name\":\"Palatine, IL, Hawks' Soccer Field\"",
-            "context": "ion\":\"Palatine, IL, Hawks' Soccer Field\",\"room_number\":null,\"location_name\":\"Palatine, IL, Hawks' Soccer Field\",\"status\":\"live\",\"experience\":\"inperson\",\"stream_url\":null,\""
-          },
-          {
-            "match": "\"location_name\":\"Building D, Duchossois Family Educational Center\"",
-            "context": "\"allows_attendance\":true,\"location\":\"\",\"room_number\":\"D142\",\"location_name\":\"Building D, Duchossois Family Educational Center\",\"status\":\"live\",\"experience\":\"inperson\",\"stream_url\":null,\""
-          },
-          {
-            "match": "\"location_name\":\"Building W, Wojcik Conference Center\"",
-            "context": "rue,\"allows_attendance\":true,\"location\":\"\",\"room_number\":\"\",\"location_name\":\"Building W, Wojcik Conference Center\",\"status\":\"live\",\"experience\":\"inperson\",\"stream_url\":null,\""
-          },
-          {
-            "match": "\"location_name\":\"Film Lab, Building E, Room E109\"",
-            "context": "\"allows_attendance\":true,\"location\":\"\",\"room_number\":\"E019\",\"location_name\":\"Film Lab, Building E, Room E109\",\"status\":\"live\",\"experience\":\"inperson\",\"stream_url\":null,\""
-          },
-          {
-            "match": "\"location_name\":\"Palatine, IL, Hawks' Fieldhouse\"",
-            "context": "ation\":\"Palatine, IL, Hawks' Fieldhouse\",\"room_number\":null,\"location_name\":\"Palatine, IL, Hawks' Fieldhouse\",\"status\":\"live\",\"experience\":\"inperson\",\"stream_url\":null,\""
-          },
-          {
-            "match": "\"location_name\":\"Avante\"",
-            "context": "llows_attendance\":true,\"location\":\"Avante\",\"room_number\":\"\",\"location_name\":\"Avante\",\"status\":\"live\",\"experience\":\"inperson\",\"stream_url\":null,\""
-          },
-          {
-            "match": "\"location_name\":\"Virtual\"",
-            "context": "lows_attendance\":true,\"location\":\"Virtual\",\"room_number\":\"\",\"location_name\":\"Virtual\",\"status\":\"live\",\"experience\":\"inperson\",\"stream_url\":null,\""
-          },
-          {
-            "match": "\"location_name\":\"Palatine, IL, Hawks Softball Field\"",
-            "context": "on\":\"Palatine, IL, Hawks Softball Field\",\"room_number\":null,\"location_name\":\"Palatine, IL, Hawks Softball Field\",\"status\":\"live\",\"experience\":\"inperson\",\"stream_url\":null,\""
-          },
-          {
             "match": "\"location_name\":\"Peoria, IL, Newman Golf Course\"",
             "context": "cation\":\"Peoria, IL, Newman Golf Course\",\"room_number\":null,\"location_name\":\"Peoria, IL, Newman Golf Course\",\"status\":\"live\",\"experience\":\"inperson\",\"stream_url\":null,\""
           },
           {
             "match": "\"location_name\":\"Elgin, IL, Lindner Center\"",
             "context": "e,\"location\":\"Elgin, IL, Lindner Center\",\"room_number\":null,\"location_name\":\"Elgin, IL, Lindner Center\",\"status\":\"live\",\"experience\":\"inperson\",\"stream_url\":null,\""
+          },
+          {
+            "match": "\"location_name\":\"Palatine, IL, Hawks' Fieldhouse\"",
+            "context": "ation\":\"Palatine, IL, Hawks' Fieldhouse\",\"room_number\":null,\"location_name\":\"Palatine, IL, Hawks' Fieldhouse\",\"status\":\"live\",\"experience\":\"inperson\",\"stream_url\":null,\""
           },
           {
             "match": "\"location_name\":\"Des Plaines, IL , Owls' Soccer Field\"",
@@ -209,50 +161,90 @@
             "context": "rue,\"allows_attendance\":true,\"location\":\"\",\"room_number\":\"\",\"location_name\":\"Building Z, Avantè Center\",\"status\":\"live\",\"experience\":\"inperson\",\"stream_url\":null,\""
           },
           {
+            "match": "\"location_name\":\"Building A\"",
+            "context": "ce\":true,\"location\":\"\",\"room_number\":\"Second Floor Lounge \",\"location_name\":\"Building A\",\"status\":\"live\",\"experience\":\"inperson\",\"stream_url\":null,\""
+          },
+          {
+            "match": "\"location_name\":\"Building D, Duchossois Family Educational Center\"",
+            "context": "endance\":true,\"location\":\"\",\"room_number\":\"D Rotunda, D121\",\"location_name\":\"Building D, Duchossois Family Educational Center\",\"status\":\"live\",\"experience\":\"inperson\",\"stream_url\":null,\""
+          },
+          {
+            "match": "\"location_name\":\"Building W, Wojcik Conference Center\"",
+            "context": ",\"allows_attendance\":true,\"location\":\"\",\"room_number\":\"216\",\"location_name\":\"Building W, Wojcik Conference Center\",\"status\":\"live\",\"experience\":\"inperson\",\"stream_url\":null,\""
+          },
+          {
+            "match": "\"location_name\":\"Job Placement Resource Center, Room I117\"",
+            "context": "\"allows_attendance\":true,\"location\":\"\",\"room_number\":\"I117\",\"location_name\":\"Job Placement Resource Center, Room I117\",\"status\":\"live\",\"experience\":\"hybrid\",\"stream_url\":\"\",\"stre"
+          },
+          {
+            "match": "\"location_name\":\"Building I\"",
+            "context": ",\"allows_attendance\":true,\"location\":\"\",\"room_number\":\"117\",\"location_name\":\"Building I\",\"status\":\"live\",\"experience\":\"hybrid\",\"stream_url\":\"https:/"
+          },
+          {
             "match": "\"location_name\":\"River Grove, IL , Multi-Purpose Field\"",
             "context": ":\"River Grove, IL , Multi-Purpose Field\",\"room_number\":null,\"location_name\":\"River Grove, IL , Multi-Purpose Field\",\"status\":\"live\",\"experience\":\"inperson\",\"stream_url\":null,\""
           },
           {
-            "match": "\"location_name\":\"Building A\"",
-            "context": "llows_attendance\":true,\"location\":\"\",\"room_number\":\"Atrium\",\"location_name\":\"Building A\",\"status\":\"live\",\"experience\":\"inperson\",\"stream_url\":null,\""
+            "match": "\"location_name\":\"Film Lab, Building E, Room E109\"",
+            "context": "\"allows_attendance\":true,\"location\":\"\",\"room_number\":\"E109\",\"location_name\":\"Film Lab, Building E, Room E109\",\"status\":\"live\",\"experience\":\"inperson\",\"stream_url\":null,\""
+          },
+          {
+            "match": "\"location_name\":\"Building D\"",
+            "context": "tendance\":true,\"location\":\"Building D\",\"room_number\":\"D216\",\"location_name\":\"Building D\",\"status\":\"live\",\"experience\":\"inperson\",\"stream_url\":null,\""
+          },
+          {
+            "match": "\"location_name\":\"Chicago Heights, IL , Pioneer Sports Complex\"",
+            "context": "go Heights, IL , Pioneer Sports Complex\",\"room_number\":null,\"location_name\":\"Chicago Heights, IL , Pioneer Sports Complex\",\"status\":\"live\",\"experience\":\"inperson\",\"stream_url\":null,\""
+          },
+          {
+            "match": "\"location_name\":\"Chicago, IL, Keating Sports Center\"",
+            "context": "on\":\"Chicago, IL, Keating Sports Center\",\"room_number\":null,\"location_name\":\"Chicago, IL, Keating Sports Center\",\"status\":\"live\",\"experience\":\"inperson\",\"stream_url\":null,\""
+          },
+          {
+            "match": "\"location_name\":\"Milwaukee, WI , Alverno College\"",
+            "context": "ation\":\"Milwaukee, WI , Alverno College\",\"room_number\":null,\"location_name\":\"Milwaukee, WI , Alverno College\",\"status\":\"live\",\"experience\":\"inperson\",\"stream_url\":null,\""
+          },
+          {
+            "match": "\"location_name\":\"Admissions Outreach\"",
+            "context": "dmissions Outreach\",\"room_number\":\"Building C Office C-103\",\"location_name\":\"Admissions Outreach\",\"status\":\"live\",\"experience\":\"inperson\",\"stream_url\":null,\""
+          },
+          {
+            "match": "\"location_name\":\"Building X, Foglia Center for Nursing and Allied Health\"",
+            "context": "\"allows_attendance\":true,\"location\":\"\",\"room_number\":\"X229\",\"location_name\":\"Building X, Foglia Center for Nursing and Allied Health\",\"status\":\"live\",\"experience\":\"inperson\",\"stream_url\":null,\""
           }
         ],
         "\"event_types\":\\[[^\\]]{0,200}\\]": [
           {
-            "match": "\"event_types\":[{\"name\":\"Training and How-Tos\",\"id\":53736839190237}]",
-            "context": "nts\":[{\"id\":49453020010424,\"name\":\"Hawks Care\"}],\"filters\":{\"event_types\":[{\"name\":\"Training and How-Tos\",\"id\":53736839190237}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\""
-          },
-          {
-            "match": "\"event_types\":[{\"name\":\"Outdoor\",\"id\":53736835678859}]",
-            "context": "id\":33255234811198,\"name\":\"Student Engagement\"}],\"filters\":{\"event_types\":[{\"name\":\"Outdoor\",\"id\":53736835678859}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\""
-          },
-          {
             "match": "\"event_types\":[{\"name\":\"Athletics\",\"id\":107041}]",
             "context": "ty\":null,\"state\":null,\"country\":null,\"zip\":null},\"filters\":{\"event_types\":[{\"name\":\"Athletics\",\"id\":107041}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\""
-          },
-          {
-            "match": "\"event_types\":[{\"name\":\"Admission\",\"id\":44198994778312},{\"name\":\"Information Session\",\"id\":107035}]",
-            "context": "578,\"name\":\"Continuing Professional Education\"}],\"filters\":{\"event_types\":[{\"name\":\"Admission\",\"id\":44198994778312},{\"name\":\"Information Session\",\"id\":107035}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\""
-          },
-          {
-            "match": "\"event_types\":[{\"name\":\"Wellness and Health\",\"id\":46790322621181}]",
-            "context": "\"name\":\"Mental Health and Well-Being Services\"}],\"filters\":{\"event_types\":[{\"name\":\"Wellness and Health\",\"id\":46790322621181}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\""
-          },
-          {
-            "match": "\"event_types\":[{\"name\":\"Cultural Arts\",\"id\":128837},{\"name\":\"Film Screening / Series\",\"id\":44146602471710}]",
-            "context": "id\":44128605158525,\"name\":\"Mass Communication\"}],\"filters\":{\"event_types\":[{\"name\":\"Cultural Arts\",\"id\":128837},{\"name\":\"Film Screening / Series\",\"id\":44146602471710}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\""
-          },
-          {
-            "match": "\"event_types\":[{\"name\":\"Virtual Events\",\"id\":128836},{\"name\":\"Training and How-Tos\",\"id\":53736839190237}]",
-            "context": "\":11536,\"name\":\"Job Placement Resource Center\"}],\"filters\":{\"event_types\":[{\"name\":\"Virtual Events\",\"id\":128836},{\"name\":\"Training and How-Tos\",\"id\":53736839190237}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\""
           },
           {
             "match": "\"event_types\":[{\"name\":\"Cultural Arts\",\"id\":128837},{\"name\":\"Fairs / Expos\",\"id\":53736840270831}]",
             "context": "\":\"Center for Global Education and Engagement\"}],\"filters\":{\"event_types\":[{\"name\":\"Cultural Arts\",\"id\":128837},{\"name\":\"Fairs / Expos\",\"id\":53736840270831}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\""
           },
           {
+            "match": "\"event_types\":[{\"name\":\"Wellness and Health\",\"id\":46790322621181}]",
+            "context": "nts\":[{\"id\":49453020010424,\"name\":\"Hawks Care\"}],\"filters\":{\"event_types\":[{\"name\":\"Wellness and Health\",\"id\":46790322621181}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\""
+          },
+          {
             "match": "\"event_types\":[{\"name\":\"Cultural Arts\",\"id\":128837},{\"name\":\"Tabling\",\"id\":51896898230417},{\"name\":\"Fairs / Expos\",\"id\":53736840270831}]",
             "context": "\":\"Center for Global Education and Engagement\"}],\"filters\":{\"event_types\":[{\"name\":\"Cultural Arts\",\"id\":128837},{\"name\":\"Tabling\",\"id\":51896898230417},{\"name\":\"Fairs / Expos\",\"id\":53736840270831}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\""
+          },
+          {
+            "match": "\"event_types\":[{\"name\":\"Student Club/Organization Meetings\",\"id\":46367326248209}]",
+            "context": "id\":33255234811198,\"name\":\"Student Engagement\"}],\"filters\":{\"event_types\":[{\"name\":\"Student Club/Organization Meetings\",\"id\":46367326248209}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\""
+          },
+          {
+            "match": "\"event_types\":[{\"name\":\"Training and How-Tos\",\"id\":53736839190237}]",
+            "context": "\":11536,\"name\":\"Job Placement Resource Center\"}],\"filters\":{\"event_types\":[{\"name\":\"Training and How-Tos\",\"id\":53736839190237}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\""
+          },
+          {
+            "match": "\"event_types\":[{\"name\":\"Admission\",\"id\":44198994778312},{\"name\":\"Information Session\",\"id\":107035}]",
+            "context": ":[{\"id\":43968335307329,\"name\":\"Adult Learners\"}],\"filters\":{\"event_types\":[{\"name\":\"Admission\",\"id\":44198994778312},{\"name\":\"Information Session\",\"id\":107035}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\""
+          },
+          {
+            "match": "\"event_types\":[{\"name\":\"Cultural Arts\",\"id\":128837},{\"name\":\"Film Screening / Series\",\"id\":44146602471710}]",
+            "context": "id\":44128605158525,\"name\":\"Mass Communication\"}],\"filters\":{\"event_types\":[{\"name\":\"Cultural Arts\",\"id\":128837},{\"name\":\"Film Screening / Series\",\"id\":44146602471710}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\""
           },
           {
             "match": "\"event_types\":[{\"name\":\"Lectures/Panels\",\"id\":44021713318309}]",
@@ -263,93 +255,356 @@
             "context": "[{\"id\":43969347273322,\"name\":\"Admissions Tour\"}],\"filters\":{\"event_types\":[{\"name\":\"Admission\",\"id\":44198994778312},{\"name\":\"Campus Tour\",\"id\":44198992944890}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\""
           },
           {
+            "match": "\"event_types\":[{\"name\":\"Virtual Events\",\"id\":128836},{\"name\":\"Training and How-Tos\",\"id\":53736839190237}]",
+            "context": "\":11536,\"name\":\"Job Placement Resource Center\"}],\"filters\":{\"event_types\":[{\"name\":\"Virtual Events\",\"id\":128836},{\"name\":\"Training and How-Tos\",\"id\":53736839190237}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\""
+          },
+          {
+            "match": "\"event_types\":[{\"name\":\"Outdoor\",\"id\":53736835678859}]",
+            "context": "d\":53737022597851,\"name\":\"Community Relations\"}],\"filters\":{\"event_types\":[{\"name\":\"Outdoor\",\"id\":53736835678859}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\""
+          },
+          {
             "match": "\"event_types\":[{\"name\":\"Academic Calendar\",\"id\":30388862287004},{\"name\":\"Closure\",\"id\":43783825268721}]",
             "context": "ty\":null,\"state\":null,\"country\":null,\"zip\":null},\"filters\":{\"event_types\":[{\"name\":\"Academic Calendar\",\"id\":30388862287004},{\"name\":\"Closure\",\"id\":43783825268721}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\""
+          },
+          {
+            "match": "\"event_types\":[{\"name\":\"Wellness and Health\",\"id\":46790322621181},{\"name\":\"Charitable Collection / Drive\",\"id\":53736969580401}]",
+            "context": "\"name\":\"Mental Health and Well-Being Services\"}],\"filters\":{\"event_types\":[{\"name\":\"Wellness and Health\",\"id\":46790322621181},{\"name\":\"Charitable Collection / Drive\",\"id\":53736969580401}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\""
+          },
+          {
+            "match": "\"event_types\":[{\"name\":\"Virtual Events\",\"id\":128836}]",
+            "context": "\"name\":\"Harper College Educational Foundation\"}],\"filters\":{\"event_types\":[{\"name\":\"Virtual Events\",\"id\":128836}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\""
           }
         ],
         "\"filters\":\\{.{0,300}": [
           {
-            "match": "\"filters\":{\"event_types\":[{\"name\":\"Training and How-Tos\",\"id\":53736839190237}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":53319374507388,\"event_id\":53319374506362,\"start\":\"2026-10-14T00:00:00-05:00\",\"end\":\"2026-10-14T00:00:00-05:00\",\"ranking\":0.29,\"all_day\":true,\"num_attending\":0}}],\"locali",
-            "context": "},\"departments\":[{\"id\":49453020010424,\"name\":\"Hawks Care\"}],\"filters\":{\"event_types\":[{\"name\":\"Training and How-Tos\",\"id\":53736839190237}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":53319374507388,\"event_id\":53319374506362,\"start\":\"2026-10-14T00:00:00-05:00\",\"end\":\"2026-10-14T00:00:00-05:00\",\"ranking\":0.29,\"all_day\":true,\"num_attending\":0}}],\"localist_url\":\"https://events.harpercollege.edu/event/illinois-ben"
+            "match": "\"filters\":{\"event_types\":[{\"name\":\"Athletics\",\"id\":107041}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":53573697700769,\"event_id\":53573697700768,\"start\":\"2026-10-16T12:30:00-05:00\",\"end\":\"2026-10-16T15:30:00-05:00\",\"ranking\":0.29,\"all_day\":false,\"num_attending\":0}}],\"localist_url\":\"https://e",
+            "context": "t\":null,\"city\":null,\"state\":null,\"country\":null,\"zip\":null},\"filters\":{\"event_types\":[{\"name\":\"Athletics\",\"id\":107041}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":53573697700769,\"event_id\":53573697700768,\"start\":\"2026-10-16T12:30:00-05:00\",\"end\":\"2026-10-16T15:30:00-05:00\",\"ranking\":0.29,\"all_day\":false,\"num_attending\":0}}],\"localist_url\":\"https://events.harpercollege.edu/event/harper-college-mens-cross-coun"
           },
           {
-            "match": "\"filters\":{\"event_types\":[{\"name\":\"Outdoor\",\"id\":53736835678859}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":53445608090465,\"event_id\":53445608089440,\"start\":\"2026-10-14T11:00:00-05:00\",\"end\":\"2026-10-14T14:00:00-05:00\",\"ranking\":0.29,\"all_day\":false,\"num_attending\":0}}],\"localist_url\":\"htt",
-            "context": "tments\":[{\"id\":33255234811198,\"name\":\"Student Engagement\"}],\"filters\":{\"event_types\":[{\"name\":\"Outdoor\",\"id\":53736835678859}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":53445608090465,\"event_id\":53445608089440,\"start\":\"2026-10-14T11:00:00-05:00\",\"end\":\"2026-10-14T14:00:00-05:00\",\"ranking\":0.29,\"all_day\":false,\"num_attending\":0}}],\"localist_url\":\"https://events.harpercollege.edu/event/fall-fest-7060\",\"localis"
+            "match": "\"filters\":{\"event_types\":[{\"name\":\"Athletics\",\"id\":107041}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":53573697685405,\"event_id\":53573697684380,\"start\":\"2026-10-16T12:30:00-05:00\",\"end\":\"2026-10-16T15:30:00-05:00\",\"ranking\":0.29,\"all_day\":false,\"num_attending\":0}}],\"localist_url\":\"https://e",
+            "context": "t\":null,\"city\":null,\"state\":null,\"country\":null,\"zip\":null},\"filters\":{\"event_types\":[{\"name\":\"Athletics\",\"id\":107041}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":53573697685405,\"event_id\":53573697684380,\"start\":\"2026-10-16T12:30:00-05:00\",\"end\":\"2026-10-16T15:30:00-05:00\",\"ranking\":0.29,\"all_day\":false,\"num_attending\":0}}],\"localist_url\":\"https://events.harpercollege.edu/event/harper-college-womens-cross-co"
           },
           {
-            "match": "\"filters\":{\"event_types\":[{\"name\":\"Training and How-Tos\",\"id\":53736839190237}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":53514853074718,\"event_id\":53514853070614,\"start\":\"2026-10-14T12:00:00-05:00\",\"end\":\"2026-10-14T13:00:00-05:00\",\"ranking\":0.09,\"all_day\":false,\"num_attending\":0}}],\"local",
-            "context": "ents\":[{\"id\":11536,\"name\":\"Job Placement Resource Center\"}],\"filters\":{\"event_types\":[{\"name\":\"Training and How-Tos\",\"id\":53736839190237}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":53514853074718,\"event_id\":53514853070614,\"start\":\"2026-10-14T12:00:00-05:00\",\"end\":\"2026-10-14T13:00:00-05:00\",\"ranking\":0.09,\"all_day\":false,\"num_attending\":0}}],\"localist_url\":\"https://events.harpercollege.edu/event/jprc-wednes"
+            "match": "\"filters\":{\"event_types\":[{\"name\":\"Athletics\",\"id\":107041}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":54122247626768,\"event_id\":54122247625743,\"start\":\"2026-10-17T00:00:00-05:00\",\"end\":null,\"ranking\":0.28,\"all_day\":true,\"num_attending\":0}}],\"localist_url\":\"https://events.harpercollege.edu/",
+            "context": "t\":null,\"city\":null,\"state\":null,\"country\":null,\"zip\":null},\"filters\":{\"event_types\":[{\"name\":\"Athletics\",\"id\":107041}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":54122247626768,\"event_id\":54122247625743,\"start\":\"2026-10-17T00:00:00-05:00\",\"end\":null,\"ranking\":0.28,\"all_day\":true,\"num_attending\":0}}],\"localist_url\":\"https://events.harpercollege.edu/event/harper-college-mens-basketball-at-judson-naia\",\"locali"
           },
           {
-            "match": "\"filters\":{},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":54135006404513,\"event_id\":54135006404512,\"start\":\"2026-10-14T12:00:00-05:00\",\"end\":\"2026-10-14T13:00:00-05:00\",\"ranking\":0.29,\"all_day\":false,\"num_attending\":0}}],\"localist_url\":\"https://events.harpercollege.edu/event/jprc-workshop-inte",
-            "context": "ents\":[{\"id\":11536,\"name\":\"Job Placement Resource Center\"}],\"filters\":{},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":54135006404513,\"event_id\":54135006404512,\"start\":\"2026-10-14T12:00:00-05:00\",\"end\":\"2026-10-14T13:00:00-05:00\",\"ranking\":0.29,\"all_day\":false,\"num_attending\":0}}],\"localist_url\":\"https://events.harpercollege.edu/event/jprc-workshop-interviewing\",\"localist_ics_url\":\"https://events.harpercollege.e"
+            "match": "\"filters\":{\"event_types\":[{\"name\":\"Athletics\",\"id\":107041}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":53573697720229,\"event_id\":53573697720228,\"start\":\"2026-10-17T10:00:00-05:00\",\"end\":\"2026-10-17T12:00:00-05:00\",\"ranking\":0.28,\"all_day\":false,\"num_attending\":0}}],\"localist_url\":\"https://e",
+            "context": "t\":null,\"city\":null,\"state\":null,\"country\":null,\"zip\":null},\"filters\":{\"event_types\":[{\"name\":\"Athletics\",\"id\":107041}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":53573697720229,\"event_id\":53573697720228,\"start\":\"2026-10-17T10:00:00-05:00\",\"end\":\"2026-10-17T12:00:00-05:00\",\"ranking\":0.28,\"all_day\":false,\"num_attending\":0}}],\"localist_url\":\"https://events.harpercollege.edu/event/harper-college-womens-volleyba"
           },
           {
-            "match": "\"filters\":{\"event_types\":[{\"name\":\"Athletics\",\"id\":107041}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":53617844395724,\"event_id\":53502839034539,\"start\":\"2026-10-14T14:00:00-05:00\",\"end\":\"2026-10-14T16:00:00-05:00\",\"ranking\":0.29,\"all_day\":false,\"num_attending\":0}}],\"localist_url\":\"https://e",
-            "context": "t\":null,\"city\":null,\"state\":null,\"country\":null,\"zip\":null},\"filters\":{\"event_types\":[{\"name\":\"Athletics\",\"id\":107041}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":53617844395724,\"event_id\":53502839034539,\"start\":\"2026-10-14T14:00:00-05:00\",\"end\":\"2026-10-14T16:00:00-05:00\",\"ranking\":0.29,\"all_day\":false,\"num_attending\":0}}],\"localist_url\":\"https://events.harpercollege.edu/event/harper-college-mens-soccer-vs-"
+            "match": "\"filters\":{\"event_types\":[{\"name\":\"Athletics\",\"id\":107041}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":54139943067604,\"event_id\":53502839119551,\"start\":\"2026-10-17T12:00:00-05:00\",\"end\":\"2026-10-17T14:00:00-05:00\",\"ranking\":0.28,\"all_day\":false,\"num_attending\":0}}],\"localist_url\":\"https://e",
+            "context": "t\":null,\"city\":null,\"state\":null,\"country\":null,\"zip\":null},\"filters\":{\"event_types\":[{\"name\":\"Athletics\",\"id\":107041}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":54139943067604,\"event_id\":53502839119551,\"start\":\"2026-10-17T12:00:00-05:00\",\"end\":\"2026-10-17T14:00:00-05:00\",\"ranking\":0.28,\"all_day\":false,\"num_attending\":0}}],\"localist_url\":\"https://events.harpercollege.edu/event/harper-college-mens-soccer-at-"
           },
           {
-            "match": "\"filters\":{\"event_types\":[{\"name\":\"Admission\",\"id\":44198994778312},{\"name\":\"Information Session\",\"id\":107035}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":54179817794811,\"event_id\":54179817794810,\"start\":\"2026-10-14T15:00:00-05:00\",\"end\":\"2026-10-14T16:00:00-05:00\",\"ranking\":0.29,\"all_day\":f",
-            "context": "43658394366578,\"name\":\"Continuing Professional Education\"}],\"filters\":{\"event_types\":[{\"name\":\"Admission\",\"id\":44198994778312},{\"name\":\"Information Session\",\"id\":107035}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":54179817794811,\"event_id\":54179817794810,\"start\":\"2026-10-14T15:00:00-05:00\",\"end\":\"2026-10-14T16:00:00-05:00\",\"ranking\":0.29,\"all_day\":false,\"num_attending\":0}}],\"localist_url\":\"https://events.har"
+            "match": "\"filters\":{\"event_types\":[{\"name\":\"Athletics\",\"id\":107041}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":54139943108567,\"event_id\":53573697538939,\"start\":\"2026-10-17T14:00:00-05:00\",\"end\":\"2026-10-17T16:00:00-05:00\",\"ranking\":0.28,\"all_day\":false,\"num_attending\":0}}],\"localist_url\":\"https://e",
+            "context": "t\":null,\"city\":null,\"state\":null,\"country\":null,\"zip\":null},\"filters\":{\"event_types\":[{\"name\":\"Athletics\",\"id\":107041}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":54139943108567,\"event_id\":53573697538939,\"start\":\"2026-10-17T14:00:00-05:00\",\"end\":\"2026-10-17T16:00:00-05:00\",\"ranking\":0.28,\"all_day\":false,\"num_attending\":0}}],\"localist_url\":\"https://events.harpercollege.edu/event/harper-college-womens-soccer-a"
           },
           {
-            "match": "\"filters\":{\"event_types\":[{\"name\":\"Wellness and Health\",\"id\":46790322621181}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":53868653674988,\"event_id\":53868653670889,\"start\":\"2026-10-14T16:00:00-05:00\",\"end\":\"2026-10-14T17:30:00-05:00\",\"ranking\":0.29,\"all_day\":false,\"num_attending\":0}}],\"locali",
-            "context": "3016984923,\"name\":\"Mental Health and Well-Being Services\"}],\"filters\":{\"event_types\":[{\"name\":\"Wellness and Health\",\"id\":46790322621181}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":53868653674988,\"event_id\":53868653670889,\"start\":\"2026-10-14T16:00:00-05:00\",\"end\":\"2026-10-14T17:30:00-05:00\",\"ranking\":0.29,\"all_day\":false,\"num_attending\":0}}],\"localist_url\":\"https://events.harpercollege.edu/event/dungeons-dra"
+            "match": "\"filters\":{\"event_types\":[{\"name\":\"Athletics\",\"id\":107041}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":53573697736617,\"event_id\":53573697736616,\"start\":\"2026-10-17T14:00:00-05:00\",\"end\":\"2026-10-17T16:00:00-05:00\",\"ranking\":0.28,\"all_day\":false,\"num_attending\":0}}],\"localist_url\":\"https://e",
+            "context": "t\":null,\"city\":null,\"state\":null,\"country\":null,\"zip\":null},\"filters\":{\"event_types\":[{\"name\":\"Athletics\",\"id\":107041}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":53573697736617,\"event_id\":53573697736616,\"start\":\"2026-10-17T14:00:00-05:00\",\"end\":\"2026-10-17T16:00:00-05:00\",\"ranking\":0.28,\"all_day\":false,\"num_attending\":0}}],\"localist_url\":\"https://events.harpercollege.edu/event/harper-college-womens-volleyba"
           },
           {
-            "match": "\"filters\":{\"event_types\":[{\"name\":\"Athletics\",\"id\":107041}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":53573697669017,\"event_id\":53573697669016,\"start\":\"2026-10-14T16:00:00-05:00\",\"end\":\"2026-10-14T18:00:00-05:00\",\"ranking\":0.29,\"all_day\":false,\"num_attending\":0}}],\"localist_url\":\"https://e",
-            "context": "t\":null,\"city\":null,\"state\":null,\"country\":null,\"zip\":null},\"filters\":{\"event_types\":[{\"name\":\"Athletics\",\"id\":107041}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":53573697669017,\"event_id\":53573697669016,\"start\":\"2026-10-14T16:00:00-05:00\",\"end\":\"2026-10-14T18:00:00-05:00\",\"ranking\":0.29,\"all_day\":false,\"num_attending\":0}}],\"localist_url\":\"https://events.harpercollege.edu/event/harper-college-womens-soccer-v"
+            "match": "\"filters\":{\"event_types\":[{\"name\":\"Cultural Arts\",\"id\":128837},{\"name\":\"Fairs / Expos\",\"id\":53736840270831}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":54117557516119,\"event_id\":54117557515094,\"start\":\"2026-10-19T00:00:00-05:00\",\"end\":\"2026-10-19T00:00:00-05:00\",\"ranking\":0.26,\"all_day\":tru",
+            "context": "40917,\"name\":\"Center for Global Education and Engagement\"}],\"filters\":{\"event_types\":[{\"name\":\"Cultural Arts\",\"id\":128837},{\"name\":\"Fairs / Expos\",\"id\":53736840270831}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":54117557516119,\"event_id\":54117557515094,\"start\":\"2026-10-19T00:00:00-05:00\",\"end\":\"2026-10-19T00:00:00-05:00\",\"ranking\":0.26,\"all_day\":true,\"num_attending\":0}}],\"localist_url\":\"https://events.harper"
           },
           {
-            "match": "\"filters\":{\"event_types\":[{\"name\":\"Admission\",\"id\":44198994778312},{\"name\":\"Information Session\",\"id\":107035}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":53613741579399,\"event_id\":53613741575302,\"start\":\"2026-10-14T17:00:00-05:00\",\"end\":\"2026-10-14T19:30:00-05:00\",\"ranking\":0.29,\"all_day\":f",
-            "context": "epartments\":[{\"id\":43968335307329,\"name\":\"Adult Learners\"}],\"filters\":{\"event_types\":[{\"name\":\"Admission\",\"id\":44198994778312},{\"name\":\"Information Session\",\"id\":107035}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":53613741579399,\"event_id\":53613741575302,\"start\":\"2026-10-14T17:00:00-05:00\",\"end\":\"2026-10-14T19:30:00-05:00\",\"ranking\":0.29,\"all_day\":false,\"num_attending\":0}}],\"localist_url\":\"https://events.har"
+            "match": "\"filters\":{\"event_types\":[{\"name\":\"Wellness and Health\",\"id\":46790322621181}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":54162479169244,\"event_id\":54162479168219,\"start\":\"2026-10-19T00:00:00-05:00\",\"end\":null,\"ranking\":0.06,\"all_day\":true,\"num_attending\":0}}],\"localist_url\":\"https://events.",
+            "context": "},\"departments\":[{\"id\":49453020010424,\"name\":\"Hawks Care\"}],\"filters\":{\"event_types\":[{\"name\":\"Wellness and Health\",\"id\":46790322621181}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":54162479169244,\"event_id\":54162479168219,\"start\":\"2026-10-19T00:00:00-05:00\",\"end\":null,\"ranking\":0.06,\"all_day\":true,\"num_attending\":0}}],\"localist_url\":\"https://events.harpercollege.edu/event/feed-the-need-campus-food-drive-2969"
           },
           {
-            "match": "\"filters\":{\"event_types\":[{\"name\":\"Cultural Arts\",\"id\":128837},{\"name\":\"Film Screening / Series\",\"id\":44146602471710}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":53452322341681,\"event_id\":53452322341680,\"start\":\"2026-10-14T18:00:00-05:00\",\"end\":\"2026-10-14T21:00:00-05:00\",\"ranking\":0.29,\"al",
-            "context": "tments\":[{\"id\":44128605158525,\"name\":\"Mass Communication\"}],\"filters\":{\"event_types\":[{\"name\":\"Cultural Arts\",\"id\":128837},{\"name\":\"Film Screening / Series\",\"id\":44146602471710}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":53452322341681,\"event_id\":53452322341680,\"start\":\"2026-10-14T18:00:00-05:00\",\"end\":\"2026-10-14T21:00:00-05:00\",\"ranking\":0.29,\"all_day\":false,\"num_attending\":0}}],\"localist_url\":\"https://ev"
+            "match": "\"filters\":{},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":54071388160539,\"event_id\":54071360169217,\"start\":\"2026-10-19T00:00:00-05:00\",\"end\":null,\"ranking\":0.06,\"all_day\":true,\"num_attending\":0}}],\"localist_url\":\"https://events.harpercollege.edu/event/copy-of-young-democratic-socialists-of-ame",
+            "context": "lington Heights\",\"state\":\"IL\",\"country\":\"US\",\"zip\":\"60005\"},\"filters\":{},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":54071388160539,\"event_id\":54071360169217,\"start\":\"2026-10-19T00:00:00-05:00\",\"end\":null,\"ranking\":0.06,\"all_day\":true,\"num_attending\":0}}],\"localist_url\":\"https://events.harpercollege.edu/event/copy-of-young-democratic-socialists-of-america\",\"localist_ics_url\":\"https://events.harpercollege.edu/e"
           },
           {
-            "match": "\"filters\":{\"event_types\":[{\"name\":\"Athletics\",\"id\":107041}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":54069180910569,\"event_id\":54069180910568,\"start\":\"2026-10-14T19:00:00-05:00\",\"end\":\"2026-10-14T21:00:00-05:00\",\"ranking\":0.29,\"all_day\":false,\"num_attending\":0}}],\"localist_url\":\"https://e",
-            "context": "t\":null,\"city\":null,\"state\":null,\"country\":null,\"zip\":null},\"filters\":{\"event_types\":[{\"name\":\"Athletics\",\"id\":107041}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":54069180910569,\"event_id\":54069180910568,\"start\":\"2026-10-14T19:00:00-05:00\",\"end\":\"2026-10-14T21:00:00-05:00\",\"ranking\":0.29,\"all_day\":false,\"num_attending\":0}}],\"localist_url\":\"https://events.harpercollege.edu/event/harper-college-womens-basketba"
+            "match": "\"filters\":{\"event_types\":[{\"name\":\"Cultural Arts\",\"id\":128837},{\"name\":\"Tabling\",\"id\":51896898230417},{\"name\":\"Fairs / Expos\",\"id\":53736840270831}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":54171420401728,\"event_id\":54171420400703,\"start\":\"2026-10-19T11:00:00-05:00\",\"end\":\"2026-10-19T13:00",
+            "context": "40917,\"name\":\"Center for Global Education and Engagement\"}],\"filters\":{\"event_types\":[{\"name\":\"Cultural Arts\",\"id\":128837},{\"name\":\"Tabling\",\"id\":51896898230417},{\"name\":\"Fairs / Expos\",\"id\":53736840270831}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":54171420401728,\"event_id\":54171420400703,\"start\":\"2026-10-19T11:00:00-05:00\",\"end\":\"2026-10-19T13:00:00-05:00\",\"ranking\":0.26,\"all_day\":false,\"num_attending\":0}"
           },
           {
-            "match": "\"filters\":{\"event_types\":[{\"name\":\"Training and How-Tos\",\"id\":53736839190237}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":53319374508413,\"event_id\":53319374506362,\"start\":\"2026-10-15T00:00:00-05:00\",\"end\":\"2026-10-15T00:00:00-05:00\",\"ranking\":0.28,\"all_day\":true,\"num_attending\":0}}],\"locali",
-            "context": "},\"departments\":[{\"id\":49453020010424,\"name\":\"Hawks Care\"}],\"filters\":{\"event_types\":[{\"name\":\"Training and How-Tos\",\"id\":53736839190237}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":53319374508413,\"event_id\":53319374506362,\"start\":\"2026-10-15T00:00:00-05:00\",\"end\":\"2026-10-15T00:00:00-05:00\",\"ranking\":0.28,\"all_day\":true,\"num_attending\":0}}],\"localist_url\":\"https://events.harpercollege.edu/event/illinois-ben"
+            "match": "\"filters\":{\"event_types\":[{\"name\":\"Wellness and Health\",\"id\":46790322621181}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":54162479172317,\"event_id\":54162479168219,\"start\":\"2026-10-20T00:00:00-05:00\",\"end\":null,\"ranking\":0.05,\"all_day\":true,\"num_attending\":0}}],\"localist_url\":\"https://events.",
+            "context": "},\"departments\":[{\"id\":49453020010424,\"name\":\"Hawks Care\"}],\"filters\":{\"event_types\":[{\"name\":\"Wellness and Health\",\"id\":46790322621181}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":54162479172317,\"event_id\":54162479168219,\"start\":\"2026-10-20T00:00:00-05:00\",\"end\":null,\"ranking\":0.05,\"all_day\":true,\"num_attending\":0}}],\"localist_url\":\"https://events.harpercollege.edu/event/feed-the-need-campus-food-drive-2969"
           },
           {
-            "match": "\"filters\":{\"event_types\":[{\"name\":\"Wellness and Health\",\"id\":46790322621181}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":54118158309121,\"event_id\":54118158308096,\"start\":\"2026-10-15T09:00:00-05:00\",\"end\":\"2026-10-15T16:00:00-05:00\",\"ranking\":0.28,\"all_day\":false,\"num_attending\":0}}],\"locali",
-            "context": "3016984923,\"name\":\"Mental Health and Well-Being Services\"}],\"filters\":{\"event_types\":[{\"name\":\"Wellness and Health\",\"id\":46790322621181}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":54118158309121,\"event_id\":54118158308096,\"start\":\"2026-10-15T09:00:00-05:00\",\"end\":\"2026-10-15T16:00:00-05:00\",\"ranking\":0.28,\"all_day\":false,\"num_attending\":0}}],\"localist_url\":\"https://events.harpercollege.edu/event/vaccine-clin"
+            "match": "\"filters\":{\"event_types\":[{\"name\":\"Cultural Arts\",\"id\":128837},{\"name\":\"Tabling\",\"id\":51896898230417},{\"name\":\"Fairs / Expos\",\"id\":53736840270831}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":54171420402753,\"event_id\":54171420400703,\"start\":\"2026-10-20T11:00:00-05:00\",\"end\":\"2026-10-20T13:00",
+            "context": "40917,\"name\":\"Center for Global Education and Engagement\"}],\"filters\":{\"event_types\":[{\"name\":\"Cultural Arts\",\"id\":128837},{\"name\":\"Tabling\",\"id\":51896898230417},{\"name\":\"Fairs / Expos\",\"id\":53736840270831}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":54171420402753,\"event_id\":54171420400703,\"start\":\"2026-10-20T11:00:00-05:00\",\"end\":\"2026-10-20T13:00:00-05:00\",\"ranking\":0.25,\"all_day\":false,\"num_attending\":0}"
           },
           {
-            "match": "\"filters\":{\"event_types\":[{\"name\":\"Virtual Events\",\"id\":128836},{\"name\":\"Training and How-Tos\",\"id\":53736839190237}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":53514879964881,\"event_id\":53514879959753,\"start\":\"2026-10-15T12:00:00-05:00\",\"end\":\"2026-10-15T13:00:00-05:00\",\"ranking\":0.08,\"all_",
-            "context": "ents\":[{\"id\":11536,\"name\":\"Job Placement Resource Center\"}],\"filters\":{\"event_types\":[{\"name\":\"Virtual Events\",\"id\":128836},{\"name\":\"Training and How-Tos\",\"id\":53736839190237}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":53514879964881,\"event_id\":53514879959753,\"start\":\"2026-10-15T12:00:00-05:00\",\"end\":\"2026-10-15T13:00:00-05:00\",\"ranking\":0.08,\"all_day\":false,\"num_attending\":0}}],\"localist_url\":\"https://even"
+            "match": "\"filters\":{\"event_types\":[{\"name\":\"Student Club/Organization Meetings\",\"id\":46367326248209}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":54242245359139,\"event_id\":54242245357090,\"start\":\"2026-10-20T11:00:00-05:00\",\"end\":\"2026-10-20T13:00:00-05:00\",\"ranking\":0.25,\"all_day\":false,\"num_attendin",
+            "context": "tments\":[{\"id\":33255234811198,\"name\":\"Student Engagement\"}],\"filters\":{\"event_types\":[{\"name\":\"Student Club/Organization Meetings\",\"id\":46367326248209}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":54242245359139,\"event_id\":54242245357090,\"start\":\"2026-10-20T11:00:00-05:00\",\"end\":\"2026-10-20T13:00:00-05:00\",\"ranking\":0.25,\"all_day\":false,\"num_attending\":0}}],\"localist_url\":\"https://events.harpercollege.edu/eve"
           },
           {
-            "match": "\"filters\":{},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":54135014047686,\"event_id\":54135014047685,\"start\":\"2026-10-15T12:00:00-05:00\",\"end\":\"2026-10-15T13:00:00-05:00\",\"ranking\":0.28,\"all_day\":false,\"num_attending\":0}}],\"localist_url\":\"https://events.harpercollege.edu/event/jprc-workshop-big-",
-            "context": "ents\":[{\"id\":11536,\"name\":\"Job Placement Resource Center\"}],\"filters\":{},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":54135014047686,\"event_id\":54135014047685,\"start\":\"2026-10-15T12:00:00-05:00\",\"end\":\"2026-10-15T13:00:00-05:00\",\"ranking\":0.28,\"all_day\":false,\"num_attending\":0}}],\"localist_url\":\"https://events.harpercollege.edu/event/jprc-workshop-big-interview\",\"localist_ics_url\":\"https://events.harpercollege."
+            "match": "\"filters\":{\"event_types\":[{\"name\":\"Wellness and Health\",\"id\":46790322621181}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":53843007579562,\"event_id\":53843007576486,\"start\":\"2026-10-20T12:00:00-05:00\",\"end\":\"2026-10-20T13:00:00-05:00\",\"ranking\":0.05,\"all_day\":false,\"num_attending\":0}}],\"locali",
+            "context": "3016984923,\"name\":\"Mental Health and Well-Being Services\"}],\"filters\":{\"event_types\":[{\"name\":\"Wellness and Health\",\"id\":46790322621181}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":53843007579562,\"event_id\":53843007576486,\"start\":\"2026-10-20T12:00:00-05:00\",\"end\":\"2026-10-20T13:00:00-05:00\",\"ranking\":0.05,\"all_day\":false,\"num_attending\":0}}],\"localist_url\":\"https://events.harpercollege.edu/event/pause-and-pl"
           },
           {
-            "match": "\"filters\":{\"event_types\":[{\"name\":\"Wellness and Health\",\"id\":46790322621181}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":53843007578537,\"event_id\":53843007576486,\"start\":\"2026-10-15T12:00:00-05:00\",\"end\":\"2026-10-15T13:00:00-05:00\",\"ranking\":0.08,\"all_day\":false,\"num_attending\":0}}],\"locali",
-            "context": "3016984923,\"name\":\"Mental Health and Well-Being Services\"}],\"filters\":{\"event_types\":[{\"name\":\"Wellness and Health\",\"id\":46790322621181}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":53843007578537,\"event_id\":53843007576486,\"start\":\"2026-10-15T12:00:00-05:00\",\"end\":\"2026-10-15T13:00:00-05:00\",\"ranking\":0.08,\"all_day\":false,\"num_attending\":0}}],\"localist_url\":\"https://events.harpercollege.edu/event/pause-and-pl"
+            "match": "\"filters\":{\"event_types\":[{\"name\":\"Training and How-Tos\",\"id\":53736839190237}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":54124838518285,\"event_id\":54124838517260,\"start\":\"2026-10-20T12:00:00-05:00\",\"end\":\"2026-10-20T13:00:00-05:00\",\"ranking\":0.25,\"all_day\":false,\"num_attending\":0}}],\"local",
+            "context": "ment\"},{\"id\":11536,\"name\":\"Job Placement Resource Center\"}],\"filters\":{\"event_types\":[{\"name\":\"Training and How-Tos\",\"id\":53736839190237}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":54124838518285,\"event_id\":54124838517260,\"start\":\"2026-10-20T12:00:00-05:00\",\"end\":\"2026-10-20T13:00:00-05:00\",\"ranking\":0.25,\"all_day\":false,\"num_attending\":0}}],\"localist_url\":\"https://events.harpercollege.edu/event/put-your-gl"
           },
           {
-            "match": "\"filters\":{\"event_types\":[{\"name\":\"Admission\",\"id\":44198994778312},{\"name\":\"Information Session\",\"id\":107035}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":53790490198710,\"event_id\":53790490198709,\"start\":\"2026-10-15T12:00:00-05:00\",\"end\":\"2026-10-15T13:00:00-05:00\",\"ranking\":0.28,\"all_day\":f",
-            "context": "d\":12740,\"name\":\"The University Center at Harper College\"}],\"filters\":{\"event_types\":[{\"name\":\"Admission\",\"id\":44198994778312},{\"name\":\"Information Session\",\"id\":107035}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":53790490198710,\"event_id\":53790490198709,\"start\":\"2026-10-15T12:00:00-05:00\",\"end\":\"2026-10-15T13:00:00-05:00\",\"ranking\":0.28,\"all_day\":false,\"num_attending\":0}}],\"localist_url\":\"https://events.har"
+            "match": "\"filters\":{\"event_types\":[{\"name\":\"Cultural Arts\",\"id\":128837},{\"name\":\"Fairs / Expos\",\"id\":53736840270831}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":54124667506283,\"event_id\":54124667505258,\"start\":\"2026-10-20T13:00:00-05:00\",\"end\":\"2026-10-20T14:00:00-05:00\",\"ranking\":0.25,\"all_day\":fal",
+            "context": "40917,\"name\":\"Center for Global Education and Engagement\"}],\"filters\":{\"event_types\":[{\"name\":\"Cultural Arts\",\"id\":128837},{\"name\":\"Fairs / Expos\",\"id\":53736840270831}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":54124667506283,\"event_id\":54124667505258,\"start\":\"2026-10-20T13:00:00-05:00\",\"end\":\"2026-10-20T14:00:00-05:00\",\"ranking\":0.25,\"all_day\":false,\"num_attending\":0}}],\"localist_url\":\"https://events.harpe"
           },
           {
-            "match": "\"filters\":{\"event_types\":[{\"name\":\"Athletics\",\"id\":107041}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":54051513832101,\"event_id\":54051513831076,\"start\":\"2026-10-15T15:00:00-05:00\",\"end\":\"2026-10-15T17:00:00-05:00\",\"ranking\":0.28,\"all_day\":false,\"num_attending\":0}}],\"localist_url\":\"https://e",
-            "context": "t\":null,\"city\":null,\"state\":null,\"country\":null,\"zip\":null},\"filters\":{\"event_types\":[{\"name\":\"Athletics\",\"id\":107041}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":54051513832101,\"event_id\":54051513831076,\"start\":\"2026-10-15T15:00:00-05:00\",\"end\":\"2026-10-15T17:00:00-05:00\",\"ranking\":0.28,\"all_day\":false,\"num_attending\":0}}],\"localist_url\":\"https://events.harpercollege.edu/event/harper-college-womens-softball"
+            "match": "\"filters\":{\"event_types\":[{\"name\":\"Admission\",\"id\":44198994778312},{\"name\":\"Information Session\",\"id\":107035}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":53744399671264,\"event_id\":53744399671263,\"start\":\"2026-10-20T18:00:00-05:00\",\"end\":\"2026-10-20T19:00:00-05:00\",\"ranking\":0.25,\"all_day\":f",
+            "context": "epartments\":[{\"id\":43968335307329,\"name\":\"Adult Learners\"}],\"filters\":{\"event_types\":[{\"name\":\"Admission\",\"id\":44198994778312},{\"name\":\"Information Session\",\"id\":107035}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":53744399671264,\"event_id\":53744399671263,\"start\":\"2026-10-20T18:00:00-05:00\",\"end\":\"2026-10-20T19:00:00-05:00\",\"ranking\":0.25,\"all_day\":false,\"num_attending\":0}}],\"localist_url\":\"https://events.har"
           },
           {
-            "match": "\"filters\":{\"event_types\":[{\"name\":\"Athletics\",\"id\":107041}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":53573697700769,\"event_id\":53573697700768,\"start\":\"2026-10-16T12:30:00-05:00\",\"end\":\"2026-10-16T15:30:00-05:00\",\"ranking\":0.27,\"all_day\":false,\"num_attending\":0}}],\"localist_url\":\"https://e",
-            "context": "t\":null,\"city\":null,\"state\":null,\"country\":null,\"zip\":null},\"filters\":{\"event_types\":[{\"name\":\"Athletics\",\"id\":107041}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":53573697700769,\"event_id\":53573697700768,\"start\":\"2026-10-16T12:30:00-05:00\",\"end\":\"2026-10-16T15:30:00-05:00\",\"ranking\":0.27,\"all_day\":false,\"num_attending\":0}}],\"localist_url\":\"https://events.harpercollege.edu/event/harper-college-mens-cross-coun"
+            "match": "\"filters\":{\"event_types\":[{\"name\":\"Wellness and Health\",\"id\":46790322621181}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":54162479175390,\"event_id\":54162479168219,\"start\":\"2026-10-21T00:00:00-05:00\",\"end\":null,\"ranking\":0.04,\"all_day\":true,\"num_attending\":0}}],\"localist_url\":\"https://events.",
+            "context": "},\"departments\":[{\"id\":49453020010424,\"name\":\"Hawks Care\"}],\"filters\":{\"event_types\":[{\"name\":\"Wellness and Health\",\"id\":46790322621181}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":54162479175390,\"event_id\":54162479168219,\"start\":\"2026-10-21T00:00:00-05:00\",\"end\":null,\"ranking\":0.04,\"all_day\":true,\"num_attending\":0}}],\"localist_url\":\"https://events.harpercollege.edu/event/feed-the-need-campus-food-drive-2969"
           },
           {
-            "match": "\"filters\":{\"event_types\":[{\"name\":\"Athletics\",\"id\":107041}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":53573697685405,\"event_id\":53573697684380,\"start\":\"2026-10-16T12:30:00-05:00\",\"end\":\"2026-10-16T15:30:00-05:00\",\"ranking\":0.27,\"all_day\":false,\"num_attending\":0}}],\"localist_url\":\"https://e",
-            "context": "t\":null,\"city\":null,\"state\":null,\"country\":null,\"zip\":null},\"filters\":{\"event_types\":[{\"name\":\"Athletics\",\"id\":107041}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":53573697685405,\"event_id\":53573697684380,\"start\":\"2026-10-16T12:30:00-05:00\",\"end\":\"2026-10-16T15:30:00-05:00\",\"ranking\":0.27,\"all_day\":false,\"num_attending\":0}}],\"localist_url\":\"https://events.harpercollege.edu/event/harper-college-womens-cross-co"
+            "match": "\"filters\":{\"event_types\":[{\"name\":\"Wellness and Health\",\"id\":46790322621181}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":54071054185947,\"event_id\":54071054185946,\"start\":\"2026-10-21T11:00:00-05:00\",\"end\":\"2026-10-21T13:00:00-05:00\",\"ranking\":0.24,\"all_day\":false,\"num_attending\":0}}],\"locali",
+            "context": "3016984923,\"name\":\"Mental Health and Well-Being Services\"}],\"filters\":{\"event_types\":[{\"name\":\"Wellness and Health\",\"id\":46790322621181}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":54071054185947,\"event_id\":54071054185946,\"start\":\"2026-10-21T11:00:00-05:00\",\"end\":\"2026-10-21T13:00:00-05:00\",\"ranking\":0.24,\"all_day\":false,\"num_attending\":0}}],\"localist_url\":\"https://events.harpercollege.edu/event/hivsti-testi"
           }
         ]
       }
+    },
+    {
+      "url": "https://www.sd25.org/calendar",
+      "purpose": "Arlington Heights District 25 - does the calendar page list no-school dates in the HTML?",
+      "item": 300,
+      "probed_at": "2026-10-16T22:06:29+00:00",
+      "status": 200,
+      "final_url": "https://www.sd25.org/calendar-73",
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 96080,
+      "title": "Calendar",
+      "feed_links": [],
+      "calendar_links": [
+        "https://www.sd25.org/departments/student-learning/curriculum-by-subjects/career-technical-education",
+        "https://www.sd25.org/departments/student-learning/curriculum-by-subjects/physical-education"
+      ],
+      "pattern_matches": {
+        "(?i)no school[^<]{0,80}": [],
+        "(?i)(?:board|approved)[^<]{0,40}calendar[^<]{0,60}": []
+      },
+      "followed": null
+    },
+    {
+      "url": "https://ccsd21.org/parent-resources/calendars/",
+      "purpose": "Wheeling CCSD 21 - does the calendars page link a 2026-27 calendar and list no-school dates?",
+      "item": 300,
+      "probed_at": "2026-10-16T22:06:31+00:00",
+      "status": 403,
+      "final_url": "https://ccsd21.org/parent-resources/calendars/",
+      "content_type": "text/html; charset=UTF-8",
+      "bytes": 8143,
+      "title": "Access denied | ccsd21.org used Cloudflare to restrict access | ccsd21.org | Cloudflare",
+      "feed_links": [],
+      "calendar_links": [],
+      "pattern_matches": {
+        "(?i)no school[^<]{0,80}": [],
+        "(?i)2026[-–/ ]?(?:20)?27[^<]{0,60}": []
+      },
+      "followed": null
+    },
+    {
+      "url": "https://www.d62.org/calendars",
+      "purpose": "Des Plaines District 62 - official 2026-27 calendar",
+      "item": 300,
+      "probed_at": "2026-10-16T22:06:31+00:00",
+      "status": 200,
+      "final_url": "https://www.d62.org/calendars",
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 132679,
+      "title": "Calendars - Community Consolidated School District 62",
+      "feed_links": [],
+      "calendar_links": [],
+      "pattern_matches": {
+        "(?i)no school[^<]{0,80}": [
+          {
+            "match": "No School",
+            "context": "d><strong>August 20-24</strong></td> <td>Institute Day / No School</td> </tr> <tr> <td><strong>August 25</strong> (Tues"
+          },
+          {
+            "match": "No School PreK-8",
+            "context": "bsp;</b>(Thursday)</td> <td>Parent-Teacher Conferences / No School PreK-8</td> </tr> <tr> <td><b>October 9&nbsp;</b>(Friday)</"
+          },
+          {
+            "match": "No School K-8 (Return November 30)",
+            "context": "> <tr> <td><strong>November 23-27</strong></td> <td>No School K-8 (Return November 30)</td> </tr> <tr> <td><strong>December 21-January 1</s"
+          },
+          {
+            "match": "No School K-8",
+            "context": "<td><strong>July 14-15</strong></td> <td>Institute Day / No School K-8</td> </tr> <tr> <td><strong>July 16 </strong>(Thursd"
+          },
+          {
+            "match": "No School K-8 (Return October 13)",
+            "context": ">September 23-October 9</strong></td> <td>Intersession / No School K-8 (Return October 13)</td> </tr> <tr> <td><strong>October 12</strong>&nbsp"
+          },
+          {
+            "match": "No School K-8 (Return April 5)",
+            "context": "strong>March 29-April 2</strong></td> <td>Intersession / No School K-8 (Return April 5)</td> </tr> <tr> <td><strong>April 30</strong> (Frida"
+          },
+          {
+            "match": "No School (return Oct. 13)\" data-occur-id=\"206031037_2026-09-23T00:00:00Z_2026-10-10T00:0",
+            "context": "LongEventTitle fsCalendarTruncate\" title=\"ICS Intersession: No School (return Oct. 13)\" data-occur-id=\"206031037_2026-09-23T00:00:00Z_2026-10-10T00:00:00Z\" href=\"#\">ICS Intersession: No School (return Oct. 13)"
+          },
+          {
+            "match": "No School (return Oct. 13)",
+            "context": "T00:00:00Z_2026-10-10T00:00:00Z\" href=\"#\">ICS Intersession: No School (return Oct. 13)</a> <div class=\"fsTimeRange\"> <span class=\"fsA"
+          },
+          {
+            "match": "No School (Parent-Teacher Conferences)\" data-occur-id=\"206096832_2026-10-08T00:00:00Z_202",
+            "context": "LongEventTitle fsCalendarTruncate\" title=\"10 Month Schools: No School (Parent-Teacher Conferences)\" data-occur-id=\"206096832_2026-10-08T00:00:00Z_2026-10-09T00:00:00Z\" href=\"#\">10 Month Schools: No School (Par"
+          },
+          {
+            "match": "No School (Parent-Teacher Conferences)",
+            "context": "T00:00:00Z_2026-10-09T00:00:00Z\" href=\"#\">10 Month Schools: No School (Parent-Teacher Conferences)</a> <div class=\"fsTimeRange\"> <span class=\"fsA"
+          },
+          {
+            "match": "No School (Parent-Teacher Conferences)\" data-occur-id=\"206096674_2026-10-09T00:00:00Z_202",
+            "context": "LongEventTitle fsCalendarTruncate\" title=\"10 Month Schools: No School (Parent-Teacher Conferences)\" data-occur-id=\"206096674_2026-10-09T00:00:00Z_2026-10-10T00:00:00Z\" href=\"#\">10 Month Schools: No School (Par"
+          },
+          {
+            "match": "No School (State Holiday)\" data-occur-id=\"206031243_2026-10-12T00:00:00Z_2026-10-13T00:00",
+            "context": "endarLongEventTitle fsCalendarTruncate\" title=\"All Schools: No School (State Holiday)\" data-occur-id=\"206031243_2026-10-12T00:00:00Z_2026-10-13T00:00:00Z\" href=\"#\">All Schools: No School (State Holiday)</a>"
+          },
+          {
+            "match": "No School (State Holiday)",
+            "context": "10-12T00:00:00Z_2026-10-13T00:00:00Z\" href=\"#\">All Schools: No School (State Holiday)</a> <div class=\"fsTimeRange\"> <span class=\"fsA"
+          }
+        ],
+        "(?i)2026[-–/ ]?(?:20)?27[^<]{0,60}": [
+          {
+            "match": "2026-2027 10 Month School Calendars",
+            "context": "r> <h2 class=\"fsElementTitle\" id=\"fsElementTitle_32890\">2026-2027 10 Month School Calendars</h2> </header> <div class=\"fsElementContent\" > <ul"
+          },
+          {
+            "match": "2026-2027 School Calendar",
+            "context": "d='false' href='#fs-panel-33313' aria-controls='fsEl_33313'>2026-2027 School Calendar</a> </li> <li id=\""
+          },
+          {
+            "match": "2026-2027 - 10 Month Boxed Calendar",
+            "context": "d='false' href='#fs-panel-32893' aria-controls='fsEl_32893'>2026-2027 - 10 Month Boxed Calendar</a> </li> </ul> <se"
+          },
+          {
+            "match": "2026-2027Ten-MonthSchoolLinedCalendar.pdf\" data-resource-uuid=\"617b1f",
+            "context": "FooterContent\"> <p><a class=\"fs_style_9\" data-file-name=\"2026-2027Ten-MonthSchoolLinedCalendar.pdf\" data-resource-uuid=\"617b1fe5-42e5-43f2-a937-241a6273c8fe\" href=\"/fs/resource-manager/v"
+          },
+          {
+            "match": "2026-2027FINAL.pdf\" data-resource-uuid=\"b40f1d22-af2d-42bf-84b6-6922d",
+            "context": "_style_9\" data-file-name=\"District62Ten-MonthSchoolsCalendar2026-2027FINAL.pdf\" data-resource-uuid=\"b40f1d22-af2d-42bf-84b6-6922d718ec12\" href=\"/fs/resource-manager/view/b40f1d22-af2d-42bf-"
+          },
+          {
+            "match": "2026-2027 10 Month Boxed Calendar",
+            "context": "bf-84b6-6922d718ec12\" target=\"_blank\">Print or Download the 2026-2027 10 Month Boxed Calendar</a></p> </div> </header> <div class=\"fsElementContent"
+          },
+          {
+            "match": "2026-2027FINAL.pdf\" data-resource-type=\"Pdf\" href=\"https://resources.",
+            "context": "lse\" data-resource-title=\"District62Ten-MonthSchoolsCalendar2026-2027FINAL.pdf\" data-resource-type=\"Pdf\" href=\"https://resources.finalsite.net/images/v1771602096/d62org/huubad2axs3m2rrnnwjm"
+          },
+          {
+            "match": "2026-2027FINAL.pdf\" target=\"_blank\">",
+            "context": "2org/huubad2axs3m2rrnnwjm/District62Ten-MonthSchoolsCalendar2026-2027FINAL.pdf\" target=\"_blank\"><img alt=\"District62Ten-MonthSchoolsCalendar2026-2027FINAL ("
+          },
+          {
+            "match": "2026-2027FINAL (PDF)\" data-aspect-ratio=\"1.6470588235294117\" data-ima",
+            "context": "target=\"_blank\"><img alt=\"District62Ten-MonthSchoolsCalendar2026-2027FINAL (PDF)\" data-aspect-ratio=\"1.6470588235294117\" data-image-sizes=\"[{%22url%22:%22https://resources.finalsite.net/ima"
+          },
+          {
+            "match": "2026-2027FINAL.pdf%22,%22width%22:256},{%22url%22:%22https://resource",
+            "context": "2org/huubad2axs3m2rrnnwjm/District62Ten-MonthSchoolsCalendar2026-2027FINAL.pdf%22,%22width%22:256},{%22url%22:%22https://resources.finalsite.net/images/f_auto,q_auto,t_image_size_2/v1771602"
+          },
+          {
+            "match": "2026-2027FINAL.pdf%22,%22width%22:512},{%22url%22:%22https://resource",
+            "context": "2org/huubad2axs3m2rrnnwjm/District62Ten-MonthSchoolsCalendar2026-2027FINAL.pdf%22,%22width%22:512},{%22url%22:%22https://resources.finalsite.net/images/f_auto,q_auto/v1771602096/d62org/huub"
+          },
+          {
+            "match": "2026-2027FINAL.pdf%22,%22width%22:612}]\">",
+            "context": "2org/huubad2axs3m2rrnnwjm/District62Ten-MonthSchoolsCalendar2026-2027FINAL.pdf%22,%22width%22:612}]\"></a></article> </div> </div> </div> </section>"
+          },
+          {
+            "match": "2026-2027 Iroquois School Calendars",
+            "context": "r> <h2 class=\"fsElementTitle\" id=\"fsElementTitle_33305\">2026-2027 Iroquois School Calendars</h2> </header> <div class=\"fsElementContent\" > <ul"
+          },
+          {
+            "match": "2026-2027 - ICS Boxed Calendar",
+            "context": "d='false' href='#fs-panel-33306' aria-controls='fsEl_33306'>2026-2027 - ICS Boxed Calendar</a> </li> </ul> <se"
+          },
+          {
+            "match": "2026-2027IroquoisCommunitySchoolLinedCalendar.pdf\" data-resource-uuid",
+            "context": "FooterContent\"> <p><a class=\"fs_style_9\" data-file-name=\"2026-2027IroquoisCommunitySchoolLinedCalendar.pdf\" data-resource-uuid=\"95d74e23-998d-4754-85f4-8d432270b6dd\" href=\"/fs/resource-m"
+          },
+          {
+            "match": "2026-2027FINAL.pdf\" data-resource-uuid=\"1ec32223-ce47-4bd5-8647-c8982",
+            "context": "><a class=\"fs_style_9\" data-file-name=\"District62ICSCalendar2026-2027FINAL.pdf\" data-resource-uuid=\"1ec32223-ce47-4bd5-8647-c89821c3dccd\" href=\"/fs/resource-manager/view/1ec32223-ce47-4bd5-"
+          },
+          {
+            "match": "2026-2027 Iroquois Boxed Calendar",
+            "context": "d5-8647-c89821c3dccd\" target=\"_blank\">Print or Download the 2026-2027 Iroquois Boxed Calendar</a></p> </div> </header> <div class=\"fsElementContent"
+          },
+          {
+            "match": "2026-2027FINAL (PDF)\" data-aspect-ratio=\"1.2941176470588236\" data-ima",
+            "context": "27FINAL.pdf\" target=\"_blank\"><img alt=\"District62ICSCalendar2026-2027FINAL (PDF)\" data-aspect-ratio=\"1.2941176470588236\" data-image-sizes=\"[{%22url%22:%22https://resources.finalsite.net/ima"
+          }
+        ]
+      },
+      "followed": {
+        "url": "https://resources.finalsite.net/images/v1771602096/d62org/huubad2axs3m2rrnnwjm/District62Ten-MonthSchoolsCalendar2026-2027FINAL.pdf",
+        "purpose": "",
+        "item": null,
+        "probed_at": "2026-10-16T22:06:33+00:00",
+        "status": 200,
+        "final_url": "https://resources.finalsite.net/images/v1771602096/d62org/huubad2axs3m2rrnnwjm/District62Ten-MonthSchoolsCalendar2026-2027FINAL.pdf",
+        "content_type": "application/pdf",
+        "bytes": 180910,
+        "pattern_matches": {
+          "(?i)no school[^<]{0,80}": [],
+          "(?i)2026[-–/ ]?(?:20)?27[^<]{0,60}": []
+        }
+      }
+    },
+    {
+      "url": "https://www.d214.org/calendar",
+      "purpose": "High School District 214 - official 2026-27 calendar",
+      "item": 300,
+      "probed_at": "2026-10-16T22:06:34+00:00",
+      "status": 404,
+      "final_url": "https://www.d214.org/calendar",
+      "content_type": "text/html;charset=utf-8",
+      "bytes": 1374146,
+      "title": "Page Not Found | District 214",
+      "feed_links": [],
+      "calendar_links": [],
+      "pattern_matches": {
+        "(?i)no school[^<]{0,80}": [],
+        "(?i)2026[-–/ ]?(?:20)?27[^<]{0,60}": [
+          {
+            "match": "2026-27 Registration\\\",\\\"mailto\\\":false,\\\"icon_id\\\":286,\\\"ipAddress",
+            "context": "0 -3.95)'/></svg>\\\",\\\"name\\\":\\\"Graduation Cap\\\",\\\"title\\\":\\\"2026-27 Registration\\\",\\\"mailto\\\":false,\\\"icon_id\\\":286,\\\"ipAddress\\\":false,\\\"email_address\\\":\\\"\\\",\\\"opens_in_new_tab\\\":true},{"
+          },
+          {
+            "match": "2026-2027\\\",\\\"slug\\\":null,\\\"type\\\":\\\"link\\\",\\\"position\\\":5,\\\"status\\\"",
+            "context": "rue},{\\\"id\\\":2279385,\\\"name\\\":\\\"Student and Parent Handbook 2026-2027\\\",\\\"slug\\\":null,\\\"type\\\":\\\"link\\\",\\\"position\\\":5,\\\"status\\\":\\\"published\\\",\\\"hidden\\\":false,\\\"published_at\\\":\\\"2026-09-1"
+          },
+          {
+            "match": "2026-2027\\\",\\\"slug\\\":null,\\\"type\\\":\\\"link\\\",\\\"position\\\":8,\\\"status\\\"",
+            "context": "rue},{\\\"id\\\":2185756,\\\"name\\\":\\\"Student and Parent Handbook 2026-2027\\\",\\\"slug\\\":null,\\\"type\\\":\\\"link\\\",\\\"position\\\":8,\\\"status\\\":\\\"published\\\",\\\"hidden\\\":false,\\\"published_at\\\":\\\"2026-06-0"
+          },
+          {
+            "match": "2026-2027",
+            "context": "menu-item-link\" data-v-09de12df>Student and Parent Handbook 2026-2027</a></span></div><!----></div><!----></div><!--]--></div></d"
+          },
+          {
+            "match": "2026-27 Registration\",{\"url\":1209,\"icon\":1210,\"name\":1211,\"title\":1",
+            "context": "w_tab\":18},\"https://www.d214.org/o/d214/page/registration\",\"2026-27 Registration\",{\"url\":1209,\"icon\":1210,\"name\":1211,\"title\":1212,\"mailto\":13,\"icon_id\":1213,\"ipAddress\":13,\"email_address"
+          },
+          {
+            "match": "2026-2027\",\"2026-09-16T21:01:04.588-05:00\",[],\"https://aptg.co/9SKv-s",
+            "context": "\"opens_in_new_tab\":18},2279385,\"Student and Parent Handbook 2026-2027\",\"2026-09-16T21:01:04.588-05:00\",[],\"https://aptg.co/9SKv-s\",{\"id\":1668,\"name\":1669,\"slug\":14,\"type\":1436,\"position\":20"
+          },
+          {
+            "match": "2026-2027 school year is open!  |  Register \\u003Ca target=\\\"_blank\\\"",
+            "context": ",\"\\u003Cp style=\\\"text-align: center\\\">Registration for the 2026-2027 school year is open! | Register \\u003Ca target=\\\"_blank\\\" rel=\\\"noopener noreferrer nofollow\\\" href=\\\"https://www.d21"
+          },
+          {
+            "match": "2026-2027 school year is open! | Register \\u003Ca target=\\\"_blank\\\" r",
+            "context": ",\"\\u003Cp style=\\\"text-align: center\\\">Registration for the 2026-2027 school year is open! | Register \\u003Ca target=\\\"_blank\\\" rel=\\\"noopener noreferrer nofollow\\\" href=\\\"https://www.d214."
+          }
+        ]
+      },
+      "followed": null
     }
   ]
 }
