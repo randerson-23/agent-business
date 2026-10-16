@@ -2,8 +2,8 @@
   "@context": "https://schema.org",
   "@type": "ItemList",
   "name": "Upcoming events in Mount Prospect — Within Ten",
-  "dateModified": "2026-10-16T05:59:30+00:00",
-  "numberOfItems": 60,
+  "dateModified": "2026-10-16T11:35:39+00:00",
+  "numberOfItems": 61,
   "itemListElement": [
     {
       "@type": "ListItem",
@@ -1177,6 +1177,29 @@
       "position": 52,
       "item": {
         "@type": "Event",
+        "name": "Native Seed Collection Day",
+        "startDate": "2026-10-27T16:30:00-05:00",
+        "url": "https://withintenmiles.com/mount-prospect-60056/#ev-native-seed-collection-day-2026-10-27",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Mount Prospect, IL",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Mount Prospect",
+            "addressRegion": "IL"
+          }
+        },
+        "sameAs": "https://www.mppd.org/event/native-seed-collection-day/",
+        "description": "Collect seeds from native plants at Hill Street Nature Center Click Here to fill out the volunteer form. Volunteer work will include walking through native…"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 53,
+      "item": {
+        "@type": "Event",
         "name": "Dungeons & Dragons",
         "startDate": "2026-10-27T18:00:00-05:00",
         "url": "https://withintenmiles.com/mount-prospect-60056/#ev-dungeons-dragons-2026-10-27",
@@ -1197,7 +1220,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 53,
+      "position": 54,
       "item": {
         "@type": "Event",
         "name": "Inglés para Hispanohablantes",
@@ -1220,7 +1243,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 54,
+      "position": 55,
       "item": {
         "@type": "Event",
         "name": "Mount Prospect Downtown Merchants Trick-or-Treat",
@@ -1243,7 +1266,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 55,
+      "position": 56,
       "item": {
         "@type": "Event",
         "name": "Minecraft Engineers",
@@ -1266,7 +1289,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 56,
+      "position": 57,
       "item": {
         "@type": "Event",
         "name": "Lawyers at the Library: Your Legal Help Desk",
@@ -1290,7 +1313,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 57,
+      "position": 58,
       "item": {
         "@type": "Event",
         "name": "Gardening Can Be Murder",
@@ -1313,7 +1336,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 58,
+      "position": 59,
       "item": {
         "@type": "Event",
         "name": "Halloween Storytime",
@@ -1336,7 +1359,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 59,
+      "position": 60,
       "item": {
         "@type": "Event",
         "name": "Tech Playground",
@@ -1359,7 +1382,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 60,
+      "position": 61,
       "item": {
         "@type": "Event",
         "name": "Sailing Bright Eternity",

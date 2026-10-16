@@ -2,8 +2,8 @@
   "@context": "https://schema.org",
   "@type": "ItemList",
   "name": "Upcoming events across every region — Within Ten",
-  "dateModified": "2026-10-16T05:59:30+00:00",
-  "numberOfItems": 270,
+  "dateModified": "2026-10-16T11:35:39+00:00",
+  "numberOfItems": 271,
   "itemListElement": [
     {
       "@type": "ListItem",
@@ -3646,9 +3646,9 @@
       "position": 160,
       "item": {
         "@type": "Event",
-        "name": "Games & Gab",
+        "name": "One Book, One Village at Arlington Heights' Community Open House",
         "startDate": "2026-10-24",
-        "url": "https://withintenmiles.com/arlington-heights-60005/#ev-games-gab-2026-10-24",
+        "url": "https://withintenmiles.com/arlington-heights-60005/#ev-one-book-one-village-at-arlington-heights-community-open-hou-2026-10-24",
         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
         "location": {
           "@type": "Place",
@@ -3660,7 +3660,7 @@
             "addressRegion": "IL"
           }
         },
-        "sameAs": "https://www.ahml.info/scheduling/reservation/234245"
+        "sameAs": "https://www.ahml.info/scheduling/reservation/226814"
       }
     },
     {
@@ -5005,6 +5005,29 @@
       "position": 219,
       "item": {
         "@type": "Event",
+        "name": "Native Seed Collection Day",
+        "startDate": "2026-10-27T16:30:00-05:00",
+        "url": "https://withintenmiles.com/mount-prospect-60056/#ev-native-seed-collection-day-2026-10-27",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Mount Prospect, IL",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Mount Prospect",
+            "addressRegion": "IL"
+          }
+        },
+        "sameAs": "https://www.mppd.org/event/native-seed-collection-day/",
+        "description": "Collect seeds from native plants at Hill Street Nature Center Click Here to fill out the volunteer form. Volunteer work will include walking through native…"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 220,
+      "item": {
+        "@type": "Event",
         "name": "Book a Teen Librarian",
         "startDate": "2026-10-27T17:00:00-05:00",
         "url": "https://withintenmiles.com/des-plaines-60016/#ev-book-a-teen-librarian-2026-10-27",
@@ -5025,7 +5048,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 220,
+      "position": 221,
       "item": {
         "@type": "Event",
         "name": "Spanish Conversation Practice | At the Branch",
@@ -5048,7 +5071,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 221,
+      "position": 222,
       "item": {
         "@type": "Event",
         "name": "Adult Dungeons and Dragons - Experienced Game",
@@ -5071,7 +5094,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 222,
+      "position": 223,
       "item": {
         "@type": "Event",
         "name": "Adult Dungeons and Dragons - Intermediate Game",
@@ -5094,7 +5117,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 223,
+      "position": 224,
       "item": {
         "@type": "Event",
         "name": "Adult Dungeons and Dragons - Beginner Game",
@@ -5117,7 +5140,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 224,
+      "position": 225,
       "item": {
         "@type": "Event",
         "name": "Dungeons & Dragons",
@@ -5140,7 +5163,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 225,
+      "position": 226,
       "item": {
         "@type": "Event",
         "name": "MPAC Russian Virtual Parent Presentation - Program Descriptions",
@@ -5162,7 +5185,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 226,
+      "position": 227,
       "item": {
         "@type": "Event",
         "name": "Friends of the Library Meeting",
@@ -5185,7 +5208,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 227,
+      "position": 228,
       "item": {
         "@type": "Event",
         "name": "Career & Job Counseling @ the library",
@@ -5208,7 +5231,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 228,
+      "position": 229,
       "item": {
         "@type": "Event",
         "name": "Clase de Mac (Apple Spanish)",
@@ -5231,7 +5254,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 229,
+      "position": 230,
       "item": {
         "@type": "Event",
         "name": "Planner & Journaling Meet-Up",
@@ -5254,7 +5277,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 230,
+      "position": 231,
       "item": {
         "@type": "Event",
         "name": "Bridges of Meaning",
@@ -5277,7 +5300,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 231,
+      "position": 232,
       "item": {
         "@type": "Event",
         "name": "MPAC Tamil Virtual Parent Presentation - Program Descriptions",
@@ -5299,7 +5322,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 232,
+      "position": 233,
       "item": {
         "@type": "Event",
         "name": "Senior Center: iPhone & iPad Beyond Basics (Day 2)",
@@ -5321,7 +5344,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 233,
+      "position": 234,
       "item": {
         "@type": "Event",
         "name": "Wicked Good Writing Contest",
@@ -5344,7 +5367,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 234,
+      "position": 235,
       "item": {
         "@type": "Event",
         "name": "Early Voting",
@@ -5367,7 +5390,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 235,
+      "position": 236,
       "item": {
         "@type": "Event",
         "name": "Read to Learn",
@@ -5390,7 +5413,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 236,
+      "position": 237,
       "item": {
         "@type": "Event",
         "name": "Baby Book Time",
@@ -5413,7 +5436,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 237,
+      "position": 238,
       "item": {
         "@type": "Event",
         "name": "D15 Job Fair",
@@ -5435,7 +5458,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 238,
+      "position": 239,
       "item": {
         "@type": "Event",
         "name": "Inglés para Hispanohablantes",
@@ -5458,7 +5481,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 239,
+      "position": 240,
       "item": {
         "@type": "Event",
         "name": "3D Print & Paint Pumpkins",
@@ -5481,7 +5504,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 240,
+      "position": 241,
       "item": {
         "@type": "Event",
         "name": "Mount Prospect Downtown Merchants Trick-or-Treat",
@@ -5504,7 +5527,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 241,
+      "position": 242,
       "item": {
         "@type": "Event",
         "name": "Scary Stories to Draw in the Dark",
@@ -5527,7 +5550,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 242,
+      "position": 243,
       "item": {
         "@type": "Event",
         "name": "Minecraft Engineers",
@@ -5550,7 +5573,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 243,
+      "position": 244,
       "item": {
         "@type": "Event",
         "name": "Coloring Club",
@@ -5573,7 +5596,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 244,
+      "position": 245,
       "item": {
         "@type": "Event",
         "name": "Paint and Steep Tea",
@@ -5596,7 +5619,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 245,
+      "position": 246,
       "item": {
         "@type": "Event",
         "name": "Lawyers at the Library: Your Legal Help Desk",
@@ -5620,7 +5643,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 246,
+      "position": 247,
       "item": {
         "@type": "Event",
         "name": "Plan Commission Meeting",
@@ -5643,7 +5666,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 247,
+      "position": 248,
       "item": {
         "@type": "Event",
         "name": "The Physics Dimension",
@@ -5666,7 +5689,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 248,
+      "position": 249,
       "item": {
         "@type": "Event",
         "name": "Gardening Can Be Murder",
@@ -5689,7 +5712,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 249,
+      "position": 250,
       "item": {
         "@type": "Event",
         "name": "ROCKY™ IN CONCERT",
@@ -5712,7 +5735,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 250,
+      "position": 251,
       "item": {
         "@type": "Event",
         "name": "BOURBON 'N BRASS SPEAKEASY: THE BOURBON 'N BRASS TRIO with JAZZ SAXOPHONIST ERIC SCHNEIDER",
@@ -5735,7 +5758,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 251,
+      "position": 252,
       "item": {
         "@type": "Event",
         "name": "Toddler Time",
@@ -5757,7 +5780,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 252,
+      "position": 253,
       "item": {
         "@type": "Event",
         "name": "Wicked Good Writing Contest",
@@ -5780,7 +5803,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 253,
+      "position": 254,
       "item": {
         "@type": "Event",
         "name": "Early Voting",
@@ -5803,7 +5826,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 254,
+      "position": 255,
       "item": {
         "@type": "Event",
         "name": "Reading/Literacy Class",
@@ -5826,7 +5849,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 255,
+      "position": 256,
       "item": {
         "@type": "Event",
         "name": "ESL (English as a Second Language) Class - Oakton College",
@@ -5849,7 +5872,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 256,
+      "position": 257,
       "item": {
         "@type": "Event",
         "name": "Chat & Play Cafe",
@@ -5872,7 +5895,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 257,
+      "position": 258,
       "item": {
         "@type": "Event",
         "name": "Playgroup for Language Development",
@@ -5895,7 +5918,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 258,
+      "position": 259,
       "item": {
         "@type": "Event",
         "name": "Halloween Storytime",
@@ -5918,7 +5941,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 259,
+      "position": 260,
       "item": {
         "@type": "Event",
         "name": "Book a Teen Librarian",
@@ -5941,7 +5964,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 260,
+      "position": 261,
       "item": {
         "@type": "Event",
         "name": "Pirate Pete's Trick-or-Treat Festival Returns",
@@ -5965,7 +5988,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 261,
+      "position": 262,
       "item": {
         "@type": "Event",
         "name": "Tech Playground",
@@ -5988,7 +6011,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 262,
+      "position": 263,
       "item": {
         "@type": "Event",
         "name": "MPAC Spanish Virtual Parent Presentation - Program Descriptions",
@@ -6010,7 +6033,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 263,
+      "position": 264,
       "item": {
         "@type": "Event",
         "name": "Monogrammed Tote Bags",
@@ -6033,7 +6056,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 264,
+      "position": 265,
       "item": {
         "@type": "Event",
         "name": "Fall for Autumn Crafts",
@@ -6056,7 +6079,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 265,
+      "position": 266,
       "item": {
         "@type": "Event",
         "name": "WORLD PREMIERE FILM SCREENING: YAKUZA PLAYS \"THE GOLEM\" - A CONCERT FILM",
@@ -6079,7 +6102,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 266,
+      "position": 267,
       "item": {
         "@type": "Event",
         "name": "Mont Clare Condo Assoc.",
@@ -6102,7 +6125,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 267,
+      "position": 268,
       "item": {
         "@type": "Event",
         "name": "Sailing Bright Eternity",
@@ -6125,7 +6148,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 268,
+      "position": 269,
       "item": {
         "@type": "Event",
         "name": "High School Book Club | Grades 9-12",
@@ -6148,7 +6171,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 269,
+      "position": 270,
       "item": {
         "@type": "Event",
         "name": "Frightening Fics Book Discussion",
@@ -6171,7 +6194,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 270,
+      "position": 271,
       "item": {
         "@type": "Event",
         "name": "BOURBON 'N BRASS: LIVE BLUES SHOW WITH MILES MINOR \"ROCKIN THE BLUES\"",
