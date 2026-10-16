@@ -44,6 +44,7 @@ REGION_LABEL_TO_ID = {
     "Arlington Heights (60005)": "arlington-heights-60005",
     "Des Plaines (60016)": "des-plaines-60016",
     "Palatine (60067)": "palatine-60067",
+    "Wheeling (60090)": "wheeling-60090",
 }
 
 _FIELD_LABELS = {
