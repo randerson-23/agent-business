@@ -5330,8 +5330,10 @@ def test_celebration_windows_keywords_and_hub_block():
         {"name": "Diwali", "date": "2026-11-08", "days_before": 21, "days_after": 3, "keywords": ["diwali", "rangoli"]},
     ]
     active = lambda d: [c["name"] for c in build_digest.active_celebrations(d, cels)]
-    assert active(date(2026, 10, 24)) == [] and active(date(2026, 10, 25)) == ["Día de los Muertos"] and active(date(2026, 11, 2)) == ["Día de los Muertos"]
-    assert active(date(2026, 10, 18)) == ["Diwali"] and active(date(2026, 11, 11)) == ["Diwali"] and active(date(2026, 11, 12)) == []
+    assert active(date(2026, 10, 17)) == [] and active(date(2026, 10, 18)) == ["Diwali"]  # Diwali opens 21 days before Nov 8
+    assert active(date(2026, 10, 24)) == ["Diwali"] and active(date(2026, 10, 25)) == ["Día de los Muertos", "Diwali"]
+    assert active(date(2026, 11, 2)) == ["Día de los Muertos", "Diwali"] and active(date(2026, 11, 3)) == ["Diwali"]
+    assert active(date(2026, 11, 11)) == ["Diwali"] and active(date(2026, 11, 12)) == []
     assert active(date(2027, 10, 30)) == ["Día de los Muertos"]  # fixed dates recur; Diwali's 2026 date never opens in 2027
     blocks = [{"events": [
         {"title": "DIY Ofrendas Workshop", "detail": ""}, {"title": "Craft Hour", "detail": "Make a rangoli design"},
