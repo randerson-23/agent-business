@@ -5404,3 +5404,16 @@ def test_winter_break_page_shows_the_labelled_sponsor_without_a_days_off_box():
     html = build_digest.render_region_page(region_cfg, [], None, [], datetime(2026, 11, 20, 18, tzinfo=timezone.utc), days_off_sponsor=sponsor)
     assert "Sponsored" in html and "Presented by" in html and "Example Camps" in html
     assert "Winter break camps" in html  # footer link in season
+
+
+def test_outbound_click_listener_is_present_only_with_analytics_and_sends_only_the_hostname():
+    # ROADMAP.md item 267.
+    region_cfg = {"region": {"id": "r", "name": "R", "zip": "60056", "state": "IL", "tagline": "t", "timezone": "America/Chicago"}}
+    analytics = {"configured": True, "goatcounter_code": "withinten"}
+    now = datetime(2026, 11, 2, 18, tzinfo=timezone.utc)
+    with_a = build_digest.render_region_page(region_cfg, [], None, [], now, analytics=analytics)
+    assert 'goatcounter.count({path:"out/"+a.hostname,event:true})' in with_a
+    assert "location.hostname" in with_a  # only links leaving the site
+    assert "goatcounter.count({path:\"out/" not in build_digest.render_region_page(region_cfg, [], None, [], now)
+    hub = build_digest.render_merged_hub_page([], now, analytics, subheading="s", meta_description="m", empty_message="e")
+    assert 'path:"out/"+a.hostname' in hub
