@@ -15460,7 +15460,7 @@ answer reaches people before Oct 31.
 
 #### P1 (new)
 
-290. **A weekly Search Console snapshot in the repo.** Build loop plus
+290. 🟡 **BUILD DONE, WAITING ON THE OWNER (2026-10-16): `scripts/search_console_snapshot.py`, run Mondays by `audience-snapshot.yml` after the GoatCounter step, writes `data/search_console.json` (28 days ending two days ago, top 25 queries and pages with clicks, impressions, CTR and position); skips quietly without the secret; tries the `sc-domain:` property then the URL-prefix one; never overwrites the last good file. Owner, once: Google Cloud project → enable the Search Console API → service account with no roles → JSON key as repository secret `GSC_SERVICE_ACCOUNT_JSON` → add the service account's email as a Restricted user in Search Console → Settings → Users. Untested against the live API.** **A weekly Search Console snapshot in the repo.** Build loop plus
      a 10-minute owner setup.
      - **Owner, once:** in Google Cloud, create a project, enable the
        *Search Console API*, and create a **service account** with no
