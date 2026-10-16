@@ -15181,7 +15181,7 @@ cheap channels and content sources the plan has not used.
 
 #### P3 (new)
 
-281. **Patch: a paid fallback channel, and a rule.** **Rule, add to the
+281. 🟡 **RULE ADDED to the working agreements (2026-10-16); the paid test waits on item 276's result.** **Patch: a paid fallback channel, and a rule.** **Rule, add to the
      working agreements:** never post the weekly guide or site links to
      Patch as free community content. Patch reserves free posts for
      non-commercial use, and breaching that on the page that outranks
@@ -15247,7 +15247,7 @@ and some of the likeliest $20 buyers.
 
 #### P2 (new)
 
-283. **Put the confirmed family holiday shows on `/holidays/`.** Build
+283. ✅ **DONE (2026-10-16) by items 287 and 274: Metropolis' iCal feed is a source, and `/holidays/` and each town's `/holiday/` page select feed events by title (christmas, santa, gingerbread, holiday...), so *A Christmas Carol*, *The Christmas Schooner* and family gingerbread nights appear with dates read from the venue's own feed, never from press copy. Des Plaines Theatre's December shows appear the same way when their titles match.** **Put the confirmed family holiday shows on `/holidays/`.** Build
      loop, after item 282's probe. Add **Metropolis' _A Christmas Carol_
      Saturday 10 a.m. family performances (Dec 5–19)** and **_The
      Christmas Schooner_ (Nov 24 – Jan 3)** to the Arlington Heights
@@ -15951,6 +15951,7 @@ duplicated JSON.
   when mid-slice.
 - Always run `python -m pytest tests/ -q` and `python scripts/build_digest.py`
   before committing.
+- **Patch rule (item 281):** never post the weekly guide or site links to Patch as free community content. Patch reserves free posts for non-commercial use, and breaching that on the page that outranks the site for its head term is the wrong trade. The only Patch route is its paid featured event (item 281's fallback, a $30 test) with `/join/?utm_source=patch`.
 - Never hand-commit `docs/` output — run `git restore docs/` and remove any
   newly-created `docs/<region-id>/` directories before staging.
 - Same for `data/source_health.json` (item 51),
