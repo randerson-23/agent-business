@@ -3,8 +3,8 @@
 <channel>
   <title>Within Ten — Upcoming Local Events</title>
   <link>https://withintenmiles.com/</link>
-  <description>Upcoming events across every Within Ten region, soonest first - aggregated automatically from village, library, park district and school-district calendars. This build reached 22 of 28 configured sources. 1 source is shown from its last update, up to 10 hours ago.</description>
-  <lastBuildDate>Fri, 16 Oct 2026 21:59:29 +0000</lastBuildDate>
+  <description>Upcoming events across every Within Ten region, soonest first - aggregated automatically from village, library, park district and school-district calendars. This build reached 23 of 28 configured sources.</description>
+  <lastBuildDate>Fri, 16 Oct 2026 22:06:34 +0000</lastBuildDate>
   <item>
     <title>Arlington Heights: Senior Center: Travelogue</title>
     <link>https://withintenmiles.com/arlington-heights-60005/#ev-senior-center-travelogue-2026-10-16</link>
@@ -141,12 +141,12 @@ nwprogressivedems@gmail.com Official listing: https://desplaines.libnet.info/eve
     <source url="https://desplainestheatre.com/event/bourbon-n-brass-speakeasy-live-jazz-with-the-bootleggers-3/">Des Plaines Theatre — Events</source>
   </item>
   <item>
-    <title>Arlington Heights: Beginning ESL</title>
-    <link>https://withintenmiles.com/arlington-heights-60005/#ev-beginning-esl-2026-10-17</link>
-    <guid isPermaLink="true">https://withintenmiles.com/arlington-heights-60005/#ev-beginning-esl-2026-10-17</guid>
-    <description>Official listing: https://www.ahml.info/scheduling/reservation/234242</description>
+    <title>Arlington Heights: Family Time</title>
+    <link>https://withintenmiles.com/arlington-heights-60005/#ev-family-time-2026-10-17</link>
+    <guid isPermaLink="true">https://withintenmiles.com/arlington-heights-60005/#ev-family-time-2026-10-17</guid>
+    <description>Official listing: https://www.ahml.info/scheduling/reservation/224194</description>
     <pubDate>Sat, 17 Oct 2026 00:00:00 +0000</pubDate>
-    <source url="https://www.ahml.info/scheduling/reservation/234242">Arlington Heights Memorial Library — Events</source>
+    <source url="https://www.ahml.info/scheduling/reservation/224194">Arlington Heights Memorial Library — Events</source>
   </item>
   <item>
     <title>Des Plaines: Service Hour Drop In</title>
