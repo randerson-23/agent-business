@@ -5126,7 +5126,9 @@ def test_days_off_window_wording_grouping_and_daytime_ideas():
         {"title": "No School - Labor Day", "date_iso": "2026-09-07T00:00:00"},  # past
     )
     library = {"section": "Library Events", "events": [
-        {"title": "Toddler Storytime", "url": "https://l/1", "date_iso": "2026-11-11T10:00:00", "tags": ["kid_friendly"]},
+        {"title": "Lego Club for Grades K-5", "url": "https://l/1", "date_iso": "2026-11-11T10:00:00", "tags": ["kid_friendly", "elementary"]},
+        {"title": "Toddler Storytime", "url": "https://l/4", "date_iso": "2026-11-11T10:30:00", "tags": ["kid_friendly", "toddler"]},
+        {"title": "AARP Driver Safety Course", "url": "https://l/5", "date_iso": "2026-11-11T11:00:00", "tags": []},
         {"title": "Evening Concert", "url": "https://l/2", "date_iso": "2026-11-11T19:00:00", "tags": []},  # after 5 p.m.
         {"title": "All-day Exhibit", "url": "https://l/3", "date_iso": "2026-11-11T00:00:00", "tags": []},  # no time given
     ]}
@@ -5137,7 +5139,7 @@ def test_days_off_window_wording_grouping_and_daytime_ideas():
         {"district": "D57", "reason": "No School - Veterans Day"},
         {"district": "CCSD 21", "reason": "No School - Veterans Day"},
     ]
-    assert [i["title"] for i in veterans["ideas"]] == ["Toddler Storytime"]
+    assert [i["title"] for i in veterans["ideas"]] == ["Lego Club for Grades K-5"]  # no toddler or adult programme
     assert days[0]["ideas"] == []
     assert build_digest.build_days_off([library], today) == []  # nothing shown when no day off is listed
 
@@ -5161,3 +5163,33 @@ def test_region_page_shows_the_days_off_box_with_honesty_line():
     assert 'id="days-off"' in html and "D57: No School" in html and "Toddler Storytime" in html
     assert "Check your school&#39;s calendar for building-level changes." in html or "Check your school's calendar for building-level changes." in html
     assert 'id="days-off"' not in build_digest.render_region_page(region_cfg, [], None, [], datetime(2026, 11, 2, 18, tzinfo=timezone.utc))
+
+
+def test_consecutive_days_off_from_the_same_district_are_one_row():
+    # ROADMAP.md item 299: CCSD 15's Nov 23-27 recess was five identical rows.
+    school = _school_block(*[
+        {"title": "No School | Thanksgiving Break", "date_iso": f"2026-11-{d}T00:00:00", "source": "Palatine CCSD 15 — Calendar"}
+        for d in (23, 24, 25, 26, 27)
+    ] + [{"title": "No School | Conferences", "date_iso": "2026-11-02T00:00:00", "source": "Palatine CCSD 15 — Calendar"}])
+    rink = {"section": "Park District Events", "events": [
+        {"title": "Open Skate", "url": "https://p/1", "date_iso": "2026-11-24T13:00:00", "tags": ["kid_friendly", "elementary"]},
+    ]}
+    days = build_digest.build_days_off([school, rink], date(2026, 10, 30))
+    assert [d["label"] for d in days] == ["Mon Nov 2", "Mon Nov 23 – Fri Nov 27"]
+    assert days[1]["reasons"] == [{"district": "CCSD 15", "reason": "No School | Thanksgiving Break"}]
+    assert days[1]["ideas"] == [{"title": "Open Skate", "url": "https://p/1", "clock": "Tue 1:00 PM"}]
+    # A Friday and the next Monday are consecutive school days; a mid-week gap is not.
+    gap = _school_block(
+        {"title": "No School", "date_iso": "2026-11-20T00:00:00"}, {"title": "No School", "date_iso": "2026-11-23T00:00:00"},
+        {"title": "No School", "date_iso": "2026-11-25T00:00:00"},
+    )
+    assert [d["label"] for d in build_digest.build_days_off([gap], date(2026, 11, 1))] == ["Fri Nov 20 – Mon Nov 23", "Wed Nov 25"]
+
+
+def test_days_off_box_falls_back_to_the_library_and_park_district_when_no_pick_fits():
+    days = [{"date": date(2026, 11, 11), "end": date(2026, 11, 11), "label": "Wed Nov 11", "reasons": [{"district": "D57", "reason": "No School"}], "ideas": []}]
+    region_cfg = {"region": {"id": "mp", "name": "Mount Prospect", "zip": "60056", "state": "IL", "tagline": "t", "timezone": "America/Chicago"}}
+    evergreen = [{"title": "Mount Prospect Public Library", "url": "https://lib/", "detail": "", "tags": []},
+                 {"title": "Mount Prospect Park District", "url": "https://pd/", "detail": "", "tags": []}]
+    html = build_digest.render_region_page(region_cfg, [], None, evergreen, datetime(2026, 11, 2, 18, tzinfo=timezone.utc), days_off=days)
+    assert "No special programmes listed. Check the" in html and 'href="https://lib/"' in html and 'href="https://pd/"' in html
