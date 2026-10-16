@@ -1,18 +1,6 @@
 {
- "fetched_at": "2026-10-15T22:03:20+00:00",
+ "fetched_at": "2026-10-16T05:59:30+00:00",
  "items": [
-  {
-   "date": "20261015T190000Z",
-   "detail": "NOTICE OF CLOSED MEETING ANDÂ <p dir=\"lt",
-   "title": "Board of Education Closed Meeting - Board Governance",
-   "url": ""
-  },
-  {
-   "date": "20261015T220000Z",
-   "detail": "",
-   "title": "Board of Education Meeting",
-   "url": ""
-  },
   {
    "date": "20261020T203000Z",
    "detail": "",
@@ -359,6 +347,18 @@
    "date": "20270528",
    "detail": "",
    "title": "End of Third Trimester (Elementary)",
+   "url": ""
+  },
+  {
+   "date": "20270528",
+   "detail": "",
+   "title": "Last Day for Grades 1-8 (Half Day Attendance)",
+   "url": ""
+  },
+  {
+   "date": "20270601",
+   "detail": "",
+   "title": "Emergency Days",
    "url": ""
   }
  ],

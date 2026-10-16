@@ -1,54 +1,6 @@
 {
- "fetched_at": "2026-10-15T22:03:20+00:00",
+ "fetched_at": "2026-10-16T05:59:30+00:00",
  "items": [
-  {
-   "date": "Thu, 15 Oct 2026 09:30:00 +0000",
-   "detail": "Thursday, October 15 2026 9:30am - 10:00am \n A lifelong love of reading starts at birth! Join us for songs, rhymes, stories, and playtime made specially for infants.",
-   "title": "Baby Storytime",
-   "url": "https://mppl.libnet.info/event/16553492"
-  },
-  {
-   "date": "Thu, 15 Oct 2026 10:00:00 +0000",
-   "detail": "Thursday, October 15 2026 10:00am - 4:00pm \n Meet privately with lifelong coin collector Dave Ekstrom to appraise your old coins.",
-   "title": "Coin Collecting Appraisals",
-   "url": "https://mppl.libnet.info/event/16607413"
-  },
-  {
-   "date": "Thu, 15 Oct 2026 10:30:00 +0000",
-   "detail": "Thursday, October 15 2026 10:30am - 11:00am \n Bring the whole family and join us for an interactive storytime with high-energy stories, songs, and activities.",
-   "title": "Family Storytime",
-   "url": "https://mppl.libnet.info/event/16553521"
-  },
-  {
-   "date": "Thu, 15 Oct 2026 14:00:00 +0000",
-   "detail": "Thursday, October 15 2026 2:00pm - 3:00pm \n Stop in and bring your questions about technology-related subjects such as smartphones, computers, email, Microsoft Office, e-books, and more!",
-   "title": "Drop-In Tech Help",
-   "url": "https://mppl.libnet.info/event/14756228"
-  },
-  {
-   "date": "Thu, 15 Oct 2026 16:00:00 +0000",
-   "detail": "Thursday, October 15 2026 4:00pm - 5:00pm \n Drop by for cookies and an informal chat with the Executive Director.",
-   "title": "Meet the Executive Director",
-   "url": "https://mppl.libnet.info/event/16621502"
-  },
-  {
-   "date": "Thu, 15 Oct 2026 18:00:00 +0000",
-   "detail": "Thursday, October 15 2026 6:00pm - 9:00pm \n The Board of Library Trustees meets the third Thursday of each month at 6 p.m. at the library.",
-   "title": "Regular Library Board Meeting",
-   "url": "https://mppl.libnet.info/event/15915285"
-  },
-  {
-   "date": "Thu, 15 Oct 2026 18:00:00 +0000",
-   "detail": "Thursday, October 15 2026 6:00pm - 7:00pm \n Jumpstart your job search with a virtual one-hour session with an experienced career coach.",
-   "title": "Career Coaching Appointment",
-   "url": "https://mppl.libnet.info/event/16514103"
-  },
-  {
-   "date": "Thu, 15 Oct 2026 19:15:00 +0000",
-   "detail": "Thursday, October 15 2026 7:15pm - 8:15pm \n Jumpstart your job search with a virtual one-hour session with an experienced career coach..",
-   "title": "Career Coaching Appointment",
-   "url": "https://mppl.libnet.info/event/16514218"
-  },
   {
    "date": "Fri, 16 Oct 2026 10:00:00 +0000",
    "detail": "Friday, October 16 2026 10:00am - 11:30am \n Enjoy the magic of storytime plus the joy of hands-on sensory fun! You and your child will enjoy time together full of new learning experiences with the flexible arrival time your family needs.",
@@ -360,6 +312,54 @@
    "detail": "Wednesday, October 28 2026 7:00pm - 7:30pm \n Need legal advice but don't know where to start? Free legal consultations are available through a virtual meeting with an attorney from Chokshi Filippone Law, LLC.",
    "title": "Lawyers at the Library: Your Legal Help Desk",
    "url": "https://mppl.libnet.info/event/16565191"
+  },
+  {
+   "date": "Wed, 28 Oct 2026 19:00:00 +0000",
+   "detail": "Wednesday, October 28 2026 7:00pm - 8:00pm \n Author and gardener Marta McDowell explores the many ways in which writers have found inspiration in the sinister side of gardening.",
+   "title": "Gardening Can Be Murder",
+   "url": "https://mppl.libnet.info/event/16727732"
+  },
+  {
+   "date": "Wed, 28 Oct 2026 19:30:00 +0000",
+   "detail": "Wednesday, October 28 2026 7:30pm - 8:00pm \n Need legal advice but don't know where to start? Free legal consultations are available through a virtual meeting with an attorney from Chokshi Filippone Law, LLC.",
+   "title": "Lawyers at the Library: Your Legal Help Desk",
+   "url": "https://mppl.libnet.info/event/16565219"
+  },
+  {
+   "date": "Thu, 29 Oct 2026 10:00:00 +0000",
+   "detail": "Thursday, October 29 2026 10:00am - 11:00am \n This special Halloween-themed storytime is packed with pumpkins, bats, and trick-or-treat fun!",
+   "title": "Halloween Storytime",
+   "url": "https://mppl.libnet.info/event/16553734"
+  },
+  {
+   "date": "Thu, 29 Oct 2026 13:00:00 +0000",
+   "detail": "Thursday, October 29 2026 1:00pm - 2:00pm \n This special Halloween-themed storytime is packed with pumpkins, bats, and trick-or-treat fun!",
+   "title": "Halloween Storytime",
+   "url": "https://mppl.libnet.info/event/16554291"
+  },
+  {
+   "date": "Thu, 29 Oct 2026 18:00:00 +0000",
+   "detail": "Thursday, October 29 2026 6:00pm - 7:00pm \n Be a tech explorer and try out STEAM toys at the library.",
+   "title": "Tech Playground",
+   "url": "https://mppl.libnet.info/event/16391957"
+  },
+  {
+   "date": "Thu, 29 Oct 2026 19:00:00 +0000",
+   "detail": "Thursday, October 29 2026 7:00pm - 8:00pm \n Astrophysicist Shane L. Larson will explore how science fiction depicts star travel in books and movies, the true science of building starships, and the real possibility of leaving Earth.",
+   "title": "Sailing Bright Eternity",
+   "url": "https://mppl.libnet.info/event/16949245"
+  },
+  {
+   "date": "Fri, 30 Oct 2026 17:00:00 +0000",
+   "detail": "Friday, October 30 2026 5:00pm - 6:00pm \n Celebrate Día de los Muertos and decorate your own ceramic calavera!",
+   "title": "Calavera Creations",
+   "url": "https://mppl.libnet.info/event/16749799"
+  },
+  {
+   "date": "Sat, 31 Oct 2026 10:00:00 +0000",
+   "detail": "Saturday, October 31 2026 10:00am - 11:00am \n Learn the steps to convert VHS home videos to DVD or digital format using the library's Mac Studio equipment.",
+   "title": "Digitizing VHS Tapes",
+   "url": "https://mppl.libnet.info/event/17466686"
   }
  ],
  "source": "Mount Prospect Public Library — Events"
