@@ -5321,3 +5321,28 @@ def test_night_out_line_renders_in_the_email_when_an_evening_arts_event_exists()
     sections[0]["weekend_events"].append({"title": "Opening Night", "url": "https://src/o", "date_iso": "2026-10-16T19:30:00", "date": "2026-10-16", "detail": "", "tags": ["art_culture"], "venue": "Metropolis"})
     html = build_digest.render_combined_email_digest(sections, "Oct 16–18", datetime(2026, 10, 14, 18, tzinfo=timezone.utc), None)
     assert "Night out:" in html and "Opening Night" in html and "Friday 7:30 PM" in html
+
+
+def test_celebration_windows_keywords_and_hub_block():
+    # ROADMAP.md item 295.
+    cels = [
+        {"name": "Día de los Muertos", "start": "10-25", "end": "11-02", "keywords": ["dia de los muertos", "ofrenda"]},
+        {"name": "Diwali", "date": "2026-11-08", "days_before": 21, "days_after": 3, "keywords": ["diwali", "rangoli"]},
+    ]
+    active = lambda d: [c["name"] for c in build_digest.active_celebrations(d, cels)]
+    assert active(date(2026, 10, 24)) == [] and active(date(2026, 10, 25)) == ["Día de los Muertos"] and active(date(2026, 11, 2)) == ["Día de los Muertos"]
+    assert active(date(2026, 10, 18)) == ["Diwali"] and active(date(2026, 11, 11)) == ["Diwali"] and active(date(2026, 11, 12)) == []
+    assert active(date(2027, 10, 30)) == ["Día de los Muertos"]  # fixed dates recur; Diwali's 2026 date never opens in 2027
+    blocks = [{"events": [
+        {"title": "DIY Ofrendas Workshop", "detail": ""}, {"title": "Craft Hour", "detail": "Make a rangoli design"},
+        {"title": "Chess Club", "detail": ""},
+    ]}]
+    build_digest.annotate_celebrations(blocks, date(2026, 10, 30), cels)
+    assert [e.get("celebration") for e in blocks[0]["events"]] == ["Día de los Muertos", "Diwali", None]
+    # A celebration adds one point of relevance and shows in the weekend hub's block; with none, no block.
+    plain = {"title": "Craft Hour", "tags": []}
+    assert build_digest.family_relevance(blocks[0]["events"][1]) == build_digest.family_relevance(plain) + 1
+    sections = [{"region_name": "Mount Prospect", "region_url": "https://x/mp/", "events": blocks[0]["events"]}]
+    block = build_digest.build_celebration_block(sections)
+    assert [(g["name"], [e["title"] for e in g["events"]]) for g in block] == [("Día de los Muertos", ["DIY Ofrendas Workshop"]), ("Diwali", ["Craft Hour"])]
+    assert build_digest.build_celebration_block([{"region_name": "A", "region_url": "u", "events": [{"title": "Chess Club"}]}]) == []

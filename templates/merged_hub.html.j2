@@ -274,6 +274,16 @@
 
 <div class="wrap">
   <main{% if build_scope_end_iso %} data-build-scope-end-iso="{{ build_scope_end_iso }}" data-stale-empty-message="{{ stale_empty_message }}" data-empty-follow-url="{{ empty_follow_url }}" data-empty-follow-label="{{ empty_follow_label }}"{% endif %}>
+  {% if celebrations %}
+  {% for c in celebrations %}
+  <section class="block celebrations" id="celebrations">
+    <h2>🎉 {{ c.name }} this weekend</h2>
+    <ul>
+      {% for e in c.events %}<li><a href="{{ e.region_url }}#{{ e.anchor }}">{{ e.title }}</a> <span class="muted">{{ e.town }}{% if e.date %} · {{ e.date }}{% endif %}</span></li>{% endfor %}
+    </ul>
+  </section>
+  {% endfor %}
+  {% endif %}
   {% if region_sections %}
     {% for section in region_sections %}
     <section class="block">

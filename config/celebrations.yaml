@@ -1,0 +1,25 @@
+# Cultural celebrations the site's own feeds already carry (ROADMAP.md item 295).
+# An event whose title or description contains one of a celebration's keywords,
+# while that celebration's window is open, is labelled with the celebration, gets
+# a small boost in "Don't miss" ordering (never above a paid Featured event) and
+# is grouped in a short "Celebrations" block on the weekend hub. Nothing is ever
+# invented: with no matching event in the feeds there is no block.
+#
+# Two ways to set a window:
+#   start / end: "MM-DD" to "MM-DD", every year (fixed-date celebrations).
+#   date: "YYYY-MM-DD" with days_before / days_after, for celebrations that move
+#         each year. Set the date from an official source and renew it yearly;
+#         an out-of-date year simply never opens the window.
+# Keywords match case-insensitively as plain substrings.
+celebrations:
+  - name: "Día de los Muertos"
+    start: "10-25"
+    end: "11-02"
+    keywords: ["día de los muertos", "dia de los muertos", "dia de muertos", "day of the dead", "ofrenda", "sugar skull"]
+  - name: "Diwali"
+    # Diwali 2026 is on or about Sunday, November 8 (verify against the Hindu
+    # calendar each year). A generous window; the block shows only matching events.
+    date: "2026-11-08"
+    days_before: 21
+    days_after: 3
+    keywords: ["diwali", "deepavali", "rangoli"]
