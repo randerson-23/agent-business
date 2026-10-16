@@ -15781,7 +15781,7 @@ automated competitor now stands.
      - **Dependency:** item 304's weekly feeds must exist first, so the
        build loop ships 304, then the owner applies.
 
-304. **A weekly, Nextdoor-ready feed per town.** Build loop. Write
+304. ✅ **DONE (2026-10-16): `docs/<region>/weekly.xml` per town (RSS 2.0, `content:encoded` article HTML, enclosure and `media:content` image: the weekly square card, else the town's OG image), one item per weekend with a stable guid, last 8 weekends kept in `data/weekly_feed_history.json` (committed by build-digest.yml), no sponsored events, no item for a town with nothing to pick, linked from `llms.txt`; PatchAM line added to `SPONSOR_KIT.md`. Owner can now do item 303.** **A weekly, Nextdoor-ready feed per town.** Build loop. Write
      `docs/<region>/weekly.xml` (RSS 2.0) with **one item per weekend**:
      - **title** *"This weekend in [Town]: N things to do (Oct 16–18)"*;
      - **link** to `/<region>/this-weekend/` with
