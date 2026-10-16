@@ -1,6 +1,6 @@
 name: Audience snapshot
 
-# ROADMAP.md item 266. Mondays: read GoatCounter's statistics API with the
+# ROADMAP.md items 266 and 290. Mondays: read GoatCounter's statistics API with the
 # read-only GOATCOUNTER_TOKEN secret and commit data/audience.json. Skips quietly
 # when the secret is not set. The sponsor page shows the numbers only above a
 # floor (500 visits in 30 days or 50 subscribers).
@@ -21,16 +21,21 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.11"
-      - run: pip install requests
+      - run: pip install requests google-auth
       - name: Snapshot
         env:
           GOATCOUNTER_TOKEN: ${{ secrets.GOATCOUNTER_TOKEN }}
         run: python scripts/audience_snapshot.py
+      - name: Search Console snapshot
+        env:
+          GSC_SERVICE_ACCOUNT_JSON: ${{ secrets.GSC_SERVICE_ACCOUNT_JSON }}
+        run: python scripts/search_console_snapshot.py
+        continue-on-error: true
       - name: Commit
         run: |
           git config user.name "local-planner-bot"
           git config user.email "actions@users.noreply.github.com"
-          if [ -f data/audience.json ]; then git add data/audience.json; fi
+          for f in data/audience.json data/search_console.json; do if [ -f "$f" ]; then git add "$f"; fi; done
           if git diff --cached --quiet; then
             echo "No changes to commit."
           else
