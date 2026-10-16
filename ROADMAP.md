@@ -337,6 +337,11 @@ that limit.
    *Restricted* user in Search Console. The site then commits weekly
    query and page numbers that every later decision can use.
 
+8f. **Apply for Nextdoor News Accounts (15 min, item 303)**, once the
+   build loop's weekly feeds exist (item 304): one News page per town,
+   registered with `hello@withintenmiles.com`, each with its town's
+   `weekly.xml`. Read the Publisher Policy first.
+
 **Next action — about an hour, no cost:**
 
 8. **Send the outreach emails (items 152, 161).** Six civic link-back
@@ -15095,7 +15100,7 @@ paying for subscribers.
 
 #### P2 (new)
 
-278. **Weekly ad and social images, from the share-card pipeline.**
+278. ⬆️ **P1 since the seventy-eighth pass (feeds Nextdoor item 304, Pinterest and Meta).** **Weekly ad and social images, from the share-card pipeline.**
      Build loop: extend item 216's share card (still open) to render
      **1080×1080** and **1080×1350** variants of *"This weekend: 3 picks
      near you"*, using the email's town colours and emoji, to
@@ -15740,6 +15745,77 @@ hours** (Daily Herald, NBC Chicago, Frightmaps, Patch, the villages),
 the **district calendar situation** behind the days-off box's gaps, and
 **The 518's subreddit-sidebar growth**. The design/UX angle is **the new
 "Days off school" box read as a parent of a school-age child**.
+
+
+#### Research pass 2026-10-16, morning (seventy-eighth pass)
+
+The build loop shipped item 299: the days-off box now picks age-right
+programmes, groups consecutive days, and has an empty fallback. This
+pass found the most promising **free distribution channel** of any
+recent pass. It runs on infrastructure the site already has: Nextdoor's
+**News Accounts**, which take a publisher's **RSS feed** and show it to
+verified neighbours in that town. It also records where the biggest
+automated competitor now stands.
+
+| Angle | What it is / what we found | Why it matters here |
+|---|---|---|
+| **Nextdoor News Accounts** (about.nextdoor.com/publishers, the help centre, E&P, RJI, Nearview Media) | Since Nextdoor's July 2025 redesign, local publishers get a **free News Account** (also called a News Page). Sign-up is a form: account name, bio, logo, **coverage area**, and **one or more RSS feeds per page**. Nextdoor then **ingests the feed automatically and distributes "relevant articles to verified neighbours in the city, county or DMA where they live"**, with engagement analytics and the ability to message followers. Feeds should carry **full text and a featured image**, and **sponsored content must be excluded**. Nextdoor AI-screens every item, and eligibility is set by its **Publisher Policy**. It reports **4,000+ local publishers**, and since April 2026 it also has **Local Journalist Accounts** | Item 154 looked at Nextdoor as a *business* page (two free posts a month, gated by item 154's DBA question) and found it blocked. **This is a different door.** News Accounts are built for exactly what the site produces, feed-based local content, and they need **no recurring owner time**: the feed posts itself. Nextdoor is where these towns' parents already are. The open question is whether an automated events guide meets the Publisher Policy, which costs one form to answer (items 303, 304) |
+| **PatchAM, re-checked** (CJR, March 2026; Axios 2025; Nieman Lab) | Patch's AI-generated town newsletter is **active in about 14,000 communities with nearly 1 million subscribers** (the 30,000 figure was capacity). Each issue includes **upcoming local events pulled from Patch's own calendars and other sources**, with national and local advertising | The closest automated competitor is in every one of these towns. The differences the site can defend stay the same: **first-party sources linked event by event**, sourced trick-or-treat and days-off answers, and no national ads. **No new item**, but the sponsor kit's "why us" should name PatchAM's model plainly rather than pretend it does not exist (folded into item 304's note) |
+| **What a Nextdoor or Pinterest reader sees (design/UX)** | Both Nextdoor (feed items) and Pinterest (item 253's `pins.xml`) show a **title, an image and a snippet**. The site's per-town feeds (item 269) currently carry **one item per event** with **no image**: 70+ items a week per town, which reads as spam in a neighbour's feed. Item 278's weekly images (1080×1080 / 1080×1350) are **still unbuilt** | The right unit for a neighbour feed is **one post per town per week**, *"This weekend in Mount Prospect: 12 things to do"*, with a strong image. That needs item 278's images, which now serve three channels: Nextdoor, Pinterest and Meta ads (item 304, item 278 re-ranked) |
+
+#### P1 (new)
+
+303. **Apply for Nextdoor News Accounts, one per town.** Owner, about 15
+     minutes, once.
+     - Register a Nextdoor account with **`hello@withintenmiles.com`**,
+       since Nextdoor asks for an address on the publication's own domain.
+     - Fill in the publisher form for **five News pages**, one per town:
+       name *"Within Ten · [Town]"*, a one-line bio (*"What's on this
+       weekend in [Town], from the village, library and park district,
+       every week"*), the logo, the town as the coverage area, and each
+       town's **weekly feed from item 304**. Save the reference ID from the
+       confirmation email.
+     - Read the Publisher Policy first. If an automated events guide
+       does not qualify, record that and stop. **Do not** dress the feed up
+       as something it is not.
+     - **Dependency:** item 304's weekly feeds must exist first, so the
+       build loop ships 304, then the owner applies.
+
+304. **A weekly, Nextdoor-ready feed per town.** Build loop. Write
+     `docs/<region>/weekly.xml` (RSS 2.0) with **one item per weekend**:
+     - **title** *"This weekend in [Town]: N things to do (Oct 16–18)"*;
+     - **link** to `/<region>/this-weekend/` with
+       `?utm_source=nextdoor&utm_campaign=weekly`;
+     - **full HTML content** in `content:encoded`: the town's top picks
+       (item 268's selection), each with day, time, venue and a one-line
+       description, as an article, not a list of links;
+     - **a featured image** as both `<enclosure>` and `media:content`:
+       item 278's weekly image when it exists, the town's OG image until
+       then;
+     - **no sponsored items**: Featured promotions (item 245) and the
+       holiday listings are excluded from this feed, as Nextdoor requires.
+
+     Keep the last 8 weeks in the feed, with a stable `guid` per weekend.
+     Add the five feed URLs to `llms.txt`. Tests: one item per weekend; no
+     sponsored event ever appears; the image is present; valid RSS 2.0.
+     Separately, add one line to `SPONSOR_KIT.md`'s positioning that names
+     PatchAM's AI-generated, nationally-advertised newsletters and what
+     differs: first-party sources, and local-only, labelled sponsors.
+
+#### Re-ranked
+
+- **Item 278** (weekly ad and social images, 1080×1080 / 1080×1350)
+  **moves to P1**. It now feeds Nextdoor (item 304), Pinterest (item
+  253) and the Meta test (item 276). Build it before or with item 304.
+- **Item 154** (Nextdoor *Business* posts) stays parked behind its DBA
+  question. Item 303's News Account route does not depend on it.
+
+Competitors reviewed this pass: **Nextdoor News Accounts** (free,
+RSS-fed, distributed to verified neighbours by coverage area; 4,000+
+publishers) and **PatchAM** (about 14,000 communities, nearly 1M
+subscribers, AI-generated, with national ads). The design/UX angle is
+**what a neighbour sees in a feed**: one weekly post with an image, not
+seventy event links.
 
 
 ## Working agreements for autonomous iteration
