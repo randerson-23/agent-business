@@ -760,7 +760,8 @@
       <li>
         <strong>{{ d.label }}</strong>
         {% for r in d.reasons %}<span class="do-reason">{{ r.district }}: {{ r.reason }}</span>{% endfor %}
-        {% if d.ideas %}<div class="do-ideas">What's on: {% for i in d.ideas %}<a href="{{ i.url }}">{{ i.title }}</a>{% if i.clock %} <span class="do-clock">{{ i.clock }}</span>{% endif %}{% if not loop.last %} · {% endif %}{% endfor %}</div>{% endif %}
+        {% if d.ideas %}<div class="do-ideas">What's on: {% for i in d.ideas %}<a href="{{ i.url }}">{{ i.title }}</a>{% if i.clock %} <span class="do-clock">{{ i.clock }}</span>{% endif %}{% if not loop.last %} · {% endif %}{% endfor %}</div>
+        {% else %}<div class="do-ideas do-none">No special programmes listed. Check the {% for e in evergreen if "Library" in e.title or "Park District" in e.title %}<a href="{{ e.url }}">{{ e.title }}</a>{% if not loop.last %} and the {% endif %}{% else %}library and park district{% endfor %}.</div>{% endif %}
       </li>
       {% endfor %}
     </ul>

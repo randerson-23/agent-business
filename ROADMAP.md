@@ -15677,7 +15677,7 @@ the local subreddits.
 
 #### P1 (new)
 
-299. **Make the "Days off school" picks fit the child who is home.**
+299. ✅ **DONE (2026-10-16): toddler/baby/storytime and adult programmes (AARP, driver safety, Medicare, tax, seniors) are never picks; elementary/teen first, then kid-friendly, then all-ages; consecutive school days off for the same districts (Friday to Monday counts as consecutive) are one row with picks from the whole range; empty fallback "No special programmes listed. Check the library and park district." with their links; tests added.** **Make the "Days off school" picks fit the child who is home.**
      Design/UX, build loop, `build_days_off()`:
      - **Exclude** toddler and baby programmes (`toddler` tag, and
        titles with baby, toddler, tots, lapsit or storytime aimed under

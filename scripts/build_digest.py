@@ -4329,13 +4329,39 @@ def short_district(source_name: str) -> str:
     return name
 
 
+# ROADMAP.md item 299: what suits a school-age child who is home. Toddler and
+# baby programmes and adult programmes never qualify as a "what's on" pick.
+_DAYS_OFF_TOO_YOUNG = re.compile(r"\b(baby|babies|toddlers?|tots?|lapsit|infants?|preschool|pre-k|storytime|story time)\b", re.IGNORECASE)
+_DAYS_OFF_ADULT = re.compile(r"\b(aarp|driver safety|medicare|tax|taxes|seniors?|retirement|adults?)\b", re.IGNORECASE)
+
+
+def _days_off_idea_rank(event: dict) -> tuple | None:
+    """None when an event does not suit a school-age child; otherwise a sort
+    key: elementary/teen first, then kid-friendly, then all-ages."""
+    title = event.get("title") or ""
+    tags = set(event.get("tags") or [])
+    if "toddler" in tags or _DAYS_OFF_TOO_YOUNG.search(title) or _DAYS_OFF_ADULT.search(title) or family_relevance(event) < 0:
+        return None
+    tier = 0 if tags & {"elementary", "teen"} else 1 if "kid_friendly" in tags else 2
+    return (tier, -family_relevance(event), event.get("date_iso") or "")
+
+
+def _next_school_day(day: date) -> date:
+    nxt = day + timedelta(days=1)
+    while nxt.weekday() >= 5:
+        nxt += timedelta(days=1)
+    return nxt
+
+
 def build_days_off(blocks: list[dict], local_today: date, window: int = DAYS_OFF_WINDOW, ideas_per_day: int = 3) -> list[dict]:
     """School days off in the next `window` days from the region's "School ..."
-    sections, grouped by date, each with up to `ideas_per_day` timed daytime
-    (before 5 p.m.) events from the other sections that day, family relevance
+    sections, with each district's own wording as the reason. Consecutive
+    school days off for the same districts are one row (item 299), and each
+    row gets up to `ideas_per_day` timed daytime (before 5 p.m.) events from
+    the other sections across its dates that suit a school-age child, best
     first. [] when no district lists a day off."""
     end = local_today + timedelta(days=window)
-    days: dict[date, dict] = {}
+    days: dict[date, list[dict]] = {}
     for block in blocks:
         if "school" not in (block.get("section") or "").lower():
             continue
@@ -4348,12 +4374,25 @@ def build_days_off(blocks: list[dict], local_today: date, window: int = DAYS_OFF
                 continue
             if not (local_today <= day <= end):
                 continue
-            entry = days.setdefault(day, {"date": day, "label": day.strftime("%a %b ") + str(day.day), "reasons": []})
             reason = {"district": short_district(e.get("source") or ""), "reason": e["title"].strip()}
-            if reason not in entry["reasons"]:
-                entry["reasons"].append(reason)
-    chosen = sorted(days.values(), key=lambda d: d["date"])[:DAYS_OFF_MAX_DAYS]
-    for entry in chosen:
+            if reason not in days.setdefault(day, []):
+                days[day].append(reason)
+    rows: list[dict] = []
+    for day in sorted(days):
+        districts = {r["district"] for r in days[day]}
+        last = rows[-1] if rows else None
+        if last and last["_districts"] == districts and _next_school_day(last["end"]) == day:
+            last["end"] = day
+            last["reasons"] += [r for r in days[day] if r["reason"] not in {x["reason"] for x in last["reasons"] if x["district"] == r["district"]}]
+        else:
+            rows.append({"date": day, "end": day, "reasons": list(days[day]), "_districts": districts})
+    rows = rows[:DAYS_OFF_MAX_DAYS]
+    for row in rows:
+        start, finish = row["date"], row["end"]
+        row["label"] = start.strftime("%a %b ") + str(start.day)
+        if finish != start:
+            row["label"] += " – " + finish.strftime("%a %b ") + str(finish.day)
+        row.pop("_districts")
         pool = []
         for block in blocks:
             if "school" in (block.get("section") or "").lower():
@@ -4362,16 +4401,23 @@ def build_days_off(blocks: list[dict], local_today: date, window: int = DAYS_OFF
                 if not (e.get("title") and e.get("url") and e.get("date_iso")) or e.get("attendable") is False:
                     continue
                 try:
-                    start = datetime.fromisoformat(e["date_iso"])
+                    begin = datetime.fromisoformat(e["date_iso"])
                 except ValueError:
                     continue
-                if start.date() == entry["date"] and (start.hour, start.minute) != (0, 0) and start.hour < 17:
-                    pool.append(e)
-        pool.sort(key=lambda e: (-family_relevance(e), e["date_iso"]))
-        entry["ideas"] = [
-            {"title": e["title"], "url": e["url"], "clock": event_time_label(e["date_iso"])} for e in pool[:ideas_per_day]
+                rank = _days_off_idea_rank(e)
+                if rank and start <= begin.date() <= finish and (begin.hour, begin.minute) != (0, 0) and begin.hour < 17:
+                    pool.append((rank, e))
+        pool.sort(key=lambda p: p[0])
+        multi = finish != start
+        row["ideas"] = [
+            {
+                "title": e["title"],
+                "url": e["url"],
+                "clock": (datetime.fromisoformat(e["date_iso"]).strftime("%a ") if multi else "") + (event_time_label(e["date_iso"]) or ""),
+            }
+            for _rank, e in pool[:ideas_per_day]
         ]
-    return chosen
+    return rows
 
 
 def build_days_off_email_line(sections: list[dict], now: datetime) -> dict | None:
