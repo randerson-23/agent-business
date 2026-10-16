@@ -2,81 +2,12 @@
   "@context": "https://schema.org",
   "@type": "ItemList",
   "name": "Upcoming events in Des Plaines — Within Ten",
-  "dateModified": "2026-10-16T22:58:20+00:00",
-  "numberOfItems": 105,
+  "dateModified": "2026-10-16T23:07:36+00:00",
+  "numberOfItems": 102,
   "itemListElement": [
     {
       "@type": "ListItem",
       "position": 1,
-      "item": {
-        "@type": "Event",
-        "name": "Baby Book Time",
-        "startDate": "2026-10-16T10:00:00-05:00",
-        "url": "https://withintenmiles.com/des-plaines-60016/#ev-baby-book-time-2026-10-16",
-        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "location": {
-          "@type": "Place",
-          "name": "Des Plaines Public Library",
-          "address": {
-            "@type": "PostalAddress",
-            "addressCountry": "US",
-            "addressLocality": "Des Plaines",
-            "addressRegion": "IL"
-          }
-        },
-        "sameAs": "https://desplaines.libnet.info/event/16431780",
-        "description": "Friday, October 16 2026 10:00am - 11:00am \n To register, please contact Irene Tripkos at 847-789-5623. Verbal confirmation from Irene Tripkos is needed in…"
-      }
-    },
-    {
-      "@type": "ListItem",
-      "position": 2,
-      "item": {
-        "@type": "Event",
-        "name": "The Next Chapter",
-        "startDate": "2026-10-16T18:00:00-05:00",
-        "url": "https://withintenmiles.com/des-plaines-60016/#ev-the-next-chapter-2026-10-16",
-        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "location": {
-          "@type": "Place",
-          "name": "Des Plaines Public Library",
-          "address": {
-            "@type": "PostalAddress",
-            "addressCountry": "US",
-            "addressLocality": "Des Plaines",
-            "addressRegion": "IL"
-          }
-        },
-        "sameAs": "https://desplaines.libnet.info/event/17616372",
-        "description": "Friday, October 16 2026 6:00pm - 8:00pm \n A Young Adult Round Table on College, Careers, & Everything In Between\nAges 16-30\nFree\nLight refreshments will be…"
-      }
-    },
-    {
-      "@type": "ListItem",
-      "position": 3,
-      "item": {
-        "@type": "Event",
-        "name": "Indivisible Des Plaines",
-        "startDate": "2026-10-16T19:00:00-05:00",
-        "url": "https://withintenmiles.com/des-plaines-60016/#ev-indivisible-des-plaines-2026-10-16",
-        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "location": {
-          "@type": "Place",
-          "name": "Des Plaines Public Library",
-          "address": {
-            "@type": "PostalAddress",
-            "addressCountry": "US",
-            "addressLocality": "Des Plaines",
-            "addressRegion": "IL"
-          }
-        },
-        "sameAs": "https://desplaines.libnet.info/event/17174492",
-        "description": "Friday, October 16 2026 7:00pm - 8:30pm \n Regina - Indivisible\nnwprogressivedems@gmail.com"
-      }
-    },
-    {
-      "@type": "ListItem",
-      "position": 4,
       "item": {
         "@type": "Event",
         "name": "TAYLOR DAYNE",
@@ -99,7 +30,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 5,
+      "position": 2,
       "item": {
         "@type": "Event",
         "name": "BOURBON 'N BRASS SPEAKEASY: LIVE JAZZ with THE BOOTLEGGERS playing 20s & 30s DANCE FAVORITES",
@@ -122,7 +53,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 6,
+      "position": 3,
       "item": {
         "@type": "Event",
         "name": "Service Hour Drop In",
@@ -145,7 +76,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 7,
+      "position": 4,
       "item": {
         "@type": "Event",
         "name": "Des Plaines Lions Club Volunteer Hour",
@@ -168,7 +99,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 8,
+      "position": 5,
       "item": {
         "@type": "Event",
         "name": "Build a Pinecone Bird Feeder",
@@ -191,7 +122,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 9,
+      "position": 6,
       "item": {
         "@type": "Event",
         "name": "THE MUSICAL BOX proudly presents...AND THEN THERE WAS...PHIL",
@@ -214,7 +145,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 10,
+      "position": 7,
       "item": {
         "@type": "Event",
         "name": "BOURBON 'N BRASS SPEAKEASY: LIVE JAZZ with DONNY DeMARCO & TUNE TOWN",
@@ -237,7 +168,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 11,
+      "position": 8,
       "item": {
         "@type": "Event",
         "name": "Wicked Good Writing Contest",
@@ -260,7 +191,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 12,
+      "position": 9,
       "item": {
         "@type": "Event",
         "name": "MS Excel: Principantes (Spanish)",
@@ -283,7 +214,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 13,
+      "position": 10,
       "item": {
         "@type": "Event",
         "name": "\"I AM HE SAID\" - A CELEBRATION OF NEIL DIAMOND starring MATT VEE",
@@ -306,7 +237,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 14,
+      "position": 11,
       "item": {
         "@type": "Event",
         "name": "Wicked Good Writing Contest",
@@ -329,7 +260,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 15,
+      "position": 12,
       "item": {
         "@type": "Event",
         "name": "Early Voting",
@@ -352,7 +283,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 16,
+      "position": 13,
       "item": {
         "@type": "Event",
         "name": "Baby Book Time",
@@ -375,7 +306,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 17,
+      "position": 14,
       "item": {
         "@type": "Event",
         "name": "Career & Job Counseling @ the library",
@@ -398,7 +329,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 18,
+      "position": 15,
       "item": {
         "@type": "Event",
         "name": "Book a Teen Librarian",
@@ -421,7 +352,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 19,
+      "position": 16,
       "item": {
         "@type": "Event",
         "name": "Shakespeare Project of Chicago",
@@ -444,7 +375,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 20,
+      "position": 17,
       "item": {
         "@type": "Event",
         "name": "LEGO League",
@@ -467,7 +398,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 21,
+      "position": 18,
       "item": {
         "@type": "Event",
         "name": "$10 SILENT FILM SERIES - \"The Man Who Laughs\" starring Mary Filbin and Conrad Veidt (1928), Presented by The Silent Film Society of Chicago",
@@ -490,7 +421,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 22,
+      "position": 19,
       "item": {
         "@type": "Event",
         "name": "Wicked Good Writing Contest",
@@ -513,7 +444,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 23,
+      "position": 20,
       "item": {
         "@type": "Event",
         "name": "Early Voting",
@@ -536,7 +467,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 24,
+      "position": 21,
       "item": {
         "@type": "Event",
         "name": "ESL (English as a Second Language) Class - Oakton College",
@@ -559,7 +490,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 25,
+      "position": 22,
       "item": {
         "@type": "Event",
         "name": "Reading/Literacy Class",
@@ -582,7 +513,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 26,
+      "position": 23,
       "item": {
         "@type": "Event",
         "name": "Toddler Time",
@@ -605,7 +536,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 27,
+      "position": 24,
       "item": {
         "@type": "Event",
         "name": "City of Des Plaines Blood Drive",
@@ -628,7 +559,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 28,
+      "position": 25,
       "item": {
         "@type": "Event",
         "name": "Maker's Place",
@@ -651,7 +582,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 29,
+      "position": 26,
       "item": {
         "@type": "Event",
         "name": "Book a Teen Librarian",
@@ -674,7 +605,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 30,
+      "position": 27,
       "item": {
         "@type": "Event",
         "name": "Stitches on Miner",
@@ -697,7 +628,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 31,
+      "position": 28,
       "item": {
         "@type": "Event",
         "name": "Tech in the Forum",
@@ -720,7 +651,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 32,
+      "position": 29,
       "item": {
         "@type": "Event",
         "name": "$1 FILM SERIES - \"Contact\"",
@@ -743,7 +674,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 33,
+      "position": 30,
       "item": {
         "@type": "Event",
         "name": "Preserving History with Geoffrey Baer",
@@ -766,7 +697,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 34,
+      "position": 31,
       "item": {
         "@type": "Event",
         "name": "FilmTalkTuesdays: Rosemary's Baby (1968)",
@@ -789,7 +720,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 35,
+      "position": 32,
       "item": {
         "@type": "Event",
         "name": "Wicked Good Writing Contest",
@@ -812,7 +743,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 36,
+      "position": 33,
       "item": {
         "@type": "Event",
         "name": "Early Voting",
@@ -835,7 +766,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 37,
+      "position": 34,
       "item": {
         "@type": "Event",
         "name": "Baby Book Time",
@@ -858,7 +789,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 38,
+      "position": 35,
       "item": {
         "@type": "Event",
         "name": "Chicago: Shaping the Airline Industry",
@@ -881,7 +812,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 39,
+      "position": 36,
       "item": {
         "@type": "Event",
         "name": "Preschool Storytime",
@@ -904,7 +835,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 40,
+      "position": 37,
       "item": {
         "@type": "Event",
         "name": "Teen Crafternoons",
@@ -927,7 +858,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 41,
+      "position": 38,
       "item": {
         "@type": "Event",
         "name": "Makerspace Orientations: In-Person",
@@ -950,7 +881,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 42,
+      "position": 39,
       "item": {
         "@type": "Event",
         "name": "Family Storytime",
@@ -973,7 +904,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 43,
+      "position": 40,
       "item": {
         "@type": "Event",
         "name": "BOURBON 'N BRASS: LIVE LATIN JAZZ with the BOURBON 'N BRASS TRIO featuring JOSE LUIS CONTRERAS",
@@ -996,7 +927,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 44,
+      "position": 41,
       "item": {
         "@type": "Event",
         "name": "Wicked Good Writing Contest",
@@ -1019,7 +950,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 45,
+      "position": 42,
       "item": {
         "@type": "Event",
         "name": "Early Voting",
@@ -1042,7 +973,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 46,
+      "position": 43,
       "item": {
         "@type": "Event",
         "name": "Reading/Literacy Class",
@@ -1065,7 +996,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 47,
+      "position": 44,
       "item": {
         "@type": "Event",
         "name": "ESL (English as a Second Language) Class - Oakton College",
@@ -1088,7 +1019,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 48,
+      "position": 45,
       "item": {
         "@type": "Event",
         "name": "Toddler Time",
@@ -1111,7 +1042,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 49,
+      "position": 46,
       "item": {
         "@type": "Event",
         "name": "Q & A One on One Appointment",
@@ -1134,7 +1065,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 50,
+      "position": 47,
       "item": {
         "@type": "Event",
         "name": "Liberation Bookmarks",
@@ -1157,7 +1088,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 51,
+      "position": 48,
       "item": {
         "@type": "Event",
         "name": "Book a Teen Librarian",
@@ -1180,7 +1111,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 52,
+      "position": 49,
       "item": {
         "@type": "Event",
         "name": "Mac Basics",
@@ -1203,7 +1134,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 53,
+      "position": 50,
       "item": {
         "@type": "Event",
         "name": "BOURBON 'N BRASS SPEAKEASY: LIVE BLUES with the DOWNTOWN CHARLIE BROWN BAND",
@@ -1226,7 +1157,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 54,
+      "position": 51,
       "item": {
         "@type": "Event",
         "name": "Thursday Evening Book Discussion",
@@ -1249,7 +1180,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 55,
+      "position": 52,
       "item": {
         "@type": "Event",
         "name": "Wicked Good Writing Contest",
@@ -1272,7 +1203,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 56,
+      "position": 53,
       "item": {
         "@type": "Event",
         "name": "Early Voting",
@@ -1295,7 +1226,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 57,
+      "position": 54,
       "item": {
         "@type": "Event",
         "name": "Baby Book Time",
@@ -1318,7 +1249,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 58,
+      "position": 55,
       "item": {
         "@type": "Event",
         "name": "Ain't Wii Got Fun!",
@@ -1341,7 +1272,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 59,
+      "position": 56,
       "item": {
         "@type": "Event",
         "name": "Indivisible Des Plaines",
@@ -1364,7 +1295,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 60,
+      "position": 57,
       "item": {
         "@type": "Event",
         "name": "BOURBON 'N BRASS SPEAKEASY: LIVE JAZZ, RAT PACK, 70s, 80s, MOTOWN & DANCE with CASEY MYLES & THE BOOTLEGGERS",
@@ -1387,7 +1318,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 61,
+      "position": 58,
       "item": {
         "@type": "Event",
         "name": "DIY with DPPL",
@@ -1410,7 +1341,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 62,
+      "position": 59,
       "item": {
         "@type": "Event",
         "name": "Play Packs",
@@ -1433,7 +1364,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 63,
+      "position": 60,
       "item": {
         "@type": "Event",
         "name": "Wicked Good Writing Contest",
@@ -1456,7 +1387,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 64,
+      "position": 61,
       "item": {
         "@type": "Event",
         "name": "Early Voting",
@@ -1479,7 +1410,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 65,
+      "position": 62,
       "item": {
         "@type": "Event",
         "name": "LIGHTS OUT: TRIBUTE TO UFO featuring ANDY PARKER with SPECIAL GUEST TRIANGLE PARK",
@@ -1502,7 +1433,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 66,
+      "position": 63,
       "item": {
         "@type": "Event",
         "name": "BOURBON 'N BRASS: LIVE BLUES WITH DAVE WELD & THE IMPERIAL FLAMES",
@@ -1525,7 +1456,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 67,
+      "position": 64,
       "item": {
         "@type": "Event",
         "name": "Wicked Good Writing Contest",
@@ -1548,7 +1479,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 68,
+      "position": 65,
       "item": {
         "@type": "Event",
         "name": "Early Voting",
@@ -1571,7 +1502,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 69,
+      "position": 66,
       "item": {
         "@type": "Event",
         "name": "ITALIAN BRED: A CELEBRATION OF FAMILY, CULTURE & COMEDY",
@@ -1594,7 +1525,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 70,
+      "position": 67,
       "item": {
         "@type": "Event",
         "name": "THE BUDDY RICH BIG BAND \"HALLOWEEN\" MACHINE featuring GREGG POTTER AND CATHY RICH with SPECIAL GUEST BILLY SHEEHAN",
@@ -1617,7 +1548,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 71,
+      "position": 68,
       "item": {
         "@type": "Event",
         "name": "Wicked Good Writing Contest",
@@ -1640,7 +1571,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 72,
+      "position": 69,
       "item": {
         "@type": "Event",
         "name": "Early Voting",
@@ -1663,7 +1594,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 73,
+      "position": 70,
       "item": {
         "@type": "Event",
         "name": "Baby Book Time",
@@ -1686,7 +1617,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 74,
+      "position": 71,
       "item": {
         "@type": "Event",
         "name": "Book a Teen Librarian",
@@ -1709,7 +1640,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 75,
+      "position": 72,
       "item": {
         "@type": "Event",
         "name": "Des Plaines Shambhala Meditation Group",
@@ -1732,7 +1663,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 76,
+      "position": 73,
       "item": {
         "@type": "Event",
         "name": "Happy Spinsters",
@@ -1755,7 +1686,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 77,
+      "position": 74,
       "item": {
         "@type": "Event",
         "name": "Wicked Good Writing Contest",
@@ -1778,7 +1709,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 78,
+      "position": 75,
       "item": {
         "@type": "Event",
         "name": "Early Voting",
@@ -1801,7 +1732,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 79,
+      "position": 76,
       "item": {
         "@type": "Event",
         "name": "Reading/Literacy Class",
@@ -1824,7 +1755,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 80,
+      "position": 77,
       "item": {
         "@type": "Event",
         "name": "ESL (English as a Second Language) Class - Oakton College",
@@ -1847,7 +1778,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 81,
+      "position": 78,
       "item": {
         "@type": "Event",
         "name": "Book a Teen Librarian",
@@ -1870,7 +1801,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 82,
+      "position": 79,
       "item": {
         "@type": "Event",
         "name": "Adult Dungeons and Dragons - Experienced Game",
@@ -1893,7 +1824,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 83,
+      "position": 80,
       "item": {
         "@type": "Event",
         "name": "Adult Dungeons and Dragons - Intermediate Game",
@@ -1916,7 +1847,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 84,
+      "position": 81,
       "item": {
         "@type": "Event",
         "name": "Adult Dungeons and Dragons - Beginner Game",
@@ -1939,7 +1870,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 85,
+      "position": 82,
       "item": {
         "@type": "Event",
         "name": "Friends of the Library Meeting",
@@ -1962,7 +1893,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 86,
+      "position": 83,
       "item": {
         "@type": "Event",
         "name": "Career & Job Counseling @ the library",
@@ -1985,7 +1916,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 87,
+      "position": 84,
       "item": {
         "@type": "Event",
         "name": "Clase de Mac (Apple Spanish)",
@@ -2008,7 +1939,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 88,
+      "position": 85,
       "item": {
         "@type": "Event",
         "name": "Planner & Journaling Meet-Up",
@@ -2031,7 +1962,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 89,
+      "position": 86,
       "item": {
         "@type": "Event",
         "name": "Bridges of Meaning",
@@ -2054,7 +1985,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 90,
+      "position": 87,
       "item": {
         "@type": "Event",
         "name": "Wicked Good Writing Contest",
@@ -2077,7 +2008,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 91,
+      "position": 88,
       "item": {
         "@type": "Event",
         "name": "Early Voting",
@@ -2100,7 +2031,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 92,
+      "position": 89,
       "item": {
         "@type": "Event",
         "name": "Baby Book Time",
@@ -2123,7 +2054,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 93,
+      "position": 90,
       "item": {
         "@type": "Event",
         "name": "3D Print & Paint Pumpkins",
@@ -2146,7 +2077,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 94,
+      "position": 91,
       "item": {
         "@type": "Event",
         "name": "The Physics Dimension",
@@ -2169,7 +2100,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 95,
+      "position": 92,
       "item": {
         "@type": "Event",
         "name": "ROCKY™ IN CONCERT",
@@ -2192,7 +2123,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 96,
+      "position": 93,
       "item": {
         "@type": "Event",
         "name": "BOURBON 'N BRASS SPEAKEASY: THE BOURBON 'N BRASS TRIO with JAZZ SAXOPHONIST ERIC SCHNEIDER",
@@ -2215,7 +2146,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 97,
+      "position": 94,
       "item": {
         "@type": "Event",
         "name": "Wicked Good Writing Contest",
@@ -2238,7 +2169,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 98,
+      "position": 95,
       "item": {
         "@type": "Event",
         "name": "Early Voting",
@@ -2261,7 +2192,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 99,
+      "position": 96,
       "item": {
         "@type": "Event",
         "name": "Reading/Literacy Class",
@@ -2284,7 +2215,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 100,
+      "position": 97,
       "item": {
         "@type": "Event",
         "name": "ESL (English as a Second Language) Class - Oakton College",
@@ -2307,7 +2238,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 101,
+      "position": 98,
       "item": {
         "@type": "Event",
         "name": "Playgroup for Language Development",
@@ -2330,7 +2261,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 102,
+      "position": 99,
       "item": {
         "@type": "Event",
         "name": "Book a Teen Librarian",
@@ -2353,7 +2284,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 103,
+      "position": 100,
       "item": {
         "@type": "Event",
         "name": "WORLD PREMIERE FILM SCREENING: YAKUZA PLAYS \"THE GOLEM\" - A CONCERT FILM",
@@ -2376,7 +2307,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 104,
+      "position": 101,
       "item": {
         "@type": "Event",
         "name": "Mont Clare Condo Assoc.",
@@ -2399,7 +2330,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 105,
+      "position": 102,
       "item": {
         "@type": "Event",
         "name": "BOURBON 'N BRASS: LIVE BLUES SHOW WITH MILES MINOR \"ROCKIN THE BLUES\"",

@@ -1,12 +1,6 @@
 {
- "fetched_at": "2026-10-16T21:59:29+00:00",
+ "fetched_at": "2026-10-16T23:07:36+00:00",
  "items": [
-  {
-   "date": "Fri, 16 Oct 2026 10:00:00 +0000",
-   "detail": "Friday, October 16 2026 10:00am - 11:30am \n Enjoy the magic of storytime plus the joy of hands-on sensory fun! You and your child will enjoy time together full of new learning experiences with the flexible arrival time your family needs.",
-   "title": "Storytime Playdate: Space Explorers",
-   "url": "https://mppl.libnet.info/event/16553592"
-  },
   {
    "date": "Sat, 17 Oct 2026 09:00:00 +0000",
    "detail": "Saturday, October 17 2026 9:00am - 4:30pm \n Stock up on great books at bargain prices during the Friends of the Library's used book sale.",
@@ -360,6 +354,12 @@
    "detail": "Saturday, October 31 2026 10:00am - 11:00am \n Learn the steps to convert VHS home videos to DVD or digital format using the library's Mac Studio equipment.",
    "title": "Digitizing VHS Tapes",
    "url": "https://mppl.libnet.info/event/17466686"
+  },
+  {
+   "date": "Sun, 01 Nov 2026 00:00:00 +0000",
+   "detail": "Sunday, November 01 2026 12:00am - 11:59pm \n Looking for your next read? Want a suggestion that fits a category in our year-round Book Bingo? We've got you covered!",
+   "title": "Adult BookFix: Complicated Relationships",
+   "url": "https://mppl.libnet.info/event/17206113"
   }
  ],
  "source": "Mount Prospect Public Library — Events"
