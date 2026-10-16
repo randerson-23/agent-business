@@ -410,7 +410,7 @@
         <div class="halloween-kicker">🎃 Halloween &middot; {{ halloween.weekday }}, October 31</div>
         <h2 id="halloween-heading">Trick-or-treat hours for all five towns, <span class="pumpkin-orange">in one place</span></h2>
         <ul class="halloween-hours">
-          {% for t in halloween.towns %}<li>{{ t.name }} <strong>{{ t.hours }}</strong></li>{% endfor %}
+          {% for t in halloween.towns %}<li>{{ t.name }} <strong>{{ t.hours }}</strong>{% if t.post %} <a href="{{ t.post.url }}" style="color:#ffb347;" title="{{ t.post.title }}">posted &rarr;</a>{% endif %}</li>{% endfor %}
         </ul>
         <a class="halloween-cta" href="trick-or-treat/">See hours, trunk-or-treats &amp; Halloween events &rarr;</a>
         <span class="halloween-countdown">👻 {{ halloween.countdown }}</span>

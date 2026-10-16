@@ -15699,7 +15699,7 @@ the local subreddits.
        off; five consecutive CCSD 15 days render as one row; the empty
        fallback.
 
-300. **Fill the three missing towns with each district's official
+300. 🟡 **CODE DONE (2026-10-16): `days_off:` lists in a region's config (date, district, reason, source_url) merge into the box, de-duplicated by date and district with the feed's wording winning; a test fails the build for any date outside Aug 2026 – Jul 2027. No dates entered yet: round 18 probes D25, CCSD 21, D62 and D214 calendar pages; read `data/url_probes.json`, then enter only what each district's own document says.** **Fill the three missing towns with each district's official
      calendar.** Build loop. Where a district has no working feed (D25,
      CCSD 21, D62's thin feed) and for **High School District 214**, add
      a `days_off:` list to the region config: date, district and the
@@ -15713,7 +15713,7 @@ the local subreddits.
      slip through. **Once a year, in August**, the research loop flags
      the lists for renewal, recorded in `SEASONAL_CALENDAR.md`.
 
-301. **Watch for villages posting their 2026 trick-or-treat hours, until
+301. ✅ **DONE (2026-10-16): `find_village_post` finds a this-year trick-or-treat item in a news, village, city or calendar section (trunk-or-treats and other years ignored); it shows as "Village posted: [title] →" on that town's card and as a "posted →" link on the homepage banner pill; configured hours are never changed; tests added.** **Watch for villages posting their 2026 trick-or-treat hours, until
      Oct 31.** Build loop. From Oct 1 to 31, scan each region's
      **village news and calendar items** (already fetched: Mount
      Prospect's Revize news JSON, the Wheeling and Palatine CivicPlus

@@ -1334,6 +1334,34 @@ def select_halloween_events(blocks: list[dict], local_today: date) -> list[dict]
 TRUNK_OR_TREAT = re.compile(r"trunk[- ]?or[- ]?treat", re.IGNORECASE)
 
 
+_VILLAGE_POST_TITLE = re.compile(r"trick[- ]?or[- ]?treat", re.IGNORECASE)
+_VILLAGE_POST_SECTION = re.compile(r"news|village|city|calendar", re.IGNORECASE)
+
+
+def find_village_post(blocks: list[dict], year: int) -> dict | None:
+    """A town's own announcement about trick-or-treat, dated this year (ROADMAP.md
+    item 301): a news or calendar item whose title says trick-or-treat. It is
+    shown as a link beside the configured hours and never changes them, since a
+    misread time on /trick-or-treat/ is the worst error this site could make.
+    Items dated in any other year, or undated, are ignored."""
+    best = None
+    for block in blocks:
+        if not _VILLAGE_POST_SECTION.search(block.get("section") or ""):
+            continue
+        for e in block.get("events", []):
+            if not (e.get("title") and e.get("url") and e.get("date_iso") and _VILLAGE_POST_TITLE.search(e["title"])):
+                continue
+            if TRUNK_OR_TREAT.search(e["title"]):
+                continue
+            try:
+                posted = datetime.fromisoformat(e["date_iso"])
+            except ValueError:
+                continue
+            if posted.year == year and (best is None or e["date_iso"] > best["date_iso"]):
+                best = e
+    return {"title": best["title"].strip(), "url": best["url"]} if best else None
+
+
 def build_halloween_signup_headline(now: datetime) -> str:
     """The signup heading on /trick-or-treat/ (ROADMAP.md item 251): names the
     weekday Halloween falls on this year, computed so it is right every year."""
@@ -2837,7 +2865,7 @@ def build_halloween_banner(entries: list[dict], now: datetime) -> dict | None:
             short = "No set hours"
         else:
             short = "Not posted yet"
-        towns.append({"name": e["region_name"], "hours": short})
+        towns.append({"name": e["region_name"], "hours": short, "post": e.get("village_post")})
     if days == 0:
         countdown = "Tonight!"
     elif days == 1:
@@ -4519,7 +4547,9 @@ def _next_school_day(day: date) -> date:
     return nxt
 
 
-def build_days_off(blocks: list[dict], local_today: date, window: int = DAYS_OFF_WINDOW, ideas_per_day: int = 3) -> list[dict]:
+def build_days_off(
+    blocks: list[dict], local_today: date, window: int = DAYS_OFF_WINDOW, ideas_per_day: int = 3, official: list[dict] | None = None
+) -> list[dict]:
     """School days off in the next `window` days from the region's "School ..."
     sections, with each district's own wording as the reason. Consecutive
     school days off for the same districts are one row (item 299), and each
@@ -4543,6 +4573,17 @@ def build_days_off(blocks: list[dict], local_today: date, window: int = DAYS_OFF
             reason = {"district": short_district(e.get("source") or ""), "reason": e["title"].strip()}
             if reason not in days.setdefault(day, []):
                 days[day].append(reason)
+    # ROADMAP.md item 300: a district's official board-approved calendar, entered
+    # by hand in the region config where no live feed works. Merged with the
+    # feed entries and de-duplicated by date and district.
+    for entry in official or []:
+        day = _parse_promo_day(entry.get("date"))
+        if not (day and entry.get("district") and entry.get("reason") and local_today <= day <= end):
+            continue
+        reason = {"district": str(entry["district"]).strip(), "reason": str(entry["reason"]).strip()}
+        existing = days.setdefault(day, [])
+        if not any(r["district"] == reason["district"] for r in existing):
+            existing.append(reason)
     rows: list[dict] = []
     for day in sorted(days):
         districts = {r["district"] for r in days[day]}
@@ -5097,7 +5138,7 @@ def main() -> None:
         # behind a conditional the way guides_url is.
         things_to_do_url = SITE_BASE_URL + region_id + "/things-to-do/"
         editors_pick = select_editors_pick(region_cfg, blocks, evergreen)
-        region_days_off = build_days_off(blocks, local_today)
+        region_days_off = build_days_off(blocks, local_today, official=region_cfg.get("days_off"))
 
         html = render_region_page(
             region_cfg,
@@ -5139,6 +5180,7 @@ def main() -> None:
         # ROADMAP.md item 243: copied now, while anchor_id matches this
         # town's index page, like `upcoming` above.
         if trick_or_treat:
+            trick_or_treat_entries[-1]["village_post"] = find_village_post(blocks, now.year)
             trick_or_treat_entries[-1]["events"] = [
                 dict(e, town=e.get("town") or region["name"], state=e.get("state") or region.get("state"))
                 for e in select_halloween_events(blocks, local_today)
