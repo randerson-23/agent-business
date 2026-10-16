@@ -2,7 +2,7 @@
 
 > A hyperlocal weekend/trip planner for Chicago-area ZIP codes. Aggregates village news, public library events, and park district programs per town, rebuilt automatically (usually multiple times a week), so it stays current without a human keeping it that way.
 
-As of this build, 22 of 28 configured sources reported successfully; the rest is a source that didn't answer this time, not missing coverage. 1 source is shown from its last update, up to 2 hours ago.
+As of this build, 22 of 28 configured sources reported successfully; the rest is a source that didn't answer this time, not missing coverage. 1 source is shown from its last update, up to 10 hours ago.
 
 ## Regions
 - [Arlington Heights (60005)](https://withintenmiles.com/arlington-heights-60005/): Pulled automatically from the Village, Memorial Library, and Park District — plus Harmony Park and Lake Arlington — several times a week, a short drive from Mount Prospect.
@@ -86,6 +86,13 @@ As of this build, 22 of 28 configured sources reported successfully; the rest is
 - [RSS: Mount Prospect](https://withintenmiles.com/mount-prospect-60056/feed.xml)
 - [RSS: Palatine](https://withintenmiles.com/palatine-60067/feed.xml)
 - [RSS: Wheeling](https://withintenmiles.com/wheeling-60090/feed.xml)
+
+## Weekly posts (one article a week per town)
+- [RSS: Arlington Heights this weekend](https://withintenmiles.com/arlington-heights-60005/weekly.xml)
+- [RSS: Des Plaines this weekend](https://withintenmiles.com/des-plaines-60016/weekly.xml)
+- [RSS: Mount Prospect this weekend](https://withintenmiles.com/mount-prospect-60056/weekly.xml)
+- [RSS: Palatine this weekend](https://withintenmiles.com/palatine-60067/weekly.xml)
+- [RSS: Wheeling this weekend](https://withintenmiles.com/wheeling-60090/weekly.xml)
 
 ## Machine-readable events (schema.org JSON-LD, next 14 days)
 - [Every region](https://withintenmiles.com/events.json)
