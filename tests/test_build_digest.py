@@ -5464,3 +5464,48 @@ def test_add_your_event_link_shows_only_once_the_form_url_is_configured():
     assert "Add your event, free" not in build_digest.render_region_page(region_cfg, [], None, [], now, newsletter=build_digest.load_newsletter_config({"buttondown_username": "u"}))
     email = build_digest.render_combined_email_digest(_join_sections(), "Oct 16–18", now, cfg)
     assert 'href="https://forms.gle/abc" style="color:#ffd23f;">Add it free' in email
+
+
+def _meta_events(n, **kw):
+    return [dict({"title": f"Event {i}", "url": f"https://x/{i}", "date_iso": "2026-10-17T10:00:00", "tags": ["kid_friendly"]}, **kw) for i in range(n)]
+
+
+def test_search_meta_title_description_and_h1_match_the_query():
+    # ROADMAP.md item 310.
+    events = _meta_events(3) + [{"title": "Fishing Derby", "url": "https://x/f", "date_iso": "2026-10-17T09:00:00", "tags": ["kid_friendly", "free", "outdoor"]}]
+    meta = build_digest.build_search_meta("Mount Prospect", "IL", events, when="This Weekend", date_range="Oct 16–18")
+    assert meta["title"] == "Things to Do in Mount Prospect, IL This Weekend (Oct 16–18)"
+    assert meta["h1"] == "Things to do in Mount Prospect this weekend"
+    assert meta["description"].startswith("4 things to do Oct 16–18: Fishing Derby, ")
+    assert "and more" not in meta["description"] or len(meta["description"]) <= build_digest.DESCRIPTION_LIMIT
+    assert meta["description"].endswith("from the village, library and park district.")
+    week = build_digest.build_search_meta("Mount Prospect", "IL", events, when="Events This Week")
+    assert week["title"] == "Things to Do in Mount Prospect, IL: Events This Week"
+    assert week["description"].startswith("4 things to do this week: ")
+
+
+def test_search_meta_respects_length_limits_and_the_zero_count_fallback():
+    long_events = [{"title": "A" * 70 + str(i), "url": "https://x", "date_iso": "2026-10-17T10:00:00", "tags": []} for i in range(5)]
+    meta = build_digest.build_search_meta("Arlington Heights", "IL", long_events, when="This Weekend", date_range="October 16 – October 18, 2026")
+    assert len(meta["title"]) <= build_digest.TITLE_LIMIT and "(" not in meta["title"]  # the date range is dropped first
+    assert len(meta["description"]) <= build_digest.DESCRIPTION_LIMIT
+    assert build_digest.build_search_meta("X", "IL", [], when="This Weekend", date_range="Oct 16–18") is None
+    assert build_digest.build_search_meta("X", "IL", _meta_events(2, sponsored_by="Acme"), when="This Weekend") is None  # paid never counts
+    # Paid and non-attendable events never become named picks.
+    picks = build_digest.top_pick_titles(_meta_events(1, sponsored_by="Acme") + [{"title": "Real", "url": "u", "tags": []}, {"title": "Notice", "url": "u", "attendable": False}])
+    assert picks == ["Real"]
+
+
+def test_region_page_uses_search_meta_for_title_description_and_og():
+    region_cfg = {"region": {"id": "mp", "name": "Mount Prospect", "zip": "60056", "state": "IL", "tagline": "t", "timezone": "America/Chicago"}}
+    meta = build_digest.build_search_meta("Mount Prospect", "IL", _meta_events(3), when="This Weekend", date_range="Oct 16–18")
+    html = build_digest.render_region_page(region_cfg, [], None, [], datetime(2026, 10, 14, 18, tzinfo=timezone.utc), search_meta=meta)
+    assert "<title>Things to Do in Mount Prospect, IL This Weekend (Oct 16–18) | Within Ten</title>" in html
+    assert html.count('3 things to do Oct 16–18') >= 2  # meta description and og:description stay in step
+
+
+def test_hub_weekend_description_counts_the_towns_events():
+    sections = [{"region_name": "Palatine", "events": _meta_events(2)}, {"region_name": "Wheeling", "events": _meta_events(1)}]
+    desc = build_digest.build_hub_weekend_description(["Wheeling", "Palatine"], sections, "Oct 16–18")
+    assert desc.startswith("3 things to do this weekend (Oct 16–18) in Palatine and Wheeling") and len(desc) <= build_digest.DESCRIPTION_LIMIT
+    assert "Things to do this weekend in" in build_digest.build_hub_weekend_description(["Palatine"], [], "")
