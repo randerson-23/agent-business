@@ -1,18 +1,5 @@
 [
   {
-    "timestamp": "2026-10-15T13:59:24+00:00",
-    "url_count": 64,
-    "ok": false,
-    "status": 403,
-    "error": "HTTPError",
-    "body": "{\"errorCode\":\"UserForbiddedToAccessSite\",\"message\":\"User is unauthorized to access the site. Please verify the site using the key and try again\",\"details\":null}",
-    "key_file_ok": true,
-    "skipped": null,
-    "bing_status": 403,
-    "bing_body": "{\"errorCode\":\"UserForbiddedToAccessSite\",\"message\":\"User is unauthorized to access the site. Please verify the site using the key and try again\",\"details\":null}",
-    "accepted_by": null
-  },
-  {
     "timestamp": "2026-10-15T22:03:20+00:00",
     "url_count": 64,
     "ok": false,
@@ -248,6 +235,19 @@
   },
   {
     "timestamp": "2026-10-17T02:13:29+00:00",
+    "url_count": 64,
+    "ok": false,
+    "status": 403,
+    "error": "HTTPError",
+    "body": "{\"errorCode\":\"UserForbiddedToAccessSite\",\"message\":\"User is unauthorized to access the site. Please verify the site using the key and try again\",\"details\":null}",
+    "key_file_ok": true,
+    "skipped": null,
+    "bing_status": 403,
+    "bing_body": "{\"errorCode\":\"UserForbiddedToAccessSite\",\"message\":\"User is unauthorized to access the site. Please verify the site using the key and try again\",\"details\":null}",
+    "accepted_by": null
+  },
+  {
+    "timestamp": "2026-10-17T02:20:57+00:00",
     "url_count": 64,
     "ok": false,
     "status": 403,

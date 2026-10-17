@@ -15,17 +15,9 @@
     "exception_class": "HTTPError",
     "status_code": 403
   },
-  "mount-prospect-60056:Mount Prospect Park District \u2014 Events": {
-    "exception_class": "ConnectTimeout",
-    "status_code": null
-  },
   "mount-prospect-60056:Village of Mount Prospect \u2014 Calendar": {
     "exception_class": "HTTPError",
     "status_code": 404
-  },
-  "palatine-60067:Palatine Public Library District \u2014 Events": {
-    "exception_class": "HTTPError",
-    "status_code": 403
   },
   "wheeling-60090:Wheeling CCSD 21 \u2014 Calendar": {
     "exception_class": "HTTPError",
