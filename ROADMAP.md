@@ -323,6 +323,11 @@ that limit.
 8b. **Daily Herald trick-or-treat hours note (5 min, by Oct 15, item 271)**,
    once `OUTREACH_TEMPLATES.md` §7b exists. It is timely and factual,
    and it warms up the desk the full press pitch (step 9) will go to.
+   **Do it this weekend (item 319):** as of Oct 17, NBC, WGN and
+   mykidlist have no 2026 list for these towns, so the page is the
+   freshest answer right now. Copy the note to NBC Chicago and WGN as
+   well, and use Search Console → URL inspection → *Request indexing*
+   on `https://withintenmiles.com/trick-or-treat/` (1 minute).
 
 8c. **Paste the welcome email (2 min, item 275)** once `WELCOME_EMAIL.md`
    exists: Buttondown → Settings → Subscribing → Welcome email.
@@ -394,7 +399,8 @@ Cloudflare proxy for AI-bot analytics (item 232, measurement only, and
 it must be paired with explicitly allowing AI crawlers); Chamber of
 Commerce membership (item 153); Illinois DBA filing, the
 blocker to a Nextdoor Business Page (item 154); Peachjar school e-flyers (item 211, unverified, same slot as
-the press pitch).
+the press pitch); a Bluesky RSS poster (eighty-second pass, revisit if
+GoatCounter ever shows Bluesky referrals).
 
 **Whenever convenient:** a real trademark clearance search before any
 print, signage or sponsor contract (item 69); the Northwest Neighbor
@@ -16065,6 +16071,104 @@ ads, slots booked ten weeks out), **first-sponsor playbooks** for small
 lists, and **NewsBreak SPOTLIGHTS** (free business features to 40M+
 users). The design/UX angle is **the sales mock-up**: showing a
 prospect their own ad instead of a generic example.
+
+
+#### Research pass 2026-10-17, morning (eighty-second pass)
+
+Since the last pass the build loop shipped item 310 (titles and
+descriptions that match the searched query). The Oct 15 send's open
+metrics land with the Oct 18 backfill, so the next pass reads them.
+Halloween is a Saturday, **14 days out**, and `/trick-or-treat/` is the
+one page with a dated, measurable peak. This pass therefore looks at who
+else answers the trick-or-treat query this year, what makes towns change
+their hours late, and what the page looks like on a phone.
+
+| Angle | What it is / what we found | Why it matters here |
+|---|---|---|
+| **The 2026 trick-or-treat competition** (search, Oct 17) | **No 2026 list exists yet for these towns.** NBC Chicago's and WGN's suburb lists in the results are 2024 and 2025 pages. Mykidlist's page still shows 2025 times and says *"Check back as Halloween gets closer for our 2026 list"*. The 2024 lists match this site's data (Arlington Heights 3–7, Palatine 3–7, Mount Prospect 3–8 plus a separate downtown event) | Two weeks out, the site is the only current answer, which won't last: the TV lists usually publish in the final week. Being first matters only if Google can see the page, so the owner's Daily Herald, NBC and WGN note (Needs Ryan 8b) and a manual Search Console *Request indexing* on `/trick-or-treat/` are worth doing **this weekend**, not next |
+| **Late changes to hours** (ABC7 Chicago, *"Halloween trick-or-treating postponed in several Chicago-area suburbs"*) | In 2019, snow led several suburbs to **move trick-or-treat to another day** (Vernon Hills to Saturday, Nov 2, 2–5 PM), announced in the last days before Halloween | Mount Prospect and Wheeling still show *"standing hours, not yet confirmed for 2026"*. Any late change would happen on the village pages after the build loop last looked. A page that keeps showing old hours on the day is worse than no page. Nothing in the pipeline watches those pages for change (item 317) |
+| **The page on a phone (design/UX)** | Screenshot of the built page at 390px. The H1 lists all five towns and wraps to **five lines**. The five town cards fill about **1.5 screens**. Every card repeats *"Saturday, October 31"*. Hours are **right-aligned** under left-aligned town names, so the eye zigzags. Trunk-or-treat rows put the town last, in parentheses. The page gives no sunset time, no evening forecast and no way to add the hours to a calendar | The query is *"what time is trick-or-treat in my town"*, and the answer should be readable in one glance on the first screen. Today a Wheeling parent scrolls past four towns. The fixes are layout only, and the page's facts and caveats stay as they are (item 318) |
+| **Halloween-night conditions** | The site already fetches Open-Meteo forecasts for region pages (item 11) and the email (item 291). Open-Meteo's daily output includes **sunset**. On Oct 31, 2026 Chicago is still on daylight time (it ends Nov 1), so sunset falls **before 6 PM**, mid-way through every town's window | *"Will it rain"* and *"when does it get dark"* are the two questions parents ask that afternoon, and Des Plaines' own guidance is about care **after sunset**. The page can answer both from data the build already fetches (item 316) |
+| **Flipboard Local and Bluesky** (checked as no-owner-time channels) | Flipboard's local programme (2020) covers **metro** sections, 50 cities at most, and nothing newer turned up. Bluesky's publisher referral evidence (Boston Globe, Guardian Australia) is from late 2024 and from national outlets. Posting from RSS needs an app-password secret | **Non-items for now.** Flipboard has no suburb-level surface. Bluesky would add an owner secret for a channel with no local evidence, so it joins the Parked list with a revisit trigger: if GoatCounter (item 227) ever shows Bluesky referrals, an RSS poster is about 40 lines in the existing build |
+
+#### P1 (new)
+
+316. **A "Halloween night" box on /trick-or-treat/: forecast and sunset.**
+     Build loop. From **Oct 24 to Oct 31** only, render one compact box
+     above the town hours:
+
+     - *"Saturday 3–8 PM: 52°F, 20% rain. Sunset 5:4x PM."*
+     - Use the Open-Meteo hourly forecast for Mount Prospect (the
+       email's choice, item 291), averaging 3–8 PM local time, plus the
+       daily `sunset` field. **Never** hard-code a sunset time.
+     - At **60% rain or more**, add one line, *"Indoor options:"*, with
+       up to three Halloween events tagged indoor from the page's own
+       list.
+     - After sunset, a single line: *"Dark by 5:4x: bring a light."* No
+       other advice.
+
+     If the fetch fails, render no box at all, as item 291 does. Show the
+     forecast as a forecast (*"Forecast, updated [time]"*). Tests: the
+     date gate, the failed-fetch state, the rain threshold, and the
+     sunset formatted in Central time.
+
+317. **Watch the village hours pages for changes in the last week.**
+     Build loop. Add a small workflow, `tot-watch.yml`, that runs **twice
+     a day from Oct 24 to Nov 1**:
+
+     - Fetch each region's `trick_or_treat.url`, strip the markup, and
+       hash the text around the words *trick*, *treat* and *Halloween*.
+     - Store the hashes in `data/tot_watch.json`.
+     - On any change, open (or update) one GitHub issue, *"Trick-or-treat
+       page changed: [town]"*, with the before and after snippets.
+     - Never edit `hours` automatically. A human or the build loop
+       confirms the new hours from the snippet, then edits the region
+       YAML.
+     - On the page, show *"Checked [date] against the village page"*
+       under each town, so a reader knows how fresh the line is.
+
+     **Odds:** usually nothing changes. If snow or a storm moves a date,
+     this is the difference between a correct page and a harmful one on
+     the one day the page is used most. Same politeness as the URL
+     probes: one request per town per run. It stops itself after Nov 1.
+
+318. **Make the answer fit the first screen on a phone.** Design/UX,
+     `trick_or_treat.html.j2` only.
+
+     - **Shorter visible H1:** *"Trick-or-treat hours 2026"*, with the
+       town list moved to the line below in smaller text. The `<title>`
+       and description stay as item 310 set them.
+     - **A one-glance table first:** five rows, town on the left and
+       hours on the left beside it (*"3–7 PM"*), with the date said
+       once above the table (*"All on Saturday, October 31"*). Des
+       Plaines reads *"No set hours"*. Each row links to that town's
+       full card below.
+     - **The town cards remain below**, for sources and caveats, with
+       hours left-aligned and without the repeated date.
+     - **Trunk-or-treat rows lead with a town chip** in the town's
+       colour (the email's `EMAIL_TOWN_COLORS`), then date and title.
+     - **One "Add to calendar" link per town** in each card, a data-URI
+       or static `.ics` with the hours as the event and the village page
+       as the URL. Untimed towns get none.
+
+     Tests: the table has five rows in region order, the hours match the
+     YAML strings, Des Plaines shows the no-hours text, and no `.ics` is
+     created for a town without hours. Verify at 390px that all five rows
+     sit above the fold. **Ship by Oct 24**, before the TV lists publish.
+
+#### Owner, this weekend (new, 2 minutes)
+
+319. **Request indexing for `/trick-or-treat/` in Search Console, and
+     send the Needs Ryan 8b note now.** The page has been rebuilt with
+     new titles (item 310). No outlet has a 2026 list up yet for these
+     towns, so this weekend is the window in which the page is the
+     freshest answer. Added to Needs Ryan step 8b.
+
+Competitors reviewed this pass: **NBC Chicago, WGN and mykidlist's
+trick-or-treat lists** (none updated for 2026 yet), **ABC7's
+postponement coverage** (towns do move the date in bad weather),
+**Flipboard Local** and **Bluesky** as channels (both non-items for now).
+The design/UX angle is **the trick-or-treat page on a phone**.
 
 
 ## Working agreements for autonomous iteration
