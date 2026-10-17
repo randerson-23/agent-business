@@ -3567,14 +3567,14 @@ def flyer_variants(placements: list[dict] | None) -> list[dict]:
     return variants
 
 
-def render_flyer(region_id: str, town: str, examples: list[str], campaign: str, copies: int = 1) -> str:
+def render_flyer(region_id: str, town: str, examples: list[str], campaign: str, copies: int = 1, color: str = "#0f766e") -> str:
     import segno
 
     url = flyer_url(region_id, campaign)
     qr = segno.make(url, error="m").svg_inline(scale=8, border=2, dark="#000", light="#fff", omitsize=True)
     template = get_template_env().get_template("flyer.html.j2")
     return template.render(
-        town=town, examples=examples[:3], qr=qr, url=url, copies=copies, short=SHORT_PATHS.get(region_id, region_id)
+        town=town, examples=examples[:3], qr=qr, url=url, copies=copies, color=color, short=SHORT_PATHS.get(region_id, region_id)
     )
 
 
@@ -6391,7 +6391,7 @@ def main() -> None:
             (OUTPUT_DIR / short).mkdir(parents=True, exist_ok=True)
             (OUTPUT_DIR / short / "index.html").write_text(render_short_redirect(rid), encoding="utf-8")
 
-    for cfg_path in sorted((CONFIG_DIR / "regions").glob("*.yaml")):
+    for flyer_index, cfg_path in enumerate(sorted((CONFIG_DIR / "regions").glob("*.yaml"))):
         region_cfg = load_yaml(cfg_path)
         rid, town = region_cfg["region"]["id"], region_cfg["region"]["name"]
         examples = [e["title"] for e in region_cfg.get("evergreen", []) if e.get("title")][:3]
@@ -6400,7 +6400,7 @@ def main() -> None:
             for copies, sub in ((1, ""), (2, "half")):
                 out = base / sub
                 out.mkdir(parents=True, exist_ok=True)
-                (out / "index.html").write_text(render_flyer(rid, town, examples, variant["campaign"], copies), encoding="utf-8")
+                (out / "index.html").write_text(render_flyer(rid, town, examples, variant["campaign"], copies, EMAIL_TOWN_COLORS[flyer_index % len(EMAIL_TOWN_COLORS)][0]), encoding="utf-8")
 
     sitemap_urls = collect_sitemap_urls(region_summaries, issues)
     (OUTPUT_DIR / "sitemap.xml").write_text(build_sitemap_xml(region_summaries, now, issues), encoding="utf-8")
