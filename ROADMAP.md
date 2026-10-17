@@ -15915,7 +15915,7 @@ unsticks the one blocked item.
      says**, never inferred from the holiday. Tests: matching titles,
      windows, and nothing rendered when no source posts a closure.
 
-308. **A weekly outbound-link check.** Build loop: a Monday workflow
+308. ✅ **DONE (2026-10-17): the build writes `data/link_candidates.json` (event links dated in the next 14 days, de-duplicated; committed by build-digest.yml); `scripts/link_health.py` + `link-health.yml` (Mondays 14:17 UTC) send one HEAD per URL (GET if HEAD is refused), at most one per host per second, and write `data/link_health.json`; `apply_link_health` swaps a link that returned 404/410 on two consecutive checks for its source's page (`calendar_page:` in region config, else the source URL of an `html_events` source) with a "Listing moved" note on the card. 403s, timeouts and a single 404 are recorded and never acted on. Only works for sources with a browsable page, so ICS/RSS events with no `calendar_page` keep their link. Tests added. First scheduled run is the real test.** **A weekly outbound-link check.** Build loop: a Monday workflow
      step that sends a polite `HEAD` request (falling back to `GET`, one
      per host per second, with the site's honest user agent) to each
      card's outbound URL for the next 14 days, de-duplicated. It writes
