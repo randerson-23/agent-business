@@ -2775,6 +2775,7 @@ def render_region_page(
     region_map: dict | None = None,
     days_off: list[dict] | None = None,
     days_off_sponsor: dict | None = None,
+    closures: list[dict] | None = None,
     build_scope_end_iso: str | None = None,
     stale_empty_message: str | None = None,
     empty_follow_url: str | None = None,
@@ -2825,6 +2826,7 @@ def render_region_page(
         region_map=region_map,
         days_off=days_off,
         days_off_sponsor=days_off_sponsor,
+        closures=closures,
         election_line=election_day_line(now),
         faq=faq,
         faq_json_ld=build_faq_json_ld(faq) if faq else None,
@@ -4665,6 +4667,7 @@ def render_combined_email_digest(sections: list[dict], weekend_date_range: str, 
     weather_line = build_email_weather_line(weather)
     night_out = pick_night_out(region_blocks)
     days_off_line = build_days_off_email_line(sections, now)
+    closures_line = build_closures_email_line(sections, now)
     rain_plan = pick_rain_plan(region_blocks, top_picks) if weather_line and weather_line["rain"] else []
     return template.render(
         region_blocks=region_blocks,
@@ -4683,6 +4686,7 @@ def render_combined_email_digest(sections: list[dict], weekend_date_range: str, 
         edition_block=edition_block,
         weather_line=weather_line["text"] if weather_line else None,
         days_off_line=days_off_line,
+        closures_line=closures_line,
         night_out=night_out,
         election_line=election_day_line(now, email=True),
         rain_plan=rain_plan,
@@ -4892,6 +4896,68 @@ def build_days_off(
             for _rank, e in pool[:ideas_per_day]
         ]
     return rows
+
+
+# ROADMAP.md item 307: around Thanksgiving, Christmas and New Year, one compact
+# "Closed / changed this week" box built only from what the town's own feeds say.
+CLOSURE_TITLE = re.compile(
+    r"\b(closed|closes? early|early close|closing early|delayed?|delays?|no (?:refuse|trash|garbage|recycling|yard waste) (?:collection|pick-?up)|"
+    r"holiday (?:hours|schedule)|reduced hours)\b",
+    re.IGNORECASE,
+)
+CLOSURE_MAX_ITEMS = 4
+
+
+def closure_window(day: date) -> tuple[date, date] | None:
+    """The holiday window `day` is in, as (first, last): Thanksgiving week
+    (Nov 23-29), Christmas (Dec 21-27) or New Year (Dec 28 - Jan 3)."""
+    for (m1, d1), (m2, d2) in (((11, 23), (11, 29)), ((12, 21), (12, 27)), ((12, 28), (1, 3))):
+        start_year = day.year if (day.month, day.day) >= (m1, d1) else day.year - 1
+        start = date(start_year, m1, d1)
+        end = date(start_year + (1 if m2 < m1 else 0), m2, d2)
+        if start <= day <= end:
+            return start, end
+    return None
+
+
+def build_closures(blocks: list[dict], local_today: date) -> list[dict]:
+    """Items whose titles say closed, closes early, delayed or no collection,
+    dated inside the holiday window we are in, from non-school feeds. Only what
+    a source says - nothing is inferred from the holiday. [] outside a window or
+    when no source posts one."""
+    window = closure_window(local_today)
+    if not window:
+        return []
+    start, end = window
+    found, seen = [], set()
+    for block in blocks:
+        if "school" in (block.get("section") or "").lower():
+            continue
+        for e in block.get("events", []):
+            if not (e.get("title") and e.get("url") and e.get("date_iso") and CLOSURE_TITLE.search(e["title"])):
+                continue
+            try:
+                day = datetime.fromisoformat(e["date_iso"]).date()
+            except ValueError:
+                continue
+            if not (max(start, local_today) <= day <= end) or (e["title"], day) in seen:
+                continue
+            seen.add((e["title"], day))
+            found.append({"title": e["title"].strip(), "url": e["url"], "date": day, "label": day.strftime("%a %b ") + str(day.day)})
+    found.sort(key=lambda c: c["date"])
+    return found[:CLOSURE_MAX_ITEMS]
+
+
+def build_closures_email_line(sections: list[dict], now: datetime) -> dict | None:
+    """One email line when any town's feeds post a holiday closure this week."""
+    parts, url = [], None
+    for s in sections:
+        for c in s.get("closures") or []:
+            parts.append(f"{s['region_name']}: {c['title'][:60]}")
+            url = url or s["region_url"] + "#closures"
+    if not parts:
+        return None
+    return {"text": "🔒 " + " · ".join(parts[:3]), "url": url}
 
 
 def build_days_off_email_line(sections: list[dict], now: datetime) -> dict | None:
@@ -5454,6 +5520,7 @@ def main() -> None:
         things_to_do_url = SITE_BASE_URL + region_id + "/things-to-do/"
         editors_pick = select_editors_pick(region_cfg, blocks, evergreen)
         region_days_off = build_days_off(blocks, local_today, official=region_cfg.get("days_off"))
+        region_closures = build_closures(blocks, local_today)
 
         html = render_region_page(
             region_cfg,
@@ -5479,6 +5546,7 @@ def main() -> None:
             ),
             days_off=region_days_off,
             days_off_sponsor=build_days_off_sponsor(sponsors_cfg, region_id, local_today),
+            closures=region_closures,
         )
 
         region_dir = OUTPUT_DIR / region_id
@@ -5602,6 +5670,7 @@ def main() -> None:
                 "evergreen": evergreen,
                 "sponsor": sponsor,
                 "days_off": region_days_off,
+                "closures": region_closures,
             }
         )
         views = [

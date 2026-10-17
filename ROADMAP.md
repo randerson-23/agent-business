@@ -15899,7 +15899,7 @@ unsticks the one blocked item.
 
 #### P2 (new)
 
-307. **A "Closed / changed this week" line in holiday weeks.** Build
+307. ✅ **DONE (2026-10-17): `closure_window` (Nov 23–29, Dec 21–27, Dec 28 – Jan 3), `build_closures` (titles saying closed, closes early, delayed, no refuse/recycling collection, holiday hours, from non-school feeds, dated inside the window, at most 4) shown as a "Closed or changed this week" box (`#closures`) on region pages and one "🔒" line in the email; only what a source says; tests added.** **A "Closed / changed this week" line in holiday weeks.** Build
      loop. In the windows around Thanksgiving (Nov 23–29), Christmas
      (Dec 21–27) and New Year (Dec 28 – Jan 3), collect **informational
      items whose titles say closed, closes early, delayed or no

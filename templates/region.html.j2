@@ -760,6 +760,16 @@
   <p class="do-sponsor"><span class="do-paid">Sponsored</span> Presented by <a href="{{ days_off_sponsor.url }}" rel="sponsored noopener">{{ days_off_sponsor.title }}</a>{% if days_off_sponsor.detail %} &mdash; {{ days_off_sponsor.detail }}{% endif %}</p>
   {% endif %}
   {% if election_line %}<p class="election-line"><a href="{{ election_line.url }}" rel="noopener">{{ election_line.text }} &rarr;</a></p>{% endif %}
+  {% if closures %}
+  {# ROADMAP.md item 307: closures the town's own feeds post, holiday weeks only. #}
+  <section class="days-off" id="closures" aria-labelledby="closures-heading">
+    <h2 id="closures-heading">🔒 Closed or changed this week</h2>
+    <ul>
+      {% for c in closures %}<li><strong>{{ c.label }}</strong> <a href="{{ c.url }}">{{ c.title|short(110) }}</a></li>{% endfor %}
+    </ul>
+    <p class="do-note">Only what each source posts. Check the source for the latest.</p>
+  </section>
+  {% endif %}
   {% if days_off %}
   {# ROADMAP.md item 296: school days off in the next 45 days, from each district's own calendar. #}
   <section class="days-off" id="days-off" aria-labelledby="days-off-heading">
