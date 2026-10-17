@@ -397,6 +397,10 @@ that limit.
   Substack's discovery network does for this list what it did for Don't
   Miss Margate (1,000 subscribers in three months). It replaces the
   Perplexity Comet Plus application (item 231), which moves to Parked.
+  **Or, instead, a WhatsApp Channel** (item 336): about a minute a week
+  to paste a ready-made three-pick post. One small local newsroom
+  passed 3,200 followers in four months. Choose one of the two, not
+  both.
 - **Stripe Payment Links for the $20 Event Promo and $50 Weekly Spot**
   (item 244, about 15 minutes): self-serve checkout, so a sale is not an
   email thread and a manual invoice. It replaces the Cloudflare
@@ -16598,6 +16602,120 @@ tracked links), **email dark-mode guides** for Apple Mail, Outlook and
 Gmail iOS, and **high-school theatre** as a source (a non-item). The
 design/UX angle is **the email's forced-light rules checked against the
 redesign**, which found a regression.
+
+
+#### Research pass 2026-10-17, night (eighty-seventh pass)
+
+Since the morning the build loop shipped items 324 (the trick-or-treat
+table's standing-hours caveat), 327 (sign-ups opening this week), 329
+(flyer v2), 330 (the email dark-mode surface classes) and 331 (the "Did
+you go?" poll). The Oct 15 send's metrics land with tomorrow's 09:23
+UTC backfill. Several new blocks reached the email at once, so this pass
+reads the built send file on a phone. It re-checks Google's event
+requirements against the site's own markup and looks at one more
+no-cost channel.
+
+| Angle | What it is / what we found | Why it matters here |
+|---|---|---|
+| **Google's Event requirements, re-checked** (Search Engine Land; Search Engine Journal; Google's Event docs) | To be eligible for the event experience, events must be **"bookable by the general public and held at a physical location"**. Google removed the online-event properties. **`offers.priceCurrency` is required whenever `offers` is present**. No 2026 change was found | The site's events are all public and physical, so they qualify on substance. Whether Google can place them depends on how precise the location is (next row) |
+| **The site's Event markup, measured** (`docs/events.json` and Mount Prospect's page JSON-LD, built today) | **270 events**: **45** have a town-only location (*"Mount Prospect, IL"*), and **none of the 270 has a `streetAddress`**, even though most carry a venue name (*"Mount Prospect Public Library"*). **0** have an `organizer`. Only **13** carry `isAccessibleForFree`. No `offers` are emitted anywhere, so the priceCurrency rule can't be broken | A venue name with no street address is the weakest "physical location" Google accepts, and maps placement needs the address. The recurring venues are a short, stable list (five libraries, a few park-district centres, the theatre), each with an address on its own agency's site. Adding them once improves every event at those venues (item 335) |
+| **WhatsApp Channels** (Newspack case study; LINA; Press Gazette) | A local nonprofit newsroom launched a Channel on **Oct 8, 2025** and had **more than 3,200 followers by early February**. Posts that worked were **digests of one to three stories with a strong photo**, assembled **in minutes** by one person. WhatsApp shows reach only for the **past 30 days**. Channels have **no posting API** | This is the first evidence in this loop of a small local outlet growing fast on a channel the owner doesn't have to manage beyond a paste. It is the Substack pilot's shape (item 261): a weekly owner minute against a channel that may compound. The suburbs' many WhatsApp-heavy families (Des Plaines' and Wheeling's international communities) make it plausible. It is still an owner decision (item 336) |
+| **The email on a phone after five new blocks (design/UX)** | Rendered `docs/combined-email-send.html` at 390px. **(1)** *"Did you go?"*, *"📝 Sign-ups opening this week"* and *"🎭 Night out"* sit as **plain text on the page background** between styled cards, so they read as stray copy. **(2)** The sign-ups block spends **three of its four lines on one Des Plaines "Family Storytime"** (Nov 4, 11, 18), and all four lines are Des Plaines. **(3)** The Night out pick, *"BOURBON 'N BRASS SPEAKEASY: LIVE JAZZ…"*, is set in **all capitals** as a three-line link, and its card carries a **"Kid-friendly"** badge. **(4)** A Des Plaines description begins with a bare email address (*"DesPlainesLionsClub@gmail.com The Des Plaines Lions Club is…"*) | (3) is a trust problem: a family that takes a child to a speakeasy because the badge said so won't trust the badges again. The likely cause is a keyword in the full description; `tagging.py`'s kid-friendly list includes bare **"craft"**, which matches *"craft cocktails"*. The build loop must confirm that from the source text before fixing it. (1), (2) and (4) are polish, but this email is now the product sponsors buy into (items 333, 334) |
+
+#### P1 (new)
+
+333. **Stop adult events getting the Kid-friendly badge, and clean
+     leading contact junk from descriptions.** Build loop, `tagging.py`
+     and the description cleaner:
+
+     - First **confirm the trigger** on the Des Plaines Theatre
+       speakeasy listing: print which kid-friendly keyword matched.
+       Fix that specific cause. If it is **"craft"**, stop it matching
+       *"craft beer"*, *"craft cocktail(s)"* and *"craft brew"*.
+     - Add an **adult-signal veto** that removes `kid_friendly` when the
+       title or description contains *"21+"*, *"ages 21"*,
+       *"speakeasy"*, *"bourbon"*, *"cocktail"*, *"wine tasting"*,
+       *"beer tasting"*, *"brewery"*, *"happy hour"*, *"bar crawl"* or
+       *"adults only"*. A veto only removes the tag. It never adds an
+       "adults" tag, which the site doesn't have.
+     - In the description cleaner, drop a **leading bare email address
+       or URL** (one token before the first sentence). Keep the
+       sentence that follows.
+
+     Tests: the speakeasy listing loses the badge, a library *"Kids'
+     Craft Hour"* keeps it, a *"Craft Beer Fest"* doesn't get it, and
+     the Lions Club description starts at *"The Des Plaines Lions
+     Club…"*.
+
+334. **Give the email's new blocks the card treatment, and make the
+     sign-ups block useful.** Design/UX, `combined_email_digest.html.j2`
+     and `pick_*` helpers:
+
+     - Put **"Did you go?"**, **"Sign-ups opening"** and **"Night out"**
+       in the same bordered, rounded white card style as "Don't miss",
+       each with its small coloured kicker label. The poll's two
+       buttons stay as they are.
+     - In the sign-ups block, **group sessions of the same title at the
+       same venue** into one line: *"Des Plaines · Family Storytime,
+       Wed Nov 4, 11 & 18 · sign-ups open Wed Oct 21"*. Cap it at **two
+       lines per town** and four in all, choosing across towns first.
+     - **Display-case shouting titles:** when more than 70% of a
+       title's letters are capitals and it is longer than 12
+       characters, show it in title case in the email and on cards,
+       keeping known acronyms (*"ESL"*, *"STEM"*, *"LEGO"*, *"AARP"*)
+       as they are. The stored title and the JSON-LD `name` keep the
+       publisher's own text.
+
+     Tests: grouping (three sessions become one line), the per-town
+     cap, the case rule with an acronym, and the 102 KB clip check with
+     every block present.
+
+#### P2 (new)
+
+335. **Real street addresses for the recurring venues, plus an
+     organizer, in the event data.** Build loop: a **`venues:`** table per
+     region YAML (venue name, `streetAddress`, `postalCode`, the source
+     URL of that address). Fill it **only from each agency's own
+     contact page**: the five libraries, the park-district centres
+     that already appear as venue names, and the Des Plaines Theatre.
+     When an event's venue name matches a row, emit a full
+     `PostalAddress` in page JSON-LD and `events.json` and use the same
+     text for the ICS `LOCATION`. Add **`organizer`** (`Organization`:
+     the source's agency name and homepage) on every event. Never infer
+     an address from a town, and never geocode. An unmatched venue
+     keeps today's venue-name-and-town location. Use a URL probe
+     (`config/url_probes.yaml`) for any contact page the build loop
+     cannot read. Tests: a matched venue gets street and postal code,
+     an unmatched one is unchanged, and `organizer` is present on every
+     event. Also extend `isAccessibleForFree` to events from sources the
+     region config marks as free by default, as Randhurst already is.
+     Expect the count to rise from 13.
+
+#### Owner decision (new)
+
+336. **A WhatsApp Channel, as an 8-week pilot beside the Substack
+     question.** Build loop: write **`docs/whatsapp-post.txt`** every
+     Thursday with three picks from "Don't miss" (emoji, title, town,
+     day and time) and one link to `/this-weekend/` with
+     `utm_source=whatsapp`, under 700 characters, plus the week's
+     `og` image path to attach. **Owner: create the "Within Ten" Channel
+     once (5 minutes), then paste and post each Thursday (about a
+     minute).** Share the Channel link on the flyer's back and in the
+     welcome email. **Judge at 8 weeks** on Buttondown signups tagged
+     `utm_source=whatsapp` and the Channel's follower count. Stop if
+     both are near zero. The open decisions are capped at three, so this
+     goes in as the **alternative within the Substack bullet**, not a
+     fourth decision. Pick **at most one** weekly-paste channel, since
+     the time budget allows one: WhatsApp costs about a minute a week
+     where Substack costs five.
+
+Competitors reviewed this pass: **Google's Event eligibility rules**
+(physical, publicly bookable; priceCurrency required with offers), the
+**site's own Event markup** (no street addresses or organizers yet),
+and **WhatsApp Channels** for small local newsrooms (3,200 followers in
+four months in one case study). The design/UX angle is **the email on a
+phone after five new blocks**, which found a Kid-friendly badge on a
+speakeasy.
 
 
 ## Working agreements for autonomous iteration
