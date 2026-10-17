@@ -5509,3 +5509,16 @@ def test_hub_weekend_description_counts_the_towns_events():
     desc = build_digest.build_hub_weekend_description(["Wheeling", "Palatine"], sections, "Oct 16–18")
     assert desc.startswith("3 things to do this weekend (Oct 16–18) in Palatine and Wheeling") and len(desc) <= build_digest.DESCRIPTION_LIMIT
     assert "Things to do this weekend in" in build_digest.build_hub_weekend_description(["Palatine"], [], "")
+
+
+def test_region_page_has_no_html_comments_and_short_aria_labels():
+    # ROADMAP.md item 305: developer notes are Jinja comments, never repeated per card.
+    region_cfg = {"region": {"id": "r", "name": "R", "zip": "60056", "state": "IL", "tagline": "t", "timezone": "America/Chicago"}}
+    long_title = "Water Main Work " + "very long " * 30
+    block = {"section": "News", "events": [{"title": long_title, "url": "https://x/1", "detail": "", "date_iso": "2026-10-20T10:00:00", "date": "Oct 20", "tags": []}]}
+    html = build_digest.render_region_page(region_cfg, [block], None, [], datetime(2026, 10, 14, 18, tzinfo=timezone.utc))
+    assert "<!--" not in html
+    label = re.search(r'aria-label="Add ([^"]*) to My Weekend"', html).group(1)
+    assert len(label) <= 71 and label.endswith("…")
+    for name in ("hub", "merged_hub", "sponsor", "about", "trick_or_treat"):
+        assert "<!--" not in (build_digest.TEMPLATES_DIR / f"{name}.html.j2").read_text(encoding="utf-8") or name == "x"

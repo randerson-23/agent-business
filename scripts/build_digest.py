@@ -241,7 +241,10 @@ def get_template_env() -> Environment:
     page render for no reason a single build ever needed. `lru_cache`
     makes this a one-time cost per process.
     """
-    env = Environment(loader=FileSystemLoader(str(TEMPLATES_DIR)), autoescape=True)
+    # ROADMAP.md item 305: trim_blocks/lstrip_blocks stop every {% %} line
+    # leaving a blank, indented line behind in the output.
+    env = Environment(loader=FileSystemLoader(str(TEMPLATES_DIR)), autoescape=True, trim_blocks=True, lstrip_blocks=True)
+    env.filters["short"] = lambda text, n=70: (str(text)[: n - 1].rstrip() + "…") if len(str(text)) > n else str(text)
     env.globals["preferred_source_url"] = PREFERRED_SOURCE_URL
     env.globals["webmail_providers"] = [[label, url, list(domains)] for label, url, domains in WEBMAIL_PROVIDERS]
     return env
