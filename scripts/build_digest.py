@@ -4621,6 +4621,7 @@ def render_combined_email_digest(sections: list[dict], weekend_date_range: str, 
             "region_name": s["region_name"],
             "region_url": s["region_url"],
             "attendable_events": prepare_email_events(attendable_events, limit=4),
+            "indoor_ideas": thin_week_ideas(s.get("evergreen", []), len(attendable_events)) if attendable_events else [],
             "informational_events": informational_events,
             "evergreen_highlights": _pick_evergreen_highlights(s.get("evergreen", []), limit=2),
             "sponsor": sponsor,
@@ -4909,6 +4910,22 @@ def build_days_off_email_line(sections: list[dict], now: datetime) -> dict | Non
     if not parts:
         return None
     return {"text": "📚 No school next week: " + " · ".join(parts[:4]), "url": first_url}
+
+
+THIN_WEEK_THRESHOLD = 4
+
+
+def thin_week_ideas(evergreen: list[dict], attendable_count: int, limit: int = 3) -> list[dict]:
+    """Up to `limit` evergreen indoor ideas for a thin week (ROADMAP.md item
+    312): when a town has fewer than THIN_WEEK_THRESHOLD attendable weekend
+    events. Kid-friendly and free ones first. Always labelled "Anytime this
+    week" by the caller so they are never mistaken for dated events; none on
+    a busy week."""
+    if attendable_count >= THIN_WEEK_THRESHOLD:
+        return []
+    indoor = [e for e in evergreen if "indoor" in (e.get("tags") or []) and e.get("title") and e.get("url")]
+    indoor.sort(key=lambda e: -sum(1 for t in ("kid_friendly", "free") if t in (e.get("tags") or [])))
+    return indoor[:limit]
 
 
 def pick_night_out(blocks: list[dict]) -> dict | None:
@@ -5639,9 +5656,14 @@ def main() -> None:
                 if slug == "this-weekend"
                 else None
             )
+            view_blocks = [{"section": heading, "events": items}]
+            if slug == "this-weekend":
+                ideas = thin_week_ideas(evergreen, sum(1 for e in items if e.get("attendable", True)))
+                if ideas:
+                    view_blocks.append({"section": "Indoor ideas — anytime this week", "events": ideas})
             view_html = render_region_page(
                 region_cfg,
-                [{"section": heading, "events": items}],
+                view_blocks,
                 sponsor,
                 [],
                 now,

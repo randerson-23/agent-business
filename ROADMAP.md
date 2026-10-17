@@ -16005,7 +16005,7 @@ two quiet months ahead.
 
 #### P3 (new)
 
-312. **A floor for thin weeks: "Indoor ideas" when a town has few dated
+312. ✅ **DONE (2026-10-17): `thin_week_ideas` (fewer than 4 attendable weekend events, at most 3 evergreen entries tagged indoor, kid-friendly and free first) appears as "Indoor ideas, anytime this week" in the email block and as an "Indoor ideas — anytime this week" section on a town's weekend page; nothing on a busy week or when there are no dated events at all (the existing "worth knowing about" block covers that); tests added.** **A floor for thin weeks: "Indoor ideas" when a town has few dated
      events.** Build loop. When a town has fewer than **4 attendable
      weekend events**, the email and its weekend page add up to three
      **evergreen indoor ideas** from that town's config: open swim, an
