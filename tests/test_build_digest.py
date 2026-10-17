@@ -5522,3 +5522,29 @@ def test_region_page_has_no_html_comments_and_short_aria_labels():
     assert len(label) <= 71 and label.endswith("…")
     for name in ("hub", "merged_hub", "sponsor", "about", "trick_or_treat"):
         assert "<!--" not in (build_digest.TEMPLATES_DIR / f"{name}.html.j2").read_text(encoding="utf-8") or name == "x"
+
+
+def _ever(title, tags):
+    return {"title": title, "url": f"https://e/{title}", "detail": "", "tags": tags}
+
+
+def test_thin_week_ideas_threshold_order_and_label():
+    # ROADMAP.md item 312.
+    ever = [_ever("Museum Pass", ["indoor"]), _ever("Open Swim", ["indoor", "kid_friendly", "free"]), _ever("Hike", ["outdoor", "kid_friendly"]),
+            _ever("Maker Space", ["indoor", "free"]), _ever("Play Cafe", ["indoor", "kid_friendly"]), {"title": "No link", "tags": ["indoor"]}]
+    ideas = build_digest.thin_week_ideas(ever, 3)
+    assert [e["title"] for e in ideas] == ["Open Swim", "Maker Space", "Play Cafe"]  # kid-friendly and free first, at most three, indoor only
+    assert build_digest.thin_week_ideas(ever, 4) == [] and build_digest.thin_week_ideas(ever, 12) == []  # a busy week changes nothing
+
+
+def test_thin_week_email_block_is_labelled_and_absent_on_a_busy_week():
+    now = datetime(2026, 10, 14, 18, tzinfo=timezone.utc)
+    sections = _join_sections()
+    sections[0]["evergreen"] = [_ever("Open Swim", ["indoor", "kid_friendly", "free"])]
+    thin = build_digest.render_combined_email_digest(sections, "Oct 16–18", now, None)
+    assert "Indoor ideas, anytime this week" in thin and "Open Swim" in thin
+    busy = _join_sections()
+    busy[0]["evergreen"] = [_ever("Open Swim", ["indoor", "kid_friendly", "free"])]
+    for i in range(5):
+        busy[0]["weekend_events"].append({"title": f"Extra {i}", "url": f"https://x/{i}", "date_iso": "2026-10-17T10:00:00", "date": "2026-10-17", "detail": "", "tags": []})
+    assert "Indoor ideas" not in build_digest.render_combined_email_digest(busy, "Oct 16–18", now, None)

@@ -272,6 +272,22 @@ Nothing dated for this weekend yet — the full guide has what's coming up.
 </tr>
 {% endif %}
 
+{% if block.indoor_ideas %}
+{# ROADMAP.md item 312: a thin week gets up to three evergreen indoor ideas, labelled so they are never mistaken for dated events. #}
+<tr>
+<td class="wt-muted" style="font-family:Arial, Helvetica, sans-serif; font-size:14px; color:#605d5d; padding:12px 0 6px 0;">
+🏠 Indoor ideas, anytime this week:
+</td>
+</tr>
+{% for item in block.indoor_ideas %}
+<tr>
+<td style="padding:6px 0; font-family:Arial, Helvetica, sans-serif; font-size:15px;">
+<a href="{{ item.url }}" class="wt-ink" style="color:#201e1d; text-decoration:none; font-weight:bold;">{{ item.title }}</a>
+</td>
+</tr>
+{% endfor %}
+{% endif %}
+
 {% if block.informational_events %}
 {# ROADMAP.md Phase 11 #90, applied here independently of the branch
      above (a region with only a half-day/closure and no attendable
