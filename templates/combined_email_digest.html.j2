@@ -198,6 +198,13 @@ This weekend, across the northwest suburbs
 <tr><td style="padding:0 0 16px 0;"></td></tr>
 {% endif %}
 
+{% if poll %}
+{# ROADMAP.md item 331: one question for the whole season. #}
+<tr>
+<td class="wt-ink" style="font-family:Arial, Helvetica, sans-serif; font-size:16px; color:#201e1d; padding:0 0 16px 0;">Did you go to something from last week's email? &nbsp;<a href="{{ poll.went }}" style="display:inline-block; background-color:#201e1d; color:#ffffff; text-decoration:none; font-weight:bold; padding:6px 14px; border-radius:8px;">Yes</a> <a href="{{ poll.not_yet }}" style="display:inline-block; border:2px solid #201e1d; color:#201e1d; text-decoration:none; font-weight:bold; padding:4px 12px; border-radius:8px;">Not this time</a></td>
+</tr>
+{% endif %}
+
 {% if night_out %}
 {# ROADMAP.md item 284: one "Night out" line for the adult readers. #}
 <tr>

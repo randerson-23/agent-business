@@ -3554,6 +3554,35 @@ def collect_link_candidates(blocks: list[dict], today: date, region_id: str) -> 
     return found
 
 
+THANKS_PAGES = {
+    "went": ("Thanks, that helps us keep this useful.", "Glad you got out. Knowing that readers go to the events we list is how we decide what to keep."),
+    "not-yet": ("Thanks, that helps us keep this useful.", "No problem. There is another list every Thursday, and the towns below have this weekend's events right now."),
+}
+
+
+def poll_links(issue_date: date) -> dict:
+    """ROADMAP.md item 331: the two "Did you go?" links for an issue, counted
+    as page views of /thanks/went/ and /thanks/not-yet/ and as per-link
+    clicks in Buttondown."""
+    w = issue_date.isoformat()
+    return {"went": f"{SITE_BASE_URL}thanks/went/?w={w}", "not_yet": f"{SITE_BASE_URL}thanks/not-yet/?w={w}"}
+
+
+def render_thanks_page(kind: str, regions: list[dict], analytics: dict | None = None) -> str:
+    headline, body = THANKS_PAGES[kind]
+    towns = [
+        {"name": r["name"], "url": SITE_BASE_URL + r["id"] + "/", "color": EMAIL_TOWN_COLORS[i % len(EMAIL_TOWN_COLORS)][0]}
+        for i, r in enumerate(regions)
+    ]
+    forward = "mailto:?subject=" + quote("What's on this weekend near us") + "&body=" + quote(
+        f"A free weekly email with what's on this weekend in our towns: {SITE_BASE_URL}join/?utm_source=forward"
+    )
+    return get_template_env().get_template("thanks.html.j2").render(
+        headline=headline, body=body, towns=towns, forward_href=forward,
+        canonical_url=f"{SITE_BASE_URL}thanks/{kind}/", analytics=analytics,
+    )
+
+
 def flyer_url(region_id: str, campaign: str) -> str:
     """The URL a flyer's QR code encodes (ROADMAP.md item 320)."""
     return f"{SITE_BASE_URL}{region_id}/?utm_source=print&utm_campaign={campaign}#newsletter-signup"
@@ -4944,6 +4973,7 @@ def render_combined_email_digest(sections: list[dict], weekend_date_range: str, 
     return template.render(
         region_blocks=region_blocks,
         top_picks=top_picks,
+        poll=poll_links(now.astimezone(LOCAL_TZ).date()),
         event_total=event_total,
         town_total=town_total,
         empty_regions_summary=empty_regions_summary,
@@ -6405,6 +6435,12 @@ def main() -> None:
     (holidays_dir / "index.html").write_text(render_holidays_page(holidays_entries, now, analytics, newsletter, contact_email), encoding="utf-8")
     logger.info("Wrote %s", holidays_dir / "index.html")
 
+    for kind in THANKS_PAGES:
+        thanks_dir = OUTPUT_DIR / "thanks" / kind
+        thanks_dir.mkdir(parents=True, exist_ok=True)
+        (thanks_dir / "index.html").write_text(
+            render_thanks_page(kind, [{"id": r["id"], "name": r["name"]} for r in region_summaries], analytics), encoding="utf-8"
+        )
     known_regions = {r.get("id") for r in region_summaries}
     for rid, short in SHORT_PATHS.items():
         if rid in known_regions:

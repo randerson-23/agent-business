@@ -16552,7 +16552,7 @@ rules.
      saturated colours that clients leave alone or invert legibly. Keep
      the existing 102 KB clip check.
 
-331. **A one-click "Did you go?" poll, free, in every issue.** Build
+331. ✅ **DONE (2026-10-17): the combined email carries "Did you go to something from last week's email?" with Yes and Not this time links to `/thanks/went/?w=<issue date>` and `/thanks/not-yet/?w=<issue date>` (noindex, not in the sitemap; each has the thank-you line, a forward-to-a-neighbour mailto link and the town strip); the row shows every week, not only when "Don't miss" does. Counting is Buttondown's per-link clicks plus GoatCounter's path counts; reading both into `data/audience.json` is not done yet (needs the owner's GoatCounter secret first).** **A one-click "Did you go?" poll, free, in every issue.** Build
      loop, no paid plan:
 
      - One line at the end of the "Don't miss" section: *"Did you go to
