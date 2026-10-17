@@ -142,7 +142,9 @@
   }
   .entry { border: 1px solid var(--border); border-left: 6px solid var(--town, var(--accent)); background: var(--card); padding: 14px 16px; margin-bottom: 10px; }
   .entry:last-child { border-bottom: 1px solid var(--border); }
-  .entry .region a { color: var(--town, var(--ink)); font-size: 17px; }
+  .entry { --town-text: var(--town, var(--ink)); }
+  @media (prefers-color-scheme: dark) { .entry { --town-text: color-mix(in srgb, var(--town, #ffffff) 45%, #fff); } }
+  .entry .region a { color: var(--town-text); font-size: 17px; }
   .entry .hours { font-size: 17px; }
   .events .emoji { display: inline-block; width: 1.6em; }
   .offer { margin: 28px 0 0; padding: 16px 18px; border: 2px solid #14532d; background: #f0f9f3; color: #14301f; border-radius: 12px; }
@@ -333,7 +335,7 @@ document.querySelectorAll(".newsletter-form").forEach(function (f) {
   <footer>
     Curious what else is happening? <a href="https://withintenmiles.com/">See a live region</a>.
     <a href="https://google.com/preferences/source?q=withintenmiles.com" rel="noopener">Add us as a preferred source on Google</a>.
-    <br>Generated 2026-10-17 02:20 UTC.
+    <br>Generated 2026-10-17 02:42 UTC.
   </footer>
 </div>
 <script data-goatcounter="https://withinten.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
