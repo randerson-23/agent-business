@@ -3,8 +3,8 @@
 <channel>
   <title>Within Ten — Upcoming Local Events</title>
   <link>https://withintenmiles.com/</link>
-  <description>Upcoming events across every Within Ten region, soonest first - aggregated automatically from village, library, park district and school-district calendars. This build reached 24 of 29 configured sources.</description>
-  <lastBuildDate>Fri, 16 Oct 2026 23:33:05 +0000</lastBuildDate>
+  <description>Upcoming events across every Within Ten region, soonest first - aggregated automatically from village, library, park district and school-district calendars. This build reached 21 of 29 configured sources. 3 sources are shown from their last update, up to 4 hours ago.</description>
+  <lastBuildDate>Sat, 17 Oct 2026 01:54:52 +0000</lastBuildDate>
   <item>
     <title>Arlington Heights: Senior Center: Travelogue</title>
     <link>https://withintenmiles.com/arlington-heights-60005/#ev-senior-center-travelogue-2026-10-16</link>
@@ -22,28 +22,12 @@
     <source url="https://www.ahpd.org/event/oddities-night/">Arlington Heights Park District — Events</source>
   </item>
   <item>
-    <title>Des Plaines: TAYLOR DAYNE</title>
-    <link>https://withintenmiles.com/des-plaines-60016/#ev-taylor-dayne-2026-10-16</link>
-    <guid isPermaLink="true">https://withintenmiles.com/des-plaines-60016/#ev-taylor-dayne-2026-10-16</guid>
-    <description>Taylor Dayne is a global pop icon with a career spanning three decades, Taylor’s groundbreaking debut single “Tell It To My Heart” turned her into an… Official listing: https://desplainestheatre.com/event/taylor-dayne/</description>
-    <pubDate>Fri, 16 Oct 2026 20:00:00 +0000</pubDate>
-    <source url="https://desplainestheatre.com/event/taylor-dayne/">Des Plaines Theatre — Events</source>
-  </item>
-  <item>
-    <title>Des Plaines: BOURBON 'N BRASS SPEAKEASY: LIVE JAZZ with THE BOOTLEGGERS playing 20s &amp; 30s DANCE FAVORITES</title>
-    <link>https://withintenmiles.com/des-plaines-60016/#ev-bourbon-n-brass-speakeasy-live-jazz-with-the-bootleggers-pla-2026-10-16</link>
-    <guid isPermaLink="true">https://withintenmiles.com/des-plaines-60016/#ev-bourbon-n-brass-speakeasy-live-jazz-with-the-bootleggers-pla-2026-10-16</guid>
-    <description>Join us in our intimate Bourbon ‘N Brass Speakeasy, located on the 2nd floor of the Des Plaines Theatre, for an evening of Jazz with The Bootleggers playing… Official listing: https://desplainestheatre.com/event/bourbon-n-brass-speakeasy-live-jazz-with-the-bootleggers-3/</description>
-    <pubDate>Fri, 16 Oct 2026 20:30:00 +0000</pubDate>
-    <source url="https://desplainestheatre.com/event/bourbon-n-brass-speakeasy-live-jazz-with-the-bootleggers-3/">Des Plaines Theatre — Events</source>
-  </item>
-  <item>
-    <title>Arlington Heights: Family Time</title>
-    <link>https://withintenmiles.com/arlington-heights-60005/#ev-family-time-2026-10-17</link>
-    <guid isPermaLink="true">https://withintenmiles.com/arlington-heights-60005/#ev-family-time-2026-10-17</guid>
-    <description>Official listing: https://www.ahml.info/scheduling/reservation/224194</description>
+    <title>Arlington Heights: Beginning ESL</title>
+    <link>https://withintenmiles.com/arlington-heights-60005/#ev-beginning-esl-2026-10-17</link>
+    <guid isPermaLink="true">https://withintenmiles.com/arlington-heights-60005/#ev-beginning-esl-2026-10-17</guid>
+    <description>Official listing: https://www.ahml.info/scheduling/reservation/234242</description>
     <pubDate>Sat, 17 Oct 2026 00:00:00 +0000</pubDate>
-    <source url="https://www.ahml.info/scheduling/reservation/224194">Arlington Heights Memorial Library — Events</source>
+    <source url="https://www.ahml.info/scheduling/reservation/234242">Arlington Heights Memorial Library — Events</source>
   </item>
   <item>
     <title>Des Plaines: Service Hour Drop In</title>
@@ -439,6 +423,25 @@ Meet with a career expert for resume… Official listing: https://desplaines.lib
     <description>Official listing: https://www.ahml.info/scheduling/reservation/194395</description>
     <pubDate>Tue, 20 Oct 2026 00:00:00 +0000</pubDate>
     <source url="https://www.ahml.info/scheduling/reservation/194395">Arlington Heights Memorial Library — Events</source>
+  </item>
+  <item>
+    <title>Des Plaines: Wicked Good Writing Contest</title>
+    <link>https://withintenmiles.com/des-plaines-60016/#ev-wicked-good-writing-contest-2026-10-20</link>
+    <guid isPermaLink="true">https://withintenmiles.com/des-plaines-60016/#ev-wicked-good-writing-contest-2026-10-20</guid>
+    <description>Tuesday, October 20 2026 12:00am - 11:59pm 
+ Enter our 4th annual Wicked Good Writing Contest!
+For grades K-8. Official listing: https://desplaines.libnet.info/event/17138188</description>
+    <pubDate>Tue, 20 Oct 2026 00:00:00 +0000</pubDate>
+    <source url="https://desplaines.libnet.info/event/17138188">Des Plaines Public Library — Events</source>
+  </item>
+  <item>
+    <title>Des Plaines: Early Voting</title>
+    <link>https://withintenmiles.com/des-plaines-60016/#ev-early-voting-2026-10-20</link>
+    <guid isPermaLink="true">https://withintenmiles.com/des-plaines-60016/#ev-early-voting-2026-10-20</guid>
+    <description>Tuesday, October 20 2026 9:00am - 5:00pm 
+ Gubernatorial Election Official listing: https://desplaines.libnet.info/event/14863282</description>
+    <pubDate>Tue, 20 Oct 2026 09:00:00 +0000</pubDate>
+    <source url="https://desplaines.libnet.info/event/14863282">Des Plaines Public Library — Events</source>
   </item>
 </channel>
 </rss>

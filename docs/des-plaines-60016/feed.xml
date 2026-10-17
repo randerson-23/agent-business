@@ -3,24 +3,8 @@
 <channel>
   <title>Within Ten — Upcoming events in Des Plaines</title>
   <link>https://withintenmiles.com/</link>
-  <description>Upcoming events in Des Plaines, soonest first - aggregated automatically from village, library, park district and school-district calendars. This build reached 9 of 10 configured sources.</description>
-  <lastBuildDate>Fri, 16 Oct 2026 23:33:05 +0000</lastBuildDate>
-  <item>
-    <title>Des Plaines: TAYLOR DAYNE</title>
-    <link>https://withintenmiles.com/des-plaines-60016/#ev-taylor-dayne-2026-10-16</link>
-    <guid isPermaLink="true">https://withintenmiles.com/des-plaines-60016/#ev-taylor-dayne-2026-10-16</guid>
-    <description>Taylor Dayne is a global pop icon with a career spanning three decades, Taylor’s groundbreaking debut single “Tell It To My Heart” turned her into an… Official listing: https://desplainestheatre.com/event/taylor-dayne/</description>
-    <pubDate>Fri, 16 Oct 2026 20:00:00 +0000</pubDate>
-    <source url="https://desplainestheatre.com/event/taylor-dayne/">Des Plaines Theatre — Events</source>
-  </item>
-  <item>
-    <title>Des Plaines: BOURBON 'N BRASS SPEAKEASY: LIVE JAZZ with THE BOOTLEGGERS playing 20s &amp; 30s DANCE FAVORITES</title>
-    <link>https://withintenmiles.com/des-plaines-60016/#ev-bourbon-n-brass-speakeasy-live-jazz-with-the-bootleggers-pla-2026-10-16</link>
-    <guid isPermaLink="true">https://withintenmiles.com/des-plaines-60016/#ev-bourbon-n-brass-speakeasy-live-jazz-with-the-bootleggers-pla-2026-10-16</guid>
-    <description>Join us in our intimate Bourbon ‘N Brass Speakeasy, located on the 2nd floor of the Des Plaines Theatre, for an evening of Jazz with The Bootleggers playing… Official listing: https://desplainestheatre.com/event/bourbon-n-brass-speakeasy-live-jazz-with-the-bootleggers-3/</description>
-    <pubDate>Fri, 16 Oct 2026 20:30:00 +0000</pubDate>
-    <source url="https://desplainestheatre.com/event/bourbon-n-brass-speakeasy-live-jazz-with-the-bootleggers-3/">Des Plaines Theatre — Events</source>
-  </item>
+  <description>Upcoming events in Des Plaines, soonest first - aggregated automatically from village, library, park district and school-district calendars. This build reached 7 of 10 configured sources. 2 sources are shown from their last update, up to 4 hours ago.</description>
+  <lastBuildDate>Sat, 17 Oct 2026 01:54:52 +0000</lastBuildDate>
   <item>
     <title>Des Plaines: Service Hour Drop In</title>
     <link>https://withintenmiles.com/des-plaines-60016/#ev-service-hour-drop-in-2026-10-17</link>
@@ -459,6 +443,25 @@ For grades K-8. Official listing: https://desplaines.libnet.info/event/17138190<
     <description>Join us in our intimate Bourbon ‘N Brass Speakeasy, located on the 2nd floor of the Des Plaines Theatre, for an evening of Blues with Downtown Charlie Brown… Official listing: https://desplainestheatre.com/event/bourbon-n-brass-speakeasy-live-blues-with-the-downtown-charlie-brown-band-7/</description>
     <pubDate>Thu, 22 Oct 2026 19:30:00 +0000</pubDate>
     <source url="https://desplainestheatre.com/event/bourbon-n-brass-speakeasy-live-blues-with-the-downtown-charlie-brown-band-7/">Des Plaines Theatre — Events</source>
+  </item>
+  <item>
+    <title>Des Plaines: Thursday Evening Book Discussion</title>
+    <link>https://withintenmiles.com/des-plaines-60016/#ev-thursday-evening-book-discussion-2026-10-22</link>
+    <guid isPermaLink="true">https://withintenmiles.com/des-plaines-60016/#ev-thursday-evening-book-discussion-2026-10-22</guid>
+    <description>Thursday, October 22 2026 7:30pm - 8:30pm 
+ A staff member will lead a book discussion. Books are available at the 3rd floor info desk in the public library… Official listing: https://desplaines.libnet.info/event/17341094</description>
+    <pubDate>Thu, 22 Oct 2026 19:30:00 +0000</pubDate>
+    <source url="https://desplaines.libnet.info/event/17341094">Des Plaines Public Library — Events</source>
+  </item>
+  <item>
+    <title>Des Plaines: Wicked Good Writing Contest</title>
+    <link>https://withintenmiles.com/des-plaines-60016/#ev-wicked-good-writing-contest-2026-10-23</link>
+    <guid isPermaLink="true">https://withintenmiles.com/des-plaines-60016/#ev-wicked-good-writing-contest-2026-10-23</guid>
+    <description>Friday, October 23 2026 12:00am - 11:59pm 
+ Enter our 4th annual Wicked Good Writing Contest!
+For grades K-8. Official listing: https://desplaines.libnet.info/event/17138191</description>
+    <pubDate>Fri, 23 Oct 2026 00:00:00 +0000</pubDate>
+    <source url="https://desplaines.libnet.info/event/17138191">Des Plaines Public Library — Events</source>
   </item>
 </channel>
 </rss>
