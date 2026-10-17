@@ -484,7 +484,7 @@ def test_render_trick_or_treat_page_shows_real_hours_once_posted():
         }
     ]
     html = build_digest.render_trick_or_treat_page(entries, datetime.now(timezone.utc))
-    assert "3:00-7:00 PM, Saturday, October 31" in html
+    assert "3-7 PM" in html and "All on Saturday, October 31" in html  # the date is said once (item 318)
     assert "Not yet posted" not in html
 
 
@@ -509,7 +509,7 @@ def test_render_trick_or_treat_page_counts_its_towns_and_shows_notes():
     assert "Four" not in html
     assert "Des Plaines, Palatine, and Wheeling" in html
     assert "The Village&#39;s standing hours." in html or "The Village's standing hours." in html
-    assert '<a href="https://v/0">3:00–8:00 PM, Saturday, October 31</a>' in html
+    assert '<a href="https://v/0">3–8 PM</a>' in html
 
 
 def test_trick_or_treat_no_official_hours_is_its_own_state():
@@ -5061,8 +5061,8 @@ def test_trick_or_treat_page_has_the_halloween_hero_cards_share_button_and_count
     entries = _tot_entries()
     entries[0]["also"] = [{"label": "Downtown merchants' trick-or-treat", "url": "https://d", "when": "Wednesday, October 28, 4–6 PM", "place": "Downtown Mount Prospect"}]
     html = build_digest.render_trick_or_treat_page(entries, datetime(2026, 10, 18, 18, tzinfo=timezone.utc))
-    assert html.count('<div class="entry"') == 5
-    colors = re.findall(r'<div class="entry" style="--town:(#[0-9a-f]{6})">', html)
+    assert html.count('<div class="entry" id="tot-') == 5
+    colors = re.findall(r'<div class="entry" id="tot-[^"]+" style="--town:(#[0-9a-f]{6})">', html)
     assert len(set(colors)) == 5  # a colour per town, as in the email
     assert 'id="share-btn"' in html and "navigator.share" in html and "clipboard" in html  # copy-link fallback
     assert "13 days to go" in html and "Saturday, October 31" in html
@@ -5272,7 +5272,7 @@ def test_village_post_shows_beside_configured_hours_without_changing_them():
     entries[0]["village_post"] = {"title": "Hours Announced", "url": "https://v/post"}
     html = build_digest.render_trick_or_treat_page(entries, datetime(2026, 10, 18, 18, tzinfo=timezone.utc))
     assert 'Village posted: <a href="https://v/post">Hours Announced</a>' in html
-    assert html.count("3–7 PM, Saturday, October 31") == 2  # both towns' configured hours, unchanged
+    assert html.count("3–7 PM") >= 4 and "All on Saturday, October 31" in html  # both towns' configured hours, unchanged, in the table and the cards
     banner = build_digest.build_halloween_banner(entries, datetime(2026, 10, 18, 18, tzinfo=timezone.utc))
     assert banner["towns"][0]["post"] == {"title": "Hours Announced", "url": "https://v/post"} and banner["towns"][1]["post"] is None
 
@@ -5626,3 +5626,45 @@ def test_seasonal_animations_only_run_without_reduced_motion():
             safe.append((m.start(), i))
         for m in re.finditer(r"(?<![-\w])animation(?:-delay)?\s*:(?!\s*none)", css):
             assert any(a <= m.start() < b for a, b in safe), (name, css[max(0, m.start() - 60):m.start() + 40])
+
+
+def test_tot_hours_helpers_and_calendar_window():
+    # ROADMAP.md item 318.
+    assert build_digest.short_tot_hours("3:00–7:00 PM, Saturday, October 31") == "3–7 PM"
+    assert build_digest.short_tot_hours("3:00–8:30 PM, Saturday, October 31") == "3–8:30 PM"
+    assert build_digest.tot_hours_date("3:00–7:00 PM, Saturday, October 31") == "Saturday, October 31" and build_digest.tot_hours_date("3–7 PM") is None
+    start, end = build_digest.parse_tot_window("3:00–7:00 PM, Saturday, October 31", 2026)
+    assert (start, end) == (datetime(2026, 10, 31, 15, 0), datetime(2026, 10, 31, 19, 0))
+    assert build_digest.parse_tot_window("11 AM–1 PM, Saturday, October 31", 2026)[0].hour == 11
+    assert build_digest.parse_tot_window("Evening, October 31", 2026) is None and build_digest.parse_tot_window(None, 2026) is None
+    uri = build_digest.build_tot_ics_uri("Palatine", "3:00–7:00 PM, Saturday, October 31", "https://v/p", 2026)
+    assert uri.startswith("data:text/calendar") and "DTSTART%3A20261031T150000" in uri and "DTEND%3A20261031T190000" in uri
+    assert build_digest.build_tot_ics_uri("Des Plaines", None, "https://v/d", 2026) is None
+
+
+def test_trick_or_treat_page_has_a_one_glance_table_chips_and_calendar_links():
+    entries = _tot_entries(5)
+    entries[2].update(hours=None, no_official_hours=True)  # Des Plaines-style: no set hours
+    entries[4].update(hours=None)  # not yet posted
+    html = build_digest.render_trick_or_treat_page(entries, datetime(2026, 10, 18, 18, tzinfo=timezone.utc))
+    assert "<h1>Trick-or-treat hours 2026</h1>" in html
+    table = html.split('<table class="glance">')[1].split("</table>")[0]
+    rows = re.findall(r"<th scope=\"row\"><a href=\"#tot-([^\"]+)\">[^<]+</a></th>\s*<td>([^<]*)</td>", table)
+    assert [r[0] for r in rows] == ["r0", "r1", "r2", "r3", "r4"]  # region order
+    assert [r[1] for r in rows] == ["3–7 PM", "3–7 PM", "No set hours", "3–7 PM", "Not posted yet"]
+    assert "All on Saturday, October 31" in html
+    assert html.count("Add to calendar") == 3  # only towns with parsable hours
+    assert 'id="tot-r2"' in html
+    # Hours on different dates are never collapsed into one shared date.
+    mixed = _tot_entries(2)
+    mixed[1]["hours"] = "3–7 PM, Friday, October 30"
+    page = build_digest.render_trick_or_treat_page(mixed, datetime(2026, 10, 18, 18, tzinfo=timezone.utc))
+    assert "All on" not in page and "Friday, October 30" in page and "Saturday, October 31" in page
+
+
+def test_trunk_or_treat_rows_lead_with_a_town_chip():
+    ev = {"title": "Trunk or Treat", "url": "https://s", "date_iso": "2026-10-24T10:00:00", "anchor_id": "a", "date_label": "Sat, Oct 24"}
+    entries = _tot_entries(1)
+    entries[0]["events"] = [ev]
+    html = build_digest.render_trick_or_treat_page(entries, datetime(2026, 10, 18, 18, tzinfo=timezone.utc))
+    assert re.search(r'<li><span class="chip" style="background:#[0-9a-f]{6}">Mount Prospect</span>', html)

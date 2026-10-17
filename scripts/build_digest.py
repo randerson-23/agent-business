@@ -1395,6 +1395,70 @@ def build_halloween_json_ld(entries: list[dict]) -> str | None:
 _COUNT_WORDS = {2: "Two", 3: "Three", 4: "Four", 5: "Five", 6: "Six", 7: "Seven", 8: "Eight", 9: "Nine", 10: "Ten"}
 
 
+_TOT_TIMES = re.compile(
+    r"(\d{1,2})(?::(\d{2}))?\s*(AM|PM)?\s*[\u2013\u2014-]\s*(\d{1,2})(?::(\d{2}))?\s*(AM|PM)", re.IGNORECASE
+)
+_MONTHS = {m: i for i, m in enumerate(("january", "february", "march", "april", "may", "june", "july", "august", "september", "october", "november", "december"), 1)}
+
+
+def short_tot_hours(hours: str | None) -> str | None:
+    """"3:00\u20137:00 PM, Saturday, October 31" -> "3\u20137 PM": the time range
+    only, for the one-glance table (ROADMAP.md item 318)."""
+    if not hours:
+        return None
+    return hours.split(",")[0].strip().replace(":00", "")
+
+
+def tot_hours_date(hours: str | None) -> str | None:
+    """The date part of a configured hours string ("Saturday, October 31")."""
+    if not hours or "," not in hours:
+        return None
+    return hours.split(",", 1)[1].strip() or None
+
+
+def parse_tot_window(hours: str | None, year: int) -> tuple[datetime, datetime] | None:
+    """Start and end of a configured hours string as wall-clock datetimes, or
+    None when it cannot be read with certainty (the page then offers no
+    calendar link rather than a guessed one)."""
+    if not hours:
+        return None
+    t = _TOT_TIMES.search(hours)
+    d = re.search(r"\b(" + "|".join(_MONTHS) + r")\s+(\d{1,2})\b", hours, re.IGNORECASE)
+    if not (t and d):
+        return None
+    h1, m1, ap1, h2, m2, ap2 = t.groups()
+    ap1 = (ap1 or ap2).upper()
+    ap2 = ap2.upper()
+
+    def to24(h: str, m: str | None, ap: str) -> tuple[int, int]:
+        hour = int(h) % 12 + (12 if ap == "PM" else 0)
+        return hour, int(m or 0)
+
+    try:
+        day = date(year, _MONTHS[d.group(1).lower()], int(d.group(2)))
+        (a, am), (b, bm) = to24(h1, m1, ap1), to24(h2, m2, ap2)
+        start, end = datetime(day.year, day.month, day.day, a, am), datetime(day.year, day.month, day.day, b, bm)
+    except ValueError:
+        return None
+    return (start, end) if end > start else None
+
+
+def build_tot_ics_uri(town: str, hours: str | None, url: str, year: int) -> str | None:
+    """An "add to calendar" data link for a town's trick-or-treat hours, only
+    when the hours parse to a real time window."""
+    window = parse_tot_window(hours, year)
+    if not window:
+        return None
+    start, end = window
+    lines = [
+        "BEGIN:VCALENDAR", "VERSION:2.0", f"PRODID:-//{SITE_NAME}//EN", "BEGIN:VEVENT",
+        f"DTSTART:{start.strftime('%Y%m%dT%H%M%S')}", f"DTEND:{end.strftime('%Y%m%dT%H%M%S')}",
+        f"SUMMARY:{_ics_escape(f'Trick-or-treat in {town}')}", f"URL:{_ics_sanitize_url(url)}",
+        "END:VEVENT", "END:VCALENDAR", "",
+    ]
+    return "data:text/calendar;charset=utf-8," + quote("\r\n".join(lines))
+
+
 def render_trick_or_treat_page(
     entries: list[dict], now: datetime, analytics: dict | None = None, newsletter: dict | None = None
 ) -> str:
@@ -1430,8 +1494,21 @@ def render_trick_or_treat_page(
     # their emoji, so the page matches the homepage banner and the email.
     colored = []
     for i, entry in enumerate(entries):
-        colored.append({**entry, "color": EMAIL_TOWN_COLORS[i % len(EMAIL_TOWN_COLORS)][0]})
+        colored.append({
+            **entry,
+            "color": EMAIL_TOWN_COLORS[i % len(EMAIL_TOWN_COLORS)][0],
+            "hours_short": short_tot_hours(entry.get("hours")),
+            "ics_href": build_tot_ics_uri(entry["region_name"], entry.get("hours"), entry["url"], now.year),
+        })
     entries = colored
+    # ROADMAP.md item 318: when every town's hours are on the same date, say it
+    # once above the table and drop it from the cards; otherwise each card
+    # keeps its full string so no date is ever hidden.
+    dates = {tot_hours_date(e.get("hours")) for e in entries if e.get("hours")}
+    common_date = next(iter(dates)) if len(dates) == 1 and None not in dates else None
+    town_colors = {e["region_name"]: e["color"] for e in entries}
+    for e in trunk_events:
+        e["town_color"] = town_colors.get(e["region_name"], "#605d5d")
     for lst in (trunk_events, *[t["events"] for t in town_entries]):
         for e in lst:
             e["emoji"] = email_event_emoji(e)
@@ -1446,6 +1523,7 @@ def render_trick_or_treat_page(
         town_entries=town_entries,
         trunk_events=trunk_events,
         countdown=countdown,
+        common_date=common_date,
         halloween_weekday=halloween_day.strftime("%A"),
         year=now.year,
         title_towns=", ".join(sorted(e["region_name"] for e in entries)),
@@ -2973,7 +3051,7 @@ def build_halloween_banner(entries: list[dict], now: datetime) -> dict | None:
     towns = []
     for e in entries:
         if e.get("hours"):
-            short = e["hours"].split(",")[0].strip().replace(":00", "")
+            short = short_tot_hours(e["hours"])
         elif e.get("no_official_hours"):
             short = "No set hours"
         else:
