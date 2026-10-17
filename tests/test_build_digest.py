@@ -1,4 +1,5 @@
 import json
+import yaml
 import re
 import sys
 import xml.etree.ElementTree as ET
@@ -5716,3 +5717,19 @@ def test_trick_or_treat_page_shows_the_box_only_with_a_forecast():
     with_box = build_digest.render_trick_or_treat_page(entries, now, night_forecast=_night_forecast())
     assert "Saturday 3&ndash;8 PM: 52&deg;F, 20% rain." in with_box and "Dark by 5:49 PM: bring a light." in with_box and "Forecast, updated Oct 28" in with_box
     assert 'class="night"' not in build_digest.render_trick_or_treat_page(entries, now)
+
+
+def test_short_paths_point_at_real_region_pages_and_collide_with_nothing():
+    regions = {json.loads(json.dumps(yaml.safe_load(p.read_text(encoding="utf-8"))))["region"]["id"] for p in (Path(__file__).resolve().parent.parent / "config" / "regions").glob("*.yaml")}
+    assert set(build_digest.SHORT_PATHS) == regions
+    reserved = {"this-weekend", "today", "free", "sponsor", "about", "trick-or-treat", "holidays", "join", "issues", "og", "feed", "later"}
+    shorts = list(build_digest.SHORT_PATHS.values())
+    assert len(set(shorts)) == len(shorts) and not (set(shorts) & (reserved | regions))
+    page = build_digest.render_short_redirect("mount-prospect-60056")
+    assert "utm_source=print&amp;utm_campaign=short" in page and 'content="noindex"' in page
+    assert 'rel="canonical" href="' + build_digest.SITE_BASE_URL + 'mount-prospect-60056/"' in page
+
+
+def test_short_paths_are_not_in_the_sitemap():
+    urls = build_digest.collect_sitemap_urls([])
+    assert not any(f"/{short}/" in u for u in urls for short in build_digest.SHORT_PATHS.values())

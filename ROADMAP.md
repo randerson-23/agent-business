@@ -16240,7 +16240,7 @@ families already go**. It adds one seasonal civic page.
 
 #### P2 (new)
 
-321. **Short town paths that a person can type from paper.** Build
+321. ✅ **DONE (2026-10-17): `/mp/`, `/ah/`, `/dp/`, `/pal/`, `/wh/` written at build time from `SHORT_PATHS` as static meta-refresh pages (canonical to the region page, noindex, `utm_source=print&utm_campaign=short`), none in the sitemap; tests check every region has one, no collisions, and the sitemap omits them.** **Short town paths that a person can type from paper.** Build
      loop: `/mp/`, `/ah/`, `/dp/`, `/pal/` and `/wh/` as tiny static
      redirect pages (meta refresh plus a `rel="canonical"` to the
      region page, `noindex`). Each forwards to the region page with
