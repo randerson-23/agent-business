@@ -16139,7 +16139,7 @@ their hours late, and what the page looks like on a phone.
      the one day the page is used most. Same politeness as the URL
      probes: one request per town per run. It stops itself after Nov 1.
 
-318. **Make the answer fit the first screen on a phone.** Design/UX,
+318. ✅ **DONE (2026-10-17): H1 "Trick-or-treat hours 2026" with the towns on the line below (the `<title>` keeps item 310's wording); a one-glance table (town and hours, "All on Saturday, October 31" said once, only when every town's hours share that date, otherwise each row keeps its full string); cards below with left-aligned hours; trunk-or-treat rows lead with a town-coloured chip; an "Add to calendar" link only for towns whose hours parse to a real window; tests added. Not browser-verified at 390px.** **Make the answer fit the first screen on a phone.** Design/UX,
      `trick_or_treat.html.j2` only.
 
      - **Shorter visible H1:** *"Trick-or-treat hours 2026"*, with the

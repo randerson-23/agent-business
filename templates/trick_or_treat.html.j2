@@ -180,6 +180,15 @@
   .share button { font: inherit; font-weight: 800; color: #1a0f2b; background: #ff7a00; border: 0; border-radius: 999px; padding: 9px 18px; cursor: pointer; }
   .share button:hover, .share button:focus-visible { background: #ffa040; }
   .share .copied { margin-left: 10px; color: var(--muted); font-size: 13.5px; }
+  .glance-title { font-size: 18px; margin: 20px 0 8px; }
+  .glance { width: 100%; border-collapse: collapse; margin: 0 0 8px; }
+  .glance th, .glance td { text-align: left; padding: 9px 4px; border-bottom: 1px solid var(--border); font-size: 16px; }
+  .glance th { font-weight: 800; width: 48%; }
+  .glance th a { color: var(--town-text-glance, var(--ink)); text-decoration: none; border-left: 5px solid var(--town); padding-left: 8px; }
+  .glance td { font-weight: 800; color: var(--accent-2-text); }
+  .entry .cal { margin-left: 8px; font-size: 13px; font-weight: 700; color: var(--accent-2-text); }
+  .entry .hours { text-align: left; }
+  .events .chip { display: inline-block; color: #fff; font-size: 11px; font-weight: 800; letter-spacing: 0.04em; border-radius: 999px; padding: 1px 9px; margin-right: 6px; }
 </style>
 {{ signup_css() }}
 </head>
@@ -202,8 +211,8 @@
     <div>
       <a class="back" href="{{ hub_url }}">&larr; All regions</a>
       <div class="kicker">🎃 Halloween &middot; {{ halloween_weekday }}, October 31</div>
-      <h1>Trick-or-Treat Hours {{ year }}: {{ title_towns }}</h1>
-      <div class="sub">Official hours for {{ town_names }}, in one place, each linked to the village page it came from.</div>
+      <h1>Trick-or-treat hours {{ year }}</h1>
+      <div class="sub">{{ title_towns }}. Official hours, each linked to the village page it came from.</div>
       {% if countdown %}<span class="tot-countdown">👻 {{ countdown }}</span>{% endif %}
     </div>
   </div>
@@ -211,12 +220,23 @@
 
 <div class="wrap">
   <main>
+  <h2 class="glance-title">{% if common_date %}All on {{ common_date }}{% else %}Hours by town{% endif %}</h2>
+  <table class="glance">
+    <tbody>
+      {% for entry in entries %}
+      <tr style="--town:{{ entry.color }}">
+        <th scope="row"><a href="#tot-{{ entry.region_id }}">{{ entry.region_name }}</a></th>
+        <td>{% if entry.hours %}{{ entry.hours_short if common_date else entry.hours }}{% elif entry.no_official_hours %}No set hours{% else %}Not posted yet{% endif %}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
   <div class="entry-list">
     {% for entry in entries %}
-    <div class="entry" style="--town:{{ entry.color }}">
+    <div class="entry" id="tot-{{ entry.region_id }}" style="--town:{{ entry.color }}">
       <span class="region"><a href="{{ entry.region_url }}">{{ entry.region_name }}</a></span>
       {% if entry.hours %}
-      <span class="hours"><a href="{{ entry.url }}">{{ entry.hours }}</a>{% if entry.note %}<span class="hours-note">{{ entry.note }}</span>{% endif %}</span>
+      <span class="hours"><a href="{{ entry.url }}">{{ entry.hours_short if common_date else entry.hours }}</a>{% if entry.ics_href %} <a class="cal" href="{{ entry.ics_href }}" download="trick-or-treat-{{ entry.region_id }}.ics">Add to calendar</a>{% endif %}{% if entry.note %}<span class="hours-note">{{ entry.note }}</span>{% endif %}</span>
       {% elif entry.no_official_hours %}
       <span class="hours"><a href="{{ entry.url }}">No official hours</a>{% if entry.note %}<span class="hours-note">{{ entry.note }}</span>{% endif %}</span>
       {% else %}
@@ -235,7 +255,7 @@
   <h2 class="events-heading" id="trunk-or-treat">Trunk-or-treats</h2>
   <ul class="events">
     {% for event in trunk_events %}
-    <li><span class="emoji" aria-hidden="true">{{ event.emoji }}</span><time datetime="{{ event.date_iso }}">{{ event.date_label }}</time> <a href="{{ event.region_url }}#{{ event.anchor_id }}">{{ event.title }}</a> <span class="hours-note">({{ event.region_name }})</span>{% if event.also_at %} <span class="hours-note">Also at: {% for a in event.also_at %}<a href="{{ event.region_url }}#{{ a.anchor_id }}">{{ a.label }}</a>{% if not loop.last %}, {% endif %}{% endfor %}</span>{% endif %}</li>
+    <li><span class="chip" style="background:{{ event.town_color }}">{{ event.region_name }}</span> <time datetime="{{ event.date_iso }}">{{ event.date_label }}</time> <a href="{{ event.region_url }}#{{ event.anchor_id }}">{{ event.title }}</a>{% if event.also_at %} <span class="hours-note">Also at: {% for a in event.also_at %}<a href="{{ event.region_url }}#{{ a.anchor_id }}">{{ a.label }}</a>{% if not loop.last %}, {% endif %}{% endfor %}</span>{% endif %}</li>
     {% endfor %}
   </ul>
   {% endif %}
