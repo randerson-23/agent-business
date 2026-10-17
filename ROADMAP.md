@@ -354,6 +354,11 @@ that limit.
    a no). Add both as `print_placements:` entries first, so each one
    is counted. Judge at four weeks.
 
+8h. **Lights-tour pitch to three agents (15 min, by Nov 15, item 326)**,
+   once `OUTREACH_TEMPLATES.md` §5b exists. While you're in the Google
+   Form for step 6, add the *"Share a holiday light display"* section
+   with the required consent box (item 325).
+
 **Next action — about an hour, no cost:**
 
 8. **Send the outreach emails (items 152, 161).** Six civic link-back
@@ -16289,6 +16294,110 @@ Daily News QR trial** (low uptake without a reason to scan), **Patch's
 yearly leaf-pickup stories**, and **Hoodline** (a non-item). The
 design/UX angle is **the printed flyer**, the first page this site
 makes for paper.
+
+
+#### Research pass 2026-10-17, afternoon (eighty-fourth pass)
+
+Since the last pass the build loop shipped items 317 (twice-daily watch
+of the village trick-or-treat pages), 318 (the trick-or-treat page's
+short H1, one-glance table, town chips and calendar links) and 309 (the
+accessibility pass). Region page weight is unchanged (Des Plaines 1,424
+KB, Wheeling 1,224 KB), so item 305 stays open. The Oct 15 send's
+metrics land with the Oct 18 backfill. This pass checks the new
+trick-or-treat page on a phone and looks at the next seasonal search
+after Halloween, **house light displays**, where a realtor is already
+the sponsor in other towns.
+
+| Angle | What it is / what we found | Why it matters here |
+|---|---|---|
+| **The new trick-or-treat page on a phone (design/UX)** | At 390px the five-row table now sits on the first screen, which is item 318's goal. Two gaps: (1) the table drops the caveat. **Mount Prospect's and Wheeling's "standing hours, not yet confirmed for 2026"** read exactly like Arlington Heights' and Palatine's posted hours, and the caveat appears only in the cards below. (2) **Palatine's card** puts hours beside the town name, because it has no note, while the other four stack them, so one card looks broken | The table is now what most visitors read, and it is the only place the page says anything without a caveat. A parent who reads *"Mount Prospect 3–8 PM"* and stops has been told more than the site knows. Fixable in the template (item 324) |
+| **Holiday house lights, local coverage** (Daily Herald galleries; Patch's reader list; Chicago Northwest CVB blog) | The **Daily Herald** runs **reader-submitted galleries** with addresses in Arlington Heights and Mount Prospect, and has profiled single homes (a Palatine family decorating for **more than 20 years**). **Patch** asked readers for favourite suburban displays and printed the addresses, including an Arlington Heights home with **more than 6,000 lights**, a pop-up Santa and music, and another *"light show set to music"*. The **CVB** blogs a tour of the northwest suburbs' best displays. **No one keeps a current, town-by-town list**, and the results found are years old | *"Christmas lights near me"* is the December version of the trick-or-treat query: local, seasonal and searched every year, with stale answers. Unlike public events, **this content only readers have**, which makes it the first reason for a reader to send something in. The site already has the intake (the Google Form, item 246) and the review step (one PR a person approves) |
+| **A realtor's lights map** (WTKR Hampton Roads: *"Real estate agent's map of Christmas lights … returns for fifth year"*) | A local agent publishes a holiday lights map every year as a community project under their own name, and local TV covers it each season | This is the **open-house logic of item 248 at season scale**. Agents already pay, in time, to own the lights map in their town. Here the list builds itself from readers, and the agent's part is a label: *"Holiday lights tour presented by [agent]"*. That is a better first annual-tier conversation than a cold $5,000 ask (item 326) |
+
+#### P1 (new)
+
+324. **Carry the caveat into the trick-or-treat table, and even out the
+     cards.** Design/UX, `trick_or_treat.html.j2` only.
+
+     - In the one-glance table, a row whose region YAML has a `note`
+       shows a small muted second line, *"standing hours, not
+       confirmed"*, using the same text the card uses (taken from the
+       `note`, not hard-coded). Rows with village-posted hours show
+       *"posted"* with the link. Des Plaines keeps *"No set hours"*.
+     - Every card uses the same stacked layout (town name, then hours,
+       then note or source) whether or not it has a `note`.
+
+     Tests: a region with a `note` shows the muted line in the table; a
+     region without one does not; the card markup is the same shape for
+     all five. Ship before Oct 24 alongside item 316. When item 317's
+     watch shows a village confirming its hours, the build loop removes
+     the `note`, and the table updates itself.
+
+#### P2 (new)
+
+325. **A reader-built holiday lights list, by town, Nov 27 – Jan 1.**
+     Build loop, reusing item 246's Form pipeline:
+
+     - **Intake:** add a second section to the owner's Google Form,
+       *"Share a holiday light display"*, with town, street address,
+       one line, an optional *"set to music"* or *"drive-by only"*
+       flag, and a **required consent box: *"I live here, or the
+       resident has said it's fine to list this address."*** Rows
+       without consent are dropped by `ingest_event_submissions.py`
+       before review, so the address never reaches the repo. Each
+       accepted row arrives in the same reviewed PR as events, into a
+       `holiday_lights:` list in the region YAML.
+     - **Page:** `/holiday-lights/`, live **Nov 27 – Jan 1**, grouped by
+       town. Each entry shows the street address, the line, the flags
+       and one **"Directions"** link (a plain maps search URL, no
+       embedded map and no third-party script). No ratings and no
+       photos of houses. Public, dated displays (tree lightings, park
+       light shows) from the feeds sit at the top, from item 258's
+       holiday keywords.
+     - **Email:** from Nov 27, one *"Lights of the week"* line per
+       issue, picking a different reader display each week. Link from
+       region pages in season only (the trick-or-treat page's pattern).
+     - **Removal:** a *"Remove this address"* mailto to
+       `hello@withintenmiles.com` on every entry, honoured on the next
+       build.
+
+     Empty-state copy for the first days: *"Know a house worth the
+     drive? Add it here."* Do not seed the page with the Daily Herald's
+     or Patch's old addresses: they are years old and were never
+     consented to this list. Tests: the date gate, consent filtering in
+     the ingest, no address in any feed or `events.json`, and the
+     removal link on each entry. **Build by Nov 15**, so the Form is
+     ready before Thanksgiving.
+
+326. **Sell the lights list as a season sponsorship, to a realtor
+     first.** Build loop plus owner:
+
+     - Add **"Holiday lights tour, presented by you: Nov 27 – Jan 1,
+       $200"** to `SPONSOR_TIERS`, `SPONSOR_KIT.md` and `/sponsor/`.
+       That is five Weekly Spot weeks at a 20% discount, one sponsor
+       across all five towns, and one slot only. The label appears on
+       the page header and on the email's *"Lights of the week"* line.
+       Add a `payment_links.holiday_lights` slot (item 244).
+     - `OUTREACH_TEMPLATES.md` **§5b**, *"Your name on the town's lights
+       tour"*. It cites the pattern (an agent's yearly lights map is a
+       local tradition elsewhere, covered by local TV) without naming
+       the agent, and pitches it to the agents the business plan
+       already targets. It sits alongside item 248's open-house note.
+     - **Owner:** send §5b to three agents in the outreach batch (Needs
+       Ryan step 8), **by Nov 15**. If no one buys it, the slot goes to
+       the holiday listing businesses (item 258) at the same price.
+
+     **Guardrail:** the sponsor's name is a label only. The sponsor
+     never picks, ranks or edits the list, and a house can't pay to be
+     listed.
+
+Competitors reviewed this pass: **the Daily Herald's and Patch's
+reader-submitted holiday lights lists** (addresses, years old, no current
+town-by-town list), **the Chicago Northwest CVB's lights tour blog**, and
+**a realtor-run holiday lights map** in Hampton Roads (sponsored community
+content, in its fifth year). The design/UX angle is **the shipped
+trick-or-treat table on a phone**, and whether it says only what the
+site knows.
 
 
 ## Working agreements for autonomous iteration
