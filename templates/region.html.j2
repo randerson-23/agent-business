@@ -26,10 +26,10 @@
 <link rel="apple-touch-icon" href="{{ hub_url }}icons/icon-192.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<!-- Non-render-blocking font load: paint with the fallback stack immediately,
+{# Non-render-blocking font load: paint with the fallback stack immediately,
      swap to the web font once it's fetched, instead of blocking first paint
      on a round trip to fonts.googleapis.com (real measured LCP impact on a
-     cold connection was ~300ms - see ROADMAP.md Phase 11 #26). -->
+     cold connection was ~300ms - see ROADMAP.md Phase 11 #26). #}
 <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;800&display=optional">
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;800&display=optional" rel="stylesheet" media="print" onload="this.media='all'">
 <noscript><link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;800&display=optional" rel="stylesheet"></noscript>
@@ -663,13 +663,13 @@
 </head>
 <body>
 {% macro region_map_svg() %}
-<!-- role="img" removed (ROADMAP.md Phase 11 #62, found by a real
+{# role="img" removed (ROADMAP.md Phase 11 #62, found by a real
      axe-core audit): it told assistive tech this was one static image
      while the SVG contains real <a> links to nearby regions - axe
      flags nested interactive controls inside an img-role element, and
      in practice a screen reader would announce one picture and never
      expose the links inside it. Each pin's own <a> gets an explicit
-     aria-label instead. -->
+     aria-label instead. #}
 <svg viewBox="0 0 {{ region_map.width }} {{ region_map.height }}">
   {% for line in region_map.lines %}
   <line x1="{{ line.x1 }}" y1="{{ line.y1 }}" x2="{{ line.x2 }}" y2="{{ line.y2 }}" class="map-line" />
@@ -691,7 +691,7 @@
   {% for item in evergreen %}
   {% set tray_item = {"id": item.url or item.title, "title": item.title, "url": item.url or "", "date": None, "date_iso": None, "detail": item.detail or "", "region_name": region.name, "region_url": region_base_url} %}
   <div class="card" data-tags="{{ item.tags|join(',') }}">
-    <button type="button" class="tray-star" data-item='{{ tray_item | tojson }}' aria-pressed="false" aria-label="Add {{ item.title }} to My Weekend">☆</button>
+    <button type="button" class="tray-star" data-item='{{ tray_item | tojson }}' aria-pressed="false" aria-label="Add {{ item.title|short }} to My Weekend">☆</button>
     <h3><a href="{{ item.url }}">{{ item.title }}</a></h3>
     <p class="detail">{{ item.detail }}</p>
     {% if item.tag_badges %}
@@ -705,8 +705,8 @@
 </section>
 {% endif %}
 {% endmacro %}
-<!-- header, not div (ROADMAP.md Phase 11 #62, found by a real axe-core
-     audit): everything in the hero previously sat outside any landmark. -->
+{# header, not div (ROADMAP.md Phase 11 #62, found by a real axe-core
+     audit): everything in the hero previously sat outside any landmark. #}
 <header class="hero">
   <div class="hero-inner">
     <a class="back" href="{{ hub_url }}">&larr; All regions</a>
@@ -823,7 +823,7 @@
   {% endif %}
 
   {% if editors_pick %}
-  <!-- ROADMAP.md item 146: id folds in date_iso (when present) so two
+  {# ROADMAP.md item 146: id folds in date_iso (when present) so two
        distinct dated occurrences that share one url - every occurrence
        of a recurring event (item 141) links the same organiser page -
        don't collide as "the same tray item." Confirmed with a real
@@ -831,10 +831,10 @@
        occurrence used to mark all six of that market's cards as
        starred, and starring a second occurrence removed the first
        instead of adding it, since the tray's toggle logic matches by
-       id alone. -->
+       id alone. #}
   {% set tray_item = {"id": (editors_pick.url or editors_pick.title) ~ ("|" ~ editors_pick.date_iso if editors_pick.date_iso else ""), "title": editors_pick.title, "url": editors_pick.url or "", "date": editors_pick.date or None, "date_iso": editors_pick.date_iso or None, "detail": editors_pick.detail or "", "region_name": region.name, "region_url": region_base_url} %}
   <div class="editors-pick">
-    <button type="button" class="tray-star" data-item='{{ tray_item | tojson }}' aria-pressed="false" aria-label="Add {{ editors_pick.title }} to My Weekend">☆</button>
+    <button type="button" class="tray-star" data-item='{{ tray_item | tojson }}' aria-pressed="false" aria-label="Add {{ editors_pick.title|short }} to My Weekend">☆</button>
     <div class="label">✏️ Editor's Pick</div>
     <h2>{% if editors_pick.url %}<a href="{{ editors_pick.url }}">{{ editors_pick.title }}</a>{% else %}{{ editors_pick.title }}{% endif %}</h2>
     {% if editors_pick.date %}<div class="date">{{ editors_pick.date }}</div>{% endif %}
@@ -901,8 +901,8 @@
       {% if block.events %}
         <div class="card-grid">
         {% for item in block.events %}
-        <!-- id folds in date_iso - see the Editor's Pick tray_item above
-             for why (ROADMAP.md item 146). -->
+        {# id folds in date_iso - see the Editor's Pick tray_item above
+             for why (ROADMAP.md item 146). #}
         {% set tray_item = {"id": (item.url or item.title) ~ ("|" ~ item.date_iso if item.date_iso else ""), "title": item.title, "url": item.url or "", "date": item.date or None, "date_iso": item.date_iso or None, "detail": (item.card_detail if item.card_detail is defined else item.detail) or "", "region_name": region.name, "region_url": region_base_url} %}
         {# ROADMAP.md items 228/234: an <article> with a stable id is a card an
            agent can read as one unit and cite by anchor; <time datetime>
@@ -910,13 +910,13 @@
            data-date-iso stays - item 200's client-side script reads it. #}
         <article class="card{% if item.attendable == false %} card-informational{% endif %}" id="{{ item.anchor_id }}" data-tags="{{ item.tags|join(',') }}" data-date-iso="{{ item.date_iso or '' }}">
           {% if nav_current != "guides" and item.attendable != false %}
-          <!-- ROADMAP.md Phase 11 #63: My Weekend is for dated events -
+          {# ROADMAP.md Phase 11 #63: My Weekend is for dated events -
                offering to add "Find your school district" or a guide's
                own title to it made no sense, since guide items and the
                guide index have nothing to do with weekend planning.
                #90: nor does a school half-day belong in it - it's real
-               and worth knowing, but nobody plans a weekend around one. -->
-          <button type="button" class="tray-star" data-item='{{ tray_item | tojson }}' aria-pressed="false" aria-label="Add {{ item.title }} to My Weekend">☆</button>
+               and worth knowing, but nobody plans a weekend around one. #}
+          <button type="button" class="tray-star" data-item='{{ tray_item | tojson }}' aria-pressed="false" aria-label="Add {{ item.title|short }} to My Weekend">☆</button>
           {% endif %}
           {% if item.attendable == false %}<div class="informational-label">Informational</div>{% endif %}
           {% if item.sponsored_by %}{{ featured_label(item.sponsored_by) }}{% endif %}

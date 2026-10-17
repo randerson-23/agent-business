@@ -21,6 +21,13 @@ DOCS_DIR = REPO_ROOT / "docs"
 # already here, not out of this number.
 MAX_INLINE_JS_BYTES = 13_312
 
+# ROADMAP.md item 305: raw HTML weight of a region's main page. Over the target
+# is a warning (real towns with 400+ cards are still above it); over the hard
+# limit fails, so a regression like repeating a note inside every card cannot
+# slip back in unnoticed.
+REGION_PAGE_TARGET_BYTES = 400 * 1024
+REGION_PAGE_FAIL_BYTES = 2_000 * 1024
+
 _SCRIPT_BLOCK = re.compile(
     r'<script(?![^>]*type="application/ld\+json")[^>]*>(.*?)</script>',
     re.S,
@@ -45,6 +52,19 @@ def main() -> int:
 
     for page, size in failures:
         print(f"FAIL  {page}: {size} bytes inline JS > {MAX_INLINE_JS_BYTES} budget")
+
+    heavy = []
+    for page in pages:
+        if page.parent.parent != DOCS_DIR or page.parent.name in ("og", "icons"):
+            continue
+        raw = page.stat().st_size
+        if raw > REGION_PAGE_FAIL_BYTES:
+            failures.append((page.relative_to(REPO_ROOT), raw))
+            print(f"FAIL  {page.relative_to(REPO_ROOT)}: {raw // 1024} KB raw HTML > {REGION_PAGE_FAIL_BYTES // 1024} KB limit")
+        elif raw > REGION_PAGE_TARGET_BYTES:
+            heavy.append((page.relative_to(REPO_ROOT), raw))
+    for page, raw in heavy:
+        print(f"WARN  {page}: {raw // 1024} KB raw HTML (target {REGION_PAGE_TARGET_BYTES // 1024} KB)")
 
     if failures:
         return 1

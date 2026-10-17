@@ -15859,7 +15859,7 @@ unsticks the one blocked item.
 
 #### P1 (new)
 
-305. **Cut region pages to a phone-friendly weight.** Build loop,
+305. 🟡 **PART DONE (2026-10-17): every HTML comment in the site templates is now a Jinja comment (nothing repeats per card; about 64 KB off Des Plaines in the sandbox build), `trim_blocks`/`lstrip_blocks` remove the blank lines, long card titles are shortened in the "Add to My Weekend" aria-label, and `check_perf_budget.py` warns above 400 KB and fails above 2 MB per region page. Sandbox: Des Plaines 468 → 386 KB. Still open: the 21-day horizon with a `/later/` page (it needs every link that targets a card anchor re-pointed: feeds, events.json, trick-or-treat, holidays, celebrations, weekly feed), the smaller `data-item` payload, and per-page JSON-LD. Read the real page sizes in CI's WARN lines before choosing which to do.** **Cut region pages to a phone-friendly weight.** Build loop,
      `region.html.j2` and its builder:
      - **Turn the repeated per-card HTML comments into Jinja `{# #}`
        comments** (item 260's fix, applied to the cards). That is about
