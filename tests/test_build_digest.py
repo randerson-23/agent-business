@@ -5650,7 +5650,7 @@ def test_trick_or_treat_page_has_a_one_glance_table_chips_and_calendar_links():
     html = build_digest.render_trick_or_treat_page(entries, datetime(2026, 10, 18, 18, tzinfo=timezone.utc))
     assert "<h1>Trick-or-treat hours 2026</h1>" in html
     table = html.split('<table class="glance">')[1].split("</table>")[0]
-    rows = re.findall(r"<th scope=\"row\"><a href=\"#tot-([^\"]+)\">[^<]+</a></th>\s*<td>([^<]*)</td>", table)
+    rows = re.findall(r"<th scope=\"row\"><a href=\"#tot-([^\"]+)\">[^<]+</a></th>\s*<td>([^<]*)(?:<span.*?</span>)?</td>", table)
     assert [r[0] for r in rows] == ["r0", "r1", "r2", "r3", "r4"]  # region order
     assert [r[1] for r in rows] == ["3–7 PM", "3–7 PM", "No set hours", "3–7 PM", "Not posted yet"]
     assert "All on Saturday, October 31" in html
@@ -5774,3 +5774,20 @@ def test_link_candidates_cover_only_the_next_14_days_with_http_urls():
         {"url": "https://x/undated", "date_iso": None},
     ]}]
     assert build_digest.collect_link_candidates(blocks, date(2026, 10, 17), "r") == [{"url": "https://x/in", "region": "r"}]
+
+
+def test_trick_or_treat_table_and_cards_carry_the_note_or_the_source():
+    # ROADMAP.md item 324.
+    entries = _tot_entries(3)
+    entries[0]["note"] = "The Village's standing hours, not yet confirmed for 2026."
+    html = build_digest.render_trick_or_treat_page(entries, datetime(2026, 10, 18, 18, tzinfo=timezone.utc))
+    table = html.split('<table class="glance">')[1].split("</table>")[0]
+    rows = table.split("</tr>")
+    assert "standing hours, not yet confirmed for 2026." in rows[0] and "posted by the village" not in rows[0]
+    assert "posted by the village" in rows[1] and "standing hours" not in rows[1]
+    cards = html.split('<div class="entry" ')[1:4]
+    assert len(cards) == 3
+    # Same stacked shape for every card: town, hours, then a note-or-source line.
+    for c in cards:
+        assert c.index('class="region"') < c.index('class="hours"') < c.index('class="source-line"')
+    assert "standing hours, not yet confirmed" in cards[0] and "Posted by the village" in cards[1]

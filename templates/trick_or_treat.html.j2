@@ -172,6 +172,12 @@
   @media (prefers-color-scheme: dark) { .entry { --town-text: color-mix(in srgb, var(--town, #ffffff) 45%, #fff); } }
   .entry .region a { color: var(--town-text); font-size: 17px; }
   .entry .hours { font-size: 17px; }
+  .entry { flex-direction: column; align-items: flex-start; gap: 4px; }
+  .entry .hours, .entry .not-posted { text-align: left; }
+  .entry .source-line { font-size: 13.5px; color: var(--muted); }
+  .entry .source-line a { color: var(--accent-2-text); font-weight: 700; text-decoration: none; }
+  .glance .row-note { display: block; font-size: 13.5px; font-weight: 400; color: var(--muted); }
+  .glance .row-note a { color: var(--accent-2-text); font-weight: 700; text-decoration: none; }
   .entry .also { flex-basis: 100%; font-size: 13.5px; color: var(--muted); border-top: 1px dashed var(--border); padding-top: 8px; margin-top: 2px; }
   .entry .also a { color: var(--accent-2-text); font-weight: 700; text-decoration: none; }
   .entry .also a:hover { text-decoration: underline; }
@@ -239,7 +245,7 @@
       {% for entry in entries %}
       <tr style="--town:{{ entry.color }}">
         <th scope="row"><a href="#tot-{{ entry.region_id }}">{{ entry.region_name }}</a></th>
-        <td>{% if entry.hours %}{{ entry.hours_short if common_date else entry.hours }}{% elif entry.no_official_hours %}No set hours{% else %}Not posted yet{% endif %}</td>
+        <td>{% if entry.hours %}{{ entry.hours_short if common_date else entry.hours }}{% if entry.note %}<span class="row-note">{{ entry.note }}</span>{% else %}<span class="row-note"><a href="{{ entry.url }}">posted by the village</a></span>{% endif %}{% elif entry.no_official_hours %}No set hours{% else %}Not posted yet{% endif %}</td>
       </tr>
       {% endfor %}
     </tbody>
@@ -249,9 +255,11 @@
     <div class="entry" id="tot-{{ entry.region_id }}" style="--town:{{ entry.color }}">
       <span class="region"><a href="{{ entry.region_url }}">{{ entry.region_name }}</a></span>
       {% if entry.hours %}
-      <span class="hours"><a href="{{ entry.url }}">{{ entry.hours_short if common_date else entry.hours }}</a>{% if entry.ics_href %} <a class="cal" href="{{ entry.ics_href }}" download="trick-or-treat-{{ entry.region_id }}.ics">Add to calendar</a>{% endif %}{% if entry.note %}<span class="hours-note">{{ entry.note }}</span>{% endif %}</span>
+      <span class="hours"><a href="{{ entry.url }}">{{ entry.hours_short if common_date else entry.hours }}</a>{% if entry.ics_href %} <a class="cal" href="{{ entry.ics_href }}" download="trick-or-treat-{{ entry.region_id }}.ics">Add to calendar</a>{% endif %}</span>
+      <span class="source-line">{% if entry.note %}{{ entry.note }}{% else %}Posted by the village: <a href="{{ entry.url }}">see the page</a>{% endif %}</span>
       {% elif entry.no_official_hours %}
-      <span class="hours"><a href="{{ entry.url }}">No official hours</a>{% if entry.note %}<span class="hours-note">{{ entry.note }}</span>{% endif %}</span>
+      <span class="hours"><a href="{{ entry.url }}">No official hours</a></span>
+      <span class="source-line">{% if entry.note %}{{ entry.note }}{% else %}Source: <a href="{{ entry.url }}">the village page</a>{% endif %}</span>
       {% else %}
       <span class="not-posted">Not yet posted for this year — <a href="{{ entry.url }}">check the village's page</a></span>
       {% endif %}
