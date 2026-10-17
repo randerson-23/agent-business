@@ -168,7 +168,9 @@
   @media (max-width: 480px) { .tot-art { width: 64px; height: 64px; } }
   .entry { border: 1px solid var(--border); border-left: 6px solid var(--town, var(--accent)); background: var(--card); padding: 14px 16px; margin-bottom: 10px; }
   .entry:last-child { border-bottom: 1px solid var(--border); }
-  .entry .region a { color: var(--town, var(--ink)); font-size: 17px; }
+  .entry { --town-text: var(--town, var(--ink)); }
+  @media (prefers-color-scheme: dark) { .entry { --town-text: color-mix(in srgb, var(--town, #ffffff) 45%, #fff); } }
+  .entry .region a { color: var(--town-text); font-size: 17px; }
   .entry .hours { font-size: 17px; }
   .entry .also { flex-basis: 100%; font-size: 13.5px; color: var(--muted); border-top: 1px dashed var(--border); padding-top: 8px; margin-top: 2px; }
   .entry .also a { color: var(--accent-2-text); font-weight: 700; text-decoration: none; }

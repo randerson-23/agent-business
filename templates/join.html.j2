@@ -76,7 +76,7 @@
   }
   h1, h2 { font-family: 'Archivo', system-ui, sans-serif; font-weight: 800; letter-spacing: -0.02em; }
   .wrap { max-width: 680px; margin: 0 auto; padding: 0 20px 64px; }
-  .join-hero { background: #ec3013; color: #fff; padding: 26px 20px 22px; }
+  .join-hero { background: #c4280e; color: #fff; padding: 26px 20px 22px; }
   .join-hero-inner { max-width: 680px; margin: 0 auto; }
   .join-hero .kicker { color: #ffe9b3; letter-spacing: 0.14em; }
   .join-hero h1 { color: #fff; font-family: Georgia, 'Times New Roman', serif; font-size: 30px; line-height: 1.15; margin: 10px 0 12px; }
@@ -91,7 +91,9 @@
   .pick-title { font-size: 17px; font-weight: 800; color: var(--ink); text-decoration: none; line-height: 1.3; }
   .pick-title:hover { color: var(--accent-2-text); text-decoration: underline; }
   .pick-meta { font-size: 13.5px; color: var(--muted); margin-top: 3px; }
-  .pick-meta strong { color: var(--ink); }
+  .pick-meta strong { color: var(--town-text, var(--ink)); }
+  .pick { --town-text: var(--town); }
+  @media (prefers-color-scheme: dark) { .pick { --town-text: color-mix(in srgb, var(--town) 45%, #fff); } }
   .badge { display: inline-block; font-size: 12px; font-weight: 700; border: 1px solid var(--border); border-radius: 999px; padding: 1px 9px; margin: 6px 6px 0 0; color: var(--muted); }
   .recent { margin: 24px 0 0; font-weight: 700; }
   .recent a { color: var(--accent-2-text); }
@@ -166,11 +168,11 @@
   {% if picks %}
   <h2 class="events-heading">This weekend's picks</h2>
   {% for pick in picks %}
-  <div class="pick">
+  <div class="pick" style="--town:{{ pick.pick_color }}">
     <div class="chip"><div class="dow" style="background:{{ pick.pick_color }}">{{ pick.email_dow or "WKND" }}</div><div class="day" style="background:{{ pick.pick_tint }}">{{ pick.email_daynum or pick.email_emoji }}</div></div>
     <div>
       <span>{{ pick.email_emoji }}</span> <a class="pick-title" href="{{ pick.url }}">{{ pick.title }}</a>
-      <div class="pick-meta"><strong style="color:{{ pick.pick_color }}">{{ pick.pick_town }}</strong>{% if pick.email_clock %} · {{ pick.email_clock }}{% endif %}{% if pick.email_where %} · {{ pick.email_where }}{% endif %}</div>
+      <div class="pick-meta"><strong>{{ pick.pick_town }}</strong>{% if pick.email_clock %} · {{ pick.email_clock }}{% endif %}{% if pick.email_where %} · {{ pick.email_where }}{% endif %}</div>
       {% for b in pick.email_badges %}<span class="badge">{{ b.emoji }} {{ b.label }}</span>{% endfor %}
     </div>
   </div>
