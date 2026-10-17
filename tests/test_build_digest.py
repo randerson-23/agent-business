@@ -5834,3 +5834,20 @@ def test_every_email_surface_class_forces_the_colour_its_element_already_has():
     css = html.split("prefers-color-scheme: dark")[1]
     for cls, hex in build_digest.EMAIL_SURFACES.items():
         assert f".{cls} {{ background-color:{hex} !important; }}" in css
+
+
+def test_did_you_go_poll_links_carry_the_issue_date_and_the_pages_are_noindex():
+    # ROADMAP.md item 331.
+    sections = [{
+        "region_name": "Mount Prospect", "region_url": "https://x/mount-prospect-60056/",
+        "weekend_events": [{"title": "Oktoberfest", "url": "https://x/1", "date": "Saturday", "date_iso": "2026-10-17T10:00:00", "tags": ["free"], "detail": "d"}],
+        "evergreen": [], "sponsor": None,
+    }]
+    html = build_digest.render_combined_email_digest(sections, "Oct 17–18", datetime(2026, 10, 15, 15, tzinfo=timezone.utc))
+    assert "Did you go to something from last week's email?" in html
+    assert build_digest.SITE_BASE_URL + "thanks/went/?w=2026-10-15" in html and build_digest.SITE_BASE_URL + "thanks/not-yet/?w=2026-10-15" in html
+    for kind in ("went", "not-yet"):
+        page = build_digest.render_thanks_page(kind, [{"id": "mount-prospect-60056", "name": "Mount Prospect"}])
+        assert '<meta name="robots" content="noindex">' in page and "Thanks, that helps us keep this useful." in page
+        assert "mailto:?subject=" in page and "Mount Prospect" in page
+        assert "/thanks/" not in "".join(build_digest.collect_sitemap_urls([]))

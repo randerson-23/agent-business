@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Thanks — Within Ten</title>
+<meta name="robots" content="noindex">
+<link rel="canonical" href="{{ canonical_url }}">
+<style>
+  :root { --bg:#f3f2f2; --ink:#201e1d; --muted:#605d5d; --accent:#ae1800; --card:#eae9e9; }
+  @media (prefers-color-scheme: dark) { :root { --bg:#161413; --ink:#f3f2f2; --muted:#a9a5a5; --accent:#ff8a73; --card:#242120; } }
+  body { margin:0; background:var(--bg); color:var(--ink); font:18px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif; }
+  main { max-width:560px; margin:0 auto; padding:48px 16px; }
+  h1 { font-size:32px; line-height:1.15; margin:0 0 12px; }
+  p { margin:0 0 16px; }
+  .fwd { display:inline-block; background:#c4280e; color:#fff; font-weight:800; text-decoration:none; padding:12px 20px; border-radius:10px; }
+  .towns { display:flex; flex-wrap:wrap; gap:8px; margin:8px 0 24px; padding:0; list-style:none; }
+  .towns a { display:inline-block; padding:6px 12px; border-radius:999px; border:2px solid var(--town); color:var(--ink); font-weight:700; text-decoration:none; font-size:16px; }
+  .small { color:var(--muted); font-size:16px; }
+  a:focus-visible { outline:3px solid var(--accent); outline-offset:2px; }
+</style>
+</head>
+<body>
+<main>
+  <h1>{{ headline }}</h1>
+  <p>{{ body }}</p>
+  <p><a class="fwd" href="{{ forward_href }}">Forward it to a neighbour</a></p>
+  <p class="small">What's on this weekend:</p>
+  <ul class="towns">{% for t in towns %}<li><a href="{{ t.url }}" style="--town:{{ t.color }}">{{ t.name }}</a></li>{% endfor %}</ul>
+</main>
+{% if analytics and analytics.configured %}
+<script data-goatcounter="https://{{ analytics.goatcounter_code }}.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+{% endif %}
+</body>
+</html>
