@@ -3496,6 +3496,32 @@ def render_short_redirect(region_id: str) -> str:
     )
 
 
+def flyer_url(region_id: str, campaign: str) -> str:
+    """The URL a flyer's QR code encodes (ROADMAP.md item 320)."""
+    return f"{SITE_BASE_URL}{region_id}/?utm_source=print&utm_campaign={campaign}#newsletter-signup"
+
+
+def flyer_variants(placements: list[dict] | None) -> list[dict]:
+    """One generic flyer plus one per configured print placement, each with
+    its own counted campaign (`flyer-<place id>`)."""
+    variants = [{"id": "", "campaign": "flyer-general"}]
+    for p in placements or []:
+        if p.get("id"):
+            variants.append({"id": str(p["id"]), "campaign": f"flyer-{p['id']}"})
+    return variants
+
+
+def render_flyer(region_id: str, town: str, examples: list[str], campaign: str, copies: int = 1) -> str:
+    import segno
+
+    url = flyer_url(region_id, campaign)
+    qr = segno.make(url, error="m").svg_inline(scale=8, border=2, dark="#000", light="#fff", omitsize=True)
+    template = get_template_env().get_template("flyer.html.j2")
+    return template.render(
+        town=town, examples=examples[:3], qr=qr, url=url, copies=copies, short=SHORT_PATHS.get(region_id, region_id)
+    )
+
+
 def collect_sitemap_urls(region_summaries: list[dict], issues: list[dict] | None = None) -> list[str]:
     urls = [
         SITE_BASE_URL,
@@ -6304,6 +6330,17 @@ def main() -> None:
         if rid in known_regions:
             (OUTPUT_DIR / short).mkdir(parents=True, exist_ok=True)
             (OUTPUT_DIR / short / "index.html").write_text(render_short_redirect(rid), encoding="utf-8")
+
+    for cfg_path in sorted((CONFIG_DIR / "regions").glob("*.yaml")):
+        region_cfg = load_yaml(cfg_path)
+        rid, town = region_cfg["region"]["id"], region_cfg["region"]["name"]
+        examples = [e["title"] for e in region_cfg.get("evergreen", []) if e.get("title")][:3]
+        for variant in flyer_variants(sponsors_cfg.get("print_placements")):
+            base = OUTPUT_DIR / "print" / rid / variant["id"]
+            for copies, sub in ((1, ""), (2, "half")):
+                out = base / sub
+                out.mkdir(parents=True, exist_ok=True)
+                (out / "index.html").write_text(render_flyer(rid, town, examples, variant["campaign"], copies), encoding="utf-8")
 
     sitemap_urls = collect_sitemap_urls(region_summaries, issues)
     (OUTPUT_DIR / "sitemap.xml").write_text(build_sitemap_xml(region_summaries, now, issues), encoding="utf-8")

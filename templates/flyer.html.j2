@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Within Ten flyer: {{ town }}</title>
+<style>
+  @page { size: letter portrait; margin: 0.5in; }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; color: #201e1d; background: #fff; }
+  .sheet { display: flex; flex-direction: column; height: 9.8in; }
+  .copy { flex: 1; display: flex; flex-direction: column; justify-content: center; padding: 0.1in 0.3in; text-align: center; }
+  .copies-2 .copy + .copy { border-top: 2px dashed #605d5d; }
+  h1 { font-size: {{ '24pt' if copies == 2 else '60pt' }}; line-height: 1.05; margin: 0 0 0.15in; }
+  .sub { font-size: {{ '12pt' if copies == 2 else '18pt' }}; margin: 0 0 0.15in; }
+  ul { list-style: none; padding: 0; margin: 0 0 0.15in; font-size: {{ '11pt' if copies == 2 else '16pt' }}; font-weight: 700; }
+  li { margin: 0.04in 0; }
+  .qr svg { width: {{ '1.3in' if copies == 2 else '2.6in' }}; height: auto; }
+  .path { font-size: {{ '14pt' if copies == 2 else '24pt' }}; font-weight: 800; margin: 0.05in 0; }
+  .fine { font-size: {{ '9pt' if copies == 2 else '12pt' }}; color: #403d3d; margin: 0; }
+  .screen-only { max-width: 7in; margin: 16px auto; padding: 0 16px; font-size: 16px; }
+  @media print { .screen-only { display: none; } nav, footer { display: none; } }
+</style>
+</head>
+<body>
+<p class="screen-only">Print on US Letter, portrait, margins 0.5in. Scan the code to check it opens: {{ url }}</p>
+<div class="sheet copies-{{ copies }}">
+{% for _ in range(copies) %}
+  <div class="copy">
+    <h1>What's on in {{ town }} this weekend?</h1>
+    <p class="sub">One free email every Thursday. Library, park district and village events, all in one place.</p>
+    {% if examples %}<ul>{% for e in examples %}<li>{{ e }}</li>{% endfor %}</ul>{% endif %}
+    <div class="qr" role="img" aria-label="QR code for withintenmiles.com/{{ short }}/">{{ qr|safe }}</div>
+    <p class="path">withintenmiles.com/{{ short }}/</p>
+    <p class="fine">Free. Unsubscribe anytime. Not affiliated with the Village.</p>
+  </div>
+{% endfor %}
+</div>
+</body>
+</html>

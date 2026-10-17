@@ -16206,7 +16206,7 @@ families already go**. It adds one seasonal civic page.
 
 #### P1 (new)
 
-320. **A printable flyer per town, with a counted QR code.** Design/UX,
+320. ✅ **DONE (2026-10-17): `docs/print/<region>/index.html` (US Letter, one page, 60pt headline, three examples taken from the town's own `evergreen` titles, no dates and no sponsor, noindex, inline SVG QR from `segno`, typeable short path, "Not affiliated with the Village.") plus `/half/` (two to a sheet), and one variant per `print_placements:` entry in `config/sponsors.yaml` (empty until the owner agrees a placement) with campaign `flyer-<id>`; every flyer checked as one page with headless Chromium `--print-to-pdf`; tests check the encoded URL per placement, noindex and print-hidden chrome. Not in the sitemap. The QR has not been scanned with a phone.** **A printable flyer per town, with a counted QR code.** Design/UX,
      build loop. Write **`docs/print/<region>/index.html`** (`noindex`,
      linked only from `SPONSOR_KIT.md` and the owner notes), laid out
      with `@media print` for **US Letter, portrait, one page**:
