@@ -1459,8 +1459,34 @@ def build_tot_ics_uri(town: str, hours: str | None, url: str, year: int) -> str 
     return "data:text/calendar;charset=utf-8," + quote("\r\n".join(lines))
 
 
+TOT_WATCH_PATH = ROOT / "data" / "tot_watch.json"
+
+
+def load_tot_checked(now: datetime, path: Path = TOT_WATCH_PATH, max_age_hours: int = 72) -> dict[str, str]:
+    """When each village page was last compared (ROADMAP.md item 317), as
+    "Oct 24", only for checks newer than `max_age_hours` so the page never
+    claims a check that is days old."""
+    try:
+        data = json.loads(path.read_text(encoding="utf-8"))
+    except (OSError, ValueError):
+        return {}
+    checked: dict[str, str] = {}
+    for region_id, rec in (data.items() if isinstance(data, dict) else []):
+        try:
+            when = datetime.fromisoformat(str(rec["checked_at"]))
+        except (KeyError, ValueError, TypeError):
+            continue
+        if when.tzinfo is None:
+            when = when.replace(tzinfo=timezone.utc)
+        if timedelta(0) <= now - when <= timedelta(hours=max_age_hours):
+            local = when.astimezone(LOCAL_TZ)
+            checked[region_id] = local.strftime("%b ") + str(local.day)
+    return checked
+
+
 def render_trick_or_treat_page(
-    entries: list[dict], now: datetime, analytics: dict | None = None, newsletter: dict | None = None
+    entries: list[dict], now: datetime, analytics: dict | None = None, newsletter: dict | None = None,
+    checked: dict[str, str] | None = None,
 ) -> str:
     """The cross-region trick-or-treat hours page (ROADMAP.md Phase 11
     #101) - the single highest-volume hyperlocal query of Q4, and one no
@@ -1498,6 +1524,7 @@ def render_trick_or_treat_page(
             **entry,
             "color": EMAIL_TOWN_COLORS[i % len(EMAIL_TOWN_COLORS)][0],
             "hours_short": short_tot_hours(entry.get("hours")),
+            "checked": (checked or {}).get(entry.get("region_id", "")),
             "ics_href": build_tot_ics_uri(entry["region_name"], entry.get("hours"), entry["url"], now.year),
         })
     entries = colored
@@ -6179,7 +6206,7 @@ def main() -> None:
     (about_dir / "index.html").write_text(about_html, encoding="utf-8")
     logger.info("Wrote %s", about_dir / "index.html")
 
-    trick_or_treat_html = render_trick_or_treat_page(trick_or_treat_entries, now, analytics, newsletter)
+    trick_or_treat_html = render_trick_or_treat_page(trick_or_treat_entries, now, analytics, newsletter, load_tot_checked(now))
     trick_or_treat_dir = OUTPUT_DIR / "trick-or-treat"
     trick_or_treat_dir.mkdir(parents=True, exist_ok=True)
     (trick_or_treat_dir / "index.html").write_text(trick_or_treat_html, encoding="utf-8")
