@@ -1,0 +1,61 @@
+name: Trick-or-treat page watch
+
+# ROADMAP.md item 317. Twice a day; the script itself only acts from Oct 24 to
+# Nov 1. Fetches each village's trick-or-treat page once, hashes the text around
+# the keywords, and opens (or updates) one issue when it changes. Never edits the
+# configured hours: a person confirms the new hours first.
+
+on:
+  schedule:
+    - cron: "43 13,23 * * *"
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+  issues: write
+
+jobs:
+  watch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v7
+        with:
+          python-version: "3.11"
+      - run: pip install -r requirements.txt
+      - name: Watch
+        id: watch
+        run: python scripts/tot_watch.py
+      - name: Open or update the issue
+        if: steps.watch.outputs.changed != '' && steps.watch.outputs.changed != '0'
+        uses: actions/github-script@v9
+        with:
+          script: |
+            const fs = require('fs');
+            const body = fs.readFileSync('tot_watch_report.md', 'utf8');
+            const title = 'Trick-or-treat page changed';
+            const { data: open } = await github.rest.issues.listForRepo({ owner: context.repo.owner, repo: context.repo.repo, state: 'open', per_page: 50 });
+            const existing = open.find(i => i.title === title);
+            if (existing) {
+              await github.rest.issues.createComment({ owner: context.repo.owner, repo: context.repo.repo, issue_number: existing.number, body });
+            } else {
+              await github.rest.issues.create({ owner: context.repo.owner, repo: context.repo.repo, title, body });
+            }
+      - name: Commit the watch record
+        run: |
+          rm -f tot_watch_report.md
+          git config user.name "local-planner-bot"
+          git config user.email "actions@users.noreply.github.com"
+          if [ -f data/tot_watch.json ]; then git add data/tot_watch.json; fi
+          if git diff --cached --quiet; then
+            echo "No changes to commit."
+          else
+            git commit -m "Trick-or-treat watch record [skip ci]"
+            attempt=1
+            until git push; do
+              if [ "$attempt" -ge 5 ]; then echo "::error::Failed to push after $attempt attempts."; exit 1; fi
+              git fetch origin main
+              git rebase origin/main
+              attempt=$((attempt + 1))
+            done
+          fi

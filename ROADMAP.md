@@ -16119,7 +16119,7 @@ their hours late, and what the page looks like on a phone.
      date gate, the failed-fetch state, the rain threshold, and the
      sunset formatted in Central time.
 
-317. **Watch the village hours pages for changes in the last week.**
+317. ✅ **DONE (2026-10-17): `scripts/tot_watch.py` + `tot-watch.yml` (twice a day, Oct 24–Nov 1 only): fetches each region's `trick_or_treat.url`, hashes the text around trick/treat/Halloween, stores `data/tot_watch.json`, and opens or updates one issue "Trick-or-treat page changed" with before/after snippets; never edits `hours`; the page shows "Checked [date] against the village page" for a recent check; tests added. One issue for all towns rather than one per town.** **Watch the village hours pages for changes in the last week.**
      Build loop. Add a small workflow, `tot-watch.yml`, that runs **twice
      a day from Oct 24 to Nov 1**:
 

@@ -5668,3 +5668,16 @@ def test_trunk_or_treat_rows_lead_with_a_town_chip():
     entries[0]["events"] = [ev]
     html = build_digest.render_trick_or_treat_page(entries, datetime(2026, 10, 18, 18, tzinfo=timezone.utc))
     assert re.search(r'<li><span class="chip" style="background:#[0-9a-f]{6}">Mount Prospect</span>', html)
+
+
+def test_checked_label_shows_only_a_recent_check(tmp_path):
+    # ROADMAP.md item 317.
+    path = tmp_path / "watch.json"
+    path.write_text(json.dumps({"p": {"checked_at": "2026-10-25T14:00+00:00"}, "w": {"checked_at": "2026-10-20T14:00+00:00"}, "bad": {"checked_at": "nonsense"}}), encoding="utf-8")
+    now = datetime(2026, 10, 26, 13, tzinfo=timezone.utc)
+    assert build_digest.load_tot_checked(now, path) == {"p": "Oct 25"}  # w is older than 72 hours
+    entries = _tot_entries(1)
+    entries[0]["region_id"] = "p"
+    html = build_digest.render_trick_or_treat_page(entries, now, checked={"p": "Oct 25"})
+    assert "Checked Oct 25 against the village page." in html
+    assert "against the village page." not in build_digest.render_trick_or_treat_page(entries, now)

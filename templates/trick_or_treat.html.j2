@@ -242,6 +242,7 @@
       {% else %}
       <span class="not-posted">Not yet posted for this year — <a href="{{ entry.url }}">check the village's page</a></span>
       {% endif %}
+      {% if entry.checked %}<span class="also">Checked {{ entry.checked }} against the village page.</span>{% endif %}
       {% if entry.village_post %}<span class="also">Village posted: <a href="{{ entry.village_post.url }}">{{ entry.village_post.title }}</a> &rarr;</span>{% endif %}
       {% for x in entry.also or [] %}
       <span class="also">Also: <a href="{{ x.url }}">{{ x.label }}</a>, {{ x.when }}{% if x.place %}, {{ x.place }}{% endif %}</span>
