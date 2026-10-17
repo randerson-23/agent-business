@@ -5803,3 +5803,34 @@ def test_flyer_v2_has_the_band_tiles_scan_label_and_a_take_one_strip_on_the_full
         assert not re.search(r"\b(20\d\d|January|February|March|April|May|June|July|August|September|October|November|December)\b", page.split("</style>")[1])
     assert full.count('class="tab"') == 4 and "Take one" in full
     assert "Take one" not in half
+
+
+def _surface_mismatches(html: str) -> list[tuple[str, str, str]]:
+    """Every element whose `wt-*` surface class forces a colour that differs
+    from its own inline background-color (ROADMAP.md item 330)."""
+    bad = []
+    for m in re.finditer(r"<(?:td|table|body|div)\b[^>]*>", html):
+        tag = m.group(0)
+        cls = re.search(r'class="([^"]*)"', tag)
+        bg = re.search(r"background-color:\s*(#[0-9a-fA-F]{6})", tag)
+        if not cls:
+            continue
+        for c in cls.group(1).split():
+            if c in build_digest.EMAIL_SURFACES and (not bg or bg.group(1).lower() != build_digest.EMAIL_SURFACES[c].lower()):
+                bad.append((c, build_digest.EMAIL_SURFACES[c], bg.group(1) if bg else ""))
+    return bad
+
+
+def test_every_email_surface_class_forces_the_colour_its_element_already_has():
+    sections = [{
+        "region_name": "Mount Prospect", "region_url": "https://x/mount-prospect-60056/",
+        "weekend_events": [{"title": "Oktoberfest", "url": "https://x/1", "date": "Saturday", "date_iso": "2026-10-17T10:00:00", "tags": ["free"], "detail": "d"}],
+        "evergreen": [{"title": "Library", "url": "https://x/2", "tags": ["free"]}],
+        "sponsor": {"name": "Acme", "headline": "h", "detail": "d", "url": "https://x/s"},
+    }]
+    html = build_digest.render_combined_email_digest(sections, "Oct 17–18", datetime(2026, 10, 15, 15, tzinfo=timezone.utc))
+    assert "wt-page" in html and "wt-paper" in html
+    assert _surface_mismatches(html) == []
+    css = html.split("prefers-color-scheme: dark")[1]
+    for cls, hex in build_digest.EMAIL_SURFACES.items():
+        assert f".{cls} {{ background-color:{hex} !important; }}" in css

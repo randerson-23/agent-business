@@ -16526,7 +16526,7 @@ rules.
 
 #### P1 (new)
 
-330. **Fix the email's forced-light palette to match the redesign, and
+330. ✅ **DONE (2026-10-17): `EMAIL_SURFACES` / `EMAIL_INKS` in `build_digest.py` generate the dark-mode override rules (`_email_dark_mode.css.j2` loops over them); the combined email now uses one class per surface (`wt-page`, `wt-paper`, `wt-season`, `wt-pick`, `wt-sky`, `wt-sponsor`); card backgrounds are `#fffefc` rather than pure white; a test checks every `wt-*` surface class against its element's inline `background-color` in the combined email, and the built combined and per-town send files pass it. The inline hex values in the templates are still written by hand (the test is what keeps them in step). Not checked in a real Gmail or Outlook dark mode.** **Fix the email's forced-light palette to match the redesign, and
      test it so it can't drift again.** Build loop, two files plus a
      test:
 

@@ -44,7 +44,7 @@
 </noscript>
 <![endif]-->
 </head>
-<body class="wt-bg" style="margin:0; padding:0; background-color:#f6f1ea;" bgcolor="#f6f1ea">
+<body class="wt-page" style="margin:0; padding:0; background-color:#f6f1ea;" bgcolor="#f6f1ea">
 {# ROADMAP.md item 207: hidden preheader - see email_digest.html.j2's
      own copy of this comment for the full rationale. #}
 <div style="display:none; font-size:1px; line-height:1px; max-height:0px; max-width:0px; opacity:0; overflow:hidden; mso-hide:all;">{{ preheader }}&#8203;&zwnj;&nbsp;&zwnj;&#8203;</div>
@@ -54,7 +54,7 @@
      hero, "Don't miss" picks, a colour per town, a date chip on every
      event and pill badges. The 600px column is now fluid (width 100%,
      max-width 600) so it no longer overflows a phone screen. #}
-<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" bgcolor="#f6f1ea" class="wt-bg" style="background-color:#f6f1ea;">
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" bgcolor="#f6f1ea" class="wt-page" style="background-color:#f6f1ea;">
 <tr>
 <td align="center" style="padding:16px 10px;">
 <!--[if mso]><table role="presentation" width="600" cellpadding="0" cellspacing="0" border="0"><tr><td><![endif]-->
@@ -136,7 +136,7 @@ This weekend, across the northwest suburbs
 {% endif %}
 {% if rain_plan %}
 <tr>
-<td bgcolor="#eaf4ff" class="wt-card" style="background-color:#eaf4ff; border:2px solid #2563eb; border-radius:14px; padding:14px 18px; font-family:Arial, Helvetica, sans-serif;">
+<td bgcolor="#eaf4ff" class="wt-sky" style="background-color:#eaf4ff; border:2px solid #2563eb; border-radius:14px; padding:14px 18px; font-family:Arial, Helvetica, sans-serif;">
 <div style="font-size:13px; font-weight:bold; letter-spacing:1.5px; color:#1d4ed8; padding-bottom:8px;">☔ RAIN PLAN: INDOOR PICKS</div>
 {% for e in rain_plan %}
 <div style="padding:4px 0; font-size:16px;"><span>{{ e.email_emoji }}</span> <a href="{{ e.url }}" style="color:#201e1d; font-weight:bold; text-decoration:none;">{{ e.title }}</a> <span style="font-size:13px; color:{{ e.pick_color }}; font-weight:bold;">{{ e.pick_town }} · {{ e.email_when or e.date }}</span></div>
@@ -149,9 +149,9 @@ This weekend, across the northwest suburbs
 {% if edition_block %}
 {# ROADMAP.md item 289: the seasonal edition's first block, above "Don't miss". #}
 <tr>
-<td bgcolor="#fff4d6" class="wt-card-sponsor" style="background-color:#fff4d6; border:2px solid {{ hero_bg }}; border-radius:14px; padding:16px 18px; font-family:Arial, Helvetica, sans-serif;">
+<td bgcolor="#fff4d6" class="wt-pick" style="background-color:#fff4d6; border:2px solid {{ hero_bg }}; border-radius:14px; padding:16px 18px; font-family:Arial, Helvetica, sans-serif;">
 <div style="font-size:13px; font-weight:bold; letter-spacing:1.5px; color:#ae1800; padding-bottom:8px;">{{ edition_block.title|upper }}</div>
-<div style="font-size:15px; line-height:2.1; color:#201e1d;">{% for pill in edition_block.pills %}<span style="display:inline-block; background-color:#ffffff; border:1px solid {{ hero_bg }}; border-radius:999px; padding:1px 10px; margin:0 6px 4px 0; white-space:nowrap;">{{ pill }}</span>{% endfor %}</div>
+<div style="font-size:15px; line-height:2.1; color:#201e1d;">{% for pill in edition_block.pills %}<span style="display:inline-block; background-color:#fffefc; border:1px solid {{ hero_bg }}; border-radius:999px; padding:1px 10px; margin:0 6px 4px 0; white-space:nowrap;">{{ pill }}</span>{% endfor %}</div>
 <div style="padding-top:8px; font-size:16px; font-weight:bold;"><a href="{{ edition_block.link }}" class="wt-brand" style="color:#ae1800; text-decoration:underline;">{{ edition_block.link_label }}</a></div>
 </td>
 </tr>
@@ -160,7 +160,7 @@ This weekend, across the northwest suburbs
 
 {% if seasonal_link %}
 <tr>
-<td bgcolor="#fff4d6" class="wt-card-sponsor" style="background-color:#fff4d6; border:2px dashed #f0a500; border-radius:14px; padding:14px 18px; font-family:Arial, Helvetica, sans-serif; font-size:16px; font-weight:bold;">
+<td bgcolor="#fff4d6" class="wt-pick" style="background-color:#fff4d6; border:2px dashed #f0a500; border-radius:14px; padding:14px 18px; font-family:Arial, Helvetica, sans-serif; font-size:16px; font-weight:bold;">
 <a href="{{ seasonal_link.url }}" class="wt-brand" style="color:#ae1800; text-decoration:none;">{{ seasonal_link.label }}</a>
 </td>
 </tr>
@@ -170,7 +170,7 @@ This weekend, across the northwest suburbs
 {% if top_picks %}
 {# "Don't miss": one standout per town, chosen by pick_email_top_picks(). #}
 <tr>
-<td bgcolor="#ffffff" class="wt-card" style="background-color:#ffffff; border-radius:18px; padding:20px 20px 8px 20px; border:2px solid #201e1d;">
+<td bgcolor="#fffefc" class="wt-paper" style="background-color:#fffefc; border-radius:18px; padding:20px 20px 8px 20px; border:2px solid #201e1d;">
 <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
 <tr>
 <td style="font-family:Arial, Helvetica, sans-serif; font-size:13px; font-weight:bold; letter-spacing:1.5px; color:#ae1800; padding-bottom:12px;">
@@ -213,7 +213,7 @@ This weekend, across the northwest suburbs
 </td>
 </tr>
 <tr>
-<td bgcolor="#ffffff" class="wt-card" style="background-color:#ffffff; border-radius:0 0 16px 16px; padding:6px 20px 18px 20px;">
+<td bgcolor="#fffefc" class="wt-paper" style="background-color:#fffefc; border-radius:0 0 16px 16px; padding:6px 20px 18px 20px;">
 <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
 
 {% if block.attendable_events %}
@@ -318,7 +318,7 @@ Nothing dated for this weekend yet — the full guide has what's coming up.
 <td style="padding-top:12px;">
 <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
 <tr>
-<td bgcolor="#fff2ef" class="wt-card-sponsor" style="background-color:#fff2ef; border:2px solid #ec3013; border-radius:12px; padding:10px 14px;">
+<td bgcolor="#fff2ef" class="wt-sponsor" style="background-color:#fff2ef; border:2px solid #ec3013; border-radius:12px; padding:10px 14px;">
 <span class="wt-accent" style="font-family:Arial, Helvetica, sans-serif; font-size:11px; font-weight:bold; letter-spacing:0.5px; color:#ae1800;">💛 LOCAL RECOMMENDATION —</span>
 <a href="{{ block.sponsor.url }}" class="wt-ink" style="color:#201e1d; text-decoration:none; font-weight:bold; font-family:Arial, Helvetica, sans-serif; font-size:14px;">{{ block.sponsor.title }}</a>
 </td>
@@ -350,7 +350,7 @@ Nothing dated for this weekend yet — the full guide has what's coming up.
 {# ROADMAP.md item 177: regions with nothing dated collapse into one
      shared block once 2+ qualify at once. #}
 <tr>
-<td bgcolor="#ffffff" class="wt-card" style="background-color:#ffffff; border-radius:16px; padding:18px 20px;">
+<td bgcolor="#fffefc" class="wt-paper" style="background-color:#fffefc; border-radius:16px; padding:18px 20px;">
 <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
 <tr>
 <td class="wt-muted" style="font-family:Arial, Helvetica, sans-serif; font-size:14px; color:#605d5d; padding-bottom:8px;">
@@ -376,7 +376,7 @@ Nothing dated yet in {{ empty_regions_summary.names }} — worth knowing about:
 <td style="padding-bottom:16px;">
 <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
 <tr>
-<td bgcolor="#fffaf2" class="wt-bg" style="background-color:#fffaf2; border:2px dashed #e3c9a8; border-radius:14px; padding:12px 16px;">
+<td bgcolor="#fffaf2" class="wt-season" style="background-color:#fffaf2; border:2px dashed #e3c9a8; border-radius:14px; padding:12px 16px;">
 <span class="wt-muted" style="font-family:Arial, Helvetica, sans-serif; font-size:11px; font-weight:bold; letter-spacing:0.5px; color:#605d5d;">📣 SPONSOR THIS SPOT —</span>
 <span class="wt-muted" style="font-family:Arial, Helvetica, sans-serif; font-size:13px; color:#605d5d;">{{ house_ad.detail }}</span>
 {% if house_ad.url %} <a href="{{ house_ad.url }}" class="wt-brand" style="color:#ae1800; text-decoration:none; font-weight:bold; font-family:Arial, Helvetica, sans-serif; font-size:13px;">Learn more &rarr;</a>{% endif %}

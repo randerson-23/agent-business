@@ -245,6 +245,8 @@ def get_template_env() -> Environment:
     # leaving a blank, indented line behind in the output.
     env = Environment(loader=FileSystemLoader(str(TEMPLATES_DIR)), autoescape=True, trim_blocks=True, lstrip_blocks=True)
     env.filters["short"] = lambda text, n=70: (str(text)[: n - 1].rstrip() + "…") if len(str(text)) > n else str(text)
+    env.globals["email_surfaces"] = EMAIL_SURFACES
+    env.globals["email_inks"] = EMAIL_INKS
     env.globals["preferred_source_url"] = PREFERRED_SOURCE_URL
     env.globals["webmail_providers"] = [[label, url, list(domains)] for label, url, domains in WEBMAIL_PROVIDERS]
     return env
@@ -4724,6 +4726,24 @@ def email_visuals(event: dict) -> dict:
 # Town colours for the email's region headers and date chips: dark enough for
 # white text (all at or above 4.5:1 on white), cycled in section order so the
 # same town keeps the same colour from week to week.
+# ROADMAP.md item 330: one class per surface colour the emails actually use.
+# Feeds the dark-mode override include (_email_dark_mode.css.j2); a test
+# checks every `wt-*` surface class in the built send file against its
+# element's inline background-color, so the two can't drift apart again.
+EMAIL_SURFACES: dict[str, str] = {
+    "wt-bg": "#f3f2f2",  # single-town email page
+    "wt-card": "#eae9e9",  # single-town email card
+    "wt-card-sponsor": "#fff2ef",
+    "wt-cta-bg": "#ec3013",
+    "wt-page": "#f6f1ea",  # combined email page
+    "wt-paper": "#fffefc",  # combined email cards (not pure white)
+    "wt-season": "#fffaf2",
+    "wt-pick": "#fff4d6",
+    "wt-sky": "#eaf4ff",
+    "wt-sponsor": "#fff2ef",
+}
+EMAIL_INKS: dict[str, str] = {"wt-ink": "#201e1d", "wt-muted": "#605d5d", "wt-accent": "#ae1800", "wt-brand": "#ae1800"}
+
 EMAIL_TOWN_COLORS: tuple[tuple[str, str], ...] = (
     ("#0f766e", "#effaf8"),  # teal
     ("#6d28d9", "#f6f3fe"),  # violet
