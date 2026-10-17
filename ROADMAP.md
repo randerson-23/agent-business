@@ -15929,6 +15929,87 @@ design/UX angle is **region-page weight**, measured in the built
 duplicated JSON.
 
 
+#### Research pass 2026-10-17 (eightieth pass)
+
+Since the last pass the build loop closed item 283 (the family holiday
+shows) and wrote item 281's Patch rule into the working agreements. The
+Oct 15 issue's open metrics land with the **Oct 18 backfill**: the
+backfill waits three days so opens can accrue (item 187), which is why
+`send_history.json` still shows none. Region pages are unchanged
+pending item 305 (Des Plaines is still 1,768 KB). This pass re-checks
+the head search term against the site's own page titles, and plans the
+two quiet months ahead.
+
+| Angle | What it is / what we found | Why it matters here |
+|---|---|---|
+| **"things to do in Mount Prospect IL this weekend", re-checked** | Still **Eventbrite's foreign-domain pages** (`.com.au`, `.ca`, `.co.uk`), mostly showing events in Skokie, Rosemont and Chicago, and **Patch's calendar** listing **spring** library programmes. Nothing current or local leads | The competition for the flagship query is stale and mis-localised, so a page that matches it closely has a real chance. That makes the site's own titles the cheapest ranking lever available (next row) |
+| **The site's titles against that query (design/UX, read from `docs/`)** | `/mount-prospect-60056/this-weekend/`: **title "This weekend in Mount Prospect — Within Ten"**, description *"Oct 16–18 — everything with a known date in this range."* Region page: *"Mount Prospect (60056) — Within Ten"*. Hub: *"This Weekend Near You — Within Ten"*. **None says "things to do", none says "IL", and none of the descriptions names a single event** | Titles and descriptions are what a searcher reads before choosing a result, and Google matches on their words. A description that names three real events this weekend also answers the query in the result itself (item 310) |
+| **Winter outdoors** (Arlington Heights Park District's own page; Patch; Macaroni KID Schaumburg) | AHPD floods rinks **Dec 15 – Feb 15, weather permitting**, at **seven parks** (Arlington Ridge Center, Camelot, Frontier, Heritage, Hickory Meadows, Pioneer, Recreation). It has **four sled hills** (Green Slopes, Heritage, Nickol Knoll, Sunset Meadows; Heritage and Green Slopes are **lighted**), plastic sleds only, and **no skating on ponds**. Nothing found for the other four towns in one search. Patch runs an "Arlington Heights ice rinks open" story most winters | "Sledding hills near me" and "is the rink open" are the winter versions of trick-or-treat hours: dated, local, asked every year, and answered badly by the national results. The answer lives on park-district pages the site can source (item 311) |
+| **January–March, when the calendars thin out** | Outdoor events collapse after New Year. The site's emails and weekend pages are built from dated events, so a thin week means a thin issue | Retention is decided in the weeks with the least to report. An issue that is half empty teaches a subscriber to stop opening it (item 312) |
+
+#### P1 (new)
+
+310. **Make the weekend and town page titles match what people search.**
+     Build loop, templates and the page builders:
+     - **Town weekend page:** title *"Things to Do in Mount Prospect, IL
+       This Weekend (Oct 16–18) | Within Ten"*; H1 *"Things to do in Mount
+       Prospect this weekend"*; description *"23 things to do Oct 16–18:
+       Fishing Derby, Spooky Scary Studio, Mount Prospect Farmers Market
+       and more, from the village, library and park district."* It is
+       built from the real count and item 268's top three picks.
+     - **Town page:** *"Things to Do in Mount Prospect, IL: Events This
+       Week | Within Ten"*, with the same description pattern for the
+       week.
+     - **Hub weekend page:** *"Things to Do This Weekend in the Northwest
+       Suburbs (Arlington Heights, Des Plaines, Mount Prospect, Palatine,
+       Wheeling)"*, trimmed to fit.
+     - **Rules:** titles at most about 65 characters before the brand
+       (drop the date range first if it is too long), descriptions at most
+       160 characters, and never a count of zero (fall back to the plain
+       wording). Keep `og:title` and `og:description` in step. Tests: lengths,
+       the zero-count fallback, and that the three named events are real
+       picks from this build.
+
+#### P2 (new)
+
+311. **A "Winter outdoors" page per town: rinks, sled hills and whether
+     they're open.** Build loop.
+     - **Data:** a `winter_outdoors:` block per region config: rink
+       parks, sled hills (lighted or not), rules, and the season window,
+       each with its park district's own `source_url`. Arlington Heights
+       comes from `ahpd.org/ice-rinks-sled-hills/` (above). For the other
+       four towns, probe their park-district pages first (item 212) and
+       enter only what those pages say.
+     - **Page:** `/<region>/winter-outdoors/`, live **Dec 1 – Feb 28**,
+       added to the seasonal registry (items 263, 285) so the homepage
+       strip and the email can point at it.
+     - **Live status:** when a town's park-district or village feed posts
+       an item matching *rinks open, rinks closed, sledding hills* in
+       season, show it at the top as *"Update from [source], [date]:
+       [title] →"*. Never infer conditions from the weather.
+     - Tests: the window, a status item surfacing, and no page for a town
+       without configured data.
+
+#### P3 (new)
+
+312. **A floor for thin weeks: "Indoor ideas" when a town has few dated
+     events.** Build loop. When a town has fewer than **4 attendable
+     weekend events**, the email and its weekend page add up to three
+     **evergreen indoor ideas** from that town's config: open swim, an
+     indoor play space, a library maker space or museum pass, each linked
+     to its source and labelled *"Anytime this week"* so it is never
+     mistaken for a dated event. Most of these evergreen entries already
+     exist (`evergreen:` in each region config). This decides when they
+     show. Tests: the threshold, the label, and no change on a busy week.
+
+Competitors reviewed this pass: **the head-term results, re-checked**
+(Eventbrite foreign domains and a stale Patch calendar), and **park
+districts' winter rink and sledding pages** (Arlington Heights
+documented in full; the other four towns to probe). The design/UX
+angle is **the site's own titles and descriptions, read against the
+query they need to win**.
+
+
 ## Working agreements for autonomous iteration
 
 - Cadence is three times a day (05:51, 13:51 and 21:51 UTC) for this
