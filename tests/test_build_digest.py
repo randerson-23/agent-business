@@ -5548,3 +5548,31 @@ def test_thin_week_email_block_is_labelled_and_absent_on_a_busy_week():
     for i in range(5):
         busy[0]["weekend_events"].append({"title": f"Extra {i}", "url": f"https://x/{i}", "date_iso": "2026-10-17T10:00:00", "date": "2026-10-17", "detail": "", "tags": []})
     assert "Indoor ideas" not in build_digest.render_combined_email_digest(busy, "Oct 16–18", now, None)
+
+
+def test_closure_windows():
+    # ROADMAP.md item 307.
+    w = build_digest.closure_window
+    assert w(date(2026, 11, 22)) is None and w(date(2026, 11, 23)) == (date(2026, 11, 23), date(2026, 11, 29)) and w(date(2026, 11, 29)) is not None and w(date(2026, 11, 30)) is None
+    assert w(date(2026, 12, 21))[1] == date(2026, 12, 27) and w(date(2026, 12, 28)) == (date(2026, 12, 28), date(2027, 1, 3)) and w(date(2027, 1, 2)) == (date(2026, 12, 28), date(2027, 1, 3))
+    assert w(date(2027, 1, 4)) is None and w(date(2026, 7, 4)) is None
+
+
+def test_closures_come_only_from_what_a_source_posts():
+    news = {"section": "Village News", "events": [
+        {"title": "Library closed Thursday for Thanksgiving", "url": "https://l/1", "date_iso": "2026-11-26T00:00:00"},
+        {"title": "Refuse pickup delayed one day", "url": "https://v/2", "date_iso": "2026-11-27T00:00:00"},
+        {"title": "Turkey Trot 5K", "url": "https://v/3", "date_iso": "2026-11-26T08:00:00"},  # not a closure
+        {"title": "Library closed for renovations", "url": "https://l/4", "date_iso": "2026-12-04T00:00:00"},  # outside the window
+    ]}
+    school = {"section": "School Calendar", "events": [{"title": "Schools closed", "url": "https://s", "date_iso": "2026-11-26T00:00:00"}]}
+    found = build_digest.build_closures([news, school], date(2026, 11, 24))
+    assert [c["title"] for c in found] == ["Library closed Thursday for Thanksgiving", "Refuse pickup delayed one day"]
+    assert build_digest.build_closures([news, school], date(2026, 11, 20)) == []  # not a holiday week: nothing shown
+    assert build_digest.build_closures([{"section": "Village News", "events": []}], date(2026, 11, 24)) == []
+    line = build_digest.build_closures_email_line([{"region_name": "Palatine", "region_url": "https://x/p/", "closures": found}], datetime(2026, 11, 24, tzinfo=timezone.utc))
+    assert line["text"].startswith("🔒 Palatine: Library closed Thursday") and line["url"] == "https://x/p/#closures"
+    region_cfg = {"region": {"id": "p", "name": "Palatine", "zip": "60067", "state": "IL", "tagline": "t", "timezone": "America/Chicago"}}
+    html = build_digest.render_region_page(region_cfg, [], None, [], datetime(2026, 11, 24, 18, tzinfo=timezone.utc), closures=found)
+    assert 'id="closures"' in html and "Closed or changed this week" in html
+    assert 'id="closures"' not in build_digest.render_region_page(region_cfg, [], None, [], datetime(2026, 11, 24, 18, tzinfo=timezone.utc))
