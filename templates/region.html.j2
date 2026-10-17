@@ -941,6 +941,7 @@
             {% for tag in item.tag_badges %}<span class="tag-badge" style="background: var(--hue-{{ tag.hue }}-bg); color: var(--hue-{{ tag.hue }}-ink);">{{ tag.emoji }} {{ tag.label }}</span>{% endfor %}
           </div>
           {% endif %}
+          {% if item.reg_badge %}<div class="tag-row"><span class="tag-badge" style="background: var(--hue-amber-bg, #fff4d6); color: var(--hue-amber-ink, #5c3b00);">📝 {{ item.reg_badge }}</span></div>{% endif %}
           {% if item.ics_href %}
           <div class="cal-row">
             <a href="{{ item.ics_href }}" download="event.ics">📅 Add to calendar</a>

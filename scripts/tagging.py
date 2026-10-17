@@ -9,6 +9,9 @@ explicitly; fetched events get tags inferred from their title+detail text.
 """
 from __future__ import annotations
 
+import re as _re
+from datetime import date as _date
+
 # Order matters only for readability; a piece of text can match many tags.
 # Keep keywords lowercase - matching is done against lowercased text.
 TAG_KEYWORDS: dict[str, tuple[str, ...]] = {
@@ -179,3 +182,37 @@ def tag_display(tag_id: str) -> dict[str, str]:
     return TAG_DISPLAY.get(
         tag_id, {"label": tag_id.replace("_", " ").title(), "emoji": "🏷️", "hue": "gray"}
     )
+
+
+# ROADMAP.md item 327: a registration-opens date, only from explicit phrases.
+_MONTHS = {m: i for i, m in enumerate(
+    ("january", "february", "march", "april", "may", "june", "july", "august", "september", "october", "november", "december"), 1)}
+_MONTH_RE = "|".join(sorted(_MONTHS, key=len, reverse=True)) + "|" + "|".join(m[:3] for m in _MONTHS if m != "may") + "|sept"
+_DATE_RE = rf"(?:(?:mon|tues?|wed(?:nes)?|thu(?:rs?)?|fri|sat(?:ur)?|sun)[a-z]*\.?,?\s+)?({_MONTH_RE})\.?\s+(\d{{1,2}})(?:st|nd|rd|th)?(?:,?\s+(\d{{4}}))?"
+_REGISTRATION_PHRASES = (
+    r"registration\s*(?:is\s+)?(?:required\s*[,;:.-]?\s*)?(?:begin|begins|beginning|opens|open|starts|start|starting)\s+(?:on\s+)?",
+    r"sign[- ]?ups?\s+(?:begin|begins|beginning|opens|open|starts|start|starting)\s+(?:on\s+)?",
+    r"register(?:ing)?\s+(?:begins|beginning|opens|starts|starting)\s+(?:on\s+)?",
+)
+_REGISTRATION_RE = _re.compile("(?:" + "|".join(_REGISTRATION_PHRASES) + ")" + _DATE_RE, _re.IGNORECASE)
+
+
+def parse_registration_opens(text: str | None, event_date: _date | None) -> _date | None:
+    """The date registration opens, from phrases like "registration begins
+    October 21", "registration required, beginning Oct. 21st" or "sign up
+    starting Oct 21". The year is the event's (or the year written). Only a
+    date strictly earlier than the event is accepted; anything ambiguous or
+    later is dropped, never guessed."""
+    if not text or event_date is None:
+        return None
+    found = set()
+    for m in _REGISTRATION_RE.finditer(text):
+        month = _MONTHS.get(m.group(1).lower()) or next((n for name, n in _MONTHS.items() if name.startswith(m.group(1).lower()[:3])), None)
+        try:
+            found.add(_date(int(m.group(3)) if m.group(3) else event_date.year, month, int(m.group(2))))
+        except (ValueError, TypeError):
+            continue
+    if len(found) != 1:
+        return None
+    opens = found.pop()
+    return opens if opens < event_date else None

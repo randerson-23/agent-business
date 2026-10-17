@@ -37,7 +37,7 @@ from PIL import Image, ImageDraw, ImageFont
 
 sys.path.insert(0, str(Path(__file__).parent))
 from fetchers import FETCHERS, MAX_ITEMS_PER_SOURCE, fetch_night_forecast, fetch_weather, submit_indexnow  # noqa: E402
-from tagging import infer_tags, is_informational, merge_default_tags, tag_display  # noqa: E402
+from tagging import infer_tags, is_informational, merge_default_tags, parse_registration_opens, tag_display  # noqa: E402
 
 logging.basicConfig(level=logging.INFO, format="%(levelname)s %(name)s: %(message)s")
 logger = logging.getLogger("build_digest")
@@ -1167,6 +1167,9 @@ def fetch_region_sections(
             }
             event["ics_href"] = build_ics_data_uri(event)
             event["google_calendar_url"] = build_google_calendar_url(event, region_name)
+            # ROADMAP.md item 327: only from an explicit phrase in the source's own text.
+            reg = parse_registration_opens(f"{item.get('title', '')}. {item.get('detail', '')}", _event_day(event))
+            event["registration_opens"] = reg.isoformat() if reg else None
             events.append(event)
         # ROADMAP.md item 308: the page a dead event link falls back to.
         source_page = source.get("calendar_page") or (source["url"] if source["type"] == "html_events" else None)
@@ -3513,6 +3516,45 @@ def load_link_health(path: Path | None = None) -> dict:
         return {}
 
 
+def _event_day(event: dict) -> date | None:
+    try:
+        return datetime.fromisoformat(event["date_iso"]).date() if event.get("date_iso") else None
+    except ValueError:
+        return None
+
+
+def annotate_registration(blocks: list[dict], today: date) -> None:
+    """ROADMAP.md item 327: `reg_badge` on an event whose registration-opens
+    date is known - "Sign-up opens Wed, Oct 21" until that date, then
+    "Sign-up open" until the event."""
+    for block in blocks:
+        for event in block["events"]:
+            opens = event.get("registration_opens")
+            day = _event_day(event)
+            if not opens or day is None or today > day:
+                event.pop("reg_badge", None)
+                continue
+            opens_date = date.fromisoformat(opens)
+            event["reg_badge"] = f"Sign-up opens {opens_date.strftime('%a, %b %-d')}" if opens_date > today else "Sign-up open"
+
+
+def build_signups_opening(blocks: list[dict], today: date, days: int = 7) -> list[dict]:
+    """Events whose registration opens within the next `days` days (today
+    included), soonest first."""
+    found = []
+    for block in blocks:
+        for event in block["events"]:
+            opens = event.get("registration_opens")
+            day = _event_day(event)
+            if not opens or day is None or not event.get("attendable", True) or event.get("sponsored_by"):
+                continue
+            opens_date = date.fromisoformat(opens)
+            if today <= opens_date <= today + timedelta(days=days) and day > opens_date:
+                found.append({"title": event["title"], "url": event.get("url"), "opens": opens_date, "opens_label": opens_date.strftime("%a, %b %-d"), "event_label": day.strftime("%a, %b %-d")})
+    found.sort(key=lambda e: (e["opens"], e["title"]))
+    return found
+
+
 def apply_link_health(blocks: list[dict], health: dict) -> int:
     """ROADMAP.md item 308: an event link that returned 404 or 410 on two
     consecutive weekly checks is replaced by its source's calendar page and
@@ -3952,6 +3994,8 @@ def _event_list_item(event: dict, page_url: str, position: int) -> dict:
         entry["isAccessibleForFree"] = True
     if event.get("sponsored_by"):
         entry["sponsor"] = {"@type": "Organization", "name": event["sponsored_by"]}
+    if event.get("registration_opens"):
+        entry["registrationOpens"] = event["registration_opens"]  # extension key (item 327)
     return {"@type": "ListItem", "position": position, "item": entry}
 
 
@@ -4970,7 +5014,12 @@ def render_combined_email_digest(sections: list[dict], weekend_date_range: str, 
     days_off_line = build_days_off_email_line(sections, now)
     closures_line = build_closures_email_line(sections, now)
     rain_plan = pick_rain_plan(region_blocks, top_picks) if weather_line and weather_line["rain"] else []
+    # ROADMAP.md item 327: up to four events whose registration opens this week.
+    town_colors = {b["region_name"]: b["color"] for b in all_blocks}
+    signups = sorted((e for s in sections for e in s.get("signups") or []), key=lambda e: (e["opens"], e["title"]))[:4]
+    signups = [dict(e, color=town_colors.get(e["town"], EMAIL_TOWN_COLORS[0][0])) for e in signups]
     return template.render(
+        signups=signups,
         region_blocks=region_blocks,
         top_picks=top_picks,
         poll=poll_links(now.astimezone(LOCAL_TZ).date()),
@@ -5800,6 +5849,7 @@ def main() -> None:
         # filtering here once is what keeps them all honest instead of
         # re-filtering (or forgetting to) in each one separately.
         blocks = filter_past_events(blocks, local_today)
+        annotate_registration(blocks, local_today)
         # ROADMAP.md item 173: same single-insertion-point reasoning as
         # item 171's filter above - collapsing duplicates here, before
         # anything downstream reads blocks, means the main region page,
@@ -5982,6 +6032,7 @@ def main() -> None:
                 "sponsor": sponsor,
                 "days_off": region_days_off,
                 "closures": region_closures,
+                "signups": [dict(e, town=region["name"]) for e in build_signups_opening(blocks, local_today)],
             }
         )
         views = [
