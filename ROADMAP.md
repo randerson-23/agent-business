@@ -16400,6 +16400,112 @@ trick-or-treat table on a phone**, and whether it says only what the
 site knows.
 
 
+#### Research pass 2026-10-17, late morning (eighty-fifth pass)
+
+Since the last pass the build loop shipped items 320 (printable flyers
+with counted QR codes), 321 (the `/mp/`, `/ah/`, `/dp/`, `/pal/`, `/wh/`
+short paths) and 308 (the weekly outbound-link check). The Oct 15 send's
+metrics are still pending the Oct 18 backfill. This pass looks at
+**retention**: a reason for a reader to keep opening the email that the
+site alone can't give. It re-checks the head term and looks at the new
+flyer as a printed object.
+
+| Angle | What it is / what we found | Why it matters here |
+|---|---|---|
+| **Sign-up dates hidden in the feeds** (`docs/events.json`, read today) | Library listings carry the registration opening in their description: *"The Physics Dimension is back… **Registration required beginning October 21st**"*, and two book-club entries with *"Registration and book pickup begins September 8 / 29"*. The site shows these only as cut-off description text, on the **event date**, after the sign-up has already opened or filled | Popular library and park programmes fill up. Parents care about the day sign-ups open, and nothing else locally tells them in advance. An email that says *"Sign-ups opening this week"* gives a reader a reason to open it that a weekend list does not, because it has to arrive before the event week (item 327) |
+| **Park-district season registration days** (Arlington Heights Park District's own pages; Elmhurst, Naperville and Woodridge park districts for pattern) | AHPD has run **resident registration a week before non-resident** (Dec 5 and Dec 12, 10 AM, in a past year), with the winter/spring guide **mailed in mid-November**, online registration from 10 AM, and proof of residency. Neighbouring districts follow the same shape in early December (Elmhurst Dec 6 / 9, Naperville Dec 8 / 11). **No 2026–27 dates for Mount Prospect or Arlington Heights turned up in search**, so they are not posted yet | The single most important date of the season for a park-district parent, and the most likely to be missed. It is dated, it recurs every season, it comes from first-party sources, and it is exactly the kind of fact the site's sourcing rules handle well. It must not be guessed, so probe first (item 328) |
+| **Re-check: "things to do in Mount Prospect IL this weekend"** | Still **Patch's calendar plus Eventbrite pages on foreign domains** (`.com.au`, `.ca`, `.co.uk`). An exact search for `withintenmiles.com` returns nothing from the domain, but the owner's Search Console showed **48 pages indexed** on Oct 9 | The search tool used in this loop is **not a reliable index check**, as earlier passes already found. Search Console is. That raises the value of item 290's weekly snapshot, which waits only on the owner's service-account secret (Needs Ryan 8e). Re-ranked below |
+| **Google AI Mode's agentic booking** (Search Labs, US) | AI Mode compares and books **event tickets** through partners (**Ticketmaster, StubHub, SeatGeek**) and restaurants (OpenTable, Resy, Tock). A reviewer asking it for *"local events this weekend"* got short entries, each with a location, a time and a **source link** | **Non-item, but it confirms the niche.** The booking partners cover ticketed events. Free library storytimes, park programmes and village festivals have no ticket and no partner, so the answer for them has to come from a cited source. That is why item 131's rule of one first-party link per event matters |
+| **The printed flyer (design/UX)** | Rendered `docs/print/mount-prospect-60056/` at Letter size: **one page**, a strong 60pt question headline, the QR code and `withintenmiles.com/mp/`. But it is **black text on white with nothing else**: no colour, no mark, and no visual cue to scan. The "three examples" came out as the three **source names** (*"Mount Prospect Public Library / Mount Prospect Park District / Village of Mount Prospect"*), which read as the issuers of the flyer, not as what a reader gets. Below the fold half the sheet is empty | On a crowded library board or café counter, a flyer gets about two seconds. The BDN trial (eighty-third pass) showed a code alone doesn't get scanned. The flyer needs a picture of the value, such as storytimes, festivals and free things, and a visible *"Scan me"*. All of it can be built in CSS, with no image pipeline and black-and-white printing still legible (item 329) |
+
+#### P1 (new)
+
+327. **"Sign-ups opening this week", from text the feeds already carry.**
+     Build loop. In `tagging.py` (or next to the description parser),
+     extract a **registration-opens date** only from explicit phrases:
+     *"registration (required) begin(s/ning) <date>"*, *"registration
+     opens <date>"*, *"sign up starting <date>"*. Resolve the date
+     against the event's year, and **only accept a date earlier than
+     the event**. Anything ambiguous is dropped, never guessed.
+
+     - **Cards:** a small badge, *"Sign-up opens Wed, Oct 21"*, until
+       that date, then *"Sign-up open"* until the event, linking to the
+       event's own page as usual.
+     - **Email:** a compact block, *"📝 Sign-ups opening this week"*,
+       with up to four events whose registration opens in the next
+       seven days, each with its town chip, the opening date and the
+       event date. It sits below "Don't miss" and is omitted when
+       empty.
+     - **Data:** add the date to `events.json` as
+       `"registrationOpens"` (a non-Schema.org extension key is fine
+       here; do not misuse `offers.validFrom` for a free event).
+
+     Tests: the three phrase forms, ordinal dates (*"October 21st"*),
+     a past date, a date after the event (rejected), and the empty
+     email block. The block gives a reader a reason to open each week
+     that a list of weekend events never can.
+
+328. **Park-district registration days, sourced, with a reminder the
+     week before.** Build loop, probe first:
+
+     1. Add **`config/url_probes.yaml` entries** for each park
+        district's registration-dates page or news post, with
+        `patterns:` for *"resident"*, *"registration"* and month-day
+        dates, to find the 2026–27 winter/spring dates once posted.
+        They are typically posted with the mid-November guide.
+     2. Add a **`registration_days:`** list per region YAML (agency,
+        `resident` and `nonresident` datetimes, url). It stays empty
+        until a date is confirmed from the agency's own page.
+     3. Render: a line on the region page from **seven days before**
+        (*"Park district winter registration opens Sat Dec 5 at 10 AM
+        for residents →"*), and a line in the email the week before.
+        The day itself shows *"Registration opens today"*.
+
+     Never carry a past year's date forward. If the probe finds
+     nothing, nothing renders. Tests: the seven-day window, resident
+     before non-resident, and an empty list rendering nothing.
+
+#### P2 (new)
+
+329. **Flyer v2: show the value, and say "scan me".** Design/UX,
+     `templates/flyer.html.j2` only, still one page, still no dates and no
+     sponsor:
+
+     - A **colour band** at the top in the town's colour (the email's
+       `EMAIL_TOWN_COLORS`) carrying the *"Within Ten"* wordmark and
+       *"FREE · every Thursday"*. Print it with `print-color-adjust:
+       exact` so it shows on colour printers and still reads in grey.
+     - Replace the three source names with **three icon tiles** built
+       from emoji and CSS: 📚 *Storytimes & library programmes*, 🌳
+       *Park district classes & events*, 🎪 *Festivals, markets & free
+       things*. Move the sources to one small line: *"From the village,
+       library and park district calendars."*
+     - A **"Scan me →"** label and a thick rounded frame around the QR
+       code, with the short URL beneath at the same size as now.
+     - Fill the empty lower third with the half-page tear-off's
+       **"Take one"** strip variant: four short-URL tabs, cut lines
+       dashed.
+
+     Check with headless Chromium `--print-to-pdf` that the full and
+     half-page variants are each one page, and that black-and-white
+     output keeps the headline and URL at full contrast. Done before
+     the owner prints for item 322.
+
+#### Re-ranked
+
+- **Item 290's Search Console snapshot (Needs Ryan 8e)** moves up within
+  the owner list. The loop's web search keeps reporting the domain as
+  absent while Search Console shows 48 pages indexed. The only reliable
+  findability number the business has is behind that secret.
+
+Competitors reviewed this pass: **library registration-date text in the
+feeds**, **park-district registration-day patterns** (Arlington Heights,
+Elmhurst, Naperville, Woodridge), the **head-term re-check** (Patch and
+foreign-domain Eventbrite, unchanged), and **Google AI Mode's agentic
+ticket booking** (a non-item that confirms the free-event niche). The
+design/UX angle is **the printed flyer**, rendered at Letter size.
+
+
 ## Working agreements for autonomous iteration
 
 - Cadence is three times a day (05:51, 13:51 and 21:51 UTC) for this
