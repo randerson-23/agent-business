@@ -1166,7 +1166,9 @@ def fetch_region_sections(
             event["ics_href"] = build_ics_data_uri(event)
             event["google_calendar_url"] = build_google_calendar_url(event, region_name)
             events.append(event)
-        blocks.append({"section": source["section"], "events": events})
+        # ROADMAP.md item 308: the page a dead event link falls back to.
+        source_page = source.get("calendar_page") or (source["url"] if source["type"] == "html_events" else None)
+        blocks.append({"section": source["section"], "events": events, "source_page": source_page})
     return blocks
 
 
@@ -3496,6 +3498,60 @@ def render_short_redirect(region_id: str) -> str:
     )
 
 
+LINK_HEALTH_PATH = ROOT / "data" / "link_health.json"
+LINK_CANDIDATES_PATH = ROOT / "data" / "link_candidates.json"
+LINK_CHECK_DAYS = 14
+
+
+def load_link_health(path: Path | None = None) -> dict:
+    try:
+        data = json.loads((path or LINK_HEALTH_PATH).read_text(encoding="utf-8"))
+        return data if isinstance(data, dict) else {}
+    except (OSError, ValueError):
+        return {}
+
+
+def apply_link_health(blocks: list[dict], health: dict) -> int:
+    """ROADMAP.md item 308: an event link that returned 404 or 410 on two
+    consecutive weekly checks is replaced by its source's calendar page and
+    flagged `link_moved`. Anything else (403, a timeout, one strike) is left
+    alone - a bot wall is not a dead page. Returns how many were replaced."""
+    replaced = 0
+    for block in blocks:
+        page = block.get("source_page")
+        if not page:
+            continue
+        for event in block["events"]:
+            entry = health.get(event.get("url") or "")
+            if entry and entry.get("status") in (404, 410) and entry.get("strikes", 0) >= 2:
+                logger.warning("Dead link on two checks, using %s instead of %s", page, event["url"])
+                event["url"] = page
+                event["link_moved"] = True
+                event["ics_href"] = build_ics_data_uri(event)
+                event["google_calendar_url"] = build_google_calendar_url(event, event.get("town", ""))
+                replaced += 1
+    return replaced
+
+
+def collect_link_candidates(blocks: list[dict], today: date, region_id: str) -> list[dict]:
+    """Event links dated within the next LINK_CHECK_DAYS days, for the weekly
+    link check to read."""
+    end = today + timedelta(days=LINK_CHECK_DAYS)
+    found = []
+    for block in blocks:
+        for event in block["events"]:
+            url, iso = event.get("url") or "", event.get("date_iso")
+            if not url.startswith("http") or not iso:
+                continue
+            try:
+                when = datetime.fromisoformat(iso).date()
+            except ValueError:
+                continue
+            if today <= when <= end:
+                found.append({"url": url, "region": region_id})
+    return found
+
+
 def flyer_url(region_id: str, campaign: str) -> str:
     """The URL a flyer's QR code encodes (ROADMAP.md item 320)."""
     return f"{SITE_BASE_URL}{region_id}/?utm_source=print&utm_campaign={campaign}#newsletter-signup"
@@ -5629,6 +5685,8 @@ def main() -> None:
     pins_groups: list[tuple[str, str, str, list[dict]]] = []
     trick_or_treat_entries = []
     night_forecast = None
+    link_health = load_link_health()
+    link_candidates: list[dict] = []
     holidays_entries = []
     email_weather_by_region: dict[str, list[dict]] = {}
     combined_email_sections = []
@@ -5677,6 +5735,8 @@ def main() -> None:
             now=now,
             failure_window=failure_window,
         )
+        apply_link_health(blocks, link_health)
+        link_candidates.extend(collect_link_candidates(blocks, local_today, region_id))
         annual_block = prepare_annual_events(region_cfg, now)
         if annual_block:
             # First, not appended: curated + dated is the highest-
@@ -6400,6 +6460,10 @@ def main() -> None:
                 build_weekly_feed_xml(section["region_name"], region_id, items, now), encoding="utf-8"
             )
     WEEKLY_FEED_HISTORY_PATH.write_text(json.dumps(weekly_history, indent=1, ensure_ascii=False) + "\n", encoding="utf-8")
+    unique_links = sorted({(c["region"], c["url"]) for c in link_candidates})
+    LINK_CANDIDATES_PATH.write_text(
+        json.dumps({"links": [{"region": r, "url": u} for r, u in unique_links]}, indent=1) + "\n", encoding="utf-8"
+    )
     logger.info("Wrote weekly.xml feeds for %d town(s)", sum(1 for v in weekly_history.values() if v))
     icons_dir = OUTPUT_DIR / "icons"
     icons_dir.mkdir(parents=True, exist_ok=True)

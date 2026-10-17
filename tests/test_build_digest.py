@@ -5748,3 +5748,29 @@ def test_flyer_page_is_noindex_dateless_and_hides_chrome_in_print():
     assert "sponsor" not in page.lower()
     assert page.count('class="copy"') == 1
     assert build_digest.render_flyer("mount-prospect-60056", "Mount Prospect", [], "flyer-general", 2).count('class="copy"') == 2
+
+
+def test_dead_links_are_swapped_for_the_source_page_only_after_two_strikes():
+    def block():
+        return [{"section": "S", "source_page": "https://src/cal", "events": [
+            {"title": "A", "url": "https://x/a", "date": "Oct 20", "date_iso": "2026-10-20T10:00:00", "town": "T"},
+            {"title": "B", "url": "https://x/b", "date": "Oct 20", "date_iso": "2026-10-20T10:00:00", "town": "T"},
+            {"title": "C", "url": "https://x/c", "date": "Oct 20", "date_iso": "2026-10-20T10:00:00", "town": "T"},
+        ]}]
+    health = {"https://x/a": {"status": 404, "strikes": 2}, "https://x/b": {"status": 404, "strikes": 1}, "https://x/c": {"status": 403, "strikes": 0}}
+    blocks = block()
+    assert build_digest.apply_link_health(blocks, health) == 1
+    a, b, c = blocks[0]["events"]
+    assert a["url"] == "https://src/cal" and a["link_moved"] and b["url"] == "https://x/b" and c["url"] == "https://x/c"
+    nopage = block(); nopage[0]["source_page"] = None
+    assert build_digest.apply_link_health(nopage, health) == 0
+
+
+def test_link_candidates_cover_only_the_next_14_days_with_http_urls():
+    blocks = [{"events": [
+        {"url": "https://x/in", "date_iso": "2026-10-30T10:00:00"},
+        {"url": "https://x/far", "date_iso": "2026-11-20T10:00:00"},
+        {"url": "", "date_iso": "2026-10-20T10:00:00"},
+        {"url": "https://x/undated", "date_iso": None},
+    ]}]
+    assert build_digest.collect_link_candidates(blocks, date(2026, 10, 17), "r") == [{"url": "https://x/in", "region": "r"}]
