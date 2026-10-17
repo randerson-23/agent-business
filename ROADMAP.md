@@ -16467,7 +16467,7 @@ flyer as a printed object.
 
 #### P2 (new)
 
-329. **Flyer v2: show the value, and say "scan me".** Design/UX,
+329. ✅ **DONE (2026-10-17): the flyer has a colour band in the town's `EMAIL_TOWN_COLORS` colour (wordmark and "FREE · every Thursday", `print-color-adjust: exact`), three icon tiles (📚 🌳 🎪) with one "From the village, library and park district calendars." line, a "Scan me →" label with a thick rounded frame around the QR code, and a "Take one" strip of four short-URL tabs on the full page; the headline stays black on white for black-and-white printing; all ten flyers (five towns, full and half) are one page in headless Chromium. The `examples` argument is no longer shown. Not printed on paper; the QR has not been scanned with a phone.** **Flyer v2: show the value, and say "scan me".** Design/UX,
      `templates/flyer.html.j2` only, still one page, still no dates and no
      sponsor:
 

@@ -5,20 +5,31 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex">
 <title>Within Ten flyer: {{ town }}</title>
+{% set half = copies == 2 %}
 <style>
   @page { size: letter portrait; margin: 0.5in; }
-  * { box-sizing: border-box; }
-  html, body { margin: 0; padding: 0; font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; color: #201e1d; background: #fff; }
+  * { box-sizing: border-box; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  html, body { margin: 0; padding: 0; font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; color: #000; background: #fff; }
   .sheet { display: flex; flex-direction: column; height: 9.8in; }
-  .copy { flex: 1; display: flex; flex-direction: column; justify-content: center; padding: 0.1in 0.3in; text-align: center; }
+  .copy { flex: 1; display: flex; flex-direction: column; justify-content: space-between; text-align: center; }
   .copies-2 .copy + .copy { border-top: 2px dashed #605d5d; }
-  h1 { font-size: {{ '24pt' if copies == 2 else '60pt' }}; line-height: 1.05; margin: 0 0 0.15in; }
-  .sub { font-size: {{ '12pt' if copies == 2 else '18pt' }}; margin: 0 0 0.15in; }
-  ul { list-style: none; padding: 0; margin: 0 0 0.15in; font-size: {{ '11pt' if copies == 2 else '16pt' }}; font-weight: 700; }
-  li { margin: 0.04in 0; }
-  .qr svg { width: {{ '1.3in' if copies == 2 else '2.6in' }}; height: auto; }
-  .path { font-size: {{ '14pt' if copies == 2 else '24pt' }}; font-weight: 800; margin: 0.05in 0; }
-  .fine { font-size: {{ '9pt' if copies == 2 else '12pt' }}; color: #403d3d; margin: 0; }
+  .band { background: {{ color }}; color: #fff; display: flex; justify-content: space-between; align-items: center; padding: {{ '0.05in 0.2in' if half else '0.12in 0.25in' }}; font-weight: 800; font-size: {{ '11pt' if half else '18pt' }}; letter-spacing: 0.02em; }
+  .band .mark { font-size: {{ '13pt' if half else '24pt' }}; }
+  h1 { font-size: {{ '22pt' if half else '60pt' }}; line-height: 1.02; margin: {{ '0.04in 0.2in' if half else '0.1in 0.25in 0.05in' }}; }
+  .sub { font-size: {{ '11pt' if half else '17pt' }}; margin: 0 0.25in; }
+  .tiles { display: flex; gap: {{ '0.08in' if half else '0.14in' }}; margin: 0 {{ '0.2in' if half else '0.25in' }}; }
+  .tile { flex: 1; border: 2px solid {{ color }}; border-radius: 0.12in; padding: {{ '0.04in' if half else '0.08in' }}; font-weight: 700; font-size: {{ '8.5pt' if half else '13pt' }}; line-height: 1.15; }
+  .tile .ico { display: block; font-size: {{ '15pt' if half else '30pt' }}; line-height: 1.1; }
+  .scan { display: flex; align-items: center; justify-content: center; gap: {{ '0.12in' if half else '0.25in' }}; }
+  .scan-label { font-size: {{ '14pt' if half else '30pt' }}; font-weight: 900; }
+  .qr { display: inline-block; border: {{ '0.05in' if half else '0.09in' }} solid #000; border-radius: 0.18in; padding: 0.06in; background: #fff; line-height: 0; }
+  .qr svg { width: {{ '1.15in' if half else '2.1in' }}; height: auto; }
+  .path { font-size: {{ '14pt' if half else '24pt' }}; font-weight: 800; margin: 0; }
+  .fine { font-size: {{ '9pt' if half else '12pt' }}; color: #000; margin: 0; }
+  .takeone { display: flex; border: 2px dashed #000; border-radius: 0.04in; }
+  .takeone .head { font-weight: 900; font-size: 11pt; padding: 0.1in 0.12in; border-right: 2px dashed #000; white-space: nowrap; }
+  .takeone .tab { flex: 1; padding: 0.08in 0.05in; font-weight: 800; font-size: 9pt; padding-top: 0.1in; border-right: 2px dashed #000; }
+  .takeone .tab:last-of-type { border-right: 0; }
   .screen-only { max-width: 7in; margin: 16px auto; padding: 0 16px; font-size: 16px; }
   @media print { .screen-only { display: none; } nav, footer { display: none; } }
 </style>
@@ -28,12 +39,24 @@
 <div class="sheet copies-{{ copies }}">
 {% for _ in range(copies) %}
   <div class="copy">
+    <div class="band"><span class="mark">Within Ten</span><span>FREE &middot; every Thursday</span></div>
     <h1>What's on in {{ town }} this weekend?</h1>
-    <p class="sub">One free email every Thursday. Library, park district and village events, all in one place.</p>
-    {% if examples %}<ul>{% for e in examples %}<li>{{ e }}</li>{% endfor %}</ul>{% endif %}
-    <div class="qr" role="img" aria-label="QR code for withintenmiles.com/{{ short }}/">{{ qr|safe }}</div>
+    <p class="sub">One free email every Thursday, all in one place.</p>
+    <div class="tiles">
+      <div class="tile"><span class="ico" aria-hidden="true">📚</span>Storytimes &amp; library programmes</div>
+      <div class="tile"><span class="ico" aria-hidden="true">🌳</span>Park district classes &amp; events</div>
+      <div class="tile"><span class="ico" aria-hidden="true">🎪</span>Festivals, markets &amp; free things</div>
+    </div>
+    <p class="fine">From the village, library and park district calendars.</p>
+    <div class="scan">
+      <span class="scan-label">Scan me &rarr;</span>
+      <div class="qr" role="img" aria-label="QR code for withintenmiles.com/{{ short }}/">{{ qr|safe }}</div>
+    </div>
     <p class="path">withintenmiles.com/{{ short }}/</p>
     <p class="fine">Free. Unsubscribe anytime. Not affiliated with the Village.</p>
+    {% if not half %}
+    <div class="takeone" aria-hidden="true"><span class="head">Take one &rarr;</span>{% for _ in range(4) %}<span class="tab">withintenmiles.com/{{ short }}/</span>{% endfor %}</div>
+    {% endif %}
   </div>
 {% endfor %}
 </div>

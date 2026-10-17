@@ -5791,3 +5791,15 @@ def test_trick_or_treat_table_and_cards_carry_the_note_or_the_source():
     for c in cards:
         assert c.index('class="region"') < c.index('class="hours"') < c.index('class="source-line"')
     assert "standing hours, not yet confirmed" in cards[0] and "Posted by the village" in cards[1]
+
+
+def test_flyer_v2_has_the_band_tiles_scan_label_and_a_take_one_strip_on_the_full_page_only():
+    # ROADMAP.md item 329.
+    full = build_digest.render_flyer("mount-prospect-60056", "Mount Prospect", [], "flyer-general", 1, "#6d28d9")
+    half = build_digest.render_flyer("mount-prospect-60056", "Mount Prospect", [], "flyer-general", 2, "#6d28d9")
+    for page in (full, half):
+        assert "FREE &middot; every Thursday" in page and "#6d28d9" in page and "print-color-adjust: exact" in page
+        assert "Scan me" in page and "Storytimes &amp; library programmes" in page and "From the village, library and park district calendars." in page
+        assert not re.search(r"\b(20\d\d|January|February|March|April|May|June|July|August|September|October|November|December)\b", page.split("</style>")[1])
+    assert full.count('class="tab"') == 4 and "Take one" in full
+    assert "Take one" not in half
