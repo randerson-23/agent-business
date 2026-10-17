@@ -16010,6 +16010,63 @@ angle is **the site's own titles and descriptions, read against the
 query they need to win**.
 
 
+#### Research pass 2026-10-17, overnight (eighty-first pass)
+
+No build commits since the eightieth pass an hour earlier; the next
+build run is 05:51 UTC. So this pass skips the site and researches the
+one thing the backlog still lacks: **how a small local newsletter
+actually lands its first paying sponsors**. The site can now show,
+price, sell and deliver every product, but nothing has been bought.
+
+| Angle | What it is / what we found | Why it matters here |
+|---|---|---|
+| **Don't Miss Margate's revenue mix** (Press Gazette, re-read) | Revenue is **about 75% advertising and 25% subscriptions**, and its **sponsor slots are booked up to ten weeks ahead**, on a list of about 3,000 | Pass 63 cited Margate for growth (1,000 subscribers in three months) without the mix. The mix matters more: the closest public analogue earns **three-quarters of its money from exactly what `BUSINESS_PLAN.md` sells**, local sponsor slots, not reader payments. That confirms the plan's model, and it means item 261's Substack pilot should be judged on **subscriber growth only**, as written, never as a step toward a paid tier |
+| **First-sponsor playbooks** (beehiiv's guide, Stroll, local-newsletter growth guides) | The advice is consistent: under 1,000 subscribers, sell **one placement first** so both sides can judge; price small lists at roughly **2.5–5% of the subscriber count per placement**, or a flat $50–150; offer a **multi-week package at a 10–20% discount**; and **send the prospect a mock-up of their own ad**. One guide adds the barter route: a mention for a mention with 3–5 local businesses | The site already follows most of this (one-off $20 Event Promo, $50 Weekly Spot, the item-94 barter). Two pieces are missing: **a package price** and **a mock-up the owner can send in one click**. The /sponsor/ example card (item 247) is generic, and a prospect sees *"Example"*, not their own shop (items 313, 314) |
+| **NewsBreak SPOTLIGHTS** (launched May 2026) | NewsBreak (about 40–45M monthly users) turns a local business owner's answers into a **free feature article**, pushed to nearby readers. Its creator programme is being reworked, and it has no publisher RSS programme found | A competitor for the same small-business budget, and free at the first touch. A shop that has already had a free NewsBreak feature will ask why it should pay $20 here. The honest answer is reach in its own town, to families, in a weekly email they asked for. That belongs in the sponsor kit (item 315) |
+
+#### P1 (new)
+
+313. **A one-click, personalised sponsor mock-up the owner can send.**
+     Design/UX, build loop. A `noindex` page, `/sponsor/preview/`, that
+     reads `?name=`, `?town=`, `?line=` and `?url=` from the address and
+     renders, client-side, **that business's** Featured card and Weekly
+     Spot exactly as they would appear: in the town's colour, on a copy
+     of this week's real town email section, using the same partials as
+     the live product (items 245, 247). It carries a clear **"Preview,
+     not live"** ribbon, with "Buy now" buttons (item 244) under each
+     product. Inputs are escaped as text, never HTML. `OUTREACH_TEMPLATES.md`
+     §13, §14 and §15 each get a line: *"Here's how [Shop] would look
+     this week: [link]"*, with the link built by hand from the shop's
+     name. Tests: escaping, the ribbon, noindex, and both products
+     rendering. **Owner time:** none beyond pasting a link they already
+     send.
+
+314. **A three-week starter pack for the Weekly Spot.** Build loop plus
+     owner. Add **"Starter: 3 weeks for $135"** (10% off three Weekly
+     Spots) to `SPONSOR_TIERS`, `SPONSOR_KIT.md` and `/sponsor/`, with a
+     `payment_links.starter` slot (item 244), so the owner creates one
+     more Stripe link when doing the other two. Three weeks is long
+     enough for the sponsor to see clicks (item 267's counts) and short
+     enough to be an easy yes. **Owner:** one extra Payment Link in the
+     same Stripe sitting.
+
+#### P3 (new)
+
+315. **Say plainly how Within Ten differs from free platform features.**
+     Build loop: one short paragraph in `SPONSOR_KIT.md`'s positioning,
+     next to item 304's PatchAM line: *"NewsBreak and PatchAM reach the
+     whole region through an app or an AI digest. Within Ten reaches
+     families in your town through a weekly email they signed up for,
+     next to the village and library calendar they already trust."* No
+     disparaging claims, nothing that cannot be checked.
+
+Competitors reviewed this pass: **Don't Miss Margate's revenue mix** (75%
+ads, slots booked ten weeks out), **first-sponsor playbooks** for small
+lists, and **NewsBreak SPOTLIGHTS** (free business features to 40M+
+users). The design/UX angle is **the sales mock-up**: showing a
+prospect their own ad instead of a generic example.
+
+
 ## Working agreements for autonomous iteration
 
 - Cadence is three times a day (05:51, 13:51 and 21:51 UTC) for this
