@@ -16316,7 +16316,7 @@ the sponsor in other towns.
 
 #### P1 (new)
 
-324. **Carry the caveat into the trick-or-treat table, and even out the
+324. ✅ **DONE (2026-10-17): the one-glance table shows each row's `note` (muted, from the region YAML) or "posted by the village" with the link; every card is stacked town, hours, then a note-or-source line; Des Plaines keeps "No set hours"; tests added. Not browser-verified at 390px.** **Carry the caveat into the trick-or-treat table, and even out the
      cards.** Design/UX, `trick_or_treat.html.j2` only.
 
      - In the one-glance table, a row whose region YAML has a `note`
