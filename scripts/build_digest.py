@@ -3466,6 +3466,36 @@ def build_web_manifest() -> str:
     return json.dumps(manifest, indent=2) + "\n"
 
 
+# ROADMAP.md item 321: short paths a person can type from a flyer. GitHub
+# Pages has no server redirects, so each is a tiny static page (meta refresh,
+# canonical to the region page, noindex) and none is in the sitemap.
+SHORT_PATHS = {
+    "mount-prospect-60056": "mp",
+    "arlington-heights-60005": "ah",
+    "des-plaines-60016": "dp",
+    "palatine-60067": "pal",
+    "wheeling-60090": "wh",
+}
+
+
+def short_redirect_target(region_id: str) -> str:
+    return f"{SITE_BASE_URL}{region_id}/?utm_source=print&utm_campaign=short"
+
+
+def render_short_redirect(region_id: str) -> str:
+    target = short_redirect_target(region_id)
+    canonical = f"{SITE_BASE_URL}{region_id}/"
+    return (
+        '<!DOCTYPE html>\n<html lang="en"><head><meta charset="utf-8">'
+        '<meta name="viewport" content="width=device-width, initial-scale=1">'
+        "<title>Within Ten</title>"
+        '<meta name="robots" content="noindex">'
+        f'<link rel="canonical" href="{canonical}">'
+        f'<meta http-equiv="refresh" content="0; url={escape(target)}">'
+        f'</head><body><p><a href="{escape(target)}">Continue to this weekend\'s events</a></p></body></html>\n'
+    )
+
+
 def collect_sitemap_urls(region_summaries: list[dict], issues: list[dict] | None = None) -> list[str]:
     urls = [
         SITE_BASE_URL,
@@ -6268,6 +6298,12 @@ def main() -> None:
     holidays_dir.mkdir(parents=True, exist_ok=True)
     (holidays_dir / "index.html").write_text(render_holidays_page(holidays_entries, now, analytics, newsletter, contact_email), encoding="utf-8")
     logger.info("Wrote %s", holidays_dir / "index.html")
+
+    known_regions = {r.get("id") for r in region_summaries}
+    for rid, short in SHORT_PATHS.items():
+        if rid in known_regions:
+            (OUTPUT_DIR / short).mkdir(parents=True, exist_ok=True)
+            (OUTPUT_DIR / short / "index.html").write_text(render_short_redirect(rid), encoding="utf-8")
 
     sitemap_urls = collect_sitemap_urls(region_summaries, issues)
     (OUTPUT_DIR / "sitemap.xml").write_text(build_sitemap_xml(region_summaries, now, issues), encoding="utf-8")
