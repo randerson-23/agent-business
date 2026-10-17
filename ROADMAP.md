@@ -16420,7 +16420,7 @@ flyer as a printed object.
 
 #### P1 (new)
 
-327. **"Sign-ups opening this week", from text the feeds already carry.**
+327. ✅ **DONE (2026-10-17): `parse_registration_opens` in `tagging.py` (three phrase forms, ordinal dates, the event's year unless one is written, strictly earlier than the event, two different dates dropped); events carry `registration_opens`; cards show "Sign-up opens Wed, Oct 21" then "Sign-up open" until the event; `events.json` gets `registrationOpens`; the combined email gets "📝 Sign-ups opening this week" (up to four, next seven days, omitted when empty). Tests added. Real feed text already produces "Sign-up open" on two Des Plaines storytimes.** **"Sign-ups opening this week", from text the feeds already carry.**
      Build loop. In `tagging.py` (or next to the description parser),
      extract a **registration-opens date** only from explicit phrases:
      *"registration (required) begin(s/ning) <date>"*, *"registration

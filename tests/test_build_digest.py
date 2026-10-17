@@ -5851,3 +5851,40 @@ def test_did_you_go_poll_links_carry_the_issue_date_and_the_pages_are_noindex():
         assert '<meta name="robots" content="noindex">' in page and "Thanks, that helps us keep this useful." in page
         assert "mailto:?subject=" in page and "Mount Prospect" in page
         assert "/thanks/" not in "".join(build_digest.collect_sitemap_urls([]))
+
+
+def test_registration_opens_phrases_ordinals_and_rejections():
+    # ROADMAP.md item 327.
+    from tagging import parse_registration_opens as reg
+    event = date(2026, 11, 10)
+    assert reg("Registration required, beginning Oct. 21st.", event) == date(2026, 10, 21)
+    assert reg("Registration opens Wed, October 21", event) == date(2026, 10, 21)
+    assert reg("sign up starting Oct 21", event) == date(2026, 10, 21)
+    assert reg("Registration begins Oct 21, 2026", event) == date(2026, 10, 21)
+    assert reg("Registration begins Nov 12", event) is None  # after the event
+    assert reg("Registration begins Nov 10", event) is None  # same day
+    assert reg("Registration opens soon", event) is None
+    assert reg("Registration begins Oct 1. Sign up starting Oct 21", event) is None  # two different dates: ambiguous
+    assert reg("Registration begins Oct 21", None) is None
+
+
+def test_registration_badge_and_the_email_block():
+    ev = {"title": "Cooking class", "url": "https://x/c", "date_iso": "2026-11-07T10:00:00", "attendable": True, "registration_opens": "2026-10-21"}
+    past = {"title": "Old", "url": "https://x/o", "date_iso": "2026-10-01T10:00:00", "registration_opens": "2026-09-20"}
+    blocks = [{"events": [ev, past]}]
+    build_digest.annotate_registration(blocks, date(2026, 10, 18))
+    assert ev["reg_badge"] == "Sign-up opens Wed, Oct 21" and "reg_badge" not in past
+    build_digest.annotate_registration(blocks, date(2026, 10, 22))
+    assert ev["reg_badge"] == "Sign-up open"
+    assert [e["title"] for e in build_digest.build_signups_opening(blocks, date(2026, 10, 18))] == ["Cooking class"]
+    assert build_digest.build_signups_opening(blocks, date(2026, 10, 10)) == []  # more than 7 days out
+    assert build_digest.build_signups_opening(blocks, date(2026, 10, 22)) == []  # already open
+
+
+def test_signups_block_is_omitted_when_empty_and_listed_when_present():
+    base = {"region_name": "Mount Prospect", "region_url": "https://x/mount-prospect-60056/", "weekend_events": [], "evergreen": [], "sponsor": None}
+    now = datetime(2026, 10, 18, 15, tzinfo=timezone.utc)
+    assert "Sign-ups opening this week" not in build_digest.render_combined_email_digest([base], "Oct 17–18", now)
+    sec = dict(base, signups=[{"title": "Cooking class", "url": "https://x/c", "opens": date(2026, 10, 21), "opens_label": "Wed, Oct 21", "event_label": "Sat, Nov 7", "town": "Mount Prospect"}])
+    html = build_digest.render_combined_email_digest([sec], "Oct 17–18", now)
+    assert "Sign-ups opening this week" in html and "Cooking class" in html and "opens Wed, Oct 21, event Sat, Nov 7" in html

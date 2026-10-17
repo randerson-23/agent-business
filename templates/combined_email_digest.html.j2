@@ -205,6 +205,18 @@ This weekend, across the northwest suburbs
 </tr>
 {% endif %}
 
+{% if signups %}
+{# ROADMAP.md item 327: sign-ups opening this week, only from explicit phrases in the source text. #}
+<tr>
+<td class="wt-ink" style="font-family:Arial, Helvetica, sans-serif; font-size:16px; line-height:1.5; color:#201e1d; padding:0 0 16px 0;">
+<strong>📝 Sign-ups opening this week</strong>
+{% for e in signups %}
+<div style="padding-top:6px;"><span style="font-weight:bold; color:{{ e.color }};">{{ e.town }}</span> &nbsp;·&nbsp; <a href="{{ e.url }}" class="wt-brand" style="color:#ae1800; font-weight:bold;">{{ e.title }}</a> <span class="wt-muted" style="color:#605d5d;">opens {{ e.opens_label }}, event {{ e.event_label }}</span></div>
+{% endfor %}
+</td>
+</tr>
+{% endif %}
+
 {% if night_out %}
 {# ROADMAP.md item 284: one "Night out" line for the adult readers. #}
 <tr>
