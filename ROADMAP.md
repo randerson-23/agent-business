@@ -347,6 +347,13 @@ that limit.
    registered with `hello@withintenmiles.com`, each with its town's
    `weekly.xml`. Read the Publisher Policy first.
 
+8g. **Two paper placements (about an hour, once, after item 320 ships;
+   item 322).** Print the town flyer, then offer one café a free
+   Weekly Spot for a stack of cards on its counter, and ask one library
+   or park-district desk whether the flyer can go on its board (accept
+   a no). Add both as `print_placements:` entries first, so each one
+   is counted. Judge at four weeks.
+
 **Next action — about an hour, no cost:**
 
 8. **Send the outreach emails (items 152, 161).** Six civic link-back
@@ -16169,6 +16176,119 @@ trick-or-treat lists** (none updated for 2026 yet), **ABC7's
 postponement coverage** (towns do move the date in bad weather),
 **Flipboard Local** and **Bluesky** as channels (both non-items for now).
 The design/UX angle is **the trick-or-treat page on a phone**.
+
+
+#### Research pass 2026-10-17, midday (eighty-third pass)
+
+Since the last pass the build loop shipped part of item 305 (Jinja
+comments, trimmed whitespace and short aria labels). Region pages are
+lighter, but **Des Plaines is still 1,424 KB and Wheeling 1,224 KB**, so
+the rest of 305 stays open. The Oct 15 open metrics arrive with the Oct
+18 backfill. IndexNow is still 403 as of 02:03 UTC today (Needs Ryan
+3c). The list is still **one subscriber**, and every growth item so far
+has been online: search, Pinterest, outlets, Nextdoor. This pass looks at
+the channel local papers have used for a century, **paper in places
+families already go**. It adds one seasonal civic page.
+
+| Angle | What it is / what we found | Why it matters here |
+|---|---|---|
+| **The Missourian's coffee-shop punch cards** (Reynolds Journalism Institute) | Columbia, Missouri's local paper wanted readers aged 30–45. It met them at **local coffee shops**: punch cards with a **QR code to the newsletter signup**, and a free coffee after seven stamps. In return the paper gave the café **ads in three newsletters and one on the website, valued at $500**. Outcome numbers were not in the snippet | This is **barter for distribution**, the same trade item 94 already offers (a free mention for a placement), turned outward. A café gets a Weekly Spot it would otherwise pay $50 for. The site gets a stack of signup cards on a counter in its own town. It is the only acquisition channel on the list that reaches parents who do not search for events (items 320, 322) |
+| **Library and public bulletin boards** (posting policies from several public libraries: Danvers, Pikes Peak, Eagle Grove, Indian Trails, Norfolk) | Typical rules: **8.5 × 11 inches maximum**, approved and dated by staff, removed when outdated. Many **exclude commercial notices** and allow only free or nonprofit material. Space goes to items of **"broadest community interest"**. Mount Prospect's own policy did not turn up in search | A flyer offering *"free weekly list of library, park and village events"* fits that test far better than an ad. But some boards will still say no, so the flyer must **carry no sponsor and no prices**, and the owner should ask at the desk rather than pin it up unasked. Grocery-store, rec-centre and café boards are usually looser (item 320) |
+| **QR codes, measured** (Bangor Daily News trial; vendor guides) | The BDN's print QR trial saw **little uptake**, and the lesson was that a code alone does not sell itself. Guides recommend **one code per location** so each placement can be counted | Use one URL per place (`utm_campaign=flyer-<place>`), which the item 252 signup fields already store in Buttondown. Then the owner can judge after four weeks whether the café or the library board earned a single subscriber, instead of guessing. The flyer needs a reason to scan printed beside the code, not the code alone |
+| **The flyer as a design object (design/UX)** | The site has nothing printable. `/join/` is a screen page, and a printout of it would carry nav, fonts and a form | A printed page is read from a metre away in two seconds. It needs one big promise, three plain examples, a QR code and a short URL a person can type. That is a different layout from any page on the site, and print CSS can produce it from the same templates without a PDF toolchain (item 320) |
+| **Leaf pickup** (Patch Arlington Heights; mountprospect.org notices; Daily Herald) | The rules **change year to year**. Arlington Heights has run a **"2:1" sticker programme** (one $2.85 landscape sticker per two bags) with dates that moved between years (Oct 29–Dec 15 in one year, Nov 4–Dec 13 in another). Mount Prospect ran loose-leaf curbside collection from mid-October into early December, then, per the Daily Herald, **ended it** in favour of free bagged pickup on garbage day. **Patch writes the story every fall** | A dated, local, yearly question (*"when is leaf pickup"*), answered badly because the rules shift, with the answer on village pages the site already treats as sources. It is the November version of trick-or-treat hours. This is not events, though, so it gets one small, sourced page and no more (item 323) |
+| **Hoodline** | Appeared in results with AI-written local items (*"Arlington intensifies leaf collection…"*, about Arlington, Texas) | **Non-item.** Automated city-level rewrites, and the result was about the wrong Arlington. This is a reminder of why every line on this site links to its first-party source (item 131) |
+
+#### P1 (new)
+
+320. **A printable flyer per town, with a counted QR code.** Design/UX,
+     build loop. Write **`docs/print/<region>/index.html`** (`noindex`,
+     linked only from `SPONSOR_KIT.md` and the owner notes), laid out
+     with `@media print` for **US Letter, portrait, one page**:
+
+     - **Headline at 60pt or more:** *"What's on in Mount Prospect this
+       weekend?"* Below it: *"One free email every Thursday. Library,
+       park district and village events, all in one place."*
+     - **Three plain examples** of recurring event types the town
+       actually has, taken from its own config categories (storytime,
+       park programmes, festivals), so the flyer never goes stale.
+       **No dates and no sponsor**, so it passes library-board rules.
+     - **A QR code** pointing to `https://withintenmiles.com/<region>/?utm_source=print&utm_campaign=flyer-<place>#newsletter-signup`,
+       rendered as inline SVG at build time with **`segno`** (pure
+       Python, no system dependencies; add it to `requirements.txt`).
+       Produce one variant per place listed in a new
+       `print_placements:` list in `config/sponsors.yaml` (place id
+       and label), and a generic `flyer-general` code otherwise.
+     - **A typeable short path** under the code (item 321) and one
+       line: *"Free. Unsubscribe anytime. Not affiliated with the
+       Village."*
+     - A **half-page tear-off variant**, two copies per sheet with
+       the same content, for café counters.
+
+     Tests: the URL passed to the encoder is the expected one for each
+     placement (`segno` cannot decode, so test the payload, not the
+     image), every placement gets its own campaign,
+     the page has `noindex`, and the print stylesheet hides nav and the
+     footer. Check with headless Chromium `--print-to-pdf` that each
+     flyer is one page. **Owner:** printing, and asking at the desk (see
+     item 322).
+
+#### P2 (new)
+
+321. **Short town paths that a person can type from paper.** Build
+     loop: `/mp/`, `/ah/`, `/dp/`, `/pal/` and `/wh/` as tiny static
+     redirect pages (meta refresh plus a `rel="canonical"` to the
+     region page, `noindex`). Each forwards to the region page with
+     `utm_source=print&utm_campaign=short`. GitHub Pages has no server
+     redirects, so this is the standard static pattern. Add the paths
+     to no sitemap. Tests: each redirect target is a real region page,
+     and there is no collision with an existing path.
+
+322. **Owner: two placements, counted for four weeks.** About an hour,
+     once, after item 320 ships:
+
+     - **One café in Mount Prospect or Arlington Heights**, as the
+       Missourian did: a stack of half-page cards on the counter in
+       exchange for a **free Weekly Spot** (item 94's barter, now with
+       something to give back). The café gets a placement it would
+       otherwise pay $50 for.
+     - **One library or park-district board**: ask at the desk, show
+       the flyer, and accept a no. Never pin one up unasked.
+
+     Add each as a `print_placements:` entry first so it has its own
+     code. **Judge at four weeks** on Buttondown subscribers tagged
+     with each `flyer-<place>` campaign. Zero from both means the
+     channel is dropped and recorded, and the flyer template stays for
+     sponsor events. Added to Needs Ryan step 8.
+
+#### P3 (new)
+
+323. **Leaf pickup by town, sourced, Oct 15 to Dec 15.** Build loop,
+     two steps, probe first:
+
+     1. **Probe** (`config/url_probes.yaml`) the five villages'
+        public-works leaf pages to find the current 2026 URL and
+        whether each page states dates and rules. Arlington Heights'
+        sticker programme and Mount Prospect's bagged pickup are the
+        known shapes.
+     2. **Then** a `leaf_pickup:` block per region YAML (url, a
+        one-line summary in the village's own words, dates if posted,
+        `note` for standing rules), rendered as one short section on a
+        `/leaf-pickup/` page in the trick-or-treat page's format:
+        sourced lines, "not posted yet" when unknown, and never a
+        guessed date. Link it from region pages only in season.
+
+     Keep it at one page. It earns its place as a dated local search
+     that Patch answers every year and that lands readers on a page
+     with the signup (item 251). It is not a step toward civic news.
+
+Competitors reviewed this pass: **the Missourian's coffee-shop QR punch
+cards** (barter for distribution), **library bulletin-board policies**
+(8.5 × 11, staff approval, often no commercial notices), **the Bangor
+Daily News QR trial** (low uptake without a reason to scan), **Patch's
+yearly leaf-pickup stories**, and **Hoodline** (a non-item). The
+design/UX angle is **the printed flyer**, the first page this site
+makes for paper.
 
 
 ## Working agreements for autonomous iteration
