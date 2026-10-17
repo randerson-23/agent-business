@@ -24,10 +24,6 @@
 <link rel="apple-touch-icon" href="https://withintenmiles.com/icons/icon-192.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<!-- Non-render-blocking font load: paint with the fallback stack immediately,
-     swap to the web font once it's fetched, instead of blocking first paint
-     on a round trip to fonts.googleapis.com (real measured LCP impact on a
-     cold connection was ~300ms - see ROADMAP.md Phase 11 #26). -->
 <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;800&display=optional">
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;800&display=optional" rel="stylesheet" media="print" onload="this.media='all'">
 <noscript><link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;800&display=optional" rel="stylesheet"></noscript>
@@ -707,10 +703,6 @@
 </style>
 </head>
 <body>
-
-
-<!-- header, not div (ROADMAP.md Phase 11 #62, found by a real axe-core
-     audit): everything in the hero previously sat outside any landmark. -->
 <header class="hero">
   <div class="hero-inner">
     <a class="back" href="https://withintenmiles.com/">&larr; All regions</a>
@@ -734,124 +726,58 @@
     <a href="https://withintenmiles.com/wheeling-60090/this-weekend/" class="active">This weekend</a>
     <a href="https://withintenmiles.com/wheeling-60090/today/">Today</a>
     <a href="https://withintenmiles.com/wheeling-60090/free/">Free</a>
-    <a href="https://withintenmiles.com/wheeling-60090/guides/">Guides</a>
-    <a href="https://withintenmiles.com/wheeling-60090/things-to-do/">Things to Do</a>
-    <a href="https://withintenmiles.com/wheeling-60090/directory/">Directory</a>
-  </nav>
+<a href="https://withintenmiles.com/wheeling-60090/guides/">Guides</a><a href="https://withintenmiles.com/wheeling-60090/things-to-do/">Things to Do</a><a href="https://withintenmiles.com/wheeling-60090/directory/">Directory</a>  </nav>
 
-  
 
-  
 
-  
-  
-  
 
   <p class="freshness-note">Updated automatically — last checked Friday, October 16.</p>
 
-  
 
-  
 
-  
 
   <div class="sponsor">
-    
     <div class="label">Sponsor This Spot</div>
     <h2>Sponsor this spot</h2>
     <p>Reach local families every week. Local businesses only — see pricing and availability. <a href="https://withintenmiles.com/sponsor/">Learn more &rarr;</a></p>
-    
   </div>
 
-  
   <div class="filter-bar" role="group" aria-label="Filter events">
-    
     <button type="button" class="filter-chip" data-tag="art_culture" aria-pressed="false">
       <span aria-hidden="true">🎨</span>Arts &amp; culture
     </button>
-    
     <button type="button" class="filter-chip" data-tag="indoor" aria-pressed="false">
       <span aria-hidden="true">🏠</span>Indoor
     </button>
-    
     <button type="button" class="filter-chip clear" id="clear-filters">Clear filters</button>
   </div>
   <div class="sr-only" id="filter-status" aria-live="polite"></div>
-  
 
-  
 
-  
 
-  
-  
-  
-  
-  
-    
-    
     <section class="block">
       <h2>This weekend in Wheeling</h2>
-      
         <div class="card-grid">
-        
-        <!-- id folds in date_iso - see the Editor's Pick tray_item above
-             for why (ROADMAP.md item 146). -->
-        
-        
         <article class="card" id="ev-super-saturday-being-bilingual-rocks-2026-10-17" data-tags="art_culture,indoor" data-date-iso="2026-10-17T11:00:00">
-          
-          <!-- ROADMAP.md Phase 11 #63: My Weekend is for dated events -
-               offering to add "Find your school district" or a guide's
-               own title to it made no sense, since guide items and the
-               guide index have nothing to do with weekend planning.
-               #90: nor does a school half-day belong in it - it's real
-               and worth knowing, but nobody plans a weekend around one. -->
           <button type="button" class="tray-star" data-item='{"date": "Oct 17", "date_iso": "2026-10-17T11:00:00", "detail": "All ages. Join Alina Celeste y Mi Amigo Hamlet for an interactive musical celebration in English and Spanish. Be\u2026", "id": "https://indiantrails.libnet.info/event/16659178|2026-10-17T11:00:00", "region_name": "Wheeling", "region_url": "https://withintenmiles.com/wheeling-60090/", "title": "Super Saturday: \u00a1Being Bilingual Rocks!", "url": "https://indiantrails.libnet.info/event/16659178"}' aria-pressed="false" aria-label="Add Super Saturday: ¡Being Bilingual Rocks! to My Weekend">☆</button>
-          
-          
-          
-          
-          <div class="date"><time datetime="2026-10-17T11:00:00">Sat, Oct 17 · 11:00 AM</time> · <span class="where">Wheeling</span></div>
-          <h3><a href="https://indiantrails.libnet.info/event/16659178">Super Saturday: ¡Being Bilingual Rocks!</a></h3>
-          
-          
-        <p class="detail">All ages. Join Alina Celeste y Mi Amigo Hamlet for an interactive musical celebration in English and Spanish. Be…</p>
-          
-          <div class="tag-row">
-            <span class="tag-badge" style="background: var(--hue-purple-bg); color: var(--hue-purple-ink);">🎨 Arts &amp; culture</span><span class="tag-badge" style="background: var(--hue-blue-bg); color: var(--hue-blue-ink);">🏠 Indoor</span>
-          </div>
-          
-          
+<div class="date"><time datetime="2026-10-17T11:00:00">Sat, Oct 17 · 11:00 AM</time> · <span class="where">Wheeling</span></div>          <h3><a href="https://indiantrails.libnet.info/event/16659178">Super Saturday: ¡Being Bilingual Rocks!</a></h3>
+<p class="detail">All ages. Join Alina Celeste y Mi Amigo Hamlet for an interactive musical celebration in English and Spanish. Be…</p>          <div class="tag-row">
+<span class="tag-badge" style="background: var(--hue-purple-bg); color: var(--hue-purple-ink);">🎨 Arts &amp; culture</span><span class="tag-badge" style="background: var(--hue-blue-bg); color: var(--hue-blue-ink);">🏠 Indoor</span>          </div>
           <div class="cal-row">
             <a href="data:text/calendar;charset=utf-8,BEGIN%3AVCALENDAR%0D%0AVERSION%3A2.0%0D%0APRODID%3A-//Within%20Ten//EN%0D%0ABEGIN%3AVEVENT%0D%0ADTSTART%3A20261017T110000%0D%0ADTEND%3A20261017T120000%0D%0ASUMMARY%3ASuper%20Saturday%3A%20%C2%A1Being%20Bilingual%20Rocks%21%0D%0ADESCRIPTION%3ASaturday%5C%2C%20October%2017%202026%2011%3A00am%20-%2011%3A45am%20%5Cn%20All%20ages.%20Join%20Alina%20Celeste%20y%20Mi%20Amigo%20Hamlet%20for%20an%20interactive%20musical%20celebration%20in%20English%20and%20Spanish.%20Be%E2%80%A6%0D%0AURL%3Ahttps%3A//indiantrails.libnet.info/event/16659178%0D%0AEND%3AVEVENT%0D%0AEND%3AVCALENDAR%0D%0A" download="event.ics">📅 Add to calendar</a>
             <a href="https://www.google.com/calendar/render?action=TEMPLATE&amp;text=Super+Saturday%3A+%C2%A1Being+Bilingual+Rocks%21&amp;dates=20261017T110000%2F20261017T120000&amp;details=Saturday%2C+October+17+2026+11%3A00am+-+11%3A45am+%0A+All+ages.+Join+Alina+Celeste+y+Mi+Amigo+Hamlet+for+an+interactive+musical+celebration+in+English+and+Spanish.+Be%E2%80%A6&amp;location=Wheeling" target="_blank" rel="noopener">Google Calendar</a>
           </div>
-          
         </article>
-        
         </div>
-      
     </section>
-    
-  
-
-  
-  
-
 
   
 
-  
 
-  
 
-  
-  
   <div class="newsletter" id="newsletter-signup">
   <form class="newsletter-form" action="https://buttondown.com/api/emails/embed-subscribe/withinten" method="post" target="bd-hidden-frame">
-    <input type="hidden" name="tag" value="town:wheeling-60090">
-    <input type="hidden" name="utm_source" value="site">
+<input type="hidden" name="tag" value="town:wheeling-60090">    <input type="hidden" name="utm_source" value="site">
     <input type="hidden" name="utm_campaign" value="this-weekend">
     <div class="newsletter-copy">
       <strong>Get it in your inbox</strong>
@@ -870,7 +796,6 @@
     <p class="newsletter-note">Not there in two minutes? Check Spam or Promotions for a message from Within Ten via Buttondown.</p>
   </div>
 </div>
-  
   <iframe name="bd-hidden-frame" title="Newsletter signup" style="display:none" aria-hidden="true"></iframe>
 <script>
 var WM = [["Open Gmail", "https://mail.google.com/mail/u/0/#search/from%3Abuttondown", ["gmail.com", "googlemail.com"]], ["Open Yahoo Mail", "https://mail.yahoo.com/", ["yahoo.com", "ymail.com"]], ["Open AOL Mail", "https://mail.aol.com/", ["aol.com"]], ["Open Outlook", "https://outlook.live.com/mail/0/", ["outlook.com", "hotmail.com", "live.com", "msn.com"]], ["Open iCloud Mail", "https://www.icloud.com/mail/", ["icloud.com", "me.com", "mac.com"]]];
@@ -894,13 +819,8 @@ document.querySelectorAll(".newsletter-form").forEach(function (f) {
     <a href="https://withintenmiles.com/sponsor/">sponsor page</a>.
     <a href="https://withintenmiles.com/about/">About</a>.
     <a href="https://google.com/preferences/source?q=withintenmiles.com" rel="noopener">Add us as a preferred source on Google</a>.
-    <a href="https://withintenmiles.com/trick-or-treat/">Trick-or-treat hours</a>.
-    
-    
-    
-    <br>Generated 2026-10-17 01:54 UTC.
-    <br>Visits counted with privacy-first, cookie-free analytics — no personal data collected.
-    <br><a href="https://withintenmiles.com/wheeling-60090/weekly-summary.txt">Copy this week's summary</a> — a plain-text block ready to paste into a local group.
+<a href="https://withintenmiles.com/trick-or-treat/">Trick-or-treat hours</a>.    <br>Generated 2026-10-17 02:03 UTC.
+<br>Visits counted with privacy-first, cookie-free analytics — no personal data collected.    <br><a href="https://withintenmiles.com/wheeling-60090/weekly-summary.txt">Copy this week's summary</a> — a plain-text block ready to paste into a local group.
   </footer>
 </div>
 
@@ -920,11 +840,8 @@ document.querySelectorAll(".newsletter-form").forEach(function (f) {
   </div>
 </div>
 
-
 <script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "Event", "name": "Super Saturday: ¡Being Bilingual Rocks!", "url": "https://withintenmiles.com/wheeling-60090/this-weekend/#ev-super-saturday-being-bilingual-rocks-2026-10-17", "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode", "sameAs": "https://indiantrails.libnet.info/event/16659178", "description": "Saturday, October 17 2026 11:00am - 11:45am \n All ages. Join Alina Celeste y Mi Amigo Hamlet for an interactive musical celebration in English and Spanish. Be…", "startDate": "2026-10-17T11:00:00-05:00", "location": {"@type": "Place", "name": "Indian Trails Public Library", "address": {"@type": "PostalAddress", "addressCountry": "US", "addressLocality": "Wheeling", "addressRegion": "IL"}}}]}</script>
-
-
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebPage", "name": "Wheeling — Within Ten", "url": "https://withintenmiles.com/wheeling-60090/this-weekend/", "dateModified": "2026-10-17T01:54:52.408155+00:00", "isPartOf": {"@type": "WebSite", "name": "Within Ten", "url": "https://withintenmiles.com/", "publisher": {"@id": "https://withintenmiles.com/about/#organization"}}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebPage", "name": "Wheeling — Within Ten", "url": "https://withintenmiles.com/wheeling-60090/this-weekend/", "dateModified": "2026-10-17T02:03:42.525256+00:00", "isPartOf": {"@type": "WebSite", "name": "Within Ten", "url": "https://withintenmiles.com/", "publisher": {"@id": "https://withintenmiles.com/about/#organization"}}}</script>
 <script>
 (function () {
   var activeTags = new Set();
@@ -1217,10 +1134,7 @@ document.querySelectorAll(".newsletter-form").forEach(function (f) {
   }
 })();
 </script>
-
-
 <script>document.addEventListener("click",function(e){var a=e.target.closest&&e.target.closest("a[href^=http]");if(a&&a.hostname!==location.hostname&&window.goatcounter&&goatcounter.count)goatcounter.count({path:"out/"+a.hostname,event:true})})</script>
 <script data-goatcounter="https://withinten.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
-
 </body>
 </html>

@@ -1,17 +1,3 @@
-<!--
-  ROADMAP.md Phase 11 #99 - the entity-clarity work item 22's GEO
-  strategy was missing after the item 98 correction found that AI
-  citation is decided by content structure, claim clarity, and entity
-  authority, not organic rank or a convention file (llms.txt) nothing
-  reads. This is the one page that states plainly who publishes this
-  site, why it exists, and how it's built, and the canonical page where
-  the Organization JSON-LD entity is fully defined - every other page's
-  WebSite node points back here by @id rather than re-declaring it.
-
-  Styled as its own self-contained page (same pattern as sponsor.html.j2,
-  not extending region.html.j2, which is built for region-scoped views
-  this page isn't one of).
--->
 <!doctype html>
 <html lang="en">
 <head>
@@ -146,7 +132,7 @@
 
   <section class="block">
     <h2>How it's built</h2>
-    <p>Every region page is generated from the same real, publicly available village, library, park district, and school-district sources &mdash; nothing here is invented to fill space, and a source that goes quiet just means fewer listings that week, never a fabricated one. The whole site is open source; the code that builds it is public on GitHub. This build reached 21 of 29 configured sources &mdash; the rest is a source that didn't answer this time, not a gap filled with a fabricated listing. 3 sources are shown from their last update, up to 4 hours ago.</p>
+    <p>Every region page is generated from the same real, publicly available village, library, park district, and school-district sources &mdash; nothing here is invented to fill space, and a source that goes quiet just means fewer listings that week, never a fabricated one. The whole site is open source; the code that builds it is public on GitHub. This build reached 24 of 29 configured sources &mdash; the rest is a source that didn't answer this time, not a gap filled with a fabricated listing.</p>
     <p><strong>Nothing on this site is written by AI.</strong> Every listing comes from the village, library, park district, or school district's own calendar, and every event links back to the source that published it &mdash; not a summary written about it. The build does apply light editorial processing on top of that real data: it tags events (kid-friendly, free, indoor/outdoor and so on) from keywords in the title and description, truncates an overly long description, and picks which event to feature &mdash; but it never writes, rewrites, or invents the listing text itself.</p>
   </section>
 
@@ -164,12 +150,10 @@
   <footer>
     Curious what the digest looks like? <a href="https://withintenmiles.com/">See a live region</a>.
     <a href="https://google.com/preferences/source?q=withintenmiles.com" rel="noopener">Add us as a preferred source on Google</a>.
-    <br>Generated 2026-10-17 01:54 UTC.
+    <br>Generated 2026-10-17 02:03 UTC.
   </footer>
 </div>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Organization", "@id": "https://withintenmiles.com/about/#organization", "name": "Within Ten", "url": "https://withintenmiles.com/", "founder": {"@type": "Person", "name": "Ryan Anderson"}}</script>
-
 <script data-goatcounter="https://withinten.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
-
 </body>
 </html>

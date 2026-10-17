@@ -24,10 +24,6 @@
 <link rel="apple-touch-icon" href="https://withintenmiles.com/icons/icon-192.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<!-- Non-render-blocking font load: paint with the fallback stack immediately,
-     swap to the web font once it's fetched, instead of blocking first paint
-     on a round trip to fonts.googleapis.com (real measured LCP impact on a
-     cold connection was ~300ms - see ROADMAP.md Phase 11 #26). -->
 <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;800&display=optional">
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;800&display=optional" rel="stylesheet" media="print" onload="this.media='all'">
 <noscript><link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;800&display=optional" rel="stylesheet"></noscript>
@@ -707,10 +703,6 @@
 </style>
 </head>
 <body>
-
-
-<!-- header, not div (ROADMAP.md Phase 11 #62, found by a real axe-core
-     audit): everything in the hero previously sat outside any landmark. -->
 <header class="hero">
   <div class="hero-inner">
     <a class="back" href="https://withintenmiles.com/">&larr; All regions</a>
@@ -734,220 +726,92 @@
     <a href="https://withintenmiles.com/palatine-60067/this-weekend/">This weekend</a>
     <a href="https://withintenmiles.com/palatine-60067/today/">Today</a>
     <a href="https://withintenmiles.com/palatine-60067/free/">Free</a>
-    <a href="https://withintenmiles.com/palatine-60067/guides/" class="active">Guides</a>
-    <a href="https://withintenmiles.com/palatine-60067/things-to-do/">Things to Do</a>
-    <a href="https://withintenmiles.com/palatine-60067/directory/">Directory</a>
-  </nav>
+<a href="https://withintenmiles.com/palatine-60067/guides/" class="active">Guides</a><a href="https://withintenmiles.com/palatine-60067/things-to-do/">Things to Do</a><a href="https://withintenmiles.com/palatine-60067/directory/">Directory</a>  </nav>
 
-  
 
-  
 
-  
-  
-  
 
   <p class="freshness-note">Updated automatically — last checked Friday, October 16.</p>
 
-  
 
-  
 
-  
 
   <div class="sponsor">
-    
     <div class="label">Sponsor This Spot</div>
     <h2>Sponsor this spot</h2>
     <p>Reach local families every week. Local businesses only — see pricing and availability. <a href="https://withintenmiles.com/sponsor/">Learn more &rarr;</a></p>
-    
   </div>
 
-  
   <div class="filter-bar" role="group" aria-label="Filter events">
-    
     <button type="button" class="filter-chip" data-tag="free" aria-pressed="false">
       <span aria-hidden="true">💵</span>Free
     </button>
-    
     <button type="button" class="filter-chip" data-tag="indoor" aria-pressed="false">
       <span aria-hidden="true">🏠</span>Indoor
     </button>
-    
     <button type="button" class="filter-chip" data-tag="kid_friendly" aria-pressed="false">
       <span aria-hidden="true">🧒</span>Kid-friendly
     </button>
-    
     <button type="button" class="filter-chip" data-tag="outdoor" aria-pressed="false">
       <span aria-hidden="true">🌳</span>Outdoor
     </button>
-    
     <button type="button" class="filter-chip clear" id="clear-filters">Clear filters</button>
   </div>
   <div class="sr-only" id="filter-status" aria-live="polite"></div>
-  
 
-  
 
-  
 
-  
-  
-  
-  
-  
-    
-    
     <section class="block">
       <h2>What&#39;s inside</h2>
-      
         <div class="card-grid">
-        
-        <!-- id folds in date_iso - see the Editor's Pick tray_item above
-             for why (ROADMAP.md item 146). -->
-        
-        
         <article class="card" id="ev-village-services-utilities-refuse-recycling" data-tags="" data-date-iso="">
-          
-          
-          
-          
-          
           <h3><a href="https://www.palatine.il.us/667/New-Residents">Village services, utilities, refuse &amp; recycling</a></h3>
-          
-          
-        <p class="detail">There&#39;s no vehicle sticker to buy — Palatine eliminated its program in 2022, saving households an average of $75. Water/sewer is billed bi-monthly by the Village (Utility Billing, 847-359-9082); refuse, recycling, and yard waste (April-November) are collected weekly by Groot — put everything at the curb by 6:30 a.m. on your collection day.</p>
-          
-          
-        </article>
-        
-        <!-- id folds in date_iso - see the Editor's Pick tray_item above
-             for why (ROADMAP.md item 146). -->
-        
-        
+<p class="detail">There&#39;s no vehicle sticker to buy — Palatine eliminated its program in 2022, saving households an average of $75. Water/sewer is billed bi-monthly by the Village (Utility Billing, 847-359-9082); refuse, recycling, and yard waste (April-November) are collected weekly by Groot — put everything at the curb by 6:30 a.m. on your collection day.</p>        </article>
         <article class="card" id="ev-get-a-palatine-public-library-district-card" data-tags="indoor,kid_friendly,free" data-date-iso="">
-          
-          
-          
-          
-          
           <h3><a href="https://www.palatinelibrary.org/about/library-cards">Get a Palatine Public Library District card</a></h3>
-          
-          
-        <p class="detail">Bring one photo ID showing your current address within the District, or two forms of ID (one with a photo) if your address isn&#39;t current on either. Kids under 14 need a parent or guardian along. Non-residents can buy a full-service card for an annual fee — contact Member Services (ext. 125) to calculate it.</p>
-          
-          <div class="tag-row">
-            <span class="tag-badge" style="background: var(--hue-blue-bg); color: var(--hue-blue-ink);">🏠 Indoor</span><span class="tag-badge" style="background: var(--hue-pink-bg); color: var(--hue-pink-ink);">🧒 Kid-friendly</span><span class="tag-badge" style="background: var(--hue-green-bg); color: var(--hue-green-ink);">💵 Free</span>
-          </div>
-          
-          
+<p class="detail">Bring one photo ID showing your current address within the District, or two forms of ID (one with a photo) if your address isn&#39;t current on either. Kids under 14 need a parent or guardian along. Non-residents can buy a full-service card for an annual fee — contact Member Services (ext. 125) to calculate it.</p>          <div class="tag-row">
+<span class="tag-badge" style="background: var(--hue-blue-bg); color: var(--hue-blue-ink);">🏠 Indoor</span><span class="tag-badge" style="background: var(--hue-pink-bg); color: var(--hue-pink-ink);">🧒 Kid-friendly</span><span class="tag-badge" style="background: var(--hue-green-bg); color: var(--hue-green-ink);">💵 Free</span>          </div>
         </article>
-        
-        <!-- id folds in date_iso - see the Editor's Pick tray_item above
-             for why (ROADMAP.md item 146). -->
-        
-        
         <article class="card" id="ev-register-for-palatine-park-district-programs" data-tags="outdoor,kid_friendly" data-date-iso="">
-          
-          
-          
-          
-          
           <h3><a href="https://www.palatineparks.org/">Register for Palatine Park District programs</a></h3>
-          
-          
-        <p class="detail">Most residents set up one household account, then register for pools, rec classes, and seasonal programs individually — browse the current program guide to get started.</p>
-          
-          <div class="tag-row">
-            <span class="tag-badge" style="background: var(--hue-teal-bg); color: var(--hue-teal-ink);">🌳 Outdoor</span><span class="tag-badge" style="background: var(--hue-pink-bg); color: var(--hue-pink-ink);">🧒 Kid-friendly</span>
-          </div>
-          
-          
+<p class="detail">Most residents set up one household account, then register for pools, rec classes, and seasonal programs individually — browse the current program guide to get started.</p>          <div class="tag-row">
+<span class="tag-badge" style="background: var(--hue-teal-bg); color: var(--hue-teal-ink);">🌳 Outdoor</span><span class="tag-badge" style="background: var(--hue-pink-bg); color: var(--hue-pink-ink);">🧒 Kid-friendly</span>          </div>
         </article>
-        
-        <!-- id folds in date_iso - see the Editor's Pick tray_item above
-             for why (ROADMAP.md item 146). -->
-        
-        
         <article class="card" id="ev-community-consolidated-school-district-15-elementary-middle" data-tags="" data-date-iso="">
-          
-          
-          
-          
-          
           <h3><a href="https://www.ccsd15.net/registration">Community Consolidated School District 15 (elementary &amp; middle school)</a></h3>
-          
-          
-        <p class="detail">CCSD 15 is the third-largest elementary district in Illinois, covering all or part of seven towns (Palatine, Rolling Meadows, Hoffman Estates, Inverness, South Barrington, Arlington Heights, and Schaumburg) — confirm your specific address, since boundaries cross village lines. District office: (847) 963-3000.</p>
-          
-          
-        </article>
-        
-        <!-- id folds in date_iso - see the Editor's Pick tray_item above
-             for why (ROADMAP.md item 146). -->
-        
-        
+<p class="detail">CCSD 15 is the third-largest elementary district in Illinois, covering all or part of seven towns (Palatine, Rolling Meadows, Hoffman Estates, Inverness, South Barrington, Arlington Heights, and Schaumburg) — confirm your specific address, since boundaries cross village lines. District office: (847) 963-3000.</p>        </article>
         <article class="card" id="ev-township-high-school-district-211-high-school" data-tags="" data-date-iso="">
-          
-          
-          
-          
-          
           <h3><a href="https://adc.d211.org/">Township High School District 211 (high school)</a></h3>
-          
-          
-        <p class="detail">William Fremd High School is Palatine&#39;s own, one of five D211 high schools serving Hoffman Estates, Inverness, Palatine, Schaumburg, and parts of several other northwest suburbs — confirm by address rather than assuming, since D211 territory overlaps with towns like Arlington Heights that mostly belong to a different high school district.</p>
-          
-          
-        </article>
-        
+<p class="detail">William Fremd High School is Palatine&#39;s own, one of five D211 high schools serving Hoffman Estates, Inverness, Palatine, Schaumburg, and parts of several other northwest suburbs — confirm by address rather than assuming, since D211 territory overlaps with towns like Arlington Heights that mostly belong to a different high school district.</p>        </article>
         </div>
-      
     </section>
-    
-  
-
-  
-  
-
 
   
 
-  
   <section class="faq">
     <h2>Frequently asked questions</h2>
-    
     <details class="faq-item">
       <summary>How current is this guide?</summary>
       <p>It's regenerated automatically from the village, library, and park district's own listings, typically several times a week - not a one-time write-up that goes stale.</p>
     </details>
-    
     <details class="faq-item">
       <summary>Is this every event or business, or just what&#39;s listed here?</summary>
       <p>Only what the linked public sources publish. For full details, hours, or anything not listed here, check the official page each item links to.</p>
     </details>
-    
     <details class="faq-item">
       <summary>How do I see what&#39;s happening in Palatine this specific weekend?</summary>
       <p>See the <a href="https://withintenmiles.com/palatine-60067/this-weekend/">weekend view</a>, which only shows items with a known date in the coming Friday-Sunday.</p>
     </details>
-    
     <details class="faq-item">
       <summary>Can I add an event, or suggest a business for the directory?</summary>
       <p>Yes - <a href="https://github.com/randerson-23/agent-business/issues/new?template=event-submission.yml">submit an event</a> and a person reviews it before it goes live, or a business owner can <a href="https://withintenmiles.com/sponsor/">inquire about a listing</a>.</p>
     </details>
-    
   </section>
-  
 
-  
 
-  
-  
   <div class="newsletter" id="newsletter-signup">
   <form class="newsletter-form" action="https://buttondown.com/api/emails/embed-subscribe/withinten" method="post" target="bd-hidden-frame">
-    <input type="hidden" name="tag" value="town:palatine-60067">
-    <input type="hidden" name="utm_source" value="site">
+<input type="hidden" name="tag" value="town:palatine-60067">    <input type="hidden" name="utm_source" value="site">
     <input type="hidden" name="utm_campaign" value="guide">
     <div class="newsletter-copy">
       <strong>Get it in your inbox</strong>
@@ -966,7 +830,6 @@
     <p class="newsletter-note">Not there in two minutes? Check Spam or Promotions for a message from Within Ten via Buttondown.</p>
   </div>
 </div>
-  
   <iframe name="bd-hidden-frame" title="Newsletter signup" style="display:none" aria-hidden="true"></iframe>
 <script>
 var WM = [["Open Gmail", "https://mail.google.com/mail/u/0/#search/from%3Abuttondown", ["gmail.com", "googlemail.com"]], ["Open Yahoo Mail", "https://mail.yahoo.com/", ["yahoo.com", "ymail.com"]], ["Open AOL Mail", "https://mail.aol.com/", ["aol.com"]], ["Open Outlook", "https://outlook.live.com/mail/0/", ["outlook.com", "hotmail.com", "live.com", "msn.com"]], ["Open iCloud Mail", "https://www.icloud.com/mail/", ["icloud.com", "me.com", "mac.com"]]];
@@ -990,13 +853,8 @@ document.querySelectorAll(".newsletter-form").forEach(function (f) {
     <a href="https://withintenmiles.com/sponsor/">sponsor page</a>.
     <a href="https://withintenmiles.com/about/">About</a>.
     <a href="https://google.com/preferences/source?q=withintenmiles.com" rel="noopener">Add us as a preferred source on Google</a>.
-    <a href="https://withintenmiles.com/trick-or-treat/">Trick-or-treat hours</a>.
-    
-    
-    
-    <br>Generated 2026-10-17 01:54 UTC.
-    <br>Visits counted with privacy-first, cookie-free analytics — no personal data collected.
-    <br><a href="https://withintenmiles.com/palatine-60067/weekly-summary.txt">Copy this week's summary</a> — a plain-text block ready to paste into a local group.
+<a href="https://withintenmiles.com/trick-or-treat/">Trick-or-treat hours</a>.    <br>Generated 2026-10-17 02:03 UTC.
+<br>Visits counted with privacy-first, cookie-free analytics — no personal data collected.    <br><a href="https://withintenmiles.com/palatine-60067/weekly-summary.txt">Copy this week's summary</a> — a plain-text block ready to paste into a local group.
   </footer>
 </div>
 
@@ -1016,11 +874,8 @@ document.querySelectorAll(".newsletter-form").forEach(function (f) {
   </div>
 </div>
 
-
-
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "How current is this guide?", "acceptedAnswer": {"@type": "Answer", "text": "It's regenerated automatically from the village, library, and park district's own listings, typically several times a week - not a one-time write-up that goes stale."}}, {"@type": "Question", "name": "Is this every event or business, or just what's listed here?", "acceptedAnswer": {"@type": "Answer", "text": "Only what the linked public sources publish. For full details, hours, or anything not listed here, check the official page each item links to."}}, {"@type": "Question", "name": "How do I see what's happening in Palatine this specific weekend?", "acceptedAnswer": {"@type": "Answer", "text": "See the <a href=\"https://withintenmiles.com/palatine-60067/this-weekend/\">weekend view<\/a>, which only shows items with a known date in the coming Friday-Sunday."}}, {"@type": "Question", "name": "Can I add an event, or suggest a business for the directory?", "acceptedAnswer": {"@type": "Answer", "text": "Yes - <a href=\"https://github.com/randerson-23/agent-business/issues/new?template=event-submission.yml\">submit an event<\/a> and a person reviews it before it goes live, or a business owner can <a href=\"https://withintenmiles.com/sponsor/\">inquire about a listing<\/a>."}}]}</script>
-
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebPage", "name": "Palatine — Within Ten", "url": "https://withintenmiles.com/palatine-60067/guides/new-to-town/", "dateModified": "2026-10-17T01:54:52.408155+00:00", "isPartOf": {"@type": "WebSite", "name": "Within Ten", "url": "https://withintenmiles.com/", "publisher": {"@id": "https://withintenmiles.com/about/#organization"}}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebPage", "name": "Palatine — Within Ten", "url": "https://withintenmiles.com/palatine-60067/guides/new-to-town/", "dateModified": "2026-10-17T02:03:42.525256+00:00", "isPartOf": {"@type": "WebSite", "name": "Within Ten", "url": "https://withintenmiles.com/", "publisher": {"@id": "https://withintenmiles.com/about/#organization"}}}</script>
 <script>
 (function () {
   var activeTags = new Set();
@@ -1313,10 +1168,7 @@ document.querySelectorAll(".newsletter-form").forEach(function (f) {
   }
 })();
 </script>
-
-
 <script>document.addEventListener("click",function(e){var a=e.target.closest&&e.target.closest("a[href^=http]");if(a&&a.hostname!==location.hostname&&window.goatcounter&&goatcounter.count)goatcounter.count({path:"out/"+a.hostname,event:true})})</script>
 <script data-goatcounter="https://withinten.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
-
 </body>
 </html>

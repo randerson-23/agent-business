@@ -3,8 +3,8 @@
 <channel>
   <title>Within Ten — Upcoming events in Arlington Heights</title>
   <link>https://withintenmiles.com/</link>
-  <description>Upcoming events in Arlington Heights, soonest first - aggregated automatically from village, library, park district and school-district calendars. This build reached 3 of 5 configured sources. 1 source is shown from its last update, up to 4 hours ago.</description>
-  <lastBuildDate>Sat, 17 Oct 2026 01:54:52 +0000</lastBuildDate>
+  <description>Upcoming events in Arlington Heights, soonest first - aggregated automatically from village, library, park district and school-district calendars. This build reached 4 of 5 configured sources.</description>
+  <lastBuildDate>Sat, 17 Oct 2026 02:03:42 +0000</lastBuildDate>
   <item>
     <title>Arlington Heights: Senior Center: Travelogue</title>
     <link>https://withintenmiles.com/arlington-heights-60005/#ev-senior-center-travelogue-2026-10-16</link>
@@ -12,14 +12,6 @@
     <description>Official listing: https://www.ahml.info/scheduling/reservation/224945</description>
     <pubDate>Fri, 16 Oct 2026 00:00:00 +0000</pubDate>
     <source url="https://www.ahml.info/scheduling/reservation/224945">Arlington Heights Memorial Library — Events</source>
-  </item>
-  <item>
-    <title>Arlington Heights: Oddities Night</title>
-    <link>https://withintenmiles.com/arlington-heights-60005/#ev-oddities-night-2026-10-16</link>
-    <guid isPermaLink="true">https://withintenmiles.com/arlington-heights-60005/#ev-oddities-night-2026-10-16</guid>
-    <description>Step into the strange and mysterious at Oddities Night! Explore unusual objects from local museum collections, enjoy treats and themed drinks and experience a… Official listing: https://www.ahpd.org/event/oddities-night/</description>
-    <pubDate>Fri, 16 Oct 2026 19:00:00 +0000</pubDate>
-    <source url="https://www.ahpd.org/event/oddities-night/">Arlington Heights Park District — Events</source>
   </item>
   <item>
     <title>Arlington Heights: Beginning ESL</title>
@@ -404,6 +396,14 @@
     <description>Purchase Tickets April 3rd, 2027: 2:00pm &amp; 7:30pm Tickets: $45 ABOUT THE SHOW: The Neverly Brothers concerts take you on a guided musical VIRTUAL TOUR of the… Official listing: https://www.metropolisarts.com/event/the-neverly-brothers-2027/</description>
     <pubDate>Sat, 03 Apr 2027 00:00:00 +0000</pubDate>
     <source url="https://www.metropolisarts.com/event/the-neverly-brothers-2027/">Metropolis Performing Arts Centre — Shows</source>
+  </item>
+  <item>
+    <title>Arlington Heights: Rodgers &amp; Hammerstein's Oklahoma</title>
+    <link>https://withintenmiles.com/arlington-heights-60005/#ev-rodgers-hammerstein-s-oklahoma-2027-04-28</link>
+    <guid isPermaLink="true">https://withintenmiles.com/arlington-heights-60005/#ev-rodgers-hammerstein-s-oklahoma-2027-04-28</guid>
+    <description>Purchase TicketsApril 28, 2027 – May 30, 2027 **American Sign Language interpreted performance: May 6, 2027, 7:30 pm **Open Captioned performance: May 8,… Official listing: https://www.metropolisarts.com/event/oklahoma/</description>
+    <pubDate>Wed, 28 Apr 2027 00:00:00 +0000</pubDate>
+    <source url="https://www.metropolisarts.com/event/oklahoma/">Metropolis Performing Arts Centre — Shows</source>
   </item>
 </channel>
 </rss>

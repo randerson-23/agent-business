@@ -24,10 +24,6 @@
 <link rel="apple-touch-icon" href="https://withintenmiles.com/icons/icon-192.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<!-- Non-render-blocking font load: paint with the fallback stack immediately,
-     swap to the web font once it's fetched, instead of blocking first paint
-     on a round trip to fonts.googleapis.com (real measured LCP impact on a
-     cold connection was ~300ms - see ROADMAP.md Phase 11 #26). -->
 <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;800&display=optional">
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;800&display=optional" rel="stylesheet" media="print" onload="this.media='all'">
 <noscript><link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;800&display=optional" rel="stylesheet"></noscript>
@@ -707,10 +703,6 @@
 </style>
 </head>
 <body>
-
-
-<!-- header, not div (ROADMAP.md Phase 11 #62, found by a real axe-core
-     audit): everything in the hero previously sat outside any landmark. -->
 <header class="hero">
   <div class="hero-inner">
     <a class="back" href="https://withintenmiles.com/">&larr; All regions</a>
@@ -734,496 +726,144 @@
     <a href="https://withintenmiles.com/des-plaines-60016/this-weekend/">This weekend</a>
     <a href="https://withintenmiles.com/des-plaines-60016/today/">Today</a>
     <a href="https://withintenmiles.com/des-plaines-60016/free/">Free</a>
-    <a href="https://withintenmiles.com/des-plaines-60016/guides/">Guides</a>
-    <a href="https://withintenmiles.com/des-plaines-60016/things-to-do/" class="active">Things to Do</a>
-    <a href="https://withintenmiles.com/des-plaines-60016/directory/">Directory</a>
-  </nav>
+<a href="https://withintenmiles.com/des-plaines-60016/guides/">Guides</a><a href="https://withintenmiles.com/des-plaines-60016/things-to-do/" class="active">Things to Do</a><a href="https://withintenmiles.com/des-plaines-60016/directory/">Directory</a>  </nav>
 
-  
 
-  
 
-  
-  
-  
 
   <p class="freshness-note">Updated automatically — last checked Friday, October 16.</p>
 
-  
 
-  
 
-  
 
   <div class="sponsor">
-    
     <div class="label">Sponsor This Spot</div>
     <h2>Sponsor this spot</h2>
     <p>Reach local families every week. Local businesses only — see pricing and availability. <a href="https://withintenmiles.com/sponsor/">Learn more &rarr;</a></p>
-    
   </div>
 
-  
   <div class="filter-bar" role="group" aria-label="Filter events">
-    
     <button type="button" class="filter-chip" data-tag="food" aria-pressed="false">
       <span aria-hidden="true">🍽️</span>Food &amp; drink
     </button>
-    
     <button type="button" class="filter-chip" data-tag="free" aria-pressed="false">
       <span aria-hidden="true">💵</span>Free
     </button>
-    
     <button type="button" class="filter-chip" data-tag="indoor" aria-pressed="false">
       <span aria-hidden="true">🏠</span>Indoor
     </button>
-    
     <button type="button" class="filter-chip" data-tag="kid_friendly" aria-pressed="false">
       <span aria-hidden="true">🧒</span>Kid-friendly
     </button>
-    
     <button type="button" class="filter-chip" data-tag="outdoor" aria-pressed="false">
       <span aria-hidden="true">🌳</span>Outdoor
     </button>
-    
     <button type="button" class="filter-chip clear" id="clear-filters">Clear filters</button>
   </div>
   <div class="sr-only" id="filter-status" aria-live="polite"></div>
-  
 
-  
 
-  
 
-  
-  
-  
-  
-  
-    
-    
     <section class="block">
       <h2>Things to Do</h2>
-      
         <div class="card-grid">
-        
-        <!-- id folds in date_iso - see the Editor's Pick tray_item above
-             for why (ROADMAP.md item 146). -->
-        
-        
         <article class="card" id="ev-des-plaines-public-library" data-tags="indoor,kid_friendly,free" data-date-iso="">
-          
-          <!-- ROADMAP.md Phase 11 #63: My Weekend is for dated events -
-               offering to add "Find your school district" or a guide's
-               own title to it made no sense, since guide items and the
-               guide index have nothing to do with weekend planning.
-               #90: nor does a school half-day belong in it - it's real
-               and worth knowing, but nobody plans a weekend around one. -->
           <button type="button" class="tray-star" data-item='{"date": null, "date_iso": null, "detail": "Story times, programs, and museum passes for Des Plaines residents.", "id": "https://www.dppl.org/", "region_name": "Des Plaines", "region_url": "https://withintenmiles.com/des-plaines-60016/", "title": "Des Plaines Public Library", "url": "https://www.dppl.org/"}' aria-pressed="false" aria-label="Add Des Plaines Public Library to My Weekend">☆</button>
-          
-          
-          
-          
-          
           <h3><a href="https://www.dppl.org/">Des Plaines Public Library</a></h3>
-          
-          
-        <p class="detail">Story times, programs, and museum passes for Des Plaines residents.</p>
-          
-          <div class="tag-row">
-            <span class="tag-badge" style="background: var(--hue-blue-bg); color: var(--hue-blue-ink);">🏠 Indoor</span><span class="tag-badge" style="background: var(--hue-pink-bg); color: var(--hue-pink-ink);">🧒 Kid-friendly</span><span class="tag-badge" style="background: var(--hue-green-bg); color: var(--hue-green-ink);">💵 Free</span>
-          </div>
-          
-          
+<p class="detail">Story times, programs, and museum passes for Des Plaines residents.</p>          <div class="tag-row">
+<span class="tag-badge" style="background: var(--hue-blue-bg); color: var(--hue-blue-ink);">🏠 Indoor</span><span class="tag-badge" style="background: var(--hue-pink-bg); color: var(--hue-pink-ink);">🧒 Kid-friendly</span><span class="tag-badge" style="background: var(--hue-green-bg); color: var(--hue-green-ink);">💵 Free</span>          </div>
         </article>
-        
-        <!-- id folds in date_iso - see the Editor's Pick tray_item above
-             for why (ROADMAP.md item 146). -->
-        
-        
         <article class="card" id="ev-des-plaines-park-district" data-tags="outdoor,kid_friendly" data-date-iso="">
-          
-          <!-- ROADMAP.md Phase 11 #63: My Weekend is for dated events -
-               offering to add "Find your school district" or a guide's
-               own title to it made no sense, since guide items and the
-               guide index have nothing to do with weekend planning.
-               #90: nor does a school half-day belong in it - it's real
-               and worth knowing, but nobody plans a weekend around one. -->
           <button type="button" class="tray-star" data-item='{"date": null, "date_iso": null, "detail": "Parks, pools, and rec programs across the city.", "id": "https://www.dppd.org/", "region_name": "Des Plaines", "region_url": "https://withintenmiles.com/des-plaines-60016/", "title": "Des Plaines Park District", "url": "https://www.dppd.org/"}' aria-pressed="false" aria-label="Add Des Plaines Park District to My Weekend">☆</button>
-          
-          
-          
-          
-          
           <h3><a href="https://www.dppd.org/">Des Plaines Park District</a></h3>
-          
-          
-        <p class="detail">Parks, pools, and rec programs across the city.</p>
-          
-          <div class="tag-row">
-            <span class="tag-badge" style="background: var(--hue-teal-bg); color: var(--hue-teal-ink);">🌳 Outdoor</span><span class="tag-badge" style="background: var(--hue-pink-bg); color: var(--hue-pink-ink);">🧒 Kid-friendly</span>
-          </div>
-          
-          
+<p class="detail">Parks, pools, and rec programs across the city.</p>          <div class="tag-row">
+<span class="tag-badge" style="background: var(--hue-teal-bg); color: var(--hue-teal-ink);">🌳 Outdoor</span><span class="tag-badge" style="background: var(--hue-pink-bg); color: var(--hue-pink-ink);">🧒 Kid-friendly</span>          </div>
         </article>
-        
-        <!-- id folds in date_iso - see the Editor's Pick tray_item above
-             for why (ROADMAP.md item 146). -->
-        
-        
         <article class="card" id="ev-city-of-des-plaines" data-tags="" data-date-iso="">
-          
-          <!-- ROADMAP.md Phase 11 #63: My Weekend is for dated events -
-               offering to add "Find your school district" or a guide's
-               own title to it made no sense, since guide items and the
-               guide index have nothing to do with weekend planning.
-               #90: nor does a school half-day belong in it - it's real
-               and worth knowing, but nobody plans a weekend around one. -->
           <button type="button" class="tray-star" data-item='{"date": null, "date_iso": null, "detail": "City council meetings, permits, and community announcements.", "id": "https://www.desplainesil.gov/", "region_name": "Des Plaines", "region_url": "https://withintenmiles.com/des-plaines-60016/", "title": "City of Des Plaines", "url": "https://www.desplainesil.gov/"}' aria-pressed="false" aria-label="Add City of Des Plaines to My Weekend">☆</button>
-          
-          
-          
-          
-          
           <h3><a href="https://www.desplainesil.gov/">City of Des Plaines</a></h3>
-          
-          
-        <p class="detail">City council meetings, permits, and community announcements.</p>
-          
-          
-        </article>
-        
-        <!-- id folds in date_iso - see the Editor's Pick tray_item above
-             for why (ROADMAP.md item 146). -->
-        
-        
+<p class="detail">City council meetings, permits, and community announcements.</p>        </article>
         <article class="card" id="ev-maine-west-high-school-athletics" data-tags="" data-date-iso="">
-          
-          <!-- ROADMAP.md Phase 11 #63: My Weekend is for dated events -
-               offering to add "Find your school district" or a guide's
-               own title to it made no sense, since guide items and the
-               guide index have nothing to do with weekend planning.
-               #90: nor does a school half-day belong in it - it's real
-               and worth knowing, but nobody plans a weekend around one. -->
           <button type="button" class="tray-star" data-item='{"date": null, "date_iso": null, "detail": "Maine West Warriors varsity \u0026 JV schedules, rosters, and ticket info. This site doesn\u0027t have a licensed schedule feed for game dates - Illinois HS schedules run mostly through MaxPreps, a commercial aggregator this site doesn\u0027t republish from - so this links to the school\u0027s own athletics page instead.", "id": "https://west.maine207.org/maine-west-athletics/", "region_name": "Des Plaines", "region_url": "https://withintenmiles.com/des-plaines-60016/", "title": "Maine West High School Athletics", "url": "https://west.maine207.org/maine-west-athletics/"}' aria-pressed="false" aria-label="Add Maine West High School Athletics to My Weekend">☆</button>
-          
-          
-          
-          
-          
           <h3><a href="https://west.maine207.org/maine-west-athletics/">Maine West High School Athletics</a></h3>
-          
-          
-        <p class="detail">Maine West Warriors varsity &amp; JV schedules, rosters, and ticket info. This site doesn&#39;t have a licensed schedule feed for game dates - Illinois HS schedules run mostly through MaxPreps, a commercial aggregator this site doesn&#39;t republish from - so this links to the school&#39;s own athletics page instead.</p>
-          
-          
-        </article>
-        
-        <!-- id folds in date_iso - see the Editor's Pick tray_item above
-             for why (ROADMAP.md item 146). -->
-        
-        
+<p class="detail">Maine West Warriors varsity &amp; JV schedules, rosters, and ticket info. This site doesn&#39;t have a licensed schedule feed for game dates - Illinois HS schedules run mostly through MaxPreps, a commercial aggregator this site doesn&#39;t republish from - so this links to the school&#39;s own athletics page instead.</p>        </article>
         <article class="card" id="ev-official-trick-or-treat-hours-all-five-towns" data-tags="kid_friendly,free" data-date-iso="">
-          
-          <!-- ROADMAP.md Phase 11 #63: My Weekend is for dated events -
-               offering to add "Find your school district" or a guide's
-               own title to it made no sense, since guide items and the
-               guide index have nothing to do with weekend planning.
-               #90: nor does a school half-day belong in it - it's real
-               and worth knowing, but nobody plans a weekend around one. -->
           <button type="button" class="tray-star" data-item='{"date": null, "date_iso": null, "detail": "Trick-or-treat hours for Mount Prospect, Arlington Heights, Des Plaines, Palatine, and Wheeling in one place, each linked to the village page it came from.", "id": "https://withintenmiles.com/trick-or-treat/", "region_name": "Des Plaines", "region_url": "https://withintenmiles.com/des-plaines-60016/", "title": "Official trick-or-treat hours \u2014 all five towns", "url": "https://withintenmiles.com/trick-or-treat/"}' aria-pressed="false" aria-label="Add Official trick-or-treat hours — all five towns to My Weekend">☆</button>
-          
-          
-          
-          
-          
           <h3><a href="https://withintenmiles.com/trick-or-treat/">Official trick-or-treat hours — all five towns</a></h3>
-          
-          
-        <p class="detail">Trick-or-treat hours for Mount Prospect, Arlington Heights, Des Plaines, Palatine, and Wheeling in one place, each linked to the village page it came from.</p>
-          
-          <div class="tag-row">
-            <span class="tag-badge" style="background: var(--hue-pink-bg); color: var(--hue-pink-ink);">🧒 Kid-friendly</span><span class="tag-badge" style="background: var(--hue-green-bg); color: var(--hue-green-ink);">💵 Free</span>
-          </div>
-          
-          
+<p class="detail">Trick-or-treat hours for Mount Prospect, Arlington Heights, Des Plaines, Palatine, and Wheeling in one place, each linked to the village page it came from.</p>          <div class="tag-row">
+<span class="tag-badge" style="background: var(--hue-pink-bg); color: var(--hue-pink-ink);">🧒 Kid-friendly</span><span class="tag-badge" style="background: var(--hue-green-bg); color: var(--hue-green-ink);">💵 Free</span>          </div>
         </article>
-        
-        <!-- id folds in date_iso - see the Editor's Pick tray_item above
-             for why (ROADMAP.md item 146). -->
-        
-        
         <article class="card" id="ev-local-party-venues-entertainers-tutoring-centers" data-tags="kid_friendly" data-date-iso="">
-          
-          <!-- ROADMAP.md Phase 11 #63: My Weekend is for dated events -
-               offering to add "Find your school district" or a guide's
-               own title to it made no sense, since guide items and the
-               guide index have nothing to do with weekend planning.
-               #90: nor does a school half-day belong in it - it's real
-               and worth knowing, but nobody plans a weekend around one. -->
           <button type="button" class="tray-star" data-item='{"date": null, "date_iso": null, "detail": "Private businesses appear here as they join the local directory \u2014 see what\u0027s currently listed.", "id": "https://withintenmiles.com/des-plaines-60016/directory/", "region_name": "Des Plaines", "region_url": "https://withintenmiles.com/des-plaines-60016/", "title": "Local party venues, entertainers \u0026 tutoring centers", "url": "https://withintenmiles.com/des-plaines-60016/directory/"}' aria-pressed="false" aria-label="Add Local party venues, entertainers &amp; tutoring centers to My Weekend">☆</button>
-          
-          
-          
-          
-          
           <h3><a href="https://withintenmiles.com/des-plaines-60016/directory/">Local party venues, entertainers &amp; tutoring centers</a></h3>
-          
-          
-        <p class="detail">Private businesses appear here as they join the local directory — see what&#39;s currently listed.</p>
-          
-          <div class="tag-row">
-            <span class="tag-badge" style="background: var(--hue-pink-bg); color: var(--hue-pink-ink);">🧒 Kid-friendly</span>
-          </div>
-          
-          
+<p class="detail">Private businesses appear here as they join the local directory — see what&#39;s currently listed.</p>          <div class="tag-row">
+<span class="tag-badge" style="background: var(--hue-pink-bg); color: var(--hue-pink-ink);">🧒 Kid-friendly</span>          </div>
         </article>
-        
-        <!-- id folds in date_iso - see the Editor's Pick tray_item above
-             for why (ROADMAP.md item 146). -->
-        
-        
         <article class="card" id="ev-city-sponsored-events-des-plaines" data-tags="outdoor,free" data-date-iso="">
-          
-          <!-- ROADMAP.md Phase 11 #63: My Weekend is for dated events -
-               offering to add "Find your school district" or a guide's
-               own title to it made no sense, since guide items and the
-               guide index have nothing to do with weekend planning.
-               #90: nor does a school half-day belong in it - it's real
-               and worth knowing, but nobody plans a weekend around one. -->
           <button type="button" class="tray-star" data-item='{"date": null, "date_iso": null, "detail": "The City\u0027s own events hub for its recurring festivals, including Fall Fest at Lake Park each fall - dates and details are announced there each year.", "id": "https://www.desplainesil.gov/access-your-government/city-departments/media-services/city-sponsored-events", "region_name": "Des Plaines", "region_url": "https://withintenmiles.com/des-plaines-60016/", "title": "City Sponsored Events \u2014 Des Plaines", "url": "https://www.desplainesil.gov/access-your-government/city-departments/media-services/city-sponsored-events"}' aria-pressed="false" aria-label="Add City Sponsored Events — Des Plaines to My Weekend">☆</button>
-          
-          
-          
-          
-          
           <h3><a href="https://www.desplainesil.gov/access-your-government/city-departments/media-services/city-sponsored-events">City Sponsored Events — Des Plaines</a></h3>
-          
-          
-        <p class="detail">The City&#39;s own events hub for its recurring festivals, including Fall Fest at Lake Park each fall - dates and details are announced there each year.</p>
-          
-          <div class="tag-row">
-            <span class="tag-badge" style="background: var(--hue-teal-bg); color: var(--hue-teal-ink);">🌳 Outdoor</span><span class="tag-badge" style="background: var(--hue-green-bg); color: var(--hue-green-ink);">💵 Free</span>
-          </div>
-          
-          
+<p class="detail">The City&#39;s own events hub for its recurring festivals, including Fall Fest at Lake Park each fall - dates and details are announced there each year.</p>          <div class="tag-row">
+<span class="tag-badge" style="background: var(--hue-teal-bg); color: var(--hue-teal-ink);">🌳 Outdoor</span><span class="tag-badge" style="background: var(--hue-green-bg); color: var(--hue-green-ink);">💵 Free</span>          </div>
         </article>
-        
-        <!-- id folds in date_iso - see the Editor's Pick tray_item above
-             for why (ROADMAP.md item 146). -->
-        
-        
         <article class="card" id="ev-taste-of-des-plaines" data-tags="outdoor,food" data-date-iso="">
-          
-          <!-- ROADMAP.md Phase 11 #63: My Weekend is for dated events -
-               offering to add "Find your school district" or a guide's
-               own title to it made no sense, since guide items and the
-               guide index have nothing to do with weekend planning.
-               #90: nor does a school half-day belong in it - it's real
-               and worth knowing, but nobody plans a weekend around one. -->
           <button type="button" class="tray-star" data-item='{"date": null, "date_iso": null, "detail": "The City\u0027s recurring summer food festival - check the City\u0027s page for the current year\u0027s dates and vendors.", "id": "https://www.desplainesil.gov/access-your-government/city-departments/media-services/city-sponsored-events/taste-of-des-plaines", "region_name": "Des Plaines", "region_url": "https://withintenmiles.com/des-plaines-60016/", "title": "Taste of Des Plaines", "url": "https://www.desplainesil.gov/access-your-government/city-departments/media-services/city-sponsored-events/taste-of-des-plaines"}' aria-pressed="false" aria-label="Add Taste of Des Plaines to My Weekend">☆</button>
-          
-          
-          
-          
-          
           <h3><a href="https://www.desplainesil.gov/access-your-government/city-departments/media-services/city-sponsored-events/taste-of-des-plaines">Taste of Des Plaines</a></h3>
-          
-          
-        <p class="detail">The City&#39;s recurring summer food festival - check the City&#39;s page for the current year&#39;s dates and vendors.</p>
-          
-          <div class="tag-row">
-            <span class="tag-badge" style="background: var(--hue-teal-bg); color: var(--hue-teal-ink);">🌳 Outdoor</span><span class="tag-badge" style="background: var(--hue-orange-bg); color: var(--hue-orange-ink);">🍽️ Food &amp; drink</span>
-          </div>
-          
-          
+<p class="detail">The City&#39;s recurring summer food festival - check the City&#39;s page for the current year&#39;s dates and vendors.</p>          <div class="tag-row">
+<span class="tag-badge" style="background: var(--hue-teal-bg); color: var(--hue-teal-ink);">🌳 Outdoor</span><span class="tag-badge" style="background: var(--hue-orange-bg); color: var(--hue-orange-ink);">🍽️ Food &amp; drink</span>          </div>
         </article>
-        
-        <!-- id folds in date_iso - see the Editor's Pick tray_item above
-             for why (ROADMAP.md item 146). -->
-        
-        
         <article class="card" id="ev-city-services-utilities-refuse-recycling" data-tags="" data-date-iso="">
-          
-          <!-- ROADMAP.md Phase 11 #63: My Weekend is for dated events -
-               offering to add "Find your school district" or a guide's
-               own title to it made no sense, since guide items and the
-               guide index have nothing to do with weekend planning.
-               #90: nor does a school half-day belong in it - it's real
-               and worth knowing, but nobody plans a weekend around one. -->
           <button type="button" class="tray-star" data-item='{"date": null, "date_iso": null, "detail": "There\u0027s no vehicle sticker to buy \u2014 Des Plaines eliminated its program in July 2020. Trash, recycling, and yard waste are collected by the City\u0027s contracted hauler LRS; the monthly rate is set by the City each year. Water/sewer questions go to Public Works and Engineering, 1111 Joseph J. Schwab Rd., 847-391-5464.", "id": "https://www.desplainesil.gov/access-your-government/city-departments/finance-department/utility-information", "region_name": "Des Plaines", "region_url": "https://withintenmiles.com/des-plaines-60016/", "title": "City services, utilities, refuse \u0026 recycling", "url": "https://www.desplainesil.gov/access-your-government/city-departments/finance-department/utility-information"}' aria-pressed="false" aria-label="Add City services, utilities, refuse &amp; recycling to My Weekend">☆</button>
-          
-          
-          
-          
-          
           <h3><a href="https://www.desplainesil.gov/access-your-government/city-departments/finance-department/utility-information">City services, utilities, refuse &amp; recycling</a></h3>
-          
-          
-        <p class="detail">There&#39;s no vehicle sticker to buy — Des Plaines eliminated its program in July 2020. Trash, recycling, and yard waste are collected by the City&#39;s contracted hauler LRS; the monthly rate is set by the City each year. Water/sewer questions go to Public Works and Engineering, 1111 Joseph J. Schwab Rd., 847-391-5464.</p>
-          
-          
-        </article>
-        
-        <!-- id folds in date_iso - see the Editor's Pick tray_item above
-             for why (ROADMAP.md item 146). -->
-        
-        
+<p class="detail">There&#39;s no vehicle sticker to buy — Des Plaines eliminated its program in July 2020. Trash, recycling, and yard waste are collected by the City&#39;s contracted hauler LRS; the monthly rate is set by the City each year. Water/sewer questions go to Public Works and Engineering, 1111 Joseph J. Schwab Rd., 847-391-5464.</p>        </article>
         <article class="card" id="ev-get-a-des-plaines-public-library-card" data-tags="indoor,kid_friendly,free" data-date-iso="">
-          
-          <!-- ROADMAP.md Phase 11 #63: My Weekend is for dated events -
-               offering to add "Find your school district" or a guide's
-               own title to it made no sense, since guide items and the
-               guide index have nothing to do with weekend planning.
-               #90: nor does a school half-day belong in it - it's real
-               and worth knowing, but nobody plans a weekend around one. -->
           <button type="button" class="tray-star" data-item='{"date": null, "date_iso": null, "detail": "Residents of incorporated Des Plaines qualify for a free card \u2014 apply online and the card arrives by mail within about 5 days, or apply in person. Kids in 8th grade or younger need a parent or guardian along with photo ID and proof of residency.", "id": "https://www.dppl.org/patron-services/get-a-library-card", "region_name": "Des Plaines", "region_url": "https://withintenmiles.com/des-plaines-60016/", "title": "Get a Des Plaines Public Library card", "url": "https://www.dppl.org/patron-services/get-a-library-card"}' aria-pressed="false" aria-label="Add Get a Des Plaines Public Library card to My Weekend">☆</button>
-          
-          
-          
-          
-          
           <h3><a href="https://www.dppl.org/patron-services/get-a-library-card">Get a Des Plaines Public Library card</a></h3>
-          
-          
-        <p class="detail">Residents of incorporated Des Plaines qualify for a free card — apply online and the card arrives by mail within about 5 days, or apply in person. Kids in 8th grade or younger need a parent or guardian along with photo ID and proof of residency.</p>
-          
-          <div class="tag-row">
-            <span class="tag-badge" style="background: var(--hue-blue-bg); color: var(--hue-blue-ink);">🏠 Indoor</span><span class="tag-badge" style="background: var(--hue-pink-bg); color: var(--hue-pink-ink);">🧒 Kid-friendly</span><span class="tag-badge" style="background: var(--hue-green-bg); color: var(--hue-green-ink);">💵 Free</span>
-          </div>
-          
-          
+<p class="detail">Residents of incorporated Des Plaines qualify for a free card — apply online and the card arrives by mail within about 5 days, or apply in person. Kids in 8th grade or younger need a parent or guardian along with photo ID and proof of residency.</p>          <div class="tag-row">
+<span class="tag-badge" style="background: var(--hue-blue-bg); color: var(--hue-blue-ink);">🏠 Indoor</span><span class="tag-badge" style="background: var(--hue-pink-bg); color: var(--hue-pink-ink);">🧒 Kid-friendly</span><span class="tag-badge" style="background: var(--hue-green-bg); color: var(--hue-green-ink);">💵 Free</span>          </div>
         </article>
-        
-        <!-- id folds in date_iso - see the Editor's Pick tray_item above
-             for why (ROADMAP.md item 146). -->
-        
-        
         <article class="card" id="ev-register-for-des-plaines-park-district-programs" data-tags="outdoor,kid_friendly" data-date-iso="">
-          
-          <!-- ROADMAP.md Phase 11 #63: My Weekend is for dated events -
-               offering to add "Find your school district" or a guide's
-               own title to it made no sense, since guide items and the
-               guide index have nothing to do with weekend planning.
-               #90: nor does a school half-day belong in it - it's real
-               and worth knowing, but nobody plans a weekend around one. -->
           <button type="button" class="tray-star" data-item='{"date": null, "date_iso": null, "detail": "Register online through the district\u0027s WebTrac portal once you\u0027ve set up a household account; residency is verified at registration. Non-residents can buy an annual pass (around $450/year) to register at resident rates. Registration questions: 847-391-5700.", "id": "https://www.dpparks.org/how-to-register/", "region_name": "Des Plaines", "region_url": "https://withintenmiles.com/des-plaines-60016/", "title": "Register for Des Plaines Park District programs", "url": "https://www.dpparks.org/how-to-register/"}' aria-pressed="false" aria-label="Add Register for Des Plaines Park District programs to My Weekend">☆</button>
-          
-          
-          
-          
-          
           <h3><a href="https://www.dpparks.org/how-to-register/">Register for Des Plaines Park District programs</a></h3>
-          
-          
-        <p class="detail">Register online through the district&#39;s WebTrac portal once you&#39;ve set up a household account; residency is verified at registration. Non-residents can buy an annual pass (around $450/year) to register at resident rates. Registration questions: 847-391-5700.</p>
-          
-          <div class="tag-row">
-            <span class="tag-badge" style="background: var(--hue-teal-bg); color: var(--hue-teal-ink);">🌳 Outdoor</span><span class="tag-badge" style="background: var(--hue-pink-bg); color: var(--hue-pink-ink);">🧒 Kid-friendly</span>
-          </div>
-          
-          
+<p class="detail">Register online through the district&#39;s WebTrac portal once you&#39;ve set up a household account; residency is verified at registration. Non-residents can buy an annual pass (around $450/year) to register at resident rates. Registration questions: 847-391-5700.</p>          <div class="tag-row">
+<span class="tag-badge" style="background: var(--hue-teal-bg); color: var(--hue-teal-ink);">🌳 Outdoor</span><span class="tag-badge" style="background: var(--hue-pink-bg); color: var(--hue-pink-ink);">🧒 Kid-friendly</span>          </div>
         </article>
-        
-        <!-- id folds in date_iso - see the Editor's Pick tray_item above
-             for why (ROADMAP.md item 146). -->
-        
-        
         <article class="card" id="ev-community-consolidated-school-district-62-elementary-middle" data-tags="" data-date-iso="">
-          
-          <!-- ROADMAP.md Phase 11 #63: My Weekend is for dated events -
-               offering to add "Find your school district" or a guide's
-               own title to it made no sense, since guide items and the
-               guide index have nothing to do with weekend planning.
-               #90: nor does a school half-day belong in it - it's real
-               and worth knowing, but nobody plans a weekend around one. -->
           <button type="button" class="tray-star" data-item='{"date": null, "date_iso": null, "detail": "CCSD 62 serves most of Des Plaines and Rosemont, feeding into Maine West High School \u2014 but pockets of the city fall under East Maine SD 63 or Elk Grove\u0027s CCSD 59 instead, so confirm your specific address rather than assuming. New-family registration runs through the Infinite Campus portal; district office: (847) 824-1159.", "id": "https://www.d62.org/enrollment/new-student-enrollment", "region_name": "Des Plaines", "region_url": "https://withintenmiles.com/des-plaines-60016/", "title": "Community Consolidated School District 62 (elementary \u0026 middle school)", "url": "https://www.d62.org/enrollment/new-student-enrollment"}' aria-pressed="false" aria-label="Add Community Consolidated School District 62 (elementary &amp; middle school) to My Weekend">☆</button>
-          
-          
-          
-          
-          
           <h3><a href="https://www.d62.org/enrollment/new-student-enrollment">Community Consolidated School District 62 (elementary &amp; middle school)</a></h3>
-          
-          
-        <p class="detail">CCSD 62 serves most of Des Plaines and Rosemont, feeding into Maine West High School — but pockets of the city fall under East Maine SD 63 or Elk Grove&#39;s CCSD 59 instead, so confirm your specific address rather than assuming. New-family registration runs through the Infinite Campus portal; district office: (847) 824-1159.</p>
-          
-          
-        </article>
-        
-        <!-- id folds in date_iso - see the Editor's Pick tray_item above
-             for why (ROADMAP.md item 146). -->
-        
-        
+<p class="detail">CCSD 62 serves most of Des Plaines and Rosemont, feeding into Maine West High School — but pockets of the city fall under East Maine SD 63 or Elk Grove&#39;s CCSD 59 instead, so confirm your specific address rather than assuming. New-family registration runs through the Infinite Campus portal; district office: (847) 824-1159.</p>        </article>
         <article class="card" id="ev-maine-township-high-school-district-207-high-school" data-tags="" data-date-iso="">
-          
-          <!-- ROADMAP.md Phase 11 #63: My Weekend is for dated events -
-               offering to add "Find your school district" or a guide's
-               own title to it made no sense, since guide items and the
-               guide index have nothing to do with weekend planning.
-               #90: nor does a school half-day belong in it - it's real
-               and worth knowing, but nobody plans a weekend around one. -->
           <button type="button" class="tray-star" data-item='{"date": null, "date_iso": null, "detail": "Most Des Plaines addresses feed into Maine West High School, part of District 207 \u2014 check the district\u0027s attendance boundary map to confirm, since a home a few blocks over can fall into a different Maine 207 school.", "id": "https://maine207.org/attendance-boundary-map/", "region_name": "Des Plaines", "region_url": "https://withintenmiles.com/des-plaines-60016/", "title": "Maine Township High School District 207 (high school)", "url": "https://maine207.org/attendance-boundary-map/"}' aria-pressed="false" aria-label="Add Maine Township High School District 207 (high school) to My Weekend">☆</button>
-          
-          
-          
-          
-          
           <h3><a href="https://maine207.org/attendance-boundary-map/">Maine Township High School District 207 (high school)</a></h3>
-          
-          
-        <p class="detail">Most Des Plaines addresses feed into Maine West High School, part of District 207 — check the district&#39;s attendance boundary map to confirm, since a home a few blocks over can fall into a different Maine 207 school.</p>
-          
-          
-        </article>
-        
+<p class="detail">Most Des Plaines addresses feed into Maine West High School, part of District 207 — check the district&#39;s attendance boundary map to confirm, since a home a few blocks over can fall into a different Maine 207 school.</p>        </article>
         </div>
-      
     </section>
-    
-  
-
-  
-  
-
 
   
 
-  
   <section class="faq">
     <h2>Frequently asked questions</h2>
-    
     <details class="faq-item">
       <summary>How current is this guide?</summary>
       <p>It's regenerated automatically from the village, library, and park district's own listings, typically several times a week - not a one-time write-up that goes stale.</p>
     </details>
-    
     <details class="faq-item">
       <summary>Is this every event or business, or just what&#39;s listed here?</summary>
       <p>Only what the linked public sources publish. For full details, hours, or anything not listed here, check the official page each item links to.</p>
     </details>
-    
     <details class="faq-item">
       <summary>How do I see what&#39;s happening in Des Plaines this specific weekend?</summary>
       <p>See the <a href="https://withintenmiles.com/des-plaines-60016/this-weekend/">weekend view</a>, which only shows items with a known date in the coming Friday-Sunday.</p>
     </details>
-    
     <details class="faq-item">
       <summary>Can I add an event, or suggest a business for the directory?</summary>
       <p>Yes - <a href="https://github.com/randerson-23/agent-business/issues/new?template=event-submission.yml">submit an event</a> and a person reviews it before it goes live, or a business owner can <a href="https://withintenmiles.com/sponsor/">inquire about a listing</a>.</p>
     </details>
-    
   </section>
-  
 
-  
 
-  
-  
   <div class="newsletter" id="newsletter-signup">
   <form class="newsletter-form" action="https://buttondown.com/api/emails/embed-subscribe/withinten" method="post" target="bd-hidden-frame">
-    <input type="hidden" name="tag" value="town:des-plaines-60016">
-    <input type="hidden" name="utm_source" value="site">
+<input type="hidden" name="tag" value="town:des-plaines-60016">    <input type="hidden" name="utm_source" value="site">
     <input type="hidden" name="utm_campaign" value="region">
     <div class="newsletter-copy">
       <strong>Get it in your inbox</strong>
@@ -1242,7 +882,6 @@
     <p class="newsletter-note">Not there in two minutes? Check Spam or Promotions for a message from Within Ten via Buttondown.</p>
   </div>
 </div>
-  
   <iframe name="bd-hidden-frame" title="Newsletter signup" style="display:none" aria-hidden="true"></iframe>
 <script>
 var WM = [["Open Gmail", "https://mail.google.com/mail/u/0/#search/from%3Abuttondown", ["gmail.com", "googlemail.com"]], ["Open Yahoo Mail", "https://mail.yahoo.com/", ["yahoo.com", "ymail.com"]], ["Open AOL Mail", "https://mail.aol.com/", ["aol.com"]], ["Open Outlook", "https://outlook.live.com/mail/0/", ["outlook.com", "hotmail.com", "live.com", "msn.com"]], ["Open iCloud Mail", "https://www.icloud.com/mail/", ["icloud.com", "me.com", "mac.com"]]];
@@ -1266,13 +905,8 @@ document.querySelectorAll(".newsletter-form").forEach(function (f) {
     <a href="https://withintenmiles.com/sponsor/">sponsor page</a>.
     <a href="https://withintenmiles.com/about/">About</a>.
     <a href="https://google.com/preferences/source?q=withintenmiles.com" rel="noopener">Add us as a preferred source on Google</a>.
-    <a href="https://withintenmiles.com/trick-or-treat/">Trick-or-treat hours</a>.
-    
-    
-    
-    <br>Generated 2026-10-17 01:54 UTC.
-    <br>Visits counted with privacy-first, cookie-free analytics — no personal data collected.
-    <br><a href="https://withintenmiles.com/des-plaines-60016/weekly-summary.txt">Copy this week's summary</a> — a plain-text block ready to paste into a local group.
+<a href="https://withintenmiles.com/trick-or-treat/">Trick-or-treat hours</a>.    <br>Generated 2026-10-17 02:03 UTC.
+<br>Visits counted with privacy-first, cookie-free analytics — no personal data collected.    <br><a href="https://withintenmiles.com/des-plaines-60016/weekly-summary.txt">Copy this week's summary</a> — a plain-text block ready to paste into a local group.
   </footer>
 </div>
 
@@ -1292,11 +926,8 @@ document.querySelectorAll(".newsletter-form").forEach(function (f) {
   </div>
 </div>
 
-
-
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "How current is this guide?", "acceptedAnswer": {"@type": "Answer", "text": "It's regenerated automatically from the village, library, and park district's own listings, typically several times a week - not a one-time write-up that goes stale."}}, {"@type": "Question", "name": "Is this every event or business, or just what's listed here?", "acceptedAnswer": {"@type": "Answer", "text": "Only what the linked public sources publish. For full details, hours, or anything not listed here, check the official page each item links to."}}, {"@type": "Question", "name": "How do I see what's happening in Des Plaines this specific weekend?", "acceptedAnswer": {"@type": "Answer", "text": "See the <a href=\"https://withintenmiles.com/des-plaines-60016/this-weekend/\">weekend view<\/a>, which only shows items with a known date in the coming Friday-Sunday."}}, {"@type": "Question", "name": "Can I add an event, or suggest a business for the directory?", "acceptedAnswer": {"@type": "Answer", "text": "Yes - <a href=\"https://github.com/randerson-23/agent-business/issues/new?template=event-submission.yml\">submit an event<\/a> and a person reviews it before it goes live, or a business owner can <a href=\"https://withintenmiles.com/sponsor/\">inquire about a listing<\/a>."}}]}</script>
-
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebPage", "name": "Des Plaines — Within Ten", "url": "https://withintenmiles.com/des-plaines-60016/things-to-do/", "dateModified": "2026-10-17T01:54:52.408155+00:00", "isPartOf": {"@type": "WebSite", "name": "Within Ten", "url": "https://withintenmiles.com/", "publisher": {"@id": "https://withintenmiles.com/about/#organization"}}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebPage", "name": "Des Plaines — Within Ten", "url": "https://withintenmiles.com/des-plaines-60016/things-to-do/", "dateModified": "2026-10-17T02:03:42.525256+00:00", "isPartOf": {"@type": "WebSite", "name": "Within Ten", "url": "https://withintenmiles.com/", "publisher": {"@id": "https://withintenmiles.com/about/#organization"}}}</script>
 <script>
 (function () {
   var activeTags = new Set();
@@ -1589,10 +1220,7 @@ document.querySelectorAll(".newsletter-form").forEach(function (f) {
   }
 })();
 </script>
-
-
 <script>document.addEventListener("click",function(e){var a=e.target.closest&&e.target.closest("a[href^=http]");if(a&&a.hostname!==location.hostname&&window.goatcounter&&goatcounter.count)goatcounter.count({path:"out/"+a.hostname,event:true})})</script>
 <script data-goatcounter="https://withinten.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
-
 </body>
 </html>

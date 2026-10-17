@@ -24,10 +24,6 @@
 <link rel="apple-touch-icon" href="https://withintenmiles.com/icons/icon-192.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<!-- Non-render-blocking font load: paint with the fallback stack immediately,
-     swap to the web font once it's fetched, instead of blocking first paint
-     on a round trip to fonts.googleapis.com (real measured LCP impact on a
-     cold connection was ~300ms - see ROADMAP.md Phase 11 #26). -->
 <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;800&display=optional">
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;800&display=optional" rel="stylesheet" media="print" onload="this.media='all'">
 <noscript><link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;800&display=optional" rel="stylesheet"></noscript>
@@ -707,10 +703,6 @@
 </style>
 </head>
 <body>
-
-
-<!-- header, not div (ROADMAP.md Phase 11 #62, found by a real axe-core
-     audit): everything in the hero previously sat outside any landmark. -->
 <header class="hero">
   <div class="hero-inner">
     <a class="back" href="https://withintenmiles.com/">&larr; All regions</a>
@@ -734,73 +726,37 @@
     <a href="https://withintenmiles.com/des-plaines-60016/this-weekend/">This weekend</a>
     <a href="https://withintenmiles.com/des-plaines-60016/today/">Today</a>
     <a href="https://withintenmiles.com/des-plaines-60016/free/">Free</a>
-    <a href="https://withintenmiles.com/des-plaines-60016/guides/">Guides</a>
-    <a href="https://withintenmiles.com/des-plaines-60016/things-to-do/">Things to Do</a>
-    <a href="https://withintenmiles.com/des-plaines-60016/directory/" class="active">Directory</a>
-  </nav>
+<a href="https://withintenmiles.com/des-plaines-60016/guides/">Guides</a><a href="https://withintenmiles.com/des-plaines-60016/things-to-do/">Things to Do</a><a href="https://withintenmiles.com/des-plaines-60016/directory/" class="active">Directory</a>  </nav>
 
-  
 
-  
 
-  
-  
-  
 
   <p class="freshness-note">Updated automatically — last checked Friday, October 16.</p>
 
-  
 
-  
 
-  
 
   <div class="sponsor">
-    
     <div class="label">Sponsor This Spot</div>
     <h2>Sponsor this spot</h2>
     <p>Reach local families every week. Local businesses only — see pricing and availability. <a href="https://withintenmiles.com/sponsor/">Learn more &rarr;</a></p>
-    
   </div>
 
-  
 
-  
 
-  
 
-  
-  
-  
-  
-  
-    
-    
     <section class="block">
       <h2>Local Business Directory</h2>
-      
         <p class="empty">No businesses listed yet. Community Partner sponsors get a permanent spot here. <a href="https://withintenmiles.com/sponsor/">Be the first →</a></p>
-      
     </section>
-    
-  
-
-  
-  
-
 
   
 
-  
 
-  
 
-  
-  
   <div class="newsletter" id="newsletter-signup">
   <form class="newsletter-form" action="https://buttondown.com/api/emails/embed-subscribe/withinten" method="post" target="bd-hidden-frame">
-    <input type="hidden" name="tag" value="town:des-plaines-60016">
-    <input type="hidden" name="utm_source" value="site">
+<input type="hidden" name="tag" value="town:des-plaines-60016">    <input type="hidden" name="utm_source" value="site">
     <input type="hidden" name="utm_campaign" value="region">
     <div class="newsletter-copy">
       <strong>Get it in your inbox</strong>
@@ -819,7 +775,6 @@
     <p class="newsletter-note">Not there in two minutes? Check Spam or Promotions for a message from Within Ten via Buttondown.</p>
   </div>
 </div>
-  
   <iframe name="bd-hidden-frame" title="Newsletter signup" style="display:none" aria-hidden="true"></iframe>
 <script>
 var WM = [["Open Gmail", "https://mail.google.com/mail/u/0/#search/from%3Abuttondown", ["gmail.com", "googlemail.com"]], ["Open Yahoo Mail", "https://mail.yahoo.com/", ["yahoo.com", "ymail.com"]], ["Open AOL Mail", "https://mail.aol.com/", ["aol.com"]], ["Open Outlook", "https://outlook.live.com/mail/0/", ["outlook.com", "hotmail.com", "live.com", "msn.com"]], ["Open iCloud Mail", "https://www.icloud.com/mail/", ["icloud.com", "me.com", "mac.com"]]];
@@ -843,13 +798,8 @@ document.querySelectorAll(".newsletter-form").forEach(function (f) {
     <a href="https://withintenmiles.com/sponsor/">sponsor page</a>.
     <a href="https://withintenmiles.com/about/">About</a>.
     <a href="https://google.com/preferences/source?q=withintenmiles.com" rel="noopener">Add us as a preferred source on Google</a>.
-    <a href="https://withintenmiles.com/trick-or-treat/">Trick-or-treat hours</a>.
-    
-    
-    
-    <br>Generated 2026-10-17 01:54 UTC.
-    <br>Visits counted with privacy-first, cookie-free analytics — no personal data collected.
-    <br><a href="https://withintenmiles.com/des-plaines-60016/weekly-summary.txt">Copy this week's summary</a> — a plain-text block ready to paste into a local group.
+<a href="https://withintenmiles.com/trick-or-treat/">Trick-or-treat hours</a>.    <br>Generated 2026-10-17 02:03 UTC.
+<br>Visits counted with privacy-first, cookie-free analytics — no personal data collected.    <br><a href="https://withintenmiles.com/des-plaines-60016/weekly-summary.txt">Copy this week's summary</a> — a plain-text block ready to paste into a local group.
   </footer>
 </div>
 
@@ -869,9 +819,7 @@ document.querySelectorAll(".newsletter-form").forEach(function (f) {
   </div>
 </div>
 
-
-
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebPage", "name": "Des Plaines — Within Ten", "url": "https://withintenmiles.com/des-plaines-60016/directory/", "dateModified": "2026-10-17T01:54:52.408155+00:00", "isPartOf": {"@type": "WebSite", "name": "Within Ten", "url": "https://withintenmiles.com/", "publisher": {"@id": "https://withintenmiles.com/about/#organization"}}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebPage", "name": "Des Plaines — Within Ten", "url": "https://withintenmiles.com/des-plaines-60016/directory/", "dateModified": "2026-10-17T02:03:42.525256+00:00", "isPartOf": {"@type": "WebSite", "name": "Within Ten", "url": "https://withintenmiles.com/", "publisher": {"@id": "https://withintenmiles.com/about/#organization"}}}</script>
 <script>
 (function () {
   var activeTags = new Set();
@@ -1164,10 +1112,7 @@ document.querySelectorAll(".newsletter-form").forEach(function (f) {
   }
 })();
 </script>
-
-
 <script>document.addEventListener("click",function(e){var a=e.target.closest&&e.target.closest("a[href^=http]");if(a&&a.hostname!==location.hostname&&window.goatcounter&&goatcounter.count)goatcounter.count({path:"out/"+a.hostname,event:true})})</script>
 <script data-goatcounter="https://withinten.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
-
 </body>
 </html>

@@ -24,10 +24,6 @@
 <link rel="apple-touch-icon" href="https://withintenmiles.com/icons/icon-192.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<!-- Non-render-blocking font load: paint with the fallback stack immediately,
-     swap to the web font once it's fetched, instead of blocking first paint
-     on a round trip to fonts.googleapis.com (real measured LCP impact on a
-     cold connection was ~300ms - see ROADMAP.md Phase 11 #26). -->
 <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;800&display=optional">
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;800&display=optional" rel="stylesheet" media="print" onload="this.media='all'">
 <noscript><link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;800&display=optional" rel="stylesheet"></noscript>
@@ -432,7 +428,6 @@
       <a href="about/">About</a>
     </nav>
   </div>
-
   <section class="halloween" aria-labelledby="halloween-heading">
     <svg class="bat b1" viewBox="0 0 64 32" width="46" style="top:14px; right:18%;" aria-hidden="true"><path d="M32 12c-2-6-6-8-10-8 2 3 2 6 0 8-3-2-7-2-10 0 1-3 0-6-4-8-4 4-6 10-6 14 4-3 9-3 13 0 2-3 6-4 9-2 3-3 6-4 8-10 2 6 5 7 8 10 3-2 7-1 9 2 4-3 9-3 13 0 0-4-2-10-6-14-4 2-5 5-4 8-3-2-7-2-10 0-2-2-2-5 0-8-4 0-8 2-10 8z"/></svg>
     <svg class="bat b2" viewBox="0 0 64 32" width="30" style="top:52px; right:9%;" aria-hidden="true"><path d="M32 12c-2-6-6-8-10-8 2 3 2 6 0 8-3-2-7-2-10 0 1-3 0-6-4-8-4 4-6 10-6 14 4-3 9-3 13 0 2-3 6-4 9-2 3-3 6-4 8-10 2 6 5 7 8 10 3-2 7-1 9 2 4-3 9-3 13 0 0-4-2-10-6-14-4 2-5 5-4 8-3-2-7-2-10 0-2-2-2-5 0-8-4 0-8 2-10 8z"/></svg>
@@ -458,19 +453,12 @@
         <div class="halloween-kicker">🎃 Halloween &middot; Saturday, October 31</div>
         <h2 id="halloween-heading">Trick-or-treat hours for all five towns, <span class="pumpkin-orange">in one place</span></h2>
         <ul class="halloween-hours">
-          <li>Arlington Heights <strong>3–7 PM</strong></li><li>Des Plaines <strong>No set hours</strong></li><li>Mount Prospect <strong>3–8 PM</strong></li><li>Palatine <strong>3–7 PM</strong> <a href="https://www.palatine.il.us/common/modules/iCalendar/iCalendar.aspx?feed=calendar&amp;catID=14" style="color:#ffb347;" title="Village Trick-or-Treating Hours">posted &rarr;</a></li><li>Wheeling <strong>3–7 PM</strong></li>
-        </ul>
+<li>Arlington Heights <strong>3–7 PM</strong></li><li>Des Plaines <strong>No set hours</strong></li><li>Mount Prospect <strong>3–8 PM</strong></li><li>Palatine <strong>3–7 PM</strong> <a href="https://www.palatine.il.us/common/modules/iCalendar/iCalendar.aspx?feed=calendar&amp;catID=14" style="color:#ffb347;" title="Village Trick-or-Treating Hours">posted &rarr;</a></li><li>Wheeling <strong>3–7 PM</strong></li>        </ul>
         <a class="halloween-cta" href="trick-or-treat/">See hours, trunk-or-treats &amp; Halloween events &rarr;</a>
         <span class="halloween-countdown">👻 15 days to go</span>
       </div>
     </div>
   </section>
-  
-
-
-  <!-- header, not div (ROADMAP.md Phase 11 #62, found by a real axe-core
-       audit): everything in the hero previously sat outside any
-       landmark - <main> only wraps the content below it. -->
   <header class="hero">
     <div class="hero-inner">
       <div class="brand-mark">
@@ -488,85 +476,60 @@
 
   <div class="wrap">
   <main>
-  
 
   <div class="bento-grid">
     <a class="bento-tile bento-weekend" href="this-weekend/">
       <span class="bento-kicker">📅 This weekend</span>
       <h2>Oct 16–18</h2>
-      <p>21 things happening across every region &rarr;</p>
+      <p>20 things happening across every region &rarr;</p>
     </a>
     <div class="bento-tile bento-stat">
       <span class="bento-stat-number">5</span>
-      <span class="bento-stat-label">towns · 1544 live updates this week</span>
+      <span class="bento-stat-label">towns · 1543 live updates this week</span>
     </div>
   </div>
 
-  <!-- ROADMAP.md item 149: the hub-level /today and /free merged views -
-       a lightweight text row rather than two more bento tiles, to keep
-       the above-the-fold weight the research pass called out (three
-       merged views + four region tiles is already the upper bound for a
-       phone screen without these becoming full tiles too). -->
   <div class="hub-secondary-links">
-    <a href="today/">📍 Today (2) &rarr;</a>
+    <a href="today/">📍 Today (1) &rarr;</a>
     <a href="free/">🎟️ Free things to do (34) &rarr;</a>
   </div>
 
-  <!-- A separate flex-wrap grid, not part of .bento-grid above: with CSS
-       grid, a lone region card left in the last row (4 regions in a
-       3-column grid, and this recurs at 5/7/8) sits next to a stranded
-       empty gap - grid only collapses a column TRACK that has zero
-       items anywhere in the whole grid, not one that's merely unused in
-       one row, so auto-fit couldn't fix this despite first looking like
-       the right tool (confirmed by screenshotting that attempt, no
-       change). Flexbox distributes flex-grow space per line
-       independently, so a lone last-row card genuinely stretches to
-       fill its row instead (ROADMAP.md Phase 11 #56). -->
   <div class="region-grid" id="region-grid">
-    
     <a class="bento-tile region-card" href="arlington-heights-60005/">
       <span class="zip">60005 · IL</span>
       <h2>Arlington Heights</h2>
       <p>Pulled automatically from the Village, Memorial Library, and Park District — plus Harmony Park and Lake Arlington — several times a week, a short drive from Mount Prospect.</p>
-      <span class="count">291 live updates this week</span>
+      <span class="count">290 live updates this week</span>
     </a>
-    
     <a class="bento-tile region-card" href="des-plaines-60016/">
       <span class="zip">60016 · IL</span>
       <h2>Des Plaines</h2>
       <p>Pulled automatically from the City, Public Library, and Park District — plus Lake Park — several times a week, just north of O&#39;Hare.</p>
       <span class="count">476 live updates this week</span>
     </a>
-    
     <a class="bento-tile region-card" href="mount-prospect-60056/">
       <span class="zip">60056 · IL</span>
       <h2>Mount Prospect</h2>
       <p>Pulled automatically from the Village, Public Library, and Park District — plus Randhurst Village, Melas Park, Lions Park, and downtown Emerson &amp; Busse — several times a week.</p>
       <span class="count">240 live updates this week</span>
     </a>
-    
     <a class="bento-tile region-card" href="palatine-60067/">
       <span class="zip">60067 · IL</span>
       <h2>Palatine</h2>
       <p>Pulled automatically from the Village, Public Library District, and Park District — plus Downtown Palatine and the Train Station farmers&#39; market lot — several times a week, northwest of Mount Prospect.</p>
       <span class="count">127 live updates this week</span>
     </a>
-    
     <a class="bento-tile region-card" href="wheeling-60090/">
       <span class="zip">60090 · IL</span>
       <h2>Wheeling</h2>
       <p>Pulled automatically from the Village, Indian Trails Public Library, and Wheeling Park District — plus Heritage Park and Chicago Executive Airport — several times a week.</p>
       <span class="count">410 live updates this week</span>
     </a>
-    
   </div>
-  
 
-  
   <div class="newsletter" id="newsletter-signup">
   <form class="newsletter-form" action="https://buttondown.com/api/emails/embed-subscribe/withinten" method="post" target="bd-hidden-frame">
-    <input type="hidden" name="tag" value="town:all">
-    <input type="hidden" name="utm_source" value="site">
+<input type="hidden" name="tag" value="town:all">    <input type="hidden" name="utm_source" value="site">
     <input type="hidden" name="utm_campaign" value="hub">
     <div class="newsletter-copy">
       <strong>Get it in your inbox</strong>
@@ -608,11 +571,9 @@ document.querySelectorAll(".newsletter-form").forEach(function (f) {
     <a href="sponsor/">See pricing &amp; availability</a>.
     <a href="about/">About</a>.
     <a href="https://google.com/preferences/source?q=withintenmiles.com" rel="noopener">Add us as a preferred source on Google</a>.
-    <a href="trick-or-treat/">Trick-or-treat hours</a>.
-    <br>See something wrong or missing? <a href="mailto:hello@withintenmiles.com?subject=Correction&amp;body=What%27s%20wrong%20or%20missing%2C%20and%20which%20region%2Fevent%3A%20">Email us</a> — corrections get made the same week.
-    <br>Generated 2026-10-17 01:54 UTC.
-    <br>Visits counted with privacy-first, cookie-free analytics — no personal data collected.
-  </footer>
+<a href="trick-or-treat/">Trick-or-treat hours</a>.    <br>See something wrong or missing? <a href="mailto:hello@withintenmiles.com?subject=Correction&amp;body=What%27s%20wrong%20or%20missing%2C%20and%20which%20region%2Fevent%3A%20">Email us</a> — corrections get made the same week.
+    <br>Generated 2026-10-17 02:03 UTC.
+<br>Visits counted with privacy-first, cookie-free analytics — no personal data collected.  </footer>
   </div>
 
 <script>
@@ -641,8 +602,6 @@ document.querySelectorAll(".newsletter-form").forEach(function (f) {
   tiles.forEach(function (tile) { observer.observe(tile); });
 })();
 </script>
-
 <script data-goatcounter="https://withinten.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
-
 </body>
 </html>

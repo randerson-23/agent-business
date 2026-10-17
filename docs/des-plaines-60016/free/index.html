@@ -24,10 +24,6 @@
 <link rel="apple-touch-icon" href="https://withintenmiles.com/icons/icon-192.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<!-- Non-render-blocking font load: paint with the fallback stack immediately,
-     swap to the web font once it's fetched, instead of blocking first paint
-     on a round trip to fonts.googleapis.com (real measured LCP impact on a
-     cold connection was ~300ms - see ROADMAP.md Phase 11 #26). -->
 <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;800&display=optional">
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;800&display=optional" rel="stylesheet" media="print" onload="this.media='all'">
 <noscript><link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;800&display=optional" rel="stylesheet"></noscript>
@@ -707,10 +703,6 @@
 </style>
 </head>
 <body>
-
-
-<!-- header, not div (ROADMAP.md Phase 11 #62, found by a real axe-core
-     audit): everything in the hero previously sat outside any landmark. -->
 <header class="hero">
   <div class="hero-inner">
     <a class="back" href="https://withintenmiles.com/">&larr; All regions</a>
@@ -734,228 +726,87 @@
     <a href="https://withintenmiles.com/des-plaines-60016/this-weekend/">This weekend</a>
     <a href="https://withintenmiles.com/des-plaines-60016/today/">Today</a>
     <a href="https://withintenmiles.com/des-plaines-60016/free/" class="active">Free</a>
-    <a href="https://withintenmiles.com/des-plaines-60016/guides/">Guides</a>
-    <a href="https://withintenmiles.com/des-plaines-60016/things-to-do/">Things to Do</a>
-    <a href="https://withintenmiles.com/des-plaines-60016/directory/">Directory</a>
-  </nav>
+<a href="https://withintenmiles.com/des-plaines-60016/guides/">Guides</a><a href="https://withintenmiles.com/des-plaines-60016/things-to-do/">Things to Do</a><a href="https://withintenmiles.com/des-plaines-60016/directory/">Directory</a>  </nav>
 
-  
 
-  
 
-  
-  
-  
 
   <p class="freshness-note">Updated automatically — last checked Friday, October 16.</p>
 
-  
 
-  
 
-  
 
   <div class="sponsor">
-    
     <div class="label">Sponsor This Spot</div>
     <h2>Sponsor this spot</h2>
     <p>Reach local families every week. Local businesses only — see pricing and availability. <a href="https://withintenmiles.com/sponsor/">Learn more &rarr;</a></p>
-    
   </div>
 
-  
   <div class="filter-bar" role="group" aria-label="Filter events">
-    
     <button type="button" class="filter-chip" data-tag="free" aria-pressed="false">
       <span aria-hidden="true">💵</span>Free
     </button>
-    
     <button type="button" class="filter-chip" data-tag="indoor" aria-pressed="false">
       <span aria-hidden="true">🏠</span>Indoor
     </button>
-    
     <button type="button" class="filter-chip" data-tag="kid_friendly" aria-pressed="false">
       <span aria-hidden="true">🧒</span>Kid-friendly
     </button>
-    
     <button type="button" class="filter-chip clear" id="clear-filters">Clear filters</button>
   </div>
   <div class="sr-only" id="filter-status" aria-live="polite"></div>
-  
 
-  
 
-  
 
-  
-  
-  
-  
-  
-    
-    
     <section class="block">
       <h2>Free things to do in Des Plaines</h2>
-      
         <div class="card-grid">
-        
-        <!-- id folds in date_iso - see the Editor's Pick tray_item above
-             for why (ROADMAP.md item 146). -->
-        
-        
         <article class="card" id="ev-friday-night-films-2026-11-06" data-tags="free,indoor" data-date-iso="2026-11-06T18:30:00">
-          
-          <!-- ROADMAP.md Phase 11 #63: My Weekend is for dated events -
-               offering to add "Find your school district" or a guide's
-               own title to it made no sense, since guide items and the
-               guide index have nothing to do with weekend planning.
-               #90: nor does a school half-day belong in it - it's real
-               and worth knowing, but nobody plans a weekend around one. -->
           <button type="button" class="tray-star" data-item='{"date": "Nov 6", "date_iso": "2026-11-06T18:30:00", "detail": "A free screening of an international, independent or documentary film.", "id": "https://desplaines.libnet.info/event/16020452|2026-11-06T18:30:00", "region_name": "Des Plaines", "region_url": "https://withintenmiles.com/des-plaines-60016/", "title": "Friday Night Films", "url": "https://desplaines.libnet.info/event/16020452"}' aria-pressed="false" aria-label="Add Friday Night Films to My Weekend">☆</button>
-          
-          
-          
-          
-          <div class="date"><time datetime="2026-11-06T18:30:00">Fri, Nov 6 · 6:30 PM</time> · <span class="where">Des Plaines</span></div>
-          <h3><a href="https://desplaines.libnet.info/event/16020452">Friday Night Films</a></h3>
-          
-          
-        <p class="detail">A free screening of an international, independent or documentary film.</p>
-          
-          <div class="tag-row">
-            <span class="tag-badge" style="background: var(--hue-green-bg); color: var(--hue-green-ink);">💵 Free</span><span class="tag-badge" style="background: var(--hue-blue-bg); color: var(--hue-blue-ink);">🏠 Indoor</span>
-          </div>
-          
-          
+<div class="date"><time datetime="2026-11-06T18:30:00">Fri, Nov 6 · 6:30 PM</time> · <span class="where">Des Plaines</span></div>          <h3><a href="https://desplaines.libnet.info/event/16020452">Friday Night Films</a></h3>
+<p class="detail">A free screening of an international, independent or documentary film.</p>          <div class="tag-row">
+<span class="tag-badge" style="background: var(--hue-green-bg); color: var(--hue-green-ink);">💵 Free</span><span class="tag-badge" style="background: var(--hue-blue-bg); color: var(--hue-blue-ink);">🏠 Indoor</span>          </div>
           <div class="cal-row">
             <a href="data:text/calendar;charset=utf-8,BEGIN%3AVCALENDAR%0D%0AVERSION%3A2.0%0D%0APRODID%3A-//Within%20Ten//EN%0D%0ABEGIN%3AVEVENT%0D%0ADTSTART%3A20261106T183000%0D%0ADTEND%3A20261106T193000%0D%0ASUMMARY%3AFriday%20Night%20Films%0D%0ADESCRIPTION%3AFriday%5C%2C%20November%2006%202026%206%3A30pm%20-%208%3A30pm%20%5Cn%20A%20free%20screening%20of%20an%20international%5C%2C%20independent%20or%20documentary%20film.%0D%0AURL%3Ahttps%3A//desplaines.libnet.info/event/16020452%0D%0AEND%3AVEVENT%0D%0AEND%3AVCALENDAR%0D%0A" download="event.ics">📅 Add to calendar</a>
             <a href="https://www.google.com/calendar/render?action=TEMPLATE&amp;text=Friday+Night+Films&amp;dates=20261106T183000%2F20261106T193000&amp;details=Friday%2C+November+06+2026+6%3A30pm+-+8%3A30pm+%0A+A+free+screening+of+an+international%2C+independent+or+documentary+film.&amp;location=Des+Plaines" target="_blank" rel="noopener">Google Calendar</a>
           </div>
-          
         </article>
-        
-        <!-- id folds in date_iso - see the Editor's Pick tray_item above
-             for why (ROADMAP.md item 146). -->
-        
-        
         <article class="card" id="ev-film-screening-2026-11-14" data-tags="free,indoor" data-date-iso="2026-11-14T13:30:00">
-          
-          <!-- ROADMAP.md Phase 11 #63: My Weekend is for dated events -
-               offering to add "Find your school district" or a guide's
-               own title to it made no sense, since guide items and the
-               guide index have nothing to do with weekend planning.
-               #90: nor does a school half-day belong in it - it's real
-               and worth knowing, but nobody plans a weekend around one. -->
           <button type="button" class="tray-star" data-item='{"date": "Nov 14", "date_iso": "2026-11-14T13:30:00", "detail": "A free screening of the feature length film Michael.", "id": "https://desplaines.libnet.info/event/16023296|2026-11-14T13:30:00", "region_name": "Des Plaines", "region_url": "https://withintenmiles.com/des-plaines-60016/", "title": "Film Screening", "url": "https://desplaines.libnet.info/event/16023296"}' aria-pressed="false" aria-label="Add Film Screening to My Weekend">☆</button>
-          
-          
-          
-          
-          <div class="date"><time datetime="2026-11-14T13:30:00">Sat, Nov 14 · 1:30 PM</time> · <span class="where">Des Plaines</span></div>
-          <h3><a href="https://desplaines.libnet.info/event/16023296">Film Screening</a></h3>
-          
-          
-        <p class="detail">A free screening of the feature length film Michael.</p>
-          
-          <div class="tag-row">
-            <span class="tag-badge" style="background: var(--hue-green-bg); color: var(--hue-green-ink);">💵 Free</span><span class="tag-badge" style="background: var(--hue-blue-bg); color: var(--hue-blue-ink);">🏠 Indoor</span>
-          </div>
-          
-          
+<div class="date"><time datetime="2026-11-14T13:30:00">Sat, Nov 14 · 1:30 PM</time> · <span class="where">Des Plaines</span></div>          <h3><a href="https://desplaines.libnet.info/event/16023296">Film Screening</a></h3>
+<p class="detail">A free screening of the feature length film Michael.</p>          <div class="tag-row">
+<span class="tag-badge" style="background: var(--hue-green-bg); color: var(--hue-green-ink);">💵 Free</span><span class="tag-badge" style="background: var(--hue-blue-bg); color: var(--hue-blue-ink);">🏠 Indoor</span>          </div>
           <div class="cal-row">
             <a href="data:text/calendar;charset=utf-8,BEGIN%3AVCALENDAR%0D%0AVERSION%3A2.0%0D%0APRODID%3A-//Within%20Ten//EN%0D%0ABEGIN%3AVEVENT%0D%0ADTSTART%3A20261114T133000%0D%0ADTEND%3A20261114T143000%0D%0ASUMMARY%3AFilm%20Screening%0D%0ADESCRIPTION%3ASaturday%5C%2C%20November%2014%202026%201%3A30pm%20-%203%3A40pm%20%5Cn%20A%20free%20screening%20of%20the%20feature%20length%20film%20Michael.%0D%0AURL%3Ahttps%3A//desplaines.libnet.info/event/16023296%0D%0AEND%3AVEVENT%0D%0AEND%3AVCALENDAR%0D%0A" download="event.ics">📅 Add to calendar</a>
             <a href="https://www.google.com/calendar/render?action=TEMPLATE&amp;text=Film+Screening&amp;dates=20261114T133000%2F20261114T143000&amp;details=Saturday%2C+November+14+2026+1%3A30pm+-+3%3A40pm+%0A+A+free+screening+of+the+feature+length+film+Michael.&amp;location=Des+Plaines" target="_blank" rel="noopener">Google Calendar</a>
           </div>
-          
         </article>
-        
-        <!-- id folds in date_iso - see the Editor's Pick tray_item above
-             for why (ROADMAP.md item 146). -->
-        
-        
         <article class="card" id="ev-friday-night-films-2026-12-18" data-tags="free,indoor" data-date-iso="2026-12-18T18:30:00">
-          
-          <!-- ROADMAP.md Phase 11 #63: My Weekend is for dated events -
-               offering to add "Find your school district" or a guide's
-               own title to it made no sense, since guide items and the
-               guide index have nothing to do with weekend planning.
-               #90: nor does a school half-day belong in it - it's real
-               and worth knowing, but nobody plans a weekend around one. -->
           <button type="button" class="tray-star" data-item='{"date": "Dec 18", "date_iso": "2026-12-18T18:30:00", "detail": "A free screening of an international, independent or documentary film.", "id": "https://desplaines.libnet.info/event/16020598|2026-12-18T18:30:00", "region_name": "Des Plaines", "region_url": "https://withintenmiles.com/des-plaines-60016/", "title": "Friday Night Films", "url": "https://desplaines.libnet.info/event/16020598"}' aria-pressed="false" aria-label="Add Friday Night Films to My Weekend">☆</button>
-          
-          
-          
-          
-          <div class="date"><time datetime="2026-12-18T18:30:00">Fri, Dec 18 · 6:30 PM</time> · <span class="where">Des Plaines</span></div>
-          <h3><a href="https://desplaines.libnet.info/event/16020598">Friday Night Films</a></h3>
-          
-          
-        <p class="detail">A free screening of an international, independent or documentary film.</p>
-          
-          <div class="tag-row">
-            <span class="tag-badge" style="background: var(--hue-green-bg); color: var(--hue-green-ink);">💵 Free</span><span class="tag-badge" style="background: var(--hue-blue-bg); color: var(--hue-blue-ink);">🏠 Indoor</span>
-          </div>
-          
-          
+<div class="date"><time datetime="2026-12-18T18:30:00">Fri, Dec 18 · 6:30 PM</time> · <span class="where">Des Plaines</span></div>          <h3><a href="https://desplaines.libnet.info/event/16020598">Friday Night Films</a></h3>
+<p class="detail">A free screening of an international, independent or documentary film.</p>          <div class="tag-row">
+<span class="tag-badge" style="background: var(--hue-green-bg); color: var(--hue-green-ink);">💵 Free</span><span class="tag-badge" style="background: var(--hue-blue-bg); color: var(--hue-blue-ink);">🏠 Indoor</span>          </div>
           <div class="cal-row">
             <a href="data:text/calendar;charset=utf-8,BEGIN%3AVCALENDAR%0D%0AVERSION%3A2.0%0D%0APRODID%3A-//Within%20Ten//EN%0D%0ABEGIN%3AVEVENT%0D%0ADTSTART%3A20261218T183000%0D%0ADTEND%3A20261218T193000%0D%0ASUMMARY%3AFriday%20Night%20Films%0D%0ADESCRIPTION%3AFriday%5C%2C%20December%2018%202026%206%3A30pm%20-%208%3A30pm%20%5Cn%20A%20free%20screening%20of%20an%20international%5C%2C%20independent%20or%20documentary%20film.%0D%0AURL%3Ahttps%3A//desplaines.libnet.info/event/16020598%0D%0AEND%3AVEVENT%0D%0AEND%3AVCALENDAR%0D%0A" download="event.ics">📅 Add to calendar</a>
             <a href="https://www.google.com/calendar/render?action=TEMPLATE&amp;text=Friday+Night+Films&amp;dates=20261218T183000%2F20261218T193000&amp;details=Friday%2C+December+18+2026+6%3A30pm+-+8%3A30pm+%0A+A+free+screening+of+an+international%2C+independent+or+documentary+film.&amp;location=Des+Plaines" target="_blank" rel="noopener">Google Calendar</a>
           </div>
-          
         </article>
-        
-        <!-- id folds in date_iso - see the Editor's Pick tray_item above
-             for why (ROADMAP.md item 146). -->
-        
-        
         <article class="card" id="ev-des-plaines-public-library" data-tags="indoor,kid_friendly,free" data-date-iso="">
-          
-          <!-- ROADMAP.md Phase 11 #63: My Weekend is for dated events -
-               offering to add "Find your school district" or a guide's
-               own title to it made no sense, since guide items and the
-               guide index have nothing to do with weekend planning.
-               #90: nor does a school half-day belong in it - it's real
-               and worth knowing, but nobody plans a weekend around one. -->
           <button type="button" class="tray-star" data-item='{"date": null, "date_iso": null, "detail": "Story times, programs, and museum passes for Des Plaines residents.", "id": "https://www.dppl.org/", "region_name": "Des Plaines", "region_url": "https://withintenmiles.com/des-plaines-60016/", "title": "Des Plaines Public Library", "url": "https://www.dppl.org/"}' aria-pressed="false" aria-label="Add Des Plaines Public Library to My Weekend">☆</button>
-          
-          
-          
-          
-          
           <h3><a href="https://www.dppl.org/">Des Plaines Public Library</a></h3>
-          
-          
-        <p class="detail">Story times, programs, and museum passes for Des Plaines residents.</p>
-          
-          <div class="tag-row">
-            <span class="tag-badge" style="background: var(--hue-blue-bg); color: var(--hue-blue-ink);">🏠 Indoor</span><span class="tag-badge" style="background: var(--hue-pink-bg); color: var(--hue-pink-ink);">🧒 Kid-friendly</span><span class="tag-badge" style="background: var(--hue-green-bg); color: var(--hue-green-ink);">💵 Free</span>
-          </div>
-          
-          
+<p class="detail">Story times, programs, and museum passes for Des Plaines residents.</p>          <div class="tag-row">
+<span class="tag-badge" style="background: var(--hue-blue-bg); color: var(--hue-blue-ink);">🏠 Indoor</span><span class="tag-badge" style="background: var(--hue-pink-bg); color: var(--hue-pink-ink);">🧒 Kid-friendly</span><span class="tag-badge" style="background: var(--hue-green-bg); color: var(--hue-green-ink);">💵 Free</span>          </div>
         </article>
-        
         </div>
-      
     </section>
-    
-  
-
-  
-  
-
 
   
 
-  
 
-  
 
-  
-  
   <div class="newsletter" id="newsletter-signup">
   <form class="newsletter-form" action="https://buttondown.com/api/emails/embed-subscribe/withinten" method="post" target="bd-hidden-frame">
-    <input type="hidden" name="tag" value="town:des-plaines-60016">
-    <input type="hidden" name="utm_source" value="site">
+<input type="hidden" name="tag" value="town:des-plaines-60016">    <input type="hidden" name="utm_source" value="site">
     <input type="hidden" name="utm_campaign" value="free">
     <div class="newsletter-copy">
       <strong>Get it in your inbox</strong>
@@ -974,7 +825,6 @@
     <p class="newsletter-note">Not there in two minutes? Check Spam or Promotions for a message from Within Ten via Buttondown.</p>
   </div>
 </div>
-  
   <iframe name="bd-hidden-frame" title="Newsletter signup" style="display:none" aria-hidden="true"></iframe>
 <script>
 var WM = [["Open Gmail", "https://mail.google.com/mail/u/0/#search/from%3Abuttondown", ["gmail.com", "googlemail.com"]], ["Open Yahoo Mail", "https://mail.yahoo.com/", ["yahoo.com", "ymail.com"]], ["Open AOL Mail", "https://mail.aol.com/", ["aol.com"]], ["Open Outlook", "https://outlook.live.com/mail/0/", ["outlook.com", "hotmail.com", "live.com", "msn.com"]], ["Open iCloud Mail", "https://www.icloud.com/mail/", ["icloud.com", "me.com", "mac.com"]]];
@@ -998,13 +848,8 @@ document.querySelectorAll(".newsletter-form").forEach(function (f) {
     <a href="https://withintenmiles.com/sponsor/">sponsor page</a>.
     <a href="https://withintenmiles.com/about/">About</a>.
     <a href="https://google.com/preferences/source?q=withintenmiles.com" rel="noopener">Add us as a preferred source on Google</a>.
-    <a href="https://withintenmiles.com/trick-or-treat/">Trick-or-treat hours</a>.
-    
-    
-    
-    <br>Generated 2026-10-17 01:54 UTC.
-    <br>Visits counted with privacy-first, cookie-free analytics — no personal data collected.
-    <br><a href="https://withintenmiles.com/des-plaines-60016/weekly-summary.txt">Copy this week's summary</a> — a plain-text block ready to paste into a local group.
+<a href="https://withintenmiles.com/trick-or-treat/">Trick-or-treat hours</a>.    <br>Generated 2026-10-17 02:03 UTC.
+<br>Visits counted with privacy-first, cookie-free analytics — no personal data collected.    <br><a href="https://withintenmiles.com/des-plaines-60016/weekly-summary.txt">Copy this week's summary</a> — a plain-text block ready to paste into a local group.
   </footer>
 </div>
 
@@ -1024,11 +869,8 @@ document.querySelectorAll(".newsletter-form").forEach(function (f) {
   </div>
 </div>
 
-
 <script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "Event", "name": "Friday Night Films", "url": "https://withintenmiles.com/des-plaines-60016/free/#ev-friday-night-films-2026-11-06", "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode", "sameAs": "https://desplaines.libnet.info/event/16020452", "description": "Friday, November 06 2026 6:30pm - 8:30pm \n A free screening of an international, independent or documentary film.", "startDate": "2026-11-06T18:30:00-06:00", "location": {"@type": "Place", "name": "Des Plaines Public Library", "address": {"@type": "PostalAddress", "addressCountry": "US", "addressLocality": "Des Plaines", "addressRegion": "IL"}}, "isAccessibleForFree": true}, {"@type": "Event", "name": "Film Screening", "url": "https://withintenmiles.com/des-plaines-60016/free/#ev-film-screening-2026-11-14", "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode", "sameAs": "https://desplaines.libnet.info/event/16023296", "description": "Saturday, November 14 2026 1:30pm - 3:40pm \n A free screening of the feature length film Michael.", "startDate": "2026-11-14T13:30:00-06:00", "location": {"@type": "Place", "name": "Des Plaines Public Library", "address": {"@type": "PostalAddress", "addressCountry": "US", "addressLocality": "Des Plaines", "addressRegion": "IL"}}, "isAccessibleForFree": true}, {"@type": "Event", "name": "Friday Night Films", "url": "https://withintenmiles.com/des-plaines-60016/free/#ev-friday-night-films-2026-12-18", "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode", "sameAs": "https://desplaines.libnet.info/event/16020598", "description": "Friday, December 18 2026 6:30pm - 8:30pm \n A free screening of an international, independent or documentary film.", "startDate": "2026-12-18T18:30:00-06:00", "location": {"@type": "Place", "name": "Des Plaines Public Library", "address": {"@type": "PostalAddress", "addressCountry": "US", "addressLocality": "Des Plaines", "addressRegion": "IL"}}, "isAccessibleForFree": true}]}</script>
-
-
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebPage", "name": "Des Plaines — Within Ten", "url": "https://withintenmiles.com/des-plaines-60016/free/", "dateModified": "2026-10-17T01:54:52.408155+00:00", "isPartOf": {"@type": "WebSite", "name": "Within Ten", "url": "https://withintenmiles.com/", "publisher": {"@id": "https://withintenmiles.com/about/#organization"}}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebPage", "name": "Des Plaines — Within Ten", "url": "https://withintenmiles.com/des-plaines-60016/free/", "dateModified": "2026-10-17T02:03:42.525256+00:00", "isPartOf": {"@type": "WebSite", "name": "Within Ten", "url": "https://withintenmiles.com/", "publisher": {"@id": "https://withintenmiles.com/about/#organization"}}}</script>
 <script>
 (function () {
   var activeTags = new Set();
@@ -1321,10 +1163,7 @@ document.querySelectorAll(".newsletter-form").forEach(function (f) {
   }
 })();
 </script>
-
-
 <script>document.addEventListener("click",function(e){var a=e.target.closest&&e.target.closest("a[href^=http]");if(a&&a.hostname!==location.hostname&&window.goatcounter&&goatcounter.count)goatcounter.count({path:"out/"+a.hostname,event:true})})</script>
 <script data-goatcounter="https://withinten.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
-
 </body>
 </html>

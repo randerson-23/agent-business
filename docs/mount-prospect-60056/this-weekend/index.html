@@ -24,10 +24,6 @@
 <link rel="apple-touch-icon" href="https://withintenmiles.com/icons/icon-192.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<!-- Non-render-blocking font load: paint with the fallback stack immediately,
-     swap to the web font once it's fetched, instead of blocking first paint
-     on a round trip to fonts.googleapis.com (real measured LCP impact on a
-     cold connection was ~300ms - see ROADMAP.md Phase 11 #26). -->
 <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;800&display=optional">
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;800&display=optional" rel="stylesheet" media="print" onload="this.media='all'">
 <noscript><link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;800&display=optional" rel="stylesheet"></noscript>
@@ -707,10 +703,6 @@
 </style>
 </head>
 <body>
-
-
-<!-- header, not div (ROADMAP.md Phase 11 #62, found by a real axe-core
-     audit): everything in the hero previously sat outside any landmark. -->
 <header class="hero">
   <div class="hero-inner">
     <a class="back" href="https://withintenmiles.com/">&larr; All regions</a>
@@ -734,224 +726,101 @@
     <a href="https://withintenmiles.com/mount-prospect-60056/this-weekend/" class="active">This weekend</a>
     <a href="https://withintenmiles.com/mount-prospect-60056/today/">Today</a>
     <a href="https://withintenmiles.com/mount-prospect-60056/free/">Free</a>
-    <a href="https://withintenmiles.com/mount-prospect-60056/guides/">Guides</a>
-    <a href="https://withintenmiles.com/mount-prospect-60056/things-to-do/">Things to Do</a>
-    <a href="https://withintenmiles.com/mount-prospect-60056/directory/">Directory</a>
-  </nav>
+<a href="https://withintenmiles.com/mount-prospect-60056/guides/">Guides</a><a href="https://withintenmiles.com/mount-prospect-60056/things-to-do/">Things to Do</a><a href="https://withintenmiles.com/mount-prospect-60056/directory/">Directory</a>  </nav>
 
-  
 
-  
 
-  
-  
-  
 
   <p class="freshness-note">Updated automatically — last checked Friday, October 16.</p>
 
-  
 
-  
   <div class="weather-bar">
-    
     <div class="weather-day">
       <span class="wx-emoji" aria-hidden="true">☁️</span>
       <span class="wx-name">Friday</span>
-      <span class="wx-temp">58&deg; / 41&deg;</span>
+      <span class="wx-temp">58&deg; / 42&deg;</span>
       <span class="wx-label">Overcast &middot; 19% precip</span>
     </div>
-    
     <div class="weather-day">
       <span class="wx-emoji" aria-hidden="true">☀️</span>
       <span class="wx-name">Saturday</span>
-      <span class="wx-temp">54&deg; / 37&deg;</span>
+      <span class="wx-temp">55&deg; / 37&deg;</span>
       <span class="wx-label">Clear sky &middot; 0% precip</span>
     </div>
-    
     <div class="weather-day">
       <span class="wx-emoji" aria-hidden="true">☀️</span>
       <span class="wx-name">Sunday</span>
       <span class="wx-temp">62&deg; / 39&deg;</span>
       <span class="wx-label">Clear sky &middot; 0% precip</span>
     </div>
-    
-    
   </div>
-  
 
-  
 
   <div class="sponsor">
-    
     <div class="label">Sponsor This Spot</div>
     <h2>Sponsor this spot</h2>
     <p>Reach local families every week. Local businesses only — see pricing and availability. <a href="https://withintenmiles.com/sponsor/">Learn more &rarr;</a></p>
-    
   </div>
 
-  
   <div class="filter-bar" role="group" aria-label="Filter events">
-    
     <button type="button" class="filter-chip" data-tag="food" aria-pressed="false">
       <span aria-hidden="true">🍽️</span>Food &amp; drink
     </button>
-    
     <button type="button" class="filter-chip" data-tag="indoor" aria-pressed="false">
       <span aria-hidden="true">🏠</span>Indoor
     </button>
-    
     <button type="button" class="filter-chip" data-tag="outdoor" aria-pressed="false">
       <span aria-hidden="true">🌳</span>Outdoor
     </button>
-    
     <button type="button" class="filter-chip clear" id="clear-filters">Clear filters</button>
   </div>
   <div class="sr-only" id="filter-status" aria-live="polite"></div>
-  
 
-  
 
-  
 
-  
-  
-  
-  
-  
-    
-    
     <section class="block">
       <h2>This weekend in Mount Prospect</h2>
-      
         <div class="card-grid">
-        
-        <!-- id folds in date_iso - see the Editor's Pick tray_item above
-             for why (ROADMAP.md item 146). -->
-        
-        
         <article class="card" id="ev-friends-book-sale-2026-10-17" data-tags="indoor" data-date-iso="2026-10-17T09:00:00">
-          
-          <!-- ROADMAP.md Phase 11 #63: My Weekend is for dated events -
-               offering to add "Find your school district" or a guide's
-               own title to it made no sense, since guide items and the
-               guide index have nothing to do with weekend planning.
-               #90: nor does a school half-day belong in it - it's real
-               and worth knowing, but nobody plans a weekend around one. -->
           <button type="button" class="tray-star" data-item='{"date": "Oct 17", "date_iso": "2026-10-17T09:00:00", "detail": "Stock up on great books at bargain prices during the Friends of the Library\u0027s used book sale.", "id": "https://mppl.libnet.info/event/13845865|2026-10-17T09:00:00", "region_name": "Mount Prospect", "region_url": "https://withintenmiles.com/mount-prospect-60056/", "title": "Friends Book Sale", "url": "https://mppl.libnet.info/event/13845865"}' aria-pressed="false" aria-label="Add Friends Book Sale to My Weekend">☆</button>
-          
-          
-          
-          
-          <div class="date"><time datetime="2026-10-17T09:00:00">Sat, Oct 17 · 9:00 AM</time> · <span class="where">Mount Prospect</span></div>
-          <h3><a href="https://mppl.libnet.info/event/13845865">Friends Book Sale</a></h3>
-          
-          
-        <p class="detail">Stock up on great books at bargain prices during the Friends of the Library&#39;s used book sale.</p>
-          
-          <div class="tag-row">
-            <span class="tag-badge" style="background: var(--hue-blue-bg); color: var(--hue-blue-ink);">🏠 Indoor</span>
-          </div>
-          
-          
+<div class="date"><time datetime="2026-10-17T09:00:00">Sat, Oct 17 · 9:00 AM</time> · <span class="where">Mount Prospect</span></div>          <h3><a href="https://mppl.libnet.info/event/13845865">Friends Book Sale</a></h3>
+<p class="detail">Stock up on great books at bargain prices during the Friends of the Library&#39;s used book sale.</p>          <div class="tag-row">
+<span class="tag-badge" style="background: var(--hue-blue-bg); color: var(--hue-blue-ink);">🏠 Indoor</span>          </div>
           <div class="cal-row">
             <a href="data:text/calendar;charset=utf-8,BEGIN%3AVCALENDAR%0D%0AVERSION%3A2.0%0D%0APRODID%3A-//Within%20Ten//EN%0D%0ABEGIN%3AVEVENT%0D%0ADTSTART%3A20261017T090000%0D%0ADTEND%3A20261017T100000%0D%0ASUMMARY%3AFriends%20Book%20Sale%0D%0ADESCRIPTION%3ASaturday%5C%2C%20October%2017%202026%209%3A00am%20-%204%3A30pm%20%5Cn%20Stock%20up%20on%20great%20books%20at%20bargain%20prices%20during%20the%20Friends%20of%20the%20Library%27s%20used%20book%20sale.%0D%0AURL%3Ahttps%3A//mppl.libnet.info/event/13845865%0D%0AEND%3AVEVENT%0D%0AEND%3AVCALENDAR%0D%0A" download="event.ics">📅 Add to calendar</a>
             <a href="https://www.google.com/calendar/render?action=TEMPLATE&amp;text=Friends+Book+Sale&amp;dates=20261017T090000%2F20261017T100000&amp;details=Saturday%2C+October+17+2026+9%3A00am+-+4%3A30pm+%0A+Stock+up+on+great+books+at+bargain+prices+during+the+Friends+of+the+Library%27s+used+book+sale.&amp;location=Mount+Prospect" target="_blank" rel="noopener">Google Calendar</a>
           </div>
-          
         </article>
-        
-        <!-- id folds in date_iso - see the Editor's Pick tray_item above
-             for why (ROADMAP.md item 146). -->
-        
-        
         <article class="card" id="ev-mount-prospect-farmers-market-2026-10-18" data-tags="outdoor,food" data-date-iso="2026-10-18T08:00:00">
-          
-          <!-- ROADMAP.md Phase 11 #63: My Weekend is for dated events -
-               offering to add "Find your school district" or a guide's
-               own title to it made no sense, since guide items and the
-               guide index have nothing to do with weekend planning.
-               #90: nor does a school half-day belong in it - it's real
-               and worth knowing, but nobody plans a weekend around one. -->
           <button type="button" class="tray-star" data-item='{"date": "Oct 18", "date_iso": "2026-10-18T08:00:00", "detail": "Local produce and vendors, organized by the Mount Prospect Lions Club, rain or shine. West Metra commuter lot, Northwest Hwy \u0026 Main St (Rte 83).", "id": "https://mplions.org/event/farmers-market/|2026-10-18T08:00:00", "region_name": "Mount Prospect", "region_url": "https://withintenmiles.com/mount-prospect-60056/", "title": "Mount Prospect Farmers Market", "url": "https://mplions.org/event/farmers-market/"}' aria-pressed="false" aria-label="Add Mount Prospect Farmers Market to My Weekend">☆</button>
-          
-          
-          
-          
-          <div class="date"><time datetime="2026-10-18T08:00:00">Sun, Oct 18 · 8:00 AM</time> · <span class="where">Mount Prospect</span></div>
-          <h3><a href="https://mplions.org/event/farmers-market/">Mount Prospect Farmers Market</a></h3>
-          <div class="recurrence-note">Every Sunday through Oct 25</div>
-          
-        <p class="detail">Local produce and vendors, organized by the Mount Prospect Lions Club, rain or shine. West Metra commuter lot, Northwest Hwy &amp; Main St (Rte 83).</p>
-          
-          <div class="tag-row">
-            <span class="tag-badge" style="background: var(--hue-teal-bg); color: var(--hue-teal-ink);">🌳 Outdoor</span><span class="tag-badge" style="background: var(--hue-orange-bg); color: var(--hue-orange-ink);">🍽️ Food &amp; drink</span>
-          </div>
-          
-          
+<div class="date"><time datetime="2026-10-18T08:00:00">Sun, Oct 18 · 8:00 AM</time> · <span class="where">Mount Prospect</span></div>          <h3><a href="https://mplions.org/event/farmers-market/">Mount Prospect Farmers Market</a></h3>
+<div class="recurrence-note">Every Sunday through Oct 25</div><p class="detail">Local produce and vendors, organized by the Mount Prospect Lions Club, rain or shine. West Metra commuter lot, Northwest Hwy &amp; Main St (Rte 83).</p>          <div class="tag-row">
+<span class="tag-badge" style="background: var(--hue-teal-bg); color: var(--hue-teal-ink);">🌳 Outdoor</span><span class="tag-badge" style="background: var(--hue-orange-bg); color: var(--hue-orange-ink);">🍽️ Food &amp; drink</span>          </div>
           <div class="cal-row">
             <a href="data:text/calendar;charset=utf-8,BEGIN%3AVCALENDAR%0D%0AVERSION%3A2.0%0D%0APRODID%3A-//Within%20Ten//EN%0D%0ABEGIN%3AVEVENT%0D%0ADTSTART%3A20261018T080000%0D%0ADTEND%3A20261018T090000%0D%0ASUMMARY%3AMount%20Prospect%20Farmers%20Market%0D%0ADESCRIPTION%3ALocal%20produce%20and%20vendors%5C%2C%20organized%20by%20the%20Mount%20Prospect%20Lions%20Club%5C%2C%20rain%20or%20shine.%20West%20Metra%20commuter%20lot%5C%2C%20Northwest%20Hwy%20%26%20Main%20St%20%28Rte%2083%29.%0D%0AURL%3Ahttps%3A//mplions.org/event/farmers-market/%0D%0AEND%3AVEVENT%0D%0AEND%3AVCALENDAR%0D%0A" download="event.ics">📅 Add to calendar</a>
             <a href="https://www.google.com/calendar/render?action=TEMPLATE&amp;text=Mount+Prospect+Farmers+Market&amp;dates=20261018T080000%2F20261018T090000&amp;details=Local+produce+and+vendors%2C+organized+by+the+Mount+Prospect+Lions+Club%2C+rain+or+shine.+West+Metra+commuter+lot%2C+Northwest+Hwy+%26+Main+St+%28Rte+83%29.&amp;location=Mount+Prospect" target="_blank" rel="noopener">Google Calendar</a>
           </div>
-          
         </article>
-        
-        <!-- id folds in date_iso - see the Editor's Pick tray_item above
-             for why (ROADMAP.md item 146). -->
-        
-        
         <article class="card" id="ev-friends-book-sale-2026-10-18" data-tags="indoor" data-date-iso="2026-10-18T11:00:00">
-          
-          <!-- ROADMAP.md Phase 11 #63: My Weekend is for dated events -
-               offering to add "Find your school district" or a guide's
-               own title to it made no sense, since guide items and the
-               guide index have nothing to do with weekend planning.
-               #90: nor does a school half-day belong in it - it's real
-               and worth knowing, but nobody plans a weekend around one. -->
           <button type="button" class="tray-star" data-item='{"date": "Oct 18", "date_iso": "2026-10-18T11:00:00", "detail": "Stock up on great books at bargain prices during the Friends of the Library\u0027s used book sale.", "id": "https://mppl.libnet.info/event/13845871|2026-10-18T11:00:00", "region_name": "Mount Prospect", "region_url": "https://withintenmiles.com/mount-prospect-60056/", "title": "Friends Book Sale", "url": "https://mppl.libnet.info/event/13845871"}' aria-pressed="false" aria-label="Add Friends Book Sale to My Weekend">☆</button>
-          
-          
-          
-          
-          <div class="date"><time datetime="2026-10-18T11:00:00">Sun, Oct 18 · 11:00 AM</time> · <span class="where">Mount Prospect</span></div>
-          <h3><a href="https://mppl.libnet.info/event/13845871">Friends Book Sale</a></h3>
-          
-          
-        <p class="detail">Stock up on great books at bargain prices during the Friends of the Library&#39;s used book sale.</p>
-          
-          <div class="tag-row">
-            <span class="tag-badge" style="background: var(--hue-blue-bg); color: var(--hue-blue-ink);">🏠 Indoor</span>
-          </div>
-          
-          
+<div class="date"><time datetime="2026-10-18T11:00:00">Sun, Oct 18 · 11:00 AM</time> · <span class="where">Mount Prospect</span></div>          <h3><a href="https://mppl.libnet.info/event/13845871">Friends Book Sale</a></h3>
+<p class="detail">Stock up on great books at bargain prices during the Friends of the Library&#39;s used book sale.</p>          <div class="tag-row">
+<span class="tag-badge" style="background: var(--hue-blue-bg); color: var(--hue-blue-ink);">🏠 Indoor</span>          </div>
           <div class="cal-row">
             <a href="data:text/calendar;charset=utf-8,BEGIN%3AVCALENDAR%0D%0AVERSION%3A2.0%0D%0APRODID%3A-//Within%20Ten//EN%0D%0ABEGIN%3AVEVENT%0D%0ADTSTART%3A20261018T110000%0D%0ADTEND%3A20261018T120000%0D%0ASUMMARY%3AFriends%20Book%20Sale%0D%0ADESCRIPTION%3ASunday%5C%2C%20October%2018%202026%2011%3A00am%20-%204%3A00pm%20%5Cn%20Stock%20up%20on%20great%20books%20at%20bargain%20prices%20during%20the%20Friends%20of%20the%20Library%27s%20used%20book%20sale.%0D%0AURL%3Ahttps%3A//mppl.libnet.info/event/13845871%0D%0AEND%3AVEVENT%0D%0AEND%3AVCALENDAR%0D%0A" download="event.ics">📅 Add to calendar</a>
             <a href="https://www.google.com/calendar/render?action=TEMPLATE&amp;text=Friends+Book+Sale&amp;dates=20261018T110000%2F20261018T120000&amp;details=Sunday%2C+October+18+2026+11%3A00am+-+4%3A00pm+%0A+Stock+up+on+great+books+at+bargain+prices+during+the+Friends+of+the+Library%27s+used+book+sale.&amp;location=Mount+Prospect" target="_blank" rel="noopener">Google Calendar</a>
           </div>
-          
         </article>
-        
         </div>
-      
     </section>
-    
-  
-
-  
-  
-
 
   
 
-  
 
-  
 
-  
-  
   <div class="newsletter" id="newsletter-signup">
   <form class="newsletter-form" action="https://buttondown.com/api/emails/embed-subscribe/withinten" method="post" target="bd-hidden-frame">
-    <input type="hidden" name="tag" value="town:mount-prospect-60056">
-    <input type="hidden" name="utm_source" value="site">
+<input type="hidden" name="tag" value="town:mount-prospect-60056">    <input type="hidden" name="utm_source" value="site">
     <input type="hidden" name="utm_campaign" value="this-weekend">
     <div class="newsletter-copy">
       <strong>Get it in your inbox</strong>
@@ -970,7 +839,6 @@
     <p class="newsletter-note">Not there in two minutes? Check Spam or Promotions for a message from Within Ten via Buttondown.</p>
   </div>
 </div>
-  
   <iframe name="bd-hidden-frame" title="Newsletter signup" style="display:none" aria-hidden="true"></iframe>
 <script>
 var WM = [["Open Gmail", "https://mail.google.com/mail/u/0/#search/from%3Abuttondown", ["gmail.com", "googlemail.com"]], ["Open Yahoo Mail", "https://mail.yahoo.com/", ["yahoo.com", "ymail.com"]], ["Open AOL Mail", "https://mail.aol.com/", ["aol.com"]], ["Open Outlook", "https://outlook.live.com/mail/0/", ["outlook.com", "hotmail.com", "live.com", "msn.com"]], ["Open iCloud Mail", "https://www.icloud.com/mail/", ["icloud.com", "me.com", "mac.com"]]];
@@ -994,13 +862,8 @@ document.querySelectorAll(".newsletter-form").forEach(function (f) {
     <a href="https://withintenmiles.com/sponsor/">sponsor page</a>.
     <a href="https://withintenmiles.com/about/">About</a>.
     <a href="https://google.com/preferences/source?q=withintenmiles.com" rel="noopener">Add us as a preferred source on Google</a>.
-    <a href="https://withintenmiles.com/trick-or-treat/">Trick-or-treat hours</a>.
-    
-    
-    
-    <br>Generated 2026-10-17 01:54 UTC.
-    <br>Visits counted with privacy-first, cookie-free analytics — no personal data collected.
-    <br><a href="https://withintenmiles.com/mount-prospect-60056/weekly-summary.txt">Copy this week's summary</a> — a plain-text block ready to paste into a local group.
+<a href="https://withintenmiles.com/trick-or-treat/">Trick-or-treat hours</a>.    <br>Generated 2026-10-17 02:03 UTC.
+<br>Visits counted with privacy-first, cookie-free analytics — no personal data collected.    <br><a href="https://withintenmiles.com/mount-prospect-60056/weekly-summary.txt">Copy this week's summary</a> — a plain-text block ready to paste into a local group.
   </footer>
 </div>
 
@@ -1020,11 +883,8 @@ document.querySelectorAll(".newsletter-form").forEach(function (f) {
   </div>
 </div>
 
-
 <script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "Event", "name": "Friends Book Sale", "url": "https://withintenmiles.com/mount-prospect-60056/this-weekend/#ev-friends-book-sale-2026-10-17", "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode", "sameAs": "https://mppl.libnet.info/event/13845865", "description": "Saturday, October 17 2026 9:00am - 4:30pm \n Stock up on great books at bargain prices during the Friends of the Library's used book sale.", "startDate": "2026-10-17T09:00:00-05:00", "location": {"@type": "Place", "name": "Mount Prospect Public Library", "address": {"@type": "PostalAddress", "addressCountry": "US", "addressLocality": "Mount Prospect", "addressRegion": "IL"}}}, {"@type": "Event", "name": "Mount Prospect Farmers Market", "url": "https://withintenmiles.com/mount-prospect-60056/this-weekend/#ev-mount-prospect-farmers-market-2026-10-18", "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode", "sameAs": "https://mplions.org/event/farmers-market/", "description": "Local produce and vendors, organized by the Mount Prospect Lions Club, rain or shine. West Metra commuter lot, Northwest Hwy & Main St (Rte 83).", "startDate": "2026-10-18T08:00:00-05:00", "location": {"@type": "Place", "name": "Mount Prospect, IL", "address": {"@type": "PostalAddress", "addressCountry": "US", "addressLocality": "Mount Prospect", "addressRegion": "IL"}}}, {"@type": "Event", "name": "Friends Book Sale", "url": "https://withintenmiles.com/mount-prospect-60056/this-weekend/#ev-friends-book-sale-2026-10-18", "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode", "sameAs": "https://mppl.libnet.info/event/13845871", "description": "Sunday, October 18 2026 11:00am - 4:00pm \n Stock up on great books at bargain prices during the Friends of the Library's used book sale.", "startDate": "2026-10-18T11:00:00-05:00", "location": {"@type": "Place", "name": "Mount Prospect Public Library", "address": {"@type": "PostalAddress", "addressCountry": "US", "addressLocality": "Mount Prospect", "addressRegion": "IL"}}}]}</script>
-
-
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebPage", "name": "Mount Prospect — Within Ten", "url": "https://withintenmiles.com/mount-prospect-60056/this-weekend/", "dateModified": "2026-10-17T01:54:52.408155+00:00", "isPartOf": {"@type": "WebSite", "name": "Within Ten", "url": "https://withintenmiles.com/", "publisher": {"@id": "https://withintenmiles.com/about/#organization"}}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebPage", "name": "Mount Prospect — Within Ten", "url": "https://withintenmiles.com/mount-prospect-60056/this-weekend/", "dateModified": "2026-10-17T02:03:42.525256+00:00", "isPartOf": {"@type": "WebSite", "name": "Within Ten", "url": "https://withintenmiles.com/", "publisher": {"@id": "https://withintenmiles.com/about/#organization"}}}</script>
 <script>
 (function () {
   var activeTags = new Set();
@@ -1317,10 +1177,7 @@ document.querySelectorAll(".newsletter-form").forEach(function (f) {
   }
 })();
 </script>
-
-
 <script>document.addEventListener("click",function(e){var a=e.target.closest&&e.target.closest("a[href^=http]");if(a&&a.hostname!==location.hostname&&window.goatcounter&&goatcounter.count)goatcounter.count({path:"out/"+a.hostname,event:true})})</script>
 <script data-goatcounter="https://withinten.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
-
 </body>
 </html>

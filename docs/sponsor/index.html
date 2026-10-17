@@ -22,10 +22,6 @@
 <link rel="apple-touch-icon" href="https://withintenmiles.com/icons/icon-192.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<!-- Non-render-blocking font load: paint with the fallback stack immediately,
-     swap to the web font once it's fetched, instead of blocking first paint
-     on a round trip to fonts.googleapis.com (real measured LCP impact on a
-     cold connection was ~300ms - see ROADMAP.md Phase 11 #26). -->
 <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;800&display=optional">
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;800&display=optional" rel="stylesheet" media="print" onload="this.media='all'">
 <noscript><link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;800&display=optional" rel="stylesheet"></noscript>
@@ -210,8 +206,6 @@
 </style>
 </head>
 <body>
-<!-- header, not div (ROADMAP.md Phase 11 #62, found by a real axe-core
-     audit): everything in the hero previously sat outside any landmark. -->
 <header class="hero">
   <div class="hero-inner">
     <a class="back" href="https://withintenmiles.com/">&larr; All regions</a>
@@ -223,14 +217,11 @@
 
 <div class="wrap">
   <main>
-  
   <p class="stat-line">
     <span><strong>5</strong> regions covered</span>
-    <span><strong>1544</strong> live updates indexed this week</span>
+    <span><strong>1543</strong> live updates indexed this week</span>
     <span>running since Aug 26, 2026</span>
   </p>
-  
-  
   <section class="block">
     <h2>Why a recommendation beats an ad</h2>
     <p>Nextdoor found that 79% of neighbors acted on a local recommendation they saw there, 81% of them within days — local recommendations consistently out-rank conventional business directories and ads for trust. That's the model here: your placement reads as "here's a local business worth knowing," not a banner. One business holds a region's slot at a time — whether for a week or a year — so readers see exactly one recommendation, never a wall of ads.</p>
@@ -240,14 +231,10 @@
     <h2>Placements &amp; pricing</h2>
     <p style="color: var(--muted); font-size: 13.5px; margin: 0 0 14px;">Annual Partner is the flagship option — a permanent listing, guide placement, and SEO backlink that work for you year-round instead of needing to be renewed every week. Prefer to start smaller? Weekly Spot and Event Promo get you the same recommendation on a shorter commitment.</p>
     <div class="tier-grid">
-      
       <div class="tier">
-        
         <h3>Event Promo</h3>
         <div class="price">$20 one-time</div>
-        <div class="gated-by">Value grows with: Newsletter reach</div>
-        <p class="detail">Your event goes first on your town&#39;s page, and first in the weekend list and weekly email when it falls on a weekend, labelled &#34;Presented by [you]&#34; and marked as sponsored in the event data AI assistants read. Runs until the event day. We guarantee the placement, not any assistant&#39;s mention.</p>
-        
+<div class="gated-by">Value grows with: Newsletter reach</div>        <p class="detail">Your event goes first on your town&#39;s page, and first in the weekend list and weekly email when it falls on a weekend, labelled &#34;Presented by [you]&#34; and marked as sponsored in the event data AI assistants read. Runs until the event day. We guarantee the placement, not any assistant&#39;s mention.</p>
         <div class="sample-card" role="group" aria-label="Example of a featured event">
           <span class="sample-tag">Example</span>
           <div class="featured-label">Featured · Presented by Your Business Name</div>
@@ -255,40 +242,22 @@
           <h4>Fall Open House &amp; Pumpkin Painting</h4>
           <p>Free for families. Your one-line blurb goes here.</p>
         </div>
-        
-        
       </div>
-      
       <div class="tier">
-        
         <h3>Weekly Spot</h3>
         <div class="price">$50/week or $175/month</div>
-        <div class="gated-by">Value grows with: Newsletter reach</div>
-        <p class="detail">Not ready for a year? The same top-of-page recommendation, available week-to-week or month-to-month.</p>
-        
-        
+<div class="gated-by">Value grows with: Newsletter reach</div>        <p class="detail">Not ready for a year? The same top-of-page recommendation, available week-to-week or month-to-month.</p>
       </div>
-      
       <div class="tier recommended">
-        <span class="tier-badge">Recommended</span><br>
-        <h3>Annual Partner</h3>
+<span class="tier-badge">Recommended</span><br>        <h3>Annual Partner</h3>
         <div class="price">$1,200/year</div>
-        <div class="gated-by">Value grows with: Site traffic &amp; search presence</div>
-        <p class="detail">A permanent business directory listing, a spotlight placement inside one relevant seasonal guide, a live SEO backlink, and priority consideration for Editor&#39;s Pick — the flagship membership.</p>
-        
-        
+<div class="gated-by">Value grows with: Site traffic &amp; search presence</div>        <p class="detail">A permanent business directory listing, a spotlight placement inside one relevant seasonal guide, a live SEO backlink, and priority consideration for Editor&#39;s Pick — the flagship membership.</p>
       </div>
-      
       <div class="tier">
-        
         <h3>Neighborhood Authority</h3>
         <div class="price">$5,000/year, one business per region</div>
-        <div class="gated-by">Value grows with: Site traffic &amp; search presence</div>
-        <p class="detail">Everything in Annual Partner, held exclusively for your region year-round — built for real estate and other locally-budgeted categories seeking neighborhood-level presence, not just leads.</p>
-        
-        
+<div class="gated-by">Value grows with: Site traffic &amp; search presence</div>        <p class="detail">Everything in Annual Partner, held exclusively for your region year-round — built for real estate and other locally-budgeted categories seeking neighborhood-level presence, not just leads.</p>
       </div>
-      
     </div>
     <p class="note" style="margin-top: 12px;">Payment: Venmo/Zelle/check. Annual and month-to-month options — no long-term contract on Weekly Spot or Event Promo, cancel anytime.</p>
     <p class="note" style="margin-top: 8px;"><strong>Founding partner rate:</strong> the first 3 businesses per region get 25% off Annual Partner or Neighborhood Authority, held for your first two years, in exchange for a short testimonial and permission to name you as a founding partner. Ask when you reach out how many spots remain in your region.</p>
@@ -297,42 +266,26 @@
   <section class="block">
     <h2>This week's availability</h2>
     <div class="availability-list">
-      
       <div class="availability-row">
         <span class="region"><a href="https://withintenmiles.com/arlington-heights-60005/">Arlington Heights</a></span>
-        
         <span class="status open">Open this week</span>
-        
       </div>
-      
       <div class="availability-row">
         <span class="region"><a href="https://withintenmiles.com/des-plaines-60016/">Des Plaines</a></span>
-        
         <span class="status open">Open this week</span>
-        
       </div>
-      
       <div class="availability-row">
         <span class="region"><a href="https://withintenmiles.com/mount-prospect-60056/">Mount Prospect</a></span>
-        
         <span class="status open">Open this week</span>
-        
       </div>
-      
       <div class="availability-row">
         <span class="region"><a href="https://withintenmiles.com/palatine-60067/">Palatine</a></span>
-        
         <span class="status open">Open this week</span>
-        
       </div>
-      
       <div class="availability-row">
         <span class="region"><a href="https://withintenmiles.com/wheeling-60090/">Wheeling</a></span>
-        
         <span class="status open">Open this week</span>
-        
       </div>
-      
     </div>
     <p class="note" style="margin-top: 12px;">Shows this week's status only — not yet a multi-week calendar. Ask about upcoming weeks when you reach out.</p>
   </section>
@@ -348,12 +301,9 @@
     Curious what the digest looks like? <a href="https://withintenmiles.com/">See a live region</a>.
     <a href="https://withintenmiles.com/about/">About</a>.
     <a href="https://google.com/preferences/source?q=withintenmiles.com" rel="noopener">Add us as a preferred source on Google</a>.
-    <br>Generated 2026-10-17 01:54 UTC.
-    <br>Traffic is tracked with privacy-first, cookie-free analytics — ask for current numbers.
-  </footer>
+    <br>Generated 2026-10-17 02:03 UTC.
+<br>Traffic is tracked with privacy-first, cookie-free analytics — ask for current numbers.  </footer>
 </div>
-
 <script data-goatcounter="https://withinten.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
-
 </body>
 </html>

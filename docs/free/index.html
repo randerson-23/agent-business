@@ -22,10 +22,6 @@
 <link rel="apple-touch-icon" href="https://withintenmiles.com/icons/icon-192.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<!-- Non-render-blocking font load: paint with the fallback stack immediately,
-     swap to the web font once it's fetched, instead of blocking first paint
-     on a round trip to fonts.googleapis.com (real measured LCP impact on a
-     cold connection was ~300ms - see ROADMAP.md Phase 11 #26). -->
 <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;800&display=optional">
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;800&display=optional" rel="stylesheet" media="print" onload="this.media='all'">
 <noscript><link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;800&display=optional" rel="stylesheet"></noscript>
@@ -299,8 +295,6 @@
 </style>
 </head>
 <body>
-<!-- header, not div (ROADMAP.md Phase 11 #62, found by a real axe-core
-     audit): everything in the hero previously sat outside any landmark. -->
 <header class="hero">
   <div class="hero-inner">
     <a class="back" href="https://withintenmiles.com/">&larr; All regions</a>
@@ -319,938 +313,350 @@
 
 <div class="wrap">
   <main>
-  
-  
-    
     <section class="block">
       <h2>Arlington Heights <a class="region-link" href="https://withintenmiles.com/arlington-heights-60005/">Full region page &rarr;</a></h2>
       <div class="card-grid">
-      
-      <!-- id folds in date_iso so two occurrences of one recurring event
-           (item 141, same url) don't collide as one tray item - a real
-           bug confirmed with a headless-browser test before fixing
-           (ROADMAP.md item 146). -->
-      
       <article class="card" id="ev-pumpkin-smash-from-gourd-to-garden-2026-11-07" data-date-iso="2026-11-07T09:00:00">
         <button type="button" class="tray-star" data-item='{"date": "Nov 7", "date_iso": "2026-11-07T09:00:00", "detail": "Pumpkins are 90% water, which makes them bad for landfills but great for soil and gardens! Bring your post-Halloween jack-o-lanterns, gourds, and pumpkins to\u2026", "id": "https://www.ahpd.org/event/pumpkin-smash-2026/|2026-11-07T09:00:00", "region_name": "Arlington Heights", "region_url": "https://withintenmiles.com/arlington-heights-60005/", "title": "Pumpkin Smash: From Gourd to Garden", "url": "https://www.ahpd.org/event/pumpkin-smash-2026/"}' aria-pressed="false" aria-label="Add Pumpkin Smash: From Gourd to Garden to My Weekend">☆</button>
-        
-        
-        <div class="date"><time datetime="2026-11-07T09:00:00">Sat, Nov 7 · 9:00 AM</time> · <span class="where">Arlington Heights</span></div>
-        <h3><a href="https://www.ahpd.org/event/pumpkin-smash-2026/">Pumpkin Smash: From Gourd to Garden</a></h3>
-        
-        
-        <p class="detail">Pumpkins are 90% water, which makes them bad for landfills but great for soil and gardens! Bring your post-Halloween jack-o-lanterns, gourds, and pumpkins to…</p>
-        
-        <div class="tag-row">
-          <span class="tag-badge" style="background: var(--hue-green-bg); color: var(--hue-green-ink);">💵 Free</span><span class="tag-badge" style="background: var(--hue-teal-bg); color: var(--hue-teal-ink);">🌳 Outdoor</span>
-        </div>
-        
-        
+<div class="date"><time datetime="2026-11-07T09:00:00">Sat, Nov 7 · 9:00 AM</time> · <span class="where">Arlington Heights</span></div>        <h3><a href="https://www.ahpd.org/event/pumpkin-smash-2026/">Pumpkin Smash: From Gourd to Garden</a></h3>
+<p class="detail">Pumpkins are 90% water, which makes them bad for landfills but great for soil and gardens! Bring your post-Halloween jack-o-lanterns, gourds, and pumpkins to…</p>        <div class="tag-row">
+<span class="tag-badge" style="background: var(--hue-green-bg); color: var(--hue-green-ink);">💵 Free</span><span class="tag-badge" style="background: var(--hue-teal-bg); color: var(--hue-teal-ink);">🌳 Outdoor</span>        </div>
         <div class="cal-row">
           <a href="data:text/calendar;charset=utf-8,BEGIN%3AVCALENDAR%0D%0AVERSION%3A2.0%0D%0APRODID%3A-//Within%20Ten//EN%0D%0ABEGIN%3AVEVENT%0D%0ADTSTART%3A20261107T090000%0D%0ADTEND%3A20261107T100000%0D%0ASUMMARY%3APumpkin%20Smash%3A%20From%20Gourd%20to%20Garden%0D%0ADESCRIPTION%3APumpkins%20are%2090%25%20water%5C%2C%20which%20makes%20them%20bad%20for%20landfills%20but%20great%20for%20soil%20and%20gardens%21%20Bring%20your%20post-Halloween%20jack-o-lanterns%5C%2C%20gourds%5C%2C%20and%20pumpkins%20to%E2%80%A6%0D%0AURL%3Ahttps%3A//www.ahpd.org/event/pumpkin-smash-2026/%0D%0AEND%3AVEVENT%0D%0AEND%3AVCALENDAR%0D%0A" download="event.ics">📅 Add to calendar</a>
           <a href="https://www.google.com/calendar/render?action=TEMPLATE&amp;text=Pumpkin+Smash%3A+From+Gourd+to+Garden&amp;dates=20261107T090000%2F20261107T100000&amp;details=Pumpkins+are+90%25+water%2C+which+makes+them+bad+for+landfills+but+great+for+soil+and+gardens%21+Bring+your+post-Halloween+jack-o-lanterns%2C+gourds%2C+and+pumpkins+to%E2%80%A6&amp;location=Arlington+Heights" target="_blank" rel="noopener">Google Calendar</a>
         </div>
-        
       </article>
-      
-      <!-- id folds in date_iso so two occurrences of one recurring event
-           (item 141, same url) don't collide as one tray item - a real
-           bug confirmed with a headless-browser test before fixing
-           (ROADMAP.md item 146). -->
-      
       <article class="card" id="ev-holiday-tree-lighting-2026-11-27" data-date-iso="2026-11-27T16:30:00">
         <button type="button" class="tray-star" data-item='{"date": "Nov 27", "date_iso": "2026-11-27T16:30:00", "detail": "Kick off the holiday season with the Arlington Heights Park District and the Village of Arlington Heights Special Events Commission at our annual North School\u2026", "id": "https://www.ahpd.org/event/holiday-tree-lighting-2026/|2026-11-27T16:30:00", "region_name": "Arlington Heights", "region_url": "https://withintenmiles.com/arlington-heights-60005/", "title": "Holiday Tree Lighting", "url": "https://www.ahpd.org/event/holiday-tree-lighting-2026/"}' aria-pressed="false" aria-label="Add Holiday Tree Lighting to My Weekend">☆</button>
-        
-        
-        <div class="date"><time datetime="2026-11-27T16:30:00">Fri, Nov 27 · 4:30 PM</time> · <span class="where">Arlington Heights</span></div>
-        <h3><a href="https://www.ahpd.org/event/holiday-tree-lighting-2026/">Holiday Tree Lighting</a></h3>
-        
-        
-        <p class="detail">Kick off the holiday season with the Arlington Heights Park District and the Village of Arlington Heights Special Events Commission at our annual North School…</p>
-        
-        <div class="tag-row">
-          <span class="tag-badge" style="background: var(--hue-purple-bg); color: var(--hue-purple-ink);">🎨 Arts &amp; culture</span><span class="tag-badge" style="background: var(--hue-green-bg); color: var(--hue-green-ink);">💵 Free</span><span class="tag-badge" style="background: var(--hue-blue-bg); color: var(--hue-blue-ink);">🏠 Indoor</span><span class="tag-badge" style="background: var(--hue-pink-bg); color: var(--hue-pink-ink);">🧒 Kid-friendly</span><span class="tag-badge" style="background: var(--hue-teal-bg); color: var(--hue-teal-ink);">🌳 Outdoor</span>
-        </div>
-        
-        
+<div class="date"><time datetime="2026-11-27T16:30:00">Fri, Nov 27 · 4:30 PM</time> · <span class="where">Arlington Heights</span></div>        <h3><a href="https://www.ahpd.org/event/holiday-tree-lighting-2026/">Holiday Tree Lighting</a></h3>
+<p class="detail">Kick off the holiday season with the Arlington Heights Park District and the Village of Arlington Heights Special Events Commission at our annual North School…</p>        <div class="tag-row">
+<span class="tag-badge" style="background: var(--hue-purple-bg); color: var(--hue-purple-ink);">🎨 Arts &amp; culture</span><span class="tag-badge" style="background: var(--hue-green-bg); color: var(--hue-green-ink);">💵 Free</span><span class="tag-badge" style="background: var(--hue-blue-bg); color: var(--hue-blue-ink);">🏠 Indoor</span><span class="tag-badge" style="background: var(--hue-pink-bg); color: var(--hue-pink-ink);">🧒 Kid-friendly</span><span class="tag-badge" style="background: var(--hue-teal-bg); color: var(--hue-teal-ink);">🌳 Outdoor</span>        </div>
         <div class="cal-row">
           <a href="data:text/calendar;charset=utf-8,BEGIN%3AVCALENDAR%0D%0AVERSION%3A2.0%0D%0APRODID%3A-//Within%20Ten//EN%0D%0ABEGIN%3AVEVENT%0D%0ADTSTART%3A20261127T163000%0D%0ADTEND%3A20261127T173000%0D%0ASUMMARY%3AHoliday%20Tree%20Lighting%0D%0ADESCRIPTION%3AKick%20off%20the%20holiday%20season%20with%20the%20Arlington%20Heights%20Park%20District%20and%20the%20Village%20of%20Arlington%20Heights%20Special%20Events%20Commission%20at%20our%20annual%20North%20School%E2%80%A6%0D%0AURL%3Ahttps%3A//www.ahpd.org/event/holiday-tree-lighting-2026/%0D%0AEND%3AVEVENT%0D%0AEND%3AVCALENDAR%0D%0A" download="event.ics">📅 Add to calendar</a>
           <a href="https://www.google.com/calendar/render?action=TEMPLATE&amp;text=Holiday+Tree+Lighting&amp;dates=20261127T163000%2F20261127T173000&amp;details=Kick+off+the+holiday+season+with+the+Arlington+Heights+Park+District+and+the+Village+of+Arlington+Heights+Special+Events+Commission+at+our+annual+North+School%E2%80%A6&amp;location=Arlington+Heights" target="_blank" rel="noopener">Google Calendar</a>
         </div>
-        
       </article>
-      
-      <!-- id folds in date_iso so two occurrences of one recurring event
-           (item 141, same url) don't collide as one tray item - a real
-           bug confirmed with a headless-browser test before fixing
-           (ROADMAP.md item 146). -->
-      
       <article class="card" id="ev-arlington-heights-memorial-library" data-date-iso="">
         <button type="button" class="tray-star" data-item='{"date": null, "date_iso": null, "detail": "500 N. Dunton Ave. Makerspace classes, culinary classes, and programs for all ages.", "id": "https://www.ahml.info/", "region_name": "Arlington Heights", "region_url": "https://withintenmiles.com/arlington-heights-60005/", "title": "Arlington Heights Memorial Library", "url": "https://www.ahml.info/"}' aria-pressed="false" aria-label="Add Arlington Heights Memorial Library to My Weekend">☆</button>
-        
-        
-        
         <h3><a href="https://www.ahml.info/">Arlington Heights Memorial Library</a></h3>
-        
-        
-        <p class="detail">500 N. Dunton Ave. Makerspace classes, culinary classes, and programs for all ages.</p>
-        
-        <div class="tag-row">
-          <span class="tag-badge" style="background: var(--hue-blue-bg); color: var(--hue-blue-ink);">🏠 Indoor</span><span class="tag-badge" style="background: var(--hue-pink-bg); color: var(--hue-pink-ink);">🧒 Kid-friendly</span><span class="tag-badge" style="background: var(--hue-green-bg); color: var(--hue-green-ink);">💵 Free</span>
-        </div>
-        
-        
+<p class="detail">500 N. Dunton Ave. Makerspace classes, culinary classes, and programs for all ages.</p>        <div class="tag-row">
+<span class="tag-badge" style="background: var(--hue-blue-bg); color: var(--hue-blue-ink);">🏠 Indoor</span><span class="tag-badge" style="background: var(--hue-pink-bg); color: var(--hue-pink-ink);">🧒 Kid-friendly</span><span class="tag-badge" style="background: var(--hue-green-bg); color: var(--hue-green-ink);">💵 Free</span>        </div>
       </article>
-      
       </div>
     </section>
-    
     <section class="block">
       <h2>Des Plaines <a class="region-link" href="https://withintenmiles.com/des-plaines-60016/">Full region page &rarr;</a></h2>
       <div class="card-grid">
-      
-      <!-- id folds in date_iso so two occurrences of one recurring event
-           (item 141, same url) don't collide as one tray item - a real
-           bug confirmed with a headless-browser test before fixing
-           (ROADMAP.md item 146). -->
-      
       <article class="card" id="ev-friday-night-films-2026-11-06" data-date-iso="2026-11-06T18:30:00">
         <button type="button" class="tray-star" data-item='{"date": "Nov 6", "date_iso": "2026-11-06T18:30:00", "detail": "A free screening of an international, independent or documentary film.", "id": "https://desplaines.libnet.info/event/16020452|2026-11-06T18:30:00", "region_name": "Des Plaines", "region_url": "https://withintenmiles.com/des-plaines-60016/", "title": "Friday Night Films", "url": "https://desplaines.libnet.info/event/16020452"}' aria-pressed="false" aria-label="Add Friday Night Films to My Weekend">☆</button>
-        
-        
-        <div class="date"><time datetime="2026-11-06T18:30:00">Fri, Nov 6 · 6:30 PM</time> · <span class="where">Des Plaines</span></div>
-        <h3><a href="https://desplaines.libnet.info/event/16020452">Friday Night Films</a></h3>
-        
-        
-        <p class="detail">A free screening of an international, independent or documentary film.</p>
-        
-        <div class="tag-row">
-          <span class="tag-badge" style="background: var(--hue-green-bg); color: var(--hue-green-ink);">💵 Free</span><span class="tag-badge" style="background: var(--hue-blue-bg); color: var(--hue-blue-ink);">🏠 Indoor</span>
-        </div>
-        
-        
+<div class="date"><time datetime="2026-11-06T18:30:00">Fri, Nov 6 · 6:30 PM</time> · <span class="where">Des Plaines</span></div>        <h3><a href="https://desplaines.libnet.info/event/16020452">Friday Night Films</a></h3>
+<p class="detail">A free screening of an international, independent or documentary film.</p>        <div class="tag-row">
+<span class="tag-badge" style="background: var(--hue-green-bg); color: var(--hue-green-ink);">💵 Free</span><span class="tag-badge" style="background: var(--hue-blue-bg); color: var(--hue-blue-ink);">🏠 Indoor</span>        </div>
         <div class="cal-row">
           <a href="data:text/calendar;charset=utf-8,BEGIN%3AVCALENDAR%0D%0AVERSION%3A2.0%0D%0APRODID%3A-//Within%20Ten//EN%0D%0ABEGIN%3AVEVENT%0D%0ADTSTART%3A20261106T183000%0D%0ADTEND%3A20261106T193000%0D%0ASUMMARY%3AFriday%20Night%20Films%0D%0ADESCRIPTION%3AFriday%5C%2C%20November%2006%202026%206%3A30pm%20-%208%3A30pm%20%5Cn%20A%20free%20screening%20of%20an%20international%5C%2C%20independent%20or%20documentary%20film.%0D%0AURL%3Ahttps%3A//desplaines.libnet.info/event/16020452%0D%0AEND%3AVEVENT%0D%0AEND%3AVCALENDAR%0D%0A" download="event.ics">📅 Add to calendar</a>
           <a href="https://www.google.com/calendar/render?action=TEMPLATE&amp;text=Friday+Night+Films&amp;dates=20261106T183000%2F20261106T193000&amp;details=Friday%2C+November+06+2026+6%3A30pm+-+8%3A30pm+%0A+A+free+screening+of+an+international%2C+independent+or+documentary+film.&amp;location=Des+Plaines" target="_blank" rel="noopener">Google Calendar</a>
         </div>
-        
       </article>
-      
-      <!-- id folds in date_iso so two occurrences of one recurring event
-           (item 141, same url) don't collide as one tray item - a real
-           bug confirmed with a headless-browser test before fixing
-           (ROADMAP.md item 146). -->
-      
       <article class="card" id="ev-film-screening-2026-11-14" data-date-iso="2026-11-14T13:30:00">
         <button type="button" class="tray-star" data-item='{"date": "Nov 14", "date_iso": "2026-11-14T13:30:00", "detail": "A free screening of the feature length film Michael.", "id": "https://desplaines.libnet.info/event/16023296|2026-11-14T13:30:00", "region_name": "Des Plaines", "region_url": "https://withintenmiles.com/des-plaines-60016/", "title": "Film Screening", "url": "https://desplaines.libnet.info/event/16023296"}' aria-pressed="false" aria-label="Add Film Screening to My Weekend">☆</button>
-        
-        
-        <div class="date"><time datetime="2026-11-14T13:30:00">Sat, Nov 14 · 1:30 PM</time> · <span class="where">Des Plaines</span></div>
-        <h3><a href="https://desplaines.libnet.info/event/16023296">Film Screening</a></h3>
-        
-        
-        <p class="detail">A free screening of the feature length film Michael.</p>
-        
-        <div class="tag-row">
-          <span class="tag-badge" style="background: var(--hue-green-bg); color: var(--hue-green-ink);">💵 Free</span><span class="tag-badge" style="background: var(--hue-blue-bg); color: var(--hue-blue-ink);">🏠 Indoor</span>
-        </div>
-        
-        
+<div class="date"><time datetime="2026-11-14T13:30:00">Sat, Nov 14 · 1:30 PM</time> · <span class="where">Des Plaines</span></div>        <h3><a href="https://desplaines.libnet.info/event/16023296">Film Screening</a></h3>
+<p class="detail">A free screening of the feature length film Michael.</p>        <div class="tag-row">
+<span class="tag-badge" style="background: var(--hue-green-bg); color: var(--hue-green-ink);">💵 Free</span><span class="tag-badge" style="background: var(--hue-blue-bg); color: var(--hue-blue-ink);">🏠 Indoor</span>        </div>
         <div class="cal-row">
           <a href="data:text/calendar;charset=utf-8,BEGIN%3AVCALENDAR%0D%0AVERSION%3A2.0%0D%0APRODID%3A-//Within%20Ten//EN%0D%0ABEGIN%3AVEVENT%0D%0ADTSTART%3A20261114T133000%0D%0ADTEND%3A20261114T143000%0D%0ASUMMARY%3AFilm%20Screening%0D%0ADESCRIPTION%3ASaturday%5C%2C%20November%2014%202026%201%3A30pm%20-%203%3A40pm%20%5Cn%20A%20free%20screening%20of%20the%20feature%20length%20film%20Michael.%0D%0AURL%3Ahttps%3A//desplaines.libnet.info/event/16023296%0D%0AEND%3AVEVENT%0D%0AEND%3AVCALENDAR%0D%0A" download="event.ics">📅 Add to calendar</a>
           <a href="https://www.google.com/calendar/render?action=TEMPLATE&amp;text=Film+Screening&amp;dates=20261114T133000%2F20261114T143000&amp;details=Saturday%2C+November+14+2026+1%3A30pm+-+3%3A40pm+%0A+A+free+screening+of+the+feature+length+film+Michael.&amp;location=Des+Plaines" target="_blank" rel="noopener">Google Calendar</a>
         </div>
-        
       </article>
-      
-      <!-- id folds in date_iso so two occurrences of one recurring event
-           (item 141, same url) don't collide as one tray item - a real
-           bug confirmed with a headless-browser test before fixing
-           (ROADMAP.md item 146). -->
-      
       <article class="card" id="ev-friday-night-films-2026-12-18" data-date-iso="2026-12-18T18:30:00">
         <button type="button" class="tray-star" data-item='{"date": "Dec 18", "date_iso": "2026-12-18T18:30:00", "detail": "A free screening of an international, independent or documentary film.", "id": "https://desplaines.libnet.info/event/16020598|2026-12-18T18:30:00", "region_name": "Des Plaines", "region_url": "https://withintenmiles.com/des-plaines-60016/", "title": "Friday Night Films", "url": "https://desplaines.libnet.info/event/16020598"}' aria-pressed="false" aria-label="Add Friday Night Films to My Weekend">☆</button>
-        
-        
-        <div class="date"><time datetime="2026-12-18T18:30:00">Fri, Dec 18 · 6:30 PM</time> · <span class="where">Des Plaines</span></div>
-        <h3><a href="https://desplaines.libnet.info/event/16020598">Friday Night Films</a></h3>
-        
-        
-        <p class="detail">A free screening of an international, independent or documentary film.</p>
-        
-        <div class="tag-row">
-          <span class="tag-badge" style="background: var(--hue-green-bg); color: var(--hue-green-ink);">💵 Free</span><span class="tag-badge" style="background: var(--hue-blue-bg); color: var(--hue-blue-ink);">🏠 Indoor</span>
-        </div>
-        
-        
+<div class="date"><time datetime="2026-12-18T18:30:00">Fri, Dec 18 · 6:30 PM</time> · <span class="where">Des Plaines</span></div>        <h3><a href="https://desplaines.libnet.info/event/16020598">Friday Night Films</a></h3>
+<p class="detail">A free screening of an international, independent or documentary film.</p>        <div class="tag-row">
+<span class="tag-badge" style="background: var(--hue-green-bg); color: var(--hue-green-ink);">💵 Free</span><span class="tag-badge" style="background: var(--hue-blue-bg); color: var(--hue-blue-ink);">🏠 Indoor</span>        </div>
         <div class="cal-row">
           <a href="data:text/calendar;charset=utf-8,BEGIN%3AVCALENDAR%0D%0AVERSION%3A2.0%0D%0APRODID%3A-//Within%20Ten//EN%0D%0ABEGIN%3AVEVENT%0D%0ADTSTART%3A20261218T183000%0D%0ADTEND%3A20261218T193000%0D%0ASUMMARY%3AFriday%20Night%20Films%0D%0ADESCRIPTION%3AFriday%5C%2C%20December%2018%202026%206%3A30pm%20-%208%3A30pm%20%5Cn%20A%20free%20screening%20of%20an%20international%5C%2C%20independent%20or%20documentary%20film.%0D%0AURL%3Ahttps%3A//desplaines.libnet.info/event/16020598%0D%0AEND%3AVEVENT%0D%0AEND%3AVCALENDAR%0D%0A" download="event.ics">📅 Add to calendar</a>
           <a href="https://www.google.com/calendar/render?action=TEMPLATE&amp;text=Friday+Night+Films&amp;dates=20261218T183000%2F20261218T193000&amp;details=Friday%2C+December+18+2026+6%3A30pm+-+8%3A30pm+%0A+A+free+screening+of+an+international%2C+independent+or+documentary+film.&amp;location=Des+Plaines" target="_blank" rel="noopener">Google Calendar</a>
         </div>
-        
       </article>
-      
-      <!-- id folds in date_iso so two occurrences of one recurring event
-           (item 141, same url) don't collide as one tray item - a real
-           bug confirmed with a headless-browser test before fixing
-           (ROADMAP.md item 146). -->
-      
       <article class="card" id="ev-des-plaines-public-library" data-date-iso="">
         <button type="button" class="tray-star" data-item='{"date": null, "date_iso": null, "detail": "Story times, programs, and museum passes for Des Plaines residents.", "id": "https://www.dppl.org/", "region_name": "Des Plaines", "region_url": "https://withintenmiles.com/des-plaines-60016/", "title": "Des Plaines Public Library", "url": "https://www.dppl.org/"}' aria-pressed="false" aria-label="Add Des Plaines Public Library to My Weekend">☆</button>
-        
-        
-        
         <h3><a href="https://www.dppl.org/">Des Plaines Public Library</a></h3>
-        
-        
-        <p class="detail">Story times, programs, and museum passes for Des Plaines residents.</p>
-        
-        <div class="tag-row">
-          <span class="tag-badge" style="background: var(--hue-blue-bg); color: var(--hue-blue-ink);">🏠 Indoor</span><span class="tag-badge" style="background: var(--hue-pink-bg); color: var(--hue-pink-ink);">🧒 Kid-friendly</span><span class="tag-badge" style="background: var(--hue-green-bg); color: var(--hue-green-ink);">💵 Free</span>
-        </div>
-        
-        
+<p class="detail">Story times, programs, and museum passes for Des Plaines residents.</p>        <div class="tag-row">
+<span class="tag-badge" style="background: var(--hue-blue-bg); color: var(--hue-blue-ink);">🏠 Indoor</span><span class="tag-badge" style="background: var(--hue-pink-bg); color: var(--hue-pink-ink);">🧒 Kid-friendly</span><span class="tag-badge" style="background: var(--hue-green-bg); color: var(--hue-green-ink);">💵 Free</span>        </div>
       </article>
-      
       </div>
     </section>
-    
     <section class="block">
       <h2>Mount Prospect <a class="region-link" href="https://withintenmiles.com/mount-prospect-60056/">Full region page &rarr;</a></h2>
       <div class="card-grid">
-      
-      <!-- id folds in date_iso so two occurrences of one recurring event
-           (item 141, same url) don't collide as one tray item - a real
-           bug confirmed with a headless-browser test before fixing
-           (ROADMAP.md item 146). -->
-      
       <article class="card" id="ev-hooked-on-books-2026-10-26" data-date-iso="2026-10-26T16:30:00">
         <button type="button" class="tray-star" data-item='{"date": "Oct 26", "date_iso": "2026-10-26T16:30:00", "detail": "In this interactive club perfect for kids just starting chapter books, we\u0027ll read a fun story and do related\u2026", "id": "https://mppl.libnet.info/event/16641009|2026-10-26T16:30:00", "region_name": "Mount Prospect", "region_url": "https://withintenmiles.com/mount-prospect-60056/", "title": "Hooked on Books!", "url": "https://mppl.libnet.info/event/16641009"}' aria-pressed="false" aria-label="Add Hooked on Books! to My Weekend">☆</button>
-        
-        
-        <div class="date"><time datetime="2026-10-26T16:30:00">Mon, Oct 26 · 4:30 PM</time> · <span class="where">Mount Prospect</span></div>
-        <h3><a href="https://mppl.libnet.info/event/16641009">Hooked on Books!</a></h3>
-        
-        
-        <p class="detail">In this interactive club perfect for kids just starting chapter books, we&#39;ll read a fun story and do related…</p>
-        
-        <div class="tag-row">
-          <span class="tag-badge" style="background: var(--hue-green-bg); color: var(--hue-green-ink);">💵 Free</span><span class="tag-badge" style="background: var(--hue-blue-bg); color: var(--hue-blue-ink);">🏠 Indoor</span><span class="tag-badge" style="background: var(--hue-pink-bg); color: var(--hue-pink-ink);">🧒 Kid-friendly</span>
-        </div>
-        
-        
+<div class="date"><time datetime="2026-10-26T16:30:00">Mon, Oct 26 · 4:30 PM</time> · <span class="where">Mount Prospect</span></div>        <h3><a href="https://mppl.libnet.info/event/16641009">Hooked on Books!</a></h3>
+<p class="detail">In this interactive club perfect for kids just starting chapter books, we&#39;ll read a fun story and do related…</p>        <div class="tag-row">
+<span class="tag-badge" style="background: var(--hue-green-bg); color: var(--hue-green-ink);">💵 Free</span><span class="tag-badge" style="background: var(--hue-blue-bg); color: var(--hue-blue-ink);">🏠 Indoor</span><span class="tag-badge" style="background: var(--hue-pink-bg); color: var(--hue-pink-ink);">🧒 Kid-friendly</span>        </div>
         <div class="cal-row">
           <a href="data:text/calendar;charset=utf-8,BEGIN%3AVCALENDAR%0D%0AVERSION%3A2.0%0D%0APRODID%3A-//Within%20Ten//EN%0D%0ABEGIN%3AVEVENT%0D%0ADTSTART%3A20261026T163000%0D%0ADTEND%3A20261026T173000%0D%0ASUMMARY%3AHooked%20on%20Books%21%0D%0ADESCRIPTION%3AMonday%5C%2C%20October%2026%202026%204%3A30pm%20-%205%3A15pm%20%5Cn%20In%20this%20interactive%20club%20perfect%20for%20kids%20just%20starting%20chapter%20books%5C%2C%20we%27ll%20read%20a%20fun%20story%20and%20do%20related%E2%80%A6%0D%0AURL%3Ahttps%3A//mppl.libnet.info/event/16641009%0D%0AEND%3AVEVENT%0D%0AEND%3AVCALENDAR%0D%0A" download="event.ics">📅 Add to calendar</a>
           <a href="https://www.google.com/calendar/render?action=TEMPLATE&amp;text=Hooked+on+Books%21&amp;dates=20261026T163000%2F20261026T173000&amp;details=Monday%2C+October+26+2026+4%3A30pm+-+5%3A15pm+%0A+In+this+interactive+club+perfect+for+kids+just+starting+chapter+books%2C+we%27ll+read+a+fun+story+and+do+related%E2%80%A6&amp;location=Mount+Prospect" target="_blank" rel="noopener">Google Calendar</a>
         </div>
-        
       </article>
-      
-      <!-- id folds in date_iso so two occurrences of one recurring event
-           (item 141, same url) don't collide as one tray item - a real
-           bug confirmed with a headless-browser test before fixing
-           (ROADMAP.md item 146). -->
-      
       <article class="card" id="ev-a-club-for-kids-who-like-books-2026-10-26" data-date-iso="2026-10-26T18:00:00">
         <button type="button" class="tray-star" data-item='{"date": "Oct 26", "date_iso": "2026-10-26T18:00:00", "detail": "Meet new friends, make a project, and find your next great read in this unique book club (no prior reading\u2026", "id": "https://mppl.libnet.info/event/16641020|2026-10-26T18:00:00", "region_name": "Mount Prospect", "region_url": "https://withintenmiles.com/mount-prospect-60056/", "title": "A Club for Kids Who Like Books", "url": "https://mppl.libnet.info/event/16641020"}' aria-pressed="false" aria-label="Add A Club for Kids Who Like Books to My Weekend">☆</button>
-        
-        
-        <div class="date"><time datetime="2026-10-26T18:00:00">Mon, Oct 26 · 6:00 PM</time> · <span class="where">Mount Prospect</span></div>
-        <h3><a href="https://mppl.libnet.info/event/16641020">A Club for Kids Who Like Books</a></h3>
-        
-        
-        <p class="detail">Meet new friends, make a project, and find your next great read in this unique book club (no prior reading…</p>
-        
-        <div class="tag-row">
-          <span class="tag-badge" style="background: var(--hue-green-bg); color: var(--hue-green-ink);">💵 Free</span><span class="tag-badge" style="background: var(--hue-blue-bg); color: var(--hue-blue-ink);">🏠 Indoor</span><span class="tag-badge" style="background: var(--hue-pink-bg); color: var(--hue-pink-ink);">🧒 Kid-friendly</span>
-        </div>
-        
-        
+<div class="date"><time datetime="2026-10-26T18:00:00">Mon, Oct 26 · 6:00 PM</time> · <span class="where">Mount Prospect</span></div>        <h3><a href="https://mppl.libnet.info/event/16641020">A Club for Kids Who Like Books</a></h3>
+<p class="detail">Meet new friends, make a project, and find your next great read in this unique book club (no prior reading…</p>        <div class="tag-row">
+<span class="tag-badge" style="background: var(--hue-green-bg); color: var(--hue-green-ink);">💵 Free</span><span class="tag-badge" style="background: var(--hue-blue-bg); color: var(--hue-blue-ink);">🏠 Indoor</span><span class="tag-badge" style="background: var(--hue-pink-bg); color: var(--hue-pink-ink);">🧒 Kid-friendly</span>        </div>
         <div class="cal-row">
           <a href="data:text/calendar;charset=utf-8,BEGIN%3AVCALENDAR%0D%0AVERSION%3A2.0%0D%0APRODID%3A-//Within%20Ten//EN%0D%0ABEGIN%3AVEVENT%0D%0ADTSTART%3A20261026T180000%0D%0ADTEND%3A20261026T190000%0D%0ASUMMARY%3AA%20Club%20for%20Kids%20Who%20Like%20Books%0D%0ADESCRIPTION%3AMonday%5C%2C%20October%2026%202026%206%3A00pm%20-%207%3A00pm%20%5Cn%20Meet%20new%20friends%5C%2C%20make%20a%20project%5C%2C%20and%20find%20your%20next%20great%20read%20in%20this%20unique%20book%20club%20%28no%20prior%20reading%E2%80%A6%0D%0AURL%3Ahttps%3A//mppl.libnet.info/event/16641020%0D%0AEND%3AVEVENT%0D%0AEND%3AVCALENDAR%0D%0A" download="event.ics">📅 Add to calendar</a>
           <a href="https://www.google.com/calendar/render?action=TEMPLATE&amp;text=A+Club+for+Kids+Who+Like+Books&amp;dates=20261026T180000%2F20261026T190000&amp;details=Monday%2C+October+26+2026+6%3A00pm+-+7%3A00pm+%0A+Meet+new+friends%2C+make+a+project%2C+and+find+your+next+great+read+in+this+unique+book+club+%28no+prior+reading%E2%80%A6&amp;location=Mount+Prospect" target="_blank" rel="noopener">Google Calendar</a>
         </div>
-        
       </article>
-      
-      <!-- id folds in date_iso so two occurrences of one recurring event
-           (item 141, same url) don't collide as one tray item - a real
-           bug confirmed with a headless-browser test before fixing
-           (ROADMAP.md item 146). -->
-      
       <article class="card" id="ev-lawyers-at-the-library-your-legal-help-desk-2026-10-28" data-date-iso="2026-10-28T18:30:00">
         <button type="button" class="tray-star" data-item='{"date": "Oct 28", "date_iso": "2026-10-28T18:30:00", "detail": "Need legal advice but don\u0027t know where to start? Free legal consultations are available through a virtual meeting\u2026", "id": "https://mppl.libnet.info/event/16565155|2026-10-28T18:30:00", "region_name": "Mount Prospect", "region_url": "https://withintenmiles.com/mount-prospect-60056/", "title": "Lawyers at the Library: Your Legal Help Desk", "url": "https://mppl.libnet.info/event/16565155"}' aria-pressed="false" aria-label="Add Lawyers at the Library: Your Legal Help Desk to My Weekend">☆</button>
-        
-        
-        <div class="date"><time datetime="2026-10-28T18:30:00">Wed, Oct 28 · 6:30 PM</time> · <span class="where">Mount Prospect</span></div>
-        <h3><a href="https://mppl.libnet.info/event/16565155">Lawyers at the Library: Your Legal Help Desk</a></h3>
-        
-        
-        <p class="detail">Need legal advice but don&#39;t know where to start? Free legal consultations are available through a virtual meeting…</p>
-        
-        <div class="tag-row">
-          <span class="tag-badge" style="background: var(--hue-green-bg); color: var(--hue-green-ink);">💵 Free</span><span class="tag-badge" style="background: var(--hue-blue-bg); color: var(--hue-blue-ink);">🏠 Indoor</span>
-        </div>
-        
-        
+<div class="date"><time datetime="2026-10-28T18:30:00">Wed, Oct 28 · 6:30 PM</time> · <span class="where">Mount Prospect</span></div>        <h3><a href="https://mppl.libnet.info/event/16565155">Lawyers at the Library: Your Legal Help Desk</a></h3>
+<p class="detail">Need legal advice but don&#39;t know where to start? Free legal consultations are available through a virtual meeting…</p>        <div class="tag-row">
+<span class="tag-badge" style="background: var(--hue-green-bg); color: var(--hue-green-ink);">💵 Free</span><span class="tag-badge" style="background: var(--hue-blue-bg); color: var(--hue-blue-ink);">🏠 Indoor</span>        </div>
         <div class="cal-row">
           <a href="data:text/calendar;charset=utf-8,BEGIN%3AVCALENDAR%0D%0AVERSION%3A2.0%0D%0APRODID%3A-//Within%20Ten//EN%0D%0ABEGIN%3AVEVENT%0D%0ADTSTART%3A20261028T183000%0D%0ADTEND%3A20261028T193000%0D%0ASUMMARY%3ALawyers%20at%20the%20Library%3A%20Your%20Legal%20Help%20Desk%0D%0ADESCRIPTION%3AWednesday%5C%2C%20October%2028%202026%206%3A30pm%20-%207%3A00pm%20%5Cn%20Need%20legal%20advice%20but%20don%27t%20know%20where%20to%20start%3F%20Free%20legal%20consultations%20are%20available%20through%20a%20virtual%20meeting%E2%80%A6%0D%0AURL%3Ahttps%3A//mppl.libnet.info/event/16565155%0D%0AEND%3AVEVENT%0D%0AEND%3AVCALENDAR%0D%0A" download="event.ics">📅 Add to calendar</a>
           <a href="https://www.google.com/calendar/render?action=TEMPLATE&amp;text=Lawyers+at+the+Library%3A+Your+Legal+Help+Desk&amp;dates=20261028T183000%2F20261028T193000&amp;details=Wednesday%2C+October+28+2026+6%3A30pm+-+7%3A00pm+%0A+Need+legal+advice+but+don%27t+know+where+to+start%3F+Free+legal+consultations+are+available+through+a+virtual+meeting%E2%80%A6&amp;location=Mount+Prospect" target="_blank" rel="noopener">Google Calendar</a>
         </div>
-        
       </article>
-      
-      <!-- id folds in date_iso so two occurrences of one recurring event
-           (item 141, same url) don't collide as one tray item - a real
-           bug confirmed with a headless-browser test before fixing
-           (ROADMAP.md item 146). -->
-      
       <article class="card" id="ev-family-reading-night-2026-11-19" data-date-iso="2026-11-19T00:00:00">
         <button type="button" class="tray-star" data-item='{"date": "Nov 19", "date_iso": "2026-11-19T00:00:00", "detail": "The library is joining the statewide event, encouraging families to spend quality time reading together with a\u2026", "id": "https://mppl.libnet.info/event/16903460|2026-11-19T00:00:00", "region_name": "Mount Prospect", "region_url": "https://withintenmiles.com/mount-prospect-60056/", "title": "Family Reading Night", "url": "https://mppl.libnet.info/event/16903460"}' aria-pressed="false" aria-label="Add Family Reading Night to My Weekend">☆</button>
-        
-        
-        <div class="date"><time datetime="2026-11-19T00:00:00">Thu, Nov 19</time> · <span class="where">Mount Prospect</span></div>
-        <h3><a href="https://mppl.libnet.info/event/16903460">Family Reading Night</a></h3>
-        
-        
-        <p class="detail">The library is joining the statewide event, encouraging families to spend quality time reading together with a…</p>
-        
-        <div class="tag-row">
-          <span class="tag-badge" style="background: var(--hue-green-bg); color: var(--hue-green-ink);">💵 Free</span><span class="tag-badge" style="background: var(--hue-blue-bg); color: var(--hue-blue-ink);">🏠 Indoor</span><span class="tag-badge" style="background: var(--hue-pink-bg); color: var(--hue-pink-ink);">🧒 Kid-friendly</span>
-        </div>
-        
-        
+<div class="date"><time datetime="2026-11-19T00:00:00">Thu, Nov 19</time> · <span class="where">Mount Prospect</span></div>        <h3><a href="https://mppl.libnet.info/event/16903460">Family Reading Night</a></h3>
+<p class="detail">The library is joining the statewide event, encouraging families to spend quality time reading together with a…</p>        <div class="tag-row">
+<span class="tag-badge" style="background: var(--hue-green-bg); color: var(--hue-green-ink);">💵 Free</span><span class="tag-badge" style="background: var(--hue-blue-bg); color: var(--hue-blue-ink);">🏠 Indoor</span><span class="tag-badge" style="background: var(--hue-pink-bg); color: var(--hue-pink-ink);">🧒 Kid-friendly</span>        </div>
         <div class="cal-row">
           <a href="data:text/calendar;charset=utf-8,BEGIN%3AVCALENDAR%0D%0AVERSION%3A2.0%0D%0APRODID%3A-//Within%20Ten//EN%0D%0ABEGIN%3AVEVENT%0D%0ADTSTART%3A20261119T000000%0D%0ADTEND%3A20261119T010000%0D%0ASUMMARY%3AFamily%20Reading%20Night%0D%0ADESCRIPTION%3AThursday%5C%2C%20November%2019%202026%2012%3A00am%20-%2011%3A59pm%20%5Cn%20The%20library%20is%20joining%20the%20statewide%20event%5C%2C%20encouraging%20families%20to%20spend%20quality%20time%20reading%20together%20with%20a%E2%80%A6%0D%0AURL%3Ahttps%3A//mppl.libnet.info/event/16903460%0D%0AEND%3AVEVENT%0D%0AEND%3AVCALENDAR%0D%0A" download="event.ics">📅 Add to calendar</a>
           <a href="https://www.google.com/calendar/render?action=TEMPLATE&amp;text=Family+Reading+Night&amp;dates=20261119T000000%2F20261119T010000&amp;details=Thursday%2C+November+19+2026+12%3A00am+-+11%3A59pm+%0A+The+library+is+joining+the+statewide+event%2C+encouraging+families+to+spend+quality+time+reading+together+with+a%E2%80%A6&amp;location=Mount+Prospect" target="_blank" rel="noopener">Google Calendar</a>
         </div>
-        
       </article>
-      
-      <!-- id folds in date_iso so two occurrences of one recurring event
-           (item 141, same url) don't collide as one tray item - a real
-           bug confirmed with a headless-browser test before fixing
-           (ROADMAP.md item 146). -->
-      
       <article class="card" id="ev-hooked-on-books-2026-11-30" data-date-iso="2026-11-30T16:30:00">
         <button type="button" class="tray-star" data-item='{"date": "Nov 30", "date_iso": "2026-11-30T16:30:00", "detail": "In this interactive club perfect for kids just starting chapter books, we\u0027ll read a fun story, and do related\u2026", "id": "https://mppl.libnet.info/event/16873363|2026-11-30T16:30:00", "region_name": "Mount Prospect", "region_url": "https://withintenmiles.com/mount-prospect-60056/", "title": "Hooked on Books!", "url": "https://mppl.libnet.info/event/16873363"}' aria-pressed="false" aria-label="Add Hooked on Books! to My Weekend">☆</button>
-        
-        
-        <div class="date"><time datetime="2026-11-30T16:30:00">Mon, Nov 30 · 4:30 PM</time> · <span class="where">Mount Prospect</span></div>
-        <h3><a href="https://mppl.libnet.info/event/16873363">Hooked on Books!</a></h3>
-        
-        
-        <p class="detail">In this interactive club perfect for kids just starting chapter books, we&#39;ll read a fun story, and do related…</p>
-        
-        <div class="tag-row">
-          <span class="tag-badge" style="background: var(--hue-green-bg); color: var(--hue-green-ink);">💵 Free</span><span class="tag-badge" style="background: var(--hue-blue-bg); color: var(--hue-blue-ink);">🏠 Indoor</span><span class="tag-badge" style="background: var(--hue-pink-bg); color: var(--hue-pink-ink);">🧒 Kid-friendly</span>
-        </div>
-        
-        
+<div class="date"><time datetime="2026-11-30T16:30:00">Mon, Nov 30 · 4:30 PM</time> · <span class="where">Mount Prospect</span></div>        <h3><a href="https://mppl.libnet.info/event/16873363">Hooked on Books!</a></h3>
+<p class="detail">In this interactive club perfect for kids just starting chapter books, we&#39;ll read a fun story, and do related…</p>        <div class="tag-row">
+<span class="tag-badge" style="background: var(--hue-green-bg); color: var(--hue-green-ink);">💵 Free</span><span class="tag-badge" style="background: var(--hue-blue-bg); color: var(--hue-blue-ink);">🏠 Indoor</span><span class="tag-badge" style="background: var(--hue-pink-bg); color: var(--hue-pink-ink);">🧒 Kid-friendly</span>        </div>
         <div class="cal-row">
           <a href="data:text/calendar;charset=utf-8,BEGIN%3AVCALENDAR%0D%0AVERSION%3A2.0%0D%0APRODID%3A-//Within%20Ten//EN%0D%0ABEGIN%3AVEVENT%0D%0ADTSTART%3A20261130T163000%0D%0ADTEND%3A20261130T173000%0D%0ASUMMARY%3AHooked%20on%20Books%21%0D%0ADESCRIPTION%3AMonday%5C%2C%20November%2030%202026%204%3A30pm%20-%205%3A15pm%20%5Cn%20In%20this%20interactive%20club%20perfect%20for%20kids%20just%20starting%20chapter%20books%5C%2C%20we%27ll%20read%20a%20fun%20story%5C%2C%20and%20do%20related%E2%80%A6%0D%0AURL%3Ahttps%3A//mppl.libnet.info/event/16873363%0D%0AEND%3AVEVENT%0D%0AEND%3AVCALENDAR%0D%0A" download="event.ics">📅 Add to calendar</a>
           <a href="https://www.google.com/calendar/render?action=TEMPLATE&amp;text=Hooked+on+Books%21&amp;dates=20261130T163000%2F20261130T173000&amp;details=Monday%2C+November+30+2026+4%3A30pm+-+5%3A15pm+%0A+In+this+interactive+club+perfect+for+kids+just+starting+chapter+books%2C+we%27ll+read+a+fun+story%2C+and+do+related%E2%80%A6&amp;location=Mount+Prospect" target="_blank" rel="noopener">Google Calendar</a>
         </div>
-        
       </article>
-      
-      <!-- id folds in date_iso so two occurrences of one recurring event
-           (item 141, same url) don't collide as one tray item - a real
-           bug confirmed with a headless-browser test before fixing
-           (ROADMAP.md item 146). -->
-      
       <article class="card" id="ev-a-club-for-kids-who-like-books-2026-11-30" data-date-iso="2026-11-30T18:00:00">
         <button type="button" class="tray-star" data-item='{"date": "Nov 30", "date_iso": "2026-11-30T18:00:00", "detail": "Meet new friends, make a project, and find your next great read in this unique book club (no prior reading\u2026", "id": "https://mppl.libnet.info/event/16873366|2026-11-30T18:00:00", "region_name": "Mount Prospect", "region_url": "https://withintenmiles.com/mount-prospect-60056/", "title": "A Club for Kids Who Like Books", "url": "https://mppl.libnet.info/event/16873366"}' aria-pressed="false" aria-label="Add A Club for Kids Who Like Books to My Weekend">☆</button>
-        
-        
-        <div class="date"><time datetime="2026-11-30T18:00:00">Mon, Nov 30 · 6:00 PM</time> · <span class="where">Mount Prospect</span></div>
-        <h3><a href="https://mppl.libnet.info/event/16873366">A Club for Kids Who Like Books</a></h3>
-        
-        
-        <p class="detail">Meet new friends, make a project, and find your next great read in this unique book club (no prior reading…</p>
-        
-        <div class="tag-row">
-          <span class="tag-badge" style="background: var(--hue-green-bg); color: var(--hue-green-ink);">💵 Free</span><span class="tag-badge" style="background: var(--hue-blue-bg); color: var(--hue-blue-ink);">🏠 Indoor</span><span class="tag-badge" style="background: var(--hue-pink-bg); color: var(--hue-pink-ink);">🧒 Kid-friendly</span>
-        </div>
-        
-        
+<div class="date"><time datetime="2026-11-30T18:00:00">Mon, Nov 30 · 6:00 PM</time> · <span class="where">Mount Prospect</span></div>        <h3><a href="https://mppl.libnet.info/event/16873366">A Club for Kids Who Like Books</a></h3>
+<p class="detail">Meet new friends, make a project, and find your next great read in this unique book club (no prior reading…</p>        <div class="tag-row">
+<span class="tag-badge" style="background: var(--hue-green-bg); color: var(--hue-green-ink);">💵 Free</span><span class="tag-badge" style="background: var(--hue-blue-bg); color: var(--hue-blue-ink);">🏠 Indoor</span><span class="tag-badge" style="background: var(--hue-pink-bg); color: var(--hue-pink-ink);">🧒 Kid-friendly</span>        </div>
         <div class="cal-row">
           <a href="data:text/calendar;charset=utf-8,BEGIN%3AVCALENDAR%0D%0AVERSION%3A2.0%0D%0APRODID%3A-//Within%20Ten//EN%0D%0ABEGIN%3AVEVENT%0D%0ADTSTART%3A20261130T180000%0D%0ADTEND%3A20261130T190000%0D%0ASUMMARY%3AA%20Club%20for%20Kids%20Who%20Like%20Books%0D%0ADESCRIPTION%3AMonday%5C%2C%20November%2030%202026%206%3A00pm%20-%207%3A00pm%20%5Cn%20Meet%20new%20friends%5C%2C%20make%20a%20project%5C%2C%20and%20find%20your%20next%20great%20read%20in%20this%20unique%20book%20club%20%28no%20prior%20reading%E2%80%A6%0D%0AURL%3Ahttps%3A//mppl.libnet.info/event/16873366%0D%0AEND%3AVEVENT%0D%0AEND%3AVCALENDAR%0D%0A" download="event.ics">📅 Add to calendar</a>
           <a href="https://www.google.com/calendar/render?action=TEMPLATE&amp;text=A+Club+for+Kids+Who+Like+Books&amp;dates=20261130T180000%2F20261130T190000&amp;details=Monday%2C+November+30+2026+6%3A00pm+-+7%3A00pm+%0A+Meet+new+friends%2C+make+a+project%2C+and+find+your+next+great+read+in+this+unique+book+club+%28no+prior+reading%E2%80%A6&amp;location=Mount+Prospect" target="_blank" rel="noopener">Google Calendar</a>
         </div>
-        
       </article>
-      
-      <!-- id folds in date_iso so two occurrences of one recurring event
-           (item 141, same url) don't collide as one tray item - a real
-           bug confirmed with a headless-browser test before fixing
-           (ROADMAP.md item 146). -->
-      
       <article class="card" id="ev-event-venues" data-date-iso="">
         <button type="button" class="tray-star" data-item='{"date": null, "date_iso": null, "detail": "", "id": "https://www.randhurstvillage.com/events/event-venues", "region_name": "Mount Prospect", "region_url": "https://withintenmiles.com/mount-prospect-60056/", "title": "EVENT VENUES", "url": "https://www.randhurstvillage.com/events/event-venues"}' aria-pressed="false" aria-label="Add EVENT VENUES to My Weekend">☆</button>
-        
-        
-        
         <h3><a href="https://www.randhurstvillage.com/events/event-venues">EVENT VENUES</a></h3>
-        
-        
-        
-        
         <div class="tag-row">
-          <span class="tag-badge" style="background: var(--hue-green-bg); color: var(--hue-green-ink);">💵 Free</span>
-        </div>
-        
-        
+<span class="tag-badge" style="background: var(--hue-green-bg); color: var(--hue-green-ink);">💵 Free</span>        </div>
       </article>
-      
-      <!-- id folds in date_iso so two occurrences of one recurring event
-           (item 141, same url) don't collide as one tray item - a real
-           bug confirmed with a headless-browser test before fixing
-           (ROADMAP.md item 146). -->
-      
       <article class="card" id="ev-mount-prospect-public-library" data-date-iso="">
         <button type="button" class="tray-star" data-item='{"date": null, "date_iso": null, "detail": "125 S Emerson St. Story times, teen programs, and free museum passes.", "id": "https://mppl.org/", "region_name": "Mount Prospect", "region_url": "https://withintenmiles.com/mount-prospect-60056/", "title": "Mount Prospect Public Library", "url": "https://mppl.org/"}' aria-pressed="false" aria-label="Add Mount Prospect Public Library to My Weekend">☆</button>
-        
-        
-        
         <h3><a href="https://mppl.org/">Mount Prospect Public Library</a></h3>
-        
-        
-        <p class="detail">125 S Emerson St. Story times, teen programs, and free museum passes.</p>
-        
-        <div class="tag-row">
-          <span class="tag-badge" style="background: var(--hue-blue-bg); color: var(--hue-blue-ink);">🏠 Indoor</span><span class="tag-badge" style="background: var(--hue-pink-bg); color: var(--hue-pink-ink);">🧒 Kid-friendly</span><span class="tag-badge" style="background: var(--hue-green-bg); color: var(--hue-green-ink);">💵 Free</span>
-        </div>
-        
-        
+<p class="detail">125 S Emerson St. Story times, teen programs, and free museum passes.</p>        <div class="tag-row">
+<span class="tag-badge" style="background: var(--hue-blue-bg); color: var(--hue-blue-ink);">🏠 Indoor</span><span class="tag-badge" style="background: var(--hue-pink-bg); color: var(--hue-pink-ink);">🧒 Kid-friendly</span><span class="tag-badge" style="background: var(--hue-green-bg); color: var(--hue-green-ink);">💵 Free</span>        </div>
       </article>
-      
       </div>
     </section>
-    
     <section class="block">
       <h2>Palatine <a class="region-link" href="https://withintenmiles.com/palatine-60067/">Full region page &rarr;</a></h2>
       <div class="card-grid">
-      
-      <!-- id folds in date_iso so two occurrences of one recurring event
-           (item 141, same url) don't collide as one tray item - a real
-           bug confirmed with a headless-browser test before fixing
-           (ROADMAP.md item 146). -->
-      
       <article class="card" id="ev-the-illiterate-los-analfabetas-2026-10-21" data-date-iso="2026-10-21T18:00:00">
         <button type="button" class="tray-star" data-item='{"date": "Oct 21", "date_iso": "2026-10-21T18:00:00", "detail": "Sometimes the most powerful stories are the quietest ones. The Illiterate tells the touching story of an older woman who has spent her life hiding the fact\u2026", "id": "https://events.harpercollege.edu/event/the-illiterate-los-analfabetas|2026-10-21T18:00:00", "region_name": "Palatine", "region_url": "https://withintenmiles.com/palatine-60067/", "title": "The Illiterate (Los Analfabetas)", "url": "https://events.harpercollege.edu/event/the-illiterate-los-analfabetas"}' aria-pressed="false" aria-label="Add The Illiterate (Los Analfabetas) to My Weekend">☆</button>
-        
-        
-        <div class="date"><time datetime="2026-10-21T18:00:00">Wed, Oct 21 · 6:00 PM</time> · <span class="where">Palatine</span></div>
-        <h3><a href="https://events.harpercollege.edu/event/the-illiterate-los-analfabetas">The Illiterate (Los Analfabetas)</a></h3>
-        
-        
-        <p class="detail">Sometimes the most powerful stories are the quietest ones. The Illiterate tells the touching story of an older woman who has spent her life hiding the fact…</p>
-        
-        <div class="tag-row">
-          <span class="tag-badge" style="background: var(--hue-purple-bg); color: var(--hue-purple-ink);">🎨 Arts &amp; culture</span><span class="tag-badge" style="background: var(--hue-green-bg); color: var(--hue-green-ink);">💵 Free</span>
-        </div>
-        
-        
+<div class="date"><time datetime="2026-10-21T18:00:00">Wed, Oct 21 · 6:00 PM</time> · <span class="where">Palatine</span></div>        <h3><a href="https://events.harpercollege.edu/event/the-illiterate-los-analfabetas">The Illiterate (Los Analfabetas)</a></h3>
+<p class="detail">Sometimes the most powerful stories are the quietest ones. The Illiterate tells the touching story of an older woman who has spent her life hiding the fact…</p>        <div class="tag-row">
+<span class="tag-badge" style="background: var(--hue-purple-bg); color: var(--hue-purple-ink);">🎨 Arts &amp; culture</span><span class="tag-badge" style="background: var(--hue-green-bg); color: var(--hue-green-ink);">💵 Free</span>        </div>
         <div class="cal-row">
           <a href="data:text/calendar;charset=utf-8,BEGIN%3AVCALENDAR%0D%0AVERSION%3A2.0%0D%0APRODID%3A-//Within%20Ten//EN%0D%0ABEGIN%3AVEVENT%0D%0ADTSTART%3A20261021T180000%0D%0ADTEND%3A20261021T190000%0D%0ASUMMARY%3AThe%20Illiterate%20%28Los%20Analfabetas%29%0D%0ADESCRIPTION%3ASometimes%20the%20most%20powerful%20stories%20are%20the%20quietest%20ones.%20The%20Illiterate%20tells%20the%20touching%20story%20of%20an%20older%20woman%20who%20has%20spent%20her%20life%20hiding%20the%20fact%E2%80%A6%0D%0AURL%3Ahttps%3A//events.harpercollege.edu/event/the-illiterate-los-analfabetas%0D%0AEND%3AVEVENT%0D%0AEND%3AVCALENDAR%0D%0A" download="event.ics">📅 Add to calendar</a>
           <a href="https://www.google.com/calendar/render?action=TEMPLATE&amp;text=The+Illiterate+%28Los+Analfabetas%29&amp;dates=20261021T180000%2F20261021T190000&amp;details=Sometimes+the+most+powerful+stories+are+the+quietest+ones.+The+Illiterate+tells+the+touching+story+of+an+older+woman+who+has+spent+her+life+hiding+the+fact%E2%80%A6&amp;location=Palatine" target="_blank" rel="noopener">Google Calendar</a>
         </div>
-        
       </article>
-      
-      <!-- id folds in date_iso so two occurrences of one recurring event
-           (item 141, same url) don't collide as one tray item - a real
-           bug confirmed with a headless-browser test before fixing
-           (ROADMAP.md item 146). -->
-      
       <article class="card" id="ev-rope-2026-10-28" data-date-iso="2026-10-28T18:00:00">
         <button type="button" class="tray-star" data-item='{"date": "Oct 28", "date_iso": "2026-10-28T18:00:00", "detail": "A psychological thriller directed by Alfred Hitchcock that follows two young men who commit a murder and then host a dinner party with the victim\u0027s body\u2026", "id": "https://events.harpercollege.edu/event/rope|2026-10-28T18:00:00", "region_name": "Palatine", "region_url": "https://withintenmiles.com/palatine-60067/", "title": "Rope", "url": "https://events.harpercollege.edu/event/rope"}' aria-pressed="false" aria-label="Add Rope to My Weekend">☆</button>
-        
-        
-        <div class="date"><time datetime="2026-10-28T18:00:00">Wed, Oct 28 · 6:00 PM</time> · <span class="where">Palatine</span></div>
-        <h3><a href="https://events.harpercollege.edu/event/rope">Rope</a></h3>
-        
-        
-        <p class="detail">A psychological thriller directed by Alfred Hitchcock that follows two young men who commit a murder and then host a dinner party with the victim&#39;s body…</p>
-        
-        <div class="tag-row">
-          <span class="tag-badge" style="background: var(--hue-purple-bg); color: var(--hue-purple-ink);">🎨 Arts &amp; culture</span><span class="tag-badge" style="background: var(--hue-green-bg); color: var(--hue-green-ink);">💵 Free</span><span class="tag-badge" style="background: var(--hue-blue-bg); color: var(--hue-blue-ink);">🏠 Indoor</span>
-        </div>
-        
-        
+<div class="date"><time datetime="2026-10-28T18:00:00">Wed, Oct 28 · 6:00 PM</time> · <span class="where">Palatine</span></div>        <h3><a href="https://events.harpercollege.edu/event/rope">Rope</a></h3>
+<p class="detail">A psychological thriller directed by Alfred Hitchcock that follows two young men who commit a murder and then host a dinner party with the victim&#39;s body…</p>        <div class="tag-row">
+<span class="tag-badge" style="background: var(--hue-purple-bg); color: var(--hue-purple-ink);">🎨 Arts &amp; culture</span><span class="tag-badge" style="background: var(--hue-green-bg); color: var(--hue-green-ink);">💵 Free</span><span class="tag-badge" style="background: var(--hue-blue-bg); color: var(--hue-blue-ink);">🏠 Indoor</span>        </div>
         <div class="cal-row">
           <a href="data:text/calendar;charset=utf-8,BEGIN%3AVCALENDAR%0D%0AVERSION%3A2.0%0D%0APRODID%3A-//Within%20Ten//EN%0D%0ABEGIN%3AVEVENT%0D%0ADTSTART%3A20261028T180000%0D%0ADTEND%3A20261028T190000%0D%0ASUMMARY%3ARope%0D%0ADESCRIPTION%3AA%20psychological%20thriller%20directed%20by%20Alfred%20Hitchcock%20that%20follows%20two%20young%20men%20who%20commit%20a%20murder%20and%20then%20host%20a%20dinner%20party%20with%20the%20victim%27s%20body%E2%80%A6%0D%0AURL%3Ahttps%3A//events.harpercollege.edu/event/rope%0D%0AEND%3AVEVENT%0D%0AEND%3AVCALENDAR%0D%0A" download="event.ics">📅 Add to calendar</a>
           <a href="https://www.google.com/calendar/render?action=TEMPLATE&amp;text=Rope&amp;dates=20261028T180000%2F20261028T190000&amp;details=A+psychological+thriller+directed+by+Alfred+Hitchcock+that+follows+two+young+men+who+commit+a+murder+and+then+host+a+dinner+party+with+the+victim%27s+body%E2%80%A6&amp;location=Palatine" target="_blank" rel="noopener">Google Calendar</a>
         </div>
-        
       </article>
-      
-      <!-- id folds in date_iso so two occurrences of one recurring event
-           (item 141, same url) don't collide as one tray item - a real
-           bug confirmed with a headless-browser test before fixing
-           (ROADMAP.md item 146). -->
-      
       <article class="card" id="ev-almost-famous-2026-11-04" data-date-iso="2026-11-04T18:00:00">
         <button type="button" class="tray-star" data-item='{"date": "Nov 4", "date_iso": "2026-11-04T18:00:00", "detail": "A coming-of-age drama directed by Cameron Crowe that follows a teenage aspiring journalist who is given the opportunity to tour with a rising rock band while\u2026", "id": "https://events.harpercollege.edu/event/almost-famous|2026-11-04T18:00:00", "region_name": "Palatine", "region_url": "https://withintenmiles.com/palatine-60067/", "title": "Almost Famous", "url": "https://events.harpercollege.edu/event/almost-famous"}' aria-pressed="false" aria-label="Add Almost Famous to My Weekend">☆</button>
-        
-        
-        <div class="date"><time datetime="2026-11-04T18:00:00">Wed, Nov 4 · 6:00 PM</time> · <span class="where">Palatine</span></div>
-        <h3><a href="https://events.harpercollege.edu/event/almost-famous">Almost Famous</a></h3>
-        
-        
-        <p class="detail">A coming-of-age drama directed by Cameron Crowe that follows a teenage aspiring journalist who is given the opportunity to tour with a rising rock band while…</p>
-        
-        <div class="tag-row">
-          <span class="tag-badge" style="background: var(--hue-purple-bg); color: var(--hue-purple-ink);">🎨 Arts &amp; culture</span><span class="tag-badge" style="background: var(--hue-green-bg); color: var(--hue-green-ink);">💵 Free</span><span class="tag-badge" style="background: var(--hue-pink-bg); color: var(--hue-pink-ink);">🧒 Kid-friendly</span>
-        </div>
-        
-        
+<div class="date"><time datetime="2026-11-04T18:00:00">Wed, Nov 4 · 6:00 PM</time> · <span class="where">Palatine</span></div>        <h3><a href="https://events.harpercollege.edu/event/almost-famous">Almost Famous</a></h3>
+<p class="detail">A coming-of-age drama directed by Cameron Crowe that follows a teenage aspiring journalist who is given the opportunity to tour with a rising rock band while…</p>        <div class="tag-row">
+<span class="tag-badge" style="background: var(--hue-purple-bg); color: var(--hue-purple-ink);">🎨 Arts &amp; culture</span><span class="tag-badge" style="background: var(--hue-green-bg); color: var(--hue-green-ink);">💵 Free</span><span class="tag-badge" style="background: var(--hue-pink-bg); color: var(--hue-pink-ink);">🧒 Kid-friendly</span>        </div>
         <div class="cal-row">
           <a href="data:text/calendar;charset=utf-8,BEGIN%3AVCALENDAR%0D%0AVERSION%3A2.0%0D%0APRODID%3A-//Within%20Ten//EN%0D%0ABEGIN%3AVEVENT%0D%0ADTSTART%3A20261104T180000%0D%0ADTEND%3A20261104T190000%0D%0ASUMMARY%3AAlmost%20Famous%0D%0ADESCRIPTION%3AA%20coming-of-age%20drama%20directed%20by%20Cameron%20Crowe%20that%20follows%20a%20teenage%20aspiring%20journalist%20who%20is%20given%20the%20opportunity%20to%20tour%20with%20a%20rising%20rock%20band%20while%E2%80%A6%0D%0AURL%3Ahttps%3A//events.harpercollege.edu/event/almost-famous%0D%0AEND%3AVEVENT%0D%0AEND%3AVCALENDAR%0D%0A" download="event.ics">📅 Add to calendar</a>
           <a href="https://www.google.com/calendar/render?action=TEMPLATE&amp;text=Almost+Famous&amp;dates=20261104T180000%2F20261104T190000&amp;details=A+coming-of-age+drama+directed+by+Cameron+Crowe+that+follows+a+teenage+aspiring+journalist+who+is+given+the+opportunity+to+tour+with+a+rising+rock+band+while%E2%80%A6&amp;location=Palatine" target="_blank" rel="noopener">Google Calendar</a>
         </div>
-        
       </article>
-      
-      <!-- id folds in date_iso so two occurrences of one recurring event
-           (item 141, same url) don't collide as one tray item - a real
-           bug confirmed with a headless-browser test before fixing
-           (ROADMAP.md item 146). -->
-      
       <article class="card" id="ev-the-fifth-element-2026-11-11" data-date-iso="2026-11-11T18:00:00">
         <button type="button" class="tray-star" data-item='{"date": "Nov 11", "date_iso": "2026-11-11T18:00:00", "detail": "A science-fiction adventure directed by Luc Besson that follows a futuristic taxi driver who becomes responsible for protecting a mysterious woman whose\u2026", "id": "https://events.harpercollege.edu/event/the-fifth-element|2026-11-11T18:00:00", "region_name": "Palatine", "region_url": "https://withintenmiles.com/palatine-60067/", "title": "The Fifth Element", "url": "https://events.harpercollege.edu/event/the-fifth-element"}' aria-pressed="false" aria-label="Add The Fifth Element to My Weekend">☆</button>
-        
-        
-        <div class="date"><time datetime="2026-11-11T18:00:00">Wed, Nov 11 · 6:00 PM</time> · <span class="where">Palatine</span></div>
-        <h3><a href="https://events.harpercollege.edu/event/the-fifth-element">The Fifth Element</a></h3>
-        
-        
-        <p class="detail">A science-fiction adventure directed by Luc Besson that follows a futuristic taxi driver who becomes responsible for protecting a mysterious woman whose…</p>
-        
-        <div class="tag-row">
-          <span class="tag-badge" style="background: var(--hue-purple-bg); color: var(--hue-purple-ink);">🎨 Arts &amp; culture</span><span class="tag-badge" style="background: var(--hue-green-bg); color: var(--hue-green-ink);">💵 Free</span>
-        </div>
-        
-        
+<div class="date"><time datetime="2026-11-11T18:00:00">Wed, Nov 11 · 6:00 PM</time> · <span class="where">Palatine</span></div>        <h3><a href="https://events.harpercollege.edu/event/the-fifth-element">The Fifth Element</a></h3>
+<p class="detail">A science-fiction adventure directed by Luc Besson that follows a futuristic taxi driver who becomes responsible for protecting a mysterious woman whose…</p>        <div class="tag-row">
+<span class="tag-badge" style="background: var(--hue-purple-bg); color: var(--hue-purple-ink);">🎨 Arts &amp; culture</span><span class="tag-badge" style="background: var(--hue-green-bg); color: var(--hue-green-ink);">💵 Free</span>        </div>
         <div class="cal-row">
           <a href="data:text/calendar;charset=utf-8,BEGIN%3AVCALENDAR%0D%0AVERSION%3A2.0%0D%0APRODID%3A-//Within%20Ten//EN%0D%0ABEGIN%3AVEVENT%0D%0ADTSTART%3A20261111T180000%0D%0ADTEND%3A20261111T190000%0D%0ASUMMARY%3AThe%20Fifth%20Element%0D%0ADESCRIPTION%3AA%20science-fiction%20adventure%20directed%20by%20Luc%20Besson%20that%20follows%20a%20futuristic%20taxi%20driver%20who%20becomes%20responsible%20for%20protecting%20a%20mysterious%20woman%20whose%E2%80%A6%0D%0AURL%3Ahttps%3A//events.harpercollege.edu/event/the-fifth-element%0D%0AEND%3AVEVENT%0D%0AEND%3AVCALENDAR%0D%0A" download="event.ics">📅 Add to calendar</a>
           <a href="https://www.google.com/calendar/render?action=TEMPLATE&amp;text=The+Fifth+Element&amp;dates=20261111T180000%2F20261111T190000&amp;details=A+science-fiction+adventure+directed+by+Luc+Besson+that+follows+a+futuristic+taxi+driver+who+becomes+responsible+for+protecting+a+mysterious+woman+whose%E2%80%A6&amp;location=Palatine" target="_blank" rel="noopener">Google Calendar</a>
         </div>
-        
       </article>
-      
-      <!-- id folds in date_iso so two occurrences of one recurring event
-           (item 141, same url) don't collide as one tray item - a real
-           bug confirmed with a headless-browser test before fixing
-           (ROADMAP.md item 146). -->
-      
       <article class="card" id="ev-tales-for-tots-2026-10-23" data-date-iso="2026-10-23T09:30:00">
         <button type="button" class="tray-star" data-item='{"date": "Oct 23", "date_iso": "2026-10-23T09:30:00", "detail": "FREE interactive story time for tots and grown-ups https://www.", "id": "https://www.palatine.il.us/common/modules/iCalendar/iCalendar.aspx?feed=calendar\u0026catID=14|2026-10-23T09:30:00", "region_name": "Palatine", "region_url": "https://withintenmiles.com/palatine-60067/", "title": "Tales for Tots", "url": "https://www.palatine.il.us/common/modules/iCalendar/iCalendar.aspx?feed=calendar\u0026catID=14"}' aria-pressed="false" aria-label="Add Tales for Tots to My Weekend">☆</button>
-        
-        
-        <div class="date"><time datetime="2026-10-23T09:30:00">Fri, Oct 23 · 9:30 AM</time> · <span class="where">Palatine</span></div>
-        <h3><a href="https://www.palatine.il.us/common/modules/iCalendar/iCalendar.aspx?feed=calendar&amp;catID=14">Tales for Tots</a></h3>
-        
-        
-        <p class="detail">FREE interactive story time for tots and grown-ups https://www.</p>
-        
-        <div class="tag-row">
-          <span class="tag-badge" style="background: var(--hue-green-bg); color: var(--hue-green-ink);">💵 Free</span><span class="tag-badge" style="background: var(--hue-pink-bg); color: var(--hue-pink-ink);">🧒 Kid-friendly</span>
-        </div>
-        
-        
+<div class="date"><time datetime="2026-10-23T09:30:00">Fri, Oct 23 · 9:30 AM</time> · <span class="where">Palatine</span></div>        <h3><a href="https://www.palatine.il.us/common/modules/iCalendar/iCalendar.aspx?feed=calendar&amp;catID=14">Tales for Tots</a></h3>
+<p class="detail">FREE interactive story time for tots and grown-ups https://www.</p>        <div class="tag-row">
+<span class="tag-badge" style="background: var(--hue-green-bg); color: var(--hue-green-ink);">💵 Free</span><span class="tag-badge" style="background: var(--hue-pink-bg); color: var(--hue-pink-ink);">🧒 Kid-friendly</span>        </div>
         <div class="cal-row">
           <a href="data:text/calendar;charset=utf-8,BEGIN%3AVCALENDAR%0D%0AVERSION%3A2.0%0D%0APRODID%3A-//Within%20Ten//EN%0D%0ABEGIN%3AVEVENT%0D%0ADTSTART%3A20261023T093000%0D%0ADTEND%3A20261023T103000%0D%0ASUMMARY%3ATales%20for%20Tots%0D%0ADESCRIPTION%3AFREE%20interactive%20story%20time%20for%20tots%20and%20grown-ups%20https%3A//www.%0D%0AURL%3Ahttps%3A//www.palatine.il.us/common/modules/iCalendar/iCalendar.aspx%3Ffeed%3Dcalendar%26catID%3D14%0D%0AEND%3AVEVENT%0D%0AEND%3AVCALENDAR%0D%0A" download="event.ics">📅 Add to calendar</a>
           <a href="https://www.google.com/calendar/render?action=TEMPLATE&amp;text=Tales+for+Tots&amp;dates=20261023T093000%2F20261023T103000&amp;details=FREE+interactive+story+time+for+tots+and+grown-ups+https%3A%2F%2Fwww.&amp;location=Palatine" target="_blank" rel="noopener">Google Calendar</a>
         </div>
-        
       </article>
-      
-      <!-- id folds in date_iso so two occurrences of one recurring event
-           (item 141, same url) don't collide as one tray item - a real
-           bug confirmed with a headless-browser test before fixing
-           (ROADMAP.md item 146). -->
-      
       <article class="card" id="ev-free-trunk-or-treat-at-napleton-s-palatine-mazda-2026-10-24" data-date-iso="2026-10-24T12:00:00">
         <button type="button" class="tray-star" data-item='{"date": "Oct 24", "date_iso": "2026-10-24T12:00:00", "detail": "Trick-or-treat from decorated car trunks and collect candy from", "id": "https://www.palatine.il.us/common/modules/iCalendar/iCalendar.aspx?feed=calendar\u0026catID=14|2026-10-24T12:00:00", "region_name": "Palatine", "region_url": "https://withintenmiles.com/palatine-60067/", "title": "FREE Trunk or Treat at Napleton\u0027s Palatine Mazda", "url": "https://www.palatine.il.us/common/modules/iCalendar/iCalendar.aspx?feed=calendar\u0026catID=14"}' aria-pressed="false" aria-label="Add FREE Trunk or Treat at Napleton&#39;s Palatine Mazda to My Weekend">☆</button>
-        
-        
-        <div class="date"><time datetime="2026-10-24T12:00:00">Sat, Oct 24 · 12:00 PM</time> · <span class="where">Palatine</span></div>
-        <h3><a href="https://www.palatine.il.us/common/modules/iCalendar/iCalendar.aspx?feed=calendar&amp;catID=14">FREE Trunk or Treat at Napleton&#39;s Palatine Mazda</a></h3>
-        
-        
-        <p class="detail">Trick-or-treat from decorated car trunks and collect candy from</p>
-        
-        <div class="tag-row">
-          <span class="tag-badge" style="background: var(--hue-green-bg); color: var(--hue-green-ink);">💵 Free</span>
-        </div>
-        
-        
+<div class="date"><time datetime="2026-10-24T12:00:00">Sat, Oct 24 · 12:00 PM</time> · <span class="where">Palatine</span></div>        <h3><a href="https://www.palatine.il.us/common/modules/iCalendar/iCalendar.aspx?feed=calendar&amp;catID=14">FREE Trunk or Treat at Napleton&#39;s Palatine Mazda</a></h3>
+<p class="detail">Trick-or-treat from decorated car trunks and collect candy from</p>        <div class="tag-row">
+<span class="tag-badge" style="background: var(--hue-green-bg); color: var(--hue-green-ink);">💵 Free</span>        </div>
         <div class="cal-row">
           <a href="data:text/calendar;charset=utf-8,BEGIN%3AVCALENDAR%0D%0AVERSION%3A2.0%0D%0APRODID%3A-//Within%20Ten//EN%0D%0ABEGIN%3AVEVENT%0D%0ADTSTART%3A20261024T120000%0D%0ADTEND%3A20261024T130000%0D%0ASUMMARY%3AFREE%20Trunk%20or%20Treat%20at%20Napleton%27s%20Palatine%20Mazda%0D%0ADESCRIPTION%3ATrick-or-treat%20from%20decorated%20car%20trunks%20and%20collect%20candy%20from%0D%0AURL%3Ahttps%3A//www.palatine.il.us/common/modules/iCalendar/iCalendar.aspx%3Ffeed%3Dcalendar%26catID%3D14%0D%0AEND%3AVEVENT%0D%0AEND%3AVCALENDAR%0D%0A" download="event.ics">📅 Add to calendar</a>
           <a href="https://www.google.com/calendar/render?action=TEMPLATE&amp;text=FREE+Trunk+or+Treat+at+Napleton%27s+Palatine+Mazda&amp;dates=20261024T120000%2F20261024T130000&amp;details=Trick-or-treat+from+decorated+car+trunks+and+collect+candy+from&amp;location=Palatine" target="_blank" rel="noopener">Google Calendar</a>
         </div>
-        
       </article>
-      
-      <!-- id folds in date_iso so two occurrences of one recurring event
-           (item 141, same url) don't collide as one tray item - a real
-           bug confirmed with a headless-browser test before fixing
-           (ROADMAP.md item 146). -->
-      
       <article class="card" id="ev-free-trunk-or-treat-at-napleton-palatine-hyundai-2026-10-24" data-date-iso="2026-10-24T12:00:00">
         <button type="button" class="tray-star" data-item='{"date": "Oct 24", "date_iso": "2026-10-24T12:00:00", "detail": "A free, family-friendly Halloween stop! Kids can trick-or-trea", "id": "https://www.palatine.il.us/common/modules/iCalendar/iCalendar.aspx?feed=calendar\u0026catID=14|2026-10-24T12:00:00", "region_name": "Palatine", "region_url": "https://withintenmiles.com/palatine-60067/", "title": "FREE Trunk or Treat at Napleton Palatine Hyundai", "url": "https://www.palatine.il.us/common/modules/iCalendar/iCalendar.aspx?feed=calendar\u0026catID=14"}' aria-pressed="false" aria-label="Add FREE Trunk or Treat at Napleton Palatine Hyundai to My Weekend">☆</button>
-        
-        
-        <div class="date"><time datetime="2026-10-24T12:00:00">Sat, Oct 24 · 12:00 PM</time> · <span class="where">Palatine</span></div>
-        <h3><a href="https://www.palatine.il.us/common/modules/iCalendar/iCalendar.aspx?feed=calendar&amp;catID=14">FREE Trunk or Treat at Napleton Palatine Hyundai</a></h3>
-        
-        
-        <p class="detail">A free, family-friendly Halloween stop! Kids can trick-or-trea</p>
-        
-        <div class="tag-row">
-          <span class="tag-badge" style="background: var(--hue-green-bg); color: var(--hue-green-ink);">💵 Free</span><span class="tag-badge" style="background: var(--hue-pink-bg); color: var(--hue-pink-ink);">🧒 Kid-friendly</span>
-        </div>
-        
-        
+<div class="date"><time datetime="2026-10-24T12:00:00">Sat, Oct 24 · 12:00 PM</time> · <span class="where">Palatine</span></div>        <h3><a href="https://www.palatine.il.us/common/modules/iCalendar/iCalendar.aspx?feed=calendar&amp;catID=14">FREE Trunk or Treat at Napleton Palatine Hyundai</a></h3>
+<p class="detail">A free, family-friendly Halloween stop! Kids can trick-or-trea</p>        <div class="tag-row">
+<span class="tag-badge" style="background: var(--hue-green-bg); color: var(--hue-green-ink);">💵 Free</span><span class="tag-badge" style="background: var(--hue-pink-bg); color: var(--hue-pink-ink);">🧒 Kid-friendly</span>        </div>
         <div class="cal-row">
           <a href="data:text/calendar;charset=utf-8,BEGIN%3AVCALENDAR%0D%0AVERSION%3A2.0%0D%0APRODID%3A-//Within%20Ten//EN%0D%0ABEGIN%3AVEVENT%0D%0ADTSTART%3A20261024T120000%0D%0ADTEND%3A20261024T130000%0D%0ASUMMARY%3AFREE%20Trunk%20or%20Treat%20at%20Napleton%20Palatine%20Hyundai%0D%0ADESCRIPTION%3AA%20free%5C%2C%20family-friendly%20Halloween%20stop%21%20Kids%20can%20trick-or-trea%0D%0AURL%3Ahttps%3A//www.palatine.il.us/common/modules/iCalendar/iCalendar.aspx%3Ffeed%3Dcalendar%26catID%3D14%0D%0AEND%3AVEVENT%0D%0AEND%3AVCALENDAR%0D%0A" download="event.ics">📅 Add to calendar</a>
           <a href="https://www.google.com/calendar/render?action=TEMPLATE&amp;text=FREE+Trunk+or+Treat+at+Napleton+Palatine+Hyundai&amp;dates=20261024T120000%2F20261024T130000&amp;details=A+free%2C+family-friendly+Halloween+stop%21+Kids+can+trick-or-trea&amp;location=Palatine" target="_blank" rel="noopener">Google Calendar</a>
         </div>
-        
       </article>
-      
-      <!-- id folds in date_iso so two occurrences of one recurring event
-           (item 141, same url) don't collide as one tray item - a real
-           bug confirmed with a headless-browser test before fixing
-           (ROADMAP.md item 146). -->
-      
       <article class="card" id="ev-free-trunk-or-treat-at-napleton-palatine-chevrolet-2026-10-24" data-date-iso="2026-10-24T12:00:00">
         <button type="button" class="tray-star" data-item='{"date": "Oct 24", "date_iso": "2026-10-24T12:00:00", "detail": "Costumes encouraged! Join us for a free trunk or treat with dec", "id": "https://www.palatine.il.us/common/modules/iCalendar/iCalendar.aspx?feed=calendar\u0026catID=14|2026-10-24T12:00:00", "region_name": "Palatine", "region_url": "https://withintenmiles.com/palatine-60067/", "title": "FREE Trunk or Treat at Napleton Palatine Chevrolet", "url": "https://www.palatine.il.us/common/modules/iCalendar/iCalendar.aspx?feed=calendar\u0026catID=14"}' aria-pressed="false" aria-label="Add FREE Trunk or Treat at Napleton Palatine Chevrolet to My Weekend">☆</button>
-        
-        
-        <div class="date"><time datetime="2026-10-24T12:00:00">Sat, Oct 24 · 12:00 PM</time> · <span class="where">Palatine</span></div>
-        <h3><a href="https://www.palatine.il.us/common/modules/iCalendar/iCalendar.aspx?feed=calendar&amp;catID=14">FREE Trunk or Treat at Napleton Palatine Chevrolet</a></h3>
-        
-        
-        <p class="detail">Costumes encouraged! Join us for a free trunk or treat with dec</p>
-        
-        <div class="tag-row">
-          <span class="tag-badge" style="background: var(--hue-green-bg); color: var(--hue-green-ink);">💵 Free</span>
-        </div>
-        
-        
+<div class="date"><time datetime="2026-10-24T12:00:00">Sat, Oct 24 · 12:00 PM</time> · <span class="where">Palatine</span></div>        <h3><a href="https://www.palatine.il.us/common/modules/iCalendar/iCalendar.aspx?feed=calendar&amp;catID=14">FREE Trunk or Treat at Napleton Palatine Chevrolet</a></h3>
+<p class="detail">Costumes encouraged! Join us for a free trunk or treat with dec</p>        <div class="tag-row">
+<span class="tag-badge" style="background: var(--hue-green-bg); color: var(--hue-green-ink);">💵 Free</span>        </div>
         <div class="cal-row">
           <a href="data:text/calendar;charset=utf-8,BEGIN%3AVCALENDAR%0D%0AVERSION%3A2.0%0D%0APRODID%3A-//Within%20Ten//EN%0D%0ABEGIN%3AVEVENT%0D%0ADTSTART%3A20261024T120000%0D%0ADTEND%3A20261024T130000%0D%0ASUMMARY%3AFREE%20Trunk%20or%20Treat%20at%20Napleton%20Palatine%20Chevrolet%0D%0ADESCRIPTION%3ACostumes%20encouraged%21%20Join%20us%20for%20a%20free%20trunk%20or%20treat%20with%20dec%0D%0AURL%3Ahttps%3A//www.palatine.il.us/common/modules/iCalendar/iCalendar.aspx%3Ffeed%3Dcalendar%26catID%3D14%0D%0AEND%3AVEVENT%0D%0AEND%3AVCALENDAR%0D%0A" download="event.ics">📅 Add to calendar</a>
           <a href="https://www.google.com/calendar/render?action=TEMPLATE&amp;text=FREE+Trunk+or+Treat+at+Napleton+Palatine+Chevrolet&amp;dates=20261024T120000%2F20261024T130000&amp;details=Costumes+encouraged%21+Join+us+for+a+free+trunk+or+treat+with+dec&amp;location=Palatine" target="_blank" rel="noopener">Google Calendar</a>
         </div>
-        
       </article>
-      
-      <!-- id folds in date_iso so two occurrences of one recurring event
-           (item 141, same url) don't collide as one tray item - a real
-           bug confirmed with a headless-browser test before fixing
-           (ROADMAP.md item 146). -->
-      
       <article class="card" id="ev-free-trunk-or-treat-at-napleton-s-palatine-subaru-2026-10-24" data-date-iso="2026-10-24T12:00:00">
         <button type="button" class="tray-star" data-item='{"date": "Oct 24", "date_iso": "2026-10-24T12:00:00", "detail": "Bring the kids in costume for a free trunk or treat! Trick-or-t", "id": "https://www.palatine.il.us/common/modules/iCalendar/iCalendar.aspx?feed=calendar\u0026catID=14|2026-10-24T12:00:00", "region_name": "Palatine", "region_url": "https://withintenmiles.com/palatine-60067/", "title": "FREE Trunk or Treat at Napleton\u0027s Palatine Subaru", "url": "https://www.palatine.il.us/common/modules/iCalendar/iCalendar.aspx?feed=calendar\u0026catID=14"}' aria-pressed="false" aria-label="Add FREE Trunk or Treat at Napleton&#39;s Palatine Subaru to My Weekend">☆</button>
-        
-        
-        <div class="date"><time datetime="2026-10-24T12:00:00">Sat, Oct 24 · 12:00 PM</time> · <span class="where">Palatine</span></div>
-        <h3><a href="https://www.palatine.il.us/common/modules/iCalendar/iCalendar.aspx?feed=calendar&amp;catID=14">FREE Trunk or Treat at Napleton&#39;s Palatine Subaru</a></h3>
-        
-        
-        <p class="detail">Bring the kids in costume for a free trunk or treat! Trick-or-t</p>
-        
-        <div class="tag-row">
-          <span class="tag-badge" style="background: var(--hue-green-bg); color: var(--hue-green-ink);">💵 Free</span><span class="tag-badge" style="background: var(--hue-pink-bg); color: var(--hue-pink-ink);">🧒 Kid-friendly</span>
-        </div>
-        
-        
+<div class="date"><time datetime="2026-10-24T12:00:00">Sat, Oct 24 · 12:00 PM</time> · <span class="where">Palatine</span></div>        <h3><a href="https://www.palatine.il.us/common/modules/iCalendar/iCalendar.aspx?feed=calendar&amp;catID=14">FREE Trunk or Treat at Napleton&#39;s Palatine Subaru</a></h3>
+<p class="detail">Bring the kids in costume for a free trunk or treat! Trick-or-t</p>        <div class="tag-row">
+<span class="tag-badge" style="background: var(--hue-green-bg); color: var(--hue-green-ink);">💵 Free</span><span class="tag-badge" style="background: var(--hue-pink-bg); color: var(--hue-pink-ink);">🧒 Kid-friendly</span>        </div>
         <div class="cal-row">
           <a href="data:text/calendar;charset=utf-8,BEGIN%3AVCALENDAR%0D%0AVERSION%3A2.0%0D%0APRODID%3A-//Within%20Ten//EN%0D%0ABEGIN%3AVEVENT%0D%0ADTSTART%3A20261024T120000%0D%0ADTEND%3A20261024T130000%0D%0ASUMMARY%3AFREE%20Trunk%20or%20Treat%20at%20Napleton%27s%20Palatine%20Subaru%0D%0ADESCRIPTION%3ABring%20the%20kids%20in%20costume%20for%20a%20free%20trunk%20or%20treat%21%20Trick-or-t%0D%0AURL%3Ahttps%3A//www.palatine.il.us/common/modules/iCalendar/iCalendar.aspx%3Ffeed%3Dcalendar%26catID%3D14%0D%0AEND%3AVEVENT%0D%0AEND%3AVCALENDAR%0D%0A" download="event.ics">📅 Add to calendar</a>
           <a href="https://www.google.com/calendar/render?action=TEMPLATE&amp;text=FREE+Trunk+or+Treat+at+Napleton%27s+Palatine+Subaru&amp;dates=20261024T120000%2F20261024T130000&amp;details=Bring+the+kids+in+costume+for+a+free+trunk+or+treat%21+Trick-or-t&amp;location=Palatine" target="_blank" rel="noopener">Google Calendar</a>
         </div>
-        
       </article>
-      
-      <!-- id folds in date_iso so two occurrences of one recurring event
-           (item 141, same url) don't collide as one tray item - a real
-           bug confirmed with a headless-browser test before fixing
-           (ROADMAP.md item 146). -->
-      
       <article class="card" id="ev-impact-makers-of-palatine-free-self-defense-workshop-2026-10-25" data-date-iso="2026-10-25T13:00:00">
         <button type="button" class="tray-star" data-item='{"date": "Oct 25", "date_iso": "2026-10-25T13:00:00", "detail": "Free Self Defense Workshop https://www.palatine.il.us/calendar.", "id": "https://www.palatine.il.us/common/modules/iCalendar/iCalendar.aspx?feed=calendar\u0026catID=14|2026-10-25T13:00:00", "region_name": "Palatine", "region_url": "https://withintenmiles.com/palatine-60067/", "title": "Impact Makers of Palatine Free Self-Defense Workshop", "url": "https://www.palatine.il.us/common/modules/iCalendar/iCalendar.aspx?feed=calendar\u0026catID=14"}' aria-pressed="false" aria-label="Add Impact Makers of Palatine Free Self-Defense Workshop to My Weekend">☆</button>
-        
-        
-        <div class="date"><time datetime="2026-10-25T13:00:00">Sun, Oct 25 · 1:00 PM</time> · <span class="where">Palatine</span></div>
-        <h3><a href="https://www.palatine.il.us/common/modules/iCalendar/iCalendar.aspx?feed=calendar&amp;catID=14">Impact Makers of Palatine Free Self-Defense Workshop</a></h3>
-        
-        
-        <p class="detail">Free Self Defense Workshop https://www.palatine.il.us/calendar.</p>
-        
-        <div class="tag-row">
-          <span class="tag-badge" style="background: var(--hue-green-bg); color: var(--hue-green-ink);">💵 Free</span>
-        </div>
-        
-        
+<div class="date"><time datetime="2026-10-25T13:00:00">Sun, Oct 25 · 1:00 PM</time> · <span class="where">Palatine</span></div>        <h3><a href="https://www.palatine.il.us/common/modules/iCalendar/iCalendar.aspx?feed=calendar&amp;catID=14">Impact Makers of Palatine Free Self-Defense Workshop</a></h3>
+<p class="detail">Free Self Defense Workshop https://www.palatine.il.us/calendar.</p>        <div class="tag-row">
+<span class="tag-badge" style="background: var(--hue-green-bg); color: var(--hue-green-ink);">💵 Free</span>        </div>
         <div class="cal-row">
           <a href="data:text/calendar;charset=utf-8,BEGIN%3AVCALENDAR%0D%0AVERSION%3A2.0%0D%0APRODID%3A-//Within%20Ten//EN%0D%0ABEGIN%3AVEVENT%0D%0ADTSTART%3A20261025T130000%0D%0ADTEND%3A20261025T140000%0D%0ASUMMARY%3AImpact%20Makers%20of%20Palatine%20Free%20Self-Defense%20Workshop%0D%0ADESCRIPTION%3AFree%20Self%20Defense%20Workshop%20https%3A//www.palatine.il.us/calendar.%0D%0AURL%3Ahttps%3A//www.palatine.il.us/common/modules/iCalendar/iCalendar.aspx%3Ffeed%3Dcalendar%26catID%3D14%0D%0AEND%3AVEVENT%0D%0AEND%3AVCALENDAR%0D%0A" download="event.ics">📅 Add to calendar</a>
           <a href="https://www.google.com/calendar/render?action=TEMPLATE&amp;text=Impact+Makers+of+Palatine+Free+Self-Defense+Workshop&amp;dates=20261025T130000%2F20261025T140000&amp;details=Free+Self+Defense+Workshop+https%3A%2F%2Fwww.palatine.il.us%2Fcalendar.&amp;location=Palatine" target="_blank" rel="noopener">Google Calendar</a>
         </div>
-        
       </article>
-      
-      <!-- id folds in date_iso so two occurrences of one recurring event
-           (item 141, same url) don't collide as one tray item - a real
-           bug confirmed with a headless-browser test before fixing
-           (ROADMAP.md item 146). -->
-      
       <article class="card" id="ev-trunk-or-treat-and-community-meal-2026-10-25" data-date-iso="2026-10-25T14:00:00">
         <button type="button" class="tray-star" data-item='{"date": "Oct 25", "date_iso": "2026-10-25T14:00:00", "detail": "FREE Trunk-or-Treat and Community Meal https://www.palatine.il.", "id": "https://www.palatine.il.us/common/modules/iCalendar/iCalendar.aspx?feed=calendar\u0026catID=14|2026-10-25T14:00:00", "region_name": "Palatine", "region_url": "https://withintenmiles.com/palatine-60067/", "title": "Trunk-or-Treat and Community Meal", "url": "https://www.palatine.il.us/common/modules/iCalendar/iCalendar.aspx?feed=calendar\u0026catID=14"}' aria-pressed="false" aria-label="Add Trunk-or-Treat and Community Meal to My Weekend">☆</button>
-        
-        
-        <div class="date"><time datetime="2026-10-25T14:00:00">Sun, Oct 25 · 2:00 PM</time> · <span class="where">Palatine</span></div>
-        <h3><a href="https://www.palatine.il.us/common/modules/iCalendar/iCalendar.aspx?feed=calendar&amp;catID=14">Trunk-or-Treat and Community Meal</a></h3>
-        
-        
-        <p class="detail">FREE Trunk-or-Treat and Community Meal https://www.palatine.il.</p>
-        
-        <div class="tag-row">
-          <span class="tag-badge" style="background: var(--hue-green-bg); color: var(--hue-green-ink);">💵 Free</span>
-        </div>
-        
-        
+<div class="date"><time datetime="2026-10-25T14:00:00">Sun, Oct 25 · 2:00 PM</time> · <span class="where">Palatine</span></div>        <h3><a href="https://www.palatine.il.us/common/modules/iCalendar/iCalendar.aspx?feed=calendar&amp;catID=14">Trunk-or-Treat and Community Meal</a></h3>
+<p class="detail">FREE Trunk-or-Treat and Community Meal https://www.palatine.il.</p>        <div class="tag-row">
+<span class="tag-badge" style="background: var(--hue-green-bg); color: var(--hue-green-ink);">💵 Free</span>        </div>
         <div class="cal-row">
           <a href="data:text/calendar;charset=utf-8,BEGIN%3AVCALENDAR%0D%0AVERSION%3A2.0%0D%0APRODID%3A-//Within%20Ten//EN%0D%0ABEGIN%3AVEVENT%0D%0ADTSTART%3A20261025T140000%0D%0ADTEND%3A20261025T150000%0D%0ASUMMARY%3ATrunk-or-Treat%20and%20Community%20Meal%0D%0ADESCRIPTION%3AFREE%20Trunk-or-Treat%20and%20Community%20Meal%20https%3A//www.palatine.il.%0D%0AURL%3Ahttps%3A//www.palatine.il.us/common/modules/iCalendar/iCalendar.aspx%3Ffeed%3Dcalendar%26catID%3D14%0D%0AEND%3AVEVENT%0D%0AEND%3AVCALENDAR%0D%0A" download="event.ics">📅 Add to calendar</a>
           <a href="https://www.google.com/calendar/render?action=TEMPLATE&amp;text=Trunk-or-Treat+and+Community+Meal&amp;dates=20261025T140000%2F20261025T150000&amp;details=FREE+Trunk-or-Treat+and+Community+Meal+https%3A%2F%2Fwww.palatine.il.&amp;location=Palatine" target="_blank" rel="noopener">Google Calendar</a>
         </div>
-        
       </article>
-      
-      <!-- id folds in date_iso so two occurrences of one recurring event
-           (item 141, same url) don't collide as one tray item - a real
-           bug confirmed with a headless-browser test before fixing
-           (ROADMAP.md item 146). -->
-      
       <article class="card" id="ev-pirate-pete-s-trick-or-treat-festival-returns-2026-10-29" data-date-iso="2026-10-29T17:00:00">
         <button type="button" class="tray-star" data-item='{"date": "Oct 29", "date_iso": "2026-10-29T17:00:00", "detail": "Free Halloween festival at Palatine High School with themed roo", "id": "https://www.palatine.il.us/common/modules/iCalendar/iCalendar.aspx?feed=calendar\u0026catID=14|2026-10-29T17:00:00", "region_name": "Palatine", "region_url": "https://withintenmiles.com/palatine-60067/", "title": "Pirate Pete\u0027s Trick-or-Treat Festival Returns", "url": "https://www.palatine.il.us/common/modules/iCalendar/iCalendar.aspx?feed=calendar\u0026catID=14"}' aria-pressed="false" aria-label="Add Pirate Pete&#39;s Trick-or-Treat Festival Returns to My Weekend">☆</button>
-        
-        
-        <div class="date"><time datetime="2026-10-29T17:00:00">Thu, Oct 29 · 5:00 PM</time> · <span class="where">Palatine</span></div>
-        <h3><a href="https://www.palatine.il.us/common/modules/iCalendar/iCalendar.aspx?feed=calendar&amp;catID=14">Pirate Pete&#39;s Trick-or-Treat Festival Returns</a></h3>
-        
-        
-        <p class="detail">Free Halloween festival at Palatine High School with themed roo</p>
-        
-        <div class="tag-row">
-          <span class="tag-badge" style="background: var(--hue-green-bg); color: var(--hue-green-ink);">💵 Free</span><span class="tag-badge" style="background: var(--hue-teal-bg); color: var(--hue-teal-ink);">🌳 Outdoor</span><span class="tag-badge" style="background: var(--hue-indigo-bg); color: var(--hue-indigo-ink);">🧑 Teen</span>
-        </div>
-        
-        
+<div class="date"><time datetime="2026-10-29T17:00:00">Thu, Oct 29 · 5:00 PM</time> · <span class="where">Palatine</span></div>        <h3><a href="https://www.palatine.il.us/common/modules/iCalendar/iCalendar.aspx?feed=calendar&amp;catID=14">Pirate Pete&#39;s Trick-or-Treat Festival Returns</a></h3>
+<p class="detail">Free Halloween festival at Palatine High School with themed roo</p>        <div class="tag-row">
+<span class="tag-badge" style="background: var(--hue-green-bg); color: var(--hue-green-ink);">💵 Free</span><span class="tag-badge" style="background: var(--hue-teal-bg); color: var(--hue-teal-ink);">🌳 Outdoor</span><span class="tag-badge" style="background: var(--hue-indigo-bg); color: var(--hue-indigo-ink);">🧑 Teen</span>        </div>
         <div class="cal-row">
           <a href="data:text/calendar;charset=utf-8,BEGIN%3AVCALENDAR%0D%0AVERSION%3A2.0%0D%0APRODID%3A-//Within%20Ten//EN%0D%0ABEGIN%3AVEVENT%0D%0ADTSTART%3A20261029T170000%0D%0ADTEND%3A20261029T180000%0D%0ASUMMARY%3APirate%20Pete%27s%20Trick-or-Treat%20Festival%20Returns%0D%0ADESCRIPTION%3AFree%20Halloween%20festival%20at%20Palatine%20High%20School%20with%20themed%20roo%0D%0AURL%3Ahttps%3A//www.palatine.il.us/common/modules/iCalendar/iCalendar.aspx%3Ffeed%3Dcalendar%26catID%3D14%0D%0AEND%3AVEVENT%0D%0AEND%3AVCALENDAR%0D%0A" download="event.ics">📅 Add to calendar</a>
           <a href="https://www.google.com/calendar/render?action=TEMPLATE&amp;text=Pirate+Pete%27s+Trick-or-Treat+Festival+Returns&amp;dates=20261029T170000%2F20261029T180000&amp;details=Free+Halloween+festival+at+Palatine+High+School+with+themed+roo&amp;location=Palatine" target="_blank" rel="noopener">Google Calendar</a>
         </div>
-        
       </article>
-      
-      <!-- id folds in date_iso so two occurrences of one recurring event
-           (item 141, same url) don't collide as one tray item - a real
-           bug confirmed with a headless-browser test before fixing
-           (ROADMAP.md item 146). -->
-      
       <article class="card" id="ev-free-developmental-screenings-clone-2027-01-27" data-date-iso="2027-01-27T09:45:00">
         <button type="button" class="tray-star" data-item='{"date": "Jan 27", "date_iso": "2027-01-27T09:45:00", "detail": "Free Developmental Screenings for Children Ages Birth to 33 Mon", "id": "Free Developmental Screenings CLONE|2027-01-27T09:45:00", "region_name": "Palatine", "region_url": "https://withintenmiles.com/palatine-60067/", "title": "Free Developmental Screenings CLONE", "url": ""}' aria-pressed="false" aria-label="Add Free Developmental Screenings CLONE to My Weekend">☆</button>
-        
-        
-        <div class="date"><time datetime="2027-01-27T09:45:00">Wed, Jan 27 · 9:45 AM</time> · <span class="where">Palatine</span></div>
-        <h3>Free Developmental Screenings CLONE</h3>
-        
-        
-        <p class="detail">Free Developmental Screenings for Children Ages Birth to 33 Mon</p>
-        
-        <div class="tag-row">
-          <span class="tag-badge" style="background: var(--hue-green-bg); color: var(--hue-green-ink);">💵 Free</span><span class="tag-badge" style="background: var(--hue-pink-bg); color: var(--hue-pink-ink);">🧒 Kid-friendly</span>
-        </div>
-        
-        
+<div class="date"><time datetime="2027-01-27T09:45:00">Wed, Jan 27 · 9:45 AM</time> · <span class="where">Palatine</span></div>        <h3>Free Developmental Screenings CLONE</h3>
+<p class="detail">Free Developmental Screenings for Children Ages Birth to 33 Mon</p>        <div class="tag-row">
+<span class="tag-badge" style="background: var(--hue-green-bg); color: var(--hue-green-ink);">💵 Free</span><span class="tag-badge" style="background: var(--hue-pink-bg); color: var(--hue-pink-ink);">🧒 Kid-friendly</span>        </div>
         <div class="cal-row">
           <a href="data:text/calendar;charset=utf-8,BEGIN%3AVCALENDAR%0D%0AVERSION%3A2.0%0D%0APRODID%3A-//Within%20Ten//EN%0D%0ABEGIN%3AVEVENT%0D%0ADTSTART%3A20270127T094500%0D%0ADTEND%3A20270127T104500%0D%0ASUMMARY%3AFree%20Developmental%20Screenings%20CLONE%0D%0ADESCRIPTION%3AFree%20Developmental%20Screenings%20for%20Children%20Ages%20Birth%20to%2033%20Mon%0D%0AEND%3AVEVENT%0D%0AEND%3AVCALENDAR%0D%0A" download="event.ics">📅 Add to calendar</a>
           <a href="https://www.google.com/calendar/render?action=TEMPLATE&amp;text=Free+Developmental+Screenings+CLONE&amp;dates=20270127T094500%2F20270127T104500&amp;details=Free+Developmental+Screenings+for+Children+Ages+Birth+to+33+Mon&amp;location=Palatine" target="_blank" rel="noopener">Google Calendar</a>
         </div>
-        
       </article>
-      
-      <!-- id folds in date_iso so two occurrences of one recurring event
-           (item 141, same url) don't collide as one tray item - a real
-           bug confirmed with a headless-browser test before fixing
-           (ROADMAP.md item 146). -->
-      
       <article class="card" id="ev-free-developmental-screenings-2027-04-28" data-date-iso="2027-04-28T09:45:00">
         <button type="button" class="tray-star" data-item='{"date": "Apr 28", "date_iso": "2027-04-28T09:45:00", "detail": "Free Developmental Screenings for Children Ages Birth to 33 Mon", "id": "Free Developmental Screenings|2027-04-28T09:45:00", "region_name": "Palatine", "region_url": "https://withintenmiles.com/palatine-60067/", "title": "Free Developmental Screenings", "url": ""}' aria-pressed="false" aria-label="Add Free Developmental Screenings to My Weekend">☆</button>
-        
-        
-        <div class="date"><time datetime="2027-04-28T09:45:00">Wed, Apr 28 · 9:45 AM</time> · <span class="where">Palatine</span></div>
-        <h3>Free Developmental Screenings</h3>
-        
-        
-        <p class="detail">Free Developmental Screenings for Children Ages Birth to 33 Mon</p>
-        
-        <div class="tag-row">
-          <span class="tag-badge" style="background: var(--hue-green-bg); color: var(--hue-green-ink);">💵 Free</span><span class="tag-badge" style="background: var(--hue-pink-bg); color: var(--hue-pink-ink);">🧒 Kid-friendly</span>
-        </div>
-        
-        
+<div class="date"><time datetime="2027-04-28T09:45:00">Wed, Apr 28 · 9:45 AM</time> · <span class="where">Palatine</span></div>        <h3>Free Developmental Screenings</h3>
+<p class="detail">Free Developmental Screenings for Children Ages Birth to 33 Mon</p>        <div class="tag-row">
+<span class="tag-badge" style="background: var(--hue-green-bg); color: var(--hue-green-ink);">💵 Free</span><span class="tag-badge" style="background: var(--hue-pink-bg); color: var(--hue-pink-ink);">🧒 Kid-friendly</span>        </div>
         <div class="cal-row">
           <a href="data:text/calendar;charset=utf-8,BEGIN%3AVCALENDAR%0D%0AVERSION%3A2.0%0D%0APRODID%3A-//Within%20Ten//EN%0D%0ABEGIN%3AVEVENT%0D%0ADTSTART%3A20270428T094500%0D%0ADTEND%3A20270428T104500%0D%0ASUMMARY%3AFree%20Developmental%20Screenings%0D%0ADESCRIPTION%3AFree%20Developmental%20Screenings%20for%20Children%20Ages%20Birth%20to%2033%20Mon%0D%0AEND%3AVEVENT%0D%0AEND%3AVCALENDAR%0D%0A" download="event.ics">📅 Add to calendar</a>
           <a href="https://www.google.com/calendar/render?action=TEMPLATE&amp;text=Free+Developmental+Screenings&amp;dates=20270428T094500%2F20270428T104500&amp;details=Free+Developmental+Screenings+for+Children+Ages+Birth+to+33+Mon&amp;location=Palatine" target="_blank" rel="noopener">Google Calendar</a>
         </div>
-        
       </article>
-      
-      <!-- id folds in date_iso so two occurrences of one recurring event
-           (item 141, same url) don't collide as one tray item - a real
-           bug confirmed with a headless-browser test before fixing
-           (ROADMAP.md item 146). -->
-      
       <article class="card" id="ev-palatine-public-library-district" data-date-iso="">
         <button type="button" class="tray-star" data-item='{"date": null, "date_iso": null, "detail": "Story times, programs, and museum passes for Palatine residents.", "id": "https://www.palatinelibrary.org/", "region_name": "Palatine", "region_url": "https://withintenmiles.com/palatine-60067/", "title": "Palatine Public Library District", "url": "https://www.palatinelibrary.org/"}' aria-pressed="false" aria-label="Add Palatine Public Library District to My Weekend">☆</button>
-        
-        
-        
         <h3><a href="https://www.palatinelibrary.org/">Palatine Public Library District</a></h3>
-        
-        
-        <p class="detail">Story times, programs, and museum passes for Palatine residents.</p>
-        
-        <div class="tag-row">
-          <span class="tag-badge" style="background: var(--hue-blue-bg); color: var(--hue-blue-ink);">🏠 Indoor</span><span class="tag-badge" style="background: var(--hue-pink-bg); color: var(--hue-pink-ink);">🧒 Kid-friendly</span><span class="tag-badge" style="background: var(--hue-green-bg); color: var(--hue-green-ink);">💵 Free</span>
-        </div>
-        
-        
+<p class="detail">Story times, programs, and museum passes for Palatine residents.</p>        <div class="tag-row">
+<span class="tag-badge" style="background: var(--hue-blue-bg); color: var(--hue-blue-ink);">🏠 Indoor</span><span class="tag-badge" style="background: var(--hue-pink-bg); color: var(--hue-pink-ink);">🧒 Kid-friendly</span><span class="tag-badge" style="background: var(--hue-green-bg); color: var(--hue-green-ink);">💵 Free</span>        </div>
       </article>
-      
       </div>
     </section>
-    
     <section class="block">
       <h2>Wheeling <a class="region-link" href="https://withintenmiles.com/wheeling-60090/">Full region page &rarr;</a></h2>
       <div class="card-grid">
-      
-      <!-- id folds in date_iso so two occurrences of one recurring event
-           (item 141, same url) don't collide as one tray item - a real
-           bug confirmed with a headless-browser test before fixing
-           (ROADMAP.md item 146). -->
-      
       <article class="card" id="ev-introduction-to-tinkercad-2026-11-23" data-date-iso="2026-11-23T17:30:00">
         <button type="button" class="tray-star" data-item='{"date": "Nov 23", "date_iso": "2026-11-23T17:30:00", "detail": "Get started with TinkerCAD, a free 3D modeling program. Learn the basics of building with this easy-to-use\u2026", "id": "https://indiantrails.libnet.info/event/17428279|2026-11-23T17:30:00", "region_name": "Wheeling", "region_url": "https://withintenmiles.com/wheeling-60090/", "title": "Introduction to Tinkercad", "url": "https://indiantrails.libnet.info/event/17428279"}' aria-pressed="false" aria-label="Add Introduction to Tinkercad to My Weekend">☆</button>
-        
-        
-        <div class="date"><time datetime="2026-11-23T17:30:00">Mon, Nov 23 · 5:30 PM</time> · <span class="where">Wheeling</span></div>
-        <h3><a href="https://indiantrails.libnet.info/event/17428279">Introduction to Tinkercad</a></h3>
-        
-        
-        <p class="detail">Get started with TinkerCAD, a free 3D modeling program. Learn the basics of building with this easy-to-use…</p>
-        
-        <div class="tag-row">
-          <span class="tag-badge" style="background: var(--hue-green-bg); color: var(--hue-green-ink);">💵 Free</span><span class="tag-badge" style="background: var(--hue-blue-bg); color: var(--hue-blue-ink);">🏠 Indoor</span>
-        </div>
-        
-        
+<div class="date"><time datetime="2026-11-23T17:30:00">Mon, Nov 23 · 5:30 PM</time> · <span class="where">Wheeling</span></div>        <h3><a href="https://indiantrails.libnet.info/event/17428279">Introduction to Tinkercad</a></h3>
+<p class="detail">Get started with TinkerCAD, a free 3D modeling program. Learn the basics of building with this easy-to-use…</p>        <div class="tag-row">
+<span class="tag-badge" style="background: var(--hue-green-bg); color: var(--hue-green-ink);">💵 Free</span><span class="tag-badge" style="background: var(--hue-blue-bg); color: var(--hue-blue-ink);">🏠 Indoor</span>        </div>
         <div class="cal-row">
           <a href="data:text/calendar;charset=utf-8,BEGIN%3AVCALENDAR%0D%0AVERSION%3A2.0%0D%0APRODID%3A-//Within%20Ten//EN%0D%0ABEGIN%3AVEVENT%0D%0ADTSTART%3A20261123T173000%0D%0ADTEND%3A20261123T183000%0D%0ASUMMARY%3AIntroduction%20to%20Tinkercad%0D%0ADESCRIPTION%3AMonday%5C%2C%20November%2023%202026%205%3A30pm%20-%206%3A45pm%20%5Cn%20Get%20started%20with%20TinkerCAD%5C%2C%20a%20free%203D%20modeling%20program.%20Learn%20the%20basics%20of%20building%20with%20this%20easy-to-use%E2%80%A6%0D%0AURL%3Ahttps%3A//indiantrails.libnet.info/event/17428279%0D%0AEND%3AVEVENT%0D%0AEND%3AVCALENDAR%0D%0A" download="event.ics">📅 Add to calendar</a>
           <a href="https://www.google.com/calendar/render?action=TEMPLATE&amp;text=Introduction+to+Tinkercad&amp;dates=20261123T173000%2F20261123T183000&amp;details=Monday%2C+November+23+2026+5%3A30pm+-+6%3A45pm+%0A+Get+started+with+TinkerCAD%2C+a+free+3D+modeling+program.+Learn+the+basics+of+building+with+this+easy-to-use%E2%80%A6&amp;location=Wheeling" target="_blank" rel="noopener">Google Calendar</a>
         </div>
-        
       </article>
-      
-      <!-- id folds in date_iso so two occurrences of one recurring event
-           (item 141, same url) don't collide as one tray item - a real
-           bug confirmed with a headless-browser test before fixing
-           (ROADMAP.md item 146). -->
-      
       <article class="card" id="ev-google-sheets-2026-12-02" data-date-iso="2026-12-02T19:00:00">
         <button type="button" class="tray-star" data-item='{"date": "Dec 2", "date_iso": "2026-12-02T19:00:00", "detail": "Explore the free cloud-based Microsoft Excel alternative available to all who sign up with Gmail. A Google\u2026", "id": "https://indiantrails.libnet.info/event/17116313|2026-12-02T19:00:00", "region_name": "Wheeling", "region_url": "https://withintenmiles.com/wheeling-60090/", "title": "Google Sheets", "url": "https://indiantrails.libnet.info/event/17116313"}' aria-pressed="false" aria-label="Add Google Sheets to My Weekend">☆</button>
-        
-        
-        <div class="date"><time datetime="2026-12-02T19:00:00">Wed, Dec 2 · 7:00 PM</time> · <span class="where">Wheeling</span></div>
-        <h3><a href="https://indiantrails.libnet.info/event/17116313">Google Sheets</a></h3>
-        
-        
-        <p class="detail">Explore the free cloud-based Microsoft Excel alternative available to all who sign up with Gmail. A Google…</p>
-        
-        <div class="tag-row">
-          <span class="tag-badge" style="background: var(--hue-green-bg); color: var(--hue-green-ink);">💵 Free</span><span class="tag-badge" style="background: var(--hue-blue-bg); color: var(--hue-blue-ink);">🏠 Indoor</span>
-        </div>
-        
-        
+<div class="date"><time datetime="2026-12-02T19:00:00">Wed, Dec 2 · 7:00 PM</time> · <span class="where">Wheeling</span></div>        <h3><a href="https://indiantrails.libnet.info/event/17116313">Google Sheets</a></h3>
+<p class="detail">Explore the free cloud-based Microsoft Excel alternative available to all who sign up with Gmail. A Google…</p>        <div class="tag-row">
+<span class="tag-badge" style="background: var(--hue-green-bg); color: var(--hue-green-ink);">💵 Free</span><span class="tag-badge" style="background: var(--hue-blue-bg); color: var(--hue-blue-ink);">🏠 Indoor</span>        </div>
         <div class="cal-row">
           <a href="data:text/calendar;charset=utf-8,BEGIN%3AVCALENDAR%0D%0AVERSION%3A2.0%0D%0APRODID%3A-//Within%20Ten//EN%0D%0ABEGIN%3AVEVENT%0D%0ADTSTART%3A20261202T190000%0D%0ADTEND%3A20261202T200000%0D%0ASUMMARY%3AGoogle%20Sheets%0D%0ADESCRIPTION%3AWednesday%5C%2C%20December%2002%202026%207%3A00pm%20-%208%3A00pm%20%5Cn%20Explore%20the%20free%20cloud-based%20Microsoft%20Excel%20alternative%20available%20to%20all%20who%20sign%20up%20with%20Gmail.%20%5CnA%20Google%E2%80%A6%0D%0AURL%3Ahttps%3A//indiantrails.libnet.info/event/17116313%0D%0AEND%3AVEVENT%0D%0AEND%3AVCALENDAR%0D%0A" download="event.ics">📅 Add to calendar</a>
           <a href="https://www.google.com/calendar/render?action=TEMPLATE&amp;text=Google+Sheets&amp;dates=20261202T190000%2F20261202T200000&amp;details=Wednesday%2C+December+02+2026+7%3A00pm+-+8%3A00pm+%0A+Explore+the+free+cloud-based+Microsoft+Excel+alternative+available+to+all+who+sign+up+with+Gmail.+%0AA+Google%E2%80%A6&amp;location=Wheeling" target="_blank" rel="noopener">Google Calendar</a>
         </div>
-        
       </article>
-      
-      <!-- id folds in date_iso so two occurrences of one recurring event
-           (item 141, same url) don't collide as one tray item - a real
-           bug confirmed with a headless-browser test before fixing
-           (ROADMAP.md item 146). -->
-      
       <article class="card" id="ev-google-docs-2026-12-09" data-date-iso="2026-12-09T19:00:00">
         <button type="button" class="tray-star" data-item='{"date": "Dec 9", "date_iso": "2026-12-09T19:00:00", "detail": "Explore the free cloud-based Microsoft Word alternative available to all who sign up with Gmail. A Google\u2026", "id": "https://indiantrails.libnet.info/event/17116432|2026-12-09T19:00:00", "region_name": "Wheeling", "region_url": "https://withintenmiles.com/wheeling-60090/", "title": "Google Docs", "url": "https://indiantrails.libnet.info/event/17116432"}' aria-pressed="false" aria-label="Add Google Docs to My Weekend">☆</button>
-        
-        
-        <div class="date"><time datetime="2026-12-09T19:00:00">Wed, Dec 9 · 7:00 PM</time> · <span class="where">Wheeling</span></div>
-        <h3><a href="https://indiantrails.libnet.info/event/17116432">Google Docs</a></h3>
-        
-        
-        <p class="detail">Explore the free cloud-based Microsoft Word alternative available to all who sign up with Gmail. A Google…</p>
-        
-        <div class="tag-row">
-          <span class="tag-badge" style="background: var(--hue-green-bg); color: var(--hue-green-ink);">💵 Free</span><span class="tag-badge" style="background: var(--hue-blue-bg); color: var(--hue-blue-ink);">🏠 Indoor</span>
-        </div>
-        
-        
+<div class="date"><time datetime="2026-12-09T19:00:00">Wed, Dec 9 · 7:00 PM</time> · <span class="where">Wheeling</span></div>        <h3><a href="https://indiantrails.libnet.info/event/17116432">Google Docs</a></h3>
+<p class="detail">Explore the free cloud-based Microsoft Word alternative available to all who sign up with Gmail. A Google…</p>        <div class="tag-row">
+<span class="tag-badge" style="background: var(--hue-green-bg); color: var(--hue-green-ink);">💵 Free</span><span class="tag-badge" style="background: var(--hue-blue-bg); color: var(--hue-blue-ink);">🏠 Indoor</span>        </div>
         <div class="cal-row">
           <a href="data:text/calendar;charset=utf-8,BEGIN%3AVCALENDAR%0D%0AVERSION%3A2.0%0D%0APRODID%3A-//Within%20Ten//EN%0D%0ABEGIN%3AVEVENT%0D%0ADTSTART%3A20261209T190000%0D%0ADTEND%3A20261209T200000%0D%0ASUMMARY%3AGoogle%20Docs%0D%0ADESCRIPTION%3AWednesday%5C%2C%20December%2009%202026%207%3A00pm%20-%208%3A00pm%20%5Cn%20Explore%20the%20free%20cloud-based%20Microsoft%20Word%20alternative%20available%20to%20all%20who%20sign%20up%20with%20Gmail.%20%5CnA%20Google%E2%80%A6%0D%0AURL%3Ahttps%3A//indiantrails.libnet.info/event/17116432%0D%0AEND%3AVEVENT%0D%0AEND%3AVCALENDAR%0D%0A" download="event.ics">📅 Add to calendar</a>
           <a href="https://www.google.com/calendar/render?action=TEMPLATE&amp;text=Google+Docs&amp;dates=20261209T190000%2F20261209T200000&amp;details=Wednesday%2C+December+09+2026+7%3A00pm+-+8%3A00pm+%0A+Explore+the+free+cloud-based+Microsoft+Word+alternative+available+to+all+who+sign+up+with+Gmail.+%0AA+Google%E2%80%A6&amp;location=Wheeling" target="_blank" rel="noopener">Google Calendar</a>
         </div>
-        
       </article>
-      
-      <!-- id folds in date_iso so two occurrences of one recurring event
-           (item 141, same url) don't collide as one tray item - a real
-           bug confirmed with a headless-browser test before fixing
-           (ROADMAP.md item 146). -->
-      
       <article class="card" id="ev-indian-trails-public-library-district" data-date-iso="">
         <button type="button" class="tray-star" data-item='{"date": null, "date_iso": null, "detail": "355 Schoenbeck Rd. Serves Wheeling, Buffalo Grove, Prospect Heights, and part of Arlington Heights - makerspace, programs for all ages, and a branch location.", "id": "https://www.indiantrailslibrary.org/", "region_name": "Wheeling", "region_url": "https://withintenmiles.com/wheeling-60090/", "title": "Indian Trails Public Library District", "url": "https://www.indiantrailslibrary.org/"}' aria-pressed="false" aria-label="Add Indian Trails Public Library District to My Weekend">☆</button>
-        
-        
-        
         <h3><a href="https://www.indiantrailslibrary.org/">Indian Trails Public Library District</a></h3>
-        
-        
-        <p class="detail">355 Schoenbeck Rd. Serves Wheeling, Buffalo Grove, Prospect Heights, and part of Arlington Heights - makerspace, programs for all ages, and a branch location.</p>
-        
-        <div class="tag-row">
-          <span class="tag-badge" style="background: var(--hue-blue-bg); color: var(--hue-blue-ink);">🏠 Indoor</span><span class="tag-badge" style="background: var(--hue-pink-bg); color: var(--hue-pink-ink);">🧒 Kid-friendly</span><span class="tag-badge" style="background: var(--hue-green-bg); color: var(--hue-green-ink);">💵 Free</span>
-        </div>
-        
-        
+<p class="detail">355 Schoenbeck Rd. Serves Wheeling, Buffalo Grove, Prospect Heights, and part of Arlington Heights - makerspace, programs for all ages, and a branch location.</p>        <div class="tag-row">
+<span class="tag-badge" style="background: var(--hue-blue-bg); color: var(--hue-blue-ink);">🏠 Indoor</span><span class="tag-badge" style="background: var(--hue-pink-bg); color: var(--hue-pink-ink);">🧒 Kid-friendly</span><span class="tag-badge" style="background: var(--hue-green-bg); color: var(--hue-green-ink);">💵 Free</span>        </div>
       </article>
-      
       </div>
     </section>
-    
-  
-  
   <div class="newsletter" id="newsletter-signup">
   <form class="newsletter-form" action="https://buttondown.com/api/emails/embed-subscribe/withinten" method="post" target="bd-hidden-frame">
-    <input type="hidden" name="tag" value="town:all">
-    <input type="hidden" name="utm_source" value="site">
+<input type="hidden" name="tag" value="town:all">    <input type="hidden" name="utm_source" value="site">
     <input type="hidden" name="utm_campaign" value="free">
     <div class="newsletter-copy">
       <strong>Free things to do, every Thursday.</strong>
@@ -1292,9 +698,8 @@ document.querySelectorAll(".newsletter-form").forEach(function (f) {
     <a href="https://withintenmiles.com/sponsor/">See pricing &amp; availability</a>.
     <a href="https://withintenmiles.com/about/">About</a>.
     <a href="https://google.com/preferences/source?q=withintenmiles.com" rel="noopener">Add us as a preferred source on Google</a>.
-    <br>Generated 2026-10-17 01:54 UTC.
-    <br>Visits counted with privacy-first, cookie-free analytics — no personal data collected.
-  </footer>
+    <br>Generated 2026-10-17 02:03 UTC.
+<br>Visits counted with privacy-first, cookie-free analytics — no personal data collected.  </footer>
 </div>
 
 <div id="tray-widget" class="tray-widget" hidden>
@@ -1550,10 +955,7 @@ document.querySelectorAll(".newsletter-form").forEach(function (f) {
   }
 })();
 </script>
-
-
 <script>document.addEventListener("click",function(e){var a=e.target.closest&&e.target.closest("a[href^=http]");if(a&&a.hostname!==location.hostname&&window.goatcounter&&goatcounter.count)goatcounter.count({path:"out/"+a.hostname,event:true})})</script>
 <script data-goatcounter="https://withinten.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
-
 </body>
 </html>

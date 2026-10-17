@@ -24,10 +24,6 @@
 <link rel="apple-touch-icon" href="https://withintenmiles.com/icons/icon-192.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<!-- Non-render-blocking font load: paint with the fallback stack immediately,
-     swap to the web font once it's fetched, instead of blocking first paint
-     on a round trip to fonts.googleapis.com (real measured LCP impact on a
-     cold connection was ~300ms - see ROADMAP.md Phase 11 #26). -->
 <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;800&display=optional">
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;800&display=optional" rel="stylesheet" media="print" onload="this.media='all'">
 <noscript><link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;800&display=optional" rel="stylesheet"></noscript>
@@ -707,10 +703,6 @@
 </style>
 </head>
 <body>
-
-
-<!-- header, not div (ROADMAP.md Phase 11 #62, found by a real axe-core
-     audit): everything in the hero previously sat outside any landmark. -->
 <header class="hero">
   <div class="hero-inner">
     <a class="back" href="https://withintenmiles.com/">&larr; All regions</a>
@@ -734,462 +726,135 @@
     <a href="https://withintenmiles.com/wheeling-60090/this-weekend/">This weekend</a>
     <a href="https://withintenmiles.com/wheeling-60090/today/">Today</a>
     <a href="https://withintenmiles.com/wheeling-60090/free/">Free</a>
-    <a href="https://withintenmiles.com/wheeling-60090/guides/">Guides</a>
-    <a href="https://withintenmiles.com/wheeling-60090/things-to-do/" class="active">Things to Do</a>
-    <a href="https://withintenmiles.com/wheeling-60090/directory/">Directory</a>
-  </nav>
+<a href="https://withintenmiles.com/wheeling-60090/guides/">Guides</a><a href="https://withintenmiles.com/wheeling-60090/things-to-do/" class="active">Things to Do</a><a href="https://withintenmiles.com/wheeling-60090/directory/">Directory</a>  </nav>
 
-  
 
-  
 
-  
-  
-  
 
   <p class="freshness-note">Updated automatically — last checked Friday, October 16.</p>
 
-  
 
-  
 
-  
 
   <div class="sponsor">
-    
     <div class="label">Sponsor This Spot</div>
     <h2>Sponsor this spot</h2>
     <p>Reach local families every week. Local businesses only — see pricing and availability. <a href="https://withintenmiles.com/sponsor/">Learn more &rarr;</a></p>
-    
   </div>
 
-  
   <div class="filter-bar" role="group" aria-label="Filter events">
-    
     <button type="button" class="filter-chip" data-tag="free" aria-pressed="false">
       <span aria-hidden="true">💵</span>Free
     </button>
-    
     <button type="button" class="filter-chip" data-tag="indoor" aria-pressed="false">
       <span aria-hidden="true">🏠</span>Indoor
     </button>
-    
     <button type="button" class="filter-chip" data-tag="kid_friendly" aria-pressed="false">
       <span aria-hidden="true">🧒</span>Kid-friendly
     </button>
-    
     <button type="button" class="filter-chip" data-tag="outdoor" aria-pressed="false">
       <span aria-hidden="true">🌳</span>Outdoor
     </button>
-    
     <button type="button" class="filter-chip clear" id="clear-filters">Clear filters</button>
   </div>
   <div class="sr-only" id="filter-status" aria-live="polite"></div>
-  
 
-  
 
-  
 
-  
-  
-  
-  
-  
-    
-    
     <section class="block">
       <h2>Things to Do</h2>
-      
         <div class="card-grid">
-        
-        <!-- id folds in date_iso - see the Editor's Pick tray_item above
-             for why (ROADMAP.md item 146). -->
-        
-        
         <article class="card" id="ev-indian-trails-public-library-district" data-tags="indoor,kid_friendly,free" data-date-iso="">
-          
-          <!-- ROADMAP.md Phase 11 #63: My Weekend is for dated events -
-               offering to add "Find your school district" or a guide's
-               own title to it made no sense, since guide items and the
-               guide index have nothing to do with weekend planning.
-               #90: nor does a school half-day belong in it - it's real
-               and worth knowing, but nobody plans a weekend around one. -->
           <button type="button" class="tray-star" data-item='{"date": null, "date_iso": null, "detail": "355 Schoenbeck Rd. Serves Wheeling, Buffalo Grove, Prospect Heights, and part of Arlington Heights - makerspace, programs for all ages, and a branch location.", "id": "https://www.indiantrailslibrary.org/", "region_name": "Wheeling", "region_url": "https://withintenmiles.com/wheeling-60090/", "title": "Indian Trails Public Library District", "url": "https://www.indiantrailslibrary.org/"}' aria-pressed="false" aria-label="Add Indian Trails Public Library District to My Weekend">☆</button>
-          
-          
-          
-          
-          
           <h3><a href="https://www.indiantrailslibrary.org/">Indian Trails Public Library District</a></h3>
-          
-          
-        <p class="detail">355 Schoenbeck Rd. Serves Wheeling, Buffalo Grove, Prospect Heights, and part of Arlington Heights - makerspace, programs for all ages, and a branch location.</p>
-          
-          <div class="tag-row">
-            <span class="tag-badge" style="background: var(--hue-blue-bg); color: var(--hue-blue-ink);">🏠 Indoor</span><span class="tag-badge" style="background: var(--hue-pink-bg); color: var(--hue-pink-ink);">🧒 Kid-friendly</span><span class="tag-badge" style="background: var(--hue-green-bg); color: var(--hue-green-ink);">💵 Free</span>
-          </div>
-          
-          
+<p class="detail">355 Schoenbeck Rd. Serves Wheeling, Buffalo Grove, Prospect Heights, and part of Arlington Heights - makerspace, programs for all ages, and a branch location.</p>          <div class="tag-row">
+<span class="tag-badge" style="background: var(--hue-blue-bg); color: var(--hue-blue-ink);">🏠 Indoor</span><span class="tag-badge" style="background: var(--hue-pink-bg); color: var(--hue-pink-ink);">🧒 Kid-friendly</span><span class="tag-badge" style="background: var(--hue-green-bg); color: var(--hue-green-ink);">💵 Free</span>          </div>
         </article>
-        
-        <!-- id folds in date_iso - see the Editor's Pick tray_item above
-             for why (ROADMAP.md item 146). -->
-        
-        
         <article class="card" id="ev-wheeling-park-district" data-tags="outdoor,kid_friendly" data-date-iso="">
-          
-          <!-- ROADMAP.md Phase 11 #63: My Weekend is for dated events -
-               offering to add "Find your school district" or a guide's
-               own title to it made no sense, since guide items and the
-               guide index have nothing to do with weekend planning.
-               #90: nor does a school half-day belong in it - it's real
-               and worth knowing, but nobody plans a weekend around one. -->
           <button type="button" class="tray-star" data-item='{"date": null, "date_iso": null, "detail": "Parks, pools, and Heritage Park\u0027s performance pavilion across the village.", "id": "https://www.wheelingparkdistrict.com/", "region_name": "Wheeling", "region_url": "https://withintenmiles.com/wheeling-60090/", "title": "Wheeling Park District", "url": "https://www.wheelingparkdistrict.com/"}' aria-pressed="false" aria-label="Add Wheeling Park District to My Weekend">☆</button>
-          
-          
-          
-          
-          
           <h3><a href="https://www.wheelingparkdistrict.com/">Wheeling Park District</a></h3>
-          
-          
-        <p class="detail">Parks, pools, and Heritage Park&#39;s performance pavilion across the village.</p>
-          
-          <div class="tag-row">
-            <span class="tag-badge" style="background: var(--hue-teal-bg); color: var(--hue-teal-ink);">🌳 Outdoor</span><span class="tag-badge" style="background: var(--hue-pink-bg); color: var(--hue-pink-ink);">🧒 Kid-friendly</span>
-          </div>
-          
-          
+<p class="detail">Parks, pools, and Heritage Park&#39;s performance pavilion across the village.</p>          <div class="tag-row">
+<span class="tag-badge" style="background: var(--hue-teal-bg); color: var(--hue-teal-ink);">🌳 Outdoor</span><span class="tag-badge" style="background: var(--hue-pink-bg); color: var(--hue-pink-ink);">🧒 Kid-friendly</span>          </div>
         </article>
-        
-        <!-- id folds in date_iso - see the Editor's Pick tray_item above
-             for why (ROADMAP.md item 146). -->
-        
-        
         <article class="card" id="ev-village-of-wheeling" data-tags="" data-date-iso="">
-          
-          <!-- ROADMAP.md Phase 11 #63: My Weekend is for dated events -
-               offering to add "Find your school district" or a guide's
-               own title to it made no sense, since guide items and the
-               guide index have nothing to do with weekend planning.
-               #90: nor does a school half-day belong in it - it's real
-               and worth knowing, but nobody plans a weekend around one. -->
           <button type="button" class="tray-star" data-item='{"date": null, "date_iso": null, "detail": "Village board meetings, permits, and community announcements.", "id": "https://www.wheelingil.gov/", "region_name": "Wheeling", "region_url": "https://withintenmiles.com/wheeling-60090/", "title": "Village of Wheeling", "url": "https://www.wheelingil.gov/"}' aria-pressed="false" aria-label="Add Village of Wheeling to My Weekend">☆</button>
-          
-          
-          
-          
-          
           <h3><a href="https://www.wheelingil.gov/">Village of Wheeling</a></h3>
-          
-          
-        <p class="detail">Village board meetings, permits, and community announcements.</p>
-          
-          
-        </article>
-        
-        <!-- id folds in date_iso - see the Editor's Pick tray_item above
-             for why (ROADMAP.md item 146). -->
-        
-        
+<p class="detail">Village board meetings, permits, and community announcements.</p>        </article>
         <article class="card" id="ev-wheeling-high-school-athletics" data-tags="" data-date-iso="">
-          
-          <!-- ROADMAP.md Phase 11 #63: My Weekend is for dated events -
-               offering to add "Find your school district" or a guide's
-               own title to it made no sense, since guide items and the
-               guide index have nothing to do with weekend planning.
-               #90: nor does a school half-day belong in it - it's real
-               and worth knowing, but nobody plans a weekend around one. -->
           <button type="button" class="tray-star" data-item='{"date": null, "date_iso": null, "detail": "Wildcats varsity \u0026 JV schedules, rosters, and ticket info. This site doesn\u0027t have a licensed schedule feed for game dates, so this links to the school\u0027s own athletics page instead.", "id": "https://www.d214.org/o/whs/page/athletics", "region_name": "Wheeling", "region_url": "https://withintenmiles.com/wheeling-60090/", "title": "Wheeling High School Athletics", "url": "https://www.d214.org/o/whs/page/athletics"}' aria-pressed="false" aria-label="Add Wheeling High School Athletics to My Weekend">☆</button>
-          
-          
-          
-          
-          
           <h3><a href="https://www.d214.org/o/whs/page/athletics">Wheeling High School Athletics</a></h3>
-          
-          
-        <p class="detail">Wildcats varsity &amp; JV schedules, rosters, and ticket info. This site doesn&#39;t have a licensed schedule feed for game dates, so this links to the school&#39;s own athletics page instead.</p>
-          
-          
-        </article>
-        
-        <!-- id folds in date_iso - see the Editor's Pick tray_item above
-             for why (ROADMAP.md item 146). -->
-        
-        
+<p class="detail">Wildcats varsity &amp; JV schedules, rosters, and ticket info. This site doesn&#39;t have a licensed schedule feed for game dates, so this links to the school&#39;s own athletics page instead.</p>        </article>
         <article class="card" id="ev-fall-programs-indian-trails-public-library" data-tags="indoor,kid_friendly,free" data-date-iso="">
-          
-          <!-- ROADMAP.md Phase 11 #63: My Weekend is for dated events -
-               offering to add "Find your school district" or a guide's
-               own title to it made no sense, since guide items and the
-               guide index have nothing to do with weekend planning.
-               #90: nor does a school half-day belong in it - it's real
-               and worth knowing, but nobody plans a weekend around one. -->
           <button type="button" class="tray-star" data-item='{"date": null, "date_iso": null, "detail": "Seasonal makerspace classes, storytimes, and programs for all ages \u2014 a solid pick for a rainy fall Saturday.", "id": "https://www.indiantrailslibrary.org/events/", "region_name": "Wheeling", "region_url": "https://withintenmiles.com/wheeling-60090/", "title": "Fall programs \u2014 Indian Trails Public Library", "url": "https://www.indiantrailslibrary.org/events/"}' aria-pressed="false" aria-label="Add Fall programs — Indian Trails Public Library to My Weekend">☆</button>
-          
-          
-          
-          
-          
           <h3><a href="https://www.indiantrailslibrary.org/events/">Fall programs — Indian Trails Public Library</a></h3>
-          
-          
-        <p class="detail">Seasonal makerspace classes, storytimes, and programs for all ages — a solid pick for a rainy fall Saturday.</p>
-          
-          <div class="tag-row">
-            <span class="tag-badge" style="background: var(--hue-blue-bg); color: var(--hue-blue-ink);">🏠 Indoor</span><span class="tag-badge" style="background: var(--hue-pink-bg); color: var(--hue-pink-ink);">🧒 Kid-friendly</span><span class="tag-badge" style="background: var(--hue-green-bg); color: var(--hue-green-ink);">💵 Free</span>
-          </div>
-          
-          
+<p class="detail">Seasonal makerspace classes, storytimes, and programs for all ages — a solid pick for a rainy fall Saturday.</p>          <div class="tag-row">
+<span class="tag-badge" style="background: var(--hue-blue-bg); color: var(--hue-blue-ink);">🏠 Indoor</span><span class="tag-badge" style="background: var(--hue-pink-bg); color: var(--hue-pink-ink);">🧒 Kid-friendly</span><span class="tag-badge" style="background: var(--hue-green-bg); color: var(--hue-green-ink);">💵 Free</span>          </div>
         </article>
-        
-        <!-- id folds in date_iso - see the Editor's Pick tray_item above
-             for why (ROADMAP.md item 146). -->
-        
-        
         <article class="card" id="ev-official-trick-or-treat-hours-all-five-towns" data-tags="kid_friendly,free" data-date-iso="">
-          
-          <!-- ROADMAP.md Phase 11 #63: My Weekend is for dated events -
-               offering to add "Find your school district" or a guide's
-               own title to it made no sense, since guide items and the
-               guide index have nothing to do with weekend planning.
-               #90: nor does a school half-day belong in it - it's real
-               and worth knowing, but nobody plans a weekend around one. -->
           <button type="button" class="tray-star" data-item='{"date": null, "date_iso": null, "detail": "Trick-or-treat hours for Mount Prospect, Arlington Heights, Des Plaines, Palatine, and Wheeling in one place, each linked to the village page it came from.", "id": "https://withintenmiles.com/trick-or-treat/", "region_name": "Wheeling", "region_url": "https://withintenmiles.com/wheeling-60090/", "title": "Official trick-or-treat hours \u2014 all five towns", "url": "https://withintenmiles.com/trick-or-treat/"}' aria-pressed="false" aria-label="Add Official trick-or-treat hours — all five towns to My Weekend">☆</button>
-          
-          
-          
-          
-          
           <h3><a href="https://withintenmiles.com/trick-or-treat/">Official trick-or-treat hours — all five towns</a></h3>
-          
-          
-        <p class="detail">Trick-or-treat hours for Mount Prospect, Arlington Heights, Des Plaines, Palatine, and Wheeling in one place, each linked to the village page it came from.</p>
-          
-          <div class="tag-row">
-            <span class="tag-badge" style="background: var(--hue-pink-bg); color: var(--hue-pink-ink);">🧒 Kid-friendly</span><span class="tag-badge" style="background: var(--hue-green-bg); color: var(--hue-green-ink);">💵 Free</span>
-          </div>
-          
-          
+<p class="detail">Trick-or-treat hours for Mount Prospect, Arlington Heights, Des Plaines, Palatine, and Wheeling in one place, each linked to the village page it came from.</p>          <div class="tag-row">
+<span class="tag-badge" style="background: var(--hue-pink-bg); color: var(--hue-pink-ink);">🧒 Kid-friendly</span><span class="tag-badge" style="background: var(--hue-green-bg); color: var(--hue-green-ink);">💵 Free</span>          </div>
         </article>
-        
-        <!-- id folds in date_iso - see the Editor's Pick tray_item above
-             for why (ROADMAP.md item 146). -->
-        
-        
         <article class="card" id="ev-birthday-parties-rentals-wheeling-park-district" data-tags="kid_friendly" data-date-iso="">
-          
-          <!-- ROADMAP.md Phase 11 #63: My Weekend is for dated events -
-               offering to add "Find your school district" or a guide's
-               own title to it made no sense, since guide items and the
-               guide index have nothing to do with weekend planning.
-               #90: nor does a school half-day belong in it - it's real
-               and worth knowing, but nobody plans a weekend around one. -->
           <button type="button" class="tray-star" data-item='{"date": null, "date_iso": null, "detail": "Pool parties, gym space, and themed party packages through the Park District \u2014 check current pricing, room availability, and booking windows.", "id": "https://www.wheelingparkdistrict.com/registration/", "region_name": "Wheeling", "region_url": "https://withintenmiles.com/wheeling-60090/", "title": "Birthday parties \u0026 rentals \u2014 Wheeling Park District", "url": "https://www.wheelingparkdistrict.com/registration/"}' aria-pressed="false" aria-label="Add Birthday parties &amp; rentals — Wheeling Park District to My Weekend">☆</button>
-          
-          
-          
-          
-          
           <h3><a href="https://www.wheelingparkdistrict.com/registration/">Birthday parties &amp; rentals — Wheeling Park District</a></h3>
-          
-          
-        <p class="detail">Pool parties, gym space, and themed party packages through the Park District — check current pricing, room availability, and booking windows.</p>
-          
-          <div class="tag-row">
-            <span class="tag-badge" style="background: var(--hue-pink-bg); color: var(--hue-pink-ink);">🧒 Kid-friendly</span>
-          </div>
-          
-          
+<p class="detail">Pool parties, gym space, and themed party packages through the Park District — check current pricing, room availability, and booking windows.</p>          <div class="tag-row">
+<span class="tag-badge" style="background: var(--hue-pink-bg); color: var(--hue-pink-ink);">🧒 Kid-friendly</span>          </div>
         </article>
-        
-        <!-- id folds in date_iso - see the Editor's Pick tray_item above
-             for why (ROADMAP.md item 146). -->
-        
-        
         <article class="card" id="ev-local-party-venues-entertainers-tutoring-centers" data-tags="kid_friendly" data-date-iso="">
-          
-          <!-- ROADMAP.md Phase 11 #63: My Weekend is for dated events -
-               offering to add "Find your school district" or a guide's
-               own title to it made no sense, since guide items and the
-               guide index have nothing to do with weekend planning.
-               #90: nor does a school half-day belong in it - it's real
-               and worth knowing, but nobody plans a weekend around one. -->
           <button type="button" class="tray-star" data-item='{"date": null, "date_iso": null, "detail": "Private businesses appear here as they join the local directory \u2014 see what\u0027s currently listed.", "id": "https://withintenmiles.com/wheeling-60090/directory/", "region_name": "Wheeling", "region_url": "https://withintenmiles.com/wheeling-60090/", "title": "Local party venues, entertainers \u0026 tutoring centers", "url": "https://withintenmiles.com/wheeling-60090/directory/"}' aria-pressed="false" aria-label="Add Local party venues, entertainers &amp; tutoring centers to My Weekend">☆</button>
-          
-          
-          
-          
-          
           <h3><a href="https://withintenmiles.com/wheeling-60090/directory/">Local party venues, entertainers &amp; tutoring centers</a></h3>
-          
-          
-        <p class="detail">Private businesses appear here as they join the local directory — see what&#39;s currently listed.</p>
-          
-          <div class="tag-row">
-            <span class="tag-badge" style="background: var(--hue-pink-bg); color: var(--hue-pink-ink);">🧒 Kid-friendly</span>
-          </div>
-          
-          
+<p class="detail">Private businesses appear here as they join the local directory — see what&#39;s currently listed.</p>          <div class="tag-row">
+<span class="tag-badge" style="background: var(--hue-pink-bg); color: var(--hue-pink-ink);">🧒 Kid-friendly</span>          </div>
         </article>
-        
-        <!-- id folds in date_iso - see the Editor's Pick tray_item above
-             for why (ROADMAP.md item 146). -->
-        
-        
         <article class="card" id="ev-village-services-utilities-refuse-recycling" data-tags="" data-date-iso="">
-          
-          <!-- ROADMAP.md Phase 11 #63: My Weekend is for dated events -
-               offering to add "Find your school district" or a guide's
-               own title to it made no sense, since guide items and the
-               guide index have nothing to do with weekend planning.
-               #90: nor does a school half-day belong in it - it's real
-               and worth knowing, but nobody plans a weekend around one. -->
           <button type="button" class="tray-star" data-item='{"date": null, "date_iso": null, "detail": "Water and sewer are billed by the Village every two months. Refuse, recycling, and yard waste go out together weekly via Waste Management under the Village\u0027s current five-year contract (through May 2029) - each household gets one 96-gallon refuse cart and one 64-gallon recycling cart. Utility billing questions: 847-499-9016.", "id": "https://www.wheelingil.gov/332/Refuse-Recycling-Yard-Waste", "region_name": "Wheeling", "region_url": "https://withintenmiles.com/wheeling-60090/", "title": "Village services, utilities, refuse \u0026 recycling", "url": "https://www.wheelingil.gov/332/Refuse-Recycling-Yard-Waste"}' aria-pressed="false" aria-label="Add Village services, utilities, refuse &amp; recycling to My Weekend">☆</button>
-          
-          
-          
-          
-          
           <h3><a href="https://www.wheelingil.gov/332/Refuse-Recycling-Yard-Waste">Village services, utilities, refuse &amp; recycling</a></h3>
-          
-          
-        <p class="detail">Water and sewer are billed by the Village every two months. Refuse, recycling, and yard waste go out together weekly via Waste Management under the Village&#39;s current five-year contract (through May 2029) - each household gets one 96-gallon refuse cart and one 64-gallon recycling cart. Utility billing questions: 847-499-9016.</p>
-          
-          
-        </article>
-        
-        <!-- id folds in date_iso - see the Editor's Pick tray_item above
-             for why (ROADMAP.md item 146). -->
-        
-        
+<p class="detail">Water and sewer are billed by the Village every two months. Refuse, recycling, and yard waste go out together weekly via Waste Management under the Village&#39;s current five-year contract (through May 2029) - each household gets one 96-gallon refuse cart and one 64-gallon recycling cart. Utility billing questions: 847-499-9016.</p>        </article>
         <article class="card" id="ev-get-an-indian-trails-public-library-card" data-tags="indoor,kid_friendly,free" data-date-iso="">
-          
-          <!-- ROADMAP.md Phase 11 #63: My Weekend is for dated events -
-               offering to add "Find your school district" or a guide's
-               own title to it made no sense, since guide items and the
-               guide index have nothing to do with weekend planning.
-               #90: nor does a school half-day belong in it - it's real
-               and worth knowing, but nobody plans a weekend around one. -->
           <button type="button" class="tray-star" data-item='{"date": null, "date_iso": null, "detail": "Register online for a temporary 30-day digital card (barcode emailed within 48 hours), then bring photo ID to the Circulation Desk at 355 Schoenbeck Rd. for a permanent one - or register in person from the start. Serves Wheeling, Buffalo Grove, Prospect Heights, and part of Arlington Heights.", "id": "https://www.indiantrailslibrary.org/register-online-for-your-library-card/", "region_name": "Wheeling", "region_url": "https://withintenmiles.com/wheeling-60090/", "title": "Get an Indian Trails Public Library card", "url": "https://www.indiantrailslibrary.org/register-online-for-your-library-card/"}' aria-pressed="false" aria-label="Add Get an Indian Trails Public Library card to My Weekend">☆</button>
-          
-          
-          
-          
-          
           <h3><a href="https://www.indiantrailslibrary.org/register-online-for-your-library-card/">Get an Indian Trails Public Library card</a></h3>
-          
-          
-        <p class="detail">Register online for a temporary 30-day digital card (barcode emailed within 48 hours), then bring photo ID to the Circulation Desk at 355 Schoenbeck Rd. for a permanent one - or register in person from the start. Serves Wheeling, Buffalo Grove, Prospect Heights, and part of Arlington Heights.</p>
-          
-          <div class="tag-row">
-            <span class="tag-badge" style="background: var(--hue-blue-bg); color: var(--hue-blue-ink);">🏠 Indoor</span><span class="tag-badge" style="background: var(--hue-pink-bg); color: var(--hue-pink-ink);">🧒 Kid-friendly</span><span class="tag-badge" style="background: var(--hue-green-bg); color: var(--hue-green-ink);">💵 Free</span>
-          </div>
-          
-          
+<p class="detail">Register online for a temporary 30-day digital card (barcode emailed within 48 hours), then bring photo ID to the Circulation Desk at 355 Schoenbeck Rd. for a permanent one - or register in person from the start. Serves Wheeling, Buffalo Grove, Prospect Heights, and part of Arlington Heights.</p>          <div class="tag-row">
+<span class="tag-badge" style="background: var(--hue-blue-bg); color: var(--hue-blue-ink);">🏠 Indoor</span><span class="tag-badge" style="background: var(--hue-pink-bg); color: var(--hue-pink-ink);">🧒 Kid-friendly</span><span class="tag-badge" style="background: var(--hue-green-bg); color: var(--hue-green-ink);">💵 Free</span>          </div>
         </article>
-        
-        <!-- id folds in date_iso - see the Editor's Pick tray_item above
-             for why (ROADMAP.md item 146). -->
-        
-        
         <article class="card" id="ev-wheeling-community-consolidated-school-district-21-elementar" data-tags="" data-date-iso="">
-          
-          <!-- ROADMAP.md Phase 11 #63: My Weekend is for dated events -
-               offering to add "Find your school district" or a guide's
-               own title to it made no sense, since guide items and the
-               guide index have nothing to do with weekend planning.
-               #90: nor does a school half-day belong in it - it's real
-               and worth knowing, but nobody plans a weekend around one. -->
-          <button type="button" class="tray-star" data-item='{"date": null, "date_iso": null, "detail": "Covers most of Wheeling plus parts of Buffalo Grove, Arlington Heights, Mount Prospect, and Prospect Heights - but the Lake County portion of Wheeling falls under Aptakisic-Tripp CCSD 102 instead, so confirm your specific address rather than assuming. District office: 847-537-8270.", "id": "https://ccsd21.org/parent-resources/calendars/", "region_name": "Wheeling", "region_url": "https://withintenmiles.com/wheeling-60090/", "title": "Wheeling Community Consolidated School District 21 (elementary \u0026 middle school)", "url": "https://ccsd21.org/parent-resources/calendars/"}' aria-pressed="false" aria-label="Add Wheeling Community Consolidated School District 21 (elementary &amp; middle school) to My Weekend">☆</button>
-          
-          
-          
-          
-          
+          <button type="button" class="tray-star" data-item='{"date": null, "date_iso": null, "detail": "Covers most of Wheeling plus parts of Buffalo Grove, Arlington Heights, Mount Prospect, and Prospect Heights - but the Lake County portion of Wheeling falls under Aptakisic-Tripp CCSD 102 instead, so confirm your specific address rather than assuming. District office: 847-537-8270.", "id": "https://ccsd21.org/parent-resources/calendars/", "region_name": "Wheeling", "region_url": "https://withintenmiles.com/wheeling-60090/", "title": "Wheeling Community Consolidated School District 21 (elementary \u0026 middle school)", "url": "https://ccsd21.org/parent-resources/calendars/"}' aria-pressed="false" aria-label="Add Wheeling Community Consolidated School District 21 (elementary &amp; midd… to My Weekend">☆</button>
           <h3><a href="https://ccsd21.org/parent-resources/calendars/">Wheeling Community Consolidated School District 21 (elementary &amp; middle school)</a></h3>
-          
-          
-        <p class="detail">Covers most of Wheeling plus parts of Buffalo Grove, Arlington Heights, Mount Prospect, and Prospect Heights - but the Lake County portion of Wheeling falls under Aptakisic-Tripp CCSD 102 instead, so confirm your specific address rather than assuming. District office: 847-537-8270.</p>
-          
-          
-        </article>
-        
-        <!-- id folds in date_iso - see the Editor's Pick tray_item above
-             for why (ROADMAP.md item 146). -->
-        
-        
+<p class="detail">Covers most of Wheeling plus parts of Buffalo Grove, Arlington Heights, Mount Prospect, and Prospect Heights - but the Lake County portion of Wheeling falls under Aptakisic-Tripp CCSD 102 instead, so confirm your specific address rather than assuming. District office: 847-537-8270.</p>        </article>
         <article class="card" id="ev-township-high-school-district-214-high-school" data-tags="" data-date-iso="">
-          
-          <!-- ROADMAP.md Phase 11 #63: My Weekend is for dated events -
-               offering to add "Find your school district" or a guide's
-               own title to it made no sense, since guide items and the
-               guide index have nothing to do with weekend planning.
-               #90: nor does a school half-day belong in it - it's real
-               and worth knowing, but nobody plans a weekend around one. -->
           <button type="button" class="tray-star" data-item='{"date": null, "date_iso": null, "detail": "Wheeling High School, part of District 214 - the same district that serves Mount Prospect\u0027s Prospect High School and several other neighboring towns \u2014 confirm by address rather than assuming.", "id": "https://www.d214.org/", "region_name": "Wheeling", "region_url": "https://withintenmiles.com/wheeling-60090/", "title": "Township High School District 214 (high school)", "url": "https://www.d214.org/"}' aria-pressed="false" aria-label="Add Township High School District 214 (high school) to My Weekend">☆</button>
-          
-          
-          
-          
-          
           <h3><a href="https://www.d214.org/">Township High School District 214 (high school)</a></h3>
-          
-          
-        <p class="detail">Wheeling High School, part of District 214 - the same district that serves Mount Prospect&#39;s Prospect High School and several other neighboring towns — confirm by address rather than assuming.</p>
-          
-          
-        </article>
-        
+<p class="detail">Wheeling High School, part of District 214 - the same district that serves Mount Prospect&#39;s Prospect High School and several other neighboring towns — confirm by address rather than assuming.</p>        </article>
         </div>
-      
     </section>
-    
-  
-
-  
-  
-
 
   
 
-  
   <section class="faq">
     <h2>Frequently asked questions</h2>
-    
     <details class="faq-item">
       <summary>How current is this guide?</summary>
       <p>It's regenerated automatically from the village, library, and park district's own listings, typically several times a week - not a one-time write-up that goes stale.</p>
     </details>
-    
     <details class="faq-item">
       <summary>Is this every event or business, or just what&#39;s listed here?</summary>
       <p>Only what the linked public sources publish. For full details, hours, or anything not listed here, check the official page each item links to.</p>
     </details>
-    
     <details class="faq-item">
       <summary>How do I see what&#39;s happening in Wheeling this specific weekend?</summary>
       <p>See the <a href="https://withintenmiles.com/wheeling-60090/this-weekend/">weekend view</a>, which only shows items with a known date in the coming Friday-Sunday.</p>
     </details>
-    
     <details class="faq-item">
       <summary>Can I add an event, or suggest a business for the directory?</summary>
       <p>Yes - <a href="https://github.com/randerson-23/agent-business/issues/new?template=event-submission.yml">submit an event</a> and a person reviews it before it goes live, or a business owner can <a href="https://withintenmiles.com/sponsor/">inquire about a listing</a>.</p>
     </details>
-    
   </section>
-  
 
-  
 
-  
-  
   <div class="newsletter" id="newsletter-signup">
   <form class="newsletter-form" action="https://buttondown.com/api/emails/embed-subscribe/withinten" method="post" target="bd-hidden-frame">
-    <input type="hidden" name="tag" value="town:wheeling-60090">
-    <input type="hidden" name="utm_source" value="site">
+<input type="hidden" name="tag" value="town:wheeling-60090">    <input type="hidden" name="utm_source" value="site">
     <input type="hidden" name="utm_campaign" value="region">
     <div class="newsletter-copy">
       <strong>Get it in your inbox</strong>
@@ -1208,7 +873,6 @@
     <p class="newsletter-note">Not there in two minutes? Check Spam or Promotions for a message from Within Ten via Buttondown.</p>
   </div>
 </div>
-  
   <iframe name="bd-hidden-frame" title="Newsletter signup" style="display:none" aria-hidden="true"></iframe>
 <script>
 var WM = [["Open Gmail", "https://mail.google.com/mail/u/0/#search/from%3Abuttondown", ["gmail.com", "googlemail.com"]], ["Open Yahoo Mail", "https://mail.yahoo.com/", ["yahoo.com", "ymail.com"]], ["Open AOL Mail", "https://mail.aol.com/", ["aol.com"]], ["Open Outlook", "https://outlook.live.com/mail/0/", ["outlook.com", "hotmail.com", "live.com", "msn.com"]], ["Open iCloud Mail", "https://www.icloud.com/mail/", ["icloud.com", "me.com", "mac.com"]]];
@@ -1232,13 +896,8 @@ document.querySelectorAll(".newsletter-form").forEach(function (f) {
     <a href="https://withintenmiles.com/sponsor/">sponsor page</a>.
     <a href="https://withintenmiles.com/about/">About</a>.
     <a href="https://google.com/preferences/source?q=withintenmiles.com" rel="noopener">Add us as a preferred source on Google</a>.
-    <a href="https://withintenmiles.com/trick-or-treat/">Trick-or-treat hours</a>.
-    
-    
-    
-    <br>Generated 2026-10-17 01:54 UTC.
-    <br>Visits counted with privacy-first, cookie-free analytics — no personal data collected.
-    <br><a href="https://withintenmiles.com/wheeling-60090/weekly-summary.txt">Copy this week's summary</a> — a plain-text block ready to paste into a local group.
+<a href="https://withintenmiles.com/trick-or-treat/">Trick-or-treat hours</a>.    <br>Generated 2026-10-17 02:03 UTC.
+<br>Visits counted with privacy-first, cookie-free analytics — no personal data collected.    <br><a href="https://withintenmiles.com/wheeling-60090/weekly-summary.txt">Copy this week's summary</a> — a plain-text block ready to paste into a local group.
   </footer>
 </div>
 
@@ -1258,11 +917,8 @@ document.querySelectorAll(".newsletter-form").forEach(function (f) {
   </div>
 </div>
 
-
-
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "How current is this guide?", "acceptedAnswer": {"@type": "Answer", "text": "It's regenerated automatically from the village, library, and park district's own listings, typically several times a week - not a one-time write-up that goes stale."}}, {"@type": "Question", "name": "Is this every event or business, or just what's listed here?", "acceptedAnswer": {"@type": "Answer", "text": "Only what the linked public sources publish. For full details, hours, or anything not listed here, check the official page each item links to."}}, {"@type": "Question", "name": "How do I see what's happening in Wheeling this specific weekend?", "acceptedAnswer": {"@type": "Answer", "text": "See the <a href=\"https://withintenmiles.com/wheeling-60090/this-weekend/\">weekend view<\/a>, which only shows items with a known date in the coming Friday-Sunday."}}, {"@type": "Question", "name": "Can I add an event, or suggest a business for the directory?", "acceptedAnswer": {"@type": "Answer", "text": "Yes - <a href=\"https://github.com/randerson-23/agent-business/issues/new?template=event-submission.yml\">submit an event<\/a> and a person reviews it before it goes live, or a business owner can <a href=\"https://withintenmiles.com/sponsor/\">inquire about a listing<\/a>."}}]}</script>
-
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebPage", "name": "Wheeling — Within Ten", "url": "https://withintenmiles.com/wheeling-60090/things-to-do/", "dateModified": "2026-10-17T01:54:52.408155+00:00", "isPartOf": {"@type": "WebSite", "name": "Within Ten", "url": "https://withintenmiles.com/", "publisher": {"@id": "https://withintenmiles.com/about/#organization"}}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebPage", "name": "Wheeling — Within Ten", "url": "https://withintenmiles.com/wheeling-60090/things-to-do/", "dateModified": "2026-10-17T02:03:42.525256+00:00", "isPartOf": {"@type": "WebSite", "name": "Within Ten", "url": "https://withintenmiles.com/", "publisher": {"@id": "https://withintenmiles.com/about/#organization"}}}</script>
 <script>
 (function () {
   var activeTags = new Set();
@@ -1555,10 +1211,7 @@ document.querySelectorAll(".newsletter-form").forEach(function (f) {
   }
 })();
 </script>
-
-
 <script>document.addEventListener("click",function(e){var a=e.target.closest&&e.target.closest("a[href^=http]");if(a&&a.hostname!==location.hostname&&window.goatcounter&&goatcounter.count)goatcounter.count({path:"out/"+a.hostname,event:true})})</script>
 <script data-goatcounter="https://withinten.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
-
 </body>
 </html>
