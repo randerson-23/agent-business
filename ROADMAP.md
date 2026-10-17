@@ -16506,6 +16506,100 @@ ticket booking** (a non-item that confirms the free-event niche). The
 design/UX angle is **the printed flyer**, rendered at Letter size.
 
 
+#### Research pass 2026-10-17, noon (eighty-sixth pass)
+
+No build commits since the eighty-fifth pass; the next build run is at
+13:51 UTC. The Oct 15 send's metrics are still pending the Oct 18
+backfill. This pass looks at **what a sponsor will ask once the
+numbers exist** (which metric, against what benchmark, and what
+evidence that readers actually go), and at the email in dark mode, where
+it turned out the October redesign quietly broke the forced-light
+rules.
+
+| Angle | What it is / what we found | Why it matters here |
+|---|---|---|
+| **Media newsletter benchmarks, H1 2026** (Omeda's report; ClickMinded and Dupple roundups) | The typical media newsletter has a **31.6% open rate** (most between 24.6% and 38.5%), a **1.16% median unique click rate** (0.6–2.0%) and a **3.8% click-to-open**. Apple Mail Privacy Protection **inflates opens by 15–20+ points**, so the roundups recommend reporting **clicks**. Smaller, more specialised lists score higher on click-to-open, so compare against lists of a similar size | When item 266's audience snapshot has numbers, the sponsor page must not lead with an open rate that Apple inflates. Clicks and click-to-open are what a sceptical local owner can trust, and a local family list should beat the 1.16% media median comfortably. That is the honest headline to aim for (item 332) |
+| **Buttondown surveys** (Buttondown docs and changelog) | One question embedded in an email, answered **in the browser**, and recorded once per subscriber. It **needs a paid Buttondown plan**. The site is on the **free plan** (`config/newsletter.yaml`) | The feature fits, but it costs a plan upgrade before there is anyone to ask. The same result is free with what already exists: Buttondown counts clicks **per link** on every plan, and GoatCounter counts page paths. Two links that land on two thank-you pages make a one-click poll (item 330) |
+| **Email dark mode** (Designmodo, Yespo, eSputnik and Courier guides) | Clients behave differently. **Apple Mail** honours `prefers-color-scheme`. **Outlook** exposes `[data-ogsc]` / `[data-ogsb]` hooks. **Gmail on iOS ignores** the `color-scheme` meta tag and the CSS property, and inverts colours (fully or partly, depending on the guide). The shared advice is to design light-first, keep the email readable when colours flip, and avoid pure `#ffffff` and `#000000`, which trigger the harshest rewrites | See the next row: the site's own forced-light rules are the part that broke |
+| **The email's forced-light rules, checked against the redesign (design/UX)** | `templates/_email_dark_mode.css.j2` (item 92) restates the **old palette** with `!important`: `.wt-bg` → `#f3f2f2`, `.wt-card` → `#eae9e9`, `.wt-card-sponsor` → `#fff2ef`. The October redesign kept the classes but changed the inline colours. `.wt-bg` now sits on **`#f6f1ea`** (page) and **`#fffaf2`** (the seasonal box). `.wt-card` sits on **`#ffffff`** (event cards) and **`#eaf4ff`**. `.wt-card-sponsor` sits on **`#fff4d6`** (the "Don't miss" card). So in **Apple Mail dark mode and Outlook**, the cream page turns grey, the white town cards turn grey and the yellow "Don't miss" card turns pink | The forced-light rules exist only to restore the inline colours, and now they replace them with colours from a design that is gone. Apple Mail is the largest client for a suburban iPhone audience. This is a correctness bug in the most-read surface, and the redesign introduced it, so it comes first (item 331) |
+| **High-school theatre** (search for Prospect, Hersey, Fremd productions) | Nothing findable: no 2026 production pages turned up for the local schools, only same-named schools in California, Tasmania and Brooklyn | **Non-item.** School productions sell through per-school ticketing pages that search does not surface. Recorded so a later pass does not re-run it. Athletics were already settled (MaxPreps, earlier pass) |
+
+#### P1 (new)
+
+331. **Fix the email's forced-light palette to match the redesign, and
+     test it so it can't drift again.** Build loop, two files plus a
+     test:
+
+     - In `_email_dark_mode.css.j2`, replace the shared classes with
+       **one class per surface colour actually used**: `.wt-page`
+       (`#f6f1ea`), `.wt-paper` (`#ffffff`), `.wt-season` (`#fffaf2`),
+       `.wt-pick` (`#fff4d6`), `.wt-sky` (`#eaf4ff`), `.wt-sponsor`
+       (`#fff2ef`), plus the ink, muted and accent text classes.
+       Update `combined_email_digest.html.j2` and `email_digest.html.j2`
+       to use them.
+     - Move the hex values into **one Python dict** in `build_digest.py`
+       (next to `EMAIL_TOWN_COLORS`). It feeds both the template's
+       inline styles and the CSS include, so one source sets both.
+     - Change `#ffffff` card backgrounds to `#fffefc` and the footer's
+       `#201e1d` stays, following the "no pure white or black" advice
+       that softens Gmail's inversion.
+     - **Test:** parse the built send file and assert that for every
+       element carrying a `wt-*` surface class, the class's forced
+       colour equals that element's inline `background-color`. That
+       would have caught this regression on the day of the redesign.
+
+     The town header bars and the red hero need no rule: they are
+     saturated colours that clients leave alone or invert legibly. Keep
+     the existing 102 KB clip check.
+
+330. **A one-click "Did you go?" poll, free, in every issue.** Build
+     loop, no paid plan:
+
+     - One line at the end of the "Don't miss" section: *"Did you go to
+       something from last week's email?"* followed by two buttons,
+       **Yes** and **Not this time**. They link to
+       `/thanks/went/?w=<issue-date>` and `/thanks/not-yet/?w=<issue-date>`
+       on the site.
+     - The two pages are tiny and `noindex`. They say *"Thanks, that
+       helps us keep this useful"*, offer one forward link (item 183),
+       and carry the town strip.
+     - **Counting:** Buttondown already records clicks per link per
+       email on the free plan, and GoatCounter counts the two paths.
+       The audience snapshot (item 266) reads both counts into
+       `data/audience.json`.
+     - **What it proves:** *"N readers told us they went to an event we
+       listed"* is the sentence a sponsor actually wants. It also tells
+       the owner whether the email changes behaviour, which no open rate
+       can.
+
+     Keep it to one question for the whole season. No other survey
+     items, and no rotating questions. Tests: both links are present
+     with the issue date, both pages are `noindex`, and neither page
+     appears in the sitemap.
+
+#### P2 (new)
+
+332. **Report clicks first on /sponsor/ and in the sponsor kit.** Build
+     loop, once item 266 has data. Change the audience block's order to
+     **subscribers, unique click rate, click-to-open, then opens**. Add
+     a footnote: *"Open rates are inflated by Apple Mail's privacy
+     feature, so we lead with clicks."* Show a benchmark line only as
+     a range with its source: *"Media newsletters: about 0.6–2.0%
+     unique clicks (Omeda, H1 2026)"*. Never show a rate computed from
+     fewer than **50 recipients**. Below that, show only the subscriber
+     count and *"rates published once the list passes 50"*, so one
+     subscriber's 0% never appears on a sales page. Tests: the
+     50-recipient threshold and the metric order.
+
+Competitors reviewed this pass: **Omeda's H1 2026 media newsletter
+benchmarks** (31.6% opens, 1.16% clicks, 3.8% click-to-open; Apple
+inflates opens), **Buttondown's surveys** (paid plan only, replaced by
+tracked links), **email dark-mode guides** for Apple Mail, Outlook and
+Gmail iOS, and **high-school theatre** as a source (a non-item). The
+design/UX angle is **the email's forced-light rules checked against the
+redesign**, which found a regression.
+
+
 ## Working agreements for autonomous iteration
 
 - Cadence is three times a day (05:51, 13:51 and 21:51 UTC) for this
