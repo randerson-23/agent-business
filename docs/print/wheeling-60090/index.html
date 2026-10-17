@@ -7,18 +7,28 @@
 <title>Within Ten flyer: Wheeling</title>
 <style>
   @page { size: letter portrait; margin: 0.5in; }
-  * { box-sizing: border-box; }
-  html, body { margin: 0; padding: 0; font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; color: #201e1d; background: #fff; }
+  * { box-sizing: border-box; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  html, body { margin: 0; padding: 0; font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; color: #000; background: #fff; }
   .sheet { display: flex; flex-direction: column; height: 9.8in; }
-  .copy { flex: 1; display: flex; flex-direction: column; justify-content: center; padding: 0.1in 0.3in; text-align: center; }
+  .copy { flex: 1; display: flex; flex-direction: column; justify-content: space-between; text-align: center; }
   .copies-2 .copy + .copy { border-top: 2px dashed #605d5d; }
-  h1 { font-size: 60pt; line-height: 1.05; margin: 0 0 0.15in; }
-  .sub { font-size: 18pt; margin: 0 0 0.15in; }
-  ul { list-style: none; padding: 0; margin: 0 0 0.15in; font-size: 16pt; font-weight: 700; }
-  li { margin: 0.04in 0; }
-  .qr svg { width: 2.6in; height: auto; }
-  .path { font-size: 24pt; font-weight: 800; margin: 0.05in 0; }
-  .fine { font-size: 12pt; color: #403d3d; margin: 0; }
+  .band { background: #be185d; color: #fff; display: flex; justify-content: space-between; align-items: center; padding: 0.12in 0.25in; font-weight: 800; font-size: 18pt; letter-spacing: 0.02em; }
+  .band .mark { font-size: 24pt; }
+  h1 { font-size: 60pt; line-height: 1.02; margin: 0.1in 0.25in 0.05in; }
+  .sub { font-size: 17pt; margin: 0 0.25in; }
+  .tiles { display: flex; gap: 0.14in; margin: 0 0.25in; }
+  .tile { flex: 1; border: 2px solid #be185d; border-radius: 0.12in; padding: 0.08in; font-weight: 700; font-size: 13pt; line-height: 1.15; }
+  .tile .ico { display: block; font-size: 30pt; line-height: 1.1; }
+  .scan { display: flex; align-items: center; justify-content: center; gap: 0.25in; }
+  .scan-label { font-size: 30pt; font-weight: 900; }
+  .qr { display: inline-block; border: 0.09in solid #000; border-radius: 0.18in; padding: 0.06in; background: #fff; line-height: 0; }
+  .qr svg { width: 2.1in; height: auto; }
+  .path { font-size: 24pt; font-weight: 800; margin: 0; }
+  .fine { font-size: 12pt; color: #000; margin: 0; }
+  .takeone { display: flex; border: 2px dashed #000; border-radius: 0.04in; }
+  .takeone .head { font-weight: 900; font-size: 11pt; padding: 0.1in 0.12in; border-right: 2px dashed #000; white-space: nowrap; }
+  .takeone .tab { flex: 1; padding: 0.08in 0.05in; font-weight: 800; font-size: 9pt; padding-top: 0.1in; border-right: 2px dashed #000; }
+  .takeone .tab:last-of-type { border-right: 0; }
   .screen-only { max-width: 7in; margin: 16px auto; padding: 0 16px; font-size: 16px; }
   @media print { .screen-only { display: none; } nav, footer { display: none; } }
 </style>
@@ -27,11 +37,22 @@
 <p class="screen-only">Print on US Letter, portrait, margins 0.5in. Scan the code to check it opens: https://withintenmiles.com/wheeling-60090/?utm_source=print&amp;utm_campaign=flyer-general#newsletter-signup</p>
 <div class="sheet copies-1">
   <div class="copy">
+    <div class="band"><span class="mark">Within Ten</span><span>FREE &middot; every Thursday</span></div>
     <h1>What's on in Wheeling this weekend?</h1>
-    <p class="sub">One free email every Thursday. Library, park district and village events, all in one place.</p>
-<ul><li>Indian Trails Public Library District</li><li>Wheeling Park District</li><li>Village of Wheeling</li></ul>    <div class="qr" role="img" aria-label="QR code for withintenmiles.com/wh/"><svg viewBox="0 0 360 360" class="segno"><g transform="scale(8)"><path fill="#fff" d="M0 0h45v45h-45z"/><path class="qrline" stroke="#000" d="M2 2.5h7m1 0h2m2 0h4m6 0h4m1 0h2m1 0h1m3 0h7m-41 1h1m5 0h1m2 0h6m3 0h2m1 0h1m2 0h2m2 0h1m2 0h2m1 0h1m5 0h1m-41 1h1m1 0h3m1 0h1m2 0h1m2 0h2m1 0h3m2 0h2m2 0h1m2 0h1m1 0h2m1 0h1m1 0h1m1 0h3m1 0h1m-41 1h1m1 0h3m1 0h1m1 0h3m1 0h1m2 0h1m1 0h1m2 0h1m4 0h2m3 0h1m3 0h1m1 0h3m1 0h1m-41 1h1m1 0h3m1 0h1m1 0h1m3 0h3m1 0h1m1 0h1m2 0h1m1 0h1m3 0h1m4 0h1m1 0h1m1 0h3m1 0h1m-41 1h1m5 0h1m1 0h1m2 0h1m1 0h3m1 0h3m4 0h1m3 0h2m1 0h1m2 0h1m5 0h1m-41 1h7m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h7m-33 1h6m1 0h4m1 0h2m1 0h2m2 0h6m-33 1h1m3 0h1m1 0h3m3 0h6m1 0h4m1 0h1m2 0h1m1 0h1m1 0h1m1 0h5m2 0h1m-41 1h1m1 0h3m3 0h2m1 0h3m4 0h1m2 0h1m1 0h1m1 0h1m1 0h4m2 0h5m2 0h1m-41 1h8m1 0h1m2 0h1m1 0h1m6 0h1m1 0h2m2 0h1m1 0h2m1 0h5m3 0h1m-37 1h2m2 0h1m3 0h3m1 0h2m1 0h3m1 0h2m2 0h6m1 0h1m1 0h2m2 0h1m-40 1h1m2 0h1m1 0h3m1 0h1m1 0h2m3 0h1m4 0h2m2 0h5m1 0h2m5 0h1m-38 1h3m3 0h4m3 0h1m2 0h1m2 0h3m1 0h5m4 0h3m1 0h3m-41 1h1m4 0h4m2 0h2m1 0h1m5 0h2m1 0h2m2 0h1m1 0h2m2 0h2m2 0h2m1 0h1m-41 1h1m2 0h3m2 0h2m1 0h2m4 0h1m2 0h2m1 0h2m2 0h1m1 0h4m4 0h1m2 0h1m-38 1h5m1 0h2m1 0h3m2 0h8m10 0h1m1 0h1m1 0h2m-41 1h1m3 0h1m2 0h1m1 0h1m1 0h1m3 0h2m1 0h1m2 0h1m1 0h1m1 0h4m4 0h8m-39 1h2m1 0h4m1 0h1m2 0h3m1 0h1m2 0h5m1 0h2m2 0h1m1 0h1m2 0h1m4 0h1m-41 1h1m2 0h1m3 0h4m3 0h1m2 0h1m3 0h1m2 0h1m2 0h4m1 0h4m1 0h1m-36 1h2m1 0h2m3 0h3m3 0h1m1 0h1m2 0h2m5 0h2m1 0h3m5 0h2m-41 1h1m1 0h1m1 0h1m2 0h4m1 0h2m2 0h3m2 0h1m1 0h1m1 0h3m1 0h1m4 0h3m3 0h1m-40 1h1m1 0h1m1 0h2m1 0h1m2 0h3m4 0h1m1 0h2m1 0h2m1 0h4m4 0h3m1 0h1m1 0h1m-40 1h2m2 0h1m2 0h2m3 0h2m1 0h9m2 0h9m1 0h1m1 0h2m-40 1h1m1 0h4m3 0h1m1 0h6m2 0h3m1 0h1m4 0h1m2 0h1m4 0h1m2 0h1m-41 1h1m1 0h3m3 0h1m1 0h2m1 0h2m3 0h1m1 0h2m1 0h1m2 0h3m3 0h1m1 0h3m1 0h1m1 0h1m-41 1h3m1 0h5m2 0h1m1 0h2m5 0h1m2 0h1m1 0h4m1 0h1m1 0h1m7 0h1m-40 1h3m3 0h3m1 0h4m1 0h4m1 0h1m2 0h1m1 0h4m1 0h7m-38 1h1m3 0h3m2 0h2m1 0h2m3 0h1m1 0h1m1 0h4m1 0h2m1 0h2m1 0h1m6 0h1m-40 1h1m4 0h1m1 0h3m2 0h1m2 0h4m3 0h4m1 0h3m4 0h4m1 0h2m-35 1h3m1 0h1m1 0h1m2 0h1m1 0h2m4 0h1m3 0h2m1 0h1m1 0h2m5 0h2m-36 1h1m3 0h2m2 0h10m3 0h2m1 0h3m1 0h1m3 0h1m2 0h1m-41 1h2m2 0h1m1 0h1m2 0h1m1 0h1m4 0h2m3 0h2m1 0h1m2 0h1m1 0h1m1 0h7m1 0h1m-32 1h1m1 0h4m1 0h1m1 0h2m4 0h1m1 0h4m1 0h1m1 0h1m3 0h3m1 0h1m-41 1h7m1 0h1m1 0h1m2 0h1m2 0h1m1 0h1m4 0h2m1 0h2m3 0h2m1 0h1m1 0h1m1 0h3m-41 1h1m5 0h1m2 0h2m1 0h2m1 0h2m3 0h2m1 0h1m2 0h1m1 0h5m3 0h2m2 0h1m-41 1h1m1 0h3m1 0h1m1 0h4m1 0h3m4 0h4m4 0h2m1 0h7m1 0h2m-41 1h1m1 0h3m1 0h1m2 0h1m2 0h3m1 0h1m1 0h1m4 0h1m1 0h1m1 0h1m2 0h2m3 0h1m2 0h1m1 0h1m-41 1h1m1 0h3m1 0h1m3 0h1m1 0h1m1 0h1m5 0h2m1 0h2m1 0h6m1 0h1m3 0h1m2 0h1m-41 1h1m5 0h1m3 0h1m1 0h1m1 0h4m1 0h1m1 0h1m2 0h1m1 0h4m2 0h2m1 0h1m1 0h1m1 0h2m-41 1h7m1 0h4m1 0h1m1 0h1m2 0h2m1 0h4m4 0h1m2 0h2m1 0h2m2 0h1"/></g></svg></div>
+    <p class="sub">One free email every Thursday, all in one place.</p>
+    <div class="tiles">
+      <div class="tile"><span class="ico" aria-hidden="true">📚</span>Storytimes &amp; library programmes</div>
+      <div class="tile"><span class="ico" aria-hidden="true">🌳</span>Park district classes &amp; events</div>
+      <div class="tile"><span class="ico" aria-hidden="true">🎪</span>Festivals, markets &amp; free things</div>
+    </div>
+    <p class="fine">From the village, library and park district calendars.</p>
+    <div class="scan">
+      <span class="scan-label">Scan me &rarr;</span>
+      <div class="qr" role="img" aria-label="QR code for withintenmiles.com/wh/"><svg viewBox="0 0 360 360" class="segno"><g transform="scale(8)"><path fill="#fff" d="M0 0h45v45h-45z"/><path class="qrline" stroke="#000" d="M2 2.5h7m1 0h2m2 0h4m6 0h4m1 0h2m1 0h1m3 0h7m-41 1h1m5 0h1m2 0h6m3 0h2m1 0h1m2 0h2m2 0h1m2 0h2m1 0h1m5 0h1m-41 1h1m1 0h3m1 0h1m2 0h1m2 0h2m1 0h3m2 0h2m2 0h1m2 0h1m1 0h2m1 0h1m1 0h1m1 0h3m1 0h1m-41 1h1m1 0h3m1 0h1m1 0h3m1 0h1m2 0h1m1 0h1m2 0h1m4 0h2m3 0h1m3 0h1m1 0h3m1 0h1m-41 1h1m1 0h3m1 0h1m1 0h1m3 0h3m1 0h1m1 0h1m2 0h1m1 0h1m3 0h1m4 0h1m1 0h1m1 0h3m1 0h1m-41 1h1m5 0h1m1 0h1m2 0h1m1 0h3m1 0h3m4 0h1m3 0h2m1 0h1m2 0h1m5 0h1m-41 1h7m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h7m-33 1h6m1 0h4m1 0h2m1 0h2m2 0h6m-33 1h1m3 0h1m1 0h3m3 0h6m1 0h4m1 0h1m2 0h1m1 0h1m1 0h1m1 0h5m2 0h1m-41 1h1m1 0h3m3 0h2m1 0h3m4 0h1m2 0h1m1 0h1m1 0h1m1 0h4m2 0h5m2 0h1m-41 1h8m1 0h1m2 0h1m1 0h1m6 0h1m1 0h2m2 0h1m1 0h2m1 0h5m3 0h1m-37 1h2m2 0h1m3 0h3m1 0h2m1 0h3m1 0h2m2 0h6m1 0h1m1 0h2m2 0h1m-40 1h1m2 0h1m1 0h3m1 0h1m1 0h2m3 0h1m4 0h2m2 0h5m1 0h2m5 0h1m-38 1h3m3 0h4m3 0h1m2 0h1m2 0h3m1 0h5m4 0h3m1 0h3m-41 1h1m4 0h4m2 0h2m1 0h1m5 0h2m1 0h2m2 0h1m1 0h2m2 0h2m2 0h2m1 0h1m-41 1h1m2 0h3m2 0h2m1 0h2m4 0h1m2 0h2m1 0h2m2 0h1m1 0h4m4 0h1m2 0h1m-38 1h5m1 0h2m1 0h3m2 0h8m10 0h1m1 0h1m1 0h2m-41 1h1m3 0h1m2 0h1m1 0h1m1 0h1m3 0h2m1 0h1m2 0h1m1 0h1m1 0h4m4 0h8m-39 1h2m1 0h4m1 0h1m2 0h3m1 0h1m2 0h5m1 0h2m2 0h1m1 0h1m2 0h1m4 0h1m-41 1h1m2 0h1m3 0h4m3 0h1m2 0h1m3 0h1m2 0h1m2 0h4m1 0h4m1 0h1m-36 1h2m1 0h2m3 0h3m3 0h1m1 0h1m2 0h2m5 0h2m1 0h3m5 0h2m-41 1h1m1 0h1m1 0h1m2 0h4m1 0h2m2 0h3m2 0h1m1 0h1m1 0h3m1 0h1m4 0h3m3 0h1m-40 1h1m1 0h1m1 0h2m1 0h1m2 0h3m4 0h1m1 0h2m1 0h2m1 0h4m4 0h3m1 0h1m1 0h1m-40 1h2m2 0h1m2 0h2m3 0h2m1 0h9m2 0h9m1 0h1m1 0h2m-40 1h1m1 0h4m3 0h1m1 0h6m2 0h3m1 0h1m4 0h1m2 0h1m4 0h1m2 0h1m-41 1h1m1 0h3m3 0h1m1 0h2m1 0h2m3 0h1m1 0h2m1 0h1m2 0h3m3 0h1m1 0h3m1 0h1m1 0h1m-41 1h3m1 0h5m2 0h1m1 0h2m5 0h1m2 0h1m1 0h4m1 0h1m1 0h1m7 0h1m-40 1h3m3 0h3m1 0h4m1 0h4m1 0h1m2 0h1m1 0h4m1 0h7m-38 1h1m3 0h3m2 0h2m1 0h2m3 0h1m1 0h1m1 0h4m1 0h2m1 0h2m1 0h1m6 0h1m-40 1h1m4 0h1m1 0h3m2 0h1m2 0h4m3 0h4m1 0h3m4 0h4m1 0h2m-35 1h3m1 0h1m1 0h1m2 0h1m1 0h2m4 0h1m3 0h2m1 0h1m1 0h2m5 0h2m-36 1h1m3 0h2m2 0h10m3 0h2m1 0h3m1 0h1m3 0h1m2 0h1m-41 1h2m2 0h1m1 0h1m2 0h1m1 0h1m4 0h2m3 0h2m1 0h1m2 0h1m1 0h1m1 0h7m1 0h1m-32 1h1m1 0h4m1 0h1m1 0h2m4 0h1m1 0h4m1 0h1m1 0h1m3 0h3m1 0h1m-41 1h7m1 0h1m1 0h1m2 0h1m2 0h1m1 0h1m4 0h2m1 0h2m3 0h2m1 0h1m1 0h1m1 0h3m-41 1h1m5 0h1m2 0h2m1 0h2m1 0h2m3 0h2m1 0h1m2 0h1m1 0h5m3 0h2m2 0h1m-41 1h1m1 0h3m1 0h1m1 0h4m1 0h3m4 0h4m4 0h2m1 0h7m1 0h2m-41 1h1m1 0h3m1 0h1m2 0h1m2 0h3m1 0h1m1 0h1m4 0h1m1 0h1m1 0h1m2 0h2m3 0h1m2 0h1m1 0h1m-41 1h1m1 0h3m1 0h1m3 0h1m1 0h1m1 0h1m5 0h2m1 0h2m1 0h6m1 0h1m3 0h1m2 0h1m-41 1h1m5 0h1m3 0h1m1 0h1m1 0h4m1 0h1m1 0h1m2 0h1m1 0h4m2 0h2m1 0h1m1 0h1m1 0h2m-41 1h7m1 0h4m1 0h1m1 0h1m2 0h2m1 0h4m4 0h1m2 0h2m1 0h2m2 0h1"/></g></svg></div>
+    </div>
     <p class="path">withintenmiles.com/wh/</p>
     <p class="fine">Free. Unsubscribe anytime. Not affiliated with the Village.</p>
+    <div class="takeone" aria-hidden="true"><span class="head">Take one &rarr;</span><span class="tab">withintenmiles.com/wh/</span><span class="tab">withintenmiles.com/wh/</span><span class="tab">withintenmiles.com/wh/</span><span class="tab">withintenmiles.com/wh/</span></div>
   </div>
 </div>
 </body>
