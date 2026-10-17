@@ -90,6 +90,14 @@ payment_links:
 # starts/ends, or an event that has passed is skipped with a warning
 # rather than shown wrong. Nothing here changes which events are
 # fetched, and a paid event never decides the email's subject line.
+# Printed flyers (ROADMAP.md item 320): one counted QR variant per place a
+# flyer is left, built to /print/<region>/<id>/ (and /half/ for two to a
+# sheet). Add an entry only once the owner has agreed a placement, e.g.
+#   - id: mp-cafe-name
+#     label: "Café name, Mount Prospect"
+# The generic /print/<region>/ flyer (campaign flyer-general) always exists.
+print_placements: []
+
 promotions: []
 #  - region: mount-prospect-60056
 #    title: "Pancake Breakfast"

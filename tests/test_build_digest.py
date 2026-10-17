@@ -5733,3 +5733,18 @@ def test_short_paths_point_at_real_region_pages_and_collide_with_nothing():
 def test_short_paths_are_not_in_the_sitemap():
     urls = build_digest.collect_sitemap_urls([])
     assert not any(f"/{short}/" in u for u in urls for short in build_digest.SHORT_PATHS.values())
+
+
+def test_flyer_url_and_variants_give_each_placement_its_own_campaign():
+    assert build_digest.flyer_url("mount-prospect-60056", "flyer-general") == build_digest.SITE_BASE_URL + "mount-prospect-60056/?utm_source=print&utm_campaign=flyer-general#newsletter-signup"
+    variants = build_digest.flyer_variants([{"id": "cafe-a", "label": "A"}, {"id": "lib-b", "label": "B"}, {"label": "no id"}])
+    assert [v["campaign"] for v in variants] == ["flyer-general", "flyer-cafe-a", "flyer-lib-b"]
+
+
+def test_flyer_page_is_noindex_dateless_and_hides_chrome_in_print():
+    page = build_digest.render_flyer("mount-prospect-60056", "Mount Prospect", ["Library", "Park District", "Village"], "flyer-general")
+    assert 'content="noindex"' in page and "<svg" in page and "withintenmiles.com/mp/" in page
+    assert "Not affiliated with the Village." in page and "@media print" in page and "nav, footer { display: none; }" in page
+    assert "sponsor" not in page.lower()
+    assert page.count('class="copy"') == 1
+    assert build_digest.render_flyer("mount-prospect-60056", "Mount Prospect", [], "flyer-general", 2).count('class="copy"') == 2
