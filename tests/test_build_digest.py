@@ -5681,3 +5681,38 @@ def test_checked_label_shows_only_a_recent_check(tmp_path):
     html = build_digest.render_trick_or_treat_page(entries, now, checked={"p": "Oct 25"})
     assert "Checked Oct 25 against the village page." in html
     assert "against the village page." not in build_digest.render_trick_or_treat_page(entries, now)
+
+
+def _night_forecast(rain=20):
+    return {"hours": {h: (50 + (h - 15), rain) for h in range(12, 22)}, "sunset": "2026-10-31T17:49"}
+
+
+def test_halloween_night_averages_3_to_8_pm_and_formats_the_sunset():
+    now = datetime(2026, 10, 25, 15, 0, tzinfo=timezone.utc)
+    night = build_digest.build_halloween_night(_night_forecast(), now)
+    assert night["temp"] == 52 and night["rain"] == 20 and night["sunset"] == "5:49 PM" and night["weekday"] == "Saturday"
+    assert night["indoor"] == []
+
+
+def test_halloween_night_is_gated_to_oct_24_through_31_and_needs_a_forecast():
+    f = _night_forecast()
+    assert build_digest.build_halloween_night(f, datetime(2026, 10, 23, 15, tzinfo=timezone.utc)) is None
+    assert build_digest.build_halloween_night(f, datetime(2026, 10, 31, 15, tzinfo=timezone.utc)) is not None
+    assert build_digest.build_halloween_night(f, datetime(2026, 11, 1, 15, tzinfo=timezone.utc)) is None
+    assert build_digest.build_halloween_night(None, datetime(2026, 10, 28, 15, tzinfo=timezone.utc)) is None
+
+
+def test_halloween_night_lists_three_indoor_events_only_at_60_percent_rain():
+    events = [{"title": f"E{i}", "url": f"https://x/{i}", "tags": ["indoor"]} for i in range(5)] + [{"title": "Out", "url": "https://x/o", "tags": ["outdoor"]}]
+    now = datetime(2026, 10, 28, 15, tzinfo=timezone.utc)
+    assert build_digest.build_halloween_night(_night_forecast(59), now, events)["indoor"] == []
+    wet = build_digest.build_halloween_night(_night_forecast(60), now, events)
+    assert [e["title"] for e in wet["indoor"]] == ["E0", "E1", "E2"]
+
+
+def test_trick_or_treat_page_shows_the_box_only_with_a_forecast():
+    now = datetime(2026, 10, 28, 15, tzinfo=timezone.utc)
+    entries = [{"region_id": "mount-prospect-60056", "region_name": "Mount Prospect", "region_url": "https://x/", "url": "https://v/", "hours": "3:00-7:00 PM, Saturday, October 31", "events": []}]
+    with_box = build_digest.render_trick_or_treat_page(entries, now, night_forecast=_night_forecast())
+    assert "Saturday 3&ndash;8 PM: 52&deg;F, 20% rain." in with_box and "Dark by 5:49 PM: bring a light." in with_box and "Forecast, updated Oct 28" in with_box
+    assert 'class="night"' not in build_digest.render_trick_or_treat_page(entries, now)

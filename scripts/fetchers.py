@@ -786,6 +786,45 @@ def fetch_weather(lat: float, lon: float, timezone_name: str = "America/Chicago"
         return []
 
 
+def fetch_night_forecast(lat: float, lon: float, day_iso: str, timezone_name: str = "America/Chicago") -> dict | None:
+    """Hourly temperature and rain chance for one date, plus that date's
+    sunset (ROADMAP.md item 316). Times come back in `timezone_name`, so the
+    caller never converts. Returns {"hours": {hour: (temp_f, rain_percent)},
+    "sunset": "YYYY-MM-DDTHH:MM"} or None on any failure or missing field -
+    the page then renders no box, same fail-soft rule as fetch_weather.
+    """
+    try:
+        resp = requests.get(
+            "https://api.open-meteo.com/v1/forecast",
+            params={
+                "latitude": lat,
+                "longitude": lon,
+                "hourly": "temperature_2m,precipitation_probability",
+                "daily": "sunset",
+                "temperature_unit": "fahrenheit",
+                "timezone": timezone_name,
+                "start_date": day_iso,
+                "end_date": day_iso,
+            },
+            timeout=REQUEST_TIMEOUT,
+            headers={"User-Agent": USER_AGENT},
+        )
+        resp.raise_for_status()
+        data = resp.json()
+        hourly = data.get("hourly", {})
+        hours = {}
+        for stamp, temp, rain in zip(hourly.get("time", []), hourly.get("temperature_2m", []), hourly.get("precipitation_probability", [])):
+            if temp is not None and rain is not None:
+                hours[int(stamp[11:13])] = (temp, rain)
+        sunsets = data.get("daily", {}).get("sunset", [])
+        if not hours or not sunsets or not sunsets[0]:
+            return None
+        return {"hours": hours, "sunset": sunsets[0]}
+    except Exception as exc:  # noqa: BLE001 - fail soft by design
+        logger.warning("Night forecast fetch failed for (%s, %s): %s", lat, lon, exc)
+        return None
+
+
 def submit_indexnow(
     host: str, key: str, key_location: str, urls: list[str], *, outcome: dict | None = None
 ) -> bool:
