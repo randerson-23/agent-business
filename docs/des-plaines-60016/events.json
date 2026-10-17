@@ -2,8 +2,8 @@
   "@context": "https://schema.org",
   "@type": "ItemList",
   "name": "Upcoming events in Des Plaines — Within Ten",
-  "dateModified": "2026-10-17T03:33:01+00:00",
-  "numberOfItems": 100,
+  "dateModified": "2026-10-17T06:00:13+00:00",
+  "numberOfItems": 105,
   "itemListElement": [
     {
       "@type": "ListItem",
@@ -2303,6 +2303,121 @@
         },
         "sameAs": "https://desplainestheatre.com/event/bourbon-n-brass-live-blues-show-with-miles-minor-rockin-the-blues-16/",
         "description": "Join us in our intimate Bourbon ‘N Brass Speakeasy, located on the 2nd floor of the Des Plaines Theatre, for an evening of Blues with Miles Minor! Food and…"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 101,
+      "item": {
+        "@type": "Event",
+        "name": "Wicked Good Writing Contest",
+        "startDate": "2026-10-30",
+        "url": "https://withintenmiles.com/des-plaines-60016/#ev-wicked-good-writing-contest-2026-10-30",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Des Plaines Public Library",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Des Plaines",
+            "addressRegion": "IL"
+          }
+        },
+        "sameAs": "https://desplaines.libnet.info/event/17138198",
+        "description": "Friday, October 30 2026 12:00am - 11:59pm \n Enter our 4th annual Wicked Good Writing Contest!\nFor grades K-8."
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 102,
+      "item": {
+        "@type": "Event",
+        "name": "Early Voting",
+        "startDate": "2026-10-30T09:00:00-05:00",
+        "url": "https://withintenmiles.com/des-plaines-60016/#ev-early-voting-2026-10-30",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Des Plaines Public Library",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Des Plaines",
+            "addressRegion": "IL"
+          }
+        },
+        "sameAs": "https://desplaines.libnet.info/event/14863291",
+        "description": "Friday, October 30 2026 9:00am - 5:00pm \n Gubernatorial Election"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 103,
+      "item": {
+        "@type": "Event",
+        "name": "Baby Book Time",
+        "startDate": "2026-10-30T10:00:00-05:00",
+        "url": "https://withintenmiles.com/des-plaines-60016/#ev-baby-book-time-2026-10-30",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Des Plaines Public Library",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Des Plaines",
+            "addressRegion": "IL"
+          }
+        },
+        "sameAs": "https://desplaines.libnet.info/event/16431786",
+        "description": "Friday, October 30 2026 10:00am - 11:00am \n To register, please contact Irene Tripkos at 847-789-5623. Verbal confirmation from Irene Tripkos is needed in…"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 104,
+      "item": {
+        "@type": "Event",
+        "name": "Halloween Party in the Commons",
+        "startDate": "2026-10-30T16:00:00-05:00",
+        "url": "https://withintenmiles.com/des-plaines-60016/#ev-halloween-party-in-the-commons-2026-10-30",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Des Plaines Public Library",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Des Plaines",
+            "addressRegion": "IL"
+          }
+        },
+        "sameAs": "https://desplaines.libnet.info/event/17457163",
+        "description": "Friday, October 30 2026 4:00pm - 5:30pm \n Join us for our annual costume contest & enjoy candies + chocolates from around the world!"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 105,
+      "item": {
+        "@type": "Event",
+        "name": "BOURBON 'N BRASS: LIVE DELTA BLUES WITH THE DOWNTOWN CHARLIE BROWN DUO, DONNA HERULA & FRIENDS",
+        "startDate": "2026-10-30T20:30:00-05:00",
+        "url": "https://withintenmiles.com/des-plaines-60016/#ev-bourbon-n-brass-live-delta-blues-with-the-downtown-charlie-b-2026-10-30",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Des Plaines Theatre",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Des Plaines",
+            "addressRegion": "IL"
+          }
+        },
+        "sameAs": "https://desplainestheatre.com/event/bourbon-n-brass-live-delta-blues-with-downtown-charlie-brown-donna-herula-john-primer-friends-2/",
+        "description": "Join us in our intimate Bourbon ‘N Brass Speakeasy, located on the 2nd floor of the Des Plaines Theatre, for an evening of Delta Blues with the Downtown…"
       }
     }
   ]

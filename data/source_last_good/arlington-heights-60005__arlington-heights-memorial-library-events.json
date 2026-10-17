@@ -1,12 +1,6 @@
 {
- "fetched_at": "2026-10-17T03:12:27+00:00",
+ "fetched_at": "2026-10-17T06:00:13+00:00",
  "items": [
-  {
-   "date": "2026-10-16",
-   "detail": "",
-   "title": "Senior Center: Travelogue",
-   "url": "https://www.ahml.info/scheduling/reservation/224945"
-  },
   {
    "date": "2026-10-17",
    "detail": "",
@@ -360,6 +354,12 @@
    "detail": "",
    "title": "Culinary: Making Mushroom Risotto",
    "url": "https://www.ahml.info/scheduling/reservation/223667"
+  },
+  {
+   "date": null,
+   "detail": "",
+   "title": "Wednesday Fun Night",
+   "url": "https://www.ahml.info/scheduling/reservation/224232"
   }
  ],
  "source": "Arlington Heights Memorial Library — Events"

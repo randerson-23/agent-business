@@ -3,16 +3,8 @@
 <channel>
   <title>Within Ten — Upcoming events in Arlington Heights</title>
   <link>https://withintenmiles.com/</link>
-  <description>Upcoming events in Arlington Heights, soonest first - aggregated automatically from village, library, park district and school-district calendars. This build reached 3 of 5 configured sources. 1 source is shown from its last update, up to 1 hour ago.</description>
-  <lastBuildDate>Sat, 17 Oct 2026 03:33:01 +0000</lastBuildDate>
-  <item>
-    <title>Arlington Heights: Senior Center: Travelogue</title>
-    <link>https://withintenmiles.com/arlington-heights-60005/#ev-senior-center-travelogue-2026-10-16</link>
-    <guid isPermaLink="true">https://withintenmiles.com/arlington-heights-60005/#ev-senior-center-travelogue-2026-10-16</guid>
-    <description>Official listing: https://www.ahml.info/scheduling/reservation/224945</description>
-    <pubDate>Fri, 16 Oct 2026 00:00:00 +0000</pubDate>
-    <source url="https://www.ahml.info/scheduling/reservation/224945">Arlington Heights Memorial Library — Events</source>
-  </item>
+  <description>Upcoming events in Arlington Heights, soonest first - aggregated automatically from village, library, park district and school-district calendars. This build reached 4 of 5 configured sources.</description>
+  <lastBuildDate>Sat, 17 Oct 2026 06:00:13 +0000</lastBuildDate>
   <item>
     <title>Arlington Heights: Family Time</title>
     <link>https://withintenmiles.com/arlington-heights-60005/#ev-family-time-2026-10-17</link>
@@ -404,6 +396,14 @@
     <description>Purchase TicketsApril 28, 2027 – May 30, 2027 **American Sign Language interpreted performance: May 6, 2027, 7:30 pm **Open Captioned performance: May 8,… Official listing: https://www.metropolisarts.com/event/oklahoma/</description>
     <pubDate>Wed, 28 Apr 2027 00:00:00 +0000</pubDate>
     <source url="https://www.metropolisarts.com/event/oklahoma/">Metropolis Performing Arts Centre — Shows</source>
+  </item>
+  <item>
+    <title>Arlington Heights: Charlotte's Web</title>
+    <link>https://withintenmiles.com/arlington-heights-60005/#ev-charlotte-s-web-2027-05-05</link>
+    <guid isPermaLink="true">https://withintenmiles.com/arlington-heights-60005/#ev-charlotte-s-web-2027-05-05</guid>
+    <description>Purchase TicketsCharlotte’s Web A part of Metropolis Family Series May 5, 2027 – May 29, 2027 American Sign Language interpreted performance: by request… Official listing: https://www.metropolisarts.com/event/charlottes-web/</description>
+    <pubDate>Wed, 05 May 2027 00:00:00 +0000</pubDate>
+    <source url="https://www.metropolisarts.com/event/charlottes-web/">Metropolis Performing Arts Centre — Shows</source>
   </item>
 </channel>
 </rss>
