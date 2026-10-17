@@ -2680,6 +2680,68 @@ def build_event_json_ld(blocks: list[dict], page_url: str | None = None, region:
     return json.dumps(payload, ensure_ascii=False).replace("</", "<\\/")
 
 
+TITLE_LIMIT = 65
+DESCRIPTION_LIMIT = 160
+
+
+def top_pick_titles(events: list[dict], limit: int = 3) -> list[str]:
+    """Up to `limit` distinct real titles from attendable, unpaid events, the
+    most family-relevant first, soonest on ties (ROADMAP.md item 310)."""
+    ranked = sorted(
+        (e for e in events if e.get("title") and e.get("attendable", True) and not e.get("sponsored_by")),
+        key=lambda e: (-family_relevance(e), e.get("date_iso") or "9999"),
+    )
+    titles: list[str] = []
+    for e in ranked:
+        title = e["title"].strip()
+        if title not in titles:
+            titles.append(title)
+        if len(titles) == limit:
+            break
+    return titles
+
+
+def build_search_meta(name: str, state: str, events: list[dict], *, when: str, date_range: str | None = None) -> dict | None:
+    """Title and description that match how people search (ROADMAP.md item
+    310): "Things to Do in Mount Prospect, IL This Weekend (Oct 16-18)" and
+    "23 things to do Oct 16-18: A, B, C and more, from the village, library and
+    park district." The title is at most TITLE_LIMIT characters before the brand
+    (the date range goes first when it is too long), the description at most
+    DESCRIPTION_LIMIT (picks are dropped from the end), and None when there is
+    nothing to count so the caller keeps its plain wording."""
+    plain = [e for e in events if e.get("attendable", True) and not e.get("sponsored_by")]
+    count = len(plain)
+    if count == 0:
+        return None
+    base = f"Things to Do in {name}, {state}{': ' if when.startswith('Events') else ' '}{when}"
+    title = f"{base} ({date_range})" if date_range and len(base) + len(date_range) + 3 <= TITLE_LIMIT else base
+    span = date_range or ("this week" if "Week" in when else "this weekend")
+    lead = f"{count} thing{'s' if count != 1 else ''} to do {span}"
+    tail = ", from the village, library and park district."
+    picks = top_pick_titles(plain)
+    while True:
+        body = ", ".join(picks) + (" and more" if len(plain) > len(picks) else "")
+        desc = f"{lead}: {body}{tail}" if picks else f"{lead}{tail}"
+        if len(desc) <= DESCRIPTION_LIMIT or not picks:
+            break
+        picks = picks[:-1]
+    if len(desc) > DESCRIPTION_LIMIT:
+        desc = desc[: DESCRIPTION_LIMIT - 1].rstrip(" ,;") + "…"
+    return {"title": title, "description": desc, "h1": f"Things to do in {name} {when.lower()}"}
+
+
+def build_hub_weekend_description(town_names: list[str], sections: list[dict], date_range: str) -> str:
+    """The hub weekend page's meta description (item 310): the real count, the
+    towns and the date range, at most DESCRIPTION_LIMIT characters; plain
+    wording when nothing is dated."""
+    count = sum(1 for s in sections for e in s["events"] if e.get("attendable", True) and not e.get("sponsored_by"))
+    towns = _join_names(sorted(town_names)) if town_names else "the northwest suburbs"
+    if count == 0:
+        return f"Things to do this weekend in {towns}: everything with a known date, across every town, in one place."[:DESCRIPTION_LIMIT]
+    desc = f"{count} things to do this weekend{f' ({date_range})' if date_range else ''} in {towns}, from the village, library and park district calendars."
+    return desc if len(desc) <= DESCRIPTION_LIMIT else desc[: DESCRIPTION_LIMIT - 1].rstrip(" ,;") + "…"
+
+
 def render_region_page(
     region_cfg: dict,
     blocks: list[dict],
@@ -2689,6 +2751,7 @@ def render_region_page(
     *,
     heading: str | None = None,
     subheading: str | None = None,
+    search_meta: dict | None = None,
     empty_message: str | None = None,
     empty_cta_url: str | None = None,
     empty_cta_label: str | None = None,
@@ -2728,6 +2791,9 @@ def render_region_page(
     # template, which gets unreadable fast once quotes have to nest.
     page_title = f"{heading} — {SITE_NAME}" if heading else f"{region['name']} ({region['zip']}) — {SITE_NAME}"
     page_description = subheading or f"What's happening in {region['name']}, {region['state']} ({region['zip']}): {region['tagline']}"
+    if search_meta:
+        page_title = f"{search_meta['title']} | {SITE_NAME}"
+        page_description = search_meta["description"]
     # ROADMAP.md item 163: dateModified below is machine-only; this is the
     # human-readable half of the same freshness claim, in the region's own
     # local date rather than a UTC timestamp - "last checked" (what's
@@ -5386,6 +5452,11 @@ def main() -> None:
             map_embed_url=build_region_map_embed_url(region, maps),
             nearby_regions=build_nearby_regions(region, all_regions_meta),
             region_map=build_region_map(all_regions_meta),
+            search_meta=build_search_meta(
+                region["name"], region["state"],
+                filter_events_by_dates(blocks, {local_today + timedelta(days=i) for i in range(7)}),
+                when="Events This Week",
+            ),
             days_off=region_days_off,
             days_off_sponsor=build_days_off_sponsor(sponsors_cfg, region_id, local_today),
         )
@@ -5560,14 +5631,20 @@ def main() -> None:
                 empty_follow_label = "here's this weekend"
             else:
                 build_scope_end_iso = stale_empty_message = empty_follow_url = empty_follow_label = None
+            view_meta = (
+                build_search_meta(region["name"], region["state"], items, when="This Weekend", date_range=weekend_date_range)
+                if slug == "this-weekend"
+                else None
+            )
             view_html = render_region_page(
                 region_cfg,
                 [{"section": heading, "events": items}],
                 sponsor,
                 [],
                 now,
-                heading=heading,
+                heading=view_meta["h1"] if view_meta else heading,
                 subheading=subheading,
+                search_meta=view_meta,
                 empty_message=empty_message,
                 nav_current=nav_current,
                 canonical_suffix=f"{slug}/",
@@ -5825,9 +5902,9 @@ def main() -> None:
         newsletter=newsletter,
         signup_headline="Get this list every Thursday.",
         slug="this-weekend",
-        heading="This Weekend Near You",
+        heading="Things to Do This Weekend in the Northwest Suburbs",
         subheading=f"{hub_weekend_date_range or ''} — everything with a known date, across every region.",
-        meta_description=f"Everything with a known date this weekend ({hub_weekend_date_range or ''}), across every region — one page for planning a trip nearby.",
+        meta_description=build_hub_weekend_description([s["region_name"] for s in hub_weekend_sections], hub_weekend_sections, hub_weekend_date_range or ""),
         empty_message="Nothing dated for this weekend yet across any region — check back, or browse a region's full page.",
         build_scope_end_iso=hub_weekend_end_iso,
         stale_empty_message="This weekend's events have passed —",

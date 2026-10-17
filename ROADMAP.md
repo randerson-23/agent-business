@@ -15949,7 +15949,7 @@ two quiet months ahead.
 
 #### P1 (new)
 
-310. **Make the weekend and town page titles match what people search.**
+310. ✅ **DONE (2026-10-17): `build_search_meta` / `build_hub_weekend_description`: town weekend page "Things to Do in Mount Prospect, IL This Weekend (Oct 16–18) | Within Ten" with H1 "Things to do in Mount Prospect this weekend" and a description from the real count and top three picks; town page "Things to Do in Mount Prospect, IL: Events This Week"; hub weekend page retitled and described with the real count and towns. Title at most 65 characters before the brand (the date range goes first), description at most 160, plain wording when the count is zero, og tags in step; tests added.** **Make the weekend and town page titles match what people search.**
      Build loop, templates and the page builders:
      - **Town weekend page:** title *"Things to Do in Mount Prospect, IL
        This Weekend (Oct 16–18) | Within Ten"*; H1 *"Things to do in Mount
