@@ -180,6 +180,10 @@
   .share button { font: inherit; font-weight: 800; color: #1a0f2b; background: #ff7a00; border: 0; border-radius: 999px; padding: 9px 18px; cursor: pointer; }
   .share button:hover, .share button:focus-visible { background: #ffa040; }
   .share .copied { margin-left: 10px; color: var(--muted); font-size: 13.5px; }
+  .night { background: var(--card, #fff); border: 1px solid var(--border); border-left: 5px solid #c4280e; border-radius: 8px; padding: 10px 14px; margin: 0 0 8px; font-size: 16px; }
+  .night p { margin: 4px 0; }
+  .night ul { margin: 4px 0 4px 20px; padding: 0; }
+  .night-note { font-size: 16px; color: var(--muted, #605d5d); }
   .glance-title { font-size: 18px; margin: 20px 0 8px; }
   .glance { width: 100%; border-collapse: collapse; margin: 0 0 8px; }
   .glance th, .glance td { text-align: left; padding: 9px 4px; border-bottom: 1px solid var(--border); font-size: 16px; }
@@ -220,6 +224,15 @@
 
 <div class="wrap">
   <main>
+  {% if night %}
+  <section class="night" aria-label="Halloween night forecast">
+    <p class="night-main"><strong>{{ night.weekday }} 3&ndash;8 PM: {{ night.temp }}&deg;F, {{ night.rain }}% rain.</strong> Sunset {{ night.sunset }}.</p>
+    <p>Dark by {{ night.sunset }}: bring a light.</p>
+    {% if night.indoor %}<p>Indoor options:</p>
+    <ul>{% for e in night.indoor %}<li><a href="{{ e.url }}">{{ e.title }}</a></li>{% endfor %}</ul>{% endif %}
+    <p class="night-note">Forecast, updated {{ night.updated }}.</p>
+  </section>
+  {% endif %}
   <h2 class="glance-title">{% if common_date %}All on {{ common_date }}{% else %}Hours by town{% endif %}</h2>
   <table class="glance">
     <tbody>

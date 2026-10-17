@@ -36,7 +36,7 @@ from jinja2 import Environment, FileSystemLoader
 from PIL import Image, ImageDraw, ImageFont
 
 sys.path.insert(0, str(Path(__file__).parent))
-from fetchers import FETCHERS, MAX_ITEMS_PER_SOURCE, fetch_weather, submit_indexnow  # noqa: E402
+from fetchers import FETCHERS, MAX_ITEMS_PER_SOURCE, fetch_night_forecast, fetch_weather, submit_indexnow  # noqa: E402
 from tagging import infer_tags, is_informational, merge_default_tags, tag_display  # noqa: E402
 
 logging.basicConfig(level=logging.INFO, format="%(levelname)s %(name)s: %(message)s")
@@ -1484,9 +1484,43 @@ def load_tot_checked(now: datetime, path: Path = TOT_WATCH_PATH, max_age_hours: 
     return checked
 
 
+def build_halloween_night(forecast: dict | None, now: datetime, indoor_events: list[dict] | None = None) -> dict | None:
+    """The "Halloween night" box (ROADMAP.md item 316): the 3-8 PM average
+    temperature and rain chance, the sunset, and - at 60% rain or more - up
+    to three indoor Halloween events from the page's own list. Only from
+    Oct 24 to Oct 31; None (no box at all) outside that or when the forecast
+    is missing, so a failed fetch never shows a guess.
+    """
+    local = now.astimezone(LOCAL_TZ)
+    day = date(local.year, 10, 31)
+    if not forecast or not (day - timedelta(days=7) <= local.date() <= day):
+        return None
+    window = [forecast["hours"][h] for h in range(15, 20) if h in forecast["hours"]]
+    if not window:
+        return None
+    temp = round(sum(t for t, _ in window) / len(window))
+    rain = round(sum(r for _, r in window) / len(window))
+    try:
+        sunset = datetime.fromisoformat(forecast["sunset"])
+    except ValueError:
+        return None
+    sunset_label = f"{sunset.hour % 12 or 12}:{sunset.minute:02d} {'AM' if sunset.hour < 12 else 'PM'}"
+    indoor = []
+    if rain >= 60:
+        indoor = [e for e in (indoor_events or []) if "indoor" in (e.get("tags") or []) and e.get("title") and e.get("url")][:3]
+    return {
+        "weekday": day.strftime("%A"),
+        "temp": temp,
+        "rain": rain,
+        "sunset": sunset_label,
+        "indoor": indoor,
+        "updated": local.strftime("%b %-d, %-I:%M %p").replace("AM", "AM CT").replace("PM", "PM CT"),
+    }
+
+
 def render_trick_or_treat_page(
     entries: list[dict], now: datetime, analytics: dict | None = None, newsletter: dict | None = None,
-    checked: dict[str, str] | None = None,
+    checked: dict[str, str] | None = None, night_forecast: dict | None = None,
 ) -> str:
     """The cross-region trick-or-treat hours page (ROADMAP.md Phase 11
     #101) - the single highest-volume hyperlocal query of Q4, and one no
@@ -1551,6 +1585,7 @@ def render_trick_or_treat_page(
         trunk_events=trunk_events,
         countdown=countdown,
         common_date=common_date,
+        night=build_halloween_night(night_forecast, now, [e for t in town_entries for e in t["events"]]),
         halloween_weekday=halloween_day.strftime("%A"),
         year=now.year,
         title_towns=", ".join(sorted(e["region_name"] for e in entries)),
@@ -5537,6 +5572,7 @@ def main() -> None:
     llms_full_groups: list[tuple[str, str, list[dict]]] = []
     pins_groups: list[tuple[str, str, str, list[dict]]] = []
     trick_or_treat_entries = []
+    night_forecast = None
     holidays_entries = []
     email_weather_by_region: dict[str, list[dict]] = {}
     combined_email_sections = []
@@ -5673,6 +5709,10 @@ def main() -> None:
         upcoming = [dict(e, town=e.get("town") or region["name"], state=e.get("state") or region.get("state")) for e in upcoming]
         # ROADMAP.md item 243: copied now, while anchor_id matches this
         # town's index page, like `upcoming` above.
+        if trick_or_treat and region_id == "mount-prospect-60056" and region.get("lat") is not None:
+            _halloween = date(local_today.year, 10, 31)
+            if _halloween - timedelta(days=7) <= local_today <= _halloween:
+                night_forecast = fetch_night_forecast(region["lat"], region["lon"], _halloween.isoformat(), region.get("timezone", "America/Chicago"))
         if trick_or_treat:
             trick_or_treat_entries[-1]["village_post"] = find_village_post(blocks, now.year)
             trick_or_treat_entries[-1]["events"] = [
@@ -6206,7 +6246,7 @@ def main() -> None:
     (about_dir / "index.html").write_text(about_html, encoding="utf-8")
     logger.info("Wrote %s", about_dir / "index.html")
 
-    trick_or_treat_html = render_trick_or_treat_page(trick_or_treat_entries, now, analytics, newsletter, load_tot_checked(now))
+    trick_or_treat_html = render_trick_or_treat_page(trick_or_treat_entries, now, analytics, newsletter, load_tot_checked(now), night_forecast)
     trick_or_treat_dir = OUTPUT_DIR / "trick-or-treat"
     trick_or_treat_dir.mkdir(parents=True, exist_ok=True)
     (trick_or_treat_dir / "index.html").write_text(trick_or_treat_html, encoding="utf-8")

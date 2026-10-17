@@ -16105,7 +16105,7 @@ their hours late, and what the page looks like on a phone.
 
 #### P1 (new)
 
-316. **A "Halloween night" box on /trick-or-treat/: forecast and sunset.**
+316. ✅ **DONE (2026-10-17): `fetch_night_forecast` (Open-Meteo hourly + daily sunset, Central time) and `build_halloween_night` render the box above the town hours from Oct 24 to Oct 31 only: 3–8 PM average temperature and rain, sunset, "Dark by …: bring a light.", "Forecast, updated …"; at 60% rain or more up to three indoor events from the page's own list; no box on a failed fetch; tests added. Not verified against the live API.** **A "Halloween night" box on /trick-or-treat/: forecast and sunset.**
      Build loop. From **Oct 24 to Oct 31** only, render one compact box
      above the town hours:
 
