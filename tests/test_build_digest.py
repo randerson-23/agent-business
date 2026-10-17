@@ -4847,7 +4847,7 @@ def test_join_page_is_not_in_the_sitemap():
 def test_join_page_picks_are_cards_with_town_colours_and_a_recent_issue_link():
     # ROADMAP.md item 279.
     html = build_digest.render_join_page(_join_sections(), datetime(2026, 10, 12, tzinfo=timezone.utc), None, None, "Oct 16–18")
-    assert html.count('<div class="pick">') == 2
+    assert html.count('<div class="pick" style="--town:') == 2
     colors = re.findall(r'<div class="dow" style="background:(#[0-9a-f]{6})">', html)
     assert len(colors) == 2 and len(set(colors)) == 2  # one colour per town
     assert "SAT" in html and "Oct 16–18" in html and "2 things to do in 2 towns" in html
@@ -5576,3 +5576,53 @@ def test_closures_come_only_from_what_a_source_posts():
     html = build_digest.render_region_page(region_cfg, [], None, [], datetime(2026, 11, 24, 18, tzinfo=timezone.utc), closures=found)
     assert 'id="closures"' in html and "Closed or changed this week" in html
     assert 'id="closures"' not in build_digest.render_region_page(region_cfg, [], None, [], datetime(2026, 11, 24, 18, tzinfo=timezone.utc))
+
+
+def _luminance(hex_color: str) -> float:
+    h = hex_color.lstrip("#")
+    r, g, b = (int(h[i:i + 2], 16) / 255 for i in (0, 2, 4))
+    f = lambda c: c / 12.92 if c <= 0.03928 else ((c + 0.055) / 1.055) ** 2.4
+    return 0.2126 * f(r) + 0.7152 * f(g) + 0.0722 * f(b)
+
+
+def _contrast(a: str, b: str) -> float:
+    la, lb = _luminance(a), _luminance(b)
+    return (max(la, lb) + 0.05) / (min(la, lb) + 0.05)
+
+
+def _mix_white(hex_color: str, white_share: float) -> str:
+    h = hex_color.lstrip("#")
+    return "#%02x%02x%02x" % tuple(round(int(h[i:i + 2], 16) * (1 - white_share) + 255 * white_share) for i in (0, 2, 4))
+
+
+def test_seasonal_page_text_meets_contrast_in_light_and_dark():
+    # ROADMAP.md item 309: the pairs the seasonal pages use, in fixed colours.
+    pairs = {
+        "join hero white on red": ("#ffffff", "#c4280e"), "join hero kicker": ("#ffe9b3", "#c4280e"),
+        "halloween kicker": ("#ffb347", "#1a0f2b"), "halloween pill text": ("#fff4e6", "#1a0f2b"), "halloween button": ("#1a0f2b", "#ff7a00"),
+        "trick-or-treat sub": ("#e8dcff", "#1a0f2b"), "holiday gold on green": ("#f5c542", "#14532d"), "holiday text on dark red": ("#fdf6e3", "#7f1d1d"),
+        "holiday offer button": ("#14301f", "#f5c542"), "holiday offer box": ("#14301f", "#f0f9f3"), "winter strip link": ("#1d4ed8", "#e8f1fb"),
+        "rain plan heading": ("#1d4ed8", "#eaf4ff"),
+    }
+    for name, (fg, bg) in pairs.items():
+        assert _contrast(fg, bg) >= 4.5, (name, round(_contrast(fg, bg), 2))
+    # Town colours as text on the dark theme's card and page: lightened by the pages' own 45% mix.
+    for color, _tint in build_digest.EMAIL_TOWN_COLORS:
+        assert _contrast(color, "#ffffff") >= 4.5, color  # on a light page
+        for dark_bg in ("#232120", "#171615"):
+            assert _contrast(_mix_white(color, 0.55), dark_bg) >= 4.5, (color, dark_bg)
+
+
+def test_seasonal_animations_only_run_without_reduced_motion():
+    # ROADMAP.md item 309: every `animation:` sits inside a prefers-reduced-motion: no-preference block.
+    for name in ("hub", "trick_or_treat", "holidays", "join", "region", "merged_hub"):
+        css = re.sub(r"\{#.*?#\}", lambda m: " " * len(m.group(0)), (build_digest.TEMPLATES_DIR / f"{name}.html.j2").read_text(encoding="utf-8"), flags=re.S)
+        safe = []
+        for m in re.finditer(r"@media\s*\(prefers-reduced-motion:\s*no-preference\)\s*\{", css):
+            depth, i = 1, m.end()
+            while depth and i < len(css):
+                depth += (css[i] == "{") - (css[i] == "}")
+                i += 1
+            safe.append((m.start(), i))
+        for m in re.finditer(r"(?<![-\w])animation(?:-delay)?\s*:(?!\s*none)", css):
+            assert any(a <= m.start() < b for a, b in safe), (name, css[max(0, m.start() - 60):m.start() + 40])

@@ -15923,7 +15923,7 @@ unsticks the one blocked item.
 
 #### P3 (new)
 
-309. **An accessibility pass over this month's new pages.** Build loop:
+309. ✅ **DONE (2026-10-17, contrast and motion; no browser axe run available here): the contrast of every seasonal pair is now a test (the `/join/` hero red darkened to #c4280e, white text 4.2 → 5.7:1; town colours as text lightened by 45% white on the dark theme, 2.3–3.1 → 7+:1 on `/trick-or-treat/`, `/holidays/` and `/join/`), and a test fails any `animation:` outside a `prefers-reduced-motion: no-preference` block in the seasonal templates. The Lighthouse job in CI still runs its accessibility audit over the pages it already lists; adding the new seasonal pages to it is open.** **An accessibility pass over this month's new pages.** Build loop:
      run the existing axe-based check (`build_digest.py` already
      references it) and a contrast check over `/trick-or-treat/`,
      `/holidays/`, `/join/`, the homepage banners and the per-town
