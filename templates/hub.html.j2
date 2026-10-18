@@ -171,6 +171,10 @@
      grid's auto-fit first and screenshotting the still-stranded card).
      Flexbox distributes flex-grow space per line independently, so a
      lone last-row card genuinely stretches to fill its row instead. */
+  .more-links { margin: 24px 0 8px; font-size: 16px; line-height: 1.6; }
+  .more-links h2 { font-size: 20px; margin: 0 0 8px; }
+  .more-links p { margin: 0 0 6px; }
+  .more-links a { color: var(--accent-2-text, #ae1800); font-weight: 700; }
   .region-grid {
     display: flex;
     flex-wrap: wrap;
@@ -504,6 +508,14 @@
     </a>
     {% endfor %}
   </div>
+  {# ROADMAP.md item 338: every page within two clicks of the homepage. #}
+  <section class="more-links" aria-labelledby="more-links-h">
+    <h2 id="more-links-h">Guides &amp; past issues</h2>
+    {% for r in region_summaries if r.guides %}
+    <p><strong>{{ r.name }}:</strong> {% for g in r.guides %}<a href="{{ r.path }}guides/{{ g.slug }}/">{{ g.title }}</a>{% if not loop.last %} · {% endif %}{% endfor %}</p>
+    {% endfor %}
+    <p><a href="holidays/">Holidays</a> · <a href="issues/">Past weekly issues</a></p>
+  </section>
   {% else %}
   <div class="empty-state">No regions configured yet.</div>
   {% endif %}
@@ -525,6 +537,7 @@
     Want your ZIP added, or want to sponsor a region?
     <a href="sponsor/">See pricing &amp; availability</a>.
     <a href="about/">About</a>.
+    <a href="issues/">Past issues</a>. <a href="holidays/">Holidays</a>.
     <a href="{{ preferred_source_url }}" rel="noopener">Add us as a preferred source on Google</a>.
     {% if trick_or_treat_in_season %}<a href="trick-or-treat/">Trick-or-treat hours</a>.{% endif %}
     <br>See something wrong or missing? <a href="{{ corrections_cta_url }}">Email us</a> — corrections get made the same week.

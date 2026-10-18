@@ -48,5 +48,9 @@ jobs:
       - name: Check inline JS budget
         run: python scripts/check_perf_budget.py
 
+      # ROADMAP.md item 338: every sitemap page within two clicks of the homepage.
+      - name: Check link depth
+        run: python scripts/check_link_depth.py
+
       - name: Lighthouse CI — performance budget (LCP, CLS, TBT)
         run: npx lhci autorun

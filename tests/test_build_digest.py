@@ -5909,3 +5909,11 @@ def test_leading_contact_token_is_dropped_from_descriptions():
     assert build_digest.strip_description_header(detail).startswith("The Des Plaines Lions Club is hosting")
     assert build_digest.strip_description_header("https://x.org/signup Bring a friend.") == "Bring a friend."
     assert build_digest.strip_description_header("Email info@x.org for details.") == "Email info@x.org for details."
+
+
+def test_issue_pages_link_to_the_previous_and_next_issue():
+    # ROADMAP.md item 338.
+    page = build_digest.render_issue_page(_issue(), newer={"date": "2026-10-22"}, older={"date": "2026-10-08"})
+    assert f"{build_digest.SITE_BASE_URL}issues/2026-10-22/" in page and f"{build_digest.SITE_BASE_URL}issues/2026-10-08/" in page
+    alone = build_digest.render_issue_page(_issue())
+    assert "Previous issue" not in alone and "Next issue" not in alone
