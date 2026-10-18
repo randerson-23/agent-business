@@ -229,6 +229,16 @@ agreements): the research loop keeps at most **three open owner
 indefinitely. Quick actions that need no decision do not count against
 that limit.
 
+**This week (Oct 19–25), in order (item 343):**
+
+- **By Tue Oct 20, 7 min:** send the trick-or-treat note (step 8b) to
+  the Daily Herald, NBC Chicago and WGN, and use Search Console's
+  *Request indexing* on `/trick-or-treat/`. No outlet has a 2026 list yet.
+- **By Wed Oct 21, decide the $50 Meta test (item 276).** If yes, run it
+  Oct 22–31 for the five towns' ZIP codes, landing on `/trick-or-treat/`.
+- **By Sat Oct 24, about an hour:** print the town flyer for one café and
+  one library desk (step 8g).
+
 **Quick account actions — about 25 minutes in total, no decisions:**
 
 1. **Check Yahoo's Spam folder (30 sec, item 239).** Search Yahoo Mail,
@@ -16824,6 +16834,88 @@ IndexNow's first-key binding** (a confirmed case where the original key
 worked and the replacement did not), and **Bing's URL Submission API**.
 The design/UX angle is **the homepage on a phone**, where the town
 cards describe sources instead of events.
+
+
+#### Research pass 2026-10-18, evening (eighty-ninth pass)
+
+Since the morning the build loop shipped item 338 (every sitemap page
+within two clicks, with a CI check) and item 339 (homepage town cards
+show this weekend's picks and count). Item 337, the first-key IndexNow
+test, has not shipped: the four builds today still log 403 with no
+`key_suffix`. **The first real send metric landed:** the Oct 15 issue
+went to **1 recipient with 1 open and 0 clicks**. That recipient is the
+owner, after the Yahoo spam fix. So the email now reaches an inbox and
+gets opened. It also confirms what every pass since sixty-one has said:
+**the list is one person**, and nothing sells until that changes. This
+pass checks two acquisition channels the loop hadn't priced, re-checks
+Halloween, and reads the new homepage cards on a Sunday evening.
+
+| Angle | What it is / what we found | Why it matters here |
+|---|---|---|
+| **SparkLoop Partner Network** (SparkLoop's help centre and pricing guide; third-party reviews) | Paid newsletter recommendations. Advertisers pay **about $2–7 per confirmed subscriber** (SparkLoop markets $2–20), and SparkLoop takes **20% plus 3.5%** of payouts. Its referral programme is **$2,000 a year**, and its help pages mention monthly minimum budgets. **No Buttondown integration is listed** among its 30-plus supported platforms. One reviewer calls it friction for lists under 25,000 | **Skipped, recorded here.** As a buyer, the minimums dwarf the $50 Meta test (item 276), and the network is built of national newsletters, not suburban families. As a seller (earning by recommending others at signup), one subscriber earns nothing. The Buttondown gap means it couldn't be wired up anyway. Revisit only if the list passes about 5,000 |
+| **Local parent groups** (MOMS Club; LocalWiki Arlington Heights; Macaroni KID Schaumburg) | **No MOMS Club chapter** turned up for Arlington Heights, Mount Prospect or Palatine (973 US chapters exist). The one local group found, a mothers-of-twins club serving Arlington Heights, Mount Prospect, Palatine and neighbours, has a listing **last updated in 2011**. **Macaroni KID Schaumburg–Hoffman Estates** covers Arlington Heights in its calendar and weekly *"top things to do"* picks | **Non-item for groups.** Their front doors are private Facebook groups, which the existing group-posting items already cover (item 107). Macaroni KID is a known competitor (items 258, 263). Recorded so this isn't searched again |
+| **Halloween re-check, 13 days out** | Still **no 2026 trick-or-treat list** from NBC Chicago, WGN, the Daily Herald or mykidlist for these towns. Every result is a 2024 or 2025 page | The site's page is still the only current answer, and the window closes when the TV lists publish in the final week. That makes this week the one week the Halloween page can carry paid acquisition by itself (item 343) |
+| **Small-business holiday listings, priced elsewhere** (Pleasanton, California's city-backed holiday gift guide, 2024) | **$45 for a business listing**, $100 for a sixth of a page, $135 for a quarter, in a guide **mailed to over 35,000 homes** inside a monthly magazine | A useful anchor for item 258's **$20 early, $50 after** holiday listing. The price is in line, but the comparison only holds with an audience behind it. `SPONSOR_KIT.md` must not imply any reach until item 266 shows a number. **No pricing change** |
+| **The homepage on a Sunday evening (design/UX)** | The 21:59 UTC Sunday build (late afternoon in Chicago) shows *"This weekend · Oct 18 · 6 things"*, every town card lists **Sunday-only** picks, and **Palatine and Wheeling read "Nothing dated this weekend yet →"**. On a Sunday afternoon the *"weekend"* is nearly over, and *"yet"* promises events that won't come. From the hub's point of view the site looks empty from Sunday afternoon until Friday, the hours when people plan the next weekend | Item 339's cards work on a Friday. For roughly four days a week the homepage is showing a weekend that has ended. Retention depends on the site looking alive the day someone first lands on it (items 341, 342) |
+
+#### P1 (new)
+
+341. **Roll the homepage forward to next weekend from Sunday 3 PM.**
+     Design/UX, build loop. Find the function that sets the hub's weekend
+     window (and the "This weekend" box). From **Sunday 15:00 Central**
+     until the following **Friday 00:00**, have it return the **coming**
+     Friday–Sunday, labelled **"Next weekend · Oct 23–25"** instead of
+     "This weekend". The region pages, `/this-weekend/` and the email
+     already use their own windows: check each, and roll forward any
+     that show an ended weekend on a Sunday evening. Keep the
+     Thursday email's window as it is. Tests: a Sunday 14:59 build shows
+     this weekend, a Sunday 15:01 build shows next weekend with the new
+     label, and a Monday build shows next weekend.
+
+342. **Never show an empty town card: show what's next.** Design/UX,
+     `hub.html.j2` and `hub_town_picks()`. When a town has nothing in the
+     current window, show its **next two dated events** (any day in the
+     next 14 days), headed *"Next up"*, with the link reading *"See
+     what's on in Palatine →"*. Use *"Nothing dated in the next two
+     weeks"* only when that is literally true, and drop the word *"yet"*.
+     Tests: an empty-window town shows its next events with the new
+     heading, and a town with nothing in 14 days shows the plain line.
+
+#### P1, owner (re-ranked)
+
+343. **This week's three owner actions, in order, because Halloween is
+     the one landing page that can carry paid traffic by itself.** Add
+     a short **"This week (Oct 19–25)"** block at the top of the Needs
+     Ryan list, above step 1. It **re-ranks** these three without
+     changing them:
+
+     1. **Step 8b plus item 319, by Tue Oct 20 (7 minutes):** send the
+        trick-or-treat note to the Daily Herald, NBC Chicago and WGN,
+        and use *Request indexing* on `/trick-or-treat/`. No outlet has
+        a 2026 list yet.
+     2. **Decide item 276, the $50 Meta test, by Wed Oct 21.** If yes,
+        run it **Oct 22–31**, aimed at the five towns' ZIP codes and
+        landing on **`/trick-or-treat/`** (it has the signup, item 251,
+        and the hours every parent in those ZIPs is looking for), with
+        `utm_source=meta`. A Halloween-hours ad is the most clickable
+        local ad of the year. If no, it goes back to Parked with that
+        reason recorded.
+     3. **Step 8g, the flyers (an hour, by Sat Oct 24):** print the town
+        flyer (item 329's v2 is live) for one café and one library desk.
+
+     Everything else in Needs Ryan stays as it is. **Why now:** the Oct
+     15 send's 1-of-1 open shows delivery works, so the bottleneck is
+     purely the list, and these are the three list-building actions with
+     a deadline this week.
+
+Competitors reviewed this pass: **SparkLoop's Partner Network** (paid
+recommendations, $2–7 per subscriber with minimums, no Buttondown
+integration, skipped), **local parent groups** (no active chapters
+found; Macaroni KID Schaumburg already known), the **Halloween list
+re-check** (still none for 2026), and **a city-backed holiday gift
+guide's listing price** ($45 to 35,000 homes). The design/UX angle is
+**the homepage on a Sunday evening**, when the weekend it shows is
+already over.
 
 
 ## Working agreements for autonomous iteration
