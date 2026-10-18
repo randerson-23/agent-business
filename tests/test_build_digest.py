@@ -5888,3 +5888,24 @@ def test_signups_block_is_omitted_when_empty_and_listed_when_present():
     sec = dict(base, signups=[{"title": "Cooking class", "url": "https://x/c", "opens": date(2026, 10, 21), "opens_label": "Wed, Oct 21", "event_label": "Sat, Nov 7", "town": "Mount Prospect"}])
     html = build_digest.render_combined_email_digest([sec], "Oct 17–18", now)
     assert "Sign-ups opening this week" in html and "Cooking class" in html and "opens Wed, Oct 21, event Sat, Nov 7" in html
+
+
+def test_adult_events_lose_the_kid_friendly_badge_and_kids_crafts_keep_it():
+    # ROADMAP.md item 333.
+    from tagging import infer_tags
+    speakeasy = infer_tags(
+        "BOURBON 'N BRASS SPEAKEASY: LIVE JAZZ",
+        "Join us in our intimate Speakeasy for an evening of Jazz. Food and hand-crafted cocktails are available. All are welcome, family friendly after 5.",
+    )
+    assert "kid_friendly" not in speakeasy
+    assert "kid_friendly" in infer_tags("Kids' Craft Hour", "Make something at the library")
+    assert "kid_friendly" not in infer_tags("Craft Beer Fest", "Sample local brews")
+    assert "kid_friendly" not in infer_tags("Wine tasting for families", "kids welcome")  # veto removes only
+    assert "adults" not in infer_tags("Bar crawl", "21+")
+
+
+def test_leading_contact_token_is_dropped_from_descriptions():
+    detail = "Saturday, October 17 2026 10:00am - 11:15am \n  DesPlainesLionsClub@gmail.com\nThe Des Plaines Lions Club is hosting a volunteer hour!"
+    assert build_digest.strip_description_header(detail).startswith("The Des Plaines Lions Club is hosting")
+    assert build_digest.strip_description_header("https://x.org/signup Bring a friend.") == "Bring a friend."
+    assert build_digest.strip_description_header("Email info@x.org for details.") == "Email info@x.org for details."
