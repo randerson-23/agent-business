@@ -3168,6 +3168,17 @@ def build_holiday_banner(entries: list[dict], now: datetime) -> dict | None:
     return {"towns": towns, "offer": today <= date(today.year, 11, 15)}
 
 
+def hub_town_picks(weekend_events: list[dict], limit: int = 2) -> list[dict]:
+    """ROADMAP.md item 339: a town's next two picks for its homepage card,
+    chosen the way the email's "Don't miss" is (most family-relevant
+    attendable event, ties to the earlier one), never a paid promotion."""
+    pool = [e for e in weekend_events if e.get("attendable", True) and not e.get("sponsored_by")]
+    best = sorted(pool, key=lambda e: (-family_relevance(e), e.get("date_iso") or "9999"))[:limit]
+    picks = prepare_email_events(best)
+    picks.sort(key=lambda e: e.get("date_iso") or "9999")
+    return [{"emoji": email_event_emoji(e), "title": e["title"], "when": e.get("email_when") or e.get("date") or ""} for e in picks]
+
+
 def render_hub_page(
     regions: list[dict],
     region_summaries: list[dict],
@@ -6337,6 +6348,8 @@ def main() -> None:
             {
                 **region,
                 "event_count": event_count,
+                "weekend_picks": hub_town_picks(weekend_events),
+                "weekend_count": sum(1 for e in weekend_events if e.get("attendable", True)),
                 "path": f"{region_id}/",
                 "guide_slugs": [g["slug"] for g in guides],
                 "holiday": holiday_live,
