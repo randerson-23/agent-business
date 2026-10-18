@@ -287,6 +287,10 @@ that limit.
    looks right, wait a day and look at `data/indexnow_log.json` again;
    Bing sometimes takes that long to bind a new key. This costs only
    Bing/DuckDuckGo/Yahoo/ChatGPT-search recrawl speed. Google is unaffected.
+   **Update 2026-10-18 (item 337):** field reports say Bing can bind a site
+   to its **first** key. The build loop will test the retired key once by
+   itself, so there's nothing to do here unless that fails, in which case
+   item 339 asks for a 2-minute Bing API key instead.
 4. ✅ *Done 2026-10-09: the Buttondown handle is now `withinten`, and
    `config/newsletter.yaml` is updated (item 226). Yahoo spam check (item
    239) and the Buttondown settings below are also done: tracking on,
@@ -16716,6 +16720,110 @@ and **WhatsApp Channels** for small local newsrooms (3,200 followers in
 four months in one case study). The design/UX angle is **the email on a
 phone after five new blocks**, which found a Kid-friendly badge on a
 speakeasy.
+
+
+#### Research pass 2026-10-18 (eighty-eighth pass)
+
+Since the last pass the build loop shipped item 333 (the adult-signal
+veto on Kid-friendly, and leading contact tokens dropped). The Oct 15
+send's metrics are **still not recorded**: the backfill's scheduled runs
+start about four hours late (13:00 UTC on Oct 15–17, per the Actions
+history), so today's run should land them. This pass is about
+**findability**. It measures how the site's own pages link to each
+other, takes a second look at the IndexNow 403 with new field evidence,
+and reads the homepage on a phone.
+
+| Angle | What it is / what we found | Why it matters here |
+|---|---|---|
+| **Click depth, measured** (built `docs/`, breadth-first over plain `href` links from the homepage, against `sitemap.xml`) | Of **64 sitemap URLs**: 1 at depth 0, 11 at depth 1, 30 at depth 2, **19 at depth 3** and **3 not reachable at all**. The unreachable three are **`/holidays/`**, **`/issues/`** and **`/issues/2026-10-15/`**, which the sitemap lists but no page links to. The 19 at depth 3 are **every town guide** (fall family guide, birthday parties and kids' classes, seasonal circuit, new to town) | The owner's Search Console showed **15 "Discovered – currently not indexed"** pages on Oct 9. Practitioner guides agree that for a small site this is a crawl-priority signal, not a quality verdict. Google reads internal links as the site's own statement of which pages matter, and Mueller is quoted saying crawl budget is rarely the issue at this size. Orphans and depth-3 guides are exactly that signal, and they are fixable in templates (item 338) |
+| **IndexNow 403, new field evidence** (GitHub: textstack PRs #642–#644; nykon1293.github.io PR #27; theunnamedroads issue #79; onlinefreetools devlog; Microsoft Q&A) | One developer **tested two keys against the same site**. The **older key returned 200** from Bing and `api.indexnow.org`, and the newer key returned **403 `UserForbiddedToAccessSite`** on both, while Yandex accepted both. Their conclusion, titled *"Bing binds a site to its first IndexNow key (confirmed)"*: they **served the old key file again** and pointed the config back at it. Another site's fix was making the ping run only **after** the Pages deploy. Microsoft's Q&A says the official docs don't cover this error | This site's **first** key was `f3b7…b014` (Sep 22). It was rejected **before** the Oct 9 verification, and the only post-verification tries with it were within hours of a CNAME that can take a day to settle. Then the key was rotated on Oct 10. **The retired key is still served until Nov 9**, so a one-request test with it is free. If Bing bound the site to its first key, that request returns 202 (item 337) |
+| **Bing's URL Submission API** (Bing Webmaster Tools) | Separate from IndexNow: an **API key from Bing Webmaster Tools → Settings → API access** submits URLs for the verified site directly, with a daily quota | This route doesn't depend on Bing's key-binding behaviour. It is the fallback if item 337's test fails, and it needs one owner secret (item 339) |
+| **The homepage on a phone (design/UX)** | At 390px the Halloween banner leads well, with five towns' hours and a clear button. Below it, the page switches to **supply-side language**: a large red block *"5 towns · 1534 live updates this week"*, and five town cards that describe **where data comes from** (*"Pulled automatically from the Village, Memorial Library, and Park District…"*) with *"287 live updates this week"*. **No town card shows a single event.** The guides and the past-issues archive aren't linked from the page at all (row 1) | A parent landing here wants *what's on*, not *how it's gathered*. *"Live updates"* is internal language. The homepage is also the strongest internal-link source on the site, so it should point at the pages Google hasn't reached yet (item 340) |
+
+#### P1 (new)
+
+337. **Test the first IndexNow key, then keep whichever Bing accepts.**
+     Build loop, `fetchers.py` / `build_digest.py`, automated:
+
+     - On the next build where the current key gets 403, send **one**
+       extra request (one URL, the homepage) with each key in
+       `RETIRED_INDEXNOW_KEYS` whose file is still published. Log each
+       result in `data/indexnow_log.json` with a `key_suffix` field (the
+       last four characters only).
+     - If a retired key returns **200 or 202**, make it `INDEXNOW_KEY`
+       again. Keep its file **permanently**, not just until Nov 9, keep
+       the newer key's file for 30 days, and record the result in the
+       Needs Ryan 3c note.
+     - If every key returns 403, log it once and stop retrying for 7
+       days, so the log doesn't fill with identical failures.
+
+     Also confirm the ping runs **after** the commit that publishes the
+     key file, not in the same step before Pages deploys. Today the
+     `key_file_ok` check fetches the live file first, which should
+     already guarantee this, but the test is cheap. Tests: the retry
+     happens only on 403, the switch-back rule, and the 7-day backoff.
+
+338. **Link every sitemap page within two clicks of the homepage, and
+     test it.** Build loop, templates plus one test:
+
+     - **Hub:** add a compact *"Guides & past issues"* section below
+       the town cards. It links each town's four guides (grouped by town,
+       one line each), `/holidays/` and `/issues/`.
+     - **Site footer:** add `Past issues` (`/issues/`) and `Holidays`
+       (`/holidays/`) beside the existing links, so neither page is an
+       orphan again.
+     - **`/issues/`:** link each issue page, newest first. **Each issue
+       page** links back to `/issues/` and to the next and previous
+       issue.
+     - **Test** (`tests/test_build_digest.py`): build, breadth-first walk
+       plain `href`s from `docs/index.html`, and assert every
+       `sitemap.xml` URL is reached at **depth ≤ 2**. That turns this
+       pass's measurement into a regression check.
+
+     After it ships, the owner can use *Request indexing* in Search
+     Console on `/issues/` and one guide (2 minutes, optional). Item
+     290's snapshot will show whether *"Discovered – currently not
+     indexed"* falls.
+
+340. **Make the homepage town cards show what's on, in plain words.**
+     Design/UX, `hub.html.j2`:
+
+     - Each town card shows its **next two picks** (emoji, title, day
+       and time; the same selection the email's "Don't miss" uses,
+       restricted to that town), then **"See all N this weekend →"**,
+       where N counts only this weekend's events.
+     - Replace *"287 live updates this week"* with *"N things this
+       weekend"*. Shorten the source paragraph to one muted line: *"From
+       the village, library and park district."*
+     - Remove the big red *"5 towns · 1534 live updates this week"*
+       block. The hero already says five towns, and the "This weekend"
+       box below it carries the real count.
+
+     Keep each card a single link target for its town. Tests: two picks
+     per town when available, the count matches the town's weekend
+     list, and the phrase *"live updates"* no longer appears on the hub.
+     The hub's inline JS budget (item 307's check) is unaffected,
+     since this is markup only.
+
+#### P2 (new)
+
+339. **Bing URL Submission API as the fallback to IndexNow.** Build loop
+     plus owner. Only if item 337's test finds no accepted key. **Owner (2
+     minutes):** Bing Webmaster Tools → Settings → API access → copy the
+     API key into the repository secret `BING_WEBMASTER_API_KEY`. **Build
+     loop:** when the secret is set, submit the **changed** URLs (item
+     265's list) to Bing's URL submission endpoint for
+     `https://withintenmiles.com`, within the daily quota, and log the
+     status beside the IndexNow entries. Skip quietly without the
+     secret. Tests: no request without the secret, and the URL list is
+     capped at the quota.
+
+Competitors reviewed this pass: **the site's own internal-link depth**
+(3 orphan pages and 19 guides three clicks deep), **field reports on
+IndexNow's first-key binding** (a confirmed case where the original key
+worked and the replacement did not), and **Bing's URL Submission API**.
+The design/UX angle is **the homepage on a phone**, where the town
+cards describe sources instead of events.
 
 
 ## Working agreements for autonomous iteration
