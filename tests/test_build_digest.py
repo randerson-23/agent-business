@@ -2377,7 +2377,7 @@ def test_render_hub_page_lists_regions():
     html = build_digest.render_hub_page([], summaries, datetime.now(timezone.utc))
     assert "Mount Prospect" in html
     assert "mount-prospect-60056/" in html
-    assert "3 live update" in html
+    assert "live update" not in html and "Nothing dated this weekend yet" in html
 
 
 def test_render_hub_page_subheading_counts_actual_regions():
@@ -5917,3 +5917,22 @@ def test_issue_pages_link_to_the_previous_and_next_issue():
     assert f"{build_digest.SITE_BASE_URL}issues/2026-10-22/" in page and f"{build_digest.SITE_BASE_URL}issues/2026-10-08/" in page
     alone = build_digest.render_issue_page(_issue())
     assert "Previous issue" not in alone and "Next issue" not in alone
+
+
+def test_hub_town_cards_show_two_picks_and_the_weekend_count_not_live_updates():
+    # ROADMAP.md item 339.
+    events = [
+        {"title": "Fall Festival", "date_iso": "2026-10-24T11:00:00", "date": "Oct 24", "tags": ["kid_friendly", "free"], "attendable": True},
+        {"title": "Jazz Night", "date_iso": "2026-10-23T20:00:00", "date": "Oct 23", "tags": [], "attendable": True},
+        {"title": "Storytime", "date_iso": "2026-10-24T10:00:00", "date": "Oct 24", "tags": ["kid_friendly"], "attendable": True},
+        {"title": "Paid", "date_iso": "2026-10-24T09:00:00", "date": "Oct 24", "tags": [], "attendable": True, "sponsored_by": "X"},
+        {"title": "Office closed", "date_iso": "2026-10-24T09:00:00", "date": "Oct 24", "tags": [], "attendable": False},
+    ]
+    picks = build_digest.hub_town_picks(events)
+    assert len(picks) == 2 and {p["title"] for p in picks} == {"Fall Festival", "Storytime"}
+    assert picks[0]["title"] == "Storytime"  # earlier first
+    assert build_digest.hub_town_picks([]) == []
+    summaries = [{"name": "Mount Prospect", "zip": "60056", "state": "IL", "tagline": "t", "path": "mount-prospect-60056/", "event_count": 287, "weekend_picks": picks, "weekend_count": 3, "guides": []}]
+    html = build_digest.render_hub_page([], summaries, datetime(2026, 10, 20, 15, tzinfo=timezone.utc), stats={"region_count": 1, "event_count": 287, "weekend_count": 3, "weekend_date_range": "Oct 23–25", "free_count": 1, "today_count": 0})
+    assert "live update" not in html and "See all 3 this weekend" in html and "Fall Festival" in html
+    assert "From the village, library and park district." in html

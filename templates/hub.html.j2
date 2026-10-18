@@ -156,7 +156,7 @@
      layout - no span math needed to keep them proportioned. */
   .bento-grid {
     display: grid;
-    grid-template-columns: 2fr 1fr;
+    grid-template-columns: 1fr;
     grid-auto-rows: minmax(120px, auto);
     gap: 16px;
     margin-bottom: 18px;
@@ -258,6 +258,8 @@
   }
   .region-card h2 { margin: 0; font-size: 21px; }
   .region-card p { margin: 0; color: var(--muted); font-size: 13.5px; }
+  .region-card .picks { display: flex; flex-direction: column; gap: 4px; margin-top: 6px; font-size: 14px; color: var(--ink); }
+  .region-card .pick-when { color: var(--muted); display: block; font-size: 13px; }
   .region-card .count {
     font-size: 12.5px;
     color: var(--accent-2-text);
@@ -472,10 +474,6 @@
       <h2>{{ stats.weekend_date_range }}</h2>
       <p>{{ stats.weekend_count }} thing{{ 's' if stats.weekend_count != 1 else '' }} happening across every region &rarr;</p>
     </a>
-    <div class="bento-tile bento-stat">
-      <span class="bento-stat-number">{{ stats.region_count }}</span>
-      <span class="bento-stat-label">town{{ 's' if stats.region_count != 1 else '' }} · {{ stats.event_count }} live update{{ 's' if stats.event_count != 1 else '' }} this week</span>
-    </div>
   </div>
 
   {# ROADMAP.md item 149: the hub-level /today and /free merged views -
@@ -503,8 +501,11 @@
     <a class="bento-tile region-card" href="{{ r.path }}">
       <span class="zip">{{ r.zip }} · {{ r.state }}</span>
       <h2>{{ r.name }}</h2>
-      <p>{{ r.tagline }}</p>
-      <span class="count">{{ r.event_count }} live update{{ 's' if r.event_count != 1 else '' }} this week</span>
+      <p>From the village, library and park district.</p>
+      {% if r.weekend_picks %}
+      <span class="picks">{% for p in r.weekend_picks %}<span class="pick"><span aria-hidden="true">{{ p.emoji }}</span> {{ p.title|short(60) }} <span class="pick-when">{{ p.when }}</span></span>{% endfor %}</span>
+      {% endif %}
+      <span class="count">{% if r.weekend_count %}See all {{ r.weekend_count }} this weekend &rarr;{% else %}Nothing dated this weekend yet &rarr;{% endif %}</span>
     </a>
     {% endfor %}
   </div>

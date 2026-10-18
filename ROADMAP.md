@@ -16785,7 +16785,7 @@ and reads the homepage on a phone.
      290's snapshot will show whether *"Discovered – currently not
      indexed"* falls.
 
-339. **Make the homepage town cards show what's on, in plain words.**
+339. ✅ **DONE (2026-10-18): each homepage town card shows its next two picks (emoji, title, day and time; chosen like the email's "Don't miss": most family-relevant attendable event, never a paid promotion) and "See all N this weekend →" (N counts this weekend's attendable events; "Nothing dated this weekend yet →" when none); the source paragraph is one line ("From the village, library and park district."); the big "towns · N live updates this week" block is gone and the phrase "live updates" no longer appears on the hub; each card is still one link. Tests added. Not browser-verified at 390px.** **Make the homepage town cards show what's on, in plain words.**
      Design/UX, `hub.html.j2`:
 
      - Each town card shows its **next two picks** (emoji, title, day
