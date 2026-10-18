@@ -1,12 +1,6 @@
 {
- "fetched_at": "2026-10-17T22:03:19+00:00",
+ "fetched_at": "2026-10-18T05:58:40+00:00",
  "items": [
-  {
-   "date": "Sat, 17 Oct 2026 09:00:00 +0000",
-   "detail": "Saturday, October 17 2026 9:00am - 4:30pm \n Stock up on great books at bargain prices during the Friends of the Library's used book sale.",
-   "title": "Friends Book Sale",
-   "url": "https://mppl.libnet.info/event/13845865"
-  },
   {
    "date": "Sun, 18 Oct 2026 11:00:00 +0000",
    "detail": "Sunday, October 18 2026 11:00am - 4:00pm \n Stock up on great books at bargain prices during the Friends of the Library's used book sale.",
@@ -360,6 +354,12 @@
    "detail": "Sunday, November 01 2026 12:00am - 11:59pm \n Looking for your next read? Want a suggestion that fits a category in our year-round Book Bingo? We've got you covered!",
    "title": "Adult BookFix: Complicated Relationships",
    "url": "https://mppl.libnet.info/event/17206113"
+  },
+  {
+   "date": "Mon, 02 Nov 2026 00:00:00 +0000",
+   "detail": "Monday, November 02 2026 12:00am - 11:59pm \n Stop by the Youth desk and pick up a fun DIY craft to make at home!",
+   "title": "Crafts-to-Go Kits",
+   "url": "https://mppl.libnet.info/event/14829755"
   }
  ],
  "source": "Mount Prospect Public Library — Events"

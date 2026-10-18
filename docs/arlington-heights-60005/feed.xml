@@ -3,24 +3,8 @@
 <channel>
   <title>Within Ten — Upcoming events in Arlington Heights</title>
   <link>https://withintenmiles.com/</link>
-  <description>Upcoming events in Arlington Heights, soonest first - aggregated automatically from village, library, park district and school-district calendars. This build reached 3 of 5 configured sources. 1 source is shown from its last update, up to 11 hours ago.</description>
-  <lastBuildDate>Sat, 17 Oct 2026 22:03:19 +0000</lastBuildDate>
-  <item>
-    <title>Arlington Heights: Beginning ESL</title>
-    <link>https://withintenmiles.com/arlington-heights-60005/#ev-beginning-esl-2026-10-17</link>
-    <guid isPermaLink="true">https://withintenmiles.com/arlington-heights-60005/#ev-beginning-esl-2026-10-17</guid>
-    <description>Official listing: https://www.ahml.info/scheduling/reservation/234242</description>
-    <pubDate>Sat, 17 Oct 2026 00:00:00 +0000</pubDate>
-    <source url="https://www.ahml.info/scheduling/reservation/234242">Arlington Heights Memorial Library — Events</source>
-  </item>
-  <item>
-    <title>Arlington Heights: Tell Your Cellar Story</title>
-    <link>https://withintenmiles.com/arlington-heights-60005/#ev-tell-your-cellar-story-2026-10-17</link>
-    <guid isPermaLink="true">https://withintenmiles.com/arlington-heights-60005/#ev-tell-your-cellar-story-2026-10-17</guid>
-    <description>Step back in time and share your memories of The Cellar, Arlington Heights’ iconic historic music venue! Whether you spent nights in the crowd, worked behind… Official listing: https://www.ahpd.org/event/tell-your-cellar-story/</description>
-    <pubDate>Sat, 17 Oct 2026 14:00:00 +0000</pubDate>
-    <source url="https://www.ahpd.org/event/tell-your-cellar-story/">Arlington Heights Park District — Events</source>
-  </item>
+  <description>Upcoming events in Arlington Heights, soonest first - aggregated automatically from village, library, park district and school-district calendars. This build reached 4 of 5 configured sources.</description>
+  <lastBuildDate>Sun, 18 Oct 2026 05:58:40 +0000</lastBuildDate>
   <item>
     <title>Arlington Heights: Makerplace Wire Wrapped Jewelry: Symmetrical Ear Wires and Dangle Earrings</title>
     <link>https://withintenmiles.com/arlington-heights-60005/#ev-makerplace-wire-wrapped-jewelry-symmetrical-ear-wires-and-da-2026-10-18</link>
@@ -404,6 +388,14 @@
     <description>Purchase TicketsCharlotte’s Web A part of Metropolis Family Series May 5, 2027 – May 29, 2027 American Sign Language interpreted performance: by request… Official listing: https://www.metropolisarts.com/event/charlottes-web/</description>
     <pubDate>Wed, 05 May 2027 00:00:00 +0000</pubDate>
     <source url="https://www.metropolisarts.com/event/charlottes-web/">Metropolis Performing Arts Centre — Shows</source>
+  </item>
+  <item>
+    <title>Arlington Heights: The Four C-Notes: The Premier Four Seasons Tribute</title>
+    <link>https://withintenmiles.com/arlington-heights-60005/#ev-the-four-c-notes-the-premier-four-seasons-tribute-2027-05-24</link>
+    <guid isPermaLink="true">https://withintenmiles.com/arlington-heights-60005/#ev-the-four-c-notes-the-premier-four-seasons-tribute-2027-05-24</guid>
+    <description>Purchase Tickets May 24th, 2027: 7:30pmMay 25th, 2027: 2:00pm Tickets: $40 ABOUT THE SHOW: THE FOUR C NOTES are the Midwest’s ONLY tribute recreating the… Official listing: https://www.metropolisarts.com/event/the-four-c-notes-2027/</description>
+    <pubDate>Mon, 24 May 2027 00:00:00 +0000</pubDate>
+    <source url="https://www.metropolisarts.com/event/the-four-c-notes-2027/">Metropolis Performing Arts Centre — Shows</source>
   </item>
 </channel>
 </rss>

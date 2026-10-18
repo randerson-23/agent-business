@@ -2,8 +2,8 @@
   "@context": "https://schema.org",
   "@type": "ItemList",
   "name": "Upcoming events in Palatine — Within Ten",
-  "dateModified": "2026-10-17T22:03:19+00:00",
-  "numberOfItems": 33,
+  "dateModified": "2026-10-18T05:58:40+00:00",
+  "numberOfItems": 34,
   "itemListElement": [
     {
       "@type": "ListItem",
@@ -760,6 +760,29 @@
           }
         },
         "description": "Please join us virtually for an overview of programming availab"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 34,
+      "item": {
+        "@type": "Event",
+        "name": "Village Trick-or-Treating Hours",
+        "startDate": "2026-10-31T15:00:00-05:00",
+        "url": "https://withintenmiles.com/palatine-60067/#ev-village-trick-or-treating-hours-2026-10-31",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Palatine, IL",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Palatine",
+            "addressRegion": "IL"
+          }
+        },
+        "sameAs": "https://www.palatine.il.us/common/modules/iCalendar/iCalendar.aspx?feed=calendar&catID=14",
+        "description": "https://www.palatine.il.us/calendar.aspx?EID=2176"
       }
     }
   ]

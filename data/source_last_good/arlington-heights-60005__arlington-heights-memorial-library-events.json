@@ -1,12 +1,6 @@
 {
- "fetched_at": "2026-10-17T22:03:19+00:00",
+ "fetched_at": "2026-10-18T05:58:40+00:00",
  "items": [
-  {
-   "date": "2026-10-17",
-   "detail": "",
-   "title": "Beginning ESL",
-   "url": "https://www.ahml.info/scheduling/reservation/234242"
-  },
   {
    "date": "2026-10-18",
    "detail": "",
@@ -136,14 +130,14 @@
   {
    "date": null,
    "detail": "",
-   "title": "Culture & Conversation (intermediate +)",
-   "url": "https://www.ahml.info/scheduling/reservation/232399"
+   "title": "Murder, Mayhem, and the Mob Part 4: An Offer You Can't Refuse",
+   "url": "https://www.ahml.info/scheduling/reservation/214578"
   },
   {
    "date": null,
    "detail": "",
-   "title": "Murder, Mayhem, and the Mob Part 4: An Offer You Can't Refuse",
-   "url": "https://www.ahml.info/scheduling/reservation/214578"
+   "title": "Culture & Conversation (intermediate +)",
+   "url": "https://www.ahml.info/scheduling/reservation/232399"
   },
   {
    "date": null,
@@ -360,6 +354,12 @@
    "detail": "",
    "title": "Wednesday Fun Night",
    "url": "https://www.ahml.info/scheduling/reservation/224232"
+  },
+  {
+   "date": null,
+   "detail": "",
+   "title": "Beginning ESL",
+   "url": "https://www.ahml.info/scheduling/reservation/231315"
   }
  ],
  "source": "Arlington Heights Memorial Library — Events"

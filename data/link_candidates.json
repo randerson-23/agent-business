@@ -54,10 +54,6 @@
   },
   {
    "region": "arlington-heights-60005",
-   "url": "https://www.ahml.info/scheduling/reservation/234242"
-  },
-  {
-   "region": "arlington-heights-60005",
    "url": "https://www.ahml.info/scheduling/reservation/234688"
   },
   {
@@ -71,10 +67,6 @@
   {
    "region": "arlington-heights-60005",
    "url": "https://www.ahpd.org/event/pumpkin-splash-2026/"
-  },
-  {
-   "region": "arlington-heights-60005",
-   "url": "https://www.ahpd.org/event/tell-your-cellar-story/"
   },
   {
    "region": "arlington-heights-60005",
@@ -103,6 +95,10 @@
   {
    "region": "des-plaines-60016",
    "url": "https://desplaines.libnet.info/event/14863262"
+  },
+  {
+   "region": "des-plaines-60016",
+   "url": "https://desplaines.libnet.info/event/14863263"
   },
   {
    "region": "des-plaines-60016",
@@ -214,10 +210,6 @@
   },
   {
    "region": "des-plaines-60016",
-   "url": "https://desplaines.libnet.info/event/16341087"
-  },
-  {
-   "region": "des-plaines-60016",
    "url": "https://desplaines.libnet.info/event/16431781"
   },
   {
@@ -251,10 +243,6 @@
   {
    "region": "des-plaines-60016",
    "url": "https://desplaines.libnet.info/event/16742528"
-  },
-  {
-   "region": "des-plaines-60016",
-   "url": "https://desplaines.libnet.info/event/16864895"
   },
   {
    "region": "des-plaines-60016",
@@ -394,10 +382,6 @@
   },
   {
    "region": "des-plaines-60016",
-   "url": "https://desplaines.libnet.info/event/17218186"
-  },
-  {
-   "region": "des-plaines-60016",
    "url": "https://desplaines.libnet.info/event/17253016"
   },
   {
@@ -498,10 +482,6 @@
   },
   {
    "region": "des-plaines-60016",
-   "url": "https://desplainestheatre.com/event/bourbon-n-brass-speakeasy-live-jazz-with-donny-demarco-tune-town-4/"
-  },
-  {
-   "region": "des-plaines-60016",
    "url": "https://desplainestheatre.com/event/bourbon-n-brass-speakeasy-live-jazz-with-the-bourbon-n-brass-prohibition-band-3/"
   },
   {
@@ -526,11 +506,11 @@
   },
   {
    "region": "des-plaines-60016",
-   "url": "https://desplainestheatre.com/event/the-buddy-rich-big-band-machine/"
+   "url": "https://desplainestheatre.com/event/sincerely-sinatra-big-band-show-starring-nick-pontarelli-with-special-guest-close-to-karen-a-salute-to-karen-carpenter-with-gina-knight/"
   },
   {
    "region": "des-plaines-60016",
-   "url": "https://desplainestheatre.com/event/the-musical-box-proudly-presents-and-then-there-was-phil-2/"
+   "url": "https://desplainestheatre.com/event/the-buddy-rich-big-band-machine/"
   },
   {
    "region": "des-plaines-60016",
@@ -543,10 +523,6 @@
   {
    "region": "mount-prospect-60056",
    "url": "https://mppl.libnet.info/event/13273437"
-  },
-  {
-   "region": "mount-prospect-60056",
-   "url": "https://mppl.libnet.info/event/13845865"
   },
   {
    "region": "mount-prospect-60056",
@@ -770,6 +746,10 @@
   },
   {
    "region": "mount-prospect-60056",
+   "url": "https://mppl.libnet.info/event/17206113"
+  },
+  {
+   "region": "mount-prospect-60056",
    "url": "https://mppl.libnet.info/event/17466686"
   },
   {
@@ -914,10 +894,6 @@
   },
   {
    "region": "wheeling-60090",
-   "url": "https://indiantrails.libnet.info/event/16659178"
-  },
-  {
-   "region": "wheeling-60090",
    "url": "https://indiantrails.libnet.info/event/16663064"
   },
   {
@@ -1003,6 +979,10 @@
   {
    "region": "wheeling-60090",
    "url": "https://indiantrails.libnet.info/event/17158749"
+  },
+  {
+   "region": "wheeling-60090",
+   "url": "https://indiantrails.libnet.info/event/17178977"
   },
   {
    "region": "wheeling-60090",
