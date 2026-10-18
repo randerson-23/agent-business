@@ -290,7 +290,7 @@ that limit.
    **Update 2026-10-18 (item 337):** field reports say Bing can bind a site
    to its **first** key. The build loop will test the retired key once by
    itself, so there's nothing to do here unless that fails, in which case
-   item 339 asks for a 2-minute Bing API key instead.
+   item 340 asks for a 2-minute Bing API key instead.
 4. ✅ *Done 2026-10-09: the Buttondown handle is now `withinten`, and
    `config/newsletter.yaml` is updated (item 226). Yahoo spam check (item
    239) and the Buttondown settings below are also done: tracking on,
@@ -16737,8 +16737,8 @@ and reads the homepage on a phone.
 |---|---|---|
 | **Click depth, measured** (built `docs/`, breadth-first over plain `href` links from the homepage, against `sitemap.xml`) | Of **64 sitemap URLs**: 1 at depth 0, 11 at depth 1, 30 at depth 2, **19 at depth 3** and **3 not reachable at all**. The unreachable three are **`/holidays/`**, **`/issues/`** and **`/issues/2026-10-15/`**, which the sitemap lists but no page links to. The 19 at depth 3 are **every town guide** (fall family guide, birthday parties and kids' classes, seasonal circuit, new to town) | The owner's Search Console showed **15 "Discovered – currently not indexed"** pages on Oct 9. Practitioner guides agree that for a small site this is a crawl-priority signal, not a quality verdict. Google reads internal links as the site's own statement of which pages matter, and Mueller is quoted saying crawl budget is rarely the issue at this size. Orphans and depth-3 guides are exactly that signal, and they are fixable in templates (item 338) |
 | **IndexNow 403, new field evidence** (GitHub: textstack PRs #642–#644; nykon1293.github.io PR #27; theunnamedroads issue #79; onlinefreetools devlog; Microsoft Q&A) | One developer **tested two keys against the same site**. The **older key returned 200** from Bing and `api.indexnow.org`, and the newer key returned **403 `UserForbiddedToAccessSite`** on both, while Yandex accepted both. Their conclusion, titled *"Bing binds a site to its first IndexNow key (confirmed)"*: they **served the old key file again** and pointed the config back at it. Another site's fix was making the ping run only **after** the Pages deploy. Microsoft's Q&A says the official docs don't cover this error | This site's **first** key was `f3b7…b014` (Sep 22). It was rejected **before** the Oct 9 verification, and the only post-verification tries with it were within hours of a CNAME that can take a day to settle. Then the key was rotated on Oct 10. **The retired key is still served until Nov 9**, so a one-request test with it is free. If Bing bound the site to its first key, that request returns 202 (item 337) |
-| **Bing's URL Submission API** (Bing Webmaster Tools) | Separate from IndexNow: an **API key from Bing Webmaster Tools → Settings → API access** submits URLs for the verified site directly, with a daily quota | This route doesn't depend on Bing's key-binding behaviour. It is the fallback if item 337's test fails, and it needs one owner secret (item 339) |
-| **The homepage on a phone (design/UX)** | At 390px the Halloween banner leads well, with five towns' hours and a clear button. Below it, the page switches to **supply-side language**: a large red block *"5 towns · 1534 live updates this week"*, and five town cards that describe **where data comes from** (*"Pulled automatically from the Village, Memorial Library, and Park District…"*) with *"287 live updates this week"*. **No town card shows a single event.** The guides and the past-issues archive aren't linked from the page at all (row 1) | A parent landing here wants *what's on*, not *how it's gathered*. *"Live updates"* is internal language. The homepage is also the strongest internal-link source on the site, so it should point at the pages Google hasn't reached yet (item 340) |
+| **Bing's URL Submission API** (Bing Webmaster Tools) | Separate from IndexNow: an **API key from Bing Webmaster Tools → Settings → API access** submits URLs for the verified site directly, with a daily quota | This route doesn't depend on Bing's key-binding behaviour. It is the fallback if item 337's test fails, and it needs one owner secret (item 340) |
+| **The homepage on a phone (design/UX)** | At 390px the Halloween banner leads well, with five towns' hours and a clear button. Below it, the page switches to **supply-side language**: a large red block *"5 towns · 1534 live updates this week"*, and five town cards that describe **where data comes from** (*"Pulled automatically from the Village, Memorial Library, and Park District…"*) with *"287 live updates this week"*. **No town card shows a single event.** The guides and the past-issues archive aren't linked from the page at all (row 1) | A parent landing here wants *what's on*, not *how it's gathered*. *"Live updates"* is internal language. The homepage is also the strongest internal-link source on the site, so it should point at the pages Google hasn't reached yet (item 339) |
 
 #### P1 (new)
 
@@ -16785,7 +16785,7 @@ and reads the homepage on a phone.
      290's snapshot will show whether *"Discovered – currently not
      indexed"* falls.
 
-340. **Make the homepage town cards show what's on, in plain words.**
+339. **Make the homepage town cards show what's on, in plain words.**
      Design/UX, `hub.html.j2`:
 
      - Each town card shows its **next two picks** (emoji, title, day
@@ -16807,7 +16807,7 @@ and reads the homepage on a phone.
 
 #### P2 (new)
 
-339. **Bing URL Submission API as the fallback to IndexNow.** Build loop
+340. **Bing URL Submission API as the fallback to IndexNow.** Build loop
      plus owner. Only if item 337's test finds no accepted key. **Owner (2
      minutes):** Bing Webmaster Tools → Settings → API access → copy the
      API key into the repository secret `BING_WEBMASTER_API_KEY`. **Build
