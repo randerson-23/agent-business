@@ -16763,7 +16763,7 @@ and reads the homepage on a phone.
      already guarantee this, but the test is cheap. Tests: the retry
      happens only on 403, the switch-back rule, and the 7-day backoff.
 
-338. **Link every sitemap page within two clicks of the homepage, and
+338. ✅ **DONE (2026-10-18): a "Guides & past issues" section on the homepage (each town's guides, Holidays, Past weekly issues) and Past issues / Holidays in its footer took 22 sitemap pages from depth 3 or unreachable to depth 2 or less; each issue page links to the previous and next issue (`/issues/` already linked every issue); `scripts/check_link_depth.py` walks the built `docs/` from the homepage and fails if any sitemap URL is deeper than two clicks, run as a CI step after the smoke build and unit-tested on a fake site.** **Link every sitemap page within two clicks of the homepage, and
      test it.** Build loop, templates plus one test:
 
      - **Hub:** add a compact *"Guides & past issues"* section below

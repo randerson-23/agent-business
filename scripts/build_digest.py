@@ -1881,7 +1881,7 @@ def load_issues(directory: Path | None = None) -> list[dict]:
     return issues
 
 
-def render_issue_page(issue: dict) -> str:
+def render_issue_page(issue: dict, newer: dict | None = None, older: dict | None = None) -> str:
     """One archived issue as a page on this site: the sent HTML with its
     hidden preheader removed, a self-canonical, and a small header bar. The
     dated content is left exactly as sent."""
@@ -1892,7 +1892,13 @@ def render_issue_page(issue: dict) -> str:
     bar = (
         '<div style="font-family:Arial,Helvetica,sans-serif;font-size:14px;text-align:center;padding:10px 16px;background:#f6f1ea;color:#201e1d;">'
         f'Archived issue, sent {label}. <a href="{SITE_BASE_URL}issues/" style="color:#ae1800;">All issues</a> · '
-        f'<a href="{SITE_BASE_URL}join/" style="color:#ae1800;">Get it by email every Thursday</a></div>'
+        f'<a href="{SITE_BASE_URL}join/" style="color:#ae1800;">Get it by email every Thursday</a>'
+        + "".join(
+            f' · <a href="{SITE_BASE_URL}issues/{other["date"]}/" style="color:#ae1800;">{word} issue</a>'
+            for word, other in (("Previous", older), ("Next", newer))
+            if other
+        )
+        + "</div>"
     )
     return re.sub(r"(<body[^>]*>)", lambda m: m.group(1) + "\n" + bar, html, count=1)
 
@@ -6474,10 +6480,13 @@ def main() -> None:
     (trick_or_treat_dir / "index.html").write_text(trick_or_treat_html, encoding="utf-8")
     logger.info("Wrote %s", trick_or_treat_dir / "index.html")
     issues = load_issues()
-    for issue in issues:
+    for i, issue in enumerate(issues):
         issue_dir = OUTPUT_DIR / "issues" / issue["date"]
         issue_dir.mkdir(parents=True, exist_ok=True)
-        (issue_dir / "index.html").write_text(render_issue_page(issue), encoding="utf-8")
+        (issue_dir / "index.html").write_text(
+            render_issue_page(issue, newer=issues[i - 1] if i > 0 else None, older=issues[i + 1] if i + 1 < len(issues) else None),
+            encoding="utf-8",
+        )
     if issues:
         (OUTPUT_DIR / "issues" / "index.html").write_text(render_issues_index(issues, now, analytics), encoding="utf-8")
         logger.info("Wrote %d archived issue(s) and the issues index", len(issues))
