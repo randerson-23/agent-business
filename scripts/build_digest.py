@@ -4616,12 +4616,17 @@ def event_time_label(date_iso: str | None) -> str | None:
     return dt.strftime("%-I:%M %p")
 
 
+_LEADING_CONTACT_TOKEN = re.compile(r"^(?:[\w.+-]+@[\w-]+(?:\.[\w-]+)+|https?://\S+|www\.\S+)\s+(?=\S)")
+
+
 def strip_description_header(detail: str | None) -> str:
     """A description with its leading Communico date/time header removed and
     whitespace collapsed - what a card shows beneath the date and time it
     already displays."""
     text = _DESCRIPTION_DATE_PREFIX.sub("", detail or "")
-    return re.sub(r"\s+", " ", text).strip(" -–:")
+    text = re.sub(r"\s+", " ", text).strip(" -–:")
+    # ROADMAP.md item 333: a bare contact email or URL ahead of the first sentence.
+    return _LEADING_CONTACT_TOKEN.sub("", text)
 
 
 def email_blurb(detail: str | None, title: str = "", max_len: int = EMAIL_BLURB_MAX_LEN) -> str | None:

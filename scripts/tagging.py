@@ -110,6 +110,13 @@ TAG_DISPLAY: dict[str, dict[str, str]] = {
 }
 
 
+_NOT_A_KIDS_CRAFT = _re.compile(r"hand-?craft(?:ed)?|craft (?:beer|cocktail|brew|spirit|distill)\w*")
+ADULT_SIGNALS: tuple[str, ...] = (
+    "21+", "ages 21", "speakeasy", "bourbon", "cocktail", "wine tasting", "beer tasting",
+    "brewery", "happy hour", "bar crawl", "adults only",
+)
+
+
 def infer_tags(*text_parts: str) -> list[str]:
     """Infer tags from arbitrary text (title, detail, section name, ...).
 
@@ -118,11 +125,16 @@ def infer_tags(*text_parts: str) -> list[str]:
     haystack = " " + " ".join(p for p in text_parts if p).lower() + " "
     if not haystack.strip():
         return []
+    # ROADMAP.md item 333: "craft" in a drinks sense is not a kids' craft.
+    kid_haystack = _NOT_A_KIDS_CRAFT.sub(" ", haystack)
     matched = {
         tag
         for tag, keywords in TAG_KEYWORDS.items()
-        if any(keyword in haystack for keyword in keywords)
+        if any(keyword in (kid_haystack if tag == "kid_friendly" else haystack) for keyword in keywords)
     }
+    # An adult signal only ever removes the kid-friendly tag.
+    if "kid_friendly" in matched and any(signal in haystack for signal in ADULT_SIGNALS):
+        matched.discard("kid_friendly")
     return sorted(matched)
 
 

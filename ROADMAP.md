@@ -16624,7 +16624,7 @@ no-cost channel.
 
 #### P1 (new)
 
-333. **Stop adult events getting the Kid-friendly badge, and clean
+333. ✅ **DONE (2026-10-18): the trigger was "craft" inside "hand-crafted cocktails" (and "family" in one listing); "hand-crafted", "craft beer/cocktail/brew/spirit" no longer match; an adult-signal veto (21+, ages 21, speakeasy, bourbon, cocktail, wine/beer tasting, brewery, happy hour, bar crawl, adults only) removes `kid_friendly` only; `strip_description_header` drops a leading bare email or URL token. Tests added.** **Stop adult events getting the Kid-friendly badge, and clean
      leading contact junk from descriptions.** Build loop, `tagging.py`
      and the description cleaner:
 
