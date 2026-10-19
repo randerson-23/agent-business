@@ -220,6 +220,7 @@ doesn't re-suggest something already shipped.
 
 **Build queue (by deadline; refreshed by the research loop, item 346).**
 Pick from the top unless the owner has flagged something else:
+0. **340 + 347** (Bing URL Submission API, ready for the owner's secret), **348** (the Halloween issue, before Oct 28), **349** (the free-plan cap warning, before the Meta test starts Oct 22).
 1. **334**: email block polish (before the Oct 22 send).
 2. **306**: the OpenStreetMap prospect list (by Oct 25).
 3. **323**: leaf pickup (in season now).
@@ -247,6 +248,11 @@ that limit.
   Oct 22–31 for the five towns' ZIP codes, landing on `/trick-or-treat/`.
   The build loop is preparing `META_AD_KIT.md` with the copy, images, ZIPs
   and settings (item 344), so setup is about 10 minutes.
+  If the test works, expect to move to Buttondown's paid plan (about
+  $9/month as reported) once the list nears 100. The free plan stops at
+  100 (item 349).
+- **Any day, 2 min:** add the Bing API key as `BING_WEBMASTER_API_KEY`
+  (step 3c). IndexNow refused both keys.
 - **By Sat Oct 24, about an hour:** print the town flyer for one café and
   one library desk (step 8g).
 
@@ -312,6 +318,11 @@ that limit.
    to its **first** key. The build loop will test the retired key once by
    itself, so there's nothing to do here unless that fails, in which case
    item 340 asks for a 2-minute Bing API key instead.
+   **Result 2026-10-19 (item 347): both keys were refused, so this is now a
+   2-minute action:** Bing Webmaster Tools → Settings → API access →
+   generate the API key → add it as the repository secret
+   `BING_WEBMASTER_API_KEY`. The build loop submits changed pages within
+   Bing's daily quota from then on.
 4. ✅ *Done 2026-10-09: the Buttondown handle is now `withinten`, and
    `config/newsletter.yaml` is updated (item 226). Yahoo spam check (item
    239) and the Buttondown settings below are also done: tracking on,
@@ -17023,6 +17034,113 @@ Competitors reviewed this pass: **Meta's ZIP-code targeting rules**
 roadmap's own deadline order**. The design/UX angle is **the Halloween
 page read as a paid visitor**, where the signup sits five screens below
 the answer.
+
+
+#### Research pass 2026-10-19, evening (ninety-first pass)
+
+Today the build loop shipped items 344 and 345 (`META_AD_KIT.md`, three
+creatives in `docs/ads/`, and the compact signup under the hours table)
+and item 337 (the retired-key IndexNow test). **Item 337's answer came
+back at 22:00 UTC: both keys were refused**, the retired `…b014` and the
+current `…a255`, each with `UserForbiddedToAccessSite`. The
+"first-key binding" explanation is ruled out for this site, so Bing's
+own URL Submission API (item 340) is now the only route left. This pass
+also found a limit nobody has planned for: **Buttondown's free plan stops
+at 100 subscribers**, and the Halloween ad test could pass that in a
+week. It plans the Oct 29 issue around Halloween and reviews the ad
+creative.
+
+| Angle | What it is / what we found | Why it matters here |
+|---|---|---|
+| **Item 337's result** (`data/indexnow_log.json`, 2026-10-19 22:00:43 UTC) | Two entries in the same second: `key_suffix: "b014"` returned **403**, and `key_suffix: "a255"` returned **403** | The site is verified, both key files are live and correct, and both keys are refused. Bing is holding something at the property level that no key change fixes. Stop spending builds on IndexNow theories (item 347) |
+| **Bing's URL Submission API** (Bing Webmaster blog, 2019 and 2020; Search Engine Journal; third-party API tool docs, Feb 2026) | Uses an **API key from Bing Webmaster Tools (Settings → API access)**, with batch mode at up to **500 URLs per request**. Each site has its own quota, set from **verified-site age, impressions and other signals**, up to 10,000 a day. A 2026 tool doc shows a new site at **10 a day / 300 a month**, so check the **quota endpoint** before submitting | Ten a day is enough if the build sends **only changed URLs, most important first** (`/trick-or-treat/`, `/this-weekend/`, the region pages). This doesn't depend on whatever is blocking IndexNow, and it covers Bing, DuckDuckGo, Yahoo and ChatGPT search, which are the engines ChatGPT-era agents use |
+| **Buttondown's free plan** (Buttondown pricing, as reported by PricingSaaS, Sequenzy, AgentDeals and GetApp reviews) | The free plan covers the **first 100 subscribers**. Paid plans are reported from **about $9/month** (to 1,000), and the 2026 tier names have changed, so confirm on Buttondown's own page. Reviewers complain that the jumps between tiers are steep | Item 276 estimates **50–200 subscribers** from $50 of Meta ads. If it works, the list can hit the cap during the test. What Buttondown does at the cap (block signups, or hold sends) is not documented in what this pass found. Either way, the cheapest growth week of the year shouldn't end on a wall nobody saw coming (item 349) |
+| **Trick-or-treat search re-check** | Results for *"Mount Prospect trick or treat hours 2026"* are still the 2019 village notice, the 2024 NBC and WGN lists, mykidlist, and an MPPL listing of the **2025** downtown merchants' event. Nothing is dated 2026 | Unchanged. The site's page is still the only 2026 answer this tool can find (the tool can't see the site itself, per item 3a) |
+| **The Halloween ad creative (design/UX)** | `docs/ads/tot-square.png` at 1080×1080 is clear: a night gradient, *"TRICK-OR-TREAT HOURS"* with the date, five rows with hours, the source line and the URL. Three gaps: **(1)** no brand mark anywhere, only the URL; **(2)** nothing says what the visitor gets beyond the hours. The ad is meant to sell a **free weekly email**, and the image never mentions it; **(3)** the pumpkin is a flat ellipse with a block stem, which reads as clip-art next to the homepage's drawn SVG pumpkin | The ad's copy carries the offer, but on Instagram Stories and Reels the image *is* the ad, and most viewers never read the caption. One line and a wordmark are cheap. A better pumpkin is optional but visible (item 350) |
+
+#### P1 (new)
+
+347. **Retire the IndexNow theories and make Bing's URL Submission API
+     the next step.** Re-rank, plus Needs Ryan:
+
+     - **Move item 340 to the top of the build queue.** Build it now,
+       so it runs the moment the secret is set. Before submitting, it
+       calls the **quota** endpoint and sends at most that many URLs
+       per day, choosing changed URLs in this order: `/trick-or-treat/`
+       (until Nov 1), `/this-weekend/`, the five region pages, then the
+       rest. Log the quota and each status beside the IndexNow entries.
+     - **Keep IndexNow running** (it costs one request per build), but
+       stop the retired-key probe after this one result. Item 337's
+       7-day backoff already covers that. Keep the retired key file to
+       Nov 9 as planned.
+     - **Rewrite Needs Ryan 3c** as a 2-minute action: *Bing Webmaster
+       Tools → Settings → API access → generate the API key → add it as
+       the repository secret `BING_WEBMASTER_API_KEY`.* Move it into
+       this week's block, since Halloween-week recrawls matter most.
+
+348. **Make the Oct 29 issue a Halloween issue.** Build loop, for the
+     send on **Wed Oct 28 / Thu Oct 29** only:
+
+     - **Subject:** *"Trick-or-treat hours for all five towns, plus
+       Halloween weekend"*. When `build_combined_email_subject_line`
+       runs in the Halloween send week (the Wednesday before Oct 31),
+       use this fixed subject. It must stay under the existing length
+       check.
+     - **Lead block** above "Don't miss": the five towns' hours (the
+       trick-or-treat table, with the standing-hours caveat from item
+       324), the **Halloween night** line from item 316 (forecast and
+       sunset), and the trunk-or-treats on Saturday and Sunday. Link to
+       `/trick-or-treat/`.
+     - The regular sections follow as usual. Replace the seasonal
+       dashed box with this block that week instead of showing both.
+
+     Tests: a build dated Wed Oct 28 2026 produces the subject and the
+     block, a build dated Oct 21 does not, and the 102 KB clip check
+     still passes. This is the one issue of the year that most readers
+     will open on the day they need it, and the first many ad-acquired
+     subscribers will see.
+
+349. **Warn before the list reaches Buttondown's free-plan cap.** Build
+     loop plus owner:
+
+     - In `send_newsletter.py`, after reading
+       `pre_send_subscriber_count`: at **80 or more**, open (or update)
+       one GitHub issue, *"Buttondown free plan: N of 100 subscribers"*,
+       with a link to Buttondown's billing page. At **95 or more**, add
+       one line to the build log on every run.
+     - Add the same check to the audience snapshot (item 266) for when
+       that secret is set.
+     - **Needs Ryan:** in the Meta decision bullet, add *"If the test
+       works, expect to move to Buttondown's paid plan (about $9/month
+       as reported; check the current price) once the list nears 100.
+       Budget it as part of the test."*
+
+     Tests: no issue at 79, one issue at 80, and an existing issue is
+     updated rather than duplicated.
+
+#### P2 (new)
+
+350. **Ad creative v2: wordmark, the offer, a better pumpkin.**
+     Design/UX, the Pillow renderer for `docs/ads/`:
+
+     - Add a small **"WITHIN TEN"** wordmark in the top-left corner.
+     - Add a bottom band reading **"Free weekly email: what's on this
+       weekend in your town"**, above the URL.
+     - Draw the pumpkin with **three overlapping ellipses** in two
+       oranges for ribs, a curved stem and a leaf, matching the homepage
+       SVG's proportions.
+
+     Keep everything the review checks pass: no misleading claims, hours
+     only as the page states them, and the standing-hours marks. The
+     story-size (1080×1920) layout gains the most from the offer band,
+     because Stories show no caption. Tests: the three sizes render, and
+     the band text is present.
+
+Competitors reviewed this pass: **Bing's URL Submission API** (per-site
+quota, as low as 10 a day for new sites, batch of 500),
+**Buttondown's free-plan cap** (100 subscribers), and a **trick-or-treat
+search re-check** (still nothing for 2026). The design/UX angle is **the
+Halloween ad creative**, reviewed for brand, offer and finish.
 
 
 ## Working agreements for autonomous iteration
