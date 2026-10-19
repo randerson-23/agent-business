@@ -5835,6 +5835,57 @@ def load_indexnow_hashes(path: Path = INDEXNOW_HASHES_PATH) -> dict:
         return {}
 
 
+INDEXNOW_KEY_STATE_PATH = ROOT / "data" / "indexnow_key.json"
+INDEXNOW_PROBE_BACKOFF_DAYS = 7
+
+
+def load_indexnow_key_state(path: Path | None = None) -> dict:
+    try:
+        data = json.loads((path or INDEXNOW_KEY_STATE_PATH).read_text(encoding="utf-8"))
+        return data if isinstance(data, dict) else {}
+    except (OSError, ValueError):
+        return {}
+
+
+def active_indexnow_key(state: dict) -> str:
+    """ROADMAP.md item 337: the key submissions use. The newer key unless a
+    probe found that a retired key is the one Bing accepts."""
+    chosen = state.get("active")
+    return chosen if chosen in (INDEXNOW_KEY, *RETIRED_INDEXNOW_KEYS) else INDEXNOW_KEY
+
+
+def probe_retired_indexnow_keys(
+    state: dict, now: datetime, submit=None, *, log_path: Path | None = None, state_path: Path | None = None,
+) -> str | None:
+    """ROADMAP.md item 337: after the current key was refused with a 403, send
+    ONE request (the homepage) under each retired key whose file is still
+    published. A 200 or 202 makes that key the active one (state saved, its
+    file then published permanently); if every key is refused, nothing is
+    retried for INDEXNOW_PROBE_BACKOFF_DAYS. Each result is logged with the
+    last four characters of the key only. Returns the accepted key or None."""
+    submit = submit or submit_indexnow
+    last = state.get("probe_failed_at")
+    if last:
+        try:
+            if now - datetime.fromisoformat(last) < timedelta(days=INDEXNOW_PROBE_BACKOFF_DAYS):
+                return None
+        except ValueError:
+            pass
+    for old_key in RETIRED_INDEXNOW_KEYS:
+        outcome: dict = {}
+        ok = submit(host=CUSTOM_DOMAIN, key=old_key, key_location=f"{SITE_BASE_URL}{old_key}.txt", urls=[SITE_BASE_URL], outcome=outcome)
+        accepted = ok and (outcome.get("status") in (200, 202))
+        record_indexnow_outcome(log_path or INDEXNOW_LOG_PATH, now, 1, bool(accepted), dict(outcome, key_suffix=old_key[-4:], skipped=None))
+        if accepted:
+            state.update({"active": old_key, "switched_at": now.isoformat(timespec="seconds")})
+            state.pop("probe_failed_at", None)
+            (state_path or INDEXNOW_KEY_STATE_PATH).write_text(json.dumps(state, indent=1, sort_keys=True) + "\n", encoding="utf-8")
+            return old_key
+    state["probe_failed_at"] = now.isoformat(timespec="seconds")
+    (state_path or INDEXNOW_KEY_STATE_PATH).write_text(json.dumps(state, indent=1, sort_keys=True) + "\n", encoding="utf-8")
+    return None
+
+
 def record_indexnow_outcome(path: Path, now: datetime, url_count: int, ok: bool, outcome: dict) -> list[dict]:
     """Append this build's IndexNow result to `path`, keeping the last
     INDEXNOW_LOG_KEEP entries. A missing or unreadable file starts fresh."""
@@ -5860,6 +5911,7 @@ def record_indexnow_outcome(path: Path, now: datetime, url_count: int, ok: bool,
         "bing_status": outcome.get("bing_status"),
         "bing_body": outcome.get("bing_body"),
         "accepted_by": outcome.get("accepted_by"),
+        "key_suffix": outcome.get("key_suffix"),
     })
     history = history[-INDEXNOW_LOG_KEEP:]
     path.write_text(json.dumps(history, indent=2) + "\n", encoding="utf-8")
@@ -6664,8 +6716,12 @@ def main() -> None:
     )
     (OUTPUT_DIR / "llms-full.txt").write_text(build_llms_full_txt(llms_full_groups, weekend_date_range), encoding="utf-8")
     (OUTPUT_DIR / "CNAME").write_text(CUSTOM_DOMAIN + "\n", encoding="utf-8")
+    indexnow_state = load_indexnow_key_state()
+    indexnow_key = active_indexnow_key(indexnow_state)
     (OUTPUT_DIR / f"{INDEXNOW_KEY}.txt").write_text(INDEXNOW_KEY, encoding="utf-8")
-    if now.astimezone(LOCAL_TZ).date() <= RETIRED_INDEXNOW_KEYS_UNTIL:
+    # Retired key files stay published until the cut-off date, and permanently
+    # once a probe finds one of them is the key Bing accepts (item 337).
+    if now.astimezone(LOCAL_TZ).date() <= RETIRED_INDEXNOW_KEYS_UNTIL or indexnow_key != INDEXNOW_KEY:
         for old_key in RETIRED_INDEXNOW_KEYS:
             (OUTPUT_DIR / f"{old_key}.txt").write_text(old_key, encoding="utf-8")
     (OUTPUT_DIR / "feed.xml").write_text(build_feed_xml(feed_items, now, source_completeness), encoding="utf-8")
@@ -6737,11 +6793,15 @@ def main() -> None:
     if indexnow_urls:
         indexnow_ok = submit_indexnow(
             host=CUSTOM_DOMAIN,
-            key=INDEXNOW_KEY,
-            key_location=f"{SITE_BASE_URL}{INDEXNOW_KEY}.txt",
+            key=indexnow_key,
+            key_location=f"{SITE_BASE_URL}{indexnow_key}.txt",
             urls=indexnow_urls,
             outcome=indexnow_outcome,
         )
+        indexnow_outcome["key_suffix"] = indexnow_key[-4:]
+        if not indexnow_ok and indexnow_outcome.get("status") == 403 and indexnow_key == INDEXNOW_KEY:
+            # Item 337: one extra request under each retired key, then back off a week.
+            probe_retired_indexnow_keys(indexnow_state, now)
         if indexnow_ok:
             INDEXNOW_HASHES_PATH.write_text(json.dumps(indexnow_current, indent=1, sort_keys=True) + "\n", encoding="utf-8")
     else:

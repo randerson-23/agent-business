@@ -4495,7 +4495,7 @@ def test_record_indexnow_outcome_appends_and_keeps_a_trailing_window(tmp_path):
     assert len(history) == build_digest.INDEXNOW_LOG_KEEP
     assert history[-1] == {"timestamp": "2026-10-03T14:00:00+00:00", "url_count": 61, "ok": False,
                            "status": 403, "error": "HTTPError", "body": None, "key_file_ok": None, "skipped": None,
-                           "bing_status": None, "bing_body": None, "accepted_by": None}
+                           "bing_status": None, "bing_body": None, "accepted_by": None, "key_suffix": None}
     assert json.loads(path.read_text()) == history
 
 
@@ -6007,3 +6007,30 @@ def test_meta_ad_kit_has_short_copy_and_a_utm_landing_url():
     for zip_code in ("60005", "60016", "60056", "60067", "60090"):
         assert zip_code in kit
     assert "Audience Network off" in kit and "No Meta pixel" in kit
+
+
+def test_probe_retired_indexnow_keys_switches_back_on_a_200_and_backs_off_after_all_403(tmp_path):
+    # ROADMAP.md item 337.
+    now = datetime(2026, 10, 20, 12, tzinfo=timezone.utc)
+    log, st = tmp_path / "log.json", tmp_path / "state.json"
+    calls = []
+
+    def refuse(**kw):
+        calls.append(kw["key"]); kw["outcome"].update(status=403, error="HTTPError"); return False
+
+    def accept(**kw):
+        calls.append(kw["key"]); kw["outcome"].update(status=202, error=None); return True
+
+    state = {}
+    assert build_digest.probe_retired_indexnow_keys(state, now, refuse, log_path=log, state_path=st) is None
+    assert calls == list(build_digest.RETIRED_INDEXNOW_KEYS) and "probe_failed_at" in state
+    entry = json.loads(log.read_text())[-1]
+    assert entry["key_suffix"] == build_digest.RETIRED_INDEXNOW_KEYS[0][-4:] and entry["status"] == 403 and len(json.dumps(entry)) and build_digest.RETIRED_INDEXNOW_KEYS[0] not in json.dumps(entry)
+    # Inside the 7-day back-off nothing is sent.
+    calls.clear()
+    assert build_digest.probe_retired_indexnow_keys(state, now + timedelta(days=3), accept, log_path=log, state_path=st) is None and calls == []
+    # After it, a 202 switches the active key back to the retired one and saves that.
+    got = build_digest.probe_retired_indexnow_keys(state, now + timedelta(days=8), accept, log_path=log, state_path=st)
+    assert got == build_digest.RETIRED_INDEXNOW_KEYS[0] and build_digest.active_indexnow_key(json.loads(st.read_text())) == got
+    assert build_digest.active_indexnow_key({}) == build_digest.INDEXNOW_KEY
+    assert build_digest.active_indexnow_key({"active": "not-a-known-key"}) == build_digest.INDEXNOW_KEY
