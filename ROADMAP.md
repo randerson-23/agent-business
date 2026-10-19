@@ -248,6 +248,8 @@ that limit.
   *Request indexing* on `/trick-or-treat/`. No outlet has a 2026 list yet.
 - **By Wed Oct 21, decide the $50 Meta test (item 276).** If yes, run it
   Oct 22–31 for the five towns' ZIP codes, landing on `/trick-or-treat/`.
+  The build loop is preparing `META_AD_KIT.md` with the copy, images, ZIPs
+  and settings (item 344), so setup is about 10 minutes.
 - **By Sat Oct 24, about an hour:** print the town flyer for one café and
   one library desk (step 8g).
 
