@@ -220,12 +220,11 @@ doesn't re-suggest something already shipped.
 
 **Build queue (by deadline; refreshed by the research loop, item 346).**
 Pick from the top unless the owner has flagged something else:
-1. **337**: the first-key IndexNow test (one request, no owner time).
-2. **334**: email block polish (before the Oct 22 send).
-3. **306**: the OpenStreetMap prospect list (by Oct 25).
-4. **323**: leaf pickup (in season now).
-5. **313, 314**: the sales mock-up and starter pack (before outreach).
-6. **328** (probe first), then **325** (by Nov 15), then the rest by
+1. **334**: email block polish (before the Oct 22 send).
+2. **306**: the OpenStreetMap prospect list (by Oct 25).
+3. **323**: leaf pickup (in season now).
+4. **313, 314**: the sales mock-up and starter pack (before outreach).
+5. **328** (probe first), then **325** (by Nov 15), then the rest by
    priority.
 
 #### Needs Ryan
@@ -16764,7 +16763,7 @@ and reads the homepage on a phone.
 
 #### P1 (new)
 
-337. **Test the first IndexNow key, then keep whichever Bing accepts.**
+337. ✅ **DONE (2026-10-19): when the current key gets a 403, the build sends ONE homepage request under each retired key (`probe_retired_indexnow_keys`), logs it in `data/indexnow_log.json` with a `key_suffix` (last four characters), and on a 200/202 makes that key active (`data/indexnow_key.json`, committed by build-digest.yml) with both key files then published permanently; if every key is refused it does not probe again for 7 days. The `key_file_ok` check already fetches the live key file before every ping, which covers the publish-before-ping ordering. Tests added; not yet run against the real endpoints, so the next real build is the test.** **Test the first IndexNow key, then keep whichever Bing accepts.**
      Build loop, `fetchers.py` / `build_digest.py`, automated:
 
      - On the next build where the current key gets 403, send **one**
