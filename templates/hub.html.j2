@@ -259,6 +259,7 @@
   .region-card h2 { margin: 0; font-size: 21px; }
   .region-card p { margin: 0; color: var(--muted); font-size: 13.5px; }
   .region-card .picks { display: flex; flex-direction: column; gap: 4px; margin-top: 6px; font-size: 14px; color: var(--ink); }
+  .region-card .pick-head { font-weight: 800; font-size: 13px; color: var(--muted); text-transform: uppercase; letter-spacing: .04em; }
   .region-card .pick-when { color: var(--muted); display: block; font-size: 13px; }
   .region-card .count {
     font-size: 12.5px;
@@ -470,7 +471,7 @@
 
   <div class="bento-grid">
     <a class="bento-tile bento-weekend" href="this-weekend/">
-      <span class="bento-kicker">📅 This weekend</span>
+      <span class="bento-kicker">📅 {{ stats.weekend_label or "This weekend" }}</span>
       <h2>{{ stats.weekend_date_range }}</h2>
       <p>{{ stats.weekend_count }} thing{{ 's' if stats.weekend_count != 1 else '' }} happening across every region &rarr;</p>
     </a>
@@ -504,8 +505,10 @@
       <p>From the village, library and park district.</p>
       {% if r.weekend_picks %}
       <span class="picks">{% for p in r.weekend_picks %}<span class="pick"><span aria-hidden="true">{{ p.emoji }}</span> {{ p.title|short(60) }} <span class="pick-when">{{ p.when }}</span></span>{% endfor %}</span>
+      {% elif r.next_up %}
+      <span class="picks"><span class="pick-head">Next up</span>{% for p in r.next_up %}<span class="pick"><span aria-hidden="true">{{ p.emoji }}</span> {{ p.title|short(60) }} <span class="pick-when">{{ p.when }}</span></span>{% endfor %}</span>
       {% endif %}
-      <span class="count">{% if r.weekend_count %}See all {{ r.weekend_count }} this weekend &rarr;{% else %}Nothing dated this weekend yet &rarr;{% endif %}</span>
+      <span class="count">{% if r.weekend_count %}See all {{ r.weekend_count }} {{ ((stats.weekend_label if stats else none) or "This weekend")|lower }} &rarr;{% elif r.next_up %}See what's on in {{ r.name }} &rarr;{% else %}Nothing dated in the next two weeks &rarr;{% endif %}</span>
     </a>
     {% endfor %}
   </div>

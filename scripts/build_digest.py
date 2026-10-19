@@ -3168,6 +3168,23 @@ def build_holiday_banner(entries: list[dict], now: datetime) -> dict | None:
     return {"towns": towns, "offer": today <= date(today.year, 11, 15)}
 
 
+def hub_next_up(blocks: list[dict], today: date, limit: int = 2, days: int = 14) -> list[dict]:
+    """ROADMAP.md item 342: a town with nothing in the current weekend window
+    shows its next dated events (any day in the next `days` days) instead of
+    an empty card. Earliest first, attendable, never a paid promotion."""
+    end = today + timedelta(days=days)
+    found = []
+    for block in blocks:
+        for e in block["events"]:
+            day = _event_day(e)
+            if day is None or not (today <= day <= end) or not e.get("attendable", True) or e.get("sponsored_by") or not e.get("title"):
+                continue
+            found.append(e)
+    found.sort(key=lambda e: (e["date_iso"], e["title"]))
+    picks = prepare_email_events(found[:limit])
+    return [{"emoji": email_event_emoji(e), "title": e["title"], "when": e.get("email_when") or e.get("date") or ""} for e in picks]
+
+
 def hub_town_picks(weekend_events: list[dict], limit: int = 2) -> list[dict]:
     """ROADMAP.md item 339: a town's next two picks for its homepage card,
     chosen the way the email's "Don't miss" is (most family-relevant
@@ -5476,6 +5493,27 @@ def build_email_edition_block(edition: str | None, halloween: dict | None, holid
     return None
 
 
+WEEKEND_ROLLOVER_HOUR = 15
+
+
+def rolls_to_next_weekend(local_now: datetime) -> bool:
+    """ROADMAP.md item 341: from Sunday 15:00 local the weekend is over for
+    practical purposes, so pages look at the coming Friday-Sunday instead."""
+    return local_now.weekday() == 6 and local_now.hour >= WEEKEND_ROLLOVER_HOUR
+
+
+def weekend_reference_date(local_now: datetime) -> date:
+    """The date whose Mon-Sun week supplies the weekend a page shows: today,
+    except that from Sunday 15:00 it is tomorrow (Monday), i.e. next weekend."""
+    return local_now.date() + timedelta(days=1) if rolls_to_next_weekend(local_now) else local_now.date()
+
+
+def weekend_label(local_now: datetime) -> str:
+    """"This weekend" Friday to Sunday 15:00; "Next weekend" from Sunday 15:00
+    until the following Friday (item 341)."""
+    return "Next weekend" if rolls_to_next_weekend(local_now) or local_now.weekday() < 4 else "This weekend"
+
+
 def weekend_dates(local_date: date) -> tuple[date, date, date]:
     """The Friday/Saturday/Sunday of the calendar week (Mon-Sun) containing
     local_date - correct whether local_date is itself a weekday (the
@@ -5981,7 +6019,8 @@ def main() -> None:
         )
         logger.info("Wrote %s (%d events)", region_dir / "events.json", len(upcoming))
 
-        friday, saturday, sunday = weekend_dates(local_today)
+        local_now = now.astimezone(ZoneInfo(region.get("timezone") or "America/Chicago"))
+        friday, saturday, sunday = weekend_dates(weekend_reference_date(local_now))
         # ROADMAP.md item 268: on Saturday the page is for Saturday and Sunday;
         # Friday's events have passed and leave it.
         window_days = [d for d in (friday, saturday, sunday) if d >= local_today]
@@ -6349,6 +6388,7 @@ def main() -> None:
                 **region,
                 "event_count": event_count,
                 "weekend_picks": hub_town_picks(weekend_events),
+                "next_up": [] if weekend_events else hub_next_up(blocks, local_today),
                 "weekend_count": sum(1 for e in weekend_events if e.get("attendable", True)),
                 "path": f"{region_id}/",
                 "guide_slugs": [g["slug"] for g in guides],
@@ -6363,6 +6403,7 @@ def main() -> None:
         "event_count": total_events,
         "weekend_count": sum(len(s["events"]) for s in hub_weekend_sections),
         "weekend_date_range": hub_weekend_date_range or "",
+        "weekend_label": weekend_label(now.astimezone(LOCAL_TZ)),
         "free_count": sum(len(s["events"]) for s in hub_free_sections),
         "today_count": sum(len(s["events"]) for s in hub_today_sections),
     }
@@ -6562,7 +6603,7 @@ def main() -> None:
         image.save(og_dir / f"{name}.png", "PNG")
         logger.info("Wrote weekly card %s (%dx%d)", name, *image.size)
     pins_today = region_local_date(regions[0]["region"], now)
-    pins_friday, _pins_sat, pins_sunday = weekend_dates(pins_today)
+    pins_friday, _pins_sat, pins_sunday = weekend_dates(weekend_reference_date(now.astimezone(ZoneInfo(regions[0]["region"].get("timezone") or "America/Chicago"))))
     (OUTPUT_DIR / "pins.xml").write_text(
         build_pins_xml(
             pins_groups,

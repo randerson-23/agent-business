@@ -16860,7 +16860,7 @@ Halloween, and reads the new homepage cards on a Sunday evening.
 
 #### P1 (new)
 
-341. **Roll the homepage forward to next weekend from Sunday 3 PM.**
+341. ✅ **DONE (2026-10-19): `weekend_reference_date` moves every page's Friday–Sunday window (region pages, `/this-weekend/`, the merged hub, weather, pins) to the coming weekend from Sunday 15:00 Central; the homepage tile reads "Next weekend" from Sunday 15:00 through Thursday and "This weekend" Friday to Sunday 15:00; the Thursday email's window is unchanged; tests for Sunday 14:59, 15:01, Monday and Friday.** **Roll the homepage forward to next weekend from Sunday 3 PM.**
      Design/UX, build loop. Find the function that sets the hub's weekend
      window (and the "This weekend" box). From **Sunday 15:00 Central**
      until the following **Friday 00:00**, have it return the **coming**
@@ -16872,7 +16872,7 @@ Halloween, and reads the new homepage cards on a Sunday evening.
      this weekend, a Sunday 15:01 build shows next weekend with the new
      label, and a Monday build shows next weekend.
 
-342. **Never show an empty town card: show what's next.** Design/UX,
+342. ✅ **DONE (2026-10-19): a town with nothing in the weekend window shows its next two dated events (14 days) under "Next up" with "See what's on in <town> →"; "Nothing dated in the next two weeks" only when that is true; "yet" is gone; tests added.** **Never show an empty town card: show what's next.** Design/UX,
      `hub.html.j2` and `hub_town_picks()`. When a town has nothing in the
      current window, show its **next two dated events** (any day in the
      next 14 days), headed *"Next up"*, with the link reading *"See
