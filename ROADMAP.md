@@ -218,6 +218,18 @@ have nothing pressing, pick the highest unclaimed `P1` item below. Mark items
 `✅ done (PR #N)` in place rather than deleting them, so the research loop
 doesn't re-suggest something already shipped.
 
+**Build queue (by deadline; refreshed by the research loop, item 346).**
+Pick from the top unless the owner has flagged something else:
+1. **344 + 345**: the Halloween ad kit and the signup under the hours
+   table (by Oct 20–22).
+2. **337**: the first-key IndexNow test (one request, no owner time).
+3. **334**: email block polish (before the Oct 22 send).
+4. **306**: the OpenStreetMap prospect list (by Oct 25).
+5. **323**: leaf pickup (in season now).
+6. **313, 314**: the sales mock-up and starter pack (before outreach).
+7. **328** (probe first), then **325** (by Nov 15), then the rest by
+   priority.
+
 #### Needs Ryan
 
 Everything below needs the owner to take an action outside this repo.
@@ -16916,6 +16928,102 @@ re-check** (still none for 2026), and **a city-backed holiday gift
 guide's listing price** ($45 to 35,000 homes). The design/UX angle is
 **the homepage on a Sunday evening**, when the weekend it shows is
 already over.
+
+
+#### Research pass 2026-10-19 (ninetieth pass)
+
+Overnight the build loop shipped items 341 and 342 (the homepage rolls
+forward on Sunday afternoon and never shows an empty town card). Item 337,
+the free first-key IndexNow test, is **still unbuilt**, and every build
+since Oct 10 has logged 403. The build loop takes the newest P1 item
+each run, so older P1s with deadlines (306 by Oct 25, 337) keep slipping
+behind fresh ones. This pass does three things. It **orders the open
+build items by deadline**. It makes the owner's one open Halloween
+decision, the $50 Meta test due Wednesday, a ten-minute job instead of a
+thirty-minute one. And it checks whether the page that ad would land on
+can actually convert a visitor.
+
+| Angle | What it is / what we found | Why it matters here |
+|---|---|---|
+| **Meta ZIP-code targeting** (Meta Marketing API targeting restrictions; local-business setup guides) | Standard (non-special-category) campaigns can target **"People living in this location"** by US ZIP code, up to 50,000 ZIPs per spec. One secondary source says special-category ads (housing, employment, credit, politics) use a **15-mile radius minimum** instead of exact ZIPs. A Halloween-hours ad for an events newsletter is **not** a special category, so exact ZIP targeting applies | The five towns are **eight ZIP codes**: 60004 and 60005 (Arlington Heights), 60056 (Mount Prospect), 60016 and 60018 (Des Plaines), 60067 and 60074 (Palatine), 60090 (Wheeling). That is a precise, small audience, which suits a $5/day test |
+| **Small-budget Meta settings, 2026** (99dollarsocial, Lilach Bullock, Adwave and other small-budget guides) | Advice conflicts. Several guides say to leave **Advantage+ placements** on at micro budgets, since restricting a tiny budget to Feed starves the auction. Others always switch off **Audience Network** (off-platform apps, low intent). Meta's learning phase wants **about 50 optimisation events a week**, which $5/day won't reach, so results will be noisy. Most guides push a pixel and the Conversions API | Earlier evidence (Arlington Bagel, sixty-ninth pass) said turning off automatic placements was its biggest single fix. The safe middle is **Facebook and Instagram Feed, Stories and Reels, Audience Network off**. **No pixel**: the site loads no third-party JavaScript and should not start for a $50 test. Measure with the **UTM tag that signups already carry** (item 252) and GoatCounter instead. Optimise for *landing page views*, not conversions, since there is no pixel to report them |
+| **The ad's landing page, read as a paid visitor (design/UX)** | On `/trick-or-treat/`, the hours table sits at about 35% of the HTML. The **signup form is at about 64%**, after the town cards, the trunk-or-treats and every town's Halloween events: roughly five phone screens down. Nothing between the table and the form asks for an email | A visitor from an ad gets their answer (the hours) on screen one and leaves. Unless the offer sits **directly under the answer**, $50 buys page views and no subscribers. Item 251 already proved two signups on one page with distinct ids, on region pages (item 345) |
+| **The build queue, read by deadline** (ROADMAP.md, open items) | Open P1/P2 build items with a date attached: **306** (OSM prospect list, **by Oct 25**), **337** (IndexNow first-key test; no date, but every day costs Bing and ChatGPT-search recrawls), **334** (email block polish, before the **Oct 22** send), **323** (leaf pickup; the season runs **Oct 15 – Dec 15**), **325** (holiday lights, **by Nov 15**), **328** (registration-days probe, before guides mail in **mid-November**), plus **313/314** (sales tools, before outreach) | Without an order, the newest idea wins each run and dated items miss their windows. A deadline-ordered queue costs nothing and keeps the research loop from crowding out its own earlier work (item 346) |
+
+#### P1 (new)
+
+344. **A ready-to-run Halloween ad kit, so item 276 takes ten minutes.**
+     Build loop, by **Tue Oct 20**:
+
+     - **`META_AD_KIT.md`** containing:
+       - three ad-copy variants under 125 characters, each leading with
+         the answer (*"Trick-or-treat hours for Arlington Heights, Mount
+         Prospect, Palatine, Des Plaines and Wheeling, all in one place.
+         Halloween is a Saturday."*);
+       - the **eight ZIP codes**;
+       - the settings: Traffic objective, landing page views, $5/day,
+         **Oct 22–31**, Feed, Stories and Reels on Facebook and Instagram,
+         **Audience Network off**, ages 25–54, no interest targeting;
+       - the landing URL
+         `https://withintenmiles.com/trick-or-treat/?utm_source=meta&utm_campaign=halloween-2026`;
+       - the one success rule from item 276: under **$1 per confirmed
+         subscriber**.
+     - **Creatives**, rendered with Pillow at build time from the page's
+       own data and the homepage banner's palette (night gradient,
+       pumpkin, the five towns' hours as a mini table): **1080×1080**,
+       **1080×1350** and **1080×1920** PNGs under `docs/ads/`, regenerated
+       when hours change and labelled *"Hours from each village's own
+       page"*. No stock photos and no text Meta's ad review might read as
+       misleading. The image shows only the posted or standing hours, with
+       Mount Prospect and Wheeling marked *"standing"* as the page does
+       (item 324).
+     - **Measurement:** after the test, the audience snapshot (item 266)
+       or the owner reads Buttondown subscribers tagged
+       `utm_source=meta`. GoatCounter shows the visits. **No Meta pixel.**
+
+     Tests: the creatives render at the three sizes, the hours on the
+     image match the YAML, and the kit's URL carries both UTM fields.
+     **Owner, if they say yes:** create the ad in Ads Manager from the
+     kit (about 10 minutes) and a minimal Facebook Page if they have none.
+
+345. **Put the signup directly under the hours table on `/trick-or-treat/`.**
+     Design/UX, template only. Insert a **compact second instance** of
+     `_signup.html.j2` right after the one-glance table, using item 251's
+     distinct-id pattern: one line, *"Halloween's a Saturday. Get the
+     weekend's events by email on Thursday."*, the email field and the
+     button. Keep the full block at the bottom. When the URL carries
+     `utm_source` (from an ad or the flyer), nothing changes: the same
+     page serves everyone, with no personalisation and no script. Tests:
+     two forms with distinct ids, the iframe and script once, and at
+     390px the compact form sits **within the first two screens**. Ship
+     with item 344, before **Oct 22**.
+
+346. **Order the open build items by deadline, and pick from the top.**
+     Add a short **"Build queue (by deadline)"** block at the top of
+     Phase 11, under its intro paragraph, that the build loop reads
+     before choosing:
+
+     1. **344 + 345** (by Oct 20–22: the Halloween test lands on them).
+     2. **337** (one request, no owner time; IndexNow has been 403 since
+        Oct 10).
+     3. **334** (email block polish, before the Oct 22 send).
+     4. **306** (by Oct 25).
+     5. **323** (leaf pickup, in season now).
+     6. **313, 314** (sales tools, before the outreach batch).
+     7. **328** (probe first), **325** (by Nov 15), then the rest by
+        priority.
+
+     The research loop refreshes this block each pass. It never reorders
+     an owner-flagged "Next up" block if the owner adds one, and the
+     owner's own flags always win. When an item ships, the build loop
+     removes it from the block as part of marking it done.
+
+Competitors reviewed this pass: **Meta's ZIP-code targeting rules**
+(exact ZIPs for non-special-category ads), **small-budget Meta settings**
+(placement advice conflicts; Audience Network off, no pixel), and **the
+roadmap's own deadline order**. The design/UX angle is **the Halloween
+page read as a paid visitor**, where the signup sits five screens below
+the answer.
 
 
 ## Working agreements for autonomous iteration
