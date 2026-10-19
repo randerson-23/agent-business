@@ -190,6 +190,7 @@
   .night p { margin: 4px 0; }
   .night ul { margin: 4px 0 4px 20px; padding: 0; }
   .night-note { font-size: 16px; color: var(--muted, #605d5d); }
+  #newsletter-signup-top { margin-top: 16px; padding: 12px 16px; }
   .glance-title { font-size: 18px; margin: 20px 0 8px; }
   .glance { width: 100%; border-collapse: collapse; margin: 0 0 8px; }
   .glance th, .glance td { text-align: left; padding: 9px 4px; border-bottom: 1px solid var(--border); font-size: 16px; }
@@ -250,6 +251,8 @@
       {% endfor %}
     </tbody>
   </table>
+  {# ROADMAP.md item 345: a compact second signup right under the hours, for visitors from an ad or a flyer; the full block stays at the bottom. #}
+  {{ signup_form(newsletter, "newsletter-signup-top", "bd-email-top", "town:all", "trick-or-treat", "Halloween's a " ~ halloween_weekday ~ ". Get the weekend's events by email on Thursday.") }}
   <div class="entry-list">
     {% for entry in entries %}
     <div class="entry" id="tot-{{ entry.region_id }}" style="--town:{{ entry.color }}">

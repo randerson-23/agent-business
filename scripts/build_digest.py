@@ -3435,6 +3435,84 @@ def render_weekly_card(size: tuple[int, int], date_range: str, picks: list[dict]
     return img
 
 
+TOT_AD_SIZES: dict[str, tuple[int, int]] = {
+    "tot-square": (1080, 1080),
+    "tot-portrait": (1080, 1350),
+    "tot-story": (1080, 1920),
+}
+
+
+def tot_ad_rows(entries: list[dict]) -> tuple[list[dict], str | None]:
+    """ROADMAP.md item 344: one row per town for the Halloween ad image -
+    the posted or standing hours exactly as the page shows them (short form
+    when every town shares one date), "standing" when the region config
+    carries a note, and the shared date line. Only what the configs say."""
+    dates = {tot_hours_date(e.get("hours")) for e in entries if e.get("hours")}
+    common = next(iter(dates)) if len(dates) == 1 and None not in dates else None
+    rows = []
+    for e in entries:
+        if e.get("hours"):
+            hours = short_tot_hours(e["hours"]) if common else e["hours"]
+        else:
+            hours = "No set hours" if e.get("no_official_hours") else "Not posted yet"
+        note = (e.get("note") or "").lower() if e.get("hours") else ""
+        qualifier = "standing" if "standing" in note else "recommended" if "recommended" in note else None
+        rows.append({"town": e["region_name"], "hours": hours, "qualifier": qualifier})
+    return rows, common
+
+
+def render_tot_ad(size: tuple[int, int], rows: list[dict], common_date: str | None) -> Image.Image:
+    """The trick-or-treat ad creative: a night gradient, a pumpkin, the five
+    towns' hours as a mini table and "Hours from each village's own page".
+    Drawn with the bundled DejaVu fonts - no stock photos, no emoji."""
+    width, height = size
+    k = width / 1080
+    img = Image.new("RGB", size)
+    d = ImageDraw.Draw(img)
+    top, bottom = _hex_rgb("#0b0613"), _hex_rgb("#3a1a63")
+    for y in range(height):
+        t = y / max(1, height - 1)
+        d.line([(0, y), (width, y)], fill=tuple(round(a + (b - a) * t) for a, b in zip(top, bottom)))
+    f = lambda name, px: _og_font(name, max(10, round(px * k)))
+    m = round(64 * k)
+    # Pumpkin: orange body, stem and a plain face.
+    cx, cy, r = width - m - round(110 * k), round(150 * k), round(86 * k)
+    d.ellipse([cx - r, cy - round(r * 0.85), cx + r, cy + round(r * 0.85)], fill=_hex_rgb("#ff7a00"))
+    d.rectangle([cx - round(8 * k), cy - round(r * 0.85) - round(26 * k), cx + round(8 * k), cy - round(r * 0.85) + round(6 * k)], fill=_hex_rgb("#4a7a1a"))
+    for ex in (-1, 1):
+        d.polygon([(cx + ex * round(34 * k), cy - round(18 * k)), (cx + ex * round(14 * k), cy - round(18 * k)), (cx + ex * round(24 * k), cy - round(46 * k))], fill=_hex_rgb("#0b0613"))
+    d.polygon([(cx - round(40 * k), cy + round(22 * k)), (cx + round(40 * k), cy + round(22 * k)), (cx + round(20 * k), cy + round(52 * k)), (cx - round(20 * k), cy + round(52 * k))], fill=_hex_rgb("#0b0613"))
+
+    d.text((m, round(60 * k)), "TRICK-OR-TREAT", font=f("DejaVuSans-Bold.ttf", 60), fill=(255, 255, 255))
+    d.text((m, round(134 * k)), "HOURS", font=f("DejaVuSans-Bold.ttf", 60), fill=_hex_rgb("#ffb347"))
+    sub = common_date or "Halloween"
+    d.text((m, round(212 * k)), sub, font=f("DejaVuSans.ttf", 34), fill=_hex_rgb("#e8dcff"))
+
+    footer_h = round(150 * k)
+    table_top = round(290 * k)
+    table_bottom = height - footer_h
+    n = max(1, len(rows))
+    row_h = min(round(150 * k), (table_bottom - table_top) // n)
+    for i, row in enumerate(rows):
+        y = table_top + i * row_h
+        d.rounded_rectangle([m, y + round(6 * k), width - m, y + row_h - round(6 * k)], radius=round(18 * k), fill=_hex_rgb("#1d1033"), outline=_hex_rgb("#6b4aa8"), width=max(1, round(2 * k)))
+        d.text((m + round(28 * k), y + row_h // 2), row["town"], font=f("DejaVuSans-Bold.ttf", 38), fill=(255, 255, 255), anchor="lm")
+        label = row["hours"] + (f"  ({row['qualifier']})" if row["qualifier"] else "")
+        d.text((width - m - round(28 * k), y + row_h // 2), label, font=f("DejaVuSans-Bold.ttf", 36 if not row["qualifier"] else 30), fill=_hex_rgb("#ffb347"), anchor="rm")
+    d.text((m, height - footer_h + round(34 * k)), "Hours from each village's own page", font=f("DejaVuSans.ttf", 30), fill=_hex_rgb("#e8dcff"))
+    d.text((m, height - footer_h + round(84 * k)), "withintenmiles.com/trick-or-treat", font=f("DejaVuSans-Bold.ttf", 34), fill=(255, 255, 255))
+    return img
+
+
+def build_tot_ads(entries: list[dict], now: datetime) -> dict[str, Image.Image]:
+    """The three Halloween ad creatives, in trick-or-treat season only and
+    only when at least two towns have hours to show."""
+    if not is_trick_or_treat_season(now) or sum(1 for e in entries if e.get("hours")) < 2:
+        return {}
+    rows, common = tot_ad_rows(entries)
+    return {name: render_tot_ad(size, rows, common) for name, size in TOT_AD_SIZES.items()}
+
+
 def build_weekly_cards(sections: list[dict], date_range: str) -> dict[str, Image.Image]:
     """One image per size from this weekend's picks; {} when there are not
     enough picks to show (fewer than two towns with something to pick)."""
@@ -6602,6 +6680,14 @@ def main() -> None:
     for name, image in build_weekly_cards(combined_email_sections, hub_weekend_date_range or "").items():
         image.save(og_dir / f"{name}.png", "PNG")
         logger.info("Wrote weekly card %s (%dx%d)", name, *image.size)
+    # ROADMAP.md item 344: the Halloween ad creatives, regenerated each build from the page's own data.
+    ads = build_tot_ads(trick_or_treat_entries, now)
+    if ads:
+        ads_dir = OUTPUT_DIR / "ads"
+        ads_dir.mkdir(parents=True, exist_ok=True)
+        for name, image in ads.items():
+            image.save(ads_dir / f"{name}.png", "PNG")
+            logger.info("Wrote Halloween ad %s (%dx%d)", name, *image.size)
     pins_today = region_local_date(regions[0]["region"], now)
     pins_friday, _pins_sat, pins_sunday = weekend_dates(weekend_reference_date(now.astimezone(ZoneInfo(regions[0]["region"].get("timezone") or "America/Chicago"))))
     (OUTPUT_DIR / "pins.xml").write_text(

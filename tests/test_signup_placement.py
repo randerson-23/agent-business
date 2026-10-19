@@ -58,7 +58,6 @@ def test_each_landing_page_has_exactly_one_inline_form():
         "this-weekend": hub_page("this-weekend", "Get this list every Thursday."),
         "today": hub_page("today", "Get the weekend's events by email on Thursday."),
         "free": hub_page("free", "Free things to do, every Thursday."),
-        "trick-or-treat": tot_page(),
     }
     for name, html in pages.items():
         assert html.count("embed-subscribe") == 1, name
@@ -67,6 +66,16 @@ def test_each_landing_page_has_exactly_one_inline_form():
         assert_one_runtime(html)
         ids = all_ids(html)
         assert ids.count("newsletter-signup") == 1 and ids.count("bd-email") == 1
+
+
+def test_trick_or_treat_has_a_compact_signup_under_the_table_and_the_full_one_below():
+    # ROADMAP.md item 345: distinct ids, the iframe and script once.
+    html = tot_page()
+    assert html.count("embed-subscribe") == 2
+    for element_id in ("newsletter-signup", "newsletter-signup-top", "bd-email", "bd-email-top"):
+        assert html.count(f'id="{element_id}"') == 1, element_id
+    assert_one_runtime(html)
+    assert html.index("</table>") < html.index('id="newsletter-signup-top"') < html.index('id="newsletter-signup"')
 
 
 def test_each_page_headline_matches_what_the_visitor_came_for():
