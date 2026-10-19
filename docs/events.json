@@ -2,7 +2,7 @@
   "@context": "https://schema.org",
   "@type": "ItemList",
   "name": "Upcoming events across every region — Within Ten",
-  "dateModified": "2026-10-19T15:40:11+00:00",
+  "dateModified": "2026-10-19T22:00:43+00:00",
   "numberOfItems": 265,
   "itemListElement": [
     {
@@ -5102,9 +5102,9 @@
       "position": 223,
       "item": {
         "@type": "Event",
-        "name": "ROCKY™ IN CONCERT",
+        "name": "RESCHEDULED FOR 2/28/27: ROCKY™ IN CONCERT",
         "startDate": "2026-10-28T19:30:00-05:00",
-        "url": "https://withintenmiles.com/des-plaines-60016/#ev-rocky-in-concert-2026-10-28",
+        "url": "https://withintenmiles.com/des-plaines-60016/#ev-rescheduled-for-2-28-27-rocky-in-concert-2026-10-28",
         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
         "location": {
           "@type": "Place",
@@ -5117,7 +5117,7 @@
           }
         },
         "sameAs": "https://desplainestheatre.com/event/rocky-in-concert/",
-        "description": "ROCKY™ in Concert brings the ultimate underdog story to life like never before! Watch the original ROCKY on the big screen as Bill Conti’s legendary score,…"
+        "description": "THIS EVENT HAS BEEN RESCHEDULED FOR 2/28/27. TICKETHOLDERS SHOULD HOLD ONTO THEIR TICKETS AS TICKETS FOR 10/28/26 WILL BE TRANSFERRED TO THE NEW SHOW DATE.…"
       }
     },
     {
