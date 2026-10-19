@@ -220,14 +220,12 @@ doesn't re-suggest something already shipped.
 
 **Build queue (by deadline; refreshed by the research loop, item 346).**
 Pick from the top unless the owner has flagged something else:
-1. **344 + 345**: the Halloween ad kit and the signup under the hours
-   table (by Oct 20–22).
-2. **337**: the first-key IndexNow test (one request, no owner time).
-3. **334**: email block polish (before the Oct 22 send).
-4. **306**: the OpenStreetMap prospect list (by Oct 25).
-5. **323**: leaf pickup (in season now).
-6. **313, 314**: the sales mock-up and starter pack (before outreach).
-7. **328** (probe first), then **325** (by Nov 15), then the rest by
+1. **337**: the first-key IndexNow test (one request, no owner time).
+2. **334**: email block polish (before the Oct 22 send).
+3. **306**: the OpenStreetMap prospect list (by Oct 25).
+4. **323**: leaf pickup (in season now).
+5. **313, 314**: the sales mock-up and starter pack (before outreach).
+6. **328** (probe first), then **325** (by Nov 15), then the rest by
    priority.
 
 #### Needs Ryan
@@ -16954,7 +16952,7 @@ can actually convert a visitor.
 
 #### P1 (new)
 
-344. **A ready-to-run Halloween ad kit, so item 276 takes ten minutes.**
+344. ✅ **DONE (2026-10-19): `META_AD_KIT.md` (three copy variants under 125 characters, landing URL with `utm_source=meta&utm_campaign=halloween-2026`, audience ZIPs, settings, the under-$1 rule, no pixel) and three Pillow creatives written to `docs/ads/` each build in trick-or-treat season (`tot-square` 1080×1080, `tot-portrait` 1080×1350, `tot-story` 1080×1920) from the page's own hours, with each town's "standing" or "recommended" qualifier and "Hours from each village's own page"; tests check the rows against the page data and the three sizes. The kit lists six ZIPs (the five region ZIPs plus 60004 from item 276); item 344 said eight, and the repo cannot confirm the other two, so the kit says to add only ZIPs the owner can confirm in Ads Manager.** **A ready-to-run Halloween ad kit, so item 276 takes ten minutes.**
      Build loop, by **Tue Oct 20**:
 
      - **`META_AD_KIT.md`** containing:
@@ -16988,7 +16986,7 @@ can actually convert a visitor.
      **Owner, if they say yes:** create the ad in Ads Manager from the
      kit (about 10 minutes) and a minimal Facebook Page if they have none.
 
-345. **Put the signup directly under the hours table on `/trick-or-treat/`.**
+345. ✅ **DONE (2026-10-19): a compact second signup ("Halloween's a Saturday. Get the weekend's events by email on Thursday.", ids `newsletter-signup-top` / `bd-email-top`) sits right after the one-glance table; the full block stays at the bottom; one iframe and script; at a 390px-wide screenshot the compact form sits about 770px down, inside the first two screens. Tests added.** **Put the signup directly under the hours table on `/trick-or-treat/`.**
      Design/UX, template only. Insert a **compact second instance** of
      `_signup.html.j2` right after the one-glance table, using item 251's
      distinct-id pattern: one line, *"Halloween's a Saturday. Get the

@@ -5966,3 +5966,44 @@ def test_a_town_with_an_empty_window_shows_its_next_events_or_the_plain_line():
     assert "Next up" in with_next and "Later A" in with_next and "See what's on in Palatine" in with_next and "Next weekend" in with_next
     plain = build_digest.render_hub_page([], [dict(base, next_up=[])], now, stats=stats)
     assert "Nothing dated in the next two weeks" in plain and "Next up" not in plain and " yet" not in plain.split("region-grid")[1].split("</main>")[0]
+
+
+def test_trick_or_treat_has_a_compact_signup_under_the_hours_table_and_the_full_one_below():
+    # ROADMAP.md item 345.
+    entries = _tot_entries(3)
+    html = build_digest.render_trick_or_treat_page(
+        entries, datetime(2026, 10, 20, 18, tzinfo=timezone.utc), newsletter={"configured": True, "buttondown_username": "withinten", "headline": "Get it"}
+    )
+    top = html.index('id="newsletter-signup-top"')
+    assert html.index("</table>") < top < html.index('class="entry-list"') < html.index('id="newsletter-signup"')
+    assert 'id="bd-email-top"' in html and 'id="bd-email"' in html
+    assert "Halloween&#39;s a Saturday. Get the weekend&#39;s events by email on Thursday." in html
+    assert html.count('name="bd-hidden-frame"') == 1
+
+
+def test_halloween_ad_rows_match_the_page_and_the_creatives_render_at_three_sizes():
+    # ROADMAP.md item 344.
+    entries = _tot_entries(3)
+    entries[0].update(hours="3:00–8:00 PM, Saturday, October 31", note="The Village's standing hours, not yet confirmed for 2026.")
+    entries[1].update(hours="3:00–7:00 PM, Saturday, October 31", note="The Village's recommended hours, not an ordinance.")
+    entries[2].update(hours=None, no_official_hours=True)
+    rows, common = build_digest.tot_ad_rows(entries)
+    assert common == "Saturday, October 31"
+    assert [(r["hours"], r["qualifier"]) for r in rows] == [("3–8 PM", "standing"), ("3–7 PM", "recommended"), ("No set hours", None)]
+    now = datetime(2026, 10, 20, 18, tzinfo=timezone.utc)
+    ads = build_digest.build_tot_ads(entries, now)
+    assert {n: im.size for n, im in ads.items()} == {"tot-square": (1080, 1080), "tot-portrait": (1080, 1350), "tot-story": (1080, 1920)}
+    assert build_digest.build_tot_ads(entries, datetime(2026, 6, 1, tzinfo=timezone.utc)) == {}  # out of season
+    assert build_digest.build_tot_ads([dict(entries[0]), dict(entries[2])], now) == {}  # fewer than two towns with hours
+
+
+def test_meta_ad_kit_has_short_copy_and_a_utm_landing_url():
+    # ROADMAP.md item 344.
+    kit = (Path(__file__).resolve().parent.parent / "META_AD_KIT.md").read_text(encoding="utf-8")
+    copies = re.findall(r"^\d\. `([^`]+)`$", kit, re.M)
+    assert len(copies) == 3 and all(len(c) < 125 for c in copies)
+    url = "https://withintenmiles.com/trick-or-treat/?utm_source=meta&utm_campaign=halloween-2026"
+    assert url in kit
+    for zip_code in ("60005", "60016", "60056", "60067", "60090"):
+        assert zip_code in kit
+    assert "Audience Network off" in kit and "No Meta pixel" in kit
