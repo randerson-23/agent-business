@@ -1,18 +1,6 @@
 {
- "fetched_at": "2026-10-18T21:59:20+00:00",
+ "fetched_at": "2026-10-19T06:01:07+00:00",
  "items": [
-  {
-   "date": "Sun, 18 Oct 2026 00:00:00 +0000",
-   "detail": "Sunday, October 18 2026 12:00am - 11:59pm \n Enter our 4th annual Wicked Good Writing Contest!\nFor grades K-8.",
-   "title": "Wicked Good Writing Contest",
-   "url": "https://desplaines.libnet.info/event/17138186"
-  },
-  {
-   "date": "Sun, 18 Oct 2026 14:00:00 +0000",
-   "detail": "Sunday, October 18 2026 2:00pm - 3:00pm \n Empieza con tareas básicas en Excel, como crear hojas de calculo y agregar y editar datos, y familiarizarte con las opciones de comando en la cinta de Excel.",
-   "title": "MS Excel: Principantes (Spanish)",
-   "url": "https://desplaines.libnet.info/event/17391232"
-  },
   {
    "date": "Mon, 19 Oct 2026 00:00:00 +0000",
    "detail": "Monday, October 19 2026 12:00am - 11:59pm \n Enter our 4th annual Wicked Good Writing Contest!\nFor grades K-8.",
@@ -360,6 +348,18 @@
    "detail": "Tuesday, October 27 2026 12:00am - 11:59pm \n Enter our 4th annual Wicked Good Writing Contest!\nFor grades K-8.",
    "title": "Wicked Good Writing Contest",
    "url": "https://desplaines.libnet.info/event/17138195"
+  },
+  {
+   "date": "Tue, 27 Oct 2026 09:00:00 +0000",
+   "detail": "Tuesday, October 27 2026 9:00am - 5:00pm \n Gubernatorial Election",
+   "title": "Early Voting",
+   "url": "https://desplaines.libnet.info/event/14863288"
+  },
+  {
+   "date": "Tue, 27 Oct 2026 09:15:00 +0000",
+   "detail": "Tuesday, October 27 2026 9:15am - 12:15pm \n For more information, please contact Oakton College at 847-635-1426",
+   "title": "Reading/Literacy Class",
+   "url": "https://desplaines.libnet.info/event/15801727"
   }
  ],
  "source": "Des Plaines Public Library — Events"

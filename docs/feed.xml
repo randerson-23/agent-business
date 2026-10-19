@@ -3,60 +3,8 @@
 <channel>
   <title>Within Ten — Upcoming Local Events</title>
   <link>https://withintenmiles.com/</link>
-  <description>Upcoming events across every Within Ten region, soonest first - aggregated automatically from village, library, park district and school-district calendars. This build reached 20 of 29 configured sources. 3 sources are shown from their last update, up to 16 hours ago.</description>
-  <lastBuildDate>Sun, 18 Oct 2026 21:59:20 +0000</lastBuildDate>
-  <item>
-    <title>Arlington Heights: Makerplace Wire Wrapped Jewelry: Symmetrical Ear Wires and Dangle Earrings</title>
-    <link>https://withintenmiles.com/arlington-heights-60005/#ev-makerplace-wire-wrapped-jewelry-symmetrical-ear-wires-and-da-2026-10-18</link>
-    <guid isPermaLink="true">https://withintenmiles.com/arlington-heights-60005/#ev-makerplace-wire-wrapped-jewelry-symmetrical-ear-wires-and-da-2026-10-18</guid>
-    <description>Official listing: https://www.ahml.info/scheduling/reservation/210083</description>
-    <pubDate>Sun, 18 Oct 2026 00:00:00 +0000</pubDate>
-    <source url="https://www.ahml.info/scheduling/reservation/210083">Arlington Heights Memorial Library — Events</source>
-  </item>
-  <item>
-    <title>Des Plaines: Wicked Good Writing Contest</title>
-    <link>https://withintenmiles.com/des-plaines-60016/#ev-wicked-good-writing-contest-2026-10-18</link>
-    <guid isPermaLink="true">https://withintenmiles.com/des-plaines-60016/#ev-wicked-good-writing-contest-2026-10-18</guid>
-    <description>Sunday, October 18 2026 12:00am - 11:59pm 
- Enter our 4th annual Wicked Good Writing Contest!
-For grades K-8. Official listing: https://desplaines.libnet.info/event/17138186</description>
-    <pubDate>Sun, 18 Oct 2026 00:00:00 +0000</pubDate>
-    <source url="https://desplaines.libnet.info/event/17138186">Des Plaines Public Library — Events</source>
-  </item>
-  <item>
-    <title>Mount Prospect: Mount Prospect Farmers Market</title>
-    <link>https://withintenmiles.com/mount-prospect-60056/#ev-mount-prospect-farmers-market-2026-10-18</link>
-    <guid isPermaLink="true">https://withintenmiles.com/mount-prospect-60056/#ev-mount-prospect-farmers-market-2026-10-18</guid>
-    <description>Local produce and vendors, organized by the Mount Prospect Lions Club, rain or shine. West Metra commuter lot, Northwest Hwy &amp; Main St (Rte 83). Official listing: https://mplions.org/event/farmers-market/</description>
-    <pubDate>Sun, 18 Oct 2026 08:00:00 +0000</pubDate>
-    <source url="https://mplions.org/event/farmers-market/">Mount Prospect</source>
-  </item>
-  <item>
-    <title>Mount Prospect: Friends Book Sale</title>
-    <link>https://withintenmiles.com/mount-prospect-60056/#ev-friends-book-sale-2026-10-18</link>
-    <guid isPermaLink="true">https://withintenmiles.com/mount-prospect-60056/#ev-friends-book-sale-2026-10-18</guid>
-    <description>Sunday, October 18 2026 11:00am - 4:00pm 
- Stock up on great books at bargain prices during the Friends of the Library's used book sale. Official listing: https://mppl.libnet.info/event/13845871</description>
-    <pubDate>Sun, 18 Oct 2026 11:00:00 +0000</pubDate>
-    <source url="https://mppl.libnet.info/event/13845871">Mount Prospect Public Library — Events</source>
-  </item>
-  <item>
-    <title>Arlington Heights: Pumpkin Splash</title>
-    <link>https://withintenmiles.com/arlington-heights-60005/#ev-pumpkin-splash-2026-10-18</link>
-    <guid isPermaLink="true">https://withintenmiles.com/arlington-heights-60005/#ev-pumpkin-splash-2026-10-18</guid>
-    <description>Skip the pumpkin patch and pick your pumpkin in the Arlington Ridge Center Family Activity Pool! Each registered child takes home a real pumpkin to decorate!… Official listing: https://www.ahpd.org/event/pumpkin-splash-2026/</description>
-    <pubDate>Sun, 18 Oct 2026 13:00:00 +0000</pubDate>
-    <source url="https://www.ahpd.org/event/pumpkin-splash-2026/">Arlington Heights Park District — Events</source>
-  </item>
-  <item>
-    <title>Des Plaines: MS Excel: Principantes (Spanish)</title>
-    <link>https://withintenmiles.com/des-plaines-60016/#ev-ms-excel-principantes-spanish-2026-10-18</link>
-    <guid isPermaLink="true">https://withintenmiles.com/des-plaines-60016/#ev-ms-excel-principantes-spanish-2026-10-18</guid>
-    <description>Sunday, October 18 2026 2:00pm - 3:00pm 
- Empieza con tareas básicas en Excel, como crear hojas de calculo y agregar y editar datos, y familiarizarte con las… Official listing: https://desplaines.libnet.info/event/17391232</description>
-    <pubDate>Sun, 18 Oct 2026 14:00:00 +0000</pubDate>
-    <source url="https://desplaines.libnet.info/event/17391232">Des Plaines Public Library — Events</source>
-  </item>
+  <description>Upcoming events across every Within Ten region, soonest first - aggregated automatically from village, library, park district and school-district calendars. This build reached 24 of 29 configured sources.</description>
+  <lastBuildDate>Mon, 19 Oct 2026 06:01:07 +0000</lastBuildDate>
   <item>
     <title>Arlington Heights: Kids' Time</title>
     <link>https://withintenmiles.com/arlington-heights-60005/#ev-kids-time-2026-10-19</link>
@@ -449,6 +397,60 @@ For grades K-8. Official listing: https://desplaines.libnet.info/event/17138188<
  Each month we meet to get crafty and make something new with supplies from the library. This month, we're painting… Official listing: https://mppl.libnet.info/event/14039946</description>
     <pubDate>Tue, 20 Oct 2026 16:00:00 +0000</pubDate>
     <source url="https://mppl.libnet.info/event/14039946">Mount Prospect Public Library — Events</source>
+  </item>
+  <item>
+    <title>Wheeling: Chapter One Book Club | Grades K-1</title>
+    <link>https://withintenmiles.com/wheeling-60090/#ev-chapter-one-book-club-grades-k-1-2026-10-20</link>
+    <guid isPermaLink="true">https://withintenmiles.com/wheeling-60090/#ev-chapter-one-book-club-grades-k-1-2026-10-20</guid>
+    <description>Tuesday, October 20 2026 4:00pm - 5:00pm 
+ Book pickup September 22-October 13 at the Youth Services Desk. Everyone in Pia's family votes for pizza for… Official listing: https://indiantrails.libnet.info/event/16665594</description>
+    <pubDate>Tue, 20 Oct 2026 16:00:00 +0000</pubDate>
+    <source url="https://indiantrails.libnet.info/event/16665594">Indian Trails Public Library — Events</source>
+  </item>
+  <item>
+    <title>Mount Prospect: 3D Printing for Kids: Intermediate Tinkercad</title>
+    <link>https://withintenmiles.com/mount-prospect-60056/#ev-3d-printing-for-kids-intermediate-tinkercad-2026-10-20</link>
+    <guid isPermaLink="true">https://withintenmiles.com/mount-prospect-60056/#ev-3d-printing-for-kids-intermediate-tinkercad-2026-10-20</guid>
+    <description>Tuesday, October 20 2026 4:30pm - 5:30pm 
+ Make a 3D design from scratch, and we'll have it printed at the library. Official listing: https://mppl.libnet.info/event/16391860</description>
+    <pubDate>Tue, 20 Oct 2026 16:30:00 +0000</pubDate>
+    <source url="https://mppl.libnet.info/event/16391860">Mount Prospect Public Library — Events</source>
+  </item>
+  <item>
+    <title>Wheeling: DIY Monster Heads</title>
+    <link>https://withintenmiles.com/wheeling-60090/#ev-diy-monster-heads-2026-10-20</link>
+    <guid isPermaLink="true">https://withintenmiles.com/wheeling-60090/#ev-diy-monster-heads-2026-10-20</guid>
+    <description>Tuesday, October 20 2026 4:30pm - 5:30pm 
+ Create a face only a mummy could love. Use art supplies to decorate styling heads and transform them into menacing… Official listing: https://indiantrails.libnet.info/event/16714129</description>
+    <pubDate>Tue, 20 Oct 2026 16:30:00 +0000</pubDate>
+    <source url="https://indiantrails.libnet.info/event/16714129">Indian Trails Public Library — Events</source>
+  </item>
+  <item>
+    <title>Des Plaines: Book a Teen Librarian</title>
+    <link>https://withintenmiles.com/des-plaines-60016/#ev-book-a-teen-librarian-2026-10-20</link>
+    <guid isPermaLink="true">https://withintenmiles.com/des-plaines-60016/#ev-book-a-teen-librarian-2026-10-20</guid>
+    <description>Tuesday, October 20 2026 5:00pm - 6:00pm 
+ Come in and get to know your teen librarians! Official listing: https://desplaines.libnet.info/event/17604767</description>
+    <pubDate>Tue, 20 Oct 2026 17:00:00 +0000</pubDate>
+    <source url="https://desplaines.libnet.info/event/17604767">Des Plaines Public Library — Events</source>
+  </item>
+  <item>
+    <title>Des Plaines: Stitches on Miner</title>
+    <link>https://withintenmiles.com/des-plaines-60016/#ev-stitches-on-miner-2026-10-20</link>
+    <guid isPermaLink="true">https://withintenmiles.com/des-plaines-60016/#ev-stitches-on-miner-2026-10-20</guid>
+    <description>Tuesday, October 20 2026 5:30pm - 7:30pm 
+ Come join us for a few hours of dedicated crafting time, perfect for working on those eternal works-in-progress or… Official listing: https://desplaines.libnet.info/event/16742517</description>
+    <pubDate>Tue, 20 Oct 2026 17:30:00 +0000</pubDate>
+    <source url="https://desplaines.libnet.info/event/16742517">Des Plaines Public Library — Events</source>
+  </item>
+  <item>
+    <title>Des Plaines: Tech in the Forum</title>
+    <link>https://withintenmiles.com/des-plaines-60016/#ev-tech-in-the-forum-2026-10-20</link>
+    <guid isPermaLink="true">https://withintenmiles.com/des-plaines-60016/#ev-tech-in-the-forum-2026-10-20</guid>
+    <description>Tuesday, October 20 2026 5:30pm - 7:30pm 
+ Do you have a question about technology or how to use the library's services? Assistance is provided on a… Official listing: https://desplaines.libnet.info/event/17604845</description>
+    <pubDate>Tue, 20 Oct 2026 17:30:00 +0000</pubDate>
+    <source url="https://desplaines.libnet.info/event/17604845">Des Plaines Public Library — Events</source>
   </item>
 </channel>
 </rss>

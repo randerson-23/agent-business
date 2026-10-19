@@ -3,25 +3,8 @@
 <channel>
   <title>Within Ten — Upcoming events in Mount Prospect</title>
   <link>https://withintenmiles.com/</link>
-  <description>Upcoming events in Mount Prospect, soonest first - aggregated automatically from village, library, park district and school-district calendars. This build reached 11 of 18 configured sources. 3 sources are shown from their last update, up to 16 hours ago.</description>
-  <lastBuildDate>Sun, 18 Oct 2026 21:59:20 +0000</lastBuildDate>
-  <item>
-    <title>Mount Prospect: Mount Prospect Farmers Market</title>
-    <link>https://withintenmiles.com/mount-prospect-60056/#ev-mount-prospect-farmers-market-2026-10-18</link>
-    <guid isPermaLink="true">https://withintenmiles.com/mount-prospect-60056/#ev-mount-prospect-farmers-market-2026-10-18</guid>
-    <description>Local produce and vendors, organized by the Mount Prospect Lions Club, rain or shine. West Metra commuter lot, Northwest Hwy &amp; Main St (Rte 83). Official listing: https://mplions.org/event/farmers-market/</description>
-    <pubDate>Sun, 18 Oct 2026 08:00:00 +0000</pubDate>
-    <source url="https://mplions.org/event/farmers-market/">Mount Prospect</source>
-  </item>
-  <item>
-    <title>Mount Prospect: Friends Book Sale</title>
-    <link>https://withintenmiles.com/mount-prospect-60056/#ev-friends-book-sale-2026-10-18</link>
-    <guid isPermaLink="true">https://withintenmiles.com/mount-prospect-60056/#ev-friends-book-sale-2026-10-18</guid>
-    <description>Sunday, October 18 2026 11:00am - 4:00pm 
- Stock up on great books at bargain prices during the Friends of the Library's used book sale. Official listing: https://mppl.libnet.info/event/13845871</description>
-    <pubDate>Sun, 18 Oct 2026 11:00:00 +0000</pubDate>
-    <source url="https://mppl.libnet.info/event/13845871">Mount Prospect Public Library — Events</source>
-  </item>
+  <description>Upcoming events in Mount Prospect, soonest first - aggregated automatically from village, library, park district and school-district calendars. This build reached 15 of 18 configured sources.</description>
+  <lastBuildDate>Mon, 19 Oct 2026 06:01:07 +0000</lastBuildDate>
   <item>
     <title>Mount Prospect: Family Storytime</title>
     <link>https://withintenmiles.com/mount-prospect-60056/#ev-family-storytime-2026-10-19</link>
@@ -451,6 +434,24 @@ A virtual… Official listing: https://mppl.libnet.info/event/17476744</descript
  Get your pickaxe ready! Build unique structures that solve various design challenges. Then share your digital… Official listing: https://mppl.libnet.info/event/16394676</description>
     <pubDate>Wed, 28 Oct 2026 18:00:00 +0000</pubDate>
     <source url="https://mppl.libnet.info/event/16394676">Mount Prospect Public Library — Events</source>
+  </item>
+  <item>
+    <title>Mount Prospect: Lawyers at the Library: Your Legal Help Desk</title>
+    <link>https://withintenmiles.com/mount-prospect-60056/#ev-lawyers-at-the-library-your-legal-help-desk-2026-10-28</link>
+    <guid isPermaLink="true">https://withintenmiles.com/mount-prospect-60056/#ev-lawyers-at-the-library-your-legal-help-desk-2026-10-28</guid>
+    <description>Wednesday, October 28 2026 6:30pm - 7:00pm 
+ Need legal advice but don't know where to start? Free legal consultations are available through a virtual meeting… Official listing: https://mppl.libnet.info/event/16565155</description>
+    <pubDate>Wed, 28 Oct 2026 18:30:00 +0000</pubDate>
+    <source url="https://mppl.libnet.info/event/16565155">Mount Prospect Public Library — Events</source>
+  </item>
+  <item>
+    <title>Mount Prospect: Gardening Can Be Murder</title>
+    <link>https://withintenmiles.com/mount-prospect-60056/#ev-gardening-can-be-murder-2026-10-28</link>
+    <guid isPermaLink="true">https://withintenmiles.com/mount-prospect-60056/#ev-gardening-can-be-murder-2026-10-28</guid>
+    <description>Wednesday, October 28 2026 7:00pm - 8:00pm 
+ Author and gardener Marta McDowell explores the many ways in which writers have found inspiration in the sinister… Official listing: https://mppl.libnet.info/event/16727732</description>
+    <pubDate>Wed, 28 Oct 2026 19:00:00 +0000</pubDate>
+    <source url="https://mppl.libnet.info/event/16727732">Mount Prospect Public Library — Events</source>
   </item>
 </channel>
 </rss>

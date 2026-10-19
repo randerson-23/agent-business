@@ -1,12 +1,6 @@
 {
- "fetched_at": "2026-10-18T21:59:20+00:00",
+ "fetched_at": "2026-10-19T06:01:07+00:00",
  "items": [
-  {
-   "date": "Sun, 18 Oct 2026 11:00:00 +0000",
-   "detail": "Sunday, October 18 2026 11:00am - 4:00pm \n Stock up on great books at bargain prices during the Friends of the Library's used book sale.",
-   "title": "Friends Book Sale",
-   "url": "https://mppl.libnet.info/event/13845871"
-  },
   {
    "date": "Mon, 19 Oct 2026 09:30:00 +0000",
    "detail": "Monday, October 19 2026 9:30am - 10:00am \n Bring the whole family and join us for an interactive storytime with high-energy stories, songs, and activities.",
@@ -360,6 +354,12 @@
    "detail": "Monday, November 02 2026 12:00am - 11:59pm \n Stop by the Youth desk and pick up a fun DIY craft to make at home!",
    "title": "Crafts-to-Go Kits",
    "url": "https://mppl.libnet.info/event/14829755"
+  },
+  {
+   "date": "Mon, 02 Nov 2026 00:00:00 +0000",
+   "detail": "Monday, November 02 2026 12:00am - 11:59pm \n Mount Prospect Public Library is joining the statewide Family Reading Night event and invites families to join the fun with Family Reading Night kits.",
+   "title": "Family Reading Night Kits",
+   "url": "https://mppl.libnet.info/event/16903311"
   }
  ],
  "source": "Mount Prospect Public Library — Events"

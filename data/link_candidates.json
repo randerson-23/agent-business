@@ -10,10 +10,6 @@
   },
   {
    "region": "arlington-heights-60005",
-   "url": "https://www.ahml.info/scheduling/reservation/210083"
-  },
-  {
-   "region": "arlington-heights-60005",
    "url": "https://www.ahml.info/scheduling/reservation/224133"
   },
   {
@@ -50,7 +46,7 @@
   },
   {
    "region": "arlington-heights-60005",
-   "url": "https://www.ahml.info/scheduling/reservation/234245"
+   "url": "https://www.ahml.info/scheduling/reservation/226814"
   },
   {
    "region": "arlington-heights-60005",
@@ -63,10 +59,6 @@
   {
    "region": "arlington-heights-60005",
    "url": "https://www.ahpd.org/event/halloween-pumpkin-carving/"
-  },
-  {
-   "region": "arlington-heights-60005",
-   "url": "https://www.ahpd.org/event/pumpkin-splash-2026/"
   },
   {
    "region": "arlington-heights-60005",
@@ -146,6 +138,10 @@
   },
   {
    "region": "des-plaines-60016",
+   "url": "https://desplaines.libnet.info/event/15050740"
+  },
+  {
+   "region": "des-plaines-60016",
    "url": "https://desplaines.libnet.info/event/15080696"
   },
   {
@@ -159,6 +155,10 @@
   {
    "region": "des-plaines-60016",
    "url": "https://desplaines.libnet.info/event/15509797"
+  },
+  {
+   "region": "des-plaines-60016",
+   "url": "https://desplaines.libnet.info/event/15509798"
   },
   {
    "region": "des-plaines-60016",
@@ -234,6 +234,10 @@
   },
   {
    "region": "des-plaines-60016",
+   "url": "https://desplaines.libnet.info/event/16431787"
+  },
+  {
+   "region": "des-plaines-60016",
    "url": "https://desplaines.libnet.info/event/16717144"
   },
   {
@@ -299,10 +303,6 @@
   {
    "region": "des-plaines-60016",
    "url": "https://desplaines.libnet.info/event/17118809"
-  },
-  {
-   "region": "des-plaines-60016",
-   "url": "https://desplaines.libnet.info/event/17138186"
   },
   {
    "region": "des-plaines-60016",
@@ -386,6 +386,10 @@
   },
   {
    "region": "des-plaines-60016",
+   "url": "https://desplaines.libnet.info/event/17253017"
+  },
+  {
+   "region": "des-plaines-60016",
    "url": "https://desplaines.libnet.info/event/17284757"
   },
   {
@@ -406,10 +410,6 @@
   },
   {
    "region": "des-plaines-60016",
-   "url": "https://desplaines.libnet.info/event/17391232"
-  },
-  {
-   "region": "des-plaines-60016",
    "url": "https://desplaines.libnet.info/event/17391239"
   },
   {
@@ -419,6 +419,10 @@
   {
    "region": "des-plaines-60016",
    "url": "https://desplaines.libnet.info/event/17457163"
+  },
+  {
+   "region": "des-plaines-60016",
+   "url": "https://desplaines.libnet.info/event/17479527"
   },
   {
    "region": "des-plaines-60016",
@@ -439,6 +443,10 @@
   {
    "region": "des-plaines-60016",
    "url": "https://desplaines.libnet.info/event/17604845"
+  },
+  {
+   "region": "des-plaines-60016",
+   "url": "https://desplaines.libnet.info/event/17635811"
   },
   {
    "region": "des-plaines-60016",
@@ -522,10 +530,6 @@
   },
   {
    "region": "mount-prospect-60056",
-   "url": "https://mppl.libnet.info/event/13845871"
-  },
-  {
-   "region": "mount-prospect-60056",
    "url": "https://mppl.libnet.info/event/14039685"
   },
   {
@@ -551,6 +555,10 @@
   {
    "region": "mount-prospect-60056",
    "url": "https://mppl.libnet.info/event/14756318"
+  },
+  {
+   "region": "mount-prospect-60056",
+   "url": "https://mppl.libnet.info/event/14829755"
   },
   {
    "region": "mount-prospect-60056",
@@ -599,6 +607,10 @@
   {
    "region": "mount-prospect-60056",
    "url": "https://mppl.libnet.info/event/16394676"
+  },
+  {
+   "region": "mount-prospect-60056",
+   "url": "https://mppl.libnet.info/event/16506789"
   },
   {
    "region": "mount-prospect-60056",
@@ -686,6 +698,18 @@
   },
   {
    "region": "mount-prospect-60056",
+   "url": "https://mppl.libnet.info/event/16617231"
+  },
+  {
+   "region": "mount-prospect-60056",
+   "url": "https://mppl.libnet.info/event/16637669"
+  },
+  {
+   "region": "mount-prospect-60056",
+   "url": "https://mppl.libnet.info/event/16637797"
+  },
+  {
+   "region": "mount-prospect-60056",
    "url": "https://mppl.libnet.info/event/16640995"
   },
   {
@@ -735,6 +759,10 @@
   {
    "region": "mount-prospect-60056",
    "url": "https://mppl.libnet.info/event/16899837"
+  },
+  {
+   "region": "mount-prospect-60056",
+   "url": "https://mppl.libnet.info/event/16903311"
   },
   {
    "region": "mount-prospect-60056",
@@ -807,6 +835,14 @@
   {
    "region": "wheeling-60090",
    "url": "https://indiantrails.libnet.info/event/15916607"
+  },
+  {
+   "region": "wheeling-60090",
+   "url": "https://indiantrails.libnet.info/event/15964922"
+  },
+  {
+   "region": "wheeling-60090",
+   "url": "https://indiantrails.libnet.info/event/15964923"
   },
   {
    "region": "wheeling-60090",
@@ -966,11 +1002,27 @@
   },
   {
    "region": "wheeling-60090",
+   "url": "https://indiantrails.libnet.info/event/17043790"
+  },
+  {
+   "region": "wheeling-60090",
+   "url": "https://indiantrails.libnet.info/event/17044874"
+  },
+  {
+   "region": "wheeling-60090",
    "url": "https://indiantrails.libnet.info/event/17045958"
   },
   {
    "region": "wheeling-60090",
    "url": "https://indiantrails.libnet.info/event/17110486"
+  },
+  {
+   "region": "wheeling-60090",
+   "url": "https://indiantrails.libnet.info/event/17138854"
+  },
+  {
+   "region": "wheeling-60090",
+   "url": "https://indiantrails.libnet.info/event/17139043"
   },
   {
    "region": "wheeling-60090",
