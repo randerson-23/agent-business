@@ -2377,7 +2377,7 @@ def test_render_hub_page_lists_regions():
     html = build_digest.render_hub_page([], summaries, datetime.now(timezone.utc))
     assert "Mount Prospect" in html
     assert "mount-prospect-60056/" in html
-    assert "live update" not in html and "Nothing dated this weekend yet" in html
+    assert "live update" not in html and "Nothing dated in the next two weeks" in html
 
 
 def test_render_hub_page_subheading_counts_actual_regions():
@@ -5936,3 +5936,33 @@ def test_hub_town_cards_show_two_picks_and_the_weekend_count_not_live_updates():
     html = build_digest.render_hub_page([], summaries, datetime(2026, 10, 20, 15, tzinfo=timezone.utc), stats={"region_count": 1, "event_count": 287, "weekend_count": 3, "weekend_date_range": "Oct 23–25", "free_count": 1, "today_count": 0})
     assert "live update" not in html and "See all 3 this weekend" in html and "Fall Festival" in html
     assert "From the village, library and park district." in html
+
+
+def test_weekend_rolls_to_next_weekend_from_sunday_3_pm():
+    # ROADMAP.md item 341.
+    tz = build_digest.LOCAL_TZ
+    sun_1459, sun_1501, mon = datetime(2026, 10, 18, 14, 59, tzinfo=tz), datetime(2026, 10, 18, 15, 1, tzinfo=tz), datetime(2026, 10, 19, 9, 0, tzinfo=tz)
+    assert build_digest.weekend_dates(build_digest.weekend_reference_date(sun_1459))[0] == date(2026, 10, 16)
+    assert build_digest.weekend_dates(build_digest.weekend_reference_date(sun_1501))[0] == date(2026, 10, 23)
+    assert build_digest.weekend_dates(build_digest.weekend_reference_date(mon))[0] == date(2026, 10, 23)
+    assert build_digest.weekend_label(sun_1459) == "This weekend" and build_digest.weekend_label(sun_1501) == "Next weekend" and build_digest.weekend_label(mon) == "Next weekend"
+    assert build_digest.weekend_label(datetime(2026, 10, 23, 9, tzinfo=tz)) == "This weekend"  # Friday
+
+
+def test_a_town_with_an_empty_window_shows_its_next_events_or_the_plain_line():
+    # ROADMAP.md item 342.
+    blocks = [{"events": [
+        {"title": "Later A", "date_iso": "2026-10-27T10:00:00", "date": "Oct 27", "attendable": True},
+        {"title": "Later B", "date_iso": "2026-10-29T10:00:00", "date": "Oct 29", "attendable": True},
+        {"title": "Too far", "date_iso": "2026-12-01T10:00:00", "date": "Dec 1", "attendable": True},
+        {"title": "Passed", "date_iso": "2026-10-10T10:00:00", "date": "Oct 10", "attendable": True},
+    ]}]
+    assert [p["title"] for p in build_digest.hub_next_up(blocks, date(2026, 10, 19))] == ["Later A", "Later B"]
+    assert build_digest.hub_next_up(blocks, date(2026, 11, 5)) == []
+    base = {"name": "Palatine", "zip": "60067", "state": "IL", "tagline": "t", "path": "palatine-60067/", "event_count": 1, "weekend_picks": [], "weekend_count": 0, "guides": []}
+    stats = {"region_count": 1, "event_count": 1, "weekend_count": 0, "weekend_date_range": "Oct 23–25", "weekend_label": "Next weekend", "free_count": 0, "today_count": 0}
+    now = datetime(2026, 10, 19, 15, tzinfo=timezone.utc)
+    with_next = build_digest.render_hub_page([], [dict(base, next_up=[{"emoji": "🎃", "title": "Later A", "when": "Tue Oct 27"}])], now, stats=stats)
+    assert "Next up" in with_next and "Later A" in with_next and "See what's on in Palatine" in with_next and "Next weekend" in with_next
+    plain = build_digest.render_hub_page([], [dict(base, next_up=[])], now, stats=stats)
+    assert "Nothing dated in the next two weeks" in plain and "Next up" not in plain and " yet" not in plain.split("region-grid")[1].split("</main>")[0]
