@@ -23,6 +23,9 @@ from pathlib import Path
 
 import requests
 
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from plan_cap import check_free_plan_cap  # noqa: E402
+
 ROOT = Path(__file__).resolve().parent.parent
 AUDIENCE_PATH = ROOT / "data" / "audience.json"
 SEND_HISTORY_PATH = ROOT / "data" / "send_history.json"
@@ -116,6 +119,7 @@ def main() -> int:
         logger.error("Audience snapshot failed (%s); leaving data/audience.json as it was.", exc)
         return 1
     AUDIENCE_PATH.write_text(json.dumps(snapshot, indent=2) + "\n", encoding="utf-8")
+    check_free_plan_cap(snapshot["subscribers"])  # ROADMAP.md item 349
     logger.info("Wrote %s: %d visits in 30 days.", AUDIENCE_PATH, snapshot["visits_30d"])
     return 0
 

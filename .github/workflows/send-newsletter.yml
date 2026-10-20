@@ -38,6 +38,7 @@ on:
 
 permissions:
   contents: write
+  issues: write
 
 jobs:
   send:
@@ -63,6 +64,7 @@ jobs:
       - name: Send to Buttondown
         env:
           BUTTONDOWN_API_KEY: ${{ secrets.BUTTONDOWN_API_KEY }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           if [ "${{ inputs.dry_run }}" = "true" ]; then
             python scripts/send_newsletter.py --dry-run
