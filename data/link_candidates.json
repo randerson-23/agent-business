@@ -26,10 +26,6 @@
   },
   {
    "region": "arlington-heights-60005",
-   "url": "https://www.ahml.info/scheduling/reservation/224212"
-  },
-  {
-   "region": "arlington-heights-60005",
    "url": "https://www.ahml.info/scheduling/reservation/224214"
   },
   {
@@ -74,10 +70,6 @@
   },
   {
    "region": "arlington-heights-60005",
-   "url": "https://www.metropolisarts.com/event/ckc-tortoise-hare/"
-  },
-  {
-   "region": "arlington-heights-60005",
    "url": "https://www.metropolisarts.com/event/the-rock-n-horror-halloween-concert/"
   },
   {
@@ -91,10 +83,6 @@
   {
    "region": "des-plaines-60016",
    "url": "https://desplaines.libnet.info/event/14863263"
-  },
-  {
-   "region": "des-plaines-60016",
-   "url": "https://desplaines.libnet.info/event/14863281"
   },
   {
    "region": "des-plaines-60016",
@@ -150,10 +138,6 @@
   },
   {
    "region": "des-plaines-60016",
-   "url": "https://desplaines.libnet.info/event/15509796"
-  },
-  {
-   "region": "des-plaines-60016",
    "url": "https://desplaines.libnet.info/event/15509797"
   },
   {
@@ -174,6 +158,10 @@
   },
   {
    "region": "des-plaines-60016",
+   "url": "https://desplaines.libnet.info/event/15801729"
+  },
+  {
+   "region": "des-plaines-60016",
    "url": "https://desplaines.libnet.info/event/15803235"
   },
   {
@@ -187,6 +175,10 @@
   {
    "region": "des-plaines-60016",
    "url": "https://desplaines.libnet.info/event/15803238"
+  },
+  {
+   "region": "des-plaines-60016",
+   "url": "https://desplaines.libnet.info/event/15803239"
   },
   {
    "region": "des-plaines-60016",
@@ -207,10 +199,6 @@
   {
    "region": "des-plaines-60016",
    "url": "https://desplaines.libnet.info/event/16339448"
-  },
-  {
-   "region": "des-plaines-60016",
-   "url": "https://desplaines.libnet.info/event/16431781"
   },
   {
    "region": "des-plaines-60016",
@@ -258,7 +246,15 @@
   },
   {
    "region": "des-plaines-60016",
+   "url": "https://desplaines.libnet.info/event/17001899"
+  },
+  {
+   "region": "des-plaines-60016",
    "url": "https://desplaines.libnet.info/event/17003808"
+  },
+  {
+   "region": "des-plaines-60016",
+   "url": "https://desplaines.libnet.info/event/17003809"
   },
   {
    "region": "des-plaines-60016",
@@ -290,10 +286,6 @@
   },
   {
    "region": "des-plaines-60016",
-   "url": "https://desplaines.libnet.info/event/17060663"
-  },
-  {
-   "region": "des-plaines-60016",
    "url": "https://desplaines.libnet.info/event/17118655"
   },
   {
@@ -303,10 +295,6 @@
   {
    "region": "des-plaines-60016",
    "url": "https://desplaines.libnet.info/event/17118809"
-  },
-  {
-   "region": "des-plaines-60016",
-   "url": "https://desplaines.libnet.info/event/17138187"
   },
   {
    "region": "des-plaines-60016",
@@ -414,10 +402,6 @@
   },
   {
    "region": "des-plaines-60016",
-   "url": "https://desplaines.libnet.info/event/17446280"
-  },
-  {
-   "region": "des-plaines-60016",
    "url": "https://desplaines.libnet.info/event/17457163"
   },
   {
@@ -427,10 +411,6 @@
   {
    "region": "des-plaines-60016",
    "url": "https://desplaines.libnet.info/event/17488080"
-  },
-  {
-   "region": "des-plaines-60016",
-   "url": "https://desplaines.libnet.info/event/17539276"
   },
   {
    "region": "des-plaines-60016",
@@ -459,10 +439,6 @@
   {
    "region": "des-plaines-60016",
    "url": "https://desplainestheatre.com/event/1-film-series-contact/"
-  },
-  {
-   "region": "des-plaines-60016",
-   "url": "https://desplainestheatre.com/event/10-silent-film-series-the-man-who-laughs-starring-mary-filbin-and-conrad-veidt-1928-presented-by-the-silent-film-society-of-chicago/"
   },
   {
    "region": "des-plaines-60016",
@@ -530,15 +506,7 @@
   },
   {
    "region": "mount-prospect-60056",
-   "url": "https://mppl.libnet.info/event/14039685"
-  },
-  {
-   "region": "mount-prospect-60056",
    "url": "https://mppl.libnet.info/event/14039946"
-  },
-  {
-   "region": "mount-prospect-60056",
-   "url": "https://mppl.libnet.info/event/14049842"
   },
   {
    "region": "mount-prospect-60056",
@@ -547,10 +515,6 @@
   {
    "region": "mount-prospect-60056",
    "url": "https://mppl.libnet.info/event/14701895"
-  },
-  {
-   "region": "mount-prospect-60056",
-   "url": "https://mppl.libnet.info/event/14756276"
   },
   {
    "region": "mount-prospect-60056",
@@ -582,11 +546,7 @@
   },
   {
    "region": "mount-prospect-60056",
-   "url": "https://mppl.libnet.info/event/16278585"
-  },
-  {
-   "region": "mount-prospect-60056",
-   "url": "https://mppl.libnet.info/event/16368490"
+   "url": "https://mppl.libnet.info/event/16288687"
   },
   {
    "region": "mount-prospect-60056",
@@ -623,14 +583,6 @@
   {
    "region": "mount-prospect-60056",
    "url": "https://mppl.libnet.info/event/16533457"
-  },
-  {
-   "region": "mount-prospect-60056",
-   "url": "https://mppl.libnet.info/event/16553300"
-  },
-  {
-   "region": "mount-prospect-60056",
-   "url": "https://mppl.libnet.info/event/16553330"
   },
   {
    "region": "mount-prospect-60056",
@@ -702,6 +654,10 @@
   },
   {
    "region": "mount-prospect-60056",
+   "url": "https://mppl.libnet.info/event/16617232"
+  },
+  {
+   "region": "mount-prospect-60056",
    "url": "https://mppl.libnet.info/event/16637669"
   },
   {
@@ -710,11 +666,19 @@
   },
   {
    "region": "mount-prospect-60056",
-   "url": "https://mppl.libnet.info/event/16640995"
+   "url": "https://mppl.libnet.info/event/16637815"
   },
   {
    "region": "mount-prospect-60056",
-   "url": "https://mppl.libnet.info/event/16640998"
+   "url": "https://mppl.libnet.info/event/16637827"
+  },
+  {
+   "region": "mount-prospect-60056",
+   "url": "https://mppl.libnet.info/event/16637850"
+  },
+  {
+   "region": "mount-prospect-60056",
+   "url": "https://mppl.libnet.info/event/16637866"
   },
   {
    "region": "mount-prospect-60056",
@@ -758,6 +722,10 @@
   },
   {
    "region": "mount-prospect-60056",
+   "url": "https://mppl.libnet.info/event/16882806"
+  },
+  {
+   "region": "mount-prospect-60056",
    "url": "https://mppl.libnet.info/event/16899837"
   },
   {
@@ -770,7 +738,15 @@
   },
   {
    "region": "mount-prospect-60056",
+   "url": "https://mppl.libnet.info/event/17173106"
+  },
+  {
+   "region": "mount-prospect-60056",
    "url": "https://mppl.libnet.info/event/17206113"
+  },
+  {
+   "region": "mount-prospect-60056",
+   "url": "https://mppl.libnet.info/event/17353131"
   },
   {
    "region": "mount-prospect-60056",
@@ -798,7 +774,7 @@
   },
   {
    "region": "palatine-60067",
-   "url": "https://events.harpercollege.edu/event/international-education-week"
+   "url": "https://events.harpercollege.edu/event/armchair-travel-series-morocco-and-tunisia"
   },
   {
    "region": "palatine-60067",
@@ -834,6 +810,10 @@
   },
   {
    "region": "wheeling-60090",
+   "url": "https://indiantrails.libnet.info/event/15836584"
+  },
+  {
+   "region": "wheeling-60090",
    "url": "https://indiantrails.libnet.info/event/15916607"
   },
   {
@@ -851,10 +831,6 @@
   {
    "region": "wheeling-60090",
    "url": "https://indiantrails.libnet.info/event/16493181"
-  },
-  {
-   "region": "wheeling-60090",
-   "url": "https://indiantrails.libnet.info/event/16494430"
   },
   {
    "region": "wheeling-60090",
@@ -886,19 +862,11 @@
   },
   {
    "region": "wheeling-60090",
-   "url": "https://indiantrails.libnet.info/event/16623892"
-  },
-  {
-   "region": "wheeling-60090",
    "url": "https://indiantrails.libnet.info/event/16624800"
   },
   {
    "region": "wheeling-60090",
    "url": "https://indiantrails.libnet.info/event/16642742"
-  },
-  {
-   "region": "wheeling-60090",
-   "url": "https://indiantrails.libnet.info/event/16649321"
   },
   {
    "region": "wheeling-60090",
@@ -918,10 +886,6 @@
   },
   {
    "region": "wheeling-60090",
-   "url": "https://indiantrails.libnet.info/event/16653534"
-  },
-  {
-   "region": "wheeling-60090",
    "url": "https://indiantrails.libnet.info/event/16658512"
   },
   {
@@ -935,10 +899,6 @@
   {
    "region": "wheeling-60090",
    "url": "https://indiantrails.libnet.info/event/16708864"
-  },
-  {
-   "region": "wheeling-60090",
-   "url": "https://indiantrails.libnet.info/event/16709030"
   },
   {
    "region": "wheeling-60090",
@@ -986,6 +946,10 @@
   },
   {
    "region": "wheeling-60090",
+   "url": "https://indiantrails.libnet.info/event/16808529"
+  },
+  {
+   "region": "wheeling-60090",
    "url": "https://indiantrails.libnet.info/event/16858048"
   },
   {
@@ -1011,6 +975,10 @@
   {
    "region": "wheeling-60090",
    "url": "https://indiantrails.libnet.info/event/17045958"
+  },
+  {
+   "region": "wheeling-60090",
+   "url": "https://indiantrails.libnet.info/event/17104212"
   },
   {
    "region": "wheeling-60090",
