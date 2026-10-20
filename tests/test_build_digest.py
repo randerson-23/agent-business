@@ -5321,7 +5321,7 @@ def test_night_out_line_renders_in_the_email_when_an_evening_arts_event_exists()
     sections = _join_sections()
     sections[0]["weekend_events"].append({"title": "Opening Night", "url": "https://src/o", "date_iso": "2026-10-16T19:30:00", "date": "2026-10-16", "detail": "", "tags": ["art_culture"], "venue": "Metropolis"})
     html = build_digest.render_combined_email_digest(sections, "Oct 16–18", datetime(2026, 10, 14, 18, tzinfo=timezone.utc), None)
-    assert "Night out:" in html and "Opening Night" in html and "Friday 7:30 PM" in html
+    assert "NIGHT OUT" in html and "Opening Night" in html and "Friday 7:30 PM" in html
 
 
 def test_celebration_windows_keywords_and_hub_block():
@@ -5884,10 +5884,10 @@ def test_registration_badge_and_the_email_block():
 def test_signups_block_is_omitted_when_empty_and_listed_when_present():
     base = {"region_name": "Mount Prospect", "region_url": "https://x/mount-prospect-60056/", "weekend_events": [], "evergreen": [], "sponsor": None}
     now = datetime(2026, 10, 18, 15, tzinfo=timezone.utc)
-    assert "Sign-ups opening this week" not in build_digest.render_combined_email_digest([base], "Oct 17–18", now)
-    sec = dict(base, signups=[{"title": "Cooking class", "url": "https://x/c", "opens": date(2026, 10, 21), "opens_label": "Wed, Oct 21", "event_label": "Sat, Nov 7", "town": "Mount Prospect"}])
+    assert "SIGN-UPS OPENING THIS WEEK" not in build_digest.render_combined_email_digest([base], "Oct 17–18", now)
+    sec = dict(base, signups=[{"title": "Cooking class", "url": "https://x/c", "opens": date(2026, 10, 21), "opens_label": "Wed, Oct 21", "sessions_label": "Sat Nov 7", "town": "Mount Prospect"}])
     html = build_digest.render_combined_email_digest([sec], "Oct 17–18", now)
-    assert "Sign-ups opening this week" in html and "Cooking class" in html and "opens Wed, Oct 21, event Sat, Nov 7" in html
+    assert "SIGN-UPS OPENING THIS WEEK" in html and "Cooking class" in html and "Sat Nov 7" in html and "sign-ups open Wed, Oct 21" in html
 
 
 def test_adult_events_lose_the_kid_friendly_badge_and_kids_crafts_keep_it():
@@ -6034,3 +6034,38 @@ def test_probe_retired_indexnow_keys_switches_back_on_a_200_and_backs_off_after_
     assert got == build_digest.RETIRED_INDEXNOW_KEYS[0] and build_digest.active_indexnow_key(json.loads(st.read_text())) == got
     assert build_digest.active_indexnow_key({}) == build_digest.INDEXNOW_KEY
     assert build_digest.active_indexnow_key({"active": "not-a-known-key"}) == build_digest.INDEXNOW_KEY
+
+
+def test_signups_group_sessions_cap_per_town_and_spread_across_towns():
+    # ROADMAP.md item 334.
+    def ev(title, day, venue="Library"):
+        return {"title": title, "url": "https://x/" + title, "venue": venue, "date_iso": f"2026-11-{day:02d}T10:00:00", "attendable": True, "registration_opens": "2026-10-21"}
+    blocks = [{"events": [ev("Family Storytime", 4), ev("Family Storytime", 11), ev("Family Storytime", 18), ev("Yoga", 5), ev("Chess", 6), ev("Family Storytime", 5, venue="Park")]}]
+    lines = build_digest.build_signups_opening(blocks, date(2026, 10, 19))
+    assert len(lines) == 2  # two lines per town
+    storytime = next(l for l in lines if l["title"] == "Family Storytime")
+    assert storytime["sessions_label"] == "Wed Nov 4, 11 & 18"  # three sessions, one line
+    assert build_digest.format_session_dates([date(2026, 11, 25), date(2026, 12, 2)]) == "Wed Nov 25 & Dec 2"
+    sections = [{"signups": [{"title": f"A{i}", "town": "A"} for i in range(2)]}, {"signups": [{"title": f"B{i}", "town": "B"} for i in range(2)]}, {"signups": [{"title": "C0", "town": "C"}]}]
+    assert [l["title"] for l in build_digest.pick_signups_across_towns(sections)] == ["A0", "B0", "C0", "A1"]  # towns first, four in all
+
+
+def test_shouting_titles_are_title_cased_for_display_only_and_acronyms_stay():
+    assert build_digest.display_title("ESL CONVERSATION CIRCLE FOR ADULTS") == "ESL Conversation Circle for Adults"
+    assert build_digest.display_title("LEGO ENGINEERING WORKSHOP FOR KIDS") == "LEGO Engineering Workshop for Kids"
+    assert build_digest.display_title("Family Storytime") == "Family Storytime"
+    assert build_digest.display_title("STEM CLUB") == "STEM CLUB"  # 12 characters or fewer is left alone
+    assert build_digest.display_title("DON'T MISS THE FALL FESTIVAL") == "Don't Miss the Fall Festival"
+    ev = {"title": "LEGO ENGINEERING WORKSHOP FOR KIDS", "url": "https://x/1", "date_iso": "2026-10-24T10:00:00", "date": "Oct 24", "tags": [], "tag_badges": [], "detail": ""}
+    html = build_digest.render_region_page(next(r for r in build_digest.load_regions() if r["region"]["id"] == "mount-prospect-60056"), [{"section": "S", "events": [ev]}], {"title": "", "detail": "", "url": ""}, [], datetime(2026, 10, 20, tzinfo=timezone.utc))
+    assert "LEGO Engineering Workshop for Kids</a>" in html and ev["title"] == "LEGO ENGINEERING WORKSHOP FOR KIDS"
+
+
+def test_email_with_every_new_block_stays_under_the_gmail_clip():
+    signups = [{"title": f"Class {i}", "url": "https://x/c", "opens": date(2026, 10, 21), "opens_label": "Wed, Oct 21", "sessions_label": "Sat Nov 7", "town": "Mount Prospect"} for i in range(4)]
+    sections = _join_sections()
+    sections[0]["signups"] = signups
+    sections[0]["weekend_events"].append({"title": "Opening Night", "url": "https://src/o", "date_iso": "2026-10-23T19:30:00", "date": "2026-10-23", "detail": "", "tags": ["art_culture"], "venue": "Metropolis"})
+    html = build_digest.render_combined_email_digest(sections, "Oct 23–25", datetime(2026, 10, 21, 18, tzinfo=timezone.utc), None)
+    assert all(b in html for b in ("DID YOU GO?", "SIGN-UPS OPENING THIS WEEK", "NIGHT OUT"))
+    assert len(html.encode("utf-8")) < 102_000

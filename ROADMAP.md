@@ -221,11 +221,10 @@ doesn't re-suggest something already shipped.
 **Build queue (by deadline; refreshed by the research loop, item 346).**
 Pick from the top unless the owner has flagged something else:
 0. **340 + 347** (Bing URL Submission API, ready for the owner's secret), **348** (the Halloween issue, before Oct 28), **349** (the free-plan cap warning, before the Meta test starts Oct 22).
-1. **334**: email block polish (before the Oct 22 send).
-2. **306**: the OpenStreetMap prospect list (by Oct 25).
-3. **323**: leaf pickup (in season now).
-4. **313, 314**: the sales mock-up and starter pack (before outreach).
-5. **328** (probe first), then **325** (by Nov 15), then the rest by
+1. **306**: the OpenStreetMap prospect list (by Oct 25).
+2. **323**: leaf pickup (in season now).
+3. **313, 314**: the sales mock-up and starter pack (before outreach).
+4. **328** (probe first), then **325** (by Nov 15), then the rest by
    priority.
 
 #### Needs Ryan
@@ -16683,7 +16682,7 @@ no-cost channel.
      the Lions Club description starts at *"The Des Plaines Lions
      Club…"*.
 
-334. **Give the email's new blocks the card treatment, and make the
+334. ✅ **DONE (2026-10-20): "Did you go?", "Sign-ups opening this week" and "Night out" are bordered, rounded cards with a small coloured kicker like "Don't miss" (the poll's buttons unchanged); sign-up sessions of the same title at the same venue are one line ("Des Plaines · Family Storytime, Wed Nov 4, 11 & 18 · sign-ups open Wed Oct 21"), two lines per town and four in all, one town each before any gets a second; titles with more than 70% capitals and over 12 characters are title-cased for display in the email and on cards (acronyms such as ESL, STEM, LEGO, AARP kept) while the stored title and JSON-LD name keep the publisher's text; tests include the 102 KB clip with every block present.** **Give the email's new blocks the card treatment, and make the
      sign-ups block useful.** Design/UX, `combined_email_digest.html.j2`
      and `pick_*` helpers:
 
