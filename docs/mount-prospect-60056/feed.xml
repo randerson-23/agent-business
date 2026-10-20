@@ -3,8 +3,8 @@
 <channel>
   <title>Within Ten — Upcoming events in Mount Prospect</title>
   <link>https://withintenmiles.com/</link>
-  <description>Upcoming events in Mount Prospect, soonest first - aggregated automatically from village, library, park district and school-district calendars. This build reached 12 of 18 configured sources. 2 sources are shown from their last update, up to 22 hours ago.</description>
-  <lastBuildDate>Tue, 20 Oct 2026 14:03:32 +0000</lastBuildDate>
+  <description>Upcoming events in Mount Prospect, soonest first - aggregated automatically from village, library, park district and school-district calendars. This build reached 11 of 18 configured sources. 4 sources are shown from their last update, up to 30 hours ago.</description>
+  <lastBuildDate>Tue, 20 Oct 2026 22:02:27 +0000</lastBuildDate>
   <item>
     <title>Mount Prospect: Baby Storytime</title>
     <link>https://withintenmiles.com/mount-prospect-60056/#ev-baby-storytime-2026-10-20</link>
@@ -49,15 +49,6 @@
  Grow into a super reader through playful books and fun with friends! This storytime is the perfect fit for… Official listing: https://mppl.libnet.info/event/16553394</description>
     <pubDate>Tue, 20 Oct 2026 13:30:00 +0000</pubDate>
     <source url="https://mppl.libnet.info/event/16553394">Mount Prospect Public Library — Events</source>
-  </item>
-  <item>
-    <title>Mount Prospect: Elected Officials Office Hours</title>
-    <link>https://withintenmiles.com/mount-prospect-60056/#ev-elected-officials-office-hours-2026-10-20</link>
-    <guid isPermaLink="true">https://withintenmiles.com/mount-prospect-60056/#ev-elected-officials-office-hours-2026-10-20</guid>
-    <description>Tuesday, October 20 2026 2:00pm - 4:00pm 
- Meet privately with staff from the office of State Sen. Mark Walker. Official listing: https://mppl.libnet.info/event/15390265</description>
-    <pubDate>Tue, 20 Oct 2026 14:00:00 +0000</pubDate>
-    <source url="https://mppl.libnet.info/event/15390265">Mount Prospect Public Library — Events</source>
   </item>
   <item>
     <title>Mount Prospect: Teen Craft: Paint a Pumpkin Goose</title>
@@ -452,6 +443,15 @@ A virtual… Official listing: https://mppl.libnet.info/event/17476744</descript
  Mount Prospect Public Library is joining the statewide Family Reading Night event and invites families to join… Official listing: https://mppl.libnet.info/event/16903311</description>
     <pubDate>Mon, 02 Nov 2026 00:00:00 +0000</pubDate>
     <source url="https://mppl.libnet.info/event/16903311">Mount Prospect Public Library — Events</source>
+  </item>
+  <item>
+    <title>Mount Prospect: AARP Driver Safety Course</title>
+    <link>https://withintenmiles.com/mount-prospect-60056/#ev-aarp-driver-safety-course-2026-11-02</link>
+    <guid isPermaLink="true">https://withintenmiles.com/mount-prospect-60056/#ev-aarp-driver-safety-course-2026-11-02</guid>
+    <description>Monday, November 02 2026 9:00am - 1:00pm 
+ This two-part, eight-hour program provides a refresher course for motorists age 55 and older. Official listing: https://mppl.libnet.info/event/16617231</description>
+    <pubDate>Mon, 02 Nov 2026 09:00:00 +0000</pubDate>
+    <source url="https://mppl.libnet.info/event/16617231">Mount Prospect Public Library — Events</source>
   </item>
 </channel>
 </rss>

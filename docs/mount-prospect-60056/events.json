@@ -2,8 +2,8 @@
   "@context": "https://schema.org",
   "@type": "ItemList",
   "name": "Upcoming events in Mount Prospect — Within Ten",
-  "dateModified": "2026-10-20T14:03:32+00:00",
-  "numberOfItems": 59,
+  "dateModified": "2026-10-20T22:02:27+00:00",
+  "numberOfItems": 58,
   "itemListElement": [
     {
       "@type": "ListItem",
@@ -125,29 +125,6 @@
       "position": 6,
       "item": {
         "@type": "Event",
-        "name": "Elected Officials Office Hours",
-        "startDate": "2026-10-20T14:00:00-05:00",
-        "url": "https://withintenmiles.com/mount-prospect-60056/#ev-elected-officials-office-hours-2026-10-20",
-        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "location": {
-          "@type": "Place",
-          "name": "Mount Prospect Public Library",
-          "address": {
-            "@type": "PostalAddress",
-            "addressCountry": "US",
-            "addressLocality": "Mount Prospect",
-            "addressRegion": "IL"
-          }
-        },
-        "sameAs": "https://mppl.libnet.info/event/15390265",
-        "description": "Tuesday, October 20 2026 2:00pm - 4:00pm \n Meet privately with staff from the office of State Sen. Mark Walker."
-      }
-    },
-    {
-      "@type": "ListItem",
-      "position": 7,
-      "item": {
-        "@type": "Event",
         "name": "Multilingual Family Night @ Lions Park School",
         "startDate": "2026-10-20T15:30:00-05:00",
         "url": "https://withintenmiles.com/mount-prospect-60056/#ev-multilingual-family-night-lions-park-school-2026-10-20",
@@ -166,7 +143,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 8,
+      "position": 7,
       "item": {
         "@type": "Event",
         "name": "Teen Craft: Paint a Pumpkin Goose",
@@ -189,7 +166,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 9,
+      "position": 8,
       "item": {
         "@type": "Event",
         "name": "3D Printing for Kids: Intermediate Tinkercad",
@@ -212,7 +189,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 10,
+      "position": 9,
       "item": {
         "@type": "Event",
         "name": "Astrology 101: Birth Charts",
@@ -235,7 +212,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 11,
+      "position": 10,
       "item": {
         "@type": "Event",
         "name": "Toddler Storytime",
@@ -258,7 +235,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 12,
+      "position": 11,
       "item": {
         "@type": "Event",
         "name": "Growing Into Graphic Novels",
@@ -281,7 +258,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 13,
+      "position": 12,
       "item": {
         "@type": "Event",
         "name": "Movies @ MPPL: Project Hail Mary",
@@ -304,7 +281,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 14,
+      "position": 13,
       "item": {
         "@type": "Event",
         "name": "Spanish Book and Movie Discussion: Project Hail Mary",
@@ -327,7 +304,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 15,
+      "position": 14,
       "item": {
         "@type": "Event",
         "name": "Intro to Adobe Premier: Part 2",
@@ -350,7 +327,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 16,
+      "position": 15,
       "item": {
         "@type": "Event",
         "name": "Park Board Meeting",
@@ -373,7 +350,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 17,
+      "position": 16,
       "item": {
         "@type": "Event",
         "name": "Small Business Morning Meetup",
@@ -396,7 +373,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 18,
+      "position": 17,
       "item": {
         "@type": "Event",
         "name": "Baby Storytime",
@@ -419,7 +396,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 19,
+      "position": 18,
       "item": {
         "@type": "Event",
         "name": "Family Storytime",
@@ -442,7 +419,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 20,
+      "position": 19,
       "item": {
         "@type": "Event",
         "name": "Education Foundation Meeting",
@@ -463,7 +440,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 21,
+      "position": 20,
       "item": {
         "@type": "Event",
         "name": "3D Printing for Kids: Learn Tinkercad",
@@ -486,7 +463,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 22,
+      "position": 21,
       "item": {
         "@type": "Event",
         "name": "Making Sense of Menopause",
@@ -509,7 +486,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 23,
+      "position": 22,
       "item": {
         "@type": "Event",
         "name": "End of First Quarter (Lincoln)",
@@ -530,7 +507,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 24,
+      "position": 23,
       "item": {
         "@type": "Event",
         "name": "School Principal Day",
@@ -551,7 +528,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 25,
+      "position": 24,
       "item": {
         "@type": "Event",
         "name": "Storytime Playdate: Wonderful Worlds",
@@ -574,7 +551,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 26,
+      "position": 25,
       "item": {
         "@type": "Event",
         "name": "Teen Volunteering",
@@ -597,7 +574,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 27,
+      "position": 26,
       "item": {
         "@type": "Event",
         "name": "Daddy Daughter Date Night",
@@ -620,7 +597,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 28,
+      "position": 27,
       "item": {
         "@type": "Event",
         "name": "After Hours Social",
@@ -643,7 +620,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 29,
+      "position": 28,
       "item": {
         "@type": "Event",
         "name": "Mount Prospect Farmers Market",
@@ -666,7 +643,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 30,
+      "position": 29,
       "item": {
         "@type": "Event",
         "name": "The Shakespeare Project of Chicago: Macbeth",
@@ -689,7 +666,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 31,
+      "position": 30,
       "item": {
         "@type": "Event",
         "name": "World Language Storytime: Japanese",
@@ -712,7 +689,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 32,
+      "position": 31,
       "item": {
         "@type": "Event",
         "name": "Drop-In Tech Help",
@@ -735,7 +712,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 33,
+      "position": 32,
       "item": {
         "@type": "Event",
         "name": "Hooked on Books!",
@@ -759,7 +736,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 34,
+      "position": 33,
       "item": {
         "@type": "Event",
         "name": "A Club for Kids Who Like Books",
@@ -783,7 +760,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 35,
+      "position": 34,
       "item": {
         "@type": "Event",
         "name": "How to Prepare for the Rising Cost of College",
@@ -806,7 +783,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 36,
+      "position": 35,
       "item": {
         "@type": "Event",
         "name": "Playgroup for Language Development",
@@ -829,7 +806,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 37,
+      "position": 36,
       "item": {
         "@type": "Event",
         "name": "Movies at MPPL: The Martian",
@@ -852,7 +829,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 38,
+      "position": 37,
       "item": {
         "@type": "Event",
         "name": "Play and Learn",
@@ -875,7 +852,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 39,
+      "position": 38,
       "item": {
         "@type": "Event",
         "name": "Teen Manga Hangout",
@@ -898,7 +875,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 40,
+      "position": 39,
       "item": {
         "@type": "Event",
         "name": "Native Seed Collection Day",
@@ -921,7 +898,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 41,
+      "position": 40,
       "item": {
         "@type": "Event",
         "name": "Dungeons & Dragons",
@@ -944,7 +921,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 42,
+      "position": 41,
       "item": {
         "@type": "Event",
         "name": "Inglés para Hispanohablantes",
@@ -967,7 +944,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 43,
+      "position": 42,
       "item": {
         "@type": "Event",
         "name": "Mount Prospect Downtown Merchants Trick-or-Treat",
@@ -990,7 +967,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 44,
+      "position": 43,
       "item": {
         "@type": "Event",
         "name": "Minecraft Engineers",
@@ -1013,7 +990,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 45,
+      "position": 44,
       "item": {
         "@type": "Event",
         "name": "Lawyers at the Library: Your Legal Help Desk",
@@ -1037,7 +1014,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 46,
+      "position": 45,
       "item": {
         "@type": "Event",
         "name": "Gardening Can Be Murder",
@@ -1060,7 +1037,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 47,
+      "position": 46,
       "item": {
         "@type": "Event",
         "name": "Halloween Storytime",
@@ -1083,7 +1060,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 48,
+      "position": 47,
       "item": {
         "@type": "Event",
         "name": "Tech Playground",
@@ -1106,7 +1083,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 49,
+      "position": 48,
       "item": {
         "@type": "Event",
         "name": "Sailing Bright Eternity",
@@ -1129,7 +1106,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 50,
+      "position": 49,
       "item": {
         "@type": "Event",
         "name": "Calavera Creations",
@@ -1152,7 +1129,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 51,
+      "position": 50,
       "item": {
         "@type": "Event",
         "name": "Digitizing VHS Tapes",
@@ -1175,7 +1152,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 52,
+      "position": 51,
       "item": {
         "@type": "Event",
         "name": "Adult BookFix: Complicated Relationships",
@@ -1198,7 +1175,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 53,
+      "position": 52,
       "item": {
         "@type": "Event",
         "name": "Crafts-to-Go Kits",
@@ -1221,7 +1198,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 54,
+      "position": 53,
       "item": {
         "@type": "Event",
         "name": "Family Reading Night Kits",
@@ -1244,7 +1221,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 55,
+      "position": 54,
       "item": {
         "@type": "Event",
         "name": "Student Non-Attendance / Conferences",
@@ -1265,7 +1242,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 56,
+      "position": 55,
       "item": {
         "@type": "Event",
         "name": "AARP Driver Safety Course",
@@ -1288,7 +1265,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 57,
+      "position": 56,
       "item": {
         "@type": "Event",
         "name": "Family Storytime",
@@ -1311,7 +1288,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 58,
+      "position": 57,
       "item": {
         "@type": "Event",
         "name": "Toddler Storytime",
@@ -1334,7 +1311,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 59,
+      "position": 58,
       "item": {
         "@type": "Event",
         "name": "Night Off? Game On!",

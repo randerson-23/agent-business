@@ -3,8 +3,8 @@
 <channel>
   <title>Within Ten — Upcoming events in Palatine</title>
   <link>https://withintenmiles.com/</link>
-  <description>Upcoming events in Palatine, soonest first - aggregated automatically from village, library, park district and school-district calendars. This build reached 18 of 25 configured sources. 3 sources are shown from their last update, up to 22 hours ago.</description>
-  <lastBuildDate>Tue, 20 Oct 2026 14:03:32 +0000</lastBuildDate>
+  <description>Upcoming events in Palatine, soonest first - aggregated automatically from village, library, park district and school-district calendars. This build reached 18 of 25 configured sources. 4 sources are shown from their last update, up to 30 hours ago.</description>
+  <lastBuildDate>Tue, 20 Oct 2026 22:02:27 +0000</lastBuildDate>
   <item>
     <title>Palatine: Language Tables: Where Can Harper Take You?</title>
     <link>https://withintenmiles.com/palatine-60067/#ev-language-tables-where-can-harper-take-you-2026-10-20</link>
@@ -154,6 +154,14 @@
     <link>https://withintenmiles.com/palatine-60067/#ev-trunk-or-treat-and-community-meal-2026-10-25</link>
     <guid isPermaLink="true">https://withintenmiles.com/palatine-60067/#ev-trunk-or-treat-and-community-meal-2026-10-25</guid>
     <description>FREE Trunk-or-Treat and Community Meal https://www.palatine.il. Official listing: https://www.palatine.il.us/common/modules/iCalendar/iCalendar.aspx?feed=calendar&amp;catID=14</description>
+    <pubDate>Sun, 25 Oct 2026 14:00:00 +0000</pubDate>
+    <source url="https://www.palatine.il.us/common/modules/iCalendar/iCalendar.aspx?feed=calendar&amp;catID=14">Village of Palatine — Calendar</source>
+  </item>
+  <item>
+    <title>Palatine: CATIF Fundraiser: A Safe Place, Safe Paws</title>
+    <link>https://withintenmiles.com/palatine-60067/#ev-catif-fundraiser-a-safe-place-safe-paws-2026-10-25</link>
+    <guid isPermaLink="true">https://withintenmiles.com/palatine-60067/#ev-catif-fundraiser-a-safe-place-safe-paws-2026-10-25</guid>
+    <description>A safe place, safe paws fundraiser where no one escaping abuse Official listing: https://www.palatine.il.us/common/modules/iCalendar/iCalendar.aspx?feed=calendar&amp;catID=14</description>
     <pubDate>Sun, 25 Oct 2026 14:00:00 +0000</pubDate>
     <source url="https://www.palatine.il.us/common/modules/iCalendar/iCalendar.aspx?feed=calendar&amp;catID=14">Village of Palatine — Calendar</source>
   </item>
