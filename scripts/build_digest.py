@@ -245,6 +245,7 @@ def get_template_env() -> Environment:
     # leaving a blank, indented line behind in the output.
     env = Environment(loader=FileSystemLoader(str(TEMPLATES_DIR)), autoescape=True, trim_blocks=True, lstrip_blocks=True)
     env.filters["short"] = lambda text, n=70: (str(text)[: n - 1].rstrip() + "…") if len(str(text)) > n else str(text)
+    env.filters["display_title"] = display_title
     env.globals["email_surfaces"] = EMAIL_SURFACES
     env.globals["email_inks"] = EMAIL_INKS
     env.globals["preferred_source_url"] = PREFERRED_SOURCE_URL
@@ -3650,10 +3651,54 @@ def annotate_registration(blocks: list[dict], today: date) -> None:
             event["reg_badge"] = f"Sign-up opens {opens_date.strftime('%a, %b %-d')}" if opens_date > today else "Sign-up open"
 
 
-def build_signups_opening(blocks: list[dict], today: date, days: int = 7) -> list[dict]:
+# ROADMAP.md item 334: publishers' ALL-CAPS titles read as shouting in an email
+# or on a card. Title-cased for display only; the stored title and the
+# JSON-LD name keep the publisher's own text.
+_KEEP_UPPER = frozenset({"ESL", "STEM", "STEAM", "LEGO", "AARP", "DIY", "CPR", "PTA", "PTO", "MS", "AI", "USA", "HS", "DJ", "LGBTQ", "ASL", "GED", "IL"})
+_SMALL_WORDS = frozenset({"a", "an", "and", "as", "at", "but", "by", "for", "in", "of", "on", "or", "the", "to", "with"})
+_TITLE_WORD = re.compile(r"[A-Za-z][A-Za-z']*")
+
+
+def display_title(title: str | None) -> str:
+    """Title case for a shouting title: more than 70% of its letters are
+    capitals and it is longer than 12 characters. Known acronyms stay."""
+    title = title or ""
+    letters = [c for c in title if c.isalpha()]
+    if len(title) <= 12 or not letters or sum(c.isupper() for c in letters) / len(letters) <= 0.7:
+        return title
+    first = True
+
+    def fix(m: re.Match) -> str:
+        nonlocal first
+        word = m.group(0)
+        is_first, first = first, False
+        if word.upper() in _KEEP_UPPER:
+            return word.upper()
+        low = word.lower()
+        return low if low in _SMALL_WORDS and not is_first else low[0].upper() + low[1:]
+
+    return _TITLE_WORD.sub(fix, title)
+
+
+def format_session_dates(days: list[date]) -> str:
+    """"Wed Nov 4, 11 & 18" for sessions in one month on one weekday; the
+    weekday is dropped when they differ, and a month change repeats the
+    month ("Nov 25 & Dec 2")."""
+    days = sorted(set(days))
+    same_weekday = len({d.weekday() for d in days}) == 1
+    parts, last_month = [], None
+    for d in days:
+        parts.append(f"{d.strftime('%b')} {d.day}" if d.month != last_month else str(d.day))
+        last_month = d.month
+    text = parts[0] if len(parts) == 1 else ", ".join(parts[:-1]) + " & " + parts[-1]
+    return (days[0].strftime("%a ") if same_weekday else "") + text
+
+
+def build_signups_opening(blocks: list[dict], today: date, days: int = 7, per_town: int = 2) -> list[dict]:
     """Events whose registration opens within the next `days` days (today
-    included), soonest first."""
-    found = []
+    included), sessions of the same title at the same venue grouped into one
+    line, soonest first, at most `per_town` lines (item 334)."""
+    groups: dict[tuple, dict] = {}
     for block in blocks:
         for event in block["events"]:
             opens = event.get("registration_opens")
@@ -3661,10 +3706,31 @@ def build_signups_opening(blocks: list[dict], today: date, days: int = 7) -> lis
             if not opens or day is None or not event.get("attendable", True) or event.get("sponsored_by"):
                 continue
             opens_date = date.fromisoformat(opens)
-            if today <= opens_date <= today + timedelta(days=days) and day > opens_date:
-                found.append({"title": event["title"], "url": event.get("url"), "opens": opens_date, "opens_label": opens_date.strftime("%a, %b %-d"), "event_label": day.strftime("%a, %b %-d")})
+            if not (today <= opens_date <= today + timedelta(days=days) and day > opens_date):
+                continue
+            key = ((event["title"] or "").strip().lower(), event.get("venue") or event.get("source") or "", opens_date)
+            group = groups.setdefault(key, {"title": display_title(event["title"]), "url": event.get("url"), "opens": opens_date, "opens_label": opens_date.strftime("%a, %b %-d"), "days": []})
+            group["days"].append(day)
+    found = []
+    for group in groups.values():
+        group["sessions_label"] = format_session_dates(group["days"])
+        group["event_label"] = group["sessions_label"]
+        found.append(group)
     found.sort(key=lambda e: (e["opens"], e["title"]))
-    return found
+    return found[:per_town]
+
+
+def pick_signups_across_towns(sections: list[dict], limit: int = 4) -> list[dict]:
+    """Up to `limit` sign-up lines for the email, one from each town before
+    any town gets a second."""
+    queues = [list(s.get("signups") or []) for s in sections]
+    picked, rank = [], 0
+    while len(picked) < limit and any(rank < len(q) for q in queues):
+        for q in queues:
+            if rank < len(q) and len(picked) < limit:
+                picked.append(q[rank])
+        rank += 1
+    return picked
 
 
 def apply_link_health(blocks: list[dict], health: dict) -> int:
@@ -5133,8 +5199,7 @@ def render_combined_email_digest(sections: list[dict], weekend_date_range: str, 
     rain_plan = pick_rain_plan(region_blocks, top_picks) if weather_line and weather_line["rain"] else []
     # ROADMAP.md item 327: up to four events whose registration opens this week.
     town_colors = {b["region_name"]: b["color"] for b in all_blocks}
-    signups = sorted((e for s in sections for e in s.get("signups") or []), key=lambda e: (e["opens"], e["title"]))[:4]
-    signups = [dict(e, color=town_colors.get(e["town"], EMAIL_TOWN_COLORS[0][0])) for e in signups]
+    signups = [dict(e, color=town_colors.get(e["town"], EMAIL_TOWN_COLORS[0][0])) for e in pick_signups_across_towns(sections)]
     return template.render(
         signups=signups,
         region_blocks=region_blocks,
