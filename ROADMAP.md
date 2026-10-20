@@ -220,7 +220,7 @@ doesn't re-suggest something already shipped.
 
 **Build queue (by deadline; refreshed by the research loop, item 346).**
 Pick from the top unless the owner has flagged something else:
-0. **348** (the Halloween issue, before Oct 28). Then **352** (the holiday listing on /sponsor/, by Oct 23; early-bird ends Nov 15) and **351** (the sponsor page's proof box).
+0. **354, 355** (wrong Outdoor badges and a repeated event; before the Oct 22 send if possible). **348** (the Halloween issue, before Oct 28). Then **352** (the holiday listing on /sponsor/, by Oct 23; early-bird ends Nov 15) and **351** (the sponsor page's proof box).
 1. **306**: the OpenStreetMap prospect list (by Oct 25).
 2. **323**: leaf pickup (in season now).
 3. **313, 314**: the sales mock-up and starter pack (before outreach).
@@ -250,6 +250,9 @@ that limit.
   If the test works, expect to move to Buttondown's paid plan (about
   $9/month as reported) once the list nears 100. The free plan stops at
   100 (item 349).
+- **Optional, 10 min:** send `OUTREACH_TEMPLATES.md` §9 to two local
+  Facebook group admins, offering the trick-or-treat page as the first
+  post. It is the most admin-friendly post of the year (item 343).
 - **Any day, 2 min:** add the Bing API key as `BING_WEBMASTER_API_KEY`
   (step 3c). IndexNow refused both keys.
 - **By Sat Oct 24, about an hour:** print the town flyer for one café and
@@ -17224,6 +17227,99 @@ publisher programme reportedly widened), and **community TV and
 newspaper club listings** (both non-items). The design/UX angle is
 **`/sponsor/` on a phone**, which is missing the one seasonal product on
 sale now.
+
+
+#### Research pass 2026-10-20, evening (ninety-third pass)
+
+Today the build loop shipped item 349 (the free-plan cap warning) and
+items 340 and 347 (Bing's URL Submission API, which runs as soon as the
+owner adds `BING_WEBMASTER_API_KEY`). Tomorrow night's send is the first
+since the email's card blocks (item 334) shipped, so this pass reads the
+built send file as a subscriber will see it. It found two trust bugs in
+the badges and blocks. It also looks at one audience the site serves
+without naming it, families who are home on weekdays, and re-checks the
+local-group channel for Halloween.
+
+| Angle | What it is / what we found | Why it matters here |
+|---|---|---|
+| **The Oct 22 email, read before it sends (design/UX)** | Rendered `docs/combined-email-send.html` at 390px. The card blocks (item 334) read well, and sign-ups now group *"Wed Nov 4, 11 & 18"*. Two problems. **(1) Wrong "Outdoor" badges:** *"The Music Man Sr."* (an Arlington Heights Park District stage show, shown twice) and *"Lights Out: Tribute to UFO featuring Andy **Park**er with special guest Triangle **Park**"* at the **Des Plaines Theatre** both carry 🌳 Outdoor. `tagging.py`'s outdoor list starts with bare **`"park"`**, which matches *Park*er, *Park* District, *park*ing and the band's name. **(2) The same event twice on the first screen:** *"Daddy Daughter Date Night"* is the third "Don't miss" pick **and** the "Night out" pick, two cards apart | Item 333 fixed one wrong Kid-friendly badge, and this is the same class of bug. A badge that sends a family to an "outdoor" event in a theatre teaches them to ignore the badges, and the rain plan (item 291) depends on indoor and outdoor being right. Repeating an event in the top blocks wastes the most-read space in the issue (items 354, 355) |
+| **Families home on weekdays: homeschool and preschool** (Patch's Barrington homeschool roundup; a parents' forum; Meetup listings) | Local homeschool groups exist (**Arlington HOUSE** and **Schaumburg HOUSE**, non-sectarian), and **Palatine Public Library and Arlington Heights Memorial Library both run homeschool meet-ups** during the year. A **MOPS** (Mothers of Preschoolers) group was reported at a church on Hintz Road, though the thread is old. Measured from `docs/events.json`: **76 of 259 events (29%)** start on a **weekday between 9 AM and 3 PM**: storytimes, library programmes, park-district classes | The site is built around the weekend, but nearly a third of what it collects happens while school is in. That is exactly what homeschooling families and parents of under-fives look for, and *"homeschool activities near me"* / *"things to do with toddlers on a weekday"* are searches no local page answers. It's a second audience from data that already exists, with no new sources (item 356) |
+| **Local Facebook groups, re-checked** | Search surfaces **no specific named group** for these towns. Group discovery happens inside Facebook. `OUTREACH_TEMPLATES.md` §9 (item 107, done) has the admin note, and it **has never been sent** | **No new item.** The Halloween hours are the single most admin-friendly post of the year: factual, free, every town's own source. Item 343's this-week block gains one line pointing the owner at §9 with the trick-or-treat page as the first post. **Meetup** is a non-item: its groups are game nights and social meetups, and its API is a paid Pro feature |
+
+#### P1 (new)
+
+354. **Fix the "Outdoor" badge's substring false positives.** Build loop,
+     `tagging.py`, same pattern as items 333 and the older "art", "hall"
+     and "pup" fixes:
+
+     - Replace bare `"park"` with phrases that mean a place outdoors:
+       `" park "`, `"in the park"`, `"at the park"`, `"park,"`,
+       `"park."`, and named-park patterns such as `"<Word> Park"` when
+       followed by a non-"District" word. Never match `"park district"`,
+       `"parker"`, `"parking"` or `"parkway"`.
+     - Run tags on the **title and description only**, never the source
+       or venue name. If the venue text is part of the tagged string
+       today, that alone puts "Park District" into every park-district
+       event.
+     - Add a small **venue-type override** in the region YAML (the
+       `venues:` table from item 335, or a per-source `default_tags`
+       entry): the Des Plaines Theatre, the libraries and the
+       park-district indoor centres set `indoor` and veto `outdoor`.
+     - Tests: *"Lights Out: Tribute to UFO featuring Andy Parker"* at the
+       theatre is not outdoor, *"The Music Man Sr."* from the park
+       district is not outdoor, *"Pumpkin Splash at Melas Park"* is,
+       and *"Concert in the Park"* still is.
+
+355. **Never show one event twice in the email's top blocks.** Build
+     loop, the `pick_*` helpers. Pick in a fixed order: **Don't miss →
+     Night out → Rain plan → Sign-ups**. Each later block skips any
+     event an earlier block already chose and takes the next candidate.
+     If none is left, the block is omitted, which is already how empty
+     blocks behave. The town sections below may still list the event,
+     since that's its normal place. Tests: an event chosen for "Don't
+     miss" cannot be "Night out" the same week, and an emptied "Night
+     out" block is omitted.
+
+#### P2 (new)
+
+356. **A "weekday daytime" view for homeschool and preschool families.**
+     Build loop, from data the site already has:
+
+     - **Tag:** `weekday_daytime`, set automatically when an event
+       starts Monday to Friday between 9:00 and 15:00 local time and has
+       a real start time (no all-day or placeholder times). Add it to
+       the filter chips on region pages as *"Weekdays, 9–3"*.
+     - **Page:** `/<region>/weekdays/`, the next 14 days of weekday
+       daytime events, grouped by day, with an intro line: *"Storytimes,
+       library programmes and park classes while school's in, for
+       homeschooling families and little ones."* Link it from the
+       region page and the hub's guides block (item 338), and include
+       it in the sitemap.
+     - **Evergreen lines** at the top, sourced only from the libraries'
+       own pages: Palatine and Arlington Heights libraries' homeschool
+       meet-ups, as `evergreen` entries with links, if a URL probe
+       confirms the pages.
+     - Titles follow item 310's query-matching rule: *"Weekday Things to
+       Do with Kids in Mount Prospect: Homeschool & Preschool"*.
+
+     Tests: the tag's time window, exclusion of untimed events, the page
+     in the sitemap at depth ≤ 2 (item 338's check), and an empty week
+     that shows the nearest town's events (item 214's fallback). No
+     email change: the Thursday email stays a weekend email.
+
+#### Owner (this week, one line)
+
+- Item 343's **"This week"** block gains: *"Optional, 10 min: send
+  `OUTREACH_TEMPLATES.md` §9 to two local Facebook group admins, offering
+  the trick-or-treat page as the first post. It is the most
+  admin-friendly post of the year."*
+
+Competitors reviewed this pass: **homeschool and preschool weekday
+audiences** (local homeschool groups and library meet-ups; 29% of
+collected events are weekday daytime), **local Facebook groups** (no
+named groups findable by search; the §9 template is still unsent), and
+**Meetup** (non-item). The design/UX angle is **the Oct 22 email read
+before it sends**, which found wrong Outdoor badges and a repeated event.
 
 
 ## Working agreements for autonomous iteration
