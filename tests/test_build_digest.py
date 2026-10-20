@@ -6069,3 +6069,13 @@ def test_email_with_every_new_block_stays_under_the_gmail_clip():
     html = build_digest.render_combined_email_digest(sections, "Oct 23–25", datetime(2026, 10, 21, 18, tzinfo=timezone.utc), None)
     assert all(b in html for b in ("DID YOU GO?", "SIGN-UPS OPENING THIS WEEK", "NIGHT OUT"))
     assert len(html.encode("utf-8")) < 102_000
+
+
+def test_bing_urls_are_ordered_trick_or_treat_weekend_regions_then_the_rest():
+    # ROADMAP.md item 347.
+    base = build_digest.SITE_BASE_URL
+    urls = [base + "about/", base + "palatine-60067/", base + "this-weekend/", base + "trick-or-treat/", base + "sponsor/", base + "wheeling-60090/"]
+    ordered = build_digest.order_bing_urls(urls, datetime(2026, 10, 25, 15, tzinfo=timezone.utc), ["palatine-60067", "wheeling-60090"])
+    assert ordered[:4] == [base + "trick-or-treat/", base + "this-weekend/", base + "palatine-60067/", base + "wheeling-60090/"]
+    after = build_digest.order_bing_urls(urls, datetime(2026, 11, 3, 15, tzinfo=timezone.utc), ["palatine-60067", "wheeling-60090"])
+    assert after[0] == base + "this-weekend/" and after.index(base + "trick-or-treat/") > after.index(base + "wheeling-60090/")  # no longer prioritised

@@ -825,6 +825,41 @@ def fetch_night_forecast(lat: float, lon: float, day_iso: str, timezone_name: st
         return None
 
 
+BING_API_BASE = "https://ssl.bing.com/webmaster/api.svc/json"
+
+
+def submit_bing_urls(site_url: str, api_key: str, urls: list[str], *, outcome: dict | None = None, request=None) -> list[str]:
+    """Bing Webmaster URL Submission API (ROADMAP.md items 340 and 347): the
+    fallback while IndexNow answers 403. Reads the daily quota first and sends
+    at most that many URLs; returns the URLs actually accepted. Fail-soft like
+    every other network call here: any error is logged and recorded in
+    `outcome` (quota, sent, status), never raised."""
+    request = request or requests.request
+    outcome = outcome if outcome is not None else {}
+    outcome.update({"channel": "bing_api", "quota": None, "sent": 0, "status": None, "error": None})
+    try:
+        quota_resp = request("GET", f"{BING_API_BASE}/GetUrlSubmissionQuota", params={"siteUrl": site_url, "apikey": api_key}, timeout=REQUEST_TIMEOUT, headers={"User-Agent": USER_AGENT})
+        quota_resp.raise_for_status()
+        quota = int((quota_resp.json().get("d") or {}).get("DailyQuota") or 0)
+        outcome["quota"] = quota
+        batch = urls[:quota]
+        if not batch:
+            outcome["status"] = quota_resp.status_code
+            return []
+        resp = request(
+            "POST", f"{BING_API_BASE}/SubmitUrlbatch", params={"apikey": api_key}, json={"siteUrl": site_url, "urlList": batch},
+            timeout=REQUEST_TIMEOUT, headers={"User-Agent": USER_AGENT, "Content-Type": "application/json; charset=utf-8"},
+        )
+        outcome["status"] = resp.status_code
+        resp.raise_for_status()
+        outcome["sent"] = len(batch)
+        return batch
+    except Exception as exc:  # noqa: BLE001 - fail soft by design
+        logger.warning("Bing URL submission failed: %s", exc)
+        outcome["error"] = type(exc).__name__
+        return []
+
+
 def submit_indexnow(
     host: str, key: str, key_location: str, urls: list[str], *, outcome: dict | None = None
 ) -> bool:
