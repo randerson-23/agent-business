@@ -220,7 +220,7 @@ doesn't re-suggest something already shipped.
 
 **Build queue (by deadline; refreshed by the research loop, item 346).**
 Pick from the top unless the owner has flagged something else:
-0. **340 + 347** (Bing URL Submission API, ready for the owner's secret), **348** (the Halloween issue, before Oct 28). Then **352** (the holiday listing on /sponsor/, by Oct 23; early-bird ends Nov 15) and **351** (the sponsor page's proof box).
+0. **348** (the Halloween issue, before Oct 28). Then **352** (the holiday listing on /sponsor/, by Oct 23; early-bird ends Nov 15) and **351** (the sponsor page's proof box).
 1. **306**: the OpenStreetMap prospect list (by Oct 25).
 2. **323**: leaf pickup (in season now).
 3. **313, 314**: the sales mock-up and starter pack (before outreach).
@@ -16838,7 +16838,7 @@ and reads the homepage on a phone.
 
 #### P2 (new)
 
-340. **Bing URL Submission API as the fallback to IndexNow.** Build loop
+340. ✅ **DONE (2026-10-20, with 347): `submit_bing_urls` in `fetchers.py` reads Bing's daily quota (GetUrlSubmissionQuota) then posts at most that many changed URLs (SubmitUrlbatch); runs only when the repository secret `BING_WEBMASTER_API_KEY` is set (build-digest.yml passes it), skips quietly otherwise; changed-URL tracking in `data/bing_hashes.json` (always created, committed by build-digest.yml) so only pages that changed since Bing last accepted them are sent; each result is logged in `data/indexnow_log.json` with `channel`, `quota`, `sent` and status. Written from Bing's documented API shape and not yet run against the real endpoint; the first build with the secret set is the test.** **Bing URL Submission API as the fallback to IndexNow.** Build loop
      plus owner. Only if item 337's test finds no accepted key. **Owner (2
      minutes):** Bing Webmaster Tools → Settings → API access → copy the
      API key into the repository secret `BING_WEBMASTER_API_KEY`. **Build
@@ -17059,7 +17059,7 @@ creative.
 
 #### P1 (new)
 
-347. **Retire the IndexNow theories and make Bing's URL Submission API
+347. ✅ **DONE (2026-10-20, with 340): quota-capped submission in priority order (`order_bing_urls`: `/trick-or-treat/` until Nov 1, `/this-weekend/`, the region pages, the rest); IndexNow keeps running; the retired-key probe already backs off for seven days.** **Retire the IndexNow theories and make Bing's URL Submission API
      the next step.** Re-rank, plus Needs Ryan:
 
      - **Move item 340 to the top of the build queue.** Build it now,

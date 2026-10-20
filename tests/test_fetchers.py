@@ -1054,3 +1054,36 @@ def test_fetch_localist_fails_soft(mock_get):
     from fetchers import fetch_localist
     mock_get.side_effect = RuntimeError("boom")
     assert fetch_localist("https://x/api") is None
+
+
+class _R:
+    def __init__(self, body=None, code=200): self._b, self.status_code = body or {}, code
+    def json(self): return self._b
+    def raise_for_status(self):
+        if self.status_code >= 400: raise RuntimeError(self.status_code)
+
+
+def test_bing_submission_caps_at_the_quota_and_records_the_outcome():
+    from fetchers import submit_bing_urls
+    calls = []
+
+    def request(method, url, **kw):
+        calls.append((method, url.rsplit("/", 1)[-1], kw.get("json")))
+        return _R({"d": {"DailyQuota": 2}}) if method == "GET" else _R()
+
+    outcome = {}
+    sent = submit_bing_urls("https://x.org", "KEY", ["https://x.org/a/", "https://x.org/b/", "https://x.org/c/"], outcome=outcome, request=request)
+    assert sent == ["https://x.org/a/", "https://x.org/b/"]
+    assert [c[:2] for c in calls] == [("GET", "GetUrlSubmissionQuota"), ("POST", "SubmitUrlbatch")] and calls[1][2]["siteUrl"] == "https://x.org"
+    assert outcome["quota"] == 2 and outcome["sent"] == 2 and outcome["status"] == 200 and outcome["channel"] == "bing_api"
+
+
+def test_bing_submission_sends_nothing_on_zero_quota_and_fails_soft():
+    from fetchers import submit_bing_urls
+    zero = lambda method, url, **kw: _R({"d": {"DailyQuota": 0}})
+    o = {}
+    assert submit_bing_urls("https://x.org", "K", ["https://x.org/a/"], outcome=o, request=zero) == [] and o["sent"] == 0 and o["quota"] == 0
+
+    def boom(*a, **k): raise RuntimeError("down")
+    o = {}
+    assert submit_bing_urls("https://x.org", "K", ["https://x.org/a/"], outcome=o, request=boom) == [] and o["error"] == "RuntimeError"

@@ -36,7 +36,7 @@ from jinja2 import Environment, FileSystemLoader
 from PIL import Image, ImageDraw, ImageFont
 
 sys.path.insert(0, str(Path(__file__).parent))
-from fetchers import FETCHERS, MAX_ITEMS_PER_SOURCE, fetch_night_forecast, fetch_weather, submit_indexnow  # noqa: E402
+from fetchers import FETCHERS, MAX_ITEMS_PER_SOURCE, fetch_night_forecast, fetch_weather, submit_bing_urls, submit_indexnow  # noqa: E402
 from tagging import infer_tags, is_informational, merge_default_tags, parse_registration_opens, tag_display  # noqa: E402
 
 logging.basicConfig(level=logging.INFO, format="%(levelname)s %(name)s: %(message)s")
@@ -5951,6 +5951,29 @@ def probe_retired_indexnow_keys(
     return None
 
 
+BING_HASHES_PATH = ROOT / "data" / "bing_hashes.json"
+
+
+def order_bing_urls(urls: list[str], now: datetime, region_ids: list[str]) -> list[str]:
+    """ROADMAP.md item 347: which changed URLs Bing's daily quota is spent on
+    first - /trick-or-treat/ (until Nov 1), /this-weekend/, the region pages,
+    then everything else - stable within each group."""
+    local = now.astimezone(LOCAL_TZ).date()
+    tiers = []
+    if local <= date(local.year, 11, 1):
+        tiers.append({SITE_BASE_URL + "trick-or-treat/"})
+    tiers.append({SITE_BASE_URL + "this-weekend/"})
+    tiers.append({SITE_BASE_URL + rid + "/" for rid in region_ids})
+
+    def rank(url: str) -> int:
+        for i, tier in enumerate(tiers):
+            if url in tier:
+                return i
+        return len(tiers)
+
+    return sorted(urls, key=rank)
+
+
 def record_indexnow_outcome(path: Path, now: datetime, url_count: int, ok: bool, outcome: dict) -> list[dict]:
     """Append this build's IndexNow result to `path`, keeping the last
     INDEXNOW_LOG_KEEP entries. A missing or unreadable file starts fresh."""
@@ -5977,6 +6000,7 @@ def record_indexnow_outcome(path: Path, now: datetime, url_count: int, ok: bool,
         "bing_body": outcome.get("bing_body"),
         "accepted_by": outcome.get("accepted_by"),
         "key_suffix": outcome.get("key_suffix"),
+        **{k: outcome[k] for k in ("channel", "quota", "sent") if k in outcome},
     })
     history = history[-INDEXNOW_LOG_KEEP:]
     path.write_text(json.dumps(history, indent=2) + "\n", encoding="utf-8")
@@ -6874,6 +6898,25 @@ def main() -> None:
         indexnow_outcome = {"status": None, "error": None, "skipped": "no page changed since the last accepted submission"}
         logger.info("IndexNow: no page changed since the last accepted submission; nothing sent.")
     record_indexnow_outcome(INDEXNOW_LOG_PATH, now, len(indexnow_urls), indexnow_ok, indexnow_outcome)
+    # Items 340 and 347: Bing's own URL Submission API, only when the owner has set the secret.
+    bing_key = os.environ.get("BING_WEBMASTER_API_KEY", "").strip()
+    if not BING_HASHES_PATH.exists():  # build-digest.yml `git add`s this path, so it must always exist
+        BING_HASHES_PATH.write_text("{}\n", encoding="utf-8")
+    if bing_key:
+        bing_changed, bing_current = changed_indexnow_urls(sitemap_urls, load_indexnow_hashes(BING_HASHES_PATH), OUTPUT_DIR)
+        bing_outcome: dict = {}
+        if bing_changed:
+            sent = submit_bing_urls(
+                SITE_BASE_URL.rstrip("/"), bing_key, order_bing_urls(bing_changed, now, [r["id"] for r in region_summaries]), outcome=bing_outcome,
+            )
+            bing_hashes = load_indexnow_hashes(BING_HASHES_PATH)
+            bing_hashes.update({u: bing_current[u] for u in sent if u in bing_current})
+            BING_HASHES_PATH.write_text(json.dumps(bing_hashes, indent=1, sort_keys=True) + "\n", encoding="utf-8")
+            record_indexnow_outcome(INDEXNOW_LOG_PATH, now, len(bing_changed), bool(sent), bing_outcome)
+        else:
+            logger.info("Bing URL submission: no page changed since the last accepted submission.")
+    else:
+        logger.info("Bing URL submission skipped: BING_WEBMASTER_API_KEY is not set.")
     if total_events:
         logger.info(
             "TOTAL structured-date coverage: %d/%d events (%.0f%%) have a machine-readable start date",
