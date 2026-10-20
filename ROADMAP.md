@@ -220,7 +220,7 @@ doesn't re-suggest something already shipped.
 
 **Build queue (by deadline; refreshed by the research loop, item 346).**
 Pick from the top unless the owner has flagged something else:
-0. **340 + 347** (Bing URL Submission API, ready for the owner's secret), **348** (the Halloween issue, before Oct 28), **349** (the free-plan cap warning, before the Meta test starts Oct 22).
+0. **340 + 347** (Bing URL Submission API, ready for the owner's secret), **348** (the Halloween issue, before Oct 28), **349** (the free-plan cap warning, before the Meta test starts Oct 22). Then **352** (the holiday listing on /sponsor/, by Oct 23; early-bird ends Nov 15) and **351** (the sponsor page's proof box).
 1. **306**: the OpenStreetMap prospect list (by Oct 25).
 2. **323**: leaf pickup (in season now).
 3. **313, 314**: the sales mock-up and starter pack (before outreach).
@@ -17140,6 +17140,90 @@ quota, as low as 10 a day for new sites, batch of 500),
 **Buttondown's free-plan cap** (100 subscribers), and a **trick-or-treat
 search re-check** (still nothing for 2026). The design/UX angle is **the
 Halloween ad creative**, reviewed for brand, offer and finish.
+
+
+#### Research pass 2026-10-20 (ninety-second pass)
+
+Since the last pass the build loop shipped item 334 (email block cards,
+grouped sign-ups, and title-cased shouting titles). Items 340, 347, 348
+and 349 sit at the top of the build queue. The $50 Meta test can start
+Thursday, and the outreach batch is ready once the owner sends it. Both
+send people to `/sponsor/`, which this loop last read as a buyer on Oct
+7 (pass sixty). So this pass reads it again, against everything built
+since. It also re-checks the AI-citation question and one free local
+channel.
+
+| Angle | What it is / what we found | Why it matters here |
+|---|---|---|
+| **`/sponsor/` on a phone, as a buyer (design/UX)** | Rendered at 390px. The headline (*"Be the local recommendation, not another ad"*) and the tier cards read well, and the Event Promo shows its **"Example"** card (item 247). But: **(1)** the proof box still says *"1325 live updates indexed this week"*, the supply-side jargon that item 339 removed from the homepage. **(2)** **The holiday listing isn't on the page at all**: 0 mentions of "holiday", although item 258 shipped the product and `SPONSOR_KIT.md` prices it at **$20 before Nov 15, $50 after**. `SPONSOR_TIERS` doesn't include it. **(3)** Only the Event Promo has an example. The **Weekly Spot**, the product a recurring local business buys, isn't shown. **(4)** The call to action is a well-built `mailto:` with a template body, which is the right choice for businesses without GitHub | (2) matters most: **26 days of early-bird pricing remain**, Small Business Saturday (Nov 28) is the hook, and the one page a prospect will visit doesn't offer the cheapest seasonal product. (1) is the first thing a buyer reads, and it measures the site's inputs rather than its readers. Both are template fixes (items 351, 352) |
+| **AI assistants and local events, re-check** (2026 comparisons of Perplexity and ChatGPT; a Tow Center analysis as reported) | **No study** turned up that tests how ChatGPT or Perplexity answer *"things to do this weekend"* locally, or which sources they cite. Secondary reports: Perplexity's **publisher programme expanded in 2026** to more small and mid-sized publishers (unverified). One comparison says Perplexity's Deep Research **favours primary sources over roundups**. One review reports Perplexity's citations accurate **92%** of the time against **74%** for ChatGPT, but doesn't name the study | No change to the plan. The "favours primary sources" note supports the site's rule of one first-party link per event (item 131). The publisher-programme expansion is noted against **item 231** (parked: the Perplexity application). Revisit it when item 266 shows any referral from `perplexity.ai`, since that would be the evidence the application needs |
+| **Community-access TV and newspaper club listings** (search for Northwest Community Television; the Daily Herald's "From the clubs") | The "Northwest Community Television" reports found are hosted by **CCX Media in Minnesota**, not the Illinois suburbs. **Non-item.** The Daily Herald's *"From the clubs"* column takes free listings by email (`clubs@dailyherald.com`) **two weeks before** an event, and it is meant for clubs and nonprofits | **Non-item for the site**, which isn't a club. It is a useful tip for the organisers the site already serves, though: item 246's Form confirmation could mention it. Recorded, not filed |
+
+#### P1 (new)
+
+351. **Replace the sponsor page's supply-side proof with true reader-side
+     facts.** Design/UX, `sponsor.html.j2` only:
+
+     - Remove *"N live updates indexed this week"*.
+     - Show three facts the site can state honestly today:
+       - ***"N events listed this weekend across 5 towns"***, the same
+         count the homepage uses (item 339).
+       - ***"Every Thursday since Oct 1, 2026: N issues sent"***, counted
+         from `send_history.json`.
+       - ***"Reader numbers are published once the list passes 50
+         subscribers"***, until item 332's threshold is met. Then that
+         line becomes the clicks-first block from item 332.
+     - Keep *"running since Aug 26, 2026"* and *"5 regions covered"*.
+
+     Tests: the phrase *"live updates"* doesn't appear on `/sponsor/`,
+     the issue count matches the history file, and the pending line
+     shows below 50 subscribers.
+
+352. **Put the holiday listing on `/sponsor/`, with its deadline, before
+     the early-bird window runs out.** Build loop, by **Fri Oct 23**:
+
+     - Add **"Holiday listing: $20 until Nov 15, then $50"** to
+       `SPONSOR_TIERS`, shown from **Oct 15 to Dec 15** only. It carries
+       a **"Example"** card rendered with the **same partial** the town
+       `/holiday/` pages use (item 258), so the preview can't drift
+       from the product. Before Nov 15 add one line, *"Early-bird price
+       ends Sun Nov 15 (N days left)"*.
+     - Add a `payment_links.holiday` slot (item 244) and a mailto
+       subject *"Holiday listing"* with the same template body.
+     - Add `OUTREACH_TEMPLATES.md` **§13a**, *"Your shop on the town's
+       holiday page, $20 until Nov 15"*: three sentences that link
+       `/sponsor/#holiday` and name Small Business Saturday (Nov 28).
+       Sent with the outreach batch (Needs Ryan step 8).
+
+     Tests: the tier shows in its window and not outside it, the
+     countdown line disappears after Nov 15, the example uses the
+     holiday-page partial, and no example leaks into a real `/holiday/`
+     page or `events.json`.
+
+#### P2 (new)
+
+353. **Show a Weekly Spot example as well.** Design/UX, `/sponsor/`:
+     under the Weekly Spot card, render one **"Example"** spot exactly as
+     the email shows it (the town colour bar, a sponsor line and a
+     two-sentence blurb), using **the same template code as the real
+     email**, for a made-up business. Only one example per tier, and
+     never on region pages, in the email or in data files. Item 313's
+     personalised preview stays as the one-to-one version. This is the
+     generic one, so a visitor can see the $50 product without asking.
+
+#### Build queue update
+
+- Add **352** to level 0 of the build queue (deadline: the Nov 15
+  early-bird), and **351** right after it. **306** stays first among the
+  dated items (Oct 25).
+
+Competitors reviewed this pass: **the site's own `/sponsor/` page**
+re-read as a buyer after six weeks of new products, an **AI-assistant
+citation re-check** (no local-events study exists; Perplexity's
+publisher programme reportedly widened), and **community TV and
+newspaper club listings** (both non-items). The design/UX angle is
+**`/sponsor/` on a phone**, which is missing the one seasonal product on
+sale now.
 
 
 ## Working agreements for autonomous iteration
