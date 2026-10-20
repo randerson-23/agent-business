@@ -93,6 +93,9 @@ from zoneinfo import ZoneInfo
 import requests
 import yaml
 
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from plan_cap import check_free_plan_cap  # noqa: E402
+
 REPO_ROOT = Path(__file__).resolve().parent.parent
 DOCS_DIR = REPO_ROOT / "docs"
 SEND_HISTORY_PATH = REPO_ROOT / "data" / "send_history.json"
@@ -693,6 +696,7 @@ def main(argv: list[str] | None = None) -> int:
         pre_send_subscriber_count=regular_subscriber_count,
     )
     save_send_history(history)
+    check_free_plan_cap(regular_subscriber_count)  # ROADMAP.md item 349
 
     # ROADMAP.md item 280: a frozen copy of what was sent, for the site's own
     # /issues/ archive. Drafts are never archived; only mail that went out or

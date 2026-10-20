@@ -220,7 +220,7 @@ doesn't re-suggest something already shipped.
 
 **Build queue (by deadline; refreshed by the research loop, item 346).**
 Pick from the top unless the owner has flagged something else:
-0. **340 + 347** (Bing URL Submission API, ready for the owner's secret), **348** (the Halloween issue, before Oct 28), **349** (the free-plan cap warning, before the Meta test starts Oct 22). Then **352** (the holiday listing on /sponsor/, by Oct 23; early-bird ends Nov 15) and **351** (the sponsor page's proof box).
+0. **340 + 347** (Bing URL Submission API, ready for the owner's secret), **348** (the Halloween issue, before Oct 28). Then **352** (the holiday listing on /sponsor/, by Oct 23; early-bird ends Nov 15) and **351** (the sponsor page's proof box).
 1. **306**: the OpenStreetMap prospect list (by Oct 25).
 2. **323**: leaf pickup (in season now).
 3. **313, 314**: the sales mock-up and starter pack (before outreach).
@@ -17099,7 +17099,7 @@ creative.
      will open on the day they need it, and the first many ad-acquired
      subscribers will see.
 
-349. **Warn before the list reaches Buttondown's free-plan cap.** Build
+349. ✅ **DONE (2026-10-20): `scripts/plan_cap.py`; `send_newsletter.py` calls it after each real send and the audience snapshot after each run: below 80 nothing, at 80 or more one GitHub issue "Buttondown free plan: N of 100 subscribers" (billing link, the paid-plan note) created or the existing one updated, at 95 or more a warning line in the log on every run; the workflows got `issues: write` and `GITHUB_TOKEN`; a missing token or a GitHub error is logged and never blocks a send. Tests added; not yet run against the real API.** **Warn before the list reaches Buttondown's free-plan cap.** Build
      loop plus owner:
 
      - In `send_newsletter.py`, after reading
