@@ -7,6 +7,14 @@
     "exception_class": "HTTPError",
     "status_code": 404
   },
+  "arlington-heights-60005:Metropolis Performing Arts Centre \u2014 Shows": {
+    "exception_class": "ReadTimeout",
+    "status_code": null
+  },
+  "mount-prospect-60056:Downtown Mount Prospect \u2014 Events": {
+    "exception_class": "ReadTimeout",
+    "status_code": null
+  },
   "mount-prospect-60056:Experience Mount Prospect \u2014 Events": {
     "exception_class": "HTTPError",
     "status_code": 403
