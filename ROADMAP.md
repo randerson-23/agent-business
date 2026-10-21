@@ -220,7 +220,7 @@ doesn't re-suggest something already shipped.
 
 **Build queue (by deadline; refreshed by the research loop, item 346).**
 Pick from the top unless the owner has flagged something else:
-0. **348** (the Halloween issue, before Oct 28). **357** (wrap archived issues; Google now crawls them). Then **351** (the sponsor page's proof box).
+0. **357** (wrap archived issues; Google now crawls them). Then **351** (the sponsor page's proof box).
 1. **306**: the OpenStreetMap prospect list (by Oct 25).
 2. **323**: leaf pickup (in season now).
 3. **313, 314**: the sales mock-up and starter pack (before outreach).
@@ -17080,7 +17080,7 @@ creative.
        the repository secret `BING_WEBMASTER_API_KEY`.* Move it into
        this week's block, since Halloween-week recrawls matter most.
 
-348. **Make the Oct 29 issue a Halloween issue.** Build loop, for the
+348. ✅ **DONE (2026-10-21): in the Halloween edition week (the Friday of the covered weekend falls Oct 25–31) the combined email's subject is fixed, "Trick-or-treat hours, all five towns, plus Halloween weekend" (60 characters, the existing subject limit; item 348's longer wording was 63); the edition lead block (which already replaces the seasonal dashed box) now shows each town's hours with "(standing)" or "(recommended)" as the page does, a Halloween-night line from item 316 ("Saturday 3–8 PM: 52°F, 20% rain. Sunset 5:49 PM: bring a light.", only when the forecast fetched) and the weekend's trunk-or-treats (Saturday and Sunday only) before the link to `/trick-or-treat/`. A build dated Oct 28 shows all of it; Oct 21 shows none. Tests include the 102 KB clip.** **Make the Oct 29 issue a Halloween issue.** Build loop, for the
      send on **Wed Oct 28 / Thu Oct 29** only:
 
      - **Subject:** *"Trick-or-treat hours for all five towns, plus

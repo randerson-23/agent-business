@@ -3191,7 +3191,9 @@ def build_halloween_banner(entries: list[dict], now: datetime) -> dict | None:
             short = "No set hours"
         else:
             short = "Not posted yet"
-        towns.append({"name": e["region_name"], "hours": short, "post": e.get("village_post")})
+        note = (e.get("note") or "").lower() if e.get("hours") else ""
+        qualifier = "standing" if "standing" in note else "recommended" if "recommended" in note else None
+        towns.append({"name": e["region_name"], "hours": short, "post": e.get("village_post"), "qualifier": qualifier})
     if days == 0:
         countdown = "Tonight!"
     elif days == 1:
@@ -4783,7 +4785,7 @@ def _fit_subject(titles: list[str], total: int, lone_leads: list[str] | None = N
     return compact(truncate(titles[0], room))
 
 
-def build_combined_email_subject_line(sections: list[dict]) -> str:
+def build_combined_email_subject_line(sections: list[dict], now: datetime | None = None) -> str:
     """ROADMAP.md Phase 11 #105: one subject line for every region, since
     Buttondown's free-plan list has no per-region segmentation and every
     subscriber receives the same issue.
@@ -4798,6 +4800,10 @@ def build_combined_email_subject_line(sections: list[dict]) -> str:
     the preheader (build_combined_email_preheader), so subject and
     preview never repeat each other.
     """
+    # ROADMAP.md item 348: the Halloween-weekend issue has one fixed subject.
+    if now is not None and email_edition(now) == "halloween":
+        count = _COUNT_WORDS.get(len(sections), str(len(sections))).lower()
+        return truncate(f"Trick-or-treat hours, all {count} towns, plus Halloween weekend", SUBJECT_MAX_LEN)
     attendable = _round_robin_attendable(sections)
     if not attendable:
         return f"This week across {_join_names([s['region_name'] for s in sections])}: what's coming up"
@@ -5166,7 +5172,7 @@ def _pick_evergreen_highlights(evergreen: list[dict], limit: int) -> list[dict]:
     return (free + rest)[:limit]
 
 
-def render_combined_email_digest(sections: list[dict], weekend_date_range: str, now: datetime, newsletter: dict | None = None, *, preview: bool = False, halloween: dict | None = None, holiday: dict | None = None, weather: list[dict] | None = None) -> str:
+def render_combined_email_digest(sections: list[dict], weekend_date_range: str, now: datetime, newsletter: dict | None = None, *, preview: bool = False, halloween: dict | None = None, holiday: dict | None = None, weather: list[dict] | None = None, halloween_extras: dict | None = None) -> str:
     """The combined, all-regions email (ROADMAP.md Phase 11 #105) - the
     signup form is on every region page, but the automated send (item
     24/31) only ever mailed Mount Prospect's digest, since Buttondown's
@@ -5250,7 +5256,7 @@ def render_combined_email_digest(sections: list[dict], weekend_date_range: str, 
             ],
         }
     edition = email_edition(now)
-    edition_block = build_email_edition_block(edition, halloween, holiday, now)
+    edition_block = build_email_edition_block(edition, halloween, holiday, now, halloween_extras)
     weather_line = build_email_weather_line(weather)
     night_out = pick_night_out(region_blocks, top_picks)  # item 355: Don't miss, then Night out, then Rain plan, then Sign-ups
     days_off_line = build_days_off_email_line(sections, now)
@@ -5270,7 +5276,7 @@ def render_combined_email_digest(sections: list[dict], weekend_date_range: str, 
         empty_regions_summary=empty_regions_summary,
         house_ad=house_ad,
         weekend_date_range=weekend_date_range,
-        subject_line=build_combined_email_subject_line(sections),
+        subject_line=build_combined_email_subject_line(sections, now),
         preheader=build_combined_email_preheader(sections),
         newsletter=newsletter or {"configured": False},
         preview=preview,
@@ -5673,14 +5679,39 @@ def email_edition(now: datetime) -> str | None:
     return None
 
 
-def build_email_edition_block(edition: str | None, halloween: dict | None, holiday: dict | None, now: datetime) -> dict | None:
+def build_halloween_issue_extras(entries: list[dict], now: datetime, night: dict | None) -> dict:
+    """ROADMAP.md item 348: what the Halloween-weekend issue adds to its lead
+    block - the Halloween-night forecast line (item 316) and the weekend's
+    trunk-or-treats - from data the build already holds. Nothing guessed:
+    the night line only when the forecast fetched, trunk-or-treats only from
+    the towns' own Saturday and Sunday events."""
+    local = now.astimezone(LOCAL_TZ)
+    friday, saturday, sunday = weekend_dates(weekend_reference_date(local))
+    night_line = (
+        f"Halloween night, {night['weekday']} 3\u20138 PM: {night['temp']}\u00b0F, {night['rain']}% rain. "
+        f"Sunset {night['sunset']}: bring a light."
+        if night else None
+    )
+    trunks = []
+    for e in entries:
+        for ev in e.get("events") or []:
+            day = _event_day(ev)
+            if day in (saturday, sunday) and TRUNK_OR_TREAT.search(ev.get("title", "")) and ev.get("title"):
+                trunks.append({"town": e["region_name"], "title": ev["title"], "url": ev.get("url"), "when": day.strftime("%a %b ") + str(day.day), "date_iso": ev.get("date_iso") or ""})
+    trunks.sort(key=lambda t: (t["date_iso"], t["town"], t["title"]))
+    return {"night_line": night_line, "trunks": trunks[:6]}
+
+
+def build_email_edition_block(edition: str | None, halloween: dict | None, holiday: dict | None, now: datetime, halloween_extras: dict | None = None) -> dict | None:
     """The first block of a seasonal edition: Halloween's trick-or-treat hours
     or the holidays' tree-lighting dates plus Small Business Saturday. None
     when there is nothing true to show (no banner data)."""
     if edition == "halloween" and halloween:
         return {
             "title": "Trick-or-treat hours, all five towns",
-            "pills": [f"{t['name']} {t['hours']}" for t in halloween["towns"]],
+            "pills": [f"{t['name']} {t['hours']}" + (f" ({t['qualifier']})" if t.get("qualifier") else "") for t in halloween["towns"]],
+            "night_line": (halloween_extras or {}).get("night_line"),
+            "trunks": (halloween_extras or {}).get("trunks") or [],
             "link": SITE_BASE_URL + "trick-or-treat/?utm_source=email&utm_campaign=edition",
             "link_label": "Hours, trunk-or-treats and Halloween events →",
         }
@@ -6768,6 +6799,7 @@ def main() -> None:
     combined_email_extra = {
         "halloween": build_halloween_banner(trick_or_treat_entries, now),
         "holiday": build_holiday_banner(holidays_entries, now),
+        "halloween_extras": build_halloween_issue_extras(trick_or_treat_entries, now, build_halloween_night(night_forecast, now)),
         # One region's forecast stands for the five neighbouring towns; Mount
         # Prospect is central, else the first town that has one.
         "weather": email_weather_by_region.get("mount-prospect-60056")
