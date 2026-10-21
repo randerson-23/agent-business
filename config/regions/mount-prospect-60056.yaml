@@ -108,6 +108,9 @@ sources:
 
   - name: "Mount Prospect Public Library — Events"
     type: rss
+    # ROADMAP.md item 354: venue-type override - indoors, never outdoor.
+    default_tags: ["indoor"]
+    veto_tags: ["outdoor"]
     # mppl.org/events/ is a marketing page with only nav links (no real
     # events), so this was previously scraped as html_events from
     # mppl.libnet.info/events. Switched 2026-08-28 to the library's actual

@@ -1139,8 +1139,11 @@ def fetch_region_sections(
 
         events = []
         for item in raw_items:
-            tags = infer_tags(item.get("title", ""), item.get("detail", ""), source["section"])
+            tags = infer_tags(item.get("title", ""), item.get("detail", ""), section=source["section"])
             tags = merge_default_tags(source.get("default_tags"), tags)
+            # ROADMAP.md item 354: a venue-type override (theatres and libraries are indoors).
+            veto = set(source.get("veto_tags") or [])
+            tags = [t for t in tags if t not in veto]
             # ROADMAP.md Phase 11 #90: a source-level `informational: true`
             # (for a feed like D57's that's mostly closures/half-days, not
             # events) forces every item non-attendable regardless of
@@ -1623,7 +1626,7 @@ def _build_annual_event_dict(
     """
     tags = item.get("tags")
     if tags is None:
-        tags = infer_tags(item.get("title", ""), item.get("detail", ""), "Annual Events")
+        tags = infer_tags(item.get("title", ""), item.get("detail", ""), section="Annual Events")
     event = {
         "title": item.get("title", ""),
         # ROADMAP.md Phase 11 #71: an optional small kicker for entries
@@ -5193,13 +5196,14 @@ def render_combined_email_digest(sections: list[dict], weekend_date_range: str, 
     edition = email_edition(now)
     edition_block = build_email_edition_block(edition, halloween, holiday, now)
     weather_line = build_email_weather_line(weather)
-    night_out = pick_night_out(region_blocks)
+    night_out = pick_night_out(region_blocks, top_picks)  # item 355: Don't miss, then Night out, then Rain plan, then Sign-ups
     days_off_line = build_days_off_email_line(sections, now)
     closures_line = build_closures_email_line(sections, now)
-    rain_plan = pick_rain_plan(region_blocks, top_picks) if weather_line and weather_line["rain"] else []
+    rain_plan = pick_rain_plan(region_blocks, top_picks + ([night_out] if night_out else [])) if weather_line and weather_line["rain"] else []
     # ROADMAP.md item 327: up to four events whose registration opens this week.
     town_colors = {b["region_name"]: b["color"] for b in all_blocks}
-    signups = [dict(e, color=town_colors.get(e["town"], EMAIL_TOWN_COLORS[0][0])) for e in pick_signups_across_towns(sections)]
+    used_urls = {e.get("url") for e in [*top_picks, *([night_out] if night_out else []), *rain_plan] if e.get("url")}
+    signups = [dict(e, color=town_colors.get(e["town"], EMAIL_TOWN_COLORS[0][0])) for e in pick_signups_across_towns(sections) if e.get("url") not in used_urls]
     return template.render(
         signups=signups,
         region_blocks=region_blocks,
@@ -5527,15 +5531,16 @@ def thin_week_ideas(evergreen: list[dict], attendable_count: int, limit: int = 3
     return indoor[:limit]
 
 
-def pick_night_out(blocks: list[dict]) -> dict | None:
+def pick_night_out(blocks: list[dict], exclude: list[dict] | None = None) -> dict | None:
     """One "Night out" line for the email's adult readers (ROADMAP.md item
     284): the earliest arts-and-culture event across the towns that starts at
     6 p.m. or later on a Friday or Saturday. Never a paid promotion, and None
     when nothing qualifies."""
+    skip = {(e.get("title"), e.get("url")) for e in exclude or []}
     best = None
     for block in blocks:
         for e in block.get("attendable_events") or []:
-            if e.get("sponsored_by") or "art_culture" not in (e.get("tags") or []) or not e.get("date_iso"):
+            if e.get("sponsored_by") or "art_culture" not in (e.get("tags") or []) or not e.get("date_iso") or (e.get("title"), e.get("url")) in skip:
                 continue
             try:
                 start = datetime.fromisoformat(e["date_iso"])

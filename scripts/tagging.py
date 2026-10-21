@@ -42,7 +42,7 @@ TAG_KEYWORDS: dict[str, tuple[str, ...]] = {
         "library", "indoor", "museum", "theater", "theatre", "gym", " hall ",
     ),
     "outdoor": (
-        "park", "outdoor", "trail", "farmers market", "festival", "parade",
+        "outdoor", "trail", "farmers market", "festival", "parade",
         "concert in the park", "5k", "fireworks",
     ),
     "food": ("food", "tasting", "restaurant", "brewery", "bakery", "farmers market"),
@@ -117,21 +117,30 @@ ADULT_SIGNALS: tuple[str, ...] = (
 )
 
 
-def infer_tags(*text_parts: str) -> list[str]:
-    """Infer tags from arbitrary text (title, detail, section name, ...).
+# ROADMAP.md item 354: "park" means a place outdoors only as a word of its own,
+# never "Park District", "Park Ridge", "parking", "parker" or "parkway".
+_OUTDOOR_PARK = _re.compile(r"(?<![a-z])park(?![a-z])(?!\s+(?:district|ridge|avenue|ave\b|street|st\b|road|rd\b|place|plaza))")
+
+
+def infer_tags(*text_parts: str, section: str = "") -> list[str]:
+    """Infer tags from the title and description (`text_parts`), plus the
+    source's section name (`section`) for every tag except "outdoor": a
+    section called "Park District Events" says where the listing came from,
+    not that the event is outdoors (item 354).
 
     Returns a sorted list of tag ids for stable output/testing.
     """
-    haystack = " " + " ".join(p for p in text_parts if p).lower() + " "
+    text = " " + " ".join(p for p in text_parts if p).lower() + " "
+    haystack = " " + " ".join(p for p in (*text_parts, section) if p).lower() + " "
     if not haystack.strip():
         return []
     # ROADMAP.md item 333: "craft" in a drinks sense is not a kids' craft.
     kid_haystack = _NOT_A_KIDS_CRAFT.sub(" ", haystack)
-    matched = {
-        tag
-        for tag, keywords in TAG_KEYWORDS.items()
-        if any(keyword in (kid_haystack if tag == "kid_friendly" else haystack) for keyword in keywords)
-    }
+    matched = set()
+    for tag, keywords in TAG_KEYWORDS.items():
+        hay = kid_haystack if tag == "kid_friendly" else text if tag == "outdoor" else haystack
+        if any(keyword in hay for keyword in keywords) or (tag == "outdoor" and _OUTDOOR_PARK.search(text)):
+            matched.add(tag)
     # An adult signal only ever removes the kid-friendly tag.
     if "kid_friendly" in matched and any(signal in haystack for signal in ADULT_SIGNALS):
         matched.discard("kid_friendly")

@@ -6079,3 +6079,47 @@ def test_bing_urls_are_ordered_trick_or_treat_weekend_regions_then_the_rest():
     assert ordered[:4] == [base + "trick-or-treat/", base + "this-weekend/", base + "palatine-60067/", base + "wheeling-60090/"]
     after = build_digest.order_bing_urls(urls, datetime(2026, 11, 3, 15, tzinfo=timezone.utc), ["palatine-60067", "wheeling-60090"])
     assert after[0] == base + "this-weekend/" and after.index(base + "trick-or-treat/") > after.index(base + "wheeling-60090/")  # no longer prioritised
+
+
+def test_outdoor_badge_needs_a_real_outdoor_park_not_a_park_district_or_a_surname():
+    # ROADMAP.md item 354.
+    from tagging import infer_tags
+    assert "outdoor" not in infer_tags("Lights Out: Tribute to UFO featuring Andy Parker", "Live at the theatre.")
+    assert "outdoor" not in infer_tags("The Music Man Sr.", "Presented by the Park District. Parking is free.")
+    assert "outdoor" not in infer_tags("Family night", "Hosted at the Park Ridge library, off Parkway Drive.")
+    assert "outdoor" in infer_tags("Pumpkin Splash at Melas Park", "")
+    assert "outdoor" in infer_tags("Concert in the Park", "")
+    assert "outdoor" in infer_tags("Movie Night", "Bring a blanket to the park.")
+    # The source's section name ("Park District Events") never makes an event outdoor.
+    assert "outdoor" not in infer_tags("Ceramics class", "", section="Park District Events")
+    assert "indoor" in infer_tags("Storytime", "", section="Library Events")  # the section still feeds the other tags
+
+
+def test_venue_veto_tags_remove_outdoor_for_indoor_sources():
+    import yaml as _yaml
+    root = Path(__file__).resolve().parent.parent / "config" / "regions"
+    vetoed = []
+    for f in root.glob("*.yaml"):
+        for src in (_yaml.safe_load(f.read_text(encoding="utf-8")).get("sources") or []):
+            if src.get("veto_tags"):
+                vetoed.append(src["name"])
+                assert "outdoor" in src["veto_tags"] and "indoor" in (src.get("default_tags") or [])
+    assert any("Theatre" in n for n in vetoed) and sum("Library" in n for n in vetoed) == 5
+
+
+def test_no_event_appears_twice_across_the_emails_top_blocks():
+    # ROADMAP.md item 355: Don't miss, then Night out, then Rain plan, then Sign-ups.
+    def ev(title, hour, tags):
+        return {"title": title, "url": "https://x/" + title, "date_iso": f"2026-10-23T{hour:02d}:00:00", "date": "Oct 23", "tags": tags, "attendable": True}
+    shared = ev("Opening Night", 19, ["art_culture", "indoor", "kid_friendly"])
+    blocks = [
+        {"region_name": "A", "color": "#000", "attendable_events": [shared, ev("Gallery Talk", 20, ["art_culture", "indoor"])]},
+        {"region_name": "B", "color": "#000", "attendable_events": [ev("Family Fest", 10, ["kid_friendly", "free"])]},
+    ]
+    top = build_digest.pick_email_top_picks(blocks)
+    assert "Opening Night" in {p["title"] for p in top}
+    night = build_digest.pick_night_out(blocks, top)
+    assert night["title"] == "Gallery Talk"  # the next candidate, not the repeat
+    assert build_digest.pick_night_out(blocks, top + [night]) is None  # nothing left: the block is omitted
+    rain = build_digest.pick_rain_plan(blocks, top + [night])
+    assert all(r["title"] not in {"Opening Night", "Gallery Talk"} for r in rain)
