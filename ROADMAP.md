@@ -220,7 +220,7 @@ doesn't re-suggest something already shipped.
 
 **Build queue (by deadline; refreshed by the research loop, item 346).**
 Pick from the top unless the owner has flagged something else:
-0. **348** (the Halloween issue, before Oct 28). Then **352** (the holiday listing on /sponsor/, by Oct 23; early-bird ends Nov 15) and **351** (the sponsor page's proof box).
+0. **348** (the Halloween issue, before Oct 28). **357** (wrap archived issues; Google now crawls them). Then **352** (the holiday listing on /sponsor/, by Oct 23; early-bird ends Nov 15) and **351** (the sponsor page's proof box).
 1. **306**: the OpenStreetMap prospect list (by Oct 25).
 2. **323**: leaf pickup (in season now).
 3. **313, 314**: the sales mock-up and starter pack (before outreach).
@@ -17320,6 +17320,82 @@ collected events are weekday daytime), **local Facebook groups** (no
 named groups findable by search; the §9 template is still unsent), and
 **Meetup** (non-item). The design/UX angle is **the Oct 22 email read
 before it sends**, which found wrong Outdoor badges and a repeated event.
+
+
+#### Research pass 2026-10-21 (ninety-fourth pass)
+
+Overnight the build loop shipped items 354 and 355 (the "Outdoor"
+false-positive fix and no repeats across the email's top blocks), in time
+for tonight's send. The owner's Meta decision is due today. The Bing API
+route is built and waits on the owner's secret. This pass looks at
+three platforms that turn an RSS feed into readers without a weekly
+owner task, now that per-town article feeds exist (`docs/<region>/weekly.xml`,
+item 304). It also reads the past-issues archive, which item 338 just
+linked from the homepage, as a search visitor would land on it.
+
+| Angle | What it is / what we found | Why it matters here |
+|---|---|---|
+| **SmartNews** (LION Publishers partner post; RebelMouse integration guide; TechCrunch, 2020) | A news app with a **local news section covering 6,000+ US cities** (2020 figure). Publishers apply with a **short form and an RSS feed link**, sign an online agreement, and pass feed validation (a "SmartFormat" RSS variant, with a validator). The LION post lists **$2 per 1,000 page views**, with SmartNews placing its ads. Approval is manual | The per-town `weekly.xml` feeds already carry article HTML and an image, which is what an RSS news app ingests. It is a one-time form, with no weekly owner time, reaching readers who browse local news on their phones. **Odds are uncertain**: it is a news app, and this is an events digest. Item 359 is worth one form, not more |
+| **Apple News** (Apple developer forums, 2025; older publisher guides) | Basic channels once needed only RSS 2.0 or Atom plus a manual review, and Apple says the service is **not for non-editorial publications**. A 2025 forum thread reports **"not accepting new applications"**, and a later reply says unsolicited applications are closed | **Non-item.** Closed to new applicants, and an events digest is a weak fit for "editorial or journalistic". Recorded so it isn't researched again |
+| **MSN Partner Hub** (Microsoft Start; Microsoft Q&A, 2024–2026) | The older MSN publisher route was shut down. The Partner Hub is a **limited pilot**, by application or **invite code**: a January 2026 thread asked how to get one and got no answer | **Non-item** for now. Revisit only if Microsoft opens it, since Bing's own URL Submission API (items 340, 347) already covers Microsoft's search side |
+| **The past-issues archive, read as a search visitor (design/UX)** | `/issues/2026-10-15/` is **the raw email HTML** (52 KB). Its `<title>` is the email subject, *"Palatine Plaza Fall Fun Fest and 33 more this weekend"*, with **no brand, date or town names**. It has **no `<h1>`**, **no meta description**, **no link to this weekend**, and **no signup form**. It still carries the pre-redesign forced-light CSS that item 330 replaced. `/issues/` lists one issue, because the Oct 1 and Oct 8 sends predate the archive | Item 338 made these pages reachable, so Google will now crawl and may index them. A searcher who lands on a past weekend sees events that are over, with no way forward and no way to subscribe: a dead end on the very pages meant to show the newsletter's quality. A wrapper turns each archived issue into a permanent, findable sample of the product with a path to the current week (item 357) |
+
+#### P1 (new)
+
+357. **Wrap each archived issue as a site page that points forward.**
+     Build loop, the `/issues/` writer:
+
+     - Render each archived issue **inside a site page template**: the
+       site header, then a banner at the top, *"This is the Oct 15, 2026
+       issue. **See this weekend's events →**"* (linking
+       `/this-weekend/`), then the email in an `<iframe srcdoc>` or as
+       inlined markup scoped under a wrapper class, then the **signup
+       block** (`_signup.html.j2`, `utm_campaign=archive`).
+     - **Title and description**, following item 310's query-matching
+       rule: *"Things to do Oct 17–18, 2026 in Arlington Heights, Des
+       Plaines, Mount Prospect, Palatine & Wheeling | Within Ten"*, and a
+       meta description naming three of the issue's picks.
+     - **`<h1>`**: *"Weekend of Oct 17–18, 2026"*. Keep `rel="canonical"`
+       to itself and keep it indexable: an archived issue is a real
+       sample of the product.
+     - **Freeze the email HTML as it was sent**, but serve it through the
+       current wrapper, so later template changes never rewrite past
+       issues and the wrapper can still improve.
+
+     Tests: the banner links to `/this-weekend/`, the title contains the
+     date range and "Within Ten", the signup form appears once, and the
+     page passes item 338's depth check.
+
+#### P2 (new)
+
+358. **Use the archive in the email and in Bing's queue.** Build loop:
+     add **"Read past issues"** (`/issues/`) to both email footers beside
+     the forward line. Add each newly archived issue page to the **front
+     of the Bing URL Submission queue** (item 347) the day after it is
+     archived, since it is the newest original page the site produces
+     each week. Tests: the footer link appears once per email, and a
+     newly archived URL comes first in that day's Bing list.
+
+#### P3, owner (new)
+
+359. **Apply to SmartNews with one town's weekly feed (10 minutes,
+     once).** After item 357 ships, so the feed's links land on wrapped
+     pages: submit SmartNews' publisher form with
+     `https://withintenmiles.com/mount-prospect-60056/weekly.xml`, and the
+     other four towns if the form takes several. **Build loop, first:**
+     run the feed through SmartNews' SmartFormat validator. Add a
+     `smartformat` variant only if the validator demands fields that
+     plain RSS 2.0 lacks. If accepted, readers arrive with
+     `utm_source=smartnews` and are counted like every other channel.
+     If refused, record it and stop. Added to the Needs Ryan list as an
+     optional item, not to this week's block.
+
+Competitors reviewed this pass: **SmartNews** (local section, RSS
+onboarding, $2 per 1,000 views as reported), **Apple News** (closed to
+new applicants, non-item), and **MSN Partner Hub** (invite-only pilot,
+non-item). The design/UX angle is **the past-issues archive read as a
+search visitor**: the raw email with no title, no way forward and no
+signup.
 
 
 ## Working agreements for autonomous iteration
