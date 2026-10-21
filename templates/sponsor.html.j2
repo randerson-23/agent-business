@@ -249,7 +249,7 @@
     <p style="color: var(--muted); font-size: 13.5px; margin: 0 0 14px;">Annual Partner is the flagship option — a permanent listing, guide placement, and SEO backlink that work for you year-round instead of needing to be renewed every week. Prefer to start smaller? Weekly Spot and Event Promo get you the same recommendation on a shorter commitment.</p>
     <div class="tier-grid">
       {% for tier in tiers %}
-      <div class="tier{{ ' recommended' if tier.recommended else '' }}">
+      <div class="tier{{ ' recommended' if tier.recommended else '' }}"{% if tier.anchor %} id="{{ tier.anchor }}"{% endif %}>
         {% if tier.recommended %}<span class="tier-badge">Recommended</span><br>{% endif %}
         <h3>{{ tier.name }}</h3>
         <div class="price">{{ tier.price }}</div>
@@ -264,6 +264,15 @@
           <p>{{ sample_event.detail }}</p>
         </div>
         {% endif %}
+        {% if tier.payment_key == "holiday" %}
+        {% if tier.early_line %}<p class="detail" style="margin-top: 8px;"><strong>{{ tier.early_line }}</strong></p>{% endif %}
+        <div class="sample-card" role="group" aria-label="Example of a holiday listing">
+          <span class="sample-tag">Example</span>
+          <h4>{{ sample_holiday.title }}</h4>
+          <p>{{ sample_holiday.detail }}</p>
+        </div>
+        {% endif %}
+        {% if tier.mailto_url %}<p style="margin: 12px 0 0;"><a class="cta" href="{{ tier.mailto_url }}">Email about a holiday listing &rarr;</a></p>{% endif %}
         {% if tier.buy_url %}<p style="margin: 12px 0 0;"><a class="cta" href="{{ tier.buy_url }}" rel="noopener">Buy now &rarr;</a></p>{% endif %}
       </div>
       {% endfor %}

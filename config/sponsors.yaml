@@ -67,6 +67,7 @@ contact_email: "hello@withintenmiles.com"
 payment_links:
   event_promo: null
   weekly_spot: null
+  holiday: null  # ROADMAP.md item 352: the Holiday listing ($20 until Nov 15, then $50)
 
 # The $20 Event Promo (ROADMAP.md item 245). One entry delivers the
 # product: the event appears FIRST in its region's lists on the site, the

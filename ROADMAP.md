@@ -220,7 +220,7 @@ doesn't re-suggest something already shipped.
 
 **Build queue (by deadline; refreshed by the research loop, item 346).**
 Pick from the top unless the owner has flagged something else:
-0. **348** (the Halloween issue, before Oct 28). **357** (wrap archived issues; Google now crawls them). Then **352** (the holiday listing on /sponsor/, by Oct 23; early-bird ends Nov 15) and **351** (the sponsor page's proof box).
+0. **348** (the Halloween issue, before Oct 28). **357** (wrap archived issues; Google now crawls them). Then **351** (the sponsor page's proof box).
 1. **306**: the OpenStreetMap prospect list (by Oct 25).
 2. **323**: leaf pickup (in season now).
 3. **313, 314**: the sales mock-up and starter pack (before outreach).
@@ -17182,7 +17182,7 @@ channel.
      the issue count matches the history file, and the pending line
      shows below 50 subscribers.
 
-352. **Put the holiday listing on `/sponsor/`, with its deadline, before
+352. ✅ **DONE (2026-10-21): a "Holiday listing" tier on `/sponsor/` ("$20 until Nov 15, then $50", anchor `#holiday`) shown Oct 15 to Dec 15 only, with "Early-bird price ends Sun Nov 15 (N days left)" until Nov 15, an "Example" card built by `format_holiday_listing` (the same function the town `/holiday/` pages use for real listings) from a made-up business that lives only in the /sponsor/ template, a `payment_links.holiday` slot, an "Email about a holiday listing" mailto with subject "Holiday listing" and the inquiry template, and `OUTREACH_TEMPLATES.md` §13a. Tests: the window, the countdown, the example never on a real page or in events.json.** **Put the holiday listing on `/sponsor/`, with its deadline, before
      the early-bird window runs out.** Build loop, by **Fri Oct 23**:
 
      - Add **"Holiday listing: $20 until Nov 15, then $50"** to

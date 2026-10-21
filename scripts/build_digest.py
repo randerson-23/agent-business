@@ -2053,6 +2053,17 @@ def is_holiday_season(now: datetime) -> bool:
     return now.month in (11, 12)
 
 
+def format_holiday_listing(entry: dict) -> dict:
+    """One holiday-page listing card from a `holiday_listings:` entry. The
+    /sponsor/ page's "Example" card is built by this same function, so the
+    preview cannot drift from the product (ROADMAP.md items 258 and 352)."""
+    parts = [p for p in (entry.get("category"), entry.get("address")) if p]
+    detail = "Local business listing" + (" · " + " · ".join(str(p) for p in parts) if parts else "")
+    if entry.get("line"):
+        detail += f" — {str(entry['line']).strip()}"
+    return {"title": str(entry.get("name") or "").strip(), "detail": detail, "url": str(entry.get("url") or "").strip(), "date": None, "tags": [], "tag_badges": [], "ics_href": None}
+
+
 def build_holiday_listings(sponsors_cfg: dict, region_id: str, local_today: date) -> list[dict]:
     """Paid "Local business listing" cards for a region's /holiday/ page, from
     `holiday_listings:` in config/sponsors.yaml (ROADMAP.md item 258). An entry
@@ -2071,13 +2082,7 @@ def build_holiday_listings(sponsors_cfg: dict, region_id: str, local_today: date
             continue
         if until is not None and until < local_today:
             continue
-        parts = [p for p in (entry.get("category"), entry.get("address")) if p]
-        detail = "Local business listing" + (" · " + " · ".join(str(p) for p in parts) if parts else "")
-        if entry.get("line"):
-            detail += f" — {str(entry['line']).strip()}"
-        listings.append(
-            {"title": name, "detail": detail, "url": url, "date": None, "tags": [], "tag_badges": [], "ics_href": None}
-        )
+        listings.append(format_holiday_listing(entry))
     return listings
 
 
@@ -2243,6 +2248,21 @@ SPONSOR_TIERS = [
         "detail": "Not ready for a year? The same top-of-page recommendation, available week-to-week or month-to-month.",
     },
     {
+        # ROADMAP.md item 352: a seasonal tier, shown on /sponsor/ from Oct 15 to Dec 15 only.
+        "name": "Holiday listing",
+        "payment_key": "holiday",
+        "price": "$20 until Nov 15, then $50",
+        "gated_by": "Newsletter reach",
+        "detail": (
+            "Your shop on your town's holiday page, with your sale or hours, through Dec 31 - "
+            "just in time for Small Business Saturday (Nov 28). Labelled \"Local business listing\"; "
+            "the page is for real shops with a real sale or hours."
+        ),
+        "season": ((10, 15), (12, 15)),
+        "anchor": "holiday",
+        "mailto_subject": "Holiday listing",
+    },
+    {
         "name": "Annual Partner",
         "price": "$1,200/year",
         "gated_by": "Site traffic & search presence",
@@ -2267,6 +2287,31 @@ SAMPLE_PROMOTION_EVENT = {
     "date_label": "Your event's date",
     "sponsored_by": "Your Business Name",
 }
+
+
+# ROADMAP.md item 352: a made-up business, template-only (never reaches a
+# region page, events.json or llms-full.txt), formatted by the same function
+# the real holiday-page listings use.
+SAMPLE_HOLIDAY_LISTING = format_holiday_listing(
+    {"name": "Your Shop Name", "url": "https://example.com/", "category": "Gifts", "address": "Your street address", "line": "Your sale or holiday hours go here."}
+)
+
+
+def holiday_tier_visible(tier: dict, today: date) -> bool:
+    season = tier.get("season")
+    if not season:
+        return True
+    (m1, d1), (m2, d2) = season
+    return date(today.year, m1, d1) <= today <= date(today.year, m2, d2)
+
+
+def early_bird_line(today: date) -> str | None:
+    """"Early-bird price ends Sun Nov 15 (N days left)" through Nov 15 itself."""
+    end = date(today.year, 11, 15)
+    if today > end:
+        return None
+    left = (end - today).days
+    return f"Early-bird price ends {end.strftime('%a %b')} {end.day} ({'today' if left == 0 else f'{left} day' + ('s' if left != 1 else '') + ' left'})"
 
 
 def build_payment_line(tiers: list[dict]) -> str:
@@ -2431,8 +2476,19 @@ def render_sponsor_page(
 ) -> str:
     env = get_template_env()
     template = env.get_template("sponsor.html.j2")
-    tiers = [{**t, "buy_url": (payment_links or {}).get(t.get("payment_key") or "") or None} for t in SPONSOR_TIERS]
+    today = now.astimezone(LOCAL_TZ).date()
+    tiers = [
+        {
+            **t,
+            "buy_url": (payment_links or {}).get(t.get("payment_key") or "") or None,
+            "mailto_url": build_contact_mailto_url(contact_email, t["mailto_subject"], SPONSOR_INQUIRY_FIELDS) if t.get("mailto_subject") else None,
+            "early_line": early_bird_line(today) if t.get("payment_key") == "holiday" else None,
+        }
+        for t in SPONSOR_TIERS
+        if holiday_tier_visible(t, today)
+    ]
     return template.render(
+        sample_holiday=SAMPLE_HOLIDAY_LISTING,
         tiers=tiers,
         payment_line=build_payment_line(tiers),
         sample_event=SAMPLE_PROMOTION_EVENT,
