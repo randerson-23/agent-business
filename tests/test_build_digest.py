@@ -190,7 +190,7 @@ def test_render_sponsor_page_labels_each_tier_by_what_gates_it():
     # which one applies, matching SPONSOR_KIT.md's "Value grows with" column
     # (renamed from "Gated by" in item 247: to a buyer "gated" read as
     # "unavailable").
-    html = build_digest.render_sponsor_page([], datetime.now(timezone.utc))
+    html = build_digest.render_sponsor_page([], datetime(2026, 6, 10, 15, tzinfo=timezone.utc))  # outside the Holiday listing's season
     assert "Gated by" not in html
     assert html.count("Value grows with: Newsletter reach") == 2  # Event Promo, Weekly Spot
     assert html.count("Value grows with: Site traffic &amp; search presence") == 2  # Annual Partner, Neighborhood Authority
@@ -6123,3 +6123,22 @@ def test_no_event_appears_twice_across_the_emails_top_blocks():
     assert build_digest.pick_night_out(blocks, top + [night]) is None  # nothing left: the block is omitted
     rain = build_digest.pick_rain_plan(blocks, top + [night])
     assert all(r["title"] not in {"Opening Night", "Gallery Talk"} for r in rain)
+
+
+def test_holiday_listing_tier_shows_in_its_window_with_a_countdown_and_a_safe_example():
+    # ROADMAP.md item 352.
+    at = lambda m, d: datetime(2026, m, d, 15, tzinfo=timezone.utc)
+    inside = build_digest.render_sponsor_page([], at(10, 20), contact_email="hello@x.org")
+    assert "Holiday listing" in inside and 'id="holiday"' in inside and "$20 until Nov 15, then $50" in inside
+    assert "Early-bird price ends Sun Nov 15 (26 days left)" in inside
+    assert "mailto:hello@x.org?subject=Holiday%20listing" in inside
+    assert "Holiday listing" not in build_digest.render_sponsor_page([], at(10, 14))
+    assert "Holiday listing" not in build_digest.render_sponsor_page([], at(12, 16))
+    after = build_digest.render_sponsor_page([], at(11, 16))
+    assert "Holiday listing" in after and "Early-bird price ends" not in after
+    assert build_digest.early_bird_line(date(2026, 11, 15)) == "Early-bird price ends Sun Nov 15 (today)"
+    assert build_digest.early_bird_line(date(2026, 11, 14)) == "Early-bird price ends Sun Nov 15 (1 day left)"
+    # The example is built by the same function as a real listing, and stays on /sponsor/ only.
+    real = build_digest.format_holiday_listing({"name": "Real Shop", "url": "https://real.example/", "category": "Gifts", "line": "Sale."})
+    assert set(real) == set(build_digest.SAMPLE_HOLIDAY_LISTING) and "Your Shop Name" in inside
+    assert "Your Shop Name" not in build_digest.build_events_json([("R", "https://x/r/", [])], "n", at(11, 20))

@@ -173,7 +173,7 @@ def test_sponsor_page_shows_buy_now_only_for_configured_payment_links():
 def test_the_real_config_is_valid_and_uses_the_forwarded_address():
     cfg_real = build_digest.load_yaml(build_digest.CONFIG_DIR / "sponsors.yaml")
     assert cfg_real["contact_email"] == "hello@withintenmiles.com"
-    assert set(cfg_real["payment_links"]) == {"event_promo", "weekly_spot"}
+    assert set(cfg_real["payment_links"]) == {"event_promo", "weekly_spot", "holiday"}
     region_ids = {r["region"]["id"] for r in build_digest.load_regions()}
     for entry in cfg_real.get("promotions") or []:
         assert entry["region"] in region_ids
