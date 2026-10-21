@@ -2,8 +2,8 @@
   "@context": "https://schema.org",
   "@type": "ItemList",
   "name": "Upcoming events in Palatine — Within Ten",
-  "dateModified": "2026-10-21T14:01:43+00:00",
-  "numberOfItems": 31,
+  "dateModified": "2026-10-21T22:00:39+00:00",
+  "numberOfItems": 32,
   "itemListElement": [
     {
       "@type": "ListItem",
@@ -699,6 +699,29 @@
     {
       "@type": "ListItem",
       "position": 31,
+      "item": {
+        "@type": "Event",
+        "name": "St. Philip's Episcopal Church Open House",
+        "startDate": "2026-11-01T09:30:00-06:00",
+        "url": "https://withintenmiles.com/palatine-60067/#ev-st-philip-s-episcopal-church-open-house-2026-11-01",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Palatine, IL",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Palatine",
+            "addressRegion": "IL"
+          }
+        },
+        "sameAs": "https://www.palatine.il.us/common/modules/iCalendar/iCalendar.aspx?feed=calendar&catID=14",
+        "description": "https://www.palatine.il.us/calendar.aspx?EID=2211"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 32,
       "item": {
         "@type": "Event",
         "name": "E-Learning Day",

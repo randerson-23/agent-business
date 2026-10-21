@@ -3,8 +3,8 @@
 <channel>
   <title>Within Ten — Upcoming events in Palatine</title>
   <link>https://withintenmiles.com/</link>
-  <description>Upcoming events in Palatine, soonest first - aggregated automatically from village, library, park district and school-district calendars. This build reached 18 of 25 configured sources. 4 sources are shown from their last update, up to 46 hours ago.</description>
-  <lastBuildDate>Wed, 21 Oct 2026 14:01:43 +0000</lastBuildDate>
+  <description>Upcoming events in Palatine, soonest first - aggregated automatically from village, library, park district and school-district calendars. This build reached 20 of 25 configured sources. 2 sources are shown from their last update, up to 54 hours ago.</description>
+  <lastBuildDate>Wed, 21 Oct 2026 22:00:39 +0000</lastBuildDate>
   <item>
     <title>Palatine: Language Tables: Where Can Harper Take You?</title>
     <link>https://withintenmiles.com/palatine-60067/#ev-language-tables-where-can-harper-take-you-2026-10-21</link>
@@ -174,6 +174,14 @@
     <source url="https://www.palatine.il.us/common/modules/iCalendar/iCalendar.aspx?feed=calendar&amp;catID=14">Village of Palatine — Calendar</source>
   </item>
   <item>
+    <title>Palatine: St. Philip's Episcopal Church Open House</title>
+    <link>https://withintenmiles.com/palatine-60067/#ev-st-philip-s-episcopal-church-open-house-2026-11-01</link>
+    <guid isPermaLink="true">https://withintenmiles.com/palatine-60067/#ev-st-philip-s-episcopal-church-open-house-2026-11-01</guid>
+    <description>https://www.palatine.il.us/calendar.aspx?EID=2211 Official listing: https://www.palatine.il.us/common/modules/iCalendar/iCalendar.aspx?feed=calendar&amp;catID=14</description>
+    <pubDate>Sun, 01 Nov 2026 09:30:00 +0000</pubDate>
+    <source url="https://www.palatine.il.us/common/modules/iCalendar/iCalendar.aspx?feed=calendar&amp;catID=14">Village of Palatine — Calendar</source>
+  </item>
+  <item>
     <title>Palatine: Community Resource Center Open House</title>
     <link>https://withintenmiles.com/palatine-60067/#ev-community-resource-center-open-house-2026-11-04</link>
     <guid isPermaLink="true">https://withintenmiles.com/palatine-60067/#ev-community-resource-center-open-house-2026-11-04</guid>
@@ -259,6 +267,14 @@
     <guid isPermaLink="true">https://withintenmiles.com/palatine-60067/#ev-thanksgiving-village-hall-offices-closed-2026-11-26</guid>
     <description>https://www.palatine.il.us/calendar.aspx?EID=1926 Official listing: https://www.palatine.il.us/common/modules/iCalendar/iCalendar.aspx?feed=calendar&amp;catID=14</description>
     <pubDate>Thu, 26 Nov 2026 00:00:00 +0000</pubDate>
+    <source url="https://www.palatine.il.us/common/modules/iCalendar/iCalendar.aspx?feed=calendar&amp;catID=14">Village of Palatine — Calendar</source>
+  </item>
+  <item>
+    <title>Palatine: St. Nectarios Thanksgiving Community Meal</title>
+    <link>https://withintenmiles.com/palatine-60067/#ev-st-nectarios-thanksgiving-community-meal-2026-11-26</link>
+    <guid isPermaLink="true">https://withintenmiles.com/palatine-60067/#ev-st-nectarios-thanksgiving-community-meal-2026-11-26</guid>
+    <description>Free hot Thanksgiving meal. Safe, welcoming space for individu Official listing: https://www.palatine.il.us/common/modules/iCalendar/iCalendar.aspx?feed=calendar&amp;catID=14</description>
+    <pubDate>Thu, 26 Nov 2026 10:30:00 +0000</pubDate>
     <source url="https://www.palatine.il.us/common/modules/iCalendar/iCalendar.aspx?feed=calendar&amp;catID=14">Village of Palatine — Calendar</source>
   </item>
   <item>

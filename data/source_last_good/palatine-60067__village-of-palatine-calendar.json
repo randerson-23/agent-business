@@ -1,5 +1,5 @@
 {
- "fetched_at": "2026-10-21T14:01:43+00:00",
+ "fetched_at": "2026-10-21T22:00:39+00:00",
  "items": [
   {
    "date": "20261023T093000",
@@ -104,6 +104,12 @@
    "url": "https://www.palatine.il.us/common/modules/iCalendar/iCalendar.aspx?feed=calendar&catID=14"
   },
   {
+   "date": "20261101T093000",
+   "detail": "https://www.palatine.il.us/calendar.aspx?EID=2211",
+   "title": "St. Philip's Episcopal Church Open House",
+   "url": "https://www.palatine.il.us/common/modules/iCalendar/iCalendar.aspx?feed=calendar&catID=14"
+  },
+  {
    "date": "20261104T160000",
    "detail": "We welcome you to learn more about the Community Resource Cente",
    "title": "Community Resource Center Open House",
@@ -119,6 +125,12 @@
    "date": "20261126",
    "detail": "https://www.palatine.il.us/calendar.aspx?EID=1926",
    "title": "Thanksgiving (Village Hall Offices Closed)",
+   "url": "https://www.palatine.il.us/common/modules/iCalendar/iCalendar.aspx?feed=calendar&catID=14"
+  },
+  {
+   "date": "20261126T103000",
+   "detail": "Free hot Thanksgiving meal. Safe, welcoming space for individu",
+   "title": "St. Nectarios Thanksgiving Community Meal",
    "url": "https://www.palatine.il.us/common/modules/iCalendar/iCalendar.aspx?feed=calendar&catID=14"
   },
   {
