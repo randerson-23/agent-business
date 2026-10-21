@@ -220,7 +220,7 @@ doesn't re-suggest something already shipped.
 
 **Build queue (by deadline; refreshed by the research loop, item 346).**
 Pick from the top unless the owner has flagged something else:
-0. **357** (wrap archived issues; Google now crawls them). Then **351** (the sponsor page's proof box).
+0. **361** (partisan listings out; the Indivisible meeting is live on /this-weekend/ now). **357** (wrap archived issues; Google now crawls them). **360** (/this-weekend/ picks and signup near the top). Then **351** (the sponsor page's proof box).
 1. **306**: the OpenStreetMap prospect list (by Oct 25).
 2. **323**: leaf pickup (in season now).
 3. **313, 314**: the sales mock-up and starter pack (before outreach).
@@ -17396,6 +17396,92 @@ new applicants, non-item), and **MSN Partner Hub** (invite-only pilot,
 non-item). The design/UX angle is **the past-issues archive read as a
 search visitor**: the raw email with no title, no way forward and no
 signup.
+
+
+#### Research pass 2026-10-21, evening (ninety-fifth pass)
+
+Today the build loop shipped item 352 (the holiday listing on `/sponsor/`
+with its early-bird countdown) and item 348 (the Halloween issue's fixed
+subject and lead block for Oct 28). Tonight's Oct 22 send hasn't run
+yet (scheduled sends start late, as usual). This pass reads the page
+most likely to rank for the head query, **`/this-weekend/`**, as a parent
+landing on it from search. It found that page doing almost nothing a
+first visit needs, plus one listing that breaks the site's
+nonpartisan rule. It also checks whether Buttondown can run a referral
+loop.
+
+| Angle | What it is / what we found | Why it matters here |
+|---|---|---|
+| **`/this-weekend/` on a phone (design/UX)** | Title *"Things to Do This Weekend in the Northwest Suburbs"*, 148 KB. Below the H1 it is **every dated event, town by town, in time order**, starting with *"Senior Center: Travelogue"*. **No top picks, no Halloween banner** (although Arlington Heights' Trunk or Treat is this Saturday), and the **signup sits at 91% of the page**, more than a hundred cards down. Every card repeats two links, *"Add to calendar"* and *"Google Calendar"*, which take about a fifth of each card's height | This page answers the head query (*"things to do this weekend"*) and is the one item 251's signup was meant to convert on. A visitor sees a long chronological list and no reason to come back. The homepage and the email already have good picking logic ("Don't miss", relevance ordering in `config/relevance.yaml`). This page doesn't use it (item 360) |
+| **Partisan meetings in library room-booking feeds** (`docs/events.json`) | The Des Plaines feed carries **"Indivisible Des Plaines"** (Fri Oct 23, 7:00–8:30 PM), whose description is *"Indivisible / nwprogressivedems@gmail.com"*, and it is on `/this-weekend/` with an "Indoor" badge. Illinois public libraries let community groups of any kind book meeting rooms, so their calendars carry **partisan political meetings** alongside storytimes. Nonpartisan civic items are there too (*"Early Voting · Gubernatorial Election"*) | Item 298 set the rule that election content stays **strictly nonpartisan**. A family site funded by local businesses of every leaning can't appear to promote one party's organising meeting, even by aggregation. The same calendar would carry the other side's meetings, and listing both still makes the site a political bulletin board. A filter keeps civic information (early voting, polling places, nonpartisan candidate forums) and drops partisan organising (item 361) |
+| **Buttondown subscriber referrals** (Buttondown changelog, June 2025; docs) | Buttondown supports **subscriber referral links**: when referrals are enabled, each subscriber sees a personal link and code in their Portal, and referrals are tracked. Current reward options and plan availability were not in what this search returned | A built-in referral loop needs no third-party script, which suits the site. But referrals compound from an existing list, and this list is one person. It's worth turning on once there are about 50 subscribers, with one footer line. **Parked with a trigger** (item 362) |
+
+#### P1 (new)
+
+360. **Make `/this-weekend/` work for a first visit: picks, season, signup
+     near the top.** Design/UX, `this_weekend.html.j2` and its builder:
+
+     - **Top of page, in this order:** (1) the seasonal banner when one
+       is live (the homepage's Halloween banner component, or the
+       holiday ones later), (2) **"This weekend's picks"**: the email's
+       "Don't miss" selection plus one per town, at most six cards, with
+       town chips, (3) the **compact signup** from item 345, *"Get this
+       list every Thursday."* Then the full town-by-town list as now.
+     - **Within each day,** order by the existing `weekend_display_key`
+       plus `config/relevance.yaml`'s family score (item 268), so
+       family events lead and untimed adult items don't open the list.
+     - **One calendar control per card:** a single *"Add to calendar"*
+       link to the `.ics`, with Google Calendar offered once in a small
+       note at the top (*"On Android? Use 'Add to Google Calendar' on
+       any event page"*), or as a second line shown only on hover/focus.
+       Pick whichever keeps the inline JS budget (item 307) unchanged.
+     - Keep the bottom signup.
+
+     Tests: the picks block appears before the first town heading, the
+     compact form appears within the first 15% of the HTML, there is one
+     calendar link per card, and the page weight drops (target under
+     120 KB).
+
+361. **Leave partisan organising meetings out; keep civic information.**
+     Build loop, `config/relevance.yaml` plus the filter step:
+
+     - Add an `exclude_partisan:` list matched whole-word,
+       case-insensitively, on **title and description**: party names
+       and their common forms (*Democratic Party, Democrats, Republican
+       Party, Republicans, GOP, Libertarian Party, Green Party*), and
+       partisan organising groups that appear in the feeds (*Indivisible,
+       progressive dems, Young Republicans, Young Democrats,
+       Turning Point*). Also exclude any listing whose description is
+       only a group name and a contact email for a campaign.
+     - **Do not exclude** nonpartisan civic items: early voting,
+       Election Day and polling-place notices, voter registration,
+       League of Women Voters events, and candidate forums hosted by the
+       library, village or a nonpartisan group.
+     - Log each exclusion in the build output with the source name, so a
+       wrong call is visible and fixable in YAML.
+
+     Tests: *"Indivisible Des Plaines"* is excluded, *"Early Voting"* and
+     a *"Candidate Forum"* hosted by the library stay, and the
+     exclusion applies to the page, the email and `events.json` alike.
+     State the rule in one sentence on the About page: *"We don't list
+     party or campaign meetings; we do list voting information."*
+
+#### Parked (new)
+
+362. **Buttondown subscriber referrals, once the list passes 50.** Then:
+     the owner enables referrals in Buttondown (Settings; check whether
+     the current plan includes it), and the build loop adds one footer
+     line to both emails, *"Know a neighbour who'd use this? Share your
+     link from your subscriber page →"*, linking to the Buttondown
+     Portal. No reward scheme to start with. **Trigger:** item 349's
+     subscriber count reaches 50, or item 266's snapshot shows it.
+
+Competitors reviewed this pass: **`/this-weekend/`, the site's own
+head-term landing page**, read on a phone; **library room-booking feeds
+as a source of partisan listings**; and **Buttondown's subscriber
+referrals** (exists; parked until there is a list to refer from). The
+design/UX angle is the weekend page, which buries its signup at 91% of
+the page.
 
 
 ## Working agreements for autonomous iteration
