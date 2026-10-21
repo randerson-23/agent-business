@@ -1,5 +1,5 @@
 {
- "fetched_at": "2026-10-21T06:02:44+00:00",
+ "fetched_at": "2026-10-21T14:01:43+00:00",
  "items": [
   {
    "date": "20261021T130000",
@@ -11,6 +11,12 @@
    "date": "20261028T183000",
    "detail": "https://www.wheelingil.gov/calendar.aspx?EID=1969",
    "title": "Plan Commission Meeting",
+   "url": "https://www.wheelingil.gov/common/modules/iCalendar/iCalendar.aspx?feed=calendar&catID=14"
+  },
+  {
+   "date": "20261031T150000",
+   "detail": "https://www.wheelingil.gov/calendar.aspx?EID=2232",
+   "title": "Halloween Trick or Treat Hours - 3pm to 7pm",
    "url": "https://www.wheelingil.gov/common/modules/iCalendar/iCalendar.aspx?feed=calendar&catID=14"
   },
   {
@@ -353,12 +359,6 @@
    "date": "20270802T183000",
    "detail": "https://www.wheelingil.gov/calendar.aspx?EID=2014",
    "title": "Village Board Regular Meeting",
-   "url": "https://www.wheelingil.gov/common/modules/iCalendar/iCalendar.aspx?feed=calendar&catID=14"
-  },
-  {
-   "date": "20270802T183000",
-   "detail": "https://www.wheelingil.gov/calendar.aspx?EID=2220",
-   "title": "Village Board Meeting",
    "url": "https://www.wheelingil.gov/common/modules/iCalendar/iCalendar.aspx?feed=calendar&catID=14"
   }
  ],

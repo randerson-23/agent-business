@@ -3,8 +3,8 @@
 <channel>
   <title>Within Ten — Upcoming events in Wheeling</title>
   <link>https://withintenmiles.com/</link>
-  <description>Upcoming events in Wheeling, soonest first - aggregated automatically from village, library, park district and school-district calendars. This build reached 20 of 29 configured sources. 4 sources are shown from their last update, up to 44 hours ago.</description>
-  <lastBuildDate>Wed, 21 Oct 2026 12:01:20 +0000</lastBuildDate>
+  <description>Upcoming events in Wheeling, soonest first - aggregated automatically from village, library, park district and school-district calendars. This build reached 20 of 29 configured sources. 4 sources are shown from their last update, up to 46 hours ago.</description>
+  <lastBuildDate>Wed, 21 Oct 2026 14:01:43 +0000</lastBuildDate>
   <item>
     <title>Wheeling: Read to Learn</title>
     <link>https://withintenmiles.com/wheeling-60090/#ev-read-to-learn-2026-10-21</link>
@@ -347,6 +347,14 @@ Honra a los seres queridos que han fallecido… Official listing: https://indian
     <source url="https://indiantrails.libnet.info/event/16663064">Indian Trails Public Library — Events</source>
   </item>
   <item>
+    <title>Wheeling: Halloween Trick or Treat Hours - 3pm to 7pm</title>
+    <link>https://withintenmiles.com/wheeling-60090/#ev-halloween-trick-or-treat-hours-3pm-to-7pm-2026-10-31</link>
+    <guid isPermaLink="true">https://withintenmiles.com/wheeling-60090/#ev-halloween-trick-or-treat-hours-3pm-to-7pm-2026-10-31</guid>
+    <description>https://www.wheelingil.gov/calendar.aspx?EID=2232 Official listing: https://www.wheelingil.gov/common/modules/iCalendar/iCalendar.aspx?feed=calendar&amp;catID=14</description>
+    <pubDate>Sat, 31 Oct 2026 15:00:00 +0000</pubDate>
+    <source url="https://www.wheelingil.gov/common/modules/iCalendar/iCalendar.aspx?feed=calendar&amp;catID=14">Village of Wheeling — Calendar</source>
+  </item>
+  <item>
     <title>Wheeling: Support Our Troops</title>
     <link>https://withintenmiles.com/wheeling-60090/#ev-support-our-troops-2026-11-01</link>
     <guid isPermaLink="true">https://withintenmiles.com/wheeling-60090/#ev-support-our-troops-2026-11-01</guid>
@@ -444,15 +452,6 @@ Complete and return a volunteer craft kit by the end of the month to count towar
  District 214 Read to Learn Adult Literacy Program. Official listing: https://indiantrails.libnet.info/event/11861203</description>
     <pubDate>Wed, 04 Nov 2026 09:00:00 +0000</pubDate>
     <source url="https://indiantrails.libnet.info/event/11861203">Indian Trails Public Library — Events</source>
-  </item>
-  <item>
-    <title>Wheeling: Knitting for Beginners</title>
-    <link>https://withintenmiles.com/wheeling-60090/#ev-knitting-for-beginners-2026-11-04</link>
-    <guid isPermaLink="true">https://withintenmiles.com/wheeling-60090/#ev-knitting-for-beginners-2026-11-04</guid>
-    <description>Wednesday, November 04 2026 1:00pm - 3:00pm 
- Learn the basic skills needed to start your knitting journey. Materials provided. R Official listing: https://indiantrails.libnet.info/event/17127794</description>
-    <pubDate>Wed, 04 Nov 2026 13:00:00 +0000</pubDate>
-    <source url="https://indiantrails.libnet.info/event/17127794">Indian Trails Public Library — Events</source>
   </item>
 </channel>
 </rss>

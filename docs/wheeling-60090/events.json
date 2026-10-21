@@ -2,8 +2,8 @@
   "@context": "https://schema.org",
   "@type": "ItemList",
   "name": "Upcoming events in Wheeling — Within Ten",
-  "dateModified": "2026-10-21T12:01:20+00:00",
-  "numberOfItems": 48,
+  "dateModified": "2026-10-21T14:01:43+00:00",
+  "numberOfItems": 49,
   "itemListElement": [
     {
       "@type": "ListItem",
@@ -884,6 +884,29 @@
       "position": 39,
       "item": {
         "@type": "Event",
+        "name": "Halloween Trick or Treat Hours - 3pm to 7pm",
+        "startDate": "2026-10-31T15:00:00-05:00",
+        "url": "https://withintenmiles.com/wheeling-60090/#ev-halloween-trick-or-treat-hours-3pm-to-7pm-2026-10-31",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Wheeling, IL",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Wheeling",
+            "addressRegion": "IL"
+          }
+        },
+        "sameAs": "https://www.wheelingil.gov/common/modules/iCalendar/iCalendar.aspx?feed=calendar&catID=14",
+        "description": "https://www.wheelingil.gov/calendar.aspx?EID=2232"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 40,
+      "item": {
+        "@type": "Event",
         "name": "Support Our Troops",
         "startDate": "2026-11-01",
         "url": "https://withintenmiles.com/wheeling-60090/#ev-support-our-troops-2026-11-01",
@@ -904,7 +927,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 40,
+      "position": 41,
       "item": {
         "@type": "Event",
         "name": "High School Volunteer Kits",
@@ -927,7 +950,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 41,
+      "position": 42,
       "item": {
         "@type": "Event",
         "name": "Stitch Together Meet-Up",
@@ -950,7 +973,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 42,
+      "position": 43,
       "item": {
         "@type": "Event",
         "name": "Tech Assistance / Assistencia de Tech",
@@ -973,7 +996,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 43,
+      "position": 44,
       "item": {
         "@type": "Event",
         "name": "Bookworms Book Club | Grades 4-5",
@@ -996,7 +1019,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 44,
+      "position": 45,
       "item": {
         "@type": "Event",
         "name": "Intro to Chinese Mahjong",
@@ -1019,7 +1042,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 45,
+      "position": 46,
       "item": {
         "@type": "Event",
         "name": "Village Board Regular Meeting",
@@ -1042,7 +1065,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 46,
+      "position": 47,
       "item": {
         "@type": "Event",
         "name": "Boba Tea Keychains",
@@ -1065,7 +1088,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 47,
+      "position": 48,
       "item": {
         "@type": "Event",
         "name": "Alcohol Ink Art",
@@ -1088,7 +1111,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 48,
+      "position": 49,
       "item": {
         "@type": "Event",
         "name": "Writers Workshop",
