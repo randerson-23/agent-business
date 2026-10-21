@@ -72,6 +72,9 @@ sources:
 
   - name: "Arlington Heights Memorial Library — Events"
     type: html_events
+    # ROADMAP.md item 354: venue-type override - indoors, never outdoor.
+    default_tags: ["indoor"]
+    veto_tags: ["outdoor"]
     url: "https://www.ahml.info/attend/events"
     # AHML runs a Drupal calendar (Views + Calendar module). Every real
     # event's title links to its modal detail view at
@@ -99,7 +102,9 @@ sources:
     # 14 (2026-10-13): 200, BEGIN:VCALENDAR, 21 events.
     url: "https://www.metropolisarts.com/events/?ical=1"
     section: "Arts & Culture"
-    default_tags: ["art_culture"]
+    default_tags: ["art_culture", "indoor"]
+    # ROADMAP.md item 354: venue-type override - indoors, never outdoor.
+    veto_tags: ["outdoor"]
     venue_name: "Metropolis Performing Arts Centre"
     enabled: true
 

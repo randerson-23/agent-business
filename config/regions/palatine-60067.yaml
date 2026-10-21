@@ -120,6 +120,9 @@ sources:
 
   - name: "Palatine Public Library District — Events"
     type: html_events
+    # ROADMAP.md item 354: venue-type override - indoors, never outdoor.
+    default_tags: ["indoor"]
+    veto_tags: ["outdoor"]
     # Confirmed live 2026-08-29 (see header note) - /events already
     # returns 6 real items via keyword fallback, one of which
     # (/events/upcoming?program_types[..]=..) points at a real filtered

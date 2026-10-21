@@ -97,12 +97,17 @@ sources:
     # 14 (2026-10-13): 200, BEGIN:VCALENDAR, 30 events.
     url: "https://desplainestheatre.com/events/?ical=1"
     section: "Arts & Culture"
-    default_tags: ["art_culture"]
+    default_tags: ["art_culture", "indoor"]
+    # ROADMAP.md item 354: venue-type override - indoors, never outdoor.
+    veto_tags: ["outdoor"]
     venue_name: "Des Plaines Theatre"
     enabled: true
 
   - name: "Des Plaines Public Library — Events"
     type: rss
+    # ROADMAP.md item 354: venue-type override - indoors, never outdoor.
+    default_tags: ["indoor"]
+    veto_tags: ["outdoor"]
     # ROADMAP.md items 213/215: calendar.dppl.org is Communico - the same
     # platform as the Mount Prospect and Indian Trails library feeds - not
     # LibCal as item 182 assumed. Found by the URL-probe workflow (round 3

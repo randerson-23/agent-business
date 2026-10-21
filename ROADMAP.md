@@ -220,7 +220,7 @@ doesn't re-suggest something already shipped.
 
 **Build queue (by deadline; refreshed by the research loop, item 346).**
 Pick from the top unless the owner has flagged something else:
-0. **354, 355** (wrong Outdoor badges and a repeated event; before the Oct 22 send if possible). **348** (the Halloween issue, before Oct 28). Then **352** (the holiday listing on /sponsor/, by Oct 23; early-bird ends Nov 15) and **351** (the sponsor page's proof box).
+0. **348** (the Halloween issue, before Oct 28). Then **352** (the holiday listing on /sponsor/, by Oct 23; early-bird ends Nov 15) and **351** (the sponsor page's proof box).
 1. **306**: the OpenStreetMap prospect list (by Oct 25).
 2. **323**: leaf pickup (in season now).
 3. **313, 314**: the sales mock-up and starter pack (before outreach).
@@ -17248,7 +17248,7 @@ local-group channel for Halloween.
 
 #### P1 (new)
 
-354. **Fix the "Outdoor" badge's substring false positives.** Build loop,
+354. ✅ **DONE (2026-10-21): bare "park" no longer tags Outdoor (a regex needs "park" as its own word and not followed by district, ridge, avenue, street and similar; "parker", "parking" and "parkway" never match); `infer_tags` takes the source's section as a keyword that feeds every tag except Outdoor, so "Park District Events" no longer tags every park-district event; per-source `veto_tags: ["outdoor"]` plus `default_tags` `indoor` on the five libraries, the Des Plaines Theatre and Metropolis; tests for the four example titles and the section rule. A sandbox build now shows Outdoor on 3 of 109 Des Plaines cards and 1 of 117 Palatine cards. The `venues:` table (item 335) is not built, so the override lives on the source.** **Fix the "Outdoor" badge's substring false positives.** Build loop,
      `tagging.py`, same pattern as items 333 and the older "art", "hall"
      and "pup" fixes:
 
@@ -17270,7 +17270,7 @@ local-group channel for Halloween.
        district is not outdoor, *"Pumpkin Splash at Melas Park"* is,
        and *"Concert in the Park"* still is.
 
-355. **Never show one event twice in the email's top blocks.** Build
+355. ✅ **DONE (2026-10-21): Night out skips anything chosen for Don't miss, Rain plan skips both, and Sign-ups skip all three (by link), in that fixed order; an emptied block is omitted; tests.** **Never show one event twice in the email's top blocks.** Build
      loop, the `pick_*` helpers. Pick in a fixed order: **Don't miss →
      Night out → Rain plan → Sign-ups**. Each later block skips any
      event an earlier block already chose and takes the next candidate.

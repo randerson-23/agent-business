@@ -92,6 +92,9 @@ sources:
 
   - name: "Indian Trails Public Library — Events"
     type: rss
+    # ROADMAP.md item 354: venue-type override - indoors, never outdoor.
+    default_tags: ["indoor"]
+    veto_tags: ["outdoor"]
     # ROADMAP.md item 182: Indian Trails runs the same Communico/libnet.info
     # platform as Mount Prospect Public Library - confirmed by WebSearch
     # (indiantrails.libnet.info/events, "Events - Indian Trails Public
