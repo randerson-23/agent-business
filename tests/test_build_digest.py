@@ -6142,3 +6142,31 @@ def test_holiday_listing_tier_shows_in_its_window_with_a_countdown_and_a_safe_ex
     real = build_digest.format_holiday_listing({"name": "Real Shop", "url": "https://real.example/", "category": "Gifts", "line": "Sale."})
     assert set(real) == set(build_digest.SAMPLE_HOLIDAY_LISTING) and "Your Shop Name" in inside
     assert "Your Shop Name" not in build_digest.build_events_json([("R", "https://x/r/", [])], "n", at(11, 20))
+
+
+def test_halloween_weekend_issue_has_a_fixed_subject_and_a_richer_lead_block():
+    # ROADMAP.md item 348.
+    sections = _join_sections()
+    halloween = {"weekday": "Saturday", "countdown": "3 days to go", "towns": [
+        {"name": "Mount Prospect", "hours": "3–8 PM", "qualifier": "standing"}, {"name": "Palatine", "hours": "3–7 PM", "qualifier": None}]}
+    night = {"weekday": "Saturday", "temp": 52, "rain": 20, "sunset": "5:49 PM"}
+    trunk = {"region_name": "Palatine", "events": [
+        {"title": "Fire Dept Trunk-or-Treat", "url": "https://x/t", "date_iso": "2026-10-31T16:00:00"},
+        {"title": "Trunk or Treat Sunday", "url": "https://x/u", "date_iso": "2026-11-01T14:00:00"},
+        {"title": "Trunk-or-Treat Last Week", "url": "https://x/v", "date_iso": "2026-10-24T14:00:00"}]}
+    wed = datetime(2026, 10, 28, 15, tzinfo=timezone.utc)
+    extras = build_digest.build_halloween_issue_extras([trunk], wed, night)
+    assert extras["night_line"] == "Halloween night, Saturday 3–8 PM: 52°F, 20% rain. Sunset 5:49 PM: bring a light."
+    assert [t["title"] for t in extras["trunks"]] == ["Fire Dept Trunk-or-Treat", "Trunk or Treat Sunday"]  # the weekend's only
+    assert build_digest.build_halloween_issue_extras([trunk], wed, None)["night_line"] is None
+    html = build_digest.render_combined_email_digest(sections, "Oct 30–Nov 1", wed, None, halloween=halloween, halloween_extras=extras)
+    assert "<title>Trick-or-treat hours, all two towns, plus Halloween weekend" in html or "Trick-or-treat hours, all" in html
+    assert "Mount Prospect 3–8 PM (standing)" in html and "bring a light." in html and "Trunk-or-treats this weekend" in html
+    assert len(html.encode("utf-8")) < 102_000
+    # An ordinary week keeps its event-led subject and shows none of it.
+    plain = build_digest.render_combined_email_digest(sections, "Oct 23–25", datetime(2026, 10, 21, 15, tzinfo=timezone.utc), None, halloween=halloween, halloween_extras=extras)
+    assert "plus Halloween weekend" not in plain and "Trunk-or-treats this weekend" not in plain
+    five = [dict(sections[0], region_name=f"T{i}") for i in range(5)]
+    assert build_digest.build_combined_email_subject_line(five, wed) == "Trick-or-treat hours, all five towns, plus Halloween weekend"
+    assert len(build_digest.build_combined_email_subject_line(five, wed)) <= build_digest.SUBJECT_MAX_LEN
+    assert "Halloween" not in build_digest.build_combined_email_subject_line(five, datetime(2026, 10, 21, 15, tzinfo=timezone.utc))

@@ -152,6 +152,8 @@ This weekend, across the northwest suburbs
 <td bgcolor="#fff4d6" class="wt-pick" style="background-color:#fff4d6; border:2px solid {{ hero_bg }}; border-radius:14px; padding:16px 18px; font-family:Arial, Helvetica, sans-serif;">
 <div style="font-size:13px; font-weight:bold; letter-spacing:1.5px; color:#ae1800; padding-bottom:8px;">{{ edition_block.title|upper }}</div>
 <div style="font-size:15px; line-height:2.1; color:#201e1d;">{% for pill in edition_block.pills %}<span style="display:inline-block; background-color:#fffefc; border:1px solid {{ hero_bg }}; border-radius:999px; padding:1px 10px; margin:0 6px 4px 0; white-space:nowrap;">{{ pill }}</span>{% endfor %}</div>
+{% if edition_block.night_line %}<div style="padding-top:8px; font-size:16px;">🌙 {{ edition_block.night_line }}</div>{% endif %}
+{% if edition_block.trunks %}<div style="padding-top:8px; font-size:16px;"><strong>Trunk-or-treats this weekend</strong>{% for t in edition_block.trunks %}<div style="padding-top:2px;">{{ t.when }} &nbsp;·&nbsp; {{ t.town }} &nbsp;·&nbsp; {% if t.url %}<a href="{{ t.url }}" class="wt-brand" style="color:#ae1800;">{{ t.title|display_title }}</a>{% else %}{{ t.title|display_title }}{% endif %}</div>{% endfor %}</div>{% endif %}
 <div style="padding-top:8px; font-size:16px; font-weight:bold;"><a href="{{ edition_block.link }}" class="wt-brand" style="color:#ae1800; text-decoration:underline;">{{ edition_block.link_label }}</a></div>
 </td>
 </tr>
