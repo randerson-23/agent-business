@@ -4908,7 +4908,35 @@ def load_relevance_config() -> dict:
     boost = [str(t) for t in data.get("boost_tags") or []]
     words = [str(w).lower() for w in data.get("adult_title_keywords") or []]
     pattern = re.compile(r"(?<!\w)(?:" + "|".join(re.escape(w) for w in words) + r")(?!\w)", re.I) if words else None
-    return {"boost_tags": boost, "adult_pattern": pattern}
+    def phrases(key: str):
+        items = [str(w).lower() for w in data.get(key) or []]
+        return re.compile(r"(?<!\w)(?:" + "|".join(re.escape(w) for w in items) + r")(?!\w)", re.I) if items else None
+
+    return {"boost_tags": boost, "adult_pattern": pattern, "partisan_pattern": phrases("exclude_partisan"), "civic_pattern": phrases("keep_civic")}
+
+
+def filter_partisan_events(blocks: list[dict], config: dict | None = None) -> tuple[list[dict], list[dict]]:
+    """ROADMAP.md item 361: drop party and campaign meetings from a region's
+    fetched blocks (matched whole-word on title and description), keeping
+    civic information - an event that also matches a `keep_civic` phrase
+    stays. Returns (blocks, the excluded events); every exclusion is logged
+    with its source so a wrong call is visible and fixable in the YAML."""
+    config = config if config is not None else load_relevance_config()
+    partisan, civic = config.get("partisan_pattern"), config.get("civic_pattern")
+    if partisan is None:
+        return blocks, []
+    kept_blocks, excluded = [], []
+    for block in blocks:
+        kept = []
+        for event in block["events"]:
+            text = f"{event.get('title') or ''}. {event.get('detail') or ''}"
+            if partisan.search(text) and not (civic and civic.search(text)):
+                excluded.append(event)
+                logger.info("Excluded partisan listing %r from %s", event.get("title"), event.get("source") or block.get("section"))
+            else:
+                kept.append(event)
+        kept_blocks.append({**block, "events": kept})
+    return kept_blocks, excluded
 
 
 CELEBRATIONS_PATH = CONFIG_DIR / "celebrations.yaml"
@@ -6219,6 +6247,7 @@ def main() -> None:
         # every date-scoped view all read from this same list, so
         # filtering here once is what keeps them all honest instead of
         # re-filtering (or forgetting to) in each one separately.
+        blocks, _partisan_excluded = filter_partisan_events(blocks)
         blocks = filter_past_events(blocks, local_today)
         annotate_registration(blocks, local_today)
         # ROADMAP.md item 173: same single-insertion-point reasoning as

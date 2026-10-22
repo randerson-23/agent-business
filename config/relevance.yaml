@@ -30,3 +30,34 @@ adult_title_keywords:
   - adults only
   - senior
   - seniors
+
+# ROADMAP.md item 361: party and campaign meetings are left out of every list;
+# civic information (voting, forums, registration) stays. Matched whole-word,
+# case-insensitively, on title and description. An event that also matches a
+# `keep_civic` phrase is kept (a library candidate forum may name both
+# parties). Each exclusion is logged with its source, so a wrong call is a
+# one-line fix here.
+exclude_partisan:
+  - democratic party
+  - democrats
+  - republican party
+  - republicans
+  - gop
+  - libertarian party
+  - green party
+  - indivisible
+  - progressive dems
+  - young republicans
+  - young democrats
+  - turning point
+
+keep_civic:
+  - early voting
+  - election day
+  - polling place
+  - polling location
+  - voter registration
+  - register to vote
+  - league of women voters
+  - candidate forum
+  - candidates forum
