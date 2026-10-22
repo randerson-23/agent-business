@@ -4860,13 +4860,27 @@ def _issue(date="2026-10-15", body="<p>Fall Fest</p>"):
     return {"date": date, "subject": "Your Thursday guide", "html": html}
 
 
-def test_render_issue_page_strips_preheader_adds_canonical_and_keeps_content():
-    # ROADMAP.md item 280.
-    page = build_digest.render_issue_page(_issue())
-    assert "hidden preheader" not in page
-    assert f'<link rel="canonical" href="{build_digest.SITE_BASE_URL}issues/2026-10-15/">' in page
-    assert "<p>Fall Fest</p>" in page
-    assert "Archived issue, sent October 15, 2026" in page
+def test_render_issue_page_wraps_the_frozen_email_with_a_banner_title_h1_and_one_signup():
+    # ROADMAP.md items 280 and 357.
+    body = '<p>Fall Fest</p><div>DON\'T MISS</div><a href="x" style="font-size:19px; color:#000;">Harmony Fest</a><a href="y" style="font-size:19px;">Pumpkin Run</a>'
+    newsletter = {"configured": True, "buttondown_username": "withinten", "headline": "Get it"}
+    page = build_digest.render_issue_page(
+        _issue(body=body), newer={"date": "2026-10-22"}, older={"date": "2026-10-08"}, newsletter=newsletter,
+        town_names=["Wheeling", "Arlington Heights", "Des Plaines", "Mount Prospect", "Palatine"],
+    )
+    base = build_digest.SITE_BASE_URL
+    assert "hidden preheader" not in page  # the preheader is stripped
+    assert f'<link rel="canonical" href="{base}issues/2026-10-15/">' in page
+    assert f'href="{base}this-weekend/">See this weekend&#39;s events' in page or "See this weekend's events" in page
+    assert "<title>Things to do Oct 16–18, 2026 in Arlington Heights, Des Plaines, Mount Prospect, Palatine &amp; Wheeling | Within Ten</title>" in page
+    assert "<h1>Weekend of Oct 16–18, 2026</h1>" in page and "This is the Oct 15, 2026 issue." in page
+    assert 'name="description" content="The Within Ten issue of Oct 15, 2026: Harmony Fest and Pumpkin Run.' in page
+    assert "&lt;p&gt;Fall Fest&lt;/p&gt;" in page and "&lt;base target=&#34;_top&#34;&gt;" in page  # the email, frozen, inside the iframe
+    assert page.count("embed-subscribe") == 1 and page.count('id="newsletter-signup"') == 1
+    assert f"{base}issues/2026-10-22/" in page and f"{base}issues/2026-10-08/" in page
+    alone = build_digest.render_issue_page(_issue())
+    assert "Previous issue" not in alone and "Next issue" not in alone and "embed-subscribe" not in alone
+    assert "Things to do Oct 16–18, 2026 in the northwest suburbs | Within Ten" in alone
 
 
 def test_load_issues_newest_first_and_ignores_other_files(tmp_path):

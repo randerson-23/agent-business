@@ -1885,26 +1885,56 @@ def load_issues(directory: Path | None = None) -> list[dict]:
     return issues
 
 
-def render_issue_page(issue: dict, newer: dict | None = None, older: dict | None = None) -> str:
-    """One archived issue as a page on this site: the sent HTML with its
-    hidden preheader removed, a self-canonical, and a small header bar. The
-    dated content is left exactly as sent."""
+_ISSUE_PICK = re.compile(r"font-size:19px[^>]*>([^<]+)</a>")
+
+
+def issue_picks(html: str, limit: int = 3) -> list[str]:
+    """Event titles from an archived issue's "Don't miss" block, for its meta
+    description (ROADMAP.md item 357). [] when the block is absent."""
+    start = html.find("DON'T MISS")
+    if start < 0:
+        return []
+    return [unescape(m).strip() for m in _ISSUE_PICK.findall(html[start:])][:limit]
+
+
+def render_issue_page(
+    issue: dict, newer: dict | None = None, older: dict | None = None, newsletter: dict | None = None,
+    analytics: dict | None = None, town_names: list[str] | None = None,
+) -> str:
+    """One archived issue as a page on this site (ROADMAP.md items 280, 357):
+    the current site wrapper - header, a banner pointing at this weekend's
+    events, an H1 naming the weekend, the signup - around the email frozen as
+    it was sent (preheader removed, shown in an iframe, links opening the
+    top window). Self-canonical and indexable: a real sample of the product."""
     html = _PREHEADER.sub("", issue["html"], count=1)
-    canonical = f"{SITE_BASE_URL}issues/{issue['date']}/"
-    html = html.replace("</head>", f'<link rel="canonical" href="{canonical}">\n</head>', 1)
-    label = datetime.strptime(issue["date"], "%Y-%m-%d").strftime("%B %-d, %Y")
-    bar = (
-        '<div style="font-family:Arial,Helvetica,sans-serif;font-size:14px;text-align:center;padding:10px 16px;background:#f6f1ea;color:#201e1d;">'
-        f'Archived issue, sent {label}. <a href="{SITE_BASE_URL}issues/" style="color:#ae1800;">All issues</a> · '
-        f'<a href="{SITE_BASE_URL}join/" style="color:#ae1800;">Get it by email every Thursday</a>'
-        + "".join(
-            f' · <a href="{SITE_BASE_URL}issues/{other["date"]}/" style="color:#ae1800;">{word} issue</a>'
-            for word, other in (("Previous", older), ("Next", newer))
-            if other
-        )
-        + "</div>"
+    html = html.replace("<head>", '<head><base target="_top">', 1) if "<head>" in html else '<base target="_top">' + html
+    issue_day = datetime.strptime(issue["date"], "%Y-%m-%d").date()
+    friday, _saturday, sunday = weekend_dates(issue_day)
+    weekend = format_date_range(friday, sunday)
+    year = sunday.year
+    issue_label = issue_day.strftime("%b ") + f"{issue_day.day}, {issue_day.year}"
+    names = town_names or []
+    names = sorted(names)
+    towns = (", ".join(names[:-1]) + " & " + names[-1] if len(names) > 1 else names[0]) if names else "the northwest suburbs"
+    picks = issue_picks(issue["html"])
+    description = (
+        f"The Within Ten issue of {issue_label}: " + _join_names(picks) + f". What was on in {towns}, from each town's own calendar."
+        if picks else f"The Within Ten issue of {issue_label}: {issue.get('subject', '')}. What was on in {towns}, from each town's own calendar."
     )
-    return re.sub(r"(<body[^>]*>)", lambda m: m.group(1) + "\n" + bar, html, count=1)
+    return get_template_env().get_template("issue.html.j2").render(
+        page_title=f"Things to do {weekend}, {year} in {towns} | Within Ten",
+        description=description,
+        heading=f"Weekend of {weekend}, {year}",
+        issue_label=issue_label,
+        frozen_html=html,
+        canonical_url=f"{SITE_BASE_URL}issues/{issue['date']}/",
+        hub_url=SITE_BASE_URL,
+        newer=newer,
+        older=older,
+        newsletter=newsletter or {"configured": False},
+        analytics=analytics,
+        og_image_url=SITE_BASE_URL + "og/default.png",
+    )
 
 
 def render_issues_index(issues: list[dict], now: datetime, analytics: dict | None = None) -> str:
@@ -6880,7 +6910,10 @@ def main() -> None:
         issue_dir = OUTPUT_DIR / "issues" / issue["date"]
         issue_dir.mkdir(parents=True, exist_ok=True)
         (issue_dir / "index.html").write_text(
-            render_issue_page(issue, newer=issues[i - 1] if i > 0 else None, older=issues[i + 1] if i + 1 < len(issues) else None),
+            render_issue_page(
+                issue, newer=issues[i - 1] if i > 0 else None, older=issues[i + 1] if i + 1 < len(issues) else None,
+                newsletter=newsletter, analytics=analytics, town_names=[r["name"] for r in region_summaries],
+            ),
             encoding="utf-8",
         )
     if issues:
