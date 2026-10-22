@@ -6170,3 +6170,25 @@ def test_halloween_weekend_issue_has_a_fixed_subject_and_a_richer_lead_block():
     assert build_digest.build_combined_email_subject_line(five, wed) == "Trick-or-treat hours, all five towns, plus Halloween weekend"
     assert len(build_digest.build_combined_email_subject_line(five, wed)) <= build_digest.SUBJECT_MAX_LEN
     assert "Halloween" not in build_digest.build_combined_email_subject_line(five, datetime(2026, 10, 21, 15, tzinfo=timezone.utc))
+
+
+def test_partisan_meetings_are_excluded_and_civic_information_stays():
+    # ROADMAP.md item 361.
+    def ev(title, detail="", source="Library"):
+        return {"title": title, "detail": detail, "source": source, "url": "https://x/" + title}
+    blocks = [{"section": "S", "events": [
+        ev("Indivisible Des Plaines", "Monthly meeting. Contact: group@example.org"),
+        ev("Early Voting", "Vote early at the Village Hall."),
+        ev("Candidate Forum", "Hosted by the library; Democrats and Republicans on the ballot will answer questions."),
+        ev("Young Republicans Social"),
+        ev("Monthly meeting", "Open to GOP supporters."),
+        ev("Storytime", "Songs and a Democratic-style vote on the next book."),  # not a whole-word party name
+        ev("League of Women Voters Forum"),
+        ev("Gopher Gardening", "Not the GOP"),
+    ]}]
+    kept, excluded = build_digest.filter_partisan_events(blocks)
+    assert {e["title"] for e in excluded} == {"Indivisible Des Plaines", "Young Republicans Social", "Monthly meeting", "Gopher Gardening"}
+    titles = [e["title"] for e in kept[0]["events"]]
+    assert titles == ["Early Voting", "Candidate Forum", "Storytime", "League of Women Voters Forum"]
+    about = build_digest.render_about_page(datetime(2026, 10, 22, tzinfo=timezone.utc), None)
+    assert "We don't list party or campaign meetings; we do list voting information." in about.replace("&#39;", "'")

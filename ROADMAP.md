@@ -220,7 +220,7 @@ doesn't re-suggest something already shipped.
 
 **Build queue (by deadline; refreshed by the research loop, item 346).**
 Pick from the top unless the owner has flagged something else:
-0. **361** (partisan listings out; the Indivisible meeting is live on /this-weekend/ now). **357** (wrap archived issues; Google now crawls them). **360** (/this-weekend/ picks and signup near the top). Then **351** (the sponsor page's proof box).
+0. **357** (wrap archived issues; Google now crawls them). **360** (/this-weekend/ picks and signup near the top). Then **351** (the sponsor page's proof box).
 1. **306**: the OpenStreetMap prospect list (by Oct 25).
 2. **323**: leaf pickup (in season now).
 3. **313, 314**: the sales mock-up and starter pack (before outreach).
@@ -17442,7 +17442,7 @@ loop.
      calendar link per card, and the page weight drops (target under
      120 KB).
 
-361. **Leave partisan organising meetings out; keep civic information.**
+361. ✅ **DONE (2026-10-22): `exclude_partisan` (party names, GOP and the organising groups named in the item) and a `keep_civic` safety list (early voting, election day, polling place, voter registration, League of Women Voters, candidate forums) in `config/relevance.yaml`; `filter_partisan_events` runs on each town's fetched events before anything downstream, so the page, email, `events.json` and feeds all drop them, and logs each exclusion with its source (the live "Indivisible Des Plaines" listing is excluded in a sandbox build); an "We don't list party or campaign meetings; we do list voting information." line on the About page; tests. Not built: the item's "only a group name and a contact email" rule, which cannot be told apart from a civic listing without guessing.** **Leave partisan organising meetings out; keep civic information.**
      Build loop, `config/relevance.yaml` plus the filter step:
 
      - Add an `exclude_partisan:` list matched whole-word,
