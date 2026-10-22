@@ -220,7 +220,7 @@ doesn't re-suggest something already shipped.
 
 **Build queue (by deadline; refreshed by the research loop, item 346).**
 Pick from the top unless the owner has flagged something else:
-0. **357** (wrap archived issues; Google now crawls them). **360** (/this-weekend/ picks and signup near the top). Then **351** (the sponsor page's proof box).
+0. **360** (/this-weekend/ picks and signup near the top). Then **351** (the sponsor page's proof box).
 1. **306**: the OpenStreetMap prospect list (by Oct 25).
 2. **323**: leaf pickup (in season now).
 3. **313, 314**: the sales mock-up and starter pack (before outreach).
@@ -17344,7 +17344,7 @@ linked from the homepage, as a search visitor would land on it.
 
 #### P1 (new)
 
-357. **Wrap each archived issue as a site page that points forward.**
+357. ✅ **DONE (2026-10-22): `/issues/<date>/` is the site wrapper (header, a "This is the Oct 15, 2026 issue. See this weekend's events →" banner to `/this-weekend/`, an H1 "Weekend of Oct 16–18, 2026", previous/next links, the signup with `utm_campaign=archive`) around the email frozen as sent, in a sandboxed `<iframe srcdoc>` that resizes itself and opens links in the top window; title "Things to do Oct 16–18, 2026 in Arlington Heights, Des Plaines, Mount Prospect, Palatine & Wheeling | Within Ten"; meta description names up to three of the issue's own Don't-miss picks; self-canonical and indexable; the weekend is derived from the issue date. Tests: banner, title, H1, one signup, frozen content; the depth check and inline JS budget still pass. Checked in a headless 700px screenshot.** **Wrap each archived issue as a site page that points forward.**
      Build loop, the `/issues/` writer:
 
      - Render each archived issue **inside a site page template**: the
