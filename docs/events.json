@@ -2,7 +2,7 @@
   "@context": "https://schema.org",
   "@type": "ItemList",
   "name": "Upcoming events across every region — Within Ten",
-  "dateModified": "2026-10-22T06:00:24+00:00",
+  "dateModified": "2026-10-22T12:04:26+00:00",
   "numberOfItems": 240,
   "itemListElement": [
     {
@@ -399,9 +399,9 @@
       "position": 18,
       "item": {
         "@type": "Event",
-        "name": "Education Foundation Meeting",
+        "name": "Education Foundation Meeting - Room 14 at MP Library",
         "startDate": "2026-10-22T16:30:00-05:00",
-        "url": "https://withintenmiles.com/mount-prospect-60056/#ev-education-foundation-meeting-2026-10-22",
+        "url": "https://withintenmiles.com/mount-prospect-60056/#ev-education-foundation-meeting-room-14-at-mp-library-2026-10-22",
         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
         "location": {
           "@type": "Place",
