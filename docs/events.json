@@ -2,8 +2,8 @@
   "@context": "https://schema.org",
   "@type": "ItemList",
   "name": "Upcoming events across every region — Within Ten",
-  "dateModified": "2026-10-22T12:04:26+00:00",
-  "numberOfItems": 240,
+  "dateModified": "2026-10-22T14:05:37+00:00",
+  "numberOfItems": 238,
   "itemListElement": [
     {
       "@type": "ListItem",
@@ -3128,9 +3128,9 @@
       "position": 137,
       "item": {
         "@type": "Event",
-        "name": "Plan Commission Meeting",
+        "name": "Plan Commission Meeting - NOTICE OF CANCELLATION",
         "startDate": "2026-10-28T18:30:00-05:00",
-        "url": "https://withintenmiles.com/wheeling-60090/#ev-plan-commission-meeting-2026-10-28",
+        "url": "https://withintenmiles.com/wheeling-60090/#ev-plan-commission-meeting-notice-of-cancellation-2026-10-28",
         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
         "location": {
           "@type": "Place",
@@ -3221,29 +3221,6 @@
       "position": 141,
       "item": {
         "@type": "Event",
-        "name": "BOURBON 'N BRASS SPEAKEASY: THE BOURBON 'N BRASS TRIO with JAZZ SAXOPHONIST ERIC SCHNEIDER",
-        "startDate": "2026-10-28T19:30:00-05:00",
-        "url": "https://withintenmiles.com/des-plaines-60016/#ev-bourbon-n-brass-speakeasy-the-bourbon-n-brass-trio-with-jazz-2026-10-28",
-        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "location": {
-          "@type": "Place",
-          "name": "Des Plaines Theatre",
-          "address": {
-            "@type": "PostalAddress",
-            "addressCountry": "US",
-            "addressLocality": "Des Plaines",
-            "addressRegion": "IL"
-          }
-        },
-        "sameAs": "https://desplainestheatre.com/event/bourbon-n-brass-speakeasy-the-bourbon-n-brass-trio-with-jazz-saxophonist-eric-schneider-14/",
-        "description": "Join us in our intimate Bourbon ‘N Brass Speakeasy, located on the 2nd floor of the Des Plaines Theatre, for an evening of Jazz with the Bourbon ‘N Brass Trio…"
-      }
-    },
-    {
-      "@type": "ListItem",
-      "position": 142,
-      "item": {
-        "@type": "Event",
         "name": "Toddler Time",
         "startDate": "2026-10-29",
         "url": "https://withintenmiles.com/arlington-heights-60005/#ev-toddler-time-2026-10-29",
@@ -3263,7 +3240,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 143,
+      "position": 142,
       "item": {
         "@type": "Event",
         "name": "Wicked Good Writing Contest",
@@ -3286,7 +3263,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 144,
+      "position": 143,
       "item": {
         "@type": "Event",
         "name": "Early Voting",
@@ -3309,7 +3286,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 145,
+      "position": 144,
       "item": {
         "@type": "Event",
         "name": "Reading/Literacy Class",
@@ -3332,7 +3309,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 146,
+      "position": 145,
       "item": {
         "@type": "Event",
         "name": "ESL (English as a Second Language) Class - Oakton College",
@@ -3355,7 +3332,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 147,
+      "position": 146,
       "item": {
         "@type": "Event",
         "name": "Chat & Play Cafe",
@@ -3378,7 +3355,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 148,
+      "position": 147,
       "item": {
         "@type": "Event",
         "name": "Playgroup for Language Development",
@@ -3401,7 +3378,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 149,
+      "position": 148,
       "item": {
         "@type": "Event",
         "name": "Halloween Storytime",
@@ -3424,7 +3401,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 150,
+      "position": 149,
       "item": {
         "@type": "Event",
         "name": "Book a Teen Librarian",
@@ -3447,7 +3424,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 151,
+      "position": 150,
       "item": {
         "@type": "Event",
         "name": "Pirate Pete's Trick-or-Treat Festival Returns",
@@ -3471,7 +3448,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 152,
+      "position": 151,
       "item": {
         "@type": "Event",
         "name": "Tech Playground",
@@ -3494,7 +3471,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 153,
+      "position": 152,
       "item": {
         "@type": "Event",
         "name": "MPAC Spanish Virtual Parent Presentation - Program Descriptions",
@@ -3516,7 +3493,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 154,
+      "position": 153,
       "item": {
         "@type": "Event",
         "name": "Monogrammed Tote Bags",
@@ -3539,7 +3516,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 155,
+      "position": 154,
       "item": {
         "@type": "Event",
         "name": "Fall for Autumn Crafts",
@@ -3562,7 +3539,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 156,
+      "position": 155,
       "item": {
         "@type": "Event",
         "name": "WORLD PREMIERE FILM SCREENING: YAKUZA PLAYS \"THE GOLEM\" - A CONCERT FILM",
@@ -3585,7 +3562,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 157,
+      "position": 156,
       "item": {
         "@type": "Event",
         "name": "Mont Clare Condo Assoc.",
@@ -3608,7 +3585,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 158,
+      "position": 157,
       "item": {
         "@type": "Event",
         "name": "Sailing Bright Eternity",
@@ -3631,7 +3608,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 159,
+      "position": 158,
       "item": {
         "@type": "Event",
         "name": "High School Book Club | Grades 9-12",
@@ -3654,7 +3631,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 160,
+      "position": 159,
       "item": {
         "@type": "Event",
         "name": "Frightening Fics Book Discussion",
@@ -3677,7 +3654,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 161,
+      "position": 160,
       "item": {
         "@type": "Event",
         "name": "BOURBON 'N BRASS: LIVE BLUES SHOW WITH MILES MINOR \"ROCKIN THE BLUES\"",
@@ -3700,7 +3677,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 162,
+      "position": 161,
       "item": {
         "@type": "Event",
         "name": "Senior Center: Travelogue",
@@ -3722,7 +3699,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 163,
+      "position": 162,
       "item": {
         "@type": "Event",
         "name": "The Rock N' Horror Halloween Concert",
@@ -3745,7 +3722,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 164,
+      "position": 163,
       "item": {
         "@type": "Event",
         "name": "Wicked Good Writing Contest",
@@ -3768,7 +3745,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 165,
+      "position": 164,
       "item": {
         "@type": "Event",
         "name": "Early Voting",
@@ -3791,7 +3768,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 166,
+      "position": 165,
       "item": {
         "@type": "Event",
         "name": "Baby Book Time",
@@ -3814,7 +3791,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 167,
+      "position": 166,
       "item": {
         "@type": "Event",
         "name": "Spooktacular Storytime",
@@ -3837,7 +3814,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 168,
+      "position": 167,
       "item": {
         "@type": "Event",
         "name": "Halloween Party in the Commons",
@@ -3860,7 +3837,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 169,
+      "position": 168,
       "item": {
         "@type": "Event",
         "name": "Calavera Creations",
@@ -3883,7 +3860,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 170,
+      "position": 169,
       "item": {
         "@type": "Event",
         "name": "Craft for The Day of The Dead | At the Branch",
@@ -3906,7 +3883,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 171,
+      "position": 170,
       "item": {
         "@type": "Event",
         "name": "BOURBON 'N BRASS: LIVE DELTA BLUES WITH THE DOWNTOWN CHARLIE BROWN DUO, DONNA HERULA & FRIENDS",
@@ -3929,7 +3906,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 172,
+      "position": 171,
       "item": {
         "@type": "Event",
         "name": "Beginning ESL",
@@ -3951,7 +3928,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 173,
+      "position": 172,
       "item": {
         "@type": "Event",
         "name": "Early Voting",
@@ -3974,7 +3951,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 174,
+      "position": 173,
       "item": {
         "@type": "Event",
         "name": "Digitizing VHS Tapes",
@@ -3997,7 +3974,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 175,
+      "position": 174,
       "item": {
         "@type": "Event",
         "name": "Dia de Los Muertos with Mariachi Sirenas",
@@ -4020,7 +3997,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 176,
+      "position": 175,
       "item": {
         "@type": "Event",
         "name": "Village Trick-or-Treating Hours",
@@ -4043,7 +4020,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 177,
+      "position": 176,
       "item": {
         "@type": "Event",
         "name": "Halloween Trick or Treat Hours - 3pm to 7pm",
@@ -4066,7 +4043,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 178,
+      "position": 177,
       "item": {
         "@type": "Event",
         "name": "THE VAMPIRE CIRCUS: TIM BURTON meets CIRQUE DU SOLEIL",
@@ -4089,7 +4066,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 179,
+      "position": 178,
       "item": {
         "@type": "Event",
         "name": "BOURBON 'N BRASS SPEAKEASY: LIVE \"Halloween\" JAZZ with THE BOURBON 'N BRASS PROHIBITION BAND",
@@ -4112,7 +4089,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 180,
+      "position": 179,
       "item": {
         "@type": "Event",
         "name": "Adult BookFix: Complicated Relationships",
@@ -4135,7 +4112,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 181,
+      "position": 180,
       "item": {
         "@type": "Event",
         "name": "Support Our Troops",
@@ -4158,7 +4135,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 182,
+      "position": 181,
       "item": {
         "@type": "Event",
         "name": "St. Philip's Episcopal Church Open House",
@@ -4181,7 +4158,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 183,
+      "position": 182,
       "item": {
         "@type": "Event",
         "name": "Early Voting",
@@ -4204,7 +4181,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 184,
+      "position": 183,
       "item": {
         "@type": "Event",
         "name": "Google: Gmail Basics",
@@ -4227,7 +4204,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 185,
+      "position": 184,
       "item": {
         "@type": "Event",
         "name": "SINCERELY SINATRA BIG BAND SHOW starring NICK PONTARELLI with SPECIAL GUEST CLOSE TO KAREN - A SALUTE TO KAREN CARPENTER with GINA KNIGHT",
@@ -4250,7 +4227,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 186,
+      "position": 185,
       "item": {
         "@type": "Event",
         "name": "Teen Take & Make",
@@ -4273,7 +4250,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 187,
+      "position": 186,
       "item": {
         "@type": "Event",
         "name": "Crafts-to-Go Kits",
@@ -4296,7 +4273,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 188,
+      "position": 187,
       "item": {
         "@type": "Event",
         "name": "Family Reading Night Kits",
@@ -4319,7 +4296,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 189,
+      "position": 188,
       "item": {
         "@type": "Event",
         "name": "Student Non-Attendance / Conferences",
@@ -4340,7 +4317,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 190,
+      "position": 189,
       "item": {
         "@type": "Event",
         "name": "Early Voting",
@@ -4363,7 +4340,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 191,
+      "position": 190,
       "item": {
         "@type": "Event",
         "name": "AARP Driver Safety Course",
@@ -4386,7 +4363,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 192,
+      "position": 191,
       "item": {
         "@type": "Event",
         "name": "High School Volunteer Kits",
@@ -4409,7 +4386,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 193,
+      "position": 192,
       "item": {
         "@type": "Event",
         "name": "Family Storytime",
@@ -4432,7 +4409,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 194,
+      "position": 193,
       "item": {
         "@type": "Event",
         "name": "Baby Book Time",
@@ -4455,7 +4432,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 195,
+      "position": 194,
       "item": {
         "@type": "Event",
         "name": "Toddler Storytime",
@@ -4478,7 +4455,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 196,
+      "position": 195,
       "item": {
         "@type": "Event",
         "name": "Stitch Together Meet-Up",
@@ -4501,7 +4478,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 197,
+      "position": 196,
       "item": {
         "@type": "Event",
         "name": "Tech Assistance / Assistencia de Tech",
@@ -4524,7 +4501,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 198,
+      "position": 197,
       "item": {
         "@type": "Event",
         "name": "Bookworms Book Club | Grades 4-5",
@@ -4547,7 +4524,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 199,
+      "position": 198,
       "item": {
         "@type": "Event",
         "name": "Book a Teen Librarian",
@@ -4570,7 +4547,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 200,
+      "position": 199,
       "item": {
         "@type": "Event",
         "name": "Meridian Condo Assoc.",
@@ -4593,7 +4570,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 201,
+      "position": 200,
       "item": {
         "@type": "Event",
         "name": "Intro to Chinese Mahjong",
@@ -4616,7 +4593,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 202,
+      "position": 201,
       "item": {
         "@type": "Event",
         "name": "Des Plaines Shambhala Meditation Group",
@@ -4639,7 +4616,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 203,
+      "position": 202,
       "item": {
         "@type": "Event",
         "name": "Village Board Regular Meeting",
@@ -4662,7 +4639,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 204,
+      "position": 203,
       "item": {
         "@type": "Event",
         "name": "Night Off? Game On!",
@@ -4685,7 +4662,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 205,
+      "position": 204,
       "item": {
         "@type": "Event",
         "name": "Student and Staff Non-Attendance/Election Day",
@@ -4706,7 +4683,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 206,
+      "position": 205,
       "item": {
         "@type": "Event",
         "name": "E-Learning Day",
@@ -4727,7 +4704,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 207,
+      "position": 206,
       "item": {
         "@type": "Event",
         "name": "AARP Driver Safety Course",
@@ -4750,7 +4727,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 208,
+      "position": 207,
       "item": {
         "@type": "Event",
         "name": "Reading/Literacy Class",
@@ -4773,7 +4750,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 209,
+      "position": 208,
       "item": {
         "@type": "Event",
         "name": "ESL (English as a Second Language) Class - Oakton College",
@@ -4796,7 +4773,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 210,
+      "position": 209,
       "item": {
         "@type": "Event",
         "name": "Cardboard Construction Workshop",
@@ -4819,7 +4796,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 211,
+      "position": 210,
       "item": {
         "@type": "Event",
         "name": "Baby Storytime",
@@ -4842,7 +4819,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 212,
+      "position": 211,
       "item": {
         "@type": "Event",
         "name": "Toddler Time",
@@ -4865,7 +4842,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 213,
+      "position": 212,
       "item": {
         "@type": "Event",
         "name": "Family Storytime",
@@ -4888,7 +4865,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 214,
+      "position": 213,
       "item": {
         "@type": "Event",
         "name": "Play and Learn",
@@ -4911,7 +4888,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 215,
+      "position": 214,
       "item": {
         "@type": "Event",
         "name": "Reclaiming Your Inner Wisdom",
@@ -4934,7 +4911,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 216,
+      "position": 215,
       "item": {
         "@type": "Event",
         "name": "Big Kids Storytime",
@@ -4957,7 +4934,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 217,
+      "position": 216,
       "item": {
         "@type": "Event",
         "name": "Community Blood Drive",
@@ -4980,7 +4957,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 218,
+      "position": 217,
       "item": {
         "@type": "Event",
         "name": "Boba Tea Keychains",
@@ -5003,7 +4980,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 219,
+      "position": 218,
       "item": {
         "@type": "Event",
         "name": "Alcohol Ink Art",
@@ -5026,7 +5003,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 220,
+      "position": 219,
       "item": {
         "@type": "Event",
         "name": "Writers Workshop",
@@ -5049,7 +5026,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 221,
+      "position": 220,
       "item": {
         "@type": "Event",
         "name": "End of 12-Week Grading Period",
@@ -5071,7 +5048,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 222,
+      "position": 221,
       "item": {
         "@type": "Event",
         "name": "Read to Learn",
@@ -5094,7 +5071,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 223,
+      "position": 222,
       "item": {
         "@type": "Event",
         "name": "Toddler Storytime",
@@ -5117,7 +5094,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 224,
+      "position": 223,
       "item": {
         "@type": "Event",
         "name": "Baby Book Time",
@@ -5140,7 +5117,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 225,
+      "position": 224,
       "item": {
         "@type": "Event",
         "name": "Drop-In Tech Help",
@@ -5163,7 +5140,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 226,
+      "position": 225,
       "item": {
         "@type": "Event",
         "name": "D15 Job Fair",
@@ -5185,7 +5162,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 227,
+      "position": 226,
       "item": {
         "@type": "Event",
         "name": "Wednesday Morning Book Group",
@@ -5208,7 +5185,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 228,
+      "position": 227,
       "item": {
         "@type": "Event",
         "name": "Knitting for Beginners",
@@ -5231,7 +5208,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 229,
+      "position": 228,
       "item": {
         "@type": "Event",
         "name": "Preschool Storytime",
@@ -5255,7 +5232,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 230,
+      "position": 229,
       "item": {
         "@type": "Event",
         "name": "Des Plaines Chamber of Commerce Job Fair",
@@ -5278,7 +5255,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 231,
+      "position": 230,
       "item": {
         "@type": "Event",
         "name": "Community Resource Center Open House",
@@ -5301,7 +5278,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 232,
+      "position": 231,
       "item": {
         "@type": "Event",
         "name": "Jewelry Making Extravaganza",
@@ -5324,7 +5301,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 233,
+      "position": 232,
       "item": {
         "@type": "Event",
         "name": "Make and Meet With Karla Arenas Valenti",
@@ -5347,7 +5324,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 234,
+      "position": 233,
       "item": {
         "@type": "Event",
         "name": "Almost Famous",
@@ -5371,7 +5348,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 235,
+      "position": 234,
       "item": {
         "@type": "Event",
         "name": "Paint and Steep Tea",
@@ -5394,7 +5371,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 236,
+      "position": 235,
       "item": {
         "@type": "Event",
         "name": "Plan Commission Meeting",
@@ -5417,7 +5394,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 237,
+      "position": 236,
       "item": {
         "@type": "Event",
         "name": "Family Storytime",
@@ -5441,7 +5418,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 238,
+      "position": 237,
       "item": {
         "@type": "Event",
         "name": "Library Board Workshop",
@@ -5464,7 +5441,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 239,
+      "position": 238,
       "item": {
         "@type": "Event",
         "name": "Intro to Excel",
@@ -5483,29 +5460,6 @@
         },
         "sameAs": "https://indiantrails.libnet.info/event/17116353",
         "description": "Wednesday, November 04 2026 7:00pm - 8:00pm \n Learn to create a basic spreadsheet using some of the most important tools in Excel. Intended for beginners and…"
-      }
-    },
-    {
-      "@type": "ListItem",
-      "position": 240,
-      "item": {
-        "@type": "Event",
-        "name": "BOURBON 'N BRASS SPEAKEASY: LIVE JAZZ WITH ANGEL SPICCIA and the BOURBON 'N BRASS TRIO",
-        "startDate": "2026-11-04T19:30:00-06:00",
-        "url": "https://withintenmiles.com/des-plaines-60016/#ev-bourbon-n-brass-speakeasy-live-jazz-with-angel-spiccia-and-t-2026-11-04",
-        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "location": {
-          "@type": "Place",
-          "name": "Des Plaines Theatre",
-          "address": {
-            "@type": "PostalAddress",
-            "addressCountry": "US",
-            "addressLocality": "Des Plaines",
-            "addressRegion": "IL"
-          }
-        },
-        "sameAs": "https://desplainestheatre.com/event/bourbon-n-brass-speakeasy-live-jazz-with-angel-spiccia-and-the-bourbon-n-brass-trio-6/",
-        "description": "Join us in our intimate Bourbon ‘N Brass Speakeasy, located on the 2nd floor of the Des Plaines Theatre, for an evening of Jazz with Angel Spiccia and the…"
       }
     }
   ]

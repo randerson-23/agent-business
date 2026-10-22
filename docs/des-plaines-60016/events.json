@@ -2,8 +2,8 @@
   "@context": "https://schema.org",
   "@type": "ItemList",
   "name": "Upcoming events in Des Plaines — Within Ten",
-  "dateModified": "2026-10-22T12:04:26+00:00",
-  "numberOfItems": 86,
+  "dateModified": "2026-10-22T14:05:37+00:00",
+  "numberOfItems": 84,
   "itemListElement": [
     {
       "@type": "ListItem",
@@ -1184,29 +1184,6 @@
       "position": 52,
       "item": {
         "@type": "Event",
-        "name": "BOURBON 'N BRASS SPEAKEASY: THE BOURBON 'N BRASS TRIO with JAZZ SAXOPHONIST ERIC SCHNEIDER",
-        "startDate": "2026-10-28T19:30:00-05:00",
-        "url": "https://withintenmiles.com/des-plaines-60016/#ev-bourbon-n-brass-speakeasy-the-bourbon-n-brass-trio-with-jazz-2026-10-28",
-        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "location": {
-          "@type": "Place",
-          "name": "Des Plaines Theatre",
-          "address": {
-            "@type": "PostalAddress",
-            "addressCountry": "US",
-            "addressLocality": "Des Plaines",
-            "addressRegion": "IL"
-          }
-        },
-        "sameAs": "https://desplainestheatre.com/event/bourbon-n-brass-speakeasy-the-bourbon-n-brass-trio-with-jazz-saxophonist-eric-schneider-14/",
-        "description": "Join us in our intimate Bourbon ‘N Brass Speakeasy, located on the 2nd floor of the Des Plaines Theatre, for an evening of Jazz with the Bourbon ‘N Brass Trio…"
-      }
-    },
-    {
-      "@type": "ListItem",
-      "position": 53,
-      "item": {
-        "@type": "Event",
         "name": "Wicked Good Writing Contest",
         "startDate": "2026-10-29",
         "url": "https://withintenmiles.com/des-plaines-60016/#ev-wicked-good-writing-contest-2026-10-29",
@@ -1227,7 +1204,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 54,
+      "position": 53,
       "item": {
         "@type": "Event",
         "name": "Early Voting",
@@ -1250,7 +1227,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 55,
+      "position": 54,
       "item": {
         "@type": "Event",
         "name": "Reading/Literacy Class",
@@ -1273,7 +1250,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 56,
+      "position": 55,
       "item": {
         "@type": "Event",
         "name": "ESL (English as a Second Language) Class - Oakton College",
@@ -1296,7 +1273,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 57,
+      "position": 56,
       "item": {
         "@type": "Event",
         "name": "Playgroup for Language Development",
@@ -1319,7 +1296,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 58,
+      "position": 57,
       "item": {
         "@type": "Event",
         "name": "Book a Teen Librarian",
@@ -1342,7 +1319,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 59,
+      "position": 58,
       "item": {
         "@type": "Event",
         "name": "WORLD PREMIERE FILM SCREENING: YAKUZA PLAYS \"THE GOLEM\" - A CONCERT FILM",
@@ -1365,7 +1342,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 60,
+      "position": 59,
       "item": {
         "@type": "Event",
         "name": "Mont Clare Condo Assoc.",
@@ -1388,7 +1365,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 61,
+      "position": 60,
       "item": {
         "@type": "Event",
         "name": "BOURBON 'N BRASS: LIVE BLUES SHOW WITH MILES MINOR \"ROCKIN THE BLUES\"",
@@ -1411,7 +1388,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 62,
+      "position": 61,
       "item": {
         "@type": "Event",
         "name": "Wicked Good Writing Contest",
@@ -1434,7 +1411,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 63,
+      "position": 62,
       "item": {
         "@type": "Event",
         "name": "Early Voting",
@@ -1457,7 +1434,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 64,
+      "position": 63,
       "item": {
         "@type": "Event",
         "name": "Baby Book Time",
@@ -1480,7 +1457,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 65,
+      "position": 64,
       "item": {
         "@type": "Event",
         "name": "Halloween Party in the Commons",
@@ -1503,7 +1480,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 66,
+      "position": 65,
       "item": {
         "@type": "Event",
         "name": "BOURBON 'N BRASS: LIVE DELTA BLUES WITH THE DOWNTOWN CHARLIE BROWN DUO, DONNA HERULA & FRIENDS",
@@ -1526,7 +1503,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 67,
+      "position": 66,
       "item": {
         "@type": "Event",
         "name": "Early Voting",
@@ -1549,7 +1526,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 68,
+      "position": 67,
       "item": {
         "@type": "Event",
         "name": "THE VAMPIRE CIRCUS: TIM BURTON meets CIRQUE DU SOLEIL",
@@ -1572,7 +1549,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 69,
+      "position": 68,
       "item": {
         "@type": "Event",
         "name": "BOURBON 'N BRASS SPEAKEASY: LIVE \"Halloween\" JAZZ with THE BOURBON 'N BRASS PROHIBITION BAND",
@@ -1595,7 +1572,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 70,
+      "position": 69,
       "item": {
         "@type": "Event",
         "name": "Early Voting",
@@ -1618,7 +1595,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 71,
+      "position": 70,
       "item": {
         "@type": "Event",
         "name": "Google: Gmail Basics",
@@ -1641,7 +1618,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 72,
+      "position": 71,
       "item": {
         "@type": "Event",
         "name": "SINCERELY SINATRA BIG BAND SHOW starring NICK PONTARELLI with SPECIAL GUEST CLOSE TO KAREN - A SALUTE TO KAREN CARPENTER with GINA KNIGHT",
@@ -1664,7 +1641,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 73,
+      "position": 72,
       "item": {
         "@type": "Event",
         "name": "Teen Take & Make",
@@ -1687,7 +1664,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 74,
+      "position": 73,
       "item": {
         "@type": "Event",
         "name": "Early Voting",
@@ -1710,7 +1687,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 75,
+      "position": 74,
       "item": {
         "@type": "Event",
         "name": "Baby Book Time",
@@ -1733,7 +1710,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 76,
+      "position": 75,
       "item": {
         "@type": "Event",
         "name": "Book a Teen Librarian",
@@ -1756,7 +1733,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 77,
+      "position": 76,
       "item": {
         "@type": "Event",
         "name": "Meridian Condo Assoc.",
@@ -1779,7 +1756,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 78,
+      "position": 77,
       "item": {
         "@type": "Event",
         "name": "Des Plaines Shambhala Meditation Group",
@@ -1802,7 +1779,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 79,
+      "position": 78,
       "item": {
         "@type": "Event",
         "name": "Reading/Literacy Class",
@@ -1825,7 +1802,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 80,
+      "position": 79,
       "item": {
         "@type": "Event",
         "name": "ESL (English as a Second Language) Class - Oakton College",
@@ -1848,7 +1825,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 81,
+      "position": 80,
       "item": {
         "@type": "Event",
         "name": "Toddler Time",
@@ -1871,7 +1848,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 82,
+      "position": 81,
       "item": {
         "@type": "Event",
         "name": "Baby Book Time",
@@ -1894,7 +1871,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 83,
+      "position": 82,
       "item": {
         "@type": "Event",
         "name": "Preschool Storytime",
@@ -1918,7 +1895,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 84,
+      "position": 83,
       "item": {
         "@type": "Event",
         "name": "Des Plaines Chamber of Commerce Job Fair",
@@ -1941,7 +1918,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 85,
+      "position": 84,
       "item": {
         "@type": "Event",
         "name": "Family Storytime",
@@ -1961,29 +1938,6 @@
         "sameAs": "https://desplaines.libnet.info/event/17004585",
         "description": "Wednesday, November 04 2026 7:00pm - 7:30pm \n Best for families with children ages 2-7, but all are welcome. See full description for details. Registration…",
         "registrationOpens": "2026-10-21"
-      }
-    },
-    {
-      "@type": "ListItem",
-      "position": 86,
-      "item": {
-        "@type": "Event",
-        "name": "BOURBON 'N BRASS SPEAKEASY: LIVE JAZZ WITH ANGEL SPICCIA and the BOURBON 'N BRASS TRIO",
-        "startDate": "2026-11-04T19:30:00-06:00",
-        "url": "https://withintenmiles.com/des-plaines-60016/#ev-bourbon-n-brass-speakeasy-live-jazz-with-angel-spiccia-and-t-2026-11-04",
-        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "location": {
-          "@type": "Place",
-          "name": "Des Plaines Theatre",
-          "address": {
-            "@type": "PostalAddress",
-            "addressCountry": "US",
-            "addressLocality": "Des Plaines",
-            "addressRegion": "IL"
-          }
-        },
-        "sameAs": "https://desplainestheatre.com/event/bourbon-n-brass-speakeasy-live-jazz-with-angel-spiccia-and-the-bourbon-n-brass-trio-6/",
-        "description": "Join us in our intimate Bourbon ‘N Brass Speakeasy, located on the 2nd floor of the Des Plaines Theatre, for an evening of Jazz with Angel Spiccia and the…"
       }
     }
   ]
