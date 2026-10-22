@@ -3337,7 +3337,7 @@ def test_build_combined_email_subject_line_excludes_regions_with_no_attendable_e
         {"region_name": "Arlington Heights", "weekend_events": [{"title": "Half-Day", "attendable": False}]},
     ]
     subject = build_digest.build_combined_email_subject_line(sections)
-    assert subject == "This weekend: Oktoberfest"
+    assert subject == "Oktoberfest this weekend"
 
 
 def test_build_combined_email_subject_line_falls_back_when_no_region_has_events():
@@ -3449,7 +3449,7 @@ def test_render_combined_email_digest_includes_a_hidden_preheader():
     # the preview names the towns and never repeats a title.
     assert preheader.startswith("Across Mount Prospect")
     assert "Fall Fest" not in preheader
-    assert "<title>This weekend: Fall Fest</title>" in html
+    assert "<title>Fall Fest this weekend</title>" in html
 
 
 def test_render_email_digest_lists_weekend_events():
@@ -4321,7 +4321,7 @@ def test_combined_subject_leads_with_events_and_counts_the_rest():
 
 def test_combined_subject_picks_titles_across_towns_not_all_from_the_first():
     sections = [
-        _section("Arlington Heights", {"title": "Harmony Fest"}, {"title": "Taste of Arlington Heights"}),
+        _section("Arlington Heights", {"title": "Fall Fest"}, {"title": "Taste of Arlington Heights"}),
         _section("Wheeling", {"title": "Pumpkin Patch"}),
     ]
     assert "Pumpkin Patch" in build_digest.build_combined_email_subject_line(sections)
@@ -4335,7 +4335,7 @@ def test_combined_subject_skips_recurring_and_near_duplicate_titles():
     # Round-robin order is Farmers Market (recurring, skipped), Fall Fest &
     # Oktoberfest, Oktoberfest (near-duplicate, skipped), Movie Night.
     subject = build_digest.build_combined_email_subject_line(sections)
-    assert subject == "Fall Fest & Oktoberfest, Movie Night and 2 more this weekend"
+    assert subject == "Fall Fest & Oktoberfest and 3 more this weekend"  # the pair (60 characters) is over the 50 limit
     assert "Farmers Market" not in subject
 
 
@@ -4344,11 +4344,10 @@ def test_combined_subject_never_exceeds_the_safe_length():
     long_b = "Community Chamber Orchestra Autumn Concert Series Finale and Reception"
     sections = [_section("A", {"title": long_a}), _section("B", {"title": long_b})]
     subject = build_digest.build_combined_email_subject_line(sections)
-    # Neither title fits whole even in the compact "+ N more" form (item
-    # 225), so the first is shortened at a word boundary as a last resort.
-    assert len(subject) <= build_digest.SUBJECT_MAX_LEN
-    assert subject.startswith("The Annual Northwest")
-    assert subject.endswith("… + 1 more")
+    # ROADMAP.md item 363: a title is never cut and no "…" appears; when no
+    # whole title fits, the plain count is the subject.
+    assert subject == "2 things to do this weekend in 2 towns"
+    assert len(subject) <= build_digest.SUBJECT_MAX_LEN and "…" not in subject
 
 
 def test_combined_subject_drops_the_second_title_before_clipping_the_first():
@@ -4444,14 +4443,14 @@ def test_subject_titles_drop_trailing_years_and_session_suffixes():
 def test_subject_cleaning_never_changes_the_card_titles():
     events = [{"title": "Pumpkin Fest 2026", "attendable": True}]
     sections = [{"region_name": "A", "weekend_events": events}]
-    assert build_digest.build_combined_email_subject_line(sections) == "This weekend: Pumpkin Fest"
+    assert build_digest.build_combined_email_subject_line(sections) == "Pumpkin Fest this weekend"
     assert events[0]["title"] == "Pumpkin Fest 2026"
 
 
-def test_a_long_top_ranked_title_is_clipped_rather_than_replaced_by_a_shorter_weaker_one():
-    # The real 2026-10-02 data: Harmony Fest ranks first but is too long to
-    # fit whole. The fitter used to fall through to "Senior Center:
-    # Travelogue" (score 0) because it fit, defeating the ranking.
+def test_a_long_top_ranked_title_is_never_clipped_the_next_ranked_title_is_tried():
+    # ROADMAP.md item 363: the 2026-10-02 data - Harmony Fest ranks first but
+    # is too long to fit whole; the subject tries the next-ranked title
+    # rather than cutting it.
     sections = [
         _section("Arlington Heights",
                  {"title": "Harmony Fest & Taste of Arlington Heights (Friday)"},
@@ -4459,8 +4458,7 @@ def test_a_long_top_ranked_title_is_clipped_rather_than_replaced_by_a_shorter_we
         _section("Des Plaines", {"title": "Film Screening"}, {"title": "Tinkercad for Adults"}),
     ]
     subject = build_digest.build_combined_email_subject_line(sections)
-    assert subject.startswith("Harmony Fest & Taste of Arlington")
-    assert "Senior Center" not in subject
+    assert "…" not in subject and "Harmony Fest & Taste of Arlington" not in subject
     assert len(subject) <= build_digest.SUBJECT_MAX_LEN
 
 
@@ -4468,18 +4466,17 @@ def test_subject_titles_drop_a_trailing_weekday_marker():
     assert build_digest._clean_subject_title("Harmony Fest (Saturday)") == "Harmony Fest"
 
 
-def test_a_long_lead_title_stays_whole_in_the_compact_form():
-    # ROADMAP.md item 225: the live subject read "Harmony Fest & Taste of
-    # Arlington… and 27 more this weekend", cutting one event's name in
-    # half. The compact form keeps it whole.
+def test_a_long_lead_title_is_dropped_not_cut_and_no_plus_form_is_used():
+    # ROADMAP.md items 225 and 363: never "Harmony Fest & Taste of Arlington..."
+    # and never "+ 27 more".
     sections = [
         _section("Arlington Heights", {"title": "Harmony Fest & Taste of Arlington Heights (Friday)"},
                  *[{"title": f"Library Program {n}"} for n in range(13)]),
         _section("Mount Prospect", *[{"title": f"Story Session {n}"} for n in range(14)]),
     ]
     subject = build_digest.build_combined_email_subject_line(sections)
-    assert subject == "Harmony Fest & Taste of Arlington Heights + 27 more"
-    assert "…" not in subject
+    assert "…" not in subject and "+ " not in subject and "Harmony Fest" not in subject
+    assert len(subject) <= build_digest.SUBJECT_MAX_LEN
 
 
 def test_compact_form_is_only_used_when_the_full_form_does_not_fit():
@@ -4568,15 +4565,13 @@ def test_record_indexnow_outcome_starts_fresh_on_a_corrupt_file(tmp_path):
     assert [h["ok"] for h in history] == [True]
 
 
-def test_the_lead_keeps_its_place_in_compact_form_over_a_shorter_tie():
-    # The real 2026-10-03 data: Harmony Fest and "Trick or Treat Trail" both
-    # score as occasions. The lead should stay the lead in compact form
-    # (item 225's spec) rather than yield to the shorter tie.
+def test_a_lead_that_does_not_fit_gives_way_to_the_next_ranked_title_whole():
     sections = [
         _section("Arlington Heights", {"title": "Harmony Fest & Taste of Arlington Heights (Friday)"}),
         _section("Mount Prospect", {"title": "Trick or Treat Trail"}, {"title": "Book Club"}),
     ]
-    assert build_digest.build_combined_email_subject_line(sections) == "Harmony Fest & Taste of Arlington Heights + 2 more"
+    subject = build_digest.build_combined_email_subject_line(sections)
+    assert subject == "Trick or Treat Trail and 2 more this weekend"
 
 
 def test_event_anchor_id_is_stable_slug_plus_date():
@@ -6168,7 +6163,7 @@ def test_halloween_weekend_issue_has_a_fixed_subject_and_a_richer_lead_block():
     assert "plus Halloween weekend" not in plain and "Trunk-or-treats this weekend" not in plain
     five = [dict(sections[0], region_name=f"T{i}") for i in range(5)]
     assert build_digest.build_combined_email_subject_line(five, wed) == "Trick-or-treat hours, all five towns, plus Halloween weekend"
-    assert len(build_digest.build_combined_email_subject_line(five, wed)) <= build_digest.SUBJECT_MAX_LEN
+    assert len(build_digest.build_combined_email_subject_line(five, wed)) <= build_digest.HALLOWEEN_SUBJECT_MAX_LEN
     assert "Halloween" not in build_digest.build_combined_email_subject_line(five, datetime(2026, 10, 21, 15, tzinfo=timezone.utc))
 
 
@@ -6192,3 +6187,30 @@ def test_partisan_meetings_are_excluded_and_civic_information_stays():
     assert titles == ["Early Voting", "Candidate Forum", "Storytime", "League of Women Voters Forum"]
     about = build_digest.render_about_page(datetime(2026, 10, 22, tzinfo=timezone.utc), None)
     assert "We don't list party or campaign meetings; we do list voting information." in about.replace("&#39;", "'")
+
+
+def test_subject_title_cases_shouting_titles_and_never_ends_in_an_ellipsis():
+    # ROADMAP.md item 363.
+    sections = [_section("A", {"title": "ITALIAN BRED: A GANGSTER TRIBUTE SHOW"}, {"title": "Fall Fest"}), _section("B", {"title": "Movie Night"})]
+    subject = build_digest.build_combined_email_subject_line(sections)
+    assert "ITALIAN BRED" not in subject and "…" not in subject and len(subject) <= 50
+    short = build_digest.build_combined_email_subject_line([_section("A", {"title": "ESL CONVERSATION CIRCLE FOR ADULTS"}), _section("B", {"title": "Fall Fest"})])
+    assert "ESL Conversation Circle" in short or short.startswith("Fall Fest")
+
+
+def test_subject_leads_with_the_first_dont_miss_pick_and_a_second_from_another_town():
+    # ROADMAP.md item 364.
+    sections = [
+        _section("A", {"title": "Opera Gala Night", "tags": []}, {"title": "Harvest Fest", "tags": []}),
+        _section("B", {"title": "Pumpkin Run", "tags": []}),
+    ]
+    picks = [
+        {"title": "Craft Hour", "url": "u1", "pick_town": "A"},
+        {"title": "Book Swap", "url": "u2", "pick_town": "A"},
+        {"title": "Pumpkin Run", "url": "u3", "pick_town": "B"},
+    ]
+    subject = build_digest.build_combined_email_subject_line(sections, None, picks)
+    assert subject.startswith("Craft Hour, Pumpkin Run")  # not Book Swap, which is the same town as the lead
+    assert "Harvest Fest" not in subject.split(" and ")[0]
+    # Without picks the old ranking still decides.
+    assert build_digest.build_combined_email_subject_line(sections).startswith("Harvest Fest")

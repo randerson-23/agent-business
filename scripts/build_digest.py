@@ -4678,7 +4678,8 @@ def _join_names(names: list[str], conjunction: str = "and") -> str:
 # ROADMAP.md item 217: most clients show roughly 40-60 subject
 # characters before truncating, and the subject now carries event
 # titles that vary in length week to week.
-SUBJECT_MAX_LEN = 60
+SUBJECT_MAX_LEN = 50  # ROADMAP.md item 363: about 33 characters show on a phone, 30-50 recommended
+HALLOWEEN_SUBJECT_MAX_LEN = 60  # item 348's fixed Halloween subject is exempt
 
 
 def _round_robin_attendable(sections: list[dict]) -> list[dict]:
@@ -4743,49 +4744,37 @@ def _occasion_score(event: dict) -> int:
     return score
 
 
-def _fit_subject(titles: list[str], total: int, lone_leads: list[str] | None = None) -> str:
+def _fit_subject(titles: list[str], total: int, lone_leads: list[str] | None = None, towns: int = 0) -> str:
     """'{A}, {B} and N more this weekend' within SUBJECT_MAX_LEN.
 
-    Prefers whole real titles over clipped ones: the first pair that
-    fits, else the first single title that fits, and only then a clipped
-    first title - and before clipping, a compact "{title} + N more" (item
-    225), so a lead title is cut only when it can't fit even alone. "and"
-    rather than "&" because real titles contain "&"
-    themselves ("Harmony Fest & Taste of Arlington Heights (Friday)" is
-    one event), and a clipped one followed by another "&" read as
-    nonsense in a real build.
+    Never cuts a title (items 363 and 225): the first form that fits whole
+    wins - two titles with the count, the lead alone with the count, the
+    next-ranked titles alone, two titles without the count - and the last
+    resort is the plain "N things to do this weekend in M towns". No "…" and
+    no "+ N more". "and" rather than "&" because real titles contain "&"
+    themselves.
     """
     def compose(named: list[str]) -> str:
         more = total - len(named)
         if len(named) == 1:
-            return f"This weekend: {named[0]}" if more == 0 else f"{named[0]} and {more} more this weekend"
+            return f"{named[0]} this weekend" if more == 0 else f"{named[0]} and {more} more this weekend"
         lead = f"{named[0]}, {named[1]}" if more else f"{named[0]} and {named[1]}"
         return f"{lead} and {more} more this weekend" if more else f"{lead} this weekend"
 
-    def compact(title: str) -> str:
-        # Item 225: "{title} + N more" drops "this weekend" (13 characters)
-        # so a long lead title can stay whole instead of being cut mid-name.
-        more = total - 1
-        return f"This weekend: {title}" if more == 0 else f"{title} + {more} more"
-
     leads = lone_leads if lone_leads is not None else titles
     candidates = [compose(titles[:2])] if len(titles) >= 2 else []
-    # Item 222: only a top-ranked title may lead alone, so a shorter but
-    # less notable title can't win just by fitting. Item 225: each lead
-    # gets its compact form before the next lead is tried, so the lead
-    # stays the lead rather than yielding to a shorter tie.
-    for title in leads:
-        candidates += [compose([title]), compact(title)]
+    candidates += [compose([t]) for t in leads]
+    candidates += [compose([t]) for t in titles if t not in leads]
+    if len(titles) >= 2:
+        candidates.append(f"{titles[0]} and {titles[1]}")
     for subject in candidates:
         if len(subject) <= SUBJECT_MAX_LEN:
             return subject
-    # Last resort, only for a title too long even on its own: shorten at a
-    # word boundary (truncate never cuts inside a word).
-    room = SUBJECT_MAX_LEN - (len(compact(titles[0])) - len(titles[0]))
-    return compact(truncate(titles[0], room))
+    places = f" in {towns} towns" if towns > 1 else ""
+    return f"{total} thing{'s' if total != 1 else ''} to do this weekend{places}"
 
 
-def build_combined_email_subject_line(sections: list[dict], now: datetime | None = None) -> str:
+def build_combined_email_subject_line(sections: list[dict], now: datetime | None = None, top_picks: list[dict] | None = None) -> str:
     """ROADMAP.md Phase 11 #105: one subject line for every region, since
     Buttondown's free-plan list has no per-region segmentation and every
     subscriber receives the same issue.
@@ -4803,7 +4792,7 @@ def build_combined_email_subject_line(sections: list[dict], now: datetime | None
     # ROADMAP.md item 348: the Halloween-weekend issue has one fixed subject.
     if now is not None and email_edition(now) == "halloween":
         count = _COUNT_WORDS.get(len(sections), str(len(sections))).lower()
-        return truncate(f"Trick-or-treat hours, all {count} towns, plus Halloween weekend", SUBJECT_MAX_LEN)
+        return truncate(f"Trick-or-treat hours, all {count} towns, plus Halloween weekend", HALLOWEEN_SUBJECT_MAX_LEN)
     attendable = _round_robin_attendable(sections)
     if not attendable:
         return f"This week across {_join_names([s['region_name'] for s in sections])}: what's coming up"
@@ -4811,15 +4800,27 @@ def build_combined_email_subject_line(sections: list[dict], now: datetime | None
     # round-robin order puts first. sorted() is stable, so ties keep the
     # round-robin spread across towns.
     ranked = sorted(attendable, key=_occasion_score, reverse=True)
-    cleaned = [dict(e, title=_clean_subject_title(e["title"])) for e in ranked]
+    # ROADMAP.md item 364: lead with the email's first "Don't miss" pick and
+    # name a pick from a different town second; the occasion score only
+    # orders what is left.
+    ordered = ranked
+    lead_first = bool(top_picks)
+    if lead_first:
+        first = top_picks[0]
+        second = next((p for p in top_picks[1:] if p.get("pick_town") != first.get("pick_town")), None) or (top_picks[1] if len(top_picks) > 1 else None)
+        chosen = [p for p in (first, second) if p]
+        keys = {(p.get("title"), p.get("url")) for p in chosen}
+        ordered = chosen + [e for e in ranked if (e.get("title"), e.get("url")) not in keys]
+    cleaned = [dict(e, title=display_title(_clean_subject_title(e["title"]))) for e in ordered]
     titles = _pick_preheader_titles(cleaned, limit=5)
     if not titles:
         with_events = [s["region_name"] for s in sections if any(e.get("attendable", True) for e in s["weekend_events"])]
-        return truncate(f"This weekend across {_join_names(with_events)}", SUBJECT_MAX_LEN)
+        return f"{len(attendable)} things to do this weekend in {len(with_events)} towns"
     scores = {e["title"]: _occasion_score(e) for e in cleaned}
     best = max((scores.get(title, 0) for title in titles), default=0)
-    lone_leads = [title for title in titles if scores.get(title, 0) == best]
-    return _fit_subject(titles, len(attendable), lone_leads)
+    lone_leads = [titles[0]] if lead_first else [title for title in titles if scores.get(title, 0) == best]
+    towns = sum(1 for s in sections if any(e.get("attendable", True) and not e.get("sponsored_by") for e in s["weekend_events"]))
+    return _fit_subject(titles, len(attendable), lone_leads, towns)
 
 
 def build_combined_email_preheader(sections: list[dict]) -> str:
@@ -5304,7 +5305,7 @@ def render_combined_email_digest(sections: list[dict], weekend_date_range: str, 
         empty_regions_summary=empty_regions_summary,
         house_ad=house_ad,
         weekend_date_range=weekend_date_range,
-        subject_line=build_combined_email_subject_line(sections, now),
+        subject_line=build_combined_email_subject_line(sections, now, top_picks),
         preheader=build_combined_email_preheader(sections),
         newsletter=newsletter or {"configured": False},
         preview=preview,

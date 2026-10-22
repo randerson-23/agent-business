@@ -220,7 +220,7 @@ doesn't re-suggest something already shipped.
 
 **Build queue (by deadline; refreshed by the research loop, item 346).**
 Pick from the top unless the owner has flagged something else:
-0. **363, 364** (the subject line, before the Oct 28 issue's build; that issue's subject is fixed by item 348, so these first matter on Nov 4). **357** (wrap archived issues; Google now crawls them). **360** (/this-weekend/ picks and signup near the top). Then **351** (the sponsor page's proof box).
+0. **357** (wrap archived issues; Google now crawls them). **360** (/this-weekend/ picks and signup near the top). Then **351** (the sponsor page's proof box).
 1. **306**: the OpenStreetMap prospect list (by Oct 25).
 2. **323**: leaf pickup (in season now).
 3. **313, 314**: the sales mock-up and starter pack (before outreach).
@@ -17509,7 +17509,7 @@ not they open, so this pass is about the inbox view.
 
 #### P1 (new)
 
-363. **Make the subject line readable on a phone.** Build loop,
+363. ✅ **DONE (2026-10-22): `SUBJECT_MAX_LEN` is 50 (item 348's fixed Halloween subject keeps its own 60); subject titles go through the display-case rule; `_fit_subject` never cuts a title and never uses `…` or "+ N more": two titles with the count, the lead with the count, the next-ranked titles, two titles without the count, then "N things to do this weekend in M towns"; a single event reads "X this weekend" rather than a "This weekend:" prefix; tests (shouting title, no ellipsis, at most 50).** **Make the subject line readable on a phone.** Build loop,
      `_clean_subject_title` and `_fit_subject`:
 
      - Apply **item 334's display-case rule** to subject titles: more than
@@ -17530,7 +17530,7 @@ not they open, so this pass is about the inbox view.
      most 50 characters. A short lead keeps the count, and an all-caps
      title becomes title case.
 
-364. **Lead the subject with the email's first "Don't miss" pick.** Build
+364. ✅ **DONE (2026-10-22): the combined subject leads with the email's first "Don't miss" pick and takes the second title from a pick in a different town (the occasion score now only orders the rest); the email render passes its `top_picks` to the subject builder; tests. Not built: the extra rule about occasion words lifting ticketed theatre shows, which is moot once the family-ranked pick leads (it still applies in the fallback ranking when there are fewer than two towns with picks).** **Lead the subject with the email's first "Don't miss" pick.** Build
      loop: when choosing the subject's lead title, take the **first
      "Don't miss" event** (the same family-scored selection the email
      puts first, items 268 and 355). Fill the second title from the next
