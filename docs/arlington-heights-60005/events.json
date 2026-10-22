@@ -2,78 +2,12 @@
   "@context": "https://schema.org",
   "@type": "ItemList",
   "name": "Upcoming events in Arlington Heights — Within Ten",
-  "dateModified": "2026-10-22T14:05:37+00:00",
-  "numberOfItems": 14,
+  "dateModified": "2026-10-22T22:00:20+00:00",
+  "numberOfItems": 4,
   "itemListElement": [
     {
       "@type": "ListItem",
       "position": 1,
-      "item": {
-        "@type": "Event",
-        "name": "Toddler Time",
-        "startDate": "2026-10-22",
-        "url": "https://withintenmiles.com/arlington-heights-60005/#ev-toddler-time-2026-10-22",
-        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "location": {
-          "@type": "Place",
-          "name": "Arlington Heights Memorial Library",
-          "address": {
-            "@type": "PostalAddress",
-            "addressCountry": "US",
-            "addressLocality": "Arlington Heights",
-            "addressRegion": "IL"
-          }
-        },
-        "sameAs": "https://www.ahml.info/scheduling/reservation/224176"
-      }
-    },
-    {
-      "@type": "ListItem",
-      "position": 2,
-      "item": {
-        "@type": "Event",
-        "name": "Senior Center: Travelogue",
-        "startDate": "2026-10-23",
-        "url": "https://withintenmiles.com/arlington-heights-60005/#ev-senior-center-travelogue-2026-10-23",
-        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "location": {
-          "@type": "Place",
-          "name": "Arlington Heights Memorial Library",
-          "address": {
-            "@type": "PostalAddress",
-            "addressCountry": "US",
-            "addressLocality": "Arlington Heights",
-            "addressRegion": "IL"
-          }
-        },
-        "sameAs": "https://www.ahml.info/scheduling/reservation/224946"
-      }
-    },
-    {
-      "@type": "ListItem",
-      "position": 3,
-      "item": {
-        "@type": "Event",
-        "name": "One Book, One Village at Arlington Heights' Community Open House",
-        "startDate": "2026-10-24",
-        "url": "https://withintenmiles.com/arlington-heights-60005/#ev-one-book-one-village-at-arlington-heights-community-open-hou-2026-10-24",
-        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "location": {
-          "@type": "Place",
-          "name": "Arlington Heights Memorial Library",
-          "address": {
-            "@type": "PostalAddress",
-            "addressCountry": "US",
-            "addressLocality": "Arlington Heights",
-            "addressRegion": "IL"
-          }
-        },
-        "sameAs": "https://www.ahml.info/scheduling/reservation/226814"
-      }
-    },
-    {
-      "@type": "ListItem",
-      "position": 4,
       "item": {
         "@type": "Event",
         "name": "Trunk or Treat",
@@ -96,7 +30,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 5,
+      "position": 2,
       "item": {
         "@type": "Event",
         "name": "The Music Man Sr.",
@@ -119,29 +53,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 6,
-      "item": {
-        "@type": "Event",
-        "name": "Makerplace Using Canva AI: Laser Etch a Glass",
-        "startDate": "2026-10-25",
-        "url": "https://withintenmiles.com/arlington-heights-60005/#ev-makerplace-using-canva-ai-laser-etch-a-glass-2026-10-25",
-        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "location": {
-          "@type": "Place",
-          "name": "Arlington Heights Memorial Library",
-          "address": {
-            "@type": "PostalAddress",
-            "addressCountry": "US",
-            "addressLocality": "Arlington Heights",
-            "addressRegion": "IL"
-          }
-        },
-        "sameAs": "https://www.ahml.info/scheduling/reservation/224151"
-      }
-    },
-    {
-      "@type": "ListItem",
-      "position": 7,
+      "position": 3,
       "item": {
         "@type": "Event",
         "name": "The Music Man Sr.",
@@ -164,117 +76,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 8,
-      "item": {
-        "@type": "Event",
-        "name": "Kids' Time",
-        "startDate": "2026-10-26",
-        "url": "https://withintenmiles.com/arlington-heights-60005/#ev-kids-time-2026-10-26",
-        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "location": {
-          "@type": "Place",
-          "name": "Arlington Heights Memorial Library",
-          "address": {
-            "@type": "PostalAddress",
-            "addressCountry": "US",
-            "addressLocality": "Arlington Heights",
-            "addressRegion": "IL"
-          }
-        },
-        "sameAs": "https://www.ahml.info/scheduling/reservation/224214"
-      }
-    },
-    {
-      "@type": "ListItem",
-      "position": 9,
-      "item": {
-        "@type": "Event",
-        "name": "The Nonprofit Exchange",
-        "startDate": "2026-10-27",
-        "url": "https://withintenmiles.com/arlington-heights-60005/#ev-the-nonprofit-exchange-2026-10-27",
-        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "location": {
-          "@type": "Place",
-          "name": "Arlington Heights Memorial Library",
-          "address": {
-            "@type": "PostalAddress",
-            "addressCountry": "US",
-            "addressLocality": "Arlington Heights",
-            "addressRegion": "IL"
-          }
-        },
-        "sameAs": "https://www.ahml.info/scheduling/reservation/193749"
-      }
-    },
-    {
-      "@type": "ListItem",
-      "position": 10,
-      "item": {
-        "@type": "Event",
-        "name": "Senior Center: iPhone & iPad Beyond Basics (Day 2)",
-        "startDate": "2026-10-28",
-        "url": "https://withintenmiles.com/arlington-heights-60005/#ev-senior-center-iphone-ipad-beyond-basics-day-2-2026-10-28",
-        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "location": {
-          "@type": "Place",
-          "name": "Arlington Heights Memorial Library",
-          "address": {
-            "@type": "PostalAddress",
-            "addressCountry": "US",
-            "addressLocality": "Arlington Heights",
-            "addressRegion": "IL"
-          }
-        },
-        "sameAs": "https://www.ahml.info/scheduling/reservation/225333"
-      }
-    },
-    {
-      "@type": "ListItem",
-      "position": 11,
-      "item": {
-        "@type": "Event",
-        "name": "Toddler Time",
-        "startDate": "2026-10-29",
-        "url": "https://withintenmiles.com/arlington-heights-60005/#ev-toddler-time-2026-10-29",
-        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "location": {
-          "@type": "Place",
-          "name": "Arlington Heights Memorial Library",
-          "address": {
-            "@type": "PostalAddress",
-            "addressCountry": "US",
-            "addressLocality": "Arlington Heights",
-            "addressRegion": "IL"
-          }
-        },
-        "sameAs": "https://www.ahml.info/scheduling/reservation/224178"
-      }
-    },
-    {
-      "@type": "ListItem",
-      "position": 12,
-      "item": {
-        "@type": "Event",
-        "name": "Senior Center: Travelogue",
-        "startDate": "2026-10-30",
-        "url": "https://withintenmiles.com/arlington-heights-60005/#ev-senior-center-travelogue-2026-10-30",
-        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "location": {
-          "@type": "Place",
-          "name": "Arlington Heights Memorial Library",
-          "address": {
-            "@type": "PostalAddress",
-            "addressCountry": "US",
-            "addressLocality": "Arlington Heights",
-            "addressRegion": "IL"
-          }
-        },
-        "sameAs": "https://www.ahml.info/scheduling/reservation/224947"
-      }
-    },
-    {
-      "@type": "ListItem",
-      "position": 13,
+      "position": 4,
       "item": {
         "@type": "Event",
         "name": "The Rock N' Horror Halloween Concert",
@@ -293,28 +95,6 @@
         },
         "sameAs": "https://www.metropolisarts.com/event/the-rock-n-horror-halloween-concert/",
         "description": "Purchase Tickets October 30th, 2026: 7:30 PM October 31st, 2026: 7:30 PM Tickets: $40 ABOUT THE SHOW: A little ROCK, a little HORROR, a lot of Halloween fun,…"
-      }
-    },
-    {
-      "@type": "ListItem",
-      "position": 14,
-      "item": {
-        "@type": "Event",
-        "name": "Beginning ESL",
-        "startDate": "2026-10-31",
-        "url": "https://withintenmiles.com/arlington-heights-60005/#ev-beginning-esl-2026-10-31",
-        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "location": {
-          "@type": "Place",
-          "name": "Arlington Heights Memorial Library",
-          "address": {
-            "@type": "PostalAddress",
-            "addressCountry": "US",
-            "addressLocality": "Arlington Heights",
-            "addressRegion": "IL"
-          }
-        },
-        "sameAs": "https://www.ahml.info/scheduling/reservation/234688"
       }
     }
   ]

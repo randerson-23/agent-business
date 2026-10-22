@@ -1,11 +1,17 @@
 {
- "fetched_at": "2026-10-22T12:04:26+00:00",
+ "fetched_at": "2026-10-22T22:00:20+00:00",
  "items": [
   {
    "date": "Oct 22, 2026",
    "detail": "Test",
    "title": "Test News 1",
    "url": ""
+  },
+  {
+   "date": "Oct 22, 2026",
+   "detail": "",
+   "title": "National Drug Take Back Day - Saturday, October 24th",
+   "url": "https://www.mountprospect.org/articles/National-Drug-Take-Back-Day-Saturday-October-24th-177.php"
   }
  ],
  "source": "Village of Mount Prospect — News"

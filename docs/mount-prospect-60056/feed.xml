@@ -3,8 +3,16 @@
 <channel>
   <title>Within Ten — Upcoming events in Mount Prospect</title>
   <link>https://withintenmiles.com/</link>
-  <description>Upcoming events in Mount Prospect, soonest first - aggregated automatically from village, library, park district and school-district calendars. This build reached 14 of 18 configured sources. 1 source is shown from its last update, up to 70 hours ago.</description>
-  <lastBuildDate>Thu, 22 Oct 2026 14:05:37 +0000</lastBuildDate>
+  <description>Upcoming events in Mount Prospect, soonest first - aggregated automatically from village, library, park district and school-district calendars. This build reached 12 of 18 configured sources. 2 sources are shown from their last update, up to 10 hours ago.</description>
+  <lastBuildDate>Thu, 22 Oct 2026 22:00:20 +0000</lastBuildDate>
+  <item>
+    <title>Mount Prospect: National Drug Take Back Day - Saturday, October 24th</title>
+    <link>https://withintenmiles.com/mount-prospect-60056/#ev-national-drug-take-back-day-saturday-october-24th-2026-10-22</link>
+    <guid isPermaLink="true">https://withintenmiles.com/mount-prospect-60056/#ev-national-drug-take-back-day-saturday-october-24th-2026-10-22</guid>
+    <description>Official listing: https://www.mountprospect.org/articles/National-Drug-Take-Back-Day-Saturday-October-24th-177.php</description>
+    <pubDate>Thu, 22 Oct 2026 00:00:00 +0000</pubDate>
+    <source url="https://www.mountprospect.org/articles/National-Drug-Take-Back-Day-Saturday-October-24th-177.php">Village of Mount Prospect — News</source>
+  </item>
   <item>
     <title>Mount Prospect: Small Business Morning Meetup</title>
     <link>https://withintenmiles.com/mount-prospect-60056/#ev-small-business-morning-meetup-2026-10-22</link>
@@ -444,15 +452,6 @@ A virtual… Official listing: https://mppl.libnet.info/event/17476744</descript
  Stop in and bring your questions about technology-related subjects such as smartphones, computers, email,… Official listing: https://mppl.libnet.info/event/14756351</description>
     <pubDate>Wed, 04 Nov 2026 10:00:00 +0000</pubDate>
     <source url="https://mppl.libnet.info/event/14756351">Mount Prospect Public Library — Events</source>
-  </item>
-  <item>
-    <title>Mount Prospect: Wednesday Morning Book Group</title>
-    <link>https://withintenmiles.com/mount-prospect-60056/#ev-wednesday-morning-book-group-2026-11-04</link>
-    <guid isPermaLink="true">https://withintenmiles.com/mount-prospect-60056/#ev-wednesday-morning-book-group-2026-11-04</guid>
-    <description>Wednesday, November 04 2026 11:00am - 12:00pm 
- Join us for a discussion of "The Wild Dark Shore" by Charlotte McConaghy. Official listing: https://mppl.libnet.info/event/14047744</description>
-    <pubDate>Wed, 04 Nov 2026 11:00:00 +0000</pubDate>
-    <source url="https://mppl.libnet.info/event/14047744">Mount Prospect Public Library — Events</source>
   </item>
 </channel>
 </rss>
