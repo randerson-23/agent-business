@@ -70,5 +70,13 @@
       "open_rate": 1.0,
       "click_rate": 0.0
     }
+  },
+  {
+    "timestamp": "2026-10-22T00:55:45.222429+00:00",
+    "subject": "ITALIAN BRED: A CELEBRATION OF FAMILY, CULTURE &\u2026 + 51 more",
+    "buttondown_id": "em_32t4t752nc8c68d0rhj0dt4ef6",
+    "region": "combined",
+    "mode": "schedule",
+    "pre_send_subscriber_count": 1
   }
 ]
