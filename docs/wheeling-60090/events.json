@@ -2,150 +2,12 @@
   "@context": "https://schema.org",
   "@type": "ItemList",
   "name": "Upcoming events in Wheeling — Within Ten",
-  "dateModified": "2026-10-21T22:00:39+00:00",
-  "numberOfItems": 49,
+  "dateModified": "2026-10-22T06:00:24+00:00",
+  "numberOfItems": 50,
   "itemListElement": [
     {
       "@type": "ListItem",
       "position": 1,
-      "item": {
-        "@type": "Event",
-        "name": "Read to Learn",
-        "startDate": "2026-10-21T09:00:00-05:00",
-        "url": "https://withintenmiles.com/wheeling-60090/#ev-read-to-learn-2026-10-21",
-        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "location": {
-          "@type": "Place",
-          "name": "Indian Trails Public Library",
-          "address": {
-            "@type": "PostalAddress",
-            "addressCountry": "US",
-            "addressLocality": "Wheeling",
-            "addressRegion": "IL"
-          }
-        },
-        "sameAs": "https://indiantrails.libnet.info/event/11861201",
-        "description": "Wednesday, October 21 2026 9:00am - 12:00pm \n District 214 Read to Learn Adult Literacy Program."
-      }
-    },
-    {
-      "@type": "ListItem",
-      "position": 2,
-      "item": {
-        "@type": "Event",
-        "name": "BOFPC-Notice of Cancellation",
-        "startDate": "2026-10-21T13:00:00-05:00",
-        "url": "https://withintenmiles.com/wheeling-60090/#ev-bofpc-notice-of-cancellation-2026-10-21",
-        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "location": {
-          "@type": "Place",
-          "name": "Wheeling, IL",
-          "address": {
-            "@type": "PostalAddress",
-            "addressCountry": "US",
-            "addressLocality": "Wheeling",
-            "addressRegion": "IL"
-          }
-        },
-        "sameAs": "https://www.wheelingil.gov/common/modules/iCalendar/iCalendar.aspx?feed=calendar&catID=14",
-        "description": "https://www.wheelingil.gov/calendar.aspx?EID=2231"
-      }
-    },
-    {
-      "@type": "ListItem",
-      "position": 3,
-      "item": {
-        "@type": "Event",
-        "name": "Chess Club",
-        "startDate": "2026-10-21T17:30:00-05:00",
-        "url": "https://withintenmiles.com/wheeling-60090/#ev-chess-club-2026-10-21",
-        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "location": {
-          "@type": "Place",
-          "name": "Indian Trails Public Library",
-          "address": {
-            "@type": "PostalAddress",
-            "addressCountry": "US",
-            "addressLocality": "Wheeling",
-            "addressRegion": "IL"
-          }
-        },
-        "sameAs": "https://indiantrails.libnet.info/event/15916607",
-        "description": "Wednesday, October 21 2026 5:30pm - 6:15pm \n Discover chess moves, strategies, and checkmate techniques with international Chess Master Arjun Vishnuvardhan of…"
-      }
-    },
-    {
-      "@type": "ListItem",
-      "position": 4,
-      "item": {
-        "@type": "Event",
-        "name": "Stitch Together Meet-Up",
-        "startDate": "2026-10-21T18:00:00-05:00",
-        "url": "https://withintenmiles.com/wheeling-60090/#ev-stitch-together-meet-up-2026-10-21",
-        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "location": {
-          "@type": "Place",
-          "name": "Indian Trails Public Library",
-          "address": {
-            "@type": "PostalAddress",
-            "addressCountry": "US",
-            "addressLocality": "Wheeling",
-            "addressRegion": "IL"
-          }
-        },
-        "sameAs": "https://indiantrails.libnet.info/event/16493181",
-        "description": "Wednesday, October 21 2026 6:00pm - 8:00pm \n If your craft of choice uses needles or hooks, this group is for you. Bring your knit, crochet, embroidery or…"
-      }
-    },
-    {
-      "@type": "ListItem",
-      "position": 5,
-      "item": {
-        "@type": "Event",
-        "name": "Library Board Meeting",
-        "startDate": "2026-10-21T19:00:00-05:00",
-        "url": "https://withintenmiles.com/wheeling-60090/#ev-library-board-meeting-2026-10-21",
-        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "location": {
-          "@type": "Place",
-          "name": "Indian Trails Public Library",
-          "address": {
-            "@type": "PostalAddress",
-            "addressCountry": "US",
-            "addressLocality": "Wheeling",
-            "addressRegion": "IL"
-          }
-        },
-        "sameAs": "https://indiantrails.libnet.info/event/16198755",
-        "description": "Wednesday, October 21 2026 7:00pm - 9:00pm \n The Board of Trustees meet for its monthly workshop and planning session. This meeting is open to the public. The…"
-      }
-    },
-    {
-      "@type": "ListItem",
-      "position": 6,
-      "item": {
-        "@type": "Event",
-        "name": "Scam Safety",
-        "startDate": "2026-10-21T19:00:00-05:00",
-        "url": "https://withintenmiles.com/wheeling-60090/#ev-scam-safety-2026-10-21",
-        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "location": {
-          "@type": "Place",
-          "name": "Indian Trails Public Library",
-          "address": {
-            "@type": "PostalAddress",
-            "addressCountry": "US",
-            "addressLocality": "Wheeling",
-            "addressRegion": "IL"
-          }
-        },
-        "sameAs": "https://indiantrails.libnet.info/event/16642742",
-        "description": "Wednesday, October 21 2026 7:00pm - 8:00pm \n Learn to protect your personal information and stay safe online from phishing attempts, pop-ups and other scams.…"
-      }
-    },
-    {
-      "@type": "ListItem",
-      "position": 7,
       "item": {
         "@type": "Event",
         "name": "My Grown Up And Me: Apple Investigation",
@@ -168,7 +30,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 8,
+      "position": 2,
       "item": {
         "@type": "Event",
         "name": "Memory Cafe",
@@ -191,7 +53,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 9,
+      "position": 3,
       "item": {
         "@type": "Event",
         "name": "League of Women Voters Build Your Own Ballot",
@@ -214,7 +76,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 10,
+      "position": 4,
       "item": {
         "@type": "Event",
         "name": "Halloween Pony Bead Keychains",
@@ -237,7 +99,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 11,
+      "position": 5,
       "item": {
         "@type": "Event",
         "name": "Medicare Part D",
@@ -260,7 +122,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 12,
+      "position": 6,
       "item": {
         "@type": "Event",
         "name": "Babytime!",
@@ -283,7 +145,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 13,
+      "position": 7,
       "item": {
         "@type": "Event",
         "name": "Wonderful Walkers",
@@ -306,7 +168,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 14,
+      "position": 8,
       "item": {
         "@type": "Event",
         "name": "Movie Matinee: Beetlejuice Beetlejuice (2024)",
@@ -329,7 +191,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 15,
+      "position": 9,
       "item": {
         "@type": "Event",
         "name": "Custom Candy Bag",
@@ -352,7 +214,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 16,
+      "position": 10,
       "item": {
         "@type": "Event",
         "name": "Pop-up Movie: Disclosure Day (2026)",
@@ -375,7 +237,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 17,
+      "position": 11,
       "item": {
         "@type": "Event",
         "name": "CPR Class",
@@ -398,7 +260,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 18,
+      "position": 12,
       "item": {
         "@type": "Event",
         "name": "Rainbow Watercolor Pet Portraits",
@@ -421,7 +283,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 19,
+      "position": 13,
       "item": {
         "@type": "Event",
         "name": "The Arlingtones",
@@ -444,7 +306,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 20,
+      "position": 14,
       "item": {
         "@type": "Event",
         "name": "Day of the Dead Ofrenda | Dia de los Muertos Ofrenda",
@@ -467,7 +329,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 21,
+      "position": 15,
       "item": {
         "@type": "Event",
         "name": "Genealogy Interest Group Meeting",
@@ -490,7 +352,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 22,
+      "position": 16,
       "item": {
         "@type": "Event",
         "name": "Noisy Time",
@@ -513,7 +375,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 23,
+      "position": 17,
       "item": {
         "@type": "Event",
         "name": "Rise & Read Morning Book Discussion",
@@ -536,7 +398,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 24,
+      "position": 18,
       "item": {
         "@type": "Event",
         "name": "Paint and Steep Tea",
@@ -559,7 +421,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 25,
+      "position": 19,
       "item": {
         "@type": "Event",
         "name": "Spanish Conversation Practice | At the Branch",
@@ -582,7 +444,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 26,
+      "position": 20,
       "item": {
         "@type": "Event",
         "name": "Read to Learn",
@@ -605,7 +467,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 27,
+      "position": 21,
       "item": {
         "@type": "Event",
         "name": "Scary Stories to Draw in the Dark",
@@ -628,7 +490,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 28,
+      "position": 22,
       "item": {
         "@type": "Event",
         "name": "Coloring Club",
@@ -651,7 +513,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 29,
+      "position": 23,
       "item": {
         "@type": "Event",
         "name": "Paint and Steep Tea",
@@ -674,7 +536,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 30,
+      "position": 24,
       "item": {
         "@type": "Event",
         "name": "Plan Commission Meeting",
@@ -697,7 +559,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 31,
+      "position": 25,
       "item": {
         "@type": "Event",
         "name": "Chat & Play Cafe",
@@ -720,7 +582,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 32,
+      "position": 26,
       "item": {
         "@type": "Event",
         "name": "Monogrammed Tote Bags",
@@ -743,7 +605,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 33,
+      "position": 27,
       "item": {
         "@type": "Event",
         "name": "Fall for Autumn Crafts",
@@ -766,7 +628,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 34,
+      "position": 28,
       "item": {
         "@type": "Event",
         "name": "High School Book Club | Grades 9-12",
@@ -789,7 +651,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 35,
+      "position": 29,
       "item": {
         "@type": "Event",
         "name": "Frightening Fics Book Discussion",
@@ -812,7 +674,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 36,
+      "position": 30,
       "item": {
         "@type": "Event",
         "name": "Spooktacular Storytime",
@@ -835,7 +697,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 37,
+      "position": 31,
       "item": {
         "@type": "Event",
         "name": "Craft for The Day of The Dead | At the Branch",
@@ -858,7 +720,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 38,
+      "position": 32,
       "item": {
         "@type": "Event",
         "name": "Dia de Los Muertos with Mariachi Sirenas",
@@ -881,7 +743,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 39,
+      "position": 33,
       "item": {
         "@type": "Event",
         "name": "Halloween Trick or Treat Hours - 3pm to 7pm",
@@ -904,7 +766,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 40,
+      "position": 34,
       "item": {
         "@type": "Event",
         "name": "Support Our Troops",
@@ -927,7 +789,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 41,
+      "position": 35,
       "item": {
         "@type": "Event",
         "name": "High School Volunteer Kits",
@@ -950,7 +812,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 42,
+      "position": 36,
       "item": {
         "@type": "Event",
         "name": "Stitch Together Meet-Up",
@@ -973,7 +835,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 43,
+      "position": 37,
       "item": {
         "@type": "Event",
         "name": "Tech Assistance / Assistencia de Tech",
@@ -996,7 +858,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 44,
+      "position": 38,
       "item": {
         "@type": "Event",
         "name": "Bookworms Book Club | Grades 4-5",
@@ -1019,7 +881,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 45,
+      "position": 39,
       "item": {
         "@type": "Event",
         "name": "Intro to Chinese Mahjong",
@@ -1042,7 +904,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 46,
+      "position": 40,
       "item": {
         "@type": "Event",
         "name": "Village Board Regular Meeting",
@@ -1065,7 +927,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 47,
+      "position": 41,
       "item": {
         "@type": "Event",
         "name": "Boba Tea Keychains",
@@ -1088,7 +950,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 48,
+      "position": 42,
       "item": {
         "@type": "Event",
         "name": "Alcohol Ink Art",
@@ -1111,7 +973,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 49,
+      "position": 43,
       "item": {
         "@type": "Event",
         "name": "Writers Workshop",
@@ -1130,6 +992,167 @@
         },
         "sameAs": "https://indiantrails.libnet.info/event/15836584",
         "description": "Tuesday, November 03 2026 6:30pm - 8:45pm \n Share your work with others in a supportive atmosphere at this monthly community writers group led by author…"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 44,
+      "item": {
+        "@type": "Event",
+        "name": "Read to Learn",
+        "startDate": "2026-11-04T09:00:00-06:00",
+        "url": "https://withintenmiles.com/wheeling-60090/#ev-read-to-learn-2026-11-04",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Indian Trails Public Library",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Wheeling",
+            "addressRegion": "IL"
+          }
+        },
+        "sameAs": "https://indiantrails.libnet.info/event/11861203",
+        "description": "Wednesday, November 04 2026 9:00am - 12:00pm \n District 214 Read to Learn Adult Literacy Program."
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 45,
+      "item": {
+        "@type": "Event",
+        "name": "Knitting for Beginners",
+        "startDate": "2026-11-04T13:00:00-06:00",
+        "url": "https://withintenmiles.com/wheeling-60090/#ev-knitting-for-beginners-2026-11-04",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Indian Trails Public Library",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Wheeling",
+            "addressRegion": "IL"
+          }
+        },
+        "sameAs": "https://indiantrails.libnet.info/event/17127794",
+        "description": "Wednesday, November 04 2026 1:00pm - 3:00pm \n Learn the basic skills needed to start your knitting journey. Materials provided. R"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 46,
+      "item": {
+        "@type": "Event",
+        "name": "Jewelry Making Extravaganza",
+        "startDate": "2026-11-04T16:00:00-06:00",
+        "url": "https://withintenmiles.com/wheeling-60090/#ev-jewelry-making-extravaganza-2026-11-04",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Indian Trails Public Library",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Wheeling",
+            "addressRegion": "IL"
+          }
+        },
+        "sameAs": "https://indiantrails.libnet.info/event/16826727",
+        "description": "Wednesday, November 04 2026 4:00pm - 5:30pm \n Learn jewelry making techniques using our collection of beads and jewelry supplies to create a unique piece to…"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 47,
+      "item": {
+        "@type": "Event",
+        "name": "Paint and Steep Tea",
+        "startDate": "2026-11-04T18:00:00-06:00",
+        "url": "https://withintenmiles.com/wheeling-60090/#ev-paint-and-steep-tea-2026-11-04",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Indian Trails Public Library",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Wheeling",
+            "addressRegion": "IL"
+          }
+        },
+        "sameAs": "https://indiantrails.libnet.info/event/17100994",
+        "description": "Wednesday, November 04 2026 6:00pm - 8:00pm \n Reserved for Adult Indian Trails Library cardholders only. Join us for a monthly painting program with teaching…"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 48,
+      "item": {
+        "@type": "Event",
+        "name": "Plan Commission Meeting",
+        "startDate": "2026-11-04T18:30:00-06:00",
+        "url": "https://withintenmiles.com/wheeling-60090/#ev-plan-commission-meeting-2026-11-04",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Wheeling, IL",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Wheeling",
+            "addressRegion": "IL"
+          }
+        },
+        "sameAs": "https://www.wheelingil.gov/common/modules/iCalendar/iCalendar.aspx?feed=calendar&catID=14",
+        "description": "https://www.wheelingil.gov/calendar.aspx?EID=1970"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 49,
+      "item": {
+        "@type": "Event",
+        "name": "Library Board Workshop",
+        "startDate": "2026-11-04T19:00:00-06:00",
+        "url": "https://withintenmiles.com/wheeling-60090/#ev-library-board-workshop-2026-11-04",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Indian Trails Public Library",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Wheeling",
+            "addressRegion": "IL"
+          }
+        },
+        "sameAs": "https://indiantrails.libnet.info/event/16202832",
+        "description": "Wednesday, November 04 2026 7:00pm - 9:00pm \n The Board of Trustees meet for its monthly workshop and planning session. This meeting is open to the public.…"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 50,
+      "item": {
+        "@type": "Event",
+        "name": "Intro to Excel",
+        "startDate": "2026-11-04T19:00:00-06:00",
+        "url": "https://withintenmiles.com/wheeling-60090/#ev-intro-to-excel-2026-11-04",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Indian Trails Public Library",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Wheeling",
+            "addressRegion": "IL"
+          }
+        },
+        "sameAs": "https://indiantrails.libnet.info/event/17116353",
+        "description": "Wednesday, November 04 2026 7:00pm - 8:00pm \n Learn to create a basic spreadsheet using some of the most important tools in Excel. Intended for beginners and…"
       }
     }
   ]
