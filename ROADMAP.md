@@ -220,7 +220,7 @@ doesn't re-suggest something already shipped.
 
 **Build queue (by deadline; refreshed by the research loop, item 346).**
 Pick from the top unless the owner has flagged something else:
-0. **357** (wrap archived issues; Google now crawls them). **360** (/this-weekend/ picks and signup near the top). Then **351** (the sponsor page's proof box).
+0. **363, 364** (the subject line, before the Oct 28 issue's build; that issue's subject is fixed by item 348, so these first matter on Nov 4). **357** (wrap archived issues; Google now crawls them). **360** (/this-weekend/ picks and signup near the top). Then **351** (the sponsor page's proof box).
 1. **306**: the OpenStreetMap prospect list (by Oct 25).
 2. **323**: leaf pickup (in season now).
 3. **313, 314**: the sales mock-up and starter pack (before outreach).
@@ -259,6 +259,8 @@ that limit.
   one library desk (step 8g).
 
 **Quick account actions — about 25 minutes in total, no decisions:**
+
+0. **Sender name (30 sec, item 365).** Buttondown → Settings → Sender name: **Within Ten**.
 
 1. **Check Yahoo's Spam folder (30 sec, item 239).** Search Yahoo Mail,
    including Spam, for "this weekend" from Buttondown, and mark any copy
@@ -17482,6 +17484,80 @@ as a source of partisan listings**; and **Buttondown's subscriber
 referrals** (exists; parked until there is a list to refer from). The
 design/UX angle is the weekend page, which buries its signup at 91% of
 the page.
+
+
+#### Research pass 2026-10-22 (ninety-sixth pass)
+
+Overnight the build loop shipped item 361 (partisan meetings left out of
+every list), and the Oct 22 issue went out at 00:55 UTC to **one
+subscriber**. Its subject was:
+
+> **ITALIAN BRED: A CELEBRATION OF FAMILY, CULTURE &… + 51 more**
+
+That is all capitals, cut mid-title with an ellipsis, 60 characters long,
+and led by a ticketed comedy show at the Des Plaines Theatre, not by the
+family pick the email itself puts first. Item 334 title-cased shouting
+titles in the cards but not in the subject line, which has its own
+builder. The subject is the one line every subscriber sees, whether or
+not they open, so this pass is about the inbox view.
+
+| Angle | What it is / what we found | Why it matters here |
+|---|---|---|
+| **Subject length on phones, 2026** (EmailToolTester device tests as cited by Simplelists; vendor guides from Sendtric, Zeliq and others) | Mobile clients show **about 33 characters on Gmail for Android**, roughly 40 on most phones, about 60 on desktop, and 20–25 on a watch. The common advice is **30–50 characters with the key words in the first 33**. On caps, the sources only say spam filtering goes "beyond ALL CAPS". None of them quantifies caps against open rate | `SUBJECT_MAX_LEN` is **60**, which is the desktop limit. On a phone, the Oct 22 subject showed roughly *"ITALIAN BRED: A CELEBRATION OF FAM…"*: one shouted show title and nothing about the weekend. Almost every subscriber is a suburban parent on a phone |
+| **How the Oct 22 subject was chosen** (`build_combined_email_subject_line`, `_occasion_score`, `_clean_subject_title`) | `_occasion_score` gives **+3 for occasion words** (*"Celebration"*) and more for the `kid_friendly` tag, which *"…of **Family**, Culture & Comedy"* triggers. So a theatre comedy show outranked *Trunk or Treat* and the park district's family events. `_clean_subject_title` strips years and session suffixes but **doesn't apply item 334's display-case rule**, and `_fit_subject` cuts the lead with *"…"* instead of choosing a shorter title | The email's own "Don't miss" pick and the subject disagree, so the subject promises something the issue doesn't lead with. Two separate fixes: how the subject **looks** (item 363) and which event it **leads with** (item 364) |
+| **Newsletter subject formats** (community-newsletter and event-email guides) | Two patterns recur. A **recognisable recurring label** (*"Weekly Update: …"*), and **time-bound wording** for event mail. Guides warn that the label eats characters on mobile | With only about 33 visible characters, a label in the subject is costly. The recognisable part belongs in the **sender name**, which the inbox shows separately, in bold, above the subject (item 365) |
+
+#### P1 (new)
+
+363. **Make the subject line readable on a phone.** Build loop,
+     `_clean_subject_title` and `_fit_subject`:
+
+     - Apply **item 334's display-case rule** to subject titles: more than
+       70% capitals and over 12 characters means title case, with known
+       acronyms kept.
+     - **Never cut a title mid-way.** If the lead title plus the count
+       doesn't fit, try the next-ranked title, then a two-title form
+       without the count, then the plain fallback (*"52 things to do
+       this weekend in 5 towns"*). The `…` character never appears in a
+       subject.
+     - **Lower `SUBJECT_MAX_LEN` to 50**, and make sure the first 33
+       characters carry an event name, not a prefix.
+     - Keep the existing format *"[Title], [Title] and N more this
+       weekend"*, which reads naturally. Drop the *"+ 51 more"* form.
+
+     Tests: build the subject from the real Oct 22 inputs. It must not
+     contain "ITALIAN BRED" in capitals, must have no `…`, and must be at
+     most 50 characters. A short lead keeps the count, and an all-caps
+     title becomes title case.
+
+364. **Lead the subject with the email's first "Don't miss" pick.** Build
+     loop: when choosing the subject's lead title, take the **first
+     "Don't miss" event** (the same family-scored selection the email
+     puts first, items 268 and 355). Fill the second title from the next
+     pick in a **different town**. `_occasion_score` then only breaks ties
+     among the rest. Also stop occasion words alone from lifting
+     **ticketed shows** at theatre venues into the lead: a "Don't miss"
+     pick is already family-ranked. Tests: the subject's first title
+     equals the email's first "Don't miss" title, and two titles from
+     the same town don't both lead when another town has a pick.
+     Subject, preheader and the top of the email then all tell the
+     reader the same thing.
+
+#### P2, owner (new)
+
+365. **Check the sender name reads "Within Ten" (30 seconds).** In
+     Buttondown → Settings → **Sender name** (it may be labelled "From
+     name"), set it to **Within Ten**, or **Within Ten · Weekend**. That
+     bold line is the recognisable label the guides recommend, and it
+     costs the subject no characters. Add it to the Needs Ryan quick
+     actions. If it already reads that way, mark it done.
+
+Competitors reviewed this pass: **2026 subject-length guidance** (about
+33 characters visible on Gmail for Android; 30–50 recommended), **how this
+site's own subject builder chose the Oct 22 subject**, and
+**community-newsletter subject formats** (a recurring label belongs in
+the sender name). The design/UX angle is **the inbox view**: the Oct 22
+subject as a phone shows it.
 
 
 ## Working agreements for autonomous iteration
