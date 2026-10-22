@@ -220,7 +220,7 @@ doesn't re-suggest something already shipped.
 
 **Build queue (by deadline; refreshed by the research loop, item 346).**
 Pick from the top unless the owner has flagged something else:
-0. **360** (/this-weekend/ picks and signup near the top). Then **351** (the sponsor page's proof box).
+0. **360** (/this-weekend/ picks and signup near the top). **366** (the trick-or-treat page's off-season state, by Oct 31). **368** (the archive poll leak). Then **351** (the sponsor page's proof box).
 1. **306**: the OpenStreetMap prospect list (by Oct 25).
 2. **323**: leaf pickup (in season now).
 3. **313, 314**: the sales mock-up and starter pack (before outreach).
@@ -17558,6 +17558,84 @@ site's own subject builder chose the Oct 22 subject**, and
 **community-newsletter subject formats** (a recurring label belongs in
 the sender name). The design/UX angle is **the inbox view**: the Oct 22
 subject as a phone shows it.
+
+
+#### Research pass 2026-10-22, evening (ninety-seventh pass)
+
+Today the build loop shipped items 363 and 364 (a phone-readable subject
+led by the first "Don't miss" pick) and item 357 (archived issues wrapped
+as site pages with a "see this weekend" banner, a dated title and a
+signup). Halloween is nine days away. This pass plans **the day after**:
+what `/trick-or-treat/` says from Nov 1 to next September, when it still
+ranks but has nothing current to say. It fills one holiday date the
+`/holidays/` page is missing, and checks the new archive pages for a
+side effect.
+
+| Angle | What it is / what we found | Why it matters here |
+|---|---|---|
+| **When trick-or-treat searches happen** (state-level search analyses of Oct 30–31, 2017; general Halloween search-trend reports) | The most-searched Halloween question in several states was **"What time does trick-or-treat start?"**, concentrated on **Oct 30–31**. General Halloween interest stays low most of the year and climbs through October. No source measured searches for "hours" in the week before Halloween specifically | The page's value is almost all in a short window, and the same URL has to rank again next October. After Nov 1 the page must stay **indexed and current-looking**, so it keeps its standing, and it should capture the people who'll want next year's hours. Today it would keep showing *"Saturday, October 31"* and past events until a 2027 config exists (item 366) |
+| **Halloween 2027** | Oct 31, 2027 is a **Sunday** | Some suburbs move or shorten hours when Halloween falls on a Sunday. The off-season page should say *"2027 is a Sunday; villages usually post hours in late September"*, which is true and useful, and must not guess the hours |
+| **Holiday tree lightings, 2026** (Arlington Heights Park District calendar; the Des Plaines History Center's calendar; NBC Chicago tree-lighting roundup) | **Arlington Heights: Fri Nov 27** at North School Park, pre-show 4:30 PM, lighting 5:15 PM (already in config, item 274). **Des Plaines: "2026 Holiday Tree Lighting", Fri Dec 4, 4:30–6:30 PM, Metropolitan Square**, described as the first Friday in December, per the History Center's calendar. **Mount Prospect and Wheeling:** nothing for 2026 found | Item 274's `/holidays/` page and item 285's homepage holiday banner show Des Plaines as *"date TBA"*. A first-party-adjacent listing now gives a date. Confirm it against the City's own page before setting it, by the site's sourcing rule (item 367) |
+| **The archived issue pages (design/UX)** | `/issues/2026-10-22/` renders well: a forward banner (*"This is the Oct 22, 2026 issue. See this weekend's events →"*), the H1 *"Weekend of Oct 23–25, 2026"*, and the email framed below. But the framed email keeps its **live "Did you go?" buttons** (item 331). A search visitor reading an old issue can click *Yes*, which lands on `/thanks/went/?w=2026-10-22` and is **counted as a subscriber's answer** | Item 331's poll exists to give sponsors an honest *"N readers went"*. Archive clicks from non-subscribers would inflate it, and the archive is now indexed and linked from the homepage. The fix is one template switch (item 368) |
+
+#### P1 (new)
+
+366. **Give `/trick-or-treat/` an off-season state from Nov 1.** Build
+     loop, `prepare_trick_or_treat()` and the template:
+
+     - From **Nov 1** until the next year's first village hours are set
+       in config: the H1 and `<title>` read *"Trick-or-Treat Hours
+       2027: Arlington Heights, Des Plaines, Mount Prospect, Palatine,
+       Wheeling"*, keeping item 310's query-matching. The intro says
+       *"Halloween 2027 is a Sunday. Villages usually post hours in late
+       September; they appear here, each linked to the village's page, as
+       soon as they do."*
+     - **Last year's hours as reference**, clearly labelled *"2026 hours
+       (for reference)"*, with no 2027 times shown or implied.
+     - **A reminder signup:** the compact form (item 345) with the
+       heading *"Email me when the 2027 hours are posted"*, adding the
+       Buttondown tag **`remind:halloween-2027`**. Subscribers get the
+       weekly email as usual. The tag lets a September 2027 issue lead
+       with the hours.
+     - Remove the countdown, the trunk-or-treat list and past Halloween
+       events. Keep the page in the sitemap and indexable.
+
+     Tests: a build dated Nov 1 shows the 2027 title, the reference
+     label, the reminder form with its tag, and no 2026 event list. A
+     build dated Oct 31 still shows the 2026 page. Set the year rollover
+     from the date, not from a hard-coded year.
+
+#### P2 (new)
+
+367. **Confirm and set the Des Plaines tree lighting (Fri Dec 4, 2026).**
+     Build loop: add a URL probe (`config/url_probes.yaml`) for the
+     Des Plaines History Center's *"2026 Holiday Tree Lighting"* listing
+     and the City of Des Plaines events page, with `patterns:` for
+     *"tree lighting"* and *"December 4"*. If the City's page, or the
+     History Center listing naming the City as host, confirms **Fri Dec
+     4, 4:30–6:30 PM, Metropolitan Square**, set
+     `tree_lighting: {date: 2026-12-04, ...}` in
+     `config/regions/des-plaines-60016.yaml` with that URL. Add the same
+     probe pattern for Mount Prospect and Wheeling's village event pages.
+     `/holidays/` and the homepage banner then update without other
+     changes. Never set a date from the NBC roundup alone.
+
+368. **Neutralise the "Did you go?" poll in archived issues.** Build loop,
+     the archive writer (item 357): when framing a stored issue, replace
+     the poll block's two buttons with one muted line, *"Subscribers
+     answer this each week."*, or remove the block. Equivalently, rewrite
+     the links to `?w=archive`, which the audience snapshot excludes.
+     Removal is simpler and preferred. The stored email file stays
+     byte-for-byte as sent. Only the archive view changes. Tests: no
+     `/thanks/went/` or `/thanks/not-yet/` link appears in any
+     `/issues/*/` page, and the stored send file still contains them.
+
+Competitors reviewed this pass: **search timing for trick-or-treat
+hours** (concentrated on Oct 30–31), **2026 holiday tree-lighting
+listings** for the five towns (Des Plaines' date found; Mount Prospect and
+Wheeling still unposted), and **the calendar for 2027** (Halloween on a
+Sunday). The design/UX angle is **the new archived-issue pages**, which
+leaked live poll buttons to non-subscribers.
 
 
 ## Working agreements for autonomous iteration
