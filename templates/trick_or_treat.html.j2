@@ -26,7 +26,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Trick-or-Treat Hours {{ year }}: {{ title_towns }} — Within Ten</title>
-<meta name="description" content="Official trick-or-treat hours for {{ town_names }}, in one place{% if any_events %}, plus each town's Halloween events{% endif %}.">
+<meta name="description" content="{% if off_season %}Trick-or-treat hours {{ year }} for {{ town_names }}: villages usually post in late September, and they appear here as soon as they do. {{ ref_year }} hours for reference.{% else %}Official trick-or-treat hours for {{ town_names }}, in one place{% if any_events %}, plus each town's Halloween events{% endif %}.{% endif %}">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Within Ten">
 <meta property="og:title" content="Trick-or-Treat Hours {{ year }}: {{ title_towns }} — Within Ten">
@@ -191,6 +191,7 @@
   .night ul { margin: 4px 0 4px 20px; padding: 0; }
   .night-note { font-size: 16px; color: var(--muted, #605d5d); }
   #newsletter-signup-top { margin-top: 16px; padding: 12px 16px; }
+  .small { color: var(--muted); font-size: 14px; margin: 0 0 8px; }
   .glance-title { font-size: 18px; margin: 20px 0 8px; }
   .glance { width: 100%; border-collapse: collapse; margin: 0 0 8px; }
   .glance th, .glance td { text-align: left; padding: 9px 4px; border-bottom: 1px solid var(--border); font-size: 16px; }
@@ -223,7 +224,7 @@
       <a class="back" href="{{ hub_url }}">&larr; All regions</a>
       <div class="kicker">🎃 Halloween &middot; {{ halloween_weekday }}, October 31</div>
       <h1>Trick-or-treat hours {{ year }}</h1>
-      <div class="sub">{{ title_towns }}. Official hours, each linked to the village page it came from.</div>
+      <div class="sub">{% if off_season %}{{ title_towns }}. Halloween {{ year }} is a {{ halloween_weekday }}. Villages usually post hours in late September; they appear here, each linked to the village's page, as soon as they do.{% else %}{{ title_towns }}. Official hours, each linked to the village page it came from.{% endif %}</div>
       {% if countdown %}<span class="tot-countdown">👻 {{ countdown }}</span>{% endif %}
     </div>
   </div>
@@ -240,19 +241,25 @@
     <p class="night-note">Forecast, updated {{ night.updated }}.</p>
   </section>
   {% endif %}
-  <h2 class="glance-title">{% if common_date %}All on {{ common_date }}{% else %}Hours by town{% endif %}</h2>
+  <h2 class="glance-title">{% if off_season %}{{ ref_year }} hours (for reference){% elif common_date %}All on {{ common_date }}{% else %}Hours by town{% endif %}</h2>
+  {% if off_season %}<p class="small">These were last year's hours. No {{ year }} times are shown or implied.</p>{% endif %}
   <table class="glance">
     <tbody>
       {% for entry in entries %}
       <tr style="--town:{{ entry.color }}">
         <th scope="row"><a href="#tot-{{ entry.region_id }}">{{ entry.region_name }}</a></th>
-        <td>{% if entry.hours %}{{ entry.hours_short if common_date else entry.hours }}{% if entry.note %}<span class="row-note">{{ entry.note }}</span>{% else %}<span class="row-note"><a href="{{ entry.url }}">posted by the village</a></span>{% endif %}{% elif entry.no_official_hours %}No set hours{% else %}Not posted yet{% endif %}</td>
+        <td>{% if entry.hours %}{{ entry.hours_short if common_date else entry.hours }}{% if entry.note %}<span class="row-note">{{ entry.note }}</span>{% else %}<span class="row-note"><a href="{{ entry.url }}">posted by the village</a></span>{% endif %}{% elif entry.no_official_hours %}No set hours{% elif off_season %}No hours posted{% else %}Not posted yet{% endif %}</td>
       </tr>
       {% endfor %}
     </tbody>
   </table>
   {# ROADMAP.md item 345: a compact second signup right under the hours, for visitors from an ad or a flyer; the full block stays at the bottom. #}
+  {% if off_season %}
+  {{ signup_form(newsletter, "newsletter-signup", "bd-email", "remind:halloween-" ~ year, "trick-or-treat", "Email me when the " ~ year ~ " hours are posted") }}
+  {% else %}
   {{ signup_form(newsletter, "newsletter-signup-top", "bd-email-top", "town:all", "trick-or-treat", "Halloween's a " ~ halloween_weekday ~ ". Get the weekend's events by email on Thursday.") }}
+  {% endif %}
+  {% if not off_season %}
   <div class="entry-list">
     {% for entry in entries %}
     <div class="entry" id="tot-{{ entry.region_id }}" style="--town:{{ entry.color }}">
@@ -274,6 +281,7 @@
     </div>
     {% endfor %}
   </div>
+  {% endif %}
   <div class="share"><button type="button" id="share-btn">Send this to a neighbour</button><span class="copied" id="share-note" hidden>Link copied</span></div>
   <p class="note">Villages typically post official trick-or-treat hours in late September or early October. Hours are added here once a village posts them, and each one links to the village page it came from. A town showing "not yet posted" has no announcement for this year that we could confirm, so check its page directly.</p>
   {% if trunk_events %}
@@ -298,7 +306,7 @@
   {% endfor %}
   <p class="note">Every event above comes from that town's library, park district, or village calendar, and links to its listing on the town's page.</p>
   {% endif %}
-  {{ signup_form(newsletter, "newsletter-signup", "bd-email", "town:all", "trick-or-treat", signup_headline) }}
+  {% if not off_season %}{{ signup_form(newsletter, "newsletter-signup", "bd-email", "town:all", "trick-or-treat", signup_headline) }}{% endif %}
   {{ signup_runtime(newsletter) }}
   <script>
   document.getElementById("share-btn").addEventListener("click", function () {
