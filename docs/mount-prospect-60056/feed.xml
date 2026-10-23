@@ -3,8 +3,16 @@
 <channel>
   <title>Within Ten — Upcoming events in Mount Prospect</title>
   <link>https://withintenmiles.com/</link>
-  <description>Upcoming events in Mount Prospect, soonest first - aggregated automatically from village, library, park district and school-district calendars. This build reached 11 of 18 configured sources. 3 sources are shown from their last update, up to 26 hours ago.</description>
-  <lastBuildDate>Fri, 23 Oct 2026 14:00:13 +0000</lastBuildDate>
+  <description>Upcoming events in Mount Prospect, soonest first - aggregated automatically from village, library, park district and school-district calendars. This build reached 14 of 18 configured sources.</description>
+  <lastBuildDate>Fri, 23 Oct 2026 22:01:13 +0000</lastBuildDate>
+  <item>
+    <title>Mount Prospect: Mount Prospect Update - October 23, 2026</title>
+    <link>https://withintenmiles.com/mount-prospect-60056/#ev-mount-prospect-update-october-23-2026-2026-10-23</link>
+    <guid isPermaLink="true">https://withintenmiles.com/mount-prospect-60056/#ev-mount-prospect-update-october-23-2026-2026-10-23</guid>
+    <description>Plenty of Fall activities in Mount Prospect. Catch the latest edition of the Mount Prospect Update and find out what is happening in your town. Official listing: https://www.mountprospect.org/articles/Mount-Prospect-Update-October-23-2026-179.php</description>
+    <pubDate>Fri, 23 Oct 2026 00:00:00 +0000</pubDate>
+    <source url="https://www.mountprospect.org/articles/Mount-Prospect-Update-October-23-2026-179.php">Village of Mount Prospect — News</source>
+  </item>
   <item>
     <title>Mount Prospect: Storytime Playdate: Wonderful Worlds</title>
     <link>https://withintenmiles.com/mount-prospect-60056/#ev-storytime-playdate-wonderful-worlds-2026-10-23</link>
@@ -444,15 +452,6 @@ A virtual… Official listing: https://mppl.libnet.info/event/17476744</descript
  Meet with representatives from the office of the 53rd District State Rep. Nicolle Grasse. Official listing: https://mppl.libnet.info/event/15852957</description>
     <pubDate>Thu, 05 Nov 2026 14:00:00 +0000</pubDate>
     <source url="https://mppl.libnet.info/event/15852957">Mount Prospect Public Library — Events</source>
-  </item>
-  <item>
-    <title>Mount Prospect: Paper Circuits Workshop</title>
-    <link>https://withintenmiles.com/mount-prospect-60056/#ev-paper-circuits-workshop-2026-11-05</link>
-    <guid isPermaLink="true">https://withintenmiles.com/mount-prospect-60056/#ev-paper-circuits-workshop-2026-11-05</guid>
-    <description>Thursday, November 05 2026 6:00pm - 7:00pm 
- Combine art and technology to make paper circuit creations. Official listing: https://mppl.libnet.info/event/16392033</description>
-    <pubDate>Thu, 05 Nov 2026 18:00:00 +0000</pubDate>
-    <source url="https://mppl.libnet.info/event/16392033">Mount Prospect Public Library — Events</source>
   </item>
 </channel>
 </rss>

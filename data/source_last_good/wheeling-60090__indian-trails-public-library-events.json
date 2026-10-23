@@ -1,5 +1,5 @@
 {
- "fetched_at": "2026-10-23T14:00:13+00:00",
+ "fetched_at": "2026-10-23T22:01:13+00:00",
  "items": [
   {
    "date": "Fri, 23 Oct 2026 09:30:00 +0000",
@@ -255,15 +255,15 @@
   },
   {
    "date": "Wed, 04 Nov 2026 19:00:00 +0000",
-   "detail": "Wednesday, November 04 2026 7:00pm - 9:00pm \n The Board of Trustees meet for its monthly workshop and planning session. This meeting is open to the public. The agenda is posted two days prior to the meeting.",
-   "title": "Library Board Workshop",
-   "url": "https://indiantrails.libnet.info/event/16202832"
-  },
-  {
-   "date": "Wed, 04 Nov 2026 19:00:00 +0000",
    "detail": "Wednesday, November 04 2026 7:00pm - 8:00pm \n Learn to create a basic spreadsheet using some of the most important tools in Excel. Intended for beginners and those who have not used Microsoft Excel. R",
    "title": "Intro to Excel",
    "url": "https://indiantrails.libnet.info/event/17116353"
+  },
+  {
+   "date": "Wed, 04 Nov 2026 19:00:00 +0000",
+   "detail": "Wednesday, November 04 2026 7:00pm - 9:00pm \n The Board of Trustees meet for its monthly workshop and planning session. This meeting is open to the public. The agenda is posted two days prior to the meeting.",
+   "title": "Library Board Workshop",
+   "url": "https://indiantrails.libnet.info/event/17723328"
   },
   {
    "date": "Thu, 05 Nov 2026 09:30:00 +0000",
