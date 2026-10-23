@@ -222,6 +222,7 @@ doesn't re-suggest something already shipped.
 Pick from the top unless the owner has flagged something else:
 0. **360** (/this-weekend/ picks and signup near the top). Then **351** (the sponsor page's proof box).
 1. **306**: the OpenStreetMap prospect list (by Oct 25).
+1a. **369**: single-event pages for the week's picks (the Event-markup fix; before the Oct 28 issue's picks if possible).
 2. **323**: leaf pickup (in season now).
 3. **313, 314**: the sales mock-up and starter pack (before outreach).
 4. **328** (probe first), then **325** (by Nov 15), then the rest by
@@ -17636,6 +17637,91 @@ listings** for the five towns (Des Plaines' date found; Mount Prospect and
 Wheeling still unposted), and **the calendar for 2027** (Halloween on a
 Sunday). The design/UX angle is **the new archived-issue pages**, which
 leaked live poll buttons to non-subscribers.
+
+
+#### Research pass 2026-10-23 (ninety-eighth pass)
+
+Overnight the build loop shipped items 366 (the trick-or-treat page's
+off-season state from Nov 1) and 368 (no live poll buttons in archived
+issues). Item 360 (picks and signup at the top of `/this-weekend/`) has
+now been passed over by three build runs in a row. It stays at the top
+of the queue. This pass re-checks the two structured-data bets the
+site made for findability, **Event markup** and **`llms.txt`**, against
+what Google and the crawlers actually do, and the first finding changes
+how the site should mark up its events.
+
+| Angle | What it is / what we found | Why it matters here |
+|---|---|---|
+| **Google's Event guidelines: one event per page** (Google Search Central's Event structured-data documentation, as retrieved; schema.org `Schedule`) | Google's documentation says the event experience **only supports pages that focus on a single event**. It recommends against marking up **schedule or listing pages**, and asks for a separate `Event` for each performance. `eventSchedule` (`Schedule` with `repeatFrequency`, `byDay`, `scheduleTimezone`) is valid schema.org but still marked "new", and nothing found says Google renders it. The page retrieved was a cached copy, so check its current wording when building | Every Event the site emits lives on a **listing page** (a region page carrying about 177, `/this-weekend/`), and its `url` is an **anchor** on that page (`…/mount-prospect-60056/#ev-…`, item 228). By Google's own rule, that is markup for a listing, not an event page. It is the most likely reason the site has never appeared in Google's event results, though 48 pages are indexed. The site can't give 260 events a page each without making thin copies of publishers' listings. It can give the **handful that matter most** their own page (item 369) |
+| **`llms.txt`, measured** (Something Inc.'s 12-week log study, Apr–Jul 2026; Ahrefs as summarised by Search Engine Journal; CompleteSEO; Seer Interactive) | Across **83 sites with a valid `llms.txt`**, OpenAI's crawler fetched it **7 times against 3,990** `robots.txt` fetches, ClaudeBot **9 against 3,120**, and **PerplexityBot never**. Meta's crawler was the exception. Ahrefs found **97% of `llms.txt` files received no requests at all**. Google's John Mueller is quoted saying **no AI system currently uses it**. All sources are vendors, so treat them as directional | The site ships `llms.txt` and `llms-full.txt` (item 230). They cost nothing to keep, and Meta's crawler apparently reads them. But they are **not** a channel to ChatGPT, Claude or Perplexity, and the agent-era section of `BUSINESS_PLAN.md` leans on being "the source agents read". The evidence says agents read **pages and `robots.txt`-allowed content**, so the real lever is crawlable pages and Bing indexing (items 340, 347), not the file (item 371) |
+| **Where an event's link goes (design/UX)** | On the site, an event card's own link goes **straight to the publisher** (library, park district), by design (item 131). Its structured-data `url` is a fragment on a long listing page. There is no page on the site **about** a single event that a search engine, an agent or a person sharing a link can land on and read in one screen | A parent texting *"want to go to this?"* has nothing short to send. A sponsor buying a $20 Event Promo gets a featured slot but **no page of its own**. A single-event page fixes all three, if it stays small, sourced and short-lived (items 369, 370) |
+
+#### P1 (new)
+
+369. **Single-event pages for the few events that matter each week.** Build
+     loop, a bounded set and nothing more:
+
+     - **Which events:** this week's **"Don't miss" picks**, every
+       **Featured / Event Promo** event (item 245), and the
+       trick-or-treat or tree-lighting day events while in season. At
+       most **20 a week**. Never all events. That would be hundreds of
+       thin copies of publishers' listings, which Google treats as
+       low-value aggregator pages.
+     - **Path:** `/e/<yyyy-mm-dd>-<slug>/`. The **`<title>`** follows
+       item 310's style: *"Trunk or Treat, Sat Oct 24, Pioneer Park,
+       Arlington Heights | Within Ten"*.
+     - **Content, one screen:** the date and time, the venue with its
+       street address (item 335's `venues:` table where matched), a
+       2–3 sentence description from the source, tags, and **"Official
+       listing →"** to the publisher as the **primary** button. Below
+       that, "Add to calendar", *"More this weekend in Arlington
+       Heights"* (three links) and the compact signup.
+     - **Markup:** exactly **one** `Event` with `url` = this page,
+       `location` with `PostalAddress`, `organizer` (item 335),
+       `eventStatus` `EventScheduled`, and `offers` only when a price is
+       known, with `priceCurrency`. The same event's entry in the region
+       page JSON-LD switches its `url` to this page.
+     - **Lifetime:** in the sitemap from creation; removed from the
+       sitemap and set to `noindex` **7 days after the event**; deleted
+       after 60 days. The Bing queue (item 347) submits new event pages
+       first.
+
+     Tests: the count cap, one `Event` per page, the canonical equals
+     itself, the expiry rules, and that no event without a first-party
+     source link gets a page. Verify in Google's Rich Results Test on
+     one live page after the first build (owner or build loop, 2
+     minutes).
+
+#### P2 (new)
+
+370. **Give the $20 Event Promo its own page, and say so.** Build loop,
+     after item 369: every promoted event gets an `/e/` page
+     automatically, and `SPONSOR_TIERS` / `SPONSOR_KIT.md` add one
+     honest line to the Event Promo: *"Your event also gets its own page,
+     marked up so Google can show it in event results. Eligible, not
+     guaranteed."* The sponsor-page example card (item 247) links to a
+     sample `/e/example/` page (`noindex`, never in the sitemap) that uses
+     the same template. This is a concrete upgrade for the cheapest
+     product, and it costs nothing per sale.
+
+#### P3 (new)
+
+371. **Keep `llms.txt` as it is; stop treating it as an agent channel.**
+     No build work. Record in `BUSINESS_PLAN.md`'s agent-era section
+     (one sentence, owner-approved wording or the build loop's next
+     docs touch): *"Crawler logs across sites show `llms.txt` is rarely
+     fetched by OpenAI, Anthropic or Perplexity; the site's agent
+     visibility rests on crawlable pages and Bing indexing."* Never
+     mention `llms.txt` in sponsor materials as a reason to buy. A
+     check confirms none do today. Future passes should not propose
+     `llms.txt` enhancements unless a log or GoatCounter referral shows
+     an AI engine using it.
+
+Competitors reviewed this pass: **Google's single-event-page rule for
+Event markup**, **schema.org `Schedule` for recurring events**
+(valid, no rendering evidence), and **2026 crawler-log studies of
+`llms.txt`** (rarely fetched by major AI crawlers). The design/UX angle is
+**where an event's link goes**: no page on the site is about one event.
 
 
 ## Working agreements for autonomous iteration
