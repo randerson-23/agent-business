@@ -6265,3 +6265,49 @@ def test_trick_or_treat_page_looks_ahead_from_nov_1_with_last_years_hours_as_ref
     assert "<h1>Trick-or-treat hours 2026</h1>" in halloween and "Fall Trunk-or-Treat" in halloween and "for reference" not in halloween
     sept = build_digest.render_trick_or_treat_page(entries, datetime(2026, 9, 20, 15, tzinfo=timezone.utc), newsletter=newsletter)
     assert "<h1>Trick-or-treat hours 2026</h1>" in sept
+
+
+def _ep_event(title, day, **kw):
+    return dict({"title": title, "url": "https://src/" + title.replace(" ", "-"), "date_iso": f"2026-10-{day:02d}T10:00:00", "date": f"Oct {day}", "tags": [], "detail": "A description.", "attendable": True, "town": "Palatine", "state": "IL", "source": "Palatine Park District — Events"}, **kw)
+
+
+def test_event_pages_are_a_bounded_set_each_with_a_first_party_link():
+    # ROADMAP.md item 369.
+    sections = [{"region_name": "Palatine", "region_url": "https://x/palatine-60067/", "weekend_events": [
+        _ep_event("Promo Open House", 24, sponsored_by="Acme Realty"), _ep_event("Fall Fest", 24, tags=["kid_friendly", "free"]),
+        _ep_event("No Link", 24, url=""), _ep_event("Ordinary Class", 25)]},
+        {"region_name": "Wheeling", "region_url": "https://x/wheeling-60090/", "weekend_events": [_ep_event("Pumpkin Run", 25, town="Wheeling", tags=["kid_friendly"])]}]
+    tot = [{"region_name": "Palatine", "region_url": "https://x/palatine-60067/", "events": [_ep_event("Fire Dept Trunk-or-Treat", 24)]}]
+    chosen = build_digest.select_event_page_events(sections, tot)
+    titles = [e["title"] for e in chosen]
+    assert titles[0] == "Promo Open House" and "Fall Fest" in titles and "Fire Dept Trunk-or-Treat" in titles
+    assert "No Link" not in titles and "Ordinary Class" not in titles  # no first-party link, or simply not a pick
+    assert all(e["url"].startswith("https://src/") for e in chosen) and len({e["path"] for e in chosen}) == len(chosen)
+    assert chosen[0]["path"] == "e/2026-10-24-promo-open-house/"
+    many = [{"region_name": "Palatine", "region_url": "https://x/p/", "weekend_events": [_ep_event(f"Promo {i}", 24, sponsored_by="A") for i in range(30)]}]
+    assert len(build_digest.select_event_page_events(many)) == build_digest.EVENT_PAGE_CAP
+
+
+def test_event_page_lifetime_noindex_after_7_days_and_deleted_after_60():
+    selected = [dict(build_digest.select_event_page_events([{"region_name": "Palatine", "region_url": "https://x/palatine-60067/", "weekend_events": [_ep_event("Fall Fest", 24, sponsored_by="A")]}])[0])]
+    reg, active, expired, deleted = build_digest.update_event_pages({}, selected, date(2026, 10, 23))
+    assert [e["path"] for e in active] == ["e/2026-10-24-fall-fest/"] and not expired and not deleted
+    assert build_digest.update_event_pages(reg, [], date(2026, 10, 31))[1] != []  # 7 days after: still indexable
+    reg2, active2, expired2, deleted2 = build_digest.update_event_pages(reg, [], date(2026, 11, 1))  # 8 days after
+    assert not active2 and [e["path"] for e in expired2] == ["e/2026-10-24-fall-fest/"]
+    reg3, active3, expired3, deleted3 = build_digest.update_event_pages(reg2, [], date(2026, 12, 24))  # 61 days after
+    assert deleted3 == ["e/2026-10-24-fall-fest/"] and reg3 == {}
+
+
+def test_event_page_has_one_event_its_own_canonical_and_noindex_once_expired():
+    entry = {**build_digest.select_event_page_events([{"region_name": "Palatine", "region_url": "https://x/palatine-60067/", "weekend_events": [_ep_event("Fall Fest", 24, sponsored_by="Acme", tags=["free"])]}])[0]}
+    page = build_digest.render_event_page(entry, more=[{"title": "Other", "url": "https://x/o"}], newsletter={"configured": True, "buttondown_username": "w", "headline": "h"})
+    assert page.count('"@type": "Event"') == 1 and f'<link rel="canonical" href="{build_digest.SITE_BASE_URL}e/2026-10-24-fall-fest/">' in page
+    assert f'"url": "{build_digest.SITE_BASE_URL}e/2026-10-24-fall-fest/"' in page and '"sameAs": "https://src/Fall-Fest"' in page
+    assert '"eventStatus": "https://schema.org/EventScheduled"' in page and '"organizer"' in page and '"offers"' not in page
+    assert "<title>Fall Fest, Sat Oct 24, Palatine | Within Ten</title>" in page and 'noindex' not in page
+    assert "Official listing" in page and "More this weekend in Palatine" in page and page.count("embed-subscribe") == 1
+    old = build_digest.render_event_page(entry, expired=True)
+    assert 'content="noindex"' in old and "This event has passed" in old and "embed-subscribe" not in old
+    assert build_digest.SITE_BASE_URL + entry["path"] in build_digest.collect_sitemap_urls([], None, [entry])
+    assert build_digest.order_bing_urls([build_digest.SITE_BASE_URL + "about/", build_digest.SITE_BASE_URL + entry["path"]], datetime(2026, 10, 24, tzinfo=timezone.utc), [])[0].endswith(entry["path"])

@@ -221,7 +221,6 @@ doesn't re-suggest something already shipped.
 **Build queue (by deadline; refreshed by the research loop, item 346).**
 Pick from the top unless the owner has flagged something else:
 0. **360** (/this-weekend/ picks and signup near the top). Then **351** (the sponsor page's proof box).
-1a. **369**: single-event pages for the week's picks (the Event-markup fix; before the Oct 28 issue's picks if possible).
 2. **323**: leaf pickup (in season now).
 3. **313, 314**: the sales mock-up and starter pack (before outreach).
 4. **328** (probe first), then **325** (by Nov 15), then the rest by
@@ -17657,7 +17656,7 @@ how the site should mark up its events.
 
 #### P1 (new)
 
-369. **Single-event pages for the few events that matter each week.** Build
+369. ✅ **DONE (2026-10-23, core): `/e/<yyyy-mm-dd>-<slug>/` pages (`write_event_pages`) for at most 20 events a week: paid Featured/Promo events first, the week's three "Don't miss" picks (the same selection `/join/` uses), then the weekend's trunk-or-treats; never an event without a first-party link. Each page: title "Trunk or Treat, Sat Oct 24, Arlington Heights | Within Ten", date and time, venue and town, up to 280 characters of the source's description, tags, "Official listing →" as the primary button, Add to calendar, up to three "More this weekend in <town>" links and the signup; exactly one `Event` (url = the page, `sameAs` the publisher, `organizer` from the source and its host, `EventScheduled`, `location` with the town's `PostalAddress`, no `offers` because no price is known). Lifetime from `data/event_pages.json` (committed by build-digest.yml): in the sitemap while active, `noindex` and out of the sitemap 7 days after the event, deleted after 60; linked from `/this-weekend/` (so within two clicks); new event pages lead the Bing queue. Tests: the cap, the first-party-link rule, one Event, canonical equals itself, the expiry rules. NOT done: street addresses and the region-page JSON-LD switching its `url` to the new page (both need item 335's `venues:` table and a selection made before the region pages render); the tree-lighting day events; Google's Rich Results Test on a live page, which needs the first live build.** **Single-event pages for the few events that matter each week.** Build
      loop, a bounded set and nothing more:
 
      - **Which events:** this week's **"Don't miss" picks**, every
