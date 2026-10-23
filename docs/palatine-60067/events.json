@@ -2,102 +2,12 @@
   "@context": "https://schema.org",
   "@type": "ItemList",
   "name": "Upcoming events in Palatine — Within Ten",
-  "dateModified": "2026-10-22T22:00:20+00:00",
-  "numberOfItems": 33,
+  "dateModified": "2026-10-23T06:02:23+00:00",
+  "numberOfItems": 30,
   "itemListElement": [
     {
       "@type": "ListItem",
       "position": 1,
-      "item": {
-        "@type": "Event",
-        "name": "Language Tables: Where Can Harper Take You?",
-        "startDate": "2026-10-22T11:00:00-05:00",
-        "url": "https://withintenmiles.com/palatine-60067/#ev-language-tables-where-can-harper-take-you-2026-10-22",
-        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "location": {
-          "@type": "Place",
-          "name": "Harper College",
-          "address": {
-            "@type": "PostalAddress",
-            "addressCountry": "US",
-            "addressLocality": "Palatine",
-            "addressRegion": "IL"
-          }
-        },
-        "sameAs": "https://events.harpercollege.edu/event/language-tables-where-can-harper-take-you",
-        "description": "Language is about more than vocabulary, it is connecting with the world around you! Stop by Avanté Monday October 19th - Thursday, October 23rd from 11:00am -…"
-      }
-    },
-    {
-      "@type": "ListItem",
-      "position": 2,
-      "item": {
-        "@type": "Event",
-        "name": "Armchair Travel Series: Morocco and Tunisia",
-        "startDate": "2026-10-22T13:00:00-05:00",
-        "url": "https://withintenmiles.com/palatine-60067/#ev-armchair-travel-series-morocco-and-tunisia-2026-10-22",
-        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "location": {
-          "@type": "Place",
-          "name": "Harper College",
-          "address": {
-            "@type": "PostalAddress",
-            "addressCountry": "US",
-            "addressLocality": "Palatine",
-            "addressRegion": "IL"
-          }
-        },
-        "sameAs": "https://events.harpercollege.edu/event/armchair-travel-series-morocco-and-tunisia",
-        "description": "Explore the world one story at a time. Armchair Travels brings the world to Harper through the voices of our own faculty, staff, and students. From cultural…"
-      }
-    },
-    {
-      "@type": "ListItem",
-      "position": 3,
-      "item": {
-        "@type": "Event",
-        "name": "BPAC Parent Workshop: What Values Do You Want Your Children to Live",
-        "startDate": "2026-10-22T18:00:00-05:00",
-        "url": "https://withintenmiles.com/palatine-60067/#ev-bpac-parent-workshop-what-values-do-you-want-your-children-t-2026-10-22",
-        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "location": {
-          "@type": "Place",
-          "name": "Palatine, IL",
-          "address": {
-            "@type": "PostalAddress",
-            "addressCountry": "US",
-            "addressLocality": "Palatine",
-            "addressRegion": "IL"
-          }
-        },
-        "description": "Join us for an inspiring parent workshop led by Lic. Elizabeth"
-      }
-    },
-    {
-      "@type": "ListItem",
-      "position": 4,
-      "item": {
-        "@type": "Event",
-        "name": "D211 Special Board of Education Meeting",
-        "startDate": "2026-10-22T18:00:00-05:00",
-        "url": "https://withintenmiles.com/palatine-60067/#ev-d211-special-board-of-education-meeting-2026-10-22",
-        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "location": {
-          "@type": "Place",
-          "name": "Palatine, IL",
-          "address": {
-            "@type": "PostalAddress",
-            "addressCountry": "US",
-            "addressLocality": "Palatine",
-            "addressRegion": "IL"
-          }
-        },
-        "description": "All regular Board of Education meetings are held in the Anne Ko"
-      }
-    },
-    {
-      "@type": "ListItem",
-      "position": 5,
       "item": {
         "@type": "Event",
         "name": "Tales for Tots",
@@ -121,7 +31,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 6,
+      "position": 2,
       "item": {
         "@type": "Event",
         "name": "Clayson House After Dark",
@@ -144,7 +54,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 7,
+      "position": 3,
       "item": {
         "@type": "Event",
         "name": "Halloween Hustle",
@@ -167,7 +77,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 8,
+      "position": 4,
       "item": {
         "@type": "Event",
         "name": "Recovery, Resilience and Community Support Workshop #3",
@@ -190,7 +100,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 9,
+      "position": 5,
       "item": {
         "@type": "Event",
         "name": "Quest Academy Fall 2026 Open House",
@@ -213,7 +123,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 10,
+      "position": 6,
       "item": {
         "@type": "Event",
         "name": "Downtown Palatine Business Association Trick or Treat Event",
@@ -236,7 +146,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 11,
+      "position": 7,
       "item": {
         "@type": "Event",
         "name": "Palatine Police Taking Back Unwanted Prescription Drugs",
@@ -259,7 +169,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 12,
+      "position": 8,
       "item": {
         "@type": "Event",
         "name": "FREE Trunk or Treat at Napleton's Palatine Mazda",
@@ -283,7 +193,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 13,
+      "position": 9,
       "item": {
         "@type": "Event",
         "name": "FREE Trunk or Treat at Napleton Palatine Hyundai",
@@ -307,7 +217,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 14,
+      "position": 10,
       "item": {
         "@type": "Event",
         "name": "FREE Trunk or Treat at Napleton Palatine Chevrolet",
@@ -331,7 +241,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 15,
+      "position": 11,
       "item": {
         "@type": "Event",
         "name": "FREE Trunk or Treat at Napleton's Palatine Subaru",
@@ -355,7 +265,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 16,
+      "position": 12,
       "item": {
         "@type": "Event",
         "name": "Impact Makers of Palatine Free Self-Defense Workshop",
@@ -379,7 +289,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 17,
+      "position": 13,
       "item": {
         "@type": "Event",
         "name": "Trunk-or-Treat and Community Meal",
@@ -403,7 +313,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 18,
+      "position": 14,
       "item": {
         "@type": "Event",
         "name": "CATIF Fundraiser: A Safe Place, Safe Paws",
@@ -426,7 +336,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 19,
+      "position": 15,
       "item": {
         "@type": "Event",
         "name": "MPAC Ukrainian Virtual Parent Presentation - Program Descriptions",
@@ -448,7 +358,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 20,
+      "position": 16,
       "item": {
         "@type": "Event",
         "name": "D211 Special Board of Education Meeting",
@@ -470,7 +380,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 21,
+      "position": 17,
       "item": {
         "@type": "Event",
         "name": "MPAC Russian Virtual Parent Presentation - Program Descriptions",
@@ -492,7 +402,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 22,
+      "position": 18,
       "item": {
         "@type": "Event",
         "name": "MPAC Tamil Virtual Parent Presentation - Program Descriptions",
@@ -514,7 +424,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 23,
+      "position": 19,
       "item": {
         "@type": "Event",
         "name": "D15 Job Fair",
@@ -536,7 +446,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 24,
+      "position": 20,
       "item": {
         "@type": "Event",
         "name": "Rope",
@@ -560,7 +470,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 25,
+      "position": 21,
       "item": {
         "@type": "Event",
         "name": "Pirate Pete's Trick-or-Treat Festival Returns",
@@ -584,7 +494,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 26,
+      "position": 22,
       "item": {
         "@type": "Event",
         "name": "MPAC Spanish Virtual Parent Presentation - Program Descriptions",
@@ -606,7 +516,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 27,
+      "position": 23,
       "item": {
         "@type": "Event",
         "name": "Village Trick-or-Treating Hours",
@@ -629,7 +539,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 28,
+      "position": 24,
       "item": {
         "@type": "Event",
         "name": "St. Philip's Episcopal Church Open House",
@@ -652,7 +562,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 29,
+      "position": 25,
       "item": {
         "@type": "Event",
         "name": "E-Learning Day",
@@ -673,7 +583,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 30,
+      "position": 26,
       "item": {
         "@type": "Event",
         "name": "End of 12-Week Grading Period",
@@ -695,7 +605,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 31,
+      "position": 27,
       "item": {
         "@type": "Event",
         "name": "D15 Job Fair",
@@ -717,7 +627,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 32,
+      "position": 28,
       "item": {
         "@type": "Event",
         "name": "Community Resource Center Open House",
@@ -740,7 +650,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 33,
+      "position": 29,
       "item": {
         "@type": "Event",
         "name": "Almost Famous",
@@ -760,6 +670,28 @@
         "sameAs": "https://events.harpercollege.edu/event/almost-famous",
         "description": "A coming-of-age drama directed by Cameron Crowe that follows a teenage aspiring journalist who is given the opportunity to tour with a rising rock band while…",
         "isAccessibleForFree": true
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 30,
+      "item": {
+        "@type": "Event",
+        "name": "D211 Board of Education Meeting",
+        "startDate": "2026-11-05T18:00:00-06:00",
+        "url": "https://withintenmiles.com/palatine-60067/#ev-d211-board-of-education-meeting-2026-11-05",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Palatine, IL",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Palatine",
+            "addressRegion": "IL"
+          }
+        },
+        "description": "All regular Board of Education meetings are held in the Anne Ko"
       }
     }
   ]
