@@ -220,7 +220,7 @@ doesn't re-suggest something already shipped.
 
 **Build queue (by deadline; refreshed by the research loop, item 346).**
 Pick from the top unless the owner has flagged something else:
-0. **360** (/this-weekend/ picks and signup near the top). Then **351** (the sponsor page's proof box).
+0. **335 + 372** (venue addresses; the new /e/ pages are ineligible for Google's event results without them). **373** (the /e/ page itself). **360** (/this-weekend/ picks and signup near the top). Then **351** (the sponsor page's proof box).
 2. **323**: leaf pickup (in season now).
 3. **313, 314**: the sales mock-up and starter pack (before outreach).
 4. **328** (probe first), then **325** (by Nov 15), then the rest by
@@ -17720,6 +17720,83 @@ Event markup**, **schema.org `Schedule` for recurring events**
 (valid, no rendering evidence), and **2026 crawler-log studies of
 `llms.txt`** (rarely fetched by major AI crawlers). The design/UX angle is
 **where an event's link goes**: no page on the site is about one event.
+
+
+#### Research pass 2026-10-23, evening (ninety-ninth pass)
+
+Today the build loop shipped item 306 (`scripts/osm_prospects.py` and a
+171-line `OUTREACH_PROSPECTS.md` from OpenStreetMap) and item 369 (the
+first **five single-event pages**, under `/e/`). Both are new surfaces,
+and this pass reads them as their audiences will: an `/e/` page as Google
+and a parent see it, and the prospect list as the owner will use it on a
+Saturday of outreach. Item 360 (picks and signup at the top of
+`/this-weekend/`) is still waiting, now four build runs.
+
+| Angle | What it is / what we found | Why it matters here |
+|---|---|---|
+| **The first `/e/` page, on a phone (design/UX)** | `/e/2026-10-24-trunk-or-treat/`: the title *"Trunk or Treat, Sat Oct 24, Arlington Heights \| Within Ten"*, the date and time, *"Official listing →"* as the main button, *"Add to calendar"*, a publisher line, *"More this weekend"* and the signup. Four gaps. **(1)** The location reads just *"Arlington Heights"*, although the description says *"at Pioneer Park"*: there is no venue name and no street address. **(2)** The description is the **card-truncated** text, ending *"40+ trunks and…"*, on the one page whose job is to say what the event is. **(3)** *"More this weekend in Arlington Heights"* lists **one** link. **(4)** It's plain: no date chip, no town colour, no emoji, unlike the email and the cards | Item 369's reason to exist is Google's single-event rule, and Google's event experience needs a **physical location with an address**. With only the town name, these pages are **not eligible**, and the venue-address table (item 335) has sat in P2 since the eighty-seventh pass. It's now the blocker for the most important findability change in weeks (items 372, 373) |
+| **`OUTREACH_PROSPECTS.md`, as the owner will use it** | Grouped by town, ordered gifts → toys → books → … → restaurants, with names and websites only (no emails or phones, a good call). But at least **9 rows are national chains**: Starbucks, Baskin-Robbins, Kay Jewelers, Men's Wearhouse, Hallmark and others. A chain's local manager can't buy a $20 listing, and corporate marketing won't. The file's header says *"never share or republish this file"*, but **the repository is public** (`visibility: public`), so the file is published as soon as it's committed | Every chain row is a wasted visit or email for an owner with a minute budget. OpenStreetMap marks most chains with **`brand` / `brand:wikidata` tags**, so the script can sort them out. The header's promise isn't true, and any **contact log** (who was emailed, who replied) must never be added to this public file (item 374) |
+| **OpenStreetMap's licence for the published list** (ODbL) | Republishing OSM-derived data is allowed under the **Open Database Licence** with **attribution** (the file has it) and **share-alike** for the derived database | Publishing the list is lawful as long as attribution stays. The real issue is the misleading *"never share"* line and keeping private outreach notes out of a public repo, not the licence |
+
+#### P1 (new)
+
+372. **Re-rank item 335 to the top, and extract venues from descriptions.**
+     Re-rank plus a small addition. Item 335 (a `venues:` table of street
+     addresses, filled from each agency's own contact pages) moves to
+     **level 0 of the build queue**: `/e/` pages are ineligible for
+     Google's event experience without it. Add **venue extraction**: when
+     an event has no parsed venue, match `at <Name> Park|Center|Library|
+     Theatre|Hall|School` in the first sentence of the description
+     against the region's `venues:` names (case-insensitive, exact name
+     only, never fuzzy). Seed the table with the venues the current
+     `/e/` pages need first: **Pioneer Park** (Arlington Heights), the
+     **Napleton dealership addresses** in Palatine (from the dealers'
+     own pages), and the **Mount Prospect Public Library**. Tests: *"at
+     Pioneer Park"* resolves to the AHPD address, an unknown *"at Smith
+     Park"* stays town-only, and an `/e/` page with a matched venue emits
+     a full `PostalAddress`.
+
+373. **Make the `/e/` page say what the event is, and look like the
+     site.** Design/UX, the `/e/` template:
+
+     - **Full source description**, up to about 600 characters and cut
+       at a sentence boundary, never the card's ellipsis.
+     - **Venue line** under the date (*"Pioneer Park, 1100 N Ridge Ave"*)
+       once item 372 matches one, and the venue in the `<title>` (*"Trunk
+       or Treat, Sat Oct 24, Pioneer Park, Arlington Heights"*).
+     - **Three "More this weekend" links**: the town's next picks,
+       falling back to the nearest towns (item 214's order) when the
+       town has fewer than three.
+     - **Visual language:** the email's date chip and the town colour
+       bar from `EMAIL_TOWN_COLORS`, and the event's emoji. Keep it one
+       phone screen down to the signup.
+
+     Tests: no `…` in the description block, three "more" links when the
+     week has them, and the venue appears in the title when matched.
+
+#### P2 (new)
+
+374. **Sort chains out of the prospect list, and make its header true.**
+     Build loop, `scripts/osm_prospects.py`:
+
+     - Rows whose OSM element carries `brand`, `brand:wikidata` or
+       `operator:wikidata` move to a final **"Chains (skip unless you
+       know the owner is local)"** section, alphabetical, one line each.
+     - Replace *"never share or republish this file"* with the true
+       statement: *"Public data from OpenStreetMap (ODbL, attribution
+       above). This repository is public: never add contact notes,
+       replies or prices quoted to a business here; keep those in your
+       own private notes."*
+     - Tests: a fixture with a `brand:wikidata` Starbucks lands in the
+       chains section, and an independent bakery stays in the main
+       table.
+
+Competitors reviewed this pass: **OpenStreetMap's brand tagging and
+ODbL terms** as they apply to the new prospect list, and **Google's
+location requirement for event pages** applied to the first `/e/`
+pages. The design/UX angle is **the first single-event page on a
+phone**, which has no venue, a truncated description and one "more"
+link.
 
 
 ## Working agreements for autonomous iteration
