@@ -221,7 +221,6 @@ doesn't re-suggest something already shipped.
 **Build queue (by deadline; refreshed by the research loop, item 346).**
 Pick from the top unless the owner has flagged something else:
 0. **360** (/this-weekend/ picks and signup near the top). Then **351** (the sponsor page's proof box).
-1. **306**: the OpenStreetMap prospect list (by Oct 25).
 1a. **369**: single-event pages for the week's picks (the Event-markup fix; before the Oct 28 issue's picks if possible).
 2. **323**: leaf pickup (in season now).
 3. **313, 314**: the sales mock-up and starter pack (before outreach).
@@ -15933,7 +15932,7 @@ unsticks the one blocked item.
      - **Budget test:** each region page under **400 KB raw** in the
        build, failing the build rather than drifting back.
 
-306. **Unstick item 288 with OpenStreetMap, by Oct 25.** Build loop: a
+306. ✅ **DONE (2026-10-23, code; first real run is on merge): `scripts/osm_prospects.py` + `osm-prospects.yml` (runs on a GitHub runner when the script changes on main, or on demand) send one Overpass query per town (named shops in gift, toys, books, florist, jewelry, boutique, clothes, chocolate, confectionery, bakery and amenities ice cream, cafe, restaurant inside the town's `admin_level=8` boundary within Illinois, so Wheeling WV and Palatine TX stay out) and write `OUTREACH_PROSPECTS.md`: one table per town, name, category and website only (no emails or phones), "visit in person" where there is no website, ordered by holiday-buying category, capped at 80 rows a town, a thin-coverage line under ten rows, ODbL attribution and the outreach-only guardrail at the top, and a failed town stated rather than hidden. Not done: the item's "cross-check five names per town against the downtown groups' pages", which needs live pages; the file says so. The file only exists after the first workflow run, and Overpass has never been called from this repo.** **Unstick item 288 with OpenStreetMap, by Oct 25.** Build loop: a
      one-off GitHub Action (or a probe-style step) that runs an
      **Overpass** query per town for `shop` in (gift, clothes, boutique,
      bakery, toys, books, florist, jewelry, chocolate, confectionery) and
