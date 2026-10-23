@@ -1529,6 +1529,12 @@ def build_halloween_night(forecast: dict | None, now: datetime, indoor_events: l
     }
 
 
+def tot_off_season(local_today: date) -> bool:
+    """True from Nov 1 through Sep 14: villages post trick-or-treat hours in
+    late September, so until then the page shows no current-year events."""
+    return local_today.month >= 11 or local_today < date(local_today.year, 9, 15)
+
+
 def render_trick_or_treat_page(
     entries: list[dict], now: datetime, analytics: dict | None = None, newsletter: dict | None = None,
     checked: dict[str, str] | None = None, night_forecast: dict | None = None,
@@ -1585,10 +1591,18 @@ def render_trick_or_treat_page(
         for e in lst:
             e["emoji"] = email_event_emoji(e)
     local_today = now.astimezone(LOCAL_TZ).date()
-    halloween_day = date(local_today.year, 10, 31)
+    # ROADMAP.md item 366: from Nov 1 until villages usually post (mid
+    # September) the page looks ahead to next Halloween, with this year's
+    # hours kept as a labelled reference. The year follows the date.
+    off_season = tot_off_season(local_today)
+    display_year = local_today.year + 1 if local_today.month >= 11 else local_today.year
+    if off_season:
+        trunk_events = []
+        town_entries = [{**t, "events": []} for t in town_entries]
+    halloween_day = date(display_year if off_season else local_today.year, 10, 31)
     days_left = (halloween_day - local_today).days
     countdown = (
-        None if days_left < 0 else "Tonight!" if days_left == 0 else "Tomorrow!" if days_left == 1 else f"{days_left} days to go"
+        None if days_left < 0 or off_season else "Tonight!" if days_left == 0 else "Tomorrow!" if days_left == 1 else f"{days_left} days to go"
     )
     return template.render(
         entries=entries,
@@ -1596,14 +1610,16 @@ def render_trick_or_treat_page(
         trunk_events=trunk_events,
         countdown=countdown,
         common_date=common_date,
-        night=build_halloween_night(night_forecast, now, [e for t in town_entries for e in t["events"]]),
+        night=None if off_season else build_halloween_night(night_forecast, now, [e for t in town_entries for e in t["events"]]),
+        off_season=off_season,
+        ref_year=display_year - 1,
         halloween_weekday=halloween_day.strftime("%A"),
-        year=now.year,
+        year=display_year,
         title_towns=", ".join(sorted(e["region_name"] for e in entries)),
         towns_label=f"{_COUNT_WORDS.get(count, str(count))} Towns" if count != 1 else "One Town",
         town_names=_join_names([e["region_name"] for e in entries]),
-        any_events=any(e.get("events") for e in entries),
-        event_json_ld=build_halloween_json_ld(entries),
+        any_events=any(e.get("events") for e in entries) and not off_season,
+        event_json_ld=None if off_season else build_halloween_json_ld(entries),
         newsletter=newsletter or {"configured": False},
         signup_headline=build_halloween_signup_headline(now),
         hub_url=SITE_BASE_URL,
@@ -1885,6 +1901,10 @@ def load_issues(directory: Path | None = None) -> list[dict]:
     return issues
 
 
+# ROADMAP.md item 368: the "Did you go?" poll is for subscribers; an archive
+# page shows the issue without it (the stored file is left exactly as sent).
+_ISSUE_POLL_ROW = re.compile(r'<tr>(?:(?!<tr>).)*?/thanks/(?:went|not-yet)/.*?</tr>\s*(?:<tr><td style="padding:0 0 16px 0;"></td></tr>)?', re.S)
+
 _ISSUE_PICK = re.compile(r"font-size:19px[^>]*>([^<]+)</a>")
 
 
@@ -1907,6 +1927,7 @@ def render_issue_page(
     it was sent (preheader removed, shown in an iframe, links opening the
     top window). Self-canonical and indexable: a real sample of the product."""
     html = _PREHEADER.sub("", issue["html"], count=1)
+    html = _ISSUE_POLL_ROW.sub("", html)
     html = html.replace("<head>", '<head><base target="_top">', 1) if "<head>" in html else '<base target="_top">' + html
     issue_day = datetime.strptime(issue["date"], "%Y-%m-%d").date()
     friday, _saturday, sunday = weekend_dates(issue_day)

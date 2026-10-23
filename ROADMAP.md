@@ -220,7 +220,7 @@ doesn't re-suggest something already shipped.
 
 **Build queue (by deadline; refreshed by the research loop, item 346).**
 Pick from the top unless the owner has flagged something else:
-0. **360** (/this-weekend/ picks and signup near the top). **366** (the trick-or-treat page's off-season state, by Oct 31). **368** (the archive poll leak). Then **351** (the sponsor page's proof box).
+0. **360** (/this-weekend/ picks and signup near the top). Then **351** (the sponsor page's proof box).
 1. **306**: the OpenStreetMap prospect list (by Oct 25).
 2. **323**: leaf pickup (in season now).
 3. **313, 314**: the sales mock-up and starter pack (before outreach).
@@ -17580,7 +17580,7 @@ side effect.
 
 #### P1 (new)
 
-366. **Give `/trick-or-treat/` an off-season state from Nov 1.** Build
+366. ✅ **DONE (2026-10-23): from Nov 1 through Sep 14 (`tot_off_season`; villages usually post in late September) the page's title, H1 and intro look ahead to next Halloween ("Trick-or-Treat Hours 2027: ...", "Halloween 2027 is a Sunday. Villages usually post hours in late September; ..."), last year's hours stay as a table labelled "2026 hours (for reference)" with a line saying no 2027 times are implied, the countdown, forecast box, per-town cards, trunk-or-treats, Halloween events and JSON-LD are removed, and the reminder signup ("Email me when the 2027 hours are posted", tag `remind:halloween-2027`) replaces the two forms; still in the sitemap and indexable; the year follows the date; tests for Nov 2, Feb 3, Oct 31 and Sep 20. The page returns to its in-season form on Sep 15 whether or not a village has posted, because hours in the region config carry no year to detect.** **Give `/trick-or-treat/` an off-season state from Nov 1.** Build
      loop, `prepare_trick_or_treat()` and the template:
 
      - From **Nov 1** until the next year's first village hours are set
@@ -17620,7 +17620,7 @@ side effect.
      `/holidays/` and the homepage banner then update without other
      changes. Never set a date from the NBC roundup alone.
 
-368. **Neutralise the "Did you go?" poll in archived issues.** Build loop,
+368. ✅ **DONE (2026-10-23): `render_issue_page` removes the poll's table row (either the card form or the older single line) from the framed email; the stored file under `data/issues/` is untouched; tests check no `/thanks/went/` or `/thanks/not-yet/` link in any archive page while the stored HTML still has them.** **Neutralise the "Did you go?" poll in archived issues.** Build loop,
      the archive writer (item 357): when framing a stored issue, replace
      the poll block's two buttons with one muted line, *"Subscribers
      answer this each week."*, or remove the block. Equivalently, rewrite

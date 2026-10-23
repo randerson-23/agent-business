@@ -6228,3 +6228,40 @@ def test_subject_leads_with_the_first_dont_miss_pick_and_a_second_from_another_t
     assert "Harvest Fest" not in subject.split(" and ")[0]
     # Without picks the old ranking still decides.
     assert build_digest.build_combined_email_subject_line(sections).startswith("Harvest Fest")
+
+
+def test_archived_issue_pages_drop_the_did_you_go_poll_but_the_stored_issue_keeps_it():
+    # ROADMAP.md item 368.
+    poll_card = (
+        '<tr>\\n<td class="wt-paper" style="background-color:#fffefc;">\\n<div>DID YOU GO?</div>\\n'
+        '<a href="https://withintenmiles.com/thanks/went/?w=2026-10-22">Yes</a> <a href="https://withintenmiles.com/thanks/not-yet/?w=2026-10-22">Not this time</a>\\n</td>\\n</tr>\\n'
+        '<tr><td style="padding:0 0 16px 0;"></td></tr>\\n'
+    )
+    issue = _issue(body="<table><tr><td>Before</td></tr>" + poll_card + "<tr><td>After</td></tr></table>")
+    page = build_digest.render_issue_page(issue)
+    assert "thanks/went" not in page and "thanks/not-yet" not in page and "DID YOU GO" not in page
+    assert "Before" in page and "After" in page
+    assert "thanks/went" in issue["html"]  # the stored file is untouched
+    old_style = _issue(body='<table><tr><td class="wt-ink">Did you go? <a href="https://x/thanks/went/?w=1">Yes</a> <a href="https://x/thanks/not-yet/?w=1">No</a></td></tr><tr><td>Keep</td></tr></table>')
+    assert "thanks/went" not in build_digest.render_issue_page(old_style) and "Keep" in build_digest.render_issue_page(old_style)
+
+
+def test_trick_or_treat_page_looks_ahead_from_nov_1_with_last_years_hours_as_reference():
+    # ROADMAP.md item 366.
+    entries = _tot_entries(3)
+    entries[0]["events"] = [{"title": "Fall Trunk-or-Treat", "url": "https://x/t", "date_iso": "2026-10-31T16:00:00", "date_label": "Sat Oct 31", "anchor_id": "a", "tags": [], "detail": ""}]
+    newsletter = {"configured": True, "buttondown_username": "withinten", "headline": "Get it"}
+    nov = build_digest.render_trick_or_treat_page(entries, datetime(2026, 11, 2, 15, tzinfo=timezone.utc), newsletter=newsletter)
+    assert "<title>Trick-or-Treat Hours 2027:" in nov and "<h1>Trick-or-treat hours 2027</h1>" in nov
+    assert "2026 hours (for reference)" in nov and "Halloween 2027 is a Sunday." in nov
+    assert "Email me when the 2027 hours are posted" in nov and 'value="remind:halloween-2027"' in nov
+    assert "Fall Trunk-or-Treat" not in nov and "days to go" not in nov and "👻" not in nov and 'class="entry-list"' not in nov
+    assert "application/ld+json" not in nov and 'id="newsletter-signup"' in nov and nov.count("embed-subscribe") == 1
+    # The year follows the date: next February the same page is still the 2027 one.
+    feb = build_digest.render_trick_or_treat_page(entries, datetime(2027, 2, 3, 15, tzinfo=timezone.utc), newsletter=newsletter)
+    assert "<h1>Trick-or-treat hours 2027</h1>" in feb and "2026 hours (for reference)" in feb
+    # Oct 31 is still the 2026 page; from Sep 15 villages' hours come back in season.
+    halloween = build_digest.render_trick_or_treat_page(entries, datetime(2026, 10, 31, 15, tzinfo=timezone.utc), newsletter=newsletter)
+    assert "<h1>Trick-or-treat hours 2026</h1>" in halloween and "Fall Trunk-or-Treat" in halloween and "for reference" not in halloween
+    sept = build_digest.render_trick_or_treat_page(entries, datetime(2026, 9, 20, 15, tzinfo=timezone.utc), newsletter=newsletter)
+    assert "<h1>Trick-or-treat hours 2026</h1>" in sept
