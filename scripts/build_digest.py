@@ -19,6 +19,7 @@ import logging
 import math
 import os
 import re
+import shutil
 import statistics
 import sys
 from collections import Counter
@@ -3370,6 +3371,7 @@ def render_merged_hub_page(
     empty_follow_label: str | None = None,
     newsletter: dict | None = None,
     signup_headline: str | None = None,
+    event_pages: list[dict] | None = None,
 ) -> str:
     """A hub-level page merging one date/price-scoped view across every
     region, grouped by region so it's still clear where each one is.
@@ -3401,6 +3403,7 @@ def render_merged_hub_page(
         slug=slug,
         newsletter=newsletter or {"configured": False},
         signup_headline=signup_headline,
+        event_pages=event_pages or [],
     )
 
 
@@ -3941,7 +3944,177 @@ def render_flyer(region_id: str, town: str, examples: list[str], campaign: str, 
     )
 
 
-def collect_sitemap_urls(region_summaries: list[dict], issues: list[dict] | None = None) -> list[str]:
+EVENT_PAGES_PATH = ROOT / "data" / "event_pages.json"
+EVENT_PAGE_CAP = 20
+EVENT_PAGE_NOINDEX_DAYS = 7
+EVENT_PAGE_DELETE_DAYS = 60
+_EVENT_PAGE_FIELDS = ("title", "date_iso", "detail", "venue", "town", "state", "source", "url", "tags", "region_id", "region_url", "sponsored_by", "ics_href")
+
+
+def event_page_path(event: dict) -> str:
+    """`e/<yyyy-mm-dd>-<slug>/` (ROADMAP.md item 369): dated, so the same
+    title on another day is another page."""
+    slug = re.sub(r"[^a-z0-9]+", "-", (event.get("title") or "").lower()).strip("-")[:60].rstrip("-") or "event"
+    return f"e/{(event.get('date_iso') or '')[:10]}-{slug}/"
+
+
+def select_event_page_events(sections: list[dict], tot_entries: list[dict] | None = None, limit: int = EVENT_PAGE_CAP) -> list[dict]:
+    """The few events that get their own page (ROADMAP.md item 369), at most
+    `limit`: paid Featured/Event Promo events, the week's "Don't miss" picks
+    and the weekend's trunk-or-treats, in that order. Never all events (that
+    would be hundreds of thin copies of publishers' listings), and never an
+    event with no first-party link to point at."""
+    region_of = {s["region_name"]: s for s in sections}
+    chosen: list[dict] = []
+    seen: set[str] = set()
+
+    def add(event: dict, section: dict | None):
+        url = event.get("url") or ""
+        if len(chosen) >= limit or not url.startswith(("http://", "https://")) or not event.get("date_iso") or not event.get("title"):
+            return
+        entry = {k: event.get(k) for k in _EVENT_PAGE_FIELDS}
+        entry["region_url"] = (section or {}).get("region_url") or event.get("region_url")
+        entry["region_id"] = ((entry["region_url"] or "").rstrip("/").rsplit("/", 1)[-1]) or None
+        path = event_page_path(event)
+        if path not in seen:
+            seen.add(path)
+            chosen.append({"path": path, **entry})
+
+    for s in sections:
+        for e in s["weekend_events"]:
+            if e.get("sponsored_by"):
+                add(e, s)
+    for pick in build_join_picks(sections, limit=3):
+        add(pick, region_of.get(pick.get("pick_town")))
+    for entry in tot_entries or []:
+        for e in entry.get("events") or []:
+            if TRUNK_OR_TREAT.search(e.get("title", "")):
+                add(dict(e, town=e.get("town") or entry["region_name"]), {"region_url": entry.get("region_url")})
+    return chosen
+
+
+def update_event_pages(registry: dict, selected: list[dict], today: date) -> tuple[dict, list[dict], list[dict], list[str]]:
+    """Merge this build's selection into the stored registry and apply the
+    lifetime rules: indexable until the event is `EVENT_PAGE_NOINDEX_DAYS`
+    days past (then noindex and out of the sitemap), deleted after
+    `EVENT_PAGE_DELETE_DAYS`. Returns (registry, active pages, expired pages,
+    deleted paths)."""
+    registry = dict(registry)
+    for entry in selected:
+        registry.setdefault(entry["path"], {**entry, "first_seen": today.isoformat()})
+        registry[entry["path"]].update({k: v for k, v in entry.items() if k != "path" and v is not None})
+    active, expired, deleted = [], [], []
+    for path, entry in sorted(registry.items()):
+        try:
+            age = (today - date.fromisoformat(entry["date_iso"][:10])).days
+        except (KeyError, ValueError):
+            age = EVENT_PAGE_DELETE_DAYS + 1
+        entry["path"] = path
+        if age > EVENT_PAGE_DELETE_DAYS:
+            deleted.append(path)
+        elif age > EVENT_PAGE_NOINDEX_DAYS:
+            expired.append(entry)
+        else:
+            active.append(entry)
+    for path in deleted:
+        registry.pop(path, None)
+    return registry, active, expired, deleted
+
+
+def render_event_page(entry: dict, *, expired: bool = False, more: list[dict] | None = None, newsletter: dict | None = None, analytics: dict | None = None) -> str:
+    day = datetime.fromisoformat(entry["date_iso"])
+    time_label = event_time_label(entry["date_iso"])
+    when_label = day.strftime("%a %b ") + str(day.day) + (f", {time_label}" if time_label else "")
+    town, state = entry.get("town") or "", entry.get("state") or ""
+    venue = entry.get("venue")
+    where_label = ", ".join(p for p in (venue, town) if p)
+    page_url = SITE_BASE_URL + entry["path"]
+    title = entry["title"]
+    short_when = day.strftime("%a %b ") + str(day.day)
+    page_title = f"{display_title(title)}, {short_when}, {', '.join(p for p in (venue, town) if p)} | Within Ten"
+    detail = truncate(strip_description_header(entry.get("detail")), 280)
+    source_name = short_district(entry.get("source") or "") or "the organiser"
+    tags = [tag_display(t)["label"] for t in (entry.get("tags") or [])]
+    origin = re.match(r"https?://[^/]+", entry["url"])
+    ld = {
+        "@context": "https://schema.org",
+        "@type": "Event",
+        "name": title,
+        "startDate": schema_start_date(entry["date_iso"]),
+        "url": page_url,
+        "sameAs": entry["url"],
+        "eventStatus": "https://schema.org/EventScheduled",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": schema_location({"town": town, "state": state, "venue": venue}),
+        "organizer": {"@type": "Organization", "name": source_name, **({"url": origin.group(0)} if origin else {})},
+    }
+    if detail:
+        ld["description"] = detail
+    if "free" in (entry.get("tags") or []):
+        ld["isAccessibleForFree"] = True
+    if entry.get("sponsored_by"):
+        ld["sponsor"] = {"@type": "Organization", "name": entry["sponsored_by"]}
+    return get_template_env().get_template("event.html.j2").render(
+        page_title=page_title,
+        description=f"{display_title(title)} on {short_when} in {town}. {detail}".strip()[:300],
+        canonical_url=page_url,
+        og_image_url=SITE_BASE_URL + "og/default.png",
+        json_ld=json.dumps(ld, ensure_ascii=False).replace("</", "<\\/"),
+        hub_url=SITE_BASE_URL,
+        region_url=entry.get("region_url") or SITE_BASE_URL,
+        region_id=entry.get("region_id") or "all",
+        town=town,
+        title=display_title(title),
+        when_label=when_label,
+        where_label=where_label,
+        detail=detail,
+        tags=tags,
+        source_url=entry["url"],
+        source_name=source_name,
+        ics_href=entry.get("ics_href"),
+        more=more or [],
+        expired=expired,
+        newsletter=newsletter or {"configured": False},
+        analytics=analytics,
+    )
+
+
+def write_event_pages(sections: list[dict], tot_entries: list[dict], now: datetime, newsletter: dict | None, analytics: dict | None) -> list[dict]:
+    """Select, store and write the `/e/` pages; returns the active (indexable,
+    in-sitemap) ones. Expired pages are rewritten noindex; pages past the
+    delete age are removed from disk and the registry."""
+    today = now.astimezone(LOCAL_TZ).date()
+    try:
+        stored = json.loads(EVENT_PAGES_PATH.read_text(encoding="utf-8"))
+        registry = stored if isinstance(stored, dict) else {}
+    except (OSError, ValueError):
+        registry = {}
+    registry, active, expired, deleted = update_event_pages(registry, select_event_page_events(sections, tot_entries), today)
+    this_weekend = {s["region_url"]: s for s in sections}
+    for group, is_expired in ((active, False), (expired, True)):
+        for entry in group:
+            section = this_weekend.get(entry.get("region_url") or "")
+            more = []
+            if section and not is_expired:
+                seen_titles = {entry["title"]}
+                for e in section["weekend_events"]:
+                    if e.get("title") and e["title"] not in seen_titles and e.get("attendable", True) and len(more) < 3:
+                        seen_titles.add(e["title"])
+                        more.append({"title": display_title(e["title"]), "url": f"{section['region_url']}#{e.get('anchor_id') or event_anchor_id(e)}"})
+            page_dir = OUTPUT_DIR / entry["path"]
+            page_dir.mkdir(parents=True, exist_ok=True)
+            (page_dir / "index.html").write_text(
+                render_event_page(entry, expired=is_expired, more=more, newsletter=newsletter, analytics=analytics), encoding="utf-8"
+            )
+    for path in deleted:
+        shutil.rmtree(OUTPUT_DIR / path, ignore_errors=True)
+    EVENT_PAGES_PATH.parent.mkdir(parents=True, exist_ok=True)
+    EVENT_PAGES_PATH.write_text(json.dumps(registry, indent=1, ensure_ascii=False, sort_keys=True) + "\n", encoding="utf-8")
+    logger.info("Event pages: %d active, %d expired (noindex), %d deleted", len(active), len(expired), len(deleted))
+    return active
+
+
+def collect_sitemap_urls(region_summaries: list[dict], issues: list[dict] | None = None, event_pages: list[dict] | None = None) -> list[str]:
     urls = [
         SITE_BASE_URL,
         SITE_BASE_URL + "this-weekend/",
@@ -3972,12 +4145,13 @@ def collect_sitemap_urls(region_summaries: list[dict], issues: list[dict] | None
     if issues:
         urls.append(SITE_BASE_URL + "issues/")
         urls += [SITE_BASE_URL + f"issues/{i['date']}/" for i in issues]
+    urls += [SITE_BASE_URL + e["path"] for e in event_pages or []]  # item 369: active event pages only
     return urls
 
 
-def build_sitemap_xml(region_summaries: list[dict], now: datetime, issues: list[dict] | None = None) -> str:
+def build_sitemap_xml(region_summaries: list[dict], now: datetime, issues: list[dict] | None = None, event_pages: list[dict] | None = None) -> str:
     lastmod = now.strftime("%Y-%m-%d")
-    urls = collect_sitemap_urls(region_summaries, issues)
+    urls = collect_sitemap_urls(region_summaries, issues, event_pages)
     entries = "\n".join(
         f"  <url>\n    <loc>{u}</loc>\n    <lastmod>{lastmod}</lastmod>\n  </url>" for u in urls
     )
@@ -6138,6 +6312,8 @@ def order_bing_urls(urls: list[str], now: datetime, region_ids: list[str]) -> li
     tiers.append({SITE_BASE_URL + rid + "/" for rid in region_ids})
 
     def rank(url: str) -> int:
+        if url.startswith(SITE_BASE_URL + "e/"):
+            return -1  # item 369: new event pages are the newest original pages the site makes
         for i, tier in enumerate(tiers):
             if url in tier:
                 return i
@@ -6790,6 +6966,9 @@ def main() -> None:
             }
         )
 
+    # ROADMAP.md item 369: single-event pages for the week's few events that matter.
+    active_event_pages = write_event_pages(combined_email_sections, trick_or_treat_entries, now, newsletter, analytics)
+
     hub_stats = {
         "region_count": len(region_summaries),
         "event_count": total_events,
@@ -6814,6 +6993,7 @@ def main() -> None:
         analytics,
         newsletter=newsletter,
         signup_headline="Get this list every Thursday.",
+        event_pages=[{"url": SITE_BASE_URL + e["path"], "title": display_title(e["title"]), "town": e.get("town"), "when": e["date_iso"][:10]} for e in active_event_pages],
         slug="this-weekend",
         heading="Things to Do This Weekend in the Northwest Suburbs",
         subheading=f"{hub_weekend_date_range or ''} — everything with a known date, across every region.",
@@ -6973,8 +7153,8 @@ def main() -> None:
                 out.mkdir(parents=True, exist_ok=True)
                 (out / "index.html").write_text(render_flyer(rid, town, examples, variant["campaign"], copies, EMAIL_TOWN_COLORS[flyer_index % len(EMAIL_TOWN_COLORS)][0]), encoding="utf-8")
 
-    sitemap_urls = collect_sitemap_urls(region_summaries, issues)
-    (OUTPUT_DIR / "sitemap.xml").write_text(build_sitemap_xml(region_summaries, now, issues), encoding="utf-8")
+    sitemap_urls = collect_sitemap_urls(region_summaries, issues, active_event_pages)
+    (OUTPUT_DIR / "sitemap.xml").write_text(build_sitemap_xml(region_summaries, now, issues, active_event_pages), encoding="utf-8")
     (OUTPUT_DIR / "robots.txt").write_text(build_robots_txt(), encoding="utf-8")
     (OUTPUT_DIR / "llms.txt").write_text(build_llms_txt(region_summaries, source_completeness, issues), encoding="utf-8")
     (OUTPUT_DIR / "events.json").write_text(

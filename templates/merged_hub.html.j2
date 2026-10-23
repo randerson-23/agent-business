@@ -325,6 +325,12 @@
   {% endif %}
   {# ROADMAP.md items 251/252: these pages answer the head queries, so they
      are the likeliest first visit - and had no way to subscribe. #}
+  {% if slug == "this-weekend" and event_pages %}
+  <section class="event-pages" aria-labelledby="event-pages-h" style="margin:24px 0;">
+    <h2 id="event-pages-h" style="font-size:20px;margin:0 0 8px;">This week's featured events</h2>
+    <ul style="padding-left:20px;margin:0;line-height:1.6;">{% for e in event_pages %}<li><a href="{{ e.url }}">{{ e.title }}</a>{% if e.town %} <span style="color:var(--muted);">&middot; {{ e.town }}</span>{% endif %}</li>{% endfor %}</ul>
+  </section>
+  {% endif %}
   {{ signup_form(newsletter, "newsletter-signup", "bd-email", "town:all", slug, signup_headline) }}
   {{ signup_runtime(newsletter) }}
   </main>

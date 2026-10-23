@@ -1,0 +1,65 @@
+{% from "_signup.html.j2" import signup_css, signup_form, signup_runtime -%}
+{# ROADMAP.md item 369: one page for one event, with the publisher's listing as the primary button and exactly one Event in the markup. #}
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{ page_title }}</title>
+<meta name="description" content="{{ description }}">
+{% if expired %}<meta name="robots" content="noindex">{% endif %}
+<link rel="canonical" href="{{ canonical_url }}">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Within Ten">
+<meta property="og:title" content="{{ page_title }}">
+<meta property="og:description" content="{{ description }}">
+<meta property="og:image" content="{{ og_image_url }}">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%23201e1d'/%3E%3Ctext x='50' y='66' font-family='Arial,sans-serif' font-weight='800' font-size='58' fill='%23ec3013' text-anchor='middle'%3EW%3C/text%3E%3C/svg%3E">
+<style>
+  :root { --bg:#f3f2f2; --ink:#201e1d; --muted:#605d5d; --card:#eae9e9; --accent:#ec3013; --accent-soft:#c4280e; --accent-2-text:#ae1800; --radius-lg:0; --border:#c9c5c5; }
+  @media (prefers-color-scheme: dark) { :root { --bg:#161413; --ink:#f3f2f2; --muted:#a9a5a5; --card:#242120; --accent-soft:#c4280e; --accent-2-text:#ff8a73; --border:#4a4543; } }
+  * { box-sizing: border-box; }
+  body { margin:0; background:var(--bg); color:var(--ink); font:17px/1.55 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif; }
+  header.site { padding:14px 16px; border-bottom:1px solid var(--border); }
+  header.site a { color:var(--ink); font-weight:800; text-decoration:none; }
+  .wrap { max-width:640px; margin:0 auto; padding:0 16px 40px; }
+  h1 { font-size:30px; line-height:1.15; margin:20px 0 8px; }
+  .when { font-weight:700; margin:0 0 4px; }
+  .where { color:var(--muted); margin:0 0 14px; }
+  .past { background:var(--card); border:2px solid var(--ink); padding:10px 14px; margin:16px 0; font-weight:600; }
+  .tags { display:flex; flex-wrap:wrap; gap:6px; padding:0; margin:10px 0 18px; list-style:none; }
+  .tags li { border:1px solid var(--border); border-radius:999px; padding:2px 10px; font-size:14px; }
+  .btn { display:inline-block; background:var(--accent-soft); color:#fff; font-weight:800; text-decoration:none; padding:12px 20px; margin:6px 12px 6px 0; }
+  .btn.alt { background:transparent; color:var(--ink); border:2px solid var(--ink); padding:10px 18px; }
+  h2 { font-size:19px; margin:26px 0 8px; }
+  ul.more { padding-left:20px; margin:0; }
+  ul.more a { color:var(--accent-2-text); font-weight:700; }
+  .source { color:var(--muted); font-size:14px; }
+  a:focus-visible { outline:3px solid var(--accent); outline-offset:2px; }
+  .sr-only { position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0 0 0 0); }
+</style>
+{{ signup_css() }}
+<script type="application/ld+json">{{ json_ld|safe }}</script>
+</head>
+<body>
+<header class="site"><a href="{{ hub_url }}">Within Ten</a> &middot; <a href="{{ region_url }}" style="font-weight:400;">{{ town }}</a></header>
+<div class="wrap">
+  <h1>{{ title }}</h1>
+  <p class="when">{{ when_label }}</p>
+  <p class="where">{{ where_label }}</p>
+  {% if expired %}<div class="past">This event has passed. See <a href="{{ hub_url }}this-weekend/">what's on this weekend</a>.</div>{% endif %}
+  {% if detail %}<p>{{ detail }}</p>{% endif %}
+  {% if tags %}<ul class="tags">{% for t in tags %}<li>{{ t }}</li>{% endfor %}</ul>{% endif %}
+  <p><a class="btn" href="{{ source_url }}" rel="noopener">Official listing &rarr;</a>{% if ics_href and not expired %}<a class="btn alt" href="{{ ics_href }}" download="event.ics">Add to calendar</a>{% endif %}</p>
+  <p class="source">Listing published by {{ source_name }}. Check the official listing for the latest time, place and any cost.</p>
+  {% if more and not expired %}
+  <h2>More this weekend in {{ town }}</h2>
+  <ul class="more">{% for m in more %}<li><a href="{{ m.url }}">{{ m.title }}</a></li>{% endfor %}</ul>
+  {% endif %}
+  {% if not expired %}{{ signup_form(newsletter, "newsletter-signup", "bd-email", "town:" ~ region_id, "event-page", "Get this list in your inbox every Thursday.") }}{{ signup_runtime(newsletter) }}{% endif %}
+</div>
+{% if analytics and analytics.configured %}
+<script data-goatcounter="https://{{ analytics.goatcounter_code }}.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+{% endif %}
+</body>
+</html>
