@@ -1,0 +1,54 @@
+name: OSM prospects
+
+# ROADMAP.md item 306: builds OUTREACH_PROSPECTS.md from OpenStreetMap. Runs
+# when the script changes on main, or on demand; never on a schedule.
+on:
+  push:
+    branches: [main]
+    paths:
+      - scripts/osm_prospects.py
+      - .github/workflows/osm-prospects.yml
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+concurrency:
+  group: osm-prospects
+  cancel-in-progress: false
+
+jobs:
+  prospects:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: actions/setup-python@v7
+        with:
+          python-version: "3.11"
+
+      - run: pip install requests
+
+      - name: Build the prospect list
+        run: python scripts/osm_prospects.py
+
+      - name: Commit
+        run: |
+          git config user.name "local-planner-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add OUTREACH_PROSPECTS.md
+          if git diff --cached --quiet; then
+            echo "No changes to commit."
+          else
+            git commit -m "Update outreach prospects [skip ci]"
+            attempt=1
+            until git push; do
+              if [ "$attempt" -ge 5 ]; then
+                echo "::error::Failed to push after $attempt attempts."
+                exit 1
+              fi
+              git fetch origin main
+              git rebase origin/main
+              attempt=$((attempt + 1))
+            done
+          fi
