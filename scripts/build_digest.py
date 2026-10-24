@@ -3290,6 +3290,15 @@ def build_nearby_regions(current: dict, all_regions: list[dict], limit: int = 3)
     ]
 
 
+def weekend_season_banner(halloween: dict | None) -> dict | None:
+    """The one-line seasonal link at the top of /this-weekend/ (ROADMAP.md
+    item 360): the hub's Halloween banner in miniature, shown exactly when
+    that banner is."""
+    if not halloween:
+        return None
+    return {"emoji": "🎃", "text": "Trick-or-treat hours by town", "url": SITE_BASE_URL + "trick-or-treat/"}
+
+
 def build_halloween_banner(entries: list[dict], now: datetime) -> dict | None:
     """The homepage's Halloween banner (owner request, 2026-10-13: the
     trick-or-treat link sat in the footer, and in October it belongs at the
@@ -3442,6 +3451,8 @@ def render_merged_hub_page(
     newsletter: dict | None = None,
     signup_headline: str | None = None,
     event_pages: list[dict] | None = None,
+    picks: list[dict] | None = None,
+    season_banner: dict | None = None,
 ) -> str:
     """A hub-level page merging one date/price-scoped view across every
     region, grouped by region so it's still clear where each one is.
@@ -3474,6 +3485,8 @@ def render_merged_hub_page(
         newsletter=newsletter or {"configured": False},
         signup_headline=signup_headline,
         event_pages=event_pages or [],
+        picks=picks or [],
+        season_banner=season_banner,
     )
 
 
@@ -7103,6 +7116,8 @@ def main() -> None:
         newsletter=newsletter,
         signup_headline="Get this list every Thursday.",
         event_pages=[{"url": SITE_BASE_URL + e["path"], "title": display_title(e["title"]), "town": e.get("town"), "when": e["date_iso"][:10]} for e in active_event_pages],
+        picks=build_join_picks(combined_email_sections, limit=6),  # item 360
+        season_banner=weekend_season_banner(build_halloween_banner(trick_or_treat_entries, now)),
         slug="this-weekend",
         heading="Things to Do This Weekend in the Northwest Suburbs",
         subheading=f"{hub_weekend_date_range or ''} — everything with a known date, across every region.",

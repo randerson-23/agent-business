@@ -220,7 +220,7 @@ doesn't re-suggest something already shipped.
 
 **Build queue (by deadline; refreshed by the research loop, item 346).**
 Pick from the top unless the owner has flagged something else:
-0. **360** (/this-weekend/ picks and signup near the top). Then **351** (the sponsor page's proof box).
+0. **351** (the sponsor page's proof box).
 2. **323**: leaf pickup (in season now).
 3. **313, 314**: the sales mock-up and starter pack (before outreach).
 4. **328** (probe first), then **325** (by Nov 15), then the rest by
@@ -17419,7 +17419,7 @@ loop.
 
 #### P1 (new)
 
-360. **Make `/this-weekend/` work for a first visit: picks, season, signup
+360. ✅ DONE (picks block of up to six, one-line season link, compact signup and one calendar link per card shipped; page 98 KB; the compact form sits at ~19% of the HTML because the inline CSS comes first; the family-score day ordering was not built) **Make `/this-weekend/` work for a first visit: picks, season, signup
      near the top.** Design/UX, `this_weekend.html.j2` and its builder:
 
      - **Top of page, in this order:** (1) the seasonal banner when one
