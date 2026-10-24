@@ -4,7 +4,7 @@
       "url": "https://withintenmiles.com/f3b7799bed06aac4295ec9134d53b014.txt",
       "purpose": "IndexNow key file on the live domain - still served and still equal to the key?",
       "item": 224,
-      "probed_at": "2026-10-24T06:02:24+00:00",
+      "probed_at": "2026-10-24T14:00:58+00:00",
       "status": 200,
       "final_url": "https://withintenmiles.com/f3b7799bed06aac4295ec9134d53b014.txt",
       "content_type": "text/plain; charset=utf-8",
@@ -19,361 +19,40 @@
       }
     },
     {
-      "url": "https://www.ahpd.org/event/trunk-or-treat-2026/",
-      "purpose": "Arlington Heights Park District - the Trunk or Treat listing names Pioneer Park; does the page give its street address?",
-      "item": 372,
-      "probed_at": "2026-10-24T06:02:24+00:00",
+      "url": "https://www.ahpd.org/parks/",
+      "purpose": "Arlington Heights Park District - park list; does Pioneer Park's page give its street address?",
+      "item": 376,
+      "probed_at": "2026-10-24T14:00:58+00:00",
       "error": "ConnectTimeout"
     },
     {
-      "url": "https://desplainestheatre.com/",
-      "purpose": "Des Plaines Theatre - street address",
-      "item": 335,
-      "probed_at": "2026-10-24T06:02:39+00:00",
+      "url": "https://www.napleton.com/",
+      "purpose": "Napleton - the Palatine dealerships' own contact pages and street addresses",
+      "item": 376,
+      "probed_at": "2026-10-24T14:01:13+00:00",
       "status": 200,
-      "final_url": "https://desplainestheatre.com/",
+      "final_url": "https://www.napleton.com/",
       "content_type": "text/html; charset=UTF-8",
-      "bytes": 352862,
-      "title": "Concert and Event Venue Des Plaines IL | Des Plaines TheatreSearchExpandExpandSearchToggle Menuonesti instagram pageonesti instagram pageonesti instagram pageonesti instagram pageonesti instagram page",
+      "bytes": 37609,
+      "title": "Napleton Automotive Group Automotive dealerships",
       "feed_links": [
         {
-          "href": "https://desplainestheatre.com/feed/",
-          "type": "application/rss+xml",
-          "title": "Des Plaines Theatre » Feed"
-        },
-        {
-          "href": "https://desplainestheatre.com/comments/feed/",
-          "type": "application/rss+xml",
-          "title": "Des Plaines Theatre » Comments Feed"
-        },
-        {
-          "href": "https://desplainestheatre.com/events/?ical=1",
-          "type": "text/calendar",
-          "title": "Des Plaines Theatre » iCal Feed"
-        },
-        {
-          "href": "https://desplainestheatre.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fdesplainestheatre.com%2F",
-          "type": "application/json+oembed",
-          "title": "oEmbed (JSON)"
-        },
-        {
-          "href": "https://desplainestheatre.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fdesplainestheatre.com%2F&format=xml",
-          "type": "text/xml+oembed",
-          "title": "oEmbed (XML)"
-        },
-        {
-          "href": "https://desplainestheatre.com/wp-json/wp/v2/pages/84",
-          "type": "application/json",
-          "title": "JSON"
-        },
-        {
-          "href": "https://desplainestheatre.com/wp-json/tribe/events/v1/",
+          "href": "https://www.napleton.com/mobile.php",
           "type": "",
           "title": ""
         }
       ],
       "calendar_links": [],
       "pattern_matches": {
-        "\\b\\d{2,5}\\s+(?:[NSEW]\\.?\\s+)?[A-Z][A-Za-z]+(?:\\s+[A-Z][A-Za-z]+)?\\s+(?:Ave|Avenue|St|Street|Rd|Road|Blvd|Dr|Drive|Ln|Lane)\\b": [
-          {
-            "match": "1476 Miner Street",
-            "context": "kb-adv-heading74_2eb503-b4\">Des Plaines Theatre Building<br>1476 Miner Street, Des Plaines, IL<br>224-354-2333</div> <div class=\"wp-bl"
-          }
-        ]
+        "\\b\\d{2,5}\\s+(?:[NSEW]\\.?\\s+)?[A-Z][A-Za-z]+(?:\\s+[A-Z][A-Za-z]+)?\\s+(?:Ave|Avenue|St|Street|Rd|Road|Blvd|Dr|Drive|Ln|Lane|Highway|Hwy)\\b": []
       },
-      "followed": {
-        "url": "https://desplainestheatre.com/plan-your-visit-des-plaines/",
-        "purpose": "",
-        "item": null,
-        "probed_at": "2026-10-24T06:02:40+00:00",
-        "status": 200,
-        "final_url": "https://desplainestheatre.com/plan-your-visit-des-plaines/",
-        "content_type": "text/html; charset=UTF-8",
-        "bytes": 250108,
-        "title": "Plan Your Visit to Des Plaines! - Des Plaines TheatreSearchExpandExpandSearchToggle Menuonesti instagram pageonesti instagram pageonesti instagram pageonesti instagram pageonesti instagram pageExpandT",
-        "feed_links": [
-          {
-            "href": "https://desplainestheatre.com/feed/",
-            "type": "application/rss+xml",
-            "title": "Des Plaines Theatre » Feed"
-          },
-          {
-            "href": "https://desplainestheatre.com/comments/feed/",
-            "type": "application/rss+xml",
-            "title": "Des Plaines Theatre » Comments Feed"
-          },
-          {
-            "href": "https://desplainestheatre.com/events/?ical=1",
-            "type": "text/calendar",
-            "title": "Des Plaines Theatre » iCal Feed"
-          },
-          {
-            "href": "https://desplainestheatre.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fdesplainestheatre.com%2Fplan-your-visit-des-plaines%2F",
-            "type": "application/json+oembed",
-            "title": "oEmbed (JSON)"
-          },
-          {
-            "href": "https://desplainestheatre.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fdesplainestheatre.com%2Fplan-your-visit-des-plaines%2F&format=xml",
-            "type": "text/xml+oembed",
-            "title": "oEmbed (XML)"
-          },
-          {
-            "href": "https://desplainestheatre.com/wp-json/wp/v2/pages/14947",
-            "type": "application/json",
-            "title": "JSON"
-          },
-          {
-            "href": "https://desplainestheatre.com/wp-json/tribe/events/v1/",
-            "type": "",
-            "title": ""
-          }
-        ],
-        "calendar_links": [],
-        "pattern_matches": {
-          "\\b\\d{2,5}\\s+(?:[NSEW]\\.?\\s+)?[A-Z][A-Za-z]+(?:\\s+[A-Z][A-Za-z]+)?\\s+(?:Ave|Avenue|St|Street|Rd|Road|Blvd|Dr|Drive|Ln|Lane)\\b": [
-            {
-              "match": "1476 Miner Street",
-              "context": "kb-adv-heading74_2eb503-b4\">Des Plaines Theatre Building<br>1476 Miner Street, Des Plaines, IL<br>224-354-2333</div> <div class=\"wp-bl"
-            }
-          ]
-        }
-      }
-    },
-    {
-      "url": "https://www.metropolisarts.com/",
-      "purpose": "Metropolis Performing Arts Centre - street address",
-      "item": 335,
-      "probed_at": "2026-10-24T06:02:41+00:00",
-      "status": 200,
-      "final_url": "https://www.metropolisarts.com/",
-      "content_type": "text/html; charset=UTF-8",
-      "bytes": 1417209,
-      "title": "Metropolis Performing Arts Centre | Arlington Heights, IL",
-      "feed_links": [
-        {
-          "href": "https://www.metropolisarts.com/feed/",
-          "type": "application/rss+xml",
-          "title": "Metropolis Performing Arts Centre » Feed"
-        },
-        {
-          "href": "https://www.metropolisarts.com/comments/feed/",
-          "type": "application/rss+xml",
-          "title": "Metropolis Performing Arts Centre » Comments Feed"
-        },
-        {
-          "href": "https://www.metropolisarts.com/events/?ical=1",
-          "type": "text/calendar",
-          "title": "Metropolis Performing Arts Centre » iCal Feed"
-        },
-        {
-          "href": "https://www.metropolisarts.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fwww.metropolisarts.com%2F",
-          "type": "application/json+oembed",
-          "title": "oEmbed (JSON)"
-        },
-        {
-          "href": "https://www.metropolisarts.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fwww.metropolisarts.com%2F&format=xml",
-          "type": "text/xml+oembed",
-          "title": "oEmbed (XML)"
-        },
-        {
-          "href": "https://www.metropolisarts.com/wp-json/wp/v2/pages/18072",
-          "type": "application/json",
-          "title": "JSON"
-        },
-        {
-          "href": "https://www.metropolisarts.com/wp-json/tribe/events/v1/",
-          "type": "",
-          "title": ""
-        }
-      ],
-      "calendar_links": [],
-      "pattern_matches": {
-        "\\b\\d{2,5}\\s+(?:[NSEW]\\.?\\s+)?[A-Z][A-Za-z]+(?:\\s+[A-Z][A-Za-z]+)?\\s+(?:Ave|Avenue|St|Street|Rd|Road|Blvd|Dr|Drive|Ln|Lane)\\b": [
-          {
-            "match": "111 W Campbell Street",
-            "context": "&#038; BOX OFFICE DETAILS</h4> <div class=\"textwidget\"><p>111 W Campbell Street<br /> Arlington Heights, IL 60005<br /> <strong><a href=\"ht"
-          }
-        ]
-      },
-      "followed": {
-        "url": "https://www.metropolisarts.com/visit/",
-        "purpose": "",
-        "item": null,
-        "probed_at": "2026-10-24T06:02:41+00:00",
-        "status": 200,
-        "final_url": "https://www.metropolisarts.com/visit/",
-        "content_type": "text/html; charset=UTF-8",
-        "bytes": 1321382,
-        "title": "Visit - Metropolis Performing Arts Centre",
-        "feed_links": [
-          {
-            "href": "https://www.metropolisarts.com/feed/",
-            "type": "application/rss+xml",
-            "title": "Metropolis Performing Arts Centre » Feed"
-          },
-          {
-            "href": "https://www.metropolisarts.com/comments/feed/",
-            "type": "application/rss+xml",
-            "title": "Metropolis Performing Arts Centre » Comments Feed"
-          },
-          {
-            "href": "https://www.metropolisarts.com/events/?ical=1",
-            "type": "text/calendar",
-            "title": "Metropolis Performing Arts Centre » iCal Feed"
-          },
-          {
-            "href": "https://www.metropolisarts.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fwww.metropolisarts.com%2Fvisit%2F",
-            "type": "application/json+oembed",
-            "title": "oEmbed (JSON)"
-          },
-          {
-            "href": "https://www.metropolisarts.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fwww.metropolisarts.com%2Fvisit%2F&format=xml",
-            "type": "text/xml+oembed",
-            "title": "oEmbed (XML)"
-          },
-          {
-            "href": "https://www.metropolisarts.com/wp-json/wp/v2/pages/1770",
-            "type": "application/json",
-            "title": "JSON"
-          },
-          {
-            "href": "https://www.metropolisarts.com/wp-json/tribe/events/v1/",
-            "type": "",
-            "title": ""
-          }
-        ],
-        "calendar_links": [],
-        "pattern_matches": {
-          "\\b\\d{2,5}\\s+(?:[NSEW]\\.?\\s+)?[A-Z][A-Za-z]+(?:\\s+[A-Z][A-Za-z]+)?\\s+(?:Ave|Avenue|St|Street|Rd|Road|Blvd|Dr|Drive|Ln|Lane)\\b": [
-            {
-              "match": "111 W Campbell Street",
-              "context": "&#038; BOX OFFICE DETAILS</h4> <div class=\"textwidget\"><p>111 W Campbell Street<br /> Arlington Heights, IL 60005<br /> <strong><a href=\"ht"
-            }
-          ]
-        }
-      }
-    },
-    {
-      "url": "https://www.palatinelibrary.org/",
-      "purpose": "Palatine Public Library District - street address",
-      "item": 335,
-      "probed_at": "2026-10-24T06:02:42+00:00",
-      "status": 200,
-      "final_url": "https://www.palatinelibrary.org/",
-      "content_type": "text/html; charset=utf-8",
-      "bytes": 91464,
-      "title": "Home | Palatine Library District",
-      "feed_links": [
-        {
-          "href": "https://www.palatinelibrary.org/",
-          "type": "",
-          "title": ""
-        }
-      ],
-      "calendar_links": [],
-      "pattern_matches": {
-        "\\b\\d{2,5}\\s+(?:[NSEW]\\.?\\s+)?[A-Z][A-Za-z]+(?:\\s+[A-Z][A-Za-z]+)?\\s+(?:Ave|Avenue|St|Street|Rd|Road|Blvd|Dr|Drive|Ln|Lane)\\b": [
-          {
-            "match": "3600 Lexington Drive",
-            "context": "North Hoffman Branch</span><br> <span class=\"address-line1\">3600 Lexington Drive</span><br> <span class=\"locality\">Hoffman Estates</span>, <"
-          },
-          {
-            "match": "1585 Rand Road",
-            "context": "on\">Rand Road Branch</span><br> <span class=\"address-line1\">1585 Rand Road</span><br> <span class=\"locality\">Palatine</span>, <span cl"
-          }
-        ]
-      },
-      "followed": {
-        "url": "https://www.palatinelibrary.org/contact",
-        "purpose": "",
-        "item": null,
-        "probed_at": "2026-10-24T06:02:43+00:00",
-        "status": 200,
-        "final_url": "https://www.palatinelibrary.org/contact",
-        "content_type": "text/html; charset=utf-8",
-        "bytes": 80142,
-        "title": "Contact | Palatine Library District",
-        "feed_links": [
-          {
-            "href": "https://www.palatinelibrary.org/contact?language_content_entity=en",
-            "type": "",
-            "title": ""
-          }
-        ],
-        "calendar_links": [],
-        "pattern_matches": {
-          "\\b\\d{2,5}\\s+(?:[NSEW]\\.?\\s+)?[A-Z][A-Za-z]+(?:\\s+[A-Z][A-Za-z]+)?\\s+(?:Ave|Avenue|St|Street|Rd|Road|Blvd|Dr|Drive|Ln|Lane)\\b": [
-            {
-              "match": "3600 Lexington Drive",
-              "context": "North Hoffman Branch</span><br> <span class=\"address-line1\">3600 Lexington Drive</span><br> <span class=\"locality\">Hoffman Estates</span>, <"
-            },
-            {
-              "match": "1585 Rand Road",
-              "context": "on\">Rand Road Branch</span><br> <span class=\"address-line1\">1585 Rand Road</span><br> <span class=\"locality\">Palatine</span>, <span cl"
-            }
-          ]
-        }
-      }
-    },
-    {
-      "url": "https://www.dppl.org/",
-      "purpose": "Des Plaines Public Library - street address",
-      "item": 335,
-      "probed_at": "2026-10-24T06:02:43+00:00",
-      "status": 200,
-      "final_url": "https://www.dppl.org/",
-      "content_type": "text/html; charset=UTF-8",
-      "bytes": 18335,
-      "title": "Des Plaines Public Library",
-      "feed_links": [
-        {
-          "href": "https://www.dppl.org/blog/rss",
-          "type": "application/rss+xml",
-          "title": "Des Plaines Public Library Blog"
-        }
-      ],
-      "calendar_links": [],
-      "pattern_matches": {
-        "\\b\\d{2,5}\\s+(?:[NSEW]\\.?\\s+)?[A-Z][A-Za-z]+(?:\\s+[A-Z][A-Za-z]+)?\\s+(?:Ave|Avenue|St|Street|Rd|Road|Blvd|Dr|Drive|Ln|Lane)\\b": [
-          {
-            "match": "1501 Ellinwood Street",
-            "context": "> <h4>Address</h4> <p> 1501 Ellinwood Street<br /> Des Plaines, IL 60016 </p>"
-          }
-        ]
-      },
-      "followed": {
-        "url": "https://dppl.org/visit/hours-days-closed",
-        "purpose": "",
-        "item": null,
-        "probed_at": "2026-10-24T06:02:44+00:00",
-        "status": 200,
-        "final_url": "https://www.dppl.org/visit/hours-days-closed",
-        "content_type": "text/html; charset=UTF-8",
-        "bytes": 13018,
-        "title": "Late Openings & Days Closed",
-        "feed_links": [
-          {
-            "href": "https://www.dppl.org/blog/rss",
-            "type": "application/rss+xml",
-            "title": "Des Plaines Public Library Blog"
-          }
-        ],
-        "calendar_links": [],
-        "pattern_matches": {
-          "\\b\\d{2,5}\\s+(?:[NSEW]\\.?\\s+)?[A-Z][A-Za-z]+(?:\\s+[A-Z][A-Za-z]+)?\\s+(?:Ave|Avenue|St|Street|Rd|Road|Blvd|Dr|Drive|Ln|Lane)\\b": [
-            {
-              "match": "1501 Ellinwood Street",
-              "context": "> <h4>Address</h4> <p> 1501 Ellinwood Street<br /> Des Plaines, IL 60016 </p>"
-            }
-          ]
-        }
-      }
+      "followed": null
     },
     {
       "url": "https://mpdowntown.com/events/",
       "purpose": "Downtown Mount Prospect - full text of the Downtown Trick-or-Treat section (is it a 2026 date?)",
       "item": 292,
-      "probed_at": "2026-10-24T06:02:45+00:00",
+      "probed_at": "2026-10-24T14:01:13+00:00",
       "status": 200,
       "final_url": "https://mpdowntown.com/events/",
       "content_type": "text/html; charset=UTF-8",
@@ -426,11 +105,11 @@
       "url": "https://events.harpercollege.edu/api/2/events?days=60&pp=100",
       "purpose": "Harper College (Localist) - venue ids, venue names and event types in use",
       "item": 286,
-      "probed_at": "2026-10-24T06:02:52+00:00",
+      "probed_at": "2026-10-24T14:01:16+00:00",
       "status": 200,
       "final_url": "https://events.harpercollege.edu/api/2/events?days=60&pp=100",
       "content_type": "application/json; charset=utf-8",
-      "bytes": 363766,
+      "bytes": 363767,
       "pattern_matches": {
         "\"venue_id\":\\d+": [
           {
@@ -714,7 +393,7 @@
       "url": "https://www.sd25.org/calendar",
       "purpose": "Arlington Heights District 25 - does the calendar page list no-school dates in the HTML?",
       "item": 300,
-      "probed_at": "2026-10-24T06:02:54+00:00",
+      "probed_at": "2026-10-24T14:01:24+00:00",
       "status": 200,
       "final_url": "https://www.sd25.org/calendar-73",
       "content_type": "text/html; charset=utf-8",
@@ -735,7 +414,7 @@
       "url": "https://ccsd21.org/parent-resources/calendars/",
       "purpose": "Wheeling CCSD 21 - does the calendars page link a 2026-27 calendar and list no-school dates?",
       "item": 300,
-      "probed_at": "2026-10-24T06:02:57+00:00",
+      "probed_at": "2026-10-24T14:01:27+00:00",
       "status": 403,
       "final_url": "https://ccsd21.org/parent-resources/calendars/",
       "content_type": "text/html; charset=UTF-8",
@@ -753,7 +432,7 @@
       "url": "https://www.d62.org/calendars",
       "purpose": "Des Plaines District 62 - official 2026-27 calendar",
       "item": 300,
-      "probed_at": "2026-10-24T06:02:57+00:00",
+      "probed_at": "2026-10-24T14:01:27+00:00",
       "status": 200,
       "final_url": "https://www.d62.org/calendars",
       "content_type": "text/html; charset=utf-8",
@@ -895,7 +574,7 @@
         "url": "https://resources.finalsite.net/images/v1771602096/d62org/huubad2axs3m2rrnnwjm/District62Ten-MonthSchoolsCalendar2026-2027FINAL.pdf",
         "purpose": "",
         "item": null,
-        "probed_at": "2026-10-24T06:03:01+00:00",
+        "probed_at": "2026-10-24T14:01:30+00:00",
         "status": 200,
         "final_url": "https://resources.finalsite.net/images/v1771602096/d62org/huubad2axs3m2rrnnwjm/District62Ten-MonthSchoolsCalendar2026-2027FINAL.pdf",
         "content_type": "application/pdf",
@@ -910,7 +589,7 @@
       "url": "https://www.d214.org/calendar",
       "purpose": "High School District 214 - official 2026-27 calendar",
       "item": 300,
-      "probed_at": "2026-10-24T06:03:01+00:00",
+      "probed_at": "2026-10-24T14:01:31+00:00",
       "status": 404,
       "final_url": "https://www.d214.org/calendar",
       "content_type": "text/html;charset=utf-8",
