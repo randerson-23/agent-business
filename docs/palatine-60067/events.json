@@ -2,277 +2,12 @@
   "@context": "https://schema.org",
   "@type": "ItemList",
   "name": "Upcoming events in Palatine — Within Ten",
-  "dateModified": "2026-10-24T14:09:03+00:00",
-  "numberOfItems": 29,
+  "dateModified": "2026-10-24T22:02:07+00:00",
+  "numberOfItems": 20,
   "itemListElement": [
     {
       "@type": "ListItem",
       "position": 1,
-      "item": {
-        "@type": "Event",
-        "name": "Halloween Hustle",
-        "startDate": "2026-10-24T08:30:00-05:00",
-        "url": "https://withintenmiles.com/palatine-60067/#ev-halloween-hustle-2026-10-24",
-        "eventStatus": "https://schema.org/EventScheduled",
-        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "location": {
-          "@type": "Place",
-          "name": "Palatine, IL",
-          "address": {
-            "@type": "PostalAddress",
-            "addressCountry": "US",
-            "addressLocality": "Palatine",
-            "addressRegion": "IL"
-          }
-        },
-        "sameAs": "https://www.palatine.il.us/common/modules/iCalendar/iCalendar.aspx?feed=calendar&catID=14",
-        "organizer": {
-          "@type": "Organization",
-          "name": "Village of Palatine",
-          "url": "https://www.palatine.il.us"
-        },
-        "description": "The Halloween Hustle® returns to Palatine on Saturday, Octobe"
-      }
-    },
-    {
-      "@type": "ListItem",
-      "position": 2,
-      "item": {
-        "@type": "Event",
-        "name": "Recovery, Resilience and Community Support Workshop #3",
-        "startDate": "2026-10-24T10:00:00-05:00",
-        "url": "https://withintenmiles.com/palatine-60067/#ev-recovery-resilience-and-community-support-workshop-3-2026-10-24",
-        "eventStatus": "https://schema.org/EventScheduled",
-        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "location": {
-          "@type": "Place",
-          "name": "Palatine, IL",
-          "address": {
-            "@type": "PostalAddress",
-            "addressCountry": "US",
-            "addressLocality": "Palatine",
-            "addressRegion": "IL"
-          }
-        },
-        "sameAs": "https://www.palatine.il.us/common/modules/iCalendar/iCalendar.aspx?feed=calendar&catID=14",
-        "organizer": {
-          "@type": "Organization",
-          "name": "Village of Palatine",
-          "url": "https://www.palatine.il.us"
-        },
-        "description": "Understanding Mental Health: A Three-Part Community Learning Se"
-      }
-    },
-    {
-      "@type": "ListItem",
-      "position": 3,
-      "item": {
-        "@type": "Event",
-        "name": "Quest Academy Fall 2026 Open House",
-        "startDate": "2026-10-24T10:00:00-05:00",
-        "url": "https://withintenmiles.com/palatine-60067/#ev-quest-academy-fall-2026-open-house-2026-10-24",
-        "eventStatus": "https://schema.org/EventScheduled",
-        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "location": {
-          "@type": "Place",
-          "name": "Palatine, IL",
-          "address": {
-            "@type": "PostalAddress",
-            "addressCountry": "US",
-            "addressLocality": "Palatine",
-            "addressRegion": "IL"
-          }
-        },
-        "sameAs": "https://www.palatine.il.us/common/modules/iCalendar/iCalendar.aspx?feed=calendar&catID=14",
-        "organizer": {
-          "@type": "Organization",
-          "name": "Village of Palatine",
-          "url": "https://www.palatine.il.us"
-        },
-        "description": "Discover Gifted Education at Quest Academy's Fall Open House! h"
-      }
-    },
-    {
-      "@type": "ListItem",
-      "position": 4,
-      "item": {
-        "@type": "Event",
-        "name": "Downtown Palatine Business Association Trick or Treat Event",
-        "startDate": "2026-10-24T10:00:00-05:00",
-        "url": "https://withintenmiles.com/palatine-60067/#ev-downtown-palatine-business-association-trick-or-treat-event-2026-10-24",
-        "eventStatus": "https://schema.org/EventScheduled",
-        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "location": {
-          "@type": "Place",
-          "name": "Palatine, IL",
-          "address": {
-            "@type": "PostalAddress",
-            "addressCountry": "US",
-            "addressLocality": "Palatine",
-            "addressRegion": "IL"
-          }
-        },
-        "sameAs": "https://www.palatine.il.us/common/modules/iCalendar/iCalendar.aspx?feed=calendar&catID=14",
-        "organizer": {
-          "@type": "Organization",
-          "name": "Village of Palatine",
-          "url": "https://www.palatine.il.us"
-        },
-        "description": "Downtown Palatine Business Association Trick or Treating event"
-      }
-    },
-    {
-      "@type": "ListItem",
-      "position": 5,
-      "item": {
-        "@type": "Event",
-        "name": "Palatine Police Taking Back Unwanted Prescription Drugs",
-        "startDate": "2026-10-24T10:00:00-05:00",
-        "url": "https://withintenmiles.com/palatine-60067/#ev-palatine-police-taking-back-unwanted-prescription-drugs-2026-10-24",
-        "eventStatus": "https://schema.org/EventScheduled",
-        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "location": {
-          "@type": "Place",
-          "name": "Palatine, IL",
-          "address": {
-            "@type": "PostalAddress",
-            "addressCountry": "US",
-            "addressLocality": "Palatine",
-            "addressRegion": "IL"
-          }
-        },
-        "sameAs": "https://www.palatine.il.us/common/modules/iCalendar/iCalendar.aspx?feed=calendar&catID=14",
-        "organizer": {
-          "@type": "Organization",
-          "name": "Village of Palatine",
-          "url": "https://www.palatine.il.us"
-        },
-        "description": "Palatine police are taking back unwanted prescription drugs on"
-      }
-    },
-    {
-      "@type": "ListItem",
-      "position": 6,
-      "item": {
-        "@type": "Event",
-        "name": "FREE Trunk or Treat at Napleton's Palatine Mazda",
-        "startDate": "2026-10-24T12:00:00-05:00",
-        "url": "https://withintenmiles.com/e/2026-10-24-free-trunk-or-treat-at-napleton-s-palatine-mazda/",
-        "eventStatus": "https://schema.org/EventScheduled",
-        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "location": {
-          "@type": "Place",
-          "name": "Palatine, IL",
-          "address": {
-            "@type": "PostalAddress",
-            "addressCountry": "US",
-            "addressLocality": "Palatine",
-            "addressRegion": "IL"
-          }
-        },
-        "sameAs": "https://www.palatine.il.us/common/modules/iCalendar/iCalendar.aspx?feed=calendar&catID=14",
-        "organizer": {
-          "@type": "Organization",
-          "name": "Village of Palatine",
-          "url": "https://www.palatine.il.us"
-        },
-        "description": "Trick-or-treat from decorated car trunks and collect candy from",
-        "isAccessibleForFree": true
-      }
-    },
-    {
-      "@type": "ListItem",
-      "position": 7,
-      "item": {
-        "@type": "Event",
-        "name": "FREE Trunk or Treat at Napleton Palatine Hyundai",
-        "startDate": "2026-10-24T12:00:00-05:00",
-        "url": "https://withintenmiles.com/e/2026-10-24-free-trunk-or-treat-at-napleton-palatine-hyundai/",
-        "eventStatus": "https://schema.org/EventScheduled",
-        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "location": {
-          "@type": "Place",
-          "name": "Palatine, IL",
-          "address": {
-            "@type": "PostalAddress",
-            "addressCountry": "US",
-            "addressLocality": "Palatine",
-            "addressRegion": "IL"
-          }
-        },
-        "sameAs": "https://www.palatine.il.us/common/modules/iCalendar/iCalendar.aspx?feed=calendar&catID=14",
-        "organizer": {
-          "@type": "Organization",
-          "name": "Village of Palatine",
-          "url": "https://www.palatine.il.us"
-        },
-        "description": "A free, family-friendly Halloween stop! Kids can trick-or-trea",
-        "isAccessibleForFree": true
-      }
-    },
-    {
-      "@type": "ListItem",
-      "position": 8,
-      "item": {
-        "@type": "Event",
-        "name": "FREE Trunk or Treat at Napleton Palatine Chevrolet",
-        "startDate": "2026-10-24T12:00:00-05:00",
-        "url": "https://withintenmiles.com/palatine-60067/#ev-free-trunk-or-treat-at-napleton-palatine-chevrolet-2026-10-24",
-        "eventStatus": "https://schema.org/EventScheduled",
-        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "location": {
-          "@type": "Place",
-          "name": "Palatine, IL",
-          "address": {
-            "@type": "PostalAddress",
-            "addressCountry": "US",
-            "addressLocality": "Palatine",
-            "addressRegion": "IL"
-          }
-        },
-        "sameAs": "https://www.palatine.il.us/common/modules/iCalendar/iCalendar.aspx?feed=calendar&catID=14",
-        "organizer": {
-          "@type": "Organization",
-          "name": "Village of Palatine",
-          "url": "https://www.palatine.il.us"
-        },
-        "description": "Costumes encouraged! Join us for a free trunk or treat with dec",
-        "isAccessibleForFree": true
-      }
-    },
-    {
-      "@type": "ListItem",
-      "position": 9,
-      "item": {
-        "@type": "Event",
-        "name": "FREE Trunk or Treat at Napleton's Palatine Subaru",
-        "startDate": "2026-10-24T12:00:00-05:00",
-        "url": "https://withintenmiles.com/palatine-60067/#ev-free-trunk-or-treat-at-napleton-s-palatine-subaru-2026-10-24",
-        "eventStatus": "https://schema.org/EventScheduled",
-        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "location": {
-          "@type": "Place",
-          "name": "Palatine, IL",
-          "address": {
-            "@type": "PostalAddress",
-            "addressCountry": "US",
-            "addressLocality": "Palatine",
-            "addressRegion": "IL"
-          }
-        },
-        "sameAs": "https://www.palatine.il.us/common/modules/iCalendar/iCalendar.aspx?feed=calendar&catID=14",
-        "organizer": {
-          "@type": "Organization",
-          "name": "Village of Palatine",
-          "url": "https://www.palatine.il.us"
-        },
-        "description": "Bring the kids in costume for a free trunk or treat! Trick-or-t",
-        "isAccessibleForFree": true
-      }
-    },
-    {
-      "@type": "ListItem",
-      "position": 10,
       "item": {
         "@type": "Event",
         "name": "Impact Makers of Palatine Free Self-Defense Workshop",
@@ -302,7 +37,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 11,
+      "position": 2,
       "item": {
         "@type": "Event",
         "name": "Trunk-or-Treat and Community Meal",
@@ -332,7 +67,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 12,
+      "position": 3,
       "item": {
         "@type": "Event",
         "name": "CATIF Fundraiser: A Safe Place, Safe Paws",
@@ -361,7 +96,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 13,
+      "position": 4,
       "item": {
         "@type": "Event",
         "name": "MPAC Ukrainian Virtual Parent Presentation - Program Descriptions",
@@ -384,7 +119,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 14,
+      "position": 5,
       "item": {
         "@type": "Event",
         "name": "D211 Special Board of Education Meeting",
@@ -407,7 +142,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 15,
+      "position": 6,
       "item": {
         "@type": "Event",
         "name": "MPAC Russian Virtual Parent Presentation - Program Descriptions",
@@ -430,7 +165,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 16,
+      "position": 7,
       "item": {
         "@type": "Event",
         "name": "MPAC Tamil Virtual Parent Presentation - Program Descriptions",
@@ -453,7 +188,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 17,
+      "position": 8,
       "item": {
         "@type": "Event",
         "name": "D15 Job Fair",
@@ -476,7 +211,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 18,
+      "position": 9,
       "item": {
         "@type": "Event",
         "name": "Rope",
@@ -506,7 +241,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 19,
+      "position": 10,
       "item": {
         "@type": "Event",
         "name": "Pirate Pete's Trick-or-Treat Festival Returns",
@@ -536,7 +271,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 20,
+      "position": 11,
       "item": {
         "@type": "Event",
         "name": "MPAC Spanish Virtual Parent Presentation - Program Descriptions",
@@ -559,7 +294,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 21,
+      "position": 12,
       "item": {
         "@type": "Event",
         "name": "Village Trick-or-Treating Hours",
@@ -588,7 +323,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 22,
+      "position": 13,
       "item": {
         "@type": "Event",
         "name": "St. Philip's Episcopal Church Open House",
@@ -617,7 +352,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 23,
+      "position": 14,
       "item": {
         "@type": "Event",
         "name": "E-Learning Day",
@@ -639,7 +374,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 24,
+      "position": 15,
       "item": {
         "@type": "Event",
         "name": "End of 12-Week Grading Period",
@@ -662,7 +397,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 25,
+      "position": 16,
       "item": {
         "@type": "Event",
         "name": "D15 Job Fair",
@@ -685,7 +420,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 26,
+      "position": 17,
       "item": {
         "@type": "Event",
         "name": "Community Resource Center Open House",
@@ -714,7 +449,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 27,
+      "position": 18,
       "item": {
         "@type": "Event",
         "name": "Almost Famous",
@@ -744,7 +479,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 28,
+      "position": 19,
       "item": {
         "@type": "Event",
         "name": "D211 Board of Education Meeting",
@@ -767,7 +502,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 29,
+      "position": 20,
       "item": {
         "@type": "Event",
         "name": "NSSEO: NWSRA",

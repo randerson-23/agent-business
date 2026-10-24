@@ -106,6 +106,51 @@
   "url": "https://www.ahpd.org/event/trunk-or-treat-2026/",
   "venue": null
  },
+ "e/2026-10-25-impact-makers-of-palatine-free-self-defense-workshop/": {
+  "date_iso": "2026-10-25T13:00:00",
+  "detail": "Free Self Defense Workshop https://www.palatine.il.us/calendar.",
+  "detail_long": "Free Self Defense Workshop https://www.palatine.il.us/calendar.",
+  "first_seen": "2026-10-24",
+  "ics_href": "data:text/calendar;charset=utf-8,BEGIN%3AVCALENDAR%0D%0AVERSION%3A2.0%0D%0APRODID%3A-//Within%20Ten//EN%0D%0ABEGIN%3AVEVENT%0D%0ADTSTART%3A20261025T130000%0D%0ADTEND%3A20261025T140000%0D%0ASUMMARY%3AImpact%20Makers%20of%20Palatine%20Free%20Self-Defense%20Workshop%0D%0ADESCRIPTION%3AFree%20Self%20Defense%20Workshop%20https%3A//www.palatine.il.us/calendar.%0D%0AURL%3Ahttps%3A//www.palatine.il.us/common/modules/iCalendar/iCalendar.aspx%3Ffeed%3Dcalendar%26catID%3D14%0D%0AEND%3AVEVENT%0D%0AEND%3AVCALENDAR%0D%0A",
+  "path": "e/2026-10-25-impact-makers-of-palatine-free-self-defense-workshop/",
+  "postal_code": null,
+  "region_id": "palatine-60067",
+  "region_url": "https://withintenmiles.com/palatine-60067/",
+  "source": "Village of Palatine — Calendar",
+  "sponsored_by": null,
+  "state": "IL",
+  "street_address": null,
+  "tags": [
+   "free"
+  ],
+  "title": "Impact Makers of Palatine Free Self-Defense Workshop",
+  "town": "Palatine",
+  "url": "https://www.palatine.il.us/common/modules/iCalendar/iCalendar.aspx?feed=calendar&catID=14",
+  "venue": null
+ },
+ "e/2026-10-25-mount-prospect-farmers-market/": {
+  "date_iso": "2026-10-25T08:00:00",
+  "detail": "Local produce and vendors, organized by the Mount Prospect Lions Club, rain or shine. West Metra commuter lot, Northwest Hwy & Main St (Rte 83).",
+  "detail_long": null,
+  "first_seen": "2026-10-24",
+  "ics_href": "data:text/calendar;charset=utf-8,BEGIN%3AVCALENDAR%0D%0AVERSION%3A2.0%0D%0APRODID%3A-//Within%20Ten//EN%0D%0ABEGIN%3AVEVENT%0D%0ADTSTART%3A20261025T080000%0D%0ADTEND%3A20261025T090000%0D%0ASUMMARY%3AMount%20Prospect%20Farmers%20Market%0D%0ADESCRIPTION%3ALocal%20produce%20and%20vendors%5C%2C%20organized%20by%20the%20Mount%20Prospect%20Lions%20Club%5C%2C%20rain%20or%20shine.%20West%20Metra%20commuter%20lot%5C%2C%20Northwest%20Hwy%20%26%20Main%20St%20%28Rte%2083%29.%0D%0AURL%3Ahttps%3A//mplions.org/event/farmers-market/%0D%0AEND%3AVEVENT%0D%0AEND%3AVCALENDAR%0D%0A",
+  "path": "e/2026-10-25-mount-prospect-farmers-market/",
+  "postal_code": null,
+  "region_id": "mount-prospect-60056",
+  "region_url": "https://withintenmiles.com/mount-prospect-60056/",
+  "source": null,
+  "sponsored_by": null,
+  "state": null,
+  "street_address": null,
+  "tags": [
+   "outdoor",
+   "food"
+  ],
+  "title": "Mount Prospect Farmers Market",
+  "town": null,
+  "url": "https://mplions.org/event/farmers-market/",
+  "venue": null
+ },
  "e/2026-10-25-trunk-or-treat-and-community-meal/": {
   "date_iso": "2026-10-25T14:00:00",
   "detail": "FREE Trunk-or-Treat and Community Meal https://www.palatine.il.",
