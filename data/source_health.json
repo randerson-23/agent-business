@@ -18,9 +18,9 @@
     13,
     13,
     13,
-    13,
     11,
     11,
+    12,
     12
   ],
   "arlington-heights-60005:Metropolis Performing Arts Centre \u2014 Shows": [
@@ -28,7 +28,7 @@
     20,
     20,
     20,
-    20,
+    21,
     21,
     21,
     21,
@@ -85,7 +85,6 @@
   ],
   "des-plaines-60016:Des Plaines Public Library \u2014 Events": [
     416,
-    416,
     408,
     408,
     408,
@@ -93,7 +92,8 @@
     394,
     394,
     394,
-    404
+    404,
+    399
   ],
   "des-plaines-60016:Des Plaines Theatre \u2014 Events": [
     30,
@@ -131,15 +131,14 @@
     12,
     12,
     12,
-    12,
     11,
     11,
     11,
     11,
-    11
+    11,
+    10
   ],
   "mount-prospect-60056:Mount Prospect Public Library \u2014 Events": [
-    164,
     164,
     158,
     158,
@@ -148,7 +147,8 @@
     154,
     154,
     154,
-    154
+    154,
+    151
   ],
   "mount-prospect-60056:Mount Prospect School District 57 \u2014 Calendar": [
     61,
@@ -156,11 +156,11 @@
     61,
     61,
     61,
-    61,
     60,
     60,
     60,
-    60
+    60,
+    58
   ],
   "mount-prospect-60056:Randhurst Village \u2014 Events": [
     1,
@@ -186,20 +186,20 @@
     31,
     31,
     31,
-    31,
     32,
     32,
     32,
     32,
+    33,
     33
   ],
   "palatine-60067:Community Consolidated School District 15 \u2014 Calendar": [
     45,
-    45,
     44,
     44,
     44,
     44,
+    43,
     43,
     43,
     43,
@@ -207,11 +207,11 @@
   ],
   "palatine-60067:Harper College \u2014 Public Events": [
     14,
-    14,
     12,
     12,
     12,
     12,
+    10,
     10,
     10,
     10,
@@ -232,10 +232,10 @@
   "palatine-60067:Palatine Public Library District \u2014 Events": [
     12,
     12,
-    12,
     11,
     11,
     11,
+    10,
     10,
     10,
     10,
@@ -247,14 +247,13 @@
     14,
     14,
     14,
-    14,
+    13,
     13,
     13,
     13,
     13
   ],
   "palatine-60067:Village of Palatine \u2014 Calendar": [
-    23,
     25,
     25,
     25,
@@ -263,23 +262,23 @@
     25,
     25,
     25,
-    24
+    24,
+    23
   ],
   "palatine-60067:Village of Palatine \u2014 News": [
     6,
     6,
     6,
     6,
-    6,
     5,
     5,
     5,
     5,
+    3,
     3
   ],
   "wheeling-60090:Indian Trails Public Library \u2014 Events": [
     306,
-    306,
     300,
     300,
     300,
@@ -287,11 +286,12 @@
     294,
     294,
     294,
-    280
+    280,
+    275
   ],
   "wheeling-60090:Village of Wheeling \u2014 Calendar": [
     148,
-    148,
+    147,
     147,
     147,
     147,

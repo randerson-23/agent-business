@@ -1,11 +1,11 @@
 {
-  "generated_at": "2026-10-23T22:01:13.932151+00:00",
+  "generated_at": "2026-10-24T02:46:49.028068+00:00",
   "region_counts": {
     "arlington-heights-60005": 3,
-    "des-plaines-60016": 15,
-    "mount-prospect-60056": 9,
-    "palatine-60067": 13,
-    "wheeling-60090": 8
+    "des-plaines-60016": 10,
+    "mount-prospect-60056": 3,
+    "palatine-60067": 12,
+    "wheeling-60090": 3
   },
-  "total": 48
+  "total": 31
 }
