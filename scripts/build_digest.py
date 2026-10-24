@@ -462,6 +462,24 @@ def truncate(text: str, max_len: int = DETAIL_MAX_LEN) -> str:
     return text[: max_len - 1].rsplit(" ", 1)[0] + "…"
 
 
+EVENT_PAGE_DETAIL_MAX_LEN = 600
+
+
+def sentence_cut(text: str, max_len: int = EVENT_PAGE_DETAIL_MAX_LEN) -> str:
+    """`text` whole if it fits, else cut at the last sentence end within
+    `max_len` (ROADMAP.md item 373: a page's description never ends in the
+    card's ellipsis). With no sentence end that early, cut at a word and add
+    one - an honest ellipsis beats a clause cut off silently."""
+    text = (text or "").strip()
+    if len(text) <= max_len:
+        return text
+    window = text[:max_len]
+    ends = [m.end() for m in re.finditer(r"[.!?](?=\s|$)", window)]
+    if ends and ends[-1] >= max_len // 3:
+        return window[: ends[-1]].strip()
+    return truncate(text, max_len)
+
+
 def _ics_escape(text: str) -> str:
     """Inverse of fetchers._unescape_ics_text - escape TEXT values per
     RFC 5545 before writing them into an .ics file we generate.
@@ -1203,6 +1221,7 @@ def fetch_region_sections(
             event = {
                 "title": item.get("title", ""),
                 "detail": truncate(item.get("detail", "")),
+                "detail_long": sentence_cut(strip_description_header(item.get("detail", ""))),  # item 373: the /e/ page
                 "url": safe_http_url(item.get("url")),  # untrusted feed text: http(s) only
                 "date": format_event_date(item.get("date")),
                 "date_iso": parse_event_date_iso(item.get("date")),
@@ -3999,7 +4018,7 @@ EVENT_PAGES_PATH = ROOT / "data" / "event_pages.json"
 EVENT_PAGE_CAP = 20
 EVENT_PAGE_NOINDEX_DAYS = 7
 EVENT_PAGE_DELETE_DAYS = 60
-_EVENT_PAGE_FIELDS = ("title", "date_iso", "detail", "venue", "street_address", "postal_code", "town", "state", "source", "url", "tags", "region_id", "region_url", "sponsored_by", "ics_href")
+_EVENT_PAGE_FIELDS = ("title", "date_iso", "detail", "detail_long", "venue", "street_address", "postal_code", "town", "state", "source", "url", "tags", "region_id", "region_url", "sponsored_by", "ics_href")
 
 
 def event_page_path(event: dict) -> str:
@@ -4083,13 +4102,13 @@ def render_event_page(entry: dict, *, expired: bool = False, more: list[dict] | 
     title = entry["title"]
     short_when = day.strftime("%a %b ") + str(day.day)
     page_title = f"{display_title(title)}, {short_when}, {', '.join(p for p in (venue, town) if p)} | Within Ten"
-    detail = truncate(strip_description_header(entry.get("detail")), 280)
+    detail = entry.get("detail_long") or sentence_cut(strip_description_header(entry.get("detail")))
     source_name = short_district(entry.get("source") or "") or "the organiser"
     tags = [tag_display(t)["label"] for t in (entry.get("tags") or [])]
     ld = {"@context": "https://schema.org", **event_jsonld({**entry, "detail": detail}, page_url)}
     return get_template_env().get_template("event.html.j2").render(
         page_title=page_title,
-        description=f"{display_title(title)} on {short_when} in {town}. {detail}".strip()[:300],
+        description=truncate(f"{display_title(title)} on {short_when} in {town}. {detail}", 200),
         canonical_url=page_url,
         og_image_url=SITE_BASE_URL + "og/default.png",
         json_ld=json_for_script(ld),
@@ -4098,6 +4117,10 @@ def render_event_page(entry: dict, *, expired: bool = False, more: list[dict] | 
         region_id=entry.get("region_id") or "all",
         town=town,
         title=display_title(title),
+        emoji=email_event_emoji(entry),
+        town_color=entry.get("town_color") or EMAIL_TOWN_COLORS[0][0],
+        dow=day.strftime("%a").upper(),
+        daynum=str(day.day),
         when_label=when_label,
         where_label=where_label,
         detail=detail,
@@ -4128,23 +4151,38 @@ def prime_event_page_paths(now: datetime) -> None:
     ACTIVE_EVENT_PAGE_PATHS = {e["path"] for e in active}
 
 
+def event_page_more_links(entry: dict, sections: list[dict], limit: int = 3) -> list[dict]:
+    """Up to `limit` other attendable events for an `/e/` page's "More this
+    weekend": the event's own town first, then the nearest towns (ROADMAP.md
+    items 373 and 214) when it has fewer. One link per title."""
+    home = next((s for s in sections if s["region_url"] == entry.get("region_url")), None)
+    ordered = [home] if home else []
+    rest = [s for s in sections if s is not home]
+    if home and home.get("region_lat") is not None and home.get("region_lon") is not None:
+        rest.sort(key=lambda s: _haversine_miles(home["region_lat"], home["region_lon"], s["region_lat"], s["region_lon"]) if s.get("region_lat") is not None and s.get("region_lon") is not None else 1e9)
+    ordered += rest
+    more, seen = [], {entry["title"]}
+    for section in ordered:
+        for e in section["weekend_events"]:
+            if len(more) >= limit:
+                return more
+            if e.get("title") and e["title"] not in seen and e.get("attendable", True):
+                seen.add(e["title"])
+                more.append({"title": display_title(e["title"]), "town": section["region_name"], "url": f"{section['region_url']}#{e.get('anchor_id') or event_anchor_id(e)}", "same_town": section is home})
+    return more
+
+
 def write_event_pages(sections: list[dict], tot_entries: list[dict], now: datetime, newsletter: dict | None, analytics: dict | None) -> list[dict]:
     """Select, store and write the `/e/` pages; returns the active (indexable,
     in-sitemap) ones. Expired pages are rewritten noindex; pages past the
     delete age are removed from disk and the registry."""
     today = now.astimezone(LOCAL_TZ).date()
     registry, active, expired, deleted = update_event_pages(load_event_page_registry(), select_event_page_events(sections, tot_entries), today)
-    this_weekend = {s["region_url"]: s for s in sections}
+    colors = {s["region_url"]: EMAIL_TOWN_COLORS[i % len(EMAIL_TOWN_COLORS)][0] for i, s in enumerate(sections)}
     for group, is_expired in ((active, False), (expired, True)):
         for entry in group:
-            section = this_weekend.get(entry.get("region_url") or "")
-            more = []
-            if section and not is_expired:
-                seen_titles = {entry["title"]}
-                for e in section["weekend_events"]:
-                    if e.get("title") and e["title"] not in seen_titles and e.get("attendable", True) and len(more) < 3:
-                        seen_titles.add(e["title"])
-                        more.append({"title": display_title(e["title"]), "url": f"{section['region_url']}#{e.get('anchor_id') or event_anchor_id(e)}"})
+            more = [] if is_expired else event_page_more_links(entry, sections)
+            entry = {**entry, "town_color": colors.get((entry.get("region_url") or ""), EMAIL_TOWN_COLORS[0][0])}
             page_dir = OUTPUT_DIR / entry["path"]
             page_dir.mkdir(parents=True, exist_ok=True)
             (page_dir / "index.html").write_text(
@@ -6725,6 +6763,8 @@ def main() -> None:
             {
                 "region_name": region["name"],
                 "region_url": SITE_BASE_URL + region_id + "/",
+                "region_lat": region.get("lat"),
+                "region_lon": region.get("lon"),
                 "weekend_events": weekend_events,
                 "evergreen": evergreen,
                 "sponsor": sponsor,

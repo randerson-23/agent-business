@@ -6306,7 +6306,7 @@ def test_event_page_has_one_event_its_own_canonical_and_noindex_once_expired():
     assert f'"url": "{build_digest.SITE_BASE_URL}e/2026-10-24-fall-fest/"' in page and '"sameAs": "https://src/Fall-Fest"' in page
     assert '"eventStatus": "https://schema.org/EventScheduled"' in page and '"organizer"' in page and '"offers"' not in page
     assert "<title>Fall Fest, Sat Oct 24, Palatine | Within Ten</title>" in page and 'noindex' not in page
-    assert "Official listing" in page and "More this weekend in Palatine" in page and page.count("embed-subscribe") == 1
+    assert "Official listing" in page and "More this weekend" in page and page.count("embed-subscribe") == 1
     old = build_digest.render_event_page(entry, expired=True)
     assert 'content="noindex"' in old and "This event has passed" in old and "embed-subscribe" not in old
     assert build_digest.SITE_BASE_URL + entry["path"] in build_digest.collect_sitemap_urls([], None, [entry])
@@ -6406,3 +6406,27 @@ def test_the_real_dppl_theatre_and_metropolis_venues_are_seeded_from_their_own_p
             rows[row["name"]] = row
     assert rows["Des Plaines Public Library"]["street_address"] == "1501 Ellinwood Street" and rows["Des Plaines Public Library"]["postal_code"] == "60016"
     assert rows["Des Plaines Theatre"]["street_address"] == "1476 Miner Street" and rows["Metropolis Performing Arts Centre"]["street_address"] == "111 W Campbell Street"
+
+
+def test_event_page_description_is_whole_sentences_and_more_links_fall_back_to_nearby_towns():
+    # ROADMAP.md item 373.
+    long = " ".join(f"Sentence number {i} tells you something about the day." for i in range(40))
+    cut = build_digest.sentence_cut(long)
+    assert len(cut) <= 600 and cut.endswith(".") and "…" not in cut and len(cut) > 400
+    assert build_digest.sentence_cut("Short one.") == "Short one."
+    entry = {"path": "e/2026-10-24-fall-fest/", "title": "Fall Fest", "date_iso": "2026-10-24T10:00:00", "town": "Palatine", "state": "IL", "source": "Palatine Park District — Events",
+             "url": "https://src/f", "tags": [], "detail": "Short.", "detail_long": cut, "region_url": "https://x/palatine-60067/", "region_id": "palatine-60067", "venue": "Palatine Park", "town_color": "#0f766e"}
+    page = build_digest.render_event_page(entry)
+    assert cut in page
+    assert "<title>Fall Fest, Sat Oct 24, Palatine Park, Palatine | Within Ten</title>" in page
+    assert "#0f766e" in page and ">SAT<" in page and ">24<" in page
+    sections = [
+        {"region_name": "Palatine", "region_url": "https://x/palatine-60067/", "region_lat": 42.11, "region_lon": -88.04, "weekend_events": [_ep_event("Fall Fest", 24), _ep_event("Pumpkin Patch", 25)]},
+        {"region_name": "Far", "region_url": "https://x/far/", "region_lat": 43.5, "region_lon": -88.0, "weekend_events": [_ep_event("Far Event", 24, town="Far")]},
+        {"region_name": "Near", "region_url": "https://x/near/", "region_lat": 42.12, "region_lon": -88.05, "weekend_events": [_ep_event("Near Event", 24, town="Near"), _ep_event("Info", 24, attendable=False)]},
+    ]
+    more = build_digest.event_page_more_links(entry, sections)
+    assert [m["title"] for m in more] == ["Pumpkin Patch", "Near Event", "Far Event"]
+    assert more[0]["same_town"] and not more[1]["same_town"]
+    one = build_digest.event_page_more_links(entry, sections, limit=1)
+    assert [m["title"] for m in one] == ["Pumpkin Patch"]

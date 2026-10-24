@@ -220,7 +220,7 @@ doesn't re-suggest something already shipped.
 
 **Build queue (by deadline; refreshed by the research loop, item 346).**
 Pick from the top unless the owner has flagged something else:
-0. **373** (the /e/ page itself). **360** (/this-weekend/ picks and signup near the top). Then **351** (the sponsor page's proof box).
+0. **360** (/this-weekend/ picks and signup near the top). Then **351** (the sponsor page's proof box).
 2. **323**: leaf pickup (in season now).
 3. **313, 314**: the sales mock-up and starter pack (before outreach).
 4. **328** (probe first), then **325** (by Nov 15), then the rest by
@@ -17756,8 +17756,8 @@ Saturday of outreach. Item 360 (picks and signup at the top of
      Park"* stays town-only, and an `/e/` page with a matched venue emits
      a full `PostalAddress`.
 
-373. **Make the `/e/` page say what the event is, and look like the
-     site.** Design/UX, the `/e/` template:
+373. ✅ DONE **Make the `/e/` page say what the event is, and look like the
+     site.** (Shipped: `detail_long` kept at fetch, `sentence_cut` to 600 chars at a sentence end; `event_page_more_links` gives three links, own town first then nearest towns by distance, with the town named when it is another one; email-style date chip, town colour bar and emoji. The venue in the title and a venue line were already in from 372.) Design/UX, the `/e/` template:
 
      - **Full source description**, up to about 600 characters and cut
        at a sentence boundary, never the card's ellipsis.
