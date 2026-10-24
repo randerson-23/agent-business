@@ -220,7 +220,7 @@ doesn't re-suggest something already shipped.
 
 **Build queue (by deadline; refreshed by the research loop, item 346).**
 Pick from the top unless the owner has flagged something else:
-0. **373** (the /e/ page itself). **360** (/this-weekend/ picks and signup near the top). Then **351** (the sponsor page's proof box).
+0. **375, 376** (one Event-markup builder; the /e/ pages still lack street addresses). **373** (the /e/ page itself). **360** (/this-weekend/ picks and signup near the top). Then **351** (the sponsor page's proof box).
 2. **323**: leaf pickup (in season now).
 3. **313, 314**: the sales mock-up and starter pack (before outreach).
 4. **328** (probe first), then **325** (by Nov 15), then the rest by
@@ -17797,6 +17797,93 @@ location requirement for event pages** applied to the first `/e/`
 pages. The design/UX angle is **the first single-event page on a
 phone**, which has no venue, a truncated description and one "more"
 link.
+
+
+#### Research pass 2026-10-24 (hundredth pass)
+
+Overnight the build loop shipped items 335 and 372 (a `venues:` table,
+venue extraction from descriptions, full `PostalAddress` markup) and a
+security-hardening PR (http(s)-only feed URLs, escaped JSON-LD, a
+link-checker host guard, read-only tests, Dependabot). The URL probes
+for the venue table also came back. This pass checks the result where it
+counts, in the markup Google reads on the new `/e/` pages, and plans
+November's two civic and commercial dates, **Veterans Day (Wed Nov 11)**
+and **Small Business Saturday (Nov 28)**.
+
+| Angle | What it is / what we found | Why it matters here |
+|---|---|---|
+| **Event markup after items 335 and 372, measured (design/UX of the data)** | In `docs/events.json`, **97 of 223** events now carry a `streetAddress`, up from 0, but **0** carry an `organizer`. On the **`/e/` pages it's the reverse**: `/e/2026-10-23-storytime-playdate-wonderful-worlds/` has an `organizer` but **no `streetAddress`**, although the venue is *"Mount Prospect Public Library"* and the table holds **125 S Emerson St** for exactly that name. *"Trunk or Treat"* at Pioneer Park still has no venue, because the Pioneer Park probe **timed out** | Three outputs build Event markup three different ways, so a fix lands in one and misses the others. The `/e/` pages, the very pages built for Google's event rule (item 369), are the ones still missing the address. One shared builder fixes this for good (item 375) |
+| **Today's venue probe answers** (`data/url_probes.json`, 2026-10-24) | Confirmed from the agencies' own pages: **Des Plaines Public Library, 1501 Ellinwood Street, Des Plaines, IL 60016**, and an address block on the Des Plaines Theatre site reading **1476 Miner Street, Des Plaines**. Metropolis's page also returned a match. **AHPD's Trunk or Treat page (Pioneer Park) timed out** | These go straight into the `venues:` tables. Pioneer Park needs a retry at a different AHPD URL, such as the park's own page (item 376) |
+| **Small Business Saturday, Nov 28 2026** (American Express Shop Small terms, last modified Sep 15 2025; Main Street America notices, 2022–2025) | Amex's **Neighborhood Champions** programme opens each autumn (past windows ran early October to mid-November, or until full) to **community organisations that support small businesses**. Main Street America members are pre-qualified. Champions get a free Shop Small kit and are expected to host or plan an event. No 2026 page was found yet | The site itself, a for-profit newsletter, isn't the eligible applicant. The **downtown associations are**: the Downtown Palatine Business Association, Mount Prospect's downtown merchants, Downtown Arlington Heights. They are already event sources, and they're the natural first buyers of the holiday listing (item 258). Small Business Saturday gives the outreach batch a reason to write to them this month (item 377) |
+| **Veterans Day, Wed Nov 11 2026** (Daily Herald roundups of past years; ABC7) | Past local ceremonies: **Des Plaines, 11 AM at Lake Park Veterans Memorial, 2200 Lee St** (American Legion Post 36); **Palatine, Community Park at Wood St and Northwest Hwy** (American Legion Post 690); Arlington Heights at the Senior Center (an old listing). **No 2026 times found yet** | Civic ceremonies often sit on Legion or village pages the feeds don't read. Veterans Day falls on a **Wednesday**, so the Nov 4 issue's *"Coming up"* line and the region pages are where a parent planning the day off (item 296's districts that close) would find them. It must be sourced and never guessed (item 378) |
+
+#### P1 (new)
+
+375. **One Event-markup builder for every output.** Build loop: move
+     JSON-LD construction into a single `event_jsonld(event, url)`
+     function used by the region pages, `events.json`, `/this-weekend/`
+     and the `/e/` pages. It always applies the venue lookup (items 335
+     and 372), `organizer`, `eventStatus`, `isAccessibleForFree` and the
+     `offers` rule (`priceCurrency` whenever `offers` is present). Only
+     `url` differs per output (the `/e/` page when one exists, item
+     369). Tests: for one fixture event, the four outputs produce
+     identical `location` and `organizer`. The Mount Prospect storytime
+     `/e/` page carries *"125 S Emerson St"*. Item 361's partisan filter
+     still applies first.
+
+376. **Fill the venues the probes confirmed, and retry Pioneer Park.**
+     Build loop, config only:
+
+     - Add **Des Plaines Public Library, 1501 Ellinwood Street, 60016**
+       (`source_url` the library's visit page) and the **Des Plaines
+       Theatre, 1476 Miner Street** (`source_url` the theatre's site) to
+       `config/regions/des-plaines-60016.yaml`. Add Metropolis from its
+       own match once the probe context confirms the street.
+     - Add a probe for **AHPD's Pioneer Park page** (the park listing,
+       not the event page that timed out) with the street-address
+       pattern, and the **Napleton Palatine dealerships' own contact
+       pages**.
+
+     No address goes in without a probe context showing it on the
+     owner's own page.
+
+#### P2 (new)
+
+377. **Small Business Saturday: one section, one outreach note.** Build
+     loop plus owner:
+
+     - On `/holidays/` and in the Nov 25 issue, a **"Small Business
+       Saturday · Sat Nov 28"** block listing that day's Shop Small
+       events from the feeds (keywords: *small business saturday, shop
+       small, holiday walk, sip and shop*) by town, with links. When a
+       town has none, show its downtown association's page as an
+       `evergreen` link.
+     - `OUTREACH_TEMPLATES.md` **§13b**, to downtown associations: *"We
+       list every Small Business Saturday event in your town for free.
+       Send us yours. If any of your members want to be on our holiday
+       page, it's $20 until Nov 15."* It also mentions American Express's
+       Neighborhood Champions programme as something **they** may apply
+       to, without claiming any affiliation.
+     - Owner: send §13b with the outreach batch (Needs Ryan step 8)
+       **by Nov 10**.
+
+378. **Veterans Day ceremonies, sourced, for Wed Nov 11.** Build loop:
+     add `annual_events` entries for each town's ceremony (Des Plaines
+     Lake Park Veterans Memorial and Legion Post 36; Palatine Community
+     Park and Legion Post 690; Arlington Heights, Mount Prospect and
+     Wheeling from their village or Legion pages), each with
+     `date: null` until a 2026 page confirms the day and time. Add URL
+     probes for those pages. Once confirmed, the events flow into the
+     region pages, the Nov 4 issue's *"Coming up"* and the `/e/` page
+     set (item 369). Nothing renders for a town without a confirmed
+     time.
+
+Competitors reviewed this pass: **American Express's Shop Small
+Neighborhood Champions** (eligible: downtown associations, not the
+site), **past Veterans Day ceremonies** in Des Plaines and Palatine, and
+**today's venue-probe answers**. The design/UX angle is **the Event
+markup itself, compared across the four outputs**: the new single-event
+pages are the ones still missing a street address.
 
 
 ## Working agreements for autonomous iteration
