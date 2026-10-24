@@ -37,7 +37,7 @@ from jinja2 import Environment, FileSystemLoader
 from PIL import Image, ImageDraw, ImageFont
 
 sys.path.insert(0, str(Path(__file__).parent))
-from fetchers import FETCHERS, MAX_ITEMS_PER_SOURCE, fetch_night_forecast, fetch_weather, submit_bing_urls, submit_indexnow  # noqa: E402
+from fetchers import FETCHERS, MAX_ITEMS_PER_SOURCE, fetch_night_forecast, fetch_weather, safe_http_url, submit_bing_urls, submit_indexnow  # noqa: E402
 from tagging import infer_tags, is_informational, merge_default_tags, parse_registration_opens, tag_display  # noqa: E402
 
 logging.basicConfig(level=logging.INFO, format="%(levelname)s %(name)s: %(message)s")
@@ -425,6 +425,13 @@ def schema_start_date(date_iso: str) -> str:
     if local.time() == time(0, 0):
         return local.date().isoformat()
     return local.isoformat()
+
+
+def json_for_script(payload: object, **kwargs) -> str:
+    """JSON for a <script type="application/ld+json"> block. Every `<` becomes
+    \\u003c, so no feed-supplied text can close the script tag or open an HTML
+    comment inside it (`</script>`, `<!--`), whatever the Jinja `|safe` does."""
+    return json.dumps(payload, ensure_ascii=False, **kwargs).replace("<", "\\u003c")
 
 
 def schema_location(event: dict, region: dict | None = None) -> dict:
@@ -1155,7 +1162,7 @@ def fetch_region_sections(
             event = {
                 "title": item.get("title", ""),
                 "detail": truncate(item.get("detail", "")),
-                "url": item.get("url", ""),
+                "url": safe_http_url(item.get("url")),  # untrusted feed text: http(s) only
                 "date": format_event_date(item.get("date")),
                 "date_iso": parse_event_date_iso(item.get("date")),
                 "tags": tags,
@@ -1401,7 +1408,7 @@ def build_halloween_json_ld(entries: list[dict]) -> str | None:
     if not graph:
         return None
     payload = {"@context": "https://schema.org", "@graph": graph}
-    return json.dumps(payload, ensure_ascii=False).replace("</", "<\\/")
+    return json_for_script(payload)
 
 
 _COUNT_WORDS = {2: "Two", 3: "Three", 4: "Four", 5: "Five", 6: "Six", 7: "Seven", 8: "Eight", 9: "Nine", 10: "Ten"}
@@ -2785,7 +2792,7 @@ def build_faq_json_ld(faq_items: list[dict]) -> str:
             for item in faq_items
         ],
     }
-    return json.dumps(payload, ensure_ascii=False).replace("</", "<\\/")
+    return json_for_script(payload)
 
 
 def build_freshness_json_ld(region: dict, canonical_url: str, now: datetime) -> str:
@@ -2822,7 +2829,7 @@ def build_freshness_json_ld(region: dict, canonical_url: str, now: datetime) -> 
             "publisher": {"@id": ORGANIZATION_ID},
         },
     }
-    return json.dumps(payload, ensure_ascii=False).replace("</", "<\\/")
+    return json_for_script(payload)
 
 
 def build_organization_json_ld() -> str:
@@ -2852,7 +2859,7 @@ def build_organization_json_ld() -> str:
         "url": SITE_BASE_URL,
         "founder": {"@type": "Person", "name": "Ryan Anderson"},
     }
-    return json.dumps(payload, ensure_ascii=False).replace("</", "<\\/")
+    return json_for_script(payload)
 
 
 def event_anchor_id(event: dict) -> str:
@@ -2945,7 +2952,7 @@ def build_event_json_ld(blocks: list[dict], page_url: str | None = None, region:
     payload = {"@context": "https://schema.org", "@graph": graph}
     # Escape "</" so an event title/description containing it can't break
     # out of the <script> tag it's embedded in.
-    return json.dumps(payload, ensure_ascii=False).replace("</", "<\\/")
+    return json_for_script(payload)
 
 
 TITLE_LIMIT = 65
@@ -4059,7 +4066,7 @@ def render_event_page(entry: dict, *, expired: bool = False, more: list[dict] | 
         description=f"{display_title(title)} on {short_when} in {town}. {detail}".strip()[:300],
         canonical_url=page_url,
         og_image_url=SITE_BASE_URL + "og/default.png",
-        json_ld=json.dumps(ld, ensure_ascii=False).replace("</", "<\\/"),
+        json_ld=json_for_script(ld),
         hub_url=SITE_BASE_URL,
         region_url=entry.get("region_url") or SITE_BASE_URL,
         region_id=entry.get("region_id") or "all",

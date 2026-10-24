@@ -23,25 +23,25 @@ def fake(codes, calls=None):
 
 
 def test_404_needs_two_consecutive_checks():
-    first = lh.run([{"url": "https://a/x"}], {}, get=fake({"https://a/x": 404}), sleep=lambda s: None, now="t1")
-    assert first["https://a/x"]["strikes"] == 1
-    second = lh.run([{"url": "https://a/x"}], first, get=fake({"https://a/x": 410}), sleep=lambda s: None, now="t2")
-    assert second["https://a/x"]["strikes"] == 2
-    healed = lh.run([{"url": "https://a/x"}], second, get=fake({"https://a/x": 200}), sleep=lambda s: None, now="t3")
-    assert healed["https://a/x"]["strikes"] == 0
+    first = lh.run([{"url": "https://a.org/x"}], {}, get=fake({"https://a.org/x": 404}), sleep=lambda s: None, now="t1")
+    assert first["https://a.org/x"]["strikes"] == 1
+    second = lh.run([{"url": "https://a.org/x"}], first, get=fake({"https://a.org/x": 410}), sleep=lambda s: None, now="t2")
+    assert second["https://a.org/x"]["strikes"] == 2
+    healed = lh.run([{"url": "https://a.org/x"}], second, get=fake({"https://a.org/x": 200}), sleep=lambda s: None, now="t3")
+    assert healed["https://a.org/x"]["strikes"] == 0
 
 
 def test_403_and_timeouts_are_recorded_but_never_a_strike():
-    codes = {"https://a/1": {"HEAD": 403, "GET": 403}, "https://a/2": requests.Timeout("slow")}
-    health = lh.run([{"url": "https://a/1"}, {"url": "https://a/2"}], {}, get=fake(codes), sleep=lambda s: None, now="t")
-    assert health["https://a/1"] == {"status": 403, "strikes": 0, "checked_at": "t"}
-    assert health["https://a/2"]["status"] is None and health["https://a/2"]["strikes"] == 0
+    codes = {"https://a.org/1": {"HEAD": 403, "GET": 403}, "https://a.org/2": requests.Timeout("slow")}
+    health = lh.run([{"url": "https://a.org/1"}, {"url": "https://a.org/2"}], {}, get=fake(codes), sleep=lambda s: None, now="t")
+    assert health["https://a.org/1"] == {"status": 403, "strikes": 0, "checked_at": "t"}
+    assert health["https://a.org/2"]["status"] is None and health["https://a.org/2"]["strikes"] == 0
 
 
 def test_head_refused_falls_back_to_get():
     calls = []
-    health = lh.run([{"url": "https://a/x"}], {}, get=fake({"https://a/x": {"HEAD": 405, "GET": 404}}, calls), sleep=lambda s: None, now="t")
-    assert [m for m, _ in calls] == ["HEAD", "GET"] and health["https://a/x"]["status"] == 404
+    health = lh.run([{"url": "https://a.org/x"}], {}, get=fake({"https://a.org/x": {"HEAD": 405, "GET": 404}}, calls), sleep=lambda s: None, now="t")
+    assert [m for m, _ in calls] == ["HEAD", "GET"] and health["https://a.org/x"]["status"] == 404
 
 
 def test_one_request_per_host_per_second():
@@ -51,6 +51,21 @@ def test_one_request_per_host_per_second():
     def sleep(s):
         slept.append(s); now[0] += s
 
-    codes = {"https://a/1": 200, "https://a/2": 200, "https://b/1": 200}
+    codes = {"https://a.org/1": 200, "https://a.org/2": 200, "https://b.org/1": 200}
     lh.run([{"url": u} for u in codes], {}, get=fake(codes), sleep=sleep, clock=lambda: now[0], now="t")
     assert len(slept) == 1 and abs(slept[0] - 1.0) < 1e-9  # only the second request to host a waits
+
+
+def test_only_public_http_urls_are_requested():
+    ok = ["https://example.org/a", "http://www.mountprospect.org/x?y=1"]
+    bad = ["javascript:alert(1)", "file:///etc/passwd", "ftp://example.org/", "http://localhost/admin", "http://127.0.0.1/", "http://169.254.169.254/latest/meta-data/",
+           "http://10.0.0.5/", "http://192.168.1.1/", "http://[::1]/", "http://printer.local/", "http://db.internal/", "https:///nohost", "http://intranet/"]
+    assert all(lh.is_public_http_url(u) for u in ok) and not any(lh.is_public_http_url(u) for u in bad)
+    calls = []
+
+    def fake(method, url, **kw):
+        calls.append(url)
+        return Resp(200)
+
+    health = lh.run([{"url": u} for u in ok + bad], {}, get=fake, sleep=lambda s: None, now="t")
+    assert sorted(calls) == sorted(ok) and set(health) == set(ok)

@@ -6311,3 +6311,21 @@ def test_event_page_has_one_event_its_own_canonical_and_noindex_once_expired():
     assert 'content="noindex"' in old and "This event has passed" in old and "embed-subscribe" not in old
     assert build_digest.SITE_BASE_URL + entry["path"] in build_digest.collect_sitemap_urls([], None, [entry])
     assert build_digest.order_bing_urls([build_digest.SITE_BASE_URL + "about/", build_digest.SITE_BASE_URL + entry["path"]], datetime(2026, 10, 24, tzinfo=timezone.utc), [])[0].endswith(entry["path"])
+
+
+def test_json_ld_for_script_tags_cannot_be_closed_by_feed_text():
+    out = build_digest.json_for_script({"name": "</script><script>alert(1)</script><!-- x"})
+    assert "<" not in out and json.loads(out)["name"] == "</script><script>alert(1)</script><!-- x"
+    ev = {"title": "Fest </script><script>alert(1)</script>", "url": "https://x/e", "date_iso": "2026-10-24T10:00:00", "town": "T", "state": "IL", "source": "S — Events"}
+    page = build_digest.render_event_page({**ev, "path": "e/x/", "tags": [], "detail": "d </script>", "region_url": "https://x/"})
+    ld = page.split('application/ld+json">')[1].split("</script>")[0]
+    assert "<script>" not in ld and "alert(1)" in ld  # present only as inert JSON text
+
+
+def test_a_javascript_url_in_a_feed_item_never_reaches_a_card_link(monkeypatch):
+    import fetchers
+    item = {"title": "Evil", "detail": "d", "url": "javascript:alert(document.cookie)", "date": "2026-10-24"}
+    monkeypatch.setitem(build_digest.FETCHERS, "stub", lambda url, **kw: [item, dict(item, title="Good", url="https://ok.example/e")])
+    cfg = {"region": {"id": "r", "name": "R", "state": "IL"}, "sources": [{"name": "S", "type": "stub", "url": "https://x/", "section": "Events", "enabled": True}]}
+    events = build_digest.fetch_region_sections(cfg)[0]["events"]
+    assert {e["title"]: e["url"] for e in events} == {"Evil": "", "Good": "https://ok.example/e"}

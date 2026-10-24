@@ -11,6 +11,7 @@ status is recorded but never acted on: a bot wall is not a dead page.
 
 from __future__ import annotations
 
+import ipaddress
 import json
 import sys
 import time
@@ -37,6 +38,22 @@ def load_json(path: Path) -> dict | list:
         return {}
 
 
+def is_public_http_url(url: str) -> bool:
+    """Only http(s) links to a public host are requested: the candidate list
+    comes from untrusted feeds, and the runner must never be pointed at
+    localhost, a private or link-local address (such as a cloud metadata
+    endpoint) or a non-web scheme."""
+    parts = urlparse(url)
+    host = (parts.hostname or "").lower()
+    if parts.scheme not in ("http", "https") or not host or host == "localhost" or host.endswith((".local", ".internal", ".localhost")):
+        return False
+    try:
+        ip = ipaddress.ip_address(host)
+    except ValueError:
+        return "." in host
+    return ip.is_global
+
+
 def check_url(url: str, get=requests.request) -> int | None:
     """Status code for `url`, or None when the request itself failed."""
     try:
@@ -59,7 +76,7 @@ def run(candidates: list[dict], previous: dict, *, get=requests.request, sleep=t
     now = now or datetime.now(timezone.utc).isoformat(timespec="minutes")
     last_hit: dict[str, float] = {}
     health: dict[str, dict] = {}
-    for url in sorted({c["url"] for c in candidates if c.get("url")}):
+    for url in sorted({c["url"] for c in candidates if c.get("url") and is_public_http_url(c["url"])}):
         host = urlparse(url).netloc
         wait = 1.0 - (clock() - last_hit.get(host, -1e9))
         if wait > 0:

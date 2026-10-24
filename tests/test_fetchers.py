@@ -1087,3 +1087,10 @@ def test_bing_submission_sends_nothing_on_zero_quota_and_fails_soft():
     def boom(*a, **k): raise RuntimeError("down")
     o = {}
     assert submit_bing_urls("https://x.org", "K", ["https://x.org/a/"], outcome=o, request=boom) == [] and o["error"] == "RuntimeError"
+
+
+def test_safe_http_url_keeps_only_plain_web_links():
+    from fetchers import safe_http_url
+    assert safe_http_url("https://example.org/e?id=1") == "https://example.org/e?id=1" and safe_http_url("  http://x.org/a ") == "http://x.org/a"
+    for bad in ("javascript:alert(1)", "JaVaScRiPt:alert(1)", "data:text/html,<script>1</script>", "vbscript:x", "//evil.example/x", "/relative", "https://x.org/a b", 'https://x.org/"onmouseover="x', "https://x.org/<script>", None, "", 5):
+        assert safe_http_url(bad) == "", bad
