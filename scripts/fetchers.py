@@ -727,6 +727,15 @@ WEATHER_CODES: dict[int, tuple[str, str, bool]] = {
 }
 
 
+def safe_http_url(url: object) -> str:
+    """The URL if it is a plain http(s) link, else "". Feeds and scraped
+    pages are untrusted: a `javascript:`, `data:` or `vbscript:` link in an
+    item's URL would become a clickable XSS vector in every card, email and
+    feed that renders it, and Jinja's autoescape does not touch URL schemes."""
+    text = str(url or "").strip()
+    return text if re.match(r"^https?://[^\s<>\"']+$", text, re.IGNORECASE) else ""
+
+
 def fetch_weather(lat: float, lon: float, timezone_name: str = "America/Chicago") -> list[dict]:
     """Best-effort daily forecast from Open-Meteo (free, no API key, no
     account setup) - same fail-soft philosophy as every other fetcher here:

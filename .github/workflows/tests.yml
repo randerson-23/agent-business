@@ -5,6 +5,10 @@ on:
   push:
     branches: [main]
 
+# Read-only: this workflow runs on every pull request and never needs to write.
+permissions:
+  contents: read
+
 jobs:
   test:
     runs-on: ubuntu-latest
