@@ -23,7 +23,12 @@
   header.site { padding:14px 16px; border-bottom:1px solid var(--border); }
   header.site a { color:var(--ink); font-weight:800; text-decoration:none; }
   .wrap { max-width:640px; margin:0 auto; padding:0 16px 40px; }
-  h1 { font-size:30px; line-height:1.15; margin:20px 0 8px; }
+  .town-bar { height:6px; background:{{ town_color }}; }
+  .head { display:flex; gap:14px; align-items:flex-start; margin:20px 0 8px; }
+  .chip { flex:none; width:56px; text-align:center; background:{{ town_color }}; color:#fff; padding:6px 0 8px; line-height:1.1; }
+  .chip b { display:block; font-size:12px; letter-spacing:.08em; }
+  .chip span { display:block; font-size:26px; font-weight:800; }
+  h1 { font-size:28px; line-height:1.15; margin:0; }
   .when { font-weight:700; margin:0 0 4px; }
   .where { color:var(--muted); margin:0 0 14px; }
   .past { background:var(--card); border:2px solid var(--ink); padding:10px 14px; margin:16px 0; font-weight:600; }
@@ -43,8 +48,9 @@
 </head>
 <body>
 <header class="site"><a href="{{ hub_url }}">Within Ten</a> &middot; <a href="{{ region_url }}" style="font-weight:400;">{{ town }}</a></header>
+<div class="town-bar"></div>
 <div class="wrap">
-  <h1>{{ title }}</h1>
+  <div class="head"><div class="chip" aria-hidden="true"><b>{{ dow }}</b><span>{{ daynum }}</span></div><h1><span aria-hidden="true">{{ emoji }}</span> {{ title }}</h1></div>
   <p class="when">{{ when_label }}</p>
   <p class="where">{{ where_label }}</p>
   {% if expired %}<div class="past">This event has passed. See <a href="{{ hub_url }}this-weekend/">what's on this weekend</a>.</div>{% endif %}
@@ -53,8 +59,8 @@
   <p><a class="btn" href="{{ source_url }}" rel="noopener">Official listing &rarr;</a>{% if ics_href and not expired %}<a class="btn alt" href="{{ ics_href }}" download="event.ics">Add to calendar</a>{% endif %}</p>
   <p class="source">Listing published by {{ source_name }}. Check the official listing for the latest time, place and any cost.</p>
   {% if more and not expired %}
-  <h2>More this weekend in {{ town }}</h2>
-  <ul class="more">{% for m in more %}<li><a href="{{ m.url }}">{{ m.title }}</a></li>{% endfor %}</ul>
+  <h2>More this weekend</h2>
+  <ul class="more">{% for m in more %}<li><a href="{{ m.url }}">{{ m.title }}</a>{% if not m.same_town %} <span class="source">({{ m.town }})</span>{% endif %}</li>{% endfor %}</ul>
   {% endif %}
   {% if not expired %}{{ signup_form(newsletter, "newsletter-signup", "bd-email", "town:" ~ region_id, "event-page", "Get this list in your inbox every Thursday.") }}{{ signup_runtime(newsletter) }}{% endif %}
 </div>
