@@ -2,7 +2,7 @@
   "@context": "https://schema.org",
   "@type": "ItemList",
   "name": "Upcoming events in Palatine — Within Ten",
-  "dateModified": "2026-10-24T11:15:00+00:00",
+  "dateModified": "2026-10-24T14:01:06+00:00",
   "numberOfItems": 29,
   "itemListElement": [
     {
@@ -13,6 +13,7 @@
         "name": "Halloween Hustle",
         "startDate": "2026-10-24T08:30:00-05:00",
         "url": "https://withintenmiles.com/palatine-60067/#ev-halloween-hustle-2026-10-24",
+        "eventStatus": "https://schema.org/EventScheduled",
         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
         "location": {
           "@type": "Place",
@@ -25,6 +26,11 @@
           }
         },
         "sameAs": "https://www.palatine.il.us/common/modules/iCalendar/iCalendar.aspx?feed=calendar&catID=14",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Village of Palatine",
+          "url": "https://www.palatine.il.us"
+        },
         "description": "The Halloween Hustle® returns to Palatine on Saturday, Octobe"
       }
     },
@@ -36,6 +42,7 @@
         "name": "Recovery, Resilience and Community Support Workshop #3",
         "startDate": "2026-10-24T10:00:00-05:00",
         "url": "https://withintenmiles.com/palatine-60067/#ev-recovery-resilience-and-community-support-workshop-3-2026-10-24",
+        "eventStatus": "https://schema.org/EventScheduled",
         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
         "location": {
           "@type": "Place",
@@ -48,6 +55,11 @@
           }
         },
         "sameAs": "https://www.palatine.il.us/common/modules/iCalendar/iCalendar.aspx?feed=calendar&catID=14",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Village of Palatine",
+          "url": "https://www.palatine.il.us"
+        },
         "description": "Understanding Mental Health: A Three-Part Community Learning Se"
       }
     },
@@ -59,6 +71,7 @@
         "name": "Quest Academy Fall 2026 Open House",
         "startDate": "2026-10-24T10:00:00-05:00",
         "url": "https://withintenmiles.com/palatine-60067/#ev-quest-academy-fall-2026-open-house-2026-10-24",
+        "eventStatus": "https://schema.org/EventScheduled",
         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
         "location": {
           "@type": "Place",
@@ -71,6 +84,11 @@
           }
         },
         "sameAs": "https://www.palatine.il.us/common/modules/iCalendar/iCalendar.aspx?feed=calendar&catID=14",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Village of Palatine",
+          "url": "https://www.palatine.il.us"
+        },
         "description": "Discover Gifted Education at Quest Academy's Fall Open House! h"
       }
     },
@@ -82,6 +100,7 @@
         "name": "Downtown Palatine Business Association Trick or Treat Event",
         "startDate": "2026-10-24T10:00:00-05:00",
         "url": "https://withintenmiles.com/palatine-60067/#ev-downtown-palatine-business-association-trick-or-treat-event-2026-10-24",
+        "eventStatus": "https://schema.org/EventScheduled",
         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
         "location": {
           "@type": "Place",
@@ -94,6 +113,11 @@
           }
         },
         "sameAs": "https://www.palatine.il.us/common/modules/iCalendar/iCalendar.aspx?feed=calendar&catID=14",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Village of Palatine",
+          "url": "https://www.palatine.il.us"
+        },
         "description": "Downtown Palatine Business Association Trick or Treating event"
       }
     },
@@ -105,6 +129,7 @@
         "name": "Palatine Police Taking Back Unwanted Prescription Drugs",
         "startDate": "2026-10-24T10:00:00-05:00",
         "url": "https://withintenmiles.com/palatine-60067/#ev-palatine-police-taking-back-unwanted-prescription-drugs-2026-10-24",
+        "eventStatus": "https://schema.org/EventScheduled",
         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
         "location": {
           "@type": "Place",
@@ -117,6 +142,11 @@
           }
         },
         "sameAs": "https://www.palatine.il.us/common/modules/iCalendar/iCalendar.aspx?feed=calendar&catID=14",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Village of Palatine",
+          "url": "https://www.palatine.il.us"
+        },
         "description": "Palatine police are taking back unwanted prescription drugs on"
       }
     },
@@ -127,7 +157,8 @@
         "@type": "Event",
         "name": "FREE Trunk or Treat at Napleton's Palatine Mazda",
         "startDate": "2026-10-24T12:00:00-05:00",
-        "url": "https://withintenmiles.com/palatine-60067/#ev-free-trunk-or-treat-at-napleton-s-palatine-mazda-2026-10-24",
+        "url": "https://withintenmiles.com/e/2026-10-24-free-trunk-or-treat-at-napleton-s-palatine-mazda/",
+        "eventStatus": "https://schema.org/EventScheduled",
         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
         "location": {
           "@type": "Place",
@@ -140,6 +171,11 @@
           }
         },
         "sameAs": "https://www.palatine.il.us/common/modules/iCalendar/iCalendar.aspx?feed=calendar&catID=14",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Village of Palatine",
+          "url": "https://www.palatine.il.us"
+        },
         "description": "Trick-or-treat from decorated car trunks and collect candy from",
         "isAccessibleForFree": true
       }
@@ -151,7 +187,8 @@
         "@type": "Event",
         "name": "FREE Trunk or Treat at Napleton Palatine Hyundai",
         "startDate": "2026-10-24T12:00:00-05:00",
-        "url": "https://withintenmiles.com/palatine-60067/#ev-free-trunk-or-treat-at-napleton-palatine-hyundai-2026-10-24",
+        "url": "https://withintenmiles.com/e/2026-10-24-free-trunk-or-treat-at-napleton-palatine-hyundai/",
+        "eventStatus": "https://schema.org/EventScheduled",
         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
         "location": {
           "@type": "Place",
@@ -164,6 +201,11 @@
           }
         },
         "sameAs": "https://www.palatine.il.us/common/modules/iCalendar/iCalendar.aspx?feed=calendar&catID=14",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Village of Palatine",
+          "url": "https://www.palatine.il.us"
+        },
         "description": "A free, family-friendly Halloween stop! Kids can trick-or-trea",
         "isAccessibleForFree": true
       }
@@ -176,6 +218,7 @@
         "name": "FREE Trunk or Treat at Napleton Palatine Chevrolet",
         "startDate": "2026-10-24T12:00:00-05:00",
         "url": "https://withintenmiles.com/palatine-60067/#ev-free-trunk-or-treat-at-napleton-palatine-chevrolet-2026-10-24",
+        "eventStatus": "https://schema.org/EventScheduled",
         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
         "location": {
           "@type": "Place",
@@ -188,6 +231,11 @@
           }
         },
         "sameAs": "https://www.palatine.il.us/common/modules/iCalendar/iCalendar.aspx?feed=calendar&catID=14",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Village of Palatine",
+          "url": "https://www.palatine.il.us"
+        },
         "description": "Costumes encouraged! Join us for a free trunk or treat with dec",
         "isAccessibleForFree": true
       }
@@ -200,6 +248,7 @@
         "name": "FREE Trunk or Treat at Napleton's Palatine Subaru",
         "startDate": "2026-10-24T12:00:00-05:00",
         "url": "https://withintenmiles.com/palatine-60067/#ev-free-trunk-or-treat-at-napleton-s-palatine-subaru-2026-10-24",
+        "eventStatus": "https://schema.org/EventScheduled",
         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
         "location": {
           "@type": "Place",
@@ -212,6 +261,11 @@
           }
         },
         "sameAs": "https://www.palatine.il.us/common/modules/iCalendar/iCalendar.aspx?feed=calendar&catID=14",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Village of Palatine",
+          "url": "https://www.palatine.il.us"
+        },
         "description": "Bring the kids in costume for a free trunk or treat! Trick-or-t",
         "isAccessibleForFree": true
       }
@@ -224,6 +278,7 @@
         "name": "Impact Makers of Palatine Free Self-Defense Workshop",
         "startDate": "2026-10-25T13:00:00-05:00",
         "url": "https://withintenmiles.com/palatine-60067/#ev-impact-makers-of-palatine-free-self-defense-workshop-2026-10-25",
+        "eventStatus": "https://schema.org/EventScheduled",
         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
         "location": {
           "@type": "Place",
@@ -236,6 +291,11 @@
           }
         },
         "sameAs": "https://www.palatine.il.us/common/modules/iCalendar/iCalendar.aspx?feed=calendar&catID=14",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Village of Palatine",
+          "url": "https://www.palatine.il.us"
+        },
         "description": "Free Self Defense Workshop https://www.palatine.il.us/calendar.",
         "isAccessibleForFree": true
       }
@@ -247,7 +307,8 @@
         "@type": "Event",
         "name": "Trunk-or-Treat and Community Meal",
         "startDate": "2026-10-25T14:00:00-05:00",
-        "url": "https://withintenmiles.com/palatine-60067/#ev-trunk-or-treat-and-community-meal-2026-10-25",
+        "url": "https://withintenmiles.com/e/2026-10-25-trunk-or-treat-and-community-meal/",
+        "eventStatus": "https://schema.org/EventScheduled",
         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
         "location": {
           "@type": "Place",
@@ -260,6 +321,11 @@
           }
         },
         "sameAs": "https://www.palatine.il.us/common/modules/iCalendar/iCalendar.aspx?feed=calendar&catID=14",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Village of Palatine",
+          "url": "https://www.palatine.il.us"
+        },
         "description": "FREE Trunk-or-Treat and Community Meal https://www.palatine.il.",
         "isAccessibleForFree": true
       }
@@ -272,6 +338,7 @@
         "name": "CATIF Fundraiser: A Safe Place, Safe Paws",
         "startDate": "2026-10-25T14:00:00-05:00",
         "url": "https://withintenmiles.com/palatine-60067/#ev-catif-fundraiser-a-safe-place-safe-paws-2026-10-25",
+        "eventStatus": "https://schema.org/EventScheduled",
         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
         "location": {
           "@type": "Place",
@@ -284,6 +351,11 @@
           }
         },
         "sameAs": "https://www.palatine.il.us/common/modules/iCalendar/iCalendar.aspx?feed=calendar&catID=14",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Village of Palatine",
+          "url": "https://www.palatine.il.us"
+        },
         "description": "A safe place, safe paws fundraiser where no one escaping abuse"
       }
     },
@@ -295,6 +367,7 @@
         "name": "MPAC Ukrainian Virtual Parent Presentation - Program Descriptions",
         "startDate": "2026-10-26T18:00:00-05:00",
         "url": "https://withintenmiles.com/palatine-60067/#ev-mpac-ukrainian-virtual-parent-presentation-program-descripti-2026-10-26",
+        "eventStatus": "https://schema.org/EventScheduled",
         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
         "location": {
           "@type": "Place",
@@ -317,6 +390,7 @@
         "name": "D211 Special Board of Education Meeting",
         "startDate": "2026-10-26T18:00:00-05:00",
         "url": "https://withintenmiles.com/palatine-60067/#ev-d211-special-board-of-education-meeting-2026-10-26",
+        "eventStatus": "https://schema.org/EventScheduled",
         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
         "location": {
           "@type": "Place",
@@ -339,6 +413,7 @@
         "name": "MPAC Russian Virtual Parent Presentation - Program Descriptions",
         "startDate": "2026-10-27T18:00:00-05:00",
         "url": "https://withintenmiles.com/palatine-60067/#ev-mpac-russian-virtual-parent-presentation-program-description-2026-10-27",
+        "eventStatus": "https://schema.org/EventScheduled",
         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
         "location": {
           "@type": "Place",
@@ -361,6 +436,7 @@
         "name": "MPAC Tamil Virtual Parent Presentation - Program Descriptions",
         "startDate": "2026-10-27T19:00:00-05:00",
         "url": "https://withintenmiles.com/palatine-60067/#ev-mpac-tamil-virtual-parent-presentation-program-descriptions-2026-10-27",
+        "eventStatus": "https://schema.org/EventScheduled",
         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
         "location": {
           "@type": "Place",
@@ -383,6 +459,7 @@
         "name": "D15 Job Fair",
         "startDate": "2026-10-28T10:00:00-05:00",
         "url": "https://withintenmiles.com/palatine-60067/#ev-d15-job-fair-2026-10-28",
+        "eventStatus": "https://schema.org/EventScheduled",
         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
         "location": {
           "@type": "Place",
@@ -405,6 +482,7 @@
         "name": "Rope",
         "startDate": "2026-10-28T18:00:00-05:00",
         "url": "https://withintenmiles.com/palatine-60067/#ev-rope-2026-10-28",
+        "eventStatus": "https://schema.org/EventScheduled",
         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
         "location": {
           "@type": "Place",
@@ -417,6 +495,11 @@
           }
         },
         "sameAs": "https://events.harpercollege.edu/event/rope",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Harper College",
+          "url": "https://events.harpercollege.edu"
+        },
         "description": "A psychological thriller directed by Alfred Hitchcock that follows two young men who commit a murder and then host a dinner party with the victim's body…",
         "isAccessibleForFree": true
       }
@@ -429,6 +512,7 @@
         "name": "Pirate Pete's Trick-or-Treat Festival Returns",
         "startDate": "2026-10-29T17:00:00-05:00",
         "url": "https://withintenmiles.com/palatine-60067/#ev-pirate-pete-s-trick-or-treat-festival-returns-2026-10-29",
+        "eventStatus": "https://schema.org/EventScheduled",
         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
         "location": {
           "@type": "Place",
@@ -441,6 +525,11 @@
           }
         },
         "sameAs": "https://www.palatine.il.us/common/modules/iCalendar/iCalendar.aspx?feed=calendar&catID=14",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Village of Palatine",
+          "url": "https://www.palatine.il.us"
+        },
         "description": "Free Halloween festival at Palatine High School with themed roo",
         "isAccessibleForFree": true
       }
@@ -453,6 +542,7 @@
         "name": "MPAC Spanish Virtual Parent Presentation - Program Descriptions",
         "startDate": "2026-10-29T18:00:00-05:00",
         "url": "https://withintenmiles.com/palatine-60067/#ev-mpac-spanish-virtual-parent-presentation-program-description-2026-10-29",
+        "eventStatus": "https://schema.org/EventScheduled",
         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
         "location": {
           "@type": "Place",
@@ -475,6 +565,7 @@
         "name": "Village Trick-or-Treating Hours",
         "startDate": "2026-10-31T15:00:00-05:00",
         "url": "https://withintenmiles.com/palatine-60067/#ev-village-trick-or-treating-hours-2026-10-31",
+        "eventStatus": "https://schema.org/EventScheduled",
         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
         "location": {
           "@type": "Place",
@@ -487,6 +578,11 @@
           }
         },
         "sameAs": "https://www.palatine.il.us/common/modules/iCalendar/iCalendar.aspx?feed=calendar&catID=14",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Village of Palatine",
+          "url": "https://www.palatine.il.us"
+        },
         "description": "https://www.palatine.il.us/calendar.aspx?EID=2176"
       }
     },
@@ -498,6 +594,7 @@
         "name": "St. Philip's Episcopal Church Open House",
         "startDate": "2026-11-01T09:30:00-06:00",
         "url": "https://withintenmiles.com/palatine-60067/#ev-st-philip-s-episcopal-church-open-house-2026-11-01",
+        "eventStatus": "https://schema.org/EventScheduled",
         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
         "location": {
           "@type": "Place",
@@ -510,6 +607,11 @@
           }
         },
         "sameAs": "https://www.palatine.il.us/common/modules/iCalendar/iCalendar.aspx?feed=calendar&catID=14",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Village of Palatine",
+          "url": "https://www.palatine.il.us"
+        },
         "description": "https://www.palatine.il.us/calendar.aspx?EID=2211"
       }
     },
@@ -521,6 +623,7 @@
         "name": "E-Learning Day",
         "startDate": "2026-11-03",
         "url": "https://withintenmiles.com/palatine-60067/#ev-e-learning-day-2026-11-03",
+        "eventStatus": "https://schema.org/EventScheduled",
         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
         "location": {
           "@type": "Place",
@@ -542,6 +645,7 @@
         "name": "End of 12-Week Grading Period",
         "startDate": "2026-11-04",
         "url": "https://withintenmiles.com/palatine-60067/#ev-end-of-12-week-grading-period-2026-11-04",
+        "eventStatus": "https://schema.org/EventScheduled",
         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
         "location": {
           "@type": "Place",
@@ -564,6 +668,7 @@
         "name": "D15 Job Fair",
         "startDate": "2026-11-04T10:00:00-06:00",
         "url": "https://withintenmiles.com/palatine-60067/#ev-d15-job-fair-2026-11-04",
+        "eventStatus": "https://schema.org/EventScheduled",
         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
         "location": {
           "@type": "Place",
@@ -586,6 +691,7 @@
         "name": "Community Resource Center Open House",
         "startDate": "2026-11-04T16:00:00-06:00",
         "url": "https://withintenmiles.com/palatine-60067/#ev-community-resource-center-open-house-2026-11-04",
+        "eventStatus": "https://schema.org/EventScheduled",
         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
         "location": {
           "@type": "Place",
@@ -598,6 +704,11 @@
           }
         },
         "sameAs": "https://www.palatine.il.us/common/modules/iCalendar/iCalendar.aspx?feed=calendar&catID=14",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Village of Palatine",
+          "url": "https://www.palatine.il.us"
+        },
         "description": "We welcome you to learn more about the Community Resource Cente"
       }
     },
@@ -609,6 +720,7 @@
         "name": "Almost Famous",
         "startDate": "2026-11-04T18:00:00-06:00",
         "url": "https://withintenmiles.com/palatine-60067/#ev-almost-famous-2026-11-04",
+        "eventStatus": "https://schema.org/EventScheduled",
         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
         "location": {
           "@type": "Place",
@@ -621,6 +733,11 @@
           }
         },
         "sameAs": "https://events.harpercollege.edu/event/almost-famous",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Harper College",
+          "url": "https://events.harpercollege.edu"
+        },
         "description": "A coming-of-age drama directed by Cameron Crowe that follows a teenage aspiring journalist who is given the opportunity to tour with a rising rock band while…",
         "isAccessibleForFree": true
       }
@@ -633,6 +750,7 @@
         "name": "D211 Board of Education Meeting",
         "startDate": "2026-11-05T18:00:00-06:00",
         "url": "https://withintenmiles.com/palatine-60067/#ev-d211-board-of-education-meeting-2026-11-05",
+        "eventStatus": "https://schema.org/EventScheduled",
         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
         "location": {
           "@type": "Place",
@@ -655,6 +773,7 @@
         "name": "NSSEO: NWSRA",
         "startDate": "2026-11-06T18:00:00-06:00",
         "url": "https://withintenmiles.com/palatine-60067/#ev-nsseo-nwsra-2026-11-06",
+        "eventStatus": "https://schema.org/EventScheduled",
         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
         "location": {
           "@type": "Place",

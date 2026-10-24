@@ -2,7 +2,7 @@
   "@context": "https://schema.org",
   "@type": "ItemList",
   "name": "Upcoming events in Des Plaines — Within Ten",
-  "dateModified": "2026-10-24T11:15:00+00:00",
+  "dateModified": "2026-10-24T14:01:06+00:00",
   "numberOfItems": 82,
   "itemListElement": [
     {
@@ -13,6 +13,7 @@
         "name": "DIY with DPPL",
         "startDate": "2026-10-24",
         "url": "https://withintenmiles.com/des-plaines-60016/#ev-diy-with-dppl-2026-10-24",
+        "eventStatus": "https://schema.org/EventScheduled",
         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
         "location": {
           "@type": "Place",
@@ -21,10 +22,17 @@
             "@type": "PostalAddress",
             "addressCountry": "US",
             "addressLocality": "Des Plaines",
-            "addressRegion": "IL"
+            "addressRegion": "IL",
+            "streetAddress": "1501 Ellinwood Street",
+            "postalCode": "60016"
           }
         },
         "sameAs": "https://desplaines.libnet.info/event/17004638",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Des Plaines Public Library",
+          "url": "https://desplaines.libnet.info"
+        },
         "description": "Saturday, October 24 2026 12:00am - 11:59pm \n Grades 1-6. Pick up a kit at the YS desk and use the materials to do the project we show you step-by-step in the…"
       }
     },
@@ -35,7 +43,8 @@
         "@type": "Event",
         "name": "Play Packs",
         "startDate": "2026-10-24",
-        "url": "https://withintenmiles.com/des-plaines-60016/#ev-play-packs-2026-10-24",
+        "url": "https://withintenmiles.com/e/2026-10-24-play-packs/",
+        "eventStatus": "https://schema.org/EventScheduled",
         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
         "location": {
           "@type": "Place",
@@ -44,10 +53,17 @@
             "@type": "PostalAddress",
             "addressCountry": "US",
             "addressLocality": "Des Plaines",
-            "addressRegion": "IL"
+            "addressRegion": "IL",
+            "streetAddress": "1501 Ellinwood Street",
+            "postalCode": "60016"
           }
         },
         "sameAs": "https://desplaines.libnet.info/event/17004648",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Des Plaines Public Library",
+          "url": "https://desplaines.libnet.info"
+        },
         "description": "Saturday, October 24 2026 12:00am - 11:59pm \n Toddlers - Kindergarten, pick up a pack at the Youth Services desk for a hands-on activity to encourage…"
       }
     },
@@ -59,6 +75,7 @@
         "name": "Wicked Good Writing Contest",
         "startDate": "2026-10-24",
         "url": "https://withintenmiles.com/des-plaines-60016/#ev-wicked-good-writing-contest-2026-10-24",
+        "eventStatus": "https://schema.org/EventScheduled",
         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
         "location": {
           "@type": "Place",
@@ -67,10 +84,17 @@
             "@type": "PostalAddress",
             "addressCountry": "US",
             "addressLocality": "Des Plaines",
-            "addressRegion": "IL"
+            "addressRegion": "IL",
+            "streetAddress": "1501 Ellinwood Street",
+            "postalCode": "60016"
           }
         },
         "sameAs": "https://desplaines.libnet.info/event/17138192",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Des Plaines Public Library",
+          "url": "https://desplaines.libnet.info"
+        },
         "description": "Saturday, October 24 2026 12:00am - 11:59pm \n Enter our 4th annual Wicked Good Writing Contest!\nFor grades K-8."
       }
     },
@@ -82,6 +106,7 @@
         "name": "Early Voting",
         "startDate": "2026-10-24T09:00:00-05:00",
         "url": "https://withintenmiles.com/des-plaines-60016/#ev-early-voting-2026-10-24",
+        "eventStatus": "https://schema.org/EventScheduled",
         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
         "location": {
           "@type": "Place",
@@ -90,10 +115,17 @@
             "@type": "PostalAddress",
             "addressCountry": "US",
             "addressLocality": "Des Plaines",
-            "addressRegion": "IL"
+            "addressRegion": "IL",
+            "streetAddress": "1501 Ellinwood Street",
+            "postalCode": "60016"
           }
         },
         "sameAs": "https://desplaines.libnet.info/event/14863286",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Des Plaines Public Library",
+          "url": "https://desplaines.libnet.info"
+        },
         "description": "Saturday, October 24 2026 9:00am - 5:00pm \n Gubernatorial Election"
       }
     },
@@ -105,6 +137,7 @@
         "name": "LIGHTS OUT: TRIBUTE TO UFO featuring ANDY PARKER with SPECIAL GUEST TRIANGLE PARK",
         "startDate": "2026-10-24T20:00:00-05:00",
         "url": "https://withintenmiles.com/des-plaines-60016/#ev-lights-out-tribute-to-ufo-featuring-andy-parker-with-special-2026-10-24",
+        "eventStatus": "https://schema.org/EventScheduled",
         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
         "location": {
           "@type": "Place",
@@ -113,10 +146,16 @@
             "@type": "PostalAddress",
             "addressCountry": "US",
             "addressLocality": "Des Plaines",
-            "addressRegion": "IL"
+            "addressRegion": "IL",
+            "streetAddress": "1476 Miner Street"
           }
         },
         "sameAs": "https://desplainestheatre.com/event/lights-out-tribute-to-ufo-featuring-andy-parker-2/",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Des Plaines Theatre",
+          "url": "https://desplainestheatre.com"
+        },
         "description": "Lights Out is an all-star tribute to UFO featuring Andy Parker, the original drummer of UFO. Other band members include Mark Boals (Vocalists of Yngwie…"
       }
     },
@@ -128,6 +167,7 @@
         "name": "BOURBON 'N BRASS: LIVE BLUES WITH DAVE WELD & THE IMPERIAL FLAMES",
         "startDate": "2026-10-24T20:30:00-05:00",
         "url": "https://withintenmiles.com/des-plaines-60016/#ev-bourbon-n-brass-live-blues-with-dave-weld-the-imperial-flame-2026-10-24",
+        "eventStatus": "https://schema.org/EventScheduled",
         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
         "location": {
           "@type": "Place",
@@ -136,10 +176,16 @@
             "@type": "PostalAddress",
             "addressCountry": "US",
             "addressLocality": "Des Plaines",
-            "addressRegion": "IL"
+            "addressRegion": "IL",
+            "streetAddress": "1476 Miner Street"
           }
         },
         "sameAs": "https://desplainestheatre.com/event/bourbon-n-brass-live-blues-with-dave-weld-the-imperial-flames-9/",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Des Plaines Theatre",
+          "url": "https://desplainestheatre.com"
+        },
         "description": "Join us in our intimate Bourbon ‘N Brass Speakeasy, located on the 2nd floor of the Des Plaines Theatre, for an evening of Blues with Dave Weld & The Imperial…"
       }
     },
@@ -151,6 +197,7 @@
         "name": "Wicked Good Writing Contest",
         "startDate": "2026-10-25",
         "url": "https://withintenmiles.com/des-plaines-60016/#ev-wicked-good-writing-contest-2026-10-25",
+        "eventStatus": "https://schema.org/EventScheduled",
         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
         "location": {
           "@type": "Place",
@@ -159,10 +206,17 @@
             "@type": "PostalAddress",
             "addressCountry": "US",
             "addressLocality": "Des Plaines",
-            "addressRegion": "IL"
+            "addressRegion": "IL",
+            "streetAddress": "1501 Ellinwood Street",
+            "postalCode": "60016"
           }
         },
         "sameAs": "https://desplaines.libnet.info/event/17138193",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Des Plaines Public Library",
+          "url": "https://desplaines.libnet.info"
+        },
         "description": "Sunday, October 25 2026 12:00am - 11:59pm \n Enter our 4th annual Wicked Good Writing Contest!\nFor grades K-8."
       }
     },
@@ -174,6 +228,7 @@
         "name": "Early Voting",
         "startDate": "2026-10-25T10:00:00-05:00",
         "url": "https://withintenmiles.com/des-plaines-60016/#ev-early-voting-2026-10-25",
+        "eventStatus": "https://schema.org/EventScheduled",
         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
         "location": {
           "@type": "Place",
@@ -182,10 +237,17 @@
             "@type": "PostalAddress",
             "addressCountry": "US",
             "addressLocality": "Des Plaines",
-            "addressRegion": "IL"
+            "addressRegion": "IL",
+            "streetAddress": "1501 Ellinwood Street",
+            "postalCode": "60016"
           }
         },
         "sameAs": "https://desplaines.libnet.info/event/14863262",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Des Plaines Public Library",
+          "url": "https://desplaines.libnet.info"
+        },
         "description": "Sunday, October 25 2026 10:00am - 4:00pm \n Gubernatorial Election"
       }
     },
@@ -197,6 +259,7 @@
         "name": "ITALIAN BRED: A CELEBRATION OF FAMILY, CULTURE & COMEDY",
         "startDate": "2026-10-25T14:00:00-05:00",
         "url": "https://withintenmiles.com/des-plaines-60016/#ev-italian-bred-a-celebration-of-family-culture-comedy-2026-10-25",
+        "eventStatus": "https://schema.org/EventScheduled",
         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
         "location": {
           "@type": "Place",
@@ -205,10 +268,16 @@
             "@type": "PostalAddress",
             "addressCountry": "US",
             "addressLocality": "Des Plaines",
-            "addressRegion": "IL"
+            "addressRegion": "IL",
+            "streetAddress": "1476 Miner Street"
           }
         },
         "sameAs": "https://desplainestheatre.com/event/italian-bred-a-heartlfelt-celebration-of-family-culture-comedy/",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Des Plaines Theatre",
+          "url": "https://desplainestheatre.com"
+        },
         "description": "Italian Bred, starring the incomparable Candice Guardino, is a vibrant, hilarious, and deeply relatable theatrical experience that has captivated audiences…"
       }
     },
@@ -220,6 +289,7 @@
         "name": "RESCHEDULED FOR 3/14/27: THE BUDDY RICH BIG BAND MACHINE featuring GREGG POTTER AND CATHY RICH",
         "startDate": "2026-10-25T19:00:00-05:00",
         "url": "https://withintenmiles.com/des-plaines-60016/#ev-rescheduled-for-3-14-27-the-buddy-rich-big-band-machine-feat-2026-10-25",
+        "eventStatus": "https://schema.org/EventScheduled",
         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
         "location": {
           "@type": "Place",
@@ -228,10 +298,16 @@
             "@type": "PostalAddress",
             "addressCountry": "US",
             "addressLocality": "Des Plaines",
-            "addressRegion": "IL"
+            "addressRegion": "IL",
+            "streetAddress": "1476 Miner Street"
           }
         },
         "sameAs": "https://desplainestheatre.com/event/the-buddy-rich-big-band-machine/",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Des Plaines Theatre",
+          "url": "https://desplainestheatre.com"
+        },
         "description": "THIS EVENT HAS BEEN RESCHEDULED FOR 3/14/27. TICKETS FOR 10/25 WILL BE HONORED 3/14. What if, just what if a “MACHINE” existed that could toss you back in…"
       }
     },
@@ -243,6 +319,7 @@
         "name": "Wicked Good Writing Contest",
         "startDate": "2026-10-26",
         "url": "https://withintenmiles.com/des-plaines-60016/#ev-wicked-good-writing-contest-2026-10-26",
+        "eventStatus": "https://schema.org/EventScheduled",
         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
         "location": {
           "@type": "Place",
@@ -251,10 +328,17 @@
             "@type": "PostalAddress",
             "addressCountry": "US",
             "addressLocality": "Des Plaines",
-            "addressRegion": "IL"
+            "addressRegion": "IL",
+            "streetAddress": "1501 Ellinwood Street",
+            "postalCode": "60016"
           }
         },
         "sameAs": "https://desplaines.libnet.info/event/17138194",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Des Plaines Public Library",
+          "url": "https://desplaines.libnet.info"
+        },
         "description": "Monday, October 26 2026 12:00am - 11:59pm \n Enter our 4th annual Wicked Good Writing Contest!\nFor grades K-8."
       }
     },
@@ -266,6 +350,7 @@
         "name": "Early Voting",
         "startDate": "2026-10-26T09:00:00-05:00",
         "url": "https://withintenmiles.com/des-plaines-60016/#ev-early-voting-2026-10-26",
+        "eventStatus": "https://schema.org/EventScheduled",
         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
         "location": {
           "@type": "Place",
@@ -274,10 +359,17 @@
             "@type": "PostalAddress",
             "addressCountry": "US",
             "addressLocality": "Des Plaines",
-            "addressRegion": "IL"
+            "addressRegion": "IL",
+            "streetAddress": "1501 Ellinwood Street",
+            "postalCode": "60016"
           }
         },
         "sameAs": "https://desplaines.libnet.info/event/14863287",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Des Plaines Public Library",
+          "url": "https://desplaines.libnet.info"
+        },
         "description": "Monday, October 26 2026 9:00am - 5:00pm \n Gubernatorial Election"
       }
     },
@@ -289,6 +381,7 @@
         "name": "Baby Book Time",
         "startDate": "2026-10-26T10:00:00-05:00",
         "url": "https://withintenmiles.com/des-plaines-60016/#ev-baby-book-time-2026-10-26",
+        "eventStatus": "https://schema.org/EventScheduled",
         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
         "location": {
           "@type": "Place",
@@ -297,10 +390,17 @@
             "@type": "PostalAddress",
             "addressCountry": "US",
             "addressLocality": "Des Plaines",
-            "addressRegion": "IL"
+            "addressRegion": "IL",
+            "streetAddress": "1501 Ellinwood Street",
+            "postalCode": "60016"
           }
         },
         "sameAs": "https://desplaines.libnet.info/event/16431784",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Des Plaines Public Library",
+          "url": "https://desplaines.libnet.info"
+        },
         "description": "Monday, October 26 2026 10:00am - 11:00am \n To register, please contact Irene Tripkos at 847-789-5623. Verbal confirmation from Irene Tripkos is needed in…"
       }
     },
@@ -312,6 +412,7 @@
         "name": "Book a Teen Librarian",
         "startDate": "2026-10-26T17:00:00-05:00",
         "url": "https://withintenmiles.com/des-plaines-60016/#ev-book-a-teen-librarian-2026-10-26",
+        "eventStatus": "https://schema.org/EventScheduled",
         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
         "location": {
           "@type": "Place",
@@ -320,10 +421,17 @@
             "@type": "PostalAddress",
             "addressCountry": "US",
             "addressLocality": "Des Plaines",
-            "addressRegion": "IL"
+            "addressRegion": "IL",
+            "streetAddress": "1501 Ellinwood Street",
+            "postalCode": "60016"
           }
         },
         "sameAs": "https://desplaines.libnet.info/event/15509797",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Des Plaines Public Library",
+          "url": "https://desplaines.libnet.info"
+        },
         "description": "Monday, October 26 2026 5:00pm - 6:00pm \n Want some career, college, or scholarship advice? Need some book recommendations? Maybe sit back, relax, and play…"
       }
     },
@@ -335,6 +443,7 @@
         "name": "Des Plaines Shambhala Meditation Group",
         "startDate": "2026-10-26T18:30:00-05:00",
         "url": "https://withintenmiles.com/des-plaines-60016/#ev-des-plaines-shambhala-meditation-group-2026-10-26",
+        "eventStatus": "https://schema.org/EventScheduled",
         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
         "location": {
           "@type": "Place",
@@ -343,10 +452,17 @@
             "@type": "PostalAddress",
             "addressCountry": "US",
             "addressLocality": "Des Plaines",
-            "addressRegion": "IL"
+            "addressRegion": "IL",
+            "streetAddress": "1501 Ellinwood Street",
+            "postalCode": "60016"
           }
         },
         "sameAs": "https://desplaines.libnet.info/event/17253016",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Des Plaines Public Library",
+          "url": "https://desplaines.libnet.info"
+        },
         "description": "Monday, October 26 2026 6:30pm - 8:30pm \n For more information, please call 773-743-8147"
       }
     },
@@ -358,6 +474,7 @@
         "name": "Happy Spinsters",
         "startDate": "2026-10-26T18:45:00-05:00",
         "url": "https://withintenmiles.com/des-plaines-60016/#ev-happy-spinsters-2026-10-26",
+        "eventStatus": "https://schema.org/EventScheduled",
         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
         "location": {
           "@type": "Place",
@@ -366,10 +483,17 @@
             "@type": "PostalAddress",
             "addressCountry": "US",
             "addressLocality": "Des Plaines",
-            "addressRegion": "IL"
+            "addressRegion": "IL",
+            "streetAddress": "1501 Ellinwood Street",
+            "postalCode": "60016"
           }
         },
         "sameAs": "https://desplaines.libnet.info/event/17190634",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Des Plaines Public Library",
+          "url": "https://desplaines.libnet.info"
+        },
         "description": "Monday, October 26 2026 6:45pm - 8:45pm \n Yarn Spinning Group"
       }
     },
@@ -381,6 +505,7 @@
         "name": "Wicked Good Writing Contest",
         "startDate": "2026-10-27",
         "url": "https://withintenmiles.com/des-plaines-60016/#ev-wicked-good-writing-contest-2026-10-27",
+        "eventStatus": "https://schema.org/EventScheduled",
         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
         "location": {
           "@type": "Place",
@@ -389,10 +514,17 @@
             "@type": "PostalAddress",
             "addressCountry": "US",
             "addressLocality": "Des Plaines",
-            "addressRegion": "IL"
+            "addressRegion": "IL",
+            "streetAddress": "1501 Ellinwood Street",
+            "postalCode": "60016"
           }
         },
         "sameAs": "https://desplaines.libnet.info/event/17138195",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Des Plaines Public Library",
+          "url": "https://desplaines.libnet.info"
+        },
         "description": "Tuesday, October 27 2026 12:00am - 11:59pm \n Enter our 4th annual Wicked Good Writing Contest!\nFor grades K-8."
       }
     },
@@ -404,6 +536,7 @@
         "name": "Early Voting",
         "startDate": "2026-10-27T09:00:00-05:00",
         "url": "https://withintenmiles.com/des-plaines-60016/#ev-early-voting-2026-10-27",
+        "eventStatus": "https://schema.org/EventScheduled",
         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
         "location": {
           "@type": "Place",
@@ -412,10 +545,17 @@
             "@type": "PostalAddress",
             "addressCountry": "US",
             "addressLocality": "Des Plaines",
-            "addressRegion": "IL"
+            "addressRegion": "IL",
+            "streetAddress": "1501 Ellinwood Street",
+            "postalCode": "60016"
           }
         },
         "sameAs": "https://desplaines.libnet.info/event/14863288",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Des Plaines Public Library",
+          "url": "https://desplaines.libnet.info"
+        },
         "description": "Tuesday, October 27 2026 9:00am - 5:00pm \n Gubernatorial Election"
       }
     },
@@ -427,6 +567,7 @@
         "name": "Reading/Literacy Class",
         "startDate": "2026-10-27T09:15:00-05:00",
         "url": "https://withintenmiles.com/des-plaines-60016/#ev-reading-literacy-class-2026-10-27",
+        "eventStatus": "https://schema.org/EventScheduled",
         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
         "location": {
           "@type": "Place",
@@ -435,10 +576,17 @@
             "@type": "PostalAddress",
             "addressCountry": "US",
             "addressLocality": "Des Plaines",
-            "addressRegion": "IL"
+            "addressRegion": "IL",
+            "streetAddress": "1501 Ellinwood Street",
+            "postalCode": "60016"
           }
         },
         "sameAs": "https://desplaines.libnet.info/event/15801727",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Des Plaines Public Library",
+          "url": "https://desplaines.libnet.info"
+        },
         "description": "Tuesday, October 27 2026 9:15am - 12:15pm \n For more information, please contact Oakton College at 847-635-1426"
       }
     },
@@ -450,6 +598,7 @@
         "name": "ESL (English as a Second Language) Class - Oakton College",
         "startDate": "2026-10-27T09:15:00-05:00",
         "url": "https://withintenmiles.com/des-plaines-60016/#ev-esl-english-as-a-second-language-class-oakton-college-2026-10-27",
+        "eventStatus": "https://schema.org/EventScheduled",
         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
         "location": {
           "@type": "Place",
@@ -458,10 +607,17 @@
             "@type": "PostalAddress",
             "addressCountry": "US",
             "addressLocality": "Des Plaines",
-            "addressRegion": "IL"
+            "addressRegion": "IL",
+            "streetAddress": "1501 Ellinwood Street",
+            "postalCode": "60016"
           }
         },
         "sameAs": "https://desplaines.libnet.info/event/15803237",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Des Plaines Public Library",
+          "url": "https://desplaines.libnet.info"
+        },
         "description": "Tuesday, October 27 2026 9:15am - 12:15pm \n ESL (English as a Second Language) Class - Oakton College\n\n Teaches listening, speaking, reading, writing, and…"
       }
     },
@@ -473,6 +629,7 @@
         "name": "Book a Teen Librarian",
         "startDate": "2026-10-27T17:00:00-05:00",
         "url": "https://withintenmiles.com/des-plaines-60016/#ev-book-a-teen-librarian-2026-10-27",
+        "eventStatus": "https://schema.org/EventScheduled",
         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
         "location": {
           "@type": "Place",
@@ -481,10 +638,17 @@
             "@type": "PostalAddress",
             "addressCountry": "US",
             "addressLocality": "Des Plaines",
-            "addressRegion": "IL"
+            "addressRegion": "IL",
+            "streetAddress": "1501 Ellinwood Street",
+            "postalCode": "60016"
           }
         },
         "sameAs": "https://desplaines.libnet.info/event/17604768",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Des Plaines Public Library",
+          "url": "https://desplaines.libnet.info"
+        },
         "description": "Tuesday, October 27 2026 5:00pm - 6:00pm \n Come in and get to know your teen librarians!"
       }
     },
@@ -496,6 +660,7 @@
         "name": "Adult Dungeons and Dragons - Experienced Game",
         "startDate": "2026-10-27T18:00:00-05:00",
         "url": "https://withintenmiles.com/des-plaines-60016/#ev-adult-dungeons-and-dragons-experienced-game-2026-10-27",
+        "eventStatus": "https://schema.org/EventScheduled",
         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
         "location": {
           "@type": "Place",
@@ -504,10 +669,17 @@
             "@type": "PostalAddress",
             "addressCountry": "US",
             "addressLocality": "Des Plaines",
-            "addressRegion": "IL"
+            "addressRegion": "IL",
+            "streetAddress": "1501 Ellinwood Street",
+            "postalCode": "60016"
           }
         },
         "sameAs": "https://desplaines.libnet.info/event/17118655",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Des Plaines Public Library",
+          "url": "https://desplaines.libnet.info"
+        },
         "description": "Tuesday, October 27 2026 6:00pm - 8:00pm \n Join us for a special Halloween Themed D&D One Shot Adventure! This game is for experienced players! Registration…"
       }
     },
@@ -519,6 +691,7 @@
         "name": "Adult Dungeons and Dragons - Intermediate Game",
         "startDate": "2026-10-27T18:00:00-05:00",
         "url": "https://withintenmiles.com/des-plaines-60016/#ev-adult-dungeons-and-dragons-intermediate-game-2026-10-27",
+        "eventStatus": "https://schema.org/EventScheduled",
         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
         "location": {
           "@type": "Place",
@@ -527,10 +700,17 @@
             "@type": "PostalAddress",
             "addressCountry": "US",
             "addressLocality": "Des Plaines",
-            "addressRegion": "IL"
+            "addressRegion": "IL",
+            "streetAddress": "1501 Ellinwood Street",
+            "postalCode": "60016"
           }
         },
         "sameAs": "https://desplaines.libnet.info/event/17118714",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Des Plaines Public Library",
+          "url": "https://desplaines.libnet.info"
+        },
         "description": "Tuesday, October 27 2026 6:00pm - 8:00pm \n Join us for a special Halloween Themed D&D One Shot Adventure! This game is for intermediate players! Registration…"
       }
     },
@@ -542,6 +722,7 @@
         "name": "Adult Dungeons and Dragons - Beginner Game",
         "startDate": "2026-10-27T18:00:00-05:00",
         "url": "https://withintenmiles.com/des-plaines-60016/#ev-adult-dungeons-and-dragons-beginner-game-2026-10-27",
+        "eventStatus": "https://schema.org/EventScheduled",
         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
         "location": {
           "@type": "Place",
@@ -550,10 +731,17 @@
             "@type": "PostalAddress",
             "addressCountry": "US",
             "addressLocality": "Des Plaines",
-            "addressRegion": "IL"
+            "addressRegion": "IL",
+            "streetAddress": "1501 Ellinwood Street",
+            "postalCode": "60016"
           }
         },
         "sameAs": "https://desplaines.libnet.info/event/17118809",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Des Plaines Public Library",
+          "url": "https://desplaines.libnet.info"
+        },
         "description": "Tuesday, October 27 2026 6:00pm - 8:00pm \n Join us for a special Halloween Themed D&D One Shot Adventure! This game is for beginner players! Registration…"
       }
     },
@@ -565,6 +753,7 @@
         "name": "Friends of the Library Meeting",
         "startDate": "2026-10-27T18:30:00-05:00",
         "url": "https://withintenmiles.com/des-plaines-60016/#ev-friends-of-the-library-meeting-2026-10-27",
+        "eventStatus": "https://schema.org/EventScheduled",
         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
         "location": {
           "@type": "Place",
@@ -573,10 +762,17 @@
             "@type": "PostalAddress",
             "addressCountry": "US",
             "addressLocality": "Des Plaines",
-            "addressRegion": "IL"
+            "addressRegion": "IL",
+            "streetAddress": "1501 Ellinwood Street",
+            "postalCode": "60016"
           }
         },
         "sameAs": "https://desplaines.libnet.info/event/15110107",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Des Plaines Public Library",
+          "url": "https://desplaines.libnet.info"
+        },
         "description": "Tuesday, October 27 2026 6:30pm - 7:30pm \n Monthly Meeting of the Friends of the Library"
       }
     },
@@ -588,6 +784,7 @@
         "name": "Career & Job Counseling @ the library",
         "startDate": "2026-10-27T18:30:00-05:00",
         "url": "https://withintenmiles.com/des-plaines-60016/#ev-career-job-counseling-the-library-2026-10-27",
+        "eventStatus": "https://schema.org/EventScheduled",
         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
         "location": {
           "@type": "Place",
@@ -596,10 +793,17 @@
             "@type": "PostalAddress",
             "addressCountry": "US",
             "addressLocality": "Des Plaines",
-            "addressRegion": "IL"
+            "addressRegion": "IL",
+            "streetAddress": "1501 Ellinwood Street",
+            "postalCode": "60016"
           }
         },
         "sameAs": "https://desplaines.libnet.info/event/16717144",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Des Plaines Public Library",
+          "url": "https://desplaines.libnet.info"
+        },
         "description": "Tuesday, October 27 2026 6:30pm - 8:30pm \n Career & Job Counseling @ the library - One-on-one appointment on Zoom\n\nMeet with a career expert for resume help,…"
       }
     },
@@ -611,6 +815,7 @@
         "name": "Clase de Mac (Apple Spanish)",
         "startDate": "2026-10-27T18:30:00-05:00",
         "url": "https://withintenmiles.com/des-plaines-60016/#ev-clase-de-mac-apple-spanish-2026-10-27",
+        "eventStatus": "https://schema.org/EventScheduled",
         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
         "location": {
           "@type": "Place",
@@ -619,10 +824,17 @@
             "@type": "PostalAddress",
             "addressCountry": "US",
             "addressLocality": "Des Plaines",
-            "addressRegion": "IL"
+            "addressRegion": "IL",
+            "streetAddress": "1501 Ellinwood Street",
+            "postalCode": "60016"
           }
         },
         "sameAs": "https://desplaines.libnet.info/event/17391239",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Des Plaines Public Library",
+          "url": "https://desplaines.libnet.info"
+        },
         "description": "Tuesday, October 27 2026 6:30pm - 7:30pm \n Empieza a usar tu Mac (iMac o portátil) explorando algunos consejos útiles. Aprende a personalizar el escritorio,…"
       }
     },
@@ -634,6 +846,7 @@
         "name": "Planner & Journaling Meet-Up",
         "startDate": "2026-10-27T18:30:00-05:00",
         "url": "https://withintenmiles.com/des-plaines-60016/#ev-planner-journaling-meet-up-2026-10-27",
+        "eventStatus": "https://schema.org/EventScheduled",
         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
         "location": {
           "@type": "Place",
@@ -642,10 +855,17 @@
             "@type": "PostalAddress",
             "addressCountry": "US",
             "addressLocality": "Des Plaines",
-            "addressRegion": "IL"
+            "addressRegion": "IL",
+            "streetAddress": "1501 Ellinwood Street",
+            "postalCode": "60016"
           }
         },
         "sameAs": "https://desplaines.libnet.info/event/17648126",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Des Plaines Public Library",
+          "url": "https://desplaines.libnet.info"
+        },
         "description": "Tuesday, October 27 2026 6:30pm - 7:30pm \n Set up your planner, bullet journal, or notebook for the next month and socialize with fellow journalers."
       }
     },
@@ -657,6 +877,7 @@
         "name": "Bridges of Meaning",
         "startDate": "2026-10-27T19:00:00-05:00",
         "url": "https://withintenmiles.com/des-plaines-60016/#ev-bridges-of-meaning-2026-10-27",
+        "eventStatus": "https://schema.org/EventScheduled",
         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
         "location": {
           "@type": "Place",
@@ -665,10 +886,17 @@
             "@type": "PostalAddress",
             "addressCountry": "US",
             "addressLocality": "Des Plaines",
-            "addressRegion": "IL"
+            "addressRegion": "IL",
+            "streetAddress": "1501 Ellinwood Street",
+            "postalCode": "60016"
           }
         },
         "sameAs": "https://desplaines.libnet.info/event/17190856",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Des Plaines Public Library",
+          "url": "https://desplaines.libnet.info"
+        },
         "description": "Tuesday, October 27 2026 7:00pm - 8:30pm \n Jeffrey 872-206-0333"
       }
     },
@@ -680,6 +908,7 @@
         "name": "Wicked Good Writing Contest",
         "startDate": "2026-10-28",
         "url": "https://withintenmiles.com/des-plaines-60016/#ev-wicked-good-writing-contest-2026-10-28",
+        "eventStatus": "https://schema.org/EventScheduled",
         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
         "location": {
           "@type": "Place",
@@ -688,10 +917,17 @@
             "@type": "PostalAddress",
             "addressCountry": "US",
             "addressLocality": "Des Plaines",
-            "addressRegion": "IL"
+            "addressRegion": "IL",
+            "streetAddress": "1501 Ellinwood Street",
+            "postalCode": "60016"
           }
         },
         "sameAs": "https://desplaines.libnet.info/event/17138196",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Des Plaines Public Library",
+          "url": "https://desplaines.libnet.info"
+        },
         "description": "Wednesday, October 28 2026 12:00am - 11:59pm \n Enter our 4th annual Wicked Good Writing Contest!\nFor grades K-8."
       }
     },
@@ -703,6 +939,7 @@
         "name": "Early Voting",
         "startDate": "2026-10-28T09:00:00-05:00",
         "url": "https://withintenmiles.com/des-plaines-60016/#ev-early-voting-2026-10-28",
+        "eventStatus": "https://schema.org/EventScheduled",
         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
         "location": {
           "@type": "Place",
@@ -711,10 +948,17 @@
             "@type": "PostalAddress",
             "addressCountry": "US",
             "addressLocality": "Des Plaines",
-            "addressRegion": "IL"
+            "addressRegion": "IL",
+            "streetAddress": "1501 Ellinwood Street",
+            "postalCode": "60016"
           }
         },
         "sameAs": "https://desplaines.libnet.info/event/14863289",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Des Plaines Public Library",
+          "url": "https://desplaines.libnet.info"
+        },
         "description": "Wednesday, October 28 2026 9:00am - 5:00pm \n Gubernatorial Election"
       }
     },
@@ -726,6 +970,7 @@
         "name": "Baby Book Time",
         "startDate": "2026-10-28T10:00:00-05:00",
         "url": "https://withintenmiles.com/des-plaines-60016/#ev-baby-book-time-2026-10-28",
+        "eventStatus": "https://schema.org/EventScheduled",
         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
         "location": {
           "@type": "Place",
@@ -734,10 +979,17 @@
             "@type": "PostalAddress",
             "addressCountry": "US",
             "addressLocality": "Des Plaines",
-            "addressRegion": "IL"
+            "addressRegion": "IL",
+            "streetAddress": "1501 Ellinwood Street",
+            "postalCode": "60016"
           }
         },
         "sameAs": "https://desplaines.libnet.info/event/16431785",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Des Plaines Public Library",
+          "url": "https://desplaines.libnet.info"
+        },
         "description": "Wednesday, October 28 2026 10:00am - 11:00am \n To register, please contact Irene Tripkos at 847-789-5623. Verbal confirmation from Irene Tripkos is needed in…"
       }
     },
@@ -749,6 +1001,7 @@
         "name": "3D Print & Paint Pumpkins",
         "startDate": "2026-10-28T16:00:00-05:00",
         "url": "https://withintenmiles.com/des-plaines-60016/#ev-3d-print-paint-pumpkins-2026-10-28",
+        "eventStatus": "https://schema.org/EventScheduled",
         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
         "location": {
           "@type": "Place",
@@ -757,10 +1010,17 @@
             "@type": "PostalAddress",
             "addressCountry": "US",
             "addressLocality": "Des Plaines",
-            "addressRegion": "IL"
+            "addressRegion": "IL",
+            "streetAddress": "1501 Ellinwood Street",
+            "postalCode": "60016"
           }
         },
         "sameAs": "https://desplaines.libnet.info/event/17195005",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Des Plaines Public Library",
+          "url": "https://desplaines.libnet.info"
+        },
         "description": "Wednesday, October 28 2026 4:00pm - 5:00pm \n Meet us in the Canvas for 3D printing and painting.\n\nDrop-off program for ages 9-12 only.\nIf you came to the July…"
       }
     },
@@ -772,6 +1032,7 @@
         "name": "The Physics Dimension",
         "startDate": "2026-10-28T19:00:00-05:00",
         "url": "https://withintenmiles.com/des-plaines-60016/#ev-the-physics-dimension-2026-10-28",
+        "eventStatus": "https://schema.org/EventScheduled",
         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
         "location": {
           "@type": "Place",
@@ -780,10 +1041,17 @@
             "@type": "PostalAddress",
             "addressCountry": "US",
             "addressLocality": "Des Plaines",
-            "addressRegion": "IL"
+            "addressRegion": "IL",
+            "streetAddress": "1501 Ellinwood Street",
+            "postalCode": "60016"
           }
         },
         "sameAs": "https://desplaines.libnet.info/event/17047834",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Des Plaines Public Library",
+          "url": "https://desplaines.libnet.info"
+        },
         "description": "Wednesday, October 28 2026 7:00pm - 8:00pm \n The Physics Dimension is back for another fun science show! Registration required beginning October 21st. Best…",
         "registrationOpens": "2026-10-21"
       }
@@ -796,6 +1064,7 @@
         "name": "RESCHEDULED FOR 2/28/27: ROCKY™ IN CONCERT",
         "startDate": "2026-10-28T19:30:00-05:00",
         "url": "https://withintenmiles.com/des-plaines-60016/#ev-rescheduled-for-2-28-27-rocky-in-concert-2026-10-28",
+        "eventStatus": "https://schema.org/EventScheduled",
         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
         "location": {
           "@type": "Place",
@@ -804,10 +1073,16 @@
             "@type": "PostalAddress",
             "addressCountry": "US",
             "addressLocality": "Des Plaines",
-            "addressRegion": "IL"
+            "addressRegion": "IL",
+            "streetAddress": "1476 Miner Street"
           }
         },
         "sameAs": "https://desplainestheatre.com/event/rocky-in-concert/",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Des Plaines Theatre",
+          "url": "https://desplainestheatre.com"
+        },
         "description": "THIS EVENT HAS BEEN RESCHEDULED FOR 2/28/27. TICKETHOLDERS SHOULD HOLD ONTO THEIR TICKETS AS TICKETS FOR 10/28/26 WILL BE TRANSFERRED TO THE NEW SHOW DATE.…"
       }
     },
@@ -819,6 +1094,7 @@
         "name": "Wicked Good Writing Contest",
         "startDate": "2026-10-29",
         "url": "https://withintenmiles.com/des-plaines-60016/#ev-wicked-good-writing-contest-2026-10-29",
+        "eventStatus": "https://schema.org/EventScheduled",
         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
         "location": {
           "@type": "Place",
@@ -827,10 +1103,17 @@
             "@type": "PostalAddress",
             "addressCountry": "US",
             "addressLocality": "Des Plaines",
-            "addressRegion": "IL"
+            "addressRegion": "IL",
+            "streetAddress": "1501 Ellinwood Street",
+            "postalCode": "60016"
           }
         },
         "sameAs": "https://desplaines.libnet.info/event/17138197",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Des Plaines Public Library",
+          "url": "https://desplaines.libnet.info"
+        },
         "description": "Thursday, October 29 2026 12:00am - 11:59pm \n Enter our 4th annual Wicked Good Writing Contest!\nFor grades K-8."
       }
     },
@@ -842,6 +1125,7 @@
         "name": "Early Voting",
         "startDate": "2026-10-29T09:00:00-05:00",
         "url": "https://withintenmiles.com/des-plaines-60016/#ev-early-voting-2026-10-29",
+        "eventStatus": "https://schema.org/EventScheduled",
         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
         "location": {
           "@type": "Place",
@@ -850,10 +1134,17 @@
             "@type": "PostalAddress",
             "addressCountry": "US",
             "addressLocality": "Des Plaines",
-            "addressRegion": "IL"
+            "addressRegion": "IL",
+            "streetAddress": "1501 Ellinwood Street",
+            "postalCode": "60016"
           }
         },
         "sameAs": "https://desplaines.libnet.info/event/14863290",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Des Plaines Public Library",
+          "url": "https://desplaines.libnet.info"
+        },
         "description": "Thursday, October 29 2026 9:00am - 5:00pm \n Gubernatorial Election"
       }
     },
@@ -865,6 +1156,7 @@
         "name": "Reading/Literacy Class",
         "startDate": "2026-10-29T09:15:00-05:00",
         "url": "https://withintenmiles.com/des-plaines-60016/#ev-reading-literacy-class-2026-10-29",
+        "eventStatus": "https://schema.org/EventScheduled",
         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
         "location": {
           "@type": "Place",
@@ -873,10 +1165,17 @@
             "@type": "PostalAddress",
             "addressCountry": "US",
             "addressLocality": "Des Plaines",
-            "addressRegion": "IL"
+            "addressRegion": "IL",
+            "streetAddress": "1501 Ellinwood Street",
+            "postalCode": "60016"
           }
         },
         "sameAs": "https://desplaines.libnet.info/event/15801728",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Des Plaines Public Library",
+          "url": "https://desplaines.libnet.info"
+        },
         "description": "Thursday, October 29 2026 9:15am - 12:15pm \n For more information, please contact Oakton College at 847-635-1426"
       }
     },
@@ -888,6 +1187,7 @@
         "name": "ESL (English as a Second Language) Class - Oakton College",
         "startDate": "2026-10-29T09:15:00-05:00",
         "url": "https://withintenmiles.com/des-plaines-60016/#ev-esl-english-as-a-second-language-class-oakton-college-2026-10-29",
+        "eventStatus": "https://schema.org/EventScheduled",
         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
         "location": {
           "@type": "Place",
@@ -896,10 +1196,17 @@
             "@type": "PostalAddress",
             "addressCountry": "US",
             "addressLocality": "Des Plaines",
-            "addressRegion": "IL"
+            "addressRegion": "IL",
+            "streetAddress": "1501 Ellinwood Street",
+            "postalCode": "60016"
           }
         },
         "sameAs": "https://desplaines.libnet.info/event/15803238",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Des Plaines Public Library",
+          "url": "https://desplaines.libnet.info"
+        },
         "description": "Thursday, October 29 2026 9:15am - 12:15pm \n ESL (English as a Second Language) Class - Oakton College\n\n Teaches listening, speaking, reading, writing, and…"
       }
     },
@@ -911,6 +1218,7 @@
         "name": "Playgroup for Language Development",
         "startDate": "2026-10-29T10:00:00-05:00",
         "url": "https://withintenmiles.com/des-plaines-60016/#ev-playgroup-for-language-development-2026-10-29",
+        "eventStatus": "https://schema.org/EventScheduled",
         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
         "location": {
           "@type": "Place",
@@ -919,10 +1227,17 @@
             "@type": "PostalAddress",
             "addressCountry": "US",
             "addressLocality": "Des Plaines",
-            "addressRegion": "IL"
+            "addressRegion": "IL",
+            "streetAddress": "1501 Ellinwood Street",
+            "postalCode": "60016"
           }
         },
         "sameAs": "https://desplaines.libnet.info/event/17047444",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Des Plaines Public Library",
+          "url": "https://desplaines.libnet.info"
+        },
         "description": "Thursday, October 29 2026 10:00am - 11:00am \n A playgroup and storytime for children 18 months to 3 years old. Led by a licensed speech therapist from…"
       }
     },
@@ -934,6 +1249,7 @@
         "name": "Book a Teen Librarian",
         "startDate": "2026-10-29T17:00:00-05:00",
         "url": "https://withintenmiles.com/des-plaines-60016/#ev-book-a-teen-librarian-2026-10-29",
+        "eventStatus": "https://schema.org/EventScheduled",
         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
         "location": {
           "@type": "Place",
@@ -942,10 +1258,17 @@
             "@type": "PostalAddress",
             "addressCountry": "US",
             "addressLocality": "Des Plaines",
-            "addressRegion": "IL"
+            "addressRegion": "IL",
+            "streetAddress": "1501 Ellinwood Street",
+            "postalCode": "60016"
           }
         },
         "sameAs": "https://desplaines.libnet.info/event/16339448",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Des Plaines Public Library",
+          "url": "https://desplaines.libnet.info"
+        },
         "description": "Thursday, October 29 2026 5:00pm - 6:00pm \n Come in and get to know your teen librarians!"
       }
     },
@@ -957,6 +1280,7 @@
         "name": "WORLD PREMIERE FILM SCREENING: YAKUZA PLAYS \"THE GOLEM\" - A CONCERT FILM",
         "startDate": "2026-10-29T19:00:00-05:00",
         "url": "https://withintenmiles.com/des-plaines-60016/#ev-world-premiere-film-screening-yakuza-plays-the-golem-a-conce-2026-10-29",
+        "eventStatus": "https://schema.org/EventScheduled",
         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
         "location": {
           "@type": "Place",
@@ -965,10 +1289,16 @@
             "@type": "PostalAddress",
             "addressCountry": "US",
             "addressLocality": "Des Plaines",
-            "addressRegion": "IL"
+            "addressRegion": "IL",
+            "streetAddress": "1476 Miner Street"
           }
         },
         "sameAs": "https://desplainestheatre.com/event/world-premiere-film-screening-yakuza-plays-the-golem-a-concert-film-music-by-chicago-band-yakuza-produced-by-dennis-best/",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Des Plaines Theatre",
+          "url": "https://desplainestheatre.com"
+        },
         "description": "Join us at the movies! Der Golem (1920), directed by Paul Wegener and Carl Boese, is an early horror landmark of German Expressionism. In 16th-century Prague,…"
       }
     },
@@ -980,6 +1310,7 @@
         "name": "Mont Clare Condo Assoc.",
         "startDate": "2026-10-29T19:00:00-05:00",
         "url": "https://withintenmiles.com/des-plaines-60016/#ev-mont-clare-condo-assoc-2026-10-29",
+        "eventStatus": "https://schema.org/EventScheduled",
         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
         "location": {
           "@type": "Place",
@@ -988,10 +1319,17 @@
             "@type": "PostalAddress",
             "addressCountry": "US",
             "addressLocality": "Des Plaines",
-            "addressRegion": "IL"
+            "addressRegion": "IL",
+            "streetAddress": "1501 Ellinwood Street",
+            "postalCode": "60016"
           }
         },
         "sameAs": "https://desplaines.libnet.info/event/17638166",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Des Plaines Public Library",
+          "url": "https://desplaines.libnet.info"
+        },
         "description": "Thursday, October 29 2026 7:00pm - 8:45pm \n Jennifer / American Property Management"
       }
     },
@@ -1003,6 +1341,7 @@
         "name": "BOURBON 'N BRASS: LIVE BLUES SHOW WITH MILES MINOR \"ROCKIN THE BLUES\"",
         "startDate": "2026-10-29T19:30:00-05:00",
         "url": "https://withintenmiles.com/des-plaines-60016/#ev-bourbon-n-brass-live-blues-show-with-miles-minor-rockin-the-2026-10-29",
+        "eventStatus": "https://schema.org/EventScheduled",
         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
         "location": {
           "@type": "Place",
@@ -1011,10 +1350,16 @@
             "@type": "PostalAddress",
             "addressCountry": "US",
             "addressLocality": "Des Plaines",
-            "addressRegion": "IL"
+            "addressRegion": "IL",
+            "streetAddress": "1476 Miner Street"
           }
         },
         "sameAs": "https://desplainestheatre.com/event/bourbon-n-brass-live-blues-show-with-miles-minor-rockin-the-blues-16/",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Des Plaines Theatre",
+          "url": "https://desplainestheatre.com"
+        },
         "description": "Join us in our intimate Bourbon ‘N Brass Speakeasy, located on the 2nd floor of the Des Plaines Theatre, for an evening of Blues with Miles Minor! Food and…"
       }
     },
@@ -1026,6 +1371,7 @@
         "name": "Wicked Good Writing Contest",
         "startDate": "2026-10-30",
         "url": "https://withintenmiles.com/des-plaines-60016/#ev-wicked-good-writing-contest-2026-10-30",
+        "eventStatus": "https://schema.org/EventScheduled",
         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
         "location": {
           "@type": "Place",
@@ -1034,10 +1380,17 @@
             "@type": "PostalAddress",
             "addressCountry": "US",
             "addressLocality": "Des Plaines",
-            "addressRegion": "IL"
+            "addressRegion": "IL",
+            "streetAddress": "1501 Ellinwood Street",
+            "postalCode": "60016"
           }
         },
         "sameAs": "https://desplaines.libnet.info/event/17138198",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Des Plaines Public Library",
+          "url": "https://desplaines.libnet.info"
+        },
         "description": "Friday, October 30 2026 12:00am - 11:59pm \n Enter our 4th annual Wicked Good Writing Contest!\nFor grades K-8."
       }
     },
@@ -1049,6 +1402,7 @@
         "name": "Early Voting",
         "startDate": "2026-10-30T09:00:00-05:00",
         "url": "https://withintenmiles.com/des-plaines-60016/#ev-early-voting-2026-10-30",
+        "eventStatus": "https://schema.org/EventScheduled",
         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
         "location": {
           "@type": "Place",
@@ -1057,10 +1411,17 @@
             "@type": "PostalAddress",
             "addressCountry": "US",
             "addressLocality": "Des Plaines",
-            "addressRegion": "IL"
+            "addressRegion": "IL",
+            "streetAddress": "1501 Ellinwood Street",
+            "postalCode": "60016"
           }
         },
         "sameAs": "https://desplaines.libnet.info/event/14863291",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Des Plaines Public Library",
+          "url": "https://desplaines.libnet.info"
+        },
         "description": "Friday, October 30 2026 9:00am - 5:00pm \n Gubernatorial Election"
       }
     },
@@ -1072,6 +1433,7 @@
         "name": "Baby Book Time",
         "startDate": "2026-10-30T10:00:00-05:00",
         "url": "https://withintenmiles.com/des-plaines-60016/#ev-baby-book-time-2026-10-30",
+        "eventStatus": "https://schema.org/EventScheduled",
         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
         "location": {
           "@type": "Place",
@@ -1080,10 +1442,17 @@
             "@type": "PostalAddress",
             "addressCountry": "US",
             "addressLocality": "Des Plaines",
-            "addressRegion": "IL"
+            "addressRegion": "IL",
+            "streetAddress": "1501 Ellinwood Street",
+            "postalCode": "60016"
           }
         },
         "sameAs": "https://desplaines.libnet.info/event/16431786",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Des Plaines Public Library",
+          "url": "https://desplaines.libnet.info"
+        },
         "description": "Friday, October 30 2026 10:00am - 11:00am \n To register, please contact Irene Tripkos at 847-789-5623. Verbal confirmation from Irene Tripkos is needed in…"
       }
     },
@@ -1095,6 +1464,7 @@
         "name": "Halloween Party in the Commons",
         "startDate": "2026-10-30T16:00:00-05:00",
         "url": "https://withintenmiles.com/des-plaines-60016/#ev-halloween-party-in-the-commons-2026-10-30",
+        "eventStatus": "https://schema.org/EventScheduled",
         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
         "location": {
           "@type": "Place",
@@ -1103,10 +1473,17 @@
             "@type": "PostalAddress",
             "addressCountry": "US",
             "addressLocality": "Des Plaines",
-            "addressRegion": "IL"
+            "addressRegion": "IL",
+            "streetAddress": "1501 Ellinwood Street",
+            "postalCode": "60016"
           }
         },
         "sameAs": "https://desplaines.libnet.info/event/17457163",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Des Plaines Public Library",
+          "url": "https://desplaines.libnet.info"
+        },
         "description": "Friday, October 30 2026 4:00pm - 5:30pm \n Join us for our annual costume contest & enjoy candies + chocolates from around the world!"
       }
     },
@@ -1118,6 +1495,7 @@
         "name": "BOURBON 'N BRASS: LIVE DELTA BLUES WITH THE DOWNTOWN CHARLIE BROWN DUO, DONNA HERULA & FRIENDS",
         "startDate": "2026-10-30T20:30:00-05:00",
         "url": "https://withintenmiles.com/des-plaines-60016/#ev-bourbon-n-brass-live-delta-blues-with-the-downtown-charlie-b-2026-10-30",
+        "eventStatus": "https://schema.org/EventScheduled",
         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
         "location": {
           "@type": "Place",
@@ -1126,10 +1504,16 @@
             "@type": "PostalAddress",
             "addressCountry": "US",
             "addressLocality": "Des Plaines",
-            "addressRegion": "IL"
+            "addressRegion": "IL",
+            "streetAddress": "1476 Miner Street"
           }
         },
         "sameAs": "https://desplainestheatre.com/event/bourbon-n-brass-live-delta-blues-with-downtown-charlie-brown-donna-herula-john-primer-friends-2/",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Des Plaines Theatre",
+          "url": "https://desplainestheatre.com"
+        },
         "description": "Join us in our intimate Bourbon ‘N Brass Speakeasy, located on the 2nd floor of the Des Plaines Theatre, for an evening of Delta Blues with the Downtown…"
       }
     },
@@ -1141,6 +1525,7 @@
         "name": "Early Voting",
         "startDate": "2026-10-31T09:00:00-05:00",
         "url": "https://withintenmiles.com/des-plaines-60016/#ev-early-voting-2026-10-31",
+        "eventStatus": "https://schema.org/EventScheduled",
         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
         "location": {
           "@type": "Place",
@@ -1149,10 +1534,17 @@
             "@type": "PostalAddress",
             "addressCountry": "US",
             "addressLocality": "Des Plaines",
-            "addressRegion": "IL"
+            "addressRegion": "IL",
+            "streetAddress": "1501 Ellinwood Street",
+            "postalCode": "60016"
           }
         },
         "sameAs": "https://desplaines.libnet.info/event/15080696",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Des Plaines Public Library",
+          "url": "https://desplaines.libnet.info"
+        },
         "description": "Saturday, October 31 2026 9:00am - 5:00pm \n Gubernatorial Election"
       }
     },
@@ -1164,6 +1556,7 @@
         "name": "THE VAMPIRE CIRCUS: TIM BURTON meets CIRQUE DU SOLEIL",
         "startDate": "2026-10-31T20:00:00-05:00",
         "url": "https://withintenmiles.com/des-plaines-60016/#ev-the-vampire-circus-tim-burton-meets-cirque-du-soleil-2026-10-31",
+        "eventStatus": "https://schema.org/EventScheduled",
         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
         "location": {
           "@type": "Place",
@@ -1172,10 +1565,16 @@
             "@type": "PostalAddress",
             "addressCountry": "US",
             "addressLocality": "Des Plaines",
-            "addressRegion": "IL"
+            "addressRegion": "IL",
+            "streetAddress": "1476 Miner Street"
           }
         },
         "sameAs": "https://desplainestheatre.com/event/the-vampire-circus-tim-burton-meets-cirque-du-soleil-2/",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Des Plaines Theatre",
+          "url": "https://desplainestheatre.com"
+        },
         "description": "Heralded as a mix of circus cabaret and theatre, The Vampire Circus is a mysterious, tantalizing, fun, dark, cutting-edge production guaranteed to amaze the…"
       }
     },
@@ -1187,6 +1586,7 @@
         "name": "BOURBON 'N BRASS SPEAKEASY: LIVE \"Halloween\" JAZZ with THE BOURBON 'N BRASS PROHIBITION BAND",
         "startDate": "2026-10-31T20:30:00-05:00",
         "url": "https://withintenmiles.com/des-plaines-60016/#ev-bourbon-n-brass-speakeasy-live-halloween-jazz-with-the-bourb-2026-10-31",
+        "eventStatus": "https://schema.org/EventScheduled",
         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
         "location": {
           "@type": "Place",
@@ -1195,10 +1595,16 @@
             "@type": "PostalAddress",
             "addressCountry": "US",
             "addressLocality": "Des Plaines",
-            "addressRegion": "IL"
+            "addressRegion": "IL",
+            "streetAddress": "1476 Miner Street"
           }
         },
         "sameAs": "https://desplainestheatre.com/event/bourbon-n-brass-speakeasy-live-jazz-with-the-bourbon-n-brass-prohibition-band-3/",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Des Plaines Theatre",
+          "url": "https://desplainestheatre.com"
+        },
         "description": "Join us in our intimate Bourbon ‘N Brass Speakeasy, located on the 2nd floor of the Des Plaines Theatre, for an evening of Jazz with the Bourbon ‘N Brass…"
       }
     },
@@ -1210,6 +1616,7 @@
         "name": "Early Voting",
         "startDate": "2026-11-01T10:00:00-06:00",
         "url": "https://withintenmiles.com/des-plaines-60016/#ev-early-voting-2026-11-01",
+        "eventStatus": "https://schema.org/EventScheduled",
         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
         "location": {
           "@type": "Place",
@@ -1218,10 +1625,17 @@
             "@type": "PostalAddress",
             "addressCountry": "US",
             "addressLocality": "Des Plaines",
-            "addressRegion": "IL"
+            "addressRegion": "IL",
+            "streetAddress": "1501 Ellinwood Street",
+            "postalCode": "60016"
           }
         },
         "sameAs": "https://desplaines.libnet.info/event/14863263",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Des Plaines Public Library",
+          "url": "https://desplaines.libnet.info"
+        },
         "description": "Sunday, November 01 2026 10:00am - 4:00pm \n Gubernatorial Election"
       }
     },
@@ -1233,6 +1647,7 @@
         "name": "Google: Gmail Basics",
         "startDate": "2026-11-01T14:30:00-06:00",
         "url": "https://withintenmiles.com/des-plaines-60016/#ev-google-gmail-basics-2026-11-01",
+        "eventStatus": "https://schema.org/EventScheduled",
         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
         "location": {
           "@type": "Place",
@@ -1241,10 +1656,17 @@
             "@type": "PostalAddress",
             "addressCountry": "US",
             "addressLocality": "Des Plaines",
-            "addressRegion": "IL"
+            "addressRegion": "IL",
+            "streetAddress": "1501 Ellinwood Street",
+            "postalCode": "60016"
           }
         },
         "sameAs": "https://desplaines.libnet.info/event/17571929",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Des Plaines Public Library",
+          "url": "https://desplaines.libnet.info"
+        },
         "description": "Sunday, November 01 2026 2:30pm - 3:30pm \n Create a Gmail account, learn how to use and navigate Gmail. Search and organize your inbox, create labels, and…"
       }
     },
@@ -1256,6 +1678,7 @@
         "name": "SINCERELY SINATRA BIG BAND SHOW starring NICK PONTARELLI with SPECIAL GUEST CLOSE TO KAREN - A SALUTE TO KAREN CARPENTER with GINA KNIGHT",
         "startDate": "2026-11-01T15:00:00-06:00",
         "url": "https://withintenmiles.com/des-plaines-60016/#ev-sincerely-sinatra-big-band-show-starring-nick-pontarelli-wit-2026-11-01",
+        "eventStatus": "https://schema.org/EventScheduled",
         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
         "location": {
           "@type": "Place",
@@ -1264,10 +1687,16 @@
             "@type": "PostalAddress",
             "addressCountry": "US",
             "addressLocality": "Des Plaines",
-            "addressRegion": "IL"
+            "addressRegion": "IL",
+            "streetAddress": "1476 Miner Street"
           }
         },
         "sameAs": "https://desplainestheatre.com/event/sincerely-sinatra-big-band-show-starring-nick-pontarelli-with-special-guest-close-to-karen-a-salute-to-karen-carpenter-with-gina-knight/",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Des Plaines Theatre",
+          "url": "https://desplainestheatre.com"
+        },
         "description": "Crooner Nick Pontarelli, with a 7-piece orchestra, is bringing his show to the Des Plaines stage. Nick is a crowd-favorite in our Club Arcada Speakeasy. Don’t…"
       }
     },
@@ -1279,6 +1708,7 @@
         "name": "Teen Take & Make",
         "startDate": "2026-11-02",
         "url": "https://withintenmiles.com/des-plaines-60016/#ev-teen-take-make-2026-11-02",
+        "eventStatus": "https://schema.org/EventScheduled",
         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
         "location": {
           "@type": "Place",
@@ -1287,10 +1717,17 @@
             "@type": "PostalAddress",
             "addressCountry": "US",
             "addressLocality": "Des Plaines",
-            "addressRegion": "IL"
+            "addressRegion": "IL",
+            "streetAddress": "1501 Ellinwood Street",
+            "postalCode": "60016"
           }
         },
         "sameAs": "https://desplaines.libnet.info/event/17635811",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Des Plaines Public Library",
+          "url": "https://desplaines.libnet.info"
+        },
         "description": "Monday, November 02 2026 12:00am - 11:59pm \n Take & Make Kits are fun crafts you can take home and make on your own time. Drop in to pick up your kit…"
       }
     },
@@ -1302,6 +1739,7 @@
         "name": "Early Voting",
         "startDate": "2026-11-02T09:00:00-06:00",
         "url": "https://withintenmiles.com/des-plaines-60016/#ev-early-voting-2026-11-02",
+        "eventStatus": "https://schema.org/EventScheduled",
         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
         "location": {
           "@type": "Place",
@@ -1310,10 +1748,17 @@
             "@type": "PostalAddress",
             "addressCountry": "US",
             "addressLocality": "Des Plaines",
-            "addressRegion": "IL"
+            "addressRegion": "IL",
+            "streetAddress": "1501 Ellinwood Street",
+            "postalCode": "60016"
           }
         },
         "sameAs": "https://desplaines.libnet.info/event/15050740",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Des Plaines Public Library",
+          "url": "https://desplaines.libnet.info"
+        },
         "description": "Monday, November 02 2026 9:00am - 5:00pm \n Gubernatorial Election"
       }
     },
@@ -1325,6 +1770,7 @@
         "name": "Baby Book Time",
         "startDate": "2026-11-02T10:00:00-06:00",
         "url": "https://withintenmiles.com/des-plaines-60016/#ev-baby-book-time-2026-11-02",
+        "eventStatus": "https://schema.org/EventScheduled",
         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
         "location": {
           "@type": "Place",
@@ -1333,10 +1779,17 @@
             "@type": "PostalAddress",
             "addressCountry": "US",
             "addressLocality": "Des Plaines",
-            "addressRegion": "IL"
+            "addressRegion": "IL",
+            "streetAddress": "1501 Ellinwood Street",
+            "postalCode": "60016"
           }
         },
         "sameAs": "https://desplaines.libnet.info/event/16431787",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Des Plaines Public Library",
+          "url": "https://desplaines.libnet.info"
+        },
         "description": "Monday, November 02 2026 10:00am - 11:00am \n To register, please contact Irene Tripkos at 847-789-5623. Verbal confirmation from Irene Tripkos is needed in…"
       }
     },
@@ -1348,6 +1801,7 @@
         "name": "Book a Teen Librarian",
         "startDate": "2026-11-02T17:00:00-06:00",
         "url": "https://withintenmiles.com/des-plaines-60016/#ev-book-a-teen-librarian-2026-11-02",
+        "eventStatus": "https://schema.org/EventScheduled",
         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
         "location": {
           "@type": "Place",
@@ -1356,10 +1810,17 @@
             "@type": "PostalAddress",
             "addressCountry": "US",
             "addressLocality": "Des Plaines",
-            "addressRegion": "IL"
+            "addressRegion": "IL",
+            "streetAddress": "1501 Ellinwood Street",
+            "postalCode": "60016"
           }
         },
         "sameAs": "https://desplaines.libnet.info/event/15509798",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Des Plaines Public Library",
+          "url": "https://desplaines.libnet.info"
+        },
         "description": "Monday, November 02 2026 5:00pm - 6:00pm \n Want some career, college, or scholarship advice? Need some book recommendations? Maybe sit back, relax, and play…"
       }
     },
@@ -1371,6 +1832,7 @@
         "name": "Meridian Condo Assoc.",
         "startDate": "2026-11-02T18:00:00-06:00",
         "url": "https://withintenmiles.com/des-plaines-60016/#ev-meridian-condo-assoc-2026-11-02",
+        "eventStatus": "https://schema.org/EventScheduled",
         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
         "location": {
           "@type": "Place",
@@ -1379,10 +1841,17 @@
             "@type": "PostalAddress",
             "addressCountry": "US",
             "addressLocality": "Des Plaines",
-            "addressRegion": "IL"
+            "addressRegion": "IL",
+            "streetAddress": "1501 Ellinwood Street",
+            "postalCode": "60016"
           }
         },
         "sameAs": "https://desplaines.libnet.info/event/17479527",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Des Plaines Public Library",
+          "url": "https://desplaines.libnet.info"
+        },
         "description": "Monday, November 02 2026 6:00pm - 8:00pm \n Robert H. 773-972-8646"
       }
     },
@@ -1394,6 +1863,7 @@
         "name": "Des Plaines Shambhala Meditation Group",
         "startDate": "2026-11-02T18:30:00-06:00",
         "url": "https://withintenmiles.com/des-plaines-60016/#ev-des-plaines-shambhala-meditation-group-2026-11-02",
+        "eventStatus": "https://schema.org/EventScheduled",
         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
         "location": {
           "@type": "Place",
@@ -1402,10 +1872,17 @@
             "@type": "PostalAddress",
             "addressCountry": "US",
             "addressLocality": "Des Plaines",
-            "addressRegion": "IL"
+            "addressRegion": "IL",
+            "streetAddress": "1501 Ellinwood Street",
+            "postalCode": "60016"
           }
         },
         "sameAs": "https://desplaines.libnet.info/event/17253017",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Des Plaines Public Library",
+          "url": "https://desplaines.libnet.info"
+        },
         "description": "Monday, November 02 2026 6:30pm - 8:30pm \n For more information, please call 773-743-8147"
       }
     },
@@ -1417,6 +1894,7 @@
         "name": "Reading/Literacy Class",
         "startDate": "2026-11-03T09:15:00-06:00",
         "url": "https://withintenmiles.com/des-plaines-60016/#ev-reading-literacy-class-2026-11-03",
+        "eventStatus": "https://schema.org/EventScheduled",
         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
         "location": {
           "@type": "Place",
@@ -1425,10 +1903,17 @@
             "@type": "PostalAddress",
             "addressCountry": "US",
             "addressLocality": "Des Plaines",
-            "addressRegion": "IL"
+            "addressRegion": "IL",
+            "streetAddress": "1501 Ellinwood Street",
+            "postalCode": "60016"
           }
         },
         "sameAs": "https://desplaines.libnet.info/event/15801729",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Des Plaines Public Library",
+          "url": "https://desplaines.libnet.info"
+        },
         "description": "Tuesday, November 03 2026 9:15am - 12:15pm \n For more information, please contact Oakton College at 847-635-1426"
       }
     },
@@ -1440,6 +1925,7 @@
         "name": "ESL (English as a Second Language) Class - Oakton College",
         "startDate": "2026-11-03T09:15:00-06:00",
         "url": "https://withintenmiles.com/des-plaines-60016/#ev-esl-english-as-a-second-language-class-oakton-college-2026-11-03",
+        "eventStatus": "https://schema.org/EventScheduled",
         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
         "location": {
           "@type": "Place",
@@ -1448,10 +1934,17 @@
             "@type": "PostalAddress",
             "addressCountry": "US",
             "addressLocality": "Des Plaines",
-            "addressRegion": "IL"
+            "addressRegion": "IL",
+            "streetAddress": "1501 Ellinwood Street",
+            "postalCode": "60016"
           }
         },
         "sameAs": "https://desplaines.libnet.info/event/15803239",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Des Plaines Public Library",
+          "url": "https://desplaines.libnet.info"
+        },
         "description": "Tuesday, November 03 2026 9:15am - 12:15pm \n ESL (English as a Second Language) Class - Oakton College\n\n Teaches listening, speaking, reading, writing, and…"
       }
     },
@@ -1463,6 +1956,7 @@
         "name": "Toddler Time",
         "startDate": "2026-11-03T10:00:00-06:00",
         "url": "https://withintenmiles.com/des-plaines-60016/#ev-toddler-time-2026-11-03",
+        "eventStatus": "https://schema.org/EventScheduled",
         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
         "location": {
           "@type": "Place",
@@ -1471,10 +1965,17 @@
             "@type": "PostalAddress",
             "addressCountry": "US",
             "addressLocality": "Des Plaines",
-            "addressRegion": "IL"
+            "addressRegion": "IL",
+            "streetAddress": "1501 Ellinwood Street",
+            "postalCode": "60016"
           }
         },
         "sameAs": "https://desplaines.libnet.info/event/17001899",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Des Plaines Public Library",
+          "url": "https://desplaines.libnet.info"
+        },
         "description": "Tuesday, November 03 2026 10:00am - 10:30am \n Ages 18-36 months. Drop-in at the Poet Tree Corner! Enjoy stories, songs, rhymes, movement, and more at Toddler…"
       }
     },
@@ -1486,6 +1987,7 @@
         "name": "Baby Book Time",
         "startDate": "2026-11-04T10:00:00-06:00",
         "url": "https://withintenmiles.com/des-plaines-60016/#ev-baby-book-time-2026-11-04",
+        "eventStatus": "https://schema.org/EventScheduled",
         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
         "location": {
           "@type": "Place",
@@ -1494,10 +1996,17 @@
             "@type": "PostalAddress",
             "addressCountry": "US",
             "addressLocality": "Des Plaines",
-            "addressRegion": "IL"
+            "addressRegion": "IL",
+            "streetAddress": "1501 Ellinwood Street",
+            "postalCode": "60016"
           }
         },
         "sameAs": "https://desplaines.libnet.info/event/16431788",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Des Plaines Public Library",
+          "url": "https://desplaines.libnet.info"
+        },
         "description": "Wednesday, November 04 2026 10:00am - 11:00am \n To register, please contact Irene Tripkos at 847-789-5623. Verbal confirmation from Irene Tripkos is needed in…"
       }
     },
@@ -1509,6 +2018,7 @@
         "name": "Preschool Storytime",
         "startDate": "2026-11-04T13:30:00-06:00",
         "url": "https://withintenmiles.com/des-plaines-60016/#ev-preschool-storytime-2026-11-04",
+        "eventStatus": "https://schema.org/EventScheduled",
         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
         "location": {
           "@type": "Place",
@@ -1517,10 +2027,17 @@
             "@type": "PostalAddress",
             "addressCountry": "US",
             "addressLocality": "Des Plaines",
-            "addressRegion": "IL"
+            "addressRegion": "IL",
+            "streetAddress": "1501 Ellinwood Street",
+            "postalCode": "60016"
           }
         },
         "sameAs": "https://desplaines.libnet.info/event/17004563",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Des Plaines Public Library",
+          "url": "https://desplaines.libnet.info"
+        },
         "description": "Wednesday, November 04 2026 1:30pm - 2:00pm \n Ages 3-5, but all are welcome. Storytime is a fun and play-filled way to foster a lifelong love of reading and…",
         "registrationOpens": "2026-10-21"
       }
@@ -1533,6 +2050,7 @@
         "name": "Des Plaines Chamber of Commerce Job Fair",
         "startDate": "2026-11-04T16:00:00-06:00",
         "url": "https://withintenmiles.com/des-plaines-60016/#ev-des-plaines-chamber-of-commerce-job-fair-2026-11-04",
+        "eventStatus": "https://schema.org/EventScheduled",
         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
         "location": {
           "@type": "Place",
@@ -1541,10 +2059,17 @@
             "@type": "PostalAddress",
             "addressCountry": "US",
             "addressLocality": "Des Plaines",
-            "addressRegion": "IL"
+            "addressRegion": "IL",
+            "streetAddress": "1501 Ellinwood Street",
+            "postalCode": "60016"
           }
         },
         "sameAs": "https://desplaines.libnet.info/event/15064381",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Des Plaines Public Library",
+          "url": "https://desplaines.libnet.info"
+        },
         "description": "Wednesday, November 04 2026 4:00pm - 6:00pm \n Des Plaines Chamber of Commerce Job Fair"
       }
     },
@@ -1556,6 +2081,7 @@
         "name": "Family Storytime",
         "startDate": "2026-11-04T19:00:00-06:00",
         "url": "https://withintenmiles.com/des-plaines-60016/#ev-family-storytime-2026-11-04",
+        "eventStatus": "https://schema.org/EventScheduled",
         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
         "location": {
           "@type": "Place",
@@ -1564,10 +2090,17 @@
             "@type": "PostalAddress",
             "addressCountry": "US",
             "addressLocality": "Des Plaines",
-            "addressRegion": "IL"
+            "addressRegion": "IL",
+            "streetAddress": "1501 Ellinwood Street",
+            "postalCode": "60016"
           }
         },
         "sameAs": "https://desplaines.libnet.info/event/17004585",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Des Plaines Public Library",
+          "url": "https://desplaines.libnet.info"
+        },
         "description": "Wednesday, November 04 2026 7:00pm - 7:30pm \n Best for families with children ages 2-7, but all are welcome. See full description for details. Registration…",
         "registrationOpens": "2026-10-21"
       }
@@ -1580,6 +2113,7 @@
         "name": "ESL (English as a Second Language) Class - Oakton College",
         "startDate": "2026-11-05T09:15:00-06:00",
         "url": "https://withintenmiles.com/des-plaines-60016/#ev-esl-english-as-a-second-language-class-oakton-college-2026-11-05",
+        "eventStatus": "https://schema.org/EventScheduled",
         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
         "location": {
           "@type": "Place",
@@ -1588,10 +2122,17 @@
             "@type": "PostalAddress",
             "addressCountry": "US",
             "addressLocality": "Des Plaines",
-            "addressRegion": "IL"
+            "addressRegion": "IL",
+            "streetAddress": "1501 Ellinwood Street",
+            "postalCode": "60016"
           }
         },
         "sameAs": "https://desplaines.libnet.info/event/15803240",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Des Plaines Public Library",
+          "url": "https://desplaines.libnet.info"
+        },
         "description": "Thursday, November 05 2026 9:15am - 12:15pm \n ESL (English as a Second Language) Class - Oakton College\n\n Teaches listening, speaking, reading, writing, and…"
       }
     },
@@ -1603,6 +2144,7 @@
         "name": "Toddler Time",
         "startDate": "2026-11-05T10:00:00-06:00",
         "url": "https://withintenmiles.com/des-plaines-60016/#ev-toddler-time-2026-11-05",
+        "eventStatus": "https://schema.org/EventScheduled",
         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
         "location": {
           "@type": "Place",
@@ -1611,10 +2153,17 @@
             "@type": "PostalAddress",
             "addressCountry": "US",
             "addressLocality": "Des Plaines",
-            "addressRegion": "IL"
+            "addressRegion": "IL",
+            "streetAddress": "1501 Ellinwood Street",
+            "postalCode": "60016"
           }
         },
         "sameAs": "https://desplaines.libnet.info/event/17001900",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Des Plaines Public Library",
+          "url": "https://desplaines.libnet.info"
+        },
         "description": "Thursday, November 05 2026 10:00am - 10:30am \n Ages 18-36 months. Drop-in at the Poet Tree Corner! Enjoy stories, songs, rhymes, movement, and more at Toddler…"
       }
     },
@@ -1626,6 +2175,7 @@
         "name": "Community Blood Center Blood Drive",
         "startDate": "2026-11-05T10:00:00-06:00",
         "url": "https://withintenmiles.com/des-plaines-60016/#ev-community-blood-center-blood-drive-2026-11-05",
+        "eventStatus": "https://schema.org/EventScheduled",
         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
         "location": {
           "@type": "Place",
@@ -1634,10 +2184,17 @@
             "@type": "PostalAddress",
             "addressCountry": "US",
             "addressLocality": "Des Plaines",
-            "addressRegion": "IL"
+            "addressRegion": "IL",
+            "streetAddress": "1501 Ellinwood Street",
+            "postalCode": "60016"
           }
         },
         "sameAs": "https://desplaines.libnet.info/event/17690884",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Des Plaines Public Library",
+          "url": "https://desplaines.libnet.info"
+        },
         "description": "Thursday, November 05 2026 10:00am - 2:00pm \n Community Blood Center Blood Drive"
       }
     },
@@ -1649,6 +2206,7 @@
         "name": "Happy Notes",
         "startDate": "2026-11-05T16:00:00-06:00",
         "url": "https://withintenmiles.com/des-plaines-60016/#ev-happy-notes-2026-11-05",
+        "eventStatus": "https://schema.org/EventScheduled",
         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
         "location": {
           "@type": "Place",
@@ -1657,10 +2215,17 @@
             "@type": "PostalAddress",
             "addressCountry": "US",
             "addressLocality": "Des Plaines",
-            "addressRegion": "IL"
+            "addressRegion": "IL",
+            "streetAddress": "1501 Ellinwood Street",
+            "postalCode": "60016"
           }
         },
         "sameAs": "https://desplaines.libnet.info/event/17241858",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Des Plaines Public Library",
+          "url": "https://desplaines.libnet.info"
+        },
         "description": "Thursday, November 05 2026 4:00pm - 5:00pm \n Earn service hours by making uplifting cards for hospitalized kids! Materials will be provided. For teens in…"
       }
     },
@@ -1672,6 +2237,7 @@
         "name": "Munch Madness",
         "startDate": "2026-11-05T16:00:00-06:00",
         "url": "https://withintenmiles.com/des-plaines-60016/#ev-munch-madness-2026-11-05",
+        "eventStatus": "https://schema.org/EventScheduled",
         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
         "location": {
           "@type": "Place",
@@ -1680,10 +2246,17 @@
             "@type": "PostalAddress",
             "addressCountry": "US",
             "addressLocality": "Des Plaines",
-            "addressRegion": "IL"
+            "addressRegion": "IL",
+            "streetAddress": "1501 Ellinwood Street",
+            "postalCode": "60016"
           }
         },
         "sameAs": "https://desplaines.libnet.info/event/17187755",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Des Plaines Public Library",
+          "url": "https://desplaines.libnet.info"
+        },
         "description": "Thursday, November 05 2026 4:00pm - 5:00pm \n Come to this taste-test, you will be surprised by what awaits you!\nAges 9-12."
       }
     },
@@ -1695,6 +2268,7 @@
         "name": "VIP UPGRADES - WHEEL OF FORTUNE LIVE!",
         "startDate": "2026-11-05T17:00:00-06:00",
         "url": "https://withintenmiles.com/des-plaines-60016/#ev-vip-upgrades-wheel-of-fortune-live-2026-11-05",
+        "eventStatus": "https://schema.org/EventScheduled",
         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
         "location": {
           "@type": "Place",
@@ -1703,10 +2277,16 @@
             "@type": "PostalAddress",
             "addressCountry": "US",
             "addressLocality": "Des Plaines",
-            "addressRegion": "IL"
+            "addressRegion": "IL",
+            "streetAddress": "1476 Miner Street"
           }
         },
         "sameAs": "https://desplainestheatre.com/event/vip-upgrades-wheel-of-fortune-live-2/",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Des Plaines Theatre",
+          "url": "https://desplainestheatre.com"
+        },
         "description": "VIP1: Ultimate VIP Meet & Greet Experience – Price per package: $ 212 USD Description of package: Meet & Greet and Photo Opportunity with the Host of Wheel of…"
       }
     },
@@ -1718,6 +2298,7 @@
         "name": "Book a Teen Librarian",
         "startDate": "2026-11-05T17:00:00-06:00",
         "url": "https://withintenmiles.com/des-plaines-60016/#ev-book-a-teen-librarian-2026-11-05",
+        "eventStatus": "https://schema.org/EventScheduled",
         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
         "location": {
           "@type": "Place",
@@ -1726,10 +2307,17 @@
             "@type": "PostalAddress",
             "addressCountry": "US",
             "addressLocality": "Des Plaines",
-            "addressRegion": "IL"
+            "addressRegion": "IL",
+            "streetAddress": "1501 Ellinwood Street",
+            "postalCode": "60016"
           }
         },
         "sameAs": "https://desplaines.libnet.info/event/16339449",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Des Plaines Public Library",
+          "url": "https://desplaines.libnet.info"
+        },
         "description": "Thursday, November 05 2026 5:00pm - 6:00pm \n Come in and get to know your teen librarians!"
       }
     },
@@ -1741,6 +2329,7 @@
         "name": "Tech en el Forum (Spanish)",
         "startDate": "2026-11-05T17:30:00-06:00",
         "url": "https://withintenmiles.com/des-plaines-60016/#ev-tech-en-el-forum-spanish-2026-11-05",
+        "eventStatus": "https://schema.org/EventScheduled",
         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
         "location": {
           "@type": "Place",
@@ -1749,10 +2338,17 @@
             "@type": "PostalAddress",
             "addressCountry": "US",
             "addressLocality": "Des Plaines",
-            "addressRegion": "IL"
+            "addressRegion": "IL",
+            "streetAddress": "1501 Ellinwood Street",
+            "postalCode": "60016"
           }
         },
         "sameAs": "https://desplaines.libnet.info/event/17571344",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Des Plaines Public Library",
+          "url": "https://desplaines.libnet.info"
+        },
         "description": "Thursday, November 05 2026 5:30pm - 7:30pm \n ¿Tiene alguna pregunta sobre tecnología o sobre cómo usar los servicios de la biblioteca? La asistencia se brinda…"
       }
     },
@@ -1764,6 +2360,7 @@
         "name": "Monthly Writing Meet Up",
         "startDate": "2026-11-05T18:30:00-06:00",
         "url": "https://withintenmiles.com/des-plaines-60016/#ev-monthly-writing-meet-up-2026-11-05",
+        "eventStatus": "https://schema.org/EventScheduled",
         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
         "location": {
           "@type": "Place",
@@ -1772,10 +2369,17 @@
             "@type": "PostalAddress",
             "addressCountry": "US",
             "addressLocality": "Des Plaines",
-            "addressRegion": "IL"
+            "addressRegion": "IL",
+            "streetAddress": "1501 Ellinwood Street",
+            "postalCode": "60016"
           }
         },
         "sameAs": "https://desplaines.libnet.info/event/16185864",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Des Plaines Public Library",
+          "url": "https://desplaines.libnet.info"
+        },
         "description": "Thursday, November 05 2026 6:30pm - 8:30pm \n Meet fellow writers, network, and meet your deadlines; bring your laptop and bring your inspiration!"
       }
     },
@@ -1787,6 +2391,7 @@
         "name": "BOURBON 'N BRASS SPEAKEASY: BLUES SHOW WITH BRANDYE PHILLIPS",
         "startDate": "2026-11-05T19:30:00-06:00",
         "url": "https://withintenmiles.com/des-plaines-60016/#ev-bourbon-n-brass-speakeasy-blues-show-with-brandye-phillips-2026-11-05",
+        "eventStatus": "https://schema.org/EventScheduled",
         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
         "location": {
           "@type": "Place",
@@ -1795,10 +2400,16 @@
             "@type": "PostalAddress",
             "addressCountry": "US",
             "addressLocality": "Des Plaines",
-            "addressRegion": "IL"
+            "addressRegion": "IL",
+            "streetAddress": "1476 Miner Street"
           }
         },
         "sameAs": "https://desplainestheatre.com/event/bourbon-n-brass-speakeasy-blues-show-with-brandye-phillips-5/",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Des Plaines Theatre",
+          "url": "https://desplainestheatre.com"
+        },
         "description": "Join us in our intimate Bourbon ‘N Brass Speakeasy, located on the 2nd floor of the Des Plaines Theatre, for an evening of Blues with Brandye Phillips! Food…"
       }
     },
@@ -1810,6 +2421,7 @@
         "name": "Baby Book Time",
         "startDate": "2026-11-06T10:00:00-06:00",
         "url": "https://withintenmiles.com/des-plaines-60016/#ev-baby-book-time-2026-11-06",
+        "eventStatus": "https://schema.org/EventScheduled",
         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
         "location": {
           "@type": "Place",
@@ -1818,10 +2430,17 @@
             "@type": "PostalAddress",
             "addressCountry": "US",
             "addressLocality": "Des Plaines",
-            "addressRegion": "IL"
+            "addressRegion": "IL",
+            "streetAddress": "1501 Ellinwood Street",
+            "postalCode": "60016"
           }
         },
         "sameAs": "https://desplaines.libnet.info/event/16431789",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Des Plaines Public Library",
+          "url": "https://desplaines.libnet.info"
+        },
         "description": "Friday, November 06 2026 10:00am - 11:00am \n To register, please contact Irene Tripkos at 847-789-5623. Verbal confirmation from Irene Tripkos is needed in…"
       }
     },
@@ -1833,6 +2452,7 @@
         "name": "Downsizing and Decluttering",
         "startDate": "2026-11-06T14:00:00-06:00",
         "url": "https://withintenmiles.com/des-plaines-60016/#ev-downsizing-and-decluttering-2026-11-06",
+        "eventStatus": "https://schema.org/EventScheduled",
         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
         "location": {
           "@type": "Place",
@@ -1841,10 +2461,17 @@
             "@type": "PostalAddress",
             "addressCountry": "US",
             "addressLocality": "Des Plaines",
-            "addressRegion": "IL"
+            "addressRegion": "IL",
+            "streetAddress": "1501 Ellinwood Street",
+            "postalCode": "60016"
           }
         },
         "sameAs": "https://desplaines.libnet.info/event/17140480",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Des Plaines Public Library",
+          "url": "https://desplaines.libnet.info"
+        },
         "description": "Friday, November 06 2026 2:00pm - 3:30pm \n Helpful for older adults and empty nesters."
       }
     },
@@ -1856,6 +2483,7 @@
         "name": "Friday Night Films",
         "startDate": "2026-11-06T18:30:00-06:00",
         "url": "https://withintenmiles.com/des-plaines-60016/#ev-friday-night-films-2026-11-06",
+        "eventStatus": "https://schema.org/EventScheduled",
         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
         "location": {
           "@type": "Place",
@@ -1864,10 +2492,17 @@
             "@type": "PostalAddress",
             "addressCountry": "US",
             "addressLocality": "Des Plaines",
-            "addressRegion": "IL"
+            "addressRegion": "IL",
+            "streetAddress": "1501 Ellinwood Street",
+            "postalCode": "60016"
           }
         },
         "sameAs": "https://desplaines.libnet.info/event/16020452",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Des Plaines Public Library",
+          "url": "https://desplaines.libnet.info"
+        },
         "description": "Friday, November 06 2026 6:30pm - 8:15pm \n A free screening of the independent film The Invite.",
         "isAccessibleForFree": true
       }
@@ -1880,6 +2515,7 @@
         "name": "BOURBON 'N BRASS SPEAKEASY: LIVE JAZZ, POP AND R&B with MICHAEL ROSS BAND",
         "startDate": "2026-11-06T20:30:00-06:00",
         "url": "https://withintenmiles.com/des-plaines-60016/#ev-bourbon-n-brass-speakeasy-live-jazz-pop-and-r-b-with-michael-2026-11-06",
+        "eventStatus": "https://schema.org/EventScheduled",
         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
         "location": {
           "@type": "Place",
@@ -1888,10 +2524,16 @@
             "@type": "PostalAddress",
             "addressCountry": "US",
             "addressLocality": "Des Plaines",
-            "addressRegion": "IL"
+            "addressRegion": "IL",
+            "streetAddress": "1476 Miner Street"
           }
         },
         "sameAs": "https://desplainestheatre.com/event/bourbon-n-brass-speakeasy-live-jazz-pop-and-rb-with-michael-ross-band/",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Des Plaines Theatre",
+          "url": "https://desplainestheatre.com"
+        },
         "description": "Join us in our intimate Bourbon ‘N Brass Speakeasy, located on the 2nd floor of the Des Plaines Theatre, for an evening of Jazz with Michael Ross Band! Food…"
       }
     }

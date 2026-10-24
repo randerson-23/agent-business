@@ -2,7 +2,7 @@
   "@context": "https://schema.org",
   "@type": "ItemList",
   "name": "Upcoming events in Wheeling — Within Ten",
-  "dateModified": "2026-10-24T11:15:00+00:00",
+  "dateModified": "2026-10-24T14:01:06+00:00",
   "numberOfItems": 52,
   "itemListElement": [
     {
@@ -13,6 +13,7 @@
         "name": "CPR Class",
         "startDate": "2026-10-24T09:30:00-05:00",
         "url": "https://withintenmiles.com/wheeling-60090/#ev-cpr-class-2026-10-24",
+        "eventStatus": "https://schema.org/EventScheduled",
         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
         "location": {
           "@type": "Place",
@@ -26,6 +27,11 @@
           }
         },
         "sameAs": "https://indiantrails.libnet.info/event/17417143",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Indian Trails Public Library",
+          "url": "https://indiantrails.libnet.info"
+        },
         "description": "Saturday, October 24 2026 9:30am - 12:30pm \n Presented by the Wheeling Fire Department, this course focuses on CPR compression only and helps participants…"
       }
     },
@@ -37,6 +43,7 @@
         "name": "Rainbow Watercolor Pet Portraits",
         "startDate": "2026-10-24T12:00:00-05:00",
         "url": "https://withintenmiles.com/wheeling-60090/#ev-rainbow-watercolor-pet-portraits-2026-10-24",
+        "eventStatus": "https://schema.org/EventScheduled",
         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
         "location": {
           "@type": "Place",
@@ -50,6 +57,11 @@
           }
         },
         "sameAs": "https://indiantrails.libnet.info/event/16723998",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Indian Trails Public Library",
+          "url": "https://indiantrails.libnet.info"
+        },
         "description": "Saturday, October 24 2026 12:00pm - 1:00pm \n Create a unique pet portrait using a tracing method and watercolor paints. Email us a clear photo of your pet…"
       }
     },
@@ -61,6 +73,7 @@
         "name": "The Arlingtones",
         "startDate": "2026-10-25T13:00:00-05:00",
         "url": "https://withintenmiles.com/wheeling-60090/#ev-the-arlingtones-2026-10-25",
+        "eventStatus": "https://schema.org/EventScheduled",
         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
         "location": {
           "@type": "Place",
@@ -74,6 +87,11 @@
           }
         },
         "sameAs": "https://indiantrails.libnet.info/event/16583729",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Indian Trails Public Library",
+          "url": "https://indiantrails.libnet.info"
+        },
         "description": "Sunday, October 25 2026 1:00pm - 2:00pm \n The Arlingtones bring an afternoon of familiar tunes. The music sung ranges from traditional barbershop to Broadway…"
       }
     },
@@ -85,6 +103,7 @@
         "name": "Day of the Dead Ofrenda | Dia de los Muertos Ofrenda",
         "startDate": "2026-10-26",
         "url": "https://withintenmiles.com/wheeling-60090/#ev-day-of-the-dead-ofrenda-dia-de-los-muertos-ofrenda-2026-10-26",
+        "eventStatus": "https://schema.org/EventScheduled",
         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
         "location": {
           "@type": "Place",
@@ -98,6 +117,11 @@
           }
         },
         "sameAs": "https://indiantrails.libnet.info/event/17110486",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Indian Trails Public Library",
+          "url": "https://indiantrails.libnet.info"
+        },
         "description": "Monday, October 26 2026 12:00am - 11:59pm \n Honor loved ones who have passed away with our community altar. NR\nHonra a los seres queridos que han fallecido…"
       }
     },
@@ -109,6 +133,7 @@
         "name": "Genealogy Interest Group Meeting",
         "startDate": "2026-10-26T19:00:00-05:00",
         "url": "https://withintenmiles.com/wheeling-60090/#ev-genealogy-interest-group-meeting-2026-10-26",
+        "eventStatus": "https://schema.org/EventScheduled",
         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
         "location": {
           "@type": "Place",
@@ -122,6 +147,11 @@
           }
         },
         "sameAs": "https://indiantrails.libnet.info/event/16652929",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Indian Trails Public Library",
+          "url": "https://indiantrails.libnet.info"
+        },
         "description": "Monday, October 26 2026 7:00pm - 8:30pm \n Join this informal group in a collaborative setting to explore library databases, research your family tree and…"
       }
     },
@@ -133,6 +163,7 @@
         "name": "Noisy Time",
         "startDate": "2026-10-27T10:00:00-05:00",
         "url": "https://withintenmiles.com/wheeling-60090/#ev-noisy-time-2026-10-27",
+        "eventStatus": "https://schema.org/EventScheduled",
         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
         "location": {
           "@type": "Place",
@@ -146,6 +177,11 @@
           }
         },
         "sameAs": "https://indiantrails.libnet.info/event/16550239",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Indian Trails Public Library",
+          "url": "https://indiantrails.libnet.info"
+        },
         "description": "Tuesday, October 27 2026 10:00am - 10:30am \n Explore the world around us with stories, rhymes and lots of music and movement. TR"
       }
     },
@@ -157,6 +193,7 @@
         "name": "Rise & Read Morning Book Discussion",
         "startDate": "2026-10-27T10:30:00-05:00",
         "url": "https://withintenmiles.com/wheeling-60090/#ev-rise-read-morning-book-discussion-2026-10-27",
+        "eventStatus": "https://schema.org/EventScheduled",
         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
         "location": {
           "@type": "Place",
@@ -170,6 +207,11 @@
           }
         },
         "sameAs": "https://indiantrails.libnet.info/event/14170840",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Indian Trails Public Library",
+          "url": "https://indiantrails.libnet.info"
+        },
         "description": "Tuesday, October 27 2026 10:30am - 11:30am \n Registration and book pickup begins September 8. A haunting and powerful story of female friendships and secrets…"
       }
     },
@@ -181,6 +223,7 @@
         "name": "Paint and Steep Tea",
         "startDate": "2026-10-27T14:00:00-05:00",
         "url": "https://withintenmiles.com/wheeling-60090/#ev-paint-and-steep-tea-2026-10-27",
+        "eventStatus": "https://schema.org/EventScheduled",
         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
         "location": {
           "@type": "Place",
@@ -194,6 +237,11 @@
           }
         },
         "sameAs": "https://indiantrails.libnet.info/event/16652843",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Indian Trails Public Library",
+          "url": "https://indiantrails.libnet.info"
+        },
         "description": "Tuesday, October 27 2026 2:00pm - 4:00pm \n Reserved for Adult Indian Trails Library cardholders only. Join us for a monthly painting program with teaching…"
       }
     },
@@ -205,6 +253,7 @@
         "name": "Spanish Conversation Practice | At the Branch",
         "startDate": "2026-10-27T17:30:00-05:00",
         "url": "https://withintenmiles.com/wheeling-60090/#ev-spanish-conversation-practice-at-the-branch-2026-10-27",
+        "eventStatus": "https://schema.org/EventScheduled",
         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
         "location": {
           "@type": "Place",
@@ -218,6 +267,11 @@
           }
         },
         "sameAs": "https://indiantrails.libnet.info/event/16568749",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Indian Trails Public Library",
+          "url": "https://indiantrails.libnet.info"
+        },
         "description": "Tuesday, October 27 2026 5:30pm - 6:30pm \n Informal Spanish conversation session to practice and improve your speaking skills by talking to native…"
       }
     },
@@ -229,6 +283,7 @@
         "name": "Read to Learn",
         "startDate": "2026-10-28T09:00:00-05:00",
         "url": "https://withintenmiles.com/wheeling-60090/#ev-read-to-learn-2026-10-28",
+        "eventStatus": "https://schema.org/EventScheduled",
         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
         "location": {
           "@type": "Place",
@@ -242,6 +297,11 @@
           }
         },
         "sameAs": "https://indiantrails.libnet.info/event/11861202",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Indian Trails Public Library",
+          "url": "https://indiantrails.libnet.info"
+        },
         "description": "Wednesday, October 28 2026 9:00am - 12:00pm \n District 214 Read to Learn Adult Literacy Program."
       }
     },
@@ -253,6 +313,7 @@
         "name": "Scary Stories to Draw in the Dark",
         "startDate": "2026-10-28T16:00:00-05:00",
         "url": "https://withintenmiles.com/wheeling-60090/#ev-scary-stories-to-draw-in-the-dark-2026-10-28",
+        "eventStatus": "https://schema.org/EventScheduled",
         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
         "location": {
           "@type": "Place",
@@ -266,6 +327,11 @@
           }
         },
         "sameAs": "https://indiantrails.libnet.info/event/16649351",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Indian Trails Public Library",
+          "url": "https://indiantrails.libnet.info"
+        },
         "description": "Wednesday, October 28 2026 4:00pm - 5:00pm \n Learn about Stephen Gammell's art from Scary Stories to Tell in the Dark and then create your own spine-chilling…"
       }
     },
@@ -277,6 +343,7 @@
         "name": "Coloring Club",
         "startDate": "2026-10-28T18:00:00-05:00",
         "url": "https://withintenmiles.com/wheeling-60090/#ev-coloring-club-2026-10-28",
+        "eventStatus": "https://schema.org/EventScheduled",
         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
         "location": {
           "@type": "Place",
@@ -290,6 +357,11 @@
           }
         },
         "sameAs": "https://indiantrails.libnet.info/event/16505533",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Indian Trails Public Library",
+          "url": "https://indiantrails.libnet.info"
+        },
         "description": "Wednesday, October 28 2026 6:00pm - 7:30pm \n Come color with us. We'll share tips, tricks and refreshments. Bring your own supplies or use ours. R"
       }
     },
@@ -301,6 +373,7 @@
         "name": "Paint and Steep Tea",
         "startDate": "2026-10-28T18:00:00-05:00",
         "url": "https://withintenmiles.com/wheeling-60090/#ev-paint-and-steep-tea-2026-10-28",
+        "eventStatus": "https://schema.org/EventScheduled",
         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
         "location": {
           "@type": "Place",
@@ -314,6 +387,11 @@
           }
         },
         "sameAs": "https://indiantrails.libnet.info/event/16652854",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Indian Trails Public Library",
+          "url": "https://indiantrails.libnet.info"
+        },
         "description": "Wednesday, October 28 2026 6:00pm - 8:00pm \n Reserved for Adult Indian Trails Library cardholders only. Join us for a monthly painting program with teaching…"
       }
     },
@@ -325,6 +403,7 @@
         "name": "Plan Commission Meeting - NOTICE OF CANCELLATION",
         "startDate": "2026-10-28T18:30:00-05:00",
         "url": "https://withintenmiles.com/wheeling-60090/#ev-plan-commission-meeting-notice-of-cancellation-2026-10-28",
+        "eventStatus": "https://schema.org/EventScheduled",
         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
         "location": {
           "@type": "Place",
@@ -337,6 +416,11 @@
           }
         },
         "sameAs": "https://www.wheelingil.gov/common/modules/iCalendar/iCalendar.aspx?feed=calendar&catID=14",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Village of Wheeling",
+          "url": "https://www.wheelingil.gov"
+        },
         "description": "https://www.wheelingil.gov/calendar.aspx?EID=1969"
       }
     },
@@ -348,6 +432,7 @@
         "name": "Chat & Play Cafe",
         "startDate": "2026-10-29T09:30:00-05:00",
         "url": "https://withintenmiles.com/wheeling-60090/#ev-chat-play-cafe-2026-10-29",
+        "eventStatus": "https://schema.org/EventScheduled",
         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
         "location": {
           "@type": "Place",
@@ -361,6 +446,11 @@
           }
         },
         "sameAs": "https://indiantrails.libnet.info/event/16858048",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Indian Trails Public Library",
+          "url": "https://indiantrails.libnet.info"
+        },
         "description": "Thursday, October 29 2026 9:30am - 11:00am \n Join unstructured playtime for you and baby. Enjoy coffee, a sweet treat and conversation while the little ones…"
       }
     },
@@ -372,6 +462,7 @@
         "name": "Monogrammed Tote Bags",
         "startDate": "2026-10-29T18:00:00-05:00",
         "url": "https://withintenmiles.com/wheeling-60090/#ev-monogrammed-tote-bags-2026-10-29",
+        "eventStatus": "https://schema.org/EventScheduled",
         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
         "location": {
           "@type": "Place",
@@ -385,6 +476,11 @@
           }
         },
         "sameAs": "https://indiantrails.libnet.info/event/16941159",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Indian Trails Public Library",
+          "url": "https://indiantrails.libnet.info"
+        },
         "description": "Thursday, October 29 2026 6:00pm - 7:30pm \n Learn to use an embroidery machine to add a monogram to a tote bag. This is an introductory embroidery course;…"
       }
     },
@@ -396,6 +492,7 @@
         "name": "Fall for Autumn Crafts",
         "startDate": "2026-10-29T18:30:00-05:00",
         "url": "https://withintenmiles.com/wheeling-60090/#ev-fall-for-autumn-crafts-2026-10-29",
+        "eventStatus": "https://schema.org/EventScheduled",
         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
         "location": {
           "@type": "Place",
@@ -409,6 +506,11 @@
           }
         },
         "sameAs": "https://indiantrails.libnet.info/event/16708864",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Indian Trails Public Library",
+          "url": "https://indiantrails.libnet.info"
+        },
         "description": "Thursday, October 29 2026 6:30pm - 7:30pm \n Celebrate the season with activities and crafts for all skill levels. TR"
       }
     },
@@ -420,6 +522,7 @@
         "name": "High School Book Club | Grades 9-12",
         "startDate": "2026-10-29T19:00:00-05:00",
         "url": "https://withintenmiles.com/wheeling-60090/#ev-high-school-book-club-grades-9-12-2026-10-29",
+        "eventStatus": "https://schema.org/EventScheduled",
         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
         "location": {
           "@type": "Place",
@@ -433,6 +536,11 @@
           }
         },
         "sameAs": "https://indiantrails.libnet.info/event/16624800",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Indian Trails Public Library",
+          "url": "https://indiantrails.libnet.info"
+        },
         "description": "Thursday, October 29 2026 7:00pm - 8:00pm \n Book pickup begins August 27 at the Youth Services Desk. Four people vanish in a night. To find her friend, Nora…"
       }
     },
@@ -444,6 +552,7 @@
         "name": "Frightening Fics Book Discussion",
         "startDate": "2026-10-29T19:00:00-05:00",
         "url": "https://withintenmiles.com/wheeling-60090/#ev-frightening-fics-book-discussion-2026-10-29",
+        "eventStatus": "https://schema.org/EventScheduled",
         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
         "location": {
           "@type": "Place",
@@ -457,6 +566,11 @@
           }
         },
         "sameAs": "https://indiantrails.libnet.info/event/16952017",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Indian Trails Public Library",
+          "url": "https://indiantrails.libnet.info"
+        },
         "description": "Thursday, October 29 2026 7:00pm - 8:00pm \n Registration and book pickup begins September 29. Something darker than the devil stalks the North Carolina woods…"
       }
     },
@@ -468,6 +582,7 @@
         "name": "Spooktacular Storytime",
         "startDate": "2026-10-30T10:00:00-05:00",
         "url": "https://withintenmiles.com/wheeling-60090/#ev-spooktacular-storytime-2026-10-30",
+        "eventStatus": "https://schema.org/EventScheduled",
         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
         "location": {
           "@type": "Place",
@@ -481,6 +596,11 @@
           }
         },
         "sameAs": "https://indiantrails.libnet.info/event/16709302",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Indian Trails Public Library",
+          "url": "https://indiantrails.libnet.info"
+        },
         "description": "Friday, October 30 2026 10:00am - 10:45am \n Start your Halloween festivities with a short storytime, craft and game. Costumes encouraged but not necessary. TR"
       }
     },
@@ -492,6 +612,7 @@
         "name": "Craft for The Day of The Dead | At the Branch",
         "startDate": "2026-10-30T17:30:00-05:00",
         "url": "https://withintenmiles.com/wheeling-60090/#ev-craft-for-the-day-of-the-dead-at-the-branch-2026-10-30",
+        "eventStatus": "https://schema.org/EventScheduled",
         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
         "location": {
           "@type": "Place",
@@ -505,6 +626,11 @@
           }
         },
         "sameAs": "https://indiantrails.libnet.info/event/16606801",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Indian Trails Public Library",
+          "url": "https://indiantrails.libnet.info"
+        },
         "description": "Friday, October 30 2026 5:30pm - 7:00pm \n Participate in a Mexican tradition by painting mini wooden ornaments. Enjoy hot chocolate and traditional bread \"pan…"
       }
     },
@@ -516,6 +642,7 @@
         "name": "Dia de Los Muertos with Mariachi Sirenas",
         "startDate": "2026-10-31T14:00:00-05:00",
         "url": "https://withintenmiles.com/wheeling-60090/#ev-dia-de-los-muertos-with-mariachi-sirenas-2026-10-31",
+        "eventStatus": "https://schema.org/EventScheduled",
         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
         "location": {
           "@type": "Place",
@@ -529,6 +656,11 @@
           }
         },
         "sameAs": "https://indiantrails.libnet.info/event/16663064",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Indian Trails Public Library",
+          "url": "https://indiantrails.libnet.info"
+        },
         "description": "Saturday, October 31 2026 2:00pm - 3:00pm \n Celebrate Dia de Los Muertos with a performance from Mariachi Sirenas. R"
       }
     },
@@ -540,6 +672,7 @@
         "name": "Halloween Trick or Treat Hours - 3pm to 7pm",
         "startDate": "2026-10-31T15:00:00-05:00",
         "url": "https://withintenmiles.com/wheeling-60090/#ev-halloween-trick-or-treat-hours-3pm-to-7pm-2026-10-31",
+        "eventStatus": "https://schema.org/EventScheduled",
         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
         "location": {
           "@type": "Place",
@@ -552,6 +685,11 @@
           }
         },
         "sameAs": "https://www.wheelingil.gov/common/modules/iCalendar/iCalendar.aspx?feed=calendar&catID=14",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Village of Wheeling",
+          "url": "https://www.wheelingil.gov"
+        },
         "description": "https://www.wheelingil.gov/calendar.aspx?EID=2232"
       }
     },
@@ -563,6 +701,7 @@
         "name": "Support Our Troops",
         "startDate": "2026-11-01",
         "url": "https://withintenmiles.com/wheeling-60090/#ev-support-our-troops-2026-11-01",
+        "eventStatus": "https://schema.org/EventScheduled",
         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
         "location": {
           "@type": "Place",
@@ -576,6 +715,11 @@
           }
         },
         "sameAs": "https://indiantrails.libnet.info/event/17178977",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Indian Trails Public Library",
+          "url": "https://indiantrails.libnet.info"
+        },
         "description": "Sunday, November 01 2026 12:00am - 11:59pm \n Write an encouraging card to an active military person at the lobby of the library. NR"
       }
     },
@@ -587,6 +731,7 @@
         "name": "High School Volunteer Kits",
         "startDate": "2026-11-02T09:00:00-06:00",
         "url": "https://withintenmiles.com/wheeling-60090/#ev-high-school-volunteer-kits-2026-11-02",
+        "eventStatus": "https://schema.org/EventScheduled",
         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
         "location": {
           "@type": "Place",
@@ -600,6 +745,11 @@
           }
         },
         "sameAs": "https://indiantrails.libnet.info/event/17139043",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Indian Trails Public Library",
+          "url": "https://indiantrails.libnet.info"
+        },
         "description": "Monday, November 02 2026 9:00am - 9:00pm \n Bag pickup: 9 am-9 pm \nComplete and return a volunteer craft kit by the end of the month to count towards one hour…"
       }
     },
@@ -611,6 +761,7 @@
         "name": "Stitch Together Meet-Up",
         "startDate": "2026-11-02T13:00:00-06:00",
         "url": "https://withintenmiles.com/wheeling-60090/#ev-stitch-together-meet-up-2026-11-02",
+        "eventStatus": "https://schema.org/EventScheduled",
         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
         "location": {
           "@type": "Place",
@@ -624,6 +775,11 @@
           }
         },
         "sameAs": "https://indiantrails.libnet.info/event/17043790",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Indian Trails Public Library",
+          "url": "https://indiantrails.libnet.info"
+        },
         "description": "Monday, November 02 2026 1:00pm - 3:00pm \n If your craft of choice uses needles or hooks, this group is for you. Bring your knit, crochet, embroidery or cross…"
       }
     },
@@ -635,6 +791,7 @@
         "name": "Tech Assistance / Assistencia de Tech",
         "startDate": "2026-11-02T15:00:00-06:00",
         "url": "https://withintenmiles.com/wheeling-60090/#ev-tech-assistance-assistencia-de-tech-2026-11-02",
+        "eventStatus": "https://schema.org/EventScheduled",
         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
         "location": {
           "@type": "Place",
@@ -648,6 +805,11 @@
           }
         },
         "sameAs": "https://indiantrails.libnet.info/event/15964922",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Indian Trails Public Library",
+          "url": "https://indiantrails.libnet.info"
+        },
         "description": "Monday, November 02 2026 3:00pm - 3:45pm \n Have a basic question about your mobile device or computer? We can help. ¿Tiene alguna pregunta básica sobre su…"
       }
     },
@@ -659,6 +821,7 @@
         "name": "Bookworms Book Club | Grades 4-5",
         "startDate": "2026-11-02T16:00:00-06:00",
         "url": "https://withintenmiles.com/wheeling-60090/#ev-bookworms-book-club-grades-4-5-2026-11-02",
+        "eventStatus": "https://schema.org/EventScheduled",
         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
         "location": {
           "@type": "Place",
@@ -672,6 +835,11 @@
           }
         },
         "sameAs": "https://indiantrails.libnet.info/event/17138854",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Indian Trails Public Library",
+          "url": "https://indiantrails.libnet.info"
+        },
         "description": "Monday, November 02 2026 4:00pm - 5:00pm \n Book pickup October 5-26 at the Youth Services Desk. Grandpa Clem has died, so Lila & her family need to decide…"
       }
     },
@@ -683,6 +851,7 @@
         "name": "Intro to Chinese Mahjong",
         "startDate": "2026-11-02T18:00:00-06:00",
         "url": "https://withintenmiles.com/wheeling-60090/#ev-intro-to-chinese-mahjong-2026-11-02",
+        "eventStatus": "https://schema.org/EventScheduled",
         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
         "location": {
           "@type": "Place",
@@ -696,6 +865,11 @@
           }
         },
         "sameAs": "https://indiantrails.libnet.info/event/17044874",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Indian Trails Public Library",
+          "url": "https://indiantrails.libnet.info"
+        },
         "description": "Monday, November 02 2026 6:00pm - 7:30pm \n Learn to play the Chinese tile-based game Mahjong. Instructor Xinming Guo will cover the basic rules, strategies,…"
       }
     },
@@ -707,6 +881,7 @@
         "name": "Village Board Regular Meeting",
         "startDate": "2026-11-02T18:30:00-06:00",
         "url": "https://withintenmiles.com/wheeling-60090/#ev-village-board-regular-meeting-2026-11-02",
+        "eventStatus": "https://schema.org/EventScheduled",
         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
         "location": {
           "@type": "Place",
@@ -719,6 +894,11 @@
           }
         },
         "sameAs": "https://www.wheelingil.gov/common/modules/iCalendar/iCalendar.aspx?feed=calendar&catID=14",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Village of Wheeling",
+          "url": "https://www.wheelingil.gov"
+        },
         "description": "https://www.wheelingil.gov/calendar.aspx?EID=2005"
       }
     },
@@ -730,6 +910,7 @@
         "name": "Boba Tea Keychains",
         "startDate": "2026-11-03T16:30:00-06:00",
         "url": "https://withintenmiles.com/wheeling-60090/#ev-boba-tea-keychains-2026-11-03",
+        "eventStatus": "https://schema.org/EventScheduled",
         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
         "location": {
           "@type": "Place",
@@ -743,6 +924,11 @@
           }
         },
         "sameAs": "https://indiantrails.libnet.info/event/17104212",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Indian Trails Public Library",
+          "url": "https://indiantrails.libnet.info"
+        },
         "description": "Tuesday, November 03 2026 4:30pm - 5:30pm \n Create a keychain inspired by boba tea or your favorite beverage. R"
       }
     },
@@ -754,6 +940,7 @@
         "name": "Alcohol Ink Art",
         "startDate": "2026-11-03T18:00:00-06:00",
         "url": "https://withintenmiles.com/wheeling-60090/#ev-alcohol-ink-art-2026-11-03",
+        "eventStatus": "https://schema.org/EventScheduled",
         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
         "location": {
           "@type": "Place",
@@ -767,6 +954,11 @@
           }
         },
         "sameAs": "https://indiantrails.libnet.info/event/16808529",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Indian Trails Public Library",
+          "url": "https://indiantrails.libnet.info"
+        },
         "description": "Tuesday, November 03 2026 6:00pm - 7:30pm \n Explore the magic of flowing, vibrant alcohol inks on tile. Learn alcohol ink art techniques from instructor Erin…"
       }
     },
@@ -778,6 +970,7 @@
         "name": "Writers Workshop",
         "startDate": "2026-11-03T18:30:00-06:00",
         "url": "https://withintenmiles.com/wheeling-60090/#ev-writers-workshop-2026-11-03",
+        "eventStatus": "https://schema.org/EventScheduled",
         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
         "location": {
           "@type": "Place",
@@ -791,6 +984,11 @@
           }
         },
         "sameAs": "https://indiantrails.libnet.info/event/15836584",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Indian Trails Public Library",
+          "url": "https://indiantrails.libnet.info"
+        },
         "description": "Tuesday, November 03 2026 6:30pm - 8:45pm \n Share your work with others in a supportive atmosphere at this monthly community writers group led by author…"
       }
     },
@@ -802,6 +1000,7 @@
         "name": "Read to Learn",
         "startDate": "2026-11-04T09:00:00-06:00",
         "url": "https://withintenmiles.com/wheeling-60090/#ev-read-to-learn-2026-11-04",
+        "eventStatus": "https://schema.org/EventScheduled",
         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
         "location": {
           "@type": "Place",
@@ -815,6 +1014,11 @@
           }
         },
         "sameAs": "https://indiantrails.libnet.info/event/11861203",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Indian Trails Public Library",
+          "url": "https://indiantrails.libnet.info"
+        },
         "description": "Wednesday, November 04 2026 9:00am - 12:00pm \n District 214 Read to Learn Adult Literacy Program."
       }
     },
@@ -826,6 +1030,7 @@
         "name": "Knitting for Beginners",
         "startDate": "2026-11-04T13:00:00-06:00",
         "url": "https://withintenmiles.com/wheeling-60090/#ev-knitting-for-beginners-2026-11-04",
+        "eventStatus": "https://schema.org/EventScheduled",
         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
         "location": {
           "@type": "Place",
@@ -839,6 +1044,11 @@
           }
         },
         "sameAs": "https://indiantrails.libnet.info/event/17127794",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Indian Trails Public Library",
+          "url": "https://indiantrails.libnet.info"
+        },
         "description": "Wednesday, November 04 2026 1:00pm - 3:00pm \n Learn the basic skills needed to start your knitting journey. Materials provided. R"
       }
     },
@@ -850,6 +1060,7 @@
         "name": "Jewelry Making Extravaganza",
         "startDate": "2026-11-04T16:00:00-06:00",
         "url": "https://withintenmiles.com/wheeling-60090/#ev-jewelry-making-extravaganza-2026-11-04",
+        "eventStatus": "https://schema.org/EventScheduled",
         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
         "location": {
           "@type": "Place",
@@ -863,6 +1074,11 @@
           }
         },
         "sameAs": "https://indiantrails.libnet.info/event/16826727",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Indian Trails Public Library",
+          "url": "https://indiantrails.libnet.info"
+        },
         "description": "Wednesday, November 04 2026 4:00pm - 5:30pm \n Learn jewelry making techniques using our collection of beads and jewelry supplies to create a unique piece to…"
       }
     },
@@ -874,6 +1090,7 @@
         "name": "Paint and Steep Tea",
         "startDate": "2026-11-04T18:00:00-06:00",
         "url": "https://withintenmiles.com/wheeling-60090/#ev-paint-and-steep-tea-2026-11-04",
+        "eventStatus": "https://schema.org/EventScheduled",
         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
         "location": {
           "@type": "Place",
@@ -887,6 +1104,11 @@
           }
         },
         "sameAs": "https://indiantrails.libnet.info/event/17100994",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Indian Trails Public Library",
+          "url": "https://indiantrails.libnet.info"
+        },
         "description": "Wednesday, November 04 2026 6:00pm - 8:00pm \n Reserved for Adult Indian Trails Library cardholders only. Join us for a monthly painting program with teaching…"
       }
     },
@@ -898,6 +1120,7 @@
         "name": "Plan Commission Meeting",
         "startDate": "2026-11-04T18:30:00-06:00",
         "url": "https://withintenmiles.com/wheeling-60090/#ev-plan-commission-meeting-2026-11-04",
+        "eventStatus": "https://schema.org/EventScheduled",
         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
         "location": {
           "@type": "Place",
@@ -910,6 +1133,11 @@
           }
         },
         "sameAs": "https://www.wheelingil.gov/common/modules/iCalendar/iCalendar.aspx?feed=calendar&catID=14",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Village of Wheeling",
+          "url": "https://www.wheelingil.gov"
+        },
         "description": "https://www.wheelingil.gov/calendar.aspx?EID=1970"
       }
     },
@@ -921,6 +1149,7 @@
         "name": "Intro to Excel",
         "startDate": "2026-11-04T19:00:00-06:00",
         "url": "https://withintenmiles.com/wheeling-60090/#ev-intro-to-excel-2026-11-04",
+        "eventStatus": "https://schema.org/EventScheduled",
         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
         "location": {
           "@type": "Place",
@@ -934,6 +1163,11 @@
           }
         },
         "sameAs": "https://indiantrails.libnet.info/event/17116353",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Indian Trails Public Library",
+          "url": "https://indiantrails.libnet.info"
+        },
         "description": "Wednesday, November 04 2026 7:00pm - 8:00pm \n Learn to create a basic spreadsheet using some of the most important tools in Excel. Intended for beginners and…"
       }
     },
@@ -945,6 +1179,7 @@
         "name": "Library Board Workshop",
         "startDate": "2026-11-04T19:00:00-06:00",
         "url": "https://withintenmiles.com/wheeling-60090/#ev-library-board-workshop-2026-11-04",
+        "eventStatus": "https://schema.org/EventScheduled",
         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
         "location": {
           "@type": "Place",
@@ -958,6 +1193,11 @@
           }
         },
         "sameAs": "https://indiantrails.libnet.info/event/17723328",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Indian Trails Public Library",
+          "url": "https://indiantrails.libnet.info"
+        },
         "description": "Wednesday, November 04 2026 7:00pm - 9:00pm \n The Board of Trustees meet for its monthly workshop and planning session. This meeting is open to the public.…"
       }
     },
@@ -969,6 +1209,7 @@
         "name": "Office Hours with Congressman Brad Schneider's Office",
         "startDate": "2026-11-05T09:30:00-06:00",
         "url": "https://withintenmiles.com/wheeling-60090/#ev-office-hours-with-congressman-brad-schneider-s-office-2026-11-05",
+        "eventStatus": "https://schema.org/EventScheduled",
         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
         "location": {
           "@type": "Place",
@@ -982,6 +1223,11 @@
           }
         },
         "sameAs": "https://indiantrails.libnet.info/event/16326973",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Indian Trails Public Library",
+          "url": "https://indiantrails.libnet.info"
+        },
         "description": "Thursday, November 05 2026 9:30am - 12:30pm \n A representative is present to engage with the community, share important information relevant to residents and…"
       }
     },
@@ -993,6 +1239,7 @@
         "name": "Social Services | Servicios Sociales",
         "startDate": "2026-11-05T10:00:00-06:00",
         "url": "https://withintenmiles.com/wheeling-60090/#ev-social-services-servicios-sociales-2026-11-05",
+        "eventStatus": "https://schema.org/EventScheduled",
         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
         "location": {
           "@type": "Place",
@@ -1006,6 +1253,11 @@
           }
         },
         "sameAs": "https://indiantrails.libnet.info/event/17180349",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Indian Trails Public Library",
+          "url": "https://indiantrails.libnet.info"
+        },
         "description": "Thursday, November 05 2026 10:00am - 11:15am \n A resource services coordinator from OMNI will provide resources for the community. Una representante de OMNI…"
       }
     },
@@ -1017,6 +1269,7 @@
         "name": "Village of Wheeling Social Workers at the Library",
         "startDate": "2026-11-05T10:00:00-06:00",
         "url": "https://withintenmiles.com/wheeling-60090/#ev-village-of-wheeling-social-workers-at-the-library-2026-11-05",
+        "eventStatus": "https://schema.org/EventScheduled",
         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
         "location": {
           "@type": "Place",
@@ -1030,6 +1283,11 @@
           }
         },
         "sameAs": "https://indiantrails.libnet.info/event/17386764",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Indian Trails Public Library",
+          "url": "https://indiantrails.libnet.info"
+        },
         "description": "Thursday, November 05 2026 10:00am - 2:00pm \n A social worker from the Village of Wheeling Social Services Division is available at the library each month to…"
       }
     },
@@ -1041,6 +1299,7 @@
         "name": "Pumpkin Investigation",
         "startDate": "2026-11-05T16:00:00-06:00",
         "url": "https://withintenmiles.com/wheeling-60090/#ev-pumpkin-investigation-2026-11-05",
+        "eventStatus": "https://schema.org/EventScheduled",
         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
         "location": {
           "@type": "Place",
@@ -1054,6 +1313,11 @@
           }
         },
         "sameAs": "https://indiantrails.libnet.info/event/16866235",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Indian Trails Public Library",
+          "url": "https://indiantrails.libnet.info"
+        },
         "description": "Thursday, November 05 2026 4:00pm - 4:45pm \n Use your scientist skills to learn about pumpkins. R"
       }
     },
@@ -1065,6 +1329,7 @@
         "name": "Coloring Club",
         "startDate": "2026-11-05T18:00:00-06:00",
         "url": "https://withintenmiles.com/wheeling-60090/#ev-coloring-club-2026-11-05",
+        "eventStatus": "https://schema.org/EventScheduled",
         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
         "location": {
           "@type": "Place",
@@ -1078,6 +1343,11 @@
           }
         },
         "sameAs": "https://indiantrails.libnet.info/event/17044103",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Indian Trails Public Library",
+          "url": "https://indiantrails.libnet.info"
+        },
         "description": "Thursday, November 05 2026 6:00pm - 7:30pm \n Join fellow coloring enthusiasts in a relaxed environment where you can work at your own pace. Bring your own…"
       }
     },
@@ -1089,6 +1359,7 @@
         "name": "Night Owls",
         "startDate": "2026-11-05T18:00:00-06:00",
         "url": "https://withintenmiles.com/wheeling-60090/#ev-night-owls-2026-11-05",
+        "eventStatus": "https://schema.org/EventScheduled",
         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
         "location": {
           "@type": "Place",
@@ -1102,6 +1373,11 @@
           }
         },
         "sameAs": "https://indiantrails.libnet.info/event/16927181",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Indian Trails Public Library",
+          "url": "https://indiantrails.libnet.info"
+        },
         "description": "Thursday, November 05 2026 6:00pm - 6:30pm \n Not quite ready for bed? Relax with stories, songs and literacy activities. TR"
       }
     },
@@ -1113,6 +1389,7 @@
         "name": "Peer Jury",
         "startDate": "2026-11-05T19:00:00-06:00",
         "url": "https://withintenmiles.com/wheeling-60090/#ev-peer-jury-2026-11-05",
+        "eventStatus": "https://schema.org/EventScheduled",
         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
         "location": {
           "@type": "Place",
@@ -1125,6 +1402,11 @@
           }
         },
         "sameAs": "https://www.wheelingil.gov/common/modules/iCalendar/iCalendar.aspx?feed=calendar&catID=14",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Village of Wheeling",
+          "url": "https://www.wheelingil.gov"
+        },
         "description": "https://www.wheelingil.gov/calendar.aspx?EID=2052"
       }
     },
@@ -1136,6 +1418,7 @@
         "name": "Mod Podge Crystal Lanterns",
         "startDate": "2026-11-05T19:00:00-06:00",
         "url": "https://withintenmiles.com/wheeling-60090/#ev-mod-podge-crystal-lanterns-2026-11-05",
+        "eventStatus": "https://schema.org/EventScheduled",
         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
         "location": {
           "@type": "Place",
@@ -1149,6 +1432,11 @@
           }
         },
         "sameAs": "https://indiantrails.libnet.info/event/16987781",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Indian Trails Public Library",
+          "url": "https://indiantrails.libnet.info"
+        },
         "description": "Thursday, November 05 2026 7:00pm - 8:00pm \n Turn everyday glass into glowing works of art. Combine vibrant colors and Mod Podge to craft your very own…"
       }
     },
@@ -1160,6 +1448,7 @@
         "name": "Babytime!",
         "startDate": "2026-11-06T09:30:00-06:00",
         "url": "https://withintenmiles.com/wheeling-60090/#ev-babytime-2026-11-06",
+        "eventStatus": "https://schema.org/EventScheduled",
         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
         "location": {
           "@type": "Place",
@@ -1173,6 +1462,11 @@
           }
         },
         "sameAs": "https://indiantrails.libnet.info/event/16930467",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Indian Trails Public Library",
+          "url": "https://indiantrails.libnet.info"
+        },
         "description": "Friday, November 06 2026 9:30am - 10:00am \n Stories, songs and fingerplays. TR"
       }
     },
@@ -1184,6 +1478,7 @@
         "name": "Wonderful Walkers",
         "startDate": "2026-11-06T10:30:00-06:00",
         "url": "https://withintenmiles.com/wheeling-60090/#ev-wonderful-walkers-2026-11-06",
+        "eventStatus": "https://schema.org/EventScheduled",
         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
         "location": {
           "@type": "Place",
@@ -1197,6 +1492,11 @@
           }
         },
         "sameAs": "https://indiantrails.libnet.info/event/16930601",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Indian Trails Public Library",
+          "url": "https://indiantrails.libnet.info"
+        },
         "description": "Friday, November 06 2026 10:30am - 11:00am \n Stories, songs, fingerplays and movement activities. TR"
       }
     },
@@ -1208,6 +1508,7 @@
         "name": "ESL Tea & Talk",
         "startDate": "2026-11-06T18:00:00-06:00",
         "url": "https://withintenmiles.com/wheeling-60090/#ev-esl-tea-talk-2026-11-06",
+        "eventStatus": "https://schema.org/EventScheduled",
         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
         "location": {
           "@type": "Place",
@@ -1221,6 +1522,11 @@
           }
         },
         "sameAs": "https://indiantrails.libnet.info/event/17081985",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Indian Trails Public Library",
+          "url": "https://indiantrails.libnet.info"
+        },
         "description": "Friday, November 06 2026 6:00pm - 7:00pm \n Want to practice speaking and understanding English and improve your confidence in everyday communication? Join our…"
       }
     },
@@ -1232,6 +1538,7 @@
         "name": "Chats & Food",
         "startDate": "2026-11-06T18:00:00-06:00",
         "url": "https://withintenmiles.com/wheeling-60090/#ev-chats-food-2026-11-06",
+        "eventStatus": "https://schema.org/EventScheduled",
         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
         "location": {
           "@type": "Place",
@@ -1245,6 +1552,11 @@
           }
         },
         "sameAs": "https://indiantrails.libnet.info/event/17178758",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Indian Trails Public Library",
+          "url": "https://indiantrails.libnet.info"
+        },
         "description": "Friday, November 06 2026 6:00pm - 7:30pm \n Spend time with your neighbors, enjoy traditional food, play games, and win prizes. Ven a compartir con tus…"
       }
     }
