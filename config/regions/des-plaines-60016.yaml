@@ -357,10 +357,16 @@ guides:
 # own page (`source_url`) or text already in this file; never inferred from a town and
 # never geocoded. An event matches a row by its source's `venue_name`, or by "at <Name>"
 # in the first sentence of its description (exact name). Add `postal_code` once the
-# agency's page states it. Venues still to fill from the probes in config/url_probes.yaml:
-# Pioneer Park (Arlington Heights Park District), the Des Plaines Theatre, Metropolis, the
-# Des Plaines and Palatine libraries, and the Napleton dealerships in Palatine.
+# agency's page states it.
 venues:
   - name: "Lake Park"
     street_address: "2200 Lee St."
     source_url: "https://desplainesfallfest.org/"
+  # Round-18 probe results (item 376), each from the agency's own page:
+  - name: "Des Plaines Public Library"
+    street_address: "1501 Ellinwood Street"
+    postal_code: "60016"
+    source_url: "https://www.dppl.org/"
+  - name: "Des Plaines Theatre"
+    street_address: "1476 Miner Street"
+    source_url: "https://desplainestheatre.com/plan-your-visit-des-plaines/"

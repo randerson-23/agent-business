@@ -36,39 +36,24 @@ probes:
     patterns:
       - 'f3b7799bed06aac4295ec9134d53b014'
 
-  # Round 18 (items 335 and 372): street addresses for venues, from each agency's own
-  # pages. patterns catch "123 N Main St"-style addresses; `follow` opens one contact page.
-  - url: https://www.ahpd.org/event/trunk-or-treat-2026/
-    item: 372
-    purpose: Arlington Heights Park District - the Trunk or Treat listing names Pioneer Park; does the page give its street address?
+  # Round 18 (items 335 and 372) answered and removed: the Des Plaines Theatre, Metropolis
+  # and the Des Plaines library now have `venues:` rows; the Palatine library's page lists
+  # only its two branches.
+
+  # Round 19 (item 376): Pioneer Park's own page and the Napleton Palatine dealerships.
+  - url: https://www.ahpd.org/parks/
+    item: 376
+    purpose: Arlington Heights Park District - park list; does Pioneer Park's page give its street address?
     patterns:
-      - '\b\d{2,5}\s+(?:[NSEW]\.?\s+)?[A-Z][A-Za-z]+(?:\s+[A-Z][A-Za-z]+)?\s+(?:Ave|Avenue|St|Street|Rd|Road|Blvd|Dr|Drive|Ln|Lane)\b'
       - 'Pioneer Park'
-    follow: 'contact|park-locations|parks'
-  - url: https://desplainestheatre.com/
-    item: 335
-    purpose: Des Plaines Theatre - street address
-    patterns:
       - '\b\d{2,5}\s+(?:[NSEW]\.?\s+)?[A-Z][A-Za-z]+(?:\s+[A-Z][A-Za-z]+)?\s+(?:Ave|Avenue|St|Street|Rd|Road|Blvd|Dr|Drive|Ln|Lane)\b'
-    follow: 'contact|visit|directions'
-  - url: https://www.metropolisarts.com/
-    item: 335
-    purpose: Metropolis Performing Arts Centre - street address
+    follow: 'pioneer'
+  - url: https://www.napleton.com/
+    item: 376
+    purpose: Napleton - the Palatine dealerships' own contact pages and street addresses
     patterns:
-      - '\b\d{2,5}\s+(?:[NSEW]\.?\s+)?[A-Z][A-Za-z]+(?:\s+[A-Z][A-Za-z]+)?\s+(?:Ave|Avenue|St|Street|Rd|Road|Blvd|Dr|Drive|Ln|Lane)\b'
-    follow: 'contact|visit|directions'
-  - url: https://www.palatinelibrary.org/
-    item: 335
-    purpose: Palatine Public Library District - street address
-    patterns:
-      - '\b\d{2,5}\s+(?:[NSEW]\.?\s+)?[A-Z][A-Za-z]+(?:\s+[A-Z][A-Za-z]+)?\s+(?:Ave|Avenue|St|Street|Rd|Road|Blvd|Dr|Drive|Ln|Lane)\b'
-    follow: 'contact|hours|locations'
-  - url: https://www.dppl.org/
-    item: 335
-    purpose: Des Plaines Public Library - street address
-    patterns:
-      - '\b\d{2,5}\s+(?:[NSEW]\.?\s+)?[A-Z][A-Za-z]+(?:\s+[A-Z][A-Za-z]+)?\s+(?:Ave|Avenue|St|Street|Rd|Road|Blvd|Dr|Drive|Ln|Lane)\b'
-    follow: 'contact|hours|locations'
+      - '\b\d{2,5}\s+(?:[NSEW]\.?\s+)?[A-Z][A-Za-z]+(?:\s+[A-Z][A-Za-z]+)?\s+(?:Ave|Avenue|St|Street|Rd|Road|Blvd|Dr|Drive|Ln|Lane|Highway|Hwy)\b'
+    follow: 'palatine'
 
   # Answered and removed (see ROADMAP.md items 212 and 215):
   # - The five 403 sources: bot walls (Access Denied / Cloudflare) from a runner too.

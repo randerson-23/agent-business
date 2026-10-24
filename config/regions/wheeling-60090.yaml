@@ -255,9 +255,7 @@ guides:
 # own page (`source_url`) or text already in this file; never inferred from a town and
 # never geocoded. An event matches a row by its source's `venue_name`, or by "at <Name>"
 # in the first sentence of its description (exact name). Add `postal_code` once the
-# agency's page states it. Venues still to fill from the probes in config/url_probes.yaml:
-# Pioneer Park (Arlington Heights Park District), the Des Plaines Theatre, Metropolis, the
-# Des Plaines and Palatine libraries, and the Napleton dealerships in Palatine.
+# agency's page states it.
 venues:
   - name: "Indian Trails Public Library"
     street_address: "355 Schoenbeck Rd."

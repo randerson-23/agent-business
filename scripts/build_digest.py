@@ -4086,25 +4086,7 @@ def render_event_page(entry: dict, *, expired: bool = False, more: list[dict] | 
     detail = truncate(strip_description_header(entry.get("detail")), 280)
     source_name = short_district(entry.get("source") or "") or "the organiser"
     tags = [tag_display(t)["label"] for t in (entry.get("tags") or [])]
-    origin = re.match(r"https?://[^/]+", entry["url"])
-    ld = {
-        "@context": "https://schema.org",
-        "@type": "Event",
-        "name": title,
-        "startDate": schema_start_date(entry["date_iso"]),
-        "url": page_url,
-        "sameAs": entry["url"],
-        "eventStatus": "https://schema.org/EventScheduled",
-        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "location": schema_location({"town": town, "state": state, "venue": venue, "street_address": entry.get("street_address"), "postal_code": entry.get("postal_code")}),
-        "organizer": {"@type": "Organization", "name": source_name, **({"url": origin.group(0)} if origin else {})},
-    }
-    if detail:
-        ld["description"] = detail
-    if "free" in (entry.get("tags") or []):
-        ld["isAccessibleForFree"] = True
-    if entry.get("sponsored_by"):
-        ld["sponsor"] = {"@type": "Organization", "name": entry["sponsored_by"]}
+    ld = {"@context": "https://schema.org", **event_jsonld({**entry, "detail": detail}, page_url)}
     return get_template_env().get_template("event.html.j2").render(
         page_title=page_title,
         description=f"{display_title(title)} on {short_when} in {town}. {detail}".strip()[:300],
@@ -4130,17 +4112,28 @@ def render_event_page(entry: dict, *, expired: bool = False, more: list[dict] | 
     )
 
 
+def load_event_page_registry() -> dict:
+    try:
+        stored = json.loads(EVENT_PAGES_PATH.read_text(encoding="utf-8"))
+        return stored if isinstance(stored, dict) else {}
+    except (OSError, ValueError):
+        return {}
+
+
+def prime_event_page_paths(now: datetime) -> None:
+    """Load which `/e/` pages are active before any listing is rendered, so
+    the region pages' markup can point an event at its own page (item 375)."""
+    global ACTIVE_EVENT_PAGE_PATHS
+    _, active, _, _ = update_event_pages(load_event_page_registry(), [], now.astimezone(LOCAL_TZ).date())
+    ACTIVE_EVENT_PAGE_PATHS = {e["path"] for e in active}
+
+
 def write_event_pages(sections: list[dict], tot_entries: list[dict], now: datetime, newsletter: dict | None, analytics: dict | None) -> list[dict]:
     """Select, store and write the `/e/` pages; returns the active (indexable,
     in-sitemap) ones. Expired pages are rewritten noindex; pages past the
     delete age are removed from disk and the registry."""
     today = now.astimezone(LOCAL_TZ).date()
-    try:
-        stored = json.loads(EVENT_PAGES_PATH.read_text(encoding="utf-8"))
-        registry = stored if isinstance(stored, dict) else {}
-    except (OSError, ValueError):
-        registry = {}
-    registry, active, expired, deleted = update_event_pages(registry, select_event_page_events(sections, tot_entries), today)
+    registry, active, expired, deleted = update_event_pages(load_event_page_registry(), select_event_page_events(sections, tot_entries), today)
     this_weekend = {s["region_url"]: s for s in sections}
     for group, is_expired in ((active, False), (expired, True)):
         for entry in group:
@@ -4489,20 +4482,35 @@ def build_feed_xml(
 EVENTS_JSON_DAYS = 14
 
 
-def _event_list_item(event: dict, page_url: str, position: int) -> dict:
-    """One schema.org ListItem wrapping an Event. `url` is the event's card
-    on this site (item 228's anchor), with the source in `sameAs`, and
-    `location` from schema_location() (item 238)."""
+# Paths of `/e/` pages that exist (ROADMAP.md items 369 and 375), loaded from the
+# stored registry at the start of a build, so a listing's markup can point at
+# the event's own page when it has one.
+ACTIVE_EVENT_PAGE_PATHS: set[str] = set()
+
+
+def event_jsonld(event: dict, url: str) -> dict:
+    """The one schema.org Event builder (ROADMAP.md item 375), used by the
+    region pages, events.json, /trick-or-treat/ and the /e/ pages so they
+    cannot disagree: `location` through schema_location() (the venue table,
+    items 335 and 372), `organizer`, `eventStatus`, `isAccessibleForFree`,
+    `sponsor` and no `offers` (no price is known; add `priceCurrency` with
+    any future `offers`). Only `url` differs per output."""
     entry = {
         "@type": "Event",
         "name": event["title"],
         "startDate": schema_start_date(event["date_iso"]),
-        "url": f"{page_url}#{event.get('anchor_id') or event_anchor_id(event)}",
+        "url": url,
+        "eventStatus": "https://schema.org/EventScheduled",
         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
         "location": schema_location(event),
     }
     if event.get("url"):
         entry["sameAs"] = event["url"]
+        origin = re.match(r"https?://[^/]+", event["url"])
+        organizer = {"@type": "Organization", "name": short_district(event.get("source") or "") or "the organiser"}
+        if origin:
+            organizer["url"] = origin.group(0)
+        entry["organizer"] = organizer
     if event.get("detail"):
         entry["description"] = event["detail"]
     if "free" in (event.get("tags") or []):
@@ -4511,7 +4519,16 @@ def _event_list_item(event: dict, page_url: str, position: int) -> dict:
         entry["sponsor"] = {"@type": "Organization", "name": event["sponsored_by"]}
     if event.get("registration_opens"):
         entry["registrationOpens"] = event["registration_opens"]  # extension key (item 327)
-    return {"@type": "ListItem", "position": position, "item": entry}
+    return entry
+
+
+def _event_list_item(event: dict, page_url: str, position: int) -> dict:
+    """One schema.org ListItem wrapping an Event. `url` is the event's own
+    `/e/` page when it has one (item 369), else its card on this site (item
+    228's anchor), with the source in `sameAs`."""
+    own_page = event_page_path(event) if event.get("date_iso") else None
+    url = SITE_BASE_URL + own_page if own_page in ACTIVE_EVENT_PAGE_PATHS else f"{page_url}#{event.get('anchor_id') or event_anchor_id(event)}"
+    return {"@type": "ListItem", "position": position, "item": event_jsonld(event, url)}
 
 
 def build_events_json(groups: list[tuple[str, str, list[dict]]], name: str, now: datetime) -> str:
@@ -6416,6 +6433,7 @@ def main() -> None:
     now = datetime.now(timezone.utc)
 
     OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
+    prime_event_page_paths(now)
     (OUTPUT_DIR / ".nojekyll").touch()
 
     source_health = load_source_health()

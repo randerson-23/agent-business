@@ -220,7 +220,7 @@ doesn't re-suggest something already shipped.
 
 **Build queue (by deadline; refreshed by the research loop, item 346).**
 Pick from the top unless the owner has flagged something else:
-0. **375, 376** (one Event-markup builder; the /e/ pages still lack street addresses). **373** (the /e/ page itself). **360** (/this-weekend/ picks and signup near the top). Then **351** (the sponsor page's proof box).
+0. **373** (the /e/ page itself). **360** (/this-weekend/ picks and signup near the top). Then **351** (the sponsor page's proof box).
 2. **323**: leaf pickup (in season now).
 3. **313, 314**: the sales mock-up and starter pack (before outreach).
 4. **328** (probe first), then **325** (by Nov 15), then the rest by
@@ -17819,7 +17819,7 @@ and **Small Business Saturday (Nov 28)**.
 
 #### P1 (new)
 
-375. **One Event-markup builder for every output.** Build loop: move
+375. ✅ **DONE (2026-10-24): `event_jsonld(event, url)` is the only Event builder; region-page markup, `events.json`, `/trick-or-treat/` and the `/e/` pages all use it, so `location` (the venue table), `organizer`, `eventStatus`, `isAccessibleForFree`, `sponsor` and the no-`offers` rule are identical, and only `url` differs; a listing's event points at its own `/e/` page when that page was active at the start of the build (`ACTIVE_EVENT_PAGE_PATHS`, primed from `data/event_pages.json`), so a page's first build still links the card and the next build switches it. Tests: identical `location` and `organizer` across three outputs for one fixture, and the url switch. The partisan filter (item 361) already runs first.** **One Event-markup builder for every output.** Build loop: move
      JSON-LD construction into a single `event_jsonld(event, url)`
      function used by the region pages, `events.json`, `/this-weekend/`
      and the `/e/` pages. It always applies the venue lookup (items 335
@@ -17831,7 +17831,7 @@ and **Small Business Saturday (Nov 28)**.
      `/e/` page carries *"125 S Emerson St"*. Item 361's partisan filter
      still applies first.
 
-376. **Fill the venues the probes confirmed, and retry Pioneer Park.**
+376. ✅ **DONE (2026-10-24, config): Des Plaines Public Library (1501 Ellinwood Street, 60016, the library's own home page), the Des Plaines Theatre (1476 Miner Street, its Plan Your Visit page) and Metropolis (111 W Campbell Street, its Visit page) added to `venues:` from the probe contexts; the answered round-18 probes removed; new round-19 probes for AHPD's park list (`/parks/`, following a Pioneer Park link) and Napleton (`napleton.com`, following a Palatine link; the dealerships' own pages were not in the repo). The Palatine library's page lists only its two branches (3600 Lexington Drive, 1585 Rand Road), not the main building the feed names, so no row was added. Pioneer Park and the Napleton dealerships wait on the round-19 results.** **Fill the venues the probes confirmed, and retry Pioneer Park.**
      Build loop, config only:
 
      - Add **Des Plaines Public Library, 1501 Ellinwood Street, 60016**
