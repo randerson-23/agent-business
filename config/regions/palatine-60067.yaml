@@ -350,7 +350,7 @@ guides:
         tags: []
 
 # ROADMAP.md items 335 and 372: street addresses for venues that host events (see the other
-# region files). None of Palatine's are in this repo from an agency's own page yet: the
-# Palatine library, Harper College and the Napleton dealerships are waiting on the probes in
-# config/url_probes.yaml.
+# region files). Not filled yet: the Napleton dealerships (probe in config/url_probes.yaml);
+# the Palatine library's own page lists only its two branches (3600 Lexington Drive and 1585
+# Rand Road), not the main building the feed's `venue_name` names, so no row is guessed.
 venues: []

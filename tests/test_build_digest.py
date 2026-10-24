@@ -6368,3 +6368,41 @@ def test_the_real_venue_tables_only_hold_addresses_with_a_source_page():
     for f in (Path(__file__).resolve().parent.parent / "config" / "regions").glob("*.yaml"):
         for row in _yaml.safe_load(f.read_text(encoding="utf-8")).get("venues") or []:
             assert row["name"] and row["street_address"] and str(row["source_url"]).startswith("https://"), (f.name, row)
+
+
+def test_every_event_markup_output_shares_one_builder_with_the_same_location_and_organizer():
+    # ROADMAP.md item 375.
+    event = {"title": "Storytime Playdate", "url": "https://mppl.org/events/1", "date_iso": "2026-10-23T10:00:00", "detail": "Songs and stories.", "tags": ["free"],
+             "venue": "Mount Prospect Public Library", "street_address": "125 S Emerson St", "town": "Mount Prospect", "state": "IL",
+             "source": "Mount Prospect Public Library — Events"}
+    now = datetime(2026, 10, 22, 15, tzinfo=timezone.utc)
+    region_page = json.loads(build_digest.build_events_json([("Mount Prospect", "https://x/mp/", [event])], "n", now))["itemListElement"][0]["item"]
+    tot = json.loads(build_digest.build_halloween_json_ld([{"region_url": "https://x/mp/", "events": [event]}]))["@graph"][0]
+    page_html = build_digest.render_event_page({**event, "path": "e/2026-10-23-storytime-playdate/", "region_url": "https://x/mp/"})
+    page = json.loads(page_html.split('application/ld+json">')[1].split("</script>")[0].replace("\\u003c", "<"))
+    outputs = [region_page, tot, page]
+    assert all(o["location"] == outputs[0]["location"] and o["organizer"] == outputs[0]["organizer"] for o in outputs)
+    assert outputs[0]["location"]["address"]["streetAddress"] == "125 S Emerson St" and outputs[0]["organizer"]["name"] == "Mount Prospect Public Library"
+    for o in outputs:
+        assert o["eventStatus"] == "https://schema.org/EventScheduled" and o["isAccessibleForFree"] is True and "offers" not in o
+    # Only the url differs: the card anchor on listings, the page itself on /e/.
+    assert "#ev-storytime-playdate-2026-10-23" in region_page["url"] and page["url"].endswith("/e/2026-10-23-storytime-playdate/")
+
+
+def test_a_listing_points_its_event_at_the_events_own_page_when_one_exists(monkeypatch):
+    event = {"title": "Fall Fest", "url": "https://x.org/e", "date_iso": "2026-10-24T10:00:00", "town": "T", "state": "IL", "source": "S — Events"}
+    path = build_digest.event_page_path(event)
+    monkeypatch.setattr(build_digest, "ACTIVE_EVENT_PAGE_PATHS", {path})
+    assert build_digest._event_list_item(event, "https://x/t/", 1)["item"]["url"] == build_digest.SITE_BASE_URL + path
+    monkeypatch.setattr(build_digest, "ACTIVE_EVENT_PAGE_PATHS", set())
+    assert build_digest._event_list_item(event, "https://x/t/", 1)["item"]["url"].startswith("https://x/t/#ev-fall-fest")
+
+
+def test_the_real_dppl_theatre_and_metropolis_venues_are_seeded_from_their_own_pages():
+    import yaml as _yaml
+    rows = {}
+    for f in (Path(__file__).resolve().parent.parent / "config" / "regions").glob("*.yaml"):
+        for row in _yaml.safe_load(f.read_text(encoding="utf-8")).get("venues") or []:
+            rows[row["name"]] = row
+    assert rows["Des Plaines Public Library"]["street_address"] == "1501 Ellinwood Street" and rows["Des Plaines Public Library"]["postal_code"] == "60016"
+    assert rows["Des Plaines Theatre"]["street_address"] == "1476 Miner Street" and rows["Metropolis Performing Arts Centre"]["street_address"] == "111 W Campbell Street"
