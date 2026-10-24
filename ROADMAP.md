@@ -220,7 +220,7 @@ doesn't re-suggest something already shipped.
 
 **Build queue (by deadline; refreshed by the research loop, item 346).**
 Pick from the top unless the owner has flagged something else:
-0. **335 + 372** (venue addresses; the new /e/ pages are ineligible for Google's event results without them). **373** (the /e/ page itself). **360** (/this-weekend/ picks and signup near the top). Then **351** (the sponsor page's proof box).
+0. **373** (the /e/ page itself). **360** (/this-weekend/ picks and signup near the top). Then **351** (the sponsor page's proof box).
 2. **323**: leaf pickup (in season now).
 3. **313, 314**: the sales mock-up and starter pack (before outreach).
 4. **328** (probe first), then **325** (by Nov 15), then the rest by
@@ -16711,7 +16711,7 @@ no-cost channel.
 
 #### P2 (new)
 
-335. **Real street addresses for the recurring venues, plus an
+335. 🟡 **PART DONE (2026-10-24): a `venues:` table per region (`load_venues`, name, `street_address`, optional `postal_code`, `source_url`; rows without a name or address are ignored), matched by the source's `venue_name` or by "at <Name>" in the first sentence of the description (item 372; exact name, case-insensitive, never fuzzy), carried on events as `street_address`/`postal_code`; a matched venue gives a full `PostalAddress` in the region-page JSON-LD, `events.json` and `/e/` pages, a `LOCATION` line in the calendar file, and the address in the Google Calendar link and the `/e/` page's venue line; an unmatched venue stays town-only. Seeded only with addresses already in this repo's configs from the agencies' own listings: Arlington Heights Memorial Library (500 N. Dunton Ave.), Mount Prospect Public Library (125 S Emerson St), Indian Trails Public Library (355 Schoenbeck Rd.) and Lake Park, Des Plaines (2200 Lee St.). STILL OPEN: Pioneer Park, the Des Plaines Theatre, Metropolis, the Des Plaines and Palatine libraries and the Napleton dealerships, which need the round-18 probes in `config/url_probes.yaml` (they run on merge) to return an address from each agency's own page, then a one-line `venues:` entry each; ZIP codes are left out until a page states them. `organizer` was already on every `/e/` page.** **Real street addresses for the recurring venues, plus an
      organizer, in the event data.** Build loop: a **`venues:`** table per
      region YAML (venue name, `streetAddress`, `postalCode`, the source
      URL of that address). Fill it **only from each agency's own
@@ -17740,7 +17740,7 @@ Saturday of outreach. Item 360 (picks and signup at the top of
 
 #### P1 (new)
 
-372. **Re-rank item 335 to the top, and extract venues from descriptions.**
+372. ✅ **DONE (2026-10-24, mechanism): the venue extraction and table described under item 335; tests: "at Pioneer Park" resolves to the table's row, an unknown "at Smith Park" and a mention after the first sentence stay town-only, and a matched venue yields a full `PostalAddress` on the `/e/` page. The Pioneer Park and Napleton rows wait on the probes (item 335).** **Re-rank item 335 to the top, and extract venues from descriptions.**
      Re-rank plus a small addition. Item 335 (a `venues:` table of street
      addresses, filled from each agency's own contact pages) moves to
      **level 0 of the build queue**: `/e/` pages are ineligible for

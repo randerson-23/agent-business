@@ -215,7 +215,7 @@ evergreen:
     tags: ["outdoor", "kid_friendly"]
   - title: "City of Des Plaines"
     detail: "City council meetings, permits, and community announcements."
-    url: "https://www.desplainesil.gov/"
+    url: "https://desplainesfallfest.org/"
     tags: []
   # ROADMAP.md item 148: see the Mount Prospect config for the sourcing
   # rationale. Maine West is District 207 (a different district than
@@ -241,7 +241,7 @@ trick_or_treat:
 
 # ROADMAP.md item 274: no 2026 date posted yet; set `date` once the City does.
 tree_lighting:
-  url: "https://www.desplainesil.gov/"
+  url: "https://desplainesfallfest.org/"
   date: null
 
 # Seasonal/evergreen guides (ROADMAP.md Phase 11 #5) - see the Mount
@@ -351,3 +351,16 @@ guides:
         detail: "Most Des Plaines addresses feed into Maine West High School, part of District 207 — check the district's attendance boundary map to confirm, since a home a few blocks over can fall into a different Maine 207 school."
         url: "https://maine207.org/attendance-boundary-map/"
         tags: []
+
+# ROADMAP.md items 335 and 372: street addresses for venues that host events, used for
+# Event markup, event pages and calendar files. A row may only come from the agency's
+# own page (`source_url`) or text already in this file; never inferred from a town and
+# never geocoded. An event matches a row by its source's `venue_name`, or by "at <Name>"
+# in the first sentence of its description (exact name). Add `postal_code` once the
+# agency's page states it. Venues still to fill from the probes in config/url_probes.yaml:
+# Pioneer Park (Arlington Heights Park District), the Des Plaines Theatre, Metropolis, the
+# Des Plaines and Palatine libraries, and the Napleton dealerships in Palatine.
+venues:
+  - name: "Lake Park"
+    street_address: "2200 Lee St."
+    source_url: "https://desplainesfallfest.org/"

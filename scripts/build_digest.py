@@ -447,6 +447,10 @@ def schema_location(event: dict, region: dict | None = None) -> dict:
         address["addressLocality"] = town
     if state:
         address["addressRegion"] = state
+    if event.get("street_address"):
+        address["streetAddress"] = event["street_address"]
+        if event.get("postal_code"):
+            address["postalCode"] = event["postal_code"]
     name = event.get("venue") or (f"{town}, {state}" if town and state else town) or SITE_NAME
     return {"@type": "Place", "name": name, "address": address}
 
@@ -527,6 +531,8 @@ def build_ics_data_uri(event: dict) -> str | None:
     ]
     if event.get("detail"):
         lines.append(f"DESCRIPTION:{_ics_escape(event['detail'])}")
+    if event.get("street_address"):  # item 335: only a matched venue, never a guessed place
+        lines.append(f"LOCATION:{_ics_escape(event_location_text(event))}")
     if event.get("url"):
         lines.append(f"URL:{_ics_sanitize_url(event['url'])}")
     lines += ["END:VEVENT", "END:VCALENDAR", ""]
@@ -1059,6 +1065,40 @@ def detect_zero_weekend_regions(history: dict, threshold: int = ZERO_WEEKEND_ALE
     )
 
 
+def load_venues(region_cfg: dict) -> dict[str, dict]:
+    """A region's `venues:` table (ROADMAP.md items 335 and 372), keyed by
+    lower-cased name. Each row has `name`, `street_address`, optional
+    `postal_code`, and `source_url` (the agency's own page the address came
+    from). Rows without a name or street address are ignored. Never inferred
+    from a town and never geocoded."""
+    table = {}
+    for row in region_cfg.get("venues") or []:
+        name, street = str(row.get("name") or "").strip(), str(row.get("street_address") or "").strip()
+        if name and street:
+            table[name.lower()] = {"name": name, "street_address": street, "postal_code": str(row.get("postal_code") or "").strip() or None}
+    return table
+
+
+def match_venue(venues: dict[str, dict], venue_name: str | None, detail: str | None) -> dict | None:
+    """The venue-table row for an event: the source's configured venue name
+    if it is in the table, else a table name found as "at <Name>" in the
+    first sentence of the description (exact name, case-insensitive, never
+    fuzzy)."""
+    if venue_name and venue_name.lower() in venues:
+        return venues[venue_name.lower()]
+    first = re.split(r"(?<=[.!?])\s", (detail or "").strip(), maxsplit=1)[0]
+    for key, row in venues.items():
+        if re.search(r"\bat\s+" + re.escape(row["name"]) + r"\b", first, re.IGNORECASE):
+            return row
+    return None
+
+
+def event_location_text(event: dict) -> str:
+    """"Pioneer Park, 1100 N Ridge Ave, Arlington Heights" for calendar files
+    and links: venue, street address (when the table has one) and town."""
+    return ", ".join(p for p in (event.get("venue"), event.get("street_address"), event.get("town")) if p)
+
+
 def fetch_region_sections(
     region_cfg: dict,
     health: dict | None = None,
@@ -1072,6 +1112,7 @@ def fetch_region_sections(
 ) -> list[dict]:
     region_id = region_cfg["region"]["id"]
     region_name = region_cfg["region"]["name"]
+    venues = load_venues(region_cfg)
     blocks = []
     for source in region_cfg.get("sources", []):
         if not source.get("enabled", True):
@@ -1177,8 +1218,11 @@ def fetch_region_sections(
                 "town": region_name,
                 "state": region_cfg["region"].get("state"),
             }
+            matched = match_venue(venues, event["venue"], item.get("detail"))
+            if matched:
+                event.update({"venue": matched["name"], "street_address": matched["street_address"], "postal_code": matched["postal_code"]})
             event["ics_href"] = build_ics_data_uri(event)
-            event["google_calendar_url"] = build_google_calendar_url(event, region_name)
+            event["google_calendar_url"] = build_google_calendar_url(event, event_location_text(event))
             # ROADMAP.md item 327: only from an explicit phrase in the source's own text.
             reg = parse_registration_opens(f"{item.get('title', '')}. {item.get('detail', '')}", _event_day(event))
             event["registration_opens"] = reg.isoformat() if reg else None
@@ -3955,7 +3999,7 @@ EVENT_PAGES_PATH = ROOT / "data" / "event_pages.json"
 EVENT_PAGE_CAP = 20
 EVENT_PAGE_NOINDEX_DAYS = 7
 EVENT_PAGE_DELETE_DAYS = 60
-_EVENT_PAGE_FIELDS = ("title", "date_iso", "detail", "venue", "town", "state", "source", "url", "tags", "region_id", "region_url", "sponsored_by", "ics_href")
+_EVENT_PAGE_FIELDS = ("title", "date_iso", "detail", "venue", "street_address", "postal_code", "town", "state", "source", "url", "tags", "region_id", "region_url", "sponsored_by", "ics_href")
 
 
 def event_page_path(event: dict) -> str:
@@ -4034,7 +4078,7 @@ def render_event_page(entry: dict, *, expired: bool = False, more: list[dict] | 
     when_label = day.strftime("%a %b ") + str(day.day) + (f", {time_label}" if time_label else "")
     town, state = entry.get("town") or "", entry.get("state") or ""
     venue = entry.get("venue")
-    where_label = ", ".join(p for p in (venue, town) if p)
+    where_label = ", ".join(p for p in (venue, entry.get("street_address"), town) if p)
     page_url = SITE_BASE_URL + entry["path"]
     title = entry["title"]
     short_when = day.strftime("%a %b ") + str(day.day)
@@ -4052,7 +4096,7 @@ def render_event_page(entry: dict, *, expired: bool = False, more: list[dict] | 
         "sameAs": entry["url"],
         "eventStatus": "https://schema.org/EventScheduled",
         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "location": schema_location({"town": town, "state": state, "venue": venue}),
+        "location": schema_location({"town": town, "state": state, "venue": venue, "street_address": entry.get("street_address"), "postal_code": entry.get("postal_code")}),
         "organizer": {"@type": "Organization", "name": source_name, **({"url": origin.group(0)} if origin else {})},
     }
     if detail:

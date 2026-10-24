@@ -348,3 +348,9 @@ guides:
         detail: "William Fremd High School is Palatine's own, one of five D211 high schools serving Hoffman Estates, Inverness, Palatine, Schaumburg, and parts of several other northwest suburbs — confirm by address rather than assuming, since D211 territory overlaps with towns like Arlington Heights that mostly belong to a different high school district."
         url: "https://adc.d211.org/"
         tags: []
+
+# ROADMAP.md items 335 and 372: street addresses for venues that host events (see the other
+# region files). None of Palatine's are in this repo from an agency's own page yet: the
+# Palatine library, Harper College and the Napleton dealerships are waiting on the probes in
+# config/url_probes.yaml.
+venues: []
