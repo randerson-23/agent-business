@@ -220,7 +220,7 @@ doesn't re-suggest something already shipped.
 
 **Build queue (by deadline; refreshed by the research loop, item 346).**
 Pick from the top unless the owner has flagged something else:
-0. **351** (the sponsor page's proof box).
+0. **380** (no weak picks; the email's Don't miss uses the same selection). **379** (/santa/, live by Nov 1). **351** (the sponsor page's proof box). **381** (one card for repeated sessions).
 2. **323**: leaf pickup (in season now).
 3. **313, 314**: the sales mock-up and starter pack (before outreach).
 4. **328** (probe first), then **325** (by Nov 15), then the rest by
@@ -17884,6 +17884,97 @@ site), **past Veterans Day ceremonies** in Des Plaines and Palatine, and
 **today's venue-probe answers**. The design/UX angle is **the Event
 markup itself, compared across the four outputs**: the new single-event
 pages are the ones still missing a street address.
+
+
+#### Research pass 2026-10-24, evening (hundred-and-first pass)
+
+A productive day for the build loop: item 360 (`/this-weekend/` now opens
+with picks, a season link and a compact signup, and drops from 148 KB to
+**80 KB**), item 373 (event pages with full descriptions, three nearby
+links, a date chip and the town colour), and items 375 and 376 (one
+Event-markup builder, probe-confirmed venues). The trick-or-treat watch
+saw no change on any village page. The build queue is nearly empty, so
+per the working agreement this pass goes deeper. It plans the
+**December search season** (Santa) and reads the rebuilt weekend page
+once more. It also gives the holiday pitch one current, citable number.
+
+| Angle | What it is / what we found | Why it matters here |
+|---|---|---|
+| **"Breakfast with Santa" as a search** (mykidlist's *"Eat with Santa"* roundup; Gurnee, Forest Park and Highland Park park districts; a Daily Herald roundup) | Chicago-area family sites keep a dedicated **"Eat with Santa"** roundup page, which shows the demand. Park districts run ticketed **Breakfast with Santa** mornings in early December (Gurnee: **Sat Dec 5, 2026**, registration required for ages 2+), and listings warn **"register early, it is sure to fill up"**. No 2026 listing turned up yet for Mount Prospect, Arlington Heights or Palatine | This is December's trick-or-treat: dated, local, searched every year, sold out early, and answered by stale roundups. The site already selects Santa events into `/<region>/holiday/` by keyword (item 283), but nothing targets the query across towns, and nothing warns about registration dates the way item 327 now can (item 379) |
+| **Small-business holiday outlook** (Intuit QuickBooks survey, published **Oct 19 2026**: 1,002 small-business owners, 6,000 US adults) | Shoppers plan about **$278 billion** of holiday spending, with **43% aimed at small businesses** (up from 41% in 2025 and 36% in 2024). **76% of owners** expect a better season than last year. **67%** had started preparing by September | One current, neutral number for the holiday-listing pitch (items 258, 352, and §13a/§13b's Small Business Saturday note). Local owners are optimistic and preparing, which is the moment to ask for $20 (item 382) |
+| **The rebuilt `/this-weekend/` on a phone (design/UX)** | Much better: a season link, **"This weekend's picks"** with date chips and town colours, then the signup, all on the first two screens. Two weak spots remain. **(1)** The one-pick-per-town rule fills slots with **"CPR Class"** (Wheeling) and **"Play Packs"** (a pick-up kit) when a town has nothing strong. **(2)** In the full list, Arlington Heights opens with **"The Music Man Sr." twice** (Sat 5 PM and Sun 2 PM) as two full cards with identical text | (1) A pick is a promise. A weak one teaches readers to skip the picks, and the email's "Don't miss" uses the same selection. (2) Repeated sessions are common (shows, storytime series, markets), and each repeat is a full screen of noise on a phone (items 380, 381) |
+
+#### P1 (new)
+
+379. **A cross-town "Santa near you" page, live Nov 1 – Dec 24.** Build
+     loop:
+
+     - **`/santa/`**: every Santa event across the five towns in the
+       window, using the existing keyword selection (breakfast or lunch
+       with Santa, Santa visit, photos with Santa, Santa parade, Santa's
+       mailbox, Santa run), grouped by date, with town chips.
+     - Each card carries **item 327's sign-up badge** when the
+       description states when registration opens. Never infer *"sold
+       out"*; show it only when the source says so.
+     - **Title**, using item 310's pattern: *"Breakfast with Santa & Santa
+       Visits 2026: Arlington Heights, Des Plaines, Mount Prospect,
+       Palatine, Wheeling"*.
+     - Every Santa event qualifies for an **`/e/` page** (item 369's
+       seasonal allowance, still within the 20-a-week cap).
+     - Link it from the homepage holiday banner (item 285) and the
+       town `/holiday/` pages. Publish it **Nov 1** so it is crawled
+       before the December searches. An empty early state reads *"Park
+       districts usually post Santa events in early November; they
+       appear here as soon as they do."*
+
+     Tests: the date window, keyword selection, the sign-up badge, and
+     the empty state. Off-season, the page follows item 366's pattern:
+     indexed, retitled for next year, with a reminder signup tagged
+     `remind:santa-2027`.
+
+380. **A quality floor for picks: no pick is better than a weak one.**
+     Build loop, the pick selection shared by `/this-weekend/` and the
+     email's "Don't miss":
+
+     - A town's pick must reach a **minimum family score** from
+       `config/relevance.yaml` (item 268), for example ≥ 1 with no
+       adult-keyword penalty.
+     - Classes and services never qualify: CPR, ESL, tax, Medicare,
+       resume, AARP, and pick-up kits (*"Play Packs"*, *"Take & Make"*).
+     - When a town has no qualifying pick, **skip it** and give the slot
+       to the strongest event elsewhere, instead of forcing one per town.
+
+     Tests: *"CPR Class"* never becomes a pick, a town with only weak
+     events contributes none, and the pick count stays at most six.
+
+#### P2 (new)
+
+381. **One card for repeated sessions in the same window.** Build loop,
+     card rendering on `/this-weekend/`, region pages and the email
+     town sections: events with the **same normalised title and venue**
+     inside the window merge into one card. It lists every session (*"Sat
+     5:00 PM · Sun 2:00 PM"*), shows the description once, and keeps each
+     session's own calendar link in a small row. JSON-LD and `events.json`
+     keep **one `Event` per session**, unchanged, since that is what
+     Google wants. Tests: two Music Man Sr. sessions render as one card
+     with two times and two calendar links, and the markup still has two
+     Events.
+
+#### P3 (new)
+
+382. **Give the holiday pitch one current number.** Build loop, copy
+     only. In `OUTREACH_TEMPLATES.md` §13a and §13b and the `/sponsor/`
+     holiday tier (item 352), add one sentence with its source: *"Shoppers
+     plan to send 43% of their holiday budget to small businesses this
+     year, up from 36% two years ago (Intuit QuickBooks survey, October
+     2026)."* No claim about the site's own reach.
+
+Competitors reviewed this pass: **mykidlist's "Eat with Santa" roundup**
+and park-district **Breakfast with Santa** listings (dated, ticketed,
+early to sell out), and **Intuit QuickBooks' Oct 2026 holiday survey**
+(43% of planned spending aimed at small businesses). The design/UX angle
+is **the rebuilt `/this-weekend/` on a phone**: weak forced picks and
+repeated sessions.
 
 
 ## Working agreements for autonomous iteration
