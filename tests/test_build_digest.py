@@ -6329,3 +6329,42 @@ def test_a_javascript_url_in_a_feed_item_never_reaches_a_card_link(monkeypatch):
     cfg = {"region": {"id": "r", "name": "R", "state": "IL"}, "sources": [{"name": "S", "type": "stub", "url": "https://x/", "section": "Events", "enabled": True}]}
     events = build_digest.fetch_region_sections(cfg)[0]["events"]
     assert {e["title"]: e["url"] for e in events} == {"Evil": "", "Good": "https://ok.example/e"}
+
+
+def test_venue_table_resolves_named_and_described_venues_and_emits_a_full_address():
+    # ROADMAP.md items 335 and 372.
+    venues = build_digest.load_venues({"venues": [
+        {"name": "Pioneer Park", "street_address": "1 Example Ave", "postal_code": "60004", "source_url": "https://agency.example/"},
+        {"name": "Nameless", "street_address": ""},  # no address: ignored
+        {"street_address": "2 No Name St"},  # no name: ignored
+    ]})
+    assert list(venues) == ["pioneer park"]
+    row = build_digest.match_venue(venues, None, "Join us for Trunk or Treat at Pioneer Park from 10AM-12:30PM! Bring a bag.")
+    assert row["street_address"] == "1 Example Ave" and row["postal_code"] == "60004"
+    assert build_digest.match_venue(venues, None, "Join us at Smith Park for fun.") is None  # unknown stays town-only
+    assert build_digest.match_venue(venues, None, "Fun all day. Parking is at Pioneer Park.") is None  # only the first sentence counts
+    assert build_digest.match_venue(venues, "Pioneer Park", "") is row or build_digest.match_venue(venues, "Pioneer Park", "")["name"] == "Pioneer Park"
+    event = {"title": "Trunk or Treat", "town": "Arlington Heights", "state": "IL", "venue": "Pioneer Park", "street_address": "1 Example Ave", "postal_code": "60004", "date_iso": "2026-10-24T10:00:00"}
+    place = build_digest.schema_location(event)
+    assert place["address"]["streetAddress"] == "1 Example Ave" and place["address"]["postalCode"] == "60004" and place["address"]["addressLocality"] == "Arlington Heights"
+    unmatched = build_digest.schema_location({"town": "Palatine", "state": "IL", "venue": None})
+    assert "streetAddress" not in unmatched["address"] and unmatched["name"] == "Palatine, IL"
+    ics = build_digest.build_ics_data_uri(event)
+    assert "LOCATION%3APioneer%20Park%5C%2C%201%20Example%20Ave%5C%2C%20Arlington%20Heights" in ics
+    assert "LOCATION" not in build_digest.build_ics_data_uri({k: v for k, v in event.items() if k != "street_address"})
+
+
+def test_an_event_page_with_a_matched_venue_has_the_address_in_its_line_title_and_markup():
+    entry = {"path": "e/2026-10-24-trunk-or-treat/", "title": "Trunk or Treat", "date_iso": "2026-10-24T10:00:00", "detail": "d", "venue": "Pioneer Park",
+             "street_address": "1 Example Ave", "postal_code": "60004", "town": "Arlington Heights", "state": "IL", "source": "Arlington Heights Park District — Events",
+             "url": "https://agency.example/e", "tags": [], "region_url": "https://x/ah/"}
+    page = build_digest.render_event_page(entry)
+    assert "<title>Trunk or Treat, Sat Oct 24, Pioneer Park, Arlington Heights | Within Ten</title>" in page
+    assert "Pioneer Park, 1 Example Ave, Arlington Heights" in page and '"streetAddress": "1 Example Ave"' in page and '"postalCode": "60004"' in page
+
+
+def test_the_real_venue_tables_only_hold_addresses_with_a_source_page():
+    import yaml as _yaml
+    for f in (Path(__file__).resolve().parent.parent / "config" / "regions").glob("*.yaml"):
+        for row in _yaml.safe_load(f.read_text(encoding="utf-8")).get("venues") or []:
+            assert row["name"] and row["street_address"] and str(row["source_url"]).startswith("https://"), (f.name, row)
