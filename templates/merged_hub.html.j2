@@ -252,6 +252,20 @@
   }
 </style>
 {{ signup_css() }}
+<style>
+  #newsletter-signup-top { margin: 14px 0 20px; padding: 12px 16px; }
+  .season-line { display: block; margin: 0 0 14px; padding: 10px 14px; border: 2px solid var(--ink); font-weight: 800; color: var(--ink); text-decoration: none; }
+  .season-line:hover { background: var(--card); }
+  .picks h2 { margin: 6px 0 4px; }
+  .pick { display: flex; gap: 14px; padding: 10px 0; border-bottom: 1px solid var(--border); }
+  .pick-chip { width: 50px; flex: none; text-align: center; font-weight: 800; }
+  .pick-chip .dow { color: #fff; font-size: 11px; letter-spacing: 1px; padding: 3px 0; }
+  .pick-chip .day { background: var(--card); font-size: 20px; line-height: 24px; padding: 3px 0 4px; }
+  .pick-title { font-size: 17px; font-weight: 800; color: var(--ink); text-decoration: none; }
+  .pick-title:hover { text-decoration: underline; }
+  .pick-meta { font-size: 13.5px; color: var(--muted); }
+  .cal-note { font-size: 13px; color: var(--muted); margin: 0 0 12px; }
+</style>
 </head>
 <body>
 {# header, not div (ROADMAP.md Phase 11 #62, found by a real axe-core
@@ -274,6 +288,25 @@
 
 <div class="wrap">
   <main{% if build_scope_end_iso %} data-build-scope-end-iso="{{ build_scope_end_iso }}" data-stale-empty-message="{{ stale_empty_message }}" data-empty-follow-url="{{ empty_follow_url }}" data-empty-follow-label="{{ empty_follow_label }}"{% endif %}>
+  {% if slug == "this-weekend" %}
+  {% if season_banner %}<a class="season-line" href="{{ season_banner.url }}">{{ season_banner.emoji }} {{ season_banner.text }} &rarr;</a>{% endif %}
+  {% if picks %}
+  <section class="picks" aria-labelledby="picks-h">
+    <h2 id="picks-h">This weekend's picks</h2>
+    {% for pick in picks %}
+    <div class="pick">
+      <div class="pick-chip" aria-hidden="true"><div class="dow" style="background:{{ pick.pick_color }}">{{ pick.email_dow or "WKND" }}</div><div class="day">{{ pick.email_daynum or pick.email_emoji }}</div></div>
+      <div>
+        <span aria-hidden="true">{{ pick.email_emoji }}</span> <a class="pick-title" href="{{ pick.url }}">{{ pick.title }}</a>
+        <div class="pick-meta"><strong>{{ pick.pick_town }}</strong>{% if pick.email_clock %} &middot; {{ pick.email_clock }}{% endif %}{% if pick.email_where %} &middot; {{ pick.email_where }}{% endif %}</div>
+      </div>
+    </div>
+    {% endfor %}
+  </section>
+  {% endif %}
+  {{ signup_form(newsletter, "newsletter-signup-top", "bd-email-top", "town:all", slug ~ "-top", "Get this list every Thursday.") }}
+  <p class="cal-note">&ldquo;Add to calendar&rdquo; saves a file that Apple, Google and Outlook calendars all open.</p>
+  {% endif %}
   {% if celebrations %}
   {% for c in celebrations %}
   <section class="block celebrations" id="celebrations">
@@ -312,7 +345,6 @@
         {% if item.ics_href %}
         <div class="cal-row">
           <a href="{{ item.ics_href }}" download="event.ics">📅 Add to calendar</a>
-          <a href="{{ item.google_calendar_url }}" target="_blank" rel="noopener">Google Calendar</a>
         </div>
         {% endif %}
       </article>

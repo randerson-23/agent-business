@@ -60,7 +60,8 @@ def test_each_landing_page_has_exactly_one_inline_form():
         "free": hub_page("free", "Free things to do, every Thursday."),
     }
     for name, html in pages.items():
-        assert html.count("embed-subscribe") == 1, name
+        # item 360: /this-weekend/ also has a compact form near the top.
+        assert html.count("embed-subscribe") == (2 if name == "this-weekend" else 1), name
         assert html.count('id="newsletter-signup"') == 1, name
         assert html.count('id="bd-email"') == 1, name
         assert_one_runtime(html)
@@ -238,3 +239,18 @@ def test_both_emails_link_the_preferred_source_once_after_the_forward_line():
     assert single.count(f'href="{url}"') == 1
     combined = build_digest.render_combined_email_digest([], "Oct 10-11", NOW, NEWSLETTER)
     assert combined.count(f'href="{url}"') == 1
+
+
+def test_this_weekend_leads_with_picks_and_a_compact_signup_and_one_calendar_link_per_card():
+    # ROADMAP.md item 360.
+    sections = [{"region_name": "Mount Prospect", "region_url": "https://x/mp/", "events": [dict(event(1), ics_href="data:text/calendar,x", google_calendar_url="https://calendar.google.com/x")]}]
+    picks = [{"title": "Pick One", "url": "https://src/p", "pick_town": "Mount Prospect", "pick_color": "#0f766e", "email_dow": "SAT", "email_daynum": "10", "email_emoji": "🎃", "email_clock": "10:00 AM", "email_where": None}]
+    html = build_digest.render_merged_hub_page(
+        sections, NOW, None, slug="this-weekend", heading="H", subheading="s", meta_description="m", empty_message="none",
+        newsletter=NEWSLETTER, signup_headline="Get this list every Thursday.", picks=picks,
+        season_banner={"emoji": "🎃", "text": "Trick-or-treat hours by town", "url": "https://x/trick-or-treat/"},
+    )
+    body = html.split("<main", 1)[1]
+    assert body.index("Trick-or-treat hours by town") < body.index("This weekend's picks") < body.index('id="newsletter-signup-top"') < body.index("<h2>Mount Prospect")
+    assert html.count("Add to calendar</a>") == 1 and "calendar.google.com" not in html.split("<main", 1)[1]
+    assert "This weekend's picks" not in hub_page("today", "x")
