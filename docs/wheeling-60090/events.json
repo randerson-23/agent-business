@@ -2,8 +2,8 @@
   "@context": "https://schema.org",
   "@type": "ItemList",
   "name": "Upcoming events in Wheeling — Within Ten",
-  "dateModified": "2026-10-24T02:46:49+00:00",
-  "numberOfItems": 48,
+  "dateModified": "2026-10-24T06:02:36+00:00",
+  "numberOfItems": 52,
   "itemListElement": [
     {
       "@type": "ListItem",
@@ -21,7 +21,8 @@
             "@type": "PostalAddress",
             "addressCountry": "US",
             "addressLocality": "Wheeling",
-            "addressRegion": "IL"
+            "addressRegion": "IL",
+            "streetAddress": "355 Schoenbeck Rd."
           }
         },
         "sameAs": "https://indiantrails.libnet.info/event/17417143",
@@ -44,7 +45,8 @@
             "@type": "PostalAddress",
             "addressCountry": "US",
             "addressLocality": "Wheeling",
-            "addressRegion": "IL"
+            "addressRegion": "IL",
+            "streetAddress": "355 Schoenbeck Rd."
           }
         },
         "sameAs": "https://indiantrails.libnet.info/event/16723998",
@@ -67,7 +69,8 @@
             "@type": "PostalAddress",
             "addressCountry": "US",
             "addressLocality": "Wheeling",
-            "addressRegion": "IL"
+            "addressRegion": "IL",
+            "streetAddress": "355 Schoenbeck Rd."
           }
         },
         "sameAs": "https://indiantrails.libnet.info/event/16583729",
@@ -90,7 +93,8 @@
             "@type": "PostalAddress",
             "addressCountry": "US",
             "addressLocality": "Wheeling",
-            "addressRegion": "IL"
+            "addressRegion": "IL",
+            "streetAddress": "355 Schoenbeck Rd."
           }
         },
         "sameAs": "https://indiantrails.libnet.info/event/17110486",
@@ -113,7 +117,8 @@
             "@type": "PostalAddress",
             "addressCountry": "US",
             "addressLocality": "Wheeling",
-            "addressRegion": "IL"
+            "addressRegion": "IL",
+            "streetAddress": "355 Schoenbeck Rd."
           }
         },
         "sameAs": "https://indiantrails.libnet.info/event/16652929",
@@ -136,7 +141,8 @@
             "@type": "PostalAddress",
             "addressCountry": "US",
             "addressLocality": "Wheeling",
-            "addressRegion": "IL"
+            "addressRegion": "IL",
+            "streetAddress": "355 Schoenbeck Rd."
           }
         },
         "sameAs": "https://indiantrails.libnet.info/event/16550239",
@@ -159,7 +165,8 @@
             "@type": "PostalAddress",
             "addressCountry": "US",
             "addressLocality": "Wheeling",
-            "addressRegion": "IL"
+            "addressRegion": "IL",
+            "streetAddress": "355 Schoenbeck Rd."
           }
         },
         "sameAs": "https://indiantrails.libnet.info/event/14170840",
@@ -182,7 +189,8 @@
             "@type": "PostalAddress",
             "addressCountry": "US",
             "addressLocality": "Wheeling",
-            "addressRegion": "IL"
+            "addressRegion": "IL",
+            "streetAddress": "355 Schoenbeck Rd."
           }
         },
         "sameAs": "https://indiantrails.libnet.info/event/16652843",
@@ -205,7 +213,8 @@
             "@type": "PostalAddress",
             "addressCountry": "US",
             "addressLocality": "Wheeling",
-            "addressRegion": "IL"
+            "addressRegion": "IL",
+            "streetAddress": "355 Schoenbeck Rd."
           }
         },
         "sameAs": "https://indiantrails.libnet.info/event/16568749",
@@ -228,7 +237,8 @@
             "@type": "PostalAddress",
             "addressCountry": "US",
             "addressLocality": "Wheeling",
-            "addressRegion": "IL"
+            "addressRegion": "IL",
+            "streetAddress": "355 Schoenbeck Rd."
           }
         },
         "sameAs": "https://indiantrails.libnet.info/event/11861202",
@@ -251,7 +261,8 @@
             "@type": "PostalAddress",
             "addressCountry": "US",
             "addressLocality": "Wheeling",
-            "addressRegion": "IL"
+            "addressRegion": "IL",
+            "streetAddress": "355 Schoenbeck Rd."
           }
         },
         "sameAs": "https://indiantrails.libnet.info/event/16649351",
@@ -274,7 +285,8 @@
             "@type": "PostalAddress",
             "addressCountry": "US",
             "addressLocality": "Wheeling",
-            "addressRegion": "IL"
+            "addressRegion": "IL",
+            "streetAddress": "355 Schoenbeck Rd."
           }
         },
         "sameAs": "https://indiantrails.libnet.info/event/16505533",
@@ -297,7 +309,8 @@
             "@type": "PostalAddress",
             "addressCountry": "US",
             "addressLocality": "Wheeling",
-            "addressRegion": "IL"
+            "addressRegion": "IL",
+            "streetAddress": "355 Schoenbeck Rd."
           }
         },
         "sameAs": "https://indiantrails.libnet.info/event/16652854",
@@ -343,7 +356,8 @@
             "@type": "PostalAddress",
             "addressCountry": "US",
             "addressLocality": "Wheeling",
-            "addressRegion": "IL"
+            "addressRegion": "IL",
+            "streetAddress": "355 Schoenbeck Rd."
           }
         },
         "sameAs": "https://indiantrails.libnet.info/event/16858048",
@@ -366,7 +380,8 @@
             "@type": "PostalAddress",
             "addressCountry": "US",
             "addressLocality": "Wheeling",
-            "addressRegion": "IL"
+            "addressRegion": "IL",
+            "streetAddress": "355 Schoenbeck Rd."
           }
         },
         "sameAs": "https://indiantrails.libnet.info/event/16941159",
@@ -389,7 +404,8 @@
             "@type": "PostalAddress",
             "addressCountry": "US",
             "addressLocality": "Wheeling",
-            "addressRegion": "IL"
+            "addressRegion": "IL",
+            "streetAddress": "355 Schoenbeck Rd."
           }
         },
         "sameAs": "https://indiantrails.libnet.info/event/16708864",
@@ -412,7 +428,8 @@
             "@type": "PostalAddress",
             "addressCountry": "US",
             "addressLocality": "Wheeling",
-            "addressRegion": "IL"
+            "addressRegion": "IL",
+            "streetAddress": "355 Schoenbeck Rd."
           }
         },
         "sameAs": "https://indiantrails.libnet.info/event/16624800",
@@ -435,7 +452,8 @@
             "@type": "PostalAddress",
             "addressCountry": "US",
             "addressLocality": "Wheeling",
-            "addressRegion": "IL"
+            "addressRegion": "IL",
+            "streetAddress": "355 Schoenbeck Rd."
           }
         },
         "sameAs": "https://indiantrails.libnet.info/event/16952017",
@@ -458,7 +476,8 @@
             "@type": "PostalAddress",
             "addressCountry": "US",
             "addressLocality": "Wheeling",
-            "addressRegion": "IL"
+            "addressRegion": "IL",
+            "streetAddress": "355 Schoenbeck Rd."
           }
         },
         "sameAs": "https://indiantrails.libnet.info/event/16709302",
@@ -481,7 +500,8 @@
             "@type": "PostalAddress",
             "addressCountry": "US",
             "addressLocality": "Wheeling",
-            "addressRegion": "IL"
+            "addressRegion": "IL",
+            "streetAddress": "355 Schoenbeck Rd."
           }
         },
         "sameAs": "https://indiantrails.libnet.info/event/16606801",
@@ -504,7 +524,8 @@
             "@type": "PostalAddress",
             "addressCountry": "US",
             "addressLocality": "Wheeling",
-            "addressRegion": "IL"
+            "addressRegion": "IL",
+            "streetAddress": "355 Schoenbeck Rd."
           }
         },
         "sameAs": "https://indiantrails.libnet.info/event/16663064",
@@ -550,7 +571,8 @@
             "@type": "PostalAddress",
             "addressCountry": "US",
             "addressLocality": "Wheeling",
-            "addressRegion": "IL"
+            "addressRegion": "IL",
+            "streetAddress": "355 Schoenbeck Rd."
           }
         },
         "sameAs": "https://indiantrails.libnet.info/event/17178977",
@@ -573,7 +595,8 @@
             "@type": "PostalAddress",
             "addressCountry": "US",
             "addressLocality": "Wheeling",
-            "addressRegion": "IL"
+            "addressRegion": "IL",
+            "streetAddress": "355 Schoenbeck Rd."
           }
         },
         "sameAs": "https://indiantrails.libnet.info/event/17139043",
@@ -596,7 +619,8 @@
             "@type": "PostalAddress",
             "addressCountry": "US",
             "addressLocality": "Wheeling",
-            "addressRegion": "IL"
+            "addressRegion": "IL",
+            "streetAddress": "355 Schoenbeck Rd."
           }
         },
         "sameAs": "https://indiantrails.libnet.info/event/17043790",
@@ -619,7 +643,8 @@
             "@type": "PostalAddress",
             "addressCountry": "US",
             "addressLocality": "Wheeling",
-            "addressRegion": "IL"
+            "addressRegion": "IL",
+            "streetAddress": "355 Schoenbeck Rd."
           }
         },
         "sameAs": "https://indiantrails.libnet.info/event/15964922",
@@ -642,7 +667,8 @@
             "@type": "PostalAddress",
             "addressCountry": "US",
             "addressLocality": "Wheeling",
-            "addressRegion": "IL"
+            "addressRegion": "IL",
+            "streetAddress": "355 Schoenbeck Rd."
           }
         },
         "sameAs": "https://indiantrails.libnet.info/event/17138854",
@@ -665,7 +691,8 @@
             "@type": "PostalAddress",
             "addressCountry": "US",
             "addressLocality": "Wheeling",
-            "addressRegion": "IL"
+            "addressRegion": "IL",
+            "streetAddress": "355 Schoenbeck Rd."
           }
         },
         "sameAs": "https://indiantrails.libnet.info/event/17044874",
@@ -711,7 +738,8 @@
             "@type": "PostalAddress",
             "addressCountry": "US",
             "addressLocality": "Wheeling",
-            "addressRegion": "IL"
+            "addressRegion": "IL",
+            "streetAddress": "355 Schoenbeck Rd."
           }
         },
         "sameAs": "https://indiantrails.libnet.info/event/17104212",
@@ -734,7 +762,8 @@
             "@type": "PostalAddress",
             "addressCountry": "US",
             "addressLocality": "Wheeling",
-            "addressRegion": "IL"
+            "addressRegion": "IL",
+            "streetAddress": "355 Schoenbeck Rd."
           }
         },
         "sameAs": "https://indiantrails.libnet.info/event/16808529",
@@ -757,7 +786,8 @@
             "@type": "PostalAddress",
             "addressCountry": "US",
             "addressLocality": "Wheeling",
-            "addressRegion": "IL"
+            "addressRegion": "IL",
+            "streetAddress": "355 Schoenbeck Rd."
           }
         },
         "sameAs": "https://indiantrails.libnet.info/event/15836584",
@@ -780,7 +810,8 @@
             "@type": "PostalAddress",
             "addressCountry": "US",
             "addressLocality": "Wheeling",
-            "addressRegion": "IL"
+            "addressRegion": "IL",
+            "streetAddress": "355 Schoenbeck Rd."
           }
         },
         "sameAs": "https://indiantrails.libnet.info/event/11861203",
@@ -803,7 +834,8 @@
             "@type": "PostalAddress",
             "addressCountry": "US",
             "addressLocality": "Wheeling",
-            "addressRegion": "IL"
+            "addressRegion": "IL",
+            "streetAddress": "355 Schoenbeck Rd."
           }
         },
         "sameAs": "https://indiantrails.libnet.info/event/17127794",
@@ -826,7 +858,8 @@
             "@type": "PostalAddress",
             "addressCountry": "US",
             "addressLocality": "Wheeling",
-            "addressRegion": "IL"
+            "addressRegion": "IL",
+            "streetAddress": "355 Schoenbeck Rd."
           }
         },
         "sameAs": "https://indiantrails.libnet.info/event/16826727",
@@ -849,7 +882,8 @@
             "@type": "PostalAddress",
             "addressCountry": "US",
             "addressLocality": "Wheeling",
-            "addressRegion": "IL"
+            "addressRegion": "IL",
+            "streetAddress": "355 Schoenbeck Rd."
           }
         },
         "sameAs": "https://indiantrails.libnet.info/event/17100994",
@@ -895,7 +929,8 @@
             "@type": "PostalAddress",
             "addressCountry": "US",
             "addressLocality": "Wheeling",
-            "addressRegion": "IL"
+            "addressRegion": "IL",
+            "streetAddress": "355 Schoenbeck Rd."
           }
         },
         "sameAs": "https://indiantrails.libnet.info/event/17116353",
@@ -918,7 +953,8 @@
             "@type": "PostalAddress",
             "addressCountry": "US",
             "addressLocality": "Wheeling",
-            "addressRegion": "IL"
+            "addressRegion": "IL",
+            "streetAddress": "355 Schoenbeck Rd."
           }
         },
         "sameAs": "https://indiantrails.libnet.info/event/17723328",
@@ -941,7 +977,8 @@
             "@type": "PostalAddress",
             "addressCountry": "US",
             "addressLocality": "Wheeling",
-            "addressRegion": "IL"
+            "addressRegion": "IL",
+            "streetAddress": "355 Schoenbeck Rd."
           }
         },
         "sameAs": "https://indiantrails.libnet.info/event/16326973",
@@ -964,7 +1001,8 @@
             "@type": "PostalAddress",
             "addressCountry": "US",
             "addressLocality": "Wheeling",
-            "addressRegion": "IL"
+            "addressRegion": "IL",
+            "streetAddress": "355 Schoenbeck Rd."
           }
         },
         "sameAs": "https://indiantrails.libnet.info/event/17180349",
@@ -987,7 +1025,8 @@
             "@type": "PostalAddress",
             "addressCountry": "US",
             "addressLocality": "Wheeling",
-            "addressRegion": "IL"
+            "addressRegion": "IL",
+            "streetAddress": "355 Schoenbeck Rd."
           }
         },
         "sameAs": "https://indiantrails.libnet.info/event/17386764",
@@ -1010,7 +1049,8 @@
             "@type": "PostalAddress",
             "addressCountry": "US",
             "addressLocality": "Wheeling",
-            "addressRegion": "IL"
+            "addressRegion": "IL",
+            "streetAddress": "355 Schoenbeck Rd."
           }
         },
         "sameAs": "https://indiantrails.libnet.info/event/16866235",
@@ -1033,7 +1073,8 @@
             "@type": "PostalAddress",
             "addressCountry": "US",
             "addressLocality": "Wheeling",
-            "addressRegion": "IL"
+            "addressRegion": "IL",
+            "streetAddress": "355 Schoenbeck Rd."
           }
         },
         "sameAs": "https://indiantrails.libnet.info/event/17044103",
@@ -1056,7 +1097,8 @@
             "@type": "PostalAddress",
             "addressCountry": "US",
             "addressLocality": "Wheeling",
-            "addressRegion": "IL"
+            "addressRegion": "IL",
+            "streetAddress": "355 Schoenbeck Rd."
           }
         },
         "sameAs": "https://indiantrails.libnet.info/event/16927181",
@@ -1102,11 +1144,108 @@
             "@type": "PostalAddress",
             "addressCountry": "US",
             "addressLocality": "Wheeling",
-            "addressRegion": "IL"
+            "addressRegion": "IL",
+            "streetAddress": "355 Schoenbeck Rd."
           }
         },
         "sameAs": "https://indiantrails.libnet.info/event/16987781",
         "description": "Thursday, November 05 2026 7:00pm - 8:00pm \n Turn everyday glass into glowing works of art. Combine vibrant colors and Mod Podge to craft your very own…"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 49,
+      "item": {
+        "@type": "Event",
+        "name": "Babytime!",
+        "startDate": "2026-11-06T09:30:00-06:00",
+        "url": "https://withintenmiles.com/wheeling-60090/#ev-babytime-2026-11-06",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Indian Trails Public Library",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Wheeling",
+            "addressRegion": "IL",
+            "streetAddress": "355 Schoenbeck Rd."
+          }
+        },
+        "sameAs": "https://indiantrails.libnet.info/event/16930467",
+        "description": "Friday, November 06 2026 9:30am - 10:00am \n Stories, songs and fingerplays. TR"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 50,
+      "item": {
+        "@type": "Event",
+        "name": "Wonderful Walkers",
+        "startDate": "2026-11-06T10:30:00-06:00",
+        "url": "https://withintenmiles.com/wheeling-60090/#ev-wonderful-walkers-2026-11-06",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Indian Trails Public Library",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Wheeling",
+            "addressRegion": "IL",
+            "streetAddress": "355 Schoenbeck Rd."
+          }
+        },
+        "sameAs": "https://indiantrails.libnet.info/event/16930601",
+        "description": "Friday, November 06 2026 10:30am - 11:00am \n Stories, songs, fingerplays and movement activities. TR"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 51,
+      "item": {
+        "@type": "Event",
+        "name": "ESL Tea & Talk",
+        "startDate": "2026-11-06T18:00:00-06:00",
+        "url": "https://withintenmiles.com/wheeling-60090/#ev-esl-tea-talk-2026-11-06",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Indian Trails Public Library",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Wheeling",
+            "addressRegion": "IL",
+            "streetAddress": "355 Schoenbeck Rd."
+          }
+        },
+        "sameAs": "https://indiantrails.libnet.info/event/17081985",
+        "description": "Friday, November 06 2026 6:00pm - 7:00pm \n Want to practice speaking and understanding English and improve your confidence in everyday communication? Join our…"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 52,
+      "item": {
+        "@type": "Event",
+        "name": "Chats & Food",
+        "startDate": "2026-11-06T18:00:00-06:00",
+        "url": "https://withintenmiles.com/wheeling-60090/#ev-chats-food-2026-11-06",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Indian Trails Public Library",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Wheeling",
+            "addressRegion": "IL",
+            "streetAddress": "355 Schoenbeck Rd."
+          }
+        },
+        "sameAs": "https://indiantrails.libnet.info/event/17178758",
+        "description": "Friday, November 06 2026 6:00pm - 7:30pm \n Spend time with your neighbors, enjoy traditional food, play games, and win prizes. Ven a compartir con tus…"
       }
     }
   ]

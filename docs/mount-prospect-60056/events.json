@@ -2,35 +2,12 @@
   "@context": "https://schema.org",
   "@type": "ItemList",
   "name": "Upcoming events in Mount Prospect — Within Ten",
-  "dateModified": "2026-10-24T02:46:49+00:00",
+  "dateModified": "2026-10-24T06:02:36+00:00",
   "numberOfItems": 54,
   "itemListElement": [
     {
       "@type": "ListItem",
       "position": 1,
-      "item": {
-        "@type": "Event",
-        "name": "Mount Prospect Update - October 23, 2026",
-        "startDate": "2026-10-23",
-        "url": "https://withintenmiles.com/mount-prospect-60056/#ev-mount-prospect-update-october-23-2026-2026-10-23",
-        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "location": {
-          "@type": "Place",
-          "name": "Mount Prospect, IL",
-          "address": {
-            "@type": "PostalAddress",
-            "addressCountry": "US",
-            "addressLocality": "Mount Prospect",
-            "addressRegion": "IL"
-          }
-        },
-        "sameAs": "https://www.mountprospect.org/articles/Mount-Prospect-Update-October-23-2026-179.php",
-        "description": "Plenty of Fall activities in Mount Prospect. Catch the latest edition of the Mount Prospect Update and find out what is happening in your town."
-      }
-    },
-    {
-      "@type": "ListItem",
-      "position": 2,
       "item": {
         "@type": "Event",
         "name": "Mount Prospect Farmers Market",
@@ -53,7 +30,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 3,
+      "position": 2,
       "item": {
         "@type": "Event",
         "name": "The Shakespeare Project of Chicago: Macbeth",
@@ -67,7 +44,8 @@
             "@type": "PostalAddress",
             "addressCountry": "US",
             "addressLocality": "Mount Prospect",
-            "addressRegion": "IL"
+            "addressRegion": "IL",
+            "streetAddress": "125 S Emerson St"
           }
         },
         "sameAs": "https://mppl.libnet.info/event/16138104",
@@ -76,7 +54,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 4,
+      "position": 3,
       "item": {
         "@type": "Event",
         "name": "World Language Storytime: Japanese",
@@ -90,7 +68,8 @@
             "@type": "PostalAddress",
             "addressCountry": "US",
             "addressLocality": "Mount Prospect",
-            "addressRegion": "IL"
+            "addressRegion": "IL",
+            "streetAddress": "125 S Emerson St"
           }
         },
         "sameAs": "https://mppl.libnet.info/event/16706890",
@@ -99,7 +78,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 5,
+      "position": 4,
       "item": {
         "@type": "Event",
         "name": "Drop-In Tech Help",
@@ -113,7 +92,8 @@
             "@type": "PostalAddress",
             "addressCountry": "US",
             "addressLocality": "Mount Prospect",
-            "addressRegion": "IL"
+            "addressRegion": "IL",
+            "streetAddress": "125 S Emerson St"
           }
         },
         "sameAs": "https://mppl.libnet.info/event/14756318",
@@ -122,7 +102,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 6,
+      "position": 5,
       "item": {
         "@type": "Event",
         "name": "Hooked on Books!",
@@ -136,7 +116,8 @@
             "@type": "PostalAddress",
             "addressCountry": "US",
             "addressLocality": "Mount Prospect",
-            "addressRegion": "IL"
+            "addressRegion": "IL",
+            "streetAddress": "125 S Emerson St"
           }
         },
         "sameAs": "https://mppl.libnet.info/event/16641009",
@@ -146,7 +127,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 7,
+      "position": 6,
       "item": {
         "@type": "Event",
         "name": "A Club for Kids Who Like Books",
@@ -160,7 +141,8 @@
             "@type": "PostalAddress",
             "addressCountry": "US",
             "addressLocality": "Mount Prospect",
-            "addressRegion": "IL"
+            "addressRegion": "IL",
+            "streetAddress": "125 S Emerson St"
           }
         },
         "sameAs": "https://mppl.libnet.info/event/16641020",
@@ -170,7 +152,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 8,
+      "position": 7,
       "item": {
         "@type": "Event",
         "name": "How to Prepare for the Rising Cost of College",
@@ -184,7 +166,8 @@
             "@type": "PostalAddress",
             "addressCountry": "US",
             "addressLocality": "Mount Prospect",
-            "addressRegion": "IL"
+            "addressRegion": "IL",
+            "streetAddress": "125 S Emerson St"
           }
         },
         "sameAs": "https://mppl.libnet.info/event/16376313",
@@ -193,7 +176,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 9,
+      "position": 8,
       "item": {
         "@type": "Event",
         "name": "Playgroup for Language Development",
@@ -207,7 +190,8 @@
             "@type": "PostalAddress",
             "addressCountry": "US",
             "addressLocality": "Mount Prospect",
-            "addressRegion": "IL"
+            "addressRegion": "IL",
+            "streetAddress": "125 S Emerson St"
           }
         },
         "sameAs": "https://mppl.libnet.info/event/16524917",
@@ -216,7 +200,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 10,
+      "position": 9,
       "item": {
         "@type": "Event",
         "name": "Movies at MPPL: The Martian",
@@ -230,7 +214,8 @@
             "@type": "PostalAddress",
             "addressCountry": "US",
             "addressLocality": "Mount Prospect",
-            "addressRegion": "IL"
+            "addressRegion": "IL",
+            "streetAddress": "125 S Emerson St"
           }
         },
         "sameAs": "https://mppl.libnet.info/event/16899837",
@@ -239,7 +224,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 11,
+      "position": 10,
       "item": {
         "@type": "Event",
         "name": "Play and Learn",
@@ -253,7 +238,8 @@
             "@type": "PostalAddress",
             "addressCountry": "US",
             "addressLocality": "Mount Prospect",
-            "addressRegion": "IL"
+            "addressRegion": "IL",
+            "streetAddress": "125 S Emerson St"
           }
         },
         "sameAs": "https://mppl.libnet.info/event/16749803",
@@ -262,7 +248,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 12,
+      "position": 11,
       "item": {
         "@type": "Event",
         "name": "Teen Manga Hangout",
@@ -276,7 +262,8 @@
             "@type": "PostalAddress",
             "addressCountry": "US",
             "addressLocality": "Mount Prospect",
-            "addressRegion": "IL"
+            "addressRegion": "IL",
+            "streetAddress": "125 S Emerson St"
           }
         },
         "sameAs": "https://mppl.libnet.info/event/16533457",
@@ -285,7 +272,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 13,
+      "position": 12,
       "item": {
         "@type": "Event",
         "name": "Native Seed Collection Day",
@@ -308,7 +295,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 14,
+      "position": 13,
       "item": {
         "@type": "Event",
         "name": "Dungeons & Dragons",
@@ -322,7 +309,8 @@
             "@type": "PostalAddress",
             "addressCountry": "US",
             "addressLocality": "Mount Prospect",
-            "addressRegion": "IL"
+            "addressRegion": "IL",
+            "streetAddress": "125 S Emerson St"
           }
         },
         "sameAs": "https://mppl.libnet.info/event/16641036",
@@ -331,7 +319,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 15,
+      "position": 14,
       "item": {
         "@type": "Event",
         "name": "Inglés para Hispanohablantes",
@@ -345,7 +333,8 @@
             "@type": "PostalAddress",
             "addressCountry": "US",
             "addressLocality": "Mount Prospect",
-            "addressRegion": "IL"
+            "addressRegion": "IL",
+            "streetAddress": "125 S Emerson St"
           }
         },
         "sameAs": "https://mppl.libnet.info/event/17476744",
@@ -354,7 +343,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 16,
+      "position": 15,
       "item": {
         "@type": "Event",
         "name": "Mount Prospect Downtown Merchants Trick-or-Treat",
@@ -368,7 +357,8 @@
             "@type": "PostalAddress",
             "addressCountry": "US",
             "addressLocality": "Mount Prospect",
-            "addressRegion": "IL"
+            "addressRegion": "IL",
+            "streetAddress": "125 S Emerson St"
           }
         },
         "sameAs": "https://mppl.libnet.info/event/16553873",
@@ -377,7 +367,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 17,
+      "position": 16,
       "item": {
         "@type": "Event",
         "name": "Minecraft Engineers",
@@ -391,7 +381,8 @@
             "@type": "PostalAddress",
             "addressCountry": "US",
             "addressLocality": "Mount Prospect",
-            "addressRegion": "IL"
+            "addressRegion": "IL",
+            "streetAddress": "125 S Emerson St"
           }
         },
         "sameAs": "https://mppl.libnet.info/event/16394676",
@@ -400,7 +391,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 18,
+      "position": 17,
       "item": {
         "@type": "Event",
         "name": "Lawyers at the Library: Your Legal Help Desk",
@@ -414,7 +405,8 @@
             "@type": "PostalAddress",
             "addressCountry": "US",
             "addressLocality": "Mount Prospect",
-            "addressRegion": "IL"
+            "addressRegion": "IL",
+            "streetAddress": "125 S Emerson St"
           }
         },
         "sameAs": "https://mppl.libnet.info/event/16565155",
@@ -424,7 +416,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 19,
+      "position": 18,
       "item": {
         "@type": "Event",
         "name": "Gardening Can Be Murder",
@@ -438,7 +430,8 @@
             "@type": "PostalAddress",
             "addressCountry": "US",
             "addressLocality": "Mount Prospect",
-            "addressRegion": "IL"
+            "addressRegion": "IL",
+            "streetAddress": "125 S Emerson St"
           }
         },
         "sameAs": "https://mppl.libnet.info/event/16727732",
@@ -447,7 +440,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 20,
+      "position": 19,
       "item": {
         "@type": "Event",
         "name": "Halloween Storytime",
@@ -461,7 +454,8 @@
             "@type": "PostalAddress",
             "addressCountry": "US",
             "addressLocality": "Mount Prospect",
-            "addressRegion": "IL"
+            "addressRegion": "IL",
+            "streetAddress": "125 S Emerson St"
           }
         },
         "sameAs": "https://mppl.libnet.info/event/16553734",
@@ -470,7 +464,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 21,
+      "position": 20,
       "item": {
         "@type": "Event",
         "name": "Tech Playground",
@@ -484,7 +478,8 @@
             "@type": "PostalAddress",
             "addressCountry": "US",
             "addressLocality": "Mount Prospect",
-            "addressRegion": "IL"
+            "addressRegion": "IL",
+            "streetAddress": "125 S Emerson St"
           }
         },
         "sameAs": "https://mppl.libnet.info/event/16391957",
@@ -493,7 +488,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 22,
+      "position": 21,
       "item": {
         "@type": "Event",
         "name": "Sailing Bright Eternity",
@@ -507,7 +502,8 @@
             "@type": "PostalAddress",
             "addressCountry": "US",
             "addressLocality": "Mount Prospect",
-            "addressRegion": "IL"
+            "addressRegion": "IL",
+            "streetAddress": "125 S Emerson St"
           }
         },
         "sameAs": "https://mppl.libnet.info/event/16949245",
@@ -516,7 +512,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 23,
+      "position": 22,
       "item": {
         "@type": "Event",
         "name": "Calavera Creations",
@@ -530,7 +526,8 @@
             "@type": "PostalAddress",
             "addressCountry": "US",
             "addressLocality": "Mount Prospect",
-            "addressRegion": "IL"
+            "addressRegion": "IL",
+            "streetAddress": "125 S Emerson St"
           }
         },
         "sameAs": "https://mppl.libnet.info/event/16749799",
@@ -539,7 +536,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 24,
+      "position": 23,
       "item": {
         "@type": "Event",
         "name": "Digitizing VHS Tapes",
@@ -553,7 +550,8 @@
             "@type": "PostalAddress",
             "addressCountry": "US",
             "addressLocality": "Mount Prospect",
-            "addressRegion": "IL"
+            "addressRegion": "IL",
+            "streetAddress": "125 S Emerson St"
           }
         },
         "sameAs": "https://mppl.libnet.info/event/17466686",
@@ -562,7 +560,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 25,
+      "position": 24,
       "item": {
         "@type": "Event",
         "name": "Adult BookFix: Complicated Relationships",
@@ -576,7 +574,8 @@
             "@type": "PostalAddress",
             "addressCountry": "US",
             "addressLocality": "Mount Prospect",
-            "addressRegion": "IL"
+            "addressRegion": "IL",
+            "streetAddress": "125 S Emerson St"
           }
         },
         "sameAs": "https://mppl.libnet.info/event/17206113",
@@ -585,7 +584,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 26,
+      "position": 25,
       "item": {
         "@type": "Event",
         "name": "Crafts-to-Go Kits",
@@ -599,7 +598,8 @@
             "@type": "PostalAddress",
             "addressCountry": "US",
             "addressLocality": "Mount Prospect",
-            "addressRegion": "IL"
+            "addressRegion": "IL",
+            "streetAddress": "125 S Emerson St"
           }
         },
         "sameAs": "https://mppl.libnet.info/event/14829755",
@@ -608,7 +608,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 27,
+      "position": 26,
       "item": {
         "@type": "Event",
         "name": "Family Reading Night Kits",
@@ -622,7 +622,8 @@
             "@type": "PostalAddress",
             "addressCountry": "US",
             "addressLocality": "Mount Prospect",
-            "addressRegion": "IL"
+            "addressRegion": "IL",
+            "streetAddress": "125 S Emerson St"
           }
         },
         "sameAs": "https://mppl.libnet.info/event/16903311",
@@ -631,7 +632,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 28,
+      "position": 27,
       "item": {
         "@type": "Event",
         "name": "Student Non-Attendance / Conferences",
@@ -652,7 +653,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 29,
+      "position": 28,
       "item": {
         "@type": "Event",
         "name": "AARP Driver Safety Course",
@@ -666,7 +667,8 @@
             "@type": "PostalAddress",
             "addressCountry": "US",
             "addressLocality": "Mount Prospect",
-            "addressRegion": "IL"
+            "addressRegion": "IL",
+            "streetAddress": "125 S Emerson St"
           }
         },
         "sameAs": "https://mppl.libnet.info/event/16617231",
@@ -675,7 +677,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 30,
+      "position": 29,
       "item": {
         "@type": "Event",
         "name": "Family Storytime",
@@ -689,7 +691,8 @@
             "@type": "PostalAddress",
             "addressCountry": "US",
             "addressLocality": "Mount Prospect",
-            "addressRegion": "IL"
+            "addressRegion": "IL",
+            "streetAddress": "125 S Emerson St"
           }
         },
         "sameAs": "https://mppl.libnet.info/event/16637669",
@@ -698,7 +701,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 31,
+      "position": 30,
       "item": {
         "@type": "Event",
         "name": "Toddler Storytime",
@@ -712,7 +715,8 @@
             "@type": "PostalAddress",
             "addressCountry": "US",
             "addressLocality": "Mount Prospect",
-            "addressRegion": "IL"
+            "addressRegion": "IL",
+            "streetAddress": "125 S Emerson St"
           }
         },
         "sameAs": "https://mppl.libnet.info/event/16637797",
@@ -721,7 +725,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 32,
+      "position": 31,
       "item": {
         "@type": "Event",
         "name": "Night Off? Game On!",
@@ -735,7 +739,8 @@
             "@type": "PostalAddress",
             "addressCountry": "US",
             "addressLocality": "Mount Prospect",
-            "addressRegion": "IL"
+            "addressRegion": "IL",
+            "streetAddress": "125 S Emerson St"
           }
         },
         "sameAs": "https://mppl.libnet.info/event/16506789",
@@ -744,7 +749,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 33,
+      "position": 32,
       "item": {
         "@type": "Event",
         "name": "Student and Staff Non-Attendance/Election Day",
@@ -765,7 +770,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 34,
+      "position": 33,
       "item": {
         "@type": "Event",
         "name": "AARP Driver Safety Course",
@@ -779,7 +784,8 @@
             "@type": "PostalAddress",
             "addressCountry": "US",
             "addressLocality": "Mount Prospect",
-            "addressRegion": "IL"
+            "addressRegion": "IL",
+            "streetAddress": "125 S Emerson St"
           }
         },
         "sameAs": "https://mppl.libnet.info/event/16617232",
@@ -788,7 +794,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 35,
+      "position": 34,
       "item": {
         "@type": "Event",
         "name": "Cardboard Construction Workshop",
@@ -802,7 +808,8 @@
             "@type": "PostalAddress",
             "addressCountry": "US",
             "addressLocality": "Mount Prospect",
-            "addressRegion": "IL"
+            "addressRegion": "IL",
+            "streetAddress": "125 S Emerson St"
           }
         },
         "sameAs": "https://mppl.libnet.info/event/16288687",
@@ -811,7 +818,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 36,
+      "position": 35,
       "item": {
         "@type": "Event",
         "name": "Baby Storytime",
@@ -825,7 +832,8 @@
             "@type": "PostalAddress",
             "addressCountry": "US",
             "addressLocality": "Mount Prospect",
-            "addressRegion": "IL"
+            "addressRegion": "IL",
+            "streetAddress": "125 S Emerson St"
           }
         },
         "sameAs": "https://mppl.libnet.info/event/16637815",
@@ -834,7 +842,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 37,
+      "position": 36,
       "item": {
         "@type": "Event",
         "name": "Family Storytime",
@@ -848,7 +856,8 @@
             "@type": "PostalAddress",
             "addressCountry": "US",
             "addressLocality": "Mount Prospect",
-            "addressRegion": "IL"
+            "addressRegion": "IL",
+            "streetAddress": "125 S Emerson St"
           }
         },
         "sameAs": "https://mppl.libnet.info/event/16637827",
@@ -857,7 +866,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 38,
+      "position": 37,
       "item": {
         "@type": "Event",
         "name": "Play and Learn",
@@ -871,7 +880,8 @@
             "@type": "PostalAddress",
             "addressCountry": "US",
             "addressLocality": "Mount Prospect",
-            "addressRegion": "IL"
+            "addressRegion": "IL",
+            "streetAddress": "125 S Emerson St"
           }
         },
         "sameAs": "https://mppl.libnet.info/event/16882806",
@@ -880,7 +890,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 39,
+      "position": 38,
       "item": {
         "@type": "Event",
         "name": "Reclaiming Your Inner Wisdom",
@@ -894,7 +904,8 @@
             "@type": "PostalAddress",
             "addressCountry": "US",
             "addressLocality": "Mount Prospect",
-            "addressRegion": "IL"
+            "addressRegion": "IL",
+            "streetAddress": "125 S Emerson St"
           }
         },
         "sameAs": "https://mppl.libnet.info/event/17353131",
@@ -903,7 +914,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 40,
+      "position": 39,
       "item": {
         "@type": "Event",
         "name": "Big Kids Storytime",
@@ -917,7 +928,8 @@
             "@type": "PostalAddress",
             "addressCountry": "US",
             "addressLocality": "Mount Prospect",
-            "addressRegion": "IL"
+            "addressRegion": "IL",
+            "streetAddress": "125 S Emerson St"
           }
         },
         "sameAs": "https://mppl.libnet.info/event/16637850",
@@ -926,7 +938,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 41,
+      "position": 40,
       "item": {
         "@type": "Event",
         "name": "Community Blood Drive",
@@ -940,7 +952,8 @@
             "@type": "PostalAddress",
             "addressCountry": "US",
             "addressLocality": "Mount Prospect",
-            "addressRegion": "IL"
+            "addressRegion": "IL",
+            "streetAddress": "125 S Emerson St"
           }
         },
         "sameAs": "https://mppl.libnet.info/event/17173106",
@@ -949,7 +962,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 42,
+      "position": 41,
       "item": {
         "@type": "Event",
         "name": "Toddler Storytime",
@@ -963,7 +976,8 @@
             "@type": "PostalAddress",
             "addressCountry": "US",
             "addressLocality": "Mount Prospect",
-            "addressRegion": "IL"
+            "addressRegion": "IL",
+            "streetAddress": "125 S Emerson St"
           }
         },
         "sameAs": "https://mppl.libnet.info/event/16637882",
@@ -972,7 +986,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 43,
+      "position": 42,
       "item": {
         "@type": "Event",
         "name": "Drop-In Tech Help",
@@ -986,7 +1000,8 @@
             "@type": "PostalAddress",
             "addressCountry": "US",
             "addressLocality": "Mount Prospect",
-            "addressRegion": "IL"
+            "addressRegion": "IL",
+            "streetAddress": "125 S Emerson St"
           }
         },
         "sameAs": "https://mppl.libnet.info/event/14756351",
@@ -995,7 +1010,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 44,
+      "position": 43,
       "item": {
         "@type": "Event",
         "name": "Wednesday Morning Book Group",
@@ -1009,7 +1024,8 @@
             "@type": "PostalAddress",
             "addressCountry": "US",
             "addressLocality": "Mount Prospect",
-            "addressRegion": "IL"
+            "addressRegion": "IL",
+            "streetAddress": "125 S Emerson St"
           }
         },
         "sameAs": "https://mppl.libnet.info/event/14047744",
@@ -1018,7 +1034,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 45,
+      "position": 44,
       "item": {
         "@type": "Event",
         "name": "Make and Meet With Karla Arenas Valenti",
@@ -1032,7 +1048,8 @@
             "@type": "PostalAddress",
             "addressCountry": "US",
             "addressLocality": "Mount Prospect",
-            "addressRegion": "IL"
+            "addressRegion": "IL",
+            "streetAddress": "125 S Emerson St"
           }
         },
         "sameAs": "https://mppl.libnet.info/event/16131511",
@@ -1041,7 +1058,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 46,
+      "position": 45,
       "item": {
         "@type": "Event",
         "name": "Baby Storytime",
@@ -1055,7 +1072,8 @@
             "@type": "PostalAddress",
             "addressCountry": "US",
             "addressLocality": "Mount Prospect",
-            "addressRegion": "IL"
+            "addressRegion": "IL",
+            "streetAddress": "125 S Emerson St"
           }
         },
         "sameAs": "https://mppl.libnet.info/event/16637937",
@@ -1064,7 +1082,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 47,
+      "position": 46,
       "item": {
         "@type": "Event",
         "name": "Family Storytime",
@@ -1078,7 +1096,8 @@
             "@type": "PostalAddress",
             "addressCountry": "US",
             "addressLocality": "Mount Prospect",
-            "addressRegion": "IL"
+            "addressRegion": "IL",
+            "streetAddress": "125 S Emerson St"
           }
         },
         "sameAs": "https://mppl.libnet.info/event/16637956",
@@ -1087,7 +1106,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 48,
+      "position": 47,
       "item": {
         "@type": "Event",
         "name": "Elected Officials Office Hours",
@@ -1101,7 +1120,8 @@
             "@type": "PostalAddress",
             "addressCountry": "US",
             "addressLocality": "Mount Prospect",
-            "addressRegion": "IL"
+            "addressRegion": "IL",
+            "streetAddress": "125 S Emerson St"
           }
         },
         "sameAs": "https://mppl.libnet.info/event/15852957",
@@ -1110,7 +1130,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 49,
+      "position": 48,
       "item": {
         "@type": "Event",
         "name": "Paper Circuits Workshop",
@@ -1124,7 +1144,8 @@
             "@type": "PostalAddress",
             "addressCountry": "US",
             "addressLocality": "Mount Prospect",
-            "addressRegion": "IL"
+            "addressRegion": "IL",
+            "streetAddress": "125 S Emerson St"
           }
         },
         "sameAs": "https://mppl.libnet.info/event/16392033",
@@ -1133,7 +1154,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 50,
+      "position": 49,
       "item": {
         "@type": "Event",
         "name": "Career Coaching Appointment",
@@ -1147,7 +1168,8 @@
             "@type": "PostalAddress",
             "addressCountry": "US",
             "addressLocality": "Mount Prospect",
-            "addressRegion": "IL"
+            "addressRegion": "IL",
+            "streetAddress": "125 S Emerson St"
           }
         },
         "sameAs": "https://mppl.libnet.info/event/16519348",
@@ -1156,7 +1178,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 51,
+      "position": 50,
       "item": {
         "@type": "Event",
         "name": "3D Printing Orientation",
@@ -1170,7 +1192,8 @@
             "@type": "PostalAddress",
             "addressCountry": "US",
             "addressLocality": "Mount Prospect",
-            "addressRegion": "IL"
+            "addressRegion": "IL",
+            "streetAddress": "125 S Emerson St"
           }
         },
         "sameAs": "https://mppl.libnet.info/event/17496540",
@@ -1179,7 +1202,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 52,
+      "position": 51,
       "item": {
         "@type": "Event",
         "name": "Drop-In Crochet and Knit Group",
@@ -1193,7 +1216,8 @@
             "@type": "PostalAddress",
             "addressCountry": "US",
             "addressLocality": "Mount Prospect",
-            "addressRegion": "IL"
+            "addressRegion": "IL",
+            "streetAddress": "125 S Emerson St"
           }
         },
         "sameAs": "https://mppl.libnet.info/event/14039639",
@@ -1202,7 +1226,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 53,
+      "position": 52,
       "item": {
         "@type": "Event",
         "name": "Books and Brews",
@@ -1216,7 +1240,8 @@
             "@type": "PostalAddress",
             "addressCountry": "US",
             "addressLocality": "Mount Prospect",
-            "addressRegion": "IL"
+            "addressRegion": "IL",
+            "streetAddress": "125 S Emerson St"
           }
         },
         "sameAs": "https://mppl.libnet.info/event/16908509",
@@ -1225,7 +1250,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 54,
+      "position": 53,
       "item": {
         "@type": "Event",
         "name": "Winterscaping",
@@ -1239,11 +1264,36 @@
             "@type": "PostalAddress",
             "addressCountry": "US",
             "addressLocality": "Mount Prospect",
-            "addressRegion": "IL"
+            "addressRegion": "IL",
+            "streetAddress": "125 S Emerson St"
           }
         },
         "sameAs": "https://mppl.libnet.info/event/16807186",
         "description": "Thursday, November 05 2026 7:00pm - 8:00pm \n Get inspired to create a winter garden with Horticulturist Heather Prince."
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 54,
+      "item": {
+        "@type": "Event",
+        "name": "Library Closed for Staff Training",
+        "startDate": "2026-11-06",
+        "url": "https://withintenmiles.com/mount-prospect-60056/#ev-library-closed-for-staff-training-2026-11-06",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Mount Prospect Public Library",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Mount Prospect",
+            "addressRegion": "IL",
+            "streetAddress": "125 S Emerson St"
+          }
+        },
+        "sameAs": "https://mppl.libnet.info/event/14609683",
+        "description": "Friday, November 06 2026 12:00am - 11:59pm \n Visit mppl.org to access library resources and digital materials anytime."
       }
     }
   ]

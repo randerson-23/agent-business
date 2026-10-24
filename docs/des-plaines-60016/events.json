@@ -2,8 +2,8 @@
   "@context": "https://schema.org",
   "@type": "ItemList",
   "name": "Upcoming events in Des Plaines — Within Ten",
-  "dateModified": "2026-10-24T02:46:49+00:00",
-  "numberOfItems": 78,
+  "dateModified": "2026-10-24T06:02:36+00:00",
+  "numberOfItems": 82,
   "itemListElement": [
     {
       "@type": "ListItem",
@@ -1800,6 +1800,99 @@
         },
         "sameAs": "https://desplainestheatre.com/event/bourbon-n-brass-speakeasy-blues-show-with-brandye-phillips-5/",
         "description": "Join us in our intimate Bourbon ‘N Brass Speakeasy, located on the 2nd floor of the Des Plaines Theatre, for an evening of Blues with Brandye Phillips! Food…"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 79,
+      "item": {
+        "@type": "Event",
+        "name": "Baby Book Time",
+        "startDate": "2026-11-06T10:00:00-06:00",
+        "url": "https://withintenmiles.com/des-plaines-60016/#ev-baby-book-time-2026-11-06",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Des Plaines Public Library",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Des Plaines",
+            "addressRegion": "IL"
+          }
+        },
+        "sameAs": "https://desplaines.libnet.info/event/16431789",
+        "description": "Friday, November 06 2026 10:00am - 11:00am \n To register, please contact Irene Tripkos at 847-789-5623. Verbal confirmation from Irene Tripkos is needed in…"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 80,
+      "item": {
+        "@type": "Event",
+        "name": "Downsizing and Decluttering",
+        "startDate": "2026-11-06T14:00:00-06:00",
+        "url": "https://withintenmiles.com/des-plaines-60016/#ev-downsizing-and-decluttering-2026-11-06",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Des Plaines Public Library",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Des Plaines",
+            "addressRegion": "IL"
+          }
+        },
+        "sameAs": "https://desplaines.libnet.info/event/17140480",
+        "description": "Friday, November 06 2026 2:00pm - 3:30pm \n Helpful for older adults and empty nesters."
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 81,
+      "item": {
+        "@type": "Event",
+        "name": "Friday Night Films",
+        "startDate": "2026-11-06T18:30:00-06:00",
+        "url": "https://withintenmiles.com/des-plaines-60016/#ev-friday-night-films-2026-11-06",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Des Plaines Public Library",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Des Plaines",
+            "addressRegion": "IL"
+          }
+        },
+        "sameAs": "https://desplaines.libnet.info/event/16020452",
+        "description": "Friday, November 06 2026 6:30pm - 8:15pm \n A free screening of the independent film The Invite.",
+        "isAccessibleForFree": true
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 82,
+      "item": {
+        "@type": "Event",
+        "name": "BOURBON 'N BRASS SPEAKEASY: LIVE JAZZ, POP AND R&B with MICHAEL ROSS BAND",
+        "startDate": "2026-11-06T20:30:00-06:00",
+        "url": "https://withintenmiles.com/des-plaines-60016/#ev-bourbon-n-brass-speakeasy-live-jazz-pop-and-r-b-with-michael-2026-11-06",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Des Plaines Theatre",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Des Plaines",
+            "addressRegion": "IL"
+          }
+        },
+        "sameAs": "https://desplainestheatre.com/event/bourbon-n-brass-speakeasy-live-jazz-pop-and-rb-with-michael-ross-band/",
+        "description": "Join us in our intimate Bourbon ‘N Brass Speakeasy, located on the 2nd floor of the Des Plaines Theatre, for an evening of Jazz with Michael Ross Band! Food…"
       }
     }
   ]
