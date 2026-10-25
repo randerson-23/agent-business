@@ -171,11 +171,11 @@ def test_render_sponsor_page_marks_annual_partner_recommended():
 
 
 def test_render_sponsor_page_shows_stat_line_when_stats_given():
-    stats = {"region_count": 4, "weekend_count": 12, "since": "Aug 26, 2026", "issues_sent": 6, "issues_since": "Sep 17, 2026"}
+    stats = {"region_count": 4, "next_week_count": 12, "since": "Aug 26, 2026", "issues_sent": 6, "issues_since": "Sep 17, 2026"}
     html = build_digest.render_sponsor_page([], datetime.now(timezone.utc), stats=stats)
     assert "4</strong> region" in html
     # ROADMAP.md item 351: reader-side facts only.
-    assert "12</strong> events listed this weekend across 4 towns" in html and "live update" not in html
+    assert "12</strong> events listed for the next 7 days across 4 towns" in html and "live update" not in html
     assert "6</strong> weekly email issues sent since Sep 17, 2026" in html
     assert "Reader numbers are published once the list passes 50 subscribers" in html
     assert "running since Aug 26, 2026" in html
@@ -6467,3 +6467,14 @@ def test_picks_have_a_quality_floor_and_a_weak_town_gives_its_slot_away():
     assert titles[:3] == ["Trunk Night", "Fall Fest", "Hayride"] and len(picks) <= 6
     assert "Pumpkin Run" in titles  # a spare strong event fills a slot a weak town gave up
     assert build_digest.pick_email_top_picks(blocks[:1] + blocks[1:2][:0], limit=3) == []
+
+
+def test_next_seven_days_count_is_a_rolling_window_not_the_weekend():
+    # ROADMAP.md item 384.
+    def ev(title, day, **kw):
+        return dict({"title": title, "date_iso": f"2026-10-{day:02d}T10:00:00"}, **kw)
+    groups = [("A", "u", [ev("Fri", 23), ev("Sat", 24), ev("Sun", 25), ev("Mon", 26), ev("Next Fri", 30), ev("Far", 31), ev("Sat", 24), ev("Info", 27, attendable=False)]),
+              ("B", "u", [ev("Tue", 27), {"title": "Undated"}])]
+    sunday = build_digest.count_next_seven_days(groups, date(2026, 10, 25))
+    friday = build_digest.count_next_seven_days(groups, date(2026, 10, 23))
+    assert sunday == 5 and friday == 5  # Sun..Fri-after vs Fri..Tue: similar either day; no double count, no info items

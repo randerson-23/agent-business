@@ -4595,6 +4595,26 @@ def _event_list_item(event: dict, page_url: str, position: int) -> dict:
     return {"@type": "ListItem", "position": position, "item": event_jsonld(event, url)}
 
 
+def count_next_seven_days(groups: list[tuple[str, str, list[dict]]], today: date) -> int:
+    """ROADMAP.md item 384: attendable, dated events in the next 7 days
+    (today included) across every group, one per title and start time. The
+    sponsor page's proof number: a rolling window, so it doesn't shrink as
+    the weekend passes."""
+    end = today + timedelta(days=7)
+    seen = set()
+    for _name, _url, events in groups:
+        for e in events:
+            if not e.get("title") or not e.get("date_iso") or e.get("attendable") is False:
+                continue
+            try:
+                day = date.fromisoformat(e["date_iso"][:10])
+            except ValueError:
+                continue
+            if today <= day < end:
+                seen.add((e["title"].strip().lower(), e["date_iso"]))
+    return len(seen)
+
+
 def build_events_json(groups: list[tuple[str, str, list[dict]]], name: str, now: datetime) -> str:
     """A schema.org ItemList of upcoming Events (ROADMAP.md item 230) - the
     clean machine-readable index agents and NLWeb-style tools read most
@@ -7235,7 +7255,7 @@ def main() -> None:
     sponsor_availability = build_sponsor_availability(sponsors_cfg, region_summaries)
     sponsor_stats = {
         "region_count": len(region_summaries),
-        "weekend_count": hub_stats["weekend_count"],
+        "next_week_count": count_next_seven_days(events_json_groups, now.astimezone(LOCAL_TZ).date()),
         "since": LAUNCH_DATE.strftime("%b %-d, %Y"),
         **sponsor_issue_stats(now),
     }
