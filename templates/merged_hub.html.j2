@@ -322,7 +322,7 @@
     <section class="block">
       <h2>{{ section.region_name }} <a class="region-link" href="{{ section.region_url }}">Full region page &rarr;</a></h2>
       <div class="card-grid">
-      {% for item in section.events %}
+      {% for item in section.events if not item.merged_away %}
       {# id folds in date_iso so two occurrences of one recurring event
            (item 141, same url) don't collide as one tray item - a real
            bug confirmed with a headless-browser test before fixing
@@ -332,7 +332,7 @@
         <button type="button" class="tray-star" data-item='{{ tray_item | tojson }}' aria-pressed="false" aria-label="Add {{ item.title|short }} to My Weekend">☆</button>
         {% if item.sponsored_by %}{{ featured_label(item.sponsored_by) }}{% endif %}
         {% if item.series %}<div class="series">{{ item.series }}</div>{% endif %}
-        {% if item.date %}<div class="date">{% if item.date_iso %}<time datetime="{{ item.date_iso }}">{{ item.date_label or item.date }}{% if item.time_label %} · {{ item.time_label }}{% endif %}</time>{% else %}{{ item.date }}{% endif %} · <span class="where">{{ section.region_name }}</span></div>{% endif %}
+        {% if item.sessions %}<div class="date">{% for ss in item.sessions %}<span{% if not loop.first %} id="{{ ss.anchor_id }}"{% endif %}>{{ ss.label }}</span>{% if not loop.last %} · {% endif %}{% endfor %} · <span class="where">{{ section.region_name }}</span></div>{% elif item.date %}<div class="date">{% if item.date_iso %}<time datetime="{{ item.date_iso }}">{{ item.date_label or item.date }}{% if item.time_label %} · {{ item.time_label }}{% endif %}</time>{% else %}{{ item.date }}{% endif %} · <span class="where">{{ section.region_name }}</span></div>{% endif %}
         <h3>{% if item.url %}<a href="{{ item.url }}">{{ item.title }}</a>{% else %}{{ item.title }}{% endif %}</h3>
         {% if item.recurrence_note %}<div class="recurrence-note">{{ item.recurrence_note }}</div>{% endif %}
         {% set card_text = item.card_detail if item.card_detail is defined else item.detail %}
@@ -342,7 +342,9 @@
           {% for tag in item.tag_badges %}<span class="tag-badge" style="background: var(--hue-{{ tag.hue }}-bg); color: var(--hue-{{ tag.hue }}-ink);">{{ tag.emoji }} {{ tag.label }}</span>{% endfor %}
         </div>
         {% endif %}
-        {% if item.ics_href %}
+        {% if item.sessions %}
+        <div class="cal-row">{% for ss in item.sessions if ss.ics_href %}<a href="{{ ss.ics_href }}" download="event.ics">📅 {{ ss.label }}</a>{% endfor %}</div>
+        {% elif item.ics_href %}
         <div class="cal-row">
           <a href="{{ item.ics_href }}" download="event.ics">📅 Add to calendar</a>
         </div>

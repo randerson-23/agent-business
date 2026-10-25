@@ -220,7 +220,7 @@ doesn't re-suggest something already shipped.
 
 **Build queue (by deadline; refreshed by the research loop, item 346).**
 Pick from the top unless the owner has flagged something else:
-0. **381** (one card for repeated sessions).
+0. **323** (leaf pickup).
 2. **323**: leaf pickup (in season now).
 3. **313, 314**: the sales mock-up and starter pack (before outreach).
 4. **328** (probe first), then **325** (by Nov 15), then the rest by
@@ -17943,7 +17943,7 @@ once more. It also gives the holiday pitch one current, citable number.
 
 #### P2 (new)
 
-381. **One card for repeated sessions in the same window.** Build loop,
+381. ✅ DONE (`merge_repeated_sessions`: same normalised title and venue within 7 days is one card on region pages and /this-weekend/, listing each session with its own calendar link; later sessions keep their anchors; JSON-LD and events.json untouched; the email town sections were not changed; tests) **One card for repeated sessions in the same window.** Build loop,
      card rendering on `/this-weekend/`, region pages and the email
      town sections: events with the **same normalised title and venue**
      inside the window merge into one card. It lists every session (*"Sat

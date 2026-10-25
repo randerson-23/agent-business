@@ -3064,6 +3064,50 @@ def prepare_event_cards(blocks: list[dict]) -> None:
             # put at the start of a description (it would repeat both).
             event["time_label"] = event_time_label(event.get("date_iso"))
             event["card_detail"] = strip_description_header(event.get("detail"))
+        merge_repeated_sessions(block.get("events", []))
+
+
+SESSION_MERGE_DAYS = 7
+
+
+def merge_repeated_sessions(events: list[dict]) -> None:
+    """ROADMAP.md item 381: events with the same normalised title and venue
+    inside one week render as ONE card listing every session. The first
+    session keeps the card and gets `sessions` (label, calendar link, anchor
+    for each); the rest are flagged `merged_away` so the template skips
+    them. Nothing is removed, so JSON-LD, events.json and the calendar feed
+    still carry one Event per session. Flags are reset on every call because
+    one event object is rendered on several pages."""
+    groups: dict[tuple, list[dict]] = {}
+    for event in events:
+        event.pop("merged_away", None)
+        event.pop("sessions", None)
+        if not event.get("date_iso") or event.get("attendable") is False or event.get("sponsored_by"):
+            continue
+        key = (re.sub(r"[^a-z0-9]+", " ", (event.get("title") or "").lower()).strip(), (event.get("venue") or event.get("source") or "").lower())
+        groups.setdefault(key, []).append(event)
+    for group in groups.values():
+        if len(group) < 2:
+            continue
+        group.sort(key=lambda e: e["date_iso"])
+        try:
+            first_day = date.fromisoformat(group[0]["date_iso"][:10])
+            members = [e for e in group if (date.fromisoformat(e["date_iso"][:10]) - first_day).days < SESSION_MERGE_DAYS]
+        except ValueError:
+            continue
+        if len(members) < 2:
+            continue
+        primary = members[0]
+        primary["sessions"] = [
+            {
+                "label": " ".join(p for p in (datetime.fromisoformat(e["date_iso"]).strftime("%a"), e.get("time_label")) if p),
+                "ics_href": e.get("ics_href"),
+                "anchor_id": e.get("anchor_id"),
+            }
+            for e in members
+        ]
+        for e in members[1:]:
+            e["merged_away"] = True
 
 
 
