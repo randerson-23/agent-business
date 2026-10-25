@@ -220,11 +220,12 @@ doesn't re-suggest something already shipped.
 
 **Build queue (by deadline; refreshed by the research loop, item 346).**
 Pick from the top unless the owner has flagged something else:
-0. **323** (leaf pickup).
-2. **323**: leaf pickup (in season now).
-3. **313, 314**: the sales mock-up and starter pack (before outreach).
-4. **328** (probe first), then **325** (by Nov 15), then the rest by
-   priority.
+0. **387, 388** (the first-sale pair: warm prospects from the feeds, and a free first Event Promo for five businesses).
+1. **323**: leaf pickup (in season now).
+2. **313, 314**: the sales mock-up and starter pack (before outreach).
+3. **389, 390**: /santa/ while empty; promo receipts.
+4. **328** (probe first), then **325** (by Nov 15), then **385** (holiday
+   creatives, from Nov 1), then the rest by priority.
 
 #### Needs Ryan
 
@@ -18041,6 +18042,106 @@ minimum, about $1–2.50 CPC reported; parked as the second test) and
 **Google Search ads** (about $5.42 average CPC; skipped for a $50 test).
 The design/UX angle is **the `/sponsor/` proof box on a Sunday**, where
 the headline number is about 5× too small.
+
+
+#### Research pass 2026-10-25, evening (hundred-and-third pass)
+
+Today the build loop shipped items 379 (`/santa/`), 384 (a steadier
+sponsor-page count) and 381 (one card for repeated sessions), and the
+Oct 22 send's metrics came in: **1 recipient, 1 open, 0 clicks**, the
+same as Oct 15. The build queue is down to leaf pickup, the sales
+mock-up, the starter pack, the registration probe and the lights list,
+so per the working agreement this pass goes deeper. It looks at the
+**first sale**, not at reach. The site has priced its $20 Event Promo
+without checking what the nearest competitor charges for the same
+thing. The feeds already show which local businesses spend money
+hosting public events, and nobody has used that list.
+
+| Angle | What it is / what we found | Why it matters here |
+|---|---|---|
+| **Patch's paid "Featured" events** (Patch help and promo posts, various dates) | Patch has sold event promotion for years, and its price has kept **falling**: from a flat **$20 per 7 days** ($50 for businesses), to $7 a week, to **$1 per day per community**, and in the newest post **"starting at 25 cents/day"**. That buys a spot on the town's Patch homepage, the daily newsletter and the weekly events roundup | Patch now sells a week of featured placement for **under $2**, to an audience it can show, while this site asks **$20** with one subscriber. The price isn't wrong for what the Event Promo becomes later. But the first buyers need either a reason Patch can't match (a family-only weekly email, a labelled own page per item 370, first place on the town's family page) or a **no-risk way to try it** (items 388, 390) |
+| **Who already pays to host public events, from the site's own feeds** (Oct 2026 listings) | The feeds show businesses running public family events: **Napleton dealerships** (four trunk-or-treats in Palatine), the **Des Plaines Theatre**, **Randhurst Village** (the mall's community events), restaurants and venues listed as hosts. Dealership marketing guides describe community events as a routine local budget line. One cites a dealer getting *"massive marketing impact for as little as $700"* | These businesses have **already spent** money and staff time on a public event, and the site already listed it for free. *"Your trunk-or-treat was on our Palatine page; next time, be the first thing families see"* is the warmest pitch available, far warmer than a cold note to a shop that has never hosted anything. Nothing extracts the list (item 387) |
+| **`/santa/` before the season (design/UX)** | The page is live with the right title and an honest empty state (*"Park districts usually post Santa events in early November"*), plus a reminder signup. But while empty it gives a parent **nothing to act on**: no link to where each town's Santa events will appear, and no tree-lighting dates, even though two are confirmed (Arlington Heights Nov 27, Palatine Nov 21) | Google will crawl the page in its empty weeks. An empty page with a form is thin. The same page with five official "check here" links and the confirmed dates is useful from day one (item 389) |
+
+#### P1 (new)
+
+387. **A warm-prospect list: businesses that already host public events.**
+     Build loop, `scripts/osm_prospects.py` or a sibling script, from
+     data the site already has:
+
+     - From the last 60 days of feed events and the next 30, collect
+       **non-agency hosts**: the venue or *"at <Name>"* when it isn't a
+       library, park district, village, school or church, plus named
+       business hosts in titles (*"Trunk or Treat at Napleton's Palatine
+       Mazda"*). For each, list the event title and date and the town.
+     - Write it as the **top section of `OUTREACH_PROSPECTS.md`**,
+       *"Warm: already hosting public events"*, above the OpenStreetMap
+       list, deduplicated against it. Names, events and public websites
+       only. Item 374's public-repo rule applies: no contact notes.
+     - Add `OUTREACH_TEMPLATES.md` **§14a**: *"Your [event] on [date] was
+       on our [town] page. Next time, for $20, it goes first on the town
+       page and in the weekly email, with its own event page."* Mention
+       item 388's free first promo while that offer lasts.
+
+     Tests: a dealership trunk-or-treat appears as a warm prospect, a
+     library storytime does not, and nobody appears twice.
+
+388. **The first Event Promo is free, for the first five local
+     businesses, through Dec 31.** Build loop plus owner reply-only:
+
+     - On `/sponsor/` and in `SPONSOR_KIT.md`: *"Founding offer: your first
+       Event Promo is free (five spots, through Dec 31). We list it,
+       label it 'Presented by [you]', and send you where it appeared."*
+       Show a live **"N of 5 left"** count from a `founding_promos_used:`
+       number in `config/sponsors.yaml`.
+     - The owner's only work is pasting the promotion entry when someone
+       replies, which is the same as a paid sale.
+     - **Why free, honestly:** Patch sells a featured week for under $2
+       to a real audience, and this list is one person. Five live,
+       labelled sponsored placements and five businesses who've seen it
+       work are the asset that makes the $20 price, the Weekly Spot and
+       the $200 lights tour sellable. Parked item 240 (free promos for
+       nonprofits) was parked for lack of an audience. This offer is
+       for proof, not reach, and is time-boxed.
+
+     Tests: the offer shows while the count is under 5 and before Jan 1,
+     and disappears after either.
+
+#### P2 (new)
+
+389. **Make `/santa/` useful while it's empty.** Build loop: in the empty
+     state, add **"Where to look meanwhile"**, one line per town linking
+     the park district's (and village's) special-events page as
+     `evergreen` links, already in config for most towns. Show the
+     **confirmed tree-lighting dates** from `tree_lighting:` (Arlington
+     Heights Fri Nov 27, Palatine Sat Nov 21; *"date TBA"* for the rest),
+     linking `/holidays/`. Once the first Santa event appears, the block
+     moves below the list. Tests: the empty state shows five town links
+     and the confirmed dates, and no date appears that isn't in config.
+
+390. **A "where your promo appeared" receipt for every Event Promo.**
+     Build loop: for each entry in `promotions:` (paid or founding),
+     write a `noindex` page `/sponsor/receipt/<slug>/` listing the
+     **pages and dates it appeared on** (the town page, `/this-weekend/`,
+     its `/e/` page, the email issue in `/issues/` with its link), and,
+     when GoatCounter is configured, the **outbound-click count** to the
+     sponsor's link (item 267's `out/<host>` events). It is linked only
+     from the owner's notes and sent to the sponsor by hand. Tests: every
+     promotion gets a receipt, the receipt is `noindex` and not in the
+     sitemap, and it lists only places the promotion really rendered.
+     This is how the founding promos (item 388) turn into testimonials.
+
+#### Build queue housekeeping
+
+- Rewrite the queue block as: **0.** 387, 388 (the first-sale pair).
+  **1.** 323 (leaf pickup). **2.** 313, 314. **3.** 389, 390. **4.** 328,
+  then 325 (by Nov 15), then 385 (holiday creatives, from Nov 1). This
+  removes the duplicate 323 line.
+
+Competitors reviewed this pass: **Patch's featured-event pricing** (from
+$20 a week down to 25¢ a day), and **local businesses that already host
+public events**, read from the site's own feeds (dealerships, a theatre,
+a mall). The design/UX angle is **`/santa/` in its empty weeks**.
 
 
 ## Working agreements for autonomous iteration
