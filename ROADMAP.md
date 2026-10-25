@@ -220,7 +220,7 @@ doesn't re-suggest something already shipped.
 
 **Build queue (by deadline; refreshed by the research loop, item 346).**
 Pick from the top unless the owner has flagged something else:
-0. **386** (the sponsor page's shrinking count). **379** (/santa/, live by Nov 1). **381** (one card for repeated sessions).
+0. **384** (the sponsor page's shrinking count). **379** (/santa/, live by Nov 1). **381** (one card for repeated sessions).
 2. **323**: leaf pickup (in season now).
 3. **313, 314**: the sales mock-up and starter pack (before outreach).
 4. **328** (probe first), then **325** (by Nov 15), then the rest by
@@ -17985,10 +17985,10 @@ proof box on the day a buyer is most likely to look, a Sunday.
 
 | Angle | What it is / what we found | Why it matters here |
 |---|---|---|
-| **Nextdoor Ads (self-serve)** (Nextdoor's UK launch release; a 2026 cost guide; agency blogs; Nextdoor's 2026 AI click-optimisation announcement as covered by eMarketer) | Self-serve **Ads Manager** with a very small minimum (a few pounds in the UK release; "no minimum" per one blog). Reported CPC around **$1–2.50 typical** (unverified guide). Targeting is by neighbourhood or postcode. Nextdoor reports its **AI click optimisation** cut median CPC by **75%** in a UK beta (vendor figure) | Nextdoor's users are exactly the homeowners in these five towns, and the platform is where item 303's free News pages would live. As a **second** paid test it's credible. It shouldn't run alongside Meta's first test, or neither result means anything (item 385) |
+| **Nextdoor Ads (self-serve)** (Nextdoor's UK launch release; a 2026 cost guide; agency blogs; Nextdoor's 2026 AI click-optimisation announcement as covered by eMarketer) | Self-serve **Ads Manager** with a very small minimum (a few pounds in the UK release; "no minimum" per one blog). Reported CPC around **$1–2.50 typical** (unverified guide). Targeting is by neighbourhood or postcode. Nextdoor reports its **AI click optimisation** cut median CPC by **75%** in a UK beta (vendor figure) | Nextdoor's users are exactly the homeowners in these five towns, and the platform is where item 303's free News pages would live. As a **second** paid test it's credible. It shouldn't run alongside Meta's first test, or neither result means anything (item 386) |
 | **Google Search ads** (WordStream's 2026 benchmark as cited by Enrich Labs; local PPC guides) | Average CPC **about $5.42** across 13,000+ search campaigns, with local-service clicks cheaper. No data for *"things to do"* queries, which are low-stakes and likely cheaper, but unconfirmed | **Skipped for now.** At even $2 a click, $50 buys about 25 visits. And the site already appears organically for these queries via Search Console (48 pages indexed), so paying Google for its own long-tail is the weakest use of a $50 test |
 | **The Meta test's timing** | The kit (item 344, plus item 350's v2 creatives) has been ready since Oct 20. The decision date (Oct 21) and the planned start (Oct 22) have passed with no recorded decision | A Halloween-hours ad loses its point on Nov 1. The test either runs **Oct 27–31** at **$10/day** (the same $50, a shorter, denser window), or it moves to the **holiday window**, landing on `/santa/` (item 379) and `/holidays/`, which have the same "dated local answer" shape (item 383) |
-| **The `/sponsor/` proof box on a Sunday (design/UX)** | After item 351 the box reads: *"5 regions covered · **11 events listed this weekend across 5 towns** · 6 weekly email issues sent since Sep 17, 2026 · Reader numbers are published once the list passes 50 subscribers."* The **11** comes from a Sunday-morning build, when "this weekend" is one day long. On a Friday the same box says 50-plus | A buyer comparing the site to Patch on a Sunday or Monday sees **11 events in five towns**: a number that understates the site by about 5×, and it is the first number on the sales page. The count should use a window that doesn't shrink through the week (item 386) |
+| **The `/sponsor/` proof box on a Sunday (design/UX)** | After item 351 the box reads: *"5 regions covered · **11 events listed this weekend across 5 towns** · 6 weekly email issues sent since Sep 17, 2026 · Reader numbers are published once the list passes 50 subscribers."* The **11** comes from a Sunday-morning build, when "this weekend" is one day long. On a Friday the same box says 50-plus | A buyer comparing the site to Patch on a Sunday or Monday sees **11 events in five towns**: a number that understates the site by about 5×, and it is the first number on the sales page. The count should use a window that doesn't shrink through the week (item 384) |
 
 #### P1, owner (re-timed)
 
@@ -18001,13 +18001,13 @@ proof box on the day a buyer is most likely to look, a Sunday.
        for **Oct 27–31 at $10/day**, landing on `/trick-or-treat/`.
      - **Option B (decide by Nov 10):** run it **Nov 16 – Dec 6 at about
        $2.50/day**, landing on `/santa/` (once item 379 ships) or
-       `/holidays/`, with item 384's holiday creatives.
+       `/holidays/`, with item 385's holiday creatives.
      - If neither, record *"declined for 2026"* in item 276 and stop
        asking.
 
 #### P1 (new)
 
-386. **A proof-box event count that doesn't shrink through the week.**
+384. **A proof-box event count that doesn't shrink through the week.**
      Design/UX, `sponsor.html.j2`: replace *"N events listed this weekend
      across 5 towns"* with ***"N events listed for the next 7 days across
      5 towns"***, counted from the same data as `events.json` (attendable,
@@ -18017,7 +18017,7 @@ proof box on the day a buyer is most likely to look, a Sunday.
 
 #### P2 (new)
 
-384. **Holiday variants of the ad creatives.** Build loop, the Pillow
+385. **Holiday variants of the ad creatives.** Build loop, the Pillow
      renderer (items 344 and 350): a **"Santa & tree lightings near you"**
      set at the same three sizes, listing each town's tree-lighting date
      from `tree_lighting:` config (*"date TBA"* where unconfirmed, as on
@@ -18029,7 +18029,7 @@ proof box on the day a buyer is most likely to look, a Sunday.
 
 #### P3 / parked (new)
 
-385. **Nextdoor Ads as the second paid test, only after Meta's result.**
+386. **Nextdoor Ads as the second paid test, only after Meta's result.**
      Parked. **Trigger:** item 276 or 383 has a recorded result, good or
      bad. Then a $50, 10-day test in Nextdoor Ads Manager targeting the
      five towns, landing on the same page the Meta test used, with
