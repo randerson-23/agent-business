@@ -3,8 +3,8 @@
 <channel>
   <title>Within Ten — Upcoming Local Events</title>
   <link>https://withintenmiles.com/</link>
-  <description>Upcoming events across every Within Ten region, soonest first - aggregated automatically from village, library, park district and school-district calendars. This build reached 22 of 29 configured sources. 1 source is shown from its last update, up to 8 hours ago.</description>
-  <lastBuildDate>Sun, 25 Oct 2026 14:03:42 +0000</lastBuildDate>
+  <description>Upcoming events across every Within Ten region, soonest first - aggregated automatically from village, library, park district and school-district calendars. This build reached 20 of 29 configured sources. 3 sources are shown from their last update, up to 10 hours ago.</description>
+  <lastBuildDate>Sun, 25 Oct 2026 22:00:34 +0000</lastBuildDate>
   <item>
     <title>Des Plaines: Wicked Good Writing Contest</title>
     <link>https://withintenmiles.com/des-plaines-60016/#ev-wicked-good-writing-contest-2026-10-25</link>
@@ -33,14 +33,6 @@ For grades K-8. Official listing: https://desplaines.libnet.info/event/17138193<
     <source url="https://desplaines.libnet.info/event/14863262">Des Plaines Public Library — Events</source>
   </item>
   <item>
-    <title>Palatine: Impact Makers of Palatine Free Self-Defense Workshop</title>
-    <link>https://withintenmiles.com/palatine-60067/#ev-impact-makers-of-palatine-free-self-defense-workshop-2026-10-25</link>
-    <guid isPermaLink="true">https://withintenmiles.com/palatine-60067/#ev-impact-makers-of-palatine-free-self-defense-workshop-2026-10-25</guid>
-    <description>Free Self Defense Workshop https://www.palatine.il.us/calendar. Official listing: https://www.palatine.il.us/common/modules/iCalendar/iCalendar.aspx?feed=calendar&amp;catID=14</description>
-    <pubDate>Sun, 25 Oct 2026 13:00:00 +0000</pubDate>
-    <source url="https://www.palatine.il.us/common/modules/iCalendar/iCalendar.aspx?feed=calendar&amp;catID=14">Village of Palatine — Calendar</source>
-  </item>
-  <item>
     <title>Wheeling: The Arlingtones</title>
     <link>https://withintenmiles.com/wheeling-60090/#ev-the-arlingtones-2026-10-25</link>
     <guid isPermaLink="true">https://withintenmiles.com/wheeling-60090/#ev-the-arlingtones-2026-10-25</guid>
@@ -65,22 +57,6 @@ For grades K-8. Official listing: https://desplaines.libnet.info/event/17138193<
     <description>Step into the lively world of River City with Music Man Sr.! Enjoy a shorter, more informal take on the beloved musical, filled with toe-tapping music,… Official listing: https://www.ahpd.org/event/the-music-man-sr-2/</description>
     <pubDate>Sun, 25 Oct 2026 14:00:00 +0000</pubDate>
     <source url="https://www.ahpd.org/event/the-music-man-sr-2/">Arlington Heights Park District — Events</source>
-  </item>
-  <item>
-    <title>Des Plaines: ITALIAN BRED: A CELEBRATION OF FAMILY, CULTURE &amp; COMEDY</title>
-    <link>https://withintenmiles.com/des-plaines-60016/#ev-italian-bred-a-celebration-of-family-culture-comedy-2026-10-25</link>
-    <guid isPermaLink="true">https://withintenmiles.com/des-plaines-60016/#ev-italian-bred-a-celebration-of-family-culture-comedy-2026-10-25</guid>
-    <description>Italian Bred, starring the incomparable Candice Guardino, is a vibrant, hilarious, and deeply relatable theatrical experience that has captivated audiences… Official listing: https://desplainestheatre.com/event/italian-bred-a-heartlfelt-celebration-of-family-culture-comedy/</description>
-    <pubDate>Sun, 25 Oct 2026 14:00:00 +0000</pubDate>
-    <source url="https://desplainestheatre.com/event/italian-bred-a-heartlfelt-celebration-of-family-culture-comedy/">Des Plaines Theatre — Events</source>
-  </item>
-  <item>
-    <title>Palatine: Trunk-or-Treat and Community Meal</title>
-    <link>https://withintenmiles.com/palatine-60067/#ev-trunk-or-treat-and-community-meal-2026-10-25</link>
-    <guid isPermaLink="true">https://withintenmiles.com/palatine-60067/#ev-trunk-or-treat-and-community-meal-2026-10-25</guid>
-    <description>FREE Trunk-or-Treat and Community Meal https://www.palatine.il. Official listing: https://www.palatine.il.us/common/modules/iCalendar/iCalendar.aspx?feed=calendar&amp;catID=14</description>
-    <pubDate>Sun, 25 Oct 2026 14:00:00 +0000</pubDate>
-    <source url="https://www.palatine.il.us/common/modules/iCalendar/iCalendar.aspx?feed=calendar&amp;catID=14">Village of Palatine — Calendar</source>
   </item>
   <item>
     <title>Palatine: CATIF Fundraiser: A Safe Place, Safe Paws</title>
@@ -455,6 +431,38 @@ For grades K-8. Official listing: https://desplaines.libnet.info/event/17138196<
  District 214 Read to Learn Adult Literacy Program. Official listing: https://indiantrails.libnet.info/event/11861202</description>
     <pubDate>Wed, 28 Oct 2026 09:00:00 +0000</pubDate>
     <source url="https://indiantrails.libnet.info/event/11861202">Indian Trails Public Library — Events</source>
+  </item>
+  <item>
+    <title>Des Plaines: Baby Book Time</title>
+    <link>https://withintenmiles.com/des-plaines-60016/#ev-baby-book-time-2026-10-28</link>
+    <guid isPermaLink="true">https://withintenmiles.com/des-plaines-60016/#ev-baby-book-time-2026-10-28</guid>
+    <description>Wednesday, October 28 2026 10:00am - 11:00am 
+ To register, please contact Irene Tripkos at 847-789-5623. Verbal confirmation from Irene Tripkos is needed in… Official listing: https://desplaines.libnet.info/event/16431785</description>
+    <pubDate>Wed, 28 Oct 2026 10:00:00 +0000</pubDate>
+    <source url="https://desplaines.libnet.info/event/16431785">Des Plaines Public Library — Events</source>
+  </item>
+  <item>
+    <title>Mount Prospect: Inglés para Hispanohablantes</title>
+    <link>https://withintenmiles.com/mount-prospect-60056/#ev-ingl-s-para-hispanohablantes-2026-10-28</link>
+    <guid isPermaLink="true">https://withintenmiles.com/mount-prospect-60056/#ev-ingl-s-para-hispanohablantes-2026-10-28</guid>
+    <description>Wednesday, October 28 2026 11:00am - 12:00pm 
+ Una clase virtual vía Zoom, de conversación, para hispanohablantes que buscan mejorar su inglés. 
+
+A virtual… Official listing: https://mppl.libnet.info/event/17476744</description>
+    <pubDate>Wed, 28 Oct 2026 11:00:00 +0000</pubDate>
+    <source url="https://mppl.libnet.info/event/17476744">Mount Prospect Public Library — Events</source>
+  </item>
+  <item>
+    <title>Des Plaines: 3D Print &amp; Paint Pumpkins</title>
+    <link>https://withintenmiles.com/des-plaines-60016/#ev-3d-print-paint-pumpkins-2026-10-28</link>
+    <guid isPermaLink="true">https://withintenmiles.com/des-plaines-60016/#ev-3d-print-paint-pumpkins-2026-10-28</guid>
+    <description>Wednesday, October 28 2026 4:00pm - 5:00pm 
+ Meet us in the Canvas for 3D printing and painting.
+
+Drop-off program for ages 9-12 only.
+If you came to the July… Official listing: https://desplaines.libnet.info/event/17195005</description>
+    <pubDate>Wed, 28 Oct 2026 16:00:00 +0000</pubDate>
+    <source url="https://desplaines.libnet.info/event/17195005">Des Plaines Public Library — Events</source>
   </item>
 </channel>
 </rss>

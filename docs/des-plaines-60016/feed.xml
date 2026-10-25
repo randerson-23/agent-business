@@ -3,8 +3,8 @@
 <channel>
   <title>Within Ten — Upcoming events in Des Plaines</title>
   <link>https://withintenmiles.com/</link>
-  <description>Upcoming events in Des Plaines, soonest first - aggregated automatically from village, library, park district and school-district calendars. This build reached 8 of 10 configured sources.</description>
-  <lastBuildDate>Sun, 25 Oct 2026 14:03:42 +0000</lastBuildDate>
+  <description>Upcoming events in Des Plaines, soonest first - aggregated automatically from village, library, park district and school-district calendars. This build reached 6 of 10 configured sources. 2 sources are shown from their last update, up to 10 hours ago.</description>
+  <lastBuildDate>Sun, 25 Oct 2026 22:00:34 +0000</lastBuildDate>
   <item>
     <title>Des Plaines: Wicked Good Writing Contest</title>
     <link>https://withintenmiles.com/des-plaines-60016/#ev-wicked-good-writing-contest-2026-10-25</link>
@@ -23,14 +23,6 @@ For grades K-8. Official listing: https://desplaines.libnet.info/event/17138193<
  Gubernatorial Election Official listing: https://desplaines.libnet.info/event/14863262</description>
     <pubDate>Sun, 25 Oct 2026 10:00:00 +0000</pubDate>
     <source url="https://desplaines.libnet.info/event/14863262">Des Plaines Public Library — Events</source>
-  </item>
-  <item>
-    <title>Des Plaines: ITALIAN BRED: A CELEBRATION OF FAMILY, CULTURE &amp; COMEDY</title>
-    <link>https://withintenmiles.com/des-plaines-60016/#ev-italian-bred-a-celebration-of-family-culture-comedy-2026-10-25</link>
-    <guid isPermaLink="true">https://withintenmiles.com/des-plaines-60016/#ev-italian-bred-a-celebration-of-family-culture-comedy-2026-10-25</guid>
-    <description>Italian Bred, starring the incomparable Candice Guardino, is a vibrant, hilarious, and deeply relatable theatrical experience that has captivated audiences… Official listing: https://desplainestheatre.com/event/italian-bred-a-heartlfelt-celebration-of-family-culture-comedy/</description>
-    <pubDate>Sun, 25 Oct 2026 14:00:00 +0000</pubDate>
-    <source url="https://desplainestheatre.com/event/italian-bred-a-heartlfelt-celebration-of-family-culture-comedy/">Des Plaines Theatre — Events</source>
   </item>
   <item>
     <title>Des Plaines: RESCHEDULED FOR 3/14/27: THE BUDDY RICH BIG BAND MACHINE featuring GREGG POTTER AND CATHY RICH</title>
@@ -460,6 +452,15 @@ For grades K-8. Official listing: https://desplaines.libnet.info/event/17138198<
  Take &amp; Make Kits are fun crafts you can take home and make on your own time. Drop in to pick up your kit… Official listing: https://desplaines.libnet.info/event/17635811</description>
     <pubDate>Mon, 02 Nov 2026 00:00:00 +0000</pubDate>
     <source url="https://desplaines.libnet.info/event/17635811">Des Plaines Public Library — Events</source>
+  </item>
+  <item>
+    <title>Des Plaines: Early Voting</title>
+    <link>https://withintenmiles.com/des-plaines-60016/#ev-early-voting-2026-11-02</link>
+    <guid isPermaLink="true">https://withintenmiles.com/des-plaines-60016/#ev-early-voting-2026-11-02</guid>
+    <description>Monday, November 02 2026 9:00am - 5:00pm 
+ Gubernatorial Election Official listing: https://desplaines.libnet.info/event/15050740</description>
+    <pubDate>Mon, 02 Nov 2026 09:00:00 +0000</pubDate>
+    <source url="https://desplaines.libnet.info/event/15050740">Des Plaines Public Library — Events</source>
   </item>
 </channel>
 </rss>
