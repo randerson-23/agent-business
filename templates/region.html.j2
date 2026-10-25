@@ -910,7 +910,7 @@
       <h2>{{ block.section }}</h2>
       {% if block.events %}
         <div class="card-grid">
-        {% for item in block.events %}
+        {% for item in block.events if not item.merged_away %}
         {# id folds in date_iso - see the Editor's Pick tray_item above
              for why (ROADMAP.md item 146). #}
         {% set tray_item = {"id": (item.url or item.title) ~ ("|" ~ item.date_iso if item.date_iso else ""), "title": item.title, "url": item.url or "", "date": item.date or None, "date_iso": item.date_iso or None, "detail": (item.card_detail if item.card_detail is defined else item.detail) or "", "region_name": region.name, "region_url": region_base_url} %}
@@ -931,7 +931,7 @@
           {% if item.attendable == false %}<div class="informational-label">Informational</div>{% endif %}
           {% if item.sponsored_by %}{{ featured_label(item.sponsored_by) }}{% endif %}
           {% if item.series %}<div class="series">{{ item.series }}</div>{% endif %}
-          {% if item.date %}<div class="date">{% if item.date_iso %}<time datetime="{{ item.date_iso }}">{{ item.date_label or item.date }}{% if item.time_label %} · {{ item.time_label }}{% endif %}</time>{% else %}{{ item.date }}{% endif %} · <span class="where">{{ region.name }}</span></div>{% endif %}
+          {% if item.sessions %}<div class="date">{% for ss in item.sessions %}<span{% if not loop.first %} id="{{ ss.anchor_id }}"{% endif %}>{{ ss.label }}</span>{% if not loop.last %} · {% endif %}{% endfor %} · <span class="where">{{ region.name }}</span></div>{% elif item.date %}<div class="date">{% if item.date_iso %}<time datetime="{{ item.date_iso }}">{{ item.date_label or item.date }}{% if item.time_label %} · {{ item.time_label }}{% endif %}</time>{% else %}{{ item.date }}{% endif %} · <span class="where">{{ region.name }}</span></div>{% endif %}
           <h3>{% if item.url %}<a href="{{ item.url }}">{{ item.title|display_title }}</a>{% else %}{{ item.title|display_title }}{% endif %}</h3>{% if item.link_moved %}<p class="detail">Listing moved: this opens the source's calendar.</p>{% endif %}
           {% if item.recurrence_note %}<div class="recurrence-note">{{ item.recurrence_note }}</div>{% endif %}
           {% set card_text = item.card_detail if item.card_detail is defined else item.detail %}
@@ -942,7 +942,9 @@
           </div>
           {% endif %}
           {% if item.reg_badge %}<div class="tag-row"><span class="tag-badge" style="background: var(--hue-amber-bg, #fff4d6); color: var(--hue-amber-ink, #5c3b00);">📝 {{ item.reg_badge }}</span></div>{% endif %}
-          {% if item.ics_href %}
+          {% if item.sessions %}
+          <div class="cal-row">{% for ss in item.sessions if ss.ics_href %}<a href="{{ ss.ics_href }}" download="event.ics">📅 {{ ss.label }}</a>{% endfor %}</div>
+          {% elif item.ics_href %}
           <div class="cal-row">
             <a href="{{ item.ics_href }}" download="event.ics">📅 Add to calendar</a>
             <a href="{{ item.google_calendar_url }}" target="_blank" rel="noopener">Google Calendar</a>

@@ -6516,3 +6516,23 @@ def test_santa_page_window_keywords_badges_and_empty_state():
     assert build_digest.SITE_BASE_URL + "santa/" in build_digest.collect_sitemap_urls([])
     chosen = build_digest.select_event_page_events([], None, santa_entries=entries)
     assert [e["title"] for e in chosen] == ["Santa's Workshop", "Breakfast with Santa"]
+
+
+def test_repeated_sessions_render_as_one_card_but_keep_one_event_each():
+    # ROADMAP.md item 381.
+    def sess(iso, **kw):
+        return dict({"title": "The Music Man Jr.", "url": "https://src/mm", "date_iso": iso, "date": "x", "detail": "A musical.", "tags": [], "tag_badges": [], "venue": "Theatre", "source": "S", "town": "Palatine", "state": "IL", "attendable": True,
+                     "ics_href": "data:text/calendar,ics" + iso[8:10], "google_calendar_url": "https://calendar.google.com/x"}, **kw)
+    a, b = sess("2026-10-24T17:00:00"), sess("2026-10-25T14:00:00")
+    other = sess("2026-10-25T14:00:00", title="Other Show", url="https://src/o")
+    far = sess("2026-11-20T14:00:00")
+    blocks = [{"section": "Events", "events": [a, b, other, far]}]
+    sections = [{"region_name": "Palatine", "region_url": "https://x/palatine-60067/", "events": blocks[0]["events"]}]
+    html = build_digest.render_merged_hub_page(sections, datetime(2026, 10, 24, 12, tzinfo=timezone.utc), None, slug="this-weekend", heading="H", subheading="s", meta_description="m", empty_message="none")
+    assert html.count("The Music Man Jr.</a>") == 2  # one card for the Oct sessions, one for November
+    assert "Sat 5:00 PM" in html and "Sun 2:00 PM" in html
+    assert "📅 Sat 5:00 PM" in html and "📅 Sun 2:00 PM" in html and html.count("The Music Man Jr.") >= 2
+    assert b["merged_away"] and "sessions" in a and "merged_away" not in far
+    ld = json.loads(build_digest.build_event_json_ld(blocks, "https://x/p/"))
+    names = [e["name"] for e in (ld["@graph"] if "@graph" in ld else [ld])]
+    assert names.count("The Music Man Jr.") == 3  # unchanged: one Event per session
