@@ -6478,3 +6478,41 @@ def test_next_seven_days_count_is_a_rolling_window_not_the_weekend():
     sunday = build_digest.count_next_seven_days(groups, date(2026, 10, 25))
     friday = build_digest.count_next_seven_days(groups, date(2026, 10, 23))
     assert sunday == 5 and friday == 5  # Sun..Fri-after vs Fri..Tue: similar either day; no double count, no info items
+
+
+def _santa_blocks():
+    def ev(title, iso, **kw):
+        return dict({"title": title, "url": "https://src/" + title.replace(" ", "-"), "date_iso": iso, "detail": "", "tags": [], "attendable": True}, **kw)
+    return [{"section": "Events", "events": [
+        ev("Breakfast with Santa", "2026-12-05T09:00:00", registration_opens="2026-11-10", reg_badge="Sign-up opens Tue, Nov 10"),
+        ev("Santa's Workshop", "2026-11-14T10:00:00", detail="This event is sold out."),
+        ev("Photos with Santa", "2026-10-30T10:00:00"),   # before Nov 1
+        ev("Santa Run 5K", "2026-12-26T08:00:00"),         # after Dec 24
+        ev("Pumpkin Patch", "2026-11-14T10:00:00"),
+        ev("Breakfast with Santa", "2026-12-05T09:00:00"),  # duplicate
+    ]}]
+
+
+_NL = {"configured": True, "buttondown_username": "w", "headline": "h"}
+
+
+def test_santa_page_window_keywords_badges_and_empty_state():
+    # ROADMAP.md item 379.
+    today = date(2026, 10, 25)
+    picked = build_digest.select_santa_events(_santa_blocks(), today)
+    assert [e["title"] for e in picked] == ["Santa's Workshop", "Breakfast with Santa"]
+    entries = [{"region_name": "Palatine", "region_url": "https://x/palatine-60067/", "events": picked}, {"region_name": "Wheeling", "region_url": "https://x/wheeling-60090/", "events": []}]
+    page = build_digest.render_santa_page(entries, datetime(2026, 10, 25, 12, tzinfo=timezone.utc), None, _NL)
+    assert "<title>Breakfast with Santa &amp; Santa Visits 2026: Palatine and Wheeling | Within Ten</title>" in page
+    assert page.index("Sat, Nov 14") < page.index("Sat, Dec 5") and "Sign-up opens Tue, Nov 10" in page
+    assert page.count("Source says: sold out") == 1  # only where the source's own text says so
+    assert "remind:santa-2026" in page  # not yet in season: reminder signup
+    empty = build_digest.render_santa_page([{"region_name": "Palatine", "region_url": "https://x/p/", "events": []}], datetime(2026, 10, 25, 12, tzinfo=timezone.utc), None, _NL)
+    assert "Park districts usually post Santa events in early November" in empty
+    live = build_digest.render_santa_page(entries, datetime(2026, 11, 20, 12, tzinfo=timezone.utc), None, _NL)
+    assert "remind:santa" not in live and 'value="town:all"' in live
+    off = build_digest.render_santa_page(entries, datetime(2026, 12, 28, 12, tzinfo=timezone.utc), None, _NL)
+    assert "Santa Visits 2027" in off and "remind:santa-2027" in off
+    assert build_digest.SITE_BASE_URL + "santa/" in build_digest.collect_sitemap_urls([])
+    chosen = build_digest.select_event_page_events([], None, santa_entries=entries)
+    assert [e["title"] for e in chosen] == ["Santa's Workshop", "Breakfast with Santa"]
