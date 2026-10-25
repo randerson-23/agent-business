@@ -171,11 +171,11 @@ def test_render_sponsor_page_marks_annual_partner_recommended():
 
 
 def test_render_sponsor_page_shows_stat_line_when_stats_given():
-    stats = {"region_count": 4, "weekend_count": 12, "since": "Aug 26, 2026", "issues_sent": 6, "issues_since": "Sep 17, 2026"}
+    stats = {"region_count": 4, "next_week_count": 12, "since": "Aug 26, 2026", "issues_sent": 6, "issues_since": "Sep 17, 2026"}
     html = build_digest.render_sponsor_page([], datetime.now(timezone.utc), stats=stats)
     assert "4</strong> region" in html
     # ROADMAP.md item 351: reader-side facts only.
-    assert "12</strong> events listed this weekend across 4 towns" in html and "live update" not in html
+    assert "12</strong> events listed for the next 7 days across 4 towns" in html and "live update" not in html
     assert "6</strong> weekly email issues sent since Sep 17, 2026" in html
     assert "Reader numbers are published once the list passes 50 subscribers" in html
     assert "running since Aug 26, 2026" in html
@@ -6467,3 +6467,52 @@ def test_picks_have_a_quality_floor_and_a_weak_town_gives_its_slot_away():
     assert titles[:3] == ["Trunk Night", "Fall Fest", "Hayride"] and len(picks) <= 6
     assert "Pumpkin Run" in titles  # a spare strong event fills a slot a weak town gave up
     assert build_digest.pick_email_top_picks(blocks[:1] + blocks[1:2][:0], limit=3) == []
+
+
+def test_next_seven_days_count_is_a_rolling_window_not_the_weekend():
+    # ROADMAP.md item 384.
+    def ev(title, day, **kw):
+        return dict({"title": title, "date_iso": f"2026-10-{day:02d}T10:00:00"}, **kw)
+    groups = [("A", "u", [ev("Fri", 23), ev("Sat", 24), ev("Sun", 25), ev("Mon", 26), ev("Next Fri", 30), ev("Far", 31), ev("Sat", 24), ev("Info", 27, attendable=False)]),
+              ("B", "u", [ev("Tue", 27), {"title": "Undated"}])]
+    sunday = build_digest.count_next_seven_days(groups, date(2026, 10, 25))
+    friday = build_digest.count_next_seven_days(groups, date(2026, 10, 23))
+    assert sunday == 5 and friday == 5  # Sun..Fri-after vs Fri..Tue: similar either day; no double count, no info items
+
+
+def _santa_blocks():
+    def ev(title, iso, **kw):
+        return dict({"title": title, "url": "https://src/" + title.replace(" ", "-"), "date_iso": iso, "detail": "", "tags": [], "attendable": True}, **kw)
+    return [{"section": "Events", "events": [
+        ev("Breakfast with Santa", "2026-12-05T09:00:00", registration_opens="2026-11-10", reg_badge="Sign-up opens Tue, Nov 10"),
+        ev("Santa's Workshop", "2026-11-14T10:00:00", detail="This event is sold out."),
+        ev("Photos with Santa", "2026-10-30T10:00:00"),   # before Nov 1
+        ev("Santa Run 5K", "2026-12-26T08:00:00"),         # after Dec 24
+        ev("Pumpkin Patch", "2026-11-14T10:00:00"),
+        ev("Breakfast with Santa", "2026-12-05T09:00:00"),  # duplicate
+    ]}]
+
+
+_NL = {"configured": True, "buttondown_username": "w", "headline": "h"}
+
+
+def test_santa_page_window_keywords_badges_and_empty_state():
+    # ROADMAP.md item 379.
+    today = date(2026, 10, 25)
+    picked = build_digest.select_santa_events(_santa_blocks(), today)
+    assert [e["title"] for e in picked] == ["Santa's Workshop", "Breakfast with Santa"]
+    entries = [{"region_name": "Palatine", "region_url": "https://x/palatine-60067/", "events": picked}, {"region_name": "Wheeling", "region_url": "https://x/wheeling-60090/", "events": []}]
+    page = build_digest.render_santa_page(entries, datetime(2026, 10, 25, 12, tzinfo=timezone.utc), None, _NL)
+    assert "<title>Breakfast with Santa &amp; Santa Visits 2026: Palatine and Wheeling | Within Ten</title>" in page
+    assert page.index("Sat, Nov 14") < page.index("Sat, Dec 5") and "Sign-up opens Tue, Nov 10" in page
+    assert page.count("Source says: sold out") == 1  # only where the source's own text says so
+    assert "remind:santa-2026" in page  # not yet in season: reminder signup
+    empty = build_digest.render_santa_page([{"region_name": "Palatine", "region_url": "https://x/p/", "events": []}], datetime(2026, 10, 25, 12, tzinfo=timezone.utc), None, _NL)
+    assert "Park districts usually post Santa events in early November" in empty
+    live = build_digest.render_santa_page(entries, datetime(2026, 11, 20, 12, tzinfo=timezone.utc), None, _NL)
+    assert "remind:santa" not in live and 'value="town:all"' in live
+    off = build_digest.render_santa_page(entries, datetime(2026, 12, 28, 12, tzinfo=timezone.utc), None, _NL)
+    assert "Santa Visits 2027" in off and "remind:santa-2027" in off
+    assert build_digest.SITE_BASE_URL + "santa/" in build_digest.collect_sitemap_urls([])
+    chosen = build_digest.select_event_page_events([], None, santa_entries=entries)
+    assert [e["title"] for e in chosen] == ["Santa's Workshop", "Breakfast with Santa"]

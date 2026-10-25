@@ -227,7 +227,7 @@
   {% if stats %}
   <p class="stat-line">
     <span><strong>{{ stats.region_count }}</strong> region{{ 's' if stats.region_count != 1 else '' }} covered</span>
-    <span><strong>{{ stats.weekend_count }}</strong> event{{ 's' if stats.weekend_count != 1 else '' }} listed this weekend across {{ stats.region_count }} town{{ 's' if stats.region_count != 1 else '' }}</span>
+    <span><strong>{{ stats.next_week_count }}</strong> event{{ 's' if stats.next_week_count != 1 else '' }} listed for the next 7 days across {{ stats.region_count }} town{{ 's' if stats.region_count != 1 else '' }}</span>
     {% if stats.issues_sent %}<span><strong>{{ stats.issues_sent }}</strong> weekly email issue{{ 's' if stats.issues_sent != 1 else '' }} sent since {{ stats.issues_since }}</span>{% endif %}
     <span>running since {{ stats.since }}</span>
   </p>

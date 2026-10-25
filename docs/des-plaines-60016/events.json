@@ -2,8 +2,8 @@
   "@context": "https://schema.org",
   "@type": "ItemList",
   "name": "Upcoming events in Des Plaines — Within Ten",
-  "dateModified": "2026-10-25T11:44:27+00:00",
-  "numberOfItems": 82,
+  "dateModified": "2026-10-25T13:52:56+00:00",
+  "numberOfItems": 72,
   "itemListElement": [
     {
       "@type": "ListItem",
@@ -2111,99 +2111,6 @@
       "position": 69,
       "item": {
         "@type": "Event",
-        "name": "Book a Teen Librarian",
-        "startDate": "2026-11-05T17:00:00-06:00",
-        "url": "https://withintenmiles.com/des-plaines-60016/#ev-book-a-teen-librarian-2026-11-05",
-        "eventStatus": "https://schema.org/EventScheduled",
-        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "location": {
-          "@type": "Place",
-          "name": "Des Plaines Public Library",
-          "address": {
-            "@type": "PostalAddress",
-            "addressCountry": "US",
-            "addressLocality": "Des Plaines",
-            "addressRegion": "IL",
-            "streetAddress": "1501 Ellinwood Street",
-            "postalCode": "60016"
-          }
-        },
-        "sameAs": "https://desplaines.libnet.info/event/16339449",
-        "organizer": {
-          "@type": "Organization",
-          "name": "Des Plaines Public Library",
-          "url": "https://desplaines.libnet.info"
-        },
-        "description": "Thursday, November 05 2026 5:00pm - 6:00pm \n Come in and get to know your teen librarians!"
-      }
-    },
-    {
-      "@type": "ListItem",
-      "position": 70,
-      "item": {
-        "@type": "Event",
-        "name": "Tech en el Forum (Spanish)",
-        "startDate": "2026-11-05T17:30:00-06:00",
-        "url": "https://withintenmiles.com/des-plaines-60016/#ev-tech-en-el-forum-spanish-2026-11-05",
-        "eventStatus": "https://schema.org/EventScheduled",
-        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "location": {
-          "@type": "Place",
-          "name": "Des Plaines Public Library",
-          "address": {
-            "@type": "PostalAddress",
-            "addressCountry": "US",
-            "addressLocality": "Des Plaines",
-            "addressRegion": "IL",
-            "streetAddress": "1501 Ellinwood Street",
-            "postalCode": "60016"
-          }
-        },
-        "sameAs": "https://desplaines.libnet.info/event/17571344",
-        "organizer": {
-          "@type": "Organization",
-          "name": "Des Plaines Public Library",
-          "url": "https://desplaines.libnet.info"
-        },
-        "description": "Thursday, November 05 2026 5:30pm - 7:30pm \n ¿Tiene alguna pregunta sobre tecnología o sobre cómo usar los servicios de la biblioteca? La asistencia se brinda…"
-      }
-    },
-    {
-      "@type": "ListItem",
-      "position": 71,
-      "item": {
-        "@type": "Event",
-        "name": "Monthly Writing Meet Up",
-        "startDate": "2026-11-05T18:30:00-06:00",
-        "url": "https://withintenmiles.com/des-plaines-60016/#ev-monthly-writing-meet-up-2026-11-05",
-        "eventStatus": "https://schema.org/EventScheduled",
-        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "location": {
-          "@type": "Place",
-          "name": "Des Plaines Public Library",
-          "address": {
-            "@type": "PostalAddress",
-            "addressCountry": "US",
-            "addressLocality": "Des Plaines",
-            "addressRegion": "IL",
-            "streetAddress": "1501 Ellinwood Street",
-            "postalCode": "60016"
-          }
-        },
-        "sameAs": "https://desplaines.libnet.info/event/16185864",
-        "organizer": {
-          "@type": "Organization",
-          "name": "Des Plaines Public Library",
-          "url": "https://desplaines.libnet.info"
-        },
-        "description": "Thursday, November 05 2026 6:30pm - 8:30pm \n Meet fellow writers, network, and meet your deadlines; bring your laptop and bring your inspiration!"
-      }
-    },
-    {
-      "@type": "ListItem",
-      "position": 72,
-      "item": {
-        "@type": "Event",
         "name": "BOURBON 'N BRASS SPEAKEASY: BLUES SHOW WITH BRANDYE PHILLIPS",
         "startDate": "2026-11-05T19:30:00-06:00",
         "url": "https://withintenmiles.com/des-plaines-60016/#ev-bourbon-n-brass-speakeasy-blues-show-with-brandye-phillips-2026-11-05",
@@ -2231,101 +2138,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 73,
-      "item": {
-        "@type": "Event",
-        "name": "Baby Book Time",
-        "startDate": "2026-11-06T10:00:00-06:00",
-        "url": "https://withintenmiles.com/des-plaines-60016/#ev-baby-book-time-2026-11-06",
-        "eventStatus": "https://schema.org/EventScheduled",
-        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "location": {
-          "@type": "Place",
-          "name": "Des Plaines Public Library",
-          "address": {
-            "@type": "PostalAddress",
-            "addressCountry": "US",
-            "addressLocality": "Des Plaines",
-            "addressRegion": "IL",
-            "streetAddress": "1501 Ellinwood Street",
-            "postalCode": "60016"
-          }
-        },
-        "sameAs": "https://desplaines.libnet.info/event/16431789",
-        "organizer": {
-          "@type": "Organization",
-          "name": "Des Plaines Public Library",
-          "url": "https://desplaines.libnet.info"
-        },
-        "description": "Friday, November 06 2026 10:00am - 11:00am \n To register, please contact Irene Tripkos at 847-789-5623. Verbal confirmation from Irene Tripkos is needed in…"
-      }
-    },
-    {
-      "@type": "ListItem",
-      "position": 74,
-      "item": {
-        "@type": "Event",
-        "name": "Downsizing and Decluttering",
-        "startDate": "2026-11-06T14:00:00-06:00",
-        "url": "https://withintenmiles.com/des-plaines-60016/#ev-downsizing-and-decluttering-2026-11-06",
-        "eventStatus": "https://schema.org/EventScheduled",
-        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "location": {
-          "@type": "Place",
-          "name": "Des Plaines Public Library",
-          "address": {
-            "@type": "PostalAddress",
-            "addressCountry": "US",
-            "addressLocality": "Des Plaines",
-            "addressRegion": "IL",
-            "streetAddress": "1501 Ellinwood Street",
-            "postalCode": "60016"
-          }
-        },
-        "sameAs": "https://desplaines.libnet.info/event/17140480",
-        "organizer": {
-          "@type": "Organization",
-          "name": "Des Plaines Public Library",
-          "url": "https://desplaines.libnet.info"
-        },
-        "description": "Friday, November 06 2026 2:00pm - 3:30pm \n Helpful for older adults and empty nesters."
-      }
-    },
-    {
-      "@type": "ListItem",
-      "position": 75,
-      "item": {
-        "@type": "Event",
-        "name": "Friday Night Films",
-        "startDate": "2026-11-06T18:30:00-06:00",
-        "url": "https://withintenmiles.com/des-plaines-60016/#ev-friday-night-films-2026-11-06",
-        "eventStatus": "https://schema.org/EventScheduled",
-        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "location": {
-          "@type": "Place",
-          "name": "Des Plaines Public Library",
-          "address": {
-            "@type": "PostalAddress",
-            "addressCountry": "US",
-            "addressLocality": "Des Plaines",
-            "addressRegion": "IL",
-            "streetAddress": "1501 Ellinwood Street",
-            "postalCode": "60016"
-          }
-        },
-        "sameAs": "https://desplaines.libnet.info/event/16020452",
-        "organizer": {
-          "@type": "Organization",
-          "name": "Des Plaines Public Library",
-          "url": "https://desplaines.libnet.info"
-        },
-        "description": "Friday, November 06 2026 6:30pm - 8:15pm \n A free screening of the independent film The Invite.",
-        "isAccessibleForFree": true
-      }
-    },
-    {
-      "@type": "ListItem",
-      "position": 76,
+      "position": 70,
       "item": {
         "@type": "Event",
         "name": "BOURBON 'N BRASS SPEAKEASY: LIVE JAZZ, POP AND R&B with MICHAEL ROSS BAND",
@@ -2355,131 +2168,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 77,
-      "item": {
-        "@type": "Event",
-        "name": "ACT Practice Test",
-        "startDate": "2026-11-07T09:00:00-06:00",
-        "url": "https://withintenmiles.com/des-plaines-60016/#ev-act-practice-test-2026-11-07",
-        "eventStatus": "https://schema.org/EventScheduled",
-        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "location": {
-          "@type": "Place",
-          "name": "Des Plaines Public Library",
-          "address": {
-            "@type": "PostalAddress",
-            "addressCountry": "US",
-            "addressLocality": "Des Plaines",
-            "addressRegion": "IL",
-            "streetAddress": "1501 Ellinwood Street",
-            "postalCode": "60016"
-          }
-        },
-        "sameAs": "https://desplaines.libnet.info/event/16696533",
-        "organizer": {
-          "@type": "Organization",
-          "name": "Des Plaines Public Library",
-          "url": "https://desplaines.libnet.info"
-        },
-        "description": "Saturday, November 07 2026 9:00am - 1:00pm \n Find out your starting score and identify your strengths and weaknesses by taking the ACT Practice Test presented…"
-      }
-    },
-    {
-      "@type": "ListItem",
-      "position": 78,
-      "item": {
-        "@type": "Event",
-        "name": "Polyglot Toastmasters (German Speaking Club)",
-        "startDate": "2026-11-07T09:30:00-06:00",
-        "url": "https://withintenmiles.com/des-plaines-60016/#ev-polyglot-toastmasters-german-speaking-club-2026-11-07",
-        "eventStatus": "https://schema.org/EventScheduled",
-        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "location": {
-          "@type": "Place",
-          "name": "Des Plaines Public Library",
-          "address": {
-            "@type": "PostalAddress",
-            "addressCountry": "US",
-            "addressLocality": "Des Plaines",
-            "addressRegion": "IL",
-            "streetAddress": "1501 Ellinwood Street",
-            "postalCode": "60016"
-          }
-        },
-        "sameAs": "https://desplaines.libnet.info/event/17198360",
-        "organizer": {
-          "@type": "Organization",
-          "name": "Des Plaines Public Library",
-          "url": "https://desplaines.libnet.info"
-        },
-        "description": "Saturday, November 07 2026 9:30am - 11:30am \n Barb 773-914-7405 or 847-566-5389"
-      }
-    },
-    {
-      "@type": "ListItem",
-      "position": 79,
-      "item": {
-        "@type": "Event",
-        "name": "Life Drawing at the Library 2026",
-        "startDate": "2026-11-07T10:00:00-06:00",
-        "url": "https://withintenmiles.com/des-plaines-60016/#ev-life-drawing-at-the-library-2026-2026-11-07",
-        "eventStatus": "https://schema.org/EventScheduled",
-        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "location": {
-          "@type": "Place",
-          "name": "Des Plaines Public Library",
-          "address": {
-            "@type": "PostalAddress",
-            "addressCountry": "US",
-            "addressLocality": "Des Plaines",
-            "addressRegion": "IL",
-            "streetAddress": "1501 Ellinwood Street",
-            "postalCode": "60016"
-          }
-        },
-        "sameAs": "https://desplaines.libnet.info/event/15980373",
-        "organizer": {
-          "@type": "Organization",
-          "name": "Des Plaines Public Library",
-          "url": "https://desplaines.libnet.info"
-        },
-        "description": "Saturday, November 07 2026 10:00am - 12:00pm \n Learn to draw the human body with a clothed model, located in The Canvas on the 4th floor. Drop in with no…"
-      }
-    },
-    {
-      "@type": "ListItem",
-      "position": 80,
-      "item": {
-        "@type": "Event",
-        "name": "Fall for Fabric",
-        "startDate": "2026-11-07T10:30:00-06:00",
-        "url": "https://withintenmiles.com/des-plaines-60016/#ev-fall-for-fabric-2026-11-07",
-        "eventStatus": "https://schema.org/EventScheduled",
-        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "location": {
-          "@type": "Place",
-          "name": "Des Plaines Public Library",
-          "address": {
-            "@type": "PostalAddress",
-            "addressCountry": "US",
-            "addressLocality": "Des Plaines",
-            "addressRegion": "IL",
-            "streetAddress": "1501 Ellinwood Street",
-            "postalCode": "60016"
-          }
-        },
-        "sameAs": "https://desplaines.libnet.info/event/17515372",
-        "organizer": {
-          "@type": "Organization",
-          "name": "Des Plaines Public Library",
-          "url": "https://desplaines.libnet.info"
-        },
-        "description": "Saturday, November 07 2026 10:30am - 11:30am \n Transform a plain glass plate into a stunning autumn accent using Mod Podge and fabric prints."
-      }
-    },
-    {
-      "@type": "ListItem",
-      "position": 81,
+      "position": 71,
       "item": {
         "@type": "Event",
         "name": "MADE IN AMERICA: A TRIBUTE TO TOBY KEITH with SPECIAL GUEST CHRISTIAN AS KENNY CHESNEY",
@@ -2509,7 +2198,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 82,
+      "position": 72,
       "item": {
         "@type": "Event",
         "name": "BOURBON 'N BRASS SPEAKEASY: LIVE JAZZ with THE BOOTLEGGERS featuring LAURA LOPARDO on VOCALS",

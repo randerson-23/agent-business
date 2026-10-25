@@ -220,7 +220,7 @@ doesn't re-suggest something already shipped.
 
 **Build queue (by deadline; refreshed by the research loop, item 346).**
 Pick from the top unless the owner has flagged something else:
-0. **384** (the sponsor page's shrinking count). **379** (/santa/, live by Nov 1). **381** (one card for repeated sessions).
+0. **381** (one card for repeated sessions).
 2. **323**: leaf pickup (in season now).
 3. **313, 314**: the sales mock-up and starter pack (before outreach).
 4. **328** (probe first), then **325** (by Nov 15), then the rest by
@@ -17900,7 +17900,7 @@ once more. It also gives the holiday pitch one current, citable number.
 
 #### P1 (new)
 
-379. **A cross-town "Santa near you" page, live Nov 1 – Dec 24.** Build
+379. ✅ DONE (`/santa/`: Santa/Kris Kringle title match, Nov 1 - Dec 24 of the season year, grouped by date with town colours, sign-up badge from item 327 and "Source says: sold out" only when the source text says so, `/e/` pages for every Santa event inside the cap, linked from the hub holiday banner and `/holidays/`, in the sitemap; before Nov 1 and after Dec 24 it shows the early-November empty state and a `remind:santa-<year>` signup, and after Dec 24 it retitles for next year; tests) **A cross-town "Santa near you" page, live Nov 1 – Dec 24.** Build
      loop:
 
      - **`/santa/`**: every Santa event across the five towns in the
@@ -18007,7 +18007,7 @@ proof box on the day a buyer is most likely to look, a Sunday.
 
 #### P1 (new)
 
-384. **A proof-box event count that doesn't shrink through the week.**
+384. ✅ DONE (the proof box counts attendable, dated, deduplicated events in the next 7 days across towns; tests) **A proof-box event count that doesn't shrink through the week.**
      Design/UX, `sponsor.html.j2`: replace *"N events listed this weekend
      across 5 towns"* with ***"N events listed for the next 7 days across
      5 towns"***, counted from the same data as `events.json` (attendable,

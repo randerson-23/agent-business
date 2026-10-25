@@ -2228,6 +2228,87 @@ def select_holiday_events(blocks: list[dict], local_today: date) -> list[dict]:
     return picked[:HOLIDAY_EVENTS_CAP]
 
 
+# ROADMAP.md item 379: the cross-town /santa/ page. Title match only, like
+# the holiday selection; the window is Nov 1 - Dec 24 of the season's year.
+SANTA_TITLE = re.compile(r"\b(santa(?:['\u2019]s)?|kris kringle)\b", re.IGNORECASE)
+_SOLD_OUT = re.compile(r"\bsold[- ]out\b", re.IGNORECASE)
+
+
+def santa_season_year(today: date) -> int:
+    """The year the page is about: this year until Dec 24, next year after."""
+    return today.year if today <= date(today.year, 12, 24) else today.year + 1
+
+
+def santa_in_season(today: date) -> bool:
+    return date(today.year, 11, 1) <= today <= date(today.year, 12, 24)
+
+
+def select_santa_events(blocks: list[dict], today: date) -> list[dict]:
+    """A town's dated Santa events from today through Dec 24 of the season's
+    year (never before Nov 1), soonest first."""
+    year = santa_season_year(today)
+    start, end = max(today, date(year, 11, 1)), date(year, 12, 24)
+    picked, seen = [], set()
+    for block in blocks:
+        for event in block.get("events", []):
+            if not (event.get("title") and event.get("url") and event.get("date_iso")) or event.get("attendable") is False:
+                continue
+            try:
+                day = datetime.fromisoformat(event["date_iso"]).date()
+            except ValueError:
+                continue
+            key = (event["title"].strip().lower(), event["date_iso"])
+            if start <= day <= end and SANTA_TITLE.search(event["title"]) and key not in seen:
+                seen.add(key)
+                picked.append(dict(event))
+    picked.sort(key=lambda e: e["date_iso"])
+    return picked
+
+
+def render_santa_page(entries: list[dict], now: datetime, analytics: dict | None = None, newsletter: dict | None = None, event_page_paths: set[str] | None = None) -> str:
+    """The /santa/ page. `entries` is [{region_name, region_url, events}]."""
+    today = now.astimezone(LOCAL_TZ).date()
+    year = santa_season_year(today)
+    in_season = santa_in_season(today)
+    town_names = _join_names([e["region_name"] for e in entries])
+    rows = []
+    for i, entry in enumerate(entries):
+        color = EMAIL_TOWN_COLORS[i % len(EMAIL_TOWN_COLORS)][0]
+        for ev in entry.get("events") or []:
+            path = event_page_path(ev)
+            page_url = SITE_BASE_URL + path if path in (event_page_paths or set()) else f"{entry['region_url']}#{ev.get('anchor_id') or event_anchor_id(ev)}"
+            rows.append({
+                "title": display_title(ev["title"]), "town": entry["region_name"], "color": color, "date_iso": ev["date_iso"],
+                "time_label": event_time_label(ev["date_iso"]), "page_url": page_url, "reg_badge": ev.get("reg_badge"),
+                "sold_out": bool(_SOLD_OUT.search(f"{ev['title']} {ev.get('detail') or ''}")),
+            })
+    rows.sort(key=lambda r: r["date_iso"])
+    days = []
+    for r in rows:
+        label = event_date_label(r["date_iso"])
+        if not days or days[-1]["label"] != label:
+            days.append({"label": label, "events": []})
+        days[-1]["events"].append(r)
+    pattern = "Breakfast with Santa & Santa Visits"
+    page_title = f"{pattern} {year}: {town_names} | Within Ten"
+    return get_template_env().get_template("santa.html.j2").render(
+        page_title=page_title,
+        description=f"Every Santa event in {town_names} in {year}: breakfast with Santa, Santa visits, photos and parades, each linked to the town's own listing.",
+        heading=f"Santa near you, {year}",
+        subheading=f"Breakfast with Santa, Santa visits and photos in {town_names}, each linked to the listing it came from.",
+        days=days,
+        empty_message="Park districts usually post Santa events in early November; they appear here as soon as they do." if year == today.year else f"Santa events for {year} are usually posted in early November. Sign up below and we'll email you when they appear.",
+        reminder_tag=None if in_season else f"remind:santa-{year}",
+        reminder_headline=f"Email me when the {year} Santa events are posted",
+        newsletter=newsletter or {"configured": False},
+        hub_url=SITE_BASE_URL,
+        canonical_url=SITE_BASE_URL + "santa/",
+        generated_at=now.strftime("%Y-%m-%d %H:%M UTC"),
+        analytics=analytics,
+        og_image_url=SITE_BASE_URL + "og/default.png",
+    )
+
+
 def _parse_promo_day(value) -> date | None:
     """A promotion's YYYY-MM-DD field. YAML turns an unquoted date into a
     date object, so accept that as well as a string."""
@@ -4054,7 +4135,7 @@ def event_page_path(event: dict) -> str:
     return f"e/{(event.get('date_iso') or '')[:10]}-{slug}/"
 
 
-def select_event_page_events(sections: list[dict], tot_entries: list[dict] | None = None, limit: int = EVENT_PAGE_CAP) -> list[dict]:
+def select_event_page_events(sections: list[dict], tot_entries: list[dict] | None = None, limit: int = EVENT_PAGE_CAP, santa_entries: list[dict] | None = None) -> list[dict]:
     """The few events that get their own page (ROADMAP.md item 369), at most
     `limit`: paid Featured/Event Promo events, the week's "Don't miss" picks
     and the weekend's trunk-or-treats, in that order. Never all events (that
@@ -4086,6 +4167,9 @@ def select_event_page_events(sections: list[dict], tot_entries: list[dict] | Non
         for e in entry.get("events") or []:
             if TRUNK_OR_TREAT.search(e.get("title", "")):
                 add(dict(e, town=e.get("town") or entry["region_name"]), {"region_url": entry.get("region_url")})
+    for entry in santa_entries or []:  # item 379: every Santa event, within the cap
+        for e in entry.get("events") or []:
+            add(dict(e, town=e.get("town") or entry["region_name"]), {"region_url": entry.get("region_url")})
     return chosen
 
 
@@ -4198,12 +4282,12 @@ def event_page_more_links(entry: dict, sections: list[dict], limit: int = 3) -> 
     return more
 
 
-def write_event_pages(sections: list[dict], tot_entries: list[dict], now: datetime, newsletter: dict | None, analytics: dict | None) -> list[dict]:
+def write_event_pages(sections: list[dict], tot_entries: list[dict], now: datetime, newsletter: dict | None, analytics: dict | None, santa_entries: list[dict] | None = None) -> list[dict]:
     """Select, store and write the `/e/` pages; returns the active (indexable,
     in-sitemap) ones. Expired pages are rewritten noindex; pages past the
     delete age are removed from disk and the registry."""
     today = now.astimezone(LOCAL_TZ).date()
-    registry, active, expired, deleted = update_event_pages(load_event_page_registry(), select_event_page_events(sections, tot_entries), today)
+    registry, active, expired, deleted = update_event_pages(load_event_page_registry(), select_event_page_events(sections, tot_entries, santa_entries=santa_entries), today)
     colors = {s["region_url"]: EMAIL_TOWN_COLORS[i % len(EMAIL_TOWN_COLORS)][0] for i, s in enumerate(sections)}
     for group, is_expired in ((active, False), (expired, True)):
         for entry in group:
@@ -4232,6 +4316,7 @@ def collect_sitemap_urls(region_summaries: list[dict], issues: list[dict] | None
         SITE_BASE_URL + "about/",
         SITE_BASE_URL + "trick-or-treat/",
         SITE_BASE_URL + "holidays/",
+        SITE_BASE_URL + "santa/",
     ]
     for r in region_summaries:
         base = SITE_BASE_URL + r["path"]
@@ -4593,6 +4678,26 @@ def _event_list_item(event: dict, page_url: str, position: int) -> dict:
     own_page = event_page_path(event) if event.get("date_iso") else None
     url = SITE_BASE_URL + own_page if own_page in ACTIVE_EVENT_PAGE_PATHS else f"{page_url}#{event.get('anchor_id') or event_anchor_id(event)}"
     return {"@type": "ListItem", "position": position, "item": event_jsonld(event, url)}
+
+
+def count_next_seven_days(groups: list[tuple[str, str, list[dict]]], today: date) -> int:
+    """ROADMAP.md item 384: attendable, dated events in the next 7 days
+    (today included) across every group, one per title and start time. The
+    sponsor page's proof number: a rolling window, so it doesn't shrink as
+    the weekend passes."""
+    end = today + timedelta(days=7)
+    seen = set()
+    for _name, _url, events in groups:
+        for e in events:
+            if not e.get("title") or not e.get("date_iso") or e.get("attendable") is False:
+                continue
+            try:
+                day = date.fromisoformat(e["date_iso"][:10])
+            except ValueError:
+                continue
+            if today <= day < end:
+                seen.add((e["title"].strip().lower(), e["date_iso"]))
+    return len(seen)
 
 
 def build_events_json(groups: list[tuple[str, str, list[dict]]], name: str, now: datetime) -> str:
@@ -6567,6 +6672,7 @@ def main() -> None:
     link_health = load_link_health()
     link_candidates: list[dict] = []
     holidays_entries = []
+    santa_entries: list[dict] = []
     email_weather_by_region: dict[str, list[dict]] = {}
     combined_email_sections = []
     total_dated, total_events = 0, 0
@@ -7004,6 +7110,7 @@ def main() -> None:
                 dict(e, town=e.get("town") or region["name"], state=e.get("state") or region.get("state"))
                 for e in select_holiday_events(blocks, local_today)
             ]
+        santa_entries.append({"region_name": region["name"], "region_url": SITE_BASE_URL + region_id + "/", "events": [dict(e, town=e.get("town") or region["name"], state=e.get("state") or region.get("state")) for e in select_santa_events(blocks, local_today)]})
         # ROADMAP.md item 258: the town's holiday page - free events from its
         # own feeds plus any paid, labelled listings.
         holiday_listings = build_holiday_listings(sponsors_cfg, region_id, local_today)
@@ -7122,7 +7229,7 @@ def main() -> None:
         )
 
     # ROADMAP.md item 369: single-event pages for the week's few events that matter.
-    active_event_pages = write_event_pages(combined_email_sections, trick_or_treat_entries, now, newsletter, analytics)
+    active_event_pages = write_event_pages(combined_email_sections, trick_or_treat_entries, now, newsletter, analytics, santa_entries)
 
     hub_stats = {
         "region_count": len(region_summaries),
@@ -7235,7 +7342,7 @@ def main() -> None:
     sponsor_availability = build_sponsor_availability(sponsors_cfg, region_summaries)
     sponsor_stats = {
         "region_count": len(region_summaries),
-        "weekend_count": hub_stats["weekend_count"],
+        "next_week_count": count_next_seven_days(events_json_groups, now.astimezone(LOCAL_TZ).date()),
         "since": LAUNCH_DATE.strftime("%b %-d, %Y"),
         **sponsor_issue_stats(now),
     }
@@ -7287,6 +7394,10 @@ def main() -> None:
     holidays_dir.mkdir(parents=True, exist_ok=True)
     (holidays_dir / "index.html").write_text(render_holidays_page(holidays_entries, now, analytics, newsletter, contact_email), encoding="utf-8")
     logger.info("Wrote %s", holidays_dir / "index.html")
+    santa_dir = OUTPUT_DIR / "santa"
+    santa_dir.mkdir(parents=True, exist_ok=True)
+    (santa_dir / "index.html").write_text(render_santa_page(santa_entries, now, analytics, newsletter, {e["path"] for e in active_event_pages}), encoding="utf-8")
+    logger.info("Wrote %s", santa_dir / "index.html")
 
     for kind in THANKS_PAGES:
         thanks_dir = OUTPUT_DIR / "thanks" / kind
