@@ -2,7 +2,7 @@
   "@context": "https://schema.org",
   "@type": "ItemList",
   "name": "Upcoming events across every region — Within Ten",
-  "dateModified": "2026-10-25T06:00:19+00:00",
+  "dateModified": "2026-10-25T11:44:27+00:00",
   "numberOfItems": 217,
   "itemListElement": [
     {
@@ -222,7 +222,7 @@
         "@type": "Event",
         "name": "ITALIAN BRED: A CELEBRATION OF FAMILY, CULTURE & COMEDY",
         "startDate": "2026-10-25T14:00:00-05:00",
-        "url": "https://withintenmiles.com/des-plaines-60016/#ev-italian-bred-a-celebration-of-family-culture-comedy-2026-10-25",
+        "url": "https://withintenmiles.com/e/2026-10-25-italian-bred-a-celebration-of-family-culture-comedy/",
         "eventStatus": "https://schema.org/EventScheduled",
         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
         "location": {
