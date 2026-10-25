@@ -2561,6 +2561,19 @@ AUDIENCE_MIN_VISITS_30D = 500
 AUDIENCE_MIN_SUBSCRIBERS = 50
 
 
+def sponsor_issue_stats(now: datetime, path: Path | None = None) -> dict:
+    """ROADMAP.md item 351: what the sponsor page can say about the email
+    without inventing anything - how many issues have gone out and since
+    when, counted from `data/send_history.json` (entries dated in the past)."""
+    try:
+        history = json.loads((path or ROOT / "data" / "send_history.json").read_text(encoding="utf-8"))
+    except (OSError, ValueError):
+        return {"issues_sent": 0, "issues_since": None}
+    days = sorted(h["timestamp"][:10] for h in history if isinstance(h, dict) and str(h.get("timestamp") or "")[:10] <= now.date().isoformat())
+    since = datetime.fromisoformat(days[0]).strftime("%b %-d, %Y") if days else None
+    return {"issues_sent": len(days), "issues_since": since}
+
+
 def load_audience_line(path: Path = AUDIENCE_PATH) -> dict | None:
     """The sponsor page's "Audience, last 30 days" numbers (ROADMAP.md item
     266), only from a real snapshot and only above a floor (at least 500
@@ -5257,7 +5270,10 @@ def load_relevance_config() -> dict:
         items = [str(w).lower() for w in data.get(key) or []]
         return re.compile(r"(?<!\w)(?:" + "|".join(re.escape(w) for w in items) + r")(?!\w)", re.I) if items else None
 
-    return {"boost_tags": boost, "adult_pattern": pattern, "partisan_pattern": phrases("exclude_partisan"), "civic_pattern": phrases("keep_civic")}
+    return {
+        "boost_tags": boost, "adult_pattern": pattern, "partisan_pattern": phrases("exclude_partisan"), "civic_pattern": phrases("keep_civic"),
+        "pick_min_score": int(data.get("pick_min_score") or 0), "not_a_pick_pattern": phrases("not_a_pick"),
+    }
 
 
 def filter_partisan_events(blocks: list[dict], config: dict | None = None) -> tuple[list[dict], list[dict]]:
@@ -5339,6 +5355,17 @@ def family_relevance(event: dict) -> int:
     if cfg["adult_pattern"] is not None:
         score -= 2 * len(cfg["adult_pattern"].findall(event.get("title") or ""))
     return score
+
+
+def is_pick_worthy(event: dict) -> bool:
+    """ROADMAP.md item 380: only an event that reaches the minimum family
+    score and is not a class, service or pick-up kit may be a "pick". Weak
+    events stay on every list; they just never lead one."""
+    cfg = load_relevance_config()
+    pattern = cfg.get("not_a_pick_pattern")
+    if pattern is not None and pattern.search(event.get("title") or ""):
+        return False
+    return family_relevance(event) >= cfg.get("pick_min_score", 0)
 
 
 def weekend_display_key(event: dict) -> tuple:
@@ -5454,16 +5481,22 @@ def pick_email_top_picks(blocks: list[dict], limit: int = 3) -> list[dict]:
     list and must never be presented as an editorial pick), then the
     strongest of those across towns. Ties go to the earlier event. Needs at
     least two towns with something to pick, or the section is skipped."""
-    candidates = []
+    candidates, spare = [], []
     for block in blocks:
-        pool = [e for e in block.get("attendable_events") or [] if not e.get("sponsored_by")]
+        pool = [e for e in block.get("attendable_events") or [] if not e.get("sponsored_by") and is_pick_worthy(e)]
         if not pool:
-            continue
-        best = sorted(pool, key=lambda e: (-family_relevance(e), e.get("date_iso") or "9999"))[0]
-        candidates.append(dict(best, pick_town=block["region_name"], pick_color=block.get("color", EMAIL_TOWN_COLORS[0][0])))
+            continue  # item 380: a town with nothing good contributes no pick
+        ranked = sorted(pool, key=lambda e: (-family_relevance(e), e.get("date_iso") or "9999"))
+        color = block.get("color", EMAIL_TOWN_COLORS[0][0])
+        candidates.append(dict(ranked[0], pick_town=block["region_name"], pick_color=color))
+        spare += [dict(e, pick_town=block["region_name"], pick_color=color) for e in ranked[1:]]
     if len(candidates) < 2:
         return []
-    candidates.sort(key=lambda e: (-family_relevance(e), e.get("date_iso") or "9999"))
+    key = lambda e: (-family_relevance(e), e.get("date_iso") or "9999")  # noqa: E731
+    candidates.sort(key=key)
+    if len(candidates) < limit:  # the empty towns' slots go to the strongest events elsewhere
+        spare.sort(key=key)
+        candidates += spare[: limit - len(candidates)]
     return candidates[:limit]
 
 
@@ -7202,8 +7235,9 @@ def main() -> None:
     sponsor_availability = build_sponsor_availability(sponsors_cfg, region_summaries)
     sponsor_stats = {
         "region_count": len(region_summaries),
-        "event_count": total_events,
+        "weekend_count": hub_stats["weekend_count"],
         "since": LAUNCH_DATE.strftime("%b %-d, %Y"),
+        **sponsor_issue_stats(now),
     }
     sponsor_html = render_sponsor_page(
         sponsor_availability,

@@ -61,3 +61,34 @@ keep_civic:
   - league of women voters
   - candidate forum
   - candidates forum
+
+# ROADMAP.md item 380: a pick (the email's "Don't miss", /this-weekend/ and
+# /join/) must reach this family score and must not be a class, service or
+# pick-up kit. These events still appear on every list; they just never lead
+# one. Matched whole-word, case-insensitively, on the title.
+pick_min_score: 1
+
+not_a_pick:
+  - cpr
+  - first aid
+  - esl
+  - tax
+  - taxes
+  - medicare
+  - resume
+  - résumé
+  - aarp
+  - notary
+  - play packs
+  - play pack
+  - take & make
+  - take and make
+  - grab & go
+  - grab and go
+  - kit
+  - kits
+  - class
+  - classes
+  - lesson
+  - lessons
+  - workshop

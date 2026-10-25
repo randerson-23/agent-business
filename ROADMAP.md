@@ -220,7 +220,7 @@ doesn't re-suggest something already shipped.
 
 **Build queue (by deadline; refreshed by the research loop, item 346).**
 Pick from the top unless the owner has flagged something else:
-0. **380** (no weak picks; the email's Don't miss uses the same selection). **379** (/santa/, live by Nov 1). **351** (the sponsor page's proof box). **381** (one card for repeated sessions).
+0. **379** (/santa/, live by Nov 1). **381** (one card for repeated sessions).
 2. **323**: leaf pickup (in season now).
 3. **313, 314**: the sales mock-up and starter pack (before outreach).
 4. **328** (probe first), then **325** (by Nov 15), then the rest by
@@ -17165,7 +17165,7 @@ channel.
 
 #### P1 (new)
 
-351. **Replace the sponsor page's supply-side proof with true reader-side
+351. ✅ DONE (event count this weekend across towns, issues sent since the first send from `send_history.json`, and the "once the list passes 50 subscribers" line below the audience floor; "live updates" removed; tests) **Replace the sponsor page's supply-side proof with true reader-side
      facts.** Design/UX, `sponsor.html.j2` only:
 
      - Remove *"N live updates indexed this week"*.
@@ -17932,7 +17932,7 @@ once more. It also gives the holiday pitch one current, citable number.
      indexed, retitled for next year, with a reminder signup tagged
      `remind:santa-2027`.
 
-380. **A quality floor for picks: no pick is better than a weak one.**
+380. ✅ DONE (`pick_min_score: 1` and a `not_a_pick` title list in `config/relevance.yaml`; `is_pick_worthy`; weak towns contribute none and their slots go to the strongest spare events; tests) **A quality floor for picks: no pick is better than a weak one.**
      Build loop, the pick selection shared by `/this-weekend/` and the
      email's "Don't miss":
 

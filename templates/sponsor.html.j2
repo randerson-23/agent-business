@@ -227,9 +227,13 @@
   {% if stats %}
   <p class="stat-line">
     <span><strong>{{ stats.region_count }}</strong> region{{ 's' if stats.region_count != 1 else '' }} covered</span>
-    <span><strong>{{ stats.event_count }}</strong> live update{{ 's' if stats.event_count != 1 else '' }} indexed this week</span>
+    <span><strong>{{ stats.weekend_count }}</strong> event{{ 's' if stats.weekend_count != 1 else '' }} listed this weekend across {{ stats.region_count }} town{{ 's' if stats.region_count != 1 else '' }}</span>
+    {% if stats.issues_sent %}<span><strong>{{ stats.issues_sent }}</strong> weekly email issue{{ 's' if stats.issues_sent != 1 else '' }} sent since {{ stats.issues_since }}</span>{% endif %}
     <span>running since {{ stats.since }}</span>
   </p>
+  {% if not audience or audience.subscribers is none or audience.subscribers < 50 %}
+  <p class="stat-line" id="audience-pending">Reader numbers are published once the list passes 50 subscribers.</p>
+  {% endif %}
   {% endif %}
   {% if audience %}
   <p class="stat-line" id="audience">
