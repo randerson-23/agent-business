@@ -171,11 +171,24 @@ def test_render_sponsor_page_marks_annual_partner_recommended():
 
 
 def test_render_sponsor_page_shows_stat_line_when_stats_given():
-    stats = {"region_count": 4, "event_count": 12, "since": "Aug 26, 2026"}
+    stats = {"region_count": 4, "weekend_count": 12, "since": "Aug 26, 2026", "issues_sent": 6, "issues_since": "Sep 17, 2026"}
     html = build_digest.render_sponsor_page([], datetime.now(timezone.utc), stats=stats)
     assert "4</strong> region" in html
-    assert "12</strong> live update" in html
+    # ROADMAP.md item 351: reader-side facts only.
+    assert "12</strong> events listed this weekend across 4 towns" in html and "live update" not in html
+    assert "6</strong> weekly email issues sent since Sep 17, 2026" in html
+    assert "Reader numbers are published once the list passes 50 subscribers" in html
     assert "running since Aug 26, 2026" in html
+    big = build_digest.render_sponsor_page([], datetime.now(timezone.utc), stats=stats, audience={"visits": 900, "subscribers": 60, "ai_referrals": None, "as_of": "x"})
+    assert "once the list passes 50" not in big
+
+
+def test_sponsor_issue_stats_count_the_send_history(tmp_path):
+    path = tmp_path / "h.json"
+    path.write_text(json.dumps([{"timestamp": "2026-09-17T03:02:00+00:00"}, {"timestamp": "2026-10-22T00:00:00+00:00"}, {"timestamp": "2026-11-05T00:00:00+00:00"}]))
+    out = build_digest.sponsor_issue_stats(datetime(2026, 10, 25, tzinfo=timezone.utc), path)
+    assert out == {"issues_sent": 2, "issues_since": "Sep 17, 2026"}
+    assert build_digest.sponsor_issue_stats(datetime(2026, 10, 25, tzinfo=timezone.utc), tmp_path / "none.json")["issues_sent"] == 0
 
 
 def test_render_sponsor_page_omits_stat_line_when_no_stats():
@@ -6430,3 +6443,27 @@ def test_event_page_description_is_whole_sentences_and_more_links_fall_back_to_n
     assert more[0]["same_town"] and not more[1]["same_town"]
     one = build_digest.event_page_more_links(entry, sections, limit=1)
     assert [m["title"] for m in one] == ["Pumpkin Patch"]
+
+
+def test_picks_have_a_quality_floor_and_a_weak_town_gives_its_slot_away():
+    # ROADMAP.md item 380.
+    def ev(title, tags=(), day=24):
+        return {"title": title, "url": "https://s/" + title, "date_iso": f"2026-10-{day}T10:00:00", "tags": list(tags), "attendable": True}
+    assert not build_digest.is_pick_worthy(ev("CPR Class", ["free", "kid_friendly"]))
+    assert not build_digest.is_pick_worthy(ev("Play Packs", ["free", "kid_friendly"]))
+    assert not build_digest.is_pick_worthy(ev("Take & Make: Craft Kit", ["free"]))
+    assert not build_digest.is_pick_worthy(ev("Quiet Evening", []))  # score 0
+    assert build_digest.is_pick_worthy(ev("Fall Fest", ["free"]))
+    colors = [c for c, _ in build_digest.EMAIL_TOWN_COLORS]
+    blocks = [
+        {"region_name": "A", "color": colors[0], "attendable_events": [ev("CPR Class", ["free", "kid_friendly"]), ev("Quiet Evening")]},
+        {"region_name": "B", "color": colors[1], "attendable_events": [ev("Fall Fest", ["free", "kid_friendly"]), ev("Pumpkin Run", ["free", "outdoor"], 25)]},
+        {"region_name": "C", "color": colors[2], "attendable_events": [ev("Hayride", ["kid_friendly", "outdoor"])]},
+        {"region_name": "D", "color": colors[3], "attendable_events": [ev("Trunk Night", ["free", "kid_friendly", "outdoor"], 25)]},
+    ]
+    picks = build_digest.pick_email_top_picks(blocks, limit=6)
+    titles = [p["title"] for p in picks]
+    assert "CPR Class" not in titles and "Quiet Evening" not in titles and "A" not in [p["pick_town"] for p in picks[:3]]
+    assert titles[:3] == ["Trunk Night", "Fall Fest", "Hayride"] and len(picks) <= 6
+    assert "Pumpkin Run" in titles  # a spare strong event fills a slot a weak town gave up
+    assert build_digest.pick_email_top_picks(blocks[:1] + blocks[1:2][:0], limit=3) == []
