@@ -220,7 +220,7 @@ doesn't re-suggest something already shipped.
 
 **Build queue (by deadline; refreshed by the research loop, item 346).**
 Pick from the top unless the owner has flagged something else:
-0. **379** (/santa/, live by Nov 1). **381** (one card for repeated sessions).
+0. **386** (the sponsor page's shrinking count). **379** (/santa/, live by Nov 1). **381** (one card for repeated sessions).
 2. **323**: leaf pickup (in season now).
 3. **313, 314**: the sales mock-up and starter pack (before outreach).
 4. **328** (probe first), then **325** (by Nov 15), then the rest by
@@ -237,25 +237,19 @@ agreements): the research loop keeps at most **three open owner
 indefinitely. Quick actions that need no decision do not count against
 that limit.
 
-**This week (Oct 19–25), in order (item 343):**
+**This week (Oct 26 – Nov 1), in order (items 343, 383):**
 
-- **By Tue Oct 20, 7 min:** send the trick-or-treat note (step 8b) to
-  the Daily Herald, NBC Chicago and WGN, and use Search Console's
-  *Request indexing* on `/trick-or-treat/`. No outlet has a 2026 list yet.
-- **By Wed Oct 21, decide the $50 Meta test (item 276).** If yes, run it
-  Oct 22–31 for the five towns' ZIP codes, landing on `/trick-or-treat/`.
-  The build loop is preparing `META_AD_KIT.md` with the copy, images, ZIPs
-  and settings (item 344), so setup is about 10 minutes.
-  If the test works, expect to move to Buttondown's paid plan (about
-  $9/month as reported) once the list nears 100. The free plan stops at
-  100 (item 349).
-- **Optional, 10 min:** send `OUTREACH_TEMPLATES.md` §9 to two local
-  Facebook group admins, offering the trick-or-treat page as the first
-  post. It is the most admin-friendly post of the year (item 343).
+- **By Tue Oct 27, decide the $50 Meta test (item 383).** Either run the
+  ready kit (`META_AD_KIT.md`) Oct 27–31 at $10/day, landing on
+  `/trick-or-treat/`, or say "holiday instead" and it will run Nov 16 –
+  Dec 6. Or say "no" and it stops being asked.
 - **Any day, 2 min:** add the Bing API key as `BING_WEBMASTER_API_KEY`
-  (step 3c). IndexNow refused both keys.
-- **By Sat Oct 24, about an hour:** print the town flyer for one café and
-  one library desk (step 8g).
+  (step 3c). It's still unset, and Bing is still refusing the site's
+  pings.
+- **If not done yet, 7 min:** the trick-or-treat note to the Daily
+  Herald, NBC and WGN (step 8b). After Oct 28 it's too late to matter.
+- **Optional:** the café and library flyers (step 8g), and §9 to two
+  Facebook group admins.
 
 **Quick account actions — about 25 minutes in total, no decisions:**
 
@@ -17975,6 +17969,78 @@ early to sell out), and **Intuit QuickBooks' Oct 2026 holiday survey**
 (43% of planned spending aimed at small businesses). The design/UX angle
 is **the rebuilt `/this-weekend/` on a phone**: weak forced picks and
 repeated sessions.
+
+
+#### Research pass 2026-10-25 (hundred-and-second pass)
+
+Overnight the build loop shipped item 380 (the picks quality floor) and
+item 351 (reader-side facts on `/sponsor/`). The Oct 22 send's metrics
+land with today's backfill (about 13:00 UTC). The list is still **one
+subscriber**, and the repo shows no sign yet of the owner's three
+dated actions from last week: the Bing key is unset (`bing_api_status`
+is still empty), and nothing records a Meta decision. The Halloween ad
+window **closes Oct 31**. So this pass re-times the paid test, prices the
+two alternatives the loop hadn't checked, and reads the new `/sponsor/`
+proof box on the day a buyer is most likely to look, a Sunday.
+
+| Angle | What it is / what we found | Why it matters here |
+|---|---|---|
+| **Nextdoor Ads (self-serve)** (Nextdoor's UK launch release; a 2026 cost guide; agency blogs; Nextdoor's 2026 AI click-optimisation announcement as covered by eMarketer) | Self-serve **Ads Manager** with a very small minimum (a few pounds in the UK release; "no minimum" per one blog). Reported CPC around **$1–2.50 typical** (unverified guide). Targeting is by neighbourhood or postcode. Nextdoor reports its **AI click optimisation** cut median CPC by **75%** in a UK beta (vendor figure) | Nextdoor's users are exactly the homeowners in these five towns, and the platform is where item 303's free News pages would live. As a **second** paid test it's credible. It shouldn't run alongside Meta's first test, or neither result means anything (item 385) |
+| **Google Search ads** (WordStream's 2026 benchmark as cited by Enrich Labs; local PPC guides) | Average CPC **about $5.42** across 13,000+ search campaigns, with local-service clicks cheaper. No data for *"things to do"* queries, which are low-stakes and likely cheaper, but unconfirmed | **Skipped for now.** At even $2 a click, $50 buys about 25 visits. And the site already appears organically for these queries via Search Console (48 pages indexed), so paying Google for its own long-tail is the weakest use of a $50 test |
+| **The Meta test's timing** | The kit (item 344, plus item 350's v2 creatives) has been ready since Oct 20. The decision date (Oct 21) and the planned start (Oct 22) have passed with no recorded decision | A Halloween-hours ad loses its point on Nov 1. The test either runs **Oct 27–31** at **$10/day** (the same $50, a shorter, denser window), or it moves to the **holiday window**, landing on `/santa/` (item 379) and `/holidays/`, which have the same "dated local answer" shape (item 383) |
+| **The `/sponsor/` proof box on a Sunday (design/UX)** | After item 351 the box reads: *"5 regions covered · **11 events listed this weekend across 5 towns** · 6 weekly email issues sent since Sep 17, 2026 · Reader numbers are published once the list passes 50 subscribers."* The **11** comes from a Sunday-morning build, when "this weekend" is one day long. On a Friday the same box says 50-plus | A buyer comparing the site to Patch on a Sunday or Monday sees **11 events in five towns**: a number that understates the site by about 5×, and it is the first number on the sales page. The count should use a window that doesn't shrink through the week (item 386) |
+
+#### P1, owner (re-timed)
+
+383. **Re-time the $50 Meta test: Oct 27–31, or the holiday window.**
+     Replace the **"This week"** block in Needs Ryan with the Oct 26 –
+     Nov 1 version below. The test's rule stays item 276's (under $1 per
+     confirmed subscriber; measure by the `utm_source=meta` tag).
+
+     - **Option A (by Tue Oct 27, 10 minutes):** run the existing kit
+       for **Oct 27–31 at $10/day**, landing on `/trick-or-treat/`.
+     - **Option B (decide by Nov 10):** run it **Nov 16 – Dec 6 at about
+       $2.50/day**, landing on `/santa/` (once item 379 ships) or
+       `/holidays/`, with item 384's holiday creatives.
+     - If neither, record *"declined for 2026"* in item 276 and stop
+       asking.
+
+#### P1 (new)
+
+386. **A proof-box event count that doesn't shrink through the week.**
+     Design/UX, `sponsor.html.j2`: replace *"N events listed this weekend
+     across 5 towns"* with ***"N events listed for the next 7 days across
+     5 towns"***, counted from the same data as `events.json` (attendable,
+     dated, deduplicated). Keep the other three facts. Tests: a Sunday
+     build and a Friday build of the same fixture data give counts within
+     the same order of magnitude, and the label says "next 7 days".
+
+#### P2 (new)
+
+384. **Holiday variants of the ad creatives.** Build loop, the Pillow
+     renderer (items 344 and 350): a **"Santa & tree lightings near you"**
+     set at the same three sizes, listing each town's tree-lighting date
+     from `tree_lighting:` config (*"date TBA"* where unconfirmed, as on
+     `/holidays/`), the wordmark, and the *"Free weekly email"* band.
+     Add a holiday section to `META_AD_KIT.md` with copy, the Option B
+     dates and the landing URL with `utm_campaign=holiday-2026`.
+     Generate them from Nov 1. Tests: three sizes, and no date appears
+     that isn't in config.
+
+#### P3 / parked (new)
+
+385. **Nextdoor Ads as the second paid test, only after Meta's result.**
+     Parked. **Trigger:** item 276 or 383 has a recorded result, good or
+     bad. Then a $50, 10-day test in Nextdoor Ads Manager targeting the
+     five towns, landing on the same page the Meta test used, with
+     `utm_source=nextdoor`, so the two are comparable. Running both at
+     once would make neither readable.
+
+Competitors reviewed this pass: **Nextdoor Ads** (self-serve, small
+minimum, about $1–2.50 CPC reported; parked as the second test) and
+**Google Search ads** (about $5.42 average CPC; skipped for a $50 test).
+The design/UX angle is **the `/sponsor/` proof box on a Sunday**, where
+the headline number is about 5× too small.
 
 
 ## Working agreements for autonomous iteration
