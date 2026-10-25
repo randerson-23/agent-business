@@ -1,118 +1,30 @@
 {
   "arlington-heights-60005:Arlington Heights Memorial Library \u2014 Events": {
-    "exception_class": "ProxyError",
-    "status_code": null
-  },
-  "arlington-heights-60005:Arlington Heights Park District \u2014 Events": {
-    "exception_class": "ProxyError",
+    "exception_class": "SSLError",
     "status_code": null
   },
   "arlington-heights-60005:Arlington Heights School District 25 \u2014 Calendar": {
-    "exception_class": "ProxyError",
-    "status_code": null
-  },
-  "arlington-heights-60005:Metropolis Performing Arts Centre \u2014 Shows": {
-    "exception_class": "ProxyError",
-    "status_code": null
-  },
-  "arlington-heights-60005:Village of Arlington Heights \u2014 News": {
-    "exception_class": "ProxyError",
-    "status_code": null
-  },
-  "des-plaines-60016:City of Des Plaines \u2014 News": {
-    "exception_class": "ProxyError",
-    "status_code": null
-  },
-  "des-plaines-60016:Community Consolidated School District 62 \u2014 Calendar": {
-    "exception_class": "ProxyError",
-    "status_code": null
-  },
-  "des-plaines-60016:Des Plaines Park District \u2014 Events": {
-    "exception_class": "ProxyError",
-    "status_code": null
-  },
-  "des-plaines-60016:Des Plaines Public Library \u2014 Events": {
-    "exception_class": "ProxyError",
-    "status_code": null
-  },
-  "des-plaines-60016:Des Plaines Theatre \u2014 Events": {
-    "exception_class": "ProxyError",
-    "status_code": null
-  },
-  "mount-prospect-60056:Downtown Mount Prospect \u2014 Events": {
-    "exception_class": "ProxyError",
-    "status_code": null
+    "exception_class": "HTTPError",
+    "status_code": 404
   },
   "mount-prospect-60056:Experience Mount Prospect \u2014 Events": {
-    "exception_class": "ProxyError",
-    "status_code": null
-  },
-  "mount-prospect-60056:Mount Prospect Park District \u2014 Events": {
-    "exception_class": "ProxyError",
-    "status_code": null
-  },
-  "mount-prospect-60056:Mount Prospect Public Library \u2014 Events": {
-    "exception_class": "ProxyError",
-    "status_code": null
-  },
-  "mount-prospect-60056:Mount Prospect School District 57 \u2014 Calendar": {
-    "exception_class": "ProxyError",
-    "status_code": null
-  },
-  "mount-prospect-60056:Randhurst Village \u2014 Events": {
-    "exception_class": "ProxyError",
-    "status_code": null
+    "exception_class": "HTTPError",
+    "status_code": 403
   },
   "mount-prospect-60056:Village of Mount Prospect \u2014 Calendar": {
-    "exception_class": "ProxyError",
-    "status_code": null
-  },
-  "mount-prospect-60056:Village of Mount Prospect \u2014 News": {
-    "exception_class": "ProxyError",
-    "status_code": null
-  },
-  "palatine-60067:Community Consolidated School District 15 \u2014 Calendar": {
-    "exception_class": "ProxyError",
-    "status_code": null
-  },
-  "palatine-60067:Harper College \u2014 Public Events": {
-    "exception_class": "ProxyError",
-    "status_code": null
-  },
-  "palatine-60067:Palatine Park District \u2014 Events": {
-    "exception_class": "ProxyError",
-    "status_code": null
+    "exception_class": "HTTPError",
+    "status_code": 404
   },
   "palatine-60067:Palatine Public Library District \u2014 Events": {
-    "exception_class": "ProxyError",
-    "status_code": null
-  },
-  "palatine-60067:Township High School District 211 \u2014 Calendar": {
-    "exception_class": "ProxyError",
-    "status_code": null
-  },
-  "palatine-60067:Village of Palatine \u2014 Calendar": {
-    "exception_class": "ProxyError",
-    "status_code": null
-  },
-  "palatine-60067:Village of Palatine \u2014 News": {
-    "exception_class": "ProxyError",
-    "status_code": null
-  },
-  "wheeling-60090:Indian Trails Public Library \u2014 Events": {
-    "exception_class": "ProxyError",
-    "status_code": null
-  },
-  "wheeling-60090:Village of Wheeling \u2014 Calendar": {
-    "exception_class": "ProxyError",
-    "status_code": null
+    "exception_class": "HTTPError",
+    "status_code": 403
   },
   "wheeling-60090:Wheeling CCSD 21 \u2014 Calendar": {
-    "exception_class": "ProxyError",
-    "status_code": null
+    "exception_class": "HTTPError",
+    "status_code": 403
   },
   "wheeling-60090:Wheeling Park District \u2014 Events": {
-    "exception_class": "ProxyError",
-    "status_code": null
+    "exception_class": "HTTPError",
+    "status_code": 403
   }
 }

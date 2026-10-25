@@ -7,8 +7,8 @@ REFRESH-INTERVAL;VALUE=DURATION:PT12H
 X-PUBLISHED-TTL:PT12H
 BEGIN:VEVENT
 UID:wheeling-60090-2026-10-28-plan-commission-meeting-notice-of-cancellation@withintenmiles.com
-DTSTAMP:20261025T135256Z
-LAST-MODIFIED:20261025T135256Z
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
 SEQUENCE:0
 DTSTART:20261028T183000
 DTEND:20261028T193000
@@ -18,8 +18,8 @@ URL:https://www.wheelingil.gov/common/modules/iCalendar/iCalendar.aspx?feed=cale
 END:VEVENT
 BEGIN:VEVENT
 UID:wheeling-60090-2026-10-31-halloween-trick-or-treat-hours-3pm-to-7pm@withintenmiles.com
-DTSTAMP:20261025T135256Z
-LAST-MODIFIED:20261025T135256Z
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
 SEQUENCE:0
 DTSTART:20261031T150000
 DTEND:20261031T160000
@@ -29,8 +29,8 @@ URL:https://www.wheelingil.gov/common/modules/iCalendar/iCalendar.aspx?feed=cale
 END:VEVENT
 BEGIN:VEVENT
 UID:wheeling-60090-2026-11-02-village-board-regular-meeting@withintenmiles.com
-DTSTAMP:20261025T135256Z
-LAST-MODIFIED:20261025T135256Z
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
 SEQUENCE:0
 DTSTART:20261102T183000
 DTEND:20261102T193000
@@ -40,8 +40,8 @@ URL:https://www.wheelingil.gov/common/modules/iCalendar/iCalendar.aspx?feed=cale
 END:VEVENT
 BEGIN:VEVENT
 UID:wheeling-60090-2026-11-04-plan-commission-meeting@withintenmiles.com
-DTSTAMP:20261025T135256Z
-LAST-MODIFIED:20261025T135256Z
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
 SEQUENCE:0
 DTSTART:20261104T183000
 DTEND:20261104T193000
@@ -51,8 +51,8 @@ URL:https://www.wheelingil.gov/common/modules/iCalendar/iCalendar.aspx?feed=cale
 END:VEVENT
 BEGIN:VEVENT
 UID:wheeling-60090-2026-11-05-peer-jury@withintenmiles.com
-DTSTAMP:20261025T135256Z
-LAST-MODIFIED:20261025T135256Z
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
 SEQUENCE:0
 DTSTART:20261105T190000
 DTEND:20261105T200000
@@ -62,8 +62,8 @@ URL:https://www.wheelingil.gov/common/modules/iCalendar/iCalendar.aspx?feed=cale
 END:VEVENT
 BEGIN:VEVENT
 UID:wheeling-60090-2026-11-16-village-board-regular-meeting@withintenmiles.com
-DTSTAMP:20261025T135256Z
-LAST-MODIFIED:20261025T135256Z
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
 SEQUENCE:0
 DTSTART:20261116T183000
 DTEND:20261116T193000
@@ -73,8 +73,8 @@ URL:https://www.wheelingil.gov/common/modules/iCalendar/iCalendar.aspx?feed=cale
 END:VEVENT
 BEGIN:VEVENT
 UID:wheeling-60090-2026-11-18-plan-commission-meeting@withintenmiles.com
-DTSTAMP:20261025T135256Z
-LAST-MODIFIED:20261025T135256Z
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
 SEQUENCE:0
 DTSTART:20261118T183000
 DTEND:20261118T193000
@@ -84,8 +84,8 @@ URL:https://www.wheelingil.gov/common/modules/iCalendar/iCalendar.aspx?feed=cale
 END:VEVENT
 BEGIN:VEVENT
 UID:wheeling-60090-2026-11-22-lights-around-wheeling@withintenmiles.com
-DTSTAMP:20261025T135256Z
-LAST-MODIFIED:20261025T135256Z
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
 SEQUENCE:0
 DTSTART:20261122T163000
 DTEND:20261122T173000
@@ -95,8 +95,8 @@ URL:https://www.wheelingil.gov/common/modules/iCalendar/iCalendar.aspx?feed=cale
 END:VEVENT
 BEGIN:VEVENT
 UID:wheeling-60090-2026-11-26-thanksgiving-day-holiday-village-offices-are-closed-for-thanksgiv@withintenmiles.com
-DTSTAMP:20261025T135256Z
-LAST-MODIFIED:20261025T135256Z
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
 SEQUENCE:0
 DTSTART:20261126T080000
 DTEND:20261126T090000
@@ -106,8 +106,8 @@ URL:https://www.wheelingil.gov/common/modules/iCalendar/iCalendar.aspx?feed=cale
 END:VEVENT
 BEGIN:VEVENT
 UID:wheeling-60090-2026-11-27-thanksgiving-day-after-village-hall-is-closed-friday-november-2@withintenmiles.com
-DTSTAMP:20261025T135256Z
-LAST-MODIFIED:20261025T135256Z
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
 SEQUENCE:0
 DTSTART:20261127T080000
 DTEND:20261127T090000
@@ -117,8 +117,8 @@ URL:https://www.wheelingil.gov/common/modules/iCalendar/iCalendar.aspx?feed=cale
 END:VEVENT
 BEGIN:VEVENT
 UID:wheeling-60090-2026-12-02-plan-commission-meeting@withintenmiles.com
-DTSTAMP:20261025T135256Z
-LAST-MODIFIED:20261025T135256Z
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
 SEQUENCE:0
 DTSTART:20261202T183000
 DTEND:20261202T193000
@@ -128,8 +128,8 @@ URL:https://www.wheelingil.gov/common/modules/iCalendar/iCalendar.aspx?feed=cale
 END:VEVENT
 BEGIN:VEVENT
 UID:wheeling-60090-2026-12-03-peer-jury@withintenmiles.com
-DTSTAMP:20261025T135256Z
-LAST-MODIFIED:20261025T135256Z
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
 SEQUENCE:0
 DTSTART:20261203T190000
 DTEND:20261203T200000
@@ -139,8 +139,8 @@ URL:https://www.wheelingil.gov/common/modules/iCalendar/iCalendar.aspx?feed=cale
 END:VEVENT
 BEGIN:VEVENT
 UID:wheeling-60090-2026-12-07-village-board-regular-meeting@withintenmiles.com
-DTSTAMP:20261025T135256Z
-LAST-MODIFIED:20261025T135256Z
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
 SEQUENCE:0
 DTSTART:20261207T183000
 DTEND:20261207T193000
@@ -150,8 +150,8 @@ URL:https://www.wheelingil.gov/common/modules/iCalendar/iCalendar.aspx?feed=cale
 END:VEVENT
 BEGIN:VEVENT
 UID:wheeling-60090-2026-12-16-plan-commission-meeting@withintenmiles.com
-DTSTAMP:20261025T135256Z
-LAST-MODIFIED:20261025T135256Z
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
 SEQUENCE:0
 DTSTART:20261216T183000
 DTEND:20261216T193000
@@ -161,8 +161,8 @@ URL:https://www.wheelingil.gov/common/modules/iCalendar/iCalendar.aspx?feed=cale
 END:VEVENT
 BEGIN:VEVENT
 UID:wheeling-60090-2026-12-21-village-board-regular-meeting@withintenmiles.com
-DTSTAMP:20261025T135256Z
-LAST-MODIFIED:20261025T135256Z
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
 SEQUENCE:0
 DTSTART:20261221T183000
 DTEND:20261221T193000
@@ -172,8 +172,8 @@ URL:https://www.wheelingil.gov/common/modules/iCalendar/iCalendar.aspx?feed=cale
 END:VEVENT
 BEGIN:VEVENT
 UID:wheeling-60090-2026-12-25-village-offices-are-closed-for-the-christmas-day-holiday@withintenmiles.com
-DTSTAMP:20261025T135256Z
-LAST-MODIFIED:20261025T135256Z
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
 SEQUENCE:0
 DTSTART:20261225T080000
 DTEND:20261225T090000
@@ -183,8 +183,8 @@ URL:https://www.wheelingil.gov/common/modules/iCalendar/iCalendar.aspx?feed=cale
 END:VEVENT
 BEGIN:VEVENT
 UID:wheeling-60090-2027-01-04-village-board-regular-meeting@withintenmiles.com
-DTSTAMP:20261025T135256Z
-LAST-MODIFIED:20261025T135256Z
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
 SEQUENCE:0
 DTSTART:20270104T183000
 DTEND:20270104T193000
@@ -194,8 +194,8 @@ URL:https://www.wheelingil.gov/common/modules/iCalendar/iCalendar.aspx?feed=cale
 END:VEVENT
 BEGIN:VEVENT
 UID:wheeling-60090-2027-01-07-peer-jury@withintenmiles.com
-DTSTAMP:20261025T135256Z
-LAST-MODIFIED:20261025T135256Z
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
 SEQUENCE:0
 DTSTART:20270107T190000
 DTEND:20270107T200000
@@ -205,8 +205,8 @@ URL:https://www.wheelingil.gov/common/modules/iCalendar/iCalendar.aspx?feed=cale
 END:VEVENT
 BEGIN:VEVENT
 UID:wheeling-60090-2027-01-13-plan-commission-meeting@withintenmiles.com
-DTSTAMP:20261025T135256Z
-LAST-MODIFIED:20261025T135256Z
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
 SEQUENCE:0
 DTSTART:20270113T183000
 DTEND:20270113T193000
@@ -216,8 +216,8 @@ URL:https://www.wheelingil.gov/common/modules/iCalendar/iCalendar.aspx?feed=cale
 END:VEVENT
 BEGIN:VEVENT
 UID:wheeling-60090-2027-01-18-village-board-regular-meeting@withintenmiles.com
-DTSTAMP:20261025T135256Z
-LAST-MODIFIED:20261025T135256Z
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
 SEQUENCE:0
 DTSTART:20270118T183000
 DTEND:20270118T193000
@@ -227,8 +227,8 @@ URL:https://www.wheelingil.gov/common/modules/iCalendar/iCalendar.aspx?feed=cale
 END:VEVENT
 BEGIN:VEVENT
 UID:wheeling-60090-2027-01-27-plan-commission-meeting@withintenmiles.com
-DTSTAMP:20261025T135256Z
-LAST-MODIFIED:20261025T135256Z
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
 SEQUENCE:0
 DTSTART:20270127T183000
 DTEND:20270127T193000
@@ -238,8 +238,8 @@ URL:https://www.wheelingil.gov/common/modules/iCalendar/iCalendar.aspx?feed=cale
 END:VEVENT
 BEGIN:VEVENT
 UID:wheeling-60090-2027-02-01-village-board-regular-meeting@withintenmiles.com
-DTSTAMP:20261025T135256Z
-LAST-MODIFIED:20261025T135256Z
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
 SEQUENCE:0
 DTSTART:20270201T183000
 DTEND:20270201T193000
@@ -249,8 +249,8 @@ URL:https://www.wheelingil.gov/common/modules/iCalendar/iCalendar.aspx?feed=cale
 END:VEVENT
 BEGIN:VEVENT
 UID:wheeling-60090-2027-02-04-peer-jury@withintenmiles.com
-DTSTAMP:20261025T135256Z
-LAST-MODIFIED:20261025T135256Z
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
 SEQUENCE:0
 DTSTART:20270204T190000
 DTEND:20270204T200000
@@ -260,8 +260,8 @@ URL:https://www.wheelingil.gov/common/modules/iCalendar/iCalendar.aspx?feed=cale
 END:VEVENT
 BEGIN:VEVENT
 UID:wheeling-60090-2027-02-10-plan-commission-meeting@withintenmiles.com
-DTSTAMP:20261025T135256Z
-LAST-MODIFIED:20261025T135256Z
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
 SEQUENCE:0
 DTSTART:20270210T183000
 DTEND:20270210T193000
@@ -271,8 +271,8 @@ URL:https://www.wheelingil.gov/common/modules/iCalendar/iCalendar.aspx?feed=cale
 END:VEVENT
 BEGIN:VEVENT
 UID:wheeling-60090-2027-02-15-village-board-regular-meeting@withintenmiles.com
-DTSTAMP:20261025T135256Z
-LAST-MODIFIED:20261025T135256Z
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
 SEQUENCE:0
 DTSTART:20270215T183000
 DTEND:20270215T193000
@@ -282,8 +282,8 @@ URL:https://www.wheelingil.gov/common/modules/iCalendar/iCalendar.aspx?feed=cale
 END:VEVENT
 BEGIN:VEVENT
 UID:wheeling-60090-2027-03-01-village-board-regular-meeting@withintenmiles.com
-DTSTAMP:20261025T135256Z
-LAST-MODIFIED:20261025T135256Z
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
 SEQUENCE:0
 DTSTART:20270301T183000
 DTEND:20270301T193000
@@ -293,8 +293,8 @@ URL:https://www.wheelingil.gov/common/modules/iCalendar/iCalendar.aspx?feed=cale
 END:VEVENT
 BEGIN:VEVENT
 UID:wheeling-60090-2027-03-04-peer-jury@withintenmiles.com
-DTSTAMP:20261025T135256Z
-LAST-MODIFIED:20261025T135256Z
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
 SEQUENCE:0
 DTSTART:20270304T190000
 DTEND:20270304T200000
@@ -304,8 +304,8 @@ URL:https://www.wheelingil.gov/common/modules/iCalendar/iCalendar.aspx?feed=cale
 END:VEVENT
 BEGIN:VEVENT
 UID:wheeling-60090-2027-03-10-plan-commission-meeting@withintenmiles.com
-DTSTAMP:20261025T135256Z
-LAST-MODIFIED:20261025T135256Z
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
 SEQUENCE:0
 DTSTART:20270310T183000
 DTEND:20270310T193000
@@ -315,8 +315,8 @@ URL:https://www.wheelingil.gov/common/modules/iCalendar/iCalendar.aspx?feed=cale
 END:VEVENT
 BEGIN:VEVENT
 UID:wheeling-60090-2027-03-15-village-board-regular-meeting@withintenmiles.com
-DTSTAMP:20261025T135256Z
-LAST-MODIFIED:20261025T135256Z
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
 SEQUENCE:0
 DTSTART:20270315T183000
 DTEND:20270315T193000
@@ -326,8 +326,8 @@ URL:https://www.wheelingil.gov/common/modules/iCalendar/iCalendar.aspx?feed=cale
 END:VEVENT
 BEGIN:VEVENT
 UID:wheeling-60090-2027-04-01-peer-jury@withintenmiles.com
-DTSTAMP:20261025T135256Z
-LAST-MODIFIED:20261025T135256Z
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
 SEQUENCE:0
 DTSTART:20270401T190000
 DTEND:20270401T200000
@@ -337,8 +337,8 @@ URL:https://www.wheelingil.gov/common/modules/iCalendar/iCalendar.aspx?feed=cale
 END:VEVENT
 BEGIN:VEVENT
 UID:wheeling-60090-2027-04-05-village-board-regular-meeting@withintenmiles.com
-DTSTAMP:20261025T135256Z
-LAST-MODIFIED:20261025T135256Z
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
 SEQUENCE:0
 DTSTART:20270405T183000
 DTEND:20270405T193000
@@ -348,8 +348,8 @@ URL:https://www.wheelingil.gov/common/modules/iCalendar/iCalendar.aspx?feed=cale
 END:VEVENT
 BEGIN:VEVENT
 UID:wheeling-60090-2027-04-14-plan-commission-meeting@withintenmiles.com
-DTSTAMP:20261025T135256Z
-LAST-MODIFIED:20261025T135256Z
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
 SEQUENCE:0
 DTSTART:20270414T183000
 DTEND:20270414T193000
@@ -359,8 +359,8 @@ URL:https://www.wheelingil.gov/common/modules/iCalendar/iCalendar.aspx?feed=cale
 END:VEVENT
 BEGIN:VEVENT
 UID:wheeling-60090-2027-04-19-village-board-regular-meeting@withintenmiles.com
-DTSTAMP:20261025T135256Z
-LAST-MODIFIED:20261025T135256Z
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
 SEQUENCE:0
 DTSTART:20270419T183000
 DTEND:20270419T193000
@@ -370,8 +370,8 @@ URL:https://www.wheelingil.gov/common/modules/iCalendar/iCalendar.aspx?feed=cale
 END:VEVENT
 BEGIN:VEVENT
 UID:wheeling-60090-2027-05-03-village-board-regular-meeting@withintenmiles.com
-DTSTAMP:20261025T135256Z
-LAST-MODIFIED:20261025T135256Z
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
 SEQUENCE:0
 DTSTART:20270503T183000
 DTEND:20270503T193000
@@ -381,8 +381,8 @@ URL:https://www.wheelingil.gov/common/modules/iCalendar/iCalendar.aspx?feed=cale
 END:VEVENT
 BEGIN:VEVENT
 UID:wheeling-60090-2027-05-06-peer-jury@withintenmiles.com
-DTSTAMP:20261025T135256Z
-LAST-MODIFIED:20261025T135256Z
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
 SEQUENCE:0
 DTSTART:20270506T190000
 DTEND:20270506T200000
@@ -392,8 +392,8 @@ URL:https://www.wheelingil.gov/common/modules/iCalendar/iCalendar.aspx?feed=cale
 END:VEVENT
 BEGIN:VEVENT
 UID:wheeling-60090-2027-05-12-plan-commission-meeting@withintenmiles.com
-DTSTAMP:20261025T135256Z
-LAST-MODIFIED:20261025T135256Z
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
 SEQUENCE:0
 DTSTART:20270512T183000
 DTEND:20270512T193000
@@ -403,8 +403,8 @@ URL:https://www.wheelingil.gov/common/modules/iCalendar/iCalendar.aspx?feed=cale
 END:VEVENT
 BEGIN:VEVENT
 UID:wheeling-60090-2027-05-17-village-board-regular-meeting@withintenmiles.com
-DTSTAMP:20261025T135256Z
-LAST-MODIFIED:20261025T135256Z
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
 SEQUENCE:0
 DTSTART:20270517T183000
 DTEND:20270517T193000
@@ -414,8 +414,8 @@ URL:https://www.wheelingil.gov/common/modules/iCalendar/iCalendar.aspx?feed=cale
 END:VEVENT
 BEGIN:VEVENT
 UID:wheeling-60090-2027-06-03-peer-jury@withintenmiles.com
-DTSTAMP:20261025T135256Z
-LAST-MODIFIED:20261025T135256Z
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
 SEQUENCE:0
 DTSTART:20270603T190000
 DTEND:20270603T200000
@@ -425,8 +425,8 @@ URL:https://www.wheelingil.gov/common/modules/iCalendar/iCalendar.aspx?feed=cale
 END:VEVENT
 BEGIN:VEVENT
 UID:wheeling-60090-2027-06-07-village-board-regular-meeting@withintenmiles.com
-DTSTAMP:20261025T135256Z
-LAST-MODIFIED:20261025T135256Z
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
 SEQUENCE:0
 DTSTART:20270607T183000
 DTEND:20270607T193000
@@ -436,8 +436,8 @@ URL:https://www.wheelingil.gov/common/modules/iCalendar/iCalendar.aspx?feed=cale
 END:VEVENT
 BEGIN:VEVENT
 UID:wheeling-60090-2027-06-09-plan-commission-meeting@withintenmiles.com
-DTSTAMP:20261025T135256Z
-LAST-MODIFIED:20261025T135256Z
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
 SEQUENCE:0
 DTSTART:20270609T183000
 DTEND:20270609T193000
@@ -447,8 +447,8 @@ URL:https://www.wheelingil.gov/common/modules/iCalendar/iCalendar.aspx?feed=cale
 END:VEVENT
 BEGIN:VEVENT
 UID:wheeling-60090-2027-06-21-village-board-regular-meeting@withintenmiles.com
-DTSTAMP:20261025T135256Z
-LAST-MODIFIED:20261025T135256Z
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
 SEQUENCE:0
 DTSTART:20270621T183000
 DTEND:20270621T193000
@@ -458,8 +458,8 @@ URL:https://www.wheelingil.gov/common/modules/iCalendar/iCalendar.aspx?feed=cale
 END:VEVENT
 BEGIN:VEVENT
 UID:wheeling-60090-2027-07-01-peer-jury@withintenmiles.com
-DTSTAMP:20261025T135256Z
-LAST-MODIFIED:20261025T135256Z
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
 SEQUENCE:0
 DTSTART:20270701T190000
 DTEND:20270701T200000
@@ -469,8 +469,8 @@ URL:https://www.wheelingil.gov/common/modules/iCalendar/iCalendar.aspx?feed=cale
 END:VEVENT
 BEGIN:VEVENT
 UID:wheeling-60090-2027-07-05-village-board-regular-meeting@withintenmiles.com
-DTSTAMP:20261025T135256Z
-LAST-MODIFIED:20261025T135256Z
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
 SEQUENCE:0
 DTSTART:20270705T183000
 DTEND:20270705T193000
@@ -480,8 +480,8 @@ URL:https://www.wheelingil.gov/common/modules/iCalendar/iCalendar.aspx?feed=cale
 END:VEVENT
 BEGIN:VEVENT
 UID:wheeling-60090-2027-07-14-plan-commission-meeting@withintenmiles.com
-DTSTAMP:20261025T135256Z
-LAST-MODIFIED:20261025T135256Z
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
 SEQUENCE:0
 DTSTART:20270714T183000
 DTEND:20270714T193000
@@ -491,8 +491,8 @@ URL:https://www.wheelingil.gov/common/modules/iCalendar/iCalendar.aspx?feed=cale
 END:VEVENT
 BEGIN:VEVENT
 UID:wheeling-60090-2027-07-19-village-board-regular-meeting@withintenmiles.com
-DTSTAMP:20261025T135256Z
-LAST-MODIFIED:20261025T135256Z
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
 SEQUENCE:0
 DTSTART:20270719T183000
 DTEND:20270719T193000
@@ -502,8 +502,8 @@ URL:https://www.wheelingil.gov/common/modules/iCalendar/iCalendar.aspx?feed=cale
 END:VEVENT
 BEGIN:VEVENT
 UID:wheeling-60090-2027-08-02-village-board-regular-meeting@withintenmiles.com
-DTSTAMP:20261025T135256Z
-LAST-MODIFIED:20261025T135256Z
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
 SEQUENCE:0
 DTSTART:20270802T183000
 DTEND:20270802T193000
@@ -512,9 +512,856 @@ DESCRIPTION:https://www.wheelingil.gov/calendar.aspx?EID=2014
 URL:https://www.wheelingil.gov/common/modules/iCalendar/iCalendar.aspx?feed=calendar&catID=14
 END:VEVENT
 BEGIN:VEVENT
+UID:wheeling-60090-2027-08-05-peer-jury@withintenmiles.com
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
+SEQUENCE:0
+DTSTART:20270805T190000
+DTEND:20270805T200000
+SUMMARY:Peer Jury
+DESCRIPTION:https://www.wheelingil.gov/calendar.aspx?EID=2061
+URL:https://www.wheelingil.gov/common/modules/iCalendar/iCalendar.aspx?feed=calendar&catID=14
+END:VEVENT
+BEGIN:VEVENT
+UID:wheeling-60090-2027-08-11-plan-commission-meeting@withintenmiles.com
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
+SEQUENCE:0
+DTSTART:20270811T183000
+DTEND:20270811T193000
+SUMMARY:Plan Commission Meeting
+DESCRIPTION:https://www.wheelingil.gov/calendar.aspx?EID=2145
+URL:https://www.wheelingil.gov/common/modules/iCalendar/iCalendar.aspx?feed=calendar&catID=14
+END:VEVENT
+BEGIN:VEVENT
+UID:wheeling-60090-2027-08-16-village-board-regular-meeting@withintenmiles.com
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
+SEQUENCE:0
+DTSTART:20270816T183000
+DTEND:20270816T193000
+SUMMARY:Village Board Regular Meeting
+DESCRIPTION:https://www.wheelingil.gov/calendar.aspx?EID=2169
+URL:https://www.wheelingil.gov/common/modules/iCalendar/iCalendar.aspx?feed=calendar&catID=14
+END:VEVENT
+BEGIN:VEVENT
+UID:wheeling-60090-2027-09-02-peer-jury@withintenmiles.com
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
+SEQUENCE:0
+DTSTART:20270902T190000
+DTEND:20270902T200000
+SUMMARY:Peer Jury
+DESCRIPTION:https://www.wheelingil.gov/calendar.aspx?EID=2062
+URL:https://www.wheelingil.gov/common/modules/iCalendar/iCalendar.aspx?feed=calendar&catID=14
+END:VEVENT
+BEGIN:VEVENT
+UID:wheeling-60090-2027-09-06-village-board-regular-meeting@withintenmiles.com
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
+SEQUENCE:0
+DTSTART:20270906T183000
+DTEND:20270906T193000
+SUMMARY:Village Board Regular Meeting
+DESCRIPTION:https://www.wheelingil.gov/calendar.aspx?EID=2015
+URL:https://www.wheelingil.gov/common/modules/iCalendar/iCalendar.aspx?feed=calendar&catID=14
+END:VEVENT
+BEGIN:VEVENT
+UID:wheeling-60090-2027-09-08-plan-commission-meeting@withintenmiles.com
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
+SEQUENCE:0
+DTSTART:20270908T183000
+DTEND:20270908T193000
+SUMMARY:Plan Commission Meeting
+DESCRIPTION:https://www.wheelingil.gov/calendar.aspx?EID=2146
+URL:https://www.wheelingil.gov/common/modules/iCalendar/iCalendar.aspx?feed=calendar&catID=14
+END:VEVENT
+BEGIN:VEVENT
+UID:wheeling-60090-2027-09-20-village-board-regular-meeting@withintenmiles.com
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
+SEQUENCE:0
+DTSTART:20270920T183000
+DTEND:20270920T193000
+SUMMARY:Village Board Regular Meeting
+DESCRIPTION:https://www.wheelingil.gov/calendar.aspx?EID=2170
+URL:https://www.wheelingil.gov/common/modules/iCalendar/iCalendar.aspx?feed=calendar&catID=14
+END:VEVENT
+BEGIN:VEVENT
+UID:wheeling-60090-2027-10-04-village-board-regular-meeting@withintenmiles.com
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
+SEQUENCE:0
+DTSTART:20271004T183000
+DTEND:20271004T193000
+SUMMARY:Village Board Regular Meeting
+DESCRIPTION:https://www.wheelingil.gov/calendar.aspx?EID=2016
+URL:https://www.wheelingil.gov/common/modules/iCalendar/iCalendar.aspx?feed=calendar&catID=14
+END:VEVENT
+BEGIN:VEVENT
+UID:wheeling-60090-2027-10-07-peer-jury@withintenmiles.com
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
+SEQUENCE:0
+DTSTART:20271007T190000
+DTEND:20271007T200000
+SUMMARY:Peer Jury
+DESCRIPTION:https://www.wheelingil.gov/calendar.aspx?EID=2063
+URL:https://www.wheelingil.gov/common/modules/iCalendar/iCalendar.aspx?feed=calendar&catID=14
+END:VEVENT
+BEGIN:VEVENT
+UID:wheeling-60090-2027-10-13-plan-commission-meeting@withintenmiles.com
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
+SEQUENCE:0
+DTSTART:20271013T183000
+DTEND:20271013T193000
+SUMMARY:Plan Commission Meeting
+DESCRIPTION:https://www.wheelingil.gov/calendar.aspx?EID=2147
+URL:https://www.wheelingil.gov/common/modules/iCalendar/iCalendar.aspx?feed=calendar&catID=14
+END:VEVENT
+BEGIN:VEVENT
+UID:wheeling-60090-2027-10-18-village-board-regular-meeting@withintenmiles.com
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
+SEQUENCE:0
+DTSTART:20271018T183000
+DTEND:20271018T193000
+SUMMARY:Village Board Regular Meeting
+DESCRIPTION:https://www.wheelingil.gov/calendar.aspx?EID=2171
+URL:https://www.wheelingil.gov/common/modules/iCalendar/iCalendar.aspx?feed=calendar&catID=14
+END:VEVENT
+BEGIN:VEVENT
+UID:wheeling-60090-2027-11-01-village-board-regular-meeting@withintenmiles.com
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
+SEQUENCE:0
+DTSTART:20271101T183000
+DTEND:20271101T193000
+SUMMARY:Village Board Regular Meeting
+DESCRIPTION:https://www.wheelingil.gov/calendar.aspx?EID=2017
+URL:https://www.wheelingil.gov/common/modules/iCalendar/iCalendar.aspx?feed=calendar&catID=14
+END:VEVENT
+BEGIN:VEVENT
+UID:wheeling-60090-2027-11-04-peer-jury@withintenmiles.com
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
+SEQUENCE:0
+DTSTART:20271104T190000
+DTEND:20271104T200000
+SUMMARY:Peer Jury
+DESCRIPTION:https://www.wheelingil.gov/calendar.aspx?EID=2064
+URL:https://www.wheelingil.gov/common/modules/iCalendar/iCalendar.aspx?feed=calendar&catID=14
+END:VEVENT
+BEGIN:VEVENT
+UID:wheeling-60090-2027-11-10-plan-commission-meeting@withintenmiles.com
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
+SEQUENCE:0
+DTSTART:20271110T183000
+DTEND:20271110T193000
+SUMMARY:Plan Commission Meeting
+DESCRIPTION:https://www.wheelingil.gov/calendar.aspx?EID=2148
+URL:https://www.wheelingil.gov/common/modules/iCalendar/iCalendar.aspx?feed=calendar&catID=14
+END:VEVENT
+BEGIN:VEVENT
+UID:wheeling-60090-2027-11-15-village-board-regular-meeting@withintenmiles.com
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
+SEQUENCE:0
+DTSTART:20271115T183000
+DTEND:20271115T193000
+SUMMARY:Village Board Regular Meeting
+DESCRIPTION:https://www.wheelingil.gov/calendar.aspx?EID=2172
+URL:https://www.wheelingil.gov/common/modules/iCalendar/iCalendar.aspx?feed=calendar&catID=14
+END:VEVENT
+BEGIN:VEVENT
+UID:wheeling-60090-2027-12-02-peer-jury@withintenmiles.com
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
+SEQUENCE:0
+DTSTART:20271202T190000
+DTEND:20271202T200000
+SUMMARY:Peer Jury
+DESCRIPTION:https://www.wheelingil.gov/calendar.aspx?EID=2065
+URL:https://www.wheelingil.gov/common/modules/iCalendar/iCalendar.aspx?feed=calendar&catID=14
+END:VEVENT
+BEGIN:VEVENT
+UID:wheeling-60090-2027-12-06-village-board-regular-meeting@withintenmiles.com
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
+SEQUENCE:0
+DTSTART:20271206T183000
+DTEND:20271206T193000
+SUMMARY:Village Board Regular Meeting
+DESCRIPTION:https://www.wheelingil.gov/calendar.aspx?EID=2018
+URL:https://www.wheelingil.gov/common/modules/iCalendar/iCalendar.aspx?feed=calendar&catID=14
+END:VEVENT
+BEGIN:VEVENT
+UID:wheeling-60090-2027-12-08-plan-commission-meeting@withintenmiles.com
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
+SEQUENCE:0
+DTSTART:20271208T183000
+DTEND:20271208T193000
+SUMMARY:Plan Commission Meeting
+DESCRIPTION:https://www.wheelingil.gov/calendar.aspx?EID=2149
+URL:https://www.wheelingil.gov/common/modules/iCalendar/iCalendar.aspx?feed=calendar&catID=14
+END:VEVENT
+BEGIN:VEVENT
+UID:wheeling-60090-2027-12-20-village-board-regular-meeting@withintenmiles.com
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
+SEQUENCE:0
+DTSTART:20271220T183000
+DTEND:20271220T193000
+SUMMARY:Village Board Regular Meeting
+DESCRIPTION:https://www.wheelingil.gov/calendar.aspx?EID=2173
+URL:https://www.wheelingil.gov/common/modules/iCalendar/iCalendar.aspx?feed=calendar&catID=14
+END:VEVENT
+BEGIN:VEVENT
+UID:wheeling-60090-2028-01-03-village-board-regular-meeting@withintenmiles.com
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
+SEQUENCE:0
+DTSTART:20280103T183000
+DTEND:20280103T193000
+SUMMARY:Village Board Regular Meeting
+DESCRIPTION:https://www.wheelingil.gov/calendar.aspx?EID=2019
+URL:https://www.wheelingil.gov/common/modules/iCalendar/iCalendar.aspx?feed=calendar&catID=14
+END:VEVENT
+BEGIN:VEVENT
+UID:wheeling-60090-2028-01-06-peer-jury@withintenmiles.com
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
+SEQUENCE:0
+DTSTART:20280106T190000
+DTEND:20280106T200000
+SUMMARY:Peer Jury
+DESCRIPTION:https://www.wheelingil.gov/calendar.aspx?EID=2066
+URL:https://www.wheelingil.gov/common/modules/iCalendar/iCalendar.aspx?feed=calendar&catID=14
+END:VEVENT
+BEGIN:VEVENT
+UID:wheeling-60090-2028-01-12-plan-commission-meeting@withintenmiles.com
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
+SEQUENCE:0
+DTSTART:20280112T183000
+DTEND:20280112T193000
+SUMMARY:Plan Commission Meeting
+DESCRIPTION:https://www.wheelingil.gov/calendar.aspx?EID=2150
+URL:https://www.wheelingil.gov/common/modules/iCalendar/iCalendar.aspx?feed=calendar&catID=14
+END:VEVENT
+BEGIN:VEVENT
+UID:wheeling-60090-2028-01-17-village-board-regular-meeting@withintenmiles.com
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
+SEQUENCE:0
+DTSTART:20280117T183000
+DTEND:20280117T193000
+SUMMARY:Village Board Regular Meeting
+DESCRIPTION:https://www.wheelingil.gov/calendar.aspx?EID=2174
+URL:https://www.wheelingil.gov/common/modules/iCalendar/iCalendar.aspx?feed=calendar&catID=14
+END:VEVENT
+BEGIN:VEVENT
+UID:wheeling-60090-2028-02-03-peer-jury@withintenmiles.com
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
+SEQUENCE:0
+DTSTART:20280203T190000
+DTEND:20280203T200000
+SUMMARY:Peer Jury
+DESCRIPTION:https://www.wheelingil.gov/calendar.aspx?EID=2067
+URL:https://www.wheelingil.gov/common/modules/iCalendar/iCalendar.aspx?feed=calendar&catID=14
+END:VEVENT
+BEGIN:VEVENT
+UID:wheeling-60090-2028-02-07-village-board-regular-meeting@withintenmiles.com
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
+SEQUENCE:0
+DTSTART:20280207T183000
+DTEND:20280207T193000
+SUMMARY:Village Board Regular Meeting
+DESCRIPTION:https://www.wheelingil.gov/calendar.aspx?EID=2020
+URL:https://www.wheelingil.gov/common/modules/iCalendar/iCalendar.aspx?feed=calendar&catID=14
+END:VEVENT
+BEGIN:VEVENT
+UID:wheeling-60090-2028-02-09-plan-commission-meeting@withintenmiles.com
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
+SEQUENCE:0
+DTSTART:20280209T183000
+DTEND:20280209T193000
+SUMMARY:Plan Commission Meeting
+DESCRIPTION:https://www.wheelingil.gov/calendar.aspx?EID=2151
+URL:https://www.wheelingil.gov/common/modules/iCalendar/iCalendar.aspx?feed=calendar&catID=14
+END:VEVENT
+BEGIN:VEVENT
+UID:wheeling-60090-2028-02-21-village-board-regular-meeting@withintenmiles.com
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
+SEQUENCE:0
+DTSTART:20280221T183000
+DTEND:20280221T193000
+SUMMARY:Village Board Regular Meeting
+DESCRIPTION:https://www.wheelingil.gov/calendar.aspx?EID=2175
+URL:https://www.wheelingil.gov/common/modules/iCalendar/iCalendar.aspx?feed=calendar&catID=14
+END:VEVENT
+BEGIN:VEVENT
+UID:wheeling-60090-2028-03-02-peer-jury@withintenmiles.com
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
+SEQUENCE:0
+DTSTART:20280302T190000
+DTEND:20280302T200000
+SUMMARY:Peer Jury
+DESCRIPTION:https://www.wheelingil.gov/calendar.aspx?EID=2068
+URL:https://www.wheelingil.gov/common/modules/iCalendar/iCalendar.aspx?feed=calendar&catID=14
+END:VEVENT
+BEGIN:VEVENT
+UID:wheeling-60090-2028-03-06-village-board-regular-meeting@withintenmiles.com
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
+SEQUENCE:0
+DTSTART:20280306T183000
+DTEND:20280306T193000
+SUMMARY:Village Board Regular Meeting
+DESCRIPTION:https://www.wheelingil.gov/calendar.aspx?EID=2021
+URL:https://www.wheelingil.gov/common/modules/iCalendar/iCalendar.aspx?feed=calendar&catID=14
+END:VEVENT
+BEGIN:VEVENT
+UID:wheeling-60090-2028-03-08-plan-commission-meeting@withintenmiles.com
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
+SEQUENCE:0
+DTSTART:20280308T183000
+DTEND:20280308T193000
+SUMMARY:Plan Commission Meeting
+DESCRIPTION:https://www.wheelingil.gov/calendar.aspx?EID=2152
+URL:https://www.wheelingil.gov/common/modules/iCalendar/iCalendar.aspx?feed=calendar&catID=14
+END:VEVENT
+BEGIN:VEVENT
+UID:wheeling-60090-2028-03-20-village-board-regular-meeting@withintenmiles.com
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
+SEQUENCE:0
+DTSTART:20280320T183000
+DTEND:20280320T193000
+SUMMARY:Village Board Regular Meeting
+DESCRIPTION:https://www.wheelingil.gov/calendar.aspx?EID=2176
+URL:https://www.wheelingil.gov/common/modules/iCalendar/iCalendar.aspx?feed=calendar&catID=14
+END:VEVENT
+BEGIN:VEVENT
+UID:wheeling-60090-2028-04-03-village-board-regular-meeting@withintenmiles.com
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
+SEQUENCE:0
+DTSTART:20280403T183000
+DTEND:20280403T193000
+SUMMARY:Village Board Regular Meeting
+DESCRIPTION:https://www.wheelingil.gov/calendar.aspx?EID=2022
+URL:https://www.wheelingil.gov/common/modules/iCalendar/iCalendar.aspx?feed=calendar&catID=14
+END:VEVENT
+BEGIN:VEVENT
+UID:wheeling-60090-2028-04-06-peer-jury@withintenmiles.com
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
+SEQUENCE:0
+DTSTART:20280406T190000
+DTEND:20280406T200000
+SUMMARY:Peer Jury
+DESCRIPTION:https://www.wheelingil.gov/calendar.aspx?EID=2069
+URL:https://www.wheelingil.gov/common/modules/iCalendar/iCalendar.aspx?feed=calendar&catID=14
+END:VEVENT
+BEGIN:VEVENT
+UID:wheeling-60090-2028-04-12-plan-commission-meeting@withintenmiles.com
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
+SEQUENCE:0
+DTSTART:20280412T183000
+DTEND:20280412T193000
+SUMMARY:Plan Commission Meeting
+DESCRIPTION:https://www.wheelingil.gov/calendar.aspx?EID=2153
+URL:https://www.wheelingil.gov/common/modules/iCalendar/iCalendar.aspx?feed=calendar&catID=14
+END:VEVENT
+BEGIN:VEVENT
+UID:wheeling-60090-2028-04-17-village-board-regular-meeting@withintenmiles.com
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
+SEQUENCE:0
+DTSTART:20280417T183000
+DTEND:20280417T193000
+SUMMARY:Village Board Regular Meeting
+DESCRIPTION:https://www.wheelingil.gov/calendar.aspx?EID=2177
+URL:https://www.wheelingil.gov/common/modules/iCalendar/iCalendar.aspx?feed=calendar&catID=14
+END:VEVENT
+BEGIN:VEVENT
+UID:wheeling-60090-2028-05-01-village-board-regular-meeting@withintenmiles.com
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
+SEQUENCE:0
+DTSTART:20280501T183000
+DTEND:20280501T193000
+SUMMARY:Village Board Regular Meeting
+DESCRIPTION:https://www.wheelingil.gov/calendar.aspx?EID=2023
+URL:https://www.wheelingil.gov/common/modules/iCalendar/iCalendar.aspx?feed=calendar&catID=14
+END:VEVENT
+BEGIN:VEVENT
+UID:wheeling-60090-2028-05-04-peer-jury@withintenmiles.com
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
+SEQUENCE:0
+DTSTART:20280504T190000
+DTEND:20280504T200000
+SUMMARY:Peer Jury
+DESCRIPTION:https://www.wheelingil.gov/calendar.aspx?EID=2070
+URL:https://www.wheelingil.gov/common/modules/iCalendar/iCalendar.aspx?feed=calendar&catID=14
+END:VEVENT
+BEGIN:VEVENT
+UID:wheeling-60090-2028-06-01-peer-jury@withintenmiles.com
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
+SEQUENCE:0
+DTSTART:20280601T190000
+DTEND:20280601T200000
+SUMMARY:Peer Jury
+DESCRIPTION:https://www.wheelingil.gov/calendar.aspx?EID=2071
+URL:https://www.wheelingil.gov/common/modules/iCalendar/iCalendar.aspx?feed=calendar&catID=14
+END:VEVENT
+BEGIN:VEVENT
+UID:wheeling-60090-2028-06-05-village-board-regular-meeting@withintenmiles.com
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
+SEQUENCE:0
+DTSTART:20280605T183000
+DTEND:20280605T193000
+SUMMARY:Village Board Regular Meeting
+DESCRIPTION:https://www.wheelingil.gov/calendar.aspx?EID=2024
+URL:https://www.wheelingil.gov/common/modules/iCalendar/iCalendar.aspx?feed=calendar&catID=14
+END:VEVENT
+BEGIN:VEVENT
+UID:wheeling-60090-2028-07-03-village-board-regular-meeting@withintenmiles.com
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
+SEQUENCE:0
+DTSTART:20280703T183000
+DTEND:20280703T193000
+SUMMARY:Village Board Regular Meeting
+DESCRIPTION:https://www.wheelingil.gov/calendar.aspx?EID=2025
+URL:https://www.wheelingil.gov/common/modules/iCalendar/iCalendar.aspx?feed=calendar&catID=14
+END:VEVENT
+BEGIN:VEVENT
+UID:wheeling-60090-2028-07-06-peer-jury@withintenmiles.com
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
+SEQUENCE:0
+DTSTART:20280706T190000
+DTEND:20280706T200000
+SUMMARY:Peer Jury
+DESCRIPTION:https://www.wheelingil.gov/calendar.aspx?EID=2072
+URL:https://www.wheelingil.gov/common/modules/iCalendar/iCalendar.aspx?feed=calendar&catID=14
+END:VEVENT
+BEGIN:VEVENT
+UID:wheeling-60090-2028-08-03-peer-jury@withintenmiles.com
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
+SEQUENCE:0
+DTSTART:20280803T190000
+DTEND:20280803T200000
+SUMMARY:Peer Jury
+DESCRIPTION:https://www.wheelingil.gov/calendar.aspx?EID=2073
+URL:https://www.wheelingil.gov/common/modules/iCalendar/iCalendar.aspx?feed=calendar&catID=14
+END:VEVENT
+BEGIN:VEVENT
+UID:wheeling-60090-2028-08-07-village-board-regular-meeting@withintenmiles.com
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
+SEQUENCE:0
+DTSTART:20280807T183000
+DTEND:20280807T193000
+SUMMARY:Village Board Regular Meeting
+DESCRIPTION:https://www.wheelingil.gov/calendar.aspx?EID=2026
+URL:https://www.wheelingil.gov/common/modules/iCalendar/iCalendar.aspx?feed=calendar&catID=14
+END:VEVENT
+BEGIN:VEVENT
+UID:wheeling-60090-2028-09-04-village-board-regular-meeting@withintenmiles.com
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
+SEQUENCE:0
+DTSTART:20280904T183000
+DTEND:20280904T193000
+SUMMARY:Village Board Regular Meeting
+DESCRIPTION:https://www.wheelingil.gov/calendar.aspx?EID=2027
+URL:https://www.wheelingil.gov/common/modules/iCalendar/iCalendar.aspx?feed=calendar&catID=14
+END:VEVENT
+BEGIN:VEVENT
+UID:wheeling-60090-2028-09-07-peer-jury@withintenmiles.com
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
+SEQUENCE:0
+DTSTART:20280907T190000
+DTEND:20280907T200000
+SUMMARY:Peer Jury
+DESCRIPTION:https://www.wheelingil.gov/calendar.aspx?EID=2074
+URL:https://www.wheelingil.gov/common/modules/iCalendar/iCalendar.aspx?feed=calendar&catID=14
+END:VEVENT
+BEGIN:VEVENT
+UID:wheeling-60090-2028-10-02-village-board-regular-meeting@withintenmiles.com
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
+SEQUENCE:0
+DTSTART:20281002T183000
+DTEND:20281002T193000
+SUMMARY:Village Board Regular Meeting
+DESCRIPTION:https://www.wheelingil.gov/calendar.aspx?EID=2028
+URL:https://www.wheelingil.gov/common/modules/iCalendar/iCalendar.aspx?feed=calendar&catID=14
+END:VEVENT
+BEGIN:VEVENT
+UID:wheeling-60090-2028-10-05-peer-jury@withintenmiles.com
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
+SEQUENCE:0
+DTSTART:20281005T190000
+DTEND:20281005T200000
+SUMMARY:Peer Jury
+DESCRIPTION:https://www.wheelingil.gov/calendar.aspx?EID=2075
+URL:https://www.wheelingil.gov/common/modules/iCalendar/iCalendar.aspx?feed=calendar&catID=14
+END:VEVENT
+BEGIN:VEVENT
+UID:wheeling-60090-2028-11-02-peer-jury@withintenmiles.com
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
+SEQUENCE:0
+DTSTART:20281102T190000
+DTEND:20281102T200000
+SUMMARY:Peer Jury
+DESCRIPTION:https://www.wheelingil.gov/calendar.aspx?EID=2076
+URL:https://www.wheelingil.gov/common/modules/iCalendar/iCalendar.aspx?feed=calendar&catID=14
+END:VEVENT
+BEGIN:VEVENT
+UID:wheeling-60090-2028-11-06-village-board-regular-meeting@withintenmiles.com
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
+SEQUENCE:0
+DTSTART:20281106T183000
+DTEND:20281106T193000
+SUMMARY:Village Board Regular Meeting
+DESCRIPTION:https://www.wheelingil.gov/calendar.aspx?EID=2029
+URL:https://www.wheelingil.gov/common/modules/iCalendar/iCalendar.aspx?feed=calendar&catID=14
+END:VEVENT
+BEGIN:VEVENT
+UID:wheeling-60090-2028-12-04-village-board-regular-meeting@withintenmiles.com
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
+SEQUENCE:0
+DTSTART:20281204T183000
+DTEND:20281204T193000
+SUMMARY:Village Board Regular Meeting
+DESCRIPTION:https://www.wheelingil.gov/calendar.aspx?EID=2030
+URL:https://www.wheelingil.gov/common/modules/iCalendar/iCalendar.aspx?feed=calendar&catID=14
+END:VEVENT
+BEGIN:VEVENT
+UID:wheeling-60090-2028-12-07-peer-jury@withintenmiles.com
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
+SEQUENCE:0
+DTSTART:20281207T190000
+DTEND:20281207T200000
+SUMMARY:Peer Jury
+DESCRIPTION:https://www.wheelingil.gov/calendar.aspx?EID=2077
+URL:https://www.wheelingil.gov/common/modules/iCalendar/iCalendar.aspx?feed=calendar&catID=14
+END:VEVENT
+BEGIN:VEVENT
+UID:wheeling-60090-2029-01-01-village-board-regular-meeting@withintenmiles.com
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
+SEQUENCE:0
+DTSTART:20290101T183000
+DTEND:20290101T193000
+SUMMARY:Village Board Regular Meeting
+DESCRIPTION:https://www.wheelingil.gov/calendar.aspx?EID=2031
+URL:https://www.wheelingil.gov/common/modules/iCalendar/iCalendar.aspx?feed=calendar&catID=14
+END:VEVENT
+BEGIN:VEVENT
+UID:wheeling-60090-2029-01-04-peer-jury@withintenmiles.com
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
+SEQUENCE:0
+DTSTART:20290104T190000
+DTEND:20290104T200000
+SUMMARY:Peer Jury
+DESCRIPTION:https://www.wheelingil.gov/calendar.aspx?EID=2078
+URL:https://www.wheelingil.gov/common/modules/iCalendar/iCalendar.aspx?feed=calendar&catID=14
+END:VEVENT
+BEGIN:VEVENT
+UID:wheeling-60090-2029-02-01-peer-jury@withintenmiles.com
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
+SEQUENCE:0
+DTSTART:20290201T190000
+DTEND:20290201T200000
+SUMMARY:Peer Jury
+DESCRIPTION:https://www.wheelingil.gov/calendar.aspx?EID=2079
+URL:https://www.wheelingil.gov/common/modules/iCalendar/iCalendar.aspx?feed=calendar&catID=14
+END:VEVENT
+BEGIN:VEVENT
+UID:wheeling-60090-2029-02-05-village-board-regular-meeting@withintenmiles.com
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
+SEQUENCE:0
+DTSTART:20290205T183000
+DTEND:20290205T193000
+SUMMARY:Village Board Regular Meeting
+DESCRIPTION:https://www.wheelingil.gov/calendar.aspx?EID=2032
+URL:https://www.wheelingil.gov/common/modules/iCalendar/iCalendar.aspx?feed=calendar&catID=14
+END:VEVENT
+BEGIN:VEVENT
+UID:wheeling-60090-2029-03-01-peer-jury@withintenmiles.com
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
+SEQUENCE:0
+DTSTART:20290301T190000
+DTEND:20290301T200000
+SUMMARY:Peer Jury
+DESCRIPTION:https://www.wheelingil.gov/calendar.aspx?EID=2080
+URL:https://www.wheelingil.gov/common/modules/iCalendar/iCalendar.aspx?feed=calendar&catID=14
+END:VEVENT
+BEGIN:VEVENT
+UID:wheeling-60090-2029-03-05-village-board-regular-meeting@withintenmiles.com
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
+SEQUENCE:0
+DTSTART:20290305T183000
+DTEND:20290305T193000
+SUMMARY:Village Board Regular Meeting
+DESCRIPTION:https://www.wheelingil.gov/calendar.aspx?EID=2033
+URL:https://www.wheelingil.gov/common/modules/iCalendar/iCalendar.aspx?feed=calendar&catID=14
+END:VEVENT
+BEGIN:VEVENT
+UID:wheeling-60090-2029-04-02-village-board-regular-meeting@withintenmiles.com
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
+SEQUENCE:0
+DTSTART:20290402T183000
+DTEND:20290402T193000
+SUMMARY:Village Board Regular Meeting
+DESCRIPTION:https://www.wheelingil.gov/calendar.aspx?EID=2034
+URL:https://www.wheelingil.gov/common/modules/iCalendar/iCalendar.aspx?feed=calendar&catID=14
+END:VEVENT
+BEGIN:VEVENT
+UID:wheeling-60090-2029-04-05-peer-jury@withintenmiles.com
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
+SEQUENCE:0
+DTSTART:20290405T190000
+DTEND:20290405T200000
+SUMMARY:Peer Jury
+DESCRIPTION:https://www.wheelingil.gov/calendar.aspx?EID=2081
+URL:https://www.wheelingil.gov/common/modules/iCalendar/iCalendar.aspx?feed=calendar&catID=14
+END:VEVENT
+BEGIN:VEVENT
+UID:wheeling-60090-2029-05-03-peer-jury@withintenmiles.com
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
+SEQUENCE:0
+DTSTART:20290503T190000
+DTEND:20290503T200000
+SUMMARY:Peer Jury
+DESCRIPTION:https://www.wheelingil.gov/calendar.aspx?EID=2082
+URL:https://www.wheelingil.gov/common/modules/iCalendar/iCalendar.aspx?feed=calendar&catID=14
+END:VEVENT
+BEGIN:VEVENT
+UID:wheeling-60090-2029-05-07-village-board-regular-meeting@withintenmiles.com
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
+SEQUENCE:0
+DTSTART:20290507T183000
+DTEND:20290507T193000
+SUMMARY:Village Board Regular Meeting
+DESCRIPTION:https://www.wheelingil.gov/calendar.aspx?EID=2035
+URL:https://www.wheelingil.gov/common/modules/iCalendar/iCalendar.aspx?feed=calendar&catID=14
+END:VEVENT
+BEGIN:VEVENT
+UID:wheeling-60090-2029-06-04-village-board-regular-meeting@withintenmiles.com
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
+SEQUENCE:0
+DTSTART:20290604T183000
+DTEND:20290604T193000
+SUMMARY:Village Board Regular Meeting
+DESCRIPTION:https://www.wheelingil.gov/calendar.aspx?EID=2036
+URL:https://www.wheelingil.gov/common/modules/iCalendar/iCalendar.aspx?feed=calendar&catID=14
+END:VEVENT
+BEGIN:VEVENT
+UID:wheeling-60090-2029-06-07-peer-jury@withintenmiles.com
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
+SEQUENCE:0
+DTSTART:20290607T190000
+DTEND:20290607T200000
+SUMMARY:Peer Jury
+DESCRIPTION:https://www.wheelingil.gov/calendar.aspx?EID=2083
+URL:https://www.wheelingil.gov/common/modules/iCalendar/iCalendar.aspx?feed=calendar&catID=14
+END:VEVENT
+BEGIN:VEVENT
+UID:wheeling-60090-2029-07-02-village-board-regular-meeting@withintenmiles.com
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
+SEQUENCE:0
+DTSTART:20290702T183000
+DTEND:20290702T193000
+SUMMARY:Village Board Regular Meeting
+DESCRIPTION:https://www.wheelingil.gov/calendar.aspx?EID=2037
+URL:https://www.wheelingil.gov/common/modules/iCalendar/iCalendar.aspx?feed=calendar&catID=14
+END:VEVENT
+BEGIN:VEVENT
+UID:wheeling-60090-2029-07-05-peer-jury@withintenmiles.com
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
+SEQUENCE:0
+DTSTART:20290705T190000
+DTEND:20290705T200000
+SUMMARY:Peer Jury
+DESCRIPTION:https://www.wheelingil.gov/calendar.aspx?EID=2084
+URL:https://www.wheelingil.gov/common/modules/iCalendar/iCalendar.aspx?feed=calendar&catID=14
+END:VEVENT
+BEGIN:VEVENT
+UID:wheeling-60090-2029-08-02-peer-jury@withintenmiles.com
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
+SEQUENCE:0
+DTSTART:20290802T190000
+DTEND:20290802T200000
+SUMMARY:Peer Jury
+DESCRIPTION:https://www.wheelingil.gov/calendar.aspx?EID=2085
+URL:https://www.wheelingil.gov/common/modules/iCalendar/iCalendar.aspx?feed=calendar&catID=14
+END:VEVENT
+BEGIN:VEVENT
+UID:wheeling-60090-2029-08-06-village-board-regular-meeting@withintenmiles.com
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
+SEQUENCE:0
+DTSTART:20290806T183000
+DTEND:20290806T193000
+SUMMARY:Village Board Regular Meeting
+DESCRIPTION:https://www.wheelingil.gov/calendar.aspx?EID=2038
+URL:https://www.wheelingil.gov/common/modules/iCalendar/iCalendar.aspx?feed=calendar&catID=14
+END:VEVENT
+BEGIN:VEVENT
+UID:wheeling-60090-2029-09-03-village-board-regular-meeting@withintenmiles.com
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
+SEQUENCE:0
+DTSTART:20290903T183000
+DTEND:20290903T193000
+SUMMARY:Village Board Regular Meeting
+DESCRIPTION:https://www.wheelingil.gov/calendar.aspx?EID=2039
+URL:https://www.wheelingil.gov/common/modules/iCalendar/iCalendar.aspx?feed=calendar&catID=14
+END:VEVENT
+BEGIN:VEVENT
+UID:wheeling-60090-2029-09-06-peer-jury@withintenmiles.com
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
+SEQUENCE:0
+DTSTART:20290906T190000
+DTEND:20290906T200000
+SUMMARY:Peer Jury
+DESCRIPTION:https://www.wheelingil.gov/calendar.aspx?EID=2086
+URL:https://www.wheelingil.gov/common/modules/iCalendar/iCalendar.aspx?feed=calendar&catID=14
+END:VEVENT
+BEGIN:VEVENT
+UID:wheeling-60090-2029-10-01-village-board-regular-meeting@withintenmiles.com
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
+SEQUENCE:0
+DTSTART:20291001T183000
+DTEND:20291001T193000
+SUMMARY:Village Board Regular Meeting
+DESCRIPTION:https://www.wheelingil.gov/calendar.aspx?EID=2040
+URL:https://www.wheelingil.gov/common/modules/iCalendar/iCalendar.aspx?feed=calendar&catID=14
+END:VEVENT
+BEGIN:VEVENT
+UID:wheeling-60090-2029-10-04-peer-jury@withintenmiles.com
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
+SEQUENCE:0
+DTSTART:20291004T190000
+DTEND:20291004T200000
+SUMMARY:Peer Jury
+DESCRIPTION:https://www.wheelingil.gov/calendar.aspx?EID=2087
+URL:https://www.wheelingil.gov/common/modules/iCalendar/iCalendar.aspx?feed=calendar&catID=14
+END:VEVENT
+BEGIN:VEVENT
+UID:wheeling-60090-2029-11-01-peer-jury@withintenmiles.com
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
+SEQUENCE:0
+DTSTART:20291101T190000
+DTEND:20291101T200000
+SUMMARY:Peer Jury
+DESCRIPTION:https://www.wheelingil.gov/calendar.aspx?EID=2088
+URL:https://www.wheelingil.gov/common/modules/iCalendar/iCalendar.aspx?feed=calendar&catID=14
+END:VEVENT
+BEGIN:VEVENT
+UID:wheeling-60090-2029-11-05-village-board-regular-meeting@withintenmiles.com
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
+SEQUENCE:0
+DTSTART:20291105T183000
+DTEND:20291105T193000
+SUMMARY:Village Board Regular Meeting
+DESCRIPTION:https://www.wheelingil.gov/calendar.aspx?EID=2041
+URL:https://www.wheelingil.gov/common/modules/iCalendar/iCalendar.aspx?feed=calendar&catID=14
+END:VEVENT
+BEGIN:VEVENT
+UID:wheeling-60090-2029-12-03-village-board-regular-meeting@withintenmiles.com
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
+SEQUENCE:0
+DTSTART:20291203T183000
+DTEND:20291203T193000
+SUMMARY:Village Board Regular Meeting
+DESCRIPTION:https://www.wheelingil.gov/calendar.aspx?EID=2042
+URL:https://www.wheelingil.gov/common/modules/iCalendar/iCalendar.aspx?feed=calendar&catID=14
+END:VEVENT
+BEGIN:VEVENT
+UID:wheeling-60090-2029-12-06-peer-jury@withintenmiles.com
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
+SEQUENCE:0
+DTSTART:20291206T190000
+DTEND:20291206T200000
+SUMMARY:Peer Jury
+DESCRIPTION:https://www.wheelingil.gov/calendar.aspx?EID=2089
+URL:https://www.wheelingil.gov/common/modules/iCalendar/iCalendar.aspx?feed=calendar&catID=14
+END:VEVENT
+BEGIN:VEVENT
+UID:wheeling-60090-2030-01-03-peer-jury@withintenmiles.com
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
+SEQUENCE:0
+DTSTART:20300103T190000
+DTEND:20300103T200000
+SUMMARY:Peer Jury
+DESCRIPTION:https://www.wheelingil.gov/calendar.aspx?EID=2090
+URL:https://www.wheelingil.gov/common/modules/iCalendar/iCalendar.aspx?feed=calendar&catID=14
+END:VEVENT
+BEGIN:VEVENT
+UID:wheeling-60090-2030-01-07-village-board-regular-meeting@withintenmiles.com
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
+SEQUENCE:0
+DTSTART:20300107T183000
+DTEND:20300107T193000
+SUMMARY:Village Board Regular Meeting
+DESCRIPTION:https://www.wheelingil.gov/calendar.aspx?EID=2043
+URL:https://www.wheelingil.gov/common/modules/iCalendar/iCalendar.aspx?feed=calendar&catID=14
+END:VEVENT
+BEGIN:VEVENT
 UID:wheeling-60090-2026-10-25-the-arlingtones@withintenmiles.com
-DTSTAMP:20261025T135256Z
-LAST-MODIFIED:20261025T135256Z
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
 SEQUENCE:0
 DTSTART:20261025T130000
 DTEND:20261025T140000
@@ -524,8 +1371,8 @@ URL:https://indiantrails.libnet.info/event/16583729
 END:VEVENT
 BEGIN:VEVENT
 UID:wheeling-60090-2026-10-26-day-of-the-dead-ofrenda-dia-de-los-muertos-ofrenda@withintenmiles.com
-DTSTAMP:20261025T135256Z
-LAST-MODIFIED:20261025T135256Z
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
 SEQUENCE:0
 DTSTART:20261026T000000
 DTEND:20261026T010000
@@ -535,8 +1382,8 @@ URL:https://indiantrails.libnet.info/event/17110486
 END:VEVENT
 BEGIN:VEVENT
 UID:wheeling-60090-2026-10-26-genealogy-interest-group-meeting@withintenmiles.com
-DTSTAMP:20261025T135256Z
-LAST-MODIFIED:20261025T135256Z
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
 SEQUENCE:0
 DTSTART:20261026T190000
 DTEND:20261026T200000
@@ -546,8 +1393,8 @@ URL:https://indiantrails.libnet.info/event/16652929
 END:VEVENT
 BEGIN:VEVENT
 UID:wheeling-60090-2026-10-27-noisy-time@withintenmiles.com
-DTSTAMP:20261025T135256Z
-LAST-MODIFIED:20261025T135256Z
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
 SEQUENCE:0
 DTSTART:20261027T100000
 DTEND:20261027T110000
@@ -557,8 +1404,8 @@ URL:https://indiantrails.libnet.info/event/16550239
 END:VEVENT
 BEGIN:VEVENT
 UID:wheeling-60090-2026-10-27-rise-read-morning-book-discussion@withintenmiles.com
-DTSTAMP:20261025T135256Z
-LAST-MODIFIED:20261025T135256Z
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
 SEQUENCE:0
 DTSTART:20261027T103000
 DTEND:20261027T113000
@@ -568,8 +1415,8 @@ URL:https://indiantrails.libnet.info/event/14170840
 END:VEVENT
 BEGIN:VEVENT
 UID:wheeling-60090-2026-10-27-paint-and-steep-tea@withintenmiles.com
-DTSTAMP:20261025T135256Z
-LAST-MODIFIED:20261025T135256Z
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
 SEQUENCE:0
 DTSTART:20261027T140000
 DTEND:20261027T150000
@@ -579,8 +1426,8 @@ URL:https://indiantrails.libnet.info/event/16652843
 END:VEVENT
 BEGIN:VEVENT
 UID:wheeling-60090-2026-10-27-spanish-conversation-practice-at-the-branch@withintenmiles.com
-DTSTAMP:20261025T135256Z
-LAST-MODIFIED:20261025T135256Z
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
 SEQUENCE:0
 DTSTART:20261027T173000
 DTEND:20261027T183000
@@ -590,8 +1437,8 @@ URL:https://indiantrails.libnet.info/event/16568749
 END:VEVENT
 BEGIN:VEVENT
 UID:wheeling-60090-2026-10-28-read-to-learn@withintenmiles.com
-DTSTAMP:20261025T135256Z
-LAST-MODIFIED:20261025T135256Z
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
 SEQUENCE:0
 DTSTART:20261028T090000
 DTEND:20261028T100000
@@ -601,8 +1448,8 @@ URL:https://indiantrails.libnet.info/event/11861202
 END:VEVENT
 BEGIN:VEVENT
 UID:wheeling-60090-2026-10-28-scary-stories-to-draw-in-the-dark@withintenmiles.com
-DTSTAMP:20261025T135256Z
-LAST-MODIFIED:20261025T135256Z
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
 SEQUENCE:0
 DTSTART:20261028T160000
 DTEND:20261028T170000
@@ -612,8 +1459,8 @@ URL:https://indiantrails.libnet.info/event/16649351
 END:VEVENT
 BEGIN:VEVENT
 UID:wheeling-60090-2026-10-28-coloring-club@withintenmiles.com
-DTSTAMP:20261025T135256Z
-LAST-MODIFIED:20261025T135256Z
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
 SEQUENCE:0
 DTSTART:20261028T180000
 DTEND:20261028T190000
@@ -623,8 +1470,8 @@ URL:https://indiantrails.libnet.info/event/16505533
 END:VEVENT
 BEGIN:VEVENT
 UID:wheeling-60090-2026-10-28-paint-and-steep-tea@withintenmiles.com
-DTSTAMP:20261025T135256Z
-LAST-MODIFIED:20261025T135256Z
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
 SEQUENCE:0
 DTSTART:20261028T180000
 DTEND:20261028T190000
@@ -634,8 +1481,8 @@ URL:https://indiantrails.libnet.info/event/16652854
 END:VEVENT
 BEGIN:VEVENT
 UID:wheeling-60090-2026-10-29-chat-play-cafe@withintenmiles.com
-DTSTAMP:20261025T135256Z
-LAST-MODIFIED:20261025T135256Z
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
 SEQUENCE:0
 DTSTART:20261029T093000
 DTEND:20261029T103000
@@ -645,8 +1492,8 @@ URL:https://indiantrails.libnet.info/event/16858048
 END:VEVENT
 BEGIN:VEVENT
 UID:wheeling-60090-2026-10-29-monogrammed-tote-bags@withintenmiles.com
-DTSTAMP:20261025T135256Z
-LAST-MODIFIED:20261025T135256Z
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
 SEQUENCE:0
 DTSTART:20261029T180000
 DTEND:20261029T190000
@@ -656,8 +1503,8 @@ URL:https://indiantrails.libnet.info/event/16941159
 END:VEVENT
 BEGIN:VEVENT
 UID:wheeling-60090-2026-10-29-fall-for-autumn-crafts@withintenmiles.com
-DTSTAMP:20261025T135256Z
-LAST-MODIFIED:20261025T135256Z
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
 SEQUENCE:0
 DTSTART:20261029T183000
 DTEND:20261029T193000
@@ -667,8 +1514,8 @@ URL:https://indiantrails.libnet.info/event/16708864
 END:VEVENT
 BEGIN:VEVENT
 UID:wheeling-60090-2026-10-29-high-school-book-club-grades-9-12@withintenmiles.com
-DTSTAMP:20261025T135256Z
-LAST-MODIFIED:20261025T135256Z
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
 SEQUENCE:0
 DTSTART:20261029T190000
 DTEND:20261029T200000
@@ -678,8 +1525,8 @@ URL:https://indiantrails.libnet.info/event/16624800
 END:VEVENT
 BEGIN:VEVENT
 UID:wheeling-60090-2026-10-29-frightening-fics-book-discussion@withintenmiles.com
-DTSTAMP:20261025T135256Z
-LAST-MODIFIED:20261025T135256Z
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
 SEQUENCE:0
 DTSTART:20261029T190000
 DTEND:20261029T200000
@@ -689,8 +1536,8 @@ URL:https://indiantrails.libnet.info/event/16952017
 END:VEVENT
 BEGIN:VEVENT
 UID:wheeling-60090-2026-10-30-spooktacular-storytime@withintenmiles.com
-DTSTAMP:20261025T135256Z
-LAST-MODIFIED:20261025T135256Z
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
 SEQUENCE:0
 DTSTART:20261030T100000
 DTEND:20261030T110000
@@ -700,8 +1547,8 @@ URL:https://indiantrails.libnet.info/event/16709302
 END:VEVENT
 BEGIN:VEVENT
 UID:wheeling-60090-2026-10-30-craft-for-the-day-of-the-dead-at-the-branch@withintenmiles.com
-DTSTAMP:20261025T135256Z
-LAST-MODIFIED:20261025T135256Z
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
 SEQUENCE:0
 DTSTART:20261030T173000
 DTEND:20261030T183000
@@ -711,8 +1558,8 @@ URL:https://indiantrails.libnet.info/event/16606801
 END:VEVENT
 BEGIN:VEVENT
 UID:wheeling-60090-2026-10-31-dia-de-los-muertos-with-mariachi-sirenas@withintenmiles.com
-DTSTAMP:20261025T135256Z
-LAST-MODIFIED:20261025T135256Z
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
 SEQUENCE:0
 DTSTART:20261031T140000
 DTEND:20261031T150000
@@ -722,8 +1569,8 @@ URL:https://indiantrails.libnet.info/event/16663064
 END:VEVENT
 BEGIN:VEVENT
 UID:wheeling-60090-2026-11-01-support-our-troops@withintenmiles.com
-DTSTAMP:20261025T135256Z
-LAST-MODIFIED:20261025T135256Z
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
 SEQUENCE:0
 DTSTART:20261101T000000
 DTEND:20261101T010000
@@ -733,8 +1580,8 @@ URL:https://indiantrails.libnet.info/event/17178977
 END:VEVENT
 BEGIN:VEVENT
 UID:wheeling-60090-2026-11-02-high-school-volunteer-kits@withintenmiles.com
-DTSTAMP:20261025T135256Z
-LAST-MODIFIED:20261025T135256Z
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
 SEQUENCE:0
 DTSTART:20261102T090000
 DTEND:20261102T100000
@@ -744,8 +1591,8 @@ URL:https://indiantrails.libnet.info/event/17139043
 END:VEVENT
 BEGIN:VEVENT
 UID:wheeling-60090-2026-11-02-stitch-together-meet-up@withintenmiles.com
-DTSTAMP:20261025T135256Z
-LAST-MODIFIED:20261025T135256Z
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
 SEQUENCE:0
 DTSTART:20261102T130000
 DTEND:20261102T140000
@@ -755,8 +1602,8 @@ URL:https://indiantrails.libnet.info/event/17043790
 END:VEVENT
 BEGIN:VEVENT
 UID:wheeling-60090-2026-11-02-tech-assistance-assistencia-de-tech@withintenmiles.com
-DTSTAMP:20261025T135256Z
-LAST-MODIFIED:20261025T135256Z
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
 SEQUENCE:0
 DTSTART:20261102T150000
 DTEND:20261102T160000
@@ -766,8 +1613,8 @@ URL:https://indiantrails.libnet.info/event/15964922
 END:VEVENT
 BEGIN:VEVENT
 UID:wheeling-60090-2026-11-02-bookworms-book-club-grades-4-5@withintenmiles.com
-DTSTAMP:20261025T135256Z
-LAST-MODIFIED:20261025T135256Z
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
 SEQUENCE:0
 DTSTART:20261102T160000
 DTEND:20261102T170000
@@ -777,8 +1624,8 @@ URL:https://indiantrails.libnet.info/event/17138854
 END:VEVENT
 BEGIN:VEVENT
 UID:wheeling-60090-2026-11-02-intro-to-chinese-mahjong@withintenmiles.com
-DTSTAMP:20261025T135256Z
-LAST-MODIFIED:20261025T135256Z
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
 SEQUENCE:0
 DTSTART:20261102T180000
 DTEND:20261102T190000
@@ -788,8 +1635,8 @@ URL:https://indiantrails.libnet.info/event/17044874
 END:VEVENT
 BEGIN:VEVENT
 UID:wheeling-60090-2026-11-03-boba-tea-keychains@withintenmiles.com
-DTSTAMP:20261025T135256Z
-LAST-MODIFIED:20261025T135256Z
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
 SEQUENCE:0
 DTSTART:20261103T163000
 DTEND:20261103T173000
@@ -799,8 +1646,8 @@ URL:https://indiantrails.libnet.info/event/17104212
 END:VEVENT
 BEGIN:VEVENT
 UID:wheeling-60090-2026-11-03-alcohol-ink-art@withintenmiles.com
-DTSTAMP:20261025T135256Z
-LAST-MODIFIED:20261025T135256Z
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
 SEQUENCE:0
 DTSTART:20261103T180000
 DTEND:20261103T190000
@@ -810,8 +1657,8 @@ URL:https://indiantrails.libnet.info/event/16808529
 END:VEVENT
 BEGIN:VEVENT
 UID:wheeling-60090-2026-11-03-writers-workshop@withintenmiles.com
-DTSTAMP:20261025T135256Z
-LAST-MODIFIED:20261025T135256Z
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
 SEQUENCE:0
 DTSTART:20261103T183000
 DTEND:20261103T193000
@@ -821,8 +1668,8 @@ URL:https://indiantrails.libnet.info/event/15836584
 END:VEVENT
 BEGIN:VEVENT
 UID:wheeling-60090-2026-11-04-read-to-learn@withintenmiles.com
-DTSTAMP:20261025T135256Z
-LAST-MODIFIED:20261025T135256Z
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
 SEQUENCE:0
 DTSTART:20261104T090000
 DTEND:20261104T100000
@@ -832,8 +1679,8 @@ URL:https://indiantrails.libnet.info/event/11861203
 END:VEVENT
 BEGIN:VEVENT
 UID:wheeling-60090-2026-11-04-knitting-for-beginners@withintenmiles.com
-DTSTAMP:20261025T135256Z
-LAST-MODIFIED:20261025T135256Z
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
 SEQUENCE:0
 DTSTART:20261104T130000
 DTEND:20261104T140000
@@ -843,8 +1690,8 @@ URL:https://indiantrails.libnet.info/event/17127794
 END:VEVENT
 BEGIN:VEVENT
 UID:wheeling-60090-2026-11-04-jewelry-making-extravaganza@withintenmiles.com
-DTSTAMP:20261025T135256Z
-LAST-MODIFIED:20261025T135256Z
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
 SEQUENCE:0
 DTSTART:20261104T160000
 DTEND:20261104T170000
@@ -854,8 +1701,8 @@ URL:https://indiantrails.libnet.info/event/16826727
 END:VEVENT
 BEGIN:VEVENT
 UID:wheeling-60090-2026-11-04-paint-and-steep-tea@withintenmiles.com
-DTSTAMP:20261025T135256Z
-LAST-MODIFIED:20261025T135256Z
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
 SEQUENCE:0
 DTSTART:20261104T180000
 DTEND:20261104T190000
@@ -865,8 +1712,8 @@ URL:https://indiantrails.libnet.info/event/17100994
 END:VEVENT
 BEGIN:VEVENT
 UID:wheeling-60090-2026-11-04-intro-to-excel@withintenmiles.com
-DTSTAMP:20261025T135256Z
-LAST-MODIFIED:20261025T135256Z
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
 SEQUENCE:0
 DTSTART:20261104T190000
 DTEND:20261104T200000
@@ -876,8 +1723,8 @@ URL:https://indiantrails.libnet.info/event/17116353
 END:VEVENT
 BEGIN:VEVENT
 UID:wheeling-60090-2026-11-04-library-board-workshop@withintenmiles.com
-DTSTAMP:20261025T135256Z
-LAST-MODIFIED:20261025T135256Z
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
 SEQUENCE:0
 DTSTART:20261104T190000
 DTEND:20261104T200000
@@ -887,8 +1734,8 @@ URL:https://indiantrails.libnet.info/event/17723328
 END:VEVENT
 BEGIN:VEVENT
 UID:wheeling-60090-2026-11-05-office-hours-with-congressman-brad-schneider-s-office@withintenmiles.com
-DTSTAMP:20261025T135256Z
-LAST-MODIFIED:20261025T135256Z
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
 SEQUENCE:0
 DTSTART:20261105T093000
 DTEND:20261105T103000
@@ -898,8 +1745,8 @@ URL:https://indiantrails.libnet.info/event/16326973
 END:VEVENT
 BEGIN:VEVENT
 UID:wheeling-60090-2026-11-05-social-services-servicios-sociales@withintenmiles.com
-DTSTAMP:20261025T135256Z
-LAST-MODIFIED:20261025T135256Z
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
 SEQUENCE:0
 DTSTART:20261105T100000
 DTEND:20261105T110000
@@ -909,8 +1756,8 @@ URL:https://indiantrails.libnet.info/event/17180349
 END:VEVENT
 BEGIN:VEVENT
 UID:wheeling-60090-2026-11-05-village-of-wheeling-social-workers-at-the-library@withintenmiles.com
-DTSTAMP:20261025T135256Z
-LAST-MODIFIED:20261025T135256Z
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
 SEQUENCE:0
 DTSTART:20261105T100000
 DTEND:20261105T110000
@@ -920,8 +1767,8 @@ URL:https://indiantrails.libnet.info/event/17386764
 END:VEVENT
 BEGIN:VEVENT
 UID:wheeling-60090-2026-11-05-pumpkin-investigation@withintenmiles.com
-DTSTAMP:20261025T135256Z
-LAST-MODIFIED:20261025T135256Z
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
 SEQUENCE:0
 DTSTART:20261105T160000
 DTEND:20261105T170000
@@ -931,8 +1778,8 @@ URL:https://indiantrails.libnet.info/event/16866235
 END:VEVENT
 BEGIN:VEVENT
 UID:wheeling-60090-2026-11-05-coloring-club@withintenmiles.com
-DTSTAMP:20261025T135256Z
-LAST-MODIFIED:20261025T135256Z
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
 SEQUENCE:0
 DTSTART:20261105T180000
 DTEND:20261105T190000
@@ -942,8 +1789,8 @@ URL:https://indiantrails.libnet.info/event/17044103
 END:VEVENT
 BEGIN:VEVENT
 UID:wheeling-60090-2026-11-05-night-owls@withintenmiles.com
-DTSTAMP:20261025T135256Z
-LAST-MODIFIED:20261025T135256Z
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
 SEQUENCE:0
 DTSTART:20261105T180000
 DTEND:20261105T190000
@@ -953,8 +1800,8 @@ URL:https://indiantrails.libnet.info/event/16927181
 END:VEVENT
 BEGIN:VEVENT
 UID:wheeling-60090-2026-11-05-mod-podge-crystal-lanterns@withintenmiles.com
-DTSTAMP:20261025T135256Z
-LAST-MODIFIED:20261025T135256Z
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
 SEQUENCE:0
 DTSTART:20261105T190000
 DTEND:20261105T200000
@@ -964,8 +1811,8 @@ URL:https://indiantrails.libnet.info/event/16987781
 END:VEVENT
 BEGIN:VEVENT
 UID:wheeling-60090-2026-11-06-babytime@withintenmiles.com
-DTSTAMP:20261025T135256Z
-LAST-MODIFIED:20261025T135256Z
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
 SEQUENCE:0
 DTSTART:20261106T093000
 DTEND:20261106T103000
@@ -975,8 +1822,8 @@ URL:https://indiantrails.libnet.info/event/16930467
 END:VEVENT
 BEGIN:VEVENT
 UID:wheeling-60090-2026-11-06-wonderful-walkers@withintenmiles.com
-DTSTAMP:20261025T135256Z
-LAST-MODIFIED:20261025T135256Z
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
 SEQUENCE:0
 DTSTART:20261106T103000
 DTEND:20261106T113000
@@ -986,8 +1833,8 @@ URL:https://indiantrails.libnet.info/event/16930601
 END:VEVENT
 BEGIN:VEVENT
 UID:wheeling-60090-2026-11-06-esl-tea-talk@withintenmiles.com
-DTSTAMP:20261025T135256Z
-LAST-MODIFIED:20261025T135256Z
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
 SEQUENCE:0
 DTSTART:20261106T180000
 DTEND:20261106T190000
@@ -997,8 +1844,8 @@ URL:https://indiantrails.libnet.info/event/17081985
 END:VEVENT
 BEGIN:VEVENT
 UID:wheeling-60090-2026-11-06-chats-food@withintenmiles.com
-DTSTAMP:20261025T135256Z
-LAST-MODIFIED:20261025T135256Z
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
 SEQUENCE:0
 DTSTART:20261106T180000
 DTEND:20261106T190000
@@ -1008,8 +1855,8 @@ URL:https://indiantrails.libnet.info/event/17178758
 END:VEVENT
 BEGIN:VEVENT
 UID:wheeling-60090-2026-11-07-weekend-wiggles@withintenmiles.com
-DTSTAMP:20261025T135256Z
-LAST-MODIFIED:20261025T135256Z
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
 SEQUENCE:0
 DTSTART:20261107T100000
 DTEND:20261107T110000
@@ -1019,8 +1866,8 @@ URL:https://indiantrails.libnet.info/event/16971639
 END:VEVENT
 BEGIN:VEVENT
 UID:wheeling-60090-2026-11-07-light-up-the-day-with-diwali-dances-stories-traditions@withintenmiles.com
-DTSTAMP:20261025T135256Z
-LAST-MODIFIED:20261025T135256Z
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
 SEQUENCE:0
 DTSTART:20261107T130000
 DTEND:20261107T140000
@@ -1030,8 +1877,8 @@ URL:https://indiantrails.libnet.info/event/17117004
 END:VEVENT
 BEGIN:VEVENT
 UID:wheeling-60090-2026-11-08-resume-review-career-coaching-appointments@withintenmiles.com
-DTSTAMP:20261025T135256Z
-LAST-MODIFIED:20261025T135256Z
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
 SEQUENCE:0
 DTSTART:20261108T121500
 DTEND:20261108T131500
@@ -1041,8 +1888,8 @@ URL:https://indiantrails.libnet.info/event/17101956
 END:VEVENT
 BEGIN:VEVENT
 UID:wheeling-60090-2026-11-08-tech-assistance@withintenmiles.com
-DTSTAMP:20261025T135256Z
-LAST-MODIFIED:20261025T135256Z
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
 SEQUENCE:0
 DTSTART:20261108T130000
 DTEND:20261108T140000
@@ -1052,8 +1899,8 @@ URL:https://indiantrails.libnet.info/event/17116009
 END:VEVENT
 BEGIN:VEVENT
 UID:wheeling-60090-2026-11-09-leslie-goddard-presents-route-66@withintenmiles.com
-DTSTAMP:20261025T135256Z
-LAST-MODIFIED:20261025T135256Z
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
 SEQUENCE:0
 DTSTART:20261109T140000
 DTEND:20261109T150000
@@ -1063,8 +1910,8 @@ URL:https://indiantrails.libnet.info/event/17008303
 END:VEVENT
 BEGIN:VEVENT
 UID:wheeling-60090-2026-11-09-k9-reading-buddies@withintenmiles.com
-DTSTAMP:20261025T135256Z
-LAST-MODIFIED:20261025T135256Z
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
 SEQUENCE:0
 DTSTART:20261109T160000
 DTEND:20261109T170000
@@ -1074,13 +1921,2137 @@ URL:https://indiantrails.libnet.info/event/17139100
 END:VEVENT
 BEGIN:VEVENT
 UID:wheeling-60090-2026-11-09-thanksgiving-coasters@withintenmiles.com
-DTSTAMP:20261025T135256Z
-LAST-MODIFIED:20261025T135256Z
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
 SEQUENCE:0
 DTSTART:20261109T173000
 DTEND:20261109T183000
 SUMMARY:Thanksgiving Coasters
 DESCRIPTION:Monday\, November 09 2026 5:30pm - 6:30pm \n Import Thanksgiving images into Inkscape to laser engrave a custom coaster. R
 URL:https://indiantrails.libnet.info/event/17138281
+END:VEVENT
+BEGIN:VEVENT
+UID:wheeling-60090-2026-11-09-internet-resources-for-czech-and-slovak-genealogy@withintenmiles.com
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
+SEQUENCE:0
+DTSTART:20261109T190000
+DTEND:20261109T200000
+SUMMARY:Internet Resources for Czech and Slovak Genealogy
+DESCRIPTION:Monday\, November 09 2026 7:00pm - 8:30pm \n Roger Liska\, professional genealogist\, demonstrates the online resources and records available when discovering…
+URL:https://indiantrails.libnet.info/event/17101700
+END:VEVENT
+BEGIN:VEVENT
+UID:wheeling-60090-2026-11-09-dungeons-dragons@withintenmiles.com
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
+SEQUENCE:0
+DTSTART:20261109T190000
+DTEND:20261109T200000
+SUMMARY:Dungeons & Dragons
+DESCRIPTION:Monday\, November 09 2026 7:00pm - 8:00pm \n If youre an expert or just starting out\, join us for some D&D. Bring your own character sheet or pick up a…
+URL:https://indiantrails.libnet.info/event/17486257
+END:VEVENT
+BEGIN:VEVENT
+UID:wheeling-60090-2026-11-10-noisy-time@withintenmiles.com
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
+SEQUENCE:0
+DTSTART:20261110T100000
+DTEND:20261110T110000
+SUMMARY:Noisy Time
+DESCRIPTION:Tuesday\, November 10 2026 10:00am - 10:30am \n Explore the world around us with stories\, rhymes and lots of music and movement. TR
+URL:https://indiantrails.libnet.info/event/16927079
+END:VEVENT
+BEGIN:VEVENT
+UID:wheeling-60090-2026-11-10-rise-read-morning-book-discussion@withintenmiles.com
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
+SEQUENCE:0
+DTSTART:20261110T103000
+DTEND:20261110T113000
+SUMMARY:Rise & Read Morning Book Discussion
+DESCRIPTION:Tuesday\, November 10 2026 10:30am - 11:30am \n Registration and book pickup begins October 13. A book about murder\, deception\, and the pursuit of the truth. R
+URL:https://indiantrails.libnet.info/event/14170861
+END:VEVENT
+BEGIN:VEVENT
+UID:wheeling-60090-2026-11-10-quality-watercolor-techniques@withintenmiles.com
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
+SEQUENCE:0
+DTSTART:20261110T110000
+DTEND:20261110T120000
+SUMMARY:Quality Watercolor Techniques
+DESCRIPTION:Tuesday\, November 10 2026 11:00am - 12:00pm \n Learn how different grade art supplies affect watercolors and practice your professional skills using layering…
+URL:https://indiantrails.libnet.info/event/17096928
+END:VEVENT
+BEGIN:VEVENT
+UID:wheeling-60090-2026-11-10-the-history-of-bagels@withintenmiles.com
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
+SEQUENCE:0
+DTSTART:20261110T130000
+DTEND:20261110T140000
+SUMMARY:The History of Bagels
+DESCRIPTION:Tuesday\, November 10 2026 1:00pm - 2:00pm \n Discover the history of bagels with Jewish food enthusiast Arianna Brooks. Learn how bagels were shaped by…
+URL:https://indiantrails.libnet.info/event/16733965
+END:VEVENT
+BEGIN:VEVENT
+UID:wheeling-60090-2026-11-10-paper-craft-happy-hour@withintenmiles.com
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
+SEQUENCE:0
+DTSTART:20261110T160000
+DTEND:20261110T170000
+SUMMARY:Paper Craft Happy Hour
+DESCRIPTION:Tuesday\, November 10 2026 4:00pm - 6:00pm \n Chat with fellow creatives\, get inspired or discover a new paper craft tool during this self-guided crafting…
+URL:https://indiantrails.libnet.info/event/17044636
+END:VEVENT
+BEGIN:VEVENT
+UID:wheeling-60090-2026-11-10-basket-weaving@withintenmiles.com
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
+SEQUENCE:0
+DTSTART:20261110T163000
+DTEND:20261110T173000
+SUMMARY:Basket Weaving
+DESCRIPTION:Tuesday\, November 10 2026 4:30pm - 5:30pm \n Enjoy a relaxing time with friends and create "unbe-weave-able" reed baskets you can use to decorate your room. R
+URL:https://indiantrails.libnet.info/event/17103878
+END:VEVENT
+BEGIN:VEVENT
+UID:wheeling-60090-2026-11-10-spanish-conversation-practice-at-the-branch@withintenmiles.com
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
+SEQUENCE:0
+DTSTART:20261110T173000
+DTEND:20261110T183000
+SUMMARY:Spanish Conversation Practice | At the Branch
+DESCRIPTION:Tuesday\, November 10 2026 5:30pm - 6:30pm \n Informal Spanish conversation session to practice and improve your speaking skills by talking to native…
+URL:https://indiantrails.libnet.info/event/17092615
+END:VEVENT
+BEGIN:VEVENT
+UID:wheeling-60090-2026-11-10-resume-review-career-coaching-appointments@withintenmiles.com
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
+SEQUENCE:0
+DTSTART:20261110T180000
+DTEND:20261110T190000
+SUMMARY:Resume Review & Career Coaching Appointments
+DESCRIPTION:Tuesday\, November 10 2026 6:00pm - 7:00pm \n Kickstart your career with a one-hour resume review with a career specialist. Resume Review and Career Coaching…
+URL:https://indiantrails.libnet.info/event/17101971
+END:VEVENT
+BEGIN:VEVENT
+UID:wheeling-60090-2026-11-10-job-jumpstart-lab@withintenmiles.com
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
+SEQUENCE:0
+DTSTART:20261110T190000
+DTEND:20261110T200000
+SUMMARY:Job Jumpstart Lab
+DESCRIPTION:Tuesday\, November 10 2026 7:00pm - 8:30pm \n Learn from Wright to Learn presenters on how to find out who's hiring\, understand what employers are looking for…
+URL:https://indiantrails.libnet.info/event/17101794
+END:VEVENT
+BEGIN:VEVENT
+UID:wheeling-60090-2026-11-11-read-to-learn@withintenmiles.com
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
+SEQUENCE:0
+DTSTART:20261111T090000
+DTEND:20261111T100000
+SUMMARY:Read to Learn
+DESCRIPTION:Wednesday\, November 11 2026 9:00am - 12:00pm \n District 214 Read to Learn Adult Literacy Program.
+URL:https://indiantrails.libnet.info/event/11861204
+END:VEVENT
+BEGIN:VEVENT
+UID:wheeling-60090-2026-11-11-offsite-veterans-day-celebration@withintenmiles.com
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
+SEQUENCE:0
+DTSTART:20261111T121500
+DTEND:20261111T131500
+SUMMARY:OFFSITE: Veterans Day Celebration
+DESCRIPTION:Wednesday\, November 11 2026 12:15pm - 2:00pm \n Honor the veterans in your life with a memorable afternoon of music\, gratitude\, and community.
+URL:https://indiantrails.libnet.info/event/16359996
+END:VEVENT
+BEGIN:VEVENT
+UID:wheeling-60090-2026-11-11-coloring-club@withintenmiles.com
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
+SEQUENCE:0
+DTSTART:20261111T130000
+DTEND:20261111T140000
+SUMMARY:Coloring Club
+DESCRIPTION:Wednesday\, November 11 2026 1:00pm - 2:30pm \n Join fellow coloring page enthusiasts in a relaxed environment where you can work at your own pace. Bring your…
+URL:https://indiantrails.libnet.info/event/17044290
+END:VEVENT
+BEGIN:VEVENT
+UID:wheeling-60090-2026-11-11-paperback-pals-book-club-grades-2-3@withintenmiles.com
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
+SEQUENCE:0
+DTSTART:20261111T160000
+DTEND:20261111T170000
+SUMMARY:Paperback Pals Book Club | Grades 2-3
+DESCRIPTION:Wednesday\, November 11 2026 4:00pm - 5:00pm \n Book pickup October 14-November 4 at the Youth Services Desk. Roz discovers that she is alone on a wild island…
+URL:https://indiantrails.libnet.info/event/16293508
+END:VEVENT
+BEGIN:VEVENT
+UID:wheeling-60090-2026-11-11-pour-paint-snowflakes@withintenmiles.com
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
+SEQUENCE:0
+DTSTART:20261111T180000
+DTEND:20261111T190000
+SUMMARY:Pour Paint Snowflakes
+DESCRIPTION:Wednesday\, November 11 2026 6:00pm - 7:30pm \n Create a one of a kind string of snowflakes using pour paint techniques. Dress to get messy. R
+URL:https://indiantrails.libnet.info/event/17127888
+END:VEVENT
+BEGIN:VEVENT
+UID:wheeling-60090-2026-11-11-foundation-board-meeting@withintenmiles.com
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
+SEQUENCE:0
+DTSTART:20261111T190000
+DTEND:20261111T200000
+SUMMARY:Foundation Board Meeting
+DESCRIPTION:Wednesday\, November 11 2026 7:00pm - 8:30pm \n Foundation Board Meeting
+URL:https://indiantrails.libnet.info/event/12499302
+END:VEVENT
+BEGIN:VEVENT
+UID:wheeling-60090-2026-11-11-intermediate-excel@withintenmiles.com
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
+SEQUENCE:0
+DTSTART:20261111T190000
+DTEND:20261111T200000
+SUMMARY:Intermediate Excel
+DESCRIPTION:Wednesday\, November 11 2026 7:00pm - 8:00pm \n Create charts\, tables\, graphs\, and conditional formatting using Sparklines. Intended for those with working…
+URL:https://indiantrails.libnet.info/event/17116374
+END:VEVENT
+BEGIN:VEVENT
+UID:wheeling-60090-2026-11-12-chat-play-cafe@withintenmiles.com
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
+SEQUENCE:0
+DTSTART:20261112T093000
+DTEND:20261112T103000
+SUMMARY:Chat & Play Cafe
+DESCRIPTION:Thursday\, November 12 2026 9:30am - 11:00am \n Join unstructured playtime for you and baby. Enjoy coffee\, a sweet treat and conversation while the little ones…
+URL:https://indiantrails.libnet.info/event/16931065
+END:VEVENT
+BEGIN:VEVENT
+UID:wheeling-60090-2026-11-12-harvest-lather-fall-soap-crafting@withintenmiles.com
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
+SEQUENCE:0
+DTSTART:20261112T190000
+DTEND:20261112T200000
+SUMMARY:Harvest & Lather: Fall Soap Crafting
+DESCRIPTION:Thursday\, November 12 2026 7:00pm - 8:00pm \n Bring the cozy vibes of autumn into your routine. Blend warm seasonal scents\, gorgeous fall colors\, and custom…
+URL:https://indiantrails.libnet.info/event/16987970
+END:VEVENT
+BEGIN:VEVENT
+UID:wheeling-60090-2026-11-12-illinois-libraries-present-dr-eve-l-ewing@withintenmiles.com
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
+SEQUENCE:0
+DTSTART:20261112T190000
+DTEND:20261112T200000
+SUMMARY:Illinois Libraries Present: Dr. Eve L. Ewing
+DESCRIPTION:Thursday\, November 12 2026 7:00pm - 8:00pm \n Engage in an important and thoughtful conversation with Dr. Eve L. Ewing\, acclaimed author\, educator\, poet and…
+URL:https://indiantrails.libnet.info/event/17139138
+END:VEVENT
+BEGIN:VEVENT
+UID:wheeling-60090-2026-11-13-toddler-storytime@withintenmiles.com
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
+SEQUENCE:0
+DTSTART:20261113T100000
+DTEND:20261113T110000
+SUMMARY:Toddler Storytime
+DESCRIPTION:Friday\, November 13 2026 10:00am - 10:30am \n Start your day with books\, rhymes and songs. TR
+URL:https://indiantrails.libnet.info/event/16927102
+END:VEVENT
+BEGIN:VEVENT
+UID:wheeling-60090-2026-11-13-preschool-storytime@withintenmiles.com
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
+SEQUENCE:0
+DTSTART:20261113T110000
+DTEND:20261113T120000
+SUMMARY:Preschool Storytime
+DESCRIPTION:Friday\, November 13 2026 11:00am - 11:30am \n Boost early literacy skills with books\, movement and songs. TR
+URL:https://indiantrails.libnet.info/event/16927126
+END:VEVENT
+BEGIN:VEVENT
+UID:wheeling-60090-2026-11-13-quality-watercolor-techniques@withintenmiles.com
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
+SEQUENCE:0
+DTSTART:20261113T110000
+DTEND:20261113T120000
+SUMMARY:Quality Watercolor Techniques
+DESCRIPTION:Friday\, November 13 2026 11:00am - 12:00pm \n Learn how different grade art supplies affect watercolors and practice your professional skills using layering…
+URL:https://indiantrails.libnet.info/event/17096881
+END:VEVENT
+BEGIN:VEVENT
+UID:wheeling-60090-2026-11-13-movie-matinee-the-devil-wears-prada-2-2026@withintenmiles.com
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
+SEQUENCE:0
+DTSTART:20261113T140000
+DTEND:20261113T150000
+SUMMARY:Movie Matinee: The Devil Wears Prada 2 (2026)
+DESCRIPTION:Friday\, November 13 2026 2:00pm - 4:00pm \n Andy Sachs reunites with Miranda Priestly as they navigate their careers amid the decline of traditional magazine…
+URL:https://indiantrails.libnet.info/event/17084807
+END:VEVENT
+BEGIN:VEVENT
+UID:wheeling-60090-2026-11-13-family-craft-friday-paint-a-ghzel-plate-at-the-branch@withintenmiles.com
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
+SEQUENCE:0
+DTSTART:20261113T173000
+DTEND:20261113T183000
+SUMMARY:Family Craft Friday: Paint A Ghzel Plate | At The Branch
+DESCRIPTION:Friday\, November 13 2026 5:30pm - 7:00pm \n Join us for a special cultural craft session to paint a decorative plate in a tradition of Russian Gzhel porcelain…
+URL:https://indiantrails.libnet.info/event/17087741
+END:VEVENT
+BEGIN:VEVENT
+UID:wheeling-60090-2026-11-13-thanksgiving-coasters@withintenmiles.com
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
+SEQUENCE:0
+DTSTART:20261113T173000
+DTEND:20261113T183000
+SUMMARY:Thanksgiving Coasters
+DESCRIPTION:Friday\, November 13 2026 5:30pm - 6:30pm \n Import Thanksgiving images into Inkscape to laser engrave a custom coaster. R
+URL:https://indiantrails.libnet.info/event/17053394
+END:VEVENT
+BEGIN:VEVENT
+UID:wheeling-60090-2026-11-16-pop-up-movie-power-ballad-2026@withintenmiles.com
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
+SEQUENCE:0
+DTSTART:20261116T180000
+DTEND:20261116T190000
+SUMMARY:Pop-Up Movie: Power Ballad (2026)
+DESCRIPTION:Monday\, November 16 2026 6:00pm - 7:40pm \n Wedding singer Rick bonds with former boy-band member Danny over music. When Danny turns Rick's song into a hit\,…
+URL:https://indiantrails.libnet.info/event/17446674
+END:VEVENT
+BEGIN:VEVENT
+UID:wheeling-60090-2026-11-16-holiday-print-cards@withintenmiles.com
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
+SEQUENCE:0
+DTSTART:20261116T190000
+DTEND:20261116T200000
+SUMMARY:Holiday Print Cards
+DESCRIPTION:Monday\, November 16 2026 7:00pm - 8:00pm \n Terri Murphy\, owner of Young-at-Heart Art Workshops\, teaches block?printing by using various tools and techniques…
+URL:https://indiantrails.libnet.info/event/17101832
+END:VEVENT
+BEGIN:VEVENT
+UID:wheeling-60090-2026-11-17-paint-and-steep-tea@withintenmiles.com
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
+SEQUENCE:0
+DTSTART:20261117T140000
+DTEND:20261117T150000
+SUMMARY:Paint and Steep Tea
+DESCRIPTION:Tuesday\, November 17 2026 2:00pm - 4:00pm \n Reserved for Adult Indian Trails Library cardholders only. Join us for a monthly painting program with teaching…
+URL:https://indiantrails.libnet.info/event/17101612
+END:VEVENT
+BEGIN:VEVENT
+UID:wheeling-60090-2026-11-17-chapter-one-book-club-grades-k-1@withintenmiles.com
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
+SEQUENCE:0
+DTSTART:20261117T160000
+DTEND:20261117T170000
+SUMMARY:Chapter One Book Club | Grades K-1
+DESCRIPTION:Tuesday\, November 17 2026 4:00pm - 5:00pm \n Book pickup October 20-November 10 at the Youth Services Desk. Lucy and Nera both want the Moon Blossom. But when…
+URL:https://indiantrails.libnet.info/event/17104129
+END:VEVENT
+BEGIN:VEVENT
+UID:wheeling-60090-2026-11-17-resume-review-career-coaching-appointments@withintenmiles.com
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
+SEQUENCE:0
+DTSTART:20261117T180000
+DTEND:20261117T190000
+SUMMARY:Resume Review & Career Coaching Appointments
+DESCRIPTION:Tuesday\, November 17 2026 6:00pm - 7:00pm \n Kickstart your career with a one-hour resume review with a career specialist. Resume Review and Career Coaching…
+URL:https://indiantrails.libnet.info/event/17102240
+END:VEVENT
+BEGIN:VEVENT
+UID:wheeling-60090-2026-11-17-star-party@withintenmiles.com
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
+SEQUENCE:0
+DTSTART:20261117T193000
+DTEND:20261117T203000
+SUMMARY:Star Party
+DESCRIPTION:Tuesday\, November 17 2026 7:30pm - 8:30pm \n Bundle up to gaze at the stars with our friends from the Lake County Astronomical Society. Dress for cold weather.…
+URL:https://indiantrails.libnet.info/event/17139951
+END:VEVENT
+BEGIN:VEVENT
+UID:wheeling-60090-2026-11-18-chess-club@withintenmiles.com
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
+SEQUENCE:0
+DTSTART:20261118T173000
+DTEND:20261118T183000
+SUMMARY:Chess Club
+DESCRIPTION:Wednesday\, November 18 2026 5:30pm - 6:15pm \n Discover chess moves\, strategies\, and checkmate techniques with international Chess Master Arjun Vishnuvardhan…
+URL:https://indiantrails.libnet.info/event/15917153
+END:VEVENT
+BEGIN:VEVENT
+UID:wheeling-60090-2026-11-18-stitch-together-meet-up@withintenmiles.com
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
+SEQUENCE:0
+DTSTART:20261118T180000
+DTEND:20261118T190000
+SUMMARY:Stitch Together Meet-Up
+DESCRIPTION:Wednesday\, November 18 2026 6:00pm - 8:00pm \n If your craft of choice uses needles or hooks\, this group is for you. Bring your knit\, crochet\, embroidery or…
+URL:https://indiantrails.libnet.info/event/17044165
+END:VEVENT
+BEGIN:VEVENT
+UID:wheeling-60090-2026-11-18-library-board-meeting@withintenmiles.com
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
+SEQUENCE:0
+DTSTART:20261118T190000
+DTEND:20261118T200000
+SUMMARY:Library Board Meeting
+DESCRIPTION:Wednesday\, November 18 2026 7:00pm - 9:00pm \n The Board of Trustees meet for its monthly workshop and planning session. This meeting is open to the public.…
+URL:https://indiantrails.libnet.info/event/16198756
+END:VEVENT
+BEGIN:VEVENT
+UID:wheeling-60090-2026-11-18-advanced-excel@withintenmiles.com
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
+SEQUENCE:0
+DTSTART:20261118T190000
+DTEND:20261118T200000
+SUMMARY:Advanced Excel
+DESCRIPTION:Wednesday\, November 18 2026 7:00pm - 8:00pm \n Learn to use the VLookUp function and Pivot Table features. Intended for advanced working knowledge of Microsoft…
+URL:https://indiantrails.libnet.info/event/17116388
+END:VEVENT
+BEGIN:VEVENT
+UID:wheeling-60090-2026-11-19-office-hours-with-congressman-brad-schneider-s-office@withintenmiles.com
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
+SEQUENCE:0
+DTSTART:20261119T093000
+DTEND:20261119T103000
+SUMMARY:Office Hours with Congressman Brad Schneider's Office
+DESCRIPTION:Thursday\, November 19 2026 9:30am - 12:30pm \n A representative is present to engage with the community\, share important information relevant to residents and…
+URL:https://indiantrails.libnet.info/event/16326974
+END:VEVENT
+BEGIN:VEVENT
+UID:wheeling-60090-2026-11-19-tech-assistance@withintenmiles.com
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
+SEQUENCE:0
+DTSTART:20261119T100000
+DTEND:20261119T110000
+SUMMARY:Tech Assistance
+DESCRIPTION:Thursday\, November 19 2026 10:00am - 10:45am \n Have a basic question about your device\nand thinking of trying Cloud Library\,\nHoopla or another library app?…
+URL:https://indiantrails.libnet.info/event/17116010
+END:VEVENT
+BEGIN:VEVENT
+UID:wheeling-60090-2026-11-19-memory-cafe@withintenmiles.com
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
+SEQUENCE:0
+DTSTART:20261119T140000
+DTEND:20261119T150000
+SUMMARY:Memory Cafe
+DESCRIPTION:Thursday\, November 19 2026 2:00pm - 3:00pm \n If you or a loved one are experiencing memory loss\, you are invited to join us for activities and socialization…
+URL:https://indiantrails.libnet.info/event/14656932
+END:VEVENT
+BEGIN:VEVENT
+UID:wheeling-60090-2026-11-19-knitting-for-beginners@withintenmiles.com
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
+SEQUENCE:0
+DTSTART:20261119T180000
+DTEND:20261119T190000
+SUMMARY:Knitting for Beginners
+DESCRIPTION:Thursday\, November 19 2026 6:00pm - 8:00pm \n Learn the basic skills needed to start your knitting journey. Materials provided. R
+URL:https://indiantrails.libnet.info/event/17127802
+END:VEVENT
+BEGIN:VEVENT
+UID:wheeling-60090-2026-11-20-staff-institute-day@withintenmiles.com
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
+SEQUENCE:0
+DTSTART;VALUE=DATE:20261120
+DTEND;VALUE=DATE:20261121
+TRANSP:TRANSPARENT
+SUMMARY:Staff Institute Day
+DESCRIPTION:Friday\, November 20 2026 9:00am - 9:00pm \n Staff Institute Day
+URL:https://indiantrails.libnet.info/event/11498854
+END:VEVENT
+BEGIN:VEVENT
+UID:wheeling-60090-2026-11-20-closed-staff-training-day@withintenmiles.com
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
+SEQUENCE:0
+DTSTART:20261120T090000
+DTEND:20261120T100000
+SUMMARY:CLOSED-Staff Training Day
+DESCRIPTION:Friday\, November 20 2026 9:00am - 9:00pm \n Main library and Branch are closed.
+URL:https://indiantrails.libnet.info/event/17056882
+END:VEVENT
+BEGIN:VEVENT
+UID:wheeling-60090-2026-11-21-super-saturday-chicago-cossacks-ukrainian-music-and-dance@withintenmiles.com
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
+SEQUENCE:0
+DTSTART:20261121T110000
+DTEND:20261121T120000
+SUMMARY:Super Saturday: Chicago Cossacks - Ukrainian Music and Dance
+DESCRIPTION:Saturday\, November 21 2026 11:00am - 12:00pm \n All ages. Ukrainian music\, song and dance ensemble that also performs Eastern European\, Jewish (Klezmer)\,…
+URL:https://indiantrails.libnet.info/event/17109214
+END:VEVENT
+BEGIN:VEVENT
+UID:wheeling-60090-2026-11-23-got-science-space-exploration@withintenmiles.com
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
+SEQUENCE:0
+DTSTART:20261123T130000
+DTEND:20261123T140000
+SUMMARY:Got Science? Space Exploration
+DESCRIPTION:Monday\, November 23 2026 1:00pm - 2:00pm \n Explore the final frontier. R
+URL:https://indiantrails.libnet.info/event/17138966
+END:VEVENT
+BEGIN:VEVENT
+UID:wheeling-60090-2026-11-23-introduction-to-tinkercad@withintenmiles.com
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
+SEQUENCE:0
+DTSTART:20261123T173000
+DTEND:20261123T183000
+SUMMARY:Introduction to Tinkercad
+DESCRIPTION:Monday\, November 23 2026 5:30pm - 6:45pm \n Get started with TinkerCAD\, a free 3D modeling program. Learn the basics of building with this easy-to-use…
+URL:https://indiantrails.libnet.info/event/17428279
+END:VEVENT
+BEGIN:VEVENT
+UID:wheeling-60090-2026-11-23-middle-school-book-club-grades-6-8@withintenmiles.com
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
+SEQUENCE:0
+DTSTART:20261123T190000
+DTEND:20261123T200000
+SUMMARY:Middle School Book Club | Grades 6-8
+DESCRIPTION:Monday\, November 23 2026 7:00pm - 8:00pm \n Book pickup September 28-November 16 at the Youth Services Desk. Mika knows she will struggle to survive the harsh…
+URL:https://indiantrails.libnet.info/event/17103897
+END:VEVENT
+BEGIN:VEVENT
+UID:wheeling-60090-2026-11-24-rise-read-morning-book-discussion@withintenmiles.com
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
+SEQUENCE:0
+DTSTART:20261124T103000
+DTEND:20261124T113000
+SUMMARY:Rise & Read Morning Book Discussion
+DESCRIPTION:Tuesday\, November 24 2026 10:30am - 11:30am \n Registration and book pickup begins October 13. A book about murder\, deception\, and the pursuit of the truth. R
+URL:https://indiantrails.libnet.info/event/14170862
+END:VEVENT
+BEGIN:VEVENT
+UID:wheeling-60090-2026-11-24-spanish-conversation-practice-at-the-branch@withintenmiles.com
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
+SEQUENCE:0
+DTSTART:20261124T173000
+DTEND:20261124T183000
+SUMMARY:Spanish Conversation Practice | At the Branch
+DESCRIPTION:Tuesday\, November 24 2026 5:30pm - 6:30pm \n Informal Spanish conversation session to practice and improve your speaking skills by talking to native…
+URL:https://indiantrails.libnet.info/event/17092616
+END:VEVENT
+BEGIN:VEVENT
+UID:wheeling-60090-2026-11-24-discovery-play-with-the-leaf-thief@withintenmiles.com
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
+SEQUENCE:0
+DTSTART:20261124T180000
+DTEND:20261124T190000
+SUMMARY:Discovery Play with The Leaf Thief
+DESCRIPTION:Tuesday\, November 24 2026 6:00pm - 6:45pm \n Engage with early literacy activities designed to encourage pre-reading skills. Visit each station with your child…
+URL:https://indiantrails.libnet.info/event/17104217
+END:VEVENT
+BEGIN:VEVENT
+UID:wheeling-60090-2026-11-25-finger-painting@withintenmiles.com
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
+SEQUENCE:0
+DTSTART:20261125T110000
+DTEND:20261125T120000
+SUMMARY:Finger Painting
+DESCRIPTION:Wednesday\, November 25 2026 11:00am - 12:00pm \n Create a masterpiece-- without the brushes. Dress to get messy. R
+URL:https://indiantrails.libnet.info/event/17114828
+END:VEVENT
+BEGIN:VEVENT
+UID:wheeling-60090-2026-11-25-early-closing-thanksgiving-holiday@withintenmiles.com
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
+SEQUENCE:0
+DTSTART:20261125T170000
+DTEND:20261125T180000
+SUMMARY:EARLY CLOSING - Thanksgiving Holiday
+DESCRIPTION:Wednesday\, November 25 2026 5:00pm - 9:00pm \n EARLY CLOSING - Thanksgiving Holiday\nThe library will close at 5 pm.
+URL:https://indiantrails.libnet.info/event/12825590
+END:VEVENT
+BEGIN:VEVENT
+UID:wheeling-60090-2026-11-27-loter-a-night-noche-de-loter-a-at-the-branch@withintenmiles.com
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
+SEQUENCE:0
+DTSTART:20261127T170000
+DTEND:20261127T180000
+SUMMARY:Lotería Night | Noche de Lotería | At the Branch
+DESCRIPTION:Friday\, November 27 2026 5:00pm - 6:00pm \n Join us for a family night of Lotería\, a traditional Mexican board game\, similar to bingo.  Practice your Spanish…
+URL:https://indiantrails.libnet.info/event/17092640
+END:VEVENT
+BEGIN:VEVENT
+UID:wheeling-60090-2026-11-29-reading-fair@withintenmiles.com
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
+SEQUENCE:0
+DTSTART:20261129T130000
+DTEND:20261129T140000
+SUMMARY:Reading Fair
+DESCRIPTION:Sunday\, November 29 2026 1:00pm - 4:00pm \n Discover valuable reading resources\, learn how to achieve your reading goals and explore the library's reading…
+URL:https://indiantrails.libnet.info/event/17101404
+END:VEVENT
+BEGIN:VEVENT
+UID:wheeling-60090-2026-11-30-discovery-play-with-the-leaf-thief@withintenmiles.com
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
+SEQUENCE:0
+DTSTART:20261130T100000
+DTEND:20261130T110000
+SUMMARY:Discovery Play with The Leaf Thief
+DESCRIPTION:Monday\, November 30 2026 10:00am - 10:45am \n Engage with early literacy activities designed to encourage pre-reading skills. Visit each station with your…
+URL:https://indiantrails.libnet.info/event/17104244
+END:VEVENT
+BEGIN:VEVENT
+UID:wheeling-60090-2026-11-30-csi-book-club@withintenmiles.com
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
+SEQUENCE:0
+DTSTART:20261130T180000
+DTEND:20261130T190000
+SUMMARY:CSI Book Club
+DESCRIPTION:Monday\, November 30 2026 6:00pm - 7:00pm \n Book pickup begins Monday\, October 19 in The Launch Pad.\nAges 14 and older.  A jaw-dropping exposé of how the…
+URL:https://indiantrails.libnet.info/event/17048150
+END:VEVENT
+BEGIN:VEVENT
+UID:wheeling-60090-2026-11-30-genealogy-interest-group-meeting@withintenmiles.com
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
+SEQUENCE:0
+DTSTART:20261130T190000
+DTEND:20261130T200000
+SUMMARY:Genealogy Interest Group Meeting
+DESCRIPTION:Monday\, November 30 2026 7:00pm - 8:30pm \n Join this informal group in a collaborative setting to explore library databases\, research your family tree and…
+URL:https://indiantrails.libnet.info/event/17101476
+END:VEVENT
+BEGIN:VEVENT
+UID:wheeling-60090-2026-12-01-paint-and-steep-tea@withintenmiles.com
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
+SEQUENCE:0
+DTSTART:20261201T140000
+DTEND:20261201T150000
+SUMMARY:Paint and Steep Tea
+DESCRIPTION:Tuesday\, December 01 2026 2:00pm - 4:00pm \n Reserved for Adult Indian Trails Library cardholders only. Join us for a monthly painting program with teaching…
+URL:https://indiantrails.libnet.info/event/17101420
+END:VEVENT
+BEGIN:VEVENT
+UID:wheeling-60090-2026-12-01-alcohol-marker-basics-for-coloring@withintenmiles.com
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
+SEQUENCE:0
+DTSTART:20261201T180000
+DTEND:20261201T190000
+SUMMARY:Alcohol Marker Basics for Coloring
+DESCRIPTION:Tuesday\, December 01 2026 6:00pm - 7:30pm \n Learn about alcohol markers and how to use them in your own coloring. Bring your own markers or use ours. R
+URL:https://indiantrails.libnet.info/event/17045693
+END:VEVENT
+BEGIN:VEVENT
+UID:wheeling-60090-2026-12-01-resume-review-career-coaching-appointments@withintenmiles.com
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
+SEQUENCE:0
+DTSTART:20261201T180000
+DTEND:20261201T190000
+SUMMARY:Resume Review & Career Coaching Appointments
+DESCRIPTION:Tuesday\, December 01 2026 6:00pm - 7:00pm \n Kickstart your career with a one-hour resume review with a career specialist. Resume Review and Career Coaching…
+URL:https://indiantrails.libnet.info/event/17101987
+END:VEVENT
+BEGIN:VEVENT
+UID:wheeling-60090-2026-12-01-writers-workshop@withintenmiles.com
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
+SEQUENCE:0
+DTSTART:20261201T183000
+DTEND:20261201T193000
+SUMMARY:Writers Workshop
+DESCRIPTION:Tuesday\, December 01 2026 6:30pm - 8:45pm \n Share your work with others in a supportive atmosphere at this monthly community writers group led by author…
+URL:https://indiantrails.libnet.info/event/14284495
+END:VEVENT
+BEGIN:VEVENT
+UID:wheeling-60090-2026-12-02-coloring-club@withintenmiles.com
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
+SEQUENCE:0
+DTSTART:20261202T130000
+DTEND:20261202T140000
+SUMMARY:Coloring Club
+DESCRIPTION:Wednesday\, December 02 2026 1:00pm - 2:30pm \n Join fellow coloring page enthusiasts in a relaxed environment where you can work at your own pace. Bring your…
+URL:https://indiantrails.libnet.info/event/16929098
+END:VEVENT
+BEGIN:VEVENT
+UID:wheeling-60090-2026-12-02-waterless-snowglobes@withintenmiles.com
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
+SEQUENCE:0
+DTSTART:20261202T160000
+DTEND:20261202T170000
+SUMMARY:Waterless Snowglobes
+DESCRIPTION:Wednesday\, December 02 2026 4:00pm - 5:00pm \n Create a seasonal snowglobe-- without the water. R
+URL:https://indiantrails.libnet.info/event/17139274
+END:VEVENT
+BEGIN:VEVENT
+UID:wheeling-60090-2026-12-02-jewelry-making-extravaganza@withintenmiles.com
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
+SEQUENCE:0
+DTSTART:20261202T160000
+DTEND:20261202T170000
+SUMMARY:Jewelry Making Extravaganza
+DESCRIPTION:Wednesday\, December 02 2026 4:00pm - 5:30pm \n Learn jewelry making techniques using our collection of beads and jewelry supplies to create a unique piece to…
+URL:https://indiantrails.libnet.info/event/16826778
+END:VEVENT
+BEGIN:VEVENT
+UID:wheeling-60090-2026-12-02-paint-and-steep-tea@withintenmiles.com
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
+SEQUENCE:0
+DTSTART:20261202T180000
+DTEND:20261202T190000
+SUMMARY:Paint and Steep Tea
+DESCRIPTION:Wednesday\, December 02 2026 6:00pm - 8:00pm \n Reserved for Adult Indian Trails Library cardholders only. Join us for a monthly painting program with teaching…
+URL:https://indiantrails.libnet.info/event/17101429
+END:VEVENT
+BEGIN:VEVENT
+UID:wheeling-60090-2026-12-02-google-sheets@withintenmiles.com
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
+SEQUENCE:0
+DTSTART:20261202T190000
+DTEND:20261202T200000
+SUMMARY:Google Sheets
+DESCRIPTION:Wednesday\, December 02 2026 7:00pm - 8:00pm \n Explore the free cloud-based Microsoft Excel alternative available to all who sign up with Gmail. \nA Google…
+URL:https://indiantrails.libnet.info/event/17116313
+END:VEVENT
+BEGIN:VEVENT
+UID:wheeling-60090-2026-12-02-library-board-workshop@withintenmiles.com
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
+SEQUENCE:0
+DTSTART:20261202T190000
+DTEND:20261202T200000
+SUMMARY:Library Board Workshop
+DESCRIPTION:Wednesday\, December 02 2026 7:00pm - 9:00pm \n The Board of Trustees meet for its monthly workshop and planning session. This meeting is open to the public.…
+URL:https://indiantrails.libnet.info/event/17723329
+END:VEVENT
+BEGIN:VEVENT
+UID:wheeling-60090-2026-12-03-office-hours-with-congressman-brad-schneider-s-office@withintenmiles.com
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
+SEQUENCE:0
+DTSTART:20261203T093000
+DTEND:20261203T103000
+SUMMARY:Office Hours with Congressman Brad Schneider's Office
+DESCRIPTION:Thursday\, December 03 2026 9:30am - 12:30pm \n A representative is present to engage with the community\, share important information relevant to residents and…
+URL:https://indiantrails.libnet.info/event/16326975
+END:VEVENT
+BEGIN:VEVENT
+UID:wheeling-60090-2026-12-03-social-services-servicios-sociales@withintenmiles.com
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
+SEQUENCE:0
+DTSTART:20261203T100000
+DTEND:20261203T110000
+SUMMARY:Social Services | Servicios Sociales
+DESCRIPTION:Thursday\, December 03 2026 10:00am - 11:15am \n A resource services coordinator from OMNI will provide resources for the community. Una representante de OMNI…
+URL:https://indiantrails.libnet.info/event/17191341
+END:VEVENT
+BEGIN:VEVENT
+UID:wheeling-60090-2026-12-03-monogrammed-throw-blankets@withintenmiles.com
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
+SEQUENCE:0
+DTSTART:20261203T120000
+DTEND:20261203T130000
+SUMMARY:Monogrammed Throw Blankets
+DESCRIPTION:Thursday\, December 03 2026 12:00pm - 1:30pm \n Learn to use an embroidery machine to add a monogram to a fleece throw blanket. R
+URL:https://indiantrails.libnet.info/event/17067836
+END:VEVENT
+BEGIN:VEVENT
+UID:wheeling-60090-2026-12-03-evening-book-discussion@withintenmiles.com
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
+SEQUENCE:0
+DTSTART:20261203T180000
+DTEND:20261203T190000
+SUMMARY:Evening Book Discussion
+DESCRIPTION:Thursday\, December 03 2026 6:00pm - 7:00pm \n Registration and book pickup begins November 3. Tales of magic and mayhem on the high seas in this story of…
+URL:https://indiantrails.libnet.info/event/17090943
+END:VEVENT
+BEGIN:VEVENT
+UID:wheeling-60090-2026-12-03-night-owls@withintenmiles.com
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
+SEQUENCE:0
+DTSTART:20261203T180000
+DTEND:20261203T190000
+SUMMARY:Night Owls
+DESCRIPTION:Thursday\, December 03 2026 6:00pm - 6:30pm \n Not quite ready for bed? Relax with stories\, songs and literacy activities. TR
+URL:https://indiantrails.libnet.info/event/16927182
+END:VEVENT
+BEGIN:VEVENT
+UID:wheeling-60090-2026-12-03-high-school-book-club-grades-9-12@withintenmiles.com
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
+SEQUENCE:0
+DTSTART:20261203T190000
+DTEND:20261203T200000
+SUMMARY:High School Book Club | Grades 9-12
+DESCRIPTION:Thursday\, December 03 2026 7:00pm - 8:00pm \n Book pickup begins Oct 29 at the Youth Services Desk. Welcome to Blackwood Academy: the legendary school located…
+URL:https://indiantrails.libnet.info/event/16995841
+END:VEVENT
+BEGIN:VEVENT
+UID:wheeling-60090-2026-12-04-babytime@withintenmiles.com
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
+SEQUENCE:0
+DTSTART:20261204T093000
+DTEND:20261204T103000
+SUMMARY:Babytime!
+DESCRIPTION:Friday\, December 04 2026 9:30am - 10:00am \n Stories\, songs and fingerplays. TR
+URL:https://indiantrails.libnet.info/event/16930471
+END:VEVENT
+BEGIN:VEVENT
+UID:wheeling-60090-2026-12-04-wonderful-walkers@withintenmiles.com
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
+SEQUENCE:0
+DTSTART:20261204T103000
+DTEND:20261204T113000
+SUMMARY:Wonderful Walkers
+DESCRIPTION:Friday\, December 04 2026 10:30am - 11:00am \n Stories\, songs\, fingerplays and movement activities. TR
+URL:https://indiantrails.libnet.info/event/16930602
+END:VEVENT
+BEGIN:VEVENT
+UID:wheeling-60090-2026-12-04-esl-tea-talk@withintenmiles.com
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
+SEQUENCE:0
+DTSTART:20261204T180000
+DTEND:20261204T190000
+SUMMARY:ESL Tea & Talk
+DESCRIPTION:Friday\, December 04 2026 6:00pm - 7:00pm \n Want to practice speaking and understanding English and improve your confidence in everyday communication? Join our…
+URL:https://indiantrails.libnet.info/event/17082099
+END:VEVENT
+BEGIN:VEVENT
+UID:wheeling-60090-2026-12-04-family-movie-minions-and-monsters@withintenmiles.com
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
+SEQUENCE:0
+DTSTART:20261204T180000
+DTEND:20261204T190000
+SUMMARY:Family Movie: Minions and Monsters
+DESCRIPTION:Friday\, December 04 2026 6:00pm - 8:00pm \n This interactive movie experience includes bubbles\, snacks and crafts. Movie is rated PG for violence\, action\,…
+URL:https://indiantrails.libnet.info/event/17104683
+END:VEVENT
+BEGIN:VEVENT
+UID:wheeling-60090-2026-12-05-puzzle-exchange@withintenmiles.com
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
+SEQUENCE:0
+DTSTART:20261205T110000
+DTEND:20261205T120000
+SUMMARY:Puzzle Exchange
+DESCRIPTION:Saturday\, December 05 2026 11:00am - 11:30am \n Bring your used\, well-loved puzzles (no missing pieces) to trade with other puzzle enthusiasts. Puzzles may be…
+URL:https://indiantrails.libnet.info/event/17100987
+END:VEVENT
+BEGIN:VEVENT
+UID:wheeling-60090-2026-12-06-one-book-one-community-open-house@withintenmiles.com
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
+SEQUENCE:0
+DTSTART:20261206T120000
+DTEND:20261206T130000
+SUMMARY:One Book One Community Open House
+DESCRIPTION:Sunday\, December 06 2026 12:00pm - 2:00pm \n Kick off this year's One Book\, One Community by receiving your copy of "The Orchard" by Peter Heller\, register for…
+URL:https://indiantrails.libnet.info/event/17117288
+END:VEVENT
+BEGIN:VEVENT
+UID:wheeling-60090-2026-12-06-resume-review-career-coaching-appointments@withintenmiles.com
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
+SEQUENCE:0
+DTSTART:20261206T121500
+DTEND:20261206T131500
+SUMMARY:Resume Review & Career Coaching Appointments
+DESCRIPTION:Sunday\, December 06 2026 12:15pm - 1:15pm \n Kickstart your career with a one-hour resume review with a career specialist. Resume Review and Career Coaching…
+URL:https://indiantrails.libnet.info/event/17101964
+END:VEVENT
+BEGIN:VEVENT
+UID:wheeling-60090-2026-12-06-foundation-pop-up-shop@withintenmiles.com
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
+SEQUENCE:0
+DTSTART:20261206T123000
+DTEND:20261206T133000
+SUMMARY:Foundation Pop Up Shop
+DESCRIPTION:Sunday\, December 06 2026 12:30pm - 3:00pm \n Are you searching for the perfect gift for someone special? Look no further. Find a variety of unique items\,…
+URL:https://indiantrails.libnet.info/event/17207853
+END:VEVENT
+BEGIN:VEVENT
+UID:wheeling-60090-2026-12-07-high-school-volunteer-kits@withintenmiles.com
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
+SEQUENCE:0
+DTSTART:20261207T090000
+DTEND:20261207T100000
+SUMMARY:High School Volunteer Kits
+DESCRIPTION:Monday\, December 07 2026 9:00am - 9:00pm \n Bag pickup: 9 am-9 pm \nComplete and return a volunteer craft kit by the end of the month to count towards one hour…
+URL:https://indiantrails.libnet.info/event/16988573
+END:VEVENT
+BEGIN:VEVENT
+UID:wheeling-60090-2026-12-07-stitch-together-meet-up@withintenmiles.com
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
+SEQUENCE:0
+DTSTART:20261207T130000
+DTEND:20261207T140000
+SUMMARY:Stitch Together Meet-Up
+DESCRIPTION:Monday\, December 07 2026 1:00pm - 3:00pm \n If your craft of choice uses needles or hooks\, this group is for you. Bring your knit\, crochet\, embroidery or cross…
+URL:https://indiantrails.libnet.info/event/17045752
+END:VEVENT
+BEGIN:VEVENT
+UID:wheeling-60090-2026-12-07-tech-assistance-assistencia-de-tech@withintenmiles.com
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
+SEQUENCE:0
+DTSTART:20261207T150000
+DTEND:20261207T160000
+SUMMARY:Tech Assistance / Assistencia de Tech
+DESCRIPTION:Monday\, December 07 2026 3:00pm - 3:45pm \n Have a basic question about your mobile device or computer? We can help. \n¿Tiene alguna pregunta básica sobre su…
+URL:https://indiantrails.libnet.info/event/17115985
+END:VEVENT
+BEGIN:VEVENT
+UID:wheeling-60090-2026-12-07-k9-reading-buddies@withintenmiles.com
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
+SEQUENCE:0
+DTSTART:20261207T160000
+DTEND:20261207T170000
+SUMMARY:K9 Reading Buddies
+DESCRIPTION:Monday\, December 07 2026 4:00pm - 5:00pm \n Read a story to a licensed therapy dog in the library. Siblings and caregivers are asked to wait outside the…
+URL:https://indiantrails.libnet.info/event/17139127
+END:VEVENT
+BEGIN:VEVENT
+UID:wheeling-60090-2026-12-07-holiday-napkins@withintenmiles.com
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
+SEQUENCE:0
+DTSTART:20261207T173000
+DTEND:20261207T183000
+SUMMARY:Holiday Napkins
+DESCRIPTION:Monday\, December 07 2026 5:30pm - 6:45pm \n Use our sublimation printer and heat press to customize a holiday dinner napkin. R
+URL:https://indiantrails.libnet.info/event/17138246
+END:VEVENT
+BEGIN:VEVENT
+UID:wheeling-60090-2026-12-07-dungeons-and-dragons@withintenmiles.com
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
+SEQUENCE:0
+DTSTART:20261207T190000
+DTEND:20261207T200000
+SUMMARY:Dungeons And Dragons
+DESCRIPTION:Monday\, December 07 2026 7:00pm - 8:00pm \n If youre an expert or just starting out\, join us for some D&D. Bring your own character sheet or pick up a…
+URL:https://indiantrails.libnet.info/event/16988054
+END:VEVENT
+BEGIN:VEVENT
+UID:wheeling-60090-2026-12-07-tenant-rights@withintenmiles.com
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
+SEQUENCE:0
+DTSTART:20261207T190000
+DTEND:20261207T200000
+SUMMARY:Tenant Rights
+DESCRIPTION:Monday\, December 07 2026 7:00pm - 8:00pm \n Allison Keller\, Housing Outreach Coordinator from North Suburban Legal Aid Clinic\, presents on tenant rights\, the…
+URL:https://indiantrails.libnet.info/event/17211777
+END:VEVENT
+BEGIN:VEVENT
+UID:wheeling-60090-2026-12-08-noisy-time@withintenmiles.com
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
+SEQUENCE:0
+DTSTART:20261208T100000
+DTEND:20261208T110000
+SUMMARY:Noisy Time
+DESCRIPTION:Tuesday\, December 08 2026 10:00am - 10:30am \n Explore the world around us with stories\, rhymes and lots of music and movement. TR
+URL:https://indiantrails.libnet.info/event/16927080
+END:VEVENT
+BEGIN:VEVENT
+UID:wheeling-60090-2026-12-08-rise-read-morning-book-discussion@withintenmiles.com
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
+SEQUENCE:0
+DTSTART:20261208T103000
+DTEND:20261208T113000
+SUMMARY:Rise & Read Morning Book Discussion
+DESCRIPTION:Tuesday\, December 08 2026 10:30am - 11:30am \n Registration and book pickup begins November 10. A story centered around the intersection of humans\, AI and…
+URL:https://indiantrails.libnet.info/event/14170889
+END:VEVENT
+BEGIN:VEVENT
+UID:wheeling-60090-2026-12-08-eastern-european-dessert@withintenmiles.com
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
+SEQUENCE:0
+DTSTART:20261208T150000
+DTEND:20261208T160000
+SUMMARY:Eastern European Dessert
+DESCRIPTION:Tuesday\, December 08 2026 3:00pm - 4:00pm \n Learn about Eastern European desserts and sample some with Lana from Lana's Dazzling Desserts. R
+URL:https://indiantrails.libnet.info/event/17132486
+END:VEVENT
+BEGIN:VEVENT
+UID:wheeling-60090-2026-12-08-paper-craft-happy-hour@withintenmiles.com
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
+SEQUENCE:0
+DTSTART:20261208T160000
+DTEND:20261208T170000
+SUMMARY:Paper Craft Happy Hour
+DESCRIPTION:Tuesday\, December 08 2026 4:00pm - 6:00pm \n Chat with fellow creatives\, get inspired or discover a new paper craft tool during this self-guided crafting…
+URL:https://indiantrails.libnet.info/event/17044550
+END:VEVENT
+BEGIN:VEVENT
+UID:wheeling-60090-2026-12-08-cooking-101-mug-pizza@withintenmiles.com
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
+SEQUENCE:0
+DTSTART:20261208T163000
+DTEND:20261208T173000
+SUMMARY:Cooking 101: Mug Pizza
+DESCRIPTION:Tuesday\, December 08 2026 4:30pm - 5:30pm \n Receive a recipe card case at your first Cooking 101 program and a new recipe card at each future program to…
+URL:https://indiantrails.libnet.info/event/17104222
+END:VEVENT
+BEGIN:VEVENT
+UID:wheeling-60090-2026-12-08-spanish-conversation-practice-at-the-branch@withintenmiles.com
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
+SEQUENCE:0
+DTSTART:20261208T173000
+DTEND:20261208T183000
+SUMMARY:Spanish Conversation Practice | At the Branch
+DESCRIPTION:Tuesday\, December 08 2026 5:30pm - 6:30pm \n Informal Spanish conversation session to practice and improve your speaking skills by talking to native…
+URL:https://indiantrails.libnet.info/event/17092617
+END:VEVENT
+BEGIN:VEVENT
+UID:wheeling-60090-2026-12-08-tis-the-season@withintenmiles.com
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
+SEQUENCE:0
+DTSTART:20261208T180000
+DTEND:20261208T190000
+SUMMARY:'Tis the Season
+DESCRIPTION:Tuesday\, December 08 2026 6:00pm - 7:00pm \n Steve Darnall presents the history of the holiday season on the radio.  R
+URL:https://indiantrails.libnet.info/event/17011657
+END:VEVENT
+BEGIN:VEVENT
+UID:wheeling-60090-2026-12-08-resume-review-career-coaching-appointments@withintenmiles.com
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
+SEQUENCE:0
+DTSTART:20261208T180000
+DTEND:20261208T190000
+SUMMARY:Resume Review & Career Coaching Appointments
+DESCRIPTION:Tuesday\, December 08 2026 6:00pm - 7:00pm \n Kickstart your career with a one-hour resume review with a career specialist. Resume Review and Career Coaching…
+URL:https://indiantrails.libnet.info/event/17102018
+END:VEVENT
+BEGIN:VEVENT
+UID:wheeling-60090-2026-12-09-knitting-for-beginners@withintenmiles.com
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
+SEQUENCE:0
+DTSTART:20261209T130000
+DTEND:20261209T140000
+SUMMARY:Knitting for Beginners
+DESCRIPTION:Wednesday\, December 09 2026 1:00pm - 3:00pm \n Learn the basic skills needed to start your knitting journey. Materials provided. R
+URL:https://indiantrails.libnet.info/event/17127807
+END:VEVENT
+BEGIN:VEVENT
+UID:wheeling-60090-2026-12-09-watercolor-secret-techniques@withintenmiles.com
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
+SEQUENCE:0
+DTSTART:20261209T160000
+DTEND:20261209T170000
+SUMMARY:Watercolor Secret Techniques
+DESCRIPTION:Wednesday\, December 09 2026 4:00pm - 5:00pm \n Learn about new ways to paint using unusual materials and techniques. Dress to get messy. R
+URL:https://indiantrails.libnet.info/event/17041678
+END:VEVENT
+BEGIN:VEVENT
+UID:wheeling-60090-2026-12-09-chess-club@withintenmiles.com
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
+SEQUENCE:0
+DTSTART:20261209T173000
+DTEND:20261209T183000
+SUMMARY:Chess Club
+DESCRIPTION:Wednesday\, December 09 2026 5:30pm - 6:15pm \n Discover chess moves\, strategies\, and checkmate techniques with international Chess Master Arjun Vishnuvardhan…
+URL:https://indiantrails.libnet.info/event/15977126
+END:VEVENT
+BEGIN:VEVENT
+UID:wheeling-60090-2026-12-09-google-docs@withintenmiles.com
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
+SEQUENCE:0
+DTSTART:20261209T190000
+DTEND:20261209T200000
+SUMMARY:Google Docs
+DESCRIPTION:Wednesday\, December 09 2026 7:00pm - 8:00pm \n Explore the free cloud-based Microsoft Word alternative available to all who sign up with Gmail. \nA Google…
+URL:https://indiantrails.libnet.info/event/17116432
+END:VEVENT
+BEGIN:VEVENT
+UID:wheeling-60090-2026-12-10-chat-play-cafe@withintenmiles.com
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
+SEQUENCE:0
+DTSTART:20261210T093000
+DTEND:20261210T103000
+SUMMARY:Chat & Play Cafe
+DESCRIPTION:Thursday\, December 10 2026 9:30am - 11:00am \n Join unstructured playtime for you and baby. Enjoy coffee\, a sweet treat and conversation while the little ones…
+URL:https://indiantrails.libnet.info/event/16931066
+END:VEVENT
+BEGIN:VEVENT
+UID:wheeling-60090-2026-12-10-an-offer-you-can-t-refuse@withintenmiles.com
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
+SEQUENCE:0
+DTSTART:20261210T140000
+DTEND:20261210T150000
+SUMMARY:An Offer You Can't Refuse
+DESCRIPTION:Thursday\, December 10 2026 2:00pm - 3:00pm \n Clarence Goodman concludes his Murder\, Mayhem\, and the Mob series. R
+URL:https://indiantrails.libnet.info/event/17007338
+END:VEVENT
+BEGIN:VEVENT
+UID:wheeling-60090-2026-12-10-coloring-club@withintenmiles.com
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
+SEQUENCE:0
+DTSTART:20261210T180000
+DTEND:20261210T190000
+SUMMARY:Coloring Club
+DESCRIPTION:Thursday\, December 10 2026 6:00pm - 7:30pm \n Join fellow coloring page enthusiasts in a relaxed environment where you can work at your own pace. Bring your…
+URL:https://indiantrails.libnet.info/event/16929071
+END:VEVENT
+BEGIN:VEVENT
+UID:wheeling-60090-2026-12-10-rage-room-kind-of@withintenmiles.com
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
+SEQUENCE:0
+DTSTART:20261210T190000
+DTEND:20261210T200000
+SUMMARY:Rage Room - Kind of
+DESCRIPTION:Thursday\, December 10 2026 7:00pm - 8:00pm \n Smash away finals stress! Break giant ice blocks\, pop paint balloons\, and embrace total destruction. Wear…
+URL:https://indiantrails.libnet.info/event/16988697
+END:VEVENT
+BEGIN:VEVENT
+UID:wheeling-60090-2026-12-11-toddler-storytime@withintenmiles.com
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
+SEQUENCE:0
+DTSTART:20261211T100000
+DTEND:20261211T110000
+SUMMARY:Toddler Storytime
+DESCRIPTION:Friday\, December 11 2026 10:00am - 10:30am \n Start your day with books\, rhymes and songs. TR
+URL:https://indiantrails.libnet.info/event/16927103
+END:VEVENT
+BEGIN:VEVENT
+UID:wheeling-60090-2026-12-11-preschool-storytime@withintenmiles.com
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
+SEQUENCE:0
+DTSTART:20261211T110000
+DTEND:20261211T120000
+SUMMARY:Preschool Storytime
+DESCRIPTION:Friday\, December 11 2026 11:00am - 11:30am \n Boost early literacy skills with books\, movement and songs. TR
+URL:https://indiantrails.libnet.info/event/16927127
+END:VEVENT
+BEGIN:VEVENT
+UID:wheeling-60090-2026-12-11-movie-matinee-michael-2026@withintenmiles.com
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
+SEQUENCE:0
+DTSTART:20261211T140000
+DTEND:20261211T150000
+SUMMARY:Movie Matinee: Michael (2026)
+DESCRIPTION:Friday\, December 11 2026 2:00pm - 4:10pm \n The story of the famous musician Michael Jackson\, known as the King of Pop. Rated PG-13 for some thematic material\,…
+URL:https://indiantrails.libnet.info/event/17084560
+END:VEVENT
+BEGIN:VEVENT
+UID:wheeling-60090-2026-12-11-family-craft-fridays-at-the-branch@withintenmiles.com
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
+SEQUENCE:0
+DTSTART:20261211T173000
+DTEND:20261211T183000
+SUMMARY:Family Craft Fridays | At The Branch
+DESCRIPTION:Friday\, December 11 2026 5:30pm - 7:00pm \n Create unique seasonal and theme-based projects. Materials provided. While supplies last. NR
+URL:https://indiantrails.libnet.info/event/17062790
+END:VEVENT
+BEGIN:VEVENT
+UID:wheeling-60090-2026-12-11-chats-food@withintenmiles.com
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
+SEQUENCE:0
+DTSTART:20261211T180000
+DTEND:20261211T190000
+SUMMARY:Chats & Food
+DESCRIPTION:Friday\, December 11 2026 6:00pm - 7:30pm \n Spend time with your neighbors\, enjoy traditional food\, play games\, and win prizes. Ven a compartir con tus…
+URL:https://indiantrails.libnet.info/event/16818092
+END:VEVENT
+BEGIN:VEVENT
+UID:wheeling-60090-2026-12-11-dungeons-dragons-adults@withintenmiles.com
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
+SEQUENCE:0
+DTSTART:20261211T183000
+DTEND:20261211T193000
+SUMMARY:Dungeons & Dragons Adults
+DESCRIPTION:Friday\, December 11 2026 6:30pm - 8:30pm \n Curious about Dungeons & Dragons or want to connect with others interested in playing D&D? Join Dungeons master…
+URL:https://indiantrails.libnet.info/event/17118154
+END:VEVENT
+BEGIN:VEVENT
+UID:wheeling-60090-2026-12-12-after-hours-finals-night-study-session@withintenmiles.com
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
+SEQUENCE:0
+DTSTART:20261212T170000
+DTEND:20261212T180000
+SUMMARY:After Hours Finals Night Study Session
+DESCRIPTION:Saturday\, December 12 2026 5:00pm - 8:00pm \n The library closes at 5 pm to the general public. Extended hours are for high school students only. NR
+URL:https://indiantrails.libnet.info/event/16988863
+END:VEVENT
+BEGIN:VEVENT
+UID:wheeling-60090-2026-12-13-tech-assistance@withintenmiles.com
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
+SEQUENCE:0
+DTSTART:20261213T130000
+DTEND:20261213T140000
+SUMMARY:Tech Assistance
+DESCRIPTION:Sunday\, December 13 2026 1:00pm - 1:45pm \n Have a basic question about your device\nand thinking of trying Cloud Library\,\nHoopla or another library app? Talk…
+URL:https://indiantrails.libnet.info/event/17165382
+END:VEVENT
+BEGIN:VEVENT
+UID:wheeling-60090-2026-12-13-after-hours-finals-night-study-session@withintenmiles.com
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
+SEQUENCE:0
+DTSTART:20261213T170000
+DTEND:20261213T180000
+SUMMARY:After Hours Finals Night Study Session
+DESCRIPTION:Sunday\, December 13 2026 5:00pm - 8:00pm \n The library closes at 5 pm to the general public. Extended hours are for high school students only. NR
+URL:https://indiantrails.libnet.info/event/17138910
+END:VEVENT
+BEGIN:VEVENT
+UID:wheeling-60090-2026-12-14-new-year-s-celebration-kit@withintenmiles.com
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
+SEQUENCE:0
+DTSTART:20261214T000000
+DTEND:20261214T010000
+SUMMARY:New Year's Celebration Kit
+DESCRIPTION:Monday\, December 14 2026 12:00am - 11:59pm \n 3...2...1... Ready for New Year's fun! Pick up your kit at the Youth Services Desk between December 14-30. Each…
+URL:https://indiantrails.libnet.info/event/17118983
+END:VEVENT
+BEGIN:VEVENT
+UID:wheeling-60090-2026-12-14-holiday-napkins@withintenmiles.com
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
+SEQUENCE:0
+DTSTART:20261214T173000
+DTEND:20261214T183000
+SUMMARY:Holiday Napkins
+DESCRIPTION:Monday\, December 14 2026 5:30pm - 6:45pm \n Use our sublimation printer and heat press to customize a holiday dinner napkin. R
+URL:https://indiantrails.libnet.info/event/17138242
+END:VEVENT
+BEGIN:VEVENT
+UID:wheeling-60090-2026-12-16-stitch-together-meet-up@withintenmiles.com
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
+SEQUENCE:0
+DTSTART:20261216T180000
+DTEND:20261216T190000
+SUMMARY:Stitch Together Meet-Up
+DESCRIPTION:Wednesday\, December 16 2026 6:00pm - 8:00pm \n If your craft of choice uses needles or hooks\, this group is for you. Bring your knit\, crochet\, embroidery or…
+URL:https://indiantrails.libnet.info/event/16507603
+END:VEVENT
+BEGIN:VEVENT
+UID:wheeling-60090-2026-12-16-library-board-meeting@withintenmiles.com
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
+SEQUENCE:0
+DTSTART:20261216T190000
+DTEND:20261216T200000
+SUMMARY:Library Board Meeting
+DESCRIPTION:Wednesday\, December 16 2026 7:00pm - 9:00pm \n The Board of Trustees meet for its monthly workshop and planning session. This meeting is open to the public.…
+URL:https://indiantrails.libnet.info/event/16198757
+END:VEVENT
+BEGIN:VEVENT
+UID:wheeling-60090-2026-12-17-office-hours-with-congressman-brad-schneider-s-office@withintenmiles.com
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
+SEQUENCE:0
+DTSTART:20261217T093000
+DTEND:20261217T103000
+SUMMARY:Office Hours with Congressman Brad Schneider's Office
+DESCRIPTION:Thursday\, December 17 2026 9:30am - 12:30pm \n A representative is present to engage with the community\, share important information relevant to residents and…
+URL:https://indiantrails.libnet.info/event/16326976
+END:VEVENT
+BEGIN:VEVENT
+UID:wheeling-60090-2026-12-17-office-hours-w-il-state-treasurer-michael-frerich-s-office@withintenmiles.com
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
+SEQUENCE:0
+DTSTART:20261217T133000
+DTEND:20261217T143000
+SUMMARY:Office Hours w/ IL State Treasurer Michael Frerich's Office
+DESCRIPTION:Thursday\, December 17 2026 1:30pm - 4:00pm \n A representative is present to share information on programs like Bright Start and ICash. The goal is to make…
+URL:https://indiantrails.libnet.info/event/15074711
+END:VEVENT
+BEGIN:VEVENT
+UID:wheeling-60090-2026-12-18-holiday-cookie-decorating-at-the-branch@withintenmiles.com
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
+SEQUENCE:0
+DTSTART:20261218T173000
+DTEND:20261218T183000
+SUMMARY:Holiday Cookie Decorating | At the Branch
+DESCRIPTION:Friday\, December 18 2026 5:30pm - 7:00pm \n Unleash your creativity during the festive season. We'll provide the cookies\, icing and sprinkles to decorate your…
+URL:https://indiantrails.libnet.info/event/17087747
+END:VEVENT
+BEGIN:VEVENT
+UID:wheeling-60090-2026-12-19-super-saturday-magician-bill-cook@withintenmiles.com
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
+SEQUENCE:0
+DTSTART:20261219T110000
+DTEND:20261219T120000
+SUMMARY:Super Saturday: Magician Bill Cook
+DESCRIPTION:Saturday\, December 19 2026 11:00am - 12:00pm \n Ages 5 and older with a caregiver. Combining music with mind-blowing magic\, Bill Cooks high-energy show…
+URL:https://indiantrails.libnet.info/event/17109199
+END:VEVENT
+BEGIN:VEVENT
+UID:wheeling-60090-2026-12-21-my-grown-up-and-me-little-chefs@withintenmiles.com
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
+SEQUENCE:0
+DTSTART:20261221T100000
+DTEND:20261221T110000
+SUMMARY:My Grown Up And Me: Little Chefs
+DESCRIPTION:Monday\, December 21 2026 10:00am - 10:45am \n Stir up some fun with storytime followed by hands-on cooking of a related recipe. TR
+URL:https://indiantrails.libnet.info/event/17045831
+END:VEVENT
+BEGIN:VEVENT
+UID:wheeling-60090-2026-12-21-scrooge-through-the-years@withintenmiles.com
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
+SEQUENCE:0
+DTSTART:20261221T190000
+DTEND:20261221T200000
+SUMMARY:Scrooge Through the Years
+DESCRIPTION:Monday\, December 21 2026 7:00pm - 8:00pm \n Join Film Historian Dr. Annette Bochenek as she presents various classic adaptations of A Christmas Carol\,…
+URL:https://indiantrails.libnet.info/event/16724013
+END:VEVENT
+BEGIN:VEVENT
+UID:wheeling-60090-2026-12-21-genealogy-interest-group-meeting@withintenmiles.com
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
+SEQUENCE:0
+DTSTART:20261221T190000
+DTEND:20261221T200000
+SUMMARY:Genealogy Interest Group Meeting
+DESCRIPTION:Monday\, December 21 2026 7:00pm - 8:30pm \n Join this informal group in a collaborative setting to explore library databases\, research your family tree and…
+URL:https://indiantrails.libnet.info/event/17101503
+END:VEVENT
+BEGIN:VEVENT
+UID:wheeling-60090-2026-12-21-let-it-snow-wood-painting@withintenmiles.com
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
+SEQUENCE:0
+DTSTART:20261221T190000
+DTEND:20261221T200000
+SUMMARY:Let It Snow Wood Painting
+DESCRIPTION:Monday\, December 21 2026 7:00pm - 8:30pm \n Join Erin Theiss\, owner of Create with Erin\, in painting a winter folk art scene on a rustic piece of wood to…
+URL:https://indiantrails.libnet.info/event/17101534
+END:VEVENT
+BEGIN:VEVENT
+UID:wheeling-60090-2026-12-22-rise-read-morning-book-discussion@withintenmiles.com
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
+SEQUENCE:0
+DTSTART:20261222T103000
+DTEND:20261222T113000
+SUMMARY:Rise & Read Morning Book Discussion
+DESCRIPTION:Tuesday\, December 22 2026 10:30am - 11:30am \n Registration and book pickup begins November 10. A story centered around the intersection of humans\, AI and…
+URL:https://indiantrails.libnet.info/event/14170890
+END:VEVENT
+BEGIN:VEVENT
+UID:wheeling-60090-2026-12-22-leslie-goddard-presents-marshall-field-s-at-christmas@withintenmiles.com
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
+SEQUENCE:0
+DTSTART:20261222T140000
+DTEND:20261222T150000
+SUMMARY:Leslie Goddard presents Marshall Field's at Christmas
+DESCRIPTION:Tuesday\, December 22 2026 2:00pm - 3:15pm \n Leslie Goddard presents a lecture on Marshall Field's at Christmas. This is not a historic portrayal.  R
+URL:https://indiantrails.libnet.info/event/17008477
+END:VEVENT
+BEGIN:VEVENT
+UID:wheeling-60090-2026-12-22-candy-construction-crew@withintenmiles.com
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
+SEQUENCE:0
+DTSTART:20261222T140000
+DTEND:20261222T150000
+SUMMARY:Candy Construction Crew
+DESCRIPTION:Tuesday\, December 22 2026 2:00pm - 3:00pm \n Create a winter wonderland out of graham crackers\, frosting and candy. R
+URL:https://indiantrails.libnet.info/event/16927289
+END:VEVENT
+BEGIN:VEVENT
+UID:wheeling-60090-2026-12-22-candy-architects@withintenmiles.com
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
+SEQUENCE:0
+DTSTART:20261222T160000
+DTEND:20261222T170000
+SUMMARY:Candy Architects
+DESCRIPTION:Tuesday\, December 22 2026 4:00pm - 5:00pm \n Work on your own candy creation\, whether a traditional house or something unique. R
+URL:https://indiantrails.libnet.info/event/17102730
+END:VEVENT
+BEGIN:VEVENT
+UID:wheeling-60090-2026-12-22-spanish-conversation-practice-at-the-branch@withintenmiles.com
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
+SEQUENCE:0
+DTSTART:20261222T173000
+DTEND:20261222T183000
+SUMMARY:Spanish Conversation Practice | At the Branch
+DESCRIPTION:Tuesday\, December 22 2026 5:30pm - 6:30pm \n Informal Spanish conversation session to practice and improve your speaking skills by talking to native…
+URL:https://indiantrails.libnet.info/event/17092618
+END:VEVENT
+BEGIN:VEVENT
+UID:wheeling-60090-2026-12-24-closed-christmas-eve@withintenmiles.com
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
+SEQUENCE:0
+DTSTART:20261224T090000
+DTEND:20261224T100000
+SUMMARY:CLOSED - Christmas Eve
+DESCRIPTION:Thursday\, December 24 2026 9:00am - 9:00pm \n Closed-Christmas Eve Holiday
+URL:https://indiantrails.libnet.info/event/15859223
+END:VEVENT
+BEGIN:VEVENT
+UID:wheeling-60090-2026-12-29-dance-party@withintenmiles.com
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
+SEQUENCE:0
+DTSTART:20261229T100000
+DTEND:20261229T110000
+SUMMARY:Dance Party!
+DESCRIPTION:Tuesday\, December 29 2026 10:00am - 10:30am \n Bring your best dance moves to this storytime full of our favorite songs. TR
+URL:https://indiantrails.libnet.info/event/16979034
+END:VEVENT
+BEGIN:VEVENT
+UID:wheeling-60090-2026-12-29-family-lego-club@withintenmiles.com
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
+SEQUENCE:0
+DTSTART:20261229T183000
+DTEND:20261229T193000
+SUMMARY:Family LEGO® Club
+DESCRIPTION:Tuesday\, December 29 2026 6:30pm - 7:30pm \n Bring your imagination and create with Legos.  TR
+URL:https://indiantrails.libnet.info/event/17109145
+END:VEVENT
+BEGIN:VEVENT
+UID:wheeling-60090-2026-12-31-closed-new-year-s-eve@withintenmiles.com
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
+SEQUENCE:0
+DTSTART:20261231T090000
+DTEND:20261231T100000
+SUMMARY:CLOSED-New Year's Eve
+DESCRIPTION:Thursday\, December 31 2026 9:00am - 9:00pm \n Closed-New Year's Eve Holiday
+URL:https://indiantrails.libnet.info/event/15859286
+END:VEVENT
+BEGIN:VEVENT
+UID:wheeling-60090-2027-01-01-closed-new-year-s-day@withintenmiles.com
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
+SEQUENCE:0
+DTSTART:20270101T090000
+DTEND:20270101T100000
+SUMMARY:CLOSED - New Year's Day
+DESCRIPTION:Friday\, January 01 2027 9:00am - 9:00pm \n Closed-New Year's Day Holiday
+URL:https://indiantrails.libnet.info/event/15859200
+END:VEVENT
+BEGIN:VEVENT
+UID:wheeling-60090-2027-01-06-library-board-workshop@withintenmiles.com
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
+SEQUENCE:0
+DTSTART:20270106T190000
+DTEND:20270106T200000
+SUMMARY:Library Board Workshop
+DESCRIPTION:Wednesday\, January 06 2027 7:00pm - 9:00pm \n The Board of Trustees meet for its monthly workshop and planning session. This meeting is open to the public. The…
+URL:https://indiantrails.libnet.info/event/17723330
+END:VEVENT
+BEGIN:VEVENT
+UID:wheeling-60090-2027-01-09-foundation-used-book-sale@withintenmiles.com
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
+SEQUENCE:0
+DTSTART:20270109T100000
+DTEND:20270109T110000
+SUMMARY:Foundation Used Book Sale
+DESCRIPTION:Saturday\, January 09 2027 10:00am - 2:00pm \n Hosted by the Foundation for the Indian Trails Library.\nAll proceeds benefit the library. Enter the sale through…
+URL:https://indiantrails.libnet.info/event/15857402
+END:VEVENT
+BEGIN:VEVENT
+UID:wheeling-60090-2027-01-20-library-board-meeting@withintenmiles.com
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
+SEQUENCE:0
+DTSTART:20270120T190000
+DTEND:20270120T200000
+SUMMARY:Library Board Meeting
+DESCRIPTION:Wednesday\, January 20 2027 7:00pm - 9:00pm \n The Board of Trustees meet for its monthly workshop and planning session. This meeting is open to the public. The…
+URL:https://indiantrails.libnet.info/event/16198758
+END:VEVENT
+BEGIN:VEVENT
+UID:wheeling-60090-2027-02-03-library-board-workshop@withintenmiles.com
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
+SEQUENCE:0
+DTSTART:20270203T190000
+DTEND:20270203T200000
+SUMMARY:Library Board Workshop
+DESCRIPTION:Wednesday\, February 03 2027 7:00pm - 9:00pm \n The Board of Trustees meet for its monthly workshop and planning session. This meeting is open to the public.…
+URL:https://indiantrails.libnet.info/event/17723331
+END:VEVENT
+BEGIN:VEVENT
+UID:wheeling-60090-2027-02-10-foundation-board-meeting@withintenmiles.com
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
+SEQUENCE:0
+DTSTART:20270210T190000
+DTEND:20270210T200000
+SUMMARY:Foundation Board Meeting
+DESCRIPTION:Wednesday\, February 10 2027 7:00pm - 8:30pm \n Foundation Board Meeting
+URL:https://indiantrails.libnet.info/event/12499303
+END:VEVENT
+BEGIN:VEVENT
+UID:wheeling-60090-2027-02-17-library-board-meeting@withintenmiles.com
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
+SEQUENCE:0
+DTSTART:20270217T190000
+DTEND:20270217T200000
+SUMMARY:Library Board Meeting
+DESCRIPTION:Wednesday\, February 17 2027 7:00pm - 9:00pm \n The Board of Trustees meet for its monthly workshop and planning session. This meeting is open to the public.…
+URL:https://indiantrails.libnet.info/event/16198759
+END:VEVENT
+BEGIN:VEVENT
+UID:wheeling-60090-2027-03-03-library-board-workshop@withintenmiles.com
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
+SEQUENCE:0
+DTSTART:20270303T190000
+DTEND:20270303T200000
+SUMMARY:Library Board Workshop
+DESCRIPTION:Wednesday\, March 03 2027 7:00pm - 9:00pm \n The Board of Trustees meet for its monthly workshop and planning session. This meeting is open to the public. The…
+URL:https://indiantrails.libnet.info/event/17723332
+END:VEVENT
+BEGIN:VEVENT
+UID:wheeling-60090-2027-03-10-foundation-board-meeting@withintenmiles.com
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
+SEQUENCE:0
+DTSTART:20270310T190000
+DTEND:20270310T200000
+SUMMARY:Foundation Board Meeting
+DESCRIPTION:Wednesday\, March 10 2027 7:00pm - 8:30pm \n Foundation Board Meeting
+URL:https://indiantrails.libnet.info/event/12499304
+END:VEVENT
+BEGIN:VEVENT
+UID:wheeling-60090-2027-03-17-library-board-meeting@withintenmiles.com
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
+SEQUENCE:0
+DTSTART:20270317T190000
+DTEND:20270317T200000
+SUMMARY:Library Board Meeting
+DESCRIPTION:Wednesday\, March 17 2027 7:00pm - 9:00pm \n The Board of Trustees meet for its monthly workshop and planning session. This meeting is open to the public. The…
+URL:https://indiantrails.libnet.info/event/16198760
+END:VEVENT
+BEGIN:VEVENT
+UID:wheeling-60090-2027-03-28-closed-easter-holiday@withintenmiles.com
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
+SEQUENCE:0
+DTSTART:20270328T120000
+DTEND:20270328T130000
+SUMMARY:CLOSED-Easter Holiday
+DESCRIPTION:Sunday\, March 28 2027 12:00pm - 5:00pm \n CLOSED-Easter Holiday
+URL:https://indiantrails.libnet.info/event/15859460
+END:VEVENT
+BEGIN:VEVENT
+UID:wheeling-60090-2027-04-10-foundation-used-book-sale@withintenmiles.com
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
+SEQUENCE:0
+DTSTART:20270410T100000
+DTEND:20270410T110000
+SUMMARY:Foundation Used Book Sale
+DESCRIPTION:Saturday\, April 10 2027 10:00am - 2:00pm \n Hosted by the Foundation for the Indian Trails Library.\nAll proceeds benefit the library. Enter the sale through…
+URL:https://indiantrails.libnet.info/event/14630417
+END:VEVENT
+BEGIN:VEVENT
+UID:wheeling-60090-2027-04-14-foundation-board-meeting@withintenmiles.com
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
+SEQUENCE:0
+DTSTART:20270414T190000
+DTEND:20270414T200000
+SUMMARY:Foundation Board Meeting
+DESCRIPTION:Wednesday\, April 14 2027 7:00pm - 8:30pm \n Foundation Board Meeting
+URL:https://indiantrails.libnet.info/event/12499305
+END:VEVENT
+BEGIN:VEVENT
+UID:wheeling-60090-2027-04-14-library-board-meeting@withintenmiles.com
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
+SEQUENCE:0
+DTSTART:20270414T190000
+DTEND:20270414T200000
+SUMMARY:Library Board Meeting
+DESCRIPTION:Wednesday\, April 14 2027 7:00pm - 9:00pm \n The Board of Trustees meet for its monthly workshop and planning session. This meeting is open to the public. The…
+URL:https://indiantrails.libnet.info/event/16198761
+END:VEVENT
+BEGIN:VEVENT
+UID:wheeling-60090-2027-05-05-library-board-workshop@withintenmiles.com
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
+SEQUENCE:0
+DTSTART:20270505T190000
+DTEND:20270505T200000
+SUMMARY:Library Board Workshop
+DESCRIPTION:Wednesday\, May 05 2027 7:00pm - 9:00pm \n The Board of Trustees meet for its monthly workshop and planning session. This meeting is open to the public. The…
+URL:https://indiantrails.libnet.info/event/17723333
+END:VEVENT
+BEGIN:VEVENT
+UID:wheeling-60090-2027-05-12-foundation-board-meeting@withintenmiles.com
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
+SEQUENCE:0
+DTSTART:20270512T190000
+DTEND:20270512T200000
+SUMMARY:Foundation Board Meeting
+DESCRIPTION:Wednesday\, May 12 2027 7:00pm - 8:30pm \n Foundation Board Meeting
+URL:https://indiantrails.libnet.info/event/12499308
+END:VEVENT
+BEGIN:VEVENT
+UID:wheeling-60090-2027-05-19-library-board-meeting@withintenmiles.com
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
+SEQUENCE:0
+DTSTART:20270519T190000
+DTEND:20270519T200000
+SUMMARY:Library Board Meeting
+DESCRIPTION:Wednesday\, May 19 2027 7:00pm - 9:00pm \n The Board of Trustees meet for its monthly workshop and planning session. This meeting is open to the public. The…
+URL:https://indiantrails.libnet.info/event/16198762
+END:VEVENT
+BEGIN:VEVENT
+UID:wheeling-60090-2027-05-31-closed-memorial-day-holiday@withintenmiles.com
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
+SEQUENCE:0
+DTSTART:20270531T090000
+DTEND:20270531T100000
+SUMMARY:CLOSED-Memorial Day Holiday
+DESCRIPTION:Monday\, May 31 2027 9:00am - 9:00pm \n CLOSED-Memorial Day Holiday
+URL:https://indiantrails.libnet.info/event/15859481
+END:VEVENT
+BEGIN:VEVENT
+UID:wheeling-60090-2027-06-02-library-board-workshop@withintenmiles.com
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
+SEQUENCE:0
+DTSTART:20270602T190000
+DTEND:20270602T200000
+SUMMARY:Library Board Workshop
+DESCRIPTION:Wednesday\, June 02 2027 7:00pm - 9:00pm \n The Board of Trustees meet for its monthly workshop and planning session. This meeting is open to the public. The…
+URL:https://indiantrails.libnet.info/event/17723334
+END:VEVENT
+BEGIN:VEVENT
+UID:wheeling-60090-2027-06-09-foundation-board-meeting@withintenmiles.com
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
+SEQUENCE:0
+DTSTART:20270609T190000
+DTEND:20270609T200000
+SUMMARY:Foundation Board Meeting
+DESCRIPTION:Wednesday\, June 09 2027 7:00pm - 8:30pm \n Foundation Board Meeting
+URL:https://indiantrails.libnet.info/event/12499310
+END:VEVENT
+BEGIN:VEVENT
+UID:wheeling-60090-2027-06-16-library-board-meeting@withintenmiles.com
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
+SEQUENCE:0
+DTSTART:20270616T190000
+DTEND:20270616T200000
+SUMMARY:Library Board Meeting
+DESCRIPTION:Wednesday\, June 16 2027 7:00pm - 9:00pm \n The Board of Trustees meet for its monthly workshop and planning session. This meeting is open to the public. The…
+URL:https://indiantrails.libnet.info/event/16198763
+END:VEVENT
+BEGIN:VEVENT
+UID:wheeling-60090-2027-07-04-closed-independence-day-holiday@withintenmiles.com
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
+SEQUENCE:0
+DTSTART:20270704T120000
+DTEND:20270704T130000
+SUMMARY:CLOSED-Independence Day Holiday
+DESCRIPTION:Sunday\, July 04 2027 12:00pm - 5:00pm \n CLOSED-Independence Day Holiday
+URL:https://indiantrails.libnet.info/event/15859490
+END:VEVENT
+BEGIN:VEVENT
+UID:wheeling-60090-2027-07-10-foundation-used-book-sale@withintenmiles.com
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
+SEQUENCE:0
+DTSTART:20270710T100000
+DTEND:20270710T110000
+SUMMARY:Foundation Used Book Sale
+DESCRIPTION:Saturday\, July 10 2027 10:00am - 2:00pm \n Hosted by the Foundation for the Indian Trails Library.\nAll proceeds benefit the library. Enter the sale through the…
+URL:https://indiantrails.libnet.info/event/14629980
+END:VEVENT
+BEGIN:VEVENT
+UID:wheeling-60090-2027-07-14-foundation-board-meeting@withintenmiles.com
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
+SEQUENCE:0
+DTSTART:20270714T190000
+DTEND:20270714T200000
+SUMMARY:Foundation Board Meeting
+DESCRIPTION:Wednesday\, July 14 2027 7:00pm - 8:30pm \n Foundation Board Meeting
+URL:https://indiantrails.libnet.info/event/12499311
+END:VEVENT
+BEGIN:VEVENT
+UID:wheeling-60090-2027-08-04-library-board-workshop@withintenmiles.com
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
+SEQUENCE:0
+DTSTART:20270804T190000
+DTEND:20270804T200000
+SUMMARY:Library Board Workshop
+DESCRIPTION:Wednesday\, August 04 2027 7:00pm - 9:00pm \n The Board of Trustees meet for its monthly workshop and planning session. This meeting is open to the public. The…
+URL:https://indiantrails.libnet.info/event/17723362
+END:VEVENT
+BEGIN:VEVENT
+UID:wheeling-60090-2027-08-11-foundation-board-meeting@withintenmiles.com
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
+SEQUENCE:0
+DTSTART:20270811T190000
+DTEND:20270811T200000
+SUMMARY:Foundation Board Meeting
+DESCRIPTION:Wednesday\, August 11 2027 7:00pm - 8:30pm \n Foundation Board Meeting
+URL:https://indiantrails.libnet.info/event/12499312
+END:VEVENT
+BEGIN:VEVENT
+UID:wheeling-60090-2027-08-18-library-board-meeting@withintenmiles.com
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
+SEQUENCE:0
+DTSTART:20270818T190000
+DTEND:20270818T200000
+SUMMARY:Library Board Meeting
+DESCRIPTION:Wednesday\, August 18 2027 7:00pm - 9:00pm \n The Board of Trustees meet for its monthly workshop and planning session. This meeting is open to the public. The…
+URL:https://indiantrails.libnet.info/event/16198765
+END:VEVENT
+BEGIN:VEVENT
+UID:wheeling-60090-2027-09-01-library-board-workshop@withintenmiles.com
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
+SEQUENCE:0
+DTSTART:20270901T190000
+DTEND:20270901T200000
+SUMMARY:Library Board Workshop
+DESCRIPTION:Wednesday\, September 01 2027 7:00pm - 9:00pm \n The Board of Trustees meet for its monthly workshop and planning session. This meeting is open to the public.…
+URL:https://indiantrails.libnet.info/event/17723335
+END:VEVENT
+BEGIN:VEVENT
+UID:wheeling-60090-2027-09-06-closed-labor-day-holiday@withintenmiles.com
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
+SEQUENCE:0
+DTSTART:20270906T090000
+DTEND:20270906T100000
+SUMMARY:CLOSED-Labor Day Holiday
+DESCRIPTION:Monday\, September 06 2027 9:00am - 9:00pm \n CLOSED-Labor Day Holiday
+URL:https://indiantrails.libnet.info/event/15859496
+END:VEVENT
+BEGIN:VEVENT
+UID:wheeling-60090-2027-09-08-foundation-board-meeting@withintenmiles.com
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
+SEQUENCE:0
+DTSTART:20270908T190000
+DTEND:20270908T200000
+SUMMARY:Foundation Board Meeting
+DESCRIPTION:Wednesday\, September 08 2027 7:00pm - 8:30pm \n Foundation Board Meeting
+URL:https://indiantrails.libnet.info/event/12499313
+END:VEVENT
+BEGIN:VEVENT
+UID:wheeling-60090-2027-09-15-library-board-meeting@withintenmiles.com
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
+SEQUENCE:0
+DTSTART:20270915T190000
+DTEND:20270915T200000
+SUMMARY:Library Board Meeting
+DESCRIPTION:Wednesday\, September 15 2027 7:00pm - 9:00pm \n The Board of Trustees meet for its monthly workshop and planning session. This meeting is open to the public.…
+URL:https://indiantrails.libnet.info/event/16198766
+END:VEVENT
+BEGIN:VEVENT
+UID:wheeling-60090-2027-10-06-library-board-workshop@withintenmiles.com
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
+SEQUENCE:0
+DTSTART:20271006T190000
+DTEND:20271006T200000
+SUMMARY:Library Board Workshop
+DESCRIPTION:Wednesday\, October 06 2027 7:00pm - 9:00pm \n The Board of Trustees meet for its monthly workshop and planning session. This meeting is open to the public. The…
+URL:https://indiantrails.libnet.info/event/17723336
+END:VEVENT
+BEGIN:VEVENT
+UID:wheeling-60090-2027-10-09-foundation-used-book-sale@withintenmiles.com
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
+SEQUENCE:0
+DTSTART:20271009T100000
+DTEND:20271009T110000
+SUMMARY:Foundation Used Book Sale
+DESCRIPTION:Saturday\, October 09 2027 10:00am - 2:00pm \n Hosted by the Foundation for the Indian Trails Library.\nAll proceeds benefit the library. Enter the sale through…
+URL:https://indiantrails.libnet.info/event/14630010
+END:VEVENT
+BEGIN:VEVENT
+UID:wheeling-60090-2027-10-13-foundation-board-meeting@withintenmiles.com
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
+SEQUENCE:0
+DTSTART:20271013T190000
+DTEND:20271013T200000
+SUMMARY:Foundation Board Meeting
+DESCRIPTION:Wednesday\, October 13 2027 7:00pm - 8:30pm \n Foundation Board Meeting
+URL:https://indiantrails.libnet.info/event/12499314
+END:VEVENT
+BEGIN:VEVENT
+UID:wheeling-60090-2027-10-20-library-board-meeting@withintenmiles.com
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
+SEQUENCE:0
+DTSTART:20271020T190000
+DTEND:20271020T200000
+SUMMARY:Library Board Meeting
+DESCRIPTION:Wednesday\, October 20 2027 7:00pm - 9:00pm \n The Board of Trustees meet for its monthly workshop and planning session. This meeting is open to the public. The…
+URL:https://indiantrails.libnet.info/event/16198767
+END:VEVENT
+BEGIN:VEVENT
+UID:wheeling-60090-2027-11-03-library-board-workshop@withintenmiles.com
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
+SEQUENCE:0
+DTSTART:20271103T190000
+DTEND:20271103T200000
+SUMMARY:Library Board Workshop
+DESCRIPTION:Wednesday\, November 03 2027 7:00pm - 9:00pm \n The Board of Trustees meet for its monthly workshop and planning session. This meeting is open to the public.…
+URL:https://indiantrails.libnet.info/event/17723337
+END:VEVENT
+BEGIN:VEVENT
+UID:wheeling-60090-2027-11-10-foundation-board-meeting@withintenmiles.com
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
+SEQUENCE:0
+DTSTART:20271110T190000
+DTEND:20271110T200000
+SUMMARY:Foundation Board Meeting
+DESCRIPTION:Wednesday\, November 10 2027 7:00pm - 8:30pm \n Foundation Board Meeting
+URL:https://indiantrails.libnet.info/event/12499315
+END:VEVENT
+BEGIN:VEVENT
+UID:wheeling-60090-2027-11-17-library-board-meeting@withintenmiles.com
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
+SEQUENCE:0
+DTSTART:20271117T190000
+DTEND:20271117T200000
+SUMMARY:Library Board Meeting
+DESCRIPTION:Wednesday\, November 17 2027 7:00pm - 9:00pm \n The Board of Trustees meet for its monthly workshop and planning session. This meeting is open to the public.…
+URL:https://indiantrails.libnet.info/event/16198768
+END:VEVENT
+BEGIN:VEVENT
+UID:wheeling-60090-2027-11-24-early-closing-thanksgiving-day-eve@withintenmiles.com
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
+SEQUENCE:0
+DTSTART:20271124T090000
+DTEND:20271124T100000
+SUMMARY:EARLY CLOSING-Thanksgiving Day Eve
+DESCRIPTION:Wednesday\, November 24 2027 9:00am - 5:00pm \n The library and Branch close at 5 pm on this day.
+URL:https://indiantrails.libnet.info/event/15859589
+END:VEVENT
+BEGIN:VEVENT
+UID:wheeling-60090-2027-11-25-closed-thanksgiving-day-holiday@withintenmiles.com
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
+SEQUENCE:0
+DTSTART:20271125T090000
+DTEND:20271125T100000
+SUMMARY:CLOSED-Thanksgiving Day Holiday
+DESCRIPTION:Thursday\, November 25 2027 9:00am - 9:00pm \n CLOSED-Thanksgiving Day Holiday
+URL:https://indiantrails.libnet.info/event/15859516
+END:VEVENT
+BEGIN:VEVENT
+UID:wheeling-60090-2027-12-01-library-board-workshop@withintenmiles.com
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
+SEQUENCE:0
+DTSTART:20271201T190000
+DTEND:20271201T200000
+SUMMARY:Library Board Workshop
+DESCRIPTION:Wednesday\, December 01 2027 7:00pm - 9:00pm \n The Board of Trustees meet for its monthly workshop and planning session. This meeting is open to the public.…
+URL:https://indiantrails.libnet.info/event/17723338
+END:VEVENT
+BEGIN:VEVENT
+UID:wheeling-60090-2027-12-15-library-board-meeting@withintenmiles.com
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
+SEQUENCE:0
+DTSTART:20271215T190000
+DTEND:20271215T200000
+SUMMARY:Library Board Meeting
+DESCRIPTION:Wednesday\, December 15 2027 7:00pm - 9:00pm \n The Board of Trustees meet for its monthly workshop and planning session. This meeting is open to the public.…
+URL:https://indiantrails.libnet.info/event/16198769
+END:VEVENT
+BEGIN:VEVENT
+UID:wheeling-60090-2027-12-24-closed-christmas-eve@withintenmiles.com
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
+SEQUENCE:0
+DTSTART:20271224T090000
+DTEND:20271224T100000
+SUMMARY:CLOSED-Christmas Eve
+DESCRIPTION:Friday\, December 24 2027 9:00am - 9:00pm \n CLOSED-Christmas Eve Holiday
+URL:https://indiantrails.libnet.info/event/15859631
+END:VEVENT
+BEGIN:VEVENT
+UID:wheeling-60090-2027-12-25-closed-christmas-day-holiday@withintenmiles.com
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
+SEQUENCE:0
+DTSTART:20271225T090000
+DTEND:20271225T100000
+SUMMARY:CLOSED-Christmas Day Holiday
+DESCRIPTION:Saturday\, December 25 2027 9:00am - 5:00pm \n CLOSED-Christmas Day Holiday
+URL:https://indiantrails.libnet.info/event/15859646
+END:VEVENT
+BEGIN:VEVENT
+UID:wheeling-60090-2027-12-31-closed-new-year-s-eve-holiday@withintenmiles.com
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
+SEQUENCE:0
+DTSTART:20271231T090000
+DTEND:20271231T100000
+SUMMARY:CLOSED-New Year's Eve Holiday
+DESCRIPTION:Friday\, December 31 2027 9:00am - 9:00pm \n CLOSED-New Year's Eve Holiday
+URL:https://indiantrails.libnet.info/event/15859658
+END:VEVENT
+BEGIN:VEVENT
+UID:wheeling-60090-2028-01-01-closed-new-year-s-day@withintenmiles.com
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
+SEQUENCE:0
+DTSTART:20280101T090000
+DTEND:20280101T100000
+SUMMARY:CLOSED-New Year's Day
+DESCRIPTION:Saturday\, January 01 2028 9:00am - 5:00pm \n CLOSED-New Year's Day
+URL:https://indiantrails.libnet.info/event/15859837
+END:VEVENT
+BEGIN:VEVENT
+UID:wheeling-60090-2028-01-19-library-board-meeting@withintenmiles.com
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
+SEQUENCE:0
+DTSTART:20280119T190000
+DTEND:20280119T200000
+SUMMARY:Library Board Meeting
+DESCRIPTION:Wednesday\, January 19 2028 7:00pm - 9:00pm \n The Board of Trustees meet for its monthly workshop and planning session. This meeting is open to the public. The…
+URL:https://indiantrails.libnet.info/event/16198770
+END:VEVENT
+BEGIN:VEVENT
+UID:wheeling-60090-2028-02-16-library-board-meeting@withintenmiles.com
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
+SEQUENCE:0
+DTSTART:20280216T190000
+DTEND:20280216T200000
+SUMMARY:Library Board Meeting
+DESCRIPTION:Wednesday\, February 16 2028 7:00pm - 9:00pm \n The Board of Trustees meet for its monthly workshop and planning session. This meeting is open to the public.…
+URL:https://indiantrails.libnet.info/event/16198771
+END:VEVENT
+BEGIN:VEVENT
+UID:wheeling-60090-2028-03-15-library-board-meeting@withintenmiles.com
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
+SEQUENCE:0
+DTSTART:20280315T190000
+DTEND:20280315T200000
+SUMMARY:Library Board Meeting
+DESCRIPTION:Wednesday\, March 15 2028 7:00pm - 9:00pm \n The Board of Trustees meet for its monthly workshop and planning session. This meeting is open to the public. The…
+URL:https://indiantrails.libnet.info/event/16198772
+END:VEVENT
+BEGIN:VEVENT
+UID:wheeling-60090-2028-04-19-library-board-meeting@withintenmiles.com
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
+SEQUENCE:0
+DTSTART:20280419T190000
+DTEND:20280419T200000
+SUMMARY:Library Board Meeting
+DESCRIPTION:Wednesday\, April 19 2028 7:00pm - 9:00pm \n The Board of Trustees meet for its monthly workshop and planning session. This meeting is open to the public. The…
+URL:https://indiantrails.libnet.info/event/16198773
+END:VEVENT
+BEGIN:VEVENT
+UID:wheeling-60090-2028-05-17-library-board-meeting@withintenmiles.com
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
+SEQUENCE:0
+DTSTART:20280517T190000
+DTEND:20280517T200000
+SUMMARY:Library Board Meeting
+DESCRIPTION:Wednesday\, May 17 2028 7:00pm - 9:00pm \n The Board of Trustees meet for its monthly workshop and planning session. This meeting is open to the public. The…
+URL:https://indiantrails.libnet.info/event/16198774
+END:VEVENT
+BEGIN:VEVENT
+UID:wheeling-60090-2028-06-21-library-board-meeting@withintenmiles.com
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
+SEQUENCE:0
+DTSTART:20280621T190000
+DTEND:20280621T200000
+SUMMARY:Library Board Meeting
+DESCRIPTION:Wednesday\, June 21 2028 7:00pm - 9:00pm \n The Board of Trustees meet for its monthly workshop and planning session. This meeting is open to the public. The…
+URL:https://indiantrails.libnet.info/event/16198775
+END:VEVENT
+BEGIN:VEVENT
+UID:wheeling-60090-2028-07-19-library-board-meeting@withintenmiles.com
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
+SEQUENCE:0
+DTSTART:20280719T190000
+DTEND:20280719T200000
+SUMMARY:Library Board Meeting
+DESCRIPTION:Wednesday\, July 19 2028 7:00pm - 9:00pm \n The Board of Trustees meet for its monthly workshop and planning session. This meeting is open to the public. The…
+URL:https://indiantrails.libnet.info/event/16198776
+END:VEVENT
+BEGIN:VEVENT
+UID:wheeling-60090-2028-08-16-library-board-meeting@withintenmiles.com
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
+SEQUENCE:0
+DTSTART:20280816T190000
+DTEND:20280816T200000
+SUMMARY:Library Board Meeting
+DESCRIPTION:Wednesday\, August 16 2028 7:00pm - 9:00pm \n The Board of Trustees meet for its monthly workshop and planning session. This meeting is open to the public. The…
+URL:https://indiantrails.libnet.info/event/16198777
+END:VEVENT
+BEGIN:VEVENT
+UID:wheeling-60090-2028-09-20-library-board-meeting@withintenmiles.com
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
+SEQUENCE:0
+DTSTART:20280920T190000
+DTEND:20280920T200000
+SUMMARY:Library Board Meeting
+DESCRIPTION:Wednesday\, September 20 2028 7:00pm - 9:00pm \n The Board of Trustees meet for its monthly workshop and planning session. This meeting is open to the public.…
+URL:https://indiantrails.libnet.info/event/16198778
+END:VEVENT
+BEGIN:VEVENT
+UID:wheeling-60090-2028-10-18-library-board-meeting@withintenmiles.com
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
+SEQUENCE:0
+DTSTART:20281018T190000
+DTEND:20281018T200000
+SUMMARY:Library Board Meeting
+DESCRIPTION:Wednesday\, October 18 2028 7:00pm - 9:00pm \n The Board of Trustees meet for its monthly workshop and planning session. This meeting is open to the public. The…
+URL:https://indiantrails.libnet.info/event/16198779
+END:VEVENT
+BEGIN:VEVENT
+UID:wheeling-60090-2028-11-15-library-board-meeting@withintenmiles.com
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
+SEQUENCE:0
+DTSTART:20281115T190000
+DTEND:20281115T200000
+SUMMARY:Library Board Meeting
+DESCRIPTION:Wednesday\, November 15 2028 7:00pm - 9:00pm \n The Board of Trustees meet for its monthly workshop and planning session. This meeting is open to the public.…
+URL:https://indiantrails.libnet.info/event/16198780
+END:VEVENT
+BEGIN:VEVENT
+UID:wheeling-60090-2028-12-20-library-board-meeting@withintenmiles.com
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
+SEQUENCE:0
+DTSTART:20281220T190000
+DTEND:20281220T200000
+SUMMARY:Library Board Meeting
+DESCRIPTION:Wednesday\, December 20 2028 7:00pm - 9:00pm \n The Board of Trustees meet for its monthly workshop and planning session. This meeting is open to the public.…
+URL:https://indiantrails.libnet.info/event/16198781
+END:VEVENT
+BEGIN:VEVENT
+UID:wheeling-60090-2029-01-17-library-board-meeting@withintenmiles.com
+DTSTAMP:20261025T140342Z
+LAST-MODIFIED:20261025T140342Z
+SEQUENCE:0
+DTSTART:20290117T190000
+DTEND:20290117T200000
+SUMMARY:Library Board Meeting
+DESCRIPTION:Wednesday\, January 17 2029 7:00pm - 9:00pm \n The Board of Trustees meet for its monthly workshop and planning session. This meeting is open to the public. The…
+URL:https://indiantrails.libnet.info/event/16198764
 END:VEVENT
 END:VCALENDAR
