@@ -3,61 +3,8 @@
 <channel>
   <title>Within Ten — Upcoming events in Des Plaines</title>
   <link>https://withintenmiles.com/</link>
-  <description>Upcoming events in Des Plaines, soonest first - aggregated automatically from village, library, park district and school-district calendars. This build reached 8 of 10 configured sources.</description>
-  <lastBuildDate>Sat, 24 Oct 2026 22:02:07 +0000</lastBuildDate>
-  <item>
-    <title>Des Plaines: DIY with DPPL</title>
-    <link>https://withintenmiles.com/des-plaines-60016/#ev-diy-with-dppl-2026-10-24</link>
-    <guid isPermaLink="true">https://withintenmiles.com/des-plaines-60016/#ev-diy-with-dppl-2026-10-24</guid>
-    <description>Saturday, October 24 2026 12:00am - 11:59pm 
- Grades 1-6. Pick up a kit at the YS desk and use the materials to do the project we show you step-by-step in the… Official listing: https://desplaines.libnet.info/event/17004638</description>
-    <pubDate>Sat, 24 Oct 2026 00:00:00 +0000</pubDate>
-    <source url="https://desplaines.libnet.info/event/17004638">Des Plaines Public Library — Events</source>
-  </item>
-  <item>
-    <title>Des Plaines: Play Packs</title>
-    <link>https://withintenmiles.com/des-plaines-60016/#ev-play-packs-2026-10-24</link>
-    <guid isPermaLink="true">https://withintenmiles.com/des-plaines-60016/#ev-play-packs-2026-10-24</guid>
-    <description>Saturday, October 24 2026 12:00am - 11:59pm 
- Toddlers - Kindergarten, pick up a pack at the Youth Services desk for a hands-on activity to encourage… Official listing: https://desplaines.libnet.info/event/17004648</description>
-    <pubDate>Sat, 24 Oct 2026 00:00:00 +0000</pubDate>
-    <source url="https://desplaines.libnet.info/event/17004648">Des Plaines Public Library — Events</source>
-  </item>
-  <item>
-    <title>Des Plaines: Wicked Good Writing Contest</title>
-    <link>https://withintenmiles.com/des-plaines-60016/#ev-wicked-good-writing-contest-2026-10-24</link>
-    <guid isPermaLink="true">https://withintenmiles.com/des-plaines-60016/#ev-wicked-good-writing-contest-2026-10-24</guid>
-    <description>Saturday, October 24 2026 12:00am - 11:59pm 
- Enter our 4th annual Wicked Good Writing Contest!
-For grades K-8. Official listing: https://desplaines.libnet.info/event/17138192</description>
-    <pubDate>Sat, 24 Oct 2026 00:00:00 +0000</pubDate>
-    <source url="https://desplaines.libnet.info/event/17138192">Des Plaines Public Library — Events</source>
-  </item>
-  <item>
-    <title>Des Plaines: Early Voting</title>
-    <link>https://withintenmiles.com/des-plaines-60016/#ev-early-voting-2026-10-24</link>
-    <guid isPermaLink="true">https://withintenmiles.com/des-plaines-60016/#ev-early-voting-2026-10-24</guid>
-    <description>Saturday, October 24 2026 9:00am - 5:00pm 
- Gubernatorial Election Official listing: https://desplaines.libnet.info/event/14863286</description>
-    <pubDate>Sat, 24 Oct 2026 09:00:00 +0000</pubDate>
-    <source url="https://desplaines.libnet.info/event/14863286">Des Plaines Public Library — Events</source>
-  </item>
-  <item>
-    <title>Des Plaines: LIGHTS OUT: TRIBUTE TO UFO featuring ANDY PARKER with SPECIAL GUEST TRIANGLE PARK</title>
-    <link>https://withintenmiles.com/des-plaines-60016/#ev-lights-out-tribute-to-ufo-featuring-andy-parker-with-special-2026-10-24</link>
-    <guid isPermaLink="true">https://withintenmiles.com/des-plaines-60016/#ev-lights-out-tribute-to-ufo-featuring-andy-parker-with-special-2026-10-24</guid>
-    <description>Lights Out is an all-star tribute to UFO featuring Andy Parker, the original drummer of UFO. Other band members include Mark Boals (Vocalists of Yngwie… Official listing: https://desplainestheatre.com/event/lights-out-tribute-to-ufo-featuring-andy-parker-2/</description>
-    <pubDate>Sat, 24 Oct 2026 20:00:00 +0000</pubDate>
-    <source url="https://desplainestheatre.com/event/lights-out-tribute-to-ufo-featuring-andy-parker-2/">Des Plaines Theatre — Events</source>
-  </item>
-  <item>
-    <title>Des Plaines: BOURBON 'N BRASS: LIVE BLUES WITH DAVE WELD &amp; THE IMPERIAL FLAMES</title>
-    <link>https://withintenmiles.com/des-plaines-60016/#ev-bourbon-n-brass-live-blues-with-dave-weld-the-imperial-flame-2026-10-24</link>
-    <guid isPermaLink="true">https://withintenmiles.com/des-plaines-60016/#ev-bourbon-n-brass-live-blues-with-dave-weld-the-imperial-flame-2026-10-24</guid>
-    <description>Join us in our intimate Bourbon ‘N Brass Speakeasy, located on the 2nd floor of the Des Plaines Theatre, for an evening of Blues with Dave Weld &amp; The Imperial… Official listing: https://desplainestheatre.com/event/bourbon-n-brass-live-blues-with-dave-weld-the-imperial-flames-9/</description>
-    <pubDate>Sat, 24 Oct 2026 20:30:00 +0000</pubDate>
-    <source url="https://desplainestheatre.com/event/bourbon-n-brass-live-blues-with-dave-weld-the-imperial-flames-9/">Des Plaines Theatre — Events</source>
-  </item>
+  <description>Upcoming events in Des Plaines, soonest first - aggregated automatically from village, library, park district and school-district calendars. This build reached 6 of 10 configured sources. 2 sources are shown from their last update, up to 8 hours ago.</description>
+  <lastBuildDate>Sun, 25 Oct 2026 06:00:19 +0000</lastBuildDate>
   <item>
     <title>Des Plaines: Wicked Good Writing Contest</title>
     <link>https://withintenmiles.com/des-plaines-60016/#ev-wicked-good-writing-contest-2026-10-25</link>
@@ -462,6 +409,57 @@ For grades K-8. Official listing: https://desplaines.libnet.info/event/17138198<
  Gubernatorial Election Official listing: https://desplaines.libnet.info/event/15080696</description>
     <pubDate>Sat, 31 Oct 2026 09:00:00 +0000</pubDate>
     <source url="https://desplaines.libnet.info/event/15080696">Des Plaines Public Library — Events</source>
+  </item>
+  <item>
+    <title>Des Plaines: THE VAMPIRE CIRCUS: TIM BURTON meets CIRQUE DU SOLEIL</title>
+    <link>https://withintenmiles.com/des-plaines-60016/#ev-the-vampire-circus-tim-burton-meets-cirque-du-soleil-2026-10-31</link>
+    <guid isPermaLink="true">https://withintenmiles.com/des-plaines-60016/#ev-the-vampire-circus-tim-burton-meets-cirque-du-soleil-2026-10-31</guid>
+    <description>Heralded as a mix of circus cabaret and theatre, The Vampire Circus is a mysterious, tantalizing, fun, dark, cutting-edge production guaranteed to amaze the… Official listing: https://desplainestheatre.com/event/the-vampire-circus-tim-burton-meets-cirque-du-soleil-2/</description>
+    <pubDate>Sat, 31 Oct 2026 20:00:00 +0000</pubDate>
+    <source url="https://desplainestheatre.com/event/the-vampire-circus-tim-burton-meets-cirque-du-soleil-2/">Des Plaines Theatre — Events</source>
+  </item>
+  <item>
+    <title>Des Plaines: BOURBON 'N BRASS SPEAKEASY: LIVE "Halloween" JAZZ with THE BOURBON 'N BRASS PROHIBITION BAND</title>
+    <link>https://withintenmiles.com/des-plaines-60016/#ev-bourbon-n-brass-speakeasy-live-halloween-jazz-with-the-bourb-2026-10-31</link>
+    <guid isPermaLink="true">https://withintenmiles.com/des-plaines-60016/#ev-bourbon-n-brass-speakeasy-live-halloween-jazz-with-the-bourb-2026-10-31</guid>
+    <description>Join us in our intimate Bourbon ‘N Brass Speakeasy, located on the 2nd floor of the Des Plaines Theatre, for an evening of Jazz with the Bourbon ‘N Brass… Official listing: https://desplainestheatre.com/event/bourbon-n-brass-speakeasy-live-jazz-with-the-bourbon-n-brass-prohibition-band-3/</description>
+    <pubDate>Sat, 31 Oct 2026 20:30:00 +0000</pubDate>
+    <source url="https://desplainestheatre.com/event/bourbon-n-brass-speakeasy-live-jazz-with-the-bourbon-n-brass-prohibition-band-3/">Des Plaines Theatre — Events</source>
+  </item>
+  <item>
+    <title>Des Plaines: Early Voting</title>
+    <link>https://withintenmiles.com/des-plaines-60016/#ev-early-voting-2026-11-01</link>
+    <guid isPermaLink="true">https://withintenmiles.com/des-plaines-60016/#ev-early-voting-2026-11-01</guid>
+    <description>Sunday, November 01 2026 10:00am - 4:00pm 
+ Gubernatorial Election Official listing: https://desplaines.libnet.info/event/14863263</description>
+    <pubDate>Sun, 01 Nov 2026 10:00:00 +0000</pubDate>
+    <source url="https://desplaines.libnet.info/event/14863263">Des Plaines Public Library — Events</source>
+  </item>
+  <item>
+    <title>Des Plaines: Google: Gmail Basics</title>
+    <link>https://withintenmiles.com/des-plaines-60016/#ev-google-gmail-basics-2026-11-01</link>
+    <guid isPermaLink="true">https://withintenmiles.com/des-plaines-60016/#ev-google-gmail-basics-2026-11-01</guid>
+    <description>Sunday, November 01 2026 2:30pm - 3:30pm 
+ Create a Gmail account, learn how to use and navigate Gmail. Search and organize your inbox, create labels, and… Official listing: https://desplaines.libnet.info/event/17571929</description>
+    <pubDate>Sun, 01 Nov 2026 14:30:00 +0000</pubDate>
+    <source url="https://desplaines.libnet.info/event/17571929">Des Plaines Public Library — Events</source>
+  </item>
+  <item>
+    <title>Des Plaines: SINCERELY SINATRA BIG BAND SHOW starring NICK PONTARELLI with SPECIAL GUEST CLOSE TO KAREN - A SALUTE TO KAREN CARPENTER with GINA KNIGHT</title>
+    <link>https://withintenmiles.com/des-plaines-60016/#ev-sincerely-sinatra-big-band-show-starring-nick-pontarelli-wit-2026-11-01</link>
+    <guid isPermaLink="true">https://withintenmiles.com/des-plaines-60016/#ev-sincerely-sinatra-big-band-show-starring-nick-pontarelli-wit-2026-11-01</guid>
+    <description>Crooner Nick Pontarelli, with a 7-piece orchestra, is bringing his show to the Des Plaines stage. Nick is a crowd-favorite in our Club Arcada Speakeasy. Don’t… Official listing: https://desplainestheatre.com/event/sincerely-sinatra-big-band-show-starring-nick-pontarelli-with-special-guest-close-to-karen-a-salute-to-karen-carpenter-with-gina-knight/</description>
+    <pubDate>Sun, 01 Nov 2026 15:00:00 +0000</pubDate>
+    <source url="https://desplainestheatre.com/event/sincerely-sinatra-big-band-show-starring-nick-pontarelli-with-special-guest-close-to-karen-a-salute-to-karen-carpenter-with-gina-knight/">Des Plaines Theatre — Events</source>
+  </item>
+  <item>
+    <title>Des Plaines: Teen Take &amp; Make</title>
+    <link>https://withintenmiles.com/des-plaines-60016/#ev-teen-take-make-2026-11-02</link>
+    <guid isPermaLink="true">https://withintenmiles.com/des-plaines-60016/#ev-teen-take-make-2026-11-02</guid>
+    <description>Monday, November 02 2026 12:00am - 11:59pm 
+ Take &amp; Make Kits are fun crafts you can take home and make on your own time. Drop in to pick up your kit… Official listing: https://desplaines.libnet.info/event/17635811</description>
+    <pubDate>Mon, 02 Nov 2026 00:00:00 +0000</pubDate>
+    <source url="https://desplaines.libnet.info/event/17635811">Des Plaines Public Library — Events</source>
   </item>
 </channel>
 </rss>

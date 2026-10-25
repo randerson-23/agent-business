@@ -128,6 +128,30 @@
   "url": "https://www.palatine.il.us/common/modules/iCalendar/iCalendar.aspx?feed=calendar&catID=14",
   "venue": null
  },
+ "e/2026-10-25-italian-bred-a-celebration-of-family-culture-comedy/": {
+  "date_iso": "2026-10-25T14:00:00",
+  "detail": "Italian Bred, starring the incomparable Candice Guardino, is a vibrant, hilarious, and deeply relatable theatrical experience that has captivated audiences…",
+  "detail_long": "Italian Bred, starring the incomparable Candice Guardino, is a vibrant, hilarious, and deeply relatable theatrical experience that has captivated audiences across the country. Drawing on her Italian-American roots, Guardino delivers a one-woman show that is both uproarious and heartwarming, blending sharp comedy, poignant storytelling, and a celebration of family and tradition. This performance transcends cultural boundaries, offering humor and insight that resonate with audiences from all walks of life, whether or not they share Italian heritage.",
+  "first_seen": "2026-10-25",
+  "ics_href": "data:text/calendar;charset=utf-8,BEGIN%3AVCALENDAR%0D%0AVERSION%3A2.0%0D%0APRODID%3A-//Within%20Ten//EN%0D%0ABEGIN%3AVEVENT%0D%0ADTSTART%3A20261025T140000%0D%0ADTEND%3A20261025T150000%0D%0ASUMMARY%3AITALIAN%20BRED%3A%20A%20CELEBRATION%20OF%20FAMILY%5C%2C%20CULTURE%20%26%20COMEDY%0D%0ADESCRIPTION%3AItalian%20Bred%5C%2C%20starring%20the%20incomparable%20Candice%20Guardino%5C%2C%20is%20a%20vibrant%5C%2C%20hilarious%5C%2C%20and%20deeply%20relatable%20theatrical%20experience%20that%20has%20captivated%20audiences%E2%80%A6%0D%0ALOCATION%3ADes%20Plaines%20Theatre%5C%2C%201476%20Miner%20Street%5C%2C%20Des%20Plaines%0D%0AURL%3Ahttps%3A//desplainestheatre.com/event/italian-bred-a-heartlfelt-celebration-of-family-culture-comedy/%0D%0AEND%3AVEVENT%0D%0AEND%3AVCALENDAR%0D%0A",
+  "path": "e/2026-10-25-italian-bred-a-celebration-of-family-culture-comedy/",
+  "postal_code": null,
+  "region_id": "des-plaines-60016",
+  "region_url": "https://withintenmiles.com/des-plaines-60016/",
+  "source": "Des Plaines Theatre — Events",
+  "sponsored_by": null,
+  "state": "IL",
+  "street_address": "1476 Miner Street",
+  "tags": [
+   "art_culture",
+   "indoor",
+   "kid_friendly"
+  ],
+  "title": "ITALIAN BRED: A CELEBRATION OF FAMILY, CULTURE & COMEDY",
+  "town": "Des Plaines",
+  "url": "https://desplainestheatre.com/event/italian-bred-a-heartlfelt-celebration-of-family-culture-comedy/",
+  "venue": "Des Plaines Theatre"
+ },
  "e/2026-10-25-mount-prospect-farmers-market/": {
   "date_iso": "2026-10-25T08:00:00",
   "detail": "Local produce and vendors, organized by the Mount Prospect Lions Club, rain or shine. West Metra commuter lot, Northwest Hwy & Main St (Rte 83).",

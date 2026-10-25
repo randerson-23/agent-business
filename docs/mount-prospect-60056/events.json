@@ -2,8 +2,8 @@
   "@context": "https://schema.org",
   "@type": "ItemList",
   "name": "Upcoming events in Mount Prospect — Within Ten",
-  "dateModified": "2026-10-24T22:02:07+00:00",
-  "numberOfItems": 54,
+  "dateModified": "2026-10-25T06:00:19+00:00",
+  "numberOfItems": 57,
   "itemListElement": [
     {
       "@type": "ListItem",
@@ -12,7 +12,7 @@
         "@type": "Event",
         "name": "Mount Prospect Farmers Market",
         "startDate": "2026-10-25T08:00:00-05:00",
-        "url": "https://withintenmiles.com/mount-prospect-60056/#ev-mount-prospect-farmers-market-2026-10-25",
+        "url": "https://withintenmiles.com/e/2026-10-25-mount-prospect-farmers-market/",
         "eventStatus": "https://schema.org/EventScheduled",
         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
         "location": {
@@ -1608,6 +1608,95 @@
           "url": "https://mppl.libnet.info"
         },
         "description": "Friday, November 06 2026 12:00am - 11:59pm \n Visit mppl.org to access library resources and digital materials anytime."
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 55,
+      "item": {
+        "@type": "Event",
+        "name": "Diwali Party",
+        "startDate": "2026-11-07T10:00:00-06:00",
+        "url": "https://withintenmiles.com/mount-prospect-60056/#ev-diwali-party-2026-11-07",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Mount Prospect Public Library",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Mount Prospect",
+            "addressRegion": "IL",
+            "streetAddress": "125 S Emerson St"
+          }
+        },
+        "sameAs": "https://mppl.libnet.info/event/14808871",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Mount Prospect Public Library",
+          "url": "https://mppl.libnet.info"
+        },
+        "description": "Saturday, November 07 2026 10:00am - 11:30am \n Let's celebrate the joyful Festival of Lights with vibrant performances, crafts, and activities. Whether Diwali…"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 56,
+      "item": {
+        "@type": "Event",
+        "name": "Kindness Week in Mount Prospect Kickoff Event",
+        "startDate": "2026-11-07T10:00:00-06:00",
+        "url": "https://withintenmiles.com/mount-prospect-60056/#ev-kindness-week-in-mount-prospect-kickoff-event-2026-11-07",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Mount Prospect Public Library",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Mount Prospect",
+            "addressRegion": "IL",
+            "streetAddress": "125 S Emerson St"
+          }
+        },
+        "sameAs": "https://mppl.libnet.info/event/16835825",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Mount Prospect Public Library",
+          "url": "https://mppl.libnet.info"
+        },
+        "description": "Saturday, November 07 2026 10:00am - 12:00pm \n Celebrate Kindness Week in Mount Prospect, a celebration encouraging residents to see the good, be the good,…"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 57,
+      "item": {
+        "@type": "Event",
+        "name": "MPCB Fall Concert: Magical Places",
+        "startDate": "2026-11-07T16:00:00-06:00",
+        "url": "https://withintenmiles.com/mount-prospect-60056/#ev-mpcb-fall-concert-magical-places-2026-11-07",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Mount Prospect, IL",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Mount Prospect",
+            "addressRegion": "IL"
+          }
+        },
+        "sameAs": "https://www.mppd.org/event/mpcb-fall-concert-magical-places/",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Mount Prospect Park District",
+          "url": "https://www.mppd.org"
+        },
+        "description": "Mt. Prospect Community Band Fall Concert “Magical Places” Admission $5 at the door Location Trinity United Methodist Church (605 W. Golf Rd, Mount Prospect)"
       }
     }
   ]
