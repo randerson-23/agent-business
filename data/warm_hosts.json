@@ -1,14 +1,4 @@
 {
- "5 p m": {
-  "events": [
-   {
-    "date": "2026-11-25",
-    "title": "Library Closed at 5 p.m."
-   }
-  ],
-  "name": "5 p.m",
-  "town": "Mount Prospect"
- },
  "des plaines theatre": {
   "events": [
    {
@@ -148,5 +138,35 @@
   ],
   "name": "Metropolis Performing Arts Centre",
   "town": "Arlington Heights"
+ },
+ "napleton palatine hyundai": {
+  "events": [
+   {
+    "date": "2026-10-22",
+    "title": "FREE Trunk or Treat at Napleton Palatine Hyundai"
+   }
+  ],
+  "name": "Napleton Palatine Hyundai",
+  "town": "Palatine"
+ },
+ "napleton palatine mazda": {
+  "events": [
+   {
+    "date": "2026-10-22",
+    "title": "FREE Trunk or Treat at Napleton's Palatine Mazda"
+   }
+  ],
+  "name": "Napleton's Palatine Mazda",
+  "town": "Palatine"
+ },
+ "napleton palatine subaru": {
+  "events": [
+   {
+    "date": "2026-10-22",
+    "title": "FREE Trunk or Treat at Napleton's Palatine Subaru"
+   }
+  ],
+  "name": "Napleton's Palatine Subaru",
+  "town": "Palatine"
  }
 }

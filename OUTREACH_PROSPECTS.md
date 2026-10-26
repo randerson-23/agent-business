@@ -6,7 +6,22 @@ Generated 2026-10-26 by `scripts/osm_prospects.py` (ROADMAP.md item 306).
 
 ## Warm: already hosting public events
 
-No non-agency hosts in the site's listings right now.
+Businesses whose own events appeared on a town page in the last 60 days or the next 30. Names, events and dates only. Start here: they already hold public events.
+
+| Host | Town | Events |
+|---|---|---|
+| Napleton Palatine Hyundai | Palatine | FREE Trunk or Treat at Napleton Palatine Hyundai (2026-10-22) |
+| Napleton's Palatine Mazda | Palatine | FREE Trunk or Treat at Napleton's Palatine Mazda (2026-10-22) |
+| Napleton's Palatine Subaru | Palatine | FREE Trunk or Treat at Napleton's Palatine Subaru (2026-10-22) |
+
+### Venues that already publish calendars
+
+They may still buy a promo, but the pitch differs: they already reach their own audience.
+
+| Host | Town | Events |
+|---|---|---|
+| Metropolis Performing Arts Centre | Arlington Heights | The Rock N' Horror Halloween Concert (2026-10-30); The Lightning Thief: The Percy Jackson Musical (2026-11-05); Myths and Mayhem (2026-11-05); +1 more |
+| Des Plaines Theatre | Des Plaines | RESCHEDULED FOR 2/28/27: ROCKY™ IN CONCERT (2026-10-28); WORLD PREMIERE FILM SCREENING: YAKUZA PLAYS "THE GOLEM" - A CONCERT FILM (2026-10-29); BOURBON 'N BRASS: LIVE BLUES SHOW WITH MILES MINOR "ROCKIN THE BLUES" (2026-10-29); +25 more |
 
 ## Arlington Heights
 

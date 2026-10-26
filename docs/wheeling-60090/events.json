@@ -2,8 +2,8 @@
   "@context": "https://schema.org",
   "@type": "ItemList",
   "name": "Upcoming events in Wheeling — Within Ten",
-  "dateModified": "2026-10-26T13:17:24+00:00",
-  "numberOfItems": 53,
+  "dateModified": "2026-10-26T14:07:48+00:00",
+  "numberOfItems": 54,
   "itemListElement": [
     {
       "@type": "ListItem",
@@ -549,6 +549,35 @@
       "position": 19,
       "item": {
         "@type": "Event",
+        "name": "Budget Workshop Meeting",
+        "startDate": "2026-10-31T08:30:00-05:00",
+        "url": "https://withintenmiles.com/wheeling-60090/#ev-budget-workshop-meeting-2026-10-31",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Wheeling, IL",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Wheeling",
+            "addressRegion": "IL"
+          }
+        },
+        "sameAs": "https://www.wheelingil.gov/common/modules/iCalendar/iCalendar.aspx?feed=calendar&catID=14",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Village of Wheeling",
+          "url": "https://www.wheelingil.gov"
+        },
+        "description": "https://www.wheelingil.gov/calendar.aspx?EID=2233"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 20,
+      "item": {
+        "@type": "Event",
         "name": "Dia de Los Muertos with Mariachi Sirenas",
         "startDate": "2026-10-31T14:00:00-05:00",
         "url": "https://withintenmiles.com/wheeling-60090/#ev-dia-de-los-muertos-with-mariachi-sirenas-2026-10-31",
@@ -576,7 +605,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 20,
+      "position": 21,
       "item": {
         "@type": "Event",
         "name": "Halloween Trick or Treat Hours - 3pm to 7pm",
@@ -605,7 +634,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 21,
+      "position": 22,
       "item": {
         "@type": "Event",
         "name": "Support Our Troops",
@@ -635,7 +664,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 22,
+      "position": 23,
       "item": {
         "@type": "Event",
         "name": "High School Volunteer Kits",
@@ -665,7 +694,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 23,
+      "position": 24,
       "item": {
         "@type": "Event",
         "name": "Stitch Together Meet-Up",
@@ -695,7 +724,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 24,
+      "position": 25,
       "item": {
         "@type": "Event",
         "name": "Tech Assistance / Assistencia de Tech",
@@ -725,7 +754,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 25,
+      "position": 26,
       "item": {
         "@type": "Event",
         "name": "Bookworms Book Club | Grades 4-5",
@@ -755,7 +784,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 26,
+      "position": 27,
       "item": {
         "@type": "Event",
         "name": "Intro to Chinese Mahjong",
@@ -785,7 +814,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 27,
+      "position": 28,
       "item": {
         "@type": "Event",
         "name": "Village Board Regular Meeting",
@@ -814,7 +843,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 28,
+      "position": 29,
       "item": {
         "@type": "Event",
         "name": "Boba Tea Keychains",
@@ -844,7 +873,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 29,
+      "position": 30,
       "item": {
         "@type": "Event",
         "name": "Alcohol Ink Art",
@@ -874,7 +903,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 30,
+      "position": 31,
       "item": {
         "@type": "Event",
         "name": "Writers Workshop",
@@ -904,7 +933,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 31,
+      "position": 32,
       "item": {
         "@type": "Event",
         "name": "Read to Learn",
@@ -934,7 +963,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 32,
+      "position": 33,
       "item": {
         "@type": "Event",
         "name": "Knitting for Beginners",
@@ -964,7 +993,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 33,
+      "position": 34,
       "item": {
         "@type": "Event",
         "name": "Jewelry Making Extravaganza",
@@ -994,7 +1023,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 34,
+      "position": 35,
       "item": {
         "@type": "Event",
         "name": "Paint and Steep Tea",
@@ -1024,7 +1053,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 35,
+      "position": 36,
       "item": {
         "@type": "Event",
         "name": "Plan Commission Meeting",
@@ -1053,7 +1082,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 36,
+      "position": 37,
       "item": {
         "@type": "Event",
         "name": "Intro to Excel",
@@ -1083,7 +1112,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 37,
+      "position": 38,
       "item": {
         "@type": "Event",
         "name": "Library Board Workshop",
@@ -1113,7 +1142,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 38,
+      "position": 39,
       "item": {
         "@type": "Event",
         "name": "Office Hours with Congressman Brad Schneider's Office",
@@ -1143,7 +1172,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 39,
+      "position": 40,
       "item": {
         "@type": "Event",
         "name": "Social Services | Servicios Sociales",
@@ -1173,7 +1202,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 40,
+      "position": 41,
       "item": {
         "@type": "Event",
         "name": "Village of Wheeling Social Workers at the Library",
@@ -1203,7 +1232,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 41,
+      "position": 42,
       "item": {
         "@type": "Event",
         "name": "Pumpkin Investigation",
@@ -1233,7 +1262,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 42,
+      "position": 43,
       "item": {
         "@type": "Event",
         "name": "Coloring Club",
@@ -1263,7 +1292,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 43,
+      "position": 44,
       "item": {
         "@type": "Event",
         "name": "Night Owls",
@@ -1293,7 +1322,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 44,
+      "position": 45,
       "item": {
         "@type": "Event",
         "name": "Peer Jury",
@@ -1322,7 +1351,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 45,
+      "position": 46,
       "item": {
         "@type": "Event",
         "name": "Mod Podge Crystal Lanterns",
@@ -1352,7 +1381,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 46,
+      "position": 47,
       "item": {
         "@type": "Event",
         "name": "Babytime!",
@@ -1382,7 +1411,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 47,
+      "position": 48,
       "item": {
         "@type": "Event",
         "name": "Wonderful Walkers",
@@ -1412,7 +1441,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 48,
+      "position": 49,
       "item": {
         "@type": "Event",
         "name": "ESL Tea & Talk",
@@ -1442,7 +1471,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 49,
+      "position": 50,
       "item": {
         "@type": "Event",
         "name": "Chats & Food",
@@ -1472,7 +1501,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 50,
+      "position": 51,
       "item": {
         "@type": "Event",
         "name": "Weekend Wiggles",
@@ -1502,7 +1531,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 51,
+      "position": 52,
       "item": {
         "@type": "Event",
         "name": "Light Up the Day with Diwali: Dances, Stories & Traditions",
@@ -1532,7 +1561,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 52,
+      "position": 53,
       "item": {
         "@type": "Event",
         "name": "Resume Review & Career Coaching Appointments",
@@ -1562,7 +1591,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 53,
+      "position": 54,
       "item": {
         "@type": "Event",
         "name": "Tech Assistance",

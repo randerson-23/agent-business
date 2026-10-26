@@ -1,10 +1,16 @@
 {
- "fetched_at": "2026-10-26T13:17:24+00:00",
+ "fetched_at": "2026-10-26T14:07:48+00:00",
  "items": [
   {
    "date": "20261028T183000",
    "detail": "https://www.wheelingil.gov/calendar.aspx?EID=1969",
    "title": "Plan Commission Meeting - NOTICE OF CANCELLATION",
+   "url": "https://www.wheelingil.gov/common/modules/iCalendar/iCalendar.aspx?feed=calendar&catID=14"
+  },
+  {
+   "date": "20261031T083000",
+   "detail": "https://www.wheelingil.gov/calendar.aspx?EID=2233",
+   "title": "Budget Workshop Meeting",
    "url": "https://www.wheelingil.gov/common/modules/iCalendar/iCalendar.aspx?feed=calendar&catID=14"
   },
   {
@@ -353,12 +359,6 @@
    "date": "20270802T183000",
    "detail": "https://www.wheelingil.gov/calendar.aspx?EID=2014",
    "title": "Village Board Regular Meeting",
-   "url": "https://www.wheelingil.gov/common/modules/iCalendar/iCalendar.aspx?feed=calendar&catID=14"
-  },
-  {
-   "date": "20270802T183000",
-   "detail": "https://www.wheelingil.gov/calendar.aspx?EID=2220",
-   "title": "Village Board Meeting",
    "url": "https://www.wheelingil.gov/common/modules/iCalendar/iCalendar.aspx?feed=calendar&catID=14"
   }
  ],
