@@ -2,8 +2,8 @@
   "@context": "https://schema.org",
   "@type": "ItemList",
   "name": "Upcoming events in Palatine — Within Ten",
-  "dateModified": "2026-10-26T15:14:10+00:00",
-  "numberOfItems": 18,
+  "dateModified": "2026-10-26T22:03:11+00:00",
+  "numberOfItems": 20,
   "itemListElement": [
     {
       "@type": "ListItem",
@@ -237,6 +237,35 @@
       "position": 10,
       "item": {
         "@type": "Event",
+        "name": "Trunk-or-Treat at Chicago Bethel Presbyterian Church",
+        "startDate": "2026-10-31T16:00:00-05:00",
+        "url": "https://withintenmiles.com/palatine-60067/#ev-trunk-or-treat-at-chicago-bethel-presbyterian-church-2026-10-31",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Palatine, IL",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Palatine",
+            "addressRegion": "IL"
+          }
+        },
+        "sameAs": "https://www.palatine.il.us/common/modules/iCalendar/iCalendar.aspx?feed=calendar&catID=14",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Village of Palatine",
+          "url": "https://www.palatine.il.us"
+        },
+        "description": "Trunk-or-Treat at Chicago Bethel Presbyterian Church https://ww"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 11,
+      "item": {
+        "@type": "Event",
         "name": "St. Philip's Episcopal Church Open House",
         "startDate": "2026-11-01T09:30:00-06:00",
         "url": "https://withintenmiles.com/palatine-60067/#ev-st-philip-s-episcopal-church-open-house-2026-11-01",
@@ -263,7 +292,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 11,
+      "position": 12,
       "item": {
         "@type": "Event",
         "name": "E-Learning Day",
@@ -285,7 +314,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 12,
+      "position": 13,
       "item": {
         "@type": "Event",
         "name": "End of 12-Week Grading Period",
@@ -308,7 +337,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 13,
+      "position": 14,
       "item": {
         "@type": "Event",
         "name": "D15 Job Fair",
@@ -331,7 +360,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 14,
+      "position": 15,
       "item": {
         "@type": "Event",
         "name": "Community Resource Center Open House",
@@ -360,7 +389,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 15,
+      "position": 16,
       "item": {
         "@type": "Event",
         "name": "Almost Famous",
@@ -390,7 +419,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 16,
+      "position": 17,
       "item": {
         "@type": "Event",
         "name": "D211 Board of Education Meeting",
@@ -413,7 +442,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 17,
+      "position": 18,
       "item": {
         "@type": "Event",
         "name": "NSSEO: NWSRA",
@@ -436,7 +465,36 @@
     },
     {
       "@type": "ListItem",
-      "position": 18,
+      "position": 19,
+      "item": {
+        "@type": "Event",
+        "name": "Palatine High School Pirates Boosters Fall Craft Fair",
+        "startDate": "2026-11-07T09:00:00-06:00",
+        "url": "https://withintenmiles.com/palatine-60067/#ev-palatine-high-school-pirates-boosters-fall-craft-fair-2026-11-07",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Palatine, IL",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Palatine",
+            "addressRegion": "IL"
+          }
+        },
+        "sameAs": "https://www.palatine.il.us/common/modules/iCalendar/iCalendar.aspx?feed=calendar&catID=14",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Village of Palatine",
+          "url": "https://www.palatine.il.us"
+        },
+        "description": "The Pirates Boosters Craft Fair is well known as having a large"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 20,
       "item": {
         "@type": "Event",
         "name": "Palatine Concert Band - 2026 Fall Concert \"American Originals\"",
