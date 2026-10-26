@@ -6548,3 +6548,21 @@ def test_founding_promo_offer_shows_only_while_spots_remain_and_before_jan_1():
     assert "2 of 5 spots left" in build_digest.render_sponsor_page([], now, founding_promos_used=3)
     assert "Founding offer" not in build_digest.render_sponsor_page([], now, founding_promos_used=5)
     assert "Founding offer" not in build_digest.render_sponsor_page([], datetime(2027, 1, 2, 12, tzinfo=timezone.utc))
+
+
+def test_santa_page_empty_state_points_to_each_towns_calendars_and_confirmed_tree_dates():
+    # ROADMAP.md item 389.
+    now = datetime(2026, 10, 26, 12, tzinfo=timezone.utc)
+    entries = [
+        {"region_name": "Arlington Heights", "region_url": "https://x/ah/", "events": [], "links": [{"title": "Arlington Heights Park District", "url": "https://www.ahpd.org/"}], "tree": {"label": "Friday, November 27, 4:30–6:30 PM, North School Park", "url": "https://u"}},
+        {"region_name": "Wheeling", "region_url": "https://x/w/", "events": [], "links": [{"title": "Wheeling Park District", "url": "https://www.wheelingparkdistrict.com/"}], "tree": {"label": None, "url": "https://u"}},
+    ]
+    page = build_digest.render_santa_page(entries, now, None, _NL)
+    assert page.count("Where to look meanwhile") == 1 and "Park districts usually post Santa events" in page
+    assert "https://www.ahpd.org/" in page and "https://www.wheelingparkdistrict.com/" in page
+    assert "Tree lighting: Friday, November 27" in page and "Tree lighting: date TBA" in page and page.count("Tree lighting:") == 2
+    with_events = [dict(entries[0], events=[{"title": "Breakfast with Santa", "url": "https://s", "date_iso": "2026-12-05T09:00:00"}]), entries[1]]
+    full = build_digest.render_santa_page(with_events, now, None, _NL)
+    assert full.index("Breakfast with Santa") < full.index("Where to look meanwhile")  # moves below the list
+    cfg = {"evergreen": [{"title": "Palatine Public Library District", "url": "https://l"}, {"title": "Palatine Park District", "url": "https://p"}, {"title": "Village of Palatine", "url": "https://v"}]}
+    assert [l["url"] for l in build_digest.santa_look_links(cfg)] == ["https://p", "https://v"]

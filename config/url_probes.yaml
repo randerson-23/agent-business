@@ -48,12 +48,45 @@ probes:
       - 'Pioneer Park'
       - '\b\d{2,5}\s+(?:[NSEW]\.?\s+)?[A-Z][A-Za-z]+(?:\s+[A-Z][A-Za-z]+)?\s+(?:Ave|Avenue|St|Street|Rd|Road|Blvd|Dr|Drive|Ln|Lane)\b'
     follow: 'pioneer'
-  - url: https://www.napleton.com/
-    item: 376
-    purpose: Napleton - the Palatine dealerships' own contact pages and street addresses
+  # Napleton answered (round 19): the home page carries no street addresses; the
+  # Palatine dealerships' own pages would have to be found by hand.
+  # Round 20 (item 323): each village's leaf-pickup page. Home page first, then the first link whose
+  # href mentions leaf. Patterns pull the sentences that carry dates and rules.
+  - url: https://www.vah.com/
+    item: 323
+    purpose: Arlington Heights - public-works leaf-pickup page (current URL, dates, rules)
     patterns:
-      - '\b\d{2,5}\s+(?:[NSEW]\.?\s+)?[A-Z][A-Za-z]+(?:\s+[A-Z][A-Za-z]+)?\s+(?:Ave|Avenue|St|Street|Rd|Road|Blvd|Dr|Drive|Ln|Lane|Highway|Hwy)\b'
-    follow: 'palatine'
+      - '(?i)leaf[^<]{0,160}'
+      - '(?i)(?:oct|nov|dec)[a-z]*\.? \d{1,2}[^<]{0,80}(?:leaf|leaves)'
+    follow: '(?i)leaf|leaves'
+  - url: https://www.desplainesil.gov/
+    item: 323
+    purpose: Des Plaines - public-works leaf-pickup page (current URL, dates, rules)
+    patterns:
+      - '(?i)leaf[^<]{0,160}'
+      - '(?i)(?:oct|nov|dec)[a-z]*\.? \d{1,2}[^<]{0,80}(?:leaf|leaves)'
+    follow: '(?i)leaf|leaves'
+  - url: https://www.mountprospect.org/
+    item: 323
+    purpose: Mount Prospect - public-works leaf-pickup page (current URL, dates, rules)
+    patterns:
+      - '(?i)leaf[^<]{0,160}'
+      - '(?i)(?:oct|nov|dec)[a-z]*\.? \d{1,2}[^<]{0,80}(?:leaf|leaves)'
+    follow: '(?i)leaf|leaves'
+  - url: https://www.palatine.il.us/
+    item: 323
+    purpose: Palatine - public-works leaf-pickup page (current URL, dates, rules)
+    patterns:
+      - '(?i)leaf[^<]{0,160}'
+      - '(?i)(?:oct|nov|dec)[a-z]*\.? \d{1,2}[^<]{0,80}(?:leaf|leaves)'
+    follow: '(?i)leaf|leaves'
+  - url: https://www.wheelingil.gov/332/Refuse-Recycling-Yard-Waste
+    item: 323
+    purpose: Wheeling - yard waste page; does it state leaf-pickup dates and rules?
+    patterns:
+      - '(?i)leaf[^<]{0,160}'
+      - '(?i)leaves[^<]{0,160}'
+    follow: '(?i)leaf|leaves'
 
   # Answered and removed (see ROADMAP.md items 212 and 215):
   # - The five 403 sources: bot walls (Access Denied / Cloudflare) from a runner too.
