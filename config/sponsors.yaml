@@ -69,6 +69,12 @@ payment_links:
   weekly_spot: null
   holiday: null  # ROADMAP.md item 352: the Holiday listing ($20 until Nov 15, then $50)
 
+# ROADMAP.md item 388: the founding offer, "your first Event Promo is free" for
+# the first five local businesses, through Dec 31. Raise this number by one each
+# time a founding promo is set up; /sponsor/ shows "N of 5 left" and hides the
+# offer at 5 or after Dec 31.
+founding_promos_used: 0
+
 # The $20 Event Promo (ROADMAP.md item 245). One entry delivers the
 # product: the event appears FIRST in its region's lists on the site, the
 # weekly email and the weekend summary, labelled "Featured" with the

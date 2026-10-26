@@ -38,6 +38,7 @@ from PIL import Image, ImageDraw, ImageFont
 
 sys.path.insert(0, str(Path(__file__).parent))
 from fetchers import FETCHERS, MAX_ITEMS_PER_SOURCE, fetch_night_forecast, fetch_weather, safe_http_url, submit_bing_urls, submit_indexnow  # noqa: E402
+import warm_prospects  # noqa: E402
 from tagging import infer_tags, is_informational, merge_default_tags, parse_registration_opens, tag_display  # noqa: E402
 
 logging.basicConfig(level=logging.INFO, format="%(levelname)s %(name)s: %(message)s")
@@ -2508,6 +2509,21 @@ def holiday_tier_visible(tier: dict, today: date) -> bool:
     return date(today.year, m1, d1) <= today <= date(today.year, m2, d2)
 
 
+FOUNDING_PROMO_SPOTS = 5
+FOUNDING_PROMO_ENDS = date(2026, 12, 31)
+
+
+def founding_offer(used, today: date) -> dict | None:
+    """ROADMAP.md item 388: the founding Event Promo offer for /sponsor/, or
+    None once all spots are used or after Dec 31. `used` comes from
+    `founding_promos_used:` in config/sponsors.yaml."""
+    used = used if isinstance(used, int) and not isinstance(used, bool) and used >= 0 else 0
+    left = FOUNDING_PROMO_SPOTS - used
+    if left <= 0 or today > FOUNDING_PROMO_ENDS:
+        return None
+    return {"left": left, "total": FOUNDING_PROMO_SPOTS, "ends": f"{FOUNDING_PROMO_ENDS.strftime('%b')} {FOUNDING_PROMO_ENDS.day}"}
+
+
 def early_bird_line(today: date) -> str | None:
     """"Early-bird price ends Sun Nov 15 (N days left)" through Nov 15 itself."""
     end = date(today.year, 11, 15)
@@ -2689,6 +2705,7 @@ def render_sponsor_page(
     stats: dict | None = None,
     payment_links: dict | None = None,
     audience: dict | None = None,
+    founding_promos_used: int = 0,
 ) -> str:
     env = get_template_env()
     template = env.get_template("sponsor.html.j2")
@@ -2705,6 +2722,7 @@ def render_sponsor_page(
     ]
     return template.render(
         sample_holiday=SAMPLE_HOLIDAY_LISTING,
+        founding=founding_offer(founding_promos_used, today),
         tiers=tiers,
         payment_line=build_payment_line(tiers),
         sample_event=SAMPLE_PROMOTION_EVENT,
@@ -6717,6 +6735,7 @@ def main() -> None:
     link_candidates: list[dict] = []
     holidays_entries = []
     santa_entries: list[dict] = []
+    warm_found: list[dict] = []  # item 387
     email_weather_by_region: dict[str, list[dict]] = {}
     combined_email_sections = []
     total_dated, total_events = 0, 0
@@ -7154,6 +7173,7 @@ def main() -> None:
                 dict(e, town=e.get("town") or region["name"], state=e.get("state") or region.get("state"))
                 for e in select_holiday_events(blocks, local_today)
             ]
+        warm_found += warm_prospects.collect_hosts([e for b in blocks for e in b.get("events", [])], region["name"])
         santa_entries.append({"region_name": region["name"], "region_url": SITE_BASE_URL + region_id + "/", "events": [dict(e, town=e.get("town") or region["name"], state=e.get("state") or region.get("state")) for e in select_santa_events(blocks, local_today)]})
         # ROADMAP.md item 258: the town's holiday page - free events from its
         # own feeds plus any paid, labelled listings.
@@ -7397,6 +7417,7 @@ def main() -> None:
         contact_email=contact_email,
         stats=sponsor_stats,
         payment_links=sponsors_cfg.get("payment_links"),
+        founding_promos_used=sponsors_cfg.get("founding_promos_used") or 0,
         audience=load_audience_line(),
     )
     sponsor_dir = OUTPUT_DIR / "sponsor"
@@ -7438,6 +7459,7 @@ def main() -> None:
     holidays_dir.mkdir(parents=True, exist_ok=True)
     (holidays_dir / "index.html").write_text(render_holidays_page(holidays_entries, now, analytics, newsletter, contact_email), encoding="utf-8")
     logger.info("Wrote %s", holidays_dir / "index.html")
+    warm_prospects.save_registry(warm_prospects.update_registry(warm_prospects.load_registry(), warm_found, now.astimezone(LOCAL_TZ).date()))
     santa_dir = OUTPUT_DIR / "santa"
     santa_dir.mkdir(parents=True, exist_ok=True)
     (santa_dir / "index.html").write_text(render_santa_page(santa_entries, now, analytics, newsletter, {e["path"] for e in active_event_pages}), encoding="utf-8")

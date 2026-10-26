@@ -3456,7 +3456,7 @@ def test_render_combined_email_digest_includes_a_hidden_preheader():
             "sponsor": None,
         }
     ]
-    html = build_digest.render_combined_email_digest(sections, "Aug 29–30", datetime.now(timezone.utc))
+    html = build_digest.render_combined_email_digest(sections, "Aug 29–30", datetime(2026, 8, 27, 12, tzinfo=timezone.utc))  # fixed: Halloween week changes the subject
     preheader = html.split("mso-hide:all;\">")[1].split("</div>")[0]
     # ROADMAP.md item 217: the subject now carries the event titles, so
     # the preview names the towns and never repeats a title.
@@ -6536,3 +6536,15 @@ def test_repeated_sessions_render_as_one_card_but_keep_one_event_each():
     ld = json.loads(build_digest.build_event_json_ld(blocks, "https://x/p/"))
     names = [e["name"] for e in (ld["@graph"] if "@graph" in ld else [ld])]
     assert names.count("The Music Man Jr.") == 3  # unchanged: one Event per session
+
+
+def test_founding_promo_offer_shows_only_while_spots_remain_and_before_jan_1():
+    # ROADMAP.md item 388.
+    assert build_digest.founding_offer(0, date(2026, 10, 26)) == {"left": 5, "total": 5, "ends": "Dec 31"}
+    assert build_digest.founding_offer(3, date(2026, 12, 31))["left"] == 2
+    assert build_digest.founding_offer(5, date(2026, 10, 26)) is None
+    assert build_digest.founding_offer(0, date(2027, 1, 1)) is None
+    now = datetime(2026, 10, 26, 12, tzinfo=timezone.utc)
+    assert "2 of 5 spots left" in build_digest.render_sponsor_page([], now, founding_promos_used=3)
+    assert "Founding offer" not in build_digest.render_sponsor_page([], now, founding_promos_used=5)
+    assert "Founding offer" not in build_digest.render_sponsor_page([], datetime(2027, 1, 2, 12, tzinfo=timezone.utc))
