@@ -220,7 +220,7 @@ doesn't re-suggest something already shipped.
 
 **Build queue (by deadline; refreshed by the research loop, item 346).**
 Pick from the top unless the owner has flagged something else:
-0. **391, 392** (the prospect list as generated is empty in three towns and missing the warm leads; fix before the owner's outreach hour). **323**: leaf pickup (in season now). **393** (Thanksgiving issue, by Nov 20).
+0. **323**: leaf pickup (in season now). **393** (Thanksgiving issue, by Nov 20).
 2. **313, 314**: the sales mock-up and starter pack (before outreach).
 3. **389, 390**: /santa/ while empty; promo receipts.
 4. **328** (probe first), then **325** (by Nov 15), then **385** (holiday
@@ -18162,7 +18162,7 @@ shows it re-added in an Oct 22 auto-build commit.
 
 #### P1 (new)
 
-391. **Make the warm list real: filter the junk, backfill the missed
+391. ✅ DONE (times, dates and closure notes are rejected as names, and stale junk keys are dropped; the stored sends in `data/issues/` are parsed every build, recovering the three Napleton trunk-or-treats; configured-source venues (Des Plaines Theatre, Metropolis) go in a "Venues that already publish calendars" list; every build refreshes the Warm section of OUTREACH_PROSPECTS.md in place and build-digest.yml commits that file; tests. The Oct 22 issue gives the issue date, not the event date) **Make the warm list real: filter the junk, backfill the missed
      hosts.** Build loop, `scripts/warm_prospects.py`:
 
      - **Reject non-names:** times (`\d{1,2}(:\d\d)?\s*[ap]\.?m\.?`), dates,
@@ -18186,7 +18186,7 @@ shows it re-added in an Oct 22 auto-build commit.
      stored issue becomes a warm prospect with its date, and a configured
      source venue lands in the venues list.
 
-392. **Never replace a town's prospect list with a failed query.** Build
+392. ✅ DONE (`data/osm_last_good/<town>.json`, 3 attempts with 30 s / 120 s backoff, 10 s between towns, "(from the Oct 26 run; today's refresh failed)" on a fallback; tests) **Never replace a town's prospect list with a failed query.** Build
      loop, `scripts/osm_prospects.py`: keep each town's last good result in
      `data/osm_last_good/<region>.json`. On an Overpass failure, retry
      twice with backoff (30 s, 120 s). If it still fails, render the

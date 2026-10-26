@@ -47,6 +47,8 @@ def test_fetch_town_fails_soft_and_main_keeps_the_old_file_when_everything_fails
     assert op.fetch_town("Palatine", post=boom) is None
     monkeypatch.setattr(op, "OUTPUT_PATH", tmp_path / "p.md")
     monkeypatch.setattr(op, "fetch_town", lambda town, post=None: None)
+    monkeypatch.setattr(op.time, "sleep", lambda s: None)
+    monkeypatch.setattr(op, "LAST_GOOD_DIR", tmp_path / "none")
     assert op.main() == 1 and not (tmp_path / "p.md").exists()
 
 
@@ -79,3 +81,55 @@ def test_warm_prospects_dealership_yes_library_no_nobody_twice(tmp_path):
     assert text.index("Warm: already hosting public events") < text.index("## Palatine")
     assert text.count("Napleton") == 1 + 1 - 1 + 1 - 1 or text.split("## Palatine")[1].count("Napleton") == 0  # not repeated in the OSM list
     assert "Oak Mill Bakery" in text
+
+
+def test_a_failed_town_query_keeps_the_last_good_rows_with_a_dated_note(tmp_path):
+    # ROADMAP.md item 392.
+    now = datetime(2026, 10, 26, tzinfo=timezone.utc)
+    good = {t: [{"name": f"{t} Gifts", "category": "gift", "website": None}] for t in op.TOWNS}
+    sleeps = []
+    towns, stale = op.gather_towns(now, fetch=lambda t: good[t], sleep=sleeps.append, directory=tmp_path)
+    assert stale == {} and towns == good and sleeps == [op.TOWN_SPACING] * 4  # spaced, nothing stale
+    later = datetime(2026, 11, 2, tzinfo=timezone.utc)
+    towns2, stale2 = op.gather_towns(later, fetch=lambda t: None if t == "Des Plaines" else [{"name": "New", "category": "gift", "website": None}], sleep=lambda s: None, directory=tmp_path)
+    assert towns2["Des Plaines"] == good["Des Plaines"] and stale2 == {"Des Plaines": "Oct 26"}
+    assert towns2["Palatine"][0]["name"] == "New" and "Palatine" not in stale2  # a success replaces
+    text = op.render_markdown(towns2, later, None, stale2)
+    assert "(from the Oct 26 run; today's refresh failed)" in text and "Des Plaines Gifts" in text
+    towns3, _ = op.gather_towns(later, fetch=lambda t: None, sleep=lambda s: None, directory=tmp_path / "empty")
+    assert all(v is None for v in towns3.values())
+
+
+def test_fetch_retries_twice_with_backoff():
+    calls, sleeps = [], []
+    def post(*a, **k):
+        calls.append(1)
+        raise RuntimeError("busy")
+    assert op.fetch_town_with_retry("Palatine", post=post, sleep=sleeps.append) is None
+    assert len(calls) == 3 and sleeps == [30, 120]
+
+
+def test_warm_list_rejects_closure_notes_backfills_from_issues_and_splits_venue_sources(tmp_path):
+    # ROADMAP.md item 391.
+    import warm_prospects as wp
+    from datetime import date
+    assert wp.event_host({"title": "Library Closed at 5 p.m."}) is None
+    assert wp.event_host({"title": "Early close at 5:30 PM"}) is None
+    assert wp.event_host({"title": "Open House at Nov 3"}) is None
+    issues = tmp_path / "issues"
+    issues.mkdir()
+    (issues / "2026-10-22.html").write_text('<a href="x">FREE Trunk or Treat at Napleton&#39;s Palatine Mazda</a><a href="y">Storytime at Mount Prospect Public Library</a>')
+    found = wp.issue_hosts(issues, town_of=lambda t: "Palatine" if "Palatine" in t else "")
+    reg = wp.update_registry({"5 p m": {"name": "5 p.m.", "town": "", "events": [{"title": "x", "date": "2026-10-26"}]}}, found, date(2026, 10, 26))
+    assert [h["name"] for h in reg.values()] == ["Napleton's Palatine Mazda"]
+    assert reg[wp.host_key("Napleton's Palatine Mazda")]["events"][0]["date"] == "2026-10-22"
+    reg["des plaines theatre"] = {"name": "Des Plaines Theatre", "town": "Des Plaines", "events": [{"title": "Concert", "date": "2026-10-28"}]}
+    text = "\n".join(wp.render_section(reg, {"des plaines theatre"}))
+    assert text.index("Napleton") < text.index("Venues that already publish calendars") < text.index("Des Plaines Theatre")
+    assert "Des Plaines Theatre" not in text.split("Venues that already publish calendars")[0]
+    keys = wp.venue_source_keys()
+    assert wp.host_key("Des Plaines Theatre") in keys and wp.host_key("Metropolis Performing Arts Centre") in keys
+    old = "# T\n\n> note\n\n## Warm: already hosting public events\n\nNo non-agency hosts in the site's listings right now.\n\n## Palatine\n\n| a |\n"
+    new = wp.splice_section(old, wp.render_section(reg))
+    assert "Napleton" in new and "No non-agency hosts" not in new and new.count("## Palatine") == 1
+    assert wp.splice_section("# T\n\n## Palatine\n", wp.render_section(reg)).index("Warm") < wp.splice_section("# T\n\n## Palatine\n", wp.render_section(reg)).index("## Palatine")

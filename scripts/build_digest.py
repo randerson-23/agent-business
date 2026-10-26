@@ -7459,7 +7459,15 @@ def main() -> None:
     holidays_dir.mkdir(parents=True, exist_ok=True)
     (holidays_dir / "index.html").write_text(render_holidays_page(holidays_entries, now, analytics, newsletter, contact_email), encoding="utf-8")
     logger.info("Wrote %s", holidays_dir / "index.html")
-    warm_prospects.save_registry(warm_prospects.update_registry(warm_prospects.load_registry(), warm_found, now.astimezone(LOCAL_TZ).date()))
+    warm_registry = warm_prospects.update_registry(warm_prospects.load_registry(), warm_found + warm_prospects.issue_hosts(town_of=lambda t: next((r['region']['name'] for r in regions if r['region']['name'].lower() in t.lower()), '')), now.astimezone(LOCAL_TZ).date())
+    warm_prospects.save_registry(warm_registry)
+    try:  # item 391: the Warm section is refreshed at every build, in place
+        prospects_path = ROOT / "OUTREACH_PROSPECTS.md"
+        prospects_text = prospects_path.read_text(encoding="utf-8") if prospects_path.exists() else ""
+        if prospects_text:
+            prospects_path.write_text(warm_prospects.splice_section(prospects_text, warm_prospects.render_section(warm_registry, warm_prospects.venue_source_keys())), encoding="utf-8")
+    except OSError as exc:
+        logger.warning("Could not refresh OUTREACH_PROSPECTS.md: %s", exc)
     santa_dir = OUTPUT_DIR / "santa"
     santa_dir.mkdir(parents=True, exist_ok=True)
     (santa_dir / "index.html").write_text(render_santa_page(santa_entries, now, analytics, newsletter, {e["path"] for e in active_event_pages}), encoding="utf-8")

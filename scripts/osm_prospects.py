@@ -11,7 +11,9 @@ contributors, ODbL; for outreach use only, never republished.
 
 from __future__ import annotations
 
+import json
 import sys
+import time
 from datetime import datetime, timezone
 from pathlib import Path
 
@@ -21,6 +23,9 @@ import warm_prospects
 
 ROOT = Path(__file__).resolve().parent.parent
 OUTPUT_PATH = ROOT / "OUTREACH_PROSPECTS.md"
+LAST_GOOD_DIR = ROOT / "data" / "osm_last_good"
+RETRY_DELAYS = (30, 120)  # seconds before the 2nd and 3rd attempt
+TOWN_SPACING = 10  # seconds between town queries: Overpass rate-limits bursts
 OVERPASS_URL = "https://overpass-api.de/api/interpreter"
 USER_AGENT = "WithinTenBot/1.0 (+https://withintenmiles.com; outreach prospect list)"
 TOWNS = ["Arlington Heights", "Des Plaines", "Mount Prospect", "Palatine", "Wheeling"]
@@ -78,7 +83,7 @@ def rows_for_town(elements: list[dict]) -> list[dict]:
     return rows
 
 
-def render_markdown(towns: dict[str, list[dict] | None], now: datetime, warm: dict | None = None) -> str:
+def render_markdown(towns: dict[str, list[dict] | None], now: datetime, warm: dict | None = None, stale: dict[str, str] | None = None) -> str:
     lines = [
         "# Outreach prospects (OpenStreetMap)",
         "",
@@ -93,11 +98,13 @@ def render_markdown(towns: dict[str, list[dict] | None], now: datetime, warm: di
         "",
     ]
     if warm is not None:  # item 387: hosts already running public events lead the file
-        lines += warm_prospects.render_section(warm)
+        lines += warm_prospects.render_section(warm, warm_prospects.venue_source_keys())
     for town, rows in towns.items():
         if warm and rows is not None:  # a business already listed as warm is not repeated below
             rows = [r for r in rows if warm_prospects.host_key(r["name"]) not in warm]
         lines += [f"## {town}", ""]
+        if stale and town in stale:
+            lines += [f"(from the {stale[town]} run; today's refresh failed)", ""]
         if rows is None:
             lines += ["The OpenStreetMap query for this town failed; re-run the workflow.", ""]
             continue
@@ -134,12 +141,61 @@ def fetch_town(town: str, post=requests.post) -> list[dict] | None:
         return None
 
 
+def fetch_town_with_retry(town: str, post=requests.post, sleep=time.sleep) -> list[dict] | None:
+    """Item 392: up to three attempts, waiting 30 s then 120 s between them."""
+    rows = fetch_town(town, post)
+    for delay in RETRY_DELAYS:
+        if rows is not None:
+            break
+        sleep(delay)
+        rows = fetch_town(town, post)
+    return rows
+
+
+def load_last_good(town: str, directory: Path = LAST_GOOD_DIR) -> dict | None:
+    try:
+        data = json.loads((directory / f"{town.lower().replace(' ', '-')}.json").read_text(encoding="utf-8"))
+        return data if isinstance(data.get("rows"), list) and data.get("date") else None
+    except (OSError, ValueError, AttributeError):
+        return None
+
+
+def save_last_good(town: str, rows: list[dict], today: str, directory: Path = LAST_GOOD_DIR) -> None:
+    directory.mkdir(parents=True, exist_ok=True)
+    (directory / f"{town.lower().replace(' ', '-')}.json").write_text(json.dumps({"date": today, "rows": rows}, indent=1, ensure_ascii=False) + "\n", encoding="utf-8")
+
+
+def gather_towns(now: datetime, fetch=None, sleep=None, directory: Path | None = None) -> tuple[dict, dict]:
+    """Each town's rows, a failed query falling back to that town's last good
+    result (item 392). Returns (towns, stale), `stale` mapping a town shown from
+    an earlier run to that run's date ("Oct 23")."""
+    fetch = fetch or (lambda t: fetch_town_with_retry(t, sleep=sleep or time.sleep))
+    sleep = sleep or time.sleep
+    directory = directory or LAST_GOOD_DIR
+    towns, stale = {}, {}
+    for i, town in enumerate(TOWNS):
+        if i:
+            sleep(TOWN_SPACING)
+        rows = fetch(town)
+        if rows is not None:
+            save_last_good(town, rows, now.strftime("%Y-%m-%d"), directory)
+        else:
+            previous = load_last_good(town, directory)
+            if previous:
+                rows = previous["rows"]
+                day = datetime.fromisoformat(previous["date"])
+                stale[town] = f"{day.strftime('%b')} {day.day}"
+        towns[town] = rows
+    return towns, stale
+
+
 def main() -> int:
-    towns = {town: fetch_town(town) for town in TOWNS}
+    now = datetime.now(timezone.utc)
+    towns, stale = gather_towns(now)
     if all(rows is None for rows in towns.values()):
         print("Every Overpass query failed; leaving OUTREACH_PROSPECTS.md as it was.")
         return 1
-    OUTPUT_PATH.write_text(render_markdown(towns, datetime.now(timezone.utc), warm_prospects.load_registry()), encoding="utf-8")
+    OUTPUT_PATH.write_text(render_markdown(towns, now, warm_prospects.load_registry(), stale), encoding="utf-8")
     print("Wrote", OUTPUT_PATH, {t: (len(r) if r is not None else None) for t, r in towns.items()})
     return 0
 

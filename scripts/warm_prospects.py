@@ -9,6 +9,7 @@ this repository is public, so no contact notes belong here.
 """
 import json
 import re
+from html import unescape
 from datetime import date, timedelta
 from pathlib import Path
 
@@ -22,10 +23,18 @@ _AGENCY = re.compile(
     r"\b(library|park district|parks?\b|village|city of|town of|township|school|district|church|parish|synagogue|"
     r"temple|college|university|forest preserve|police|fire (?:department|dept)|department|"
     r"chamber|rotary|kiwanis|lions club|scouts?|ymca|ywca|council|committee|association|pta|pto|"
-    r"county|state of|library's|the library|community center|senior center|district \d+)\b",
+    r"county|state of|library's|the library|community|open house|senior center|district \d+)\b",
     re.IGNORECASE,
 )
 _PLACEHOLDER = re.compile(r"^(?:[A-Za-z .'-]+,\s*[A-Z]{2}|the|a|an|our|your|home|tbd|tba|online|virtual|various.*|multiple.*)$", re.IGNORECASE)
+# Item 391: times, dates and closure notes are not business names ("Library
+# Closed at 5 p.m." must yield no host).
+_NOT_A_NAME = re.compile(
+    r"\d{1,2}(?::\d\d)?\s*[ap]\.?\s?m\b|\b\d{1,2}[/-]\d{1,2}\b|"
+    r"\b(?:jan|feb|mar|apr|may|jun|jul|aug|sep|sept|oct|nov|dec)[a-z]*\.?\s+\d{1,2}\b|"
+    r"\b(?:closed|closes|closing|rescheduled|cancel+ed|postponed|noon|midnight)\b",
+    re.IGNORECASE,
+)
 _TITLE_HOST = re.compile(r"\b(?:at|@)\s+([A-Z0-9][^,;:()|–—]{2,60})$")
 
 
@@ -35,7 +44,7 @@ def host_key(name: str) -> str:
 
 def _clean(name: str | None) -> str | None:
     name = re.sub(r"\s+", " ", (name or "")).strip(" .-–—")
-    if len(name) < 3 or _AGENCY.search(name) or _PLACEHOLDER.match(name):
+    if len(name) < 3 or _AGENCY.search(name) or _PLACEHOLDER.match(name) or _NOT_A_NAME.search(name):
         return None
     return name
 
@@ -60,6 +69,41 @@ def collect_hosts(events: list[dict], town: str) -> list[dict]:
     return found
 
 
+def issue_hosts(directory: Path | None = None, town_of=None) -> list[dict]:
+    """Item 391: run the host extraction over the link text of the stored
+    sends (`data/issues/<date>.html`, kept byte-for-byte), so hosts that
+    appeared since the first send are recovered. The date is the issue's
+    send date. `town_of` maps a title to a town name; default is blank."""
+    directory = directory or ROOT / "data" / "issues"
+    found = []
+    for path in sorted(directory.glob("*.html")):
+        text = path.read_text(encoding="utf-8", errors="ignore")
+        for raw in re.findall(r"<a\b[^>]*>([^<]{5,120})</a>", text):
+            title = unescape(raw).strip()
+            host = event_host({"title": title})
+            if host:
+                found.append({"host": host, "town": (town_of(title) if town_of else "") or "", "title": title, "date": path.stem})
+    return found
+
+
+def venue_source_keys(config_dir: Path | None = None) -> set[str]:
+    """host_keys of venues that are configured sources themselves (a theatre
+    that publishes its own calendar): a different pitch from a business that
+    merely hosts an event."""
+    import yaml
+
+    keys = set()
+    for path in (config_dir or ROOT / "config" / "regions").glob("*.yaml"):
+        try:
+            data = yaml.safe_load(path.read_text(encoding="utf-8")) or {}
+        except (OSError, yaml.YAMLError):
+            continue
+        for source in data.get("sources") or []:
+            if isinstance(source, dict) and source.get("venue_name"):
+                keys.add(host_key(str(source["venue_name"])))
+    return keys
+
+
 def update_registry(registry: dict, found: list[dict], today: date) -> dict:
     """Merge this build's hosts into the stored registry and drop events
     outside the window, and hosts left with none."""
@@ -72,6 +116,8 @@ def update_registry(registry: dict, found: list[dict], today: date) -> dict:
     start, end = today - timedelta(days=LOOKBACK_DAYS), today + timedelta(days=LOOKAHEAD_DAYS)
     out = {}
     for key, entry in registry.items():
+        if not _clean(entry.get("name")):
+            continue  # a name an earlier version accepted ("5 p.m.") is dropped on the next build
         events = sorted((e for e in entry["events"] if start.isoformat() <= e["date"] <= end.isoformat()), key=lambda e: e["date"])
         if events:
             out[key] = {"name": entry["name"], "town": entry["town"], "events": events}
@@ -91,23 +137,50 @@ def save_registry(registry: dict, path: Path = WARM_HOSTS_PATH) -> None:
     path.write_text(json.dumps(registry, indent=1, ensure_ascii=False, sort_keys=True) + "\n", encoding="utf-8")
 
 
-def render_section(registry: dict, osm_names: set[str] | None = None) -> list[str]:
-    """Markdown lines for the "Warm" section; hosts already in the OSM list
-    (`osm_names`, compared by host_key) are not repeated there."""
-    lines = ["## Warm: already hosting public events", ""]
-    hosts = sorted(registry.values(), key=lambda h: (h["town"], h["name"].lower()))
-    if not hosts:
-        return lines + ["No non-agency hosts in the site's listings right now.", ""]
-    lines += [
-        "Businesses and venues whose own events appeared on a town page in the last 60 days or the next 30. "
-        "Names, events and dates only. Start here: they already hold public events.",
-        "",
-        "| Host | Town | Events |",
-        "|---|---|---|",
-    ]
+def _table(hosts: list[dict]) -> list[str]:
+    lines = ["| Host | Town | Events |", "|---|---|---|"]
     for h in hosts:
         shown = "; ".join(f"{e['title'].replace('|', '/')} ({e['date']})" for e in h["events"][:3])
         more = f"; +{len(h['events']) - 3} more" if len(h["events"]) > 3 else ""
         lines.append(f"| {h['name'].replace('|', '/')} | {h['town']} | {shown}{more} |")
-    lines.append("")
+    return lines + [""]
+
+
+def render_section(registry: dict, venue_keys: set[str] | None = None) -> list[str]:
+    """Markdown lines for the "Warm" section (item 387), with hosts that are
+    configured calendar sources in a separate short list (item 391)."""
+    venue_keys = venue_keys or set()
+    lines = ["## Warm: already hosting public events", ""]
+    hosts = sorted(registry.items(), key=lambda kv: (kv[1]["town"], kv[1]["name"].lower()))
+    warm = [h for k, h in hosts if k not in venue_keys]
+    venues = [h for k, h in hosts if k in venue_keys]
+    if not warm:
+        lines += ["No non-agency hosts in the site's listings right now.", ""]
+    else:
+        lines += [
+            "Businesses whose own events appeared on a town page in the last 60 days or the next 30. "
+            "Names, events and dates only. Start here: they already hold public events.",
+            "",
+        ] + _table(warm)
+    if venues:
+        lines += ["### Venues that already publish calendars", "", "They may still buy a promo, but the pitch differs: they already reach their own audience.", ""] + _table(venues)
     return lines
+
+
+WARM_HEADING = "## Warm: already hosting public events"
+
+
+def splice_section(text: str, section_lines: list[str]) -> str:
+    """Replace the Warm section of OUTREACH_PROSPECTS.md in place (so every
+    build can refresh it without touching the OpenStreetMap tables), or add it
+    after the header block when the file has none yet."""
+    section = "\n".join(section_lines).rstrip() + "\n\n"
+    if WARM_HEADING in text:
+        start = text.index(WARM_HEADING)
+        rest = text[start + len(WARM_HEADING):]
+        nxt = re.search(r"^## (?!#)", rest, re.MULTILINE)
+        end = start + len(WARM_HEADING) + (nxt.start() if nxt else len(rest))
+        return text[:start] + section + text[end:]
+    first = re.search(r"^## ", text, re.MULTILINE)
+    cut = first.start() if first else len(text)
+    return text[:cut] + section + text[cut:]
