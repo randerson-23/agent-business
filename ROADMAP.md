@@ -220,11 +220,11 @@ doesn't re-suggest something already shipped.
 
 **Build queue (by deadline; refreshed by the research loop, item 346).**
 Pick from the top unless the owner has flagged something else:
-0. **323**: leaf pickup (step 1 done: round-20 probes for the five villages are in `config/url_probes.yaml`; read `data/url_probes.json` on origin/main next firing, then build the page). **393** (Thanksgiving issue, by Nov 20).
+0. **323**: leaf pickup (step 1 done: round-20 probes for the five villages are in `config/url_probes.yaml`; read `data/url_probes.json` on origin/main next firing, then build the page). **393** (Thanksgiving issue, by Nov 20). **395, 396** (craft fairs and their organisers, by Nov 1; the first fair is Nov 7).
 2. **313, 314**: the sales mock-up and starter pack (before outreach).
 3. **390**: promo receipts.
 4. **328** (probe first), then **325** (by Nov 15), then **385** (holiday
-   creatives, from Nov 1), then the rest by priority.
+   creatives, from Nov 1), **397** (Palatine winter market), **311** (winter outdoors, by Dec 15), **398**, then the rest by priority.
 
 #### Needs Ryan
 
@@ -18230,6 +18230,90 @@ performance reports** (impressions only, partial rollout), and
 Mommy Poppins). The design/UX angle is **the first warm-prospect and
 OpenStreetMap output read as the owner would use it**: three empty
 towns, a junk host, and the warm leads missing.
+
+
+#### Research pass 2026-10-26, evening (hundred-and-fifth pass)
+
+Today the build loop shipped items 391 and 392. The warm list now
+leads `OUTREACH_PROSPECTS.md` with **Napleton's three Palatine
+dealerships** and splits out the Des Plaines Theatre and Metropolis as
+"venues that already publish calendars". Item 389 (`/santa/` while
+empty) shipped, plus step 1 of item 323 (leaf-pickup probes). Halloween
+is Saturday. This pass looks past it to the **November weekends**, and
+finds a class of events the feeds barely carry and a class of buyer the
+warm list doesn't yet name: **school and booster-club holiday craft
+fairs**.
+
+| Angle | What it is / what we found | Why it matters here |
+|---|---|---|
+| **Holiday craft fairs, 2026** (The Craft Map's Palatine and Mount Prospect listings; older Daily Herald fair roundups) | Dated 2026 fairs in these towns: **Palatine High School Fall Craft Fair, Sat Nov 7** (150+ vendors, supports the school); **Merry Makers Market, Sat Nov 21**, Palatine Community Center; **Prospect High School Craft Fair, Sun Nov 15**, Field House, $5–10 admission; **Fremd High School Holiday Craft Fair (Viking Booster Club), Sat Dec 12**. Nothing found for Arlington Heights. The listings say they need confirming by the organiser | These are some of November's biggest family Saturdays (gifts, food, a school cause), and the site's feeds miss most of them. The schools' district calendars carry academic dates, and booster clubs post on their own pages. The Craft Map is an aggregator, so by the site's sourcing rule each fair needs a **first-party** page (the school's, the booster club's or the park district's) before it shows (item 395) |
+| **Who pays to promote a craft fair** | A booster club or PTO running a 150-vendor fair has to **fill the gym**: vendors paid for tables expecting shoppers. Fairs are promoted by flyers, school email and Facebook. These organisers are nonprofit, but they have a fair budget and a clear goal of more shoppers on one Saturday | A **$20 Event Promo** (or a founding free one, item 388) is exactly sized for a booster club's one-day goal. Vendors are often local makers and small shops, which makes them second-hand prospects for the holiday listing (item 258). Neither group is on the warm list, because their fairs aren't in the feeds yet (item 396) |
+| **Palatine's winter farmers' market** (Village of Palatine, Farmers' Market page) | The **2025–26** season ran **November to April** at the Palatine Train Station lot, on the **1st and 3rd Saturdays, 9 AM to noon**, run by the Sister Cities Association. Palatine's config has it only as an evergreen line: *"check the Village's page for the current season's hours"* | A recurring winter Saturday, which is the hardest thing to find for a family list in January. If the 2026–27 page confirms the same pattern, it becomes two dated events a month all winter (item 397) |
+| **The warm list as rendered (design/UX)** | The three Napleton rows show **2026-10-22**, the **issue's send date**, not the event date (**Sat Oct 24**). **Napleton Palatine Chevrolet**, listed in the same card's *"Also at:"* line, is missing | A pitch that says *"your Oct 22 trunk-or-treat"* is wrong in its first line. The fourth dealership is a lost prospect. Both are small parser fixes (item 398) |
+
+#### P1 (new)
+
+395. **Holiday markets and craft fairs, sourced, Nov 1 – Dec 20.** Build
+     loop:
+
+     - **Probe first** (`config/url_probes.yaml`) for each fair's
+       first-party page: Palatine High School and Fremd's booster-club
+       pages (District 211), Prospect High School's (District 214), and
+       the Palatine Park District's Merry Makers Market listing, with
+       `patterns:` for the date and *"craft fair"*.
+     - Add confirmed ones as `annual_events` entries (date, time, venue,
+       admission, `source_url`). Unconfirmed ones don't render.
+     - Add feed keywords to item 258's holiday selection: *craft fair,
+       holiday market, makers market, bazaar, vendor fair, holiday
+       boutique*.
+     - Render a **"Holiday markets & craft fairs"** section on
+       `/holidays/` and the town `/holiday/` pages, and in the email from
+       the Nov 4 issue. Each fair can have an `/e/` page (item 369).
+
+     Tests: an unconfirmed fair doesn't render, a confirmed one shows
+     with its source link, and the keyword selection picks up a *"Holiday
+     Bazaar"* feed event.
+
+396. **Name fair organisers as warm prospects, with their own note.**
+     Build loop: when a fair is confirmed (item 395) or a feed event
+     matches the fair keywords, add its organiser (booster club, PTO,
+     park district programme) to the warm list under **"Fair
+     organisers"**. Add `OUTREACH_TEMPLATES.md` **§14b**: *"Your craft
+     fair on Sat Nov 7 is on our Palatine page. For $20 (or free under
+     our founding offer) it goes first on the town page and in the weekly
+     email the Wednesday before, so families see it while they plan the
+     weekend."* Send it **two weeks before** each fair, as an owner step
+     in the outreach batch.
+
+#### P2 (new)
+
+397. **Palatine's winter farmers' market as dated events.** Build loop:
+     probe `palatine.il.us/217/Farmers-Market` for the **2026–27** winter
+     schedule. If it confirms 1st and 3rd Saturdays, 9–12, Nov–Apr, add a
+     recurring `annual_events` rule generating those dates, each linking
+     the Village page. Item 381 merges the repeats in cards. Keep the
+     evergreen line as the fallback if the page doesn't confirm.
+
+#### P3 (new)
+
+398. **Warm-list accuracy: event dates and "Also at" hosts.** Build loop,
+     `scripts/warm_prospects.py`: take each event's own date from the
+     stored issue's date chip or card date, not the issue's send date.
+     Split *"Also at: A, B, C"* lines into separate hosts with the same
+     event. Tests: the Napleton Hyundai row reads **2026-10-24**, and
+     Napleton Palatine Chevrolet appears.
+
+#### Build queue update
+
+- Add **395, 396** after 393 (by Nov 1, before the Nov 7 fair), **397** and
+  **311** (winter outdoors, due Dec 15 and missing from the queue) after
+  328, and **398** at the end.
+
+Competitors reviewed this pass: **The Craft Map's 2026 craft-fair
+listings** for Palatine and Mount Prospect (four dated fairs found),
+**Palatine's winter farmers' market** (Village page, 2025–26 season),
+and **booster clubs and PTOs** as Event Promo buyers. The design/UX angle
+is **the warm list as rendered**: wrong dates and a missing dealership.
 
 
 ## Working agreements for autonomous iteration
