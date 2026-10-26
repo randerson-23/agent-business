@@ -220,7 +220,7 @@ doesn't re-suggest something already shipped.
 
 **Build queue (by deadline; refreshed by the research loop, item 346).**
 Pick from the top unless the owner has flagged something else:
-0. **323**: leaf pickup (in season now).
+0. **391, 392** (the prospect list as generated is empty in three towns and missing the warm leads; fix before the owner's outreach hour). **323**: leaf pickup (in season now). **393** (Thanksgiving issue, by Nov 20).
 2. **313, 314**: the sales mock-up and starter pack (before outreach).
 3. **389, 390**: /santa/ while empty; promo receipts.
 4. **328** (probe first), then **325** (by Nov 15), then **385** (holiday
@@ -18141,6 +18141,95 @@ Competitors reviewed this pass: **Patch's featured-event pricing** (from
 $20 a week down to 25¢ a day), and **local businesses that already host
 public events**, read from the site's own feeds (dealerships, a theatre,
 a mall). The design/UX angle is **`/santa/` in its empty weeks**.
+
+
+#### Research pass 2026-10-26 (hundred-and-fourth pass)
+
+Overnight the build loop shipped items 387 and 388 (the warm-prospect
+registry and the founding free Event Promo on `/sponsor/`). Both are
+the start of the first-sale path, so this pass reads their **actual
+output** before the owner relies on it. It also plans the Thanksgiving
+issue, and checks one 2026 Search Console change that bears on the
+agent-era proof `BUSINESS_PLAN.md` asks for. `BUSINESS_PLAN.md` was
+re-read: unchanged in content, though this checkout's history now
+shows it re-added in an Oct 22 auto-build commit.
+
+| Angle | What it is / what we found | Why it matters here |
+|---|---|---|
+| **The warm-prospect output, read as the owner would (design/UX)** | `OUTREACH_PROSPECTS.md` (generated Oct 26) says **"No non-agency hosts in the site's listings right now"**, while `data/warm_hosts.json`, written by the same morning's build, holds three hosts. Of those three: **"5 p.m."** (from *"Library Closed at 5 p.m."*), the **Des Plaines Theatre** and **Metropolis**. The four **Napleton** dealership trunk-or-treats (Oct 24), which were the whole reason for item 387, are **missing**: the registry only began collecting after they had passed, and the feeds drop past events. The same file also shows **"The OpenStreetMap query for this town failed"** for **Arlington Heights, Des Plaines and Mount Prospect**, so this run replaced three towns' good lists with nothing | The owner was told this list is ready for an hour of outreach (Needs Ryan step 8). As generated, it would send them out with three empty towns, a junk entry, and no warm leads. Three fixes: a filter for times and closure notes, a backfill from the archived issues the site already stores, and never overwriting good data with a failed query (items 391, 392) |
+| **Search Console's Generative AI performance reports** (Google Search Central blog, **Jun 3 2026**; coverage by Neil Patel and others) | New reports show **impressions in AI Overviews and AI Mode** (and Discover's AI features) by page, country, date and device, from **May 18 2026**, with no backfill. They show **no clicks, CTR or queries yet**, and AI clicks still count in the regular Performance report. Rollout began with **a subset of sites**. One secondary source links click data to a UK CMA order taking effect in **December 2026** (unverified) | `BUSINESS_PLAN.md`'s agent-era section says the value is **"present in the answer"** and that nothing is sellable without a number. *"Within Ten appeared in Google's AI answers N times last month"* is that number, from Google itself, if the property has the report. A monthly 1-minute owner check is enough until the API exposes it (item 394) |
+| **Thanksgiving weekend, Nov 26–29** (mykidlist, Suburban Jungle and Mommy Poppins holiday roundups; past years) | Roundups cover turkey trots, Thanksgiving-week camps and library programmes, parades and holiday shows. No 2026 lists for these towns yet. The site's own calendar for that weekend already holds **Arlington Heights' tree lighting (Fri Nov 27)**, **Small Business Saturday (Sat Nov 28)**, Thanksgiving-week **closures** (item 307), and the start of Santa season (item 379) | That weekend has four reasons in one issue to open the email. The Halloween issue (item 348) showed how: a fixed, clear subject and one lead block. The Nov 25 send should get the same treatment (item 393) |
+
+#### P1 (new)
+
+391. **Make the warm list real: filter the junk, backfill the missed
+     hosts.** Build loop, `scripts/warm_prospects.py`:
+
+     - **Reject non-names:** times (`\d{1,2}(:\d\d)?\s*[ap]\.?m\.?`), dates,
+       and closure or status notes (*closed, closes, rescheduled,
+       cancelled, postponed*). *"Library Closed at 5 p.m."* yields no host.
+     - **Backfill once from the archive:** parse the stored sends in
+       `/issues/*/` (item 357 keeps them byte-for-byte) for the last 60
+       days and run the same host extraction on their titles. That
+       recovers the four Napleton trunk-or-treats and anything else hosted
+       since Sep 17.
+     - **Split "venue sources" from warm prospects:** hosts that are
+       themselves configured sources (the Des Plaines Theatre,
+       Metropolis) go in a short **"Venues that already publish
+       calendars"** list. They may still buy a promo, but the pitch is
+       different.
+     - **Render at every build**, not only when the OpenStreetMap workflow
+       runs, so the file never says "no hosts" while the registry has
+       some.
+
+     Tests: the closure title yields nothing, a Napleton title from a
+     stored issue becomes a warm prospect with its date, and a configured
+     source venue lands in the venues list.
+
+392. **Never replace a town's prospect list with a failed query.** Build
+     loop, `scripts/osm_prospects.py`: keep each town's last good result in
+     `data/osm_last_good/<region>.json`. On an Overpass failure, retry
+     twice with backoff (30 s, 120 s). If it still fails, render the
+     **last good table** with a line *"(from the Oct 23 run; today's
+     refresh failed)"*. Space the five town queries at least 10 seconds
+     apart, since Overpass rate-limits bursts. Tests: a simulated failure
+     keeps the previous rows and adds the dated note, and a success
+     replaces them.
+
+393. **The Thanksgiving weekend issue (send of Wed Nov 25).** Build loop,
+     modelled on item 348:
+
+     - **Fixed subject** in that send week: *"Thanksgiving weekend: tree
+       lightings, Small Business Saturday & more"*, within item 363's 50
+       characters. Shorten to *"Thanksgiving weekend: lights, shops &
+       more"* if needed.
+     - **A lead block** above "Don't miss": confirmed tree lightings that
+       weekend from `tree_lighting:` config, the Small Business Saturday
+       section (item 377), the Thanksgiving-week closures (item 307), and
+       a link to `/santa/`.
+
+     Tests: a build dated Wed Nov 25 2026 produces the subject and block,
+     a build dated Nov 18 does not, and the clip check passes. Ship by
+     Nov 20.
+
+#### P3, owner (new)
+
+394. **Check Search Console's Generative AI report once a month (1
+     minute).** In Search Console, look for **Performance → Generative AI**
+     (or the AI Overviews and AI Mode view). If it's there, note last
+     month's **impressions** in one line in Needs Ryan (*"Oct: N AI
+     impressions"*). If it isn't, note "not available yet". The build loop
+     adds the figure to item 266's audience snapshot when Google exposes it
+     in the API, and the sponsor page may cite it only with its source and
+     only once it is non-trivial. Never claim *"featured by Google's AI"*
+     from impressions alone.
+
+Competitors reviewed this pass: **Search Console's Generative AI
+performance reports** (impressions only, partial rollout), and
+**Thanksgiving-weekend family roundups** (mykidlist, Suburban Jungle,
+Mommy Poppins). The design/UX angle is **the first warm-prospect and
+OpenStreetMap output read as the owner would use it**: three empty
+towns, a junk host, and the warm leads missing.
 
 
 ## Working agreements for autonomous iteration
