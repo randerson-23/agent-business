@@ -1,12 +1,16 @@
 name: OSM prospects
 
 # ROADMAP.md item 306: builds OUTREACH_PROSPECTS.md from OpenStreetMap. Runs
-# when the script changes on main, or on demand; never on a schedule.
+# when the script changes on main, on demand, or weekly (Mondays) so the
+# "Warm" section from data/warm_hosts.json (item 387) stays current.
 on:
+  schedule:
+    - cron: "41 9 * * 1"
   push:
     branches: [main]
     paths:
       - scripts/osm_prospects.py
+      - scripts/warm_prospects.py
       - .github/workflows/osm-prospects.yml
   workflow_dispatch: {}
 

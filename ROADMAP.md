@@ -220,8 +220,7 @@ doesn't re-suggest something already shipped.
 
 **Build queue (by deadline; refreshed by the research loop, item 346).**
 Pick from the top unless the owner has flagged something else:
-0. **387, 388** (the first-sale pair: warm prospects from the feeds, and a free first Event Promo for five businesses).
-1. **323**: leaf pickup (in season now).
+0. **323**: leaf pickup (in season now).
 2. **313, 314**: the sales mock-up and starter pack (before outreach).
 3. **389, 390**: /santa/ while empty; promo receipts.
 4. **328** (probe first), then **325** (by Nov 15), then **385** (holiday
@@ -18065,7 +18064,7 @@ hosting public events, and nobody has used that list.
 
 #### P1 (new)
 
-387. **A warm-prospect list: businesses that already host public events.**
+387. ✅ DONE (`scripts/warm_prospects.py`: the build keeps a rolling `data/warm_hosts.json` of non-agency hosts, from "at <Name>" titles and venues, last 60 days and next 30; `osm_prospects.py` puts it first in OUTREACH_PROSPECTS.md as "Warm: already hosting public events" and drops duplicates from the OSM tables; the prospects workflow now also runs weekly (Mondays) so the section refreshes; OUTREACH_TEMPLATES §14a; tests) **A warm-prospect list: businesses that already host public events.**
      Build loop, `scripts/osm_prospects.py` or a sibling script, from
      data the site already has:
 
@@ -18086,7 +18085,7 @@ hosting public events, and nobody has used that list.
      Tests: a dealership trunk-or-treat appears as a warm prospect, a
      library storytime does not, and nobody appears twice.
 
-388. **The first Event Promo is free, for the first five local
+388. ✅ DONE (`/sponsor/` founding box with "N of 5 spots left" from `founding_promos_used:` in config/sponsors.yaml, hidden at 5 or after Dec 31; SPONSOR_KIT.md line; tests. The owner raises the number by one per founding promo set up) **The first Event Promo is free, for the first five local
      businesses, through Dec 31.** Build loop plus owner reply-only:
 
      - On `/sponsor/` and in `SPONSOR_KIT.md`: *"Founding offer: your first

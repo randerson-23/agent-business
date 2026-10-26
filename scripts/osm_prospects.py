@@ -17,6 +17,8 @@ from pathlib import Path
 
 import requests
 
+import warm_prospects
+
 ROOT = Path(__file__).resolve().parent.parent
 OUTPUT_PATH = ROOT / "OUTREACH_PROSPECTS.md"
 OVERPASS_URL = "https://overpass-api.de/api/interpreter"
@@ -76,7 +78,7 @@ def rows_for_town(elements: list[dict]) -> list[dict]:
     return rows
 
 
-def render_markdown(towns: dict[str, list[dict] | None], now: datetime) -> str:
+def render_markdown(towns: dict[str, list[dict] | None], now: datetime, warm: dict | None = None) -> str:
     lines = [
         "# Outreach prospects (OpenStreetMap)",
         "",
@@ -90,7 +92,11 @@ def render_markdown(towns: dict[str, list[dict] | None], now: datetime) -> str:
         "site or a visit before writing to it.",
         "",
     ]
+    if warm is not None:  # item 387: hosts already running public events lead the file
+        lines += warm_prospects.render_section(warm)
     for town, rows in towns.items():
+        if warm and rows is not None:  # a business already listed as warm is not repeated below
+            rows = [r for r in rows if warm_prospects.host_key(r["name"]) not in warm]
         lines += [f"## {town}", ""]
         if rows is None:
             lines += ["The OpenStreetMap query for this town failed; re-run the workflow.", ""]
@@ -133,7 +139,7 @@ def main() -> int:
     if all(rows is None for rows in towns.values()):
         print("Every Overpass query failed; leaving OUTREACH_PROSPECTS.md as it was.")
         return 1
-    OUTPUT_PATH.write_text(render_markdown(towns, datetime.now(timezone.utc)), encoding="utf-8")
+    OUTPUT_PATH.write_text(render_markdown(towns, datetime.now(timezone.utc), warm_prospects.load_registry()), encoding="utf-8")
     print("Wrote", OUTPUT_PATH, {t: (len(r) if r is not None else None) for t, r in towns.items()})
     return 0
 

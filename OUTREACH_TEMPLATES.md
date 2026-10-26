@@ -783,6 +783,33 @@ with: *"We list every district's days off with what's on that day, and one
 camp or class can be the featured option for that week ($50 Weekly Spot)."*
 The slot is labelled as paid and sits below the free listings.
 
+## 14a. Warm prospect — "Your [event] was on our [town] page" (ROADMAP.md item 387)
+
+For the businesses at the top of `OUTREACH_PROSPECTS.md` ("Warm: already
+hosting public events"): they hold public events and we already listed one.
+Quote no subscriber number (item 118). Only name an event that is on the
+prospect's row.
+
+Subject: Your [Event] on [Date] was on our [Town] page
+
+Hi [Owner Name],
+
+Your **[Event]** on [Date] was on **Within Ten**'s [Town] page, the free
+local guide for [Town]. Next time, for $20, it goes first on the town page
+and in the weekly email, labelled "Presented by [Business Name]", with its
+own event page. You can see exactly what that looks like at
+https://withintenmiles.com/sponsor/.
+
+While the founding offer lasts (see /sponsor/ for how many spots are left),
+your first Event Promo is free.
+
+If you'd like one, reply with the event, date and the link you want it to
+open, and I'll set it up.
+
+Thanks,
+[Your name]
+Within Ten — https://withintenmiles.com/
+
 ## 16. Arts venue — "Your show is on our weekend page" (ROADMAP.md Phase 11 #284)
 
 The §15 pattern, for theatres and music venues whose shows already appear

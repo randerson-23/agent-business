@@ -86,6 +86,8 @@ instead of needing to be re-sold every week. Prefer to start smaller?
 Weekly Spot and Event Promo get the same recommendation on a shorter
 commitment.
 
+**Founding offer (through Dec 31, five spots):** your first Event Promo is free. We list it, label it "Presented by [you]", and send you where it appeared. The live count is on `/sponsor/`, driven by `founding_promos_used:` in `config/sponsors.yaml` (ROADMAP.md item 388).
+
 | Placement | Price | Value grows with | Details |
 |---|---|---|---|
 | **Event Promo** | $20 one-time | Newsletter reach | Your event goes first on your town's page, and first in the weekend list and weekly email when it falls on a weekend, labelled "Presented by [you]" and marked as sponsored in the event data AI assistants read. Runs until the event day. We guarantee the placement, not any assistant's mention. |
