@@ -2,42 +2,12 @@
   "@context": "https://schema.org",
   "@type": "ItemList",
   "name": "Upcoming events in Wheeling — Within Ten",
-  "dateModified": "2026-10-25T22:00:34+00:00",
-  "numberOfItems": 52,
+  "dateModified": "2026-10-26T06:02:45+00:00",
+  "numberOfItems": 53,
   "itemListElement": [
     {
       "@type": "ListItem",
       "position": 1,
-      "item": {
-        "@type": "Event",
-        "name": "The Arlingtones",
-        "startDate": "2026-10-25T13:00:00-05:00",
-        "url": "https://withintenmiles.com/wheeling-60090/#ev-the-arlingtones-2026-10-25",
-        "eventStatus": "https://schema.org/EventScheduled",
-        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "location": {
-          "@type": "Place",
-          "name": "Indian Trails Public Library",
-          "address": {
-            "@type": "PostalAddress",
-            "addressCountry": "US",
-            "addressLocality": "Wheeling",
-            "addressRegion": "IL",
-            "streetAddress": "355 Schoenbeck Rd."
-          }
-        },
-        "sameAs": "https://indiantrails.libnet.info/event/16583729",
-        "organizer": {
-          "@type": "Organization",
-          "name": "Indian Trails Public Library",
-          "url": "https://indiantrails.libnet.info"
-        },
-        "description": "Sunday, October 25 2026 1:00pm - 2:00pm \n The Arlingtones bring an afternoon of familiar tunes. The music sung ranges from traditional barbershop to Broadway…"
-      }
-    },
-    {
-      "@type": "ListItem",
-      "position": 2,
       "item": {
         "@type": "Event",
         "name": "Day of the Dead Ofrenda | Dia de los Muertos Ofrenda",
@@ -67,7 +37,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 3,
+      "position": 2,
       "item": {
         "@type": "Event",
         "name": "Genealogy Interest Group Meeting",
@@ -97,7 +67,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 4,
+      "position": 3,
       "item": {
         "@type": "Event",
         "name": "Noisy Time",
@@ -127,7 +97,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 5,
+      "position": 4,
       "item": {
         "@type": "Event",
         "name": "Rise & Read Morning Book Discussion",
@@ -157,7 +127,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 6,
+      "position": 5,
       "item": {
         "@type": "Event",
         "name": "Paint and Steep Tea",
@@ -187,7 +157,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 7,
+      "position": 6,
       "item": {
         "@type": "Event",
         "name": "Spanish Conversation Practice | At the Branch",
@@ -217,7 +187,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 8,
+      "position": 7,
       "item": {
         "@type": "Event",
         "name": "Read to Learn",
@@ -247,7 +217,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 9,
+      "position": 8,
       "item": {
         "@type": "Event",
         "name": "Scary Stories to Draw in the Dark",
@@ -277,7 +247,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 10,
+      "position": 9,
       "item": {
         "@type": "Event",
         "name": "Coloring Club",
@@ -307,7 +277,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 11,
+      "position": 10,
       "item": {
         "@type": "Event",
         "name": "Paint and Steep Tea",
@@ -337,7 +307,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 12,
+      "position": 11,
       "item": {
         "@type": "Event",
         "name": "Plan Commission Meeting - NOTICE OF CANCELLATION",
@@ -366,7 +336,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 13,
+      "position": 12,
       "item": {
         "@type": "Event",
         "name": "Chat & Play Cafe",
@@ -396,7 +366,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 14,
+      "position": 13,
       "item": {
         "@type": "Event",
         "name": "Monogrammed Tote Bags",
@@ -426,7 +396,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 15,
+      "position": 14,
       "item": {
         "@type": "Event",
         "name": "Fall for Autumn Crafts",
@@ -456,7 +426,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 16,
+      "position": 15,
       "item": {
         "@type": "Event",
         "name": "High School Book Club | Grades 9-12",
@@ -486,7 +456,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 17,
+      "position": 16,
       "item": {
         "@type": "Event",
         "name": "Frightening Fics Book Discussion",
@@ -516,12 +486,12 @@
     },
     {
       "@type": "ListItem",
-      "position": 18,
+      "position": 17,
       "item": {
         "@type": "Event",
         "name": "Spooktacular Storytime",
         "startDate": "2026-10-30T10:00:00-05:00",
-        "url": "https://withintenmiles.com/wheeling-60090/#ev-spooktacular-storytime-2026-10-30",
+        "url": "https://withintenmiles.com/e/2026-10-30-spooktacular-storytime/",
         "eventStatus": "https://schema.org/EventScheduled",
         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
         "location": {
@@ -546,12 +516,12 @@
     },
     {
       "@type": "ListItem",
-      "position": 19,
+      "position": 18,
       "item": {
         "@type": "Event",
         "name": "Craft for The Day of The Dead | At the Branch",
         "startDate": "2026-10-30T17:30:00-05:00",
-        "url": "https://withintenmiles.com/wheeling-60090/#ev-craft-for-the-day-of-the-dead-at-the-branch-2026-10-30",
+        "url": "https://withintenmiles.com/e/2026-10-30-craft-for-the-day-of-the-dead-at-the-branch/",
         "eventStatus": "https://schema.org/EventScheduled",
         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
         "location": {
@@ -576,7 +546,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 20,
+      "position": 19,
       "item": {
         "@type": "Event",
         "name": "Dia de Los Muertos with Mariachi Sirenas",
@@ -606,7 +576,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 21,
+      "position": 20,
       "item": {
         "@type": "Event",
         "name": "Halloween Trick or Treat Hours - 3pm to 7pm",
@@ -635,7 +605,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 22,
+      "position": 21,
       "item": {
         "@type": "Event",
         "name": "Support Our Troops",
@@ -665,7 +635,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 23,
+      "position": 22,
       "item": {
         "@type": "Event",
         "name": "High School Volunteer Kits",
@@ -695,7 +665,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 24,
+      "position": 23,
       "item": {
         "@type": "Event",
         "name": "Stitch Together Meet-Up",
@@ -725,7 +695,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 25,
+      "position": 24,
       "item": {
         "@type": "Event",
         "name": "Tech Assistance / Assistencia de Tech",
@@ -755,7 +725,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 26,
+      "position": 25,
       "item": {
         "@type": "Event",
         "name": "Bookworms Book Club | Grades 4-5",
@@ -785,7 +755,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 27,
+      "position": 26,
       "item": {
         "@type": "Event",
         "name": "Intro to Chinese Mahjong",
@@ -815,7 +785,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 28,
+      "position": 27,
       "item": {
         "@type": "Event",
         "name": "Village Board Regular Meeting",
@@ -844,7 +814,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 29,
+      "position": 28,
       "item": {
         "@type": "Event",
         "name": "Boba Tea Keychains",
@@ -874,7 +844,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 30,
+      "position": 29,
       "item": {
         "@type": "Event",
         "name": "Alcohol Ink Art",
@@ -904,7 +874,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 31,
+      "position": 30,
       "item": {
         "@type": "Event",
         "name": "Writers Workshop",
@@ -934,7 +904,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 32,
+      "position": 31,
       "item": {
         "@type": "Event",
         "name": "Read to Learn",
@@ -964,7 +934,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 33,
+      "position": 32,
       "item": {
         "@type": "Event",
         "name": "Knitting for Beginners",
@@ -994,7 +964,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 34,
+      "position": 33,
       "item": {
         "@type": "Event",
         "name": "Jewelry Making Extravaganza",
@@ -1024,7 +994,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 35,
+      "position": 34,
       "item": {
         "@type": "Event",
         "name": "Paint and Steep Tea",
@@ -1054,7 +1024,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 36,
+      "position": 35,
       "item": {
         "@type": "Event",
         "name": "Plan Commission Meeting",
@@ -1083,7 +1053,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 37,
+      "position": 36,
       "item": {
         "@type": "Event",
         "name": "Intro to Excel",
@@ -1113,7 +1083,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 38,
+      "position": 37,
       "item": {
         "@type": "Event",
         "name": "Library Board Workshop",
@@ -1143,7 +1113,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 39,
+      "position": 38,
       "item": {
         "@type": "Event",
         "name": "Office Hours with Congressman Brad Schneider's Office",
@@ -1173,7 +1143,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 40,
+      "position": 39,
       "item": {
         "@type": "Event",
         "name": "Social Services | Servicios Sociales",
@@ -1203,7 +1173,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 41,
+      "position": 40,
       "item": {
         "@type": "Event",
         "name": "Village of Wheeling Social Workers at the Library",
@@ -1233,7 +1203,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 42,
+      "position": 41,
       "item": {
         "@type": "Event",
         "name": "Pumpkin Investigation",
@@ -1263,7 +1233,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 43,
+      "position": 42,
       "item": {
         "@type": "Event",
         "name": "Coloring Club",
@@ -1293,7 +1263,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 44,
+      "position": 43,
       "item": {
         "@type": "Event",
         "name": "Night Owls",
@@ -1323,7 +1293,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 45,
+      "position": 44,
       "item": {
         "@type": "Event",
         "name": "Peer Jury",
@@ -1352,7 +1322,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 46,
+      "position": 45,
       "item": {
         "@type": "Event",
         "name": "Mod Podge Crystal Lanterns",
@@ -1382,7 +1352,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 47,
+      "position": 46,
       "item": {
         "@type": "Event",
         "name": "Babytime!",
@@ -1412,7 +1382,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 48,
+      "position": 47,
       "item": {
         "@type": "Event",
         "name": "Wonderful Walkers",
@@ -1442,7 +1412,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 49,
+      "position": 48,
       "item": {
         "@type": "Event",
         "name": "ESL Tea & Talk",
@@ -1472,7 +1442,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 50,
+      "position": 49,
       "item": {
         "@type": "Event",
         "name": "Chats & Food",
@@ -1502,7 +1472,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 51,
+      "position": 50,
       "item": {
         "@type": "Event",
         "name": "Weekend Wiggles",
@@ -1532,7 +1502,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 52,
+      "position": 51,
       "item": {
         "@type": "Event",
         "name": "Light Up the Day with Diwali: Dances, Stories & Traditions",
@@ -1558,6 +1528,66 @@
           "url": "https://indiantrails.libnet.info"
         },
         "description": "Saturday, November 07 2026 1:00pm - 2:00pm \n Celebrate Diwali with Ajanta Chakraborty of Bollywood & Culture Groove. Through stories, vivid visuals and dance…"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 52,
+      "item": {
+        "@type": "Event",
+        "name": "Resume Review & Career Coaching Appointments",
+        "startDate": "2026-11-08T12:15:00-06:00",
+        "url": "https://withintenmiles.com/wheeling-60090/#ev-resume-review-career-coaching-appointments-2026-11-08",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Indian Trails Public Library",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Wheeling",
+            "addressRegion": "IL",
+            "streetAddress": "355 Schoenbeck Rd."
+          }
+        },
+        "sameAs": "https://indiantrails.libnet.info/event/17101956",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Indian Trails Public Library",
+          "url": "https://indiantrails.libnet.info"
+        },
+        "description": "Sunday, November 08 2026 12:15pm - 1:15pm \n Kickstart your career with a one-hour resume review with a career specialist. Resume Review and Career Coaching…"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 53,
+      "item": {
+        "@type": "Event",
+        "name": "Tech Assistance",
+        "startDate": "2026-11-08T13:00:00-06:00",
+        "url": "https://withintenmiles.com/wheeling-60090/#ev-tech-assistance-2026-11-08",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Indian Trails Public Library",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Wheeling",
+            "addressRegion": "IL",
+            "streetAddress": "355 Schoenbeck Rd."
+          }
+        },
+        "sameAs": "https://indiantrails.libnet.info/event/17116009",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Indian Trails Public Library",
+          "url": "https://indiantrails.libnet.info"
+        },
+        "description": "Sunday, November 08 2026 1:00pm - 1:45pm \n Have a basic question about your device\nand thinking of trying Cloud Library,\nHoopla or another library app? Talk…"
       }
     }
   ]

@@ -3,17 +3,8 @@
 <channel>
   <title>Within Ten — Upcoming events in Wheeling</title>
   <link>https://withintenmiles.com/</link>
-  <description>Upcoming events in Wheeling, soonest first - aggregated automatically from village, library, park district and school-district calendars. This build reached 20 of 29 configured sources. 3 sources are shown from their last update, up to 10 hours ago.</description>
-  <lastBuildDate>Sun, 25 Oct 2026 22:00:34 +0000</lastBuildDate>
-  <item>
-    <title>Wheeling: The Arlingtones</title>
-    <link>https://withintenmiles.com/wheeling-60090/#ev-the-arlingtones-2026-10-25</link>
-    <guid isPermaLink="true">https://withintenmiles.com/wheeling-60090/#ev-the-arlingtones-2026-10-25</guid>
-    <description>Sunday, October 25 2026 1:00pm - 2:00pm 
- The Arlingtones bring an afternoon of familiar tunes. The music sung ranges from traditional barbershop to Broadway… Official listing: https://indiantrails.libnet.info/event/16583729</description>
-    <pubDate>Sun, 25 Oct 2026 13:00:00 +0000</pubDate>
-    <source url="https://indiantrails.libnet.info/event/16583729">Indian Trails Public Library — Events</source>
-  </item>
+  <description>Upcoming events in Wheeling, soonest first - aggregated automatically from village, library, park district and school-district calendars. This build reached 23 of 29 configured sources.</description>
+  <lastBuildDate>Mon, 26 Oct 2026 06:02:45 +0000</lastBuildDate>
   <item>
     <title>Wheeling: Day of the Dead Ofrenda | Dia de los Muertos Ofrenda</title>
     <link>https://withintenmiles.com/wheeling-60090/#ev-day-of-the-dead-ofrenda-dia-de-los-muertos-ofrenda-2026-10-26</link>
@@ -451,6 +442,15 @@ Complete and return a volunteer craft kit by the end of the month to count towar
  Spend time with your neighbors, enjoy traditional food, play games, and win prizes. Ven a compartir con tus… Official listing: https://indiantrails.libnet.info/event/17178758</description>
     <pubDate>Fri, 06 Nov 2026 18:00:00 +0000</pubDate>
     <source url="https://indiantrails.libnet.info/event/17178758">Indian Trails Public Library — Events</source>
+  </item>
+  <item>
+    <title>Wheeling: Weekend Wiggles</title>
+    <link>https://withintenmiles.com/wheeling-60090/#ev-weekend-wiggles-2026-11-07</link>
+    <guid isPermaLink="true">https://withintenmiles.com/wheeling-60090/#ev-weekend-wiggles-2026-11-07</guid>
+    <description>Saturday, November 07 2026 10:00am - 10:30am 
+ Get your wiggles out with interactive stories, songs, and a focus on movement. TR Official listing: https://indiantrails.libnet.info/event/16971639</description>
+    <pubDate>Sat, 07 Nov 2026 10:00:00 +0000</pubDate>
+    <source url="https://indiantrails.libnet.info/event/16971639">Indian Trails Public Library — Events</source>
   </item>
 </channel>
 </rss>

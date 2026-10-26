@@ -10,10 +10,6 @@
   },
   {
    "region": "arlington-heights-60005",
-   "url": "https://www.ahpd.org/event/the-music-man-sr-2/"
-  },
-  {
-   "region": "arlington-heights-60005",
    "url": "https://www.metropolisarts.com/event/lightning-thief-tya-edition/"
   },
   {
@@ -23,10 +19,6 @@
   {
    "region": "arlington-heights-60005",
    "url": "https://www.metropolisarts.com/event/the-rock-n-horror-halloween-concert/"
-  },
-  {
-   "region": "des-plaines-60016",
-   "url": "https://desplaines.libnet.info/event/14863262"
   },
   {
    "region": "des-plaines-60016",
@@ -75,6 +67,10 @@
   {
    "region": "des-plaines-60016",
    "url": "https://desplaines.libnet.info/event/15509798"
+  },
+  {
+   "region": "des-plaines-60016",
+   "url": "https://desplaines.libnet.info/event/15509799"
   },
   {
    "region": "des-plaines-60016",
@@ -150,7 +146,15 @@
   },
   {
    "region": "des-plaines-60016",
+   "url": "https://desplaines.libnet.info/event/16431790"
+  },
+  {
+   "region": "des-plaines-60016",
    "url": "https://desplaines.libnet.info/event/16696533"
+  },
+  {
+   "region": "des-plaines-60016",
+   "url": "https://desplaines.libnet.info/event/16716983"
   },
   {
    "region": "des-plaines-60016",
@@ -199,10 +203,6 @@
   {
    "region": "des-plaines-60016",
    "url": "https://desplaines.libnet.info/event/17118809"
-  },
-  {
-   "region": "des-plaines-60016",
-   "url": "https://desplaines.libnet.info/event/17138193"
   },
   {
    "region": "des-plaines-60016",
@@ -262,6 +262,10 @@
   },
   {
    "region": "des-plaines-60016",
+   "url": "https://desplaines.libnet.info/event/17253044"
+  },
+  {
+   "region": "des-plaines-60016",
    "url": "https://desplaines.libnet.info/event/17384961"
   },
   {
@@ -275,6 +279,10 @@
   {
    "region": "des-plaines-60016",
    "url": "https://desplaines.libnet.info/event/17479527"
+  },
+  {
+   "region": "des-plaines-60016",
+   "url": "https://desplaines.libnet.info/event/17491026"
   },
   {
    "region": "des-plaines-60016",
@@ -299,6 +307,10 @@
   {
    "region": "des-plaines-60016",
    "url": "https://desplaines.libnet.info/event/17635811"
+  },
+  {
+   "region": "des-plaines-60016",
+   "url": "https://desplaines.libnet.info/event/17635812"
   },
   {
    "region": "des-plaines-60016",
@@ -354,10 +366,6 @@
   },
   {
    "region": "des-plaines-60016",
-   "url": "https://desplainestheatre.com/event/the-buddy-rich-big-band-machine/"
-  },
-  {
-   "region": "des-plaines-60016",
    "url": "https://desplainestheatre.com/event/the-vampire-circus-tim-burton-meets-cirque-du-soleil-2/"
   },
   {
@@ -379,6 +387,10 @@
   {
    "region": "mount-prospect-60056",
    "url": "https://mppl.libnet.info/event/14047744"
+  },
+  {
+   "region": "mount-prospect-60056",
+   "url": "https://mppl.libnet.info/event/14049450"
   },
   {
    "region": "mount-prospect-60056",
@@ -407,10 +419,6 @@
   {
    "region": "mount-prospect-60056",
    "url": "https://mppl.libnet.info/event/16131511"
-  },
-  {
-   "region": "mount-prospect-60056",
-   "url": "https://mppl.libnet.info/event/16138104"
   },
   {
    "region": "mount-prospect-60056",
@@ -490,7 +498,15 @@
   },
   {
    "region": "mount-prospect-60056",
+   "url": "https://mppl.libnet.info/event/16637670"
+  },
+  {
+   "region": "mount-prospect-60056",
    "url": "https://mppl.libnet.info/event/16637797"
+  },
+  {
+   "region": "mount-prospect-60056",
+   "url": "https://mppl.libnet.info/event/16637798"
   },
   {
    "region": "mount-prospect-60056",
@@ -554,6 +570,14 @@
   },
   {
    "region": "mount-prospect-60056",
+   "url": "https://mppl.libnet.info/event/16778781"
+  },
+  {
+   "region": "mount-prospect-60056",
+   "url": "https://mppl.libnet.info/event/16802052"
+  },
+  {
+   "region": "mount-prospect-60056",
    "url": "https://mppl.libnet.info/event/16807186"
   },
   {
@@ -567,6 +591,10 @@
   {
    "region": "mount-prospect-60056",
    "url": "https://mppl.libnet.info/event/16882806"
+  },
+  {
+   "region": "mount-prospect-60056",
+   "url": "https://mppl.libnet.info/event/16882957"
   },
   {
    "region": "mount-prospect-60056",
@@ -674,10 +702,6 @@
   },
   {
    "region": "wheeling-60090",
-   "url": "https://indiantrails.libnet.info/event/16583729"
-  },
-  {
-   "region": "wheeling-60090",
    "url": "https://indiantrails.libnet.info/event/16606801"
   },
   {
@@ -766,6 +790,10 @@
   },
   {
    "region": "wheeling-60090",
+   "url": "https://indiantrails.libnet.info/event/17008303"
+  },
+  {
+   "region": "wheeling-60090",
    "url": "https://indiantrails.libnet.info/event/17043790"
   },
   {
@@ -783,6 +811,10 @@
   {
    "region": "wheeling-60090",
    "url": "https://indiantrails.libnet.info/event/17100994"
+  },
+  {
+   "region": "wheeling-60090",
+   "url": "https://indiantrails.libnet.info/event/17101700"
   },
   {
    "region": "wheeling-60090",
@@ -822,11 +854,19 @@
   },
   {
    "region": "wheeling-60090",
+   "url": "https://indiantrails.libnet.info/event/17138281"
+  },
+  {
+   "region": "wheeling-60090",
    "url": "https://indiantrails.libnet.info/event/17138854"
   },
   {
    "region": "wheeling-60090",
    "url": "https://indiantrails.libnet.info/event/17139043"
+  },
+  {
+   "region": "wheeling-60090",
+   "url": "https://indiantrails.libnet.info/event/17139100"
   },
   {
    "region": "wheeling-60090",
@@ -851,6 +891,10 @@
   {
    "region": "wheeling-60090",
    "url": "https://indiantrails.libnet.info/event/17386764"
+  },
+  {
+   "region": "wheeling-60090",
+   "url": "https://indiantrails.libnet.info/event/17486257"
   },
   {
    "region": "wheeling-60090",

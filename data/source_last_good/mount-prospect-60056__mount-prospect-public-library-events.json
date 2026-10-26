@@ -1,12 +1,6 @@
 {
- "fetched_at": "2026-10-25T22:00:34+00:00",
+ "fetched_at": "2026-10-26T06:02:45+00:00",
  "items": [
-  {
-   "date": "Sun, 25 Oct 2026 13:45:00 +0000",
-   "detail": "Sunday, October 25 2026 1:45pm - 4:30pm \n Step into a world of ambition, madness, and prophecy. Come see Macbeth, where every shadow hides a dagger, and nothing is as it seems.",
-   "title": "The Shakespeare Project of Chicago: Macbeth",
-   "url": "https://mppl.libnet.info/event/16138104"
-  },
   {
    "date": "Mon, 26 Oct 2026 10:00:00 +0000",
    "detail": "Monday, October 26 2026 10:00am - 10:30am \n Konnichiwa! Join us for an interactive, bilingual storytime with stories, songs, rhymes, and activities that celebrate the Japanese language and culture!",
@@ -360,6 +354,12 @@
    "detail": "Monday, November 09 2026 9:30am - 10:00am \n Bring the whole family and join us for an interactive storytime with high-energy stories, songs, and activities.",
    "title": "Family Storytime",
    "url": "https://mppl.libnet.info/event/16637670"
+  },
+  {
+   "date": "Mon, 09 Nov 2026 10:30:00 +0000",
+   "detail": "Monday, November 09 2026 10:30am - 11:00am \n Grow your little learner's literacy and language skills at this playful storytime full of wiggles, wonder, and fun!",
+   "title": "Toddler Storytime",
+   "url": "https://mppl.libnet.info/event/16637798"
   }
  ],
  "source": "Mount Prospect Public Library — Events"

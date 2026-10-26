@@ -1,18 +1,6 @@
 {
- "fetched_at": "2026-10-25T22:00:34+00:00",
+ "fetched_at": "2026-10-26T06:02:45+00:00",
  "items": [
-  {
-   "date": "Sun, 25 Oct 2026 00:00:00 +0000",
-   "detail": "Sunday, October 25 2026 12:00am - 11:59pm \n Enter our 4th annual Wicked Good Writing Contest!\nFor grades K-8.",
-   "title": "Wicked Good Writing Contest",
-   "url": "https://desplaines.libnet.info/event/17138193"
-  },
-  {
-   "date": "Sun, 25 Oct 2026 10:00:00 +0000",
-   "detail": "Sunday, October 25 2026 10:00am - 4:00pm \n Gubernatorial Election",
-   "title": "Early Voting",
-   "url": "https://desplaines.libnet.info/event/14863262"
-  },
   {
    "date": "Mon, 26 Oct 2026 00:00:00 +0000",
    "detail": "Monday, October 26 2026 12:00am - 11:59pm \n Enter our 4th annual Wicked Good Writing Contest!\nFor grades K-8.",
@@ -360,6 +348,18 @@
    "detail": "Thursday, November 05 2026 4:00pm - 5:00pm \n Come to this taste-test, you will be surprised by what awaits you!\nAges 9-12.",
    "title": "Munch Madness",
    "url": "https://desplaines.libnet.info/event/17187755"
+  },
+  {
+   "date": "Thu, 05 Nov 2026 17:00:00 +0000",
+   "detail": "Thursday, November 05 2026 5:00pm - 6:00pm \n Come in and get to know your teen librarians!",
+   "title": "Book a Teen Librarian",
+   "url": "https://desplaines.libnet.info/event/16339449"
+  },
+  {
+   "date": "Thu, 05 Nov 2026 17:30:00 +0000",
+   "detail": "Thursday, November 05 2026 5:30pm - 7:30pm \n ¿Tiene alguna pregunta sobre tecnología o sobre cómo usar los servicios de la biblioteca? La asistencia se brinda por orden de llegada y está limitada a 15 minutos. No se requiere inscripción.",
+   "title": "Tech en el Forum (Spanish)",
+   "url": "https://desplaines.libnet.info/event/17571344"
   }
  ],
  "source": "Des Plaines Public Library — Events"
