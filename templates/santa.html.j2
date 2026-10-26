@@ -1,4 +1,13 @@
 {% from "_signup.html.j2" import signup_css, signup_form, signup_runtime -%}
+{% macro look_meanwhile(places, hub_url) -%}
+  <h2 class="events-heading">Where to look meanwhile</h2>
+  <ul class="events">
+    {% for pl in places %}
+    <li style="--town:{{ pl.color }}"><strong style="color:{{ pl.color }}">{{ pl.name }}</strong>{% for l in pl.links %} &middot; <a href="{{ l.url }}" rel="noopener">{{ l.title }}</a>{% endfor %}{% if pl.tree %} &middot; Tree lighting: {{ pl.tree }}{% else %} &middot; Tree lighting: date TBA{% endif %}</li>
+    {% endfor %}
+  </ul>
+  <p class="note">Tree lighting dates appear only once the town's own 2026 listing names them. <a href="{{ hub_url }}holidays/">All tree lightings &rarr;</a></p>
+{%- endmacro %}
 {# ROADMAP.md item 379: every Santa event across the towns, Nov 1 - Dec 24, grouped by date. Before the season or after it the page stays up (indexed) with an honest empty state and a reminder signup. Styling copied from holidays.html.j2. #}
 <!doctype html>
 <html lang="en">
@@ -179,8 +188,10 @@
   </ul>
   {% endfor %}
   <p class="note">Every event above comes from that town's own library, park district or village calendar and links to its listing. Check the listing for cost, ages and whether registration is needed.</p>
+  {{ look_meanwhile(places, hub_url) }}
   {% else %}
   <p class="note">{{ empty_message }}</p>
+  {{ look_meanwhile(places, hub_url) }}
   {% endif %}
   {% if reminder_tag %}
   {{ signup_form(newsletter, "newsletter-signup", "bd-email", reminder_tag, "santa", reminder_headline) }}

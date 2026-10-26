@@ -220,9 +220,9 @@ doesn't re-suggest something already shipped.
 
 **Build queue (by deadline; refreshed by the research loop, item 346).**
 Pick from the top unless the owner has flagged something else:
-0. **323**: leaf pickup (in season now). **393** (Thanksgiving issue, by Nov 20).
+0. **323**: leaf pickup (step 1 done: round-20 probes for the five villages are in `config/url_probes.yaml`; read `data/url_probes.json` on origin/main next firing, then build the page). **393** (Thanksgiving issue, by Nov 20).
 2. **313, 314**: the sales mock-up and starter pack (before outreach).
-3. **389, 390**: /santa/ while empty; promo receipts.
+3. **390**: promo receipts.
 4. **328** (probe first), then **325** (by Nov 15), then **385** (holiday
    creatives, from Nov 1), then the rest by priority.
 
@@ -18108,7 +18108,7 @@ hosting public events, and nobody has used that list.
 
 #### P2 (new)
 
-389. **Make `/santa/` useful while it's empty.** Build loop: in the empty
+389. ✅ DONE ("Where to look meanwhile": each town's park district and village links from `evergreen:` plus the confirmed tree-lighting label or "date TBA"; shown in the empty state and below the list once events exist; tests) **Make `/santa/` useful while it's empty.** Build loop: in the empty
      state, add **"Where to look meanwhile"**, one line per town linking
      the park district's (and village's) special-events page as
      `evergreen` links, already in config for most towns. Show the

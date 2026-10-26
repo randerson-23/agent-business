@@ -2266,6 +2266,17 @@ def select_santa_events(blocks: list[dict], today: date) -> list[dict]:
     return picked
 
 
+def santa_look_links(region_cfg: dict) -> list[dict]:
+    """ROADMAP.md item 389: where to look for Santa events meanwhile, from
+    the town's own `evergreen:` links (its park district and village)."""
+    out = []
+    for e in region_cfg.get("evergreen") or []:
+        title = str(e.get("title") or "")
+        if e.get("url") and re.search(r"park district|^village of|^city of", title, re.IGNORECASE):
+            out.append({"title": title, "url": e["url"]})
+    return out[:2]
+
+
 def render_santa_page(entries: list[dict], now: datetime, analytics: dict | None = None, newsletter: dict | None = None, event_page_paths: set[str] | None = None) -> str:
     """The /santa/ page. `entries` is [{region_name, region_url, events}]."""
     today = now.astimezone(LOCAL_TZ).date()
@@ -2298,6 +2309,7 @@ def render_santa_page(entries: list[dict], now: datetime, analytics: dict | None
         heading=f"Santa near you, {year}",
         subheading=f"Breakfast with Santa, Santa visits and photos in {town_names}, each linked to the listing it came from.",
         days=days,
+        places=[{"name": e["region_name"], "color": EMAIL_TOWN_COLORS[i % len(EMAIL_TOWN_COLORS)][0], "links": e.get("links") or [], "tree": (e.get("tree") or {}).get("label") if e.get("tree") else None} for i, e in enumerate(entries)],
         empty_message="Park districts usually post Santa events in early November; they appear here as soon as they do." if year == today.year else f"Santa events for {year} are usually posted in early November. Sign up below and we'll email you when they appear.",
         reminder_tag=None if in_season else f"remind:santa-{year}",
         reminder_headline=f"Email me when the {year} Santa events are posted",
@@ -7174,7 +7186,7 @@ def main() -> None:
                 for e in select_holiday_events(blocks, local_today)
             ]
         warm_found += warm_prospects.collect_hosts([e for b in blocks for e in b.get("events", [])], region["name"])
-        santa_entries.append({"region_name": region["name"], "region_url": SITE_BASE_URL + region_id + "/", "events": [dict(e, town=e.get("town") or region["name"], state=e.get("state") or region.get("state")) for e in select_santa_events(blocks, local_today)]})
+        santa_entries.append({"region_name": region["name"], "region_url": SITE_BASE_URL + region_id + "/", "tree": tree_lighting, "links": santa_look_links(region_cfg), "events": [dict(e, town=e.get("town") or region["name"], state=e.get("state") or region.get("state")) for e in select_santa_events(blocks, local_today)]})
         # ROADMAP.md item 258: the town's holiday page - free events from its
         # own feeds plus any paid, labelled listings.
         holiday_listings = build_holiday_listings(sponsors_cfg, region_id, local_today)
