@@ -155,6 +155,7 @@ This weekend, across the northwest suburbs
 {% if edition_block.night_line %}<div style="padding-top:8px; font-size:16px;">🌙 {{ edition_block.night_line }}</div>{% endif %}
 {% if edition_block.trunks %}<div style="padding-top:8px; font-size:16px;"><strong>Trunk-or-treats this weekend</strong>{% for t in edition_block.trunks %}<div style="padding-top:2px;">{{ t.when }} &nbsp;·&nbsp; {{ t.town }} &nbsp;·&nbsp; {% if t.url %}<a href="{{ t.url }}" class="wt-brand" style="color:#ae1800;">{{ t.title|display_title }}</a>{% else %}{{ t.title|display_title }}{% endif %}</div>{% endfor %}</div>{% endif %}
 <div style="padding-top:8px; font-size:16px; font-weight:bold;"><a href="{{ edition_block.link }}" class="wt-brand" style="color:#ae1800; text-decoration:underline;">{{ edition_block.link_label }}</a></div>
+{% if edition_block.extra_link %}<div style="padding-top:6px; font-size:16px; font-weight:bold;"><a href="{{ edition_block.extra_link }}" class="wt-brand" style="color:#ae1800; text-decoration:underline;">{{ edition_block.extra_label }}</a></div>{% endif %}
 </td>
 </tr>
 <tr><td style="padding:0 0 16px 0;"></td></tr>
