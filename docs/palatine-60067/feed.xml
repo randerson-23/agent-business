@@ -3,8 +3,8 @@
 <channel>
   <title>Within Ten — Upcoming events in Palatine</title>
   <link>https://withintenmiles.com/</link>
-  <description>Upcoming events in Palatine, soonest first - aggregated automatically from village, library, park district and school-district calendars. This build reached 19 of 25 configured sources. 1 source is shown from its last update, up to 2 hours ago.</description>
-  <lastBuildDate>Tue, 27 Oct 2026 14:28:58 +0000</lastBuildDate>
+  <description>Upcoming events in Palatine, soonest first - aggregated automatically from village, library, park district and school-district calendars. This build reached 21 of 25 configured sources. 1 source is shown from its last update, up to 10 hours ago.</description>
+  <lastBuildDate>Tue, 27 Oct 2026 22:00:43 +0000</lastBuildDate>
   <item>
     <title>Palatine: Rope</title>
     <link>https://withintenmiles.com/palatine-60067/#ev-rope-2026-10-28</link>
@@ -124,6 +124,14 @@
     <description>A DOLL'S HOUSE by Henrik Ibsen Adapted by Amy Herzog Ibsen’s celebrated play thrust drama firmly into the modern age when it premiered in 1879. Now, nearly… Official listing: https://events.harpercollege.edu/event/a-dolls-house-by-henrik-ibsen-adapted-by-amy-herzog</description>
     <pubDate>Sat, 21 Nov 2026 14:00:00 +0000</pubDate>
     <source url="https://events.harpercollege.edu/event/a-dolls-house-by-henrik-ibsen-adapted-by-amy-herzog">Harper College — Public Events</source>
+  </item>
+  <item>
+    <title>Palatine: Holiday Tree Lighting Ceremony</title>
+    <link>https://withintenmiles.com/palatine-60067/#ev-holiday-tree-lighting-ceremony-2026-11-21</link>
+    <guid isPermaLink="true">https://withintenmiles.com/palatine-60067/#ev-holiday-tree-lighting-ceremony-2026-11-21</guid>
+    <description>Join Mayor Schwantz and Santa for the annual Holiday Tree Light Official listing: https://www.palatine.il.us/common/modules/iCalendar/iCalendar.aspx?feed=calendar&amp;catID=14</description>
+    <pubDate>Sat, 21 Nov 2026 16:45:00 +0000</pubDate>
+    <source url="https://www.palatine.il.us/common/modules/iCalendar/iCalendar.aspx?feed=calendar&amp;catID=14">Village of Palatine — Calendar</source>
   </item>
   <item>
     <title>Palatine: A Doll's House by Henrik Ibsen Adapted by Amy Herzog</title>

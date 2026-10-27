@@ -10,9 +10,9 @@ Businesses whose own events appeared on a town page in the last 60 days or the n
 
 | Host | Town | Events |
 |---|---|---|
-| Napleton Palatine Hyundai | Palatine | FREE Trunk or Treat at Napleton Palatine Hyundai (2026-10-22) |
-| Napleton's Palatine Mazda | Palatine | FREE Trunk or Treat at Napleton's Palatine Mazda (2026-10-22) |
-| Napleton's Palatine Subaru | Palatine | FREE Trunk or Treat at Napleton's Palatine Subaru (2026-10-22) |
+| Napleton Palatine Hyundai | Palatine | FREE Trunk or Treat at Napleton Palatine Hyundai (2026-10-22); FREE Trunk or Treat at Napleton Palatine Hyundai (2026-10-24) |
+| Napleton's Palatine Mazda | Palatine | FREE Trunk or Treat at Napleton's Palatine Mazda (2026-10-22); FREE Trunk or Treat at Napleton's Palatine Mazda (2026-10-24) |
+| Napleton's Palatine Subaru | Palatine | FREE Trunk or Treat at Napleton's Palatine Subaru (2026-10-22); FREE Trunk or Treat at Napleton's Palatine Subaru (2026-10-24) |
 
 ### Venues that already publish calendars
 

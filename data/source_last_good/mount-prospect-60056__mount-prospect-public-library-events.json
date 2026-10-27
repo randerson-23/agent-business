@@ -1,5 +1,5 @@
 {
- "fetched_at": "2026-10-27T12:24:50+00:00",
+ "fetched_at": "2026-10-27T22:00:43+00:00",
  "items": [
   {
    "date": "Tue, 27 Oct 2026 10:00:00 +0000",
@@ -18,12 +18,6 @@
    "detail": "Tuesday, October 27 2026 11:30am - 12:15pm \n Join us each week for storytime, sing-alongs, and developmental play experiences that encourage learning through play.",
    "title": "Play and Learn",
    "url": "https://mppl.libnet.info/event/16749803"
-  },
-  {
-   "date": "Tue, 27 Oct 2026 16:30:00 +0000",
-   "detail": "Tuesday, October 27 2026 4:30pm - 5:30pm \n Join other manga readers to share your recent reads! We'll chat about things we loved (or didn't) and get some recommendations. Bring your library card so you can check out your next great read.",
-   "title": "Teen Manga Hangout",
-   "url": "https://mppl.libnet.info/event/16533457"
   },
   {
    "date": "Tue, 27 Oct 2026 18:00:00 +0000",
@@ -360,6 +354,12 @@
    "detail": "Tuesday, November 10 2026 12:00am - 11:59pm \n Bring a puzzle, take a puzzle! Tables will be set up in the lobby for folks to stop by to swap puzzles.",
    "title": "Puzzle Swap",
    "url": "https://mppl.libnet.info/event/16493074"
+  },
+  {
+   "date": "Tue, 10 Nov 2026 09:30:00 +0000",
+   "detail": "Tuesday, November 10 2026 9:30am - 10:00am \n A lifelong love of reading starts at birth! Join us for songs, rhymes, stories, and playtime made specially for infants.",
+   "title": "Baby Storytime",
+   "url": "https://mppl.libnet.info/event/16637816"
   }
  ],
  "source": "Mount Prospect Public Library — Events"

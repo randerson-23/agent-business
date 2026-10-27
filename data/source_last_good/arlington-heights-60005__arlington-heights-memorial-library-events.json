@@ -1,54 +1,6 @@
 {
- "fetched_at": "2026-10-19T15:40:11+00:00",
+ "fetched_at": "2026-10-27T22:00:43+00:00",
  "items": [
-  {
-   "date": "2026-10-19",
-   "detail": "",
-   "title": "Kids' Time",
-   "url": "https://www.ahml.info/scheduling/reservation/224212"
-  },
-  {
-   "date": "2026-10-20",
-   "detail": "",
-   "title": "Read to Learn (District 214)",
-   "url": "https://www.ahml.info/scheduling/reservation/194395"
-  },
-  {
-   "date": "2026-10-21",
-   "detail": "",
-   "title": "Baby Time",
-   "url": "https://www.ahml.info/scheduling/reservation/224133"
-  },
-  {
-   "date": "2026-10-22",
-   "detail": "",
-   "title": "Toddler Time",
-   "url": "https://www.ahml.info/scheduling/reservation/224176"
-  },
-  {
-   "date": "2026-10-23",
-   "detail": "",
-   "title": "Senior Center: Travelogue",
-   "url": "https://www.ahml.info/scheduling/reservation/224946"
-  },
-  {
-   "date": "2026-10-24",
-   "detail": "",
-   "title": "One Book, One Village at Arlington Heights' Community Open House",
-   "url": "https://www.ahml.info/scheduling/reservation/226814"
-  },
-  {
-   "date": "2026-10-25",
-   "detail": "",
-   "title": "Makerplace Using Canva AI: Laser Etch a Glass",
-   "url": "https://www.ahml.info/scheduling/reservation/224151"
-  },
-  {
-   "date": "2026-10-26",
-   "detail": "",
-   "title": "Kids' Time",
-   "url": "https://www.ahml.info/scheduling/reservation/224214"
-  },
   {
    "date": "2026-10-27",
    "detail": "",
@@ -58,7 +10,7 @@
   {
    "date": "2026-10-28",
    "detail": "",
-   "title": "Senior Center: iPhone & iPad Beyond Basics (Day 2)",
+   "title": "CANCELED: Senior Center: iPhone & iPad Beyond Basics (Day 2)",
    "url": "https://www.ahml.info/scheduling/reservation/225333"
   },
   {
@@ -100,14 +52,14 @@
   {
    "date": null,
    "detail": "",
-   "title": "Beginning ESL",
-   "url": "https://www.ahml.info/scheduling/reservation/198109"
+   "title": "Culture & Conversation (level: intermediate +)",
+   "url": "https://www.ahml.info/scheduling/reservation/198079"
   },
   {
    "date": null,
    "detail": "",
-   "title": "Culture & Conversation (level: intermediate +)",
-   "url": "https://www.ahml.info/scheduling/reservation/198079"
+   "title": "Beginning ESL",
+   "url": "https://www.ahml.info/scheduling/reservation/198109"
   },
   {
    "date": null,
@@ -190,14 +142,14 @@
   {
    "date": null,
    "detail": "",
-   "title": "Play Time",
-   "url": "https://www.ahml.info/scheduling/reservation/224255"
+   "title": "How to Use Your iPad/iPhone",
+   "url": "https://www.ahml.info/scheduling/reservation/231793"
   },
   {
    "date": null,
    "detail": "",
-   "title": "How to Use Your iPad/iPhone",
-   "url": "https://www.ahml.info/scheduling/reservation/231793"
+   "title": "Play Time",
+   "url": "https://www.ahml.info/scheduling/reservation/224255"
   },
   {
    "date": null,
@@ -262,14 +214,14 @@
   {
    "date": null,
    "detail": "",
-   "title": "Senior Center: Film Discussion Circle",
-   "url": "https://www.ahml.info/scheduling/reservation/224982"
+   "title": "Makerplace Custom Cricut Tote Bag",
+   "url": "https://www.ahml.info/scheduling/reservation/224141"
   },
   {
    "date": null,
    "detail": "",
-   "title": "Makerplace Custom Cricut Tote Bag",
-   "url": "https://www.ahml.info/scheduling/reservation/224141"
+   "title": "Senior Center: Film Discussion Circle",
+   "url": "https://www.ahml.info/scheduling/reservation/224982"
   },
   {
    "date": null,
@@ -360,6 +312,54 @@
    "detail": "",
    "title": "Researching Grants for Your Nonprofit",
    "url": "https://www.ahml.info/scheduling/reservation/217060"
+  },
+  {
+   "date": null,
+   "detail": "",
+   "title": "Senior Center: Current Events",
+   "url": "https://www.ahml.info/scheduling/reservation/224972"
+  },
+  {
+   "date": null,
+   "detail": "",
+   "title": "Play Time",
+   "url": "https://www.ahml.info/scheduling/reservation/224258"
+  },
+  {
+   "date": null,
+   "detail": "",
+   "title": "Toddler Time",
+   "url": "https://www.ahml.info/scheduling/reservation/224173"
+  },
+  {
+   "date": null,
+   "detail": "",
+   "title": "Culture & Conversation (level: intermediate +)",
+   "url": "https://www.ahml.info/scheduling/reservation/198080"
+  },
+  {
+   "date": null,
+   "detail": "",
+   "title": "Beginning ESL",
+   "url": "https://www.ahml.info/scheduling/reservation/198110"
+  },
+  {
+   "date": null,
+   "detail": "",
+   "title": "Tech Support Drop In / Soporte Técnico",
+   "url": "https://www.ahml.info/scheduling/reservation/231798"
+  },
+  {
+   "date": null,
+   "detail": "",
+   "title": "Senior Center: iPhone & iPad Basics (Day 2)",
+   "url": "https://www.ahml.info/scheduling/reservation/225327"
+  },
+  {
+   "date": null,
+   "detail": "",
+   "title": "Makerplace \"Inspired By\" Art: OBOV Edition",
+   "url": "https://www.ahml.info/scheduling/reservation/224115"
   }
  ],
  "source": "Arlington Heights Memorial Library — Events"

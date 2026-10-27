@@ -1,15 +1,7 @@
 {
-  "arlington-heights-60005:Arlington Heights Memorial Library \u2014 Events": {
-    "exception_class": "SSLError",
-    "status_code": null
-  },
   "arlington-heights-60005:Arlington Heights School District 25 \u2014 Calendar": {
     "exception_class": "HTTPError",
     "status_code": 404
-  },
-  "mount-prospect-60056:Downtown Mount Prospect \u2014 Events": {
-    "exception_class": "ReadTimeout",
-    "status_code": null
   },
   "mount-prospect-60056:Experience Mount Prospect \u2014 Events": {
     "exception_class": "HTTPError",
