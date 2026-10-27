@@ -1,0 +1,202 @@
+{% from "_signup.html.j2" import signup_css, signup_form, signup_runtime -%}
+{% macro look_meanwhile(places, hub_url) -%}
+  <h2 class="events-heading">Where to look meanwhile</h2>
+  <ul class="events">
+    {% for pl in places %}
+    <li style="--town:{{ pl.color }}"><strong style="color:{{ pl.color }}">{{ pl.name }}</strong>{% for l in pl.links %} &middot; <a href="{{ l.url }}" rel="noopener">{{ l.title }}</a>{% endfor %}{% if pl.tree %} &middot; Tree lighting: {{ pl.tree }}{% else %} &middot; Tree lighting: date TBA{% endif %}</li>
+    {% endfor %}
+  </ul>
+  <p class="note">Tree lighting dates appear only once the town's own 2026 listing names them. <a href="{{ hub_url }}holidays/">All tree lightings &rarr;</a></p>
+{%- endmacro %}
+{# ROADMAP.md item 323: leaf pickup by town, sourced, Oct 15 - Dec 15; outside the season the page is noindex. Styling copied from holidays.html.j2. #}
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{ page_title }}</title>
+<meta name="description" content="{{ description }}">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Within Ten">
+<meta property="og:title" content="{{ page_title }}">
+<meta property="og:description" content="{{ description }}">
+<meta property="og:image" content="{{ og_image_url }}">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="{{ page_title }}">
+<meta name="twitter:description" content="{{ description }}">
+<meta name="twitter:image" content="{{ og_image_url }}">
+<link rel="canonical" href="{{ canonical_url }}">
+{% if not in_season %}<meta name="robots" content="noindex">{% endif %}
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%23201e1d'/%3E%3Ctext x='50' y='66' font-family='Arial,sans-serif' font-weight='800' font-size='58' fill='%23ec3013' text-anchor='middle'%3EW%3C/text%3E%3C/svg%3E">
+<link rel="manifest" href="{{ hub_url }}manifest.webmanifest">
+<link rel="apple-touch-icon" href="{{ hub_url }}icons/icon-192.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;800&display=optional">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;800&display=optional" rel="stylesheet" media="print" onload="this.media='all'">
+<noscript><link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;800&display=optional" rel="stylesheet"></noscript>
+<style>
+  @view-transition {
+    navigation: auto;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    ::view-transition-group(*),
+    ::view-transition-old(*),
+    ::view-transition-new(*) {
+      animation: none !important;
+    }
+  }
+  :root {
+    /* ROADMAP.md redesign (2026-09-21): "Modernist" system - see
+       region.html.j2's own copy of this block for the full rationale. */
+    --bg: #f3f2f2;
+    --card: #eae9e9;
+    --ink: #201e1d;
+    --muted: #605d5d;
+    --accent: #ec3013;
+    --accent-soft: #cc280d;
+    --accent-2-text: #ae1800;
+    --border: color-mix(in srgb, var(--ink) 40%, transparent);
+    --radius-lg: 0px;
+    --shadow-sm: none;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #171615;
+      --card: #232120;
+      --ink: #f3f2f2;
+      --muted: #a9a5a5;
+      --accent: #ff563c;
+      --accent-soft: #ff563c;
+      --accent-2-text: #ff9783;
+      --border: color-mix(in srgb, var(--ink) 30%, transparent);
+    }
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'Archivo', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+  h1, h2 { font-family: 'Archivo', system-ui, sans-serif; font-weight: 800; letter-spacing: -0.02em; }
+  .wrap { max-width: 680px; margin: 0 auto; padding: 0 20px 64px; }
+  .hero {
+    background: var(--bg);
+    color: var(--ink);
+    padding: 20px 20px 28px;
+    margin-bottom: 0;
+    border-bottom: 2px solid var(--border);
+  }
+  .hero-inner { max-width: 680px; margin: 0 auto; }
+  a.back { color: var(--muted); text-decoration: none; font-size: 12px; font-weight: 800; letter-spacing: 0.06em; text-transform: uppercase; }
+  a.back:hover { color: var(--accent-2-text); }
+  .kicker { font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; font-size: 12px; color: var(--accent-2-text); }
+  .hero h1 { margin: 10px 0 8px; font-size: 30px; color: var(--ink); }
+  .hero .sub { color: var(--muted); font-size: 15px; max-width: 560px; }
+  .entry-list { display: flex; flex-direction: column; gap: 0; margin: 24px 0; }
+  .entry {
+    background: none;
+    border: 0;
+    border-bottom: 1px solid var(--border);
+    border-radius: 0;
+    box-shadow: none;
+    padding: 16px 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 14px;
+    flex-wrap: wrap;
+  }
+  .entry:last-child { border-bottom: 0; }
+  .entry .region a { color: var(--ink); font-weight: 700; text-decoration: none; }
+  .entry .region a:hover { color: var(--accent-2-text); }
+  .entry .hours { font-weight: 700; color: var(--accent-2-text); font-size: 14.5px; text-align: right; }
+  .entry .hours a { color: inherit; text-decoration: none; }
+  .entry .hours a:hover { text-decoration: underline; }
+  .entry .hours-note { display: block; color: var(--muted); font-weight: 400; font-size: 13px; }
+  .entry .not-posted { color: var(--muted); font-size: 13.5px; text-align: right; }
+  .entry .not-posted a { color: var(--accent-2-text); font-weight: 700; text-decoration: none; }
+  .entry .not-posted a:hover { text-decoration: underline; }
+  .note { color: var(--muted); font-size: 13.5px; margin: 24px 0; }
+  .events-heading { font-size: 22px; margin: 40px 0 0; }
+  .town h3 { font-size: 17px; margin: 24px 0 8px; }
+  .town h3 a { color: var(--ink); text-decoration: none; }
+  .town h3 a:hover { color: var(--accent-2-text); }
+  .events { list-style: none; margin: 0; padding: 0; }
+  .events li { padding: 6px 0; border-bottom: 1px solid var(--border); font-size: 14.5px; }
+  .events li:last-child { border-bottom: 0; }
+  .events time { display: inline-block; min-width: 92px; color: var(--muted); font-weight: 600; }
+  .events a { color: var(--ink); text-decoration: none; }
+  .events a:hover { color: var(--accent-2-text); text-decoration: underline; }
+  a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+  footer { text-align: center; color: var(--muted); font-size: 12.5px; margin-top: 32px; border-top: 2px solid var(--border); padding-top: 18px; }
+  footer a { color: var(--accent-2-text); font-weight: 700; }
+  /* ROADMAP.md item 294: the holiday banner's winter palette (deep green, red,
+     gold), fixed so it reads the same in light and dark mode. Inline SVG only. */
+  .h-hero { position: relative; overflow: hidden; background: linear-gradient(135deg, #0f3d2e 0%, #14532d 60%, #7f1d1d 130%); color: #fdf6e3; border-bottom: 4px solid #f5c542; }
+  .h-lights { display: block; width: 100%; height: 22px; }
+  .h-hero-inner { max-width: 680px; margin: 0 auto; padding: 6px 20px 24px; }
+  .h-hero a.back { color: #cfe8d8; }
+  .h-hero a.back:hover { color: #f5c542; }
+  .h-hero .kicker { color: #f5c542; letter-spacing: 0.14em; }
+  .h-hero h1 { color: #fff; margin: 8px 0 8px; font-size: clamp(22px, 5vw, 30px); line-height: 1.15; }
+  .h-hero .sub { color: #e6f2ea; font-size: 15px; }
+  @media (prefers-reduced-motion: no-preference) {
+    .h-lights circle { animation: h-twinkle 2.6s ease-in-out infinite; }
+    .h-lights circle:nth-child(3n+2) { animation-delay: .9s; }
+    .h-lights circle:nth-child(3n) { animation-delay: 1.7s; }
+    @keyframes h-twinkle { 0%,100% { opacity: 1; } 50% { opacity: .45; } }
+  }
+  .entry { border: 1px solid var(--border); border-left: 6px solid var(--town, var(--accent)); background: var(--card); padding: 14px 16px; margin-bottom: 10px; }
+  .entry:last-child { border-bottom: 1px solid var(--border); }
+  .entry { --town-text: var(--town, var(--ink)); }
+  @media (prefers-color-scheme: dark) { .entry { --town-text: color-mix(in srgb, var(--town, #ffffff) 45%, #fff); } }
+  .entry .region a { color: var(--town-text); font-size: 17px; }
+  .entry .hours { font-size: 17px; }
+  .events .emoji { display: inline-block; width: 1.6em; }
+  .offer { margin: 28px 0 0; padding: 16px 18px; border: 2px solid #14532d; background: #f0f9f3; color: #14301f; border-radius: 12px; }
+  .offer strong { display: block; font-size: 17px; margin-bottom: 4px; }
+  .offer a { display: inline-block; margin-top: 8px; background: #f5c542; color: #14301f; font-weight: 800; text-decoration: none; padding: 8px 16px; border-radius: 999px; }
+  .offer a:hover, .offer a:focus-visible { background: #ffd966; }
+</style>
+{{ signup_css() }}
+</head>
+<body>
+<header class="h-hero">
+  <svg class="h-lights" viewBox="0 0 1200 22" preserveAspectRatio="xMidYMin slice" aria-hidden="true"><path d="M0 4 Q300 20 600 6 T1200 4" stroke="#0a2a1f" stroke-width="2" fill="none"/><circle cx="20" cy="11" r="5" fill="#ef4444"/><circle cx="60" cy="15" r="5" fill="#f5c542"/><circle cx="100" cy="11" r="5" fill="#34d399"/><circle cx="140" cy="15" r="5" fill="#60a5fa"/><circle cx="180" cy="11" r="5" fill="#ef4444"/><circle cx="220" cy="15" r="5" fill="#f5c542"/><circle cx="260" cy="11" r="5" fill="#34d399"/><circle cx="300" cy="15" r="5" fill="#60a5fa"/><circle cx="340" cy="11" r="5" fill="#ef4444"/><circle cx="380" cy="15" r="5" fill="#f5c542"/><circle cx="420" cy="11" r="5" fill="#34d399"/><circle cx="460" cy="15" r="5" fill="#60a5fa"/><circle cx="500" cy="11" r="5" fill="#ef4444"/><circle cx="540" cy="15" r="5" fill="#f5c542"/><circle cx="580" cy="11" r="5" fill="#34d399"/><circle cx="620" cy="15" r="5" fill="#60a5fa"/><circle cx="660" cy="11" r="5" fill="#ef4444"/><circle cx="700" cy="15" r="5" fill="#f5c542"/><circle cx="740" cy="11" r="5" fill="#34d399"/><circle cx="780" cy="15" r="5" fill="#60a5fa"/><circle cx="820" cy="11" r="5" fill="#ef4444"/><circle cx="860" cy="15" r="5" fill="#f5c542"/><circle cx="900" cy="11" r="5" fill="#34d399"/><circle cx="940" cy="15" r="5" fill="#60a5fa"/><circle cx="980" cy="11" r="5" fill="#ef4444"/><circle cx="1020" cy="15" r="5" fill="#f5c542"/><circle cx="1060" cy="11" r="5" fill="#34d399"/><circle cx="1100" cy="15" r="5" fill="#60a5fa"/><circle cx="1140" cy="11" r="5" fill="#ef4444"/><circle cx="1180" cy="15" r="5" fill="#f5c542"/></svg>
+  <div class="h-hero-inner">
+    <a class="back" href="{{ hub_url }}">&larr; All regions</a>
+    <div class="kicker">🍂 Leaf pickup</div>
+    <h1>{{ heading }}</h1>
+    <div class="sub">{{ subheading }}</div>
+  </div>
+</header>
+
+<div class="wrap">
+  <main>
+  <ul class="events">
+    {% for e in towns %}
+    <li style="--town:{{ e.color }}"><strong style="color:{{ e.color }}">{{ e.name }}</strong> &middot; {% if e.summary %}{{ e.summary }}{% else %}No dates confirmed here yet.{% endif %}{% if e.note %} <span class="hours-note">{{ e.note }}</span>{% endif %} <a href="{{ e.url }}" rel="noopener">Official page &rarr;</a></li>
+    {% endfor %}
+  </ul>
+  <p class="note">Each line is the village's own wording and links to the page it came from. Rules (bags, bundles, where to put them) differ by town, so check the village page before you rake. We never guess a date: where a village hasn't posted one, this page says so.</p>
+  {{ signup_form(newsletter, "newsletter-signup", "bd-email", "town:all", "leaf-pickup", "Get the weekend's events by email on Thursday.") }}
+  {{ signup_runtime(newsletter) }}
+  </main>
+
+  <footer>
+    Curious what else is happening? <a href="{{ hub_url }}">See a live region</a>.
+    <a href="{{ preferred_source_url }}" rel="noopener">Add us as a preferred source on Google</a>.
+    <br>Generated {{ generated_at }}.
+  </footer>
+</div>
+{% if analytics and analytics.configured %}
+<script data-goatcounter="https://{{ analytics.goatcounter_code }}.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+{% endif %}
+</body>
+</html>

@@ -353,6 +353,12 @@ trick_or_treat:
       time: "4–6 PM"
       place: "Downtown Mount Prospect"
 
+# ROADMAP.md item 323: leaf pickup, sourced. The Village's "Fall Leaf Collection" page was
+# found; its dates were not readable from a plain fetch, so none are stated here.
+leaf_pickup:
+  url: "https://www.mountprospect.org/services/fall_leaf_collection.php"
+  note: "See the Village's Fall Leaf Collection page for this year's schedule and rules."
+
 # ROADMAP.md item 274: no 2026 date posted yet; set `date` once the Village does.
 tree_lighting:
   url: "https://www.mountprospect.org/"

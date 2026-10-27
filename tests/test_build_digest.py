@@ -6566,3 +6566,27 @@ def test_santa_page_empty_state_points_to_each_towns_calendars_and_confirmed_tre
     assert full.index("Breakfast with Santa") < full.index("Where to look meanwhile")  # moves below the list
     cfg = {"evergreen": [{"title": "Palatine Public Library District", "url": "https://l"}, {"title": "Palatine Park District", "url": "https://p"}, {"title": "Village of Palatine", "url": "https://v"}]}
     assert [l["url"] for l in build_digest.santa_look_links(cfg)] == ["https://p", "https://v"]
+
+
+def test_leaf_pickup_page_is_sourced_season_bound_and_never_guesses_a_date():
+    # ROADMAP.md item 323.
+    def at(m, d):
+        return datetime(2026, m, d, 12, tzinfo=timezone.utc)
+    assert build_digest.is_leaf_pickup_season(at(10, 15)) and build_digest.is_leaf_pickup_season(at(12, 15))
+    assert not build_digest.is_leaf_pickup_season(at(10, 14)) and not build_digest.is_leaf_pickup_season(at(12, 16))
+    assert build_digest.prepare_leaf_pickup({}) is None
+    assert build_digest.prepare_leaf_pickup({"leaf_pickup": {"url": "javascript:alert(1)"}})["url"] in (None, "")
+    entries = [
+        {"name": "Des Plaines", "url": "https://dp/leaf", "summary": "Residential leaf collection starting Monday, October 19, 2026.", "note": None},
+        {"name": "Wheeling", "url": "https://w/yard", "summary": None, "note": "States no leaf dates."},
+    ]
+    page = build_digest.render_leaf_pickup_page(entries, at(10, 27), None, _NL)
+    assert "Residential leaf collection starting Monday, October 19, 2026." in page and 'href="https://dp/leaf"' in page
+    assert page.count("No dates confirmed here yet.") == 1 and "noindex" not in page
+    assert 'name="robots" content="noindex"' in build_digest.render_leaf_pickup_page(entries, at(12, 20), None, _NL)
+    assert build_digest.SITE_BASE_URL + "leaf-pickup/" in build_digest.collect_sitemap_urls([], None, None, True)
+    assert build_digest.SITE_BASE_URL + "leaf-pickup/" not in build_digest.collect_sitemap_urls([], None, None, False)
+    import yaml
+    for cfg in build_digest.load_regions():  # every shipped block has a village URL, and only quoted-source summaries
+        block = build_digest.prepare_leaf_pickup(cfg)
+        assert block and block["url"].startswith("https://")

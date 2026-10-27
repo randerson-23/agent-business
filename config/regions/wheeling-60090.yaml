@@ -177,6 +177,11 @@ trick_or_treat:
   hours: "3:00–7:00 PM, Saturday, October 31"
   note: "The Village's standing hours, not yet confirmed for 2026."
 
+# ROADMAP.md item 323: leaf pickup, sourced. The Village's yard-waste page states no leaf dates.
+leaf_pickup:
+  url: "https://www.wheelingil.gov/332/Refuse-Recycling-Yard-Waste"
+  note: "The Village's refuse, recycling and yard-waste page covers yard waste; it states no leaf-collection dates, so check it directly."
+
 # ROADMAP.md item 274: no 2026 date posted yet; set `date` once the Village does.
 tree_lighting:
   url: "https://www.wheelingil.gov/"

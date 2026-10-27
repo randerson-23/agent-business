@@ -220,7 +220,7 @@ doesn't re-suggest something already shipped.
 
 **Build queue (by deadline; refreshed by the research loop, item 346).**
 Pick from the top unless the owner has flagged something else:
-0. **323**: leaf pickup (step 1 done: round-20 probes for the five villages are in `config/url_probes.yaml`; read `data/url_probes.json` on origin/main next firing, then build the page). **393** (Thanksgiving issue, by Nov 20). **395, 396** (craft fairs and their organisers, by Nov 1; the first fair is Nov 7).
+0. **393** (Thanksgiving issue, by Nov 20). **395, 396** (craft fairs and their organisers, by Nov 1; the first fair is Nov 7).
 2. **313, 314**: the sales mock-up and starter pack (before outreach).
 3. **390**: promo receipts.
 4. **328** (probe first), then **325** (by Nov 15), then **385** (holiday
@@ -16305,7 +16305,7 @@ families already go**. It adds one seasonal civic page.
 
 #### P3 (new)
 
-323. **Leaf pickup by town, sourced, Oct 15 to Dec 15.** Build loop,
+323. ✅ DONE (probes answered 2026-10-26: Des Plaines and Palatine state start dates in their own words, Mount Prospect has a Fall Leaf Collection page whose dates a plain fetch cannot read, Arlington Heights lists it only in its menu, Wheeling's yard-waste page has no leaf text; `leaf_pickup:` blocks in all five region YAMLs; `/leaf-pickup/` with sourced lines and "No dates confirmed here yet." where unknown; linked from the hub and region footers, in the sitemap and indexable only Oct 15 - Dec 15, noindex otherwise; tests. Mount Prospect, Arlington Heights and Wheeling dates are a good first thing for the owner or a later probe to fill in) **Leaf pickup by town, sourced, Oct 15 to Dec 15.** Build loop,
      two steps, probe first:
 
      1. **Probe** (`config/url_probes.yaml`) the five villages'
