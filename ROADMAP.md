@@ -220,7 +220,7 @@ doesn't re-suggest something already shipped.
 
 **Build queue (by deadline; refreshed by the research loop, item 346).**
 Pick from the top unless the owner has flagged something else:
-0. **395, 396** (craft fairs and their organisers; step 1 done: round-21 probes for the fair pages and Palatine's winter market (397) are in `config/url_probes.yaml`; read `data/url_probes.json` next firing, then add confirmed fairs as `annual_events`; the first fair is Nov 7).
+0. **395, 396** (craft fairs and their organisers; step 1 done: round-21 probes for the fair pages and Palatine's winter market (397) are in `config/url_probes.yaml`; read `data/url_probes.json` next firing, then add confirmed fairs as `annual_events`; the first fair is Nov 7). Round 21 answered: Palatine Park District's Merry Makers Market and Palatine HS Boosters' Fall Craft Fair exist, Palatine's winter market is 1st/3rd Saturdays at the train station; their dates and hours are the round-22 probes.
 2. **313, 314**: the sales mock-up and starter pack (before outreach).
 3. **390**: promo receipts.
 4. **328** (probe first), then **325** (by Nov 15), then **385** (holiday
@@ -18310,7 +18310,7 @@ fairs**.
 
 #### P3 (new)
 
-398. **Warm-list accuracy: event dates and "Also at" hosts.** Build loop,
+398. ✅ DONE (event dates from the stored issue's day chip, rolling to next month/year when needed; "Also at" dealers become hosts of the same event; tests. Napleton Palatine Chevrolet appears only if a feed lists it) **Warm-list accuracy: event dates and "Also at" hosts.** Build loop,
      `scripts/warm_prospects.py`: take each event's own date from the
      stored issue's date chip or card date, not the issue's send date.
      Split *"Also at: A, B, C"* lines into separate hosts with the same

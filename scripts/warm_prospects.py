@@ -63,10 +63,34 @@ def event_host(event: dict) -> str | None:
 def collect_hosts(events: list[dict], town: str) -> list[dict]:
     found = []
     for e in events:
-        host = event_host(e)
-        if host and e.get("date_iso") and e.get("title"):
+        if not (e.get("date_iso") and e.get("title")):
+            continue
+        hosts = [event_host(e)]
+        # Item 398: a collapsed "Also at: A, B" line is the same event at more hosts.
+        hosts += [_clean(a.get("label")) for a in e.get("also_at") or [] if isinstance(a, dict)]
+        for host in dict.fromkeys(h for h in hosts if h):
             found.append({"host": host, "town": town, "title": e["title"].strip(), "date": e["date_iso"][:10]})
     return found
+
+
+_CHIP = re.compile(r">\s*([A-Z]{3})\s*</td>.{0,900}?>\s*(\d{1,2})\s*</td>", re.DOTALL)
+
+
+def _chip_date(html_before: str, issue_day: date) -> str | None:
+    """The event date from the last day chip ("SAT" / "24") before a link in a
+    stored issue; the month is the issue's, rolling to the next when the day
+    is earlier than the send date."""
+    chips = _CHIP.findall(html_before)
+    if not chips:
+        return None
+    day = int(chips[-1][1])
+    month, year = issue_day.month, issue_day.year
+    if day < issue_day.day - 3:
+        month, year = (1, year + 1) if month == 12 else (month + 1, year)
+    try:
+        return date(year, month, day).isoformat()
+    except ValueError:
+        return None
 
 
 def issue_hosts(directory: Path | None = None, town_of=None) -> list[dict]:
@@ -78,11 +102,17 @@ def issue_hosts(directory: Path | None = None, town_of=None) -> list[dict]:
     found = []
     for path in sorted(directory.glob("*.html")):
         text = path.read_text(encoding="utf-8", errors="ignore")
-        for raw in re.findall(r"<a\b[^>]*>([^<]{5,120})</a>", text):
-            title = unescape(raw).strip()
+        try:
+            issue_day = date.fromisoformat(path.stem)
+        except ValueError:
+            continue
+        for m in re.finditer(r"<a\b[^>]*>([^<]{5,120})</a>", text):
+            title = unescape(m.group(1)).strip()
             host = event_host({"title": title})
             if host:
-                found.append({"host": host, "town": (town_of(title) if town_of else "") or "", "title": title, "date": path.stem})
+                # item 398: the event's own date from its card's day chip, else the send date
+                day = _chip_date(text[max(0, m.start() - 1500):m.start()], issue_day) or path.stem
+                found.append({"host": host, "town": (town_of(title) if town_of else "") or "", "title": title, "date": day})
     return found
 
 

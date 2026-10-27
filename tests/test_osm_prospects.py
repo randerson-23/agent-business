@@ -133,3 +133,20 @@ def test_warm_list_rejects_closure_notes_backfills_from_issues_and_splits_venue_
     new = wp.splice_section(old, wp.render_section(reg))
     assert "Napleton" in new and "No non-agency hosts" not in new and new.count("## Palatine") == 1
     assert wp.splice_section("# T\n\n## Palatine\n", wp.render_section(reg)).index("Warm") < wp.splice_section("# T\n\n## Palatine\n", wp.render_section(reg)).index("## Palatine")
+
+
+def test_warm_hosts_take_the_events_own_date_and_split_also_at_hosts(tmp_path):
+    # ROADMAP.md item 398.
+    import warm_prospects as wp
+    from datetime import date
+    issues = tmp_path / "issues"
+    issues.mkdir()
+    chip = '<td>SAT</td></tr><tr><td>24</td></tr></table><a href="x">FREE Trunk or Treat at Napleton Palatine Hyundai</a>'
+    (issues / "2026-10-22.html").write_text(chip)
+    found = wp.issue_hosts(issues)
+    assert found[0]["date"] == "2026-10-24"
+    (issues / "2026-12-30.html").write_text('<td>SAT</td></tr><tr><td>2</td></tr></table><a href="x">Party at Acme Bowl</a>')
+    assert [f["date"] for f in wp.issue_hosts(issues) if f["host"] == "Acme Bowl"] == ["2027-01-02"]
+    event = {"title": "Trunk or Treat at Napleton Palatine Hyundai", "date_iso": "2026-10-24T12:00:00", "also_at": [{"label": "Napleton Palatine Chevrolet", "anchor_id": "a"}, {"label": "Library", "anchor_id": "b"}]}
+    hosts = [f["host"] for f in wp.collect_hosts([event], "Palatine")]
+    assert hosts == ["Napleton Palatine Hyundai", "Napleton Palatine Chevrolet"]
