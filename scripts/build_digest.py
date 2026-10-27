@@ -5364,6 +5364,10 @@ def build_combined_email_subject_line(sections: list[dict], now: datetime | None
     if now is not None and email_edition(now) == "halloween":
         count = _COUNT_WORDS.get(len(sections), str(len(sections))).lower()
         return truncate(f"Trick-or-treat hours, all {count} towns, plus Halloween weekend", HALLOWEEN_SUBJECT_MAX_LEN)
+    # ROADMAP.md item 393: so does the Thanksgiving-weekend issue (the Wednesday
+    # before); the longer wording is 66 characters, so the short form is used.
+    if now is not None and email_edition(now) == "holiday":
+        return "Thanksgiving weekend: lights, shops & more"
     attendable = _round_robin_attendable(sections)
     if not attendable:
         return f"This week across {_join_names([s['region_name'] for s in sections])}: what's coming up"
@@ -6344,6 +6348,8 @@ def build_email_edition_block(edition: str | None, halloween: dict | None, holid
             "pills": pills,
             "link": SITE_BASE_URL + "holidays/?utm_source=email&utm_campaign=edition",
             "link_label": "Tree lightings and holiday events →",
+            "extra_link": SITE_BASE_URL + "santa/?utm_source=email&utm_campaign=edition",
+            "extra_label": "Santa near you →",
         }
     return None
 

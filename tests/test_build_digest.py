@@ -6590,3 +6590,17 @@ def test_leaf_pickup_page_is_sourced_season_bound_and_never_guesses_a_date():
     for cfg in build_digest.load_regions():  # every shipped block has a village URL, and only quoted-source summaries
         block = build_digest.prepare_leaf_pickup(cfg)
         assert block and block["url"].startswith("https://")
+
+
+def test_thanksgiving_weekend_issue_has_a_fixed_subject_a_santa_link_and_stays_under_the_clip():
+    # ROADMAP.md item 393.
+    holiday = {"towns": [{"name": "Arlington Heights", "date": "Fri Nov 27"}, {"name": "Palatine", "date": "Sat Nov 21"}], "offer": True}
+    wed, earlier = _at_local(2026, 11, 25), _at_local(2026, 11, 18)
+    subject = build_digest.build_combined_email_subject_line(_join_sections(), wed)
+    assert subject == "Thanksgiving weekend: lights, shops & more" and len(subject) <= build_digest.SUBJECT_MAX_LEN
+    assert build_digest.build_combined_email_subject_line(_join_sections(), earlier) != subject
+    html = build_digest.render_combined_email_digest(_join_sections(), "Nov 27–29", wed, None, holiday=holiday)
+    assert "TREE LIGHTINGS AND SMALL BUSINESS SATURDAY" in html and "santa/?utm_source=email" in html and "Small Business Saturday Nov 28" in html
+    plain = build_digest.render_combined_email_digest(_join_sections(), "Nov 20–22", earlier, None, holiday=holiday)
+    assert "TREE LIGHTINGS AND SMALL BUSINESS SATURDAY" not in plain and "santa/?utm_source=email" not in plain
+    assert len(html.encode("utf-8")) < 102_000

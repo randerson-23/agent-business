@@ -220,7 +220,7 @@ doesn't re-suggest something already shipped.
 
 **Build queue (by deadline; refreshed by the research loop, item 346).**
 Pick from the top unless the owner has flagged something else:
-0. **393** (Thanksgiving issue, by Nov 20). **395, 396** (craft fairs and their organisers, by Nov 1; the first fair is Nov 7).
+0. **395, 396** (craft fairs and their organisers; step 1 done: round-21 probes for the fair pages and Palatine's winter market (397) are in `config/url_probes.yaml`; read `data/url_probes.json` next firing, then add confirmed fairs as `annual_events`; the first fair is Nov 7).
 2. **313, 314**: the sales mock-up and starter pack (before outreach).
 3. **390**: promo receipts.
 4. **328** (probe first), then **325** (by Nov 15), then **385** (holiday
@@ -18210,7 +18210,7 @@ shows it re-added in an Oct 22 auto-build commit.
      keeps the previous rows and adds the dated note, and a success
      replaces them.
 
-393. **The Thanksgiving weekend issue (send of Wed Nov 25).** Build loop,
+393. ✅ DONE (fixed subject "Thanksgiving weekend: lights, shops & more" (42 chars; the 66-char wording is over the 50 limit), the existing holiday-edition lead block (tree lightings, Small Business Saturday) gains a "Santa near you" link; the Thanksgiving-week closures line already sits above it; item 377's Small Business Saturday section is not built yet; tests incl. the clip) **The Thanksgiving weekend issue (send of Wed Nov 25).** Build loop,
      modelled on item 348:
 
      - **Fixed subject** in that send week: *"Thanksgiving weekend: tree

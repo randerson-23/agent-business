@@ -167,3 +167,39 @@ probes:
       - '(?i)no school[^<]{0,80}'
       - '(?i)2026[-–/ ]?(?:20)?27[^<]{0,60}'
     follow: '(?i)2026-?27|\.pdf'
+  # Round 21 (items 395 and 397): holiday craft fairs' first-party pages and Palatine's winter market.
+  - url: https://www.palatineparks.org/
+    item: 395
+    purpose: Palatine Park District (Merry Makers Market) - a craft fair or holiday market page with a date?
+    patterns:
+      - '(?i)(?:craft|holiday) (?:fair|market|bazaar|boutique)[^<]{0,160}'
+      - '(?i)makers? market[^<]{0,160}'
+    follow: '(?i)merry|makers|market|craft'
+  - url: https://phs.d211.org/
+    item: 395
+    purpose: Palatine High School (D211) - a craft fair or holiday market page with a date?
+    patterns:
+      - '(?i)(?:craft|holiday) (?:fair|market|bazaar|boutique)[^<]{0,160}'
+      - '(?i)makers? market[^<]{0,160}'
+    follow: '(?i)craft|bazaar|boutique|holiday'
+  - url: https://fhs.d211.org/
+    item: 395
+    purpose: Fremd High School (D211) - a craft fair or holiday market page with a date?
+    patterns:
+      - '(?i)(?:craft|holiday) (?:fair|market|bazaar|boutique)[^<]{0,160}'
+      - '(?i)makers? market[^<]{0,160}'
+    follow: '(?i)craft|bazaar|boutique|holiday'
+  - url: https://phs.d214.org/
+    item: 395
+    purpose: Prospect High School (D214) - a craft fair or holiday market page with a date?
+    patterns:
+      - '(?i)(?:craft|holiday) (?:fair|market|bazaar|boutique)[^<]{0,160}'
+      - '(?i)makers? market[^<]{0,160}'
+    follow: '(?i)craft|bazaar|boutique|holiday'
+  - url: https://www.palatine.il.us/217/Farmers-Market
+    item: 397
+    purpose: Palatine winter farmers market - 2026-27 schedule (1st and 3rd Saturdays, 9-12, Nov-Apr?)
+    patterns:
+      - '(?i)winter[^<]{0,200}'
+      - '(?i)(?:first|1st) and (?:third|3rd)[^<]{0,120}'
+      - '(?i)saturdays?[^<]{0,120}'
