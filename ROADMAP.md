@@ -228,6 +228,20 @@ Pick from the top unless the owner has flagged something else:
 
 #### Needs Ryan
 
+**The whole ask (November 2026), about 45 minutes in total (item 399).**
+Do these five, in this order. Everything else in this section is
+reference, *not now*.
+
+1. **Bing API key (2 min):** Bing Webmaster Tools → Settings → API access
+   → copy the key into the repository secret `BING_WEBMASTER_API_KEY`.
+2. **GoatCounter API key (2 min):** GoatCounter → Settings → API → a
+   read-only key into the secret `GOATCOUNTER_TOKEN`.
+3. **The $50 Meta test: reply "yes", "holiday" or "no" (1 min).** If
+   yes, set it up from `META_AD_KIT.md` (about 10 min).
+4. **Send the emails in `OUTREACH_BATCH.md` (about 15 min)** once it
+   exists (item 401). The offer is the free first Event Promo.
+5. **Buttondown sender name → "Within Ten" (30 sec).**
+
 Everything below needs the owner to take an action outside this repo.
 **Cleaned up 2026-10-06 at Ryan's request:** stale and closed entries
 were removed, so this section lists only what is live. It is ranked by
@@ -18316,6 +18330,86 @@ and **booster clubs and PTOs** as Event Promo buyers. The design/UX angle
 is **the warm list as rendered**: wrong dates and a missing dealership.
 
 
+#### Research pass 2026-10-27 (hundred-and-sixth pass)
+
+Overnight the build loop shipped item 323: **`/leaf-pickup/`**, sourced
+town by town, with Des Plaines (*"starting Monday, October 19 …
+through early December"*) and Palatine (*"Curbside Leaf Collection
+Begins October 26"*) quoting their villages, and the other three
+honestly marked *"No dates confirmed here yet"*. It reads well. The
+pages are in good shape. The business isn't. **Six weekly issues
+have gone out to one subscriber**, and the owner's dated actions from
+the last two weeks show no sign of being done (the Bing key is unset,
+there is no Meta decision, and the outreach batch is unsent). This pass
+looks at that gap instead of at another page. The constraint
+`BUSINESS_PLAN.md` was built on is **30–60 owner minutes a month**, and
+this roadmap now asks for far more than that.
+
+| Angle | What it is / what we found | Why it matters here |
+|---|---|---|
+| **The owner queue, measured** (the "Needs Ryan" section, today) | It holds **about 20 open owner asks**. The minute estimates written on them add up to roughly **3 hours**, and that excludes the four marked *"about an hour"* (outreach batch, holiday outreach, paper placements, franchise outreach). Item 165 capped open owner **decisions** at three, but its own text exempts *"quick actions that need no decision"*. Every pass since has added quick actions through that gap, **this loop included** (passes 82–105 added at least nine) | `BUSINESS_PLAN.md`: *"Ongoing: ~30–60 minutes/month."* The queue is now about four months of the owner's budget, presented as one list. A long list of equal-looking asks produces exactly what the repo shows: nothing picked. The loop's job is to choose (item 399) and to stop adding without retiring (item 400) |
+| **What makes outreach slow** (`OUTREACH_TEMPLATES.md`; public contact pages) | The templates contain **no recipient at all**: zero addresses, zero contact pages. So *"send the outreach batch, about an hour"* really means *research who to write to, then write*. A check of one recipient shows why. The Village of Mount Prospect's Communications Division page lists its directors but no address, and the only addresses found are **individual staff emails in years-old press releases**. The Daily Herald's archived contact page says *"email is the best way"* but doesn't show the address. Role addresses, such as a newsroom's `news@` or a park district's contact form, are what's usually published | The hour is mostly lookup, which the build loop can do. Individual staff addresses must **not** go into this **public repo** (item 374's rule). Role addresses and contact-page URLs are fine. With those filled in, *"an hour"* becomes about ten minutes of pasting (item 401) |
+| **`/leaf-pickup/` on a phone (design/UX)** | One clear line per town in the village's own words, an *"Official page →"* link each, an honest *"we never guess a date"* note and the signup. It is the pattern from `/trick-or-treat/` working as intended. One gap: it isn't linked from the Thursday email in season | **No new item.** The email link is a one-line addition to item 323's season rule, noted for the build loop's next touch of that page |
+
+#### P1 (new)
+
+399. **One short owner list: the whole ask for November, about 45
+     minutes.** Research loop, done in this pass: a block at the very
+     top of Needs Ryan, *"The whole ask (November 2026)"*, with **five**
+     items in order, each with its minutes. Everything below it stays as
+     reference, explicitly *"not now"*. The five are chosen for what
+     decides money (found, proven, kept, sold):
+
+     1. **Bing API key → `BING_WEBMASTER_API_KEY`** (2 min). Findability:
+        the code is built and waiting.
+     2. **GoatCounter API key → `GOATCOUNTER_TOKEN`** (2 min).
+        Measurement: the audience snapshot and sponsor numbers are built
+        and waiting.
+     3. **Say yes, holiday or no to the $50 Meta test** (1 min to decide,
+        10 to set up from `META_AD_KIT.md`). Audience: the one channel
+        that can move the list past one.
+     4. **Send five ready emails from `OUTREACH_BATCH.md`** (about 15 min,
+        once item 401 ships): the Napleton dealerships, two craft-fair
+        organisers and two downtown associations. Revenue: the founding
+        free Event Promo (item 388) is the offer.
+     5. **Buttondown sender name "Within Ten"** (30 sec).
+
+400. **Cap the owner's list by minutes, not just by decisions.** Add to
+     the working agreements, next to item 165's rule: *"The research loop
+     keeps the owner's open asks to five items and about 60 minutes in
+     total. It adds one only by retiring or parking another, and says
+     which."* Remove item 165's exemption for quick actions. This applies
+     to this loop first.
+
+401. **`OUTREACH_BATCH.md`: ready-to-send emails, recipients included.**
+     Build loop, regenerated weekly:
+
+     - One block per message: **Where to send** (a role address such as
+       `info@` or `news@`, or the organisation's contact-form URL, found
+       by URL probe on its own site, with that source), **Subject**, and
+       **Body** with the template (§13a, §13b, §14a, §14b) filled in:
+       business or organisation name, town, the event that makes it warm,
+       and the right page links.
+     - **Never** commit an individual person's email address, even one
+       found on a public page. Where only a personal address exists,
+       write *"look up on [page]"* instead.
+     - Order: warm prospects first (item 387), then fair organisers (item
+       396), then downtown associations (item 377), at most **eight a
+       week**, so the owner never faces a wall.
+     - A one-line checkbox per message for the owner's own copy. Keep the
+       committed file free of send status, per item 374.
+
+     Tests: no address in the file matches a `firstname.lastname@` or
+     initial-plus-surname pattern, every block has a source for its
+     recipient, and the file has at most eight blocks.
+
+Competitors reviewed this pass: none new. This pass is about the
+business, not the market. Angles: **the owner queue against the
+business plan's time budget**, **public contact routes** for the
+outreach recipients (village communications pages, newspaper contact
+pages), and **`/leaf-pickup/`** as the design/UX check.
+
+
 ## Working agreements for autonomous iteration
 
 - Cadence is three times a day (05:51, 13:51 and 21:51 UTC) for this
@@ -18601,6 +18695,10 @@ is **the warm list as rendered**: wrong dates and a missing dealership.
   the rotation this item's checklist called for is complete, and the
   next thin-queue pass should look for something else rather than
   re-running it a tenth time with nothing new to find.
+- **The owner's open asks stay at five items and about 60 minutes
+  in total (item 400).** The research loop adds one only by retiring or
+  parking another, and says which. This replaces item 165's exemption
+  for quick actions, which is how the list grew to about 20.
 - **The research loop leaves at most three open owner decisions at a
   time (item 165).** A six-item "Needs Ryan" queue, none of it acted on
   in a week, is itself the finding — presenting equal-looking options
