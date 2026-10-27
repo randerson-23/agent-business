@@ -4,7 +4,7 @@
       "url": "https://withintenmiles.com/f3b7799bed06aac4295ec9134d53b014.txt",
       "purpose": "IndexNow key file on the live domain - still served and still equal to the key?",
       "item": 224,
-      "probed_at": "2026-10-27T14:28:50+00:00",
+      "probed_at": "2026-10-27T22:00:38+00:00",
       "status": 200,
       "final_url": "https://withintenmiles.com/f3b7799bed06aac4295ec9134d53b014.txt",
       "content_type": "text/plain; charset=utf-8",
@@ -22,14 +22,14 @@
       "url": "https://www.ahpd.org/parks/",
       "purpose": "Arlington Heights Park District - park list; does Pioneer Park's page give its street address?",
       "item": 376,
-      "probed_at": "2026-10-27T14:28:50+00:00",
+      "probed_at": "2026-10-27T22:00:38+00:00",
       "error": "ConnectTimeout"
     },
     {
       "url": "https://www.vah.com/",
       "purpose": "Arlington Heights - public-works leaf-pickup page (current URL, dates, rules)",
       "item": 323,
-      "probed_at": "2026-10-27T14:29:05+00:00",
+      "probed_at": "2026-10-27T22:00:53+00:00",
       "status": 200,
       "final_url": "https://www.vah.com/",
       "content_type": "text/html; charset=UTF-8",
@@ -60,11 +60,11 @@
       "url": "https://www.desplainesil.gov/",
       "purpose": "Des Plaines - public-works leaf-pickup page (current URL, dates, rules)",
       "item": 323,
-      "probed_at": "2026-10-27T14:29:06+00:00",
+      "probed_at": "2026-10-27T22:00:53+00:00",
       "status": 200,
       "final_url": "https://www.desplainesil.gov/Home",
       "content_type": "text/html; charset=utf-8",
-      "bytes": 279072,
+      "bytes": 279073,
       "title": "Home | City of Des Plaines, IL",
       "feed_links": [],
       "calendar_links": [
@@ -83,11 +83,11 @@
         "url": "https://www.desplainesil.gov/Departments/Public-Works-and-Engineering/Street-Maintenance/Leaf-and-Branch-Collection",
         "purpose": "",
         "item": null,
-        "probed_at": "2026-10-27T14:29:08+00:00",
+        "probed_at": "2026-10-27T22:00:55+00:00",
         "status": 200,
         "final_url": "https://www.desplainesil.gov/Departments/Public-Works-and-Engineering/Street-Maintenance/Leaf-and-Branch-Collection",
         "content_type": "text/html; charset=utf-8",
-        "bytes": 81890,
+        "bytes": 81891,
         "title": "Leaf and Branch Collection | City of Des Plaines, IL",
         "feed_links": [],
         "calendar_links": [
@@ -189,7 +189,7 @@
       "url": "https://www.mountprospect.org/",
       "purpose": "Mount Prospect - public-works leaf-pickup page (current URL, dates, rules)",
       "item": 323,
-      "probed_at": "2026-10-27T14:29:09+00:00",
+      "probed_at": "2026-10-27T22:00:56+00:00",
       "status": 200,
       "final_url": "https://www.mountprospect.org/",
       "content_type": "text/html; charset=UTF-8",
@@ -212,7 +212,7 @@
         "url": "https://www.mountprospect.org/services/fall_leaf_collection.php",
         "purpose": "",
         "item": null,
-        "probed_at": "2026-10-27T14:29:09+00:00",
+        "probed_at": "2026-10-27T22:00:57+00:00",
         "status": 200,
         "final_url": "https://www.mountprospect.org/services/fall_leaf_collection.php",
         "content_type": "text/html; charset=UTF-8",
@@ -281,7 +281,7 @@
       "url": "https://www.palatine.il.us/",
       "purpose": "Palatine - public-works leaf-pickup page (current URL, dates, rules)",
       "item": 323,
-      "probed_at": "2026-10-27T14:29:09+00:00",
+      "probed_at": "2026-10-27T22:00:57+00:00",
       "status": 200,
       "final_url": "https://www.palatine.il.us/",
       "content_type": "text/html; charset=utf-8",
@@ -319,7 +319,7 @@
       "url": "https://www.wheelingil.gov/332/Refuse-Recycling-Yard-Waste",
       "purpose": "Wheeling - yard waste page; does it state leaf-pickup dates and rules?",
       "item": 323,
-      "probed_at": "2026-10-27T14:29:10+00:00",
+      "probed_at": "2026-10-27T22:00:58+00:00",
       "status": 200,
       "final_url": "https://www.wheelingil.gov/332/Refuse-Recycling-Yard-Waste",
       "content_type": "text/html; charset=utf-8",
@@ -340,18 +340,64 @@
       "url": "https://mpdowntown.com/events/",
       "purpose": "Downtown Mount Prospect - full text of the Downtown Trick-or-Treat section (is it a 2026 date?)",
       "item": 292,
-      "probed_at": "2026-10-27T14:29:10+00:00",
-      "error": "ReadTimeout"
+      "probed_at": "2026-10-27T22:00:59+00:00",
+      "status": 200,
+      "final_url": "https://mpdowntown.com/events/",
+      "content_type": "text/html; charset=UTF-8",
+      "bytes": 124907,
+      "title": "Events | Mount Prospect Downtown Merchants",
+      "feed_links": [
+        {
+          "href": "https://mpdowntown.com/feed/",
+          "type": "application/rss+xml",
+          "title": "Mount Prospect Downtown Merchants » Feed"
+        },
+        {
+          "href": "https://mpdowntown.com/comments/feed/",
+          "type": "application/rss+xml",
+          "title": "Mount Prospect Downtown Merchants » Comments Feed"
+        },
+        {
+          "href": "https://mpdowntown.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fmpdowntown.com%2Fevents%2F",
+          "type": "application/json+oembed",
+          "title": "oEmbed (JSON)"
+        },
+        {
+          "href": "https://mpdowntown.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fmpdowntown.com%2Fevents%2F&format=xml",
+          "type": "text/xml+oembed",
+          "title": "oEmbed (XML)"
+        },
+        {
+          "href": "https://mpdowntown.com/wp-json/wp/v2/pages/2477",
+          "type": "application/json",
+          "title": "JSON"
+        }
+      ],
+      "calendar_links": [],
+      "pattern_matches": {
+        "(?s)Downtown Trick-or-Treat</h3>.{0,900}": [
+          {
+            "match": "Downtown Trick-or-Treat</h3>\n<p data-start=\"139\" data-end=\"253\"><strong data-start=\"139\" data-end=\"170\">Wednesday, October 28, 2026</strong><br data-start=\"170\" data-end=\"173\" /><strong data-start=\"173\" data-end=\"193\">4:00 – 6:00 p.m.</strong><br data-start=\"193\" data-end=\"196\" /><strong data-start=\"196\" data-end=\"223\">Downtown Mount Prospect</strong><br data-start=\"223\" data-end=\"226\" /><em data-start=\"226\" data-end=\"253\">Last Wednesday in October</em></p>\n<p data-start=\"255\" data-end=\"535\">Get your costumes ready and bring the whole family to <strong data-start=\"309\" data-end=\"336\">Downtown Mount Prospect</strong> for a spooktacular afternoon of <strong data-start=\"369\" data-end=\"399\">Downtown Trick-or-Treating</strong>! Little ghouls and goblins can stroll through downtown and collect treats from participating businesses in a safe, festive environment.</p>\n<p data-start=\"537\" data-end=\"713\">Enjoy the sights of c",
+            "context": "lass=\"et_pb_text_inner\"><h3 data-start=\"106\" data-end=\"138\">Downtown Trick-or-Treat</h3> <p data-start=\"139\" data-end=\"253\"><strong data-start=\"139\" data-end=\"170\">Wednesday, October 28, 2026</strong><br data-start=\"170\" data-end=\"173\" /><strong data-start=\"173\" data-end=\"193\">4:00 – 6:00 p.m.</strong><br data-start=\"193\" data-end=\"196\" /><strong data-start=\"196\" data-end=\"223\">Downtown Mount Prospect</strong><br data-start=\"223\" data-end=\"226\" /><em data-start=\"226\" data-end=\"253\">Last Wednesday in October</em></p> <p data-start=\"255\" data-end=\"535\">Get your costumes ready and bring the whole family to <strong data-start=\"309\" data-end=\"336\">Downtown Mount Prospect</strong> for a spooktacular afternoon of <strong data-start=\"369\" data-end=\"399\">Downtown Trick-or-Treating</strong>! Little ghouls and goblins can stroll through downtown and collect treats from participating businesses in a safe, festive environment.</p> <p data-start=\"537\" data-end=\"713\">Enjoy the sights of creatively decorated storefronts, friendly merchants, and a l"
+          }
+        ],
+        "(?s)<h2>20\\d\\d Events</h2>.{0,200}": [
+          {
+            "match": "<h2>2026 Events</h2></div>\n\t\t\t</div><div class=\"et_pb_module et_pb_text et_pb_text_1  et_pb_text_align_left et_pb_bg_layout_light\">\n\t\t\t\t\n\t\t\t\t\n\t\t\t\t\n\t\t\t\t\n\t\t\t\t<div class=\"et_pb_text_inner\"><hr />\n</div>\n\t\t\t</div><div class=",
+            "context": "ght\"> <div class=\"et_pb_text_inner\"><h2>2026 Events</h2></div> </div><div class=\"et_pb_module et_pb_text et_pb_text_1 et_pb_text_align_left et_pb_bg_layout_light\"> <div class=\"et_pb_text_inner\"><hr /> </div> </div><div class=\"et_pb_module et_pb_text et_pb_text_2 et_pb_text_align_left"
+          }
+        ]
+      }
     },
     {
       "url": "https://events.harpercollege.edu/api/2/events?days=60&pp=100",
       "purpose": "Harper College (Localist) - venue ids, venue names and event types in use",
       "item": 286,
-      "probed_at": "2026-10-27T14:29:25+00:00",
+      "probed_at": "2026-10-27T22:01:02+00:00",
       "status": 200,
       "final_url": "https://events.harpercollege.edu/api/2/events?days=60&pp=100",
       "content_type": "application/json; charset=utf-8",
-      "bytes": 363096,
+      "bytes": 364579,
       "pattern_matches": {
         "\"venue_id\":\\d+": [
           {
@@ -469,6 +515,10 @@
             "context": "dance\":true,\"location\":\"A building\",\"room_number\":\"2 floor\",\"location_name\":\"A building\",\"status\":\"live\",\"experience\":\"inperson\",\"stream_url\":null,\""
           },
           {
+            "match": "\"location_name\":\"Building E\"",
+            "context": "endance\":true,\"location\":\"Building E\",\"room_number\":\"E-106\",\"location_name\":\"Building E\",\"status\":\"live\",\"experience\":\"inperson\",\"stream_url\":null,\""
+          },
+          {
             "match": "\"location_name\":\"Harper College, Building I\"",
             "context": "ocation\":\"Harper College, Building I\",\"room_number\":\"I-235\",\"location_name\":\"Harper College, Building I\",\"status\":\"live\",\"experience\":\"hybrid\",\"stream_url\":\"https:/"
           },
@@ -483,10 +533,6 @@
           {
             "match": "\"location_name\":\"Admissions Outreach\"",
             "context": "dmissions Outreach\",\"room_number\":\"Building C Office C-103\",\"location_name\":\"Admissions Outreach\",\"status\":\"live\",\"experience\":\"inperson\",\"stream_url\":null,\""
-          },
-          {
-            "match": "\"location_name\":\"Sheboygan, WI, Woltzen Gymnasium\"",
-            "context": "tion\":\"Sheboygan, WI, Woltzen Gymnasium\",\"room_number\":null,\"location_name\":\"Sheboygan, WI, Woltzen Gymnasium\",\"status\":\"live\",\"experience\":\"inperson\",\"stream_url\":null,\""
           }
         ],
         "\"event_types\":\\[[^\\]]{0,200}\\]": [
@@ -635,7 +681,7 @@
       "url": "https://www.sd25.org/calendar",
       "purpose": "Arlington Heights District 25 - does the calendar page list no-school dates in the HTML?",
       "item": 300,
-      "probed_at": "2026-10-27T14:29:37+00:00",
+      "probed_at": "2026-10-27T22:01:05+00:00",
       "status": 200,
       "final_url": "https://www.sd25.org/calendar-73",
       "content_type": "text/html; charset=utf-8",
@@ -656,11 +702,11 @@
       "url": "https://ccsd21.org/parent-resources/calendars/",
       "purpose": "Wheeling CCSD 21 - does the calendars page link a 2026-27 calendar and list no-school dates?",
       "item": 300,
-      "probed_at": "2026-10-27T14:29:39+00:00",
+      "probed_at": "2026-10-27T22:01:08+00:00",
       "status": 403,
       "final_url": "https://ccsd21.org/parent-resources/calendars/",
       "content_type": "text/html; charset=UTF-8",
-      "bytes": 8141,
+      "bytes": 8140,
       "title": "Access denied | ccsd21.org used Cloudflare to restrict access | ccsd21.org | Cloudflare",
       "feed_links": [],
       "calendar_links": [],
@@ -674,7 +720,7 @@
       "url": "https://www.d62.org/calendars",
       "purpose": "Des Plaines District 62 - official 2026-27 calendar",
       "item": 300,
-      "probed_at": "2026-10-27T14:29:39+00:00",
+      "probed_at": "2026-10-27T22:01:08+00:00",
       "status": 200,
       "final_url": "https://www.d62.org/calendars",
       "content_type": "text/html; charset=utf-8",
@@ -816,7 +862,7 @@
         "url": "https://resources.finalsite.net/images/v1771602096/d62org/huubad2axs3m2rrnnwjm/District62Ten-MonthSchoolsCalendar2026-2027FINAL.pdf",
         "purpose": "",
         "item": null,
-        "probed_at": "2026-10-27T14:29:39+00:00",
+        "probed_at": "2026-10-27T22:01:09+00:00",
         "status": 200,
         "final_url": "https://resources.finalsite.net/images/v1771602096/d62org/huubad2axs3m2rrnnwjm/District62Ten-MonthSchoolsCalendar2026-2027FINAL.pdf",
         "content_type": "application/pdf",
@@ -831,7 +877,7 @@
       "url": "https://www.d214.org/calendar",
       "purpose": "High School District 214 - official 2026-27 calendar",
       "item": 300,
-      "probed_at": "2026-10-27T14:29:39+00:00",
+      "probed_at": "2026-10-27T22:01:09+00:00",
       "status": 404,
       "final_url": "https://www.d214.org/calendar",
       "content_type": "text/html;charset=utf-8",
@@ -879,15 +925,15 @@
       "followed": null
     },
     {
-      "url": "https://www.palatineparks.org/",
-      "purpose": "Palatine Park District (Merry Makers Market) - a craft fair or holiday market page with a date?",
+      "url": "https://www.palatineparks.org/merry-makers-market-application/",
+      "purpose": "Palatine Park District Merry Makers Market - date, time and place",
       "item": 395,
-      "probed_at": "2026-10-27T14:29:40+00:00",
+      "probed_at": "2026-10-27T22:01:10+00:00",
       "status": 200,
-      "final_url": "https://www.palatineparks.org/",
+      "final_url": "https://www.palatineparks.org/merry-makers-market-application/",
       "content_type": "text/html; charset=UTF-8",
-      "bytes": 349101,
-      "title": "Home - Palatine Park District",
+      "bytes": 321135,
+      "title": "Merry Makers Market Application - Palatine Park District",
       "feed_links": [
         {
           "href": "https://www.palatineparks.org/feed/",
@@ -902,164 +948,70 @@
       ],
       "calendar_links": [],
       "pattern_matches": {
-        "(?i)(?:craft|holiday) (?:fair|market|bazaar|boutique)[^<]{0,160}": [],
-        "(?i)makers? market[^<]{0,160}": [
+        "(?is)Merry Maker.{0,900}": [
           {
-            "match": "Makers Market",
-            "context": "s-market/\" class=\"event_title\"><h5 class=\"card-title\">Merry Makers Market</h5></a> <div class=\"event-time"
-          }
-        ]
-      },
-      "followed": {
-        "url": "https://www.palatineparks.org/merry-makers-market-application/",
-        "purpose": "",
-        "item": null,
-        "probed_at": "2026-10-27T14:29:40+00:00",
-        "status": 200,
-        "final_url": "https://www.palatineparks.org/merry-makers-market-application/",
-        "content_type": "text/html; charset=UTF-8",
-        "bytes": 321845,
-        "title": "Merry Makers Market Application - Palatine Park District",
-        "feed_links": [
-          {
-            "href": "https://www.palatineparks.org/feed/",
-            "type": "application/rss+xml",
-            "title": "Palatine Park District » Feed"
+            "match": "Merry Makers Market Application - Palatine Park District</title>\n\t<link rel=\"profile\" href=\"https://gmpg.org/xfn/11\" />\n\t<!-- Bootstrap -->\n    <link rel=\"preconnect\" href=\"https://fonts.googleapis.com\">\n    <link rel=\"preconnect\" href=\"https://fonts.gstatic.com\" crossorigin>\n    <link href=\"https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap\" rel=\"stylesheet\">\n   <!-- <link href=\"https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap\" rel=\"stylesheet\"> -->\n\t<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.10.0/css/lightbox.min.css'>\n\t<meta name='robots' content='index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1' />\n\n\t<!-- This site is optimized wi",
+            "context": "ort\" content=\"width=device-width, initial-scale=1\"> <title>Merry Makers Market Application - Palatine Park District</title> <link rel=\"profile\" href=\"https://gmpg.org/xfn/11\" /> <!-- Bootstrap --> <link rel=\"preconnect\" href=\"https://fonts.googleapis.com\"> <link rel=\"preconnect\" href=\"https://fonts.gstatic.com\" crossorigin> <link href=\"https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap\" rel=\"stylesheet\"> <!-- <link href=\"https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap\" rel=\"stylesheet\"> --> <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.10.0/css/lightbox.min.css'> <meta name='robots' content='index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1' /> <!-- This site is optimized with the Yoast SEO plugin v26.4 - https://yoast.com/wordpress/"
           },
           {
-            "href": "https://www.palatineparks.org/comments/feed/",
-            "type": "application/rss+xml",
-            "title": "Palatine Park District » Comments Feed"
+            "match": "Merry Makers Market Application - Join the first ever Palatine Park District&#039;s indoor Merry Maker&#039;s Market, a festive event celebrating handmade goods, seasonal décor, gifts and local\" />\n\t<link rel=\"canonical\" href=\"https://palatinestables.org/merry-makers-market-application/\" />\n\t<meta property=\"og:locale\" content=\"en_US\" />\n\t<meta property=\"og:type\" content=\"article\" />\n\t<meta property=\"og:title\" content=\"Merry Makers Market Application - Palatine Park District\" />\n\t<meta property=\"og:description\" content=\"Merry Makers Market Application - Join the first ever Palatine Park District&#039;s indoor Merry Maker&#039;s Market, a festive event celebrating handmade goods, seasonal décor, gifts and local\" />\n\t<meta property=\"og:url\" content=\"https://palatinestables.org/merry-makers-market-application/\" />\n\t<meta property=\"og:site_name\" content=\"Palatine Park District\" />\n\t<meta property=\"artic",
+            "context": "rdpress/plugins/seo/ --> <meta name=\"description\" content=\"Merry Makers Market Application - Join the first ever Palatine Park District&#039;s indoor Merry Maker&#039;s Market, a festive event celebrating handmade goods, seasonal décor, gifts and local\" /> <link rel=\"canonical\" href=\"https://palatinestables.org/merry-makers-market-application/\" /> <meta property=\"og:locale\" content=\"en_US\" /> <meta property=\"og:type\" content=\"article\" /> <meta property=\"og:title\" content=\"Merry Makers Market Application - Palatine Park District\" /> <meta property=\"og:description\" content=\"Merry Makers Market Application - Join the first ever Palatine Park District&#039;s indoor Merry Maker&#039;s Market, a festive event celebrating handmade goods, seasonal décor, gifts and local\" /> <meta property=\"og:url\" content=\"https://palatinestables.org/merry-makers-market-application/\" /> <meta property=\"og:site_name\" content=\"Palatine Park District\" /> <meta property=\"article:modified_time\" content=\"2026-09-22T19:25:33+00:00\" /> <m"
+          },
+          {
+            "match": "Merry Makers Market Application - Palatine Park District\",\"isPartOf\":{\"@id\":\"https://www.palatineparks.org/#website\"},\"primaryImageOfPage\":{\"@id\":\"https://palatinestables.org/merry-makers-market-application/#primaryimage\"},\"image\":{\"@id\":\"https://palatinestables.org/merry-makers-market-application/#primaryimage\"},\"thumbnailUrl\":\"https://www.palatineparks.org/wp-content/uploads/2026/07/merry-makers-market.png\",\"datePublished\":\"2026-05-21T19:47:01+00:00\",\"dateModified\":\"2026-09-22T19:25:33+00:00\",\"description\":\"Merry Makers Market Application - Join the first ever Palatine Park District's indoor Merry Maker's Market, a festive event celebrating handmade goods, seasonal décor, gifts and local\",\"breadcrumb\":{\"@id\":\"https://palatinestables.org/merry-makers-market-application/#breadcrumb\"},\"inLanguage\":\"en-US\",\"potentialAction\":[{\"@type\":\"ReadAction\",\"target\":[\"https://palatinestables.org/merry-makers-ma",
+            "context": "latinestables.org/merry-makers-market-application/\",\"name\":\"Merry Makers Market Application - Palatine Park District\",\"isPartOf\":{\"@id\":\"https://www.palatineparks.org/#website\"},\"primaryImageOfPage\":{\"@id\":\"https://palatinestables.org/merry-makers-market-application/#primaryimage\"},\"image\":{\"@id\":\"https://palatinestables.org/merry-makers-market-application/#primaryimage\"},\"thumbnailUrl\":\"https://www.palatineparks.org/wp-content/uploads/2026/07/merry-makers-market.png\",\"datePublished\":\"2026-05-21T19:47:01+00:00\",\"dateModified\":\"2026-09-22T19:25:33+00:00\",\"description\":\"Merry Makers Market Application - Join the first ever Palatine Park District's indoor Merry Maker's Market, a festive event celebrating handmade goods, seasonal décor, gifts and local\",\"breadcrumb\":{\"@id\":\"https://palatinestables.org/merry-makers-market-application/#breadcrumb\"},\"inLanguage\":\"en-US\",\"potentialAction\":[{\"@type\":\"ReadAction\",\"target\":[\"https://palatinestables.org/merry-makers-market-application/\"]}]},{\"@type\":\"ImageObject\",\"inLanguage\":\""
+          },
+          {
+            "match": "Merry Makers Market Application\"}]},{\"@type\":\"WebSite\",\"@id\":\"https://www.palatineparks.org/#website\",\"url\":\"https://www.palatineparks.org/\",\"name\":\"Palatine Park District\",\"description\":\"Recreation Fun for Everyone!\",\"publisher\":{\"@id\":\"https://www.palatineparks.org/#organization\"},\"potentialAction\":[{\"@type\":\"SearchAction\",\"target\":{\"@type\":\"EntryPoint\",\"urlTemplate\":\"https://www.palatineparks.org/?s={search_term_string}\"},\"query-input\":{\"@type\":\"PropertyValueSpecification\",\"valueRequired\":true,\"valueName\":\"search_term_string\"}}],\"inLanguage\":\"en-US\"},{\"@type\":\"Organization\",\"@id\":\"https://www.palatineparks.org/#organization\",\"name\":\"Palatine Park District\",\"alternateName\":\"Palatine\",\"url\":\"https://www.palatineparks.org/\",\"logo\":{\"@type\":\"ImageObject\",\"inLanguage\":\"en-US\",\"@id\":\"https://www.palatineparks.org/#/schema/logo/image/\",\"url\":\"https://www.palatinestables.org/wp-content/uploads/2023/09/p",
+            "context": "latineparks.org/\"},{\"@type\":\"ListItem\",\"position\":2,\"name\":\"Merry Makers Market Application\"}]},{\"@type\":\"WebSite\",\"@id\":\"https://www.palatineparks.org/#website\",\"url\":\"https://www.palatineparks.org/\",\"name\":\"Palatine Park District\",\"description\":\"Recreation Fun for Everyone!\",\"publisher\":{\"@id\":\"https://www.palatineparks.org/#organization\"},\"potentialAction\":[{\"@type\":\"SearchAction\",\"target\":{\"@type\":\"EntryPoint\",\"urlTemplate\":\"https://www.palatineparks.org/?s={search_term_string}\"},\"query-input\":{\"@type\":\"PropertyValueSpecification\",\"valueRequired\":true,\"valueName\":\"search_term_string\"}}],\"inLanguage\":\"en-US\"},{\"@type\":\"Organization\",\"@id\":\"https://www.palatineparks.org/#organization\",\"name\":\"Palatine Park District\",\"alternateName\":\"Palatine\",\"url\":\"https://www.palatineparks.org/\",\"logo\":{\"@type\":\"ImageObject\",\"inLanguage\":\"en-US\",\"@id\":\"https://www.palatineparks.org/#/schema/logo/image/\",\"url\":\"https://www.palatinestables.org/wp-content/uploads/2023/09/palatine-park-logo.png\",\"contentUrl\":\"https://www.palatinesta"
+          },
+          {
+            "match": "Merry Makers Market Application</h1>\n               </div>\n            </div>\n        \t\t\n    <div class=\"main_wrapper\">\n        <div class=\"newsSearchEra gray pt-1 pb-5\"> \n            <div class=\"container\">\n        \t\t                    <div class=\"main_content\">\n        \t\t\t\n<h3 class=\"wp-block-heading\">Join the first ever Palatine Park District&#8217;s indoor Merry Maker&#8217;s Market, a festive event celebrating handmade goods, seasonal décor, gifts and local creativity on Saturday, November 21! </h3>\n\n\n\n<h4 class=\"wp-block-heading\">Showcase your products, connect with the community, and spread holiday cheer at this merry marketplace. </h4>\n\n\n\n<p class=\"red-message wp-block-paragraph\"><strong>Applications are due Friday, November 13 at 12PM!</strong></p>\n\n\n\n<h5 class=\"wp-block-heading has-link-color blue-message wp-elements-1\"><strong>All food vendors must hold a current Cottage Food License. P",
+            "context": "s=\"container\"> <h1 class=\"text-green m-0\">Merry Makers Market Application</h1> </div> </div> <div class=\"main_wrapper\"> <div class=\"newsSearchEra gray pt-1 pb-5\"> <div class=\"container\"> <div class=\"main_content\"> <h3 class=\"wp-block-heading\">Join the first ever Palatine Park District&#8217;s indoor Merry Maker&#8217;s Market, a festive event celebrating handmade goods, seasonal décor, gifts and local creativity on Saturday, November 21! </h3> <h4 class=\"wp-block-heading\">Showcase your products, connect with the community, and spread holiday cheer at this merry marketplace. </h4> <p class=\"red-message wp-block-paragraph\"><strong>Applications are due Friday, November 13 at 12PM!</strong></p> <h5 class=\"wp-block-heading has-link-color blue-message wp-elements-1\"><strong>All food vendors must hold a current Cottage Food License. Proof of licensure will be requested.</strong><br></h5> <p"
           }
         ],
-        "calendar_links": [],
-        "pattern_matches": {
-          "(?i)(?:craft|holiday) (?:fair|market|bazaar|boutique)[^<]{0,160}": [],
-          "(?i)makers? market[^<]{0,160}": [
-            {
-              "match": "Makers Market Application - Palatine Park District",
-              "context": "ontent=\"width=device-width, initial-scale=1\"> <title>Merry Makers Market Application - Palatine Park District</title> <link rel=\"profile\" href=\"https://gmpg.org/xfn/11\""
-            },
-            {
-              "match": "Makers Market Application - Join the first ever Palatine Park District&#039;s indoor Merry Maker&#039;s Market, a festive event celebrating handmade goods, seasonal décor, g",
-              "context": "s/plugins/seo/ --> <meta name=\"description\" content=\"Merry Makers Market Application - Join the first ever Palatine Park District&#039;s indoor Merry Maker&#039;s Market, a festive event celebrating handmade goods, seasonal décor, gifts and local\" /> <link rel=\"canonical\" href=\"https://pala"
-            },
-            {
-              "match": "Makers Market Application - Palatine Park District\" />\n\t",
-              "context": "tent=\"article\" /> <meta property=\"og:title\" content=\"Merry Makers Market Application - Palatine Park District\" /> <meta property=\"og:description\" content=\"Merry Makers Market"
-            },
-            {
-              "match": "Makers Market Application - Palatine Park District\",\"isPartOf\":{\"@id\":\"https://www.palatineparks.org/#website\"},\"primaryImageOfPage\":{\"@id\":\"https://palatinestables.org/merr",
-              "context": "stables.org/merry-makers-market-application/\",\"name\":\"Merry Makers Market Application - Palatine Park District\",\"isPartOf\":{\"@id\":\"https://www.palatineparks.org/#website\"},\"primaryImageOfPage\":{\"@id\":\"https://palatinestables.org/merry-makers-market-application/#primaryimage\"},\"image\":{\"@id\":\""
-            },
-            {
-              "match": "Makers Market Application - Join the first ever Palatine Park District's indoor Merry Maker's Market, a festive event celebrating handmade goods, seasonal décor, gifts and l",
-              "context": "eModified\":\"2026-09-22T19:25:33+00:00\",\"description\":\"Merry Makers Market Application - Join the first ever Palatine Park District's indoor Merry Maker's Market, a festive event celebrating handmade goods, seasonal décor, gifts and local\",\"breadcrumb\":{\"@id\":\"https://palatinestables.org/merry"
-            },
-            {
-              "match": "Makers Market Application\"}]},{\"@type\":\"WebSite\",\"@id\":\"https://www.palatineparks.org/#website\",\"url\":\"https://www.palatineparks.org/\",\"name\":\"Palatine Park District\",\"descr",
-              "context": "parks.org/\"},{\"@type\":\"ListItem\",\"position\":2,\"name\":\"Merry Makers Market Application\"}]},{\"@type\":\"WebSite\",\"@id\":\"https://www.palatineparks.org/#website\",\"url\":\"https://www.palatineparks.org/\",\"name\":\"Palatine Park District\",\"description\":\"Recreation Fun for Everyone!\",\"publisher\":{\"@id\":\"h"
-            },
-            {
-              "match": "Makers Market Application",
-              "context": "tainer\"> <h1 class=\"text-green m-0\">Merry Makers Market Application</h1> </div> </div>"
-            }
-          ]
-        }
+        "(?i)(?:Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)[a-z]*\\.? \\d{1,2}(?:st|nd|rd|th)?,? 20\\d\\d[^<]{0,80}": []
       }
     },
     {
       "url": "https://phs.d211.org/",
-      "purpose": "Palatine High School (D211) - a craft fair or holiday market page with a date?",
+      "purpose": "Palatine High School Boosters Fall Craft Fair - the event's date and time",
       "item": 395,
-      "probed_at": "2026-10-27T14:29:40+00:00",
+      "probed_at": "2026-10-27T22:01:12+00:00",
       "status": 200,
       "final_url": "https://phs.d211.org/",
       "content_type": "text/html; charset=utf-8",
-      "bytes": 108733,
+      "bytes": 111197,
       "title": "Home - Palatine High School",
       "feed_links": [],
       "calendar_links": [],
       "pattern_matches": {
-        "(?i)(?:craft|holiday) (?:fair|market|bazaar|boutique)[^<]{0,160}": [
+        "(?is)Fall Craft Fair</a>.{0,700}": [
           {
-            "match": "Craft Fair",
-            "context": "0:00Z\" href=\"#\">Palatine High School Boosters Present: Fall Craft Fair</a> </div> <div class=\"fsEventDetails\"> <div class"
+            "match": "Fall Craft Fair</a>\n\t\t</div>\n\t\t<div class=\"fsEventDetails\">\n\t\t\t\t\t<div class=\"fsTimeRange\">\n\t\t\t\t\t\t\t<time datetime=\"2026-11-07T09:00:00-06:00\" class=\"fsStartTime\"><span class=\"fsHour\"> 9</span>:<span class=\"fsMinute\">00</span> <span class=\"fsMeridian\">AM</span></time>\n\t\t\t\t\t\t\t\t\t<span class=\"fsTimeSeperator\"> - </span>\n\t\t\t\t\t\t\t\t\t<time datetime=\"2026-11-07T16:00:00-06:00\" class=\"fsEndTime\"><span class=\"fsHour\"> 4</span>:<span class=\"fsMinute\">00</span> <span class=\"fsMeridian\">PM</span></time>\n\t\t\t\t\t</div>\n\n\t\t</div>\n\t\t\t\t<a class=\"fsCalendarEventLink fsReadMoreLink\" data-occur-id=\"261960_2026-11-07T15:00:00Z_2026-11-07T22:00:00Z\" href=\"#\">\n\t\t\t\t\tRead More\n\t\t\t\t\t<span class=\"fsStyleSROnly\">about Palatine High School Boos",
+            "context": "T22:00:00Z\" href=\"#\">Palatine High School Boosters Present: Fall Craft Fair</a> </div> <div class=\"fsEventDetails\"> <div class=\"fsTimeRange\"> <time datetime=\"2026-11-07T09:00:00-06:00\" class=\"fsStartTime\"><span class=\"fsHour\"> 9</span>:<span class=\"fsMinute\">00</span> <span class=\"fsMeridian\">AM</span></time> <span class=\"fsTimeSeperator\"> - </span> <time datetime=\"2026-11-07T16:00:00-06:00\" class=\"fsEndTime\"><span class=\"fsHour\"> 4</span>:<span class=\"fsMinute\">00</span> <span class=\"fsMeridian\">PM</span></time> </div> </div> <a class=\"fsCalendarEventLink fsReadMoreLink\" data-occur-id=\"261960_2026-11-07T15:00:00Z_2026-11-07T22:00:00Z\" href=\"#\"> Read More <span class=\"fsStyleSROnly\">about Palatine High School Boosters Present: Fall Craft Fair</span> </a></article> </div>"
           }
         ],
-        "(?i)makers? market[^<]{0,160}": []
-      },
-      "followed": null
-    },
-    {
-      "url": "https://fhs.d211.org/",
-      "purpose": "Fremd High School (D211) - a craft fair or holiday market page with a date?",
-      "item": 395,
-      "probed_at": "2026-10-27T14:29:41+00:00",
-      "status": 200,
-      "final_url": "https://fhs.d211.org/",
-      "content_type": "text/html; charset=utf-8",
-      "bytes": 100418,
-      "title": "Home - William Fremd High School",
-      "feed_links": [],
-      "calendar_links": [],
-      "pattern_matches": {
-        "(?i)(?:craft|holiday) (?:fair|market|bazaar|boutique)[^<]{0,160}": [],
-        "(?i)makers? market[^<]{0,160}": []
-      },
-      "followed": null
-    },
-    {
-      "url": "https://phs.d214.org/",
-      "purpose": "Prospect High School (D214) - a craft fair or holiday market page with a date?",
-      "item": 395,
-      "probed_at": "2026-10-27T14:29:41+00:00",
-      "status": 200,
-      "final_url": "https://www.d214.org/o/phs",
-      "content_type": "text/html;charset=utf-8",
-      "bytes": 1389711,
-      "title": "Home | Prospect High Schoolschoology-logo",
-      "feed_links": [],
-      "calendar_links": [],
-      "pattern_matches": {
-        "(?i)(?:craft|holiday) (?:fair|market|bazaar|boutique)[^<]{0,160}": [],
-        "(?i)makers? market[^<]{0,160}": []
-      },
-      "followed": null
+        "(?is)data-start=\"[^\"]{0,40}\".{0,200}Fall Craft": []
+      }
     },
     {
       "url": "https://www.palatine.il.us/217/Farmers-Market",
-      "purpose": "Palatine winter farmers market - 2026-27 schedule (1st and 3rd Saturdays, 9-12, Nov-Apr?)",
+      "purpose": "Palatine winter farmers market - the full 2026 Winter Farmers' Market list (dates, hours, place)",
       "item": 397,
-      "probed_at": "2026-10-27T14:29:41+00:00",
+      "probed_at": "2026-10-27T22:01:12+00:00",
       "status": 200,
       "final_url": "https://www.palatine.il.us/663/Farmers-Market",
       "content_type": "text/html; charset=utf-8",
-      "bytes": 132580,
+      "bytes": 133280,
       "title": "Farmers' Market | Palatine, ILArrow LeftArrow RightSlideshow Left ArrowSlideshow Right Arrow",
       "feed_links": [],
       "calendar_links": [],
       "pattern_matches": {
-        "(?i)winter[^<]{0,200}": [
+        "(?is)2026 Winter Farmers.{0,900}": [
           {
-            "match": "Winter Farmers&apos; Market",
-            "context": "left;\">7 a.m. to 1 p.m.</li></ul><h2 class=\"subhead1 \">2026 Winter Farmers&apos; Market</h2><ul><li style=\"text-align: left;\">1st and 3rd Saturdays"
-          }
-        ],
-        "(?i)(?:first|1st) and (?:third|3rd)[^<]{0,120}": [
-          {
-            "match": "1st and 3rd Saturdays at the Palatine Train Station parking lot",
-            "context": "Farmers&apos; Market</h2><ul><li style=\"text-align: left;\">1st and 3rd Saturdays at the Palatine Train Station parking lot</li><li style=\"text-align: left;\">November through April</l"
-          }
-        ],
-        "(?i)saturdays?[^<]{0,120}": [
-          {
-            "match": "Saturday at the Palatine Train Station Parking Lot (directly east of the Palatine Train Station)",
-            "context": "rs&apos; Market</h2><ul><li style=\"text-align: left;\">Every Saturday at the Palatine Train Station Parking Lot (directly east of the Palatine Train Station)</li><li style=\"text-align: left;\">May through October</li><"
-          },
-          {
-            "match": "Saturdays at the Palatine Train Station parking lot",
-            "context": "s; Market</h2><ul><li style=\"text-align: left;\">1st and 3rd Saturdays at the Palatine Train Station parking lot</li><li style=\"text-align: left;\">November through April</l"
+            "match": "2026 Winter Farmers&apos; Market</h2><ul><li style=\"text-align: left;\">1st and 3rd Saturdays at the Palatine Train Station parking lot</li><li style=\"text-align: left;\">November through April</li><li style=\"text-align: left;\">9 a.m. to Noon</li></ul><h2 data-pasted=\"true\">Additional Information</h2><p style=\"text-align: left;\">For additional information regarding the Farmers&rsquo; Market, please visit the <a href=\"http://www.palatinefarmersmarket.com/\"><strong>Palatine Farmers&apos; Market</strong></a> <a href=\"http://www.palatinefarmersmarket.com/\"><strong>website</strong></a>.</p>\r\n    </div>\r\n\r\n<script type=\"text/javascript\">\r\n\t$(document).ready(function (e) {\t\t\r\n\t    renderSlideshowIfApplicable($('#divEditor' + '1ff2cfa7-e6f5-4c6e-a368-88041d841a9b'));\r\n\t});\r\n</script>\r\n</div>\r\n\n\t</div> <!-- inner column -->\r\n\r\n\t</div> <!-- inner row -->\r\n\r\n\t\t\t</div><!-- outer column --><!--\t\t--></div> <!-- outer row ",
+            "context": "ign: left;\">7 a.m. to 1 p.m.</li></ul><h2 class=\"subhead1 \">2026 Winter Farmers&apos; Market</h2><ul><li style=\"text-align: left;\">1st and 3rd Saturdays at the Palatine Train Station parking lot</li><li style=\"text-align: left;\">November through April</li><li style=\"text-align: left;\">9 a.m. to Noon</li></ul><h2 data-pasted=\"true\">Additional Information</h2><p style=\"text-align: left;\">For additional information regarding the Farmers&rsquo; Market, please visit the <a href=\"http://www.palatinefarmersmarket.com/\"><strong>Palatine Farmers&apos; Market</strong></a> <a href=\"http://www.palatinefarmersmarket.com/\"><strong>website</strong></a>.</p> </div> <script type=\"text/javascript\"> $(document).ready(function (e) { renderSlideshowIfApplicable($('#divEditor' + '1ff2cfa7-e6f5-4c6e-a368-88041d841a9b')); }); </script> </div> </div> <!-- inner column --> </div> <!-- inner row --> </div><!-- outer column --><!-- --></div> <!-- outer row --> </div> </div> <div class=\"newCP\">"
           }
         ]
       }
