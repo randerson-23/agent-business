@@ -2,8 +2,8 @@
   "@context": "https://schema.org",
   "@type": "ItemList",
   "name": "Upcoming events in Des Plaines — Within Ten",
-  "dateModified": "2026-10-27T12:24:50+00:00",
-  "numberOfItems": 81,
+  "dateModified": "2026-10-27T14:28:58+00:00",
+  "numberOfItems": 82,
   "itemListElement": [
     {
       "@type": "ListItem",
@@ -1703,7 +1703,7 @@
           "name": "Des Plaines Public Library",
           "url": "https://desplaines.libnet.info"
         },
-        "description": "Thursday, November 05 2026 10:00am - 2:00pm \n Community Blood Center Blood Drive"
+        "description": "Thursday, November 05 2026 10:00am - 2:00pm \n Community Blood Center Blood Drive sponsored by Representative Michelle Mussman, Senator Laura Murphy, and…"
       }
     },
     {
@@ -2419,6 +2419,37 @@
       "position": 79,
       "item": {
         "@type": "Event",
+        "name": "Des Plaines Community Partners Meeting",
+        "startDate": "2026-11-09T13:00:00-06:00",
+        "url": "https://withintenmiles.com/des-plaines-60016/#ev-des-plaines-community-partners-meeting-2026-11-09",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Des Plaines Public Library",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Des Plaines",
+            "addressRegion": "IL",
+            "streetAddress": "1501 Ellinwood Street",
+            "postalCode": "60016"
+          }
+        },
+        "sameAs": "https://desplaines.libnet.info/event/17695952",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Des Plaines Public Library",
+          "url": "https://desplaines.libnet.info"
+        },
+        "description": "Monday, November 09 2026 1:00pm - 2:00pm \n Des Plaines Community Partners Meeting"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 80,
+      "item": {
+        "@type": "Event",
         "name": "Book a Teen Librarian",
         "startDate": "2026-11-09T17:00:00-06:00",
         "url": "https://withintenmiles.com/des-plaines-60016/#ev-book-a-teen-librarian-2026-11-09",
@@ -2447,7 +2478,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 80,
+      "position": 81,
       "item": {
         "@type": "Event",
         "name": "Des Plaines Shambhala Meditation Group",
@@ -2478,7 +2509,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 81,
+      "position": 82,
       "item": {
         "@type": "Event",
         "name": "Library Courte Condo Assoc.",
