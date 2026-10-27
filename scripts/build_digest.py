@@ -7516,6 +7516,8 @@ def main() -> None:
     holidays_dir.mkdir(parents=True, exist_ok=True)
     (holidays_dir / "index.html").write_text(render_holidays_page(holidays_entries, now, analytics, newsletter, contact_email), encoding="utf-8")
     logger.info("Wrote %s", holidays_dir / "index.html")
+    for tot in trick_or_treat_entries:  # item 398: "Also at" dealers are hosts of the same event
+        warm_found += warm_prospects.collect_hosts([e for e in tot.get("events") or [] if e.get("also_at")], tot["region_name"])
     warm_registry = warm_prospects.update_registry(warm_prospects.load_registry(), warm_found + warm_prospects.issue_hosts(town_of=lambda t: next((r['region']['name'] for r in regions if r['region']['name'].lower() in t.lower()), '')), now.astimezone(LOCAL_TZ).date())
     warm_prospects.save_registry(warm_registry)
     try:  # item 391: the Warm section is refreshed at every build, in place
