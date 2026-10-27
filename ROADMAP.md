@@ -220,7 +220,7 @@ doesn't re-suggest something already shipped.
 
 **Build queue (by deadline; refreshed by the research loop, item 346).**
 Pick from the top unless the owner has flagged something else:
-0. **395, 396** (craft fairs and their organisers; step 1 done: round-21 probes for the fair pages and Palatine's winter market (397) are in `config/url_probes.yaml`; read `data/url_probes.json` next firing, then add confirmed fairs as `annual_events`; the first fair is Nov 7). Round 21 answered: Palatine Park District's Merry Makers Market and Palatine HS Boosters' Fall Craft Fair exist, Palatine's winter market is 1st/3rd Saturdays at the train station; their dates and hours are the round-22 probes.
+0. **401, 402** (the ready-to-send outreach batch and the confirmation email; the owner's November ask depends on both). **395, 396** (craft fairs and their organisers; step 1 done: round-21 probes for the fair pages and Palatine's winter market (397) are in `config/url_probes.yaml`; read `data/url_probes.json` next firing, then add confirmed fairs as `annual_events`; the first fair is Nov 7). Round 21 answered: Palatine Park District's Merry Makers Market and Palatine HS Boosters' Fall Craft Fair exist, Palatine's winter market is 1st/3rd Saturdays at the train station; their dates and hours are the round-22 probes.
 2. **313, 314**: the sales mock-up and starter pack (before outreach).
 3. **390**: promo receipts.
 4. **328** (probe first), then **325** (by Nov 15), then **385** (holiday
@@ -240,7 +240,10 @@ reference, *not now*.
    yes, set it up from `META_AD_KIT.md` (about 10 min).
 4. **Send the emails in `OUTREACH_BATCH.md` (about 15 min)** once it
    exists (item 401). The offer is the free first Event Promo.
-5. **Buttondown sender name → "Within Ten" (30 sec).**
+5. **Buttondown settings (3 min):** sender name "Within Ten"; paste
+   `CONFIRMATION_EMAIL.md` into Settings → Subscribing → Confirmation
+   (item 402) and `WELCOME_EMAIL.md` into Welcome email (this replaces
+   step 8c).
 
 Everything below needs the owner to take an action outside this repo.
 **Cleaned up 2026-10-06 at Ryan's request:** stale and closed entries
@@ -376,7 +379,7 @@ that limit.
    well, and use Search Console → URL inspection → *Request indexing*
    on `https://withintenmiles.com/trick-or-treat/` (1 minute).
 
-8c. **Paste the welcome email (2 min, item 275)** once `WELCOME_EMAIL.md`
+8c. ↪️ *Folded into the whole ask's step 5 (item 402).* **Paste the welcome email (2 min, item 275)** once `WELCOME_EMAIL.md`
    exists: Buttondown → Settings → Subscribing → Welcome email.
 
 8d. **Holiday-listing outreach (about an hour, before Nov 15, item 288)**,
@@ -18408,6 +18411,74 @@ business, not the market. Angles: **the owner queue against the
 business plan's time budget**, **public contact routes** for the
 outreach recipients (village communications pages, newspaper contact
 pages), and **`/leaf-pickup/`** as the design/UX check.
+
+
+#### Research pass 2026-10-27, evening (hundred-and-seventh pass)
+
+Today the build loop shipped item 393 (the Thanksgiving-weekend subject
+and Santa link) and item 398 (warm-list event dates and "Also at"
+hosts), and ran two rounds of probes for the craft fairs and Palatine's
+winter market (items 395, 397). Their answers arrive with the next
+build. One gap from the last pass: **item 401 (`OUTREACH_BATCH.md`) never
+made it into the build queue**, and it is the item the owner's whole
+November ask now points at (step 4). This pass fixes that and keeps to
+item 400's rule, so it adds **no** new owner ask. It looks at the one
+message every future subscriber must act on, **Buttondown's
+confirmation email**, and checks whether the feeds cover the cultural
+celebrations that bring families out in early November.
+
+| Angle | What it is / what we found | Why it matters here |
+|---|---|---|
+| **Buttondown's confirmation email** (Buttondown docs: *Transactional emails → Confirmation*) | Editable under **Settings → Subscribing → Confirmation**, with template variables including **`{{ confirmation_url }}`**. The docs describe no setting to **redirect** after the click: Buttondown shows its own confirmed page (an unsubscribe redirect exists only on request, for paid accounts) | Double opt-in means **every** subscriber must open this email and click. Nothing in the repo shows it was ever customised, so it's presumably Buttondown's generic text, from a sender most people don't know, arriving moments after they typed an address on a local site. It is the highest-stakes copy the business has. Like the welcome email (item 275), it costs the owner a paste, not a decision (item 402) |
+| **What a good post-signup moment does** (UX Collective's subscription-experience guide; Bruce Clay's thank-you page examples; a newsletter welcome-email guide) | Confirm clearly that it worked, **say what arrives and when**, give something useful **right now** (a link worth clicking, not a bait freebie), and ask the reader to move the sender into the primary inbox | The site's pending message (item 254) and welcome email (item 275) already do most of this. The confirmation email is the missing link in the chain: it should say *who* it's from (Within Ten, the five towns), *why* to click (*"so Thursday's email reaches you"*), and *what's on this weekend* as the one useful link |
+| **Cultural celebrations in early November** (`docs/events.json`; Daily Herald; Arlington Heights Memorial Library's "Local celebrations" page) | The feeds already carry **"Día de los Muertos with Mariachi Sirenas"** (Oct 31), **"Craft for the Day of the Dead"** (Oct 30), and two **Diwali** events on **Nov 7**. AHML lists an afternoon **Día de los Muertos** celebration (Sun Nov 1, 1–4 PM, drop-in; the Daily Herald listing doesn't state the year, but Nov 1 is a Sunday in 2026). Wheeling's Indian Trails and Des Plaines only had 2025 listings in search | **No sourcing gap**: the library feeds catch these. What's missing is **presentation**. Wheeling and Des Plaines have large Latino and South Asian communities, and nothing in the email says *"this week's celebrations"*. A single line costs nothing and gives those families a reason to open the email (item 404) |
+
+#### P1 (new)
+
+402. **A local, clear Buttondown confirmation email, pasted with the welcome
+     email.** Build loop writes **`CONFIRMATION_EMAIL.md`** (under 80 words):
+
+     - **Subject:** *"Confirm your Within Ten email (one click)"*
+     - **Body:** *"You asked for Within Ten: what's on this weekend in
+       Arlington Heights, Des Plaines, Mount Prospect, Palatine and
+       Wheeling, every Thursday. **Click to confirm:**
+       {{ confirmation_url }} Didn't sign up? Ignore this and you'll
+       hear nothing more. While you're here, this weekend's list:
+       https://withintenmiles.com/this-weekend/?utm_source=email&utm_campaign=confirm"*
+     - Use only Buttondown's documented variables, and check the variable
+       name against its docs at build time.
+
+     **Owner, no new ask (item 400):** the whole ask's step 5 becomes
+     *"Buttondown settings (3 min): sender name 'Within Ten', paste
+     `CONFIRMATION_EMAIL.md` into Settings → Subscribing → Confirmation,
+     paste `WELCOME_EMAIL.md` into Welcome email."* Step 8c is folded into
+     it and marked so.
+
+403. **Put item 401 at the top of the build queue.** Queue fix:
+     `OUTREACH_BATCH.md` (item 401) goes to **level 0**, ahead of the craft
+     fairs, because the owner's whole November ask (step 4) depends on
+     it and the warm list it draws from is now correct (items 391, 398).
+
+#### P2 (new)
+
+404. **"Celebrations this week": one line in the email and on the
+     homepage.** Build loop: when the coming 7 days hold events matching a
+     short cultural-calendar keyword list (*Día de los Muertos / Day of the
+     Dead, Diwali, Lunar New Year, Hanukkah, Kwanzaa, Eid, Navratri, Las
+     Posadas, St. Lucia*), add one line under the email's hero, *"🪔
+     Celebrations this week: Diwali in Des Plaines (Sat), Día de los
+     Muertos at Arlington Heights Memorial Library (Sun)"*, linking each
+     event. Show the same line on the hub. Only events already in the
+     feeds, never generated, and omitted when there are none. Tests: a
+     week with a Diwali event shows the line with its town, and a week
+     without one shows nothing.
+
+Competitors reviewed this pass: **Buttondown's confirmation-email
+settings**, **subscription-experience guides** (UX Collective, Bruce
+Clay, a newsletter welcome-email guide), and **early-November cultural
+celebrations** in the five towns' library feeds. The design/UX angle is
+**the confirmation email**, the one message every subscriber must act
+on.
 
 
 ## Working agreements for autonomous iteration
