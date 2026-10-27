@@ -232,6 +232,11 @@ trick_or_treat:
   url: "https://www.palatine.il.us/CivicAlerts.aspx?AID=503"
   hours: "3:00–7:00 PM, Saturday, October 31"
 
+# ROADMAP.md item 323: leaf pickup, sourced (the Village's own news headline, 2026-10-26).
+leaf_pickup:
+  url: "https://www.palatine.il.us/CivicAlerts.aspx?AID=508"
+  summary: "Curbside Leaf Collection Begins October 26."
+
 # ROADMAP.md item 274: see Arlington Heights' config for the field rules.
 tree_lighting:
   url: "https://www.palatineparks.org/event/village-annual-tree-lighting/"

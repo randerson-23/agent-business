@@ -192,6 +192,12 @@ trick_or_treat:
   hours: "3:00–7:00 PM, Saturday, October 31"
   note: "The Village's recommended hours, not an ordinance."
 
+# ROADMAP.md item 323: leaf pickup, sourced. `summary` is the village's own wording; leave
+# it out (the page says "not posted yet") when the village page was not read for dates.
+leaf_pickup:
+  url: "https://www.vah.com/"
+  note: "The village's site lists fall leaf collection under its public-works services; check the village page for this year's schedule."
+
 # ROADMAP.md item 274: the town's annual tree lighting. `date` (ISO) is set only
 # once the town's own 2026 listing names it; the weekday on /holidays/ is
 # computed from it, and a date from a past year is never shown.

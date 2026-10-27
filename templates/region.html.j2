@@ -1004,6 +1004,7 @@
     <a href="{{ hub_url }}about/">About</a>.
     <a href="{{ preferred_source_url }}" rel="noopener">Add us as a preferred source on Google</a>.
     {% if trick_or_treat_in_season %}<a href="{{ hub_url }}trick-or-treat/">Trick-or-treat hours</a>.{% endif %}
+    {% if leaf_pickup_in_season %}<a href="{{ hub_url }}leaf-pickup/">Leaf pickup</a>.{% endif %}
     {% if newsletter and newsletter.event_form_url %}<a href="{{ newsletter.event_form_url }}" rel="noopener">Add your event, free</a>.{% endif %}
     {% if winter_in_season %}<a href="{{ region_base_url }}winter-break/">Winter break camps</a>.{% endif %}
     {% if holiday_in_season %}<a href="{{ region_base_url }}holiday/">Holiday events and shopping</a>, <a href="{{ hub_url }}holidays/">all towns' tree lightings</a>.{% endif %}
