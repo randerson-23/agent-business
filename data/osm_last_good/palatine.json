@@ -1,0 +1,125 @@
+{
+ "date": "2026-10-28",
+ "rows": [
+  {
+   "name": "Lakeshore Learning Store",
+   "category": "toys",
+   "website": ""
+  },
+  {
+   "name": "Kolatek Baking Company",
+   "category": "bakery",
+   "website": "https://bakerypalatine.com/"
+  },
+  {
+   "name": "El Chicanito Bakery",
+   "category": "bakery",
+   "website": ""
+  },
+  {
+   "name": "Daisy's Ice Cream",
+   "category": "ice_cream",
+   "website": ""
+  },
+  {
+   "name": "Conscious Cup Coffee",
+   "category": "cafe",
+   "website": "https://consciouscup.com/pages/stores/palatine"
+  },
+  {
+   "name": "Starbucks",
+   "category": "cafe",
+   "website": "https://www.starbucks.com/store-locator/store/1011850/rand-and-dundee-791-e-dundee-rd-palatine-il-600742819-us"
+  },
+  {
+   "name": "Spunky Dunkers Donuts",
+   "category": "cafe",
+   "website": ""
+  },
+  {
+   "name": "Annie's Restaurant & Pancake House",
+   "category": "restaurant",
+   "website": "https://www.anniespancake.com"
+  },
+  {
+   "name": "Aragvi Restaurant",
+   "category": "restaurant",
+   "website": "https://www.aragvirestaurant.com/"
+  },
+  {
+   "name": "Bendita Cocina",
+   "category": "restaurant",
+   "website": "https://benditacocina1.com/"
+  },
+  {
+   "name": "Cafe Fourteen",
+   "category": "restaurant",
+   "website": "https://www.cafe14il.com/"
+  },
+  {
+   "name": "Chicago Culinary Kitchen",
+   "category": "restaurant",
+   "website": "https://chicagoculinarykitchen.com/"
+  },
+  {
+   "name": "Heng Wing",
+   "category": "restaurant",
+   "website": "https://hengwingpalatine.com/"
+  },
+  {
+   "name": "Indian Bistro",
+   "category": "restaurant",
+   "website": "https://www.indianbistropalatine.com/"
+  },
+  {
+   "name": "Thai House",
+   "category": "restaurant",
+   "website": "https://thaihousepalatine.com/"
+  },
+  {
+   "name": "Bakers Square",
+   "category": "restaurant",
+   "website": ""
+  },
+  {
+   "name": "Brandt's",
+   "category": "restaurant",
+   "website": ""
+  },
+  {
+   "name": "Denny's",
+   "category": "restaurant",
+   "website": ""
+  },
+  {
+   "name": "Emmett's",
+   "category": "restaurant",
+   "website": ""
+  },
+  {
+   "name": "Enzo's",
+   "category": "restaurant",
+   "website": ""
+  },
+  {
+   "name": "La Presa Restaurant",
+   "category": "restaurant",
+   "website": ""
+  },
+  {
+   "name": "Napoli Pizza",
+   "category": "restaurant",
+   "website": ""
+  },
+  {
+   "name": "Siri Thai",
+   "category": "restaurant",
+   "website": ""
+  },
+  {
+   "name": "Tap House",
+   "category": "restaurant",
+   "website": ""
+  }
+ ]
+}
