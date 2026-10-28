@@ -197,6 +197,27 @@ annual_events:
     detail: "German beer, food & music wind down Downtown Palatine's Oktoberfest. Noon–6pm, N Smith & W Slade St. Free entry."
     url: "https://palatinerotary.org/Oktoberfest.php"
     tags: ["free", "outdoor"]
+  # ROADMAP.md items 395 and 397, read from the organisers' own pages on 2026-10-27:
+  # the D211 school calendar (phs.d211.org) lists the Boosters' Fall Craft Fair Sat Nov 7,
+  # 9 AM-4 PM; the Village's Farmers' Market page lists the 2026 Winter Farmers' Market as
+  # "1st and 3rd Saturdays at the Palatine Train Station parking lot, November through
+  # April, 9 a.m. to Noon". The Park District's Merry Makers Market has a page but no date
+  # was readable, so it is not listed.
+  - title: "Palatine High School Boosters Present: Fall Craft Fair"
+    date: "2026-11-07T09:00:00"
+    detail: "Craft fair presented by the Palatine High School Boosters. 9 AM to 4 PM. See the school's calendar for the venue and any admission."
+    url: "https://phs.d211.org/"
+    tags: ["kid_friendly", "indoor"]
+  - title: "Palatine Winter Farmers' Market"
+    detail: "1st and 3rd Saturdays, 9 a.m. to noon, at the Palatine Train Station parking lot, November through April."
+    url: "https://www.palatine.il.us/217/Farmers-Market"
+    tags: ["outdoor", "food"]
+    recurrence:
+      starts: "2026-11-07"
+      ends: "2027-04-30"
+      weekday: "Saturday"
+      time: "09:00"
+      nth: [1, 3]
 
 evergreen:
   - title: "Palatine Public Library District"

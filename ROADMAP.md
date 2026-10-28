@@ -220,7 +220,6 @@ doesn't re-suggest something already shipped.
 
 **Build queue (by deadline; refreshed by the research loop, item 346).**
 Pick from the top unless the owner has flagged something else:
-0. **395, 396** (craft fairs and their organisers; step 1 done: round-21 probes for the fair pages and Palatine's winter market (397) are in `config/url_probes.yaml`; read `data/url_probes.json` next firing, then add confirmed fairs as `annual_events`; the first fair is Nov 7). Round 21 answered: Palatine Park District's Merry Makers Market and Palatine HS Boosters' Fall Craft Fair exist, Palatine's winter market is 1st/3rd Saturdays at the train station; their dates and hours are the round-22 probes.
 2. **313, 314**: the sales mock-up and starter pack (before outreach).
 3. **390**: promo receipts.
 4. **328** (probe first), then **325** (by Nov 15), then **385** (holiday
@@ -18270,7 +18269,7 @@ fairs**.
 
 #### P1 (new)
 
-395. **Holiday markets and craft fairs, sourced, Nov 1 – Dec 20.** Build
+395. ✅ DONE (probes read: Palatine HS Boosters' Fall Craft Fair is Sat Nov 7, 9 AM-4 PM, from phs.d211.org's calendar, added to Palatine `annual_events`; the Park District's Merry Makers Market has a page but no readable date, so it does not render; fair keywords added to the holiday selection so feed events appear on /holidays/ and town /holiday/ pages; no separate "Holiday markets & craft fairs" section and no Nov 4 email block yet; tests) **Holiday markets and craft fairs, sourced, Nov 1 – Dec 20.** Build
      loop:
 
      - **Probe first** (`config/url_probes.yaml`) for each fair's
@@ -18291,7 +18290,7 @@ fairs**.
      with its source link, and the keyword selection picks up a *"Holiday
      Bazaar"* feed event.
 
-396. **Name fair organisers as warm prospects, with their own note.**
+396. ✅ DONE ("Presents:" organisers of fairs go under "Fair organisers" in the warm list; OUTREACH_TEMPLATES §14b; PHS Boosters in outreach_contacts.yaml; tests) **Name fair organisers as warm prospects, with their own note.**
      Build loop: when a fair is confirmed (item 395) or a feed event
      matches the fair keywords, add its organiser (booster club, PTO,
      park district programme) to the warm list under **"Fair
@@ -18304,7 +18303,7 @@ fairs**.
 
 #### P2 (new)
 
-397. **Palatine's winter farmers' market as dated events.** Build loop:
+397. ✅ DONE (probe confirmed 1st and 3rd Saturdays, Nov-Apr, 9 AM-noon, Palatine Train Station parking lot; `recurrence:` gained `nth: [1, 3]`; Palatine `annual_events` entry Nov 7 2026 - Apr 30 2027; the evergreen line stays) **Palatine's winter farmers' market as dated events.** Build loop:
      probe `palatine.il.us/217/Farmers-Market` for the **2026–27** winter
      schedule. If it confirms 1st and 3rd Saturdays, 9–12, Nov–Apr, add a
      recurring `annual_events` rule generating those dates, each linking
