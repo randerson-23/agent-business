@@ -220,6 +220,7 @@ doesn't re-suggest something already shipped.
 
 **Build queue (by deadline; refreshed by the research loop, item 346).**
 Pick from the top unless the owner has flagged something else:
+0. **408, 409, 410** (the outreach batch the owner's November step 4 points at: wrong date in Napleton's first line, no recipients, no fair organisers; the Palatine HS fair is Sat Nov 7).
 3. **390**: promo receipts.
 4. **328** (probe first), then **325** (by Nov 15), then **385** (holiday
    creatives, from Nov 1), **397** (Palatine winter market), **311** (winter outdoors, by Dec 15), **398**, then the rest by priority.
@@ -18547,6 +18548,85 @@ workflows install their own dependencies**, **who watches non-build
 workflows**, and a **re-check of the head term and the trick-or-treat
 query** (both unchanged). The design/UX angle is **the new confirmation
 email**, which is good as written.
+
+
+#### Research pass 2026-10-28, evening (hundred-and-ninth pass)
+
+The build loop cleared the blocker today. Item 405 fixed the prospects
+workflow's installs, and items 406 and 407 added the workflow watchdog
+and the no-bare-pip test, so **`OUTREACH_BATCH.md` now exists**. It also
+shipped items 395–397 (Palatine's craft fair and winter market from
+confirmed sources, and fair organisers on the warm list) and items 313
+and 314 (the personalised **`/sponsor/preview/`** page and the Starter
+pack). Tonight's Halloween issue send hadn't been recorded at the time
+of this pass. This pass reads the batch the way the owner will on the
+evening they finally send it. As generated, it would embarrass them in
+the first line.
+
+| Angle | What it is / what we found | Why it matters here |
+|---|---|---|
+| **`OUTREACH_BATCH.md`, read as the owner would send it (design/UX)** | **Three** messages, all with **"Where to send: look up on <site>"**, so none of the recipient lookup item 401 was for has been done. **(1)** Napleton's subject says *"Your Trunk or Treat on **Thu Oct 22**"*. The event was **Sat Oct 24**, and Oct 22 is the email-issue date the backfill still uses. **(2)** The other subjects run to 90+ characters in capitals (*"Your WORLD PREMIERE FILM SCREENING: YAKUZA PLAYS "THE GOLEM" - A CONCERT FILM on Thu Oct 29 was on our Des Plaines page"*) and *"Your **The** Rock N' Horror…"*. **(3)** Every body links the generic `/sponsor/` page, although today's item 313 gives each prospect a **personalised preview** (`/sponsor/preview/?name=…&town=…`). **(4)** Two of the three are theatres, the "venues that publish their own calendars" that item 391 said need a **different** pitch, yet they get the same text. **(5)** **No fair organiser and no downtown association** appears, though item 396 shipped and the Palatine HS fair is **Sat Nov 7** | This file is the owner's only outreach task for November. A wrong date in the first line, shouting subjects and a missing recipient on every message are exactly what make a busy owner put it off another week, and the fair window closes in nine days (items 408, 409, 410) |
+| **The Palatine HS fair's public contact** (Daily Herald notices of past fairs; Patch listings of the *"Craft fair presented by PHS Pirate Boosters"*) | Past notices direct vendor and fair questions to **`phscraft@gmail.com`**, the fair's shared mailbox that recurs across years and co-chairs, and the **PHS Pirate Booster Club** site, `phspirateboosters.com`. Past fairs: free admission, about 150 vendors, Saturday 9 AM to 4 PM | A **role mailbox for the event itself**, published in the organiser's own notices, is the kind of contact item 401 allows. A named co-chair's personal address is not. This one fills the warm list's most urgent row (item 409) |
+| **Napleton's Palatine stores** (PR.com, Aug 2025: the Steve Napleton Auto Group acquires Hyundai and Chevrolet of Palatine) | The group now runs **four Palatine dealerships** (Hyundai, Chevrolet, Mazda, Subaru), and its release says it *"prioritizes local involvement"*. No public marketing or events address was found; the route is each dealership's **contact page** (Mazda's is published with its Rand Road address and phone) | One organisation, four stores, four trunk-or-treats this October: the warmest prospect on the list. The batch should point at a specific contact page, not *"look up on napleton.com"* (item 409) |
+
+#### P1 (new)
+
+408. **Make each outreach email right in its first line.** Build loop,
+     `scripts/outreach_batch.py` and `warm_prospects.py`:
+
+     - **The event's own date:** for hosts backfilled from issues (item
+       391), take the date from the event's card in the stored issue,
+       not the issue's send date. Napleton reads **Sat Oct 24**.
+     - **Short, readable subjects:** apply item 334's display case, drop
+       a leading article after "Your", and keep it at **60 characters or
+       fewer**, using *"Your <short title> on <Day Mon D> was on our <town>
+       page"* and falling back to *"Your <Mon D> event was on our <town>
+       page"*.
+     - **Link the personalised preview:** replace the `/sponsor/` link
+       with `/sponsor/preview/?name=<org>&town=<town>` (item 313),
+       URL-encoded, so each prospect sees their own card.
+     - **Venues that publish calendars** (item 391's list) get **§14c**,
+       a shorter note: *"We list your shows for free on our <town> page.
+       If you'd like one show a week featured first, it's $20, and the
+       first is free while our founding offer lasts."*
+
+     Tests: the Napleton subject shows Sat Oct 24, no subject exceeds 60
+     characters or contains "Your The", the body links a preview URL
+     with the right name and town, and a theatre gets §14c.
+
+409. **Fill the recipients the lookups can find.** Build loop,
+     `config/outreach_contacts.yaml` plus URL probes:
+
+     - **Palatine HS Pirate Boosters fair:** contact `phscraft@gmail.com`
+       (the fair's own mailbox), with `source` the booster club page or
+       fair notice where the probe finds it published, and
+       `site: https://www.phspirateboosters.com/`. Use it only if the
+       probe confirms it's still on an organiser page.
+     - **Napleton:** each Palatine dealership's **contact-page URL** (one
+       message to the group, listing all four), from probes of the
+       dealers' own sites.
+     - **Des Plaines Theatre, Metropolis:** probe each site's contact page
+       for a role address (`info@`, `boxoffice@`, `marketing@`) or contact
+       form. Otherwise keep "look up".
+
+     Every `contact` keeps a `source`. No named individual's address is
+     ever committed (item 374's rule).
+
+410. **Put fair organisers and downtown associations into the batch
+     now.** Build loop: `outreach_batch.py` reads the fair organisers
+     (item 396) and the downtown associations (item 377's §13b) as well
+     as the warm list. Order: **fairs within 21 days first** (Palatine HS,
+     Sat Nov 7; Merry Makers Market, Sat Nov 21), then Napleton, then
+     downtown associations, then venues, at most eight. Today the batch
+     has only the three warm hosts. Tests: a confirmed fair 9 days out
+     lands at the top with §14b, and the cap holds.
+
+Competitors reviewed this pass: none new. Angles: **the first generated
+outreach batch** read as the owner would send it, **the Palatine HS
+craft fair's published contact** (past Daily Herald and Patch notices),
+and **Napleton's four Palatine stores** (Aug 2025 acquisition release).
+The design/UX angle is **the batch itself**: a wrong date, shouting
+subjects, generic links and no recipients.
 
 
 ## Working agreements for autonomous iteration
