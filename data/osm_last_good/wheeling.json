@@ -1,0 +1,370 @@
+{
+ "date": "2026-10-28",
+ "rows": [
+  {
+   "name": "Buffalo Creek Country & Primitive Decor",
+   "category": "gift",
+   "website": ""
+  },
+  {
+   "name": "East Wheeling Clay Works",
+   "category": "gift",
+   "website": ""
+  },
+  {
+   "name": "Puddleducks",
+   "category": "gift",
+   "website": ""
+  },
+  {
+   "name": "Under the Elder Tree Apothecary",
+   "category": "gift",
+   "website": ""
+  },
+  {
+   "name": "Ziklag",
+   "category": "gift",
+   "website": ""
+  },
+  {
+   "name": "CreateOn",
+   "category": "toys",
+   "website": "https://www.createon.com/"
+  },
+  {
+   "name": "Paradox Book Store",
+   "category": "books",
+   "website": ""
+  },
+  {
+   "name": "Vigilant Books",
+   "category": "books",
+   "website": ""
+  },
+  {
+   "name": "Angel Vines",
+   "category": "florist",
+   "website": ""
+  },
+  {
+   "name": "Wheeling Flower Shop",
+   "category": "florist",
+   "website": ""
+  },
+  {
+   "name": "Jewelry & Watch Company",
+   "category": "jewelry",
+   "website": ""
+  },
+  {
+   "name": "Ash & Tin Boutique",
+   "category": "clothes",
+   "website": ""
+  },
+  {
+   "name": "Clothes Collections",
+   "category": "clothes",
+   "website": ""
+  },
+  {
+   "name": "Moonlight Intimate Apparel",
+   "category": "clothes",
+   "website": ""
+  },
+  {
+   "name": "REStyle Wheeling",
+   "category": "clothes",
+   "website": ""
+  },
+  {
+   "name": "VC Wares",
+   "category": "clothes",
+   "website": ""
+  },
+  {
+   "name": "Lucky Candies 2",
+   "category": "confectionery",
+   "website": ""
+  },
+  {
+   "name": "Mmm Popcorn",
+   "category": "confectionery",
+   "website": ""
+  },
+  {
+   "name": "Oliver's Pies",
+   "category": "bakery",
+   "website": "http://olivers-pies.com/"
+  },
+  {
+   "name": "Bite Me Bakery",
+   "category": "bakery",
+   "website": ""
+  },
+  {
+   "name": "Hershey's Ice Cream",
+   "category": "ice_cream",
+   "website": "https://www.hersheyicecream.com/"
+  },
+  {
+   "name": "Mini Donut Factory",
+   "category": "cafe",
+   "website": "https://www.minidonutfactories.com"
+  },
+  {
+   "name": "Scooter's Coffee",
+   "category": "cafe",
+   "website": "https://scooterscoffee.com/"
+  },
+  {
+   "name": "Starbucks",
+   "category": "cafe",
+   "website": "https://www.starbucks.com/store-locator/store/1011075/lake-cook-lexington-1085-lake-cook-road-wheeling-il-600902502-us"
+  },
+  {
+   "name": "Sweet Cafe (Frozen Yogurt & Boba)",
+   "category": "cafe",
+   "website": "https://www.doordash.com/store/sweet-cafe-wheeling-890735/"
+  },
+  {
+   "name": "Arctic Spoon",
+   "category": "cafe",
+   "website": ""
+  },
+  {
+   "name": "Centre Cup Coffee",
+   "category": "cafe",
+   "website": ""
+  },
+  {
+   "name": "Eckhart House",
+   "category": "cafe",
+   "website": ""
+  },
+  {
+   "name": "Empress Emporium",
+   "category": "cafe",
+   "website": ""
+  },
+  {
+   "name": "Mugshots",
+   "category": "cafe",
+   "website": ""
+  },
+  {
+   "name": "Paramount Coffee",
+   "category": "cafe",
+   "website": ""
+  },
+  {
+   "name": "Stella's Place",
+   "category": "cafe",
+   "website": ""
+  },
+  {
+   "name": "The Belgian Waffle Shop",
+   "category": "cafe",
+   "website": ""
+  },
+  {
+   "name": "Tim Hortons",
+   "category": "cafe",
+   "website": ""
+  },
+  {
+   "name": "Wheeling Coffee Shoppe",
+   "category": "cafe",
+   "website": ""
+  },
+  {
+   "name": "Armo Grill",
+   "category": "restaurant",
+   "website": "https://armogrill.com/"
+  },
+  {
+   "name": "Benihana",
+   "category": "restaurant",
+   "website": "https://www.benihana.com/locations/wheeling/"
+  },
+  {
+   "name": "Bob Chinn's Crab House",
+   "category": "restaurant",
+   "website": "https://www.bobchinns.com"
+  },
+  {
+   "name": "Cheese Melt Grill and Bar",
+   "category": "restaurant",
+   "website": "https://www.cheesemelttruck.com"
+  },
+  {
+   "name": "Coleman's Fish Market",
+   "category": "restaurant",
+   "website": "https://www.facebook.com/Colemans-Fish-Market-369493546495465/"
+  },
+  {
+   "name": "D'Agostino's Pizzeria Wheeling",
+   "category": "restaurant",
+   "website": "https://dagsdelivers.com/"
+  },
+  {
+   "name": "Eggsperience Breakfast & Lunch - Wheeling",
+   "category": "restaurant",
+   "website": "https://www.eggsperiencecafe.com/location/wheeling/"
+  },
+  {
+   "name": "El Famous Burrito",
+   "category": "restaurant",
+   "website": "https://www.elfamousburrito.net/"
+  },
+  {
+   "name": "Golden Chopsticks",
+   "category": "restaurant",
+   "website": "https://www.goldenchopstickswvtogo.com/"
+  },
+  {
+   "name": "Later Alligator",
+   "category": "restaurant",
+   "website": "https://lateralligator.net"
+  },
+  {
+   "name": "Osaka Express",
+   "category": "restaurant",
+   "website": "https://www.facebook.com/pg/Osaka-Express-Centre-Market-414852938703633/"
+  },
+  {
+   "name": "Pita Inn",
+   "category": "restaurant",
+   "website": "http://www.pita-inn.com/"
+  },
+  {
+   "name": "Pizza Hut",
+   "category": "restaurant",
+   "website": "https://locations.pizzahut.com/wv/wheeling/2345-national-rd"
+  },
+  {
+   "name": "Spears Bourbon & Burgers",
+   "category": "restaurant",
+   "website": "https://www.spearschicago.com/"
+  },
+  {
+   "name": "Stumara",
+   "category": "restaurant",
+   "website": "https://stumara.com"
+  },
+  {
+   "name": "The Market Vines - Wine Bar and Grille",
+   "category": "restaurant",
+   "website": "https://themarketvines.com"
+  },
+  {
+   "name": "Yu's Mandarin",
+   "category": "restaurant",
+   "website": "https://www.yusrestaurant.com/"
+  },
+  {
+   "name": "Avenue Eats",
+   "category": "restaurant",
+   "website": ""
+  },
+  {
+   "name": "Bob Evans",
+   "category": "restaurant",
+   "website": ""
+  },
+  {
+   "name": "Boston Fish Market",
+   "category": "restaurant",
+   "website": ""
+  },
+  {
+   "name": "Carlito's Soul Kitchen",
+   "category": "restaurant",
+   "website": ""
+  },
+  {
+   "name": "Cooper's Hawk",
+   "category": "restaurant",
+   "website": ""
+  },
+  {
+   "name": "Elle & Jack's",
+   "category": "restaurant",
+   "website": ""
+  },
+  {
+   "name": "Grecos",
+   "category": "restaurant",
+   "website": ""
+  },
+  {
+   "name": "Hall of Fame Cafe",
+   "category": "restaurant",
+   "website": ""
+  },
+  {
+   "name": "HD Cuisine",
+   "category": "restaurant",
+   "website": ""
+  },
+  {
+   "name": "Kitchen House Cafe",
+   "category": "restaurant",
+   "website": ""
+  },
+  {
+   "name": "Panda Chinese Kitchen",
+   "category": "restaurant",
+   "website": ""
+  },
+  {
+   "name": "Perkins",
+   "category": "restaurant",
+   "website": ""
+  },
+  {
+   "name": "Rise n Dine Pancake Cafe",
+   "category": "restaurant",
+   "website": ""
+  },
+  {
+   "name": "Sarah's On Main",
+   "category": "restaurant",
+   "website": ""
+  },
+  {
+   "name": "Soup Shack",
+   "category": "restaurant",
+   "website": ""
+  },
+  {
+   "name": "Taqueria 304",
+   "category": "restaurant",
+   "website": ""
+  },
+  {
+   "name": "The Windmill",
+   "category": "restaurant",
+   "website": ""
+  },
+  {
+   "name": "The Wood Fired Pizza Co.",
+   "category": "restaurant",
+   "website": ""
+  },
+  {
+   "name": "TJ's Sports Garden",
+   "category": "restaurant",
+   "website": ""
+  },
+  {
+   "name": "Vagabond Kitchen",
+   "category": "restaurant",
+   "website": ""
+  },
+  {
+   "name": "Ye Olde Alpha",
+   "category": "restaurant",
+   "website": ""
+  }
+ ]
+}

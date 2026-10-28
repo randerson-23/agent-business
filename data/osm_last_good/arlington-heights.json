@@ -1,0 +1,395 @@
+{
+ "date": "2026-10-28",
+ "rows": [
+  {
+   "name": "Express Gifts",
+   "category": "gift",
+   "website": "http://expressgiftsil.com"
+  },
+  {
+   "name": "Hallmark",
+   "category": "gift",
+   "website": ""
+  },
+  {
+   "name": "Kinokuniya",
+   "category": "books",
+   "website": "https://mitsuwa.com/restaurants-shops/books/books-kinokuniya/"
+  },
+  {
+   "name": "Ali Dream Flowers",
+   "category": "florist",
+   "website": "https://alidreamflowers.com"
+  },
+  {
+   "name": "Flaherty Jewelers",
+   "category": "jewelry",
+   "website": ""
+  },
+  {
+   "name": "Kay Jewelers",
+   "category": "jewelry",
+   "website": ""
+  },
+  {
+   "name": "Persin & Robbin Jewelers",
+   "category": "jewelry",
+   "website": ""
+  },
+  {
+   "name": "Obsession",
+   "category": "clothes",
+   "website": "https://www.leobsession.com/"
+  },
+  {
+   "name": "Men's Wearhouse",
+   "category": "clothes",
+   "website": ""
+  },
+  {
+   "name": "Robyn's Nest",
+   "category": "clothes",
+   "website": ""
+  },
+  {
+   "name": "Transformations",
+   "category": "clothes",
+   "website": ""
+  },
+  {
+   "name": "Kilwins",
+   "category": "confectionery",
+   "website": ""
+  },
+  {
+   "name": "Oak Mill Bakery",
+   "category": "bakery",
+   "website": "https://www.oakmillbakery.com/"
+  },
+  {
+   "name": "The Bakester",
+   "category": "bakery",
+   "website": ""
+  },
+  {
+   "name": "Tous les Jours",
+   "category": "bakery",
+   "website": ""
+  },
+  {
+   "name": "Baskin-Robbins",
+   "category": "ice_cream",
+   "website": "https://locations.baskinrobbins.com/il/arlington-heights/1010-e-rand-rd"
+  },
+  {
+   "name": "Berry Yo",
+   "category": "ice_cream",
+   "website": ""
+  },
+  {
+   "name": "CoCo & Blu",
+   "category": "cafe",
+   "website": "https://www.cocoandblucafe.com/"
+  },
+  {
+   "name": "Starbucks",
+   "category": "cafe",
+   "website": "https://starbucks.com"
+  },
+  {
+   "name": "Around Cafe",
+   "category": "cafe",
+   "website": ""
+  },
+  {
+   "name": "Egg House",
+   "category": "cafe",
+   "website": ""
+  },
+  {
+   "name": "Mango House Cafe",
+   "category": "cafe",
+   "website": ""
+  },
+  {
+   "name": "Releaf",
+   "category": "cafe",
+   "website": ""
+  },
+  {
+   "name": "Alt Thai",
+   "category": "restaurant",
+   "website": "https://www.altthai.com/"
+  },
+  {
+   "name": "Armand's Pizzeria",
+   "category": "restaurant",
+   "website": "https://www.armandspizzeriamenu.com/"
+  },
+  {
+   "name": "Bistro Chen",
+   "category": "restaurant",
+   "website": "https://bistrochen.com/"
+  },
+  {
+   "name": "Cooper's Hawk",
+   "category": "restaurant",
+   "website": "https://chwinery.com/locations/illinois/arlington-heights"
+  },
+  {
+   "name": "Golden Brunch",
+   "category": "restaurant",
+   "website": "https://goldenbrunch.com"
+  },
+  {
+   "name": "Hey Nonny",
+   "category": "restaurant",
+   "website": "https://www.heynonny.com/"
+  },
+  {
+   "name": "Javier's Sabor Mexicano",
+   "category": "restaurant",
+   "website": "https://javiers.biz/"
+  },
+  {
+   "name": "MAAX Asian BBQ & Hot Pots",
+   "category": "restaurant",
+   "website": "https://www.maaxbbqhotpots.com/"
+  },
+  {
+   "name": "Nikko Sushi",
+   "category": "restaurant",
+   "website": "https://nikkosushi.org/home"
+  },
+  {
+   "name": "Noodles & Company",
+   "category": "restaurant",
+   "website": "https://locations.noodles.com/il/arlington-heights/66-s-arlington-heights-road"
+  },
+  {
+   "name": "Osteria Trulli Cucina Pugliese",
+   "category": "restaurant",
+   "website": "https://www.osteriatrulli.com/"
+  },
+  {
+   "name": "Parea",
+   "category": "restaurant",
+   "website": "https://www.pareagreekkitchen.com"
+  },
+  {
+   "name": "Passero",
+   "category": "restaurant",
+   "website": "https://www.eatpassero.com/"
+  },
+  {
+   "name": "Penang Malaysian Cuisine",
+   "category": "restaurant",
+   "website": "http://penangchicago.com/"
+  },
+  {
+   "name": "Pompei Pizza & Pasta",
+   "category": "restaurant",
+   "website": "http://www.pompeipizzapasta.net/"
+  },
+  {
+   "name": "Ramen USA",
+   "category": "restaurant",
+   "website": "https://umacaexp.com/"
+  },
+  {
+   "name": "Salsa 17",
+   "category": "restaurant",
+   "website": "https://www.salsa17grill.com/"
+  },
+  {
+   "name": "Scratchboard Kitchen",
+   "category": "restaurant",
+   "website": "https://scratchboardkitchenah.com/"
+  },
+  {
+   "name": "Ttowa Korean Bistro",
+   "category": "restaurant",
+   "website": "https://www.ttowakoreanbistro.com/"
+  },
+  {
+   "name": "5th Ave Sushi",
+   "category": "restaurant",
+   "website": ""
+  },
+  {
+   "name": "Asian Bistro",
+   "category": "restaurant",
+   "website": ""
+  },
+  {
+   "name": "Barnaby's",
+   "category": "restaurant",
+   "website": ""
+  },
+  {
+   "name": "Bibibop",
+   "category": "restaurant",
+   "website": ""
+  },
+  {
+   "name": "Big Ange's",
+   "category": "restaurant",
+   "website": ""
+  },
+  {
+   "name": "Bird's Nest",
+   "category": "restaurant",
+   "website": ""
+  },
+  {
+   "name": "Carlos and Carlos",
+   "category": "restaurant",
+   "website": ""
+  },
+  {
+   "name": "Chennai Central South Indian Kitchen",
+   "category": "restaurant",
+   "website": ""
+  },
+  {
+   "name": "Chick 'n Fizz",
+   "category": "restaurant",
+   "website": ""
+  },
+  {
+   "name": "Chili's",
+   "category": "restaurant",
+   "website": ""
+  },
+  {
+   "name": "China Buffet",
+   "category": "restaurant",
+   "website": ""
+  },
+  {
+   "name": "Chinese Munch In",
+   "category": "restaurant",
+   "website": ""
+  },
+  {
+   "name": "Chuck E. Cheese",
+   "category": "restaurant",
+   "website": ""
+  },
+  {
+   "name": "Cilantro",
+   "category": "restaurant",
+   "website": ""
+  },
+  {
+   "name": "Courtland's Garage",
+   "category": "restaurant",
+   "website": ""
+  },
+  {
+   "name": "Denny's",
+   "category": "restaurant",
+   "website": ""
+  },
+  {
+   "name": "Dondi's Pizza",
+   "category": "restaurant",
+   "website": ""
+  },
+  {
+   "name": "Egg Harbor Cafe",
+   "category": "restaurant",
+   "website": ""
+  },
+  {
+   "name": "Francesca's",
+   "category": "restaurant",
+   "website": ""
+  },
+  {
+   "name": "Gail's Carriage Place",
+   "category": "restaurant",
+   "website": ""
+  },
+  {
+   "name": "Garibaldi's Italian Eatery",
+   "category": "restaurant",
+   "website": ""
+  },
+  {
+   "name": "Golden Corral",
+   "category": "restaurant",
+   "website": ""
+  },
+  {
+   "name": "Gumrai Thai",
+   "category": "restaurant",
+   "website": ""
+  },
+  {
+   "name": "JD's Q and Brew",
+   "category": "restaurant",
+   "website": ""
+  },
+  {
+   "name": "Mago",
+   "category": "restaurant",
+   "website": ""
+  },
+  {
+   "name": "Olive Garden",
+   "category": "restaurant",
+   "website": ""
+  },
+  {
+   "name": "Once Upon a Bagel",
+   "category": "restaurant",
+   "website": ""
+  },
+  {
+   "name": "Pinoy Grill",
+   "category": "restaurant",
+   "website": ""
+  },
+  {
+   "name": "Shakou",
+   "category": "restaurant",
+   "website": ""
+  },
+  {
+   "name": "Sozai Banzai",
+   "category": "restaurant",
+   "website": ""
+  },
+  {
+   "name": "Teriyaki Chopper",
+   "category": "restaurant",
+   "website": ""
+  },
+  {
+   "name": "Thlaco Taco Tijuanense #2",
+   "category": "restaurant",
+   "website": ""
+  },
+  {
+   "name": "Village Grill of Arlington",
+   "category": "restaurant",
+   "website": ""
+  },
+  {
+   "name": "Walker Bros. Original Pancake House",
+   "category": "restaurant",
+   "website": ""
+  },
+  {
+   "name": "Wayne's Pizza",
+   "category": "restaurant",
+   "website": ""
+  },
+  {
+   "name": "Yen Yen",
+   "category": "restaurant",
+   "website": ""
+  }
+ ]
+}
