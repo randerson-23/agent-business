@@ -220,7 +220,6 @@ doesn't re-suggest something already shipped.
 
 **Build queue (by deadline; refreshed by the research loop, item 346).**
 Pick from the top unless the owner has flagged something else:
-00. **405** (the prospects workflow has failed since Oct 26 on a missing PyYAML install, so `OUTREACH_BATCH.md`, the owner's November step 4, has never been written), then **406, 407**.
 0. **395, 396** (craft fairs and their organisers; step 1 done: round-21 probes for the fair pages and Palatine's winter market (397) are in `config/url_probes.yaml`; read `data/url_probes.json` next firing, then add confirmed fairs as `annual_events`; the first fair is Nov 7). Round 21 answered: Palatine Park District's Merry Makers Market and Palatine HS Boosters' Fall Craft Fair exist, Palatine's winter market is 1st/3rd Saturdays at the train station; their dates and hours are the round-22 probes.
 2. **313, 314**: the sales mock-up and starter pack (before outreach).
 3. **390**: promo receipts.
@@ -18502,7 +18501,7 @@ bigger than one file.
 
 #### P1 (new)
 
-405. **Fix the prospects workflow's dependencies and re-run it now.** Build
+405. ✅ DONE (osm-prospects.yml and audience-snapshot.yml install from requirements.txt, `google-auth` added to it; the merge re-runs the prospects workflow because its own file changed; confirm OUTREACH_BATCH.md appears on main) **Fix the prospects workflow's dependencies and re-run it now.** Build
      loop, first thing: in `osm-prospects.yml`, replace `pip install
      requests` (and the later `pip install pyyaml`) with one `pip install
      -r requirements.txt` before the first Python step. Then trigger the
@@ -18512,7 +18511,7 @@ bigger than one file.
      owner sets `GOATCOUNTER_TOKEN`. Done when the batch file exists on
      main.
 
-406. **Start every build-loop run by checking every workflow's last two
+406. ✅ DONE (`scripts/workflow_watchdog.py` + `workflow-watchdog.yml` daily; decision logic tested) **Start every build-loop run by checking every workflow's last two
      runs.** Working agreement plus a small watchdog:
 
      - **Working agreement (add it):** *"Before picking from the queue,
@@ -18531,7 +18530,7 @@ bigger than one file.
 
 #### P2 (new)
 
-407. **Forbid bare `pip install <package>` in workflows.** Build loop, one
+407. ✅ DONE (`tests/test_workflows.py`) **Forbid bare `pip install <package>` in workflows.** Build loop, one
      test in `tests/`: parse every `.github/workflows/*.yml` and fail if a
      `run:` line installs a named package instead of `-r
      requirements.txt` (`pytest` in test jobs is the one allowed extra).
@@ -18574,6 +18573,7 @@ email**, which is good as written.
   when mid-slice.
 - Always run `python -m pytest tests/ -q` and `python scripts/build_digest.py`
   before committing.
+- **Workflow check (item 406):** before picking from the queue, list each workflow's two most recent runs (`gh api repos/<repo>/actions/runs`). Any workflow whose last two runs failed is fixed first, ahead of the queue. `workflow-watchdog.yml` also opens an issue for it.
 - **Patch rule (item 281):** never post the weekly guide or site links to Patch as free community content. Patch reserves free posts for non-commercial use, and breaching that on the page that outranks the site for its head term is the wrong trade. The only Patch route is its paid featured event (item 281's fallback, a $30 test) with `/join/?utm_source=patch`.
 - Never hand-commit `docs/` output — run `git restore docs/` and remove any
   newly-created `docs/<region-id>/` directories before staging.

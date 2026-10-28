@@ -1,0 +1,30 @@
+name: Workflow watchdog
+
+# ROADMAP.md item 406: one GitHub issue for any workflow whose last two runs
+# both failed; closed again when a run succeeds.
+on:
+  schedule:
+    - cron: "23 7 * * *"
+  workflow_dispatch: {}
+
+permissions:
+  actions: read
+  contents: read
+  issues: write
+
+jobs:
+  watch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: actions/setup-python@v7
+        with:
+          python-version: "3.11"
+
+      - run: pip install -r requirements.txt
+
+      - name: Check workflow runs
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: python scripts/workflow_watchdog.py

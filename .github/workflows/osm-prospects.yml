@@ -33,13 +33,13 @@ jobs:
         with:
           python-version: "3.11"
 
-      - run: pip install requests
+      - run: pip install -r requirements.txt
 
       - name: Build the prospect list
         run: python scripts/osm_prospects.py
 
       - name: Build the outreach batch
-        run: pip install pyyaml && python scripts/outreach_batch.py
+        run: python scripts/outreach_batch.py
 
       - name: Commit
         run: |
