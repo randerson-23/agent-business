@@ -1,0 +1,20 @@
+# ROADMAP.md item 401: where to send each warm prospect's email, for
+# scripts/outreach_batch.py. This repository is public, so ONLY role addresses
+# (info@, news@) or contact-page URLs from the organisation's own site go here,
+# each with the page it came from. Never an individual's address, even one
+# found on a public page. With no `contact`, the batch says "look up on <site>".
+#
+# match: a substring of the host's lowercase name (host_key)
+# org:   one organisation, so three dealerships become one message
+# site:  the organisation's own site
+# contact (optional): a role address or contact-page URL; `source` is the page it came from
+contacts:
+  - match: napleton
+    org: "Napleton Palatine dealerships"
+    site: "https://www.napleton.com/"
+  - match: des plaines theatre
+    org: "Des Plaines Theatre"
+    site: "https://desplainestheatre.com/plan-your-visit-des-plaines/"
+  - match: metropolis
+    org: "Metropolis Performing Arts Centre"
+    site: "https://www.metropolisarts.com/visit/"

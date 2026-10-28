@@ -220,7 +220,7 @@ doesn't re-suggest something already shipped.
 
 **Build queue (by deadline; refreshed by the research loop, item 346).**
 Pick from the top unless the owner has flagged something else:
-0. **401, 402** (the ready-to-send outreach batch and the confirmation email; the owner's November ask depends on both). **395, 396** (craft fairs and their organisers; step 1 done: round-21 probes for the fair pages and Palatine's winter market (397) are in `config/url_probes.yaml`; read `data/url_probes.json` next firing, then add confirmed fairs as `annual_events`; the first fair is Nov 7). Round 21 answered: Palatine Park District's Merry Makers Market and Palatine HS Boosters' Fall Craft Fair exist, Palatine's winter market is 1st/3rd Saturdays at the train station; their dates and hours are the round-22 probes.
+0. **395, 396** (craft fairs and their organisers; step 1 done: round-21 probes for the fair pages and Palatine's winter market (397) are in `config/url_probes.yaml`; read `data/url_probes.json` next firing, then add confirmed fairs as `annual_events`; the first fair is Nov 7). Round 21 answered: Palatine Park District's Merry Makers Market and Palatine HS Boosters' Fall Craft Fair exist, Palatine's winter market is 1st/3rd Saturdays at the train station; their dates and hours are the round-22 probes.
 2. **313, 314**: the sales mock-up and starter pack (before outreach).
 3. **390**: promo receipts.
 4. **328** (probe first), then **325** (by Nov 15), then **385** (holiday
@@ -18384,7 +18384,7 @@ this roadmap now asks for far more than that.
      which."* Remove item 165's exemption for quick actions. This applies
      to this loop first.
 
-401. **`OUTREACH_BATCH.md`: ready-to-send emails, recipients included.**
+401. ✅ DONE (`scripts/outreach_batch.py` + `config/outreach_contacts.yaml`: at most 8 blocks, warm prospects first, one per organisation, §14a filled in; "Where to send" is a role address or contact page only with a source, else "look up on <site>"; the file is built and committed by the weekly prospects workflow, which also runs when these files change; fair organisers (396) and downtown associations (377) are added when those exist; tests) **`OUTREACH_BATCH.md`: ready-to-send emails, recipients included.**
      Build loop, regenerated weekly:
 
      - One block per message: **Where to send** (a role address such as
@@ -18435,7 +18435,7 @@ celebrations that bring families out in early November.
 
 #### P1 (new)
 
-402. **A local, clear Buttondown confirmation email, pasted with the welcome
+402. ✅ DONE (`CONFIRMATION_EMAIL.md`, 66 words; `confirmation_url` checked against Buttondown's confirmation-email docs; test) **A local, clear Buttondown confirmation email, pasted with the welcome
      email.** Build loop writes **`CONFIRMATION_EMAIL.md`** (under 80 words):
 
      - **Subject:** *"Confirm your Within Ten email (one click)"*
