@@ -2,7 +2,7 @@
   "@context": "https://schema.org",
   "@type": "ItemList",
   "name": "Upcoming events in Des Plaines — Within Ten",
-  "dateModified": "2026-10-28T06:00:16+00:00",
+  "dateModified": "2026-10-28T13:11:08+00:00",
   "numberOfItems": 76,
   "itemListElement": [
     {
@@ -1370,36 +1370,6 @@
       "position": 45,
       "item": {
         "@type": "Event",
-        "name": "VIP UPGRADES - WHEEL OF FORTUNE LIVE!",
-        "startDate": "2026-11-05T17:00:00-06:00",
-        "url": "https://withintenmiles.com/des-plaines-60016/#ev-vip-upgrades-wheel-of-fortune-live-2026-11-05",
-        "eventStatus": "https://schema.org/EventScheduled",
-        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "location": {
-          "@type": "Place",
-          "name": "Des Plaines Theatre",
-          "address": {
-            "@type": "PostalAddress",
-            "addressCountry": "US",
-            "addressLocality": "Des Plaines",
-            "addressRegion": "IL",
-            "streetAddress": "1476 Miner Street"
-          }
-        },
-        "sameAs": "https://desplainestheatre.com/event/vip-upgrades-wheel-of-fortune-live-2/",
-        "organizer": {
-          "@type": "Organization",
-          "name": "Des Plaines Theatre",
-          "url": "https://desplainestheatre.com"
-        },
-        "description": "VIP1: Ultimate VIP Meet & Greet Experience – Price per package: $ 212 USD Description of package: Meet & Greet and Photo Opportunity with the Host of Wheel of…"
-      }
-    },
-    {
-      "@type": "ListItem",
-      "position": 46,
-      "item": {
-        "@type": "Event",
         "name": "Book a Teen Librarian",
         "startDate": "2026-11-05T17:00:00-06:00",
         "url": "https://withintenmiles.com/des-plaines-60016/#ev-book-a-teen-librarian-2026-11-05",
@@ -1428,7 +1398,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 47,
+      "position": 46,
       "item": {
         "@type": "Event",
         "name": "Tech en el Forum (Spanish)",
@@ -1459,7 +1429,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 48,
+      "position": 47,
       "item": {
         "@type": "Event",
         "name": "Monthly Writing Meet Up",
@@ -1486,6 +1456,36 @@
           "url": "https://desplaines.libnet.info"
         },
         "description": "Thursday, November 05 2026 6:30pm - 8:30pm \n Meet fellow writers, network, and meet your deadlines; bring your laptop and bring your inspiration!"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 48,
+      "item": {
+        "@type": "Event",
+        "name": "WHEEL OF FORTUNE LIVE!",
+        "startDate": "2026-11-05T19:30:00-06:00",
+        "url": "https://withintenmiles.com/des-plaines-60016/#ev-wheel-of-fortune-live-2026-11-05",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Des Plaines Theatre",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Des Plaines",
+            "addressRegion": "IL",
+            "streetAddress": "1476 Miner Street"
+          }
+        },
+        "sameAs": "https://desplainestheatre.com/event/wheel-of-fortune-live-4/",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Des Plaines Theatre",
+          "url": "https://desplainestheatre.com"
+        },
+        "description": "“Wheel of Fortune LIVE!” brings the thrill of the iconic TV game show to life, giving fans more access and more chances to win. Guests are randomly selected…"
       }
     },
     {
