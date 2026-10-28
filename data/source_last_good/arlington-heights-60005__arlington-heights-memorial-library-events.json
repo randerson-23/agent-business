@@ -1,17 +1,11 @@
 {
- "fetched_at": "2026-10-27T22:00:43+00:00",
+ "fetched_at": "2026-10-28T06:00:16+00:00",
  "items": [
-  {
-   "date": "2026-10-27",
-   "detail": "",
-   "title": "The Nonprofit Exchange",
-   "url": "https://www.ahml.info/scheduling/reservation/193749"
-  },
   {
    "date": "2026-10-28",
    "detail": "",
-   "title": "CANCELED: Senior Center: iPhone & iPad Beyond Basics (Day 2)",
-   "url": "https://www.ahml.info/scheduling/reservation/225333"
+   "title": "Halloween Fun",
+   "url": "https://www.ahml.info/scheduling/reservation/212249"
   },
   {
    "date": "2026-10-29",
@@ -142,14 +136,14 @@
   {
    "date": null,
    "detail": "",
-   "title": "How to Use Your iPad/iPhone",
-   "url": "https://www.ahml.info/scheduling/reservation/231793"
+   "title": "Play Time",
+   "url": "https://www.ahml.info/scheduling/reservation/224255"
   },
   {
    "date": null,
    "detail": "",
-   "title": "Play Time",
-   "url": "https://www.ahml.info/scheduling/reservation/224255"
+   "title": "How to Use Your iPad/iPhone",
+   "url": "https://www.ahml.info/scheduling/reservation/231793"
   },
   {
    "date": null,
@@ -360,6 +354,12 @@
    "detail": "",
    "title": "Makerplace \"Inspired By\" Art: OBOV Edition",
    "url": "https://www.ahml.info/scheduling/reservation/224115"
+  },
+  {
+   "date": null,
+   "detail": "",
+   "title": "Makerplace \"Inspired By\" Art: OBOV Edition",
+   "url": "https://www.ahml.info/scheduling/reservation/224117"
   }
  ],
  "source": "Arlington Heights Memorial Library — Events"
