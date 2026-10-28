@@ -67,6 +67,7 @@ contact_email: "hello@withintenmiles.com"
 payment_links:
   event_promo: null
   weekly_spot: null
+  starter: null  # ROADMAP.md item 314: Starter, 3 weeks for $135
   holiday: null  # ROADMAP.md item 352: the Holiday listing ($20 until Nov 15, then $50)
 
 # ROADMAP.md item 388: the founding offer, "your first Event Promo is free" for

@@ -91,6 +91,7 @@ commitment.
 | Placement | Price | Value grows with | Details |
 |---|---|---|---|
 | **Event Promo** | $20 one-time | Newsletter reach | Your event goes first on your town's page, and first in the weekend list and weekly email when it falls on a weekend, labelled "Presented by [you]" and marked as sponsored in the event data AI assistants read. Runs until the event day. We guarantee the placement, not any assistant's mention. |
+| **Starter: 3 weeks** | $135 | Newsletter reach | Three Weekly Spots in a row, 10% off ($150 at the weekly rate). Long enough to see which pages and clicks your recommendation brings, short enough to be an easy yes (ROADMAP.md item 314). |
 | **Holiday listing** | $20 before Nov 15, $50 after | Town holiday page | A "Local business listing" card (name, one line, address, link) on your town's `/holiday/` page, live Nov 1 – Dec 31 and linked from the town page in season. The free "Holiday events" section above it lists tree lightings and markets from the town's own calendars whether or not anyone pays (ROADMAP.md item 258). |
 | **Weekly Spot** | $50 / week, or $175 / month (4 weeks) | Newsletter reach | Top-of-page banner with your business name, a 2-sentence blurb, and a link, on that week's issue. Not ready for a year? Start here. |
 | **Annual Partner** ⭐ recommended | $1,200 / year | Site traffic & search presence | A permanent listing on the region's business directory, a spotlight placement inside one relevant seasonal guide, a live SEO backlink, and priority consideration for Editor's Pick. |

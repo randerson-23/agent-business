@@ -205,7 +205,7 @@ def test_render_sponsor_page_labels_each_tier_by_what_gates_it():
     # "unavailable").
     html = build_digest.render_sponsor_page([], datetime(2026, 6, 10, 15, tzinfo=timezone.utc))  # outside the Holiday listing's season
     assert "Gated by" not in html
-    assert html.count("Value grows with: Newsletter reach") == 2  # Event Promo, Weekly Spot
+    assert html.count("Value grows with: Newsletter reach") == 3  # Event Promo, Weekly Spot, Starter
     assert html.count("Value grows with: Site traffic &amp; search presence") == 2  # Annual Partner, Neighborhood Authority
 
 
@@ -6620,3 +6620,30 @@ def test_nth_weekday_recurrence_and_craft_fair_keywords_reach_the_holiday_select
     cfg = next(c for c in build_digest.load_regions() if c["region"]["id"] == "palatine-60067")
     titles = [e["title"] for e in build_digest.prepare_annual_events(cfg, datetime(2026, 11, 2, 12, tzinfo=timezone.utc))["events"]]
     assert "Palatine High School Boosters Present: Fall Craft Fair" in titles and titles.count("Palatine Winter Farmers' Market") >= 3
+
+
+def test_sponsor_preview_is_noindex_escapes_by_construction_and_shows_both_products():
+    # ROADMAP.md item 313.
+    sections = [
+        {"region_name": "Palatine", "region_url": "https://x/p/", "weekend_events": [{"title": "Fall Fest", "date_iso": "2026-10-31T10:00:00", "attendable": True}, {"title": "Sponsored", "date_iso": "2026-10-31T11:00:00", "attendable": True, "sponsored_by": "Acme"}, {"title": "Hike", "date_iso": "2026-11-01T10:00:00", "attendable": True}]},
+        {"region_name": "Wheeling", "region_url": "https://x/w/", "weekend_events": []},
+    ]
+    html = build_digest.render_sponsor_preview(sections, {"event_promo": "https://buy.example/e", "weekly_spot": None}, "hello@x.org")
+    assert 'name="robots" content="noindex, nofollow"' in html and "Preview, not live" in html
+    assert "As a Featured event" in html and "Weekly Spot" in html and 'href="https://buy.example/e"' in html
+    assert "mailto:hello@x.org" in html  # no Stripe link for the weekly spot: email instead
+    script = html.split("<script>", 1)[1]
+    assert "innerHTML" not in script and "document.write" not in script and "textContent" in script
+    assert "Sponsored" not in html.split('id="preview-data">')[1].split("</script>")[0]  # a paid event is not shown as a "real" neighbour
+    data = json.loads(html.split('id="preview-data">')[1].split("</script>")[0])
+    assert [t["name"] for t in data["towns"]] == ["Palatine", "Wheeling"] and [e["title"] for e in data["towns"][0]["events"]] == ["Fall Fest", "Hike"]
+    assert build_digest.SITE_BASE_URL + "sponsor/preview/" not in build_digest.collect_sitemap_urls([], None, None, True)
+
+
+def test_starter_pack_tier_is_135_for_three_weeks_with_its_own_payment_slot():
+    # ROADMAP.md item 314.
+    now = datetime(2026, 6, 10, 15, tzinfo=timezone.utc)
+    html = build_digest.render_sponsor_page([], now, payment_links={"starter": "https://buy.stripe.com/starter"})
+    assert "Starter: 3 weeks" in html and "$135 for 3 weeks" in html and "https://buy.stripe.com/starter" in html
+    assert "Starter: 3 weeks" in (Path(__file__).resolve().parents[1] / "SPONSOR_KIT.md").read_text(encoding="utf-8")
+    assert 3 * 50 * 0.9 == 135

@@ -220,7 +220,6 @@ doesn't re-suggest something already shipped.
 
 **Build queue (by deadline; refreshed by the research loop, item 346).**
 Pick from the top unless the owner has flagged something else:
-2. **313, 314**: the sales mock-up and starter pack (before outreach).
 3. **390**: promo receipts.
 4. **328** (probe first), then **325** (by Nov 15), then **385** (holiday
    creatives, from Nov 1), **397** (Palatine winter market), **311** (winter outdoors, by Dec 15), **398**, then the rest by priority.
@@ -16097,7 +16096,7 @@ price, sell and deliver every product, but nothing has been bought.
 
 #### P1 (new)
 
-313. **A one-click, personalised sponsor mock-up the owner can send.**
+313. ✅ DONE (`/sponsor/preview/`: noindex, out of the sitemap, linked from nowhere; reads ?name= ?town= ?line= ?url= in the browser, textContent only, link only if http(s); a "Preview, not live" ribbon; Featured card among the town's two real events and a Weekly Spot box, each with Buy now (Stripe link if set, else an email); the preview link line added to OUTREACH_TEMPLATES §13, §14a, §15. Checked in headless Chromium: a name of `<img onerror>` rendered as text, no dialog, a `javascript:` url ignored. "On a copy of the real email section" is the town's two real events, not the full email partial; tests) **A one-click, personalised sponsor mock-up the owner can send.**
      Design/UX, build loop. A `noindex` page, `/sponsor/preview/`, that
      reads `?name=`, `?town=`, `?line=` and `?url=` from the address and
      renders, client-side, **that business's** Featured card and Weekly
@@ -16112,7 +16111,7 @@ price, sell and deliver every product, but nothing has been bought.
      rendering. **Owner time:** none beyond pasting a link they already
      send.
 
-314. **A three-week starter pack for the Weekly Spot.** Build loop plus
+314. ✅ DONE ("Starter: 3 weeks" $135 tier on /sponsor/, SPONSOR_KIT.md row, `payment_links.starter: null` slot for the owner's Stripe link; tests) **A three-week starter pack for the Weekly Spot.** Build loop plus
      owner. Add **"Starter: 3 weeks for $135"** (10% off three Weekly
      Spots) to `SPONSOR_TIERS`, `SPONSOR_KIT.md` and `/sponsor/`, with a
      `payment_links.starter` slot (item 244), so the owner creates one
