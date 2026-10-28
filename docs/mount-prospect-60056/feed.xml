@@ -3,8 +3,16 @@
 <channel>
   <title>Within Ten — Upcoming events in Mount Prospect</title>
   <link>https://withintenmiles.com/</link>
-  <description>Upcoming events in Mount Prospect, soonest first - aggregated automatically from village, library, park district and school-district calendars. This build reached 15 of 18 configured sources.</description>
-  <lastBuildDate>Wed, 28 Oct 2026 14:17:55 +0000</lastBuildDate>
+  <description>Upcoming events in Mount Prospect, soonest first - aggregated automatically from village, library, park district and school-district calendars. This build reached 14 of 18 configured sources.</description>
+  <lastBuildDate>Wed, 28 Oct 2026 22:02:26 +0000</lastBuildDate>
+  <item>
+    <title>Mount Prospect: Fire Department Toy Drive</title>
+    <link>https://withintenmiles.com/mount-prospect-60056/#ev-fire-department-toy-drive-2026-10-28</link>
+    <guid isPermaLink="true">https://withintenmiles.com/mount-prospect-60056/#ev-fire-department-toy-drive-2026-10-28</guid>
+    <description>Official listing: https://www.mountprospect.org/articles/Fire-Department-Toy-Drive-181.php</description>
+    <pubDate>Wed, 28 Oct 2026 00:00:00 +0000</pubDate>
+    <source url="https://www.mountprospect.org/articles/Fire-Department-Toy-Drive-181.php">Village of Mount Prospect — News</source>
+  </item>
   <item>
     <title>Mount Prospect: Inglés para Hispanohablantes</title>
     <link>https://withintenmiles.com/mount-prospect-60056/#ev-ingl-s-para-hispanohablantes-2026-10-28</link>
@@ -446,15 +454,6 @@ A virtual… Official listing: https://mppl.libnet.info/event/17476744</descript
  Bring a puzzle, take a puzzle! Tables will be set up in the lobby for folks to stop by to swap puzzles. Official listing: https://mppl.libnet.info/event/16493074</description>
     <pubDate>Tue, 10 Nov 2026 00:00:00 +0000</pubDate>
     <source url="https://mppl.libnet.info/event/16493074">Mount Prospect Public Library — Events</source>
-  </item>
-  <item>
-    <title>Mount Prospect: Baby Storytime</title>
-    <link>https://withintenmiles.com/mount-prospect-60056/#ev-baby-storytime-2026-11-10</link>
-    <guid isPermaLink="true">https://withintenmiles.com/mount-prospect-60056/#ev-baby-storytime-2026-11-10</guid>
-    <description>Tuesday, November 10 2026 9:30am - 10:00am 
- A lifelong love of reading starts at birth! Join us for songs, rhymes, stories, and playtime made specially for… Official listing: https://mppl.libnet.info/event/16637816</description>
-    <pubDate>Tue, 10 Nov 2026 09:30:00 +0000</pubDate>
-    <source url="https://mppl.libnet.info/event/16637816">Mount Prospect Public Library — Events</source>
   </item>
 </channel>
 </rss>

@@ -3,8 +3,8 @@
 <channel>
   <title>Within Ten — Upcoming events in Palatine</title>
   <link>https://withintenmiles.com/</link>
-  <description>Upcoming events in Palatine, soonest first - aggregated automatically from village, library, park district and school-district calendars. This build reached 22 of 25 configured sources.</description>
-  <lastBuildDate>Wed, 28 Oct 2026 14:17:55 +0000</lastBuildDate>
+  <description>Upcoming events in Palatine, soonest first - aggregated automatically from village, library, park district and school-district calendars. This build reached 20 of 25 configured sources. 1 source is shown from its last update, up to 9 hours ago.</description>
+  <lastBuildDate>Wed, 28 Oct 2026 22:02:26 +0000</lastBuildDate>
   <item>
     <title>Palatine: Rope</title>
     <link>https://withintenmiles.com/palatine-60067/#ev-rope-2026-10-28</link>
@@ -94,12 +94,28 @@
     <source url="https://events.harpercollege.edu/event/the-fifth-element">Harper College — Public Events</source>
   </item>
   <item>
+    <title>Palatine: "Guys and Dolls SR"</title>
+    <link>https://withintenmiles.com/palatine-60067/#ev-guys-and-dolls-sr-2026-11-13</link>
+    <guid isPermaLink="true">https://withintenmiles.com/palatine-60067/#ev-guys-and-dolls-sr-2026-11-13</guid>
+    <description>"Guys and Dolls SR" presented by Palatine Park District Theatre Official listing: https://www.palatine.il.us/common/modules/iCalendar/iCalendar.aspx?feed=calendar&amp;catID=14</description>
+    <pubDate>Fri, 13 Nov 2026 18:30:00 +0000</pubDate>
+    <source url="https://www.palatine.il.us/common/modules/iCalendar/iCalendar.aspx?feed=calendar&amp;catID=14">Village of Palatine — Calendar</source>
+  </item>
+  <item>
     <title>Palatine: A Doll's House by Henrik Ibsen Adapted by Amy Herzog</title>
     <link>https://withintenmiles.com/palatine-60067/#ev-a-doll-s-house-by-henrik-ibsen-adapted-by-amy-herzog-2026-11-13</link>
     <guid isPermaLink="true">https://withintenmiles.com/palatine-60067/#ev-a-doll-s-house-by-henrik-ibsen-adapted-by-amy-herzog-2026-11-13</guid>
     <description>A DOLL'S HOUSE by Henrik Ibsen Adapted by Amy Herzog Ibsen’s celebrated play thrust drama firmly into the modern age when it premiered in 1879. Now, nearly… Official listing: https://events.harpercollege.edu/event/a-dolls-house-by-henrik-ibsen-adapted-by-amy-herzog</description>
     <pubDate>Fri, 13 Nov 2026 19:30:00 +0000</pubDate>
     <source url="https://events.harpercollege.edu/event/a-dolls-house-by-henrik-ibsen-adapted-by-amy-herzog">Harper College — Public Events</source>
+  </item>
+  <item>
+    <title>Palatine: "Guys and Dolls SR"</title>
+    <link>https://withintenmiles.com/palatine-60067/#ev-guys-and-dolls-sr-2026-11-14</link>
+    <guid isPermaLink="true">https://withintenmiles.com/palatine-60067/#ev-guys-and-dolls-sr-2026-11-14</guid>
+    <description>"Guys and Dolls SR" presented by Palatine Park District Theatre Official listing: https://www.palatine.il.us/common/modules/iCalendar/iCalendar.aspx?feed=calendar&amp;catID=14</description>
+    <pubDate>Sat, 14 Nov 2026 14:00:00 +0000</pubDate>
+    <source url="https://www.palatine.il.us/common/modules/iCalendar/iCalendar.aspx?feed=calendar&amp;catID=14">Village of Palatine — Calendar</source>
   </item>
   <item>
     <title>Palatine: A Doll's House by Henrik Ibsen Adapted by Amy Herzog</title>
@@ -116,6 +132,14 @@
     <description>A DOLL'S HOUSE by Henrik Ibsen Adapted by Amy Herzog Ibsen’s celebrated play thrust drama firmly into the modern age when it premiered in 1879. Now, nearly… Official listing: https://events.harpercollege.edu/event/a-dolls-house-by-henrik-ibsen-adapted-by-amy-herzog</description>
     <pubDate>Sun, 15 Nov 2026 14:00:00 +0000</pubDate>
     <source url="https://events.harpercollege.edu/event/a-dolls-house-by-henrik-ibsen-adapted-by-amy-herzog">Harper College — Public Events</source>
+  </item>
+  <item>
+    <title>Palatine: "Guys and Dolls SR"</title>
+    <link>https://withintenmiles.com/palatine-60067/#ev-guys-and-dolls-sr-2026-11-15</link>
+    <guid isPermaLink="true">https://withintenmiles.com/palatine-60067/#ev-guys-and-dolls-sr-2026-11-15</guid>
+    <description>"Guys and Dolls SR" presented by Palatine Park District Theatre Official listing: https://www.palatine.il.us/common/modules/iCalendar/iCalendar.aspx?feed=calendar&amp;catID=14</description>
+    <pubDate>Sun, 15 Nov 2026 14:00:00 +0000</pubDate>
+    <source url="https://www.palatine.il.us/common/modules/iCalendar/iCalendar.aspx?feed=calendar&amp;catID=14">Village of Palatine — Calendar</source>
   </item>
   <item>
     <title>Palatine: A Doll's House by Henrik Ibsen Adapted by Amy Herzog</title>
