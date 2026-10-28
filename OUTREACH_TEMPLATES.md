@@ -678,6 +678,8 @@ No subscription, no renewal, just that one placement.
 Want in? Just send me a line or two on your offer and I'll have it up
 before the weekend.
 
+See how [Business Name] would look this week (a preview, nothing is published): https://withintenmiles.com/sponsor/preview/?name=[Business+Name]&town=[Town]
+
 Thanks,
 [Your name]
 Within Ten — https://withintenmiles.com/
@@ -737,6 +739,8 @@ https://withintenmiles.com/sponsor/
 Reply with anything you'd like corrected on the listing and, if you want
 the feature, the one line to put under the title. I'll confirm your day
 is free before taking payment.
+
+See how [Business Name] would look this week (a preview, nothing is published): https://withintenmiles.com/sponsor/preview/?name=[Business+Name]&town=[Town]
 
 Thanks,
 [Your name]
@@ -805,6 +809,8 @@ your first Event Promo is free.
 
 If you'd like one, reply with the event, date and the link you want it to
 open, and I'll set it up.
+
+See how [Business Name] would look this week (a preview, nothing is published): https://withintenmiles.com/sponsor/preview/?name=[Business+Name]&town=[Town]
 
 Thanks,
 [Your name]

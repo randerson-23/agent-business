@@ -2506,6 +2506,14 @@ SPONSOR_TIERS = [
         "detail": "Not ready for a year? The same top-of-page recommendation, available week-to-week or month-to-month.",
     },
     {
+        # ROADMAP.md item 314: three Weekly Spots at 10% off.
+        "name": "Starter: 3 weeks",
+        "payment_key": "starter",
+        "price": "$135 for 3 weeks",
+        "gated_by": "Newsletter reach",
+        "detail": "Three Weekly Spots in a row, 10% off. Long enough to see which pages and clicks your recommendation brings, short enough to be an easy yes.",
+    },
+    {
         # ROADMAP.md item 352: a seasonal tier, shown on /sponsor/ from Oct 15 to Dec 15 only.
         "name": "Holiday listing",
         "payment_key": "holiday",
@@ -2789,6 +2797,29 @@ def render_sponsor_page(
         stats=stats,
         audience=audience,
         og_image_url=SITE_BASE_URL + "og/default.png",
+    )
+
+
+def render_sponsor_preview(sections: list[dict], payment_links: dict | None, contact_email: str | None) -> str:
+    """ROADMAP.md item 313: the `/sponsor/preview/` page. The template fills in
+    the business name, town, line and link from the address in the visitor's
+    browser (textContent only); the build supplies each town's colour and its
+    first two real attendable events."""
+    towns = []
+    for i, sec in enumerate(sections):
+        evs = [e for e in sec["weekend_events"] if e.get("attendable", True) and e.get("title") and e.get("date_iso") and not e.get("sponsored_by")][:2]
+        towns.append({
+            "name": sec["region_name"], "color": EMAIL_TOWN_COLORS[i % len(EMAIL_TOWN_COLORS)][0],
+            "events": [{"title": display_title(e["title"]), "when": event_date_label(e["date_iso"]) or ""} for e in evs],
+        })
+    links = payment_links or {}
+    mailto = build_contact_mailto_url(contact_email, "Sponsor preview", SPONSOR_INQUIRY_FIELDS) if contact_email else SITE_BASE_URL + "sponsor/"
+    return get_template_env().get_template("sponsor_preview.html.j2").render(
+        data_json=json_for_script({"towns": towns}),
+        canonical_url=SITE_BASE_URL + "sponsor/preview/", hub_url=SITE_BASE_URL,
+        featured_price="$20 one-time", spot_price="$50/week or $175/month",
+        event_buy_url=links.get("event_promo") or mailto, event_buy_label="Buy now" if links.get("event_promo") else "Email to claim this",
+        spot_buy_url=links.get("weekly_spot") or mailto, spot_buy_label="Buy now" if links.get("weekly_spot") else "Email to claim this",
     )
 
 
@@ -7491,6 +7522,9 @@ def main() -> None:
     sponsor_dir = OUTPUT_DIR / "sponsor"
     sponsor_dir.mkdir(parents=True, exist_ok=True)
     (sponsor_dir / "index.html").write_text(sponsor_html, encoding="utf-8")
+    preview_dir = sponsor_dir / "preview"  # item 313: noindex, out of the sitemap, linked from nowhere
+    preview_dir.mkdir(parents=True, exist_ok=True)
+    (preview_dir / "index.html").write_text(render_sponsor_preview(combined_email_sections, sponsors_cfg.get("payment_links"), contact_email), encoding="utf-8")
     logger.info("Wrote %s", sponsor_dir / "index.html")
 
     about_html = render_about_page(now, analytics, contact_email=contact_email, source_completeness=source_completeness)
