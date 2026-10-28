@@ -810,6 +810,29 @@ Thanks,
 [Your name]
 Within Ten — https://withintenmiles.com/
 
+## 14b. Craft-fair organiser — "Your craft fair is on our [town] page" (ROADMAP.md item 396)
+
+For the "Fair organisers" list in `OUTREACH_PROSPECTS.md` (booster clubs, PTOs,
+park-district programmes). Send it **two weeks before** the fair, so the paid
+placement lands the Wednesday before. Quote no subscriber number (item 118).
+
+Subject: Your craft fair on [Date] is on our [Town] page
+
+Hi,
+
+Your **[Fair name]** on [Date] is on **Within Ten**'s [Town] page, the free
+local guide. For $20 (or free under our founding offer, see
+https://withintenmiles.com/sponsor/ for how many spots are left) it goes first
+on the town page and in the weekly email the Wednesday before, labelled
+"Presented by [Organiser]", so families see it while they plan the weekend.
+
+If you'd like that, reply with the fair's date, time, address and the link you
+want it to open, and I'll set it up.
+
+Thanks,
+[Your name]
+Within Ten — https://withintenmiles.com/
+
 ## 16. Arts venue — "Your show is on our weekend page" (ROADMAP.md Phase 11 #284)
 
 The §15 pattern, for theatres and music venues whose shows already appear

@@ -175,3 +175,17 @@ def test_outreach_batch_blocks_have_sources_cap_at_eight_and_hold_no_personal_ad
     assert ob.where_to_send({"site": "https://s/", "contact": "info@x.org", "source": "https://x.org/contact"}).startswith("info@x.org")
     assert ob.where_to_send({"site": "https://s/", "contact": "info@x.org"}).startswith("look up on")  # no source, no address
     assert all(c.get("contact") is None or c.get("source") for c in contacts)
+
+
+def test_fair_organisers_are_hosts_under_their_own_heading():
+    # ROADMAP.md item 396.
+    import warm_prospects as wp
+    from datetime import date
+    events = [{"title": "Palatine High School Boosters Present: Fall Craft Fair", "date_iso": "2026-11-07T09:00:00"},
+              {"title": "Parks Present: Fall Fun", "date_iso": "2026-11-07T09:00:00"}]
+    found = wp.collect_hosts(events, "Palatine")
+    assert [f["host"] for f in found] == ["Palatine High School Boosters"]  # a school booster club is not an agency; "Parks" is
+    reg = wp.update_registry({}, found, date(2026, 10, 28))
+    text = "\n".join(wp.render_section(reg))
+    assert "### Fair organisers" in text and "Palatine High School Boosters" in text
+    assert text.index("Fair organisers") < text.index("Palatine High School Boosters")

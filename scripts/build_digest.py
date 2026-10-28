@@ -1817,10 +1817,20 @@ def expand_recurring_annual_event(item: dict, region_name: str, today: date) -> 
     if first < today:
         first = today + timedelta(days=(weekday - today.weekday()) % 7)
 
-    recurrence_note = f"Every {weekday_name.capitalize()} through {ends.strftime('%b %-d')}"
+    # ROADMAP.md item 397: an optional `nth: [1, 3]` keeps only the 1st and 3rd
+    # such weekday of each month ("1st and 3rd Saturdays").
+    nth = sorted({int(n) for n in rec.get("nth") or [] if str(n).isdigit() and 1 <= int(n) <= 5})
+    ordinal = {1: "1st", 2: "2nd", 3: "3rd", 4: "4th", 5: "5th"}
+    if nth:
+        recurrence_note = f"{' and '.join(ordinal[n] for n in nth)} {weekday_name.capitalize()}s through {ends.strftime('%b %-d')}"
+    else:
+        recurrence_note = f"Every {weekday_name.capitalize()} through {ends.strftime('%b %-d')}"
     events = []
     d = first
     while d <= window_end:
+        if nth and ((d.day - 1) // 7 + 1) not in nth:
+            d += timedelta(days=7)
+            continue
         event = _build_annual_event_dict(
             item, region_name,
             date_display=d.strftime("%b %-d"),
@@ -2166,7 +2176,8 @@ def render_holidays_page(
 # half is free and comes from the town's own feeds.
 HOLIDAY_TITLE = re.compile(
     r"\b(tree[- ]lighting|christmas|holiday|santa|menorah|hanukkah|chanukah|kris kringle|"
-    r"winter wonderland|reindeer|small business saturday|cookie walk|gingerbread|snow ?flake)\b",
+    r"winter wonderland|reindeer|small business saturday|cookie walk|gingerbread|snow ?flake|"
+    r"craft fair|holiday market|makers[\u2019' ]*s? market|bazaar|vendor fair|holiday boutique)\b",
     re.IGNORECASE,
 )
 HOLIDAY_EVENTS_CAP = 30

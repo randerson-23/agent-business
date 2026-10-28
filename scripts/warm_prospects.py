@@ -35,6 +35,9 @@ _NOT_A_NAME = re.compile(
     r"\b(?:closed|closes|closing|rescheduled|cancel+ed|postponed|noon|midnight)\b",
     re.IGNORECASE,
 )
+# Item 396: a craft fair's organiser ("<Boosters> Present: Fall Craft Fair") is a prospect of its own.
+FAIR_TITLE = re.compile(r"\b(?:craft fair|holiday market|makers[\u2019' ]*s? market|bazaar|vendor fair|holiday boutique)\b", re.IGNORECASE)
+_PRESENTS = re.compile(r"^(.{3,70}?)\s+Presents?:\s+", re.IGNORECASE)
 _TITLE_HOST = re.compile(r"\b(?:at|@)\s+([A-Z0-9][^,;:()|–—]{2,60})$")
 
 
@@ -50,9 +53,12 @@ def host_key(name: str) -> str:
     return re.sub(r"[^a-z0-9]+", " ", name.lower().replace("'s", "")).strip()
 
 
+_BOOSTER = re.compile(r"\b(?:boosters?|pto|pta|parent teacher)\b", re.IGNORECASE)
+
+
 def _clean(name: str | None) -> str | None:
     name = re.sub(r"\s+", " ", (name or "")).strip(" .-–—")
-    if len(name) < 3 or _AGENCY.search(name) or _PLACEHOLDER.match(name) or _NOT_A_NAME.search(name):
+    if len(name) < 3 or (_AGENCY.search(name) and not _BOOSTER.search(name)) or _PLACEHOLDER.match(name) or _NOT_A_NAME.search(name):
         return None
     return name
 
@@ -60,7 +66,13 @@ def _clean(name: str | None) -> str | None:
 def event_host(event: dict) -> str | None:
     """The business hosting an event, from its title ("... at Napleton's
     Palatine Mazda") or its venue, or None."""
-    m = _TITLE_HOST.search((event.get("title") or "").strip())
+    title = (event.get("title") or "").strip()
+    pm = _PRESENTS.match(title)
+    if pm and FAIR_TITLE.search(title):
+        name = _clean(pm.group(1))
+        if name:
+            return name
+    m = _TITLE_HOST.search(title)
     if m:
         name = _clean(m.group(1))
         if name:
@@ -184,13 +196,18 @@ def _table(hosts: list[dict]) -> list[str]:
     return lines + [""]
 
 
+def _is_fair_organiser(host: dict) -> bool:
+    return any(FAIR_TITLE.search(e["title"]) for e in host["events"])
+
+
 def render_section(registry: dict, venue_keys: set[str] | None = None) -> list[str]:
     """Markdown lines for the "Warm" section (item 387), with hosts that are
     configured calendar sources in a separate short list (item 391)."""
     venue_keys = venue_keys or set()
     lines = ["## Warm: already hosting public events", ""]
     hosts = sorted(registry.items(), key=lambda kv: (kv[1]["town"], kv[1]["name"].lower()))
-    warm = [h for k, h in hosts if k not in venue_keys]
+    organisers = [h for k, h in hosts if k not in venue_keys and _is_fair_organiser(h)]
+    warm = [h for k, h in hosts if k not in venue_keys and not _is_fair_organiser(h)]
     venues = [h for k, h in hosts if k in venue_keys]
     if not warm:
         lines += ["No non-agency hosts in the site's listings right now.", ""]
@@ -200,6 +217,8 @@ def render_section(registry: dict, venue_keys: set[str] | None = None) -> list[s
             "Names, events and dates only. Start here: they already hold public events.",
             "",
         ] + _table(warm)
+    if organisers:
+        lines += ["### Fair organisers", "", "Booster clubs, PTOs and programmes running a craft fair or holiday market. Send OUTREACH_TEMPLATES.md section 14b two weeks before the fair.", ""] + _table(organisers)
     if venues:
         lines += ["### Venues that already publish calendars", "", "They may still buy a promo, but the pitch differs: they already reach their own audience.", ""] + _table(venues)
     return lines

@@ -6604,3 +6604,19 @@ def test_thanksgiving_weekend_issue_has_a_fixed_subject_a_santa_link_and_stays_u
     plain = build_digest.render_combined_email_digest(_join_sections(), "Nov 20–22", earlier, None, holiday=holiday)
     assert "TREE LIGHTINGS AND SMALL BUSINESS SATURDAY" not in plain and "santa/?utm_source=email" not in plain
     assert len(html.encode("utf-8")) < 102_000
+
+
+def test_nth_weekday_recurrence_and_craft_fair_keywords_reach_the_holiday_selection():
+    # ROADMAP.md items 395 and 397.
+    item = {"title": "Winter Market", "url": "https://x", "recurrence": {"starts": "2026-11-07", "ends": "2027-01-31", "weekday": "Saturday", "time": "09:00", "nth": [1, 3]}}
+    days = [e["date_iso"][:10] for e in build_digest.expand_recurring_annual_event(item, "Palatine", date(2026, 11, 1))]
+    assert days == ["2026-11-07", "2026-11-21", "2026-12-05", "2026-12-19", "2027-01-02", "2027-01-16"]
+    assert build_digest.expand_recurring_annual_event(item, "Palatine", date(2026, 11, 1))[0]["recurrence_note"] == "1st and 3rd Saturdays through Jan 31"
+    for title in ("Holiday Bazaar", "Fall Craft Fair", "Merry Makers Market", "Holiday Market", "Vendor Fair at the Rec Center", "Holiday Boutique"):
+        assert build_digest.HOLIDAY_TITLE.search(title), title
+    assert not build_digest.HOLIDAY_TITLE.search("Farmers Market")
+    blocks = [{"events": [{"title": "Holiday Bazaar", "url": "https://x/b", "date_iso": "2026-11-14T10:00:00"}, {"title": "Pickleball", "url": "https://x/p", "date_iso": "2026-11-14T10:00:00"}]}]
+    assert [e["title"] for e in build_digest.select_holiday_events(blocks, date(2026, 11, 2))] == ["Holiday Bazaar"]
+    cfg = next(c for c in build_digest.load_regions() if c["region"]["id"] == "palatine-60067")
+    titles = [e["title"] for e in build_digest.prepare_annual_events(cfg, datetime(2026, 11, 2, 12, tzinfo=timezone.utc))["events"]]
+    assert "Palatine High School Boosters Present: Fall Craft Fair" in titles and titles.count("Palatine Winter Farmers' Market") >= 3
