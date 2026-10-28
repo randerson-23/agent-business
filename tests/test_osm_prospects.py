@@ -150,3 +150,28 @@ def test_warm_hosts_take_the_events_own_date_and_split_also_at_hosts(tmp_path):
     event = {"title": "Trunk or Treat at Napleton Palatine Hyundai", "date_iso": "2026-10-24T12:00:00", "also_at": [{"label": "Napleton Palatine Chevrolet", "anchor_id": "a"}, {"label": "Library", "anchor_id": "b"}]}
     hosts = [f["host"] for f in wp.collect_hosts([event], "Palatine")]
     assert hosts == ["Napleton Palatine Hyundai", "Napleton Palatine Chevrolet"]
+
+
+def test_outreach_batch_blocks_have_sources_cap_at_eight_and_hold_no_personal_address():
+    # ROADMAP.md item 401.
+    import outreach_batch as ob
+    reg = {
+        "napleton palatine mazda": {"name": "Napleton Palatine Mazda", "town": "Palatine", "events": [{"title": "FREE Trunk or Treat at Napleton Palatine Mazda", "date": "2026-10-24"}]},
+        "napleton palatine subaru": {"name": "Napleton Palatine Subaru", "town": "Palatine", "events": [{"title": "Trunk or Treat at Napleton Palatine Subaru", "date": "2026-10-24"}]},
+        "des plaines theatre": {"name": "Des Plaines Theatre", "town": "Des Plaines", "events": [{"title": "RESCHEDULED FOR 2/28/27: ROCKY IN CONCERT", "date": "2026-10-28"}, {"title": "Blues Night", "date": "2026-10-30"}]},
+        "unknown shop": {"name": "Unknown Shop", "town": "Wheeling", "events": [{"title": "Sale", "date": "2026-10-30"}]},
+    }
+    contacts = ob.load_contacts()
+    blocks = ob.build_blocks(reg, contacts)
+    assert [b["org"] for b in blocks] == ["Napleton Palatine dealerships", "Des Plaines Theatre"]  # warm first, one per organisation, unknown skipped
+    assert "Blues Night" in blocks[1]["event"]  # a rescheduled event is not the reason it is warm
+    assert blocks[0]["subject"] == "Your Trunk or Treat on Sat Oct 24 was on our Palatine page"
+    many = [{"match": f"h{i}", "org": f"Org {i}", "site": "https://x.example/"} for i in range(12)]
+    reg2 = {f"h{i}": {"name": f"H{i}", "town": "T", "events": [{"title": "E", "date": "2026-10-30"}]} for i in range(12)}
+    assert len(ob.build_blocks(reg2, many)) == ob.MAX_BLOCKS
+    text = ob.render(blocks, datetime(2026, 10, 28))
+    assert not ob.PERSONAL_ADDRESS.search(text) and "Where to send" in text
+    assert ob.where_to_send({"site": "https://s/", "contact": "jane.doe@x.org", "source": "p"}).startswith("look up on")  # a personal address is refused
+    assert ob.where_to_send({"site": "https://s/", "contact": "info@x.org", "source": "https://x.org/contact"}).startswith("info@x.org")
+    assert ob.where_to_send({"site": "https://s/", "contact": "info@x.org"}).startswith("look up on")  # no source, no address
+    assert all(c.get("contact") is None or c.get("source") for c in contacts)

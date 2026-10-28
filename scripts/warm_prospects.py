@@ -38,6 +38,14 @@ _NOT_A_NAME = re.compile(
 _TITLE_HOST = re.compile(r"\b(?:at|@)\s+([A-Z0-9][^,;:()|–—]{2,60})$")
 
 
+def short_title(title: str) -> str:
+    """An event title for a sentence: "FREE Trunk or Treat at Napleton's Mazda"
+    becomes "Trunk or Treat" (the host is named separately)."""
+    t = re.sub(r"\s+(?:at|@)\s+.*$", "", title.strip())
+    t = re.sub(r"^(?:free|rescheduled[^:]*:)\s+", "", t, flags=re.IGNORECASE)
+    return t.strip() or title.strip()
+
+
 def host_key(name: str) -> str:
     return re.sub(r"[^a-z0-9]+", " ", name.lower().replace("'s", "")).strip()
 
