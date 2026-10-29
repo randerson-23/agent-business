@@ -7,14 +7,14 @@ This repository is public: keep your own send notes elsewhere, and never add an 
 ## 1. Napleton Palatine dealerships
 
 - [ ] Sent (tick in your own copy)
-- **Why it is warm:** FREE Trunk or Treat at Napleton Palatine Hyundai (2026-10-22) (template 14a)
+- **Why it is warm:** FREE Trunk or Treat at Napleton Palatine Hyundai (2026-10-24) (template 14a)
 - **Where to send:** look up on https://www.napleton.com/ (its Contact page; no address is stored here)
-- **Subject:** Your Trunk or Treat on Thu Oct 22 was on our Palatine page
+- **Subject:** Your Trunk or Treat on Sat Oct 24 was on our Palatine page
 
 ```text
 Hi,
 
-Your Trunk or Treat on Thu Oct 22 was on Within Ten's Palatine page, the free local guide. Next time, for $20, it goes first on the town page and in the weekly email, labelled "Presented by Napleton Palatine dealerships", with its own event page. Here is how Napleton Palatine dealerships would look: https://withintenmiles.com/sponsor/preview/?name=Napleton+Palatine+dealerships&town=Palatine
+Your Trunk or Treat on Sat Oct 24 was on Within Ten's Palatine page, the free local guide. Next time, for $20, it goes first on the town page and in the weekly email, labelled "Presented by Napleton Palatine dealerships", with its own event page. Here is how Napleton Palatine dealerships would look: https://withintenmiles.com/sponsor/preview/?name=Napleton+Palatine+dealerships&town=Palatine
 
 While the founding offer lasts (see https://withintenmiles.com/sponsor/ for how many spots are left), your first Event Promo is free.
 
