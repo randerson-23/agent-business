@@ -117,6 +117,8 @@ They may still buy a promo, but the pitch differs: they already reach their own 
 
 ## Des Plaines
 
+(from the Oct 29 run; today's refresh failed)
+
 | Name | Category | Website |
 |---|---|---|
 | 7 Red Roses | Florist | <https://www.sevenredroses.com/> |
