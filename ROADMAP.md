@@ -18676,7 +18676,7 @@ touched, **Google Discover**, and at the images every page shares.
      every image is 1200×630, and every Event in `events.json` has an
      `image`.
 
-413. ✅ DONE (`scripts/check_outreach_batch.py` runs in osm-prospects.yml after the generator and fails the job on a stale date, a missing preview link, a subject over 60 characters or a near fair not first; the stale Napleton row was a registry artefact: the generator now drops send-date placeholders at read time; tests) **Check the generated outreach batch, not just the generator.** Build
+413. ✅ DONE (the batch is also rebuilt at every site build and build-digest.yml commits it, so it cannot lag a merge; `scripts/check_outreach_batch.py` runs in osm-prospects.yml after the generator and fails the job on a stale date, a missing preview link, a subject over 60 characters or a near fair not first; the stale Napleton row was a registry artefact: the generator now drops send-date placeholders at read time; tests) **Check the generated outreach batch, not just the generator.** Build
      loop, a step in `osm-prospects.yml` after `outreach_batch.py` (and a
      test that runs the same checks on the committed file):
 

@@ -7572,6 +7572,13 @@ def main() -> None:
             prospects_path.write_text(warm_prospects.splice_section(prospects_text, warm_prospects.render_section(warm_registry, warm_prospects.venue_source_keys())), encoding="utf-8")
     except OSError as exc:
         logger.warning("Could not refresh OUTREACH_PROSPECTS.md: %s", exc)
+    try:  # item 413: the batch is rebuilt from the fresh registry at every build, so it can't lag a merge
+        import outreach_batch
+
+        outreach_batch.DISPLAY_TITLE = display_title
+        outreach_batch.write_batch(warm_registry, now.astimezone(LOCAL_TZ))
+    except Exception as exc:  # noqa: BLE001 - a prospects file must never fail a site build
+        logger.warning("Could not refresh OUTREACH_BATCH.md: %s", exc)
     leaf_dir = OUTPUT_DIR / "leaf-pickup"
     leaf_dir.mkdir(parents=True, exist_ok=True)
     (leaf_dir / "index.html").write_text(render_leaf_pickup_page(leaf_entries, now, analytics, newsletter), encoding="utf-8")
