@@ -78,7 +78,7 @@ jobs:
         run: |
           git config user.name "local-planner-bot"
           git config user.email "actions@users.noreply.github.com"
-          git add docs/ data/event_pages.json data/bing_hashes.json data/indexnow_key.json data/link_candidates.json data/source_health.json data/weekend_signal.json data/source_transport_failures.json data/weekend_signal_history.json data/source_transport_failure_details.json data/source_completeness.json data/indexnow_log.json data/source_last_good/ data/source_failure_window.json data/indexnow_hashes.json data/weekly_feed_history.json data/warm_hosts.json OUTREACH_PROSPECTS.md
+          git add docs/ data/event_pages.json data/bing_hashes.json data/indexnow_key.json data/link_candidates.json data/source_health.json data/weekend_signal.json data/source_transport_failures.json data/weekend_signal_history.json data/source_transport_failure_details.json data/source_completeness.json data/indexnow_log.json data/source_last_good/ data/source_failure_window.json data/indexnow_hashes.json data/weekly_feed_history.json data/warm_hosts.json OUTREACH_PROSPECTS.md OUTREACH_BATCH.md
           if git diff --cached --quiet; then
             echo "No changes to commit."
           else

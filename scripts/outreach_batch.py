@@ -70,10 +70,14 @@ SUBJECT_MAX = 60
 FAIR_SOON_DAYS = 21
 
 
-def _display(title: str) -> str:
-    from build_digest import display_title  # item 334's display case (not the shouting source text)
+DISPLAY_TITLE = None  # build_digest.py sets this when it calls the generator in-process
 
-    return display_title(warm_prospects.short_title(title))
+
+def _display(title: str) -> str:
+    display = DISPLAY_TITLE
+    if display is None:
+        from build_digest import display_title as display  # item 334's display case (not the shouting source text)
+    return display(warm_prospects.short_title(title))
 
 
 def subject_for(kind: str, ev: dict, town: str) -> str:
@@ -170,6 +174,12 @@ def render(blocks: list[dict], now: datetime) -> str:
     for i, b in enumerate(blocks, 1):
         lines += [f"## {i}. {b['org']}", "", f"- [ ] Sent (tick in your own copy)", f"- **Why it is warm:** {b['event']} (template {dict(warm='14a', fair='14b', venue='14c')[b['kind']]})", f"- **Where to send:** {b['where']}", f"- **Subject:** {b['subject']}", "", "```text", b["body"], "```", ""]
     return "\n".join(lines)
+
+
+def write_batch(registry: dict, now: datetime, path: Path | None = None) -> int:
+    blocks = build_blocks(registry, load_contacts())
+    (path or OUTPUT_PATH).write_text(render(blocks, now), encoding="utf-8")
+    return len(blocks)
 
 
 def main() -> int:
