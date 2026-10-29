@@ -10,9 +10,17 @@ Businesses whose own events appeared on a town page in the last 60 days or the n
 
 | Host | Town | Events |
 |---|---|---|
-| Napleton Palatine Hyundai | Palatine | FREE Trunk or Treat at Napleton Palatine Hyundai (2026-10-22); FREE Trunk or Treat at Napleton Palatine Hyundai (2026-10-24) |
-| Napleton's Palatine Mazda | Palatine | FREE Trunk or Treat at Napleton's Palatine Mazda (2026-10-22); FREE Trunk or Treat at Napleton's Palatine Mazda (2026-10-24) |
-| Napleton's Palatine Subaru | Palatine | FREE Trunk or Treat at Napleton's Palatine Subaru (2026-10-22); FREE Trunk or Treat at Napleton's Palatine Subaru (2026-10-24) |
+| Napleton Palatine Hyundai | Palatine | FREE Trunk or Treat at Napleton Palatine Hyundai (2026-10-24) |
+| Napleton's Palatine Mazda | Palatine | FREE Trunk or Treat at Napleton's Palatine Mazda (2026-10-24) |
+| Napleton's Palatine Subaru | Palatine | FREE Trunk or Treat at Napleton's Palatine Subaru (2026-10-24) |
+
+### Fair organisers
+
+Booster clubs, PTOs and programmes running a craft fair or holiday market. Send OUTREACH_TEMPLATES.md section 14b two weeks before the fair.
+
+| Host | Town | Events |
+|---|---|---|
+| Palatine High School Boosters | Palatine | Palatine High School Boosters Present: Fall Craft Fair (2026-11-07) |
 
 ### Venues that already publish calendars
 

@@ -162,10 +162,6 @@
  "napleton palatine hyundai": {
   "events": [
    {
-    "date": "2026-10-22",
-    "title": "FREE Trunk or Treat at Napleton Palatine Hyundai"
-   },
-   {
     "date": "2026-10-24",
     "title": "FREE Trunk or Treat at Napleton Palatine Hyundai"
    }
@@ -175,10 +171,6 @@
  },
  "napleton palatine mazda": {
   "events": [
-   {
-    "date": "2026-10-22",
-    "title": "FREE Trunk or Treat at Napleton's Palatine Mazda"
-   },
    {
     "date": "2026-10-24",
     "title": "FREE Trunk or Treat at Napleton's Palatine Mazda"
@@ -190,15 +182,21 @@
  "napleton palatine subaru": {
   "events": [
    {
-    "date": "2026-10-22",
-    "title": "FREE Trunk or Treat at Napleton's Palatine Subaru"
-   },
-   {
     "date": "2026-10-24",
     "title": "FREE Trunk or Treat at Napleton's Palatine Subaru"
    }
   ],
   "name": "Napleton's Palatine Subaru",
+  "town": "Palatine"
+ },
+ "palatine high school boosters": {
+  "events": [
+   {
+    "date": "2026-11-07",
+    "title": "Palatine High School Boosters Present: Fall Craft Fair"
+   }
+  ],
+  "name": "Palatine High School Boosters",
   "town": "Palatine"
  }
 }
