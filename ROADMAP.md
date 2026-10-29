@@ -220,7 +220,7 @@ doesn't re-suggest something already shipped.
 
 **Build queue (by deadline; refreshed by the research loop, item 346).**
 Pick from the top unless the owner has flagged something else:
-0. **409** (finish once the round-23 probe answers).
+0. **413** (the committed batch still shows Napleton on Thu Oct 22 with no preview; verify the output, before Nov 1). **409** (finish once the round-23 probe answers). **411, 412** (Discover large previews and per-page share images).
 3. **390**: promo receipts.
 4. **328** (probe first), then **325** (by Nov 15), then **385** (holiday
    creatives, from Nov 1), **397** (Palatine winter market), **311** (winter outdoors, by Dec 15), **398**, then the rest by priority.
@@ -18627,6 +18627,78 @@ craft fair's published contact** (past Daily Herald and Patch notices),
 and **Napleton's four Palatine stores** (Aug 2025 acquisition release).
 The design/UX angle is **the batch itself**: a wrong date, shouting
 subjects, generic links and no recipients.
+
+
+#### Research pass 2026-10-29 (hundred-and-tenth pass)
+
+The Halloween issue went out at 01:57 UTC with item 348's fixed subject,
+*"Trick-or-treat hours, all five towns, plus Halloween weekend"*, still
+to **one subscriber**. Overnight the build loop shipped items 408 and 410
+(right dates, short subjects, previews, fairs first) and ran the
+round-23 recipient probes for item 409. This pass checks the batch again
+and finds that the new code and the committed file disagree. It then
+looks at one no-owner-time discovery surface the roadmap has never
+touched, **Google Discover**, and at the images every page shares.
+
+| Angle | What it is / what we found | Why it matters here |
+|---|---|---|
+| **`OUTREACH_BATCH.md` after items 408 and 410 (design/UX)** | Regenerated at 06:08 UTC today, five minutes after #391 merged. The theatres now get short subjects (*"Your Thu Oct 29 show is on our Des Plaines page"*) and **personalised preview links**, which is good. But **Napleton, the first and warmest block**, still reads *"Your Trunk or Treat on **Thu Oct 22**"*, still links the generic `/sponsor/` page with no preview, and the batch still has **no fair organisers** and **no recipients**. Meanwhile `data/warm_hosts.json`, committed at 06:07, already holds Napleton at **2026-10-24** | The unit tests pass and the file is still wrong. That is the same gap that hid item 405's failure: **nothing checks the generated file itself**. The owner will open the file, not the tests (item 413) |
+| **Google Discover** (Google's large-image guidance as reported by Search Engine Journal and Search Engine Roundtable; 2026 Discover guides) | Discover needs only that a page is **indexed** and meets content policy. To get the **large-card format**, Google recommends images **at least 1200 px wide** and the robots setting **`max-image-preview:large`**, in a `<meta name="robots">` tag in the head. The guides also say Discover demotes sensational framing and rewards topical consistency, which suits a sober local site | Discover shows local, timely pages to people near the place, which is exactly this site's content, at **no owner time**. The site's `og` images are already **1200×630**, but **no page carries `max-image-preview:large`**, so even an indexed page can only appear as a thumbnail. One tag fixes that (item 411) |
+| **Which image each page shares** (built `docs/`, `og:image`) | Region pages use their town image (`/og/<region>.png`, 1200×630). But the **`/e/` event pages use `/og/default.png`**, and so do the seasonal pages (`/trick-or-treat/`, `/santa/`, `/holidays/`, `/leaf-pickup/`). **Event JSON-LD carries no `image`**, though Google lists `image` as recommended for events | The pages most likely to be shared or surfaced (*"trick-or-treat hours"*, *"Santa near me"*, a single event) all look identical in a share card, a Discover card or Google's event results. A rendered 1200×630 per page, built from the ad-creative renderer that already exists (items 344, 350), fixes all three at once (item 412) |
+
+#### P1 (new)
+
+411. **Allow large image previews site-wide.** Build loop, one line in the
+     base template's `<head>`: `<meta name="robots"
+     content="max-image-preview:large">`. Pages that are `noindex` keep
+     their existing robots tag, with this value merged in (`noindex,
+     max-image-preview:large`), never duplicated. Tests: every indexable
+     page has exactly one robots meta containing `max-image-preview:large`,
+     and `noindex` pages still contain `noindex`.
+
+412. **A real 1200×630 image for each event page and seasonal page, and in
+     the Event markup.** Build loop, reusing the Pillow renderer from items
+     344 and 350:
+
+     - **`/e/` pages:** the date chip, the title in display case (item
+       334), the town and venue, the town colour bar, and the *"Within
+       Ten"* wordmark, written to `/og/e/<slug>.png`.
+     - **Seasonal pages:** trick-or-treat (the hours table), Santa, holidays
+       (the tree-lighting dates) and leaf pickup, regenerated when their
+       data changes, at `/og/<page>.png`.
+     - Set each page's `og:image` and `twitter:image`. Add **`image`** to
+       `event_jsonld()` (item 375): the `/e/` image when the event has a
+       page, otherwise the town image.
+     - Keep the inline-JS and page-weight budgets untouched: images are
+       files, not inline.
+
+     Tests: every `/e/` page and seasonal page points at its own image,
+     every image is 1200×630, and every Event in `events.json` has an
+     `image`.
+
+413. **Check the generated outreach batch, not just the generator.** Build
+     loop, a step in `osm-prospects.yml` after `outreach_batch.py` (and a
+     test that runs the same checks on the committed file):
+
+     - **Every warm block's subject date equals the registry date** for
+       that host in `data/warm_hosts.json`.
+     - **Every block contains a `/sponsor/preview/?name=` link.**
+     - **Confirmed fairs within 21 days appear** before warm hosts.
+     - No subject exceeds 60 characters.
+
+     On failure, the step fails, and item 406's watchdog then opens its
+     issue. Then fix what made today's Napleton block stale. The likely
+     cause is that it was built from the pre-#391 registry in the same
+     run, or that the org-merge path for multi-store hosts skips the new
+     date and preview code. Regenerate. Done when the committed file shows
+     **Sat Oct 24** and a preview link for Napleton, and the Palatine HS
+     fair block, before Nov 1.
+
+Competitors reviewed this pass: **Google Discover's large-preview
+requirements** (1200 px images plus `max-image-preview:large`), and
+**the site's own share images** across page types. The design/UX angle
+is **the regenerated outreach batch**, still wrong in its first block
+after the fix shipped.
 
 
 ## Working agreements for autonomous iteration
