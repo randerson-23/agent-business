@@ -157,6 +157,18 @@ def venue_source_keys(config_dir: Path | None = None) -> set[str]:
     return keys
 
 
+def drop_placeholder_dates(events: list[dict]) -> list[dict]:
+    """Item 408/413: a row dated up to six days before another row with the
+    same title is a send-date placeholder from before event dates were read
+    from the cards; only the later (real) date is kept."""
+    def placeholder(e: dict) -> bool:
+        return any(
+            o["title"] == e["title"] and o["date"] > e["date"] and (date.fromisoformat(o["date"]) - date.fromisoformat(e["date"])).days <= 6
+            for o in events
+        )
+    return [e for e in events if not placeholder(e)]
+
+
 def update_registry(registry: dict, found: list[dict], today: date) -> dict:
     """Merge this build's hosts into the stored registry and drop events
     outside the window, and hosts left with none."""
@@ -177,7 +189,7 @@ def update_registry(registry: dict, found: list[dict], today: date) -> dict:
     for key, entry in registry.items():
         if not _clean(entry.get("name")):
             continue  # a name an earlier version accepted ("5 p.m.") is dropped on the next build
-        events = sorted((e for e in entry["events"] if start.isoformat() <= e["date"] <= end.isoformat()), key=lambda e: e["date"])
+        events = sorted((e for e in drop_placeholder_dates(entry["events"]) if start.isoformat() <= e["date"] <= end.isoformat()), key=lambda e: e["date"])
         if events:
             out[key] = {"name": entry["name"], "town": entry["town"], "events": events}
     return out
