@@ -220,7 +220,7 @@ doesn't re-suggest something already shipped.
 
 **Build queue (by deadline; refreshed by the research loop, item 346).**
 Pick from the top unless the owner has flagged something else:
-0. **412** (per-page share images).
+0. **415** (batch copy: one-word yes, Thursday not Wednesday, future shows only; before the owner sends this weekend). **412** (per-page share images).
 3. **390**: promo receipts.
 4. **328** (probe first), then **325** (by Nov 15), then **385** (holiday
    creatives, from Nov 1), **397** (Palatine winter market), **311** (winter outdoors, by Dec 15), **398**, then the rest by priority.
@@ -237,8 +237,10 @@ reference, *not now*.
    read-only key into the secret `GOATCOUNTER_TOKEN`.
 3. **The $50 Meta test: reply "yes", "holiday" or "no" (1 min).** If
    yes, set it up from `META_AD_KIT.md` (about 10 min).
-4. **Send the emails in `OUTREACH_BATCH.md` (about 15 min)** once it
-   exists (item 401). The offer is the free first Event Promo.
+4. **Send the emails in `OUTREACH_BATCH.md` (about 15 min).** It exists
+   now. **Block 1 (PHS Pirate Boosters, fair Sat Nov 7) by Sun Nov 1**
+   (2 min, item 414); the rest when convenient. The offer is the free
+   first Event Promo.
 5. **Buttondown settings (3 min):** sender name "Within Ten"; paste
    `CONFIRMATION_EMAIL.md` into Settings → Subscribing → Confirmation
    (item 402) and `WELCOME_EMAIL.md` into Welcome email (this replaces
@@ -18699,6 +18701,64 @@ requirements** (1200 px images plus `max-image-preview:large`), and
 **the site's own share images** across page types. The design/UX angle
 is **the regenerated outreach batch**, still wrong in its first block
 after the fix shipped.
+
+
+#### Research pass 2026-10-29, evening (hundred-and-eleventh pass)
+
+Today the build loop shipped items 409 and 413. The outreach batch is now
+checked after it's generated and rebuilt at every site build, and the
+Palatine HS fair has its own mailbox. It also shipped item 411
+(`max-image-preview:large` site-wide). **`OUTREACH_BATCH.md` is now
+sendable:** block 1 is the **PHS Pirate Boosters' Fall Craft Fair (Sat
+Nov 7)**, addressed to the fair's own mailbox with its source, and
+Napleton reads the right date (**Sat Oct 24**). The fair is nine days
+away, so the owner's November step 4 has become a **this-weekend** job
+for its first block. This pass reads the batch's copy as a booster-club
+volunteer would read it, and checks one timing claim the emails make.
+
+| Angle | What it is / what we found | Why it matters here |
+|---|---|---|
+| **The fair email, read as the booster club would (design/UX)** | Subject *"Your Fall Craft Fair on Sat Nov 7 is on our Palatine page"*, a clear offer (free under the founding offer, *"Presented by PHS Pirate Boosters"*), and a personalised preview link. Good. Two problems. **(1)** It asks them to *"reply with the fair's date, time, address and the link"*, all of which the site **already has** from their own page (item 395), so a yes costs them a small form-fill. **(2)** It says the fair goes in *"the weekly email **the Wednesday before**"*, but the email arrives **Thursday morning** (Buttondown schedule mode, 07:00 Central) | Every extra step a volunteer has to take before saying yes is a lost yes. *"Reply 'yes' and we'll feature it as listed"* is the shortest path, and the email must not make a timing claim the product contradicts (item 415) |
+| **Venue blocks point at past shows** (`OUTREACH_BATCH.md`, built Oct 29) | The Des Plaines Theatre block says *"Your **Thu Oct 29** show is on our Des Plaines page"* and Metropolis says *"Your **Fri Oct 30** show…"*. By the time the owner sends these (the weekend at the earliest), both are in the past, and "is on our page" is false | The warm-host logic picks the **most recent** event, which is right for *"your trunk-or-treat was on our page"* but wrong for a venue with a calendar of future shows. A venue pitch should name the **next** show at least three days out (item 415) |
+| **Send timing for a weekend-events email** (beehiiv's 2025 send-time data; MailerLite; Sender.net's roundup) | Open rates vary by **under two points** between weekdays. Hour matters more than day. Weekend clicks run slightly higher. One guide advises sending **event information 3–5 days before** the event | **No change.** Thursday 07:00 sits inside the 2–3 day window for a Saturday and is consistent with the guidance. Recorded so the send day isn't re-litigated. The only fix is the batch's wrong "Wednesday" claim, above |
+| **How school PTOs and booster clubs promote fairs** (PTO Today; local PTO examples) | Vendor calls go out a month ahead. Shoppers are drawn by free admission, timing against school events, and Facebook event pages. One PTO used **local sponsorships to pay for online advertising and signs** | Confirms item 396's premise: fair organisers have a promotion budget line and a one-day attendance goal, and already pay for ads and signs. A $20 (or founding-free) placement fits that line |
+
+#### P1 (new)
+
+414. **This weekend: send block 1 of `OUTREACH_BATCH.md` (2 minutes).** Not
+     a new ask (item 400). It is the first block of the owner's existing
+     November step 4, made urgent by the Nov 7 fair. Update the whole-ask
+     block so step 4 reads: *"Send the emails in `OUTREACH_BATCH.md`. Block
+     1 (PHS Pirate Boosters, fair Sat Nov 7) **by Sun Nov 1**; the rest when
+     convenient."* If the boosters say yes, the owner pastes one
+     `promotions:` entry, which is the same as any sale and counts toward
+     the founding five (item 388).
+
+415. **Tighten the batch copy: one-word yes, the right day, future shows
+     only.** Build loop, `scripts/outreach_batch.py` and
+     `OUTREACH_TEMPLATES.md` §14a–§14c:
+
+     - When the site already holds the event's date, time and venue,
+       replace *"reply with the date, time, address and link"* with
+       *"Reply 'yes' and we'll feature it exactly as it's listed (Sat Nov
+       7, 9 AM–4 PM, Palatine High School); tell us if anything has
+       changed."*
+     - Say ***"in Thursday morning's email"***, not "the Wednesday before".
+       Derive the wording from the send schedule in `config/newsletter.yaml`
+       so it can't drift again.
+     - For **venue** blocks (§14c), name the **next** event at least three
+       days after the build date. If none exists in the feeds, leave the
+       venue out of that week's batch.
+
+     Tests: a fair block with full details asks for a yes and shows the
+     details, no block contains "Wednesday", and a venue whose only event
+     is tomorrow is dropped.
+
+Competitors reviewed this pass: **send-time data for newsletters**
+(beehiiv, MailerLite, Sender.net: day matters little, send event news
+3–5 days ahead), and **how PTOs and booster clubs promote fairs** (PTO
+Today and local examples: sponsorships fund online ads). The design/UX
+angle is **the fair outreach email read as the volunteer receiving it**.
 
 
 ## Working agreements for autonomous iteration
