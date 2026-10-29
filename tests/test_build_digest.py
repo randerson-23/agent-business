@@ -6647,3 +6647,13 @@ def test_starter_pack_tier_is_135_for_three_weeks_with_its_own_payment_slot():
     assert "Starter: 3 weeks" in html and "$135 for 3 weeks" in html and "https://buy.stripe.com/starter" in html
     assert "Starter: 3 weeks" in (Path(__file__).resolve().parents[1] / "SPONSOR_KIT.md").read_text(encoding="utf-8")
     assert 3 * 50 * 0.9 == 135
+
+
+def test_a_configured_annual_event_with_a_time_gets_a_real_date():
+    # The Palatine HS fair's "2026-11-07T09:00:00" had no date_iso, so it never reached a weekend view.
+    assert build_digest.parse_event_date_iso("2026-11-07T09:00:00") == "2026-11-07T09:00:00"
+    assert build_digest.parse_event_date_iso("2026-11-07 09:00") == "2026-11-07T09:00:00"
+    assert build_digest.format_event_date("2026-11-07T09:00:00") == "Nov 7"
+    cfg = next(c for c in build_digest.load_regions() if c["region"]["id"] == "palatine-60067")
+    fair = next(e for e in build_digest.prepare_annual_events(cfg, datetime(2026, 10, 29, 12, tzinfo=timezone.utc))["events"] if "Craft Fair" in e["title"])
+    assert fair["date_iso"] == "2026-11-07T09:00:00"

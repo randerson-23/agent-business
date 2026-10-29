@@ -43,9 +43,12 @@ _TITLE_HOST = re.compile(r"\b(?:at|@)\s+([A-Z0-9][^,;:()|–—]{2,60})$")
 
 def short_title(title: str) -> str:
     """An event title for a sentence: "FREE Trunk or Treat at Napleton's Mazda"
-    becomes "Trunk or Treat" (the host is named separately)."""
-    t = re.sub(r"\s+(?:at|@)\s+.*$", "", title.strip())
+    becomes "Trunk or Treat" (the host is named separately); a leading "The"
+    is dropped so "Your The Rock..." cannot happen."""
+    t = re.sub(r"^.{3,70}?\s+Presents?:\s+", "", title.strip(), flags=re.IGNORECASE)  # "<Organiser> Present: Fall Craft Fair"
+    t = re.sub(r"\s+(?:at|@)\s+.*$", "", t.strip())
     t = re.sub(r"^(?:free|rescheduled[^:]*:)\s+", "", t, flags=re.IGNORECASE)
+    t = re.sub(r"^(?:the|a|an)\s+", "", t.strip(), flags=re.IGNORECASE)
     return t.strip() or title.strip()
 
 
@@ -161,6 +164,12 @@ def update_registry(registry: dict, found: list[dict], today: date) -> dict:
     for f in found:
         entry = registry.setdefault(host_key(f["host"]), {"name": f["host"], "town": f["town"], "events": []})
         row = {"title": f["title"], "date": f["date"]}
+        # Item 408: an older row for the same title dated a few days earlier is a send-date
+        # placeholder from before event dates were read from the cards; the real date replaces it.
+        entry["events"] = [
+            e for e in entry["events"]
+            if not (e["title"] == row["title"] and e["date"] < row["date"] and (date.fromisoformat(row["date"]) - date.fromisoformat(e["date"])).days <= 6)
+        ]
         if row not in entry["events"]:
             entry["events"].append(row)
     start, end = today - timedelta(days=LOOKBACK_DAYS), today + timedelta(days=LOOKAHEAD_DAYS)

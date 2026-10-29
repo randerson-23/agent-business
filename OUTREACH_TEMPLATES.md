@@ -839,6 +839,30 @@ Thanks,
 [Your name]
 Within Ten — https://withintenmiles.com/
 
+## 14c. Venue that publishes its own calendar — "We list your shows for free" (ROADMAP.md item 408)
+
+For the "Venues that already publish calendars" list. A shorter note: they already
+reach their own audience, so the offer is one featured show a week. Quote no
+subscriber number (item 118).
+
+Subject: Your [Show] on [Date] is on our [Town] page
+
+Hi,
+
+We list your shows for free on **Within Ten**'s [Town] page, the free local
+guide. If you'd like one show a week featured first, it's $20, and the first is
+free while our founding offer lasts (see https://withintenmiles.com/sponsor/ for
+how many spots are left).
+
+Here is how [Venue] would look: https://withintenmiles.com/sponsor/preview/?name=[Venue]&town=[Town]
+
+If you'd like that, reply with the show, date and the link you want it to open,
+and I'll set it up.
+
+Thanks,
+[Your name]
+Within Ten — https://withintenmiles.com/
+
 ## 16. Arts venue — "Your show is on our weekend page" (ROADMAP.md Phase 11 #284)
 
 The §15 pattern, for theatres and music venues whose shows already appear

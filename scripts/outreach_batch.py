@@ -10,6 +10,7 @@ from __future__ import annotations
 
 import re
 import sys
+from urllib.parse import quote_plus
 from datetime import date, datetime
 from pathlib import Path
 
@@ -56,8 +57,64 @@ def _day(iso: str) -> str:
     return f"{d.strftime('%a %b')} {d.day}"
 
 
+SUBJECT_MAX = 60
+FAIR_SOON_DAYS = 21
+
+
+def _display(title: str) -> str:
+    from build_digest import display_title  # item 334's display case (not the shouting source text)
+
+    return display_title(warm_prospects.short_title(title))
+
+
+def subject_for(kind: str, ev: dict, town: str) -> str:
+    """Item 408: short and readable, at most SUBJECT_MAX characters."""
+    town = town or "local"
+    when = _day(ev["date"] + "T00:00:00")
+    title = _display(ev["title"])
+    if kind == "venue":
+        options = [f"Your {title} on {when} is on our {town} page", f"Your {when} show is on our {town} page"]
+    elif kind == "fair":
+        options = [f"Your {title} on {when} is on our {town} page", f"Your {when} fair is on our {town} page"]
+    else:
+        options = [f"Your {title} on {when} was on our {town} page", f"Your {datetime.fromisoformat(ev['date']).strftime('%b')} {datetime.fromisoformat(ev['date']).day} event was on our {town} page"]
+    return next((o for o in options if len(o) <= SUBJECT_MAX), options[-1][:SUBJECT_MAX])
+
+
+def body_for(kind: str, name: str, ev: dict, town: str, preview: str) -> str:
+    """The filled OUTREACH_TEMPLATES.md section: 14a (warm), 14b (fair), 14c (venue)."""
+    town = town or "local"
+    when = _day(ev["date"] + "T00:00:00")
+    title = _display(ev["title"])
+    sign = f"Thanks,\n[Your name]\nWithin Ten \u2014 {SITE}/"
+    if kind == "venue":
+        return (
+            f"Hi,\n\nWe list your shows for free on Within Ten's {town} page, the free local guide. "
+            f"If you'd like one show a week featured first, it's $20, and the first is free while our founding offer lasts "
+            f"(see {SITE}/sponsor/ for how many spots are left).\n\nHere is how {name} would look: {preview}\n\n"
+            f"If you'd like that, reply with the show, date and the link you want it to open, and I'll set it up.\n\n{sign}"
+        )
+    if kind == "fair":
+        return (
+            f"Hi,\n\nYour {title} on {when} is on Within Ten's {town} page, the free local guide. For $20 (or free under our "
+            f"founding offer, see {SITE}/sponsor/ for how many spots are left) it goes first on the town page and in the weekly "
+            f"email the Wednesday before, labelled \"Presented by {name}\", so families see it while they plan the weekend.\n\n"
+            f"Here is how {name} would look: {preview}\n\n"
+            f"If you'd like that, reply with the fair's date, time, address and the link you want it to open, and I'll set it up.\n\n{sign}"
+        )
+    return (
+        f"Hi,\n\nYour {title} on {when} was on Within Ten's {town} page, the free local guide. Next time, for $20, it goes first "
+        f"on the town page and in the weekly email, labelled \"Presented by {name}\", with its own event page. "
+        f"Here is how {name} would look: {preview}\n\n"
+        f"While the founding offer lasts (see {SITE}/sponsor/ for how many spots are left), your first Event Promo is free.\n\n"
+        f"If you'd like one, reply with the event, date and the link you want it to open, and I'll set it up.\n\n{sign}"
+    )
+
+
 def build_blocks(registry: dict, contacts: list[dict], limit: int = MAX_BLOCKS, today: date | None = None) -> list[dict]:
-    """One block per organisation with a warm event: warm (non-venue) hosts first."""
+    """One block per organisation. Order (item 410): fairs within 21 days first,
+    then warm businesses, then other fairs, then venues that publish calendars."""
+    today = today or date.today()
     venue_keys = warm_prospects.venue_source_keys()
     orgs: dict[str, dict] = {}
     for key, host in sorted(registry.items()):
@@ -67,22 +124,26 @@ def build_blocks(registry: dict, contacts: list[dict], limit: int = MAX_BLOCKS, 
         org = orgs.setdefault(contact["org"], {"contact": contact, "town": host["town"], "events": [], "venue": key in venue_keys})
         for e in host["events"]:
             org["events"].append({"title": e["title"], "date": e["date"], "host": host["name"]})
-    ordered = sorted(orgs.items(), key=lambda kv: (kv[1]["venue"], kv[0]))
+    ranked = []
+    for name, org in orgs.items():
+        upcoming = [e for e in org["events"] if e["date"] >= today.isoformat()] or org["events"]
+        fairs = [e for e in upcoming if warm_prospects.FAIR_TITLE.search(e["title"])]
+        kind = "venue" if org["venue"] else "fair" if fairs else "warm"
+        pool = fairs or upcoming
+        pool = sorted(pool, key=lambda e: (bool(re.search(r"rescheduled|cancel", e["title"], re.IGNORECASE)), e["date"]))
+        ev = pool[0]
+        days = (date.fromisoformat(ev["date"]) - today).days
+        rank = 0 if kind == "fair" and 0 <= days <= FAIR_SOON_DAYS else 1 if kind == "warm" else 2 if kind == "fair" else 3
+        ranked.append((rank, ev["date"] if kind == "fair" else "", name, kind, org, ev))
+    ranked.sort(key=lambda r: r[:3])
     blocks = []
-    for name, org in ordered[:limit]:
-        events = sorted(org["events"], key=lambda e: (bool(re.search(r"rescheduled|cancel", e["title"], re.IGNORECASE)), e["date"]))
-        ev = events[0]
-        shown = _day(ev["date"] + "T00:00:00")
-        subject = f"Your {warm_prospects.short_title(ev['title'])} on {shown} was on our {org['town'] or 'local'} page"
-        body = (
-            f"Hi,\n\nYour {warm_prospects.short_title(ev['title'])} on {shown} was on Within Ten's {org['town'] or 'local'} page, "
-            f"the free local guide. Next time, for $20, it goes first on the town page and in the weekly email, "
-            f"labelled \"Presented by {name}\", with its own event page. You can see exactly what that looks like at {SITE}/sponsor/.\n\n"
-            f"While the founding offer lasts (see {SITE}/sponsor/ for how many spots are left), your first Event Promo is free.\n\n"
-            f"If you'd like one, reply with the event, date and the link you want it to open, and I'll set it up.\n\n"
-            f"Thanks,\n[Your name]\nWithin Ten — {SITE}/"
-        )
-        blocks.append({"org": name, "where": where_to_send(org["contact"]), "subject": subject, "body": body, "event": f"{ev['title']} ({ev['date']})"})
+    for _rank, _d, name, kind, org, ev in ranked[:limit]:
+        preview = f"{SITE}/sponsor/preview/?name={quote_plus(name)}&town={quote_plus(org['town'] or '')}"
+        blocks.append({
+            "org": name, "kind": kind, "where": where_to_send(org["contact"]),
+            "subject": subject_for(kind, ev, org["town"]), "body": body_for(kind, name, ev, org["town"], preview),
+            "event": f"{ev['title']} ({ev['date']})",
+        })
     return blocks
 
 
@@ -98,7 +159,7 @@ def render(blocks: list[dict], now: datetime) -> str:
     if not blocks:
         lines += ["No warm prospects with a known site right now.", ""]
     for i, b in enumerate(blocks, 1):
-        lines += [f"## {i}. {b['org']}", "", f"- [ ] Sent (tick in your own copy)", f"- **Why it is warm:** {b['event']}", f"- **Where to send:** {b['where']}", f"- **Subject:** {b['subject']}", "", "```text", b["body"], "```", ""]
+        lines += [f"## {i}. {b['org']}", "", f"- [ ] Sent (tick in your own copy)", f"- **Why it is warm:** {b['event']} (template {dict(warm='14a', fair='14b', venue='14c')[b['kind']]})", f"- **Where to send:** {b['where']}", f"- **Subject:** {b['subject']}", "", "```text", b["body"], "```", ""]
     return "\n".join(lines)
 
 

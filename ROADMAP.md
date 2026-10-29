@@ -220,7 +220,7 @@ doesn't re-suggest something already shipped.
 
 **Build queue (by deadline; refreshed by the research loop, item 346).**
 Pick from the top unless the owner has flagged something else:
-0. **408, 409, 410** (the outreach batch the owner's November step 4 points at: wrong date in Napleton's first line, no recipients, no fair organisers; the Palatine HS fair is Sat Nov 7).
+0. **409** (finish once the round-23 probe answers).
 3. **390**: promo receipts.
 4. **328** (probe first), then **325** (by Nov 15), then **385** (holiday
    creatives, from Nov 1), **397** (Palatine winter market), **311** (winter outdoors, by Dec 15), **398**, then the rest by priority.
@@ -18571,7 +18571,7 @@ the first line.
 
 #### P1 (new)
 
-408. **Make each outreach email right in its first line.** Build loop,
+408. ✅ DONE (a send-date placeholder row is replaced by the event's own date; subjects use display case, no leading article, no organiser prefix, at most 60 characters with a "Your <Mon D> event" fallback; the body links `/sponsor/preview/?name=&town=`; §14a, §14b and new §14c by kind; tests) **Make each outreach email right in its first line.** Build loop,
      `scripts/outreach_batch.py` and `warm_prospects.py`:
 
      - **The event's own date:** for hosts backfilled from issues (item
@@ -18594,7 +18594,7 @@ the first line.
      characters or contains "Your The", the body links a preview URL
      with the right name and town, and a theatre gets §14c.
 
-409. **Fill the recipients the lookups can find.** Build loop,
+409. (probe added, round 23: phspirateboosters.com for the fair's own mailbox; add `contact` + `source` to config/outreach_contacts.yaml only if the probe finds it on the club's page. Napleton and the theatres: no contact page found by search, so "look up" stays) **Fill the recipients the lookups can find.** Build loop,
      `config/outreach_contacts.yaml` plus URL probes:
 
      - **Palatine HS Pirate Boosters fair:** contact `phscraft@gmail.com`
@@ -18612,7 +18612,7 @@ the first line.
      Every `contact` keeps a `source`. No named individual's address is
      ever committed (item 374's rule).
 
-410. **Put fair organisers and downtown associations into the batch
+410. ✅ DONE (batch order: a fair within 21 days, warm businesses, other fairs, venues; cap 8; downtown associations wait for item 377; also fixed: the fair's `date: "2026-11-07T09:00:00"` had no parsed date and never reached a weekend view, now parsed) **Put fair organisers and downtown associations into the batch
      now.** Build loop: `outreach_batch.py` reads the fair organisers
      (item 396) and the downtown associations (item 377's §13b) as well
      as the warm list. Order: **fairs within 21 days first** (Palatine HS,
