@@ -220,7 +220,7 @@ doesn't re-suggest something already shipped.
 
 **Build queue (by deadline; refreshed by the research loop, item 346).**
 Pick from the top unless the owner has flagged something else:
-0. **411, 412** (Discover large previews and per-page share images).
+0. **412** (per-page share images).
 3. **390**: promo receipts.
 4. **328** (probe first), then **325** (by Nov 15), then **385** (holiday
    creatives, from Nov 1), **397** (Palatine winter market), **311** (winter outdoors, by Dec 15), **398**, then the rest by priority.
@@ -18648,7 +18648,7 @@ touched, **Google Discover**, and at the images every page shares.
 
 #### P1 (new)
 
-411. **Allow large image previews site-wide.** Build loop, one line in the
+411. ✅ DONE (every indexable template carries `<meta name="robots" content="max-image-preview:large">`; noindex pages keep noindex with the value merged in (`noindex, max-image-preview:large`); the event and leaf-pickup pages merge it conditionally; the tiny redirect stubs are left alone; a test over the built docs/ checks exactly one robots meta each) **Allow large image previews site-wide.** Build loop, one line in the
      base template's `<head>`: `<meta name="robots"
      content="max-image-preview:large">`. Pages that are `noindex` keep
      their existing robots tag, with this value merged in (`noindex,

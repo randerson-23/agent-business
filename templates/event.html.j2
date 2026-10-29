@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>{{ page_title }}</title>
 <meta name="description" content="{{ description }}">
-{% if expired %}<meta name="robots" content="noindex">{% endif %}
+<meta name="robots" content="{% if expired %}noindex, {% endif %}max-image-preview:large">
 <link rel="canonical" href="{{ canonical_url }}">
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="Within Ten">

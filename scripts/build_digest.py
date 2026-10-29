@@ -2055,6 +2055,7 @@ def render_issues_index(issues: list[dict], now: datetime, analytics: dict | Non
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="max-image-preview:large">
 <title>Past weekly issues — Within Ten</title>
 <meta name="description" content="Every weekly Within Ten email, newest first: what was on in Arlington Heights, Des Plaines, Mount Prospect, Palatine and Wheeling.">
 <link rel="canonical" href="{SITE_BASE_URL}issues/">

@@ -4839,7 +4839,7 @@ def test_join_page_is_noindex_with_picks_one_form_and_town_picker():
     # ROADMAP.md item 277.
     newsletter = {"configured": True, "buttondown_username": "withten", "headline": "H", "detail": "D"}
     html = build_digest.render_join_page(_join_sections(), datetime(2026, 10, 12, tzinfo=timezone.utc), None, newsletter)
-    assert '<meta name="robots" content="noindex">' in html
+    assert '<meta name="robots" content="noindex, max-image-preview:large">' in html
     assert html.count('<form class="newsletter-form"') == 1
     assert '<option value="town:palatine-60067">Palatine</option>' in html
     assert '<option value="town:all" selected>All towns</option>' in html
@@ -5765,7 +5765,7 @@ def test_flyer_url_and_variants_give_each_placement_its_own_campaign():
 
 def test_flyer_page_is_noindex_dateless_and_hides_chrome_in_print():
     page = build_digest.render_flyer("mount-prospect-60056", "Mount Prospect", ["Library", "Park District", "Village"], "flyer-general")
-    assert 'content="noindex"' in page and "<svg" in page and "withintenmiles.com/mp/" in page
+    assert 'content="noindex, max-image-preview:large"' in page and "<svg" in page and "withintenmiles.com/mp/" in page
     assert "Not affiliated with the Village." in page and "@media print" in page and "nav, footer { display: none; }" in page
     assert "sponsor" not in page.lower()
     assert page.count('class="copy"') == 1
@@ -5870,7 +5870,7 @@ def test_did_you_go_poll_links_carry_the_issue_date_and_the_pages_are_noindex():
     assert build_digest.SITE_BASE_URL + "thanks/went/?w=2026-10-15" in html and build_digest.SITE_BASE_URL + "thanks/not-yet/?w=2026-10-15" in html
     for kind in ("went", "not-yet"):
         page = build_digest.render_thanks_page(kind, [{"id": "mount-prospect-60056", "name": "Mount Prospect"}])
-        assert '<meta name="robots" content="noindex">' in page and "Thanks, that helps us keep this useful." in page
+        assert '<meta name="robots" content="noindex, max-image-preview:large">' in page and "Thanks, that helps us keep this useful." in page
         assert "mailto:?subject=" in page and "Mount Prospect" in page
         assert "/thanks/" not in "".join(build_digest.collect_sitemap_urls([]))
 
@@ -6321,7 +6321,7 @@ def test_event_page_has_one_event_its_own_canonical_and_noindex_once_expired():
     assert "<title>Fall Fest, Sat Oct 24, Palatine | Within Ten</title>" in page and 'noindex' not in page
     assert "Official listing" in page and "More this weekend" in page and page.count("embed-subscribe") == 1
     old = build_digest.render_event_page(entry, expired=True)
-    assert 'content="noindex"' in old and "This event has passed" in old and "embed-subscribe" not in old
+    assert 'content="noindex, max-image-preview:large"' in old and "This event has passed" in old and "embed-subscribe" not in old
     assert build_digest.SITE_BASE_URL + entry["path"] in build_digest.collect_sitemap_urls([], None, [entry])
     assert build_digest.order_bing_urls([build_digest.SITE_BASE_URL + "about/", build_digest.SITE_BASE_URL + entry["path"]], datetime(2026, 10, 24, tzinfo=timezone.utc), [])[0].endswith(entry["path"])
 
@@ -6583,7 +6583,7 @@ def test_leaf_pickup_page_is_sourced_season_bound_and_never_guesses_a_date():
     page = build_digest.render_leaf_pickup_page(entries, at(10, 27), None, _NL)
     assert "Residential leaf collection starting Monday, October 19, 2026." in page and 'href="https://dp/leaf"' in page
     assert page.count("No dates confirmed here yet.") == 1 and "noindex" not in page
-    assert 'name="robots" content="noindex"' in build_digest.render_leaf_pickup_page(entries, at(12, 20), None, _NL)
+    assert 'name="robots" content="noindex, max-image-preview:large"' in build_digest.render_leaf_pickup_page(entries, at(12, 20), None, _NL)
     assert build_digest.SITE_BASE_URL + "leaf-pickup/" in build_digest.collect_sitemap_urls([], None, None, True)
     assert build_digest.SITE_BASE_URL + "leaf-pickup/" not in build_digest.collect_sitemap_urls([], None, None, False)
     import yaml
@@ -6629,7 +6629,7 @@ def test_sponsor_preview_is_noindex_escapes_by_construction_and_shows_both_produ
         {"region_name": "Wheeling", "region_url": "https://x/w/", "weekend_events": []},
     ]
     html = build_digest.render_sponsor_preview(sections, {"event_promo": "https://buy.example/e", "weekly_spot": None}, "hello@x.org")
-    assert 'name="robots" content="noindex, nofollow"' in html and "Preview, not live" in html
+    assert 'name="robots" content="noindex, nofollow, max-image-preview:large"' in html and "Preview, not live" in html
     assert "As a Featured event" in html and "Weekly Spot" in html and 'href="https://buy.example/e"' in html
     assert "mailto:hello@x.org" in html  # no Stripe link for the weekly spot: email instead
     script = html.split("<script>", 1)[1]
@@ -6657,3 +6657,17 @@ def test_a_configured_annual_event_with_a_time_gets_a_real_date():
     cfg = next(c for c in build_digest.load_regions() if c["region"]["id"] == "palatine-60067")
     fair = next(e for e in build_digest.prepare_annual_events(cfg, datetime(2026, 10, 29, 12, tzinfo=timezone.utc))["events"] if "Craft Fair" in e["title"])
     assert fair["date_iso"] == "2026-11-07T09:00:00"
+
+
+def test_every_page_template_has_exactly_one_robots_meta_with_large_image_previews():
+    # ROADMAP.md item 411: pages that are noindex keep noindex, with the value merged into the same tag.
+    import re as _re
+    templates = Path(__file__).resolve().parents[1] / "templates"
+    page_templates = [p for p in templates.glob("*.html.j2") if p.name not in {"combined_email_digest.html.j2", "email_digest.html.j2", "_featured.html.j2", "_signup.html.j2"}]
+    assert len(page_templates) >= 14
+    for path in page_templates:
+        metas = _re.findall(r'<meta name="robots" content="([^"]*)"', path.read_text(encoding="utf-8"))
+        assert len(metas) == 1 and "max-image-preview:large" in metas[0], (path.name, metas)
+    for name in ("flyer", "join", "thanks", "sponsor_preview"):
+        assert "noindex" in _re.findall(r'<meta name="robots" content="([^"]*)"', (templates / f"{name}.html.j2").read_text(encoding="utf-8"))[0]
+    assert 'content="max-image-preview:large"' in build_digest.render_issues_index([], datetime(2026, 10, 29, tzinfo=timezone.utc))
