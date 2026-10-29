@@ -85,5 +85,13 @@
       "open_rate": 1.0,
       "click_rate": 0.0
     }
+  },
+  {
+    "timestamp": "2026-10-29T01:57:34.296629+00:00",
+    "subject": "Trick-or-treat hours, all five towns, plus Halloween weekend",
+    "buttondown_id": "em_37pm96sffd8wpvbwc9qqykw8wx",
+    "region": "combined",
+    "mode": "schedule",
+    "pre_send_subscriber_count": 1
   }
 ]
