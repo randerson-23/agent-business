@@ -6659,18 +6659,15 @@ def test_a_configured_annual_event_with_a_time_gets_a_real_date():
     assert fair["date_iso"] == "2026-11-07T09:00:00"
 
 
-def test_every_built_page_has_exactly_one_robots_meta_with_large_image_previews():
-    # ROADMAP.md item 411: pages that are noindex keep noindex, with the value merged in.
+def test_every_page_template_has_exactly_one_robots_meta_with_large_image_previews():
+    # ROADMAP.md item 411: pages that are noindex keep noindex, with the value merged into the same tag.
     import re as _re
-    docs = Path(__file__).resolve().parents[1] / "docs"
-    if not (docs / "index.html").exists():
-        return  # docs/ is generated; checked wherever a build exists
-    checked = 0
-    for path in docs.rglob("index.html"):
-        html = path.read_text(encoding="utf-8", errors="ignore")
-        if 'http-equiv="refresh"' in html:
-            continue  # the tiny redirect stub
-        metas = _re.findall(r'<meta name="robots" content="([^"]*)"', html)
-        assert len(metas) == 1 and "max-image-preview:large" in metas[0], (str(path), metas)
-        checked += 1
-    assert checked > 10
+    templates = Path(__file__).resolve().parents[1] / "templates"
+    page_templates = [p for p in templates.glob("*.html.j2") if p.name not in {"combined_email_digest.html.j2", "email_digest.html.j2", "_featured.html.j2", "_signup.html.j2"}]
+    assert len(page_templates) >= 14
+    for path in page_templates:
+        metas = _re.findall(r'<meta name="robots" content="([^"]*)"', path.read_text(encoding="utf-8"))
+        assert len(metas) == 1 and "max-image-preview:large" in metas[0], (path.name, metas)
+    for name in ("flyer", "join", "thanks", "sponsor_preview"):
+        assert "noindex" in _re.findall(r'<meta name="robots" content="([^"]*)"', (templates / f"{name}.html.j2").read_text(encoding="utf-8"))[0]
+    assert 'content="max-image-preview:large"' in build_digest.render_issues_index([], datetime(2026, 10, 29, tzinfo=timezone.utc))
