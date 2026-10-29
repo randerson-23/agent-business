@@ -4,7 +4,28 @@ Generated 2026-10-29 by `scripts/outreach_batch.py`. At most 8 messages, warm pr
 Each block is ready to paste: where to send, subject, body (OUTREACH_TEMPLATES.md section 14a).
 This repository is public: keep your own send notes elsewhere, and never add an individual's address here.
 
-## 1. Napleton Palatine dealerships
+## 1. PHS Pirate Boosters
+
+- [ ] Sent (tick in your own copy)
+- **Why it is warm:** PHS Pirate Boosters Present: Fall Craft Fair (2026-11-07) (template 14b)
+- **Where to send:** phscraft@gmail.com (organisation mailbox; source: https://phspirateboosters.com/craft-fair/)
+- **Subject:** Your Fall Craft Fair on Sat Nov 7 is on our Palatine page
+
+```text
+Hi,
+
+Your Fall Craft Fair on Sat Nov 7 is on Within Ten's Palatine page, the free local guide. For $20 (or free under our founding offer, see https://withintenmiles.com/sponsor/ for how many spots are left) it goes first on the town page and in the weekly email the Wednesday before, labelled "Presented by PHS Pirate Boosters", so families see it while they plan the weekend.
+
+Here is how PHS Pirate Boosters would look: https://withintenmiles.com/sponsor/preview/?name=PHS+Pirate+Boosters&town=Palatine
+
+If you'd like that, reply with the fair's date, time, address and the link you want it to open, and I'll set it up.
+
+Thanks,
+[Your name]
+Within Ten — https://withintenmiles.com/
+```
+
+## 2. Napleton Palatine dealerships
 
 - [ ] Sent (tick in your own copy)
 - **Why it is warm:** FREE Trunk or Treat at Napleton Palatine Hyundai (2026-10-24) (template 14a)
@@ -25,7 +46,7 @@ Thanks,
 Within Ten — https://withintenmiles.com/
 ```
 
-## 2. Des Plaines Theatre
+## 3. Des Plaines Theatre
 
 - [ ] Sent (tick in your own copy)
 - **Why it is warm:** WORLD PREMIERE FILM SCREENING: YAKUZA PLAYS "THE GOLEM" - A CONCERT FILM (2026-10-29) (template 14c)
@@ -46,7 +67,7 @@ Thanks,
 Within Ten — https://withintenmiles.com/
 ```
 
-## 3. Metropolis Performing Arts Centre
+## 4. Metropolis Performing Arts Centre
 
 - [ ] Sent (tick in your own copy)
 - **Why it is warm:** The Rock N' Horror Halloween Concert (2026-10-30) (template 14c)
