@@ -21,6 +21,7 @@ Booster clubs, PTOs and programmes running a craft fair or holiday market. Send 
 | Host | Town | Events |
 |---|---|---|
 | Palatine High School Boosters | Palatine | Palatine High School Boosters Present: Fall Craft Fair (2026-11-07) |
+| PHS Pirate Boosters | Palatine | PHS Pirate Boosters Present: Fall Craft Fair (2026-11-07) |
 
 ### Venues that already publish calendars
 

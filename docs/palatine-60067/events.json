@@ -2,7 +2,7 @@
   "@context": "https://schema.org",
   "@type": "ItemList",
   "name": "Upcoming events in Palatine — Within Ten",
-  "dateModified": "2026-10-29T13:18:20+00:00",
+  "dateModified": "2026-10-29T14:34:13+00:00",
   "numberOfItems": 20,
   "itemListElement": [
     {
@@ -345,9 +345,9 @@
       "position": 14,
       "item": {
         "@type": "Event",
-        "name": "Palatine High School Boosters Present: Fall Craft Fair",
+        "name": "PHS Pirate Boosters Present: Fall Craft Fair",
         "startDate": "2026-11-07T09:00:00-06:00",
-        "url": "https://withintenmiles.com/palatine-60067/#ev-palatine-high-school-boosters-present-fall-craft-fair-2026-11-07",
+        "url": "https://withintenmiles.com/palatine-60067/#ev-phs-pirate-boosters-present-fall-craft-fair-2026-11-07",
         "eventStatus": "https://schema.org/EventScheduled",
         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
         "location": {
@@ -360,13 +360,13 @@
             "addressRegion": "IL"
           }
         },
-        "sameAs": "https://phs.d211.org/",
+        "sameAs": "https://phspirateboosters.com/craft-fair/",
         "organizer": {
           "@type": "Organization",
           "name": "the organiser",
-          "url": "https://phs.d211.org"
+          "url": "https://phspirateboosters.com"
         },
-        "description": "Craft fair presented by the Palatine High School Boosters. 9 AM to 4 PM. See the school's calendar for the venue and any admission."
+        "description": "Over 150 vendors support the PHS community. 9 AM to 4 PM at Palatine High School, 1111 N. Rohlwing Road."
       }
     },
     {

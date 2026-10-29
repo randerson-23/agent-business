@@ -198,5 +198,15 @@
   ],
   "name": "Palatine High School Boosters",
   "town": "Palatine"
+ },
+ "phs pirate boosters": {
+  "events": [
+   {
+    "date": "2026-11-07",
+    "title": "PHS Pirate Boosters Present: Fall Craft Fair"
+   }
+  ],
+  "name": "PHS Pirate Boosters",
+  "town": "Palatine"
  }
 }

@@ -1,5 +1,5 @@
 {
- "fetched_at": "2026-10-29T13:18:20+00:00",
+ "fetched_at": "2026-10-29T14:34:13+00:00",
  "items": [
   {
    "date": "2026-10-29",
@@ -76,8 +76,8 @@
   {
    "date": null,
    "detail": "",
-   "title": "Improv Workshop for Brain Health",
-   "url": "https://www.ahml.info/scheduling/reservation/195033"
+   "title": "Senior Center: Travelogue",
+   "url": "https://www.ahml.info/scheduling/reservation/224943"
   },
   {
    "date": null,
@@ -100,20 +100,14 @@
   {
    "date": null,
    "detail": "",
-   "title": "Family Time",
-   "url": "https://www.ahml.info/scheduling/reservation/224192"
-  },
-  {
-   "date": null,
-   "detail": "",
    "title": "Beginning ESL",
    "url": "https://www.ahml.info/scheduling/reservation/221904"
   },
   {
    "date": null,
    "detail": "",
-   "title": "Candidate Forum",
-   "url": "https://www.ahml.info/scheduling/reservation/211655"
+   "title": "Family Time",
+   "url": "https://www.ahml.info/scheduling/reservation/224192"
   },
   {
    "date": null,
@@ -124,20 +118,26 @@
   {
    "date": null,
    "detail": "",
+   "title": "Candidate Forum",
+   "url": "https://www.ahml.info/scheduling/reservation/211655"
+  },
+  {
+   "date": null,
+   "detail": "",
    "title": "Culinary: Smashburgers",
    "url": "https://www.ahml.info/scheduling/reservation/217343"
   },
   {
    "date": null,
    "detail": "",
-   "title": "How to Use Your iPad/iPhone",
-   "url": "https://www.ahml.info/scheduling/reservation/231793"
+   "title": "Play Time",
+   "url": "https://www.ahml.info/scheduling/reservation/224255"
   },
   {
    "date": null,
    "detail": "",
-   "title": "Play Time",
-   "url": "https://www.ahml.info/scheduling/reservation/224255"
+   "title": "How to Use Your iPad/iPhone",
+   "url": "https://www.ahml.info/scheduling/reservation/231793"
   },
   {
    "date": null,
@@ -160,12 +160,6 @@
   {
    "date": null,
    "detail": "",
-   "title": "Hablemos Español (Let's Speak Spanish)",
-   "url": "https://www.ahml.info/scheduling/reservation/230944"
-  },
-  {
-   "date": null,
-   "detail": "",
    "title": "Clases de Computación Básica",
    "url": "https://www.ahml.info/scheduling/reservation/230155"
   },
@@ -174,6 +168,12 @@
    "detail": "",
    "title": "Genealogy Gumshoes: Family History Discussion Group",
    "url": "https://www.ahml.info/scheduling/reservation/201132"
+  },
+  {
+   "date": null,
+   "detail": "",
+   "title": "Hablemos Español (Let's Speak Spanish)",
+   "url": "https://www.ahml.info/scheduling/reservation/230944"
   },
   {
    "date": null,
@@ -238,14 +238,14 @@
   {
    "date": null,
    "detail": "",
-   "title": "Excel: Basics",
-   "url": "https://www.ahml.info/scheduling/reservation/231796"
+   "title": "Play Time",
+   "url": "https://www.ahml.info/scheduling/reservation/224257"
   },
   {
    "date": null,
    "detail": "",
-   "title": "Play Time",
-   "url": "https://www.ahml.info/scheduling/reservation/224257"
+   "title": "Excel: Basics",
+   "url": "https://www.ahml.info/scheduling/reservation/231796"
   },
   {
    "date": null,
@@ -256,14 +256,14 @@
   {
    "date": null,
    "detail": "",
-   "title": "Culinary: Making Mushroom Risotto",
-   "url": "https://www.ahml.info/scheduling/reservation/223670"
+   "title": "Community Blood Drive",
+   "url": "https://www.ahml.info/scheduling/reservation/207690"
   },
   {
    "date": null,
    "detail": "",
-   "title": "Community Blood Drive",
-   "url": "https://www.ahml.info/scheduling/reservation/207690"
+   "title": "Culinary: Making Mushroom Risotto",
+   "url": "https://www.ahml.info/scheduling/reservation/223670"
   },
   {
    "date": null,
@@ -298,12 +298,6 @@
   {
    "date": null,
    "detail": "",
-   "title": "Researching Grants for Your Nonprofit",
-   "url": "https://www.ahml.info/scheduling/reservation/217060"
-  },
-  {
-   "date": null,
-   "detail": "",
    "title": "Senior Center: Current Events",
    "url": "https://www.ahml.info/scheduling/reservation/224972"
   },
@@ -312,6 +306,12 @@
    "detail": "",
    "title": "Play Time",
    "url": "https://www.ahml.info/scheduling/reservation/224258"
+  },
+  {
+   "date": null,
+   "detail": "",
+   "title": "Researching Grants for Your Nonprofit",
+   "url": "https://www.ahml.info/scheduling/reservation/217060"
   },
   {
    "date": null,
@@ -358,8 +358,8 @@
   {
    "date": null,
    "detail": "",
-   "title": "VIRTUAL: Trust and Verify - The Role of Libraries in the Age of AI",
-   "url": "https://www.ahml.info/scheduling/reservation/222837"
+   "title": "Culture & Conversation (intermediate +)",
+   "url": "https://www.ahml.info/scheduling/reservation/232400"
   }
  ],
  "source": "Arlington Heights Memorial Library — Events"
