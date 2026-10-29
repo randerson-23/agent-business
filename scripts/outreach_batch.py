@@ -25,8 +25,15 @@ CONTACTS_PATH = ROOT / "config" / "outreach_contacts.yaml"
 MAX_BLOCKS = 8
 SITE = "https://withintenmiles.com"
 # firstname.lastname@ and initial-plus-surname addresses are personal; the file must never hold one.
-PERSONAL_ADDRESS = re.compile(r"\b[a-z]+\.[a-z]+@|\b[a-z]\.?[a-z]{3,}@", re.IGNORECASE)
+PERSONAL_ADDRESS = re.compile(r"\b[a-z]+\.[a-z]+@|\b[a-z]\.?[a-z]{3,}@", re.IGNORECASE)  # applies to addresses not configured as an organisation mailbox
 ROLE_LOCALPARTS = {"info", "news", "hello", "contact", "events", "marketing", "office", "admin", "press", "media", "sales"}
+
+
+def personal_addresses(text: str, contacts: list[dict]) -> list[str]:
+    """Addresses in `text` that look personal, ignoring the organisation mailboxes
+    the config explicitly marks (a craft fair's own mailbox, published on its page)."""
+    allowed = {str(c["contact"]).lower() for c in contacts if c.get("organisation_mailbox") and c.get("contact") and c.get("source")}
+    return [m.group(0) for m in PERSONAL_ADDRESS.finditer(text) if not any(a.startswith(m.group(0).lower()) for a in allowed)]
 
 
 def load_contacts(path: Path = CONTACTS_PATH) -> list[dict]:
@@ -45,8 +52,10 @@ def is_role_address(value: str) -> bool:
 def where_to_send(contact: dict) -> str:
     target = str(contact.get("contact") or "").strip()
     if target and "@" in target:
-        if is_role_address(target) and contact.get("source"):
-            return f"{target} (role address; source: {contact['source']})"
+        # an organisation's own mailbox (the fair's, not a person's) is marked `organisation_mailbox: true`
+        dotted_name = re.match(r"[A-Za-z]+\.[A-Za-z]+@", target)  # firstname.lastname@ is never stored
+        if (is_role_address(target) or (contact.get("organisation_mailbox") and not dotted_name)) and contact.get("source"):
+            return f"{target} (organisation mailbox; source: {contact['source']})"
     elif target.startswith("https://") and contact.get("source"):
         return f"{target} (contact page; source: {contact['source']})"
     return f"look up on {contact['site']} (its Contact page; no address is stored here)"
@@ -122,7 +131,7 @@ def build_blocks(registry: dict, contacts: list[dict], limit: int = MAX_BLOCKS, 
         if not contact:
             continue
         org = orgs.setdefault(contact["org"], {"contact": contact, "town": host["town"], "events": [], "venue": key in venue_keys})
-        for e in host["events"]:
+        for e in warm_prospects.drop_placeholder_dates(host["events"]):
             org["events"].append({"title": e["title"], "date": e["date"], "host": host["name"]})
     ranked = []
     for name, org in orgs.items():

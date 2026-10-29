@@ -12,6 +12,7 @@ on:
       - scripts/osm_prospects.py
       - scripts/warm_prospects.py
       - scripts/outreach_batch.py
+      - scripts/check_outreach_batch.py
       - config/outreach_contacts.yaml
       - .github/workflows/osm-prospects.yml
   workflow_dispatch: {}
@@ -40,6 +41,9 @@ jobs:
 
       - name: Build the outreach batch
         run: python scripts/outreach_batch.py
+
+      - name: Check the generated batch
+        run: python scripts/check_outreach_batch.py
 
       - name: Commit
         run: |

@@ -6619,7 +6619,7 @@ def test_nth_weekday_recurrence_and_craft_fair_keywords_reach_the_holiday_select
     assert [e["title"] for e in build_digest.select_holiday_events(blocks, date(2026, 11, 2))] == ["Holiday Bazaar"]
     cfg = next(c for c in build_digest.load_regions() if c["region"]["id"] == "palatine-60067")
     titles = [e["title"] for e in build_digest.prepare_annual_events(cfg, datetime(2026, 11, 2, 12, tzinfo=timezone.utc))["events"]]
-    assert "Palatine High School Boosters Present: Fall Craft Fair" in titles and titles.count("Palatine Winter Farmers' Market") >= 3
+    assert "PHS Pirate Boosters Present: Fall Craft Fair" in titles and titles.count("Palatine Winter Farmers' Market") >= 3
 
 
 def test_sponsor_preview_is_noindex_escapes_by_construction_and_shows_both_products():

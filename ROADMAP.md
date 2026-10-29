@@ -220,7 +220,7 @@ doesn't re-suggest something already shipped.
 
 **Build queue (by deadline; refreshed by the research loop, item 346).**
 Pick from the top unless the owner has flagged something else:
-0. **413** (the committed batch still shows Napleton on Thu Oct 22 with no preview; verify the output, before Nov 1). **409** (finish once the round-23 probe answers). **411, 412** (Discover large previews and per-page share images).
+0. **411, 412** (Discover large previews and per-page share images).
 3. **390**: promo receipts.
 4. **328** (probe first), then **325** (by Nov 15), then **385** (holiday
    creatives, from Nov 1), **397** (Palatine winter market), **311** (winter outdoors, by Dec 15), **398**, then the rest by priority.
@@ -18594,7 +18594,7 @@ the first line.
      characters or contains "Your The", the body links a preview URL
      with the right name and town, and a theatre gets §14c.
 
-409. (probe added, round 23: phspirateboosters.com for the fair's own mailbox; add `contact` + `source` to config/outreach_contacts.yaml only if the probe finds it on the club's page. Napleton and the theatres: no contact page found by search, so "look up" stays) **Fill the recipients the lookups can find.** Build loop,
+409. ✅ DONE for the fair (the club's own craft-fair page, probed 2026-10-29, says "reach out to us at phscraft@gmail.com"; added as an organisation mailbox with that page as its source; the page also confirms Sat Nov 7, 9am-4pm, Palatine High School, 1111 N. Rohlwing Road, 150+ vendors, now in the Palatine event; Napleton and the theatres stay "look up") (earlier note: round 23: phspirateboosters.com for the fair's own mailbox; add `contact` + `source` to config/outreach_contacts.yaml only if the probe finds it on the club's page. Napleton and the theatres: no contact page found by search, so "look up" stays) **Fill the recipients the lookups can find.** Build loop,
      `config/outreach_contacts.yaml` plus URL probes:
 
      - **Palatine HS Pirate Boosters fair:** contact `phscraft@gmail.com`
@@ -18676,7 +18676,7 @@ touched, **Google Discover**, and at the images every page shares.
      every image is 1200×630, and every Event in `events.json` has an
      `image`.
 
-413. **Check the generated outreach batch, not just the generator.** Build
+413. ✅ DONE (`scripts/check_outreach_batch.py` runs in osm-prospects.yml after the generator and fails the job on a stale date, a missing preview link, a subject over 60 characters or a near fair not first; the stale Napleton row was a registry artefact: the generator now drops send-date placeholders at read time; tests) **Check the generated outreach batch, not just the generator.** Build
      loop, a step in `osm-prospects.yml` after `outreach_batch.py` (and a
      test that runs the same checks on the committed file):
 

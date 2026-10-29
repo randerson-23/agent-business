@@ -18,6 +18,11 @@ contacts:
   - match: metropolis
     org: "Metropolis Performing Arts Centre"
     site: "https://www.metropolisarts.com/visit/"
-  - match: palatine high school boosters
-    org: "Palatine High School Boosters"
-    site: "https://phs.d211.org/"
+  - match: pirate boosters
+    org: "PHS Pirate Boosters"
+    site: "https://phspirateboosters.com/craft-fair/"
+    # The fair's own mailbox, published on the club's craft-fair page (probe round 23, 2026-10-29:
+    # "reach out to us at phscraft@gmail.com"). An organisation mailbox, not a named person.
+    contact: "phscraft@gmail.com"
+    organisation_mailbox: true
+    source: "https://phspirateboosters.com/craft-fair/"
