@@ -167,25 +167,14 @@ probes:
       - '(?i)no school[^<]{0,80}'
       - '(?i)2026[-–/ ]?(?:20)?27[^<]{0,60}'
     follow: '(?i)2026-?27|\.pdf'
-  # Round 21 answered (items 395, 397): Palatine Park District lists a Merry Makers Market
-  # (event page + vendor application), Palatine HS Boosters list a Fall Craft Fair on the
-  # school's home page, Fremd and Prospect show nothing, and the Village's winter market is
-  # "1st and 3rd Saturdays at the Palatine Train Station parking lot, November through ...".
-  # Round 22: read the dates and hours themselves.
-  - url: https://www.palatineparks.org/merry-makers-market-application/
-    item: 395
-    purpose: Palatine Park District Merry Makers Market - date, time and place
+  # Round 22 answered (items 395, 397): Palatine HS Boosters' Fall Craft Fair is Sat Nov 7, 9-4 (phs.d211.org calendar);
+  # the Village's winter market is 1st and 3rd Saturdays, Nov-Apr, 9-noon; the Park District's Merry Makers
+  # Market page gives no readable date.
+  # Round 23 (item 409): is the fair's own mailbox published on an organiser page?
+  - url: https://www.phspirateboosters.com/
+    item: 409
+    purpose: Palatine HS Pirate Boosters - is a craft-fair contact (a role mailbox) published on the club's own site?
     patterns:
-      - '(?is)Merry Maker.{0,900}'
-      - '(?i)(?:Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)[a-z]*\.? \d{1,2}(?:st|nd|rd|th)?,? 20\d\d[^<]{0,80}'
-  - url: https://phs.d211.org/
-    item: 395
-    purpose: Palatine High School Boosters Fall Craft Fair - the event's date and time
-    patterns:
-      - '(?is)Fall Craft Fair</a>.{0,700}'
-      - '(?is)data-start="[^"]{0,40}".{0,200}Fall Craft'
-  - url: https://www.palatine.il.us/217/Farmers-Market
-    item: 397
-    purpose: Palatine winter farmers market - the full 2026 Winter Farmers' Market list (dates, hours, place)
-    patterns:
-      - '(?is)2026 Winter Farmers.{0,900}'
+      - '(?i)phscraft@[a-z0-9.-]+'
+      - '(?i)craft fair[^<]{0,200}'
+    follow: '(?i)craft'

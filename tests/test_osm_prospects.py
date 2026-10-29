@@ -153,39 +153,49 @@ def test_warm_hosts_take_the_events_own_date_and_split_also_at_hosts(tmp_path):
 
 
 def test_outreach_batch_blocks_have_sources_cap_at_eight_and_hold_no_personal_address():
-    # ROADMAP.md item 401.
+    # ROADMAP.md items 401, 408 and 410.
     import outreach_batch as ob
+    from datetime import date
+    today = date(2026, 10, 29)
     reg = {
         "napleton palatine mazda": {"name": "Napleton Palatine Mazda", "town": "Palatine", "events": [{"title": "FREE Trunk or Treat at Napleton Palatine Mazda", "date": "2026-10-24"}]},
         "napleton palatine subaru": {"name": "Napleton Palatine Subaru", "town": "Palatine", "events": [{"title": "Trunk or Treat at Napleton Palatine Subaru", "date": "2026-10-24"}]},
-        "des plaines theatre": {"name": "Des Plaines Theatre", "town": "Des Plaines", "events": [{"title": "RESCHEDULED FOR 2/28/27: ROCKY IN CONCERT", "date": "2026-10-28"}, {"title": "Blues Night", "date": "2026-10-30"}]},
+        "des plaines theatre": {"name": "Des Plaines Theatre", "town": "Des Plaines", "events": [{"title": "RESCHEDULED FOR 2/28/27: ROCKY IN CONCERT", "date": "2026-10-30"}, {"title": "THE BLUES NIGHT: LIVE", "date": "2026-11-02"}]},
+        "palatine high school boosters": {"name": "Palatine High School Boosters", "town": "Palatine", "events": [{"title": "Palatine High School Boosters Present: Fall Craft Fair", "date": "2026-11-07"}]},
         "unknown shop": {"name": "Unknown Shop", "town": "Wheeling", "events": [{"title": "Sale", "date": "2026-10-30"}]},
     }
     contacts = ob.load_contacts()
-    blocks = ob.build_blocks(reg, contacts)
-    assert [b["org"] for b in blocks] == ["Napleton Palatine dealerships", "Des Plaines Theatre"]  # warm first, one per organisation, unknown skipped
-    assert "Blues Night" in blocks[1]["event"]  # a rescheduled event is not the reason it is warm
-    assert blocks[0]["subject"] == "Your Trunk or Treat on Sat Oct 24 was on our Palatine page"
+    blocks = ob.build_blocks(reg, contacts, today=today)
+    assert [b["org"] for b in blocks] == ["Palatine High School Boosters", "Napleton Palatine dealerships", "Des Plaines Theatre"]  # a fair 9 days out first; unknown skipped
+    assert [b["kind"] for b in blocks] == ["fair", "warm", "venue"]
+    assert blocks[1]["subject"] == "Your Trunk or Treat on Sat Oct 24 was on our Palatine page"
+    assert "Blues Night" in blocks[2]["event"] or "BLUES" in blocks[2]["event"]  # a rescheduled show is not the reason
+    assert all(len(b["subject"]) <= ob.SUBJECT_MAX and "Your The" not in b["subject"] for b in blocks)
+    assert "sponsor/preview/?name=Palatine+High+School+Boosters&town=Palatine" in blocks[0]["body"] and "Presented by Palatine High School Boosters" in blocks[0]["body"]
+    assert "We list your shows for free" in blocks[2]["body"] and "Blues Night" not in blocks[2]["body"]
     many = [{"match": f"h{i}", "org": f"Org {i}", "site": "https://x.example/"} for i in range(12)]
     reg2 = {f"h{i}": {"name": f"H{i}", "town": "T", "events": [{"title": "E", "date": "2026-10-30"}]} for i in range(12)}
-    assert len(ob.build_blocks(reg2, many)) == ob.MAX_BLOCKS
-    text = ob.render(blocks, datetime(2026, 10, 28))
+    assert len(ob.build_blocks(reg2, many, today=today)) == ob.MAX_BLOCKS
+    text = ob.render(blocks, datetime(2026, 10, 29))
     assert not ob.PERSONAL_ADDRESS.search(text) and "Where to send" in text
-    assert ob.where_to_send({"site": "https://s/", "contact": "jane.doe@x.org", "source": "p"}).startswith("look up on")  # a personal address is refused
+    assert ob.where_to_send({"site": "https://s/", "contact": "jane.doe@x.org", "source": "p"}).startswith("look up on")
     assert ob.where_to_send({"site": "https://s/", "contact": "info@x.org", "source": "https://x.org/contact"}).startswith("info@x.org")
-    assert ob.where_to_send({"site": "https://s/", "contact": "info@x.org"}).startswith("look up on")  # no source, no address
+    assert ob.where_to_send({"site": "https://s/", "contact": "info@x.org"}).startswith("look up on")
     assert all(c.get("contact") is None or c.get("source") for c in contacts)
 
 
-def test_fair_organisers_are_hosts_under_their_own_heading():
-    # ROADMAP.md item 396.
+def test_a_send_date_placeholder_is_replaced_by_the_events_own_date():
+    # ROADMAP.md item 408.
     import warm_prospects as wp
     from datetime import date
-    events = [{"title": "Palatine High School Boosters Present: Fall Craft Fair", "date_iso": "2026-11-07T09:00:00"},
-              {"title": "Parks Present: Fall Fun", "date_iso": "2026-11-07T09:00:00"}]
-    found = wp.collect_hosts(events, "Palatine")
-    assert [f["host"] for f in found] == ["Palatine High School Boosters"]  # a school booster club is not an agency; "Parks" is
-    reg = wp.update_registry({}, found, date(2026, 10, 28))
-    text = "\n".join(wp.render_section(reg))
-    assert "### Fair organisers" in text and "Palatine High School Boosters" in text
-    assert text.index("Fair organisers") < text.index("Palatine High School Boosters")
+    reg = {"napleton": {"name": "Napleton", "town": "Palatine", "events": [{"title": "Trunk or Treat", "date": "2026-10-22"}]}}
+    out = wp.update_registry(reg, [{"host": "Napleton", "town": "Palatine", "title": "Trunk or Treat", "date": "2026-10-24"}], date(2026, 10, 29))
+    assert [e["date"] for e in out["napleton"]["events"]] == ["2026-10-24"]
+    far = wp.update_registry(reg, [{"host": "Napleton", "town": "Palatine", "title": "Trunk or Treat", "date": "2026-11-20"}], date(2026, 10, 29))
+    assert len(far["napleton"]["events"]) == 2  # a genuinely later repeat stays
+
+
+def test_a_fair_subject_names_the_fair_not_the_organiser_prefix():
+    import outreach_batch as ob
+    ev = {"title": "Palatine High School Boosters Present: Fall Craft Fair", "date": "2026-11-07"}
+    assert ob.subject_for("fair", ev, "Palatine") == "Your Fall Craft Fair on Sat Nov 7 is on our Palatine page"
