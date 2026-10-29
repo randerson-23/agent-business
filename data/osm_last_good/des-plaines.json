@@ -1,0 +1,330 @@
+{
+ "date": "2026-10-29",
+ "rows": [
+  {
+   "name": "7 Red Roses",
+   "category": "florist",
+   "website": "https://www.sevenredroses.com/"
+  },
+  {
+   "name": "R.C. Wahl Jewelers",
+   "category": "jewelry",
+   "website": ""
+  },
+  {
+   "name": "Ania's Style Boutique",
+   "category": "clothes",
+   "website": ""
+  },
+  {
+   "name": "Discovery Clothing Company",
+   "category": "clothes",
+   "website": ""
+  },
+  {
+   "name": "B's Sweet Bites",
+   "category": "bakery",
+   "website": ""
+  },
+  {
+   "name": "Mi Tierrita Colombia",
+   "category": "bakery",
+   "website": ""
+  },
+  {
+   "name": "Baskin-Robbins",
+   "category": "ice_cream",
+   "website": "https://locations.baskinrobbins.com/il/des-plaines/1552-rand-rd-341778-br"
+  },
+  {
+   "name": "Marciano Ice Cream",
+   "category": "ice_cream",
+   "website": ""
+  },
+  {
+   "name": "Amazing Breads & Cakes",
+   "category": "cafe",
+   "website": "https://amazingbreadsandcakes.com"
+  },
+  {
+   "name": "Scooter's Coffee",
+   "category": "cafe",
+   "website": "https://www.scooterscoffee.com/"
+  },
+  {
+   "name": "Starbucks",
+   "category": "cafe",
+   "website": "https://www.starbucks.com/store-locator/store/17797/des-plaines-2655-mannheim-rd-2655-mannheim-rd-des-plaines-il-600183601-us"
+  },
+  {
+   "name": "Brew Coffee Lab",
+   "category": "cafe",
+   "website": ""
+  },
+  {
+   "name": "Illusion Cafe",
+   "category": "cafe",
+   "website": ""
+  },
+  {
+   "name": "BIBIBOP Asian Grill",
+   "category": "restaurant",
+   "website": "https://www.bibibop.com/locations/bibibop-des-plaines-il-w-higgins-road/"
+  },
+  {
+   "name": "Boston Fish Market",
+   "category": "restaurant",
+   "website": "https://www.bostonfishmkt.com/"
+  },
+  {
+   "name": "Buffalo Wild Wings GO.",
+   "category": "restaurant",
+   "website": "https://www.buffalowildwings.com/bww-go/"
+  },
+  {
+   "name": "CAVA",
+   "category": "restaurant",
+   "website": "https://cava.com/locations/mannheim-il"
+  },
+  {
+   "name": "Des Plaines Family Restaurant & Pancake House",
+   "category": "restaurant",
+   "website": "https://des-plaines-pancake-house.business.site/"
+  },
+  {
+   "name": "Gail's Carriage Inn",
+   "category": "restaurant",
+   "website": "https://www.gailscarriageinn.com/"
+  },
+  {
+   "name": "Ghareeb Nawaz O'Hare",
+   "category": "restaurant",
+   "website": "https://ghareebnawazonline.com/"
+  },
+  {
+   "name": "House of Szechwan",
+   "category": "restaurant",
+   "website": "https://www.houseofszechwan.com/"
+  },
+  {
+   "name": "Karavan",
+   "category": "restaurant",
+   "website": "https://karavanrestaurant.com/"
+  },
+  {
+   "name": "Katie's Kitchen",
+   "category": "restaurant",
+   "website": "https://www.katieskitchenonline.com/"
+  },
+  {
+   "name": "Los Azares Mexican Grill",
+   "category": "restaurant",
+   "website": "https://slicelife.com/restaurants/il/des-plaines/60016/los-azares-mexican-grill/menu"
+  },
+  {
+   "name": "Mrs. V's",
+   "category": "restaurant",
+   "website": "http://www.mrsvsrestaurant.com/"
+  },
+  {
+   "name": "Outback Steakhouse",
+   "category": "restaurant",
+   "website": "https://locations.outback.com/illinois/des-plaines/2805-mannheim-road"
+  },
+  {
+   "name": "Sugar Bowl",
+   "category": "restaurant",
+   "website": "https://www.sugarbowldesplaines.com"
+  },
+  {
+   "name": "Taco Burrito King",
+   "category": "restaurant",
+   "website": "https://www.tacoburritoking.com/"
+  },
+  {
+   "name": "Taqueria El Gallo de Oro",
+   "category": "restaurant",
+   "website": "https://taqueriaelgallodeoro.shop/"
+  },
+  {
+   "name": "The Choo Choo",
+   "category": "restaurant",
+   "website": "http://www.thechoochoo.com/"
+  },
+  {
+   "name": "Tiffany's Restaurant & Cafe",
+   "category": "restaurant",
+   "website": "https://tiffanystogo.com/"
+  },
+  {
+   "name": "American Wild Burger",
+   "category": "restaurant",
+   "website": ""
+  },
+  {
+   "name": "Big House",
+   "category": "restaurant",
+   "website": ""
+  },
+  {
+   "name": "Bosna Grill",
+   "category": "restaurant",
+   "website": ""
+  },
+  {
+   "name": "Chef of Siam",
+   "category": "restaurant",
+   "website": ""
+  },
+  {
+   "name": "Don's Dock",
+   "category": "restaurant",
+   "website": ""
+  },
+  {
+   "name": "Dotombori",
+   "category": "restaurant",
+   "website": ""
+  },
+  {
+   "name": "Euro Grill",
+   "category": "restaurant",
+   "website": ""
+  },
+  {
+   "name": "First Watch",
+   "category": "restaurant",
+   "website": ""
+  },
+  {
+   "name": "Galaxy Hot Pot & Grill",
+   "category": "restaurant",
+   "website": ""
+  },
+  {
+   "name": "Giacomo's Ristorante Italiano",
+   "category": "restaurant",
+   "website": ""
+  },
+  {
+   "name": "Giordano's Pizzeria",
+   "category": "restaurant",
+   "website": ""
+  },
+  {
+   "name": "KOW",
+   "category": "restaurant",
+   "website": ""
+  },
+  {
+   "name": "Krasa",
+   "category": "restaurant",
+   "website": ""
+  },
+  {
+   "name": "Laredo Taco Company®",
+   "category": "restaurant",
+   "website": ""
+  },
+  {
+   "name": "LongHorn Steakhouse",
+   "category": "restaurant",
+   "website": ""
+  },
+  {
+   "name": "Los Chapines Tortilleria",
+   "category": "restaurant",
+   "website": ""
+  },
+  {
+   "name": "Los Tamales Oaxaqueños",
+   "category": "restaurant",
+   "website": ""
+  },
+  {
+   "name": "Mariachi's Tacos",
+   "category": "restaurant",
+   "website": ""
+  },
+  {
+   "name": "Mexico 2000 #3",
+   "category": "restaurant",
+   "website": ""
+  },
+  {
+   "name": "Mexico Restaurant",
+   "category": "restaurant",
+   "website": ""
+  },
+  {
+   "name": "New Seoul Korean BBQ",
+   "category": "restaurant",
+   "website": ""
+  },
+  {
+   "name": "Orange & Chicken Des Plaines",
+   "category": "restaurant",
+   "website": ""
+  },
+  {
+   "name": "Papa Ray's Pizza and Wings",
+   "category": "restaurant",
+   "website": ""
+  },
+  {
+   "name": "Pho Dung Gia",
+   "category": "restaurant",
+   "website": ""
+  },
+  {
+   "name": "Silver Stallion",
+   "category": "restaurant",
+   "website": ""
+  },
+  {
+   "name": "Sofia Grill",
+   "category": "restaurant",
+   "website": ""
+  },
+  {
+   "name": "Sunrise Grill",
+   "category": "restaurant",
+   "website": ""
+  },
+  {
+   "name": "Tasty Cuisine",
+   "category": "restaurant",
+   "website": ""
+  },
+  {
+   "name": "The Dime (opening soon)",
+   "category": "restaurant",
+   "website": ""
+  },
+  {
+   "name": "The Stadium Sports Bar & Pizza",
+   "category": "restaurant",
+   "website": ""
+  },
+  {
+   "name": "Tiki Terrace",
+   "category": "restaurant",
+   "website": ""
+  },
+  {
+   "name": "Via Roma",
+   "category": "restaurant",
+   "website": ""
+  },
+  {
+   "name": "Wonton Gourmet",
+   "category": "restaurant",
+   "website": ""
+  },
+  {
+   "name": "Zaika Indian cuisine",
+   "category": "restaurant",
+   "website": ""
+  }
+ ]
+}

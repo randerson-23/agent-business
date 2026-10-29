@@ -1,6 +1,6 @@
 # Outreach prospects (OpenStreetMap)
 
-Generated 2026-10-28 by `scripts/osm_prospects.py` (ROADMAP.md item 306).
+Generated 2026-10-29 by `scripts/osm_prospects.py` (ROADMAP.md item 306).
 
 > Data (c) OpenStreetMap contributors, available under the Open Database Licence (ODbL). **For outreach use only; never share or republish this file.** Names and websites only: no emails or phone numbers are kept, even where OSM has them. Order is the likelihood of buying a holiday listing (gifts, toys and books first, restaurants last). OSM coverage is volunteer-made: treat a missing shop as unknown, not as closed, and check the business's own site or a visit before writing to it.
 
@@ -32,8 +32,6 @@ They may still buy a promo, but the pitch differs: they already reach their own 
 | Des Plaines Theatre | Des Plaines | RESCHEDULED FOR 2/28/27: ROCKY™ IN CONCERT (2026-10-28); WORLD PREMIERE FILM SCREENING: YAKUZA PLAYS "THE GOLEM" - A CONCERT FILM (2026-10-29); BOURBON 'N BRASS: LIVE BLUES SHOW WITH MILES MINOR "ROCKIN THE BLUES" (2026-10-29); +30 more |
 
 ## Arlington Heights
-
-(from the Oct 28 run; today's refresh failed)
 
 | Name | Category | Website |
 |---|---|---|
@@ -118,7 +116,73 @@ They may still buy a promo, but the pitch differs: they already reach their own 
 
 ## Des Plaines
 
-The OpenStreetMap query for this town failed; re-run the workflow.
+| Name | Category | Website |
+|---|---|---|
+| 7 Red Roses | Florist | <https://www.sevenredroses.com/> |
+| R.C. Wahl Jewelers | Jeweller | visit in person |
+| Ania's Style Boutique | Clothes | visit in person |
+| Discovery Clothing Company | Clothes | visit in person |
+| B's Sweet Bites | Bakery | visit in person |
+| Mi Tierrita Colombia | Bakery | visit in person |
+| Baskin-Robbins | Ice cream | <https://locations.baskinrobbins.com/il/des-plaines/1552-rand-rd-341778-br> |
+| Marciano Ice Cream | Ice cream | visit in person |
+| Amazing Breads & Cakes | Cafe | <https://amazingbreadsandcakes.com> |
+| Scooter's Coffee | Cafe | <https://www.scooterscoffee.com/> |
+| Starbucks | Cafe | <https://www.starbucks.com/store-locator/store/17797/des-plaines-2655-mannheim-rd-2655-mannheim-rd-des-plaines-il-600183601-us> |
+| Brew Coffee Lab | Cafe | visit in person |
+| Illusion Cafe | Cafe | visit in person |
+| BIBIBOP Asian Grill | Restaurant | <https://www.bibibop.com/locations/bibibop-des-plaines-il-w-higgins-road/> |
+| Boston Fish Market | Restaurant | <https://www.bostonfishmkt.com/> |
+| Buffalo Wild Wings GO. | Restaurant | <https://www.buffalowildwings.com/bww-go/> |
+| CAVA | Restaurant | <https://cava.com/locations/mannheim-il> |
+| Des Plaines Family Restaurant & Pancake House | Restaurant | <https://des-plaines-pancake-house.business.site/> |
+| Gail's Carriage Inn | Restaurant | <https://www.gailscarriageinn.com/> |
+| Ghareeb Nawaz O'Hare | Restaurant | <https://ghareebnawazonline.com/> |
+| House of Szechwan | Restaurant | <https://www.houseofszechwan.com/> |
+| Karavan | Restaurant | <https://karavanrestaurant.com/> |
+| Katie's Kitchen | Restaurant | <https://www.katieskitchenonline.com/> |
+| Los Azares Mexican Grill | Restaurant | <https://slicelife.com/restaurants/il/des-plaines/60016/los-azares-mexican-grill/menu> |
+| Mrs. V's | Restaurant | <http://www.mrsvsrestaurant.com/> |
+| Outback Steakhouse | Restaurant | <https://locations.outback.com/illinois/des-plaines/2805-mannheim-road> |
+| Sugar Bowl | Restaurant | <https://www.sugarbowldesplaines.com> |
+| Taco Burrito King | Restaurant | <https://www.tacoburritoking.com/> |
+| Taqueria El Gallo de Oro | Restaurant | <https://taqueriaelgallodeoro.shop/> |
+| The Choo Choo | Restaurant | <http://www.thechoochoo.com/> |
+| Tiffany's Restaurant & Cafe | Restaurant | <https://tiffanystogo.com/> |
+| American Wild Burger | Restaurant | visit in person |
+| Big House | Restaurant | visit in person |
+| Bosna Grill | Restaurant | visit in person |
+| Chef of Siam | Restaurant | visit in person |
+| Don's Dock | Restaurant | visit in person |
+| Dotombori | Restaurant | visit in person |
+| Euro Grill | Restaurant | visit in person |
+| First Watch | Restaurant | visit in person |
+| Galaxy Hot Pot & Grill | Restaurant | visit in person |
+| Giacomo's Ristorante Italiano | Restaurant | visit in person |
+| Giordano's Pizzeria | Restaurant | visit in person |
+| KOW | Restaurant | visit in person |
+| Krasa | Restaurant | visit in person |
+| Laredo Taco Company® | Restaurant | visit in person |
+| LongHorn Steakhouse | Restaurant | visit in person |
+| Los Chapines Tortilleria | Restaurant | visit in person |
+| Los Tamales Oaxaqueños | Restaurant | visit in person |
+| Mariachi's Tacos | Restaurant | visit in person |
+| Mexico 2000 #3 | Restaurant | visit in person |
+| Mexico Restaurant | Restaurant | visit in person |
+| New Seoul Korean BBQ | Restaurant | visit in person |
+| Orange & Chicken Des Plaines | Restaurant | visit in person |
+| Papa Ray's Pizza and Wings | Restaurant | visit in person |
+| Pho Dung Gia | Restaurant | visit in person |
+| Silver Stallion | Restaurant | visit in person |
+| Sofia Grill | Restaurant | visit in person |
+| Sunrise Grill | Restaurant | visit in person |
+| Tasty Cuisine | Restaurant | visit in person |
+| The Dime (opening soon) | Restaurant | visit in person |
+| The Stadium Sports Bar & Pizza | Restaurant | visit in person |
+| Tiki Terrace | Restaurant | visit in person |
+| Via Roma | Restaurant | visit in person |
+| Wonton Gourmet | Restaurant | visit in person |
+| Zaika Indian cuisine | Restaurant | visit in person |
 
 ## Mount Prospect
 
