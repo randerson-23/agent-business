@@ -76,7 +76,7 @@ def load_watch(path: Path | None = None) -> dict:
 def region_urls(regions_dir: Path | None = None) -> dict[str, tuple[str, str]]:
     regions_dir = regions_dir or REGIONS_DIR
     found = {}
-    for path in sorted(regions_dir.glob("*.yaml")):
+    for path in sorted(regions_dir.glob("[!_]*.yaml")):
         cfg = yaml.safe_load(path.read_text(encoding="utf-8")) or {}
         url = (cfg.get("trick_or_treat") or {}).get("url")
         if url:

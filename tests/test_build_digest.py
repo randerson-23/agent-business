@@ -4803,7 +4803,7 @@ def test_prepare_tree_lighting_computes_weekday_and_rejects_old_years():
 
 def test_every_configured_tree_lighting_date_is_a_real_weekday_in_the_current_season():
     import glob, yaml
-    for path in glob.glob(str(build_digest.CONFIG_DIR / "regions" / "*.yaml")):
+    for path in glob.glob(str(build_digest.CONFIG_DIR / "regions" / "[!_]*.yaml")):
         block = (yaml.safe_load(open(path)) or {}).get("tree_lighting")
         assert block and block.get("url"), path
         if block.get("date"):
@@ -5317,7 +5317,7 @@ def test_official_district_days_off_merge_with_feed_entries_without_duplicates()
 def test_configured_official_days_off_are_in_the_current_school_year():
     # ROADMAP.md item 300: a stale year cannot slip through.
     import glob, yaml
-    for path in glob.glob(str(build_digest.CONFIG_DIR / "regions" / "*.yaml")):
+    for path in glob.glob(str(build_digest.CONFIG_DIR / "regions" / "[!_]*.yaml")):
         for entry in (yaml.safe_load(open(path)) or {}).get("days_off") or []:
             day = date.fromisoformat(str(entry["date"]))
             assert date(2026, 8, 1) <= day <= date(2027, 7, 31), (path, entry)
@@ -5742,7 +5742,7 @@ def test_trick_or_treat_page_shows_the_box_only_with_a_forecast():
 
 
 def test_short_paths_point_at_real_region_pages_and_collide_with_nothing():
-    regions = {json.loads(json.dumps(yaml.safe_load(p.read_text(encoding="utf-8"))))["region"]["id"] for p in (Path(__file__).resolve().parent.parent / "config" / "regions").glob("*.yaml")}
+    regions = {json.loads(json.dumps(yaml.safe_load(p.read_text(encoding="utf-8"))))["region"]["id"] for p in (Path(__file__).resolve().parent.parent / "config" / "regions").glob("[!_]*.yaml")}
     assert set(build_digest.SHORT_PATHS) == regions
     reserved = {"this-weekend", "today", "free", "sponsor", "about", "trick-or-treat", "holidays", "join", "issues", "og", "feed", "later"}
     shorts = list(build_digest.SHORT_PATHS.values())
@@ -6121,7 +6121,7 @@ def test_venue_veto_tags_remove_outdoor_for_indoor_sources():
     import yaml as _yaml
     root = Path(__file__).resolve().parent.parent / "config" / "regions"
     vetoed = []
-    for f in root.glob("*.yaml"):
+    for f in root.glob("[!_]*.yaml"):
         for src in (_yaml.safe_load(f.read_text(encoding="utf-8")).get("sources") or []):
             if src.get("veto_tags"):
                 vetoed.append(src["name"])
@@ -6378,7 +6378,7 @@ def test_an_event_page_with_a_matched_venue_has_the_address_in_its_line_title_an
 
 def test_the_real_venue_tables_only_hold_addresses_with_a_source_page():
     import yaml as _yaml
-    for f in (Path(__file__).resolve().parent.parent / "config" / "regions").glob("*.yaml"):
+    for f in (Path(__file__).resolve().parent.parent / "config" / "regions").glob("[!_]*.yaml"):
         for row in _yaml.safe_load(f.read_text(encoding="utf-8")).get("venues") or []:
             assert row["name"] and row["street_address"] and str(row["source_url"]).startswith("https://"), (f.name, row)
 
@@ -6414,7 +6414,7 @@ def test_a_listing_points_its_event_at_the_events_own_page_when_one_exists(monke
 def test_the_real_dppl_theatre_and_metropolis_venues_are_seeded_from_their_own_pages():
     import yaml as _yaml
     rows = {}
-    for f in (Path(__file__).resolve().parent.parent / "config" / "regions").glob("*.yaml"):
+    for f in (Path(__file__).resolve().parent.parent / "config" / "regions").glob("[!_]*.yaml"):
         for row in _yaml.safe_load(f.read_text(encoding="utf-8")).get("venues") or []:
             rows[row["name"]] = row
     assert rows["Des Plaines Public Library"]["street_address"] == "1501 Ellinwood Street" and rows["Des Plaines Public Library"]["postal_code"] == "60016"
@@ -6709,3 +6709,24 @@ def test_the_email_scales_to_six_towns_three_events_each_strongest_town_first_un
     assert html.index("Bravo Event 0") < html.index("Alpha Event 0")  # the strongest town comes first, not alphabetical
     assert "#4d7c0f" in html
     assert len(html.encode("utf-8")) < 102_000
+
+
+def test_candidate_town_files_are_never_published_and_their_weekly_counts_are_recorded():
+    # ROADMAP.md item 416.
+    ids = [c["region"]["id"] for c in build_digest.load_regions()]
+    assert "elk-grove-village-60007" not in ids and "rolling-meadows-60008" not in ids and len(ids) == 5
+    cands = build_digest.load_candidate_regions()
+    assert sorted(c["region"]["id"] for c in cands) == ["elk-grove-village-60007", "rolling-meadows-60008"]
+    assert all(s["type"] == "rss" and s["url"].startswith("https://") for c in cands for s in c["sources"])
+    today = date(2026, 11, 2)
+    def ev(title, day, tags=(), attendable=True):
+        return {"title": title, "date_iso": f"2026-11-{day:02d}T10:00:00", "tags": list(tags), "attendable": attendable}
+    blocks = [{"section": "Library Events", "events": [ev("Storytime", 3, ["kid_friendly"]), ev("Tax Help", 4), ev("Closed Monday", 5, attendable=False), ev("Far Away", 20, ["kid_friendly"]), ev("Shared Show", 6, ["kid_friendly"])]}]
+    counts = build_digest.candidate_week_counts(blocks, {"shared show"}, today)
+    assert counts == {"dated": 4, "attendable": 3, "family": 2, "distinct": 2, "source_items": {"Library Events": 5}}
+    hist = build_digest.record_candidate_counts({}, "c", counts, today)
+    hist = build_digest.record_candidate_counts(hist, "c", dict(counts, dated=9), today)  # a rebuild the same day replaces
+    hist = build_digest.record_candidate_counts(hist, "c", counts, date(2026, 11, 3))
+    assert [(r["date"], r["dated"]) for r in hist["c"]] == [("2026-11-02", 9), ("2026-11-03", 4)]
+    old = build_digest.record_candidate_counts(hist, "c", counts, date(2026, 12, 20))
+    assert [r["date"] for r in old["c"]] == ["2026-12-20"]  # older than 30 days drops out
