@@ -2,7 +2,7 @@
   "@context": "https://schema.org",
   "@type": "ItemList",
   "name": "Upcoming events across every region — Within Ten",
-  "dateModified": "2026-10-30T06:00:18+00:00",
+  "dateModified": "2026-10-30T06:12:02+00:00",
   "numberOfItems": 235,
   "itemListElement": [
     {
@@ -31,7 +31,8 @@
           "@type": "Organization",
           "name": "Arlington Heights Memorial Library",
           "url": "https://www.ahml.info"
-        }
+        },
+        "image": "https://withintenmiles.com/og/arlington-heights-60005.png"
       }
     },
     {
@@ -61,6 +62,7 @@
           "name": "Metropolis Performing Arts Centre",
           "url": "https://www.metropolisarts.com"
         },
+        "image": "https://withintenmiles.com/og/arlington-heights-60005.png",
         "description": "Purchase Tickets October 30th, 2026: 7:30 PM October 31st, 2026: 7:30 PM Tickets: $40 ABOUT THE SHOW: A little ROCK, a little HORROR, a lot of Halloween fun,…"
       }
     },
@@ -92,6 +94,7 @@
           "name": "Des Plaines Public Library",
           "url": "https://desplaines.libnet.info"
         },
+        "image": "https://withintenmiles.com/og/des-plaines-60016.png",
         "description": "Friday, October 30 2026 12:00am - 11:59pm \n Enter our 4th annual Wicked Good Writing Contest!\nFor grades K-8."
       }
     },
@@ -123,6 +126,7 @@
           "name": "Des Plaines Public Library",
           "url": "https://desplaines.libnet.info"
         },
+        "image": "https://withintenmiles.com/og/des-plaines-60016.png",
         "description": "Friday, October 30 2026 9:00am - 5:00pm \n Gubernatorial Election"
       }
     },
@@ -154,6 +158,7 @@
           "name": "Des Plaines Public Library",
           "url": "https://desplaines.libnet.info"
         },
+        "image": "https://withintenmiles.com/og/des-plaines-60016.png",
         "description": "Friday, October 30 2026 10:00am - 11:00am \n To register, please contact Irene Tripkos at 847-789-5623. Verbal confirmation from Irene Tripkos is needed in…"
       }
     },
@@ -184,6 +189,7 @@
           "name": "Indian Trails Public Library",
           "url": "https://indiantrails.libnet.info"
         },
+        "image": "https://withintenmiles.com/og/e/2026-10-30-spooktacular-storytime.png",
         "description": "Friday, October 30 2026 10:00am - 10:45am \n Start your Halloween festivities with a short storytime, craft and game. Costumes encouraged but not necessary. TR"
       }
     },
@@ -215,6 +221,7 @@
           "name": "Des Plaines Public Library",
           "url": "https://desplaines.libnet.info"
         },
+        "image": "https://withintenmiles.com/og/des-plaines-60016.png",
         "description": "Friday, October 30 2026 4:00pm - 5:30pm \n Join us for our annual costume contest & enjoy candies + chocolates from around the world!"
       }
     },
@@ -245,6 +252,7 @@
           "name": "Mount Prospect Public Library",
           "url": "https://mppl.libnet.info"
         },
+        "image": "https://withintenmiles.com/og/e/2026-10-30-calavera-creations.png",
         "description": "Friday, October 30 2026 5:00pm - 6:00pm \n Celebrate Día de los Muertos and decorate your own ceramic calavera!"
       }
     },
@@ -275,6 +283,7 @@
           "name": "Indian Trails Public Library",
           "url": "https://indiantrails.libnet.info"
         },
+        "image": "https://withintenmiles.com/og/e/2026-10-30-craft-for-the-day-of-the-dead-at-the-branch.png",
         "description": "Friday, October 30 2026 5:30pm - 7:00pm \n Participate in a Mexican tradition by painting mini wooden ornaments. Enjoy hot chocolate and traditional bread \"pan…"
       }
     },
@@ -305,6 +314,7 @@
           "name": "Des Plaines Theatre",
           "url": "https://desplainestheatre.com"
         },
+        "image": "https://withintenmiles.com/og/des-plaines-60016.png",
         "description": "Join us in our intimate Bourbon ‘N Brass Speakeasy, located on the 2nd floor of the Des Plaines Theatre, for an evening of Delta Blues with the Downtown…"
       }
     },
@@ -334,7 +344,8 @@
           "@type": "Organization",
           "name": "Arlington Heights Memorial Library",
           "url": "https://www.ahml.info"
-        }
+        },
+        "image": "https://withintenmiles.com/og/arlington-heights-60005.png"
       }
     },
     {
@@ -363,6 +374,7 @@
           "name": "Village of Wheeling",
           "url": "https://www.wheelingil.gov"
         },
+        "image": "https://withintenmiles.com/og/wheeling-60090.png",
         "description": "https://www.wheelingil.gov/calendar.aspx?EID=2233"
       }
     },
@@ -394,6 +406,7 @@
           "name": "Des Plaines Public Library",
           "url": "https://desplaines.libnet.info"
         },
+        "image": "https://withintenmiles.com/og/des-plaines-60016.png",
         "description": "Saturday, October 31 2026 9:00am - 5:00pm \n Gubernatorial Election"
       }
     },
@@ -424,6 +437,7 @@
           "name": "Mount Prospect Public Library",
           "url": "https://mppl.libnet.info"
         },
+        "image": "https://withintenmiles.com/og/mount-prospect-60056.png",
         "description": "Saturday, October 31 2026 10:00am - 11:00am \n Learn the steps to convert VHS home videos to DVD or digital format using the library's Mac Studio equipment."
       }
     },
@@ -454,6 +468,7 @@
           "name": "Indian Trails Public Library",
           "url": "https://indiantrails.libnet.info"
         },
+        "image": "https://withintenmiles.com/og/wheeling-60090.png",
         "description": "Saturday, October 31 2026 2:00pm - 3:00pm \n Celebrate Dia de Los Muertos with a performance from Mariachi Sirenas. R"
       }
     },
@@ -483,6 +498,7 @@
           "name": "Village of Palatine",
           "url": "https://www.palatine.il.us"
         },
+        "image": "https://withintenmiles.com/og/palatine-60067.png",
         "description": "https://www.palatine.il.us/calendar.aspx?EID=2176"
       }
     },
@@ -512,6 +528,7 @@
           "name": "Village of Wheeling",
           "url": "https://www.wheelingil.gov"
         },
+        "image": "https://withintenmiles.com/og/wheeling-60090.png",
         "description": "https://www.wheelingil.gov/calendar.aspx?EID=2232"
       }
     },
@@ -541,6 +558,7 @@
           "name": "Village of Palatine",
           "url": "https://www.palatine.il.us"
         },
+        "image": "https://withintenmiles.com/og/e/2026-10-31-trunk-or-treat-at-chicago-bethel-presbyterian-church.png",
         "description": "Trunk-or-Treat at Chicago Bethel Presbyterian Church https://ww"
       }
     },
@@ -571,6 +589,7 @@
           "name": "Des Plaines Theatre",
           "url": "https://desplainestheatre.com"
         },
+        "image": "https://withintenmiles.com/og/des-plaines-60016.png",
         "description": "Heralded as a mix of circus cabaret and theatre, The Vampire Circus is a mysterious, tantalizing, fun, dark, cutting-edge production guaranteed to amaze the…"
       }
     },
@@ -601,6 +620,7 @@
           "name": "Des Plaines Theatre",
           "url": "https://desplainestheatre.com"
         },
+        "image": "https://withintenmiles.com/og/des-plaines-60016.png",
         "description": "Join us in our intimate Bourbon ‘N Brass Speakeasy, located on the 2nd floor of the Des Plaines Theatre, for an evening of Jazz with the Bourbon ‘N Brass…"
       }
     },
@@ -631,6 +651,7 @@
           "name": "Mount Prospect Public Library",
           "url": "https://mppl.libnet.info"
         },
+        "image": "https://withintenmiles.com/og/mount-prospect-60056.png",
         "description": "Sunday, November 01 2026 12:00am - 11:59pm \n Looking for your next read? Want a suggestion that fits a category in our year-round Book Bingo? We've got you…"
       }
     },
@@ -661,6 +682,7 @@
           "name": "Indian Trails Public Library",
           "url": "https://indiantrails.libnet.info"
         },
+        "image": "https://withintenmiles.com/og/wheeling-60090.png",
         "description": "Sunday, November 01 2026 12:00am - 11:59pm \n Write an encouraging card to an active military person at the lobby of the library. NR"
       }
     },
@@ -690,6 +712,7 @@
           "name": "Village of Palatine",
           "url": "https://www.palatine.il.us"
         },
+        "image": "https://withintenmiles.com/og/palatine-60067.png",
         "description": "https://www.palatine.il.us/calendar.aspx?EID=2211"
       }
     },
@@ -721,6 +744,7 @@
           "name": "Des Plaines Public Library",
           "url": "https://desplaines.libnet.info"
         },
+        "image": "https://withintenmiles.com/og/des-plaines-60016.png",
         "description": "Sunday, November 01 2026 10:00am - 4:00pm \n Gubernatorial Election"
       }
     },
@@ -752,6 +776,7 @@
           "name": "Des Plaines Public Library",
           "url": "https://desplaines.libnet.info"
         },
+        "image": "https://withintenmiles.com/og/des-plaines-60016.png",
         "description": "Sunday, November 01 2026 2:30pm - 3:30pm \n Create a Gmail account, learn how to use and navigate Gmail. Search and organize your inbox, create labels, and…"
       }
     },
@@ -782,6 +807,7 @@
           "name": "Des Plaines Theatre",
           "url": "https://desplainestheatre.com"
         },
+        "image": "https://withintenmiles.com/og/des-plaines-60016.png",
         "description": "Crooner Nick Pontarelli, with a 7-piece orchestra, is bringing his show to the Des Plaines stage. Nick is a crowd-favorite in our Club Arcada Speakeasy. Don’t…"
       }
     },
@@ -813,6 +839,7 @@
           "name": "Des Plaines Public Library",
           "url": "https://desplaines.libnet.info"
         },
+        "image": "https://withintenmiles.com/og/des-plaines-60016.png",
         "description": "Monday, November 02 2026 12:00am - 11:59pm \n Take & Make Kits are fun crafts you can take home and make on your own time. Drop in to pick up your kit…"
       }
     },
@@ -843,6 +870,7 @@
           "name": "Mount Prospect Public Library",
           "url": "https://mppl.libnet.info"
         },
+        "image": "https://withintenmiles.com/og/mount-prospect-60056.png",
         "description": "Monday, November 02 2026 12:00am - 11:59pm \n Stop by the Youth desk and pick up a fun DIY craft to make at home!"
       }
     },
@@ -873,6 +901,7 @@
           "name": "Mount Prospect Public Library",
           "url": "https://mppl.libnet.info"
         },
+        "image": "https://withintenmiles.com/og/mount-prospect-60056.png",
         "description": "Monday, November 02 2026 12:00am - 11:59pm \n Mount Prospect Public Library is joining the statewide Family Reading Night event and invites families to join…"
       }
     },
@@ -895,7 +924,8 @@
             "addressLocality": "Mount Prospect",
             "addressRegion": "IL"
           }
-        }
+        },
+        "image": "https://withintenmiles.com/og/mount-prospect-60056.png"
       }
     },
     {
@@ -926,6 +956,7 @@
           "name": "Des Plaines Public Library",
           "url": "https://desplaines.libnet.info"
         },
+        "image": "https://withintenmiles.com/og/des-plaines-60016.png",
         "description": "Monday, November 02 2026 9:00am - 5:00pm \n Gubernatorial Election"
       }
     },
@@ -956,6 +987,7 @@
           "name": "Mount Prospect Public Library",
           "url": "https://mppl.libnet.info"
         },
+        "image": "https://withintenmiles.com/og/mount-prospect-60056.png",
         "description": "Monday, November 02 2026 9:00am - 1:00pm \n This two-part, eight-hour program provides a refresher course for motorists age 55 and older."
       }
     },
@@ -986,6 +1018,7 @@
           "name": "Indian Trails Public Library",
           "url": "https://indiantrails.libnet.info"
         },
+        "image": "https://withintenmiles.com/og/wheeling-60090.png",
         "description": "Monday, November 02 2026 9:00am - 9:00pm \n Bag pickup: 9 am-9 pm \nComplete and return a volunteer craft kit by the end of the month to count towards one hour…"
       }
     },
@@ -1016,6 +1049,7 @@
           "name": "Mount Prospect Public Library",
           "url": "https://mppl.libnet.info"
         },
+        "image": "https://withintenmiles.com/og/mount-prospect-60056.png",
         "description": "Monday, November 02 2026 9:30am - 10:00am \n Bring the whole family and join us for an interactive storytime with high-energy stories, songs, and activities."
       }
     },
@@ -1047,6 +1081,7 @@
           "name": "Des Plaines Public Library",
           "url": "https://desplaines.libnet.info"
         },
+        "image": "https://withintenmiles.com/og/des-plaines-60016.png",
         "description": "Monday, November 02 2026 10:00am - 11:00am \n To register, please contact Irene Tripkos at 847-789-5623. Verbal confirmation from Irene Tripkos is needed in…"
       }
     },
@@ -1077,6 +1112,7 @@
           "name": "Mount Prospect Public Library",
           "url": "https://mppl.libnet.info"
         },
+        "image": "https://withintenmiles.com/og/mount-prospect-60056.png",
         "description": "Monday, November 02 2026 10:30am - 11:00am \n Grow your little learner's literacy and language skills at this playful storytime full of wiggles, wonder, and fun!"
       }
     },
@@ -1107,6 +1143,7 @@
           "name": "Indian Trails Public Library",
           "url": "https://indiantrails.libnet.info"
         },
+        "image": "https://withintenmiles.com/og/wheeling-60090.png",
         "description": "Monday, November 02 2026 1:00pm - 3:00pm \n If your craft of choice uses needles or hooks, this group is for you. Bring your knit, crochet, embroidery or cross…"
       }
     },
@@ -1137,6 +1174,7 @@
           "name": "Indian Trails Public Library",
           "url": "https://indiantrails.libnet.info"
         },
+        "image": "https://withintenmiles.com/og/wheeling-60090.png",
         "description": "Monday, November 02 2026 3:00pm - 3:45pm \n Have a basic question about your mobile device or computer? We can help. ¿Tiene alguna pregunta básica sobre su…"
       }
     },
@@ -1167,6 +1205,7 @@
           "name": "Indian Trails Public Library",
           "url": "https://indiantrails.libnet.info"
         },
+        "image": "https://withintenmiles.com/og/wheeling-60090.png",
         "description": "Monday, November 02 2026 4:00pm - 5:00pm \n Book pickup October 5-26 at the Youth Services Desk. Grandpa Clem has died, so Lila & her family need to decide…"
       }
     },
@@ -1198,6 +1237,7 @@
           "name": "Des Plaines Public Library",
           "url": "https://desplaines.libnet.info"
         },
+        "image": "https://withintenmiles.com/og/des-plaines-60016.png",
         "description": "Monday, November 02 2026 5:00pm - 6:00pm \n Want some career, college, or scholarship advice? Need some book recommendations? Maybe sit back, relax, and play…"
       }
     },
@@ -1229,6 +1269,7 @@
           "name": "Des Plaines Public Library",
           "url": "https://desplaines.libnet.info"
         },
+        "image": "https://withintenmiles.com/og/des-plaines-60016.png",
         "description": "Monday, November 02 2026 6:00pm - 8:00pm \n Robert H. 773-972-8646"
       }
     },
@@ -1259,6 +1300,7 @@
           "name": "Indian Trails Public Library",
           "url": "https://indiantrails.libnet.info"
         },
+        "image": "https://withintenmiles.com/og/wheeling-60090.png",
         "description": "Monday, November 02 2026 6:00pm - 7:30pm \n Learn to play the Chinese tile-based game Mahjong. Instructor Xinming Guo will cover the basic rules, strategies,…"
       }
     },
@@ -1290,6 +1332,7 @@
           "name": "Des Plaines Public Library",
           "url": "https://desplaines.libnet.info"
         },
+        "image": "https://withintenmiles.com/og/des-plaines-60016.png",
         "description": "Monday, November 02 2026 6:30pm - 8:30pm \n For more information, please call 773-743-8147"
       }
     },
@@ -1319,6 +1362,7 @@
           "name": "Village of Wheeling",
           "url": "https://www.wheelingil.gov"
         },
+        "image": "https://withintenmiles.com/og/wheeling-60090.png",
         "description": "https://www.wheelingil.gov/calendar.aspx?EID=2005"
       }
     },
@@ -1349,6 +1393,7 @@
           "name": "Mount Prospect Public Library",
           "url": "https://mppl.libnet.info"
         },
+        "image": "https://withintenmiles.com/og/mount-prospect-60056.png",
         "description": "Monday, November 02 2026 7:00pm - 8:30pm \n Spend your night off playing tabletop games with other gaming enthusiasts!"
       }
     },
@@ -1371,7 +1416,8 @@
             "addressLocality": "Mount Prospect",
             "addressRegion": "IL"
           }
-        }
+        },
+        "image": "https://withintenmiles.com/og/mount-prospect-60056.png"
       }
     },
     {
@@ -1393,7 +1439,8 @@
             "addressLocality": "Palatine",
             "addressRegion": "IL"
           }
-        }
+        },
+        "image": "https://withintenmiles.com/og/palatine-60067.png"
       }
     },
     {
@@ -1423,6 +1470,7 @@
           "name": "Mount Prospect Public Library",
           "url": "https://mppl.libnet.info"
         },
+        "image": "https://withintenmiles.com/og/mount-prospect-60056.png",
         "description": "Tuesday, November 03 2026 9:00am - 1:00pm \n This two-part, eight-hour program provides a refresher course for motorists age 55 and older."
       }
     },
@@ -1454,6 +1502,7 @@
           "name": "Des Plaines Public Library",
           "url": "https://desplaines.libnet.info"
         },
+        "image": "https://withintenmiles.com/og/des-plaines-60016.png",
         "description": "Tuesday, November 03 2026 9:15am - 12:15pm \n For more information, please contact Oakton College at 847-635-1426"
       }
     },
@@ -1485,6 +1534,7 @@
           "name": "Des Plaines Public Library",
           "url": "https://desplaines.libnet.info"
         },
+        "image": "https://withintenmiles.com/og/des-plaines-60016.png",
         "description": "Tuesday, November 03 2026 9:15am - 12:15pm \n ESL (English as a Second Language) Class - Oakton College\n\n Teaches listening, speaking, reading, writing, and…"
       }
     },
@@ -1515,6 +1565,7 @@
           "name": "Mount Prospect Public Library",
           "url": "https://mppl.libnet.info"
         },
+        "image": "https://withintenmiles.com/og/mount-prospect-60056.png",
         "description": "Tuesday, November 03 2026 9:30am - 11:00am \n Collaborate and construct cardboard creations."
       }
     },
@@ -1545,6 +1596,7 @@
           "name": "Mount Prospect Public Library",
           "url": "https://mppl.libnet.info"
         },
+        "image": "https://withintenmiles.com/og/mount-prospect-60056.png",
         "description": "Tuesday, November 03 2026 9:30am - 10:00am \n A lifelong love of reading starts at birth! Join us for songs, rhymes, stories, and playtime made specially for…"
       }
     },
@@ -1576,6 +1628,7 @@
           "name": "Des Plaines Public Library",
           "url": "https://desplaines.libnet.info"
         },
+        "image": "https://withintenmiles.com/og/des-plaines-60016.png",
         "description": "Tuesday, November 03 2026 10:00am - 10:30am \n Ages 18-36 months. Drop-in at the Poet Tree Corner! Enjoy stories, songs, rhymes, movement, and more at Toddler…"
       }
     },
@@ -1606,6 +1659,7 @@
           "name": "Mount Prospect Public Library",
           "url": "https://mppl.libnet.info"
         },
+        "image": "https://withintenmiles.com/og/mount-prospect-60056.png",
         "description": "Tuesday, November 03 2026 10:30am - 11:00am \n Bring the whole family and join us for an interactive storytime with high-energy stories, songs, and activities."
       }
     },
@@ -1636,6 +1690,7 @@
           "name": "Mount Prospect Public Library",
           "url": "https://mppl.libnet.info"
         },
+        "image": "https://withintenmiles.com/og/mount-prospect-60056.png",
         "description": "Tuesday, November 03 2026 11:30am - 12:15pm \n Join us each week for storytime, sing-alongs, and developmental play experiences that encourage learning through…"
       }
     },
@@ -1666,6 +1721,7 @@
           "name": "Mount Prospect Public Library",
           "url": "https://mppl.libnet.info"
         },
+        "image": "https://withintenmiles.com/og/mount-prospect-60056.png",
         "description": "Tuesday, November 03 2026 1:00pm - 2:00pm \n Join Indigenous Medicine Woman Asha Frost as she explores her groundbreaking book, \"You Are the Medicine: 13…"
       }
     },
@@ -1696,6 +1752,7 @@
           "name": "Mount Prospect Public Library",
           "url": "https://mppl.libnet.info"
         },
+        "image": "https://withintenmiles.com/og/mount-prospect-60056.png",
         "description": "Tuesday, November 03 2026 1:30pm - 2:15pm \n Grow into a super reader through playful books and fun with friends! This storytime is the perfect fit for…"
       }
     },
@@ -1726,6 +1783,7 @@
           "name": "Mount Prospect Public Library",
           "url": "https://mppl.libnet.info"
         },
+        "image": "https://withintenmiles.com/og/mount-prospect-60056.png",
         "description": "Tuesday, November 03 2026 3:00pm - 7:00pm \n Help save lives and make a difference by donating blood."
       }
     },
@@ -1756,6 +1814,7 @@
           "name": "Indian Trails Public Library",
           "url": "https://indiantrails.libnet.info"
         },
+        "image": "https://withintenmiles.com/og/wheeling-60090.png",
         "description": "Tuesday, November 03 2026 4:30pm - 5:30pm \n Create a keychain inspired by boba tea or your favorite beverage. R"
       }
     },
@@ -1786,6 +1845,7 @@
           "name": "Indian Trails Public Library",
           "url": "https://indiantrails.libnet.info"
         },
+        "image": "https://withintenmiles.com/og/wheeling-60090.png",
         "description": "Tuesday, November 03 2026 6:00pm - 7:30pm \n Explore the magic of flowing, vibrant alcohol inks on tile. Learn alcohol ink art techniques from instructor Erin…"
       }
     },
@@ -1816,6 +1876,7 @@
           "name": "Indian Trails Public Library",
           "url": "https://indiantrails.libnet.info"
         },
+        "image": "https://withintenmiles.com/og/wheeling-60090.png",
         "description": "Tuesday, November 03 2026 6:30pm - 8:45pm \n Share your work with others in a supportive atmosphere at this monthly community writers group led by author…"
       }
     },
@@ -1839,6 +1900,7 @@
             "addressRegion": "IL"
           }
         },
+        "image": "https://withintenmiles.com/og/palatine-60067.png",
         "description": "Conclusion of the 12-Week grading period"
       }
     },
@@ -1869,6 +1931,7 @@
           "name": "Indian Trails Public Library",
           "url": "https://indiantrails.libnet.info"
         },
+        "image": "https://withintenmiles.com/og/wheeling-60090.png",
         "description": "Wednesday, November 04 2026 9:00am - 12:00pm \n District 214 Read to Learn Adult Literacy Program."
       }
     },
@@ -1899,6 +1962,7 @@
           "name": "Mount Prospect Public Library",
           "url": "https://mppl.libnet.info"
         },
+        "image": "https://withintenmiles.com/og/mount-prospect-60056.png",
         "description": "Wednesday, November 04 2026 9:30am - 10:00am \n Grow your little learner's literacy and language skills at this playful storytime full of wiggles, wonder, and…"
       }
     },
@@ -1930,6 +1994,7 @@
           "name": "Des Plaines Public Library",
           "url": "https://desplaines.libnet.info"
         },
+        "image": "https://withintenmiles.com/og/des-plaines-60016.png",
         "description": "Wednesday, November 04 2026 10:00am - 11:00am \n To register, please contact Irene Tripkos at 847-789-5623. Verbal confirmation from Irene Tripkos is needed in…"
       }
     },
@@ -1960,6 +2025,7 @@
           "name": "Mount Prospect Public Library",
           "url": "https://mppl.libnet.info"
         },
+        "image": "https://withintenmiles.com/og/mount-prospect-60056.png",
         "description": "Wednesday, November 04 2026 10:00am - 11:00am \n Stop in and bring your questions about technology-related subjects such as smartphones, computers, email,…"
       }
     },
@@ -1983,6 +2049,7 @@
             "addressRegion": "IL"
           }
         },
+        "image": "https://withintenmiles.com/og/palatine-60067.png",
         "description": "Mark your calendar for an upcoming CCSD15 Job Fair!Date: Every"
       }
     },
@@ -2013,6 +2080,7 @@
           "name": "Mount Prospect Public Library",
           "url": "https://mppl.libnet.info"
         },
+        "image": "https://withintenmiles.com/og/mount-prospect-60056.png",
         "description": "Wednesday, November 04 2026 11:00am - 12:00pm \n Join us for a discussion of \"The Wild Dark Shore\" by Charlotte McConaghy."
       }
     },
@@ -2035,7 +2103,8 @@
             "addressLocality": "Palatine",
             "addressRegion": "IL"
           }
-        }
+        },
+        "image": "https://withintenmiles.com/og/palatine-60067.png"
       }
     },
     {
@@ -2065,6 +2134,7 @@
           "name": "Indian Trails Public Library",
           "url": "https://indiantrails.libnet.info"
         },
+        "image": "https://withintenmiles.com/og/wheeling-60090.png",
         "description": "Wednesday, November 04 2026 1:00pm - 3:00pm \n Learn the basic skills needed to start your knitting journey. Materials provided. R"
       }
     },
@@ -2096,6 +2166,7 @@
           "name": "Des Plaines Public Library",
           "url": "https://desplaines.libnet.info"
         },
+        "image": "https://withintenmiles.com/og/des-plaines-60016.png",
         "description": "Wednesday, November 04 2026 1:30pm - 2:00pm \n Ages 3-5, but all are welcome. Storytime is a fun and play-filled way to foster a lifelong love of reading and…",
         "registrationOpens": "2026-10-21"
       }
@@ -2128,6 +2199,7 @@
           "name": "Des Plaines Public Library",
           "url": "https://desplaines.libnet.info"
         },
+        "image": "https://withintenmiles.com/og/des-plaines-60016.png",
         "description": "Wednesday, November 04 2026 3:00pm - 6:30pm \n Des Plaines Chamber of Commerce Job Fair- Private Reception from 3:00 p.m. - 4:00 p.m. for Military veterans,…"
       }
     },
@@ -2157,6 +2229,7 @@
           "name": "Village of Palatine",
           "url": "https://www.palatine.il.us"
         },
+        "image": "https://withintenmiles.com/og/palatine-60067.png",
         "description": "We welcome you to learn more about the Community Resource Cente"
       }
     },
@@ -2187,6 +2260,7 @@
           "name": "Indian Trails Public Library",
           "url": "https://indiantrails.libnet.info"
         },
+        "image": "https://withintenmiles.com/og/wheeling-60090.png",
         "description": "Wednesday, November 04 2026 4:00pm - 5:30pm \n Learn jewelry making techniques using our collection of beads and jewelry supplies to create a unique piece to…"
       }
     },
@@ -2217,6 +2291,7 @@
           "name": "Mount Prospect Public Library",
           "url": "https://mppl.libnet.info"
         },
+        "image": "https://withintenmiles.com/og/mount-prospect-60056.png",
         "description": "Wednesday, November 04 2026 4:30pm - 5:30pm \n In this unique meet-the-author program, get an inside peek into Valenti's creative process. Then, customize your…"
       }
     },
@@ -2246,6 +2321,7 @@
           "name": "Harper College",
           "url": "https://events.harpercollege.edu"
         },
+        "image": "https://withintenmiles.com/og/palatine-60067.png",
         "description": "A coming-of-age drama directed by Cameron Crowe that follows a teenage aspiring journalist who is given the opportunity to tour with a rising rock band while…",
         "isAccessibleForFree": true
       }
@@ -2277,6 +2353,7 @@
           "name": "Indian Trails Public Library",
           "url": "https://indiantrails.libnet.info"
         },
+        "image": "https://withintenmiles.com/og/wheeling-60090.png",
         "description": "Wednesday, November 04 2026 6:00pm - 8:00pm \n Reserved for Adult Indian Trails Library cardholders only. Join us for a monthly painting program with teaching…"
       }
     },
@@ -2306,6 +2383,7 @@
           "name": "Village of Wheeling",
           "url": "https://www.wheelingil.gov"
         },
+        "image": "https://withintenmiles.com/og/wheeling-60090.png",
         "description": "https://www.wheelingil.gov/calendar.aspx?EID=1970"
       }
     },
@@ -2337,6 +2415,7 @@
           "name": "Des Plaines Public Library",
           "url": "https://desplaines.libnet.info"
         },
+        "image": "https://withintenmiles.com/og/des-plaines-60016.png",
         "description": "Wednesday, November 04 2026 7:00pm - 7:30pm \n Best for families with children ages 2-7, but all are welcome. See full description for details. Registration…",
         "registrationOpens": "2026-10-21"
       }
@@ -2368,6 +2447,7 @@
           "name": "Indian Trails Public Library",
           "url": "https://indiantrails.libnet.info"
         },
+        "image": "https://withintenmiles.com/og/wheeling-60090.png",
         "description": "Wednesday, November 04 2026 7:00pm - 8:00pm \n Learn to create a basic spreadsheet using some of the most important tools in Excel. Intended for beginners and…"
       }
     },
@@ -2398,6 +2478,7 @@
           "name": "Indian Trails Public Library",
           "url": "https://indiantrails.libnet.info"
         },
+        "image": "https://withintenmiles.com/og/wheeling-60090.png",
         "description": "Wednesday, November 04 2026 7:00pm - 9:00pm \n The Board of Trustees meet for its monthly workshop and planning session. This meeting is open to the public.…"
       }
     },
@@ -2428,6 +2509,7 @@
           "name": "Metropolis Performing Arts Centre",
           "url": "https://www.metropolisarts.com"
         },
+        "image": "https://withintenmiles.com/og/arlington-heights-60005.png",
         "description": "Purchase TicketsThe Lightning Thief: Theatre for Young Audiences Edition The Percy Jackson Musical Performances: Thursday 11/5 at 10:00 am and 12:30 pm Friday…"
       }
     },
@@ -2458,6 +2540,7 @@
           "name": "Metropolis Performing Arts Centre",
           "url": "https://www.metropolisarts.com"
         },
+        "image": "https://withintenmiles.com/og/arlington-heights-60005.png",
         "description": "Purchase TicketsPerformance: November 8, 2026 at 10am ABOUT THE SHOW Dive into the Grecian Mythos in this collection of songs and scenes from musicals like…"
       }
     },
@@ -2489,6 +2572,7 @@
           "name": "Des Plaines Public Library",
           "url": "https://desplaines.libnet.info"
         },
+        "image": "https://withintenmiles.com/og/des-plaines-60016.png",
         "description": "Thursday, November 05 2026 9:15am - 12:15pm \n ESL (English as a Second Language) Class - Oakton College\n\n Teaches listening, speaking, reading, writing, and…"
       }
     },
@@ -2519,6 +2603,7 @@
           "name": "Mount Prospect Public Library",
           "url": "https://mppl.libnet.info"
         },
+        "image": "https://withintenmiles.com/og/mount-prospect-60056.png",
         "description": "Thursday, November 05 2026 9:30am - 10:00am \n A lifelong love of reading starts at birth! Join us for songs, rhymes, stories, and playtime made specially for…"
       }
     },
@@ -2549,6 +2634,7 @@
           "name": "Indian Trails Public Library",
           "url": "https://indiantrails.libnet.info"
         },
+        "image": "https://withintenmiles.com/og/wheeling-60090.png",
         "description": "Thursday, November 05 2026 9:30am - 12:30pm \n A representative is present to engage with the community, share important information relevant to residents and…"
       }
     },
@@ -2580,6 +2666,7 @@
           "name": "Des Plaines Public Library",
           "url": "https://desplaines.libnet.info"
         },
+        "image": "https://withintenmiles.com/og/des-plaines-60016.png",
         "description": "Thursday, November 05 2026 10:00am - 10:30am \n Ages 18-36 months. Drop-in at the Poet Tree Corner! Enjoy stories, songs, rhymes, movement, and more at Toddler…"
       }
     },
@@ -2611,6 +2698,7 @@
           "name": "Des Plaines Public Library",
           "url": "https://desplaines.libnet.info"
         },
+        "image": "https://withintenmiles.com/og/des-plaines-60016.png",
         "description": "Thursday, November 05 2026 10:00am - 2:00pm \n Community Blood Center Blood Drive sponsored by Representative Michelle Mussman, Senator Laura Murphy, and…"
       }
     },
@@ -2641,6 +2729,7 @@
           "name": "Indian Trails Public Library",
           "url": "https://indiantrails.libnet.info"
         },
+        "image": "https://withintenmiles.com/og/wheeling-60090.png",
         "description": "Thursday, November 05 2026 10:00am - 11:15am \n A resource services coordinator from OMNI will provide resources for the community. Una representante de OMNI…"
       }
     },
@@ -2671,6 +2760,7 @@
           "name": "Indian Trails Public Library",
           "url": "https://indiantrails.libnet.info"
         },
+        "image": "https://withintenmiles.com/og/wheeling-60090.png",
         "description": "Thursday, November 05 2026 10:00am - 2:00pm \n A social worker from the Village of Wheeling Social Services Division is available at the library each month to…"
       }
     },
@@ -2701,6 +2791,7 @@
           "name": "Mount Prospect Public Library",
           "url": "https://mppl.libnet.info"
         },
+        "image": "https://withintenmiles.com/og/mount-prospect-60056.png",
         "description": "Thursday, November 05 2026 10:30am - 11:00am \n Bring the whole family and join us for an interactive storytime with high-energy stories, songs, and activities."
       }
     },
@@ -2731,6 +2822,7 @@
           "name": "Mount Prospect Public Library",
           "url": "https://mppl.libnet.info"
         },
+        "image": "https://withintenmiles.com/og/mount-prospect-60056.png",
         "description": "Thursday, November 05 2026 2:00pm - 4:00pm \n Meet with representatives from the office of the 53rd District State Rep. Nicolle Grasse."
       }
     },
@@ -2762,6 +2854,7 @@
           "name": "Des Plaines Public Library",
           "url": "https://desplaines.libnet.info"
         },
+        "image": "https://withintenmiles.com/og/des-plaines-60016.png",
         "description": "Thursday, November 05 2026 4:00pm - 5:00pm \n Earn service hours by making uplifting cards for hospitalized kids! Materials will be provided. For teens in…"
       }
     },
@@ -2793,6 +2886,7 @@
           "name": "Des Plaines Public Library",
           "url": "https://desplaines.libnet.info"
         },
+        "image": "https://withintenmiles.com/og/des-plaines-60016.png",
         "description": "Thursday, November 05 2026 4:00pm - 5:00pm \n Come to this taste-test, you will be surprised by what awaits you!\nAges 9-12."
       }
     },
@@ -2823,6 +2917,7 @@
           "name": "Indian Trails Public Library",
           "url": "https://indiantrails.libnet.info"
         },
+        "image": "https://withintenmiles.com/og/wheeling-60090.png",
         "description": "Thursday, November 05 2026 4:00pm - 4:45pm \n Use your scientist skills to learn about pumpkins. R"
       }
     },
@@ -2854,6 +2949,7 @@
           "name": "Des Plaines Public Library",
           "url": "https://desplaines.libnet.info"
         },
+        "image": "https://withintenmiles.com/og/des-plaines-60016.png",
         "description": "Thursday, November 05 2026 5:00pm - 6:00pm \n Come in and get to know your teen librarians!"
       }
     },
@@ -2885,6 +2981,7 @@
           "name": "Des Plaines Public Library",
           "url": "https://desplaines.libnet.info"
         },
+        "image": "https://withintenmiles.com/og/des-plaines-60016.png",
         "description": "Thursday, November 05 2026 5:30pm - 7:30pm \n ¿Tiene alguna pregunta sobre tecnología o sobre cómo usar los servicios de la biblioteca? La asistencia se brinda…"
       }
     },
@@ -2915,6 +3012,7 @@
           "name": "Mount Prospect Public Library",
           "url": "https://mppl.libnet.info"
         },
+        "image": "https://withintenmiles.com/og/mount-prospect-60056.png",
         "description": "Thursday, November 05 2026 6:00pm - 7:00pm \n Combine art and technology to make paper circuit creations."
       }
     },
@@ -2945,6 +3043,7 @@
           "name": "Mount Prospect Public Library",
           "url": "https://mppl.libnet.info"
         },
+        "image": "https://withintenmiles.com/og/mount-prospect-60056.png",
         "description": "Thursday, November 05 2026 6:00pm - 7:00pm \n Jumpstart your job search with a virtual one-hour session with an experienced career coach."
       }
     },
@@ -2975,6 +3074,7 @@
           "name": "Mount Prospect Public Library",
           "url": "https://mppl.libnet.info"
         },
+        "image": "https://withintenmiles.com/og/mount-prospect-60056.png",
         "description": "Thursday, November 05 2026 6:00pm - 6:45pm \n Curious about using the library's 3D printing service? Explore the essentials needed to get started."
       }
     },
@@ -2998,6 +3098,7 @@
             "addressRegion": "IL"
           }
         },
+        "image": "https://withintenmiles.com/og/palatine-60067.png",
         "description": "All regular Board of Education meetings are held in the Anne Ko"
       }
     },
@@ -3028,6 +3129,7 @@
           "name": "Indian Trails Public Library",
           "url": "https://indiantrails.libnet.info"
         },
+        "image": "https://withintenmiles.com/og/wheeling-60090.png",
         "description": "Thursday, November 05 2026 6:00pm - 7:30pm \n Join fellow coloring enthusiasts in a relaxed environment where you can work at your own pace. Bring your own…"
       }
     },
@@ -3058,6 +3160,7 @@
           "name": "Indian Trails Public Library",
           "url": "https://indiantrails.libnet.info"
         },
+        "image": "https://withintenmiles.com/og/wheeling-60090.png",
         "description": "Thursday, November 05 2026 6:00pm - 6:30pm \n Not quite ready for bed? Relax with stories, songs and literacy activities. TR"
       }
     },
@@ -3089,6 +3192,7 @@
           "name": "Des Plaines Public Library",
           "url": "https://desplaines.libnet.info"
         },
+        "image": "https://withintenmiles.com/og/des-plaines-60016.png",
         "description": "Thursday, November 05 2026 6:30pm - 8:30pm \n Meet fellow writers, network, and meet your deadlines; bring your laptop and bring your inspiration!"
       }
     },
@@ -3119,6 +3223,7 @@
           "name": "Mount Prospect Public Library",
           "url": "https://mppl.libnet.info"
         },
+        "image": "https://withintenmiles.com/og/mount-prospect-60056.png",
         "description": "Thursday, November 05 2026 7:00pm - 8:30pm \n Bring your latest crochet or knit projects and share your enthusiasm with other needlecrafters."
       }
     },
@@ -3149,6 +3254,7 @@
           "name": "Mount Prospect Public Library",
           "url": "https://mppl.libnet.info"
         },
+        "image": "https://withintenmiles.com/og/mount-prospect-60056.png",
         "description": "Thursday, November 05 2026 7:00pm - 8:00pm \n Enjoy great books and craft beer? Join us at Whiskey Hill Brewery and Kitchen, 99 W. Prospect Ave., for a variety…"
       }
     },
@@ -3179,6 +3285,7 @@
           "name": "Mount Prospect Public Library",
           "url": "https://mppl.libnet.info"
         },
+        "image": "https://withintenmiles.com/og/mount-prospect-60056.png",
         "description": "Thursday, November 05 2026 7:00pm - 8:00pm \n Get inspired to create a winter garden with Horticulturist Heather Prince."
       }
     },
@@ -3208,6 +3315,7 @@
           "name": "Village of Wheeling",
           "url": "https://www.wheelingil.gov"
         },
+        "image": "https://withintenmiles.com/og/wheeling-60090.png",
         "description": "https://www.wheelingil.gov/calendar.aspx?EID=2052"
       }
     },
@@ -3238,6 +3346,7 @@
           "name": "Indian Trails Public Library",
           "url": "https://indiantrails.libnet.info"
         },
+        "image": "https://withintenmiles.com/og/wheeling-60090.png",
         "description": "Thursday, November 05 2026 7:00pm - 8:00pm \n Turn everyday glass into glowing works of art. Combine vibrant colors and Mod Podge to craft your very own…"
       }
     },
@@ -3268,6 +3377,7 @@
           "name": "Des Plaines Theatre",
           "url": "https://desplainestheatre.com"
         },
+        "image": "https://withintenmiles.com/og/des-plaines-60016.png",
         "description": "“Wheel of Fortune LIVE!” brings the thrill of the iconic TV game show to life, giving fans more access and more chances to win. Guests are randomly selected…"
       }
     },
@@ -3298,6 +3408,7 @@
           "name": "Des Plaines Theatre",
           "url": "https://desplainestheatre.com"
         },
+        "image": "https://withintenmiles.com/og/des-plaines-60016.png",
         "description": "Join us in our intimate Bourbon ‘N Brass Speakeasy, located on the 2nd floor of the Des Plaines Theatre, for an evening of Blues with Brandye Phillips! Food…"
       }
     },
@@ -3328,6 +3439,7 @@
           "name": "Mount Prospect Public Library",
           "url": "https://mppl.libnet.info"
         },
+        "image": "https://withintenmiles.com/og/mount-prospect-60056.png",
         "description": "Friday, November 06 2026 12:00am - 11:59pm \n Visit mppl.org to access library resources and digital materials anytime."
       }
     },
@@ -3358,6 +3470,7 @@
           "name": "Indian Trails Public Library",
           "url": "https://indiantrails.libnet.info"
         },
+        "image": "https://withintenmiles.com/og/wheeling-60090.png",
         "description": "Friday, November 06 2026 9:30am - 10:00am \n Stories, songs and fingerplays. TR"
       }
     },
@@ -3389,6 +3502,7 @@
           "name": "Des Plaines Public Library",
           "url": "https://desplaines.libnet.info"
         },
+        "image": "https://withintenmiles.com/og/des-plaines-60016.png",
         "description": "Friday, November 06 2026 10:00am - 11:00am \n To register, please contact Irene Tripkos at 847-789-5623. Verbal confirmation from Irene Tripkos is needed in…"
       }
     },
@@ -3419,6 +3533,7 @@
           "name": "Indian Trails Public Library",
           "url": "https://indiantrails.libnet.info"
         },
+        "image": "https://withintenmiles.com/og/wheeling-60090.png",
         "description": "Friday, November 06 2026 10:30am - 11:00am \n Stories, songs, fingerplays and movement activities. TR"
       }
     },
@@ -3450,6 +3565,7 @@
           "name": "Des Plaines Public Library",
           "url": "https://desplaines.libnet.info"
         },
+        "image": "https://withintenmiles.com/og/des-plaines-60016.png",
         "description": "Friday, November 06 2026 2:00pm - 3:30pm \n Helpful for older adults and empty nesters."
       }
     },
@@ -3473,6 +3589,7 @@
             "addressRegion": "IL"
           }
         },
+        "image": "https://withintenmiles.com/og/palatine-60067.png",
         "description": "NSSEO presents: NWSRANovember 11, 20266:00 pmPresented by: Nor"
       }
     },
@@ -3503,6 +3620,7 @@
           "name": "Indian Trails Public Library",
           "url": "https://indiantrails.libnet.info"
         },
+        "image": "https://withintenmiles.com/og/wheeling-60090.png",
         "description": "Friday, November 06 2026 6:00pm - 7:00pm \n Want to practice speaking and understanding English and improve your confidence in everyday communication? Join our…"
       }
     },
@@ -3533,6 +3651,7 @@
           "name": "Indian Trails Public Library",
           "url": "https://indiantrails.libnet.info"
         },
+        "image": "https://withintenmiles.com/og/wheeling-60090.png",
         "description": "Friday, November 06 2026 6:00pm - 7:30pm \n Spend time with your neighbors, enjoy traditional food, play games, and win prizes. Ven a compartir con tus…"
       }
     },
@@ -3564,6 +3683,7 @@
           "name": "Des Plaines Public Library",
           "url": "https://desplaines.libnet.info"
         },
+        "image": "https://withintenmiles.com/og/des-plaines-60016.png",
         "description": "Friday, November 06 2026 6:30pm - 8:15pm \n A free screening of the independent film The Invite.",
         "isAccessibleForFree": true
       }
@@ -3595,6 +3715,7 @@
           "name": "Des Plaines Theatre",
           "url": "https://desplainestheatre.com"
         },
+        "image": "https://withintenmiles.com/og/des-plaines-60016.png",
         "description": "Join us in our intimate Bourbon ‘N Brass Speakeasy, located on the 2nd floor of the Des Plaines Theatre, for an evening of Jazz with Michael Ross Band! Food…"
       }
     },
@@ -3624,6 +3745,7 @@
           "name": "Arlington Heights Park District",
           "url": "https://www.ahpd.org"
         },
+        "image": "https://withintenmiles.com/og/arlington-heights-60005.png",
         "description": "Pumpkins are 90% water, which makes them bad for landfills but great for soil and gardens! Bring your post-Halloween jack-o-lanterns, gourds, and pumpkins to…",
         "isAccessibleForFree": true
       }
@@ -3656,6 +3778,7 @@
           "name": "Des Plaines Public Library",
           "url": "https://desplaines.libnet.info"
         },
+        "image": "https://withintenmiles.com/og/des-plaines-60016.png",
         "description": "Saturday, November 07 2026 9:00am - 1:00pm \n Find out your starting score and identify your strengths and weaknesses by taking the ACT Practice Test presented…"
       }
     },
@@ -3685,6 +3808,7 @@
           "name": "the organiser",
           "url": "https://phspirateboosters.com"
         },
+        "image": "https://withintenmiles.com/og/palatine-60067.png",
         "description": "Over 150 vendors support the PHS community. 9 AM to 4 PM at Palatine High School, 1111 N. Rohlwing Road."
       }
     },
@@ -3714,6 +3838,7 @@
           "name": "the organiser",
           "url": "https://www.palatine.il.us"
         },
+        "image": "https://withintenmiles.com/og/palatine-60067.png",
         "description": "1st and 3rd Saturdays, 9 a.m. to noon, at the Palatine Train Station parking lot, November through April."
       }
     },
@@ -3743,6 +3868,7 @@
           "name": "Village of Palatine",
           "url": "https://www.palatine.il.us"
         },
+        "image": "https://withintenmiles.com/og/palatine-60067.png",
         "description": "The Pirates Boosters Craft Fair is well known as having a large"
       }
     },
@@ -3774,6 +3900,7 @@
           "name": "Des Plaines Public Library",
           "url": "https://desplaines.libnet.info"
         },
+        "image": "https://withintenmiles.com/og/des-plaines-60016.png",
         "description": "Saturday, November 07 2026 9:30am - 11:30am \n Barb 773-914-7405 or 847-566-5389"
       }
     },
@@ -3805,6 +3932,7 @@
           "name": "Des Plaines Public Library",
           "url": "https://desplaines.libnet.info"
         },
+        "image": "https://withintenmiles.com/og/des-plaines-60016.png",
         "description": "Saturday, November 07 2026 10:00am - 12:00pm \n Learn to draw the human body with a clothed model, located in The Canvas on the 4th floor. Drop in with no…"
       }
     },
@@ -3835,6 +3963,7 @@
           "name": "Mount Prospect Public Library",
           "url": "https://mppl.libnet.info"
         },
+        "image": "https://withintenmiles.com/og/mount-prospect-60056.png",
         "description": "Saturday, November 07 2026 10:00am - 11:30am \n Let's celebrate the joyful Festival of Lights with vibrant performances, crafts, and activities. Whether Diwali…"
       }
     },
@@ -3865,6 +3994,7 @@
           "name": "Mount Prospect Public Library",
           "url": "https://mppl.libnet.info"
         },
+        "image": "https://withintenmiles.com/og/mount-prospect-60056.png",
         "description": "Saturday, November 07 2026 10:00am - 12:00pm \n Celebrate Kindness Week in Mount Prospect, a celebration encouraging residents to see the good, be the good,…"
       }
     },
@@ -3895,6 +4025,7 @@
           "name": "Indian Trails Public Library",
           "url": "https://indiantrails.libnet.info"
         },
+        "image": "https://withintenmiles.com/og/wheeling-60090.png",
         "description": "Saturday, November 07 2026 10:00am - 10:30am \n Get your wiggles out with interactive stories, songs, and a focus on movement. TR"
       }
     },
@@ -3924,6 +4055,7 @@
           "name": "Arlington Heights Park District",
           "url": "https://www.ahpd.org"
         },
+        "image": "https://withintenmiles.com/og/arlington-heights-60005.png",
         "description": "You’re invited to the Grand Opening of the Recreation Park Community Center! Saturday, November 7 10:30AM-12PM The wait is finally over, and we are ready to…"
       }
     },
@@ -3955,6 +4087,7 @@
           "name": "Des Plaines Public Library",
           "url": "https://desplaines.libnet.info"
         },
+        "image": "https://withintenmiles.com/og/des-plaines-60016.png",
         "description": "Saturday, November 07 2026 10:30am - 11:30am \n Transform a plain glass plate into a stunning autumn accent using Mod Podge and fabric prints."
       }
     },
@@ -3985,6 +4118,7 @@
           "name": "Indian Trails Public Library",
           "url": "https://indiantrails.libnet.info"
         },
+        "image": "https://withintenmiles.com/og/wheeling-60090.png",
         "description": "Saturday, November 07 2026 1:00pm - 2:00pm \n Celebrate Diwali with Ajanta Chakraborty of Bollywood & Culture Groove. Through stories, vivid visuals and dance…"
       }
     },
@@ -4014,6 +4148,7 @@
           "name": "Mount Prospect Park District",
           "url": "https://www.mppd.org"
         },
+        "image": "https://withintenmiles.com/og/mount-prospect-60056.png",
         "description": "Mt. Prospect Community Band Fall Concert “Magical Places” Admission $5 at the door Location Trinity United Methodist Church (605 W. Golf Rd, Mount Prospect)"
       }
     },
@@ -4044,6 +4179,7 @@
           "name": "Des Plaines Theatre",
           "url": "https://desplainestheatre.com"
         },
+        "image": "https://withintenmiles.com/og/des-plaines-60016.png",
         "description": "Made In America is the most authentic tribute to the BIG DOG DADDY himself, Mr. Toby Keith. Their eleven-piece band recreates the energy, look, and feel of a…"
       }
     },
@@ -4074,6 +4210,7 @@
           "name": "Des Plaines Theatre",
           "url": "https://desplainestheatre.com"
         },
+        "image": "https://withintenmiles.com/og/des-plaines-60016.png",
         "description": "Join us in our intimate Bourbon ‘N Brass Speakeasy, located on the 2nd floor of the Des Plaines Theatre, for an evening of Jazz with The Bootleggers featuring…"
       }
     },
@@ -4104,6 +4241,7 @@
           "name": "Indian Trails Public Library",
           "url": "https://indiantrails.libnet.info"
         },
+        "image": "https://withintenmiles.com/og/wheeling-60090.png",
         "description": "Sunday, November 08 2026 12:15pm - 1:15pm \n Kickstart your career with a one-hour resume review with a career specialist. Resume Review and Career Coaching…"
       }
     },
@@ -4135,6 +4273,7 @@
           "name": "Des Plaines Public Library",
           "url": "https://desplaines.libnet.info"
         },
+        "image": "https://withintenmiles.com/og/des-plaines-60016.png",
         "description": "Sunday, November 08 2026 1:00pm - 3:00pm \n Novembers Journal & Planners Meetup will be Off Site - Paper Source."
       }
     },
@@ -4165,6 +4304,7 @@
           "name": "Indian Trails Public Library",
           "url": "https://indiantrails.libnet.info"
         },
+        "image": "https://withintenmiles.com/og/wheeling-60090.png",
         "description": "Sunday, November 08 2026 1:00pm - 1:45pm \n Have a basic question about your device\nand thinking of trying Cloud Library,\nHoopla or another library app? Talk…"
       }
     },
@@ -4196,6 +4336,7 @@
           "name": "Des Plaines Public Library",
           "url": "https://desplaines.libnet.info"
         },
+        "image": "https://withintenmiles.com/og/des-plaines-60016.png",
         "description": "Sunday, November 08 2026 2:00pm - 3:00pm \n The Saddle Shoe Sisters perform top hits from the 1940s - 1960s. Pure nostalgic fun."
       }
     },
@@ -4226,6 +4367,7 @@
           "name": "Des Plaines Theatre",
           "url": "https://desplainestheatre.com"
         },
+        "image": "https://withintenmiles.com/og/des-plaines-60016.png",
         "description": "Chicago’s Cabaret Queen Denise Tomasello celebrates decades of music and memories in an electrifying Las Vegas-style concert, with a never-before-seen video…"
       }
     },
@@ -4255,6 +4397,7 @@
           "name": "Village of Palatine",
           "url": "https://www.palatine.il.us"
         },
+        "image": "https://withintenmiles.com/og/palatine-60067.png",
         "description": "Palatine Concert Band - 2026 Fall Concert \"American Originals\""
       }
     },
@@ -4286,6 +4429,7 @@
           "name": "Des Plaines Public Library",
           "url": "https://desplaines.libnet.info"
         },
+        "image": "https://withintenmiles.com/og/des-plaines-60016.png",
         "description": "Monday, November 09 2026 12:00am - 11:59pm \n Take & Make Kits are fun crafts you can take home and make on your own time. Drop in to pick up your kit…"
       }
     },
@@ -4316,6 +4460,7 @@
           "name": "Mount Prospect Public Library",
           "url": "https://mppl.libnet.info"
         },
+        "image": "https://withintenmiles.com/og/mount-prospect-60056.png",
         "description": "Monday, November 09 2026 9:30am - 10:00am \n Bring the whole family and join us for an interactive storytime with high-energy stories, songs, and activities."
       }
     },
@@ -4347,6 +4492,7 @@
           "name": "Des Plaines Public Library",
           "url": "https://desplaines.libnet.info"
         },
+        "image": "https://withintenmiles.com/og/des-plaines-60016.png",
         "description": "Monday, November 09 2026 10:00am - 11:00am \n To register, please contact Irene Tripkos at 847-789-5623. Verbal confirmation from Irene Tripkos is needed in…"
       }
     },
@@ -4377,6 +4523,7 @@
           "name": "Mount Prospect Public Library",
           "url": "https://mppl.libnet.info"
         },
+        "image": "https://withintenmiles.com/og/mount-prospect-60056.png",
         "description": "Monday, November 09 2026 10:30am - 11:00am \n Grow your little learner's literacy and language skills at this playful storytime full of wiggles, wonder, and fun!"
       }
     },
@@ -4408,6 +4555,7 @@
           "name": "Des Plaines Public Library",
           "url": "https://desplaines.libnet.info"
         },
+        "image": "https://withintenmiles.com/og/des-plaines-60016.png",
         "description": "Monday, November 09 2026 1:00pm - 4:00pm \n Career & Job Counseling @ the library - One-on-one in-person appointments\n\nMeet with a career expert for resume…"
       }
     },
@@ -4439,6 +4587,7 @@
           "name": "Des Plaines Public Library",
           "url": "https://desplaines.libnet.info"
         },
+        "image": "https://withintenmiles.com/og/des-plaines-60016.png",
         "description": "Monday, November 09 2026 1:00pm - 2:00pm \n Des Plaines Community Partners Meeting"
       }
     },
@@ -4469,6 +4618,7 @@
           "name": "Indian Trails Public Library",
           "url": "https://indiantrails.libnet.info"
         },
+        "image": "https://withintenmiles.com/og/wheeling-60090.png",
         "description": "Monday, November 09 2026 2:00pm - 3:15pm \n Leslie Goddard will give a lecture for the 100th Anniversary of Route 66. This is not a historic portrayal. R"
       }
     },
@@ -4499,6 +4649,7 @@
           "name": "Indian Trails Public Library",
           "url": "https://indiantrails.libnet.info"
         },
+        "image": "https://withintenmiles.com/og/wheeling-60090.png",
         "description": "Monday, November 09 2026 4:00pm - 5:00pm \n Read a story to a licensed therapy dog in the library. Siblings and caregivers are asked to wait outside the…"
       }
     },
@@ -4529,6 +4680,7 @@
           "name": "Mount Prospect Public Library",
           "url": "https://mppl.libnet.info"
         },
+        "image": "https://withintenmiles.com/og/mount-prospect-60056.png",
         "description": "Monday, November 09 2026 4:30pm - 5:00pm \n Explore shapes and build 3-dimensional objects."
       }
     },
@@ -4560,6 +4712,7 @@
           "name": "Des Plaines Public Library",
           "url": "https://desplaines.libnet.info"
         },
+        "image": "https://withintenmiles.com/og/des-plaines-60016.png",
         "description": "Monday, November 09 2026 5:00pm - 6:00pm \n Want some career, college, or scholarship advice? Need some book recommendations? Maybe sit back, relax, and play…"
       }
     },
@@ -4590,6 +4743,7 @@
           "name": "Mount Prospect Public Library",
           "url": "https://mppl.libnet.info"
         },
+        "image": "https://withintenmiles.com/og/mount-prospect-60056.png",
         "description": "Monday, November 09 2026 5:00pm - 6:00pm \n Give back to the community and earn volunteer hours at the same time."
       }
     },
@@ -4620,6 +4774,7 @@
           "name": "Indian Trails Public Library",
           "url": "https://indiantrails.libnet.info"
         },
+        "image": "https://withintenmiles.com/og/wheeling-60090.png",
         "description": "Monday, November 09 2026 5:30pm - 6:30pm \n Import Thanksgiving images into Inkscape to laser engrave a custom coaster. R"
       }
     },
@@ -4651,6 +4806,7 @@
           "name": "Des Plaines Public Library",
           "url": "https://desplaines.libnet.info"
         },
+        "image": "https://withintenmiles.com/og/des-plaines-60016.png",
         "description": "Monday, November 09 2026 6:30pm - 8:30pm \n For more information, please call 773-743-8147."
       }
     },
@@ -4682,6 +4838,7 @@
           "name": "Des Plaines Public Library",
           "url": "https://desplaines.libnet.info"
         },
+        "image": "https://withintenmiles.com/og/des-plaines-60016.png",
         "description": "Monday, November 09 2026 6:30pm - 8:30pm \n Scott 847-985-6464"
       }
     },
@@ -4712,6 +4869,7 @@
           "name": "Mount Prospect Public Library",
           "url": "https://mppl.libnet.info"
         },
+        "image": "https://withintenmiles.com/og/mount-prospect-60056.png",
         "description": "Monday, November 09 2026 7:00pm - 8:00pm \n Join us for a discussion of \"Hello Beautiful\" by Ann Napolitano."
       }
     },
@@ -4742,6 +4900,7 @@
           "name": "Mount Prospect Public Library",
           "url": "https://mppl.libnet.info"
         },
+        "image": "https://withintenmiles.com/og/mount-prospect-60056.png",
         "description": "Monday, November 09 2026 7:00pm - 8:30pm \n Come learn about how the railroad has impacted the histories of Arlington Heights, Des Plaines, and Mount Prospect."
       }
     },
@@ -4772,6 +4931,7 @@
           "name": "Indian Trails Public Library",
           "url": "https://indiantrails.libnet.info"
         },
+        "image": "https://withintenmiles.com/og/wheeling-60090.png",
         "description": "Monday, November 09 2026 7:00pm - 8:30pm \n Roger Liska, professional genealogist, demonstrates the online resources and records available when discovering…"
       }
     },
@@ -4802,6 +4962,7 @@
           "name": "Indian Trails Public Library",
           "url": "https://indiantrails.libnet.info"
         },
+        "image": "https://withintenmiles.com/og/wheeling-60090.png",
         "description": "Monday, November 09 2026 7:00pm - 8:00pm \n If youre an expert or just starting out, join us for some D&D. Bring your own character sheet or pick up a…"
       }
     },
@@ -4832,6 +4993,7 @@
           "name": "Mount Prospect Public Library",
           "url": "https://mppl.libnet.info"
         },
+        "image": "https://withintenmiles.com/og/mount-prospect-60056.png",
         "description": "Tuesday, November 10 2026 12:00am - 11:59pm \n Bring a puzzle, take a puzzle! Tables will be set up in the lobby for folks to stop by to swap puzzles."
       }
     },
@@ -4863,6 +5025,7 @@
           "name": "Des Plaines Public Library",
           "url": "https://desplaines.libnet.info"
         },
+        "image": "https://withintenmiles.com/og/des-plaines-60016.png",
         "description": "Tuesday, November 10 2026 9:15am - 12:15pm \n For more information, please contact Oakton College at 847-635-1426"
       }
     },
@@ -4894,6 +5057,7 @@
           "name": "Des Plaines Public Library",
           "url": "https://desplaines.libnet.info"
         },
+        "image": "https://withintenmiles.com/og/des-plaines-60016.png",
         "description": "Tuesday, November 10 2026 9:15am - 12:15pm \n ESL (English as a Second Language) Class - Oakton College\n\n Teaches listening, speaking, reading, writing, and…"
       }
     },
@@ -4924,6 +5088,7 @@
           "name": "Mount Prospect Public Library",
           "url": "https://mppl.libnet.info"
         },
+        "image": "https://withintenmiles.com/og/mount-prospect-60056.png",
         "description": "Tuesday, November 10 2026 9:30am - 10:00am \n A lifelong love of reading starts at birth! Join us for songs, rhymes, stories, and playtime made specially for…"
       }
     },
@@ -4955,6 +5120,7 @@
           "name": "Des Plaines Public Library",
           "url": "https://desplaines.libnet.info"
         },
+        "image": "https://withintenmiles.com/og/des-plaines-60016.png",
         "description": "Tuesday, November 10 2026 10:00am - 11:30am \n Interested in using the machines in the brand new Canvas Makerspace? Des Plaines Public Library cardholders must…"
       }
     },
@@ -4986,6 +5152,7 @@
           "name": "Des Plaines Public Library",
           "url": "https://desplaines.libnet.info"
         },
+        "image": "https://withintenmiles.com/og/des-plaines-60016.png",
         "description": "Tuesday, November 10 2026 10:00am - 10:30am \n Ages 18-36 months. Drop-in at the Poet Tree Corner! Enjoy stories, songs, rhymes, movement, and more at Toddler…"
       }
     },
@@ -5017,6 +5184,7 @@
           "name": "Des Plaines Public Library",
           "url": "https://desplaines.libnet.info"
         },
+        "image": "https://withintenmiles.com/og/des-plaines-60016.png",
         "description": "Tuesday, November 10 2026 10:00am - 11:00am \n A staff member will lead a book discussion. Books are available at the 3rd floor info desk in the public library…"
       }
     },
@@ -5047,6 +5215,7 @@
           "name": "Indian Trails Public Library",
           "url": "https://indiantrails.libnet.info"
         },
+        "image": "https://withintenmiles.com/og/wheeling-60090.png",
         "description": "Tuesday, November 10 2026 10:00am - 10:30am \n Explore the world around us with stories, rhymes and lots of music and movement. TR"
       }
     },
@@ -5077,6 +5246,7 @@
           "name": "Mount Prospect Public Library",
           "url": "https://mppl.libnet.info"
         },
+        "image": "https://withintenmiles.com/og/mount-prospect-60056.png",
         "description": "Tuesday, November 10 2026 10:30am - 11:00am \n Bring the whole family and join us for an interactive storytime with high-energy stories, songs, and activities."
       }
     },
@@ -5107,6 +5277,7 @@
           "name": "Indian Trails Public Library",
           "url": "https://indiantrails.libnet.info"
         },
+        "image": "https://withintenmiles.com/og/wheeling-60090.png",
         "description": "Tuesday, November 10 2026 10:30am - 11:30am \n Registration and book pickup begins October 13. A book about murder, deception, and the pursuit of the truth. R"
       }
     },
@@ -5137,6 +5308,7 @@
           "name": "Mount Prospect Public Library",
           "url": "https://mppl.libnet.info"
         },
+        "image": "https://withintenmiles.com/og/mount-prospect-60056.png",
         "description": "Tuesday, November 10 2026 11:00am - 12:30pm \n Join Mike Gershbein from Very Smart People for a demonstration on iPhone and iPad basics."
       }
     },
@@ -5167,6 +5339,7 @@
           "name": "Indian Trails Public Library",
           "url": "https://indiantrails.libnet.info"
         },
+        "image": "https://withintenmiles.com/og/wheeling-60090.png",
         "description": "Tuesday, November 10 2026 11:00am - 12:00pm \n Learn how different grade art supplies affect watercolors and practice your professional skills using layering…"
       }
     },
@@ -5197,6 +5370,7 @@
           "name": "Mount Prospect Public Library",
           "url": "https://mppl.libnet.info"
         },
+        "image": "https://withintenmiles.com/og/mount-prospect-60056.png",
         "description": "Tuesday, November 10 2026 11:30am - 12:15pm \n Join us each week for storytime, sing-alongs, and developmental play experiences that encourage learning through…"
       }
     },
@@ -5227,6 +5401,7 @@
           "name": "Indian Trails Public Library",
           "url": "https://indiantrails.libnet.info"
         },
+        "image": "https://withintenmiles.com/og/wheeling-60090.png",
         "description": "Tuesday, November 10 2026 1:00pm - 2:00pm \n Discover the history of bagels with Jewish food enthusiast Arianna Brooks. Learn how bagels were shaped by…"
       }
     },
@@ -5257,6 +5432,7 @@
           "name": "Mount Prospect Public Library",
           "url": "https://mppl.libnet.info"
         },
+        "image": "https://withintenmiles.com/og/mount-prospect-60056.png",
         "description": "Tuesday, November 10 2026 1:30pm - 2:15pm \n Grow into a super reader through playful books and fun with friends! This storytime is the perfect fit for…"
       }
     },
@@ -5279,7 +5455,8 @@
             "addressLocality": "Mount Prospect",
             "addressRegion": "IL"
           }
-        }
+        },
+        "image": "https://withintenmiles.com/og/mount-prospect-60056.png"
       }
     },
     {
@@ -5309,6 +5486,7 @@
           "name": "Mount Prospect Public Library",
           "url": "https://mppl.libnet.info"
         },
+        "image": "https://withintenmiles.com/og/mount-prospect-60056.png",
         "description": "Tuesday, November 10 2026 4:00pm - 6:00pm \n Join us on an epic adventure and form a new heroic party to save the day!"
       }
     },
@@ -5339,6 +5517,7 @@
           "name": "Indian Trails Public Library",
           "url": "https://indiantrails.libnet.info"
         },
+        "image": "https://withintenmiles.com/og/wheeling-60090.png",
         "description": "Tuesday, November 10 2026 4:00pm - 6:00pm \n Chat with fellow creatives, get inspired or discover a new paper craft tool during this self-guided crafting…"
       }
     },
@@ -5369,6 +5548,7 @@
           "name": "Mount Prospect Public Library",
           "url": "https://mppl.libnet.info"
         },
+        "image": "https://withintenmiles.com/og/mount-prospect-60056.png",
         "description": "Tuesday, November 10 2026 4:30pm - 5:30pm \n Learn how to create objects using Tinkercad, a digital-design computer software."
       }
     },
@@ -5399,6 +5579,7 @@
           "name": "Indian Trails Public Library",
           "url": "https://indiantrails.libnet.info"
         },
+        "image": "https://withintenmiles.com/og/wheeling-60090.png",
         "description": "Tuesday, November 10 2026 4:30pm - 5:30pm \n Enjoy a relaxing time with friends and create \"unbe-weave-able\" reed baskets you can use to decorate your room. R"
       }
     },
@@ -5430,6 +5611,7 @@
           "name": "Des Plaines Public Library",
           "url": "https://desplaines.libnet.info"
         },
+        "image": "https://withintenmiles.com/og/des-plaines-60016.png",
         "description": "Tuesday, November 10 2026 5:30pm - 7:30pm \n Do you have a question about technology or how to use the library's services? Assistance is provided on a…"
       }
     },
@@ -5460,6 +5642,7 @@
           "name": "Indian Trails Public Library",
           "url": "https://indiantrails.libnet.info"
         },
+        "image": "https://withintenmiles.com/og/wheeling-60090.png",
         "description": "Tuesday, November 10 2026 5:30pm - 6:30pm \n Informal Spanish conversation session to practice and improve your speaking skills by talking to native…"
       }
     },
@@ -5490,6 +5673,7 @@
           "name": "Indian Trails Public Library",
           "url": "https://indiantrails.libnet.info"
         },
+        "image": "https://withintenmiles.com/og/wheeling-60090.png",
         "description": "Tuesday, November 10 2026 6:00pm - 7:00pm \n Kickstart your career with a one-hour resume review with a career specialist. Resume Review and Career Coaching…"
       }
     },
@@ -5521,6 +5705,7 @@
           "name": "Des Plaines Public Library",
           "url": "https://desplaines.libnet.info"
         },
+        "image": "https://withintenmiles.com/og/des-plaines-60016.png",
         "description": "Tuesday, November 10 2026 6:30pm - 7:30pm \n Monthly Meeting of the Friends of the Library"
       }
     },
@@ -5551,6 +5736,7 @@
           "name": "Mount Prospect Public Library",
           "url": "https://mppl.libnet.info"
         },
+        "image": "https://withintenmiles.com/og/mount-prospect-60056.png",
         "description": "Tuesday, November 10 2026 6:30pm - 8:00pm \n Puzzle solo or gather a team of up to four people and put your jigsaw puzzle skills to the test for a puzzling…"
       }
     },
@@ -5581,6 +5767,7 @@
           "name": "Indian Trails Public Library",
           "url": "https://indiantrails.libnet.info"
         },
+        "image": "https://withintenmiles.com/og/wheeling-60090.png",
         "description": "Tuesday, November 10 2026 7:00pm - 8:30pm \n Learn from Wright to Learn presenters on how to find out who's hiring, understand what employers are looking for…"
       }
     },
@@ -5612,6 +5799,7 @@
           "name": "Des Plaines Public Library",
           "url": "https://desplaines.libnet.info"
         },
+        "image": "https://withintenmiles.com/og/des-plaines-60016.png",
         "description": "Wednesday, November 11 2026 12:00am - 11:59pm \n Pick up a the special ingredient and join the program to share your cooking experience."
       }
     },
@@ -5634,7 +5822,8 @@
             "addressLocality": "Mount Prospect",
             "addressRegion": "IL"
           }
-        }
+        },
+        "image": "https://withintenmiles.com/og/mount-prospect-60056.png"
       }
     },
     {
@@ -5664,6 +5853,7 @@
           "name": "Indian Trails Public Library",
           "url": "https://indiantrails.libnet.info"
         },
+        "image": "https://withintenmiles.com/og/wheeling-60090.png",
         "description": "Wednesday, November 11 2026 9:00am - 12:00pm \n District 214 Read to Learn Adult Literacy Program."
       }
     },
@@ -5694,6 +5884,7 @@
           "name": "Mount Prospect Public Library",
           "url": "https://mppl.libnet.info"
         },
+        "image": "https://withintenmiles.com/og/mount-prospect-60056.png",
         "description": "Wednesday, November 11 2026 9:30am - 10:00am \n Grow your little learner's literacy and language skills at this playful storytime full of wiggles, wonder, and…"
       }
     },
@@ -5723,6 +5914,7 @@
           "name": "Arlington Heights Park District",
           "url": "https://www.ahpd.org"
         },
+        "image": "https://withintenmiles.com/og/arlington-heights-60005.png",
         "description": "Drop in anytime between 10AM-7PM to honor our Arlington Heights’ Veterans. View our current exhibit, “Stars & Stories: Arlington Heights’ Old Glory,” make a…"
       }
     },
@@ -5754,6 +5946,7 @@
           "name": "Des Plaines Public Library",
           "url": "https://desplaines.libnet.info"
         },
+        "image": "https://withintenmiles.com/og/des-plaines-60016.png",
         "description": "Wednesday, November 11 2026 10:00am - 11:00am \n To register, please contact Irene Tripkos at 847-789-5623. Verbal confirmation from Irene Tripkos is needed in…"
       }
     },
@@ -5777,6 +5970,7 @@
             "addressRegion": "IL"
           }
         },
+        "image": "https://withintenmiles.com/og/palatine-60067.png",
         "description": "Mark your calendar for an upcoming CCSD15 Job Fair!Date: Every"
       }
     },
@@ -5807,6 +6001,7 @@
           "name": "Mount Prospect Public Library",
           "url": "https://mppl.libnet.info"
         },
+        "image": "https://withintenmiles.com/og/mount-prospect-60056.png",
         "description": "Wednesday, November 11 2026 11:00am - 12:00pm \n Una clase virtual vía Zoom, de conversación, para hispanohablantes que buscan mejorar su inglés. \n\nA virtual…"
       }
     },
@@ -5837,6 +6032,7 @@
           "name": "Indian Trails Public Library",
           "url": "https://indiantrails.libnet.info"
         },
+        "image": "https://withintenmiles.com/og/wheeling-60090.png",
         "description": "Wednesday, November 11 2026 12:15pm - 2:00pm \n Honor the veterans in your life with a memorable afternoon of music, gratitude, and community."
       }
     },
@@ -5867,6 +6063,7 @@
           "name": "Mount Prospect Public Library",
           "url": "https://mppl.libnet.info"
         },
+        "image": "https://withintenmiles.com/og/mount-prospect-60056.png",
         "description": "Wednesday, November 11 2026 1:00pm - 2:00pm \n Join us for an eye-opening conversation with veteran journalist Paul Vigna as he explores the question: how did…"
       }
     },
@@ -5897,6 +6094,7 @@
           "name": "Indian Trails Public Library",
           "url": "https://indiantrails.libnet.info"
         },
+        "image": "https://withintenmiles.com/og/wheeling-60090.png",
         "description": "Wednesday, November 11 2026 1:00pm - 2:30pm \n Join fellow coloring page enthusiasts in a relaxed environment where you can work at your own pace. Bring your…"
       }
     },
@@ -5928,6 +6126,7 @@
           "name": "Des Plaines Public Library",
           "url": "https://desplaines.libnet.info"
         },
+        "image": "https://withintenmiles.com/og/des-plaines-60016.png",
         "description": "Wednesday, November 11 2026 1:30pm - 2:00pm \n Ages 3-5, but all are welcome. Storytime is a fun and play-filled way to foster a lifelong love of reading and…",
         "registrationOpens": "2026-10-21"
       }
@@ -5959,6 +6158,7 @@
           "name": "Indian Trails Public Library",
           "url": "https://indiantrails.libnet.info"
         },
+        "image": "https://withintenmiles.com/og/wheeling-60090.png",
         "description": "Wednesday, November 11 2026 4:00pm - 5:00pm \n Book pickup October 14-November 4 at the Youth Services Desk. Roz discovers that she is alone on a wild island…"
       }
     },
@@ -5989,6 +6189,7 @@
           "name": "Mount Prospect Public Library",
           "url": "https://mppl.libnet.info"
         },
+        "image": "https://withintenmiles.com/og/mount-prospect-60056.png",
         "description": "Wednesday, November 11 2026 4:30pm - 5:15pm \n Fizzy, frothy, or bubbly? What kind of colorful concoction will you mix today? Each month will feature different…"
       }
     },
@@ -6020,6 +6221,7 @@
           "name": "Des Plaines Public Library",
           "url": "https://desplaines.libnet.info"
         },
+        "image": "https://withintenmiles.com/og/des-plaines-60016.png",
         "description": "Wednesday, November 11 2026 5:00pm - 7:00pm \n Looking for a place for LGBTQ+ adults to hang out, create art, and connect? Bring your sketchbook or any art…"
       }
     },
@@ -6050,6 +6252,7 @@
           "name": "Mount Prospect Public Library",
           "url": "https://mppl.libnet.info"
         },
+        "image": "https://withintenmiles.com/og/mount-prospect-60056.png",
         "description": "Wednesday, November 11 2026 6:00pm - 7:00pm \n Looking to level up your iPhone photography skills? This beginner-friendly program will help you capture and…"
       }
     },
@@ -6079,6 +6282,7 @@
           "name": "Harper College",
           "url": "https://events.harpercollege.edu"
         },
+        "image": "https://withintenmiles.com/og/palatine-60067.png",
         "description": "A science-fiction adventure directed by Luc Besson that follows a futuristic taxi driver who becomes responsible for protecting a mysterious woman whose…",
         "isAccessibleForFree": true
       }
@@ -6110,6 +6314,7 @@
           "name": "Indian Trails Public Library",
           "url": "https://indiantrails.libnet.info"
         },
+        "image": "https://withintenmiles.com/og/wheeling-60090.png",
         "description": "Wednesday, November 11 2026 6:00pm - 7:30pm \n Create a one of a kind string of snowflakes using pour paint techniques. Dress to get messy. R"
       }
     },
@@ -6141,6 +6346,7 @@
           "name": "Des Plaines Public Library",
           "url": "https://desplaines.libnet.info"
         },
+        "image": "https://withintenmiles.com/og/des-plaines-60016.png",
         "description": "Wednesday, November 11 2026 7:00pm - 7:30pm \n Best for families with children ages 2-7, but all are welcome. See full description for details. Registration…",
         "registrationOpens": "2026-10-21"
       }
@@ -6165,6 +6371,7 @@
             "addressRegion": "IL"
           }
         },
+        "image": "https://withintenmiles.com/og/palatine-60067.png",
         "description": "All Board meeting Notices, Agendas, Attachments, and Minutes"
       }
     },
@@ -6195,6 +6402,7 @@
           "name": "Indian Trails Public Library",
           "url": "https://indiantrails.libnet.info"
         },
+        "image": "https://withintenmiles.com/og/wheeling-60090.png",
         "description": "Wednesday, November 11 2026 7:00pm - 8:30pm \n Foundation Board Meeting"
       }
     },
@@ -6225,6 +6433,7 @@
           "name": "Indian Trails Public Library",
           "url": "https://indiantrails.libnet.info"
         },
+        "image": "https://withintenmiles.com/og/wheeling-60090.png",
         "description": "Wednesday, November 11 2026 7:00pm - 8:00pm \n Create charts, tables, graphs, and conditional formatting using Sparklines. Intended for those with working…"
       }
     },
@@ -6255,6 +6464,7 @@
           "name": "Des Plaines Theatre",
           "url": "https://desplainestheatre.com"
         },
+        "image": "https://withintenmiles.com/og/des-plaines-60016.png",
         "description": "In a career spanning over 50 years, Engelbert has generated sales in excess of 140 million records, including 64 gold albums and 35 platinum, four Grammy…"
       }
     },
@@ -6286,6 +6496,7 @@
           "name": "Des Plaines Public Library",
           "url": "https://desplaines.libnet.info"
         },
+        "image": "https://withintenmiles.com/og/des-plaines-60016.png",
         "description": "Thursday, November 12 2026 9:15am - 12:15pm \n For more information, please contact Oakton College at 847-635-1426"
       }
     },
@@ -6317,6 +6528,7 @@
           "name": "Des Plaines Public Library",
           "url": "https://desplaines.libnet.info"
         },
+        "image": "https://withintenmiles.com/og/des-plaines-60016.png",
         "description": "Thursday, November 12 2026 9:15am - 12:15pm \n ESL (English as a Second Language) Class - Oakton College\n\n Teaches listening, speaking, reading, writing, and…"
       }
     },
@@ -6347,6 +6559,7 @@
           "name": "Mount Prospect Public Library",
           "url": "https://mppl.libnet.info"
         },
+        "image": "https://withintenmiles.com/og/mount-prospect-60056.png",
         "description": "Thursday, November 12 2026 9:30am - 10:00am \n A lifelong love of reading starts at birth! Join us for songs, rhymes, stories, and playtime made specially for…"
       }
     },
@@ -6377,6 +6590,7 @@
           "name": "Indian Trails Public Library",
           "url": "https://indiantrails.libnet.info"
         },
+        "image": "https://withintenmiles.com/og/wheeling-60090.png",
         "description": "Thursday, November 12 2026 9:30am - 11:00am \n Join unstructured playtime for you and baby. Enjoy coffee, a sweet treat and conversation while the little ones…"
       }
     },
@@ -6408,6 +6622,7 @@
           "name": "Des Plaines Public Library",
           "url": "https://desplaines.libnet.info"
         },
+        "image": "https://withintenmiles.com/og/des-plaines-60016.png",
         "description": "Thursday, November 12 2026 10:00am - 10:30am \n Ages 18-36 months. Drop-in at the Poet Tree Corner! Enjoy stories, songs, rhymes, movement, and more at Toddler…"
       }
     },
@@ -6438,6 +6653,7 @@
           "name": "Mount Prospect Public Library",
           "url": "https://mppl.libnet.info"
         },
+        "image": "https://withintenmiles.com/og/mount-prospect-60056.png",
         "description": "Thursday, November 12 2026 10:30am - 11:00am \n Bring the whole family and join us for an interactive storytime with high-energy stories, songs, and activities."
       }
     },
@@ -6468,6 +6684,7 @@
           "name": "Mount Prospect Public Library",
           "url": "https://mppl.libnet.info"
         },
+        "image": "https://withintenmiles.com/og/mount-prospect-60056.png",
         "description": "Thursday, November 12 2026 1:00pm - 2:00pm \n Prepare your palate for a vibrant culinary journey with star chef Pyet DeSpain as she presents her debut…"
       }
     },
@@ -6498,6 +6715,7 @@
           "name": "Mount Prospect Public Library",
           "url": "https://mppl.libnet.info"
         },
+        "image": "https://withintenmiles.com/og/mount-prospect-60056.png",
         "description": "Thursday, November 12 2026 2:00pm - 4:30pm \n Join us for a screening of Pressure."
       }
     },
@@ -6528,6 +6746,7 @@
           "name": "Mount Prospect Public Library",
           "url": "https://mppl.libnet.info"
         },
+        "image": "https://withintenmiles.com/og/mount-prospect-60056.png",
         "description": "Thursday, November 12 2026 2:00pm - 3:00pm \n Stop in and bring your questions about technology-related subjects such as smartphones, computers, email,…"
       }
     },
@@ -6558,6 +6777,7 @@
           "name": "Mount Prospect Public Library",
           "url": "https://mppl.libnet.info"
         },
+        "image": "https://withintenmiles.com/og/mount-prospect-60056.png",
         "description": "Thursday, November 12 2026 3:00pm - 4:00pm \n Local entrepreneurs and small businesses can get one-on-one support by meeting with an experienced mentor from…"
       }
     },
@@ -6589,6 +6809,7 @@
           "name": "Des Plaines Public Library",
           "url": "https://desplaines.libnet.info"
         },
+        "image": "https://withintenmiles.com/og/des-plaines-60016.png",
         "description": "Thursday, November 12 2026 4:00pm - 5:00pm \n Join us in The Commons to learn basic embroidery stitches!\nFor Teens 7th-12th grade."
       }
     },
@@ -6619,6 +6840,7 @@
           "name": "Mount Prospect Public Library",
           "url": "https://mppl.libnet.info"
         },
+        "image": "https://withintenmiles.com/og/mount-prospect-60056.png",
         "description": "Thursday, November 12 2026 4:30pm - 5:30pm \n Let's hang out and admire incredible animals together!"
       }
     },
@@ -6650,6 +6872,7 @@
           "name": "Des Plaines Public Library",
           "url": "https://desplaines.libnet.info"
         },
+        "image": "https://withintenmiles.com/og/des-plaines-60016.png",
         "description": "Thursday, November 12 2026 5:00pm - 6:00pm \n Come in and get to know your teen librarians!"
       }
     },
@@ -6681,6 +6904,7 @@
           "name": "Des Plaines Public Library",
           "url": "https://desplaines.libnet.info"
         },
+        "image": "https://withintenmiles.com/og/des-plaines-60016.png",
         "description": "Thursday, November 12 2026 6:00pm - 7:45pm \n The Des Plaines Lions Club meets monthly on the 2nd Thursday of the month from 6:00pm to 7:45pm.\nEmail:…"
       }
     },
@@ -6711,6 +6935,7 @@
           "name": "Mount Prospect Public Library",
           "url": "https://mppl.libnet.info"
         },
+        "image": "https://withintenmiles.com/og/mount-prospect-60056.png",
         "description": "Thursday, November 12 2026 6:00pm - 7:00pm \n Experience the thrill of telling a computer what to do and watching your instructions come to life!"
       }
     },
@@ -6734,6 +6959,7 @@
             "addressRegion": "IL"
           }
         },
+        "image": "https://withintenmiles.com/og/palatine-60067.png",
         "description": "BPAC invites all families to an inspiring workshop led by psych"
       }
     },
@@ -6765,6 +6991,7 @@
           "name": "Des Plaines Public Library",
           "url": "https://desplaines.libnet.info"
         },
+        "image": "https://withintenmiles.com/og/des-plaines-60016.png",
         "description": "Thursday, November 12 2026 6:30pm - 7:30pm \n Crear una cuenta de Gmail, aprenderás como usar y navegar Gmail. Buscar y organizar tu bandeja de entrada, crear…"
       }
     },
@@ -6794,6 +7021,7 @@
           "name": "Mount Prospect Park District",
           "url": "https://www.mppd.org"
         },
+        "image": "https://withintenmiles.com/og/mount-prospect-60056.png",
         "description": "Ladies Night Out: Harvest & Holiday A Mt. Prospect Parks Foundation Fundraiser! Gather friends and RELAX while you enjoy a beautiful and breathtaking flower…"
       }
     },
@@ -6825,6 +7053,7 @@
           "name": "Des Plaines Public Library",
           "url": "https://desplaines.libnet.info"
         },
+        "image": "https://withintenmiles.com/og/des-plaines-60016.png",
         "description": "Thursday, November 12 2026 7:00pm - 8:00pm \n Engage in a thoughtful conversation with Dr. Eve L. Ewing, author, educator, poet, and cultural organizer whose…"
       }
     },
@@ -6856,6 +7085,7 @@
           "name": "Des Plaines Public Library",
           "url": "https://desplaines.libnet.info"
         },
+        "image": "https://withintenmiles.com/og/des-plaines-60016.png",
         "description": "Thursday, November 12 2026 7:00pm - 8:30pm \n Learn how the railroad and access to it shaped the development of Arlington Heights, Des Plaines, and Mount…"
       }
     },
@@ -6886,6 +7116,7 @@
           "name": "Mount Prospect Public Library",
           "url": "https://mppl.libnet.info"
         },
+        "image": "https://withintenmiles.com/og/mount-prospect-60056.png",
         "description": "Thursday, November 12 2026 7:00pm - 8:00pm \n Join other readers in their 20s and 30s to discuss \"Worry\" by Alexandra Tanner."
       }
     },
@@ -6916,6 +7147,7 @@
           "name": "Indian Trails Public Library",
           "url": "https://indiantrails.libnet.info"
         },
+        "image": "https://withintenmiles.com/og/wheeling-60090.png",
         "description": "Thursday, November 12 2026 7:00pm - 8:00pm \n Bring the cozy vibes of autumn into your routine. Blend warm seasonal scents, gorgeous fall colors, and custom…"
       }
     },
@@ -6946,6 +7178,7 @@
           "name": "Indian Trails Public Library",
           "url": "https://indiantrails.libnet.info"
         },
+        "image": "https://withintenmiles.com/og/wheeling-60090.png",
         "description": "Thursday, November 12 2026 7:00pm - 8:00pm \n Engage in an important and thoughtful conversation with Dr. Eve L. Ewing, acclaimed author, educator, poet and…"
       }
     },
@@ -6976,6 +7209,7 @@
           "name": "Des Plaines Theatre",
           "url": "https://desplainestheatre.com"
         },
+        "image": "https://withintenmiles.com/og/des-plaines-60016.png",
         "description": "Jason Bonham always finds himself at home behind the drumkit. From this spot, he has anchored the tempo for a myriad of the most legendary artists of…"
       }
     },
@@ -7006,6 +7240,7 @@
           "name": "Des Plaines Theatre",
           "url": "https://desplainestheatre.com"
         },
+        "image": "https://withintenmiles.com/og/des-plaines-60016.png",
         "description": "Join us in our intimate Bourbon ‘N Brass Speakeasy, located on the 2nd floor of the Des Plaines Theatre, for an evening of Blues with Sean McKee Band! Food…"
       }
     }

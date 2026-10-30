@@ -2,7 +2,7 @@
   "@context": "https://schema.org",
   "@type": "ItemList",
   "name": "Upcoming events in Arlington Heights — Within Ten",
-  "dateModified": "2026-10-30T06:00:18+00:00",
+  "dateModified": "2026-10-30T06:12:02+00:00",
   "numberOfItems": 8,
   "itemListElement": [
     {
@@ -31,7 +31,8 @@
           "@type": "Organization",
           "name": "Arlington Heights Memorial Library",
           "url": "https://www.ahml.info"
-        }
+        },
+        "image": "https://withintenmiles.com/og/arlington-heights-60005.png"
       }
     },
     {
@@ -61,6 +62,7 @@
           "name": "Metropolis Performing Arts Centre",
           "url": "https://www.metropolisarts.com"
         },
+        "image": "https://withintenmiles.com/og/arlington-heights-60005.png",
         "description": "Purchase Tickets October 30th, 2026: 7:30 PM October 31st, 2026: 7:30 PM Tickets: $40 ABOUT THE SHOW: A little ROCK, a little HORROR, a lot of Halloween fun,…"
       }
     },
@@ -90,7 +92,8 @@
           "@type": "Organization",
           "name": "Arlington Heights Memorial Library",
           "url": "https://www.ahml.info"
-        }
+        },
+        "image": "https://withintenmiles.com/og/arlington-heights-60005.png"
       }
     },
     {
@@ -120,6 +123,7 @@
           "name": "Metropolis Performing Arts Centre",
           "url": "https://www.metropolisarts.com"
         },
+        "image": "https://withintenmiles.com/og/arlington-heights-60005.png",
         "description": "Purchase TicketsThe Lightning Thief: Theatre for Young Audiences Edition The Percy Jackson Musical Performances: Thursday 11/5 at 10:00 am and 12:30 pm Friday…"
       }
     },
@@ -150,6 +154,7 @@
           "name": "Metropolis Performing Arts Centre",
           "url": "https://www.metropolisarts.com"
         },
+        "image": "https://withintenmiles.com/og/arlington-heights-60005.png",
         "description": "Purchase TicketsPerformance: November 8, 2026 at 10am ABOUT THE SHOW Dive into the Grecian Mythos in this collection of songs and scenes from musicals like…"
       }
     },
@@ -179,6 +184,7 @@
           "name": "Arlington Heights Park District",
           "url": "https://www.ahpd.org"
         },
+        "image": "https://withintenmiles.com/og/arlington-heights-60005.png",
         "description": "Pumpkins are 90% water, which makes them bad for landfills but great for soil and gardens! Bring your post-Halloween jack-o-lanterns, gourds, and pumpkins to…",
         "isAccessibleForFree": true
       }
@@ -209,6 +215,7 @@
           "name": "Arlington Heights Park District",
           "url": "https://www.ahpd.org"
         },
+        "image": "https://withintenmiles.com/og/arlington-heights-60005.png",
         "description": "You’re invited to the Grand Opening of the Recreation Park Community Center! Saturday, November 7 10:30AM-12PM The wait is finally over, and we are ready to…"
       }
     },
@@ -238,6 +245,7 @@
           "name": "Arlington Heights Park District",
           "url": "https://www.ahpd.org"
         },
+        "image": "https://withintenmiles.com/og/arlington-heights-60005.png",
         "description": "Drop in anytime between 10AM-7PM to honor our Arlington Heights’ Veterans. View our current exhibit, “Stars & Stories: Arlington Heights’ Old Glory,” make a…"
       }
     }
