@@ -220,10 +220,11 @@ doesn't re-suggest something already shipped.
 
 **Build queue (by deadline; refreshed by the research loop, item 346).**
 Pick from the top unless the owner has flagged something else:
+0. **419** (the preview the fair email links to shows a generic card and the wrong price; fix before the owner sends block 1 this weekend).
 0. **416** (steps 1-2 done, measuring until about Nov 13; earlier note: step 1: round-24 probes for the candidates' feeds are in `config/url_probes.yaml` (egvpl.libnet.info, rmlib.libnet.info, elkgroveparks.org found by search; no Rolling Meadows park district calendar found); next: read the answers, then write the `_candidate-*.yaml` shadow files and the counts file). **417** with it.
 3. **390**: promo receipts.
 4. **328** (probe first), then **325** (by Nov 15), then **385** (holiday
-   creatives, from Nov 1), **397** (Palatine winter market), **311** (winter outdoors, by Dec 15), **398**, then the rest by priority.
+   creatives, from Nov 1), **397** (Palatine winter market), **311** (winter outdoors, by Dec 15), **398**, **420, 421** (dentist and credit-union sponsor products), then the rest by priority.
 
 #### Needs Ryan
 
@@ -18837,6 +18838,97 @@ event platforms of the neighbouring towns** (two on the site's existing
 LibNet adapter, one park district on *The Events Calendar*), **what Elk
 Grove Village and Rolling Meadows would add**, and the design/UX angle
 **what a sixth town does to the email**.
+
+
+#### Research pass 2026-10-30, evening (hundred-and-thirteenth pass)
+
+Today the build loop shipped item 418 (the email scales to six towns) and
+step 2 of item 416. The two candidate towns are now **shadow-measured**:
+after the first day, **Elk Grove Village** shows 44 attendable dated
+events (14 family) and **Rolling Meadows** 14 (6 family), from their
+libraries alone so far. Measurement runs to about Nov 13. With the
+outreach batch sendable, this pass follows its links to the page a
+prospect lands on, and researches two **sponsor categories** the plan
+names or implies but has never priced: pediatric dentists and credit
+unions.
+
+| Angle | What it is / what we found | Why it matters here |
+|---|---|---|
+| **`/sponsor/preview/` as the PHS Pirate Boosters would see it (design/UX)** | Opened from block 1's link (`?name=PHS+Pirate+Boosters&town=Palatine`). It shows a *"Preview, not live"* ribbon and a Featured card. But the card reads **"Your event's date / PHS Pirate Boosters / Your one-line blurb goes here"**, generic, although the batch knows the event is the **Fall Craft Fair, Sat Nov 7, Palatine High School**. The price line says **"$20 one-time"** while the email offers it **free** under the founding offer. The "real listings" under it are **"Curbside Leaf Collection"** and **"Village Trick-or-Treating Hours"**, which are notices, not events (and the second is past on Sunday). It also shows a **Weekly Spot** section, which a booster club will never buy | The preview is the outreach email's whole proof. A generic card, a price that contradicts the email, and leaf-collection neighbours undo the email's careful work at exactly the moment the volunteer is deciding (item 419) |
+| **Pediatric dentists and orthodontists** (Macaroni KID franchise sponsorship calls; dental community-marketing guides from Hip Agency and Dental Marketing Guy; a practice's YMCA partnership) | Macaroni KID editions sell a **"Tooth Fairy certificate" sponsorship**: a printable certificate families download, carrying **one dentist or orthodontist per area**, sold as an exclusive. Dental marketing guides tell practices to plan a **yearly community calendar** and to pick sponsorships aligned to **families with children**. Practices partner with YMCAs and schools at named sponsorship levels | `BUSINESS_PLAN.md` names *"pediatric dentist"* as the first example sponsor, and no product has been built for one. A printable that parents actually use (*"tooth fairy certificate printable"* is a perennial search), with one practice per town, is an **annual, low-touch** product, which is the business plan's preferred shape (item 420) |
+| **Credit unions as local sponsors** (CUInsight releases; Advia Credit Union's community-events page; Patch items on Consumers Credit Union; University of Illinois Community CU's sponsorship form) | Illinois credit unions sponsor **free community events** as part of their mission (Advia sponsors Mundelein's *Park on Park*; Consumers CU reported a dozen-plus festivals and over $20,000 in a year), usually through an **online sponsorship-request form**, first come, first served | A credit union with branches in these towns is a natural **season sponsor** for a free civic page: `/santa/`, the holiday lights tour (item 326) or `/holidays/`. The request form is a **known, low-effort path**: no cold email, just the form they publish. OpenStreetMap can list local branches (item 421) |
+
+#### P1 (new)
+
+419. **Make the prospect's preview show their own event, at the offered
+     price, among real events.** Build loop, `/sponsor/preview/` and
+     `outreach_batch.py`:
+
+     - The batch adds **`event`, `date`, `venue`** to each preview link
+       (URL-encoded, escaped as text on the page). The Featured card then
+       reads *"Sat Nov 7 · Fall Craft Fair · Palatine High School,
+       Presented by PHS Pirate Boosters"*.
+     - While item 388's founding offer has spots left, the price line reads
+       ***"Free (founding offer, N of 5 left), then $20"***, matching the
+       email.
+     - The **neighbouring cards** are the town's top picks for the event's
+       weekend (item 380's quality floor), never notices like leaf pickup
+       or trick-or-treat hours, and never past events.
+     - With **`kind=fair` or `kind=warm`** in the link, hide the Weekly Spot
+       section. Businesses (`kind=biz`, the default) see both.
+
+     Tests: the card shows the passed event fields escaped, the founding
+     line appears only while spots remain, no notice-type entry appears as
+     a neighbour, and `kind=fair` hides the Weekly Spot.
+
+#### P2 (new)
+
+420. **A printable "Tooth Fairy" certificate, presented by one pediatric
+     dentist per town.** Build loop plus a new tier:
+
+     - A static, printable **`/tooth-fairy/`** page: a Letter-size
+       certificate with a blank name line, date and town, designed with the
+       flyer renderer's print CSS (item 320) and no JavaScript.
+     - A **"Presented by [practice]"** line per town, so the Mount Prospect
+       version carries the Mount Prospect sponsor. Unsponsored towns show
+       *"Your practice here, see /sponsor/"* only on the sponsor page's
+       example, never on the printable itself.
+     - Add a tier to `SPONSOR_TIERS`: ***"Tooth Fairy certificate, one
+       practice per town, $180/year"***, with a `payment_links.tooth_fairy`
+       slot.
+     - Add pediatric dental and orthodontic practices from OpenStreetMap
+       (`healthcare=dentist`, names containing *pediatric, kids,
+       children's, orthodont*) to the prospects, and an
+       `OUTREACH_TEMPLATES.md` **§15a** that links the printable with their
+       name already in the footer via the preview mechanism (item 419).
+
+     Tests: the printable fits one page, the sponsor line comes from
+     config, and no unsponsored placeholder prints.
+
+421. **Credit unions as season sponsors, through their own request
+     forms.** Build loop:
+
+     - Add `amenity=bank` branches whose name contains *Credit Union* to
+       the OpenStreetMap prospects as a **"Credit unions"** section.
+     - For each, add the credit union's **public sponsorship-request page**
+       to `config/outreach_contacts.yaml` (role URL with source, per item
+       374) via URL probe.
+     - Add `OUTREACH_TEMPLATES.md` **§16**, which the owner pastes into
+       that form: *"Season sponsor of a free civic page that families use:
+       Santa near you (Nov 15 – Dec 24) or the holiday lights tour (Nov 27
+       – Jan 1), labelled 'Presented by [credit union]', $200 for the
+       season."*
+
+     It enters the outreach batch only after the fair and warm blocks,
+     within the eight-message cap.
+
+Competitors reviewed this pass: **Macaroni KID's Tooth Fairy certificate
+sponsorship** (one dentist per area), **dental and orthodontic
+community-marketing guides**, and **Illinois credit unions' community
+sponsorships** (Advia, Consumers, U of I Community CU). The design/UX
+angle is **the sponsor preview page as a prospect would see it**: a
+generic card, a price that contradicts the email, and notices as
+neighbours.
 
 
 ## Working agreements for autonomous iteration
