@@ -2,102 +2,12 @@
   "@context": "https://schema.org",
   "@type": "ItemList",
   "name": "Upcoming events in Mount Prospect — Within Ten",
-  "dateModified": "2026-10-29T22:03:06+00:00",
-  "numberOfItems": 61,
+  "dateModified": "2026-10-30T06:00:18+00:00",
+  "numberOfItems": 68,
   "itemListElement": [
     {
       "@type": "ListItem",
       "position": 1,
-      "item": {
-        "@type": "Event",
-        "name": "Halloween Storytime",
-        "startDate": "2026-10-29T10:00:00-05:00",
-        "url": "https://withintenmiles.com/mount-prospect-60056/#ev-halloween-storytime-2026-10-29",
-        "eventStatus": "https://schema.org/EventScheduled",
-        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "location": {
-          "@type": "Place",
-          "name": "Mount Prospect Public Library",
-          "address": {
-            "@type": "PostalAddress",
-            "addressCountry": "US",
-            "addressLocality": "Mount Prospect",
-            "addressRegion": "IL",
-            "streetAddress": "125 S Emerson St"
-          }
-        },
-        "sameAs": "https://mppl.libnet.info/event/16553734",
-        "organizer": {
-          "@type": "Organization",
-          "name": "Mount Prospect Public Library",
-          "url": "https://mppl.libnet.info"
-        },
-        "description": "Thursday, October 29 2026 10:00am - 11:00am \n This special Halloween-themed storytime is packed with pumpkins, bats, and trick-or-treat fun!"
-      }
-    },
-    {
-      "@type": "ListItem",
-      "position": 2,
-      "item": {
-        "@type": "Event",
-        "name": "Tech Playground",
-        "startDate": "2026-10-29T18:00:00-05:00",
-        "url": "https://withintenmiles.com/mount-prospect-60056/#ev-tech-playground-2026-10-29",
-        "eventStatus": "https://schema.org/EventScheduled",
-        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "location": {
-          "@type": "Place",
-          "name": "Mount Prospect Public Library",
-          "address": {
-            "@type": "PostalAddress",
-            "addressCountry": "US",
-            "addressLocality": "Mount Prospect",
-            "addressRegion": "IL",
-            "streetAddress": "125 S Emerson St"
-          }
-        },
-        "sameAs": "https://mppl.libnet.info/event/16391957",
-        "organizer": {
-          "@type": "Organization",
-          "name": "Mount Prospect Public Library",
-          "url": "https://mppl.libnet.info"
-        },
-        "description": "Thursday, October 29 2026 6:00pm - 7:00pm \n Be a tech explorer and try out STEAM toys at the library."
-      }
-    },
-    {
-      "@type": "ListItem",
-      "position": 3,
-      "item": {
-        "@type": "Event",
-        "name": "Sailing Bright Eternity",
-        "startDate": "2026-10-29T19:00:00-05:00",
-        "url": "https://withintenmiles.com/mount-prospect-60056/#ev-sailing-bright-eternity-2026-10-29",
-        "eventStatus": "https://schema.org/EventScheduled",
-        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "location": {
-          "@type": "Place",
-          "name": "Mount Prospect Public Library",
-          "address": {
-            "@type": "PostalAddress",
-            "addressCountry": "US",
-            "addressLocality": "Mount Prospect",
-            "addressRegion": "IL",
-            "streetAddress": "125 S Emerson St"
-          }
-        },
-        "sameAs": "https://mppl.libnet.info/event/16949245",
-        "organizer": {
-          "@type": "Organization",
-          "name": "Mount Prospect Public Library",
-          "url": "https://mppl.libnet.info"
-        },
-        "description": "Thursday, October 29 2026 7:00pm - 8:00pm \n Astrophysicist Shane L. Larson will explore how science fiction depicts star travel in books and movies, the true…"
-      }
-    },
-    {
-      "@type": "ListItem",
-      "position": 4,
       "item": {
         "@type": "Event",
         "name": "Calavera Creations",
@@ -127,7 +37,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 5,
+      "position": 2,
       "item": {
         "@type": "Event",
         "name": "Digitizing VHS Tapes",
@@ -157,7 +67,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 6,
+      "position": 3,
       "item": {
         "@type": "Event",
         "name": "Adult BookFix: Complicated Relationships",
@@ -187,7 +97,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 7,
+      "position": 4,
       "item": {
         "@type": "Event",
         "name": "Crafts-to-Go Kits",
@@ -217,7 +127,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 8,
+      "position": 5,
       "item": {
         "@type": "Event",
         "name": "Family Reading Night Kits",
@@ -247,7 +157,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 9,
+      "position": 6,
       "item": {
         "@type": "Event",
         "name": "Student Non-Attendance / Conferences",
@@ -269,7 +179,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 10,
+      "position": 7,
       "item": {
         "@type": "Event",
         "name": "AARP Driver Safety Course",
@@ -299,7 +209,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 11,
+      "position": 8,
       "item": {
         "@type": "Event",
         "name": "Family Storytime",
@@ -329,7 +239,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 12,
+      "position": 9,
       "item": {
         "@type": "Event",
         "name": "Toddler Storytime",
@@ -359,7 +269,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 13,
+      "position": 10,
       "item": {
         "@type": "Event",
         "name": "Night Off? Game On!",
@@ -389,7 +299,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 14,
+      "position": 11,
       "item": {
         "@type": "Event",
         "name": "Student and Staff Non-Attendance/Election Day",
@@ -411,7 +321,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 15,
+      "position": 12,
       "item": {
         "@type": "Event",
         "name": "AARP Driver Safety Course",
@@ -441,7 +351,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 16,
+      "position": 13,
       "item": {
         "@type": "Event",
         "name": "Cardboard Construction Workshop",
@@ -471,7 +381,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 17,
+      "position": 14,
       "item": {
         "@type": "Event",
         "name": "Baby Storytime",
@@ -501,7 +411,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 18,
+      "position": 15,
       "item": {
         "@type": "Event",
         "name": "Family Storytime",
@@ -531,7 +441,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 19,
+      "position": 16,
       "item": {
         "@type": "Event",
         "name": "Play and Learn",
@@ -561,7 +471,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 20,
+      "position": 17,
       "item": {
         "@type": "Event",
         "name": "Reclaiming Your Inner Wisdom",
@@ -591,7 +501,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 21,
+      "position": 18,
       "item": {
         "@type": "Event",
         "name": "Big Kids Storytime",
@@ -621,7 +531,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 22,
+      "position": 19,
       "item": {
         "@type": "Event",
         "name": "Community Blood Drive",
@@ -651,7 +561,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 23,
+      "position": 20,
       "item": {
         "@type": "Event",
         "name": "Toddler Storytime",
@@ -681,7 +591,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 24,
+      "position": 21,
       "item": {
         "@type": "Event",
         "name": "Drop-In Tech Help",
@@ -711,7 +621,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 25,
+      "position": 22,
       "item": {
         "@type": "Event",
         "name": "Wednesday Morning Book Group",
@@ -741,7 +651,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 26,
+      "position": 23,
       "item": {
         "@type": "Event",
         "name": "Make and Meet With Karla Arenas Valenti",
@@ -771,7 +681,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 27,
+      "position": 24,
       "item": {
         "@type": "Event",
         "name": "Baby Storytime",
@@ -801,7 +711,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 28,
+      "position": 25,
       "item": {
         "@type": "Event",
         "name": "Family Storytime",
@@ -831,7 +741,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 29,
+      "position": 26,
       "item": {
         "@type": "Event",
         "name": "Elected Officials Office Hours",
@@ -861,7 +771,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 30,
+      "position": 27,
       "item": {
         "@type": "Event",
         "name": "Paper Circuits Workshop",
@@ -891,7 +801,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 31,
+      "position": 28,
       "item": {
         "@type": "Event",
         "name": "Career Coaching Appointment",
@@ -921,7 +831,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 32,
+      "position": 29,
       "item": {
         "@type": "Event",
         "name": "3D Printing Orientation",
@@ -951,7 +861,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 33,
+      "position": 30,
       "item": {
         "@type": "Event",
         "name": "Drop-In Crochet and Knit Group",
@@ -981,7 +891,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 34,
+      "position": 31,
       "item": {
         "@type": "Event",
         "name": "Books and Brews",
@@ -1011,7 +921,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 35,
+      "position": 32,
       "item": {
         "@type": "Event",
         "name": "Winterscaping",
@@ -1041,7 +951,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 36,
+      "position": 33,
       "item": {
         "@type": "Event",
         "name": "Library Closed for Staff Training",
@@ -1071,7 +981,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 37,
+      "position": 34,
       "item": {
         "@type": "Event",
         "name": "Diwali Party",
@@ -1101,7 +1011,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 38,
+      "position": 35,
       "item": {
         "@type": "Event",
         "name": "Kindness Week in Mount Prospect Kickoff Event",
@@ -1131,7 +1041,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 39,
+      "position": 36,
       "item": {
         "@type": "Event",
         "name": "MPCB Fall Concert: Magical Places",
@@ -1160,7 +1070,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 40,
+      "position": 37,
       "item": {
         "@type": "Event",
         "name": "Family Storytime",
@@ -1190,7 +1100,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 41,
+      "position": 38,
       "item": {
         "@type": "Event",
         "name": "Toddler Storytime",
@@ -1220,7 +1130,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 42,
+      "position": 39,
       "item": {
         "@type": "Event",
         "name": "Shapes Workshop",
@@ -1250,7 +1160,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 43,
+      "position": 40,
       "item": {
         "@type": "Event",
         "name": "Teen Volunteering",
@@ -1280,7 +1190,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 44,
+      "position": 41,
       "item": {
         "@type": "Event",
         "name": "Monday Night Book Group",
@@ -1310,7 +1220,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 45,
+      "position": 42,
       "item": {
         "@type": "Event",
         "name": "Railroad Ties",
@@ -1340,7 +1250,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 46,
+      "position": 43,
       "item": {
         "@type": "Event",
         "name": "Puzzle Swap",
@@ -1370,7 +1280,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 47,
+      "position": 44,
       "item": {
         "@type": "Event",
         "name": "Baby Storytime",
@@ -1400,7 +1310,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 48,
+      "position": 45,
       "item": {
         "@type": "Event",
         "name": "Family Storytime",
@@ -1430,7 +1340,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 49,
+      "position": 46,
       "item": {
         "@type": "Event",
         "name": "iPhone and iPad Basics",
@@ -1460,7 +1370,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 50,
+      "position": 47,
       "item": {
         "@type": "Event",
         "name": "Play and Learn",
@@ -1490,7 +1400,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 51,
+      "position": 48,
       "item": {
         "@type": "Event",
         "name": "Big Kids Storytime",
@@ -1520,7 +1430,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 52,
+      "position": 49,
       "item": {
         "@type": "Event",
         "name": "Playground Community Event",
@@ -1542,7 +1452,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 53,
+      "position": 50,
       "item": {
         "@type": "Event",
         "name": "Dungeons & Dragons",
@@ -1572,7 +1482,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 54,
+      "position": 51,
       "item": {
         "@type": "Event",
         "name": "3D Printing for Kids: Learn Tinkercad",
@@ -1602,7 +1512,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 55,
+      "position": 52,
       "item": {
         "@type": "Event",
         "name": "Jigsaw Puzzle Competition",
@@ -1632,7 +1542,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 56,
+      "position": 53,
       "item": {
         "@type": "Event",
         "name": "School Psychologist Day",
@@ -1654,7 +1564,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 57,
+      "position": 54,
       "item": {
         "@type": "Event",
         "name": "Toddler Storytime",
@@ -1684,7 +1594,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 58,
+      "position": 55,
       "item": {
         "@type": "Event",
         "name": "Inglés para Hispanohablantes",
@@ -1714,7 +1624,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 59,
+      "position": 56,
       "item": {
         "@type": "Event",
         "name": "How Money Became God",
@@ -1744,7 +1654,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 60,
+      "position": 57,
       "item": {
         "@type": "Event",
         "name": "Potions Lab",
@@ -1774,7 +1684,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 61,
+      "position": 58,
       "item": {
         "@type": "Event",
         "name": "iPhone Photography Basics",
@@ -1800,6 +1710,305 @@
           "url": "https://mppl.libnet.info"
         },
         "description": "Wednesday, November 11 2026 6:00pm - 7:00pm \n Looking to level up your iPhone photography skills? This beginner-friendly program will help you capture and…"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 59,
+      "item": {
+        "@type": "Event",
+        "name": "Baby Storytime",
+        "startDate": "2026-11-12T09:30:00-06:00",
+        "url": "https://withintenmiles.com/mount-prospect-60056/#ev-baby-storytime-2026-11-12",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Mount Prospect Public Library",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Mount Prospect",
+            "addressRegion": "IL",
+            "streetAddress": "125 S Emerson St"
+          }
+        },
+        "sameAs": "https://mppl.libnet.info/event/16637938",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Mount Prospect Public Library",
+          "url": "https://mppl.libnet.info"
+        },
+        "description": "Thursday, November 12 2026 9:30am - 10:00am \n A lifelong love of reading starts at birth! Join us for songs, rhymes, stories, and playtime made specially for…"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 60,
+      "item": {
+        "@type": "Event",
+        "name": "Family Storytime",
+        "startDate": "2026-11-12T10:30:00-06:00",
+        "url": "https://withintenmiles.com/mount-prospect-60056/#ev-family-storytime-2026-11-12",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Mount Prospect Public Library",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Mount Prospect",
+            "addressRegion": "IL",
+            "streetAddress": "125 S Emerson St"
+          }
+        },
+        "sameAs": "https://mppl.libnet.info/event/16637957",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Mount Prospect Public Library",
+          "url": "https://mppl.libnet.info"
+        },
+        "description": "Thursday, November 12 2026 10:30am - 11:00am \n Bring the whole family and join us for an interactive storytime with high-energy stories, songs, and activities."
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 61,
+      "item": {
+        "@type": "Event",
+        "name": "Native American and Mexican Cooking with Chef Pyet DeSpain",
+        "startDate": "2026-11-12T13:00:00-06:00",
+        "url": "https://withintenmiles.com/mount-prospect-60056/#ev-native-american-and-mexican-cooking-with-chef-pyet-despain-2026-11-12",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Mount Prospect Public Library",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Mount Prospect",
+            "addressRegion": "IL",
+            "streetAddress": "125 S Emerson St"
+          }
+        },
+        "sameAs": "https://mppl.libnet.info/event/17310534",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Mount Prospect Public Library",
+          "url": "https://mppl.libnet.info"
+        },
+        "description": "Thursday, November 12 2026 1:00pm - 2:00pm \n Prepare your palate for a vibrant culinary journey with star chef Pyet DeSpain as she presents her debut…"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 62,
+      "item": {
+        "@type": "Event",
+        "name": "Movies @ MPPL: Pressure",
+        "startDate": "2026-11-12T14:00:00-06:00",
+        "url": "https://withintenmiles.com/mount-prospect-60056/#ev-movies-mppl-pressure-2026-11-12",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Mount Prospect Public Library",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Mount Prospect",
+            "addressRegion": "IL",
+            "streetAddress": "125 S Emerson St"
+          }
+        },
+        "sameAs": "https://mppl.libnet.info/event/14038366",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Mount Prospect Public Library",
+          "url": "https://mppl.libnet.info"
+        },
+        "description": "Thursday, November 12 2026 2:00pm - 4:30pm \n Join us for a screening of Pressure."
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 63,
+      "item": {
+        "@type": "Event",
+        "name": "Drop-In Tech Help",
+        "startDate": "2026-11-12T14:00:00-06:00",
+        "url": "https://withintenmiles.com/mount-prospect-60056/#ev-drop-in-tech-help-2026-11-12",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Mount Prospect Public Library",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Mount Prospect",
+            "addressRegion": "IL",
+            "streetAddress": "125 S Emerson St"
+          }
+        },
+        "sameAs": "https://mppl.libnet.info/event/14756394",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Mount Prospect Public Library",
+          "url": "https://mppl.libnet.info"
+        },
+        "description": "Thursday, November 12 2026 2:00pm - 3:00pm \n Stop in and bring your questions about technology-related subjects such as smartphones, computers, email,…"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 64,
+      "item": {
+        "@type": "Event",
+        "name": "SCORE Business Mentoring",
+        "startDate": "2026-11-12T15:00:00-06:00",
+        "url": "https://withintenmiles.com/mount-prospect-60056/#ev-score-business-mentoring-2026-11-12",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Mount Prospect Public Library",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Mount Prospect",
+            "addressRegion": "IL",
+            "streetAddress": "125 S Emerson St"
+          }
+        },
+        "sameAs": "https://mppl.libnet.info/event/16031229",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Mount Prospect Public Library",
+          "url": "https://mppl.libnet.info"
+        },
+        "description": "Thursday, November 12 2026 3:00pm - 4:00pm \n Local entrepreneurs and small businesses can get one-on-one support by meeting with an experienced mentor from…"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 65,
+      "item": {
+        "@type": "Event",
+        "name": "Animal Investigators Junior: Puffins",
+        "startDate": "2026-11-12T16:30:00-06:00",
+        "url": "https://withintenmiles.com/mount-prospect-60056/#ev-animal-investigators-junior-puffins-2026-11-12",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Mount Prospect Public Library",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Mount Prospect",
+            "addressRegion": "IL",
+            "streetAddress": "125 S Emerson St"
+          }
+        },
+        "sameAs": "https://mppl.libnet.info/event/16641056",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Mount Prospect Public Library",
+          "url": "https://mppl.libnet.info"
+        },
+        "description": "Thursday, November 12 2026 4:30pm - 5:30pm \n Let's hang out and admire incredible animals together!"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 66,
+      "item": {
+        "@type": "Event",
+        "name": "CodeBuilders",
+        "startDate": "2026-11-12T18:00:00-06:00",
+        "url": "https://withintenmiles.com/mount-prospect-60056/#ev-codebuilders-2026-11-12",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Mount Prospect Public Library",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Mount Prospect",
+            "addressRegion": "IL",
+            "streetAddress": "125 S Emerson St"
+          }
+        },
+        "sameAs": "https://mppl.libnet.info/event/16393014",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Mount Prospect Public Library",
+          "url": "https://mppl.libnet.info"
+        },
+        "description": "Thursday, November 12 2026 6:00pm - 7:00pm \n Experience the thrill of telling a computer what to do and watching your instructions come to life!"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 67,
+      "item": {
+        "@type": "Event",
+        "name": "Ladies Night Out: Harvest & Holiday",
+        "startDate": "2026-11-12T18:30:00-06:00",
+        "url": "https://withintenmiles.com/mount-prospect-60056/#ev-ladies-night-out-harvest-holiday-2026-11-12",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Mount Prospect, IL",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Mount Prospect",
+            "addressRegion": "IL"
+          }
+        },
+        "sameAs": "https://www.mppd.org/event/ladies-night-out-harvest-holiday/",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Mount Prospect Park District",
+          "url": "https://www.mppd.org"
+        },
+        "description": "Ladies Night Out: Harvest & Holiday A Mt. Prospect Parks Foundation Fundraiser! Gather friends and RELAX while you enjoy a beautiful and breathtaking flower…"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 68,
+      "item": {
+        "@type": "Event",
+        "name": "Completely Booked",
+        "startDate": "2026-11-12T19:00:00-06:00",
+        "url": "https://withintenmiles.com/mount-prospect-60056/#ev-completely-booked-2026-11-12",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Mount Prospect Public Library",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Mount Prospect",
+            "addressRegion": "IL",
+            "streetAddress": "125 S Emerson St"
+          }
+        },
+        "sameAs": "https://mppl.libnet.info/event/14633297",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Mount Prospect Public Library",
+          "url": "https://mppl.libnet.info"
+        },
+        "description": "Thursday, November 12 2026 7:00pm - 8:00pm \n Join other readers in their 20s and 30s to discuss \"Worry\" by Alexandra Tanner."
       }
     }
   ]

@@ -1,5 +1,5 @@
 {
- "fetched_at": "2026-10-29T22:03:06+00:00",
+ "fetched_at": "2026-10-30T06:00:18+00:00",
  "items": [
   {
    "date": null,
@@ -52,12 +52,6 @@
   {
    "date": null,
    "detail": "",
-   "title": "Citizenship Class",
-   "url": "https://www.palatinelibrary.org/event/citizenship-class-225562"
-  },
-  {
-   "date": null,
-   "detail": "",
    "title": "Halloween Storytime and Craft",
    "url": "https://www.palatinelibrary.org/event/halloween-storytime-and-craft-230004"
   },
@@ -72,6 +66,12 @@
    "detail": "",
    "title": "Preschool Storytime",
    "url": "https://www.palatinelibrary.org/event/preschool-storytime-227049"
+  },
+  {
+   "date": null,
+   "detail": "",
+   "title": "Toddler Storytime",
+   "url": "https://www.palatinelibrary.org/event/toddler-storytime-231943"
   }
  ],
  "source": "Palatine Public Library District — Events"

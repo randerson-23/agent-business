@@ -2,65 +2,12 @@
   "@context": "https://schema.org",
   "@type": "ItemList",
   "name": "Upcoming events in Palatine — Within Ten",
-  "dateModified": "2026-10-29T22:03:06+00:00",
-  "numberOfItems": 20,
+  "dateModified": "2026-10-30T06:00:18+00:00",
+  "numberOfItems": 19,
   "itemListElement": [
     {
       "@type": "ListItem",
       "position": 1,
-      "item": {
-        "@type": "Event",
-        "name": "Pirate Pete's Trick-or-Treat Festival Returns",
-        "startDate": "2026-10-29T17:00:00-05:00",
-        "url": "https://withintenmiles.com/palatine-60067/#ev-pirate-pete-s-trick-or-treat-festival-returns-2026-10-29",
-        "eventStatus": "https://schema.org/EventScheduled",
-        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "location": {
-          "@type": "Place",
-          "name": "Palatine, IL",
-          "address": {
-            "@type": "PostalAddress",
-            "addressCountry": "US",
-            "addressLocality": "Palatine",
-            "addressRegion": "IL"
-          }
-        },
-        "sameAs": "https://www.palatine.il.us/common/modules/iCalendar/iCalendar.aspx?feed=calendar&catID=14",
-        "organizer": {
-          "@type": "Organization",
-          "name": "Village of Palatine",
-          "url": "https://www.palatine.il.us"
-        },
-        "description": "Free Halloween festival at Palatine High School with themed roo",
-        "isAccessibleForFree": true
-      }
-    },
-    {
-      "@type": "ListItem",
-      "position": 2,
-      "item": {
-        "@type": "Event",
-        "name": "MPAC Spanish Virtual Parent Presentation - Program Descriptions",
-        "startDate": "2026-10-29T18:00:00-05:00",
-        "url": "https://withintenmiles.com/palatine-60067/#ev-mpac-spanish-virtual-parent-presentation-program-description-2026-10-29",
-        "eventStatus": "https://schema.org/EventScheduled",
-        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "location": {
-          "@type": "Place",
-          "name": "Palatine, IL",
-          "address": {
-            "@type": "PostalAddress",
-            "addressCountry": "US",
-            "addressLocality": "Palatine",
-            "addressRegion": "IL"
-          }
-        },
-        "description": "Please join us virtually for an overview of programming availab"
-      }
-    },
-    {
-      "@type": "ListItem",
-      "position": 3,
       "item": {
         "@type": "Event",
         "name": "Village Trick-or-Treating Hours",
@@ -89,7 +36,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 4,
+      "position": 2,
       "item": {
         "@type": "Event",
         "name": "Trunk-or-Treat at Chicago Bethel Presbyterian Church",
@@ -118,7 +65,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 5,
+      "position": 3,
       "item": {
         "@type": "Event",
         "name": "St. Philip's Episcopal Church Open House",
@@ -147,7 +94,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 6,
+      "position": 4,
       "item": {
         "@type": "Event",
         "name": "E-Learning Day",
@@ -169,7 +116,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 7,
+      "position": 5,
       "item": {
         "@type": "Event",
         "name": "End of 12-Week Grading Period",
@@ -192,7 +139,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 8,
+      "position": 6,
       "item": {
         "@type": "Event",
         "name": "D15 Job Fair",
@@ -215,7 +162,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 9,
+      "position": 7,
       "item": {
         "@type": "Event",
         "name": "Dual Language Parent Advisory Committee",
@@ -237,7 +184,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 10,
+      "position": 8,
       "item": {
         "@type": "Event",
         "name": "Community Resource Center Open House",
@@ -266,7 +213,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 11,
+      "position": 9,
       "item": {
         "@type": "Event",
         "name": "Almost Famous",
@@ -296,7 +243,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 12,
+      "position": 10,
       "item": {
         "@type": "Event",
         "name": "D211 Board of Education Meeting",
@@ -319,7 +266,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 13,
+      "position": 11,
       "item": {
         "@type": "Event",
         "name": "NSSEO: NWSRA",
@@ -342,7 +289,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 14,
+      "position": 12,
       "item": {
         "@type": "Event",
         "name": "PHS Pirate Boosters Present: Fall Craft Fair",
@@ -352,7 +299,7 @@
         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
         "location": {
           "@type": "Place",
-          "name": "Palatine, IL",
+          "name": "Palatine High School",
           "address": {
             "@type": "PostalAddress",
             "addressCountry": "US",
@@ -371,7 +318,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 15,
+      "position": 13,
       "item": {
         "@type": "Event",
         "name": "Palatine Winter Farmers' Market",
@@ -381,7 +328,7 @@
         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
         "location": {
           "@type": "Place",
-          "name": "Palatine, IL",
+          "name": "Palatine Train Station parking lot",
           "address": {
             "@type": "PostalAddress",
             "addressCountry": "US",
@@ -400,7 +347,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 16,
+      "position": 14,
       "item": {
         "@type": "Event",
         "name": "Palatine High School Pirates Boosters Fall Craft Fair",
@@ -429,7 +376,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 17,
+      "position": 15,
       "item": {
         "@type": "Event",
         "name": "Palatine Concert Band - 2026 Fall Concert \"American Originals\"",
@@ -458,7 +405,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 18,
+      "position": 16,
       "item": {
         "@type": "Event",
         "name": "D15 Job Fair",
@@ -481,7 +428,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 19,
+      "position": 17,
       "item": {
         "@type": "Event",
         "name": "The Fifth Element",
@@ -511,7 +458,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 20,
+      "position": 18,
       "item": {
         "@type": "Event",
         "name": "Regular Board of Education Meeting",
@@ -530,6 +477,29 @@
           }
         },
         "description": "All Board meeting Notices, Agendas, Attachments, and Minutes"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 19,
+      "item": {
+        "@type": "Event",
+        "name": "BPAC Workshop & Conference: Ferney Ramírez",
+        "startDate": "2026-11-12T18:00:00-06:00",
+        "url": "https://withintenmiles.com/palatine-60067/#ev-bpac-workshop-conference-ferney-ram-rez-2026-11-12",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Palatine, IL",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Palatine",
+            "addressRegion": "IL"
+          }
+        },
+        "description": "BPAC invites all families to an inspiring workshop led by psych"
       }
     }
   ]

@@ -2,10 +2,6 @@
  "links": [
   {
    "region": "arlington-heights-60005",
-   "url": "https://www.ahml.info/scheduling/reservation/224178"
-  },
-  {
-   "region": "arlington-heights-60005",
    "url": "https://www.ahml.info/scheduling/reservation/224947"
   },
   {
@@ -19,6 +15,10 @@
   {
    "region": "arlington-heights-60005",
    "url": "https://www.ahpd.org/event/recreation-park-community-center-grand-opening/"
+  },
+  {
+   "region": "arlington-heights-60005",
+   "url": "https://www.ahpd.org/event/teen-night-bikini-bottom-bash/"
   },
   {
    "region": "arlington-heights-60005",
@@ -39,10 +39,6 @@
   {
    "region": "des-plaines-60016",
    "url": "https://desplaines.libnet.info/event/14863263"
-  },
-  {
-   "region": "des-plaines-60016",
-   "url": "https://desplaines.libnet.info/event/14863290"
   },
   {
    "region": "des-plaines-60016",
@@ -74,10 +70,6 @@
   },
   {
    "region": "des-plaines-60016",
-   "url": "https://desplaines.libnet.info/event/15801728"
-  },
-  {
-   "region": "des-plaines-60016",
    "url": "https://desplaines.libnet.info/event/15801729"
   },
   {
@@ -87,10 +79,6 @@
   {
    "region": "des-plaines-60016",
    "url": "https://desplaines.libnet.info/event/15801731"
-  },
-  {
-   "region": "des-plaines-60016",
-   "url": "https://desplaines.libnet.info/event/15803238"
   },
   {
    "region": "des-plaines-60016",
@@ -130,10 +118,6 @@
   },
   {
    "region": "des-plaines-60016",
-   "url": "https://desplaines.libnet.info/event/16339448"
-  },
-  {
-   "region": "des-plaines-60016",
    "url": "https://desplaines.libnet.info/event/16339449"
   },
   {
@@ -166,11 +150,23 @@
   },
   {
    "region": "des-plaines-60016",
+   "url": "https://desplaines.libnet.info/event/16431792"
+  },
+  {
+   "region": "des-plaines-60016",
    "url": "https://desplaines.libnet.info/event/16696533"
   },
   {
    "region": "des-plaines-60016",
    "url": "https://desplaines.libnet.info/event/16716983"
+  },
+  {
+   "region": "des-plaines-60016",
+   "url": "https://desplaines.libnet.info/event/16742529"
+  },
+  {
+   "region": "des-plaines-60016",
+   "url": "https://desplaines.libnet.info/event/16896716"
   },
   {
    "region": "des-plaines-60016",
@@ -219,14 +215,6 @@
   {
    "region": "des-plaines-60016",
    "url": "https://desplaines.libnet.info/event/17004586"
-  },
-  {
-   "region": "des-plaines-60016",
-   "url": "https://desplaines.libnet.info/event/17047444"
-  },
-  {
-   "region": "des-plaines-60016",
-   "url": "https://desplaines.libnet.info/event/17138197"
   },
   {
    "region": "des-plaines-60016",
@@ -294,6 +282,10 @@
   },
   {
    "region": "des-plaines-60016",
+   "url": "https://desplaines.libnet.info/event/17515594"
+  },
+  {
+   "region": "des-plaines-60016",
    "url": "https://desplaines.libnet.info/event/17530041"
   },
   {
@@ -330,10 +322,6 @@
   },
   {
    "region": "des-plaines-60016",
-   "url": "https://desplaines.libnet.info/event/17638166"
-  },
-  {
-   "region": "des-plaines-60016",
    "url": "https://desplaines.libnet.info/event/17690884"
   },
   {
@@ -342,11 +330,11 @@
   },
   {
    "region": "des-plaines-60016",
-   "url": "https://desplainestheatre.com/event/bourbon-n-brass-live-blues-show-with-miles-minor-rockin-the-blues-16/"
+   "url": "https://desplainestheatre.com/event/bourbon-n-brass-live-delta-blues-with-downtown-charlie-brown-donna-herula-john-primer-friends-2/"
   },
   {
    "region": "des-plaines-60016",
-   "url": "https://desplainestheatre.com/event/bourbon-n-brass-live-delta-blues-with-downtown-charlie-brown-donna-herula-john-primer-friends-2/"
+   "url": "https://desplainestheatre.com/event/bourbon-n-brass-live-jazz-with-the-bourbon-n-brass-brian-patti-prohibition-dance-band-11/"
   },
   {
    "region": "des-plaines-60016",
@@ -378,6 +366,10 @@
   },
   {
    "region": "des-plaines-60016",
+   "url": "https://desplainestheatre.com/event/gcs-featuring-eric-gales-dennis-chambers-and-billy-sheehan/"
+  },
+  {
+   "region": "des-plaines-60016",
    "url": "https://desplainestheatre.com/event/jason-bonhams-led-zeppelin-evening-2/"
   },
   {
@@ -395,10 +387,6 @@
   {
    "region": "des-plaines-60016",
    "url": "https://desplainestheatre.com/event/wheel-of-fortune-live-4/"
-  },
-  {
-   "region": "des-plaines-60016",
-   "url": "https://desplainestheatre.com/event/world-premiere-film-screening-yakuza-plays-the-golem-a-concert-film-music-by-chicago-band-yakuza-produced-by-dennis-best/"
   },
   {
    "region": "mount-prospect-60056",
@@ -423,6 +411,10 @@
   {
    "region": "mount-prospect-60056",
    "url": "https://mppl.libnet.info/event/14633297"
+  },
+  {
+   "region": "mount-prospect-60056",
+   "url": "https://mppl.libnet.info/event/14685927"
   },
   {
    "region": "mount-prospect-60056",
@@ -466,10 +458,6 @@
   },
   {
    "region": "mount-prospect-60056",
-   "url": "https://mppl.libnet.info/event/16391957"
-  },
-  {
-   "region": "mount-prospect-60056",
    "url": "https://mppl.libnet.info/event/16392033"
   },
   {
@@ -503,14 +491,6 @@
   {
    "region": "mount-prospect-60056",
    "url": "https://mppl.libnet.info/event/16537609"
-  },
-  {
-   "region": "mount-prospect-60056",
-   "url": "https://mppl.libnet.info/event/16553734"
-  },
-  {
-   "region": "mount-prospect-60056",
-   "url": "https://mppl.libnet.info/event/16554291"
   },
   {
    "region": "mount-prospect-60056",
@@ -602,6 +582,10 @@
   },
   {
    "region": "mount-prospect-60056",
+   "url": "https://mppl.libnet.info/event/16638180"
+  },
+  {
+   "region": "mount-prospect-60056",
    "url": "https://mppl.libnet.info/event/16641048"
   },
   {
@@ -658,15 +642,15 @@
   },
   {
    "region": "mount-prospect-60056",
+   "url": "https://mppl.libnet.info/event/16883000"
+  },
+  {
+   "region": "mount-prospect-60056",
    "url": "https://mppl.libnet.info/event/16903311"
   },
   {
    "region": "mount-prospect-60056",
    "url": "https://mppl.libnet.info/event/16908509"
-  },
-  {
-   "region": "mount-prospect-60056",
-   "url": "https://mppl.libnet.info/event/16949245"
   },
   {
    "region": "mount-prospect-60056",
@@ -707,6 +691,10 @@
   {
    "region": "mount-prospect-60056",
    "url": "https://www.mppd.org/event/mpcb-fall-concert-magical-places/"
+  },
+  {
+   "region": "palatine-60067",
+   "url": "https://events.harpercollege.edu/event/a-dolls-house-by-henrik-ibsen-adapted-by-amy-herzog"
   },
   {
    "region": "palatine-60067",
@@ -766,15 +754,7 @@
   },
   {
    "region": "wheeling-60090",
-   "url": "https://indiantrails.libnet.info/event/16624800"
-  },
-  {
-   "region": "wheeling-60090",
    "url": "https://indiantrails.libnet.info/event/16663064"
-  },
-  {
-   "region": "wheeling-60090",
-   "url": "https://indiantrails.libnet.info/event/16708864"
   },
   {
    "region": "wheeling-60090",
@@ -798,10 +778,6 @@
   },
   {
    "region": "wheeling-60090",
-   "url": "https://indiantrails.libnet.info/event/16858048"
-  },
-  {
-   "region": "wheeling-60090",
    "url": "https://indiantrails.libnet.info/event/16866235"
   },
   {
@@ -811,6 +787,14 @@
   {
    "region": "wheeling-60090",
    "url": "https://indiantrails.libnet.info/event/16927091"
+  },
+  {
+   "region": "wheeling-60090",
+   "url": "https://indiantrails.libnet.info/event/16927102"
+  },
+  {
+   "region": "wheeling-60090",
+   "url": "https://indiantrails.libnet.info/event/16927126"
   },
   {
    "region": "wheeling-60090",
@@ -827,14 +811,6 @@
   {
    "region": "wheeling-60090",
    "url": "https://indiantrails.libnet.info/event/16931065"
-  },
-  {
-   "region": "wheeling-60090",
-   "url": "https://indiantrails.libnet.info/event/16941159"
-  },
-  {
-   "region": "wheeling-60090",
-   "url": "https://indiantrails.libnet.info/event/16952017"
   },
   {
    "region": "wheeling-60090",
@@ -878,11 +854,27 @@
   },
   {
    "region": "wheeling-60090",
+   "url": "https://indiantrails.libnet.info/event/17053394"
+  },
+  {
+   "region": "wheeling-60090",
    "url": "https://indiantrails.libnet.info/event/17081985"
   },
   {
    "region": "wheeling-60090",
+   "url": "https://indiantrails.libnet.info/event/17084807"
+  },
+  {
+   "region": "wheeling-60090",
+   "url": "https://indiantrails.libnet.info/event/17087741"
+  },
+  {
+   "region": "wheeling-60090",
    "url": "https://indiantrails.libnet.info/event/17092615"
+  },
+  {
+   "region": "wheeling-60090",
+   "url": "https://indiantrails.libnet.info/event/17096881"
   },
   {
    "region": "wheeling-60090",
