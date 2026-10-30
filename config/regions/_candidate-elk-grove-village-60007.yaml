@@ -1,0 +1,23 @@
+# Shadow candidate for town six (ROADMAP.md item 416). NOT published: the build reads this file only to
+# count what its sources would add (data/candidate_regions.json). Rename it without the leading
+# underscore (and add the full region config) to go live.
+# Library feed confirmed by the round-24 probe (200, RSS, 370 KB). The park district's calendar (elkgroveparks.org) answered 403 to the runner, so it is not a source.
+region:
+  id: "elk-grove-village-60007"
+  name: "Elk Grove Village"
+  zip: "60007"
+  state: "IL"
+  timezone: "America/Chicago"
+  tagline: "Shadow candidate - not published."
+  lat: 42.0039
+  lon: -87.9703
+
+sources:
+  - name: "Elk Grove Village Public Library - Events"
+    type: rss
+    default_tags: ["indoor"]
+    veto_tags: ["outdoor"]
+    url: "https://egvpl.libnet.info/feeds?data=eyJmZWVkVHlwZSI6InJzcyIsImZpbHRlcnMiOnsibG9jYXRpb24iOlsiYWxsIl0sImFnZXMiOlsiYWxsIl0sInR5cGVzIjpbImFsbCJdLCJ0YWdzIjpbXSwidGVybSI6IiIsImRheXMiOjMwfX0="
+    section: "Library Events"
+    venue_name: "Elk Grove Village Public Library"
+    enabled: true

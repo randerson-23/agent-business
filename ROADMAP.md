@@ -220,7 +220,7 @@ doesn't re-suggest something already shipped.
 
 **Build queue (by deadline; refreshed by the research loop, item 346).**
 Pick from the top unless the owner has flagged something else:
-0. **416** (step 1 done: round-24 probes for the candidates' feeds are in `config/url_probes.yaml` (egvpl.libnet.info, rmlib.libnet.info, elkgroveparks.org found by search; no Rolling Meadows park district calendar found); next: read the answers, then write the `_candidate-*.yaml` shadow files and the counts file). **417** with it.
+0. **416** (steps 1-2 done, measuring until about Nov 13; earlier note: step 1: round-24 probes for the candidates' feeds are in `config/url_probes.yaml` (egvpl.libnet.info, rmlib.libnet.info, elkgroveparks.org found by search; no Rolling Meadows park district calendar found); next: read the answers, then write the `_candidate-*.yaml` shadow files and the counts file). **417** with it.
 3. **390**: promo receipts.
 4. **328** (probe first), then **325** (by Nov 15), then **385** (holiday
    creatives, from Nov 1), **397** (Palatine winter market), **311** (winter outdoors, by Dec 15), **398**, then the rest by priority.
@@ -18783,7 +18783,7 @@ each one costs almost nothing."* The cost has just dropped further.
 
 #### P1 (new)
 
-416. **Measure both candidates for two weeks, then add the stronger one as
+416. (step 2 DONE: the round-24 probes found both libraries' LibNet feeds live (Elk Grove Village 370 KB, Rolling Meadows 74 KB); the Elk Grove park district answered 403; shadow files `config/regions/_candidate-*.yaml` (never published: `load_regions` and every other config glob skip `_` files); each build counts the next seven days (dated, attendable, family, distinct from the existing towns' weekend titles) into `data/candidate_regions.json`, one record a day, 30 days kept; build-digest.yml commits it. Next: after 14 days of real builds read the file, pick the stronger town, record the numbers here and go live) **Measure both candidates for two weeks, then add the stronger one as
      town six.** Build loop, probe first, with no site change yet:
 
      - Add URL probes and a **shadow fetch**: config files

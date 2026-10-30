@@ -152,7 +152,7 @@ def venue_source_keys(config_dir: Path | None = None) -> set[str]:
     import yaml
 
     keys = set()
-    for path in (config_dir or ROOT / "config" / "regions").glob("*.yaml"):
+    for path in (config_dir or ROOT / "config" / "regions").glob("[!_]*.yaml"):
         try:
             data = yaml.safe_load(path.read_text(encoding="utf-8")) or {}
         except (OSError, yaml.YAMLError):

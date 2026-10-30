@@ -273,12 +273,74 @@ def load_regions() -> list[dict]:
     # actually ships.
     regions = []
     for path in sorted(REGIONS_DIR.glob("*.yaml")):
+        if path.name.startswith("_"):
+            continue  # item 416: a `_candidate-*.yaml` is measured in the shadow, never published
         cfg = load_yaml(path)
         if "region" not in cfg:
             logger.warning("Skipping %s: missing top-level `region` key", path)
             continue
         regions.append(cfg)
     return regions
+
+
+CANDIDATE_REGIONS_PATH = ROOT / "data" / "candidate_regions.json"
+CANDIDATE_KEEP_DAYS = 30
+
+
+def load_candidate_regions() -> list[dict]:
+    return [load_yaml(p) for p in sorted(REGIONS_DIR.glob("_candidate-*.yaml"))]
+
+
+def _norm_title(title: str) -> str:
+    return re.sub(r"[^a-z0-9]+", " ", (title or "").lower()).strip()
+
+
+def candidate_week_counts(blocks: list[dict], existing_titles: set[str], today: date) -> dict:
+    """ROADMAP.md item 416: what a candidate town's sources hold for the next
+    seven days - dated events, attendable ones, family-tagged ones, and how
+    many have a title no existing town lists - plus how many each source gave."""
+    end = today + timedelta(days=7)
+    dated = attendable = family = distinct = 0
+    sources = {}
+    for block in blocks:
+        sources[block["section"]] = sources.get(block["section"], 0) + len(block.get("events") or [])
+        for e in block.get("events") or []:
+            day = _event_day(e)
+            if day is None or not (today <= day < end):
+                continue
+            dated += 1
+            if e.get("attendable", True):
+                attendable += 1
+                if "kid_friendly" in (e.get("tags") or []) or family_relevance(e) >= 1:
+                    family += 1
+                if _norm_title(e.get("title", "")) not in existing_titles:
+                    distinct += 1
+    return {"dated": dated, "attendable": attendable, "family": family, "distinct": distinct, "source_items": sources}
+
+
+def record_candidate_counts(history: dict, name: str, counts: dict, today: date, keep_days: int = CANDIDATE_KEEP_DAYS) -> dict:
+    """One record per candidate per day (a rebuild the same day replaces it),
+    the last `keep_days` days only."""
+    history = {k: list(v) for k, v in history.items()}
+    rows = [r for r in history.get(name, []) if r["date"] != today.isoformat()]
+    rows.append({"date": today.isoformat(), **counts})
+    cutoff = (today - timedelta(days=keep_days)).isoformat()
+    history[name] = sorted((r for r in rows if r["date"] >= cutoff), key=lambda r: r["date"])
+    return history
+
+
+def shadow_fetch_candidates(existing_titles: set[str], now: datetime) -> None:
+    """Fetch every `_candidate-*.yaml`, count it, record data/candidate_regions.json, publish nothing."""
+    try:
+        history = json.loads(CANDIDATE_REGIONS_PATH.read_text(encoding="utf-8"))
+        history = history if isinstance(history, dict) else {}
+    except (OSError, ValueError):
+        history = {}
+    today = now.astimezone(LOCAL_TZ).date()
+    for cfg in load_candidate_regions():
+        blocks = fetch_region_sections(cfg, now=now)
+        history = record_candidate_counts(history, cfg["region"]["id"], candidate_week_counts(blocks, existing_titles, today), today)
+    CANDIDATE_REGIONS_PATH.write_text(json.dumps(history, indent=1, ensure_ascii=False, sort_keys=True) + "\n", encoding="utf-8")
 
 
 def load_newsletter_config(newsletter_cfg: dict) -> dict:
@@ -7643,6 +7705,10 @@ def main() -> None:
     logger.info("Wrote %s", holidays_dir / "index.html")
     for tot in trick_or_treat_entries:  # item 398: "Also at" dealers are hosts of the same event
         warm_found += warm_prospects.collect_hosts([e for e in tot.get("events") or [] if e.get("also_at")], tot["region_name"])
+    try:  # item 416: measure the candidate towns without publishing them
+        shadow_fetch_candidates({_norm_title(e["title"]) for sec in combined_email_sections for e in sec["weekend_events"]}, now)
+    except Exception as exc:  # noqa: BLE001 - a measurement must never fail the site build
+        logger.warning("Candidate-town shadow fetch failed: %s", exc)
     warm_registry = warm_prospects.update_registry(warm_prospects.load_registry(), warm_found + warm_prospects.issue_hosts(town_of=lambda t: next((r['region']['name'] for r in regions if r['region']['name'].lower() in t.lower()), '')), now.astimezone(LOCAL_TZ).date())
     warm_prospects.save_registry(warm_registry)
     try:  # item 391: the Warm section is refreshed at every build, in place
@@ -7679,7 +7745,7 @@ def main() -> None:
             (OUTPUT_DIR / short).mkdir(parents=True, exist_ok=True)
             (OUTPUT_DIR / short / "index.html").write_text(render_short_redirect(rid), encoding="utf-8")
 
-    for flyer_index, cfg_path in enumerate(sorted((CONFIG_DIR / "regions").glob("*.yaml"))):
+    for flyer_index, cfg_path in enumerate(sorted((CONFIG_DIR / "regions").glob("[!_]*.yaml"))):
         region_cfg = load_yaml(cfg_path)
         rid, town = region_cfg["region"]["id"], region_cfg["region"]["name"]
         examples = [e["title"] for e in region_cfg.get("evergreen", []) if e.get("title")][:3]
