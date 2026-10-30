@@ -92,7 +92,13 @@ def collect_hosts(events: list[dict], town: str) -> list[dict]:
         # Item 398: a collapsed "Also at: A, B" line is the same event at more hosts.
         hosts += [_clean(a.get("label")) for a in e.get("also_at") or [] if isinstance(a, dict)]
         for host in dict.fromkeys(h for h in hosts if h):
-            found.append({"host": host, "town": town, "title": e["title"].strip(), "date": e["date_iso"][:10]})
+            row = {"host": host, "town": town, "title": e["title"].strip(), "date": e["date_iso"][:10]}
+            clock = e["date_iso"][11:16]
+            if clock and clock != "00:00":
+                row["time"] = clock  # item 415: the batch quotes the listed time and place
+            if e.get("venue"):
+                row["venue"] = str(e["venue"])
+            found.append(row)
     return found
 
 
@@ -175,15 +181,15 @@ def update_registry(registry: dict, found: list[dict], today: date) -> dict:
     registry = {k: dict(v, events=list(v.get("events") or [])) for k, v in registry.items()}
     for f in found:
         entry = registry.setdefault(host_key(f["host"]), {"name": f["host"], "town": f["town"], "events": []})
-        row = {"title": f["title"], "date": f["date"]}
+        row = {"title": f["title"], "date": f["date"], **{k: f[k] for k in ("time", "venue") if f.get(k)}}
         # Item 408: an older row for the same title dated a few days earlier is a send-date
         # placeholder from before event dates were read from the cards; the real date replaces it.
         entry["events"] = [
             e for e in entry["events"]
             if not (e["title"] == row["title"] and e["date"] < row["date"] and (date.fromisoformat(row["date"]) - date.fromisoformat(e["date"])).days <= 6)
         ]
-        if row not in entry["events"]:
-            entry["events"].append(row)
+        entry["events"] = [e for e in entry["events"] if not (e["title"] == row["title"] and e["date"] == row["date"])]
+        entry["events"].append(row)  # the newest row for a title and date wins, so it can gain a time and venue
     start, end = today - timedelta(days=LOOKBACK_DAYS), today + timedelta(days=LOOKAHEAD_DAYS)
     out = {}
     for key, entry in registry.items():

@@ -1735,6 +1735,8 @@ def _build_annual_event_dict(
         # a one-off annual event, same as `series` above.
         "recurrence_note": recurrence_note,
     }
+    if item.get("venue"):  # item 415: an `annual_events` entry may name its place
+        event["venue"] = str(item["venue"])
     event["ics_href"] = build_ics_data_uri(event)
     event["google_calendar_url"] = build_google_calendar_url(event, region_name)
     return event

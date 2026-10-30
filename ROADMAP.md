@@ -220,7 +220,7 @@ doesn't re-suggest something already shipped.
 
 **Build queue (by deadline; refreshed by the research loop, item 346).**
 Pick from the top unless the owner has flagged something else:
-0. **415** (batch copy: one-word yes, Thursday not Wednesday, future shows only; before the owner sends this weekend). **412** (per-page share images).
+0. **412** (per-page share images).
 3. **390**: promo receipts.
 4. **328** (probe first), then **325** (by Nov 15), then **385** (holiday
    creatives, from Nov 1), **397** (Palatine winter market), **311** (winter outdoors, by Dec 15), **398**, then the rest by priority.
@@ -18734,7 +18734,7 @@ volunteer would read it, and checks one timing claim the emails make.
      `promotions:` entry, which is the same as any sale and counts toward
      the founding five (item 388).
 
-415. **Tighten the batch copy: one-word yes, the right day, future shows
+415. ✅ DONE (a block whose event has a start time and place asks for "Reply 'yes' ... exactly as it's listed (Sat Nov 7, 9 AM, Palatine High School)"; the registry rows now carry time and venue, and `annual_events` entries may name a `venue`; "Thursday morning's email" comes from the sender's own SEND_WEEKDAY; a venue block names its next show at least three days out and is dropped when it has none; templates 14a-14c reworded; tests. Only the start time is held, not the end) **Tighten the batch copy: one-word yes, the right day, future shows
      only.** Build loop, `scripts/outreach_batch.py` and
      `OUTREACH_TEMPLATES.md` §14a–§14c:
 

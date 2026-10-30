@@ -207,10 +207,12 @@ annual_events:
     date: "2026-11-07T09:00:00"
     detail: "Over 150 vendors support the PHS community. 9 AM to 4 PM at Palatine High School, 1111 N. Rohlwing Road."
     url: "https://phspirateboosters.com/craft-fair/"
+    venue: "Palatine High School"
     tags: ["kid_friendly", "indoor"]
   - title: "Palatine Winter Farmers' Market"
     detail: "1st and 3rd Saturdays, 9 a.m. to noon, at the Palatine Train Station parking lot, November through April."
     url: "https://www.palatine.il.us/217/Farmers-Market"
+    venue: "Palatine Train Station parking lot"
     tags: ["outdoor", "food"]
     recurrence:
       starts: "2026-11-07"

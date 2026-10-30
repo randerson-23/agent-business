@@ -820,7 +820,7 @@ Within Ten — https://withintenmiles.com/
 
 For the "Fair organisers" list in `OUTREACH_PROSPECTS.md` (booster clubs, PTOs,
 park-district programmes). Send it **two weeks before** the fair, so the paid
-placement lands the Wednesday before. Quote no subscriber number (item 118).
+placement lands in Thursday morning's email. Quote no subscriber number (item 118).
 
 Subject: Your craft fair on [Date] is on our [Town] page
 
@@ -829,11 +829,12 @@ Hi,
 Your **[Fair name]** on [Date] is on **Within Ten**'s [Town] page, the free
 local guide. For $20 (or free under our founding offer, see
 https://withintenmiles.com/sponsor/ for how many spots are left) it goes first
-on the town page and in the weekly email the Wednesday before, labelled
+on the town page and in Thursday morning's email, labelled
 "Presented by [Organiser]", so families see it while they plan the weekend.
 
-If you'd like that, reply with the fair's date, time, address and the link you
-want it to open, and I'll set it up.
+Reply 'yes' and we'll feature it exactly as it's listed ([Date], [Time], [Place]);
+tell us if anything has changed. (If the site doesn't hold the time and place, ask
+for them instead.)
 
 Thanks,
 [Your name]
@@ -856,8 +857,8 @@ how many spots are left).
 
 Here is how [Venue] would look: https://withintenmiles.com/sponsor/preview/?name=[Venue]&town=[Town]
 
-If you'd like that, reply with the show, date and the link you want it to open,
-and I'll set it up.
+Your next show on our list is [Show] on [Date]. If you'd like that one featured,
+reply 'yes' (or tell us which show and the link you want it to open).
 
 Thanks,
 [Your name]
