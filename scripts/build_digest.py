@@ -2092,7 +2092,7 @@ def build_join_picks(sections: list[dict], limit: int = 3) -> list[dict]:
         blocks.append(
             {
                 "region_name": s["region_name"],
-                "attendable_events": prepare_email_events(attendable, limit=4),
+                "attendable_events": prepare_email_events(attendable, limit=email_events_per_town(len(sections))),
                 "color": EMAIL_TOWN_COLORS[i % len(EMAIL_TOWN_COLORS)][0],
             }
         )
@@ -5797,6 +5797,7 @@ EMAIL_TOWN_COLORS: tuple[tuple[str, str], ...] = (
     ("#c2410c", "#fff6ef"),  # burnt orange
     ("#1d4ed8", "#f0f5ff"),  # blue
     ("#be185d", "#fdf2f7"),  # raspberry
+    ("#4d7c0f", "#f4f9e8"),  # olive (the sixth town, item 418)
 )
 
 
@@ -5824,6 +5825,18 @@ def pick_email_top_picks(blocks: list[dict], limit: int = 3) -> list[dict]:
         spare.sort(key=key)
         candidates += spare[: limit - len(candidates)]
     return candidates[:limit]
+
+
+def email_events_per_town(town_count: int) -> int:
+    """ROADMAP.md item 418: four events a town while there are five towns or
+    fewer, three at six or more, so the issue stays under Gmail's clip."""
+    return 4 if town_count <= 5 else 3
+
+
+def town_strength(block: dict) -> int:
+    """A town's week for ordering email sections: the family score of its best
+    pick-worthy event (-1 when it has none)."""
+    return max([family_relevance(e) for e in block.get("attendable_events") or [] if is_pick_worthy(e)] or [-1])
 
 
 def prepare_email_events(events: list[dict], limit: int | None = None) -> list[dict]:
@@ -5947,7 +5960,7 @@ def render_combined_email_digest(sections: list[dict], weekend_date_range: str, 
         block = {
             "region_name": s["region_name"],
             "region_url": s["region_url"],
-            "attendable_events": prepare_email_events(attendable_events, limit=4),
+            "attendable_events": prepare_email_events(attendable_events, limit=email_events_per_town(len(sections))),
             "indoor_ideas": thin_week_ideas(s.get("evergreen", []), len(attendable_events)) if attendable_events else [],
             "informational_events": informational_events,
             "evergreen_highlights": _pick_evergreen_highlights(s.get("evergreen", []), limit=2),
@@ -5971,6 +5984,7 @@ def render_combined_email_digest(sections: list[dict], weekend_date_range: str, 
         block["color"], block["tint"] = EMAIL_TOWN_COLORS[i % len(EMAIL_TOWN_COLORS)]
     collapse = len(empty_candidates) >= 2
     region_blocks = [b for b in all_blocks if not (collapse and b in empty_candidates)]
+    region_blocks.sort(key=lambda b: -town_strength(b))  # item 418: the strongest town first (stable; colours were fixed above)
     top_picks = pick_email_top_picks(region_blocks)
     event_total = sum(len([e for e in s["weekend_events"] if e.get("attendable", True)]) for s in sections)
     town_total = sum(1 for s in sections if any(e.get("attendable", True) for e in s["weekend_events"]))
