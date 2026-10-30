@@ -282,5 +282,27 @@
   "town": "Palatine",
   "url": "https://www.palatine.il.us/common/modules/iCalendar/iCalendar.aspx?feed=calendar&catID=14",
   "venue": null
+ },
+ "e/2026-12-05-family-photos-with-santa/": {
+  "date_iso": "2026-12-05T10:00:00",
+  "detail": "Family Photos with Santa Bring your camera and smiles to your private photo session with Santa. Our atrium is a glorious wonderland and a festive backdrop for…",
+  "detail_long": "Family Photos with Santa Bring your camera and smiles to your private photo session with Santa. Our atrium is a glorious wonderland and a festive backdrop for your photos. Our staff will assist as needed with family photos on your camera. Sign up for the hour you desire and you’ll receive private time for your photos with Santa! Come any time during that hour. Only one person per family household needs to register. Please email fpc@mppd.org with any questions.",
+  "first_seen": "2026-10-30",
+  "ics_href": "data:text/calendar;charset=utf-8,BEGIN%3AVCALENDAR%0D%0AVERSION%3A2.0%0D%0APRODID%3A-//Within%20Ten//EN%0D%0ABEGIN%3AVEVENT%0D%0ADTSTART%3A20261205T100000%0D%0ADTEND%3A20261205T110000%0D%0ASUMMARY%3AFamily%20Photos%20with%20Santa%0D%0ADESCRIPTION%3AFamily%20Photos%20with%20Santa%20Bring%20your%20camera%20and%20smiles%20to%20your%20private%20photo%20session%20with%20Santa.%20Our%20atrium%20is%20a%20glorious%20wonderland%20and%20a%20festive%20backdrop%20for%E2%80%A6%0D%0AURL%3Ahttps%3A//www.mppd.org/event/family-photos-with-santa-4/%0D%0AEND%3AVEVENT%0D%0AEND%3AVCALENDAR%0D%0A",
+  "path": "e/2026-12-05-family-photos-with-santa/",
+  "postal_code": null,
+  "region_id": "mount-prospect-60056",
+  "region_url": "https://withintenmiles.com/mount-prospect-60056/",
+  "source": "Mount Prospect Park District — Events",
+  "sponsored_by": null,
+  "state": "IL",
+  "street_address": null,
+  "tags": [
+   "kid_friendly"
+  ],
+  "title": "Family Photos with Santa",
+  "town": "Mount Prospect",
+  "url": "https://www.mppd.org/event/family-photos-with-santa-4/",
+  "venue": null
  }
 }

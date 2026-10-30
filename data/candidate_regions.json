@@ -1,0 +1,26 @@
+{
+ "elk-grove-village-60007": [
+  {
+   "attendable": 44,
+   "date": "2026-10-30",
+   "dated": 44,
+   "distinct": 44,
+   "family": 14,
+   "source_items": {
+    "Library Events": 500
+   }
+  }
+ ],
+ "rolling-meadows-60008": [
+  {
+   "attendable": 14,
+   "date": "2026-10-30",
+   "dated": 14,
+   "distinct": 14,
+   "family": 6,
+   "source_items": {
+    "Library Events": 104
+   }
+  }
+ ]
+}

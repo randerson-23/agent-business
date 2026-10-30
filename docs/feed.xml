@@ -3,8 +3,8 @@
 <channel>
   <title>Within Ten — Upcoming Local Events</title>
   <link>https://withintenmiles.com/</link>
-  <description>Upcoming events across every Within Ten region, soonest first - aggregated automatically from village, library, park district and school-district calendars. This build reached 20 of 29 configured sources. 4 sources are shown from their last update, up to 25 hours ago.</description>
-  <lastBuildDate>Fri, 30 Oct 2026 14:03:54 +0000</lastBuildDate>
+  <description>Upcoming events across every Within Ten region, soonest first - aggregated automatically from village, library, park district and school-district calendars. This build reached 22 of 29 configured sources. 2 sources are shown from their last update, up to 33 hours ago.</description>
+  <lastBuildDate>Fri, 30 Oct 2026 22:00:01 +0000</lastBuildDate>
   <item>
     <title>Arlington Heights: Senior Center: Travelogue</title>
     <link>https://withintenmiles.com/arlington-heights-60005/#ev-senior-center-travelogue-2026-10-30</link>
@@ -57,6 +57,14 @@ For grades K-8. Official listing: https://desplaines.libnet.info/event/17138198<
  Start your Halloween festivities with a short storytime, craft and game. Costumes encouraged but not necessary. TR Official listing: https://indiantrails.libnet.info/event/16709302</description>
     <pubDate>Fri, 30 Oct 2026 10:00:00 +0000</pubDate>
     <source url="https://indiantrails.libnet.info/event/16709302">Indian Trails Public Library — Events</source>
+  </item>
+  <item>
+    <title>Palatine: Curbside Leaf Collection</title>
+    <link>https://withintenmiles.com/palatine-60067/#ev-curbside-leaf-collection-2026-10-30</link>
+    <guid isPermaLink="true">https://withintenmiles.com/palatine-60067/#ev-curbside-leaf-collection-2026-10-30</guid>
+    <description>Official listing: https://www.palatine.il.us/CivicAlerts.aspx?aid=508</description>
+    <pubDate>Fri, 30 Oct 2026 11:09:00 +0000</pubDate>
+    <source url="https://www.palatine.il.us/CivicAlerts.aspx?aid=508">Village of Palatine — News</source>
   </item>
   <item>
     <title>Des Plaines: Halloween Party in the Commons</title>
@@ -436,15 +444,6 @@ Complete and return a volunteer craft kit by the end of the month to count towar
  A lifelong love of reading starts at birth! Join us for songs, rhymes, stories, and playtime made specially for… Official listing: https://mppl.libnet.info/event/16637815</description>
     <pubDate>Tue, 03 Nov 2026 09:30:00 +0000</pubDate>
     <source url="https://mppl.libnet.info/event/16637815">Mount Prospect Public Library — Events</source>
-  </item>
-  <item>
-    <title>Des Plaines: Toddler Time</title>
-    <link>https://withintenmiles.com/des-plaines-60016/#ev-toddler-time-2026-11-03</link>
-    <guid isPermaLink="true">https://withintenmiles.com/des-plaines-60016/#ev-toddler-time-2026-11-03</guid>
-    <description>Tuesday, November 03 2026 10:00am - 10:30am 
- Ages 18-36 months. Drop-in at the Poet Tree Corner! Enjoy stories, songs, rhymes, movement, and more at Toddler… Official listing: https://desplaines.libnet.info/event/17001899</description>
-    <pubDate>Tue, 03 Nov 2026 10:00:00 +0000</pubDate>
-    <source url="https://desplaines.libnet.info/event/17001899">Des Plaines Public Library — Events</source>
   </item>
 </channel>
 </rss>

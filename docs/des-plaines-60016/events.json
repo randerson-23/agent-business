@@ -2,7 +2,7 @@
   "@context": "https://schema.org",
   "@type": "ItemList",
   "name": "Upcoming events in Des Plaines — Within Ten",
-  "dateModified": "2026-10-30T14:03:54+00:00",
+  "dateModified": "2026-10-30T22:00:01+00:00",
   "numberOfItems": 78,
   "itemListElement": [
     {
@@ -1350,9 +1350,9 @@
       "position": 43,
       "item": {
         "@type": "Event",
-        "name": "MADE IN AMERICA: A TRIBUTE TO TOBY KEITH with SPECIAL GUEST CHRISTIAN AS KENNY CHESNEY",
+        "name": "MADE IN AMERICA: A TRIBUTE TO TOBY KEITH featuring RICH ECKHARDT (TOBY KEITH'S GUITARIST FOR 25 YEARS!) with SPECIAL GUEST CHRISTIAN AS KENNY CHESNEY",
         "startDate": "2026-11-07T20:00:00-06:00",
-        "url": "https://withintenmiles.com/des-plaines-60016/#ev-made-in-america-a-tribute-to-toby-keith-with-special-guest-c-2026-11-07",
+        "url": "https://withintenmiles.com/des-plaines-60016/#ev-made-in-america-a-tribute-to-toby-keith-featuring-rich-eckha-2026-11-07",
         "eventStatus": "https://schema.org/EventScheduled",
         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
         "location": {
