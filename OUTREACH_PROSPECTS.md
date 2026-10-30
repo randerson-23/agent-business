@@ -1,6 +1,6 @@
 # Outreach prospects (OpenStreetMap)
 
-Generated 2026-10-29 by `scripts/osm_prospects.py` (ROADMAP.md item 306).
+Generated 2026-10-30 by `scripts/osm_prospects.py` (ROADMAP.md item 306).
 
 > Data (c) OpenStreetMap contributors, available under the Open Database Licence (ODbL). **For outreach use only; never share or republish this file.** Names and websites only: no emails or phone numbers are kept, even where OSM has them. Order is the likelihood of buying a holiday listing (gifts, toys and books first, restaurants last). OSM coverage is volunteer-made: treat a missing shop as unknown, not as closed, and check the business's own site or a visit before writing to it.
 
@@ -117,8 +117,6 @@ They may still buy a promo, but the pitch differs: they already reach their own 
 | Yen Yen | Restaurant | visit in person |
 
 ## Des Plaines
-
-(from the Oct 29 run; today's refresh failed)
 
 | Name | Category | Website |
 |---|---|---|
