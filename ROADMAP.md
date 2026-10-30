@@ -220,6 +220,7 @@ doesn't re-suggest something already shipped.
 
 **Build queue (by deadline; refreshed by the research loop, item 346).**
 Pick from the top unless the owner has flagged something else:
+0. **416** (shadow-fetch Elk Grove Village and Rolling Meadows for 14 days; town six). **418** (email scales to six towns, before town six goes live). **417** with it.
 3. **390**: promo receipts.
 4. **328** (probe first), then **325** (by Nov 15), then **385** (holiday
    creatives, from Nov 1), **397** (Palatine winter market), **311** (winter outdoors, by Dec 15), **398**, then the rest by priority.
@@ -18758,6 +18759,84 @@ Competitors reviewed this pass: **send-time data for newsletters**
 3–5 days ahead), and **how PTOs and booster clubs promote fairs** (PTO
 Today and local examples: sponsorships fund online ads). The design/UX
 angle is **the fair outreach email read as the volunteer receiving it**.
+
+
+#### Research pass 2026-10-30 (hundred-and-twelfth pass)
+
+Overnight the build loop shipped items 415 (the batch's one-word-yes copy,
+"Thursday", and future shows only) and 412 (share images for event and
+seasonal pages, and `image` in Event markup). The outreach batch now
+reads correctly from top to bottom. Halloween is tomorrow, and from Sunday
+the site switches to its November state (item 366's off-season
+trick-or-treat page, the holiday banner, `/santa/`). The build queue is
+down to promo receipts, the registration probe, the lights list, the
+holiday creatives, the winter market and winter outdoors. Per the working
+agreement, this pass goes deeper. It reopens the scale strategy
+`BUSINESS_PLAN.md` states: *"keep adding neighbouring towns anyway, since
+each one costs almost nothing."* The cost has just dropped further.
+
+| Angle | What it is / what we found | Why it matters here |
+|---|---|---|
+| **Neighbouring towns' event platforms** (search for each candidate's library and park-district calendars) | **Elk Grove Village Public Library** publishes events at **`egvpl.libnet.info`**, and **Rolling Meadows Library** at **`rmlib.libnet.info`**. Both are **LibNet (Communico)**, the same platform as `mppl.libnet.info` and Des Plaines' library, which the site already reads through its RSS adapter. **Elk Grove Park District** (`elkgroveparks.org/events/list/`) runs the WordPress *The Events Calendar* plugin, the same one behind the Arlington Heights Park District, Metropolis and Des Plaines Theatre feeds, which expose `?ical=1`. Rolling Meadows Park District (`rmparks.org`) publishes a programme guide and event pages, platform unconfirmed. **Buffalo Grove**: no machine-readable feed found (Patch's calendar carries it), and Indian Trails already covers Wheeling | Item 166 ranked the expansion candidates by population and families (Wheeling first, now done; Elk Grove Village 32.8k but shrinking; Rolling Meadows 24.2k). This adds what decides the cost: **two candidates need no new fetcher code at all**. A sixth town becomes a YAML file plus probes, which is the near-zero cost the business plan assumed |
+| **What each candidate brings** (Rolling Meadows Park District's 2026 listings; a Daily Herald report on Rolling Meadows' 2026 events calendar; Elk Grove's park and village pages) | **Rolling Meadows:** a city events foundation (Meadows Fest, a summer concert series), a park district with an ice show and a **Santa's Workshop (Sat Dec 6)**, and a busy library youth calendar. It sits **between Arlington Heights and Palatine**, filling the gap on the site's own map. **Elk Grove Village:** a large park district (Busse Woods nearby), the **Village Green** events listed on mykidlist, and a library on the shared platform. It borders **Mount Prospect and Des Plaines** | Each new town adds its own head query (*"things to do in Elk Grove Village this weekend"*), its own ZIP for the Meta test, its own sponsor territory, and more prospects. The **"trip across a few nearby towns"** promise in the Vision gets truer with every adjacent town |
+| **What a sixth town does to the email (design/UX)** | The combined issue already carries five town sections of up to four events each, plus the hero, "Don't miss", sign-ups, night out and the poll. Every section adds about 2–4 KB. The **102 KB Gmail clip check** exists. The town strip under the hero wraps to two lines at five towns, and `EMAIL_TOWN_COLORS` has exactly five colours | A sixth town must not push the issue past the clip limit or turn it into a scroll of near-identical sections. The cap per town has to flex with the number of towns, and the sixth town needs its own colour (item 418) |
+
+#### P1 (new)
+
+416. **Measure both candidates for two weeks, then add the stronger one as
+     town six.** Build loop, probe first, with no site change yet:
+
+     - Add URL probes and a **shadow fetch**: config files
+       `config/regions/_candidate-elk-grove-village-60007.yaml` and
+       `_candidate-rolling-meadows-60008.yaml`, using the existing LibNet
+       and Events Calendar `?ical=1` adapters (library, park district,
+       village calendar where it has a feed). The build reads them and
+       records counts in `data/candidate_regions.json`, but publishes
+       nothing.
+     - After **14 days**, compare: dated, attendable, family-tagged
+       weekend events per week; source health; and the share that are
+       distinct from existing towns' sources.
+     - Pick the higher scorer and **record the numbers** in the roadmap.
+       Rename its file without the underscore to go live (its pages, the
+       hub card, the email section, the sitemap, the Meta kit's ZIP list,
+       OpenStreetMap prospects). The other candidate stays in shadow as
+       town seven.
+
+     Tests: a `_candidate` file is never published, and the counts file
+     records per-week numbers. Owner time: none.
+
+417. **Each new town arrives with its seasonal blocks empty and honest.**
+     Build loop, part of going live: the new region's YAML starts with
+     `trick_or_treat`, `tree_lighting`, `leaf_pickup`, `registration_days`
+     and `days_off` set to `null` or empty, and the seasonal pages show it
+     as *"not posted yet"* until a first-party source confirms. The same
+     sourcing rules apply from day one. Add probes for its tree lighting
+     and Santa events (Rolling Meadows' Santa's Workshop, Sat Dec 6, if
+     it wins) so `/santa/` and `/holidays/` carry it in time for
+     December.
+
+#### P2 (new)
+
+418. **Let the email scale to six towns.** Design/UX, the combined email
+     template and pickers:
+
+     - **Per-town cap:** 4 events when there are five towns or fewer,
+       **3 at six or more**. "See everything in <town>" is unchanged.
+     - Add a **sixth colour** to `EMAIL_TOWN_COLORS` with its tint, checked
+       for contrast like the others (item 309's accessibility tests).
+     - **Order town sections by that week's strength** (its top pick's
+       family score), not alphabetically, so the most useful towns come
+       first on a phone.
+     - Keep the 102 KB clip test, now built with six full towns.
+
+     Tests: six towns produce at most three events each, the issue stays
+     under the clip limit, and the colour passes the contrast check.
+
+Competitors reviewed this pass: none new as competitors. Angles: **the
+event platforms of the neighbouring towns** (two on the site's existing
+LibNet adapter, one park district on *The Events Calendar*), **what Elk
+Grove Village and Rolling Meadows would add**, and the design/UX angle
+**what a sixth town does to the email**.
 
 
 ## Working agreements for autonomous iteration
