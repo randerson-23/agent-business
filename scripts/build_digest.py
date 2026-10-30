@@ -1698,7 +1698,7 @@ def render_trick_or_treat_page(
         canonical_url=SITE_BASE_URL + "trick-or-treat/",
         generated_at=now.strftime("%Y-%m-%d %H:%M UTC"),
         analytics=analytics,
-        og_image_url=SITE_BASE_URL + "og/default.png",
+        og_image_url=SITE_BASE_URL + "og/trick-or-treat.png",
     )
 
 
@@ -2169,7 +2169,7 @@ def render_holidays_page(
         canonical_url=SITE_BASE_URL + "holidays/",
         generated_at=now.strftime("%Y-%m-%d %H:%M UTC"),
         analytics=analytics,
-        og_image_url=SITE_BASE_URL + "og/default.png",
+        og_image_url=SITE_BASE_URL + "og/holidays.png",
     )
 
 
@@ -2307,7 +2307,7 @@ def render_leaf_pickup_page(entries: list[dict], now: datetime, analytics: dict 
         towns=towns, in_season=in_season,
         newsletter=newsletter or {"configured": False},
         hub_url=SITE_BASE_URL, canonical_url=SITE_BASE_URL + "leaf-pickup/",
-        generated_at=now.strftime("%Y-%m-%d %H:%M UTC"), analytics=analytics, og_image_url=SITE_BASE_URL + "og/default.png",
+        generated_at=now.strftime("%Y-%m-%d %H:%M UTC"), analytics=analytics, og_image_url=SITE_BASE_URL + "og/leaf-pickup.png",
     )
 
 
@@ -2363,7 +2363,7 @@ def render_santa_page(entries: list[dict], now: datetime, analytics: dict | None
         canonical_url=SITE_BASE_URL + "santa/",
         generated_at=now.strftime("%Y-%m-%d %H:%M UTC"),
         analytics=analytics,
-        og_image_url=SITE_BASE_URL + "og/default.png",
+        og_image_url=SITE_BASE_URL + "og/santa.png",
     )
 
 
@@ -3749,6 +3749,7 @@ OG_INK = (43, 35, 24)  # --ink
 OG_MUTED = (118, 106, 88)  # --muted
 OG_ACCENT = (82, 107, 63)  # --accent
 OG_ACCENT_2 = (193, 122, 61)  # --accent-2
+OG_CARD = (234, 233, 233)
 
 
 def _wrap_og_text(draw: ImageDraw.ImageDraw, text: str, font: ImageFont.FreeTypeFont, max_width: int) -> list[str]:
@@ -3965,6 +3966,57 @@ def build_weekly_cards(sections: list[dict], date_range: str) -> dict[str, Image
     if not picks or not date_range:
         return {}
     return {name: render_weekly_card(size, date_range, picks) for name, size in WEEKLY_CARD_SIZES.items()}
+
+
+def _og_size_check(img: Image.Image) -> Image.Image:
+    assert img.size == OG_IMAGE_SIZE
+    return img
+
+
+def render_event_og_image(entry: dict, color: str | None = None) -> Image.Image:
+    """The share image for one `/e/` page (ROADMAP.md item 412): the town's
+    colour bar and a date chip on the left, the title in display case, the
+    place and town, and the wordmark."""
+    width, height = OG_IMAGE_SIZE
+    img = Image.new("RGB", (width, height), OG_BG)
+    draw = ImageDraw.Draw(img)
+    town_rgb = _hex_rgb(color or EMAIL_TOWN_COLORS[0][0])
+    draw.rectangle([0, 0, 24, height], fill=town_rgb)
+    margin = 90
+    day = datetime.fromisoformat(entry["date_iso"])
+    chip_x, chip_y, chip_w = margin, 70, 170
+    draw.rectangle([chip_x, chip_y, chip_x + chip_w, chip_y + 56], fill=town_rgb)
+    draw.text((chip_x + chip_w // 2, chip_y + 28), day.strftime("%a").upper(), font=_og_font("DejaVuSans-Bold.ttf", 34), fill=(255, 255, 255), anchor="mm")
+    draw.rectangle([chip_x, chip_y + 56, chip_x + chip_w, chip_y + 56 + 110], fill=OG_CARD)
+    draw.text((chip_x + chip_w // 2, chip_y + 56 + 55), str(day.day), font=_og_font("DejaVuSans-Bold.ttf", 78), fill=OG_INK, anchor="mm")
+    draw.text((chip_x + chip_w + 40, chip_y + 12), day.strftime("%B"), font=_og_font("DejaVuSans-Bold.ttf", 44), fill=OG_MUTED)
+    clock = event_time_label(entry["date_iso"])
+    if clock:
+        draw.text((chip_x + chip_w + 40, chip_y + 72), clock, font=_og_font("DejaVuSans.ttf", 36), fill=OG_MUTED)
+    title_font = _og_font("DejaVuSans-Bold.ttf", 68)
+    y = 270
+    for line in _wrap_og_text(draw, display_title(entry["title"]), title_font, width - margin - 80)[:3]:
+        draw.text((margin, y), line, font=title_font, fill=OG_INK)
+        y += 80
+    where = ", ".join(p for p in (entry.get("venue"), entry.get("town")) if p)
+    if where:
+        draw.text((margin, min(y + 14, height - 110)), where, font=_og_font("DejaVuSans.ttf", 36), fill=OG_MUTED)
+    draw.text((margin, height - 62), "WITHIN TEN", font=_og_font("DejaVuSans-Bold.ttf", 28), fill=OG_ACCENT)
+    draw.rectangle([24, height - 14, width, height], fill=town_rgb)
+    return _og_size_check(img)
+
+
+def build_page_og_images(towns: list[str], tree_lines: list[str], now: datetime) -> dict[str, Image.Image]:
+    """Share images for the seasonal pages (item 412), regenerated each build
+    from the same data the pages show."""
+    names = _join_names(towns) if towns else "five northwest-suburb towns"
+    year = now.year
+    return {
+        "trick-or-treat": render_og_image(f"Trick-or-Treat Hours {year}", f"Hours, trunk-or-treats and Halloween events in {names}"),
+        "santa": render_og_image(f"Santa Near You, {year}", f"Breakfast with Santa and Santa visits in {names}"),
+        "holidays": render_og_image(f"Holiday Tree Lightings {year}", " · ".join(tree_lines)[:120] or f"Tree lightings and holiday events in {names}"),
+        "leaf-pickup": render_og_image(f"Leaf Pickup {year}", f"What {names} say about fall leaf collection"),
+    }
 
 
 def build_og_images(region_summaries: list[dict]) -> dict[str, Image.Image]:
@@ -4372,7 +4424,7 @@ def render_event_page(entry: dict, *, expired: bool = False, more: list[dict] | 
         page_title=page_title,
         description=truncate(f"{display_title(title)} on {short_when} in {town}. {detail}", 200),
         canonical_url=page_url,
-        og_image_url=SITE_BASE_URL + "og/default.png",
+        og_image_url=SITE_BASE_URL + "og/" + entry["path"].rstrip("/") + ".png",  # item 412: its own image
         json_ld=json_for_script(ld),
         hub_url=SITE_BASE_URL,
         region_url=entry.get("region_url") or SITE_BASE_URL,
@@ -4791,6 +4843,16 @@ EVENTS_JSON_DAYS = 14
 ACTIVE_EVENT_PAGE_PATHS: set[str] = set()
 
 
+def event_image_url(event: dict, url: str) -> str:
+    """ROADMAP.md item 412: the Event's `image`: its own `/e/` share image when
+    the markup points at an event page, else its town's image, else the default."""
+    page = re.match(re.escape(SITE_BASE_URL) + r"e/([^/]+)/", url or "")
+    if page:
+        return f"{SITE_BASE_URL}og/e/{page.group(1)}.png"
+    town = re.match(re.escape(SITE_BASE_URL) + r"([a-z-]+-\d{5})/", url or "") or re.match(r"([a-z-]+-\d{5})$", event.get("region_id") or "")
+    return f"{SITE_BASE_URL}og/{town.group(1) if town else 'default'}.png"
+
+
 def event_jsonld(event: dict, url: str) -> dict:
     """The one schema.org Event builder (ROADMAP.md item 375), used by the
     region pages, events.json, /trick-or-treat/ and the /e/ pages so they
@@ -4814,6 +4876,7 @@ def event_jsonld(event: dict, url: str) -> dict:
         if origin:
             organizer["url"] = origin.group(0)
         entry["organizer"] = organizer
+    entry["image"] = event_image_url(event, url)
     if event.get("detail"):
         entry["description"] = event["detail"]
     if "free" in (event.get("tags") or []):
@@ -7638,6 +7701,15 @@ def main() -> None:
     for name, image in og_images.items():
         image.save(og_dir / f"{name}.png", "PNG")
     logger.info("Wrote %d Open Graph image(s) to %s", len(og_images), og_dir)
+    # ROADMAP.md item 412: share images for the seasonal pages and for each /e/ page.
+    tree_lines = [f"{h['region_name']} {h['tree']['label'].split(',')[0]}" for h in holidays_entries if h.get("tree") and h["tree"].get("label")]
+    for name, image in build_page_og_images([r["name"] for r in region_summaries], tree_lines, now).items():
+        image.save(og_dir / f"{name}.png", "PNG")
+    (og_dir / "e").mkdir(parents=True, exist_ok=True)
+    town_colors = {sec["region_url"]: EMAIL_TOWN_COLORS[i % len(EMAIL_TOWN_COLORS)][0] for i, sec in enumerate(combined_email_sections)}
+    event_registry = load_event_page_registry()
+    for path, entry in event_registry.items():
+        render_event_og_image(entry, town_colors.get(entry.get("region_url") or "")).save(OUTPUT_DIR / "og" / (path.rstrip("/") + ".png"), "PNG")
     # ROADMAP.md items 278 and 216: the weekly ad and social images.
     for name, image in build_weekly_cards(combined_email_sections, hub_weekend_date_range or "").items():
         image.save(og_dir / f"{name}.png", "PNG")

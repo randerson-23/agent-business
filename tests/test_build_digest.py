@@ -6671,3 +6671,24 @@ def test_every_page_template_has_exactly_one_robots_meta_with_large_image_previe
     for name in ("flyer", "join", "thanks", "sponsor_preview"):
         assert "noindex" in _re.findall(r'<meta name="robots" content="([^"]*)"', (templates / f"{name}.html.j2").read_text(encoding="utf-8"))[0]
     assert 'content="max-image-preview:large"' in build_digest.render_issues_index([], datetime(2026, 10, 29, tzinfo=timezone.utc))
+
+
+def test_event_and_seasonal_pages_get_their_own_1200x630_share_images():
+    # ROADMAP.md item 412.
+    entry = {"path": "e/2026-11-07-fall-craft-fair/", "title": "FALL CRAFT FAIR", "date_iso": "2026-11-07T09:00:00", "town": "Palatine", "venue": "Palatine High School",
+             "url": "https://phspirateboosters.com/craft-fair/", "source": "S — Events", "tags": [], "detail": "d", "region_url": "https://x/p/", "region_id": "palatine-60067"}
+    img = build_digest.render_event_og_image(entry, "#0f766e")
+    assert img.size == (1200, 630) and img.getpixel((5, 300)) == (0x0f, 0x76, 0x6e)  # the town colour bar
+    page = build_digest.render_event_page(entry)
+    assert f'<meta property="og:image" content="{build_digest.SITE_BASE_URL}og/e/2026-11-07-fall-craft-fair.png">' in page and f'name="twitter:image" content="{build_digest.SITE_BASE_URL}og/e/2026-11-07-fall-craft-fair.png"' in page
+    ld = json.loads(page.split('application/ld+json">')[1].split("</script>")[0])
+    assert ld["image"] == f"{build_digest.SITE_BASE_URL}og/e/2026-11-07-fall-craft-fair.png"
+    town_event = {"title": "T", "date_iso": "2026-11-07T09:00:00", "town": "Palatine", "state": "IL", "source": "S — Events"}
+    assert build_digest.event_jsonld(town_event, build_digest.SITE_BASE_URL + "palatine-60067/#x")["image"] == build_digest.SITE_BASE_URL + "og/palatine-60067.png"
+    assert build_digest.event_jsonld(town_event, "https://other/")["image"] == build_digest.SITE_BASE_URL + "og/default.png"
+    pages = build_digest.build_page_og_images(["Palatine", "Wheeling"], ["Palatine Saturday"], datetime(2026, 10, 30, tzinfo=timezone.utc))
+    assert set(pages) == {"trick-or-treat", "santa", "holidays", "leaf-pickup"} and all(i.size == (1200, 630) for i in pages.values())
+    santa = build_digest.render_santa_page([{"region_name": "Palatine", "region_url": "https://x/p/", "events": []}], datetime(2026, 10, 30, tzinfo=timezone.utc))
+    assert 'og:image" content="' + build_digest.SITE_BASE_URL + 'og/santa.png"' in santa
+    leaf = build_digest.render_leaf_pickup_page([{"name": "Palatine", "url": "https://x", "summary": None, "note": None}], datetime(2026, 10, 30, tzinfo=timezone.utc))
+    assert "og/leaf-pickup.png" in leaf
