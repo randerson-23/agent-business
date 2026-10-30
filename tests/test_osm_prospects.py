@@ -172,7 +172,8 @@ def test_outreach_batch_blocks_have_sources_cap_at_eight_and_hold_no_personal_ad
     assert "Blues Night" in blocks[2]["event"] or "BLUES" in blocks[2]["event"]  # a rescheduled show is not the reason
     assert all(len(b["subject"]) <= ob.SUBJECT_MAX and "Your The" not in b["subject"] for b in blocks)
     assert "sponsor/preview/?name=PHS+Pirate+Boosters&town=Palatine" in blocks[0]["body"] and "Presented by PHS Pirate Boosters" in blocks[0]["body"]
-    assert "We list your shows for free" in blocks[2]["body"] and "Blues Night" not in blocks[2]["body"]
+    assert "We list your shows for free" in blocks[2]["body"] and "Blues Night: Live on Mon Nov 2" in blocks[2]["body"] and "ROCKY" not in blocks[2]["body"]
+    assert "Wednesday" not in "".join(b["body"] for b in blocks) and "Thursday morning's email" in blocks[0]["body"]
     many = [{"match": f"h{i}", "org": f"Org {i}", "site": "https://x.example/"} for i in range(12)]
     reg2 = {f"h{i}": {"name": f"H{i}", "town": "T", "events": [{"title": "E", "date": "2026-10-30"}]} for i in range(12)}
     assert len(ob.build_blocks(reg2, many, today=today)) == ob.MAX_BLOCKS
@@ -224,3 +225,24 @@ def test_the_generated_batch_is_checked_not_just_the_generator():
     swapped = good.split("## 2.")[1]
     assert any("first block" in p for p in cb.check("## 1. Napleton Palatine dealerships\n" + swapped.split("\n", 1)[1] + "\n## 2. PHS Pirate Boosters\n- **Why it is warm:** x (2026-11-07) (template 14b)\n", reg, today)) or True
     assert ob.where_to_send({"site": "https://s/", "contact": "jane.doe@x.org", "organisation_mailbox": True, "source": "p"}).startswith("look up on")
+
+
+def test_a_fair_block_asks_for_a_yes_and_a_venue_with_only_tomorrow_is_dropped():
+    # ROADMAP.md item 415.
+    import outreach_batch as ob
+    import warm_prospects as wp
+    from datetime import date
+    today = date(2026, 10, 29)
+    reg = {
+        "phs pirate boosters": {"name": "PHS Pirate Boosters", "town": "Palatine", "events": [{"title": "PHS Pirate Boosters Present: Fall Craft Fair", "date": "2026-11-07", "time": "09:00", "venue": "Palatine High School"}]},
+        "des plaines theatre": {"name": "Des Plaines Theatre", "town": "Des Plaines", "events": [{"title": "Tomorrow Show", "date": "2026-10-30"}]},
+        "metropolis performing arts centre": {"name": "Metropolis", "town": "Arlington Heights", "events": [{"title": "Next Week Show", "date": "2026-11-05"}]},
+    }
+    blocks = ob.build_blocks(reg, ob.load_contacts(), today=today)
+    assert [b["org"] for b in blocks] == ["PHS Pirate Boosters", "Metropolis Performing Arts Centre"]  # the theatre's only show is tomorrow
+    assert "Reply 'yes' and we'll feature it exactly as it's listed (Sat Nov 7, 9 AM, Palatine High School); tell us if anything has changed." in blocks[0]["body"]
+    assert "Wednesday" not in blocks[0]["body"] and f"{ob.SEND_DAY} morning's email" in blocks[0]["body"] and ob.SEND_DAY == "Thursday"
+    assert "reply with the show" in blocks[1]["body"]  # no time or place held, so it still asks for details
+    found = wp.collect_hosts([{"title": "PHS Pirate Boosters Present: Fall Craft Fair", "date_iso": "2026-11-07T09:00:00", "venue": "Palatine High School"}], "Palatine")
+    out = wp.update_registry({"phs pirate boosters": {"name": "PHS Pirate Boosters", "town": "Palatine", "events": [{"title": found[0]["title"], "date": "2026-11-07"}]}}, found, today)
+    assert out["phs pirate boosters"]["events"] == [{"title": found[0]["title"], "date": "2026-11-07", "time": "09:00", "venue": "Palatine High School"}]

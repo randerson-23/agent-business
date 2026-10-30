@@ -8,10 +8,11 @@ a public repository: no individual's address, no send status.
 
 from __future__ import annotations
 
+import calendar
 import re
 import sys
 from urllib.parse import quote_plus
-from datetime import date, datetime
+from datetime import date, datetime, timedelta
 from pathlib import Path
 
 import yaml
@@ -66,6 +67,12 @@ def _day(iso: str) -> str:
     return f"{d.strftime('%a %b')} {d.day}"
 
 
+try:  # the send weekday comes from the sender itself, so the copy cannot drift from it (item 415)
+    from send_newsletter import SEND_WEEKDAY
+except Exception:  # noqa: BLE001
+    SEND_WEEKDAY = 3
+SEND_DAY = calendar.day_name[SEND_WEEKDAY]
+VENUE_MIN_DAYS_AHEAD = 3
 SUBJECT_MAX = 60
 FAIR_SOON_DAYS = 21
 
@@ -94,33 +101,51 @@ def subject_for(kind: str, ev: dict, town: str) -> str:
     return next((o for o in options if len(o) <= SUBJECT_MAX), options[-1][:SUBJECT_MAX])
 
 
+def _clock(hhmm: str) -> str:
+    h, m = int(hhmm[:2]), int(hhmm[3:5])
+    return f"{h % 12 or 12}{':%02d' % m if m else ''} {'AM' if h < 12 else 'PM'}"
+
+
+def details_for(ev: dict) -> str | None:
+    """"Sat Nov 7, 9 AM, Palatine High School" when the site holds the date, the start time and the place."""
+    if not (ev.get("time") and ev.get("venue")):
+        return None
+    return f"{_day(ev['date'] + 'T00:00:00')}, {_clock(ev['time'])}, {ev['venue']}"
+
+
 def body_for(kind: str, name: str, ev: dict, town: str, preview: str) -> str:
     """The filled OUTREACH_TEMPLATES.md section: 14a (warm), 14b (fair), 14c (venue)."""
     town = town or "local"
     when = _day(ev["date"] + "T00:00:00")
     title = _display(ev["title"])
     sign = f"Thanks,\n[Your name]\nWithin Ten \u2014 {SITE}/"
+    details = details_for(ev)
+    if details:  # item 415: one word is enough when the site already holds the facts
+        ask = f"Reply 'yes' and we'll feature it exactly as it's listed ({details}); tell us if anything has changed."
+    elif kind == "venue":
+        ask = "If you'd like that, reply with the show, date and the link you want it to open, and I'll set it up."
+    else:
+        ask = "If you'd like that, reply with the event, date, time, address and the link you want it to open, and I'll set it up."
+    founding = f"(see {SITE}/sponsor/ for how many spots are left)"
+    founding_plain = f"see {SITE}/sponsor/ for how many spots are left"
     if kind == "venue":
         return (
             f"Hi,\n\nWe list your shows for free on Within Ten's {town} page, the free local guide. "
             f"If you'd like one show a week featured first, it's $20, and the first is free while our founding offer lasts "
-            f"(see {SITE}/sponsor/ for how many spots are left).\n\nHere is how {name} would look: {preview}\n\n"
-            f"If you'd like that, reply with the show, date and the link you want it to open, and I'll set it up.\n\n{sign}"
+            f"{founding}. Your next one on our list is {title} on {when}.\n\nHere is how {name} would look: {preview}\n\n{ask}\n\n{sign}"
         )
     if kind == "fair":
         return (
             f"Hi,\n\nYour {title} on {when} is on Within Ten's {town} page, the free local guide. For $20 (or free under our "
-            f"founding offer, see {SITE}/sponsor/ for how many spots are left) it goes first on the town page and in the weekly "
-            f"email the Wednesday before, labelled \"Presented by {name}\", so families see it while they plan the weekend.\n\n"
-            f"Here is how {name} would look: {preview}\n\n"
-            f"If you'd like that, reply with the fair's date, time, address and the link you want it to open, and I'll set it up.\n\n{sign}"
+            f"founding offer, {founding_plain}) it goes first on the town page and in {SEND_DAY} morning's "
+            f"email, labelled \"Presented by {name}\", so families see it while they plan the weekend.\n\n"
+            f"Here is how {name} would look: {preview}\n\n{ask}\n\n{sign}"
         )
     return (
         f"Hi,\n\nYour {title} on {when} was on Within Ten's {town} page, the free local guide. Next time, for $20, it goes first "
-        f"on the town page and in the weekly email, labelled \"Presented by {name}\", with its own event page. "
+        f"on the town page and in {SEND_DAY} morning's email, labelled \"Presented by {name}\", with its own event page. "
         f"Here is how {name} would look: {preview}\n\n"
-        f"While the founding offer lasts (see {SITE}/sponsor/ for how many spots are left), your first Event Promo is free.\n\n"
-        f"If you'd like one, reply with the event, date and the link you want it to open, and I'll set it up.\n\n{sign}"
+        f"While the founding offer lasts {founding}, your first Event Promo is free.\n\n{ask}\n\n{sign}"
     )
 
 
@@ -136,10 +161,16 @@ def build_blocks(registry: dict, contacts: list[dict], limit: int = MAX_BLOCKS, 
             continue
         org = orgs.setdefault(contact["org"], {"contact": contact, "town": host["town"], "events": [], "venue": key in venue_keys})
         for e in warm_prospects.drop_placeholder_dates(host["events"]):
-            org["events"].append({"title": e["title"], "date": e["date"], "host": host["name"]})
+            org["events"].append({**e, "host": host["name"]})
     ranked = []
     for name, org in orgs.items():
-        upcoming = [e for e in org["events"] if e["date"] >= today.isoformat()] or org["events"]
+        if org["venue"]:  # item 415: a venue's next show must be at least three days out, else it sits this week out
+            cutoff = (today + timedelta(days=VENUE_MIN_DAYS_AHEAD)).isoformat()
+            upcoming = [e for e in org["events"] if e["date"] >= cutoff]
+            if not upcoming:
+                continue
+        else:
+            upcoming = [e for e in org["events"] if e["date"] >= today.isoformat()] or org["events"]
         fairs = [e for e in upcoming if warm_prospects.FAIR_TITLE.search(e["title"])]
         kind = "venue" if org["venue"] else "fair" if fairs else "warm"
         pool = fairs or upcoming
