@@ -220,7 +220,6 @@ doesn't re-suggest something already shipped.
 
 **Build queue (by deadline; refreshed by the research loop, item 346).**
 Pick from the top unless the owner has flagged something else:
-0. **412** (per-page share images).
 3. **390**: promo receipts.
 4. **328** (probe first), then **325** (by Nov 15), then **385** (holiday
    creatives, from Nov 1), **397** (Palatine winter market), **311** (winter outdoors, by Dec 15), **398**, then the rest by priority.
@@ -18658,7 +18657,7 @@ touched, **Google Discover**, and at the images every page shares.
      page has exactly one robots meta containing `max-image-preview:large`,
      and `noindex` pages still contain `noindex`.
 
-412. **A real 1200×630 image for each event page and seasonal page, and in
+412. ✅ DONE (`render_event_og_image` for every /e/ page in the registry at `/og/e/<slug>.png`: town colour bar, date chip, display-case title, place and town; `/og/trick-or-treat.png`, `santa`, `holidays` (with the confirmed tree-lighting dates) and `leaf-pickup`, regenerated each build; each page's og:image and twitter:image point at its own; `event_jsonld` now carries `image` (the /e/ image, else the town's, else the default) so every Event in events.json has one; tests. Not browser-verified in a share preview) **A real 1200×630 image for each event page and seasonal page, and in
      the Event markup.** Build loop, reusing the Pillow renderer from items
      344 and 350:
 
