@@ -220,7 +220,7 @@ doesn't re-suggest something already shipped.
 
 **Build queue (by deadline; refreshed by the research loop, item 346).**
 Pick from the top unless the owner has flagged something else:
-0. **416** (shadow-fetch Elk Grove Village and Rolling Meadows for 14 days; town six). **418** (email scales to six towns, before town six goes live). **417** with it.
+0. **416** (step 1 done: round-24 probes for the candidates' feeds are in `config/url_probes.yaml` (egvpl.libnet.info, rmlib.libnet.info, elkgroveparks.org found by search; no Rolling Meadows park district calendar found); next: read the answers, then write the `_candidate-*.yaml` shadow files and the counts file). **417** with it.
 3. **390**: promo receipts.
 4. **328** (probe first), then **325** (by Nov 15), then **385** (holiday
    creatives, from Nov 1), **397** (Palatine winter market), **311** (winter outdoors, by Dec 15), **398**, then the rest by priority.
@@ -18817,7 +18817,7 @@ each one costs almost nothing."* The cost has just dropped further.
 
 #### P2 (new)
 
-418. **Let the email scale to six towns.** Design/UX, the combined email
+418. ✅ DONE (per-town cap 4 at five towns or fewer, 3 at six or more via `email_events_per_town`; sixth colour olive #4d7c0f (passes the contrast test); email sections ordered by each town's strongest pick-worthy event with colours kept stable; a six-town issue test under the 102 KB clip) **Let the email scale to six towns.** Design/UX, the combined email
      template and pickers:
 
      - **Per-town cap:** 4 events when there are five towns or fewer,

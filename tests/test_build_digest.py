@@ -6692,3 +6692,20 @@ def test_event_and_seasonal_pages_get_their_own_1200x630_share_images():
     assert 'og:image" content="' + build_digest.SITE_BASE_URL + 'og/santa.png"' in santa
     leaf = build_digest.render_leaf_pickup_page([{"name": "Palatine", "url": "https://x", "summary": None, "note": None}], datetime(2026, 10, 30, tzinfo=timezone.utc))
     assert "og/leaf-pickup.png" in leaf
+
+
+def test_the_email_scales_to_six_towns_three_events_each_strongest_town_first_under_the_clip():
+    # ROADMAP.md item 418.
+    assert build_digest.email_events_per_town(5) == 4 and build_digest.email_events_per_town(6) == 3
+    assert len(build_digest.EMAIL_TOWN_COLORS) == 6 and build_digest.EMAIL_TOWN_COLORS[5][0] == "#4d7c0f"
+    def sec(name, tags):
+        evs = [{"title": f"{name} Event {i}", "url": f"https://src/{name}{i}", "date_iso": f"2026-11-0{6 + i % 2}T1{i}:00:00", "date": "Nov 6", "detail": "A description of the event for readers. " * 3, "tags": tags, "attendable": True, "ics_href": None} for i in range(6)]
+        return {"region_name": name, "region_url": f"https://x/{name.lower()}/", "weekend_events": evs, "evergreen": [], "sponsor": None}
+    sections = [sec("Alpha", ["indoor"]), sec("Bravo", ["kid_friendly", "free", "outdoor"]), sec("Charlie", ["indoor"]), sec("Delta", ["free"]), sec("Echo", ["indoor"]), sec("Foxtrot", ["kid_friendly"])]
+    now = datetime(2026, 11, 4, 12, tzinfo=timezone.utc)
+    html = build_digest.render_combined_email_digest(sections, "Nov 6–8", now)
+    for name in ("Alpha", "Bravo", "Charlie", "Delta", "Echo", "Foxtrot"):
+        assert len(set(re.findall(rf"{name} Event \d", html))) <= 3, name  # at most three different events per town
+    assert html.index("Bravo Event 0") < html.index("Alpha Event 0")  # the strongest town comes first, not alphabetical
+    assert "#4d7c0f" in html
+    assert len(html.encode("utf-8")) < 102_000

@@ -178,3 +178,19 @@ probes:
       - '(?i)phscraft@[a-z0-9.-]+'
       - '(?i)craft fair[^<]{0,200}'
     follow: '(?i)craft'
+  # Round 24 (item 416): the two candidate sixth towns. Do their calendars have feeds the existing adapters read?
+  - url: https://egvpl.libnet.info/feeds?data=eyJmZWVkVHlwZSI6InJzcyIsImZpbHRlcnMiOnsibG9jYXRpb24iOlsiYWxsIl0sImFnZXMiOlsiYWxsIl0sInR5cGVzIjpbImFsbCJdLCJ0YWdzIjpbXSwidGVybSI6IiIsImRheXMiOjMwfX0=
+    item: 416
+    purpose: Elk Grove Village Public Library - LibNet (Communico) RSS feed, all locations, 30 days
+    patterns:
+      - '<item>'
+  - url: https://rmlib.libnet.info/feeds?data=eyJmZWVkVHlwZSI6InJzcyIsImZpbHRlcnMiOnsibG9jYXRpb24iOlsiYWxsIl0sImFnZXMiOlsiYWxsIl0sInR5cGVzIjpbImFsbCJdLCJ0YWdzIjpbXSwidGVybSI6IiIsImRheXMiOjMwfX0=
+    item: 416
+    purpose: Rolling Meadows Library - LibNet (Communico) RSS feed, all locations, 30 days
+    patterns:
+      - '<item>'
+  - url: https://www.elkgroveparks.org/events/list/?ical=1
+    item: 416
+    purpose: Elk Grove Village Park District - The Events Calendar iCal feed
+    patterns:
+      - 'BEGIN:VEVENT'
