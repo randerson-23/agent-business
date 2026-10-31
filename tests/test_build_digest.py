@@ -6635,7 +6635,7 @@ def test_sponsor_preview_is_noindex_escapes_by_construction_and_shows_both_produ
     today = date(2026, 11, 2)
     html = build_digest.render_sponsor_preview(sections, {"event_promo": "https://buy.example/e", "weekly_spot": None}, "hello@x.org", today, 2)
     assert 'name="robots" content="noindex, nofollow, max-image-preview:large"' in html and "Preview, not live" in html
-    assert "As a Featured event" in html and "Weekly Spot" in html and 'href="https://buy.example/e"' in html
+    assert "Featured event: " in html and "Weekly Spot" in html and 'href="https://buy.example/e"' in html
     assert "mailto:hello@x.org" in html
     script = html.split("<script>", 1)[1]
     assert "innerHTML" not in script and "document.write" not in script and "textContent" in script
@@ -6643,6 +6643,11 @@ def test_sponsor_preview_is_noindex_escapes_by_construction_and_shows_both_produ
     data = json.loads(html.split('id="preview-data">')[1].split("</script>")[0])
     assert [e["title"] for e in data["towns"][0]["events"]] == ["Fall Fest", "Hike"]  # no promo, past, notice, class, weak or recurring entry
     assert data["founding"] == {"left": 3, "total": 5}  # two of five used
+    # item 424: one pair of parentheses in the heading, the neighbours sentence is hideable, and no promise of an email mock
+    assert 'free for founding sponsors (" + data.founding.left' in script and "Free (founding offer" not in html
+    assert '<h2>Featured event: <span id="p-price">$20 one-time</span></h2>' in html
+    assert 'id="near-note"' in html and 'getElementById("near-note").hidden = true' in script
+    assert "weekly email" not in html.split("<h1>", 1)[1].split("Featured event", 1)[0]
     assert build_digest.render_sponsor_preview(sections, None, None, today, 5).count('"founding": null') == 1
     assert build_digest.SITE_BASE_URL + "sponsor/preview/" not in build_digest.collect_sitemap_urls([], None, None, True)
 
