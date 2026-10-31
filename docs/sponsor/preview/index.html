@@ -36,9 +36,9 @@
 <div class="ribbon">Preview, not live</div>
 <div class="wrap">
   <h1>How <span id="p-name">your business</span> would look</h1>
-  <p class="muted">This is a mock-up built from the link you were sent. Nothing here is published. It shows your placement in <span id="p-town">your town</span>'s page and weekly email.</p>
+  <p class="muted">This is a mock-up built from the link you were sent. Nothing here is published. It shows your placement on <span id="p-town">your town</span>'s page.</p>
 
-  <h2>As a Featured event (<span id="p-price">$20 one-time</span>)</h2>
+  <h2>Featured event: <span id="p-price">$20 one-time</span></h2>
   <div class="town-bar"></div>
   <div class="card you">
     <div class="featured-label">Featured &middot; Presented by <span id="f-name"></span></div>
@@ -50,7 +50,7 @@
   </div>
   <div class="card"><div class="date" id="e1-when"></div><h3 id="e1-title"></h3></div>
   <div class="card"><div class="date" id="e2-when"></div><h3 id="e2-title"></h3></div>
-  <p class="muted">Your event goes first, labelled, until the day of the event. The cards below it are this week's real listings.</p>
+  <p class="muted" id="near-note">Your event goes first, labelled, until the day of the event. The cards below it are real listings from the same page.</p>
   <a class="btn" id="buy-event" href="mailto:hello@withintenmiles.com?subject=Sponsor%20preview&amp;body=Business%20name%3A%20%0ARegion%28s%29%20of%20interest%3A%20%0APreferred%20tier%3A%20%0APreferred%20week%20%28if%20any%29%3A%20%0AWhy%20should%20we%20recommend%20you%20%28one%20sentence%29%3A%20">Email to claim this</a>
 
   <div id="spot-section">
@@ -89,17 +89,25 @@
   if (evName) { put("f-title", evName); put("f-line", ""); put("f-date", evDate || "Your event's date"); }
   if (evVenue) { put("f-venue", evVenue); document.getElementById("f-venue").hidden = false; }
   if (kind === "fair" || kind === "warm") document.getElementById("spot-section").hidden = true;
-  if (data.founding) put("p-price", "Free (founding offer, " + data.founding.left + " of " + data.founding.total + " left), then $20");
-  var near = town.events.filter(function (e) {
-    return iso ? Math.abs((Date.parse(e.iso) - Date.parse(iso)) / 86400000) <= 3 : true;
-  }).slice(0, 2);
-  if (!near.length) near = town.events.slice(0, 2);  // nothing that weekend: the town's next picks
+  if (data.founding) put("p-price", "free for founding sponsors (" + data.founding.left + " of " + data.founding.total + " left), then $20");
+  var near = [];
+  if (iso) {
+    near = town.events.filter(function (e) { return Math.abs((Date.parse(e.iso) - Date.parse(iso)) / 86400000) <= 3; }).slice(0, 2);
+  }
+  if (!near.length) {  // nothing that weekend: the next weekend that has picks
+    var later = town.events.filter(function (e) { return !iso || e.iso >= iso; });
+    if (later.length) {
+      var first = Date.parse(later[0].iso);
+      near = later.filter(function (e) { return Math.abs((Date.parse(e.iso) - first) / 86400000) <= 3; }).slice(0, 2);
+    }
+  }
   [["e1", near[0]], ["e2", near[1]]].forEach(function (p) {
     var ev = p[1];
     put(p[0] + "-when", ev ? ev.when : "");
     put(p[0] + "-title", ev ? ev.title : "");
     if (!ev) document.getElementById(p[0] + "-title").parentNode.hidden = true;
   });
+  if (!near.length) document.getElementById("near-note").hidden = true;  // no neighbours, so no sentence about them
   if (/^https?:\/\//i.test(url)) {
     ["f-link", "s-link"].forEach(function (id) { var a = document.getElementById(id); a.href = url; a.hidden = false; });
   }
