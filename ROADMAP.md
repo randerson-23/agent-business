@@ -220,7 +220,6 @@ doesn't re-suggest something already shipped.
 
 **Build queue (by deadline; refreshed by the research loop, item 346).**
 Pick from the top unless the owner has flagged something else:
-0. **419** (the preview the fair email links to shows a generic card and the wrong price; fix before the owner sends block 1 this weekend).
 0. **416** (steps 1-2 done, measuring until about Nov 13; earlier note: step 1: round-24 probes for the candidates' feeds are in `config/url_probes.yaml` (egvpl.libnet.info, rmlib.libnet.info, elkgroveparks.org found by search; no Rolling Meadows park district calendar found); next: read the answers, then write the `_candidate-*.yaml` shadow files and the counts file). **417** with it.
 3. **390**: promo receipts.
 4. **328** (probe first), then **325** (by Nov 15), then **385** (holiday
@@ -18860,7 +18859,7 @@ unions.
 
 #### P1 (new)
 
-419. **Make the prospect's preview show their own event, at the offered
+419. ✅ DONE (the batch's preview link carries name, town, event, date, `d`, venue and kind; the page shows the Featured card with the prospect's own event, date and place, hides the Weekly Spot for kind fair or warm, reads "Free (founding offer, N of 5 left), then $20" while spots remain, and shows the town's upcoming pick-worthy events within three days of theirs (else its next picks), never notices, classes, recurring items, promos or past events; checked in headless Chromium) **Make the prospect's preview show their own event, at the offered
      price, among real events.** Build loop, `/sponsor/preview/` and
      `outreach_batch.py`:
 
