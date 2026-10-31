@@ -220,6 +220,7 @@ doesn't re-suggest something already shipped.
 
 **Build queue (by deadline; refreshed by the research loop, item 346).**
 Pick from the top unless the owner has flagged something else:
+0. **425** (homepage town picks show board meetings and ESL; quality floor). **426** (desktop homepage: aligned, bento, town colours).
 0. **422** (candidate park districts and villages; the town-six decision otherwise rests on library counts).
 0. **416** (steps 1-2 done, measuring until about Nov 13; earlier note: step 1: round-24 probes for the candidates' feeds are in `config/url_probes.yaml` (egvpl.libnet.info, rmlib.libnet.info, elkgroveparks.org found by search; no Rolling Meadows park district calendar found); next: read the answers, then write the `_candidate-*.yaml` shadow files and the counts file). **417** with it.
 3. **390**: promo receipts.
@@ -19009,6 +19010,69 @@ newsletter ads, 13+ markets, 115K subscribers), **NPN Parents (Chicago)**
 rates** (about $12 CPM). The design/UX angle is **the fixed sponsor
 preview page**, and the data angle is **the library-only candidate
 measurement**.
+
+
+#### Research pass 2026-10-31, evening (hundred-and-fifteenth pass)
+
+Today the build loop shipped item 424 (the preview page's heading,
+honest neighbours, no email claim), item 423 (the sourced market-rate
+table in the sponsor kit) and the first half of item 422. **Rolling
+Meadows** now has park-district and city sources in its shadow config
+(15 attendable events, 6 family). **Elk Grove Village's** park district
+is **behind a bot wall**, so its count stays library-only. Tomorrow the
+site turns to November. This pass takes the routine's design-showcase
+angle and reads the homepage **on a desktop**, which no pass has done.
+The owner's goal for this site is *"easy to use but modern and
+impressive"*, and the desktop homepage is where a sponsor checks
+whether the site looks like a real business.
+
+| Angle | What it is / what we found | Why it matters here |
+|---|---|---|
+| **2026 web-design direction** (Line25, TinyFrog, TheeDigital and StudioMeyer 2026 trend roundups; StudioMeyer's mid-year "reality check") | **Bento grids** are the dominant layout for **overview pages** (feature and section highlights) and are explicitly *not* suited to long-form editorial. **Typography as the hero** (bold, often variable fonts) and **"bold minimalism"** (clean layout, strong type, selective colour) lead. The reality check reports **3D/WebGL and AI personalisation underdelivered**, and notes an anti-grid counter-trend. Every source says trends must **hold up on a phone first** | The homepage is an overview page (picks, today, free, a season, five towns), which is exactly the bento use case. The long lists (`/this-weekend/`, region pages) should stay lists. A colour system already exists in the email (`EMAIL_TOWN_COLORS`, date chips) and isn't used on the homepage |
+| **Visitor and city guides on Awwwards** (Awwwards listings: *Visit Húsavík*, the *Isny digital visitor guide*, *Tenerife Outdoor Sports Guide*, *SHAPESHIFT Festival 2026*, honourable mention Apr 2026) | Recognised guide sites lead with **one strong visual block per section**, colour-coded categories, and dated things presented as **cards with large date marks**, not as text lists | Confirms the direction rather than adding a feature. The site's own best-designed surfaces (the Halloween banner and the email's date chips and town colours) already speak this language. The homepage body doesn't yet |
+| **The homepage on a 1280px desktop (design/UX)** | **(1) Misaligned:** the hero (*"Everything worth doing, ten miles out."*) starts at the left edge of the window, while everything below sits in a centred ~920px column, so on a laptop the page looks unfinished. **(2) Weak town picks:** today's cards show *"Beginning ESL"*, *"Early Voting"*, *"Digitizing VHS Tapes"*, *"Meet the Board"*, *"Budget Workshop Meeting"* and *"Village Trick-or-Treating Hours"* (a notice). **Item 380's quality floor reached `/this-weekend/` and the email but not `hub_town_picks()`**. **(3)** Seven near-identical **grey bordered boxes**: a nearly empty full-width *"This weekend · 17 things"* box, then five town boxes, each repeating *"From the village, library and park district."* | On a phone the stack works. On a desktop, a sponsor sees a misaligned header and five grey boxes advertising a board meeting and an ESL class. That is the opposite of *"modern and impressive"*, and the town picks contradict the "picks" promise everywhere else on the site (items 425, 426) |
+
+#### P1 (new)
+
+425. **Apply the picks quality floor to the homepage town cards.** Build
+     loop, `hub_town_picks()`: use item 380's family-score floor and
+     exclusions, and add **notice types** (hours, closures, collection
+     schedules, *"meeting"*, *"workshop meeting"*, *"board"*). When a town
+     has nothing above the floor this weekend, use item 342's *"Next up"*
+     with the same floor, and show *"Quiet weekend here, see all →"* if
+     there is still nothing. Tests: *"Meet the Board"*, *"Budget Workshop
+     Meeting"*, *"Beginning ESL"* and an hours notice never appear as town
+     picks.
+
+426. **A desktop homepage that matches the brand: aligned, bento,
+     colour-coded.** Design/UX, `hub.html.j2` CSS only, with the mobile
+     stack unchanged:
+
+     - **Align the hero** to the same content column as everything below
+       it, and set the headline larger (typography as the hero), within
+       the existing font budget.
+     - From about **900px**, lay the overview out as a **bento grid**:
+       - a large **"This weekend's picks"** tile (the three "Don't miss"
+         picks with the email's date chips);
+       - **Today** and **Free** as two small tiles with counts;
+       - a **season tile** (Santa or holidays from Nov 1, winter break
+         from Dec 15);
+       - the **five town tiles**, each headed by its **town colour bar**
+         from `EMAIL_TOWN_COLORS` instead of a grey border.
+     - Remove the repeated *"From the village, library and park
+       district."* line from each card. Say it once under the hero.
+
+     Keep it CSS grid only (no JavaScript), the inline-JS budget unchanged,
+     and contrast passing (item 309's tests). Verify at 390, 768 and 1280
+     px with headless screenshots. Tests: the hero and grid share the same
+     container, town tiles carry their colour, and the phrase appears once.
+
+Competitors reviewed this pass: **2026 web-design trend roundups** (bento
+for overview pages, typography as hero, bold minimalism; 3D and AI
+personalisation underdelivered) and **visitor and city guides on
+Awwwards** (Húsavík, Isny, Tenerife, SHAPESHIFT). The design/UX angle is
+**the homepage on a desktop**: a misaligned hero, weak town picks, and
+seven grey boxes.
 
 
 ## Working agreements for autonomous iteration
