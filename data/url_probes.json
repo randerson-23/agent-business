@@ -4,7 +4,7 @@
       "url": "https://withintenmiles.com/f3b7799bed06aac4295ec9134d53b014.txt",
       "purpose": "IndexNow key file on the live domain - still served and still equal to the key?",
       "item": 224,
-      "probed_at": "2026-10-31T14:10:26+00:00",
+      "probed_at": "2026-10-31T21:59:57+00:00",
       "status": 200,
       "final_url": "https://withintenmiles.com/f3b7799bed06aac4295ec9134d53b014.txt",
       "content_type": "text/plain; charset=utf-8",
@@ -22,17 +22,72 @@
       "url": "https://www.ahpd.org/parks/",
       "purpose": "Arlington Heights Park District - park list; does Pioneer Park's page give its street address?",
       "item": 376,
-      "probed_at": "2026-10-31T14:10:27+00:00",
-      "status": 403,
+      "probed_at": "2026-10-31T21:59:58+00:00",
+      "status": 200,
       "final_url": "https://www.ahpd.org/parks/",
-      "content_type": "text/html; charset=iso-8859-1",
-      "bytes": 239,
-      "title": "403 Forbidden",
-      "feed_links": [],
-      "calendar_links": [],
+      "content_type": "text/html; charset=UTF-8",
+      "bytes": 138123,
+      "title": "Parks - Arlington Heights Park District",
+      "feed_links": [
+        {
+          "href": "https://www.ahpd.org/feed/",
+          "type": "application/rss+xml",
+          "title": "Arlington Heights Park District » Feed"
+        },
+        {
+          "href": "https://www.ahpd.org/events/?ical=1",
+          "type": "text/calendar",
+          "title": "Arlington Heights Park District » iCal Feed"
+        },
+        {
+          "href": "https://www.ahpd.org/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fwww.ahpd.org%2Fparks%2F",
+          "type": "application/json+oembed",
+          "title": "oEmbed (JSON)"
+        },
+        {
+          "href": "https://www.ahpd.org/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fwww.ahpd.org%2Fparks%2F&format=xml",
+          "type": "text/xml+oembed",
+          "title": "oEmbed (XML)"
+        },
+        {
+          "href": "https://www.ahpd.org/wp-json/wp/v2/pages/263",
+          "type": "application/json",
+          "title": "JSON"
+        },
+        {
+          "href": "https://www.ahpd.org/wp-json/tribe/events/v1/",
+          "type": "",
+          "title": ""
+        }
+      ],
+      "calendar_links": [
+        "https://www.ahpd.org/arlington-heights-historical-museum/"
+      ],
       "pattern_matches": {
-        "Pioneer Park": [],
-        "\\b\\d{2,5}\\s+(?:[NSEW]\\.?\\s+)?[A-Z][A-Za-z]+(?:\\s+[A-Z][A-Za-z]+)?\\s+(?:Ave|Avenue|St|Street|Rd|Road|Blvd|Dr|Drive|Ln|Lane)\\b": []
+        "Pioneer Park": [
+          {
+            "match": "Pioneer Park",
+            "context": "_nomargin\"> Pioneer Park Community Center"
+          }
+        ],
+        "\\b\\d{2,5}\\s+(?:[NSEW]\\.?\\s+)?[A-Z][A-Za-z]+(?:\\s+[A-Z][A-Za-z]+)?\\s+(?:Ave|Avenue|St|Street|Rd|Road|Blvd|Dr|Drive|Ln|Lane)\\b": [
+          {
+            "match": "410 N Arlington Heights Rd",
+            "context": "k\"> 410 N Arlington Heights Rd </a>"
+          },
+          {
+            "match": "660 N. Ridge Ave",
+            "context": "k\"> 660 N. Ridge Ave </a>"
+          },
+          {
+            "match": "1005 E Suffield Dr",
+            "context": "k\"> 1005 E Suffield Dr </a>"
+          },
+          {
+            "match": "500 S. Fernandez Ave",
+            "context": "k\"> 500 S. Fernandez Ave </a>"
+          }
+        ]
       },
       "followed": null
     },
@@ -40,7 +95,7 @@
       "url": "https://www.vah.com/",
       "purpose": "Arlington Heights - public-works leaf-pickup page (current URL, dates, rules)",
       "item": 323,
-      "probed_at": "2026-10-31T14:10:27+00:00",
+      "probed_at": "2026-10-31T22:00:00+00:00",
       "status": 200,
       "final_url": "https://www.vah.com/",
       "content_type": "text/html; charset=UTF-8",
@@ -71,7 +126,7 @@
       "url": "https://www.desplainesil.gov/",
       "purpose": "Des Plaines - public-works leaf-pickup page (current URL, dates, rules)",
       "item": 323,
-      "probed_at": "2026-10-31T14:10:27+00:00",
+      "probed_at": "2026-10-31T22:00:00+00:00",
       "status": 200,
       "final_url": "https://www.desplainesil.gov/Home",
       "content_type": "text/html; charset=utf-8",
@@ -94,7 +149,7 @@
         "url": "https://www.desplainesil.gov/Departments/Public-Works-and-Engineering/Street-Maintenance/Leaf-and-Branch-Collection",
         "purpose": "",
         "item": null,
-        "probed_at": "2026-10-31T14:10:29+00:00",
+        "probed_at": "2026-10-31T22:00:03+00:00",
         "status": 200,
         "final_url": "https://www.desplainesil.gov/Departments/Public-Works-and-Engineering/Street-Maintenance/Leaf-and-Branch-Collection",
         "content_type": "text/html; charset=utf-8",
@@ -200,7 +255,7 @@
       "url": "https://www.mountprospect.org/",
       "purpose": "Mount Prospect - public-works leaf-pickup page (current URL, dates, rules)",
       "item": 323,
-      "probed_at": "2026-10-31T14:10:30+00:00",
+      "probed_at": "2026-10-31T22:00:03+00:00",
       "status": 200,
       "final_url": "https://www.mountprospect.org/",
       "content_type": "text/html; charset=UTF-8",
@@ -223,7 +278,7 @@
         "url": "https://www.mountprospect.org/services/fall_leaf_collection.php",
         "purpose": "",
         "item": null,
-        "probed_at": "2026-10-31T14:10:30+00:00",
+        "probed_at": "2026-10-31T22:00:04+00:00",
         "status": 200,
         "final_url": "https://www.mountprospect.org/services/fall_leaf_collection.php",
         "content_type": "text/html; charset=UTF-8",
@@ -292,7 +347,7 @@
       "url": "https://www.palatine.il.us/",
       "purpose": "Palatine - public-works leaf-pickup page (current URL, dates, rules)",
       "item": 323,
-      "probed_at": "2026-10-31T14:10:31+00:00",
+      "probed_at": "2026-10-31T22:00:04+00:00",
       "status": 200,
       "final_url": "https://www.palatine.il.us/",
       "content_type": "text/html; charset=utf-8",
@@ -330,7 +385,7 @@
       "url": "https://www.wheelingil.gov/332/Refuse-Recycling-Yard-Waste",
       "purpose": "Wheeling - yard waste page; does it state leaf-pickup dates and rules?",
       "item": 323,
-      "probed_at": "2026-10-31T14:10:31+00:00",
+      "probed_at": "2026-10-31T22:00:05+00:00",
       "status": 200,
       "final_url": "https://www.wheelingil.gov/332/Refuse-Recycling-Yard-Waste",
       "content_type": "text/html; charset=utf-8",
@@ -351,7 +406,7 @@
       "url": "https://mpdowntown.com/events/",
       "purpose": "Downtown Mount Prospect - full text of the Downtown Trick-or-Treat section (is it a 2026 date?)",
       "item": 292,
-      "probed_at": "2026-10-31T14:10:32+00:00",
+      "probed_at": "2026-10-31T22:00:06+00:00",
       "status": 200,
       "final_url": "https://mpdowntown.com/events/",
       "content_type": "text/html; charset=UTF-8",
@@ -404,7 +459,7 @@
       "url": "https://events.harpercollege.edu/api/2/events?days=60&pp=100",
       "purpose": "Harper College (Localist) - venue ids, venue names and event types in use",
       "item": 286,
-      "probed_at": "2026-10-31T14:10:36+00:00",
+      "probed_at": "2026-10-31T22:00:10+00:00",
       "status": 200,
       "final_url": "https://events.harpercollege.edu/api/2/events?days=60&pp=100",
       "content_type": "application/json; charset=utf-8",
@@ -676,7 +731,7 @@
       "url": "https://www.sd25.org/calendar",
       "purpose": "Arlington Heights District 25 - does the calendar page list no-school dates in the HTML?",
       "item": 300,
-      "probed_at": "2026-10-31T14:10:39+00:00",
+      "probed_at": "2026-10-31T22:00:14+00:00",
       "status": 200,
       "final_url": "https://www.sd25.org/calendar-73",
       "content_type": "text/html; charset=utf-8",
@@ -697,11 +752,11 @@
       "url": "https://ccsd21.org/parent-resources/calendars/",
       "purpose": "Wheeling CCSD 21 - does the calendars page link a 2026-27 calendar and list no-school dates?",
       "item": 300,
-      "probed_at": "2026-10-31T14:10:42+00:00",
+      "probed_at": "2026-10-31T22:00:16+00:00",
       "status": 403,
       "final_url": "https://ccsd21.org/parent-resources/calendars/",
       "content_type": "text/html; charset=UTF-8",
-      "bytes": 8318,
+      "bytes": 8316,
       "title": "Access denied | ccsd21.org used Cloudflare to restrict access | ccsd21.org | Cloudflare",
       "feed_links": [],
       "calendar_links": [],
@@ -715,7 +770,7 @@
       "url": "https://www.d62.org/calendars",
       "purpose": "Des Plaines District 62 - official 2026-27 calendar",
       "item": 300,
-      "probed_at": "2026-10-31T14:10:42+00:00",
+      "probed_at": "2026-10-31T22:00:17+00:00",
       "status": 200,
       "final_url": "https://www.d62.org/calendars",
       "content_type": "text/html; charset=utf-8",
@@ -865,7 +920,7 @@
         "url": "https://resources.finalsite.net/images/v1771602096/d62org/huubad2axs3m2rrnnwjm/District62Ten-MonthSchoolsCalendar2026-2027FINAL.pdf",
         "purpose": "",
         "item": null,
-        "probed_at": "2026-10-31T14:10:44+00:00",
+        "probed_at": "2026-10-31T22:00:19+00:00",
         "status": 200,
         "final_url": "https://resources.finalsite.net/images/v1771602096/d62org/huubad2axs3m2rrnnwjm/District62Ten-MonthSchoolsCalendar2026-2027FINAL.pdf",
         "content_type": "application/pdf",
@@ -880,7 +935,7 @@
       "url": "https://www.d214.org/calendar",
       "purpose": "High School District 214 - official 2026-27 calendar",
       "item": 300,
-      "probed_at": "2026-10-31T14:10:44+00:00",
+      "probed_at": "2026-10-31T22:00:20+00:00",
       "status": 404,
       "final_url": "https://www.d214.org/calendar",
       "content_type": "text/html;charset=utf-8",
@@ -931,7 +986,7 @@
       "url": "https://www.phspirateboosters.com/",
       "purpose": "Palatine HS Pirate Boosters - is a craft-fair contact (a role mailbox) published on the club's own site?",
       "item": 409,
-      "probed_at": "2026-10-31T14:10:44+00:00",
+      "probed_at": "2026-10-31T22:00:20+00:00",
       "status": 200,
       "final_url": "https://phspirateboosters.com/",
       "content_type": "text/html; charset=UTF-8",
@@ -983,7 +1038,7 @@
         "url": "https://phspirateboosters.com/craft-fair/",
         "purpose": "",
         "item": null,
-        "probed_at": "2026-10-31T14:10:46+00:00",
+        "probed_at": "2026-10-31T22:00:22+00:00",
         "status": 200,
         "final_url": "https://phspirateboosters.com/craft-fair/",
         "content_type": "text/html; charset=UTF-8",
@@ -1075,465 +1130,54 @@
       }
     },
     {
-      "url": "https://www.elkgroveparks.org/events/?ical=1",
-      "purpose": "Elk Grove Village Park District - The Events Calendar iCal on /events/",
+      "url": "https://www.cityrm.org/common/modules/iCalendar/iCalendar.aspx?catID=14&feed=calendar",
+      "purpose": "City of Rolling Meadows - CivicEngage Main Calendar iCal export (catID 14 guessed from calendar.aspx's category ids)",
       "item": 422,
-      "probed_at": "2026-10-31T14:10:46+00:00",
-      "status": 403,
-      "final_url": "https://www.elkgroveparks.org/events/?ical=1",
-      "content_type": "text/html; charset=UTF-8",
-      "bytes": 5607,
-      "title": "Just a moment...",
-      "feed_links": [],
-      "calendar_links": [],
-      "pattern_matches": {
-        "BEGIN:VEVENT": []
-      }
-    },
-    {
-      "url": "https://www.elkgroveparks.org/wp-json/tribe/events/v1/events?per_page=5",
-      "purpose": "Elk Grove Village Park District - The Events Calendar REST route",
-      "item": 422,
-      "probed_at": "2026-10-31T14:10:47+00:00",
-      "status": 403,
-      "final_url": "https://www.elkgroveparks.org/wp-json/tribe/events/v1/events?per_page=5",
-      "content_type": "text/html; charset=UTF-8",
-      "bytes": 5731,
-      "title": "Just a moment...",
-      "feed_links": [],
-      "calendar_links": [],
-      "pattern_matches": {
-        "\"events\":\\s*\\[": [],
-        "\"title\":\"[^\"]{3,80}\"": []
-      }
-    },
-    {
-      "url": "https://www.elkgroveparks.org/events/list",
-      "purpose": "Elk Grove Village Park District - the public list page (does it render events in plain HTML?)",
-      "item": 422,
-      "probed_at": "2026-10-31T14:10:47+00:00",
-      "status": 403,
-      "final_url": "https://www.elkgroveparks.org/events/list",
-      "content_type": "text/html; charset=UTF-8",
-      "bytes": 5583,
-      "title": "Just a moment...",
-      "feed_links": [],
-      "calendar_links": [],
-      "pattern_matches": {
-        "(?i)tribe-events-calendar-list__event-title[^<]{0,200}": [],
-        "(?i)<time[^>]{0,120}datetime=\"[^\"]+\"": []
-      }
-    },
-    {
-      "url": "https://www.rmparks.org/",
-      "purpose": "Rolling Meadows Park District - home page; any events calendar or feed link",
-      "item": 422,
-      "probed_at": "2026-10-31T14:10:47+00:00",
+      "probed_at": "2026-10-31T22:00:22+00:00",
       "status": 200,
-      "final_url": "https://www.rmparks.org/",
-      "content_type": "text/html; charset=UTF-8",
-      "bytes": 101123,
-      "title": "Home",
-      "feed_links": [],
-      "calendar_links": [],
+      "final_url": "https://www.cityrm.org/common/modules/iCalendar/iCalendar.aspx?catID=14&feed=calendar",
+      "content_type": "text/calendar; charset=utf-8",
+      "bytes": 1418,
+      "ics_event_count": 2,
       "pattern_matches": {
-        "(?i)(?:ical|\\.ics|/events|calendar)[^\"<]{0,100}": [
+        "BEGIN:VEVENT": [
           {
-            "match": "ical",
-            "context": "\"image/png\" href=\"/images/favicon.png\"> <link rel=\"canonical\" href=\"https://rmparks.org/\"> <link rel=\"stylesheet\" h"
-          },
-          {
-            "match": "calendar/events/pumpkin-smash-2019548367",
-            "context": "<a title=\"\" href=\"https://rmparks.org/district-calendar/events/pumpkin-smash-2019548367\"> <img c"
-          },
-          {
-            "match": "calendar",
-            "context": "ss=\"callout-content\"> <p><a href=\"/district-calendar\"><img class=\"cms-icon\" src=\"/upload/icon_calendar.png\" alt="
-          },
-          {
-            "match": "calendar.png",
-            "context": "/district-calendar\"><img class=\"cms-icon\" src=\"/upload/icon_calendar.png\" alt=\"icon_calendar\" /></a></p> <p><a href=\"/district-cale"
-          },
-          {
-            "match": "Calendar",
-            "context": "calendar\" /></a></p> <p><a href=\"/district-calendar\">Event Calendar</a></p> </div> </div> <div cla"
-          },
-          {
-            "match": "calendar/events/spooky-skate-7834251690",
-            "context": "class=\"img-holder\"> <a href=\"/district-calendar/events/spooky-skate-7834251690\"> <img alt=\"Spooky Skate\" src=\"/upl"
-          },
-          {
-            "match": "calendar-thumbs/Spooky Skate Calendar  (1)_thumb2.jpg",
-            "context": "<img alt=\"Spooky Skate\" src=\"/upload/calendar-thumbs/Spooky Skate Calendar (1)_thumb2.jpg\"> </a> </div>"
-          },
-          {
-            "match": "calendar/events/",
-            "context": "</div> <!-- <a href=\"/calendar/events/<?/*= $event[\"url\"]; */?>\" aria-label=\"<?/*= $event[\"title\"]"
-          },
-          {
-            "match": "calendar btn-calendar-primary",
-            "context": "?>\" aria-label=\"<?/*= $event[\"title\"]; */?>\" class=\"btn btn-calendar btn-calendar-primary\">Read More</a> --> </div> </div>"
-          },
-          {
-            "match": "calendar/events/spooky-skate--2640953718",
-            "context": "class=\"img-holder\"> <a href=\"/district-calendar/events/spooky-skate--2640953718\"> <img alt=\"Spooky Skate \" src=\"/up"
-          },
-          {
-            "match": "calendar-thumbs/Spooky Skate Calendar  (1)_thumb1.jpg",
-            "context": "<img alt=\"Spooky Skate \" src=\"/upload/calendar-thumbs/Spooky Skate Calendar (1)_thumb1.jpg\"> </a> </div>"
-          },
-          {
-            "match": "calendar/events/family-flashlight-walk--3089261457",
-            "context": "class=\"img-holder\"> <a href=\"/district-calendar/events/family-flashlight-walk--3089261457\"> <img alt=\"Family Flashlight Walk"
-          },
-          {
-            "match": "calendar-thumbs/Family Flashlight Walk _thumb.jpg",
-            "context": "<img alt=\"Family Flashlight Walk \" src=\"/upload/calendar-thumbs/Family Flashlight Walk _thumb.jpg\"> </a> </div>"
-          },
-          {
-            "match": "calendar-thumbs/pumpkin smash (1)_thumb.jpg",
-            "context": "<img alt=\"Pumpkin Smash\" src=\"/upload/calendar-thumbs/pumpkin smash (1)_thumb.jpg\"> </a> </div>"
-          },
-          {
-            "match": "calendar/events/thanksgiving-luncheon--9513084726",
-            "context": "class=\"img-holder\"> <a href=\"/district-calendar/events/thanksgiving-luncheon--9513084726\"> <img alt=\"Thanksgiving Luncheon \""
-          },
-          {
-            "match": "calendar-thumbs/Thanksgiving Luncheon 2025 (260 x 240 px) (3)_thumb.jpg",
-            "context": "<img alt=\"Thanksgiving Luncheon \" src=\"/upload/calendar-thumbs/Thanksgiving Luncheon 2025 (260 x 240 px) (3)_thumb.jpg\"> </a> </div>"
-          },
-          {
-            "match": "calendar/events/santa-s-workshop--9am-timeslot--2430698715",
-            "context": "class=\"img-holder\"> <a href=\"/district-calendar/events/santa-s-workshop--9am-timeslot--2430698715\"> <img alt=\"Santa's Workshop: 9am T"
-          },
-          {
-            "match": "calendar-thumbs/SW graphic_thumb.jpg",
-            "context": "<img alt=\"Santa's Workshop: 9am Timeslot \" src=\"/upload/calendar-thumbs/SW graphic_thumb.jpg\"> </a> </div>"
-          },
-          {
-            "match": "calendar/events/santa-s-workshop--11am-timeslot-",
-            "context": "class=\"img-holder\"> <a href=\"/district-calendar/events/santa-s-workshop--11am-timeslot-\"> <img alt=\"Santa's Workshop: 11am"
-          },
-          {
-            "match": "calendar-thumbs/SW graphic_thumb1.jpg",
-            "context": "<img alt=\"Santa's Workshop: 11am Timeslot \" src=\"/upload/calendar-thumbs/SW graphic_thumb1.jpg\"> </a> </div>"
+            "match": "BEGIN:VEVENT",
+            "context": "TFROM:-0600 TZOFFSETTO:-0500 END:DAYLIGHT END:VTIMEZONE BEGIN:VEVENT DESCRIPTION: https://www.cityrm.org/calendar.aspx?EID=1841"
           }
-        ]
-      },
-      "followed": {
-        "url": "https://www.rmparks.org/special-events",
-        "purpose": "",
-        "item": null,
-        "probed_at": "2026-10-31T14:10:47+00:00",
-        "status": 200,
-        "final_url": "https://www.rmparks.org/special-events",
-        "content_type": "text/html; charset=UTF-8",
-        "bytes": 76416,
-        "title": "Special Events | Things to Do | Rolling Meadows Park District",
-        "feed_links": [],
-        "calendar_links": [],
-        "pattern_matches": {
-          "(?i)(?:ical|\\.ics|/events|calendar)[^\"<]{0,100}": [
-            {
-              "match": "ical",
-              "context": "\"image/png\" href=\"/images/favicon.png\"> <link rel=\"canonical\" href=\"https://rmparks.org/special-events\"> <link rel="
-            },
-            {
-              "match": "calendar",
-              "context": "ss=\"callout-content\"> <p><a href=\"/district-calendar\"><img class=\"cms-icon\" src=\"/upload/icon_calendar.png\" alt="
-            },
-            {
-              "match": "calendar.png",
-              "context": "/district-calendar\"><img class=\"cms-icon\" src=\"/upload/icon_calendar.png\" alt=\"icon_calendar\" /></a></p> <p><a href=\"/district-cale"
-            },
-            {
-              "match": "Calendar",
-              "context": "calendar\" /></a></p> <p><a href=\"/district-calendar\">Event Calendar</a></p> </div> </div> <div cla"
-            },
-            {
-              "match": "calendar/events/spooky-skate-7834251690",
-              "context": "<li> <a href=\"/district-calendar/events/spooky-skate-7834251690\"> <div class=\"event-date\">"
-            },
-            {
-              "match": "calendar-thumbs/Spooky Skate Calendar  (1)_thumb2.jpg",
-              "context": "<img src=\"/upload/calendar-thumbs/Spooky Skate Calendar (1)_thumb2.jpg\" alt=\"Spooky Skate\" class=\"event-img\">"
-            },
-            {
-              "match": "calendar/events/spooky-skate--2640953718",
-              "context": "<li> <a href=\"/district-calendar/events/spooky-skate--2640953718\"> <div class=\"event-date\">"
-            },
-            {
-              "match": "calendar-thumbs/Spooky Skate Calendar  (1)_thumb1.jpg",
-              "context": "<img src=\"/upload/calendar-thumbs/Spooky Skate Calendar (1)_thumb1.jpg\" alt=\"Spooky Skate \" class=\"event-img\">"
-            },
-            {
-              "match": "calendar/events/family-flashlight-walk--3089261457",
-              "context": "<li> <a href=\"/district-calendar/events/family-flashlight-walk--3089261457\"> <div class=\"event-date\">"
-            },
-            {
-              "match": "calendar-thumbs/Family Flashlight Walk _thumb.jpg",
-              "context": "<img src=\"/upload/calendar-thumbs/Family Flashlight Walk _thumb.jpg\" alt=\"Family Flashlight Walk \" class=\"event-img\">"
-            },
-            {
-              "match": "calendar/events/pumpkin-smash-2019548367",
-              "context": "<li> <a href=\"/district-calendar/events/pumpkin-smash-2019548367\"> <div class=\"event-date\">"
-            },
-            {
-              "match": "calendar-thumbs/pumpkin smash (1)_thumb.jpg",
-              "context": "<img src=\"/upload/calendar-thumbs/pumpkin smash (1)_thumb.jpg\" alt=\"Pumpkin Smash\" class=\"event-img\">"
-            },
-            {
-              "match": "calendar/events/park-district-board-meeting-9201845376",
-              "context": "<li> <a href=\"/district-calendar/events/park-district-board-meeting-9201845376\"> <div class=\"event-date\">"
-            },
-            {
-              "match": "calendar/events/thanksgiving-luncheon--9513084726",
-              "context": "<li> <a href=\"/district-calendar/events/thanksgiving-luncheon--9513084726\"> <div class=\"event-date\">"
-            },
-            {
-              "match": "calendar-thumbs/Thanksgiving Luncheon 2025 (260 x 240 px) (3)_thumb.jpg",
-              "context": "<img src=\"/upload/calendar-thumbs/Thanksgiving Luncheon 2025 (260 x 240 px) (3)_thumb.jpg\" alt=\"Thanksgiving Luncheon \" class=\"event-img\">"
-            },
-            {
-              "match": "calendar/events/santa-s-workshop--9am-timeslot--2430698715",
-              "context": "<li> <a href=\"/district-calendar/events/santa-s-workshop--9am-timeslot--2430698715\"> <div class=\"event-date\">"
-            },
-            {
-              "match": "calendar-thumbs/SW graphic_thumb.jpg",
-              "context": "<img src=\"/upload/calendar-thumbs/SW graphic_thumb.jpg\" alt=\"Santa's Workshop: 9am Timeslot \" class=\"event-img\">"
-            },
-            {
-              "match": "calendar/events/santa-s-workshop--11am-timeslot-",
-              "context": "<li> <a href=\"/district-calendar/events/santa-s-workshop--11am-timeslot-\"> <div class=\"event-date\">"
-            },
-            {
-              "match": "calendar-thumbs/SW graphic_thumb1.jpg",
-              "context": "<img src=\"/upload/calendar-thumbs/SW graphic_thumb1.jpg\" alt=\"Santa's Workshop: 11am Timeslot \" class=\"event-img\">"
-            },
-            {
-              "match": "calendar/events/park-district-board-meeting-0862357149",
-              "context": "<li> <a href=\"/district-calendar/events/park-district-board-meeting-0862357149\"> <div class=\"event-date\">"
-            }
-          ]
-        }
-      }
-    },
-    {
-      "url": "https://www.elkgrove.org/",
-      "purpose": "Village of Elk Grove Village - home page; calendar or feed link",
-      "item": 422,
-      "probed_at": "2026-10-31T14:10:47+00:00",
-      "status": 403,
-      "final_url": "https://www.elkgrove.org/",
-      "content_type": "text/html",
-      "bytes": 408,
-      "title": "Access Denied",
-      "feed_links": [],
-      "calendar_links": [],
-      "pattern_matches": {
-        "(?i)(?:ical|\\.ics|rss|calendar)[^\"<]{0,100}": []
-      },
-      "followed": null
-    },
-    {
-      "url": "https://www.cityrm.org/",
-      "purpose": "City of Rolling Meadows - home page; calendar or feed link",
-      "item": 422,
-      "probed_at": "2026-10-31T14:10:48+00:00",
-      "status": 200,
-      "final_url": "https://www.cityrm.org/",
-      "content_type": "text/html; charset=utf-8",
-      "bytes": 113966,
-      "title": "Rolling Meadows, IL - Official Website | Official WebsiteArrow LeftArrow RightSlideshow Left ArrowSlideshow Right Arrow",
-      "feed_links": [],
-      "calendar_links": [
-        "https://www.cityrm.org/CivicAlerts.aspx?CID=10",
-        "https://www.cityrm.org/609/Live-Feed"
-      ],
-      "pattern_matches": {
-        "(?i)(?:ical|\\.ics|rss|calendar)[^\"<]{0,100}": [
-          {
-            "match": "ically added here -->\n\t\t",
-            "context": "up\" id=\"actionButtons\"> <!-- Action buttons will be dynamically added here --> </div> </div> </div> <div id=\"fb-root\"></div> <div id"
-          },
-          {
-            "match": "icAlerts.aspx?CID=10",
-            "context": "84b8-11196bb29fd4\" class=\"widgetViewAll\" style=\"\" href=\"/CivicAlerts.aspx?CID=10\">View All News</a> </div> <div class=\"widgetFooter\">"
-          },
-          {
-            "match": "icAlerts.aspx",
-            "context": "class=\"addItemModal hidden\"> <div class=\"url hidden\">/CivicAlerts.aspx</div> </div> </section> </div> </di"
-          },
-          {
-            "match": "Calendar -->",
-            "context": "> <!-- outer row --> </div> </div></div> </div><!-- Calendar --><div data-cpRole=\"structuralContainer\" id=\"homeContainer2\">"
-          },
-          {
-            "match": "CALENDAR",
-            "context": "<li class=\"InfoAdvanced widgetItem fr-view\"> <p>MARK YOUR CALENDAR</p> </li> </ol> </div> </div> </div> <di"
-          },
-          {
-            "match": "Calendar/Widget",
-            "context": "-8bae-4f5d-8a4c-d2e38a68a9d0\" data-widget-controller-path=\"/Calendar/Widget\"> <script src=\"/Areas/Calendar/Assets/Scripts/Calendar.js"
-          },
-          {
-            "match": "Calendar/Assets/Scripts/Calendar.js",
-            "context": "t-controller-path=\"/Calendar/Widget\"> <script src=\"/Areas/Calendar/Assets/Scripts/Calendar.js\"></script>"
-          },
-          {
-            "match": "Calendard95b6543-8bae-4f5d-8a4c-d2e38a68a9d0",
-            "context": "<div id=\"widgetCalendard95b6543-8bae-4f5d-8a4c-d2e38a68a9d0\" class=\"widget widgetCalendar skin69 widgetOptionSet35 narr"
-          },
-          {
-            "match": "Calendar skin69 widgetOptionSet35 narrow",
-            "context": "ard95b6543-8bae-4f5d-8a4c-d2e38a68a9d0\" class=\"widget widgetCalendar skin69 widgetOptionSet35 narrow\" data-modulewidgettype=\"calendar\" data-elementqueryclasses="
-          },
-          {
-            "match": "calendar",
-            "context": "dar skin69 widgetOptionSet35 narrow\" data-modulewidgettype=\"calendar\" data-elementqueryclasses='{\"wide-narrow\":\"min-width:69em\"}"
-          },
-          {
-            "match": "calendarInnerWrapper",
-            "context": "ss=\"widgetBody cpGrid cpGrid2 mediaLeft\"> <div class=\"calendarInnerWrapper\"> <div data-minicalendar=\"true\" class=\"miniCalendar me"
-          },
-          {
-            "match": "icalendar=",
-            "context": "> <div class=\"calendarInnerWrapper\"> <div data-minicalendar=\"true\" class=\"miniCalendar media\" style=\"width: 45%; \"> <di"
-          },
-          {
-            "match": "iCalendar media",
-            "context": "InnerWrapper\"> <div data-minicalendar=\"true\" class=\"miniCalendar media\" style=\"width: 45%; \"> <div id=\"miniCalendarAnnouncementd9"
-          },
-          {
-            "match": "iCalendarAnnouncementd95b6543-8bae-4f5d-8a4c-d2e38a68a9d0",
-            "context": "ass=\"miniCalendar media\" style=\"width: 45%; \"> <div id=\"miniCalendarAnnouncementd95b6543-8bae-4f5d-8a4c-d2e38a68a9d0\" aria-live=\"polite\" aria-atomic=\"true\" class=\"visuallyhidde"
-          },
-          {
-            "match": "iCalendarHeader miniCalendarHeader--hasArrows",
-            "context": "oRender\" data-year=\"2026\" data-month=\"10\" /> <h3 class=\"miniCalendarHeader miniCalendarHeader--hasArrows\" role=\"presentation\"><button aria-label=\"Previous Month, cu"
-          },
-          {
-            "match": "iCalendar-arrow cp-miniCalendar-arrow--left cp-Btn--nonStyled",
-            "context": "rent month October 2026, go to September 2026\" class=\"cp-miniCalendar-arrow cp-miniCalendar-arrow--left cp-Btn--nonStyled\"><svg><use xmlns:xlink=\"http://www.w3.org/1999/xlink\" xlink"
-          },
-          {
-            "match": "iCalendar-title",
-            "context": "=\"#iconArrow--left\"></use></svg></button><span class=\"cp-miniCalendar-title\" id=\"miniCalendarHeaderd95b6543-8bae-4f5d-8a4c-d2e38a68a9d0"
-          },
-          {
-            "match": "iCalendarHeaderd95b6543-8bae-4f5d-8a4c-d2e38a68a9d0",
-            "context": "e></svg></button><span class=\"cp-miniCalendar-title\" id=\"miniCalendarHeaderd95b6543-8bae-4f5d-8a4c-d2e38a68a9d0\" role=\"heading\" aria-level=\"3\">October 2026</span><button a"
-          },
-          {
-            "match": "iCalendar-arrow cp-miniCalendar-arrow--right cp-Btn--nonStyled",
-            "context": "rrent month October 2026, go to November 2026\" class=\"cp-miniCalendar-arrow cp-miniCalendar-arrow--right cp-Btn--nonStyled\"><svg><use xmlns:xlink=\"http://www.w3.org/1999/xlink\" xlink"
-          },
-          {
-            "match": "calendar displaying days of the month in a grid format. Each row corresponds to a week, and each column corr",
-            "context": "8a4c-d2e38a68a9d0\" summary=\"This table represents a monthly calendar displaying days of the month in a grid format. Each row corresponds to a week, and each column corresponds to a day of the week, starting with Sunday. The tabl"
-          }
-        ]
-      },
-      "followed": {
-        "url": "https://www.cityrm.org/calendar.aspx?CID=27,35,26,33,34,14,29",
-        "purpose": "",
-        "item": null,
-        "probed_at": "2026-10-31T14:10:48+00:00",
-        "status": 200,
-        "final_url": "https://www.cityrm.org/calendar.aspx?CID=27,35,26,33,34,14,29",
-        "content_type": "text/html; charset=utf-8",
-        "bytes": 116157,
-        "title": "Calendar • Rolling Meadows, IL • CivicEngageFacilitySubmit EventPrintEmailEvent SubscriptionView RSS FeedsSelect on CalendarExpandCollapsePreviousNextDownUpMapShareShow moreAgendaArrow LeftArrow Right",
-        "feed_links": [],
-        "calendar_links": [
-          "https://www.cityrm.org/iCalendar.aspx",
-          "https://www.cityrm.org/rss.aspx#calendar",
-          "https://www.cityrm.org/609/Live-Feed"
         ],
-        "pattern_matches": {
-          "(?i)(?:ical|\\.ics|rss|calendar)[^\"<]{0,100}": [
-            {
-              "match": "Calendar • Rolling Meadows, IL • CivicEngage",
-              "context": "href=\"/images/favicon.ico\" type=\"image/x-icon\" /> <title>Calendar • Rolling Meadows, IL • CivicEngage</title> <script src=\"/Assets/Scripts/jQuery/jquery-3."
-            },
-            {
-              "match": "ically added here -->\n\t\t",
-              "context": "up\" id=\"actionButtons\"> <!-- Action buttons will be dynamically added here --> </div> </div> </div> <div id=\"fb-root\"></div> <div id"
-            },
-            {
-              "match": "Calendar",
-              "context": "</a></li><li><a href class=\"breadCrumb\" aria-current=\"page\">Calendar</a></li> </ol> </div> <div data-cpRole=\""
-            },
-            {
-              "match": "calendar.aspx?CID=27%2c35%2c26%2c33%2c34%2c14%2c29",
-              "context": "-> <form name=\"aspnetForm\" method=\"post\" action=\"./calendar.aspx?CID=27%2c35%2c26%2c33%2c34%2c14%2c29\" id=\"aspnetForm\" style=\"display:inline;\" onsubmit=\"return h"
-            },
-            {
-              "match": "RssBehavior.js",
-              "context": "iv id=\"contentarea\" ></div> <script src=\"/Assets/Scripts/RssBehavior.js\"></script> <script src=\"/common/modules/Calendar/Calendar."
-            },
-            {
-              "match": "Calendar/Calendar.js",
-              "context": "pts/RssBehavior.js\"></script> <script src=\"/common/modules/Calendar/Calendar.js\"></script> <script src=\"/Scripts/jquery.urlToLink.min.js\">"
-            },
-            {
-              "match": "Calendar/CalendarSite.css",
-              "context": ".urlToLink.min.js\"></script> <link href=\"/Common/Modules/Calendar/CalendarSite.css\" rel=\"stylesheet\" /> <link href=\"/141947727.css\" rel=\""
-            },
-            {
-              "match": "Calendar/print.css",
-              "context": "link rel=\"stylesheet\" type=\"text/css\" href=\"/common/modules/Calendar/print.css\" media=\"print\"> <div id=\"CalendarContent\" class=\"newCP m"
-            },
-            {
-              "match": "CalendarContent",
-              "context": "mmon/modules/Calendar/print.css\" media=\"print\"> <div id=\"CalendarContent\" class=\"newCP moduleContentNew\"> <div class=\"printHeader\""
-            },
-            {
-              "match": "Calendar\t  ",
-              "context": "ass=\"header\" style=\"\"> <div class=\"text\"> <h1> Calendar </h1> <p style=\"padding-left:5px\">View All Calendars is the"
-            },
-            {
-              "match": "Calendars is the default. Choose Select a Calendar to view a specific calendar. Subscribe to calendar notifi",
-              "context": "h1> Calendar </h1> <p style=\"padding-left:5px\">View All Calendars is the default. Choose Select a Calendar to view a specific calendar. Subscribe to calendar notifications by clicking on the Notify Me® button, and you will a"
-            },
-            {
-              "match": "ically be alerted about the latest events in our community.",
-              "context": "s by clicking on the Notify Me® button, and you will automatically be alerted about the latest events in our community.</p> </div> <div id=\"subheader\" class=\"nav\">"
-            },
-            {
-              "match": "Calendar View",
-              "context": "<div id=\"subheader\" class=\"nav\"> <nav aria-label=\"Calendar View\"> <ul class=\"tabs\"> <li id=\"ctl00_ctl00_Ma"
-            },
-            {
-              "match": "calendar.aspx?view=list&amp;CID=27,35,26,33,34,14,29",
-              "context": "0_ctl00_MainContent_ModuleContent_ctl00_lnkListView\" href=\"/calendar.aspx?view=list&amp;CID=27,35,26,33,34,14,29\"><span>List</span></a> </li> <li id=\"ctl0"
-            },
-            {
-              "match": "calendar.aspx?view=week&amp;CID=27,35,26,33,34,14,29",
-              "context": "0_ctl00_MainContent_ModuleContent_ctl00_lnkWeekView\" href=\"/calendar.aspx?view=week&amp;CID=27,35,26,33,34,14,29\"><span>Week</span></a> </li> <li id=\"ctl0"
-            },
-            {
-              "match": "calendar.aspx?view=month&amp;CID=27,35,26,33,34,14,29",
-              "context": "_ctl00_MainContent_ModuleContent_ctl00_lnkMonthView\" href=\"/calendar.aspx?view=month&amp;CID=27,35,26,33,34,14,29\"><span>Month</span></a> </li> </ul> </"
-            },
-            {
-              "match": "calendar",
-              "context": "<a aria-label=\"Notify Me\" href=\"/list.aspx?Mode=Subscribe#calendar\"> <svg aria-hidden=\"true\"><use href=\"#iconEmail\"></u"
-            },
-            {
-              "match": "ICal",
-              "context": "<li id=\"ctl00_ctl00_MainContent_ModuleContent_ctl00_liICal\"> <a id=\"ctl00_ctl00_MainContent_ModuleContent_ctl"
-            },
-            {
-              "match": "iCal",
-              "context": "<a id=\"ctl00_ctl00_MainContent_ModuleContent_ctl00_lnkiCal\" aria-label=\"Subscribe To ICalendar\" href=\"/iCalendar.aspx\""
-            },
-            {
-              "match": "ICalendar",
-              "context": "ntent_ModuleContent_ctl00_lnkiCal\" aria-label=\"Subscribe To ICalendar\" href=\"/iCalendar.aspx\"> <svg aria-hidden=\"true\"><us"
-            }
-          ]
-        }
+        "SUMMARY:[^\\r\\n]{3,80}": [
+          {
+            "match": "SUMMARY:Holiday Celebration",
+            "context": "choff Road</p> - Rolling Meadows IL 60008 SEQUENCE:0 SUMMARY:Holiday Celebration UID:1841 URL:/common/modules/iCalendar/iCalendar.aspx?fee"
+          },
+          {
+            "match": "SUMMARY:Veterans Dinner",
+            "context": "dian Banquets</p> - Rolling Meadows IL 60008 SEQUENCE:0 SUMMARY:Veterans Dinner UID:1840 URL:/common/modules/iCalendar/iCalendar.aspx?fee"
+          }
+        ]
+      }
+    },
+    {
+      "url": "https://rmparks.org/district-calendar",
+      "purpose": "Rolling Meadows Park District - the calendar page; event links and dates",
+      "item": 422,
+      "probed_at": "2026-10-31T22:00:23+00:00",
+      "status": 200,
+      "final_url": "https://rmparks.org/district-calendar",
+      "content_type": "text/html; charset=UTF-8",
+      "bytes": 35461,
+      "title": "District Calendar",
+      "feed_links": [],
+      "calendar_links": [],
+      "pattern_matches": {
+        "/district-calendar/events/[a-z0-9-]+": [],
+        "(?i)(?:jan|feb|mar|apr|may|jun|jul|aug|sep|oct|nov|dec)[a-z]*\\.? \\d{1,2}[^<]{0,60}": [
+          {
+            "match": "October 2026",
+            "context": "center\" valign=\"top\" colspan=\"5\"><h2 class=\"calendar-title\">October 2026</h2></td> <td align=\"center\" valign=\"top\" class=\"next\"><a d"
+          }
+        ]
       }
     }
   ]
