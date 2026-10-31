@@ -178,19 +178,41 @@ probes:
       - '(?i)phscraft@[a-z0-9.-]+'
       - '(?i)craft fair[^<]{0,200}'
     follow: '(?i)craft'
-  # Round 24 (item 416): the two candidate sixth towns. Do their calendars have feeds the existing adapters read?
-  - url: https://egvpl.libnet.info/feeds?data=eyJmZWVkVHlwZSI6InJzcyIsImZpbHRlcnMiOnsibG9jYXRpb24iOlsiYWxsIl0sImFnZXMiOlsiYWxsIl0sInR5cGVzIjpbImFsbCJdLCJ0YWdzIjpbXSwidGVybSI6IiIsImRheXMiOjMwfX0=
-    item: 416
-    purpose: Elk Grove Village Public Library - LibNet (Communico) RSS feed, all locations, 30 days
-    patterns:
-      - '<item>'
-  - url: https://rmlib.libnet.info/feeds?data=eyJmZWVkVHlwZSI6InJzcyIsImZpbHRlcnMiOnsibG9jYXRpb24iOlsiYWxsIl0sImFnZXMiOlsiYWxsIl0sInR5cGVzIjpbImFsbCJdLCJ0YWdzIjpbXSwidGVybSI6IiIsImRheXMiOjMwfX0=
-    item: 416
-    purpose: Rolling Meadows Library - LibNet (Communico) RSS feed, all locations, 30 days
-    patterns:
-      - '<item>'
-  - url: https://www.elkgroveparks.org/events/list/?ical=1
-    item: 416
-    purpose: Elk Grove Village Park District - The Events Calendar iCal feed
+  # Round 24 answered (item 416): the Elk Grove Village and Rolling Meadows library feeds are live
+  # (200, RSS); elkgroveparks.org/events/list/?ical=1 gave 403 to the runner.
+  # Round 25 (item 422): the candidates' park districts and villages, other routes to a feed.
+  - url: https://www.elkgroveparks.org/events/?ical=1
+    item: 422
+    purpose: Elk Grove Village Park District - The Events Calendar iCal on /events/
     patterns:
       - 'BEGIN:VEVENT'
+  - url: https://www.elkgroveparks.org/wp-json/tribe/events/v1/events?per_page=5
+    item: 422
+    purpose: Elk Grove Village Park District - The Events Calendar REST route
+    patterns:
+      - '"events":\s*\['
+      - '"title":"[^"]{3,80}"'
+  - url: https://www.elkgroveparks.org/events/list
+    item: 422
+    purpose: Elk Grove Village Park District - the public list page (does it render events in plain HTML?)
+    patterns:
+      - '(?i)tribe-events-calendar-list__event-title[^<]{0,200}'
+      - '(?i)<time[^>]{0,120}datetime="[^"]+"'
+  - url: https://www.rmparks.org/
+    item: 422
+    purpose: Rolling Meadows Park District - home page; any events calendar or feed link
+    patterns:
+      - '(?i)(?:ical|\.ics|/events|calendar)[^"<]{0,100}'
+    follow: '(?i)events|calendar'
+  - url: https://www.elkgrove.org/
+    item: 422
+    purpose: Village of Elk Grove Village - home page; calendar or feed link
+    patterns:
+      - '(?i)(?:ical|\.ics|rss|calendar)[^"<]{0,100}'
+    follow: '(?i)calendar|events'
+  - url: https://www.cityrm.org/
+    item: 422
+    purpose: City of Rolling Meadows - home page; calendar or feed link
+    patterns:
+      - '(?i)(?:ical|\.ics|rss|calendar)[^"<]{0,100}'
+    follow: '(?i)calendar|events'

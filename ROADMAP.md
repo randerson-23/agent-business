@@ -220,7 +220,7 @@ doesn't re-suggest something already shipped.
 
 **Build queue (by deadline; refreshed by the research loop, item 346).**
 Pick from the top unless the owner has flagged something else:
-0. **422** (candidate park districts and villages; the town-six decision otherwise rests on library counts). **423** (market rates in the sponsor kit).
+0. **422** (candidate park districts and villages; the town-six decision otherwise rests on library counts).
 0. **416** (steps 1-2 done, measuring until about Nov 13; earlier note: step 1: round-24 probes for the candidates' feeds are in `config/url_probes.yaml` (egvpl.libnet.info, rmlib.libnet.info, elkgroveparks.org found by search; no Rolling Meadows park district calendar found); next: read the answers, then write the `_candidate-*.yaml` shadow files and the counts file). **417** with it.
 3. **390**: promo receipts.
 4. **328** (probe first), then **325** (by Nov 15), then **385** (holiday
@@ -18949,7 +18949,7 @@ family-newsletter competitors whose ad products it hasn't benchmarked.
 
 #### P1 (new)
 
-422. **Measure the candidates' park districts and villages too, before
+422. (probes added, round 25: Elk Grove park district other routes (`/events/?ical=1`, the REST route, the list page), rmparks.org, and the two villages' homepages with a follow to calendar; sources and the decision-date extension follow the answers) **Measure the candidates' park districts and villages too, before
      choosing town six.** Build loop:
 
      - Add **park-district and village sources** to both `_candidate`
@@ -18971,7 +18971,7 @@ family-newsletter competitors whose ad products it hasn't benchmarked.
 
 #### P2 (new)
 
-423. **Put real market rates in `SPONSOR_KIT.md`, sourced.** Build loop,
+423. ✅ DONE (a "How our prices compare" table and the honest line in SPONSOR_KIT.md, rates as the research pass sourced them; no link from /sponsor/ yet and no reach claim) **Put real market rates in `SPONSOR_KIT.md`, sourced.** Build loop,
      copy only. A short **"How our prices compare"** table:
 
      | Comparable | Price | Source |
