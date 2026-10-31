@@ -18949,7 +18949,7 @@ family-newsletter competitors whose ad products it hasn't benchmarked.
 
 #### P1 (new)
 
-422. (probes added, round 25: Elk Grove park district other routes (`/events/?ical=1`, the REST route, the list page), rmparks.org, and the two villages' homepages with a follow to calendar; sources and the decision-date extension follow the answers) **Measure the candidates' park districts and villages too, before
+422. (round 25 ANSWERED 2026-10-31: Elk Grove Village's park district and village answer 403 on every route (a bot wall), so that candidate stays library-only; Rolling Meadows Park District has /district-calendar with event pages and the City runs CivicEngage, both added to the Rolling Meadows shadow file; round 26 probes the City's iCal export (catID 14 is a guess) and the park district page; per-source counts already record by section; the decision date moves to 14 days after the last source joined, about Nov 14 or later) (earlier: probes added, round 25: Elk Grove park district other routes (`/events/?ical=1`, the REST route, the list page), rmparks.org, and the two villages' homepages with a follow to calendar; sources and the decision-date extension follow the answers) **Measure the candidates' park districts and villages too, before
      choosing town six.** Build loop:
 
      - Add **park-district and village sources** to both `_candidate`

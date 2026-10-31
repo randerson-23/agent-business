@@ -6729,7 +6729,10 @@ def test_candidate_town_files_are_never_published_and_their_weekly_counts_are_re
     assert "elk-grove-village-60007" not in ids and "rolling-meadows-60008" not in ids and len(ids) == 5
     cands = build_digest.load_candidate_regions()
     assert sorted(c["region"]["id"] for c in cands) == ["elk-grove-village-60007", "rolling-meadows-60008"]
-    assert all(s["type"] == "rss" and s["url"].startswith("https://") for c in cands for s in c["sources"])
+    assert all(s["type"] in {"rss", "ics", "html_events"} and s["url"].startswith("https://") and s["type"] in build_digest.FETCHERS for c in cands for s in c["sources"])
+    assert all(any(s["type"] == "rss" for s in c["sources"]) for c in cands)  # each has its library feed
+    rm = next(c for c in cands if c["region"]["id"] == "rolling-meadows-60008")
+    assert len({s["section"] for s in rm["sources"]}) == len(rm["sources"]) >= 3  # per-source counts need distinct section names
     today = date(2026, 11, 2)
     def ev(title, day, tags=(), attendable=True):
         return {"title": title, "date_iso": f"2026-11-{day:02d}T10:00:00", "tags": list(tags), "attendable": attendable}

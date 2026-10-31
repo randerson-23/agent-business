@@ -21,3 +21,8 @@ sources:
     section: "Library Events"
     venue_name: "Elk Grove Village Public Library"
     enabled: true
+
+# Round 25 (item 422), 2026-10-31: the Elk Grove Park District (elkgroveparks.org: /events/?ical=1, the
+# tribe REST route and /events/list) and the Village (elkgrove.org) all answer 403 to a GitHub runner,
+# a bot wall like Mount Prospect's. So this candidate is measured on its library alone, which
+# understates it; going live would need a route past the wall or a hand-kept source.
