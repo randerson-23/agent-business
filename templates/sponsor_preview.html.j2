@@ -39,12 +39,13 @@
   <h1>How <span id="p-name">your business</span> would look</h1>
   <p class="muted">This is a mock-up built from the link you were sent. Nothing here is published. It shows your placement in <span id="p-town">your town</span>'s page and weekly email.</p>
 
-  <h2>As a Featured event ({{ featured_price }})</h2>
+  <h2>As a Featured event (<span id="p-price">{{ featured_price }}</span>)</h2>
   <div class="town-bar"></div>
   <div class="card you">
     <div class="featured-label">Featured &middot; Presented by <span id="f-name"></span></div>
-    <div class="date">Your event's date</div>
+    <div class="date" id="f-date">Your event's date</div>
     <h3 id="f-title">Your event</h3>
+    <p id="f-venue" class="muted" style="margin:0;" hidden></p>
     <p id="f-line" class="muted" style="margin:0;"></p>
     <a id="f-link" href="#" hidden rel="noopener nofollow">Learn more &rarr;</a>
   </div>
@@ -53,6 +54,7 @@
   <p class="muted">Your event goes first, labelled, until the day of the event. The cards below it are this week's real listings.</p>
   <a class="btn" id="buy-event" href="{{ event_buy_url }}">{{ event_buy_label }}</a>
 
+  <div id="spot-section">
   <h2>As this week's Weekly Spot ({{ spot_price }})</h2>
   <div class="spot">
     <div class="label">Local Recommendation</div>
@@ -62,6 +64,7 @@
   </div>
   <p class="muted">One business holds a town's top-of-page spot at a time.</p>
   <a class="btn alt" id="buy-spot" href="{{ spot_buy_url }}">{{ spot_buy_label }}</a>
+  </div>
 
   <p class="muted" style="margin-top:28px;">Prices and details: <a href="{{ hub_url }}sponsor/">{{ hub_url }}sponsor/</a></p>
 </div>
@@ -81,7 +84,18 @@
   put("f-title", name + (line ? ": " + line : ""));
   put("f-line", line || "Your one-line blurb goes here.");
   put("s-line", line || "Your one-line recommendation goes here.");
-  [["e1", town.events[0]], ["e2", town.events[1]]].forEach(function (p) {
+  var kind = (q.get("kind") || "biz").toLowerCase();
+  var evName = (q.get("event") || "").slice(0, 80), evDate = (q.get("date") || "").slice(0, 30), evVenue = (q.get("venue") || "").slice(0, 80);
+  var iso = /^\d{4}-\d{2}-\d{2}$/.test(q.get("d") || "") ? q.get("d") : "";
+  if (evName) { put("f-title", evName); put("f-line", ""); put("f-date", evDate || "Your event's date"); }
+  if (evVenue) { put("f-venue", evVenue); document.getElementById("f-venue").hidden = false; }
+  if (kind === "fair" || kind === "warm") document.getElementById("spot-section").hidden = true;
+  if (data.founding) put("p-price", "Free (founding offer, " + data.founding.left + " of " + data.founding.total + " left), then $20");
+  var near = town.events.filter(function (e) {
+    return iso ? Math.abs((Date.parse(e.iso) - Date.parse(iso)) / 86400000) <= 3 : true;
+  }).slice(0, 2);
+  if (!near.length) near = town.events.slice(0, 2);  // nothing that weekend: the town's next picks
+  [["e1", near[0]], ["e2", near[1]]].forEach(function (p) {
     var ev = p[1];
     put(p[0] + "-when", ev ? ev.when : "");
     put(p[0] + "-title", ev ? ev.title : "");

@@ -246,3 +246,11 @@ def test_a_fair_block_asks_for_a_yes_and_a_venue_with_only_tomorrow_is_dropped()
     found = wp.collect_hosts([{"title": "PHS Pirate Boosters Present: Fall Craft Fair", "date_iso": "2026-11-07T09:00:00", "venue": "Palatine High School"}], "Palatine")
     out = wp.update_registry({"phs pirate boosters": {"name": "PHS Pirate Boosters", "town": "Palatine", "events": [{"title": found[0]["title"], "date": "2026-11-07"}]}}, found, today)
     assert out["phs pirate boosters"]["events"] == [{"title": found[0]["title"], "date": "2026-11-07", "time": "09:00", "venue": "Palatine High School"}]
+
+
+def test_the_preview_link_carries_the_prospects_own_event_and_kind():
+    # ROADMAP.md item 419.
+    import outreach_batch as ob
+    link = ob.preview_link("fair", "PHS Pirate Boosters", "Palatine", {"title": "PHS Pirate Boosters Present: Fall Craft Fair", "date": "2026-11-07", "venue": "Palatine High School"})
+    assert link == "https://withintenmiles.com/sponsor/preview/?name=PHS+Pirate+Boosters&town=Palatine&event=Fall+Craft+Fair&date=Sat+Nov+7&d=2026-11-07&venue=Palatine+High+School&kind=fair"
+    assert ob.preview_link("venue", "Des Plaines Theatre", "Des Plaines", {"title": "Blues Night", "date": "2026-11-02"}).endswith("&kind=warm")

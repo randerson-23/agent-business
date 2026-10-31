@@ -149,6 +149,15 @@ def body_for(kind: str, name: str, ev: dict, town: str, preview: str) -> str:
     )
 
 
+def preview_link(kind: str, name: str, town: str, ev: dict) -> str:
+    """Item 419: the prospect's own event, date, place and kind in the preview link."""
+    parts = [("name", name), ("town", town or ""), ("event", _display(ev["title"])), ("date", _day(ev["date"] + "T00:00:00")), ("d", ev["date"])]
+    if ev.get("venue"):
+        parts.append(("venue", ev["venue"]))
+    parts.append(("kind", "fair" if kind == "fair" else "warm"))
+    return f"{SITE}/sponsor/preview/?" + "&".join(f"{k}={quote_plus(v)}" for k, v in parts)
+
+
 def build_blocks(registry: dict, contacts: list[dict], limit: int = MAX_BLOCKS, today: date | None = None) -> list[dict]:
     """One block per organisation. Order (item 410): fairs within 21 days first,
     then warm businesses, then other fairs, then venues that publish calendars."""
@@ -182,7 +191,7 @@ def build_blocks(registry: dict, contacts: list[dict], limit: int = MAX_BLOCKS, 
     ranked.sort(key=lambda r: r[:3])
     blocks = []
     for _rank, _d, name, kind, org, ev in ranked[:limit]:
-        preview = f"{SITE}/sponsor/preview/?name={quote_plus(name)}&town={quote_plus(org['town'] or '')}"
+        preview = preview_link(kind, name, org["town"], ev)
         blocks.append({
             "org": name, "kind": kind, "where": where_to_send(org["contact"]),
             "subject": subject_for(kind, ev, org["town"]), "body": body_for(kind, name, ev, org["town"], preview),

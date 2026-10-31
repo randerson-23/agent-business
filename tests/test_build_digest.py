@@ -6623,20 +6623,27 @@ def test_nth_weekday_recurrence_and_craft_fair_keywords_reach_the_holiday_select
 
 
 def test_sponsor_preview_is_noindex_escapes_by_construction_and_shows_both_products():
-    # ROADMAP.md item 313.
+    # ROADMAP.md items 313 and 419.
+    ev = lambda title, iso, **kw: dict({"title": title, "date_iso": iso, "attendable": True, "tags": ["kid_friendly", "free"]}, **kw)
     sections = [
-        {"region_name": "Palatine", "region_url": "https://x/p/", "weekend_events": [{"title": "Fall Fest", "date_iso": "2026-10-31T10:00:00", "attendable": True}, {"title": "Sponsored", "date_iso": "2026-10-31T11:00:00", "attendable": True, "sponsored_by": "Acme"}, {"title": "Hike", "date_iso": "2026-11-01T10:00:00", "attendable": True}]},
+        {"region_name": "Palatine", "region_url": "https://x/p/", "weekend_events": [
+            ev("Fall Fest", "2026-11-07T10:00:00"), ev("Sponsored", "2026-11-07T11:00:00", sponsored_by="Acme"), ev("Hike", "2026-11-08T10:00:00"),
+            ev("Past Show", "2026-10-01T10:00:00"), ev("Trick-or-Treat Hours", "2026-11-07T09:00:00"), ev("Leaf Pickup", "2026-11-07T09:00:00"),
+            ev("CPR Class", "2026-11-07T09:00:00"), ev("Weak One", "2026-11-07T09:00:00", tags=[]), ev("Standing Market", "2026-11-07T08:00:00", recurring=True)]},
         {"region_name": "Wheeling", "region_url": "https://x/w/", "weekend_events": []},
     ]
-    html = build_digest.render_sponsor_preview(sections, {"event_promo": "https://buy.example/e", "weekly_spot": None}, "hello@x.org")
+    today = date(2026, 11, 2)
+    html = build_digest.render_sponsor_preview(sections, {"event_promo": "https://buy.example/e", "weekly_spot": None}, "hello@x.org", today, 2)
     assert 'name="robots" content="noindex, nofollow, max-image-preview:large"' in html and "Preview, not live" in html
     assert "As a Featured event" in html and "Weekly Spot" in html and 'href="https://buy.example/e"' in html
-    assert "mailto:hello@x.org" in html  # no Stripe link for the weekly spot: email instead
+    assert "mailto:hello@x.org" in html
     script = html.split("<script>", 1)[1]
     assert "innerHTML" not in script and "document.write" not in script and "textContent" in script
-    assert "Sponsored" not in html.split('id="preview-data">')[1].split("</script>")[0]  # a paid event is not shown as a "real" neighbour
+    assert 'kind === "fair" || kind === "warm"' in script and 'id="spot-section"' in html  # item 419: fairs and warm prospects see no Weekly Spot
     data = json.loads(html.split('id="preview-data">')[1].split("</script>")[0])
-    assert [t["name"] for t in data["towns"]] == ["Palatine", "Wheeling"] and [e["title"] for e in data["towns"][0]["events"]] == ["Fall Fest", "Hike"]
+    assert [e["title"] for e in data["towns"][0]["events"]] == ["Fall Fest", "Hike"]  # no promo, past, notice, class, weak or recurring entry
+    assert data["founding"] == {"left": 3, "total": 5}  # two of five used
+    assert build_digest.render_sponsor_preview(sections, None, None, today, 5).count('"founding": null') == 1
     assert build_digest.SITE_BASE_URL + "sponsor/preview/" not in build_digest.collect_sitemap_urls([], None, None, True)
 
 

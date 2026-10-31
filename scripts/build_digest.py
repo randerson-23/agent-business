@@ -2865,22 +2865,32 @@ def render_sponsor_page(
     )
 
 
-def render_sponsor_preview(sections: list[dict], payment_links: dict | None, contact_email: str | None) -> str:
-    """ROADMAP.md item 313: the `/sponsor/preview/` page. The template fills in
-    the business name, town, line and link from the address in the visitor's
-    browser (textContent only); the build supplies each town's colour and its
-    first two real attendable events."""
+_NOT_A_NEIGHBOUR = re.compile(r"trick[- ]or[- ]treat|leaf|hours|closed|closure|no school|holiday schedule", re.IGNORECASE)
+
+
+def render_sponsor_preview(sections: list[dict], payment_links: dict | None, contact_email: str | None, today: date | None = None, founding_promos_used: int = 0) -> str:
+    """ROADMAP.md items 313 and 419: the `/sponsor/preview/` page. The template
+    fills in the business, town, event, venue and kind from the address in the
+    visitor's browser (textContent only); the build supplies each town's colour,
+    its upcoming pick-worthy events (never notices, never past ones) and the
+    founding offer's remaining spots."""
+    today = today or date.today()
     towns = []
     for i, sec in enumerate(sections):
-        evs = [e for e in sec["weekend_events"] if e.get("attendable", True) and e.get("title") and e.get("date_iso") and not e.get("sponsored_by")][:2]
+        evs = [
+            e for e in sec["weekend_events"]
+            if e.get("attendable", True) and e.get("title") and e.get("date_iso") and not e.get("sponsored_by")
+            and e["date_iso"][:10] >= today.isoformat() and is_pick_worthy(e) and not _NOT_A_NEIGHBOUR.search(e["title"]) and not e.get("recurring")
+        ][:6]
         towns.append({
             "name": sec["region_name"], "color": EMAIL_TOWN_COLORS[i % len(EMAIL_TOWN_COLORS)][0],
-            "events": [{"title": display_title(e["title"]), "when": event_date_label(e["date_iso"]) or ""} for e in evs],
+            "events": [{"title": display_title(e["title"]), "when": event_date_label(e["date_iso"]) or "", "iso": e["date_iso"][:10]} for e in evs],
         })
     links = payment_links or {}
+    offer = founding_offer(founding_promos_used, today)
     mailto = build_contact_mailto_url(contact_email, "Sponsor preview", SPONSOR_INQUIRY_FIELDS) if contact_email else SITE_BASE_URL + "sponsor/"
     return get_template_env().get_template("sponsor_preview.html.j2").render(
-        data_json=json_for_script({"towns": towns}),
+        data_json=json_for_script({"towns": towns, "founding": {"left": offer["left"], "total": offer["total"]} if offer else None}),
         canonical_url=SITE_BASE_URL + "sponsor/preview/", hub_url=SITE_BASE_URL,
         featured_price="$20 one-time", spot_price="$50/week or $175/month",
         event_buy_url=links.get("event_promo") or mailto, event_buy_label="Buy now" if links.get("event_promo") else "Email to claim this",
@@ -7666,7 +7676,7 @@ def main() -> None:
     (sponsor_dir / "index.html").write_text(sponsor_html, encoding="utf-8")
     preview_dir = sponsor_dir / "preview"  # item 313: noindex, out of the sitemap, linked from nowhere
     preview_dir.mkdir(parents=True, exist_ok=True)
-    (preview_dir / "index.html").write_text(render_sponsor_preview(combined_email_sections, sponsors_cfg.get("payment_links"), contact_email), encoding="utf-8")
+    (preview_dir / "index.html").write_text(render_sponsor_preview(combined_email_sections, sponsors_cfg.get("payment_links"), contact_email, now.astimezone(LOCAL_TZ).date(), sponsors_cfg.get("founding_promos_used") or 0), encoding="utf-8")
     logger.info("Wrote %s", sponsor_dir / "index.html")
 
     about_html = render_about_page(now, analytics, contact_email=contact_email, source_completeness=source_completeness)
