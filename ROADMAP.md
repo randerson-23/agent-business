@@ -220,7 +220,7 @@ doesn't re-suggest something already shipped.
 
 **Build queue (by deadline; refreshed by the research loop, item 346).**
 Pick from the top unless the owner has flagged something else:
-0. **424** (preview page contradictions, before the owner sends the fair email). **422** (candidate park districts and villages; the town-six decision otherwise rests on library counts). **423** (market rates in the sponsor kit).
+0. **422** (candidate park districts and villages; the town-six decision otherwise rests on library counts). **423** (market rates in the sponsor kit).
 0. **416** (steps 1-2 done, measuring until about Nov 13; earlier note: step 1: round-24 probes for the candidates' feeds are in `config/url_probes.yaml` (egvpl.libnet.info, rmlib.libnet.info, elkgroveparks.org found by search; no Rolling Meadows park district calendar found); next: read the answers, then write the `_candidate-*.yaml` shadow files and the counts file). **417** with it.
 3. **390**: promo receipts.
 4. **328** (probe first), then **325** (by Nov 15), then **385** (holiday
@@ -18986,7 +18986,7 @@ family-newsletter competitors whose ad products it hasn't benchmarked.
      we prove it."* The sponsor page links the table. No claim about the
      site's reach until item 332's threshold is met.
 
-424. **Fix the preview page's three contradictions.** Design/UX,
+424. ✅ DONE (heading "Featured event: free for founding sponsors (N of 5 left), then $20" with one pair of parentheses; neighbours are the same weekend's picks, else the next weekend that has picks, and the sentence about them hides when there are none; the email-mock option was not built, so "and weekly email" is dropped from the intro; tests, checked in Chromium) **Fix the preview page's three contradictions.** Design/UX,
      `/sponsor/preview/`:
 
      - Heading: ***"Featured event: free for founding sponsors (5 of 5
