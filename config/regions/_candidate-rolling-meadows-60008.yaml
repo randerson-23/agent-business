@@ -21,3 +21,20 @@ sources:
     section: "Library Events"
     venue_name: "Rolling Meadows Library"
     enabled: true
+
+  # Round 25 (item 422), 2026-10-31: rmparks.org is a plain CMS with event pages at
+  # /district-calendar/events/<slug> (200 from a runner); cityrm.org is CivicEngage like
+  # Palatine and Wheeling (calendar.aspx 200), so the same iCal export path is tried
+  # with the Main Calendar id 14 - NOT yet confirmed (round 26 probes it).
+  - name: "Rolling Meadows Park District - Events"
+    type: html_events
+    url: "https://rmparks.org/district-calendar"
+    detail_link_pattern: "/district-calendar/events/"
+    section: "Park District Events"
+    enabled: true
+
+  - name: "City of Rolling Meadows - Calendar"
+    type: ics
+    url: "https://www.cityrm.org/common/modules/iCalendar/iCalendar.aspx?catID=14&feed=calendar"
+    section: "City Calendar"
+    enabled: true
