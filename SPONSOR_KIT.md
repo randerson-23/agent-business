@@ -100,6 +100,21 @@ commitment.
 Payment: Venmo/Zelle/check. Annual and month-to-month options — no
 long-term contract on Weekly Spot or Event Promo, cancel anytime.
 
+### How our prices compare
+
+Rates published by comparable local and parenting-audience products (ROADMAP.md item 423; quoted as their
+own price pages and rate cards state them, so check the source before repeating a number):
+
+| Comparable | Price | Source |
+|---|---|---|
+| Patch featured event | from 25¢ a day | Patch's featured-event ad page |
+| NPN Parents (Chicago) email blast | from $100 | NPN Parents' advertising page |
+| Parenting newsletters, by audience size | about $12 CPM | SenderCircle's parenting-newsletter rates |
+| Mommy Poppins newsletter ad | self-serve, weekly | Mommy Poppins' advertise page |
+
+We price flat and low because our list is new; founding sponsors get their first placement free while we prove it.
+We make no claim about our reach until the audience numbers on `/sponsor/` say so (item 332).
+
 ### Founding partner rate
 
 The first **three businesses per region** get a founding-partner rate —
