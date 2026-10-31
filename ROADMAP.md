@@ -220,6 +220,7 @@ doesn't re-suggest something already shipped.
 
 **Build queue (by deadline; refreshed by the research loop, item 346).**
 Pick from the top unless the owner has flagged something else:
+0. **424** (preview page contradictions, before the owner sends the fair email). **422** (candidate park districts and villages; the town-six decision otherwise rests on library counts). **423** (market rates in the sponsor kit).
 0. **416** (steps 1-2 done, measuring until about Nov 13; earlier note: step 1: round-24 probes for the candidates' feeds are in `config/url_probes.yaml` (egvpl.libnet.info, rmlib.libnet.info, elkgroveparks.org found by search; no Rolling Meadows park district calendar found); next: read the answers, then write the `_candidate-*.yaml` shadow files and the counts file). **417** with it.
 3. **390**: promo receipts.
 4. **328** (probe first), then **325** (by Nov 15), then **385** (holiday
@@ -18928,6 +18929,86 @@ sponsorships** (Advia, Consumers, U of I Community CU). The design/UX
 angle is **the sponsor preview page as a prospect would see it**: a
 generic card, a price that contradicts the email, and notices as
 neighbours.
+
+
+#### Research pass 2026-10-31 (hundred-and-fourteenth pass)
+
+Halloween. Overnight the build loop shipped item 419: the prospect preview
+now shows the prospect's **own** event (*"Sat Nov 7 · Fall Craft Fair ·
+Palatine High School · Presented by PHS Pirate Boosters"*) at the
+founding price. The candidate-town measurement (item 416) has two days of
+data. This pass checks both, then prices the site against the two
+family-newsletter competitors whose ad products it hasn't benchmarked.
+
+| Angle | What it is / what we found | Why it matters here |
+|---|---|---|
+| **The candidate measurement is library-only (data)** (`data/candidate_regions.json`, Oct 30–31) | **Elk Grove Village:** 44, then 43 attendable dated events, 14 and 12 family, from **`Library Events` alone**. That feed returns exactly **500** items, which looks like a feed cap. **Rolling Meadows:** 14 and 14, 6 family, again **library only**. **No park-district or village source** is in either shadow config. Elk Grove Park District's listing renders by JavaScript (*"Loading Events"*), and no `?ical=1` export was confirmed by search. Rolling Meadows Park District's platform is still unknown | A library-only comparison measures which **library** is busier, not which **town** has more for families on a weekend. The decision due around Nov 13 would rest on the wrong number. The park districts carry most of the weekend family events (festivals, Santa's Workshop, Village Green events) (item 422) |
+| **Mommy Poppins' ad product** (Mommy Poppins' advertise pages; its BuySellAds listing) | **Self-serve**: advertisers buy newsletter placements in an **online store** that shows rates and availability. A campaign runs **one week** and appears in every send that week. Ads can be targeted by **metro, child age and interest**. BuySellAds lists **2M monthly users, 115K email subscribers, 13+ local markets**, with pricing marked *"contact for pricing"* | The category leader sells local family placements **self-serve, by the week**, exactly the shape of the site's Weekly Spot. The difference is that the buyer pays **without a conversation**, which this site still can't do (Stripe Payment Links, item 244, is an open owner decision). It also shows the honest ceiling: Mommy Poppins covers Chicago at metro level, not these five towns |
+| **Chicago parent-newsletter rates** (NPN Parents' advertising page; SenderCircle's parenting-newsletter rate guide) | **Neighborhood Parents Network (Chicago)**: email blasts *"to our community of Chicago families for as low as **$100**"*. SenderCircle's guide puts parenting newsletters at about **$12 CPM** on average, higher for engaged lists | This is the benchmark a local buyer will compare against. **$100 to an established Chicago parents' list** makes the site's **$50 Weekly Spot** and **$20 Event Promo** look right for a list that exists, and hard to justify for one that doesn't, which is what the founding free offer (item 388) is for. `SPONSOR_KIT.md` should say so plainly, with sources (item 423) |
+| **The new preview page (design/UX)** | The fair prospect's card is now theirs. But: the heading reads *"As a Featured event (Free (founding offer, 5 of 5 left), then $20)"*, with nested parentheses. The page says *"The cards below it are this week's real listings"*, and **no cards appear below it**. It also says the preview shows the placement *"in Palatine's page and weekly email"* but shows only the page | Three small contradictions on the one page a volunteer reads before saying yes. Each is a template fix (item 424) |
+
+#### P1 (new)
+
+422. **Measure the candidates' park districts and villages too, before
+     choosing town six.** Build loop:
+
+     - Add **park-district and village sources** to both `_candidate`
+       configs. For **Elk Grove Park District**, probe `?ical=1`,
+       `/events/?ical=1` and the JSON endpoint behind its JavaScript list
+       (`/wp-json/tribe/events/v1/events` is The Events Calendar's
+       standard REST route). For **Rolling Meadows Park District**
+       (`rmparks.org`), probe for an iCal or RSS export. For each
+       **village**, probe its calendar for a feed.
+     - Record **per-source counts** in `data/candidate_regions.json`.
+       Check whether `Library Events: 500` is a feed cap, and if so, page
+       or narrow it.
+     - **Extend the decision date** to 14 days after the last source joins,
+       so both towns are measured on the same footing.
+
+     Tests: the counts file shows at least one non-library source per
+     candidate once probes confirm one, and the decision date moves with
+     the last source added.
+
+#### P2 (new)
+
+423. **Put real market rates in `SPONSOR_KIT.md`, sourced.** Build loop,
+     copy only. A short **"How our prices compare"** table:
+
+     | Comparable | Price | Source |
+     |---|---|---|
+     | Patch featured event | from 25¢ a day | Patch |
+     | NPN Parents email blast | from $100 | NPN |
+     | Parenting newsletters | about $12 CPM | SenderCircle |
+     | Mommy Poppins | self-serve weekly | Mommy Poppins |
+
+     Follow it with one honest line: *"We price flat and low because our
+     list is new; founding sponsors get their first placement free while
+     we prove it."* The sponsor page links the table. No claim about the
+     site's reach until item 332's threshold is met.
+
+424. **Fix the preview page's three contradictions.** Design/UX,
+     `/sponsor/preview/`:
+
+     - Heading: ***"Featured event: free for founding sponsors (5 of 5
+       left), then $20"***.
+     - Show the **neighbouring cards** the copy promises (the town's top
+       picks for that weekend, item 380's floor, falling back to the next
+       weekend with picks). Drop the sentence if there are none.
+     - Add a small **email mock**: the event as it appears in Thursday's
+       issue, with the town colour bar, date chip and "Presented by"
+       line, using the email template's own partial. Otherwise drop
+       *"and weekly email"* from the intro.
+
+     Tests: no nested parentheses in the heading, the neighbours sentence
+     appears only with neighbours, and the email mock renders from the
+     shared partial.
+
+Competitors reviewed this pass: **Mommy Poppins** (self-serve weekly
+newsletter ads, 13+ markets, 115K subscribers), **NPN Parents (Chicago)**
+(email blasts from $100), and **SenderCircle's parenting-newsletter
+rates** (about $12 CPM). The design/UX angle is **the fixed sponsor
+preview page**, and the data angle is **the library-only candidate
+measurement**.
 
 
 ## Working agreements for autonomous iteration
