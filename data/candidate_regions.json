@@ -9,6 +9,16 @@
    "source_items": {
     "Library Events": 500
    }
+  },
+  {
+   "attendable": 43,
+   "date": "2026-10-31",
+   "dated": 43,
+   "distinct": 43,
+   "family": 12,
+   "source_items": {
+    "Library Events": 500
+   }
   }
  ],
  "rolling-meadows-60008": [
@@ -20,6 +30,16 @@
    "family": 6,
    "source_items": {
     "Library Events": 104
+   }
+  },
+  {
+   "attendable": 14,
+   "date": "2026-10-31",
+   "dated": 14,
+   "distinct": 14,
+   "family": 6,
+   "source_items": {
+    "Library Events": 102
    }
   }
  ]

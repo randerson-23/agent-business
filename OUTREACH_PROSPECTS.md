@@ -31,7 +31,7 @@ They may still buy a promo, but the pitch differs: they already reach their own 
 | Host | Town | Events |
 |---|---|---|
 | Metropolis Performing Arts Centre | Arlington Heights | The Rock N' Horror Halloween Concert (2026-10-30); The Lightning Thief: The Percy Jackson Musical (2026-11-05); Myths and Mayhem (2026-11-05); +1 more |
-| Des Plaines Theatre | Des Plaines | RESCHEDULED FOR 2/28/27: ROCKY™ IN CONCERT (2026-10-28); WORLD PREMIERE FILM SCREENING: YAKUZA PLAYS "THE GOLEM" - A CONCERT FILM (2026-10-29); BOURBON 'N BRASS: LIVE BLUES SHOW WITH MILES MINOR "ROCKIN THE BLUES" (2026-10-29); +33 more |
+| Des Plaines Theatre | Des Plaines | RESCHEDULED FOR 2/28/27: ROCKY™ IN CONCERT (2026-10-28); WORLD PREMIERE FILM SCREENING: YAKUZA PLAYS "THE GOLEM" - A CONCERT FILM (2026-10-29); BOURBON 'N BRASS: LIVE BLUES SHOW WITH MILES MINOR "ROCKIN THE BLUES" (2026-10-29); +34 more |
 
 ## Arlington Heights
 

@@ -1,24 +1,6 @@
 {
- "fetched_at": "2026-10-30T22:00:01+00:00",
+ "fetched_at": "2026-10-31T06:01:39+00:00",
  "items": [
-  {
-   "date": "Fri, 30 Oct 2026 10:00:00 +0000",
-   "detail": "Friday, October 30 2026 10:00am - 10:45am \n Start your Halloween festivities with a short storytime, craft and game. Costumes encouraged but not necessary. TR",
-   "title": "Spooktacular Storytime",
-   "url": "https://indiantrails.libnet.info/event/16709302"
-  },
-  {
-   "date": "Fri, 30 Oct 2026 11:00:00 +0000",
-   "detail": "Friday, October 30 2026 11:00am - 11:45am \n Start your Halloween festivities with a short storytime, craft and game. Costumes encouraged but not necessary. TR",
-   "title": "Spooktacular Storytime",
-   "url": "https://indiantrails.libnet.info/event/16709303"
-  },
-  {
-   "date": "Fri, 30 Oct 2026 17:30:00 +0000",
-   "detail": "Friday, October 30 2026 5:30pm - 7:00pm \n Participate in a Mexican tradition by painting mini wooden ornaments. Enjoy hot chocolate and traditional bread \"pan de muerto\".\nHaga una manualidad, disfrute chocolate caliente y pan de muerto. NR",
-   "title": "Craft for The Day of The Dead | At the Branch",
-   "url": "https://indiantrails.libnet.info/event/16606801"
-  },
   {
    "date": "Sat, 31 Oct 2026 14:00:00 +0000",
    "detail": "Saturday, October 31 2026 2:00pm - 3:00pm \n Celebrate Dia de Los Muertos with a performance from Mariachi Sirenas. R",
@@ -360,6 +342,24 @@
    "detail": "Wednesday, November 11 2026 4:00pm - 5:00pm \n Book pickup October 14-November 4 at the Youth Services Desk. Roz discovers that she is alone on a wild island with no memory. Her only hope of survival is to learn about her new environment. R",
    "title": "Paperback Pals Book Club | Grades 2-3",
    "url": "https://indiantrails.libnet.info/event/16293508"
+  },
+  {
+   "date": "Wed, 11 Nov 2026 18:00:00 +0000",
+   "detail": "Wednesday, November 11 2026 6:00pm - 7:30pm \n Create a one of a kind string of snowflakes using pour paint techniques. Dress to get messy. R",
+   "title": "Pour Paint Snowflakes",
+   "url": "https://indiantrails.libnet.info/event/17127888"
+  },
+  {
+   "date": "Wed, 11 Nov 2026 19:00:00 +0000",
+   "detail": "Wednesday, November 11 2026 7:00pm - 8:30pm \n Foundation Board Meeting",
+   "title": "Foundation Board Meeting",
+   "url": "https://indiantrails.libnet.info/event/12499302"
+  },
+  {
+   "date": "Wed, 11 Nov 2026 19:00:00 +0000",
+   "detail": "Wednesday, November 11 2026 7:00pm - 8:00pm \n Create charts, tables, graphs, and conditional formatting using Sparklines. Intended for those with working knowledge of Microsoft Excel. R",
+   "title": "Intermediate Excel",
+   "url": "https://indiantrails.libnet.info/event/17116374"
   }
  ],
  "source": "Indian Trails Public Library — Events"

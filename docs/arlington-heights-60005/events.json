@@ -2,73 +2,12 @@
   "@context": "https://schema.org",
   "@type": "ItemList",
   "name": "Upcoming events in Arlington Heights — Within Ten",
-  "dateModified": "2026-10-30T22:00:01+00:00",
-  "numberOfItems": 8,
+  "dateModified": "2026-10-31T06:01:39+00:00",
+  "numberOfItems": 7,
   "itemListElement": [
     {
       "@type": "ListItem",
       "position": 1,
-      "item": {
-        "@type": "Event",
-        "name": "Senior Center: Travelogue",
-        "startDate": "2026-10-30",
-        "url": "https://withintenmiles.com/arlington-heights-60005/#ev-senior-center-travelogue-2026-10-30",
-        "eventStatus": "https://schema.org/EventScheduled",
-        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "location": {
-          "@type": "Place",
-          "name": "Arlington Heights Memorial Library",
-          "address": {
-            "@type": "PostalAddress",
-            "addressCountry": "US",
-            "addressLocality": "Arlington Heights",
-            "addressRegion": "IL",
-            "streetAddress": "500 N. Dunton Ave."
-          }
-        },
-        "sameAs": "https://www.ahml.info/scheduling/reservation/224947",
-        "organizer": {
-          "@type": "Organization",
-          "name": "Arlington Heights Memorial Library",
-          "url": "https://www.ahml.info"
-        },
-        "image": "https://withintenmiles.com/og/arlington-heights-60005.png"
-      }
-    },
-    {
-      "@type": "ListItem",
-      "position": 2,
-      "item": {
-        "@type": "Event",
-        "name": "The Rock N' Horror Halloween Concert",
-        "startDate": "2026-10-30",
-        "url": "https://withintenmiles.com/arlington-heights-60005/#ev-the-rock-n-horror-halloween-concert-2026-10-30",
-        "eventStatus": "https://schema.org/EventScheduled",
-        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "location": {
-          "@type": "Place",
-          "name": "Metropolis Performing Arts Centre",
-          "address": {
-            "@type": "PostalAddress",
-            "addressCountry": "US",
-            "addressLocality": "Arlington Heights",
-            "addressRegion": "IL",
-            "streetAddress": "111 W Campbell Street"
-          }
-        },
-        "sameAs": "https://www.metropolisarts.com/event/the-rock-n-horror-halloween-concert/",
-        "organizer": {
-          "@type": "Organization",
-          "name": "Metropolis Performing Arts Centre",
-          "url": "https://www.metropolisarts.com"
-        },
-        "image": "https://withintenmiles.com/og/arlington-heights-60005.png",
-        "description": "Purchase Tickets October 30th, 2026: 7:30 PM October 31st, 2026: 7:30 PM Tickets: $40 ABOUT THE SHOW: A little ROCK, a little HORROR, a lot of Halloween fun,…"
-      }
-    },
-    {
-      "@type": "ListItem",
-      "position": 3,
       "item": {
         "@type": "Event",
         "name": "Beginning ESL",
@@ -98,7 +37,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 4,
+      "position": 2,
       "item": {
         "@type": "Event",
         "name": "The Lightning Thief: The Percy Jackson Musical",
@@ -129,7 +68,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 5,
+      "position": 3,
       "item": {
         "@type": "Event",
         "name": "Myths and Mayhem",
@@ -160,7 +99,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 6,
+      "position": 4,
       "item": {
         "@type": "Event",
         "name": "Pumpkin Smash: From Gourd to Garden",
@@ -191,7 +130,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 7,
+      "position": 5,
       "item": {
         "@type": "Event",
         "name": "Recreation Park Community Center Grand Opening",
@@ -221,7 +160,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 8,
+      "position": 6,
       "item": {
         "@type": "Event",
         "name": "Veterans Day at the Museum",
@@ -247,6 +186,36 @@
         },
         "image": "https://withintenmiles.com/og/arlington-heights-60005.png",
         "description": "Drop in anytime between 10AM-7PM to honor our Arlington Heights’ Veterans. View our current exhibit, “Stars & Stories: Arlington Heights’ Old Glory,” make a…"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 7,
+      "item": {
+        "@type": "Event",
+        "name": "Teen Night - Bikini Bottom Bash",
+        "startDate": "2026-11-13T07:00:00-06:00",
+        "url": "https://withintenmiles.com/arlington-heights-60005/#ev-teen-night-bikini-bottom-bash-2026-11-13",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Arlington Heights, IL",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Arlington Heights",
+            "addressRegion": "IL"
+          }
+        },
+        "sameAs": "https://www.ahpd.org/event/teen-night-bikini-bottom-bash/",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Arlington Heights Park District",
+          "url": "https://www.ahpd.org"
+        },
+        "image": "https://withintenmiles.com/og/arlington-heights-60005.png",
+        "description": "Calling all 6th-8th graders – we’re opening the Arlington Ridge Center just for you! Join us for a night of open swim, open gym, pizza, and Spongebob the…"
       }
     }
   ]

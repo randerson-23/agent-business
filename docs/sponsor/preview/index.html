@@ -30,7 +30,7 @@
   .btn { display:inline-block; background:var(--accent-soft); color:#fff; text-decoration:none; padding:10px 18px; margin-top:8px; }
   .btn.alt { background:transparent; color:var(--ink); border:2px solid var(--ink); }
 </style>
-<script type="application/json" id="preview-data">{"towns": [{"name": "Arlington Heights", "color": "#0f766e", "events": [{"title": "The Rock N' Horror Halloween Concert", "when": "Fri, Oct 30"}, {"title": "Senior Center: Travelogue", "when": "Fri, Oct 30"}]}, {"name": "Des Plaines", "color": "#6d28d9", "events": [{"title": "Wicked Good Writing Contest", "when": "Fri, Oct 30"}, {"title": "Early Voting", "when": "Fri, Oct 30"}]}, {"name": "Mount Prospect", "color": "#c2410c", "events": [{"title": "Calavera Creations", "when": "Fri, Oct 30"}, {"title": "Digitizing VHS Tapes", "when": "Sat, Oct 31"}]}, {"name": "Palatine", "color": "#1d4ed8", "events": [{"title": "Curbside Leaf Collection", "when": "Fri, Oct 30"}, {"title": "Village Trick-or-Treating Hours", "when": "Sat, Oct 31"}]}, {"name": "Wheeling", "color": "#be185d", "events": [{"title": "Spooktacular Storytime", "when": "Fri, Oct 30"}, {"title": "Craft for The Day of The Dead | At the Branch", "when": "Fri, Oct 30"}]}]}</script>
+<script type="application/json" id="preview-data">{"towns": [{"name": "Arlington Heights", "color": "#0f766e", "events": []}, {"name": "Des Plaines", "color": "#6d28d9", "events": []}, {"name": "Mount Prospect", "color": "#c2410c", "events": []}, {"name": "Palatine", "color": "#1d4ed8", "events": []}, {"name": "Wheeling", "color": "#be185d", "events": [{"title": "Dia de Los Muertos with Mariachi Sirenas", "when": "Sat, Oct 31", "iso": "2026-10-31"}]}], "founding": {"left": 5, "total": 5}}</script>
 </head>
 <body>
 <div class="ribbon">Preview, not live</div>
@@ -38,12 +38,13 @@
   <h1>How <span id="p-name">your business</span> would look</h1>
   <p class="muted">This is a mock-up built from the link you were sent. Nothing here is published. It shows your placement in <span id="p-town">your town</span>'s page and weekly email.</p>
 
-  <h2>As a Featured event ($20 one-time)</h2>
+  <h2>As a Featured event (<span id="p-price">$20 one-time</span>)</h2>
   <div class="town-bar"></div>
   <div class="card you">
     <div class="featured-label">Featured &middot; Presented by <span id="f-name"></span></div>
-    <div class="date">Your event's date</div>
+    <div class="date" id="f-date">Your event's date</div>
     <h3 id="f-title">Your event</h3>
+    <p id="f-venue" class="muted" style="margin:0;" hidden></p>
     <p id="f-line" class="muted" style="margin:0;"></p>
     <a id="f-link" href="#" hidden rel="noopener nofollow">Learn more &rarr;</a>
   </div>
@@ -52,6 +53,7 @@
   <p class="muted">Your event goes first, labelled, until the day of the event. The cards below it are this week's real listings.</p>
   <a class="btn" id="buy-event" href="mailto:hello@withintenmiles.com?subject=Sponsor%20preview&amp;body=Business%20name%3A%20%0ARegion%28s%29%20of%20interest%3A%20%0APreferred%20tier%3A%20%0APreferred%20week%20%28if%20any%29%3A%20%0AWhy%20should%20we%20recommend%20you%20%28one%20sentence%29%3A%20">Email to claim this</a>
 
+  <div id="spot-section">
   <h2>As this week's Weekly Spot ($50/week or $175/month)</h2>
   <div class="spot">
     <div class="label">Local Recommendation</div>
@@ -61,6 +63,7 @@
   </div>
   <p class="muted">One business holds a town's top-of-page spot at a time.</p>
   <a class="btn alt" id="buy-spot" href="mailto:hello@withintenmiles.com?subject=Sponsor%20preview&amp;body=Business%20name%3A%20%0ARegion%28s%29%20of%20interest%3A%20%0APreferred%20tier%3A%20%0APreferred%20week%20%28if%20any%29%3A%20%0AWhy%20should%20we%20recommend%20you%20%28one%20sentence%29%3A%20">Email to claim this</a>
+  </div>
 
   <p class="muted" style="margin-top:28px;">Prices and details: <a href="https://withintenmiles.com/sponsor/">https://withintenmiles.com/sponsor/</a></p>
 </div>
@@ -80,7 +83,18 @@
   put("f-title", name + (line ? ": " + line : ""));
   put("f-line", line || "Your one-line blurb goes here.");
   put("s-line", line || "Your one-line recommendation goes here.");
-  [["e1", town.events[0]], ["e2", town.events[1]]].forEach(function (p) {
+  var kind = (q.get("kind") || "biz").toLowerCase();
+  var evName = (q.get("event") || "").slice(0, 80), evDate = (q.get("date") || "").slice(0, 30), evVenue = (q.get("venue") || "").slice(0, 80);
+  var iso = /^\d{4}-\d{2}-\d{2}$/.test(q.get("d") || "") ? q.get("d") : "";
+  if (evName) { put("f-title", evName); put("f-line", ""); put("f-date", evDate || "Your event's date"); }
+  if (evVenue) { put("f-venue", evVenue); document.getElementById("f-venue").hidden = false; }
+  if (kind === "fair" || kind === "warm") document.getElementById("spot-section").hidden = true;
+  if (data.founding) put("p-price", "Free (founding offer, " + data.founding.left + " of " + data.founding.total + " left), then $20");
+  var near = town.events.filter(function (e) {
+    return iso ? Math.abs((Date.parse(e.iso) - Date.parse(iso)) / 86400000) <= 3 : true;
+  }).slice(0, 2);
+  if (!near.length) near = town.events.slice(0, 2);  // nothing that weekend: the town's next picks
+  [["e1", near[0]], ["e2", near[1]]].forEach(function (p) {
     var ev = p[1];
     put(p[0] + "-when", ev ? ev.when : "");
     put(p[0] + "-title", ev ? ev.title : "");

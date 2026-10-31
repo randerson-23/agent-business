@@ -2,10 +2,6 @@
  "links": [
   {
    "region": "arlington-heights-60005",
-   "url": "https://www.ahml.info/scheduling/reservation/224947"
-  },
-  {
-   "region": "arlington-heights-60005",
    "url": "https://www.ahml.info/scheduling/reservation/234688"
   },
   {
@@ -33,16 +29,8 @@
    "url": "https://www.metropolisarts.com/event/myths-and-mayhem/"
   },
   {
-   "region": "arlington-heights-60005",
-   "url": "https://www.metropolisarts.com/event/the-rock-n-horror-halloween-concert/"
-  },
-  {
    "region": "des-plaines-60016",
    "url": "https://desplaines.libnet.info/event/14863263"
-  },
-  {
-   "region": "des-plaines-60016",
-   "url": "https://desplaines.libnet.info/event/14863291"
   },
   {
    "region": "des-plaines-60016",
@@ -114,7 +102,15 @@
   },
   {
    "region": "des-plaines-60016",
+   "url": "https://desplaines.libnet.info/event/16023296"
+  },
+  {
+   "region": "des-plaines-60016",
    "url": "https://desplaines.libnet.info/event/16185864"
+  },
+  {
+   "region": "des-plaines-60016",
+   "url": "https://desplaines.libnet.info/event/16190260"
   },
   {
    "region": "des-plaines-60016",
@@ -126,7 +122,7 @@
   },
   {
    "region": "des-plaines-60016",
-   "url": "https://desplaines.libnet.info/event/16431786"
+   "url": "https://desplaines.libnet.info/event/16341088"
   },
   {
    "region": "des-plaines-60016",
@@ -218,10 +214,6 @@
   },
   {
    "region": "des-plaines-60016",
-   "url": "https://desplaines.libnet.info/event/17138198"
-  },
-  {
-   "region": "des-plaines-60016",
    "url": "https://desplaines.libnet.info/event/17140480"
   },
   {
@@ -259,10 +251,6 @@
   {
    "region": "des-plaines-60016",
    "url": "https://desplaines.libnet.info/event/17384961"
-  },
-  {
-   "region": "des-plaines-60016",
-   "url": "https://desplaines.libnet.info/event/17457163"
   },
   {
    "region": "des-plaines-60016",
@@ -322,15 +310,15 @@
   },
   {
    "region": "des-plaines-60016",
+   "url": "https://desplaines.libnet.info/event/17635826"
+  },
+  {
+   "region": "des-plaines-60016",
    "url": "https://desplaines.libnet.info/event/17690884"
   },
   {
    "region": "des-plaines-60016",
    "url": "https://desplaines.libnet.info/event/17695952"
-  },
-  {
-   "region": "des-plaines-60016",
-   "url": "https://desplainestheatre.com/event/bourbon-n-brass-live-delta-blues-with-downtown-charlie-brown-donna-herula-john-primer-friends-2/"
   },
   {
    "region": "des-plaines-60016",
@@ -343,6 +331,10 @@
   {
    "region": "des-plaines-60016",
    "url": "https://desplainestheatre.com/event/bourbon-n-brass-speakeasy-live-blues-show-with-sean-mckee-blues-band-12/"
+  },
+  {
+   "region": "des-plaines-60016",
+   "url": "https://desplainestheatre.com/event/bourbon-n-brass-speakeasy-live-blues-with-sonicsoul-band/"
   },
   {
    "region": "des-plaines-60016",
@@ -366,11 +358,19 @@
   },
   {
    "region": "des-plaines-60016",
+   "url": "https://desplainestheatre.com/event/film-screening-bob-dole-a-walk-through-history-2/"
+  },
+  {
+   "region": "des-plaines-60016",
    "url": "https://desplainestheatre.com/event/gcs-featuring-eric-gales-dennis-chambers-and-billy-sheehan/"
   },
   {
    "region": "des-plaines-60016",
    "url": "https://desplainestheatre.com/event/jason-bonhams-led-zeppelin-evening-2/"
+  },
+  {
+   "region": "des-plaines-60016",
+   "url": "https://desplainestheatre.com/event/john-waite-with-special-guest-john-cafferty/"
   },
   {
    "region": "des-plaines-60016",
@@ -387,6 +387,10 @@
   {
    "region": "des-plaines-60016",
    "url": "https://desplainestheatre.com/event/wheel-of-fortune-live-4/"
+  },
+  {
+   "region": "mount-prospect-60056",
+   "url": "https://mppl.libnet.info/event/13845873"
   },
   {
    "region": "mount-prospect-60056",
@@ -602,10 +606,6 @@
   },
   {
    "region": "mount-prospect-60056",
-   "url": "https://mppl.libnet.info/event/16749799"
-  },
-  {
-   "region": "mount-prospect-60056",
    "url": "https://mppl.libnet.info/event/16778781"
   },
   {
@@ -627,6 +627,10 @@
   {
    "region": "mount-prospect-60056",
    "url": "https://mppl.libnet.info/event/16856030"
+  },
+  {
+   "region": "mount-prospect-60056",
+   "url": "https://mppl.libnet.info/event/16873361"
   },
   {
    "region": "mount-prospect-60056",
@@ -686,6 +690,14 @@
   },
   {
    "region": "mount-prospect-60056",
+   "url": "https://mppl.libnet.info/event/17784038"
+  },
+  {
+   "region": "mount-prospect-60056",
+   "url": "https://www.mppd.org/event/artsgiving-crafty-cornucopia-2/"
+  },
+  {
+   "region": "mount-prospect-60056",
    "url": "https://www.mppd.org/event/ladies-night-out-harvest-holiday/"
   },
   {
@@ -703,10 +715,6 @@
   {
    "region": "palatine-60067",
    "url": "https://events.harpercollege.edu/event/the-fifth-element"
-  },
-  {
-   "region": "palatine-60067",
-   "url": "https://www.palatine.il.us/CivicAlerts.aspx?aid=508"
   },
   {
    "region": "palatine-60067",
@@ -754,19 +762,7 @@
   },
   {
    "region": "wheeling-60090",
-   "url": "https://indiantrails.libnet.info/event/16606801"
-  },
-  {
-   "region": "wheeling-60090",
    "url": "https://indiantrails.libnet.info/event/16663064"
-  },
-  {
-   "region": "wheeling-60090",
-   "url": "https://indiantrails.libnet.info/event/16709302"
-  },
-  {
-   "region": "wheeling-60090",
-   "url": "https://indiantrails.libnet.info/event/16709303"
   },
   {
    "region": "wheeling-60090",
