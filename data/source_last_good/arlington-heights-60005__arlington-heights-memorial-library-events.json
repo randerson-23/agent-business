@@ -1,5 +1,5 @@
 {
- "fetched_at": "2026-11-01T06:05:11+00:00",
+ "fetched_at": "2026-11-01T13:35:47+00:00",
  "items": [
   {
    "date": "2026-11-01",
@@ -190,12 +190,6 @@
   {
    "date": null,
    "detail": "",
-   "title": "Clases de Computación Básica",
-   "url": "https://www.ahml.info/scheduling/reservation/236331"
-  },
-  {
-   "date": null,
-   "detail": "",
    "title": "Hablemos Español (Let's Speak Spanish)",
    "url": "https://www.ahml.info/scheduling/reservation/234200"
   },
@@ -208,14 +202,20 @@
   {
    "date": null,
    "detail": "",
-   "title": "Canceled - Committee of the Whole Meeting",
-   "url": "https://www.ahml.info/scheduling/reservation/198849"
+   "title": "Clases de Computación Básica",
+   "url": "https://www.ahml.info/scheduling/reservation/236331"
   },
   {
    "date": null,
    "detail": "",
    "title": "Read to Learn (District 214)",
    "url": "https://www.ahml.info/scheduling/reservation/194370"
+  },
+  {
+   "date": null,
+   "detail": "",
+   "title": "Canceled - Committee of the Whole Meeting",
+   "url": "https://www.ahml.info/scheduling/reservation/198849"
   },
   {
    "date": null,
@@ -340,14 +340,14 @@
   {
    "date": null,
    "detail": "",
-   "title": "Swedish Roots in Chicagoland",
-   "url": "https://www.ahml.info/scheduling/reservation/219657"
+   "title": "Culture & Conversation (intermediate +)",
+   "url": "https://www.ahml.info/scheduling/reservation/232404"
   },
   {
    "date": null,
    "detail": "",
-   "title": "Culture & Conversation (intermediate +)",
-   "url": "https://www.ahml.info/scheduling/reservation/232404"
+   "title": "Swedish Roots in Chicagoland",
+   "url": "https://www.ahml.info/scheduling/reservation/219657"
   },
   {
    "date": null,

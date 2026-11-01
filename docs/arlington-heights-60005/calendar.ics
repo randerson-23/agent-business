@@ -7,8 +7,8 @@ REFRESH-INTERVAL;VALUE=DURATION:PT12H
 X-PUBLISHED-TTL:PT12H
 BEGIN:VEVENT
 UID:arlington-heights-60005-2026-11-01-tiny-art-show-artist-sign-up@withintenmiles.com
-DTSTAMP:20261101T060511Z
-LAST-MODIFIED:20261101T060511Z
+DTSTAMP:20261101T133547Z
+LAST-MODIFIED:20261101T133547Z
 SEQUENCE:0
 DTSTART:20261101T000000
 DTEND:20261101T010000
@@ -17,8 +17,8 @@ URL:https://www.ahml.info/scheduling/reservation/234871
 END:VEVENT
 BEGIN:VEVENT
 UID:arlington-heights-60005-2026-11-02-kids-time@withintenmiles.com
-DTSTAMP:20261101T060511Z
-LAST-MODIFIED:20261101T060511Z
+DTSTAMP:20261101T133547Z
+LAST-MODIFIED:20261101T133547Z
 SEQUENCE:0
 DTSTART:20261102T000000
 DTEND:20261102T010000
@@ -27,8 +27,8 @@ URL:https://www.ahml.info/scheduling/reservation/224216
 END:VEVENT
 BEGIN:VEVENT
 UID:arlington-heights-60005-2026-11-03-senior-center-film-discussion-circle@withintenmiles.com
-DTSTAMP:20261101T060511Z
-LAST-MODIFIED:20261101T060511Z
+DTSTAMP:20261101T133547Z
+LAST-MODIFIED:20261101T133547Z
 SEQUENCE:0
 DTSTART:20261103T000000
 DTEND:20261103T010000
@@ -37,8 +37,8 @@ URL:https://www.ahml.info/scheduling/reservation/233854
 END:VEVENT
 BEGIN:VEVENT
 UID:arlington-heights-60005-2026-11-04-baby-time@withintenmiles.com
-DTSTAMP:20261101T060511Z
-LAST-MODIFIED:20261101T060511Z
+DTSTAMP:20261101T133547Z
+LAST-MODIFIED:20261101T133547Z
 SEQUENCE:0
 DTSTART:20261104T000000
 DTEND:20261104T010000
@@ -47,8 +47,8 @@ URL:https://www.ahml.info/scheduling/reservation/224136
 END:VEVENT
 BEGIN:VEVENT
 UID:arlington-heights-60005-2026-11-05-toddler-time@withintenmiles.com
-DTSTAMP:20261101T060511Z
-LAST-MODIFIED:20261101T060511Z
+DTSTAMP:20261101T133547Z
+LAST-MODIFIED:20261101T133547Z
 SEQUENCE:0
 DTSTART:20261105T000000
 DTEND:20261105T010000
@@ -57,8 +57,8 @@ URL:https://www.ahml.info/scheduling/reservation/224180
 END:VEVENT
 BEGIN:VEVENT
 UID:arlington-heights-60005-2026-11-06-japanese-language-storytime@withintenmiles.com
-DTSTAMP:20261101T060511Z
-LAST-MODIFIED:20261101T060511Z
+DTSTAMP:20261101T133547Z
+LAST-MODIFIED:20261101T133547Z
 SEQUENCE:0
 DTSTART:20261106T000000
 DTEND:20261106T010000
@@ -67,8 +67,8 @@ URL:https://www.ahml.info/scheduling/reservation/227649
 END:VEVENT
 BEGIN:VEVENT
 UID:arlington-heights-60005-2026-11-07-friends-of-the-library-fall-sale@withintenmiles.com
-DTSTAMP:20261101T060511Z
-LAST-MODIFIED:20261101T060511Z
+DTSTAMP:20261101T133547Z
+LAST-MODIFIED:20261101T133547Z
 SEQUENCE:0
 DTSTART:20261107T000000
 DTEND:20261107T010000
@@ -77,8 +77,8 @@ URL:https://www.ahml.info/scheduling/reservation/235508
 END:VEVENT
 BEGIN:VEVENT
 UID:arlington-heights-60005-2026-11-08-fol-fall-book-sale@withintenmiles.com
-DTSTAMP:20261101T060511Z
-LAST-MODIFIED:20261101T060511Z
+DTSTAMP:20261101T133547Z
+LAST-MODIFIED:20261101T133547Z
 SEQUENCE:0
 DTSTART:20261108T000000
 DTEND:20261108T010000
@@ -87,8 +87,8 @@ URL:https://www.ahml.info/scheduling/reservation/235512
 END:VEVENT
 BEGIN:VEVENT
 UID:arlington-heights-60005-2026-11-09-kids-time@withintenmiles.com
-DTSTAMP:20261101T060511Z
-LAST-MODIFIED:20261101T060511Z
+DTSTAMP:20261101T133547Z
+LAST-MODIFIED:20261101T133547Z
 SEQUENCE:0
 DTSTART:20261109T000000
 DTEND:20261109T010000
@@ -97,8 +97,8 @@ URL:https://www.ahml.info/scheduling/reservation/224218
 END:VEVENT
 BEGIN:VEVENT
 UID:arlington-heights-60005-2026-11-10-read-to-learn-district-214@withintenmiles.com
-DTSTAMP:20261101T060511Z
-LAST-MODIFIED:20261101T060511Z
+DTSTAMP:20261101T133547Z
+LAST-MODIFIED:20261101T133547Z
 SEQUENCE:0
 DTSTART:20261110T000000
 DTEND:20261110T010000
@@ -107,8 +107,8 @@ URL:https://www.ahml.info/scheduling/reservation/194393
 END:VEVENT
 BEGIN:VEVENT
 UID:arlington-heights-60005-2026-11-11-baby-time@withintenmiles.com
-DTSTAMP:20261101T060511Z
-LAST-MODIFIED:20261101T060511Z
+DTSTAMP:20261101T133547Z
+LAST-MODIFIED:20261101T133547Z
 SEQUENCE:0
 DTSTART:20261111T000000
 DTEND:20261111T010000
@@ -117,8 +117,8 @@ URL:https://www.ahml.info/scheduling/reservation/224138
 END:VEVENT
 BEGIN:VEVENT
 UID:arlington-heights-60005-2026-11-12-toddler-time@withintenmiles.com
-DTSTAMP:20261101T060511Z
-LAST-MODIFIED:20261101T060511Z
+DTSTAMP:20261101T133547Z
+LAST-MODIFIED:20261101T133547Z
 SEQUENCE:0
 DTSTART:20261112T000000
 DTEND:20261112T010000
@@ -127,8 +127,8 @@ URL:https://www.ahml.info/scheduling/reservation/224182
 END:VEVENT
 BEGIN:VEVENT
 UID:arlington-heights-60005-2026-11-13-senior-center-travelogue@withintenmiles.com
-DTSTAMP:20261101T060511Z
-LAST-MODIFIED:20261101T060511Z
+DTSTAMP:20261101T133547Z
+LAST-MODIFIED:20261101T133547Z
 SEQUENCE:0
 DTSTART:20261113T000000
 DTEND:20261113T010000
@@ -137,8 +137,8 @@ URL:https://www.ahml.info/scheduling/reservation/233826
 END:VEVENT
 BEGIN:VEVENT
 UID:arlington-heights-60005-2026-11-14-family-time@withintenmiles.com
-DTSTAMP:20261101T060511Z
-LAST-MODIFIED:20261101T060511Z
+DTSTAMP:20261101T133547Z
+LAST-MODIFIED:20261101T133547Z
 SEQUENCE:0
 DTSTART:20261114T000000
 DTEND:20261114T010000
@@ -147,8 +147,8 @@ URL:https://www.ahml.info/scheduling/reservation/224197
 END:VEVENT
 BEGIN:VEVENT
 UID:arlington-heights-60005-2026-11-15-3d-printing-essentials-replicate-a-piece@withintenmiles.com
-DTSTAMP:20261101T060511Z
-LAST-MODIFIED:20261101T060511Z
+DTSTAMP:20261101T133547Z
+LAST-MODIFIED:20261101T133547Z
 SEQUENCE:0
 DTSTART:20261115T000000
 DTEND:20261115T010000
@@ -157,8 +157,8 @@ URL:https://www.ahml.info/scheduling/reservation/233443
 END:VEVENT
 BEGIN:VEVENT
 UID:arlington-heights-60005-2026-11-16-kids-time@withintenmiles.com
-DTSTAMP:20261101T060511Z
-LAST-MODIFIED:20261101T060511Z
+DTSTAMP:20261101T133547Z
+LAST-MODIFIED:20261101T133547Z
 SEQUENCE:0
 DTSTART:20261116T000000
 DTEND:20261116T010000
@@ -167,8 +167,8 @@ URL:https://www.ahml.info/scheduling/reservation/224220
 END:VEVENT
 BEGIN:VEVENT
 UID:arlington-heights-60005-2026-11-17-read-to-learn-district-214@withintenmiles.com
-DTSTAMP:20261101T060511Z
-LAST-MODIFIED:20261101T060511Z
+DTSTAMP:20261101T133547Z
+LAST-MODIFIED:20261101T133547Z
 SEQUENCE:0
 DTSTART:20261117T000000
 DTEND:20261117T010000
@@ -177,8 +177,8 @@ URL:https://www.ahml.info/scheduling/reservation/194396
 END:VEVENT
 BEGIN:VEVENT
 UID:arlington-heights-60005-2026-11-18-small-business-coffee-connect@withintenmiles.com
-DTSTAMP:20261101T060511Z
-LAST-MODIFIED:20261101T060511Z
+DTSTAMP:20261101T133547Z
+LAST-MODIFIED:20261101T133547Z
 SEQUENCE:0
 DTSTART:20261118T000000
 DTEND:20261118T010000
@@ -187,8 +187,8 @@ URL:https://www.ahml.info/scheduling/reservation/193737
 END:VEVENT
 BEGIN:VEVENT
 UID:arlington-heights-60005-2026-11-19-toddler-time@withintenmiles.com
-DTSTAMP:20261101T060511Z
-LAST-MODIFIED:20261101T060511Z
+DTSTAMP:20261101T133547Z
+LAST-MODIFIED:20261101T133547Z
 SEQUENCE:0
 DTSTART:20261119T000000
 DTEND:20261119T010000
@@ -197,8 +197,8 @@ URL:https://www.ahml.info/scheduling/reservation/224184
 END:VEVENT
 BEGIN:VEVENT
 UID:arlington-heights-60005-2026-11-20-senior-center-travelogue@withintenmiles.com
-DTSTAMP:20261101T060511Z
-LAST-MODIFIED:20261101T060511Z
+DTSTAMP:20261101T133547Z
+LAST-MODIFIED:20261101T133547Z
 SEQUENCE:0
 DTSTART:20261120T000000
 DTEND:20261120T010000
@@ -207,8 +207,8 @@ URL:https://www.ahml.info/scheduling/reservation/233828
 END:VEVENT
 BEGIN:VEVENT
 UID:arlington-heights-60005-2026-11-21-beginning-esl@withintenmiles.com
-DTSTAMP:20261101T060511Z
-LAST-MODIFIED:20261101T060511Z
+DTSTAMP:20261101T133547Z
+LAST-MODIFIED:20261101T133547Z
 SEQUENCE:0
 DTSTART:20261121T000000
 DTEND:20261121T010000
@@ -217,8 +217,8 @@ URL:https://www.ahml.info/scheduling/reservation/236749
 END:VEVENT
 BEGIN:VEVENT
 UID:arlington-heights-60005-2026-11-22-makerplace-custom-cricut-tote-bag@withintenmiles.com
-DTSTAMP:20261101T060511Z
-LAST-MODIFIED:20261101T060511Z
+DTSTAMP:20261101T133547Z
+LAST-MODIFIED:20261101T133547Z
 SEQUENCE:0
 DTSTART:20261122T000000
 DTEND:20261122T010000
@@ -227,8 +227,8 @@ URL:https://www.ahml.info/scheduling/reservation/233406
 END:VEVENT
 BEGIN:VEVENT
 UID:arlington-heights-60005-2026-11-23-kids-time@withintenmiles.com
-DTSTAMP:20261101T060511Z
-LAST-MODIFIED:20261101T060511Z
+DTSTAMP:20261101T133547Z
+LAST-MODIFIED:20261101T133547Z
 SEQUENCE:0
 DTSTART:20261123T000000
 DTEND:20261123T010000
@@ -237,8 +237,8 @@ URL:https://www.ahml.info/scheduling/reservation/224222
 END:VEVENT
 BEGIN:VEVENT
 UID:arlington-heights-60005-2026-11-24-social-worker-in-the-library@withintenmiles.com
-DTSTAMP:20261101T060511Z
-LAST-MODIFIED:20261101T060511Z
+DTSTAMP:20261101T133547Z
+LAST-MODIFIED:20261101T133547Z
 SEQUENCE:0
 DTSTART:20261124T000000
 DTEND:20261124T010000
@@ -247,8 +247,8 @@ URL:https://www.ahml.info/scheduling/reservation/218153
 END:VEVENT
 BEGIN:VEVENT
 UID:arlington-heights-60005-2026-11-25-baby-time@withintenmiles.com
-DTSTAMP:20261101T060511Z
-LAST-MODIFIED:20261101T060511Z
+DTSTAMP:20261101T133547Z
+LAST-MODIFIED:20261101T133547Z
 SEQUENCE:0
 DTSTART:20261125T000000
 DTEND:20261125T010000
@@ -257,8 +257,8 @@ URL:https://www.ahml.info/scheduling/reservation/224158
 END:VEVENT
 BEGIN:VEVENT
 UID:arlington-heights-60005-2026-11-27-virtual-culture-conversation-level-intermediate@withintenmiles.com
-DTSTAMP:20261101T060511Z
-LAST-MODIFIED:20261101T060511Z
+DTSTAMP:20261101T133547Z
+LAST-MODIFIED:20261101T133547Z
 SEQUENCE:0
 DTSTART:20261127T000000
 DTEND:20261127T010000
@@ -267,8 +267,8 @@ URL:https://www.ahml.info/scheduling/reservation/236736
 END:VEVENT
 BEGIN:VEVENT
 UID:arlington-heights-60005-2026-11-28-games-gab@withintenmiles.com
-DTSTAMP:20261101T060511Z
-LAST-MODIFIED:20261101T060511Z
+DTSTAMP:20261101T133547Z
+LAST-MODIFIED:20261101T133547Z
 SEQUENCE:0
 DTSTART:20261128T000000
 DTEND:20261128T010000
@@ -277,8 +277,8 @@ URL:https://www.ahml.info/scheduling/reservation/236748
 END:VEVENT
 BEGIN:VEVENT
 UID:arlington-heights-60005-2026-11-30-dino-party@withintenmiles.com
-DTSTAMP:20261101T060511Z
-LAST-MODIFIED:20261101T060511Z
+DTSTAMP:20261101T133547Z
+LAST-MODIFIED:20261101T133547Z
 SEQUENCE:0
 DTSTART:20261130T000000
 DTEND:20261130T010000
@@ -287,8 +287,8 @@ URL:https://www.ahml.info/scheduling/reservation/226523
 END:VEVENT
 BEGIN:VEVENT
 UID:arlington-heights-60005-2026-11-07-pumpkin-smash-from-gourd-to-garden@withintenmiles.com
-DTSTAMP:20261101T060511Z
-LAST-MODIFIED:20261101T060511Z
+DTSTAMP:20261101T133547Z
+LAST-MODIFIED:20261101T133547Z
 SEQUENCE:0
 DTSTART:20261107T090000
 DTEND:20261107T100000
@@ -298,8 +298,8 @@ URL:https://www.ahpd.org/event/pumpkin-smash-2026/
 END:VEVENT
 BEGIN:VEVENT
 UID:arlington-heights-60005-2026-11-07-recreation-park-community-center-grand-opening@withintenmiles.com
-DTSTAMP:20261101T060511Z
-LAST-MODIFIED:20261101T060511Z
+DTSTAMP:20261101T133547Z
+LAST-MODIFIED:20261101T133547Z
 SEQUENCE:0
 DTSTART:20261107T103000
 DTEND:20261107T113000
@@ -309,8 +309,8 @@ URL:https://www.ahpd.org/event/recreation-park-community-center-grand-opening/
 END:VEVENT
 BEGIN:VEVENT
 UID:arlington-heights-60005-2026-11-11-veterans-day-at-the-museum@withintenmiles.com
-DTSTAMP:20261101T060511Z
-LAST-MODIFIED:20261101T060511Z
+DTSTAMP:20261101T133547Z
+LAST-MODIFIED:20261101T133547Z
 SEQUENCE:0
 DTSTART:20261111T100000
 DTEND:20261111T110000
@@ -320,8 +320,8 @@ URL:https://www.ahpd.org/event/veterans-day-at-the-museum/
 END:VEVENT
 BEGIN:VEVENT
 UID:arlington-heights-60005-2026-11-13-teen-night-bikini-bottom-bash@withintenmiles.com
-DTSTAMP:20261101T060511Z
-LAST-MODIFIED:20261101T060511Z
+DTSTAMP:20261101T133547Z
+LAST-MODIFIED:20261101T133547Z
 SEQUENCE:0
 DTSTART:20261113T070000
 DTEND:20261113T080000
@@ -331,8 +331,8 @@ URL:https://www.ahpd.org/event/teen-night-bikini-bottom-bash/
 END:VEVENT
 BEGIN:VEVENT
 UID:arlington-heights-60005-2026-11-27-holiday-tree-lighting@withintenmiles.com
-DTSTAMP:20261101T060511Z
-LAST-MODIFIED:20261101T060511Z
+DTSTAMP:20261101T133547Z
+LAST-MODIFIED:20261101T133547Z
 SEQUENCE:0
 DTSTART:20261127T163000
 DTEND:20261127T173000
@@ -342,8 +342,8 @@ URL:https://www.ahpd.org/event/holiday-tree-lighting-2026/
 END:VEVENT
 BEGIN:VEVENT
 UID:arlington-heights-60005-2026-12-06-holly-jolly-trolly@withintenmiles.com
-DTSTAMP:20261101T060511Z
-LAST-MODIFIED:20261101T060511Z
+DTSTAMP:20261101T133547Z
+LAST-MODIFIED:20261101T133547Z
 SEQUENCE:0
 DTSTART:20261206T164500
 DTEND:20261206T174500
@@ -353,8 +353,8 @@ URL:https://www.ahpd.org/event/holly-jolly-trolly/
 END:VEVENT
 BEGIN:VEVENT
 UID:arlington-heights-60005-2026-12-12-frostival@withintenmiles.com
-DTSTAMP:20261101T060511Z
-LAST-MODIFIED:20261101T060511Z
+DTSTAMP:20261101T133547Z
+LAST-MODIFIED:20261101T133547Z
 SEQUENCE:0
 DTSTART:20261212T100000
 DTEND:20261212T110000
@@ -364,8 +364,8 @@ URL:https://www.ahpd.org/event/frostival-2026/
 END:VEVENT
 BEGIN:VEVENT
 UID:arlington-heights-60005-2026-12-18-family-gingerbread-house-decorating@withintenmiles.com
-DTSTAMP:20261101T060511Z
-LAST-MODIFIED:20261101T060511Z
+DTSTAMP:20261101T133547Z
+LAST-MODIFIED:20261101T133547Z
 SEQUENCE:0
 DTSTART:20261218T180000
 DTEND:20261218T190000
@@ -375,233 +375,13 @@ URL:https://www.ahpd.org/event/family-gingerbread-house-decorating-2026/
 END:VEVENT
 BEGIN:VEVENT
 UID:arlington-heights-60005-2026-12-19-winter-express-storytime-train-9-15am@withintenmiles.com
-DTSTAMP:20261101T060511Z
-LAST-MODIFIED:20261101T060511Z
+DTSTAMP:20261101T133547Z
+LAST-MODIFIED:20261101T133547Z
 SEQUENCE:0
 DTSTART:20261219T090000
 DTEND:20261219T100000
 SUMMARY:Winter Express Storytime Train (9:15AM)
 DESCRIPTION:All aboard our Storytime Train! On the train to and from Harvard\, our conductor will read the Polar Express storybook\, and we’ll enjoy music\, a snack\, and a…
 URL:https://www.ahpd.org/event/winter-express-storytime-train-am/
-END:VEVENT
-BEGIN:VEVENT
-UID:arlington-heights-60005-2026-11-05-the-lightning-thief-the-percy-jackson-musical@withintenmiles.com
-DTSTAMP:20261101T060511Z
-LAST-MODIFIED:20261101T060511Z
-SEQUENCE:0
-DTSTART:20261105T000000
-DTEND:20261105T010000
-SUMMARY:The Lightning Thief: The Percy Jackson Musical
-DESCRIPTION:Purchase TicketsThe Lightning Thief: Theatre for Young Audiences Edition The Percy Jackson Musical Performances: Thursday 11/5 at 10:00 am and 12:30 pm Friday…
-URL:https://www.metropolisarts.com/event/lightning-thief-tya-edition/
-END:VEVENT
-BEGIN:VEVENT
-UID:arlington-heights-60005-2026-11-05-myths-and-mayhem@withintenmiles.com
-DTSTAMP:20261101T060511Z
-LAST-MODIFIED:20261101T060511Z
-SEQUENCE:0
-DTSTART:20261105T000000
-DTEND:20261105T010000
-SUMMARY:Myths and Mayhem
-DESCRIPTION:Purchase TicketsPerformance: November 8\, 2026 at 10am ABOUT THE SHOW Dive into the Grecian Mythos in this collection of songs and scenes from musicals like…
-URL:https://www.metropolisarts.com/event/myths-and-mayhem/
-END:VEVENT
-BEGIN:VEVENT
-UID:arlington-heights-60005-2026-11-24-the-christmas-schooner@withintenmiles.com
-DTSTAMP:20261101T060511Z
-LAST-MODIFIED:20261101T060511Z
-SEQUENCE:0
-DTSTART:20261124T000000
-DTEND:20261124T010000
-SUMMARY:The Christmas Schooner
-DESCRIPTION:Purchase TicketsNovember 24\, 2026 – January 3\, 2027 American Sign Language interpreted performance: December 10\, 2026\, 7:30 pm Open Captioned performance:…
-URL:https://www.metropolisarts.com/event/christmas-schooner/
-END:VEVENT
-BEGIN:VEVENT
-UID:arlington-heights-60005-2026-12-03-a-christmas-carol@withintenmiles.com
-DTSTAMP:20261101T060511Z
-LAST-MODIFIED:20261101T060511Z
-SEQUENCE:0
-DTSTART:20261203T000000
-DTEND:20261203T010000
-SUMMARY:A Christmas Carol
-DESCRIPTION:This year\, we have three evening and matinee performances of our Main Stage production. We also have daytime matinees as a part of our Family Series\, which…
-URL:https://www.metropolisarts.com/event/christmas-carol-2026/
-END:VEVENT
-BEGIN:VEVENT
-UID:arlington-heights-60005-2026-12-06-holiday-cabaret-a-joyful-twist@withintenmiles.com
-DTSTAMP:20261101T060511Z
-LAST-MODIFIED:20261101T060511Z
-SEQUENCE:0
-DTSTART:20261206T000000
-DTEND:20261206T010000
-SUMMARY:Holiday Cabaret: A Joyful Twist
-DESCRIPTION:Purchase TicketsHoliday Cabaret: A Joyful Twist December 6\, 2026: 7:00 PM Join us for a Metropolis tradition with our annual Holiday Cabaret\, presented…
-URL:https://www.metropolisarts.com/event/holiday-cabaret-a-joyful-twist/
-END:VEVENT
-BEGIN:VEVENT
-UID:arlington-heights-60005-2026-12-07-the-12-dames-of-christmas-with-angela-ingersoll@withintenmiles.com
-DTSTAMP:20261101T060511Z
-LAST-MODIFIED:20261101T060511Z
-SEQUENCE:0
-DTSTART:20261207T000000
-DTEND:20261207T010000
-SUMMARY:THE 12 DAMES OF CHRISTMAS WITH ANGELA INGERSOLL
-DESCRIPTION:Purchase Tickets THE 12 DAMES OF CHRISTMAS WITH ANGELA INGERSOLL December 7\, 2026\, 7:30 pm December 8\, 2026\, 2:00 pm Tickets: Standard – $45 Emmy nominee…
-URL:https://www.metropolisarts.com/event/12-dames-of-christmas/
-END:VEVENT
-BEGIN:VEVENT
-UID:arlington-heights-60005-2026-12-13-a-christmas-carol-main-stage@withintenmiles.com
-DTSTAMP:20261101T060511Z
-LAST-MODIFIED:20261101T060511Z
-SEQUENCE:0
-DTSTART:20261213T000000
-DTEND:20261213T010000
-SUMMARY:A Christmas Carol - Main Stage
-DESCRIPTION:Purchase TicketsDecember 13\, 6:30 pm December 20\, 6:30 pm December 24\, 2:00 pm Limited Performances\, Full-Length Production Tickets: Regular $50\, Students $26…
-URL:https://www.metropolisarts.com/event/a-christmas-carol-main-stage/
-END:VEVENT
-BEGIN:VEVENT
-UID:arlington-heights-60005-2026-12-15-great-moments-in-vinyl-gives-you-the-hits-of-the-holidays@withintenmiles.com
-DTSTAMP:20261101T060511Z
-LAST-MODIFIED:20261101T060511Z
-SEQUENCE:0
-DTSTART:20261215T000000
-DTEND:20261215T010000
-SUMMARY:Great Moments in Vinyl Gives You The Hits of the Holidays
-DESCRIPTION:Purchase Tickets December 15th\, 2026: 7:30 PM Tickets: $40 ABOUT THE SHOW: Great Moments in Vinyl brings you some of the best-loved holiday tunes and tells…
-URL:https://www.metropolisarts.com/event/greatest-hits-in-vinyl-plays-the-hits-of-the-holidays/
-END:VEVENT
-BEGIN:VEVENT
-UID:arlington-heights-60005-2026-12-27-the-second-city-s-nut-cracking-holiday-revue@withintenmiles.com
-DTSTAMP:20261101T060511Z
-LAST-MODIFIED:20261101T060511Z
-SEQUENCE:0
-DTSTART:20261227T000000
-DTEND:20261227T010000
-SUMMARY:The Second City's Nut-Cracking Holiday Revue
-DESCRIPTION:Purchase Tickets Sunday\, December 27th\, 2026 | 7:30pmMonday\, December 28th\, 2026 | 5:00pm & 7:30pmTuesday\, December 29th\, 2026 | 5:00pm & 7:30pmThursday\,…
-URL:https://www.metropolisarts.com/event/the-second-city-nut-cracking-holiday-revue/
-END:VEVENT
-BEGIN:VEVENT
-UID:arlington-heights-60005-2027-01-17-hello-again-eric-gutman-sings-neil-diamond@withintenmiles.com
-DTSTAMP:20261101T060511Z
-LAST-MODIFIED:20261101T060511Z
-SEQUENCE:0
-DTSTART:20270117T000000
-DTEND:20270117T010000
-SUMMARY:HELLO AGAIN: ERIC GUTMAN SINGS NEIL DIAMOND
-DESCRIPTION:Purchase Tickets HELLO AGAIN: ERIC GUTMAN SINGS NEIL DIAMOND January 17\, 2027\, 2:00 pm Tickets: Standard – $45 In an electrifying concert full of humor and…
-URL:https://www.metropolisarts.com/event/hello-again-eric-gutman/
-END:VEVENT
-BEGIN:VEVENT
-UID:arlington-heights-60005-2027-01-27-disney-s-the-little-mermaid@withintenmiles.com
-DTSTAMP:20261101T060511Z
-LAST-MODIFIED:20261101T060511Z
-SEQUENCE:0
-DTSTART:20270127T000000
-DTEND:20270127T010000
-SUMMARY:Disney's The Little Mermaid
-DESCRIPTION:Purchase TicketsJanuary 27\, 2027 – February 14\, 2027 American Sign Language interpreted performance: February 5\, 2027\, 7:30 pm Open Captioned performance:…
-URL:https://www.metropolisarts.com/event/the-little-mermaid/
-END:VEVENT
-BEGIN:VEVENT
-UID:arlington-heights-60005-2027-02-09-creole-stomp@withintenmiles.com
-DTSTAMP:20261101T060511Z
-LAST-MODIFIED:20261101T060511Z
-SEQUENCE:0
-DTSTART:20270209T000000
-DTEND:20270209T010000
-SUMMARY:Creole Stomp
-DESCRIPTION:Purchase Tickets Tuesday\, February 9th\, 2027: 7:30pm Tickets: $40 ABOUT THE SHOW: Creole Stomp has captured the ears and the feet of Louisiana music fans…
-URL:https://www.metropolisarts.com/event/creole-stomp-2027/
-END:VEVENT
-BEGIN:VEVENT
-UID:arlington-heights-60005-2027-03-03-the-match-game@withintenmiles.com
-DTSTAMP:20261101T060511Z
-LAST-MODIFIED:20261101T060511Z
-SEQUENCE:0
-DTSTART:20270303T000000
-DTEND:20270303T010000
-SUMMARY:The Match Game
-DESCRIPTION:Purchase TicketsMarch 3\, 2027 – March 21\, 2027 American Sign Language interpreted performance: March 18\, 2027\, 7:30 pm Open Captioned performance: March 13\,…
-URL:https://www.metropolisarts.com/event/the-match-game/
-END:VEVENT
-BEGIN:VEVENT
-UID:arlington-heights-60005-2027-03-08-methtacular@withintenmiles.com
-DTSTAMP:20261101T060511Z
-LAST-MODIFIED:20261101T060511Z
-SEQUENCE:0
-DTSTART:20270308T000000
-DTEND:20270308T010000
-SUMMARY:Methtacular!
-DESCRIPTION:Purchase Tickets Monday\, March 8th\, 2027: 7:30 PM Tickets: $25 ABOUT THE SHOW: METHTACULAR! is Steven Strafford’s hilarious\, harrowing\, and ultimately hopeful…
-URL:https://www.metropolisarts.com/event/methtacular/
-END:VEVENT
-BEGIN:VEVENT
-UID:arlington-heights-60005-2027-03-09-a-motown-celebration-with-chester-gregory@withintenmiles.com
-DTSTAMP:20261101T060511Z
-LAST-MODIFIED:20261101T060511Z
-SEQUENCE:0
-DTSTART:20270309T000000
-DTEND:20270309T010000
-SUMMARY:A MOTOWN CELEBRATION WITH CHESTER GREGORY
-DESCRIPTION:Purchase Tickets A MOTOWN CELEBRATION WITH CHESTER GREGORY March 9\, 2027\, 2:00 pm Tickets: Standard – $45 Broadway extraordinaire and recording artist Chester…
-URL:https://www.metropolisarts.com/event/motown-celebration/
-END:VEVENT
-BEGIN:VEVENT
-UID:arlington-heights-60005-2027-03-15-next-page-productions-presents-pete-the-cat@withintenmiles.com
-DTSTAMP:20261101T060511Z
-LAST-MODIFIED:20261101T060511Z
-SEQUENCE:0
-DTSTART:20270315T000000
-DTEND:20270315T010000
-SUMMARY:Next Page Productions presents Pete the Cat
-DESCRIPTION:Purchase Tickets Next Page Productions presents Pete the Cat A part of Metropolis Family Series March 15 – March 17\, 2027\, 10:00 am & 12:00 pm March 18\, 2027\,…
-URL:https://www.metropolisarts.com/event/pete-the-cat-next-page/
-END:VEVENT
-BEGIN:VEVENT
-UID:arlington-heights-60005-2027-04-03-a-rock-n-roll-tribute-from-elvis-to-the-beatles-featuring-the-neverly-brothers@withintenmiles.com
-DTSTAMP:20261101T060511Z
-LAST-MODIFIED:20261101T060511Z
-SEQUENCE:0
-DTSTART:20270403T000000
-DTEND:20270403T010000
-SUMMARY:A Rock ‘n’ Roll Tribute – From Elvis to the Beatles featuring The Neverly Brothers
-DESCRIPTION:Purchase Tickets April 3rd\, 2027: 2:00pm & 7:30pm Tickets: $45 ABOUT THE SHOW: The Neverly Brothers concerts take you on a guided musical VIRTUAL TOUR of the…
-URL:https://www.metropolisarts.com/event/the-neverly-brothers-2027/
-END:VEVENT
-BEGIN:VEVENT
-UID:arlington-heights-60005-2027-04-28-rodgers-hammerstein-s-oklahoma@withintenmiles.com
-DTSTAMP:20261101T060511Z
-LAST-MODIFIED:20261101T060511Z
-SEQUENCE:0
-DTSTART:20270428T000000
-DTEND:20270428T010000
-SUMMARY:Rodgers & Hammerstein's Oklahoma
-DESCRIPTION:Purchase TicketsApril 28\, 2027 – May 30\, 2027 **American Sign Language interpreted performance: May 6\, 2027\, 7:30 pm **Open Captioned performance: May 8\,…
-URL:https://www.metropolisarts.com/event/oklahoma/
-END:VEVENT
-BEGIN:VEVENT
-UID:arlington-heights-60005-2027-05-05-charlotte-s-web@withintenmiles.com
-DTSTAMP:20261101T060511Z
-LAST-MODIFIED:20261101T060511Z
-SEQUENCE:0
-DTSTART:20270505T000000
-DTEND:20270505T010000
-SUMMARY:Charlotte's Web
-DESCRIPTION:Purchase TicketsCharlotte’s Web A part of Metropolis Family Series May 5\, 2027 – May 29\, 2027 American Sign Language interpreted performance: by request…
-URL:https://www.metropolisarts.com/event/charlottes-web/
-END:VEVENT
-BEGIN:VEVENT
-UID:arlington-heights-60005-2027-05-24-the-four-c-notes-the-premier-four-seasons-tribute@withintenmiles.com
-DTSTAMP:20261101T060511Z
-LAST-MODIFIED:20261101T060511Z
-SEQUENCE:0
-DTSTART:20270524T000000
-DTEND:20270524T010000
-SUMMARY:The Four C-Notes: The Premier Four Seasons Tribute
-DESCRIPTION:Purchase Tickets May 24th\, 2027: 7:30pmMay 25th\, 2027: 2:00pm Tickets: $40 ABOUT THE SHOW: THE FOUR C NOTES are the Midwest’s ONLY tribute recreating the…
-URL:https://www.metropolisarts.com/event/the-four-c-notes-2027/
 END:VEVENT
 END:VCALENDAR
