@@ -4,7 +4,7 @@
       "url": "https://withintenmiles.com/f3b7799bed06aac4295ec9134d53b014.txt",
       "purpose": "IndexNow key file on the live domain - still served and still equal to the key?",
       "item": 224,
-      "probed_at": "2026-11-01T18:56:52+00:00",
+      "probed_at": "2026-11-01T21:59:07+00:00",
       "status": 200,
       "final_url": "https://withintenmiles.com/f3b7799bed06aac4295ec9134d53b014.txt",
       "content_type": "text/plain; charset=utf-8",
@@ -22,80 +22,14 @@
       "url": "https://www.ahpd.org/parks/",
       "purpose": "Arlington Heights Park District - park list; does Pioneer Park's page give its street address?",
       "item": 376,
-      "probed_at": "2026-11-01T18:56:52+00:00",
-      "status": 200,
-      "final_url": "https://www.ahpd.org/parks/",
-      "content_type": "text/html; charset=UTF-8",
-      "bytes": 138123,
-      "title": "Parks - Arlington Heights Park District",
-      "feed_links": [
-        {
-          "href": "https://www.ahpd.org/feed/",
-          "type": "application/rss+xml",
-          "title": "Arlington Heights Park District » Feed"
-        },
-        {
-          "href": "https://www.ahpd.org/events/?ical=1",
-          "type": "text/calendar",
-          "title": "Arlington Heights Park District » iCal Feed"
-        },
-        {
-          "href": "https://www.ahpd.org/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fwww.ahpd.org%2Fparks%2F",
-          "type": "application/json+oembed",
-          "title": "oEmbed (JSON)"
-        },
-        {
-          "href": "https://www.ahpd.org/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fwww.ahpd.org%2Fparks%2F&format=xml",
-          "type": "text/xml+oembed",
-          "title": "oEmbed (XML)"
-        },
-        {
-          "href": "https://www.ahpd.org/wp-json/wp/v2/pages/263",
-          "type": "application/json",
-          "title": "JSON"
-        },
-        {
-          "href": "https://www.ahpd.org/wp-json/tribe/events/v1/",
-          "type": "",
-          "title": ""
-        }
-      ],
-      "calendar_links": [
-        "https://www.ahpd.org/arlington-heights-historical-museum/"
-      ],
-      "pattern_matches": {
-        "Pioneer Park": [
-          {
-            "match": "Pioneer Park",
-            "context": "_nomargin\"> Pioneer Park Community Center"
-          }
-        ],
-        "\\b\\d{2,5}\\s+(?:[NSEW]\\.?\\s+)?[A-Z][A-Za-z]+(?:\\s+[A-Z][A-Za-z]+)?\\s+(?:Ave|Avenue|St|Street|Rd|Road|Blvd|Dr|Drive|Ln|Lane)\\b": [
-          {
-            "match": "410 N Arlington Heights Rd",
-            "context": "k\"> 410 N Arlington Heights Rd </a>"
-          },
-          {
-            "match": "660 N. Ridge Ave",
-            "context": "k\"> 660 N. Ridge Ave </a>"
-          },
-          {
-            "match": "1005 E Suffield Dr",
-            "context": "k\"> 1005 E Suffield Dr </a>"
-          },
-          {
-            "match": "500 S. Fernandez Ave",
-            "context": "k\"> 500 S. Fernandez Ave </a>"
-          }
-        ]
-      },
-      "followed": null
+      "probed_at": "2026-11-01T21:59:07+00:00",
+      "error": "ConnectTimeout"
     },
     {
       "url": "https://events.harpercollege.edu/api/2/events?days=60&pp=100",
       "purpose": "Harper College (Localist) - venue ids, venue names and event types in use",
       "item": 286,
-      "probed_at": "2026-11-01T18:56:53+00:00",
+      "probed_at": "2026-11-01T21:59:22+00:00",
       "status": 200,
       "final_url": "https://events.harpercollege.edu/api/2/events?days=60&pp=100",
       "content_type": "application/json; charset=utf-8",
@@ -367,7 +301,7 @@
       "url": "https://www.sd25.org/calendar",
       "purpose": "Arlington Heights District 25 - does the calendar page list no-school dates in the HTML?",
       "item": 300,
-      "probed_at": "2026-11-01T18:57:00+00:00",
+      "probed_at": "2026-11-01T21:59:27+00:00",
       "status": 200,
       "final_url": "https://www.sd25.org/calendar-73",
       "content_type": "text/html; charset=utf-8",
@@ -388,11 +322,11 @@
       "url": "https://ccsd21.org/parent-resources/calendars/",
       "purpose": "Wheeling CCSD 21 - does the calendars page link a 2026-27 calendar and list no-school dates?",
       "item": 300,
-      "probed_at": "2026-11-01T18:57:00+00:00",
+      "probed_at": "2026-11-01T21:59:29+00:00",
       "status": 403,
       "final_url": "https://ccsd21.org/parent-resources/calendars/",
       "content_type": "text/html; charset=UTF-8",
-      "bytes": 8319,
+      "bytes": 8318,
       "title": "Access denied | ccsd21.org used Cloudflare to restrict access | ccsd21.org | Cloudflare",
       "feed_links": [],
       "calendar_links": [],
@@ -406,7 +340,7 @@
       "url": "https://www.d62.org/calendars",
       "purpose": "Des Plaines District 62 - official 2026-27 calendar",
       "item": 300,
-      "probed_at": "2026-11-01T18:57:00+00:00",
+      "probed_at": "2026-11-01T21:59:30+00:00",
       "status": 200,
       "final_url": "https://www.d62.org/calendars",
       "content_type": "text/html; charset=utf-8",
@@ -544,7 +478,7 @@
         "url": "https://resources.finalsite.net/images/v1771602096/d62org/huubad2axs3m2rrnnwjm/District62Ten-MonthSchoolsCalendar2026-2027FINAL.pdf",
         "purpose": "",
         "item": null,
-        "probed_at": "2026-11-01T18:57:03+00:00",
+        "probed_at": "2026-11-01T21:59:30+00:00",
         "status": 200,
         "final_url": "https://resources.finalsite.net/images/v1771602096/d62org/huubad2axs3m2rrnnwjm/District62Ten-MonthSchoolsCalendar2026-2027FINAL.pdf",
         "content_type": "application/pdf",
@@ -559,7 +493,7 @@
       "url": "https://www.d214.org/calendar",
       "purpose": "High School District 214 - official 2026-27 calendar",
       "item": 300,
-      "probed_at": "2026-11-01T18:57:04+00:00",
+      "probed_at": "2026-11-01T21:59:30+00:00",
       "status": 404,
       "final_url": "https://www.d214.org/calendar",
       "content_type": "text/html;charset=utf-8",
@@ -610,7 +544,7 @@
       "url": "https://www.mountprospect.org/",
       "purpose": "Village of Mount Prospect - home page; a 2026 tree-lighting notice",
       "item": 427,
-      "probed_at": "2026-11-01T18:57:04+00:00",
+      "probed_at": "2026-11-01T21:59:31+00:00",
       "status": 200,
       "final_url": "https://www.mountprospect.org/",
       "content_type": "text/html; charset=UTF-8",
@@ -627,7 +561,7 @@
         "url": "https://www.mountprospect.org/services/tree_care.php",
         "purpose": "",
         "item": null,
-        "probed_at": "2026-11-01T18:57:05+00:00",
+        "probed_at": "2026-11-01T21:59:31+00:00",
         "status": 200,
         "final_url": "https://www.mountprospect.org/services/tree_care.php",
         "content_type": "text/html; charset=UTF-8",
@@ -646,11 +580,11 @@
       "url": "https://mpdowntown.com/events/",
       "purpose": "Downtown Mount Prospect - events page; tree lighting or Christkindlmarket dates",
       "item": 427,
-      "probed_at": "2026-11-01T18:57:05+00:00",
+      "probed_at": "2026-11-01T21:59:31+00:00",
       "status": 200,
       "final_url": "https://mpdowntown.com/events/",
       "content_type": "text/html; charset=UTF-8",
-      "bytes": 124873,
+      "bytes": 124907,
       "title": "Events | Mount Prospect Downtown Merchants",
       "feed_links": [
         {
@@ -688,18 +622,37 @@
       "url": "https://www.wheelingil.gov/",
       "purpose": "Village of Wheeling - home page; Lights Around Wheeling or a tree-lighting notice",
       "item": 427,
-      "probed_at": "2026-11-01T18:57:12+00:00",
-      "error": "ConnectTimeout"
+      "probed_at": "2026-11-01T21:59:42+00:00",
+      "status": 200,
+      "final_url": "https://www.wheelingil.gov/",
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 139721,
+      "title": "Wheeling, IL | Official WebsiteArrow LeftArrow RightSlideshow Left ArrowSlideshow Right Arrow",
+      "feed_links": [],
+      "calendar_links": [
+        "https://www.wheelingil.gov/civicalerts.aspx",
+        "https://www.wheelingil.gov/CivicAlerts.aspx?AID=265",
+        "https://www.wheelingil.gov/CivicAlerts.aspx?AID=252",
+        "https://www.wheelingil.gov/CivicAlerts.aspx?CID=1",
+        "https://www.wheelingil.gov/CivicAlerts.aspx?AID=239",
+        "https://www.wheelingil.gov/CivicAlerts.aspx?AID=238",
+        "https://www.wheelingil.gov/CivicAlerts.aspx?CID=10",
+        "https://www.wheelingil.gov/2348/Feedback-Form"
+      ],
+      "pattern_matches": {
+        "(?i)(?:lights around wheeling|friendship park|tree[- ]lighting)[^<]{0,160}": []
+      },
+      "followed": null
     },
     {
       "url": "https://www.desplainesil.gov/",
       "purpose": "City of Des Plaines - home page; a 2026 tree-lighting or holiday-event notice (also item 367)",
       "item": 427,
-      "probed_at": "2026-11-01T18:57:27+00:00",
+      "probed_at": "2026-11-01T21:59:43+00:00",
       "status": 200,
       "final_url": "https://www.desplainesil.gov/Home",
       "content_type": "text/html; charset=utf-8",
-      "bytes": 279197,
+      "bytes": 279198,
       "title": "Home | City of Des Plaines, IL",
       "feed_links": [],
       "calendar_links": [
@@ -721,11 +674,11 @@
         "url": "https://www.desplainesil.gov/Departments/Public-Works-and-Engineering/Street-Maintenance",
         "purpose": "",
         "item": null,
-        "probed_at": "2026-11-01T18:57:30+00:00",
+        "probed_at": "2026-11-01T21:59:45+00:00",
         "status": 200,
         "final_url": "https://www.desplainesil.gov/Departments/Public-Works-and-Engineering/Street-Maintenance",
         "content_type": "text/html; charset=utf-8",
-        "bytes": 77439,
+        "bytes": 77440,
         "title": "Street Maintenance | City of Des Plaines, IL",
         "feed_links": [],
         "calendar_links": [
@@ -737,250 +690,54 @@
       }
     },
     {
-      "url": "https://www.saltcreekpd.com/",
-      "purpose": "Salt Creek Rural Park District (Palatine) - home page; Breakfast with Santa or other Santa events, any events feed link",
-      "item": 428,
-      "probed_at": "2026-11-01T18:57:31+00:00",
+      "url": "https://www.desplainesil.gov/Departments/Media-Services/Events/Tree-Lighting-and-Winter-Fair",
+      "purpose": "City of Des Plaines - Holiday Tree Lighting and Winter Fair page, the 2026 date, time and place",
+      "item": 427,
+      "probed_at": "2026-11-01T21:59:45+00:00",
       "status": 200,
-      "final_url": "https://www.saltcreekpd.com/",
-      "content_type": "text/html; charset=UTF-8",
-      "bytes": 170921,
-      "title": "Salt Creek Park District - Arlington Heights, Palatine & Rolling Meadows",
-      "feed_links": [
-        {
-          "href": "https://www.saltcreekpd.com/feed/",
-          "type": "application/rss+xml",
-          "title": "Salt Creek Park District » Feed"
-        },
-        {
-          "href": "https://www.saltcreekpd.com/events/?ical=1",
-          "type": "text/calendar",
-          "title": "Salt Creek Park District » iCal Feed"
-        },
-        {
-          "href": "https://www.saltcreekpd.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fwww.saltcreekpd.com%2F",
-          "type": "application/json+oembed",
-          "title": "oEmbed (JSON)"
-        },
-        {
-          "href": "https://www.saltcreekpd.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fwww.saltcreekpd.com%2F&format=xml",
-          "type": "text/xml+oembed",
-          "title": "oEmbed (XML)"
-        },
-        {
-          "href": "https://www.saltcreekpd.com/wp-json/wp/v2/pages/2",
-          "type": "application/json",
-          "title": "JSON"
-        },
-        {
-          "href": "https://www.saltcreekpd.com/wp-json/tribe/events/v1/",
-          "type": "",
-          "title": ""
-        }
+      "final_url": "https://www.desplainesil.gov/Departments/Media-Services/Events/Tree-Lighting-and-Winter-Fair",
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 84001,
+      "title": "Holiday Tree Lighting and Winter Fair | City of Des Plaines, IL",
+      "feed_links": [],
+      "calendar_links": [
+        "https://www.desplainesil.gov/Departments/Media-Services/Website-Feedback-Form"
       ],
-      "calendar_links": [],
       "pattern_matches": {
-        "(?i)santa[^<]{0,160}": [],
-        "(?i)(?:ical|\\.ics|/events)[^\"<]{0,80}": [
+        "(?is)Holiday Tree Lighting at Metropolitan Square.{0,500}": [
           {
-            "match": "ical",
-            "context": "atine and the City of Rolling Meadows.\" /> <link rel=\"canonical\" href=\"https://www.saltcreekpd.com/\" /> <meta property=\"og"
+            "match": "Holiday Tree Lighting at Metropolitan Square features food trucks, tree decorating, and a visit from Santa himself. The Winter Fair, held the day after the Holiday Tree Lighting, is held at the Des Plaines...\" />\r\n    <meta property=\"og:type\" content=\"article\" />\r\n    <meta property=\"og:url\" content=\"https://www.desplainesil.gov/Departments/Media-Services/Events/Tree-Lighting-and-Winter-Fair\" />\r\n    <meta property=\"og:title\" content=\"Holiday Tree Lighting and Winter Fair\" />\r\n    <meta property=\"og:description\" content=\"The City of Des P",
+            "context": "y of Des Plaines hosts two holiday events every winter. The Holiday Tree Lighting at Metropolitan Square features food trucks, tree decorating, and a visit from Santa himself. The Winter Fair, held the day after the Holiday Tree Lighting, is held at the Des Plaines...\" /> <meta property=\"og:type\" content=\"article\" /> <meta property=\"og:url\" content=\"https://www.desplainesil.gov/Departments/Media-Services/Events/Tree-Lighting-and-Winter-Fair\" /> <meta property=\"og:title\" content=\"Holiday Tree Lighting and Winter Fair\" /> <meta property=\"og:description\" content=\"The City of Des Plaines hosts two holiday events every winter. The Holiday Tr"
           },
           {
-            "match": "/events-calendar-pro/build/css/tribe-events-pro-mini-calendar-block.css' />\n",
-            "context": "efetch' href='https://www.saltcreekpd.com/wp-content/plugins/events-calendar-pro/build/css/tribe-events-pro-mini-calendar-block.css' /> <link rel='prefetch' href='https://www.saltcreekpd.com/wp-co"
+            "match": "Holiday Tree Lighting at Metropolitan Square features food trucks, tree decorating, and a visit from Santa himself. The Winter Fair, held the day after the Holiday Tree Lighting, is held at the Des Plaines...\" />\r\n    <meta property=\"og:image\" content=\"https://www.desplainesil.gov/files/assets/city/v/1/images/media-services/tree-lighting-winter-fair/tree-lighting-metropolitan-square.jpg?w=1200\" />\r\n    <meta property=\"twitter:card\" content=\"summary\" />\r\n    <meta property=\"twitter:title\" content=\"Holiday Tree Lighting and Winter Fair\" />\r",
+            "context": "y of Des Plaines hosts two holiday events every winter. The Holiday Tree Lighting at Metropolitan Square features food trucks, tree decorating, and a visit from Santa himself. The Winter Fair, held the day after the Holiday Tree Lighting, is held at the Des Plaines...\" /> <meta property=\"og:image\" content=\"https://www.desplainesil.gov/files/assets/city/v/1/images/media-services/tree-lighting-winter-fair/tree-lighting-metropolitan-square.jpg?w=1200\" /> <meta property=\"twitter:card\" content=\"summary\" /> <meta property=\"twitter:title\" content=\"Holiday Tree Lighting and Winter Fair\" /> <meta property=\"twitter:description\" content=\"The City"
           },
           {
-            "match": "iCal Feed",
-            "context": "ype=\"text/calendar\" title=\"Salt Creek Park District &raquo; iCal Feed\" href=\"https://www.saltcreekpd.com/events/?ical=1\" /> <link"
+            "match": "Holiday Tree Lighting at Metropolitan Square features food trucks, tree decorating, and a visit from Santa himself. The Winter Fair, held the day after the Holiday Tree Lighting, is held at the Des Plaines...\" />\r\n    <meta property=\"twitter:image\" content=\"https://www.desplainesil.gov/files/assets/city/v/1/images/media-services/tree-lighting-winter-fair/tree-lighting-metropolitan-square.jpg?w=1080\" />\r\n    <link rel=\"canonical\" href=\"https://www.desplainesil.gov/Departments/Media-Services/Events/Tree-Lighting-and-Winter-Fair\" />\r\n\r\n    \r",
+            "context": "y of Des Plaines hosts two holiday events every winter. The Holiday Tree Lighting at Metropolitan Square features food trucks, tree decorating, and a visit from Santa himself. The Winter Fair, held the day after the Holiday Tree Lighting, is held at the Des Plaines...\" /> <meta property=\"twitter:image\" content=\"https://www.desplainesil.gov/files/assets/city/v/1/images/media-services/tree-lighting-winter-fair/tree-lighting-metropolitan-square.jpg?w=1080\" /> <link rel=\"canonical\" href=\"https://www.desplainesil.gov/Departments/Media-Services/Events/Tree-Lighting-and-Winter-Fair\" /> <link rel=\"icon\" type=\"image/png\" href=\"/files/ocfavico"
+          }
+        ],
+        "(?i)(?:Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)[a-z]*\\.? \\d{1,2}(?:st|nd|rd|th)?,? ?(?:20\\d\\d)?[^<]{0,80}": [
+          {
+            "match": "December 4 | 4-6:30 p.m.",
+            "context": "ny at Metropolitan Square</strong></h2> <h3><strong>Friday, December 4 | 4-6:30 p.m.</strong></h3> <p>Join the City of Des Plaines for live ente"
           },
           {
-            "match": "/events/?ical=1",
-            "context": "istrict &raquo; iCal Feed\" href=\"https://www.saltcreekpd.com/events/?ical=1\" /> <link rel=\"alternate\" title=\"oEmbed (JSON)\" type=\"appli"
+            "match": "December 5 | 11 a.m. - 3 p.m.",
+            "context": "ong></h2> <h3><strong style=\"font-size: 1.125em;\">Saturday, December 5 | 11 a.m. - 3 p.m.</strong></h3> <p>The City of Des Plaines is excited for its"
           },
           {
-            "match": "/events-calendar-pro/build/css/tribe-events-pro-mini-calendar-block.css' media='print' ",
-            "context": "es-css' href='https://www.saltcreekpd.com/wp-content/plugins/events-calendar-pro/build/css/tribe-events-pro-mini-calendar-block.css' media='print' onload=\"this.media='all'\" /> <noscript><link rel='stylesheet"
-          },
+            "match": "November 2, 2026 at 8 a.m.",
+            "context": "for the trolley tours and <strong>registration will open on November 2, 2026 at 8 a.m.</strong>&nbsp;Once tours reach capacity, a waitlist option"
+          }
+        ],
+        "(?i)20\\d\\d[^<]{0,60}(?:tree|winter fair)": [
           {
-            "match": "/events-calendar-pro/build/css/tribe-events-pro-mini-calendar-block.css' media='all' />",
-            "context": "es-css' href='https://www.saltcreekpd.com/wp-content/plugins/events-calendar-pro/build/css/tribe-events-pro-mini-calendar-block.css' media='all' /> </noscript><style id=\"classic-theme-styles-inline-css\"> /*!"
-          },
-          {
-            "match": "/events/v1/",
-            "context": "=\"alternate\" href=\"https://www.saltcreekpd.com/wp-json/tribe/events/v1/\" /><meta name=\"generator\" content=\"speculation-rules 1.7.0\""
-          },
-          {
-            "match": "ical menu-list--child menu-list--depth-1 menu-list--overlay' data-hover='true' data-",
-            "context": "id='desktop-nav_575_child' class='menu-list menu-list--vertical menu-list--child menu-list--depth-1 menu-list--overlay' data-hover='true' data-touch='true' aria-hidden='true' aria-controlledby='desktop-n"
-          },
-          {
-            "match": "ical menu-list--child menu-list--depth-2 menu-list--overlay menu-list--flyout' data-",
-            "context": "id='desktop-nav_577_child' class='menu-list menu-list--vertical menu-list--child menu-list--depth-2 menu-list--overlay menu-list--flyout' data-hover='true' data-touch='true' aria-hidden='true' aria-contr"
-          },
-          {
-            "match": "/events/'>Calendar of Events",
-            "context": "ass='menu-list__link link' href='https://www.saltcreekpd.com/events/'>Calendar of Events</a></li><li class='menu-item menu-item-type-post_type menu-"
-          },
-          {
-            "match": "/events/",
-            "context": "callouts__callout callout\" href=\"https://www.saltcreekpd.com/events/\"> <i class=\"cal"
-          },
-          {
-            "match": "ical'>",
-            "context": "ist--navigation-primary menu-list--accordion menu-list--vertical'><li class='menu-item menu-item-type-custom menu-item-object-"
-          },
-          {
-            "match": "ical menu-list--child menu-list--depth-1 menu-list--accordion' data-accordion='true'",
-            "context": "l id='mobile-nav_575_child' class='menu-list menu-list--vertical menu-list--child menu-list--depth-1 menu-list--accordion' data-accordion='true' data-touch='true' aria-hidden='true' aria-controlledby='mob"
-          },
-          {
-            "match": "ical menu-list--child menu-list--depth-2 menu-list--accordion' data-accordion='true'",
-            "context": "l id='mobile-nav_577_child' class='menu-list menu-list--vertical menu-list--child menu-list--depth-2 menu-list--accordion' data-accordion='true' data-touch='true' aria-hidden='true' aria-controlledby='mob"
+            "match": "2026 Winter Fair Trolley Tours\">Register for Winter Fair",
+            "context": "button-calltoaction\" title=\"Click for registration link for 2026 Winter Fair Trolley Tours\">Register for Winter Fair Trolley Tours</a></p> </div> </div> <div class=\"oc-wysiwyg-"
           }
         ]
-      },
-      "followed": {
-        "url": "https://www.saltcreekpd.com/events/",
-        "purpose": "",
-        "item": null,
-        "probed_at": "2026-11-01T18:57:31+00:00",
-        "status": 200,
-        "final_url": "https://www.saltcreekpd.com/events/",
-        "content_type": "text/html; charset=UTF-8",
-        "bytes": 259806,
-        "title": "Events for November 2026 – Salt Creek Park District",
-        "feed_links": [
-          {
-            "href": "https://www.saltcreekpd.com/feed/",
-            "type": "application/rss+xml",
-            "title": "Salt Creek Park District » Feed"
-          },
-          {
-            "href": "https://www.saltcreekpd.com/events/?ical=1",
-            "type": "text/calendar",
-            "title": "Salt Creek Park District » iCal Feed"
-          },
-          {
-            "href": "https://www.saltcreekpd.com/events/feed/",
-            "type": "application/rss+xml",
-            "title": "Salt Creek Park District » Events Feed"
-          },
-          {
-            "href": "https://www.saltcreekpd.com/wp-json/tribe/events/v1/",
-            "type": "",
-            "title": ""
-          }
-        ],
-        "calendar_links": [
-          "https://www.google.com/calendar/render?cid=webcal%3A%2F%2Fwww.saltcreekpd.com%2F%3Fpost_type%3Dtribe_events%26ical%3D1%26eventDisplay%3Dlist",
-          "webcal://www.saltcreekpd.com/?post_type=tribe_events&ical=1&eventDisplay=list",
-          "https://outlook.office.com/owa?path=/calendar/action/compose&rru=addsubscription&url=webcal%3A%2F%2Fwww.saltcreekpd.com%2F%3Fpost_type%3Dtribe_events%26ical%3D1%26eventDisplay%3Dlist&name=Salt+Creek+Park+District+Events+Archive+-+Salt+Creek+Park+District",
-          "https://outlook.live.com/owa?path=/calendar/action/compose&rru=addsubscription&url=webcal%3A%2F%2Fwww.saltcreekpd.com%2F%3Fpost_type%3Dtribe_events%26ical%3D1%26eventDisplay%3Dlist&name=Salt+Creek+Park+District+Events+Archive+-+Salt+Creek+Park+District",
-          "https://www.saltcreekpd.com/events/month/?ical=1",
-          "https://www.saltcreekpd.com/events/month/?outlook-ical=1"
-        ],
-        "pattern_matches": {
-          "(?i)santa[^<]{0,160}": [],
-          "(?i)(?:ical|\\.ics|/events)[^\"<]{0,80}": [
-            {
-              "match": "/events-calendar-pro/build/css/views-print.css' media='print' />\n",
-              "context": "nt-css' href='https://www.saltcreekpd.com/wp-content/plugins/events-calendar-pro/build/css/views-print.css' media='print' /> <noscript><link rel='stylesheet' id='tribe-events-pro-views-"
-            },
-            {
-              "match": "ical",
-              "context": "6 &#8211; Salt Creek Park District</title> <link rel=\"canonical\" href=\"https://www.saltcreekpd.com/events/\" /> <meta prope"
-            },
-            {
-              "match": "/events/",
-              "context": "le> <link rel=\"canonical\" href=\"https://www.saltcreekpd.com/events/\" /> <meta property=\"og:locale\" content=\"en_US\" /> <meta p"
-            },
-            {
-              "match": "/events\\/",
-              "context": "type\":\"CollectionPage\",\"@id\":\"https:\\/\\/www.saltcreekpd.com\\/events\\/\",\"url\":\"https:\\/\\/www.saltcreekpd.com\\/events\\/\",\"name\":\"Ev"
-            },
-            {
-              "match": "/events\\/#breadcrumb",
-              "context": "ebsite\"},\"breadcrumb\":{\"@id\":\"https:\\/\\/www.saltcreekpd.com\\/events\\/#breadcrumb\"},\"inLanguage\":\"en-US\"},{\"@type\":\"BreadcrumbList\",\"@id\":\"ht"
-            },
-            {
-              "match": "ical-links.js' />\n",
-              "context": "d.com/wp-content/plugins/the-events-calendar/build/js/views/ical-links.js' /> <link rel='prefetch' href='https://www.saltcreekpd.com/wp-co"
-            },
-            {
-              "match": "/events-bar.js' />\n",
-              "context": "pd.com/wp-content/plugins/the-events-calendar/build/js/views/events-bar.js' /> <link rel='prefetch' href='https://www.saltcreekpd.com/wp-co"
-            },
-            {
-              "match": "/events-bar-inputs.js' />\n",
-              "context": "pd.com/wp-content/plugins/the-events-calendar/build/js/views/events-bar-inputs.js' /> <link rel='prefetch' href='https://www.saltcreekpd.com/wp-co"
-            },
-            {
-              "match": "/events-calendar-pro/build/js/views/week-grid-scroller.js' />\n",
-              "context": "efetch' href='https://www.saltcreekpd.com/wp-content/plugins/events-calendar-pro/build/js/views/week-grid-scroller.js' /> <link rel='prefetch' href='https://www.saltcreekpd.com/wp-co"
-            },
-            {
-              "match": "/events-calendar-pro/build/js/views/week-day-selector.js' />\n",
-              "context": "efetch' href='https://www.saltcreekpd.com/wp-content/plugins/events-calendar-pro/build/js/views/week-day-selector.js' /> <link rel='prefetch' href='https://www.saltcreekpd.com/wp-co"
-            },
-            {
-              "match": "/events-calendar-pro/build/js/views/week-multiday-toggle.js' />\n",
-              "context": "efetch' href='https://www.saltcreekpd.com/wp-content/plugins/events-calendar-pro/build/js/views/week-multiday-toggle.js' /> <link rel='prefetch' href='https://www.saltcreekpd.com/wp-co"
-            },
-            {
-              "match": "/events-calendar-pro/build/js/views/week-event-link.js' />\n",
-              "context": "efetch' href='https://www.saltcreekpd.com/wp-content/plugins/events-calendar-pro/build/js/views/week-event-link.js' /> <link rel='prefetch' href='https://www.saltcreekpd.com/wp-co"
-            },
-            {
-              "match": "/events-calendar-pro/build/js/views/map-events-scroller.js' />\n",
-              "context": "efetch' href='https://www.saltcreekpd.com/wp-content/plugins/events-calendar-pro/build/js/views/map-events-scroller.js' /> <link rel='prefetch' href='https://www.saltcreekpd.com/wp-co"
-            },
-            {
-              "match": "/events-calendar-pro/build/js/views/map-events.js' />\n",
-              "context": "efetch' href='https://www.saltcreekpd.com/wp-content/plugins/events-calendar-pro/build/js/views/map-events.js' /> <link rel='prefetch' href='https://www.saltcreekpd.com/wp-co"
-            },
-            {
-              "match": "/events-calendar-pro/build/js/views/map-provider-google-maps.js' />\n",
-              "context": "efetch' href='https://www.saltcreekpd.com/wp-content/plugins/events-calendar-pro/build/js/views/map-provider-google-maps.js' /> <link rel='prefetch' href='https://www.saltcreekpd.com/wp-co"
-            },
-            {
-              "match": "/events-calendar-pro/build/js/views/map-no-venue-modal.js' />\n",
-              "context": "efetch' href='https://www.saltcreekpd.com/wp-content/plugins/events-calendar-pro/build/js/views/map-no-venue-modal.js' /> <link rel='prefetch' href='https://www.saltcreekpd.com/wp-co"
-            },
-            {
-              "match": "/events-calendar-pro/build/js/views/tooltip-pro.js' />\n",
-              "context": "efetch' href='https://www.saltcreekpd.com/wp-content/plugins/events-calendar-pro/build/js/views/tooltip-pro.js' /> <link rel='prefetch' href='https://www.saltcreekpd.com/wp-co"
-            },
-            {
-              "match": "/events-calendar-pro/build/js/views/multiday-events-pro.js' />\n",
-              "context": "efetch' href='https://www.saltcreekpd.com/wp-content/plugins/events-calendar-pro/build/js/views/multiday-events-pro.js' /> <link rel='prefetch' href='https://www.saltcreekpd.com/wp-co"
-            },
-            {
-              "match": "/events-calendar-pro/build/js/views/toggle-recurrence.js' />\n",
-              "context": "efetch' href='https://www.saltcreekpd.com/wp-content/plugins/events-calendar-pro/build/js/views/toggle-recurrence.js' /> <link rel='prefetch' href='https://www.saltcreekpd.com/wp-co"
-            },
-            {
-              "match": "/events-calendar-pro/build/js/views/datepicker-pro.js' />\n",
-              "context": "efetch' href='https://www.saltcreekpd.com/wp-content/plugins/events-calendar-pro/build/js/views/datepicker-pro.js' /> <link rel='prefetch' href='https://www.saltcreekpd.com/wp-co"
-            }
-          ]
-        }
-      }
-    },
-    {
-      "url": "https://www.saltcreekpd.com/events/?ical=1",
-      "purpose": "Salt Creek Rural Park District - The Events Calendar iCal feed, if it has one",
-      "item": 428,
-      "probed_at": "2026-11-01T18:57:33+00:00",
-      "status": 200,
-      "final_url": "https://www.saltcreekpd.com/events/?ical=1",
-      "content_type": "text/html; charset=UTF-8",
-      "bytes": 0,
-      "title": "",
-      "feed_links": [],
-      "calendar_links": [],
-      "pattern_matches": {
-        "BEGIN:VEVENT": []
       }
     }
   ]
