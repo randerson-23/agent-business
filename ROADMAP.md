@@ -220,6 +220,7 @@ doesn't re-suggest something already shipped.
 
 **Build queue (by deadline; refreshed by the research loop, item 346).**
 Pick from the top unless the owner has flagged something else:
+0. **427, 428** (tree-lighting dates the banner shows as TBA; Salt Creek and Santa keywords, `/santa/` full by Nov 15). **429** (finish the bento homepage).
 0. **422** (candidate park districts and villages; the town-six decision otherwise rests on library counts).
 0. **416** (steps 1-2 done, measuring until about Nov 13; earlier note: step 1: round-24 probes for the candidates' feeds are in `config/url_probes.yaml` (egvpl.libnet.info, rmlib.libnet.info, elkgroveparks.org found by search; no Rolling Meadows park district calendar found); next: read the answers, then write the `_candidate-*.yaml` shadow files and the counts file). **417** with it.
 3. **390**: promo receipts.
@@ -19072,6 +19073,88 @@ personalisation underdelivered) and **visitor and city guides on
 Awwwards** (Húsavík, Isny, Tenerife, SHAPESHIFT). The design/UX angle is
 **the homepage on a desktop**: a misaligned hero, weak town picks, and
 seven grey boxes.
+
+
+#### Research pass 2026-11-01 (hundred-and-sixteenth pass)
+
+November started cleanly. `/trick-or-treat/` is now titled **"Trick-or-Treat
+Hours 2027"** (item 366), the homepage leads with the **holiday banner**
+(Arlington Heights Fri Nov 27, Palatine Sat Nov 21, three towns *"date
+TBA"*), and overnight the build loop shipped items 425 and 426 (the town
+picks quality floor and a **bento desktop homepage** with town colours).
+This pass fills the three *"date TBA"* gaps the banner now shows in
+public, finds a Santa source the site has never had, and reviews the new
+desktop layout.
+
+| Angle | What it is / what we found | Why it matters here |
+|---|---|---|
+| **The missing tree lightings** (Daily Herald holiday roundups; Village of Mount Prospect notices; Village of Wheeling archive notice; NBC Chicago tree-lighting roundup) | **Mount Prospect:** the **Holiday Tree Lighting and Christkindlmarket** at **Busse Pocket Park** (Emerson St and Busse Ave), market 4–7 PM inside Village Hall and lighting at 5 PM. It was on **Wed Nov 26** in the most recent listing (2025) and **Dec 4** in 2024, so the pattern is the Wednesday before Thanksgiving, though not always. **Wheeling:** **"Lights Around Wheeling"**, a **Sunday 4:30 PM** procession with Santa and the lighting at **Friendship Park** (Milwaukee and Dundee), in an archived village notice from a past year. **Des Plaines:** Fri Dec 4 (item 367, awaiting the City's own confirmation). **No 2026 dates published yet** for Mount Prospect or Wheeling | The homepage banner shows **"date TBA"** for three of five towns, the first thing every visitor sees until Christmas. The event names, places and usual timing are now known, so URL probes can watch the right village pages and set each date the day it's posted (item 427) |
+| **A Santa source the site doesn't read** (Daily Herald *"where to dine with Santa"* roundups; Patch Arlington Heights *"where to see Santa"* yearly roundups) | Palatine's **Breakfast with Santa** has been run by the **Salt Creek Rural Park District** at the **Twin Lakes Clubhouse** (1200 E. Twin Lakes Dr.), registration required. Salt Creek is a separate park district serving part of Palatine, and **it isn't a configured source**. Other past Santa events: Arlington Heights' **Winter Frostival** at the Historical Museum (a Saturday in mid-December), and Wheeling Park District's **Santa Splash** at the indoor pool. **Patch Arlington Heights** publishes a *"where to see Santa"* roundup **every year**, and the Daily Herald a dine-with-Santa list | `/santa/` (item 379) competes with exactly these roundups, and it only wins if it's more complete and earlier. A Palatine breakfast run by a district the site doesn't read is a gap in the one page whose job is Santa. Patch's roundup usually lands in late November, so the site's page should be full by mid-November (item 428) |
+| **The bento desktop homepage (design/UX)** | At 1280px it now looks like a product: an aligned hero with a large headline, a big "This weekend" tile, small Today and Free tiles, a Santa tile, and town tiles with colour bars. Four rough edges: **(1)** the big **"This weekend"** tile shows only *"Nov 1 · 7 things"*, about 70% empty, though item 426 asked for the three picks with date chips; **(2)** five towns in a four-column grid leave **Wheeling alone on a full-width row**; **(3)** cards read *"See all **1** this weekend"*; **(4)** the **"Guides & past issues"** block is a wall of 22 underlined red links under the grid | It's close. These are the details that separate *"looks finished"* from *"looks generated"* on the page a sponsor checks first (item 429) |
+
+#### P1 (new)
+
+427. **Watch for the three missing tree-lighting dates and set each one
+     when posted.** Build loop, URL probes plus config:
+
+     - **Mount Prospect:** probe the Village's events and news pages and
+       the downtown merchants' site, with `patterns:` for *"tree
+       lighting"*, *"Christkindlmarket"* and *"Busse Pocket Park"*.
+     - **Wheeling:** probe the Village's news archive and calendar for
+       *"Lights Around Wheeling"* and *"Friendship Park"*.
+     - **Des Plaines:** item 367's probe.
+     - When a probe shows a 2026 date on the village's own page, set
+       `tree_lighting.date`, `time` and `venue` with that URL. The banner,
+       `/holidays/`, `/santa/`, the ad creatives (item 385) and the
+       Thanksgiving issue (item 393) update together.
+
+     Run the probes **daily until Nov 20**. Never set a date from a
+       roundup or from last year's pattern.
+
+428. **Add the Salt Creek Rural Park District, and the Santa event names
+     the site misses.** Build loop:
+
+     - Probe the Salt Creek Rural Park District's site for an events
+       feed (*The Events Calendar* `?ical=1` or an RSS export). Add it to
+       `config/regions/palatine-60067.yaml` as a source, or as an
+       `annual_events` entry for the Breakfast with Santa (date, sessions,
+       registration link) once its 2026 page confirms it.
+     - Add **"Frostival"**, **"Santa Splash"**, **"Christkindlmarket"** and
+       **"Lights Around"** to the holiday and Santa keyword selection
+       (items 283, 379).
+     - Target: `/santa/` lists every park-district Santa event for the
+       five towns **by Nov 15**, before Patch's yearly roundup.
+
+     Tests: a "Santa Splash" feed event lands on `/santa/`, and Salt
+     Creek's events carry Palatine's chip.
+
+#### P2 (new)
+
+429. **Finish the bento homepage.** Design/UX, `hub.html.j2`:
+
+     - Fill the big **"This weekend"** tile with the **three "Don't miss"
+       picks** (date chip, emoji, title, town), as item 426 specified. The
+       count line stays as its footer.
+     - Lay the **five towns out without an orphan**: five columns at
+       ≥1200px, or a 3 + 2 arrangement in which the last two each span
+       wider.
+     - **Pluralise** the card link: *"See the 1 event this weekend"*, *"See
+       all 3 this weekend"*, or *"See what's on"* when the card shows "Next
+       up".
+     - Turn **"Guides & past issues"** into one compact tile: a town
+       selector or five short rows with the guides as small chips, not 22
+       underlined links.
+
+     Verify at 390, 768 and 1280 px. Tests: the weekend tile contains up
+     to three picks, no grid row holds a single town tile at ≥1200px, and
+     no string reads "all 1".
+
+Competitors reviewed this pass: **Patch Arlington Heights' yearly "where
+to see Santa" roundup** and **the Daily Herald's dine-with-Santa lists**
+(the competition for `/santa/`), the **Salt Creek Rural Park District**
+(an unconfigured Palatine source), and **past tree-lighting notices** for
+Mount Prospect and Wheeling. The design/UX angle is **the new bento
+desktop homepage**.
 
 
 ## Working agreements for autonomous iteration
