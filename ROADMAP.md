@@ -220,6 +220,7 @@ doesn't re-suggest something already shipped.
 
 **Build queue (by deadline; refreshed by the research loop, item 346).**
 Pick from the top unless the owner has flagged something else:
+0. **430** (CAN-SPAM footer, real name and opt-out before any outreach email is sent).
 0. **427, 428** (read the round-27 probe answers daily; set tree-lighting dates and add Salt Creek when found; `/santa/` full by Nov 15).
 0. **422** (candidate park districts and villages; the town-six decision otherwise rests on library counts).
 0. **416** (steps 1-2 done, measuring until about Nov 13; earlier note: step 1: round-24 probes for the candidates' feeds are in `config/url_probes.yaml` (egvpl.libnet.info, rmlib.libnet.info, elkgroveparks.org found by search; no Rolling Meadows park district calendar found); next: read the answers, then write the `_candidate-*.yaml` shadow files and the counts file). **417** with it.
@@ -239,7 +240,7 @@ reference, *not now*.
    read-only key into the secret `GOATCOUNTER_TOKEN`.
 3. **The $50 Meta test: reply "yes", "holiday" or "no" (1 min).** If
    yes, set it up from `META_AD_KIT.md` (about 10 min).
-4. **Send the emails in `OUTREACH_BATCH.md` (about 15 min).** It exists
+4. **First add `owner_name` and a mailing address (a registered mailbox is fine) to `config/newsletter.yaml` (1 min; required by law in commercial email, item 430). Then send the emails in `OUTREACH_BATCH.md` (about 15 min).** It exists
    now. **Block 1 (PHS Pirate Boosters, fair Sat Nov 7) by Sun Nov 1**
    (2 min, item 414); the rest when convenient. The offer is the free
    first Event Promo.
@@ -445,21 +446,19 @@ that limit.
   newsletters report $0.23–1 per subscriber. Success means under $1 per
   *confirmed* subscriber. Needs a minimal Facebook Page. This replaces
   the free nonprofit Event Promo (item 240), which moves to Parked.
-- **Substack mirror pilot, 8 weeks** (item 261): about 5 minutes a week
-  to paste each issue into a free Substack edition, to test whether
-  Substack's discovery network does for this list what it did for Don't
-  Miss Margate (1,000 subscribers in three months). It replaces the
-  Perplexity Comet Plus application (item 231), which moves to Parked.
-  **Or, instead, a WhatsApp Channel** (item 336): about a minute a week
-  to paste a ready-made three-pick post. One small local newsroom
-  passed 3,200 followers in four months. Choose one of the two, not
-  both.
+- **Let the build loop send the outreach batch itself** (item 431, about
+  10 minutes once): a free Resend account, its SPF and DKIM records in
+  Cloudflare, and `RESEND_API_KEY`. After that, up to eight personalised,
+  compliant emails go out each Monday from hello@, and you only handle
+  replies. It replaces the Substack / WhatsApp choice (items 261, 336),
+  which moves to Parked: both need weekly minutes.
 - **Stripe Payment Links for the $20 Event Promo and $50 Weekly Spot**
   (item 244, about 15 minutes): self-serve checkout, so a sale is not an
   email thread and a manual invoice. It replaces the Cloudflare
   AI-analytics proxy (item 232) in this list, which moves to Parked.
 
 **Parked (spend decisions; not competing with the above):**
+The Substack mirror pilot or WhatsApp Channel (items 261, 336; parked by item 431, weekly owner minutes);
 Free Event Promo for nonprofit fundraisers (item 240, once there is an
 audience to promote to);
 Perplexity publisher programme / Comet Plus application (item 231,
@@ -19155,6 +19154,103 @@ to see Santa" roundup** and **the Daily Herald's dine-with-Santa lists**
 (an unconfigured Palatine source), and **past tree-lighting notices** for
 Mount Prospect and Wheeling. The design/UX angle is **the new bento
 desktop homepage**.
+
+
+#### Research pass 2026-11-01, evening (hundred-and-seventeenth pass)
+
+Today the build loop shipped item 429 (the finished bento homepage) and
+the first parts of items 427 and 428: daily tree-lighting probes, Santa
+and winter keywords, and **the Salt Creek Rural Park District as a
+Palatine source**. The backfill recorded the Halloween issue: **1
+recipient, 1 open**, the same as every issue since October 8. **Eight
+weekly issues have gone to one person.** The outreach batch has been
+sendable since Thursday, and its most urgent block (the PHS Pirate
+Boosters, fair on Sat Nov 7) was due to go out today. Nothing in the repo
+suggests any of it has been sent. This pass asks the uncomfortable
+question directly: **if the owner's outreach minutes don't materialise,
+can the business send its own outreach?** It also finds a compliance gap
+in the emails as written.
+
+| Angle | What it is / what we found | Why it matters here |
+|---|---|---|
+| **CAN-SPAM and B2B outreach** (2026 compliance guides from BounceZero, Prospeo, SendCheckIt, Tomba and others; the FTC's rules as they summarise them) | CAN-SPAM applies to **business-to-business** commercial email, including email to role addresses, with **no prior consent needed** (it is an opt-out law). Every commercial email needs: **accurate sender identity and headers**, a **truthful subject**, a **valid postal address** (sources disagree on whether a PO box counts; a street address or registered mailbox is safe), and a **clear opt-out honoured within 10 business days**. Penalties are quoted per email, in the tens of thousands of dollars (figures vary by source; the FTC's current figure governs) | `OUTREACH_BATCH.md`'s emails sell a $20 product, so they're commercial. As written they have **no postal address and no opt-out line**. That's a gap whether the owner sends them by hand or anything sends them automatically, and it must be fixed before the first one goes out (item 430) |
+| **Sending outreach without the owner's minutes** (Resend pricing as summarised by AutomationAtlas, CostBench, WP Mail SMTP's review and others, May 2026) | Resend's **free tier**: **3,000 emails a month, 100 a day, one verified domain**, with a REST API. It pauses at the cap rather than billing. Pro is reported at about $20/month for 50,000. Setup is an **API key** plus **DNS records** (SPF and DKIM) on the sending domain, which here is in Cloudflare and already has DMARC (item 156) | The outreach batch is capped at **eight a week**, far inside the free tier. The build loop already writes every message, recipient and subject. What it can't do is press send. One owner decision plus about 10 minutes of setup would turn *"the owner has to find an evening"* into *"the batch goes out every Monday, and replies land in hello@"*. That is the business plan's founding constraint (*near-zero ongoing weekly time*) applied to the one task that brings in money (item 431) |
+| **The outreach email as a trust object (design/UX)** | The fair email is now good: the right date, the event's own mailbox, a one-word-yes ask, and a personalised preview. But it ends *"Thanks, [Your name], Within Ten"*: **no full name, no address, no way to say no**. A booster-club volunteer deciding whether this is a real local business or a scam sees a placeholder name and nothing to check | The compliance fix is also a trust fix. A real name, a mailing address and *"Reply 'no thanks' and we won't write again"* make the email look like a neighbour's business, not a bulk sender's (item 430) |
+
+#### P1 (new)
+
+430. **Make every outreach email CAN-SPAM-compliant, and more
+     trustworthy.** Build loop, `OUTREACH_TEMPLATES.md` §13a–§16 and
+     `scripts/outreach_batch.py`:
+
+     - A fixed footer on every message: ***"Within Ten · [mailing address] ·
+       hello@withintenmiles.com. Reply 'no thanks' and we won't email you
+       again."*** The sign-off uses the **owner's real first and last
+       name** from `config/newsletter.yaml` (`owner_name`). `[Your name]`
+       never ships.
+     - A `do_not_contact:` list of **organisation names** in
+       `config/outreach_contacts.yaml` (organisations, not people, so it's
+       safe in a public repo). The batch never includes them. Adding one
+       name is the whole opt-out process.
+     - **The batch refuses to render** (the workflow fails, and item 406's
+       watchdog flags it) while `mailing_address` or `owner_name` is unset.
+       It shows *"Add your mailing address to config/newsletter.yaml before
+       sending"* at the top of the file instead of messages.
+
+     **Owner, no new ask (item 400):** fold *"add `owner_name` and a mailing
+     address (a PO box or registered mailbox is fine, see note) to
+     `config/newsletter.yaml`, 1 minute"* into the whole ask's step 4 as its
+     first line. *Note:* compliance guides disagree on PO boxes; a
+     registered mailbox (a UPS Store box, for example) is the safe choice
+     if the owner doesn't want a home address in emails.
+
+     Tests: every block has the footer and the owner's name, no block
+     contains `[Your name]`, a `do_not_contact` organisation is excluded,
+     and an unset address produces the warning instead of messages.
+
+#### Owner decision (new, replaces one)
+
+431. **Let the build loop send the outreach batch itself, weekly, from
+     hello@.** Decision, then build.
+
+     **What the owner decides:** yes or no. If yes, about 10 minutes, once:
+     create a free **Resend** account, verify `withintenmiles.com`
+     (add the SPF and DKIM records it shows in Cloudflare DNS; DMARC is
+     already on), and add the key as `RESEND_API_KEY`.
+
+     **What the build loop then does** (`send-outreach.yml`, Mondays):
+     - Send the week's `OUTREACH_BATCH.md` blocks (at most **eight**) from
+       **hello@withintenmiles.com**, with `Reply-To` the same address, so
+       replies reach the owner's inbox through Cloudflare Email Routing.
+     - Only to **role addresses or published organisation mailboxes** with
+       a recorded source. Blocks marked *"look up"* are never sent.
+     - Never twice to the same organisation within **60 days**. Honour
+       `do_not_contact` (item 430).
+     - Log what was sent in `data/outreach_sent.json`: organisation, date,
+       block type, no addresses.
+     - Skip quietly without the key.
+
+     **Why now:** eight issues have gone to one reader. Every sale path
+     the roadmap has built (the founding promos, fairs, holiday listings,
+     the lights tour, credit unions, dentists) runs through outreach, and
+     outreach has been the owner's job for six weeks without happening.
+     This removes the owner from the loop **except for replies**, which is
+     where a human is actually needed.
+
+     **Honest risks:** automated cold email can hurt the domain's sender
+     reputation. Eight a week to local organisations, each personalised
+     with their own event, is far below any spam pattern, and it uses a
+     separate sending service, so the newsletter's Buttondown reputation
+     is unaffected. The owner can turn it off by deleting the secret.
+
+     **Open-decision slot:** this replaces the **Substack / WhatsApp** choice
+     (items 261, 336), which moves to Parked. Both of those need weekly
+     owner minutes, which the evidence says aren't available.
+
+Competitors reviewed this pass: none. Angles: **CAN-SPAM rules for B2B
+outreach** (2026 compliance guides), **Resend's free tier** as an
+outreach sender, and the design/UX angle **the outreach email as a trust
+object**: a placeholder name, no address, no opt-out.
 
 
 ## Working agreements for autonomous iteration
