@@ -19094,7 +19094,7 @@ desktop layout.
 
 #### P1 (new)
 
-427. (probes added, round 27, and probe-urls.yml now runs daily; set each `tree_lighting.date` only from a village's own 2026 page when a probe shows one; keep checking until Nov 20) **Watch for the three missing tree-lighting dates and set each one
+427. (round 27 first answers 2026-11-01: Mount Prospect and downtown show no tree-lighting text yet; Wheeling timed out; Des Plaines' home page links its own "Holiday Tree Lighting and Winter Fair" page (round 28 reads its date); probes added, round 27, and probe-urls.yml now runs daily; set each `tree_lighting.date` only from a village's own 2026 page when a probe shows one; keep checking until Nov 20) **Watch for the three missing tree-lighting dates and set each one
      when posted.** Build loop, URL probes plus config:
 
      - **Mount Prospect:** probe the Village's events and news pages and
@@ -19111,7 +19111,7 @@ desktop layout.
      Run the probes **daily until Nov 20**. Never set a date from a
        roundup or from last year's pattern.
 
-428. (keywords DONE: Frostival, Santa Splash, Christkindlmarket and Lights Around reach the holiday selection, Santa Splash the Santa page; Salt Creek: its site is saltcreekpd.com and round-27 probes read its home page and iCal route; adding it as a Palatine source or Santa entry waits for the answers) **Add the Salt Creek Rural Park District, and the Santa event names
+428. (Salt Creek DONE 2026-11-01: its home page advertises the iCal route https://www.saltcreekpd.com/events/?ical=1, which answers 200 (0 events that day); added to Palatine as an `ics` source, so its events carry Palatine's chip; a Breakfast with Santa entry waits for a 2026 page) (keywords DONE: Frostival, Santa Splash, Christkindlmarket and Lights Around reach the holiday selection, Santa Splash the Santa page; Salt Creek: its site is saltcreekpd.com and round-27 probes read its home page and iCal route; adding it as a Palatine source or Santa entry waits for the answers) **Add the Salt Creek Rural Park District, and the Santa event names
      the site misses.** Build loop:
 
      - Probe the Salt Creek Rural Park District's site for an events

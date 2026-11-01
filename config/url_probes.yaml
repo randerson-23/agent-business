@@ -118,15 +118,13 @@ probes:
     patterns:
       - '(?i)(?:tree[- ]lighting|holiday (?:tree|lights?)|christmas tree)[^<]{0,160}'
     follow: '(?i)tree|lighting|holiday'
-  - url: https://www.saltcreekpd.com/
-    item: 428
-    purpose: Salt Creek Rural Park District (Palatine) - home page; Breakfast with Santa or other Santa events, any events feed link
+  # Round 28 (item 427, 2026-11-01): Salt Creek answered (its calendar is The Events Calendar Pro and advertises
+  # /events/?ical=1; now a Palatine source). Des Plaines' home page links its own "Holiday Tree Lighting and
+  # Winter Fair" page: read the date.
+  - url: https://www.desplainesil.gov/Departments/Media-Services/Events/Tree-Lighting-and-Winter-Fair
+    item: 427
+    purpose: "City of Des Plaines - Holiday Tree Lighting and Winter Fair page, the 2026 date, time and place"
     patterns:
-      - '(?i)santa[^<]{0,160}'
-      - '(?i)(?:ical|\.ics|/events)[^"<]{0,80}'
-    follow: '(?i)santa|events'
-  - url: https://www.saltcreekpd.com/events/?ical=1
-    item: 428
-    purpose: Salt Creek Rural Park District - The Events Calendar iCal feed, if it has one
-    patterns:
-      - 'BEGIN:VEVENT'
+      - '(?is)Holiday Tree Lighting at Metropolitan Square.{0,500}'
+      - '(?i)(?:Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)[a-z]*\.? \d{1,2}(?:st|nd|rd|th)?,? ?(?:20\d\d)?[^<]{0,80}'
+      - '(?i)20\d\d[^<]{0,60}(?:tree|winter fair)'
