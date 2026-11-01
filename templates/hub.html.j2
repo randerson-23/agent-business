@@ -510,7 +510,7 @@
       {% elif r.next_up %}
       <span class="picks"><span class="pick-head">Next up</span>{% for p in r.next_up %}<span class="pick"><span aria-hidden="true">{{ p.emoji }}</span> {{ p.title|short(60) }} <span class="pick-when">{{ p.when }}</span></span>{% endfor %}</span>
       {% endif %}
-      <span class="count">{% if r.weekend_count %}See all {{ r.weekend_count }} {{ ((stats.weekend_label if stats else none) or "This weekend")|lower }} &rarr;{% elif r.next_up %}See what's on in {{ r.name }} &rarr;{% else %}Nothing dated in the next two weeks &rarr;{% endif %}</span>
+      <span class="count">{% if r.weekend_count %}See all {{ r.weekend_count }} {{ ((stats.weekend_label if stats else none) or "This weekend")|lower }} &rarr;{% elif r.next_up %}See what's on in {{ r.name }} &rarr;{% else %}Quiet weekend here, see all &rarr;{% endif %}</span>
     </a>
     {% endfor %}
   </div>
