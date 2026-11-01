@@ -4,7 +4,7 @@
       "url": "https://withintenmiles.com/f3b7799bed06aac4295ec9134d53b014.txt",
       "purpose": "IndexNow key file on the live domain - still served and still equal to the key?",
       "item": 224,
-      "probed_at": "2026-10-31T21:59:57+00:00",
+      "probed_at": "2026-11-01T14:02:21+00:00",
       "status": 200,
       "final_url": "https://withintenmiles.com/f3b7799bed06aac4295ec9134d53b014.txt",
       "content_type": "text/plain; charset=utf-8",
@@ -22,7 +22,7 @@
       "url": "https://www.ahpd.org/parks/",
       "purpose": "Arlington Heights Park District - park list; does Pioneer Park's page give its street address?",
       "item": 376,
-      "probed_at": "2026-10-31T21:59:58+00:00",
+      "probed_at": "2026-11-01T14:02:22+00:00",
       "status": 200,
       "final_url": "https://www.ahpd.org/parks/",
       "content_type": "text/html; charset=UTF-8",
@@ -92,378 +92,14 @@
       "followed": null
     },
     {
-      "url": "https://www.vah.com/",
-      "purpose": "Arlington Heights - public-works leaf-pickup page (current URL, dates, rules)",
-      "item": 323,
-      "probed_at": "2026-10-31T22:00:00+00:00",
-      "status": 200,
-      "final_url": "https://www.vah.com/",
-      "content_type": "text/html; charset=UTF-8",
-      "bytes": 238322,
-      "title": "Welcome to Arlington Heights, IL",
-      "feed_links": [],
-      "calendar_links": [
-        "https://www.vah.com/#services-feed",
-        "https://www.vah.com/#documents-feed",
-        "https://www.vah.com/#all-of-bhamgov-feed"
-      ],
-      "pattern_matches": {
-        "(?i)leaf[^<]{0,160}": [
-          {
-            "match": "leaf, leaves, fall leaf collection, christmas tree, recycle christmas tree,',\n\t'url': 'residents/refuse_recycle___landscape_waste/index.php',\n\t'target': '_self',\n\t'",
-            "context": "day schedule, pick up, holiday pick up, electric recycling, leaf, leaves, fall leaf collection, christmas tree, recycle christmas tree,', 'url': 'residents/refuse_recycle___landscape_waste/index.php', 'target': '_self', 'terms': 'garbage, recycling &amp; yard waste arlington heigh"
-          },
-          {
-            "match": "leaf, leaves, fall leaf collection, christmas tree, recycle christmas tree, Health &amp;amp; Human Services',\n\t'subheader': 'Health &amp; Human Services',\n\t'email':",
-            "context": "day schedule, pick up, holiday pick up, electric recycling, leaf, leaves, fall leaf collection, christmas tree, recycle christmas tree, Health &amp;amp; Human Services', 'subheader': 'Health &amp; Human Services', 'email': 'healthmail@vah.com', 'phone': '847-368-5760', 'address':"
-          }
-        ],
-        "(?i)(?:oct|nov|dec)[a-z]*\\.? \\d{1,2}[^<]{0,80}(?:leaf|leaves)": []
-      },
-      "followed": null
-    },
-    {
-      "url": "https://www.desplainesil.gov/",
-      "purpose": "Des Plaines - public-works leaf-pickup page (current URL, dates, rules)",
-      "item": 323,
-      "probed_at": "2026-10-31T22:00:00+00:00",
-      "status": 200,
-      "final_url": "https://www.desplainesil.gov/Home",
-      "content_type": "text/html; charset=utf-8",
-      "bytes": 279200,
-      "title": "Home | City of Des Plaines, IL",
-      "feed_links": [],
-      "calendar_links": [
-        "https://www.desplainesil.gov/Departments/Media-Services/Website-Feedback-Form"
-      ],
-      "pattern_matches": {
-        "(?i)leaf[^<]{0,160}": [
-          {
-            "match": "Leaf-and-Branch-Collection\" title=\"Leaf and Branch Collection\" target=\"\">Leaf and Branch Collection",
-            "context": "Departments/Public-Works-and-Engineering/Street-Maintenance/Leaf-and-Branch-Collection\" title=\"Leaf and Branch Collection\" target=\"\">Leaf and Branch Collection</a> <span></span> </li><li class=\"Dept-Media-Services-Event"
-          }
-        ],
-        "(?i)(?:oct|nov|dec)[a-z]*\\.? \\d{1,2}[^<]{0,80}(?:leaf|leaves)": []
-      },
-      "followed": {
-        "url": "https://www.desplainesil.gov/Departments/Public-Works-and-Engineering/Street-Maintenance/Leaf-and-Branch-Collection",
-        "purpose": "",
-        "item": null,
-        "probed_at": "2026-10-31T22:00:03+00:00",
-        "status": 200,
-        "final_url": "https://www.desplainesil.gov/Departments/Public-Works-and-Engineering/Street-Maintenance/Leaf-and-Branch-Collection",
-        "content_type": "text/html; charset=utf-8",
-        "bytes": 81892,
-        "title": "Leaf and Branch Collection | City of Des Plaines, IL",
-        "feed_links": [],
-        "calendar_links": [
-          "https://www.desplainesil.gov/Departments/Media-Services/Website-Feedback-Form"
-        ],
-        "pattern_matches": {
-          "(?i)leaf[^<]{0,160}": [
-            {
-              "match": "Leaf and Branch Collection | City of Des Plaines, IL",
-              "context": "<meta name=\"theme-color\" content=\"#FCFDFC\"/> <title>Leaf and Branch Collection | City of Des Plaines, IL</title> <meta name=\"generator\" content=\"OpenCities - https"
-            },
-            {
-              "match": "leaf and branch collection season. Yard Waste Collection From April 6 through November 28, 2026, LRS collects residential yard waste...\" />\r\n    ",
-              "context": "sisting residents with the highest degree of service during leaf and branch collection season. Yard Waste Collection From April 6 through November 28, 2026, LRS collects residential yard waste...\" /> <meta property=\"og:type\" content=\"article\" /> <meta pro"
-            },
-            {
-              "match": "Leaf-and-Branch-Collection\" />\r\n    ",
-              "context": "Departments/Public-Works-and-Engineering/Street-Maintenance/Leaf-and-Branch-Collection\" /> <meta property=\"og:title\" content=\"Leaf and Branch Collectio"
-            },
-            {
-              "match": "Leaf and Branch Collection\" />\r\n    ",
-              "context": "anch-Collection\" /> <meta property=\"og:title\" content=\"Leaf and Branch Collection\" /> <meta property=\"og:description\" content=\" The City of Des Pl"
-            },
-            {
-              "match": "Leaf-and-Branch-Collection\" />\r\n\r\n    \r\n    ",
-              "context": "Departments/Public-Works-and-Engineering/Street-Maintenance/Leaf-and-Branch-Collection\" /> <link rel=\"icon\" type=\"image/png\" href=\"/files/ocfavicon/Cit"
-            },
-            {
-              "match": "leaf-and-branch-collection page-sequence-2 page-depth-4 page-section-4 website-type-primary device-desktop featured-site-section   \" id=\"body-top\">\r\n    ",
-              "context": "ge group-template-oc-2-column-with-default-header page-name-leaf-and-branch-collection page-sequence-2 page-depth-4 page-section-4 website-type-primary device-desktop featured-site-section \" id=\"body-top\"> <div id=\"skip-to-content-container\"> <a href=\"#main"
-            },
-            {
-              "match": "Leaf-and-Branch-Collection\" id=\"mainForm\">\r\n",
-              "context": "Departments/Public-Works-and-Engineering/Street-Maintenance/Leaf-and-Branch-Collection\" id=\"mainForm\"> <input type=\"hidden\" name=\"ctl04_seamless_script_manager_TSM"
-            },
-            {
-              "match": "Leaf-and-Branch-Collection?oc_lang=en-US\" class=\"lang-item lang-en-us\" data-translate-to=\"en-us\" lang=\"en-US\">English (United States)",
-              "context": "Departments/Public-Works-and-Engineering/Street-Maintenance/Leaf-and-Branch-Collection?oc_lang=en-US\" class=\"lang-item lang-en-us\" data-translate-to=\"en-us\" lang=\"en-US\">English (United States)<span class=\"visuallyhidden\"> Select this as your preferred"
-            },
-            {
-              "match": "Leaf-and-Branch-Collection?oc_lang=es\" class=\"lang-item lang-es\" data-translate-to=\"es\" lang=\"en\">Spanish",
-              "context": "Departments/Public-Works-and-Engineering/Street-Maintenance/Leaf-and-Branch-Collection?oc_lang=es\" class=\"lang-item lang-es\" data-translate-to=\"es\" lang=\"en\">Spanish<span class=\"visuallyhidden\"> Select this as your preferred"
-            },
-            {
-              "match": "Leaf-and-Branch-Collection?oc_lang=pl\" class=\"lang-item lang-pl\" data-translate-to=\"pl\" lang=\"en\">Polish",
-              "context": "Departments/Public-Works-and-Engineering/Street-Maintenance/Leaf-and-Branch-Collection?oc_lang=pl\" class=\"lang-item lang-pl\" data-translate-to=\"pl\" lang=\"en\">Polish<span class=\"visuallyhidden\"> Select this as your preferred"
-            },
-            {
-              "match": "Leaf and Branch Collection",
-              "context": "n class=\"current-page\" role=\"listitem\" aria-current=\"page\" >Leaf and Branch Collection</span> </span> </na"
-            },
-            {
-              "match": "Leaf-and-Branch-Collection\" class=\"\" >Leaf and Branch Collection",
-              "context": "Departments/Public-Works-and-Engineering/Street-Maintenance/Leaf-and-Branch-Collection\" class=\"\" >Leaf and Branch Collection</a></li><li class=\" \"><a href=\"https://www.desplainesil.gov"
-            },
-            {
-              "match": "Leaf-and-Branch-Collection\"  target=\"\">Leaf and Branch Collection",
-              "context": "Departments/Public-Works-and-Engineering/Street-Maintenance/Leaf-and-Branch-Collection\" target=\"\">Leaf and Branch Collection</a> </li><li class='nav-level-2 '> <a href=\"https://ww"
-            },
-            {
-              "match": "leaf and branch collection season.",
-              "context": "sisting residents with the highest degree of service during leaf and branch collection season.</p> <div data-type=\"0\" data-title-level=\"2\" class=\"oc-wysi"
-            },
-            {
-              "match": "Leaf Collection",
-              "context": "<div class=\"oc-wysiwyg-container-panel\"> <h2>Bulk Curbside Leaf Collection</h2> <div class=\"oc-wysiwyg-container-panel-content\"> <p>"
-            },
-            {
-              "match": "leaf collection is separate from the refuse service&rsquo;s weekly yard waste pick up. This seasonal in-house program provides residential leaf collection starting ",
-              "context": "el-content\"> <p>The City&rsquo;s residential bulk curbside leaf collection is separate from the refuse service&rsquo;s weekly yard waste pick up. This seasonal in-house program provides residential leaf collection starting Monday, October 19, 2026 and continuing through early Decemb"
-            },
-            {
-              "match": "leaf collection from April through November is part of the ongoing yard waste program provided by LRS. See the \"Yard Waste Collection\" tab for more information.",
-              "context": "g through early December, weather permitting. Weekly bagged leaf collection from April through November is part of the ongoing yard waste program provided by LRS. See the \"Yard Waste Collection\" tab for more information.</p> <h3>Leaf Placement in Streets</h3> <p>To participate"
-            },
-            {
-              "match": "Leaf Placement in Streets",
-              "context": "\"Yard Waste Collection\" tab for more information.</p> <h3>Leaf Placement in Streets</h3> <p>To participate in fall bulk curbside leaf collecti"
-            },
-            {
-              "match": "leaf collection, leaves need to be raked into the street by 6 a.m. on the scheduled pick-up date. Being careful to keep storm drains clear, residents are encouraged",
-              "context": "nt in Streets</h3> <p>To participate in fall bulk curbside leaf collection, leaves need to be raked into the street by 6 a.m. on the scheduled pick-up date. Being careful to keep storm drains clear, residents are encouraged to position the leaves into one neat, continuous row, 1 foo"
-            },
-            {
-              "match": "Leaf Placement in Parkways",
-              "context": "is ongoing program.</p> <h3><a name=\"parkway\" id=\"parkway\">Leaf Placement in Parkways</a></h3> <p>Residents living on the following streets shou"
-            }
-          ],
-          "(?i)(?:oct|nov|dec)[a-z]*\\.? \\d{1,2}[^<]{0,80}(?:leaf|leaves)": [
-            {
-              "match": "October 19, 2026 and continuing through early December, weather permitting. Weekly bagged leaf",
-              "context": "ogram provides residential leaf collection starting Monday, October 19, 2026 and continuing through early December, weather permitting. Weekly bagged leaf collection from April through November is part of the ongoi"
-            }
-          ]
-        }
-      }
-    },
-    {
-      "url": "https://www.mountprospect.org/",
-      "purpose": "Mount Prospect - public-works leaf-pickup page (current URL, dates, rules)",
-      "item": 323,
-      "probed_at": "2026-10-31T22:00:03+00:00",
-      "status": 200,
-      "final_url": "https://www.mountprospect.org/",
-      "content_type": "text/html; charset=UTF-8",
-      "bytes": 203038,
-      "title": "Mount Prospect, IL",
-      "feed_links": [],
-      "calendar_links": [
-        "https://www.mountprospect.org/plans_and_reports/community_information_and_fact_check_portal/prestige_feed.php"
-      ],
-      "pattern_matches": {
-        "(?i)leaf[^<]{0,160}": [
-          {
-            "match": "leaf_collection.php\" target=\"_self\">Fall Leaf Collection",
-            "context": "837\"><a class=\"menuA level1 menuHidden\" href=\"services/fall_leaf_collection.php\" target=\"_self\">Fall Leaf Collection</a></li> <li class=\"menuLI level1 menuHidden li-139\"><a"
-          }
-        ],
-        "(?i)(?:oct|nov|dec)[a-z]*\\.? \\d{1,2}[^<]{0,80}(?:leaf|leaves)": []
-      },
-      "followed": {
-        "url": "https://www.mountprospect.org/services/fall_leaf_collection.php",
-        "purpose": "",
-        "item": null,
-        "probed_at": "2026-10-31T22:00:04+00:00",
-        "status": 200,
-        "final_url": "https://www.mountprospect.org/services/fall_leaf_collection.php",
-        "content_type": "text/html; charset=UTF-8",
-        "bytes": 163317,
-        "title": "Mount Prospect, IL",
-        "feed_links": [],
-        "calendar_links": [
-          "https://www.mountprospect.org/services/plans_and_reports/community_information_and_fact_check_portal/prestige_feed.php"
-        ],
-        "pattern_matches": {
-          "(?i)leaf[^<]{0,160}": [
-            {
-              "match": "leaf_collection.php#rz-content-wrap\">\r\n\t\t\t",
-              "context": "px-4 p-3 gap-4 align-items-center\" href=\"services/fall_leaf_collection.php#rz-content-wrap\"> <span class=\"d-inline-flex align-items-center gap-2\"> <"
-            },
-            {
-              "match": "leaf_collection.php\" target=\"_self\">Fall Leaf Collection",
-              "context": "837\"><a class=\"menuA level1 menuHidden\" href=\"services/fall_leaf_collection.php\" target=\"_self\">Fall Leaf Collection</a></li> <li class=\"menuLI level1 menuHidden li-139\"><a"
-            },
-            {
-              "match": "leaf_collection.php\" target=\"_self\" >Fall Leaf Collection",
-              "context": "a class=\"menuA level0 menuSelectedItem\" href=\"services/fall_leaf_collection.php\" target=\"_self\" >Fall Leaf Collection</a></li> <li id=\"li-139\" class=\"menuLI level0 menuSelecte"
-            },
-            {
-              "match": "Leaf&nbsp;Collection",
-              "context": "a href=\"services/index.php\">Services</a> </li><li>Fall&nbsp;Leaf&nbsp;Collection</li></ul></nav> <h1 class=\"page-title page"
-            },
-            {
-              "match": "Leaf Collection\r\n\t\t\t\t\t\t\t\t",
-              "context": "class=\"page-title page-title-standard\"> Fall Leaf Collection </h1> </div> <div class=\""
-            },
-            {
-              "match": "Leaf Pickup Schedule\r\n\t\t\t\t\t\t\t\t",
-              "context": "aria-controls=\"acc_0_panel_0\"> Weekly Loose Leaf Pickup Schedule </button> </div> <div id=\"acc_0_panel_0\""
-            },
-            {
-              "match": "Leaf Pickup.jpg?t=202610141554040\" alt=\"Map showing weekly loose leaf collection days\" fileid=\"2123\" />\r\n\t\t\t\t\t\t\t\t\t",
-              "context": "fix\"> <img src=\"Images/Departments/Public Works/Leaf Pickup.jpg?t=202610141554040\" alt=\"Map showing weekly loose leaf collection days\" fileid=\"2123\" /> </div> </div> </div> </div> </div"
-            },
-            {
-              "match": "leaf collection program provides residents with a no-cost, convenient way to get rid of leaves. The program allows residents to set out loose leaves at the curb for",
-              "context": "<p>The Village&rsquo;s fall leaf collection program provides residents with a no-cost, convenient way to get rid of leaves. The program allows residents to set out loose leaves at the curb for collection by Public Works crews from October 19 through De"
-            },
-            {
-              "match": "Leaf Pickup.pdf?t=202610141551020\"  target=\"_blank\"   fileid=\"2122\">Fall Leaf Pickup Map",
-              "context": "mber 4.</p> <p><a href= \"Documents/Departments/Public Works/Leaf Pickup.pdf?t=202610141551020\" target=\"_blank\" fileid=\"2122\">Fall Leaf Pickup Map</a></p> <p><strong>Loose Leaf Collection<br /><br /></stron"
-            },
-            {
-              "match": "Leaf Collection",
-              "context": "fileid=\"2122\">Fall Leaf Pickup Map</a></p> <p><strong>Loose Leaf Collection<br /><br /></strong>The loose-leaf collection program is fo"
-            },
-            {
-              "match": "leaf collection program is for LEAVES ONLY. Any leaf pile containing grass clippings or other yard material will NOT BE COLLECTED.",
-              "context": "<strong>Loose Leaf Collection<br /><br /></strong>The loose-leaf collection program is for LEAVES ONLY. Any leaf pile containing grass clippings or other yard material will NOT BE COLLECTED.</p> <ul type=\"disc\"> <li>It is the responsibility of the ho"
-            },
-            {
-              "match": "leaf_collection.php\" class=\"btn btn-primary btn-primary-rz btn-sm rounded-1\">Staff Login",
-              "context": "/index.jsp?webspace=mountprospectil&filename=/services/fall_leaf_collection.php\" class=\"btn btn-primary btn-primary-rz btn-sm rounded-1\">Staff Login</a> </div> </div><!-- /.d-lg-flex --> </div><!-"
-            }
-          ],
-          "(?i)(?:oct|nov|dec)[a-z]*\\.? \\d{1,2}[^<]{0,80}(?:leaf|leaves)": []
-        }
-      }
-    },
-    {
-      "url": "https://www.palatine.il.us/",
-      "purpose": "Palatine - public-works leaf-pickup page (current URL, dates, rules)",
-      "item": 323,
-      "probed_at": "2026-10-31T22:00:04+00:00",
-      "status": 200,
-      "final_url": "https://www.palatine.il.us/",
-      "content_type": "text/html; charset=utf-8",
-      "bytes": 161266,
-      "title": "Palatine, IL | Official WebsiteArrow LeftArrow RightSlideshow Left ArrowSlideshow Right Arrow",
-      "feed_links": [],
-      "calendar_links": [
-        "https://www.palatine.il.us/CivicAlerts.aspx?AID=508",
-        "https://www.palatine.il.us/CivicAlerts.aspx?AID=505",
-        "https://www.palatine.il.us/CivicAlerts.aspx?AID=503",
-        "https://www.palatine.il.us/CivicAlerts.aspx?AID=501",
-        "https://www.palatine.il.us/CivicAlerts.aspx?AID=502",
-        "https://www.palatine.il.us/CivicAlerts.aspx?CID=9,1,8,10,14"
-      ],
-      "pattern_matches": {
-        "(?i)leaf[^<]{0,160}": [
-          {
-            "match": "Leaf Collection Machine web image\" data-delayed-image=\"\" />",
-            "context": "media\" src=\"/ImageRepository/Document?documentID=8959\" alt=\"Leaf Collection Machine web image\" data-delayed-image=\"\" /></a> <div class=\"text\"> <h2 id=\"newsFlashItem"
-          },
-          {
-            "match": "Leaf Collection ",
-            "context": "<a href=\"/CivicAlerts.aspx?AID=508\" target=\"_self\">Curbside Leaf Collection </a> </h2> <div class=\"widgetDesc\"> <a id=\"newsFlash"
-          },
-          {
-            "match": "Leaf Collection\">Read on...",
-            "context": "get=\"_self\" class=\"readOn\" aria-label=\"Read on...: Curbside Leaf Collection\">Read on...</a> </div> </div> </li> <li class="
-          }
-        ],
-        "(?i)(?:oct|nov|dec)[a-z]*\\.? \\d{1,2}[^<]{0,80}(?:leaf|leaves)": []
-      },
-      "followed": null
-    },
-    {
-      "url": "https://www.wheelingil.gov/332/Refuse-Recycling-Yard-Waste",
-      "purpose": "Wheeling - yard waste page; does it state leaf-pickup dates and rules?",
-      "item": 323,
-      "probed_at": "2026-10-31T22:00:05+00:00",
-      "status": 200,
-      "final_url": "https://www.wheelingil.gov/332/Refuse-Recycling-Yard-Waste",
-      "content_type": "text/html; charset=utf-8",
-      "bytes": 120727,
-      "title": "Refuse / Recycling / Yard Waste | Wheeling, ILArrow LeftArrow RightSlideshow Left ArrowSlideshow Right Arrow",
-      "feed_links": [],
-      "calendar_links": [
-        "https://www.wheelingil.gov/civicalerts.aspx",
-        "https://www.wheelingil.gov/2348/Feedback-Form"
-      ],
-      "pattern_matches": {
-        "(?i)leaf[^<]{0,160}": [],
-        "(?i)leaves[^<]{0,160}": []
-      },
-      "followed": null
-    },
-    {
-      "url": "https://mpdowntown.com/events/",
-      "purpose": "Downtown Mount Prospect - full text of the Downtown Trick-or-Treat section (is it a 2026 date?)",
-      "item": 292,
-      "probed_at": "2026-10-31T22:00:06+00:00",
-      "status": 200,
-      "final_url": "https://mpdowntown.com/events/",
-      "content_type": "text/html; charset=UTF-8",
-      "bytes": 124873,
-      "title": "Events | Mount Prospect Downtown Merchants",
-      "feed_links": [
-        {
-          "href": "https://mpdowntown.com/feed/",
-          "type": "application/rss+xml",
-          "title": "Mount Prospect Downtown Merchants » Feed"
-        },
-        {
-          "href": "https://mpdowntown.com/comments/feed/",
-          "type": "application/rss+xml",
-          "title": "Mount Prospect Downtown Merchants » Comments Feed"
-        },
-        {
-          "href": "https://mpdowntown.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fmpdowntown.com%2Fevents%2F",
-          "type": "application/json+oembed",
-          "title": "oEmbed (JSON)"
-        },
-        {
-          "href": "https://mpdowntown.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fmpdowntown.com%2Fevents%2F&format=xml",
-          "type": "text/xml+oembed",
-          "title": "oEmbed (XML)"
-        },
-        {
-          "href": "https://mpdowntown.com/wp-json/wp/v2/pages/2477",
-          "type": "application/json",
-          "title": "JSON"
-        }
-      ],
-      "calendar_links": [],
-      "pattern_matches": {
-        "(?s)Downtown Trick-or-Treat</h3>.{0,900}": [
-          {
-            "match": "Downtown Trick-or-Treat</h3>\n<p data-start=\"139\" data-end=\"253\"><strong data-start=\"139\" data-end=\"170\">Wednesday, October 28, 2026</strong><br data-start=\"170\" data-end=\"173\" /><strong data-start=\"173\" data-end=\"193\">4:00 – 6:00 p.m.</strong><br data-start=\"193\" data-end=\"196\" /><strong data-start=\"196\" data-end=\"223\">Downtown Mount Prospect</strong><br data-start=\"223\" data-end=\"226\" /><em data-start=\"226\" data-end=\"253\">Last Wednesday in October</em></p>\n<p data-start=\"255\" data-end=\"535\">Get your costumes ready and bring the whole family to <strong data-start=\"309\" data-end=\"336\">Downtown Mount Prospect</strong> for a spooktacular afternoon of <strong data-start=\"369\" data-end=\"399\">Downtown Trick-or-Treating</strong>! Little ghouls and goblins can stroll through downtown and collect treats from participating businesses in a safe, festive environment.</p>\n<p data-start=\"537\" data-end=\"713\">Enjoy the sights of c",
-            "context": "lass=\"et_pb_text_inner\"><h3 data-start=\"106\" data-end=\"138\">Downtown Trick-or-Treat</h3> <p data-start=\"139\" data-end=\"253\"><strong data-start=\"139\" data-end=\"170\">Wednesday, October 28, 2026</strong><br data-start=\"170\" data-end=\"173\" /><strong data-start=\"173\" data-end=\"193\">4:00 – 6:00 p.m.</strong><br data-start=\"193\" data-end=\"196\" /><strong data-start=\"196\" data-end=\"223\">Downtown Mount Prospect</strong><br data-start=\"223\" data-end=\"226\" /><em data-start=\"226\" data-end=\"253\">Last Wednesday in October</em></p> <p data-start=\"255\" data-end=\"535\">Get your costumes ready and bring the whole family to <strong data-start=\"309\" data-end=\"336\">Downtown Mount Prospect</strong> for a spooktacular afternoon of <strong data-start=\"369\" data-end=\"399\">Downtown Trick-or-Treating</strong>! Little ghouls and goblins can stroll through downtown and collect treats from participating businesses in a safe, festive environment.</p> <p data-start=\"537\" data-end=\"713\">Enjoy the sights of creatively decorated storefronts, friendly merchants, and a l"
-          }
-        ],
-        "(?s)<h2>20\\d\\d Events</h2>.{0,200}": [
-          {
-            "match": "<h2>2026 Events</h2></div>\n\t\t\t</div><div class=\"et_pb_module et_pb_text et_pb_text_1  et_pb_text_align_left et_pb_bg_layout_light\">\n\t\t\t\t\n\t\t\t\t\n\t\t\t\t\n\t\t\t\t\n\t\t\t\t<div class=\"et_pb_text_inner\"><hr />\n</div>\n\t\t\t</div><div class=",
-            "context": "ght\"> <div class=\"et_pb_text_inner\"><h2>2026 Events</h2></div> </div><div class=\"et_pb_module et_pb_text et_pb_text_1 et_pb_text_align_left et_pb_bg_layout_light\"> <div class=\"et_pb_text_inner\"><hr /> </div> </div><div class=\"et_pb_module et_pb_text et_pb_text_2 et_pb_text_align_left"
-          }
-        ]
-      }
-    },
-    {
       "url": "https://events.harpercollege.edu/api/2/events?days=60&pp=100",
       "purpose": "Harper College (Localist) - venue ids, venue names and event types in use",
       "item": 286,
-      "probed_at": "2026-10-31T22:00:10+00:00",
+      "probed_at": "2026-11-01T14:02:23+00:00",
       "status": 200,
       "final_url": "https://events.harpercollege.edu/api/2/events?days=60&pp=100",
       "content_type": "application/json; charset=utf-8",
-      "bytes": 380960,
+      "bytes": 387682,
       "pattern_matches": {
         "\"venue_id\":\\d+": [
           {
@@ -513,18 +149,6 @@
         ],
         "\"location_name\":\"[^\"]{2,60}\"": [
           {
-            "match": "\"location_name\":\"Palatine, IL, Hawks' Haven\"",
-            "context": ",\"location\":\"Palatine, IL, Hawks' Haven\",\"room_number\":null,\"location_name\":\"Palatine, IL, Hawks' Haven\",\"status\":\"live\",\"experience\":\"inperson\",\"stream_url\":null,\""
-          },
-          {
-            "match": "\"location_name\":\"Palatine, IL, Hawks' Fieldhouse\"",
-            "context": "ation\":\"Palatine, IL, Hawks' Fieldhouse\",\"room_number\":null,\"location_name\":\"Palatine, IL, Hawks' Fieldhouse\",\"status\":\"live\",\"experience\":\"inperson\",\"stream_url\":null,\""
-          },
-          {
-            "match": "\"location_name\":\"Champaign, IL, Dodds Athletic Center\"",
-            "context": "\":\"Champaign, IL, Dodds Athletic Center\",\"room_number\":null,\"location_name\":\"Champaign, IL, Dodds Athletic Center\",\"status\":\"live\",\"experience\":\"inperson\",\"stream_url\":null,\""
-          },
-          {
             "match": "\"location_name\":\"Dowagiac, MI\"",
             "context": "tendance\":true,\"location\":\"Dowagiac, MI\",\"room_number\":null,\"location_name\":\"Dowagiac, MI\",\"status\":\"live\",\"experience\":\"inperson\",\"stream_url\":null,\""
           },
@@ -551,6 +175,10 @@
           {
             "match": "\"location_name\":\"Film Lab, Building E, Room E109\"",
             "context": "\"allows_attendance\":true,\"location\":\"\",\"room_number\":\"E019\",\"location_name\":\"Film Lab, Building E, Room E109\",\"status\":\"live\",\"experience\":\"inperson\",\"stream_url\":null,\""
+          },
+          {
+            "match": "\"location_name\":\"Palatine, IL, Hawks' Fieldhouse\"",
+            "context": "ation\":\"Palatine, IL, Hawks' Fieldhouse\",\"room_number\":null,\"location_name\":\"Palatine, IL, Hawks' Fieldhouse\",\"status\":\"live\",\"experience\":\"inperson\",\"stream_url\":null,\""
           },
           {
             "match": "\"location_name\":\"Building D\"",
@@ -591,6 +219,14 @@
           {
             "match": "\"location_name\":\"Palos Hills, IL , MVCC's Rec Center\"",
             "context": "n\":\"Palos Hills, IL , MVCC's Rec Center\",\"room_number\":null,\"location_name\":\"Palos Hills, IL , MVCC's Rec Center\",\"status\":\"live\",\"experience\":\"inperson\",\"stream_url\":null,\""
+          },
+          {
+            "match": "\"location_name\":\" Drama Lab Theatre, Room L109\"",
+            "context": "rue,\"allows_attendance\":true,\"location\":\"\",\"room_number\":\"\",\"location_name\":\" Drama Lab Theatre, Room L109\",\"status\":\"live\",\"experience\":\"inperson\",\"stream_url\":null,\""
+          },
+          {
+            "match": "\"location_name\":\"Decorah, IA, Gerdin Fieldhouse\"",
+            "context": "cation\":\"Decorah, IA, Gerdin Fieldhouse\",\"room_number\":null,\"location_name\":\"Decorah, IA, Gerdin Fieldhouse\",\"status\":\"live\",\"experience\":\"inperson\",\"stream_url\":null,\""
           }
         ],
         "\"event_types\":\\[[^\\]]{0,200}\\]": [
@@ -645,84 +281,84 @@
         ],
         "\"filters\":\\{.{0,300}": [
           {
-            "match": "\"filters\":{\"event_types\":[{\"name\":\"Athletics\",\"id\":107041}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":53573697858499,\"event_id\":53573697858498,\"start\":\"2026-10-31T00:00:00-05:00\",\"end\":null,\"ranking\":0.29,\"all_day\":true,\"num_attending\":0}}],\"localist_url\":\"https://events.harpercollege.edu/",
-            "context": "t\":null,\"city\":null,\"state\":null,\"country\":null,\"zip\":null},\"filters\":{\"event_types\":[{\"name\":\"Athletics\",\"id\":107041}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":53573697858499,\"event_id\":53573697858498,\"start\":\"2026-10-31T00:00:00-05:00\",\"end\":null,\"ranking\":0.29,\"all_day\":true,\"num_attending\":0}}],\"localist_url\":\"https://events.harpercollege.edu/event/harper-college-mens-cross-country-vs-hosted-by-the-har"
+            "match": "\"filters\":{\"event_types\":[{\"name\":\"Athletics\",\"id\":107041}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":54352266197788,\"event_id\":54352266196763,\"start\":\"2026-11-01T00:00:00-05:00\",\"end\":null,\"ranking\":0.29,\"all_day\":true,\"num_attending\":0}}],\"localist_url\":\"https://events.harpercollege.edu/",
+            "context": "t\":null,\"city\":null,\"state\":null,\"country\":null,\"zip\":null},\"filters\":{\"event_types\":[{\"name\":\"Athletics\",\"id\":107041}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":54352266197788,\"event_id\":54352266196763,\"start\":\"2026-11-01T00:00:00-05:00\",\"end\":null,\"ranking\":0.29,\"all_day\":true,\"num_attending\":0}}],\"localist_url\":\"https://events.harpercollege.edu/event/harper-college-mens-wrestling-at-southwestern-michigan"
           },
           {
-            "match": "\"filters\":{\"event_types\":[{\"name\":\"Athletics\",\"id\":107041}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":53573697873863,\"event_id\":53573697872838,\"start\":\"2026-10-31T00:00:00-05:00\",\"end\":null,\"ranking\":0.29,\"all_day\":true,\"num_attending\":0}}],\"localist_url\":\"https://events.harpercollege.edu/",
-            "context": "t\":null,\"city\":null,\"state\":null,\"country\":null,\"zip\":null},\"filters\":{\"event_types\":[{\"name\":\"Athletics\",\"id\":107041}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":53573697873863,\"event_id\":53573697872838,\"start\":\"2026-10-31T00:00:00-05:00\",\"end\":null,\"ranking\":0.29,\"all_day\":true,\"num_attending\":0}}],\"localist_url\":\"https://events.harpercollege.edu/event/harper-college-womens-cross-country-vs-hosted-by-the-h"
+            "match": "\"filters\":{\"event_types\":[{\"name\":\"Wellness and Health\",\"id\":46790322621181}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":54162479191782,\"event_id\":54162479168219,\"start\":\"2026-11-02T00:00:00-06:00\",\"end\":null,\"ranking\":0.08,\"all_day\":true,\"num_attending\":0}}],\"localist_url\":\"https://events.",
+            "context": "},\"departments\":[{\"id\":49453020010424,\"name\":\"Hawks Care\"}],\"filters\":{\"event_types\":[{\"name\":\"Wellness and Health\",\"id\":46790322621181}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":54162479191782,\"event_id\":54162479168219,\"start\":\"2026-11-02T00:00:00-06:00\",\"end\":null,\"ranking\":0.08,\"all_day\":true,\"num_attending\":0}}],\"localist_url\":\"https://events.harpercollege.edu/event/feed-the-need-campus-food-drive-2969"
           },
           {
-            "match": "\"filters\":{\"event_types\":[{\"name\":\"Athletics\",\"id\":107041}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":54122247802918,\"event_id\":54122247802917,\"start\":\"2026-10-31T10:00:00-05:00\",\"end\":\"2026-10-31T13:00:00-05:00\",\"ranking\":0.29,\"all_day\":false,\"num_attending\":0}}],\"localist_url\":\"https://e",
-            "context": "t\":null,\"city\":null,\"state\":null,\"country\":null,\"zip\":null},\"filters\":{\"event_types\":[{\"name\":\"Athletics\",\"id\":107041}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":54122247802918,\"event_id\":54122247802917,\"start\":\"2026-10-31T10:00:00-05:00\",\"end\":\"2026-10-31T13:00:00-05:00\",\"ranking\":0.29,\"all_day\":false,\"num_attending\":0}}],\"localist_url\":\"https://events.harpercollege.edu/event/harper-college-mens-wrestling-"
+            "match": "\"filters\":{},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":54071388163613,\"event_id\":54071360169217,\"start\":\"2026-11-02T00:00:00-06:00\",\"end\":null,\"ranking\":0.08,\"all_day\":true,\"num_attending\":0}}],\"localist_url\":\"https://events.harpercollege.edu/event/copy-of-young-democratic-socialists-of-ame",
+            "context": "lington Heights\",\"state\":\"IL\",\"country\":\"US\",\"zip\":\"60005\"},\"filters\":{},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":54071388163613,\"event_id\":54071360169217,\"start\":\"2026-11-02T00:00:00-06:00\",\"end\":null,\"ranking\":0.08,\"all_day\":true,\"num_attending\":0}}],\"localist_url\":\"https://events.harpercollege.edu/event/copy-of-young-democratic-socialists-of-america\",\"localist_ics_url\":\"https://events.harpercollege.edu/e"
           },
           {
-            "match": "\"filters\":{\"event_types\":[{\"name\":\"Athletics\",\"id\":107041}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":53635535773797,\"event_id\":53635535773796,\"start\":\"2026-10-31T12:00:00-05:00\",\"end\":\"2026-10-31T14:00:00-05:00\",\"ranking\":0.29,\"all_day\":false,\"num_attending\":0}}],\"localist_url\":\"https://e",
-            "context": "t\":null,\"city\":null,\"state\":null,\"country\":null,\"zip\":null},\"filters\":{\"event_types\":[{\"name\":\"Athletics\",\"id\":107041}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":53635535773797,\"event_id\":53635535773796,\"start\":\"2026-10-31T12:00:00-05:00\",\"end\":\"2026-10-31T14:00:00-05:00\",\"ranking\":0.29,\"all_day\":false,\"num_attending\":0}}],\"localist_url\":\"https://events.harpercollege.edu/event/harper-college-womens-volleyba"
+            "match": "\"filters\":{\"event_types\":[{\"name\":\"Academic Calendar\",\"id\":30388862287004},{\"name\":\"Closure\",\"id\":43783825268721}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":51745577784351,\"event_id\":34813643196266,\"start\":\"2026-11-03T00:00:00-06:00\",\"end\":null,\"ranking\":0.27,\"all_day\":true,\"num_attending\"",
+            "context": "t\":null,\"city\":null,\"state\":null,\"country\":null,\"zip\":null},\"filters\":{\"event_types\":[{\"name\":\"Academic Calendar\",\"id\":30388862287004},{\"name\":\"Closure\",\"id\":43783825268721}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":51745577784351,\"event_id\":34813643196266,\"start\":\"2026-11-03T00:00:00-06:00\",\"end\":null,\"ranking\":0.27,\"all_day\":true,\"num_attending\":0}}],\"localist_url\":\"https://events.harpercollege.edu/event"
           },
           {
-            "match": "\"filters\":{\"event_types\":[{\"name\":\"Athletics\",\"id\":107041}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":53635535800425,\"event_id\":53635535799400,\"start\":\"2026-10-31T14:00:00-05:00\",\"end\":\"2026-10-31T16:00:00-05:00\",\"ranking\":0.29,\"all_day\":false,\"num_attending\":0}}],\"localist_url\":\"https://e",
-            "context": "t\":null,\"city\":null,\"state\":null,\"country\":null,\"zip\":null},\"filters\":{\"event_types\":[{\"name\":\"Athletics\",\"id\":107041}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":53635535800425,\"event_id\":53635535799400,\"start\":\"2026-10-31T14:00:00-05:00\",\"end\":\"2026-10-31T16:00:00-05:00\",\"ranking\":0.29,\"all_day\":false,\"num_attending\":0}}],\"localist_url\":\"https://events.harpercollege.edu/event/harper-college-womens-volleyba"
+            "match": "\"filters\":{\"event_types\":[{\"name\":\"Wellness and Health\",\"id\":46790322621181}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":54162479194855,\"event_id\":54162479168219,\"start\":\"2026-11-03T00:00:00-06:00\",\"end\":null,\"ranking\":0.07,\"all_day\":true,\"num_attending\":0}}],\"localist_url\":\"https://events.",
+            "context": "},\"departments\":[{\"id\":49453020010424,\"name\":\"Hawks Care\"}],\"filters\":{\"event_types\":[{\"name\":\"Wellness and Health\",\"id\":46790322621181}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":54162479194855,\"event_id\":54162479168219,\"start\":\"2026-11-03T00:00:00-06:00\",\"end\":null,\"ranking\":0.07,\"all_day\":true,\"num_attending\":0}}],\"localist_url\":\"https://events.harpercollege.edu/event/feed-the-need-campus-food-drive-2969"
           },
           {
-            "match": "\"filters\":{\"event_types\":[{\"name\":\"Athletics\",\"id\":107041}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":54352266197788,\"event_id\":54352266196763,\"start\":\"2026-11-01T00:00:00-05:00\",\"end\":null,\"ranking\":0.28,\"all_day\":true,\"num_attending\":0}}],\"localist_url\":\"https://events.harpercollege.edu/",
-            "context": "t\":null,\"city\":null,\"state\":null,\"country\":null,\"zip\":null},\"filters\":{\"event_types\":[{\"name\":\"Athletics\",\"id\":107041}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":54352266197788,\"event_id\":54352266196763,\"start\":\"2026-11-01T00:00:00-05:00\",\"end\":null,\"ranking\":0.28,\"all_day\":true,\"num_attending\":0}}],\"localist_url\":\"https://events.harpercollege.edu/event/harper-college-mens-wrestling-at-southwestern-michigan"
+            "match": "\"filters\":{\"event_types\":[{\"name\":\"Athletics\",\"id\":107041}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":53936410473052,\"event_id\":53936410473051,\"start\":\"2026-11-03T17:00:00-06:00\",\"end\":\"2026-11-03T19:00:00-06:00\",\"ranking\":0.27,\"all_day\":false,\"num_attending\":0}}],\"localist_url\":\"https://e",
+            "context": "t\":null,\"city\":null,\"state\":null,\"country\":null,\"zip\":null},\"filters\":{\"event_types\":[{\"name\":\"Athletics\",\"id\":107041}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":53936410473052,\"event_id\":53936410473051,\"start\":\"2026-11-03T17:00:00-06:00\",\"end\":\"2026-11-03T19:00:00-06:00\",\"ranking\":0.27,\"all_day\":false,\"num_attending\":0}}],\"localist_url\":\"https://events.harpercollege.edu/event/harper-college-womens-basketba"
           },
           {
-            "match": "\"filters\":{\"event_types\":[{\"name\":\"Wellness and Health\",\"id\":46790322621181}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":54162479191782,\"event_id\":54162479168219,\"start\":\"2026-11-02T00:00:00-06:00\",\"end\":null,\"ranking\":0.07,\"all_day\":true,\"num_attending\":0}}],\"localist_url\":\"https://events.",
-            "context": "},\"departments\":[{\"id\":49453020010424,\"name\":\"Hawks Care\"}],\"filters\":{\"event_types\":[{\"name\":\"Wellness and Health\",\"id\":46790322621181}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":54162479191782,\"event_id\":54162479168219,\"start\":\"2026-11-02T00:00:00-06:00\",\"end\":null,\"ranking\":0.07,\"all_day\":true,\"num_attending\":0}}],\"localist_url\":\"https://events.harpercollege.edu/event/feed-the-need-campus-food-drive-2969"
+            "match": "\"filters\":{\"event_types\":[{\"name\":\"Athletics\",\"id\":107041}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":54122247858222,\"event_id\":54122247858221,\"start\":\"2026-11-03T19:00:00-06:00\",\"end\":\"2026-11-03T21:00:00-06:00\",\"ranking\":0.27,\"all_day\":false,\"num_attending\":0}}],\"localist_url\":\"https://e",
+            "context": "t\":null,\"city\":null,\"state\":null,\"country\":null,\"zip\":null},\"filters\":{\"event_types\":[{\"name\":\"Athletics\",\"id\":107041}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":54122247858222,\"event_id\":54122247858221,\"start\":\"2026-11-03T19:00:00-06:00\",\"end\":\"2026-11-03T21:00:00-06:00\",\"ranking\":0.27,\"all_day\":false,\"num_attending\":0}}],\"localist_url\":\"https://events.harpercollege.edu/event/harper-college-mens-basketball"
           },
           {
-            "match": "\"filters\":{},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":54071388163613,\"event_id\":54071360169217,\"start\":\"2026-11-02T00:00:00-06:00\",\"end\":null,\"ranking\":0.07,\"all_day\":true,\"num_attending\":0}}],\"localist_url\":\"https://events.harpercollege.edu/event/copy-of-young-democratic-socialists-of-ame",
-            "context": "lington Heights\",\"state\":\"IL\",\"country\":\"US\",\"zip\":\"60005\"},\"filters\":{},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":54071388163613,\"event_id\":54071360169217,\"start\":\"2026-11-02T00:00:00-06:00\",\"end\":null,\"ranking\":0.07,\"all_day\":true,\"num_attending\":0}}],\"localist_url\":\"https://events.harpercollege.edu/event/copy-of-young-democratic-socialists-of-america\",\"localist_ics_url\":\"https://events.harpercollege.edu/e"
+            "match": "\"filters\":{\"event_types\":[{\"name\":\"Wellness and Health\",\"id\":46790322621181}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":54162479195880,\"event_id\":54162479168219,\"start\":\"2026-11-04T00:00:00-06:00\",\"end\":null,\"ranking\":0.06,\"all_day\":true,\"num_attending\":0}}],\"localist_url\":\"https://events.",
+            "context": "},\"departments\":[{\"id\":49453020010424,\"name\":\"Hawks Care\"}],\"filters\":{\"event_types\":[{\"name\":\"Wellness and Health\",\"id\":46790322621181}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":54162479195880,\"event_id\":54162479168219,\"start\":\"2026-11-04T00:00:00-06:00\",\"end\":null,\"ranking\":0.06,\"all_day\":true,\"num_attending\":0}}],\"localist_url\":\"https://events.harpercollege.edu/event/feed-the-need-campus-food-drive-2969"
           },
           {
-            "match": "\"filters\":{\"event_types\":[{\"name\":\"Academic Calendar\",\"id\":30388862287004},{\"name\":\"Closure\",\"id\":43783825268721}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":51745577784351,\"event_id\":34813643196266,\"start\":\"2026-11-03T00:00:00-06:00\",\"end\":null,\"ranking\":0.26,\"all_day\":true,\"num_attending\"",
-            "context": "t\":null,\"city\":null,\"state\":null,\"country\":null,\"zip\":null},\"filters\":{\"event_types\":[{\"name\":\"Academic Calendar\",\"id\":30388862287004},{\"name\":\"Closure\",\"id\":43783825268721}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":51745577784351,\"event_id\":34813643196266,\"start\":\"2026-11-03T00:00:00-06:00\",\"end\":null,\"ranking\":0.26,\"all_day\":true,\"num_attending\":0}}],\"localist_url\":\"https://events.harpercollege.edu/event"
+            "match": "\"filters\":{},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":54315029267644,\"event_id\":54315029266619,\"start\":\"2026-11-04T12:00:00-06:00\",\"end\":\"2026-11-05T04:30:00-06:00\",\"ranking\":0.26,\"all_day\":false,\"num_attending\":0}}],\"localist_url\":\"https://events.harpercollege.edu/event/dia-de-los-muertos",
+            "context": "t\":null,\"city\":null,\"state\":null,\"country\":null,\"zip\":null},\"filters\":{},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":54315029267644,\"event_id\":54315029266619,\"start\":\"2026-11-04T12:00:00-06:00\",\"end\":\"2026-11-05T04:30:00-06:00\",\"ranking\":0.26,\"all_day\":false,\"num_attending\":0}}],\"localist_url\":\"https://events.harpercollege.edu/event/dia-de-los-muertos-ofrendas-3701\",\"localist_ics_url\":\"https://events.harpercol"
           },
           {
-            "match": "\"filters\":{\"event_types\":[{\"name\":\"Wellness and Health\",\"id\":46790322621181}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":54162479194855,\"event_id\":54162479168219,\"start\":\"2026-11-03T00:00:00-06:00\",\"end\":null,\"ranking\":0.06,\"all_day\":true,\"num_attending\":0}}],\"localist_url\":\"https://events.",
-            "context": "},\"departments\":[{\"id\":49453020010424,\"name\":\"Hawks Care\"}],\"filters\":{\"event_types\":[{\"name\":\"Wellness and Health\",\"id\":46790322621181}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":54162479194855,\"event_id\":54162479168219,\"start\":\"2026-11-03T00:00:00-06:00\",\"end\":null,\"ranking\":0.06,\"all_day\":true,\"num_attending\":0}}],\"localist_url\":\"https://events.harpercollege.edu/event/feed-the-need-campus-food-drive-2969"
+            "match": "\"filters\":{\"event_types\":[{\"name\":\"Admission\",\"id\":44198994778312},{\"name\":\"Information Session\",\"id\":107035}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":54346878957104,\"event_id\":54346878957103,\"start\":\"2026-11-04T17:00:00-06:00\",\"end\":\"2026-11-04T19:00:00-06:00\",\"ranking\":0.26,\"all_day\":f",
+            "context": "ts\":[{\"id\":35776074393813,\"name\":\"High School Admissions\"}],\"filters\":{\"event_types\":[{\"name\":\"Admission\",\"id\":44198994778312},{\"name\":\"Information Session\",\"id\":107035}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":54346878957104,\"event_id\":54346878957103,\"start\":\"2026-11-04T17:00:00-06:00\",\"end\":\"2026-11-04T19:00:00-06:00\",\"ranking\":0.26,\"all_day\":false,\"num_attending\":0}}],\"localist_url\":\"https://events.har"
           },
           {
-            "match": "\"filters\":{\"event_types\":[{\"name\":\"Athletics\",\"id\":107041}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":53936410473052,\"event_id\":53936410473051,\"start\":\"2026-11-03T17:00:00-06:00\",\"end\":\"2026-11-03T19:00:00-06:00\",\"ranking\":0.26,\"all_day\":false,\"num_attending\":0}}],\"localist_url\":\"https://e",
-            "context": "t\":null,\"city\":null,\"state\":null,\"country\":null,\"zip\":null},\"filters\":{\"event_types\":[{\"name\":\"Athletics\",\"id\":107041}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":53936410473052,\"event_id\":53936410473051,\"start\":\"2026-11-03T17:00:00-06:00\",\"end\":\"2026-11-03T19:00:00-06:00\",\"ranking\":0.26,\"all_day\":false,\"num_attending\":0}}],\"localist_url\":\"https://events.harpercollege.edu/event/harper-college-womens-basketba"
+            "match": "\"filters\":{\"event_types\":[{\"name\":\"Admission\",\"id\":44198994778312},{\"name\":\"Information Session\",\"id\":107035}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":54046156286004,\"event_id\":54046156284979,\"start\":\"2026-11-04T18:00:00-06:00\",\"end\":\"2026-11-04T18:30:00-06:00\",\"ranking\":0.26,\"all_day\":f",
+            "context": "city\":\"Palatine\",\"state\":\"IL\",\"country\":\"US\",\"zip\":\"60067\"},\"filters\":{\"event_types\":[{\"name\":\"Admission\",\"id\":44198994778312},{\"name\":\"Information Session\",\"id\":107035}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":54046156286004,\"event_id\":54046156284979,\"start\":\"2026-11-04T18:00:00-06:00\",\"end\":\"2026-11-04T18:30:00-06:00\",\"ranking\":0.26,\"all_day\":false,\"num_attending\":0}}],\"localist_url\":\"https://events.har"
           },
           {
-            "match": "\"filters\":{\"event_types\":[{\"name\":\"Athletics\",\"id\":107041}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":54122247858222,\"event_id\":54122247858221,\"start\":\"2026-11-03T19:00:00-06:00\",\"end\":\"2026-11-03T21:00:00-06:00\",\"ranking\":0.26,\"all_day\":false,\"num_attending\":0}}],\"localist_url\":\"https://e",
-            "context": "t\":null,\"city\":null,\"state\":null,\"country\":null,\"zip\":null},\"filters\":{\"event_types\":[{\"name\":\"Athletics\",\"id\":107041}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":54122247858222,\"event_id\":54122247858221,\"start\":\"2026-11-03T19:00:00-06:00\",\"end\":\"2026-11-03T21:00:00-06:00\",\"ranking\":0.26,\"all_day\":false,\"num_attending\":0}}],\"localist_url\":\"https://events.harpercollege.edu/event/harper-college-mens-basketball"
+            "match": "\"filters\":{\"event_types\":[{\"name\":\"Cultural Arts\",\"id\":128837},{\"name\":\"Film Screening / Series\",\"id\":44146602471710}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":53452366961502,\"event_id\":53452366961501,\"start\":\"2026-11-04T18:00:00-06:00\",\"end\":\"2026-11-04T21:00:00-06:00\",\"ranking\":0.26,\"al",
+            "context": "tments\":[{\"id\":44128605158525,\"name\":\"Mass Communication\"}],\"filters\":{\"event_types\":[{\"name\":\"Cultural Arts\",\"id\":128837},{\"name\":\"Film Screening / Series\",\"id\":44146602471710}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":53452366961502,\"event_id\":53452366961501,\"start\":\"2026-11-04T18:00:00-06:00\",\"end\":\"2026-11-04T21:00:00-06:00\",\"ranking\":0.26,\"all_day\":false,\"num_attending\":0}}],\"localist_url\":\"https://ev"
           },
           {
-            "match": "\"filters\":{\"event_types\":[{\"name\":\"Wellness and Health\",\"id\":46790322621181}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":54162479195880,\"event_id\":54162479168219,\"start\":\"2026-11-04T00:00:00-06:00\",\"end\":null,\"ranking\":0.05,\"all_day\":true,\"num_attending\":0}}],\"localist_url\":\"https://events.",
-            "context": "},\"departments\":[{\"id\":49453020010424,\"name\":\"Hawks Care\"}],\"filters\":{\"event_types\":[{\"name\":\"Wellness and Health\",\"id\":46790322621181}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":54162479195880,\"event_id\":54162479168219,\"start\":\"2026-11-04T00:00:00-06:00\",\"end\":null,\"ranking\":0.05,\"all_day\":true,\"num_attending\":0}}],\"localist_url\":\"https://events.harpercollege.edu/event/feed-the-need-campus-food-drive-2969"
+            "match": "\"filters\":{\"event_types\":[{\"name\":\"Athletics\",\"id\":107041}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":54378787828510,\"event_id\":54378787828509,\"start\":\"2026-11-04T18:00:00-06:00\",\"end\":\"2026-11-04T20:00:00-06:00\",\"ranking\":0.26,\"all_day\":false,\"num_attending\":0}}],\"localist_url\":\"https://e",
+            "context": "t\":null,\"city\":null,\"state\":null,\"country\":null,\"zip\":null},\"filters\":{\"event_types\":[{\"name\":\"Athletics\",\"id\":107041}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":54378787828510,\"event_id\":54378787828509,\"start\":\"2026-11-04T18:00:00-06:00\",\"end\":\"2026-11-04T20:00:00-06:00\",\"ranking\":0.26,\"all_day\":false,\"num_attending\":0}}],\"localist_url\":\"https://events.harpercollege.edu/event/harper-college-womens-volleyba"
           },
           {
-            "match": "\"filters\":{},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":54315029267644,\"event_id\":54315029266619,\"start\":\"2026-11-04T12:00:00-06:00\",\"end\":\"2026-11-05T04:30:00-06:00\",\"ranking\":0.25,\"all_day\":false,\"num_attending\":0}}],\"localist_url\":\"https://events.harpercollege.edu/event/dia-de-los-muertos",
-            "context": "t\":null,\"city\":null,\"state\":null,\"country\":null,\"zip\":null},\"filters\":{},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":54315029267644,\"event_id\":54315029266619,\"start\":\"2026-11-04T12:00:00-06:00\",\"end\":\"2026-11-05T04:30:00-06:00\",\"ranking\":0.25,\"all_day\":false,\"num_attending\":0}}],\"localist_url\":\"https://events.harpercollege.edu/event/dia-de-los-muertos-ofrendas-3701\",\"localist_ics_url\":\"https://events.harpercol"
+            "match": "\"filters\":{\"event_types\":[{\"name\":\"Wellness and Health\",\"id\":46790322621181}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":54162479197929,\"event_id\":54162479168219,\"start\":\"2026-11-05T00:00:00-06:00\",\"end\":null,\"ranking\":0.05,\"all_day\":true,\"num_attending\":0}}],\"localist_url\":\"https://events.",
+            "context": "},\"departments\":[{\"id\":49453020010424,\"name\":\"Hawks Care\"}],\"filters\":{\"event_types\":[{\"name\":\"Wellness and Health\",\"id\":46790322621181}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":54162479197929,\"event_id\":54162479168219,\"start\":\"2026-11-05T00:00:00-06:00\",\"end\":null,\"ranking\":0.05,\"all_day\":true,\"num_attending\":0}}],\"localist_url\":\"https://events.harpercollege.edu/event/feed-the-need-campus-food-drive-2969"
           },
           {
-            "match": "\"filters\":{\"event_types\":[{\"name\":\"Admission\",\"id\":44198994778312},{\"name\":\"Information Session\",\"id\":107035}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":54346878957104,\"event_id\":54346878957103,\"start\":\"2026-11-04T17:00:00-06:00\",\"end\":\"2026-11-04T19:00:00-06:00\",\"ranking\":0.25,\"all_day\":f",
-            "context": "ts\":[{\"id\":35776074393813,\"name\":\"High School Admissions\"}],\"filters\":{\"event_types\":[{\"name\":\"Admission\",\"id\":44198994778312},{\"name\":\"Information Session\",\"id\":107035}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":54346878957104,\"event_id\":54346878957103,\"start\":\"2026-11-04T17:00:00-06:00\",\"end\":\"2026-11-04T19:00:00-06:00\",\"ranking\":0.25,\"all_day\":false,\"num_attending\":0}}],\"localist_url\":\"https://events.har"
+            "match": "\"filters\":{\"event_types\":[{\"name\":\"Virtual Events\",\"id\":128836},{\"name\":\"Training and How-Tos\",\"id\":53736839190237}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":53514879965907,\"event_id\":53514879959753,\"start\":\"2026-11-05T12:00:00-06:00\",\"end\":\"2026-11-05T13:00:00-06:00\",\"ranking\":0.05,\"all_",
+            "context": "ents\":[{\"id\":11536,\"name\":\"Job Placement Resource Center\"}],\"filters\":{\"event_types\":[{\"name\":\"Virtual Events\",\"id\":128836},{\"name\":\"Training and How-Tos\",\"id\":53736839190237}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":53514879965907,\"event_id\":53514879959753,\"start\":\"2026-11-05T12:00:00-06:00\",\"end\":\"2026-11-05T13:00:00-06:00\",\"ranking\":0.05,\"all_day\":false,\"num_attending\":0}}],\"localist_url\":\"https://even"
           },
           {
-            "match": "\"filters\":{\"event_types\":[{\"name\":\"Admission\",\"id\":44198994778312},{\"name\":\"Information Session\",\"id\":107035}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":54046156286004,\"event_id\":54046156284979,\"start\":\"2026-11-04T18:00:00-06:00\",\"end\":\"2026-11-04T18:30:00-06:00\",\"ranking\":0.25,\"all_day\":f",
-            "context": "city\":\"Palatine\",\"state\":\"IL\",\"country\":\"US\",\"zip\":\"60067\"},\"filters\":{\"event_types\":[{\"name\":\"Admission\",\"id\":44198994778312},{\"name\":\"Information Session\",\"id\":107035}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":54046156286004,\"event_id\":54046156284979,\"start\":\"2026-11-04T18:00:00-06:00\",\"end\":\"2026-11-04T18:30:00-06:00\",\"ranking\":0.25,\"all_day\":false,\"num_attending\":0}}],\"localist_url\":\"https://events.har"
+            "match": "\"filters\":{},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":54135054463052,\"event_id\":54135054463051,\"start\":\"2026-11-05T12:00:00-06:00\",\"end\":\"2026-11-05T13:00:00-06:00\",\"ranking\":0.25,\"all_day\":false,\"num_attending\":0}}],\"localist_url\":\"https://events.harpercollege.edu/event/jprc-workshop-vmoc",
+            "context": "ents\":[{\"id\":11536,\"name\":\"Job Placement Resource Center\"}],\"filters\":{},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":54135054463052,\"event_id\":54135054463051,\"start\":\"2026-11-05T12:00:00-06:00\",\"end\":\"2026-11-05T13:00:00-06:00\",\"ranking\":0.25,\"all_day\":false,\"num_attending\":0}}],\"localist_url\":\"https://events.harpercollege.edu/event/jprc-workshop-vmock\",\"localist_ics_url\":\"https://events.harpercollege.edu/even"
           },
           {
-            "match": "\"filters\":{\"event_types\":[{\"name\":\"Cultural Arts\",\"id\":128837},{\"name\":\"Film Screening / Series\",\"id\":44146602471710}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":53452366961502,\"event_id\":53452366961501,\"start\":\"2026-11-04T18:00:00-06:00\",\"end\":\"2026-11-04T21:00:00-06:00\",\"ranking\":0.25,\"al",
-            "context": "tments\":[{\"id\":44128605158525,\"name\":\"Mass Communication\"}],\"filters\":{\"event_types\":[{\"name\":\"Cultural Arts\",\"id\":128837},{\"name\":\"Film Screening / Series\",\"id\":44146602471710}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":53452366961502,\"event_id\":53452366961501,\"start\":\"2026-11-04T18:00:00-06:00\",\"end\":\"2026-11-04T21:00:00-06:00\",\"ranking\":0.25,\"all_day\":false,\"num_attending\":0}}],\"localist_url\":\"https://ev"
+            "match": "\"filters\":{\"event_types\":[{\"name\":\"Athletics\",\"id\":107041}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":54122247872562,\"event_id\":54122247871537,\"start\":\"2026-11-05T18:00:00-06:00\",\"end\":\"2026-11-05T20:00:00-06:00\",\"ranking\":0.25,\"all_day\":false,\"num_attending\":0}}],\"localist_url\":\"https://e",
+            "context": "t\":null,\"city\":null,\"state\":null,\"country\":null,\"zip\":null},\"filters\":{\"event_types\":[{\"name\":\"Athletics\",\"id\":107041}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":54122247872562,\"event_id\":54122247871537,\"start\":\"2026-11-05T18:00:00-06:00\",\"end\":\"2026-11-05T20:00:00-06:00\",\"ranking\":0.25,\"all_day\":false,\"num_attending\":0}}],\"localist_url\":\"https://events.harpercollege.edu/event/harper-college-mens-basketball"
           },
           {
-            "match": "\"filters\":{\"event_types\":[{\"name\":\"Athletics\",\"id\":107041}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":54378787828510,\"event_id\":54378787828509,\"start\":\"2026-11-04T18:00:00-06:00\",\"end\":\"2026-11-04T20:00:00-06:00\",\"ranking\":0.25,\"all_day\":false,\"num_attending\":0}}],\"localist_url\":\"https://e",
-            "context": "t\":null,\"city\":null,\"state\":null,\"country\":null,\"zip\":null},\"filters\":{\"event_types\":[{\"name\":\"Athletics\",\"id\":107041}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":54378787828510,\"event_id\":54378787828509,\"start\":\"2026-11-04T18:00:00-06:00\",\"end\":\"2026-11-04T20:00:00-06:00\",\"ranking\":0.25,\"all_day\":false,\"num_attending\":0}}],\"localist_url\":\"https://events.harpercollege.edu/event/harper-college-womens-volleyba"
+            "match": "\"filters\":{\"event_types\":[{\"name\":\"Wellness and Health\",\"id\":46790322621181}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":54162479201002,\"event_id\":54162479168219,\"start\":\"2026-11-06T00:00:00-06:00\",\"end\":null,\"ranking\":0.04,\"all_day\":true,\"num_attending\":0}}],\"localist_url\":\"https://events.",
+            "context": "},\"departments\":[{\"id\":49453020010424,\"name\":\"Hawks Care\"}],\"filters\":{\"event_types\":[{\"name\":\"Wellness and Health\",\"id\":46790322621181}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":54162479201002,\"event_id\":54162479168219,\"start\":\"2026-11-06T00:00:00-06:00\",\"end\":null,\"ranking\":0.04,\"all_day\":true,\"num_attending\":0}}],\"localist_url\":\"https://events.harpercollege.edu/event/feed-the-need-campus-food-drive-2969"
           },
           {
-            "match": "\"filters\":{\"event_types\":[{\"name\":\"Wellness and Health\",\"id\":46790322621181}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":54162479197929,\"event_id\":54162479168219,\"start\":\"2026-11-05T00:00:00-06:00\",\"end\":null,\"ranking\":0.04,\"all_day\":true,\"num_attending\":0}}],\"localist_url\":\"https://events.",
-            "context": "},\"departments\":[{\"id\":49453020010424,\"name\":\"Hawks Care\"}],\"filters\":{\"event_types\":[{\"name\":\"Wellness and Health\",\"id\":46790322621181}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":54162479197929,\"event_id\":54162479168219,\"start\":\"2026-11-05T00:00:00-06:00\",\"end\":null,\"ranking\":0.04,\"all_day\":true,\"num_attending\":0}}],\"localist_url\":\"https://events.harpercollege.edu/event/feed-the-need-campus-food-drive-2969"
+            "match": "\"filters\":{\"event_types\":[{\"name\":\"Wellness and Health\",\"id\":46790322621181}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":54012078174437,\"event_id\":54012078173412,\"start\":\"2026-11-06T08:30:00-06:00\",\"end\":\"2026-11-06T16:00:00-06:00\",\"ranking\":0.24,\"all_day\":false,\"num_attending\":0}}],\"locali",
+            "context": "3016984923,\"name\":\"Mental Health and Well-Being Services\"}],\"filters\":{\"event_types\":[{\"name\":\"Wellness and Health\",\"id\":46790322621181}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":54012078174437,\"event_id\":54012078173412,\"start\":\"2026-11-06T08:30:00-06:00\",\"end\":\"2026-11-06T16:00:00-06:00\",\"ranking\":0.24,\"all_day\":false,\"num_attending\":0}}],\"localist_url\":\"https://events.harpercollege.edu/event/mental-healt"
           },
           {
-            "match": "\"filters\":{\"event_types\":[{\"name\":\"Virtual Events\",\"id\":128836},{\"name\":\"Training and How-Tos\",\"id\":53736839190237}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":53514879965907,\"event_id\":53514879959753,\"start\":\"2026-11-05T12:00:00-06:00\",\"end\":\"2026-11-05T13:00:00-06:00\",\"ranking\":0.04,\"all_",
-            "context": "ents\":[{\"id\":11536,\"name\":\"Job Placement Resource Center\"}],\"filters\":{\"event_types\":[{\"name\":\"Virtual Events\",\"id\":128836},{\"name\":\"Training and How-Tos\",\"id\":53736839190237}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":53514879965907,\"event_id\":53514879959753,\"start\":\"2026-11-05T12:00:00-06:00\",\"end\":\"2026-11-05T13:00:00-06:00\",\"ranking\":0.04,\"all_day\":false,\"num_attending\":0}}],\"localist_url\":\"https://even"
+            "match": "\"filters\":{},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":54231061951153,\"event_id\":54231061950128,\"start\":\"2026-11-06T09:30:00-06:00\",\"end\":\"2026-11-06T14:00:00-06:00\",\"ranking\":0.24,\"all_day\":false,\"num_attending\":0}}],\"localist_url\":\"https://events.harpercollege.edu/event/harper-diversity-s",
+            "context": "\":38279350719446,\"name\":\"Diversity, Equity and Inclusion\"}],\"filters\":{},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":54231061951153,\"event_id\":54231061950128,\"start\":\"2026-11-06T09:30:00-06:00\",\"end\":\"2026-11-06T14:00:00-06:00\",\"ranking\":0.24,\"all_day\":false,\"num_attending\":0}}],\"localist_url\":\"https://events.harpercollege.edu/event/harper-diversity-symposium\",\"localist_ics_url\":\"https://events.harpercollege.e"
           }
         ]
       }
@@ -731,11 +367,11 @@
       "url": "https://www.sd25.org/calendar",
       "purpose": "Arlington Heights District 25 - does the calendar page list no-school dates in the HTML?",
       "item": 300,
-      "probed_at": "2026-10-31T22:00:14+00:00",
+      "probed_at": "2026-11-01T14:02:27+00:00",
       "status": 200,
       "final_url": "https://www.sd25.org/calendar-73",
       "content_type": "text/html; charset=utf-8",
-      "bytes": 95991,
+      "bytes": 95711,
       "title": "Calendar",
       "feed_links": [],
       "calendar_links": [
@@ -752,7 +388,7 @@
       "url": "https://ccsd21.org/parent-resources/calendars/",
       "purpose": "Wheeling CCSD 21 - does the calendars page link a 2026-27 calendar and list no-school dates?",
       "item": 300,
-      "probed_at": "2026-10-31T22:00:16+00:00",
+      "probed_at": "2026-11-01T14:02:30+00:00",
       "status": 403,
       "final_url": "https://ccsd21.org/parent-resources/calendars/",
       "content_type": "text/html; charset=UTF-8",
@@ -770,11 +406,11 @@
       "url": "https://www.d62.org/calendars",
       "purpose": "Des Plaines District 62 - official 2026-27 calendar",
       "item": 300,
-      "probed_at": "2026-10-31T22:00:17+00:00",
+      "probed_at": "2026-11-01T14:02:30+00:00",
       "status": 200,
       "final_url": "https://www.d62.org/calendars",
       "content_type": "text/html; charset=utf-8",
-      "bytes": 132067,
+      "bytes": 124832,
       "title": "Calendars - Community Consolidated School District 62",
       "feed_links": [],
       "calendar_links": [],
@@ -813,32 +449,20 @@
             "context": "ad More <span class=\"fsStyleSROnly\">about All Schools: No School (Institute Day)</span> </a></article> </div> <div class=\"fsDayConta"
           },
           {
-            "match": "No School (return Oct. 13)\" data-occur-id=\"206031037_2026-09-23T00:00:00Z_2026-10-10T00:0",
-            "context": "LongEventTitle fsCalendarTruncate\" title=\"ICS Intersession: No School (return Oct. 13)\" data-occur-id=\"206031037_2026-09-23T00:00:00Z_2026-10-10T00:00:00Z\" href=\"#\">ICS Intersession: No School (return Oct. 13)"
+            "match": "No School (Institute Day)\" data-occur-id=\"206031082_2026-11-03T00:00:00Z_2026-11-04T00:00",
+            "context": "endarLongEventTitle fsCalendarTruncate\" title=\"All Schools: No School (Institute Day)\" data-occur-id=\"206031082_2026-11-03T00:00:00Z_2026-11-04T00:00:00Z\" href=\"#\">All Schools: No School (Institute Day)</a>"
           },
           {
-            "match": "No School (return Oct. 13)",
-            "context": "T00:00:00Z_2026-10-10T00:00:00Z\" href=\"#\">ICS Intersession: No School (return Oct. 13)</a> <div class=\"fsTimeRange\"> <span class=\"fsA"
+            "match": "No School\" data-occur-id=\"206096927_2026-11-23T00:00:00Z_2026-11-28T00:00:00Z\" href=\"#\">1",
+            "context": "LongEventTitle fsCalendarTruncate\" title=\"10 Month Schools: No School\" data-occur-id=\"206096927_2026-11-23T00:00:00Z_2026-11-28T00:00:00Z\" href=\"#\">10 Month Schools: No School</a> <div class=\"fsTimeRang"
           },
           {
-            "match": "No School (Parent-Teacher Conferences)\" data-occur-id=\"206096832_2026-10-08T00:00:00Z_202",
-            "context": "LongEventTitle fsCalendarTruncate\" title=\"10 Month Schools: No School (Parent-Teacher Conferences)\" data-occur-id=\"206096832_2026-10-08T00:00:00Z_2026-10-09T00:00:00Z\" href=\"#\">10 Month Schools: No School (Par"
+            "match": "No School\" data-occur-id=\"206031548_2026-11-26T00:00:00Z_2026-11-27T00:00:00Z\" href=\"#\">I",
+            "context": "nk fsCalendarLongEventTitle fsCalendarTruncate\" title=\"ICS: No School\" data-occur-id=\"206031548_2026-11-26T00:00:00Z_2026-11-27T00:00:00Z\" href=\"#\">ICS: No School</a> <div class=\"fsTimeRange\"> <sp"
           },
           {
-            "match": "No School (Parent-Teacher Conferences)",
-            "context": "T00:00:00Z_2026-10-09T00:00:00Z\" href=\"#\">10 Month Schools: No School (Parent-Teacher Conferences)</a> <div class=\"fsTimeRange\"> <span class=\"fsA"
-          },
-          {
-            "match": "No School (Parent-Teacher Conferences)\" data-occur-id=\"206096674_2026-10-09T00:00:00Z_202",
-            "context": "LongEventTitle fsCalendarTruncate\" title=\"10 Month Schools: No School (Parent-Teacher Conferences)\" data-occur-id=\"206096674_2026-10-09T00:00:00Z_2026-10-10T00:00:00Z\" href=\"#\">10 Month Schools: No School (Par"
-          },
-          {
-            "match": "No School (State Holiday)\" data-occur-id=\"206031243_2026-10-12T00:00:00Z_2026-10-13T00:00",
-            "context": "endarLongEventTitle fsCalendarTruncate\" title=\"All Schools: No School (State Holiday)\" data-occur-id=\"206031243_2026-10-12T00:00:00Z_2026-10-13T00:00:00Z\" href=\"#\">All Schools: No School (State Holiday)</a>"
-          },
-          {
-            "match": "No School (State Holiday)",
-            "context": "10-12T00:00:00Z_2026-10-13T00:00:00Z\" href=\"#\">All Schools: No School (State Holiday)</a> <div class=\"fsTimeRange\"> <span class=\"fsA"
+            "match": "No School\" data-occur-id=\"206031171_2026-11-27T00:00:00Z_2026-11-28T00:00:00Z\" href=\"#\">I",
+            "context": "nk fsCalendarLongEventTitle fsCalendarTruncate\" title=\"ICS: No School\" data-occur-id=\"206031171_2026-11-27T00:00:00Z_2026-11-28T00:00:00Z\" href=\"#\">ICS: No School</a> <div class=\"fsTimeRange\"> <sp"
           }
         ],
         "(?i)2026[-–/ ]?(?:20)?27[^<]{0,60}": [
@@ -920,7 +544,7 @@
         "url": "https://resources.finalsite.net/images/v1771602096/d62org/huubad2axs3m2rrnnwjm/District62Ten-MonthSchoolsCalendar2026-2027FINAL.pdf",
         "purpose": "",
         "item": null,
-        "probed_at": "2026-10-31T22:00:19+00:00",
+        "probed_at": "2026-11-01T14:02:32+00:00",
         "status": 200,
         "final_url": "https://resources.finalsite.net/images/v1771602096/d62org/huubad2axs3m2rrnnwjm/District62Ten-MonthSchoolsCalendar2026-2027FINAL.pdf",
         "content_type": "application/pdf",
@@ -935,11 +559,11 @@
       "url": "https://www.d214.org/calendar",
       "purpose": "High School District 214 - official 2026-27 calendar",
       "item": 300,
-      "probed_at": "2026-10-31T22:00:20+00:00",
+      "probed_at": "2026-11-01T14:02:33+00:00",
       "status": 404,
       "final_url": "https://www.d214.org/calendar",
       "content_type": "text/html;charset=utf-8",
-      "bytes": 1375378,
+      "bytes": 1375376,
       "title": "Page Not Found | District 214",
       "feed_links": [],
       "calendar_links": [],
@@ -983,201 +607,399 @@
       "followed": null
     },
     {
-      "url": "https://www.phspirateboosters.com/",
-      "purpose": "Palatine HS Pirate Boosters - is a craft-fair contact (a role mailbox) published on the club's own site?",
-      "item": 409,
-      "probed_at": "2026-10-31T22:00:20+00:00",
+      "url": "https://www.mountprospect.org/",
+      "purpose": "Village of Mount Prospect - home page; a 2026 tree-lighting notice",
+      "item": 427,
+      "probed_at": "2026-11-01T14:02:33+00:00",
       "status": 200,
-      "final_url": "https://phspirateboosters.com/",
+      "final_url": "https://www.mountprospect.org/",
       "content_type": "text/html; charset=UTF-8",
-      "bytes": 133210,
-      "title": "PHS Pirate Boosters – Supporting Our Students and the Palatine High School Community",
+      "bytes": 203038,
+      "title": "Mount Prospect, IL",
+      "feed_links": [],
+      "calendar_links": [
+        "https://www.mountprospect.org/plans_and_reports/community_information_and_fact_check_portal/prestige_feed.php"
+      ],
+      "pattern_matches": {
+        "(?i)(?:tree[- ]lighting|christkindlmarket|busse pocket park)[^<]{0,160}": []
+      },
+      "followed": {
+        "url": "https://www.mountprospect.org/services/tree_care.php",
+        "purpose": "",
+        "item": null,
+        "probed_at": "2026-11-01T14:02:34+00:00",
+        "status": 200,
+        "final_url": "https://www.mountprospect.org/services/tree_care.php",
+        "content_type": "text/html; charset=UTF-8",
+        "bytes": 188779,
+        "title": "Mount Prospect, IL",
+        "feed_links": [],
+        "calendar_links": [
+          "https://www.mountprospect.org/services/plans_and_reports/community_information_and_fact_check_portal/prestige_feed.php"
+        ],
+        "pattern_matches": {
+          "(?i)(?:tree[- ]lighting|christkindlmarket|busse pocket park)[^<]{0,160}": []
+        }
+      }
+    },
+    {
+      "url": "https://mpdowntown.com/events/",
+      "purpose": "Downtown Mount Prospect - events page; tree lighting or Christkindlmarket dates",
+      "item": 427,
+      "probed_at": "2026-11-01T14:02:34+00:00",
+      "status": 200,
+      "final_url": "https://mpdowntown.com/events/",
+      "content_type": "text/html; charset=UTF-8",
+      "bytes": 124873,
+      "title": "Events | Mount Prospect Downtown Merchants",
       "feed_links": [
         {
-          "href": "https://phspirateboosters.com/feed/",
+          "href": "https://mpdowntown.com/feed/",
           "type": "application/rss+xml",
-          "title": "PHS Pirate Boosters » Feed"
+          "title": "Mount Prospect Downtown Merchants » Feed"
         },
         {
-          "href": "https://phspirateboosters.com/comments/feed/",
+          "href": "https://mpdowntown.com/comments/feed/",
           "type": "application/rss+xml",
-          "title": "PHS Pirate Boosters » Comments Feed"
+          "title": "Mount Prospect Downtown Merchants » Comments Feed"
         },
         {
-          "href": "https://phspirateboosters.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fphspirateboosters.com%2F",
+          "href": "https://mpdowntown.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fmpdowntown.com%2Fevents%2F",
           "type": "application/json+oembed",
           "title": "oEmbed (JSON)"
         },
         {
-          "href": "https://phspirateboosters.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fphspirateboosters.com%2F&format=xml",
+          "href": "https://mpdowntown.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fmpdowntown.com%2Fevents%2F&format=xml",
           "type": "text/xml+oembed",
           "title": "oEmbed (XML)"
         },
         {
-          "href": "https://phspirateboosters.com/wp-json/wp/v2/pages/1331",
+          "href": "https://mpdowntown.com/wp-json/wp/v2/pages/2477",
           "type": "application/json",
           "title": "JSON"
-        },
-        {
-          "href": "https://phspirateboosters.com/wp-content/plugins/nextgen-gallery/src/Legacy/xml/media-rss.php",
-          "type": "application/rss+xml",
-          "title": "NextGEN Gallery RSS Feed"
         }
       ],
       "calendar_links": [],
       "pattern_matches": {
-        "(?i)phscraft@[a-z0-9.-]+": [],
-        "(?i)craft fair[^<]{0,200}": [
+        "(?i)(?:tree[- ]lighting|christkindlmarket|busse pocket park)[^<]{0,200}": []
+      }
+    },
+    {
+      "url": "https://www.wheelingil.gov/",
+      "purpose": "Village of Wheeling - home page; Lights Around Wheeling or a tree-lighting notice",
+      "item": 427,
+      "probed_at": "2026-11-01T14:02:38+00:00",
+      "status": 200,
+      "final_url": "https://www.wheelingil.gov/",
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 139721,
+      "title": "Wheeling, IL | Official WebsiteArrow LeftArrow RightSlideshow Left ArrowSlideshow Right Arrow",
+      "feed_links": [],
+      "calendar_links": [
+        "https://www.wheelingil.gov/civicalerts.aspx",
+        "https://www.wheelingil.gov/CivicAlerts.aspx?AID=265",
+        "https://www.wheelingil.gov/CivicAlerts.aspx?AID=252",
+        "https://www.wheelingil.gov/CivicAlerts.aspx?CID=1",
+        "https://www.wheelingil.gov/CivicAlerts.aspx?AID=239",
+        "https://www.wheelingil.gov/CivicAlerts.aspx?AID=238",
+        "https://www.wheelingil.gov/CivicAlerts.aspx?CID=10",
+        "https://www.wheelingil.gov/2348/Feedback-Form"
+      ],
+      "pattern_matches": {
+        "(?i)(?:lights around wheeling|friendship park|tree[- ]lighting)[^<]{0,160}": []
+      },
+      "followed": null
+    },
+    {
+      "url": "https://www.desplainesil.gov/",
+      "purpose": "City of Des Plaines - home page; a 2026 tree-lighting or holiday-event notice (also item 367)",
+      "item": 427,
+      "probed_at": "2026-11-01T14:02:39+00:00",
+      "status": 200,
+      "final_url": "https://www.desplainesil.gov/Home",
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 279201,
+      "title": "Home | City of Des Plaines, IL",
+      "feed_links": [],
+      "calendar_links": [
+        "https://www.desplainesil.gov/Departments/Media-Services/Website-Feedback-Form"
+      ],
+      "pattern_matches": {
+        "(?i)(?:tree[- ]lighting|holiday (?:tree|lights?)|christmas tree)[^<]{0,160}": [
           {
-            "match": "Craft Fair",
-            "context": "fair/\" class=\"fusion-bar-highlight\"><span class=\"menu-text\">Craft Fair</span></a></li><li id=\"menu-item-675\" class=\"menu-item me"
+            "match": "Tree-Lighting-and-Winter-Fair\" title=\"Holiday Tree Lighting and Winter Fair\" target=\"\">Holiday Tree Lighting and Winter Fair",
+            "context": "ps://www.desplainesil.gov/Departments/Media-Services/Events/Tree-Lighting-and-Winter-Fair\" title=\"Holiday Tree Lighting and Winter Fair\" target=\"\">Holiday Tree Lighting and Winter Fair</a> <span>The City of Des Plaines hosts two holiday events"
+          },
+          {
+            "match": "Holiday Tree Lighting at Metropolitan Square features food trucks, tree decorating, and a visit from Santa himself. The Winter Fair, held the day after the Holiday Tree Lig",
+            "context": "y of Des Plaines hosts two holiday events every winter. The Holiday Tree Lighting at Metropolitan Square features food trucks, tree decorating, and a visit from Santa himself. The Winter Fair, held the day after the Holiday Tree Lighting, is held at the Des Plaines Public Library and feature"
           }
         ]
       },
       "followed": {
-        "url": "https://phspirateboosters.com/craft-fair/",
+        "url": "https://www.desplainesil.gov/Departments/Public-Works-and-Engineering/Street-Maintenance",
         "purpose": "",
         "item": null,
-        "probed_at": "2026-10-31T22:00:22+00:00",
+        "probed_at": "2026-11-01T14:02:41+00:00",
         "status": 200,
-        "final_url": "https://phspirateboosters.com/craft-fair/",
+        "final_url": "https://www.desplainesil.gov/Departments/Public-Works-and-Engineering/Street-Maintenance",
+        "content_type": "text/html; charset=utf-8",
+        "bytes": 77443,
+        "title": "Street Maintenance | City of Des Plaines, IL",
+        "feed_links": [],
+        "calendar_links": [
+          "https://www.desplainesil.gov/Departments/Media-Services/Website-Feedback-Form"
+        ],
+        "pattern_matches": {
+          "(?i)(?:tree[- ]lighting|holiday (?:tree|lights?)|christmas tree)[^<]{0,160}": []
+        }
+      }
+    },
+    {
+      "url": "https://www.saltcreekpd.com/",
+      "purpose": "Salt Creek Rural Park District (Palatine) - home page; Breakfast with Santa or other Santa events, any events feed link",
+      "item": 428,
+      "probed_at": "2026-11-01T14:02:42+00:00",
+      "status": 200,
+      "final_url": "https://www.saltcreekpd.com/",
+      "content_type": "text/html; charset=UTF-8",
+      "bytes": 170921,
+      "title": "Salt Creek Park District - Arlington Heights, Palatine & Rolling Meadows",
+      "feed_links": [
+        {
+          "href": "https://www.saltcreekpd.com/feed/",
+          "type": "application/rss+xml",
+          "title": "Salt Creek Park District » Feed"
+        },
+        {
+          "href": "https://www.saltcreekpd.com/events/?ical=1",
+          "type": "text/calendar",
+          "title": "Salt Creek Park District » iCal Feed"
+        },
+        {
+          "href": "https://www.saltcreekpd.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fwww.saltcreekpd.com%2F",
+          "type": "application/json+oembed",
+          "title": "oEmbed (JSON)"
+        },
+        {
+          "href": "https://www.saltcreekpd.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fwww.saltcreekpd.com%2F&format=xml",
+          "type": "text/xml+oembed",
+          "title": "oEmbed (XML)"
+        },
+        {
+          "href": "https://www.saltcreekpd.com/wp-json/wp/v2/pages/2",
+          "type": "application/json",
+          "title": "JSON"
+        },
+        {
+          "href": "https://www.saltcreekpd.com/wp-json/tribe/events/v1/",
+          "type": "",
+          "title": ""
+        }
+      ],
+      "calendar_links": [],
+      "pattern_matches": {
+        "(?i)santa[^<]{0,160}": [],
+        "(?i)(?:ical|\\.ics|/events)[^\"<]{0,80}": [
+          {
+            "match": "ical",
+            "context": "atine and the City of Rolling Meadows.\" /> <link rel=\"canonical\" href=\"https://www.saltcreekpd.com/\" /> <meta property=\"og"
+          },
+          {
+            "match": "/events-calendar-pro/build/css/tribe-events-pro-mini-calendar-block.css' />\n",
+            "context": "efetch' href='https://www.saltcreekpd.com/wp-content/plugins/events-calendar-pro/build/css/tribe-events-pro-mini-calendar-block.css' /> <link rel='prefetch' href='https://www.saltcreekpd.com/wp-co"
+          },
+          {
+            "match": "iCal Feed",
+            "context": "ype=\"text/calendar\" title=\"Salt Creek Park District &raquo; iCal Feed\" href=\"https://www.saltcreekpd.com/events/?ical=1\" /> <link"
+          },
+          {
+            "match": "/events/?ical=1",
+            "context": "istrict &raquo; iCal Feed\" href=\"https://www.saltcreekpd.com/events/?ical=1\" /> <link rel=\"alternate\" title=\"oEmbed (JSON)\" type=\"appli"
+          },
+          {
+            "match": "/events-calendar-pro/build/css/tribe-events-pro-mini-calendar-block.css' media='print' ",
+            "context": "es-css' href='https://www.saltcreekpd.com/wp-content/plugins/events-calendar-pro/build/css/tribe-events-pro-mini-calendar-block.css' media='print' onload=\"this.media='all'\" /> <noscript><link rel='stylesheet"
+          },
+          {
+            "match": "/events-calendar-pro/build/css/tribe-events-pro-mini-calendar-block.css' media='all' />",
+            "context": "es-css' href='https://www.saltcreekpd.com/wp-content/plugins/events-calendar-pro/build/css/tribe-events-pro-mini-calendar-block.css' media='all' /> </noscript><style id=\"classic-theme-styles-inline-css\"> /*!"
+          },
+          {
+            "match": "/events/v1/",
+            "context": "=\"alternate\" href=\"https://www.saltcreekpd.com/wp-json/tribe/events/v1/\" /><meta name=\"generator\" content=\"speculation-rules 1.7.0\""
+          },
+          {
+            "match": "ical menu-list--child menu-list--depth-1 menu-list--overlay' data-hover='true' data-",
+            "context": "id='desktop-nav_575_child' class='menu-list menu-list--vertical menu-list--child menu-list--depth-1 menu-list--overlay' data-hover='true' data-touch='true' aria-hidden='true' aria-controlledby='desktop-n"
+          },
+          {
+            "match": "ical menu-list--child menu-list--depth-2 menu-list--overlay menu-list--flyout' data-",
+            "context": "id='desktop-nav_577_child' class='menu-list menu-list--vertical menu-list--child menu-list--depth-2 menu-list--overlay menu-list--flyout' data-hover='true' data-touch='true' aria-hidden='true' aria-contr"
+          },
+          {
+            "match": "/events/'>Calendar of Events",
+            "context": "ass='menu-list__link link' href='https://www.saltcreekpd.com/events/'>Calendar of Events</a></li><li class='menu-item menu-item-type-post_type menu-"
+          },
+          {
+            "match": "/events/",
+            "context": "callouts__callout callout\" href=\"https://www.saltcreekpd.com/events/\"> <i class=\"cal"
+          },
+          {
+            "match": "ical'>",
+            "context": "ist--navigation-primary menu-list--accordion menu-list--vertical'><li class='menu-item menu-item-type-custom menu-item-object-"
+          },
+          {
+            "match": "ical menu-list--child menu-list--depth-1 menu-list--accordion' data-accordion='true'",
+            "context": "l id='mobile-nav_575_child' class='menu-list menu-list--vertical menu-list--child menu-list--depth-1 menu-list--accordion' data-accordion='true' data-touch='true' aria-hidden='true' aria-controlledby='mob"
+          },
+          {
+            "match": "ical menu-list--child menu-list--depth-2 menu-list--accordion' data-accordion='true'",
+            "context": "l id='mobile-nav_577_child' class='menu-list menu-list--vertical menu-list--child menu-list--depth-2 menu-list--accordion' data-accordion='true' data-touch='true' aria-hidden='true' aria-controlledby='mob"
+          }
+        ]
+      },
+      "followed": {
+        "url": "https://www.saltcreekpd.com/events/",
+        "purpose": "",
+        "item": null,
+        "probed_at": "2026-11-01T14:02:42+00:00",
+        "status": 200,
+        "final_url": "https://www.saltcreekpd.com/events/",
         "content_type": "text/html; charset=UTF-8",
-        "bytes": 114514,
-        "title": "Craft Fair – PHS Pirate Boosters",
+        "bytes": 259806,
+        "title": "Events for November 2026 – Salt Creek Park District",
         "feed_links": [
           {
-            "href": "https://phspirateboosters.com/feed/",
+            "href": "https://www.saltcreekpd.com/feed/",
             "type": "application/rss+xml",
-            "title": "PHS Pirate Boosters » Feed"
+            "title": "Salt Creek Park District » Feed"
           },
           {
-            "href": "https://phspirateboosters.com/comments/feed/",
+            "href": "https://www.saltcreekpd.com/events/?ical=1",
+            "type": "text/calendar",
+            "title": "Salt Creek Park District » iCal Feed"
+          },
+          {
+            "href": "https://www.saltcreekpd.com/events/feed/",
             "type": "application/rss+xml",
-            "title": "PHS Pirate Boosters » Comments Feed"
+            "title": "Salt Creek Park District » Events Feed"
           },
           {
-            "href": "https://phspirateboosters.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fphspirateboosters.com%2Fcraft-fair%2F",
-            "type": "application/json+oembed",
-            "title": "oEmbed (JSON)"
-          },
-          {
-            "href": "https://phspirateboosters.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fphspirateboosters.com%2Fcraft-fair%2F&format=xml",
-            "type": "text/xml+oembed",
-            "title": "oEmbed (XML)"
-          },
-          {
-            "href": "https://phspirateboosters.com/wp-json/wp/v2/pages/3738",
-            "type": "application/json",
-            "title": "JSON"
-          },
-          {
-            "href": "https://phspirateboosters.com/wp-content/plugins/nextgen-gallery/src/Legacy/xml/media-rss.php",
-            "type": "application/rss+xml",
-            "title": "NextGEN Gallery RSS Feed"
+            "href": "https://www.saltcreekpd.com/wp-json/tribe/events/v1/",
+            "type": "",
+            "title": ""
           }
         ],
-        "calendar_links": [],
+        "calendar_links": [
+          "https://www.google.com/calendar/render?cid=webcal%3A%2F%2Fwww.saltcreekpd.com%2F%3Fpost_type%3Dtribe_events%26ical%3D1%26eventDisplay%3Dlist",
+          "webcal://www.saltcreekpd.com/?post_type=tribe_events&ical=1&eventDisplay=list",
+          "https://outlook.office.com/owa?path=/calendar/action/compose&rru=addsubscription&url=webcal%3A%2F%2Fwww.saltcreekpd.com%2F%3Fpost_type%3Dtribe_events%26ical%3D1%26eventDisplay%3Dlist&name=Salt+Creek+Park+District+Events+Archive+-+Salt+Creek+Park+District",
+          "https://outlook.live.com/owa?path=/calendar/action/compose&rru=addsubscription&url=webcal%3A%2F%2Fwww.saltcreekpd.com%2F%3Fpost_type%3Dtribe_events%26ical%3D1%26eventDisplay%3Dlist&name=Salt+Creek+Park+District+Events+Archive+-+Salt+Creek+Park+District",
+          "https://www.saltcreekpd.com/events/month/?ical=1",
+          "https://www.saltcreekpd.com/events/month/?outlook-ical=1"
+        ],
         "pattern_matches": {
-          "(?i)phscraft@[a-z0-9.-]+": [
+          "(?i)santa[^<]{0,160}": [],
+          "(?i)(?:ical|\\.ics|/events)[^\"<]{0,80}": [
             {
-              "match": "phscraft@gmail.com",
-              "context": "le=\"text-align: center;\">reach out to us at <a href=\"mailto:phscraft@gmail.com\"><strong>phscraft@gmail.com</strong></a>.</p> <p style=\"tex"
-            }
-          ],
-          "(?i)craft fair[^<]{0,200}": [
-            {
-              "match": "Craft Fair &#8211; PHS Pirate Boosters",
-              "context": "t\" content=\"width=device-width, initial-scale=1\" /> <title>Craft Fair &#8211; PHS Pirate Boosters</title> <link href=\"https://fonts.googleapis.com/css?family"
+              "match": "/events-calendar-pro/build/css/views-print.css' media='print' />\n",
+              "context": "nt-css' href='https://www.saltcreekpd.com/wp-content/plugins/events-calendar-pro/build/css/views-print.css' media='print' /> <noscript><link rel='stylesheet' id='tribe-events-pro-views-"
             },
             {
-              "match": "Craft Fair\r\nSaturday, November 7th, 9am-4pm\r\nPalatine High School\r\n1111 N. Rohlwing Road\r\nPalatine, IL 60074\r\nOver 150 vendors will be helping support our PHS community on November 7th!\r\nHelp our\"/>\n\t\t\t\t\n\t\t",
-              "context": "ping Here! Presented by the PHS Pirate Boosters 2026 Fall Craft Fair Saturday, November 7th, 9am-4pm Palatine High School 1111 N. Rohlwing Road Palatine, IL 60074 Over 150 vendors will be helping support our PHS community on November 7th! Help our\"/> <meta property=\"og:locale\" content=\"en_US\"/> <meta propert"
+              "match": "ical",
+              "context": "6 &#8211; Salt Creek Park District</title> <link rel=\"canonical\" href=\"https://www.saltcreekpd.com/events/\" /> <meta prope"
             },
             {
-              "match": "Craft Fair\"/>\n\t\t\t\t",
-              "context": "S Pirate Boosters\"/> <meta property=\"og:title\" content=\" Craft Fair\"/> <meta property=\"og:description\" content=\"Start Your Holiday"
+              "match": "/events/",
+              "context": "le> <link rel=\"canonical\" href=\"https://www.saltcreekpd.com/events/\" /> <meta property=\"og:locale\" content=\"en_US\" /> <meta p"
             },
             {
-              "match": "Craft Fair\r\nSaturday, November 7th, 9am-4pm\r\nPalatine High School\r\n1111 N. Rohlwing Road\r\nPalatine, IL 60074\r\nOver 150 vendors will be helping support our PHS community on November 7th!\r\nHelp our\"/>\n\t\t\t\t",
-              "context": "ping Here! Presented by the PHS Pirate Boosters 2026 Fall Craft Fair Saturday, November 7th, 9am-4pm Palatine High School 1111 N. Rohlwing Road Palatine, IL 60074 Over 150 vendors will be helping support our PHS community on November 7th! Help our\"/> <meta property=\"og:url\" content=\"https://phspirateboosters.c"
+              "match": "/events\\/",
+              "context": "type\":\"CollectionPage\",\"@id\":\"https:\\/\\/www.saltcreekpd.com\\/events\\/\",\"url\":\"https:\\/\\/www.saltcreekpd.com\\/events\\/\",\"name\":\"Ev"
             },
             {
-              "match": "Craft Fair\" />\n",
-              "context": "pe\" content=\"article\" /> <meta property=\"og:title\" content=\"Craft Fair\" /> <meta property=\"og:url\" content=\"https://phspirateboosters.c"
+              "match": "/events\\/#breadcrumb",
+              "context": "ebsite\"},\"breadcrumb\":{\"@id\":\"https:\\/\\/www.saltcreekpd.com\\/events\\/#breadcrumb\"},\"inLanguage\":\"en-US\"},{\"@type\":\"BreadcrumbList\",\"@id\":\"ht"
             },
             {
-              "match": "Craft Fair",
-              "context": "fair/\" class=\"fusion-bar-highlight\"><span class=\"menu-text\">Craft Fair</span></a></li><li id=\"menu-item-675\" class=\"menu-item me"
+              "match": "ical-links.js' />\n",
+              "context": "d.com/wp-content/plugins/the-events-calendar/build/js/views/ical-links.js' /> <link rel='prefetch' href='https://www.saltcreekpd.com/wp-co"
             },
             {
-              "match": "Craft Fair 2026 Facebook (Facebook Cover)\" data-image-description=\"\" data-image-caption=\"\" data-large-file=\"https://phspirateboosters.com/wp-content/uploads/2026/07/Craft-Fair-2026-Facebook-Facebook-Cover-700x2",
-              "context": "g-size=\"851,315\" data-comments-opened=\"0\" data-image-title=\"Craft Fair 2026 Facebook (Facebook Cover)\" data-image-description=\"\" data-image-caption=\"\" data-large-file=\"https://phspirateboosters.com/wp-content/uploads/2026/07/Craft-Fair-2026-Facebook-Facebook-Cover-700x259.png\" class=\"size-full wp-image-4258 aligncenter\" src=\"htt"
+              "match": "/events-bar.js' />\n",
+              "context": "pd.com/wp-content/plugins/the-events-calendar/build/js/views/events-bar.js' /> <link rel='prefetch' href='https://www.saltcreekpd.com/wp-co"
             },
             {
-              "match": "Craft Fair?",
-              "context": "for purchase. Are you looking to be a part of the 2026 Fall Craft Fair?</p> <p style=\"text-align: center;\">Come and be a part of ou"
+              "match": "/events-bar-inputs.js' />\n",
+              "context": "pd.com/wp-content/plugins/the-events-calendar/build/js/views/events-bar-inputs.js' /> <link rel='prefetch' href='https://www.saltcreekpd.com/wp-co"
             },
             {
-              "match": "Craft Fair this year. We would love to have you.",
-              "context": "p> <p style=\"text-align: center;\">Come and be a part of our Craft Fair this year. We would love to have you.</p> <p style=\"text-align: center;\"><strong><a href=\"https:/"
+              "match": "/events-calendar-pro/build/js/views/week-grid-scroller.js' />\n",
+              "context": "efetch' href='https://www.saltcreekpd.com/wp-content/plugins/events-calendar-pro/build/js/views/week-grid-scroller.js' /> <link rel='prefetch' href='https://www.saltcreekpd.com/wp-co"
             },
             {
-              "match": "Craft Fair without our Volunteers!",
-              "context": "g></a>.</p> <p style=\"text-align: center;\">We can’t run the Craft Fair without our Volunteers!</p> <p style=\"text-align: center;\">Please sign up for a cou"
+              "match": "/events-calendar-pro/build/js/views/week-day-selector.js' />\n",
+              "context": "efetch' href='https://www.saltcreekpd.com/wp-content/plugins/events-calendar-pro/build/js/views/week-day-selector.js' /> <link rel='prefetch' href='https://www.saltcreekpd.com/wp-co"
+            },
+            {
+              "match": "/events-calendar-pro/build/js/views/week-multiday-toggle.js' />\n",
+              "context": "efetch' href='https://www.saltcreekpd.com/wp-content/plugins/events-calendar-pro/build/js/views/week-multiday-toggle.js' /> <link rel='prefetch' href='https://www.saltcreekpd.com/wp-co"
+            },
+            {
+              "match": "/events-calendar-pro/build/js/views/week-event-link.js' />\n",
+              "context": "efetch' href='https://www.saltcreekpd.com/wp-content/plugins/events-calendar-pro/build/js/views/week-event-link.js' /> <link rel='prefetch' href='https://www.saltcreekpd.com/wp-co"
+            },
+            {
+              "match": "/events-calendar-pro/build/js/views/map-events-scroller.js' />\n",
+              "context": "efetch' href='https://www.saltcreekpd.com/wp-content/plugins/events-calendar-pro/build/js/views/map-events-scroller.js' /> <link rel='prefetch' href='https://www.saltcreekpd.com/wp-co"
+            },
+            {
+              "match": "/events-calendar-pro/build/js/views/map-events.js' />\n",
+              "context": "efetch' href='https://www.saltcreekpd.com/wp-content/plugins/events-calendar-pro/build/js/views/map-events.js' /> <link rel='prefetch' href='https://www.saltcreekpd.com/wp-co"
+            },
+            {
+              "match": "/events-calendar-pro/build/js/views/map-provider-google-maps.js' />\n",
+              "context": "efetch' href='https://www.saltcreekpd.com/wp-content/plugins/events-calendar-pro/build/js/views/map-provider-google-maps.js' /> <link rel='prefetch' href='https://www.saltcreekpd.com/wp-co"
+            },
+            {
+              "match": "/events-calendar-pro/build/js/views/map-no-venue-modal.js' />\n",
+              "context": "efetch' href='https://www.saltcreekpd.com/wp-content/plugins/events-calendar-pro/build/js/views/map-no-venue-modal.js' /> <link rel='prefetch' href='https://www.saltcreekpd.com/wp-co"
+            },
+            {
+              "match": "/events-calendar-pro/build/js/views/tooltip-pro.js' />\n",
+              "context": "efetch' href='https://www.saltcreekpd.com/wp-content/plugins/events-calendar-pro/build/js/views/tooltip-pro.js' /> <link rel='prefetch' href='https://www.saltcreekpd.com/wp-co"
+            },
+            {
+              "match": "/events-calendar-pro/build/js/views/multiday-events-pro.js' />\n",
+              "context": "efetch' href='https://www.saltcreekpd.com/wp-content/plugins/events-calendar-pro/build/js/views/multiday-events-pro.js' /> <link rel='prefetch' href='https://www.saltcreekpd.com/wp-co"
+            },
+            {
+              "match": "/events-calendar-pro/build/js/views/toggle-recurrence.js' />\n",
+              "context": "efetch' href='https://www.saltcreekpd.com/wp-content/plugins/events-calendar-pro/build/js/views/toggle-recurrence.js' /> <link rel='prefetch' href='https://www.saltcreekpd.com/wp-co"
+            },
+            {
+              "match": "/events-calendar-pro/build/js/views/datepicker-pro.js' />\n",
+              "context": "efetch' href='https://www.saltcreekpd.com/wp-content/plugins/events-calendar-pro/build/js/views/datepicker-pro.js' /> <link rel='prefetch' href='https://www.saltcreekpd.com/wp-co"
             }
           ]
         }
       }
     },
     {
-      "url": "https://www.cityrm.org/common/modules/iCalendar/iCalendar.aspx?catID=14&feed=calendar",
-      "purpose": "City of Rolling Meadows - CivicEngage Main Calendar iCal export (catID 14 guessed from calendar.aspx's category ids)",
-      "item": 422,
-      "probed_at": "2026-10-31T22:00:22+00:00",
+      "url": "https://www.saltcreekpd.com/events/?ical=1",
+      "purpose": "Salt Creek Rural Park District - The Events Calendar iCal feed, if it has one",
+      "item": 428,
+      "probed_at": "2026-11-01T14:02:44+00:00",
       "status": 200,
-      "final_url": "https://www.cityrm.org/common/modules/iCalendar/iCalendar.aspx?catID=14&feed=calendar",
-      "content_type": "text/calendar; charset=utf-8",
-      "bytes": 1418,
-      "ics_event_count": 2,
-      "pattern_matches": {
-        "BEGIN:VEVENT": [
-          {
-            "match": "BEGIN:VEVENT",
-            "context": "TFROM:-0600 TZOFFSETTO:-0500 END:DAYLIGHT END:VTIMEZONE BEGIN:VEVENT DESCRIPTION: https://www.cityrm.org/calendar.aspx?EID=1841"
-          }
-        ],
-        "SUMMARY:[^\\r\\n]{3,80}": [
-          {
-            "match": "SUMMARY:Holiday Celebration",
-            "context": "choff Road</p> - Rolling Meadows IL 60008 SEQUENCE:0 SUMMARY:Holiday Celebration UID:1841 URL:/common/modules/iCalendar/iCalendar.aspx?fee"
-          },
-          {
-            "match": "SUMMARY:Veterans Dinner",
-            "context": "dian Banquets</p> - Rolling Meadows IL 60008 SEQUENCE:0 SUMMARY:Veterans Dinner UID:1840 URL:/common/modules/iCalendar/iCalendar.aspx?fee"
-          }
-        ]
-      }
-    },
-    {
-      "url": "https://rmparks.org/district-calendar",
-      "purpose": "Rolling Meadows Park District - the calendar page; event links and dates",
-      "item": 422,
-      "probed_at": "2026-10-31T22:00:23+00:00",
-      "status": 200,
-      "final_url": "https://rmparks.org/district-calendar",
+      "final_url": "https://www.saltcreekpd.com/events/?ical=1",
       "content_type": "text/html; charset=UTF-8",
-      "bytes": 35461,
-      "title": "District Calendar",
+      "bytes": 0,
+      "title": "",
       "feed_links": [],
       "calendar_links": [],
       "pattern_matches": {
-        "/district-calendar/events/[a-z0-9-]+": [],
-        "(?i)(?:jan|feb|mar|apr|may|jun|jul|aug|sep|oct|nov|dec)[a-z]*\\.? \\d{1,2}[^<]{0,60}": [
-          {
-            "match": "October 2026",
-            "context": "center\" valign=\"top\" colspan=\"5\"><h2 class=\"calendar-title\">October 2026</h2></td> <td align=\"center\" valign=\"top\" class=\"next\"><a d"
-          }
-        ]
+        "BEGIN:VEVENT": []
       }
     }
   ]
