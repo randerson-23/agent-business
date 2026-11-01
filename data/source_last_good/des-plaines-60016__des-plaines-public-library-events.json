@@ -1,12 +1,6 @@
 {
- "fetched_at": "2026-10-31T22:00:09+00:00",
+ "fetched_at": "2026-11-01T06:05:11+00:00",
  "items": [
-  {
-   "date": "Sat, 31 Oct 2026 09:00:00 +0000",
-   "detail": "Saturday, October 31 2026 9:00am - 5:00pm \n Gubernatorial Election",
-   "title": "Early Voting",
-   "url": "https://desplaines.libnet.info/event/15080696"
-  },
   {
    "date": "Sun, 01 Nov 2026 10:00:00 +0000",
    "detail": "Sunday, November 01 2026 10:00am - 4:00pm \n Gubernatorial Election",
@@ -360,6 +354,12 @@
    "detail": "Thursday, November 12 2026 4:00pm - 5:00pm \n Join us in The Commons to learn basic embroidery stitches!\nFor Teens 7th-12th grade.",
    "title": "Sewcial Club - Learning Embroidery",
    "url": "https://desplaines.libnet.info/event/17306841"
+  },
+  {
+   "date": "Thu, 12 Nov 2026 17:00:00 +0000",
+   "detail": "Thursday, November 12 2026 5:00pm - 6:00pm \n Come in and get to know your teen librarians!",
+   "title": "Book a Teen Librarian",
+   "url": "https://desplaines.libnet.info/event/16339450"
   }
  ],
  "source": "Des Plaines Public Library — Events"

@@ -1,6 +1,6 @@
 # Outreach batch (ROADMAP.md item 401)
 
-Generated 2026-10-31 by `scripts/outreach_batch.py`. At most 8 messages, warm prospects first.
+Generated 2026-11-01 by `scripts/outreach_batch.py`. At most 8 messages, warm prospects first.
 Each block is ready to paste: where to send, subject, body (OUTREACH_TEMPLATES.md section 14a).
 This repository is public: keep your own send notes elsewhere, and never add an individual's address here.
 

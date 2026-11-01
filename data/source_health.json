@@ -9,7 +9,7 @@
     260,
     260,
     260,
-    260
+    237
   ],
   "arlington-heights-60005:Arlington Heights Park District \u2014 Events": [
     9,
@@ -69,7 +69,7 @@
     5,
     5,
     5,
-    5
+    4
   ],
   "des-plaines-60016:Des Plaines Park District \u2014 Events": [
     21,
@@ -77,7 +77,7 @@
     21,
     21,
     21,
-    21,
+    20,
     20,
     20,
     20,
@@ -86,14 +86,14 @@
   "des-plaines-60016:Des Plaines Public Library \u2014 Events": [
     372,
     372,
-    372,
     373,
     381,
     377,
     377,
     377,
     377,
-    377
+    377,
+    376
   ],
   "des-plaines-60016:Des Plaines Theatre \u2014 Events": [
     30,
@@ -131,7 +131,7 @@
     9,
     9,
     9,
-    9,
+    25,
     25,
     25,
     25,
@@ -148,7 +148,7 @@
     128,
     128,
     128,
-    128
+    276
   ],
   "mount-prospect-60056:Mount Prospect School District 57 \u2014 Calendar": [
     59,
@@ -230,11 +230,11 @@
     14
   ],
   "palatine-60067:Palatine Public Library District \u2014 Events": [
+    12,
+    12,
+    12,
+    12,
     11,
-    12,
-    12,
-    12,
-    12,
     11,
     11,
     11,
@@ -254,7 +254,6 @@
     12
   ],
   "palatine-60067:Village of Palatine \u2014 Calendar": [
-    16,
     15,
     15,
     15,
@@ -263,7 +262,8 @@
     15,
     15,
     15,
-    15
+    15,
+    13
   ],
   "palatine-60067:Village of Palatine \u2014 News": [
     2,
@@ -282,7 +282,7 @@
     262,
     262,
     262,
-    262,
+    259,
     259,
     259,
     259,
@@ -299,6 +299,6 @@
     147,
     147,
     147,
-    147
+    145
   ]
 }

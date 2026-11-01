@@ -166,6 +166,35 @@
      grid's auto-fit first and screenshotting the still-stranded card).
      Flexbox distributes flex-grow space per line independently, so a
      lone last-row card genuinely stretches to fill its row instead. */
+  /* ROADMAP.md item 426: from 900px the hero and the content share one column, the overview is a
+     bento grid and each town tile carries its colour bar. Below 900px nothing here applies. */
+  .wk-picks, .season-tile { display: none; }
+  @media (min-width: 900px) {
+    .wrap { max-width: 1120px; }
+    .hero-inner { max-width: 1080px; margin: 0 auto; }  /* the wrap's 1120px minus its 20px padding */
+    .hero h1 { font-size: clamp(44px, 5.4vw, 72px); line-height: 1.04; max-width: 16ch; }
+    .hero .sub { max-width: 62ch; font-size: 18px; }
+    .overview { display: grid; grid-template-columns: repeat(4, 1fr); grid-template-rows: auto auto; gap: 16px; margin-bottom: 18px; }
+    .overview .bento-grid { grid-column: 1 / span 2; grid-row: 1 / span 2; margin: 0; }
+    .overview .bento-weekend { height: 100%; justify-content: flex-start; gap: 10px; }
+    .overview .hub-secondary-links { display: contents; }
+    .overview .hub-secondary-links a, .season-tile {
+      display: flex; flex-direction: column; justify-content: center; gap: 6px;
+      background: var(--card); border: 2px solid var(--border); padding: 22px;
+      font-size: 16px; font-weight: 800; letter-spacing: 0; text-transform: none; color: var(--ink); text-decoration: none;
+    }
+    .overview .hub-secondary-links a:hover, .season-tile:hover { background: color-mix(in srgb, var(--ink) 5%, var(--card)); border-bottom-color: var(--border); }
+    .season-tile { grid-column: 3 / span 2; }
+    .season-tile span { font-size: 14.5px; font-weight: 400; color: var(--muted); }
+    .wk-picks { display: flex; flex-direction: column; gap: 10px; margin-top: 8px; }
+    .wk-pick { display: flex; gap: 12px; align-items: center; }
+    .wk-chip { width: 46px; flex: none; text-align: center; font-weight: 800; }
+    .wk-chip b { display: block; background: var(--town); color: #fff; font-size: 10.5px; letter-spacing: 1px; padding: 2px 0; }
+    .wk-chip i { display: block; background: var(--card); border: 1px solid var(--border); border-top: 0; font-style: normal; font-size: 19px; line-height: 24px; padding: 2px 0 3px; }
+    .wk-text { font-size: 16px; font-weight: 700; line-height: 1.3; }
+    .wk-town { display: block; font-size: 13px; font-weight: 600; color: var(--muted); }
+    .region-grid .region-card { border-top: 6px solid var(--town, var(--border)); }
+  }
   .more-links { margin: 24px 0 8px; font-size: 16px; line-height: 1.6; }
   .more-links h2 { font-size: 20px; margin: 0 0 8px; }
   .more-links p { margin: 0 0 6px; }
@@ -436,36 +465,16 @@
       <a href="about/">About</a>
     </nav>
   </div>
-  <section class="halloween" aria-labelledby="halloween-heading">
-    <svg class="bat b1" viewBox="0 0 64 32" width="46" style="top:14px; right:18%;" aria-hidden="true"><path d="M32 12c-2-6-6-8-10-8 2 3 2 6 0 8-3-2-7-2-10 0 1-3 0-6-4-8-4 4-6 10-6 14 4-3 9-3 13 0 2-3 6-4 9-2 3-3 6-4 8-10 2 6 5 7 8 10 3-2 7-1 9 2 4-3 9-3 13 0 0-4-2-10-6-14-4 2-5 5-4 8-3-2-7-2-10 0-2-2-2-5 0-8-4 0-8 2-10 8z"/></svg>
-    <svg class="bat b2" viewBox="0 0 64 32" width="30" style="top:52px; right:9%;" aria-hidden="true"><path d="M32 12c-2-6-6-8-10-8 2 3 2 6 0 8-3-2-7-2-10 0 1-3 0-6-4-8-4 4-6 10-6 14 4-3 9-3 13 0 2-3 6-4 9-2 3-3 6-4 8-10 2 6 5 7 8 10 3-2 7-1 9 2 4-3 9-3 13 0 0-4-2-10-6-14-4 2-5 5-4 8-3-2-7-2-10 0-2-2-2-5 0-8-4 0-8 2-10 8z"/></svg>
-    <svg class="bat b3" viewBox="0 0 64 32" width="22" style="top:24px; right:4%;" aria-hidden="true"><path d="M32 12c-2-6-6-8-10-8 2 3 2 6 0 8-3-2-7-2-10 0 1-3 0-6-4-8-4 4-6 10-6 14 4-3 9-3 13 0 2-3 6-4 9-2 3-3 6-4 8-10 2 6 5 7 8 10 3-2 7-1 9 2 4-3 9-3 13 0 0-4-2-10-6-14-4 2-5 5-4 8-3-2-7-2-10 0-2-2-2-5 0-8-4 0-8 2-10 8z"/></svg>
-    <div class="halloween-inner">
-      <div class="halloween-art" aria-hidden="true">
-        <svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
-          <circle cx="92" cy="26" r="18" fill="#f7e7b4" opacity=".9"/>
-          <circle cx="98" cy="22" r="16" fill="#1a0f2b" opacity=".55"/>
-          <path d="M60 30c-2-8 2-14 8-16l3 5c-4 2-6 6-5 11z" fill="#4d7c0f"/>
-          <ellipse cx="38" cy="72" rx="24" ry="30" fill="#e8620c"/>
-          <ellipse cx="82" cy="72" rx="24" ry="30" fill="#e8620c"/>
-          <ellipse cx="60" cy="72" rx="26" ry="32" fill="#ff7a00"/>
-          <g class="jack-glow" fill="#ffd166">
-            <path d="M40 62l10-12 8 12z"/>
-            <path d="M62 62l8-12 10 12z"/>
-            <path d="M56 74l4-6 4 6z"/>
-            <path d="M34 82c8 10 44 10 52 0-4 10-12 16-26 16s-22-6-26-16zm12 3v6h6v-5zm16 1v6h6v-6z"/>
-          </g>
-        </svg>
-      </div>
-      <div class="halloween-copy">
-        <div class="halloween-kicker">🎃 Halloween &middot; Saturday, October 31</div>
-        <h2 id="halloween-heading">Trick-or-treat hours for all five towns, <span class="pumpkin-orange">in one place</span></h2>
-        <ul class="halloween-hours">
-<li>Arlington Heights <strong>3–7 PM</strong></li><li>Des Plaines <strong>No set hours</strong></li><li>Mount Prospect <strong>3–8 PM</strong></li><li>Palatine <strong>3–7 PM</strong> <a href="https://www.palatine.il.us/common/modules/iCalendar/iCalendar.aspx?feed=calendar&amp;catID=14" style="color:#ffb347;" title="Village Trick-or-Treating Hours">posted &rarr;</a></li><li>Wheeling <strong>3–7 PM</strong> <a href="https://www.wheelingil.gov/common/modules/iCalendar/iCalendar.aspx?feed=calendar&amp;catID=14" style="color:#ffb347;" title="Halloween Trick or Treat Hours - 3pm to 7pm">posted &rarr;</a></li>        </ul>
-        <a class="halloween-cta" href="trick-or-treat/">See hours, trunk-or-treats &amp; Halloween events &rarr;</a>
-        <span class="halloween-countdown">👻 Tonight!</span>
-      </div>
-    </div>
+  <section class="holiday" aria-labelledby="holiday-heading">
+    <svg class="holiday-lights" viewBox="0 0 1200 22" preserveAspectRatio="xMidYMin slice" aria-hidden="true"><path d="M0 4 Q300 20 600 6 T1200 4" stroke="#0a2a1f" stroke-width="2" fill="none"/><circle cx="20" cy="11" r="5" fill="#ef4444"/><circle cx="60" cy="15" r="5" fill="#f5c542"/><circle cx="100" cy="11" r="5" fill="#34d399"/><circle cx="140" cy="15" r="5" fill="#60a5fa"/><circle cx="180" cy="11" r="5" fill="#ef4444"/><circle cx="220" cy="15" r="5" fill="#f5c542"/><circle cx="260" cy="11" r="5" fill="#34d399"/><circle cx="300" cy="15" r="5" fill="#60a5fa"/><circle cx="340" cy="11" r="5" fill="#ef4444"/><circle cx="380" cy="15" r="5" fill="#f5c542"/><circle cx="420" cy="11" r="5" fill="#34d399"/><circle cx="460" cy="15" r="5" fill="#60a5fa"/><circle cx="500" cy="11" r="5" fill="#ef4444"/><circle cx="540" cy="15" r="5" fill="#f5c542"/><circle cx="580" cy="11" r="5" fill="#34d399"/><circle cx="620" cy="15" r="5" fill="#60a5fa"/><circle cx="660" cy="11" r="5" fill="#ef4444"/><circle cx="700" cy="15" r="5" fill="#f5c542"/><circle cx="740" cy="11" r="5" fill="#34d399"/><circle cx="780" cy="15" r="5" fill="#60a5fa"/><circle cx="820" cy="11" r="5" fill="#ef4444"/><circle cx="860" cy="15" r="5" fill="#f5c542"/><circle cx="900" cy="11" r="5" fill="#34d399"/><circle cx="940" cy="15" r="5" fill="#60a5fa"/><circle cx="980" cy="11" r="5" fill="#ef4444"/><circle cx="1020" cy="15" r="5" fill="#f5c542"/><circle cx="1060" cy="11" r="5" fill="#34d399"/><circle cx="1100" cy="15" r="5" fill="#60a5fa"/><circle cx="1140" cy="11" r="5" fill="#ef4444"/><circle cx="1180" cy="15" r="5" fill="#f5c542"/></svg>
+    <div class="holiday-inner">
+      <div class="holiday-kicker">🎄 The holidays &middot; November &amp; December</div>
+      <h2 id="holiday-heading">Tree lightings &amp; holiday events in all five towns, <span class="gold">in one place</span></h2>
+      <ul class="holiday-dates">
+<li>Arlington Heights <strong>Fri Nov 27</strong></li><li>Des Plaines <strong>date TBA</strong></li><li>Mount Prospect <strong>date TBA</strong></li><li>Palatine <strong>Sat Nov 21</strong></li><li>Wheeling <strong>date TBA</strong></li>      </ul>
+      <a class="holiday-cta" href="holidays/">See tree lightings &amp; holiday events &rarr;</a>
+      <a class="holiday-offer" style="margin-right:14px;" href="santa/">Santa near you &rarr;</a>
+<a class="holiday-offer" href="mailto:hello@withintenmiles.com?subject=Holiday%20guide%20listing">Local business? List your shop in the holiday guide, $20 &rarr;</a>    </div>
   </section>
   <header class="hero">
     <div class="hero-inner">
@@ -478,61 +487,59 @@
         <span class="kicker">Within Ten &middot; Northwest Suburbs</span>
       </div>
       <h1>Everything worth doing, ten miles out.</h1>
-      <div class="sub">Village news, library events and park district programs for 5 towns &mdash; gathered automatically, so your weekend takes five minutes to plan instead of an evening.</div>
+      <div class="sub">From the village, library and park district: events for 5 towns, gathered automatically, so your weekend takes five minutes to plan instead of an evening.</div>
     </div>
   </header>
 
   <div class="wrap">
   <main>
 
+  <div class="overview">
   <div class="bento-grid">
     <a class="bento-tile bento-weekend" href="this-weekend/">
       <span class="bento-kicker">📅 This weekend</span>
-      <h2>Oct 31–Nov 1</h2>
-      <p>17 things happening across every region &rarr;</p>
+      <h2>Nov 1</h2>
+      <p>7 things happening across every region &rarr;</p>
     </a>
   </div>
 
   <div class="hub-secondary-links">
-    <a href="today/">📍 Today (11) &rarr;</a>
-    <a href="free/">🎟️ Free things to do (31) &rarr;</a>
+    <a href="today/">📍 Today (7) &rarr;</a>
+    <a href="free/">🎟️ Free things to do (34) &rarr;</a>
+  </div>
+<a class="season-tile" href="santa/">🎅 Santa near you &amp; holiday events &rarr;<span>Tree lightings, Santa visits and markets, town by town</span></a>
   </div>
 
   <div class="region-grid" id="region-grid">
-    <a class="bento-tile region-card" href="arlington-heights-60005/">
+    <a class="bento-tile region-card" href="arlington-heights-60005/" style="--town:#0f766e">
       <span class="zip">60005 · IL</span>
       <h2>Arlington Heights</h2>
-      <p>From the village, library and park district.</p>
-      <span class="picks"><span class="pick"><span aria-hidden="true">🏠</span> Beginning ESL <span class="pick-when">Sat Oct 31</span></span></span>
+      <span class="picks"><span class="pick-head">Next up</span><span class="pick"><span aria-hidden="true">🧒</span> Kids&#39; Time <span class="pick-when">Mon Nov 2</span></span><span class="pick"><span aria-hidden="true">👶</span> Toddler Time <span class="pick-when">Thu Nov 5</span></span></span>
       <span class="count">See all 1 this weekend &rarr;</span>
     </a>
-    <a class="bento-tile region-card" href="des-plaines-60016/">
+    <a class="bento-tile region-card" href="des-plaines-60016/" style="--town:#6d28d9">
       <span class="zip">60016 · IL</span>
       <h2>Des Plaines</h2>
-      <p>From the village, library and park district.</p>
-      <span class="picks"><span class="pick"><span aria-hidden="true">🏠</span> Early Voting <span class="pick-when">Sat Oct 31 · 9:00 AM</span></span><span class="pick"><span aria-hidden="true">🎨</span> THE VAMPIRE CIRCUS: TIM BURTON meets CIRQUE DU SOLEIL <span class="pick-when">Sat Oct 31 · 8:00 PM</span></span></span>
-      <span class="count">See all 6 this weekend &rarr;</span>
+      <span class="picks"><span class="pick-head">Next up</span><span class="pick"><span aria-hidden="true">👶</span> Toddler Time <span class="pick-when">Tue Nov 3 · 10:00 AM</span></span><span class="pick"><span aria-hidden="true">📚</span> Preschool Storytime <span class="pick-when">Wed Nov 4 · 1:30 PM</span></span></span>
+      <span class="count">See all 3 this weekend &rarr;</span>
     </a>
-    <a class="bento-tile region-card" href="mount-prospect-60056/">
+    <a class="bento-tile region-card" href="mount-prospect-60056/" style="--town:#c2410c">
       <span class="zip">60056 · IL</span>
       <h2>Mount Prospect</h2>
-      <p>From the village, library and park district.</p>
-      <span class="picks"><span class="pick"><span aria-hidden="true">🏠</span> Digitizing VHS Tapes <span class="pick-when">Sat Oct 31 · 10:00 AM</span></span><span class="pick"><span aria-hidden="true">🏠</span> Meet the Board <span class="pick-when">Sat Oct 31 · 2:00 PM</span></span></span>
-      <span class="count">See all 3 this weekend &rarr;</span>
+      <span class="picks"><span class="pick-head">Next up</span><span class="pick"><span aria-hidden="true">📚</span> Family Storytime <span class="pick-when">Mon Nov 2 · 9:30 AM</span></span><span class="pick"><span aria-hidden="true">📚</span> Toddler Storytime <span class="pick-when">Mon Nov 2 · 10:30 AM</span></span></span>
+      <span class="count">See all 1 this weekend &rarr;</span>
     </a>
-    <a class="bento-tile region-card" href="palatine-60067/">
+    <a class="bento-tile region-card" href="palatine-60067/" style="--town:#1d4ed8">
       <span class="zip">60067 · IL</span>
       <h2>Palatine</h2>
-      <p>From the village, library and park district.</p>
-      <span class="picks"><span class="pick"><span aria-hidden="true">🎃</span> Village Trick-or-Treating Hours <span class="pick-when">Sat Oct 31 · 3:00 PM</span></span><span class="pick"><span aria-hidden="true">🏃</span> Trunk-or-Treat at Chicago Bethel Presbyterian Church <span class="pick-when">Sat Oct 31 · 4:00 PM</span></span></span>
-      <span class="count">See all 3 this weekend &rarr;</span>
+      <span class="picks"><span class="pick-head">Next up</span><span class="pick"><span aria-hidden="true">🧒</span> Almost Famous <span class="pick-when">Wed Nov 4 · 6:00 PM</span></span><span class="pick"><span aria-hidden="true">🎨</span> PHS Pirate Boosters Present: Fall Craft Fair <span class="pick-when">Sat Nov 7 · 9:00 AM</span></span></span>
+      <span class="count">See all 1 this weekend &rarr;</span>
     </a>
-    <a class="bento-tile region-card" href="wheeling-60090/">
+    <a class="bento-tile region-card" href="wheeling-60090/" style="--town:#be185d">
       <span class="zip">60090 · IL</span>
       <h2>Wheeling</h2>
-      <p>From the village, library and park district.</p>
-      <span class="picks"><span class="pick"><span aria-hidden="true">🛍️</span> Budget Workshop Meeting <span class="pick-when">Sat Oct 31 · 8:30 AM</span></span><span class="pick"><span aria-hidden="true">🏠</span> Dia de Los Muertos with Mariachi Sirenas <span class="pick-when">Sat Oct 31 · 2:00 PM</span></span></span>
-      <span class="count">See all 4 this weekend &rarr;</span>
+      <span class="picks"><span class="pick-head">Next up</span><span class="pick"><span aria-hidden="true">🧒</span> Stitch Together Meet-Up <span class="pick-when">Mon Nov 2 · 1:00 PM</span></span><span class="pick"><span aria-hidden="true">📚</span> Bookworms Book Club | Grades 4-5 <span class="pick-when">Mon Nov 2 · 4:00 PM</span></span></span>
+      <span class="count">See all 1 this weekend &rarr;</span>
     </a>
   </div>
   <section class="more-links" aria-labelledby="more-links-h">
@@ -591,7 +598,7 @@ document.querySelectorAll(".newsletter-form").forEach(function (f) {
     <a href="issues/">Past issues</a>. <a href="holidays/">Holidays</a>.
     <a href="https://google.com/preferences/source?q=withintenmiles.com" rel="noopener">Add us as a preferred source on Google</a>.
 <a href="trick-or-treat/">Trick-or-treat hours</a>.<a href="leaf-pickup/">Leaf pickup</a>.    <br>See something wrong or missing? <a href="mailto:hello@withintenmiles.com?subject=Correction&amp;body=What%27s%20wrong%20or%20missing%2C%20and%20which%20region%2Fevent%3A%20">Email us</a> — corrections get made the same week.
-    <br>Generated 2026-10-31 22:00 UTC.
+    <br>Generated 2026-11-01 06:05 UTC.
 <br>Visits counted with privacy-first, cookie-free analytics — no personal data collected.  </footer>
   </div>
 

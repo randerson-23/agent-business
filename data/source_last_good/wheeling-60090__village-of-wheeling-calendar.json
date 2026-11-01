@@ -1,18 +1,6 @@
 {
- "fetched_at": "2026-10-31T22:00:09+00:00",
+ "fetched_at": "2026-11-01T06:05:11+00:00",
  "items": [
-  {
-   "date": "20261031T083000",
-   "detail": "https://www.wheelingil.gov/calendar.aspx?EID=2233",
-   "title": "Budget Workshop Meeting",
-   "url": "https://www.wheelingil.gov/common/modules/iCalendar/iCalendar.aspx?feed=calendar&catID=14"
-  },
-  {
-   "date": "20261031T150000",
-   "detail": "https://www.wheelingil.gov/calendar.aspx?EID=2232",
-   "title": "Halloween Trick or Treat Hours - 3pm to 7pm",
-   "url": "https://www.wheelingil.gov/common/modules/iCalendar/iCalendar.aspx?feed=calendar&catID=14"
-  },
   {
    "date": "20261102T183000",
    "detail": "https://www.wheelingil.gov/calendar.aspx?EID=2005",
@@ -359,6 +347,18 @@
    "date": "20270802T183000",
    "detail": "https://www.wheelingil.gov/calendar.aspx?EID=2220",
    "title": "Village Board Meeting",
+   "url": "https://www.wheelingil.gov/common/modules/iCalendar/iCalendar.aspx?feed=calendar&catID=14"
+  },
+  {
+   "date": "20270805T190000",
+   "detail": "https://www.wheelingil.gov/calendar.aspx?EID=2061",
+   "title": "Peer Jury",
+   "url": "https://www.wheelingil.gov/common/modules/iCalendar/iCalendar.aspx?feed=calendar&catID=14"
+  },
+  {
+   "date": "20270811T183000",
+   "detail": "https://www.wheelingil.gov/calendar.aspx?EID=2145",
+   "title": "Plan Commission Meeting",
    "url": "https://www.wheelingil.gov/common/modules/iCalendar/iCalendar.aspx?feed=calendar&catID=14"
   }
  ],

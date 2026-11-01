@@ -2,17 +2,17 @@
   "@context": "https://schema.org",
   "@type": "ItemList",
   "name": "Upcoming events in Arlington Heights — Within Ten",
-  "dateModified": "2026-10-31T22:00:09+00:00",
-  "numberOfItems": 7,
+  "dateModified": "2026-11-01T06:05:11+00:00",
+  "numberOfItems": 20,
   "itemListElement": [
     {
       "@type": "ListItem",
       "position": 1,
       "item": {
         "@type": "Event",
-        "name": "Beginning ESL",
-        "startDate": "2026-10-31",
-        "url": "https://withintenmiles.com/arlington-heights-60005/#ev-beginning-esl-2026-10-31",
+        "name": "Tiny Art Show Artist Sign up",
+        "startDate": "2026-11-01",
+        "url": "https://withintenmiles.com/arlington-heights-60005/#ev-tiny-art-show-artist-sign-up-2026-11-01",
         "eventStatus": "https://schema.org/EventScheduled",
         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
         "location": {
@@ -26,7 +26,7 @@
             "streetAddress": "500 N. Dunton Ave."
           }
         },
-        "sameAs": "https://www.ahml.info/scheduling/reservation/234688",
+        "sameAs": "https://www.ahml.info/scheduling/reservation/234871",
         "organizer": {
           "@type": "Organization",
           "name": "Arlington Heights Memorial Library",
@@ -38,6 +38,126 @@
     {
       "@type": "ListItem",
       "position": 2,
+      "item": {
+        "@type": "Event",
+        "name": "Kids' Time",
+        "startDate": "2026-11-02",
+        "url": "https://withintenmiles.com/arlington-heights-60005/#ev-kids-time-2026-11-02",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Arlington Heights Memorial Library",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Arlington Heights",
+            "addressRegion": "IL",
+            "streetAddress": "500 N. Dunton Ave."
+          }
+        },
+        "sameAs": "https://www.ahml.info/scheduling/reservation/224216",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Arlington Heights Memorial Library",
+          "url": "https://www.ahml.info"
+        },
+        "image": "https://withintenmiles.com/og/arlington-heights-60005.png"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "item": {
+        "@type": "Event",
+        "name": "Senior Center: Film Discussion Circle",
+        "startDate": "2026-11-03",
+        "url": "https://withintenmiles.com/arlington-heights-60005/#ev-senior-center-film-discussion-circle-2026-11-03",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Arlington Heights Memorial Library",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Arlington Heights",
+            "addressRegion": "IL",
+            "streetAddress": "500 N. Dunton Ave."
+          }
+        },
+        "sameAs": "https://www.ahml.info/scheduling/reservation/233854",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Arlington Heights Memorial Library",
+          "url": "https://www.ahml.info"
+        },
+        "image": "https://withintenmiles.com/og/arlington-heights-60005.png"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 4,
+      "item": {
+        "@type": "Event",
+        "name": "Baby Time",
+        "startDate": "2026-11-04",
+        "url": "https://withintenmiles.com/arlington-heights-60005/#ev-baby-time-2026-11-04",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Arlington Heights Memorial Library",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Arlington Heights",
+            "addressRegion": "IL",
+            "streetAddress": "500 N. Dunton Ave."
+          }
+        },
+        "sameAs": "https://www.ahml.info/scheduling/reservation/224136",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Arlington Heights Memorial Library",
+          "url": "https://www.ahml.info"
+        },
+        "image": "https://withintenmiles.com/og/arlington-heights-60005.png"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 5,
+      "item": {
+        "@type": "Event",
+        "name": "Toddler Time",
+        "startDate": "2026-11-05",
+        "url": "https://withintenmiles.com/arlington-heights-60005/#ev-toddler-time-2026-11-05",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Arlington Heights Memorial Library",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Arlington Heights",
+            "addressRegion": "IL",
+            "streetAddress": "500 N. Dunton Ave."
+          }
+        },
+        "sameAs": "https://www.ahml.info/scheduling/reservation/224180",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Arlington Heights Memorial Library",
+          "url": "https://www.ahml.info"
+        },
+        "image": "https://withintenmiles.com/og/arlington-heights-60005.png"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 6,
       "item": {
         "@type": "Event",
         "name": "The Lightning Thief: The Percy Jackson Musical",
@@ -68,7 +188,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 3,
+      "position": 7,
       "item": {
         "@type": "Event",
         "name": "Myths and Mayhem",
@@ -99,7 +219,67 @@
     },
     {
       "@type": "ListItem",
-      "position": 4,
+      "position": 8,
+      "item": {
+        "@type": "Event",
+        "name": "日本語のストーリータイム | Japanese Language Storytime",
+        "startDate": "2026-11-06",
+        "url": "https://withintenmiles.com/arlington-heights-60005/#ev-japanese-language-storytime-2026-11-06",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Arlington Heights Memorial Library",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Arlington Heights",
+            "addressRegion": "IL",
+            "streetAddress": "500 N. Dunton Ave."
+          }
+        },
+        "sameAs": "https://www.ahml.info/scheduling/reservation/227649",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Arlington Heights Memorial Library",
+          "url": "https://www.ahml.info"
+        },
+        "image": "https://withintenmiles.com/og/arlington-heights-60005.png"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 9,
+      "item": {
+        "@type": "Event",
+        "name": "Friends of the Library Fall Sale",
+        "startDate": "2026-11-07",
+        "url": "https://withintenmiles.com/arlington-heights-60005/#ev-friends-of-the-library-fall-sale-2026-11-07",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Arlington Heights Memorial Library",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Arlington Heights",
+            "addressRegion": "IL",
+            "streetAddress": "500 N. Dunton Ave."
+          }
+        },
+        "sameAs": "https://www.ahml.info/scheduling/reservation/235508",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Arlington Heights Memorial Library",
+          "url": "https://www.ahml.info"
+        },
+        "image": "https://withintenmiles.com/og/arlington-heights-60005.png"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 10,
       "item": {
         "@type": "Event",
         "name": "Pumpkin Smash: From Gourd to Garden",
@@ -130,7 +310,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 5,
+      "position": 11,
       "item": {
         "@type": "Event",
         "name": "Recreation Park Community Center Grand Opening",
@@ -160,7 +340,127 @@
     },
     {
       "@type": "ListItem",
-      "position": 6,
+      "position": 12,
+      "item": {
+        "@type": "Event",
+        "name": "FOL Fall Book Sale",
+        "startDate": "2026-11-08",
+        "url": "https://withintenmiles.com/arlington-heights-60005/#ev-fol-fall-book-sale-2026-11-08",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Arlington Heights Memorial Library",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Arlington Heights",
+            "addressRegion": "IL",
+            "streetAddress": "500 N. Dunton Ave."
+          }
+        },
+        "sameAs": "https://www.ahml.info/scheduling/reservation/235512",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Arlington Heights Memorial Library",
+          "url": "https://www.ahml.info"
+        },
+        "image": "https://withintenmiles.com/og/arlington-heights-60005.png"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 13,
+      "item": {
+        "@type": "Event",
+        "name": "Kids' Time",
+        "startDate": "2026-11-09",
+        "url": "https://withintenmiles.com/arlington-heights-60005/#ev-kids-time-2026-11-09",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Arlington Heights Memorial Library",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Arlington Heights",
+            "addressRegion": "IL",
+            "streetAddress": "500 N. Dunton Ave."
+          }
+        },
+        "sameAs": "https://www.ahml.info/scheduling/reservation/224218",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Arlington Heights Memorial Library",
+          "url": "https://www.ahml.info"
+        },
+        "image": "https://withintenmiles.com/og/arlington-heights-60005.png"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 14,
+      "item": {
+        "@type": "Event",
+        "name": "Read to Learn (District 214)",
+        "startDate": "2026-11-10",
+        "url": "https://withintenmiles.com/arlington-heights-60005/#ev-read-to-learn-district-214-2026-11-10",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Arlington Heights Memorial Library",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Arlington Heights",
+            "addressRegion": "IL",
+            "streetAddress": "500 N. Dunton Ave."
+          }
+        },
+        "sameAs": "https://www.ahml.info/scheduling/reservation/194393",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Arlington Heights Memorial Library",
+          "url": "https://www.ahml.info"
+        },
+        "image": "https://withintenmiles.com/og/arlington-heights-60005.png"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 15,
+      "item": {
+        "@type": "Event",
+        "name": "Baby Time",
+        "startDate": "2026-11-11",
+        "url": "https://withintenmiles.com/arlington-heights-60005/#ev-baby-time-2026-11-11",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Arlington Heights Memorial Library",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Arlington Heights",
+            "addressRegion": "IL",
+            "streetAddress": "500 N. Dunton Ave."
+          }
+        },
+        "sameAs": "https://www.ahml.info/scheduling/reservation/224138",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Arlington Heights Memorial Library",
+          "url": "https://www.ahml.info"
+        },
+        "image": "https://withintenmiles.com/og/arlington-heights-60005.png"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 16,
       "item": {
         "@type": "Event",
         "name": "Veterans Day at the Museum",
@@ -190,7 +490,67 @@
     },
     {
       "@type": "ListItem",
-      "position": 7,
+      "position": 17,
+      "item": {
+        "@type": "Event",
+        "name": "Toddler Time",
+        "startDate": "2026-11-12",
+        "url": "https://withintenmiles.com/arlington-heights-60005/#ev-toddler-time-2026-11-12",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Arlington Heights Memorial Library",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Arlington Heights",
+            "addressRegion": "IL",
+            "streetAddress": "500 N. Dunton Ave."
+          }
+        },
+        "sameAs": "https://www.ahml.info/scheduling/reservation/224182",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Arlington Heights Memorial Library",
+          "url": "https://www.ahml.info"
+        },
+        "image": "https://withintenmiles.com/og/arlington-heights-60005.png"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 18,
+      "item": {
+        "@type": "Event",
+        "name": "Senior Center: Travelogue",
+        "startDate": "2026-11-13",
+        "url": "https://withintenmiles.com/arlington-heights-60005/#ev-senior-center-travelogue-2026-11-13",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Arlington Heights Memorial Library",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Arlington Heights",
+            "addressRegion": "IL",
+            "streetAddress": "500 N. Dunton Ave."
+          }
+        },
+        "sameAs": "https://www.ahml.info/scheduling/reservation/233826",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Arlington Heights Memorial Library",
+          "url": "https://www.ahml.info"
+        },
+        "image": "https://withintenmiles.com/og/arlington-heights-60005.png"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 19,
       "item": {
         "@type": "Event",
         "name": "Teen Night - Bikini Bottom Bash",
@@ -216,6 +576,36 @@
         },
         "image": "https://withintenmiles.com/og/arlington-heights-60005.png",
         "description": "Calling all 6th-8th graders – we’re opening the Arlington Ridge Center just for you! Join us for a night of open swim, open gym, pizza, and Spongebob the…"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 20,
+      "item": {
+        "@type": "Event",
+        "name": "Family Time",
+        "startDate": "2026-11-14",
+        "url": "https://withintenmiles.com/arlington-heights-60005/#ev-family-time-2026-11-14",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Arlington Heights Memorial Library",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Arlington Heights",
+            "addressRegion": "IL",
+            "streetAddress": "500 N. Dunton Ave."
+          }
+        },
+        "sameAs": "https://www.ahml.info/scheduling/reservation/224197",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Arlington Heights Memorial Library",
+          "url": "https://www.ahml.info"
+        },
+        "image": "https://withintenmiles.com/og/arlington-heights-60005.png"
       }
     }
   ]

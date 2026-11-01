@@ -2,72 +2,12 @@
   "@context": "https://schema.org",
   "@type": "ItemList",
   "name": "Upcoming events in Palatine — Within Ten",
-  "dateModified": "2026-10-31T22:00:09+00:00",
+  "dateModified": "2026-11-01T06:05:11+00:00",
   "numberOfItems": 22,
   "itemListElement": [
     {
       "@type": "ListItem",
       "position": 1,
-      "item": {
-        "@type": "Event",
-        "name": "Village Trick-or-Treating Hours",
-        "startDate": "2026-10-31T15:00:00-05:00",
-        "url": "https://withintenmiles.com/palatine-60067/#ev-village-trick-or-treating-hours-2026-10-31",
-        "eventStatus": "https://schema.org/EventScheduled",
-        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "location": {
-          "@type": "Place",
-          "name": "Palatine, IL",
-          "address": {
-            "@type": "PostalAddress",
-            "addressCountry": "US",
-            "addressLocality": "Palatine",
-            "addressRegion": "IL"
-          }
-        },
-        "sameAs": "https://www.palatine.il.us/common/modules/iCalendar/iCalendar.aspx?feed=calendar&catID=14",
-        "organizer": {
-          "@type": "Organization",
-          "name": "Village of Palatine",
-          "url": "https://www.palatine.il.us"
-        },
-        "image": "https://withintenmiles.com/og/palatine-60067.png",
-        "description": "https://www.palatine.il.us/calendar.aspx?EID=2176"
-      }
-    },
-    {
-      "@type": "ListItem",
-      "position": 2,
-      "item": {
-        "@type": "Event",
-        "name": "Trunk-or-Treat at Chicago Bethel Presbyterian Church",
-        "startDate": "2026-10-31T16:00:00-05:00",
-        "url": "https://withintenmiles.com/e/2026-10-31-trunk-or-treat-at-chicago-bethel-presbyterian-church/",
-        "eventStatus": "https://schema.org/EventScheduled",
-        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "location": {
-          "@type": "Place",
-          "name": "Palatine, IL",
-          "address": {
-            "@type": "PostalAddress",
-            "addressCountry": "US",
-            "addressLocality": "Palatine",
-            "addressRegion": "IL"
-          }
-        },
-        "sameAs": "https://www.palatine.il.us/common/modules/iCalendar/iCalendar.aspx?feed=calendar&catID=14",
-        "organizer": {
-          "@type": "Organization",
-          "name": "Village of Palatine",
-          "url": "https://www.palatine.il.us"
-        },
-        "image": "https://withintenmiles.com/og/e/2026-10-31-trunk-or-treat-at-chicago-bethel-presbyterian-church.png",
-        "description": "Trunk-or-Treat at Chicago Bethel Presbyterian Church https://ww"
-      }
-    },
-    {
-      "@type": "ListItem",
-      "position": 3,
       "item": {
         "@type": "Event",
         "name": "St. Philip's Episcopal Church Open House",
@@ -97,7 +37,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 4,
+      "position": 2,
       "item": {
         "@type": "Event",
         "name": "E-Learning Day",
@@ -120,7 +60,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 5,
+      "position": 3,
       "item": {
         "@type": "Event",
         "name": "Board of Education Finance Committee Meeting",
@@ -144,7 +84,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 6,
+      "position": 4,
       "item": {
         "@type": "Event",
         "name": "End of 12-Week Grading Period",
@@ -168,7 +108,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 7,
+      "position": 5,
       "item": {
         "@type": "Event",
         "name": "D15 Job Fair",
@@ -192,7 +132,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 8,
+      "position": 6,
       "item": {
         "@type": "Event",
         "name": "Dual Language Parent Advisory Committee",
@@ -215,7 +155,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 9,
+      "position": 7,
       "item": {
         "@type": "Event",
         "name": "Community Resource Center Open House",
@@ -245,7 +185,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 10,
+      "position": 8,
       "item": {
         "@type": "Event",
         "name": "Almost Famous",
@@ -276,7 +216,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 11,
+      "position": 9,
       "item": {
         "@type": "Event",
         "name": "D211 Board of Education Meeting",
@@ -300,7 +240,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 12,
+      "position": 10,
       "item": {
         "@type": "Event",
         "name": "NSSEO: NWSRA",
@@ -324,7 +264,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 13,
+      "position": 11,
       "item": {
         "@type": "Event",
         "name": "PHS Pirate Boosters Present: Fall Craft Fair",
@@ -354,7 +294,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 14,
+      "position": 12,
       "item": {
         "@type": "Event",
         "name": "Palatine Winter Farmers' Market",
@@ -384,7 +324,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 15,
+      "position": 13,
       "item": {
         "@type": "Event",
         "name": "Palatine High School Pirates Boosters Fall Craft Fair",
@@ -414,7 +354,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 16,
+      "position": 14,
       "item": {
         "@type": "Event",
         "name": "Palatine Concert Band - 2026 Fall Concert \"American Originals\"",
@@ -444,7 +384,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 17,
+      "position": 15,
       "item": {
         "@type": "Event",
         "name": "D15 Job Fair",
@@ -468,7 +408,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 18,
+      "position": 16,
       "item": {
         "@type": "Event",
         "name": "The Fifth Element",
@@ -499,7 +439,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 19,
+      "position": 17,
       "item": {
         "@type": "Event",
         "name": "Regular Board of Education Meeting",
@@ -523,7 +463,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 20,
+      "position": 18,
       "item": {
         "@type": "Event",
         "name": "BPAC Workshop & Conference: Ferney Ramírez",
@@ -547,7 +487,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 21,
+      "position": 19,
       "item": {
         "@type": "Event",
         "name": "\"Guys and Dolls SR\"",
@@ -577,12 +517,72 @@
     },
     {
       "@type": "ListItem",
-      "position": 22,
+      "position": 20,
       "item": {
         "@type": "Event",
         "name": "A Doll's House by Henrik Ibsen Adapted by Amy Herzog",
         "startDate": "2026-11-13T19:30:00-06:00",
         "url": "https://withintenmiles.com/palatine-60067/#ev-a-doll-s-house-by-henrik-ibsen-adapted-by-amy-herzog-2026-11-13",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Harper College",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Palatine",
+            "addressRegion": "IL"
+          }
+        },
+        "sameAs": "https://events.harpercollege.edu/event/a-dolls-house-by-henrik-ibsen-adapted-by-amy-herzog",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Harper College",
+          "url": "https://events.harpercollege.edu"
+        },
+        "image": "https://withintenmiles.com/og/palatine-60067.png",
+        "description": "A DOLL'S HOUSE by Henrik Ibsen Adapted by Amy Herzog Ibsen’s celebrated play thrust drama firmly into the modern age when it premiered in 1879. Now, nearly…"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 21,
+      "item": {
+        "@type": "Event",
+        "name": "\"Guys and Dolls SR\"",
+        "startDate": "2026-11-14T14:00:00-06:00",
+        "url": "https://withintenmiles.com/palatine-60067/#ev-guys-and-dolls-sr-2026-11-14",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Palatine, IL",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Palatine",
+            "addressRegion": "IL"
+          }
+        },
+        "sameAs": "https://www.palatine.il.us/common/modules/iCalendar/iCalendar.aspx?feed=calendar&catID=14",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Village of Palatine",
+          "url": "https://www.palatine.il.us"
+        },
+        "image": "https://withintenmiles.com/og/palatine-60067.png",
+        "description": "\"Guys and Dolls SR\" presented by Palatine Park District Theatre"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 22,
+      "item": {
+        "@type": "Event",
+        "name": "A Doll's House by Henrik Ibsen Adapted by Amy Herzog",
+        "startDate": "2026-11-14T19:30:00-06:00",
+        "url": "https://withintenmiles.com/palatine-60067/#ev-a-doll-s-house-by-henrik-ibsen-adapted-by-amy-herzog-2026-11-14",
         "eventStatus": "https://schema.org/EventScheduled",
         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
         "location": {
