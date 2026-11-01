@@ -2242,6 +2242,7 @@ def render_holidays_page(
 HOLIDAY_TITLE = re.compile(
     r"\b(tree[- ]lighting|christmas|holiday|santa|menorah|hanukkah|chanukah|kris kringle|"
     r"winter wonderland|reindeer|small business saturday|cookie walk|gingerbread|snow ?flake|"
+    r"frostival|santa splash|christkindlmarket|lights around|"
     r"craft fair|holiday market|makers[\u2019' ]*s? market|bazaar|vendor fair|holiday boutique)\b",
     re.IGNORECASE,
 )

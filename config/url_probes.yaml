@@ -52,82 +52,6 @@ probes:
   # Palatine dealerships' own pages would have to be found by hand.
   # Round 20 (item 323): each village's leaf-pickup page. Home page first, then the first link whose
   # href mentions leaf. Patterns pull the sentences that carry dates and rules.
-  - url: https://www.vah.com/
-    item: 323
-    purpose: Arlington Heights - public-works leaf-pickup page (current URL, dates, rules)
-    patterns:
-      - '(?i)leaf[^<]{0,160}'
-      - '(?i)(?:oct|nov|dec)[a-z]*\.? \d{1,2}[^<]{0,80}(?:leaf|leaves)'
-    follow: '(?i)leaf|leaves'
-  - url: https://www.desplainesil.gov/
-    item: 323
-    purpose: Des Plaines - public-works leaf-pickup page (current URL, dates, rules)
-    patterns:
-      - '(?i)leaf[^<]{0,160}'
-      - '(?i)(?:oct|nov|dec)[a-z]*\.? \d{1,2}[^<]{0,80}(?:leaf|leaves)'
-    follow: '(?i)leaf|leaves'
-  - url: https://www.mountprospect.org/
-    item: 323
-    purpose: Mount Prospect - public-works leaf-pickup page (current URL, dates, rules)
-    patterns:
-      - '(?i)leaf[^<]{0,160}'
-      - '(?i)(?:oct|nov|dec)[a-z]*\.? \d{1,2}[^<]{0,80}(?:leaf|leaves)'
-    follow: '(?i)leaf|leaves'
-  - url: https://www.palatine.il.us/
-    item: 323
-    purpose: Palatine - public-works leaf-pickup page (current URL, dates, rules)
-    patterns:
-      - '(?i)leaf[^<]{0,160}'
-      - '(?i)(?:oct|nov|dec)[a-z]*\.? \d{1,2}[^<]{0,80}(?:leaf|leaves)'
-    follow: '(?i)leaf|leaves'
-  - url: https://www.wheelingil.gov/332/Refuse-Recycling-Yard-Waste
-    item: 323
-    purpose: Wheeling - yard waste page; does it state leaf-pickup dates and rules?
-    patterns:
-      - '(?i)leaf[^<]{0,160}'
-      - '(?i)leaves[^<]{0,160}'
-    follow: '(?i)leaf|leaves'
-
-  # Answered and removed (see ROADMAP.md items 212 and 215):
-  # - The five 403 sources: bot walls (Access Denied / Cloudflare) from a runner too.
-  # - mppd.org/events/?ical=1: 200 with 0 bytes. Keep the configured webcal feed.
-  # - www.dppl.org home page: links only the library's blog RSS.
-  # - mppd.org/sponsorship/: no dollar amounts in the page; prices aren't published there.
-  # - calendar.dppl.org: Communico; its RSS feed is now the configured source (round 4).
-  # - dppl.libnet.info: not DPPL's host (redirects to Google).
-  # - adc.d211.org: Finalsite calendar 27; its iCal is now the configured source (round 5).
-  # - palatinelibrary.org/events/upcoming: Drupal 11 + LibraryCalendar, but no feed
-  #   path in five rounds of patterns - next step is asking the library (item 152).
-  # - www.ccsd15.net: Finalsite; the 8-ID calendar iCal is now the configured source (round 6).
-  # - www.mountprospect.org/: moved to Revize, reachable (200); news and calendar paths found (round 6).
-  # - mountprospect.org/news/index.php: JavaScript-rendered (Revize); no static article links (round 7).
-  # - palatine.il.us + wheelingil.gov: CivicPlus; news RSS and Main Calendar (catID=14)
-  #   iCal now configured (round 8). Both sites' /rss.aspx list their real feed IDs.
-  # - ilpalatineweb.myvscloud.com (WebTrac): 403 from a runner (round 8, item 223).
-  # - mountprospect.org/calendar/index.php: no calendar data URL; it lists only
-  #   catalogue/news/job/bids JSON (round 8).
-  # - wheelingil.gov Main Calendar iCal: 127 events (round 9); configured.
-  # - mountprospect.org news_list.json: per-article JSON (round 9); configured as revize_news_json.
-  # - sd25.org Finalsite iCal: valid but empty for 361, 349 and 360, together and each
-  #   alone (rounds 5 and 10). D25 publishes nothing by iCal; ask the district (item 152).
-  # - withintenmiles.com: key file, home page, sitemap and robots.txt all correct (round 11).
-  # - vah.com Halloween page: 2026's page; 3-7 p.m. is standing guidance, not an
-  #   ordinance; its Trunk-or-Treat date is still 2025's (round 12, item 218).
-  # - mountprospect.org Calendar Event/22639: 404 (round 12, item 218).
-
-  # Round 17 (item 292): mpdowntown.com/events/ has a "Downtown Trick-or-Treat"
-  # section, but "2026" appeared only in a "2026 Events" heading. Capture the
-  # section's text so the date, and whether it is this year's, can be read.
-  - url: https://mpdowntown.com/events/
-    item: 292
-    purpose: Downtown Mount Prospect - full text of the Downtown Trick-or-Treat section (is it a 2026 date?)
-    patterns:
-      - '(?s)Downtown Trick-or-Treat</h3>.{0,900}'
-      - '(?s)<h2>20\d\d Events</h2>.{0,200}'
-
-  # Round 17 (item 286): Harper's Localist JSON API answered in round 13. These
-  # patterns list the venue IDs, venue names and event types it uses, so the
-  # source can be filtered at the API instead of guessing from titles.
   - url: https://events.harpercollege.edu/api/2/events?days=60&pp=100
     item: 286
     purpose: Harper College (Localist) - venue ids, venue names and event types in use
@@ -171,26 +95,38 @@ probes:
   # the Village's winter market is 1st and 3rd Saturdays, Nov-Apr, 9-noon; the Park District's Merry Makers
   # Market page gives no readable date.
   # Round 23 (item 409): is the fair's own mailbox published on an organiser page?
-  - url: https://www.phspirateboosters.com/
-    item: 409
-    purpose: Palatine HS Pirate Boosters - is a craft-fair contact (a role mailbox) published on the club's own site?
+  - url: https://www.mountprospect.org/
+    item: 427
+    purpose: Village of Mount Prospect - home page; a 2026 tree-lighting notice
     patterns:
-      - '(?i)phscraft@[a-z0-9.-]+'
-      - '(?i)craft fair[^<]{0,200}'
-    follow: '(?i)craft'
-  # Round 24 answered (item 416): the Elk Grove Village and Rolling Meadows library feeds are live.
-  # Round 25 answered (item 422): Elk Grove's park district and village answer 403 on every route
-  # (bot wall); Rolling Meadows Park District has /district-calendar with event pages; the City runs
-  # CivicEngage (calendar.aspx 200). Round 26: do the two new Rolling Meadows sources read?
-  - url: https://www.cityrm.org/common/modules/iCalendar/iCalendar.aspx?catID=14&feed=calendar
-    item: 422
-    purpose: City of Rolling Meadows - CivicEngage Main Calendar iCal export (catID 14 guessed from calendar.aspx's category ids)
+      - '(?i)(?:tree[- ]lighting|christkindlmarket|busse pocket park)[^<]{0,160}'
+    follow: '(?i)tree|lighting|holiday|christkindl'
+  - url: https://mpdowntown.com/events/
+    item: 427
+    purpose: Downtown Mount Prospect - events page; tree lighting or Christkindlmarket dates
+    patterns:
+      - '(?i)(?:tree[- ]lighting|christkindlmarket|busse pocket park)[^<]{0,200}'
+  - url: https://www.wheelingil.gov/
+    item: 427
+    purpose: Village of Wheeling - home page; Lights Around Wheeling or a tree-lighting notice
+    patterns:
+      - '(?i)(?:lights around wheeling|friendship park|tree[- ]lighting)[^<]{0,160}'
+    follow: '(?i)lights|holiday|tree'
+  - url: https://www.desplainesil.gov/
+    item: 427
+    purpose: City of Des Plaines - home page; a 2026 tree-lighting or holiday-event notice (also item 367)
+    patterns:
+      - '(?i)(?:tree[- ]lighting|holiday (?:tree|lights?)|christmas tree)[^<]{0,160}'
+    follow: '(?i)tree|lighting|holiday'
+  - url: https://www.saltcreekpd.com/
+    item: 428
+    purpose: Salt Creek Rural Park District (Palatine) - home page; Breakfast with Santa or other Santa events, any events feed link
+    patterns:
+      - '(?i)santa[^<]{0,160}'
+      - '(?i)(?:ical|\.ics|/events)[^"<]{0,80}'
+    follow: '(?i)santa|events'
+  - url: https://www.saltcreekpd.com/events/?ical=1
+    item: 428
+    purpose: Salt Creek Rural Park District - The Events Calendar iCal feed, if it has one
     patterns:
       - 'BEGIN:VEVENT'
-      - 'SUMMARY:[^\r\n]{3,80}'
-  - url: https://rmparks.org/district-calendar
-    item: 422
-    purpose: Rolling Meadows Park District - the calendar page; event links and dates
-    patterns:
-      - '/district-calendar/events/[a-z0-9-]+'
-      - '(?i)(?:jan|feb|mar|apr|may|jun|jul|aug|sep|oct|nov|dec)[a-z]*\.? \d{1,2}[^<]{0,60}'

@@ -220,7 +220,7 @@ doesn't re-suggest something already shipped.
 
 **Build queue (by deadline; refreshed by the research loop, item 346).**
 Pick from the top unless the owner has flagged something else:
-0. **427, 428** (tree-lighting dates the banner shows as TBA; Salt Creek and Santa keywords, `/santa/` full by Nov 15). **429** (finish the bento homepage).
+0. **427, 428** (read the round-27 probe answers daily; set tree-lighting dates and add Salt Creek when found; `/santa/` full by Nov 15).
 0. **422** (candidate park districts and villages; the town-six decision otherwise rests on library counts).
 0. **416** (steps 1-2 done, measuring until about Nov 13; earlier note: step 1: round-24 probes for the candidates' feeds are in `config/url_probes.yaml` (egvpl.libnet.info, rmlib.libnet.info, elkgroveparks.org found by search; no Rolling Meadows park district calendar found); next: read the answers, then write the `_candidate-*.yaml` shadow files and the counts file). **417** with it.
 3. **390**: promo receipts.
@@ -19094,7 +19094,7 @@ desktop layout.
 
 #### P1 (new)
 
-427. **Watch for the three missing tree-lighting dates and set each one
+427. (probes added, round 27, and probe-urls.yml now runs daily; set each `tree_lighting.date` only from a village's own 2026 page when a probe shows one; keep checking until Nov 20) **Watch for the three missing tree-lighting dates and set each one
      when posted.** Build loop, URL probes plus config:
 
      - **Mount Prospect:** probe the Village's events and news pages and
@@ -19111,7 +19111,7 @@ desktop layout.
      Run the probes **daily until Nov 20**. Never set a date from a
        roundup or from last year's pattern.
 
-428. **Add the Salt Creek Rural Park District, and the Santa event names
+428. (keywords DONE: Frostival, Santa Splash, Christkindlmarket and Lights Around reach the holiday selection, Santa Splash the Santa page; Salt Creek: its site is saltcreekpd.com and round-27 probes read its home page and iCal route; adding it as a Palatine source or Santa entry waits for the answers) **Add the Salt Creek Rural Park District, and the Santa event names
      the site misses.** Build loop:
 
      - Probe the Salt Creek Rural Park District's site for an events
@@ -19130,7 +19130,7 @@ desktop layout.
 
 #### P2 (new)
 
-429. **Finish the bento homepage.** Design/UX, `hub.html.j2`:
+429. ✅ DONE (the big tile holds the three picks, five towns in one row from 1200px and 3 + 2 below it (checked at 768, 900, 1000, 1199 and 1280 px: no row holds a single tile), "See the 1 event this weekend" / "See all N this weekend" / "See what's on in X", guides as five short town rows of chips; tests) **Finish the bento homepage.** Design/UX, `hub.html.j2`:
 
      - Fill the big **"This weekend"** tile with the **three "Don't miss"
        picks** (date chip, emoji, title, town), as item 426 specified. The

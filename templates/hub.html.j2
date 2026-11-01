@@ -199,8 +199,17 @@
     .wk-chip i { display: block; background: var(--card); border: 1px solid var(--border); border-top: 0; font-style: normal; font-size: 19px; line-height: 24px; padding: 2px 0 3px; }
     .wk-text { font-size: 16px; font-weight: 700; line-height: 1.3; }
     .wk-town { display: block; font-size: 13px; font-weight: 600; color: var(--muted); }
-    .region-grid .region-card { border-top: 6px solid var(--town, var(--border)); }
+    main .region-grid .region-card { border-top: 6px solid var(--town, var(--border)); flex: 1 1 calc(33% - 16px); }  /* 3 + 2 below 1200px, the last two stretching */
   }
+  @media (min-width: 1200px) {
+    main .region-grid { flex-wrap: nowrap; }
+    main .region-grid .region-card { flex: 1 1 0; min-width: 0; padding: 20px; }
+  }
+  .guide-rows { display: flex; flex-direction: column; gap: 8px; margin: 0 0 12px; }
+  .guide-row { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 12px; border-left: 6px solid var(--town, var(--border)); padding: 6px 0 6px 12px; }
+  .guide-chips { display: flex; flex-wrap: wrap; gap: 6px; }
+  .guide-chip { font-size: 13.5px; font-weight: 600; text-decoration: none; border: 1px solid var(--border); border-radius: 999px; padding: 2px 10px; color: var(--ink); background: var(--card); }
+  .guide-chip:hover { border-color: var(--accent); color: var(--accent-2-text, #ae1800); }
   .more-links { margin: 24px 0 8px; font-size: 16px; line-height: 1.6; }
   .more-links h2 { font-size: 20px; margin: 0 0 8px; }
   .more-links p { margin: 0 0 6px; }
@@ -546,16 +555,18 @@
       {% elif r.next_up %}
       <span class="picks"><span class="pick-head">Next up</span>{% for p in r.next_up %}<span class="pick"><span aria-hidden="true">{{ p.emoji }}</span> {{ p.title|short(60) }} <span class="pick-when">{{ p.when }}</span></span>{% endfor %}</span>
       {% endif %}
-      <span class="count">{% if r.weekend_count %}See all {{ r.weekend_count }} {{ ((stats.weekend_label if stats else none) or "This weekend")|lower }} &rarr;{% elif r.next_up %}See what's on in {{ r.name }} &rarr;{% else %}Quiet weekend here, see all &rarr;{% endif %}</span>
+      <span class="count">{% if r.next_up %}See what's on in {{ r.name }} &rarr;{% elif r.weekend_picks and r.weekend_count == 1 %}See the 1 event {{ ((stats.weekend_label if stats else none) or "This weekend")|lower }} &rarr;{% elif r.weekend_picks %}See all {{ r.weekend_count }} {{ ((stats.weekend_label if stats else none) or "This weekend")|lower }} &rarr;{% else %}Quiet weekend here, see all &rarr;{% endif %}</span>
     </a>
     {% endfor %}
   </div>
   {# ROADMAP.md item 338: every page within two clicks of the homepage. #}
   <section class="more-links" aria-labelledby="more-links-h">
     <h2 id="more-links-h">Guides &amp; past issues</h2>
+    <div class="guide-rows">
     {% for r in region_summaries if r.guides %}
-    <p><strong>{{ r.name }}:</strong> {% for g in r.guides %}<a href="{{ r.path }}guides/{{ g.slug }}/">{{ g.title }}</a>{% if not loop.last %} · {% endif %}{% endfor %}</p>
+    <div class="guide-row" style="--town:{{ r.color or 'var(--border)' }}"><strong>{{ r.name }}</strong><span class="guide-chips">{% for g in r.guides %}<a class="guide-chip" href="{{ r.path }}guides/{{ g.slug }}/">{{ g.title }}</a>{% endfor %}</span></div>
     {% endfor %}
+    </div>
     <p><a href="holidays/">Holidays</a> · <a href="issues/">Past weekly issues</a></p>
   </section>
   {% else %}

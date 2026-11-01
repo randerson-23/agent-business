@@ -6773,3 +6773,30 @@ def test_desktop_homepage_aligns_hero_and_grid_and_colours_each_town_tile():
     assert ".wrap { max-width: 1120px; }" in html and ".hero-inner { max-width: 1080px; margin: 0 auto; }" in html  # hero text on the content column (1120 minus 20px padding each side)
     assert "Fall Fest" in html and 'href="santa/"' in html and "Today (1)" in html and "Free things to do (3)" in html
     assert "<script" in html and html.count("addEventListener") >= 0  # no new JavaScript was needed for the layout
+
+
+def test_finished_bento_homepage_pluralises_links_compacts_guides_and_never_strands_a_town():
+    # ROADMAP.md item 429.
+    def card(name, weekend_count, picks, next_up=()):
+        return {"name": name, "zip": "1", "state": "IL", "tagline": "t", "path": name.lower() + "/", "event_count": 1, "weekend_picks": picks, "next_up": list(next_up), "weekend_count": weekend_count,
+                "guides": [{"slug": "fall", "title": "Fall Family Guide"}, {"slug": "new", "title": "New to Town"}], "color": "#0f766e"}
+    pk = [{"emoji": "🎃", "title": "Fall Fest", "when": "Sat"}]
+    nu = [{"emoji": "📚", "title": "Storytime", "when": "Mon"}]
+    summaries = [card("Aone", 1, pk), card("Btwo", 3, pk), card("Cthree", 0, [], nu), card("Dfour", 0, []), card("Efive", 2, pk)]
+    stats = {"region_count": 5, "event_count": 5, "weekend_count": 6, "weekend_date_range": "Nov 6-8", "weekend_label": "This weekend", "free_count": 1, "today_count": 1}
+    picks3 = [{"title": f"Pick {i}", "pick_town": "Aone", "pick_color": "#0f766e", "email_dow": "SAT", "email_daynum": str(i), "email_emoji": "🎃"} for i in range(1, 4)]
+    html = build_digest.render_hub_page([], summaries, datetime(2026, 11, 3, 15, tzinfo=timezone.utc), stats=stats, picks=picks3)
+    assert "See the 1 event this weekend" in html and "See all 3 this weekend" in html and "See what's on in Cthree" in html and "Quiet weekend here, see all" in html
+    assert "all 1 " not in html and html.count('class="wk-pick"') == 3
+    assert html.count('class="guide-chip"') == 10 and html.count('class="guide-row"') == 5  # five short rows with chips, not 22 links
+    assert "@media (min-width: 1200px)" in html and "main .region-grid { flex-wrap: nowrap; }" in html  # five towns in one row from 1200px: no stranded tile
+
+
+def test_santa_and_winter_event_names_the_site_used_to_miss_are_selected():
+    # ROADMAP.md item 428.
+    for title in ("Frostival 2026", "Santa Splash at the Pool", "Christkindlmarket", "Lights Around Wheeling"):
+        assert build_digest.HOLIDAY_TITLE.search(title), title
+    assert build_digest.SANTA_TITLE.search("Santa Splash at the Pool")
+    blocks = [{"events": [{"title": "Santa Splash", "url": "https://x/s", "date_iso": "2026-12-06T10:00:00"}, {"title": "Pool Open Swim", "url": "https://x/p", "date_iso": "2026-12-06T10:00:00"}]}]
+    assert [e["title"] for e in build_digest.select_santa_events(blocks, date(2026, 11, 2))] == ["Santa Splash"]
+    assert [e["title"] for e in build_digest.select_holiday_events(blocks, date(2026, 11, 2))] == ["Santa Splash"]
