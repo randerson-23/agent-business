@@ -5957,7 +5957,8 @@ def test_hub_town_cards_show_two_picks_and_the_weekend_count_not_live_updates():
     summaries = [{"name": "Mount Prospect", "zip": "60056", "state": "IL", "tagline": "t", "path": "mount-prospect-60056/", "event_count": 287, "weekend_picks": picks, "weekend_count": 3, "guides": []}]
     html = build_digest.render_hub_page([], summaries, datetime(2026, 10, 20, 15, tzinfo=timezone.utc), stats={"region_count": 1, "event_count": 287, "weekend_count": 3, "weekend_date_range": "Oct 23–25", "free_count": 1, "today_count": 0})
     assert "live update" not in html and "See all 3 this weekend" in html and "Fall Festival" in html
-    assert "From the village, library and park district." in html
+    assert html.count("From the village, library and park district") == 1  # item 426: said once, under the hero, not on every card
+    assert "From the village, library and park district" not in html.split('id="region-grid"')[1]
 
 
 def test_weekend_rolls_to_next_weekend_from_sunday_3_pm():
@@ -6759,3 +6760,16 @@ def test_homepage_town_picks_apply_the_quality_floor_and_skip_notices():
     assert [p["title"] for p in nxt] == ["Pumpkin Run"]
     quiet = build_digest.render_hub_page([], [{"name": "T", "zip": "1", "state": "IL", "tagline": "t", "path": "t/", "event_count": 0, "weekend_picks": [], "next_up": [], "weekend_count": 0, "guides": []}], datetime(2026, 11, 3, 15, tzinfo=timezone.utc), stats={"region_count": 1, "event_count": 0, "weekend_count": 0, "weekend_date_range": "Nov 6-8", "weekend_label": "This weekend", "free_count": 0, "today_count": 0})
     assert "Quiet weekend here, see all" in quiet
+
+
+def test_desktop_homepage_aligns_hero_and_grid_and_colours_each_town_tile():
+    # ROADMAP.md item 426.
+    summaries = [{"name": "Palatine", "zip": "60067", "state": "IL", "tagline": "t", "path": "palatine-60067/", "event_count": 1, "weekend_picks": [], "next_up": [], "weekend_count": 0, "guides": [], "color": "#0f766e"},
+                 {"name": "Wheeling", "zip": "60090", "state": "IL", "tagline": "t", "path": "wheeling-60090/", "event_count": 1, "weekend_picks": [], "next_up": [], "weekend_count": 0, "guides": [], "color": "#6d28d9"}]
+    picks = [{"title": "Fall Fest", "pick_town": "Palatine", "pick_color": "#0f766e", "email_dow": "SAT", "email_daynum": "7", "email_emoji": "🎃"}]
+    html = build_digest.render_hub_page([], summaries, datetime(2026, 11, 3, 15, tzinfo=timezone.utc), stats={"region_count": 2, "event_count": 2, "weekend_count": 1, "weekend_date_range": "Nov 6-8", "weekend_label": "This weekend", "free_count": 3, "today_count": 1}, picks=picks, holiday={"towns": [], "offer": False})
+    assert 'style="--town:#0f766e"' in html and 'style="--town:#6d28d9"' in html  # each town tile carries its colour
+    assert "min-width: 900px" in html and "border-top: 6px solid var(--town" in html
+    assert ".wrap { max-width: 1120px; }" in html and ".hero-inner { max-width: 1080px; margin: 0 auto; }" in html  # hero text on the content column (1120 minus 20px padding each side)
+    assert "Fall Fest" in html and 'href="santa/"' in html and "Today (1)" in html and "Free things to do (3)" in html
+    assert "<script" in html and html.count("addEventListener") >= 0  # no new JavaScript was needed for the layout

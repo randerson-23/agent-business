@@ -3737,6 +3737,7 @@ def render_hub_page(
     halloween: dict | None = None,
     holiday: dict | None = None,
     winter: dict | None = None,
+    picks: list[dict] | None = None,
 ) -> str:
     env = get_template_env()
     template = env.get_template("hub.html.j2")
@@ -3754,6 +3755,7 @@ def render_hub_page(
         halloween=halloween,
         holiday=holiday,
         winter=winter,
+        picks=picks or [],
         contact_email=contact_email,
     )
 
@@ -7551,6 +7553,7 @@ def main() -> None:
         region_summaries.append(
             {
                 **region,
+                "color": EMAIL_TOWN_COLORS[len(region_summaries) % len(EMAIL_TOWN_COLORS)][0],  # item 426: the email's town colour
                 "event_count": event_count,
                 "weekend_picks": hub_town_picks(weekend_events),
                 "next_up": [] if hub_town_picks(weekend_events) else hub_next_up(blocks, local_today),
@@ -7580,6 +7583,7 @@ def main() -> None:
         halloween=build_halloween_banner(trick_or_treat_entries, now),
         holiday=build_holiday_banner(holidays_entries, now),
         winter=build_winter_banner(region_summaries, now),
+        picks=build_join_picks(combined_email_sections, limit=3),
     )
     (OUTPUT_DIR / "index.html").write_text(hub_html, encoding="utf-8")
     logger.info("Wrote %s", OUTPUT_DIR / "index.html")

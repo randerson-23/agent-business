@@ -220,7 +220,6 @@ doesn't re-suggest something already shipped.
 
 **Build queue (by deadline; refreshed by the research loop, item 346).**
 Pick from the top unless the owner has flagged something else:
-0. **425** (homepage town picks show board meetings and ESL; quality floor). **426** (desktop homepage: aligned, bento, town colours).
 0. **422** (candidate park districts and villages; the town-six decision otherwise rests on library counts).
 0. **416** (steps 1-2 done, measuring until about Nov 13; earlier note: step 1: round-24 probes for the candidates' feeds are in `config/url_probes.yaml` (egvpl.libnet.info, rmlib.libnet.info, elkgroveparks.org found by search; no Rolling Meadows park district calendar found); next: read the answers, then write the `_candidate-*.yaml` shadow files and the counts file). **417** with it.
 3. **390**: promo receipts.
@@ -19034,7 +19033,7 @@ whether the site looks like a real business.
 
 #### P1 (new)
 
-425. **Apply the picks quality floor to the homepage town cards.** Build
+425. ✅ DONE (`hub_town_picks` and `hub_next_up` use the pick floor plus notice types (meetings, board of, committee, hours notices, closures, collection schedules); a town with nothing shows "Next up", else "Quiet weekend here, see all"; "Board Game Night" still qualifies; tests; also fixed five trick-or-treat tests that used today's date and broke on Nov 1) **Apply the picks quality floor to the homepage town cards.** Build
      loop, `hub_town_picks()`: use item 380's family-score floor and
      exclusions, and add **notice types** (hours, closures, collection
      schedules, *"meeting"*, *"workshop meeting"*, *"board"*). When a town
@@ -19044,7 +19043,7 @@ whether the site looks like a real business.
      Meeting"*, *"Beginning ESL"* and an hours notice never appear as town
      picks.
 
-426. **A desktop homepage that matches the brand: aligned, bento,
+426. ✅ DONE (CSS plus markup, no JavaScript: from 900px the hero sits on the same 1120px column, the headline is larger, the overview is a bento grid (big "This weekend" tile holding the three email-style picks, Today and Free tiles, a season tile for Santa/winter/Halloween) and each town tile has its email-colour bar; the repeated "From the village, library and park district" line is said once under the hero; mobile checked at 390px and 768px and unchanged, no horizontal overflow at 390, 768 or 1280; the picks tile was empty in the sandbox because no events were fetched, so it is checked by test) **A desktop homepage that matches the brand: aligned, bento,
      colour-coded.** Design/UX, `hub.html.j2` CSS only, with the mobile
      stack unchanged:
 
