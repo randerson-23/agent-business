@@ -283,6 +283,75 @@
   "url": "https://www.palatine.il.us/common/modules/iCalendar/iCalendar.aspx?feed=calendar&catID=14",
   "venue": null
  },
+ "e/2026-11-06-friday-night-films/": {
+  "date_iso": "2026-11-06T18:30:00",
+  "detail": "Friday, November 06 2026 6:30pm - 8:15pm \n A free screening of the independent film The Invite.",
+  "detail_long": "A free screening of the independent film The Invite.",
+  "first_seen": "2026-11-01",
+  "ics_href": "data:text/calendar;charset=utf-8,BEGIN%3AVCALENDAR%0D%0AVERSION%3A2.0%0D%0APRODID%3A-//Within%20Ten//EN%0D%0ABEGIN%3AVEVENT%0D%0ADTSTART%3A20261106T183000%0D%0ADTEND%3A20261106T193000%0D%0ASUMMARY%3AFriday%20Night%20Films%0D%0ADESCRIPTION%3AFriday%5C%2C%20November%2006%202026%206%3A30pm%20-%208%3A15pm%20%5Cn%20A%20free%20screening%20of%20the%20independent%20film%20The%20Invite.%0D%0ALOCATION%3ADes%20Plaines%20Public%20Library%5C%2C%201501%20Ellinwood%20Street%5C%2C%20Des%20Plaines%0D%0AURL%3Ahttps%3A//desplaines.libnet.info/event/16020452%0D%0AEND%3AVEVENT%0D%0AEND%3AVCALENDAR%0D%0A",
+  "path": "e/2026-11-06-friday-night-films/",
+  "postal_code": "60016",
+  "region_id": "des-plaines-60016",
+  "region_url": "https://withintenmiles.com/des-plaines-60016/",
+  "source": "Des Plaines Public Library — Events",
+  "sponsored_by": null,
+  "state": "IL",
+  "street_address": "1501 Ellinwood Street",
+  "tags": [
+   "free",
+   "indoor"
+  ],
+  "title": "Friday Night Films",
+  "town": "Des Plaines",
+  "url": "https://desplaines.libnet.info/event/16020452",
+  "venue": "Des Plaines Public Library"
+ },
+ "e/2026-11-07-diwali-party/": {
+  "date_iso": "2026-11-07T10:00:00",
+  "detail": "Saturday, November 07 2026 10:00am - 11:30am \n Let's celebrate the joyful Festival of Lights with vibrant performances, crafts, and activities. Whether Diwali…",
+  "detail_long": "Let's celebrate the joyful Festival of Lights with vibrant performances, crafts, and activities. Whether Diwali is part of your family tradition or a new experience, all are welcome!",
+  "first_seen": "2026-11-01",
+  "ics_href": "data:text/calendar;charset=utf-8,BEGIN%3AVCALENDAR%0D%0AVERSION%3A2.0%0D%0APRODID%3A-//Within%20Ten//EN%0D%0ABEGIN%3AVEVENT%0D%0ADTSTART%3A20261107T100000%0D%0ADTEND%3A20261107T110000%0D%0ASUMMARY%3ADiwali%20Party%0D%0ADESCRIPTION%3ASaturday%5C%2C%20November%2007%202026%2010%3A00am%20-%2011%3A30am%20%5Cn%20Let%27s%20celebrate%20the%20joyful%20Festival%20of%20Lights%20with%20vibrant%20performances%5C%2C%20crafts%5C%2C%20and%20activities.%20Whether%20Diwali%E2%80%A6%0D%0ALOCATION%3AMount%20Prospect%20Public%20Library%5C%2C%20125%20S%20Emerson%20St%5C%2C%20Mount%20Prospect%0D%0AURL%3Ahttps%3A//mppl.libnet.info/event/14808871%0D%0AEND%3AVEVENT%0D%0AEND%3AVCALENDAR%0D%0A",
+  "path": "e/2026-11-07-diwali-party/",
+  "postal_code": null,
+  "region_id": "mount-prospect-60056",
+  "region_url": "https://withintenmiles.com/mount-prospect-60056/",
+  "source": "Mount Prospect Public Library — Events",
+  "sponsored_by": null,
+  "state": "IL",
+  "street_address": "125 S Emerson St",
+  "tags": [
+   "indoor",
+   "kid_friendly"
+  ],
+  "title": "Diwali Party",
+  "town": "Mount Prospect",
+  "url": "https://mppl.libnet.info/event/14808871",
+  "venue": "Mount Prospect Public Library"
+ },
+ "e/2026-11-07-pumpkin-smash-from-gourd-to-garden/": {
+  "date_iso": "2026-11-07T09:00:00",
+  "detail": "Pumpkins are 90% water, which makes them bad for landfills but great for soil and gardens! Bring your post-Halloween jack-o-lanterns, gourds, and pumpkins to…",
+  "detail_long": "Pumpkins are 90% water, which makes them bad for landfills but great for soil and gardens! Bring your post-Halloween jack-o-lanterns, gourds, and pumpkins to Frontier Park on Saturday, November 7, from 9AM-12PM, and help the Park District’s EnviroGroup smash and pitch them into compostable material. FREE EVENT!",
+  "first_seen": "2026-11-01",
+  "ics_href": "data:text/calendar;charset=utf-8,BEGIN%3AVCALENDAR%0D%0AVERSION%3A2.0%0D%0APRODID%3A-//Within%20Ten//EN%0D%0ABEGIN%3AVEVENT%0D%0ADTSTART%3A20261107T090000%0D%0ADTEND%3A20261107T100000%0D%0ASUMMARY%3APumpkin%20Smash%3A%20From%20Gourd%20to%20Garden%0D%0ADESCRIPTION%3APumpkins%20are%2090%25%20water%5C%2C%20which%20makes%20them%20bad%20for%20landfills%20but%20great%20for%20soil%20and%20gardens%21%20Bring%20your%20post-Halloween%20jack-o-lanterns%5C%2C%20gourds%5C%2C%20and%20pumpkins%20to%E2%80%A6%0D%0AURL%3Ahttps%3A//www.ahpd.org/event/pumpkin-smash-2026/%0D%0AEND%3AVEVENT%0D%0AEND%3AVCALENDAR%0D%0A",
+  "path": "e/2026-11-07-pumpkin-smash-from-gourd-to-garden/",
+  "postal_code": null,
+  "region_id": "arlington-heights-60005",
+  "region_url": "https://withintenmiles.com/arlington-heights-60005/",
+  "source": "Arlington Heights Park District — Events",
+  "sponsored_by": null,
+  "state": "IL",
+  "street_address": null,
+  "tags": [
+   "free",
+   "outdoor"
+  ],
+  "title": "Pumpkin Smash: From Gourd to Garden",
+  "town": "Arlington Heights",
+  "url": "https://www.ahpd.org/event/pumpkin-smash-2026/",
+  "venue": null
+ },
  "e/2026-12-05-family-photos-with-santa/": {
   "date_iso": "2026-12-05T10:00:00",
   "detail": "Family Photos with Santa Bring your camera and smiles to your private photo session with Santa. Our atrium is a glorious wonderland and a festive backdrop for…",

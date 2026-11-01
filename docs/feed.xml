@@ -3,8 +3,8 @@
 <channel>
   <title>Within Ten — Upcoming Local Events</title>
   <link>https://withintenmiles.com/</link>
-  <description>Upcoming events across every Within Ten region, soonest first - aggregated automatically from village, library, park district and school-district calendars. This build reached 23 of 29 configured sources.</description>
-  <lastBuildDate>Sun, 01 Nov 2026 14:02:30 +0000</lastBuildDate>
+  <description>Upcoming events across every Within Ten region, soonest first - aggregated automatically from village, library, park district and school-district calendars. This build reached 24 of 30 configured sources.</description>
+  <lastBuildDate>Sun, 01 Nov 2026 21:59:17 +0000</lastBuildDate>
   <item>
     <title>Arlington Heights: Tiny Art Show Artist Sign up</title>
     <link>https://withintenmiles.com/arlington-heights-60005/#ev-tiny-art-show-artist-sign-up-2026-11-01</link>
@@ -56,14 +56,6 @@
  Create a Gmail account, learn how to use and navigate Gmail. Search and organize your inbox, create labels, and… Official listing: https://desplaines.libnet.info/event/17571929</description>
     <pubDate>Sun, 01 Nov 2026 14:30:00 +0000</pubDate>
     <source url="https://desplaines.libnet.info/event/17571929">Des Plaines Public Library — Events</source>
-  </item>
-  <item>
-    <title>Des Plaines: SINCERELY SINATRA BIG BAND SHOW starring NICK PONTARELLI with SPECIAL GUEST CLOSE TO KAREN - A SALUTE TO KAREN CARPENTER with GINA KNIGHT</title>
-    <link>https://withintenmiles.com/des-plaines-60016/#ev-sincerely-sinatra-big-band-show-starring-nick-pontarelli-wit-2026-11-01</link>
-    <guid isPermaLink="true">https://withintenmiles.com/des-plaines-60016/#ev-sincerely-sinatra-big-band-show-starring-nick-pontarelli-wit-2026-11-01</guid>
-    <description>Crooner Nick Pontarelli, with a 7-piece orchestra, is bringing his show to the Des Plaines stage. Nick is a crowd-favorite in our Club Arcada Speakeasy. Don’t… Official listing: https://desplainestheatre.com/event/sincerely-sinatra-big-band-show-starring-nick-pontarelli-with-special-guest-close-to-karen-a-salute-to-karen-carpenter-with-gina-knight/</description>
-    <pubDate>Sun, 01 Nov 2026 15:00:00 +0000</pubDate>
-    <source url="https://desplainestheatre.com/event/sincerely-sinatra-big-band-show-starring-nick-pontarelli-with-special-guest-close-to-karen-a-salute-to-karen-carpenter-with-gina-knight/">Des Plaines Theatre — Events</source>
   </item>
   <item>
     <title>Arlington Heights: Kids' Time</title>
@@ -450,6 +442,14 @@ Complete and return a volunteer craft kit by the end of the month to count towar
  Des Plaines Chamber of Commerce Job Fair- Private Reception from 3:00 p.m. - 4:00 p.m. for Military veterans,… Official listing: https://desplaines.libnet.info/event/15064381</description>
     <pubDate>Wed, 04 Nov 2026 15:00:00 +0000</pubDate>
     <source url="https://desplaines.libnet.info/event/15064381">Des Plaines Public Library — Events</source>
+  </item>
+  <item>
+    <title>Palatine: Community Resource Center Open House</title>
+    <link>https://withintenmiles.com/palatine-60067/#ev-community-resource-center-open-house-2026-11-04</link>
+    <guid isPermaLink="true">https://withintenmiles.com/palatine-60067/#ev-community-resource-center-open-house-2026-11-04</guid>
+    <description>We welcome you to learn more about the Community Resource Cente Official listing: https://www.palatine.il.us/common/modules/iCalendar/iCalendar.aspx?feed=calendar&amp;catID=14</description>
+    <pubDate>Wed, 04 Nov 2026 16:00:00 +0000</pubDate>
+    <source url="https://www.palatine.il.us/common/modules/iCalendar/iCalendar.aspx?feed=calendar&amp;catID=14">Village of Palatine — Calendar</source>
   </item>
 </channel>
 </rss>
