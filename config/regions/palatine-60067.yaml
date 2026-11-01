@@ -145,6 +145,16 @@ sources:
     section: "Park District Events"
     enabled: true
 
+  - name: "Salt Creek Rural Park District — Events"
+    type: ics
+    # ROADMAP.md item 428: Salt Creek (Twin Lakes, Palatine) runs The Events Calendar Pro and
+    # advertises this iCal route in its page head (URL-probe round 27, 2026-11-01: the home page
+    # links it and the route answers 200; it listed no events that day, so this source may be
+    # quiet until the district posts programs such as Breakfast with Santa).
+    url: "https://www.saltcreekpd.com/events/?ical=1"
+    section: "Park District Events"
+    enabled: true
+
   - name: "Community Consolidated School District 15 — Calendar"
     type: ics
     # ROADMAP.md items 198/215: the Blackboard icalfeed.ashx?MIID=5415 feed

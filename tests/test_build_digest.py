@@ -6800,3 +6800,10 @@ def test_santa_and_winter_event_names_the_site_used_to_miss_are_selected():
     blocks = [{"events": [{"title": "Santa Splash", "url": "https://x/s", "date_iso": "2026-12-06T10:00:00"}, {"title": "Pool Open Swim", "url": "https://x/p", "date_iso": "2026-12-06T10:00:00"}]}]
     assert [e["title"] for e in build_digest.select_santa_events(blocks, date(2026, 11, 2))] == ["Santa Splash"]
     assert [e["title"] for e in build_digest.select_holiday_events(blocks, date(2026, 11, 2))] == ["Santa Splash"]
+
+
+def test_salt_creek_is_a_palatine_source_so_its_events_carry_palatines_chip():
+    # ROADMAP.md item 428.
+    cfg = next(c for c in build_digest.load_regions() if c["region"]["id"] == "palatine-60067")
+    src = next(s for s in cfg["sources"] if "Salt Creek" in s["name"])
+    assert src["type"] == "ics" and src["url"] == "https://www.saltcreekpd.com/events/?ical=1" and src.get("enabled", True)
