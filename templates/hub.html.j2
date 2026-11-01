@@ -172,6 +172,35 @@
      grid's auto-fit first and screenshotting the still-stranded card).
      Flexbox distributes flex-grow space per line independently, so a
      lone last-row card genuinely stretches to fill its row instead. */
+  /* ROADMAP.md item 426: from 900px the hero and the content share one column, the overview is a
+     bento grid and each town tile carries its colour bar. Below 900px nothing here applies. */
+  .wk-picks, .season-tile { display: none; }
+  @media (min-width: 900px) {
+    .wrap { max-width: 1120px; }
+    .hero-inner { max-width: 1080px; margin: 0 auto; }  /* the wrap's 1120px minus its 20px padding */
+    .hero h1 { font-size: clamp(44px, 5.4vw, 72px); line-height: 1.04; max-width: 16ch; }
+    .hero .sub { max-width: 62ch; font-size: 18px; }
+    .overview { display: grid; grid-template-columns: repeat(4, 1fr); grid-template-rows: auto auto; gap: 16px; margin-bottom: 18px; }
+    .overview .bento-grid { grid-column: 1 / span 2; grid-row: 1 / span 2; margin: 0; }
+    .overview .bento-weekend { height: 100%; justify-content: flex-start; gap: 10px; }
+    .overview .hub-secondary-links { display: contents; }
+    .overview .hub-secondary-links a, .season-tile {
+      display: flex; flex-direction: column; justify-content: center; gap: 6px;
+      background: var(--card); border: 2px solid var(--border); padding: 22px;
+      font-size: 16px; font-weight: 800; letter-spacing: 0; text-transform: none; color: var(--ink); text-decoration: none;
+    }
+    .overview .hub-secondary-links a:hover, .season-tile:hover { background: color-mix(in srgb, var(--ink) 5%, var(--card)); border-bottom-color: var(--border); }
+    .season-tile { grid-column: 3 / span 2; }
+    .season-tile span { font-size: 14.5px; font-weight: 400; color: var(--muted); }
+    .wk-picks { display: flex; flex-direction: column; gap: 10px; margin-top: 8px; }
+    .wk-pick { display: flex; gap: 12px; align-items: center; }
+    .wk-chip { width: 46px; flex: none; text-align: center; font-weight: 800; }
+    .wk-chip b { display: block; background: var(--town); color: #fff; font-size: 10.5px; letter-spacing: 1px; padding: 2px 0; }
+    .wk-chip i { display: block; background: var(--card); border: 1px solid var(--border); border-top: 0; font-style: normal; font-size: 19px; line-height: 24px; padding: 2px 0 3px; }
+    .wk-text { font-size: 16px; font-weight: 700; line-height: 1.3; }
+    .wk-town { display: block; font-size: 13px; font-weight: 600; color: var(--muted); }
+    .region-grid .region-card { border-top: 6px solid var(--town, var(--border)); }
+  }
   .more-links { margin: 24px 0 8px; font-size: 16px; line-height: 1.6; }
   .more-links h2 { font-size: 20px; margin: 0 0 8px; }
   .more-links p { margin: 0 0 6px; }
@@ -463,7 +492,7 @@
         <span class="kicker">Within Ten &middot; Northwest Suburbs</span>
       </div>
       <h1>Everything worth doing, ten miles out.</h1>
-      <div class="sub">Village news, library events and park district programs for {{ region_summaries|length }} towns &mdash; gathered automatically, so your weekend takes five minutes to plan instead of an evening.</div>
+      <div class="sub">From the village, library and park district: events for {{ region_summaries|length }} towns, gathered automatically, so your weekend takes five minutes to plan instead of an evening.</div>
     </div>
   </header>
 
@@ -471,11 +500,15 @@
   <main>
   {% if region_summaries %}
 
+  <div class="overview">
   <div class="bento-grid">
     <a class="bento-tile bento-weekend" href="this-weekend/">
       <span class="bento-kicker">📅 {{ stats.weekend_label or "This weekend" }}</span>
       <h2>{{ stats.weekend_date_range }}</h2>
       <p>{{ stats.weekend_count }} thing{{ 's' if stats.weekend_count != 1 else '' }} happening across every region &rarr;</p>
+      {% if picks %}
+      <span class="wk-picks" aria-label="This weekend's picks">{% for p in picks %}<span class="wk-pick" style="--town:{{ p.pick_color }}"><span class="wk-chip"><b>{{ p.email_dow or "WKND" }}</b><i>{{ p.email_daynum or p.email_emoji }}</i></span><span class="wk-text"><span aria-hidden="true">{{ p.email_emoji }}</span> {{ p.title|short(70) }}<span class="wk-town">{{ p.pick_town }}</span></span></span>{% endfor %}</span>
+      {% endif %}
     </a>
   </div>
 
@@ -487,6 +520,10 @@
   <div class="hub-secondary-links">
     <a href="today/">📍 Today ({{ stats.today_count }}) &rarr;</a>
     <a href="free/">🎟️ Free things to do ({{ stats.free_count }}) &rarr;</a>
+  </div>
+  {% if holiday %}<a class="season-tile" href="santa/">🎅 Santa near you &amp; holiday events &rarr;<span>Tree lightings, Santa visits and markets, town by town</span></a>
+  {% elif winter %}<a class="season-tile" href="holidays/">❄️ Winter break &rarr;<span>What's on while school is out</span></a>
+  {% elif halloween %}<a class="season-tile" href="trick-or-treat/">🎃 Trick-or-treat hours &rarr;<span>Hours and trunk-or-treats, town by town</span></a>{% endif %}
   </div>
 
   {# A separate flex-wrap grid, not part of .bento-grid above: with CSS
@@ -501,16 +538,15 @@
        fill its row instead (ROADMAP.md Phase 11 #56). #}
   <div class="region-grid" id="region-grid">
     {% for r in region_summaries %}
-    <a class="bento-tile region-card" href="{{ r.path }}">
+    <a class="bento-tile region-card" href="{{ r.path }}" style="--town:{{ r.color or 'var(--border)' }}">
       <span class="zip">{{ r.zip }} · {{ r.state }}</span>
       <h2>{{ r.name }}</h2>
-      <p>From the village, library and park district.</p>
       {% if r.weekend_picks %}
       <span class="picks">{% for p in r.weekend_picks %}<span class="pick"><span aria-hidden="true">{{ p.emoji }}</span> {{ p.title|short(60) }} <span class="pick-when">{{ p.when }}</span></span>{% endfor %}</span>
       {% elif r.next_up %}
       <span class="picks"><span class="pick-head">Next up</span>{% for p in r.next_up %}<span class="pick"><span aria-hidden="true">{{ p.emoji }}</span> {{ p.title|short(60) }} <span class="pick-when">{{ p.when }}</span></span>{% endfor %}</span>
       {% endif %}
-      <span class="count">{% if r.weekend_count %}See all {{ r.weekend_count }} {{ ((stats.weekend_label if stats else none) or "This weekend")|lower }} &rarr;{% elif r.next_up %}See what's on in {{ r.name }} &rarr;{% else %}Nothing dated in the next two weeks &rarr;{% endif %}</span>
+      <span class="count">{% if r.weekend_count %}See all {{ r.weekend_count }} {{ ((stats.weekend_label if stats else none) or "This weekend")|lower }} &rarr;{% elif r.next_up %}See what's on in {{ r.name }} &rarr;{% else %}Quiet weekend here, see all &rarr;{% endif %}</span>
     </a>
     {% endfor %}
   </div>

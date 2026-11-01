@@ -2865,7 +2865,7 @@ def render_sponsor_page(
     )
 
 
-_NOT_A_NEIGHBOUR = re.compile(r"trick[- ]or[- ]treat|leaf|hours|closed|closure|no school|holiday schedule", re.IGNORECASE)
+_NOT_A_NEIGHBOUR = re.compile(r"trick[- ]or[- ]treat|leaf|hours|closed|closure|no school|holiday schedule|meeting|board", re.IGNORECASE)
 
 
 def render_sponsor_preview(sections: list[dict], payment_links: dict | None, contact_email: str | None, today: date | None = None, founding_promos_used: int = 0) -> str:
@@ -3678,6 +3678,24 @@ def build_holiday_banner(entries: list[dict], now: datetime) -> dict | None:
     return {"towns": towns, "offer": today <= date(today.year, 11, 15)}
 
 
+_NOTICE_TITLE = re.compile(
+    r"\b(meetings?|board of|meet the board|school board|board agenda|hearing|committee|budget workshop|"
+    r"trick[- ]or[- ]treat hours|holiday hours|hours of operation|hours change|modified hours|new hours|special hours|extended hours|"
+    r"closed|closure|closing|leaf (?:pickup|collection)|garbage|refuse|collection schedule)\b",
+    re.IGNORECASE,
+)
+
+
+def is_notice_title(title: str) -> bool:
+    """ROADMAP.md item 425: hours, closures, collection schedules and board
+    meetings are notices, never a town's "pick"."""
+    return bool(_NOTICE_TITLE.search(title or ""))
+
+
+def is_homepage_pick(event: dict) -> bool:
+    return bool(event.get("title")) and is_pick_worthy(event) and not is_notice_title(event["title"])
+
+
 def hub_next_up(blocks: list[dict], today: date, limit: int = 2, days: int = 14) -> list[dict]:
     """ROADMAP.md item 342: a town with nothing in the current weekend window
     shows its next dated events (any day in the next `days` days) instead of
@@ -3689,6 +3707,8 @@ def hub_next_up(blocks: list[dict], today: date, limit: int = 2, days: int = 14)
             day = _event_day(e)
             if day is None or not (today <= day <= end) or not e.get("attendable", True) or e.get("sponsored_by") or not e.get("title"):
                 continue
+            if not is_homepage_pick(e):  # item 425: the same floor as the weekend picks
+                continue
             found.append(e)
     found.sort(key=lambda e: (e["date_iso"], e["title"]))
     picks = prepare_email_events(found[:limit])
@@ -3699,7 +3719,7 @@ def hub_town_picks(weekend_events: list[dict], limit: int = 2) -> list[dict]:
     """ROADMAP.md item 339: a town's next two picks for its homepage card,
     chosen the way the email's "Don't miss" is (most family-relevant
     attendable event, ties to the earlier one), never a paid promotion."""
-    pool = [e for e in weekend_events if e.get("attendable", True) and not e.get("sponsored_by")]
+    pool = [e for e in weekend_events if e.get("attendable", True) and not e.get("sponsored_by") and is_homepage_pick(e)]
     best = sorted(pool, key=lambda e: (-family_relevance(e), e.get("date_iso") or "9999"))[:limit]
     picks = prepare_email_events(best)
     picks.sort(key=lambda e: e.get("date_iso") or "9999")
@@ -3717,6 +3737,7 @@ def render_hub_page(
     halloween: dict | None = None,
     holiday: dict | None = None,
     winter: dict | None = None,
+    picks: list[dict] | None = None,
 ) -> str:
     env = get_template_env()
     template = env.get_template("hub.html.j2")
@@ -3734,6 +3755,7 @@ def render_hub_page(
         halloween=halloween,
         holiday=holiday,
         winter=winter,
+        picks=picks or [],
         contact_email=contact_email,
     )
 
@@ -7531,9 +7553,10 @@ def main() -> None:
         region_summaries.append(
             {
                 **region,
+                "color": EMAIL_TOWN_COLORS[len(region_summaries) % len(EMAIL_TOWN_COLORS)][0],  # item 426: the email's town colour
                 "event_count": event_count,
                 "weekend_picks": hub_town_picks(weekend_events),
-                "next_up": [] if weekend_events else hub_next_up(blocks, local_today),
+                "next_up": [] if hub_town_picks(weekend_events) else hub_next_up(blocks, local_today),
                 "weekend_count": sum(1 for e in weekend_events if e.get("attendable", True)),
                 "path": f"{region_id}/",
                 "guide_slugs": [g["slug"] for g in guides],
@@ -7560,6 +7583,7 @@ def main() -> None:
         halloween=build_halloween_banner(trick_or_treat_entries, now),
         holiday=build_holiday_banner(holidays_entries, now),
         winter=build_winter_banner(region_summaries, now),
+        picks=build_join_picks(combined_email_sections, limit=3),
     )
     (OUTPUT_DIR / "index.html").write_text(hub_html, encoding="utf-8")
     logger.info("Wrote %s", OUTPUT_DIR / "index.html")

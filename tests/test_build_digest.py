@@ -482,7 +482,7 @@ def test_prepare_trick_or_treat_passes_through_real_hours_once_posted():
 
 def test_render_trick_or_treat_page_shows_not_posted_state():
     entries = [{"region_name": "Mount Prospect", "region_url": "https://x/mount-prospect-60056/", "url": "https://x/village-news", "hours": None}]
-    html = build_digest.render_trick_or_treat_page(entries, datetime.now(timezone.utc))
+    html = build_digest.render_trick_or_treat_page(entries, datetime(2026, 10, 18, 18, tzinfo=timezone.utc))  # fixed: the page is off-season from Nov 1
     assert "Mount Prospect" in html
     assert "Not yet posted" in html
     assert 'href="https://x/village-news"' in html
@@ -497,7 +497,7 @@ def test_render_trick_or_treat_page_shows_real_hours_once_posted():
             "hours": "3:00-7:00 PM, Saturday, October 31",
         }
     ]
-    html = build_digest.render_trick_or_treat_page(entries, datetime.now(timezone.utc))
+    html = build_digest.render_trick_or_treat_page(entries, datetime(2026, 10, 18, 18, tzinfo=timezone.utc))  # fixed: the page is off-season from Nov 1
     assert "3-7 PM" in html and "All on Saturday, October 31" in html  # the date is said once (item 318)
     assert "Not yet posted" not in html
 
@@ -518,7 +518,7 @@ def test_render_trick_or_treat_page_counts_its_towns_and_shows_notes():
         for i, n in enumerate(names)
     ]
     entries[0].update(hours="3:00–8:00 PM, Saturday, October 31", note="The Village's standing hours.")
-    html = build_digest.render_trick_or_treat_page(entries, datetime.now(timezone.utc))
+    html = build_digest.render_trick_or_treat_page(entries, datetime(2026, 10, 18, 18, tzinfo=timezone.utc))  # fixed: the page is off-season from Nov 1
     assert "<title>Trick-or-Treat Hours %d: Arlington Heights, Des Plaines, Mount Prospect, Palatine, Wheeling — Within Ten</title>" % datetime.now(timezone.utc).year in html
     assert "Four" not in html
     assert "Des Plaines, Palatine, and Wheeling" in html
@@ -533,7 +533,7 @@ def test_trick_or_treat_no_official_hours_is_its_own_state():
     entry = build_digest.prepare_trick_or_treat(cfg)
     assert entry["no_official_hours"] is True and entry["note"] == "Urges care after sunset."
     html = build_digest.render_trick_or_treat_page(
-        [{"region_id": "dp", "region_name": "Des Plaines", "region_url": "https://x/dp/", **entry}], datetime.now(timezone.utc)
+        [{"region_id": "dp", "region_name": "Des Plaines", "region_url": "https://x/dp/", **entry}], datetime(2026, 10, 18, 18, tzinfo=timezone.utc)
     )
     assert '<a href="https://x/halloween">No official hours</a>' in html
     assert "Urges care after sunset." in html
@@ -585,7 +585,7 @@ def test_render_trick_or_treat_page_lists_halloween_events_with_markup():
         {"region_id": "wheeling-60090", "region_name": "Wheeling", "region_url": "https://x/wh/",
          "url": "https://v/wh", "hours": None, "note": None, "events": []},
     ]
-    html = build_digest.render_trick_or_treat_page(entries, datetime.now(timezone.utc))
+    html = build_digest.render_trick_or_treat_page(entries, datetime(2026, 10, 18, 18, tzinfo=timezone.utc))  # fixed: the page is off-season from Nov 1
     assert '<section class="town" id="arlington-heights-60005">' in html
     assert 'id="wheeling-60090"' not in html  # no events, no empty section
     assert '<a href="https://x/ah/#ev-halloween-craft-2026-10-24">Halloween Craft</a>' in html
@@ -599,7 +599,7 @@ def test_render_trick_or_treat_page_lists_halloween_events_with_markup():
 
 def test_render_trick_or_treat_page_without_events_has_no_events_section():
     entries = [{"region_id": "dp", "region_name": "Des Plaines", "region_url": "https://x/dp/", "url": "https://v", "hours": None, "note": None}]
-    html = build_digest.render_trick_or_treat_page(entries, datetime.now(timezone.utc))
+    html = build_digest.render_trick_or_treat_page(entries, datetime(2026, 10, 18, 18, tzinfo=timezone.utc))  # fixed: the page is off-season from Nov 1
     assert "Halloween events, town by town" not in html
     assert "application/ld+json" not in html
 
@@ -2390,7 +2390,7 @@ def test_render_hub_page_lists_regions():
     html = build_digest.render_hub_page([], summaries, datetime.now(timezone.utc))
     assert "Mount Prospect" in html
     assert "mount-prospect-60056/" in html
-    assert "live update" not in html and "Nothing dated in the next two weeks" in html
+    assert "live update" not in html and "Quiet weekend here, see all" in html
 
 
 def test_render_hub_page_subheading_counts_actual_regions():
@@ -5957,7 +5957,8 @@ def test_hub_town_cards_show_two_picks_and_the_weekend_count_not_live_updates():
     summaries = [{"name": "Mount Prospect", "zip": "60056", "state": "IL", "tagline": "t", "path": "mount-prospect-60056/", "event_count": 287, "weekend_picks": picks, "weekend_count": 3, "guides": []}]
     html = build_digest.render_hub_page([], summaries, datetime(2026, 10, 20, 15, tzinfo=timezone.utc), stats={"region_count": 1, "event_count": 287, "weekend_count": 3, "weekend_date_range": "Oct 23–25", "free_count": 1, "today_count": 0})
     assert "live update" not in html and "See all 3 this weekend" in html and "Fall Festival" in html
-    assert "From the village, library and park district." in html
+    assert html.count("From the village, library and park district") == 1  # item 426: said once, under the hero, not on every card
+    assert "From the village, library and park district" not in html.split('id="region-grid"')[1]
 
 
 def test_weekend_rolls_to_next_weekend_from_sunday_3_pm():
@@ -5974,9 +5975,9 @@ def test_weekend_rolls_to_next_weekend_from_sunday_3_pm():
 def test_a_town_with_an_empty_window_shows_its_next_events_or_the_plain_line():
     # ROADMAP.md item 342.
     blocks = [{"events": [
-        {"title": "Later A", "date_iso": "2026-10-27T10:00:00", "date": "Oct 27", "attendable": True},
-        {"title": "Later B", "date_iso": "2026-10-29T10:00:00", "date": "Oct 29", "attendable": True},
-        {"title": "Too far", "date_iso": "2026-12-01T10:00:00", "date": "Dec 1", "attendable": True},
+        {"title": "Later A", "date_iso": "2026-10-27T10:00:00", "date": "Oct 27", "attendable": True, "tags": ["kid_friendly", "free"]},
+        {"title": "Later B", "date_iso": "2026-10-29T10:00:00", "date": "Oct 29", "attendable": True, "tags": ["kid_friendly", "free"]},
+        {"title": "Too far", "date_iso": "2026-12-01T10:00:00", "date": "Dec 1", "attendable": True, "tags": ["kid_friendly", "free"]},
         {"title": "Passed", "date_iso": "2026-10-10T10:00:00", "date": "Oct 10", "attendable": True},
     ]}]
     assert [p["title"] for p in build_digest.hub_next_up(blocks, date(2026, 10, 19))] == ["Later A", "Later B"]
@@ -5987,7 +5988,7 @@ def test_a_town_with_an_empty_window_shows_its_next_events_or_the_plain_line():
     with_next = build_digest.render_hub_page([], [dict(base, next_up=[{"emoji": "🎃", "title": "Later A", "when": "Tue Oct 27"}])], now, stats=stats)
     assert "Next up" in with_next and "Later A" in with_next and "See what's on in Palatine" in with_next and "Next weekend" in with_next
     plain = build_digest.render_hub_page([], [dict(base, next_up=[])], now, stats=stats)
-    assert "Nothing dated in the next two weeks" in plain and "Next up" not in plain and " yet" not in plain.split("region-grid")[1].split("</main>")[0]
+    assert "Quiet weekend here, see all" in plain and "Next up" not in plain and " yet" not in plain.split("region-grid")[1].split("</main>")[0]
 
 
 def test_trick_or_treat_has_a_compact_signup_under_the_hours_table_and_the_full_one_below():
@@ -6745,3 +6746,30 @@ def test_candidate_town_files_are_never_published_and_their_weekly_counts_are_re
     assert [(r["date"], r["dated"]) for r in hist["c"]] == [("2026-11-02", 9), ("2026-11-03", 4)]
     old = build_digest.record_candidate_counts(hist, "c", counts, date(2026, 12, 20))
     assert [r["date"] for r in old["c"]] == ["2026-12-20"]  # older than 30 days drops out
+
+
+def test_homepage_town_picks_apply_the_quality_floor_and_skip_notices():
+    # ROADMAP.md item 425.
+    def ev(title, tags=("kid_friendly", "free"), day=7):
+        return {"title": title, "date_iso": f"2026-11-{day:02d}T10:00:00", "date": f"Nov {day}", "attendable": True, "tags": list(tags)}
+    weekend = [ev("Meet the Board"), ev("Budget Workshop Meeting"), ev("Beginning ESL"), ev("Trick-or-Treat Hours"), ev("Library Closed Monday"), ev("Village Board Meeting"), ev("Leaf Collection Schedule"), ev("Family Craft Day"), ev("Board Game Night")]
+    titles = [p["title"] for p in build_digest.hub_town_picks(weekend, limit=5)]
+    assert titles == ["Family Craft Day", "Board Game Night"]  # a game night is not a board meeting
+    assert build_digest.hub_town_picks([ev("Meet the Board"), ev("Beginning ESL")]) == []
+    nxt = build_digest.hub_next_up([{"events": [ev("Meet the Board", day=9), ev("Hours Notice: Trick-or-Treat Hours", day=9), ev("Pumpkin Run", day=10)]}], date(2026, 11, 5))
+    assert [p["title"] for p in nxt] == ["Pumpkin Run"]
+    quiet = build_digest.render_hub_page([], [{"name": "T", "zip": "1", "state": "IL", "tagline": "t", "path": "t/", "event_count": 0, "weekend_picks": [], "next_up": [], "weekend_count": 0, "guides": []}], datetime(2026, 11, 3, 15, tzinfo=timezone.utc), stats={"region_count": 1, "event_count": 0, "weekend_count": 0, "weekend_date_range": "Nov 6-8", "weekend_label": "This weekend", "free_count": 0, "today_count": 0})
+    assert "Quiet weekend here, see all" in quiet
+
+
+def test_desktop_homepage_aligns_hero_and_grid_and_colours_each_town_tile():
+    # ROADMAP.md item 426.
+    summaries = [{"name": "Palatine", "zip": "60067", "state": "IL", "tagline": "t", "path": "palatine-60067/", "event_count": 1, "weekend_picks": [], "next_up": [], "weekend_count": 0, "guides": [], "color": "#0f766e"},
+                 {"name": "Wheeling", "zip": "60090", "state": "IL", "tagline": "t", "path": "wheeling-60090/", "event_count": 1, "weekend_picks": [], "next_up": [], "weekend_count": 0, "guides": [], "color": "#6d28d9"}]
+    picks = [{"title": "Fall Fest", "pick_town": "Palatine", "pick_color": "#0f766e", "email_dow": "SAT", "email_daynum": "7", "email_emoji": "🎃"}]
+    html = build_digest.render_hub_page([], summaries, datetime(2026, 11, 3, 15, tzinfo=timezone.utc), stats={"region_count": 2, "event_count": 2, "weekend_count": 1, "weekend_date_range": "Nov 6-8", "weekend_label": "This weekend", "free_count": 3, "today_count": 1}, picks=picks, holiday={"towns": [], "offer": False})
+    assert 'style="--town:#0f766e"' in html and 'style="--town:#6d28d9"' in html  # each town tile carries its colour
+    assert "min-width: 900px" in html and "border-top: 6px solid var(--town" in html
+    assert ".wrap { max-width: 1120px; }" in html and ".hero-inner { max-width: 1080px; margin: 0 auto; }" in html  # hero text on the content column (1120 minus 20px padding each side)
+    assert "Fall Fest" in html and 'href="santa/"' in html and "Today (1)" in html and "Free things to do (3)" in html
+    assert "<script" in html and html.count("addEventListener") >= 0  # no new JavaScript was needed for the layout
