@@ -2,8 +2,11 @@ name: Probe URLs
 
 # ROADMAP.md item 212: the autonomous loops can't fetch web pages, but a
 # GitHub runner can. Runs when the question list changes on main, or on
-# demand - never on a schedule, so it stays one request per question.
+# demand, plus once a day (item 427: the tree-lighting dates are watched daily
+# until Nov 20), so it stays one request per question per day.
 on:
+  schedule:
+    - cron: "17 14 * * *"
   push:
     branches: [main]
     paths:
