@@ -220,7 +220,6 @@ doesn't re-suggest something already shipped.
 
 **Build queue (by deadline; refreshed by the research loop, item 346).**
 Pick from the top unless the owner has flagged something else:
-0. **433** (`SHARE_NOTE.md`, before Thursday's send). **434** (phone homepage: town colours and picks).
 0. **427, 428** (read the round-27 probe answers daily; set tree-lighting dates and add Salt Creek when found; `/santa/` full by Nov 15).
 0. **422** (candidate park districts and villages; the town-six decision otherwise rests on library counts).
 0. **416** (steps 1-2 done, measuring until about Nov 13; earlier note: step 1: round-24 probes for the candidates' feeds are in `config/url_probes.yaml` (egvpl.libnet.info, rmlib.libnet.info, elkgroveparks.org found by search; no Rolling Meadows park district calendar found); next: read the answers, then write the `_candidate-*.yaml` shadow files and the counts file). **417** with it.
@@ -19290,7 +19289,7 @@ owner's list. It also checks the new homepage on a phone.
 
      The list stays at five steps and about 55 minutes.
 
-433. **`SHARE_NOTE.md`: the personal note, and a link that counts.** Build
+433. ✅ DONE (the build writes `SHARE_NOTE.md` from the newest archived issue: one under-60-word note per town, that town named first, linking `/issues/<date>/?utm_source=friend&utm_campaign=seed`; build-digest.yml commits it; tests) **`SHARE_NOTE.md`: the personal note, and a link that counts.** Build
      loop, regenerated each Thursday after the send:
 
      - A two-sentence note in the owner's voice, about 40 words: *"I've been
@@ -19309,7 +19308,7 @@ owner's list. It also checks the new homepage on a phone.
 
 #### P2 (new)
 
-434. **Bring the colour system and the picks to the phone layout.**
+434. ✅ DONE (the town colour bar and the three picks in the weekend tile now apply at every width; checked at 390 px, no overflow; tests) **Bring the colour system and the picks to the phone layout.**
      Design/UX, `hub.html.j2` CSS: show the **town colour bar** on town cards
      at every width, not only in the ≥900px grid. Show the **three "Don't
      miss" picks** inside the "This weekend / Next weekend" tile on phones
