@@ -6833,3 +6833,32 @@ def test_phone_homepage_shows_town_colour_bars_and_the_weekend_picks():
     assert css.index(".region-grid .region-card { border-top: 6px solid var(--town") < media  # the colour bar applies at every width
     assert _re.search(r"\.wk-picks \{ display: flex", css[:media]) and "display: none" not in css[:media].split(".wk-picks")[1].split("}")[0]
     assert html.count('class="wk-pick"') == 1 and "Fall Fest" in html.split('class="bento-tile bento-weekend"')[1].split("</a>")[0]
+
+
+def test_every_promotion_gets_a_noindex_receipt_listing_only_what_really_rendered():
+    # ROADMAP.md item 390.
+    promos = [
+        {"region": "palatine-60067", "title": "Fall Craft Fair", "url": "https://club/fair", "date": "2026-11-07", "sponsor": "PHS Boosters", "blurb": "b"},
+        {"region": "wheeling-60090", "title": "Not Yet Shown", "url": "https://x/n", "date": "2026-12-01", "sponsor": "Acme"},
+        {"region": "wheeling-60090", "title": "", "url": "https://x/bad", "date": "2026-12-01", "sponsor": "Acme"},  # malformed: no receipt
+    ]
+    cfg = {"promotions": promos}
+    event = {"title": "Fall Craft Fair", "date_iso": "2026-11-07T00:00:00", "sponsored_by": "PHS Boosters"}
+    today = date(2026, 11, 3)
+    reg = build_digest.record_promo_appearances({}, [("palatine-60067", event)], {"Fall Craft Fair"}, [{"title": "Fall Craft Fair", "path": "e/2026-11-07-fall-craft-fair/"}], today)
+    reg = build_digest.record_promo_appearances(reg, [("palatine-60067", event)], set(), [], date(2026, 11, 4))  # next day: town page only
+    again = build_digest.record_promo_appearances(reg, [("palatine-60067", event)], set(), [], date(2026, 11, 4))
+    assert again == reg  # a rebuild the same day replaces, never duplicates
+    issues = [{"date": "2026-11-05", "subject": "This weekend", "html": "<td>Fall Craft Fair &amp; more</td>"}, {"date": "2026-10-29", "subject": "Old", "html": "nothing"}]
+    receipts = build_digest.build_promo_receipts(cfg, reg, issues)
+    assert set(receipts) == {"2026-11-07-fall-craft-fair", "2026-12-01-not-yet-shown"}
+    fair = receipts["2026-11-07-fall-craft-fair"]
+    assert [a["date"] for a in fair["appearances"]] == ["2026-11-03", "2026-11-04"]
+    assert [p["label"] for p in fair["appearances"][0]["pages"]] == ["Town page", "This weekend (all towns)", "Its own event page"]
+    assert [p["label"] for p in fair["appearances"][1]["pages"]] == ["Town page"]
+    assert [i["date"] for i in fair["issues"]] == ["2026-11-05"]
+    page = build_digest.render_promo_receipt(fair)
+    assert 'name="robots" content="noindex, nofollow' in page and "Its own event page" in page and "2026-11-05" in page
+    empty = build_digest.render_promo_receipt(receipts["2026-12-01-not-yet-shown"])
+    assert "Not shown yet" in empty and "Not in a sent issue yet" in empty
+    assert not any("/sponsor/receipt/" in u for u in build_digest.collect_sitemap_urls([], None, None, True))

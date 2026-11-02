@@ -1,0 +1,42 @@
+{# ROADMAP.md item 390: where one promotion appeared. noindex, in no sitemap, linked from nowhere; the owner sends it to the sponsor by hand. #}
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow, max-image-preview:large">
+<title>Where {{ r.title }} appeared | Within Ten</title>
+<link rel="canonical" href="{{ canonical_url }}">
+<style>
+  :root { --bg:#f3f2f2; --ink:#201e1d; --muted:#605d5d; --card:#eae9e9; --accent-2-text:#ae1800; --border:#c9c5c5; }
+  @media (prefers-color-scheme: dark) { :root { --bg:#161413; --ink:#f3f2f2; --muted:#a9a5a5; --card:#242120; --border:#4a4543; --accent-2-text:#ff8a73; } }
+  body { margin:0; background:var(--bg); color:var(--ink); font:17px/1.55 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif; }
+  .wrap { max-width:640px; margin:0 auto; padding:24px 16px 48px; }
+  h1 { font-size:26px; line-height:1.2; margin:0 0 6px; }
+  h2 { font-size:19px; margin:26px 0 8px; }
+  .muted { color:var(--muted); font-size:14px; }
+  li { margin:6px 0; }
+  a { color:var(--accent-2-text); font-weight:700; }
+  .day { background:var(--card); border:1px solid var(--border); padding:10px 14px; margin:0 0 10px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <p class="muted">Within Ten &middot; promotion receipt</p>
+  <h1>Where {{ r.title }} appeared</h1>
+  <p class="muted">Presented by {{ r.sponsor }} &middot; event date {{ r.event_date }}. This lists only the pages the promotion was actually shown on, recorded by each site build.</p>
+  <h2>Pages and dates</h2>
+  {% if r.appearances %}
+  {% for a in r.appearances %}
+  <div class="day"><strong>{{ a.date }}</strong><ul>{% for p in a.pages %}<li>{{ p.label }}: <a href="{{ p.url }}">{{ p.url }}</a></li>{% endfor %}</ul></div>
+  {% endfor %}
+  {% else %}
+  <p>Not shown yet. It appears here from the first day it is featured.</p>
+  {% endif %}
+  <h2>In the weekly email</h2>
+  {% if r.issues %}<ul>{% for i in r.issues %}<li>{{ i.date }}: <a href="{{ i.url }}">{{ i.subject }}</a></li>{% endfor %}</ul>
+  {% else %}<p>Not in a sent issue yet.</p>{% endif %}
+  <p class="muted">The link people were sent to: <a href="{{ r.link }}" rel="noopener nofollow">{{ r.link }}</a></p>
+</div>
+</body>
+</html>
