@@ -220,6 +220,7 @@ doesn't re-suggest something already shipped.
 
 **Build queue (by deadline; refreshed by the research loop, item 346).**
 Pick from the top unless the owner has flagged something else:
+0. **435** (share note links `/this-weekend/`, not a past issue; a few lines), then **436, 437** (real preview card and short og:title for shared links).
 0. **427, 428** (read the round-27 probe answers daily; set tree-lighting dates and add Salt Creek when found; `/santa/` full by Nov 15).
 0. **422** (candidate park districts and villages; the town-six decision otherwise rests on library counts).
 0. **416** (steps 1-2 done, measuring until about Nov 13; earlier note: step 1: round-24 probes for the candidates' feeds are in `config/url_probes.yaml` (egvpl.libnet.info, rmlib.libnet.info, elkgroveparks.org found by search; no Rolling Meadows park district calendar found); next: read the answers, then write the `_candidate-*.yaml` shadow files and the counts file). **417** with it.
@@ -19321,6 +19322,75 @@ Competitors reviewed this pass: **how small newsletters got their first
 HQ, a local founder's account), and **libraries as a referral path**
 (AHML's outreach pages, a non-item). The design/UX angle is **the bento
 homepage on a phone**: no colour bars and no picks.
+
+#### Research pass 2026-11-02, evening (hundred-and-nineteenth pass)
+
+Item 433 shipped `SHARE_NOTE.md`, and step 2 of the whole ask now points
+at it. This pass reads the note the way a parent would get it in a text
+on a Monday night. It finds two problems with that first impression:
+which page the link opens, and what the preview looks like.
+
+| Angle | What it is / what we found | Why it matters here |
+|---|---|---|
+| **The share note's link, read on a Monday** (`SHARE_NOTE.md` today) | All five town blocks link `/issues/2026-10-29/`, the issue for **Oct 30–Nov 1, a weekend that's over**. That page's own description says *"What was on in…"*. The note is built from the newest *archived* issue, so from Friday until Thursday's send it always points at a past weekend. `/this-weekend/` already shows **"35 things… (Nov 6–8)"** | Step 2 asks the owner to text 20 people. Anyone who doesn't do it on a Thursday or Friday sends a stale page, and the first thing a friend sees is last weekend. One wrong link wastes the only ask that every small newsletter's first 100 came from (item 435) |
+| **Link previews in iMessage and WhatsApp** (Apple TN2444 and TN3156 on rich links; WhatsApp's Open Graph guidance and checker write-ups) | iMessage builds its card from **og:title and og:image** and doesn't run JavaScript. Apple advises a **short og:title without the site name**. WhatsApp needs an og:image **under about 300–600 KB, at least 300 px wide, and no wider than 4:1**; 1200×630 is the safe size. Ours: both pages use the generic **`/og/default.png`**, and the issue's og:title is **110 characters** (*"Things to do Oct 30–Nov 1, 2026 in Arlington Heights, Des Plaines, Mount Prospect, Palatine & Wheeling \| Within Ten"*), so a phone cuts it off after the dates | A friend's text is judged by its preview card before anyone taps it. A specific card (dates, three picks, the town colours) reads as a real local thing; a generic logo card with a truncated title reads as spam (items 436, 437) |
+| **What the preview card looks like (design/UX)** | `docs/og/` already has per-town, seasonal (`santa.png`, `holidays.png`, `trick-or-treat.png`) and Pinterest-sized weekly images (`weekly-pin`, `weekly-portrait`, `weekly-square`). But **the two pages people actually share** (`/this-weekend/` and each issue) still use `default.png`. The weekly art exists, just not at 1200×630 and not wired up | This is mostly reuse. The weekly renderer already draws the dates and picks; it needs a 1200×630 landscape variant and two meta tags (item 436) |
+
+#### P1 (new)
+
+435. **The share note links the weekend that's coming, never one that's
+     over.** Build loop, `SHARE_NOTE.md` generator (item 433):
+
+     - Link **`/this-weekend/?utm_source=friend&utm_campaign=seed`**. It is
+       always current, rolls forward on Monday, and has the signup form
+       near the top.
+     - Keep the same UTM pair so item 252's counts are unchanged.
+     - Add a one-line header under the title: *"Links to /this-weekend/,
+       which always shows the coming weekend, so this note works any day
+       of the week."*
+     - Change *"Here's this week's"* to *"Here's what's on this weekend"*.
+
+     Tests: no `/issues/` link appears in the file, the link carries both
+     UTM fields, and the note stays under 60 words.
+
+436. **A real preview card for the pages people share.** Build loop,
+     extending the weekly image renderer:
+
+     - Render **`/og/this-weekend.png` at 1200×630, under 300 KB**: the
+       weekend's dates large, the top three picks with town colour dots,
+       and the wordmark small in a corner.
+     - Make it the og:image (and `twitter:image`) for `/this-weekend/`.
+     - Each archived issue gets a **frozen copy**,
+       `/og/issues/<date>.png`, written once at send time and never
+       overwritten, so an old link still shows that week's card.
+     - Keep `default.png` only as the fallback.
+
+     Tests: both files exist with the right size and are under 300 KB, and
+     the og:image tags point at them.
+
+#### P2 (new)
+
+437. **Short share titles.** Build loop, templates: set og:title (not
+     `<title>`, which stays tuned for search) to under about 60
+     characters, without the site name, per Apple's rich-link guidance:
+
+     - `/this-weekend/`: *"This weekend near Mount Prospect: 35 things,
+       Nov 6–8"*, using the hub's own town list order.
+     - Issues: *"Oct 30–Nov 1: <N> things in five suburbs"*.
+
+     Then **paste both URLs into a link-preview checker** (opengraph.dev
+     or similar, read-only) and record the result in the commit. Tests:
+     og:title is 60 characters or fewer and doesn't contain "Within Ten".
+
+Re-rank: 435 goes to the **top of the build queue**, because it fixes the
+link inside the one owner ask most likely to produce the first 20
+subscribers, and it's a few lines. 436 follows it, before the Nov 15
+items. 437 rides with 436.
+
+Competitors reviewed this pass: **Apple's rich-link guidance** (TN2444,
+TN3156) and **WhatsApp's Open Graph requirements**, applied to our own
+share note. The design/UX angle is **the preview card**: the art exists,
+but the shared pages still show the default logo.
 
 
 ## Working agreements for autonomous iteration
