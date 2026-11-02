@@ -220,6 +220,7 @@ doesn't re-suggest something already shipped.
 
 **Build queue (by deadline; refreshed by the research loop, item 346).**
 Pick from the top unless the owner has flagged something else:
+0. **433** (`SHARE_NOTE.md`, before Thursday's send). **434** (phone homepage: town colours and picks).
 0. **427, 428** (read the round-27 probe answers daily; set tree-lighting dates and add Salt Creek when found; `/santa/` full by Nov 15).
 0. **422** (candidate park districts and villages; the town-six decision otherwise rests on library counts).
 0. **416** (steps 1-2 done, measuring until about Nov 13; earlier note: step 1: round-24 probes for the candidates' feeds are in `config/url_probes.yaml` (egvpl.libnet.info, rmlib.libnet.info, elkgroveparks.org found by search; no Rolling Meadows park district calendar found); next: read the answers, then write the `_candidate-*.yaml` shadow files and the counts file). **417** with it.
@@ -229,14 +230,17 @@ Pick from the top unless the owner has flagged something else:
 
 #### Needs Ryan
 
-**The whole ask (November 2026), about 45 minutes in total (item 399).**
+**The whole ask (November 2026), about 55 minutes in total (items 399, 432).**
 Do these five, in this order. Everything else in this section is
 reference, *not now*.
 
-1. **Bing API key (2 min):** Bing Webmaster Tools → Settings → API access
-   → copy the key into the repository secret `BING_WEBMASTER_API_KEY`.
-2. **GoatCounter API key (2 min):** GoatCounter → Settings → API → a
-   read-only key into the secret `GOATCOUNTER_TOKEN`.
+1. **Two secrets (4 min):** Bing Webmaster Tools → Settings → API access
+   → key into `BING_WEBMASTER_API_KEY`; GoatCounter → Settings → API → a
+   read-only key into `GOATCOUNTER_TOKEN`.
+2. **Send this Thursday's issue to 20 local parents you know (10 min,
+   once, item 432).** Copy the note in `SHARE_NOTE.md` (item 433) and send
+   it by text or email from your own phone. Every small newsletter's first
+   subscribers came this way.
 3. **The $50 Meta test: reply "yes", "holiday" or "no" (1 min).** If
    yes, set it up from `META_AD_KIT.md` (about 10 min).
 4. **First add `owner_name` and a mailing address (a registered mailbox is fine) to `config/newsletter.yaml` (1 min; required by law in commercial email, item 430). Then send the emails in `OUTREACH_BATCH.md` (about 15 min).** It exists
@@ -19250,6 +19254,75 @@ Competitors reviewed this pass: none. Angles: **CAN-SPAM rules for B2B
 outreach** (2026 compliance guides), **Resend's free tier** as an
 outreach sender, and the design/UX angle **the outreach email as a trust
 object**: a placeholder name, no address, no opt-out.
+
+
+#### Research pass 2026-11-02 (hundred-and-eighteenth pass)
+
+Overnight the build loop shipped item 430 (CAN-SPAM-ready outreach). The
+batch now **refuses to render** until `owner_name` and `mailing_address`
+are set, which they aren't, so `OUTREACH_BATCH.md` currently reads only
+*"Add your mailing address and your name … before sending."* It also
+set **Des Plaines' tree lighting (Fri Dec 4)** and a **Winter Fair** from
+the City's own page (item 427), so the holiday banner now has three of
+five dates. The Fall Craft Fair outreach window has passed with nothing
+sent. This pass looks at the one growth channel every successful small
+newsletter used first, and that this roadmap has never put on the
+owner's list. It also checks the new homepage on a phone.
+
+| Angle | What it is / what we found | Why it matters here |
+|---|---|---|
+| **How small newsletters got their first subscribers** (Starter Story's analysis of 50+ newsletters; a local newsletter founder's account of a free first 1,000; Local Media HQ's *"3,000 to 20,000 without ads"* episode; other first-1,000 write-ups, mostly self-reported) | Starter Story's finding across 50+ newsletters: **every one reached 1,000 through manual effort**, and the first step for many was **sending early issues to everyone they knew** and asking for feedback. The local founder describes the first 1,000 as free and earned by hand. Several describe the **first 100 as the hardest**, after which word of mouth compounds | The roadmap has built search, Discover, Pinterest, Nextdoor, flyers, ads and outreach. It has never asked the owner to do the single thing every small newsletter did first: **send the latest issue to the 20 local parents he already knows**. He has a family, neighbours, a school and a park district in Mount Prospect. That's ten minutes, once, with a ready-made note, and it likely beats every other channel on the list for the first 20 subscribers (item 432) |
+| **Libraries as a referral path** (Arlington Heights Memorial Library's "Library in the Community" pages; its monthly newsletter on Issuu) | AHML has **outreach staff who attend community events** and publishes a monthly newsletter. Neither library's site has a "community links" page linking to outside calendars | **No new item.** The civic link-back ask (item 152, §11) already covers libraries. A library is unlikely to link a commercial newsletter, and that's still an owner email. Recorded so it isn't re-researched |
+| **The bento homepage on a phone (design/UX)** | At 390px the page is clean: the holiday banner with dates, the hero, a **"Next weekend · Nov 6–8 · 35 things"** tile, Today and Free links, and five town cards with good picks (Pumpkin Smash, Diwali Party, the PHS Fall Craft Fair, Palatine's winter market). Two misses: the **town colour bars only appear on desktop**, so on a phone the five town cards are plain grey boxes again, and the **"Next weekend" tile shows no picks**, just a count | Most visitors are on phones. The colour system and the picks are what make the desktop version look designed, and the phone version doesn't get them (item 434) |
+
+#### P1 (new)
+
+432. **Seed the list from the owner's own circle: one note, 20 people, 10
+     minutes, once.** Owner, held to item 400's cap by merging two steps.
+     Restructure the whole ask:
+
+     - Steps **1 and 2 merge** into ***"Two secrets (4 min): Bing API key →
+       `BING_WEBMASTER_API_KEY`; GoatCounter read-only key →
+       `GOATCOUNTER_TOKEN`."***
+     - The freed step becomes ***"Send this Thursday's issue to 20 local
+       parents you know (10 min, once). Copy the note in `SHARE_NOTE.md`
+       and send it by text or email from your own phone."***
+
+     The list stays at five steps and about 55 minutes.
+
+433. **`SHARE_NOTE.md`: the personal note, and a link that counts.** Build
+     loop, regenerated each Thursday after the send:
+
+     - A two-sentence note in the owner's voice, about 40 words: *"I've been
+       building a free weekly email of what's on this weekend in Mount
+       Prospect, Arlington Heights and nearby. Library, park district and
+       village stuff, one email on Thursdays. Here's this week's: [link].
+       If it's useful, you can sign up at the bottom."*
+     - The link is the week's archived issue (`/issues/<date>/`, item 357)
+       with `utm_source=friend&utm_campaign=seed`, so item 252's tags count
+       the signups.
+     - Plain text only, ready for SMS or email, with one variant naming the
+       owner's town first.
+
+     Tests: the link points to the newest archived issue and carries both
+     UTM fields, and the note stays under 60 words.
+
+#### P2 (new)
+
+434. **Bring the colour system and the picks to the phone layout.**
+     Design/UX, `hub.html.j2` CSS: show the **town colour bar** on town cards
+     at every width, not only in the ≥900px grid. Show the **three "Don't
+     miss" picks** inside the "This weekend / Next weekend" tile on phones
+     too, as compact rows with date chips. Keep the tile's count as its
+     footer. Verify at 390px. Tests: the colour-bar class applies outside
+     the desktop media query, and the weekend tile contains up to three
+     picks in the mobile markup.
+
+Competitors reviewed this pass: **how small newsletters got their first
+1,000 subscribers** (Starter Story's 50-newsletter analysis, Local Media
+HQ, a local founder's account), and **libraries as a referral path**
+(AHML's outreach pages, a non-item). The design/UX angle is **the bento
+homepage on a phone**: no colour bars and no picks.
 
 
 ## Working agreements for autonomous iteration
