@@ -2904,6 +2904,60 @@ def render_sponsor_page(
 _NOT_A_NEIGHBOUR = re.compile(r"trick[- ]or[- ]treat|leaf|hours|closed|closure|no school|holiday schedule|meeting|board", re.IGNORECASE)
 
 
+PROMO_APPEARANCES_PATH = ROOT / "data" / "promo_appearances.json"
+
+
+def promo_slug(promo: dict) -> str:
+    """`<yyyy-mm-dd>-<title slug>` for a `promotions:` entry (item 390)."""
+    day = _parse_promo_day(promo.get("date"))
+    slug = re.sub(r"[^a-z0-9]+", "-", str(promo.get("title") or "").lower()).strip("-")[:50].rstrip("-") or "promo"
+    return f"{day.isoformat() if day else 'undated'}-{slug}"
+
+
+def record_promo_appearances(registry: dict, live: list[tuple[str, dict]], hub_titles: set[str], event_pages: list[dict], today: date) -> dict:
+    """ROADMAP.md item 390: what each featured promotion REALLY rendered on
+    today - its town page, the weekend hub when the hub's list carries it, and
+    its `/e/` page when one exists - merged into a per-promotion registry of
+    dates and pages. Nothing is recorded that was not rendered."""
+    registry = {k: {**v, "appearances": [dict(a) for a in v.get("appearances", [])]} for k, v in registry.items()}
+    for region_id, event in live:
+        day = (event.get("date_iso") or "")[:10]
+        slug = promo_slug({"title": event["title"], "date": day})
+        pages = [{"label": "Town page", "url": f"{SITE_BASE_URL}{region_id}/"}]
+        if event["title"] in hub_titles:
+            pages.append({"label": "This weekend (all towns)", "url": f"{SITE_BASE_URL}this-weekend/"})
+        for ep in event_pages:
+            if ep.get("title") == event["title"]:
+                pages.append({"label": "Its own event page", "url": SITE_BASE_URL + ep["path"]})
+        entry = registry.setdefault(slug, {"title": event["title"], "sponsor": event.get("sponsored_by"), "appearances": []})
+        entry["appearances"] = [a for a in entry["appearances"] if a["date"] != today.isoformat()] + [{"date": today.isoformat(), "pages": pages}]
+        entry["appearances"].sort(key=lambda a: a["date"])
+    return registry
+
+
+def build_promo_receipts(sponsors_cfg: dict, registry: dict, issues: list[dict]) -> dict[str, dict]:
+    """One receipt per valid `promotions:` entry (paid or founding): the pages
+    and dates it appeared on, from the registry, and the sent issues whose own
+    text carries it. A promotion that has not run yet gets an honest empty receipt."""
+    receipts = {}
+    for promo in sponsors_cfg.get("promotions") or []:
+        if not all(str(promo.get(f) or "").strip() for f in ("title", "url", "date", "sponsor")):
+            continue
+        slug = promo_slug(promo)
+        entry = registry.get(slug) or {}
+        title, sponsor = str(promo["title"]).strip(), str(promo["sponsor"]).strip()
+        in_issues = [
+            {"date": i["date"], "url": f"{SITE_BASE_URL}issues/{i['date']}/", "subject": i["subject"]}
+            for i in issues if title in unescape(i.get("html") or "") or f"Presented by {sponsor}" in unescape(i.get("html") or "")
+        ]
+        receipts[slug] = {"title": title, "sponsor": sponsor, "link": str(promo["url"]).strip(), "event_date": str(_parse_promo_day(promo["date"]) or promo["date"]), "appearances": entry.get("appearances", []), "issues": in_issues}
+    return receipts
+
+
+def render_promo_receipt(receipt: dict) -> str:
+    return get_template_env().get_template("sponsor_receipt.html.j2").render(r=receipt, hub_url=SITE_BASE_URL, canonical_url=SITE_BASE_URL + "sponsor/", og_image_url=SITE_BASE_URL + "og/default.png")
+
+
 def render_sponsor_preview(sections: list[dict], payment_links: dict | None, contact_email: str | None, today: date | None = None, founding_promos_used: int = 0) -> str:
     """ROADMAP.md items 313 and 419: the `/sponsor/preview/` page. The template
     fills in the business, town, event, venue and kind from the address in the
@@ -7041,6 +7095,7 @@ def main() -> None:
     holidays_entries = []
     santa_entries: list[dict] = []
     leaf_entries: list[dict] = []
+    live_promos: list[tuple[str, dict]] = []  # item 390: promotions featured in this build
     warm_found: list[dict] = []  # item 387
     email_weather_by_region: dict[str, list[dict]] = {}
     combined_email_sections = []
@@ -7115,7 +7170,10 @@ def main() -> None:
         annotate_celebrations(blocks, local_today)
         # ROADMAP.md item 245: a paid Event Promo goes in after the filters
         # above, so it can never be deduped away or dropped, and goes first.
-        blocks = apply_promotion(blocks, build_promotion_event(sponsors_cfg, region_cfg, local_today))
+        promo_event = build_promotion_event(sponsors_cfg, region_cfg, local_today)
+        if promo_event:
+            live_promos.append((region_id, promo_event))
+        blocks = apply_promotion(blocks, promo_event)
         evergreen = prepare_evergreen(region_cfg)
         guides = prepare_guides(region_cfg)
         directory = build_business_directory(sponsors_cfg, region_id)
@@ -7734,6 +7792,18 @@ def main() -> None:
     sponsor_dir = OUTPUT_DIR / "sponsor"
     sponsor_dir.mkdir(parents=True, exist_ok=True)
     (sponsor_dir / "index.html").write_text(sponsor_html, encoding="utf-8")
+    # ROADMAP.md item 390: a noindex receipt per promotion, in no sitemap and no link.
+    try:
+        promo_registry = json.loads(PROMO_APPEARANCES_PATH.read_text(encoding="utf-8")) if PROMO_APPEARANCES_PATH.exists() else {}
+    except (OSError, ValueError):
+        promo_registry = {}
+    hub_titles = {e["title"] for sec in hub_weekend_sections for e in sec["events"]}
+    promo_registry = record_promo_appearances(promo_registry if isinstance(promo_registry, dict) else {}, live_promos, hub_titles, active_event_pages, now.astimezone(LOCAL_TZ).date())
+    PROMO_APPEARANCES_PATH.write_text(json.dumps(promo_registry, indent=1, ensure_ascii=False, sort_keys=True) + "\n", encoding="utf-8")
+    for slug, receipt in build_promo_receipts(sponsors_cfg, promo_registry, load_issues()).items():
+        receipt_dir = sponsor_dir / "receipt" / slug
+        receipt_dir.mkdir(parents=True, exist_ok=True)
+        (receipt_dir / "index.html").write_text(render_promo_receipt(receipt), encoding="utf-8")
     preview_dir = sponsor_dir / "preview"  # item 313: noindex, out of the sitemap, linked from nowhere
     preview_dir.mkdir(parents=True, exist_ok=True)
     (preview_dir / "index.html").write_text(render_sponsor_preview(combined_email_sections, sponsors_cfg.get("payment_links"), contact_email, now.astimezone(LOCAL_TZ).date(), sponsors_cfg.get("founding_promos_used") or 0), encoding="utf-8")

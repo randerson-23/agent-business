@@ -223,7 +223,6 @@ Pick from the top unless the owner has flagged something else:
 0. **427, 428** (read the round-27 probe answers daily; set tree-lighting dates and add Salt Creek when found; `/santa/` full by Nov 15).
 0. **422** (candidate park districts and villages; the town-six decision otherwise rests on library counts).
 0. **416** (steps 1-2 done, measuring until about Nov 13; earlier note: step 1: round-24 probes for the candidates' feeds are in `config/url_probes.yaml` (egvpl.libnet.info, rmlib.libnet.info, elkgroveparks.org found by search; no Rolling Meadows park district calendar found); next: read the answers, then write the `_candidate-*.yaml` shadow files and the counts file). **417** with it.
-3. **390**: promo receipts.
 4. **328** (probe first), then **325** (by Nov 15), then **385** (holiday
    creatives, from Nov 1), **397** (Palatine winter market), **311** (winter outdoors, by Dec 15), **398**, **420, 421** (dentist and credit-union sponsor products), then the rest by priority.
 
@@ -18139,7 +18138,7 @@ hosting public events, and nobody has used that list.
      moves below the list. Tests: the empty state shows five town links
      and the confirmed dates, and no date appears that isn't in config.
 
-390. **A "where your promo appeared" receipt for every Event Promo.**
+390. ✅ DONE (a noindex `/sponsor/receipt/<yyyy-mm-dd>-<slug>/` for every valid `promotions:` entry, in no sitemap and linked from nowhere: the pages and dates it really rendered on (its town page, `/this-weekend/` when the hub carried it, its own `/e/` page), recorded by each build in `data/promo_appearances.json`, plus the sent issues whose text carries it; a promotion that has not run says so; the outbound-click count is NOT built (it needs GoatCounter's per-path API with the owner's token); tests) **A "where your promo appeared" receipt for every Event Promo.**
      Build loop: for each entry in `promotions:` (paid or founding),
      write a `noindex` page `/sponsor/receipt/<slug>/` listing the
      **pages and dates it appeared on** (the town page, `/this-weekend/`,
