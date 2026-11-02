@@ -174,7 +174,15 @@
      lone last-row card genuinely stretches to fill its row instead. */
   /* ROADMAP.md item 426: from 900px the hero and the content share one column, the overview is a
      bento grid and each town tile carries its colour bar. Below 900px nothing here applies. */
-  .wk-picks, .season-tile { display: none; }
+  .season-tile { display: none; }
+  .wk-picks { display: flex; flex-direction: column; gap: 10px; margin-top: 8px; }
+  .wk-pick { display: flex; gap: 12px; align-items: center; }
+  .wk-chip { width: 46px; flex: none; text-align: center; font-weight: 800; }
+  .wk-chip b { display: block; background: var(--town); color: #fff; font-size: 10.5px; letter-spacing: 1px; padding: 2px 0; }
+  .wk-chip i { display: block; background: var(--card); border: 1px solid var(--border); border-top: 0; font-style: normal; font-size: 19px; line-height: 24px; padding: 2px 0 3px; }
+  .wk-text { font-size: 15px; font-weight: 700; line-height: 1.3; }
+  .wk-town { display: block; font-size: 13px; font-weight: 600; color: var(--muted); }
+  .region-grid .region-card { border-top: 6px solid var(--town, var(--border)); }
   @media (min-width: 900px) {
     .wrap { max-width: 1120px; }
     .hero-inner { max-width: 1080px; margin: 0 auto; }  /* the wrap's 1120px minus its 20px padding */
@@ -192,14 +200,8 @@
     .overview .hub-secondary-links a:hover, .season-tile:hover { background: color-mix(in srgb, var(--ink) 5%, var(--card)); border-bottom-color: var(--border); }
     .season-tile { grid-column: 3 / span 2; }
     .season-tile span { font-size: 14.5px; font-weight: 400; color: var(--muted); }
-    .wk-picks { display: flex; flex-direction: column; gap: 10px; margin-top: 8px; }
-    .wk-pick { display: flex; gap: 12px; align-items: center; }
-    .wk-chip { width: 46px; flex: none; text-align: center; font-weight: 800; }
-    .wk-chip b { display: block; background: var(--town); color: #fff; font-size: 10.5px; letter-spacing: 1px; padding: 2px 0; }
-    .wk-chip i { display: block; background: var(--card); border: 1px solid var(--border); border-top: 0; font-style: normal; font-size: 19px; line-height: 24px; padding: 2px 0 3px; }
-    .wk-text { font-size: 16px; font-weight: 700; line-height: 1.3; }
-    .wk-town { display: block; font-size: 13px; font-weight: 600; color: var(--muted); }
-    main .region-grid .region-card { border-top: 6px solid var(--town, var(--border)); flex: 1 1 calc(33% - 16px); }  /* 3 + 2 below 1200px, the last two stretching */
+    .wk-text { font-size: 16px; }
+    main .region-grid .region-card { flex: 1 1 calc(33% - 16px); }  /* 3 + 2 below 1200px, the last two stretching */
   }
   @media (min-width: 1200px) {
     main .region-grid { flex-wrap: nowrap; }

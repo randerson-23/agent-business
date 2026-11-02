@@ -6807,3 +6807,29 @@ def test_salt_creek_is_a_palatine_source_so_its_events_carry_palatines_chip():
     cfg = next(c for c in build_digest.load_regions() if c["region"]["id"] == "palatine-60067")
     src = next(s for s in cfg["sources"] if "Salt Creek" in s["name"])
     assert src["type"] == "ics" and src["url"] == "https://www.saltcreekpd.com/events/?ical=1" and src.get("enabled", True)
+
+
+def test_share_note_links_the_newest_issue_with_utm_and_stays_short():
+    # ROADMAP.md item 433.
+    issues = [{"date": "2026-10-29", "subject": "n", "html": ""}, {"date": "2026-10-22", "subject": "o", "html": ""}]
+    note = build_digest.build_share_note(issues, ["Arlington Heights", "Mount Prospect", "Palatine"])
+    link = build_digest.SITE_BASE_URL + "issues/2026-10-29/?utm_source=friend&utm_campaign=seed"
+    assert note.count(link) == 3 and "2026-10-22" not in note.replace("Generated", "")
+    for block in note.split("```text")[1:]:
+        text = block.split("```")[0].strip()
+        assert len(text.split()) < 60 and "utm_campaign=seed" in text
+    assert "in Mount Prospect and nearby" in note
+    assert "nothing to link" in build_digest.build_share_note([], ["A"])
+
+
+def test_phone_homepage_shows_town_colour_bars_and_the_weekend_picks():
+    # ROADMAP.md item 434: both live outside the 900px media query.
+    import re as _re
+    card = {"name": "Palatine", "zip": "60067", "state": "IL", "tagline": "t", "path": "p/", "event_count": 1, "weekend_picks": [], "next_up": [], "weekend_count": 0, "guides": [], "color": "#0f766e"}
+    picks = [{"title": "Fall Fest", "pick_town": "Palatine", "pick_color": "#0f766e", "email_dow": "SAT", "email_daynum": "7", "email_emoji": "🎃"}]
+    html = build_digest.render_hub_page([], [card], datetime(2026, 11, 3, 15, tzinfo=timezone.utc), stats={"region_count": 1, "event_count": 1, "weekend_count": 1, "weekend_date_range": "Nov 6-8", "weekend_label": "This weekend", "free_count": 0, "today_count": 0}, picks=picks)
+    css = html.split("<style>")[1] if "<style>" in html else html
+    media = css.index("@media (min-width: 900px)")
+    assert css.index(".region-grid .region-card { border-top: 6px solid var(--town") < media  # the colour bar applies at every width
+    assert _re.search(r"\.wk-picks \{ display: flex", css[:media]) and "display: none" not in css[:media].split(".wk-picks")[1].split("}")[0]
+    assert html.count('class="wk-pick"') == 1 and "Fall Fest" in html.split('class="bento-tile bento-weekend"')[1].split("</a>")[0]
