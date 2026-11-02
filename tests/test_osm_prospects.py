@@ -177,7 +177,7 @@ def test_outreach_batch_blocks_have_sources_cap_at_eight_and_hold_no_personal_ad
     many = [{"match": f"h{i}", "org": f"Org {i}", "site": "https://x.example/"} for i in range(12)]
     reg2 = {f"h{i}": {"name": f"H{i}", "town": "T", "events": [{"title": "E", "date": "2026-10-30"}]} for i in range(12)}
     assert len(ob.build_blocks(reg2, many, today=today)) == ob.MAX_BLOCKS
-    text = ob.render(blocks, datetime(2026, 10, 29))
+    text = ob.render(blocks, datetime(2026, 10, 29), {"name": "Pat Doe", "address": "1 Main St, Palatine IL"})
     assert ob.personal_addresses(text, contacts) == [] and "Where to send" in text
     assert ob.personal_addresses("write to jane.doe@x.org", contacts) == ["jane.doe@"]
     assert ob.where_to_send({"site": "https://s/", "contact": "jane.doe@x.org", "source": "p"}).startswith("look up on")
@@ -213,8 +213,8 @@ def test_the_generated_batch_is_checked_not_just_the_generator():
         "napleton palatine mazda": {"name": "Napleton Palatine Mazda", "town": "Palatine", "events": [{"title": "FREE Trunk or Treat at Napleton Palatine Mazda", "date": "2026-10-22"}, {"title": "FREE Trunk or Treat at Napleton Palatine Mazda", "date": "2026-10-24"}]},
         "phs pirate boosters": {"name": "PHS Pirate Boosters", "town": "Palatine", "events": [{"title": "PHS Pirate Boosters Present: Fall Craft Fair", "date": "2026-11-07"}]},
     }
-    blocks = ob.build_blocks(reg, ob.load_contacts(), today=today)
-    good = ob.render(blocks, datetime(2026, 10, 29))
+    blocks = ob.build_blocks(reg, ob.load_contacts(), today=today, owner={"name": "Pat Doe", "address": "1 Main St, Palatine IL"})
+    good = ob.render(blocks, datetime(2026, 10, 29), {"name": "Pat Doe", "address": "1 Main St, Palatine IL"})
     assert cb.check(good, reg, today) == []
     assert "Sat Oct 24" in good and "phscraft@gmail.com (organisation mailbox; source: https://phspirateboosters.com/craft-fair/)" in good
     stale = good.replace("Sat Oct 24", "Thu Oct 22").replace("(2026-10-24)", "(2026-10-22)")
@@ -238,7 +238,7 @@ def test_a_fair_block_asks_for_a_yes_and_a_venue_with_only_tomorrow_is_dropped()
         "des plaines theatre": {"name": "Des Plaines Theatre", "town": "Des Plaines", "events": [{"title": "Tomorrow Show", "date": "2026-10-30"}]},
         "metropolis performing arts centre": {"name": "Metropolis", "town": "Arlington Heights", "events": [{"title": "Next Week Show", "date": "2026-11-05"}]},
     }
-    blocks = ob.build_blocks(reg, ob.load_contacts(), today=today)
+    blocks = ob.build_blocks(reg, ob.load_contacts(), today=today, owner={"name": "Pat Doe", "address": "1 Main St, Palatine IL"})
     assert [b["org"] for b in blocks] == ["PHS Pirate Boosters", "Metropolis Performing Arts Centre"]  # the theatre's only show is tomorrow
     assert "Reply 'yes' and we'll feature it exactly as it's listed (Sat Nov 7, 9 AM, Palatine High School); tell us if anything has changed." in blocks[0]["body"]
     assert "Wednesday" not in blocks[0]["body"] and f"{ob.SEND_DAY} morning's email" in blocks[0]["body"] and ob.SEND_DAY == "Thursday"
@@ -254,3 +254,31 @@ def test_the_preview_link_carries_the_prospects_own_event_and_kind():
     link = ob.preview_link("fair", "PHS Pirate Boosters", "Palatine", {"title": "PHS Pirate Boosters Present: Fall Craft Fair", "date": "2026-11-07", "venue": "Palatine High School"})
     assert link == "https://withintenmiles.com/sponsor/preview/?name=PHS+Pirate+Boosters&town=Palatine&event=Fall+Craft+Fair&date=Sat+Nov+7&d=2026-11-07&venue=Palatine+High+School&kind=fair"
     assert ob.preview_link("venue", "Des Plaines Theatre", "Des Plaines", {"title": "Blues Night", "date": "2026-11-02"}).endswith("&kind=warm")
+
+
+def test_outreach_is_can_spam_ready_footer_owner_name_do_not_contact_and_refusal_without_an_address(tmp_path):
+    # ROADMAP.md item 430.
+    import outreach_batch as ob
+    import yaml
+    from datetime import date
+    owner = {"name": "Pat Doe", "address": "PO Box 12, Palatine IL 60078"}
+    reg = {"phs pirate boosters": {"name": "PHS Pirate Boosters", "town": "Palatine", "events": [{"title": "PHS Pirate Boosters Present: Fall Craft Fair", "date": "2026-11-07", "time": "09:00", "venue": "Palatine High School"}]},
+           "napleton palatine mazda": {"name": "Napleton Palatine Mazda", "town": "Palatine", "events": [{"title": "Trunk or Treat at Napleton Palatine Mazda", "date": "2026-11-08"}]}}
+    blocks = ob.build_blocks(reg, ob.load_contacts(), today=date(2026, 11, 2), owner=owner)
+    assert len(blocks) == 2
+    for b in blocks:
+        assert b["body"].rstrip().endswith("Reply 'no thanks' and we won't email you again.")
+        assert "Pat Doe" in b["body"] and "PO Box 12, Palatine IL 60078 \u00b7 hello@withintenmiles.com" in b["body"] and "[Your name]" not in b["body"]
+    skipped = ob.build_blocks(reg, ob.load_contacts(), today=date(2026, 11, 2), owner=owner, do_not_contact={"napleton palatine dealerships"})
+    assert [b["org"] for b in skipped] == ["PHS Pirate Boosters"]  # one organisation name is the whole opt-out
+    cfg = tmp_path / "n.yaml"
+    cfg.write_text(yaml.safe_dump({"owner_name": "Pat Doe", "mailing_address": ""}))
+    assert ob.load_owner(cfg) is None  # an unset address means no owner
+    cfg.write_text(yaml.safe_dump({"owner_name": "Pat Doe", "mailing_address": "PO Box 12"}))
+    assert ob.load_owner(cfg) == {"name": "Pat Doe", "address": "PO Box 12"}
+    text = ob.render(blocks, datetime(2026, 11, 2), None)
+    assert "Add your mailing address" in text and "Where to send" not in text and "Reply 'no thanks'" not in text
+    import check_outreach_batch as cb
+    assert cb.check(text, reg, date(2026, 11, 2)) and "Add your mailing address" in cb.check(text, reg, date(2026, 11, 2))[0]
+    assert ob.load_owner() is None or isinstance(ob.load_owner(), dict)  # the shipped config is either unset or complete
+    assert ob.load_do_not_contact() == set()  # nobody has opted out yet

@@ -22,6 +22,8 @@ import warm_prospects  # noqa: E402
 
 ROOT = Path(__file__).resolve().parent.parent
 OUTPUT_PATH = ROOT / "OUTREACH_BATCH.md"
+NEWSLETTER_PATH = ROOT / "config" / "newsletter.yaml"
+UNSET_WARNING = "Add your mailing address and your name to config/newsletter.yaml (owner_name and mailing_address) before sending"
 CONTACTS_PATH = ROOT / "config" / "outreach_contacts.yaml"
 MAX_BLOCKS = 8
 SITE = "https://withintenmiles.com"
@@ -34,7 +36,40 @@ def personal_addresses(text: str, contacts: list[dict]) -> list[str]:
     """Addresses in `text` that look personal, ignoring the organisation mailboxes
     the config explicitly marks (a craft fair's own mailbox, published on its page)."""
     allowed = {str(c["contact"]).lower() for c in contacts if c.get("organisation_mailbox") and c.get("contact") and c.get("source")}
-    return [m.group(0) for m in PERSONAL_ADDRESS.finditer(text) if not any(a.startswith(m.group(0).lower()) for a in allowed)]
+    return [
+        m.group(0) for m in PERSONAL_ADDRESS.finditer(text)
+        if not any(a.startswith(m.group(0).lower()) for a in allowed) and m.group(0).rstrip("@").lower() not in ROLE_LOCALPARTS  # the footer's own hello@
+    ]
+
+
+def load_owner(path: Path | None = None) -> dict | None:
+    """ROADMAP.md item 430: the sender's real name and mailing address, from
+    config/newsletter.yaml. None while either is unset, and then the batch
+    refuses to render messages."""
+    try:
+        data = yaml.safe_load((path or NEWSLETTER_PATH).read_text(encoding="utf-8")) or {}
+    except (OSError, yaml.YAMLError):
+        return None
+    name, address = str(data.get("owner_name") or "").strip(), str(data.get("mailing_address") or "").strip()
+    return {"name": name, "address": address} if name and address else None
+
+
+def signature(owner: dict) -> str:
+    """The sign-off and the fixed CAN-SPAM footer every message ends with."""
+    return (
+        f"Thanks,\n{owner['name']}\n"
+        f"Within Ten \u00b7 {owner['address']} \u00b7 hello@withintenmiles.com\n"
+        "Reply 'no thanks' and we won't email you again."
+    )
+
+
+def load_do_not_contact(path: Path = CONTACTS_PATH) -> set[str]:
+    """Organisation names (never people) the batch must never include."""
+    try:
+        data = yaml.safe_load(path.read_text(encoding="utf-8")) or {}
+    except (OSError, yaml.YAMLError):
+        return set()
+    return {str(n).strip().lower() for n in data.get("do_not_contact") or [] if str(n).strip()}
 
 
 def load_contacts(path: Path = CONTACTS_PATH) -> list[dict]:
@@ -113,12 +148,12 @@ def details_for(ev: dict) -> str | None:
     return f"{_day(ev['date'] + 'T00:00:00')}, {_clock(ev['time'])}, {ev['venue']}"
 
 
-def body_for(kind: str, name: str, ev: dict, town: str, preview: str) -> str:
+def body_for(kind: str, name: str, ev: dict, town: str, preview: str, owner: dict | None = None) -> str:
     """The filled OUTREACH_TEMPLATES.md section: 14a (warm), 14b (fair), 14c (venue)."""
     town = town or "local"
     when = _day(ev["date"] + "T00:00:00")
     title = _display(ev["title"])
-    sign = f"Thanks,\n[Your name]\nWithin Ten \u2014 {SITE}/"
+    sign = signature(owner or {"name": "[Owner name]", "address": "[Mailing address]"})  # a real owner always replaces these: the batch refuses to render without one
     details = details_for(ev)
     if details:  # item 415: one word is enough when the site already holds the facts
         ask = f"Reply 'yes' and we'll feature it exactly as it's listed ({details}); tell us if anything has changed."
@@ -158,7 +193,7 @@ def preview_link(kind: str, name: str, town: str, ev: dict) -> str:
     return f"{SITE}/sponsor/preview/?" + "&".join(f"{k}={quote_plus(v)}" for k, v in parts)
 
 
-def build_blocks(registry: dict, contacts: list[dict], limit: int = MAX_BLOCKS, today: date | None = None) -> list[dict]:
+def build_blocks(registry: dict, contacts: list[dict], limit: int = MAX_BLOCKS, today: date | None = None, owner: dict | None = None, do_not_contact: set[str] | None = None) -> list[dict]:
     """One block per organisation. Order (item 410): fairs within 21 days first,
     then warm businesses, then other fairs, then venues that publish calendars."""
     today = today or date.today()
@@ -166,7 +201,7 @@ def build_blocks(registry: dict, contacts: list[dict], limit: int = MAX_BLOCKS, 
     orgs: dict[str, dict] = {}
     for key, host in sorted(registry.items()):
         contact = next((c for c in contacts if c["match"].lower() in key), None)
-        if not contact:
+        if not contact or contact["org"].lower() in (do_not_contact or set()):
             continue
         org = orgs.setdefault(contact["org"], {"contact": contact, "town": host["town"], "events": [], "venue": key in venue_keys})
         for e in warm_prospects.drop_placeholder_dates(host["events"]):
@@ -194,13 +229,15 @@ def build_blocks(registry: dict, contacts: list[dict], limit: int = MAX_BLOCKS, 
         preview = preview_link(kind, name, org["town"], ev)
         blocks.append({
             "org": name, "kind": kind, "where": where_to_send(org["contact"]),
-            "subject": subject_for(kind, ev, org["town"]), "body": body_for(kind, name, ev, org["town"], preview),
+            "subject": subject_for(kind, ev, org["town"]), "body": body_for(kind, name, ev, org["town"], preview, owner),
             "event": f"{ev['title']} ({ev['date']})",
         })
     return blocks
 
 
-def render(blocks: list[dict], now: datetime) -> str:
+def render(blocks: list[dict], now: datetime, owner: dict | None) -> str:
+    if owner is None:  # item 430: no messages without the owner's name and mailing address
+        return f"# Outreach batch (ROADMAP.md item 401)\n\n{UNSET_WARNING}.\n"
     lines = [
         "# Outreach batch (ROADMAP.md item 401)",
         "",
@@ -217,16 +254,21 @@ def render(blocks: list[dict], now: datetime) -> str:
 
 
 def write_batch(registry: dict, now: datetime, path: Path | None = None) -> int:
-    blocks = build_blocks(registry, load_contacts())
-    (path or OUTPUT_PATH).write_text(render(blocks, now), encoding="utf-8")
+    owner = load_owner()
+    blocks = build_blocks(registry, load_contacts(), owner=owner, do_not_contact=load_do_not_contact()) if owner else []
+    (path or OUTPUT_PATH).write_text(render(blocks, now, owner), encoding="utf-8")
     return len(blocks)
 
 
 def main() -> int:
     now = datetime.now()
-    blocks = build_blocks(warm_prospects.load_registry(), load_contacts())
-    OUTPUT_PATH.write_text(render(blocks, now), encoding="utf-8")
+    owner = load_owner()
+    blocks = build_blocks(warm_prospects.load_registry(), load_contacts(), owner=owner, do_not_contact=load_do_not_contact()) if owner else []
+    OUTPUT_PATH.write_text(render(blocks, now, owner), encoding="utf-8")
     print("Wrote", OUTPUT_PATH, len(blocks), "blocks")
+    if owner is None:
+        print(UNSET_WARNING)
+        return 1  # the workflow step fails, and the workflow watchdog (item 406) opens its issue
     return 0
 
 

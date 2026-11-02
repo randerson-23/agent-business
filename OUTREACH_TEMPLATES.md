@@ -1,5 +1,7 @@
 # Sponsor Outreach Email Templates
 
+> **Every message ends with the sender's real name, a mailing address and the opt-out line** (ROADMAP.md item 430): `[Owner name]`, then `Within Ten · [Mailing address] · hello@withintenmiles.com`, then `Reply 'no thanks' and we won't email you again.` Set `owner_name` and `mailing_address` in `config/newsletter.yaml`. `OUTREACH_BATCH.md` does this for you and refuses to render without them.
+
 Copy/personalize these when reaching out to local Mount Prospect (60056),
 Arlington Heights (60005), Des Plaines (60016), or Palatine (60067)
 businesses. Keep it short — busy owners skim. Live pricing and
@@ -29,8 +31,9 @@ for one honest sentence on why we should recommend you (a detail that's
 true and specific always beats generic ad copy).
 
 Thanks,
-[Your name]
-Within Ten — https://withintenmiles.com/
+[Owner name]
+Within Ten · [Mailing address] · hello@withintenmiles.com
+Reply 'no thanks' and we won't email you again.
 
 ## 2. Follow-up (no response after ~1 week)
 
@@ -45,7 +48,7 @@ obligation either way, just wanted to check before I offer it to another
 local business.
 
 Thanks,
-[Your name]
+[Owner name]
 
 ## 3. Booking confirmation
 
@@ -75,7 +78,7 @@ Payment: $[amount] via [Venmo/Zelle/check] — details below.
 Thanks for supporting local news for [Mount Prospect / Arlington
 Heights] families!
 
-[Your name]
+[Owner name]
 
 ## 4. Renewal check-in
 
@@ -91,7 +94,7 @@ happy to point you to it.
 Let me know either way — no pressure, and thanks again for supporting
 the newsletter.
 
-[Your name]
+[Owner name]
 
 ## 5. Real estate / Neighborhood Authority pitch
 
@@ -119,8 +122,9 @@ Worth a short call to see if it fits how you're already budgeting for
 [region]? Happy to send a sample issue either way.
 
 Thanks,
-[Your name]
-Within Ten — https://withintenmiles.com/
+[Owner name]
+Within Ten · [Mailing address] · hello@withintenmiles.com
+Reply 'no thanks' and we won't email you again.
 
 ## 5a. Real estate — "Open house this weekend" ($20 Featured slot) (ROADMAP.md Phase 11 #248)
 
@@ -171,8 +175,9 @@ annual option for agents who want to be the name in [town] all year. No
 pressure on either.
 
 Thanks,
-[Your name]
-Within Ten — https://withintenmiles.com/
+[Owner name]
+Within Ten · [Mailing address] · hello@withintenmiles.com
+Reply 'no thanks' and we won't email you again.
 
 ## 6. Downtown merchants association pitch
 
@@ -203,8 +208,9 @@ upcoming meeting, whichever's easier — no obligation, and happy to send
 a sample issue first.
 
 Thanks,
-[Your name]
-Within Ten — https://withintenmiles.com/
+[Owner name]
+Within Ten · [Mailing address] · hello@withintenmiles.com
+Reply 'no thanks' and we won't email you again.
 
 ## 7. Local press pitch (ROADMAP.md Phase 11 #77, reordered by #125)
 
@@ -256,7 +262,7 @@ any questions if it's useful for a "what to do this weekend" mention or
 similar.
 
 Thanks for your time either way,
-[Your name]
+[Owner name]
 Within Ten — https://withintenmiles.com/
 
 ## 7b. Daily Herald — trick-or-treat hours for your annual list (ROADMAP.md Phase 11 #271)
@@ -296,8 +302,9 @@ I'll fix it the same day. Use any of it you like; a credit link is
 welcome but not required.
 
 Thanks,
-[Your name]
-Within Ten — https://withintenmiles.com/
+[Owner name]
+Within Ten · [Mailing address] · hello@withintenmiles.com
+Reply 'no thanks' and we won't email you again.
 
 ## 7c. Daily Herald — tree lighting dates for your annual roundup (ROADMAP.md Phase 11 #274)
 
@@ -326,8 +333,9 @@ town posts or changes anything. If you spot a mistake, tell me and I'll
 fix it the same day. Use any of it you like.
 
 Thanks,
-[Your name]
-Within Ten — https://withintenmiles.com/
+[Owner name]
+Within Ten · [Mailing address] · hello@withintenmiles.com
+Reply 'no thanks' and we won't email you again.
 
 ## 8. Trade a mention for a mention (ROADMAP.md Phase 11 #94)
 
@@ -356,7 +364,7 @@ would introduce Within Ten to people who'd genuinely use it — but that's
 entirely up to you, and the mention stands either way.
 
 Thanks for what you do for this town,
-[Your name]
+[Owner name]
 Within Ten — https://withintenmiles.com/
 
 ## 9. Facebook local group admin — permission to post weekly (ROADMAP.md Phase 11 #107)
@@ -397,7 +405,7 @@ group's rules.
 Either way, thanks for running this group — it's a great resource for
 the town.
 
-[Your name]
+[Owner name]
 Within Ten — https://withintenmiles.com/
 
 ## 10. Newsletter cross-recommendation (ROADMAP.md Phase 11 #25)
@@ -441,7 +449,7 @@ Northwest Neighbor to our readers if you'd be open to the same. No
 obligation either way, and happy to share a sample issue first.
 
 Thanks for what you're building for the area,
-[Your name]
+[Owner name]
 Within Ten — https://withintenmiles.com/
 
 ## 11. Ask a civic source to link back (ROADMAP.md Phase 11 #152)
@@ -494,7 +502,7 @@ or removed, just say so — it's your information, and I'd rather fix it
 than have you find it wrong on your own.
 
 Thanks for everything [Organization Name] does for the town,
-[Your name]
+[Owner name]
 Within Ten — https://withintenmiles.com/
 
 ## 11a. Chicago Northwest visitors bureau — "nearby towns this weekend" (ROADMAP.md Phase 11 #249)
@@ -553,7 +561,7 @@ appear, just tell me and I'll fix or remove it. It's your region's
 information as much as mine.
 
 Thanks for what you do for the area,
-[Your name]
+[Owner name]
 Within Ten — https://withintenmiles.com/
 
 ## 12. Experience Mount Prospect & Downtown Mount Prospect — link-back + feed access (ROADMAP.md Phase 11 #161)
@@ -619,7 +627,7 @@ sample issue first, and if there's ever anything you'd rather see
 corrected or removed once we're pulling from you, just say so.
 
 Thanks for everything Experience Mount Prospect does for the town,
-[Your name]
+[Owner name]
 Within Ten — https://withintenmiles.com/
 
 ### 12b. Downtown Mount Prospect
@@ -648,7 +656,7 @@ ever anything you'd rather see corrected or removed once we're pulling
 from your feed, just say so.
 
 Thanks for everything Downtown Mount Prospect does for the town,
-[Your name]
+[Owner name]
 Within Ten — https://withintenmiles.com/
 
 ## 13. Small Business Saturday feature (ROADMAP.md item 208)
@@ -681,8 +689,9 @@ before the weekend.
 See how [Business Name] would look this week (a preview, nothing is published): https://withintenmiles.com/sponsor/preview/?name=[Business+Name]&town=[Town]
 
 Thanks,
-[Your name]
-Within Ten — https://withintenmiles.com/
+[Owner name]
+Within Ten · [Mailing address] · hello@withintenmiles.com
+Reply 'no thanks' and we won't email you again.
 
 ## 13a. Holiday listing — "Your shop on the town's holiday page, $20 until Nov 15" (ROADMAP.md item 352)
 
@@ -705,8 +714,9 @@ If you want one, reply with your hours or sale in a line and your street
 address, and I'll have it up within a day of payment.
 
 Thanks,
-[Your name]
-Within Ten — https://withintenmiles.com/
+[Owner name]
+Within Ten · [Mailing address] · hello@withintenmiles.com
+Reply 'no thanks' and we won't email you again.
 
 ## 15. Car dealership — "Your trunk-or-treat is on our Halloween page" (ROADMAP.md Phase 11 #273)
 
@@ -743,8 +753,9 @@ is free before taking payment.
 See how [Business Name] would look this week (a preview, nothing is published): https://withintenmiles.com/sponsor/preview/?name=[Business+Name]&town=[Town]
 
 Thanks,
-[Your name]
-Within Ten — https://withintenmiles.com/
+[Owner name]
+Within Ten · [Mailing address] · hello@withintenmiles.com
+Reply 'no thanks' and we won't email you again.
 
 ## 14. "You already support [school]'s PTO" (ROADMAP.md Phase 11 #270)
 
@@ -776,8 +787,9 @@ It has to be a real, public event or offer with a date. If you'd like
 either, reply with the link and the one line you want under it.
 
 Thanks,
-[Your name]
-Within Ten — https://withintenmiles.com/
+[Owner name]
+Within Ten · [Mailing address] · hello@withintenmiles.com
+Reply 'no thanks' and we won't email you again.
 
 ### 14b. Kids-enrichment franchises (ROADMAP.md Phase 11 #242 and #297)
 
@@ -813,8 +825,9 @@ open, and I'll set it up.
 See how [Business Name] would look this week (a preview, nothing is published): https://withintenmiles.com/sponsor/preview/?name=[Business+Name]&town=[Town]
 
 Thanks,
-[Your name]
-Within Ten — https://withintenmiles.com/
+[Owner name]
+Within Ten · [Mailing address] · hello@withintenmiles.com
+Reply 'no thanks' and we won't email you again.
 
 ## 14b. Craft-fair organiser — "Your craft fair is on our [town] page" (ROADMAP.md item 396)
 
@@ -837,8 +850,9 @@ tell us if anything has changed. (If the site doesn't hold the time and place, a
 for them instead.)
 
 Thanks,
-[Your name]
-Within Ten — https://withintenmiles.com/
+[Owner name]
+Within Ten · [Mailing address] · hello@withintenmiles.com
+Reply 'no thanks' and we won't email you again.
 
 ## 14c. Venue that publishes its own calendar — "We list your shows for free" (ROADMAP.md item 408)
 
@@ -861,8 +875,9 @@ Your next show on our list is [Show] on [Date]. If you'd like that one featured,
 reply 'yes' (or tell us which show and the link you want it to open).
 
 Thanks,
-[Your name]
-Within Ten — https://withintenmiles.com/
+[Owner name]
+Within Ten · [Mailing address] · hello@withintenmiles.com
+Reply 'no thanks' and we won't email you again.
 
 ## 16. Arts venue — "Your show is on our weekend page" (ROADMAP.md Phase 11 #284)
 
@@ -889,8 +904,9 @@ Reply with the show and the one line you'd like under the title, and I'll
 confirm the day is free before taking payment.
 
 Thanks,
-[Your name]
-Within Ten — https://withintenmiles.com/
+[Owner name]
+Within Ten · [Mailing address] · hello@withintenmiles.com
+Reply 'no thanks' and we won't email you again.
 
 ## 17. Local subreddit moderators (ROADMAP.md Phase 11 #302)
 
@@ -909,4 +925,4 @@ for the sidebar or wiki's local-resources list? Happy to correct anything,
 and no problem at all if it doesn't fit.
 
 Thanks,
-[Your name]
+[Owner name]
