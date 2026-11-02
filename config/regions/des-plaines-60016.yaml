@@ -203,6 +203,18 @@ annual_events:
     detail: "Carnival rides, rock wall, petting zoo & food wind down at Lake Park. Noon–7pm, 2200 Lee St. Free admission."
     url: "https://desplainesfallfest.org/"
     tags: ["free", "kid_friendly", "outdoor"]
+  # ROADMAP.md item 427, from the City's own "Holiday Tree Lighting and Winter Fair" page (probe, 2026-11-01).
+  - title: "Holiday Tree Lighting at Metropolitan Square"
+    date: "2026-12-04T16:00:00"
+    detail: "Food trucks, tree decorating and a visit from Santa. Friday 4-6:30 p.m. at Metropolitan Square. Free."
+    url: "https://www.desplainesil.gov/Departments/Media-Services/Events/Tree-Lighting-and-Winter-Fair"
+    venue: "Metropolitan Square"
+    tags: ["free", "kid_friendly", "outdoor"]
+  - title: "Des Plaines Winter Fair"
+    date: "2026-12-05T11:00:00"
+    detail: "The City's Winter Fair, the day after the tree lighting. Saturday 11 a.m.-3 p.m.; trolley-tour registration opens Nov 2, 2026 at 8 a.m. on the City's page."
+    url: "https://www.desplainesil.gov/Departments/Media-Services/Events/Tree-Lighting-and-Winter-Fair"
+    tags: ["kid_friendly"]
 
 evergreen:
   - title: "Des Plaines Public Library"
@@ -244,10 +256,14 @@ leaf_pickup:
   url: "https://www.desplainesil.gov/Departments/Public-Works-and-Engineering/Street-Maintenance/Leaf-and-Branch-Collection"
   summary: "Residential leaf collection starting Monday, October 19, 2026 and continuing through early December, weather permitting."
 
-# ROADMAP.md item 274: no 2026 date posted yet; set `date` once the City does.
+# ROADMAP.md items 274 and 427: set from the City's own page (read by URL probe on 2026-11-01):
+# "Holiday Tree Lighting at Metropolitan Square: Friday, December 4 | 4-6:30 p.m."; the page's
+# trolley-tour registration line says "November 2, 2026", so this is the 2026 listing.
 tree_lighting:
-  url: "https://desplainesfallfest.org/"
-  date: null
+  url: "https://www.desplainesil.gov/Departments/Media-Services/Events/Tree-Lighting-and-Winter-Fair"
+  date: "2026-12-04"
+  time: "4–6:30 PM"
+  place: "Metropolitan Square"
 
 # Seasonal/evergreen guides (ROADMAP.md Phase 11 #5) - see the Mount
 # Prospect config for the rationale; same civic-source-only approach here.

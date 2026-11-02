@@ -220,7 +220,6 @@ doesn't re-suggest something already shipped.
 
 **Build queue (by deadline; refreshed by the research loop, item 346).**
 Pick from the top unless the owner has flagged something else:
-0. **430** (CAN-SPAM footer, real name and opt-out before any outreach email is sent).
 0. **427, 428** (read the round-27 probe answers daily; set tree-lighting dates and add Salt Creek when found; `/santa/` full by Nov 15).
 0. **422** (candidate park districts and villages; the town-six decision otherwise rests on library counts).
 0. **416** (steps 1-2 done, measuring until about Nov 13; earlier note: step 1: round-24 probes for the candidates' feeds are in `config/url_probes.yaml` (egvpl.libnet.info, rmlib.libnet.info, elkgroveparks.org found by search; no Rolling Meadows park district calendar found); next: read the answers, then write the `_candidate-*.yaml` shadow files and the counts file). **417** with it.
@@ -19093,7 +19092,7 @@ desktop layout.
 
 #### P1 (new)
 
-427. (round 27 first answers 2026-11-01: Mount Prospect and downtown show no tree-lighting text yet; Wheeling timed out; Des Plaines' home page links its own "Holiday Tree Lighting and Winter Fair" page (round 28 reads its date); probes added, round 27, and probe-urls.yml now runs daily; set each `tree_lighting.date` only from a village's own 2026 page when a probe shows one; keep checking until Nov 20) **Watch for the three missing tree-lighting dates and set each one
+427. (Des Plaines DONE 2026-11-02: the City's own page gives Holiday Tree Lighting at Metropolitan Square Fri Dec 4, 4-6:30 p.m. and the Winter Fair Sat Dec 5, 11 a.m.-3 p.m.; `tree_lighting` set and both added as events; Mount Prospect and Wheeling still pending) (earlier: round 27 first answers 2026-11-01: Mount Prospect and downtown show no tree-lighting text yet; Wheeling timed out; Des Plaines' home page links its own "Holiday Tree Lighting and Winter Fair" page (round 28 reads its date); probes added, round 27, and probe-urls.yml now runs daily; set each `tree_lighting.date` only from a village's own 2026 page when a probe shows one; keep checking until Nov 20) **Watch for the three missing tree-lighting dates and set each one
      when posted.** Build loop, URL probes plus config:
 
      - **Mount Prospect:** probe the Village's events and news pages and
@@ -19179,7 +19178,7 @@ in the emails as written.
 
 #### P1 (new)
 
-430. **Make every outreach email CAN-SPAM-compliant, and more
+430. ✅ DONE (fixed footer and the owner's real name from `owner_name` and `mailing_address` in config/newsletter.yaml (both unset: the file now says "Add your mailing address and your name to config/newsletter.yaml ... before sending" instead of messages, and the prospects workflow's generator and checker fail, so the watchdog flags it until the owner fills them in, about 1 minute); `do_not_contact:` organisation names in outreach_contacts.yaml; templates reworded; tests) **Make every outreach email CAN-SPAM-compliant, and more
      trustworthy.** Build loop, `OUTREACH_TEMPLATES.md` §13a–§16 and
      `scripts/outreach_batch.py`:
 

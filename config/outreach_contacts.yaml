@@ -26,3 +26,6 @@ contacts:
     contact: "phscraft@gmail.com"
     organisation_mailbox: true
     source: "https://phspirateboosters.com/craft-fair/"
+
+# Organisation names (never people) the batch must never include: adding one name is the whole opt-out process.
+do_not_contact: []

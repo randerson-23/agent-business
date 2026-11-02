@@ -26,7 +26,13 @@ _BLOCK = re.compile(r"^## \d+\. (?P<org>.+?)\n(?P<body>.*?)(?=^## \d+\. |\Z)", r
 def check(text: str, registry: dict, today: date | None = None) -> list[str]:
     today = today or date.today()
     problems = []
+    if outreach_batch.UNSET_WARNING in text:
+        return [outreach_batch.UNSET_WARNING]
     blocks = list(_BLOCK.finditer(text))
+    for m in blocks:
+        body = m.group("body")
+        if "[Your name]" in body or "[Owner name]" in body or "Reply 'no thanks'" not in body:
+            problems.append(f"{m.group('org')}: missing the owner's name or the opt-out footer")
     for m in blocks:
         org, body = m.group("org"), m.group("body")
         why = re.search(r"\*\*Why it is warm:\*\* (?P<title>.+) \((?P<date>\d{4}-\d{2}-\d{2})\) \(template (?P<tpl>14[abc])\)", body)

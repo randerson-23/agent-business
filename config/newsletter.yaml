@@ -69,3 +69,9 @@ send:
 # exists. Submissions reach the site through scripts/ingest_event_submissions.py
 # (see its docstring), always through a pull request a person reviews.
 event_form_url: ""
+
+# ROADMAP.md item 430: every outreach email ends with the sender's real name and a mailing address (CAN-SPAM).
+# OUTREACH_BATCH.md refuses to render messages until both are set. A registered mailbox (for example a UPS Store
+# box) is the safe choice if you do not want a home address in emails.
+owner_name: ""
+mailing_address: ""
