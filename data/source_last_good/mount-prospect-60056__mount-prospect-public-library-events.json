@@ -1,12 +1,6 @@
 {
- "fetched_at": "2026-11-01T21:59:17+00:00",
+ "fetched_at": "2026-11-02T06:00:13+00:00",
  "items": [
-  {
-   "date": "Sun, 01 Nov 2026 00:00:00 +0000",
-   "detail": "Sunday, November 01 2026 12:00am - 11:59pm \n Looking for your next read? Want a suggestion that fits a category in our year-round Book Bingo? We've got you covered!",
-   "title": "Adult BookFix: Complicated Relationships",
-   "url": "https://mppl.libnet.info/event/17206113"
-  },
   {
    "date": "Mon, 02 Nov 2026 00:00:00 +0000",
    "detail": "Monday, November 02 2026 12:00am - 11:59pm \n Stop by the Youth desk and pick up a fun DIY craft to make at home!",
@@ -360,6 +354,12 @@
    "detail": "Thursday, November 12 2026 10:30am - 11:00am \n Bring the whole family and join us for an interactive storytime with high-energy stories, songs, and activities.",
    "title": "Family Storytime",
    "url": "https://mppl.libnet.info/event/16637957"
+  },
+  {
+   "date": "Thu, 12 Nov 2026 13:00:00 +0000",
+   "detail": "Thursday, November 12 2026 1:00pm - 2:00pm \n Prepare your palate for a vibrant culinary journey with star chef Pyet DeSpain as she presents her debut cookbook, Rooted in Fire: A Celebration of Native American and Mexican Cooking.",
+   "title": "Native American and Mexican Cooking with Chef Pyet DeSpain",
+   "url": "https://mppl.libnet.info/event/17310534"
   }
  ],
  "source": "Mount Prospect Public Library — Events"

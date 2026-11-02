@@ -1,12 +1,6 @@
 {
- "fetched_at": "2026-11-01T21:59:17+00:00",
+ "fetched_at": "2026-11-02T06:00:13+00:00",
  "items": [
-  {
-   "date": "2026-11-01",
-   "detail": "",
-   "title": "Tiny Art Show Artist Sign up",
-   "url": "https://www.ahml.info/scheduling/reservation/234871"
-  },
   {
    "date": "2026-11-02",
    "detail": "",
@@ -118,14 +112,14 @@
   {
    "date": "2026-11-20",
    "detail": "",
-   "title": "Improv Workshop for Brain Health",
-   "url": "https://www.ahml.info/scheduling/reservation/195034"
+   "title": "Senior Center: Travelogue",
+   "url": "https://www.ahml.info/scheduling/reservation/233828"
   },
   {
    "date": "2026-11-21",
    "detail": "",
-   "title": "Family Time",
-   "url": "https://www.ahml.info/scheduling/reservation/224198"
+   "title": "Beginning ESL",
+   "url": "https://www.ahml.info/scheduling/reservation/236749"
   },
   {
    "date": "2026-11-22",
@@ -160,8 +154,8 @@
   {
    "date": "2026-11-28",
    "detail": "",
-   "title": "Games & Gab",
-   "url": "https://www.ahml.info/scheduling/reservation/236748"
+   "title": "Family Time",
+   "url": "https://www.ahml.info/scheduling/reservation/224199"
   },
   {
    "date": "2026-11-30",
@@ -190,12 +184,6 @@
   {
    "date": null,
    "detail": "",
-   "title": "Clases de Computación Básica",
-   "url": "https://www.ahml.info/scheduling/reservation/236331"
-  },
-  {
-   "date": null,
-   "detail": "",
    "title": "Hablemos Español (Let's Speak Spanish)",
    "url": "https://www.ahml.info/scheduling/reservation/234200"
   },
@@ -208,14 +196,20 @@
   {
    "date": null,
    "detail": "",
-   "title": "Canceled - Committee of the Whole Meeting",
-   "url": "https://www.ahml.info/scheduling/reservation/198849"
+   "title": "Clases de Computación Básica",
+   "url": "https://www.ahml.info/scheduling/reservation/236331"
   },
   {
    "date": null,
    "detail": "",
    "title": "Read to Learn (District 214)",
    "url": "https://www.ahml.info/scheduling/reservation/194370"
+  },
+  {
+   "date": null,
+   "detail": "",
+   "title": "Canceled - Committee of the Whole Meeting",
+   "url": "https://www.ahml.info/scheduling/reservation/198849"
   },
   {
    "date": null,
@@ -280,14 +274,14 @@
   {
    "date": null,
    "detail": "",
-   "title": "Play Time",
-   "url": "https://www.ahml.info/scheduling/reservation/224269"
+   "title": "Senior Center: Current Events",
+   "url": "https://www.ahml.info/scheduling/reservation/233856"
   },
   {
    "date": null,
    "detail": "",
-   "title": "Senior Center: Current Events",
-   "url": "https://www.ahml.info/scheduling/reservation/233856"
+   "title": "Play Time",
+   "url": "https://www.ahml.info/scheduling/reservation/224269"
   },
   {
    "date": null,
@@ -298,14 +292,14 @@
   {
    "date": null,
    "detail": "",
-   "title": "Culture & Conversation (intermediate +)",
-   "url": "https://www.ahml.info/scheduling/reservation/236759"
+   "title": "Beginning ESL",
+   "url": "https://www.ahml.info/scheduling/reservation/236746"
   },
   {
    "date": null,
    "detail": "",
-   "title": "Beginning ESL",
-   "url": "https://www.ahml.info/scheduling/reservation/236746"
+   "title": "Culture & Conversation (intermediate +)",
+   "url": "https://www.ahml.info/scheduling/reservation/236759"
   },
   {
    "date": null,
@@ -322,20 +316,14 @@
   {
    "date": null,
    "detail": "",
-   "title": "Resume Review",
-   "url": "https://www.ahml.info/scheduling/reservation/209846"
-  },
-  {
-   "date": null,
-   "detail": "",
    "title": "Makerplace Wire Wrapped Jewelry: Artisan Ring",
    "url": "https://www.ahml.info/scheduling/reservation/210090"
   },
   {
    "date": null,
    "detail": "",
-   "title": "VIRTUAL: AI and Publishing",
-   "url": "https://www.ahml.info/scheduling/reservation/226938"
+   "title": "Resume Review",
+   "url": "https://www.ahml.info/scheduling/reservation/209846"
   },
   {
    "date": null,
@@ -360,6 +348,18 @@
    "detail": "",
    "title": "Culpability Discussion: A 20s & 30s Event",
    "url": "https://www.ahml.info/scheduling/reservation/229118"
+  },
+  {
+   "date": null,
+   "detail": "",
+   "title": "VIRTUAL: AI and Publishing",
+   "url": "https://www.ahml.info/scheduling/reservation/226938"
+  },
+  {
+   "date": null,
+   "detail": "",
+   "title": "Senior Center: Travelogue",
+   "url": "https://www.ahml.info/scheduling/reservation/233824"
   }
  ],
  "source": "Arlington Heights Memorial Library — Events"

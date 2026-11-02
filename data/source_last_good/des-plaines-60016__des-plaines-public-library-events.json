@@ -1,18 +1,6 @@
 {
- "fetched_at": "2026-11-01T21:59:17+00:00",
+ "fetched_at": "2026-11-02T06:00:13+00:00",
  "items": [
-  {
-   "date": "Sun, 01 Nov 2026 10:00:00 +0000",
-   "detail": "Sunday, November 01 2026 10:00am - 4:00pm \n Gubernatorial Election",
-   "title": "Early Voting",
-   "url": "https://desplaines.libnet.info/event/14863263"
-  },
-  {
-   "date": "Sun, 01 Nov 2026 14:30:00 +0000",
-   "detail": "Sunday, November 01 2026 2:30pm - 3:30pm \n Create a Gmail account, learn how to use and navigate Gmail. Search and organize your inbox, create labels, and send emails with attachments.",
-   "title": "Google: Gmail Basics",
-   "url": "https://desplaines.libnet.info/event/17571929"
-  },
   {
    "date": "Mon, 02 Nov 2026 00:00:00 +0000",
    "detail": "Monday, November 02 2026 12:00am - 11:59pm \n Take & Make Kits are fun crafts you can take home and make on your own time. Drop in to pick up your kit throughout the month! Available while supplies last. For teens in grades 7-12.",
@@ -360,6 +348,18 @@
    "detail": "Thursday, November 12 2026 5:00pm - 6:00pm \n Come in and get to know your teen librarians!",
    "title": "Book a Teen Librarian",
    "url": "https://desplaines.libnet.info/event/16339450"
+  },
+  {
+   "date": "Thu, 12 Nov 2026 18:00:00 +0000",
+   "detail": "Thursday, November 12 2026 6:00pm - 7:45pm \n The Des Plaines Lions Club meets monthly on the 2nd Thursday of the month from 6:00pm to 7:45pm.\nEmail: DesPlainesLionsClub@gmail.com for more information.",
+   "title": "Des Plaines Lions Club Meeting",
+   "url": "https://desplaines.libnet.info/event/17218379"
+  },
+  {
+   "date": "Thu, 12 Nov 2026 18:30:00 +0000",
+   "detail": "Thursday, November 12 2026 6:30pm - 7:30pm \n Crear una cuenta de Gmail, aprenderás como usar y navegar Gmail. Buscar y organizar tu bandeja de entrada, crear etiquetas, y mandar correos electrónicos con archivos de adjunto.",
+   "title": "Google: Gmail Principiantes (Spanish)",
+   "url": "https://desplaines.libnet.info/event/17605868"
   }
  ],
  "source": "Des Plaines Public Library — Events"

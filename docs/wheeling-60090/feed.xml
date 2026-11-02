@@ -3,17 +3,8 @@
 <channel>
   <title>Within Ten — Upcoming events in Wheeling</title>
   <link>https://withintenmiles.com/</link>
-  <description>Upcoming events in Wheeling, soonest first - aggregated automatically from village, library, park district and school-district calendars. This build reached 24 of 30 configured sources.</description>
-  <lastBuildDate>Sun, 01 Nov 2026 21:59:17 +0000</lastBuildDate>
-  <item>
-    <title>Wheeling: Support Our Troops</title>
-    <link>https://withintenmiles.com/wheeling-60090/#ev-support-our-troops-2026-11-01</link>
-    <guid isPermaLink="true">https://withintenmiles.com/wheeling-60090/#ev-support-our-troops-2026-11-01</guid>
-    <description>Sunday, November 01 2026 12:00am - 11:59pm 
- Write an encouraging card to an active military person at the lobby of the library. NR Official listing: https://indiantrails.libnet.info/event/17178977</description>
-    <pubDate>Sun, 01 Nov 2026 00:00:00 +0000</pubDate>
-    <source url="https://indiantrails.libnet.info/event/17178977">Indian Trails Public Library — Events</source>
-  </item>
+  <description>Upcoming events in Wheeling, soonest first - aggregated automatically from village, library, park district and school-district calendars. This build reached 20 of 30 configured sources. 3 sources are shown from their last update, up to 8 hours ago.</description>
+  <lastBuildDate>Mon, 02 Nov 2026 06:00:13 +0000</lastBuildDate>
   <item>
     <title>Wheeling: High School Volunteer Kits</title>
     <link>https://withintenmiles.com/wheeling-60090/#ev-high-school-volunteer-kits-2026-11-02</link>
@@ -454,6 +445,15 @@ Hoopla or another library app? Talk… Official listing: https://indiantrails.li
  Join fellow coloring page enthusiasts in a relaxed environment where you can work at your own pace. Bring your… Official listing: https://indiantrails.libnet.info/event/17044290</description>
     <pubDate>Wed, 11 Nov 2026 13:00:00 +0000</pubDate>
     <source url="https://indiantrails.libnet.info/event/17044290">Indian Trails Public Library — Events</source>
+  </item>
+  <item>
+    <title>Wheeling: Paperback Pals Book Club | Grades 2-3</title>
+    <link>https://withintenmiles.com/wheeling-60090/#ev-paperback-pals-book-club-grades-2-3-2026-11-11</link>
+    <guid isPermaLink="true">https://withintenmiles.com/wheeling-60090/#ev-paperback-pals-book-club-grades-2-3-2026-11-11</guid>
+    <description>Wednesday, November 11 2026 4:00pm - 5:00pm 
+ Book pickup October 14-November 4 at the Youth Services Desk. Roz discovers that she is alone on a wild island… Official listing: https://indiantrails.libnet.info/event/16293508</description>
+    <pubDate>Wed, 11 Nov 2026 16:00:00 +0000</pubDate>
+    <source url="https://indiantrails.libnet.info/event/16293508">Indian Trails Public Library — Events</source>
   </item>
 </channel>
 </rss>
