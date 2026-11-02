@@ -1,5 +1,5 @@
 {
- "fetched_at": "2026-11-02T18:26:12+00:00",
+ "fetched_at": "2026-11-02T22:00:07+00:00",
  "items": [
   {
    "date": "2026-11-02",
@@ -52,8 +52,8 @@
   {
    "date": "2026-11-10",
    "detail": "",
-   "title": "Social Worker in the Library",
-   "url": "https://www.ahml.info/scheduling/reservation/218152"
+   "title": "Read to Learn (District 214)",
+   "url": "https://www.ahml.info/scheduling/reservation/194393"
   },
   {
    "date": "2026-11-11",
@@ -70,8 +70,8 @@
   {
    "date": "2026-11-13",
    "detail": "",
-   "title": "eBooks, eAudiobooks, Movies and More",
-   "url": "https://www.ahml.info/scheduling/reservation/234443"
+   "title": "Senior Center: Travelogue",
+   "url": "https://www.ahml.info/scheduling/reservation/233826"
   },
   {
    "date": "2026-11-14",
@@ -112,14 +112,14 @@
   {
    "date": "2026-11-20",
    "detail": "",
-   "title": "Senior Center: Travelogue",
-   "url": "https://www.ahml.info/scheduling/reservation/233828"
+   "title": "Improv Workshop for Brain Health",
+   "url": "https://www.ahml.info/scheduling/reservation/195034"
   },
   {
    "date": "2026-11-21",
    "detail": "",
-   "title": "Beginning ESL",
-   "url": "https://www.ahml.info/scheduling/reservation/236749"
+   "title": "Family Time",
+   "url": "https://www.ahml.info/scheduling/reservation/224198"
   },
   {
    "date": "2026-11-22",
@@ -184,12 +184,6 @@
   {
    "date": null,
    "detail": "",
-   "title": "Genealogy Gumshoes: Family History Discussion Group",
-   "url": "https://www.ahml.info/scheduling/reservation/201133"
-  },
-  {
-   "date": null,
-   "detail": "",
    "title": "Clases de Computación Básica",
    "url": "https://www.ahml.info/scheduling/reservation/236331"
   },
@@ -198,6 +192,12 @@
    "detail": "",
    "title": "Hablemos Español (Let's Speak Spanish)",
    "url": "https://www.ahml.info/scheduling/reservation/234200"
+  },
+  {
+   "date": null,
+   "detail": "",
+   "title": "Genealogy Gumshoes: Family History Discussion Group",
+   "url": "https://www.ahml.info/scheduling/reservation/201133"
   },
   {
    "date": null,
@@ -262,14 +262,14 @@
   {
    "date": null,
    "detail": "",
-   "title": "Silent Book Club",
-   "url": "https://www.ahml.info/scheduling/reservation/224375"
+   "title": "Beginning ESL",
+   "url": "https://www.ahml.info/scheduling/reservation/236751"
   },
   {
    "date": null,
    "detail": "",
-   "title": "Beginning ESL",
-   "url": "https://www.ahml.info/scheduling/reservation/236751"
+   "title": "Silent Book Club",
+   "url": "https://www.ahml.info/scheduling/reservation/224375"
   },
   {
    "date": null,
@@ -292,14 +292,14 @@
   {
    "date": null,
    "detail": "",
-   "title": "Beginning ESL",
-   "url": "https://www.ahml.info/scheduling/reservation/236746"
+   "title": "Culture & Conversation (intermediate +)",
+   "url": "https://www.ahml.info/scheduling/reservation/236759"
   },
   {
    "date": null,
    "detail": "",
-   "title": "Culture & Conversation (intermediate +)",
-   "url": "https://www.ahml.info/scheduling/reservation/236759"
+   "title": "Beginning ESL",
+   "url": "https://www.ahml.info/scheduling/reservation/236746"
   },
   {
    "date": null,
@@ -316,20 +316,14 @@
   {
    "date": null,
    "detail": "",
-   "title": "Makerplace Wire Wrapped Jewelry: Artisan Ring",
-   "url": "https://www.ahml.info/scheduling/reservation/210090"
-  },
-  {
-   "date": null,
-   "detail": "",
    "title": "Resume Review",
    "url": "https://www.ahml.info/scheduling/reservation/209846"
   },
   {
    "date": null,
    "detail": "",
-   "title": "Culpability Discussion: A 20s & 30s Event",
-   "url": "https://www.ahml.info/scheduling/reservation/229118"
+   "title": "Makerplace Wire Wrapped Jewelry: Artisan Ring",
+   "url": "https://www.ahml.info/scheduling/reservation/210090"
   },
   {
    "date": null,
@@ -354,6 +348,12 @@
    "detail": "",
    "title": "Culture & Conversation (intermediate +)",
    "url": "https://www.ahml.info/scheduling/reservation/232404"
+  },
+  {
+   "date": null,
+   "detail": "",
+   "title": "Culpability Discussion: A 20s & 30s Event",
+   "url": "https://www.ahml.info/scheduling/reservation/229118"
   },
   {
    "date": null,
