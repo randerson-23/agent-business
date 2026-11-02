@@ -2,8 +2,8 @@
   "@context": "https://schema.org",
   "@type": "ItemList",
   "name": "Upcoming events across every region — Within Ten",
-  "dateModified": "2026-11-02T16:13:57+00:00",
-  "numberOfItems": 256,
+  "dateModified": "2026-11-02T18:26:12+00:00",
+  "numberOfItems": 257,
   "itemListElement": [
     {
       "@type": "ListItem",
@@ -6148,7 +6148,7 @@
       "position": 201,
       "item": {
         "@type": "Event",
-        "name": "Native American and Mexican Cooking with Chef Pyet DeSpain",
+        "name": "Native American and Mexican Cooking With Chef Pyet DeSpain",
         "startDate": "2026-11-12T13:00:00-06:00",
         "url": "https://withintenmiles.com/mount-prospect-60056/#ev-native-american-and-mexican-cooking-with-chef-pyet-despain-2026-11-12",
         "eventStatus": "https://schema.org/EventScheduled",
@@ -7463,6 +7463,36 @@
       "position": 244,
       "item": {
         "@type": "Event",
+        "name": "Palatine Winter Farmers' Market",
+        "startDate": "2026-11-14T09:00:00-06:00",
+        "url": "https://withintenmiles.com/palatine-60067/#ev-palatine-winter-farmers-market-2026-11-14",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Palatine, IL",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Palatine",
+            "addressRegion": "IL"
+          }
+        },
+        "sameAs": "https://www.palatine.il.us/common/modules/iCalendar/iCalendar.aspx?feed=calendar&catID=14",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Village of Palatine",
+          "url": "https://www.palatine.il.us"
+        },
+        "image": "https://withintenmiles.com/og/palatine-60067.png",
+        "description": "Palatine Winter Farmers' Market: Feeding you through the off se"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 245,
+      "item": {
+        "@type": "Event",
         "name": "Sewing Machine Basics- Learn to Sew Lanyards!",
         "startDate": "2026-11-14T09:30:00-06:00",
         "url": "https://withintenmiles.com/des-plaines-60016/#ev-sewing-machine-basics-learn-to-sew-lanyards-2026-11-14",
@@ -7492,7 +7522,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 245,
+      "position": 246,
       "item": {
         "@type": "Event",
         "name": "\"Artsgiving\" Crafty Cornucopia",
@@ -7522,7 +7552,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 246,
+      "position": 247,
       "item": {
         "@type": "Event",
         "name": "Storytime Playdate: Tiny Town",
@@ -7553,7 +7583,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 247,
+      "position": 248,
       "item": {
         "@type": "Event",
         "name": "Sound Bath Meditation",
@@ -7585,7 +7615,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 248,
+      "position": 249,
       "item": {
         "@type": "Event",
         "name": "FILM SCREENING: \"BOB DOLE - A WALK THROUGH HISTORY\"",
@@ -7616,7 +7646,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 249,
+      "position": 250,
       "item": {
         "@type": "Event",
         "name": "\"Guys and Dolls SR\"",
@@ -7646,7 +7676,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 250,
+      "position": 251,
       "item": {
         "@type": "Event",
         "name": "A Doll's House by Henrik Ibsen Adapted by Amy Herzog",
@@ -7676,7 +7706,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 251,
+      "position": 252,
       "item": {
         "@type": "Event",
         "name": "JOHN WAITE with SPECIAL GUEST JOHN CAFFERTY & THE BEAVER BROWN BAND",
@@ -7707,7 +7737,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 252,
+      "position": 253,
       "item": {
         "@type": "Event",
         "name": "BOURBON 'N BRASS SPEAKEASY: LIVE BLUES with SONICSOUL BAND",
@@ -7738,7 +7768,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 253,
+      "position": 254,
       "item": {
         "@type": "Event",
         "name": "3D Printing Essentials: Replicate a Piece",
@@ -7768,7 +7798,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 254,
+      "position": 255,
       "item": {
         "@type": "Event",
         "name": "Seguridad de Internet 101 (Spanish)",
@@ -7800,7 +7830,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 255,
+      "position": 256,
       "item": {
         "@type": "Event",
         "name": "A Doll's House by Henrik Ibsen Adapted by Amy Herzog",
@@ -7830,7 +7860,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 256,
+      "position": 257,
       "item": {
         "@type": "Event",
         "name": "\"Guys and Dolls SR\"",
