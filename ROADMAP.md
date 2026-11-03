@@ -220,7 +220,7 @@ doesn't re-suggest something already shipped.
 
 **Build queue (by deadline; refreshed by the research loop, item 346).**
 Pick from the top unless the owner has flagged something else:
-0. **435** (share note links `/this-weekend/`, not a past issue; a few lines), then **436, 437** (real preview card and short og:title for shared links).
+0. **438** (winter-break pages are blank: render the empty message and camp catalogue links; a few lines), with **439** (River Trails Park District probe for Mount Prospect), then **436, 437** (real preview card and short og:title for shared links).
 0. **427, 428** (read the round-27 probe answers daily; set tree-lighting dates and add Salt Creek when found; `/santa/` full by Nov 15).
 0. **422** (candidate park districts and villages; the town-six decision otherwise rests on library counts).
 0. **416** (steps 1-2 done, measuring until about Nov 13; earlier note: step 1: round-24 probes for the candidates' feeds are in `config/url_probes.yaml` (egvpl.libnet.info, rmlib.libnet.info, elkgroveparks.org found by search; no Rolling Meadows park district calendar found); next: read the answers, then write the `_candidate-*.yaml` shadow files and the counts file). **417** with it.
@@ -19391,6 +19391,95 @@ Competitors reviewed this pass: **Apple's rich-link guidance** (TN2444,
 TN3156) and **WhatsApp's Open Graph requirements**, applied to our own
 share note. The design/UX angle is **the preview card**: the art exists,
 but the shared pages still show the default logo.
+
+#### Research pass 2026-11-03 (hundred-and-twentieth pass)
+
+Overnight the build loop shipped item 435: the share note now links
+`/this-weekend/`. Items 436 and 437 are open. This pass re-runs the
+headline search, follows winter-break camps (the next dated query
+parents search, in November), and reads the built winter-break pages,
+which have been live since Nov 1.
+
+| Angle | What it is / what we found | Why it matters here |
+|---|---|---|
+| **Search re-check: "things to do in Mount Prospect IL this weekend"** | Results are still almost all **Eventbrite**, the same page repeated across country domains (.co.uk, .com.au, .ca, .cl, .at), plus **Patch's calendar**, whose visible dates are from April. No curated local page ranks. A plain search for **`withintenmiles.com` returns nothing from the domain** (this backend is not Google; see item 3a) | **No new item.** The query is held by thin, duplicated pages, which is winnable, but only once the site is visibly indexed. That keeps step 1 of the whole ask (the Bing key) where it is. Recorded so the next re-check has a baseline |
+| **Winter-break camps as a source and a sponsor category** (mykidlist's Chicago-area winter-break list; River Trails Park District's Issuu brochures; a 2019 D59 winter-camp flyer; Hot Shots and other paid kids' programmes in the results) | mykidlist names **River Trails Park District's "Camp Winter"**. River Trails is the park district for **north Mount Prospect** (and parts of Prospect Heights and Arlington Heights). It publishes seasonal brochures on Issuu that point to rtpd.org, and **no config in this repo reads it**. The paid camps in the results are independent kids' businesses (basketball, multisport, swim, dance, martial arts). `scripts/osm_prospects.py` pulls **only shops, cafes and restaurants**, so none of them reach `OUTREACH_PROSPECTS.md` | One of Mount Prospect's two park districts is missing from the town that is the owner's own. And the businesses that sell winter-break camps to parents, the readers this list exists for, are the most natural buyers of the existing `winter_break_sponsor` slot, yet the prospect file can't name one (items 439, 440) |
+| **The winter-break pages, read from `docs/` (design/UX)** | All five `/<town>/winter-break/` pages have been live since Nov 1. **Four of five show nothing at all** between the header and the sponsor box: no events, no catalogue links and **no empty message**. The empty message item 259 wrote (*"No winter-break camps are listed… yet"*) only renders *inside* a section, and with zero events no section is created. Des Plaines shows one item | The page exists to answer a November search ("winter break camps Mount Prospect"). A blank page with a "Sponsor this spot" box is the worst first impression the site can give, and it has been in the sitemap for three days (item 438) |
+
+#### P1 (new)
+
+438. **The winter-break page must never be blank.** Build loop, a
+     `region.html.j2` fix plus config:
+
+     - When `sections` is empty, render `empty_message` once, in place of
+       the section list. This is a general fix, so every page that passes
+       an `empty_message` (the holiday and free pages too) gets it.
+     - Add an optional **`camp_catalogue_url:`** per agency in the region
+       YAMLs, filled only from the agency's own camp or registration
+       page. Render these as ***"Park district camps: Mount Prospect Park
+       District → · River Trails Park District →"*** under the empty
+       message, and keep them once dated camps appear.
+     - Item 328's registration-opening line shows here too when one is
+       set.
+
+     Tests: a winter-break page with zero events contains the empty
+     message and any catalogue links, and the general template renders the
+     empty message with no sections.
+
+439. **Add River Trails Park District to Mount Prospect, probe first.**
+     Build loop:
+
+     1. A `config/url_probes.yaml` round for `rtpd.org`. Look for an
+        events or calendar page, with patterns for `?ical=1`,
+        `calendar.ics`, `webcal:`, CivicPlus `/calendar.aspx`, and
+        JSON-LD `Event`. Record its winter camp or registration page for
+        item 438's `camp_catalogue_url`.
+     2. If a readable feed is found, add it to
+        `config/regions/mount-prospect-60056.yaml` with the existing
+        fetchers, tagged with its agency so the cards say *"River Trails
+        Park District"*.
+     3. If there's no feed, add only the catalogue link and say so in the
+        commit. Never scrape the Issuu brochure.
+
+     Tests: the agency label renders, and duplicate events shared with
+     MPPD are merged by the existing dedupe.
+
+#### P2 (new)
+
+440. **Kids'-activity businesses in the prospect file, pitched on the
+     winter-break slot.** Build loop, `scripts/osm_prospects.py`:
+
+     - Add OpenStreetMap categories for kids' activities, ranked after
+       the warm hosts:
+       - `amenity=dancing_school`
+       - `amenity=music_school`
+       - `leisure=sports_centre` and `leisure=fitness_centre` with `sport=` in `martial_arts`, `gymnastics`, `swimming`, `basketball`, `soccer`, `karate`
+       - `amenity=prep_school` (tutoring)
+     - Give them a "Kids' activities" section per town, names and
+       websites only, as now.
+     - Add one short template to `OUTREACH_TEMPLATES.md`, section 14c:
+       *"Running a winter-break camp Dec 21–Jan 3? Parents in [town] are
+       searching for one now. The camp spot on our [town] winter-break page
+       is $[Weekly Spot price] a week →"*, linking `/sponsor/preview/`
+       with a winter-break `kind` (add one if the preview doesn't have it).
+     - This complements item 242, which hand-lists franchises. These are
+       the independents a manual list misses.
+
+     Owner time stays inside item 400's cap: this adds no ask, and the
+     emails join the existing outreach batch (item 430) once its
+     mailing-address step is done. Tests: the new categories classify, and
+     the section is omitted when empty.
+
+Re-rank: **438 goes to the top of the build queue**. It is a template
+bug on a live seasonal page, and the fix is a few lines. **439** goes
+alongside 427/428 (it feeds 438 and the Mount Prospect page). **436 and
+437** follow. **440** waits behind the Nov 15 items.
+
+Competitors reviewed this pass: the **"things to do in Mount Prospect IL
+this weekend"** results (Eventbrite's country-domain duplicates, Patch;
+a non-item) and **winter-break camp sources** (mykidlist's list, River
+Trails Park District's brochures, paid kids' programmes). The design/UX
+angle is **the winter-break pages**: four of five are blank.
 
 
 ## Working agreements for autonomous iteration
