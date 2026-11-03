@@ -2100,7 +2100,8 @@ def render_issue_page(
         older=older,
         newsletter=newsletter or {"configured": False},
         analytics=analytics,
-        og_image_url=SITE_BASE_URL + "og/default.png",
+        og_image_url=SITE_BASE_URL + f"og/issues/{issue['date']}.png",
+        og_title=issue_share_title(issue["date"], len(picks), len(names)),
     )
 
 
@@ -3882,6 +3883,8 @@ def render_merged_hub_page(
     event_pages: list[dict] | None = None,
     picks: list[dict] | None = None,
     season_banner: dict | None = None,
+    og_image_url: str | None = None,
+    og_title: str | None = None,
 ) -> str:
     """A hub-level page merging one date/price-scoped view across every
     region, grouped by region so it's still clear where each one is.
@@ -3904,7 +3907,8 @@ def render_merged_hub_page(
         canonical_url=SITE_BASE_URL + slug + "/",
         hub_url=SITE_BASE_URL,
         analytics=analytics,
-        og_image_url=SITE_BASE_URL + "og/default.png",
+        og_image_url=og_image_url or SITE_BASE_URL + "og/default.png",
+        og_title=og_title,
         empty_message=empty_message,
         build_scope_end_iso=build_scope_end_iso,
         stale_empty_message=stale_empty_message,
@@ -4187,6 +4191,74 @@ def render_event_og_image(entry: dict, color: str | None = None) -> Image.Image:
     draw.text((margin, height - 62), "WITHIN TEN", font=_og_font("DejaVuSans-Bold.ttf", 28), fill=OG_ACCENT)
     draw.rectangle([24, height - 14, width, height], fill=town_rgb)
     return _og_size_check(img)
+
+
+def render_weekend_og_image(date_range: str, picks: list[dict]) -> Image.Image:
+    """The share card for /this-weekend/ and each archived issue (ROADMAP.md
+    item 436): the weekend's dates large, up to three picks each with its town
+    colour dot, the wordmark small in a corner. Each pick is {"title",
+    "pick_town"?, "pick_color"?}."""
+    width, height = OG_IMAGE_SIZE
+    img = Image.new("RGB", (width, height), OG_BG)
+    draw = ImageDraw.Draw(img)
+    margin = 80
+    draw.rectangle([0, 0, 24, height], fill=OG_ACCENT)
+    draw.text((margin, 56), "THIS WEEKEND", font=_og_font("DejaVuSans-Bold.ttf", 30), fill=OG_MUTED)
+    draw.text((width - margin, 56), "WITHIN TEN", font=_og_font("DejaVuSans-Bold.ttf", 26), fill=OG_ACCENT, anchor="ra")
+    draw.text((margin, 104), date_range, font=_og_font("DejaVuSans-Bold.ttf", 116), fill=OG_INK)
+    y = 262
+    title_font = _og_font("DejaVuSans-Bold.ttf", 40)
+    town_font = _og_font("DejaVuSans.ttf", 26)
+    for pick in picks[:3]:
+        color = _hex_rgb(pick.get("pick_color") or EMAIL_TOWN_COLORS[0][0])
+        draw.ellipse([margin, y + 10, margin + 30, y + 40], fill=color)
+        lines = _wrap_og_text(draw, display_title(pick["title"]), title_font, width - margin - (margin + 56))
+        line = lines[0] if lines else ""
+        if len(lines) > 1:
+            line = line.rstrip(".,; ") + "…"
+        draw.text((margin + 56, y), line, font=title_font, fill=OG_INK)
+        if pick.get("pick_town"):
+            draw.text((margin + 56, y + 50), pick["pick_town"], font=town_font, fill=OG_MUTED)
+        y += 106
+    draw.rectangle([24, height - 14, width, height], fill=OG_ACCENT)
+    return _og_size_check(img)
+
+
+_COUNT_WORDS = {2: "two", 3: "three", 4: "four", 5: "five", 6: "six", 7: "seven", 8: "eight"}
+
+
+def weekend_share_title(first_town: str, count: int, date_range: str) -> str:
+    """og:title for /this-weekend/ (item 437): under 60 characters, no site
+    name (the card and the domain already say it)."""
+    dates = date_range.replace("-", "\u2013")
+    title = f"This weekend near {first_town}: {count} things, {dates}"
+    if len(title) > 60:
+        title = f"This weekend near {first_town}: {count} things"
+    if len(title) > 60:
+        title = f"This weekend: {count} things, {dates}"
+    return title
+
+
+def issue_share_title(issue_date: str, pick_count: int, town_count: int) -> str:
+    """og:title for an archived issue (item 437): "Oct 30\u2013Nov 1: 3 picks
+    in five suburbs", under 60 characters."""
+    day = datetime.strptime(issue_date, "%Y-%m-%d").date()
+    friday, _sat, sunday = weekend_dates(day)
+    dates = format_date_range(friday, sunday).replace("-", "\u2013")
+    towns = _COUNT_WORDS.get(town_count)
+    where = f"in {towns} suburbs" if towns else "in the northwest suburbs"
+    what = f"{pick_count} picks " if pick_count else "what\u2019s on "
+    return f"{dates}: {what}{where}"
+
+
+def write_frozen_issue_card(path: Path, date_range: str, picks: list[dict]) -> bool:
+    """Item 436: an issue's share card is written once, at its first build, and
+    never overwritten, so an old link keeps showing that week's card."""
+    if path.exists():
+        return False
+    path.parent.mkdir(parents=True, exist_ok=True)
+    render_weekend_og_image(date_range, picks).save(path, "PNG", optimize=True)
+    return True
 
 
 def build_page_og_images(towns: list[str], tree_lines: list[str], now: datetime) -> dict[str, Image.Image]:
@@ -7681,6 +7753,14 @@ def main() -> None:
     (OUTPUT_DIR / "index.html").write_text(hub_html, encoding="utf-8")
     logger.info("Wrote %s", OUTPUT_DIR / "index.html")
 
+    weekend_card_picks = build_join_picks(combined_email_sections)  # item 436
+    weekend_og_url = weekend_og_title = None
+    if weekend_card_picks and hub_weekend_date_range and hub_weekend_sections:
+        (OUTPUT_DIR / "og").mkdir(parents=True, exist_ok=True)
+        render_weekend_og_image(hub_weekend_date_range, weekend_card_picks).save(OUTPUT_DIR / "og" / "this-weekend.png", "PNG", optimize=True)
+        weekend_og_url = SITE_BASE_URL + "og/this-weekend.png"
+    if hub_weekend_sections and hub_weekend_date_range:
+        weekend_og_title = weekend_share_title(hub_weekend_sections[0]["region_name"], sum(len(sec["events"]) for sec in hub_weekend_sections), hub_weekend_date_range)  # item 437
     weekend_hub_html = render_merged_hub_page(
         hub_weekend_sections,
         now,
@@ -7691,6 +7771,8 @@ def main() -> None:
         picks=build_join_picks(combined_email_sections, limit=6),  # item 360
         season_banner=weekend_season_banner(build_halloween_banner(trick_or_treat_entries, now)),
         slug="this-weekend",
+        og_image_url=weekend_og_url,
+        og_title=weekend_og_title,
         heading="Things to Do This Weekend in the Northwest Suburbs",
         subheading=f"{hub_weekend_date_range or ''} — everything with a known date, across every region.",
         meta_description=build_hub_weekend_description([s["region_name"] for s in hub_weekend_sections], hub_weekend_sections, hub_weekend_date_range or ""),
@@ -7824,6 +7906,12 @@ def main() -> None:
     for i, issue in enumerate(issues):
         issue_dir = OUTPUT_DIR / "issues" / issue["date"]
         issue_dir.mkdir(parents=True, exist_ok=True)
+        issue_friday, _issue_sat, issue_sunday = weekend_dates(datetime.strptime(issue["date"], "%Y-%m-%d").date())
+        write_frozen_issue_card(  # item 436: written once, never overwritten
+            OUTPUT_DIR / "og" / "issues" / f"{issue['date']}.png",
+            format_date_range(issue_friday, issue_sunday),
+            [{"title": t} for t in issue_picks(issue["html"])],
+        )
         (issue_dir / "index.html").write_text(
             render_issue_page(
                 issue, newer=issues[i - 1] if i > 0 else None, older=issues[i + 1] if i + 1 < len(issues) else None,
