@@ -19338,7 +19338,7 @@ which page the link opens, and what the preview looks like.
 
 #### P1 (new)
 
-435. **The share note links the weekend that's coming, never one that's
+435. ✅ DONE (build_share_note now links /this-weekend/ with the same UTM pair and a header line; test asserts no /issues/ link) **The share note links the weekend that's coming, never one that's
      over.** Build loop, `SHARE_NOTE.md` generator (item 433):
 
      - Link **`/this-weekend/?utm_source=friend&utm_campaign=seed`**. It is
