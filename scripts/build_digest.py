@@ -3516,6 +3516,7 @@ def render_region_page(
     region_map: dict | None = None,
     days_off: list[dict] | None = None,
     days_off_sponsor: dict | None = None,
+    camp_links: list[dict] | None = None,
     closures: list[dict] | None = None,
     build_scope_end_iso: str | None = None,
     stale_empty_message: str | None = None,
@@ -3567,6 +3568,7 @@ def render_region_page(
         region_map=region_map,
         days_off=days_off,
         days_off_sponsor=days_off_sponsor,
+        camp_links=camp_links or [],
         closures=closures,
         election_line=election_day_line(now),
         faq=faq,
@@ -6384,6 +6386,25 @@ def winter_break_catalogues(evergreen: list[dict]) -> list[dict]:
     return [e for e in evergreen if re.search(r"\bcamps?\b", f"{e.get('title', '')} {e.get('detail', '')}", re.IGNORECASE)]
 
 
+def winter_break_camp_links(region_cfg: dict, catalogues: list[dict]) -> list[dict]:
+    """ROADMAP.md item 438: "Park district camps: <agency> ->" links. Explicit
+    `camp_catalogues: [{name, url}]` in the region YAML win (each filled only
+    from the agency's own camp or registration page); otherwise the evergreen
+    camp entries the region already carries, named by their agency."""
+    explicit = region_cfg.get("camp_catalogues")
+    rows = [(str(c.get("name") or "").strip(), str(c.get("url") or "").strip()) for c in explicit] if isinstance(explicit, list) else []
+    if not rows:
+        for e in catalogues:
+            title = str(e.get("title") or "")
+            rows.append((title.split(" \u2014 ")[-1].strip() if " \u2014 " in title else title.strip(), str(e.get("url") or "").strip()))
+    links, seen = [], set()
+    for name, url in rows:
+        if name and safe_http_url(url) and url not in seen:
+            seen.add(url)
+            links.append({"name": name, "url": url})
+    return links
+
+
 def build_days_off_sponsor(sponsors_cfg: dict, region_id: str, local_today: date, key: str = "days_off_sponsor") -> dict | None:
     """The paid slot under a region's "Days off school" box (ROADMAP.md item
     297): `days_off_sponsor:` in config/sponsors.yaml under the region, with
@@ -7671,6 +7692,7 @@ def main() -> None:
                 newsletter=newsletter,
                 analytics=analytics,
                 days_off_sponsor=build_days_off_sponsor(sponsors_cfg, region_id, local_today, key="winter_break_sponsor"),
+                camp_links=winter_break_camp_links(region_cfg, catalogues),
             )
             winter_dir = region_dir / "winter-break"
             winter_dir.mkdir(parents=True, exist_ok=True)

@@ -19408,7 +19408,7 @@ which have been live since Nov 1.
 
 #### P1 (new)
 
-438. **The winter-break page must never be blank.** Build loop, a
+438. ✅ DONE (empty message renders once when a page has no sections; "Park district camps:" line from optional `camp_catalogues:` in the region YAML or evergreen camp entries; links stay once camps appear; the YAML list is empty until round-29 probes name each agency's own camp page) **The winter-break page must never be blank.** Build loop, a
      `region.html.j2` fix plus config:
 
      - When `sections` is empty, render `empty_message` once, in place of
@@ -19426,7 +19426,7 @@ which have been live since Nov 1.
      message and any catalogue links, and the general template renders the
      empty message with no sections.
 
-439. **Add River Trails Park District to Mount Prospect, probe first.**
+439. (step 1 queued: round-29 probe of rtpd.org in config/url_probes.yaml; read the answer next firing) **Add River Trails Park District to Mount Prospect, probe first.**
      Build loop:
 
      1. A `config/url_probes.yaml` round for `rtpd.org`. Look for an
