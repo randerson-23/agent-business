@@ -6891,3 +6891,24 @@ def test_this_weekend_and_issue_pages_point_og_image_at_their_own_card():
     html = build_digest.render_issue_page(issue, town_names=["A", "B"])
     assert f'content="{build_digest.SITE_BASE_URL}og/issues/2026-10-29.png"' in html
     assert 'og:title" content="Oct 30–Nov 1:' in html
+
+
+def test_winter_break_page_with_no_events_shows_the_empty_message_and_camp_links():
+    # ROADMAP.md item 438.
+    cfg = next(c for c in build_digest.load_regions() if c["region"]["id"] == "mount-prospect-60056")
+    now = datetime(2026, 11, 4, 15, tzinfo=timezone.utc)
+    links = build_digest.winter_break_camp_links(
+        {"camp_catalogues": [{"name": "Mount Prospect Park District", "url": "https://www.mppd.org/x"}, {"name": "Bad", "url": "javascript:alert(1)"}]}, []
+    )
+    assert links == [{"name": "Mount Prospect Park District", "url": "https://www.mppd.org/x"}]
+    html = build_digest.render_region_page(
+        cfg, [], None, [], now, heading="Winter Break", subheading="s", empty_message="No winter-break camps are listed yet.",
+        nav_current="winter-break", canonical_suffix="winter-break/", camp_links=links,
+    )
+    assert html.count("No winter-break camps are listed yet.") == 1
+    assert "Park district camps:" in html and 'href="https://www.mppd.org/x"' in html and "javascript:" not in html
+
+
+def test_winter_break_camp_links_fall_back_to_evergreen_camp_entries_by_agency():
+    ever = [{"title": "Kids' camps — River Trails Park District", "url": "https://www.rtpd.org/camps"}]
+    assert build_digest.winter_break_camp_links({}, ever) == [{"name": "River Trails Park District", "url": "https://www.rtpd.org/camps"}]

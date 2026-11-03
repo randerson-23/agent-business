@@ -128,3 +128,42 @@ probes:
       - '(?is)Holiday Tree Lighting at Metropolitan Square.{0,500}'
       - '(?i)(?:Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)[a-z]*\.? \d{1,2}(?:st|nd|rd|th)?,? ?(?:20\d\d)?[^<]{0,80}'
       - '(?i)20\d\d[^<]{0,60}(?:tree|winter fair)'
+  # Round 29 (items 438, 439, 2026-11-03): each park district's own camp / winter-break page, for the
+  # "Park district camps" line on the winter-break pages, and River Trails' calendar for item 439.
+  - url: https://www.rtpd.org/
+    item: 439
+    purpose: River Trails Park District - home page; an events calendar, a camp page, an ICS/webcal feed
+    patterns:
+      - '(?i)(?:winter|camp)[^<]{0,100}'
+      - '(?i)(?:webcal:|\.ics|ical=1|calendar\.aspx)[^"<\s]{0,100}'
+    follow: '(?i)camp|calendar|events'
+  - url: https://www.mppd.org/
+    item: 438
+    purpose: Mount Prospect Park District - home page; its camps or winter-break programme page
+    patterns:
+      - '(?i)(?:winter break|camps?)[^<]{0,100}'
+    follow: '(?i)camp|winter'
+  - url: https://www.ahpd.org/
+    item: 438
+    purpose: Arlington Heights Park District - home page; its camps or winter-break programme page
+    patterns:
+      - '(?i)(?:winter break|camps?)[^<]{0,100}'
+    follow: '(?i)camp|winter'
+  - url: https://www.dpparks.org/
+    item: 438
+    purpose: Des Plaines Park District - home page; its camps or winter-break programme page
+    patterns:
+      - '(?i)(?:winter break|camps?)[^<]{0,100}'
+    follow: '(?i)camp|winter'
+  - url: https://www.palatineparks.org/
+    item: 438
+    purpose: Palatine Park District - home page; its camps or winter-break programme page
+    patterns:
+      - '(?i)(?:winter break|camps?)[^<]{0,100}'
+    follow: '(?i)camp|winter'
+  - url: https://www.wheelingparkdistrict.com/
+    item: 438
+    purpose: Wheeling Park District - home page; its camps or winter-break programme page
+    patterns:
+      - '(?i)(?:winter break|camps?)[^<]{0,100}'
+    follow: '(?i)camp|winter'

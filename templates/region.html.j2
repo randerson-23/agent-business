@@ -542,6 +542,7 @@
     align-items: center;
     gap: 3px;
   }
+  .camp-links { margin: 12px 0 20px; font-size: 15px; }
   .empty { color: var(--muted); font-size: 14px; font-style: italic; }
   .empty a { color: var(--accent-2-text); font-weight: 600; font-style: normal; }
 
@@ -884,6 +885,15 @@
   {% endif %}
 
   {% set any_events = blocks|selectattr("events")|list %}
+
+  {# ROADMAP.md item 438: with no sections at all, say so once (the per-section
+     empty message below only renders inside a section that exists). #}
+  {% if not blocks and nav_current != "all" and empty_message %}
+  <p class="empty">{{ empty_message }}{% if empty_cta_url %} <a href="{{ empty_cta_url }}">{{ empty_cta_label or "Learn more" }}</a>{% endif %}</p>
+  {% endif %}
+  {% if camp_links %}
+  <p class="camp-links"><strong>Park district camps:</strong> {% for c in camp_links %}<a href="{{ c.url }}" rel="noopener">{{ c.name }} &rarr;</a>{% if not loop.last %} &middot; {% endif %}{% endfor %}</p>
+  {% endif %}
 
   {% if nav_current == "all" and not any_events %}
   {% if evergreen %}<p class="quiet-note">It's a quiet week for live updates — here's what's always worth checking in {{ region.name }}.</p>{% endif %}
