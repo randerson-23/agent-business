@@ -222,6 +222,7 @@ doesn't re-suggest something already shipped.
 Pick from the top unless the owner has flagged something else:
 0. **438** (winter-break pages are blank: render the empty message and camp catalogue links; a few lines), with **439** (River Trails Park District probe for Mount Prospect), then **436, 437** (real preview card and short og:title for shared links).
 0. **427, 428** (read the round-27 probe answers daily; set tree-lighting dates and add Salt Creek when found; `/santa/` full by Nov 15).
+0. **441, 442** (`/give/`: toy, coat and food drives per town from 2026 sources, live Nov 15; volunteer badge).
 0. **422** (candidate park districts and villages; the town-six decision otherwise rests on library counts).
 0. **416** (steps 1-2 done, measuring until about Nov 13; earlier note: step 1: round-24 probes for the candidates' feeds are in `config/url_probes.yaml` (egvpl.libnet.info, rmlib.libnet.info, elkgroveparks.org found by search; no Rolling Meadows park district calendar found); next: read the answers, then write the `_candidate-*.yaml` shadow files and the counts file). **417** with it.
 4. **328** (probe first), then **325** (by Nov 15), then **385** (holiday
@@ -19480,6 +19481,90 @@ this weekend"** results (Eventbrite's country-domain duplicates, Patch;
 a non-item) and **winter-break camp sources** (mykidlist's list, River
 Trails Park District's brochures, paid kids' programmes). The design/UX
 angle is **the winter-break pages**: four of five are blank.
+
+#### Research pass 2026-11-03, evening (hundred-and-twenty-first pass)
+
+Today the build loop shipped items 436 and 437 (share cards and short
+og titles) and item 438 (winter-break pages are no longer blank). It
+also queued item 439's River Trails probe. This pass looks for the next
+dated local question after Santa and tree lightings, re-checks Google's
+structured-data changes, and reviews the new share card.
+
+| Angle | What it is / what we found | Why it matters here |
+|---|---|---|
+| **Holiday toy, coat and food drives** (Daily Herald and Arlington Cardinal community posts; Patch's *"Toys for Tots: how to donate, Arlington Heights"*; NBC 5's coat drive; Mount Prospect village documents) | Each of the five towns runs the **same drives every year**. Examples from earlier years: **Mount Prospect's** village and fire department toy drive (gifts for ages 0–17 at the three fire stations and village hall, through early December) and a children's clothing drive. **Arlington Heights** firefighters' coat and toy drive (mid-November to mid-December, all four stations) and a police toy drive. **Palatine** police coat drive for the Palatine Opportunity Center. Every result is **a past year's** article. None of it is in an event feed: it is village news. In `events.json` today the only giving items are **blood drives** and a **"Teen Volunteering"** session (Mount Prospect, Nov 9, *"earn volunteer hours"*) | "Where can I drop off toys in Mount Prospect" is a dated, local question families ask in late November. The search results are stale, and the answer lives on the five village and fire-department pages the probe pattern already reads. It is also a page a **credit union or bank would put its name on** (item 421) without it reading as an ad. **Giving Tuesday is Dec 1** (items 441, 442) |
+| **Google structured data, re-checked** (Search Engine Roundtable on the 2025 Event and Recipe update; SEJ on Event requirements; the 2026 FAQ retirement coverage) | **No 2026 change to Event rich results** turned up. The 2025 update removed the online-event properties, which don't affect in-person events. **FAQ rich results stopped showing on May 7, 2026**. Search Console reporting ends in June and API support in August. The site still emits `FAQPage` on **24 guide pages** | **No new item.** Item 3a already stopped pursuing FAQ rich results. The markup mirrors visible text and is harmless, and answer engines may still read it, so there is nothing to remove. Event markup (item 375) stays as is |
+| **The new share card (design/UX, `docs/og/this-weekend.png`)** | A cream card with a large **"Nov 6–8"**, three picks with town-coloured dots and town names, and a small "WITHIN TEN" mark. It is clean and specific, and at 43 KB it's well under WhatsApp's limit. Missing: **any reason to tap**. There is no count ("35 things") and no hint that it's a free weekly email, and the wordmark is the smallest text on the card | In a text thread the card does the selling before anyone reads the note. A count says "this is big", and "free, every Thursday" says what it is. It's one line on an image the build already draws (item 443) |
+
+#### P1 (new)
+
+441. **`/give/`: toy, coat and food drives in all five towns, live Nov 15
+     – Dec 20.** Build loop, using the probe pattern from
+     `/trick-or-treat/` (`tot_watch.py`):
+
+     1. Add a `config/url_probes.yaml` round for each village's news page
+        and the fire and police department pages. Use patterns for *toy
+        drive*, *coat drive*, *Toys for Tots*, *food drive*, *giving
+        tree*, *donation* and month-day dates.
+     2. Add a **`config/give.yaml`** per town: drive name, organiser,
+        drop-off places, end date and source URL. Fill it **only from a
+        2026 source page**. Add feed events whose titles match *drive*,
+        *donation*, *collection* or *giving tree*, and keep blood drives
+        too.
+     3. Render one page in the `/holidays/` style: a card per town, each
+        drive with its last day and drop-off places, and a source link.
+        Drives past their last day disappear. If a town has nothing yet,
+        it gets an honest line, *"No 2026 drive announced yet; we check
+        the village's news daily"*.
+     4. Add a footer link in season, a sitemap entry, and one
+        *"🎁 Drives closing this week"* email line from Nov 19.
+        Title: *"Toy and Coat Drives 2026: Arlington Heights, Mount
+        Prospect, Palatine…"*.
+
+     Never carry a past year's drive forward. Tests: the season window, an
+     expired drive dropped, the empty line, and source links present.
+     **Sponsor:** one labelled *"Presented by"* line, using item 421's
+     credit-union slot when it's sold.
+
+#### P2 (new)
+
+442. **"Volunteer with your kids" on `/give/`, and a volunteer badge.**
+     Build loop. Feed events whose title or description says *volunteer*,
+     *volunteer hours*, *service hours* or *teen volunteering* get a
+     **"🤝 Volunteer"** badge on cards (the badge pattern already used
+     for "Free" and "Outdoor"). They also get a section on `/give/` for
+     Nov 15 – Dec 31.
+
+     Parents of teens chasing NHS or confirmation service hours are a
+     reader the site doesn't serve yet, and the library feeds already
+     carry these sessions. Tests: Mount Prospect's "Teen Volunteering"
+     gets the badge, and "AARP Driver Safety Course" doesn't match on
+     *drive*.
+
+#### P3 (new)
+
+443. **Give the share card a reason to tap.** Build loop, the weekend
+     share-card renderer from item 436:
+
+     - Add a footer line, ***"35 things in 5 towns · free email every
+       Thursday"***, using the live count and town count.
+     - Make the wordmark the same size as the "THIS WEEKEND" label.
+     - Keep it under 300 KB.
+     - The frozen per-issue cards keep their own count.
+
+     Tests: the footer text comes from the count, and it is omitted when
+     the count is zero.
+
+Re-rank: **441** goes into the build queue right after 427/428. It shares
+the Nov 15 deadline and its probes can join the next probe round. **442**
+rides with it. **443** is a small follow-up to 436, behind the Nov 15
+items.
+
+Competitors reviewed this pass: **holiday toy and coat drive coverage**
+(the Daily Herald, Arlington Cardinal, Patch and NBC 5 stories, all from
+past years) and **Google's structured-data changes**, re-checked (no
+Event change; FAQ rich results retired, a non-item). The design/UX angle
+is **the new share card**: specific, but it gives no reason to tap.
 
 
 ## Working agreements for autonomous iteration
