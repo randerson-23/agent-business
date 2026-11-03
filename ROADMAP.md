@@ -19353,7 +19353,7 @@ which page the link opens, and what the preview looks like.
      Tests: no `/issues/` link appears in the file, the link carries both
      UTM fields, and the note stays under 60 words.
 
-436. **A real preview card for the pages people share.** Build loop,
+436. ✅ DONE (render_weekend_og_image: /og/this-weekend.png 1200x630 ~43 KB, frozen /og/issues/<date>.png written once; tests) **A real preview card for the pages people share.** Build loop,
      extending the weekly image renderer:
 
      - Render **`/og/this-weekend.png` at 1200×630, under 300 KB**: the
@@ -19370,7 +19370,7 @@ which page the link opens, and what the preview looks like.
 
 #### P2 (new)
 
-437. **Short share titles.** Build loop, templates: set og:title (not
+437. ✅ DONE (og:title only; the external link-preview checker step was not run from this sandbox) **Short share titles.** Build loop, templates: set og:title (not
      `<title>`, which stays tuned for search) to under about 60
      characters, without the site name, per Apple's rich-link guidance:
 

@@ -6862,3 +6862,32 @@ def test_every_promotion_gets_a_noindex_receipt_listing_only_what_really_rendere
     empty = build_digest.render_promo_receipt(receipts["2026-12-01-not-yet-shown"])
     assert "Not shown yet" in empty and "Not in a sent issue yet" in empty
     assert not any("/sponsor/receipt/" in u for u in build_digest.collect_sitemap_urls([], None, None, True))
+
+
+def test_weekend_share_card_is_1200x630_under_300kb_and_issue_cards_are_frozen(tmp_path):
+    # ROADMAP.md item 436.
+    picks = [{"title": "Fall Fest", "pick_town": "Palatine", "pick_color": "#0f766e"}, {"title": "Diwali Party", "pick_town": "Mount Prospect"}]
+    img = build_digest.render_weekend_og_image("Nov 6–8", picks)
+    assert img.size == (1200, 630)
+    path = tmp_path / "og" / "issues" / "2026-10-29.png"
+    assert build_digest.write_frozen_issue_card(path, "Oct 30–Nov 1", picks) is True
+    assert path.stat().st_size < 300_000
+    before = path.read_bytes()
+    assert build_digest.write_frozen_issue_card(path, "Nov 6–8", [{"title": "Other"}]) is False
+    assert path.read_bytes() == before
+
+
+def test_share_titles_are_short_and_carry_no_site_name():
+    # ROADMAP.md item 437.
+    t = build_digest.weekend_share_title("Mount Prospect", 35, "Nov 6-8")
+    assert t == "This weekend near Mount Prospect: 35 things, Nov 6–8" and len(t) <= 60 and "Within Ten" not in t
+    assert len(build_digest.weekend_share_title("A Very Long Suburb Name Indeed", 120, "Nov 27-29")) <= 60
+    i = build_digest.issue_share_title("2026-10-29", 3, 5)
+    assert i == "Oct 30–Nov 1: 3 picks in five suburbs" and len(i) <= 60 and "Within Ten" not in i
+
+
+def test_this_weekend_and_issue_pages_point_og_image_at_their_own_card():
+    issue = {"date": "2026-10-29", "subject": "s", "html": "<html><head></head><body>x</body></html>"}
+    html = build_digest.render_issue_page(issue, town_names=["A", "B"])
+    assert f'content="{build_digest.SITE_BASE_URL}og/issues/2026-10-29.png"' in html
+    assert 'og:title" content="Oct 30–Nov 1:' in html
