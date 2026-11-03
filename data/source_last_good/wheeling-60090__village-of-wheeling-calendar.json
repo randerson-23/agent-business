@@ -1,12 +1,6 @@
 {
- "fetched_at": "2026-11-02T18:26:12+00:00",
+ "fetched_at": "2026-11-03T06:04:25+00:00",
  "items": [
-  {
-   "date": "20261102T183000",
-   "detail": "https://www.wheelingil.gov/calendar.aspx?EID=2005",
-   "title": "Village Board Regular Meeting",
-   "url": "https://www.wheelingil.gov/common/modules/iCalendar/iCalendar.aspx?feed=calendar&catID=14"
-  },
   {
    "date": "20261104T183000",
    "detail": "https://www.wheelingil.gov/calendar.aspx?EID=1970",
@@ -359,6 +353,12 @@
    "date": "20270816T183000",
    "detail": "https://www.wheelingil.gov/calendar.aspx?EID=2169",
    "title": "Village Board Regular Meeting",
+   "url": "https://www.wheelingil.gov/common/modules/iCalendar/iCalendar.aspx?feed=calendar&catID=14"
+  },
+  {
+   "date": "20270816T183000",
+   "detail": "https://www.wheelingil.gov/calendar.aspx?EID=2221",
+   "title": "Village Board Meeting",
    "url": "https://www.wheelingil.gov/common/modules/iCalendar/iCalendar.aspx?feed=calendar&catID=14"
   }
  ],

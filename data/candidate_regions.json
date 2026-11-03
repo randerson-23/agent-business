@@ -39,6 +39,16 @@
    "source_items": {
     "Library Events": 500
    }
+  },
+  {
+   "attendable": 51,
+   "date": "2026-11-03",
+   "dated": 51,
+   "distinct": 51,
+   "family": 17,
+   "source_items": {
+    "Library Events": 500
+   }
   }
  ],
  "rolling-meadows-60008": [
@@ -79,6 +89,18 @@
   {
    "attendable": 13,
    "date": "2026-11-02",
+   "dated": 13,
+   "distinct": 13,
+   "family": 6,
+   "source_items": {
+    "City Calendar": 2,
+    "Library Events": 99,
+    "Park District Events": 5
+   }
+  },
+  {
+   "attendable": 13,
+   "date": "2026-11-03",
    "dated": 13,
    "distinct": 13,
    "family": 6,
