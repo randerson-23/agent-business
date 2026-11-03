@@ -6809,17 +6809,17 @@ def test_salt_creek_is_a_palatine_source_so_its_events_carry_palatines_chip():
     assert src["type"] == "ics" and src["url"] == "https://www.saltcreekpd.com/events/?ical=1" and src.get("enabled", True)
 
 
-def test_share_note_links_the_newest_issue_with_utm_and_stays_short():
-    # ROADMAP.md item 433.
-    issues = [{"date": "2026-10-29", "subject": "n", "html": ""}, {"date": "2026-10-22", "subject": "o", "html": ""}]
-    note = build_digest.build_share_note(issues, ["Arlington Heights", "Mount Prospect", "Palatine"])
-    link = build_digest.SITE_BASE_URL + "issues/2026-10-29/?utm_source=friend&utm_campaign=seed"
-    assert note.count(link) == 3 and "2026-10-22" not in note.replace("Generated", "")
+def test_share_note_links_the_coming_weekend_never_an_archived_issue():
+    # ROADMAP.md items 433 and 435.
+    note = build_digest.build_share_note([{"date": "2026-10-29", "subject": "n", "html": ""}], ["Arlington Heights", "Mount Prospect", "Palatine"])
+    link = build_digest.SITE_BASE_URL + "this-weekend/?utm_source=friend&utm_campaign=seed"
+    assert note.count(link) == 3 and "/issues/" not in note
+    assert "always shows the coming weekend" in note and "Here's what's on this weekend" in note
     for block in note.split("```text")[1:]:
         text = block.split("```")[0].strip()
-        assert len(text.split()) < 60 and "utm_campaign=seed" in text
+        assert len(text.split()) < 60 and "utm_source=friend" in text and "utm_campaign=seed" in text
     assert "in Mount Prospect and nearby" in note
-    assert "nothing to link" in build_digest.build_share_note([], ["A"])
+    assert "/issues/" not in build_digest.build_share_note([], ["A"])
 
 
 def test_phone_homepage_shows_town_colour_bars_and_the_weekend_picks():
