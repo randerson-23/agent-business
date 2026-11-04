@@ -231,6 +231,11 @@ annual_events:
       time: "09:00"
       nth: [1, 3]
 
+# ROADMAP.md item 438: the agency's own camp or winter-break page, linked from the winter-break page.
+camp_catalogues:
+  - name: "Palatine Park District"
+    url: "https://www.palatineparks.org/no-school-winter-break-programming/"
+
 evergreen:
   - title: "Palatine Public Library District"
     detail: "Story times, programs, and museum passes for Palatine residents."
