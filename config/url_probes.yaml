@@ -100,6 +100,7 @@ probes:
     purpose: Village of Mount Prospect - home page; a 2026 tree-lighting notice
     patterns:
       - '(?i)(?:tree[- ]lighting|christkindlmarket|busse pocket park)[^<]{0,160}'
+      - '(?i)(?:toy|coat|food|donation|giving tree|toys for tots)[^<]{0,40}(?:drive|collection|tree)[^<]{0,120}'
     follow: '(?i)tree|lighting|holiday|christkindl'
   - url: https://mpdowntown.com/events/
     item: 427
@@ -111,12 +112,14 @@ probes:
     purpose: Village of Wheeling - home page; Lights Around Wheeling or a tree-lighting notice
     patterns:
       - '(?i)(?:lights around wheeling|friendship park|tree[- ]lighting)[^<]{0,160}'
+      - '(?i)(?:toy|coat|food|donation|giving tree|toys for tots)[^<]{0,40}(?:drive|collection|tree)[^<]{0,120}'
     follow: '(?i)lights|holiday|tree'
   - url: https://www.desplainesil.gov/
     item: 427
     purpose: City of Des Plaines - home page; a 2026 tree-lighting or holiday-event notice (also item 367)
     patterns:
       - '(?i)(?:tree[- ]lighting|holiday (?:tree|lights?)|christmas tree)[^<]{0,160}'
+      - '(?i)(?:toy|coat|food|donation|giving tree|toys for tots)[^<]{0,40}(?:drive|collection|tree)[^<]{0,120}'
     follow: '(?i)tree|lighting|holiday'
   # Round 28 (item 427, 2026-11-01): Salt Creek answered (its calendar is The Events Calendar Pro and advertises
   # /events/?ical=1; now a Palatine source). Des Plaines' home page links its own "Holiday Tree Lighting and
@@ -155,15 +158,32 @@ probes:
     patterns:
       - '(?i)(?:winter break|camps?)[^<]{0,100}'
     follow: '(?i)camp|winter'
-  - url: https://www.palatineparks.org/
-    item: 438
-    purpose: Palatine Park District - home page; its camps or winter-break programme page
-    patterns:
-      - '(?i)(?:winter break|camps?)[^<]{0,100}'
-    follow: '(?i)camp|winter'
   - url: https://www.wheelingparkdistrict.com/
     item: 438
     purpose: Wheeling Park District - home page; its camps or winter-break programme page
     patterns:
       - '(?i)(?:winter break|camps?)[^<]{0,100}'
     follow: '(?i)camp|winter'
+  # Round 30 (item 438, 2026-11-04): round 29 found "Winter Break Programming" on Palatine Park District's home page
+  # (no link text kept); mppd.org and dpparks.org only show summer camp pages; rtpd.org and wheelingparkdistrict.com
+  # answer 403 "Just a moment" (a bot wall), ahpd.org timed out. Read the Palatine link target.
+  - url: https://www.palatineparks.org/
+    item: 438
+    purpose: "Palatine Park District - the href behind the home page's Winter Break Programming link"
+    patterns:
+      - '(?is)<a[^>]{0,200}href="[^"]{1,200}"[^>]{0,200}>\s*Winter Break Programming'
+      - '(?is)href="[^"]{0,200}winter[^"]{0,120}"'
+  # Round 31 (item 441, 2026-11-04): toy, coat and food drives. Arlington Heights and Palatine here; the other three towns' home-page probes (items 427) carry the drive pattern too. Each village's home page, following the first link
+  # that looks like a drive or giving notice; a 2026 source is required before anything goes in config/give.yaml.
+  - url: https://www.vah.com/
+    item: 441
+    purpose: Village of Arlington Heights - home page; a 2026 toy, coat or food drive notice
+    patterns:
+      - '(?i)(?:toy|coat|food|donation|giving tree|toys for tots)[^<]{0,40}(?:drive|collection|tree)[^<]{0,120}'
+    follow: '(?i)toy|coat drive|food drive|giving|donat'
+  - url: https://www.palatine.il.us/
+    item: 441
+    purpose: Village of Palatine - home page; a 2026 toy, coat or food drive notice
+    patterns:
+      - '(?i)(?:toy|coat|food|donation|giving tree|toys for tots)[^<]{0,40}(?:drive|collection|tree)[^<]{0,120}'
+    follow: '(?i)toy|coat drive|food drive|giving|donat'

@@ -6912,3 +6912,14 @@ def test_winter_break_page_with_no_events_shows_the_empty_message_and_camp_links
 def test_winter_break_camp_links_fall_back_to_evergreen_camp_entries_by_agency():
     ever = [{"title": "Kids' camps — River Trails Park District", "url": "https://www.rtpd.org/camps"}]
     assert build_digest.winter_break_camp_links({}, ever) == [{"name": "River Trails Park District", "url": "https://www.rtpd.org/camps"}]
+
+
+def test_weekend_share_card_footer_comes_from_the_count_and_is_omitted_at_zero():
+    # ROADMAP.md item 443.
+    assert build_digest.weekend_card_footer(35, 5) == "35 things in 5 towns · free email every Thursday"
+    assert build_digest.weekend_card_footer(1, 1) == "1 thing in 1 town · free email every Thursday"
+    assert build_digest.weekend_card_footer(0, 5) == ""
+    picks = [{"title": "Fall Fest", "pick_town": "Palatine"}]
+    with_footer = build_digest.render_weekend_og_image("Nov 6–8", picks, 35, 5)
+    without = build_digest.render_weekend_og_image("Nov 6–8", picks)
+    assert with_footer.size == without.size == (1200, 630) and with_footer.tobytes() != without.tobytes()
