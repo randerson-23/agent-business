@@ -6552,16 +6552,67 @@ def closure_window(day: date) -> tuple[date, date] | None:
     return None
 
 
-def build_closures(blocks: list[dict], local_today: date) -> list[dict]:
+# ROADMAP.md item 444: closures are never events, in any week. `closed` and
+# `closure` match as whole words, and only when the title has no event-type word
+# ("Closed Captioned Movie", "Closing Ceremony" stay).
+CLOSURE_REMOVE_TITLE = re.compile(
+    r"\b(closed|closures?|closes? early|early close|closing early|no (?:refuse|trash|garbage|recycling|yard waste) (?:collection|pick-?up)|holiday (?:hours|schedule))\b",
+    re.IGNORECASE,
+)
+CLOSURE_EVENT_WORDS = re.compile(
+    r"\b(ceremony|party|class(?:es)?|workshop|concert|movies?|captioned|show|sale|story ?time|club|festival|fair|camp|lesson|performance)\b",
+    re.IGNORECASE,
+)
+
+
+def is_closure_title(title: str) -> bool:
+    # Short titles only: a news blob that mentions a closure somewhere in its body is news, not a closure notice.
+    return len(title or "") <= 100 and bool(CLOSURE_REMOVE_TITLE.search(title or "")) and not CLOSURE_EVENT_WORDS.search(title or "")
+
+
+def split_closures(blocks: list[dict]) -> tuple[list[dict], list[dict]]:
+    """Take closure notices out of every block (item 444) so they never reach the
+    sections, picks, events.json, Event markup, feeds or /e/ pages. School-district
+    blocks are left alone (their no-school days feed the days-off box). Returns the
+    cleaned blocks and the removed events, each with its section for the log."""
+    kept_blocks, removed = [], []
+    for block in blocks:
+        if "school" in (block.get("section") or "").lower():
+            kept_blocks.append(block)
+            continue
+        keep = []
+        for e in block.get("events", []):
+            if is_closure_title(e.get("title") or ""):
+                removed.append(dict(e, _section=block.get("section") or ""))
+                logger.info("Closure moved out of the lists: %r (%s)", e.get("title"), block.get("section"))
+            else:
+                keep.append(e)
+        kept_blocks.append(dict(block, events=keep) if len(keep) != len(block.get("events", [])) else block)
+    return kept_blocks, removed
+
+
+def build_closures(blocks: list[dict], local_today: date, removed: list[dict] | None = None) -> list[dict]:
     """Items whose titles say closed, closes early, delayed or no collection,
     dated inside the holiday window we are in, from non-school feeds. Only what
     a source says - nothing is inferred from the holiday. [] outside a window or
     when no source posts one."""
     window = closure_window(local_today)
-    if not window:
-        return []
-    start, end = window
     found, seen = [], set()
+    # Item 444: closures moved out of the lists show whenever one is dated in the next seven days.
+    for e in removed or []:
+        if not (e.get("title") and e.get("url") and e.get("date_iso")):
+            continue
+        try:
+            day = datetime.fromisoformat(e["date_iso"]).date()
+        except ValueError:
+            continue
+        if local_today <= day <= local_today + timedelta(days=7) and (e["title"], day) not in seen:
+            seen.add((e["title"], day))
+            found.append({"title": e["title"].strip(), "url": e["url"], "date": day, "label": day.strftime("%a %b ") + str(day.day)})
+    if not window:
+        found.sort(key=lambda c: c["date"])
+        return found[:CLOSURE_MAX_ITEMS]
+    start, end = window
     for block in blocks:
         if "school" in (block.get("section") or "").lower():
             continue
@@ -7263,6 +7314,7 @@ def main() -> None:
         # re-filtering (or forgetting to) in each one separately.
         blocks, _partisan_excluded = filter_partisan_events(blocks)
         blocks = filter_past_events(blocks, local_today)
+        blocks, removed_closures = split_closures(blocks)  # item 444
         annotate_registration(blocks, local_today)
         # ROADMAP.md item 173: same single-insertion-point reasoning as
         # item 171's filter above - collapsing duplicates here, before
@@ -7294,7 +7346,7 @@ def main() -> None:
         things_to_do_url = SITE_BASE_URL + region_id + "/things-to-do/"
         editors_pick = select_editors_pick(region_cfg, blocks, evergreen)
         region_days_off = build_days_off(blocks, local_today, official=region_cfg.get("days_off"))
-        region_closures = build_closures(blocks, local_today)
+        region_closures = build_closures(blocks, local_today, removed_closures)
 
         html = render_region_page(
             region_cfg,

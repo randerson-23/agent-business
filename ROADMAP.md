@@ -19411,7 +19411,7 @@ which have been live since Nov 1.
 
 #### P1 (new)
 
-438. ✅ DONE (round-30 probe reads Palatine Park District's "Winter Break Programming" link target; rtpd.org and wheelingparkdistrict.com are bot-walled, mppd.org/dpparks.org only have summer camp pages; empty message renders once when a page has no sections; "Park district camps:" line from optional `camp_catalogues:` in the region YAML or evergreen camp entries; links stay once camps appear; the YAML list is empty until round-29 probes name each agency's own camp page) **The winter-break page must never be blank.** Build loop, a
+438. ✅ DONE (camp_catalogues filled for Palatine (its own no-school winter-break page) and Arlington Heights (its camps page); round-30 probe reads Palatine Park District's "Winter Break Programming" link target; rtpd.org and wheelingparkdistrict.com are bot-walled, mppd.org/dpparks.org only have summer camp pages; empty message renders once when a page has no sections; "Park district camps:" line from optional `camp_catalogues:` in the region YAML or evergreen camp entries; links stay once camps appear; the YAML list is empty until round-29 probes name each agency's own camp page) **The winter-break page must never be blank.** Build loop, a
      `region.html.j2` fix plus config:
 
      - When `sections` is empty, render `empty_message` once, in place of
@@ -19585,7 +19585,7 @@ lights, and Bandsintown, which is still unreviewed.
 
 #### P1 (new)
 
-444. **Closures are never events, in any week.** Build loop, extending
+444. ✅ DONE (split_closures after filter_past_events: short titles with closed/closure/closes early/no collection/holiday hours and no event-type word leave every list and the Event markup; school blocks untouched; the box shows items dated in the next seven days all year; logged per item) **Closures are never events, in any week.** Build loop, extending
      item 307's `build_closures`:
 
      - All year, events whose titles say *closed*, *closes early*,
@@ -19607,7 +19607,7 @@ lights, and Bandsintown, which is still unreviewed.
 
 #### P2 (new)
 
-445. **Older-adult sessions out of the family lists.** Build loop,
+445. ✅ DONE (added to adult_title_keywords, which demotes in the family ordering and never hides) **Older-adult sessions out of the family lists.** Build loop,
      `config/relevance.yaml`. Add these to the existing exclusions (next
      to `senior` and `seniors`): *older adults*, *empty nesters*,
      *downsizing*, *AARP*, *55+* and *medicare* (already present).

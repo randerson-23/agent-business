@@ -6923,3 +6923,27 @@ def test_weekend_share_card_footer_comes_from_the_count_and_is_omitted_at_zero()
     with_footer = build_digest.render_weekend_og_image("Nov 6–8", picks, 35, 5)
     without = build_digest.render_weekend_og_image("Nov 6–8", picks)
     assert with_footer.size == without.size == (1200, 630) and with_footer.tobytes() != without.tobytes()
+
+
+def test_closures_leave_every_list_all_year_and_fill_the_box_in_a_plain_week():
+    # ROADMAP.md item 444.
+    closed = {"title": "Library Closed for Staff Training", "url": "https://x.org/c", "date_iso": "2026-11-06T00:00:00"}
+    ceremony = {"title": "Closing Ceremony", "url": "https://x.org/cc", "date_iso": "2026-11-06T10:00:00"}
+    movie = {"title": "Closed Captioned Movie Night", "url": "https://x.org/m", "date_iso": "2026-11-06T18:00:00"}
+    diwali = {"title": "Diwali Party", "url": "https://x.org/d", "date_iso": "2026-11-07T18:00:00"}
+    blocks = [{"section": "Library Events", "events": [closed, ceremony, movie, diwali]}, {"section": "School Calendar", "events": [{"title": "School Closed", "url": "u", "date_iso": "2026-11-06T00:00:00"}]}]
+    kept, removed = build_digest.split_closures(blocks)
+    titles = [e["title"] for e in kept[0]["events"]]
+    assert titles == ["Closing Ceremony", "Closed Captioned Movie Night", "Diwali Party"]
+    assert [e["title"] for e in removed] == ["Library Closed for Staff Training"]
+    assert kept[1]["events"][0]["title"] == "School Closed"  # school blocks feed the days-off box
+    box = build_digest.build_closures(kept, date(2026, 11, 4), removed)  # not a holiday week
+    assert [c["title"] for c in box] == ["Library Closed for Staff Training"]
+    assert build_digest.build_closures(kept, date(2026, 11, 20), removed) == []  # outside seven days
+
+
+def test_older_adult_sessions_are_demoted_in_the_family_ordering():
+    # ROADMAP.md item 445: reorders, nothing is hidden.
+    for title in ("Downsizing and Decluttering for older adults and empty nesters", "AARP Driver Safety Course", "55+ Bridge Club"):
+        assert build_digest.family_relevance({"title": title, "tags": []}) < 0, title
+    assert build_digest.family_relevance({"title": "Grandparents and Grandkids Craft", "tags": []}) == 0
