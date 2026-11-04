@@ -3,8 +3,8 @@
 <channel>
   <title>Within Ten — Upcoming events in Palatine</title>
   <link>https://withintenmiles.com/</link>
-  <description>Upcoming events in Palatine, soonest first - aggregated automatically from village, library, park district and school-district calendars. This build reached 20 of 26 configured sources. 1 source is shown from its last update, up to 8 hours ago.</description>
-  <lastBuildDate>Wed, 04 Nov 2026 06:02:44 +0000</lastBuildDate>
+  <description>Upcoming events in Palatine, soonest first - aggregated automatically from village, library, park district and school-district calendars. This build reached 22 of 26 configured sources.</description>
+  <lastBuildDate>Wed, 04 Nov 2026 14:00:27 +0000</lastBuildDate>
   <item>
     <title>Palatine: Community Resource Center Open House</title>
     <link>https://withintenmiles.com/palatine-60067/#ev-community-resource-center-open-house-2026-11-04</link>
@@ -158,27 +158,11 @@
     <source url="https://events.harpercollege.edu/event/a-dolls-house-by-henrik-ibsen-adapted-by-amy-herzog">Harper College — Public Events</source>
   </item>
   <item>
-    <title>Palatine: Thanksgiving (Village Hall Offices Closed)</title>
-    <link>https://withintenmiles.com/palatine-60067/#ev-thanksgiving-village-hall-offices-closed-2026-11-26</link>
-    <guid isPermaLink="true">https://withintenmiles.com/palatine-60067/#ev-thanksgiving-village-hall-offices-closed-2026-11-26</guid>
-    <description>https://www.palatine.il.us/calendar.aspx?EID=1926 Official listing: https://www.palatine.il.us/common/modules/iCalendar/iCalendar.aspx?feed=calendar&amp;catID=14</description>
-    <pubDate>Thu, 26 Nov 2026 00:00:00 +0000</pubDate>
-    <source url="https://www.palatine.il.us/common/modules/iCalendar/iCalendar.aspx?feed=calendar&amp;catID=14">Village of Palatine — Calendar</source>
-  </item>
-  <item>
     <title>Palatine: St. Nectarios Thanksgiving Community Meal</title>
     <link>https://withintenmiles.com/palatine-60067/#ev-st-nectarios-thanksgiving-community-meal-2026-11-26</link>
     <guid isPermaLink="true">https://withintenmiles.com/palatine-60067/#ev-st-nectarios-thanksgiving-community-meal-2026-11-26</guid>
     <description>Free hot Thanksgiving meal. Safe, welcoming space for individu Official listing: https://www.palatine.il.us/common/modules/iCalendar/iCalendar.aspx?feed=calendar&amp;catID=14</description>
     <pubDate>Thu, 26 Nov 2026 10:30:00 +0000</pubDate>
-    <source url="https://www.palatine.il.us/common/modules/iCalendar/iCalendar.aspx?feed=calendar&amp;catID=14">Village of Palatine — Calendar</source>
-  </item>
-  <item>
-    <title>Palatine: Thanksgiving (Village Hall Offices Closed)</title>
-    <link>https://withintenmiles.com/palatine-60067/#ev-thanksgiving-village-hall-offices-closed-2026-11-27</link>
-    <guid isPermaLink="true">https://withintenmiles.com/palatine-60067/#ev-thanksgiving-village-hall-offices-closed-2026-11-27</guid>
-    <description>https://www.palatine.il.us/calendar.aspx?EID=1927 Official listing: https://www.palatine.il.us/common/modules/iCalendar/iCalendar.aspx?feed=calendar&amp;catID=14</description>
-    <pubDate>Fri, 27 Nov 2026 00:00:00 +0000</pubDate>
     <source url="https://www.palatine.il.us/common/modules/iCalendar/iCalendar.aspx?feed=calendar&amp;catID=14">Village of Palatine — Calendar</source>
   </item>
   <item>
@@ -204,22 +188,6 @@
     <description>1st and 3rd Saturdays, 9 a.m. to noon, at the Palatine Train Station parking lot, November through April. Official listing: https://www.palatine.il.us/217/Farmers-Market</description>
     <pubDate>Sat, 19 Dec 2026 09:00:00 +0000</pubDate>
     <source url="https://www.palatine.il.us/217/Farmers-Market">Palatine</source>
-  </item>
-  <item>
-    <title>Palatine: Christmas Eve (Village Offices Closed)</title>
-    <link>https://withintenmiles.com/palatine-60067/#ev-christmas-eve-village-offices-closed-2026-12-24</link>
-    <guid isPermaLink="true">https://withintenmiles.com/palatine-60067/#ev-christmas-eve-village-offices-closed-2026-12-24</guid>
-    <description>https://www.palatine.il.us/calendar.aspx?EID=1928 Official listing: https://www.palatine.il.us/common/modules/iCalendar/iCalendar.aspx?feed=calendar&amp;catID=14</description>
-    <pubDate>Thu, 24 Dec 2026 00:00:00 +0000</pubDate>
-    <source url="https://www.palatine.il.us/common/modules/iCalendar/iCalendar.aspx?feed=calendar&amp;catID=14">Village of Palatine — Calendar</source>
-  </item>
-  <item>
-    <title>Palatine: Christmas Day (Village Offices Closed)</title>
-    <link>https://withintenmiles.com/palatine-60067/#ev-christmas-day-village-offices-closed-2026-12-25</link>
-    <guid isPermaLink="true">https://withintenmiles.com/palatine-60067/#ev-christmas-day-village-offices-closed-2026-12-25</guid>
-    <description>https://www.palatine.il.us/calendar.aspx?EID=1929 Official listing: https://www.palatine.il.us/common/modules/iCalendar/iCalendar.aspx?feed=calendar&amp;catID=14</description>
-    <pubDate>Fri, 25 Dec 2026 00:00:00 +0000</pubDate>
-    <source url="https://www.palatine.il.us/common/modules/iCalendar/iCalendar.aspx?feed=calendar&amp;catID=14">Village of Palatine — Calendar</source>
   </item>
   <item>
     <title>Palatine: Palatine Winter Farmers' Market</title>
