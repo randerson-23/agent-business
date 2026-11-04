@@ -220,9 +220,11 @@ doesn't re-suggest something already shipped.
 
 **Build queue (by deadline; refreshed by the research loop, item 346).**
 Pick from the top unless the owner has flagged something else:
+0. **444, 445** (closures out of every list and the Event markup, all year; older-adult sessions out of the family lists; small, before the Thursday send if possible).
 0. **438** (winter-break pages are blank: render the empty message and camp catalogue links; a few lines), with **439** (River Trails Park District probe for Mount Prospect), then **436, 437** (real preview card and short og:title for shared links).
 0. **427, 428** (read the round-27 probe answers daily; set tree-lighting dates and add Salt Creek when found; `/santa/` full by Nov 15).
 0. **441, 442** (`/give/`: toy, coat and food drives per town from 2026 sources, live Nov 15; volunteer badge).
+0. **446** (Noon Year's Eve block and `/new-years-eve/` hub, in the sitemap by Dec 1).
 0. **422** (candidate park districts and villages; the town-six decision otherwise rests on library counts).
 0. **416** (steps 1-2 done, measuring until about Nov 13; earlier note: step 1: round-24 probes for the candidates' feeds are in `config/url_probes.yaml` (egvpl.libnet.info, rmlib.libnet.info, elkgroveparks.org found by search; no Rolling Meadows park district calendar found); next: read the answers, then write the `_candidate-*.yaml` shadow files and the counts file). **417** with it.
 4. **328** (probe first), then **325** (by Nov 15), then **385** (holiday
@@ -19565,6 +19567,90 @@ Competitors reviewed this pass: **holiday toy and coat drive coverage**
 past years) and **Google's structured-data changes**, re-checked (no
 Event change; FAQ rich results retired, a non-item). The design/UX angle
 is **the new share card**: specific, but it gives no reason to tap.
+
+#### Research pass 2026-11-04 (hundred-and-twenty-second pass)
+
+Yesterday the build loop shipped item 443 (the share-card footer) and
+queued probe rounds 30–31 for items 438 and 441. This pass reads
+**tomorrow's email** (`docs/combined-email-preview.html`, Nov 6–8) at
+phone width, the way the one subscriber and the next twenty will read
+it. It also checks the next dated family question after the holiday
+lights, and Bandsintown, which is still unreviewed.
+
+| Angle | What it is / what we found | Why it matters here |
+|---|---|---|
+| **Tomorrow's email at 420 px (design/UX)** | The top is strong: the date chip, *"35 things to do in 5 towns"*, the weather, the holiday banner, three "Don't miss" picks, the Did-you-go poll and a Night Out pick. Then the **first Mount Prospect card is *"Library Closed for Staff Training"*** (Fri Nov 6), above Diwali. The same closure is in `events.json` and in the town page's **Event JSON-LD**, 13 times on the Mount Prospect page and twice on `/this-weekend/`. Des Plaines lists ***"Downsizing and Decluttering… for older adults and empty nesters"***, and Mount Prospect's feed carries an **AARP Driver Safety Course** | A closure is not a thing to do. In the owner's own town, the first card a parent sees is "closed", and it is marked up to Google as an Event, which Google's event guidelines rule out. Item 307's closures box only runs in holiday weeks, so the rest of the year closures leak into the lists. The older-adult sessions are the gaps item 361's exclusion list doesn't cover yet (items 444, 445) |
+| **Noon Year's Eve** (Daily Herald on Palatine's balloon-drop *"Noon Year's"* party; mykidlist's New Year's Eve category; Patch's Arlington Heights all-ages NYE listing; *A Little Time and a Keyboard's* suburban family NYE roundup) | Family *"Noon Year's Eve"* parties are a **yearly fixture** here. **Salt Creek Sports Center (Palatine)** ran a 10:30–noon party with a balloon drop. **Mount Prospect's downtown group** has held a midday countdown, and **Arlington Heights Memorial Library** an *"Almost New Year's Disco"*. No 2026 listings yet, and every result is a past year's page | It's the same shape as trick-or-treat hours and Santa: a dated, local question searched every year and answered by stale roundups. It also falls inside the winter-break window the site already has a page for (item 446) |
+| **Bandsintown and Songkick city pages** (Bandsintown's Arlington Heights and Des Plaines pages; Songkick's Rivers Casino page) | City pages list **adult concerts**: Rivers Casino, Des Plaines Theatre, Joe's Live, Durty Nellie's, Copernicus Center, Allstate Arena. A city page claims "69+ upcoming" | **No new item.** The family-relevant venues (Des Plaines Theatre, Metropolis) are already read from their own calendars (item 282), and the Night Out slot covers the adult side. Bandsintown adds no family events or sponsor leads. Recorded so it isn't re-researched |
+
+#### P1 (new)
+
+444. **Closures are never events, in any week.** Build loop, extending
+     item 307's `build_closures`:
+
+     - All year, events whose titles say *closed*, *closes early*,
+       *closure*, *no refuse/recycling collection* or *holiday hours*
+       (the same patterns) are **removed from every list**:
+       - the town sections, the picks and "Don't miss"
+       - `events.json`, the Event JSON-LD and the feeds
+       - `/e/` pages and the sitemap
+     - They go only to the "Closed or changed this week" box, now shown
+       whenever it has an item dated in the next seven days, not only
+       in holiday weeks. Keep the email's single 🔒 line.
+     - Watch for **"AARP Driver Safety"**, **"Blood Drive"** and similar
+       titles. Match *closed* as a whole word, so *"Closed-Toe Shoes
+       Required"* style titles stay in the lists. Log each move with its
+       source.
+
+     Tests: *"Library Closed for Staff Training"* leaves the sections,
+     `events.json` and the JSON-LD and appears in the box. A non-holiday
+     week shows the box. *"Closing Ceremony"* stays.
+
+#### P2 (new)
+
+445. **Older-adult sessions out of the family lists.** Build loop,
+     `config/relevance.yaml`. Add these to the existing exclusions (next
+     to `senior` and `seniors`): *older adults*, *empty nesters*,
+     *downsizing*, *AARP*, *55+* and *medicare* (already present).
+     Match on title and description as now.
+
+     The site's reader is a parent of young children (BUSINESS_PLAN.md,
+     Audience fit), and every card that isn't for them dilutes the five
+     cards per town the email shows. Tests: *"Downsizing and
+     Decluttering"* and *"AARP Driver Safety Course"* are dropped, and
+     *"Grandparents and Grandkids Craft"* is kept.
+
+446. **Noon Year's Eve on the winter-break page and in the Dec 24
+     email.** Build loop:
+
+     - Events dated **Dec 30 – Jan 1** whose title says *noon year*,
+       *new year's eve*, *almost new year*, *countdown* or *balloon
+       drop*, and that are not adults-only, get a block at the top of
+       `/<town>/winter-break/`: ***"🎉 Ring in the New Year, at noon"***.
+     - The same block runs in the Dec 24 issue's "Don't miss", and on a
+       new `/new-years-eve/` hub (the `/santa/` pattern) from Dec 1 to
+       Jan 1. Title: *"Noon Year's Eve 2026 for Kids: Palatine,
+       Arlington Heights, Mount Prospect…"*.
+     - Add Salt Creek Park District's feed (item 427/428 already looks
+       for it) and Mount Prospect's downtown calendar as watch sources.
+       The block lists only 2026 listings, never past years', with an
+       honest empty line before any are posted.
+
+     Tests: the date window, the keyword match, an adults-only NYE party
+     excluded, and the empty line.
+
+Re-rank: **444 goes to the top of the build queue**. Tomorrow's 07:00 CT
+send will carry the closure card unless it ships before the 13:51 UTC
+build, and even if it misses, it fixes every week after. **445** rides
+with it (config only). **446** joins the queue after 441 and 442. It
+needs nothing until December, but the hub page should be in the sitemap
+before searches start, so by **Dec 1**.
+
+Competitors reviewed this pass: **Noon Year's Eve coverage** (the Daily
+Herald, mykidlist, Patch and a suburban family blog, all past years) and
+**Bandsintown and Songkick city pages** (a non-item). The design/UX angle
+is **tomorrow's email at phone width**: a closure listed as a thing to
+do, and older-adult sessions.
 
 
 ## Working agreements for autonomous iteration
