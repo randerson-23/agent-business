@@ -224,6 +224,7 @@ Pick from the top unless the owner has flagged something else:
 0. **438** (winter-break pages are blank: render the empty message and camp catalogue links; a few lines), with **439** (River Trails Park District probe for Mount Prospect), then **436, 437** (real preview card and short og:title for shared links).
 0. **427, 428** (read the round-27 probe answers daily; set tree-lighting dates and add Salt Creek when found; `/santa/` full by Nov 15).
 0. **441, 442** (`/give/`: toy, coat and food drives per town from 2026 sources, live Nov 15; volunteer badge).
+0. **447, 448** (`/give/` probes at fire, police and Toys for Tots pages; drop-off businesses as warm leads; an honest title until a toy drive is confirmed).
 0. **446** (Noon Year's Eve block and `/new-years-eve/` hub, in the sitemap by Dec 1).
 0. **422** (candidate park districts and villages; the town-six decision otherwise rests on library counts).
 0. **416** (steps 1-2 done, measuring until about Nov 13; earlier note: step 1: round-24 probes for the candidates' feeds are in `config/url_probes.yaml` (egvpl.libnet.info, rmlib.libnet.info, elkgroveparks.org found by search; no Rolling Meadows park district calendar found); next: read the answers, then write the `_candidate-*.yaml` shadow files and the counts file). **417** with it.
@@ -19650,6 +19651,92 @@ Herald, mykidlist, Patch and a suburban family blog, all past years) and
 **Bandsintown and Songkick city pages** (a non-item). The design/UX angle
 is **tomorrow's email at phone width**: a closure listed as a thing to
 do, and older-adult sessions.
+
+#### Research pass 2026-11-04, evening (hundred-and-twenty-third pass)
+
+Today the build loop shipped items 444 and 445 (closures out of every
+list; tomorrow's email now shows *"🔒 Mount Prospect: Library Closed for
+Staff Training"* in the closures line instead of as a card) and items
+441 and 442 (`/give/` and the volunteer badge). This pass reads the new
+`/give/` page and the probe answers behind it. It also checks where toy
+drives are actually announced, and reviews Axios Chicago's weekend
+newsletter as a format and channel.
+
+| Angle | What it is / what we found | Why it matters here |
+|---|---|---|
+| **`/give/` as built (design/UX)** | The title is ***"Toy and Coat Drives 2026: Arlington Heights, Des Plaines, Mount Prospect, Palatine, and Wheeling \| Within Ten"*** (about 105 characters, og:title the same). **Four of five towns** read *"No 2026 drive announced yet"*. The only drives listed are **two Des Plaines blood drives**, shown with the 🎁 gift icon. The **"Volunteer with your kids"** section is the strongest part: 11 dated sessions (Teen Volunteering, Service Hour Drop In, High School Volunteer Kits) | A page titled for toy and coat drives that lists only blood drives disappoints the searcher it was built for. Blood drives are for donors aged 16–17 and over, not a family activity, and the gift icon reads oddly next to them. The long og:title is the problem item 437 fixed for `/this-weekend/` but not for the hub pages (items 448, 449) |
+| **Where toy drives are actually announced** (Daily Herald on Arlington Heights police's drive-thru Toys for Tots drop-off at the Rand Road Target lot; Patch's *"Toys for Tots: how to help"*; Palatine Police and Fire Benevolent Association's 24-site collection; Mount Prospect's *Toys for Kids*, collected at fire stations) | Drives are run by **police and fire departments, their benevolent associations, and the Marines' Toys for Tots campaign**, not by the villages' homepages. The round-31 probes read `vah.com` and `palatine.il.us`, and both returned **no matches**. Drop-off sites in past years were **businesses**: a bank (Palatine Bank & Trust), the American Legion, and big-box stores | The probes are pointed at the wrong pages, so `/give/` will stay empty in four towns through the season. And every business that hosts a collection box is a **warm sponsor lead** of exactly the kind item 387 collects: it already does community events and wants to be seen doing them (item 447) |
+| **Axios Chicago Weekender** (recent editions: *"25 things to do in Chicago"*, a Dempster Street food tour built from reader suggestions, Six Flags in Gurnee) | A **city** weekend newsletter: "1 big thing" plus a list, a 2–3.5 minute read, with the suburbs only occasionally. Some editions are **built from reader suggestions** | **No new item.** Its format matches what the email already does: the "Don't miss" lead, about 800 words, and a *"Know about something we missed? Hit reply"* line, which is already in the footer. It doesn't compete for the five towns. A reader tip to Axios would be an owner action, and item 400's cap is full. Recorded so it isn't re-researched |
+
+Item 439 update: the round-29 probe of **`rtpd.org` returned 403** (a bot
+wall, like the Wheeling and Elk Grove park districts). Step 3 applies:
+no feed. The build loop can close 439 with the homepage as River Trails'
+camp catalogue link, labelled with the district's name.
+
+#### P1 (new)
+
+447. **Point `/give/`'s probes at the people who actually run drives,
+     and log drop-off hosts as warm leads.** Build loop, extending item
+     441:
+
+     1. Add a `config/url_probes.yaml` round for each town's **fire
+        department and police department** news pages. Add the Mount
+        Prospect *Toys for Kids* page, and the **Toys for Tots local
+        campaign site** covering north and northwest Cook County. Use
+        patterns for *drop-off*, *collection*, *Toys for Tots*, *Toys
+        for Kids*, *coat drive*, *food drive* and month-day dates.
+     2. When a 2026 page names drop-off sites, fill `config/give.yaml`
+        from it (the drive, the last day, the sites, the source URL), as
+        item 441 already allows.
+     3. Write each **business drop-off site** (not government buildings)
+        into `data/warm_hosts.json` with a `"drop_off_host"` reason, so
+        `OUTREACH_PROSPECTS.md` lists them under "Warm" with the drive
+        named. Names and public pages only, as now.
+
+     Tests: a probe answer with a dated *Toys for Tots* line fills a
+     draft entry for review. A village hall or fire station isn't
+     written as a warm host.
+
+#### P2 (new)
+
+448. **Make `/give/` honest until a toy drive is confirmed.** Build loop,
+     the `/give/` template:
+
+     - Until `config/give.yaml` holds at least one toy, coat or food
+       drive, title the page ***"Giving Back This Season: Drives and
+       Volunteering in Arlington Heights, Mount Prospect…"***. Switch
+       to *"Toy and Coat Drives 2026…"* automatically once one exists.
+     - Show blood drives in their own short line, ***"🩸 Blood drives
+       (donors 16+; check the source for age rules)"***, below the town
+       cards, not as 🎁 town entries.
+     - Put **"🤝 Volunteer with your kids"** first while no toy or coat
+       drive exists, since it's the section with real content.
+
+     Tests: the title switches on the first toy drive, blood drives
+     render in their own line, and the section order flips.
+
+#### P3 (new)
+
+449. **Short og:titles on every hub page.** Build loop, extending item
+     437's rule (60 characters or fewer, no site name) to `/give/`,
+     `/santa/`, `/holidays/`, `/trick-or-treat/`, `/leaf-pickup/` and
+     each `/<town>/winter-break/`. Examples: *"Toy and coat drives in 5
+     suburbs, 2026"*, *"Santa near you: 5 towns, 2026"*.
+
+     These are the pages people text each other in December, so they get
+     the same treatment as `/this-weekend/`. `<title>` is unchanged (it is
+     tuned for search). Tests: each listed page's og:title is 60
+     characters or fewer and doesn't contain "Within Ten".
+
+Re-rank: **447** goes into the build queue directly after 427/428.
+Drives start mid-November, and its probes need a firing to answer.
+**448** rides with it. **449** sits behind 446.
+
+Competitors reviewed this pass: **where toy drives are announced**
+(Daily Herald and Patch stories, Palatine's Police and Fire Benevolent
+Association, Mount Prospect's Toys for Kids) and **Axios Chicago
+Weekender** (a non-item). The design/UX angle is **`/give/` as built**:
+titled for toy drives, showing only blood drives.
 
 
 ## Working agreements for autonomous iteration
