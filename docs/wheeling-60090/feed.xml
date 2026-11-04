@@ -3,35 +3,8 @@
 <channel>
   <title>Within Ten — Upcoming events in Wheeling</title>
   <link>https://withintenmiles.com/</link>
-  <description>Upcoming events in Wheeling, soonest first - aggregated automatically from village, library, park district and school-district calendars. This build reached 24 of 30 configured sources.</description>
-  <lastBuildDate>Tue, 03 Nov 2026 22:03:32 +0000</lastBuildDate>
-  <item>
-    <title>Wheeling: Boba Tea Keychains</title>
-    <link>https://withintenmiles.com/wheeling-60090/#ev-boba-tea-keychains-2026-11-03</link>
-    <guid isPermaLink="true">https://withintenmiles.com/wheeling-60090/#ev-boba-tea-keychains-2026-11-03</guid>
-    <description>Tuesday, November 03 2026 4:30pm - 5:30pm 
- Create a keychain inspired by boba tea or your favorite beverage. R Official listing: https://indiantrails.libnet.info/event/17104212</description>
-    <pubDate>Tue, 03 Nov 2026 16:30:00 +0000</pubDate>
-    <source url="https://indiantrails.libnet.info/event/17104212">Indian Trails Public Library — Events</source>
-  </item>
-  <item>
-    <title>Wheeling: Alcohol Ink Art</title>
-    <link>https://withintenmiles.com/wheeling-60090/#ev-alcohol-ink-art-2026-11-03</link>
-    <guid isPermaLink="true">https://withintenmiles.com/wheeling-60090/#ev-alcohol-ink-art-2026-11-03</guid>
-    <description>Tuesday, November 03 2026 6:00pm - 7:30pm 
- Explore the magic of flowing, vibrant alcohol inks on tile. Learn alcohol ink art techniques from instructor Erin… Official listing: https://indiantrails.libnet.info/event/16808529</description>
-    <pubDate>Tue, 03 Nov 2026 18:00:00 +0000</pubDate>
-    <source url="https://indiantrails.libnet.info/event/16808529">Indian Trails Public Library — Events</source>
-  </item>
-  <item>
-    <title>Wheeling: Writers Workshop</title>
-    <link>https://withintenmiles.com/wheeling-60090/#ev-writers-workshop-2026-11-03</link>
-    <guid isPermaLink="true">https://withintenmiles.com/wheeling-60090/#ev-writers-workshop-2026-11-03</guid>
-    <description>Tuesday, November 03 2026 6:30pm - 8:45pm 
- Share your work with others in a supportive atmosphere at this monthly community writers group led by author… Official listing: https://indiantrails.libnet.info/event/15836584</description>
-    <pubDate>Tue, 03 Nov 2026 18:30:00 +0000</pubDate>
-    <source url="https://indiantrails.libnet.info/event/15836584">Indian Trails Public Library — Events</source>
-  </item>
+  <description>Upcoming events in Wheeling, soonest first - aggregated automatically from village, library, park district and school-district calendars. This build reached 21 of 30 configured sources. 2 sources are shown from their last update, up to 8 hours ago.</description>
+  <lastBuildDate>Wed, 04 Nov 2026 06:02:44 +0000</lastBuildDate>
   <item>
     <title>Wheeling: Read to Learn</title>
     <link>https://withintenmiles.com/wheeling-60090/#ev-read-to-learn-2026-11-04</link>
@@ -454,6 +427,33 @@ Hoopla or another library app? Talk… Official listing: https://indiantrails.li
  Engage in an important and thoughtful conversation with Dr. Eve L. Ewing, acclaimed author, educator, poet and… Official listing: https://indiantrails.libnet.info/event/17139138</description>
     <pubDate>Thu, 12 Nov 2026 19:00:00 +0000</pubDate>
     <source url="https://indiantrails.libnet.info/event/17139138">Indian Trails Public Library — Events</source>
+  </item>
+  <item>
+    <title>Wheeling: Toddler Storytime</title>
+    <link>https://withintenmiles.com/wheeling-60090/#ev-toddler-storytime-2026-11-13</link>
+    <guid isPermaLink="true">https://withintenmiles.com/wheeling-60090/#ev-toddler-storytime-2026-11-13</guid>
+    <description>Friday, November 13 2026 10:00am - 10:30am 
+ Start your day with books, rhymes and songs. TR Official listing: https://indiantrails.libnet.info/event/16927102</description>
+    <pubDate>Fri, 13 Nov 2026 10:00:00 +0000</pubDate>
+    <source url="https://indiantrails.libnet.info/event/16927102">Indian Trails Public Library — Events</source>
+  </item>
+  <item>
+    <title>Wheeling: Preschool Storytime</title>
+    <link>https://withintenmiles.com/wheeling-60090/#ev-preschool-storytime-2026-11-13</link>
+    <guid isPermaLink="true">https://withintenmiles.com/wheeling-60090/#ev-preschool-storytime-2026-11-13</guid>
+    <description>Friday, November 13 2026 11:00am - 11:30am 
+ Boost early literacy skills with books, movement and songs. TR Official listing: https://indiantrails.libnet.info/event/16927126</description>
+    <pubDate>Fri, 13 Nov 2026 11:00:00 +0000</pubDate>
+    <source url="https://indiantrails.libnet.info/event/16927126">Indian Trails Public Library — Events</source>
+  </item>
+  <item>
+    <title>Wheeling: Quality Watercolor Techniques</title>
+    <link>https://withintenmiles.com/wheeling-60090/#ev-quality-watercolor-techniques-2026-11-13</link>
+    <guid isPermaLink="true">https://withintenmiles.com/wheeling-60090/#ev-quality-watercolor-techniques-2026-11-13</guid>
+    <description>Friday, November 13 2026 11:00am - 12:00pm 
+ Learn how different grade art supplies affect watercolors and practice your professional skills using layering… Official listing: https://indiantrails.libnet.info/event/17096881</description>
+    <pubDate>Fri, 13 Nov 2026 11:00:00 +0000</pubDate>
+    <source url="https://indiantrails.libnet.info/event/17096881">Indian Trails Public Library — Events</source>
   </item>
 </channel>
 </rss>

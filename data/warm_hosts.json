@@ -224,6 +224,12 @@
     "time": "19:30",
     "title": "BOURBON 'N BRASS SPEAKEASY: LIVE BLUES with the DOWNTOWN CHARLIE BROWN BAND",
     "venue": "Des Plaines Theatre"
+   },
+   {
+    "date": "2026-12-04",
+    "time": "20:30",
+    "title": "BOURBON 'N BRASS SPEAKEASY: LIVE JAZZ, POP AND R&B with MICHAEL ROSS BAND",
+    "venue": "Des Plaines Theatre"
    }
   ],
   "name": "Des Plaines Theatre",
@@ -254,6 +260,18 @@
   ],
   "name": "Metropolis Performing Arts Centre",
   "town": "Arlington Heights"
+ },
+ "metropolitan square": {
+  "events": [
+   {
+    "date": "2026-12-04",
+    "time": "16:00",
+    "title": "Holiday Tree Lighting at Metropolitan Square",
+    "venue": "Metropolitan Square"
+   }
+  ],
+  "name": "Metropolitan Square",
+  "town": "Des Plaines"
  },
  "napleton palatine hyundai": {
   "events": [
