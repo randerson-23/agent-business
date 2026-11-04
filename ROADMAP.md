@@ -19500,7 +19500,7 @@ structured-data changes, and reviews the new share card.
 
 #### P1 (new)
 
-441. (step 1 queued: round-31 probes for the villages' drive notices in config/url_probes.yaml; read the answers before writing config/give.yaml) **`/give/`: toy, coat and food drives in all five towns, live Nov 15
+441. PARTLY DONE (/give/ page, config/give.yaml (empty until a 2026 source page names a drive), feed events matching drive titles, honest empty line per town, sitemap entry Nov 15-Dec 20, noindex outside; not yet: footer links in season and the "Drives closing this week" email line from Nov 19) **`/give/`: toy, coat and food drives in all five towns, live Nov 15
      – Dec 20.** Build loop, using the probe pattern from
      `/trick-or-treat/` (`tot_watch.py`):
 
@@ -19530,7 +19530,7 @@ structured-data changes, and reviews the new share card.
 
 #### P2 (new)
 
-442. **"Volunteer with your kids" on `/give/`, and a volunteer badge.**
+442. ✅ DONE (tag `volunteer` with the 🤝 badge, and a section on /give/) **"Volunteer with your kids" on `/give/`, and a volunteer badge.**
      Build loop. Feed events whose title or description says *volunteer*,
      *volunteer hours*, *service hours* or *teen volunteering* get a
      **"🤝 Volunteer"** badge on cards (the badge pattern already used

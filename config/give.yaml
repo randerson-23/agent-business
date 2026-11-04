@@ -1,0 +1,17 @@
+# ROADMAP.md item 441: toy, coat and food drives for /give/ (live Nov 15 - Dec 20).
+#
+# Add a drive here ONLY from a 2026 page the village, library, park district, fire or
+# police department published itself, and put that page in `source_url`. Never carry a
+# past year's drive forward, never infer a date. A drive disappears the day after its
+# `end_date`. Feed events whose titles say toy/coat/food/clothing/blood drive, giving
+# tree or Toys for Tots are added automatically and need no entry here.
+#
+# regions:
+#   palatine-60067:
+#     drives:
+#       - name: "Toys for Tots drop-off"
+#         organiser: "Palatine Fire Department"
+#         drop_off: "Station 81 lobby, 9 a.m. - 5 p.m. weekdays"
+#         end_date: 2026-12-15
+#         source_url: "https://example.org/the-2026-page"
+regions: {}
