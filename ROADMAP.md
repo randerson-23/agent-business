@@ -19597,10 +19597,9 @@ lights, and Bandsintown, which is still unreviewed.
      - They go only to the "Closed or changed this week" box, now shown
        whenever it has an item dated in the next seven days, not only
        in holiday weeks. Keep the email's single 🔒 line.
-     - Watch for **"AARP Driver Safety"**, **"Blood Drive"** and similar
-       titles. Match *closed* as a whole word, so *"Closed-Toe Shoes
-       Required"* style titles stay in the lists. Log each move with its
-       source.
+     - Match *closed* and *closure* as whole words in the title, and
+       only when no event-type word such as *ceremony*, *party* or
+       *class* is present. Log each move with its source.
 
      Tests: *"Library Closed for Staff Training"* leaves the sections,
      `events.json` and the JSON-LD and appears in the box. A non-holiday
