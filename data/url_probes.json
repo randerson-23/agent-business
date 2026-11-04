@@ -4,7 +4,7 @@
       "url": "https://withintenmiles.com/f3b7799bed06aac4295ec9134d53b014.txt",
       "purpose": "IndexNow key file on the live domain - still served and still equal to the key?",
       "item": 224,
-      "probed_at": "2026-11-04T06:02:31+00:00",
+      "probed_at": "2026-11-04T20:50:22+00:00",
       "status": 200,
       "final_url": "https://withintenmiles.com/f3b7799bed06aac4295ec9134d53b014.txt",
       "content_type": "text/plain; charset=utf-8",
@@ -22,11 +22,11 @@
       "url": "https://www.ahpd.org/parks/",
       "purpose": "Arlington Heights Park District - park list; does Pioneer Park's page give its street address?",
       "item": 376,
-      "probed_at": "2026-11-04T06:02:31+00:00",
+      "probed_at": "2026-11-04T20:50:22+00:00",
       "status": 200,
       "final_url": "https://www.ahpd.org/parks/",
       "content_type": "text/html; charset=UTF-8",
-      "bytes": 138123,
+      "bytes": 138125,
       "title": "Parks - Arlington Heights Park District",
       "feed_links": [
         {
@@ -95,11 +95,11 @@
       "url": "https://events.harpercollege.edu/api/2/events?days=60&pp=100",
       "purpose": "Harper College (Localist) - venue ids, venue names and event types in use",
       "item": 286,
-      "probed_at": "2026-11-04T06:02:32+00:00",
+      "probed_at": "2026-11-04T20:50:25+00:00",
       "status": 200,
       "final_url": "https://events.harpercollege.edu/api/2/events?days=60&pp=100",
       "content_type": "application/json; charset=utf-8",
-      "bytes": 384746,
+      "bytes": 387644,
       "pattern_matches": {
         "\"venue_id\":\\d+": [
           {
@@ -371,11 +371,11 @@
       "url": "https://www.sd25.org/calendar",
       "purpose": "Arlington Heights District 25 - does the calendar page list no-school dates in the HTML?",
       "item": 300,
-      "probed_at": "2026-11-04T06:02:35+00:00",
+      "probed_at": "2026-11-04T20:50:29+00:00",
       "status": 200,
       "final_url": "https://www.sd25.org/calendar-73",
       "content_type": "text/html; charset=utf-8",
-      "bytes": 95733,
+      "bytes": 95732,
       "title": "Calendar",
       "feed_links": [],
       "calendar_links": [
@@ -392,11 +392,11 @@
       "url": "https://ccsd21.org/parent-resources/calendars/",
       "purpose": "Wheeling CCSD 21 - does the calendars page link a 2026-27 calendar and list no-school dates?",
       "item": 300,
-      "probed_at": "2026-11-04T06:02:35+00:00",
+      "probed_at": "2026-11-04T20:50:31+00:00",
       "status": 403,
       "final_url": "https://ccsd21.org/parent-resources/calendars/",
       "content_type": "text/html; charset=UTF-8",
-      "bytes": 8318,
+      "bytes": 8317,
       "title": "Access denied | ccsd21.org used Cloudflare to restrict access | ccsd21.org | Cloudflare",
       "feed_links": [],
       "calendar_links": [],
@@ -410,11 +410,11 @@
       "url": "https://www.d62.org/calendars",
       "purpose": "Des Plaines District 62 - official 2026-27 calendar",
       "item": 300,
-      "probed_at": "2026-11-04T06:02:36+00:00",
+      "probed_at": "2026-11-04T20:50:31+00:00",
       "status": 200,
       "final_url": "https://www.d62.org/calendars",
       "content_type": "text/html; charset=utf-8",
-      "bytes": 124848,
+      "bytes": 126497,
       "title": "Calendars - Community Consolidated School District 62",
       "feed_links": [],
       "calendar_links": [],
@@ -445,16 +445,12 @@
             "context": "strong>March 29-April 2</strong></td> <td>Intersession / No School K-8 (Return April 5)</td> </tr> <tr> <td><strong>April 30</strong> (Frida"
           },
           {
-            "match": "No School (Institute Day)\n\t\t",
-            "context": "s=\"fsStyleSROnly\">CCSD62 Calendar</span> All Schools: No School (Institute Day) </div> <div class=\"fsEventDetails\"> <div class=\"fsAll"
+            "match": "No School (Institute Day)\" data-occur-id=\"206031082_2026-11-03T00:00:00Z_2026-11-04T00:00",
+            "context": "endarLongEventTitle fsCalendarTruncate\" title=\"All Schools: No School (Institute Day)\" data-occur-id=\"206031082_2026-11-03T00:00:00Z_2026-11-04T00:00:00Z\" href=\"#\">All Schools: No School (Institute Day)</a>"
           },
           {
             "match": "No School (Institute Day)",
-            "context": "ad More <span class=\"fsStyleSROnly\">about All Schools: No School (Institute Day)</span> </a></article> </div> <div class=\"fsDayConta"
-          },
-          {
-            "match": "No School (Institute Day)\" data-occur-id=\"206031082_2026-11-03T00:00:00Z_2026-11-04T00:00",
-            "context": "endarLongEventTitle fsCalendarTruncate\" title=\"All Schools: No School (Institute Day)\" data-occur-id=\"206031082_2026-11-03T00:00:00Z_2026-11-04T00:00:00Z\" href=\"#\">All Schools: No School (Institute Day)</a>"
+            "context": "11-03T00:00:00Z_2026-11-04T00:00:00Z\" href=\"#\">All Schools: No School (Institute Day)</a> <div class=\"fsTimeRange\"> <span class=\"fsA"
           },
           {
             "match": "No School\" data-occur-id=\"206096927_2026-11-23T00:00:00Z_2026-11-28T00:00:00Z\" href=\"#\">1",
@@ -548,7 +544,7 @@
         "url": "https://resources.finalsite.net/images/v1771602096/d62org/huubad2axs3m2rrnnwjm/District62Ten-MonthSchoolsCalendar2026-2027FINAL.pdf",
         "purpose": "",
         "item": null,
-        "probed_at": "2026-11-04T06:02:39+00:00",
+        "probed_at": "2026-11-04T20:50:32+00:00",
         "status": 200,
         "final_url": "https://resources.finalsite.net/images/v1771602096/d62org/huubad2axs3m2rrnnwjm/District62Ten-MonthSchoolsCalendar2026-2027FINAL.pdf",
         "content_type": "application/pdf",
@@ -563,11 +559,11 @@
       "url": "https://www.d214.org/calendar",
       "purpose": "High School District 214 - official 2026-27 calendar",
       "item": 300,
-      "probed_at": "2026-11-04T06:02:39+00:00",
+      "probed_at": "2026-11-04T20:50:32+00:00",
       "status": 404,
       "final_url": "https://www.d214.org/calendar",
       "content_type": "text/html;charset=utf-8",
-      "bytes": 1375332,
+      "bytes": 1375896,
       "title": "Page Not Found | District 214",
       "feed_links": [],
       "calendar_links": [],
@@ -606,7 +602,7 @@
       "url": "https://www.mountprospect.org/",
       "purpose": "Village of Mount Prospect - home page; a 2026 tree-lighting notice",
       "item": 427,
-      "probed_at": "2026-11-04T06:02:40+00:00",
+      "probed_at": "2026-11-04T20:50:32+00:00",
       "status": 200,
       "final_url": "https://www.mountprospect.org/",
       "content_type": "text/html; charset=UTF-8",
@@ -624,7 +620,7 @@
         "url": "https://www.mountprospect.org/services/tree_care.php",
         "purpose": "",
         "item": null,
-        "probed_at": "2026-11-04T06:02:40+00:00",
+        "probed_at": "2026-11-04T20:50:33+00:00",
         "status": 200,
         "final_url": "https://www.mountprospect.org/services/tree_care.php",
         "content_type": "text/html; charset=UTF-8",
@@ -644,11 +640,11 @@
       "url": "https://mpdowntown.com/events/",
       "purpose": "Downtown Mount Prospect - events page; tree lighting or Christkindlmarket dates",
       "item": 427,
-      "probed_at": "2026-11-04T06:02:40+00:00",
+      "probed_at": "2026-11-04T20:50:33+00:00",
       "status": 200,
       "final_url": "https://mpdowntown.com/events/",
       "content_type": "text/html; charset=UTF-8",
-      "bytes": 124907,
+      "bytes": 124873,
       "title": "Events | Mount Prospect Downtown Merchants",
       "feed_links": [
         {
@@ -686,15 +682,16 @@
       "url": "https://www.wheelingil.gov/",
       "purpose": "Village of Wheeling - home page; Lights Around Wheeling or a tree-lighting notice",
       "item": 427,
-      "probed_at": "2026-11-04T06:02:45+00:00",
+      "probed_at": "2026-11-04T20:50:41+00:00",
       "status": 200,
       "final_url": "https://www.wheelingil.gov/",
       "content_type": "text/html; charset=utf-8",
-      "bytes": 139747,
+      "bytes": 140447,
       "title": "Wheeling, IL | Official WebsiteArrow LeftArrow RightSlideshow Left ArrowSlideshow Right Arrow",
       "feed_links": [],
       "calendar_links": [
         "https://www.wheelingil.gov/civicalerts.aspx",
+        "https://www.wheelingil.gov/CivicAlerts.aspx?AID=267",
         "https://www.wheelingil.gov/CivicAlerts.aspx?AID=265",
         "https://www.wheelingil.gov/CivicAlerts.aspx?AID=252",
         "https://www.wheelingil.gov/CivicAlerts.aspx?CID=1",
@@ -713,11 +710,11 @@
       "url": "https://www.desplainesil.gov/",
       "purpose": "City of Des Plaines - home page; a 2026 tree-lighting or holiday-event notice (also item 367)",
       "item": 427,
-      "probed_at": "2026-11-04T06:02:46+00:00",
+      "probed_at": "2026-11-04T20:50:42+00:00",
       "status": 200,
       "final_url": "https://www.desplainesil.gov/Home",
       "content_type": "text/html; charset=utf-8",
-      "bytes": 280668,
+      "bytes": 280888,
       "title": "Home | City of Des Plaines, IL",
       "feed_links": [],
       "calendar_links": [
@@ -725,6 +722,54 @@
       ],
       "pattern_matches": {
         "(?i)(?:tree[- ]lighting|holiday (?:tree|lights?)|christmas tree)[^<]{0,160}": [
+          {
+            "match": "Tree-Lighting-and-Winter-Fair#winter-fair\" class=\"profile-featured-panel clearfix\" target=\"_self\" >\r\n\t\t",
+            "context": "ps://www.desplainesil.gov/Departments/Media-Services/Events/Tree-Lighting-and-Winter-Fair#winter-fair\" class=\"profile-featured-panel clearfix\" target=\"_self\" > <div class=\"panel-image\"> <picture> <source media"
+          },
+          {
+            "match": "tree-lighting-winter-fair/winter-fair-98.jpg?dimension=homepagefeaturecontent&w=380&h=216\">\r\n  ",
+            "context": "92px)\" srcset=\"/files/assets/city/v/1/images/media-services/tree-lighting-winter-fair/winter-fair-98.jpg?dimension=homepagefeaturecontent&w=380&h=216\"> <source media=\"(min-width: 768px)\" srcset=\"/files/assets/cit"
+          },
+          {
+            "match": "tree-lighting-winter-fair/winter-fair-98.jpg?dimension=homepagefeaturecontent&w=330&h=188\">\r\n  ",
+            "context": "68px)\" srcset=\"/files/assets/city/v/1/images/media-services/tree-lighting-winter-fair/winter-fair-98.jpg?dimension=homepagefeaturecontent&w=330&h=188\"> <source srcset=\"/files/assets/city/v/1/images/media-services"
+          },
+          {
+            "match": "tree-lighting-winter-fair/winter-fair-98.jpg?dimension=homepagefeaturecontent&w=480&h=274\">\r\n  ",
+            "context": "source srcset=\"/files/assets/city/v/1/images/media-services/tree-lighting-winter-fair/winter-fair-98.jpg?dimension=homepagefeaturecontent&w=480&h=274\"> <img class=\"large-thumbnail-image\" src=\"/files/assets/city/v"
+          },
+          {
+            "match": "tree-lighting-winter-fair/winter-fair-98.jpg?dimension=homepagefeaturecontent&w=480&h=274\" alt=\"\"/>\r\n  ",
+            "context": "il-image\" src=\"/files/assets/city/v/1/images/media-services/tree-lighting-winter-fair/winter-fair-98.jpg?dimension=homepagefeaturecontent&w=480&h=274\" alt=\"\"/> </picture></div> <h2>Shop Local & Enjoy Winter Fair on D"
+          },
+          {
+            "match": "Tree-Lighting-and-Winter-Fair\" class=\"profile-featured-panel clearfix\" target=\"_self\" >\r\n\t\t",
+            "context": "ps://www.desplainesil.gov/Departments/Media-Services/Events/Tree-Lighting-and-Winter-Fair\" class=\"profile-featured-panel clearfix\" target=\"_self\" > <div class=\"panel-image\"> <picture> <source media"
+          },
+          {
+            "match": "tree-lighting-winter-fair/tree-lighting-metropolitan-square.jpg?dimension=homepagefeaturecontent&w=380&h=216\">\r\n  ",
+            "context": "92px)\" srcset=\"/files/assets/city/v/1/images/media-services/tree-lighting-winter-fair/tree-lighting-metropolitan-square.jpg?dimension=homepagefeaturecontent&w=380&h=216\"> <source media=\"(min-width: 768px)\" srcset=\"/files/assets/cit"
+          },
+          {
+            "match": "tree-lighting-winter-fair/tree-lighting-metropolitan-square.jpg?dimension=homepagefeaturecontent&w=330&h=188\">\r\n  ",
+            "context": "68px)\" srcset=\"/files/assets/city/v/1/images/media-services/tree-lighting-winter-fair/tree-lighting-metropolitan-square.jpg?dimension=homepagefeaturecontent&w=330&h=188\"> <source srcset=\"/files/assets/city/v/1/images/media-services"
+          },
+          {
+            "match": "tree-lighting-winter-fair/tree-lighting-metropolitan-square.jpg?dimension=homepagefeaturecontent&w=480&h=274\">\r\n  ",
+            "context": "source srcset=\"/files/assets/city/v/1/images/media-services/tree-lighting-winter-fair/tree-lighting-metropolitan-square.jpg?dimension=homepagefeaturecontent&w=480&h=274\"> <img class=\"large-thumbnail-image\" src=\"/files/assets/city/v"
+          },
+          {
+            "match": "tree-lighting-winter-fair/tree-lighting-metropolitan-square.jpg?dimension=homepagefeaturecontent&w=480&h=274\" alt=\"\"/>\r\n  ",
+            "context": "il-image\" src=\"/files/assets/city/v/1/images/media-services/tree-lighting-winter-fair/tree-lighting-metropolitan-square.jpg?dimension=homepagefeaturecontent&w=480&h=274\" alt=\"\"/> </picture></div> <h2>Let It Glow: Holiday Tree Lighting"
+          },
+          {
+            "match": "Holiday Tree Lighting Set for Dec. 4",
+            "context": "80&h=274\" alt=\"\"/> </picture></div> <h2>Let It Glow: Holiday Tree Lighting Set for Dec. 4</h2> <p class=\"panel-text\">Celebrate the season at our T"
+          },
+          {
+            "match": "Tree Lighting! Join us downtown for Santa, live entertainment, and more.",
+            "context": "4</h2> <p class=\"panel-text\">Celebrate the season at our Tree Lighting! Join us downtown for Santa, live entertainment, and more.</p> </a></div><div class=\"col-xs-12 col-s-6 col-m-4\"><a h"
+          },
           {
             "match": "Tree-Lighting-and-Winter-Fair\" title=\"Holiday Tree Lighting and Winter Fair\" target=\"\">Holiday Tree Lighting and Winter Fair",
             "context": "ps://www.desplainesil.gov/Departments/Media-Services/Events/Tree-Lighting-and-Winter-Fair\" title=\"Holiday Tree Lighting and Winter Fair\" target=\"\">Holiday Tree Lighting and Winter Fair</a> <span>The City of Des Plaines hosts two holiday events"
@@ -745,11 +790,11 @@
         "url": "https://www.desplainesil.gov/Residents/News/Miner-Street-Metra-Parking-Lot-Set-for-Resurfacing",
         "purpose": "",
         "item": null,
-        "probed_at": "2026-11-04T06:02:48+00:00",
+        "probed_at": "2026-11-04T20:50:45+00:00",
         "status": 200,
         "final_url": "https://www.desplainesil.gov/Residents/News/Miner-Street-Metra-Parking-Lot-Set-for-Resurfacing",
         "content_type": "text/html; charset=utf-8",
-        "bytes": 68699,
+        "bytes": 68697,
         "title": "Miner Street Metra Parking Lot Set for Resurfacing | City of Des Plaines, IL",
         "feed_links": [],
         "calendar_links": [
@@ -765,11 +810,11 @@
       "url": "https://www.desplainesil.gov/Departments/Media-Services/Events/Tree-Lighting-and-Winter-Fair",
       "purpose": "City of Des Plaines - Holiday Tree Lighting and Winter Fair page, the 2026 date, time and place",
       "item": 427,
-      "probed_at": "2026-11-04T06:02:48+00:00",
+      "probed_at": "2026-11-04T20:50:46+00:00",
       "status": 200,
       "final_url": "https://www.desplainesil.gov/Departments/Media-Services/Events/Tree-Lighting-and-Winter-Fair",
       "content_type": "text/html; charset=utf-8",
-      "bytes": 85617,
+      "bytes": 85615,
       "title": "Holiday Tree Lighting and Winter Fair | City of Des Plaines, IL",
       "feed_links": [],
       "calendar_links": [
@@ -820,7 +865,7 @@
       "url": "https://www.rtpd.org/",
       "purpose": "River Trails Park District - home page; an events calendar, a camp page, an ICS/webcal feed",
       "item": 439,
-      "probed_at": "2026-11-04T06:02:49+00:00",
+      "probed_at": "2026-11-04T20:50:47+00:00",
       "status": 403,
       "final_url": "https://www.rtpd.org/",
       "content_type": "text/html; charset=UTF-8",
@@ -838,11 +883,11 @@
       "url": "https://www.mppd.org/",
       "purpose": "Mount Prospect Park District - home page; its camps or winter-break programme page",
       "item": 438,
-      "probed_at": "2026-11-04T06:02:49+00:00",
+      "probed_at": "2026-11-04T20:50:47+00:00",
       "status": 200,
       "final_url": "https://www.mppd.org/",
       "content_type": "text/html; charset=UTF-8",
-      "bytes": 102670,
+      "bytes": 102671,
       "title": "Home - Mt. Prospect Park District",
       "feed_links": [
         {
@@ -891,11 +936,11 @@
         "url": "https://www.mppd.org/summer-camp/",
         "purpose": "",
         "item": null,
-        "probed_at": "2026-11-04T06:02:50+00:00",
+        "probed_at": "2026-11-04T20:50:47+00:00",
         "status": 200,
         "final_url": "https://www.mppd.org/summer-camp/",
         "content_type": "text/html; charset=UTF-8",
-        "bytes": 89523,
+        "bytes": 89527,
         "title": "Summer Camp - Mt. Prospect Park District",
         "feed_links": [
           {
@@ -1020,7 +1065,7 @@
       "url": "https://www.ahpd.org/",
       "purpose": "Arlington Heights Park District - home page; its camps or winter-break programme page",
       "item": 438,
-      "probed_at": "2026-11-04T06:02:52+00:00",
+      "probed_at": "2026-11-04T20:50:48+00:00",
       "status": 200,
       "final_url": "https://www.ahpd.org/",
       "content_type": "text/html; charset=UTF-8",
@@ -1075,11 +1120,11 @@
         "url": "https://www.ahpd.org/programs/camps/",
         "purpose": "",
         "item": null,
-        "probed_at": "2026-11-04T06:02:52+00:00",
+        "probed_at": "2026-11-04T20:50:51+00:00",
         "status": 200,
         "final_url": "https://www.ahpd.org/programs/camps/",
         "content_type": "text/html; charset=UTF-8",
-        "bytes": 144628,
+        "bytes": 144630,
         "title": "Camps - Arlington Heights Park District",
         "feed_links": [
           {
@@ -1206,7 +1251,7 @@
       "url": "https://www.dpparks.org/",
       "purpose": "Des Plaines Park District - home page; its camps or winter-break programme page",
       "item": 438,
-      "probed_at": "2026-11-04T06:02:55+00:00",
+      "probed_at": "2026-11-04T20:50:51+00:00",
       "status": 200,
       "final_url": "https://www.dpparks.org/",
       "content_type": "text/html; charset=UTF-8",
@@ -1261,7 +1306,7 @@
         "url": "https://www.dpparks.org/preschool-summer-camps/",
         "purpose": "",
         "item": null,
-        "probed_at": "2026-11-04T06:02:55+00:00",
+        "probed_at": "2026-11-04T20:50:52+00:00",
         "status": 200,
         "final_url": "https://www.dpparks.org/preschool-summer-camps/",
         "content_type": "text/html; charset=UTF-8",
@@ -1390,11 +1435,11 @@
       "url": "https://www.wheelingparkdistrict.com/",
       "purpose": "Wheeling Park District - home page; its camps or winter-break programme page",
       "item": 438,
-      "probed_at": "2026-11-04T06:02:56+00:00",
+      "probed_at": "2026-11-04T20:50:53+00:00",
       "status": 403,
       "final_url": "https://www.wheelingparkdistrict.com/",
       "content_type": "text/html; charset=UTF-8",
-      "bytes": 5471,
+      "bytes": 5450,
       "title": "Just a moment...",
       "feed_links": [],
       "calendar_links": [],
@@ -1407,11 +1452,11 @@
       "url": "https://www.palatineparks.org/",
       "purpose": "Palatine Park District - the href behind the home page's Winter Break Programming link",
       "item": 438,
-      "probed_at": "2026-11-04T06:02:56+00:00",
+      "probed_at": "2026-11-04T20:50:53+00:00",
       "status": 200,
       "final_url": "https://www.palatineparks.org/",
       "content_type": "text/html; charset=UTF-8",
-      "bytes": 348177,
+      "bytes": 348195,
       "title": "Home - Palatine Park District",
       "feed_links": [
         {
@@ -1452,7 +1497,7 @@
       "url": "https://www.vah.com/",
       "purpose": "Village of Arlington Heights - home page; a 2026 toy, coat or food drive notice",
       "item": 441,
-      "probed_at": "2026-11-04T06:02:56+00:00",
+      "probed_at": "2026-11-04T20:50:53+00:00",
       "status": 200,
       "final_url": "https://www.vah.com/",
       "content_type": "text/html; charset=UTF-8",
@@ -1473,14 +1518,15 @@
       "url": "https://www.palatine.il.us/",
       "purpose": "Village of Palatine - home page; a 2026 toy, coat or food drive notice",
       "item": 441,
-      "probed_at": "2026-11-04T06:02:57+00:00",
+      "probed_at": "2026-11-04T20:50:53+00:00",
       "status": 200,
       "final_url": "https://www.palatine.il.us/",
       "content_type": "text/html; charset=utf-8",
-      "bytes": 161999,
+      "bytes": 162771,
       "title": "Palatine, IL | Official WebsiteArrow LeftArrow RightSlideshow Left ArrowSlideshow Right Arrow",
       "feed_links": [],
       "calendar_links": [
+        "https://www.palatine.il.us/CivicAlerts.aspx?AID=510",
         "https://www.palatine.il.us/CivicAlerts.aspx?AID=508",
         "https://www.palatine.il.us/CivicAlerts.aspx?AID=501",
         "https://www.palatine.il.us/CivicAlerts.aspx?AID=502",
