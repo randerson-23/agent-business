@@ -252,5 +252,7 @@ def test_this_weekend_leads_with_picks_and_a_compact_signup_and_one_calendar_lin
     )
     body = html.split("<main", 1)[1]
     assert body.index("Trick-or-treat hours by town") < body.index("This weekend's picks") < body.index('id="newsletter-signup-top"') < body.index("<h2>Mount Prospect")
-    assert html.count("Add to calendar</a>") == 1 and "calendar.google.com" not in html.split("<main", 1)[1]
+    # Owner request 2026-11-04: Google Calendar beside the .ics link, once per card.
+    main = html.split("<main", 1)[1]
+    assert html.count("Add to calendar</a>") == 1 and main.count("https://calendar.google.com/x") == 1
     assert "This weekend's picks" not in hub_page("today", "x")
