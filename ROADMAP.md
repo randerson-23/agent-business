@@ -19409,7 +19409,7 @@ which have been live since Nov 1.
 
 #### P1 (new)
 
-438. ✅ DONE (empty message renders once when a page has no sections; "Park district camps:" line from optional `camp_catalogues:` in the region YAML or evergreen camp entries; links stay once camps appear; the YAML list is empty until round-29 probes name each agency's own camp page) **The winter-break page must never be blank.** Build loop, a
+438. ✅ DONE (round-30 probe reads Palatine Park District's "Winter Break Programming" link target; rtpd.org and wheelingparkdistrict.com are bot-walled, mppd.org/dpparks.org only have summer camp pages; empty message renders once when a page has no sections; "Park district camps:" line from optional `camp_catalogues:` in the region YAML or evergreen camp entries; links stay once camps appear; the YAML list is empty until round-29 probes name each agency's own camp page) **The winter-break page must never be blank.** Build loop, a
      `region.html.j2` fix plus config:
 
      - When `sections` is empty, render `empty_message` once, in place of
@@ -19498,7 +19498,7 @@ structured-data changes, and reviews the new share card.
 
 #### P1 (new)
 
-441. **`/give/`: toy, coat and food drives in all five towns, live Nov 15
+441. (step 1 queued: round-31 probes for the villages' drive notices in config/url_probes.yaml; read the answers before writing config/give.yaml) **`/give/`: toy, coat and food drives in all five towns, live Nov 15
      – Dec 20.** Build loop, using the probe pattern from
      `/trick-or-treat/` (`tot_watch.py`):
 
@@ -19543,7 +19543,7 @@ structured-data changes, and reviews the new share card.
 
 #### P3 (new)
 
-443. **Give the share card a reason to tap.** Build loop, the weekend
+443. ✅ DONE (footer "N things in M towns · free email every Thursday" on /og/this-weekend.png; wordmark 30 pt; frozen issue cards omit it) **Give the share card a reason to tap.** Build loop, the weekend
      share-card renderer from item 436:
 
      - Add a footer line, ***"35 things in 5 towns · free email every

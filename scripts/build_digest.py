@@ -4195,7 +4195,7 @@ def render_event_og_image(entry: dict, color: str | None = None) -> Image.Image:
     return _og_size_check(img)
 
 
-def render_weekend_og_image(date_range: str, picks: list[dict]) -> Image.Image:
+def render_weekend_og_image(date_range: str, picks: list[dict], count: int = 0, town_count: int = 0) -> Image.Image:
     """The share card for /this-weekend/ and each archived issue (ROADMAP.md
     item 436): the weekend's dates large, up to three picks each with its town
     colour dot, the wordmark small in a corner. Each pick is {"title",
@@ -4206,7 +4206,7 @@ def render_weekend_og_image(date_range: str, picks: list[dict]) -> Image.Image:
     margin = 80
     draw.rectangle([0, 0, 24, height], fill=OG_ACCENT)
     draw.text((margin, 56), "THIS WEEKEND", font=_og_font("DejaVuSans-Bold.ttf", 30), fill=OG_MUTED)
-    draw.text((width - margin, 56), "WITHIN TEN", font=_og_font("DejaVuSans-Bold.ttf", 26), fill=OG_ACCENT, anchor="ra")
+    draw.text((width - margin, 56), "WITHIN TEN", font=_og_font("DejaVuSans-Bold.ttf", 30), fill=OG_ACCENT, anchor="ra")
     draw.text((margin, 104), date_range, font=_og_font("DejaVuSans-Bold.ttf", 116), fill=OG_INK)
     y = 262
     title_font = _og_font("DejaVuSans-Bold.ttf", 40)
@@ -4222,8 +4222,19 @@ def render_weekend_og_image(date_range: str, picks: list[dict]) -> Image.Image:
         if pick.get("pick_town"):
             draw.text((margin + 56, y + 50), pick["pick_town"], font=town_font, fill=OG_MUTED)
         y += 106
+    footer = weekend_card_footer(count, town_count)
+    if footer:
+        draw.text((margin, height - 62), footer, font=_og_font("DejaVuSans-Bold.ttf", 28), fill=OG_ACCENT)
     draw.rectangle([24, height - 14, width, height], fill=OG_ACCENT)
     return _og_size_check(img)
+
+
+def weekend_card_footer(count: int, town_count: int) -> str:
+    """Item 443: the reason to tap, from the live counts; "" when there is no count."""
+    if count <= 0:
+        return ""
+    towns = f" in {town_count} town{'s' if town_count != 1 else ''}" if town_count > 0 else ""
+    return f"{count} thing{'s' if count != 1 else ''}{towns} \u00b7 free email every Thursday"
 
 
 _COUNT_WORDS = {2: "two", 3: "three", 4: "four", 5: "five", 6: "six", 7: "seven", 8: "eight"}
@@ -7779,7 +7790,7 @@ def main() -> None:
     weekend_og_url = weekend_og_title = None
     if weekend_card_picks and hub_weekend_date_range and hub_weekend_sections:
         (OUTPUT_DIR / "og").mkdir(parents=True, exist_ok=True)
-        render_weekend_og_image(hub_weekend_date_range, weekend_card_picks).save(OUTPUT_DIR / "og" / "this-weekend.png", "PNG", optimize=True)
+        render_weekend_og_image(hub_weekend_date_range, weekend_card_picks, sum(len(sec["events"]) for sec in hub_weekend_sections), len(hub_weekend_sections)).save(OUTPUT_DIR / "og" / "this-weekend.png", "PNG", optimize=True)
         weekend_og_url = SITE_BASE_URL + "og/this-weekend.png"
     if hub_weekend_sections and hub_weekend_date_range:
         weekend_og_title = weekend_share_title(hub_weekend_sections[0]["region_name"], sum(len(sec["events"]) for sec in hub_weekend_sections), hub_weekend_date_range)  # item 437
