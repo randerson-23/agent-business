@@ -4,7 +4,7 @@
       "url": "https://withintenmiles.com/f3b7799bed06aac4295ec9134d53b014.txt",
       "purpose": "IndexNow key file on the live domain - still served and still equal to the key?",
       "item": 224,
-      "probed_at": "2026-11-03T22:03:23+00:00",
+      "probed_at": "2026-11-04T06:02:31+00:00",
       "status": 200,
       "final_url": "https://withintenmiles.com/f3b7799bed06aac4295ec9134d53b014.txt",
       "content_type": "text/plain; charset=utf-8",
@@ -22,18 +22,84 @@
       "url": "https://www.ahpd.org/parks/",
       "purpose": "Arlington Heights Park District - park list; does Pioneer Park's page give its street address?",
       "item": 376,
-      "probed_at": "2026-11-03T22:03:23+00:00",
-      "error": "ConnectTimeout"
+      "probed_at": "2026-11-04T06:02:31+00:00",
+      "status": 200,
+      "final_url": "https://www.ahpd.org/parks/",
+      "content_type": "text/html; charset=UTF-8",
+      "bytes": 138123,
+      "title": "Parks - Arlington Heights Park District",
+      "feed_links": [
+        {
+          "href": "https://www.ahpd.org/feed/",
+          "type": "application/rss+xml",
+          "title": "Arlington Heights Park District » Feed"
+        },
+        {
+          "href": "https://www.ahpd.org/events/?ical=1",
+          "type": "text/calendar",
+          "title": "Arlington Heights Park District » iCal Feed"
+        },
+        {
+          "href": "https://www.ahpd.org/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fwww.ahpd.org%2Fparks%2F",
+          "type": "application/json+oembed",
+          "title": "oEmbed (JSON)"
+        },
+        {
+          "href": "https://www.ahpd.org/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fwww.ahpd.org%2Fparks%2F&format=xml",
+          "type": "text/xml+oembed",
+          "title": "oEmbed (XML)"
+        },
+        {
+          "href": "https://www.ahpd.org/wp-json/wp/v2/pages/263",
+          "type": "application/json",
+          "title": "JSON"
+        },
+        {
+          "href": "https://www.ahpd.org/wp-json/tribe/events/v1/",
+          "type": "",
+          "title": ""
+        }
+      ],
+      "calendar_links": [
+        "https://www.ahpd.org/arlington-heights-historical-museum/"
+      ],
+      "pattern_matches": {
+        "Pioneer Park": [
+          {
+            "match": "Pioneer Park",
+            "context": "_nomargin\"> Pioneer Park Community Center"
+          }
+        ],
+        "\\b\\d{2,5}\\s+(?:[NSEW]\\.?\\s+)?[A-Z][A-Za-z]+(?:\\s+[A-Z][A-Za-z]+)?\\s+(?:Ave|Avenue|St|Street|Rd|Road|Blvd|Dr|Drive|Ln|Lane)\\b": [
+          {
+            "match": "410 N Arlington Heights Rd",
+            "context": "k\"> 410 N Arlington Heights Rd </a>"
+          },
+          {
+            "match": "660 N. Ridge Ave",
+            "context": "k\"> 660 N. Ridge Ave </a>"
+          },
+          {
+            "match": "1005 E Suffield Dr",
+            "context": "k\"> 1005 E Suffield Dr </a>"
+          },
+          {
+            "match": "500 S. Fernandez Ave",
+            "context": "k\"> 500 S. Fernandez Ave </a>"
+          }
+        ]
+      },
+      "followed": null
     },
     {
       "url": "https://events.harpercollege.edu/api/2/events?days=60&pp=100",
       "purpose": "Harper College (Localist) - venue ids, venue names and event types in use",
       "item": 286,
-      "probed_at": "2026-11-03T22:03:38+00:00",
+      "probed_at": "2026-11-04T06:02:32+00:00",
       "status": 200,
       "final_url": "https://events.harpercollege.edu/api/2/events?days=60&pp=100",
       "content_type": "application/json; charset=utf-8",
-      "bytes": 384511,
+      "bytes": 384746,
       "pattern_matches": {
         "\"venue_id\":\\d+": [
           {
@@ -82,10 +148,6 @@
           }
         ],
         "\"location_name\":\"[^\"]{2,60}\"": [
-          {
-            "match": "\"location_name\":\"Des Plaines, IL , Owl's Gymnasium\"",
-            "context": "ion\":\"Des Plaines, IL , Owl's Gymnasium\",\"room_number\":null,\"location_name\":\"Des Plaines, IL , Owl's Gymnasium\",\"status\":\"live\",\"experience\":\"inperson\",\"stream_url\":null,\""
-          },
           {
             "match": "\"location_name\":\"A building\"",
             "context": "dance\":true,\"location\":\"A building\",\"room_number\":\"2 floor\",\"location_name\":\"A building\",\"status\":\"live\",\"experience\":\"inperson\",\"stream_url\":null,\""
@@ -161,20 +223,16 @@
           {
             "match": "\"location_name\":\"Decorah, IA, Gerdin Fieldhouse\"",
             "context": "cation\":\"Decorah, IA, Gerdin Fieldhouse\",\"room_number\":null,\"location_name\":\"Decorah, IA, Gerdin Fieldhouse\",\"status\":\"live\",\"experience\":\"inperson\",\"stream_url\":null,\""
+          },
+          {
+            "match": "\"location_name\":\"Huntsville, AL, John Hunt Park\"",
+            "context": "cation\":\"Huntsville, AL, John Hunt Park\",\"room_number\":null,\"location_name\":\"Huntsville, AL, John Hunt Park\",\"status\":\"live\",\"experience\":\"inperson\",\"stream_url\":null,\""
           }
         ],
         "\"event_types\":\\[[^\\]]{0,200}\\]": [
           {
-            "match": "\"event_types\":[{\"name\":\"Academic Calendar\",\"id\":30388862287004},{\"name\":\"Closure\",\"id\":43783825268721}]",
-            "context": "ty\":null,\"state\":null,\"country\":null,\"zip\":null},\"filters\":{\"event_types\":[{\"name\":\"Academic Calendar\",\"id\":30388862287004},{\"name\":\"Closure\",\"id\":43783825268721}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\""
-          },
-          {
             "match": "\"event_types\":[{\"name\":\"Wellness and Health\",\"id\":46790322621181}]",
             "context": "nts\":[{\"id\":49453020010424,\"name\":\"Hawks Care\"}],\"filters\":{\"event_types\":[{\"name\":\"Wellness and Health\",\"id\":46790322621181}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\""
-          },
-          {
-            "match": "\"event_types\":[{\"name\":\"Athletics\",\"id\":107041}]",
-            "context": "ty\":null,\"state\":null,\"country\":null,\"zip\":null},\"filters\":{\"event_types\":[{\"name\":\"Athletics\",\"id\":107041}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\""
           },
           {
             "match": "\"event_types\":[{\"name\":\"Admission\",\"id\":44198994778312},{\"name\":\"Information Session\",\"id\":107035}]",
@@ -183,6 +241,10 @@
           {
             "match": "\"event_types\":[{\"name\":\"Cultural Arts\",\"id\":128837},{\"name\":\"Film Screening / Series\",\"id\":44146602471710}]",
             "context": "id\":44128605158525,\"name\":\"Mass Communication\"}],\"filters\":{\"event_types\":[{\"name\":\"Cultural Arts\",\"id\":128837},{\"name\":\"Film Screening / Series\",\"id\":44146602471710}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\""
+          },
+          {
+            "match": "\"event_types\":[{\"name\":\"Athletics\",\"id\":107041}]",
+            "context": "ty\":null,\"state\":null,\"country\":null,\"zip\":null},\"filters\":{\"event_types\":[{\"name\":\"Athletics\",\"id\":107041}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\""
           },
           {
             "match": "\"event_types\":[{\"name\":\"Virtual Events\",\"id\":128836},{\"name\":\"Training and How-Tos\",\"id\":53736839190237}]",
@@ -215,88 +277,92 @@
           {
             "match": "\"event_types\":[{\"name\":\"Training and How-Tos\",\"id\":53736839190237}]",
             "context": "nts\":[{\"id\":49453020010424,\"name\":\"Hawks Care\"}],\"filters\":{\"event_types\":[{\"name\":\"Training and How-Tos\",\"id\":53736839190237}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\""
+          },
+          {
+            "match": "\"event_types\":[{\"name\":\"Academic Calendar\",\"id\":30388862287004},{\"name\":\"Closure\",\"id\":43783825268721}]",
+            "context": "ty\":null,\"state\":null,\"country\":null,\"zip\":null},\"filters\":{\"event_types\":[{\"name\":\"Academic Calendar\",\"id\":30388862287004},{\"name\":\"Closure\",\"id\":43783825268721}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\""
           }
         ],
         "\"filters\":\\{.{0,300}": [
           {
-            "match": "\"filters\":{\"event_types\":[{\"name\":\"Academic Calendar\",\"id\":30388862287004},{\"name\":\"Closure\",\"id\":43783825268721}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":51745577784351,\"event_id\":34813643196266,\"start\":\"2026-11-03T00:00:00-06:00\",\"end\":null,\"ranking\":0.29,\"all_day\":true,\"num_attending\"",
-            "context": "t\":null,\"city\":null,\"state\":null,\"country\":null,\"zip\":null},\"filters\":{\"event_types\":[{\"name\":\"Academic Calendar\",\"id\":30388862287004},{\"name\":\"Closure\",\"id\":43783825268721}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":51745577784351,\"event_id\":34813643196266,\"start\":\"2026-11-03T00:00:00-06:00\",\"end\":null,\"ranking\":0.29,\"all_day\":true,\"num_attending\":0}}],\"localist_url\":\"https://events.harpercollege.edu/event"
+            "match": "\"filters\":{\"event_types\":[{\"name\":\"Wellness and Health\",\"id\":46790322621181}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":54162479195880,\"event_id\":54162479168219,\"start\":\"2026-11-04T00:00:00-06:00\",\"end\":null,\"ranking\":0.09,\"all_day\":true,\"num_attending\":0}}],\"localist_url\":\"https://events.",
+            "context": "},\"departments\":[{\"id\":49453020010424,\"name\":\"Hawks Care\"}],\"filters\":{\"event_types\":[{\"name\":\"Wellness and Health\",\"id\":46790322621181}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":54162479195880,\"event_id\":54162479168219,\"start\":\"2026-11-04T00:00:00-06:00\",\"end\":null,\"ranking\":0.09,\"all_day\":true,\"num_attending\":0}}],\"localist_url\":\"https://events.harpercollege.edu/event/feed-the-need-campus-food-drive-2969"
           },
           {
-            "match": "\"filters\":{\"event_types\":[{\"name\":\"Wellness and Health\",\"id\":46790322621181}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":54162479194855,\"event_id\":54162479168219,\"start\":\"2026-11-03T00:00:00-06:00\",\"end\":null,\"ranking\":0.09,\"all_day\":true,\"num_attending\":0}}],\"localist_url\":\"https://events.",
-            "context": "},\"departments\":[{\"id\":49453020010424,\"name\":\"Hawks Care\"}],\"filters\":{\"event_types\":[{\"name\":\"Wellness and Health\",\"id\":46790322621181}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":54162479194855,\"event_id\":54162479168219,\"start\":\"2026-11-03T00:00:00-06:00\",\"end\":null,\"ranking\":0.09,\"all_day\":true,\"num_attending\":0}}],\"localist_url\":\"https://events.harpercollege.edu/event/feed-the-need-campus-food-drive-2969"
+            "match": "\"filters\":{},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":54315029267644,\"event_id\":54315029266619,\"start\":\"2026-11-04T12:00:00-06:00\",\"end\":\"2026-11-05T04:30:00-06:00\",\"ranking\":0.29,\"all_day\":false,\"num_attending\":0}}],\"localist_url\":\"https://events.harpercollege.edu/event/dia-de-los-muertos",
+            "context": "t\":null,\"city\":null,\"state\":null,\"country\":null,\"zip\":null},\"filters\":{},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":54315029267644,\"event_id\":54315029266619,\"start\":\"2026-11-04T12:00:00-06:00\",\"end\":\"2026-11-05T04:30:00-06:00\",\"ranking\":0.29,\"all_day\":false,\"num_attending\":0}}],\"localist_url\":\"https://events.harpercollege.edu/event/dia-de-los-muertos-ofrendas-3701\",\"localist_ics_url\":\"https://events.harpercol"
           },
           {
-            "match": "\"filters\":{\"event_types\":[{\"name\":\"Athletics\",\"id\":107041}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":53936410473052,\"event_id\":53936410473051,\"start\":\"2026-11-03T17:00:00-06:00\",\"end\":\"2026-11-03T19:00:00-06:00\",\"ranking\":0.29,\"all_day\":false,\"num_attending\":0}}],\"localist_url\":\"https://e",
-            "context": "t\":null,\"city\":null,\"state\":null,\"country\":null,\"zip\":null},\"filters\":{\"event_types\":[{\"name\":\"Athletics\",\"id\":107041}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":53936410473052,\"event_id\":53936410473051,\"start\":\"2026-11-03T17:00:00-06:00\",\"end\":\"2026-11-03T19:00:00-06:00\",\"ranking\":0.29,\"all_day\":false,\"num_attending\":0}}],\"localist_url\":\"https://events.harpercollege.edu/event/harper-college-womens-basketba"
+            "match": "\"filters\":{\"event_types\":[{\"name\":\"Admission\",\"id\":44198994778312},{\"name\":\"Information Session\",\"id\":107035}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":54346878957104,\"event_id\":54346878957103,\"start\":\"2026-11-04T17:00:00-06:00\",\"end\":\"2026-11-04T19:00:00-06:00\",\"ranking\":0.29,\"all_day\":f",
+            "context": "ts\":[{\"id\":35776074393813,\"name\":\"High School Admissions\"}],\"filters\":{\"event_types\":[{\"name\":\"Admission\",\"id\":44198994778312},{\"name\":\"Information Session\",\"id\":107035}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":54346878957104,\"event_id\":54346878957103,\"start\":\"2026-11-04T17:00:00-06:00\",\"end\":\"2026-11-04T19:00:00-06:00\",\"ranking\":0.29,\"all_day\":false,\"num_attending\":0}}],\"localist_url\":\"https://events.har"
           },
           {
-            "match": "\"filters\":{\"event_types\":[{\"name\":\"Athletics\",\"id\":107041}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":54122247858222,\"event_id\":54122247858221,\"start\":\"2026-11-03T19:00:00-06:00\",\"end\":\"2026-11-03T21:00:00-06:00\",\"ranking\":0.29,\"all_day\":false,\"num_attending\":0}}],\"localist_url\":\"https://e",
-            "context": "t\":null,\"city\":null,\"state\":null,\"country\":null,\"zip\":null},\"filters\":{\"event_types\":[{\"name\":\"Athletics\",\"id\":107041}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":54122247858222,\"event_id\":54122247858221,\"start\":\"2026-11-03T19:00:00-06:00\",\"end\":\"2026-11-03T21:00:00-06:00\",\"ranking\":0.29,\"all_day\":false,\"num_attending\":0}}],\"localist_url\":\"https://events.harpercollege.edu/event/harper-college-mens-basketball"
+            "match": "\"filters\":{\"event_types\":[{\"name\":\"Admission\",\"id\":44198994778312},{\"name\":\"Information Session\",\"id\":107035}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":54046156286004,\"event_id\":54046156284979,\"start\":\"2026-11-04T18:00:00-06:00\",\"end\":\"2026-11-04T18:30:00-06:00\",\"ranking\":0.29,\"all_day\":f",
+            "context": "city\":\"Palatine\",\"state\":\"IL\",\"country\":\"US\",\"zip\":\"60067\"},\"filters\":{\"event_types\":[{\"name\":\"Admission\",\"id\":44198994778312},{\"name\":\"Information Session\",\"id\":107035}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":54046156286004,\"event_id\":54046156284979,\"start\":\"2026-11-04T18:00:00-06:00\",\"end\":\"2026-11-04T18:30:00-06:00\",\"ranking\":0.29,\"all_day\":false,\"num_attending\":0}}],\"localist_url\":\"https://events.har"
           },
           {
-            "match": "\"filters\":{\"event_types\":[{\"name\":\"Wellness and Health\",\"id\":46790322621181}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":54162479195880,\"event_id\":54162479168219,\"start\":\"2026-11-04T00:00:00-06:00\",\"end\":null,\"ranking\":0.08,\"all_day\":true,\"num_attending\":0}}],\"localist_url\":\"https://events.",
-            "context": "},\"departments\":[{\"id\":49453020010424,\"name\":\"Hawks Care\"}],\"filters\":{\"event_types\":[{\"name\":\"Wellness and Health\",\"id\":46790322621181}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":54162479195880,\"event_id\":54162479168219,\"start\":\"2026-11-04T00:00:00-06:00\",\"end\":null,\"ranking\":0.08,\"all_day\":true,\"num_attending\":0}}],\"localist_url\":\"https://events.harpercollege.edu/event/feed-the-need-campus-food-drive-2969"
+            "match": "\"filters\":{\"event_types\":[{\"name\":\"Cultural Arts\",\"id\":128837},{\"name\":\"Film Screening / Series\",\"id\":44146602471710}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":53452366961502,\"event_id\":53452366961501,\"start\":\"2026-11-04T18:00:00-06:00\",\"end\":\"2026-11-04T21:00:00-06:00\",\"ranking\":0.29,\"al",
+            "context": "tments\":[{\"id\":44128605158525,\"name\":\"Mass Communication\"}],\"filters\":{\"event_types\":[{\"name\":\"Cultural Arts\",\"id\":128837},{\"name\":\"Film Screening / Series\",\"id\":44146602471710}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":53452366961502,\"event_id\":53452366961501,\"start\":\"2026-11-04T18:00:00-06:00\",\"end\":\"2026-11-04T21:00:00-06:00\",\"ranking\":0.29,\"all_day\":false,\"num_attending\":0}}],\"localist_url\":\"https://ev"
           },
           {
-            "match": "\"filters\":{},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":54315029267644,\"event_id\":54315029266619,\"start\":\"2026-11-04T12:00:00-06:00\",\"end\":\"2026-11-05T04:30:00-06:00\",\"ranking\":0.28,\"all_day\":false,\"num_attending\":0}}],\"localist_url\":\"https://events.harpercollege.edu/event/dia-de-los-muertos",
-            "context": "t\":null,\"city\":null,\"state\":null,\"country\":null,\"zip\":null},\"filters\":{},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":54315029267644,\"event_id\":54315029266619,\"start\":\"2026-11-04T12:00:00-06:00\",\"end\":\"2026-11-05T04:30:00-06:00\",\"ranking\":0.28,\"all_day\":false,\"num_attending\":0}}],\"localist_url\":\"https://events.harpercollege.edu/event/dia-de-los-muertos-ofrendas-3701\",\"localist_ics_url\":\"https://events.harpercol"
+            "match": "\"filters\":{\"event_types\":[{\"name\":\"Athletics\",\"id\":107041}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":54378787828510,\"event_id\":54378787828509,\"start\":\"2026-11-04T18:00:00-06:00\",\"end\":\"2026-11-04T20:00:00-06:00\",\"ranking\":0.29,\"all_day\":false,\"num_attending\":0}}],\"localist_url\":\"https://e",
+            "context": "t\":null,\"city\":null,\"state\":null,\"country\":null,\"zip\":null},\"filters\":{\"event_types\":[{\"name\":\"Athletics\",\"id\":107041}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":54378787828510,\"event_id\":54378787828509,\"start\":\"2026-11-04T18:00:00-06:00\",\"end\":\"2026-11-04T20:00:00-06:00\",\"ranking\":0.29,\"all_day\":false,\"num_attending\":0}}],\"localist_url\":\"https://events.harpercollege.edu/event/harper-college-womens-volleyba"
           },
           {
-            "match": "\"filters\":{\"event_types\":[{\"name\":\"Admission\",\"id\":44198994778312},{\"name\":\"Information Session\",\"id\":107035}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":54346878957104,\"event_id\":54346878957103,\"start\":\"2026-11-04T17:00:00-06:00\",\"end\":\"2026-11-04T19:00:00-06:00\",\"ranking\":0.28,\"all_day\":f",
-            "context": "ts\":[{\"id\":35776074393813,\"name\":\"High School Admissions\"}],\"filters\":{\"event_types\":[{\"name\":\"Admission\",\"id\":44198994778312},{\"name\":\"Information Session\",\"id\":107035}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":54346878957104,\"event_id\":54346878957103,\"start\":\"2026-11-04T17:00:00-06:00\",\"end\":\"2026-11-04T19:00:00-06:00\",\"ranking\":0.28,\"all_day\":false,\"num_attending\":0}}],\"localist_url\":\"https://events.har"
+            "match": "\"filters\":{\"event_types\":[{\"name\":\"Wellness and Health\",\"id\":46790322621181}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":54162479197929,\"event_id\":54162479168219,\"start\":\"2026-11-05T00:00:00-06:00\",\"end\":null,\"ranking\":0.08,\"all_day\":true,\"num_attending\":0}}],\"localist_url\":\"https://events.",
+            "context": "},\"departments\":[{\"id\":49453020010424,\"name\":\"Hawks Care\"}],\"filters\":{\"event_types\":[{\"name\":\"Wellness and Health\",\"id\":46790322621181}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":54162479197929,\"event_id\":54162479168219,\"start\":\"2026-11-05T00:00:00-06:00\",\"end\":null,\"ranking\":0.08,\"all_day\":true,\"num_attending\":0}}],\"localist_url\":\"https://events.harpercollege.edu/event/feed-the-need-campus-food-drive-2969"
           },
           {
-            "match": "\"filters\":{\"event_types\":[{\"name\":\"Admission\",\"id\":44198994778312},{\"name\":\"Information Session\",\"id\":107035}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":54046156286004,\"event_id\":54046156284979,\"start\":\"2026-11-04T18:00:00-06:00\",\"end\":\"2026-11-04T18:30:00-06:00\",\"ranking\":0.28,\"all_day\":f",
-            "context": "city\":\"Palatine\",\"state\":\"IL\",\"country\":\"US\",\"zip\":\"60067\"},\"filters\":{\"event_types\":[{\"name\":\"Admission\",\"id\":44198994778312},{\"name\":\"Information Session\",\"id\":107035}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":54046156286004,\"event_id\":54046156284979,\"start\":\"2026-11-04T18:00:00-06:00\",\"end\":\"2026-11-04T18:30:00-06:00\",\"ranking\":0.28,\"all_day\":false,\"num_attending\":0}}],\"localist_url\":\"https://events.har"
+            "match": "\"filters\":{\"event_types\":[{\"name\":\"Virtual Events\",\"id\":128836},{\"name\":\"Training and How-Tos\",\"id\":53736839190237}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":53514879965907,\"event_id\":53514879959753,\"start\":\"2026-11-05T12:00:00-06:00\",\"end\":\"2026-11-05T13:00:00-06:00\",\"ranking\":0.08,\"all_",
+            "context": "ents\":[{\"id\":11536,\"name\":\"Job Placement Resource Center\"}],\"filters\":{\"event_types\":[{\"name\":\"Virtual Events\",\"id\":128836},{\"name\":\"Training and How-Tos\",\"id\":53736839190237}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":53514879965907,\"event_id\":53514879959753,\"start\":\"2026-11-05T12:00:00-06:00\",\"end\":\"2026-11-05T13:00:00-06:00\",\"ranking\":0.08,\"all_day\":false,\"num_attending\":0}}],\"localist_url\":\"https://even"
           },
           {
-            "match": "\"filters\":{\"event_types\":[{\"name\":\"Cultural Arts\",\"id\":128837},{\"name\":\"Film Screening / Series\",\"id\":44146602471710}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":53452366961502,\"event_id\":53452366961501,\"start\":\"2026-11-04T18:00:00-06:00\",\"end\":\"2026-11-04T21:00:00-06:00\",\"ranking\":0.28,\"al",
-            "context": "tments\":[{\"id\":44128605158525,\"name\":\"Mass Communication\"}],\"filters\":{\"event_types\":[{\"name\":\"Cultural Arts\",\"id\":128837},{\"name\":\"Film Screening / Series\",\"id\":44146602471710}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":53452366961502,\"event_id\":53452366961501,\"start\":\"2026-11-04T18:00:00-06:00\",\"end\":\"2026-11-04T21:00:00-06:00\",\"ranking\":0.28,\"all_day\":false,\"num_attending\":0}}],\"localist_url\":\"https://ev"
+            "match": "\"filters\":{},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":54135054463052,\"event_id\":54135054463051,\"start\":\"2026-11-05T12:00:00-06:00\",\"end\":\"2026-11-05T13:00:00-06:00\",\"ranking\":0.28,\"all_day\":false,\"num_attending\":0}}],\"localist_url\":\"https://events.harpercollege.edu/event/jprc-workshop-vmoc",
+            "context": "ents\":[{\"id\":11536,\"name\":\"Job Placement Resource Center\"}],\"filters\":{},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":54135054463052,\"event_id\":54135054463051,\"start\":\"2026-11-05T12:00:00-06:00\",\"end\":\"2026-11-05T13:00:00-06:00\",\"ranking\":0.28,\"all_day\":false,\"num_attending\":0}}],\"localist_url\":\"https://events.harpercollege.edu/event/jprc-workshop-vmock\",\"localist_ics_url\":\"https://events.harpercollege.edu/even"
           },
           {
-            "match": "\"filters\":{\"event_types\":[{\"name\":\"Athletics\",\"id\":107041}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":54378787828510,\"event_id\":54378787828509,\"start\":\"2026-11-04T18:00:00-06:00\",\"end\":\"2026-11-04T20:00:00-06:00\",\"ranking\":0.28,\"all_day\":false,\"num_attending\":0}}],\"localist_url\":\"https://e",
-            "context": "t\":null,\"city\":null,\"state\":null,\"country\":null,\"zip\":null},\"filters\":{\"event_types\":[{\"name\":\"Athletics\",\"id\":107041}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":54378787828510,\"event_id\":54378787828509,\"start\":\"2026-11-04T18:00:00-06:00\",\"end\":\"2026-11-04T20:00:00-06:00\",\"ranking\":0.28,\"all_day\":false,\"num_attending\":0}}],\"localist_url\":\"https://events.harpercollege.edu/event/harper-college-womens-volleyba"
+            "match": "\"filters\":{\"event_types\":[{\"name\":\"Athletics\",\"id\":107041}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":54122247872562,\"event_id\":54122247871537,\"start\":\"2026-11-05T18:00:00-06:00\",\"end\":\"2026-11-05T20:00:00-06:00\",\"ranking\":0.28,\"all_day\":false,\"num_attending\":0}}],\"localist_url\":\"https://e",
+            "context": "t\":null,\"city\":null,\"state\":null,\"country\":null,\"zip\":null},\"filters\":{\"event_types\":[{\"name\":\"Athletics\",\"id\":107041}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":54122247872562,\"event_id\":54122247871537,\"start\":\"2026-11-05T18:00:00-06:00\",\"end\":\"2026-11-05T20:00:00-06:00\",\"ranking\":0.28,\"all_day\":false,\"num_attending\":0}}],\"localist_url\":\"https://events.harpercollege.edu/event/harper-college-mens-basketball"
           },
           {
-            "match": "\"filters\":{\"event_types\":[{\"name\":\"Wellness and Health\",\"id\":46790322621181}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":54162479197929,\"event_id\":54162479168219,\"start\":\"2026-11-05T00:00:00-06:00\",\"end\":null,\"ranking\":0.07,\"all_day\":true,\"num_attending\":0}}],\"localist_url\":\"https://events.",
-            "context": "},\"departments\":[{\"id\":49453020010424,\"name\":\"Hawks Care\"}],\"filters\":{\"event_types\":[{\"name\":\"Wellness and Health\",\"id\":46790322621181}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":54162479197929,\"event_id\":54162479168219,\"start\":\"2026-11-05T00:00:00-06:00\",\"end\":null,\"ranking\":0.07,\"all_day\":true,\"num_attending\":0}}],\"localist_url\":\"https://events.harpercollege.edu/event/feed-the-need-campus-food-drive-2969"
+            "match": "\"filters\":{\"event_types\":[{\"name\":\"Wellness and Health\",\"id\":46790322621181}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":54162479201002,\"event_id\":54162479168219,\"start\":\"2026-11-06T00:00:00-06:00\",\"end\":null,\"ranking\":0.07,\"all_day\":true,\"num_attending\":0}}],\"localist_url\":\"https://events.",
+            "context": "},\"departments\":[{\"id\":49453020010424,\"name\":\"Hawks Care\"}],\"filters\":{\"event_types\":[{\"name\":\"Wellness and Health\",\"id\":46790322621181}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":54162479201002,\"event_id\":54162479168219,\"start\":\"2026-11-06T00:00:00-06:00\",\"end\":null,\"ranking\":0.07,\"all_day\":true,\"num_attending\":0}}],\"localist_url\":\"https://events.harpercollege.edu/event/feed-the-need-campus-food-drive-2969"
           },
           {
-            "match": "\"filters\":{\"event_types\":[{\"name\":\"Virtual Events\",\"id\":128836},{\"name\":\"Training and How-Tos\",\"id\":53736839190237}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":53514879965907,\"event_id\":53514879959753,\"start\":\"2026-11-05T12:00:00-06:00\",\"end\":\"2026-11-05T13:00:00-06:00\",\"ranking\":0.07,\"all_",
-            "context": "ents\":[{\"id\":11536,\"name\":\"Job Placement Resource Center\"}],\"filters\":{\"event_types\":[{\"name\":\"Virtual Events\",\"id\":128836},{\"name\":\"Training and How-Tos\",\"id\":53736839190237}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":53514879965907,\"event_id\":53514879959753,\"start\":\"2026-11-05T12:00:00-06:00\",\"end\":\"2026-11-05T13:00:00-06:00\",\"ranking\":0.07,\"all_day\":false,\"num_attending\":0}}],\"localist_url\":\"https://even"
+            "match": "\"filters\":{\"event_types\":[{\"name\":\"Wellness and Health\",\"id\":46790322621181}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":54012078174437,\"event_id\":54012078173412,\"start\":\"2026-11-06T08:30:00-06:00\",\"end\":\"2026-11-06T16:00:00-06:00\",\"ranking\":0.27,\"all_day\":false,\"num_attending\":0}}],\"locali",
+            "context": "3016984923,\"name\":\"Mental Health and Well-Being Services\"}],\"filters\":{\"event_types\":[{\"name\":\"Wellness and Health\",\"id\":46790322621181}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":54012078174437,\"event_id\":54012078173412,\"start\":\"2026-11-06T08:30:00-06:00\",\"end\":\"2026-11-06T16:00:00-06:00\",\"ranking\":0.27,\"all_day\":false,\"num_attending\":0}}],\"localist_url\":\"https://events.harpercollege.edu/event/mental-healt"
           },
           {
-            "match": "\"filters\":{},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":54135054463052,\"event_id\":54135054463051,\"start\":\"2026-11-05T12:00:00-06:00\",\"end\":\"2026-11-05T13:00:00-06:00\",\"ranking\":0.27,\"all_day\":false,\"num_attending\":0}}],\"localist_url\":\"https://events.harpercollege.edu/event/jprc-workshop-vmoc",
-            "context": "ents\":[{\"id\":11536,\"name\":\"Job Placement Resource Center\"}],\"filters\":{},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":54135054463052,\"event_id\":54135054463051,\"start\":\"2026-11-05T12:00:00-06:00\",\"end\":\"2026-11-05T13:00:00-06:00\",\"ranking\":0.27,\"all_day\":false,\"num_attending\":0}}],\"localist_url\":\"https://events.harpercollege.edu/event/jprc-workshop-vmock\",\"localist_ics_url\":\"https://events.harpercollege.edu/even"
+            "match": "\"filters\":{},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":54231061951153,\"event_id\":54231061950128,\"start\":\"2026-11-06T09:30:00-06:00\",\"end\":\"2026-11-06T14:00:00-06:00\",\"ranking\":0.27,\"all_day\":false,\"num_attending\":0}}],\"localist_url\":\"https://events.harpercollege.edu/event/harper-diversity-s",
+            "context": "\":38279350719446,\"name\":\"Diversity, Equity and Inclusion\"}],\"filters\":{},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":54231061951153,\"event_id\":54231061950128,\"start\":\"2026-11-06T09:30:00-06:00\",\"end\":\"2026-11-06T14:00:00-06:00\",\"ranking\":0.27,\"all_day\":false,\"num_attending\":0}}],\"localist_url\":\"https://events.harpercollege.edu/event/harper-diversity-symposium\",\"localist_ics_url\":\"https://events.harpercollege.e"
           },
           {
-            "match": "\"filters\":{\"event_types\":[{\"name\":\"Athletics\",\"id\":107041}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":54122247872562,\"event_id\":54122247871537,\"start\":\"2026-11-05T18:00:00-06:00\",\"end\":\"2026-11-05T20:00:00-06:00\",\"ranking\":0.27,\"all_day\":false,\"num_attending\":0}}],\"localist_url\":\"https://e",
-            "context": "t\":null,\"city\":null,\"state\":null,\"country\":null,\"zip\":null},\"filters\":{\"event_types\":[{\"name\":\"Athletics\",\"id\":107041}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":54122247872562,\"event_id\":54122247871537,\"start\":\"2026-11-05T18:00:00-06:00\",\"end\":\"2026-11-05T20:00:00-06:00\",\"ranking\":0.27,\"all_day\":false,\"num_attending\":0}}],\"localist_url\":\"https://events.harpercollege.edu/event/harper-college-mens-basketball"
+            "match": "\"filters\":{},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":54249963174574,\"event_id\":54249963174573,\"start\":\"2026-11-06T11:00:00-06:00\",\"end\":\"2026-11-06T13:00:00-06:00\",\"ranking\":0.27,\"all_day\":false,\"num_attending\":0}}],\"localist_url\":\"https://events.harpercollege.edu/event/allied-health-care",
+            "context": "ents\":[{\"id\":11536,\"name\":\"Job Placement Resource Center\"}],\"filters\":{},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":54249963174574,\"event_id\":54249963174573,\"start\":\"2026-11-06T11:00:00-06:00\",\"end\":\"2026-11-06T13:00:00-06:00\",\"ranking\":0.27,\"all_day\":false,\"num_attending\":0}}],\"localist_url\":\"https://events.harpercollege.edu/event/allied-health-career-fair-1912\",\"localist_ics_url\":\"https://events.harpercolle"
           },
           {
-            "match": "\"filters\":{\"event_types\":[{\"name\":\"Wellness and Health\",\"id\":46790322621181}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":54162479201002,\"event_id\":54162479168219,\"start\":\"2026-11-06T00:00:00-06:00\",\"end\":null,\"ranking\":0.06,\"all_day\":true,\"num_attending\":0}}],\"localist_url\":\"https://events.",
-            "context": "},\"departments\":[{\"id\":49453020010424,\"name\":\"Hawks Care\"}],\"filters\":{\"event_types\":[{\"name\":\"Wellness and Health\",\"id\":46790322621181}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":54162479201002,\"event_id\":54162479168219,\"start\":\"2026-11-06T00:00:00-06:00\",\"end\":null,\"ranking\":0.06,\"all_day\":true,\"num_attending\":0}}],\"localist_url\":\"https://events.harpercollege.edu/event/feed-the-need-campus-food-drive-2969"
+            "match": "\"filters\":{\"event_types\":[{\"name\":\"Admission\",\"id\":44198994778312},{\"name\":\"Campus Tour\",\"id\":44198992944890}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":53825801607952,\"event_id\":53825801607951,\"start\":\"2026-11-06T12:00:00-06:00\",\"end\":\"2026-11-06T12:45:00-06:00\",\"ranking\":0.27,\"all_day\":f",
+            "context": "partments\":[{\"id\":43969347273322,\"name\":\"Admissions Tour\"}],\"filters\":{\"event_types\":[{\"name\":\"Admission\",\"id\":44198994778312},{\"name\":\"Campus Tour\",\"id\":44198992944890}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":53825801607952,\"event_id\":53825801607951,\"start\":\"2026-11-06T12:00:00-06:00\",\"end\":\"2026-11-06T12:45:00-06:00\",\"ranking\":0.27,\"all_day\":false,\"num_attending\":0}}],\"localist_url\":\"https://events.har"
           },
           {
-            "match": "\"filters\":{\"event_types\":[{\"name\":\"Wellness and Health\",\"id\":46790322621181}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":54012078174437,\"event_id\":54012078173412,\"start\":\"2026-11-06T08:30:00-06:00\",\"end\":\"2026-11-06T16:00:00-06:00\",\"ranking\":0.26,\"all_day\":false,\"num_attending\":0}}],\"locali",
-            "context": "3016984923,\"name\":\"Mental Health and Well-Being Services\"}],\"filters\":{\"event_types\":[{\"name\":\"Wellness and Health\",\"id\":46790322621181}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":54012078174437,\"event_id\":54012078173412,\"start\":\"2026-11-06T08:30:00-06:00\",\"end\":\"2026-11-06T16:00:00-06:00\",\"ranking\":0.26,\"all_day\":false,\"num_attending\":0}}],\"localist_url\":\"https://events.harpercollege.edu/event/mental-healt"
+            "match": "\"filters\":{},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":54306175132062,\"event_id\":54306175132061,\"start\":\"2026-11-07T08:00:00-06:00\",\"end\":\"2026-11-07T16:00:00-06:00\",\"ranking\":0.26,\"all_day\":false,\"num_attending\":0}}],\"localist_url\":\"https://events.harpercollege.edu/event/illinois-political",
+            "context": "city\":\"Palatine\",\"state\":\"IL\",\"country\":\"US\",\"zip\":\"60067\"},\"filters\":{},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":54306175132062,\"event_id\":54306175132061,\"start\":\"2026-11-07T08:00:00-06:00\",\"end\":\"2026-11-07T16:00:00-06:00\",\"ranking\":0.26,\"all_day\":false,\"num_attending\":0}}],\"localist_url\":\"https://events.harpercollege.edu/event/illinois-political-science-association-conference\",\"localist_ics_url\":\"https:/"
           },
           {
-            "match": "\"filters\":{},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":54231061951153,\"event_id\":54231061950128,\"start\":\"2026-11-06T09:30:00-06:00\",\"end\":\"2026-11-06T14:00:00-06:00\",\"ranking\":0.26,\"all_day\":false,\"num_attending\":0}}],\"localist_url\":\"https://events.harpercollege.edu/event/harper-diversity-s",
-            "context": "\":38279350719446,\"name\":\"Diversity, Equity and Inclusion\"}],\"filters\":{},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":54231061951153,\"event_id\":54231061950128,\"start\":\"2026-11-06T09:30:00-06:00\",\"end\":\"2026-11-06T14:00:00-06:00\",\"ranking\":0.26,\"all_day\":false,\"num_attending\":0}}],\"localist_url\":\"https://events.harpercollege.edu/event/harper-diversity-symposium\",\"localist_ics_url\":\"https://events.harpercollege.e"
+            "match": "\"filters\":{\"event_types\":[{\"name\":\"Athletics\",\"id\":107041}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":54122247884854,\"event_id\":54122247883829,\"start\":\"2026-11-07T09:00:00-06:00\",\"end\":\"2026-11-07T12:00:00-06:00\",\"ranking\":0.26,\"all_day\":false,\"num_attending\":0}}],\"localist_url\":\"https://e",
+            "context": "t\":null,\"city\":null,\"state\":null,\"country\":null,\"zip\":null},\"filters\":{\"event_types\":[{\"name\":\"Athletics\",\"id\":107041}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":54122247884854,\"event_id\":54122247883829,\"start\":\"2026-11-07T09:00:00-06:00\",\"end\":\"2026-11-07T12:00:00-06:00\",\"ranking\":0.26,\"all_day\":false,\"num_attending\":0}}],\"localist_url\":\"https://events.harpercollege.edu/event/harper-college-mens-wrestling-"
           },
           {
-            "match": "\"filters\":{},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":54249963174574,\"event_id\":54249963174573,\"start\":\"2026-11-06T11:00:00-06:00\",\"end\":\"2026-11-06T13:00:00-06:00\",\"ranking\":0.26,\"all_day\":false,\"num_attending\":0}}],\"localist_url\":\"https://events.harpercollege.edu/event/allied-health-care",
-            "context": "ents\":[{\"id\":11536,\"name\":\"Job Placement Resource Center\"}],\"filters\":{},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":54249963174574,\"event_id\":54249963174573,\"start\":\"2026-11-06T11:00:00-06:00\",\"end\":\"2026-11-06T13:00:00-06:00\",\"ranking\":0.26,\"all_day\":false,\"num_attending\":0}}],\"localist_url\":\"https://events.harpercollege.edu/event/allied-health-career-fair-1912\",\"localist_ics_url\":\"https://events.harpercolle"
+            "match": "\"filters\":{\"event_types\":[{\"name\":\"Athletics\",\"id\":107041}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":53936410486368,\"event_id\":53936410485343,\"start\":\"2026-11-07T13:00:00-06:00\",\"end\":\"2026-11-07T15:00:00-06:00\",\"ranking\":0.26,\"all_day\":false,\"num_attending\":0}}],\"localist_url\":\"https://e",
+            "context": "t\":null,\"city\":null,\"state\":null,\"country\":null,\"zip\":null},\"filters\":{\"event_types\":[{\"name\":\"Athletics\",\"id\":107041}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":53936410486368,\"event_id\":53936410485343,\"start\":\"2026-11-07T13:00:00-06:00\",\"end\":\"2026-11-07T15:00:00-06:00\",\"ranking\":0.26,\"all_day\":false,\"num_attending\":0}}],\"localist_url\":\"https://events.harpercollege.edu/event/harper-college-womens-basketba"
           },
           {
-            "match": "\"filters\":{\"event_types\":[{\"name\":\"Admission\",\"id\":44198994778312},{\"name\":\"Campus Tour\",\"id\":44198992944890}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":53825801607952,\"event_id\":53825801607951,\"start\":\"2026-11-06T12:00:00-06:00\",\"end\":\"2026-11-06T12:45:00-06:00\",\"ranking\":0.26,\"all_day\":f",
-            "context": "partments\":[{\"id\":43969347273322,\"name\":\"Admissions Tour\"}],\"filters\":{\"event_types\":[{\"name\":\"Admission\",\"id\":44198994778312},{\"name\":\"Campus Tour\",\"id\":44198992944890}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":53825801607952,\"event_id\":53825801607951,\"start\":\"2026-11-06T12:00:00-06:00\",\"end\":\"2026-11-06T12:45:00-06:00\",\"ranking\":0.26,\"all_day\":false,\"num_attending\":0}}],\"localist_url\":\"https://events.har"
+            "match": "\"filters\":{\"event_types\":[{\"name\":\"Athletics\",\"id\":107041}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":54122247907387,\"event_id\":54122247906362,\"start\":\"2026-11-07T15:00:00-06:00\",\"end\":\"2026-11-07T17:00:00-06:00\",\"ranking\":0.26,\"all_day\":false,\"num_attending\":0}}],\"localist_url\":\"https://e",
+            "context": "t\":null,\"city\":null,\"state\":null,\"country\":null,\"zip\":null},\"filters\":{\"event_types\":[{\"name\":\"Athletics\",\"id\":107041}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":54122247907387,\"event_id\":54122247906362,\"start\":\"2026-11-07T15:00:00-06:00\",\"end\":\"2026-11-07T17:00:00-06:00\",\"ranking\":0.26,\"all_day\":false,\"num_attending\":0}}],\"localist_url\":\"https://events.harpercollege.edu/event/harper-college-mens-basketball"
           },
           {
-            "match": "\"filters\":{},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":54306175132062,\"event_id\":54306175132061,\"start\":\"2026-11-07T08:00:00-06:00\",\"end\":\"2026-11-07T16:00:00-06:00\",\"ranking\":0.25,\"all_day\":false,\"num_attending\":0}}],\"localist_url\":\"https://events.harpercollege.edu/event/illinois-political",
-            "context": "city\":\"Palatine\",\"state\":\"IL\",\"country\":\"US\",\"zip\":\"60067\"},\"filters\":{},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":54306175132062,\"event_id\":54306175132061,\"start\":\"2026-11-07T08:00:00-06:00\",\"end\":\"2026-11-07T16:00:00-06:00\",\"ranking\":0.25,\"all_day\":false,\"num_attending\":0}}],\"localist_url\":\"https://events.harpercollege.edu/event/illinois-political-science-association-conference\",\"localist_ics_url\":\"https:/"
+            "match": "\"filters\":{\"event_types\":[{\"name\":\"Wellness and Health\",\"id\":46790322621181}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":54162479204075,\"event_id\":54162479168219,\"start\":\"2026-11-09T00:00:00-06:00\",\"end\":null,\"ranking\":0.04,\"all_day\":true,\"num_attending\":0}}],\"localist_url\":\"https://events.",
+            "context": "},\"departments\":[{\"id\":49453020010424,\"name\":\"Hawks Care\"}],\"filters\":{\"event_types\":[{\"name\":\"Wellness and Health\",\"id\":46790322621181}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":54162479204075,\"event_id\":54162479168219,\"start\":\"2026-11-09T00:00:00-06:00\",\"end\":null,\"ranking\":0.04,\"all_day\":true,\"num_attending\":0}}],\"localist_url\":\"https://events.harpercollege.edu/event/feed-the-need-campus-food-drive-2969"
           }
         ]
       }
@@ -305,7 +371,7 @@
       "url": "https://www.sd25.org/calendar",
       "purpose": "Arlington Heights District 25 - does the calendar page list no-school dates in the HTML?",
       "item": 300,
-      "probed_at": "2026-11-03T22:03:41+00:00",
+      "probed_at": "2026-11-04T06:02:35+00:00",
       "status": 200,
       "final_url": "https://www.sd25.org/calendar-73",
       "content_type": "text/html; charset=utf-8",
@@ -326,11 +392,11 @@
       "url": "https://ccsd21.org/parent-resources/calendars/",
       "purpose": "Wheeling CCSD 21 - does the calendars page link a 2026-27 calendar and list no-school dates?",
       "item": 300,
-      "probed_at": "2026-11-03T22:03:44+00:00",
+      "probed_at": "2026-11-04T06:02:35+00:00",
       "status": 403,
       "final_url": "https://ccsd21.org/parent-resources/calendars/",
       "content_type": "text/html; charset=UTF-8",
-      "bytes": 8316,
+      "bytes": 8318,
       "title": "Access denied | ccsd21.org used Cloudflare to restrict access | ccsd21.org | Cloudflare",
       "feed_links": [],
       "calendar_links": [],
@@ -344,11 +410,11 @@
       "url": "https://www.d62.org/calendars",
       "purpose": "Des Plaines District 62 - official 2026-27 calendar",
       "item": 300,
-      "probed_at": "2026-11-03T22:03:44+00:00",
+      "probed_at": "2026-11-04T06:02:36+00:00",
       "status": 200,
       "final_url": "https://www.d62.org/calendars",
       "content_type": "text/html; charset=utf-8",
-      "bytes": 124849,
+      "bytes": 124848,
       "title": "Calendars - Community Consolidated School District 62",
       "feed_links": [],
       "calendar_links": [],
@@ -482,7 +548,7 @@
         "url": "https://resources.finalsite.net/images/v1771602096/d62org/huubad2axs3m2rrnnwjm/District62Ten-MonthSchoolsCalendar2026-2027FINAL.pdf",
         "purpose": "",
         "item": null,
-        "probed_at": "2026-11-03T22:03:45+00:00",
+        "probed_at": "2026-11-04T06:02:39+00:00",
         "status": 200,
         "final_url": "https://resources.finalsite.net/images/v1771602096/d62org/huubad2axs3m2rrnnwjm/District62Ten-MonthSchoolsCalendar2026-2027FINAL.pdf",
         "content_type": "application/pdf",
@@ -497,7 +563,7 @@
       "url": "https://www.d214.org/calendar",
       "purpose": "High School District 214 - official 2026-27 calendar",
       "item": 300,
-      "probed_at": "2026-11-03T22:03:45+00:00",
+      "probed_at": "2026-11-04T06:02:39+00:00",
       "status": 404,
       "final_url": "https://www.d214.org/calendar",
       "content_type": "text/html;charset=utf-8",
@@ -540,7 +606,7 @@
       "url": "https://www.mountprospect.org/",
       "purpose": "Village of Mount Prospect - home page; a 2026 tree-lighting notice",
       "item": 427,
-      "probed_at": "2026-11-03T22:03:45+00:00",
+      "probed_at": "2026-11-04T06:02:40+00:00",
       "status": 200,
       "final_url": "https://www.mountprospect.org/",
       "content_type": "text/html; charset=UTF-8",
@@ -551,13 +617,14 @@
         "https://www.mountprospect.org/plans_and_reports/community_information_and_fact_check_portal/prestige_feed.php"
       ],
       "pattern_matches": {
-        "(?i)(?:tree[- ]lighting|christkindlmarket|busse pocket park)[^<]{0,160}": []
+        "(?i)(?:tree[- ]lighting|christkindlmarket|busse pocket park)[^<]{0,160}": [],
+        "(?i)(?:toy|coat|food|donation|giving tree|toys for tots)[^<]{0,40}(?:drive|collection|tree)[^<]{0,120}": []
       },
       "followed": {
         "url": "https://www.mountprospect.org/services/tree_care.php",
         "purpose": "",
         "item": null,
-        "probed_at": "2026-11-03T22:03:46+00:00",
+        "probed_at": "2026-11-04T06:02:40+00:00",
         "status": 200,
         "final_url": "https://www.mountprospect.org/services/tree_care.php",
         "content_type": "text/html; charset=UTF-8",
@@ -568,7 +635,8 @@
           "https://www.mountprospect.org/services/plans_and_reports/community_information_and_fact_check_portal/prestige_feed.php"
         ],
         "pattern_matches": {
-          "(?i)(?:tree[- ]lighting|christkindlmarket|busse pocket park)[^<]{0,160}": []
+          "(?i)(?:tree[- ]lighting|christkindlmarket|busse pocket park)[^<]{0,160}": [],
+          "(?i)(?:toy|coat|food|donation|giving tree|toys for tots)[^<]{0,40}(?:drive|collection|tree)[^<]{0,120}": []
         }
       }
     },
@@ -576,11 +644,11 @@
       "url": "https://mpdowntown.com/events/",
       "purpose": "Downtown Mount Prospect - events page; tree lighting or Christkindlmarket dates",
       "item": 427,
-      "probed_at": "2026-11-03T22:03:46+00:00",
+      "probed_at": "2026-11-04T06:02:40+00:00",
       "status": 200,
       "final_url": "https://mpdowntown.com/events/",
       "content_type": "text/html; charset=UTF-8",
-      "bytes": 124873,
+      "bytes": 124907,
       "title": "Events | Mount Prospect Downtown Merchants",
       "feed_links": [
         {
@@ -618,7 +686,7 @@
       "url": "https://www.wheelingil.gov/",
       "purpose": "Village of Wheeling - home page; Lights Around Wheeling or a tree-lighting notice",
       "item": 427,
-      "probed_at": "2026-11-03T22:03:52+00:00",
+      "probed_at": "2026-11-04T06:02:45+00:00",
       "status": 200,
       "final_url": "https://www.wheelingil.gov/",
       "content_type": "text/html; charset=utf-8",
@@ -636,7 +704,8 @@
         "https://www.wheelingil.gov/2348/Feedback-Form"
       ],
       "pattern_matches": {
-        "(?i)(?:lights around wheeling|friendship park|tree[- ]lighting)[^<]{0,160}": []
+        "(?i)(?:lights around wheeling|friendship park|tree[- ]lighting)[^<]{0,160}": [],
+        "(?i)(?:toy|coat|food|donation|giving tree|toys for tots)[^<]{0,40}(?:drive|collection|tree)[^<]{0,120}": []
       },
       "followed": null
     },
@@ -644,11 +713,11 @@
       "url": "https://www.desplainesil.gov/",
       "purpose": "City of Des Plaines - home page; a 2026 tree-lighting or holiday-event notice (also item 367)",
       "item": 427,
-      "probed_at": "2026-11-03T22:03:53+00:00",
+      "probed_at": "2026-11-04T06:02:46+00:00",
       "status": 200,
       "final_url": "https://www.desplainesil.gov/Home",
       "content_type": "text/html; charset=utf-8",
-      "bytes": 280669,
+      "bytes": 280668,
       "title": "Home | City of Des Plaines, IL",
       "feed_links": [],
       "calendar_links": [
@@ -664,24 +733,31 @@
             "match": "Holiday Tree Lighting at Metropolitan Square features food trucks, tree decorating, and a visit from Santa himself. The Winter Fair, held the day after the Holiday Tree Lig",
             "context": "y of Des Plaines hosts two holiday events every winter. The Holiday Tree Lighting at Metropolitan Square features food trucks, tree decorating, and a visit from Santa himself. The Winter Fair, held the day after the Holiday Tree Lighting, is held at the Des Plaines Public Library and feature"
           }
+        ],
+        "(?i)(?:toy|coat|food|donation|giving tree|toys for tots)[^<]{0,40}(?:drive|collection|tree)[^<]{0,120}": [
+          {
+            "match": "food trucks, tree decorating, and a visit from Santa himself. The Winter Fair, held the day after the Holiday Tree Lighting, is held at t",
+            "context": ". The Holiday Tree Lighting at Metropolitan Square features food trucks, tree decorating, and a visit from Santa himself. The Winter Fair, held the day after the Holiday Tree Lighting, is held at the Des Plaines Public Library and features a seasonal makers"
+          }
         ]
       },
       "followed": {
         "url": "https://www.desplainesil.gov/Residents/News/Miner-Street-Metra-Parking-Lot-Set-for-Resurfacing",
         "purpose": "",
         "item": null,
-        "probed_at": "2026-11-03T22:03:56+00:00",
+        "probed_at": "2026-11-04T06:02:48+00:00",
         "status": 200,
         "final_url": "https://www.desplainesil.gov/Residents/News/Miner-Street-Metra-Parking-Lot-Set-for-Resurfacing",
         "content_type": "text/html; charset=utf-8",
-        "bytes": 68700,
+        "bytes": 68699,
         "title": "Miner Street Metra Parking Lot Set for Resurfacing | City of Des Plaines, IL",
         "feed_links": [],
         "calendar_links": [
           "https://www.desplainesil.gov/Departments/Media-Services/Website-Feedback-Form"
         ],
         "pattern_matches": {
-          "(?i)(?:tree[- ]lighting|holiday (?:tree|lights?)|christmas tree)[^<]{0,160}": []
+          "(?i)(?:tree[- ]lighting|holiday (?:tree|lights?)|christmas tree)[^<]{0,160}": [],
+          "(?i)(?:toy|coat|food|donation|giving tree|toys for tots)[^<]{0,40}(?:drive|collection|tree)[^<]{0,120}": []
         }
       }
     },
@@ -689,11 +765,11 @@
       "url": "https://www.desplainesil.gov/Departments/Media-Services/Events/Tree-Lighting-and-Winter-Fair",
       "purpose": "City of Des Plaines - Holiday Tree Lighting and Winter Fair page, the 2026 date, time and place",
       "item": 427,
-      "probed_at": "2026-11-03T22:03:57+00:00",
+      "probed_at": "2026-11-04T06:02:48+00:00",
       "status": 200,
       "final_url": "https://www.desplainesil.gov/Departments/Media-Services/Events/Tree-Lighting-and-Winter-Fair",
       "content_type": "text/html; charset=utf-8",
-      "bytes": 85618,
+      "bytes": 85617,
       "title": "Holiday Tree Lighting and Winter Fair | City of Des Plaines, IL",
       "feed_links": [],
       "calendar_links": [
@@ -744,7 +820,7 @@
       "url": "https://www.rtpd.org/",
       "purpose": "River Trails Park District - home page; an events calendar, a camp page, an ICS/webcal feed",
       "item": 439,
-      "probed_at": "2026-11-03T22:03:57+00:00",
+      "probed_at": "2026-11-04T06:02:49+00:00",
       "status": 403,
       "final_url": "https://www.rtpd.org/",
       "content_type": "text/html; charset=UTF-8",
@@ -762,11 +838,11 @@
       "url": "https://www.mppd.org/",
       "purpose": "Mount Prospect Park District - home page; its camps or winter-break programme page",
       "item": 438,
-      "probed_at": "2026-11-03T22:03:58+00:00",
+      "probed_at": "2026-11-04T06:02:49+00:00",
       "status": 200,
       "final_url": "https://www.mppd.org/",
       "content_type": "text/html; charset=UTF-8",
-      "bytes": 102673,
+      "bytes": 102670,
       "title": "Home - Mt. Prospect Park District",
       "feed_links": [
         {
@@ -815,11 +891,11 @@
         "url": "https://www.mppd.org/summer-camp/",
         "purpose": "",
         "item": null,
-        "probed_at": "2026-11-03T22:03:58+00:00",
+        "probed_at": "2026-11-04T06:02:50+00:00",
         "status": 200,
         "final_url": "https://www.mppd.org/summer-camp/",
         "content_type": "text/html; charset=UTF-8",
-        "bytes": 89524,
+        "bytes": 89523,
         "title": "Summer Camp - Mt. Prospect Park District",
         "feed_links": [
           {
@@ -944,14 +1020,193 @@
       "url": "https://www.ahpd.org/",
       "purpose": "Arlington Heights Park District - home page; its camps or winter-break programme page",
       "item": 438,
-      "probed_at": "2026-11-03T22:04:00+00:00",
-      "error": "ConnectTimeout"
+      "probed_at": "2026-11-04T06:02:52+00:00",
+      "status": 200,
+      "final_url": "https://www.ahpd.org/",
+      "content_type": "text/html; charset=UTF-8",
+      "bytes": 184839,
+      "title": "Arlington Heights Park District - Arlington Heights, Illinois",
+      "feed_links": [
+        {
+          "href": "https://www.ahpd.org/feed/",
+          "type": "application/rss+xml",
+          "title": "Arlington Heights Park District » Feed"
+        },
+        {
+          "href": "https://www.ahpd.org/events/?ical=1",
+          "type": "text/calendar",
+          "title": "Arlington Heights Park District » iCal Feed"
+        },
+        {
+          "href": "https://www.ahpd.org/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fwww.ahpd.org%2F",
+          "type": "application/json+oembed",
+          "title": "oEmbed (JSON)"
+        },
+        {
+          "href": "https://www.ahpd.org/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fwww.ahpd.org%2F&format=xml",
+          "type": "text/xml+oembed",
+          "title": "oEmbed (XML)"
+        },
+        {
+          "href": "https://www.ahpd.org/wp-json/wp/v2/pages/2",
+          "type": "application/json",
+          "title": "JSON"
+        },
+        {
+          "href": "https://www.ahpd.org/wp-json/tribe/events/v1/",
+          "type": "",
+          "title": ""
+        }
+      ],
+      "calendar_links": [
+        "https://www.ahpd.org/arlington-heights-historical-museum/",
+        "https://www.ahpd.org/2026/10/14/the-cellar-lives-on-at-the-arlington-heights-historical-museum/",
+        "https://www.ahpd.org/2026/04/14/arlington-heights-historical-museum-earns-statewide-recognition/"
+      ],
+      "pattern_matches": {
+        "(?i)(?:winter break|camps?)[^<]{0,100}": [
+          {
+            "match": "camps/'>Camps",
+            "context": "='menu-list__link link' href='https://www.ahpd.org/programs/camps/'>Camps</a></li><li class='menu-item menu-item-type-post_type menu-"
+          }
+        ]
+      },
+      "followed": {
+        "url": "https://www.ahpd.org/programs/camps/",
+        "purpose": "",
+        "item": null,
+        "probed_at": "2026-11-04T06:02:52+00:00",
+        "status": 200,
+        "final_url": "https://www.ahpd.org/programs/camps/",
+        "content_type": "text/html; charset=UTF-8",
+        "bytes": 144628,
+        "title": "Camps - Arlington Heights Park District",
+        "feed_links": [
+          {
+            "href": "https://www.ahpd.org/feed/",
+            "type": "application/rss+xml",
+            "title": "Arlington Heights Park District » Feed"
+          },
+          {
+            "href": "https://www.ahpd.org/events/?ical=1",
+            "type": "text/calendar",
+            "title": "Arlington Heights Park District » iCal Feed"
+          },
+          {
+            "href": "https://www.ahpd.org/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fwww.ahpd.org%2Fprograms%2Fcamps%2F",
+            "type": "application/json+oembed",
+            "title": "oEmbed (JSON)"
+          },
+          {
+            "href": "https://www.ahpd.org/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fwww.ahpd.org%2Fprograms%2Fcamps%2F&format=xml",
+            "type": "text/xml+oembed",
+            "title": "oEmbed (XML)"
+          },
+          {
+            "href": "https://www.ahpd.org/wp-json/wp/v2/pages/1997",
+            "type": "application/json",
+            "title": "JSON"
+          },
+          {
+            "href": "https://www.ahpd.org/wp-json/tribe/events/v1/",
+            "type": "",
+            "title": ""
+          }
+        ],
+        "calendar_links": [
+          "https://www.ahpd.org/arlington-heights-historical-museum/"
+        ],
+        "pattern_matches": {
+          "(?i)(?:winter break|camps?)[^<]{0,100}": [
+            {
+              "match": "Camps - Arlington Heights Park District",
+              "context": "https://yoast.com/product/yoast-seo-wordpress/ --> <title>Camps - Arlington Heights Park District</title> <meta name=\"description\" content=\"Find your camp a"
+            },
+            {
+              "match": "camp adventure at the Arlington Heights Park District. We offer a wide variety of camp options for all a",
+              "context": "strict</title> <meta name=\"description\" content=\"Find your camp adventure at the Arlington Heights Park District. We offer a wide variety of camp options for all ages and interests.\" /> <link rel=\"canonical\" href=\"https://"
+            },
+            {
+              "match": "camps/\" />\n\t",
+              "context": "<link rel=\"canonical\" href=\"https://www.ahpd.org/programs/camps/\" /> <meta property=\"og:locale\" content=\"en_US\" /> <meta propert"
+            },
+            {
+              "match": "Camps - Arlington Heights Park District\" />\n\t",
+              "context": "e\" content=\"article\" /> <meta property=\"og:title\" content=\"Camps - Arlington Heights Park District\" /> <meta property=\"og:description\" content=\"Find your camp adve"
+            },
+            {
+              "match": "camps\\/\",\"url\":\"https:\\/\\/www.ahpd.org\\/programs\\/camps\\/\",\"name\":\"Camps - Arlington Heights Park Distric",
+              "context": "{\"@type\":\"WebPage\",\"@id\":\"https:\\/\\/www.ahpd.org\\/programs\\/camps\\/\",\"url\":\"https:\\/\\/www.ahpd.org\\/programs\\/camps\\/\",\"name\":\"Camps - Arlington Heights Park District\",\"isPartOf\":{\"@id\":\"https:\\/\\/www.ahpd.org\\/#website\"},\"pr"
+            },
+            {
+              "match": "camps\\/#primaryimage\"},\"image\":{\"@id\":\"https:\\/\\/www.ahpd.org\\/programs\\/camps\\/#primaryimage\"},\"thumbnai",
+              "context": "imaryImageOfPage\":{\"@id\":\"https:\\/\\/www.ahpd.org\\/programs\\/camps\\/#primaryimage\"},\"image\":{\"@id\":\"https:\\/\\/www.ahpd.org\\/programs\\/camps\\/#primaryimage\"},\"thumbnailUrl\":\"https:\\/\\/www.ahpd.org\\/wp-content\\/uploads\\/2024\\/04"
+            },
+            {
+              "match": "camps\\/#breadcrumb\"},\"inLanguage\":\"en-US\",\"potentialAction\":[{\"@type\":\"ReadAction\",\"target\":[\"https:\\/\\/w",
+              "context": "ts.\",\"breadcrumb\":{\"@id\":\"https:\\/\\/www.ahpd.org\\/programs\\/camps\\/#breadcrumb\"},\"inLanguage\":\"en-US\",\"potentialAction\":[{\"@type\":\"ReadAction\",\"target\":[\"https:\\/\\/www.ahpd.org\\/programs\\/camps\\/\"]}]},{\"@type\":\"ImageObject\",\""
+            },
+            {
+              "match": "camps\\/\"]}]},{\"@type\":\"ImageObject\",\"inLanguage\":\"en-US\",\"@id\":\"https:\\/\\/www.ahpd.org\\/programs\\/camps\\/",
+              "context": "\":\"ReadAction\",\"target\":[\"https:\\/\\/www.ahpd.org\\/programs\\/camps\\/\"]}]},{\"@type\":\"ImageObject\",\"inLanguage\":\"en-US\",\"@id\":\"https:\\/\\/www.ahpd.org\\/programs\\/camps\\/#primaryimage\",\"url\":\"https:\\/\\/www.ahpd.org\\/wp-content\\/up"
+            },
+            {
+              "match": "camp. They are each dressed casually in colorful t-shirts as they sit in a circle and interact together.",
+              "context": "ass with a small group of school aged children during a day camp. They are each dressed casually in colorful t-shirts as they sit in a circle and interact together.\"},{\"@type\":\"BreadcrumbList\",\"@id\":\"https:\\/\\/www.ahpd.org\\/"
+            },
+            {
+              "match": "camps\\/#breadcrumb\",\"itemListElement\":[{\"@type\":\"ListItem\",\"position\":1,\"name\":\"Home\",\"item\":\"https:\\/\\/w",
+              "context": "\":\"BreadcrumbList\",\"@id\":\"https:\\/\\/www.ahpd.org\\/programs\\/camps\\/#breadcrumb\",\"itemListElement\":[{\"@type\":\"ListItem\",\"position\":1,\"name\":\"Home\",\"item\":\"https:\\/\\/www.ahpd.org\\/\"},{\"@type\":\"ListItem\",\"position\":2,\"name\":\"Pro"
+            },
+            {
+              "match": "Camps\"}]},{\"@type\":\"WebSite\",\"@id\":\"https:\\/\\/www.ahpd.org\\/#website\",\"url\":\"https:\\/\\/www.ahpd.org\\/\",\"n",
+              "context": ".org\\/programs\\/\"},{\"@type\":\"ListItem\",\"position\":3,\"name\":\"Camps\"}]},{\"@type\":\"WebSite\",\"@id\":\"https:\\/\\/www.ahpd.org\\/#website\",\"url\":\"https:\\/\\/www.ahpd.org\\/\",\"name\":\"Arlington Heights Park District\",\"description\":\"\",\"pub"
+            },
+            {
+              "match": "camps%2F\" />\n",
+              "context": "embed/1.0/embed?url=https%3A%2F%2Fwww.ahpd.org%2Fprograms%2Fcamps%2F\" /> <link rel=\"alternate\" title=\"oEmbed (XML)\" type=\"text/xml+oe"
+            },
+            {
+              "match": "camps%2F&#038;format=xml\" />\n",
+              "context": "embed/1.0/embed?url=https%3A%2F%2Fwww.ahpd.org%2Fprograms%2Fcamps%2F&#038;format=xml\" /> <style id=\"wp-img-auto-sizes-contain-inline-css\"> img:is([si"
+            },
+            {
+              "match": "camps/'>Camps",
+              "context": "='menu-list__link link' href='https://www.ahpd.org/programs/camps/'>Camps</a></li><li class='menu-item menu-item-type-post_type menu-"
+            },
+            {
+              "match": "Campers talking in a circle\" class=\"swiper__image\" width=\"768\" height=\"260\">                            ",
+              "context": "36498812-e1712592218341-jpg-webp-768x260.webp?v=1.0.0\" alt=\"Campers talking in a circle\" class=\"swiper__image\" width=\"768\" height=\"260\"> </picture><!--/.swiper-pict"
+            },
+            {
+              "match": "Camps                                        ",
+              "context": "role=\"heading\"> Camps </h1> </div>"
+            },
+            {
+              "match": "Camps",
+              "context": "_title title title--h3 user-content__title title title--h3\">Camps</h3> <h4 class=\"user-content__title title title--h4 user-co"
+            },
+            {
+              "match": "Camps, a request must be submitted by noon the Wednesday before the camp week starts.",
+              "context": "e--h4\">Please note, to receive a refund for Summer Programs/Camps, a request must be submitted by noon the Wednesday before the camp week starts.</h4> <p class=\"user-content__text text user-content__text t"
+            },
+            {
+              "match": "Campers of all ages and interests will find that AHPD offers a wide range of sports, aquatics, arts, the",
+              "context": "<p class=\"user-content__text text user-content__text text\">Campers of all ages and interests will find that AHPD offers a wide range of sports, aquatics, arts, theater, adventure camps and more, all designed to give them th"
+            },
+            {
+              "match": "camps and more, all designed to give them the type of experience they are looking for.  AHPD camps are ab",
+              "context": "a wide range of sports, aquatics, arts, theater, adventure camps and more, all designed to give them the type of experience they are looking for. AHPD camps are about playing, growing, having fun, building self-confidence,"
+            }
+          ]
+        }
+      }
     },
     {
       "url": "https://www.dpparks.org/",
       "purpose": "Des Plaines Park District - home page; its camps or winter-break programme page",
       "item": 438,
-      "probed_at": "2026-11-03T22:04:15+00:00",
+      "probed_at": "2026-11-04T06:02:55+00:00",
       "status": 200,
       "final_url": "https://www.dpparks.org/",
       "content_type": "text/html; charset=UTF-8",
@@ -1006,7 +1261,7 @@
         "url": "https://www.dpparks.org/preschool-summer-camps/",
         "purpose": "",
         "item": null,
-        "probed_at": "2026-11-03T22:04:15+00:00",
+        "probed_at": "2026-11-04T06:02:55+00:00",
         "status": 200,
         "final_url": "https://www.dpparks.org/preschool-summer-camps/",
         "content_type": "text/html; charset=UTF-8",
@@ -1132,10 +1387,27 @@
       }
     },
     {
-      "url": "https://www.palatineparks.org/",
-      "purpose": "Palatine Park District - home page; its camps or winter-break programme page",
+      "url": "https://www.wheelingparkdistrict.com/",
+      "purpose": "Wheeling Park District - home page; its camps or winter-break programme page",
       "item": 438,
-      "probed_at": "2026-11-03T22:04:19+00:00",
+      "probed_at": "2026-11-04T06:02:56+00:00",
+      "status": 403,
+      "final_url": "https://www.wheelingparkdistrict.com/",
+      "content_type": "text/html; charset=UTF-8",
+      "bytes": 5471,
+      "title": "Just a moment...",
+      "feed_links": [],
+      "calendar_links": [],
+      "pattern_matches": {
+        "(?i)(?:winter break|camps?)[^<]{0,100}": []
+      },
+      "followed": null
+    },
+    {
+      "url": "https://www.palatineparks.org/",
+      "purpose": "Palatine Park District - the href behind the home page's Winter Break Programming link",
+      "item": 438,
+      "probed_at": "2026-11-04T06:02:56+00:00",
       "status": 200,
       "final_url": "https://www.palatineparks.org/",
       "content_type": "text/html; charset=UTF-8",
@@ -1155,144 +1427,67 @@
       ],
       "calendar_links": [],
       "pattern_matches": {
-        "(?i)(?:winter break|camps?)[^<]{0,100}": [
+        "(?is)<a[^>]{0,200}href=\"[^\"]{1,200}\"[^>]{0,200}>\\s*Winter Break Programming": [],
+        "(?is)href=\"[^\"]{0,200}winter[^\"]{0,120}\"": [
           {
-            "match": "camps/\">Summer Camps",
-            "context": "bject-custom\"><a href=\"https://www.palatineparks.org/summer-camps/\">Summer Camps</a></li> <li id=\"nav-menu-item-32332\" class=\" sub-sub-me"
+            "match": "href=\"https://www.palatineparks.org/no-school-winter-break-programming/\"",
+            "context": "enu-item menu-item-type-post_type menu-item-object-page\"><a href=\"https://www.palatineparks.org/no-school-winter-break-programming/\">No School &amp; Winter Break Programming</a></li> <li id="
           },
           {
-            "match": "Winter Break Programming",
-            "context": "ks.org/no-school-winter-break-programming/\">No School &amp; Winter Break Programming</a></li> <li id=\"nav-menu-item-1665\" class=\" sub-sub-men"
+            "match": "href=\"https://www.palatineparks.org/events/?title=&amp;month=&amp;yr=&amp;dpt=winter-events\"",
+            "context": "menu-item menu-item-type-custom menu-item-object-custom\"><a href=\"https://www.palatineparks.org/events/?title=&amp;month=&amp;yr=&amp;dpt=winter-events\">Winter Events</a></li> </ul> </li> </ul> </li> <li id=\"nav"
           },
           {
-            "match": "camp-guide\">Summer Camp 2026 Program Guide",
-            "context": "stom menu-item-object-custom\"><a href=\"https://palparks.org/camp-guide\">Summer Camp 2026 Program Guide</a></li> <li id=\"nav-menu-item-33810\" class=\" sub-sub-me"
+            "match": "href=\"https://palparks.org/winter-spring\"",
+            "context": "menu-item menu-item-type-custom menu-item-object-custom\"><a href=\"https://palparks.org/winter-spring\">Winter/Spring 2026 Program Guide</a></li> </ul> </li> <li"
+          },
+          {
+            "match": "href=\"https://www.palatineparks.org/winter-spring-2026-program-guide/\"",
+            "context": "n-item\"> <a href=\"https://www.palatineparks.org/winter-spring-2026-program-guide/\"><img src=\"https://www.palatineparks.org/wp-content/uploads/"
           }
         ]
-      },
-      "followed": {
-        "url": "https://www.palatineparks.org/summer-camps/",
-        "purpose": "",
-        "item": null,
-        "probed_at": "2026-11-03T22:04:19+00:00",
-        "status": 200,
-        "final_url": "https://www.palatineparks.org/summer-camps/",
-        "content_type": "text/html; charset=UTF-8",
-        "bytes": 354713,
-        "title": "Summer Camps - Palatine Park District",
-        "feed_links": [
-          {
-            "href": "https://www.palatineparks.org/feed/",
-            "type": "application/rss+xml",
-            "title": "Palatine Park District » Feed"
-          },
-          {
-            "href": "https://www.palatineparks.org/comments/feed/",
-            "type": "application/rss+xml",
-            "title": "Palatine Park District » Comments Feed"
-          }
-        ],
-        "calendar_links": [],
-        "pattern_matches": {
-          "(?i)(?:winter break|camps?)[^<]{0,100}": [
-            {
-              "match": "Camps - Palatine Park District",
-              "context": "ntent=\"width=device-width, initial-scale=1\"> <title>Summer Camps - Palatine Park District</title> <link rel=\"profile\" href=\"https://gmpg.org/xfn/11\""
-            },
-            {
-              "match": "Camps - Thank you for a SUPER Summer! A Blast from Camps Past! View our 2026 Summer Camp Guide here: Summ",
-              "context": "/plugins/seo/ --> <meta name=\"description\" content=\"Summer Camps - Thank you for a SUPER Summer! A Blast from Camps Past! View our 2026 Summer Camp Guide here: Summer Camp Guide Our Camps: Kids CampDay CampSports\" /> <link"
-            },
-            {
-              "match": "Camp Guide Our Camps: Kids CampDay CampSports\" />\n\t",
-              "context": "om Camps Past! View our 2026 Summer Camp Guide here: Summer Camp Guide Our Camps: Kids CampDay CampSports\" /> <link rel=\"canonical\" href=\"https://www.palatineparks.org/su"
-            },
-            {
-              "match": "camps/\" />\n\t",
-              "context": "rel=\"canonical\" href=\"https://www.palatineparks.org/summer-camps/\" /> <meta property=\"og:locale\" content=\"en_US\" /> <meta propert"
-            },
-            {
-              "match": "Camps - Palatine Park District\" />\n\t",
-              "context": "ent=\"article\" /> <meta property=\"og:title\" content=\"Summer Camps - Palatine Park District\" /> <meta property=\"og:description\" content=\"Summer Camps - Than"
-            },
-            {
-              "match": "camps/\",\"url\":\"https://www.palatineparks.org/summer-camps/\",\"name\":\"Summer Camps - Palatine Park District",
-              "context": "type\":\"WebPage\",\"@id\":\"https://www.palatineparks.org/summer-camps/\",\"url\":\"https://www.palatineparks.org/summer-camps/\",\"name\":\"Summer Camps - Palatine Park District\",\"isPartOf\":{\"@id\":\"https://www.palatineparks.org/#website\""
-            },
-            {
-              "match": "camps/#primaryimage\"},\"image\":{\"@id\":\"https://www.palatineparks.org/summer-camps/#primaryimage\"},\"thumbna",
-              "context": "ryImageOfPage\":{\"@id\":\"https://www.palatineparks.org/summer-camps/#primaryimage\"},\"image\":{\"@id\":\"https://www.palatineparks.org/summer-camps/#primaryimage\"},\"thumbnailUrl\":\"https://www.palatineparks.org/wp-content/uploads/202"
-            },
-            {
-              "match": "Camp Guide Our Camps: Kids CampDay CampSports\",\"breadcrumb\":{\"@id\":\"https://www.palatineparks.org/summer",
-              "context": "om Camps Past! View our 2026 Summer Camp Guide here: Summer Camp Guide Our Camps: Kids CampDay CampSports\",\"breadcrumb\":{\"@id\":\"https://www.palatineparks.org/summer-camps/#breadcrumb\"},\"inLanguage\":\"en-US\",\"potentialAction\":"
-            },
-            {
-              "match": "camps/#breadcrumb\"},\"inLanguage\":\"en-US\",\"potentialAction\":[{\"@type\":\"ReadAction\",\"target\":[\"https://www.",
-              "context": "\",\"breadcrumb\":{\"@id\":\"https://www.palatineparks.org/summer-camps/#breadcrumb\"},\"inLanguage\":\"en-US\",\"potentialAction\":[{\"@type\":\"ReadAction\",\"target\":[\"https://www.palatineparks.org/summer-camps/\"]}]},{\"@type\":\"ImageObject\","
-            },
-            {
-              "match": "camps/\"]}]},{\"@type\":\"ImageObject\",\"inLanguage\":\"en-US\",\"@id\":\"https://www.palatineparks.org/summer-camps",
-              "context": "ReadAction\",\"target\":[\"https://www.palatineparks.org/summer-camps/\"]}]},{\"@type\":\"ImageObject\",\"inLanguage\":\"en-US\",\"@id\":\"https://www.palatineparks.org/summer-camps/#primaryimage\",\"url\":\"https://www.palatineparks.org/wp-cont"
-            },
-            {
-              "match": "camps/#breadcrumb\",\"itemListElement\":[{\"@type\":\"ListItem\",\"position\":1,\"name\":\"Home\",\"item\":\"https://www.",
-              "context": "BreadcrumbList\",\"@id\":\"https://www.palatineparks.org/summer-camps/#breadcrumb\",\"itemListElement\":[{\"@type\":\"ListItem\",\"position\":1,\"name\":\"Home\",\"item\":\"https://www.palatineparks.org/\"},{\"@type\":\"ListItem\",\"position\":2,\"name\""
-            },
-            {
-              "match": "Camps\"}]},{\"@type\":\"WebSite\",\"@id\":\"https://www.palatineparks.org/#website\",\"url\":\"https://www.palatinepa",
-              "context": "arks.org/\"},{\"@type\":\"ListItem\",\"position\":2,\"name\":\"Summer Camps\"}]},{\"@type\":\"WebSite\",\"@id\":\"https://www.palatineparks.org/#website\",\"url\":\"https://www.palatineparks.org/\",\"name\":\"Palatine Park District\",\"description\":\"Rec"
-            },
-            {
-              "match": "camps/\">Summer Camps",
-              "context": "nt-menu-item\"><a href=\"https://www.palatineparks.org/summer-camps/\">Summer Camps</a></li> <li id=\"nav-menu-item-32332\" class=\" sub-sub-me"
-            },
-            {
-              "match": "Winter Break Programming",
-              "context": "ks.org/no-school-winter-break-programming/\">No School &amp; Winter Break Programming</a></li> <li id=\"nav-menu-item-1665\" class=\" sub-sub-men"
-            },
-            {
-              "match": "camp-guide\">Summer Camp 2026 Program Guide",
-              "context": "stom menu-item-object-custom\"><a href=\"https://palparks.org/camp-guide\">Summer Camp 2026 Program Guide</a></li> <li id=\"nav-menu-item-33810\" class=\" sub-sub-me"
-            },
-            {
-              "match": "Camps",
-              "context": "ainer\"> <h1 class=\"text-green m-0\">Summer Camps</h1> </div> </div>"
-            },
-            {
-              "match": "Camps Past!",
-              "context": "spacer\"></div> <h2 class=\"wp-block-heading\">A Blast from Camps Past!</h2> <div class=\"wp-block-advgb-images-slider advgb-imag"
-            },
-            {
-              "match": "camp-hp.jpg\" class=\"advgb-image-slider-img\" alt=\"\" style=\"width:700px;height:auto\"/>",
-              "context": "/www.palatineparks.org/wp-content/uploads/2025/02/birchwood-camp-hp.jpg\" class=\"advgb-image-slider-img\" alt=\"\" style=\"width:700px;height:auto\"/><div class=\"advgb-image-slider-item-info\" style=\"justify-con"
-            },
-            {
-              "match": "camp-photo-homepage.jpg\" class=\"advgb-image-slider-img\" alt=\"\" style=\"width:700px;height:auto\"/>",
-              "context": "s://www.palatineparks.org/wp-content/uploads/2025/02/summer-camp-photo-homepage.jpg\" class=\"advgb-image-slider-img\" alt=\"\" style=\"width:700px;height:auto\"/><div class=\"advgb-image-slider-item-info\" style=\"justify-con"
-            },
-            {
-              "match": "Camp Guide here:",
-              "context": "</div> <h2 class=\"wp-block-heading\">View our 2026 Summer Camp Guide here:</h2> <div class=\"wp-block-advgb-button alignnone\"><a cla"
-            }
-          ]
-        }
       }
     },
     {
-      "url": "https://www.wheelingparkdistrict.com/",
-      "purpose": "Wheeling Park District - home page; its camps or winter-break programme page",
-      "item": 438,
-      "probed_at": "2026-11-03T22:04:21+00:00",
-      "status": 403,
-      "final_url": "https://www.wheelingparkdistrict.com/",
+      "url": "https://www.vah.com/",
+      "purpose": "Village of Arlington Heights - home page; a 2026 toy, coat or food drive notice",
+      "item": 441,
+      "probed_at": "2026-11-04T06:02:56+00:00",
+      "status": 200,
+      "final_url": "https://www.vah.com/",
       "content_type": "text/html; charset=UTF-8",
-      "bytes": 5450,
-      "title": "Just a moment...",
+      "bytes": 239497,
+      "title": "Welcome to Arlington Heights, IL",
       "feed_links": [],
-      "calendar_links": [],
+      "calendar_links": [
+        "https://www.vah.com/#services-feed",
+        "https://www.vah.com/#documents-feed",
+        "https://www.vah.com/#all-of-bhamgov-feed"
+      ],
       "pattern_matches": {
-        "(?i)(?:winter break|camps?)[^<]{0,100}": []
+        "(?i)(?:toy|coat|food|donation|giving tree|toys for tots)[^<]{0,40}(?:drive|collection|tree)[^<]{0,120}": []
+      },
+      "followed": null
+    },
+    {
+      "url": "https://www.palatine.il.us/",
+      "purpose": "Village of Palatine - home page; a 2026 toy, coat or food drive notice",
+      "item": 441,
+      "probed_at": "2026-11-04T06:02:57+00:00",
+      "status": 200,
+      "final_url": "https://www.palatine.il.us/",
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 161999,
+      "title": "Palatine, IL | Official WebsiteArrow LeftArrow RightSlideshow Left ArrowSlideshow Right Arrow",
+      "feed_links": [],
+      "calendar_links": [
+        "https://www.palatine.il.us/CivicAlerts.aspx?AID=508",
+        "https://www.palatine.il.us/CivicAlerts.aspx?AID=501",
+        "https://www.palatine.il.us/CivicAlerts.aspx?AID=502",
+        "https://www.palatine.il.us/CivicAlerts.aspx?CID=9,1,8,10,14"
+      ],
+      "pattern_matches": {
+        "(?i)(?:toy|coat|food|donation|giving tree|toys for tots)[^<]{0,40}(?:drive|collection|tree)[^<]{0,120}": []
       },
       "followed": null
     }
