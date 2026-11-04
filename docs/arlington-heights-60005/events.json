@@ -2,7 +2,7 @@
   "@context": "https://schema.org",
   "@type": "ItemList",
   "name": "Upcoming events in Arlington Heights — Within Ten",
-  "dateModified": "2026-11-04T14:00:27+00:00",
+  "dateModified": "2026-11-04T14:41:46+00:00",
   "numberOfItems": 18,
   "itemListElement": [
     {
@@ -70,9 +70,9 @@
       "position": 3,
       "item": {
         "@type": "Event",
-        "name": "日本語のストーリータイム | Japanese Language Storytime",
+        "name": "Senior Center: Travelogue",
         "startDate": "2026-11-06",
-        "url": "https://withintenmiles.com/arlington-heights-60005/#ev-japanese-language-storytime-2026-11-06",
+        "url": "https://withintenmiles.com/arlington-heights-60005/#ev-senior-center-travelogue-2026-11-06",
         "eventStatus": "https://schema.org/EventScheduled",
         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
         "location": {
@@ -86,7 +86,7 @@
             "streetAddress": "500 N. Dunton Ave."
           }
         },
-        "sameAs": "https://www.ahml.info/scheduling/reservation/227649",
+        "sameAs": "https://www.ahml.info/scheduling/reservation/233824",
         "organizer": {
           "@type": "Organization",
           "name": "Arlington Heights Memorial Library",
@@ -251,9 +251,9 @@
       "position": 9,
       "item": {
         "@type": "Event",
-        "name": "Social Worker in the Library",
+        "name": "Read to Learn (District 214)",
         "startDate": "2026-11-10",
-        "url": "https://withintenmiles.com/arlington-heights-60005/#ev-social-worker-in-the-library-2026-11-10",
+        "url": "https://withintenmiles.com/arlington-heights-60005/#ev-read-to-learn-district-214-2026-11-10",
         "eventStatus": "https://schema.org/EventScheduled",
         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
         "location": {
@@ -267,7 +267,7 @@
             "streetAddress": "500 N. Dunton Ave."
           }
         },
-        "sameAs": "https://www.ahml.info/scheduling/reservation/218152",
+        "sameAs": "https://www.ahml.info/scheduling/reservation/194393",
         "organizer": {
           "@type": "Organization",
           "name": "Arlington Heights Memorial Library",
