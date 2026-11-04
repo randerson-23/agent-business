@@ -6947,3 +6947,10 @@ def test_older_adult_sessions_are_demoted_in_the_family_ordering():
     for title in ("Downsizing and Decluttering for older adults and empty nesters", "AARP Driver Safety Course", "55+ Bridge Club"):
         assert build_digest.family_relevance({"title": title, "tags": []}) < 0, title
     assert build_digest.family_relevance({"title": "Grandparents and Grandkids Craft", "tags": []}) == 0
+
+
+def test_merged_hub_cards_offer_google_calendar_as_well_as_the_ics_file():
+    ev = {"title": "Fall Fest", "url": "https://x.org/f", "date_iso": "2026-11-07T10:00:00", "ics_href": "data:text/calendar;x", "google_calendar_url": "https://www.google.com/calendar/render?action=TEMPLATE&text=Fall+Fest"}
+    sec = {"region_name": "Palatine", "region_url": "https://withintenmiles.com/palatine-60067/", "events": [ev], "weekend_events": [ev]}
+    html = build_digest.render_merged_hub_page([sec], datetime(2026, 11, 4, 15, tzinfo=timezone.utc), subheading="Nov 6-8", meta_description="d", empty_message="none")
+    assert "Add to calendar" in html and 'href="https://www.google.com/calendar/render?action=TEMPLATE' in html
