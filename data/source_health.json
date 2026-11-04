@@ -67,7 +67,7 @@
     4,
     4,
     4,
-    4,
+    3,
     3,
     3
   ],
@@ -86,11 +86,11 @@
   "des-plaines-60016:Des Plaines Public Library \u2014 Events": [
     380,
     380,
-    380,
     374,
     374,
     374,
     374,
+    370,
     370,
     370,
     370
@@ -140,7 +140,6 @@
   ],
   "mount-prospect-60056:Mount Prospect Public Library \u2014 Events": [
     277,
-    277,
     279,
     273,
     273,
@@ -148,16 +147,17 @@
     273,
     264,
     264,
+    264,
     264
   ],
   "mount-prospect-60056:Mount Prospect School District 57 \u2014 Calendar": [
     59,
     59,
-    59,
     58,
     58,
     58,
     58,
+    57,
     57,
     57,
     57
@@ -200,7 +200,7 @@
     40,
     40,
     40,
-    40,
+    38,
     38,
     38,
     38
@@ -233,11 +233,11 @@
     11,
     11,
     11,
-    11,
     10,
     10,
     10,
     11,
+    12,
     12,
     12
   ],
@@ -291,7 +291,6 @@
   ],
   "wheeling-60090:Indian Trails Public Library \u2014 Events": [
     268,
-    268,
     272,
     266,
     266,
@@ -299,7 +298,8 @@
     266,
     263,
     263,
-    263
+    263,
+    265
   ],
   "wheeling-60090:Village of Wheeling \u2014 Calendar": [
     145,

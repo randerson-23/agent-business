@@ -1,5 +1,5 @@
 {
- "fetched_at": "2026-11-04T14:00:27+00:00",
+ "fetched_at": "2026-11-04T20:28:31+00:00",
  "items": [
   {
    "date": null,
@@ -52,12 +52,6 @@
   {
    "date": null,
    "detail": "",
-   "title": "Toddler Storytime",
-   "url": "https://www.palatinelibrary.org/event/toddler-storytime-231943"
-  },
-  {
-   "date": null,
-   "detail": "",
    "title": "Citizenship Class",
    "url": "https://www.palatinelibrary.org/event/citizenship-class-225563"
   },
@@ -72,6 +66,12 @@
    "detail": "",
    "title": "Movie at the Branch: Toy Story 5",
    "url": "https://www.palatinelibrary.org/event/movie-branch-toy-story-5-234412"
+  },
+  {
+   "date": null,
+   "detail": "",
+   "title": "Book Mini Golf",
+   "url": "https://www.palatinelibrary.org/event/book-mini-golf-placeholder-228862"
   }
  ],
  "source": "Palatine Public Library District — Events"
