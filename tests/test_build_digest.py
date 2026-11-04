@@ -6700,7 +6700,7 @@ def test_event_and_seasonal_pages_get_their_own_1200x630_share_images():
     assert build_digest.event_jsonld(town_event, build_digest.SITE_BASE_URL + "palatine-60067/#x")["image"] == build_digest.SITE_BASE_URL + "og/palatine-60067.png"
     assert build_digest.event_jsonld(town_event, "https://other/")["image"] == build_digest.SITE_BASE_URL + "og/default.png"
     pages = build_digest.build_page_og_images(["Palatine", "Wheeling"], ["Palatine Saturday"], datetime(2026, 10, 30, tzinfo=timezone.utc))
-    assert set(pages) == {"trick-or-treat", "santa", "holidays", "leaf-pickup"} and all(i.size == (1200, 630) for i in pages.values())
+    assert set(pages) == {"trick-or-treat", "santa", "holidays", "leaf-pickup", "give"} and all(i.size == (1200, 630) for i in pages.values())
     santa = build_digest.render_santa_page([{"region_name": "Palatine", "region_url": "https://x/p/", "events": []}], datetime(2026, 10, 30, tzinfo=timezone.utc))
     assert 'og:image" content="' + build_digest.SITE_BASE_URL + 'og/santa.png"' in santa
     leaf = build_digest.render_leaf_pickup_page([{"name": "Palatine", "url": "https://x", "summary": None, "note": None}], datetime(2026, 10, 30, tzinfo=timezone.utc))
@@ -6954,3 +6954,42 @@ def test_merged_hub_cards_offer_google_calendar_as_well_as_the_ics_file():
     sec = {"region_name": "Palatine", "region_url": "https://withintenmiles.com/palatine-60067/", "events": [ev], "weekend_events": [ev]}
     html = build_digest.render_merged_hub_page([sec], datetime(2026, 11, 4, 15, tzinfo=timezone.utc), subheading="Nov 6-8", meta_description="d", empty_message="none")
     assert "Add to calendar" in html and 'href="https://www.google.com/calendar/render?action=TEMPLATE' in html
+
+
+def test_give_page_drives_volunteering_season_and_empty_line():
+    # ROADMAP.md items 441 and 442.
+    def ev(title, iso, **kw):
+        return dict({"title": title, "url": "https://src/" + title.replace(" ", "-"), "date_iso": iso, "detail": "", "tags": [], "attendable": True}, **kw)
+    blocks = [{"section": "Events", "events": [
+        ev("Winter Coat Drive", "2026-11-20T09:00:00"), ev("AARP Driver Safety Course", "2026-11-21T09:00:00"),
+        ev("Teen Volunteering", "2026-11-22T15:00:00"), ev("Pumpkin Patch", "2026-11-22T10:00:00"),
+        ev("Coat Drive Past", "2026-11-01T09:00:00"), ev("Winter Coat Drive", "2026-11-20T09:00:00"),
+    ]}]
+    drives, vol = build_digest.select_give_events(blocks, date(2026, 11, 16))
+    assert [e["title"] for e in drives] == ["Winter Coat Drive"] and [e["title"] for e in vol] == ["Teen Volunteering"]
+    cfg = {"regions": {"palatine-60067": {"drives": [
+        {"name": "Toys for Tots drop-off", "organiser": "Fire Dept", "end_date": "2026-12-15", "source_url": "https://village.example/2026"},
+        {"name": "Expired", "end_date": "2026-11-01", "source_url": "https://village.example/old"},
+        {"name": "No source", "end_date": "2026-12-15"},
+    ]}}}
+    configured = build_digest.prepare_give_drives("palatine-60067", cfg, date(2026, 11, 16))
+    assert [d["name"] for d in configured] == ["Toys for Tots drop-off"]
+    entries = [
+        {"name": "Palatine", "region_url": "https://x/palatine/", "links": [], "drives": configured, "events": drives, "volunteer": vol},
+        {"name": "Wheeling", "region_url": "https://x/wheeling/", "links": [], "drives": [], "events": [], "volunteer": []},
+    ]
+    page = build_digest.render_give_page(entries, datetime(2026, 11, 16, 15, tzinfo=timezone.utc), None, _NL)
+    assert "last day Tue Dec 15" in page and 'href="https://village.example/2026"' in page and "Winter Coat Drive" in page
+    assert page.count("No 2026 drive announced yet; we check the village") == 1  # only Wheeling
+    assert "Teen Volunteering" in page and "noindex" not in page
+    off = build_digest.render_give_page(entries, datetime(2026, 11, 3, 15, tzinfo=timezone.utc), None, _NL)
+    assert "noindex" in off
+    assert build_digest.SITE_BASE_URL + "give/" in build_digest.collect_sitemap_urls([], give_in_season=True)
+    assert build_digest.SITE_BASE_URL + "give/" not in build_digest.collect_sitemap_urls([])
+
+
+def test_volunteer_tag_badge_matches_volunteering_but_not_driver_courses():
+    # ROADMAP.md item 442.
+    from tagging import infer_tags
+    assert "volunteer" in infer_tags("Teen Volunteering", "Earn service hours")
+    assert "volunteer" not in infer_tags("AARP Driver Safety Course", "")

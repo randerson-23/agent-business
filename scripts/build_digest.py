@@ -2465,6 +2465,93 @@ def render_santa_page(entries: list[dict], now: datetime, analytics: dict | None
     )
 
 
+# ROADMAP.md items 441/442: /give/ - toy, coat and food drives and volunteering, Nov 15 - Dec 20.
+GIVE_TITLE = re.compile(
+    r"\b(?:toy|coat|food|clothing|blood|diaper|book|pet food|winter wear)\s+drive\b|\bgiving tree\b|\btoys? for tots\b|"
+    r"\bdonation (?:drive|collection|drop[- ]?off)\b|\b(?:toy|coat|food) collection\b",
+    re.IGNORECASE,
+)
+VOLUNTEER_TEXT = re.compile(r"\b(?:volunteer(?:s|ing)?|service hours)\b", re.IGNORECASE)
+
+
+def is_give_season(today: date) -> bool:
+    return date(today.year, 11, 15) <= today <= date(today.year, 12, 20)
+
+
+def load_give_config() -> dict:
+    path = CONFIG_DIR / "give.yaml"
+    return load_yaml(path) if path.exists() else {}
+
+
+def prepare_give_drives(region_id: str, give_cfg: dict, today: date) -> list[dict]:
+    """A town's drives from config/give.yaml: needs a name, a source page and an
+    end date that has not passed. Nothing is carried over from a past year."""
+    out = []
+    for d in ((give_cfg.get("regions") or {}).get(region_id) or {}).get("drives") or []:
+        end = _parse_promo_day(d.get("end_date"))
+        url = safe_http_url(d.get("source_url"))
+        if not (str(d.get("name") or "").strip() and url and end and end >= today):
+            continue
+        out.append({
+            "name": str(d["name"]).strip(), "organiser": str(d.get("organiser") or "").strip(), "drop_off": str(d.get("drop_off") or "").strip(),
+            "end": end, "end_label": end.strftime("%a %b ") + str(end.day), "source_url": url,
+        })
+    out.sort(key=lambda d: d["end"])
+    return out
+
+
+def select_give_events(blocks: list[dict], today: date) -> tuple[list[dict], list[dict]]:
+    """Dated drive/donation events and volunteering sessions from today on,
+    soonest first. Matches on title only for drives (so "Driver Safety" never
+    matches "drive"); volunteering also reads the description."""
+    end = date(today.year, 12, 31)
+    drives, volunteer, seen = [], [], set()
+    for block in blocks:
+        for e in block.get("events", []):
+            if not (e.get("title") and e.get("url") and e.get("date_iso")) or e.get("attendable") is False:
+                continue
+            try:
+                day = datetime.fromisoformat(e["date_iso"]).date()
+            except ValueError:
+                continue
+            key = (e["title"].strip().lower(), e["date_iso"])
+            if not (today <= day <= end) or key in seen:
+                continue
+            row = dict(e, date_label=day.strftime("%a %b ") + str(day.day))
+            if GIVE_TITLE.search(e["title"]):
+                seen.add(key)
+                drives.append(row)
+            elif VOLUNTEER_TEXT.search(f"{e['title']} {e.get('detail') or ''}"):
+                seen.add(key)
+                volunteer.append(row)
+    drives.sort(key=lambda r: r["date_iso"])
+    volunteer.sort(key=lambda r: r["date_iso"])
+    return drives, volunteer
+
+
+def render_give_page(entries: list[dict], now: datetime, analytics: dict | None = None, newsletter: dict | None = None) -> str:
+    """The /give/ page. `entries` is [{name, region_url, links, drives, events, volunteer}]."""
+    today = now.astimezone(LOCAL_TZ).date()
+    names = _join_names([e["name"] for e in entries])
+    towns, volunteer = [], []
+    for i, e in enumerate(entries):
+        color = EMAIL_TOWN_COLORS[i % len(EMAIL_TOWN_COLORS)][0]
+        towns.append(dict(e, color=color))
+        volunteer += [dict(v, town=e["name"], color=color) for v in e.get("volunteer") or []]
+    volunteer.sort(key=lambda v: v["date_iso"])
+    year = today.year
+    return get_template_env().get_template("give.html.j2").render(
+        page_title=f"Toy and Coat Drives {year}: {names} | Within Ten",
+        description=f"Toy, coat and food drives and volunteering in {names} in {year}, each linked to the town's own page.",
+        heading=f"Toy, coat and food drives, {year}",
+        subheading=f"What {names} post for the holidays, each linked to its source. Drives disappear after their last day.",
+        towns=towns, volunteer=volunteer, year=year, in_season=is_give_season(today),
+        newsletter=newsletter or {"configured": False},
+        hub_url=SITE_BASE_URL, canonical_url=SITE_BASE_URL + "give/",
+        generated_at=now.strftime("%Y-%m-%d %H:%M UTC"), analytics=analytics, og_image_url=SITE_BASE_URL + "og/give.png",
+    )
+
+
 def _parse_promo_day(value) -> date | None:
     """A promotion's YYYY-MM-DD field. YAML turns an unquoted date into a
     date object, so accept that as well as a string."""
@@ -4283,6 +4370,7 @@ def build_page_og_images(towns: list[str], tree_lines: list[str], now: datetime)
         "trick-or-treat": render_og_image(f"Trick-or-Treat Hours {year}", f"Hours, trunk-or-treats and Halloween events in {names}"),
         "santa": render_og_image(f"Santa Near You, {year}", f"Breakfast with Santa and Santa visits in {names}"),
         "holidays": render_og_image(f"Holiday Tree Lightings {year}", " · ".join(tree_lines)[:120] or f"Tree lightings and holiday events in {names}"),
+        "give": render_og_image(f"Toy and Coat Drives {year}", f"Drives and volunteering in {names}"),
         "leaf-pickup": render_og_image(f"Leaf Pickup {year}", f"What {names} say about fall leaf collection"),
     }
 
@@ -4778,7 +4866,7 @@ def write_event_pages(sections: list[dict], tot_entries: list[dict], now: dateti
     return active
 
 
-def collect_sitemap_urls(region_summaries: list[dict], issues: list[dict] | None = None, event_pages: list[dict] | None = None, leaf_pickup_in_season: bool = False) -> list[str]:
+def collect_sitemap_urls(region_summaries: list[dict], issues: list[dict] | None = None, event_pages: list[dict] | None = None, leaf_pickup_in_season: bool = False, give_in_season: bool = False) -> list[str]:
     urls = [
         SITE_BASE_URL,
         SITE_BASE_URL + "this-weekend/",
@@ -4792,6 +4880,8 @@ def collect_sitemap_urls(region_summaries: list[dict], issues: list[dict] | None
     ]
     if leaf_pickup_in_season:
         urls.append(SITE_BASE_URL + "leaf-pickup/")
+    if give_in_season:
+        urls.append(SITE_BASE_URL + "give/")
     for r in region_summaries:
         base = SITE_BASE_URL + r["path"]
         urls += [
@@ -4818,7 +4908,7 @@ def collect_sitemap_urls(region_summaries: list[dict], issues: list[dict] | None
 
 def build_sitemap_xml(region_summaries: list[dict], now: datetime, issues: list[dict] | None = None, event_pages: list[dict] | None = None) -> str:
     lastmod = now.strftime("%Y-%m-%d")
-    urls = collect_sitemap_urls(region_summaries, issues, event_pages, is_leaf_pickup_season(now))
+    urls = collect_sitemap_urls(region_summaries, issues, event_pages, is_leaf_pickup_season(now), is_give_season(now.astimezone(LOCAL_TZ).date()))
     entries = "\n".join(
         f"  <url>\n    <loc>{u}</loc>\n    <lastmod>{lastmod}</lastmod>\n  </url>" for u in urls
     )
@@ -7249,6 +7339,8 @@ def main() -> None:
     holidays_entries = []
     santa_entries: list[dict] = []
     leaf_entries: list[dict] = []
+    give_entries: list[dict] = []
+    give_cfg = load_give_config()
     live_promos: list[tuple[str, dict]] = []  # item 390: promotions featured in this build
     warm_found: list[dict] = []  # item 387
     email_weather_by_region: dict[str, list[dict]] = {}
@@ -7695,6 +7787,8 @@ def main() -> None:
         leaf = prepare_leaf_pickup(region_cfg)
         if leaf:
             leaf_entries.append({"name": region["name"], **leaf})
+        give_events, give_volunteer = select_give_events(blocks, local_today)
+        give_entries.append({"name": region["name"], "region_url": SITE_BASE_URL + region_id + "/", "links": santa_look_links(region_cfg), "drives": prepare_give_drives(region_id, give_cfg, local_today), "events": give_events, "volunteer": give_volunteer})
         warm_found += warm_prospects.collect_hosts([e for b in blocks for e in b.get("events", [])], region["name"])
         santa_entries.append({"region_name": region["name"], "region_url": SITE_BASE_URL + region_id + "/", "tree": tree_lighting, "links": santa_look_links(region_cfg), "events": [dict(e, town=e.get("town") or region["name"], state=e.get("state") or region.get("state")) for e in select_santa_events(blocks, local_today)]})
         # ROADMAP.md item 258: the town's holiday page - free events from its
@@ -8041,6 +8135,9 @@ def main() -> None:
     leaf_dir = OUTPUT_DIR / "leaf-pickup"
     leaf_dir.mkdir(parents=True, exist_ok=True)
     (leaf_dir / "index.html").write_text(render_leaf_pickup_page(leaf_entries, now, analytics, newsletter), encoding="utf-8")
+    give_dir = OUTPUT_DIR / "give"
+    give_dir.mkdir(parents=True, exist_ok=True)
+    (give_dir / "index.html").write_text(render_give_page(give_entries, now, analytics, newsletter), encoding="utf-8")
     santa_dir = OUTPUT_DIR / "santa"
     santa_dir.mkdir(parents=True, exist_ok=True)
     (santa_dir / "index.html").write_text(render_santa_page(santa_entries, now, analytics, newsletter, {e["path"] for e in active_event_pages}), encoding="utf-8")
@@ -8069,7 +8166,7 @@ def main() -> None:
                 out.mkdir(parents=True, exist_ok=True)
                 (out / "index.html").write_text(render_flyer(rid, town, examples, variant["campaign"], copies, EMAIL_TOWN_COLORS[flyer_index % len(EMAIL_TOWN_COLORS)][0]), encoding="utf-8")
 
-    sitemap_urls = collect_sitemap_urls(region_summaries, issues, active_event_pages, is_leaf_pickup_season(now))
+    sitemap_urls = collect_sitemap_urls(region_summaries, issues, active_event_pages, is_leaf_pickup_season(now), is_give_season(now.astimezone(LOCAL_TZ).date()))
     (OUTPUT_DIR / "sitemap.xml").write_text(build_sitemap_xml(region_summaries, now, issues, active_event_pages), encoding="utf-8")
     (OUTPUT_DIR / "robots.txt").write_text(build_robots_txt(), encoding="utf-8")
     (OUTPUT_DIR / "llms.txt").write_text(build_llms_txt(region_summaries, source_completeness, issues), encoding="utf-8")

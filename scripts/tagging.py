@@ -46,6 +46,8 @@ TAG_KEYWORDS: dict[str, tuple[str, ...]] = {
         "concert in the park", "5k", "fireworks",
     ),
     "food": ("food", "tasting", "restaurant", "brewery", "bakery", "farmers market"),
+    # ROADMAP.md item 442: volunteering and service-hour sessions.
+    "volunteer": ("volunteer", "service hours"),
     "art_culture": (
         # " art" (leading space only, no trailing space needed) - unpadded,
         # "art" is a literal substring of "party"/"smart"/"start"/
@@ -103,6 +105,7 @@ TAG_DISPLAY: dict[str, dict[str, str]] = {
     "indoor": {"label": "Indoor", "emoji": "🏠", "hue": "blue"},
     "outdoor": {"label": "Outdoor", "emoji": "🌳", "hue": "teal"},
     "food": {"label": "Food & drink", "emoji": "🍽️", "hue": "orange"},
+    "volunteer": {"label": "Volunteer", "emoji": "🤝", "hue": "amber"},
     "art_culture": {"label": "Arts & culture", "emoji": "🎨", "hue": "purple"},
     "toddler": {"label": "Toddler", "emoji": "👶", "hue": "lime"},
     "elementary": {"label": "Elementary age", "emoji": "🎒", "hue": "cyan"},
