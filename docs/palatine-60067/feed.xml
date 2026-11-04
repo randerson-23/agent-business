@@ -3,8 +3,16 @@
 <channel>
   <title>Within Ten — Upcoming events in Palatine</title>
   <link>https://withintenmiles.com/</link>
-  <description>Upcoming events in Palatine, soonest first - aggregated automatically from village, library, park district and school-district calendars. This build reached 16 of 26 configured sources. 4 sources are shown from their last update, up to 6 hours ago.</description>
-  <lastBuildDate>Wed, 04 Nov 2026 20:28:31 +0000</lastBuildDate>
+  <description>Upcoming events in Palatine, soonest first - aggregated automatically from village, library, park district and school-district calendars. This build reached 22 of 26 configured sources.</description>
+  <lastBuildDate>Wed, 04 Nov 2026 22:00:27 +0000</lastBuildDate>
+  <item>
+    <title>Palatine: Holiday Tree Lighting Ceremony</title>
+    <link>https://withintenmiles.com/palatine-60067/#ev-holiday-tree-lighting-ceremony-2026-11-04</link>
+    <guid isPermaLink="true">https://withintenmiles.com/palatine-60067/#ev-holiday-tree-lighting-ceremony-2026-11-04</guid>
+    <description>Saturday, November 21, 4 - 7 p.m. Official listing: https://www.palatine.il.us/CivicAlerts.aspx?aid=510</description>
+    <pubDate>Wed, 04 Nov 2026 12:17:43 +0000</pubDate>
+    <source url="https://www.palatine.il.us/CivicAlerts.aspx?aid=510">Village of Palatine — News</source>
+  </item>
   <item>
     <title>Palatine: Community Resource Center Open House</title>
     <link>https://withintenmiles.com/palatine-60067/#ev-community-resource-center-open-house-2026-11-04</link>
@@ -166,12 +174,28 @@
     <source url="https://www.palatine.il.us/common/modules/iCalendar/iCalendar.aspx?feed=calendar&amp;catID=14">Village of Palatine — Calendar</source>
   </item>
   <item>
+    <title>Palatine: Poetry Open Mic</title>
+    <link>https://withintenmiles.com/palatine-60067/#ev-poetry-open-mic-2026-12-03</link>
+    <guid isPermaLink="true">https://withintenmiles.com/palatine-60067/#ev-poetry-open-mic-2026-12-03</guid>
+    <description>The Cultural Center presents an afternoon of poetry, conversation and inspiration. Join us to share what you have been working on with others and enjoy what… Official listing: https://events.harpercollege.edu/event/poetry-open-mic</description>
+    <pubDate>Thu, 03 Dec 2026 15:00:00 +0000</pubDate>
+    <source url="https://events.harpercollege.edu/event/poetry-open-mic">Harper College — Public Events</source>
+  </item>
+  <item>
     <title>Palatine: Palatine Winter Farmers' Market</title>
     <link>https://withintenmiles.com/palatine-60067/#ev-palatine-winter-farmers-market-2026-12-05</link>
     <guid isPermaLink="true">https://withintenmiles.com/palatine-60067/#ev-palatine-winter-farmers-market-2026-12-05</guid>
     <description>1st and 3rd Saturdays, 9 a.m. to noon, at the Palatine Train Station parking lot, November through April. Official listing: https://www.palatine.il.us/217/Farmers-Market</description>
     <pubDate>Sat, 05 Dec 2026 09:00:00 +0000</pubDate>
     <source url="https://www.palatine.il.us/217/Farmers-Market">Palatine</source>
+  </item>
+  <item>
+    <title>Palatine: Graphic Arts Design &amp; Technology - Fall Portfolio Show &amp; Photo Showcase</title>
+    <link>https://withintenmiles.com/palatine-60067/#ev-graphic-arts-design-technology-fall-portfolio-show-photo-sho-2026-12-09</link>
+    <guid isPermaLink="true">https://withintenmiles.com/palatine-60067/#ev-graphic-arts-design-technology-fall-portfolio-show-photo-sho-2026-12-09</guid>
+    <description>Join us for a dual celebration of student talent at the Harper Graphic Arts Design &amp; Technology Portfolio Show and Photo Showcase. This combined event… Official listing: https://events.harpercollege.edu/event/graphic-arts-design-technology-fall-portfolio-show-photo-showcase</description>
+    <pubDate>Wed, 09 Dec 2026 18:30:00 +0000</pubDate>
+    <source url="https://events.harpercollege.edu/event/graphic-arts-design-technology-fall-portfolio-show-photo-showcase">Harper College — Public Events</source>
   </item>
   <item>
     <title>Palatine: Palatine Winter Farmers' Market</title>
