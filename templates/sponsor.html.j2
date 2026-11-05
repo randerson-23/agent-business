@@ -244,6 +244,13 @@
     {% if audience.ai_referrals %}<span><strong>{{ audience.ai_referrals }}</strong> visits from AI assistants</span>{% endif %}
   </p>
   {% endif %}
+  {% if founding %}
+  <section class="block" id="founding" style="border:2px solid var(--ink); padding:14px 16px; margin:0 0 18px;">
+    <h2 style="margin-top:0">Founding offer: your first Event Promo is free</h2>
+    <p style="margin:0 0 10px;">{{ founding.left }} of {{ founding.total }} spots left, through {{ founding.ends }}. We list it, label it &ldquo;Presented by [you]&rdquo;, and send you where it appeared.</p>
+    <p style="margin:0;"><a class="cta" href="{{ founding.mailto_url }}">Claim a free Event Promo &rarr;</a></p>
+  </section>
+  {% endif %}
   <section class="block">
     <h2>Why a recommendation beats an ad</h2>
     <p>Nextdoor found that 79% of neighbors acted on a local recommendation they saw there, 81% of them within days — local recommendations consistently out-rank conventional business directories and ads for trust. That's the model here: your placement reads as "here's a local business worth knowing," not a banner. One business holds a region's slot at a time — whether for a week or a year — so readers see exactly one recommendation, never a wall of ads.</p>
@@ -252,9 +259,6 @@
   <section class="block">
     <h2>Placements &amp; pricing</h2>
     <p style="color: var(--muted); font-size: 13.5px; margin: 0 0 14px;">Annual Partner is the flagship option — a permanent listing, guide placement, and SEO backlink that work for you year-round instead of needing to be renewed every week. Prefer to start smaller? Weekly Spot and Event Promo get you the same recommendation on a shorter commitment.</p>
-    {% if founding %}
-    <p class="note" id="founding" style="border:2px solid var(--ink); padding:12px 14px; margin:0 0 14px;"><strong>Founding offer: your first Event Promo is free</strong> ({{ founding.left }} of {{ founding.total }} spots left, through {{ founding.ends }}). We list it, label it "Presented by [you]", and send you where it appeared. Reply to the email below to claim one.</p>
-    {% endif %}
     <div class="tier-grid">
       {% for tier in tiers %}
       <div class="tier{{ ' recommended' if tier.recommended else '' }}"{% if tier.anchor %} id="{{ tier.anchor }}"{% endif %}>

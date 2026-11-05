@@ -2808,6 +2808,7 @@ SPONSOR_INQUIRY_FIELDS = (
     "Why should we recommend you (one sentence): "
 )
 
+FOUNDING_PROMO_FIELDS = "Business name: \nEvent name: \nDate: \nTown: \nOne-line blurb: "
 CORRECTION_PROMPT = "What's wrong or missing, and which region/event: "
 
 
@@ -2977,7 +2978,7 @@ def render_sponsor_page(
     ]
     return template.render(
         sample_holiday=SAMPLE_HOLIDAY_LISTING,
-        founding=founding_offer(founding_promos_used, today),
+        founding=(dict(offer, mailto_url=build_contact_mailto_url(contact_email, "Founding Event Promo", FOUNDING_PROMO_FIELDS)) if (offer := founding_offer(founding_promos_used, today)) else None),
         tiers=tiers,
         payment_line=build_payment_line(tiers),
         sample_event=SAMPLE_PROMOTION_EVENT,
@@ -7273,6 +7274,10 @@ def record_indexnow_outcome(path: Path, now: datetime, url_count: int, ok: bool,
         # refused it, and who ended up accepting it.
         "bing_status": outcome.get("bing_status"),
         "bing_body": outcome.get("bing_body"),
+        "yandex_status": outcome.get("yandex_status"),
+        "yandex_body": outcome.get("yandex_body"),
+        "seznam_status": outcome.get("seznam_status"),
+        "seznam_body": outcome.get("seznam_body"),
         "accepted_by": outcome.get("accepted_by"),
         "key_suffix": outcome.get("key_suffix"),
         **{k: outcome[k] for k in ("channel", "quota", "sent") if k in outcome},

@@ -893,7 +893,8 @@ def submit_indexnow(
     if outcome is not None:
         outcome.update(
             {"status": None, "error": None, "body": None, "key_file_ok": None,
-             "bing_status": None, "bing_body": None, "accepted_by": None}
+             "bing_status": None, "bing_body": None, "accepted_by": None,
+             "yandex_status": None, "yandex_body": None, "seznam_status": None, "seznam_body": None}
         )
         # ROADMAP.md item 265: rule the file side in or out with evidence on
         # every build. True only when the live key URL answers 200 with
@@ -934,7 +935,9 @@ def submit_indexnow(
         # still lands if Bing accepts it. Only when the shared call answered
         # with a refusal: a network error says nothing about either engine.
         if outcome is not None and (outcome.get("status") or 0) >= 400:
-            return _submit_indexnow_to_bing(host, key, key_location, urls, outcome)
+            if _submit_indexnow_to_bing(host, key, key_location, urls, outcome):
+                return True
+            return _submit_indexnow_fallbacks(host, key, key_location, urls, outcome)
         return False
 
 
@@ -959,6 +962,35 @@ def _submit_indexnow_to_bing(host: str, key: str, key_location: str, urls: list[
         outcome["accepted_by"] = "www.bing.com"
         return True
     return False
+
+
+def _submit_indexnow_fallbacks(host: str, key: str, key_location: str, urls: list[str], outcome: dict) -> bool:
+    """ROADMAP.md item 450: when the shared endpoint and Bing both refuse, post the
+    same payload once each to Yandex and Seznam. Engines share accepted
+    submissions, and a 200 here proves the key and the site are fine and that the
+    refusal is Bing's property setup. Each engine's status and the first 300
+    characters of a rejection are recorded."""
+    accepted = False
+    for name, url in (("yandex", "https://yandex.com/indexnow"), ("seznam", "https://search.seznam.cz/indexnow")):
+        try:
+            resp = requests.post(
+                url,
+                json={"host": host, "key": key, "keyLocation": key_location, "urlList": urls},
+                timeout=REQUEST_TIMEOUT,
+                headers={"User-Agent": USER_AGENT, "Content-Type": "application/json; charset=utf-8"},
+            )
+        except Exception as exc:  # noqa: BLE001 - advisory attempt
+            logger.warning("IndexNow direct-to-%s submission failed: %s", name, exc)
+            continue
+        status = getattr(resp, "status_code", None)
+        outcome[f"{name}_status"] = status
+        if isinstance(status, int) and status >= 400:
+            text = getattr(resp, "text", "")
+            outcome[f"{name}_body"] = text[:300] if isinstance(text, str) and text else None
+        elif status in (200, 202) and not accepted:
+            accepted = True
+            outcome["accepted_by"] = "yandex.com" if name == "yandex" else "search.seznam.cz"
+    return accepted
 
 
 FETCHERS = {
