@@ -19675,7 +19675,7 @@ camp catalogue link, labelled with the district's name.
 
 #### P1 (new)
 
-447. **Point `/give/`'s probes at the people who actually run drives,
+447. (step 1 partly: round-32 probes of the Toys for Tots Chicago campaign sites; fire and police pages have no verified URL yet, so the village home-page probes carry the drive patterns; steps 2-3 wait for a 2026 page) **Point `/give/`'s probes at the people who actually run drives,
      and log drop-off hosts as warm leads.** Build loop, extending item
      441:
 
@@ -19699,7 +19699,7 @@ camp catalogue link, labelled with the district's name.
 
 #### P2 (new)
 
-448. **Make `/give/` honest until a toy drive is confirmed.** Build loop,
+448. ✅ DONE (title, heading, section order and a separate blood-drive line switch on whether a toy, coat or food drive exists) **Make `/give/` honest until a toy drive is confirmed.** Build loop,
      the `/give/` template:
 
      - Until `config/give.yaml` holds at least one toy, coat or food

@@ -1,4 +1,25 @@
 {% from "_signup.html.j2" import signup_css, signup_form, signup_runtime -%}
+{% macro towns_block() -%}
+  {% for t in towns %}
+  <section class="entry" style="--town:{{ t.color }}" aria-labelledby="give-{{ loop.index }}">
+    <h2 class="events-heading" id="give-{{ loop.index }}" style="margin-top:0"><a href="{{ t.region_url }}" style="color:var(--town-text)">{{ t.name }}</a></h2>
+    {% if t.drives or t.events %}
+    <ul class="events">
+      {% for d in t.drives %}
+      <li><span class="emoji" aria-hidden="true">🎁</span><strong>{{ d.name }}</strong>{% if d.organiser %} &middot; {{ d.organiser }}{% endif %} &middot; last day {{ d.end_label }}{% if d.drop_off %} &middot; drop off: {{ d.drop_off }}{% endif %} &middot; <a href="{{ d.source_url }}" rel="noopener">source</a></li>
+      {% endfor %}
+      {% for e in t.events %}
+      <li><span class="emoji" aria-hidden="true">🎁</span><time>{{ e.date_label }}</time> <a href="{{ e.url }}" rel="noopener">{{ e.title }}</a></li>
+      {% endfor %}
+    </ul>
+    {% else %}
+    <p class="note" style="margin:8px 0 0">No {{ year }} drive announced yet; we check the village&rsquo;s news daily.{% for l in t.links %} <a href="{{ l.url }}" rel="noopener">{{ l.title }}</a>{% if not loop.last %} &middot;{% endif %}{% endfor %}</p>
+    {% endif %}
+  </section>
+  {% endfor %}
+  <p class="note">Drives and donation events come from each town&rsquo;s own pages and calendars and link to the source. A drive disappears after its last day. Check the source for what is accepted and the drop-off hours.</p>
+
+{%- endmacro %}
 {# ROADMAP.md items 441/442: toy, coat and food drives and volunteering, town by town, Nov 15 - Dec 20. Only 2026 listings from a town's own page or feed. Styling copied from santa.html.j2. #}
 <!doctype html>
 <html lang="en">
@@ -170,25 +191,7 @@
 
 <div class="wrap">
   <main>
-  {% for t in towns %}
-  <section class="entry" style="--town:{{ t.color }}" aria-labelledby="give-{{ loop.index }}">
-    <h2 class="events-heading" id="give-{{ loop.index }}" style="margin-top:0"><a href="{{ t.region_url }}" style="color:var(--town-text)">{{ t.name }}</a></h2>
-    {% if t.drives or t.events %}
-    <ul class="events">
-      {% for d in t.drives %}
-      <li><span class="emoji" aria-hidden="true">🎁</span><strong>{{ d.name }}</strong>{% if d.organiser %} &middot; {{ d.organiser }}{% endif %} &middot; last day {{ d.end_label }}{% if d.drop_off %} &middot; drop off: {{ d.drop_off }}{% endif %} &middot; <a href="{{ d.source_url }}" rel="noopener">source</a></li>
-      {% endfor %}
-      {% for e in t.events %}
-      <li><span class="emoji" aria-hidden="true">🎁</span><time>{{ e.date_label }}</time> <a href="{{ e.url }}" rel="noopener">{{ e.title }}</a></li>
-      {% endfor %}
-    </ul>
-    {% else %}
-    <p class="note" style="margin:8px 0 0">No {{ year }} drive announced yet; we check the village&rsquo;s news daily.{% for l in t.links %} <a href="{{ l.url }}" rel="noopener">{{ l.title }}</a>{% if not loop.last %} &middot;{% endif %}{% endfor %}</p>
-    {% endif %}
-  </section>
-  {% endfor %}
-  <p class="note">Drives and donation events come from each town&rsquo;s own pages and calendars and link to the source. A drive disappears after its last day. Check the source for what is accepted and the drop-off hours.</p>
-
+  {% if volunteer_first %}
   <h2 class="events-heading">🤝 Volunteer with your kids</h2>
   {% if volunteer %}
   <ul class="events">
@@ -199,6 +202,29 @@
   <p class="note">Sessions the libraries and park districts list as volunteering or service hours. Check each listing for age limits and sign-up.</p>
   {% else %}
   <p class="note">No volunteering sessions are listed in the towns&rsquo; calendars right now. They appear here when they are posted.</p>
+  {% endif %}
+  {{ towns_block() }}
+  {% else %}
+  {{ towns_block() }}
+  <h2 class="events-heading">🤝 Volunteer with your kids</h2>
+  {% if volunteer %}
+  <ul class="events">
+    {% for e in volunteer %}
+    <li style="--town:{{ e.color }}"><strong style="color:{{ e.color }}">{{ e.town }}</strong> &middot; <time>{{ e.date_label }}</time> <a href="{{ e.url }}" rel="noopener">{{ e.title }}</a></li>
+    {% endfor %}
+  </ul>
+  <p class="note">Sessions the libraries and park districts list as volunteering or service hours. Check each listing for age limits and sign-up.</p>
+  {% else %}
+  <p class="note">No volunteering sessions are listed in the towns&rsquo; calendars right now. They appear here when they are posted.</p>
+  {% endif %}
+  {% endif %}
+  {% if blood %}
+  <h2 class="events-heading">🩸 Blood drives (donors 16+; check the source for age rules)</h2>
+  <ul class="events">
+    {% for e in blood %}
+    <li style="--town:{{ e.color }}"><strong style="color:{{ e.color }}">{{ e.town }}</strong> &middot; <time>{{ e.date_label }}</time> <a href="{{ e.url }}" rel="noopener">{{ e.title }}</a></li>
+    {% endfor %}
+  </ul>
   {% endif %}
   {{ signup_form(newsletter, "newsletter-signup", "bd-email", "town:all", "give", "Get the weekend's events by email on Thursday.") }}
   {{ signup_runtime(newsletter) }}

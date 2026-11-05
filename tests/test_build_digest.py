@@ -6993,3 +6993,22 @@ def test_volunteer_tag_badge_matches_volunteering_but_not_driver_courses():
     from tagging import infer_tags
     assert "volunteer" in infer_tags("Teen Volunteering", "Earn service hours")
     assert "volunteer" not in infer_tags("AARP Driver Safety Course", "")
+
+
+def test_give_page_is_honest_until_a_toy_drive_exists_and_keeps_blood_drives_apart():
+    # ROADMAP.md item 448.
+    def ev(title, iso):
+        return {"title": title, "url": "https://src/" + title.replace(" ", "-"), "date_iso": iso, "detail": "", "tags": [], "attendable": True}
+    now = datetime(2026, 11, 16, 15, tzinfo=timezone.utc)
+    blood = [ev("Community Blood Center Blood Drive", "2026-11-20T09:00:00")]
+    vol = [ev("Teen Volunteering", "2026-11-22T15:00:00")]
+    only_blood = [{"name": "Palatine", "region_url": "https://x/p/", "links": [], "drives": [], "events": blood, "volunteer": vol}]
+    page = build_digest.render_give_page(only_blood, now, None, _NL)
+    assert "<title>Giving Back This Season: Drives and Volunteering in Palatine | Within Ten</title>" in page
+    assert "🩸 Blood drives (donors 16+; check the source for age rules)" in page and page.count("Community Blood Center Blood Drive") == 1
+    assert "No 2026 drive announced yet" in page  # blood drives are not 🎁 town entries
+    assert page.index("Volunteer with your kids") < page.index("Palatine</a>")  # volunteering first
+    toy = [dict(only_blood[0], events=blood + [ev("Winter Coat Drive", "2026-11-21T09:00:00")])]
+    page2 = build_digest.render_give_page(toy, now, None, _NL)
+    assert "<title>Toy and Coat Drives 2026: Palatine | Within Ten</title>" in page2
+    assert page2.index("Palatine</a>") < page2.index("Volunteer with your kids")
