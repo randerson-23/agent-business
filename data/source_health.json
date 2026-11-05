@@ -20,7 +20,7 @@
     9,
     9,
     9,
-    9,
+    11,
     11
   ],
   "arlington-heights-60005:Metropolis Performing Arts Centre \u2014 Shows": [
@@ -62,7 +62,7 @@
   "des-plaines-60016:Community Consolidated School District 62 \u2014 Calendar": [
     4,
     4,
-    4,
+    3,
     3,
     3,
     3,
@@ -85,7 +85,6 @@
   ],
   "des-plaines-60016:Des Plaines Public Library \u2014 Events": [
     374,
-    374,
     370,
     370,
     370,
@@ -93,7 +92,8 @@
     370,
     368,
     368,
-    368
+    368,
+    378
   ],
   "des-plaines-60016:Des Plaines Theatre \u2014 Events": [
     30,
@@ -129,7 +129,7 @@
   "mount-prospect-60056:Mount Prospect Park District \u2014 Events": [
     25,
     25,
-    25,
+    30,
     30,
     30,
     30,
@@ -140,19 +140,19 @@
   ],
   "mount-prospect-60056:Mount Prospect Public Library \u2014 Events": [
     273,
-    273,
     264,
     264,
     264,
     264,
     264,
+    258,
     258,
     258,
     258
   ],
   "mount-prospect-60056:Mount Prospect School District 57 \u2014 Calendar": [
     58,
-    58,
+    57,
     57,
     57,
     57,
@@ -195,7 +195,6 @@
   ],
   "palatine-60067:Community Consolidated School District 15 \u2014 Calendar": [
     40,
-    40,
     38,
     38,
     38,
@@ -203,7 +202,8 @@
     38,
     36,
     36,
-    36
+    36,
+    37
   ],
   "palatine-60067:Harper College \u2014 Public Events": [
     9,
@@ -211,8 +211,8 @@
     9,
     9,
     9,
-    9,
     11,
+    10,
     10,
     10,
     10
@@ -260,7 +260,7 @@
     12,
     12,
     12,
-    12,
+    11,
     11,
     11,
     11
@@ -272,7 +272,7 @@
     26,
     26,
     26,
-    26,
+    25,
     25,
     25,
     25
@@ -283,7 +283,7 @@
     1,
     1,
     1,
-    1,
+    2,
     2,
     2,
     2,
@@ -291,7 +291,6 @@
   ],
   "wheeling-60090:Indian Trails Public Library \u2014 Events": [
     266,
-    266,
     263,
     263,
     263,
@@ -299,7 +298,8 @@
     265,
     259,
     259,
-    259
+    259,
+    261
   ],
   "wheeling-60090:Village of Wheeling \u2014 Calendar": [
     143,
@@ -308,9 +308,9 @@
     143,
     143,
     143,
-    143,
     142,
     142,
-    142
+    142,
+    144
   ]
 }

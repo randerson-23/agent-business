@@ -3,8 +3,8 @@
 <channel>
   <title>Within Ten — Upcoming Local Events</title>
   <link>https://withintenmiles.com/</link>
-  <description>Upcoming events across every Within Ten region, soonest first - aggregated automatically from village, library, park district and school-district calendars. This build reached 24 of 30 configured sources.</description>
-  <lastBuildDate>Thu, 05 Nov 2026 14:46:57 +0000</lastBuildDate>
+  <description>Upcoming events across every Within Ten region, soonest first - aggregated automatically from village, library, park district and school-district calendars. This build reached 23 of 30 configured sources. 1 source is shown from its last update, up to 8 hours ago.</description>
+  <lastBuildDate>Thu, 05 Nov 2026 22:05:06 +0000</lastBuildDate>
   <item>
     <title>Arlington Heights: Toddler Time</title>
     <link>https://withintenmiles.com/arlington-heights-60005/#ev-toddler-time-2026-11-05</link>
@@ -224,9 +224,9 @@ Ages 9-12. Official listing: https://desplaines.libnet.info/event/17187755</desc
     <source url="https://mppl.libnet.info/event/16807186">Mount Prospect Public Library — Events</source>
   </item>
   <item>
-    <title>Wheeling: Peer Jury</title>
-    <link>https://withintenmiles.com/wheeling-60090/#ev-peer-jury-2026-11-05</link>
-    <guid isPermaLink="true">https://withintenmiles.com/wheeling-60090/#ev-peer-jury-2026-11-05</guid>
+    <title>Wheeling: Peer Jury - Notice of Cancellation</title>
+    <link>https://withintenmiles.com/wheeling-60090/#ev-peer-jury-notice-of-cancellation-2026-11-05</link>
+    <guid isPermaLink="true">https://withintenmiles.com/wheeling-60090/#ev-peer-jury-notice-of-cancellation-2026-11-05</guid>
     <description>https://www.wheelingil.gov/calendar.aspx?EID=2052 Official listing: https://www.wheelingil.gov/common/modules/iCalendar/iCalendar.aspx?feed=calendar&amp;catID=14</description>
     <pubDate>Thu, 05 Nov 2026 19:00:00 +0000</pubDate>
     <source url="https://www.wheelingil.gov/common/modules/iCalendar/iCalendar.aspx?feed=calendar&amp;catID=14">Village of Wheeling — Calendar</source>

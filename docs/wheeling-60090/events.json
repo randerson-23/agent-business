@@ -2,8 +2,8 @@
   "@context": "https://schema.org",
   "@type": "ItemList",
   "name": "Upcoming events in Wheeling — Within Ten",
-  "dateModified": "2026-11-05T14:46:57+00:00",
-  "numberOfItems": 58,
+  "dateModified": "2026-11-05T22:05:06+00:00",
+  "numberOfItems": 61,
   "itemListElement": [
     {
       "@type": "ListItem",
@@ -196,9 +196,9 @@
       "position": 7,
       "item": {
         "@type": "Event",
-        "name": "Peer Jury",
+        "name": "Peer Jury - Notice of Cancellation",
         "startDate": "2026-11-05T19:00:00-06:00",
-        "url": "https://withintenmiles.com/wheeling-60090/#ev-peer-jury-2026-11-05",
+        "url": "https://withintenmiles.com/wheeling-60090/#ev-peer-jury-notice-of-cancellation-2026-11-05",
         "eventStatus": "https://schema.org/EventScheduled",
         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
         "location": {
@@ -753,6 +753,36 @@
       "position": 25,
       "item": {
         "@type": "Event",
+        "name": "Special Meeting-Board of Fire and Police Commissioners",
+        "startDate": "2026-11-10T13:00:00-06:00",
+        "url": "https://withintenmiles.com/wheeling-60090/#ev-special-meeting-board-of-fire-and-police-commissioners-2026-11-10",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Wheeling, IL",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Wheeling",
+            "addressRegion": "IL"
+          }
+        },
+        "sameAs": "https://www.wheelingil.gov/common/modules/iCalendar/iCalendar.aspx?feed=calendar&catID=14",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Village of Wheeling",
+          "url": "https://www.wheelingil.gov"
+        },
+        "image": "https://withintenmiles.com/og/wheeling-60090.png",
+        "description": "https://www.wheelingil.gov/calendar.aspx?EID=2236"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 26,
+      "item": {
+        "@type": "Event",
         "name": "The History of Bagels",
         "startDate": "2026-11-10T13:00:00-06:00",
         "url": "https://withintenmiles.com/wheeling-60090/#ev-the-history-of-bagels-2026-11-10",
@@ -781,7 +811,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 26,
+      "position": 27,
       "item": {
         "@type": "Event",
         "name": "Paper Craft Happy Hour",
@@ -812,7 +842,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 27,
+      "position": 28,
       "item": {
         "@type": "Event",
         "name": "Basket Weaving",
@@ -843,7 +873,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 28,
+      "position": 29,
       "item": {
         "@type": "Event",
         "name": "Spanish Conversation Practice | At the Branch",
@@ -874,7 +904,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 29,
+      "position": 30,
       "item": {
         "@type": "Event",
         "name": "Resume Review & Career Coaching Appointments",
@@ -905,7 +935,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 30,
+      "position": 31,
       "item": {
         "@type": "Event",
         "name": "Job Jumpstart Lab",
@@ -936,7 +966,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 31,
+      "position": 32,
       "item": {
         "@type": "Event",
         "name": "Read to Learn",
@@ -967,7 +997,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 32,
+      "position": 33,
       "item": {
         "@type": "Event",
         "name": "OFFSITE: Veterans Day Celebration",
@@ -998,7 +1028,37 @@
     },
     {
       "@type": "ListItem",
-      "position": 33,
+      "position": 34,
+      "item": {
+        "@type": "Event",
+        "name": "11/11/26 Special Meeting-BOFPC",
+        "startDate": "2026-11-11T13:00:00-06:00",
+        "url": "https://withintenmiles.com/wheeling-60090/#ev-11-11-26-special-meeting-bofpc-2026-11-11",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Wheeling, IL",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Wheeling",
+            "addressRegion": "IL"
+          }
+        },
+        "sameAs": "https://www.wheelingil.gov/common/modules/iCalendar/iCalendar.aspx?feed=calendar&catID=14",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Village of Wheeling",
+          "url": "https://www.wheelingil.gov"
+        },
+        "image": "https://withintenmiles.com/og/wheeling-60090.png",
+        "description": "https://www.wheelingil.gov/calendar.aspx?EID=2237"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 35,
       "item": {
         "@type": "Event",
         "name": "Coloring Club",
@@ -1029,7 +1089,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 34,
+      "position": 36,
       "item": {
         "@type": "Event",
         "name": "Paperback Pals Book Club | Grades 2-3",
@@ -1060,7 +1120,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 35,
+      "position": 37,
       "item": {
         "@type": "Event",
         "name": "Pour Paint Snowflakes",
@@ -1091,7 +1151,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 36,
+      "position": 38,
       "item": {
         "@type": "Event",
         "name": "Foundation Board Meeting",
@@ -1122,7 +1182,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 37,
+      "position": 39,
       "item": {
         "@type": "Event",
         "name": "Intermediate Excel",
@@ -1153,7 +1213,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 38,
+      "position": 40,
       "item": {
         "@type": "Event",
         "name": "Chat & Play Cafe",
@@ -1184,7 +1244,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 39,
+      "position": 41,
       "item": {
         "@type": "Event",
         "name": "Harvest & Lather: Fall Soap Crafting",
@@ -1215,7 +1275,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 40,
+      "position": 42,
       "item": {
         "@type": "Event",
         "name": "Illinois Libraries Present: Dr. Eve L. Ewing",
@@ -1246,7 +1306,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 41,
+      "position": 43,
       "item": {
         "@type": "Event",
         "name": "Toddler Storytime",
@@ -1277,7 +1337,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 42,
+      "position": 44,
       "item": {
         "@type": "Event",
         "name": "Preschool Storytime",
@@ -1308,7 +1368,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 43,
+      "position": 45,
       "item": {
         "@type": "Event",
         "name": "Quality Watercolor Techniques",
@@ -1339,7 +1399,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 44,
+      "position": 46,
       "item": {
         "@type": "Event",
         "name": "Movie Matinee: The Devil Wears Prada 2 (2026)",
@@ -1370,7 +1430,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 45,
+      "position": 47,
       "item": {
         "@type": "Event",
         "name": "Family Craft Friday: Paint A Ghzel Plate | At The Branch",
@@ -1401,7 +1461,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 46,
+      "position": 48,
       "item": {
         "@type": "Event",
         "name": "Thanksgiving Coasters",
@@ -1432,7 +1492,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 47,
+      "position": 49,
       "item": {
         "@type": "Event",
         "name": "Pop-Up Movie: Power Ballad (2026)",
@@ -1463,7 +1523,38 @@
     },
     {
       "@type": "ListItem",
-      "position": 48,
+      "position": 50,
+      "item": {
+        "@type": "Event",
+        "name": "Storytime Amigos",
+        "startDate": "2026-11-16T18:00:00-06:00",
+        "url": "https://withintenmiles.com/wheeling-60090/#ev-storytime-amigos-2026-11-16",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Indian Trails Public Library",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Wheeling",
+            "addressRegion": "IL",
+            "streetAddress": "355 Schoenbeck Rd."
+          }
+        },
+        "sameAs": "https://indiantrails.libnet.info/event/16709535",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Indian Trails Public Library",
+          "url": "https://indiantrails.libnet.info"
+        },
+        "image": "https://withintenmiles.com/og/wheeling-60090.png",
+        "description": "Monday, November 16 2026 6:00pm - 6:30pm \n A storytime presented in English and Spanish by Angie Florez from The Language Labs. Una hora del cuento presentada…"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 51,
       "item": {
         "@type": "Event",
         "name": "Village Board Regular Meeting",
@@ -1493,7 +1584,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 49,
+      "position": 52,
       "item": {
         "@type": "Event",
         "name": "Holiday Print Cards",
@@ -1524,7 +1615,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 50,
+      "position": 53,
       "item": {
         "@type": "Event",
         "name": "Paint and Steep Tea",
@@ -1555,7 +1646,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 51,
+      "position": 54,
       "item": {
         "@type": "Event",
         "name": "Chapter One Book Club | Grades K-1",
@@ -1586,7 +1677,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 52,
+      "position": 55,
       "item": {
         "@type": "Event",
         "name": "Resume Review & Career Coaching Appointments",
@@ -1617,7 +1708,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 53,
+      "position": 56,
       "item": {
         "@type": "Event",
         "name": "Star Party",
@@ -1648,7 +1739,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 54,
+      "position": 57,
       "item": {
         "@type": "Event",
         "name": "Chess Club",
@@ -1679,7 +1770,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 55,
+      "position": 58,
       "item": {
         "@type": "Event",
         "name": "Stitch Together Meet-Up",
@@ -1710,7 +1801,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 56,
+      "position": 59,
       "item": {
         "@type": "Event",
         "name": "Plan Commission Meeting",
@@ -1740,7 +1831,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 57,
+      "position": 60,
       "item": {
         "@type": "Event",
         "name": "Library Board Meeting",
@@ -1771,7 +1862,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 58,
+      "position": 61,
       "item": {
         "@type": "Event",
         "name": "Advanced Excel",

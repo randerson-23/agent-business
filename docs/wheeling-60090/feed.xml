@@ -3,8 +3,8 @@
 <channel>
   <title>Within Ten — Upcoming events in Wheeling</title>
   <link>https://withintenmiles.com/</link>
-  <description>Upcoming events in Wheeling, soonest first - aggregated automatically from village, library, park district and school-district calendars. This build reached 24 of 30 configured sources.</description>
-  <lastBuildDate>Thu, 05 Nov 2026 14:46:57 +0000</lastBuildDate>
+  <description>Upcoming events in Wheeling, soonest first - aggregated automatically from village, library, park district and school-district calendars. This build reached 23 of 30 configured sources. 1 source is shown from its last update, up to 8 hours ago.</description>
+  <lastBuildDate>Thu, 05 Nov 2026 22:05:06 +0000</lastBuildDate>
   <item>
     <title>Wheeling: Office Hours with Congressman Brad Schneider's Office</title>
     <link>https://withintenmiles.com/wheeling-60090/#ev-office-hours-with-congressman-brad-schneider-s-office-2026-11-05</link>
@@ -60,9 +60,9 @@
     <source url="https://indiantrails.libnet.info/event/16927181">Indian Trails Public Library — Events</source>
   </item>
   <item>
-    <title>Wheeling: Peer Jury</title>
-    <link>https://withintenmiles.com/wheeling-60090/#ev-peer-jury-2026-11-05</link>
-    <guid isPermaLink="true">https://withintenmiles.com/wheeling-60090/#ev-peer-jury-2026-11-05</guid>
+    <title>Wheeling: Peer Jury - Notice of Cancellation</title>
+    <link>https://withintenmiles.com/wheeling-60090/#ev-peer-jury-notice-of-cancellation-2026-11-05</link>
+    <guid isPermaLink="true">https://withintenmiles.com/wheeling-60090/#ev-peer-jury-notice-of-cancellation-2026-11-05</guid>
     <description>https://www.wheelingil.gov/calendar.aspx?EID=2052 Official listing: https://www.wheelingil.gov/common/modules/iCalendar/iCalendar.aspx?feed=calendar&amp;catID=14</description>
     <pubDate>Thu, 05 Nov 2026 19:00:00 +0000</pubDate>
     <source url="https://www.wheelingil.gov/common/modules/iCalendar/iCalendar.aspx?feed=calendar&amp;catID=14">Village of Wheeling — Calendar</source>
@@ -223,6 +223,14 @@ Hoopla or another library app? Talk… Official listing: https://indiantrails.li
     <source url="https://indiantrails.libnet.info/event/17096928">Indian Trails Public Library — Events</source>
   </item>
   <item>
+    <title>Wheeling: Special Meeting-Board of Fire and Police Commissioners</title>
+    <link>https://withintenmiles.com/wheeling-60090/#ev-special-meeting-board-of-fire-and-police-commissioners-2026-11-10</link>
+    <guid isPermaLink="true">https://withintenmiles.com/wheeling-60090/#ev-special-meeting-board-of-fire-and-police-commissioners-2026-11-10</guid>
+    <description>https://www.wheelingil.gov/calendar.aspx?EID=2236 Official listing: https://www.wheelingil.gov/common/modules/iCalendar/iCalendar.aspx?feed=calendar&amp;catID=14</description>
+    <pubDate>Tue, 10 Nov 2026 13:00:00 +0000</pubDate>
+    <source url="https://www.wheelingil.gov/common/modules/iCalendar/iCalendar.aspx?feed=calendar&amp;catID=14">Village of Wheeling — Calendar</source>
+  </item>
+  <item>
     <title>Wheeling: The History of Bagels</title>
     <link>https://withintenmiles.com/wheeling-60090/#ev-the-history-of-bagels-2026-11-10</link>
     <guid isPermaLink="true">https://withintenmiles.com/wheeling-60090/#ev-the-history-of-bagels-2026-11-10</guid>
@@ -293,6 +301,14 @@ Hoopla or another library app? Talk… Official listing: https://indiantrails.li
  Honor the veterans in your life with a memorable afternoon of music, gratitude, and community. Official listing: https://indiantrails.libnet.info/event/16359996</description>
     <pubDate>Wed, 11 Nov 2026 12:15:00 +0000</pubDate>
     <source url="https://indiantrails.libnet.info/event/16359996">Indian Trails Public Library — Events</source>
+  </item>
+  <item>
+    <title>Wheeling: 11/11/26 Special Meeting-BOFPC</title>
+    <link>https://withintenmiles.com/wheeling-60090/#ev-11-11-26-special-meeting-bofpc-2026-11-11</link>
+    <guid isPermaLink="true">https://withintenmiles.com/wheeling-60090/#ev-11-11-26-special-meeting-bofpc-2026-11-11</guid>
+    <description>https://www.wheelingil.gov/calendar.aspx?EID=2237 Official listing: https://www.wheelingil.gov/common/modules/iCalendar/iCalendar.aspx?feed=calendar&amp;catID=14</description>
+    <pubDate>Wed, 11 Nov 2026 13:00:00 +0000</pubDate>
+    <source url="https://www.wheelingil.gov/common/modules/iCalendar/iCalendar.aspx?feed=calendar&amp;catID=14">Village of Wheeling — Calendar</source>
   </item>
   <item>
     <title>Wheeling: Coloring Club</title>
@@ -430,30 +446,13 @@ Hoopla or another library app? Talk… Official listing: https://indiantrails.li
     <source url="https://indiantrails.libnet.info/event/17446674">Indian Trails Public Library — Events</source>
   </item>
   <item>
-    <title>Wheeling: Village Board Regular Meeting</title>
-    <link>https://withintenmiles.com/wheeling-60090/#ev-village-board-regular-meeting-2026-11-16</link>
-    <guid isPermaLink="true">https://withintenmiles.com/wheeling-60090/#ev-village-board-regular-meeting-2026-11-16</guid>
-    <description>https://www.wheelingil.gov/calendar.aspx?EID=2160 Official listing: https://www.wheelingil.gov/common/modules/iCalendar/iCalendar.aspx?feed=calendar&amp;catID=14</description>
-    <pubDate>Mon, 16 Nov 2026 18:30:00 +0000</pubDate>
-    <source url="https://www.wheelingil.gov/common/modules/iCalendar/iCalendar.aspx?feed=calendar&amp;catID=14">Village of Wheeling — Calendar</source>
-  </item>
-  <item>
-    <title>Wheeling: Holiday Print Cards</title>
-    <link>https://withintenmiles.com/wheeling-60090/#ev-holiday-print-cards-2026-11-16</link>
-    <guid isPermaLink="true">https://withintenmiles.com/wheeling-60090/#ev-holiday-print-cards-2026-11-16</guid>
-    <description>Monday, November 16 2026 7:00pm - 8:00pm 
- Terri Murphy, owner of Young-at-Heart Art Workshops, teaches block?printing by using various tools and techniques… Official listing: https://indiantrails.libnet.info/event/17101832</description>
-    <pubDate>Mon, 16 Nov 2026 19:00:00 +0000</pubDate>
-    <source url="https://indiantrails.libnet.info/event/17101832">Indian Trails Public Library — Events</source>
-  </item>
-  <item>
-    <title>Wheeling: Paint and Steep Tea</title>
-    <link>https://withintenmiles.com/wheeling-60090/#ev-paint-and-steep-tea-2026-11-17</link>
-    <guid isPermaLink="true">https://withintenmiles.com/wheeling-60090/#ev-paint-and-steep-tea-2026-11-17</guid>
-    <description>Tuesday, November 17 2026 2:00pm - 4:00pm 
- Reserved for Adult Indian Trails Library cardholders only. Join us for a monthly painting program with teaching… Official listing: https://indiantrails.libnet.info/event/17101612</description>
-    <pubDate>Tue, 17 Nov 2026 14:00:00 +0000</pubDate>
-    <source url="https://indiantrails.libnet.info/event/17101612">Indian Trails Public Library — Events</source>
+    <title>Wheeling: Storytime Amigos</title>
+    <link>https://withintenmiles.com/wheeling-60090/#ev-storytime-amigos-2026-11-16</link>
+    <guid isPermaLink="true">https://withintenmiles.com/wheeling-60090/#ev-storytime-amigos-2026-11-16</guid>
+    <description>Monday, November 16 2026 6:00pm - 6:30pm 
+ A storytime presented in English and Spanish by Angie Florez from The Language Labs. Una hora del cuento presentada… Official listing: https://indiantrails.libnet.info/event/16709535</description>
+    <pubDate>Mon, 16 Nov 2026 18:00:00 +0000</pubDate>
+    <source url="https://indiantrails.libnet.info/event/16709535">Indian Trails Public Library — Events</source>
   </item>
 </channel>
 </rss>
