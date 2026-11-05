@@ -19846,8 +19846,9 @@ and how the site's most shareable pages can be passed on.
 #### P1 (new)
 
 453. **Rewrite step 1 of the whole ask with the evidence, and make item
-     451 ready.** Done in this pass in the Needs Ryan block (owner time
-     unchanged at about 4 minutes). Step 1 now names the two Bing actions
+     451 ready.** Done in this pass in the Needs Ryan block. It adds about 2
+     minutes inside step 1's existing visit, not a new step, so item
+     400's cap holds. Step 1 now names the two Bing actions
      in one visit:
      - copy the API key into `BING_WEBMASTER_API_KEY`;
      - if the site was added by importing from Google Search Console,
