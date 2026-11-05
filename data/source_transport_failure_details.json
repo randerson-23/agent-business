@@ -1,7 +1,7 @@
 {
   "arlington-heights-60005:Arlington Heights School District 25 \u2014 Calendar": {
     "exception_class": "HTTPError",
-    "status_code": 403
+    "status_code": 404
   },
   "arlington-heights-60005:Metropolis Performing Arts Centre \u2014 Shows": {
     "exception_class": "HTTPError",

@@ -1,5 +1,5 @@
 {
- "fetched_at": "2026-11-05T14:01:22+00:00",
+ "fetched_at": "2026-11-05T14:46:57+00:00",
  "items": [
   {
    "date": "2026-11-05",
@@ -10,8 +10,8 @@
   {
    "date": "2026-11-06",
    "detail": "",
-   "title": "Senior Center: Travelogue",
-   "url": "https://www.ahml.info/scheduling/reservation/233824"
+   "title": "日本語のストーリータイム | Japanese Language Storytime",
+   "url": "https://www.ahml.info/scheduling/reservation/227649"
   },
   {
    "date": "2026-11-07",
@@ -52,8 +52,8 @@
   {
    "date": "2026-11-13",
    "detail": "",
-   "title": "eBooks, eAudiobooks, Movies and More",
-   "url": "https://www.ahml.info/scheduling/reservation/234443"
+   "title": "Senior Center: Travelogue",
+   "url": "https://www.ahml.info/scheduling/reservation/233826"
   },
   {
    "date": "2026-11-14",
@@ -106,8 +106,8 @@
   {
    "date": "2026-11-22",
    "detail": "",
-   "title": "Сторітайм українською | Ukrainian Language Storytime",
-   "url": "https://www.ahml.info/scheduling/reservation/226527"
+   "title": "Makerplace Custom Cricut Tote Bag",
+   "url": "https://www.ahml.info/scheduling/reservation/233406"
   },
   {
    "date": "2026-11-23",
@@ -166,12 +166,6 @@
   {
    "date": null,
    "detail": "",
-   "title": "Genealogy Gumshoes: Family History Discussion Group",
-   "url": "https://www.ahml.info/scheduling/reservation/201133"
-  },
-  {
-   "date": null,
-   "detail": "",
    "title": "Clases de Computación Básica",
    "url": "https://www.ahml.info/scheduling/reservation/236331"
   },
@@ -180,6 +174,12 @@
    "detail": "",
    "title": "Hablemos Español (Let's Speak Spanish)",
    "url": "https://www.ahml.info/scheduling/reservation/234200"
+  },
+  {
+   "date": null,
+   "detail": "",
+   "title": "Genealogy Gumshoes: Family History Discussion Group",
+   "url": "https://www.ahml.info/scheduling/reservation/201133"
   },
   {
    "date": null,
@@ -310,18 +310,6 @@
   {
    "date": null,
    "detail": "",
-   "title": "Culpability Discussion: A 20s & 30s Event",
-   "url": "https://www.ahml.info/scheduling/reservation/229118"
-  },
-  {
-   "date": null,
-   "detail": "",
-   "title": "VIRTUAL: AI and Publishing",
-   "url": "https://www.ahml.info/scheduling/reservation/226938"
-  },
-  {
-   "date": null,
-   "detail": "",
    "title": "Resume Review",
    "url": "https://www.ahml.info/scheduling/reservation/209847"
   },
@@ -340,8 +328,20 @@
   {
    "date": null,
    "detail": "",
-   "title": "日本語のストーリータイム | Japanese Language Storytime",
-   "url": "https://www.ahml.info/scheduling/reservation/227649"
+   "title": "Culpability Discussion: A 20s & 30s Event",
+   "url": "https://www.ahml.info/scheduling/reservation/229118"
+  },
+  {
+   "date": null,
+   "detail": "",
+   "title": "VIRTUAL: AI and Publishing",
+   "url": "https://www.ahml.info/scheduling/reservation/226938"
+  },
+  {
+   "date": null,
+   "detail": "",
+   "title": "Senior Center: Travelogue",
+   "url": "https://www.ahml.info/scheduling/reservation/233824"
   },
   {
    "date": null,
@@ -358,8 +358,8 @@
   {
    "date": null,
    "detail": "",
-   "title": "How to Use Your iPad/iPhone",
-   "url": "https://www.ahml.info/scheduling/reservation/234438"
+   "title": "Senior Center: How to Use AI",
+   "url": "https://www.ahml.info/scheduling/reservation/225313"
   }
  ],
  "source": "Arlington Heights Memorial Library — Events"
