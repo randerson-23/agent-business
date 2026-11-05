@@ -1669,6 +1669,14 @@ def tot_off_season(local_today: date) -> bool:
     return local_today.month >= 11 or local_today < date(local_today.year, 9, 15)
 
 
+def short_og_title(label: str, towns: int, year: int, suffix: str = "") -> str:
+    """ROADMAP.md items 437/449: an og:title of 60 characters or fewer with no
+    site name, e.g. "Santa near you: 5 towns, 2026". `<title>` stays tuned for search."""
+    where = f"{towns} town{'s' if towns != 1 else ''}"
+    title = f"{label}: {where}, {year}{suffix}"
+    return title if len(title) <= 60 else title[:59].rstrip() + "\u2026"
+
+
 def render_trick_or_treat_page(
     entries: list[dict], now: datetime, analytics: dict | None = None, newsletter: dict | None = None,
     checked: dict[str, str] | None = None, night_forecast: dict | None = None,
@@ -1761,6 +1769,7 @@ def render_trick_or_treat_page(
         generated_at=now.strftime("%Y-%m-%d %H:%M UTC"),
         analytics=analytics,
         og_image_url=SITE_BASE_URL + "og/trick-or-treat.png",
+        og_title=short_og_title("Trick-or-treat hours", len(entries), now.year),
     )
 
 
@@ -2267,6 +2276,7 @@ def render_holidays_page(
         generated_at=now.strftime("%Y-%m-%d %H:%M UTC"),
         analytics=analytics,
         og_image_url=SITE_BASE_URL + "og/holidays.png",
+        og_title=short_og_title("Tree lightings near you", len(entries), now.year),
     )
 
 
@@ -2406,6 +2416,7 @@ def render_leaf_pickup_page(entries: list[dict], now: datetime, analytics: dict 
         newsletter=newsletter or {"configured": False},
         hub_url=SITE_BASE_URL, canonical_url=SITE_BASE_URL + "leaf-pickup/",
         generated_at=now.strftime("%Y-%m-%d %H:%M UTC"), analytics=analytics, og_image_url=SITE_BASE_URL + "og/leaf-pickup.png",
+        og_title=short_og_title("Leaf pickup", len(entries), now.year),
     )
 
 
@@ -2462,6 +2473,7 @@ def render_santa_page(entries: list[dict], now: datetime, analytics: dict | None
         generated_at=now.strftime("%Y-%m-%d %H:%M UTC"),
         analytics=analytics,
         og_image_url=SITE_BASE_URL + "og/santa.png",
+        og_title=short_og_title("Santa near you", len(entries), year),
     )
 
 
@@ -2554,6 +2566,7 @@ def render_give_page(entries: list[dict], now: datetime, analytics: dict | None 
         newsletter=newsletter or {"configured": False},
         hub_url=SITE_BASE_URL, canonical_url=SITE_BASE_URL + "give/",
         generated_at=now.strftime("%Y-%m-%d %H:%M UTC"), analytics=analytics, og_image_url=SITE_BASE_URL + "og/give.png",
+        og_title=short_og_title("Toy and coat drives" if has_drive else "Giving back this season", len(entries), year),
     )
 
 
@@ -3594,6 +3607,7 @@ def render_region_page(
     empty_cta_label: str | None = None,
     nav_current: str = "all",
     canonical_suffix: str = "",
+    og_title: str | None = None,
     guides_url: str | None = None,
     directory_url: str | None = None,
     things_to_do_url: str | None = None,
@@ -3662,6 +3676,7 @@ def render_region_page(
         days_off=days_off,
         days_off_sponsor=days_off_sponsor,
         camp_links=camp_links or [],
+        og_title=og_title,
         closures=closures,
         election_line=election_day_line(now),
         faq=faq,
@@ -7852,6 +7867,7 @@ def main() -> None:
                 subheading=f"Camps and things to do while school is out, December 21 – January 3 in {region['name']}.",
                 empty_message="No winter-break camps are listed in the town's calendars yet. We add them here as they are published; the park district's camp catalogue is linked below when it has one.",
                 nav_current="winter-break",
+                og_title=f"Winter break camps in {region['name']}, {now.year}"[:60],
                 canonical_suffix="winter-break/",
                 guides_url=guides_url,
                 directory_url=directory_url,

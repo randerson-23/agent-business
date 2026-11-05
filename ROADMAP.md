@@ -19502,7 +19502,7 @@ structured-data changes, and reviews the new share card.
 
 #### P1 (new)
 
-441. PARTLY DONE (/give/ page, config/give.yaml (empty until a 2026 source page names a drive), feed events matching drive titles, honest empty line per town, sitemap entry Nov 15-Dec 20, noindex outside; not yet: footer links in season and the "Drives closing this week" email line from Nov 19) **`/give/`: toy, coat and food drives in all five towns, live Nov 15
+441. PARTLY DONE (2026-11-05: vah.com home page shows "Community Food Drive: November 9-18" (published Nov 5); its probe now captures the link and text so config/give.yaml can be filled from the village's own item next firing; /give/ page, config/give.yaml (empty until a 2026 source page names a drive), feed events matching drive titles, honest empty line per town, sitemap entry Nov 15-Dec 20, noindex outside; not yet: footer links in season and the "Drives closing this week" email line from Nov 19) **`/give/`: toy, coat and food drives in all five towns, live Nov 15
      – Dec 20.** Build loop, using the probe pattern from
      `/trick-or-treat/` (`tot_watch.py`):
 
@@ -19718,7 +19718,7 @@ camp catalogue link, labelled with the district's name.
 
 #### P3 (new)
 
-449. **Short og:titles on every hub page.** Build loop, extending item
+449. ✅ DONE (short_og_title on /give/, /santa/, /holidays/, /trick-or-treat/, /leaf-pickup/ and each winter-break page; `<title>` unchanged) **Short og:titles on every hub page.** Build loop, extending item
      437's rule (60 characters or fewer, no site name) to `/give/`,
      `/santa/`, `/holidays/`, `/trick-or-treat/`, `/leaf-pickup/` and
      each `/<town>/winter-break/`. Examples: *"Toy and coat drives in 5
