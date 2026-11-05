@@ -4505,7 +4505,8 @@ def test_record_indexnow_outcome_appends_and_keeps_a_trailing_window(tmp_path):
     assert len(history) == build_digest.INDEXNOW_LOG_KEEP
     assert history[-1] == {"timestamp": "2026-10-03T14:00:00+00:00", "url_count": 61, "ok": False,
                            "status": 403, "error": "HTTPError", "body": None, "key_file_ok": None, "skipped": None,
-                           "bing_status": None, "bing_body": None, "accepted_by": None, "key_suffix": None}
+                           "bing_status": None, "bing_body": None, "accepted_by": None, "key_suffix": None,
+                           "yandex_status": None, "yandex_body": None, "seznam_status": None, "seznam_body": None}
     assert json.loads(path.read_text()) == history
 
 
@@ -7012,3 +7013,16 @@ def test_give_page_is_honest_until_a_toy_drive_exists_and_keeps_blood_drives_apa
     page2 = build_digest.render_give_page(toy, now, None, _NL)
     assert "<title>Toy and Coat Drives 2026: Palatine | Within Ten</title>" in page2
     assert page2.index("Palatine</a>") < page2.index("Volunteer with your kids")
+
+
+def test_sponsor_page_founding_box_sits_above_the_nextdoor_paragraph_with_its_own_mailto():
+    # ROADMAP.md item 452.
+    now = datetime(2026, 11, 5, 15, tzinfo=timezone.utc)
+    page = build_digest.render_sponsor_page([], now, None, "hello@example.org", founding_promos_used=0)
+    assert page.index('id="founding"') < page.index("Why a recommendation beats an ad") < page.index("Placements")
+    assert "Claim a free Event Promo" in page
+    assert "mailto:hello@example.org?subject=Founding%20Event%20Promo" in page
+    for field in ("Business%20name", "Event%20name", "Date", "Town", "One-line%20blurb"):
+        assert field in page.split('id="founding"')[1].split("Why a recommendation")[0]
+    gone = build_digest.render_sponsor_page([], now, None, "hello@example.org", founding_promos_used=5)
+    assert 'id="founding"' not in gone and "Claim a free Event Promo" not in gone

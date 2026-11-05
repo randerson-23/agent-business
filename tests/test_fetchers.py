@@ -876,7 +876,8 @@ def test_submit_indexnow_records_the_http_status_of_a_rejection(mock_post, _mock
                          ["https://withintenmiles.com/"], outcome=outcome)
     assert ok is False
     assert outcome == {"status": 403, "error": "HTTPError", "body": None, "key_file_ok": None,
-                       "bing_status": 403, "bing_body": None, "accepted_by": None}
+                       "bing_status": 403, "bing_body": None, "accepted_by": None,
+                       "yandex_status": 403, "yandex_body": None, "seznam_status": 403, "seznam_body": None}
 
 
 @patch("fetchers.requests.get", side_effect=requests.ConnectionError("offline"))
@@ -889,13 +890,13 @@ def test_submit_indexnow_records_success_and_transport_errors(mock_post, _mock_g
     outcome = {}
     assert submit_indexnow("h", "k", "https://h/k.txt", ["https://h/"], outcome=outcome) is True
     assert outcome == {"status": 202, "error": None, "body": None, "key_file_ok": None,
-                       "bing_status": None, "bing_body": None, "accepted_by": "api.indexnow.org"}
+                       "bing_status": None, "bing_body": None, "accepted_by": "api.indexnow.org", "yandex_status": None, "yandex_body": None, "seznam_status": None, "seznam_body": None}
 
     mock_post.side_effect = requests.ConnectTimeout("slow")
     outcome = {}
     assert submit_indexnow("h", "k", "https://h/k.txt", ["https://h/"], outcome=outcome) is False
     assert outcome == {"status": None, "error": "ConnectTimeout", "body": None, "key_file_ok": None,
-                       "bing_status": None, "bing_body": None, "accepted_by": None}
+                       "bing_status": None, "bing_body": None, "accepted_by": None, "yandex_status": None, "yandex_body": None, "seznam_status": None, "seznam_body": None}
     assert mock_post.call_count == 2  # the accepted call, then the timeout: no second attempt after a network error
 
 
@@ -1094,3 +1095,27 @@ def test_safe_http_url_keeps_only_plain_web_links():
     assert safe_http_url("https://example.org/e?id=1") == "https://example.org/e?id=1" and safe_http_url("  http://x.org/a ") == "http://x.org/a"
     for bad in ("javascript:alert(1)", "JaVaScRiPt:alert(1)", "data:text/html,<script>1</script>", "vbscript:x", "//evil.example/x", "/relative", "https://x.org/a b", 'https://x.org/"onmouseover="x', "https://x.org/<script>", None, "", 5):
         assert safe_http_url(bad) == "", bad
+
+
+@patch("fetchers.requests.get", side_effect=requests.ConnectionError("offline"))
+@patch("fetchers.requests.post")
+def test_submit_indexnow_falls_back_to_yandex_and_seznam_when_shared_and_bing_refuse(mock_post, _mock_get):
+    # ROADMAP.md item 450: a 403 / 403 / 200 sequence records yandex.com as the accepting engine.
+    def reply(code, body=""):
+        r = Mock()
+        r.status_code = code
+        r.text = body
+        r.raise_for_status = Mock(side_effect=requests.HTTPError(f"{code}", response=r)) if code >= 400 else Mock()
+        return r
+    mock_post.side_effect = [reply(403, "UserForbiddedToAccessSite"), reply(403, "UserForbiddedToAccessSite"), reply(200), reply(202)]
+    outcome = {}
+    assert submit_indexnow("h", "k", "https://h/k.txt", ["https://h/"], outcome=outcome) is True
+    assert outcome["accepted_by"] == "yandex.com" and outcome["yandex_status"] == 200 and outcome["seznam_status"] == 202
+    assert [c.args[0] for c in mock_post.call_args_list] == [
+        "https://api.indexnow.org/indexnow", "https://www.bing.com/indexnow", "https://yandex.com/indexnow", "https://search.seznam.cz/indexnow"]
+    # all refuse: every status and the start of each body is on record
+    mock_post.side_effect = [reply(403, "a"), reply(403, "b"), reply(403, "c" * 400), reply(429, "d")]
+    outcome = {}
+    assert submit_indexnow("h", "k", "https://h/k.txt", ["https://h/"], outcome=outcome) is False
+    assert (outcome["status"], outcome["bing_status"], outcome["yandex_status"], outcome["seznam_status"]) == (403, 403, 403, 429)
+    assert outcome["yandex_body"] == "c" * 300 and outcome["seznam_body"] == "d" and outcome["accepted_by"] is None

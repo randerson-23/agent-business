@@ -19758,7 +19758,7 @@ money starts.
 
 #### P1 (new)
 
-450. **Send IndexNow to Yandex and Seznam directly when the shared
+450. ✅ DONE (after Bing refuses, one POST each to yandex.com and search.seznam.cz; statuses and 300-char bodies in data/indexnow_log.json, accepted_by set to the first 200/202; the Needs Ryan note is added only if the log shows Yandex accepting while Bing refuses) **Send IndexNow to Yandex and Seznam directly when the shared
      endpoint and Bing refuse.** Build loop, `scripts/fetchers.py`:
 
      - After `_submit_indexnow_to_bing` fails, post the same payload once
@@ -19792,7 +19792,7 @@ money starts.
      written only when the value is set, and its content matches the
      format.
 
-452. **A one-tap button for the founding offer, near the top.** Build
+452. ✅ DONE (founding box directly under the stats with a "Claim a free Event Promo" mailto, subject and five fields; hidden at zero spots) **A one-tap button for the founding offer, near the top.** Build
      loop, `sponsor.html.j2`:
 
      - Move the founding-offer box to **directly under the stats**,
