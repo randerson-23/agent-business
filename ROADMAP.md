@@ -220,6 +220,7 @@ doesn't re-suggest something already shipped.
 
 **Build queue (by deadline; refreshed by the research loop, item 346).**
 Pick from the top unless the owner has flagged something else:
+0. **450** (IndexNow to Yandex and Seznam directly when Bing refuses; no owner time), then **452** (founding-offer button near the top of `/sponsor/`). **451** waits on 450's log.
 0. **444, 445** (closures out of every list and the Event markup, all year; older-adult sessions out of the family lists; small, before the Thursday send if possible).
 0. **438** (winter-break pages are blank: render the empty message and camp catalogue links; a few lines), with **439** (River Trails Park District probe for Mount Prospect), then **436, 437** (real preview card and short og:title for shared links).
 0. **427, 428** (read the round-27 probe answers daily; set tree-lighting dates and add Salt Creek when found; `/santa/` full by Nov 15).
@@ -19737,6 +19738,86 @@ Competitors reviewed this pass: **where toy drives are announced**
 Association, Mount Prospect's Toys for Kids) and **Axios Chicago
 Weekender** (a non-item). The design/UX angle is **`/give/` as built**:
 titled for toy drives, showing only blood drives.
+
+#### Research pass 2026-11-05 (hundred-and-twenty-fourth pass)
+
+This morning's issue went out (*"Diwali Party and 33 more this
+weekend"*): the **ninth send, to one subscriber**. `owner_name` and
+`mailing_address` are still empty, and IndexNow still returns 403 from
+both endpoints (06:00 UTC today). The build loop shipped items 447 (in
+part) and 448. This pass looks for indexing paths that need no owner
+time, checks what changed in Google's AI surfaces for local queries,
+and reads the sponsor page on a phone, since that page is where any
+money starts.
+
+| Angle | What it is / what we found | Why it matters here |
+|---|---|---|
+| **IndexNow 403, 2026 field reports** (GitHub: EasonW/SolCrysSite PR #29, *"fall back to Yandex when Bing refuses"*; textstack PR #642, *"reaches Yandex directly"*; sai1004 PR #12; Microsoft Q&A *"403 User is unauthorized"*) | Two projects with the same `UserForbiddedToAccessSite` refusal now **post to `yandex.com/indexnow` directly** and report **200 from Yandex while Bing refuses**. One notes that IndexNow engines share accepted submissions. Another found that **Bing issues its own key for a verified property**. A Microsoft Q&A answer says a **Bing Webmaster property set up through Google sign-in or import wouldn't accept IndexNow, and re-verifying it with the XML file fixed it**. Our code tries `api.indexnow.org`, then `www.bing.com`. **It never tries Yandex or Seznam**: item 235's per-engine probe was folded into 265 without the Yandex call | A 200 from any participating engine gets the site's URLs into the IndexNow pool with no owner time at all. Even if Bing still ignores them, the log then proves the key and site are fine and the refusal is Bing's property setup. That narrows the owner's step 1 to the one fix the field reports point to (items 450, 451) |
+| **Google AI Mode and local intent** (SE Roundtable's May 2026 recap; coverage of Preferred Sources reaching AI Mode and AI Overviews; an Ahrefs July 2026 AI Mode citation study as reported; secondary reports on Ask Maps) | **Preferred Sources now apply in AI Mode and AI Overviews** (May 2026), and a chosen source is labelled when cited. Secondary reports say AI Mode **sends most local-intent queries to the Maps pack** and that **Business Profiles** are a large share of local citations. Neither claim is confirmed by primary data | **No new item.** The site already asks readers to add it as a preferred source, on the site and in the email footer, which now counts in AI answers too. The Maps-pack point is about sponsors' own Business Profiles, not about this site. Recorded so the next re-check has a baseline |
+| **`/sponsor/` at 390 px (design/UX)** | The page opens with the hero, stats (*"133 events… 8 weekly email issues"*) and *"Reader numbers are published once the list passes 50"*. Then a paragraph on Nextdoor's research and a paragraph on Annual Partner, and only then the **founding offer**: *"your first Event Promo is free (5 of 5 spots left)… Reply to the email below to claim one."* **The box has no button.** The only two mailto links are the Holiday listing button and a generic *"Sponsor inquiry"* far below the $5,000 tier | The free founding promo is the easiest yes on the page, and every outreach email points businesses at it. On a phone, claiming it means scrolling past seven price cards to find a generic form. The Holiday listing card already shows the fix: one button, a prefilled subject (item 452) |
+
+#### P1 (new)
+
+450. **Send IndexNow to Yandex and Seznam directly when the shared
+     endpoint and Bing refuse.** Build loop, `scripts/fetchers.py`:
+
+     - After `_submit_indexnow_to_bing` fails, post the same payload once
+       each to **`https://yandex.com/indexnow`** and
+       **`https://search.seznam.cz/indexnow`**.
+     - Record `yandex_status`, `seznam_status` and their first 300
+       characters of body in `data/indexnow_log.json`, and set
+       `accepted_by` to the first engine that returns 200 or 202.
+     - Submit only changed URLs, as now.
+     - If Yandex accepts while Bing refuses, add one line to the Needs
+       Ryan step 1 note: *"IndexNow is accepted by Yandex; Bing's refusal
+       is the property setup. If the API key step also fails, re-verify
+       the Bing property with the XML file (item 451)."*
+
+     Tests: a mocked 403/403/200 sequence records `accepted_by: yandex.com`,
+     and an all-403 run records every status.
+
+#### P2 (new)
+
+451. **Serve a `BingSiteAuth.xml` when one is configured.** Build loop. Add
+     an optional `bing_site_auth:` value to `config/analytics.yaml`. When
+     it's set, the build writes `docs/BingSiteAuth.xml` in Bing's format,
+     `<?xml version="1.0"?><users><user>VALUE</user></users>`, and keeps
+     it in every build.
+
+     There's no owner step until it's needed. It turns the Microsoft Q&A
+     fix (re-verify with the XML file) into *paste one value*, used only
+     if item 450's log shows Yandex accepting while Bing refuses and the
+     owner's API-key step doesn't clear it. It doesn't add to item 400's
+     cap; it's an alternative path inside step 1. Tests: the file is
+     written only when the value is set, and its content matches the
+     format.
+
+452. **A one-tap button for the founding offer, near the top.** Build
+     loop, `sponsor.html.j2`:
+
+     - Move the founding-offer box to **directly under the stats**,
+       above *"Why a recommendation beats an ad"*, while spots remain.
+     - Give it its own button, ***"Claim a free Event Promo →"***: a
+       mailto with subject *"Founding Event Promo"* and a body asking for
+       business name, event name, date, town and a one-line blurb.
+     - Outreach emails and `/sponsor/preview/` link to the box with
+       `#founding`.
+     - Hide the box and button once `founding_promos_left` reaches 0,
+       as now.
+
+     Tests: the box comes before the Nextdoor paragraph, the mailto
+     subject and fields are right, and nothing renders at zero.
+
+Re-rank: **450** goes into the build queue right after 444 and 445. It
+is the only indexing step left that needs no owner time, and it's a few
+lines. **452** follows it: one template change on the page every outreach
+email points to. **451** waits on 450's log.
+
+Competitors reviewed this pass: **2026 IndexNow 403 field reports**
+(four GitHub projects and a Microsoft Q&A thread) and **Google AI Mode
+and Preferred Sources for local queries** (a non-item). The design/UX
+angle is **`/sponsor/` on a phone**: the founding offer, the easiest yes
+on the page, has no button.
 
 
 ## Working agreements for autonomous iteration
