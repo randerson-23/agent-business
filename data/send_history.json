@@ -100,5 +100,13 @@
       "open_rate": 1.0,
       "click_rate": 0.0
     }
+  },
+  {
+    "timestamp": "2026-11-05T02:46:09.670308+00:00",
+    "subject": "Diwali Party and 33 more this weekend",
+    "buttondown_id": "em_1fjyzvjyaj8rzvb3ndnh639z6x",
+    "region": "combined",
+    "mode": "schedule",
+    "pre_send_subscriber_count": 1
   }
 ]
