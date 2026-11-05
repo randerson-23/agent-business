@@ -220,6 +220,7 @@ doesn't re-suggest something already shipped.
 
 **Build queue (by deadline; refreshed by the research loop, item 346).**
 Pick from the top unless the owner has flagged something else:
+0. **451** (BingSiteAuth.xml from `bing_site_auth:`; ready now that Yandex and Seznam accept and only Bing refuses), then **454, 455** (share button on every shareable page; text-a-friend link in the email).
 0. **450** (IndexNow to Yandex and Seznam directly when Bing refuses; no owner time), then **452** (founding-offer button near the top of `/sponsor/`). **451** waits on 450's log.
 0. **444, 445** (closures out of every list and the Event markup, all year; older-adult sessions out of the family lists; small, before the Thursday send if possible).
 0. **438** (winter-break pages are blank: render the empty message and camp catalogue links; a few lines), with **439** (River Trails Park District probe for Mount Prospect), then **436, 437** (real preview card and short og:title for shared links).
@@ -241,6 +242,13 @@ reference, *not now*.
 1. **Two secrets (4 min):** Bing Webmaster Tools → Settings → API access
    → key into `BING_WEBMASTER_API_KEY`; GoatCounter → Settings → API → a
    read-only key into `GOATCOUNTER_TOKEN`.
+   *While you're in Bing Webmaster Tools (item 453):* Yandex and Seznam now
+   accept the site's IndexNow submissions and only Bing refuses, so the
+   key and site are fine and it's Bing's property setup. If the site was
+   added by importing from Google Search Console, add it again with the
+   **XML file** verification option and paste the code shown into
+   `bing_site_auth:` in `config/analytics.yaml` (item 451). Same visit,
+   about 2 extra minutes.
 2. **Send this Thursday's issue to 20 local parents you know (10 min,
    once, item 432).** Copy the note in `SHARE_NOTE.md` (item 433) and send
    it by text or email from your own phone. Every small newsletter's first
@@ -19818,6 +19826,76 @@ Competitors reviewed this pass: **2026 IndexNow 403 field reports**
 and Preferred Sources for local queries** (a non-item). The design/UX
 angle is **`/sponsor/` on a phone**: the founding offer, the easiest yes
 on the page, has no button.
+
+#### Research pass 2026-11-05, evening (hundred-and-twenty-fifth pass)
+
+Today the build loop shipped item 450, and the first result is in.
+`data/indexnow_log.json` at 22:05 UTC records `api.indexnow.org` **403**,
+Bing **403**, **Yandex 200**, **Seznam 200**, and `accepted_by:
+yandex.com`. After four weeks of 403s, **the key and the site are proven
+good**. The refusal is specific to Bing's property for this domain. This
+pass checks what the Yandex acceptance buys, what to tell the owner now,
+and how the site's most shareable pages can be passed on.
+
+| Angle | What it is / what we found | Why it matters here |
+|---|---|---|
+| **What a Yandex 200 is worth** (indexnow.org FAQ; Bing Webmaster Blog, *"IndexNow: Announcing Sharing of Submitted URLs"*, Jan 2022; Search Engine Land on Bing–Yandex co-sharing) | Participating engines agree that **submitted URLs are shared with every other participant**. Bing's own announcement says Bing and Yandex share submissions with each other. So the 86 URLs Yandex accepted should reach Bing's queue as well. Whether Bing **acts** on shared URLs for a property it refuses direct submissions from is undocumented, and this loop can't see Bing's index | Two things follow. The submissions now **land somewhere** every build, with no owner time, which is the best indexing result in a month. And the diagnosis is settled: the 2026 field reports (pass 124) point to how the Bing property was set up, most likely an **import from Google Search Console** (item 204). Re-verifying it with the XML file is the documented fix, so **item 451 moves from "waits on 450" to ready**, and step 1 of the whole ask can say exactly what to do (item 453) |
+| **`/e/` single-event pages at 390 px (design/UX)** (`docs/e/2026-11-07-diwali-party/`) | Clean: a date chip, the title, time and full address, a description, Indoor and Kid-friendly tags, **Official listing** and **Add to calendar** buttons, "More this weekend", then the signup. It has its own 1200×630 og image (`/og/e/2026-11-07-diwali-party.png`). **There is no way to send it to someone.** `navigator.share` exists on **one page in the whole site, `/trick-or-treat/`** (item 293). There's no share button on `/e/`, `/this-weekend/`, `/santa/`, `/holidays/` or `/give/`, and no `sms:` link anywhere, the email included | *"Want to go to this?"* sent to one other parent is how family plans get made, and it's the reader-to-reader version of item 432's seed. The event page is the unit people share: it has the preview card, a short title and the signup at the bottom. Today a reader has to copy the URL by hand (item 454) |
+| **Text-a-friend links in the email** (the `sms:` URI with `body=`, supported by iOS Mail and most Android mail apps; Gmail's web client ignores it) | A **"Text this to a friend"** link in the email footer, `sms:?&body=<one line + /this-weekend/?utm_source=friend&utm_campaign=reader>`, opens the phone's Messages app with the note prefilled. The email has *"Forwarded this?"* and *"Hit reply"*, but no one-tap way to pass it on | At one subscriber this does little today. It costs a few lines, and once item 432's 20 people arrive, each issue asks every reader to bring one more, with a UTM pair that item 252's tags already count (item 455) |
+
+#### P1 (new)
+
+453. **Rewrite step 1 of the whole ask with the evidence, and make item
+     451 ready.** Done in this pass in the Needs Ryan block (owner time
+     unchanged at about 4 minutes). Step 1 now names the two Bing actions
+     in one visit:
+     - copy the API key into `BING_WEBMASTER_API_KEY`;
+     - if the site was added by importing from Google Search Console,
+       verify it again with the **XML file** option and paste the code
+       into `bing_site_auth:` in `config/analytics.yaml` (item 451).
+
+     Build loop: item 451 is now **ready**. Ship it before the next
+     owner check so the paste works the moment it's made. Tests as in
+     451.
+
+#### P2 (new)
+
+454. **"Send to a friend" on every shareable page.** Build loop. Move
+     `/trick-or-treat/`'s `navigator.share` button and its copy-link
+     fallback (item 293) into a shared partial. Use it on:
+
+     - each `/e/` page, under *Add to calendar*: ***"Send to a
+       friend"***, sharing the title, *"Sat Nov 7, 10 AM, Mount
+       Prospect"* and the URL;
+     - `/this-weekend/`, `/santa/`, `/holidays/`, `/give/` and each town's
+       `/this-weekend/`.
+
+     Every shared URL carries `?utm_source=friend&utm_campaign=share`.
+     Stay inside the inline-JS budget (the code is a few lines and already
+     written); without JavaScript the button stays hidden. Tests: the
+     partial renders on the listed pages, the fallback copies the URL,
+     and the UTM pair is present.
+
+#### P3 (new)
+
+455. **A "Text this to a friend" link in the email footer.** Build loop,
+     `combined_email_digest.html.j2` and the per-town template. Add one
+     line beside *"Forwarded this?"*: ***"📱 Text this week's picks to a
+     friend"***. It's an `sms:?&body=` link with *"What's on this weekend
+     near us: [/this-weekend/ URL]"*, URL-encoded, using
+     `utm_source=friend&utm_campaign=reader`. On clients that ignore
+     `sms:` it does nothing. Tests: the link is present, encoded, under
+     200 characters, and carries the UTM pair.
+
+Re-rank: **451 goes to the top of the build queue**: it's ready, small,
+and needed for the rewritten step 1. **454** follows (shared code that
+already exists). **455** rides with it.
+
+Competitors reviewed this pass: **IndexNow's URL sharing** (the protocol
+FAQ, Bing's 2022 announcement, Search Engine Land) and **`sms:`
+text-a-friend links** as a referral mechanic. The design/UX angle is
+**the `/e/` event page on a phone**: good, but there's no way to send it
+to anyone.
 
 
 ## Working agreements for autonomous iteration
