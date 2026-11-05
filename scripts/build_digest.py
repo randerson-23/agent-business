@@ -2471,6 +2471,7 @@ GIVE_TITLE = re.compile(
     r"\bdonation (?:drive|collection|drop[- ]?off)\b|\b(?:toy|coat|food) collection\b",
     re.IGNORECASE,
 )
+BLOOD_TITLE = re.compile(r"\bblood\b", re.IGNORECASE)
 VOLUNTEER_TEXT = re.compile(r"\b(?:volunteer(?:s|ing)?|service hours)\b", re.IGNORECASE)
 
 
@@ -2533,19 +2534,23 @@ def render_give_page(entries: list[dict], now: datetime, analytics: dict | None 
     """The /give/ page. `entries` is [{name, region_url, links, drives, events, volunteer}]."""
     today = now.astimezone(LOCAL_TZ).date()
     names = _join_names([e["name"] for e in entries])
-    towns, volunteer = [], []
+    towns, volunteer, blood = [], [], []
     for i, e in enumerate(entries):
         color = EMAIL_TOWN_COLORS[i % len(EMAIL_TOWN_COLORS)][0]
-        towns.append(dict(e, color=color))
+        giving = [ev for ev in e.get("events") or [] if not BLOOD_TITLE.search(ev["title"])]
+        blood += [dict(ev, town=e["name"], color=color) for ev in e.get("events") or [] if BLOOD_TITLE.search(ev["title"])]
+        towns.append(dict(e, color=color, events=giving))
         volunteer += [dict(v, town=e["name"], color=color) for v in e.get("volunteer") or []]
     volunteer.sort(key=lambda v: v["date_iso"])
+    blood.sort(key=lambda v: v["date_iso"])
     year = today.year
+    has_drive = any(t["drives"] or t["events"] for t in towns)  # item 448: a toy, coat or food drive exists
     return get_template_env().get_template("give.html.j2").render(
-        page_title=f"Toy and Coat Drives {year}: {names} | Within Ten",
+        page_title=(f"Toy and Coat Drives {year}: {names} | Within Ten" if has_drive else f"Giving Back This Season: Drives and Volunteering in {names} | Within Ten"),
         description=f"Toy, coat and food drives and volunteering in {names} in {year}, each linked to the town's own page.",
-        heading=f"Toy, coat and food drives, {year}",
+        heading=(f"Toy, coat and food drives, {year}" if has_drive else f"Giving back this season, {year}"),
         subheading=f"What {names} post for the holidays, each linked to its source. Drives disappear after their last day.",
-        towns=towns, volunteer=volunteer, year=year, in_season=is_give_season(today),
+        towns=towns, volunteer=volunteer, blood=blood, volunteer_first=not has_drive, year=year, in_season=is_give_season(today),
         newsletter=newsletter or {"configured": False},
         hub_url=SITE_BASE_URL, canonical_url=SITE_BASE_URL + "give/",
         generated_at=now.strftime("%Y-%m-%d %H:%M UTC"), analytics=analytics, og_image_url=SITE_BASE_URL + "og/give.png",

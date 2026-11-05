@@ -187,3 +187,19 @@ probes:
     patterns:
       - '(?i)(?:toy|coat|food|donation|giving tree|toys for tots)[^<]{0,40}(?:drive|collection|tree)[^<]{0,120}'
     follow: '(?i)toy|coat drive|food drive|giving|donat'
+  # Round 32 (item 447, 2026-11-05): Toys for Tots' own Chicago campaign sites (found by search), for 2026 drop-off
+  # lists and the last day. Mount Prospect's Toys for Kids is read from the village home page probe (follow: toy).
+  - url: https://chicago-il.toysfortots.org/
+    item: 447
+    purpose: Toys for Tots Chicago campaign - home page; 2026 drop-off locations, last day, and the local drop form
+    patterns:
+      - '(?i)(?:drop[- ]?off|collection|last day|deadline)[^<]{0,120}'
+      - '(?i)(?:Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)[a-z]*\.? \d{1,2}(?:st|nd|rd|th)?,? ?(?:20\d\d)?[^<]{0,80}'
+    follow: '(?i)drop|locations?|donate'
+  - url: https://www.chicagolandtft.org/
+    item: 447
+    purpose: Chicagoland Toys for Tots - drop box locations across the region (2026)
+    patterns:
+      - '(?i)(?:drop[- ]?(?:box|off)|locations?)[^<]{0,120}'
+      - '(?i)(?:Palatine|Arlington Heights|Mount Prospect|Des Plaines|Wheeling)[^<]{0,100}'
+    follow: '(?i)drop|locations?'
