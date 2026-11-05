@@ -332,6 +332,12 @@
     "time": "09:00",
     "title": "Palatine Winter Farmers' Market",
     "venue": "Palatine Train Station parking lot"
+   },
+   {
+    "date": "2026-12-05",
+    "time": "09:00",
+    "title": "Palatine Winter Farmers' Market",
+    "venue": "Palatine Train Station parking lot"
    }
   ],
   "name": "Palatine Train Station parking lot",
@@ -341,9 +347,7 @@
   "events": [
    {
     "date": "2026-11-07",
-    "time": "09:00",
-    "title": "PHS Pirate Boosters Present: Fall Craft Fair",
-    "venue": "Palatine High School"
+    "title": "PHS Pirate Boosters Present: Fall Craft Fair"
    }
   ],
   "name": "PHS Pirate Boosters",

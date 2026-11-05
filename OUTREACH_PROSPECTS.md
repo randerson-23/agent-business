@@ -14,7 +14,7 @@ Businesses whose own events appeared on a town page in the last 60 days or the n
 | Napleton Palatine Hyundai | Palatine | FREE Trunk or Treat at Napleton Palatine Hyundai (2026-10-24) |
 | Napleton's Palatine Mazda | Palatine | FREE Trunk or Treat at Napleton's Palatine Mazda (2026-10-24) |
 | Napleton's Palatine Subaru | Palatine | FREE Trunk or Treat at Napleton's Palatine Subaru (2026-10-24) |
-| Palatine Train Station parking lot | Palatine | Palatine Winter Farmers' Market (2026-11-07); Palatine Winter Farmers' Market (2026-11-21) |
+| Palatine Train Station parking lot | Palatine | Palatine Winter Farmers' Market (2026-11-07); Palatine Winter Farmers' Market (2026-11-21); Palatine Winter Farmers' Market (2026-12-05) |
 
 ### Fair organisers
 
