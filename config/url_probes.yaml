@@ -180,7 +180,9 @@ probes:
     purpose: Village of Arlington Heights - home page; a 2026 toy, coat or food drive notice
     patterns:
       - '(?i)(?:toy|coat|food|donation|giving tree|toys for tots)[^<]{0,40}(?:drive|collection|tree)[^<]{0,120}'
-    follow: '(?i)toy|coat drive|food drive|giving|donat'
+      - '(?is)<a[^>]{0,300}href="[^"]{1,300}"[^>]{0,300}>(?:(?!</a>).){0,700}Community Food Drive'
+      - '(?is)Community Food Drive.{0,600}'
+    follow: '(?i)community[-_ %20]*food[-_ %20]*drive|toy|coat drive|giving|donat'
   - url: https://www.palatine.il.us/
     item: 441
     purpose: Village of Palatine - home page; a 2026 toy, coat or food drive notice

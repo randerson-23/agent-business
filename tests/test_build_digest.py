@@ -7026,3 +7026,27 @@ def test_sponsor_page_founding_box_sits_above_the_nextdoor_paragraph_with_its_ow
         assert field in page.split('id="founding"')[1].split("Why a recommendation")[0]
     gone = build_digest.render_sponsor_page([], now, None, "hello@example.org", founding_promos_used=5)
     assert 'id="founding"' not in gone and "Claim a free Event Promo" not in gone
+
+
+def test_hub_pages_carry_short_og_titles_without_the_site_name():
+    # ROADMAP.md item 449.
+    import re as _re
+    def og(html):
+        return _re.search(r'property="og:title" content="([^"]*)"', html).group(1)
+    now = datetime(2026, 11, 16, 15, tzinfo=timezone.utc)
+    entries = [{"name": n, "region_name": n, "region_url": "https://x/" + n + "/", "events": [], "links": [], "drives": [], "volunteer": []} for n in ("Arlington Heights", "Des Plaines", "Mount Prospect", "Palatine", "Wheeling")]
+    pages = {
+        "give": build_digest.render_give_page(entries, now, None, _NL),
+        "santa": build_digest.render_santa_page(entries, now, None, _NL),
+        "leaf": build_digest.render_leaf_pickup_page([{"name": e["region_name"], "url": "https://x", "summary": None, "note": None} for e in entries], now),
+        "holidays": build_digest.render_holidays_page([dict(e, tree=None, tree_url=None) for e in entries], now),
+        "tot": build_digest.render_trick_or_treat_page([dict(e, url="https://x/t", hours=None, events=[], trunk=[]) for e in entries], datetime(2026, 10, 18, 18, tzinfo=timezone.utc)),
+    }
+    for name, html in pages.items():
+        title = og(html)
+        assert 0 < len(title) <= 60 and "Within Ten" not in title, (name, title)
+    assert og(pages["santa"]) == "Santa near you: 5 towns, 2026"
+    assert og(pages["give"]) == "Giving back this season: 5 towns, 2026"
+    cfg = next(c for c in build_digest.load_regions() if c["region"]["id"] == "mount-prospect-60056")
+    wb = build_digest.render_region_page(cfg, [], None, [], now, heading="h", subheading="s", empty_message="e", nav_current="winter-break", canonical_suffix="winter-break/", og_title="Winter break camps in Mount Prospect, 2026")
+    assert og(wb) == "Winter break camps in Mount Prospect, 2026"
