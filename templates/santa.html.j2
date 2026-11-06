@@ -195,6 +195,15 @@
   <p class="note">{{ empty_message }}</p>
   {{ look_meanwhile(places, hub_url) }}
   {% endif %}
+  {% if outside %}
+  <h2 class="events-heading">Just outside our towns (within ten miles)</h2>
+  <ul class="events">
+    {% for o in outside %}
+    <li><span class="emoji" aria-hidden="true">🎅</span><strong>{{ o.town }}</strong> &middot; <time>{{ o.date_label }}</time>{% if o.time %} &middot; {{ o.time }}{% endif %} <a href="{{ o.source_url }}" rel="noopener">{{ o.title }}</a>{% if o.venue %} <span class="hours-note">{{ o.venue }}</span>{% endif %}</li>
+    {% endfor %}
+  </ul>
+  <p class="note">These are in neighbouring towns, not the five this site covers. Each links to the town&rsquo;s own page.</p>
+  {% endif %}
   {{ share_button("santa", "Santa near you: breakfast with Santa and Santa visits", canonical_url) }}
   {% if reminder_tag %}
   {{ signup_form(newsletter, "newsletter-signup", "bd-email", reminder_tag, "santa", reminder_headline) }}

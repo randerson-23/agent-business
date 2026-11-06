@@ -2438,7 +2438,27 @@ def santa_look_links(region_cfg: dict) -> list[dict]:
     return out[:2]
 
 
-def render_santa_page(entries: list[dict], now: datetime, analytics: dict | None = None, newsletter: dict | None = None, event_page_paths: set[str] | None = None) -> str:
+def load_just_outside(today: date) -> list[dict]:
+    """ROADMAP.md item 458: hand-sourced holiday events just outside the five towns,
+    from config/just_outside.yaml. Needs a town, title, a date that has not passed
+    and an http(s) source; soonest first."""
+    path = CONFIG_DIR / "just_outside.yaml"
+    cfg = load_yaml(path) if path.exists() else {}
+    out = []
+    for e in cfg.get("events") or []:
+        day = _parse_promo_day(e.get("date"))
+        url = safe_http_url(e.get("source_url"))
+        if not (str(e.get("town") or "").strip() and str(e.get("title") or "").strip() and url and day and day >= today):
+            continue
+        out.append({
+            "town": str(e["town"]).strip(), "title": str(e["title"]).strip(), "date": day, "date_label": day.strftime("%a %b ") + str(day.day),
+            "time": str(e.get("time") or "").strip(), "venue": str(e.get("venue") or "").strip(), "source_url": url,
+        })
+    out.sort(key=lambda e: e["date"])
+    return out
+
+
+def render_santa_page(entries: list[dict], now: datetime, analytics: dict | None = None, newsletter: dict | None = None, event_page_paths: set[str] | None = None, outside: list[dict] | None = None) -> str:
     """The /santa/ page. `entries` is [{region_name, region_url, events}]."""
     today = now.astimezone(LOCAL_TZ).date()
     year = santa_season_year(today)
@@ -2472,6 +2492,7 @@ def render_santa_page(entries: list[dict], now: datetime, analytics: dict | None
         days=days,
         places=[{"name": e["region_name"], "color": EMAIL_TOWN_COLORS[i % len(EMAIL_TOWN_COLORS)][0], "links": e.get("links") or [], "tree": (e.get("tree") or {}).get("label") if e.get("tree") else None} for i, e in enumerate(entries)],
         empty_message="Park districts usually post Santa events in early November; they appear here as soon as they do." if year == today.year else f"Santa events for {year} are usually posted in early November. Sign up below and we'll email you when they appear.",
+        outside=outside or [],
         reminder_tag=None if in_season else f"remind:santa-{year}",
         reminder_headline=f"Email me when the {year} Santa events are posted",
         newsletter=newsletter or {"configured": False},
@@ -8182,7 +8203,7 @@ def main() -> None:
     (give_dir / "index.html").write_text(render_give_page(give_entries, now, analytics, newsletter), encoding="utf-8")
     santa_dir = OUTPUT_DIR / "santa"
     santa_dir.mkdir(parents=True, exist_ok=True)
-    (santa_dir / "index.html").write_text(render_santa_page(santa_entries, now, analytics, newsletter, {e["path"] for e in active_event_pages}), encoding="utf-8")
+    (santa_dir / "index.html").write_text(render_santa_page(santa_entries, now, analytics, newsletter, {e["path"] for e in active_event_pages}, load_just_outside(now.astimezone(LOCAL_TZ).date())), encoding="utf-8")
     logger.info("Wrote %s", santa_dir / "index.html")
 
     for kind in THANKS_PAGES:

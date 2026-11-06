@@ -7095,3 +7095,20 @@ def test_send_to_a_friend_button_is_hidden_without_js_and_carries_the_utm_pair()
     assert 'id="share-weekend" hidden' in hub
     free = build_digest.render_merged_hub_page([], now, slug="free", subheading="s", meta_description="d", empty_message="none")
     assert "share-weekend" not in free
+
+
+def test_just_outside_section_shows_only_sourced_future_events_on_santa():
+    # ROADMAP.md item 458.
+    from unittest import mock
+    cfg = {"events": [
+        {"town": "Skokie", "title": "Breakfast with Santa", "date": "2026-12-12", "time": "9:30 - 11:30 a.m.", "venue": "Oakton Community Center", "source_url": "https://www.skokieparks.org/x"},
+        {"town": "Niles", "title": "Old Event", "date": "2026-11-01", "source_url": "https://niles-parks.org/x"},
+        {"town": "Niles", "title": "No source", "date": "2026-12-13"},
+    ]}
+    with mock.patch.object(build_digest, "load_yaml", return_value=cfg):
+        outside = build_digest.load_just_outside(date(2026, 11, 7))
+    assert [o["title"] for o in outside] == ["Breakfast with Santa"]
+    ents = [{"region_name": "Palatine", "region_url": "https://x/p/", "events": []}]
+    page = build_digest.render_santa_page(ents, datetime(2026, 11, 7, 15, tzinfo=timezone.utc), None, _NL, None, outside)
+    assert "Just outside our towns (within ten miles)" in page and "Skokie" in page and "Oakton Community Center" in page
+    assert "Just outside" not in build_digest.render_santa_page(ents, datetime(2026, 11, 7, 15, tzinfo=timezone.utc), None, _NL)
