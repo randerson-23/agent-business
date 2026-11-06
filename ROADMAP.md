@@ -220,6 +220,7 @@ doesn't re-suggest something already shipped.
 
 **Build queue (by deadline; refreshed by the research loop, item 346).**
 Pick from the top unless the owner has flagged something else:
+0. **459** (item 456 step 2 by platform: Des Plaines WebTrac by documented URL; Arlington Heights catalogue link only), then **356** (weekday and toddler page; re-ranked in pass 127 with a toddler-first title), then **461** and **460**.
 0. **456** (find each park district's registration catalogue and read it for Santa, camps and registration days; the only route to `/santa/` by Nov 15), then **458** (Skokie, Niles, Elk Grove holiday events in a labelled "just outside" section).
 0. **451** (BingSiteAuth.xml from `bing_site_auth:`; ready now that Yandex and Seznam accept and only Bing refuses), then **454, 455** (share button on every shareable page; text-a-friend link in the email).
 0. **450** (IndexNow to Yandex and Seznam directly when Bing refuses; no owner time), then **452** (founding-offer button near the top of `/sponsor/`). **451** waits on 450's log.
@@ -19998,6 +19999,87 @@ and **library museum-pass programmes and Chicago free-day guides** (AHML,
 MPPL, Prospect Heights library; Choose Chicago, do312, Chicago on the
 Cheap). The design/UX angle is **`/santa/` on a phone**: one listing,
 nine days out.
+
+#### Research pass 2026-11-06, evening (hundred-and-twenty-seventh pass)
+
+Today the build loop shipped item 454 (share buttons on every shareable
+page) and the "Just outside" section on `/santa/` (item 458). It also
+answered step 1 of item 456: **Arlington Heights runs ActiveNet** (a
+JavaScript app with no plain-GET search), **Des Plaines runs WebTrac**,
+Wheeling is bot-walled, and Mount Prospect and Palatine showed no
+register link. This pass works out how step 2 can read each platform,
+re-runs the search check for a second town, and finds a competitor that
+has never been in the table.
+
+| Angle | What it is / what we found | Why it matters here |
+|---|---|---|
+| **How to read the registration platforms** (Vermont Systems' WebTrac help pages: *"URL Containing Activity Subtype"*, *"Searching in WebTrac for Activities"*, *"WebTrac link not auto searching"*; TeamSideline's MPPD league pages) | **WebTrac** documents **plain-GET search URLs**: `<base>/search.html?module=AR&type=…&subtype=…&search=yes` runs a filtered activity search directly. `&search=yes` is required, or the page loads without searching. A free-text keyword parameter isn't documented, so type and subtype codes (read once from the search form) are the reliable route. **ActiveNet's** search is a JavaScript app whose JSON calls are undocumented, and reverse-engineering a private endpoint is fragile and not the site's to use. **Mount Prospect Park District's** youth leagues run on **TeamSideline** (`teamsideline.com/sites/mppd/…`), plain HTML pages that state registration windows (*"REGISTRATION DEADLINE – March 16th"* for spring soccer) | Item 456 step 2 now has a concrete path for Des Plaines (WebTrac, by documented URL). It has an honest answer for Arlington Heights: catalogue link only, plus AHPD's own `?ical=1` feed, which already carries anything AHPD also posts as an event. And Mount Prospect gets a **spring registration-days source** for item 328 (items 459, 460) |
+| **Yopki, a kids' events site, re-check: "things to do in Arlington Heights IL this weekend with kids"** | Results: **Groupon's** kids-activities deals page, then **yopki.com** with **four separate Arlington Heights pages**: *"This Weekend"*, an events calendar, ***"toddlers"***, and a venue page for **Lake Arlington**. Then a Patch Palatine weekend post, old blog roundups and **Macaroni KID Schaumburg**. Yopki is a **programmatic kids' events site** with per-town, per-age and per-venue pages, and it's new to this roadmap | A competitor ranks in this exact town with an **age page ("toddlers")** and a **weekday-friendly** structure. The site has a `toddler` tag and 69 storytimes in `events.json`, but no page for parents of under-fives. Item 356 (a *"Weekdays, 9–3"* view) has sat unbuilt since Oct 21, and this is the evidence to build it, with the title aimed at that search (re-rank below) |
+| **The town weekend page's search snippet (design/UX)** (`docs/arlington-heights-60005/this-weekend/`) | Title *"Things to Do in Arlington Heights, IL This Weekend (Nov 6–8)"*. Description *"5 things to do Nov 6–8: Pumpkin Smash: From Gourd to Garden and more, from the village, library and park district."* **Neither says kids or family**, though every result above it on the "with kids" query does. The site is a family guide, and its snippet reads like a general events list | The searcher who adds "with kids" is the site's reader. The description is where that match can be made without touching item 310's tuned titles (item 461) |
+
+Re-rank: **item 356** moves into the build queue after 456. Its page
+title becomes ***"Toddler, Preschool & Homeschool Activities in Mount
+Prospect This Week"***, matching the age-page searches yopki ranks for,
+with *"Weekdays, 9–3"* kept as the chip label. Nothing else in 356
+changes.
+
+#### P1 (new)
+
+459. **Item 456 step 2, by platform.** Build loop:
+
+     - **Des Plaines (WebTrac):** read the activity search form once (a
+       probe) to get the type and subtype codes for special events and
+       camps. Then fetch `search.html?module=AR&type=…&subtype=…&search=yes`
+       and keep rows whose titles match the Santa, camp, winter-break and
+       Noon Year's keyword set. Map each row to an event with the
+       WebTrac activity link and the registration dates. Cap it at a few
+       requests per build.
+     - **Arlington Heights (ActiveNet):** don't call its private JSON.
+       Use the catalogue link (item 438's `camp_catalogues`) and AHPD's
+       existing `?ical=1` feed. If an ActiveNet *activity detail* page
+       answers a plain GET with the title and dates in its HTML, a probe
+       may confirm one by URL later.
+     - **Mount Prospect and Palatine:** probe the "Programs" and
+       "Register" pages one level down from the home page for the
+       platform link (item 456 step 1 only read the home pages).
+
+     Tests: a WebTrac fixture page becomes events with registration
+     links, and the keyword filter and request cap hold.
+
+#### P3 (new)
+
+460. **Mount Prospect's league registration windows from TeamSideline.**
+     Build loop. Add MPPD's TeamSideline registration pages (soccer,
+     baseball, softball) to a probe round. Parse *"REGISTRATION
+     DEADLINE – <date>"* and *"registration opens <date>"*, and write
+     them to `registration_days:` for Mount Prospect (item 328), dated
+     only from the 2026–27 season's page.
+
+     The *"Sign-ups opening this week"* email block (item 327) then
+     covers spring leagues in February and March, the most-missed
+     deadline for parents of school-age kids. Tests: a deadline line
+     parses, and a past season's page is ignored.
+
+461. **Say "family" in the town weekend snippet.** Build loop,
+     `build_search_meta` (item 310):
+
+     - Change the town weekend description's lead from *"5 things to do
+       Nov 6–8"* to ***"5 family things to do Nov 6–8 in Arlington
+       Heights"***, followed by the picks and sources as now.
+     - Add an H2 above the list, ***"With kids this weekend"***, when at
+       least one event is tagged kid-friendly or toddler.
+     - Titles are unchanged. The description stays at 160 characters
+       or fewer.
+
+     Tests: the word "family" is in the description, the length cap
+     holds, and the H2 appears only when a kid-tagged event exists.
+
+Competitors reviewed this pass: **yopki.com** (a programmatic kids' events
+site with per-town, per-age and per-venue pages; new to the table),
+**Groupon's local kids-activities pages**, and **Vermont Systems' WebTrac
+documentation** and **TeamSideline** as data sources. The design/UX
+angle is **the town weekend page's search snippet**: no "kids" or
+"family" anywhere.
 
 
 ## Working agreements for autonomous iteration
