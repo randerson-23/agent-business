@@ -19786,7 +19786,7 @@ money starts.
 
 #### P2 (new)
 
-451. **Serve a `BingSiteAuth.xml` when one is configured.** Build loop. Add
+451. ✅ DONE (`bing_site_auth:` in config/analytics.yaml; the build writes docs/BingSiteAuth.xml only when set, and removes a stale one) **Serve a `BingSiteAuth.xml` when one is configured.** Build loop. Add
      an optional `bing_site_auth:` value to `config/analytics.yaml`. When
      it's set, the build writes `docs/BingSiteAuth.xml` in Bing's format,
      `<?xml version="1.0"?><users><user>VALUE</user></users>`, and keeps
@@ -19879,7 +19879,7 @@ and how the site's most shareable pages can be passed on.
 
 #### P3 (new)
 
-455. **A "Text this to a friend" link in the email footer.** Build loop,
+455. ✅ DONE (sms: link in both email footers; the weekend page with utm_source=friend&utm_campaign=reader) **A "Text this to a friend" link in the email footer.** Build loop,
      `combined_email_digest.html.j2` and the per-town template. Add one
      line beside *"Forwarded this?"*: ***"📱 Text this week's picks to a
      friend"***. It's an `sms:?&body=` link with *"What's on this weekend

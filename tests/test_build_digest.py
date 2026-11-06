@@ -7050,3 +7050,21 @@ def test_hub_pages_carry_short_og_titles_without_the_site_name():
     cfg = next(c for c in build_digest.load_regions() if c["region"]["id"] == "mount-prospect-60056")
     wb = build_digest.render_region_page(cfg, [], None, [], now, heading="h", subheading="s", empty_message="e", nav_current="winter-break", canonical_suffix="winter-break/", og_title="Winter break camps in Mount Prospect, 2026")
     assert og(wb) == "Winter break camps in Mount Prospect, 2026"
+
+
+def test_bing_site_auth_file_is_written_only_when_the_code_is_set():
+    # ROADMAP.md item 451.
+    assert build_digest.bing_site_auth_xml("") is None
+    assert build_digest.bing_site_auth_xml("ABC123DEF") == '<?xml version="1.0"?><users><user>ABC123DEF</user></users>'
+    assert build_digest.load_analytics_config({"bing_site_auth": " AB-C1<23> "})["bing_site_auth"] == "ABC123"
+    assert build_digest.load_analytics_config({})["bing_site_auth"] == ""
+
+
+def test_text_a_friend_link_is_encoded_short_and_counted():
+    # ROADMAP.md item 455.
+    from urllib.parse import unquote
+    url = build_digest.text_friend_url()
+    assert url.startswith("sms:?&body=") and len(url) < 300
+    body = unquote(url.split("body=", 1)[1])
+    assert body.startswith("What's on this weekend near us: ") and "utm_source=friend&utm_campaign=reader" in body
+    assert " " not in url and "&utm" not in url  # the pair is percent-encoded inside the body
