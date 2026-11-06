@@ -190,6 +190,12 @@
     "venue": "Des Plaines Theatre"
    },
    {
+    "date": "2026-11-25",
+    "time": "19:30",
+    "title": "BOURBON 'N BRASS SPEAKEASY: BLUES NIGHT EXTRAVAGANZA featuring DOWNTOWN CHARLIE BROWN, SEAN McKEE, MILES MINOR, JEFF BRINKMAN and JOE VALENTINO - THANKSGIVING EVE!",
+    "venue": "Des Plaines Theatre"
+   },
+   {
     "date": "2026-11-27",
     "time": "20:00",
     "title": "KASHMIR: THE MUSIC OF LED ZEPPELIN",
@@ -246,6 +252,17 @@
   ],
   "name": "Des Plaines Theatre",
   "town": "Des Plaines"
+ },
+ "holiday tree lighting": {
+  "events": [
+   {
+    "date": "2026-11-21",
+    "time": "16:00",
+    "title": "Helping Hands Pantry Food Drive at Holiday Tree Lighting"
+   }
+  ],
+  "name": "Holiday Tree Lighting",
+  "town": "Palatine"
  },
  "metropolis performing arts centre": {
   "events": [

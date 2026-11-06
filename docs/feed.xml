@@ -4,7 +4,7 @@
   <title>Within Ten — Upcoming Local Events</title>
   <link>https://withintenmiles.com/</link>
   <description>Upcoming events across every Within Ten region, soonest first - aggregated automatically from village, library, park district and school-district calendars. This build reached 24 of 30 configured sources.</description>
-  <lastBuildDate>Fri, 06 Nov 2026 14:25:15 +0000</lastBuildDate>
+  <lastBuildDate>Fri, 06 Nov 2026 21:59:25 +0000</lastBuildDate>
   <item>
     <title>Arlington Heights: Senior Center: Travelogue</title>
     <link>https://withintenmiles.com/arlington-heights-60005/#ev-senior-center-travelogue-2026-11-06</link>
@@ -12,6 +12,14 @@
     <description>Official listing: https://www.ahml.info/scheduling/reservation/233824</description>
     <pubDate>Fri, 06 Nov 2026 00:00:00 +0000</pubDate>
     <source url="https://www.ahml.info/scheduling/reservation/233824">Arlington Heights Memorial Library — Events</source>
+  </item>
+  <item>
+    <title>Mount Prospect: Mount Prospect Update - November 6, 2026</title>
+    <link>https://withintenmiles.com/mount-prospect-60056/#ev-mount-prospect-update-november-6-2026-2026-11-06</link>
+    <guid isPermaLink="true">https://withintenmiles.com/mount-prospect-60056/#ev-mount-prospect-update-november-6-2026-2026-11-06</guid>
+    <description>Catch the latest edition of the Mount Prospect Update. Find out what is happening in your town. Official listing: https://www.mountprospect.org/articles/Mount-Prospect-Update-November-6-2026-190.php</description>
+    <pubDate>Fri, 06 Nov 2026 00:00:00 +0000</pubDate>
+    <source url="https://www.mountprospect.org/articles/Mount-Prospect-Update-November-6-2026-190.php">Village of Mount Prospect — News</source>
   </item>
   <item>
     <title>Wheeling: Babytime!</title>
@@ -434,15 +442,6 @@ Meet with a career expert for resume… Official listing: https://desplaines.lib
  Scott 847-985-6464 Official listing: https://desplaines.libnet.info/event/17491026</description>
     <pubDate>Mon, 09 Nov 2026 18:30:00 +0000</pubDate>
     <source url="https://desplaines.libnet.info/event/17491026">Des Plaines Public Library — Events</source>
-  </item>
-  <item>
-    <title>Mount Prospect: Monday Night Book Group</title>
-    <link>https://withintenmiles.com/mount-prospect-60056/#ev-monday-night-book-group-2026-11-09</link>
-    <guid isPermaLink="true">https://withintenmiles.com/mount-prospect-60056/#ev-monday-night-book-group-2026-11-09</guid>
-    <description>Monday, November 09 2026 7:00pm - 8:00pm 
- Join us for a discussion of "Hello Beautiful" by Ann Napolitano. Official listing: https://mppl.libnet.info/event/14049450</description>
-    <pubDate>Mon, 09 Nov 2026 19:00:00 +0000</pubDate>
-    <source url="https://mppl.libnet.info/event/14049450">Mount Prospect Public Library — Events</source>
   </item>
 </channel>
 </rss>
