@@ -103,7 +103,21 @@
   <p class="when">Fri Nov 6, 6:30 PM</p>
   <p class="where">Des Plaines Public Library, 1501 Ellinwood Street, Des Plaines</p>
 <p>A free screening of the independent film The Invite.</p><ul class="tags"><li>Free</li><li>Indoor</li></ul>  <p><a class="btn" href="https://desplaines.libnet.info/event/16020452" rel="noopener">Official listing &rarr;</a><a class="btn alt" href="data:text/calendar;charset=utf-8,BEGIN%3AVCALENDAR%0D%0AVERSION%3A2.0%0D%0APRODID%3A-//Within%20Ten//EN%0D%0ABEGIN%3AVEVENT%0D%0ADTSTART%3A20261106T183000%0D%0ADTEND%3A20261106T193000%0D%0ASUMMARY%3AFriday%20Night%20Films%0D%0ADESCRIPTION%3AFriday%5C%2C%20November%2006%202026%206%3A30pm%20-%208%3A15pm%20%5Cn%20A%20free%20screening%20of%20the%20independent%20film%20The%20Invite.%0D%0ALOCATION%3ADes%20Plaines%20Public%20Library%5C%2C%201501%20Ellinwood%20Street%5C%2C%20Des%20Plaines%0D%0AURL%3Ahttps%3A//desplaines.libnet.info/event/16020452%0D%0AEND%3AVEVENT%0D%0AEND%3AVCALENDAR%0D%0A" download="event.ics">Add to calendar</a></p>
-  <p class="source">Listing published by Des Plaines Public Library. Check the official listing for the latest time, place and any cost.</p>
+<p class="share-friend" id="share-event" hidden><button type="button" style="font:inherit;font-weight:700;padding:8px 14px;border:2px solid currentColor;background:transparent;color:inherit;cursor:pointer">Send to a friend</button> <span class="share-note" hidden>Link copied</span></p>
+<script>
+(function () {
+  var box = document.getElementById("share-event");
+  if (!box) return;
+  var btn = box.querySelector("button"), note = box.querySelector(".share-note");
+  var data = { title: "Friday Night Films, Fri Nov 6, 6:30 PM, Des Plaines", text: "Friday Night Films, Fri Nov 6, 6:30 PM, Des Plaines", url: "https://withintenmiles.com/e/2026-11-06-friday-night-films/?utm_source=friend\u0026utm_campaign=share" };
+  box.hidden = false;
+  btn.addEventListener("click", function () {
+    if (navigator.share) { navigator.share(data).catch(function () {}); return; }
+    if (navigator.clipboard) navigator.clipboard.writeText(data.url).then(function () { note.hidden = false; });
+    else { note.textContent = data.url; note.hidden = false; }
+  });
+})();
+</script>  <p class="source">Listing published by Des Plaines Public Library. Check the official listing for the latest time, place and any cost.</p>
   <h2>More this weekend</h2>
   <ul class="more"><li><a href="https://withintenmiles.com/des-plaines-60016/#ev-baby-book-time-2026-11-06">Baby Book Time</a></li><li><a href="https://withintenmiles.com/des-plaines-60016/#ev-downsizing-and-decluttering-2026-11-06">Downsizing and Decluttering</a></li><li><a href="https://withintenmiles.com/des-plaines-60016/#ev-bourbon-n-brass-speakeasy-live-jazz-pop-and-r-b-with-michael-2026-11-06">Bourbon &#39;N Brass Speakeasy: Live Jazz, Pop and R&amp;B with Michael Ross Band</a></li></ul>
 <div class="newsletter" id="newsletter-signup">

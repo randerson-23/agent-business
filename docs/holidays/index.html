@@ -300,6 +300,21 @@
     <strong>Local shop? Get listed in the holiday guide, $20 until Nov 15.</strong>
     A "Local business listing" on your town's holiday page, live through Dec 31. The price rises to $50 on Nov 16.    <br><a href="mailto:hello@withintenmiles.com?subject=Holiday%20guide%20listing">Get listed, $20 &rarr;</a>
   </div>
+  <p class="share-friend" id="share-holidays" hidden><button type="button" style="font:inherit;font-weight:700;padding:8px 14px;border:2px solid currentColor;background:transparent;color:inherit;cursor:pointer">Send to a friend</button> <span class="share-note" hidden>Link copied</span></p>
+<script>
+(function () {
+  var box = document.getElementById("share-holidays");
+  if (!box) return;
+  var btn = box.querySelector("button"), note = box.querySelector(".share-note");
+  var data = { title: "Holiday tree lightings and events near us", text: "Holiday tree lightings and events near us", url: "https://withintenmiles.com/holidays/?utm_source=friend\u0026utm_campaign=share" };
+  box.hidden = false;
+  btn.addEventListener("click", function () {
+    if (navigator.share) { navigator.share(data).catch(function () {}); return; }
+    if (navigator.clipboard) navigator.clipboard.writeText(data.url).then(function () { note.hidden = false; });
+    else { note.textContent = data.url; note.hidden = false; }
+  });
+})();
+</script>
   <div class="newsletter" id="newsletter-signup">
   <form class="newsletter-form" action="https://buttondown.com/api/emails/embed-subscribe/withinten" method="post" target="bd-hidden-frame">
 <input type="hidden" name="tag" value="town:all">    <input type="hidden" name="utm_source" value="site">
@@ -342,7 +357,7 @@ document.querySelectorAll(".newsletter-form").forEach(function (f) {
   <footer>
     Curious what else is happening? <a href="https://withintenmiles.com/">See a live region</a>.
     <a href="https://google.com/preferences/source?q=withintenmiles.com" rel="noopener">Add us as a preferred source on Google</a>.
-    <br>Generated 2026-11-06 06:02 UTC.
+    <br>Generated 2026-11-06 14:00 UTC.
   </footer>
 </div>
 <script data-goatcounter="https://withinten.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>

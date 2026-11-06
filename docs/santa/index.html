@@ -229,6 +229,21 @@
     <li style="--town:#be185d"><strong style="color:#be185d">Wheeling</strong> &middot; <a href="https://www.wheelingparkdistrict.com/" rel="noopener">Wheeling Park District</a> &middot; <a href="https://www.wheelingil.gov/" rel="noopener">Village of Wheeling</a> &middot; Tree lighting: date TBA</li>
   </ul>
   <p class="note">Tree lighting dates appear only once the town's own 2026 listing names them. <a href="https://withintenmiles.com/holidays/">All tree lightings &rarr;</a></p>
+  <p class="share-friend" id="share-santa" hidden><button type="button" style="font:inherit;font-weight:700;padding:8px 14px;border:2px solid currentColor;background:transparent;color:inherit;cursor:pointer">Send to a friend</button> <span class="share-note" hidden>Link copied</span></p>
+<script>
+(function () {
+  var box = document.getElementById("share-santa");
+  if (!box) return;
+  var btn = box.querySelector("button"), note = box.querySelector(".share-note");
+  var data = { title: "Santa near you: breakfast with Santa and Santa visits", text: "Santa near you: breakfast with Santa and Santa visits", url: "https://withintenmiles.com/santa/?utm_source=friend\u0026utm_campaign=share" };
+  box.hidden = false;
+  btn.addEventListener("click", function () {
+    if (navigator.share) { navigator.share(data).catch(function () {}); return; }
+    if (navigator.clipboard) navigator.clipboard.writeText(data.url).then(function () { note.hidden = false; });
+    else { note.textContent = data.url; note.hidden = false; }
+  });
+})();
+</script>
   <div class="newsletter" id="newsletter-signup">
   <form class="newsletter-form" action="https://buttondown.com/api/emails/embed-subscribe/withinten" method="post" target="bd-hidden-frame">
 <input type="hidden" name="tag" value="town:all">    <input type="hidden" name="utm_source" value="site">
@@ -272,7 +287,7 @@ document.querySelectorAll(".newsletter-form").forEach(function (f) {
   <footer>
     Curious what else is happening? <a href="https://withintenmiles.com/">See a live region</a>.
     <a href="https://google.com/preferences/source?q=withintenmiles.com" rel="noopener">Add us as a preferred source on Google</a>.
-    <br>Generated 2026-11-06 06:02 UTC.
+    <br>Generated 2026-11-06 14:00 UTC.
   </footer>
 </div>
 <script data-goatcounter="https://withinten.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
