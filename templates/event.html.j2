@@ -1,3 +1,4 @@
+{% from "_share.html.j2" import share_button -%}
 {% from "_signup.html.j2" import signup_css, signup_form, signup_runtime -%}
 {# ROADMAP.md item 369: one page for one event, with the publisher's listing as the primary button and exactly one Event in the markup. #}
 <!doctype html>
@@ -61,6 +62,7 @@
   {% if detail %}<p>{{ detail }}</p>{% endif %}
   {% if tags %}<ul class="tags">{% for t in tags %}<li>{{ t }}</li>{% endfor %}</ul>{% endif %}
   <p><a class="btn" href="{{ source_url }}" rel="noopener">Official listing &rarr;</a>{% if ics_href and not expired %}<a class="btn alt" href="{{ ics_href }}" download="event.ics">Add to calendar</a>{% endif %}</p>
+  {% if not expired %}{{ share_button("event", title ~ ", " ~ when_label ~ (", " ~ town if town else ""), canonical_url) }}{% endif %}
   <p class="source">Listing published by {{ source_name }}. Check the official listing for the latest time, place and any cost.</p>
   {% if more and not expired %}
   <h2>More this weekend</h2>

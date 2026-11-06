@@ -1,3 +1,4 @@
+{% from "_share.html.j2" import share_button -%}
 {% from "_featured.html.j2" import featured_label -%}
 {% from "_signup.html.j2" import signup_css, signup_form, signup_runtime -%}
 <!doctype html>
@@ -1002,6 +1003,7 @@
      the pending message below is a JS enhancement on top; the note
      under the input is the no-JS fallback disclosure. #}
   {% if nav_current == "all" and mid.placed %}
+  {% if nav_current == "weekend" %}{{ share_button("weekend", "What's on this weekend in " ~ region.name, canonical_url) }}{% endif %}
   {{ signup_form(newsletter, "newsletter-signup-end", "bd-email-end", signup_tag, "region") }}
   {% else %}
   {{ signup_form(newsletter, "newsletter-signup", "bd-email", signup_tag, signup_campaign) }}

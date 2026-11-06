@@ -145,24 +145,28 @@ probes:
     purpose: Mount Prospect Park District - home page; its camps or winter-break programme page
     patterns:
       - '(?i)(?:winter break|camps?)[^<]{0,100}'
+      - '(?i)href="[^"]*(?:activecommunities\.com|webtrac|rectrac|civicrec|myrec|amilia|register)[^"]{0,160}"'
     follow: '(?i)camp|winter'
   - url: https://www.ahpd.org/
     item: 438
     purpose: Arlington Heights Park District - home page; its camps or winter-break programme page
     patterns:
       - '(?i)(?:winter break|camps?)[^<]{0,100}'
+      - '(?i)href="[^"]*(?:activecommunities\.com|webtrac|rectrac|civicrec|myrec|amilia|register)[^"]{0,160}"'
     follow: '(?i)camp|winter'
   - url: https://www.dpparks.org/
     item: 438
     purpose: Des Plaines Park District - home page; its camps or winter-break programme page
     patterns:
       - '(?i)(?:winter break|camps?)[^<]{0,100}'
+      - '(?i)href="[^"]*(?:activecommunities\.com|webtrac|rectrac|civicrec|myrec|amilia|register)[^"]{0,160}"'
     follow: '(?i)camp|winter'
   - url: https://www.wheelingparkdistrict.com/
     item: 438
     purpose: Wheeling Park District - home page; its camps or winter-break programme page
     patterns:
       - '(?i)(?:winter break|camps?)[^<]{0,100}'
+      - '(?i)href="[^"]*(?:activecommunities\.com|webtrac|rectrac|civicrec|myrec|amilia|register)[^"]{0,160}"'
     follow: '(?i)camp|winter'
   # Round 30 (item 438, 2026-11-04): round 29 found "Winter Break Programming" on Palatine Park District's home page
   # (no link text kept); mppd.org and dpparks.org only show summer camp pages; rtpd.org and wheelingparkdistrict.com
@@ -182,6 +186,7 @@ probes:
       - '(?i)(?:toy|coat|food|donation|giving tree|toys for tots)[^<]{0,40}(?:drive|collection|tree)[^<]{0,120}'
       - '(?is)<a[^>]{0,300}href="[^"]{1,300}"[^>]{0,300}>(?:(?!</a>).){0,700}Community Food Drive'
       - '(?is)Community Food Drive.{0,600}'
+      - '(?i)href="[^"]*(?:activecommunities\.com|webtrac|rectrac|civicrec|myrec|amilia|register)[^"]{0,160}"'
     follow: '(?i)community[-_ %20]*food[-_ %20]*drive|toy|coat drive|giving|donat'
   - url: https://www.palatine.il.us/
     item: 441
@@ -214,3 +219,15 @@ probes:
       - '(?is)Community Food Drive.{0,1500}'
       - '(?i)(?:drop[- ]?off|collection|donat)[^<]{0,200}'
       - '(?i)(?:Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)[a-z]*\.? \d{1,2}(?:st|nd|rd|th)?[^<]{0,100}'
+  # Round 34 (item 456, 2026-11-06): which platform each park district's registration catalogue runs on. The five home
+  # page probes above now also capture register/catalogue hrefs; these two registration pages are named in the region configs.
+  - url: https://www.dpparks.org/how-to-register/
+    item: 456
+    purpose: Des Plaines Park District - how to register page; the registration platform and catalogue link
+    patterns:
+      - '(?i)href="[^"]*(?:activecommunities\.com|webtrac|rectrac|civicrec|myrec|amilia|register)[^"]{0,160}"'
+  - url: https://www.wheelingparkdistrict.com/registration/
+    item: 456
+    purpose: Wheeling Park District - registration page; the registration platform and catalogue link
+    patterns:
+      - '(?i)href="[^"]*(?:activecommunities\.com|webtrac|rectrac|civicrec|myrec|amilia|register)[^"]{0,160}"'

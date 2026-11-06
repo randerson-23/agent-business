@@ -1,3 +1,4 @@
+{% from "_share.html.j2" import share_button -%}
 {% from "_featured.html.j2" import featured_label -%}
 {% from "_signup.html.j2" import signup_css, signup_form, signup_runtime -%}
 <!doctype html>
@@ -367,6 +368,7 @@
     <ul style="padding-left:20px;margin:0;line-height:1.6;">{% for e in event_pages %}<li><a href="{{ e.url }}">{{ e.title }}</a>{% if e.town %} <span style="color:var(--muted);">&middot; {{ e.town }}</span>{% endif %}</li>{% endfor %}</ul>
   </section>
   {% endif %}
+  {% if slug == "this-weekend" %}{{ share_button("weekend", "What's on this weekend near us", canonical_url) }}{% endif %}
   {{ signup_form(newsletter, "newsletter-signup", "bd-email", "town:all", slug, signup_headline) }}
   {{ signup_runtime(newsletter) }}
   </main>

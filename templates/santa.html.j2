@@ -1,3 +1,4 @@
+{% from "_share.html.j2" import share_button -%}
 {% from "_signup.html.j2" import signup_css, signup_form, signup_runtime -%}
 {% macro look_meanwhile(places, hub_url) -%}
   <h2 class="events-heading">Where to look meanwhile</h2>
@@ -194,6 +195,7 @@
   <p class="note">{{ empty_message }}</p>
   {{ look_meanwhile(places, hub_url) }}
   {% endif %}
+  {{ share_button("santa", "Santa near you: breakfast with Santa and Santa visits", canonical_url) }}
   {% if reminder_tag %}
   {{ signup_form(newsletter, "newsletter-signup", "bd-email", reminder_tag, "santa", reminder_headline) }}
   {% else %}

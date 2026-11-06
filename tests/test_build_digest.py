@@ -6677,7 +6677,7 @@ def test_every_page_template_has_exactly_one_robots_meta_with_large_image_previe
     # ROADMAP.md item 411: pages that are noindex keep noindex, with the value merged into the same tag.
     import re as _re
     templates = Path(__file__).resolve().parents[1] / "templates"
-    page_templates = [p for p in templates.glob("*.html.j2") if p.name not in {"combined_email_digest.html.j2", "email_digest.html.j2", "_featured.html.j2", "_signup.html.j2"}]
+    page_templates = [p for p in templates.glob("*.html.j2") if p.name not in {"combined_email_digest.html.j2", "email_digest.html.j2", "_featured.html.j2", "_signup.html.j2", "_share.html.j2"}]
     assert len(page_templates) >= 14
     for path in page_templates:
         metas = _re.findall(r'<meta name="robots" content="([^"]*)"', path.read_text(encoding="utf-8"))
@@ -7068,3 +7068,30 @@ def test_text_a_friend_link_is_encoded_short_and_counted():
     body = unquote(url.split("body=", 1)[1])
     assert body.startswith("What's on this weekend near us: ") and "utm_source=friend&utm_campaign=reader" in body
     assert " " not in url and "&utm" not in url  # the pair is percent-encoded inside the body
+
+
+def test_committed_give_config_entries_are_sourced_and_dated():
+    # ROADMAP.md item 441: every configured drive needs a first-party source URL and an end date.
+    cfg = build_digest.load_give_config()
+    region_ids = {c["region"]["id"] for c in build_digest.load_regions()}
+    for region_id, block in (cfg.get("regions") or {}).items():
+        assert region_id in region_ids
+        for d in block.get("drives") or []:
+            assert d.get("name") and str(d.get("source_url", "")).startswith("https://") and d.get("end_date"), d
+
+
+def test_send_to_a_friend_button_is_hidden_without_js_and_carries_the_utm_pair():
+    # ROADMAP.md item 454.
+    entry = {"title": "Diwali Party", "date_iso": "2026-11-07T18:00:00", "town": "Mount Prospect", "state": "IL", "source": "S — Events", "url": "https://x.org/d", "path": "e/2026-11-07-diwali-party/", "region_url": "https://withintenmiles.com/mount-prospect-60056/"}
+    page = build_digest.render_event_page(entry)
+    assert 'id="share-event" hidden' in page and "Send to a friend" in page and "navigator.share" in page and "navigator.clipboard" in page
+    assert "utm_source=friend\\u0026utm_campaign=share" in page.split('id="share-event"')[1]  # tojson escapes & inside the script
+    now = datetime(2026, 11, 16, 15, tzinfo=timezone.utc)
+    ents = [{"name": "Palatine", "region_name": "Palatine", "region_url": "https://x/p/", "events": [], "links": [], "drives": [], "volunteer": []}]
+    assert 'id="share-give" hidden' in build_digest.render_give_page(ents, now, None, _NL)
+    assert 'id="share-santa" hidden' in build_digest.render_santa_page(ents, now, None, _NL)
+    assert 'id="share-holidays" hidden' in build_digest.render_holidays_page([dict(e, tree=None, tree_url=None) for e in ents], now)
+    hub = build_digest.render_merged_hub_page([], now, subheading="s", meta_description="d", empty_message="none")
+    assert 'id="share-weekend" hidden' in hub
+    free = build_digest.render_merged_hub_page([], now, slug="free", subheading="s", meta_description="d", empty_message="none")
+    assert "share-weekend" not in free

@@ -19511,7 +19511,7 @@ structured-data changes, and reviews the new share card.
 
 #### P1 (new)
 
-441. PARTLY DONE (2026-11-05: vah.com home page shows "Community Food Drive: November 9-18" (published Nov 5); its probe now captures the link and text so config/give.yaml can be filled from the village's own item next firing; /give/ page, config/give.yaml (empty until a 2026 source page names a drive), feed events matching drive titles, honest empty line per town, sitemap entry Nov 15-Dec 20, noindex outside; not yet: footer links in season and the "Drives closing this week" email line from Nov 19) **`/give/`: toy, coat and food drives in all five towns, live Nov 15
+441. PARTLY DONE (2026-11-06: Arlington Heights Community Food Drive Nov 9-18 is in config/give.yaml, read from the village's own page; 2026-11-05: vah.com home page shows "Community Food Drive: November 9-18" (published Nov 5); its probe now captures the link and text so config/give.yaml can be filled from the village's own item next firing; /give/ page, config/give.yaml (empty until a 2026 source page names a drive), feed events matching drive titles, honest empty line per town, sitemap entry Nov 15-Dec 20, noindex outside; not yet: footer links in season and the "Drives closing this week" email line from Nov 19) **`/give/`: toy, coat and food drives in all five towns, live Nov 15
      – Dec 20.** Build loop, using the probe pattern from
      `/trick-or-treat/` (`tot_watch.py`):
 
@@ -19862,7 +19862,7 @@ and how the site's most shareable pages can be passed on.
 
 #### P2 (new)
 
-454. **"Send to a friend" on every shareable page.** Build loop. Move
+454. ✅ DONE (templates/_share.html.j2; on /e/ pages, /this-weekend/, each town's weekend page, /santa/, /holidays/, /give/; hidden without JavaScript; utm_source=friend&utm_campaign=share) **"Send to a friend" on every shareable page.** Build loop. Move
      `/trick-or-treat/`'s `navigator.share` button and its copy-link
      fallback (item 293) into a shared partial. Use it on:
 
@@ -19918,7 +19918,7 @@ access.
 
 #### P1 (new)
 
-456. **Find each park district's registration catalogue, then read it
+456. (step 1 queued: round-34 probes and register-href patterns on the five park-district home pages; read the answers next firing) **Find each park district's registration catalogue, then read it
      for Santa, camps and registration days.** Build loop, probe first:
 
      1. Add a `config/url_probes.yaml` round for the five park
