@@ -14,4 +14,12 @@
 #         drop_off: "Station 81 lobby, 9 a.m. - 5 p.m. weekdays"
 #         end_date: 2026-12-15
 #         source_url: "https://example.org/the-2026-page"
-regions: {}
+regions:
+  arlington-heights-60005:
+    drives:
+      # Read 2026-11-06 from the village's own news item (published Nov 5): drop-off sites and dates as stated there.
+      - name: "Community Food Drive"
+        organiser: "Village of Arlington Heights"
+        drop_off: "Village Hall (33 S. Arlington Heights Rd.), Public Works (222 N. Ridge Ave.), Senior Center (1801 W. Central Rd.)"
+        end_date: 2026-11-18
+        source_url: "https://www.vah.com/news_detail_T13_R609.php"

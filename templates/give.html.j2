@@ -1,3 +1,4 @@
+{% from "_share.html.j2" import share_button -%}
 {% from "_signup.html.j2" import signup_css, signup_form, signup_runtime -%}
 {% macro towns_block() -%}
   {% for t in towns %}
@@ -226,6 +227,7 @@
     {% endfor %}
   </ul>
   {% endif %}
+  {{ share_button("give", "Drives and volunteering near us", canonical_url) }}
   {{ signup_form(newsletter, "newsletter-signup", "bd-email", "town:all", "give", "Get the weekend's events by email on Thursday.") }}
   {{ signup_runtime(newsletter) }}
   <p class="note"><a href="{{ hub_url }}holidays/">Tree lightings &amp; other holiday events &rarr;</a> &middot; <a href="{{ hub_url }}santa/">Santa near you &rarr;</a></p>

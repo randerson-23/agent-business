@@ -1,3 +1,4 @@
+{% from "_share.html.j2" import share_button -%}
 {% from "_signup.html.j2" import signup_css, signup_form, signup_runtime -%}
 {# ROADMAP.md item 274: cross-town tree lightings and holiday events. A confirmed date is built from the region config's ISO `date` (weekday computed), and anything not posted for this year stays honestly "not yet posted". Same self-contained shape as trick_or_treat.html.j2. #}
 <!doctype html>
@@ -205,6 +206,7 @@
     <br><a href="{{ listing_offer.url }}">Get listed, {{ listing_offer.price }} &rarr;</a>
   </div>
   {% endif %}
+  {{ share_button("holidays", "Holiday tree lightings and events near us", canonical_url) }}
   {{ signup_form(newsletter, "newsletter-signup", "bd-email", "town:all", "holidays", "Get the weekend's events by email on Thursday.") }}
   {{ signup_runtime(newsletter) }}
   </main>

@@ -1,0 +1,19 @@
+{# ROADMAP.md item 454: "Send to a friend". Hidden until JavaScript runs (navigator.share, else copy the link). The shared URL carries utm_source=friend&utm_campaign=share. #}
+{% macro share_button(uid, text, url) -%}
+{% set shared_url = url ~ ('&' if '?' in url else '?') ~ 'utm_source=friend&utm_campaign=share' -%}
+<p class="share-friend" id="share-{{ uid }}" hidden><button type="button" style="font:inherit;font-weight:700;padding:8px 14px;border:2px solid currentColor;background:transparent;color:inherit;cursor:pointer">Send to a friend</button> <span class="share-note" hidden>Link copied</span></p>
+<script>
+(function () {
+  var box = document.getElementById({{ ('share-' ~ uid)|tojson }});
+  if (!box) return;
+  var btn = box.querySelector("button"), note = box.querySelector(".share-note");
+  var data = { title: {{ text|tojson }}, text: {{ text|tojson }}, url: {{ shared_url|tojson }} };
+  box.hidden = false;
+  btn.addEventListener("click", function () {
+    if (navigator.share) { navigator.share(data).catch(function () {}); return; }
+    if (navigator.clipboard) navigator.clipboard.writeText(data.url).then(function () { note.hidden = false; });
+    else { note.textContent = data.url; note.hidden = false; }
+  });
+})();
+</script>
+{%- endmacro %}
