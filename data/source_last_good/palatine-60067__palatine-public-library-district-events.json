@@ -1,5 +1,5 @@
 {
- "fetched_at": "2026-11-05T14:01:22+00:00",
+ "fetched_at": "2026-11-06T14:25:15+00:00",
  "items": [
   {
    "date": null,
@@ -52,12 +52,6 @@
   {
    "date": null,
    "detail": "",
-   "title": "Citizenship Class",
-   "url": "https://www.palatinelibrary.org/event/citizenship-class-225563"
-  },
-  {
-   "date": null,
-   "detail": "",
    "title": "Friday Morning Book Group",
    "url": "https://www.palatinelibrary.org/event/friday-morning-book-group-48"
   },
@@ -78,6 +72,12 @@
    "detail": "",
    "title": "Toddler Storytime",
    "url": "https://www.palatinelibrary.org/event/toddler-storytime-231944"
+  },
+  {
+   "date": null,
+   "detail": "",
+   "title": "Preschool Storytime",
+   "url": "https://www.palatinelibrary.org/event/preschool-storytime-227050"
   }
  ],
  "source": "Palatine Public Library District — Events"
