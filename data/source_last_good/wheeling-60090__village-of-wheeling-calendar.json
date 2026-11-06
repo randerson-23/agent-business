@@ -1,12 +1,6 @@
 {
- "fetched_at": "2026-11-05T22:05:06+00:00",
+ "fetched_at": "2026-11-06T06:02:02+00:00",
  "items": [
-  {
-   "date": "20261105T190000",
-   "detail": "https://www.wheelingil.gov/calendar.aspx?EID=2052",
-   "title": "Peer Jury - Notice of Cancellation",
-   "url": "https://www.wheelingil.gov/common/modules/iCalendar/iCalendar.aspx?feed=calendar&catID=14"
-  },
   {
    "date": "20261110T130000",
    "detail": "https://www.wheelingil.gov/calendar.aspx?EID=2236",
@@ -359,6 +353,12 @@
    "date": "20270816T183000",
    "detail": "https://www.wheelingil.gov/calendar.aspx?EID=2169",
    "title": "Village Board Regular Meeting",
+   "url": "https://www.wheelingil.gov/common/modules/iCalendar/iCalendar.aspx?feed=calendar&catID=14"
+  },
+  {
+   "date": "20270816T183000",
+   "detail": "https://www.wheelingil.gov/calendar.aspx?EID=2221",
+   "title": "Village Board Meeting",
    "url": "https://www.wheelingil.gov/common/modules/iCalendar/iCalendar.aspx?feed=calendar&catID=14"
   }
  ],
