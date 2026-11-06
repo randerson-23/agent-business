@@ -1,0 +1,15 @@
+# ROADMAP.md item 458: holiday events just outside the five towns (within about ten miles), shown only in a separate,
+# labelled "Just outside our towns" section on /santa/. Never mixed into the five towns' lists or the email.
+#
+# Add an entry ONLY from the neighbouring town's or park district's own 2026 page, with that page in `source_url`.
+# Needs: town, title, date (YYYY-MM-DD), source_url. Optional: time (text as the page states it), venue.
+# Past events disappear the day after their date. Never carry a past year's event forward.
+#
+# events:
+#   - town: "Skokie"
+#     title: "Breakfast with Santa"
+#     date: 2026-12-12
+#     time: "9:30 - 11:30 a.m."
+#     venue: "Oakton Community Center"
+#     source_url: "https://www.skokieparks.org/events/breakfast-with-santa/26/"
+events: []

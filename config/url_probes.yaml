@@ -231,3 +231,28 @@ probes:
     purpose: Wheeling Park District - registration page; the registration platform and catalogue link
     patterns:
       - '(?i)href="[^"]*(?:activecommunities\.com|webtrac|rectrac|civicrec|myrec|amilia|register)[^"]{0,160}"'
+  # Round 35 (item 456, 2026-11-06): platforms found by round 34 - Arlington Heights Park District runs ActiveNet
+  # (anc.apm.activecommunities.com/ahpd, a JavaScript app), Des Plaines Park District runs WebTrac
+  # (register.desplainesparks.org/webtrac), Wheeling is bot-walled, Mount Prospect and Palatine showed no register link on
+  # their home pages. WebTrac's keyword search is a plain GET: read it for Santa events.
+  - url: https://register.desplainesparks.org/webtrac/web/search.html?Action=Start&keyword=santa&keywordoption=Match+One&search=yes
+    item: 456
+    purpose: Des Plaines Park District WebTrac - keyword search for Santa programmes (names, dates, registration links)
+    patterns:
+      - '(?is)santa.{0,300}'
+      - '(?i)(?:Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)[a-z]*\.? \d{1,2}[^<]{0,80}'
+      - '(?i)no (?:results|matches|activities)[^<]{0,80}'
+  # Round 36 (item 458, 2026-11-06): neighbouring park districts' own Santa pages (found by search): read the 2026 date,
+  # time and place before anything goes in config/just_outside.yaml.
+  - url: https://www.skokieparks.org/events/breakfast-with-santa/26/
+    item: 458
+    purpose: Skokie Park District - Breakfast with Santa 2026 page (date, time, place, registration)
+    patterns:
+      - '(?is)Breakfast with Santa.{0,900}'
+      - '(?i)(?:Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)[a-z]*\.? \d{1,2},? 20\d\d[^<]{0,80}'
+  - url: https://niles-parks.org/calendar-list/event/7-breakfast-with-santa
+    item: 458
+    purpose: Niles Park District - Breakfast with Santa page (is there a 2026 date?)
+    patterns:
+      - '(?is)Breakfast with Santa.{0,900}'
+      - '(?i)(?:Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)[a-z]*\.? \d{1,2},? 20\d\d[^<]{0,80}'

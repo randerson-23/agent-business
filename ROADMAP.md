@@ -19918,7 +19918,7 @@ access.
 
 #### P1 (new)
 
-456. (step 1 queued: round-34 probes and register-href patterns on the five park-district home pages; read the answers next firing) **Find each park district's registration catalogue, then read it
+456. (step 1 answered 2026-11-06: Arlington Heights Park District runs ActiveNet (anc.apm.activecommunities.com/ahpd, a JavaScript app, no plain-GET search); Des Plaines runs WebTrac (register.desplainesparks.org/webtrac; keyword-search probe queued, round 35); Wheeling bot-walled (403); Mount Prospect and Palatine showed no register link on their home pages; no fetcher built yet) **Find each park district's registration catalogue, then read it
      for Santa, camps and registration days.** Build loop, probe first:
 
      1. Add a `config/url_probes.yaml` round for the five park
@@ -19968,7 +19968,7 @@ access.
      `checked:` date, the email line appears only in season and only with
      a dated entry, and an expired free day is dropped.
 
-458. **"Just outside the five towns" on `/santa/` and `/holidays/`:
+458. (section built: `config/just_outside.yaml` renders "Just outside our towns (within ten miles)" on /santa/, empty until a first-party 2026 page is read; round-36 probes of the Skokie and Niles Santa pages queued; /holidays/ not yet) **"Just outside the five towns" on `/santa/` and `/holidays/`:
      Skokie, Niles, Elk Grove.** Build loop:
 
      - A probe round for the **Skokie, Niles and Elk Grove park
