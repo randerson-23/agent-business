@@ -22,3 +22,9 @@ goatcounter_code: "withinten"  # set by the owner 2026-10-09 (item 227): https:/
 # Then add https://withintenmiles.com/pins.xml under Auto-publish and pick a
 # board per town.
 pinterest_domain_verify: null
+
+# Bing Webmaster Tools XML-file verification (ROADMAP.md item 451). If the Bing property was
+# added by importing from Google Search Console and IndexNow is still refused by Bing, verify the
+# site again with Bing's "XML file" option and paste the code from BingSiteAuth.xml here (the
+# text inside <user>...</user>). Set, the build serves /BingSiteAuth.xml. Unset, nothing is written.
+bing_site_auth: null

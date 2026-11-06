@@ -379,7 +379,14 @@ def load_analytics_config(analytics_cfg: dict) -> dict:
         # ROADMAP.md item 253: Pinterest's site-claim token, rendered as a
         # <meta> on the home page only when the owner sets it.
         "pinterest_domain_verify": (analytics_cfg.get("pinterest_domain_verify") or "").strip(),
+        # ROADMAP.md item 451: Bing Webmaster's XML-file verification code.
+        "bing_site_auth": re.sub(r"[^A-Za-z0-9]", "", str(analytics_cfg.get("bing_site_auth") or "")),
     }
+
+
+def bing_site_auth_xml(code: str) -> str | None:
+    """ROADMAP.md item 451: the body of BingSiteAuth.xml, or None when no code is set."""
+    return f'<?xml version="1.0"?><users><user>{code}</user></users>' if code else None
 
 
 def load_maps_config(maps_cfg: dict) -> dict:
@@ -5702,6 +5709,7 @@ def render_email_digest(
     attendable_events = [e for e in weekend_events if e.get("attendable", True)]
     informational_events = [e for e in weekend_events if not e.get("attendable", True)]
     return template.render(
+        text_friend_url=text_friend_url(),
         region=region,
         weekend_events=prepare_email_events(attendable_events, limit=6),
         informational_events=informational_events,
@@ -6411,6 +6419,7 @@ def render_combined_email_digest(sections: list[dict], weekend_date_range: str, 
         weather_line=weather_line["text"] if weather_line else None,
         days_off_line=days_off_line,
         closures_line=closures_line,
+        text_friend_url=text_friend_url(),
         night_out=night_out,
         election_line=election_day_line(now, email=True),
         rain_plan=rain_plan,
@@ -6740,6 +6749,13 @@ def build_closures(blocks: list[dict], local_today: date, removed: list[dict] | 
             found.append({"title": e["title"].strip(), "url": e["url"], "date": day, "label": day.strftime("%a %b ") + str(day.day)})
     found.sort(key=lambda c: c["date"])
     return found[:CLOSURE_MAX_ITEMS]
+
+
+def text_friend_url() -> str:
+    """ROADMAP.md item 455: an sms: link whose body is one line and the weekend
+    page with the friend/reader UTM pair. Clients that ignore sms: do nothing."""
+    body = f"What's on this weekend near us: {SITE_BASE_URL}this-weekend/?utm_source=friend&utm_campaign=reader"
+    return "sms:?&body=" + quote(body, safe="")
 
 
 def build_closures_email_line(sections: list[dict], now: datetime) -> dict | None:
@@ -8201,6 +8217,11 @@ def main() -> None:
     )
     (OUTPUT_DIR / "llms-full.txt").write_text(build_llms_full_txt(llms_full_groups, weekend_date_range), encoding="utf-8")
     (OUTPUT_DIR / "CNAME").write_text(CUSTOM_DOMAIN + "\n", encoding="utf-8")
+    bing_auth = bing_site_auth_xml(analytics.get("bing_site_auth") or "")
+    if bing_auth:
+        (OUTPUT_DIR / "BingSiteAuth.xml").write_text(bing_auth, encoding="utf-8")
+    else:
+        (OUTPUT_DIR / "BingSiteAuth.xml").unlink(missing_ok=True)
     indexnow_state = load_indexnow_key_state()
     indexnow_key = active_indexnow_key(indexnow_state)
     (OUTPUT_DIR / f"{INDEXNOW_KEY}.txt").write_text(INDEXNOW_KEY, encoding="utf-8")

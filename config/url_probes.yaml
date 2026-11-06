@@ -205,3 +205,12 @@ probes:
       - '(?i)(?:drop[- ]?(?:box|off)|locations?)[^<]{0,120}'
       - '(?i)(?:Palatine|Arlington Heights|Mount Prospect|Des Plaines|Wheeling)[^<]{0,100}'
     follow: '(?i)drop|locations?'
+  # Round 33 (item 441, 2026-11-06): the village's own Community Food Drive news item (link read from its home page
+  # on Nov 5): organiser, drop-off places, last day.
+  - url: https://www.vah.com/news_detail_T13_R609.php
+    item: 441
+    purpose: Village of Arlington Heights - Community Food Drive Nov 9-18 news item (organiser, drop-off sites, last day)
+    patterns:
+      - '(?is)Community Food Drive.{0,1500}'
+      - '(?i)(?:drop[- ]?off|collection|donat)[^<]{0,200}'
+      - '(?i)(?:Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)[a-z]*\.? \d{1,2}(?:st|nd|rd|th)?[^<]{0,100}'
