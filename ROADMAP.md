@@ -220,6 +220,7 @@ doesn't re-suggest something already shipped.
 
 **Build queue (by deadline; refreshed by the research loop, item 346).**
 Pick from the top unless the owner has flagged something else:
+0. **456** (find each park district's registration catalogue and read it for Santa, camps and registration days; the only route to `/santa/` by Nov 15), then **458** (Skokie, Niles, Elk Grove holiday events in a labelled "just outside" section).
 0. **451** (BingSiteAuth.xml from `bing_site_auth:`; ready now that Yandex and Seznam accept and only Bing refuses), then **454, 455** (share button on every shareable page; text-a-friend link in the email).
 0. **450** (IndexNow to Yandex and Seznam directly when Bing refuses; no owner time), then **452** (founding-offer button near the top of `/sponsor/`). **451** waits on 450's log.
 0. **444, 445** (closures out of every list and the Event markup, all year; older-adult sessions out of the family lists; small, before the Thursday send if possible).
@@ -19845,7 +19846,7 @@ and how the site's most shareable pages can be passed on.
 
 #### P1 (new)
 
-453. **Rewrite step 1 of the whole ask with the evidence, and make item
+453. ✅ DONE (pass 125 rewrote step 1 in the Needs Ryan block; item 451 shipped 2026-11-05) **Rewrite step 1 of the whole ask with the evidence, and make item
      451 ready.** Done in this pass in the Needs Ryan block. It adds about 2
      minutes inside step 1's existing visit, not a new step, so item
      400's cap holds. Step 1 now names the two Bing actions
@@ -19897,6 +19898,106 @@ FAQ, Bing's 2022 announcement, Search Engine Land) and **`sms:`
 text-a-friend links** as a referral mechanic. The design/UX angle is
 **the `/e/` event page on a phone**: good, but there's no way to send it
 to anyone.
+
+#### Research pass 2026-11-06 (hundred-and-twenty-sixth pass)
+
+Yesterday the build loop shipped items 451 (`BingSiteAuth.xml`) and 455
+(text-a-friend in the emails). The IndexNow log now shows **Yandex and
+Seznam at 200 on all three builds since**, with Bing still at 403. Item
+453 was done in pass 125 and is marked here. This pass reads
+`/santa/` nine days before its Nov 15 target and finds one listing. It
+then looks at where Santa breakfasts are actually published, and at an
+evergreen family question the site has never answered: free museum
+access.
+
+| Angle | What it is / what we found | Why it matters here |
+|---|---|---|
+| **`/santa/` at 390 px, nine days before its target (design/UX)** | The page has **one listing**: Mount Prospect's *"Family Photos with Santa"*, Sat Dec 5. Everything below it is "Where to look meanwhile": agency names, tree-lighting dates, and *"date TBA"* for Mount Prospect and Wheeling. Item 428's target is **every park-district Santa event in the five towns by Nov 15** | Searches for "breakfast with Santa near me" run now, and the 2026 events sell out early. A page with one listing tells the searcher the site doesn't know, and it's the page item 454 will soon put a share button on |
+| **Where Santa breakfasts are published** (2026 pages from Gurnee, Batavia, Skokie and Palos Park park districts; mykidlist; Niles' calendar; Elk Grove's event pages) | Neighbouring districts already have **2026 Breakfast with Santa pages**: **Skokie, Dec 12** at Oakton Community Center; **Gurnee, Dec 5**, three sessions, "save your spot"; **Palos Park, Dec 12** on active.com. **Niles** and **Elk Grove** run one every December. The five towns' Santa breakfasts, like their camps, are **registration programmes**: they live in each park district's **online registration catalogue**, not the event calendar the site reads. The registration platform each district uses isn't confirmed (ActiveNet, WebTrac, RecTrac and CivicRec are common) | This is the same gap behind the blank winter-break pages (item 438) and the missing registration days (item 328). The site reads calendars, and families want the programmes. Finding each district's catalogue unlocks all three. And **Skokie and Niles are within ten miles** of Des Plaines and Mount Prospect, so their Santa events belong on the page by the site's own name (items 456, 458) |
+| **Free museum access: library passes and Illinois-resident free days** (AHML's *Museum & Attraction Passes* and *Museum Adventure Pass* pages; MPPL's *Explore More Illinois*; Prospect Heights library's passes; Choose Chicago, do312 and Chicago on the Cheap free-day guides; The Field Museum's 2026 Illinois-resident offer as reported) | **AHML** and **MPPL** both offer **Explore More Illinois**: free or discounted tickets reserved online with a library card (18+, three active reservations, AHML seven-day loans), and AHML also runs Museum Adventure Passes. AHML's own pages **disagree** about whether big Chicago museums are included. Free days: The Field Museum is reported as **free for Illinois residents every Wednesday in 2026**. The Shedd and MSI December dates aren't published yet. **Nothing local ties the two together** | "Free museum passes [town] library" is a local, evergreen question with almost no competition, and the answer is a card the reader already has. It carries the site through January and February, when weekend lists are thin. It must be sourced from each library's page, with no claims the library's own pages contradict (item 457) |
+
+#### P1 (new)
+
+456. **Find each park district's registration catalogue, then read it
+     for Santa, camps and registration days.** Build loop, probe first:
+
+     1. Add a `config/url_probes.yaml` round for the five park
+        districts' **homepage "Register" links**: patterns for
+        `activecommunities.com`, `webtrac`, `rectrac`, `civicrec`,
+        `myrec`, `amilia` and `register` hrefs. Record each district's
+        platform and catalogue URL.
+     2. For each platform with a public search, add a small fetcher that
+        queries the catalogue by keyword (*Santa*, *breakfast*, *camp*,
+        *winter break*, *Noon Year*). Map the results to events carrying
+        the registration link, dates and the district's name, tagged
+        `registration`. Fetch read-only, honour robots and bot walls, and
+        cap the requests per build.
+     3. Feed the matches into `/santa/` (item 379),
+        `/<town>/winter-break/` (item 438) and the registration-days
+        line (item 328).
+
+     If a catalogue is bot-walled (Wheeling and River Trails already
+     are), say so and use its catalogue link only. Target: `/santa/`
+     lists the five towns' Santa breakfasts **by Nov 15** (item 428's
+     date). Tests: a fixture catalogue response becomes events with the
+     registration link, the keyword filter keeps *"Breakfast with
+     Santa"* and drops *"Santa Fe Trail Hike"*, and the request cap holds.
+
+#### P2 (new)
+
+457. **`/museum-passes/`: free museum access with your library card.**
+     Build loop, a new evergreen page:
+
+     - **One card per town's library**: the programme names (Explore More
+       Illinois, Museum Adventure Pass), how to reserve, the age and
+       reservation limits, and a link to the library's own pass page.
+       Each fact comes from that library's page in
+       `config/museum_passes.yaml`, with its source URL and a
+       `checked:` date. Where a library's pages disagree (AHML on which
+       Chicago museums are included), say *"check the library's current
+       list"* rather than pick one.
+     - **"Free for Illinois residents this month"**: dated lines only
+       from each museum's official page, added by hand to the same YAML
+       through the probe workflow. Never from roundups.
+     - Add a sitemap entry, a footer link, and one email line,
+       *"🏛️ Free this week for Illinois residents"*, from **Dec 1 to Feb
+       28**, when there's a dated entry.
+
+     Title: *"Free Museum Passes with Your Library Card: Arlington
+     Heights, Mount Prospect…"*. Tests: each card has a source and
+     `checked:` date, the email line appears only in season and only with
+     a dated entry, and an expired free day is dropped.
+
+458. **"Just outside the five towns" on `/santa/` and `/holidays/`:
+     Skokie, Niles, Elk Grove.** Build loop:
+
+     - A probe round for the **Skokie, Niles and Elk Grove park
+       districts'** event pages, looking for a readable feed
+       (`?ical=1`, `/feed/`, JSON-LD `Event`). Elk Grove's park district
+       is bot-walled per item 416, so it gets a link only.
+     - Read their feeds **only for the holiday keyword set**
+       (items 283, 379, 428), shown in a separate, labelled section,
+       ***"Just outside our towns (within ten miles)"***, with the town
+       name on each card.
+     - Never mixed into the five towns' lists or the email's town
+       sections.
+
+     It's the site's name taken literally, and it fills the page in the
+     weeks when the five towns haven't posted yet. Tests: a Skokie Santa
+     event lands in the outside section only, and a non-holiday Skokie
+     event is not shown anywhere.
+
+Re-rank: **456 goes to the top of the build queue**, next to 427/428.
+It is the only route to item 428's Nov 15 target, and it also unblocks
+438 and 328. **458** follows (a probe round plus a filtered section).
+**457** sits after 446: it needs its YAML filled before Dec 1.
+
+Competitors reviewed this pass: **neighbouring park districts' 2026
+Santa pages** (Skokie, Gurnee, Batavia, Palos Park, Niles, Elk Grove)
+and **library museum-pass programmes and Chicago free-day guides** (AHML,
+MPPL, Prospect Heights library; Choose Chicago, do312, Chicago on the
+Cheap). The design/UX angle is **`/santa/` on a phone**: one listing,
+nine days out.
 
 
 ## Working agreements for autonomous iteration
