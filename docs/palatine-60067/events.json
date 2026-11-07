@@ -2,8 +2,8 @@
   "@context": "https://schema.org",
   "@type": "ItemList",
   "name": "Upcoming events in Palatine — Within Ten",
-  "dateModified": "2026-11-07T21:59:54+00:00",
-  "numberOfItems": 16,
+  "dateModified": "2026-11-07T22:07:37+00:00",
+  "numberOfItems": 15,
   "itemListElement": [
     {
       "@type": "ListItem",
@@ -70,36 +70,6 @@
       "position": 3,
       "item": {
         "@type": "Event",
-        "name": "Palatine High School Pirates Boosters Fall Craft Fair",
-        "startDate": "2026-11-07T09:00:00-06:00",
-        "url": "https://withintenmiles.com/palatine-60067/#ev-palatine-high-school-pirates-boosters-fall-craft-fair-2026-11-07",
-        "eventStatus": "https://schema.org/EventScheduled",
-        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "location": {
-          "@type": "Place",
-          "name": "Palatine, IL",
-          "address": {
-            "@type": "PostalAddress",
-            "addressCountry": "US",
-            "addressLocality": "Palatine",
-            "addressRegion": "IL"
-          }
-        },
-        "sameAs": "https://www.palatine.il.us/common/modules/iCalendar/iCalendar.aspx?feed=calendar&catID=14",
-        "organizer": {
-          "@type": "Organization",
-          "name": "Village of Palatine",
-          "url": "https://www.palatine.il.us"
-        },
-        "image": "https://withintenmiles.com/og/palatine-60067.png",
-        "description": "The Pirates Boosters Craft Fair is well known as having a large"
-      }
-    },
-    {
-      "@type": "ListItem",
-      "position": 4,
-      "item": {
-        "@type": "Event",
         "name": "Palatine Concert Band - 2026 Fall Concert \"American Originals\"",
         "startDate": "2026-11-08T15:30:00-06:00",
         "url": "https://withintenmiles.com/palatine-60067/#ev-palatine-concert-band-2026-fall-concert-american-originals-2026-11-08",
@@ -127,7 +97,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 5,
+      "position": 4,
       "item": {
         "@type": "Event",
         "name": "D15 Job Fair",
@@ -151,7 +121,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 6,
+      "position": 5,
       "item": {
         "@type": "Event",
         "name": "The Fifth Element",
@@ -182,7 +152,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 7,
+      "position": 6,
       "item": {
         "@type": "Event",
         "name": "Regular Board of Education Meeting",
@@ -206,7 +176,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 8,
+      "position": 7,
       "item": {
         "@type": "Event",
         "name": "BPAC Workshop & Conference: Ferney Ramírez",
@@ -230,7 +200,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 9,
+      "position": 8,
       "item": {
         "@type": "Event",
         "name": "\"Guys and Dolls SR\"",
@@ -260,7 +230,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 10,
+      "position": 9,
       "item": {
         "@type": "Event",
         "name": "A Doll's House by Henrik Ibsen Adapted by Amy Herzog",
@@ -290,7 +260,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 11,
+      "position": 10,
       "item": {
         "@type": "Event",
         "name": "Palatine Winter Farmers' Market",
@@ -320,7 +290,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 12,
+      "position": 11,
       "item": {
         "@type": "Event",
         "name": "\"Guys and Dolls SR\"",
@@ -350,7 +320,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 13,
+      "position": 12,
       "item": {
         "@type": "Event",
         "name": "A Doll's House by Henrik Ibsen Adapted by Amy Herzog",
@@ -380,7 +350,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 14,
+      "position": 13,
       "item": {
         "@type": "Event",
         "name": "A Doll's House by Henrik Ibsen Adapted by Amy Herzog",
@@ -410,7 +380,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 15,
+      "position": 14,
       "item": {
         "@type": "Event",
         "name": "\"Guys and Dolls SR\"",
@@ -440,7 +410,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 16,
+      "position": 15,
       "item": {
         "@type": "Event",
         "name": "A Doll's House by Henrik Ibsen Adapted by Amy Herzog",
