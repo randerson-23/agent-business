@@ -7216,3 +7216,12 @@ def test_time_range_parser_handles_the_shapes_the_configs_use():
     assert build_digest.parse_time_range("11 a.m. - 3 p.m.") == (t(11, 0), t(15, 0))
     assert build_digest.parse_time_range("7 p.m.") == (t(19, 0), None)
     assert build_digest.parse_time_range("all day") is None
+
+
+def test_rotary_santa_run_is_sourced_and_reaches_the_santa_selection():
+    # ROADMAP.md item 466.
+    cfg = next(c for c in build_digest.load_regions() if c["region"]["id"] == "arlington-heights-60005")
+    entry = next(a for a in cfg["annual_events"] if "Santa Run" in a["title"])
+    assert entry["url"].startswith("https://runsignup.com/") and "Reindeer Dash for kids 10 and under" in entry["detail"]
+    blocks = [{"section": "Events", "events": [{"title": entry["title"], "url": entry["url"], "date_iso": entry["date"], "attendable": True}]}]
+    assert [e["title"] for e in build_digest.select_santa_events(blocks, date(2026, 11, 8))] == ["Rotary Santa Run Walk & Reindeer Dash"]
