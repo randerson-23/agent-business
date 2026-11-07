@@ -3,6 +3,8 @@ from pathlib import Path
 from unittest.mock import Mock, patch
 
 import pytest
+import json
+from datetime import date
 import requests
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "scripts"))
@@ -1128,3 +1130,66 @@ def test_fetch_ics_keeps_the_source_end_time(mock_get):
     mock_get.return_value = _mock_response(ics)
     items = fetch_ics("https://example.org/cal.ics")
     assert items[0]["end_date"] == "20991107T160000"
+
+
+def _json_response(payload, url="https://www.ahpd.org/"):
+    resp = _mock_response(json.dumps(payload), url=url)
+    resp.json = Mock(return_value=payload)
+    return resp
+
+
+@patch("fetchers.requests.get")
+def test_tribe_events_reads_the_rest_route_by_date_range_and_follows_pages(mock_get):
+    # ROADMAP.md item 465.
+    from fetchers import fetch_tribe_events
+    page1 = {"events": [
+        {"title": "Frostival &amp; Cocoa", "start_date": "2026-12-12 10:00:00", "end_date": "2026-12-12 12:30:00", "all_day": False, "url": "https://www.ahpd.org/event/frostival/", "description": "<p>Visit with <b>Santa</b></p>"},
+    ], "next_rest_url": "https://www.ahpd.org/wp-json/tribe/events/v1/events?page=2"}
+    page2 = {"events": [
+        {"title": "Winter Break Camp", "start_date": "2026-12-21 00:00:00", "end_date": "2026-12-23 23:59:59", "all_day": True, "url": "https://www.ahpd.org/event/camp/"},
+    ]}
+    mock_get.side_effect = [_json_response(page1), _json_response(page2)]
+    items = fetch_tribe_events("webcal://www.ahpd.org/events/?post_type=tribe_events&ical=1&eventDisplay=list", today=date(2026, 11, 7))
+    first_url = mock_get.call_args_list[0].args[0]
+    assert first_url.startswith("https://www.ahpd.org/wp-json/tribe/events/v1/events?start_date=2026-11-07&end_date=2027-01-21")
+    assert items[0] == {"title": "Frostival & Cocoa", "detail": "Visit with Santa", "url": "https://www.ahpd.org/event/frostival/", "date": "20261212T100000", "end_date": "20261212T123000"}
+    assert items[1]["date"] == "20261221" and items[1]["end_date"] == "20261224"  # all day, exclusive end
+
+
+@patch("fetchers.requests.get")
+def test_tribe_events_caps_pages_and_ignores_off_site_next_links(mock_get):
+    from fetchers import TRIBE_PAGE_CAP, fetch_tribe_events
+    page = {"events": [{"title": "E", "start_date": "2026-11-20 10:00:00", "all_day": False, "url": "u"}], "next_rest_url": "https://www.ahpd.org/wp-json/tribe/events/v1/events?page=n"}
+    mock_get.side_effect = lambda *a, **k: _json_response(page)
+    fetch_tribe_events("https://www.ahpd.org/events/?ical=1", today=date(2026, 11, 7))
+    assert mock_get.call_count == TRIBE_PAGE_CAP
+    mock_get.reset_mock()
+    mock_get.side_effect = [_json_response(dict(page, next_rest_url="https://evil.example/x"))]
+    assert len(fetch_tribe_events("https://www.ahpd.org/events/?ical=1", today=date(2026, 11, 7))) == 1 and mock_get.call_count == 1
+
+
+@patch("fetchers.requests.get")
+def test_tribe_events_falls_back_to_month_exports_then_the_old_export(mock_get):
+    from fetchers import fetch_tribe_events
+    month_ics = "BEGIN:VCALENDAR\nBEGIN:VEVENT\nSUMMARY:{t}\nDTSTART:{d}\nEND:VEVENT\nEND:VCALENDAR\n"
+    calls = []
+
+    def fake(url, **kw):
+        calls.append(url)
+        if "wp-json" in url:
+            raise requests.HTTPError("403")
+        if "tribe-bar-date=2099-11" in url:
+            return _mock_response(month_ics.format(t="Nov Show", d="20991120T190000"))
+        if "tribe-bar-date=2099-12" in url:
+            return _mock_response(month_ics.format(t="Dec Show", d="20991212T190000"))
+        if "tribe-bar-date" in url:
+            return _mock_response("BEGIN:VCALENDAR\nEND:VCALENDAR\n")
+        return _mock_response(month_ics.format(t="Old export", d="20991101T100000"))
+
+    mock_get.side_effect = fake
+    items = fetch_tribe_events("https://desplainestheatre.com/events/?ical=1", today=date(2099, 11, 7))
+    assert [i["title"] for i in items] == ["Nov Show", "Dec Show"]
+    assert any("tribe-bar-date=2100-01" in c for c in calls)  # three months, across the year end
+    calls.clear()
+    mock_get.side_effect = lambda url, **kw: (_ for _ in ()).throw(requests.HTTPError("403")) if ("wp-json" in url or "tribe-bar-date" in url) else _mock_response(month_ics.format(t="Old export", d="20991101T100000"))
+    assert [i["title"] for i in fetch_tribe_events("https://desplainestheatre.com/events/?ical=1", today=date(2099, 11, 7))] == ["Old export"]

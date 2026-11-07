@@ -23,9 +23,9 @@ import logging
 import re
 import time
 import xml.etree.ElementTree as ET
-from datetime import datetime, timezone
+from datetime import date, datetime, timedelta, timezone
 from html.parser import HTMLParser
-from urllib.parse import urljoin
+from urllib.parse import urljoin, urlsplit
 
 import requests
 
@@ -446,6 +446,98 @@ def fetch_ics(
         _record_failure(exc, failure_info)
         return None
 
+
+
+# ROADMAP.md item 465: The Events Calendar (WordPress "tribe_events") sources.
+# The list-view iCal export only carries the list's first page, so a park
+# district's December was invisible. Read the plugin's REST route by date
+# range instead, then the month iCal exports, then the old export.
+TRIBE_WINDOW_DAYS = 75
+TRIBE_PAGE_CAP = 6
+TRIBE_MONTHS = 3
+_TAGS = re.compile(r"<[^>]+>")
+
+
+def _tribe_base(url: str) -> str:
+    parts = urlsplit(url.replace("webcal://", "https://", 1))
+    return f"https://{parts.netloc}"
+
+
+def _tribe_text(value) -> str:
+    return re.sub(r"\s+", " ", html.unescape(_TAGS.sub(" ", str(value or "")))).strip()
+
+
+def _tribe_stamp(value: str, all_day: bool) -> str | None:
+    """"2026-12-12 10:00:00" -> "20261212T100000" (or "20261212" all day),
+    the iCal shapes the rest of the pipeline already parses."""
+    try:
+        dt = datetime.strptime(str(value)[:19], "%Y-%m-%d %H:%M:%S")
+    except ValueError:
+        return None
+    return dt.strftime("%Y%m%d") if all_day else dt.strftime("%Y%m%dT%H%M%S")
+
+
+def _tribe_rest(base: str, today: date, limit: int) -> list[dict] | None:
+    end = today + timedelta(days=TRIBE_WINDOW_DAYS)
+    url = f"{base}/wp-json/tribe/events/v1/events?start_date={today.isoformat()}&end_date={end.isoformat()}&per_page=50"
+    items: list[dict] = []
+    for _page in range(TRIBE_PAGE_CAP):
+        resp = _get(url)
+        data = resp.json()
+        if not isinstance(data, dict) or not isinstance(data.get("events"), list):
+            return None if not items else items
+        for ev in data["events"]:
+            all_day = bool(ev.get("all_day"))
+            start = _tribe_stamp(ev.get("start_date"), all_day)
+            if not (ev.get("title") and start):
+                continue
+            item = {"title": _tribe_text(ev["title"]), "detail": _tribe_text(ev.get("description") or ev.get("excerpt")), "url": str(ev.get("url") or ""), "date": start}
+            finish = _tribe_stamp(ev.get("end_date"), False)
+            if finish:
+                if all_day:  # the plugin's end is the last day's 23:59:59; the iCal form is exclusive
+                    finish = (datetime.strptime(finish[:8], "%Y%m%d") + timedelta(days=1)).strftime("%Y%m%d")
+                item["end_date"] = finish
+            items.append(item)
+        nxt = data.get("next_rest_url")
+        if not nxt or len(items) >= limit or not str(nxt).startswith(base + "/"):
+            break
+        url = str(nxt)
+    return items[:limit]
+
+
+def fetch_tribe_events(
+    url: str, limit: int = MAX_ITEMS_PER_SOURCE, *, failure_info: dict | None = None, today: date | None = None, **_ignored
+) -> list[dict] | None:
+    """Events from an Events Calendar site for the next TRIBE_WINDOW_DAYS days.
+    `url` is the source's existing export URL; only its host is used for the
+    REST route and month exports, and it is the last fallback. None only when
+    every route failed."""
+    today = today or datetime.now(timezone.utc).date()
+    base = _tribe_base(url)
+    try:
+        items = _tribe_rest(base, today, limit)
+        if items is not None:
+            return items
+    except Exception as exc:  # noqa: BLE001 - fall through to the month exports
+        logger.info("Events Calendar REST route unavailable for %s: %s", base, exc)
+    combined, seen, any_ok = [], set(), False
+    first = today.replace(day=1)
+    for i in range(TRIBE_MONTHS):
+        month = (first.month - 1 + i) % 12 + 1
+        year = first.year + (first.month - 1 + i) // 12
+        got = fetch_ics(f"{base}/events/month/?ical=1&tribe-bar-date={year:04d}-{month:02d}", limit)
+        if got is None:
+            continue
+        any_ok = True
+        for ev in got:
+            key = (ev.get("title"), ev.get("date"))
+            if key not in seen:
+                seen.add(key)
+                combined.append(ev)
+    if any_ok and combined:
+        combined.sort(key=lambda e: str(e.get("date") or ""))
+        return combined[:limit]
+    return fetch_ics(url, limit, failure_info=failure_info)
 
 class _EventLinkExtractor(HTMLParser):
     """Very small best-effort scraper: pulls <a> text/href pairs that look
@@ -999,6 +1091,7 @@ def _submit_indexnow_fallbacks(host: str, key: str, key_location: str, urls: lis
 FETCHERS = {
     "rss": fetch_rss,
     "ics": fetch_ics,
+    "tribe_events": fetch_tribe_events,  # item 465
     "html_events": fetch_html_events,
     "revize_news_json": fetch_revize_news_json,
     "localist": fetch_localist,

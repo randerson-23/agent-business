@@ -6808,7 +6808,7 @@ def test_salt_creek_is_a_palatine_source_so_its_events_carry_palatines_chip():
     # ROADMAP.md item 428.
     cfg = next(c for c in build_digest.load_regions() if c["region"]["id"] == "palatine-60067")
     src = next(s for s in cfg["sources"] if "Salt Creek" in s["name"])
-    assert src["type"] == "ics" and src["url"] == "https://www.saltcreekpd.com/events/?ical=1" and src.get("enabled", True)
+    assert src["type"] == "tribe_events" and src["url"] == "https://www.saltcreekpd.com/events/?ical=1" and src.get("enabled", True)
 
 
 def test_share_note_links_the_coming_weekend_never_an_archived_issue():

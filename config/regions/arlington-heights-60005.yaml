@@ -91,13 +91,13 @@ sources:
     enabled: true
 
   - name: "Arlington Heights Park District — Events"
-    type: ics
+    type: tribe_events  # item 465: REST by date range, then month exports, then this URL
     url: "webcal://www.ahpd.org/events/?post_type=tribe_events&ical=1&eventDisplay=list"
     section: "Park District Events"
     enabled: true
 
   - name: "Metropolis Performing Arts Centre — Shows"
-    type: ics
+    type: tribe_events  # item 465: REST by date range, then month exports, then this URL
     # ROADMAP.md item 287: The Events Calendar (WordPress) export. Probe round
     # 14 (2026-10-13): 200, BEGIN:VCALENDAR, 21 events.
     url: "https://www.metropolisarts.com/events/?ical=1"

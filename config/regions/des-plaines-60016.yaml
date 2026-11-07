@@ -92,7 +92,7 @@ sources:
     enabled: true
 
   - name: "Des Plaines Theatre — Events"
-    type: ics
+    type: tribe_events  # item 465: REST by date range, then month exports, then this URL
     # ROADMAP.md item 287: The Events Calendar (WordPress) export. Probe round
     # 14 (2026-10-13): 200, BEGIN:VCALENDAR, 30 events.
     url: "https://desplainestheatre.com/events/?ical=1"
