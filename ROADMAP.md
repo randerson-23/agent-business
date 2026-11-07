@@ -220,21 +220,14 @@ doesn't re-suggest something already shipped.
 
 **Build queue (by deadline; refreshed by the research loop, item 346).**
 Pick from the top unless the owner has flagged something else:
-0. **462, 463** (**owner request, 2026-11-07:** Google Calendar links on every dated event on every page and in the email, plus correct time zone, all-day events, end times and a link back; ship together), then **464**.
-0. **459** (item 456 step 2 by platform: Des Plaines WebTrac by documented URL; Arlington Heights catalogue link only), then **356** (weekday and toddler page; re-ranked in pass 127 with a toddler-first title), then **461** and **460**.
-0. **456** (find each park district's registration catalogue and read it for Santa, camps and registration days; the only route to `/santa/` by Nov 15), then **458** (Skokie, Niles, Elk Grove holiday events in a labelled "just outside" section).
-0. **451** (BingSiteAuth.xml from `bing_site_auth:`; ready now that Yandex and Seznam accept and only Bing refuses), then **454, 455** (share button on every shareable page; text-a-friend link in the email).
-0. **450** (IndexNow to Yandex and Seznam directly when Bing refuses; no owner time), then **452** (founding-offer button near the top of `/sponsor/`). **451** waits on 450's log.
-0. **444, 445** (closures out of every list and the Event markup, all year; older-adult sessions out of the family lists; small, before the Thursday send if possible).
-0. **438** (winter-break pages are blank: render the empty message and camp catalogue links; a few lines), with **439** (River Trails Park District probe for Mount Prospect), then **436, 437** (real preview card and short og:title for shared links).
-0. **427, 428** (read the round-27 probe answers daily; set tree-lighting dates and add Salt Creek when found; `/santa/` full by Nov 15).
-0. **441, 442** (`/give/`: toy, coat and food drives per town from 2026 sources, live Nov 15; volunteer badge).
-0. **447, 448** (`/give/` probes at fire, police and Toys for Tots pages; drop-off businesses as warm leads; an honest title until a toy drive is confirmed).
-0. **446** (Noon Year's Eve block and `/new-years-eve/` hub, in the sitemap by Dec 1).
-0. **422** (candidate park districts and villages; the town-six decision otherwise rests on library counts).
-0. **416** (steps 1-2 done, measuring until about Nov 13; earlier note: step 1: round-24 probes for the candidates' feeds are in `config/url_probes.yaml` (egvpl.libnet.info, rmlib.libnet.info, elkgroveparks.org found by search; no Rolling Meadows park district calendar found); next: read the answers, then write the `_candidate-*.yaml` shadow files and the counts file). **417** with it.
-4. **328** (probe first), then **325** (by Nov 15), then **385** (holiday
-   creatives, from Nov 1), **397** (Palatine winter market), **311** (winter outdoors, by Dec 15), **398**, **420, 421** (dentist and credit-union sponsor products), then the rest by priority.
+0. **465** (read The Events Calendar feeds by date range: AHPD, MPPD, Wheeling, Metropolis and Des Plaines Theatre are capped at their first page, so December is invisible; probe Palatine Park District for the same plugin) with **466** (Rotary Santa Run, Palatine's Santa Paws and Frostival on `/santa/`). `/santa/` full by **Nov 15** (item 428).
+0. **427, 428** (read the probe answers daily: tree-lighting dates for Mount Prospect and Wheeling are still TBA).
+0. **447** (`/give/` probes at fire, police and Toys for Tots pages; drop-off businesses as warm leads).
+0. **459** (what remains: Mount Prospect and Palatine *Programs* and *Register* pages), then **356** (weekday and toddler page, toddler-first title), then **461** and **460**.
+0. **446** (Noon Year's Eve block and `/new-years-eve/` hub, in the sitemap by **Dec 1**), then **457** (`/museum-passes/`, YAML filled before Dec 1).
+0. **416, 417** (candidate-town measurement until about Nov 13), **422**.
+0. **439** (River Trails: bot-walled, so close it with a catalogue link), **440** (kids'-activity prospects), **467**.
+0. **328** (probe first), **325** (by Nov 15), **385** (holiday creatives), **311** (winter outdoors, by Dec 15), **420, 421** (dentist and credit-union sponsor products), then the rest by priority.
 
 #### Needs Ryan
 
@@ -20026,7 +20019,7 @@ changes.
 
 #### P1 (new)
 
-459. **Item 456 step 2, by platform.** Build loop:
+459. (Des Plaines part `skipped —` WebTrac is behind a Cloudflare challenge, 403 on 2026-11-06; Arlington Heights settled as link-only; remaining: Mount Prospect and Palatine Programs/Register pages, pass 129) **Item 456 step 2, by platform.** Build loop:
 
      - **Des Plaines (WebTrac):** read the activity search form once (a
        probe) to get the type and subtype codes for special events and
@@ -20178,6 +20171,104 @@ documentation for Google Calendar template links**
 (InteractionDesignFoundation, spatie/calendar-links). The design/UX
 angle is **the calendar row on a phone**, where the link that works
 better comes second.
+
+#### Research pass 2026-11-07, midday (hundred-and-twenty-ninth pass)
+
+Since the extra run this morning, the build loop shipped the owner's two
+requests: the simpler neutral email design, and items 462–464 (Google
+Calendar on every dated event, with correct links). It also added
+Skokie's Dec 12 Breakfast with Santa to `/santa/`'s "Just outside"
+section. It found that **Des Plaines' WebTrac search sits behind a
+Cloudflare challenge**, so that part of item 459 can't be done. This
+pass goes looking for the five towns' 2026 Santa events directly,
+eight days before item 428's Nov 15 target, and finds why the site
+can't see most of them.
+
+| Angle | What it is / what we found | Why it matters here |
+|---|---|---|
+| **The five towns' 2026 Santa events, searched directly** (ahpd.org's *Frostival 2026* page; palatineparks.org's *Santa Paws*; the Arlington Heights Rotary *Santa Run Walk & Reindeer Dash* on RunSignup; Wheeling Park District's special-events pages; AllEvents' December page for Arlington Heights) | **Arlington Heights Park District, Frostival, Sat Dec 12**, 10:00–12:30, Historical Museum: a visit with Santa, cocoa and carolers, free. **Rotary Santa Run Walk & Reindeer Dash, Sat Dec 5**, Arlington Heights: a 5K, a 1-mile walk and a **Reindeer Dash for kids 10 and under**. **Palatine Park District, Santa Paws, Sat Dec 12**, 10–noon, Clayson House: photos with Santa **for dogs**, $15/$20, registration required. **Wheeling**: Santa's Breakfast and *Lollipop Lane* photos, but the search snippets look a year old and the site is bot-walled. **Nothing found for Mount Prospect or Des Plaines** | `/santa/` has one five-town listing (Mount Prospect, Dec 5). **Frostival is on the Arlington Heights Park District's own event calendar**, which the site already reads, yet it isn't on the page. That isn't a missing source: it's a fetch that stops short (next row) |
+| **Why the park-district feeds stop short** (`data/source_health.json`; `config/regions/*.yaml`; The Events Calendar's iCal export) | The WordPress *Events Calendar* sources are fetched as `?post_type=tribe_events&ical=1&eventDisplay=list`, which exports **only the list view's first page**. The source-health counts are **flat at the page size, build after build**: **AHPD 11, MPPD 30, Des Plaines Theatre 30, Metropolis 21**. AHPD's newest event in `events.json` is **Nov 13**, so everything it posts for late November and December is invisible: Frostival, the tree lighting's companion events, Santa, holiday camps. **Palatine Park District** uses the same plugin (its URLs are `/event/<slug>/`) but is read as `html_events`, *"an unconfirmed guess"* in its config | This is the biggest data gap left in the season. The holiday pages, the Santa page, the winter-break page and the December emails are all built from feeds that stop two to five weeks out. The fix is in the fetch URL, not new sources, and it applies to four towns at once (item 465) |
+| **The redesigned email at 400 px (design/UX)** (`docs/combined-email-preview.html`, the owner's new neutral design) | Clean and calm: a white card per section, one accent colour, a date chip, and *"📅 Add to Google Calendar"* under every pick (item 462). One visible flaw: Arlington Heights lists **"Friends of the Library Fall Sale" (Sat)** and **"FOL Fall Book Sale" (Sun)** as two of its four items. That's the same event under two titles from the same library, using up a quarter of the town's slots | Each town gets four lines in the email, so a duplicate costs a real pick. Item 381's merging catches identical titles, not abbreviations (item 467) |
+
+#### P1 (new)
+
+465. **Read The Events Calendar feeds by date range, not by first page.**
+     Build loop, `scripts/fetchers.py` and the region YAMLs:
+
+     - For every `tribe_events` source (AHPD, MPPD, Wheeling Park
+       District, Metropolis, Des Plaines Theatre and Salt Creek), fetch
+       **the plugin's REST route**,
+       `/wp-json/tribe/events/v1/events?start_date=<today>&end_date=<today+75d>&per_page=50&page=N`,
+       following `next_rest_url` up to a page cap. If a site blocks it,
+       fall back to the **month iCal exports**,
+       `/events/month/?ical=1&tribe-bar-date=YYYY-MM`, for this month
+       and the next two.
+     - Map the REST fields (`title`, `start_date`, `end_date`,
+       `all_day`, `venue`, `url`, `description`) to the existing event
+       shape. End dates and all-day flags now flow into item 463's
+       calendar links.
+     - **Probe Palatine Park District** for `/events/?ical=1` and the
+       REST route. If either answers, switch it from `html_events` to
+       this fetcher.
+     - Keep it polite: a page cap, a timeout, and one run per build.
+
+     Success check: the source-health counts **stop being flat at the
+     page size**, and AHPD's latest event date moves past Dec 12
+     (Frostival). Tests: a fixture REST response with `next_rest_url`
+     paging, the month-iCal fallback, the date window, and an `all_day`
+     event mapped correctly.
+
+#### P2 (new)
+
+466. **Fill `/santa/` from first-party pages found this pass.** Build loop:
+
+     - **Frostival** (AHPD, Dec 12) arrives on its own once item 465
+       lands. Confirm it's on `/santa/` and `/holidays/` (the keyword is
+       already in the selection).
+     - **Rotary Santa Run Walk & Reindeer Dash** (Arlington Heights,
+       Dec 5): an `annual_events` entry dated from the race's own
+       RunSignup page (the organiser's registration page). Label it
+       *"🦌 Reindeer Dash for kids 10 and under"* on `/santa/` and the
+       Arlington Heights page.
+     - **Palatine's Santa Paws** (Dec 12) on `/santa/` with a **🐶 "for
+       dogs"** label so nobody books a child into it, and the
+       dog-friendly tag.
+     - **Wheeling**: nothing until a 2026 first-party page is
+       readable (its site is bot-walled, and the search snippets are a
+       year old).
+
+     Tests: the race entry renders with its label, Santa Paws carries
+     the dog label, and no Wheeling entry appears without a source.
+
+#### P3 (new)
+
+467. **Merge the same event listed under abbreviated titles.** Build loop,
+     extending item 381's merge. Before comparing titles, expand a short
+     table of local abbreviations (*FOL* → *Friends of the Library*,
+     *AHML*, *MPPL*, *PD* → *Park District*). Then treat events at the
+     **same venue on consecutive days** whose expanded titles share
+     their key words (*"Fall … Sale"*) as one multi-day card:
+     *"Friends of the Library Fall Book Sale · Sat–Sun"*. Tests: the
+     AHML pair merges, and two different events at the same library on
+     consecutive days don't.
+
+Updates: **459** is reduced. The Des Plaines part is `skipped —` (WebTrac
+is behind a Cloudflare challenge, 403). The Arlington Heights part is
+settled as link-only by design. What remains is probing the Mount
+Prospect and Palatine *Programs* and *Register* pages. The build queue
+below is cleaned of finished lines.
+
+Re-rank: **465 goes to the top of the build queue.** It decides whether
+`/santa/`, `/holidays/`, the winter-break pages and the December emails
+see December at all, and item 428's Nov 15 target depends on it.
+**466** rides with it. **467** waits behind 356.
+
+Competitors reviewed this pass: **the five towns' own 2026 Santa pages**
+(AHPD's Frostival, Palatine's Santa Paws, Wheeling's special events) and
+**the Rotary Santa Run on RunSignup**, plus **The Events Calendar's
+export and REST routes** as the cause of the missing December. The
+design/UX angle is **the owner's redesigned email**: clean, with one
+duplicate taking a town slot.
 
 
 ## Working agreements for autonomous iteration
