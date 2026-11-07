@@ -4,7 +4,7 @@
       "url": "https://withintenmiles.com/f3b7799bed06aac4295ec9134d53b014.txt",
       "purpose": "IndexNow key file on the live domain - still served and still equal to the key?",
       "item": 224,
-      "probed_at": "2026-11-07T14:01:41+00:00",
+      "probed_at": "2026-11-07T18:48:44+00:00",
       "status": 200,
       "final_url": "https://withintenmiles.com/f3b7799bed06aac4295ec9134d53b014.txt",
       "content_type": "text/plain; charset=utf-8",
@@ -22,11 +22,11 @@
       "url": "https://www.ahpd.org/parks/",
       "purpose": "Arlington Heights Park District - park list; does Pioneer Park's page give its street address?",
       "item": 376,
-      "probed_at": "2026-11-07T14:01:41+00:00",
+      "probed_at": "2026-11-07T18:48:45+00:00",
       "status": 200,
       "final_url": "https://www.ahpd.org/parks/",
       "content_type": "text/html; charset=UTF-8",
-      "bytes": 138115,
+      "bytes": 138123,
       "title": "Parks - Arlington Heights Park District",
       "feed_links": [
         {
@@ -95,11 +95,11 @@
       "url": "https://events.harpercollege.edu/api/2/events?days=60&pp=100",
       "purpose": "Harper College (Localist) - venue ids, venue names and event types in use",
       "item": 286,
-      "probed_at": "2026-11-07T14:01:41+00:00",
+      "probed_at": "2026-11-07T18:48:46+00:00",
       "status": 200,
       "final_url": "https://events.harpercollege.edu/api/2/events?days=60&pp=100",
       "content_type": "application/json; charset=utf-8",
-      "bytes": 376694,
+      "bytes": 376695,
       "pattern_matches": {
         "\"venue_id\":\\d+": [
           {
@@ -375,7 +375,7 @@
       "url": "https://www.sd25.org/calendar",
       "purpose": "Arlington Heights District 25 - does the calendar page list no-school dates in the HTML?",
       "item": 300,
-      "probed_at": "2026-11-07T14:01:45+00:00",
+      "probed_at": "2026-11-07T18:48:48+00:00",
       "status": 200,
       "final_url": "https://www.sd25.org/calendar-73",
       "content_type": "text/html; charset=utf-8",
@@ -396,7 +396,7 @@
       "url": "https://ccsd21.org/parent-resources/calendars/",
       "purpose": "Wheeling CCSD 21 - does the calendars page link a 2026-27 calendar and list no-school dates?",
       "item": 300,
-      "probed_at": "2026-11-07T14:01:48+00:00",
+      "probed_at": "2026-11-07T18:48:50+00:00",
       "status": 403,
       "final_url": "https://ccsd21.org/parent-resources/calendars/",
       "content_type": "text/html; charset=UTF-8",
@@ -414,11 +414,11 @@
       "url": "https://www.d62.org/calendars",
       "purpose": "Des Plaines District 62 - official 2026-27 calendar",
       "item": 300,
-      "probed_at": "2026-11-07T14:01:48+00:00",
+      "probed_at": "2026-11-07T18:48:50+00:00",
       "status": 200,
       "final_url": "https://www.d62.org/calendars",
       "content_type": "text/html; charset=utf-8",
-      "bytes": 126545,
+      "bytes": 126547,
       "title": "Calendars - Community Consolidated School District 62",
       "feed_links": [],
       "calendar_links": [],
@@ -548,7 +548,7 @@
         "url": "https://resources.finalsite.net/images/v1771602096/d62org/huubad2axs3m2rrnnwjm/District62Ten-MonthSchoolsCalendar2026-2027FINAL.pdf",
         "purpose": "",
         "item": null,
-        "probed_at": "2026-11-07T14:01:48+00:00",
+        "probed_at": "2026-11-07T18:48:50+00:00",
         "status": 200,
         "final_url": "https://resources.finalsite.net/images/v1771602096/d62org/huubad2axs3m2rrnnwjm/District62Ten-MonthSchoolsCalendar2026-2027FINAL.pdf",
         "content_type": "application/pdf",
@@ -563,7 +563,7 @@
       "url": "https://www.d214.org/calendar",
       "purpose": "High School District 214 - official 2026-27 calendar",
       "item": 300,
-      "probed_at": "2026-11-07T14:01:48+00:00",
+      "probed_at": "2026-11-07T18:48:51+00:00",
       "status": 404,
       "final_url": "https://www.d214.org/calendar",
       "content_type": "text/html;charset=utf-8",
@@ -606,7 +606,7 @@
       "url": "https://www.mountprospect.org/",
       "purpose": "Village of Mount Prospect - home page; a 2026 tree-lighting notice",
       "item": 427,
-      "probed_at": "2026-11-07T14:01:49+00:00",
+      "probed_at": "2026-11-07T18:48:51+00:00",
       "status": 200,
       "final_url": "https://www.mountprospect.org/",
       "content_type": "text/html; charset=UTF-8",
@@ -624,7 +624,7 @@
         "url": "https://www.mountprospect.org/services/tree_care.php",
         "purpose": "",
         "item": null,
-        "probed_at": "2026-11-07T14:01:49+00:00",
+        "probed_at": "2026-11-07T18:48:51+00:00",
         "status": 200,
         "final_url": "https://www.mountprospect.org/services/tree_care.php",
         "content_type": "text/html; charset=UTF-8",
@@ -644,14 +644,49 @@
       "url": "https://mpdowntown.com/events/",
       "purpose": "Downtown Mount Prospect - events page; tree lighting or Christkindlmarket dates",
       "item": 427,
-      "probed_at": "2026-11-07T14:01:49+00:00",
-      "error": "ReadTimeout"
+      "probed_at": "2026-11-07T18:48:52+00:00",
+      "status": 200,
+      "final_url": "https://mpdowntown.com/events/",
+      "content_type": "text/html; charset=UTF-8",
+      "bytes": 124873,
+      "title": "Events | Mount Prospect Downtown Merchants",
+      "feed_links": [
+        {
+          "href": "https://mpdowntown.com/feed/",
+          "type": "application/rss+xml",
+          "title": "Mount Prospect Downtown Merchants » Feed"
+        },
+        {
+          "href": "https://mpdowntown.com/comments/feed/",
+          "type": "application/rss+xml",
+          "title": "Mount Prospect Downtown Merchants » Comments Feed"
+        },
+        {
+          "href": "https://mpdowntown.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fmpdowntown.com%2Fevents%2F",
+          "type": "application/json+oembed",
+          "title": "oEmbed (JSON)"
+        },
+        {
+          "href": "https://mpdowntown.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fmpdowntown.com%2Fevents%2F&format=xml",
+          "type": "text/xml+oembed",
+          "title": "oEmbed (XML)"
+        },
+        {
+          "href": "https://mpdowntown.com/wp-json/wp/v2/pages/2477",
+          "type": "application/json",
+          "title": "JSON"
+        }
+      ],
+      "calendar_links": [],
+      "pattern_matches": {
+        "(?i)(?:tree[- ]lighting|christkindlmarket|busse pocket park)[^<]{0,200}": []
+      }
     },
     {
       "url": "https://www.wheelingil.gov/",
       "purpose": "Village of Wheeling - home page; Lights Around Wheeling or a tree-lighting notice",
       "item": 427,
-      "probed_at": "2026-11-07T14:02:05+00:00",
+      "probed_at": "2026-11-07T18:48:56+00:00",
       "status": 200,
       "final_url": "https://www.wheelingil.gov/",
       "content_type": "text/html; charset=utf-8",
@@ -679,11 +714,11 @@
       "url": "https://www.desplainesil.gov/",
       "purpose": "City of Des Plaines - home page; a 2026 tree-lighting or holiday-event notice (also item 367)",
       "item": 427,
-      "probed_at": "2026-11-07T14:02:05+00:00",
+      "probed_at": "2026-11-07T18:48:56+00:00",
       "status": 200,
       "final_url": "https://www.desplainesil.gov/Home",
       "content_type": "text/html; charset=utf-8",
-      "bytes": 280501,
+      "bytes": 281731,
       "title": "Home | City of Des Plaines, IL",
       "feed_links": [],
       "calendar_links": [
@@ -759,11 +794,11 @@
         "url": "https://www.desplainesil.gov/Residents/News/Miner-Street-Metra-Parking-Lot-Set-for-Resurfacing",
         "purpose": "",
         "item": null,
-        "probed_at": "2026-11-07T14:02:07+00:00",
+        "probed_at": "2026-11-07T18:48:57+00:00",
         "status": 200,
         "final_url": "https://www.desplainesil.gov/Residents/News/Miner-Street-Metra-Parking-Lot-Set-for-Resurfacing",
         "content_type": "text/html; charset=utf-8",
-        "bytes": 68698,
+        "bytes": 68699,
         "title": "Miner Street Metra Parking Lot Set for Resurfacing | City of Des Plaines, IL",
         "feed_links": [],
         "calendar_links": [
@@ -779,11 +814,11 @@
       "url": "https://www.desplainesil.gov/Departments/Media-Services/Events/Tree-Lighting-and-Winter-Fair",
       "purpose": "City of Des Plaines - Holiday Tree Lighting and Winter Fair page, the 2026 date, time and place",
       "item": 427,
-      "probed_at": "2026-11-07T14:02:08+00:00",
+      "probed_at": "2026-11-07T18:48:57+00:00",
       "status": 200,
       "final_url": "https://www.desplainesil.gov/Departments/Media-Services/Events/Tree-Lighting-and-Winter-Fair",
       "content_type": "text/html; charset=utf-8",
-      "bytes": 85616,
+      "bytes": 85617,
       "title": "Holiday Tree Lighting and Winter Fair | City of Des Plaines, IL",
       "feed_links": [],
       "calendar_links": [
@@ -834,7 +869,7 @@
       "url": "https://www.rtpd.org/",
       "purpose": "River Trails Park District - home page; an events calendar, a camp page, an ICS/webcal feed",
       "item": 439,
-      "probed_at": "2026-11-07T14:02:09+00:00",
+      "probed_at": "2026-11-07T18:48:57+00:00",
       "status": 403,
       "final_url": "https://www.rtpd.org/",
       "content_type": "text/html; charset=UTF-8",
@@ -852,11 +887,11 @@
       "url": "https://www.mppd.org/",
       "purpose": "Mount Prospect Park District - home page; its camps or winter-break programme page",
       "item": 438,
-      "probed_at": "2026-11-07T14:02:09+00:00",
+      "probed_at": "2026-11-07T18:48:58+00:00",
       "status": 200,
       "final_url": "https://www.mppd.org/",
       "content_type": "text/html; charset=UTF-8",
-      "bytes": 102445,
+      "bytes": 102450,
       "title": "Home - Mt. Prospect Park District",
       "feed_links": [
         {
@@ -906,7 +941,7 @@
         "url": "https://www.mppd.org/summer-camp/",
         "purpose": "",
         "item": null,
-        "probed_at": "2026-11-07T14:02:09+00:00",
+        "probed_at": "2026-11-07T18:48:58+00:00",
         "status": 200,
         "final_url": "https://www.mppd.org/summer-camp/",
         "content_type": "text/html; charset=UTF-8",
@@ -1036,11 +1071,11 @@
       "url": "https://www.ahpd.org/",
       "purpose": "Arlington Heights Park District - home page; its camps or winter-break programme page",
       "item": 438,
-      "probed_at": "2026-11-07T14:02:11+00:00",
+      "probed_at": "2026-11-07T18:49:00+00:00",
       "status": 200,
       "final_url": "https://www.ahpd.org/",
       "content_type": "text/html; charset=UTF-8",
-      "bytes": 184679,
+      "bytes": 184463,
       "title": "Arlington Heights Park District - Arlington Heights, Illinois",
       "feed_links": [
         {
@@ -1101,7 +1136,7 @@
         "url": "https://www.ahpd.org/programs/camps/",
         "purpose": "",
         "item": null,
-        "probed_at": "2026-11-07T14:02:11+00:00",
+        "probed_at": "2026-11-07T18:49:00+00:00",
         "status": 200,
         "final_url": "https://www.ahpd.org/programs/camps/",
         "content_type": "text/html; charset=UTF-8",
@@ -1258,25 +1293,211 @@
       "url": "https://www.dpparks.org/",
       "purpose": "Des Plaines Park District - home page; its camps or winter-break programme page",
       "item": 438,
-      "probed_at": "2026-11-07T14:02:11+00:00",
-      "status": 403,
+      "probed_at": "2026-11-07T18:49:01+00:00",
+      "status": 200,
       "final_url": "https://www.dpparks.org/",
-      "content_type": "text/html; charset=iso-8859-1",
-      "bytes": 239,
-      "title": "403 Forbidden",
-      "feed_links": [],
+      "content_type": "text/html; charset=UTF-8",
+      "bytes": 301290,
+      "title": "Home - Des Plaines Park District",
+      "feed_links": [
+        {
+          "href": "https://www.dpparks.org/feed/",
+          "type": "application/rss+xml",
+          "title": "Des Plaines Park District » Feed"
+        },
+        {
+          "href": "https://www.dpparks.org/events/?ical=1",
+          "type": "text/calendar",
+          "title": "Des Plaines Park District » iCal Feed"
+        },
+        {
+          "href": "https://www.dpparks.org/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fwww.dpparks.org%2F",
+          "type": "application/json+oembed",
+          "title": "oEmbed (JSON)"
+        },
+        {
+          "href": "https://www.dpparks.org/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fwww.dpparks.org%2F&format=xml",
+          "type": "text/xml+oembed",
+          "title": "oEmbed (XML)"
+        },
+        {
+          "href": "https://www.dpparks.org/wp-json/wp/v2/pages/2",
+          "type": "application/json",
+          "title": "JSON"
+        },
+        {
+          "href": "https://www.dpparks.org/wp-json/tribe/events/v1/",
+          "type": "",
+          "title": ""
+        }
+      ],
       "calendar_links": [],
       "pattern_matches": {
-        "(?i)(?:winter break|camps?)[^<]{0,100}": [],
-        "(?i)href=\"[^\"]*(?:activecommunities\\.com|webtrac|rectrac|civicrec|myrec|amilia|register)[^\"]{0,160}\"": []
+        "(?i)(?:winter break|camps?)[^<]{0,100}": [
+          {
+            "match": "camps/\" role=\"menuitem\">Preschool Summer Camps",
+            "context": "__link link\" href=\"https://www.dpparks.org/preschool-summer-camps/\" role=\"menuitem\">Preschool Summer Camps</a></li></ul></div></li><li class=\"menu-item menu-item-type"
+          },
+          {
+            "match": "camps/\" role=\"menuitem\">Summer Camps",
+            "context": "-menu-list__link link\" href=\"https://www.dpparks.org/summer-camps/\" role=\"menuitem\">Summer Camps</a></li><li class=\"menu-item menu-item-type-post_type menu-"
+          }
+        ],
+        "(?i)href=\"[^\"]*(?:activecommunities\\.com|webtrac|rectrac|civicrec|myrec|amilia|register)[^\"]{0,160}\"": [
+          {
+            "match": "href=\"https://register.desplainesparks.org/webtrac/web/splash.html\"",
+            "context": "inx-menu-item-2060\"><a class=\"weblinx-menu-list__link link\" href=\"https://register.desplainesparks.org/webtrac/web/splash.html\" target=\"_blank\" role=\"menuitem\">Register</a></li><li class="
+          },
+          {
+            "match": "href=\"https://www.dpparks.org/how-to-register/\"",
+            "context": "inx-menu-item-2102\"><a class=\"weblinx-menu-list__link link\" href=\"https://www.dpparks.org/how-to-register/\" role=\"menuitem\">Registration Information How To</a></li><li"
+          }
+        ]
       },
-      "followed": null
+      "followed": {
+        "url": "https://www.dpparks.org/preschool-summer-camps/",
+        "purpose": "",
+        "item": null,
+        "probed_at": "2026-11-07T18:49:02+00:00",
+        "status": 200,
+        "final_url": "https://www.dpparks.org/preschool-summer-camps/",
+        "content_type": "text/html; charset=UTF-8",
+        "bytes": 250788,
+        "title": "Preschool Summer Camps - Des Plaines Park District",
+        "feed_links": [
+          {
+            "href": "https://www.dpparks.org/feed/",
+            "type": "application/rss+xml",
+            "title": "Des Plaines Park District » Feed"
+          },
+          {
+            "href": "https://www.dpparks.org/events/?ical=1",
+            "type": "text/calendar",
+            "title": "Des Plaines Park District » iCal Feed"
+          },
+          {
+            "href": "https://www.dpparks.org/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fwww.dpparks.org%2Fpreschool-summer-camps%2F",
+            "type": "application/json+oembed",
+            "title": "oEmbed (JSON)"
+          },
+          {
+            "href": "https://www.dpparks.org/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fwww.dpparks.org%2Fpreschool-summer-camps%2F&format=xml",
+            "type": "text/xml+oembed",
+            "title": "oEmbed (XML)"
+          },
+          {
+            "href": "https://www.dpparks.org/wp-json/wp/v2/pages/2006",
+            "type": "application/json",
+            "title": "JSON"
+          },
+          {
+            "href": "https://www.dpparks.org/wp-json/tribe/events/v1/",
+            "type": "",
+            "title": ""
+          }
+        ],
+        "calendar_links": [],
+        "pattern_matches": {
+          "(?i)(?:winter break|camps?)[^<]{0,100}": [
+            {
+              "match": "Camps - Des Plaines Park District",
+              "context": "m/product/yoast-seo-wordpress/ --> <title>Preschool Summer Camps - Des Plaines Park District</title> <meta name=\"description\" content=\"Preschool Summer"
+            },
+            {
+              "match": "Camp The summer preschool camp curriculum is designed to introduce our students to various new themes no",
+              "context": "le> <meta name=\"description\" content=\"Preschool Summer Day Camp The summer preschool camp curriculum is designed to introduce our students to various new themes not…\" /> <link rel=\"canonical\" href=\"https://www.dpparks.org/"
+            },
+            {
+              "match": "camps/\" />\n\t",
+              "context": "=\"canonical\" href=\"https://www.dpparks.org/preschool-summer-camps/\" /> <meta property=\"og:locale\" content=\"en_US\" /> <meta propert"
+            },
+            {
+              "match": "Camps - Des Plaines Park District\" />\n\t",
+              "context": "le\" /> <meta property=\"og:title\" content=\"Preschool Summer Camps - Des Plaines Park District\" /> <meta property=\"og:description\" content=\"Preschool Summer Da"
+            },
+            {
+              "match": "Camps-1034-scaled.avif\" />\n\t",
+              "context": "=\"https://www.dpparks.org/wp-content/uploads/2025/02/Summer-Camps-1034-scaled.avif\" /> <meta property=\"og:image:width\" content=\"2560\" /> <meta pro"
+            },
+            {
+              "match": "camps\\/\",\"url\":\"https:\\/\\/www.dpparks.org\\/preschool-summer-camps\\/\",\"name\":\"Preschool Summer Camps - Des",
+              "context": "WebPage\",\"@id\":\"https:\\/\\/www.dpparks.org\\/preschool-summer-camps\\/\",\"url\":\"https:\\/\\/www.dpparks.org\\/preschool-summer-camps\\/\",\"name\":\"Preschool Summer Camps - Des Plaines Park District\",\"isPartOf\":{\"@id\":\"https:\\/\\/www.dpp"
+            },
+            {
+              "match": "camps\\/#primaryimage\"},\"image\":{\"@id\":\"https:\\/\\/www.dpparks.org\\/preschool-summer-camps\\/#primaryimage\"}",
+              "context": "OfPage\":{\"@id\":\"https:\\/\\/www.dpparks.org\\/preschool-summer-camps\\/#primaryimage\"},\"image\":{\"@id\":\"https:\\/\\/www.dpparks.org\\/preschool-summer-camps\\/#primaryimage\"},\"thumbnailUrl\":\"https:\\/\\/www.dpparks.org\\/wp-content\\/uplo"
+            },
+            {
+              "match": "Camps-1034-scaled.avif\",\"datePublished\":\"2024-07-11T16:15:19+00:00\",\"dateModified\":\"2026-02-04T22:32:07+0",
+              "context": ":\\/\\/www.dpparks.org\\/wp-content\\/uploads\\/2025\\/02\\/Summer-Camps-1034-scaled.avif\",\"datePublished\":\"2024-07-11T16:15:19+00:00\",\"dateModified\":\"2026-02-04T22:32:07+00:00\",\"breadcrumb\":{\"@id\":\"https:\\/\\/www.dpparks.org\\/presch"
+            },
+            {
+              "match": "camps\\/#breadcrumb\"},\"inLanguage\":\"en-US\",\"potentialAction\":[{\"@type\":\"ReadAction\",\"target\":[\"https:\\/\\/w",
+              "context": "dcrumb\":{\"@id\":\"https:\\/\\/www.dpparks.org\\/preschool-summer-camps\\/#breadcrumb\"},\"inLanguage\":\"en-US\",\"potentialAction\":[{\"@type\":\"ReadAction\",\"target\":[\"https:\\/\\/www.dpparks.org\\/preschool-summer-camps\\/\"]}]},{\"@type\":\"Imag"
+            },
+            {
+              "match": "camps\\/\"]}]},{\"@type\":\"ImageObject\",\"inLanguage\":\"en-US\",\"@id\":\"https:\\/\\/www.dpparks.org\\/preschool-summ",
+              "context": "ion\",\"target\":[\"https:\\/\\/www.dpparks.org\\/preschool-summer-camps\\/\"]}]},{\"@type\":\"ImageObject\",\"inLanguage\":\"en-US\",\"@id\":\"https:\\/\\/www.dpparks.org\\/preschool-summer-camps\\/#primaryimage\",\"url\":\"https:\\/\\/www.dpparks.org\\/w"
+            },
+            {
+              "match": "camps\\/#primaryimage\",\"url\":\"https:\\/\\/www.dpparks.org\\/wp-content\\/uploads\\/2025\\/02\\/Summer-Camps-1034-",
+              "context": ":\"en-US\",\"@id\":\"https:\\/\\/www.dpparks.org\\/preschool-summer-camps\\/#primaryimage\",\"url\":\"https:\\/\\/www.dpparks.org\\/wp-content\\/uploads\\/2025\\/02\\/Summer-Camps-1034-scaled.avif\",\"contentUrl\":\"https:\\/\\/www.dpparks.org\\/wp-con"
+            },
+            {
+              "match": "Camps-1034-scaled.avif\",\"width\":2560,\"height\":652,\"caption\":\"Two smiling girls at camp\"},{\"@type\":\"Breadc",
+              "context": ":\\/\\/www.dpparks.org\\/wp-content\\/uploads\\/2025\\/02\\/Summer-Camps-1034-scaled.avif\",\"width\":2560,\"height\":652,\"caption\":\"Two smiling girls at camp\"},{\"@type\":\"BreadcrumbList\",\"@id\":\"https:\\/\\/www.dpparks.org\\/preschool-summer"
+            },
+            {
+              "match": "camps\\/#breadcrumb\",\"itemListElement\":[{\"@type\":\"ListItem\",\"position\":1,\"name\":\"Home\",\"item\":\"https:\\/\\/w",
+              "context": "umbList\",\"@id\":\"https:\\/\\/www.dpparks.org\\/preschool-summer-camps\\/#breadcrumb\",\"itemListElement\":[{\"@type\":\"ListItem\",\"position\":1,\"name\":\"Home\",\"item\":\"https:\\/\\/www.dpparks.org\\/\"},{\"@type\":\"ListItem\",\"position\":2,\"name\":\""
+            },
+            {
+              "match": "Camps\"}]},{\"@type\":\"WebSite\",\"@id\":\"https:\\/\\/www.dpparks.org\\/#website\",\"url\":\"https:\\/\\/www.dpparks.org",
+              "context": "},{\"@type\":\"ListItem\",\"position\":2,\"name\":\"Preschool Summer Camps\"}]},{\"@type\":\"WebSite\",\"@id\":\"https:\\/\\/www.dpparks.org\\/#website\",\"url\":\"https:\\/\\/www.dpparks.org\\/\",\"name\":\"Des Plaines Park District\",\"description\":\"\",\"pot"
+            },
+            {
+              "match": "camps%2F\" />\n",
+              "context": "/embed?url=https%3A%2F%2Fwww.dpparks.org%2Fpreschool-summer-camps%2F\" /> <link rel=\"alternate\" title=\"oEmbed (XML)\" type=\"text/xml+oe"
+            },
+            {
+              "match": "camps%2F&#038;format=xml\" />\n",
+              "context": "/embed?url=https%3A%2F%2Fwww.dpparks.org%2Fpreschool-summer-camps%2F&#038;format=xml\" /> <style id=\"wp-img-auto-sizes-contain-inline-css\"> img:is([si"
+            },
+            {
+              "match": "camps/\" />\n        ",
+              "context": "e=\"hidden\" name=\"_wp_http_referer\" value=\"/preschool-summer-camps/\" /> <button class=\"weblinx-language-picker__submit button __visu"
+            },
+            {
+              "match": "camps/\" role=\"menuitem\">Preschool Summer Camps",
+              "context": "__link link\" href=\"https://www.dpparks.org/preschool-summer-camps/\" role=\"menuitem\">Preschool Summer Camps</a></li></ul></div></li><li class=\"menu-item menu-item-type"
+            },
+            {
+              "match": "camps/\" role=\"menuitem\">Summer Camps",
+              "context": "-menu-list__link link\" href=\"https://www.dpparks.org/summer-camps/\" role=\"menuitem\">Summer Camps</a></li><li class=\"menu-item menu-item-type-post_type menu-"
+            },
+            {
+              "match": "Camps-1034-1920x440.avif?v=2.0.1' media='(min-width: 64em)' width='1920' height='440' />                 ",
+              "context": "='https://www.dpparks.org/wp-content/uploads/2025/02/Summer-Camps-1034-1920x440.avif?v=2.0.1' media='(min-width: 64em)' width='1920' height='440' />"
+            }
+          ],
+          "(?i)href=\"[^\"]*(?:activecommunities\\.com|webtrac|rectrac|civicrec|myrec|amilia|register)[^\"]{0,160}\"": [
+            {
+              "match": "href=\"https://register.desplainesparks.org/webtrac/web/splash.html\"",
+              "context": "inx-menu-item-2060\"><a class=\"weblinx-menu-list__link link\" href=\"https://register.desplainesparks.org/webtrac/web/splash.html\" target=\"_blank\" role=\"menuitem\">Register</a></li><li class="
+            },
+            {
+              "match": "href=\"https://www.dpparks.org/how-to-register/\"",
+              "context": "x-menu-item-2102-1\"><a class=\"weblinx-menu-list__link link\" href=\"https://www.dpparks.org/how-to-register/\" role=\"menuitem\">Registration Information How To</a></li><li"
+            }
+          ]
+        }
+      }
     },
     {
       "url": "https://www.wheelingparkdistrict.com/",
       "purpose": "Wheeling Park District - home page; its camps or winter-break programme page",
       "item": 438,
-      "probed_at": "2026-11-07T14:02:11+00:00",
+      "probed_at": "2026-11-07T18:49:03+00:00",
       "status": 403,
       "final_url": "https://www.wheelingparkdistrict.com/",
       "content_type": "text/html; charset=UTF-8",
@@ -1294,11 +1515,11 @@
       "url": "https://www.palatineparks.org/",
       "purpose": "Palatine Park District - the href behind the home page's Winter Break Programming link",
       "item": 438,
-      "probed_at": "2026-11-07T14:02:12+00:00",
+      "probed_at": "2026-11-07T18:49:03+00:00",
       "status": 200,
       "final_url": "https://www.palatineparks.org/",
       "content_type": "text/html; charset=UTF-8",
-      "bytes": 348032,
+      "bytes": 348031,
       "title": "Home - Palatine Park District",
       "feed_links": [
         {
@@ -1339,7 +1560,7 @@
       "url": "https://www.vah.com/",
       "purpose": "Village of Arlington Heights - home page; a 2026 toy, coat or food drive notice",
       "item": 441,
-      "probed_at": "2026-11-07T14:02:12+00:00",
+      "probed_at": "2026-11-07T18:49:03+00:00",
       "status": 200,
       "final_url": "https://www.vah.com/",
       "content_type": "text/html; charset=UTF-8",
@@ -1387,7 +1608,7 @@
       "url": "https://www.palatine.il.us/",
       "purpose": "Village of Palatine - home page; a 2026 toy, coat or food drive notice",
       "item": 441,
-      "probed_at": "2026-11-07T14:02:12+00:00",
+      "probed_at": "2026-11-07T18:49:03+00:00",
       "status": 200,
       "final_url": "https://www.palatine.il.us/",
       "content_type": "text/html; charset=utf-8",
@@ -1410,7 +1631,7 @@
       "url": "https://chicago-il.toysfortots.org/",
       "purpose": "Toys for Tots Chicago campaign - home page; 2026 drop-off locations, last day, and the local drop form",
       "item": 447,
-      "probed_at": "2026-11-07T14:02:13+00:00",
+      "probed_at": "2026-11-07T18:49:04+00:00",
       "status": 200,
       "final_url": "https://chicago-il.toysfortots.org/local-coordinator-sites/lco-sites/default.aspx?nPageID=0&nPreviewInd=0&nRedirectInd=3",
       "content_type": "text/html; charset=utf-8",
@@ -1426,7 +1647,7 @@
         "url": "https://secure.toysfortots.org/a/donatelocal?campaign_code=ILCHIC&campaign_name=Chicago IL",
         "purpose": "",
         "item": null,
-        "probed_at": "2026-11-07T14:02:13+00:00",
+        "probed_at": "2026-11-07T18:49:04+00:00",
         "status": 200,
         "final_url": "https://secure.toysfortots.org/a/donatelocal?campaign_code=ILCHIC&campaign_name=Chicago%20IL",
         "content_type": "text/html; charset=utf-8",
@@ -1444,7 +1665,7 @@
       "url": "https://www.chicagolandtft.org/",
       "purpose": "Chicagoland Toys for Tots - drop box locations across the region (2026)",
       "item": 447,
-      "probed_at": "2026-11-07T14:02:13+00:00",
+      "probed_at": "2026-11-07T18:49:05+00:00",
       "status": 200,
       "final_url": "https://chicagolandtft.org/",
       "content_type": "text/html;charset=utf-8",
@@ -1479,7 +1700,7 @@
       "url": "https://www.vah.com/news_detail_T13_R609.php",
       "purpose": "Village of Arlington Heights - Community Food Drive Nov 9-18 news item (organiser, drop-off sites, last day)",
       "item": 441,
-      "probed_at": "2026-11-07T14:02:14+00:00",
+      "probed_at": "2026-11-07T18:49:05+00:00",
       "status": 200,
       "final_url": "https://www.vah.com/news_detail_T13_R609.php",
       "content_type": "text/html; charset=UTF-8",
@@ -1680,23 +1901,71 @@
       "url": "https://www.dpparks.org/how-to-register/",
       "purpose": "Des Plaines Park District - how to register page; the registration platform and catalogue link",
       "item": 456,
-      "probed_at": "2026-11-07T14:02:14+00:00",
-      "status": 403,
+      "probed_at": "2026-11-07T18:49:05+00:00",
+      "status": 200,
       "final_url": "https://www.dpparks.org/how-to-register/",
-      "content_type": "text/html; charset=iso-8859-1",
-      "bytes": 239,
-      "title": "403 Forbidden",
-      "feed_links": [],
+      "content_type": "text/html; charset=UTF-8",
+      "bytes": 251347,
+      "title": "How To Register - Des Plaines Park District",
+      "feed_links": [
+        {
+          "href": "https://www.dpparks.org/feed/",
+          "type": "application/rss+xml",
+          "title": "Des Plaines Park District » Feed"
+        },
+        {
+          "href": "https://www.dpparks.org/events/?ical=1",
+          "type": "text/calendar",
+          "title": "Des Plaines Park District » iCal Feed"
+        },
+        {
+          "href": "https://www.dpparks.org/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fwww.dpparks.org%2Fhow-to-register%2F",
+          "type": "application/json+oembed",
+          "title": "oEmbed (JSON)"
+        },
+        {
+          "href": "https://www.dpparks.org/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fwww.dpparks.org%2Fhow-to-register%2F&format=xml",
+          "type": "text/xml+oembed",
+          "title": "oEmbed (XML)"
+        },
+        {
+          "href": "https://www.dpparks.org/wp-json/wp/v2/pages/1290",
+          "type": "application/json",
+          "title": "JSON"
+        },
+        {
+          "href": "https://www.dpparks.org/wp-json/tribe/events/v1/",
+          "type": "",
+          "title": ""
+        }
+      ],
       "calendar_links": [],
       "pattern_matches": {
-        "(?i)href=\"[^\"]*(?:activecommunities\\.com|webtrac|rectrac|civicrec|myrec|amilia|register)[^\"]{0,160}\"": []
+        "(?i)href=\"[^\"]*(?:activecommunities\\.com|webtrac|rectrac|civicrec|myrec|amilia|register)[^\"]{0,160}\"": [
+          {
+            "match": "href=\"https://www.dpparks.org/how-to-register/\"",
+            "context": "(M–F, 5:30 PM–9:30 PM; weekends…\" /> <link rel=\"canonical\" href=\"https://www.dpparks.org/how-to-register/\" /> <meta property=\"og:locale\" content=\"en_US\" /> <meta pr"
+          },
+          {
+            "match": "href=\"https://www.dpparks.org/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fwww.dpparks.org%2Fhow-to-register%2F\"",
+            "context": "rnate\" title=\"oEmbed (JSON)\" type=\"application/json+oembed\" href=\"https://www.dpparks.org/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fwww.dpparks.org%2Fhow-to-register%2F\" /> <link rel=\"alternate\" title=\"oEmbed (XML)\" type=\"text/xm"
+          },
+          {
+            "match": "href=\"https://www.dpparks.org/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fwww.dpparks.org%2Fhow-to-register%2F&#038;format=xml\"",
+            "context": "rel=\"alternate\" title=\"oEmbed (XML)\" type=\"text/xml+oembed\" href=\"https://www.dpparks.org/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fwww.dpparks.org%2Fhow-to-register%2F&#038;format=xml\" /> <style id=\"wp-img-auto-sizes-contain-inline-css\"> img:is"
+          },
+          {
+            "match": "href=\"https://register.desplainesparks.org/webtrac/web/splash.html\"",
+            "context": "inx-menu-item-2060\"><a class=\"weblinx-menu-list__link link\" href=\"https://register.desplainesparks.org/webtrac/web/splash.html\" target=\"_blank\" role=\"menuitem\">Register</a></li><li class="
+          }
+        ]
       }
     },
     {
       "url": "https://www.wheelingparkdistrict.com/registration/",
       "purpose": "Wheeling Park District - registration page; the registration platform and catalogue link",
       "item": 456,
-      "probed_at": "2026-11-07T14:02:14+00:00",
+      "probed_at": "2026-11-07T18:49:06+00:00",
       "status": 403,
       "final_url": "https://www.wheelingparkdistrict.com/registration/",
       "content_type": "text/html; charset=UTF-8",
@@ -1712,7 +1981,7 @@
       "url": "https://register.desplainesparks.org/webtrac/web/search.html?Action=Start&keyword=santa&keywordoption=Match+One&search=yes",
       "purpose": "Des Plaines Park District WebTrac - keyword search for Santa programmes (names, dates, registration links)",
       "item": 456,
-      "probed_at": "2026-11-07T14:02:14+00:00",
+      "probed_at": "2026-11-07T18:49:06+00:00",
       "status": 403,
       "final_url": "https://register.desplainesparks.org/webtrac/web/search.html?Action=Start&keyword=santa&keywordoption=Match+One&search=yes",
       "content_type": "text/html; charset=UTF-8",
@@ -1723,12 +1992,12 @@
       "pattern_matches": {
         "(?is)santa.{0,300}": [
           {
-            "match": "santa\\u0026keywordoption=Match+One\\u0026search=yes\\u0026__cf_chl_tk=oHNQj1wNygATnFcdRm_rP39xAOPgjjdi7iNg0bV0uqA-1794060135-1.0.1.1-azl0UqWu9IyAT5FioMWs0Sg3gUMACGHYPUIuD8oAEzo\",cvId: '3',cZone: 'register.desplainesparks.org',fa:\"/webtrac/web/search.html?Action=Start\\u0026keyword=santa\\u0026keywordoption=M",
-            "context": "cUPMDTk:\"/webtrac/web/search.html?Action=Start\\u0026keyword=santa\\u0026keywordoption=Match+One\\u0026search=yes\\u0026__cf_chl_tk=oHNQj1wNygATnFcdRm_rP39xAOPgjjdi7iNg0bV0uqA-1794060135-1.0.1.1-azl0UqWu9IyAT5FioMWs0Sg3gUMACGHYPUIuD8oAEzo\",cvId: '3',cZone: 'register.desplainesparks.org',fa:\"/webtrac/web/search.html?Action=Start\\u0026keyword=santa\\u0026keywordoption=Match+One\\u0026search=yes\\u0026__cf_chl_f_tk=oHNQj1wNygATnFcd"
+            "match": "santa\\u0026keywordoption=Match+One\\u0026search=yes\\u0026__cf_chl_tk=lSSym2vIpF.WD1rwKF2c7TRwVcNh.AyH47_7Jr4OBe0-1794077347-1.0.1.1-gn4g4S9MlhmYT5rdB4h9w46lwB7gbkPuDmfZHOC_824\",cvId: '3',cZone: 'register.desplainesparks.org',fa:\"/webtrac/web/search.html?Action=Start\\u0026keyword=santa\\u0026keywordoption=M",
+            "context": "cUPMDTk:\"/webtrac/web/search.html?Action=Start\\u0026keyword=santa\\u0026keywordoption=Match+One\\u0026search=yes\\u0026__cf_chl_tk=lSSym2vIpF.WD1rwKF2c7TRwVcNh.AyH47_7Jr4OBe0-1794077347-1.0.1.1-gn4g4S9MlhmYT5rdB4h9w46lwB7gbkPuDmfZHOC_824\",cvId: '3',cZone: 'register.desplainesparks.org',fa:\"/webtrac/web/search.html?Action=Start\\u0026keyword=santa\\u0026keywordoption=Match+One\\u0026search=yes\\u0026__cf_chl_f_tk=lSSym2vIpF.WD1rw"
           },
           {
-            "match": "santa\\u0026keywordoption=Match+One\\u0026search=yes\\u0026__cf_chl_rt_tk=oHNQj1wNygATnFcdRm_rP39xAOPgjjdi7iNg0bV0uqA-1794060135-1.0.1.1-azl0UqWu9IyAT5FioMWs0Sg3gUMACGHYPUIuD8oAEzo\"+ window._cf_chl_opt.cOgUHash);a.onload = function() {history.replaceState(null, null, ogU);}}document.getElementsByTagName('he",
-            "context": "l, null,\"/webtrac/web/search.html?Action=Start\\u0026keyword=santa\\u0026keywordoption=Match+One\\u0026search=yes\\u0026__cf_chl_rt_tk=oHNQj1wNygATnFcdRm_rP39xAOPgjjdi7iNg0bV0uqA-1794060135-1.0.1.1-azl0UqWu9IyAT5FioMWs0Sg3gUMACGHYPUIuD8oAEzo\"+ window._cf_chl_opt.cOgUHash);a.onload = function() {history.replaceState(null, null, ogU);}}document.getElementsByTagName('head')[0].appendChild(a);}());</script></body></html>"
+            "match": "santa\\u0026keywordoption=Match+One\\u0026search=yes\\u0026__cf_chl_rt_tk=lSSym2vIpF.WD1rwKF2c7TRwVcNh.AyH47_7Jr4OBe0-1794077347-1.0.1.1-gn4g4S9MlhmYT5rdB4h9w46lwB7gbkPuDmfZHOC_824\"+ window._cf_chl_opt.cOgUHash);a.onload = function() {history.replaceState(null, null, ogU);}}document.getElementsByTagName('he",
+            "context": "l, null,\"/webtrac/web/search.html?Action=Start\\u0026keyword=santa\\u0026keywordoption=Match+One\\u0026search=yes\\u0026__cf_chl_rt_tk=lSSym2vIpF.WD1rwKF2c7TRwVcNh.AyH47_7Jr4OBe0-1794077347-1.0.1.1-gn4g4S9MlhmYT5rdB4h9w46lwB7gbkPuDmfZHOC_824\"+ window._cf_chl_opt.cOgUHash);a.onload = function() {history.replaceState(null, null, ogU);}}document.getElementsByTagName('head')[0].appendChild(a);}());</script></body></html>"
           }
         ],
         "(?i)(?:Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)[a-z]*\\.? \\d{1,2}[^<]{0,80}": [],
@@ -1739,7 +2008,7 @@
       "url": "https://www.skokieparks.org/events/breakfast-with-santa/26/",
       "purpose": "Skokie Park District - Breakfast with Santa 2026 page (date, time, place, registration)",
       "item": 458,
-      "probed_at": "2026-11-07T14:02:15+00:00",
+      "probed_at": "2026-11-07T18:49:07+00:00",
       "status": 200,
       "final_url": "https://www.skokieparks.org/events/breakfast-with-santa/26/",
       "content_type": "text/html; charset=utf-8",
@@ -1774,7 +2043,7 @@
       "url": "https://niles-parks.org/calendar-list/event/7-breakfast-with-santa",
       "purpose": "Niles Park District - Breakfast with Santa page (is there a 2026 date?)",
       "item": 458,
-      "probed_at": "2026-11-07T14:02:16+00:00",
+      "probed_at": "2026-11-07T18:49:07+00:00",
       "status": 404,
       "final_url": "https://niles-parks.org/calendar-list/event/7-breakfast-with-santa",
       "content_type": "text/html; charset=utf-8",
@@ -1791,7 +2060,7 @@
       "url": "https://www.palatineparks.org/wp-json/tribe/events/v1/events?per_page=3",
       "purpose": "Palatine Park District - The Events Calendar REST route (JSON with an \"events\" list?)",
       "item": 465,
-      "probed_at": "2026-11-07T14:02:17+00:00",
+      "probed_at": "2026-11-07T18:49:08+00:00",
       "status": 404,
       "final_url": "https://www.palatineparks.org/wp-json/tribe/events/v1/events?per_page=3",
       "content_type": "application/json; charset=UTF-8",
@@ -1806,7 +2075,7 @@
       "url": "https://www.palatineparks.org/events/?ical=1",
       "purpose": "Palatine Park District - The Events Calendar iCal export (BEGIN:VCALENDAR?)",
       "item": 465,
-      "probed_at": "2026-11-07T14:02:18+00:00",
+      "probed_at": "2026-11-07T18:49:08+00:00",
       "status": 200,
       "final_url": "https://www.palatineparks.org/events/?ical=1",
       "content_type": "text/html; charset=UTF-8",
@@ -1834,11 +2103,11 @@
       "url": "https://runsignup.com/Race/IL/ArlingtonHeights/RotaryClubSantaRun",
       "purpose": "Arlington Heights Rotary Santa Run Walk & Reindeer Dash - registration page (2026 date, start times, place)",
       "item": 466,
-      "probed_at": "2026-11-07T14:02:20+00:00",
+      "probed_at": "2026-11-07T18:49:10+00:00",
       "status": 200,
       "final_url": "https://runsignup.com/Race/IL/ArlingtonHeights/RotaryClubSantaRun",
       "content_type": "text/html; charset=utf-8",
-      "bytes": 62249,
+      "bytes": 62009,
       "title": "Rotary Santa Run Walk & Reindeer Dash",
       "feed_links": [],
       "calendar_links": [],
@@ -1907,8 +2176,8 @@
             "context": "vents/IL/ArlingtonHeights/RotaryClubSantaRun#event-1147714\">Reindeer Dash (10 and under)</a> </h2> <div class=\"rsuEventTile__information\">"
           },
           {
-            "match": "Reindeer Dash\",\"contactNameWithArticle\":\"the Rotary Santa Run Walk & Reindeer Dash\",\"spamCheckMd5\":\"ddf5fde965847a9f9dfc26ba57654ad1\",\"spamCheckTime\":1794060140,\"recaptchaSi",
-            "context": "ace\\/Contact\\/48627\",\"contactName\":\"Rotary Santa Run Walk & Reindeer Dash\",\"contactNameWithArticle\":\"the Rotary Santa Run Walk & Reindeer Dash\",\"spamCheckMd5\":\"ddf5fde965847a9f9dfc26ba57654ad1\",\"spamCheckTime\":1794060140,\"recaptchaSiteKey\":\"6LcdnRATAAAAAA4C48ibTO2oi9ikfu_Avc1VfsZP\",\"contactPr"
+            "match": "Reindeer Dash\",\"contactNameWithArticle\":\"the Rotary Santa Run Walk & Reindeer Dash\",\"spamCheckMd5\":\"ddf5fde965847a9f9dfc26ba57654ad1\",\"spamCheckTime\":1794077350,\"recaptchaSi",
+            "context": "ace\\/Contact\\/48627\",\"contactName\":\"Rotary Santa Run Walk & Reindeer Dash\",\"contactNameWithArticle\":\"the Rotary Santa Run Walk & Reindeer Dash\",\"spamCheckMd5\":\"ddf5fde965847a9f9dfc26ba57654ad1\",\"spamCheckTime\":1794077350,\"recaptchaSiteKey\":\"6LcdnRATAAAAAA4C48ibTO2oi9ikfu_Avc1VfsZP\",\"contactPr"
           },
           {
             "match": "Reindeer Dash\",\"location\":{\"@type\":\"Place\",\"name\":\"Arlington Heights\",\"address\":{\"@type\":\"PostalAddress\",\"streetAddress\":\"220 West Campbell\",\"addressLocality\":\"Arlington Hei",
