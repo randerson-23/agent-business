@@ -7225,3 +7225,24 @@ def test_rotary_santa_run_is_sourced_and_reaches_the_santa_selection():
     assert entry["url"].startswith("https://runsignup.com/") and "Reindeer Dash for kids 10 and under" in entry["detail"]
     blocks = [{"section": "Events", "events": [{"title": entry["title"], "url": entry["url"], "date_iso": entry["date"], "attendable": True}]}]
     assert [e["title"] for e in build_digest.select_santa_events(blocks, date(2026, 11, 8))] == ["Rotary Santa Run Walk & Reindeer Dash"]
+
+
+def test_abbreviated_titles_on_consecutive_days_merge_but_different_events_do_not():
+    # ROADMAP.md item 467.
+    def ev(title, iso, venue="Arlington Heights Memorial Library"):
+        return {"title": title, "url": "https://ahml/x", "date_iso": iso, "venue": venue, "attendable": True, "detail": "", "tags": []}
+    sat, sun = ev("Friends of the Library Fall Sale", "2026-11-07T00:00:00"), ev("FOL Fall Book Sale", "2026-11-08T00:00:00")
+    other = ev("Lego Club", "2026-11-08T10:00:00")
+    other_venue = ev("Friends of the Library Fall Sale", "2026-11-08T00:00:00", venue="Mount Prospect Public Library")
+    events = [sat, sun, other, other_venue]
+    build_digest.merge_repeated_sessions(events)
+    assert sun.get("merged_away") and not sat.get("merged_away") and len(sat["sessions"]) == 2
+    assert not other.get("merged_away") and not other_venue.get("merged_away")
+    craft, yoga = ev("Kids Craft Hour", "2026-11-07T10:00:00"), ev("Family Yoga Hour", "2026-11-08T10:00:00")
+    build_digest.merge_repeated_sessions([craft, yoga])
+    assert not yoga.get("merged_away")  # different events at the same library on consecutive days
+    email = build_digest.prepare_email_events([dict(sat), dict(sun), dict(other)])
+    titles = [e["title"] for e in email]
+    assert titles.count("Friends of the Library Fall Sale") == 1 and "FOL Fall Book Sale" not in titles
+    merged = next(e for e in email if e["title"] == "Friends of the Library Fall Sale")
+    assert merged["email_when"] == "Sat Nov 7 & Sun Nov 8"

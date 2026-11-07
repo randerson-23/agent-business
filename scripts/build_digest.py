@@ -3583,6 +3583,67 @@ def prepare_event_cards(blocks: list[dict]) -> None:
 SESSION_MERGE_DAYS = 7
 
 
+# ROADMAP.md item 467: local abbreviations expanded before titles are compared.
+TITLE_ABBREVIATIONS = {
+    "fol": "friends of the library",
+    "ahml": "arlington heights memorial library",
+    "mppl": "mount prospect public library",
+    "dppl": "des plaines public library",
+    "ppl": "palatine public library",
+    "itpl": "indian trails public library",
+    "pd": "park district",
+}
+_TITLE_FILLER = {"the", "of", "a", "an", "and", "at", "in", "on", "for", "with", "book", "books", "annual", "day", "2026"}
+
+
+def _title_words(title: str, keep_order: bool = False) -> list[str]:
+    words = re.sub(r"[^a-z0-9]+", " ", title.lower()).split()
+    expanded = " ".join(TITLE_ABBREVIATIONS.get(w, w) for w in words).split()
+    if keep_order:
+        return expanded
+    return [w for w in expanded if w not in _TITLE_FILLER]
+
+
+def _merge_consecutive_day_listings(events: list[dict]) -> None:
+    """Item 467: the same event listed under two titles on consecutive days at
+    the same venue ("Friends of the Library Fall Sale" Sat, "FOL Fall Book
+    Sale" Sun) becomes one card. Matches only when, after expanding local
+    abbreviations and dropping filler words, one title's words are all in the
+    other's and at least three words remain."""
+    live = [e for e in events if e.get("date_iso") and e.get("attendable") is not False and not e.get("sponsored_by") and not e.get("merged_away")]
+    live.sort(key=lambda e: e["date_iso"])
+    for i, first in enumerate(live):
+        if first.get("merged_away"):
+            continue
+        words_a = set(_title_words(first.get("title") or ""))
+        venue = (first.get("venue") or first.get("source") or "").lower()
+        if len(words_a) < 3 or not venue:
+            continue
+        for second in live[i + 1:]:
+            if second.get("merged_away") or second is first:
+                continue
+            try:
+                gap = (date.fromisoformat(second["date_iso"][:10]) - date.fromisoformat(first["date_iso"][:10])).days
+            except ValueError:
+                continue
+            if gap > 1:
+                break
+            if gap != 1 or (second.get("venue") or second.get("source") or "").lower() != venue:
+                continue
+            words_b = set(_title_words(second.get("title") or ""))
+            if len(words_b) >= 3 and (words_a <= words_b or words_b <= words_a):
+                sessions = first.get("sessions") or [{
+                    "label": " ".join(p for p in (datetime.fromisoformat(first["date_iso"]).strftime("%a"), first.get("time_label")) if p),
+                    "ics_href": first.get("ics_href"), "google_calendar_url": first.get("google_calendar_url"), "anchor_id": first.get("anchor_id"), "date_iso": first["date_iso"],
+                }]
+                sessions.append({
+                    "label": " ".join(p for p in (datetime.fromisoformat(second["date_iso"]).strftime("%a"), second.get("time_label")) if p),
+                    "ics_href": second.get("ics_href"), "google_calendar_url": second.get("google_calendar_url"), "anchor_id": second.get("anchor_id"), "date_iso": second["date_iso"],
+                })
+                first["sessions"] = sessions
+                second["merged_away"] = True
+
+
 def merge_repeated_sessions(events: list[dict]) -> None:
     """ROADMAP.md item 381: events with the same normalised title and venue
     inside one week render as ONE card listing every session. The first
@@ -3597,7 +3658,7 @@ def merge_repeated_sessions(events: list[dict]) -> None:
         event.pop("sessions", None)
         if not event.get("date_iso") or event.get("attendable") is False or event.get("sponsored_by"):
             continue
-        key = (re.sub(r"[^a-z0-9]+", " ", (event.get("title") or "").lower()).strip(), (event.get("venue") or event.get("source") or "").lower())
+        key = (" ".join(_title_words(event.get("title") or "", keep_order=True)), (event.get("venue") or event.get("source") or "").lower())
         groups.setdefault(key, []).append(event)
     for group in groups.values():
         if len(group) < 2:
@@ -3617,11 +3678,13 @@ def merge_repeated_sessions(events: list[dict]) -> None:
                 "ics_href": e.get("ics_href"),
                 "google_calendar_url": e.get("google_calendar_url"),  # item 462
                 "anchor_id": e.get("anchor_id"),
+                "date_iso": e["date_iso"],
             }
             for e in members
         ]
         for e in members[1:]:
             e["merged_away"] = True
+    _merge_consecutive_day_listings(events)
 
 
 
@@ -6368,8 +6431,11 @@ def prepare_email_events(events: list[dict], limit: int | None = None) -> list[d
     `email_when` ("Sat Oct 10 · 10:00 AM", or the date alone when untimed),
     `email_where` and `email_blurb`. Sorted before the per-town cap is
     applied, so the entries shown are the soonest ones."""
+    merge_repeated_sessions(events)  # items 381/467: one entry per event in the email too
     prepared = []
     for e in events:
+        if e.get("merged_away"):
+            continue
         when = None
         if e.get("date_iso"):
             try:
@@ -6380,6 +6446,17 @@ def prepare_email_events(events: list[dict], limit: int | None = None) -> list[d
         clock = event_time_label(e.get("date_iso"))
         if when and clock:
             when = f"{when} · {clock}"
+        if e.get("sessions"):
+            parts = []
+            for sess in e["sessions"][:3]:
+                try:
+                    dt = datetime.fromisoformat(sess.get("date_iso") or "")
+                except ValueError:
+                    continue
+                t = event_time_label(sess["date_iso"])
+                parts.append(dt.strftime("%a %b %-d") + (f" · {t}" if t else ""))
+            if parts:
+                when = " & ".join(parts)
         prepared.append(
             dict(
                 e,
