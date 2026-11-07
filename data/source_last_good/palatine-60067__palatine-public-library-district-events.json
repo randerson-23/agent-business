@@ -1,5 +1,5 @@
 {
- "fetched_at": "2026-11-07T13:16:46+00:00",
+ "fetched_at": "2026-11-07T21:59:54+00:00",
  "items": [
   {
    "date": null,
@@ -52,12 +52,6 @@
   {
    "date": null,
    "detail": "",
-   "title": "Book Mini Golf",
-   "url": "https://www.palatinelibrary.org/event/book-mini-golf-placeholder-228862"
-  },
-  {
-   "date": null,
-   "detail": "",
    "title": "Toddler Storytime",
    "url": "https://www.palatinelibrary.org/event/toddler-storytime-231944"
   },
@@ -72,6 +66,12 @@
    "detail": "",
    "title": "Toddler Storytime",
    "url": "https://www.palatinelibrary.org/event/toddler-storytime-231945"
+  },
+  {
+   "date": null,
+   "detail": "",
+   "title": "Crime Readers Book Group",
+   "url": "https://www.palatinelibrary.org/event/crime-readers-book-group-51"
   }
  ],
  "source": "Palatine Public Library District — Events"

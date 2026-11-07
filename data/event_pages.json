@@ -396,5 +396,28 @@
   "town": "Mount Prospect",
   "url": "https://www.mppd.org/event/family-photos-with-santa-4/",
   "venue": null
+ },
+ "e/2026-12-05-rotary-santa-run-walk-reindeer-dash/": {
+  "date_iso": "2026-12-05T09:30:00",
+  "detail": "🦌 Reindeer Dash for kids 10 and under at 9:30 AM, then the Santa Run/Walk 5K and an untimed 1-mile walk at 10 AM. Registration required; run by the Rotary…",
+  "detail_long": null,
+  "first_seen": "2026-11-07",
+  "ics_href": "data:text/calendar;charset=utf-8,BEGIN%3AVCALENDAR%0D%0AVERSION%3A2.0%0D%0APRODID%3A-//Within%20Ten//EN%0D%0ABEGIN%3AVEVENT%0D%0ADTSTART%3A20261205T093000%0D%0ADTEND%3A20261205T103000%0D%0ASUMMARY%3ARotary%20Santa%20Run%20Walk%20%26%20Reindeer%20Dash%0D%0ADESCRIPTION%3A%F0%9F%A6%8C%20Reindeer%20Dash%20for%20kids%2010%20and%20under%20at%209%3A30%20AM%5C%2C%20then%20the%20Santa%20Run/Walk%205K%20and%20an%20untimed%201-mile%20walk%20at%2010%20AM.%20Registration%20required%5C%3B%20run%20by%20the%20Rotary%E2%80%A6%0D%0AURL%3Ahttps%3A//runsignup.com/Race/IL/ArlingtonHeights/RotaryClubSantaRun%0D%0AEND%3AVEVENT%0D%0AEND%3AVCALENDAR%0D%0A",
+  "path": "e/2026-12-05-rotary-santa-run-walk-reindeer-dash/",
+  "postal_code": null,
+  "region_id": "arlington-heights-60005",
+  "region_url": "https://withintenmiles.com/arlington-heights-60005/",
+  "source": null,
+  "sponsored_by": null,
+  "state": "IL",
+  "street_address": null,
+  "tags": [
+   "kid_friendly",
+   "outdoor"
+  ],
+  "title": "Rotary Santa Run Walk & Reindeer Dash",
+  "town": "Arlington Heights",
+  "url": "https://runsignup.com/Race/IL/ArlingtonHeights/RotaryClubSantaRun",
+  "venue": null
  }
 }

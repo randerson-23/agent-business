@@ -2,7 +2,7 @@
   "@context": "https://schema.org",
   "@type": "ItemList",
   "name": "Upcoming events in Arlington Heights — Within Ten",
-  "dateModified": "2026-11-07T14:38:48+00:00",
+  "dateModified": "2026-11-07T21:59:54+00:00",
   "numberOfItems": 18,
   "itemListElement": [
     {
@@ -161,9 +161,9 @@
       "position": 6,
       "item": {
         "@type": "Event",
-        "name": "Social Worker in the Library",
+        "name": "Read to Learn (District 214)",
         "startDate": "2026-11-10",
-        "url": "https://withintenmiles.com/arlington-heights-60005/#ev-social-worker-in-the-library-2026-11-10",
+        "url": "https://withintenmiles.com/arlington-heights-60005/#ev-read-to-learn-district-214-2026-11-10",
         "eventStatus": "https://schema.org/EventScheduled",
         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
         "location": {
@@ -177,7 +177,7 @@
             "streetAddress": "500 N. Dunton Ave."
           }
         },
-        "sameAs": "https://www.ahml.info/scheduling/reservation/218152",
+        "sameAs": "https://www.ahml.info/scheduling/reservation/194393",
         "organizer": {
           "@type": "Organization",
           "name": "Arlington Heights Memorial Library",
@@ -281,9 +281,9 @@
       "position": 10,
       "item": {
         "@type": "Event",
-        "name": "eBooks, eAudiobooks, Movies and More",
+        "name": "ESL Social Hour",
         "startDate": "2026-11-13",
-        "url": "https://withintenmiles.com/arlington-heights-60005/#ev-ebooks-eaudiobooks-movies-and-more-2026-11-13",
+        "url": "https://withintenmiles.com/arlington-heights-60005/#ev-esl-social-hour-2026-11-13",
         "eventStatus": "https://schema.org/EventScheduled",
         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
         "location": {
@@ -297,7 +297,7 @@
             "streetAddress": "500 N. Dunton Ave."
           }
         },
-        "sameAs": "https://www.ahml.info/scheduling/reservation/234443",
+        "sameAs": "https://www.ahml.info/scheduling/reservation/198388",
         "organizer": {
           "@type": "Organization",
           "name": "Arlington Heights Memorial Library",
@@ -521,9 +521,9 @@
       "position": 18,
       "item": {
         "@type": "Event",
-        "name": "Senior Center: Travelogue",
+        "name": "First-Time Parents' Meetup",
         "startDate": "2026-11-20",
-        "url": "https://withintenmiles.com/arlington-heights-60005/#ev-senior-center-travelogue-2026-11-20",
+        "url": "https://withintenmiles.com/arlington-heights-60005/#ev-first-time-parents-meetup-2026-11-20",
         "eventStatus": "https://schema.org/EventScheduled",
         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
         "location": {
@@ -537,7 +537,7 @@
             "streetAddress": "500 N. Dunton Ave."
           }
         },
-        "sameAs": "https://www.ahml.info/scheduling/reservation/233828",
+        "sameAs": "https://www.ahml.info/scheduling/reservation/230133",
         "organizer": {
           "@type": "Organization",
           "name": "Arlington Heights Memorial Library",
