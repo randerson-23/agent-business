@@ -123,7 +123,7 @@ sources:
     enabled: true
 
   - name: "Wheeling Park District — Events"
-    type: tribe_events  # item 465: REST by date range, then month exports, then this URL
+    type: ics  # item 465: back to one plain request - this site answers 403 to wp-json and the month exports (CI, 2026-11-07)
     # CONFIRMED BROKEN (run 35549497769, 2026-09-21): real 403 Forbidden -
     # the Tribe Events URL pattern-matched from three other regions'
     # Park Districts didn't hold here. See the header comment.
