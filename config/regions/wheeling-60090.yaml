@@ -123,7 +123,7 @@ sources:
     enabled: true
 
   - name: "Wheeling Park District — Events"
-    type: ics
+    type: tribe_events  # item 465: REST by date range, then month exports, then this URL
     # CONFIRMED BROKEN (run 35549497769, 2026-09-21): real 403 Forbidden -
     # the Tribe Events URL pattern-matched from three other regions'
     # Park Districts didn't hold here. See the header comment.

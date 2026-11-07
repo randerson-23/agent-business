@@ -146,7 +146,7 @@ sources:
     enabled: true
 
   - name: "Salt Creek Rural Park District — Events"
-    type: ics
+    type: tribe_events  # item 465: REST by date range, then month exports, then this URL
     # ROADMAP.md item 428: Salt Creek (Twin Lakes, Palatine) runs The Events Calendar Pro and
     # advertises this iCal route in its page head (URL-probe round 27, 2026-11-01: the home page
     # links it and the route answers 200; it listed no events that day, so this source may be

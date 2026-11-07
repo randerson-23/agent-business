@@ -256,3 +256,27 @@ probes:
     patterns:
       - '(?is)Breakfast with Santa.{0,900}'
       - '(?i)(?:Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)[a-z]*\.? \d{1,2},? 20\d\d[^<]{0,80}'
+  # Round 37 (item 465, 2026-11-07): does Palatine Park District run The Events Calendar with a readable feed? If either
+  # answers, its source moves from html_events to the tribe_events fetcher.
+  - url: https://www.palatineparks.org/wp-json/tribe/events/v1/events?per_page=3
+    item: 465
+    purpose: Palatine Park District - The Events Calendar REST route (JSON with an "events" list?)
+    patterns:
+      - '"events"\s*:\s*\['
+      - '"next_rest_url"[^,]{0,200}'
+      - '"start_date"\s*:\s*"[^"]{0,30}"'
+  - url: https://www.palatineparks.org/events/?ical=1
+    item: 465
+    purpose: Palatine Park District - The Events Calendar iCal export (BEGIN:VCALENDAR?)
+    patterns:
+      - 'BEGIN:VCALENDAR'
+      - 'DTSTART[^\r\n]{0,40}'
+  # Round 38 (item 466, 2026-11-07): the Rotary Club's own registration page for the Santa Run Walk & Reindeer Dash
+  # (search says Sat Dec 5, 2026; Reindeer Dash for 10 and under at 9:30 AM). Read the date before adding it.
+  - url: https://runsignup.com/Race/IL/ArlingtonHeights/RotaryClubSantaRun
+    item: 466
+    purpose: Arlington Heights Rotary Santa Run Walk & Reindeer Dash - registration page (2026 date, start times, place)
+    patterns:
+      - '(?i)(?:Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)[a-z]*\.? \d{1,2},? 20\d\d[^<]{0,80}'
+      - '(?i)reindeer dash[^<]{0,160}'
+      - '(?i)\d{1,2}:\d{2}\s*[ap]m[^<]{0,80}'

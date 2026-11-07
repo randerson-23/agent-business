@@ -134,7 +134,7 @@ sources:
     enabled: true
 
   - name: "Mount Prospect Park District — Events"
-    type: ics
+    type: tribe_events  # item 465: REST by date range, then month exports, then this URL
     url: "webcal://www.mppd.org/?post_type=tribe_events&ical=1&eventDisplay=list"
     section: "Park District Events"
     enabled: true
