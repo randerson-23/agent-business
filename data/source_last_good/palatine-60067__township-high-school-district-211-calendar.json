@@ -1,63 +1,73 @@
 {
- "fetched_at": "2026-11-07T04:43:39+00:00",
+ "fetched_at": "2026-11-07T06:06:43+00:00",
  "items": [
   {
    "date": "20261125",
    "detail": "All District 211 buildings will be closed in observance of the",
+   "end_date": "20261127",
    "title": "Fall Break - All D211 Buildings Closed",
    "url": ""
   },
   {
    "date": "20261216",
    "detail": "All Schools will be administering final exams.",
+   "end_date": "20261218",
    "title": "Final Exams",
    "url": ""
   },
   {
    "date": "20261219",
    "detail": "There will be no classes held during winter break.",
+   "end_date": "20270104",
    "title": "Winter Break",
    "url": ""
   },
   {
    "date": "20270104",
    "detail": "There will be no classes in session during the Teacher Institut",
+   "end_date": "20270105",
    "title": "Teacher Institute - No Classes",
    "url": ""
   },
   {
    "date": "20270105",
    "detail": "Classes Resume",
+   "end_date": "20270106",
    "title": "Start of 2nd Semester",
    "url": ""
   },
   {
    "date": "20270118",
    "detail": "All District 211 buildings will be closed in observance of Mart",
+   "end_date": "20270119",
    "title": "Dr. Martin Luther King Day - All D211 Buildings Closed",
    "url": ""
   },
   {
    "date": "20270215",
    "detail": "All District 211 buildings will be closed in observance of Pres",
+   "end_date": "20270216",
    "title": "Presidents Day - All D211 Buildings Closed",
    "url": ""
   },
   {
    "date": "20270217",
    "detail": "",
+   "end_date": "20270218",
    "title": "End of 6-Week Grading Period",
    "url": ""
   },
   {
    "date": "20270322",
    "detail": "",
+   "end_date": "20270328",
    "title": "Spring Break",
    "url": ""
   },
   {
    "date": "20270921",
    "detail": "Conclusion of the 6-Week Grading Period",
+   "end_date": "20270922",
    "title": "End of 6-Week Grading Period",
    "url": ""
   }

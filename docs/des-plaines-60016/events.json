@@ -2,8 +2,8 @@
   "@context": "https://schema.org",
   "@type": "ItemList",
   "name": "Upcoming events in Des Plaines — Within Ten",
-  "dateModified": "2026-11-07T04:54:37+00:00",
-  "numberOfItems": 90,
+  "dateModified": "2026-11-07T06:06:43+00:00",
+  "numberOfItems": 94,
   "itemListElement": [
     {
       "@type": "ListItem",
@@ -2874,6 +2874,132 @@
         },
         "image": "https://withintenmiles.com/og/des-plaines-60016.png",
         "description": "Thursday, November 19 2026 7:30pm - 8:30pm \n A staff member will lead a book discussion. Books are available at the 3rd floor info desk in the public library…"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 91,
+      "item": {
+        "@type": "Event",
+        "name": "Baby Book Time",
+        "startDate": "2026-11-20T10:00:00-06:00",
+        "url": "https://withintenmiles.com/des-plaines-60016/#ev-baby-book-time-2026-11-20",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Des Plaines Public Library",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Des Plaines",
+            "addressRegion": "IL",
+            "streetAddress": "1501 Ellinwood Street",
+            "postalCode": "60016"
+          }
+        },
+        "sameAs": "https://desplaines.libnet.info/event/16431795",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Des Plaines Public Library",
+          "url": "https://desplaines.libnet.info"
+        },
+        "image": "https://withintenmiles.com/og/des-plaines-60016.png",
+        "description": "Friday, November 20 2026 10:00am - 11:00am \n To register, please contact Irene Tripkos at 847-789-5623. Verbal confirmation from Irene Tripkos is needed in…"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 92,
+      "item": {
+        "@type": "Event",
+        "name": "Q & A One on One Appointment",
+        "startDate": "2026-11-20T14:00:00-06:00",
+        "url": "https://withintenmiles.com/des-plaines-60016/#ev-q-a-one-on-one-appointment-2026-11-20",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Des Plaines Public Library",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Des Plaines",
+            "addressRegion": "IL",
+            "streetAddress": "1501 Ellinwood Street",
+            "postalCode": "60016"
+          }
+        },
+        "sameAs": "https://desplaines.libnet.info/event/17523892",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Des Plaines Public Library",
+          "url": "https://desplaines.libnet.info"
+        },
+        "image": "https://withintenmiles.com/og/des-plaines-60016.png",
+        "description": "Friday, November 20 2026 2:00pm - 2:15pm \n Book a 15 minute appointment to discuss a research of tech appontment"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 93,
+      "item": {
+        "@type": "Event",
+        "name": "THE PHIL COLLINS EXPERIENCE with SPECIAL GUEST THE SATURDAY JUNE BAND",
+        "startDate": "2026-11-20T20:00:00-06:00",
+        "url": "https://withintenmiles.com/des-plaines-60016/#ev-the-phil-collins-experience-with-special-guest-the-saturday-2026-11-20",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Des Plaines Theatre",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Des Plaines",
+            "addressRegion": "IL",
+            "streetAddress": "1476 Miner Street"
+          }
+        },
+        "sameAs": "https://desplainestheatre.com/event/the-phil-collins-experience-10/",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Des Plaines Theatre",
+          "url": "https://desplainestheatre.com"
+        },
+        "image": "https://withintenmiles.com/og/des-plaines-60016.png",
+        "description": "The Phil Collins Experience is a dynamic multi-media production that pays tribute to the legendary music of Phil Collins and Genesis. Known as the most…"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 94,
+      "item": {
+        "@type": "Event",
+        "name": "BOURBON 'N BRASS SPEAKEASY: LIVE JAZZ with THE BOOTLEGGERS featuring LAURA LOPARDO on VOCALS",
+        "startDate": "2026-11-20T20:30:00-06:00",
+        "url": "https://withintenmiles.com/des-plaines-60016/#ev-bourbon-n-brass-speakeasy-live-jazz-with-the-bootleggers-fea-2026-11-20",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Des Plaines Theatre",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Des Plaines",
+            "addressRegion": "IL",
+            "streetAddress": "1476 Miner Street"
+          }
+        },
+        "sameAs": "https://desplainestheatre.com/event/bourbon-n-brass-speakeasy-live-jazz-with-the-bootleggers-featuring-laura-lopardo-on-vocals-29/",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Des Plaines Theatre",
+          "url": "https://desplainestheatre.com"
+        },
+        "image": "https://withintenmiles.com/og/des-plaines-60016.png",
+        "description": "Join us in our intimate Bourbon ‘N Brass Speakeasy, located on the 2nd floor of the Des Plaines Theatre, for an evening of Jazz with The Bootleggers featuring…"
       }
     }
   ]

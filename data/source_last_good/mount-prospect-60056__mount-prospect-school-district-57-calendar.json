@@ -1,345 +1,402 @@
 {
- "fetched_at": "2026-11-07T04:43:39+00:00",
+ "fetched_at": "2026-11-07T06:06:43+00:00",
  "items": [
   {
    "date": "20261110T214500Z",
    "detail": "",
+   "end_date": "20261110T223000Z",
    "title": "Playground Community Event",
    "url": ""
   },
   {
    "date": "20261111",
    "detail": "",
+   "end_date": "20261111T040000Z",
    "title": "School Psychologist Day",
    "url": ""
   },
   {
    "date": "20261113",
    "detail": "",
+   "end_date": "20261113T040000Z",
    "title": "End of First Trimester (Elementary)",
    "url": ""
   },
   {
    "date": "20261113",
    "detail": "",
+   "end_date": "20261113T040000Z",
    "title": "School Board Member Day",
    "url": ""
   },
   {
    "date": "20261117T230000Z",
    "detail": "",
+   "end_date": "20261118T020000Z",
    "title": "Board of Education Meeting",
    "url": ""
   },
   {
    "date": "20261119T223000Z",
    "detail": "",
+   "end_date": "20261119T233000Z",
    "title": "Education Foundation Meeting",
    "url": ""
   },
   {
    "date": "20261120",
    "detail": "",
+   "end_date": "20261120T040000Z",
    "title": "Substitute Educator Day",
    "url": ""
   },
   {
    "date": "20261123",
    "detail": "",
+   "end_date": "20261128",
    "title": "Fall Break - No School",
    "url": ""
   },
   {
    "date": "20261203T230000Z",
    "detail": "",
+   "end_date": "20261204T020000Z",
    "title": "Board of Education Meeting (Tentative)",
    "url": ""
   },
   {
    "date": "20261215T230000Z",
    "detail": "",
+   "end_date": "20261216T020000Z",
    "title": "Board of Education Meeting",
    "url": ""
   },
   {
    "date": "20261217T223000Z",
    "detail": "",
+   "end_date": "20261217T233000Z",
    "title": "Education Foundation Meeting",
    "url": ""
   },
   {
    "date": "20261221",
    "detail": "",
+   "end_date": "20261226",
    "title": "Winter Break - No School",
    "url": ""
   },
   {
    "date": "20261228",
    "detail": "",
+   "end_date": "20270102",
    "title": "Winter Break - No School",
    "url": ""
   },
   {
    "date": "20270104",
    "detail": "",
+   "end_date": "20270104T040000Z",
    "title": "Student Non-Attendance/Institute Day",
    "url": ""
   },
   {
    "date": "20270115",
    "detail": "",
+   "end_date": "20270115T040000Z",
    "title": "End of 2nd Quarter (Lincoln)",
    "url": ""
   },
   {
    "date": "20270118",
    "detail": "",
+   "end_date": "20270118T040000Z",
    "title": "Student and Staff Non Attendance/Buildings Closed",
    "url": ""
   },
   {
    "date": "20270121T230000Z",
    "detail": "",
+   "end_date": "20270122T020000Z",
    "title": "Board of Education Meeting",
    "url": ""
   },
   {
    "date": "20270204T230000Z",
    "detail": "",
+   "end_date": "20270205T020000Z",
    "title": "Board of Education Meeting (Tentative)",
    "url": ""
   },
   {
    "date": "20270212",
    "detail": "",
+   "end_date": "20270212T040000Z",
    "title": "Half-day Student Attendance (Grades 1-8)",
    "url": ""
   },
   {
    "date": "20270215",
    "detail": "",
+   "end_date": "20270215T040000Z",
    "title": "Student and Staff Non Attendance/Buildings Closed",
    "url": ""
   },
   {
    "date": "20270218T230000Z",
    "detail": "",
+   "end_date": "20270219T020000Z",
    "title": "Board of Education Meeting",
    "url": ""
   },
   {
    "date": "20270226",
    "detail": "",
+   "end_date": "20270226T040000Z",
    "title": "End of Second Trimester (Elementary)",
    "url": ""
   },
   {
    "date": "20270304T230000Z",
    "detail": "",
+   "end_date": "20270305T020000Z",
    "title": "Board of Education Meeting (Tentative)",
    "url": ""
   },
   {
    "date": "20270305",
    "detail": "",
+   "end_date": "20270305T040000Z",
    "title": "Half-Day Student Attendance (Grades 1-8)",
    "url": ""
   },
   {
    "date": "20270316",
    "detail": "",
+   "end_date": "20270316T030000Z",
    "title": "School Social Worker Day",
    "url": ""
   },
   {
    "date": "20270318T213000Z",
    "detail": "",
+   "end_date": "20270318T223000Z",
    "title": "Education Foundation Meeting",
    "url": ""
   },
   {
    "date": "20270318T220000Z",
    "detail": "",
+   "end_date": "20270319T010000Z",
    "title": "Board of Education Meeting",
    "url": ""
   },
   {
    "date": "20270319",
    "detail": "",
+   "end_date": "20270319T030000Z",
    "title": "End of 3rd Quarter (Lincoln)",
    "url": ""
   },
   {
    "date": "20270319",
    "detail": "",
+   "end_date": "20270319T030000Z",
    "title": "School BCBA Day",
    "url": ""
   },
   {
    "date": "20270322",
    "detail": "",
+   "end_date": "20270327",
    "title": "Spring Break - No School",
    "url": ""
   },
   {
    "date": "20270401T220000Z",
    "detail": "",
+   "end_date": "20270402T010000Z",
    "title": "Board of Education Meeting (Tentative)",
    "url": ""
   },
   {
    "date": "20270405",
    "detail": "",
+   "end_date": "20270405T030000Z",
    "title": "School Librarian Appreciation Day",
    "url": ""
   },
   {
    "date": "20270406",
    "detail": "",
+   "end_date": "20270406T030000Z",
    "title": "Assistant Principal Appreciation Day",
    "url": ""
   },
   {
    "date": "20270406",
    "detail": "",
+   "end_date": "20270406T030000Z",
    "title": "Half-Day Student Attendance (Grades 1-8)",
    "url": ""
   },
   {
    "date": "20270407",
    "detail": "",
+   "end_date": "20270407T030000Z",
    "title": "Instructional Assistant Appreciation Day",
    "url": ""
   },
   {
    "date": "20270415",
    "detail": "",
+   "end_date": "20270415T030000Z",
    "title": "Occupational Therapist Day",
    "url": ""
   },
   {
    "date": "20270415T204500Z",
    "detail": "",
+   "end_date": "20270415T214500Z",
    "title": "District 57 Retirement Open House",
    "url": ""
   },
   {
    "date": "20270415T220000Z",
    "detail": "",
+   "end_date": "20270416T010000Z",
    "title": "Board of Education Meeting",
    "url": ""
   },
   {
    "date": "20270421",
    "detail": "",
+   "end_date": "20270421T030000Z",
    "title": "Administrative Professionals Day",
    "url": ""
   },
   {
    "date": "20270422T213000Z",
    "detail": "",
+   "end_date": "20270422T223000Z",
    "title": "Education Foundation Meeting",
    "url": ""
   },
   {
    "date": "20270427",
    "detail": "",
+   "end_date": "20270427T030000Z",
    "title": "School Bus Driver Appreciation Day",
    "url": ""
   },
   {
    "date": "20270503",
    "detail": "",
+   "end_date": "20270508",
    "title": "Staff Appreciation Week",
    "url": ""
   },
   {
    "date": "20270506T220000Z",
    "detail": "",
+   "end_date": "20270507T010000Z",
    "title": "Board of Education Meeting (Tentative)",
    "url": ""
   },
   {
    "date": "20270512",
    "detail": "",
+   "end_date": "20270512T030000Z",
    "title": "School Nurse Appreciation Day",
    "url": ""
   },
   {
    "date": "20270514",
    "detail": "",
+   "end_date": "20270514T030000Z",
    "title": "School Communicators Day",
    "url": ""
   },
   {
    "date": "20270518",
    "detail": "",
+   "end_date": "20270518T030000Z",
    "title": "Speech-Language Pathologist Day",
    "url": ""
   },
   {
    "date": "20270520",
    "detail": "",
+   "end_date": "20270520T030000Z",
    "title": "Last Day of Circle of Friends Pre-School",
    "url": ""
   },
   {
    "date": "20270520T213000Z",
    "detail": "",
+   "end_date": "20270520T223000Z",
    "title": "Education Foundation Meeting",
    "url": ""
   },
   {
    "date": "20270520T220000Z",
    "detail": "",
+   "end_date": "20270521T010000Z",
    "title": "Board of Education Meeting",
    "url": ""
   },
   {
    "date": "20270521",
    "detail": "",
+   "end_date": "20270521T030000Z",
    "title": "Half-Day Student Attendance (Grades 1-8)",
    "url": ""
   },
   {
    "date": "20270527",
    "detail": "",
+   "end_date": "20270527T030000Z",
    "title": "Last Day of Kindergarten",
    "url": ""
   },
   {
    "date": "20270528",
    "detail": "",
+   "end_date": "20270528T030000Z",
    "title": "End of 4th Quarter (Lincoln)",
    "url": ""
   },
   {
    "date": "20270528",
    "detail": "",
+   "end_date": "20270528T030000Z",
    "title": "End of Third Trimester (Elementary)",
    "url": ""
   },
   {
    "date": "20270528",
    "detail": "",
+   "end_date": "20270528T030000Z",
    "title": "Last Day for Grades 1-8 (Half Day Attendance)",
    "url": ""
   },
   {
    "date": "20270601",
    "detail": "",
+   "end_date": "20270605",
    "title": "Emergency Days",
    "url": ""
   },
   {
    "date": "20270607",
    "detail": "",
+   "end_date": "20270607T030000Z",
    "title": "Emergency Days",
    "url": ""
   },
   {
    "date": "20270617T220000Z",
    "detail": "",
+   "end_date": "20270618T010000Z",
    "title": "Board of Education Meeting",
    "url": ""
   }
