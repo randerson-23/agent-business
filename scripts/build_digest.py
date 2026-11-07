@@ -2570,6 +2570,22 @@ def select_give_events(blocks: list[dict], today: date) -> tuple[list[dict], lis
     return drives, volunteer
 
 
+def build_give_email_line(entries: list[dict], now: datetime) -> dict | None:
+    """ROADMAP.md item 441 step 4: one email line, from Nov 19 to Dec 20, naming
+    the drives whose last day falls in the next seven days, linked to /give/."""
+    today = now.astimezone(LOCAL_TZ).date()
+    if not (date(today.year, 11, 19) <= today <= date(today.year, 12, 20)):
+        return None
+    parts = []
+    for e in entries:
+        for d in e.get("drives") or []:
+            if today <= d["end"] <= today + timedelta(days=7):
+                parts.append(f"{e['name']}: {d['name']} (last day {d['end_label']})")
+    if not parts:
+        return None
+    return {"text": "🎁 Drives closing this week: " + " · ".join(parts[:3]), "url": SITE_BASE_URL + "give/?utm_source=email&utm_campaign=give"}
+
+
 def render_give_page(entries: list[dict], now: datetime, analytics: dict | None = None, newsletter: dict | None = None) -> str:
     """The /give/ page. `entries` is [{name, region_url, links, drives, events, volunteer}]."""
     today = now.astimezone(LOCAL_TZ).date()
@@ -3730,6 +3746,7 @@ def render_region_page(
         og_image_url=SITE_BASE_URL + "og/" + region["id"] + ".png",
         trick_or_treat_in_season=is_trick_or_treat_season(now),
         leaf_pickup_in_season=is_leaf_pickup_season(now),
+        give_in_season=is_give_season(now.astimezone(LOCAL_TZ).date()),
         holiday_in_season=is_holiday_season(now),
         winter_in_season=winter_break_season(now),
         build_scope_end_iso=build_scope_end_iso,
@@ -3979,6 +3996,7 @@ def render_hub_page(
         og_image_url=SITE_BASE_URL + "og/default.png",
         trick_or_treat_in_season=is_trick_or_treat_season(now),
         leaf_pickup_in_season=is_leaf_pickup_season(now),
+        give_in_season=is_give_season(now.astimezone(LOCAL_TZ).date()),
         corrections_cta_url=build_corrections_cta_url(contact_email),
         halloween=halloween,
         holiday=holiday,
@@ -6325,7 +6343,7 @@ def _pick_evergreen_highlights(evergreen: list[dict], limit: int) -> list[dict]:
     return (free + rest)[:limit]
 
 
-def render_combined_email_digest(sections: list[dict], weekend_date_range: str, now: datetime, newsletter: dict | None = None, *, preview: bool = False, halloween: dict | None = None, holiday: dict | None = None, weather: list[dict] | None = None, halloween_extras: dict | None = None) -> str:
+def render_combined_email_digest(sections: list[dict], weekend_date_range: str, now: datetime, newsletter: dict | None = None, *, preview: bool = False, halloween: dict | None = None, holiday: dict | None = None, weather: list[dict] | None = None, halloween_extras: dict | None = None, give: list[dict] | None = None) -> str:
     """The combined, all-regions email (ROADMAP.md Phase 11 #105) - the
     signup form is on every region page, but the automated send (item
     24/31) only ever mailed Mount Prospect's digest, since Buttondown's
@@ -6440,6 +6458,7 @@ def render_combined_email_digest(sections: list[dict], weekend_date_range: str, 
         weather_line=weather_line["text"] if weather_line else None,
         days_off_line=days_off_line,
         closures_line=closures_line,
+        give_line=build_give_email_line(give or [], now),
         text_friend_url=text_friend_url(),
         night_out=night_out,
         election_line=election_day_line(now, email=True),
@@ -8083,6 +8102,7 @@ def main() -> None:
         "halloween_extras": build_halloween_issue_extras(trick_or_treat_entries, now, build_halloween_night(night_forecast, now)),
         # One region's forecast stands for the five neighbouring towns; Mount
         # Prospect is central, else the first town that has one.
+        "give": give_entries,  # item 441: "Drives closing this week"
         "weather": email_weather_by_region.get("mount-prospect-60056")
         or next((w for w in email_weather_by_region.values() if w), None),
     }

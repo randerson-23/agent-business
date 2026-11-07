@@ -7124,3 +7124,24 @@ def test_combined_email_uses_one_neutral_palette():
         assert loud not in body, loud
     colours = set(c.lower() for c in _re.findall(r"#[0-9a-fA-F]{6}\b", body))
     assert len(colours) <= 10, colours
+
+
+def test_give_footer_link_shows_only_in_season():
+    # ROADMAP.md item 441 step 4.
+    cfg = next(c for c in build_digest.load_regions() if c["region"]["id"] == "palatine-60067")
+    inside = build_digest.render_region_page(cfg, [], None, [], datetime(2026, 11, 20, 15, tzinfo=timezone.utc))
+    outside = build_digest.render_region_page(cfg, [], None, [], datetime(2026, 11, 7, 15, tzinfo=timezone.utc))
+    assert 'give/">Toy, coat &amp; food drives</a>' in inside and "food drives</a>" not in outside
+
+
+def test_drives_closing_this_week_email_line_from_nov_19():
+    # ROADMAP.md item 441 step 4.
+    drive = {"name": "Community Food Drive", "end": date(2026, 11, 25), "end_label": "Wed Nov 25"}
+    entries = [{"name": "Arlington Heights", "drives": [drive]}]
+    assert build_digest.build_give_email_line(entries, datetime(2026, 11, 18, 15, tzinfo=timezone.utc)) is None  # before Nov 19
+    line = build_digest.build_give_email_line(entries, datetime(2026, 11, 19, 15, tzinfo=timezone.utc))
+    assert line["text"] == "🎁 Drives closing this week: Arlington Heights: Community Food Drive (last day Wed Nov 25)" and line["url"].endswith("give/?utm_source=email&utm_campaign=give")
+    assert build_digest.build_give_email_line(entries, datetime(2026, 12, 3, 15, tzinfo=timezone.utc)) is None  # already over
+    sections = [{"region_name": "Palatine", "region_url": "https://x/p/", "weekend_events": []}]
+    html = build_digest.render_combined_email_digest(sections, "Nov 20–22", datetime(2026, 11, 19, 15, tzinfo=timezone.utc), give=entries)
+    assert "Drives closing this week" in html
