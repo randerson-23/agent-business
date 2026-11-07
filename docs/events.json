@@ -2,7 +2,7 @@
   "@context": "https://schema.org",
   "@type": "ItemList",
   "name": "Upcoming events across every region — Within Ten",
-  "dateModified": "2026-11-07T14:01:50+00:00",
+  "dateModified": "2026-11-07T14:24:32+00:00",
   "numberOfItems": 261,
   "itemListElement": [
     {
@@ -473,7 +473,7 @@
       "position": 16,
       "item": {
         "@type": "Event",
-        "name": "MADE IN AMERICA: A TRIBUTE TO TOBY KEITH featuring RICH ECKHARDT (TOBY KEITH’S GUITARIST FOR 25 YEARS!) with SPECIAL GUEST CHRISTIAN AS KENNY CHESNEY",
+        "name": "MADE IN AMERICA: A TRIBUTE TO TOBY KEITH featuring RICH ECKHARDT (TOBY KEITH'S GUITARIST FOR 25 YEARS!) with SPECIAL GUEST CHRISTIAN AS KENNY CHESNEY",
         "startDate": "2026-11-07T20:00:00-06:00",
         "url": "https://withintenmiles.com/des-plaines-60016/#ev-made-in-america-a-tribute-to-toby-keith-featuring-rich-eckha-2026-11-07",
         "eventStatus": "https://schema.org/EventScheduled",
@@ -504,7 +504,7 @@
       "position": 17,
       "item": {
         "@type": "Event",
-        "name": "BOURBON ‘N BRASS SPEAKEASY: LIVE JAZZ with THE BOOTLEGGERS featuring LAURA LOPARDO on VOCALS",
+        "name": "BOURBON 'N BRASS SPEAKEASY: LIVE JAZZ with THE BOOTLEGGERS featuring LAURA LOPARDO on VOCALS",
         "startDate": "2026-11-07T21:00:00-06:00",
         "url": "https://withintenmiles.com/des-plaines-60016/#ev-bourbon-n-brass-speakeasy-live-jazz-with-the-bootleggers-fea-2026-11-07",
         "eventStatus": "https://schema.org/EventScheduled",
@@ -691,7 +691,7 @@
       "position": 23,
       "item": {
         "@type": "Event",
-        "name": "DENISE TOMASELLO, CHICAGO’S QUEEN OF CABARET and her 17-PIECE ORCHESTRA",
+        "name": "DENISE TOMASELLO, CHICAGO'S QUEEN OF CABARET and her 17-PIECE ORCHESTRA",
         "startDate": "2026-11-08T15:00:00-06:00",
         "url": "https://withintenmiles.com/des-plaines-60016/#ev-denise-tomasello-chicago-s-queen-of-cabaret-and-her-17-piece-2026-11-08",
         "eventStatus": "https://schema.org/EventScheduled",
@@ -3745,7 +3745,7 @@
       "position": 122,
       "item": {
         "@type": "Event",
-        "name": "JASON BONHAM’S LED ZEPPELIN EVENING",
+        "name": "JASON BONHAM'S LED ZEPPELIN EVENING",
         "startDate": "2026-11-12T19:30:00-06:00",
         "url": "https://withintenmiles.com/des-plaines-60016/#ev-jason-bonham-s-led-zeppelin-evening-2026-11-12",
         "eventStatus": "https://schema.org/EventScheduled",
@@ -3776,7 +3776,7 @@
       "position": 123,
       "item": {
         "@type": "Event",
-        "name": "BOURBON ‘N BRASS SPEAKEASY: LIVE BLUES SHOW WITH SEAN McKEE BLUES BAND",
+        "name": "BOURBON 'N BRASS SPEAKEASY: LIVE BLUES SHOW WITH SEAN McKEE BLUES BAND",
         "startDate": "2026-11-12T19:30:00-06:00",
         "url": "https://withintenmiles.com/des-plaines-60016/#ev-bourbon-n-brass-speakeasy-live-blues-show-with-sean-mckee-bl-2026-11-12",
         "eventStatus": "https://schema.org/EventScheduled",
@@ -4411,7 +4411,7 @@
       "position": 144,
       "item": {
         "@type": "Event",
-        "name": "BOURBON ‘N BRASS: LIVE JAZZ WITH THE BOURBON ‘N BRASS BRIAN PATTI PROHIBITION DANCE BAND",
+        "name": "BOURBON 'N BRASS: LIVE JAZZ WITH THE BOURBON 'N BRASS BRIAN PATTI PROHIBITION DANCE BAND",
         "startDate": "2026-11-13T20:30:00-06:00",
         "url": "https://withintenmiles.com/des-plaines-60016/#ev-bourbon-n-brass-live-jazz-with-the-bourbon-n-brass-brian-pat-2026-11-13",
         "eventStatus": "https://schema.org/EventScheduled",
@@ -4690,7 +4690,7 @@
       "position": 153,
       "item": {
         "@type": "Event",
-        "name": "FILM SCREENING: “BOB DOLE – A WALK THROUGH HISTORY”",
+        "name": "FILM SCREENING: \"BOB DOLE - A WALK THROUGH HISTORY\"",
         "startDate": "2026-11-14T13:00:00-06:00",
         "url": "https://withintenmiles.com/des-plaines-60016/#ev-film-screening-bob-dole-a-walk-through-history-2026-11-14",
         "eventStatus": "https://schema.org/EventScheduled",
@@ -4812,7 +4812,7 @@
       "position": 157,
       "item": {
         "@type": "Event",
-        "name": "BOURBON ‘N BRASS SPEAKEASY: LIVE BLUES with SONICSOUL BAND",
+        "name": "BOURBON 'N BRASS SPEAKEASY: LIVE BLUES with SONICSOUL BAND",
         "startDate": "2026-11-14T20:30:00-06:00",
         "url": "https://withintenmiles.com/des-plaines-60016/#ev-bourbon-n-brass-speakeasy-live-blues-with-sonicsoul-band-2026-11-14",
         "eventStatus": "https://schema.org/EventScheduled",
@@ -7612,7 +7612,7 @@
       "position": 247,
       "item": {
         "@type": "Event",
-        "name": "ART GARFUNKEL – WHAT A WONDERFUL WORLD CONCERT",
+        "name": "ART GARFUNKEL - WHAT A WONDERFUL WORLD CONCERT",
         "startDate": "2026-11-19T19:30:00-06:00",
         "url": "https://withintenmiles.com/des-plaines-60016/#ev-art-garfunkel-what-a-wonderful-world-concert-2026-11-19",
         "eventStatus": "https://schema.org/EventScheduled",
@@ -7643,7 +7643,7 @@
       "position": 248,
       "item": {
         "@type": "Event",
-        "name": "BOURBON ‘N BRASS: LIVE BLUES SHOW WITH MILES MINOR “ROCKIN THE BLUES”",
+        "name": "BOURBON 'N BRASS: LIVE BLUES SHOW WITH MILES MINOR \"ROCKIN THE BLUES\"",
         "startDate": "2026-11-19T19:30:00-06:00",
         "url": "https://withintenmiles.com/des-plaines-60016/#ev-bourbon-n-brass-live-blues-show-with-miles-minor-rockin-the-2026-11-19",
         "eventStatus": "https://schema.org/EventScheduled",
@@ -8039,7 +8039,7 @@
       "position": 261,
       "item": {
         "@type": "Event",
-        "name": "BOURBON ‘N BRASS SPEAKEASY: LIVE JAZZ with THE BOOTLEGGERS featuring LAURA LOPARDO on VOCALS",
+        "name": "BOURBON 'N BRASS SPEAKEASY: LIVE JAZZ with THE BOOTLEGGERS featuring LAURA LOPARDO on VOCALS",
         "startDate": "2026-11-20T20:30:00-06:00",
         "url": "https://withintenmiles.com/des-plaines-60016/#ev-bourbon-n-brass-speakeasy-live-jazz-with-the-bootleggers-fea-2026-11-20",
         "eventStatus": "https://schema.org/EventScheduled",
