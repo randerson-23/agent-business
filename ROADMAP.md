@@ -20242,7 +20242,7 @@ can't see most of them.
 
 #### P3 (new)
 
-467. **Merge the same event listed under abbreviated titles.** Build loop,
+467. ✅ DONE (TITLE_ABBREVIATIONS expanded before comparing; same venue on consecutive days with one title's key words inside the other's (3+ words) becomes one card; the email now applies the same merge before the per-town cap, so the AHML Fall Sale pair takes one slot) **Merge the same event listed under abbreviated titles.** Build loop,
      extending item 381's merge. Before comparing titles, expand a short
      table of local abbreviations (*FOL* → *Friends of the Library*,
      *AHML*, *MPPL*, *PD* → *Park District*). Then treat events at the
