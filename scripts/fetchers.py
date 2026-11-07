@@ -505,28 +505,21 @@ def _tribe_rest(base: str, today: date, limit: int) -> list[dict] | None:
     return items[:limit]
 
 
-def fetch_tribe_events(
-    url: str, limit: int = MAX_ITEMS_PER_SOURCE, *, failure_info: dict | None = None, today: date | None = None, **_ignored
-) -> list[dict] | None:
-    """Events from an Events Calendar site for the next TRIBE_WINDOW_DAYS days.
-    `url` is the source's existing export URL; only its host is used for the
-    REST route and month exports, and it is the last fallback. None only when
-    every route failed."""
-    today = today or datetime.now(timezone.utc).date()
-    base = _tribe_base(url)
-    try:
-        items = _tribe_rest(base, today, limit)
-        if items is not None:
-            return items
-    except Exception as exc:  # noqa: BLE001 - fall through to the month exports
-        logger.info("Events Calendar REST route unavailable for %s: %s", base, exc)
-    combined, seen, any_ok = [], set(), False
+def _tribe_months(base: str, today: date, limit: int) -> tuple[list[dict] | None, dict | None]:
+    """The month iCal exports for this month and the next TRIBE_MONTHS-1.
+    Returns (events, None) when at least one month answered, else (None, the
+    first month's failure_info). Stops after the first month if it fails."""
+    combined, seen, any_ok, first_error = [], set(), False, None
     first = today.replace(day=1)
     for i in range(TRIBE_MONTHS):
         month = (first.month - 1 + i) % 12 + 1
         year = first.year + (first.month - 1 + i) // 12
-        got = fetch_ics(f"{base}/events/month/?ical=1&tribe-bar-date={year:04d}-{month:02d}", limit)
+        info: dict = {}
+        got = fetch_ics(f"{base}/events/month/?ical=1&tribe-bar-date={year:04d}-{month:02d}", limit, failure_info=info)
         if got is None:
+            first_error = first_error or info
+            if i == 0:
+                return None, first_error  # the host refused or is down: don't try the other months
             continue
         any_ok = True
         for ev in got:
@@ -534,9 +527,43 @@ def fetch_tribe_events(
             if key not in seen:
                 seen.add(key)
                 combined.append(ev)
-    if any_ok and combined:
-        combined.sort(key=lambda e: str(e.get("date") or ""))
-        return combined[:limit]
+    if not any_ok or not combined:  # nothing parsed (an HTML page, an empty export): try the other routes
+        return None, first_error
+    combined.sort(key=lambda e: str(e.get("date") or ""))
+    return combined[:limit], None
+
+
+def _is_connection_failure(info: dict | None) -> bool:
+    """No HTTP response at all (a timeout, a refused or reset connection): the
+    host is unreachable, so other routes on it would fail the same way."""
+    return bool(info) and info.get("status_code") is None and bool(info.get("exception_class"))
+
+
+def fetch_tribe_events(
+    url: str, limit: int = MAX_ITEMS_PER_SOURCE, *, failure_info: dict | None = None, today: date | None = None, **_ignored
+) -> list[dict] | None:
+    """Events from an Events Calendar site for the next few months.
+
+    Order (kept gentle after the first CI run, item 465): the month iCal
+    exports first - the same `?ical=1` family the site already serves us -
+    then the plugin's REST route only if the month exports were refused, then
+    the source's existing export. A host that fails to connect gets one try of
+    the existing export and nothing else, so a down site costs one retry cycle,
+    not five. None only when every route failed."""
+    today = today or datetime.now(timezone.utc).date()
+    base = _tribe_base(url)
+    items, err = _tribe_months(base, today, limit)
+    if items is not None:
+        logger.info("Events Calendar %s: %d event(s) from the month exports", base, len(items))
+        return items
+    if not _is_connection_failure(err):
+        try:
+            rest = _tribe_rest(base, today, limit)
+            if rest is not None:
+                logger.info("Events Calendar %s: %d event(s) from the REST route", base, len(rest))
+                return rest
+        except Exception as exc:  # noqa: BLE001 - fall through to the existing export
+            logger.info("Events Calendar REST route unavailable for %s: %s", base, exc)
     return fetch_ics(url, limit, failure_info=failure_info)
 
 class _EventLinkExtractor(HTMLParser):

@@ -20192,7 +20192,7 @@ can't see most of them.
 
 #### P1 (new)
 
-465. ✅ DONE (fetchers.fetch_tribe_events: REST route for the next 75 days, following next_rest_url on the same host up to 6 pages, then the month iCal exports for this month and the next two, then the old export; AHPD, Metropolis, MPPD, Des Plaines Theatre, Salt Creek and Wheeling switched; all-day and end dates flow to item 463. Palatine Park District probed (round 37). Not testable from this sandbox (hosts blocked): check source_health counts after the first CI build) **Read The Events Calendar feeds by date range, not by first page.**
+465. ✅ DONE (fetchers.fetch_tribe_events; first CI run 2026-11-07: Des Plaines Theatre 30 -> 59 events, but Metropolis and Wheeling refuse wp-json (403), and a down host cost five retry cycles, so the order is now month iCal exports first, the REST route only if those are refused, then the old export, and an unreachable host gets one try of the old export only; AHPD, Metropolis, MPPD, Des Plaines Theatre, Salt Creek and Wheeling switched; all-day and end dates flow to item 463. Palatine Park District probed (round 37). Not testable from this sandbox (hosts blocked): check source_health counts after the first CI build) **Read The Events Calendar feeds by date range, not by first page.**
      Build loop, `scripts/fetchers.py` and the region YAMLs:
 
      - For every `tribe_events` source (AHPD, MPPD, Wheeling Park
