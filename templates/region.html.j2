@@ -1,3 +1,4 @@
+{% from "_cal_row.html.j2" import cal_row -%}
 {% from "_share.html.j2" import share_button -%}
 {% from "_featured.html.j2" import featured_label -%}
 {% from "_signup.html.j2" import signup_css, signup_form, signup_runtime -%}
@@ -534,6 +535,7 @@
     text-decoration: none;
   }
   .cal-row a:hover { text-decoration: underline; }
+  .cal-session { font-size: 12.5px; color: var(--muted); }
   .tag-badge {
     font-size: 11.5px;
     font-weight: 600;
@@ -954,14 +956,7 @@
           </div>
           {% endif %}
           {% if item.reg_badge %}<div class="tag-row"><span class="tag-badge" style="background: var(--hue-amber-bg, #fff4d6); color: var(--hue-amber-ink, #5c3b00);">📝 {{ item.reg_badge }}</span></div>{% endif %}
-          {% if item.sessions %}
-          <div class="cal-row">{% for ss in item.sessions if ss.ics_href %}<a href="{{ ss.ics_href }}" download="event.ics">📅 {{ ss.label }}</a>{% endfor %}</div>
-          {% elif item.ics_href %}
-          <div class="cal-row">
-            <a href="{{ item.ics_href }}" download="event.ics">📅 Add to calendar</a>
-            <a href="{{ item.google_calendar_url }}" target="_blank" rel="noopener">Google Calendar</a>
-          </div>
-          {% endif %}
+          {{ cal_row(item) }}
         </article>
         {% endfor %}
         </div>

@@ -1386,7 +1386,7 @@ def test_build_llms_txt_trick_or_treat_line_counts_actual_regions():
 def test_build_google_calendar_url_has_expected_params():
     event = {"title": "Fishing Derby", "detail": "Bring gear", "date_iso": "2026-09-19T10:00:00"}
     url = build_digest.build_google_calendar_url(event, "Mount Prospect")
-    assert url.startswith("https://www.google.com/calendar/render?")
+    assert url.startswith("https://calendar.google.com/calendar/render?")
     assert "action=TEMPLATE" in url
     assert "dates=20260919T100000%2F20260919T110000" in url
     assert "location=Mount+Prospect" in url
@@ -6533,7 +6533,8 @@ def test_repeated_sessions_render_as_one_card_but_keep_one_event_each():
     html = build_digest.render_merged_hub_page(sections, datetime(2026, 10, 24, 12, tzinfo=timezone.utc), None, slug="this-weekend", heading="H", subheading="s", meta_description="m", empty_message="none")
     assert html.count("The Music Man Jr.</a>") == 2  # one card for the Oct sessions, one for November
     assert "Sat 5:00 PM" in html and "Sun 2:00 PM" in html
-    assert "📅 Sat 5:00 PM" in html and "📅 Sun 2:00 PM" in html and html.count("The Music Man Jr.") >= 2
+    assert "Sat 5:00 PM: <a" in html and "Sun 2:00 PM: <a" in html and html.count("The Music Man Jr.") >= 2
+    assert html.count('href="https://calendar.google.com/x"') >= 2  # item 462: a Google link per session
     assert b["merged_away"] and "sessions" in a and "merged_away" not in far
     ld = json.loads(build_digest.build_event_json_ld(blocks, "https://x/p/"))
     names = [e["name"] for e in (ld["@graph"] if "@graph" in ld else [ld])]
@@ -6677,7 +6678,7 @@ def test_every_page_template_has_exactly_one_robots_meta_with_large_image_previe
     # ROADMAP.md item 411: pages that are noindex keep noindex, with the value merged into the same tag.
     import re as _re
     templates = Path(__file__).resolve().parents[1] / "templates"
-    page_templates = [p for p in templates.glob("*.html.j2") if p.name not in {"combined_email_digest.html.j2", "email_digest.html.j2", "_featured.html.j2", "_signup.html.j2", "_share.html.j2"}]
+    page_templates = [p for p in templates.glob("*.html.j2") if p.name not in {"combined_email_digest.html.j2", "email_digest.html.j2", "_featured.html.j2", "_signup.html.j2", "_share.html.j2", "_cal_row.html.j2"}]
     assert len(page_templates) >= 14
     for path in page_templates:
         metas = _re.findall(r'<meta name="robots" content="([^"]*)"', path.read_text(encoding="utf-8"))
@@ -6954,7 +6955,8 @@ def test_merged_hub_cards_offer_google_calendar_as_well_as_the_ics_file():
     ev = {"title": "Fall Fest", "url": "https://x.org/f", "date_iso": "2026-11-07T10:00:00", "ics_href": "data:text/calendar;x", "google_calendar_url": "https://www.google.com/calendar/render?action=TEMPLATE&text=Fall+Fest"}
     sec = {"region_name": "Palatine", "region_url": "https://withintenmiles.com/palatine-60067/", "events": [ev], "weekend_events": [ev]}
     html = build_digest.render_merged_hub_page([sec], datetime(2026, 11, 4, 15, tzinfo=timezone.utc), subheading="Nov 6-8", meta_description="d", empty_message="none")
-    assert "Add to calendar" in html and 'href="https://www.google.com/calendar/render?action=TEMPLATE' in html
+    assert "Apple / Outlook (.ics)" in html and 'href="https://www.google.com/calendar/render?action=TEMPLATE' in html
+    assert html.index("📅 Google Calendar") < html.index("Apple / Outlook (.ics)")  # item 462: Google first
 
 
 def test_give_page_drives_volunteering_season_and_empty_line():
@@ -7145,3 +7147,72 @@ def test_drives_closing_this_week_email_line_from_nov_19():
     sections = [{"region_name": "Palatine", "region_url": "https://x/p/", "weekend_events": []}]
     html = build_digest.render_combined_email_digest(sections, "Nov 20–22", datetime(2026, 11, 19, 15, tzinfo=timezone.utc), give=entries)
     assert "Drives closing this week" in html
+
+
+def test_calendar_links_carry_the_time_zone_all_day_form_real_end_and_a_link_back():
+    # ROADMAP.md item 463.
+    from urllib.parse import parse_qs, urlparse, unquote
+    timed = {"title": "Fishing Derby", "detail": "Bring gear", "url": "https://parks.example/derby", "date_iso": "2026-09-19T10:00:00"}
+    q = parse_qs(urlparse(build_digest.build_google_calendar_url(timed, "Mount Prospect", "https://withintenmiles.com/mount-prospect-60056/this-weekend/")).query)
+    assert q["ctz"] == ["America/Chicago"] and q["dates"] == ["20260919T100000/20260919T110000"]
+    assert q["details"][0].endswith("Official listing: https://parks.example/derby\nMore this weekend: https://withintenmiles.com/mount-prospect-60056/this-weekend/")
+    untimed = dict(timed, date_iso="2026-11-07T00:00:00")
+    q = parse_qs(urlparse(build_digest.build_google_calendar_url(untimed, "Mount Prospect")).query)
+    assert q["dates"] == ["20261107/20261108"] and "ctz" not in q
+    ics = unquote(build_digest.build_ics_data_uri(untimed))
+    assert "DTSTART;VALUE=DATE:20261107" in ics and "DTEND;VALUE=DATE:20261108" in ics and "T000000" not in ics
+    ended = dict(timed, end_iso="2026-09-19T14:30:00")
+    q = parse_qs(urlparse(build_digest.build_google_calendar_url(ended, "Mount Prospect")).query)
+    assert q["dates"] == ["20260919T100000/20260919T143000"]
+    assert "DTEND:20260919T143000" in unquote(build_digest.build_ics_data_uri(ended))
+    multi = dict(untimed, end_iso="2026-11-09T00:00:00")  # an all-day DTEND is already exclusive
+    assert parse_qs(urlparse(build_digest.build_google_calendar_url(multi, "x")).query)["dates"] == ["20261107/20261109"]
+    long = dict(timed, detail="word " * 400)
+    assert len(parse_qs(urlparse(build_digest.build_google_calendar_url(long, "x")).query)["details"][0]) < 800
+
+
+def _gcal_ev(title, iso, **kw):
+    ev = {"title": title, "url": "https://src/" + title.replace(" ", "-"), "date": "Saturday", "date_iso": iso, "detail": "d", "tags": ["free"], "attendable": True, "venue": "Library", "town": "Palatine"}
+    ev.update(kw)
+    ev["google_calendar_url"] = build_digest.build_google_calendar_url(ev, "Palatine")
+    return ev
+
+
+def test_both_emails_carry_a_google_calendar_link_on_picks_and_events():
+    # ROADMAP.md item 462: Google only in email (a data: .ics link does not work there).
+    evs = [_gcal_ev(f"Fair {i}", f"2026-11-07T1{i}:00:00") for i in range(3)]
+    sections = [{"region_name": n, "region_url": f"https://x/{n}/", "weekend_events": [dict(e, title=f"{n} {e['title']}") for e in evs]} for n in ("Palatine", "Wheeling")]
+    html = build_digest.render_combined_email_digest(sections, "Nov 6–8", datetime(2026, 11, 4, 12, tzinfo=timezone.utc))
+    assert html.count("📅 Add to Google Calendar") >= 6 and "data:text/calendar" not in html
+    assert html.split("DON'T MISS")[1].split("</table>")[0].count("calendar.google.com") >= 1  # the picks carry it too
+    single = build_digest.render_email_digest({"id": "r", "name": "Palatine"}, evs, [], "https://x/", "Nov 6–8", None)
+    assert single.count("📅 Add to Google Calendar") == 3
+
+
+def test_seasonal_pages_and_event_pages_put_google_calendar_on_every_dated_entry():
+    # ROADMAP.md item 462: /holidays/, /give/, /santa/ (incl. "Just outside"), /e/ pages, multi-session cards.
+    import re as _re
+    now = datetime(2026, 11, 16, 15, tzinfo=timezone.utc)
+    ev = _gcal_ev("Santa Breakfast", "2026-12-05T09:00:00")
+    santa = build_digest.render_santa_page([{"region_name": "Palatine", "region_url": "https://x/p/", "events": [ev]}], now, None, None, None,
+                                           [{"town": "Skokie", "title": "Breakfast with Santa", "date": date(2026, 12, 12), "date_label": "Sat Dec 12", "time": "9:30 - 11:30 AM", "venue": "Oakton", "source_url": "https://s/x",
+                                             "google_calendar_url": build_digest.configured_event_calendar_url("Breakfast with Santa", date(2026, 12, 12), "9:30 - 11:30 AM", "Oakton, Skokie", "https://s/x")}])
+    assert santa.count("📅 Google Calendar") == 2 and "20261212T093000%2F20261212T113000" in santa
+    give = build_digest.render_give_page([{"name": "Palatine", "region_url": "https://x/p/", "links": [], "drives": [], "events": [dict(ev, title="Coat Drive", date_label="Sat Dec 5")], "volunteer": [dict(ev, title="Teen Volunteering", date_label="Sat Dec 5")]}], now)
+    assert give.count("📅 Google Calendar") == 2
+    tree = {"url": "https://v/t", "label": "Friday, December 4, 4–6:30 PM", "date_iso": "2026-12-04", "google_calendar_url": build_digest.configured_event_calendar_url("Tree lighting", date(2026, 12, 4), "4–6:30 PM", "Metropolitan Square", "https://v/t")}
+    hol = build_digest.render_holidays_page([{"region_name": "Des Plaines", "region_url": "https://x/dp/", "tree": tree, "tree_url": "https://v/t", "events": [dict(ev, date_label="Sat Dec 5", anchor_id="a")]}], now)
+    assert hol.count("📅 Google Calendar") == 2 and "20261204T160000%2F20261204T183000" in hol
+    entry = {"title": "Diwali Party", "date_iso": "2026-11-21T18:00:00", "town": "Mount Prospect", "state": "IL", "source": "S — Events", "url": "https://x.org/d", "path": "e/2026-11-21-diwali-party/", "region_url": "https://withintenmiles.com/mount-prospect-60056/"}
+    page = build_digest.render_event_page(entry)
+    assert "📅 Google Calendar" in page and "ctz=America%2FChicago" in page
+    assert page.index("📅 Google Calendar") < page.index("Apple / Outlook (.ics)")
+
+
+def test_time_range_parser_handles_the_shapes_the_configs_use():
+    from datetime import time as t
+    assert build_digest.parse_time_range("4–6:30 PM") == (t(16, 0), t(18, 30))
+    assert build_digest.parse_time_range("9:30 - 11:30 AM") == (t(9, 30), t(11, 30))
+    assert build_digest.parse_time_range("11 a.m. - 3 p.m.") == (t(11, 0), t(15, 0))
+    assert build_digest.parse_time_range("7 p.m.") == (t(19, 0), None)
+    assert build_digest.parse_time_range("all day") is None

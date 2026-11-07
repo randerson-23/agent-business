@@ -597,24 +597,61 @@ def _ics_sanitize_url(url: str) -> str:
     return re.sub(r"[\r\n]+", "", url or "")
 
 
+def calendar_span(event: dict) -> tuple[bool, datetime, datetime] | None:
+    """ROADMAP.md item 463: (all_day, start, end) for calendar files and links.
+    A midnight start is how the pipeline marks "no time given", so it becomes
+    an all-day event (end exclusive, the next day or the day after a known
+    last day), never 12:00 AM. A timed event ends at the source's own end time
+    when one is known and later than the start, else one hour later."""
+    if not event.get("date_iso"):
+        return None
+    try:
+        start = datetime.fromisoformat(event["date_iso"])
+    except ValueError:
+        return None
+    if start.tzinfo is not None:
+        start = start.astimezone(LOCAL_TZ).replace(tzinfo=None)
+    end = None
+    if event.get("end_iso"):
+        try:
+            end = datetime.fromisoformat(event["end_iso"])
+            if end.tzinfo is not None:
+                end = end.astimezone(LOCAL_TZ).replace(tzinfo=None)
+        except ValueError:
+            end = None
+    if start.time() == time(0, 0):
+        first = start.replace(hour=0, minute=0, second=0, microsecond=0)
+        last_exclusive = first + timedelta(days=1)
+        if end and end.date() > first.date():
+            # An all-day DTEND is already exclusive; a timed end on a later day includes that day.
+            last_exclusive = datetime.combine(end.date(), time(0, 0)) + (timedelta(days=1) if end.time() != time(0, 0) else timedelta(0))
+        return True, first, last_exclusive
+    if end is None or end <= start:
+        end = start + timedelta(hours=1)
+    return False, start, end
+
+
 def build_ics_data_uri(event: dict) -> str | None:
     """A downloadable "add to calendar" link for an event with a
     machine-readable start date, as a data: URI - no extra output file
-    needed, works with a plain <a download> link. Assumes a 1-hour
-    duration since sources rarely give an explicit end time; that's an
-    approximation stated nowhere as fact, just a usable default.
+    needed, works with a plain <a download> link. Item 463: untimed events
+    are all-day (VALUE=DATE), and the source's end time is used when known;
+    otherwise a one-hour default, an approximation stated nowhere as fact.
     """
-    if not event.get("date_iso"):
+    span = calendar_span(event)
+    if span is None:
         return None
-    start_dt = datetime.fromisoformat(event["date_iso"])
-    end_dt = start_dt + timedelta(hours=1)
+    all_day, start_dt, end_dt = span
+    if all_day:
+        when = [f"DTSTART;VALUE=DATE:{start_dt.strftime('%Y%m%d')}", f"DTEND;VALUE=DATE:{end_dt.strftime('%Y%m%d')}"]
+    else:
+        when = [f"DTSTART:{start_dt.strftime('%Y%m%dT%H%M%S')}", f"DTEND:{end_dt.strftime('%Y%m%dT%H%M%S')}"]
     lines = [
         "BEGIN:VCALENDAR",
         "VERSION:2.0",
         f"PRODID:-//{SITE_NAME}//EN",
         "BEGIN:VEVENT",
-        f"DTSTART:{start_dt.strftime('%Y%m%dT%H%M%S')}",
-        f"DTEND:{end_dt.strftime('%Y%m%dT%H%M%S')}",
+        *when,
         f"SUMMARY:{_ics_escape(event.get('title', ''))}",
     ]
     if event.get("detail"):
@@ -695,22 +732,35 @@ def build_region_calendar_ics(region: dict, blocks: list[dict], now: datetime) -
     return "\r\n".join(lines)
 
 
-def build_google_calendar_url(event: dict, location: str) -> str | None:
-    """A "add to Google Calendar" link - same 1-hour-duration assumption
-    as build_ics_data_uri, for the same reason.
-    """
-    if not event.get("date_iso"):
+GOOGLE_CALENDAR_DETAILS_MAX = 600
+
+
+def build_google_calendar_url(event: dict, location: str, more_url: str | None = None) -> str | None:
+    """An "add to Google Calendar" template link (ROADMAP.md item 463): the
+    documented calendar.google.com host, `ctz=America/Chicago` on timed events
+    so the hour is right whatever the reader's calendar zone, the all-day
+    YYYYMMDD/YYYYMMDD form for untimed ones, the source's end time when known,
+    and details that end with the official listing and a link back here."""
+    span = calendar_span(event)
+    if span is None:
         return None
-    start_dt = datetime.fromisoformat(event["date_iso"])
-    end_dt = start_dt + timedelta(hours=1)
+    all_day, start_dt, end_dt = span
+    fmt = "%Y%m%d" if all_day else "%Y%m%dT%H%M%S"
+    details = truncate(str(event.get("detail_long") or event.get("detail") or ""), GOOGLE_CALENDAR_DETAILS_MAX)
+    tail = []
+    if event.get("url"):
+        tail.append(f"Official listing: {event['url']}")
+    tail.append(f"More this weekend: {more_url or SITE_BASE_URL + 'this-weekend/'}")
     params = {
         "action": "TEMPLATE",
         "text": event.get("title", ""),
-        "dates": f"{start_dt.strftime('%Y%m%dT%H%M%S')}/{end_dt.strftime('%Y%m%dT%H%M%S')}",
-        "details": event.get("detail", ""),
+        "dates": f"{start_dt.strftime(fmt)}/{end_dt.strftime(fmt)}",
+        "details": (details + "\n\n" if details else "") + "\n".join(tail),
         "location": location,
     }
-    return "https://www.google.com/calendar/render?" + urlencode(params)
+    if not all_day:
+        params["ctz"] = "America/Chicago"
+    return "https://calendar.google.com/calendar/render?" + urlencode(params)
 
 
 def load_source_health() -> dict:
@@ -1295,6 +1345,7 @@ def fetch_region_sections(
                 "url": safe_http_url(item.get("url")),  # untrusted feed text: http(s) only
                 "date": format_event_date(item.get("date")),
                 "date_iso": parse_event_date_iso(item.get("date")),
+                "end_iso": parse_event_date_iso(item.get("end_date")) if item.get("end_date") else None,  # item 463
                 "tags": tags,
                 "tag_badges": [{"id": t, **tag_display(t)} for t in tags],
                 "attendable": attendable,
@@ -1311,7 +1362,7 @@ def fetch_region_sections(
             if matched:
                 event.update({"venue": matched["name"], "street_address": matched["street_address"], "postal_code": matched["postal_code"]})
             event["ics_href"] = build_ics_data_uri(event)
-            event["google_calendar_url"] = build_google_calendar_url(event, event_location_text(event))
+            event["google_calendar_url"] = build_google_calendar_url(event, event_location_text(event), SITE_BASE_URL + region_cfg["region"]["id"] + "/this-weekend/")
             # ROADMAP.md item 327: only from an explicit phrase in the source's own text.
             reg = parse_registration_opens(f"{item.get('title', '')}. {item.get('detail', '')}", _event_day(event))
             event["registration_opens"] = reg.isoformat() if reg else None
@@ -2025,6 +2076,44 @@ def build_business_directory(sponsors_cfg: dict, region_id: str) -> list[dict]:
     return directory
 
 
+_TIME_RANGE = re.compile(r"(\d{1,2})(?::(\d{2}))?\s*(a\.?m\.?|p\.?m\.?)?\s*(?:[-\u2013\u2014]|to)\s*(\d{1,2})(?::(\d{2}))?\s*(a\.?m\.?|p\.?m\.?)", re.IGNORECASE)
+_SINGLE_TIME = re.compile(r"(\d{1,2})(?::(\d{2}))?\s*(a\.?m\.?|p\.?m\.?)", re.IGNORECASE)
+
+
+def parse_time_range(text: str | None) -> tuple[time, time | None] | None:
+    """ROADMAP.md item 463: "4\u20136:30 PM" -> (16:00, 18:30); "9:30 - 11:30 AM" ->
+    (09:30, 11:30); "7 p.m." -> (19:00, None). A start without its own a.m./p.m.
+    takes the end's, moved to a.m. if that would put it after the end. None when
+    no time is stated."""
+    def to24(h: int, m: int, mer: str) -> time:
+        pm = mer.lower().startswith("p")
+        h = h % 12 + (12 if pm else 0)
+        return time(h, m)
+    if not text:
+        return None
+    m = _TIME_RANGE.search(text)
+    if m:
+        end = to24(int(m.group(4)), int(m.group(5) or 0), m.group(6))
+        start = to24(int(m.group(1)), int(m.group(2) or 0), m.group(3) or m.group(6))
+        if not m.group(3) and start > end:
+            start = to24(int(m.group(1)), int(m.group(2) or 0), "am")
+        return start, end
+    m = _SINGLE_TIME.search(text)
+    if m:
+        return to24(int(m.group(1)), int(m.group(2) or 0), m.group(3)), None
+    return None
+
+
+def configured_event_calendar_url(title: str, day: date, time_text: str | None, location: str, source_url: str | None, more_url: str | None = None) -> str | None:
+    """A Google Calendar link for a hand-sourced entry (tree lightings, the
+    just-outside list): the stated times when they parse, else all day."""
+    span = parse_time_range(time_text)
+    event = {"title": title, "url": source_url or "", "date_iso": datetime.combine(day, span[0] if span else time(0, 0)).isoformat()}
+    if span and span[1]:
+        event["end_iso"] = datetime.combine(day, span[1]).isoformat()
+    return build_google_calendar_url(event, location, more_url)
+
+
 def prepare_tree_lighting(region_cfg: dict, year: int) -> dict | None:
     """A region's `tree_lighting:` block (ROADMAP.md item 274) for /holidays/.
     `label` is built from the ISO `date`, so its weekday cannot be wrong, and
@@ -2039,7 +2128,11 @@ def prepare_tree_lighting(region_cfg: dict, year: int) -> dict | None:
         label = day.strftime("%A, %B ") + str(day.day)
         extra = [str(block[k]).strip() for k in ("time", "place") if block.get(k)]
         label = ", ".join([label] + extra)
-    return {"url": block["url"], "label": label, "date_iso": day.isoformat() if label else None}
+    google = None
+    if label:
+        where = ", ".join(p for p in (str(block.get("place") or "").strip(), region_cfg.get("region", {}).get("name") or "") if p)
+        google = configured_event_calendar_url(f"Tree lighting ({region_cfg.get('region', {}).get('name', '')})".replace(" ()", ""), day, block.get("time"), where, block["url"], SITE_BASE_URL + "holidays/")
+    return {"url": block["url"], "label": label, "date_iso": day.isoformat() if label else None, "google_calendar_url": google}
 
 
 ISSUES_DIR = ROOT / "data" / "issues"
@@ -2453,6 +2546,7 @@ def load_just_outside(today: date) -> list[dict]:
         out.append({
             "town": str(e["town"]).strip(), "title": str(e["title"]).strip(), "date": day, "date_label": day.strftime("%a %b ") + str(day.day),
             "time": str(e.get("time") or "").strip(), "venue": str(e.get("venue") or "").strip(), "source_url": url,
+            "google_calendar_url": configured_event_calendar_url(str(e["title"]).strip(), day, e.get("time"), ", ".join(p for p in (str(e.get("venue") or "").strip(), str(e["town"]).strip()) if p), url, SITE_BASE_URL + "santa/"),
         })
     out.sort(key=lambda e: e["date"])
     return out
@@ -2474,6 +2568,7 @@ def render_santa_page(entries: list[dict], now: datetime, analytics: dict | None
                 "title": display_title(ev["title"]), "town": entry["region_name"], "color": color, "date_iso": ev["date_iso"],
                 "time_label": event_time_label(ev["date_iso"]), "page_url": page_url, "reg_badge": ev.get("reg_badge"),
                 "sold_out": bool(_SOLD_OUT.search(f"{ev['title']} {ev.get('detail') or ''}")),
+                "google_calendar_url": ev.get("google_calendar_url"),  # item 462
             })
     rows.sort(key=lambda r: r["date_iso"])
     days = []
@@ -3520,6 +3615,7 @@ def merge_repeated_sessions(events: list[dict]) -> None:
             {
                 "label": " ".join(p for p in (datetime.fromisoformat(e["date_iso"]).strftime("%a"), e.get("time_label")) if p),
                 "ics_href": e.get("ics_href"),
+                "google_calendar_url": e.get("google_calendar_url"),  # item 462
                 "anchor_id": e.get("anchor_id"),
             }
             for e in members
@@ -4864,7 +4960,8 @@ def render_event_page(entry: dict, *, expired: bool = False, more: list[dict] | 
         tags=tags,
         source_url=entry["url"],
         source_name=source_name,
-        ics_href=entry.get("ics_href"),
+        ics_href=build_ics_data_uri(entry) or entry.get("ics_href"),  # item 463: rebuilt so stored entries get the all-day/end fixes
+        google_calendar_url=build_google_calendar_url(entry, where_label or entry.get("town") or "", (entry.get("region_url") or SITE_BASE_URL) + "this-weekend/"),  # item 462
         more=more or [],
         expired=expired,
         newsletter=newsletter or {"configured": False},

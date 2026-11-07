@@ -61,7 +61,7 @@
   {% if expired %}<div class="past">This event has passed. See <a href="{{ hub_url }}this-weekend/">what's on this weekend</a>.</div>{% endif %}
   {% if detail %}<p>{{ detail }}</p>{% endif %}
   {% if tags %}<ul class="tags">{% for t in tags %}<li>{{ t }}</li>{% endfor %}</ul>{% endif %}
-  <p><a class="btn" href="{{ source_url }}" rel="noopener">Official listing &rarr;</a>{% if ics_href and not expired %}<a class="btn alt" href="{{ ics_href }}" download="event.ics">Add to calendar</a>{% endif %}</p>
+  <p><a class="btn" href="{{ source_url }}" rel="noopener">Official listing &rarr;</a>{% if google_calendar_url and not expired %}<a class="btn alt" href="{{ google_calendar_url }}" target="_blank" rel="noopener">📅 Google Calendar</a>{% endif %}{% if ics_href and not expired %}<a class="btn alt" href="{{ ics_href }}" download="event.ics">Apple / Outlook (.ics)</a>{% endif %}</p>
   {% if not expired %}{{ share_button("event", title ~ ", " ~ when_label ~ (", " ~ town if town else ""), canonical_url) }}{% endif %}
   <p class="source">Listing published by {{ source_name }}. Check the official listing for the latest time, place and any cost.</p>
   {% if more and not expired %}

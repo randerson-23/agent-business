@@ -91,6 +91,7 @@ def main() -> int:
     candidates = data.get("links", []) if isinstance(data, dict) else []
     if not candidates:
         print("No link candidates; nothing to check.")
+        print_calendar_audit()
         return 0
     health = run(candidates, load_json(HEALTH_PATH))
     HEALTH_PATH.write_text(json.dumps(health, indent=1, sort_keys=True) + "\n", encoding="utf-8")
@@ -98,7 +99,45 @@ def main() -> int:
     print(f"Checked {len(health)} link(s); {len(dead)} dead on two checks.")
     for u in dead:
         print(f"  DEAD: {u}")
+    print_calendar_audit()  # items 462/464
     return 0
+
+
+
+
+# ROADMAP.md items 462/464: calendar-link health, counted on the built site.
+import re as _re  # noqa: E402
+
+_DATED_BLOCK = _re.compile(r"<(li|article)\b[^>]*>(.*?)</\1>", _re.S)
+_MIDNIGHT = _re.compile(r"calendar\.google\.com/calendar/render\?[^\"']*dates=\d{8}T000000")
+
+
+def dated_entries_missing_google(html: str) -> int:
+    """List items and cards that carry a machine-readable or displayed event
+    date (<time>) but no Google Calendar link in the same element."""
+    missing = 0
+    for _tag, inner in _DATED_BLOCK.findall(html):
+        if "<time" in inner and "calendar.google.com" not in inner and "google.com/calendar" not in inner:
+            missing += 1
+    return missing
+
+
+def calendar_link_audit(docs_dir: Path) -> dict:
+    missing = midnight = 0
+    for page in docs_dir.rglob("index.html"):
+        if "/issues/" in page.as_posix():  # archived issues are frozen as sent
+            continue
+        html = page.read_text(encoding="utf-8", errors="replace")
+        missing += dated_entries_missing_google(html)
+        midnight += len(_MIDNIGHT.findall(html))
+    return {"missing": missing, "midnight": midnight}
+
+
+def print_calendar_audit(docs_dir: Path = ROOT / "docs") -> dict:
+    audit = calendar_link_audit(docs_dir)
+    print(f"Dated events without a Google Calendar link: {audit['missing']}")
+    print(f"Calendar links at midnight: {audit['midnight']}")
+    return audit
 
 
 if __name__ == "__main__":
