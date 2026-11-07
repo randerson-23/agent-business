@@ -220,6 +220,7 @@ doesn't re-suggest something already shipped.
 
 **Build queue (by deadline; refreshed by the research loop, item 346).**
 Pick from the top unless the owner has flagged something else:
+0. **462, 463** (**owner request, 2026-11-07:** Google Calendar links on every dated event on every page and in the email, plus correct time zone, all-day events, end times and a link back; ship together), then **464**.
 0. **459** (item 456 step 2 by platform: Des Plaines WebTrac by documented URL; Arlington Heights catalogue link only), then **356** (weekday and toddler page; re-ranked in pass 127 with a toddler-first title), then **461** and **460**.
 0. **456** (find each park district's registration catalogue and read it for Santa, camps and registration days; the only route to `/santa/` by Nov 15), then **458** (Skokie, Niles, Elk Grove holiday events in a labelled "just outside" section).
 0. **451** (BingSiteAuth.xml from `bing_site_auth:`; ready now that Yandex and Seznam accept and only Bing refuses), then **454, 455** (share button on every shareable page; text-a-friend link in the email).
@@ -20080,6 +20081,103 @@ site with per-town, per-age and per-venue pages; new to the table),
 documentation** and **TeamSideline** as data sources. The design/UX
 angle is **the town weekend page's search snippet**: no "kids" or
 "family" anywhere.
+
+#### Research pass 2026-11-07 (hundred-and-twenty-eighth pass, extra run: owner request)
+
+**Owner request (2026-11-07): "ensure Google Calendar links are attached
+to events on all pages."** This extra run audits every built page in
+`docs/` for "Add to Google Calendar" links, checks how good those links
+are, and turns the gaps into items 462–464. **Item 462 is owner-flagged**
+and goes to the top of the build queue.
+
+| Angle | What it is / what we found | Why it matters here |
+|---|---|---|
+| **Where the Google Calendar link is missing (audit of `docs/`, counting `google.com/calendar/render` against `download="event.ics"` per page type)** | **Complete:** the hub's `/this-weekend/`, `/free/` and `/today/`, and each town's `/this-weekend/`, `/free/`, `/today/`, `/holiday/` and `/winter-break/` (one Google link per .ics link). **Gaps:**<br>**(1) Town pages:** 1,119 .ics links but 1,051 Google links. **Multi-session cards** (14 of 278 on Mount Prospect, e.g. *"Family Storytime: Mon 9:30 AM · Tue 10:30 AM · Thu 10:30 AM"*) offer one .ics per session and **no Google link at all**.<br>**(2) `/e/` single-event pages:** *"Add to calendar"* (.ics) only, **0 Google links on all 8 pages**. These are the pages the share buttons send.<br>**(3) Dated events with no calendar link of either kind:** **`/holidays/`** (32 dated `<time>` entries: tree lightings and holiday events), **`/give/`** (12: drives and volunteer sessions), **`/santa/`** (its listings), and the **archived issues** `/issues/<date>/`.<br>**(4) The emails** (`combined-email-send.html`, each town's `email-send.html`) carry **no calendar links**. A `data:` .ics can't work in email, but a Google link does | The owner asked for every page. Most phones in this audience run Google Calendar or open Google links, and the email is where a reader decides on Thursday what to do Saturday. *"Add to Google Calendar"* turns that decision into an entry with a reminder, which is a reason to come back to the site each week (item 462) |
+| **How good the existing links are** (the Google Calendar template-link format as documented by the community: InteractionDesignFoundation's *add-event-to-calendar-docs*, spatie/calendar-links' tests, a Stack Overflow answer; `build_google_calendar_url` in `scripts/build_digest.py`) | The documented form: `action=TEMPLATE`, timed events as `YYYYMMDDTHHMMSS/…` with an optional **`ctz=`** tz-database name, and **all-day events as `YYYYMMDD/YYYYMMDD+1`** (exclusive end). Our builder has three problems:<br>**(a)** It sends **no `ctz`**, so the time is read in the *viewer's* calendar time zone. A reader whose calendar is set to another zone gets the wrong hour.<br>**(b)** Every event gets **start + 1 hour**, and **untimed events are written as midnight–1 AM**: **41 of 263** Mount Prospect links, e.g. *"Family Reading Night"* and *"Puzzle Swap"* at 12:00 AM. The .ics builder has the same assumption.<br>**(c)** `details` holds only the description: **no link back** to the official listing or to the site | A calendar entry at midnight is worse than none. It's wrong on the reader's phone, and it looks like the site's mistake. A link back in the entry means every saved event carries the site's URL into the reader's calendar, a small, lasting finding-it-again path at no cost (item 463) |
+| **The calendar row on a phone (design/UX)** | On the cards that have both, the row reads *"📅 Add to calendar · Google Calendar"*, two plain links. The `.ics` link downloads a file, which on Android often lands in Downloads rather than a calendar app. Google's link opens the app or the web page | On phones the Google link is the one that works, yet it's the second and less prominent of the two. Item 462 reorders and labels them consistently everywhere |
+
+#### P1 (new, owner-flagged)
+
+462. **Google Calendar links on every dated event, on every page and in
+     the email.** Owner request, 2026-11-07. Build loop:
+
+     1. **One partial** for the calendar row, `templates/_cal_row.html.j2`,
+        rendering ***"📅 Google Calendar"*** first and ***"Apple / Outlook
+        (.ics)"*** second, used by every template that shows a dated
+        event.
+     2. **Fill the gaps the audit found:**
+        - **multi-session cards** on town pages: one Google link per
+          session, beside each session's .ics;
+        - **`/e/` pages**: a Google Calendar button beside *Add to
+          calendar*;
+        - **`/holidays/`, `/give/`, `/santa/`** (including the "Just
+          outside" section) and **`/issues/<date>/`**: the calendar row
+          on every dated entry;
+        - **both emails** (combined and per town): a small *"📅 Add to
+          Google Calendar"* link under each "Don't miss" pick and each
+          town-section event. Google only, since .ics data URIs don't
+          work in email. Keep the email under Gmail's clipping size
+          (the existing 102 KB clip check).
+     3. **A guard test** that walks the built `docs/` (or a sandbox
+        build) and fails if any element with a machine-readable event
+        date (`<time datetime>` on an event card, or `Event` JSON-LD
+        with a `startDate`) lacks a `calendar.google.com` link in the
+        same card. Future pages can't regress.
+
+     Tests: the guard over a sandbox build, the partial's order, the
+     multi-session case, an email pick carrying the link, and a page
+     with no dated events not being flagged.
+
+463. **Make each Google Calendar link correct: time zone, all-day
+     events, real end times, and a link back.** Build loop,
+     `build_google_calendar_url`, with the same fixes in
+     `build_ics_data_uri`:
+
+     - **`ctz=America/Chicago`** on every timed link, and the base URL
+       moved to `https://calendar.google.com/calendar/render`. The old
+       `www.google.com/calendar/render` still redirects, but the
+       documented host is better.
+     - **Untimed events become all-day:** `dates=YYYYMMDD/YYYYMMDD+1`.
+       In the .ics they become `DTSTART;VALUE=DATE` /
+       `DTEND;VALUE=DATE`, never midnight.
+     - **Use the source's end time** when the event has one (the feed's
+       `DTEND`, a JSON-LD `endDate`, or a parsed *"2–4 PM"* range). Keep
+       the one-hour default only when no end is known, and multi-day
+       events span their real dates.
+     - **`details`** = the description (trimmed to about 600
+       characters), then *"Official listing: <source URL>"* and
+       *"More this weekend: https://withintenmiles.com/<town>/this-weekend/"*.
+     - **`location`** = the matched venue address (items 335, 372) when
+       known, else the town name, as now.
+
+     Tests: a timed event carries `ctz=America/Chicago`, an untimed one
+     uses the all-day form in both builders, a source end time is
+     honoured, and details carries both links and stays under the
+     length cap.
+
+#### P3 (new)
+
+464. **Calendar-link health in the weekly audit.** Build loop. Add two
+     lines to the existing link-health or watchdog report:
+     - *"Dated events without a Google Calendar link: N"* (item 462's
+       guard, counted on the live build);
+     - *"Calendar links at midnight: N"*, which should be 0 after item
+       463.
+
+     It's a two-line check that keeps the owner's request true as new
+     page types are added (Noon Year's, museum passes, and others).
+     Tests: both counts appear, and a seeded midnight link is counted.
+
+Re-rank: **462 and 463 go to the top of the build queue as owner-flagged**,
+ahead of 459. 462 is coverage and 463 is correctness; ship them together,
+since 463 changes the links 462 spreads. **464** follows.
+
+Competitors reviewed this pass: none new. This run was **an audit of the
+site's own calendar links**, checked against **the community
+documentation for Google Calendar template links**
+(InteractionDesignFoundation, spatie/calendar-links). The design/UX
+angle is **the calendar row on a phone**, where the link that works
+better comes second.
 
 
 ## Working agreements for autonomous iteration
