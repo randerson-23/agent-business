@@ -12,4 +12,11 @@
 #     time: "9:30 - 11:30 a.m."
 #     venue: "Oakton Community Center"
 #     source_url: "https://www.skokieparks.org/events/breakfast-with-santa/26/"
-events: []
+events:
+  # Read 2026-11-06 by the probe workflow from Skokie Park District's own page (round 36).
+  - town: "Skokie"
+    title: "Breakfast with Santa"
+    date: 2026-12-12
+    time: "9:30 - 11:30 AM"
+    venue: "Exploritorium/Oakton Community Center"
+    source_url: "https://www.skokieparks.org/events/breakfast-with-santa/26/"
