@@ -222,8 +222,9 @@ doesn't re-suggest something already shipped.
 Pick from the top unless the owner has flagged something else:
 0. **465** (read The Events Calendar feeds by date range: AHPD, MPPD, Wheeling, Metropolis and Des Plaines Theatre are capped at their first page, so December is invisible; probe Palatine Park District for the same plugin) with **466** (Rotary Santa Run, Palatine's Santa Paws and Frostival on `/santa/`). `/santa/` full by **Nov 15** (item 428).
 0. **427, 428** (read the probe answers daily: tree-lighting dates for Mount Prospect and Wheeling are still TBA).
+0. **468** (per-source horizon and route in source_health, watchdog on short horizons; AHPD is still flat at 11), then **470** (`/e/` pages show their own weekend, not this one).
 0. **447** (`/give/` probes at fire, police and Toys for Tots pages; drop-off businesses as warm leads).
-0. **459** (what remains: Mount Prospect and Palatine *Programs* and *Register* pages), then **356** (weekday and toddler page, toddler-first title), then **461** and **460**.
+0. **459** (what remains: Mount Prospect and Palatine *Programs* and *Register* pages), then **356** (weekday and toddler page, toddler-first title) with **469** (reading-programme lines and prize sponsors as warm leads), then **461** and **460**.
 0. **446** (Noon Year's Eve block and `/new-years-eve/` hub, in the sitemap by **Dec 1**), then **457** (`/museum-passes/`, YAML filled before Dec 1).
 0. **416, 417** (candidate-town measurement until about Nov 13), **422**.
 0. **439** (River Trails: bot-walled, so close it with a catalogue link), **440** (kids'-activity prospects), **467**.
@@ -20269,6 +20270,89 @@ Competitors reviewed this pass: **the five towns' own 2026 Santa pages**
 export and REST routes** as the cause of the missing December. The
 design/UX angle is **the owner's redesigned email**: clean, with one
 duplicate taking a town slot.
+
+#### Research pass 2026-11-07, evening (hundred-and-thirtieth pass)
+
+Today the build loop shipped items 465 (Events Calendar feeds by date
+range), 466 (in part: the Rotary Santa Run & Reindeer Dash is on
+`/santa/` from its RunSignup page) and 467 (abbreviated-title merge,
+in pages and the email). **Correction to pass 129:** Palatine's *Santa
+Paws* page is the **2025** event (Dec 13, 2025), not 2026. The build
+loop checked before adding it and left it out, which is the rule
+working as intended. This pass checks whether item 465 fixed the
+December gap, and looks at two new places where local businesses already
+put money into families.
+
+| Angle | What it is / what we found | Why it matters here |
+|---|---|---|
+| **Did item 465 reach December?** (`data/source_health.json`, last four builds; item 465's done note) | Partly. **Des Plaines Theatre 30 → 64**, **MPPD 30 → 33** and **Salt Creek 0 → 1** after the new fetch. **AHPD is still 11, flat**, recorded as *"unconfirmed"*: the runner couldn't reach the REST route or the month exports that afternoon. **Metropolis** went back to its plain `ics` after 403s on every route, **Des Plaines Park District** is flat at **19** and **Palatine** at **14**. There's no record of **which route answered** for each source, or **how far ahead** each one reaches | Frostival (AHPD, Dec 12) still isn't on the site, and nothing tells the build loop whether AHPD's 11 is the first page again or all AHPD has. A flat count can't tell those apart; a horizon (the latest event date) can. Pass 129 found this class of bug by hand, and it should be caught automatically next time (item 468) |
+| **Libraries' reading programmes and the businesses behind their prizes** (AHML's *1000 Books Before Kindergarten* page, 2026 update; Des Plaines library's *Cultivating readers* guide; Patch on Palatine library's programme) | **AHML's 2026 update** adds a **gift card to a local business** for children who finish *1000 Books Before Kindergarten*. **Des Plaines** runs the same programme (a reading log and stickers every 100 books), and **Palatine** has since 2017. Nothing found for Mount Prospect. These programmes are run for **parents of under-fives**, the audience item 356's toddler page is for | A business that funds a library's reading prize **already spends money to be seen by local parents of young children**. That's the warmest sponsor lead there is, warmer than a cold shop on the OpenStreetMap list. And the programmes themselves are evergreen, sourced lines for the toddler page (item 469) |
+| **Nextdoor, 2026: journalist accounts and business events** (Axios on Nextdoor's verified local-journalist accounts, Apr 9, 2026; Nextdoor's early-access post; Business Wire 2023 on free business events shown on Discover within 10 miles) | **Local Journalist Accounts** (Apr 2026) are for named reporters at **established local publications**, which a one-person digest isn't yet. **Business events** have been free since 2023 and appear on neighbours' Discover pages **within 10 miles** | **No new item.** The site's Nextdoor route is still item 303 (a News Account per town, an owner step). Journalist accounts don't fit until the site has a byline and standing. Recorded so it isn't re-researched |
+| **`/e/` pages for future events (design/UX)** (`docs/e/…rotary-santa-run…`) | The Dec 5 Santa Run page is good: an emoji, a 🦌 line, *Google Calendar* first, then *Apple / Outlook (.ics)* and *Send to a friend* (items 454, 462). But its **"More this weekend"** lists **this** weekend's events: *Friends of the Library Fall Sale*, *Pumpkin Smash*, the *Recreation Park* opening, all Nov 7–8. **The reader of a Dec 5 event page is shown events that will be over by the time they go** | Event pages are what the share button sends, and the holiday ones will be shared for weeks before their dates. "More this weekend" should mean **that** weekend (item 470) |
+
+#### P2 (new)
+
+468. **Record each source's horizon and route, and alert on a short
+     one.** Build loop:
+
+     - In `data/source_health.json`, store per source, per build: the
+       **count**, the **latest event date** (the horizon), and **which
+       route answered** (`rest`, `month_ics`, `list_ics`, `html`).
+     - Add a workflow-watchdog check (item 406): flag a **calendar-type
+       source whose horizon is under 21 days ahead for 3 builds in a
+       row**, and any source whose count has been **identical for 7
+       builds while its horizon hasn't moved**. Those are the
+       signatures of a page-capped fetch and of a stalled feed.
+     - Name AHPD in the first report: if its horizon is still under 21
+       days, retry the month exports on the next build. If the runner is
+       refused, say so plainly in the item 465 note.
+
+     Tests: a fixture with a 10-day horizon trips the check, a 60-day
+     horizon doesn't, and the route field is written.
+
+469. **Reading-programme prize sponsors as warm leads, and the programmes
+     on the toddler page.** Build loop:
+
+     - A probe round for each library's *1000 Books Before Kindergarten*
+       page (AHML, Des Plaines, Palatine; Mount Prospect to be found)
+       with patterns for *gift card*, *sponsored by*, *thanks to* and
+       *courtesy of*.
+     - Write **any business named as a prize sponsor** into
+       `data/warm_hosts.json` with reason `"library_prize_sponsor"`, so
+       `OUTREACH_PROSPECTS.md` lists it under "Warm" with the programme
+       named. Names and public pages only, as now.
+     - Add each library's programme as a sourced **evergreen line** on
+       item 356's weekday and toddler page: *"1000 Books Before
+       Kindergarten at Arlington Heights Memorial Library: sign up in
+       Kids' World →"*.
+
+     Tests: a fixture page naming a sponsor writes a warm host with the
+     reason, and the evergreen line renders with its source link.
+
+470. **"More that weekend" on `/e/` pages, keyed to the event's own
+     date.** Build loop, the `/e/` template:
+
+     - The related list shows up to three events from **the event's own
+       weekend** (or its own day, for a weekday event), titled ***"More
+       that weekend · Sat Dec 5 – Sun Dec 6"***.
+     - Fall back to ***"Coming up near Arlington Heights"*** (the next
+       three events after the event's date) when that weekend has none.
+     - It never shows events that end before the event starts. For an
+       event in the current weekend, keep *"More this weekend"*.
+
+     Tests: a Dec 5 event lists only Dec 5–6 events or the fallback, and
+     a current-weekend event keeps its existing heading.
+
+Re-rank: **468** goes directly under 427/428 in the build queue. It
+decides whether `/santa/` can trust AHPD before Nov 15. **470** follows
+it, since holiday event pages are being shared now. **469** rides with
+356.
+
+Competitors reviewed this pass: **libraries' 1000 Books Before
+Kindergarten programmes** (AHML, Des Plaines, Palatine) as a sponsor-lead
+source, and **Nextdoor's 2026 journalist accounts and business events**
+(a non-item). The design/UX angle is **`/e/` pages for future events**,
+which show this weekend's events instead of their own.
 
 
 ## Working agreements for autonomous iteration
