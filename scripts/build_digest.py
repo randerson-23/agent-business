@@ -6190,8 +6190,8 @@ EMAIL_SURFACES: dict[str, str] = {
     "wt-card": "#eae9e9",  # single-town email card
     "wt-card-sponsor": "#fff2ef",
     "wt-cta-bg": "#ec3013",
-    "wt-page": "#f6f1ea",  # combined email page
-    "wt-paper": "#fffefc",  # combined email cards (not pure white)
+    "wt-page": "#f4f3f1",  # combined email page (owner request 2026-11-07: neutral)
+    "wt-paper": "#ffffff",  # combined email cards
     "wt-season": "#fffaf2",
     "wt-pick": "#fff4d6",
     "wt-sky": "#eaf4ff",

@@ -5487,7 +5487,7 @@ def test_add_your_event_link_shows_only_once_the_form_url_is_configured():
     assert 'href="https://forms.gle/abc" rel="noopener">Add your event, free' in page
     assert "Add your event, free" not in build_digest.render_region_page(region_cfg, [], None, [], now, newsletter=build_digest.load_newsletter_config({"buttondown_username": "u"}))
     email = build_digest.render_combined_email_digest(_join_sections(), "Oct 16–18", now, cfg)
-    assert 'href="https://forms.gle/abc" style="color:#ffd23f;">Add it free' in email
+    assert 'href="https://forms.gle/abc" style="color:#ae1800;">Add it free' in email
 
 
 def _meta_events(n, **kw):
@@ -6721,7 +6721,7 @@ def test_the_email_scales_to_six_towns_three_events_each_strongest_town_first_un
     for name in ("Alpha", "Bravo", "Charlie", "Delta", "Echo", "Foxtrot"):
         assert len(set(re.findall(rf"{name} Event \d", html))) <= 3, name  # at most three different events per town
     assert html.index("Bravo Event 0") < html.index("Alpha Event 0")  # the strongest town comes first, not alphabetical
-    assert "#4d7c0f" in html
+    assert html.count('<a href="https://') > 6 and "Foxtrot" in html  # all six towns render (no per-town colours since 2026-11-07)
     assert len(html.encode("utf-8")) < 102_000
 
 
@@ -7112,3 +7112,15 @@ def test_just_outside_section_shows_only_sourced_future_events_on_santa():
     page = build_digest.render_santa_page(ents, datetime(2026, 11, 7, 15, tzinfo=timezone.utc), None, _NL, None, outside)
     assert "Just outside our towns (within ten miles)" in page and "Skokie" in page and "Oakton Community Center" in page
     assert "Just outside" not in build_digest.render_santa_page(ents, datetime(2026, 11, 7, 15, tzinfo=timezone.utc), None, _NL)
+
+
+def test_combined_email_uses_one_neutral_palette():
+    # Owner request 2026-11-07: simple and modern, without many contrasting colours.
+    import re as _re
+    sections = [{"region_name": n, "region_url": f"https://x/{n}/", "weekend_events": [{"title": f"{n} Fair", "url": "https://x/e", "date": "Saturday", "date_iso": "2026-11-07T10:00:00", "tags": ["free", "outdoor"], "detail": "d"}]} for n in ("Palatine", "Wheeling", "Des Plaines")]
+    html = build_digest.render_combined_email_digest(sections, "Nov 6–8", datetime(2026, 11, 4, 12, tzinfo=timezone.utc))
+    body = html.split("<body", 1)[1]
+    for loud in ("#ffd23f", "#ec3013", "#0f766e", "#6d28d9", "#c2410c", "#1d4ed8", "#be185d", "dashed"):
+        assert loud not in body, loud
+    colours = set(c.lower() for c in _re.findall(r"#[0-9a-fA-F]{6}\b", body))
+    assert len(colours) <= 10, colours
