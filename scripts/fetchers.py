@@ -409,6 +409,9 @@ def fetch_ics(
                 value = line.split(":", 1)[-1].strip()
                 current["date"] = value
                 current["_sort_key"] = value
+            elif line.startswith("DTEND"):
+                # ROADMAP.md item 463: the source's own end, for calendar links.
+                current["end_date"] = line.split(":", 1)[-1].strip()
 
         def is_upcoming(ev: dict) -> bool:
             raw = ev.get("_sort_key")

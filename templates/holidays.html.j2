@@ -155,6 +155,7 @@
   .offer strong { display: block; font-size: 17px; margin-bottom: 4px; }
   .offer a { display: inline-block; margin-top: 8px; background: #f5c542; color: #14301f; font-weight: 800; text-decoration: none; padding: 8px 16px; border-radius: 999px; }
   .offer a:hover, .offer a:focus-visible { background: #ffd966; }
+  .cal-g { font-size: 12.5px; font-weight: 600; white-space: nowrap; }
 </style>
 {{ signup_css() }}
 </head>
@@ -176,7 +177,7 @@
     <div class="entry" style="--town:{{ entry.color }}">
       <span class="region"><a href="{{ entry.holiday_url }}">{{ entry.region_name }}</a></span>
       {% if entry.tree.label %}
-      <span class="hours"><a href="{{ entry.tree.url }}">{{ entry.tree.label }}</a></span>
+      <span class="hours"><a href="{{ entry.tree.url }}">{{ entry.tree.label }}</a>{% if entry.tree.google_calendar_url %} <a class="cal-g" href="{{ entry.tree.google_calendar_url }}" target="_blank" rel="noopener">📅 Google Calendar</a>{% endif %}</span>
       {% else %}
       <span class="not-posted">Not yet posted for {{ year }} — <a href="{{ entry.tree.url }}">check the town's page</a></span>
       {% endif %}
@@ -192,7 +193,7 @@
     <h3><a href="{{ entry.region_url }}">{{ entry.region_name }}</a></h3>
     <ul class="events">
       {% for event in entry.events %}
-      <li><span class="emoji" aria-hidden="true">{{ event.emoji }}</span><time datetime="{{ event.date_iso }}">{{ event.date_label }}</time> <a href="{{ entry.region_url }}#{{ event.anchor_id }}">{{ event.title }}</a>{% if event.also_at %} <span class="hours-note">Also at: {% for a in event.also_at %}<a href="{{ entry.region_url }}#{{ a.anchor_id }}">{{ a.label }}</a>{% if not loop.last %}, {% endif %}{% endfor %}</span>{% endif %}</li>
+      <li><span class="emoji" aria-hidden="true">{{ event.emoji }}</span><time datetime="{{ event.date_iso }}">{{ event.date_label }}</time> <a href="{{ entry.region_url }}#{{ event.anchor_id }}">{{ event.title }}</a>{% if event.google_calendar_url %} <a class="cal-g" href="{{ event.google_calendar_url }}" target="_blank" rel="noopener">📅 Google Calendar</a>{% endif %}{% if event.also_at %} <span class="hours-note">Also at: {% for a in event.also_at %}<a href="{{ entry.region_url }}#{{ a.anchor_id }}">{{ a.label }}</a>{% if not loop.last %}, {% endif %}{% endfor %}</span>{% endif %}</li>
       {% endfor %}
     </ul>
   </section>

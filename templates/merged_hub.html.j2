@@ -1,3 +1,4 @@
+{% from "_cal_row.html.j2" import cal_row -%}
 {% from "_share.html.j2" import share_button -%}
 {% from "_featured.html.j2" import featured_label -%}
 {% from "_signup.html.j2" import signup_css, signup_form, signup_runtime -%}
@@ -192,6 +193,7 @@
   .cal-row { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 4px; }
   .cal-row a { font-size: 12.5px; font-weight: 600; color: var(--accent-2-text); text-decoration: none; }
   .cal-row a:hover { text-decoration: underline; }
+  .cal-session { font-size: 12.5px; color: var(--muted); }
 
   .empty-state { text-align: center; color: var(--muted); padding: 40px 0; background: var(--card); border: 2px solid var(--border); border-radius: var(--radius-lg); box-shadow: var(--shadow-sm); margin-top: 24px; }
 
@@ -307,7 +309,7 @@
   </section>
   {% endif %}
   {{ signup_form(newsletter, "newsletter-signup-top", "bd-email-top", "town:all", slug ~ "-top", "Get this list every Thursday.") }}
-  <p class="cal-note">Each event has a Google Calendar link; &ldquo;Add to calendar&rdquo; saves a file that Apple and Outlook calendars open.</p>
+  <p class="cal-note">Every event has a Google Calendar link, and an .ics file for Apple and Outlook calendars.</p>
   {% endif %}
   {% if celebrations %}
   {% for c in celebrations %}
@@ -344,14 +346,7 @@
           {% for tag in item.tag_badges %}<span class="tag-badge" style="background: var(--hue-{{ tag.hue }}-bg); color: var(--hue-{{ tag.hue }}-ink);">{{ tag.emoji }} {{ tag.label }}</span>{% endfor %}
         </div>
         {% endif %}
-        {% if item.sessions %}
-        <div class="cal-row">{% for ss in item.sessions if ss.ics_href %}<a href="{{ ss.ics_href }}" download="event.ics">📅 {{ ss.label }}</a>{% endfor %}</div>
-        {% elif item.ics_href %}
-        <div class="cal-row">
-          <a href="{{ item.ics_href }}" download="event.ics">📅 Add to calendar</a>
-          {% if item.google_calendar_url %}<a href="{{ item.google_calendar_url }}" target="_blank" rel="noopener">Google Calendar</a>{% endif %}
-        </div>
-        {% endif %}
+        {{ cal_row(item) }}
       </article>
       {% endfor %}
       </div>

@@ -1119,3 +1119,12 @@ def test_submit_indexnow_falls_back_to_yandex_and_seznam_when_shared_and_bing_re
     assert submit_indexnow("h", "k", "https://h/k.txt", ["https://h/"], outcome=outcome) is False
     assert (outcome["status"], outcome["bing_status"], outcome["yandex_status"], outcome["seznam_status"]) == (403, 403, 403, 429)
     assert outcome["yandex_body"] == "c" * 300 and outcome["seznam_body"] == "d" and outcome["accepted_by"] is None
+
+
+@patch("fetchers.requests.get")
+def test_fetch_ics_keeps_the_source_end_time(mock_get):
+    # ROADMAP.md item 463: DTEND is carried so calendar links use the real end.
+    ics = "BEGIN:VCALENDAR\nBEGIN:VEVENT\nSUMMARY:Craft Fair\nDTSTART:20991107T090000\nDTEND:20991107T160000\nEND:VEVENT\nEND:VCALENDAR\n"
+    mock_get.return_value = _mock_response(ics)
+    items = fetch_ics("https://example.org/cal.ics")
+    assert items[0]["end_date"] == "20991107T160000"

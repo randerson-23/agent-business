@@ -20098,7 +20098,7 @@ and goes to the top of the build queue.
 
 #### P1 (new, owner-flagged)
 
-462. **Google Calendar links on every dated event, on every page and in
+462. ✅ DONE (templates/_cal_row.html.j2, Google first then "Apple / Outlook (.ics)"; a Google link per session on multi-session cards; /e/ pages, /holidays/ (events and tree lightings), /give/, /santa/ incl. "Just outside"; "📅 Add to Google Calendar" under every pick and event in both emails. Archived /issues/ pages are frozen as sent and keep their original markup. Guard: link_health.calendar_link_audit, 0 missing on the current build) **Google Calendar links on every dated event, on every page and in
      the email.** Owner request, 2026-11-07. Build loop:
 
      1. **One partial** for the calendar row, `templates/_cal_row.html.j2`,
@@ -20128,7 +20128,7 @@ and goes to the top of the build queue.
      multi-session case, an email pick carrying the link, and a page
      with no dated events not being flagged.
 
-463. **Make each Google Calendar link correct: time zone, all-day
+463. ✅ DONE (calendar_span: ctz=America/Chicago, calendar.google.com host, untimed = all-day in both builders, ICS DTEND carried as end_iso, details end with the official listing and the town's weekend page, trimmed to 600 characters; configured entries parse "4–6:30 PM"-style times) **Make each Google Calendar link correct: time zone, all-day
      events, real end times, and a link back.** Build loop,
      `build_google_calendar_url`, with the same fixes in
      `build_ics_data_uri`:
@@ -20157,7 +20157,7 @@ and goes to the top of the build queue.
 
 #### P3 (new)
 
-464. **Calendar-link health in the weekly audit.** Build loop. Add two
+464. ✅ DONE (link_health.py prints both counts after each weekly run) **Calendar-link health in the weekly audit.** Build loop. Add two
      lines to the existing link-health or watchdog report:
      - *"Dated events without a Google Calendar link: N"* (item 462's
        guard, counted on the live build);

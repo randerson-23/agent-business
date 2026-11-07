@@ -69,3 +69,20 @@ def test_only_public_http_urls_are_requested():
 
     health = lh.run([{"url": u} for u in ok + bad], {}, get=fake, sleep=lambda s: None, now="t")
     assert sorted(calls) == sorted(ok) and set(health) == set(ok)
+
+
+def test_calendar_audit_counts_dated_entries_without_google_and_midnight_links(tmp_path):
+    # ROADMAP.md items 462/464.
+    import link_health
+    page = tmp_path / "x" / "index.html"
+    page.parent.mkdir()
+    page.write_text(
+        '<ul><li><time datetime="2026-11-07">Sat</time> <a href="https://a">A</a></li>'
+        '<li><time datetime="2026-11-07T10:00:00">Sat</time> <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&dates=20261107T100000/20261107T110000">G</a></li>'
+        '<li>No date here</li></ul>'
+        '<article><time>Sun</time><a href="https://calendar.google.com/calendar/render?action=TEMPLATE&dates=20261108T000000/20261108T010000">G</a></article>',
+        encoding="utf-8",
+    )
+    (tmp_path / "issues" / "2026-10-29").mkdir(parents=True)
+    (tmp_path / "issues" / "2026-10-29" / "index.html").write_text("<li><time>x</time></li>", encoding="utf-8")  # frozen archive: skipped
+    assert link_health.calendar_link_audit(tmp_path) == {"missing": 1, "midnight": 1}
