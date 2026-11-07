@@ -329,6 +329,29 @@
   "url": "https://mppl.libnet.info/event/14808871",
   "venue": "Mount Prospect Public Library"
  },
+ "e/2026-11-07-phs-pirate-boosters-present-fall-craft-fair/": {
+  "date_iso": "2026-11-07T09:00:00",
+  "detail": "Over 150 vendors support the PHS community. 9 AM to 4 PM at Palatine High School, 1111 N. Rohlwing Road.",
+  "detail_long": null,
+  "first_seen": "2026-11-06",
+  "ics_href": "data:text/calendar;charset=utf-8,BEGIN%3AVCALENDAR%0D%0AVERSION%3A2.0%0D%0APRODID%3A-//Within%20Ten//EN%0D%0ABEGIN%3AVEVENT%0D%0ADTSTART%3A20261107T090000%0D%0ADTEND%3A20261107T100000%0D%0ASUMMARY%3APHS%20Pirate%20Boosters%20Present%3A%20Fall%20Craft%20Fair%0D%0ADESCRIPTION%3AOver%20150%20vendors%20support%20the%20PHS%20community.%209%20AM%20to%204%20PM%20at%20Palatine%20High%20School%5C%2C%201111%20N.%20Rohlwing%20Road.%0D%0AURL%3Ahttps%3A//phspirateboosters.com/craft-fair/%0D%0AEND%3AVEVENT%0D%0AEND%3AVCALENDAR%0D%0A",
+  "path": "e/2026-11-07-phs-pirate-boosters-present-fall-craft-fair/",
+  "postal_code": null,
+  "region_id": "palatine-60067",
+  "region_url": "https://withintenmiles.com/palatine-60067/",
+  "source": null,
+  "sponsored_by": null,
+  "state": null,
+  "street_address": null,
+  "tags": [
+   "kid_friendly",
+   "indoor"
+  ],
+  "title": "PHS Pirate Boosters Present: Fall Craft Fair",
+  "town": null,
+  "url": "https://phspirateboosters.com/craft-fair/",
+  "venue": "Palatine High School"
+ },
  "e/2026-11-07-pumpkin-smash-from-gourd-to-garden/": {
   "date_iso": "2026-11-07T09:00:00",
   "detail": "Pumpkins are 90% water, which makes them bad for landfills but great for soil and gardens! Bring your post-Halloween jack-o-lanterns, gourds, and pumpkins to…",

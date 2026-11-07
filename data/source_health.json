@@ -85,7 +85,6 @@
   ],
   "des-plaines-60016:Des Plaines Public Library \u2014 Events": [
     370,
-    370,
     368,
     368,
     368,
@@ -93,7 +92,8 @@
     370,
     370,
     370,
-    374
+    374,
+    371
   ],
   "des-plaines-60016:Des Plaines Theatre \u2014 Events": [
     30,
@@ -140,7 +140,6 @@
   ],
   "mount-prospect-60056:Mount Prospect Public Library \u2014 Events": [
     264,
-    264,
     258,
     258,
     258,
@@ -148,7 +147,8 @@
     248,
     248,
     248,
-    248
+    248,
+    247
   ],
   "mount-prospect-60056:Mount Prospect School District 57 \u2014 Calendar": [
     57,
@@ -190,12 +190,11 @@
     34,
     34,
     34,
-    34,
+    35,
     35
   ],
   "palatine-60067:Community Consolidated School District 15 \u2014 Calendar": [
     38,
-    38,
     36,
     36,
     36,
@@ -203,11 +202,12 @@
     37,
     37,
     37,
-    44
+    44,
+    43
   ],
   "palatine-60067:Harper College \u2014 Public Events": [
-    9,
     11,
+    10,
     10,
     10,
     10,
@@ -230,7 +230,6 @@
     14
   ],
   "palatine-60067:Palatine Public Library District \u2014 Events": [
-    11,
     12,
     12,
     12,
@@ -239,7 +238,8 @@
     13,
     13,
     13,
-    13
+    13,
+    12
   ],
   "palatine-60067:Salt Creek Rural Park District \u2014 Events": [
     0,
@@ -255,11 +255,11 @@
   ],
   "palatine-60067:Township High School District 211 \u2014 Calendar": [
     12,
-    12,
     11,
     11,
     11,
     11,
+    10,
     10,
     10,
     10,
@@ -267,7 +267,6 @@
   ],
   "palatine-60067:Village of Palatine \u2014 Calendar": [
     26,
-    26,
     25,
     25,
     25,
@@ -275,10 +274,11 @@
     25,
     25,
     25,
+    27,
     27
   ],
   "palatine-60067:Village of Palatine \u2014 News": [
-    1,
+    2,
     2,
     2,
     2,
@@ -291,7 +291,6 @@
   ],
   "wheeling-60090:Indian Trails Public Library \u2014 Events": [
     265,
-    265,
     259,
     259,
     259,
@@ -299,15 +298,16 @@
     252,
     252,
     252,
-    252
+    252,
+    248
   ],
   "wheeling-60090:Village of Wheeling \u2014 Calendar": [
-    143,
     143,
     142,
     142,
     142,
     144,
+    143,
     143,
     143,
     143,
