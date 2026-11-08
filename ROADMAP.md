@@ -20372,7 +20372,7 @@ target.
 
 #### P1 (new)
 
-471. (step 1: round-39 probes of palatinelibrary.org/events, /events/feed and ahml.info/events queued) **Read Palatine Public Library's whole calendar.** Build loop, probe
+471. (2026-11-08: the probes got 403 from palatinelibrary.org/events and /events/feed, and ahml.info/events shows no export links; step 3 shipped: html_events follows ?page=N up to 6 pages (source option `pages:`), set on Palatine Public Library. Success check: its count and horizon in source_horizon.json after the next CI build) **Read Palatine Public Library's whole calendar.** Build loop, probe
      first:
 
      1. Add a probe round on `palatinelibrary.org` for LibraryCalendar

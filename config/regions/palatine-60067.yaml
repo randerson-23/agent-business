@@ -131,6 +131,9 @@ sources:
     # real per-event URL shape is confirmed.
     url: "https://www.palatinelibrary.org/events/upcoming"
     keywords: ["event", "class", "program", "story", "camp", "concert", "workshop", "book"]
+    # ROADMAP.md item 471 (2026-11-08): 12 events from the first page against 238-412 for the other
+    # libraries; the listing paginates (?page=N). Its export paths answered 403 to the probe workflow.
+    pages: 6
     section: "Library Events"
     # ROADMAP.md item 238: schema.org Event location for this source.
     venue_name: "Palatine Public Library District"

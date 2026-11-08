@@ -741,6 +741,9 @@ def _resolve_urls(items: list[dict], base_url: str) -> list[dict]:
     return items
 
 
+HTML_PAGE_CAP = 6
+
+
 def fetch_html_events(
     url: str,
     limit: int = MAX_ITEMS_PER_SOURCE,
@@ -748,7 +751,38 @@ def fetch_html_events(
     detail_link_pattern: str | None = None,
     *,
     failure_info: dict | None = None,
+    pages: int | None = None,
     **_ignored,
+) -> list[dict] | None:
+    """`_fetch_html_events_page` for the first page, then (ROADMAP.md item 471)
+    `?page=1`, `?page=2`... up to `pages` (capped at HTML_PAGE_CAP) for a
+    listing that paginates, stopping at the first page that fails or adds
+    nothing new. The first page's result decides None-versus-[] as before."""
+    first = _fetch_html_events_page(url, limit, keywords, detail_link_pattern, failure_info=failure_info)
+    if not first or not pages or pages < 2:
+        return first
+    combined, seen = list(first), {(r.get("title"), r.get("url")) for r in first}
+    sep = "&" if "?" in url else "?"
+    for n in range(1, min(int(pages), HTML_PAGE_CAP)):
+        more = _fetch_html_events_page(f"{url}{sep}page={n}", limit, keywords, detail_link_pattern)
+        fresh = [r for r in more or [] if (r.get("title"), r.get("url")) not in seen]
+        if not fresh:
+            break
+        for r in fresh:
+            seen.add((r.get("title"), r.get("url")))
+        combined.extend(fresh)
+        if len(combined) >= limit:
+            break
+    return combined[:limit]
+
+
+def _fetch_html_events_page(
+    url: str,
+    limit: int = MAX_ITEMS_PER_SOURCE,
+    keywords: tuple[str, ...] | list[str] | None = None,
+    detail_link_pattern: str | None = None,
+    *,
+    failure_info: dict | None = None,
 ) -> list[dict] | None:
     """Best-effort scrape of a listing page for relevant link text.
 

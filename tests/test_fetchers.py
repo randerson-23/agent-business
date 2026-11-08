@@ -1236,3 +1236,28 @@ def test_tribe_events_treats_a_repeated_month_as_an_ignored_parameter_and_tries_
     info = {}
     items = fetch_tribe_events("https://www.ahpd.org/events/?ical=1", failure_info=info, today=date(2099, 11, 7))
     assert [i["title"] for i in items] == ["Frostival"] and info["route"] == "rest"
+
+
+@patch("fetchers.requests.get")
+def test_html_events_follows_pages_until_one_adds_nothing_and_respects_the_cap(mock_get):
+    # ROADMAP.md item 471.
+    from fetchers import HTML_PAGE_CAP, fetch_html_events
+
+    def page(*titles):
+        links = "".join(f'<a href="/event/{t.lower().replace(" ", "-")}">{t} event</a>' for t in titles)
+        return _mock_response(f"<html><body>{links}</body></html>", url="https://lib.example/events/upcoming")
+
+    pages = {"": page("Story A", "Craft B"), "?page=1": page("Lego C"), "?page=2": page("Lego C")}
+    mock_get.side_effect = lambda url, **kw: pages.get(url.replace("https://lib.example/events/upcoming", ""), page())
+    items = fetch_html_events("https://lib.example/events/upcoming", pages=6)
+    assert [i["title"] for i in items] == ["Story A event", "Craft B event", "Lego C event"]
+    assert mock_get.call_count == 3  # page 2 added nothing new, so it stopped
+    mock_get.reset_mock()
+    counter = iter(range(100))
+    mock_get.side_effect = lambda url, **kw: page(f"Item {next(counter)}")
+    fetch_html_events("https://lib.example/events/upcoming", pages=50)
+    assert mock_get.call_count == HTML_PAGE_CAP
+    mock_get.reset_mock()
+    mock_get.side_effect = lambda url, **kw: page("Only")
+    fetch_html_events("https://lib.example/events/upcoming")
+    assert mock_get.call_count == 1  # no `pages`: one request, as before
