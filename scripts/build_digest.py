@@ -785,6 +785,65 @@ def load_source_health() -> dict:
     return {}
 
 
+SOURCE_HORIZON_PATH = ROOT / "data" / "source_horizon.json"
+SOURCE_HORIZON_KEEP = 10
+SHORT_HORIZON_DAYS = 21
+CALENDAR_SOURCE_TYPES = ("ics", "tribe_events")
+
+
+def source_horizon_days(raw_items: list[dict], today: date) -> int | None:
+    """ROADMAP.md item 468: how many days ahead a source's latest dated event
+    is (its horizon). None when nothing in it carries a parseable date."""
+    latest = None
+    for item in raw_items:
+        iso = parse_event_date_iso(item.get("date"))
+        if not iso:
+            continue
+        day = date.fromisoformat(iso[:10])
+        latest = day if latest is None or day > latest else latest
+    return (latest - today).days if latest else None
+
+
+def update_source_horizon(horizons: dict, source_key: str, *, source_type: str, count: int, horizon_days: int | None, route: str | None, today: date) -> None:
+    history = horizons.setdefault(source_key, [])
+    history.append({"date": today.isoformat(), "type": source_type, "count": count, "horizon_days": horizon_days, "route": route or source_type})
+    del history[:-SOURCE_HORIZON_KEEP]
+
+
+def detect_short_horizons(horizons: dict) -> list[str]:
+    """Item 468: the signature of a page-capped calendar fetch. A calendar-type
+    source whose horizon was under SHORT_HORIZON_DAYS on each of its last three
+    builds, or any source whose count and horizon have not moved in seven."""
+    flagged = []
+    for key, history in sorted(horizons.items()):
+        last3 = history[-3:]
+        if (len(last3) == 3 and all(h.get("type") in CALENDAR_SOURCE_TYPES for h in last3)
+                and all(h.get("horizon_days") is not None and h["horizon_days"] < SHORT_HORIZON_DAYS for h in last3)):
+            flagged.append(f"{key}: horizon {last3[-1]['horizon_days']} days on 3 builds (route {last3[-1].get('route')})")
+            continue
+        last7 = history[-7:]
+        if len(last7) == 7 and len({h.get("count") for h in last7}) == 1 and len({h.get("date") for h in last7}) > 1:
+            latest_days = [h.get("horizon_days") for h in last7]
+            dates = [date.fromisoformat(h["date"]) for h in last7]
+            ends = {(d + timedelta(days=x)) if x is not None else None for d, x in zip(dates, latest_days)}
+            if len(ends) == 1 and last7[-1].get("count"):
+                flagged.append(f"{key}: count {last7[-1]['count']} and latest event unchanged for 7 builds")
+    return flagged
+
+
+def load_source_horizons() -> dict:
+    try:
+        data = json.loads(SOURCE_HORIZON_PATH.read_text(encoding="utf-8"))
+        return data if isinstance(data, dict) else {}
+    except (OSError, ValueError):
+        return {}
+
+
+def save_source_horizons(horizons: dict) -> None:
+    SOURCE_HORIZON_PATH.parent.mkdir(parents=True, exist_ok=True)
+    SOURCE_HORIZON_PATH.write_text(json.dumps(horizons, indent=1, sort_keys=True) + "\n", encoding="utf-8")
+
+
 def update_source_health(health: dict, source_key: str, count: int) -> None:
     history = health.setdefault(source_key, [])
     history.append(count)
@@ -1247,8 +1306,10 @@ def fetch_region_sections(
     last_good_dir: Path | None = None,
     now: datetime | None = None,
     failure_window: dict | None = None,
+    horizons: dict | None = None,
 ) -> list[dict]:
     region_id = region_cfg["region"]["id"]
+    horizon_today = now.astimezone(LOCAL_TZ).date() if now else None
     region_name = region_cfg["region"]["name"]
     venues = load_venues(region_cfg)
     blocks = []
@@ -1310,6 +1371,10 @@ def fetch_region_sections(
                 completeness["reporting"] += 1
             if health is not None and not transport_failed:
                 update_source_health(health, source_key, len(raw_items))
+            if horizons is not None and not transport_failed:  # item 468
+                update_source_horizon(horizons, source_key, source_type=source["type"], count=len(raw_items),
+                                      horizon_days=source_horizon_days(raw_items, horizon_today or datetime.now(timezone.utc).date()),
+                                      route=failure_info.get("route"), today=horizon_today or datetime.now(timezone.utc).date())
             # ROADMAP.md item 181: tracked regardless of transport_failed,
             # unlike source_health.json above - a streak needs to see
             # every success too, to reset back to 0.
@@ -4987,7 +5052,7 @@ def update_event_pages(registry: dict, selected: list[dict], today: date) -> tup
     return registry, active, expired, deleted
 
 
-def render_event_page(entry: dict, *, expired: bool = False, more: list[dict] | None = None, newsletter: dict | None = None, analytics: dict | None = None) -> str:
+def render_event_page(entry: dict, *, expired: bool = False, more: list[dict] | None = None, more_heading: str | None = None, newsletter: dict | None = None, analytics: dict | None = None) -> str:
     day = datetime.fromisoformat(entry["date_iso"])
     time_label = event_time_label(entry["date_iso"])
     when_label = day.strftime("%a %b ") + str(day.day) + (f", {time_label}" if time_label else "")
@@ -5026,6 +5091,7 @@ def render_event_page(entry: dict, *, expired: bool = False, more: list[dict] | 
         ics_href=build_ics_data_uri(entry) or entry.get("ics_href"),  # item 463: rebuilt so stored entries get the all-day/end fixes
         google_calendar_url=build_google_calendar_url(entry, where_label or entry.get("town") or "", (entry.get("region_url") or SITE_BASE_URL) + "this-weekend/"),  # item 462
         more=more or [],
+        more_heading=more_heading or "More this weekend",
         expired=expired,
         newsletter=newsletter or {"configured": False},
         analytics=analytics,
@@ -5048,25 +5114,82 @@ def prime_event_page_paths(now: datetime) -> None:
     ACTIVE_EVENT_PAGE_PATHS = {e["path"] for e in active}
 
 
-def event_page_more_links(entry: dict, sections: list[dict], limit: int = 3) -> list[dict]:
-    """Up to `limit` other attendable events for an `/e/` page's "More this
-    weekend": the event's own town first, then the nearest towns (ROADMAP.md
-    items 373 and 214) when it has fewer. One link per title."""
+def _sections_by_distance(entry: dict, sections: list[dict]) -> tuple[dict | None, list[dict]]:
     home = next((s for s in sections if s["region_url"] == entry.get("region_url")), None)
     ordered = [home] if home else []
     rest = [s for s in sections if s is not home]
     if home and home.get("region_lat") is not None and home.get("region_lon") is not None:
         rest.sort(key=lambda s: _haversine_miles(home["region_lat"], home["region_lon"], s["region_lat"], s["region_lon"]) if s.get("region_lat") is not None and s.get("region_lon") is not None else 1e9)
-    ordered += rest
-    more, seen = [], {entry["title"]}
-    for section in ordered:
-        for e in section["weekend_events"]:
-            if len(more) >= limit:
-                return more
-            if e.get("title") and e["title"] not in seen and e.get("attendable", True):
-                seen.add(e["title"])
-                more.append({"title": display_title(e["title"]), "town": section["region_name"], "url": f"{section['region_url']}#{e.get('anchor_id') or event_anchor_id(e)}", "same_town": section is home})
-    return more
+    return home, ordered + rest
+
+
+def _more_link(e: dict, section: dict, home: dict | None) -> dict:
+    return {"title": display_title(e["title"]), "town": section["region_name"], "url": f"{section['region_url']}#{e.get('anchor_id') or event_anchor_id(e)}", "same_town": section is home}
+
+
+def event_page_more_links(entry: dict, sections: list[dict], limit: int = 3, today: date | None = None) -> list[dict]:
+    """Up to `limit` other attendable events for an `/e/` page (ROADMAP.md
+    items 373, 214, 470): the event's own town first, then the nearest towns.
+    An event in the current weekend lists this weekend's events; a later one
+    lists events from ITS weekend (or its day, midweek), never earlier ones,
+    and falls back to the next events after it. One link per title."""
+    return event_page_more(entry, sections, limit, today)[1]
+
+
+def _format_span(first: date, last: date) -> str:
+    one = lambda d: d.strftime("%a %b ") + str(d.day)
+    return one(first) if first == last else f"{one(first)} \u2013 {one(last)}"
+
+
+def event_page_more(entry: dict, sections: list[dict], limit: int = 3, today: date | None = None) -> tuple[str, list[dict]]:
+    """(heading, links) for an `/e/` page's related list (item 470)."""
+    home, ordered = _sections_by_distance(entry, sections)
+    seen = {entry["title"]}
+    try:
+        day = datetime.fromisoformat(entry["date_iso"]).date()
+    except (KeyError, ValueError):
+        day = None
+    this_sunday = weekend_dates(today)[2] if today else None
+    if day is None or this_sunday is None or day <= this_sunday:
+        more = []
+        for section in ordered:
+            for e in section["weekend_events"]:
+                if len(more) >= limit:
+                    return "More this weekend", more
+                if e.get("title") and e["title"] not in seen and e.get("attendable", True):
+                    seen.add(e["title"])
+                    more.append(_more_link(e, section, home))
+        return "More this weekend", more
+    if day.weekday() >= 4:
+        friday, _sat, sunday = weekend_dates(day)
+        first, last, label = max(friday, day), sunday, "More that weekend"
+    else:
+        first, last, label = day, day, "More that day"
+
+    def pick(lo: date, hi: date | None) -> list[dict]:
+        found, names = [], set(seen)
+        candidates = []
+        for rank, section in enumerate(ordered):
+            for e in section.get("upcoming_events") or []:
+                try:
+                    d = datetime.fromisoformat(e["date_iso"]).date()
+                except (KeyError, ValueError, TypeError):
+                    continue
+                if d >= lo and (hi is None or d <= hi) and e.get("title") and e.get("attendable", True):
+                    candidates.append((d if hi is None else date.min, rank, e["date_iso"], e, section))
+        for _d, _rank, _iso, e, section in sorted(candidates, key=lambda c: (c[0], c[1], c[2])):
+            if len(found) >= limit:
+                break
+            if e["title"] not in names:
+                names.add(e["title"])
+                found.append(_more_link(e, section, home))
+        return found
+
+    more = pick(first, last)
+    if more:
+        return f"{label} \u00b7 {_format_span(first, last)}", more
+    town = (home or {}).get("region_name") or entry.get("town") or "here"
+    return f"Coming up near {town}", pick(day + timedelta(days=1), None)
 
 
 def write_event_pages(sections: list[dict], tot_entries: list[dict], now: datetime, newsletter: dict | None, analytics: dict | None, santa_entries: list[dict] | None = None) -> list[dict]:
@@ -5078,12 +5201,12 @@ def write_event_pages(sections: list[dict], tot_entries: list[dict], now: dateti
     colors = {s["region_url"]: EMAIL_TOWN_COLORS[i % len(EMAIL_TOWN_COLORS)][0] for i, s in enumerate(sections)}
     for group, is_expired in ((active, False), (expired, True)):
         for entry in group:
-            more = [] if is_expired else event_page_more_links(entry, sections)
+            more_heading, more = ("", []) if is_expired else event_page_more(entry, sections, today=today)
             entry = {**entry, "town_color": colors.get((entry.get("region_url") or ""), EMAIL_TOWN_COLORS[0][0])}
             page_dir = OUTPUT_DIR / entry["path"]
             page_dir.mkdir(parents=True, exist_ok=True)
             (page_dir / "index.html").write_text(
-                render_event_page(entry, expired=is_expired, more=more, newsletter=newsletter, analytics=analytics), encoding="utf-8"
+                render_event_page(entry, expired=is_expired, more=more, more_heading=more_heading, newsletter=newsletter, analytics=analytics), encoding="utf-8"
             )
     for path in deleted:
         shutil.rmtree(OUTPUT_DIR / path, ignore_errors=True)
@@ -7546,6 +7669,7 @@ def main() -> None:
     (OUTPUT_DIR / ".nojekyll").touch()
 
     source_health = load_source_health()
+    source_horizons = load_source_horizons()  # item 468
     transport_failures = load_transport_failures()
     failure_window = load_failure_window()
     transport_failure_details = load_transport_failure_details()
@@ -7644,6 +7768,7 @@ def main() -> None:
             last_good_dir=LAST_GOOD_DIR,
             now=now,
             failure_window=failure_window,
+            horizons=source_horizons,
         )
         apply_link_health(blocks, link_health)
         link_candidates.extend(collect_link_candidates(blocks, local_today, region_id))
@@ -7847,6 +7972,7 @@ def main() -> None:
                 "region_lat": region.get("lat"),
                 "region_lon": region.get("lon"),
                 "weekend_events": weekend_events,
+                "upcoming_events": [e for b in blocks for e in b.get("events", []) if e.get("date_iso") and e.get("attendable", True)],  # item 470
                 "evergreen": evergreen,
                 "sponsor": sponsor,
                 "days_off": region_days_off,
@@ -8567,6 +8693,9 @@ def main() -> None:
     write_weekend_signal(weekend_event_counts, now)
 
     save_source_health(source_health)
+    save_source_horizons(source_horizons)
+    for line in detect_short_horizons(source_horizons):  # item 468: logged, never fails the build
+        logger.warning("Source horizon short: %s", line)
     save_transport_failures(transport_failures)
     save_failure_window(failure_window)
     save_transport_failure_details(transport_failure_details)

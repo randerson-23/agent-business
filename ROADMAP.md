@@ -20292,7 +20292,7 @@ put money into families.
 
 #### P2 (new)
 
-468. **Record each source's horizon and route, and alert on a short
+468. ✅ DONE (data/source_horizon.json (CI-written; count, horizon_days, route per build, last 10); "Source horizon short" warnings in the build log for a calendar source under 21 days on 3 builds or a count and latest event unchanged for 7 builds; not wired to the watchdog's issues. AHPD: the month exports answered with the same 11 events, so the fetcher now uses the path form /events/month/YYYY-MM/?ical=1 and treats an identical month as an ignored parameter, falling through to the REST route) **Record each source's horizon and route, and alert on a short
      one.** Build loop:
 
      - In `data/source_health.json`, store per source, per build: the
@@ -20329,7 +20329,7 @@ put money into families.
      Tests: a fixture page naming a sponsor writes a warm host with the
      reason, and the evergreen line renders with its source link.
 
-470. **"More that weekend" on `/e/` pages, keyed to the event's own
+470. ✅ DONE (event_page_more: "More that weekend · Sat Dec 5 – Sun Dec 6" or "More that day", never earlier events, fallback "Coming up near <town>"; current-weekend events keep "More this weekend") **"More that weekend" on `/e/` pages, keyed to the event's own
      date.** Build loop, the `/e/` template:
 
      - The related list shows up to three events from **the event's own

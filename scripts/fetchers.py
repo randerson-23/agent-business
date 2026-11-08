@@ -510,18 +510,25 @@ def _tribe_months(base: str, today: date, limit: int) -> tuple[list[dict] | None
     Returns (events, None) when at least one month answered, else (None, the
     first month's failure_info). Stops after the first month if it fails."""
     combined, seen, any_ok, first_error = [], set(), False, None
+    signatures: set = set()
     first = today.replace(day=1)
     for i in range(TRIBE_MONTHS):
         month = (first.month - 1 + i) % 12 + 1
         year = first.year + (first.month - 1 + i) // 12
         info: dict = {}
-        got = fetch_ics(f"{base}/events/month/?ical=1&tribe-bar-date={year:04d}-{month:02d}", limit, failure_info=info)
+        got = fetch_ics(f"{base}/events/month/{year:04d}-{month:02d}/?ical=1", limit, failure_info=info)
         if got is None:
             first_error = first_error or info
             if i == 0:
                 return None, first_error  # the host refused or is down: don't try the other months
             continue
         any_ok = True
+        signature = tuple(sorted((str(ev.get("title")), str(ev.get("date"))) for ev in got))
+        if signature and signature in signatures:
+            # The site ignored the month and sent the same list again: the
+            # month exports can't reach further ahead, so try the other routes.
+            return None, None
+        signatures.add(signature)
         for ev in got:
             key = (ev.get("title"), ev.get("date"))
             if key not in seen:
@@ -555,15 +562,21 @@ def fetch_tribe_events(
     items, err = _tribe_months(base, today, limit)
     if items is not None:
         logger.info("Events Calendar %s: %d event(s) from the month exports", base, len(items))
+        if failure_info is not None:
+            failure_info["route"] = "month_ics"  # item 468
         return items
     if not _is_connection_failure(err):
         try:
             rest = _tribe_rest(base, today, limit)
             if rest is not None:
                 logger.info("Events Calendar %s: %d event(s) from the REST route", base, len(rest))
+                if failure_info is not None:
+                    failure_info["route"] = "rest"
                 return rest
         except Exception as exc:  # noqa: BLE001 - fall through to the existing export
             logger.info("Events Calendar REST route unavailable for %s: %s", base, exc)
+    if failure_info is not None:
+        failure_info["route"] = "list_ics"
     return fetch_ics(url, limit, failure_info=failure_info)
 
 class _EventLinkExtractor(HTMLParser):

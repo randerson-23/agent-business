@@ -7246,3 +7246,42 @@ def test_abbreviated_titles_on_consecutive_days_merge_but_different_events_do_no
     assert titles.count("Friends of the Library Fall Sale") == 1 and "FOL Fall Book Sale" not in titles
     merged = next(e for e in email if e["title"] == "Friends of the Library Fall Sale")
     assert merged["email_when"] == "Sat Nov 7 & Sun Nov 8"
+
+
+def test_source_horizon_is_recorded_with_its_route_and_short_horizons_are_flagged():
+    # ROADMAP.md item 468.
+    today = date(2026, 11, 8)
+    items = [{"date": "20261115T100000"}, {"date": "20261118"}, {"date": "not a date"}]
+    assert build_digest.source_horizon_days(items, today) == 10
+    horizons = {}
+    for i in range(3):
+        build_digest.update_source_horizon(horizons, "ah:Park District", source_type="tribe_events", count=11, horizon_days=10, route="month_ics", today=today + timedelta(days=i))
+        build_digest.update_source_horizon(horizons, "dp:Theatre", source_type="tribe_events", count=64, horizon_days=60, route="month_ics", today=today + timedelta(days=i))
+    assert horizons["ah:Park District"][-1]["route"] == "month_ics"
+    flagged = build_digest.detect_short_horizons(horizons)
+    assert len(flagged) == 1 and flagged[0].startswith("ah:Park District: horizon 10 days")
+    stalled = {"x:Feed": [{"date": (today + timedelta(days=i)).isoformat(), "type": "rss", "count": 14, "horizon_days": 20 - i, "route": "rss"} for i in range(7)]}
+    assert build_digest.detect_short_horizons(stalled) == ["x:Feed: count 14 and latest event unchanged for 7 builds"]
+    moving = {"x:Feed": [dict(h, horizon_days=20) for h in stalled["x:Feed"]]}
+    assert build_digest.detect_short_horizons(moving) == []
+
+
+def test_event_pages_list_their_own_weekend_not_this_one():
+    # ROADMAP.md item 470.
+    def ev(title, iso):
+        return {"title": title, "date_iso": iso, "attendable": True, "anchor_id": title.lower().replace(" ", "-")}
+    this_weekend = [ev("Fall Sale", "2026-11-07T10:00:00"), ev("Pumpkin Smash", "2026-11-07T09:00:00")]
+    upcoming = this_weekend + [ev("Santa Run", "2026-12-05T09:30:00"), ev("Cookie Walk", "2026-12-05T11:00:00"), ev("Frostival", "2026-12-12T10:00:00"), ev("Choir", "2026-12-06T15:00:00")]
+    sections = [{"region_name": "Arlington Heights", "region_url": "https://x/ah/", "weekend_events": this_weekend, "upcoming_events": upcoming}]
+    today = date(2026, 11, 8)
+    heading, links = build_digest.event_page_more({"title": "Santa Run", "date_iso": "2026-12-05T09:30:00", "region_url": "https://x/ah/"}, sections, today=today)
+    assert heading == "More that weekend · Sat Dec 5 – Sun Dec 6" and [l["title"] for l in links] == ["Cookie Walk", "Choir"]
+    heading, links = build_digest.event_page_more({"title": "Frostival", "date_iso": "2026-12-12T10:00:00", "region_url": "https://x/ah/"}, sections, today=today)
+    assert heading == "Coming up near Arlington Heights" and links == []  # nothing on or after Dec 13
+    heading, links = build_digest.event_page_more({"title": "Santa Run", "date_iso": "2026-12-03T18:00:00", "region_url": "https://x/ah/"}, sections, today=today)
+    assert heading == "Coming up near Arlington Heights" and [l["title"] for l in links] == ["Cookie Walk", "Choir", "Frostival"]  # midweek, nothing that day
+    heading, links = build_digest.event_page_more({"title": "Fall Sale", "date_iso": "2026-11-07T10:00:00", "region_url": "https://x/ah/"}, sections, today=date(2026, 11, 5))
+    assert heading == "More this weekend" and [l["title"] for l in links] == ["Pumpkin Smash"]
+    page = build_digest.render_event_page({"title": "Santa Run", "date_iso": "2026-12-05T09:30:00", "town": "Arlington Heights", "state": "IL", "source": "S", "url": "https://r/x", "path": "e/x/", "region_url": "https://x/ah/"},
+                                          more=[{"title": "Cookie Walk", "town": "Arlington Heights", "url": "u", "same_town": True}], more_heading="More that weekend · Fri Dec 4 – Sun Dec 6")
+    assert "<h2>More that weekend · Fri Dec 4 – Sun Dec 6</h2>" in page
