@@ -193,7 +193,10 @@ sources:
     detail_link_pattern: "/events/[a-z0-9-]+/?$"
     keywords: ["event", "festival", "concert", "market", "sale", "sidewalk", "oktoberfest", "dinner", "pub", "music", "crawl", "trolley"]
     section: "Downtown Events"
-    enabled: true
+    # ROADMAP.md item 473 (2026-11-08): 0 events on every build for months - the list is rendered
+    # by JavaScript. Disabled so it stops counting as a source; its holiday and Noon Year's events are
+    # covered by the item 427/446 watch probes of mpdowntown.com.
+    enabled: false
 
   - name: "Randhurst Village — Events"
     type: html_events

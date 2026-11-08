@@ -20372,7 +20372,7 @@ target.
 
 #### P1 (new)
 
-471. **Read Palatine Public Library's whole calendar.** Build loop, probe
+471. (step 1: round-39 probes of palatinelibrary.org/events, /events/feed and ahml.info/events queued) **Read Palatine Public Library's whole calendar.** Build loop, probe
      first:
 
      1. Add a probe round on `palatinelibrary.org` for LibraryCalendar
@@ -20392,7 +20392,7 @@ target.
      two-page fixture is followed and stops at the cap, and an export
      fixture maps to events.
 
-472. **`/santa/` matches Santa in the description, not just the title.**
+472. ✅ DONE (santa_reason: title, description phrases (visit/photos/breakfast with Santa, meet Santa, Mrs. Claus, Santa will be ...), or a holiday brand title with Santa in the description; "🎅 Santa visits" on the card; Santa Fe and Santa Paws excluded) **`/santa/` matches Santa in the description, not just the title.**
      Build loop, `select_santa_events`:
 
      - Also select events whose **description** says *visit with Santa*,
@@ -20411,7 +20411,7 @@ target.
 
 #### P2 (new)
 
-473. **Horizons for `html_events` sources, and tidy the three odd ones.**
+473. ✅ DONE (horizon from the parsed events when raw dates are display text; Downtown Mount Prospect disabled; Harper College already fetches pp=100, so its 10 is the real count, not a cap) **Horizons for `html_events` sources, and tidy the three odd ones.**
      Build loop:
 
      - Compute `horizon_days` for `html_events` sources from the dates

@@ -1432,6 +1432,13 @@ def fetch_region_sections(
             reg = parse_registration_opens(f"{item.get('title', '')}. {item.get('detail', '')}", _event_day(event))
             event["registration_opens"] = reg.isoformat() if reg else None
             events.append(event)
+        # ROADMAP.md item 473: the horizon from the parsed events, so sources whose
+        # raw dates are display text (html_events) get one too.
+        if horizons is not None and horizons.get(source_key) and horizons[source_key][-1].get("horizon_days") is None:
+            today_h = horizon_today or datetime.now(timezone.utc).date()
+            days = [date.fromisoformat(e["date_iso"][:10]) for e in events if e.get("date_iso")]
+            if days:
+                horizons[source_key][-1]["horizon_days"] = (max(days) - today_h).days
         # ROADMAP.md item 308: the page a dead event link falls back to.
         source_page = source.get("calendar_page") or (source["url"] if source["type"] == "html_events" else None)
         blocks.append({"section": source["section"], "events": events, "source_page": source_page})
@@ -2519,6 +2526,39 @@ def select_holiday_events(blocks: list[dict], local_today: date) -> list[dict]:
 # ROADMAP.md item 379: the cross-town /santa/ page. Title match only, like
 # the holiday selection; the window is Nov 1 - Dec 24 of the season's year.
 SANTA_TITLE = re.compile(r"\b(santa(?:['\u2019]s)?|kris kringle)\b", re.IGNORECASE)
+# ROADMAP.md item 472: most park-district holiday events have a brand name and
+# name Santa only in the description.
+SANTA_DESCRIPTION = re.compile(
+    r"\b(?:visits?|photos?|pictures?|breakfast|lunch|brunch|cookies|story ?time|storytime) with (?:santa|mrs\.? claus)\b|"
+    r"\bmeet (?:santa|mrs\.? claus)\b|\bsanta(?:['\u2019]s)? (?:arrival|visit)\b|\bsanta (?:arrives|will be)\b|\bmrs\.? claus\b",
+    re.IGNORECASE,
+)
+SANTA_BRANDS = re.compile(r"\b(?:frostival|lollipop lane|winter wonderland|holly days|santa splash)\b", re.IGNORECASE)
+NOT_SANTA = re.compile(r"\bsanta (?:fe|paws|cruz|clara|barbara|monica|ana|rosa)\b", re.IGNORECASE)
+
+
+def santa_reason(event: dict) -> str | None:
+    """Why an event belongs on /santa/: None when it doesn't. A title naming
+    Santa needs no extra line; a match from the description or a holiday brand
+    shows "Santa visits" on the card."""
+    title, detail = event.get("title") or "", event.get("detail_long") or event.get("detail") or ""
+    if NOT_SANTA.search(title):  # Santa Fe Trail, Santa Paws (dogs only), place names
+        return None
+    detail = NOT_SANTA.sub("", detail)
+    if SANTA_TITLE.search(title):
+        return "title"
+    if SANTA_DESCRIPTION.search(detail):
+        return "Santa visits"
+    if SANTA_BRANDS.search(title) and re.search(r"\bsanta\b", detail, re.IGNORECASE):
+        return "Santa visits"
+    return None
+    if SANTA_TITLE.search(NOT_SANTA.sub("", title)):
+        return "title"
+    if SANTA_DESCRIPTION.search(detail):
+        return "Santa visits"
+    if SANTA_BRANDS.search(title) and re.search(r"\bsanta\b", detail, re.IGNORECASE):
+        return "Santa visits"
+    return None
 _SOLD_OUT = re.compile(r"\bsold[- ]out\b", re.IGNORECASE)
 
 
@@ -2546,9 +2586,10 @@ def select_santa_events(blocks: list[dict], today: date) -> list[dict]:
             except ValueError:
                 continue
             key = (event["title"].strip().lower(), event["date_iso"])
-            if start <= day <= end and SANTA_TITLE.search(event["title"]) and key not in seen:
+            reason = santa_reason(event) if start <= day <= end and key not in seen else None
+            if reason:
                 seen.add(key)
-                picked.append(dict(event))
+                picked.append(dict(event, santa_reason=None if reason == "title" else reason))
     picked.sort(key=lambda e: e["date_iso"])
     return picked
 
@@ -2634,6 +2675,7 @@ def render_santa_page(entries: list[dict], now: datetime, analytics: dict | None
                 "time_label": event_time_label(ev["date_iso"]), "page_url": page_url, "reg_badge": ev.get("reg_badge"),
                 "sold_out": bool(_SOLD_OUT.search(f"{ev['title']} {ev.get('detail') or ''}")),
                 "google_calendar_url": ev.get("google_calendar_url"),  # item 462
+                "santa_reason": ev.get("santa_reason"),  # item 472
             })
     rows.sort(key=lambda r: r["date_iso"])
     days = []

@@ -186,7 +186,7 @@
   <h2 class="events-heading">{{ day.label }}</h2>
   <ul class="events">
     {% for e in day.events %}
-    <li style="--town:{{ e.color }}"><span class="emoji" aria-hidden="true">🎅</span><strong style="color:{{ e.color }}">{{ e.town }}</strong>{% if e.time_label %} &middot; {{ e.time_label }}{% endif %} <a href="{{ e.page_url }}">{{ e.title }}</a>{% if e.google_calendar_url %} <a class="cal-g" href="{{ e.google_calendar_url }}" target="_blank" rel="noopener">📅 Google Calendar</a>{% endif %}{% if e.reg_badge %} <span class="hours-note">{{ e.reg_badge }}</span>{% endif %}{% if e.sold_out %} <span class="hours-note">Source says: sold out</span>{% endif %}</li>
+    <li style="--town:{{ e.color }}"><span class="emoji" aria-hidden="true">🎅</span><strong style="color:{{ e.color }}">{{ e.town }}</strong>{% if e.time_label %} &middot; {{ e.time_label }}{% endif %} <a href="{{ e.page_url }}">{{ e.title }}</a>{% if e.santa_reason %} <span class="hours-note">🎅 {{ e.santa_reason }}</span>{% endif %}{% if e.google_calendar_url %} <a class="cal-g" href="{{ e.google_calendar_url }}" target="_blank" rel="noopener">📅 Google Calendar</a>{% endif %}{% if e.reg_badge %} <span class="hours-note">{{ e.reg_badge }}</span>{% endif %}{% if e.sold_out %} <span class="hours-note">Source says: sold out</span>{% endif %}</li>
     {% endfor %}
   </ul>
   {% endfor %}
