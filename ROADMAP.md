@@ -220,6 +220,7 @@ doesn't re-suggest something already shipped.
 
 **Build queue (by deadline; refreshed by the research loop, item 346).**
 Pick from the top unless the owner has flagged something else:
+0. **474** with **476** (Metra Holiday Train on the UP Northwest line, Sat Dec 12; tickets Mon Nov 16 at noon; in the **Nov 12 email**, with a calendar reminder), then **475** (CPKC Holiday Train, if a stop is within ten miles).
 0. **472** (`/santa/` also matches Santa in descriptions and holiday brand names; Frostival is missing; before Nov 15), then **471** with **473** (Palatine library's whole calendar: 12 events today; horizons for html sources).
 0. **465** (read The Events Calendar feeds by date range: AHPD, MPPD, Wheeling, Metropolis and Des Plaines Theatre are capped at their first page, so December is invisible; probe Palatine Park District for the same plugin) with **466** (Rotary Santa Run, Palatine's Santa Paws and Frostival on `/santa/`). `/santa/` full by **Nov 15** (item 428).
 0. **427, 428** (read the probe answers daily: tree-lighting dates for Mount Prospect and Wheeling are still TBA).
@@ -20437,6 +20438,79 @@ Competitors reviewed this pass: **Library Market's LibraryCalendar**
 pages**, as data sources rather than competitors. The design/UX angle is
 **`/santa/` a week out**: three listings, and a title-only match that hides
 Frostival.
+
+#### Research pass 2026-11-08, evening (hundred-and-thirty-second pass)
+
+Today the build loop shipped item 471: Palatine's library is up from
+**12 to 27 events**, following `?page=N`. Its feed paths answered 403, so
+paging was the route. It also shipped item 472 (Frostival is now on
+`/santa/` as *"🎅 Santa visits"*) and item 473. This pass looks at two
+holiday trains that families in these towns plan around, and at one of
+them going on sale this week.
+
+| Angle | What it is / what we found | Why it matters here |
+|---|---|---|
+| **The Metra Holiday Train, 2026** (WTTW, *"Metra 2026 Holiday Train Schedule Announced"*; American Rails, Nov 3, 2026, citing Metra's newsroom; mykidlist's *"How to catch a ride on the 2026 Metra Holiday Trains"*; ABC7 on 2025's sell-out; metra.com/HolidayTrains) | **The Union Pacific Northwest line's Holiday Train runs Sat Dec 12** (trips 7902 inbound and 7903 outbound). That's the line through **Des Plaines, Mount Prospect, Arlington Heights and Palatine**. **Tickets go on sale Mon Nov 16 at noon** at shop.metra.com: **$10, five per purchase**. Last year they **sold out within minutes**. Other lines: BNSF, Milwaukee District North and Rock Island on Dec 5; Metra Electric Dec 12, 13 and 19 with Santa at Millennium Station; UP North Dec 19. **Wheeling** is on the North Central Service, which isn't listed | This is the most time-critical family item of the season: a fixed sale moment, sold out in minutes, on the train that stops in four of the five towns. **This Thursday's email (Nov 12) is the last issue before the sale.** A reader who sets a reminder from it and gets tickets has a concrete reason to stay subscribed. Roundups (mykidlist, Time Out) cover the train, but none says "your station is on the Dec 12 line" (item 474) |
+| **The CPKC Holiday Train, 2026** (Fox 32 Chicago, *"Canadian Pacific Holiday Train coming to Illinois"*; Fox 6 Wisconsin schedule; Railway Age on the tour; Caucus blog and Trains.com on past Bensenville and Franklin Park stops) | Illinois is the **first US stop**, with **four Illinois stops** starting around **Nov 23**. The stop list wasn't in the coverage found. Past tours stopped in **Bensenville** and **Franklin Park**, both **within about ten miles of Des Plaines**. Free, with live music and a food-bank collection | If a 2026 stop is that close, it belongs in item 458's *"Just outside our towns (within ten miles)"* section and on `/give/` (it collects for food banks). It's free, dated, and a big family outing, but only from CPKC's own schedule page (item 475) |
+| **Sale moments in the email (design/UX)** (the *"📝 Sign-ups opening this week"* block, item 327; the Google Calendar builder from items 462–463) | The email shows when a sign-up opens, but gives no way to be reminded. Item 463's builder can make a **calendar entry for the moment itself** (*"Metra Holiday Train tickets on sale, noon"*) as easily as for an event | For a sale that sells out in minutes, a calendar reminder at 11:55 is the useful thing. It's the same link pattern the owner asked for in item 462, applied to deadlines (item 476) |
+
+#### P1 (new)
+
+474. **Metra Holiday Train: "your line runs Sat Dec 12; tickets Mon Nov 16
+     at noon."** Build loop, by Thursday's send (Nov 12):
+
+     - Probe **metra.com/HolidayTrains** (and Metra's newsroom post) and
+       confirm the UP Northwest date, the sale time and the price from
+       Metra's own page. **Nothing renders unless it does.**
+     - Add an `annual_events` entry, *"Metra Holiday Train (UP
+       Northwest)"*, Dec 12, for **Des Plaines, Mount Prospect, Arlington
+       Heights and Palatine**, linking Metra's page, with a 🚂 emoji.
+     - Add a one-off **"⏰ On sale"** line to the Nov 12 email and to
+       `/santa/` and `/holidays/` from now until Nov 16: ***"🚂 Metra
+       Holiday Train on the UP Northwest line, Sat Dec 12: tickets go on
+       sale Mon Nov 16 at noon ($10, five per order). Last year they sold
+       out in minutes."*** Include a Google Calendar reminder (item 476)
+       and the official link.
+     - After Nov 16, the line becomes the plain Dec 12 event on those
+       pages.
+
+     Tests: the line renders only between the probe date and Nov 16
+     noon, the four towns carry the event, and Wheeling doesn't.
+
+#### P2 (new)
+
+475. **The CPKC Holiday Train in "Just outside", if a 2026 stop is within
+     ten miles.** Build loop. Probe CPKC's Holiday Train schedule page
+     for the 2026 Illinois stops. If one is **within ten miles** of a
+     town's centre (Bensenville and Franklin Park have been before), add
+     it to `config/just_outside.yaml` with date, time, address and
+     source. Show it on `/holidays/` and `/santa/`, plus a line on
+     `/give/` noting the food-bank collection, and only what the page
+     says about donations. Tests: a stop beyond ten miles is excluded,
+     and an included one renders in all three places.
+
+476. **Calendar reminders for sale and sign-up moments.** Build loop. Give
+     the *"📝 Sign-ups opening this week"* block (item 327) and any
+     `on_sale:` entry a ***"⏰ Remind me"*** Google Calendar link:
+
+     - a 15-minute entry five minutes before the opening, titled
+       *"<Event> sign-up opens"*;
+     - the sign-up or ticket link in `details`;
+     - `ctz=America/Chicago`, from item 463's builder.
+
+     Use it in the email and on the pages, and add it to the Metra line
+     (item 474). Tests: the entry starts 5 minutes early, and details
+     carries the link.
+
+Re-rank: **474 goes to the top of the build queue**, with a hard deadline
+of the **Nov 12 send**. **476** rides with it (the reminder link). **475**
+follows once CPKC's 2026 list can be read.
+
+Competitors reviewed this pass: **mykidlist's and Time Out's Metra
+Holiday Train guides** (city-wide, without the line-to-town match) and
+**the CPKC Holiday Train coverage** (Fox 32, Fox 6, Railway Age). The
+design/UX angle is **sale moments in the email**: the email says when,
+but can't remind.
 
 
 ## Working agreements for autonomous iteration
