@@ -107,6 +107,13 @@
     "buttondown_id": "em_1fjyzvjyaj8rzvb3ndnh639z6x",
     "region": "combined",
     "mode": "schedule",
-    "pre_send_subscriber_count": 1
+    "pre_send_subscriber_count": 1,
+    "metrics": {
+      "recipients": 1,
+      "opens": 1,
+      "clicks": 0,
+      "open_rate": 1.0,
+      "click_rate": 0.0
+    }
   }
 ]
