@@ -1332,6 +1332,7 @@ def fetch_region_sections(
                 failure_info=failure_info,
                 exclude_patterns=source.get("exclude_patterns"),
                 max_per_week=source.get("max_per_week"),
+                pages=source.get("pages"),  # item 471: paginated html listings
             )
             # A fetcher returns None on a transport/parse failure (network
             # error, non-2xx status) versus a real [] (reached the page,
