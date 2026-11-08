@@ -1,18 +1,6 @@
 {
- "fetched_at": "2026-11-07T21:59:54+00:00",
+ "fetched_at": "2026-11-08T06:06:08+00:00",
  "items": [
-  {
-   "date": "Sat, 07 Nov 2026 10:00:00 +0000",
-   "detail": "Saturday, November 07 2026 10:00am - 11:30am \n Let's celebrate the joyful Festival of Lights with vibrant performances, crafts, and activities. Whether Diwali is part of your family tradition or a new experience, all are welcome!",
-   "title": "Diwali Party",
-   "url": "https://mppl.libnet.info/event/14808871"
-  },
-  {
-   "date": "Sat, 07 Nov 2026 10:00:00 +0000",
-   "detail": "Saturday, November 07 2026 10:00am - 12:00pm \n Celebrate Kindness Week in Mount Prospect, a celebration encouraging residents to see the good, be the good, and go the extra mile in our community!",
-   "title": "Kindness Week in Mount Prospect Kickoff Event",
-   "url": "https://mppl.libnet.info/event/16835825"
-  },
   {
    "date": "Mon, 09 Nov 2026 09:30:00 +0000",
    "detail": "Monday, November 09 2026 9:30am - 10:00am \n Bring the whole family and join us for an interactive storytime with high-energy stories, songs, and activities.",
@@ -360,6 +348,18 @@
    "detail": "Wednesday, November 18 2026 4:00pm - 7:00pm \n Bring your unused gift wrap, wrapping supplies, or holiday decor in good condition to swap. All holidays, seasons, and occasions are welcome for this exchange!",
    "title": "Drop-In Gift Wrap Supplies and Holiday Decor Swap",
    "url": "https://mppl.libnet.info/event/16837841"
+  },
+  {
+   "date": "Wed, 18 Nov 2026 17:00:00 +0000",
+   "detail": "Wednesday, November 18 2026 5:00pm - 6:00pm \n  Join us for a fun, seasonal-themed bingo program!",
+   "title": "Fall Bingo",
+   "url": "https://mppl.libnet.info/event/16883890"
+  },
+  {
+   "date": "Wed, 18 Nov 2026 18:00:00 +0000",
+   "detail": "Wednesday, November 18 2026 6:00pm - 7:00pm \n Get your pickaxe ready! Build unique structures that solve various design challenges. Then share your digital handiwork with new friends.",
+   "title": "Minecraft Engineers",
+   "url": "https://mppl.libnet.info/event/16394683"
   }
  ],
  "source": "Mount Prospect Public Library — Events"
