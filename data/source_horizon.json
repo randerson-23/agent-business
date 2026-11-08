@@ -13,9 +13,23 @@
    "horizon_days": 22,
    "route": "html_events",
    "type": "html_events"
+  },
+  {
+   "count": 238,
+   "date": "2026-11-08",
+   "horizon_days": 22,
+   "route": "html_events",
+   "type": "html_events"
   }
  ],
  "arlington-heights-60005:Arlington Heights Park District \u2014 Events": [
+  {
+   "count": 9,
+   "date": "2026-11-08",
+   "horizon_days": 41,
+   "route": "month_ics",
+   "type": "tribe_events"
+  },
   {
    "count": 9,
    "date": "2026-11-08",
@@ -45,9 +59,23 @@
    "horizon_days": null,
    "route": "html_events",
    "type": "html_events"
+  },
+  {
+   "count": 10,
+   "date": "2026-11-08",
+   "horizon_days": null,
+   "route": "html_events",
+   "type": "html_events"
   }
  ],
  "des-plaines-60016:City of Des Plaines \u2014 News": [
+  {
+   "count": 10,
+   "date": "2026-11-08",
+   "horizon_days": null,
+   "route": "html_events",
+   "type": "html_events"
+  },
   {
    "count": 10,
    "date": "2026-11-08",
@@ -77,9 +105,23 @@
    "horizon_days": null,
    "route": "html_events",
    "type": "html_events"
+  },
+  {
+   "count": 3,
+   "date": "2026-11-08",
+   "horizon_days": null,
+   "route": "html_events",
+   "type": "html_events"
   }
  ],
  "des-plaines-60016:Des Plaines Park District \u2014 Events": [
+  {
+   "count": 19,
+   "date": "2026-11-08",
+   "horizon_days": null,
+   "route": "html_events",
+   "type": "html_events"
+  },
   {
    "count": 19,
    "date": "2026-11-08",
@@ -109,9 +151,23 @@
    "horizon_days": 419,
    "route": "rss",
    "type": "rss"
+  },
+  {
+   "count": 412,
+   "date": "2026-11-08",
+   "horizon_days": 419,
+   "route": "rss",
+   "type": "rss"
   }
  ],
  "des-plaines-60016:Des Plaines Theatre \u2014 Events": [
+  {
+   "count": 62,
+   "date": "2026-11-08",
+   "horizon_days": 84,
+   "route": "month_ics",
+   "type": "tribe_events"
+  },
   {
    "count": 62,
    "date": "2026-11-08",
@@ -157,9 +213,23 @@
    "horizon_days": 83,
    "route": "month_ics",
    "type": "tribe_events"
+  },
+  {
+   "count": 32,
+   "date": "2026-11-08",
+   "horizon_days": 83,
+   "route": "month_ics",
+   "type": "tribe_events"
   }
  ],
  "mount-prospect-60056:Mount Prospect Public Library \u2014 Events": [
+  {
+   "count": 245,
+   "date": "2026-11-08",
+   "horizon_days": 391,
+   "route": "rss",
+   "type": "rss"
+  },
   {
    "count": 245,
    "date": "2026-11-08",
@@ -189,9 +259,23 @@
    "horizon_days": 221,
    "route": "ics",
    "type": "ics"
+  },
+  {
+   "count": 57,
+   "date": "2026-11-08",
+   "horizon_days": 221,
+   "route": "ics",
+   "type": "ics"
   }
  ],
  "mount-prospect-60056:Randhurst Village \u2014 Events": [
+  {
+   "count": 1,
+   "date": "2026-11-08",
+   "horizon_days": null,
+   "route": "html_events",
+   "type": "html_events"
+  },
   {
    "count": 1,
    "date": "2026-11-08",
@@ -221,9 +305,23 @@
    "horizon_days": -2,
    "route": "revize_news_json",
    "type": "revize_news_json"
+  },
+  {
+   "count": 35,
+   "date": "2026-11-08",
+   "horizon_days": -2,
+   "route": "revize_news_json",
+   "type": "revize_news_json"
   }
  ],
  "palatine-60067:Community Consolidated School District 15 \u2014 Calendar": [
+  {
+   "count": 43,
+   "date": "2026-11-08",
+   "horizon_days": 213,
+   "route": "ics",
+   "type": "ics"
+  },
   {
    "count": 43,
    "date": "2026-11-08",
@@ -253,9 +351,23 @@
    "horizon_days": 31,
    "route": "localist",
    "type": "localist"
+  },
+  {
+   "count": 10,
+   "date": "2026-11-08",
+   "horizon_days": 31,
+   "route": "localist",
+   "type": "localist"
   }
  ],
  "palatine-60067:Palatine Park District \u2014 Events": [
+  {
+   "count": 14,
+   "date": "2026-11-08",
+   "horizon_days": null,
+   "route": "html_events",
+   "type": "html_events"
+  },
   {
    "count": 14,
    "date": "2026-11-08",
@@ -285,9 +397,23 @@
    "horizon_days": null,
    "route": "html_events",
    "type": "html_events"
+  },
+  {
+   "count": 12,
+   "date": "2026-11-08",
+   "horizon_days": null,
+   "route": "html_events",
+   "type": "html_events"
   }
  ],
  "palatine-60067:Salt Creek Rural Park District \u2014 Events": [
+  {
+   "count": 1,
+   "date": "2026-11-08",
+   "horizon_days": 40,
+   "route": "month_ics",
+   "type": "tribe_events"
+  },
   {
    "count": 1,
    "date": "2026-11-08",
@@ -317,6 +443,13 @@
    "horizon_days": 317,
    "route": "ics",
    "type": "ics"
+  },
+  {
+   "count": 10,
+   "date": "2026-11-08",
+   "horizon_days": 317,
+   "route": "ics",
+   "type": "ics"
   }
  ],
  "palatine-60067:Village of Palatine \u2014 Calendar": [
@@ -326,9 +459,23 @@
    "horizon_days": 160,
    "route": "ics",
    "type": "ics"
+  },
+  {
+   "count": 25,
+   "date": "2026-11-08",
+   "horizon_days": 160,
+   "route": "ics",
+   "type": "ics"
   }
  ],
  "palatine-60067:Village of Palatine \u2014 News": [
+  {
+   "count": 2,
+   "date": "2026-11-08",
+   "horizon_days": -4,
+   "route": "rss",
+   "type": "rss"
+  },
   {
    "count": 2,
    "date": "2026-11-08",
@@ -351,9 +498,23 @@
    "horizon_days": 801,
    "route": "rss",
    "type": "rss"
+  },
+  {
+   "count": 245,
+   "date": "2026-11-08",
+   "horizon_days": 801,
+   "route": "rss",
+   "type": "rss"
   }
  ],
  "wheeling-60090:Village of Wheeling \u2014 Calendar": [
+  {
+   "count": 143,
+   "date": "2026-11-08",
+   "horizon_days": 1156,
+   "route": "ics",
+   "type": "ics"
+  },
   {
    "count": 143,
    "date": "2026-11-08",

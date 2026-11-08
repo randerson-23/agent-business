@@ -419,5 +419,74 @@
   "town": "Arlington Heights",
   "url": "https://runsignup.com/Race/IL/ArlingtonHeights/RotaryClubSantaRun",
   "venue": null
+ },
+ "e/2026-12-06-holly-jolly-trolly/": {
+  "date_iso": "2026-12-06T16:45:00",
+  "detail": "Join us in your holiday best or favorite PJs for a ride on the Holly Jolly Trolley to visit Santa! Your adventure begins at Pioneer Park where our Elf Ticket…",
+  "detail_long": "Join us in your holiday best or favorite PJs for a ride on the Holly Jolly Trolley to visit Santa! Your adventure begins at Pioneer Park where our Elf Ticket agents will check you in for Polar Express story-time and a ride with our Polar Express Conductor to the Arlington Lakes Golf Course. At Arlington Lakes, you’ll meet Santa in the Hearth Room, take photos at the Elfie Station, and enjoy hot cocoa and cookies before catching the trolley back to Pioneer. Register for your preferred time slot. Register",
+  "first_seen": "2026-11-08",
+  "ics_href": "data:text/calendar;charset=utf-8,BEGIN%3AVCALENDAR%0D%0AVERSION%3A2.0%0D%0APRODID%3A-//Within%20Ten//EN%0D%0ABEGIN%3AVEVENT%0D%0ADTSTART%3A20261206T164500%0D%0ADTEND%3A20261206T200000%0D%0ASUMMARY%3AHolly%20Jolly%20Trolly%0D%0ADESCRIPTION%3AJoin%20us%20in%20your%20holiday%20best%20or%20favorite%20PJs%20for%20a%20ride%20on%20the%20Holly%20Jolly%20Trolley%20to%20visit%20Santa%21%20Your%20adventure%20begins%20at%20Pioneer%20Park%20where%20our%20Elf%20Ticket%E2%80%A6%0D%0AURL%3Ahttps%3A//www.ahpd.org/event/holly-jolly-trolly/%0D%0AEND%3AVEVENT%0D%0AEND%3AVCALENDAR%0D%0A",
+  "path": "e/2026-12-06-holly-jolly-trolly/",
+  "postal_code": null,
+  "region_id": "arlington-heights-60005",
+  "region_url": "https://withintenmiles.com/arlington-heights-60005/",
+  "source": "Arlington Heights Park District — Events",
+  "sponsored_by": null,
+  "state": "IL",
+  "street_address": null,
+  "tags": [
+   "outdoor"
+  ],
+  "title": "Holly Jolly Trolly",
+  "town": "Arlington Heights",
+  "url": "https://www.ahpd.org/event/holly-jolly-trolly/",
+  "venue": null
+ },
+ "e/2026-12-12-des-plaines-youth-commission-holiday-hoopla/": {
+  "date_iso": "2026-12-12T13:00:00",
+  "detail": "Saturday, December 12 2026 1:00pm - 3:00pm \n Visit with Santa Claus and enjoy crafts, games, cookies, juice and holiday cheer!",
+  "detail_long": "Visit with Santa Claus and enjoy crafts, games, cookies, juice and holiday cheer!",
+  "first_seen": "2026-11-08",
+  "ics_href": "data:text/calendar;charset=utf-8,BEGIN%3AVCALENDAR%0D%0AVERSION%3A2.0%0D%0APRODID%3A-//Within%20Ten//EN%0D%0ABEGIN%3AVEVENT%0D%0ADTSTART%3A20261212T130000%0D%0ADTEND%3A20261212T140000%0D%0ASUMMARY%3ADes%20Plaines%20Youth%20Commission%20Holiday%20Hoopla%0D%0ADESCRIPTION%3ASaturday%5C%2C%20December%2012%202026%201%3A00pm%20-%203%3A00pm%20%5Cn%20Visit%20with%20Santa%20Claus%20and%20enjoy%20crafts%5C%2C%20games%5C%2C%20cookies%5C%2C%20juice%20and%20holiday%20cheer%21%0D%0ALOCATION%3ADes%20Plaines%20Public%20Library%5C%2C%201501%20Ellinwood%20Street%5C%2C%20Des%20Plaines%0D%0AURL%3Ahttps%3A//desplaines.libnet.info/event/14848386%0D%0AEND%3AVEVENT%0D%0AEND%3AVCALENDAR%0D%0A",
+  "path": "e/2026-12-12-des-plaines-youth-commission-holiday-hoopla/",
+  "postal_code": "60016",
+  "region_id": "des-plaines-60016",
+  "region_url": "https://withintenmiles.com/des-plaines-60016/",
+  "source": "Des Plaines Public Library — Events",
+  "sponsored_by": null,
+  "state": "IL",
+  "street_address": "1501 Ellinwood Street",
+  "tags": [
+   "indoor",
+   "kid_friendly"
+  ],
+  "title": "Des Plaines Youth Commission Holiday Hoopla",
+  "town": "Des Plaines",
+  "url": "https://desplaines.libnet.info/event/14848386",
+  "venue": "Des Plaines Public Library"
+ },
+ "e/2026-12-12-frostival/": {
+  "date_iso": "2026-12-12T10:00:00",
+  "detail": "Come celebrate winter Jack Frost style at the Arlington Heights Historical Museum! Mail a letter to the North Pole, meet a real-life Ice Princess, Ice Queen…",
+  "detail_long": "Come celebrate winter Jack Frost style at the Arlington Heights Historical Museum! Mail a letter to the North Pole, meet a real-life Ice Princess, Ice Queen and winter animal ambassadors, enjoy cocoa and cookies, join in on Frosty the Snowman story-time, make a snowman craft, listen to strolling carolers, visit with Santa, and more. It’s free, frosty, family fun from 10AM-12:30PM!",
+  "first_seen": "2026-11-08",
+  "ics_href": "data:text/calendar;charset=utf-8,BEGIN%3AVCALENDAR%0D%0AVERSION%3A2.0%0D%0APRODID%3A-//Within%20Ten//EN%0D%0ABEGIN%3AVEVENT%0D%0ADTSTART%3A20261212T100000%0D%0ADTEND%3A20261212T123000%0D%0ASUMMARY%3AFrostival%0D%0ADESCRIPTION%3ACome%20celebrate%20winter%20Jack%20Frost%20style%20at%20the%20Arlington%20Heights%20Historical%20Museum%21%20Mail%20a%20letter%20to%20the%20North%20Pole%5C%2C%20meet%20a%20real-life%20Ice%20Princess%5C%2C%20Ice%20Queen%E2%80%A6%0D%0AURL%3Ahttps%3A//www.ahpd.org/event/frostival-2026/%0D%0AEND%3AVEVENT%0D%0AEND%3AVCALENDAR%0D%0A",
+  "path": "e/2026-12-12-frostival/",
+  "postal_code": null,
+  "region_id": "arlington-heights-60005",
+  "region_url": "https://withintenmiles.com/arlington-heights-60005/",
+  "source": "Arlington Heights Park District — Events",
+  "sponsored_by": null,
+  "state": "IL",
+  "street_address": null,
+  "tags": [
+   "art_culture",
+   "indoor",
+   "kid_friendly"
+  ],
+  "title": "Frostival",
+  "town": "Arlington Heights",
+  "url": "https://www.ahpd.org/event/frostival-2026/",
+  "venue": null
  }
 }
