@@ -220,6 +220,7 @@ doesn't re-suggest something already shipped.
 
 **Build queue (by deadline; refreshed by the research loop, item 346).**
 Pick from the top unless the owner has flagged something else:
+0. **472** (`/santa/` also matches Santa in descriptions and holiday brand names; Frostival is missing; before Nov 15), then **471** with **473** (Palatine library's whole calendar: 12 events today; horizons for html sources).
 0. **465** (read The Events Calendar feeds by date range: AHPD, MPPD, Wheeling, Metropolis and Des Plaines Theatre are capped at their first page, so December is invisible; probe Palatine Park District for the same plugin) with **466** (Rotary Santa Run, Palatine's Santa Paws and Frostival on `/santa/`). `/santa/` full by **Nov 15** (item 428).
 0. **427, 428** (read the probe answers daily: tree-lighting dates for Mount Prospect and Wheeling are still TBA).
 0. **468** (per-source horizon and route in source_health, watchdog on short horizons; AHPD is still flat at 11), then **470** (`/e/` pages show their own weekend, not this one).
@@ -20353,6 +20354,89 @@ Kindergarten programmes** (AHML, Des Plaines, Palatine) as a sponsor-lead
 source, and **Nextdoor's 2026 journalist accounts and business events**
 (a non-item). The design/UX angle is **`/e/` pages for future events**,
 which show this weekend's events instead of their own.
+
+#### Research pass 2026-11-08 (hundred-and-thirty-first pass)
+
+Overnight the build loop shipped item 468 (`data/source_horizon.json`: count,
+horizon and route per source per build) and item 470 (`/e/` pages show their
+own weekend). This pass reads the first horizon file. It is the clearest
+picture yet of what each town's feeds can and can't see, and it points at
+the next two data fixes. It also checks `/santa/` a week before the Nov 15
+target.
+
+| Angle | What it is / what we found | Why it matters here |
+|---|---|---|
+| **The first horizon file, read per town** (`data/source_horizon.json`, 2026-11-08) | **Arlington Heights Park District** now reads by month export: 9 events, **41 days ahead** (to about Dec 19). Item 465's fix worked, and **Frostival (Dec 12)** is on the Arlington Heights page. **Mount Prospect Park District** 83 days, **Des Plaines Theatre** 84. The libraries on RSS reach far (Mount Prospect 391 days, Des Plaines 419, Indian Trails 801). **The gaps:** **Palatine Public Library: 12 events**, against 238–412 for the other towns' libraries, read as `html_events` from the first page of `/events/upcoming`. **Des Plaines and Palatine park districts** are `html_events` with **no horizon recorded** (19 and 14 events). **Harper College** is capped at 10 with a 31-day horizon. **Downtown Mount Prospect: 0** (its list is rendered by JavaScript, as its config says) | **Palatine** has the fewest events of the five towns (item 286 noted it), and its library, normally the biggest family source in any town, contributes 12 events. The search results show the site paginates (`/events/list?page=2`, `?page=29`), and the vendor's feature sheet (Library Market's *LibraryCalendar*) says calendars can be exported as **RSS, XML, iCal or JSON**. Those are the two ways in (item 471). The `html_events` sources without a horizon are blind spots in item 468's new check (item 473) |
+| **`/santa/` a week before Nov 15 (design/UX)** | Five-town listings: **the Rotary Santa Run & Reindeer Dash (AH, Dec 5)** and **Mount Prospect's Family Photos with Santa (Dec 5)**. "Just outside": **Skokie's Breakfast with Santa (Dec 12)**. **Frostival is missing**, though it's on the Arlington Heights page with *"a visit with Santa"* in its description. `select_santa_events` matches **titles only** (`SANTA_TITLE.search(event["title"])`), and "Frostival" doesn't say Santa | Most park-district holiday events have a brand name (*Frostival*, *Lollipop Lane*, *Winter Wonderland*, *Holly Days*) and name Santa only in the description. A title-only match will miss most of what item 465 now fetches (item 472) |
+| **LibraryCalendar's export options** (Library Market's *LibraryCalendar Features* sheet, via the Suffolk Library System portal; OCLC's Capira help on LibraryMarket event feeds) | Library Market says its calendars share data **"via RSS, XML, iCal, or JSON data feeds"** with filter query parameters. The exact paths aren't documented publicly, and a library app vendor (OCLC Capira) takes **the base calendar URL** as the feed entry point | A documented export means the build loop can read Palatine's whole calendar instead of the first page, once a probe finds the path. Arlington Heights' library (238 events, 22-day horizon, also `html_events`) may be on the same platform and gain the same way (item 471) |
+
+#### P1 (new)
+
+471. **Read Palatine Public Library's whole calendar.** Build loop, probe
+     first:
+
+     1. Add a probe round on `palatinelibrary.org` for LibraryCalendar
+        export paths: `/events/feed`, `/events/feed/ical`,
+        `/events/feed/json`, `/events/list?_format=json`, `.ics` and
+        `webcal:` links, and `<link rel="alternate" type="application/rss+xml">`
+        in the `/events` page head. Run the same patterns on
+        `ahml.info/events` (238 events, 22-day horizon).
+     2. If an export answers, switch the source to it (`ics`, `rss` or a
+        small JSON mapper), keeping the indoor default tags.
+     3. If none does, make `html_events` **follow `?page=N`** on
+        `/events/list` up to a cap (about 6 pages, one request each),
+        stopping at the first page whose events are all beyond 45 days.
+
+     Success check: Palatine's library count rises well above 12, and its
+     horizon reaches at least 30 days in `source_horizon.json`. Tests: a
+     two-page fixture is followed and stops at the cap, and an export
+     fixture maps to events.
+
+472. **`/santa/` matches Santa in the description, not just the title.**
+     Build loop, `select_santa_events`:
+
+     - Also select events whose **description** says *visit with Santa*,
+       *photos with Santa*, *meet Santa*, *Santa's arrival*, *breakfast
+       with Santa* or *Mrs. Claus*, or whose title is in the holiday
+       brand list (*Frostival*, *Lollipop Lane*, *Winter Wonderland*,
+       *Holly Days*, *Santa Splash*).
+     - Show the reason on the card: ***"🎅 Santa visits"*** under
+       *Frostival*.
+     - Keep the date window and the de-duplication. Exclude *Santa Fe*
+       and *Santa Paws* (dogs; item 466).
+
+     Before Nov 15. Tests: Frostival with *"a visit with Santa"* in its
+     description is selected and carries the line, *"Santa Fe Trail
+     Hike"* isn't, and a dog-only event isn't.
+
+#### P2 (new)
+
+473. **Horizons for `html_events` sources, and tidy the three odd ones.**
+     Build loop:
+
+     - Compute `horizon_days` for `html_events` sources from the dates
+       they do parse, so item 468's check covers the Des Plaines and
+       Palatine park districts.
+     - **Harper College**: raise its fetch from 10 to the existing
+       weekly cap's need, about 30 rows with `pp=`. Keep the 6-a-week
+       display cap from item 286.
+     - **Downtown Mount Prospect** (0 events for months, a JavaScript
+       list): set `enabled: false` with the reason in the comment, so it
+       stops counting as a source. Its Noon Year's and holiday events
+       stay covered by item 446's watch.
+
+     Tests: an `html_events` fixture gets a horizon, and a disabled
+     source is skipped and not counted.
+
+Re-rank: **472 goes to the top of the build queue** (a few lines, before Nov
+15). **471** follows: Palatine is the thinnest town, and its library is the
+biggest gain available. **473** rides with 471.
+
+Competitors reviewed this pass: **Library Market's LibraryCalendar**
+(its export options) and **Palatine Public Library's own event listing
+pages**, as data sources rather than competitors. The design/UX angle is
+**`/santa/` a week out**: three listings, and a title-only match that hides
+Frostival.
 
 
 ## Working agreements for autonomous iteration
