@@ -280,3 +280,24 @@ probes:
       - '(?i)(?:Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)[a-z]*\.? \d{1,2},? 20\d\d[^<]{0,80}'
       - '(?i)reindeer dash[^<]{0,160}'
       - '(?i)\d{1,2}:\d{2}\s*[ap]m[^<]{0,80}'
+  # Round 39 (item 471, 2026-11-08): Palatine Public Library has 12 events against 238-412 for the other libraries,
+  # read from the first page of its LibraryCalendar listing. Look for its RSS/iCal/JSON exports.
+  - url: https://www.palatinelibrary.org/events
+    item: 471
+    purpose: Palatine Public Library - events page head and links; LibraryCalendar export paths (rss, ical, json, webcal)
+    patterns:
+      - '(?i)<link[^>]{0,200}type="application/(?:rss|atom)\+xml"[^>]{0,200}>'
+      - '(?i)href="[^"]{0,200}(?:feed|\.ics|ical|webcal:|_format=json|/rss)[^"]{0,120}"'
+      - '(?i)href="[^"]{0,120}[?&]page=\d+[^"]{0,60}"'
+  - url: https://www.palatinelibrary.org/events/feed
+    item: 471
+    purpose: Palatine Public Library - LibraryCalendar feed path (RSS/XML?)
+    patterns:
+      - '(?i)<rss|<feed|BEGIN:VCALENDAR'
+      - '(?i)<item>|<entry>'
+  - url: https://www.ahml.info/events
+    item: 471
+    purpose: Arlington Heights Memorial Library - events page; same export patterns (238 events, 22-day horizon)
+    patterns:
+      - '(?i)<link[^>]{0,200}type="application/(?:rss|atom)\+xml"[^>]{0,200}>'
+      - '(?i)href="[^"]{0,200}(?:feed|\.ics|ical|webcal:|_format=json|/rss)[^"]{0,120}"'

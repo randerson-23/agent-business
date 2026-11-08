@@ -7285,3 +7285,47 @@ def test_event_pages_list_their_own_weekend_not_this_one():
     page = build_digest.render_event_page({"title": "Santa Run", "date_iso": "2026-12-05T09:30:00", "town": "Arlington Heights", "state": "IL", "source": "S", "url": "https://r/x", "path": "e/x/", "region_url": "https://x/ah/"},
                                           more=[{"title": "Cookie Walk", "town": "Arlington Heights", "url": "u", "same_town": True}], more_heading="More that weekend · Fri Dec 4 – Sun Dec 6")
     assert "<h2>More that weekend · Fri Dec 4 – Sun Dec 6</h2>" in page
+
+
+def test_santa_page_matches_santa_in_descriptions_and_holiday_brands():
+    # ROADMAP.md item 472.
+    def ev(title, detail=""):
+        return {"title": title, "detail": detail, "url": "https://src/" + title.replace(" ", "-"), "date_iso": "2026-12-12T10:00:00", "attendable": True}
+    blocks = [{"section": "Events", "events": [
+        ev("Frostival", "Join us for cocoa, carolers and a visit with Santa at the Historical Museum."),
+        ev("Santa Fe Trail Hike", "A winter hike."),
+        ev("Santa Paws", "Photos with Santa for dogs only."),
+        ev("Holiday Craft Night", "Make ornaments."),
+        ev("Winter Wonderland", "Santa will be at the gazebo."),
+        ev("Breakfast with Santa"),
+    ]}]
+    picked = build_digest.select_santa_events(blocks, date(2026, 11, 8))
+    by_title = {e["title"]: e for e in picked}
+    assert set(by_title) == {"Frostival", "Winter Wonderland", "Breakfast with Santa"}
+    assert by_title["Frostival"]["santa_reason"] == "Santa visits" and by_title["Breakfast with Santa"]["santa_reason"] is None
+    page = build_digest.render_santa_page([{"region_name": "Arlington Heights", "region_url": "https://x/ah/", "events": picked}], datetime(2026, 11, 16, 15, tzinfo=timezone.utc))
+    assert "Frostival" in page and "🎅 Santa visits" in page
+
+
+def test_html_sources_get_a_horizon_and_disabled_sources_are_skipped(monkeypatch):
+    # ROADMAP.md item 473.
+    calls = []
+
+    def fake_html(url, **kwargs):
+        calls.append(url)
+        return [{"title": "Winter Camp", "detail": "x", "url": "https://x/1", "date": "December 21, 2099"}]
+
+    monkeypatch.setitem(build_digest.FETCHERS, "html_events", fake_html)
+    region_cfg = {
+        "region": {"id": "r", "name": "R", "state": "IL"},
+        "sources": [
+            {"name": "Park District", "type": "html_events", "url": "https://pd.example/events", "section": "Park District Events"},
+            {"name": "JS list", "type": "html_events", "url": "https://js.example/events", "section": "Events", "enabled": False},
+        ],
+    }
+    horizons, health, completeness = {}, {}, {"expected": 0, "reporting": 0}
+    build_digest.fetch_region_sections(region_cfg, health=health, completeness=completeness, horizons=horizons, now=datetime(2099, 11, 8, 15, tzinfo=timezone.utc))
+    record = horizons["r:Park District"][-1]
+    assert record["route"] == "html_events" and record["horizon_days"] == 43
+    assert calls == ["https://pd.example/events"] and completeness["expected"] == 1  # the disabled source is neither fetched nor counted
+    assert not any(c["region"]["id"] == "mount-prospect-60056" and any(s["name"].startswith("Downtown Mount Prospect") and s.get("enabled", True) for s in c["sources"]) for c in build_digest.load_regions())
