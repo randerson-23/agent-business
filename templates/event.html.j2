@@ -65,7 +65,7 @@
   {% if not expired %}{{ share_button("event", title ~ ", " ~ when_label ~ (", " ~ town if town else ""), canonical_url) }}{% endif %}
   <p class="source">Listing published by {{ source_name }}. Check the official listing for the latest time, place and any cost.</p>
   {% if more and not expired %}
-  <h2>More this weekend</h2>
+  <h2>{{ more_heading }}</h2>
   <ul class="more">{% for m in more %}<li><a href="{{ m.url }}">{{ m.title }}</a>{% if not m.same_town %} <span class="source">({{ m.town }})</span>{% endif %}</li>{% endfor %}</ul>
   {% endif %}
   {% if not expired %}{{ signup_form(newsletter, "newsletter-signup", "bd-email", "town:" ~ region_id, "event-page", "Get this list in your inbox every Thursday.") }}{{ signup_runtime(newsletter) }}{% endif %}
