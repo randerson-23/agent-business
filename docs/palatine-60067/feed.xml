@@ -3,8 +3,8 @@
 <channel>
   <title>Within Ten — Upcoming events in Palatine</title>
   <link>https://withintenmiles.com/</link>
-  <description>Upcoming events in Palatine, soonest first - aggregated automatically from village, library, park district and school-district calendars. This build reached 20 of 25 configured sources. 1 source is shown from its last update, up to 8 hours ago.</description>
-  <lastBuildDate>Mon, 09 Nov 2026 06:15:17 +0000</lastBuildDate>
+  <description>Upcoming events in Palatine, soonest first - aggregated automatically from village, library, park district and school-district calendars. This build reached 17 of 25 configured sources. 4 sources are shown from their last update, up to 8 hours ago.</description>
+  <lastBuildDate>Mon, 09 Nov 2026 14:02:38 +0000</lastBuildDate>
   <item>
     <title>Palatine: The Fifth Element</title>
     <link>https://withintenmiles.com/palatine-60067/#ev-the-fifth-element-2026-11-11</link>
@@ -156,6 +156,14 @@
     <description>Join us for a dual celebration of student talent at the Harper Graphic Arts Design &amp; Technology Portfolio Show and Photo Showcase. This combined event… Official listing: https://events.harpercollege.edu/event/graphic-arts-design-technology-fall-portfolio-show-photo-showcase</description>
     <pubDate>Wed, 09 Dec 2026 18:30:00 +0000</pubDate>
     <source url="https://events.harpercollege.edu/event/graphic-arts-design-technology-fall-portfolio-show-photo-showcase">Harper College — Public Events</source>
+  </item>
+  <item>
+    <title>Palatine: 🚂 Metra Holiday Train (UP Northwest)</title>
+    <link>https://withintenmiles.com/palatine-60067/#ev-metra-holiday-train-up-northwest-2026-12-12</link>
+    <guid isPermaLink="true">https://withintenmiles.com/palatine-60067/#ev-metra-holiday-train-up-northwest-2026-12-12</guid>
+    <description>Metra's decorated Holiday Train runs on the UP Northwest line, which stops in this town. Tickets ($10, five per purchase) go on sale Mon Nov 16 at noon at… Official listing: https://metra.com/holidaytrains</description>
+    <pubDate>Sat, 12 Dec 2026 00:00:00 +0000</pubDate>
+    <source url="https://metra.com/holidaytrains">Palatine</source>
   </item>
   <item>
     <title>Palatine: Palatine Winter Farmers' Market</title>
