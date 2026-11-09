@@ -312,3 +312,24 @@ probes:
       - '(?i)(?:Nov(?:ember)?|Dec(?:ember)?)\.? \d{1,2}[^<]{0,100}'
       - '(?i)\$\d+[^<]{0,80}'
     follow: '(?i)holiday'
+  # Round 41 (item 474, 2026-11-09): metra.com/HolidayTrains answered 403 (a CloudFront block). Try Metra's newsroom
+  # post, the www host, and the UP-NW Dec 12 timetable on Metra's own assets host (found by search).
+  - url: https://metra.com/newsroom/nita-holiday-trains-and-buses
+    item: 474
+    purpose: Metra newsroom - NITA holiday trains and buses (Holiday Train dates, ticket sale date and time)
+    patterns:
+      - '(?i)(?:on sale|tickets?)[^<]{0,200}'
+      - '(?is)(?:UP[- ]?NW|Union Pacific Northwest).{0,300}'
+  - url: https://www.metra.com/holidaytrains
+    item: 474
+    purpose: Metra Holiday Trains 2026 page via the www host (UP-NW date, sale time, price)
+    patterns:
+      - '(?is)(?:UP[- ]?NW|Union Pacific Northwest).{0,300}'
+      - '(?i)(?:on sale|tickets? (?:go|will go|are) on sale)[^<]{0,160}'
+      - '(?i)\$\d+[^<]{0,80}'
+  - url: https://assets.metra.com/s3fs-public/2026-10/2026.12.12_Holiday_UPNW.pdf?VersionId=qtLgWz3HYWGhD0ojhIgFiPHLk7Rx.lY6
+    item: 474
+    purpose: Metra's own UP-NW Dec 12, 2026 Holiday Train timetable (PDF) - does it exist and name train 7902?
+    patterns:
+      - '7902'
+      - '(?i)holiday'
