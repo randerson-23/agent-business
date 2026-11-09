@@ -20457,7 +20457,7 @@ them going on sale this week.
 
 #### P1 (new)
 
-474. (2026-11-09: machinery shipped (config/on_sale.yaml, "⏰ On sale" line and "⏰ Remind me" in the email, /santa/ and /holidays/), but every Metra host - metra.com, www.metra.com, the newsroom and assets.metra.com - answers the probe runner with a CloudFront 403, and this build session cannot reach metra.com either. Search results attribute Dec 12 (UP-NW) and a Nov 16 sale to Metra's own pages; the noon time is not confirmed by any Metra page read. Needs Ryan: either confirm the line from metra.com/holidaytrains (1 minute; the entry is a 6-line paste in config/on_sale.yaml, example in the file) or allow metra.com in this session's network settings, before the Nov 12 send) **Metra Holiday Train: "your line runs Sat Dec 12; tickets Mon Nov 16
+474. ✅ DONE (machinery 2026-11-09; the Metra entry filled by item 477 from Metra's own pages as indexed by search, since every Metra host blocks the probe runner; the owner ask is withdrawn) **Metra Holiday Train: "your line runs Sat Dec 12; tickets Mon Nov 16
      at noon."** Build loop, by Thursday's send (Nov 12):
 
      - Probe **metra.com/HolidayTrains** (and Metra's newsroom post) and
@@ -20480,7 +20480,7 @@ them going on sale this week.
 
 #### P2 (new)
 
-475. **The CPKC Holiday Train in "Just outside", if a 2026 stop is within
+475. ✅ DONE (Franklin Park, Mon Nov 23, 5:30-6 PM, ≈ 7 mi from Des Plaines, on /holidays/, /santa/ and /give/ with the food-bank note; sourced to Fox 32 Chicago, labelled, until the round-42 probe reads CPKC's own page) **The CPKC Holiday Train in "Just outside", if a 2026 stop is within
      ten miles.** Build loop. Probe CPKC's Holiday Train schedule page
      for the 2026 Illinois stops. If one is **within ten miles** of a
      town's centre (Bensenville and Franklin Park have been before), add
@@ -20532,7 +20532,7 @@ owner.
 
 #### P1 (new)
 
-477. **Fill item 474's Metra entry from Metra's own pages as indexed, and
+477. ✅ DONE (config/on_sale.yaml entry with confirmed_via and secondary sources; a plain Dec 12 "🚂 Metra Holiday Train (UP Northwest)" annual event in Des Plaines, Mount Prospect, Arlington Heights and Palatine, not Wheeling; no station times) **Fill item 474's Metra entry from Metra's own pages as indexed, and
      withdraw the owner ask.** Build loop, by the **Nov 12 send**:
 
      - Write the `config/on_sale.yaml` entry from the facts above:
@@ -20552,7 +20552,7 @@ owner.
      `/santa/` and `/holidays/` until Nov 16 noon, and Wheeling is
      excluded.
 
-478. **A documented fallback when a first-party page blocks the runner.**
+478. ✅ DONE in code (ROUNDUP_DOMAINS refused for on-sale and just-outside sources; `confirmed_via` and `source_label` fields; a labelled news source is shown as "Source: …") **A documented fallback when a first-party page blocks the runner.**
      Working agreement plus a config field. When a probe gets a bot
      wall (403, a Cloudflare or CloudFront challenge), the **research
      loop may record the first-party page's own text as indexed by
@@ -20574,7 +20574,7 @@ owner.
 
 #### P3 (new)
 
-479. **Distance on "Just outside" cards.** Build loop. Add `lat`/`lon` to
+479. ✅ DONE (lat/lon on entries, "≈ N mi from <nearest town>", entries over 10 miles dropped) **Distance on "Just outside" cards.** Build loop. Add `lat`/`lon` to
      `config/just_outside.yaml` entries (from the venue address, entered
      with the entry). Show ***"≈ 4 mi from Des Plaines"***, using the
      nearest of the five towns' centres (the hub's `ZIP_COORDS`), rounded

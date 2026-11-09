@@ -333,3 +333,12 @@ probes:
     patterns:
       - '7902'
       - '(?i)holiday'
+  # Round 42 (items 475/478, 2026-11-09): CPKC's own Holiday Train page, to replace the Fox 32 sourcing of the
+  # Franklin Park stop (Mon Nov 23, 5:30 PM). Follows the first holiday-train link from CPKC's home page.
+  - url: https://www.cpkcr.com/
+    item: 475
+    purpose: CPKC home page - link to the Holiday Train schedule page; Franklin Park stop date, time and place
+    patterns:
+      - '(?i)franklin park[^<]{0,200}'
+      - '(?i)holiday train[^<]{0,160}'
+    follow: '(?i)holiday[- ]?train'

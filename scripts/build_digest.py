@@ -27,7 +27,7 @@ from datetime import date, datetime, time, timedelta, timezone
 from email.utils import format_datetime, parsedate_to_datetime
 from functools import lru_cache
 from pathlib import Path
-from urllib.parse import quote, urlencode
+from urllib.parse import quote, urlencode, urlparse
 from html import escape, unescape
 from xml.sax.saxutils import escape as xml_escape
 from zoneinfo import ZoneInfo
@@ -2427,7 +2427,7 @@ def build_holiday_listing_offer(now: datetime, contact_email: str | None) -> dic
 
 def render_holidays_page(
     entries: list[dict], now: datetime, analytics: dict | None = None, newsletter: dict | None = None,
-    contact_email: str | None = None,
+    contact_email: str | None = None, outside: list[dict] | None = None,
 ) -> str:
     """The cross-town /holidays/ page (ROADMAP.md item 274): tree lightings
     town by town (a confirmed date with its source, or an honest "not posted
@@ -2440,6 +2440,7 @@ def render_holidays_page(
     return template.render(
         entries=entries,
         on_sale=load_on_sale(now),  # item 474
+        outside=outside or [],  # item 475
         year=now.year,
         listing_offer=build_holiday_listing_offer(now, contact_email),
         town_names=_join_names([e["region_name"] for e in entries]),
@@ -2639,7 +2640,30 @@ def santa_look_links(region_cfg: dict) -> list[dict]:
     return out[:2]
 
 
-def load_just_outside(today: date) -> list[dict]:
+# ROADMAP.md item 478: aggregator and roundup sites are never a source; an
+# organiser's own page (or, labelled, a news report) is.
+ROUNDUP_DOMAINS = ("mykidlist.com", "patch.com", "allevents.in", "eventbrite.com", "timeout.com", "macaronikid.com", "chicagoparent.com", "bringfido", "racemob.com", "runguides.com", "findtherun.com")
+JUST_OUTSIDE_MAX_MILES = 10
+
+
+def is_roundup_url(url: str | None) -> bool:
+    host = (urlparse(url or "").hostname or "").lower()
+    return any(host == d or host.endswith("." + d) or d in host for d in ROUNDUP_DOMAINS)
+
+
+def nearest_town(lat: float, lon: float, towns: list[dict]) -> tuple[str, float] | None:
+    """Item 479: the nearest of the covered towns' centres and its distance in miles."""
+    best = None
+    for t in towns:
+        if t.get("lat") is None or t.get("lon") is None:
+            continue
+        miles = _haversine_miles(lat, lon, t["lat"], t["lon"])
+        if best is None or miles < best[1]:
+            best = (t["name"], miles)
+    return best
+
+
+def load_just_outside(today: date, towns: list[dict] | None = None) -> list[dict]:
     """ROADMAP.md item 458: hand-sourced holiday events just outside the five towns,
     from config/just_outside.yaml. Needs a town, title, a date that has not passed
     and an http(s) source; soonest first."""
@@ -2651,10 +2675,23 @@ def load_just_outside(today: date) -> list[dict]:
         url = safe_http_url(e.get("source_url"))
         if not (str(e.get("town") or "").strip() and str(e.get("title") or "").strip() and url and day and day >= today):
             continue
+        if is_roundup_url(url):  # item 478
+            logger.warning("Just-outside entry %r refused: %s is a roundup site, not a first-party source", e.get("title"), url)
+            continue
+        distance = None
+        if e.get("lat") is not None and e.get("lon") is not None and towns:
+            near = nearest_town(float(e["lat"]), float(e["lon"]), towns)
+            if near and near[1] > JUST_OUTSIDE_MAX_MILES:
+                continue  # item 479: the section promises ten miles
+            if near:
+                distance = f"\u2248 {max(1, round(near[1]))} mi from {near[0]}"
         out.append({
             "town": str(e["town"]).strip(), "title": str(e["title"]).strip(), "date": day, "date_label": day.strftime("%a %b ") + str(day.day),
             "time": str(e.get("time") or "").strip(), "venue": str(e.get("venue") or "").strip(), "source_url": url,
             "google_calendar_url": configured_event_calendar_url(str(e["title"]).strip(), day, e.get("time"), ", ".join(p for p in (str(e.get("venue") or "").strip(), str(e["town"]).strip()) if p), url, SITE_BASE_URL + "santa/"),
+            "distance": distance,
+            "source_label": str(e.get("source_label") or "").strip(),
+            "give_note": str(e.get("give_note") or "").strip(),
         })
     out.sort(key=lambda e: e["date"])
     return out
@@ -2791,7 +2828,7 @@ def build_give_email_line(entries: list[dict], now: datetime) -> dict | None:
     return {"text": "🎁 Drives closing this week: " + " · ".join(parts[:3]), "url": SITE_BASE_URL + "give/?utm_source=email&utm_campaign=give"}
 
 
-def render_give_page(entries: list[dict], now: datetime, analytics: dict | None = None, newsletter: dict | None = None) -> str:
+def render_give_page(entries: list[dict], now: datetime, analytics: dict | None = None, newsletter: dict | None = None, outside: list[dict] | None = None) -> str:
     """The /give/ page. `entries` is [{name, region_url, links, drives, events, volunteer}]."""
     today = now.astimezone(LOCAL_TZ).date()
     names = _join_names([e["name"] for e in entries])
@@ -2812,6 +2849,7 @@ def render_give_page(entries: list[dict], now: datetime, analytics: dict | None 
         heading=(f"Toy, coat and food drives, {year}" if has_drive else f"Giving back this season, {year}"),
         subheading=f"What {names} post for the holidays, each linked to its source. Drives disappear after their last day.",
         towns=towns, volunteer=volunteer, blood=blood, volunteer_first=not has_drive, year=year, in_season=is_give_season(today),
+        outside=outside or [],
         newsletter=newsletter or {"configured": False},
         hub_url=SITE_BASE_URL, canonical_url=SITE_BASE_URL + "give/",
         generated_at=now.strftime("%Y-%m-%d %H:%M UTC"), analytics=analytics, og_image_url=SITE_BASE_URL + "og/give.png",
@@ -4913,6 +4951,8 @@ def load_on_sale(now: datetime, region_ids: set[str] | None = None) -> list[dict
         except ValueError:
             continue
         url = safe_http_url(raw.get("source_url"))
+        if is_roundup_url(url):  # item 478
+            continue
         if not (raw.get("title") and raw.get("line") and url) or opens <= local_now:
             continue
         towns = [str(t) for t in raw.get("towns") or []]
@@ -8584,7 +8624,8 @@ def main() -> None:
     logger.info("Wrote %s", join_dir / "index.html")
     holidays_dir = OUTPUT_DIR / "holidays"
     holidays_dir.mkdir(parents=True, exist_ok=True)
-    (holidays_dir / "index.html").write_text(render_holidays_page(holidays_entries, now, analytics, newsletter, contact_email), encoding="utf-8")
+    outside_entries = load_just_outside(now.astimezone(LOCAL_TZ).date(), [{"name": c["region"]["name"], "lat": c["region"].get("lat"), "lon": c["region"].get("lon")} for c in regions])  # items 458/479
+    (holidays_dir / "index.html").write_text(render_holidays_page(holidays_entries, now, analytics, newsletter, contact_email, outside=outside_entries), encoding="utf-8")
     logger.info("Wrote %s", holidays_dir / "index.html")
     for tot in trick_or_treat_entries:  # item 398: "Also at" dealers are hosts of the same event
         warm_found += warm_prospects.collect_hosts([e for e in tot.get("events") or [] if e.get("also_at")], tot["region_name"])
@@ -8613,10 +8654,10 @@ def main() -> None:
     (leaf_dir / "index.html").write_text(render_leaf_pickup_page(leaf_entries, now, analytics, newsletter), encoding="utf-8")
     give_dir = OUTPUT_DIR / "give"
     give_dir.mkdir(parents=True, exist_ok=True)
-    (give_dir / "index.html").write_text(render_give_page(give_entries, now, analytics, newsletter), encoding="utf-8")
+    (give_dir / "index.html").write_text(render_give_page(give_entries, now, analytics, newsletter, [o for o in outside_entries if o.get("give_note")]), encoding="utf-8")
     santa_dir = OUTPUT_DIR / "santa"
     santa_dir.mkdir(parents=True, exist_ok=True)
-    (santa_dir / "index.html").write_text(render_santa_page(santa_entries, now, analytics, newsletter, {e["path"] for e in active_event_pages}, load_just_outside(now.astimezone(LOCAL_TZ).date())), encoding="utf-8")
+    (santa_dir / "index.html").write_text(render_santa_page(santa_entries, now, analytics, newsletter, {e["path"] for e in active_event_pages}, outside_entries), encoding="utf-8")
     logger.info("Wrote %s", santa_dir / "index.html")
 
     for kind in THANKS_PAGES:
