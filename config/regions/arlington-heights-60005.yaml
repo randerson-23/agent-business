@@ -137,6 +137,12 @@ sources:
 # per day since Friday and Saturday have different hours. Not yet
 # confirmed by a live fetch of the linked page's exact hours.
 annual_events:
+  # ROADMAP.md item 477: Metra's own pages as indexed by search, 2026-11-09 (runner blocked by CloudFront).
+  - title: "🚂 Metra Holiday Train (UP Northwest)"
+    date: "2026-12-12"
+    detail: "Metra's decorated Holiday Train runs on the UP Northwest line, which stops in this town. Tickets ($10, five per purchase) go on sale Mon Nov 16 at noon at shop.metra.com and sell out fast. See Metra's page for times and stops."
+    url: "https://metra.com/holidaytrains"
+    tags: ["kid_friendly"]
   - title: "Harmony Fest & Taste of Arlington Heights (Friday)"
     date: "2026-10-02"
     detail: "Free live concerts in Harmony Park plus food & drink from local restaurants. 5–11pm, Downtown Arlington Heights."

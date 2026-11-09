@@ -9,4 +9,17 @@
 #     line: "Metra Holiday Train on the UP Northwest line, Sat Dec 12: tickets go on sale Mon Nov 16 at noon."
 #     source_url: "https://metra.com/HolidayTrains"
 #     towns: [des-plaines-60016, mount-prospect-60056, arlington-heights-60005, palatine-60067]
-items: []
+items:
+  # ROADMAP.md item 477: Metra's own pages, as indexed by search on 2026-11-09 (every Metra host answers the
+  # probe runner with a CloudFront 403; item 478's fallback). Re-probed every day; replaced by the probe's
+  # reading if the wall lifts. Station times are left out: the timetable PDF was not read in full.
+  - title: "Metra Holiday Train (UP Northwest)"
+    emoji: "🚂"
+    on_sale: "2026-11-16T12:00"
+    line: "Metra Holiday Train on the UP Northwest line (Des Plaines, Mount Prospect, Arlington Heights, Palatine), Sat Dec 12: tickets go on sale Mon Nov 16 at noon at shop.metra.com, $10 each, five per purchase. Metra expects them to sell out fast."
+    source_url: "https://metra.com/holidaytrains"
+    confirmed_via: "search index of metra.com, 2026-11-09 (runner blocked by CloudFront)"
+    secondary_sources:
+      - "https://metra.com/newsroom/nita-holiday-trains-and-buses"
+      - "https://assets.metra.com/s3fs-public/2026-10/2026.12.12_Holiday_UPNW.pdf"
+    towns: [des-plaines-60016, mount-prospect-60056, arlington-heights-60005, palatine-60067]

@@ -203,7 +203,7 @@
   <h2 class="events-heading">Just outside our towns (within ten miles)</h2>
   <ul class="events">
     {% for o in outside %}
-    <li><span class="emoji" aria-hidden="true">🎅</span><strong>{{ o.town }}</strong> &middot; <time>{{ o.date_label }}</time>{% if o.time %} &middot; {{ o.time }}{% endif %} <a href="{{ o.source_url }}" rel="noopener">{{ o.title }}</a>{% if o.google_calendar_url %} <a class="cal-g" href="{{ o.google_calendar_url }}" target="_blank" rel="noopener">📅 Google Calendar</a>{% endif %}{% if o.venue %} <span class="hours-note">{{ o.venue }}</span>{% endif %}</li>
+    <li><span class="emoji" aria-hidden="true">🎅</span><strong>{{ o.town }}</strong> &middot; <time>{{ o.date_label }}</time>{% if o.time %} &middot; {{ o.time }}{% endif %} <a href="{{ o.source_url }}" rel="noopener">{{ o.title }}</a>{% if o.google_calendar_url %} <a class="cal-g" href="{{ o.google_calendar_url }}" target="_blank" rel="noopener">📅 Google Calendar</a>{% endif %}{% if o.venue %} <span class="hours-note">{{ o.venue }}</span>{% endif %}{% if o.distance %} <span class="hours-note">{{ o.distance }}</span>{% endif %}{% if o.source_label %} <span class="hours-note">Source: {{ o.source_label }}</span>{% endif %}</li>
     {% endfor %}
   </ul>
   <p class="note">These are in neighbouring towns, not the five this site covers. Each links to the town&rsquo;s own page.</p>

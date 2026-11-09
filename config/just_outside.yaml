@@ -20,3 +20,16 @@ events:
     time: "9:30 - 11:30 AM"
     venue: "Exploritorium/Oakton Community Center"
     source_url: "https://www.skokieparks.org/events/breakfast-with-santa/26/"
+  # ROADMAP.md items 475/478: the CPKC Holiday Train's first US stop. From Fox 32 Chicago's Oct 28, 2026
+  # report of CPKC's schedule (labelled; to be replaced by CPKC's own page when the probe reads it).
+  # lat/lon: Franklin Park village centre (for the distance line only).
+  - town: "Franklin Park"
+    title: "CPKC Holiday Train"
+    date: 2026-11-23
+    time: "5:30 - 6 PM"
+    venue: "South side of the Ruby Street railway crossing, north of Franklin Avenue"
+    source_url: "https://www.fox32chicago.com/news/canadian-pacific-holiday-train-coming-illinois-heres-when"
+    source_label: "Fox 32 Chicago, Oct 28, 2026"
+    give_note: "Free; the tour collects for local food banks - check CPKC's page for what to bring."
+    lat: 41.935
+    lon: -87.866

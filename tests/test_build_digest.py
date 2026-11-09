@@ -7361,3 +7361,25 @@ def test_on_sale_line_renders_until_the_sale_opens_and_only_from_a_sourced_entry
     assert "⏰ On sale:" in html and "⏰ Remind me" in html and "https://metra.com/HolidayTrains" in html
     santa = build_digest.render_santa_page([{"region_name": "Palatine", "region_url": "https://x/p/", "events": []}], before, on_sale=items)
     assert "⏰ On sale:" in santa
+
+
+def test_just_outside_shows_distance_drops_far_entries_and_refuses_roundups(monkeypatch):
+    # ROADMAP.md items 475, 478, 479.
+    towns = [{"name": "Des Plaines", "lat": 42.0334, "lon": -87.8834}, {"name": "Palatine", "lat": 42.1103, "lon": -88.0342}]
+    cfg = {"events": [
+        {"town": "Franklin Park", "title": "CPKC Holiday Train", "date": "2026-11-23", "time": "5:30 - 6 PM", "source_url": "https://www.fox32chicago.com/news/x", "source_label": "Fox 32 Chicago", "give_note": "Food-bank collection.", "lat": 41.935, "lon": -87.866},
+        {"town": "Gurnee", "title": "CPKC Holiday Train", "date": "2026-12-08", "source_url": "https://www.cpkcr.com/x", "lat": 42.370, "lon": -87.902},
+        {"town": "Skokie", "title": "Santa Breakfast", "date": "2026-12-12", "source_url": "https://mykidlist.com/x"},
+    ]}
+    monkeypatch.setattr(build_digest, "load_yaml", lambda path: cfg)
+    out = build_digest.load_just_outside(date(2026, 11, 9), towns)
+    assert [o["town"] for o in out] == ["Franklin Park"]  # Gurnee is over ten miles; the roundup is refused
+    assert out[0]["distance"] == "≈ 7 mi from Des Plaines" and out[0]["source_label"] == "Fox 32 Chicago"
+    now = datetime(2026, 11, 16, 15, tzinfo=timezone.utc)
+    hol = build_digest.render_holidays_page([], now, outside=out)
+    give = build_digest.render_give_page([], now, None, None, out)
+    santa = build_digest.render_santa_page([], now, outside=out)
+    for page in (hol, give, santa):
+        assert "CPKC Holiday Train" in page and "≈ 7 mi from Des Plaines" in page and "Source: Fox 32 Chicago" in page
+    assert "Food-bank collection." in give
+    assert build_digest.is_roundup_url("https://www.patch.com/illinois/x") and not build_digest.is_roundup_url("https://metra.com/holidaytrains")
