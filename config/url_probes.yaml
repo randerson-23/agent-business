@@ -301,3 +301,14 @@ probes:
     patterns:
       - '(?i)<link[^>]{0,200}type="application/(?:rss|atom)\+xml"[^>]{0,200}>'
       - '(?i)href="[^"]{0,200}(?:feed|\.ics|ical|webcal:|_format=json|/rss)[^"]{0,120}"'
+  # Round 40 (item 474, 2026-11-09): Metra's own Holiday Train page - the UP Northwest date, the sale time and the
+  # price, before the "On sale" line goes in config/on_sale.yaml (deadline: the Nov 12 email).
+  - url: https://metra.com/HolidayTrains
+    item: 474
+    purpose: Metra Holiday Trains 2026 - UP Northwest date, ticket sale date and time, price
+    patterns:
+      - '(?is)(?:UP[- ]?NW|Union Pacific Northwest).{0,300}'
+      - '(?i)(?:on sale|tickets? (?:go|will go|are) on sale)[^<]{0,160}'
+      - '(?i)(?:Nov(?:ember)?|Dec(?:ember)?)\.? \d{1,2}[^<]{0,100}'
+      - '(?i)\$\d+[^<]{0,80}'
+    follow: '(?i)holiday'

@@ -20373,7 +20373,7 @@ target.
 
 #### P1 (new)
 
-471. (2026-11-08: the probes got 403 from palatinelibrary.org/events and /events/feed, and ahml.info/events shows no export links; step 3 shipped: html_events follows ?page=N up to 6 pages (source option `pages:`), set on Palatine Public Library. Success check: its count and horizon in source_horizon.json after the next CI build) **Read Palatine Public Library's whole calendar.** Build loop, probe
+471. ✅ DONE (CI: Palatine library 12 -> 27 events. 2026-11-08: the probes got 403 from palatinelibrary.org/events and /events/feed, and ahml.info/events shows no export links; step 3 shipped: html_events follows ?page=N up to 6 pages (source option `pages:`), set on Palatine Public Library. Success check: its count and horizon in source_horizon.json after the next CI build) **Read Palatine Public Library's whole calendar.** Build loop, probe
      first:
 
      1. Add a probe round on `palatinelibrary.org` for LibraryCalendar
@@ -20489,7 +20489,7 @@ them going on sale this week.
      says about donations. Tests: a stop beyond ten miles is excluded,
      and an included one renders in all three places.
 
-476. **Calendar reminders for sale and sign-up moments.** Build loop. Give
+476. ✅ DONE (reminder_calendar_url: 15 minutes from 5 minutes early with ctz, or all day when only a date is known; "⏰ Remind me" on the email's sign-ups block and on every on-sale line) **Calendar reminders for sale and sign-up moments.** Build loop. Give
      the *"📝 Sign-ups opening this week"* block (item 327) and any
      `on_sale:` entry a ***"⏰ Remind me"*** Google Calendar link:
 

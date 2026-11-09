@@ -2439,6 +2439,7 @@ def render_holidays_page(
     entries = [{**e, "events": [{**ev, "emoji": email_event_emoji(ev)} for ev in e.get("events") or []]} for e in entries]
     return template.render(
         entries=entries,
+        on_sale=load_on_sale(now),  # item 474
         year=now.year,
         listing_offer=build_holiday_listing_offer(now, contact_email),
         town_names=_join_names([e["region_name"] for e in entries]),
@@ -2659,7 +2660,7 @@ def load_just_outside(today: date) -> list[dict]:
     return out
 
 
-def render_santa_page(entries: list[dict], now: datetime, analytics: dict | None = None, newsletter: dict | None = None, event_page_paths: set[str] | None = None, outside: list[dict] | None = None) -> str:
+def render_santa_page(entries: list[dict], now: datetime, analytics: dict | None = None, newsletter: dict | None = None, event_page_paths: set[str] | None = None, outside: list[dict] | None = None, on_sale: list[dict] | None = None) -> str:
     """The /santa/ page. `entries` is [{region_name, region_url, events}]."""
     today = now.astimezone(LOCAL_TZ).date()
     year = santa_season_year(today)
@@ -2696,6 +2697,7 @@ def render_santa_page(entries: list[dict], now: datetime, analytics: dict | None
         places=[{"name": e["region_name"], "color": EMAIL_TOWN_COLORS[i % len(EMAIL_TOWN_COLORS)][0], "links": e.get("links") or [], "tree": (e.get("tree") or {}).get("label") if e.get("tree") else None} for i, e in enumerate(entries)],
         empty_message="Park districts usually post Santa events in early November; they appear here as soon as they do." if year == today.year else f"Santa events for {year} are usually posted in early November. Sign up below and we'll email you when they appear.",
         outside=outside or [],
+        on_sale=on_sale if on_sale is not None else load_on_sale(now),  # item 474
         reminder_tag=None if in_season else f"remind:santa-{year}",
         reminder_headline=f"Email me when the {year} Santa events are posted",
         newsletter=newsletter or {"configured": False},
@@ -4880,6 +4882,51 @@ def format_session_dates(days: list[date]) -> str:
     return (days[0].strftime("%a ") if same_weekday else "") + text
 
 
+def reminder_calendar_url(title: str, opens, url: str | None) -> str | None:
+    """ROADMAP.md item 476: a Google Calendar reminder for a sale or sign-up
+    moment. A known time gives a 15-minute entry starting five minutes early
+    (ctz=America/Chicago); a date alone gives an all-day entry, never an
+    invented hour. The ticket or sign-up link goes in details."""
+    if isinstance(opens, datetime):
+        start = opens.replace(tzinfo=None) - timedelta(minutes=5)
+        event = {"title": title, "url": url or "", "date_iso": start.isoformat(), "end_iso": (start + timedelta(minutes=15)).isoformat()}
+    elif isinstance(opens, date):
+        event = {"title": title, "url": url or "", "date_iso": datetime.combine(opens, time(0, 0)).isoformat()}
+    else:
+        return None
+    return build_google_calendar_url(event, "", url or None)
+
+
+ON_SALE_PATH = CONFIG_DIR / "on_sale.yaml"
+
+
+def load_on_sale(now: datetime, region_ids: set[str] | None = None) -> list[dict]:
+    """ROADMAP.md item 474: hand-sourced "on sale" moments from config/on_sale.yaml,
+    shown until the sale opens. Each needs a title, an `on_sale` local time, a
+    first-party `source_url` and a `line`; `towns` limits where it is relevant."""
+    cfg = load_yaml(ON_SALE_PATH) if ON_SALE_PATH.exists() else {}
+    local_now = now.astimezone(LOCAL_TZ).replace(tzinfo=None)
+    items = []
+    for raw in cfg.get("items") or []:
+        try:
+            opens = datetime.fromisoformat(str(raw.get("on_sale")))
+        except ValueError:
+            continue
+        url = safe_http_url(raw.get("source_url"))
+        if not (raw.get("title") and raw.get("line") and url) or opens <= local_now:
+            continue
+        towns = [str(t) for t in raw.get("towns") or []]
+        if region_ids is not None and towns and not set(towns) & region_ids:
+            continue
+        items.append({
+            "title": str(raw["title"]), "emoji": str(raw.get("emoji") or "⏰"), "line": str(raw["line"]).strip(), "url": url,
+            "opens": opens, "towns": towns,
+            "remind_url": reminder_calendar_url(f"{raw['title']}: tickets on sale", opens, url),
+        })
+    items.sort(key=lambda i: i["opens"])
+    return items
+
+
 def build_signups_opening(blocks: list[dict], today: date, days: int = 7, per_town: int = 2) -> list[dict]:
     """Events whose registration opens within the next `days` days (today
     included), sessions of the same title at the same venue grouped into one
@@ -4895,7 +4942,8 @@ def build_signups_opening(blocks: list[dict], today: date, days: int = 7, per_to
             if not (today <= opens_date <= today + timedelta(days=days) and day > opens_date):
                 continue
             key = ((event["title"] or "").strip().lower(), event.get("venue") or event.get("source") or "", opens_date)
-            group = groups.setdefault(key, {"title": display_title(event["title"]), "url": event.get("url"), "opens": opens_date, "opens_label": opens_date.strftime("%a, %b %-d"), "days": []})
+            group = groups.setdefault(key, {"title": display_title(event["title"]), "url": event.get("url"), "opens": opens_date, "opens_label": opens_date.strftime("%a, %b %-d"), "days": [],
+                                            "remind_url": reminder_calendar_url(f"{display_title(event['title'])} sign-up opens", opens_date, event.get("url"))})  # item 476
             group["days"].append(day)
     found = []
     for group in groups.values():
@@ -6683,7 +6731,7 @@ def _pick_evergreen_highlights(evergreen: list[dict], limit: int) -> list[dict]:
     return (free + rest)[:limit]
 
 
-def render_combined_email_digest(sections: list[dict], weekend_date_range: str, now: datetime, newsletter: dict | None = None, *, preview: bool = False, halloween: dict | None = None, holiday: dict | None = None, weather: list[dict] | None = None, halloween_extras: dict | None = None, give: list[dict] | None = None) -> str:
+def render_combined_email_digest(sections: list[dict], weekend_date_range: str, now: datetime, newsletter: dict | None = None, *, preview: bool = False, halloween: dict | None = None, holiday: dict | None = None, weather: list[dict] | None = None, halloween_extras: dict | None = None, give: list[dict] | None = None, on_sale: list[dict] | None = None) -> str:
     """The combined, all-regions email (ROADMAP.md Phase 11 #105) - the
     signup form is on every region page, but the automated send (item
     24/31) only ever mailed Mount Prospect's digest, since Buttondown's
@@ -6799,6 +6847,7 @@ def render_combined_email_digest(sections: list[dict], weekend_date_range: str, 
         days_off_line=days_off_line,
         closures_line=closures_line,
         give_line=build_give_email_line(give or [], now),
+        on_sale=on_sale or [],
         text_friend_url=text_friend_url(),
         night_out=night_out,
         election_line=election_day_line(now, email=True),
@@ -8446,6 +8495,7 @@ def main() -> None:
         # One region's forecast stands for the five neighbouring towns; Mount
         # Prospect is central, else the first town that has one.
         "give": give_entries,  # item 441: "Drives closing this week"
+        "on_sale": load_on_sale(now),  # item 474
         "weather": email_weather_by_region.get("mount-prospect-60056")
         or next((w for w in email_weather_by_region.values() if w), None),
     }
