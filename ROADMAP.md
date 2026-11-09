@@ -20456,7 +20456,7 @@ them going on sale this week.
 
 #### P1 (new)
 
-474. **Metra Holiday Train: "your line runs Sat Dec 12; tickets Mon Nov 16
+474. (2026-11-09: machinery shipped (config/on_sale.yaml, "⏰ On sale" line and "⏰ Remind me" in the email, /santa/ and /holidays/), but every Metra host - metra.com, www.metra.com, the newsroom and assets.metra.com - answers the probe runner with a CloudFront 403, and this build session cannot reach metra.com either. Search results attribute Dec 12 (UP-NW) and a Nov 16 sale to Metra's own pages; the noon time is not confirmed by any Metra page read. Needs Ryan: either confirm the line from metra.com/holidaytrains (1 minute; the entry is a 6-line paste in config/on_sale.yaml, example in the file) or allow metra.com in this session's network settings, before the Nov 12 send) **Metra Holiday Train: "your line runs Sat Dec 12; tickets Mon Nov 16
      at noon."** Build loop, by Thursday's send (Nov 12):
 
      - Probe **metra.com/HolidayTrains** (and Metra's newsroom post) and
