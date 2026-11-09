@@ -31,18 +31,6 @@
   "palatine-60067:Salt Creek Rural Park District \u2014 Events": {
     "route": "month_ics"
   },
-  "palatine-60067:Village of Palatine \u2014 Calendar": {
-    "exception_class": "ConnectTimeout",
-    "status_code": null
-  },
-  "palatine-60067:Village of Palatine \u2014 News": {
-    "exception_class": "ConnectTimeout",
-    "status_code": null
-  },
-  "wheeling-60090:Village of Wheeling \u2014 Calendar": {
-    "exception_class": "ConnectTimeout",
-    "status_code": null
-  },
   "wheeling-60090:Wheeling CCSD 21 \u2014 Calendar": {
     "exception_class": "HTTPError",
     "status_code": 403

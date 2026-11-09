@@ -237,7 +237,7 @@
    "distinct": 16,
    "family": 7,
    "source_items": {
-    "City Calendar": 0,
+    "City Calendar": 1,
     "Library Events": 87,
     "Park District Events": 5
    }
