@@ -19629,7 +19629,7 @@ lights, and Bandsintown, which is still unreviewed.
      Decluttering"* and *"AARP Driver Safety Course"* are dropped, and
      *"Grandparents and Grandkids Craft"* is kept.
 
-446. **Noon Year's Eve on the winter-break page and in the Dec 24
+446. ✅ DONE except the Dec 24 email pick (select_nye_events Dec 30 - Jan 1, adults-only excluded, never past years; "🎉 Ring in the New Year, at noon" block with an honest empty line on every winter-break page; /new-years-eve/ hub, indexed and in the sitemap Dec 1 - Jan 1, noindex otherwise, footer link in season, og image and short og:title. Salt Creek is already a tribe_events source; Downtown Mount Prospect stays disabled (JavaScript list) and is watched by its probe) **Noon Year's Eve on the winter-break page and in the Dec 24
      email.** Build loop:
 
      - Events dated **Dec 30 – Jan 1** whose title says *noon year*,
