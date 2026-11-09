@@ -220,6 +220,7 @@ doesn't re-suggest something already shipped.
 
 **Build queue (by deadline; refreshed by the research loop, item 346).**
 Pick from the top unless the owner has flagged something else:
+0. **477** (fill the Metra entry from Metra's own pages as indexed; withdraw the owner ask; by the **Nov 12 send**), then **478** with **475** and **479** (CPKC Franklin Park stop, Mon Nov 23, 5:30 PM, in "Just outside" and on `/give/`, with distance).
 0. **474** with **476** (Metra Holiday Train on the UP Northwest line, Sat Dec 12; tickets Mon Nov 16 at noon; in the **Nov 12 email**, with a calendar reminder), then **475** (CPKC Holiday Train, if a stop is within ten miles).
 0. **472** (`/santa/` also matches Santa in descriptions and holiday brand names; Frostival is missing; before Nov 15), then **471** with **473** (Palatine library's whole calendar: 12 events today; horizons for html sources).
 0. **465** (read The Events Calendar feeds by date range: AHPD, MPPD, Wheeling, Metropolis and Des Plaines Theatre are capped at their first page, so December is invisible; probe Palatine Park District for the same plugin) with **466** (Rotary Santa Run, Palatine's Santa Paws and Frostival on `/santa/`). `/santa/` full by **Nov 15** (item 428).
@@ -20511,6 +20512,85 @@ Holiday Train guides** (city-wide, without the line-to-town match) and
 **the CPKC Holiday Train coverage** (Fox 32, Fox 6, Railway Age). The
 design/UX angle is **sale moments in the email**: the email says when,
 but can't remind.
+
+#### Research pass 2026-11-09 (hundred-and-thirty-third pass)
+
+Overnight the build loop shipped the on-sale machinery for item 474
+(`config/on_sale.yaml`, the "⏰ On sale" line and "⏰ Remind me") and
+item 476. It couldn't fill the Metra entry: **every Metra host answers
+the probe runner with a CloudFront 403**, so item 474 now asks the owner
+to confirm by hand before the Nov 12 send. This pass reads Metra's and
+the CPKC Holiday Train's own pages through the search index, which isn't
+blocked. It records exactly what they say, so neither entry needs the
+owner.
+
+| Angle | What it is / what we found | Why it matters here |
+|---|---|---|
+| **Metra's own pages, read through search** (metra.com/holidaytrains, *"2026 Holiday Trains"*; Metra's newsroom post *"NITA holiday trains and buses"*; the UP Northwest holiday timetable PDF on assets.metra.com, `2026.12.12_Holiday_UPNW.pdf`, which lists trip **7902**) | Metra's text, as indexed: tickets go on sale **at noon on Nov. 16** at shop.metra.com and are *"expected to sell out fast"*, **$10 each**, purchased in advance, **limit of five per purchase**. The **UP Northwest** line runs on **Dec. 12**. Its timetable PDF for that date says a Saturday schedule is in effect, with trip 7902 in it. Also: BNSF, Milwaukee District North and Rock Island on Dec. 5; Metra Electric Dec. 12, 13 and 19; UP North Dec. 19 | Every fact item 474 needs is now on record from **Metra's own pages**, including the noon time the build loop couldn't confirm. The Needs Ryan ask can be withdrawn and the Nov 12 email can carry the line. The source URLs are Metra's; only the transport (the search index) differs from a probe (item 477) |
+| **The CPKC Holiday Train's 2026 Illinois stops** (Trains, *"CPKC Holiday Train announces 2026 schedule"*; Daily Herald, Oct 19, 2026, *"…returning to Chicago area"*; NBC Chicago; WVPE; Rockford News First; KICK AM) | Four Illinois stops. **Franklin Park, Mon Nov 23, 5:30–6:00 PM, south side of the Ruby Street crossing, north of Franklin Avenue** (Magic! and MARIS), the first US stop. Then **Pingree Grove** (Nov 24, 9 AM), **Byron** (Nov 24, noon) and **Gurnee** (Dec 8, 5:15 PM). Free, with live music and a **food-bank collection**. One outlet calls Nov 23 a Sunday, but **Nov 23, 2026 is a Monday**, and the others agree | **Franklin Park is about 4–5 miles from Des Plaines**, well within ten. It's exactly what item 458's "Just outside" section is for, and the food drive belongs on `/give/`. Item 475 can be filled now, from CPKC's page once read, or as below (item 478) |
+| **The "Just outside" card (design/UX)** (`config/just_outside.yaml`; the Skokie entry on `/santa/`) | Each card says the neighbouring town (*"Skokie"*), but not **how far** it is. *"Within ten miles"* is the section's promise, and the reader in Palatine and the reader in Des Plaines are at very different distances from Franklin Park | A distance line (*"≈ 4 mi from Des Plaines"*) makes the promise checkable, and lets a reader skip what's too far for a weeknight (item 479) |
+
+#### P1 (new)
+
+477. **Fill item 474's Metra entry from Metra's own pages as indexed, and
+     withdraw the owner ask.** Build loop, by the **Nov 12 send**:
+
+     - Write the `config/on_sale.yaml` entry from the facts above:
+       *Metra Holiday Train (UP Northwest)*, sale **2026-11-16 12:00**
+       America/Chicago, **$10**, **five per purchase**, event
+       **2026-12-12**, towns **Des Plaines, Mount Prospect, Arlington
+       Heights, Palatine**.
+     - `source_url: https://metra.com/holidaytrains`, with
+       `confirmed_via: "search index of metra.com, 2026-11-09 (runner
+       blocked by CloudFront)"` and the newsroom and timetable URLs as
+       secondary sources.
+     - Remove item 474's *Needs Ryan* line.
+     - Keep the station times out (the PDF wasn't read in full); link
+       Metra's page instead.
+
+     Tests: the entry validates, the line renders on the email preview,
+     `/santa/` and `/holidays/` until Nov 16 noon, and Wheeling is
+     excluded.
+
+478. **A documented fallback when a first-party page blocks the runner.**
+     Working agreement plus a config field. When a probe gets a bot
+     wall (403, a Cloudflare or CloudFront challenge), the **research
+     loop may record the first-party page's own text as indexed by
+     search**, with the URL and date, in its pass. The build loop may
+     then use it, marked `confirmed_via: search` in the config entry.
+
+     Limits:
+     - only text from the organiser's own domain, never a roundup;
+     - only facts quoted in the pass;
+     - re-probed every build, and replaced by the probe's reading if
+       the wall lifts.
+
+     First use: **CPKC's Franklin Park stop** for item 475 (Mon Nov 23,
+     5:30–6:00 PM, Ruby Street crossing north of Franklin Avenue, free,
+     food-bank collection) once its page or a CPKC press release is
+     indexed. Until then, the **Daily Herald's Oct 19 article** is the
+     source, labelled as such. Tests: a `confirmed_via: search` entry
+     renders with its source link, and a roundup URL is refused.
+
+#### P3 (new)
+
+479. **Distance on "Just outside" cards.** Build loop. Add `lat`/`lon` to
+     `config/just_outside.yaml` entries (from the venue address, entered
+     with the entry). Show ***"≈ 4 mi from Des Plaines"***, using the
+     nearest of the five towns' centres (the hub's `ZIP_COORDS`), rounded
+     to the mile. Drop any entry over 10 miles, which enforces the
+     section's promise. Tests: the nearest-town calculation, rounding,
+     and the over-10-mile drop.
+
+Re-rank: **477 goes to the top of the build queue**, with a hard deadline
+of Thursday's send. **478** follows, with 475 as its first use (Nov 23 is
+two weeks out). **479** rides with 475.
+
+Competitors reviewed this pass: **Metra's own Holiday Train pages and
+timetable**, and the **CPKC Holiday Train 2026 coverage** (Trains, the
+Daily Herald, NBC Chicago, WVPE, Rockford News First). The design/UX angle
+is **the "Just outside" card**, which promises ten miles but doesn't show
+the distance.
 
 
 ## Working agreements for autonomous iteration
