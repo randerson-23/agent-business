@@ -103,13 +103,14 @@ This weekend, across the northwest suburbs
 </tr>
 <tr><td style="padding:0 0 14px 0;"></td></tr>
 
-{% if weather_line or election_line or closures_line or days_off_line or give_line %}
+{% if weather_line or election_line or closures_line or days_off_line or give_line or on_sale %}
 {# ROADMAP.md items 291, 296, 307: the week's short notices, as plain lines in one card. #}
 <tr>
 <td bgcolor="#ffffff" class="wt-paper" style="background-color:#ffffff; border-radius:12px; padding:14px 22px; font-family:{{ sans }}; font-size:15px; line-height:1.5;">
 {% if weather_line %}<div class="wt-ink" style="color:{{ ink }}; padding:3px 0;">{{ weather_line }}</div>{% endif %}
 {% if election_line %}<div style="padding:3px 0;"><a href="{{ election_line.url }}" class="wt-brand" style="color:{{ accent }}; text-decoration:none;">{{ election_line.text }} &rarr;</a></div>{% endif %}
 {% if closures_line %}<div style="padding:3px 0;"><a href="{{ closures_line.url }}" class="wt-brand" style="color:{{ accent }}; text-decoration:none;">{{ closures_line.text }} &rarr;</a></div>{% endif %}
+{% for o in on_sale %}<div class="wt-ink" style="padding:3px 0; color:{{ ink }};"><strong>⏰ On sale:</strong> {{ o.emoji }} {{ o.line }} <a href="{{ o.url }}" class="wt-brand" style="color:{{ accent }}; text-decoration:none;">Official page &rarr;</a>{% if o.remind_url %} &nbsp;·&nbsp; <a href="{{ o.remind_url }}" class="wt-brand" style="color:{{ accent }}; text-decoration:none;">⏰ Remind me</a>{% endif %}</div>{% endfor %}
 {% if give_line %}<div style="padding:3px 0;"><a href="{{ give_line.url }}" class="wt-brand" style="color:{{ accent }}; text-decoration:none;">{{ give_line.text }} &rarr;</a></div>{% endif %}
 {% if days_off_line %}<div style="padding:3px 0;"><a href="{{ days_off_line.url }}" class="wt-brand" style="color:{{ accent }}; text-decoration:none;">{{ days_off_line.text }} &rarr;</a></div>{% endif %}
 </td>
@@ -202,7 +203,7 @@ DON'T MISS THIS WEEKEND
 <td bgcolor="#ffffff" class="wt-paper" style="background-color:#ffffff; border-radius:12px; padding:16px 22px; font-family:{{ sans }}; font-size:15px; line-height:1.5; color:{{ ink }};">
 <div class="wt-accent" style="font-size:12px; font-weight:600; letter-spacing:1.5px; color:{{ accent }}; padding-bottom:6px;">📝 SIGN-UPS OPENING THIS WEEK</div>
 {% for e in signups %}
-<div style="padding-top:4px;"><span class="wt-ink" style="font-weight:600; color:{{ ink }};">{{ e.town }}</span> &nbsp;·&nbsp; <a href="{{ e.url }}" class="wt-brand" style="color:{{ accent }}; text-decoration:none;">{{ e.title }}</a>, <span class="wt-ink" style="color:{{ ink }};">{{ e.sessions_label }}</span> &nbsp;·&nbsp; <span class="wt-muted" style="color:{{ muted }};">sign-ups open {{ e.opens_label }}</span></div>
+<div style="padding-top:4px;"><span class="wt-ink" style="font-weight:600; color:{{ ink }};">{{ e.town }}</span> &nbsp;·&nbsp; <a href="{{ e.url }}" class="wt-brand" style="color:{{ accent }}; text-decoration:none;">{{ e.title }}</a>, <span class="wt-ink" style="color:{{ ink }};">{{ e.sessions_label }}</span> &nbsp;·&nbsp; <span class="wt-muted" style="color:{{ muted }};">sign-ups open {{ e.opens_label }}</span>{% if e.remind_url %} &nbsp;·&nbsp; <a href="{{ e.remind_url }}" class="wt-brand" style="color:{{ accent }}; text-decoration:none;">⏰ Remind me</a>{% endif %}</div>
 {% endfor %}
 </td>
 </tr>

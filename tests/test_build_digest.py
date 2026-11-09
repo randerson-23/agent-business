@@ -7329,3 +7329,35 @@ def test_html_sources_get_a_horizon_and_disabled_sources_are_skipped(monkeypatch
     assert record["route"] == "html_events" and record["horizon_days"] == 43
     assert calls == ["https://pd.example/events"] and completeness["expected"] == 1  # the disabled source is neither fetched nor counted
     assert not any(c["region"]["id"] == "mount-prospect-60056" and any(s["name"].startswith("Downtown Mount Prospect") and s.get("enabled", True) for s in c["sources"]) for c in build_digest.load_regions())
+
+
+def test_reminder_links_start_five_minutes_early_and_carry_the_ticket_link():
+    # ROADMAP.md item 476.
+    from urllib.parse import parse_qs, urlparse
+    q = parse_qs(urlparse(build_digest.reminder_calendar_url("Metra Holiday Train: tickets on sale", datetime(2026, 11, 16, 12, 0), "https://metra.com/HolidayTrains")).query)
+    assert q["dates"] == ["20261116T115500/20261116T121000"] and q["ctz"] == ["America/Chicago"]
+    assert "Official listing: https://metra.com/HolidayTrains" in q["details"][0]
+    q = parse_qs(urlparse(build_digest.reminder_calendar_url("Swim lessons sign-up opens", date(2026, 11, 12), "https://pd/x")).query)
+    assert q["dates"] == ["20261112/20261113"] and "ctz" not in q  # a date alone: all day, no invented hour
+
+
+def test_on_sale_line_renders_until_the_sale_opens_and_only_from_a_sourced_entry(monkeypatch):
+    # ROADMAP.md item 474.
+    cfg = {"items": [
+        {"title": "Metra Holiday Train (UP Northwest)", "emoji": "🚂", "on_sale": "2026-11-16T12:00", "line": "Metra Holiday Train on the UP Northwest line, Sat Dec 12: tickets go on sale Mon Nov 16 at noon.",
+         "source_url": "https://metra.com/HolidayTrains", "towns": ["des-plaines-60016", "mount-prospect-60056", "arlington-heights-60005", "palatine-60067"]},
+        {"title": "No source", "on_sale": "2026-11-16T12:00", "line": "x"},
+    ]}
+    monkeypatch.setattr(build_digest, "load_yaml", lambda path: cfg if path == build_digest.ON_SALE_PATH else {})
+    monkeypatch.setattr(build_digest.ON_SALE_PATH.__class__, "exists", lambda self: True)
+    before = datetime(2026, 11, 12, 13, tzinfo=timezone.utc)
+    after = datetime(2026, 11, 16, 18, 1, tzinfo=timezone.utc)  # 12:01 PM Chicago
+    items = build_digest.load_on_sale(before)
+    assert [i["title"] for i in items] == ["Metra Holiday Train (UP Northwest)"] and items[0]["remind_url"]
+    assert build_digest.load_on_sale(after) == []
+    assert build_digest.load_on_sale(before, {"wheeling-60090"}) == []  # not Wheeling's line
+    sections = [{"region_name": "Palatine", "region_url": "https://x/p/", "weekend_events": []}]
+    html = build_digest.render_combined_email_digest(sections, "Nov 13–15", before, on_sale=items)
+    assert "⏰ On sale:" in html and "⏰ Remind me" in html and "https://metra.com/HolidayTrains" in html
+    santa = build_digest.render_santa_page([{"region_name": "Palatine", "region_url": "https://x/p/", "events": []}], before, on_sale=items)
+    assert "⏰ On sale:" in santa

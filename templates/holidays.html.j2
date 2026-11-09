@@ -172,6 +172,9 @@
 
 <div class="wrap">
   <main>
+  {% if on_sale %}
+  <div class="on-sale" style="border:1px solid var(--border); padding:12px 14px; margin:16px 0;">{% for o in on_sale %}<p style="margin:4px 0;"><strong>⏰ On sale:</strong> {{ o.emoji }} {{ o.line }} <a href="{{ o.url }}" rel="noopener">Official page &rarr;</a>{% if o.remind_url %} &middot; <a href="{{ o.remind_url }}" target="_blank" rel="noopener">⏰ Remind me</a>{% endif %}</p>{% endfor %}</div>
+  {% endif %}
   <div class="entry-list">
     {% for entry in entries %}
     <div class="entry" style="--town:{{ entry.color }}">

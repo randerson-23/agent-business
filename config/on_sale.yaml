@@ -1,0 +1,12 @@
+# ROADMAP.md item 474: sale and sign-up moments families plan around, shown as an "⏰ On sale" line (with a
+# "⏰ Remind me" Google Calendar link five minutes early) in the email and on /santa/ and /holidays/ until the
+# sale opens. Add an entry ONLY from the organiser's own page, read by the probe workflow.
+#
+# items:
+#   - title: "Metra Holiday Train (UP Northwest)"
+#     emoji: "🚂"
+#     on_sale: "2026-11-16T12:00"          # local (America/Chicago) time, from the organiser's page
+#     line: "Metra Holiday Train on the UP Northwest line, Sat Dec 12: tickets go on sale Mon Nov 16 at noon."
+#     source_url: "https://metra.com/HolidayTrains"
+#     towns: [des-plaines-60016, mount-prospect-60056, arlington-heights-60005, palatine-60067]
+items: []
