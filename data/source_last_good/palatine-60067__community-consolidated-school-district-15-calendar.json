@@ -1,11 +1,18 @@
 {
- "fetched_at": "2026-11-09T18:50:55+00:00",
+ "fetched_at": "2026-11-09T22:01:44+00:00",
  "items": [
   {
    "date": "20261111T100000",
    "detail": "Mark your calendar for an upcoming CCSD15 Job Fair!Date: Every",
    "end_date": "20261111T130000",
    "title": "D15 Job Fair",
+   "url": ""
+  },
+  {
+   "date": "20261111T180000",
+   "detail": "NSSEO presents: NWSRANovember 11, 20266:00 pmPresented by: Nor",
+   "end_date": "20261111T190000",
+   "title": "NSSEO: NWSRA Information Session",
    "url": ""
   },
   {
@@ -45,14 +52,14 @@
   },
   {
    "date": "20261126",
-   "detail": "2026-27 Official School Calendar (English)2026-27 Official Sc",
+   "detail": "2026-27 Official School Calendar (English) | (Spanish)",
    "end_date": "20261127",
    "title": "No School | Thanksgiving Recess",
    "url": ""
   },
   {
    "date": "20261126",
-   "detail": "2026-27 Official School Calendar (English) | (Spanish)",
+   "detail": "2026-27 Official School Calendar (English)2026-27 Official Sc",
    "end_date": "20261127",
    "title": "No School | Thanksgiving Recess",
    "url": ""
@@ -104,6 +111,13 @@
    "detail": "Please join us virtually for an overview of the 2027 WIDA ACCES",
    "end_date": "20261203T194500",
    "title": "MPAC Telugu 2027 ACCESS Information Session",
+   "url": ""
+  },
+  {
+   "date": "20261208T113000",
+   "detail": "NSSEO presents: Clearbrook OptionsDecember 8, 202611:30 am-1:0",
+   "end_date": "20261208T130000",
+   "title": "NSSEO: Clearbrook Options",
    "url": ""
   },
   {

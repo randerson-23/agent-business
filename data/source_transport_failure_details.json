@@ -10,10 +10,6 @@
     "exception_class": "HTTPError",
     "status_code": 403
   },
-  "des-plaines-60016:Des Plaines Park District \u2014 Events": {
-    "exception_class": "HTTPError",
-    "status_code": 403
-  },
   "des-plaines-60016:Des Plaines Theatre \u2014 Events": {
     "route": "month_ics"
   },
