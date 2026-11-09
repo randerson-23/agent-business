@@ -6702,7 +6702,7 @@ def test_event_and_seasonal_pages_get_their_own_1200x630_share_images():
     assert build_digest.event_jsonld(town_event, build_digest.SITE_BASE_URL + "palatine-60067/#x")["image"] == build_digest.SITE_BASE_URL + "og/palatine-60067.png"
     assert build_digest.event_jsonld(town_event, "https://other/")["image"] == build_digest.SITE_BASE_URL + "og/default.png"
     pages = build_digest.build_page_og_images(["Palatine", "Wheeling"], ["Palatine Saturday"], datetime(2026, 10, 30, tzinfo=timezone.utc))
-    assert set(pages) == {"trick-or-treat", "santa", "holidays", "leaf-pickup", "give"} and all(i.size == (1200, 630) for i in pages.values())
+    assert set(pages) == {"trick-or-treat", "santa", "holidays", "leaf-pickup", "give", "new-years-eve"} and all(i.size == (1200, 630) for i in pages.values())
     santa = build_digest.render_santa_page([{"region_name": "Palatine", "region_url": "https://x/p/", "events": []}], datetime(2026, 10, 30, tzinfo=timezone.utc))
     assert 'og:image" content="' + build_digest.SITE_BASE_URL + 'og/santa.png"' in santa
     leaf = build_digest.render_leaf_pickup_page([{"name": "Palatine", "url": "https://x", "summary": None, "note": None}], datetime(2026, 10, 30, tzinfo=timezone.utc))
@@ -7383,3 +7383,30 @@ def test_just_outside_shows_distance_drops_far_entries_and_refuses_roundups(monk
         assert "CPKC Holiday Train" in page and "≈ 7 mi from Des Plaines" in page and "Source: Fox 32 Chicago" in page
     assert "Food-bank collection." in give
     assert build_digest.is_roundup_url("https://www.patch.com/illinois/x") and not build_digest.is_roundup_url("https://metra.com/holidaytrains")
+
+
+def test_noon_years_eve_window_keywords_adult_exclusion_and_empty_line():
+    # ROADMAP.md item 446.
+    def ev(title, iso, detail=""):
+        return {"title": title, "url": "https://src/" + title.replace(" ", "-"), "date_iso": iso, "detail": detail, "attendable": True, "date": "Thu"}
+    blocks = [{"section": "Events", "events": [
+        ev("Noon Year's Eve Party", "2026-12-31T11:00:00", "Balloon drop at noon for kids."),
+        ev("New Year's Eve Bash", "2026-12-31T21:00:00", "21+ with a champagne toast."),
+        ev("Countdown to Kindergarten", "2026-11-20T10:00:00"),
+        ev("Noon Year's Eve Party", "2025-12-31T11:00:00"),  # last year's listing
+        ev("Family Movie", "2026-12-31T13:00:00"),
+    ]}]
+    picked = build_digest.select_nye_events(blocks, date(2026, 12, 2))
+    assert [e["title"] for e in picked] == ["Noon Year's Eve Party"] and picked[0]["date_iso"].startswith("2026")
+    entries = [{"region_name": "Palatine", "region_url": "https://x/p/", "events": picked}, {"region_name": "Wheeling", "region_url": "https://x/w/", "events": []}]
+    page = build_digest.render_nye_page(entries, datetime(2026, 12, 2, 15, tzinfo=timezone.utc))
+    assert "<title>Noon Year&#39;s Eve 2026 for Kids: Palatine and Wheeling | Within Ten</title>" in page or "<title>Noon Year's Eve 2026 for Kids: Palatine and Wheeling | Within Ten</title>" in page
+    assert "Noon Year&#39;s Eve Party" in page or "Noon Year's Eve Party" in page
+    assert "noindex" not in page.split("</head>")[0]
+    early = build_digest.render_nye_page([{"region_name": "Palatine", "region_url": "https://x/p/", "events": []}], datetime(2026, 11, 9, 15, tzinfo=timezone.utc))
+    assert "noindex" in early.split("</head>")[0] and "are posted yet" in early
+    assert build_digest.SITE_BASE_URL + "new-years-eve/" in build_digest.collect_sitemap_urls([], nye_in_season_flag=True)
+    cfg = next(c for c in build_digest.load_regions() if c["region"]["id"] == "palatine-60067")
+    wb = build_digest.render_region_page(cfg, [], None, [], datetime(2026, 12, 2, 15, tzinfo=timezone.utc), heading="h", subheading="s", empty_message="e",
+                                         nav_current="winter-break", canonical_suffix="winter-break/", nye_events=[])
+    assert "Ring in the New Year, at noon" in wb and "Noon Year's Eve party is posted in Palatine yet" in wb

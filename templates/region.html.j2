@@ -894,6 +894,18 @@
   {% if not blocks and nav_current != "all" and empty_message %}
   <p class="empty">{{ empty_message }}{% if empty_cta_url %} <a href="{{ empty_cta_url }}">{{ empty_cta_label or "Learn more" }}</a>{% endif %}</p>
   {% endif %}
+  {% if nye_events is not none and nav_current == "winter-break" %}
+  {# ROADMAP.md item 446: Noon Year's Eve at the top of the winter-break page. #}
+  <section class="nye-block" style="border:1px solid var(--border); padding:12px 16px; margin:12px 0 20px;">
+    <h2 style="margin:0 0 6px; font-size:18px;">🎉 Ring in the New Year, at noon</h2>
+    {% if nye_events %}
+    <ul style="margin:0; padding-left:18px;">{% for e in nye_events %}<li><a href="#{{ e.anchor_id or '' }}">{{ e.title }}</a> &middot; {{ e.date }}{% if e.google_calendar_url %} &middot; <a href="{{ e.google_calendar_url }}" target="_blank" rel="noopener">📅 Google Calendar</a>{% endif %}</li>{% endfor %}</ul>
+    {% else %}
+    <p class="empty" style="margin:0;">No {{ now_year }} Noon Year's Eve party is posted in {{ region.name }} yet. Park districts and libraries usually list them in December; they appear here when they do.</p>
+    {% endif %}
+    <p style="margin:8px 0 0; font-size:14px;"><a href="{{ nye_hub_url }}">Noon Year's Eve in every town &rarr;</a></p>
+  </section>
+  {% endif %}
   {% if camp_links %}
   <p class="camp-links"><strong>Park district camps:</strong> {% for c in camp_links %}<a href="{{ c.url }}" rel="noopener">{{ c.name }} &rarr;</a>{% if not loop.last %} &middot; {% endif %}{% endfor %}</p>
   {% endif %}
@@ -1014,6 +1026,7 @@
     {% if trick_or_treat_in_season %}<a href="{{ hub_url }}trick-or-treat/">Trick-or-treat hours</a>.{% endif %}
     {% if leaf_pickup_in_season %}<a href="{{ hub_url }}leaf-pickup/">Leaf pickup</a>.{% endif %}
     {% if give_in_season %}<a href="{{ hub_url }}give/">Toy, coat &amp; food drives</a>.{% endif %}
+    {% if nye_in_season %}<a href="{{ hub_url }}new-years-eve/">Noon Year&rsquo;s Eve</a>.{% endif %}
     {% if newsletter and newsletter.event_form_url %}<a href="{{ newsletter.event_form_url }}" rel="noopener">Add your event, free</a>.{% endif %}
     {% if winter_in_season %}<a href="{{ region_base_url }}winter-break/">Winter break camps</a>.{% endif %}
     {% if holiday_in_season %}<a href="{{ region_base_url }}holiday/">Holiday events and shopping</a>, <a href="{{ hub_url }}holidays/">all towns' tree lightings</a>.{% endif %}

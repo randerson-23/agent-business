@@ -2697,6 +2697,72 @@ def load_just_outside(today: date, towns: list[dict] | None = None) -> list[dict
     return out
 
 
+# ROADMAP.md item 446: Noon Year's Eve and family New Year's Eve events, Dec 30 - Jan 1.
+NYE_TITLE = re.compile(r"\b(?:noon year|new year['\u2019]?s eve|almost new year|countdown|balloon drop)", re.IGNORECASE)
+NYE_ADULT = re.compile(r"\b(?:21\+|adults? only|ages 21|cocktail|champagne toast|bar crawl|open bar)\b", re.IGNORECASE)
+
+
+def nye_season_year(today: date) -> int:
+    """The New Year's Eve the page is about: this year's until Jan 1, then the next."""
+    return today.year - 1 if (today.month, today.day) == (1, 1) else today.year
+
+
+def nye_in_season(today: date) -> bool:
+    """Dec 1 - Jan 1: linked, in the sitemap and indexable."""
+    return (today.month == 12) or (today.month, today.day) == (1, 1)
+
+
+def select_nye_events(blocks: list[dict], today: date) -> list[dict]:
+    """A town's family New Year's Eve events dated Dec 30 - Jan 1 of the season,
+    never past years', adults-only ones left out, soonest first."""
+    year = nye_season_year(today)
+    start, end = max(today, date(year, 12, 30)), date(year + 1, 1, 1)
+    picked, seen = [], set()
+    for block in blocks:
+        for event in block.get("events", []):
+            if not (event.get("title") and event.get("url") and event.get("date_iso")) or event.get("attendable") is False:
+                continue
+            try:
+                day = datetime.fromisoformat(event["date_iso"]).date()
+            except ValueError:
+                continue
+            key = (event["title"].strip().lower(), event["date_iso"])
+            text = f"{event['title']} {event.get('detail') or ''}"
+            if start <= day <= end and NYE_TITLE.search(event["title"]) and not NYE_ADULT.search(text) and key not in seen:
+                seen.add(key)
+                picked.append(dict(event))
+    picked.sort(key=lambda e: e["date_iso"])
+    return picked
+
+
+def render_nye_page(entries: list[dict], now: datetime, analytics: dict | None = None, newsletter: dict | None = None) -> str:
+    """The /new-years-eve/ page (item 446). `entries` is [{region_name, region_url, events}]."""
+    today = now.astimezone(LOCAL_TZ).date()
+    year = nye_season_year(today)
+    town_names = _join_names([e["region_name"] for e in entries])
+    rows = []
+    for i, entry in enumerate(entries):
+        color = EMAIL_TOWN_COLORS[i % len(EMAIL_TOWN_COLORS)][0]
+        for ev in entry.get("events") or []:
+            rows.append({
+                "title": display_title(ev["title"]), "town": entry["region_name"], "color": color, "date_iso": ev["date_iso"],
+                "date_label": event_date_label(ev["date_iso"]), "time_label": event_time_label(ev["date_iso"]),
+                "page_url": f"{entry['region_url']}#{ev.get('anchor_id') or event_anchor_id(ev)}", "google_calendar_url": ev.get("google_calendar_url"),
+            })
+    rows.sort(key=lambda r: r["date_iso"])
+    return get_template_env().get_template("new_years_eve.html.j2").render(
+        page_title=f"Noon Year's Eve {year} for Kids: {town_names} | Within Ten",
+        og_title=short_og_title("Noon Year's Eve for kids", len(entries), year),
+        description=f"Family Noon Year's Eve parties and New Year's Eve events in {town_names}, {year}: balloon drops and countdowns at noon, each linked to the town's own listing.",
+        heading=f"Noon Year's Eve {year}",
+        subheading=f"Balloon drops and countdowns at noon for kids in {town_names}, each linked to the listing it came from.",
+        rows=rows, year=year, in_season=nye_in_season(today),
+        newsletter=newsletter or {"configured": False},
+        hub_url=SITE_BASE_URL, canonical_url=SITE_BASE_URL + "new-years-eve/",
+        generated_at=now.strftime("%Y-%m-%d %H:%M UTC"), analytics=analytics, og_image_url=SITE_BASE_URL + "og/new-years-eve.png",
+    )
+
+
 def render_santa_page(entries: list[dict], now: datetime, analytics: dict | None = None, newsletter: dict | None = None, event_page_paths: set[str] | None = None, outside: list[dict] | None = None, on_sale: list[dict] | None = None) -> str:
     """The /santa/ page. `entries` is [{region_name, region_url, events}]."""
     today = now.astimezone(LOCAL_TZ).date()
@@ -3975,6 +4041,7 @@ def render_region_page(
     days_off: list[dict] | None = None,
     days_off_sponsor: dict | None = None,
     camp_links: list[dict] | None = None,
+    nye_events: list[dict] | None = None,
     closures: list[dict] | None = None,
     build_scope_end_iso: str | None = None,
     stale_empty_message: str | None = None,
@@ -4027,6 +4094,9 @@ def render_region_page(
         days_off=days_off,
         days_off_sponsor=days_off_sponsor,
         camp_links=camp_links or [],
+        nye_events=nye_events,
+        nye_hub_url=SITE_BASE_URL + "new-years-eve/",
+        now_year=nye_season_year(now.astimezone(LOCAL_TZ).date()),
         og_title=og_title,
         closures=closures,
         election_line=election_day_line(now),
@@ -4054,6 +4124,7 @@ def render_region_page(
         trick_or_treat_in_season=is_trick_or_treat_season(now),
         leaf_pickup_in_season=is_leaf_pickup_season(now),
         give_in_season=is_give_season(now.astimezone(LOCAL_TZ).date()),
+        nye_in_season=nye_in_season(now.astimezone(LOCAL_TZ).date()),
         holiday_in_season=is_holiday_season(now),
         winter_in_season=winter_break_season(now),
         build_scope_end_iso=build_scope_end_iso,
@@ -4304,6 +4375,7 @@ def render_hub_page(
         trick_or_treat_in_season=is_trick_or_treat_season(now),
         leaf_pickup_in_season=is_leaf_pickup_season(now),
         give_in_season=is_give_season(now.astimezone(LOCAL_TZ).date()),
+        nye_in_season=nye_in_season(now.astimezone(LOCAL_TZ).date()),
         corrections_cta_url=build_corrections_cta_url(contact_email),
         halloween=halloween,
         holiday=holiday,
@@ -4745,6 +4817,7 @@ def build_page_og_images(towns: list[str], tree_lines: list[str], now: datetime)
         "santa": render_og_image(f"Santa Near You, {year}", f"Breakfast with Santa and Santa visits in {names}"),
         "holidays": render_og_image(f"Holiday Tree Lightings {year}", " · ".join(tree_lines)[:120] or f"Tree lightings and holiday events in {names}"),
         "give": render_og_image(f"Toy and Coat Drives {year}", f"Drives and volunteering in {names}"),
+        "new-years-eve": render_og_image(f"Noon Year's Eve {year}", f"Balloon drops and countdowns at noon in {names}"),
         "leaf-pickup": render_og_image(f"Leaf Pickup {year}", f"What {names} say about fall leaf collection"),
     }
 
@@ -5347,7 +5420,7 @@ def write_event_pages(sections: list[dict], tot_entries: list[dict], now: dateti
     return active
 
 
-def collect_sitemap_urls(region_summaries: list[dict], issues: list[dict] | None = None, event_pages: list[dict] | None = None, leaf_pickup_in_season: bool = False, give_in_season: bool = False) -> list[str]:
+def collect_sitemap_urls(region_summaries: list[dict], issues: list[dict] | None = None, event_pages: list[dict] | None = None, leaf_pickup_in_season: bool = False, give_in_season: bool = False, nye_in_season_flag: bool = False) -> list[str]:
     urls = [
         SITE_BASE_URL,
         SITE_BASE_URL + "this-weekend/",
@@ -5363,6 +5436,8 @@ def collect_sitemap_urls(region_summaries: list[dict], issues: list[dict] | None
         urls.append(SITE_BASE_URL + "leaf-pickup/")
     if give_in_season:
         urls.append(SITE_BASE_URL + "give/")
+    if nye_in_season_flag:
+        urls.append(SITE_BASE_URL + "new-years-eve/")
     for r in region_summaries:
         base = SITE_BASE_URL + r["path"]
         urls += [
@@ -5389,7 +5464,7 @@ def collect_sitemap_urls(region_summaries: list[dict], issues: list[dict] | None
 
 def build_sitemap_xml(region_summaries: list[dict], now: datetime, issues: list[dict] | None = None, event_pages: list[dict] | None = None) -> str:
     lastmod = now.strftime("%Y-%m-%d")
-    urls = collect_sitemap_urls(region_summaries, issues, event_pages, is_leaf_pickup_season(now), is_give_season(now.astimezone(LOCAL_TZ).date()))
+    urls = collect_sitemap_urls(region_summaries, issues, event_pages, is_leaf_pickup_season(now), is_give_season(now.astimezone(LOCAL_TZ).date()), nye_in_season(now.astimezone(LOCAL_TZ).date()))
     entries = "\n".join(
         f"  <url>\n    <loc>{u}</loc>\n    <lastmod>{lastmod}</lastmod>\n  </url>" for u in urls
     )
@@ -7849,6 +7924,7 @@ def main() -> None:
     link_candidates: list[dict] = []
     holidays_entries = []
     santa_entries: list[dict] = []
+    nye_entries: list[dict] = []  # item 446
     leaf_entries: list[dict] = []
     give_entries: list[dict] = []
     give_cfg = load_give_config()
@@ -8303,6 +8379,7 @@ def main() -> None:
         give_events, give_volunteer = select_give_events(blocks, local_today)
         give_entries.append({"name": region["name"], "region_url": SITE_BASE_URL + region_id + "/", "links": santa_look_links(region_cfg), "drives": prepare_give_drives(region_id, give_cfg, local_today), "events": give_events, "volunteer": give_volunteer})
         warm_found += warm_prospects.collect_hosts([e for b in blocks for e in b.get("events", [])], region["name"])
+        nye_entries.append({"region_name": region["name"], "region_url": SITE_BASE_URL + region_id + "/", "events": select_nye_events(blocks, local_today)})
         santa_entries.append({"region_name": region["name"], "region_url": SITE_BASE_URL + region_id + "/", "tree": tree_lighting, "links": santa_look_links(region_cfg), "events": [dict(e, town=e.get("town") or region["name"], state=e.get("state") or region.get("state")) for e in select_santa_events(blocks, local_today)]})
         # ROADMAP.md item 258: the town's holiday page - free events from its
         # own feeds plus any paid, labelled listings.
@@ -8364,6 +8441,7 @@ def main() -> None:
                 analytics=analytics,
                 days_off_sponsor=build_days_off_sponsor(sponsors_cfg, region_id, local_today, key="winter_break_sponsor"),
                 camp_links=winter_break_camp_links(region_cfg, catalogues),
+                nye_events=select_nye_events(blocks, local_today),  # item 446
             )
             winter_dir = region_dir / "winter-break"
             winter_dir.mkdir(parents=True, exist_ok=True)
@@ -8655,6 +8733,9 @@ def main() -> None:
     give_dir = OUTPUT_DIR / "give"
     give_dir.mkdir(parents=True, exist_ok=True)
     (give_dir / "index.html").write_text(render_give_page(give_entries, now, analytics, newsletter, [o for o in outside_entries if o.get("give_note")]), encoding="utf-8")
+    nye_dir = OUTPUT_DIR / "new-years-eve"  # item 446
+    nye_dir.mkdir(parents=True, exist_ok=True)
+    (nye_dir / "index.html").write_text(render_nye_page(nye_entries, now, analytics, newsletter), encoding="utf-8")
     santa_dir = OUTPUT_DIR / "santa"
     santa_dir.mkdir(parents=True, exist_ok=True)
     (santa_dir / "index.html").write_text(render_santa_page(santa_entries, now, analytics, newsletter, {e["path"] for e in active_event_pages}, outside_entries), encoding="utf-8")
@@ -8683,7 +8764,7 @@ def main() -> None:
                 out.mkdir(parents=True, exist_ok=True)
                 (out / "index.html").write_text(render_flyer(rid, town, examples, variant["campaign"], copies, EMAIL_TOWN_COLORS[flyer_index % len(EMAIL_TOWN_COLORS)][0]), encoding="utf-8")
 
-    sitemap_urls = collect_sitemap_urls(region_summaries, issues, active_event_pages, is_leaf_pickup_season(now), is_give_season(now.astimezone(LOCAL_TZ).date()))
+    sitemap_urls = collect_sitemap_urls(region_summaries, issues, active_event_pages, is_leaf_pickup_season(now), is_give_season(now.astimezone(LOCAL_TZ).date()), nye_in_season(now.astimezone(LOCAL_TZ).date()))
     (OUTPUT_DIR / "sitemap.xml").write_text(build_sitemap_xml(region_summaries, now, issues, active_event_pages), encoding="utf-8")
     (OUTPUT_DIR / "robots.txt").write_text(build_robots_txt(), encoding="utf-8")
     (OUTPUT_DIR / "llms.txt").write_text(build_llms_txt(region_summaries, source_completeness, issues), encoding="utf-8")
