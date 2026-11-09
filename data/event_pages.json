@@ -375,6 +375,29 @@
   "url": "https://www.ahpd.org/event/pumpkin-smash-2026/",
   "venue": null
  },
+ "e/2026-11-13-preschool-storytime/": {
+  "date_iso": "2026-11-13T11:00:00",
+  "detail": "Friday, November 13 2026 11:00am - 11:30am \n Boost early literacy skills with books, movement and songs. TR",
+  "detail_long": "Boost early literacy skills with books, movement and songs. TR",
+  "first_seen": "2026-11-09",
+  "ics_href": "data:text/calendar;charset=utf-8,BEGIN%3AVCALENDAR%0D%0AVERSION%3A2.0%0D%0APRODID%3A-//Within%20Ten//EN%0D%0ABEGIN%3AVEVENT%0D%0ADTSTART%3A20261113T110000%0D%0ADTEND%3A20261113T120000%0D%0ASUMMARY%3APreschool%20Storytime%0D%0ADESCRIPTION%3AFriday%5C%2C%20November%2013%202026%2011%3A00am%20-%2011%3A30am%20%5Cn%20Boost%20early%20literacy%20skills%20with%20books%5C%2C%20movement%20and%20songs.%20TR%0D%0ALOCATION%3AIndian%20Trails%20Public%20Library%5C%2C%20355%20Schoenbeck%20Rd.%5C%2C%20Wheeling%0D%0AURL%3Ahttps%3A//indiantrails.libnet.info/event/16927126%0D%0AEND%3AVEVENT%0D%0AEND%3AVCALENDAR%0D%0A",
+  "path": "e/2026-11-13-preschool-storytime/",
+  "postal_code": null,
+  "region_id": "wheeling-60090",
+  "region_url": "https://withintenmiles.com/wheeling-60090/",
+  "source": "Indian Trails Public Library — Events",
+  "sponsored_by": null,
+  "state": "IL",
+  "street_address": "355 Schoenbeck Rd.",
+  "tags": [
+   "indoor",
+   "kid_friendly"
+  ],
+  "title": "Preschool Storytime",
+  "town": "Wheeling",
+  "url": "https://indiantrails.libnet.info/event/16927126",
+  "venue": "Indian Trails Public Library"
+ },
  "e/2026-11-13-storytime-playdate-tiny-town/": {
   "date_iso": "2026-11-13T10:00:00",
   "detail": "Friday, November 13 2026 10:00am - 11:30am \n Enjoy the magic of storytime plus the joy of hands-on sensory fun! You and your child will enjoy time together…",

@@ -1,5 +1,5 @@
 {
- "fetched_at": "2026-11-09T14:02:38+00:00",
+ "fetched_at": "2026-11-09T18:50:55+00:00",
  "items": [
   {
    "date": "Mon, 09 Nov 2026 00:00:00 +0000",
@@ -84,6 +84,12 @@
    "detail": "Tuesday, November 10 2026 10:30am - 11:15am \n Join us in the Program Room after Toddler Time for some play time! Ages 18-36 months. No registration required.",
    "title": "Toddler Play Time",
    "url": "https://desplaines.libnet.info/event/17003811"
+  },
+  {
+   "date": "Tue, 10 Nov 2026 17:00:00 +0000",
+   "detail": "Tuesday, November 10 2026 5:00pm - 6:00pm \n Come in and get to know your teen librarians!",
+   "title": "Book a Teen Librarian",
+   "url": "https://desplaines.libnet.info/event/17867456"
   },
   {
    "date": "Tue, 10 Nov 2026 17:30:00 +0000",
@@ -314,6 +320,12 @@
    "url": "https://desplaines.libnet.info/event/17194663"
   },
   {
+   "date": "Tue, 17 Nov 2026 17:00:00 +0000",
+   "detail": "Tuesday, November 17 2026 5:00pm - 6:00pm \n Come in and get to know your teen librarians!",
+   "title": "Book a Teen Librarian",
+   "url": "https://desplaines.libnet.info/event/17867457"
+  },
+  {
    "date": "Tue, 17 Nov 2026 17:30:00 +0000",
    "detail": "Tuesday, November 17 2026 5:30pm - 7:30pm \n Come join us for a few hours of dedicated crafting time, perfect for working on those eternal works-in-progress or for starting something new.",
    "title": "Stitches on Miner",
@@ -348,18 +360,6 @@
    "detail": "Wednesday, November 18 2026 11:00am - 12:00pm \n Learn how to prevent progression, find a way to keep a sustainable lifestyle, how to set better goals, and get community resources. Get tips on how to prevent complications and when to seek care.",
    "title": "Prevention and Long-Term Success with Diabetes",
    "url": "https://desplaines.libnet.info/event/16537516"
-  },
-  {
-   "date": "Wed, 18 Nov 2026 13:30:00 +0000",
-   "detail": "Wednesday, November 18 2026 1:30pm - 3:00pm \n In this presentation, McHenry County College professor, Dr. Sarah Sullivan, will review the events, features, and personalities that made Marshall Fields Chicagos store.",
-   "title": "The Legacy of Marshall Fields",
-   "url": "https://desplaines.libnet.info/event/16337358"
-  },
-  {
-   "date": "Wed, 18 Nov 2026 13:30:00 +0000",
-   "detail": "Wednesday, November 18 2026 1:30pm - 2:00pm \n Ages 3-5, but all are welcome. Storytime is a fun and play-filled way to foster a lifelong love of reading and help children get ready for school. Registration required beginning October 21.",
-   "title": "Preschool Storytime",
-   "url": "https://desplaines.libnet.info/event/17004565"
   }
  ],
  "source": "Des Plaines Public Library — Events"

@@ -3,8 +3,8 @@
 <channel>
   <title>Within Ten — Upcoming events in Des Plaines</title>
   <link>https://withintenmiles.com/</link>
-  <description>Upcoming events in Des Plaines, soonest first - aggregated automatically from village, library, park district and school-district calendars. This build reached 8 of 10 configured sources.</description>
-  <lastBuildDate>Mon, 09 Nov 2026 16:37:18 +0000</lastBuildDate>
+  <description>Upcoming events in Des Plaines, soonest first - aggregated automatically from village, library, park district and school-district calendars. This build reached 7 of 10 configured sources. 1 source is shown from its last update, up to 2 hours ago.</description>
+  <lastBuildDate>Mon, 09 Nov 2026 18:50:55 +0000</lastBuildDate>
   <item>
     <title>Des Plaines: Teen Take &amp; Make</title>
     <link>https://withintenmiles.com/des-plaines-60016/#ev-teen-take-make-2026-11-09</link>
@@ -125,6 +125,15 @@ Meet with a career expert for resume… Official listing: https://desplaines.lib
  A staff member will lead a book discussion. Books are available at the 3rd floor info desk in the public library… Official listing: https://desplaines.libnet.info/event/17350944</description>
     <pubDate>Tue, 10 Nov 2026 10:00:00 +0000</pubDate>
     <source url="https://desplaines.libnet.info/event/17350944">Des Plaines Public Library — Events</source>
+  </item>
+  <item>
+    <title>Des Plaines: Book a Teen Librarian</title>
+    <link>https://withintenmiles.com/des-plaines-60016/#ev-book-a-teen-librarian-2026-11-10</link>
+    <guid isPermaLink="true">https://withintenmiles.com/des-plaines-60016/#ev-book-a-teen-librarian-2026-11-10</guid>
+    <description>Tuesday, November 10 2026 5:00pm - 6:00pm 
+ Come in and get to know your teen librarians! Official listing: https://desplaines.libnet.info/event/17867456</description>
+    <pubDate>Tue, 10 Nov 2026 17:00:00 +0000</pubDate>
+    <source url="https://desplaines.libnet.info/event/17867456">Des Plaines Public Library — Events</source>
   </item>
   <item>
     <title>Des Plaines: Tech in the Forum</title>
@@ -445,15 +454,6 @@ Email:… Official listing: https://desplaines.libnet.info/event/17218379</descr
  Want some career, college, or scholarship advice? Need some book recommendations? Maybe sit back, relax, and play… Official listing: https://desplaines.libnet.info/event/15509800</description>
     <pubDate>Mon, 16 Nov 2026 17:00:00 +0000</pubDate>
     <source url="https://desplaines.libnet.info/event/15509800">Des Plaines Public Library — Events</source>
-  </item>
-  <item>
-    <title>Des Plaines: Adult Board Game Night</title>
-    <link>https://withintenmiles.com/des-plaines-60016/#ev-adult-board-game-night-2026-11-16</link>
-    <guid isPermaLink="true">https://withintenmiles.com/des-plaines-60016/#ev-adult-board-game-night-2026-11-16</guid>
-    <description>Monday, November 16 2026 6:00pm - 8:00pm 
- Meet fellow board gamers! Play our games or bring your own. Official listing: https://desplaines.libnet.info/event/16875034</description>
-    <pubDate>Mon, 16 Nov 2026 18:00:00 +0000</pubDate>
-    <source url="https://desplaines.libnet.info/event/16875034">Des Plaines Public Library — Events</source>
   </item>
 </channel>
 </rss>
