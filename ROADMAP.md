@@ -220,6 +220,7 @@ doesn't re-suggest something already shipped.
 
 **Build queue (by deadline; refreshed by the research loop, item 346).**
 Pick from the top unless the owner has flagged something else:
+0. **480** with **482** (Elk Grove Village as town six, site first: 48.5 events a week against Rolling Meadows' 14.5; its tree lighting Nov 27), then **481** (each reader's town first in the email; test-send before the Nov 19 issue).
 0. **477** (fill the Metra entry from Metra's own pages as indexed; withdraw the owner ask; by the **Nov 12 send**), then **478** with **475** and **479** (CPKC Franklin Park stop, Mon Nov 23, 5:30 PM, in "Just outside" and on `/give/`, with distance).
 0. **474** with **476** (Metra Holiday Train on the UP Northwest line, Sat Dec 12; tickets Mon Nov 16 at noon; in the **Nov 12 email**, with a calendar reminder), then **475** (CPKC Holiday Train, if a stop is within ten miles).
 0. **472** (`/santa/` also matches Santa in descriptions and holiday brand names; Frostival is missing; before Nov 15), then **471** with **473** (Palatine library's whole calendar: 12 events today; horizons for html sources).
@@ -20591,6 +20592,90 @@ timetable**, and the **CPKC Holiday Train 2026 coverage** (Trains, the
 Daily Herald, NBC Chicago, WVPE, Rockford News First). The design/UX angle
 is **the "Just outside" card**, which promises ten miles but doesn't show
 the distance.
+
+#### Research pass 2026-11-09, evening (hundred-and-thirty-fourth pass)
+
+Today the build loop shipped item 475 (the CPKC Franklin Park stop, ≈ 7 mi
+from Des Plaines, on `/holidays/`, `/santa/` and `/give/`), items 477–479
+(the Metra entry with `confirmed_via`, the first-party fallback, and
+distance on cards) and item 446 (Noon Year's Eve). Item 416's
+measurement window closes about **Nov 13**, so this pass reads the
+candidate-town data and makes the town-six call. It also checks how a
+sixth town can be added without making the email longer.
+
+| Angle | What it is / what we found | Why it matters here |
+|---|---|---|
+| **The town-six readout** (`data/candidate_regions.json`, 11 daily records, Oct 30 – Nov 9) | **Elk Grove Village** averaged **48.5 attendable events in the next 7 days** and **14.9 family events**, from its library alone (the park district and village answer the runner with 403). **Rolling Meadows** averaged **14.5 attendable** and **6.8 family**, from library 87, park district 5 and city 1 source items. Elk Grove has more than three times the events and twice the family events, with one source | The decision item 416 was built for. On these numbers, **Elk Grove Village** is town six, as long as its blocked park district and village can be covered for their big dated events (item 482) |
+| **Who ranks for "things to do in Elk Grove Village IL this weekend"** | The **Village's own tree-lighting page** (*Holiday Tree Lighting*, Fri **Nov 27** from 4 PM), **thecraftmap.com** fair listings, **Elk Grove Village Public Library event pages** (`egvpl.libnet.info`, the source the shadow fetch already reads), Daily Herald community archives, **chicagonorthwest.com**, a coffee-site guide, and **Eventbrite pages for Elk Grove, *California***. No weekend guide ranks | It's the same weak field Mount Prospect's query had: library event pages and mismatched Eventbrite cities. A town page with this weekend's library events and the tree lighting would be the only real answer. Every town page is a new way to be found, at no owner cost (item 480) |
+| **Buttondown tag conditionals: one email, each reader's town first** (Buttondown docs, *Tags* and *Segmenting your audience*; *"Referencing subscriber tags in your newsletter"*; the saved-segments changelog, Aug 2026) | Buttondown documents **referencing a subscriber's tags in the email body**, so one send can carry blocks that show only when the reader has a given tag. Signups already carry a town tag (item 252). The combined email shows **all towns at equal length** today (four events each) | A sixth section makes the email longer for everyone. **Each reader's own town in full, with the other towns as one line each**, makes it shorter *and* more local, and it scales to six towns or more. It needs a test send before it's trusted (item 481) |
+
+#### P1 (new)
+
+480. **Launch Elk Grove Village as town six, on the site first.** Build
+     loop, from the shadow config that has been fetching since Oct 30:
+
+     - Promote `config/regions/_candidate-elk-grove-village-60007.yaml`
+       to a live region: town pages, this weekend, today, free,
+       holiday, winter-break, `/e/` pages and sitemap entries, with
+       titles by item 310's rules (*"Things to Do in Elk Grove Village,
+       IL This Weekend"*).
+     - It joins `/santa/`, `/holidays/` and `/give/` as a town, and drops
+       out of "Just outside" as a destination.
+     - **Not in the combined email's town sections until item 481
+       ships.** Until then the email gets one line, *"New: Elk Grove
+       Village →"*.
+     - Record the readout above in item 416 and close 416 and 417.
+       **Rolling Meadows** stays a candidate (`skipped —` for now: 14.5
+       events a week from three thin sources).
+
+     Tests: the region builds with the library source, its pages are in
+     the sitemap, and the combined email has no Elk Grove town section.
+
+#### P2 (new)
+
+481. **The reader's own town first in the email, other towns as one line
+     each.** Build loop, combined email template:
+
+     - Wrap each town section in a Buttondown tag conditional. A reader
+       tagged with a town sees **that town in full** (up to six events)
+       at the top, and every other town as one line: *"Mount Prospect:
+       Diwali Party, MPCB Fall Concert and 3 more →"*.
+     - Readers with no town tag get today's layout.
+     - **Verify with a test send** through the API to the existing
+       subscriber, then compare the rendered email with the preview
+       before it goes to the list. If Buttondown's current templating
+       doesn't render the conditional, keep the current layout and
+       record why.
+     - The site preview shows the untagged version.
+
+     Tests: the template has a block per town and a fallback, and the
+     one-line summary is built from the first two titles and a count.
+
+482. **Elk Grove's blocked sources, covered for their big dated events.**
+     Build loop, using item 478's fallback. The Village (elkgrove.org)
+     and the Elk Grove Park District answer the runner with 403, so
+     record their **dated holiday and seasonal events** from their own
+     pages as indexed by search, with `confirmed_via: search`:
+
+     - the Village's **Holiday Tree Lighting, Fri Nov 27, from 4 PM**;
+     - then the park district's winter events as they're published.
+
+     Each is re-probed every build and replaced if the wall lifts. The
+     library feed stays the weekly source. Tests: an entry with
+     `confirmed_via: search` and an elkgrove.org source renders on the
+     town and `/holidays/` pages.
+
+Re-rank: **480 goes to the top of the build queue**, since the
+measurement window has run and the data is clear. **482** rides with it
+(the tree lighting is Nov 27). **481** follows. It's the change that lets
+the email carry six towns, and it should be tested before the Nov 19
+send.
+
+Competitors reviewed this pass: **the Elk Grove Village results** (the
+Village's own page, thecraftmap, chicagonorthwest.com, Eventbrite's Elk
+Grove *California* pages) and **Buttondown's tag-conditional content**.
+The design/UX angle is **the six-town email**: the reader's own town in
+full, the rest in one line each.
 
 
 ## Working agreements for autonomous iteration
