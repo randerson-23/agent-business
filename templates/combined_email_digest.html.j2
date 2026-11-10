@@ -103,7 +103,22 @@ This weekend, across the northwest suburbs
 </tr>
 <tr><td style="padding:0 0 14px 0;"></td></tr>
 
-{% if weather_line or election_line or closures_line or days_off_line or give_line or on_sale or new_towns %}
+{% for o in on_sale %}
+{# ROADMAP.md item 483: the week's time-critical item in its own card, directly under the masthead. #}
+<tr>
+<td bgcolor="#ffffff" class="wt-paper" style="background-color:#ffffff; border:2px solid {{ ink }}; border-radius:12px; padding:18px 22px; font-family:{{ sans }};">
+<div class="wt-accent" style="font-size:12px; font-weight:600; letter-spacing:1.5px; color:{{ accent }}; padding-bottom:8px;">⏰ ON SALE {{ o.opens.strftime('%A').upper() }} AT {{ 'NOON' if (o.opens.hour == 12 and o.opens.minute == 0) else o.opens.strftime('%-I:%M %p').replace(':00', '').upper() }}</div>
+<div class="wt-ink" style="font-size:16px; line-height:1.5; color:{{ ink }}; padding-bottom:12px;">{{ o.emoji }} {{ o.line }}</div>
+<table role="presentation" cellpadding="0" cellspacing="0" border="0"><tr>
+<td bgcolor="{{ ink }}" style="background-color:{{ ink }}; border-radius:8px;"><a href="{{ o.url }}" style="display:inline-block; padding:9px 16px; font-family:{{ sans }}; font-size:14px; font-weight:600; color:#ffffff; text-decoration:none;">Official page &rarr;</a></td>
+{% if o.remind_url %}<td style="width:10px;"></td><td style="border:1px solid #cfcac5; border-radius:8px;"><a href="{{ o.remind_url }}" class="wt-ink" style="display:inline-block; padding:8px 15px; font-family:{{ sans }}; font-size:14px; font-weight:600; color:{{ ink }}; text-decoration:none;">⏰ Remind me</a></td>{% endif %}
+</tr></table>
+</td>
+</tr>
+<tr><td style="padding:0 0 14px 0;"></td></tr>
+{% endfor %}
+
+{% if weather_line or election_line or closures_line or days_off_line or give_line or new_towns %}
 {# ROADMAP.md items 291, 296, 307: the week's short notices, as plain lines in one card. #}
 <tr>
 <td bgcolor="#ffffff" class="wt-paper" style="background-color:#ffffff; border-radius:12px; padding:14px 22px; font-family:{{ sans }}; font-size:15px; line-height:1.5;">
@@ -111,7 +126,6 @@ This weekend, across the northwest suburbs
 {% if election_line %}<div style="padding:3px 0;"><a href="{{ election_line.url }}" class="wt-brand" style="color:{{ accent }}; text-decoration:none;">{{ election_line.text }} &rarr;</a></div>{% endif %}
 {% if closures_line %}<div style="padding:3px 0;"><a href="{{ closures_line.url }}" class="wt-brand" style="color:{{ accent }}; text-decoration:none;">{{ closures_line.text }} &rarr;</a></div>{% endif %}
 {% for n in new_towns %}<div style="padding:3px 0;"><a href="{{ n.url }}" class="wt-brand" style="color:{{ accent }}; text-decoration:none;"><strong>New:</strong> {{ n.name }} &rarr;</a></div>{% endfor %}
-{% for o in on_sale %}<div class="wt-ink" style="padding:3px 0; color:{{ ink }};"><strong>⏰ On sale:</strong> {{ o.emoji }} {{ o.line }} <a href="{{ o.url }}" class="wt-brand" style="color:{{ accent }}; text-decoration:none;">Official page &rarr;</a>{% if o.remind_url %} &nbsp;·&nbsp; <a href="{{ o.remind_url }}" class="wt-brand" style="color:{{ accent }}; text-decoration:none;">⏰ Remind me</a>{% endif %}</div>{% endfor %}
 {% if give_line %}<div style="padding:3px 0;"><a href="{{ give_line.url }}" class="wt-brand" style="color:{{ accent }}; text-decoration:none;">{{ give_line.text }} &rarr;</a></div>{% endif %}
 {% if days_off_line %}<div style="padding:3px 0;"><a href="{{ days_off_line.url }}" class="wt-brand" style="color:{{ accent }}; text-decoration:none;">{{ days_off_line.text }} &rarr;</a></div>{% endif %}
 </td>
