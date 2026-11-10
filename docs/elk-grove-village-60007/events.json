@@ -1,0 +1,2859 @@
+{
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  "name": "Upcoming events in Elk Grove Village — Within Ten",
+  "dateModified": "2026-11-10T06:01:34+00:00",
+  "numberOfItems": 95,
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "item": {
+        "@type": "Event",
+        "name": "The Arlington Camera Club",
+        "startDate": "2026-11-10",
+        "url": "https://withintenmiles.com/elk-grove-village-60007/#ev-the-arlington-camera-club-2026-11-10",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Elk Grove Village Public Library",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Elk Grove Village",
+            "addressRegion": "IL"
+          }
+        },
+        "sameAs": "https://egvpl.libnet.info/event/16362678",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Elk Grove Village Public Library - Events",
+          "url": "https://egvpl.libnet.info"
+        },
+        "image": "https://withintenmiles.com/og/elk-grove-village-60007.png",
+        "description": "Tuesday, November 10 2026 12:00am - 11:59pm \n Arlington Camera Club photography exhibit."
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "item": {
+        "@type": "Event",
+        "name": "Picture Book Month Challenge",
+        "startDate": "2026-11-10",
+        "url": "https://withintenmiles.com/elk-grove-village-60007/#ev-picture-book-month-challenge-2026-11-10",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Elk Grove Village Public Library",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Elk Grove Village",
+            "addressRegion": "IL"
+          }
+        },
+        "sameAs": "https://egvpl.libnet.info/event/17074010",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Elk Grove Village Public Library - Events",
+          "url": "https://egvpl.libnet.info"
+        },
+        "image": "https://withintenmiles.com/og/elk-grove-village-60007.png",
+        "description": "Tuesday, November 10 2026 12:00am - 11:59pm \n November is Picture Book Month! Put on your thinking cap and see if you can guess which picture book our clues…"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "item": {
+        "@type": "Event",
+        "name": "Word of the Week",
+        "startDate": "2026-11-10",
+        "url": "https://withintenmiles.com/elk-grove-village-60007/#ev-word-of-the-week-2026-11-10",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Elk Grove Village Public Library",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Elk Grove Village",
+            "addressRegion": "IL"
+          }
+        },
+        "sameAs": "https://egvpl.libnet.info/event/17354422",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Elk Grove Village Public Library - Events",
+          "url": "https://egvpl.libnet.info"
+        },
+        "image": "https://withintenmiles.com/og/elk-grove-village-60007.png",
+        "description": "Tuesday, November 10 2026 12:00am - 11:59pm \n Become a dictionary detective with our new Word of the Week challenge! Discover a new vocabulary word, look it…"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 4,
+      "item": {
+        "@type": "Event",
+        "name": "Mini Mad Science Storytime",
+        "startDate": "2026-11-10T10:00:00-06:00",
+        "url": "https://withintenmiles.com/elk-grove-village-60007/#ev-mini-mad-science-storytime-2026-11-10",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Elk Grove Village Public Library",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Elk Grove Village",
+            "addressRegion": "IL"
+          }
+        },
+        "sameAs": "https://egvpl.libnet.info/event/17061964",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Elk Grove Village Public Library - Events",
+          "url": "https://egvpl.libnet.info"
+        },
+        "image": "https://withintenmiles.com/og/elk-grove-village-60007.png",
+        "description": "Tuesday, November 10 2026 10:00am - 10:45am \n Join us for a fun science class just for young children! We will explore science through stories, a hands-on…"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 5,
+      "item": {
+        "@type": "Event",
+        "name": "Tuesday Tech Help",
+        "startDate": "2026-11-10T11:00:00-06:00",
+        "url": "https://withintenmiles.com/elk-grove-village-60007/#ev-tuesday-tech-help-2026-11-10",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Elk Grove Village Public Library",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Elk Grove Village",
+            "addressRegion": "IL"
+          }
+        },
+        "sameAs": "https://egvpl.libnet.info/event/17238825",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Elk Grove Village Public Library - Events",
+          "url": "https://egvpl.libnet.info"
+        },
+        "image": "https://withintenmiles.com/og/elk-grove-village-60007.png",
+        "description": "Tuesday, November 10 2026 11:00am - 1:00pm \n Got a technology question? Were here to help! Bring your device and question."
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 6,
+      "item": {
+        "@type": "Event",
+        "name": "CSI Session 3",
+        "startDate": "2026-11-10T16:15:00-06:00",
+        "url": "https://withintenmiles.com/elk-grove-village-60007/#ev-csi-session-3-2026-11-10",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Elk Grove Village Public Library",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Elk Grove Village",
+            "addressRegion": "IL"
+          }
+        },
+        "sameAs": "https://egvpl.libnet.info/event/17206268",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Elk Grove Village Public Library - Events",
+          "url": "https://egvpl.libnet.info"
+        },
+        "image": "https://withintenmiles.com/og/elk-grove-village-60007.png",
+        "description": "Tuesday, November 10 2026 4:15pm - 4:45pm \n SESSION 3: Gravity, Force and Motion - Let's investigate with STEM! This class combines a little bit of Science,…"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 7,
+      "item": {
+        "@type": "Event",
+        "name": "Uke Jam",
+        "startDate": "2026-11-10T18:30:00-06:00",
+        "url": "https://withintenmiles.com/elk-grove-village-60007/#ev-uke-jam-2026-11-10",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Elk Grove Village Public Library",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Elk Grove Village",
+            "addressRegion": "IL"
+          }
+        },
+        "sameAs": "https://egvpl.libnet.info/event/16817642",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Elk Grove Village Public Library - Events",
+          "url": "https://egvpl.libnet.info"
+        },
+        "image": "https://withintenmiles.com/og/elk-grove-village-60007.png",
+        "description": "Tuesday, November 10 2026 6:30pm - 7:00pm \n Hang out and learn a song on the ukulele. All experience levels are welcome! Ukuleles are provided by the library."
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 8,
+      "item": {
+        "@type": "Event",
+        "name": "EGVPL Board of Trustees Meeting",
+        "startDate": "2026-11-10T19:00:00-06:00",
+        "url": "https://withintenmiles.com/elk-grove-village-60007/#ev-egvpl-board-of-trustees-meeting-2026-11-10",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Elk Grove Village Public Library",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Elk Grove Village",
+            "addressRegion": "IL"
+          }
+        },
+        "sameAs": "https://egvpl.libnet.info/event/15064010",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Elk Grove Village Public Library - Events",
+          "url": "https://egvpl.libnet.info"
+        },
+        "image": "https://withintenmiles.com/og/elk-grove-village-60007.png",
+        "description": "Tuesday, November 10 2026 7:00pm - 9:00pm \n Regular Board Meeting"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 9,
+      "item": {
+        "@type": "Event",
+        "name": "Beaded Corn Keychain Craft",
+        "startDate": "2026-11-10T19:00:00-06:00",
+        "url": "https://withintenmiles.com/elk-grove-village-60007/#ev-beaded-corn-keychain-craft-2026-11-10",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Elk Grove Village Public Library",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Elk Grove Village",
+            "addressRegion": "IL"
+          }
+        },
+        "sameAs": "https://egvpl.libnet.info/event/17255115",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Elk Grove Village Public Library - Events",
+          "url": "https://egvpl.libnet.info"
+        },
+        "image": "https://withintenmiles.com/og/elk-grove-village-60007.png",
+        "description": "Tuesday, November 10 2026 7:00pm - 8:00pm \n Create the perfect keychain for fall! Learn how to craft a mini beaded corn, perfect to hang off a purse or…"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 10,
+      "item": {
+        "@type": "Event",
+        "name": "The Arlington Camera Club",
+        "startDate": "2026-11-11",
+        "url": "https://withintenmiles.com/elk-grove-village-60007/#ev-the-arlington-camera-club-2026-11-11",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Elk Grove Village Public Library",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Elk Grove Village",
+            "addressRegion": "IL"
+          }
+        },
+        "sameAs": "https://egvpl.libnet.info/event/16362679",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Elk Grove Village Public Library - Events",
+          "url": "https://egvpl.libnet.info"
+        },
+        "image": "https://withintenmiles.com/og/elk-grove-village-60007.png",
+        "description": "Wednesday, November 11 2026 12:00am - 11:59pm \n Arlington Camera Club photography exhibit."
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 11,
+      "item": {
+        "@type": "Event",
+        "name": "Picture Book Month Challenge",
+        "startDate": "2026-11-11",
+        "url": "https://withintenmiles.com/elk-grove-village-60007/#ev-picture-book-month-challenge-2026-11-11",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Elk Grove Village Public Library",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Elk Grove Village",
+            "addressRegion": "IL"
+          }
+        },
+        "sameAs": "https://egvpl.libnet.info/event/17074011",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Elk Grove Village Public Library - Events",
+          "url": "https://egvpl.libnet.info"
+        },
+        "image": "https://withintenmiles.com/og/elk-grove-village-60007.png",
+        "description": "Wednesday, November 11 2026 12:00am - 11:59pm \n November is Picture Book Month! Put on your thinking cap and see if you can guess which picture book our clues…"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 12,
+      "item": {
+        "@type": "Event",
+        "name": "Word of the Week",
+        "startDate": "2026-11-11",
+        "url": "https://withintenmiles.com/elk-grove-village-60007/#ev-word-of-the-week-2026-11-11",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Elk Grove Village Public Library",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Elk Grove Village",
+            "addressRegion": "IL"
+          }
+        },
+        "sameAs": "https://egvpl.libnet.info/event/17354423",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Elk Grove Village Public Library - Events",
+          "url": "https://egvpl.libnet.info"
+        },
+        "image": "https://withintenmiles.com/og/elk-grove-village-60007.png",
+        "description": "Wednesday, November 11 2026 12:00am - 11:59pm \n Become a dictionary detective with our new Word of the Week challenge! Discover a new vocabulary word, look it…"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 13,
+      "item": {
+        "@type": "Event",
+        "name": "Alphabet Soup",
+        "startDate": "2026-11-11T09:30:00-06:00",
+        "url": "https://withintenmiles.com/elk-grove-village-60007/#ev-alphabet-soup-2026-11-11",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Elk Grove Village Public Library",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Elk Grove Village",
+            "addressRegion": "IL"
+          }
+        },
+        "sameAs": "https://egvpl.libnet.info/event/16817351",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Elk Grove Village Public Library - Events",
+          "url": "https://egvpl.libnet.info"
+        },
+        "image": "https://withintenmiles.com/og/elk-grove-village-60007.png",
+        "description": "Wednesday, November 11 2026 9:30am - 10:15am \n Attention little learners! Grab your grown-up and get moving in an interactive storytime filled with music and…"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 14,
+      "item": {
+        "@type": "Event",
+        "name": "Resume & Job Hunting Help",
+        "startDate": "2026-11-11T14:00:00-06:00",
+        "url": "https://withintenmiles.com/elk-grove-village-60007/#ev-resume-job-hunting-help-2026-11-11",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Elk Grove Village Public Library",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Elk Grove Village",
+            "addressRegion": "IL"
+          }
+        },
+        "sameAs": "https://egvpl.libnet.info/event/16881354",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Elk Grove Village Public Library - Events",
+          "url": "https://egvpl.libnet.info"
+        },
+        "image": "https://withintenmiles.com/og/elk-grove-village-60007.png",
+        "description": "Wednesday, November 11 2026 2:00pm - 4:00pm \n Get help completing job applications, writing resumes and cover letters, preparing for interviews, and…"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 15,
+      "item": {
+        "@type": "Event",
+        "name": "Cartooning with Mark Anderson - Thanksgiving Monsters?!",
+        "startDate": "2026-11-11T15:30:00-06:00",
+        "url": "https://withintenmiles.com/elk-grove-village-60007/#ev-cartooning-with-mark-anderson-thanksgiving-monsters-2026-11-11",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Elk Grove Village Public Library",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Elk Grove Village",
+            "addressRegion": "IL"
+          }
+        },
+        "sameAs": "https://egvpl.libnet.info/event/17129636",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Elk Grove Village Public Library - Events",
+          "url": "https://egvpl.libnet.info"
+        },
+        "image": "https://withintenmiles.com/og/elk-grove-village-60007.png",
+        "description": "Wednesday, November 11 2026 3:30pm - 4:30pm \n Beware Thanksgiving Monsters?!....Oh, no... it's Gravy Ghoul! Lookout for the Cranberry Creeper! Not to mention…"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 16,
+      "item": {
+        "@type": "Event",
+        "name": "Pokémon Card Trading",
+        "startDate": "2026-11-11T18:00:00-06:00",
+        "url": "https://withintenmiles.com/elk-grove-village-60007/#ev-pok-mon-card-trading-2026-11-11",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Elk Grove Village Public Library",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Elk Grove Village",
+            "addressRegion": "IL"
+          }
+        },
+        "sameAs": "https://egvpl.libnet.info/event/17677530",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Elk Grove Village Public Library - Events",
+          "url": "https://egvpl.libnet.info"
+        },
+        "image": "https://withintenmiles.com/og/elk-grove-village-60007.png",
+        "description": "Wednesday, November 11 2026 6:00pm - 7:30pm \n Come on down to trade Pokémon cards with fellow Pokémon fans."
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 17,
+      "item": {
+        "@type": "Event",
+        "name": "The Book Nook",
+        "startDate": "2026-11-11T18:30:00-06:00",
+        "url": "https://withintenmiles.com/elk-grove-village-60007/#ev-the-book-nook-2026-11-11",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Elk Grove Village Public Library",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Elk Grove Village",
+            "addressRegion": "IL"
+          }
+        },
+        "sameAs": "https://egvpl.libnet.info/event/17002654",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Elk Grove Village Public Library - Events",
+          "url": "https://egvpl.libnet.info"
+        },
+        "image": "https://withintenmiles.com/og/elk-grove-village-60007.png",
+        "description": "Wednesday, November 11 2026 6:30pm - 7:30pm \n Welcome to The Book Nook, a new 20s and 30s book club here at EGVPL. Join us as we discuss The Everlasting by…"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 18,
+      "item": {
+        "@type": "Event",
+        "name": "The Arlington Camera Club",
+        "startDate": "2026-11-12",
+        "url": "https://withintenmiles.com/elk-grove-village-60007/#ev-the-arlington-camera-club-2026-11-12",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Elk Grove Village Public Library",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Elk Grove Village",
+            "addressRegion": "IL"
+          }
+        },
+        "sameAs": "https://egvpl.libnet.info/event/16362680",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Elk Grove Village Public Library - Events",
+          "url": "https://egvpl.libnet.info"
+        },
+        "image": "https://withintenmiles.com/og/elk-grove-village-60007.png",
+        "description": "Thursday, November 12 2026 12:00am - 11:59pm \n Arlington Camera Club photography exhibit."
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 19,
+      "item": {
+        "@type": "Event",
+        "name": "Picture Book Month Challenge",
+        "startDate": "2026-11-12",
+        "url": "https://withintenmiles.com/elk-grove-village-60007/#ev-picture-book-month-challenge-2026-11-12",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Elk Grove Village Public Library",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Elk Grove Village",
+            "addressRegion": "IL"
+          }
+        },
+        "sameAs": "https://egvpl.libnet.info/event/17074012",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Elk Grove Village Public Library - Events",
+          "url": "https://egvpl.libnet.info"
+        },
+        "image": "https://withintenmiles.com/og/elk-grove-village-60007.png",
+        "description": "Thursday, November 12 2026 12:00am - 11:59pm \n November is Picture Book Month! Put on your thinking cap and see if you can guess which picture book our clues…"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 20,
+      "item": {
+        "@type": "Event",
+        "name": "Word of the Week",
+        "startDate": "2026-11-12",
+        "url": "https://withintenmiles.com/elk-grove-village-60007/#ev-word-of-the-week-2026-11-12",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Elk Grove Village Public Library",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Elk Grove Village",
+            "addressRegion": "IL"
+          }
+        },
+        "sameAs": "https://egvpl.libnet.info/event/17354424",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Elk Grove Village Public Library - Events",
+          "url": "https://egvpl.libnet.info"
+        },
+        "image": "https://withintenmiles.com/og/elk-grove-village-60007.png",
+        "description": "Thursday, November 12 2026 12:00am - 11:59pm \n Become a dictionary detective with our new Word of the Week challenge! Discover a new vocabulary word, look it…"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 21,
+      "item": {
+        "@type": "Event",
+        "name": "Polish Storytime",
+        "startDate": "2026-11-12T10:00:00-06:00",
+        "url": "https://withintenmiles.com/elk-grove-village-60007/#ev-polish-storytime-2026-11-12",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Elk Grove Village Public Library",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Elk Grove Village",
+            "addressRegion": "IL"
+          }
+        },
+        "sameAs": "https://egvpl.libnet.info/event/16995067",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Elk Grove Village Public Library - Events",
+          "url": "https://egvpl.libnet.info"
+        },
+        "image": "https://withintenmiles.com/og/elk-grove-village-60007.png",
+        "description": "Thursday, November 12 2026 10:00am - 10:30am \n Join us for a Polish-English story time that includes stories and rhymes. Recommended for ages 0 - 5."
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 22,
+      "item": {
+        "@type": "Event",
+        "name": "Moments to Remember",
+        "startDate": "2026-11-12T11:30:00-06:00",
+        "url": "https://withintenmiles.com/elk-grove-village-60007/#ev-moments-to-remember-2026-11-12",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Elk Grove Village Public Library",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Elk Grove Village",
+            "addressRegion": "IL"
+          }
+        },
+        "sameAs": "https://egvpl.libnet.info/event/16898029",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Elk Grove Village Public Library - Events",
+          "url": "https://egvpl.libnet.info"
+        },
+        "image": "https://withintenmiles.com/og/elk-grove-village-60007.png",
+        "description": "Thursday, November 12 2026 11:30am - 1:00pm \n Social gathering for women 55 years & older.\nLimited to 30"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 23,
+      "item": {
+        "@type": "Event",
+        "name": "CSI Session 3",
+        "startDate": "2026-11-12T16:15:00-06:00",
+        "url": "https://withintenmiles.com/elk-grove-village-60007/#ev-csi-session-3-2026-11-12",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Elk Grove Village Public Library",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Elk Grove Village",
+            "addressRegion": "IL"
+          }
+        },
+        "sameAs": "https://egvpl.libnet.info/event/17207958",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Elk Grove Village Public Library - Events",
+          "url": "https://egvpl.libnet.info"
+        },
+        "image": "https://withintenmiles.com/og/elk-grove-village-60007.png",
+        "description": "Thursday, November 12 2026 4:15pm - 4:45pm \n SESSION 3: Gravity, Force and Motion - Let's investigate with STEM! This class combines a little bit of Science,…"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 24,
+      "item": {
+        "@type": "Event",
+        "name": "Japanese Storytime",
+        "startDate": "2026-11-12T18:30:00-06:00",
+        "url": "https://withintenmiles.com/elk-grove-village-60007/#ev-japanese-storytime-2026-11-12",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Elk Grove Village Public Library",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Elk Grove Village",
+            "addressRegion": "IL"
+          }
+        },
+        "sameAs": "https://egvpl.libnet.info/event/17086198",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Elk Grove Village Public Library - Events",
+          "url": "https://egvpl.libnet.info"
+        },
+        "image": "https://withintenmiles.com/og/elk-grove-village-60007.png",
+        "description": "Thursday, November 12 2026 6:30pm - 7:00pm \n Drop-in for this bilingual storytime that will include songs, games, and crafts."
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 25,
+      "item": {
+        "@type": "Event",
+        "name": "The Arlington Camera Club",
+        "startDate": "2026-11-13",
+        "url": "https://withintenmiles.com/elk-grove-village-60007/#ev-the-arlington-camera-club-2026-11-13",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Elk Grove Village Public Library",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Elk Grove Village",
+            "addressRegion": "IL"
+          }
+        },
+        "sameAs": "https://egvpl.libnet.info/event/16362681",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Elk Grove Village Public Library - Events",
+          "url": "https://egvpl.libnet.info"
+        },
+        "image": "https://withintenmiles.com/og/elk-grove-village-60007.png",
+        "description": "Friday, November 13 2026 12:00am - 11:59pm \n Arlington Camera Club photography exhibit."
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 26,
+      "item": {
+        "@type": "Event",
+        "name": "Picture Book Month Challenge",
+        "startDate": "2026-11-13",
+        "url": "https://withintenmiles.com/elk-grove-village-60007/#ev-picture-book-month-challenge-2026-11-13",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Elk Grove Village Public Library",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Elk Grove Village",
+            "addressRegion": "IL"
+          }
+        },
+        "sameAs": "https://egvpl.libnet.info/event/17074013",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Elk Grove Village Public Library - Events",
+          "url": "https://egvpl.libnet.info"
+        },
+        "image": "https://withintenmiles.com/og/elk-grove-village-60007.png",
+        "description": "Friday, November 13 2026 12:00am - 11:59pm \n November is Picture Book Month! Put on your thinking cap and see if you can guess which picture book our clues…"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 27,
+      "item": {
+        "@type": "Event",
+        "name": "Word of the Week",
+        "startDate": "2026-11-13",
+        "url": "https://withintenmiles.com/elk-grove-village-60007/#ev-word-of-the-week-2026-11-13",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Elk Grove Village Public Library",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Elk Grove Village",
+            "addressRegion": "IL"
+          }
+        },
+        "sameAs": "https://egvpl.libnet.info/event/17354425",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Elk Grove Village Public Library - Events",
+          "url": "https://egvpl.libnet.info"
+        },
+        "image": "https://withintenmiles.com/og/elk-grove-village-60007.png",
+        "description": "Friday, November 13 2026 12:00am - 11:59pm \n Become a dictionary detective with our new Word of the Week challenge! Discover a new vocabulary word, look it up…"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 28,
+      "item": {
+        "@type": "Event",
+        "name": "Chess Club (Advanced Players)",
+        "startDate": "2026-11-13T17:30:00-06:00",
+        "url": "https://withintenmiles.com/elk-grove-village-60007/#ev-chess-club-advanced-players-2026-11-13",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Elk Grove Village Public Library",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Elk Grove Village",
+            "addressRegion": "IL"
+          }
+        },
+        "sameAs": "https://egvpl.libnet.info/event/17111661",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Elk Grove Village Public Library - Events",
+          "url": "https://egvpl.libnet.info"
+        },
+        "image": "https://withintenmiles.com/og/elk-grove-village-60007.png",
+        "description": "Friday, November 13 2026 5:30pm - 6:30pm \n Ready to make your next move? Join us for our Chess Club program with National Chess Masters from Glenview Chess!"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 29,
+      "item": {
+        "@type": "Event",
+        "name": "Chess Club (Beginning Players)",
+        "startDate": "2026-11-13T17:30:00-06:00",
+        "url": "https://withintenmiles.com/elk-grove-village-60007/#ev-chess-club-beginning-players-2026-11-13",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Elk Grove Village Public Library",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Elk Grove Village",
+            "addressRegion": "IL"
+          }
+        },
+        "sameAs": "https://egvpl.libnet.info/event/17111762",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Elk Grove Village Public Library - Events",
+          "url": "https://egvpl.libnet.info"
+        },
+        "image": "https://withintenmiles.com/og/elk-grove-village-60007.png",
+        "description": "Friday, November 13 2026 5:30pm - 6:30pm \n Ready to make your next move? Join us for our Chess Club program with National Chess Masters from Glenview Chess!"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 30,
+      "item": {
+        "@type": "Event",
+        "name": "The Arlington Camera Club",
+        "startDate": "2026-11-14",
+        "url": "https://withintenmiles.com/elk-grove-village-60007/#ev-the-arlington-camera-club-2026-11-14",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Elk Grove Village Public Library",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Elk Grove Village",
+            "addressRegion": "IL"
+          }
+        },
+        "sameAs": "https://egvpl.libnet.info/event/16362682",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Elk Grove Village Public Library - Events",
+          "url": "https://egvpl.libnet.info"
+        },
+        "image": "https://withintenmiles.com/og/elk-grove-village-60007.png",
+        "description": "Saturday, November 14 2026 12:00am - 11:59pm \n Arlington Camera Club photography exhibit."
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 31,
+      "item": {
+        "@type": "Event",
+        "name": "Picture Book Month Challenge",
+        "startDate": "2026-11-14",
+        "url": "https://withintenmiles.com/elk-grove-village-60007/#ev-picture-book-month-challenge-2026-11-14",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Elk Grove Village Public Library",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Elk Grove Village",
+            "addressRegion": "IL"
+          }
+        },
+        "sameAs": "https://egvpl.libnet.info/event/17074014",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Elk Grove Village Public Library - Events",
+          "url": "https://egvpl.libnet.info"
+        },
+        "image": "https://withintenmiles.com/og/elk-grove-village-60007.png",
+        "description": "Saturday, November 14 2026 12:00am - 11:59pm \n November is Picture Book Month! Put on your thinking cap and see if you can guess which picture book our clues…"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 32,
+      "item": {
+        "@type": "Event",
+        "name": "Word of the Week",
+        "startDate": "2026-11-14",
+        "url": "https://withintenmiles.com/elk-grove-village-60007/#ev-word-of-the-week-2026-11-14",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Elk Grove Village Public Library",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Elk Grove Village",
+            "addressRegion": "IL"
+          }
+        },
+        "sameAs": "https://egvpl.libnet.info/event/17354426",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Elk Grove Village Public Library - Events",
+          "url": "https://egvpl.libnet.info"
+        },
+        "image": "https://withintenmiles.com/og/elk-grove-village-60007.png",
+        "description": "Saturday, November 14 2026 12:00am - 11:59pm \n Become a dictionary detective with our new Word of the Week challenge! Discover a new vocabulary word, look it…"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 33,
+      "item": {
+        "@type": "Event",
+        "name": "Fun Factory Saturday",
+        "startDate": "2026-11-14T09:30:00-06:00",
+        "url": "https://withintenmiles.com/elk-grove-village-60007/#ev-fun-factory-saturday-2026-11-14",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Elk Grove Village Public Library",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Elk Grove Village",
+            "addressRegion": "IL"
+          }
+        },
+        "sameAs": "https://egvpl.libnet.info/event/15584326",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Elk Grove Village Public Library - Events",
+          "url": "https://egvpl.libnet.info"
+        },
+        "image": "https://withintenmiles.com/og/elk-grove-village-60007.png",
+        "description": "Saturday, November 14 2026 9:30am - 4:30pm \n Drop by the library to make a simple craft on your own or with the help of a parent/caregiver. The craft will be…"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 34,
+      "item": {
+        "@type": "Event",
+        "name": "Spanish Storytime - Tiempo De Cuento",
+        "startDate": "2026-11-14T10:30:00-06:00",
+        "url": "https://withintenmiles.com/elk-grove-village-60007/#ev-spanish-storytime-tiempo-de-cuento-2026-11-14",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Elk Grove Village Public Library",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Elk Grove Village",
+            "addressRegion": "IL"
+          }
+        },
+        "sameAs": "https://egvpl.libnet.info/event/16985795",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Elk Grove Village Public Library - Events",
+          "url": "https://egvpl.libnet.info"
+        },
+        "image": "https://withintenmiles.com/og/elk-grove-village-60007.png",
+        "description": "Saturday, November 14 2026 10:30am - 11:00am \n Come explore a new theme every month with books, art, and interactive activities. Vengan a explorar un nuevo…"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 35,
+      "item": {
+        "@type": "Event",
+        "name": "D&D: Open Play",
+        "startDate": "2026-11-14T13:00:00-06:00",
+        "url": "https://withintenmiles.com/elk-grove-village-60007/#ev-d-d-open-play-2026-11-14",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Elk Grove Village Public Library",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Elk Grove Village",
+            "addressRegion": "IL"
+          }
+        },
+        "sameAs": "https://egvpl.libnet.info/event/17118564",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Elk Grove Village Public Library - Events",
+          "url": "https://egvpl.libnet.info"
+        },
+        "image": "https://withintenmiles.com/og/elk-grove-village-60007.png",
+        "description": "Saturday, November 14 2026 1:00pm - 4:30pm \n This is the place for Dungeons & Dragons players of all levels to connect and play. Existing campaigns can meet…"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 36,
+      "item": {
+        "@type": "Event",
+        "name": "The Arlington Camera Club",
+        "startDate": "2026-11-15",
+        "url": "https://withintenmiles.com/elk-grove-village-60007/#ev-the-arlington-camera-club-2026-11-15",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Elk Grove Village Public Library",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Elk Grove Village",
+            "addressRegion": "IL"
+          }
+        },
+        "sameAs": "https://egvpl.libnet.info/event/16362683",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Elk Grove Village Public Library - Events",
+          "url": "https://egvpl.libnet.info"
+        },
+        "image": "https://withintenmiles.com/og/elk-grove-village-60007.png",
+        "description": "Sunday, November 15 2026 12:00am - 11:59pm \n Arlington Camera Club photography exhibit."
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 37,
+      "item": {
+        "@type": "Event",
+        "name": "Picture Book Month Challenge",
+        "startDate": "2026-11-15",
+        "url": "https://withintenmiles.com/elk-grove-village-60007/#ev-picture-book-month-challenge-2026-11-15",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Elk Grove Village Public Library",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Elk Grove Village",
+            "addressRegion": "IL"
+          }
+        },
+        "sameAs": "https://egvpl.libnet.info/event/17074015",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Elk Grove Village Public Library - Events",
+          "url": "https://egvpl.libnet.info"
+        },
+        "image": "https://withintenmiles.com/og/elk-grove-village-60007.png",
+        "description": "Sunday, November 15 2026 12:00am - 11:59pm \n November is Picture Book Month! Put on your thinking cap and see if you can guess which picture book our clues…"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 38,
+      "item": {
+        "@type": "Event",
+        "name": "Word of the Week",
+        "startDate": "2026-11-15",
+        "url": "https://withintenmiles.com/elk-grove-village-60007/#ev-word-of-the-week-2026-11-15",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Elk Grove Village Public Library",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Elk Grove Village",
+            "addressRegion": "IL"
+          }
+        },
+        "sameAs": "https://egvpl.libnet.info/event/17354427",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Elk Grove Village Public Library - Events",
+          "url": "https://egvpl.libnet.info"
+        },
+        "image": "https://withintenmiles.com/og/elk-grove-village-60007.png",
+        "description": "Sunday, November 15 2026 12:00am - 11:59pm \n Become a dictionary detective with our new Word of the Week challenge! Discover a new vocabulary word, look it up…"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 39,
+      "item": {
+        "@type": "Event",
+        "name": "Box Car Drive-In",
+        "startDate": "2026-11-15T14:30:00-06:00",
+        "url": "https://withintenmiles.com/elk-grove-village-60007/#ev-box-car-drive-in-2026-11-15",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Elk Grove Village Public Library",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Elk Grove Village",
+            "addressRegion": "IL"
+          }
+        },
+        "sameAs": "https://egvpl.libnet.info/event/16920140",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Elk Grove Village Public Library - Events",
+          "url": "https://egvpl.libnet.info"
+        },
+        "image": "https://withintenmiles.com/og/elk-grove-village-60007.png",
+        "description": "Sunday, November 15 2026 2:30pm - 3:30pm \n Take a box and turn it into a car during an afternoon of creativity! We will end this event with popcorn and a…"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 40,
+      "item": {
+        "@type": "Event",
+        "name": "The Arlington Camera Club",
+        "startDate": "2026-11-16",
+        "url": "https://withintenmiles.com/elk-grove-village-60007/#ev-the-arlington-camera-club-2026-11-16",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Elk Grove Village Public Library",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Elk Grove Village",
+            "addressRegion": "IL"
+          }
+        },
+        "sameAs": "https://egvpl.libnet.info/event/16362684",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Elk Grove Village Public Library - Events",
+          "url": "https://egvpl.libnet.info"
+        },
+        "image": "https://withintenmiles.com/og/elk-grove-village-60007.png",
+        "description": "Monday, November 16 2026 12:00am - 11:59pm \n Arlington Camera Club photography exhibit."
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 41,
+      "item": {
+        "@type": "Event",
+        "name": "Word of the Week",
+        "startDate": "2026-11-16",
+        "url": "https://withintenmiles.com/elk-grove-village-60007/#ev-word-of-the-week-2026-11-16",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Elk Grove Village Public Library",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Elk Grove Village",
+            "addressRegion": "IL"
+          }
+        },
+        "sameAs": "https://egvpl.libnet.info/event/17354428",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Elk Grove Village Public Library - Events",
+          "url": "https://egvpl.libnet.info"
+        },
+        "image": "https://withintenmiles.com/og/elk-grove-village-60007.png",
+        "description": "Monday, November 16 2026 12:00am - 11:59pm \n Become a dictionary detective with our new Word of the Week challenge! Discover a new vocabulary word, look it up…"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 42,
+      "item": {
+        "@type": "Event",
+        "name": "Baby Tales",
+        "startDate": "2026-11-16T09:30:00-06:00",
+        "url": "https://withintenmiles.com/elk-grove-village-60007/#ev-baby-tales-2026-11-16",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Elk Grove Village Public Library",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Elk Grove Village",
+            "addressRegion": "IL"
+          }
+        },
+        "sameAs": "https://egvpl.libnet.info/event/16817292",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Elk Grove Village Public Library - Events",
+          "url": "https://egvpl.libnet.info"
+        },
+        "image": "https://withintenmiles.com/og/elk-grove-village-60007.png",
+        "description": "Monday, November 16 2026 9:30am - 10:15am \n Bond with your little one and meet new friends at a lap-sit storytime full of bounces, tickles, songs, and giggles."
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 43,
+      "item": {
+        "@type": "Event",
+        "name": "Makerspace Teen Takeover!",
+        "startDate": "2026-11-16T15:30:00-06:00",
+        "url": "https://withintenmiles.com/elk-grove-village-60007/#ev-makerspace-teen-takeover-2026-11-16",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Elk Grove Village Public Library",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Elk Grove Village",
+            "addressRegion": "IL"
+          }
+        },
+        "sameAs": "https://egvpl.libnet.info/event/17241671",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Elk Grove Village Public Library - Events",
+          "url": "https://egvpl.libnet.info"
+        },
+        "image": "https://withintenmiles.com/og/elk-grove-village-60007.png",
+        "description": "Monday, November 16 2026 3:30pm - 7:00pm \n Get ready for a TEEN TAKEOVER of the Makerspace! Enjoy dedicated time in the space just for teens! Learn about 3D…"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 44,
+      "item": {
+        "@type": "Event",
+        "name": "Canvas Kids: Golden Gratitude",
+        "startDate": "2026-11-16T16:15:00-06:00",
+        "url": "https://withintenmiles.com/elk-grove-village-60007/#ev-canvas-kids-golden-gratitude-2026-11-16",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Elk Grove Village Public Library",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Elk Grove Village",
+            "addressRegion": "IL"
+          }
+        },
+        "sameAs": "https://egvpl.libnet.info/event/16998469",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Elk Grove Village Public Library - Events",
+          "url": "https://egvpl.libnet.info"
+        },
+        "image": "https://withintenmiles.com/og/elk-grove-village-60007.png",
+        "description": "Monday, November 16 2026 4:15pm - 5:00pm \n Create art projects using different artistic techniques and materials. Join us for a fun two-day art class."
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 45,
+      "item": {
+        "@type": "Event",
+        "name": "Winter Holiday Craft",
+        "startDate": "2026-11-16T18:00:00-06:00",
+        "url": "https://withintenmiles.com/elk-grove-village-60007/#ev-winter-holiday-craft-2026-11-16",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Elk Grove Village Public Library",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Elk Grove Village",
+            "addressRegion": "IL"
+          }
+        },
+        "sameAs": "https://egvpl.libnet.info/event/16934332",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Elk Grove Village Public Library - Events",
+          "url": "https://egvpl.libnet.info"
+        },
+        "image": "https://withintenmiles.com/og/elk-grove-village-60007.png",
+        "description": "Monday, November 16 2026 6:00pm - 8:00pm \n Get into the festive spirit and craft a beautiful winter decoration for your home! This hands-on workshop guides…"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 46,
+      "item": {
+        "@type": "Event",
+        "name": "The Arlington Camera Club",
+        "startDate": "2026-11-17",
+        "url": "https://withintenmiles.com/elk-grove-village-60007/#ev-the-arlington-camera-club-2026-11-17",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Elk Grove Village Public Library",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Elk Grove Village",
+            "addressRegion": "IL"
+          }
+        },
+        "sameAs": "https://egvpl.libnet.info/event/16362685",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Elk Grove Village Public Library - Events",
+          "url": "https://egvpl.libnet.info"
+        },
+        "image": "https://withintenmiles.com/og/elk-grove-village-60007.png",
+        "description": "Tuesday, November 17 2026 12:00am - 11:59pm \n Arlington Camera Club photography exhibit."
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 47,
+      "item": {
+        "@type": "Event",
+        "name": "Picture Book Month Challenge",
+        "startDate": "2026-11-17",
+        "url": "https://withintenmiles.com/elk-grove-village-60007/#ev-picture-book-month-challenge-2026-11-17",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Elk Grove Village Public Library",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Elk Grove Village",
+            "addressRegion": "IL"
+          }
+        },
+        "sameAs": "https://egvpl.libnet.info/event/17074016",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Elk Grove Village Public Library - Events",
+          "url": "https://egvpl.libnet.info"
+        },
+        "image": "https://withintenmiles.com/og/elk-grove-village-60007.png",
+        "description": "Tuesday, November 17 2026 12:00am - 11:59pm \n November is Picture Book Month! Put on your thinking cap and see if you can guess which picture book our clues…"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 48,
+      "item": {
+        "@type": "Event",
+        "name": "Word of the Week",
+        "startDate": "2026-11-17",
+        "url": "https://withintenmiles.com/elk-grove-village-60007/#ev-word-of-the-week-2026-11-17",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Elk Grove Village Public Library",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Elk Grove Village",
+            "addressRegion": "IL"
+          }
+        },
+        "sameAs": "https://egvpl.libnet.info/event/17354429",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Elk Grove Village Public Library - Events",
+          "url": "https://egvpl.libnet.info"
+        },
+        "image": "https://withintenmiles.com/og/elk-grove-village-60007.png",
+        "description": "Tuesday, November 17 2026 12:00am - 11:59pm \n Become a dictionary detective with our new Word of the Week challenge! Discover a new vocabulary word, look it…"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 49,
+      "item": {
+        "@type": "Event",
+        "name": "Mini Mad Science Storytime",
+        "startDate": "2026-11-17T10:00:00-06:00",
+        "url": "https://withintenmiles.com/elk-grove-village-60007/#ev-mini-mad-science-storytime-2026-11-17",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Elk Grove Village Public Library",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Elk Grove Village",
+            "addressRegion": "IL"
+          }
+        },
+        "sameAs": "https://egvpl.libnet.info/event/17061965",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Elk Grove Village Public Library - Events",
+          "url": "https://egvpl.libnet.info"
+        },
+        "image": "https://withintenmiles.com/og/elk-grove-village-60007.png",
+        "description": "Tuesday, November 17 2026 10:00am - 10:45am \n Join us for a fun science class just for young children! We will explore science through stories, a hands-on…"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 50,
+      "item": {
+        "@type": "Event",
+        "name": "Supported Chair Yoga",
+        "startDate": "2026-11-17T11:00:00-06:00",
+        "url": "https://withintenmiles.com/elk-grove-village-60007/#ev-supported-chair-yoga-2026-11-17",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Elk Grove Village Public Library",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Elk Grove Village",
+            "addressRegion": "IL"
+          }
+        },
+        "sameAs": "https://egvpl.libnet.info/event/16438021",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Elk Grove Village Public Library - Events",
+          "url": "https://egvpl.libnet.info"
+        },
+        "image": "https://withintenmiles.com/og/elk-grove-village-60007.png",
+        "description": "Tuesday, November 17 2026 11:00am - 12:00pm \n Join certified group exercise fitness expert, Susan Heaton for this class."
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 51,
+      "item": {
+        "@type": "Event",
+        "name": "Tuesday Tech Help",
+        "startDate": "2026-11-17T11:00:00-06:00",
+        "url": "https://withintenmiles.com/elk-grove-village-60007/#ev-tuesday-tech-help-2026-11-17",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Elk Grove Village Public Library",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Elk Grove Village",
+            "addressRegion": "IL"
+          }
+        },
+        "sameAs": "https://egvpl.libnet.info/event/17238826",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Elk Grove Village Public Library - Events",
+          "url": "https://egvpl.libnet.info"
+        },
+        "image": "https://withintenmiles.com/og/elk-grove-village-60007.png",
+        "description": "Tuesday, November 17 2026 11:00am - 1:00pm \n Got a technology question? Were here to help! Bring your device and question."
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 52,
+      "item": {
+        "@type": "Event",
+        "name": "Pop in and Create",
+        "startDate": "2026-11-17T15:00:00-06:00",
+        "url": "https://withintenmiles.com/elk-grove-village-60007/#ev-pop-in-and-create-2026-11-17",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Elk Grove Village Public Library",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Elk Grove Village",
+            "addressRegion": "IL"
+          }
+        },
+        "sameAs": "https://egvpl.libnet.info/event/17006434",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Elk Grove Village Public Library - Events",
+          "url": "https://egvpl.libnet.info"
+        },
+        "image": "https://withintenmiles.com/og/elk-grove-village-60007.png",
+        "description": "Tuesday, November 17 2026 3:00pm - 7:00pm \n Create a card for any occasion with supplies in The Makerspace."
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 53,
+      "item": {
+        "@type": "Event",
+        "name": "CSI Session 3",
+        "startDate": "2026-11-17T16:15:00-06:00",
+        "url": "https://withintenmiles.com/elk-grove-village-60007/#ev-csi-session-3-2026-11-17",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Elk Grove Village Public Library",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Elk Grove Village",
+            "addressRegion": "IL"
+          }
+        },
+        "sameAs": "https://egvpl.libnet.info/event/17206269",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Elk Grove Village Public Library - Events",
+          "url": "https://egvpl.libnet.info"
+        },
+        "image": "https://withintenmiles.com/og/elk-grove-village-60007.png",
+        "description": "Tuesday, November 17 2026 4:15pm - 4:45pm \n SESSION 3: Gravity, Force and Motion - Let's investigate with STEM! This class combines a little bit of Science,…"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 54,
+      "item": {
+        "@type": "Event",
+        "name": "Gaming Group",
+        "startDate": "2026-11-17T17:00:00-06:00",
+        "url": "https://withintenmiles.com/elk-grove-village-60007/#ev-gaming-group-2026-11-17",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Elk Grove Village Public Library",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Elk Grove Village",
+            "addressRegion": "IL"
+          }
+        },
+        "sameAs": "https://egvpl.libnet.info/event/17295551",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Elk Grove Village Public Library - Events",
+          "url": "https://egvpl.libnet.info"
+        },
+        "image": "https://withintenmiles.com/og/elk-grove-village-60007.png",
+        "description": "Tuesday, November 17 2026 5:00pm - 6:30pm \n This program will offer modded Minecraft and Roblox play for experienced gamers, and Feed the Beast to learn new…"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 55,
+      "item": {
+        "@type": "Event",
+        "name": "Dealing with Grief and Other Emotional Challenges",
+        "startDate": "2026-11-17T19:00:00-06:00",
+        "url": "https://withintenmiles.com/elk-grove-village-60007/#ev-dealing-with-grief-and-other-emotional-challenges-2026-11-17",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Elk Grove Village Public Library",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Elk Grove Village",
+            "addressRegion": "IL"
+          }
+        },
+        "sameAs": "https://egvpl.libnet.info/event/15876907",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Elk Grove Village Public Library - Events",
+          "url": "https://egvpl.libnet.info"
+        },
+        "image": "https://withintenmiles.com/og/elk-grove-village-60007.png",
+        "description": "Tuesday, November 17 2026 7:00pm - 8:00pm \n Please join Arvind Naik, long time meditator, and learn a simple meditation technique that can be life changing."
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 56,
+      "item": {
+        "@type": "Event",
+        "name": "Evening Book Discussion",
+        "startDate": "2026-11-17T19:30:00-06:00",
+        "url": "https://withintenmiles.com/elk-grove-village-60007/#ev-evening-book-discussion-2026-11-17",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Elk Grove Village Public Library",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Elk Grove Village",
+            "addressRegion": "IL"
+          }
+        },
+        "sameAs": "https://egvpl.libnet.info/event/16878203",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Elk Grove Village Public Library - Events",
+          "url": "https://egvpl.libnet.info"
+        },
+        "image": "https://withintenmiles.com/og/elk-grove-village-60007.png",
+        "description": "Tuesday, November 17 2026 7:30pm - 8:30pm \n The group will discuss Kin by Tayari Jones.  Please contact Julie at bookclub@egvpl.org or 847-725-2170 for more…"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 57,
+      "item": {
+        "@type": "Event",
+        "name": "The Arlington Camera Club",
+        "startDate": "2026-11-18",
+        "url": "https://withintenmiles.com/elk-grove-village-60007/#ev-the-arlington-camera-club-2026-11-18",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Elk Grove Village Public Library",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Elk Grove Village",
+            "addressRegion": "IL"
+          }
+        },
+        "sameAs": "https://egvpl.libnet.info/event/16362686",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Elk Grove Village Public Library - Events",
+          "url": "https://egvpl.libnet.info"
+        },
+        "image": "https://withintenmiles.com/og/elk-grove-village-60007.png",
+        "description": "Wednesday, November 18 2026 12:00am - 11:59pm \n Arlington Camera Club photography exhibit."
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 58,
+      "item": {
+        "@type": "Event",
+        "name": "Picture Book Month Challenge",
+        "startDate": "2026-11-18",
+        "url": "https://withintenmiles.com/elk-grove-village-60007/#ev-picture-book-month-challenge-2026-11-18",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Elk Grove Village Public Library",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Elk Grove Village",
+            "addressRegion": "IL"
+          }
+        },
+        "sameAs": "https://egvpl.libnet.info/event/17074017",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Elk Grove Village Public Library - Events",
+          "url": "https://egvpl.libnet.info"
+        },
+        "image": "https://withintenmiles.com/og/elk-grove-village-60007.png",
+        "description": "Wednesday, November 18 2026 12:00am - 11:59pm \n November is Picture Book Month! Put on your thinking cap and see if you can guess which picture book our clues…"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 59,
+      "item": {
+        "@type": "Event",
+        "name": "Word of the Week",
+        "startDate": "2026-11-18",
+        "url": "https://withintenmiles.com/elk-grove-village-60007/#ev-word-of-the-week-2026-11-18",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Elk Grove Village Public Library",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Elk Grove Village",
+            "addressRegion": "IL"
+          }
+        },
+        "sameAs": "https://egvpl.libnet.info/event/17354430",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Elk Grove Village Public Library - Events",
+          "url": "https://egvpl.libnet.info"
+        },
+        "image": "https://withintenmiles.com/og/elk-grove-village-60007.png",
+        "description": "Wednesday, November 18 2026 12:00am - 11:59pm \n Become a dictionary detective with our new Word of the Week challenge! Discover a new vocabulary word, look it…"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 60,
+      "item": {
+        "@type": "Event",
+        "name": "Alphabet Soup",
+        "startDate": "2026-11-18T09:30:00-06:00",
+        "url": "https://withintenmiles.com/elk-grove-village-60007/#ev-alphabet-soup-2026-11-18",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Elk Grove Village Public Library",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Elk Grove Village",
+            "addressRegion": "IL"
+          }
+        },
+        "sameAs": "https://egvpl.libnet.info/event/16817352",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Elk Grove Village Public Library - Events",
+          "url": "https://egvpl.libnet.info"
+        },
+        "image": "https://withintenmiles.com/og/elk-grove-village-60007.png",
+        "description": "Wednesday, November 18 2026 9:30am - 10:15am \n Attention little learners! Grab your grown-up and get moving in an interactive storytime filled with music and…"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 61,
+      "item": {
+        "@type": "Event",
+        "name": "Make and Take Craft: Maple Leaf Door Hanger",
+        "startDate": "2026-11-18T13:00:00-06:00",
+        "url": "https://withintenmiles.com/elk-grove-village-60007/#ev-make-and-take-craft-maple-leaf-door-hanger-2026-11-18",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Elk Grove Village Public Library",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Elk Grove Village",
+            "addressRegion": "IL"
+          }
+        },
+        "sameAs": "https://egvpl.libnet.info/event/16934092",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Elk Grove Village Public Library - Events",
+          "url": "https://egvpl.libnet.info"
+        },
+        "image": "https://withintenmiles.com/og/elk-grove-village-60007.png",
+        "description": "Wednesday, November 18 2026 1:00pm - 2:30pm \n Create a welcoming autumn entryway by crafting a customized maple leaf door hanger. You'll design a blank wooden…"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 62,
+      "item": {
+        "@type": "Event",
+        "name": "Book Bites",
+        "startDate": "2026-11-18T15:00:00-06:00",
+        "url": "https://withintenmiles.com/elk-grove-village-60007/#ev-book-bites-2026-11-18",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Elk Grove Village Public Library",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Elk Grove Village",
+            "addressRegion": "IL"
+          }
+        },
+        "sameAs": "https://egvpl.libnet.info/event/16998546",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Elk Grove Village Public Library - Events",
+          "url": "https://egvpl.libnet.info"
+        },
+        "image": "https://withintenmiles.com/og/elk-grove-village-60007.png",
+        "description": "Wednesday, November 18 2026 3:00pm - 4:00pm \n Get a taste of appetizing books with this book club. Pizza, snacks and drinks provided. Find copies of the book…"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 63,
+      "item": {
+        "@type": "Event",
+        "name": "Workshop Wednesdays",
+        "startDate": "2026-11-18T15:30:00-06:00",
+        "url": "https://withintenmiles.com/elk-grove-village-60007/#ev-workshop-wednesdays-2026-11-18",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Elk Grove Village Public Library",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Elk Grove Village",
+            "addressRegion": "IL"
+          }
+        },
+        "sameAs": "https://egvpl.libnet.info/event/17204393",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Elk Grove Village Public Library - Events",
+          "url": "https://egvpl.libnet.info"
+        },
+        "image": "https://withintenmiles.com/og/elk-grove-village-60007.png",
+        "description": "Wednesday, November 18 2026 3:30pm - 4:30pm \n Grades 5-8 \nStop by and craft watercolor art using sharpie magic in our middle grade area! All supplies will be…"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 64,
+      "item": {
+        "@type": "Event",
+        "name": "Art Class: Floral Arranging with Garvin Gardens",
+        "startDate": "2026-11-18T18:00:00-06:00",
+        "url": "https://withintenmiles.com/elk-grove-village-60007/#ev-art-class-floral-arranging-with-garvin-gardens-2026-11-18",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Elk Grove Village Public Library",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Elk Grove Village",
+            "addressRegion": "IL"
+          }
+        },
+        "sameAs": "https://egvpl.libnet.info/event/17036340",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Elk Grove Village Public Library - Events",
+          "url": "https://egvpl.libnet.info"
+        },
+        "image": "https://withintenmiles.com/og/elk-grove-village-60007.png",
+        "description": "Wednesday, November 18 2026 6:00pm - 8:00pm \n Discover the art of floral design. Join our premium autumn workshop led by Garvin Gardens. Learn insider secrets…"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 65,
+      "item": {
+        "@type": "Event",
+        "name": "Giggle and Gobble",
+        "startDate": "2026-11-18T18:30:00-06:00",
+        "url": "https://withintenmiles.com/elk-grove-village-60007/#ev-giggle-and-gobble-2026-11-18",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Elk Grove Village Public Library",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Elk Grove Village",
+            "addressRegion": "IL"
+          }
+        },
+        "sameAs": "https://egvpl.libnet.info/event/17040307",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Elk Grove Village Public Library - Events",
+          "url": "https://egvpl.libnet.info"
+        },
+        "image": "https://withintenmiles.com/og/elk-grove-village-60007.png",
+        "description": "Wednesday, November 18 2026 6:30pm - 7:15pm \n Join us for a fun Giggle and Gobble Storytime with stories, games, crafts and a snack. Come laugh, create, and…"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 66,
+      "item": {
+        "@type": "Event",
+        "name": "The Arlington Camera Club",
+        "startDate": "2026-11-19",
+        "url": "https://withintenmiles.com/elk-grove-village-60007/#ev-the-arlington-camera-club-2026-11-19",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Elk Grove Village Public Library",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Elk Grove Village",
+            "addressRegion": "IL"
+          }
+        },
+        "sameAs": "https://egvpl.libnet.info/event/16362687",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Elk Grove Village Public Library - Events",
+          "url": "https://egvpl.libnet.info"
+        },
+        "image": "https://withintenmiles.com/og/elk-grove-village-60007.png",
+        "description": "Thursday, November 19 2026 12:00am - 11:59pm \n Arlington Camera Club photography exhibit."
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 67,
+      "item": {
+        "@type": "Event",
+        "name": "Picture Book Month Challenge",
+        "startDate": "2026-11-19",
+        "url": "https://withintenmiles.com/elk-grove-village-60007/#ev-picture-book-month-challenge-2026-11-19",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Elk Grove Village Public Library",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Elk Grove Village",
+            "addressRegion": "IL"
+          }
+        },
+        "sameAs": "https://egvpl.libnet.info/event/17074018",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Elk Grove Village Public Library - Events",
+          "url": "https://egvpl.libnet.info"
+        },
+        "image": "https://withintenmiles.com/og/elk-grove-village-60007.png",
+        "description": "Thursday, November 19 2026 12:00am - 11:59pm \n November is Picture Book Month! Put on your thinking cap and see if you can guess which picture book our clues…"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 68,
+      "item": {
+        "@type": "Event",
+        "name": "Word of the Week",
+        "startDate": "2026-11-19",
+        "url": "https://withintenmiles.com/elk-grove-village-60007/#ev-word-of-the-week-2026-11-19",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Elk Grove Village Public Library",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Elk Grove Village",
+            "addressRegion": "IL"
+          }
+        },
+        "sameAs": "https://egvpl.libnet.info/event/17354431",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Elk Grove Village Public Library - Events",
+          "url": "https://egvpl.libnet.info"
+        },
+        "image": "https://withintenmiles.com/og/elk-grove-village-60007.png",
+        "description": "Thursday, November 19 2026 12:00am - 11:59pm \n Become a dictionary detective with our new Word of the Week challenge! Discover a new vocabulary word, look it…"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 69,
+      "item": {
+        "@type": "Event",
+        "name": "Bus Trip - SOLD OUT!",
+        "startDate": "2026-11-19T10:00:00-06:00",
+        "url": "https://withintenmiles.com/elk-grove-village-60007/#ev-bus-trip-sold-out-2026-11-19",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Elk Grove Village Public Library",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Elk Grove Village",
+            "addressRegion": "IL"
+          }
+        },
+        "sameAs": "https://egvpl.libnet.info/event/16861901",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Elk Grove Village Public Library - Events",
+          "url": "https://egvpl.libnet.info"
+        },
+        "image": "https://withintenmiles.com/og/elk-grove-village-60007.png",
+        "description": "Thursday, November 19 2026 10:00am - 5:00pm \n Enjoy a delicious lunch at Pompei, then visit the Anne Frank The Exhibition and Christmas Around the World at…"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 70,
+      "item": {
+        "@type": "Event",
+        "name": "Polish Storytime",
+        "startDate": "2026-11-19T10:00:00-06:00",
+        "url": "https://withintenmiles.com/elk-grove-village-60007/#ev-polish-storytime-2026-11-19",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Elk Grove Village Public Library",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Elk Grove Village",
+            "addressRegion": "IL"
+          }
+        },
+        "sameAs": "https://egvpl.libnet.info/event/16995068",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Elk Grove Village Public Library - Events",
+          "url": "https://egvpl.libnet.info"
+        },
+        "image": "https://withintenmiles.com/og/elk-grove-village-60007.png",
+        "description": "Thursday, November 19 2026 10:00am - 10:30am \n Join us for a Polish-English story time that includes stories and rhymes. Recommended for ages 0 - 5."
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 71,
+      "item": {
+        "@type": "Event",
+        "name": "Get Started with Cloud Storage",
+        "startDate": "2026-11-19T13:00:00-06:00",
+        "url": "https://withintenmiles.com/elk-grove-village-60007/#ev-get-started-with-cloud-storage-2026-11-19",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Elk Grove Village Public Library",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Elk Grove Village",
+            "addressRegion": "IL"
+          }
+        },
+        "sameAs": "https://egvpl.libnet.info/event/17253563",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Elk Grove Village Public Library - Events",
+          "url": "https://egvpl.libnet.info"
+        },
+        "image": "https://withintenmiles.com/og/elk-grove-village-60007.png",
+        "description": "Thursday, November 19 2026 1:00pm - 2:00pm \n Never lose your precious photos and important files again! This program explores easy ways to back up your…"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 72,
+      "item": {
+        "@type": "Event",
+        "name": "CSI Session 3",
+        "startDate": "2026-11-19T16:15:00-06:00",
+        "url": "https://withintenmiles.com/elk-grove-village-60007/#ev-csi-session-3-2026-11-19",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Elk Grove Village Public Library",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Elk Grove Village",
+            "addressRegion": "IL"
+          }
+        },
+        "sameAs": "https://egvpl.libnet.info/event/17207959",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Elk Grove Village Public Library - Events",
+          "url": "https://egvpl.libnet.info"
+        },
+        "image": "https://withintenmiles.com/og/elk-grove-village-60007.png",
+        "description": "Thursday, November 19 2026 4:15pm - 4:45pm \n SESSION 3: Gravity, Force and Motion - Let's investigate with STEM! This class combines a little bit of Science,…"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 73,
+      "item": {
+        "@type": "Event",
+        "name": "Family Reading Night: Read to the Dog",
+        "startDate": "2026-11-19T18:30:00-06:00",
+        "url": "https://withintenmiles.com/elk-grove-village-60007/#ev-family-reading-night-read-to-the-dog-2026-11-19",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Elk Grove Village Public Library",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Elk Grove Village",
+            "addressRegion": "IL"
+          }
+        },
+        "sameAs": "https://egvpl.libnet.info/event/17081981",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Elk Grove Village Public Library - Events",
+          "url": "https://egvpl.libnet.info"
+        },
+        "image": "https://withintenmiles.com/og/elk-grove-village-60007.png",
+        "description": "Thursday, November 19 2026 6:30pm - 6:50pm \n Celebrate family reading night!"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 74,
+      "item": {
+        "@type": "Event",
+        "name": "Gorgeous Georgia",
+        "startDate": "2026-11-19T19:00:00-06:00",
+        "url": "https://withintenmiles.com/elk-grove-village-60007/#ev-gorgeous-georgia-2026-11-19",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Elk Grove Village Public Library",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Elk Grove Village",
+            "addressRegion": "IL"
+          }
+        },
+        "sameAs": "https://egvpl.libnet.info/event/17329691",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Elk Grove Village Public Library - Events",
+          "url": "https://egvpl.libnet.info"
+        },
+        "image": "https://withintenmiles.com/og/elk-grove-village-60007.png",
+        "description": "Thursday, November 19 2026 7:00pm - 8:00pm \n Join traveler Brian Michalski as he shares highlights from his journey through Georgia, an Eastern European gem…"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 75,
+      "item": {
+        "@type": "Event",
+        "name": "The Arlington Camera Club",
+        "startDate": "2026-11-20",
+        "url": "https://withintenmiles.com/elk-grove-village-60007/#ev-the-arlington-camera-club-2026-11-20",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Elk Grove Village Public Library",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Elk Grove Village",
+            "addressRegion": "IL"
+          }
+        },
+        "sameAs": "https://egvpl.libnet.info/event/16362688",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Elk Grove Village Public Library - Events",
+          "url": "https://egvpl.libnet.info"
+        },
+        "image": "https://withintenmiles.com/og/elk-grove-village-60007.png",
+        "description": "Friday, November 20 2026 12:00am - 11:59pm \n Arlington Camera Club photography exhibit."
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 76,
+      "item": {
+        "@type": "Event",
+        "name": "Picture Book Month Challenge",
+        "startDate": "2026-11-20",
+        "url": "https://withintenmiles.com/elk-grove-village-60007/#ev-picture-book-month-challenge-2026-11-20",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Elk Grove Village Public Library",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Elk Grove Village",
+            "addressRegion": "IL"
+          }
+        },
+        "sameAs": "https://egvpl.libnet.info/event/17074019",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Elk Grove Village Public Library - Events",
+          "url": "https://egvpl.libnet.info"
+        },
+        "image": "https://withintenmiles.com/og/elk-grove-village-60007.png",
+        "description": "Friday, November 20 2026 12:00am - 11:59pm \n November is Picture Book Month! Put on your thinking cap and see if you can guess which picture book our clues…"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 77,
+      "item": {
+        "@type": "Event",
+        "name": "Word of the Week",
+        "startDate": "2026-11-20",
+        "url": "https://withintenmiles.com/elk-grove-village-60007/#ev-word-of-the-week-2026-11-20",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Elk Grove Village Public Library",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Elk Grove Village",
+            "addressRegion": "IL"
+          }
+        },
+        "sameAs": "https://egvpl.libnet.info/event/17354432",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Elk Grove Village Public Library - Events",
+          "url": "https://egvpl.libnet.info"
+        },
+        "image": "https://withintenmiles.com/og/elk-grove-village-60007.png",
+        "description": "Friday, November 20 2026 12:00am - 11:59pm \n Become a dictionary detective with our new Word of the Week challenge! Discover a new vocabulary word, look it up…"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 78,
+      "item": {
+        "@type": "Event",
+        "name": "Youth Services Registration for December Programs",
+        "startDate": "2026-11-20T09:00:00-06:00",
+        "url": "https://withintenmiles.com/elk-grove-village-60007/#ev-youth-services-registration-for-december-programs-2026-11-20",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Elk Grove Village Public Library",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Elk Grove Village",
+            "addressRegion": "IL"
+          }
+        },
+        "sameAs": "https://egvpl.libnet.info/event/17487748",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Elk Grove Village Public Library - Events",
+          "url": "https://egvpl.libnet.info"
+        },
+        "image": "https://withintenmiles.com/og/elk-grove-village-60007.png",
+        "description": "Friday, November 20 2026 9:00am - 9:00am \n Registration for Youth Services December programs, and all One Book, One Village programs, begins Friday, November…"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 79,
+      "item": {
+        "@type": "Event",
+        "name": "Messy Play",
+        "startDate": "2026-11-20T10:30:00-06:00",
+        "url": "https://withintenmiles.com/elk-grove-village-60007/#ev-messy-play-2026-11-20",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Elk Grove Village Public Library",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Elk Grove Village",
+            "addressRegion": "IL"
+          }
+        },
+        "sameAs": "https://egvpl.libnet.info/event/16920156",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Elk Grove Village Public Library - Events",
+          "url": "https://egvpl.libnet.info"
+        },
+        "image": "https://withintenmiles.com/og/elk-grove-village-60007.png",
+        "description": "Friday, November 20 2026 10:30am - 11:15am \n Come to the library for hands-on experiences that may include some mess and will always include fun!"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 80,
+      "item": {
+        "@type": "Event",
+        "name": "Chess Club (Advanced Players)",
+        "startDate": "2026-11-20T17:30:00-06:00",
+        "url": "https://withintenmiles.com/elk-grove-village-60007/#ev-chess-club-advanced-players-2026-11-20",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Elk Grove Village Public Library",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Elk Grove Village",
+            "addressRegion": "IL"
+          }
+        },
+        "sameAs": "https://egvpl.libnet.info/event/17111688",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Elk Grove Village Public Library - Events",
+          "url": "https://egvpl.libnet.info"
+        },
+        "image": "https://withintenmiles.com/og/elk-grove-village-60007.png",
+        "description": "Friday, November 20 2026 5:30pm - 6:30pm \n Ready to make your next move? Join us for our Chess Club program with National Chess Masters from Glenview Chess!"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 81,
+      "item": {
+        "@type": "Event",
+        "name": "Chess Club (Beginning Players)",
+        "startDate": "2026-11-20T17:30:00-06:00",
+        "url": "https://withintenmiles.com/elk-grove-village-60007/#ev-chess-club-beginning-players-2026-11-20",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Elk Grove Village Public Library",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Elk Grove Village",
+            "addressRegion": "IL"
+          }
+        },
+        "sameAs": "https://egvpl.libnet.info/event/17111785",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Elk Grove Village Public Library - Events",
+          "url": "https://egvpl.libnet.info"
+        },
+        "image": "https://withintenmiles.com/og/elk-grove-village-60007.png",
+        "description": "Friday, November 20 2026 5:30pm - 6:30pm \n Ready to make your next move? Join us for our Chess Club program with National Chess Masters from Glenview Chess!"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 82,
+      "item": {
+        "@type": "Event",
+        "name": "The Arlington Camera Club",
+        "startDate": "2026-11-21",
+        "url": "https://withintenmiles.com/elk-grove-village-60007/#ev-the-arlington-camera-club-2026-11-21",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Elk Grove Village Public Library",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Elk Grove Village",
+            "addressRegion": "IL"
+          }
+        },
+        "sameAs": "https://egvpl.libnet.info/event/16362689",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Elk Grove Village Public Library - Events",
+          "url": "https://egvpl.libnet.info"
+        },
+        "image": "https://withintenmiles.com/og/elk-grove-village-60007.png",
+        "description": "Saturday, November 21 2026 12:00am - 11:59pm \n Arlington Camera Club photography exhibit."
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 83,
+      "item": {
+        "@type": "Event",
+        "name": "Picture Book Month Challenge",
+        "startDate": "2026-11-21",
+        "url": "https://withintenmiles.com/elk-grove-village-60007/#ev-picture-book-month-challenge-2026-11-21",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Elk Grove Village Public Library",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Elk Grove Village",
+            "addressRegion": "IL"
+          }
+        },
+        "sameAs": "https://egvpl.libnet.info/event/17074020",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Elk Grove Village Public Library - Events",
+          "url": "https://egvpl.libnet.info"
+        },
+        "image": "https://withintenmiles.com/og/elk-grove-village-60007.png",
+        "description": "Saturday, November 21 2026 12:00am - 11:59pm \n November is Picture Book Month! Put on your thinking cap and see if you can guess which picture book our clues…"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 84,
+      "item": {
+        "@type": "Event",
+        "name": "Word of the Week",
+        "startDate": "2026-11-21",
+        "url": "https://withintenmiles.com/elk-grove-village-60007/#ev-word-of-the-week-2026-11-21",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Elk Grove Village Public Library",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Elk Grove Village",
+            "addressRegion": "IL"
+          }
+        },
+        "sameAs": "https://egvpl.libnet.info/event/17354433",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Elk Grove Village Public Library - Events",
+          "url": "https://egvpl.libnet.info"
+        },
+        "image": "https://withintenmiles.com/og/elk-grove-village-60007.png",
+        "description": "Saturday, November 21 2026 12:00am - 11:59pm \n Become a dictionary detective with our new Word of the Week challenge! Discover a new vocabulary word, look it…"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 85,
+      "item": {
+        "@type": "Event",
+        "name": "Fun Factory Saturday",
+        "startDate": "2026-11-21T09:30:00-06:00",
+        "url": "https://withintenmiles.com/elk-grove-village-60007/#ev-fun-factory-saturday-2026-11-21",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Elk Grove Village Public Library",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Elk Grove Village",
+            "addressRegion": "IL"
+          }
+        },
+        "sameAs": "https://egvpl.libnet.info/event/15584327",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Elk Grove Village Public Library - Events",
+          "url": "https://egvpl.libnet.info"
+        },
+        "image": "https://withintenmiles.com/og/elk-grove-village-60007.png",
+        "description": "Saturday, November 21 2026 9:30am - 4:30pm \n Drop by the library to make a simple craft on your own or with the help of a parent/caregiver. The craft will be…"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 86,
+      "item": {
+        "@type": "Event",
+        "name": "Animal Zines",
+        "startDate": "2026-11-21T14:00:00-06:00",
+        "url": "https://withintenmiles.com/elk-grove-village-60007/#ev-animal-zines-2026-11-21",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Elk Grove Village Public Library",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Elk Grove Village",
+            "addressRegion": "IL"
+          }
+        },
+        "sameAs": "https://egvpl.libnet.info/event/17020701",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Elk Grove Village Public Library - Events",
+          "url": "https://egvpl.libnet.info"
+        },
+        "image": "https://withintenmiles.com/og/elk-grove-village-60007.png",
+        "description": "Saturday, November 21 2026 2:00pm - 3:00pm \n Step 1: Research using library books to learn about your animal. Step 2: Write and create a mini zine filled with…"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 87,
+      "item": {
+        "@type": "Event",
+        "name": "The Arlington Camera Club",
+        "startDate": "2026-11-22",
+        "url": "https://withintenmiles.com/elk-grove-village-60007/#ev-the-arlington-camera-club-2026-11-22",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Elk Grove Village Public Library",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Elk Grove Village",
+            "addressRegion": "IL"
+          }
+        },
+        "sameAs": "https://egvpl.libnet.info/event/16362690",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Elk Grove Village Public Library - Events",
+          "url": "https://egvpl.libnet.info"
+        },
+        "image": "https://withintenmiles.com/og/elk-grove-village-60007.png",
+        "description": "Sunday, November 22 2026 12:00am - 11:59pm \n Arlington Camera Club photography exhibit."
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 88,
+      "item": {
+        "@type": "Event",
+        "name": "Picture Book Month Challenge",
+        "startDate": "2026-11-22",
+        "url": "https://withintenmiles.com/elk-grove-village-60007/#ev-picture-book-month-challenge-2026-11-22",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Elk Grove Village Public Library",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Elk Grove Village",
+            "addressRegion": "IL"
+          }
+        },
+        "sameAs": "https://egvpl.libnet.info/event/17074021",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Elk Grove Village Public Library - Events",
+          "url": "https://egvpl.libnet.info"
+        },
+        "image": "https://withintenmiles.com/og/elk-grove-village-60007.png",
+        "description": "Sunday, November 22 2026 12:00am - 11:59pm \n November is Picture Book Month! Put on your thinking cap and see if you can guess which picture book our clues…"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 89,
+      "item": {
+        "@type": "Event",
+        "name": "Word of the Week",
+        "startDate": "2026-11-22",
+        "url": "https://withintenmiles.com/elk-grove-village-60007/#ev-word-of-the-week-2026-11-22",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Elk Grove Village Public Library",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Elk Grove Village",
+            "addressRegion": "IL"
+          }
+        },
+        "sameAs": "https://egvpl.libnet.info/event/17354434",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Elk Grove Village Public Library - Events",
+          "url": "https://egvpl.libnet.info"
+        },
+        "image": "https://withintenmiles.com/og/elk-grove-village-60007.png",
+        "description": "Sunday, November 22 2026 12:00am - 11:59pm \n Become a dictionary detective with our new Word of the Week challenge! Discover a new vocabulary word, look it up…"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 90,
+      "item": {
+        "@type": "Event",
+        "name": "Crochet Corner",
+        "startDate": "2026-11-22T14:00:00-06:00",
+        "url": "https://withintenmiles.com/elk-grove-village-60007/#ev-crochet-corner-2026-11-22",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Elk Grove Village Public Library",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Elk Grove Village",
+            "addressRegion": "IL"
+          }
+        },
+        "sameAs": "https://egvpl.libnet.info/event/17256445",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Elk Grove Village Public Library - Events",
+          "url": "https://egvpl.libnet.info"
+        },
+        "image": "https://withintenmiles.com/og/elk-grove-village-60007.png",
+        "description": "Sunday, November 22 2026 2:00pm - 3:00pm \n Drop in to the Sunday Crochet Corner where you can work on personal projects with your own supplies, or work with…"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 91,
+      "item": {
+        "@type": "Event",
+        "name": "The Arlington Camera Club",
+        "startDate": "2026-11-23",
+        "url": "https://withintenmiles.com/elk-grove-village-60007/#ev-the-arlington-camera-club-2026-11-23",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Elk Grove Village Public Library",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Elk Grove Village",
+            "addressRegion": "IL"
+          }
+        },
+        "sameAs": "https://egvpl.libnet.info/event/16362691",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Elk Grove Village Public Library - Events",
+          "url": "https://egvpl.libnet.info"
+        },
+        "image": "https://withintenmiles.com/og/elk-grove-village-60007.png",
+        "description": "Monday, November 23 2026 12:00am - 11:59pm \n Arlington Camera Club photography exhibit."
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 92,
+      "item": {
+        "@type": "Event",
+        "name": "Word of the Week",
+        "startDate": "2026-11-23",
+        "url": "https://withintenmiles.com/elk-grove-village-60007/#ev-word-of-the-week-2026-11-23",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Elk Grove Village Public Library",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Elk Grove Village",
+            "addressRegion": "IL"
+          }
+        },
+        "sameAs": "https://egvpl.libnet.info/event/17354435",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Elk Grove Village Public Library - Events",
+          "url": "https://egvpl.libnet.info"
+        },
+        "image": "https://withintenmiles.com/og/elk-grove-village-60007.png",
+        "description": "Monday, November 23 2026 12:00am - 11:59pm \n Become a dictionary detective with our new Word of the Week challenge! Discover a new vocabulary word, look it up…"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 93,
+      "item": {
+        "@type": "Event",
+        "name": "Miss Jamie's Fall Sing-along",
+        "startDate": "2026-11-23T10:30:00-06:00",
+        "url": "https://withintenmiles.com/elk-grove-village-60007/#ev-miss-jamie-s-fall-sing-along-2026-11-23",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Elk Grove Village Public Library",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Elk Grove Village",
+            "addressRegion": "IL"
+          }
+        },
+        "sameAs": "https://egvpl.libnet.info/event/17066295",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Elk Grove Village Public Library - Events",
+          "url": "https://egvpl.libnet.info"
+        },
+        "image": "https://withintenmiles.com/og/elk-grove-village-60007.png",
+        "description": "Monday, November 23 2026 10:30am - 11:15am \n Join Terrance the Well-Dressed Turkey, and other funny farm friends, as we harvest the crops and share in the…"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 94,
+      "item": {
+        "@type": "Event",
+        "name": "Monday Matinee Movie",
+        "startDate": "2026-11-23T13:00:00-06:00",
+        "url": "https://withintenmiles.com/elk-grove-village-60007/#ev-monday-matinee-movie-2026-11-23",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Elk Grove Village Public Library",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Elk Grove Village",
+            "addressRegion": "IL"
+          }
+        },
+        "sameAs": "https://egvpl.libnet.info/event/16746077",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Elk Grove Village Public Library - Events",
+          "url": "https://egvpl.libnet.info"
+        },
+        "image": "https://withintenmiles.com/og/elk-grove-village-60007.png",
+        "description": "Monday, November 23 2026 1:00pm - 3:00pm \n Enjoy an afternoon movie in the Lee Maternowski Room.  Popcorn will be served!"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 95,
+      "item": {
+        "@type": "Event",
+        "name": "Fall Craft",
+        "startDate": "2026-11-23T18:30:00-06:00",
+        "url": "https://withintenmiles.com/elk-grove-village-60007/#ev-fall-craft-2026-11-23",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Elk Grove Village Public Library",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Elk Grove Village",
+            "addressRegion": "IL"
+          }
+        },
+        "sameAs": "https://egvpl.libnet.info/event/16995039",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Elk Grove Village Public Library - Events",
+          "url": "https://egvpl.libnet.info"
+        },
+        "image": "https://withintenmiles.com/og/elk-grove-village-60007.png",
+        "description": "Monday, November 23 2026 6:30pm - 7:30pm \n Kids can join crafter Krystyna Jaro? to create a festive fall craft in celebration of the Thanksgiving season. This…"
+      }
+    }
+  ]
+}

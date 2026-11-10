@@ -3,187 +3,42 @@
 <channel>
   <title>Within Ten — Upcoming Local Events</title>
   <link>https://withintenmiles.com/</link>
-  <description>Upcoming events across every Within Ten region, soonest first - aggregated automatically from village, library, park district and school-district calendars. This build reached 22 of 29 configured sources. 1 source is shown from its last update, up to 5 hours ago.</description>
-  <lastBuildDate>Mon, 09 Nov 2026 22:01:44 +0000</lastBuildDate>
+  <description>Upcoming events across every Within Ten region, soonest first - aggregated automatically from village, library, park district and school-district calendars. This build reached 24 of 30 configured sources.</description>
+  <lastBuildDate>Tue, 10 Nov 2026 06:01:34 +0000</lastBuildDate>
   <item>
-    <title>Arlington Heights: Kids' Time</title>
-    <link>https://withintenmiles.com/arlington-heights-60005/#ev-kids-time-2026-11-09</link>
-    <guid isPermaLink="true">https://withintenmiles.com/arlington-heights-60005/#ev-kids-time-2026-11-09</guid>
-    <description>Official listing: https://www.ahml.info/scheduling/reservation/224218</description>
-    <pubDate>Mon, 09 Nov 2026 00:00:00 +0000</pubDate>
-    <source url="https://www.ahml.info/scheduling/reservation/224218">Arlington Heights Memorial Library — Events</source>
-  </item>
-  <item>
-    <title>Des Plaines: Teen Take &amp; Make</title>
-    <link>https://withintenmiles.com/des-plaines-60016/#ev-teen-take-make-2026-11-09</link>
-    <guid isPermaLink="true">https://withintenmiles.com/des-plaines-60016/#ev-teen-take-make-2026-11-09</guid>
-    <description>Monday, November 09 2026 12:00am - 11:59pm 
- Take &amp; Make Kits are fun crafts you can take home and make on your own time. Drop in to pick up your kit… Official listing: https://desplaines.libnet.info/event/17635812</description>
-    <pubDate>Mon, 09 Nov 2026 00:00:00 +0000</pubDate>
-    <source url="https://desplaines.libnet.info/event/17635812">Des Plaines Public Library — Events</source>
-  </item>
-  <item>
-    <title>Mount Prospect: Family Storytime</title>
-    <link>https://withintenmiles.com/mount-prospect-60056/#ev-family-storytime-2026-11-09</link>
-    <guid isPermaLink="true">https://withintenmiles.com/mount-prospect-60056/#ev-family-storytime-2026-11-09</guid>
-    <description>Monday, November 09 2026 9:30am - 10:00am 
- Bring the whole family and join us for an interactive storytime with high-energy stories, songs, and activities. Official listing: https://mppl.libnet.info/event/16637670</description>
-    <pubDate>Mon, 09 Nov 2026 09:30:00 +0000</pubDate>
-    <source url="https://mppl.libnet.info/event/16637670">Mount Prospect Public Library — Events</source>
-  </item>
-  <item>
-    <title>Des Plaines: Baby Book Time</title>
-    <link>https://withintenmiles.com/des-plaines-60016/#ev-baby-book-time-2026-11-09</link>
-    <guid isPermaLink="true">https://withintenmiles.com/des-plaines-60016/#ev-baby-book-time-2026-11-09</guid>
-    <description>Monday, November 09 2026 10:00am - 11:00am 
- To register, please contact Irene Tripkos at 847-789-5623. Verbal confirmation from Irene Tripkos is needed in… Official listing: https://desplaines.libnet.info/event/16431790</description>
-    <pubDate>Mon, 09 Nov 2026 10:00:00 +0000</pubDate>
-    <source url="https://desplaines.libnet.info/event/16431790">Des Plaines Public Library — Events</source>
-  </item>
-  <item>
-    <title>Mount Prospect: Toddler Storytime</title>
-    <link>https://withintenmiles.com/mount-prospect-60056/#ev-toddler-storytime-2026-11-09</link>
-    <guid isPermaLink="true">https://withintenmiles.com/mount-prospect-60056/#ev-toddler-storytime-2026-11-09</guid>
-    <description>Monday, November 09 2026 10:30am - 11:00am 
- Grow your little learner's literacy and language skills at this playful storytime full of wiggles, wonder, and fun! Official listing: https://mppl.libnet.info/event/16637798</description>
-    <pubDate>Mon, 09 Nov 2026 10:30:00 +0000</pubDate>
-    <source url="https://mppl.libnet.info/event/16637798">Mount Prospect Public Library — Events</source>
-  </item>
-  <item>
-    <title>Des Plaines: Career &amp; Job Counseling @ the library</title>
-    <link>https://withintenmiles.com/des-plaines-60016/#ev-career-job-counseling-the-library-2026-11-09</link>
-    <guid isPermaLink="true">https://withintenmiles.com/des-plaines-60016/#ev-career-job-counseling-the-library-2026-11-09</guid>
-    <description>Monday, November 09 2026 1:00pm - 4:00pm 
- Career &amp; Job Counseling @ the library - One-on-one in-person appointments
-
-Meet with a career expert for resume… Official listing: https://desplaines.libnet.info/event/16716983</description>
-    <pubDate>Mon, 09 Nov 2026 13:00:00 +0000</pubDate>
-    <source url="https://desplaines.libnet.info/event/16716983">Des Plaines Public Library — Events</source>
-  </item>
-  <item>
-    <title>Des Plaines: Des Plaines Community Partners Meeting</title>
-    <link>https://withintenmiles.com/des-plaines-60016/#ev-des-plaines-community-partners-meeting-2026-11-09</link>
-    <guid isPermaLink="true">https://withintenmiles.com/des-plaines-60016/#ev-des-plaines-community-partners-meeting-2026-11-09</guid>
-    <description>Monday, November 09 2026 1:00pm - 2:00pm 
- Des Plaines Community Partners Meeting Official listing: https://desplaines.libnet.info/event/17695952</description>
-    <pubDate>Mon, 09 Nov 2026 13:00:00 +0000</pubDate>
-    <source url="https://desplaines.libnet.info/event/17695952">Des Plaines Public Library — Events</source>
-  </item>
-  <item>
-    <title>Wheeling: Leslie Goddard Presents Route 66</title>
-    <link>https://withintenmiles.com/wheeling-60090/#ev-leslie-goddard-presents-route-66-2026-11-09</link>
-    <guid isPermaLink="true">https://withintenmiles.com/wheeling-60090/#ev-leslie-goddard-presents-route-66-2026-11-09</guid>
-    <description>Monday, November 09 2026 2:00pm - 3:15pm 
- Leslie Goddard will give a lecture for the 100th Anniversary of Route 66. This is not a historic portrayal. R Official listing: https://indiantrails.libnet.info/event/17008303</description>
-    <pubDate>Mon, 09 Nov 2026 14:00:00 +0000</pubDate>
-    <source url="https://indiantrails.libnet.info/event/17008303">Indian Trails Public Library — Events</source>
-  </item>
-  <item>
-    <title>Wheeling: K9 Reading Buddies</title>
-    <link>https://withintenmiles.com/wheeling-60090/#ev-k9-reading-buddies-2026-11-09</link>
-    <guid isPermaLink="true">https://withintenmiles.com/wheeling-60090/#ev-k9-reading-buddies-2026-11-09</guid>
-    <description>Monday, November 09 2026 4:00pm - 5:00pm 
- Read a story to a licensed therapy dog in the library. Siblings and caregivers are asked to wait outside the… Official listing: https://indiantrails.libnet.info/event/17139100</description>
-    <pubDate>Mon, 09 Nov 2026 16:00:00 +0000</pubDate>
-    <source url="https://indiantrails.libnet.info/event/17139100">Indian Trails Public Library — Events</source>
-  </item>
-  <item>
-    <title>Mount Prospect: Shapes Workshop</title>
-    <link>https://withintenmiles.com/mount-prospect-60056/#ev-shapes-workshop-2026-11-09</link>
-    <guid isPermaLink="true">https://withintenmiles.com/mount-prospect-60056/#ev-shapes-workshop-2026-11-09</guid>
-    <description>Monday, November 09 2026 4:30pm - 5:00pm 
- Explore shapes and build 3-dimensional objects. Official listing: https://mppl.libnet.info/event/16778781</description>
-    <pubDate>Mon, 09 Nov 2026 16:30:00 +0000</pubDate>
-    <source url="https://mppl.libnet.info/event/16778781">Mount Prospect Public Library — Events</source>
-  </item>
-  <item>
-    <title>Des Plaines: Book a Teen Librarian</title>
-    <link>https://withintenmiles.com/des-plaines-60016/#ev-book-a-teen-librarian-2026-11-09</link>
-    <guid isPermaLink="true">https://withintenmiles.com/des-plaines-60016/#ev-book-a-teen-librarian-2026-11-09</guid>
-    <description>Monday, November 09 2026 5:00pm - 6:00pm 
- Want some career, college, or scholarship advice? Need some book recommendations? Maybe sit back, relax, and play… Official listing: https://desplaines.libnet.info/event/15509799</description>
-    <pubDate>Mon, 09 Nov 2026 17:00:00 +0000</pubDate>
-    <source url="https://desplaines.libnet.info/event/15509799">Des Plaines Public Library — Events</source>
-  </item>
-  <item>
-    <title>Mount Prospect: Teen Volunteering</title>
-    <link>https://withintenmiles.com/mount-prospect-60056/#ev-teen-volunteering-2026-11-09</link>
-    <guid isPermaLink="true">https://withintenmiles.com/mount-prospect-60056/#ev-teen-volunteering-2026-11-09</guid>
-    <description>Monday, November 09 2026 5:00pm - 6:00pm 
- Give back to the community and earn volunteer hours at the same time. Official listing: https://mppl.libnet.info/event/16882957</description>
-    <pubDate>Mon, 09 Nov 2026 17:00:00 +0000</pubDate>
-    <source url="https://mppl.libnet.info/event/16882957">Mount Prospect Public Library — Events</source>
-  </item>
-  <item>
-    <title>Wheeling: Thanksgiving Coasters</title>
-    <link>https://withintenmiles.com/wheeling-60090/#ev-thanksgiving-coasters-2026-11-09</link>
-    <guid isPermaLink="true">https://withintenmiles.com/wheeling-60090/#ev-thanksgiving-coasters-2026-11-09</guid>
-    <description>Monday, November 09 2026 5:30pm - 6:30pm 
- Import Thanksgiving images into Inkscape to laser engrave a custom coaster. R Official listing: https://indiantrails.libnet.info/event/17138281</description>
-    <pubDate>Mon, 09 Nov 2026 17:30:00 +0000</pubDate>
-    <source url="https://indiantrails.libnet.info/event/17138281">Indian Trails Public Library — Events</source>
-  </item>
-  <item>
-    <title>Des Plaines: Buckingham Townhome</title>
-    <link>https://withintenmiles.com/des-plaines-60016/#ev-buckingham-townhome-2026-11-09</link>
-    <guid isPermaLink="true">https://withintenmiles.com/des-plaines-60016/#ev-buckingham-townhome-2026-11-09</guid>
-    <description>Monday, November 09 2026 6:00pm - 9:00pm 
- Syed 773-456-2286 Official listing: https://desplaines.libnet.info/event/17843828</description>
-    <pubDate>Mon, 09 Nov 2026 18:00:00 +0000</pubDate>
-    <source url="https://desplaines.libnet.info/event/17843828">Des Plaines Public Library — Events</source>
-  </item>
-  <item>
-    <title>Des Plaines: Des Plaines Shambhala Meditation Group</title>
-    <link>https://withintenmiles.com/des-plaines-60016/#ev-des-plaines-shambhala-meditation-group-2026-11-09</link>
-    <guid isPermaLink="true">https://withintenmiles.com/des-plaines-60016/#ev-des-plaines-shambhala-meditation-group-2026-11-09</guid>
-    <description>Monday, November 09 2026 6:30pm - 8:30pm 
- For more information, please call 773-743-8147. Official listing: https://desplaines.libnet.info/event/17253044</description>
-    <pubDate>Mon, 09 Nov 2026 18:30:00 +0000</pubDate>
-    <source url="https://desplaines.libnet.info/event/17253044">Des Plaines Public Library — Events</source>
-  </item>
-  <item>
-    <title>Des Plaines: Library Courte Condo Assoc.</title>
-    <link>https://withintenmiles.com/des-plaines-60016/#ev-library-courte-condo-assoc-2026-11-09</link>
-    <guid isPermaLink="true">https://withintenmiles.com/des-plaines-60016/#ev-library-courte-condo-assoc-2026-11-09</guid>
-    <description>Monday, November 09 2026 6:30pm - 8:30pm 
- Scott 847-985-6464 Official listing: https://desplaines.libnet.info/event/17491026</description>
-    <pubDate>Mon, 09 Nov 2026 18:30:00 +0000</pubDate>
-    <source url="https://desplaines.libnet.info/event/17491026">Des Plaines Public Library — Events</source>
-  </item>
-  <item>
-    <title>Mount Prospect: Monday Night Book Group</title>
-    <link>https://withintenmiles.com/mount-prospect-60056/#ev-monday-night-book-group-2026-11-09</link>
-    <guid isPermaLink="true">https://withintenmiles.com/mount-prospect-60056/#ev-monday-night-book-group-2026-11-09</guid>
-    <description>Monday, November 09 2026 7:00pm - 8:00pm 
- Join us for a discussion of "Hello Beautiful" by Ann Napolitano. Official listing: https://mppl.libnet.info/event/14049450</description>
-    <pubDate>Mon, 09 Nov 2026 19:00:00 +0000</pubDate>
-    <source url="https://mppl.libnet.info/event/14049450">Mount Prospect Public Library — Events</source>
-  </item>
-  <item>
-    <title>Mount Prospect: Railroad Ties</title>
-    <link>https://withintenmiles.com/mount-prospect-60056/#ev-railroad-ties-2026-11-09</link>
-    <guid isPermaLink="true">https://withintenmiles.com/mount-prospect-60056/#ev-railroad-ties-2026-11-09</guid>
-    <description>Monday, November 09 2026 7:00pm - 8:30pm 
- Come learn about how the railroad has impacted the histories of Arlington Heights, Des Plaines, and Mount Prospect. Official listing: https://mppl.libnet.info/event/16802052</description>
-    <pubDate>Mon, 09 Nov 2026 19:00:00 +0000</pubDate>
-    <source url="https://mppl.libnet.info/event/16802052">Mount Prospect Public Library — Events</source>
-  </item>
-  <item>
-    <title>Wheeling: Internet Resources for Czech and Slovak Genealogy</title>
-    <link>https://withintenmiles.com/wheeling-60090/#ev-internet-resources-for-czech-and-slovak-genealogy-2026-11-09</link>
-    <guid isPermaLink="true">https://withintenmiles.com/wheeling-60090/#ev-internet-resources-for-czech-and-slovak-genealogy-2026-11-09</guid>
-    <description>Monday, November 09 2026 7:00pm - 8:30pm 
- Roger Liska, professional genealogist, demonstrates the online resources and records available when discovering… Official listing: https://indiantrails.libnet.info/event/17101700</description>
-    <pubDate>Mon, 09 Nov 2026 19:00:00 +0000</pubDate>
-    <source url="https://indiantrails.libnet.info/event/17101700">Indian Trails Public Library — Events</source>
-  </item>
-  <item>
-    <title>Arlington Heights: Social Worker in the Library</title>
-    <link>https://withintenmiles.com/arlington-heights-60005/#ev-social-worker-in-the-library-2026-11-10</link>
-    <guid isPermaLink="true">https://withintenmiles.com/arlington-heights-60005/#ev-social-worker-in-the-library-2026-11-10</guid>
-    <description>Official listing: https://www.ahml.info/scheduling/reservation/218152</description>
+    <title>Arlington Heights: Read to Learn (District 214)</title>
+    <link>https://withintenmiles.com/arlington-heights-60005/#ev-read-to-learn-district-214-2026-11-10</link>
+    <guid isPermaLink="true">https://withintenmiles.com/arlington-heights-60005/#ev-read-to-learn-district-214-2026-11-10</guid>
+    <description>Official listing: https://www.ahml.info/scheduling/reservation/194393</description>
     <pubDate>Tue, 10 Nov 2026 00:00:00 +0000</pubDate>
-    <source url="https://www.ahml.info/scheduling/reservation/218152">Arlington Heights Memorial Library — Events</source>
+    <source url="https://www.ahml.info/scheduling/reservation/194393">Arlington Heights Memorial Library — Events</source>
+  </item>
+  <item>
+    <title>Elk Grove Village: The Arlington Camera Club</title>
+    <link>https://withintenmiles.com/elk-grove-village-60007/#ev-the-arlington-camera-club-2026-11-10</link>
+    <guid isPermaLink="true">https://withintenmiles.com/elk-grove-village-60007/#ev-the-arlington-camera-club-2026-11-10</guid>
+    <description>Tuesday, November 10 2026 12:00am - 11:59pm 
+ Arlington Camera Club photography exhibit. Official listing: https://egvpl.libnet.info/event/16362678</description>
+    <pubDate>Tue, 10 Nov 2026 00:00:00 +0000</pubDate>
+    <source url="https://egvpl.libnet.info/event/16362678">Elk Grove Village Public Library - Events</source>
+  </item>
+  <item>
+    <title>Elk Grove Village: Picture Book Month Challenge</title>
+    <link>https://withintenmiles.com/elk-grove-village-60007/#ev-picture-book-month-challenge-2026-11-10</link>
+    <guid isPermaLink="true">https://withintenmiles.com/elk-grove-village-60007/#ev-picture-book-month-challenge-2026-11-10</guid>
+    <description>Tuesday, November 10 2026 12:00am - 11:59pm 
+ November is Picture Book Month! Put on your thinking cap and see if you can guess which picture book our clues… Official listing: https://egvpl.libnet.info/event/17074010</description>
+    <pubDate>Tue, 10 Nov 2026 00:00:00 +0000</pubDate>
+    <source url="https://egvpl.libnet.info/event/17074010">Elk Grove Village Public Library - Events</source>
+  </item>
+  <item>
+    <title>Elk Grove Village: Word of the Week</title>
+    <link>https://withintenmiles.com/elk-grove-village-60007/#ev-word-of-the-week-2026-11-10</link>
+    <guid isPermaLink="true">https://withintenmiles.com/elk-grove-village-60007/#ev-word-of-the-week-2026-11-10</guid>
+    <description>Tuesday, November 10 2026 12:00am - 11:59pm 
+ Become a dictionary detective with our new Word of the Week challenge! Discover a new vocabulary word, look it… Official listing: https://egvpl.libnet.info/event/17354422</description>
+    <pubDate>Tue, 10 Nov 2026 00:00:00 +0000</pubDate>
+    <source url="https://egvpl.libnet.info/event/17354422">Elk Grove Village Public Library - Events</source>
   </item>
   <item>
     <title>Mount Prospect: Puzzle Swap</title>
@@ -251,6 +106,15 @@ Meet with a career expert for resume… Official listing: https://desplaines.lib
     <source url="https://desplaines.libnet.info/event/17350944">Des Plaines Public Library — Events</source>
   </item>
   <item>
+    <title>Elk Grove Village: Mini Mad Science Storytime</title>
+    <link>https://withintenmiles.com/elk-grove-village-60007/#ev-mini-mad-science-storytime-2026-11-10</link>
+    <guid isPermaLink="true">https://withintenmiles.com/elk-grove-village-60007/#ev-mini-mad-science-storytime-2026-11-10</guid>
+    <description>Tuesday, November 10 2026 10:00am - 10:45am 
+ Join us for a fun science class just for young children! We will explore science through stories, a hands-on… Official listing: https://egvpl.libnet.info/event/17061964</description>
+    <pubDate>Tue, 10 Nov 2026 10:00:00 +0000</pubDate>
+    <source url="https://egvpl.libnet.info/event/17061964">Elk Grove Village Public Library - Events</source>
+  </item>
+  <item>
     <title>Wheeling: Noisy Time</title>
     <link>https://withintenmiles.com/wheeling-60090/#ev-noisy-time-2026-11-10</link>
     <guid isPermaLink="true">https://withintenmiles.com/wheeling-60090/#ev-noisy-time-2026-11-10</guid>
@@ -276,6 +140,15 @@ Meet with a career expert for resume… Official listing: https://desplaines.lib
  Registration and book pickup begins October 13. A book about murder, deception, and the pursuit of the truth. R Official listing: https://indiantrails.libnet.info/event/14170861</description>
     <pubDate>Tue, 10 Nov 2026 10:30:00 +0000</pubDate>
     <source url="https://indiantrails.libnet.info/event/14170861">Indian Trails Public Library — Events</source>
+  </item>
+  <item>
+    <title>Elk Grove Village: Tuesday Tech Help</title>
+    <link>https://withintenmiles.com/elk-grove-village-60007/#ev-tuesday-tech-help-2026-11-10</link>
+    <guid isPermaLink="true">https://withintenmiles.com/elk-grove-village-60007/#ev-tuesday-tech-help-2026-11-10</guid>
+    <description>Tuesday, November 10 2026 11:00am - 1:00pm 
+ Got a technology question? Were here to help! Bring your device and question. Official listing: https://egvpl.libnet.info/event/17238825</description>
+    <pubDate>Tue, 10 Nov 2026 11:00:00 +0000</pubDate>
+    <source url="https://egvpl.libnet.info/event/17238825">Elk Grove Village Public Library - Events</source>
   </item>
   <item>
     <title>Mount Prospect: iPhone and iPad Basics</title>
@@ -349,6 +222,15 @@ Meet with a career expert for resume… Official listing: https://desplaines.lib
     <source url="https://indiantrails.libnet.info/event/17044636">Indian Trails Public Library — Events</source>
   </item>
   <item>
+    <title>Elk Grove Village: CSI Session 3</title>
+    <link>https://withintenmiles.com/elk-grove-village-60007/#ev-csi-session-3-2026-11-10</link>
+    <guid isPermaLink="true">https://withintenmiles.com/elk-grove-village-60007/#ev-csi-session-3-2026-11-10</guid>
+    <description>Tuesday, November 10 2026 4:15pm - 4:45pm 
+ SESSION 3: Gravity, Force and Motion - Let's investigate with STEM! This class combines a little bit of Science,… Official listing: https://egvpl.libnet.info/event/17206268</description>
+    <pubDate>Tue, 10 Nov 2026 16:15:00 +0000</pubDate>
+    <source url="https://egvpl.libnet.info/event/17206268">Elk Grove Village Public Library - Events</source>
+  </item>
+  <item>
     <title>Mount Prospect: 3D Printing for Kids: Learn Tinkercad</title>
     <link>https://withintenmiles.com/mount-prospect-60056/#ev-3d-printing-for-kids-learn-tinkercad-2026-11-10</link>
     <guid isPermaLink="true">https://withintenmiles.com/mount-prospect-60056/#ev-3d-printing-for-kids-learn-tinkercad-2026-11-10</guid>
@@ -412,6 +294,15 @@ Meet with a career expert for resume… Official listing: https://desplaines.lib
     <source url="https://desplaines.libnet.info/event/15110108">Des Plaines Public Library — Events</source>
   </item>
   <item>
+    <title>Elk Grove Village: Uke Jam</title>
+    <link>https://withintenmiles.com/elk-grove-village-60007/#ev-uke-jam-2026-11-10</link>
+    <guid isPermaLink="true">https://withintenmiles.com/elk-grove-village-60007/#ev-uke-jam-2026-11-10</guid>
+    <description>Tuesday, November 10 2026 6:30pm - 7:00pm 
+ Hang out and learn a song on the ukulele. All experience levels are welcome! Ukuleles are provided by the library. Official listing: https://egvpl.libnet.info/event/16817642</description>
+    <pubDate>Tue, 10 Nov 2026 18:30:00 +0000</pubDate>
+    <source url="https://egvpl.libnet.info/event/16817642">Elk Grove Village Public Library - Events</source>
+  </item>
+  <item>
     <title>Mount Prospect: Jigsaw Puzzle Competition</title>
     <link>https://withintenmiles.com/mount-prospect-60056/#ev-jigsaw-puzzle-competition-2026-11-10</link>
     <guid isPermaLink="true">https://withintenmiles.com/mount-prospect-60056/#ev-jigsaw-puzzle-competition-2026-11-10</guid>
@@ -419,6 +310,24 @@ Meet with a career expert for resume… Official listing: https://desplaines.lib
  Puzzle solo or gather a team of up to four people and put your jigsaw puzzle skills to the test for a puzzling… Official listing: https://mppl.libnet.info/event/16493052</description>
     <pubDate>Tue, 10 Nov 2026 18:30:00 +0000</pubDate>
     <source url="https://mppl.libnet.info/event/16493052">Mount Prospect Public Library — Events</source>
+  </item>
+  <item>
+    <title>Elk Grove Village: EGVPL Board of Trustees Meeting</title>
+    <link>https://withintenmiles.com/elk-grove-village-60007/#ev-egvpl-board-of-trustees-meeting-2026-11-10</link>
+    <guid isPermaLink="true">https://withintenmiles.com/elk-grove-village-60007/#ev-egvpl-board-of-trustees-meeting-2026-11-10</guid>
+    <description>Tuesday, November 10 2026 7:00pm - 9:00pm 
+ Regular Board Meeting Official listing: https://egvpl.libnet.info/event/15064010</description>
+    <pubDate>Tue, 10 Nov 2026 19:00:00 +0000</pubDate>
+    <source url="https://egvpl.libnet.info/event/15064010">Elk Grove Village Public Library - Events</source>
+  </item>
+  <item>
+    <title>Elk Grove Village: Beaded Corn Keychain Craft</title>
+    <link>https://withintenmiles.com/elk-grove-village-60007/#ev-beaded-corn-keychain-craft-2026-11-10</link>
+    <guid isPermaLink="true">https://withintenmiles.com/elk-grove-village-60007/#ev-beaded-corn-keychain-craft-2026-11-10</guid>
+    <description>Tuesday, November 10 2026 7:00pm - 8:00pm 
+ Create the perfect keychain for fall! Learn how to craft a mini beaded corn, perfect to hang off a purse or… Official listing: https://egvpl.libnet.info/event/17255115</description>
+    <pubDate>Tue, 10 Nov 2026 19:00:00 +0000</pubDate>
+    <source url="https://egvpl.libnet.info/event/17255115">Elk Grove Village Public Library - Events</source>
   </item>
   <item>
     <title>Wheeling: Job Jumpstart Lab</title>
@@ -447,6 +356,33 @@ Meet with a career expert for resume… Official listing: https://desplaines.lib
     <source url="https://desplaines.libnet.info/event/17625177">Des Plaines Public Library — Events</source>
   </item>
   <item>
+    <title>Elk Grove Village: The Arlington Camera Club</title>
+    <link>https://withintenmiles.com/elk-grove-village-60007/#ev-the-arlington-camera-club-2026-11-11</link>
+    <guid isPermaLink="true">https://withintenmiles.com/elk-grove-village-60007/#ev-the-arlington-camera-club-2026-11-11</guid>
+    <description>Wednesday, November 11 2026 12:00am - 11:59pm 
+ Arlington Camera Club photography exhibit. Official listing: https://egvpl.libnet.info/event/16362679</description>
+    <pubDate>Wed, 11 Nov 2026 00:00:00 +0000</pubDate>
+    <source url="https://egvpl.libnet.info/event/16362679">Elk Grove Village Public Library - Events</source>
+  </item>
+  <item>
+    <title>Elk Grove Village: Picture Book Month Challenge</title>
+    <link>https://withintenmiles.com/elk-grove-village-60007/#ev-picture-book-month-challenge-2026-11-11</link>
+    <guid isPermaLink="true">https://withintenmiles.com/elk-grove-village-60007/#ev-picture-book-month-challenge-2026-11-11</guid>
+    <description>Wednesday, November 11 2026 12:00am - 11:59pm 
+ November is Picture Book Month! Put on your thinking cap and see if you can guess which picture book our clues… Official listing: https://egvpl.libnet.info/event/17074011</description>
+    <pubDate>Wed, 11 Nov 2026 00:00:00 +0000</pubDate>
+    <source url="https://egvpl.libnet.info/event/17074011">Elk Grove Village Public Library - Events</source>
+  </item>
+  <item>
+    <title>Elk Grove Village: Word of the Week</title>
+    <link>https://withintenmiles.com/elk-grove-village-60007/#ev-word-of-the-week-2026-11-11</link>
+    <guid isPermaLink="true">https://withintenmiles.com/elk-grove-village-60007/#ev-word-of-the-week-2026-11-11</guid>
+    <description>Wednesday, November 11 2026 12:00am - 11:59pm 
+ Become a dictionary detective with our new Word of the Week challenge! Discover a new vocabulary word, look it… Official listing: https://egvpl.libnet.info/event/17354423</description>
+    <pubDate>Wed, 11 Nov 2026 00:00:00 +0000</pubDate>
+    <source url="https://egvpl.libnet.info/event/17354423">Elk Grove Village Public Library - Events</source>
+  </item>
+  <item>
     <title>Wheeling: Read to Learn</title>
     <link>https://withintenmiles.com/wheeling-60090/#ev-read-to-learn-2026-11-11</link>
     <guid isPermaLink="true">https://withintenmiles.com/wheeling-60090/#ev-read-to-learn-2026-11-11</guid>
@@ -454,6 +390,70 @@ Meet with a career expert for resume… Official listing: https://desplaines.lib
  District 214 Read to Learn Adult Literacy Program. Official listing: https://indiantrails.libnet.info/event/11861204</description>
     <pubDate>Wed, 11 Nov 2026 09:00:00 +0000</pubDate>
     <source url="https://indiantrails.libnet.info/event/11861204">Indian Trails Public Library — Events</source>
+  </item>
+  <item>
+    <title>Elk Grove Village: Alphabet Soup</title>
+    <link>https://withintenmiles.com/elk-grove-village-60007/#ev-alphabet-soup-2026-11-11</link>
+    <guid isPermaLink="true">https://withintenmiles.com/elk-grove-village-60007/#ev-alphabet-soup-2026-11-11</guid>
+    <description>Wednesday, November 11 2026 9:30am - 10:15am 
+ Attention little learners! Grab your grown-up and get moving in an interactive storytime filled with music and… Official listing: https://egvpl.libnet.info/event/16817351</description>
+    <pubDate>Wed, 11 Nov 2026 09:30:00 +0000</pubDate>
+    <source url="https://egvpl.libnet.info/event/16817351">Elk Grove Village Public Library - Events</source>
+  </item>
+  <item>
+    <title>Mount Prospect: Toddler Storytime</title>
+    <link>https://withintenmiles.com/mount-prospect-60056/#ev-toddler-storytime-2026-11-11</link>
+    <guid isPermaLink="true">https://withintenmiles.com/mount-prospect-60056/#ev-toddler-storytime-2026-11-11</guid>
+    <description>Wednesday, November 11 2026 9:30am - 10:00am 
+ Grow your little learner's literacy and language skills at this playful storytime full of wiggles, wonder, and… Official listing: https://mppl.libnet.info/event/16637883</description>
+    <pubDate>Wed, 11 Nov 2026 09:30:00 +0000</pubDate>
+    <source url="https://mppl.libnet.info/event/16637883">Mount Prospect Public Library — Events</source>
+  </item>
+  <item>
+    <title>Arlington Heights: Veterans Day at the Museum</title>
+    <link>https://withintenmiles.com/arlington-heights-60005/#ev-veterans-day-at-the-museum-2026-11-11</link>
+    <guid isPermaLink="true">https://withintenmiles.com/arlington-heights-60005/#ev-veterans-day-at-the-museum-2026-11-11</guid>
+    <description>Drop in anytime between 10AM-7PM to honor our Arlington Heights’ Veterans. View our current exhibit, “Stars &amp; Stories: Arlington Heights’ Old Glory,” make a… Official listing: https://www.ahpd.org/event/veterans-day-at-the-museum/</description>
+    <pubDate>Wed, 11 Nov 2026 10:00:00 +0000</pubDate>
+    <source url="https://www.ahpd.org/event/veterans-day-at-the-museum/">Arlington Heights Park District — Events</source>
+  </item>
+  <item>
+    <title>Des Plaines: Baby Book Time</title>
+    <link>https://withintenmiles.com/des-plaines-60016/#ev-baby-book-time-2026-11-11</link>
+    <guid isPermaLink="true">https://withintenmiles.com/des-plaines-60016/#ev-baby-book-time-2026-11-11</guid>
+    <description>Wednesday, November 11 2026 10:00am - 11:00am 
+ To register, please contact Irene Tripkos at 847-789-5623. Verbal confirmation from Irene Tripkos is needed in… Official listing: https://desplaines.libnet.info/event/16431791</description>
+    <pubDate>Wed, 11 Nov 2026 10:00:00 +0000</pubDate>
+    <source url="https://desplaines.libnet.info/event/16431791">Des Plaines Public Library — Events</source>
+  </item>
+  <item>
+    <title>Mount Prospect: Inglés para Hispanohablantes</title>
+    <link>https://withintenmiles.com/mount-prospect-60056/#ev-ingl-s-para-hispanohablantes-2026-11-11</link>
+    <guid isPermaLink="true">https://withintenmiles.com/mount-prospect-60056/#ev-ingl-s-para-hispanohablantes-2026-11-11</guid>
+    <description>Wednesday, November 11 2026 11:00am - 12:00pm 
+ Una clase virtual vía Zoom, de conversación, para hispanohablantes que buscan mejorar su inglés. 
+
+A virtual… Official listing: https://mppl.libnet.info/event/17476745</description>
+    <pubDate>Wed, 11 Nov 2026 11:00:00 +0000</pubDate>
+    <source url="https://mppl.libnet.info/event/17476745">Mount Prospect Public Library — Events</source>
+  </item>
+  <item>
+    <title>Wheeling: OFFSITE: Veterans Day Celebration</title>
+    <link>https://withintenmiles.com/wheeling-60090/#ev-offsite-veterans-day-celebration-2026-11-11</link>
+    <guid isPermaLink="true">https://withintenmiles.com/wheeling-60090/#ev-offsite-veterans-day-celebration-2026-11-11</guid>
+    <description>Wednesday, November 11 2026 12:15pm - 2:00pm 
+ Honor the veterans in your life with a memorable afternoon of music, gratitude, and community. Official listing: https://indiantrails.libnet.info/event/16359996</description>
+    <pubDate>Wed, 11 Nov 2026 12:15:00 +0000</pubDate>
+    <source url="https://indiantrails.libnet.info/event/16359996">Indian Trails Public Library — Events</source>
+  </item>
+  <item>
+    <title>Mount Prospect: How Money Became God</title>
+    <link>https://withintenmiles.com/mount-prospect-60056/#ev-how-money-became-god-2026-11-11</link>
+    <guid isPermaLink="true">https://withintenmiles.com/mount-prospect-60056/#ev-how-money-became-god-2026-11-11</guid>
+    <description>Wednesday, November 11 2026 1:00pm - 2:00pm 
+ Join us for an eye-opening conversation with veteran journalist Paul Vigna as he explores the question: how did… Official listing: https://mppl.libnet.info/event/17310515</description>
+    <pubDate>Wed, 11 Nov 2026 13:00:00 +0000</pubDate>
+    <source url="https://mppl.libnet.info/event/17310515">Mount Prospect Public Library — Events</source>
   </item>
 </channel>
 </rss>

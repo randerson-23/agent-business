@@ -3,44 +3,8 @@
 <channel>
   <title>Within Ten — Upcoming events in Wheeling</title>
   <link>https://withintenmiles.com/</link>
-  <description>Upcoming events in Wheeling, soonest first - aggregated automatically from village, library, park district and school-district calendars. This build reached 22 of 29 configured sources. 1 source is shown from its last update, up to 5 hours ago.</description>
-  <lastBuildDate>Mon, 09 Nov 2026 22:01:44 +0000</lastBuildDate>
-  <item>
-    <title>Wheeling: Leslie Goddard Presents Route 66</title>
-    <link>https://withintenmiles.com/wheeling-60090/#ev-leslie-goddard-presents-route-66-2026-11-09</link>
-    <guid isPermaLink="true">https://withintenmiles.com/wheeling-60090/#ev-leslie-goddard-presents-route-66-2026-11-09</guid>
-    <description>Monday, November 09 2026 2:00pm - 3:15pm 
- Leslie Goddard will give a lecture for the 100th Anniversary of Route 66. This is not a historic portrayal. R Official listing: https://indiantrails.libnet.info/event/17008303</description>
-    <pubDate>Mon, 09 Nov 2026 14:00:00 +0000</pubDate>
-    <source url="https://indiantrails.libnet.info/event/17008303">Indian Trails Public Library — Events</source>
-  </item>
-  <item>
-    <title>Wheeling: K9 Reading Buddies</title>
-    <link>https://withintenmiles.com/wheeling-60090/#ev-k9-reading-buddies-2026-11-09</link>
-    <guid isPermaLink="true">https://withintenmiles.com/wheeling-60090/#ev-k9-reading-buddies-2026-11-09</guid>
-    <description>Monday, November 09 2026 4:00pm - 5:00pm 
- Read a story to a licensed therapy dog in the library. Siblings and caregivers are asked to wait outside the… Official listing: https://indiantrails.libnet.info/event/17139100</description>
-    <pubDate>Mon, 09 Nov 2026 16:00:00 +0000</pubDate>
-    <source url="https://indiantrails.libnet.info/event/17139100">Indian Trails Public Library — Events</source>
-  </item>
-  <item>
-    <title>Wheeling: Thanksgiving Coasters</title>
-    <link>https://withintenmiles.com/wheeling-60090/#ev-thanksgiving-coasters-2026-11-09</link>
-    <guid isPermaLink="true">https://withintenmiles.com/wheeling-60090/#ev-thanksgiving-coasters-2026-11-09</guid>
-    <description>Monday, November 09 2026 5:30pm - 6:30pm 
- Import Thanksgiving images into Inkscape to laser engrave a custom coaster. R Official listing: https://indiantrails.libnet.info/event/17138281</description>
-    <pubDate>Mon, 09 Nov 2026 17:30:00 +0000</pubDate>
-    <source url="https://indiantrails.libnet.info/event/17138281">Indian Trails Public Library — Events</source>
-  </item>
-  <item>
-    <title>Wheeling: Internet Resources for Czech and Slovak Genealogy</title>
-    <link>https://withintenmiles.com/wheeling-60090/#ev-internet-resources-for-czech-and-slovak-genealogy-2026-11-09</link>
-    <guid isPermaLink="true">https://withintenmiles.com/wheeling-60090/#ev-internet-resources-for-czech-and-slovak-genealogy-2026-11-09</guid>
-    <description>Monday, November 09 2026 7:00pm - 8:30pm 
- Roger Liska, professional genealogist, demonstrates the online resources and records available when discovering… Official listing: https://indiantrails.libnet.info/event/17101700</description>
-    <pubDate>Mon, 09 Nov 2026 19:00:00 +0000</pubDate>
-    <source url="https://indiantrails.libnet.info/event/17101700">Indian Trails Public Library — Events</source>
-  </item>
+  <description>Upcoming events in Wheeling, soonest first - aggregated automatically from village, library, park district and school-district calendars. This build reached 24 of 30 configured sources.</description>
+  <lastBuildDate>Tue, 10 Nov 2026 06:01:34 +0000</lastBuildDate>
   <item>
     <title>Wheeling: Noisy Time</title>
     <link>https://withintenmiles.com/wheeling-60090/#ev-noisy-time-2026-11-10</link>
@@ -452,6 +416,41 @@ Hoopla or another library app?… Official listing: https://indiantrails.libnet.
  Staff Institute Day Official listing: https://indiantrails.libnet.info/event/11498854</description>
     <pubDate>Fri, 20 Nov 2026 09:00:00 +0000</pubDate>
     <source url="https://indiantrails.libnet.info/event/11498854">Indian Trails Public Library — Events</source>
+  </item>
+  <item>
+    <title>Wheeling: Super Saturday: Chicago Cossacks - Ukrainian Music and Dance</title>
+    <link>https://withintenmiles.com/wheeling-60090/#ev-super-saturday-chicago-cossacks-ukrainian-music-and-dance-2026-11-21</link>
+    <guid isPermaLink="true">https://withintenmiles.com/wheeling-60090/#ev-super-saturday-chicago-cossacks-ukrainian-music-and-dance-2026-11-21</guid>
+    <description>Saturday, November 21 2026 11:00am - 12:00pm 
+ All ages. Ukrainian music, song and dance ensemble that also performs Eastern European, Jewish (Klezmer),… Official listing: https://indiantrails.libnet.info/event/17109214</description>
+    <pubDate>Sat, 21 Nov 2026 11:00:00 +0000</pubDate>
+    <source url="https://indiantrails.libnet.info/event/17109214">Indian Trails Public Library — Events</source>
+  </item>
+  <item>
+    <title>Wheeling: Lights Around Wheeling</title>
+    <link>https://withintenmiles.com/wheeling-60090/#ev-lights-around-wheeling-2026-11-22</link>
+    <guid isPermaLink="true">https://withintenmiles.com/wheeling-60090/#ev-lights-around-wheeling-2026-11-22</guid>
+    <description>https://www.wheelingil.gov/calendar.aspx?EID=2207 Official listing: https://www.wheelingil.gov/common/modules/iCalendar/iCalendar.aspx?feed=calendar&amp;catID=14</description>
+    <pubDate>Sun, 22 Nov 2026 16:30:00 +0000</pubDate>
+    <source url="https://www.wheelingil.gov/common/modules/iCalendar/iCalendar.aspx?feed=calendar&amp;catID=14">Village of Wheeling — Calendar</source>
+  </item>
+  <item>
+    <title>Wheeling: Got Science? Space Exploration</title>
+    <link>https://withintenmiles.com/wheeling-60090/#ev-got-science-space-exploration-2026-11-23</link>
+    <guid isPermaLink="true">https://withintenmiles.com/wheeling-60090/#ev-got-science-space-exploration-2026-11-23</guid>
+    <description>Monday, November 23 2026 1:00pm - 2:00pm 
+ Explore the final frontier. R Official listing: https://indiantrails.libnet.info/event/17138966</description>
+    <pubDate>Mon, 23 Nov 2026 13:00:00 +0000</pubDate>
+    <source url="https://indiantrails.libnet.info/event/17138966">Indian Trails Public Library — Events</source>
+  </item>
+  <item>
+    <title>Wheeling: Introduction to Tinkercad</title>
+    <link>https://withintenmiles.com/wheeling-60090/#ev-introduction-to-tinkercad-2026-11-23</link>
+    <guid isPermaLink="true">https://withintenmiles.com/wheeling-60090/#ev-introduction-to-tinkercad-2026-11-23</guid>
+    <description>Monday, November 23 2026 5:30pm - 6:45pm 
+ Get started with TinkerCAD, a free 3D modeling program. Learn the basics of building with this easy-to-use… Official listing: https://indiantrails.libnet.info/event/17428279</description>
+    <pubDate>Mon, 23 Nov 2026 17:30:00 +0000</pubDate>
+    <source url="https://indiantrails.libnet.info/event/17428279">Indian Trails Public Library — Events</source>
   </item>
 </channel>
 </rss>

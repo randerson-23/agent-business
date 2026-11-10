@@ -200,6 +200,9 @@
   @media (min-width: 1200px) {
     main .region-grid { flex-wrap: nowrap; }
     main .region-grid .region-card { flex: 1 1 0; min-width: 0; padding: 20px; }
+    /* ROADMAP.md item 480: six towns read better as 3 + 3 than as six narrow columns. */
+    main .region-grid.two-rows { flex-wrap: wrap; }
+    main .region-grid.two-rows .region-card { flex: 1 1 calc(33% - 16px); }
   }
   .guide-rows { display: flex; flex-direction: column; gap: 8px; margin: 0 0 12px; }
   .guide-row { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 12px; border-left: 6px solid var(--town, var(--border)); padding: 6px 0 6px 12px; }
@@ -480,9 +483,9 @@
     <svg class="holiday-lights" viewBox="0 0 1200 22" preserveAspectRatio="xMidYMin slice" aria-hidden="true"><path d="M0 4 Q300 20 600 6 T1200 4" stroke="#0a2a1f" stroke-width="2" fill="none"/><circle cx="20" cy="11" r="5" fill="#ef4444"/><circle cx="60" cy="15" r="5" fill="#f5c542"/><circle cx="100" cy="11" r="5" fill="#34d399"/><circle cx="140" cy="15" r="5" fill="#60a5fa"/><circle cx="180" cy="11" r="5" fill="#ef4444"/><circle cx="220" cy="15" r="5" fill="#f5c542"/><circle cx="260" cy="11" r="5" fill="#34d399"/><circle cx="300" cy="15" r="5" fill="#60a5fa"/><circle cx="340" cy="11" r="5" fill="#ef4444"/><circle cx="380" cy="15" r="5" fill="#f5c542"/><circle cx="420" cy="11" r="5" fill="#34d399"/><circle cx="460" cy="15" r="5" fill="#60a5fa"/><circle cx="500" cy="11" r="5" fill="#ef4444"/><circle cx="540" cy="15" r="5" fill="#f5c542"/><circle cx="580" cy="11" r="5" fill="#34d399"/><circle cx="620" cy="15" r="5" fill="#60a5fa"/><circle cx="660" cy="11" r="5" fill="#ef4444"/><circle cx="700" cy="15" r="5" fill="#f5c542"/><circle cx="740" cy="11" r="5" fill="#34d399"/><circle cx="780" cy="15" r="5" fill="#60a5fa"/><circle cx="820" cy="11" r="5" fill="#ef4444"/><circle cx="860" cy="15" r="5" fill="#f5c542"/><circle cx="900" cy="11" r="5" fill="#34d399"/><circle cx="940" cy="15" r="5" fill="#60a5fa"/><circle cx="980" cy="11" r="5" fill="#ef4444"/><circle cx="1020" cy="15" r="5" fill="#f5c542"/><circle cx="1060" cy="11" r="5" fill="#34d399"/><circle cx="1100" cy="15" r="5" fill="#60a5fa"/><circle cx="1140" cy="11" r="5" fill="#ef4444"/><circle cx="1180" cy="15" r="5" fill="#f5c542"/></svg>
     <div class="holiday-inner">
       <div class="holiday-kicker">🎄 The holidays &middot; November &amp; December</div>
-      <h2 id="holiday-heading">Tree lightings &amp; holiday events in all five towns, <span class="gold">in one place</span></h2>
+      <h2 id="holiday-heading">Tree lightings &amp; holiday events in every town we cover, <span class="gold">in one place</span></h2>
       <ul class="holiday-dates">
-<li>Arlington Heights <strong>Fri Nov 27</strong></li><li>Des Plaines <strong>Fri Dec 4</strong></li><li>Mount Prospect <strong>date TBA</strong></li><li>Palatine <strong>Sat Nov 21</strong></li><li>Wheeling <strong>date TBA</strong></li>      </ul>
+<li>Arlington Heights <strong>Fri Nov 27</strong></li><li>Des Plaines <strong>Fri Dec 4</strong></li><li>Elk Grove Village <strong>Fri Nov 27</strong></li><li>Mount Prospect <strong>date TBA</strong></li><li>Palatine <strong>Sat Nov 21</strong></li><li>Wheeling <strong>date TBA</strong></li>      </ul>
       <a class="holiday-cta" href="holidays/">See tree lightings &amp; holiday events &rarr;</a>
       <a class="holiday-offer" style="margin-right:14px;" href="santa/">Santa near you &rarr;</a>
 <a class="holiday-offer" href="mailto:hello@withintenmiles.com?subject=Holiday%20guide%20listing">Local business? List your shop in the holiday guide, $20 &rarr;</a>    </div>
@@ -498,7 +501,7 @@
         <span class="kicker">Within Ten &middot; Northwest Suburbs</span>
       </div>
       <h1>Everything worth doing, ten miles out.</h1>
-      <div class="sub">From the village, library and park district: events for 5 towns, gathered automatically, so your weekend takes five minutes to plan instead of an evening.</div>
+      <div class="sub">From the village, library and park district: events for 6 towns, gathered automatically, so your weekend takes five minutes to plan instead of an evening.</div>
     </div>
   </header>
 
@@ -510,19 +513,19 @@
     <a class="bento-tile bento-weekend" href="this-weekend/">
       <span class="bento-kicker">📅 Next weekend</span>
       <h2>Nov 13–15</h2>
-      <p>38 things happening across every region &rarr;</p>
-      <span class="wk-picks" aria-label="This weekend's picks"><span class="wk-pick" style="--town:#c2410c"><span class="wk-chip"><b>FRI</b><i>13</i></span><span class="wk-text"><span aria-hidden="true">📚</span> Storytime Playdate: Tiny Town<span class="wk-town">Mount Prospect</span></span></span><span class="wk-pick" style="--town:#be185d"><span class="wk-chip"><b>FRI</b><i>13</i></span><span class="wk-text"><span aria-hidden="true">📚</span> Toddler Storytime<span class="wk-town">Wheeling</span></span></span><span class="wk-pick" style="--town:#0f766e"><span class="wk-chip"><b>SAT</b><i>14</i></span><span class="wk-text"><span aria-hidden="true">🧒</span> Family Time<span class="wk-town">Arlington Heights</span></span></span></span>
+      <p>53 things happening across every region &rarr;</p>
+      <span class="wk-picks" aria-label="This weekend's picks"><span class="wk-pick" style="--town:#1d4ed8"><span class="wk-chip"><b>FRI</b><i>13</i></span><span class="wk-text"><span aria-hidden="true">📚</span> Storytime Playdate: Tiny Town<span class="wk-town">Mount Prospect</span></span></span><span class="wk-pick" style="--town:#4d7c0f"><span class="wk-chip"><b>FRI</b><i>13</i></span><span class="wk-text"><span aria-hidden="true">📚</span> Toddler Storytime<span class="wk-town">Wheeling</span></span></span><span class="wk-pick" style="--town:#0f766e"><span class="wk-chip"><b>SAT</b><i>14</i></span><span class="wk-text"><span aria-hidden="true">🧒</span> Family Time<span class="wk-town">Arlington Heights</span></span></span></span>
     </a>
   </div>
 
   <div class="hub-secondary-links">
-    <a href="today/">📍 Today (19) &rarr;</a>
-    <a href="free/">🎟️ Free things to do (35) &rarr;</a>
+    <a href="today/">📍 Today (38) &rarr;</a>
+    <a href="free/">🎟️ Free things to do (39) &rarr;</a>
   </div>
 <a class="season-tile" href="santa/">🎅 Santa near you &amp; holiday events &rarr;<span>Tree lightings, Santa visits and markets, town by town</span></a>
   </div>
 
-  <div class="region-grid" id="region-grid">
+  <div class="region-grid two-rows" id="region-grid">
     <a class="bento-tile region-card" href="arlington-heights-60005/" style="--town:#0f766e">
       <span class="zip">60005 · IL</span>
       <h2>Arlington Heights</h2>
@@ -535,19 +538,25 @@
       <span class="picks"><span class="pick-head">Next up</span><span class="pick"><span aria-hidden="true">👶</span> Toddler Time <span class="pick-when">Tue Nov 10 · 10:00 AM</span></span><span class="pick"><span aria-hidden="true">📚</span> Preschool Storytime <span class="pick-when">Wed Nov 11 · 1:30 PM</span></span></span>
       <span class="count">See what's on in Des Plaines &rarr;</span>
     </a>
-    <a class="bento-tile region-card" href="mount-prospect-60056/" style="--town:#c2410c">
+    <a class="bento-tile region-card" href="elk-grove-village-60007/" style="--town:#c2410c">
+      <span class="zip">60007 · IL</span>
+      <h2>Elk Grove Village</h2>
+      <span class="picks"><span class="pick"><span aria-hidden="true">🧒</span> Fun Factory Saturday <span class="pick-when">Sat Nov 14 · 9:30 AM</span></span><span class="pick"><span aria-hidden="true">📚</span> Spanish Storytime - Tiempo De Cuento <span class="pick-when">Sat Nov 14 · 10:30 AM</span></span></span>
+      <span class="count">See all 15 next weekend &rarr;</span>
+    </a>
+    <a class="bento-tile region-card" href="mount-prospect-60056/" style="--town:#1d4ed8">
       <span class="zip">60056 · IL</span>
       <h2>Mount Prospect</h2>
       <span class="picks"><span class="pick"><span aria-hidden="true">📚</span> Storytime Playdate: Tiny Town <span class="pick-when">Fri Nov 13 · 10:00 AM</span></span><span class="pick"><span aria-hidden="true">📚</span> Friends Holiday Book Sale <span class="pick-when">Sat Nov 14 · 9:00 AM</span></span></span>
       <span class="count">See all 8 next weekend &rarr;</span>
     </a>
-    <a class="bento-tile region-card" href="palatine-60067/" style="--town:#1d4ed8">
+    <a class="bento-tile region-card" href="palatine-60067/" style="--town:#be185d">
       <span class="zip">60067 · IL</span>
       <h2>Palatine</h2>
       <span class="picks"><span class="pick-head">Next up</span><span class="pick"><span aria-hidden="true">🎨</span> The Fifth Element <span class="pick-when">Wed Nov 11 · 6:00 PM</span></span><span class="pick"><span aria-hidden="true">🧺</span> Palatine Winter Farmers&#39; Market <span class="pick-when">Sat Nov 21 · 9:00 AM</span></span></span>
       <span class="count">See what's on in Palatine &rarr;</span>
     </a>
-    <a class="bento-tile region-card" href="wheeling-60090/" style="--town:#be185d">
+    <a class="bento-tile region-card" href="wheeling-60090/" style="--town:#4d7c0f">
       <span class="zip">60090 · IL</span>
       <h2>Wheeling</h2>
       <span class="picks"><span class="pick"><span aria-hidden="true">📚</span> Toddler Storytime <span class="pick-when">Fri Nov 13 · 10:00 AM</span></span><span class="pick"><span aria-hidden="true">📚</span> Preschool Storytime <span class="pick-when">Fri Nov 13 · 11:00 AM</span></span></span>
@@ -559,9 +568,9 @@
     <div class="guide-rows">
     <div class="guide-row" style="--town:#0f766e"><strong>Arlington Heights</strong><span class="guide-chips"><a class="guide-chip" href="arlington-heights-60005/guides/fall-family-guide/">Fall Family Guide</a><a class="guide-chip" href="arlington-heights-60005/guides/birthday-parties-and-kids-classes/">Birthday Parties &amp; Kids&#39; Classes</a><a class="guide-chip" href="arlington-heights-60005/guides/seasonal-circuit-guide/">Seasonal Circuit Guide</a><a class="guide-chip" href="arlington-heights-60005/guides/new-to-town/">New to Town</a></span></div>
     <div class="guide-row" style="--town:#6d28d9"><strong>Des Plaines</strong><span class="guide-chips"><a class="guide-chip" href="des-plaines-60016/guides/fall-family-guide/">Fall Family Guide</a><a class="guide-chip" href="des-plaines-60016/guides/birthday-parties-and-kids-classes/">Birthday Parties &amp; Kids&#39; Classes</a><a class="guide-chip" href="des-plaines-60016/guides/seasonal-circuit-guide/">Seasonal Circuit Guide</a><a class="guide-chip" href="des-plaines-60016/guides/new-to-town/">New to Town</a></span></div>
-    <div class="guide-row" style="--town:#c2410c"><strong>Mount Prospect</strong><span class="guide-chips"><a class="guide-chip" href="mount-prospect-60056/guides/fall-family-guide/">Fall Family Guide</a><a class="guide-chip" href="mount-prospect-60056/guides/birthday-parties-and-kids-classes/">Birthday Parties &amp; Kids&#39; Classes</a><a class="guide-chip" href="mount-prospect-60056/guides/seasonal-circuit-guide/">Seasonal Circuit Guide</a><a class="guide-chip" href="mount-prospect-60056/guides/new-to-town/">New to Town</a></span></div>
-    <div class="guide-row" style="--town:#1d4ed8"><strong>Palatine</strong><span class="guide-chips"><a class="guide-chip" href="palatine-60067/guides/fall-family-guide/">Fall Family Guide</a><a class="guide-chip" href="palatine-60067/guides/birthday-parties-and-kids-classes/">Birthday Parties &amp; Kids&#39; Classes</a><a class="guide-chip" href="palatine-60067/guides/seasonal-circuit-guide/">Seasonal Circuit Guide</a><a class="guide-chip" href="palatine-60067/guides/new-to-town/">New to Town</a></span></div>
-    <div class="guide-row" style="--town:#be185d"><strong>Wheeling</strong><span class="guide-chips"><a class="guide-chip" href="wheeling-60090/guides/fall-family-guide/">Fall Family Guide</a><a class="guide-chip" href="wheeling-60090/guides/birthday-parties-and-kids-classes/">Birthday Parties &amp; Kids&#39; Classes</a><a class="guide-chip" href="wheeling-60090/guides/new-to-town/">New to Town</a></span></div>
+    <div class="guide-row" style="--town:#1d4ed8"><strong>Mount Prospect</strong><span class="guide-chips"><a class="guide-chip" href="mount-prospect-60056/guides/fall-family-guide/">Fall Family Guide</a><a class="guide-chip" href="mount-prospect-60056/guides/birthday-parties-and-kids-classes/">Birthday Parties &amp; Kids&#39; Classes</a><a class="guide-chip" href="mount-prospect-60056/guides/seasonal-circuit-guide/">Seasonal Circuit Guide</a><a class="guide-chip" href="mount-prospect-60056/guides/new-to-town/">New to Town</a></span></div>
+    <div class="guide-row" style="--town:#be185d"><strong>Palatine</strong><span class="guide-chips"><a class="guide-chip" href="palatine-60067/guides/fall-family-guide/">Fall Family Guide</a><a class="guide-chip" href="palatine-60067/guides/birthday-parties-and-kids-classes/">Birthday Parties &amp; Kids&#39; Classes</a><a class="guide-chip" href="palatine-60067/guides/seasonal-circuit-guide/">Seasonal Circuit Guide</a><a class="guide-chip" href="palatine-60067/guides/new-to-town/">New to Town</a></span></div>
+    <div class="guide-row" style="--town:#4d7c0f"><strong>Wheeling</strong><span class="guide-chips"><a class="guide-chip" href="wheeling-60090/guides/fall-family-guide/">Fall Family Guide</a><a class="guide-chip" href="wheeling-60090/guides/birthday-parties-and-kids-classes/">Birthday Parties &amp; Kids&#39; Classes</a><a class="guide-chip" href="wheeling-60090/guides/new-to-town/">New to Town</a></span></div>
     </div>
     <p><a href="holidays/">Holidays</a> · <a href="issues/">Past weekly issues</a></p>
   </section>
@@ -612,7 +621,7 @@ document.querySelectorAll(".newsletter-form").forEach(function (f) {
     <a href="issues/">Past issues</a>. <a href="holidays/">Holidays</a>.
     <a href="https://google.com/preferences/source?q=withintenmiles.com" rel="noopener">Add us as a preferred source on Google</a>.
 <a href="leaf-pickup/">Leaf pickup</a>.    <br>See something wrong or missing? <a href="mailto:hello@withintenmiles.com?subject=Correction&amp;body=What%27s%20wrong%20or%20missing%2C%20and%20which%20region%2Fevent%3A%20">Email us</a> — corrections get made the same week.
-    <br>Generated 2026-11-09 22:01 UTC.
+    <br>Generated 2026-11-10 06:01 UTC.
 <br>Visits counted with privacy-first, cookie-free analytics — no personal data collected.  </footer>
   </div>
 

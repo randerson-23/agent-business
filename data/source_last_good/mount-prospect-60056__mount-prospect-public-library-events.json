@@ -1,42 +1,6 @@
 {
- "fetched_at": "2026-11-09T22:01:44+00:00",
+ "fetched_at": "2026-11-10T06:01:34+00:00",
  "items": [
-  {
-   "date": "Mon, 09 Nov 2026 09:30:00 +0000",
-   "detail": "Monday, November 09 2026 9:30am - 10:00am \n Bring the whole family and join us for an interactive storytime with high-energy stories, songs, and activities.",
-   "title": "Family Storytime",
-   "url": "https://mppl.libnet.info/event/16637670"
-  },
-  {
-   "date": "Mon, 09 Nov 2026 10:30:00 +0000",
-   "detail": "Monday, November 09 2026 10:30am - 11:00am \n Grow your little learner's literacy and language skills at this playful storytime full of wiggles, wonder, and fun!",
-   "title": "Toddler Storytime",
-   "url": "https://mppl.libnet.info/event/16637798"
-  },
-  {
-   "date": "Mon, 09 Nov 2026 16:30:00 +0000",
-   "detail": "Monday, November 09 2026 4:30pm - 5:00pm \n Explore shapes and build 3-dimensional objects.",
-   "title": "Shapes Workshop",
-   "url": "https://mppl.libnet.info/event/16778781"
-  },
-  {
-   "date": "Mon, 09 Nov 2026 17:00:00 +0000",
-   "detail": "Monday, November 09 2026 5:00pm - 6:00pm \n Give back to the community and earn volunteer hours at the same time.",
-   "title": "Teen Volunteering",
-   "url": "https://mppl.libnet.info/event/16882957"
-  },
-  {
-   "date": "Mon, 09 Nov 2026 19:00:00 +0000",
-   "detail": "Monday, November 09 2026 7:00pm - 8:00pm \n Join us for a discussion of \"Hello Beautiful\" by Ann Napolitano.",
-   "title": "Monday Night Book Group",
-   "url": "https://mppl.libnet.info/event/14049450"
-  },
-  {
-   "date": "Mon, 09 Nov 2026 19:00:00 +0000",
-   "detail": "Monday, November 09 2026 7:00pm - 8:30pm \n Come learn about how the railroad has impacted the histories of Arlington Heights, Des Plaines, and Mount Prospect.",
-   "title": "Railroad Ties",
-   "url": "https://mppl.libnet.info/event/16802052"
-  },
   {
    "date": "Tue, 10 Nov 2026 00:00:00 +0000",
    "detail": "Tuesday, November 10 2026 12:00am - 11:59pm \n Bring a puzzle, take a puzzle! Tables will be set up in the lobby for folks to stop by to swap puzzles.",
@@ -360,6 +324,42 @@
    "detail": "Wednesday, November 18 2026 6:00pm - 7:00pm \n Get your pickaxe ready! Build unique structures that solve various design challenges. Then share your digital handiwork with new friends.",
    "title": "Minecraft Engineers",
    "url": "https://mppl.libnet.info/event/16394683"
+  },
+  {
+   "date": "Thu, 19 Nov 2026 00:00:00 +0000",
+   "detail": "Thursday, November 19 2026 12:00am - 11:59pm \n The library is joining the statewide event, encouraging families to spend quality time reading together with a free special kit including a book and fun activities.",
+   "title": "Family Reading Night",
+   "url": "https://mppl.libnet.info/event/16903460"
+  },
+  {
+   "date": "Thu, 19 Nov 2026 09:30:00 +0000",
+   "detail": "Thursday, November 19 2026 9:30am - 10:00am \n A lifelong love of reading starts at birth! Join us for songs, rhymes, stories, and playtime made specially for infants.",
+   "title": "Baby Storytime",
+   "url": "https://mppl.libnet.info/event/16637939"
+  },
+  {
+   "date": "Thu, 19 Nov 2026 10:30:00 +0000",
+   "detail": "Thursday, November 19 2026 10:30am - 11:00am \n Bring the whole family and join us for an interactive storytime with high-energy stories, songs, and activities.",
+   "title": "Family Storytime",
+   "url": "https://mppl.libnet.info/event/16637958"
+  },
+  {
+   "date": "Thu, 19 Nov 2026 14:00:00 +0000",
+   "detail": "Thursday, November 19 2026 2:00pm - 3:30pm \n A new generation is getting ready to collect Social Security. Are you ready to optimize your retirement benefits?",
+   "title": "Social Security Planning",
+   "url": "https://mppl.libnet.info/event/15933716"
+  },
+  {
+   "date": "Thu, 19 Nov 2026 18:00:00 +0000",
+   "detail": "Thursday, November 19 2026 6:00pm - 9:00pm \n The Board of Library Trustees meets the third Thursday of each month at 6 p.m. at the library.",
+   "title": "Regular Library Board Meeting",
+   "url": "https://mppl.libnet.info/event/15921892"
+  },
+  {
+   "date": "Thu, 19 Nov 2026 18:00:00 +0000",
+   "detail": "Thursday, November 19 2026 6:00pm - 7:00pm \n Be a tech explorer and try out STEAM toys at the library.",
+   "title": "Tech Playground",
+   "url": "https://mppl.libnet.info/event/16393017"
   }
  ],
  "source": "Mount Prospect Public Library — Events"

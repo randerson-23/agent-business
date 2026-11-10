@@ -2,11 +2,12 @@
 
 > A hyperlocal weekend/trip planner for Chicago-area ZIP codes. Aggregates village news, public library events, and park district programs per town, rebuilt automatically (usually multiple times a week), so it stays current without a human keeping it that way.
 
-As of this build, 22 of 29 configured sources reported successfully; the rest is a source that didn't answer this time, not missing coverage. 1 source is shown from its last update, up to 5 hours ago.
+As of this build, 24 of 30 configured sources reported successfully; the rest is a source that didn't answer this time, not missing coverage.
 
 ## Regions
 - [Arlington Heights (60005)](https://withintenmiles.com/arlington-heights-60005/): Pulled automatically from the Village, Memorial Library, and Park District — plus Harmony Park and Lake Arlington — several times a week, a short drive from Mount Prospect.
 - [Des Plaines (60016)](https://withintenmiles.com/des-plaines-60016/): Pulled automatically from the City, Public Library, and Park District — plus Lake Park — several times a week, just north of O'Hare.
+- [Elk Grove Village (60007)](https://withintenmiles.com/elk-grove-village-60007/): Pulled automatically from the Elk Grove Village Public Library several times a week, plus the Village's own big events on the Village Green.
 - [Mount Prospect (60056)](https://withintenmiles.com/mount-prospect-60056/): Pulled automatically from the Village, Public Library, and Park District — plus Randhurst Village, Melas Park, Lions Park, and downtown Emerson & Busse — several times a week.
 - [Palatine (60067)](https://withintenmiles.com/palatine-60067/): Pulled automatically from the Village, Public Library District, and Park District — plus Downtown Palatine and the Train Station farmers' market lot — several times a week, northwest of Mount Prospect.
 - [Wheeling (60090)](https://withintenmiles.com/wheeling-60090/): Pulled automatically from the Village, Indian Trails Public Library, and Wheeling Park District — plus Heritage Park and Chicago Executive Airport — several times a week.
@@ -15,6 +16,7 @@ As of this build, 22 of 29 configured sources reported successfully; the rest is
 - [Across every region](https://withintenmiles.com/this-weekend/)
 - [Arlington Heights — this weekend](https://withintenmiles.com/arlington-heights-60005/this-weekend/)
 - [Des Plaines — this weekend](https://withintenmiles.com/des-plaines-60016/this-weekend/)
+- [Elk Grove Village — this weekend](https://withintenmiles.com/elk-grove-village-60007/this-weekend/)
 - [Mount Prospect — this weekend](https://withintenmiles.com/mount-prospect-60056/this-weekend/)
 - [Palatine — this weekend](https://withintenmiles.com/palatine-60067/this-weekend/)
 - [Wheeling — this weekend](https://withintenmiles.com/wheeling-60090/this-weekend/)
@@ -23,6 +25,7 @@ As of this build, 22 of 29 configured sources reported successfully; the rest is
 - [Across every region](https://withintenmiles.com/today/)
 - [Arlington Heights — today](https://withintenmiles.com/arlington-heights-60005/today/)
 - [Des Plaines — today](https://withintenmiles.com/des-plaines-60016/today/)
+- [Elk Grove Village — today](https://withintenmiles.com/elk-grove-village-60007/today/)
 - [Mount Prospect — today](https://withintenmiles.com/mount-prospect-60056/today/)
 - [Palatine — today](https://withintenmiles.com/palatine-60067/today/)
 - [Wheeling — today](https://withintenmiles.com/wheeling-60090/today/)
@@ -31,6 +34,7 @@ As of this build, 22 of 29 configured sources reported successfully; the rest is
 - [Across every region](https://withintenmiles.com/free/)
 - [Arlington Heights — free](https://withintenmiles.com/arlington-heights-60005/free/)
 - [Des Plaines — free](https://withintenmiles.com/des-plaines-60016/free/)
+- [Elk Grove Village — free](https://withintenmiles.com/elk-grove-village-60007/free/)
 - [Mount Prospect — free](https://withintenmiles.com/mount-prospect-60056/free/)
 - [Palatine — free](https://withintenmiles.com/palatine-60067/free/)
 - [Wheeling — free](https://withintenmiles.com/wheeling-60090/free/)
@@ -38,6 +42,7 @@ As of this build, 22 of 29 configured sources reported successfully; the rest is
 ## Things to do (evergreen)
 - [Arlington Heights — things to do](https://withintenmiles.com/arlington-heights-60005/things-to-do/)
 - [Des Plaines — things to do](https://withintenmiles.com/des-plaines-60016/things-to-do/)
+- [Elk Grove Village — things to do](https://withintenmiles.com/elk-grove-village-60007/things-to-do/)
 - [Mount Prospect — things to do](https://withintenmiles.com/mount-prospect-60056/things-to-do/)
 - [Palatine — things to do](https://withintenmiles.com/palatine-60067/things-to-do/)
 - [Wheeling — things to do](https://withintenmiles.com/wheeling-60090/things-to-do/)
@@ -66,6 +71,7 @@ As of this build, 22 of 29 configured sources reported successfully; the rest is
 ## Calendars
 - [Arlington Heights — subscribable calendar (.ics)](https://withintenmiles.com/arlington-heights-60005/calendar.ics)
 - [Des Plaines — subscribable calendar (.ics)](https://withintenmiles.com/des-plaines-60016/calendar.ics)
+- [Elk Grove Village — subscribable calendar (.ics)](https://withintenmiles.com/elk-grove-village-60007/calendar.ics)
 - [Mount Prospect — subscribable calendar (.ics)](https://withintenmiles.com/mount-prospect-60056/calendar.ics)
 - [Palatine — subscribable calendar (.ics)](https://withintenmiles.com/palatine-60067/calendar.ics)
 - [Wheeling — subscribable calendar (.ics)](https://withintenmiles.com/wheeling-60090/calendar.ics)
@@ -77,12 +83,13 @@ As of this build, 22 of 29 configured sources reported successfully; the rest is
 - [Who publishes this, and why](https://withintenmiles.com/about/)
 
 ## Seasonal
-- [Trick-or-treat hours, all 5 towns](https://withintenmiles.com/trick-or-treat/)
+- [Trick-or-treat hours, all 6 towns](https://withintenmiles.com/trick-or-treat/)
 
 ## Feed
 - [RSS: upcoming events across every region](https://withintenmiles.com/feed.xml)
 - [RSS: Arlington Heights](https://withintenmiles.com/arlington-heights-60005/feed.xml)
 - [RSS: Des Plaines](https://withintenmiles.com/des-plaines-60016/feed.xml)
+- [RSS: Elk Grove Village](https://withintenmiles.com/elk-grove-village-60007/feed.xml)
 - [RSS: Mount Prospect](https://withintenmiles.com/mount-prospect-60056/feed.xml)
 - [RSS: Palatine](https://withintenmiles.com/palatine-60067/feed.xml)
 - [RSS: Wheeling](https://withintenmiles.com/wheeling-60090/feed.xml)
@@ -90,6 +97,7 @@ As of this build, 22 of 29 configured sources reported successfully; the rest is
 ## Weekly posts (one article a week per town)
 - [RSS: Arlington Heights this weekend](https://withintenmiles.com/arlington-heights-60005/weekly.xml)
 - [RSS: Des Plaines this weekend](https://withintenmiles.com/des-plaines-60016/weekly.xml)
+- [RSS: Elk Grove Village this weekend](https://withintenmiles.com/elk-grove-village-60007/weekly.xml)
 - [RSS: Mount Prospect this weekend](https://withintenmiles.com/mount-prospect-60056/weekly.xml)
 - [RSS: Palatine this weekend](https://withintenmiles.com/palatine-60067/weekly.xml)
 - [RSS: Wheeling this weekend](https://withintenmiles.com/wheeling-60090/weekly.xml)
@@ -98,6 +106,7 @@ As of this build, 22 of 29 configured sources reported successfully; the rest is
 - [Every region](https://withintenmiles.com/events.json)
 - [Arlington Heights](https://withintenmiles.com/arlington-heights-60005/events.json)
 - [Des Plaines](https://withintenmiles.com/des-plaines-60016/events.json)
+- [Elk Grove Village](https://withintenmiles.com/elk-grove-village-60007/events.json)
 - [Mount Prospect](https://withintenmiles.com/mount-prospect-60056/events.json)
 - [Palatine](https://withintenmiles.com/palatine-60067/events.json)
 - [Wheeling](https://withintenmiles.com/wheeling-60090/events.json)

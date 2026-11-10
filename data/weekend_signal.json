@@ -1,11 +1,12 @@
 {
-  "generated_at": "2026-11-09T22:01:44.399539+00:00",
+  "generated_at": "2026-11-10T06:01:34.468480+00:00",
   "region_counts": {
     "arlington-heights-60005": 4,
     "des-plaines-60016": 13,
+    "elk-grove-village-60007": 15,
     "mount-prospect-60056": 8,
     "palatine-60067": 7,
     "wheeling-60090": 6
   },
-  "total": 38
+  "total": 53
 }
