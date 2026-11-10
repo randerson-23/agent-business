@@ -6775,6 +6775,18 @@ def is_recurring_programme(event: dict, series: set[str] | None = None) -> bool:
                 or (series and " ".join(_title_words(title, keep_order=True)) in series))
 
 
+def town_one_liner(block: dict) -> str:
+    """ROADMAP.md item 481: "Mount Prospect: Diwali Party, MPCB Fall Concert and 3 more"
+    from the town's first two titles and a count of the rest."""
+    titles = [display_title(e["title"]) for e in block.get("attendable_events") or [] if e.get("title")][:2]
+    total = max(block.get("weekend_count") or 0, len(titles))
+    if not titles:
+        return f"{block['region_name']}: nothing dated this weekend yet"
+    rest = total - len(titles)
+    listed = titles[0] if len(titles) == 1 else f"{titles[0]}, {titles[1]}"
+    return f"{block['region_name']}: {listed}" + (f" and {rest} more" if rest > 0 else "")
+
+
 def pick_email_top_picks(blocks: list[dict], limit: int = 3) -> list[dict]:
     """Up to `limit` "Don't miss" events for the top of the combined email,
     at most one per town: the most family-relevant attendable event in each
@@ -6908,7 +6920,7 @@ def _pick_evergreen_highlights(evergreen: list[dict], limit: int) -> list[dict]:
     return (free + rest)[:limit]
 
 
-def render_combined_email_digest(sections: list[dict], weekend_date_range: str, now: datetime, newsletter: dict | None = None, *, preview: bool = False, halloween: dict | None = None, holiday: dict | None = None, weather: list[dict] | None = None, halloween_extras: dict | None = None, give: list[dict] | None = None, on_sale: list[dict] | None = None, new_towns: list[dict] | None = None) -> str:
+def render_combined_email_digest(sections: list[dict], weekend_date_range: str, now: datetime, newsletter: dict | None = None, *, preview: bool = False, halloween: dict | None = None, holiday: dict | None = None, weather: list[dict] | None = None, halloween_extras: dict | None = None, give: list[dict] | None = None, on_sale: list[dict] | None = None, new_towns: list[dict] | None = None, reader_town: str | None = None) -> str:
     """The combined, all-regions email (ROADMAP.md Phase 11 #105) - the
     signup form is on every region page, but the automated send (item
     24/31) only ever mailed Mount Prospect's digest, since Buttondown's
@@ -6952,6 +6964,7 @@ def render_combined_email_digest(sections: list[dict], weekend_date_range: str, 
             "region_name": s["region_name"],
             "region_url": s["region_url"],
             "attendable_events": prepare_email_events(attendable_events, limit=email_events_per_town(len(sections))),
+            "weekend_count": len([e for e in attendable_events if not e.get("merged_away")]),  # item 481
             "pick_pool": prepare_email_events([dict(e) for e in attendable_events]),  # item 484
             "series": recurring_titles(s.get("upcoming_events") or []),
             "indoor_ideas": thin_week_ideas(s.get("evergreen", []), len(attendable_events)) if attendable_events else [],
@@ -6978,6 +6991,20 @@ def render_combined_email_digest(sections: list[dict], weekend_date_range: str, 
     collapse = len(empty_candidates) >= 2
     region_blocks = [b for b in all_blocks if not (collapse and b in empty_candidates)]
     region_blocks.sort(key=lambda b: -town_strength(b))  # item 418: the strongest town first (stable; colours were fixed above)
+    # ROADMAP.md item 481: a reader's own town in full at the top (up to six
+    # events), every other town as one line. Rendered here for previews; the
+    # live send keeps the shared layout until a Buttondown test send proves
+    # how per-reader content is delivered.
+    if reader_town:
+        mine = [b for b in region_blocks if b["region_url"].rstrip("/").rsplit("/", 1)[-1] == reader_town]
+        if mine:
+            home = mine[0]
+            src = next(sec for sec in sections if sec["region_url"] == home["region_url"])
+            home["attendable_events"] = prepare_email_events([e for e in src["weekend_events"] if e.get("attendable", True)], limit=6)
+            for b in region_blocks:
+                if b is not home:
+                    b["one_line"] = town_one_liner(b)
+            region_blocks = [home] + [b for b in region_blocks if b is not home]
     top_picks = pick_email_top_picks(region_blocks)
     event_total = sum(len([e for e in s["weekend_events"] if e.get("attendable", True)]) for s in sections)
     town_total = sum(1 for s in sections if any(e.get("attendable", True) for e in s["weekend_events"]))
@@ -8754,6 +8781,14 @@ def main() -> None:
         render_combined_email_digest(*combined_email_args, preview=True, **combined_email_extra), encoding="utf-8"
     )
     logger.info("Wrote %s", OUTPUT_DIR / "combined-email-preview.html")
+    # ROADMAP.md item 481: what a reader tagged with each town would see.
+    reader_dir = OUTPUT_DIR / "email-preview"
+    reader_dir.mkdir(parents=True, exist_ok=True)
+    for sec in email_sections:
+        town_id = sec["region_url"].rstrip("/").rsplit("/", 1)[-1]
+        (reader_dir / f"{town_id}.html").write_text(
+            render_combined_email_digest(*combined_email_args, preview=True, reader_town=town_id, **combined_email_extra), encoding="utf-8"
+        )
 
     sponsor_availability = build_sponsor_availability(sponsors_cfg, region_summaries)
     sponsor_stats = {
