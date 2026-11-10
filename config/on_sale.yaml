@@ -14,6 +14,7 @@ items:
   # probe runner with a CloudFront 403; item 478's fallback). Re-probed every day; replaced by the probe's
   # reading if the wall lifts. Station times are left out: the timetable PDF was not read in full.
   - title: "Metra Holiday Train (UP Northwest)"
+    short: "Holiday Train tickets"   # item 483: the subject reads "🚂 Holiday Train tickets go on sale Monday · N things this weekend"
     emoji: "🚂"
     on_sale: "2026-11-16T12:00"
     line: "Metra Holiday Train on the UP Northwest line (Des Plaines, Mount Prospect, Arlington Heights, Palatine), Sat Dec 12: tickets go on sale Mon Nov 16 at noon at shop.metra.com, $10 each, five per purchase. Metra expects them to sell out fast."

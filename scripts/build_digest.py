@@ -2380,6 +2380,8 @@ def build_join_picks(sections: list[dict], limit: int = 3) -> list[dict]:
             {
                 "region_name": s["region_name"],
                 "attendable_events": prepare_email_events(attendable, limit=email_events_per_town(len(sections))),
+                "pick_pool": prepare_email_events([dict(e) for e in attendable]),  # item 484
+                "series": recurring_titles(s.get("upcoming_events") or []),
                 "color": EMAIL_TOWN_COLORS[i % len(EMAIL_TOWN_COLORS)][0],
             }
         )
@@ -5042,6 +5044,7 @@ def load_on_sale(now: datetime, region_ids: set[str] | None = None) -> list[dict
             continue
         items.append({
             "title": str(raw["title"]), "emoji": str(raw.get("emoji") or "⏰"), "line": str(raw["line"]).strip(), "url": url,
+            "short": str(raw.get("short") or "").strip(),
             "opens": opens, "towns": towns,
             "remind_url": reminder_calendar_url(f"{raw['title']}: tickets on sale", opens, url),
         })
@@ -6377,7 +6380,23 @@ def _fit_subject(titles: list[str], total: int, lone_leads: list[str] | None = N
     return f"{total} thing{'s' if total != 1 else ''} to do this weekend{places}"
 
 
-def build_combined_email_subject_line(sections: list[dict], now: datetime | None = None, top_picks: list[dict] | None = None) -> str:
+def on_sale_subject(on_sale: list[dict] | None, now: datetime | None, count: int) -> str | None:
+    """ROADMAP.md item 483: the week's time-critical item leads the subject when
+    a sale opens within 4 days of the send: "🚂 Holiday Train tickets go on sale
+    Monday · 38 things this weekend"."""
+    if not on_sale or now is None:
+        return None
+    local_now = now.astimezone(LOCAL_TZ).replace(tzinfo=None)
+    soon = [o for o in on_sale if o.get("short") and o["opens"] > local_now and (o["opens"].date() - local_now.date()).days <= 4]  # calendar days: a Thursday send covers Monday
+    if not soon:
+        return None
+    o = soon[0]
+    day = o["opens"].strftime("%A")
+    tail = f" · {count} things this weekend" if count else ""
+    return f"{o['emoji']} {o['short']} go on sale {day}{tail}"
+
+
+def build_combined_email_subject_line(sections: list[dict], now: datetime | None = None, top_picks: list[dict] | None = None, on_sale: list[dict] | None = None) -> str:
     """ROADMAP.md Phase 11 #105: one subject line for every region, since
     Buttondown's free-plan list has no per-region segmentation and every
     subscriber receives the same issue.
@@ -6401,6 +6420,9 @@ def build_combined_email_subject_line(sections: list[dict], now: datetime | None
     if now is not None and email_edition(now) == "holiday":
         return "Thanksgiving weekend: lights, shops & more"
     attendable = _round_robin_attendable(sections)
+    lead = on_sale_subject(on_sale, now, len(attendable))  # item 483
+    if lead:
+        return lead
     if not attendable:
         return f"This week across {_join_names([s['region_name'] for s in sections])}: what's coming up"
     # Item 222: lead with the most notable occasion, not whichever event
@@ -6725,6 +6747,34 @@ EMAIL_TOWN_COLORS: tuple[tuple[str, str], ...] = (
 )
 
 
+# ROADMAP.md item 484: weekly programmes stay in the town sections but yield
+# "Don't miss" to one-off events.
+RECURRING_TITLE = re.compile(r"\b(?:story ?time|storytime|playgroup|play group|family time|baby ?time|toddler time|lapsit|wonderful walkers)\b", re.IGNORECASE)
+
+
+def recurring_titles(upcoming: list[dict], days: int = 28) -> set[str]:
+    """Normalised titles that occur on 3 or more dates within `days` of the first."""
+    by_title: dict[str, set] = {}
+    for e in upcoming or []:
+        try:
+            d = datetime.fromisoformat(e["date_iso"]).date()
+        except (KeyError, TypeError, ValueError):
+            continue
+        by_title.setdefault(" ".join(_title_words(e.get("title") or "", keep_order=True)), set()).add(d)
+    out = set()
+    for title, dates in by_title.items():
+        ordered = sorted(dates)
+        if any(len([d for d in ordered if first <= d <= first + timedelta(days=days)]) >= 3 for first in ordered):
+            out.add(title)
+    return out
+
+
+def is_recurring_programme(event: dict, series: set[str] | None = None) -> bool:
+    title = event.get("title") or ""
+    return bool(RECURRING_TITLE.search(title) or event.get("sessions") or event.get("recurrence_note")
+                or (series and " ".join(_title_words(title, keep_order=True)) in series))
+
+
 def pick_email_top_picks(blocks: list[dict], limit: int = 3) -> list[dict]:
     """Up to `limit` "Don't miss" events for the top of the combined email,
     at most one per town: the most family-relevant attendable event in each
@@ -6734,16 +6784,19 @@ def pick_email_top_picks(blocks: list[dict], limit: int = 3) -> list[dict]:
     least two towns with something to pick, or the section is skipped."""
     candidates, spare = [], []
     for block in blocks:
-        pool = [e for e in block.get("attendable_events") or [] if not e.get("sponsored_by") and is_pick_worthy(e)]
+        pool = [e for e in (block.get("pick_pool") or block.get("attendable_events") or []) if not e.get("sponsored_by") and is_pick_worthy(e)]
         if not pool:
             continue  # item 380: a town with nothing good contributes no pick
-        ranked = sorted(pool, key=lambda e: (-family_relevance(e), e.get("date_iso") or "9999"))
+        series = block.get("series") or set()
+        for e in pool:
+            e["_recurring"] = is_recurring_programme(e, series)  # item 484
+        ranked = sorted(pool, key=lambda e: (e["_recurring"], -family_relevance(e), e.get("date_iso") or "9999"))
         color = block.get("color", EMAIL_TOWN_COLORS[0][0])
         candidates.append(dict(ranked[0], pick_town=block["region_name"], pick_color=color))
         spare += [dict(e, pick_town=block["region_name"], pick_color=color) for e in ranked[1:]]
     if len(candidates) < 2:
         return []
-    key = lambda e: (-family_relevance(e), e.get("date_iso") or "9999")  # noqa: E731
+    key = lambda e: (e.get("_recurring", False), -family_relevance(e), e.get("date_iso") or "9999")  # noqa: E731
     candidates.sort(key=key)
     if len(candidates) < limit:  # the empty towns' slots go to the strongest events elsewhere
         spare.sort(key=key)
@@ -6899,6 +6952,8 @@ def render_combined_email_digest(sections: list[dict], weekend_date_range: str, 
             "region_name": s["region_name"],
             "region_url": s["region_url"],
             "attendable_events": prepare_email_events(attendable_events, limit=email_events_per_town(len(sections))),
+            "pick_pool": prepare_email_events([dict(e) for e in attendable_events]),  # item 484
+            "series": recurring_titles(s.get("upcoming_events") or []),
             "indoor_ideas": thin_week_ideas(s.get("evergreen", []), len(attendable_events)) if attendable_events else [],
             "informational_events": informational_events,
             "evergreen_highlights": _pick_evergreen_highlights(s.get("evergreen", []), limit=2),
@@ -6960,7 +7015,7 @@ def render_combined_email_digest(sections: list[dict], weekend_date_range: str, 
         empty_regions_summary=empty_regions_summary,
         house_ad=house_ad,
         weekend_date_range=weekend_date_range,
-        subject_line=build_combined_email_subject_line(sections, now, top_picks),
+        subject_line=build_combined_email_subject_line(sections, now, top_picks, on_sale),
         preheader=build_combined_email_preheader(sections),
         newsletter=newsletter or {"configured": False},
         preview=preview,
@@ -7242,6 +7297,62 @@ CLOSURE_EVENT_WORDS = re.compile(
 def is_closure_title(title: str) -> bool:
     # Short titles only: a news blob that mentions a closure somewhere in its body is news, not a closure notice.
     return len(title or "") <= 100 and bool(CLOSURE_REMOVE_TITLE.search(title or "")) and not CLOSURE_EVENT_WORDS.search(title or "")
+
+
+# ROADMAP.md item 485: times that can't be right, and school-admin calendar entries.
+EVENING_TITLE = re.compile(r"\b(?:night|evening|bash|party|dance|concert|movie|prom|gala)\b", re.IGNORECASE)
+SCHOOL_ADMIN_TITLE = re.compile(
+    r"\b(?:end of (?:the )?(?:first |second |third |fourth |1st |2nd |3rd |4th )?(?:trimester|quarter|semester|grading period)|"
+    r"grading period|report cards?|progress reports?|board (?:of education )?meeting|board of education)\b",
+    re.IGNORECASE,
+)
+NO_SCHOOL_TEXT = re.compile(r"\bno school\b|\bnon[- ]attendance\b|\bschool closed\b|\bno classes\b", re.IGNORECASE)
+
+
+def is_time_suspect(event: dict) -> bool:
+    """An evening-type title with a start before 9 AM (a feed's AM/PM slip, like
+    "Teen Night" at 07:00 with an end at 21:30)."""
+    try:
+        start = datetime.fromisoformat(event.get("date_iso") or "")
+    except ValueError:
+        return False
+    return time(0, 0) < start.time() < time(9, 0) and bool(EVENING_TITLE.search(event.get("title") or ""))
+
+
+def clear_suspect_times(blocks: list[dict]) -> int:
+    """Item 485: never publish a time we believe is wrong, and never guess the
+    PM. A suspect event keeps its date and loses its time (it shows the date
+    alone and becomes an all-day calendar entry); each one is logged with its
+    source and the raw value so the publisher's listing can be checked."""
+    cleared = 0
+    for block in blocks:
+        for e in block.get("events", []):
+            if is_time_suspect(e):
+                logger.warning("time_suspect: %r from %s starts at %s; published without a time", e.get("title"), e.get("source") or block.get("section"), e["date_iso"])
+                e["date_iso"] = e["date_iso"][:10] + "T00:00:00"
+                e["time_suspect"] = True
+                e.pop("end_iso", None)
+                e["ics_href"] = build_ics_data_uri(e)
+                e["google_calendar_url"] = build_google_calendar_url(e, event_location_text(e))
+                cleared += 1
+    return cleared
+
+
+def drop_school_admin(blocks: list[dict]) -> list[dict]:
+    """Item 485: school-calendar entries like "End of First Trimester" or
+    "Board Meeting" are not things to do; they leave every list unless they
+    say there is no school (then the days-off box still needs them)."""
+    out = []
+    for block in blocks:
+        keep = []
+        for e in block.get("events", []):
+            text = f"{e.get('title') or ''} {e.get('detail') or ''}"
+            if SCHOOL_ADMIN_TITLE.search(e.get("title") or "") and not NO_SCHOOL_TEXT.search(text):
+                logger.info("School-admin entry left out of the lists: %r (%s)", e.get("title"), block.get("section"))
+                continue
+            keep.append(e)
+        out.append(dict(block, events=keep) if len(keep) != len(block.get("events", [])) else block)
+    return out
 
 
 def split_closures(blocks: list[dict]) -> tuple[list[dict], list[dict]]:
@@ -8005,6 +8116,8 @@ def main() -> None:
         blocks, _partisan_excluded = filter_partisan_events(blocks)
         blocks = filter_past_events(blocks, local_today)
         blocks, removed_closures = split_closures(blocks)  # item 444
+        blocks = drop_school_admin(blocks)  # item 485
+        clear_suspect_times(blocks)  # item 485
         annotate_registration(blocks, local_today)
         # ROADMAP.md item 173: same single-insertion-point reasoning as
         # item 171's filter above - collapsing duplicates here, before

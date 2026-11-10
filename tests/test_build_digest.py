@@ -7359,7 +7359,8 @@ def test_on_sale_line_renders_until_the_sale_opens_and_only_from_a_sourced_entry
     assert build_digest.load_on_sale(before, {"wheeling-60090"}) == []  # not Wheeling's line
     sections = [{"region_name": "Palatine", "region_url": "https://x/p/", "weekend_events": []}]
     html = build_digest.render_combined_email_digest(sections, "Nov 13–15", before, on_sale=items)
-    assert "⏰ On sale:" in html and "⏰ Remind me" in html and "https://metra.com/HolidayTrains" in html
+    assert "⏰ ON SALE MONDAY AT NOON" in html and "⏰ Remind me" in html and "https://metra.com/HolidayTrains" in html
+    assert html.index("⏰ ON SALE") < html.index("WITHIN TEN") + 2000  # item 483: its own card near the top
     santa = build_digest.render_santa_page([{"region_name": "Palatine", "region_url": "https://x/p/", "events": []}], before, on_sale=items)
     assert "⏰ On sale:" in santa
 
@@ -7431,3 +7432,59 @@ def test_a_source_with_its_own_max_items_is_judged_against_that_cap():
     health = {"r:Big library": [500, 500, 500], "r:Other": [500, 500, 500]}
     assert build_digest.detect_truncated_sources(health, caps={"r:Big library": 1000}) == ["r:Other"]
     assert build_digest.detect_truncated_sources({"r:Big library": [1000] * 3}, caps={"r:Big library": 1000}) == ["r:Big library"]
+
+
+
+def _metra_item():
+    return {"title": "Metra Holiday Train (UP Northwest)", "short": "Holiday Train tickets", "emoji": "🚂", "line": "Tickets go on sale Mon Nov 16 at noon.",
+            "url": "https://metra.com/holidaytrains", "opens": datetime(2026, 11, 16, 12, 0), "towns": [], "remind_url": "https://calendar.google.com/x"}
+
+
+def test_subject_leads_with_a_sale_opening_within_four_days_and_the_card_sits_above_dont_miss():
+    # ROADMAP.md item 483.
+    def ev(title, town, iso):
+        return {"title": title, "url": "https://x/" + title.replace(" ", "-"), "date": "Sat", "date_iso": iso, "tags": ["kid_friendly", "free"], "detail": "d", "attendable": True}
+    sections = [{"region_name": t, "region_url": f"https://x/{t}/", "weekend_events": [ev(f"{t} Craft Fair", t, "2026-11-14T10:00:00"), ev(f"{t} Concert", t, "2026-11-15T14:00:00")]} for t in ("Palatine", "Wheeling")]
+    send = datetime(2026, 11, 12, 13, tzinfo=timezone.utc)
+    assert build_digest.build_combined_email_subject_line(sections, send, None, [_metra_item()]) == "🚂 Holiday Train tickets go on sale Monday · 4 things this weekend"
+    assert "Holiday Train" not in build_digest.build_combined_email_subject_line(sections, send, None, [])
+    far = dict(_metra_item(), opens=datetime(2026, 11, 20, 12, 0))
+    assert "Holiday Train" not in build_digest.build_combined_email_subject_line(sections, send, None, [far])
+    html = build_digest.render_combined_email_digest(sections, "Nov 13–15", send, on_sale=[_metra_item()])
+    assert html.index("ON SALE MONDAY") < html.index("DON'T MISS")
+
+
+def test_dont_miss_prefers_one_off_events_over_weekly_programmes():
+    # ROADMAP.md item 484.
+    def ev(title, iso, tags=("kid_friendly", "free")):
+        return {"title": title, "url": "https://x/" + title.replace(" ", "-"), "date": "Sat", "date_iso": iso, "tags": list(tags), "detail": "d", "attendable": True}
+    story = ev("Toddler Storytime", "2026-11-13T10:00:00")
+    craft = ev("Artsgiving Crafty Cornucopia", "2026-11-14T10:00:00", ("kid_friendly",))
+    blocks = [
+        {"region_name": "Mount Prospect", "attendable_events": [story], "pick_pool": [story, craft], "series": set()},
+        {"region_name": "Wheeling", "attendable_events": [ev("Family Time", "2026-11-14T09:00:00")], "series": set()},
+    ]
+    picks = build_digest.pick_email_top_picks(blocks)
+    assert picks[0]["title"] == "Artsgiving Crafty Cornucopia"  # the one-off beats the storytime despite a lower score
+    only_weekly = [{"region_name": "A", "attendable_events": [story], "series": set()}, {"region_name": "B", "attendable_events": [ev("Family Time", "2026-11-14T09:00:00")], "series": set()}]
+    assert {p["title"] for p in build_digest.pick_email_top_picks(only_weekly)} == {"Toddler Storytime", "Family Time"}  # still picks when nothing else exists
+    upcoming = [ev("Lego Club", f"2026-11-{d:02d}T16:00:00") for d in (3, 10, 17)] + [ev("Holiday Book Sale", "2026-11-14T09:00:00")]
+    assert build_digest.recurring_titles(upcoming) == {"lego club"}
+
+
+def test_suspect_evening_times_lose_their_time_and_school_admin_entries_leave_the_lists():
+    # ROADMAP.md item 485.
+    teen = {"title": "Teen Night - Bikini Bottom Bash", "url": "https://www.ahpd.org/event/x/", "date_iso": "2026-11-13T07:00:00", "end_iso": "2026-11-13T21:30:00", "source": "AHPD", "town": "Arlington Heights", "detail": ""}
+    morning = {"title": "Toddler Storytime", "url": "u", "date_iso": "2026-11-13T09:30:00", "source": "Lib", "town": "AH"}
+    blocks = [{"section": "Park District Events", "events": [teen, morning]}]
+    assert build_digest.clear_suspect_times(blocks) == 1
+    assert teen["date_iso"] == "2026-11-13T00:00:00" and teen["time_suspect"] and "T07" not in (teen["google_calendar_url"] or "")
+    assert morning["date_iso"] == "2026-11-13T09:30:00"
+    school = [{"section": "School Calendar", "events": [
+        {"title": "End of First Trimester (Elementary)", "date_iso": "2026-11-13T00:00:00"},
+        {"title": "Board of Education Meeting", "date_iso": "2026-11-12T19:00:00"},
+        {"title": "No School - End of Trimester Grading Day", "detail": "No school for students", "date_iso": "2026-11-16T00:00:00"},
+        {"title": "Winter Concert", "date_iso": "2026-12-10T19:00:00"},
+    ]}]
+    kept = [e["title"] for e in build_digest.drop_school_admin(school)[0]["events"]]
+    assert kept == ["No School - End of Trimester Grading Day", "Winter Concert"]

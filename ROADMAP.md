@@ -20696,7 +20696,7 @@ cross-promote with, a growth route that hasn't been tried.
 
 #### P1 (new)
 
-483. **The subject line leads with the week's time-critical item.** Build
+483. ✅ DONE (on_sale_subject: a sale opening within 4 calendar days leads the subject, "🚂 Holiday Train tickets go on sale Monday · N things this weekend", from the entry's `short`; the on-sale card sits directly under the masthead with Official page and ⏰ Remind me buttons) **The subject line leads with the week's time-critical item.** Build
      loop, the subject builder:
 
      - When an `on_sale:` entry or a sign-up opens **within 4 days of the
@@ -20712,7 +20712,7 @@ cross-promote with, a growth route that hasn't been tried.
      with it and the card sits above "Don't miss". With no entry the
      subject is unchanged.
 
-484. **"Don't miss" prefers one-off events over weekly programmes.**
+484. ✅ DONE (picks ranked from each town's full weekend list, not the capped one; storytime/playgroup/family-time titles, merged series and titles on 3+ dates in 28 days rank after one-off events; they still fill the slots when nothing else exists) **"Don't miss" prefers one-off events over weekly programmes.**
      Build loop, the pick ranking:
 
      - Demote an event that recurs **weekly**, using item 381's series
@@ -20728,7 +20728,7 @@ cross-promote with, a growth route that hasn't been tried.
      Tests: a weekly storytime loses its pick slot to a one-off family
      event, and wins it back when there are no one-off events.
 
-485. **Two data checks: times that can't be right, and school-admin
+485. ✅ DONE (AHPD's own feed says DTSTART 07:00 and DTEND 21:30 for Teen Night, so it is the publisher's slip, not our mapper; an evening-type title starting before 9 AM is now published without a time and logged as time_suspect, never guessed. School-admin titles leave the lists unless they say no school) **Two data checks: times that can't be right, and school-admin
      entries.** Build loop:
 
      - **Time sanity:** if a title says *night*, *evening*, *bash*,
