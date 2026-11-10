@@ -24,6 +24,10 @@
     "exception_class": "HTTPError",
     "status_code": 404
   },
+  "palatine-60067:Palatine Public Library District \u2014 Events": {
+    "exception_class": "HTTPError",
+    "status_code": 403
+  },
   "palatine-60067:Salt Creek Rural Park District \u2014 Events": {
     "route": "month_ics"
   },
