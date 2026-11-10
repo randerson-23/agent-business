@@ -220,6 +220,7 @@ doesn't re-suggest something already shipped.
 
 **Build queue (by deadline; refreshed by the research loop, item 346).**
 Pick from the top unless the owner has flagged something else:
+0. **488** (the on-sale subject counts from Thursday's delivery date, not the Wednesday build; **before Wed Nov 11, 22:37 UTC**), then **487** (per-reader email polish), then **486** (labelled $25/week launch rate within the plan's range).
 0. **483, 484, 485** (before **Thursday's send, Nov 12**: subject and a top card for the Metra on-sale; one-off events over weekly storytimes in Don't miss; the 7 AM teen-night time bug and school-admin entries), then **481** for Nov 19.
 0. **480** with **482** (Elk Grove Village as town six, site first: 48.5 events a week against Rolling Meadows' 14.5; its tree lighting Nov 27), then **481** (each reader's town first in the email; test-send before the Nov 19 issue).
 0. **477** (fill the Metra entry from Metra's own pages as indexed; withdraw the owner ask; by the **Nov 12 send**), then **478** with **475** and **479** (CPKC Franklin Park stop, Mon Nov 23, 5:30 PM, in "Just outside" and on `/give/`, with distance).
@@ -20759,6 +20760,83 @@ for these towns (none found; a non-item), and **Buttondown's lack of a
 recommendations network**. The design/UX angle is **Thursday's issue**:
 the time-critical item buried, storytimes as the top picks, a kids' night
 at 7 AM.
+
+#### Research pass 2026-11-10, evening (hundred-and-thirty-sixth pass)
+
+Today the build loop shipped items 483–485 (a sale-first subject and card,
+one-off picks, suspect times and school-admin entries) and built item 481's
+per-reader layout as previews (`/email-preview/<town>.html`). The live send
+is unchanged until a test send. This pass checks that Thursday's subject
+will actually switch, reads the Mount Prospect reader's preview, and looks
+at what the nearest competitor charges local businesses.
+
+| Angle | What it is / what we found | Why it matters here |
+|---|---|---|
+| **Will Thursday's subject lead with the Metra sale?** (`on_sale_subject` in `scripts/build_digest.py`; `send-newsletter.yml`; `data/send_history.json`) | `on_sale_subject` counts **calendar days from the build's own clock** (`now`) and needs the sale to open **within 4 days**. The send job's cron is **Wednesday 22:37 UTC** (16:37 CT), and its runs have been hours late. Past sends were built Wednesday evening Central (e.g. **2026-11-05T02:46Z = Wed Nov 4, 8:46 PM CT**). Built on **Wed Nov 11**, Monday Nov 16 is **5** days away, so **the subject will not switch**. Today's preview still reads *"Friends Holiday Book Sale and 36 more this weekend"* | Item 483 shipped, but its main effect, the subject, misses the one send it was built for. The card under the masthead does render. The fix is a one-line change of reference date, and tomorrow's run is the last chance (item 488) |
+| **Macaroni KID Schaumburg–Hoffman Estates: audience and price** (its *"Advertising and partnering"* article; Schaumburg Business Association member listings; Macaroni KID rate pages from other markets for comparison) | Its territory includes **Arlington Heights, Elk Grove Village and Rolling Meadows**. The publisher states **1,150+ local parents** receive the weekly email, at a **55–70% open rate** (a Feb 2026 listing). It advertises a **small-business campaign** (a website ad, a directory listing and a monthly social post) **"for as little as $75 per month"**. No full rate card is published | A local business choosing between the two sees **$75/month for 1,150 parents** against this site's **Weekly Spot at $50/week or $175/month**, with the reader count hidden until 50. Nobody will pay more for less. BUSINESS_PLAN.md's own words set the range at **"a $25–$75/week sponsor spot"**, so a launch rate at the bottom of that range is within the plan (item 486) |
+| **The Mount Prospect reader's preview (design/UX)** (`docs/email-preview/mount-prospect-60056.html`) | It works: the on-sale card under the masthead, *Don't miss*, Mount Prospect in full, then **one line per other town**. Four flaws:<br>**(a)** The hero still says *"This weekend, across the northwest suburbs · 37 things to do in 5 towns"*, not the reader's town.<br>**(b)** Mount Prospect shows **4** events, though item 481 said up to six.<br>**(c)** The one-liners pick titles in **feed order**: *"Senior Center: Travelogue"* (Arlington Heights) and *"A Doll's House by Henrik Ibsen"* (Palatine) lead two of them.<br>**(d)** Mount Prospect's first event is ***"School Board Member Day"*** (D57), a school-admin entry item 485's list doesn't catch | The per-reader email is the change that lets the issue carry six towns, and it goes live once tested. Its one-liners are all a reader sees of four towns, so they need the family ranking the picks already use (item 487) |
+
+#### P1 (new)
+
+488. **Count the sale window from the scheduled delivery day, not the
+     build clock.** Build loop, **before Wednesday Nov 11, 22:37 UTC**:
+
+     - `on_sale_subject` (and the card's *"On sale Monday"* wording)
+       compares against **the issue's delivery date**, the Thursday the
+       schedule-mode send is set for, which the send job already knows.
+       Use the build time only for the site preview.
+     - Keep the 4-day rule, now measured from Thursday.
+
+     Tests: a build at Wed 20:46 CT for a Thursday delivery with a
+     Monday-noon sale leads the subject, and a sale the following
+     Friday doesn't.
+
+#### P2 (new)
+
+486. **A labelled launch rate within the plan's own range.** Build loop,
+     `config/sponsors.yaml` and `/sponsor/`:
+
+     - Add `launch_rate:` with **Weekly Spot $25/week or $75/month**
+       (Starter 3 weeks $65), **on by default until the list passes 100
+       subscribers**. Show it as ***"Launch rate: $25/week while we
+       grow; $50/week from 100 readers"***, the regular price struck
+       through beside it.
+     - Annual Partner and Neighborhood Authority keep their prices but
+       lose the *"Recommended"* badge until the list passes 100.
+     - BUSINESS_PLAN.md sets *"a $25–$75/week sponsor spot"*, so this
+       is within the plan. **The owner can switch it off with one line**
+       (`launch_rate: null`). It adds nothing to the Needs Ryan list.
+
+     Tests: the launch price shows below the threshold and the regular
+     price above it, and the badge is hidden below 100.
+
+487. **Polish the per-reader email before it goes live.** Build loop,
+     item 481's layout:
+
+     - **(a)** For a tagged reader, the hero says ***"This weekend in
+       Mount Prospect & nearby · N things"***.
+     - **(b)** The reader's town shows **up to six** events.
+     - **(c)** The one-liners take their two titles from **the same
+       family ranking as the picks** (item 484), so no senior or adult
+       title leads.
+     - **(d)** Extend item 485's school-admin list with *board member
+       day*, *staff development*, *institute day* (kept for the days-off
+       box) and *appreciation day*.
+
+     Tests: the hero names the town for a tagged reader, the six-event
+     cap, a one-liner skips *"Senior Center: Travelogue"* when a family
+     title exists, and *"School Board Member Day"* leaves the lists.
+
+Re-rank: **488 goes to the top of the build queue with a hard deadline of
+Wednesday 22:37 UTC.** **487** follows, before 481 goes live. **486** next:
+it's the first pricing move that matches what a local buyer can compare
+against.
+
+Competitors reviewed this pass: **Macaroni KID Schaumburg–Hoffman
+Estates**, now with its audience (1,150+ parents, 55–70% opens) and
+entry price (from $75/month), which covers Arlington Heights and Elk
+Grove Village. The design/UX angle is **the Mount Prospect reader's
+per-town preview**.
 
 
 ## Working agreements for autonomous iteration
