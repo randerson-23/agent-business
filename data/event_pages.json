@@ -375,6 +375,29 @@
   "url": "https://www.ahpd.org/event/pumpkin-smash-2026/",
   "venue": null
  },
+ "e/2026-11-13-family-craft-friday-paint-a-gzhel-plate-at-the-branch/": {
+  "date_iso": "2026-11-13T17:30:00",
+  "detail": "Friday, November 13 2026 5:30pm - 7:00pm \n Join us for a special cultural craft session to paint a decorative plate in a tradition of Russian Gzhel porcelain…",
+  "detail_long": "Join us for a special cultural craft session to paint a decorative plate in a tradition of Russian Gzhel porcelain with its vivid blue patterns on white background. While supplies last. TRB",
+  "first_seen": "2026-11-10",
+  "ics_href": "data:text/calendar;charset=utf-8,BEGIN%3AVCALENDAR%0D%0AVERSION%3A2.0%0D%0APRODID%3A-//Within%20Ten//EN%0D%0ABEGIN%3AVEVENT%0D%0ADTSTART%3A20261113T173000%0D%0ADTEND%3A20261113T183000%0D%0ASUMMARY%3AFamily%20Craft%20Friday%3A%20Paint%20A%20Gzhel%20Plate%20%7C%20At%20The%20Branch%0D%0ADESCRIPTION%3AFriday%5C%2C%20November%2013%202026%205%3A30pm%20-%207%3A00pm%20%5Cn%20Join%20us%20for%20a%20special%20cultural%20craft%20session%20to%20paint%20a%20decorative%20plate%20in%20a%20tradition%20of%20Russian%20Gzhel%20porcelain%E2%80%A6%0D%0ALOCATION%3AIndian%20Trails%20Public%20Library%5C%2C%20355%20Schoenbeck%20Rd.%5C%2C%20Wheeling%0D%0AURL%3Ahttps%3A//indiantrails.libnet.info/event/17087741%0D%0AEND%3AVEVENT%0D%0AEND%3AVCALENDAR%0D%0A",
+  "path": "e/2026-11-13-family-craft-friday-paint-a-gzhel-plate-at-the-branch/",
+  "postal_code": null,
+  "region_id": "wheeling-60090",
+  "region_url": "https://withintenmiles.com/wheeling-60090/",
+  "source": "Indian Trails Public Library — Events",
+  "sponsored_by": null,
+  "state": "IL",
+  "street_address": "355 Schoenbeck Rd.",
+  "tags": [
+   "indoor",
+   "kid_friendly"
+  ],
+  "title": "Family Craft Friday: Paint A Gzhel Plate | At The Branch",
+  "town": "Wheeling",
+  "url": "https://indiantrails.libnet.info/event/17087741",
+  "venue": "Indian Trails Public Library"
+ },
  "e/2026-11-13-preschool-storytime/": {
   "date_iso": "2026-11-13T11:00:00",
   "detail": "Friday, November 13 2026 11:00am - 11:30am \n Boost early literacy skills with books, movement and songs. TR",
@@ -467,6 +490,30 @@
   "town": "Arlington Heights",
   "url": "https://www.ahml.info/scheduling/reservation/224197",
   "venue": "Arlington Heights Memorial Library"
+ },
+ "e/2026-11-14-friends-holiday-book-sale/": {
+  "date_iso": "2026-11-14T09:00:00",
+  "detail": "Saturday, November 14 2026 9:00am - 3:00pm \n Just in time for the holidays! All items have been specially selected for this sale so you can find the right…",
+  "detail_long": "Just in time for the holidays! All items have been specially selected for this sale so you can find the right gift for the adults, teens, and children on your list.",
+  "first_seen": "2026-11-10",
+  "ics_href": "data:text/calendar;charset=utf-8,BEGIN%3AVCALENDAR%0D%0AVERSION%3A2.0%0D%0APRODID%3A-//Within%20Ten//EN%0D%0ABEGIN%3AVEVENT%0D%0ADTSTART%3A20261114T090000%0D%0ADTEND%3A20261114T100000%0D%0ASUMMARY%3AFriends%20Holiday%20Book%20Sale%0D%0ADESCRIPTION%3ASaturday%5C%2C%20November%2014%202026%209%3A00am%20-%203%3A00pm%20%5Cn%20Just%20in%20time%20for%20the%20holidays%21%20All%20items%20have%20been%20specially%20selected%20for%20this%20sale%20so%20you%20can%20find%20the%20right%E2%80%A6%0D%0ALOCATION%3AMount%20Prospect%20Public%20Library%5C%2C%20125%20S%20Emerson%20St%5C%2C%20Mount%20Prospect%0D%0AURL%3Ahttps%3A//mppl.libnet.info/event/13845873%0D%0AEND%3AVEVENT%0D%0AEND%3AVCALENDAR%0D%0A",
+  "path": "e/2026-11-14-friends-holiday-book-sale/",
+  "postal_code": null,
+  "region_id": "mount-prospect-60056",
+  "region_url": "https://withintenmiles.com/mount-prospect-60056/",
+  "source": "Mount Prospect Public Library — Events",
+  "sponsored_by": null,
+  "state": "IL",
+  "street_address": "125 S Emerson St",
+  "tags": [
+   "indoor",
+   "kid_friendly",
+   "teen"
+  ],
+  "title": "Friends Holiday Book Sale",
+  "town": "Mount Prospect",
+  "url": "https://mppl.libnet.info/event/13845873",
+  "venue": "Mount Prospect Public Library"
  },
  "e/2026-11-27-holiday-tree-lighting-ceremony/": {
   "date_iso": "2026-11-27T16:00:00",

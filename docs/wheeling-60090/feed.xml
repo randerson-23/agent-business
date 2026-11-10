@@ -3,8 +3,8 @@
 <channel>
   <title>Within Ten — Upcoming events in Wheeling</title>
   <link>https://withintenmiles.com/</link>
-  <description>Upcoming events in Wheeling, soonest first - aggregated automatically from village, library, park district and school-district calendars. This build reached 23 of 30 configured sources. 1 source is shown from its last update, up to 1 hour ago.</description>
-  <lastBuildDate>Tue, 10 Nov 2026 06:20:19 +0000</lastBuildDate>
+  <description>Upcoming events in Wheeling, soonest first - aggregated automatically from village, library, park district and school-district calendars. This build reached 20 of 30 configured sources. 4 sources are shown from their last update, up to 8 hours ago.</description>
+  <lastBuildDate>Tue, 10 Nov 2026 14:07:52 +0000</lastBuildDate>
   <item>
     <title>Wheeling: Noisy Time</title>
     <link>https://withintenmiles.com/wheeling-60090/#ev-noisy-time-2026-11-10</link>
@@ -146,15 +146,6 @@
  Create a one of a kind string of snowflakes using pour paint techniques. Dress to get messy. R Official listing: https://indiantrails.libnet.info/event/17127888</description>
     <pubDate>Wed, 11 Nov 2026 18:00:00 +0000</pubDate>
     <source url="https://indiantrails.libnet.info/event/17127888">Indian Trails Public Library — Events</source>
-  </item>
-  <item>
-    <title>Wheeling: Foundation Board Meeting</title>
-    <link>https://withintenmiles.com/wheeling-60090/#ev-foundation-board-meeting-2026-11-11</link>
-    <guid isPermaLink="true">https://withintenmiles.com/wheeling-60090/#ev-foundation-board-meeting-2026-11-11</guid>
-    <description>Wednesday, November 11 2026 7:00pm - 8:30pm 
- Foundation Board Meeting Official listing: https://indiantrails.libnet.info/event/12499302</description>
-    <pubDate>Wed, 11 Nov 2026 19:00:00 +0000</pubDate>
-    <source url="https://indiantrails.libnet.info/event/12499302">Indian Trails Public Library — Events</source>
   </item>
   <item>
     <title>Wheeling: Intermediate Excel</title>
@@ -344,15 +335,6 @@
     <source url="https://www.wheelingil.gov/common/modules/iCalendar/iCalendar.aspx?feed=calendar&amp;catID=14">Village of Wheeling — Calendar</source>
   </item>
   <item>
-    <title>Wheeling: Library Board Meeting</title>
-    <link>https://withintenmiles.com/wheeling-60090/#ev-library-board-meeting-2026-11-18</link>
-    <guid isPermaLink="true">https://withintenmiles.com/wheeling-60090/#ev-library-board-meeting-2026-11-18</guid>
-    <description>Wednesday, November 18 2026 7:00pm - 9:00pm 
- The Board of Trustees meet for its monthly workshop and planning session. This meeting is open to the public.… Official listing: https://indiantrails.libnet.info/event/16198756</description>
-    <pubDate>Wed, 18 Nov 2026 19:00:00 +0000</pubDate>
-    <source url="https://indiantrails.libnet.info/event/16198756">Indian Trails Public Library — Events</source>
-  </item>
-  <item>
     <title>Wheeling: Advanced Excel</title>
     <link>https://withintenmiles.com/wheeling-60090/#ev-advanced-excel-2026-11-18</link>
     <guid isPermaLink="true">https://withintenmiles.com/wheeling-60090/#ev-advanced-excel-2026-11-18</guid>
@@ -451,6 +433,24 @@ Hoopla or another library app?… Official listing: https://indiantrails.libnet.
  Get started with TinkerCAD, a free 3D modeling program. Learn the basics of building with this easy-to-use… Official listing: https://indiantrails.libnet.info/event/17428279</description>
     <pubDate>Mon, 23 Nov 2026 17:30:00 +0000</pubDate>
     <source url="https://indiantrails.libnet.info/event/17428279">Indian Trails Public Library — Events</source>
+  </item>
+  <item>
+    <title>Wheeling: Middle School Book Club | Grades 6-8</title>
+    <link>https://withintenmiles.com/wheeling-60090/#ev-middle-school-book-club-grades-6-8-2026-11-23</link>
+    <guid isPermaLink="true">https://withintenmiles.com/wheeling-60090/#ev-middle-school-book-club-grades-6-8-2026-11-23</guid>
+    <description>Monday, November 23 2026 7:00pm - 8:00pm 
+ Book pickup September 28-November 16 at the Youth Services Desk. Mika knows she will struggle to survive the harsh… Official listing: https://indiantrails.libnet.info/event/17103897</description>
+    <pubDate>Mon, 23 Nov 2026 19:00:00 +0000</pubDate>
+    <source url="https://indiantrails.libnet.info/event/17103897">Indian Trails Public Library — Events</source>
+  </item>
+  <item>
+    <title>Wheeling: Rise &amp; Read Morning Book Discussion</title>
+    <link>https://withintenmiles.com/wheeling-60090/#ev-rise-read-morning-book-discussion-2026-11-24</link>
+    <guid isPermaLink="true">https://withintenmiles.com/wheeling-60090/#ev-rise-read-morning-book-discussion-2026-11-24</guid>
+    <description>Tuesday, November 24 2026 10:30am - 11:30am 
+ Registration and book pickup begins October 13. A book about murder, deception, and the pursuit of the truth. R Official listing: https://indiantrails.libnet.info/event/14170862</description>
+    <pubDate>Tue, 24 Nov 2026 10:30:00 +0000</pubDate>
+    <source url="https://indiantrails.libnet.info/event/14170862">Indian Trails Public Library — Events</source>
   </item>
 </channel>
 </rss>
