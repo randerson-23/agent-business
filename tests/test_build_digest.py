@@ -7424,3 +7424,10 @@ def test_elk_grove_is_live_on_the_site_but_only_a_new_line_in_the_email():
     html = build_digest.render_combined_email_digest(sections, "Nov 13–15", datetime(2026, 11, 11, 15, tzinfo=timezone.utc), new_towns=[{"name": "Elk Grove Village", "url": "https://x/elk-grove-village-60007/"}])
     assert "<strong>New:</strong> Elk Grove Village" in html and ">Elk Grove Village</a>" not in html  # a line, not a town section
     assert build_digest.SITE_BASE_URL + "elk-grove-village-60007/" in build_digest.collect_sitemap_urls([{"id": "elk-grove-village-60007", "name": "Elk Grove Village", "path": "elk-grove-village-60007/"}])
+
+
+def test_a_source_with_its_own_max_items_is_judged_against_that_cap():
+    # ROADMAP.md item 480.
+    health = {"r:Big library": [500, 500, 500], "r:Other": [500, 500, 500]}
+    assert build_digest.detect_truncated_sources(health, caps={"r:Big library": 1000}) == ["r:Other"]
+    assert build_digest.detect_truncated_sources({"r:Big library": [1000] * 3}, caps={"r:Big library": 1000}) == ["r:Big library"]
