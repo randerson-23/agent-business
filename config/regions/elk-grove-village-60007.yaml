@@ -20,7 +20,9 @@ sources:
     type: rss
     default_tags: ["indoor"]
     veto_tags: ["outdoor"]
-    url: "https://egvpl.libnet.info/feeds?data=eyJmZWVkVHlwZSI6InJzcyIsImZpbHRlcnMiOnsibG9jYXRpb24iOlsiYWxsIl0sImFnZXMiOlsiYWxsIl0sInR5cGVzIjpbImFsbCJdLCJ0YWdzIjpbXSwidGVybSI6IiIsImRheXMiOjMwfX0="
+    # ROADMAP.md item 480: the feed asks for 21 days, not 30 - 30 days returned 500 items, the per-source cap
+    # that detect_truncated_sources fails the build on after three builds.
+    url: "https://egvpl.libnet.info/feeds?data=eyJmZWVkVHlwZSI6InJzcyIsImZpbHRlcnMiOnsibG9jYXRpb24iOlsiYWxsIl0sImFnZXMiOlsiYWxsIl0sInR5cGVzIjpbImFsbCJdLCJ0YWdzIjpbXSwidGVybSI6IiIsImRheXMiOjIxfX0="
     section: "Library Events"
     venue_name: "Elk Grove Village Public Library"
     enabled: true
