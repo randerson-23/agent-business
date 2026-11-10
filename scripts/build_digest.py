@@ -867,7 +867,10 @@ def detect_source_regressions(health: dict) -> list[str]:
     return regressions
 
 
-def detect_truncated_sources(health: dict, cap: int = MAX_ITEMS_PER_SOURCE) -> list[str]:
+SOURCE_ITEM_CAPS: dict[str, int] = {}  # item 480: per-source `max_items`, filled while fetching
+
+
+def detect_truncated_sources(health: dict, cap: int = MAX_ITEMS_PER_SOURCE, caps: dict[str, int] | None = None) -> list[str]:
     """Source keys whose last three counts all land exactly on
     MAX_ITEMS_PER_SOURCE - ROADMAP.md item 180 (forty-second research
     pass): a source pinned at exactly the cap three builds running is
@@ -879,7 +882,8 @@ def detect_truncated_sources(health: dict, cap: int = MAX_ITEMS_PER_SOURCE) -> l
     """
     truncated = []
     for key, history in sorted(health.items()):
-        if len(history) >= 3 and history[-3:] == [cap] * 3:
+        own = (caps or {}).get(key, cap)  # a source with its own `max_items` is judged against that
+        if len(history) >= 3 and history[-3:] == [own] * 3:
             truncated.append(key)
     return truncated
 
@@ -1325,8 +1329,12 @@ def fetch_region_sections(
         else:
             logger.info("Fetching %s (%s)", source["name"], source["type"])
             failure_info: dict = {}
+            item_cap = int(source.get("max_items") or MAX_ITEMS_PER_SOURCE)  # item 480
+            if item_cap != MAX_ITEMS_PER_SOURCE:
+                SOURCE_ITEM_CAPS[f"{region_id}:{source['name']}"] = item_cap
             raw_items = fetcher(
                 source["url"],
+                limit=item_cap,
                 keywords=source.get("keywords"),
                 detail_link_pattern=source.get("detail_link_pattern"),
                 failure_info=failure_info,
@@ -9007,7 +9015,7 @@ def main() -> None:
         )
 
     regressions = detect_source_regressions(source_health)
-    truncated = detect_truncated_sources(source_health)
+    truncated = detect_truncated_sources(source_health, caps=SOURCE_ITEM_CAPS)
     newly_broken = detect_newly_broken_sources(source_health)
     if regressions or truncated or newly_broken:
         # Deliberately fails the build *after* every other file above is

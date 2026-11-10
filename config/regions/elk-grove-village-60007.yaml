@@ -24,6 +24,9 @@ sources:
     # that detect_truncated_sources fails the build on after three builds.
     url: "https://egvpl.libnet.info/feeds?data=eyJmZWVkVHlwZSI6InJzcyIsImZpbHRlcnMiOnsibG9jYXRpb24iOlsiYWxsIl0sImFnZXMiOlsiYWxsIl0sInR5cGVzIjpbImFsbCJdLCJ0YWdzIjpbXSwidGVybSI6IiIsImRheXMiOjIxfX0="
     section: "Library Events"
+    # ROADMAP.md item 480: 30 and 21 days both returned exactly 500 items, our default cap; this shows
+    # whether the cap or the feed is the limit. The truncation check uses this number for this source.
+    max_items: 1000
     venue_name: "Elk Grove Village Public Library"
     enabled: true
 
