@@ -22,7 +22,7 @@
    "type": "html_events"
   },
   {
-   "count": 238,
+   "count": 239,
    "date": "2026-11-09",
    "horizon_days": 21,
    "route": "html_events",
@@ -30,8 +30,8 @@
   },
   {
    "count": 239,
-   "date": "2026-11-09",
-   "horizon_days": 21,
+   "date": "2026-11-10",
+   "horizon_days": 20,
    "route": "html_events",
    "type": "html_events"
   },
@@ -81,13 +81,6 @@
   },
   {
    "count": 9,
-   "date": "2026-11-08",
-   "horizon_days": 41,
-   "route": "month_ics",
-   "type": "tribe_events"
-  },
-  {
-   "count": 9,
    "date": "2026-11-09",
    "horizon_days": 40,
    "route": "month_ics",
@@ -118,6 +111,13 @@
    "count": 9,
    "date": "2026-11-09",
    "horizon_days": 40,
+   "route": "month_ics",
+   "type": "tribe_events"
+  },
+  {
+   "count": 9,
+   "date": "2026-11-10",
+   "horizon_days": 39,
    "route": "month_ics",
    "type": "tribe_events"
   },
@@ -174,7 +174,7 @@
   },
   {
    "count": 10,
-   "date": "2026-11-09",
+   "date": "2026-11-10",
    "horizon_days": null,
    "route": "html_events",
    "type": "html_events"
@@ -246,7 +246,7 @@
   },
   {
    "count": 10,
-   "date": "2026-11-09",
+   "date": "2026-11-10",
    "horizon_days": null,
    "route": "html_events",
    "type": "html_events"
@@ -318,7 +318,7 @@
   },
   {
    "count": 3,
-   "date": "2026-11-09",
+   "date": "2026-11-10",
    "horizon_days": null,
    "route": "html_events",
    "type": "html_events"
@@ -360,13 +360,6 @@
   }
  ],
  "des-plaines-60016:Des Plaines Park District \u2014 Events": [
-  {
-   "count": 19,
-   "date": "2026-11-08",
-   "horizon_days": null,
-   "route": "html_events",
-   "type": "html_events"
-  },
   {
    "count": 19,
    "date": "2026-11-08",
@@ -429,16 +422,16 @@
    "horizon_days": null,
    "route": "html_events",
    "type": "html_events"
+  },
+  {
+   "count": 21,
+   "date": "2026-11-10",
+   "horizon_days": null,
+   "route": "html_events",
+   "type": "html_events"
   }
  ],
  "des-plaines-60016:Des Plaines Public Library \u2014 Events": [
-  {
-   "count": 410,
-   "date": "2026-11-09",
-   "horizon_days": 418,
-   "route": "rss",
-   "type": "rss"
-  },
   {
    "count": 410,
    "date": "2026-11-09",
@@ -501,6 +494,13 @@
    "horizon_days": 417,
    "route": "rss",
    "type": "rss"
+  },
+  {
+   "count": 417,
+   "date": "2026-11-10",
+   "horizon_days": 417,
+   "route": "rss",
+   "type": "rss"
   }
  ],
  "des-plaines-60016:Des Plaines Theatre \u2014 Events": [
@@ -534,8 +534,8 @@
   },
   {
    "count": 61,
-   "date": "2026-11-09",
-   "horizon_days": 83,
+   "date": "2026-11-10",
+   "horizon_days": 82,
    "route": "month_ics",
    "type": "tribe_events"
   },
@@ -610,6 +610,13 @@
    "horizon_days": 95,
    "route": "rss",
    "type": "rss"
+  },
+  {
+   "count": 500,
+   "date": "2026-11-10",
+   "horizon_days": 95,
+   "route": "rss",
+   "type": "rss"
   }
  ],
  "mount-prospect-60056:Downtown Mount Prospect \u2014 Events": [
@@ -638,13 +645,6 @@
   },
   {
    "count": 32,
-   "date": "2026-11-08",
-   "horizon_days": 83,
-   "route": "month_ics",
-   "type": "tribe_events"
-  },
-  {
-   "count": 32,
    "date": "2026-11-09",
    "horizon_days": 82,
    "route": "month_ics",
@@ -675,6 +675,13 @@
    "count": 32,
    "date": "2026-11-09",
    "horizon_days": 82,
+   "route": "month_ics",
+   "type": "tribe_events"
+  },
+  {
+   "count": 32,
+   "date": "2026-11-10",
+   "horizon_days": 81,
    "route": "month_ics",
    "type": "tribe_events"
   },
@@ -730,9 +737,9 @@
    "type": "rss"
   },
   {
-   "count": 249,
-   "date": "2026-11-09",
-   "horizon_days": 390,
+   "count": 243,
+   "date": "2026-11-10",
+   "horizon_days": 389,
    "route": "rss",
    "type": "rss"
   },
@@ -803,8 +810,8 @@
   },
   {
    "count": 57,
-   "date": "2026-11-09",
-   "horizon_days": 220,
+   "date": "2026-11-10",
+   "horizon_days": 219,
    "route": "ics",
    "type": "ics"
   },
@@ -875,7 +882,7 @@
   },
   {
    "count": 1,
-   "date": "2026-11-09",
+   "date": "2026-11-10",
    "horizon_days": null,
    "route": "html_events",
    "type": "html_events"
@@ -925,30 +932,30 @@
    "type": "revize_news_json"
   },
   {
+   "count": 34,
+   "date": "2026-11-09",
+   "horizon_days": -3,
+   "route": "revize_news_json",
+   "type": "revize_news_json"
+  },
+  {
+   "count": 34,
+   "date": "2026-11-09",
+   "horizon_days": -3,
+   "route": "revize_news_json",
+   "type": "revize_news_json"
+  },
+  {
+   "count": 34,
+   "date": "2026-11-09",
+   "horizon_days": -3,
+   "route": "revize_news_json",
+   "type": "revize_news_json"
+  },
+  {
    "count": 35,
-   "date": "2026-11-09",
-   "horizon_days": -3,
-   "route": "revize_news_json",
-   "type": "revize_news_json"
-  },
-  {
-   "count": 34,
-   "date": "2026-11-09",
-   "horizon_days": -3,
-   "route": "revize_news_json",
-   "type": "revize_news_json"
-  },
-  {
-   "count": 34,
-   "date": "2026-11-09",
-   "horizon_days": -3,
-   "route": "revize_news_json",
-   "type": "revize_news_json"
-  },
-  {
-   "count": 34,
-   "date": "2026-11-09",
-   "horizon_days": -3,
+   "date": "2026-11-10",
+   "horizon_days": -1,
    "route": "revize_news_json",
    "type": "revize_news_json"
   },
@@ -1011,7 +1018,7 @@
    "type": "ics"
   },
   {
-   "count": 43,
+   "count": 45,
    "date": "2026-11-09",
    "horizon_days": 212,
    "route": "ics",
@@ -1019,8 +1026,8 @@
   },
   {
    "count": 45,
-   "date": "2026-11-09",
-   "horizon_days": 212,
+   "date": "2026-11-10",
+   "horizon_days": 211,
    "route": "ics",
    "type": "ics"
   },
@@ -1091,8 +1098,8 @@
   },
   {
    "count": 10,
-   "date": "2026-11-09",
-   "horizon_days": 30,
+   "date": "2026-11-10",
+   "horizon_days": 29,
    "route": "localist",
    "type": "localist"
   },
@@ -1163,7 +1170,7 @@
   },
   {
    "count": 13,
-   "date": "2026-11-09",
+   "date": "2026-11-10",
    "horizon_days": null,
    "route": "html_events",
    "type": "html_events"
@@ -1205,13 +1212,6 @@
   }
  ],
  "palatine-60067:Palatine Public Library District \u2014 Events": [
-  {
-   "count": 12,
-   "date": "2026-11-08",
-   "horizon_days": null,
-   "route": "html_events",
-   "type": "html_events"
-  },
   {
    "count": 12,
    "date": "2026-11-08",
@@ -1274,6 +1274,13 @@
    "horizon_days": null,
    "route": "html_events",
    "type": "html_events"
+  },
+  {
+   "count": 27,
+   "date": "2026-11-10",
+   "horizon_days": null,
+   "route": "html_events",
+   "type": "html_events"
   }
  ],
  "palatine-60067:Salt Creek Rural Park District \u2014 Events": [
@@ -1286,13 +1293,6 @@
   },
   {
    "count": 1,
-   "date": "2026-11-08",
-   "horizon_days": 40,
-   "route": "month_ics",
-   "type": "tribe_events"
-  },
-  {
-   "count": 1,
    "date": "2026-11-09",
    "horizon_days": 39,
    "route": "month_ics",
@@ -1323,6 +1323,13 @@
    "count": 1,
    "date": "2026-11-09",
    "horizon_days": 39,
+   "route": "month_ics",
+   "type": "tribe_events"
+  },
+  {
+   "count": 1,
+   "date": "2026-11-10",
+   "horizon_days": 38,
    "route": "month_ics",
    "type": "tribe_events"
   },
@@ -1379,8 +1386,8 @@
   },
   {
    "count": 10,
-   "date": "2026-11-09",
-   "horizon_days": 316,
+   "date": "2026-11-10",
+   "horizon_days": 315,
    "route": "ics",
    "type": "ics"
   },
@@ -1451,8 +1458,8 @@
   },
   {
    "count": 24,
-   "date": "2026-11-09",
-   "horizon_days": 159,
+   "date": "2026-11-10",
+   "horizon_days": 158,
    "route": "ics",
    "type": "ics"
   },
@@ -1523,8 +1530,8 @@
   },
   {
    "count": 2,
-   "date": "2026-11-09",
-   "horizon_days": -5,
+   "date": "2026-11-10",
+   "horizon_days": -6,
    "route": "rss",
    "type": "rss"
   },
@@ -1565,13 +1572,6 @@
   }
  ],
  "wheeling-60090:Indian Trails Public Library \u2014 Events": [
-  {
-   "count": 241,
-   "date": "2026-11-09",
-   "horizon_days": 800,
-   "route": "rss",
-   "type": "rss"
-  },
   {
    "count": 241,
    "date": "2026-11-09",
@@ -1634,6 +1634,13 @@
    "horizon_days": 799,
    "route": "rss",
    "type": "rss"
+  },
+  {
+   "count": 234,
+   "date": "2026-11-10",
+   "horizon_days": 799,
+   "route": "rss",
+   "type": "rss"
   }
  ],
  "wheeling-60090:Village of Wheeling \u2014 Calendar": [
@@ -1667,8 +1674,8 @@
   },
   {
    "count": 143,
-   "date": "2026-11-09",
-   "horizon_days": 1155,
+   "date": "2026-11-10",
+   "horizon_days": 1154,
    "route": "ics",
    "type": "ics"
   },
