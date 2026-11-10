@@ -220,6 +220,7 @@ doesn't re-suggest something already shipped.
 
 **Build queue (by deadline; refreshed by the research loop, item 346).**
 Pick from the top unless the owner has flagged something else:
+0. **483, 484, 485** (before **Thursday's send, Nov 12**: subject and a top card for the Metra on-sale; one-off events over weekly storytimes in Don't miss; the 7 AM teen-night time bug and school-admin entries), then **481** for Nov 19.
 0. **480** with **482** (Elk Grove Village as town six, site first: 48.5 events a week against Rolling Meadows' 14.5; its tree lighting Nov 27), then **481** (each reader's town first in the email; test-send before the Nov 19 issue).
 0. **477** (fill the Metra entry from Metra's own pages as indexed; withdraw the owner ask; by the **Nov 12 send**), then **478** with **475** and **479** (CPKC Franklin Park stop, Mon Nov 23, 5:30 PM, in "Just outside" and on `/give/`, with distance).
 0. **474** with **476** (Metra Holiday Train on the UP Northwest line, Sat Dec 12; tickets Mon Nov 16 at noon; in the **Nov 12 email**, with a calendar reminder), then **475** (CPKC Holiday Train, if a stop is within ten miles).
@@ -20676,6 +20677,88 @@ Village's own page, thecraftmap, chicagonorthwest.com, Eventbrite's Elk
 Grove *California* pages) and **Buttondown's tag-conditional content**.
 The design/UX angle is **the six-town email**: the reader's own town in
 full, the rest in one line each.
+
+#### Research pass 2026-11-10 (hundred-and-thirty-fifth pass)
+
+Overnight the build loop shipped item 480: **Elk Grove Village is live as
+town six** (`/eg/`, library feed at a 1,000-item cap, `email: false`, so the
+combined email carries one *"New: Elk Grove Village →"* line). It also
+shipped item 482's tree lighting (Fri Nov 27, 4–7 PM, Village Green, from
+elkgrove.org as indexed). This pass reads **Thursday's issue**
+(`docs/combined-email-preview.html`, Nov 13–15) at phone width, two days
+before it sends. It also looks once more for local newsletters to
+cross-promote with, a growth route that hasn't been tried.
+
+| Angle | What it is / what we found | Why it matters here |
+|---|---|---|
+| **Thursday's issue at 400 px (design/UX)** | **Subject: *"Toddler Storytime and 37 more this weekend"*.** The **Metra Holiday Train on-sale line** (item 477: tickets Mon Nov 16 at noon, $10, five per order, Metra expects them to sell out fast), the issue's one time-critical item, sits **inside the weather box**, under *"New: Elk Grove Village"*. **"Don't miss" is three weekly library programmes**: *Storytime Playdate: Tiny Town*, *Toddler Storytime*, *Family Time*. In the town sections:<br>**(a)** ***"Teen Night – Bikini Bottom Bash, 7:00 AM"*** (AHPD, Fri Nov 13). A 6th–8th-grade night at 7 AM is almost certainly **7 PM**, and the event's JSON-LD says `2026-11-13T07:00:00-06:00`.<br>**(b)** ***"End of First Trimester (Elementary)"*** (Mount Prospect D57's calendar) is listed as a thing to do.<br>**(c)** *ESL Social Hour*, an adult session, leads Arlington Heights | The subject line decides whether the email is opened, and the Metra line is the reason this week's issue is worth opening. A reader who misses it and finds the tickets gone by Monday afternoon has a reason to stop opening. Generic storytimes as the top picks make the issue look automatic, which it is, but it shouldn't read that way. A wrong time on a kids' event is the kind of error that costs trust (items 483–485) |
+| **Local newsletters to cross-promote with** (searches for Substack and beehiiv newsletters covering Arlington Heights, Mount Prospect, Palatine and Des Plaines; Localized Newsletters' platform analysis; beehiiv's local-newsletter guides; reviews of Buttondown's feature set) | **No local newsletter for these towns turned up** on Substack or beehiiv. Item 25 and pass 47's Substack work covered recommendation networks, and **Buttondown has no recommendations feature** (third-party reviews say it deliberately avoids one). The local field is empty, which is the opportunity this site exists for, but there is nobody to swap with | **No new item.** Cross-promotion needs a partner, and none exists in the five towns yet. Recorded so it isn't re-searched before the field changes |
+
+#### P1 (new)
+
+483. **The subject line leads with the week's time-critical item.** Build
+     loop, the subject builder:
+
+     - When an `on_sale:` entry or a sign-up opens **within 4 days of the
+       send**, lead with it: ***"🚂 Holiday Train tickets go on sale
+       Monday · 38 things this weekend"***.
+     - Move the on-sale line out of the weather box into its own
+       bordered card **directly under the hero**, above "Don't miss",
+       with *Official page* and *⏰ Remind me* as buttons.
+     - Otherwise, keep today's subject rule (the top pick plus the
+       count), and never lead with a recurring programme (item 484).
+
+     Tests: with the Metra entry and a Nov 12 send, the subject leads
+     with it and the card sits above "Don't miss". With no entry the
+     subject is unchanged.
+
+484. **"Don't miss" prefers one-off events over weekly programmes.**
+     Build loop, the pick ranking:
+
+     - Demote an event that recurs **weekly**, using item 381's series
+       detection, the same title at the same venue on 3 or more dates in
+       28 days, or a *storytime / story time / playgroup / family time*
+       title. Recurring programmes stay in the town sections; they're
+       just not picks unless fewer than three one-off family events
+       exist.
+     - This week that promotes events like *"Artsgiving" Crafty
+       Cornucopia* (MPPD), *Friends Holiday Book Sale* and *Family Craft
+       Friday: Paint a Gzhel Plate* over three storytimes.
+
+     Tests: a weekly storytime loses its pick slot to a one-off family
+     event, and wins it back when there are no one-off events.
+
+485. **Two data checks: times that can't be right, and school-admin
+     entries.** Build loop:
+
+     - **Time sanity:** if a title says *night*, *evening*, *bash*,
+       *party*, *dance*, *concert* or *movie* and the start is **before
+       9:00 AM**, compare the time against the event's own page (`url`).
+       Log a `time_suspect` warning naming the source and the raw
+       value. Diagnose the AHPD route behind *Teen Night – Bikini
+       Bottom Bash* at 07:00, which is probably a 12-hour value read
+       without its PM marker in item 465's REST or month-export mapper.
+       Fix the mapper. Never guess the PM in the output.
+     - **School-admin entries:** titles from school-district calendars
+       saying *end of trimester / quarter / semester*, *grading period*,
+       *report cards*, *progress reports* or *board meeting* leave the
+       event lists and `events.json`. They stay available to the
+       days-off box only where they mean no school.
+
+     Tests: the AHPD fixture maps 7:00 PM to 19:00, a suspect early time
+     is logged and not changed, and *"End of First Trimester
+     (Elementary)"* leaves the lists.
+
+Re-rank: **483, 484 and 485 go to the top of the build queue, ahead of
+481**, with a hard deadline of **Thursday's send (Nov 12, 07:00 CT)**. The
+Metra on-sale is Monday, so this issue is the only one that can carry it.
+**481** follows for the Nov 19 issue.
+
+Competitors reviewed this pass: **local Substack and beehiiv newsletters**
+for these towns (none found; a non-item), and **Buttondown's lack of a
+recommendations network**. The design/UX angle is **Thursday's issue**:
+the time-critical item buried, storytimes as the top picks, a kids' night
+at 7 AM.
 
 
 ## Working agreements for autonomous iteration
