@@ -7488,3 +7488,12 @@ def test_suspect_evening_times_lose_their_time_and_school_admin_entries_leave_th
     ]}]
     kept = [e["title"] for e in build_digest.drop_school_admin(school)[0]["events"]]
     assert kept == ["No School - End of Trimester Grading Day", "Winter Concert"]
+
+
+def test_town_one_liner_lists_two_titles_and_count():
+    import build_digest as bd
+    block = {"region_name": "Mount Prospect", "weekend_count": 5,
+             "attendable_events": [{"title": "Diwali Party"}, {"title": "MPCB Fall Concert"}, {"title": "Third"}]}
+    assert bd.town_one_liner(block) == "Mount Prospect: Diwali Party, MPCB Fall Concert and 3 more"
+    assert bd.town_one_liner({"region_name": "Wheeling", "weekend_count": 1, "attendable_events": [{"title": "Fair"}]}) == "Wheeling: Fair"
+    assert "nothing dated" in bd.town_one_liner({"region_name": "Wheeling", "attendable_events": []})

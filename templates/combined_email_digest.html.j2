@@ -237,6 +237,15 @@ DON'T MISS THIS WEEKEND
 {% endif %}
 
 {% for block in region_blocks %}
+{% if block.one_line %}
+{# ROADMAP.md item 481: another town, as one line, for a reader whose own town is shown in full. #}
+<tr>
+<td bgcolor="#ffffff" class="wt-paper" style="background-color:#ffffff; border-radius:12px; padding:14px 22px; font-family:{{ sans }}; font-size:15px; line-height:1.45;">
+<a href="{{ block.region_url }}" class="wt-ink" style="color:{{ ink }}; text-decoration:none;">{{ block.one_line }} <span class="wt-brand" style="color:{{ accent }};">&rarr;</span></a>
+</td>
+</tr>
+<tr><td style="padding:0 0 10px 0;"></td></tr>
+{% else %}
 {# Region block: {{ block.region_name }} #}
 <tr>
 <td bgcolor="#ffffff" class="wt-paper" style="background-color:#ffffff; border-radius:12px; padding:20px 22px 20px 22px;">
@@ -370,6 +379,7 @@ Indoor ideas, anytime this week:
 </td>
 </tr>
 <tr><td style="padding:0 0 14px 0;"></td></tr>
+{% endif %}
 {% endfor %}
 
 {% if empty_regions_summary %}

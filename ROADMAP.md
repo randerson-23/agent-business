@@ -20634,7 +20634,7 @@ sixth town can be added without making the email longer.
 
 #### P2 (new)
 
-481. **The reader's own town first in the email, other towns as one line
+481. (🟡 PARTLY DONE 2026-11-10: the layout is built and previewed per town at /email-preview/<town>.html — `town_one_liner` and `reader_town` in `render_combined_email_digest`. **The live send is unchanged**: wrapping it in Buttondown tag conditionals waits on a test send through the API, which this sandbox can't reach; next step is a CI step or owner test send to one tagged address) **The reader's own town first in the email, other towns as one line
      each.** Build loop, combined email template:
 
      - Wrap each town section in a Buttondown tag conditional. A reader
