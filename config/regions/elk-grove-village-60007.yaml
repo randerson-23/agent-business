@@ -1,0 +1,69 @@
+# Region config for Elk Grove Village, IL (ZIP 60007). Town six (ROADMAP.md item 480), promoted on 2026-11-10
+# from the shadow candidate measured since Oct 30 (item 416): 48.5 attendable events a week and 14.9 family
+# events, from the library alone, against Rolling Meadows' 14.5 and 6.8. On the site first; it joins the
+# email's town sections once item 481 (each reader's town first) ships - see `email: false` below.
+# Library feed confirmed by the round-24 probe (200, RSS, 370 KB). The park district's calendar (elkgroveparks.org) answered 403 to the runner, so it is not a source.
+region:
+  id: "elk-grove-village-60007"
+  name: "Elk Grove Village"
+  zip: "60007"
+  state: "IL"
+  timezone: "America/Chicago"
+  tagline: "Pulled automatically from the Elk Grove Village Public Library several times a week, plus the Village's own big events on the Village Green."
+  lat: 42.0039
+  lon: -87.9703
+  # ROADMAP.md item 480: kept out of the combined email's town sections until item 481 ships.
+  email: false
+
+sources:
+  - name: "Elk Grove Village Public Library - Events"
+    type: rss
+    default_tags: ["indoor"]
+    veto_tags: ["outdoor"]
+    url: "https://egvpl.libnet.info/feeds?data=eyJmZWVkVHlwZSI6InJzcyIsImZpbHRlcnMiOnsibG9jYXRpb24iOlsiYWxsIl0sImFnZXMiOlsiYWxsIl0sInR5cGVzIjpbImFsbCJdLCJ0YWdzIjpbXSwidGVybSI6IiIsImRheXMiOjMwfX0="
+    section: "Library Events"
+    venue_name: "Elk Grove Village Public Library"
+    enabled: true
+
+# Round 25 (item 422), 2026-10-31: the Elk Grove Park District (elkgroveparks.org: /events/?ical=1, the
+# tribe REST route and /events/list) and the Village (elkgrove.org) all answer 403 to a GitHub runner,
+# a bot wall like Mount Prospect's. So this candidate is measured on its library alone, which
+# understates it; going live would need a route past the wall or a hand-kept source.
+
+# ROADMAP.md item 482: the Village (elkgrove.org) answers the runner with 403, so its big dated events come
+# from its own pages as indexed by search (item 478), re-probed daily (round 43). From the Village's event
+# calendar: Holiday Tree Lighting Ceremony, 11/27/2026, 4:00-7:00 PM, Village Green (storytime at 4,
+# lighting at 5:30, fireworks and free photos with Santa after). confirmed_via: search, 2026-11-10.
+tree_lighting:
+  url: "https://www.elkgrove.org/Home/Components/Calendar/Event/8782/17"
+  date: "2026-11-27"
+  time: "4–7 PM"
+  place: "Village Green"
+
+annual_events:
+  # ROADMAP.md item 482: same source as tree_lighting above (confirmed_via: search, 2026-11-10).
+  - title: "Holiday Tree Lighting Ceremony"
+    date: "2026-11-27T16:00:00"
+    detail: "Storytime with the Village Board at 4 PM in Village Hall, the lighting of the Village Green at 5:30 PM, then fireworks and free photos with Santa. Free."
+    url: "https://www.elkgrove.org/Home/Components/Calendar/Event/8782/17"
+    tags: ["free", "kid_friendly", "outdoor"]
+
+evergreen:
+  - title: "Elk Grove Village Public Library"
+    detail: "Story times, teen programs and classes for all ages; the library's own event calendar."
+    url: "https://egvpl.libnet.info/events"
+    tags: ["indoor", "kid_friendly", "free"]
+  - title: "Elk Grove Park District"
+    detail: "Parks, pools, the Pavilion and seasonal programs across the village."
+    url: "https://www.elkgroveparks.org/"
+    tags: ["outdoor", "kid_friendly"]
+  - title: "Village of Elk Grove Village"
+    detail: "Village news, community events and services."
+    url: "https://www.elkgrove.org/"
+    tags: []
+
+# ROADMAP.md item 323 / 482: the Village's own leaf page, as indexed by search 2026-11-10 (the site answers the
+# runner with 403).
+leaf_pickup:
+  url: "https://www.elkgrove.org/services/leaf-collection"
+  summary: "Fall leaf collection runs Monday, September 28 to Wednesday, November 25, 2026, in nine sections; rake leaves into the street after 3 PM the day before your pickup."

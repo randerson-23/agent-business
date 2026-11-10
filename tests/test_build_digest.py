@@ -4299,6 +4299,7 @@ _EXPECTED_TAGLINE_VENUES = {
     "des-plaines-60016": ["Lake Park", "Public Library"],
     "palatine-60067": ["Downtown Palatine", "Train Station"],
     "wheeling-60090": ["Heritage Park", "Chicago Executive Airport"],
+    "elk-grove-village-60007": ["Public Library", "Village Green"],
 }
 
 
@@ -6128,7 +6129,7 @@ def test_venue_veto_tags_remove_outdoor_for_indoor_sources():
             if src.get("veto_tags"):
                 vetoed.append(src["name"])
                 assert "outdoor" in src["veto_tags"] and "indoor" in (src.get("default_tags") or [])
-    assert any("Theatre" in n for n in vetoed) and sum("Library" in n for n in vetoed) == 5
+    assert any("Theatre" in n for n in vetoed) and sum("Library" in n for n in vetoed) == 6
 
 
 def test_no_event_appears_twice_across_the_emails_top_blocks():
@@ -6729,9 +6730,9 @@ def test_the_email_scales_to_six_towns_three_events_each_strongest_town_first_un
 def test_candidate_town_files_are_never_published_and_their_weekly_counts_are_recorded():
     # ROADMAP.md item 416.
     ids = [c["region"]["id"] for c in build_digest.load_regions()]
-    assert "elk-grove-village-60007" not in ids and "rolling-meadows-60008" not in ids and len(ids) == 5
+    assert "elk-grove-village-60007" in ids and "rolling-meadows-60008" not in ids and len(ids) == 6  # item 480: Elk Grove went live
     cands = build_digest.load_candidate_regions()
-    assert sorted(c["region"]["id"] for c in cands) == ["elk-grove-village-60007", "rolling-meadows-60008"]
+    assert sorted(c["region"]["id"] for c in cands) == ["rolling-meadows-60008"]
     assert all(s["type"] in {"rss", "ics", "html_events"} and s["url"].startswith("https://") and s["type"] in build_digest.FETCHERS for c in cands for s in c["sources"])
     assert all(any(s["type"] == "rss" for s in c["sources"]) for c in cands)  # each has its library feed
     rm = next(c for c in cands if c["region"]["id"] == "rolling-meadows-60008")
@@ -7410,3 +7411,16 @@ def test_noon_years_eve_window_keywords_adult_exclusion_and_empty_line():
     wb = build_digest.render_region_page(cfg, [], None, [], datetime(2026, 12, 2, 15, tzinfo=timezone.utc), heading="h", subheading="s", empty_message="e",
                                          nav_current="winter-break", canonical_suffix="winter-break/", nye_events=[])
     assert "Ring in the New Year, at noon" in wb and "Noon Year's Eve party is posted in Palatine yet" in wb
+
+
+def test_elk_grove_is_live_on_the_site_but_only_a_new_line_in_the_email():
+    # ROADMAP.md items 480 and 482.
+    cfg = next(c for c in build_digest.load_regions() if c["region"]["id"] == "elk-grove-village-60007")
+    assert cfg["region"]["email"] is False and any(s["type"] == "rss" and s.get("enabled", True) for s in cfg["sources"])
+    tree = build_digest.prepare_tree_lighting(cfg, 2026)
+    assert tree["label"].startswith("Friday, November 27") and tree["url"].startswith("https://www.elkgrove.org/")
+    assert build_digest.SHORT_PATHS["elk-grove-village-60007"] == "eg"
+    sections = [{"region_name": "Palatine", "region_url": "https://x/palatine-60067/", "weekend_events": []}]
+    html = build_digest.render_combined_email_digest(sections, "Nov 13–15", datetime(2026, 11, 11, 15, tzinfo=timezone.utc), new_towns=[{"name": "Elk Grove Village", "url": "https://x/elk-grove-village-60007/"}])
+    assert "<strong>New:</strong> Elk Grove Village" in html and ">Elk Grove Village</a>" not in html  # a line, not a town section
+    assert build_digest.SITE_BASE_URL + "elk-grove-village-60007/" in build_digest.collect_sitemap_urls([{"id": "elk-grove-village-60007", "name": "Elk Grove Village", "path": "elk-grove-village-60007/"}])
