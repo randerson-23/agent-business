@@ -2,7 +2,7 @@
   "@context": "https://schema.org",
   "@type": "ItemList",
   "name": "Upcoming events in Mount Prospect — Within Ten",
-  "dateModified": "2026-11-10T14:07:52+00:00",
+  "dateModified": "2026-11-10T15:01:31+00:00",
   "numberOfItems": 71,
   "itemListElement": [
     {
@@ -917,7 +917,7 @@
         "@type": "Event",
         "name": "Friends Holiday Book Sale",
         "startDate": "2026-11-14T09:00:00-06:00",
-        "url": "https://withintenmiles.com/mount-prospect-60056/#ev-friends-holiday-book-sale-2026-11-14",
+        "url": "https://withintenmiles.com/e/2026-11-14-friends-holiday-book-sale/",
         "eventStatus": "https://schema.org/EventScheduled",
         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
         "location": {
@@ -937,7 +937,7 @@
           "name": "Mount Prospect Public Library",
           "url": "https://mppl.libnet.info"
         },
-        "image": "https://withintenmiles.com/og/mount-prospect-60056.png",
+        "image": "https://withintenmiles.com/og/e/2026-11-14-friends-holiday-book-sale.png",
         "description": "Saturday, November 14 2026 9:00am - 3:00pm \n Just in time for the holidays! All items have been specially selected for this sale so you can find the right…"
       }
     },

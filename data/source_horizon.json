@@ -29,7 +29,7 @@
    "type": "html_events"
   },
   {
-   "count": 238,
+   "count": 239,
    "date": "2026-11-09",
    "horizon_days": 21,
    "route": "html_events",
@@ -37,8 +37,8 @@
   },
   {
    "count": 239,
-   "date": "2026-11-09",
-   "horizon_days": 21,
+   "date": "2026-11-10",
+   "horizon_days": 20,
    "route": "html_events",
    "type": "html_events"
   },
@@ -181,7 +181,7 @@
   },
   {
    "count": 10,
-   "date": "2026-11-09",
+   "date": "2026-11-10",
    "horizon_days": null,
    "route": "html_events",
    "type": "html_events"
@@ -253,7 +253,7 @@
   },
   {
    "count": 10,
-   "date": "2026-11-09",
+   "date": "2026-11-10",
    "horizon_days": null,
    "route": "html_events",
    "type": "html_events"
@@ -325,7 +325,7 @@
   },
   {
    "count": 3,
-   "date": "2026-11-09",
+   "date": "2026-11-10",
    "horizon_days": null,
    "route": "html_events",
    "type": "html_events"
@@ -454,13 +454,6 @@
    "type": "rss"
   },
   {
-   "count": 410,
-   "date": "2026-11-09",
-   "horizon_days": 418,
-   "route": "rss",
-   "type": "rss"
-  },
-  {
    "count": 417,
    "date": "2026-11-09",
    "horizon_days": 418,
@@ -471,6 +464,13 @@
    "count": 420,
    "date": "2026-11-09",
    "horizon_days": 418,
+   "route": "rss",
+   "type": "rss"
+  },
+  {
+   "count": 416,
+   "date": "2026-11-10",
+   "horizon_days": 417,
    "route": "rss",
    "type": "rss"
   },
@@ -541,8 +541,8 @@
   },
   {
    "count": 61,
-   "date": "2026-11-09",
-   "horizon_days": 83,
+   "date": "2026-11-10",
+   "horizon_days": 82,
    "route": "month_ics",
    "type": "tribe_events"
   },
@@ -576,6 +576,13 @@
   }
  ],
  "elk-grove-village-60007:Elk Grove Village Public Library - Events": [
+  {
+   "count": 500,
+   "date": "2026-11-10",
+   "horizon_days": 95,
+   "route": "rss",
+   "type": "rss"
+  },
   {
    "count": 500,
    "date": "2026-11-10",
@@ -730,9 +737,9 @@
    "type": "rss"
   },
   {
-   "count": 249,
-   "date": "2026-11-09",
-   "horizon_days": 390,
+   "count": 243,
+   "date": "2026-11-10",
+   "horizon_days": 389,
    "route": "rss",
    "type": "rss"
   },
@@ -803,8 +810,8 @@
   },
   {
    "count": 57,
-   "date": "2026-11-09",
-   "horizon_days": 220,
+   "date": "2026-11-10",
+   "horizon_days": 219,
    "route": "ics",
    "type": "ics"
   },
@@ -875,7 +882,7 @@
   },
   {
    "count": 1,
-   "date": "2026-11-09",
+   "date": "2026-11-10",
    "horizon_days": null,
    "route": "html_events",
    "type": "html_events"
@@ -925,30 +932,30 @@
    "type": "revize_news_json"
   },
   {
+   "count": 34,
+   "date": "2026-11-09",
+   "horizon_days": -3,
+   "route": "revize_news_json",
+   "type": "revize_news_json"
+  },
+  {
+   "count": 34,
+   "date": "2026-11-09",
+   "horizon_days": -3,
+   "route": "revize_news_json",
+   "type": "revize_news_json"
+  },
+  {
+   "count": 34,
+   "date": "2026-11-09",
+   "horizon_days": -3,
+   "route": "revize_news_json",
+   "type": "revize_news_json"
+  },
+  {
    "count": 35,
-   "date": "2026-11-09",
-   "horizon_days": -3,
-   "route": "revize_news_json",
-   "type": "revize_news_json"
-  },
-  {
-   "count": 34,
-   "date": "2026-11-09",
-   "horizon_days": -3,
-   "route": "revize_news_json",
-   "type": "revize_news_json"
-  },
-  {
-   "count": 34,
-   "date": "2026-11-09",
-   "horizon_days": -3,
-   "route": "revize_news_json",
-   "type": "revize_news_json"
-  },
-  {
-   "count": 34,
-   "date": "2026-11-09",
-   "horizon_days": -3,
+   "date": "2026-11-10",
+   "horizon_days": -1,
    "route": "revize_news_json",
    "type": "revize_news_json"
   },
@@ -1011,7 +1018,7 @@
    "type": "ics"
   },
   {
-   "count": 43,
+   "count": 45,
    "date": "2026-11-09",
    "horizon_days": 212,
    "route": "ics",
@@ -1019,8 +1026,8 @@
   },
   {
    "count": 45,
-   "date": "2026-11-09",
-   "horizon_days": 212,
+   "date": "2026-11-10",
+   "horizon_days": 211,
    "route": "ics",
    "type": "ics"
   },
@@ -1091,8 +1098,8 @@
   },
   {
    "count": 10,
-   "date": "2026-11-09",
-   "horizon_days": 30,
+   "date": "2026-11-10",
+   "horizon_days": 29,
    "route": "localist",
    "type": "localist"
   },
@@ -1163,7 +1170,7 @@
   },
   {
    "count": 13,
-   "date": "2026-11-09",
+   "date": "2026-11-10",
    "horizon_days": null,
    "route": "html_events",
    "type": "html_events"
@@ -1242,6 +1249,13 @@
   },
   {
    "count": 11,
+   "date": "2026-11-10",
+   "horizon_days": null,
+   "route": "html_events",
+   "type": "html_events"
+  },
+  {
+   "count": 29,
    "date": "2026-11-10",
    "horizon_days": null,
    "route": "html_events",
@@ -1372,8 +1386,8 @@
   },
   {
    "count": 10,
-   "date": "2026-11-09",
-   "horizon_days": 316,
+   "date": "2026-11-10",
+   "horizon_days": 315,
    "route": "ics",
    "type": "ics"
   },
@@ -1408,13 +1422,6 @@
  ],
  "palatine-60067:Village of Palatine \u2014 Calendar": [
   {
-   "count": 25,
-   "date": "2026-11-08",
-   "horizon_days": 160,
-   "route": "ics",
-   "type": "ics"
-  },
-  {
    "count": 24,
    "date": "2026-11-09",
    "horizon_days": 159,
@@ -1446,6 +1453,13 @@
    "count": 24,
    "date": "2026-11-09",
    "horizon_days": 159,
+   "route": "ics",
+   "type": "ics"
+  },
+  {
+   "count": 24,
+   "date": "2026-11-10",
+   "horizon_days": 158,
    "route": "ics",
    "type": "ics"
   },
@@ -1481,13 +1495,6 @@
  "palatine-60067:Village of Palatine \u2014 News": [
   {
    "count": 2,
-   "date": "2026-11-08",
-   "horizon_days": -4,
-   "route": "rss",
-   "type": "rss"
-  },
-  {
-   "count": 2,
    "date": "2026-11-09",
    "horizon_days": -5,
    "route": "rss",
@@ -1518,6 +1525,13 @@
    "count": 2,
    "date": "2026-11-09",
    "horizon_days": -5,
+   "route": "rss",
+   "type": "rss"
+  },
+  {
+   "count": 2,
+   "date": "2026-11-10",
+   "horizon_days": -6,
    "route": "rss",
    "type": "rss"
   },
@@ -1551,13 +1565,6 @@
   }
  ],
  "wheeling-60090:Indian Trails Public Library \u2014 Events": [
-  {
-   "count": 241,
-   "date": "2026-11-09",
-   "horizon_days": 800,
-   "route": "rss",
-   "type": "rss"
-  },
   {
    "count": 241,
    "date": "2026-11-09",
@@ -1620,18 +1627,18 @@
    "horizon_days": 799,
    "route": "rss",
    "type": "rss"
+  },
+  {
+   "count": 237,
+   "date": "2026-11-10",
+   "horizon_days": 799,
+   "route": "rss",
+   "type": "rss"
   }
  ],
  "wheeling-60090:Village of Wheeling \u2014 Calendar": [
   {
    "count": 143,
-   "date": "2026-11-08",
-   "horizon_days": 1156,
-   "route": "ics",
-   "type": "ics"
-  },
-  {
-   "count": 143,
    "date": "2026-11-09",
    "horizon_days": 1155,
    "route": "ics",
@@ -1662,6 +1669,13 @@
    "count": 143,
    "date": "2026-11-09",
    "horizon_days": 1155,
+   "route": "ics",
+   "type": "ics"
+  },
+  {
+   "count": 143,
+   "date": "2026-11-10",
+   "horizon_days": 1154,
    "route": "ics",
    "type": "ics"
   },
