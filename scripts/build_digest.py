@@ -4894,6 +4894,7 @@ SHORT_PATHS = {
     "des-plaines-60016": "dp",
     "palatine-60067": "pal",
     "wheeling-60090": "wh",
+    "elk-grove-village-60007": "eg",
 }
 
 
@@ -6846,7 +6847,7 @@ def _pick_evergreen_highlights(evergreen: list[dict], limit: int) -> list[dict]:
     return (free + rest)[:limit]
 
 
-def render_combined_email_digest(sections: list[dict], weekend_date_range: str, now: datetime, newsletter: dict | None = None, *, preview: bool = False, halloween: dict | None = None, holiday: dict | None = None, weather: list[dict] | None = None, halloween_extras: dict | None = None, give: list[dict] | None = None, on_sale: list[dict] | None = None) -> str:
+def render_combined_email_digest(sections: list[dict], weekend_date_range: str, now: datetime, newsletter: dict | None = None, *, preview: bool = False, halloween: dict | None = None, holiday: dict | None = None, weather: list[dict] | None = None, halloween_extras: dict | None = None, give: list[dict] | None = None, on_sale: list[dict] | None = None, new_towns: list[dict] | None = None) -> str:
     """The combined, all-regions email (ROADMAP.md Phase 11 #105) - the
     signup form is on every region page, but the automated send (item
     24/31) only ever mailed Mount Prospect's digest, since Buttondown's
@@ -6963,6 +6964,7 @@ def render_combined_email_digest(sections: list[dict], weekend_date_range: str, 
         closures_line=closures_line,
         give_line=build_give_email_line(give or [], now),
         on_sale=on_sale or [],
+        new_towns=new_towns or [],
         text_friend_url=text_friend_url(),
         night_out=night_out,
         election_line=election_day_line(now, email=True),
@@ -8605,7 +8607,12 @@ def main() -> None:
     # free-plan list has no per-region segmentation to send four separate
     # ones to. Same email-send/email-preview split as the single-region
     # digest (item 91).
-    combined_email_args = (combined_email_sections, hub_weekend_date_range or "", now, newsletter)
+    # ROADMAP.md item 480: a town marked `email: false` is on the site but not yet in the email's town
+    # sections (until item 481); the email gets one "New:" line for it instead.
+    no_email_ids = {c["region"]["id"] for c in regions if c["region"].get("email") is False}
+    email_sections = [sec for sec in combined_email_sections if sec["region_url"].rstrip("/").rsplit("/", 1)[-1] not in no_email_ids]
+    new_towns = [{"name": c["region"]["name"], "url": SITE_BASE_URL + c["region"]["id"] + "/?utm_source=email&utm_campaign=new_town"} for c in regions if c["region"]["id"] in no_email_ids]
+    combined_email_args = (email_sections, hub_weekend_date_range or "", now, newsletter)
     combined_email_extra = {
         "halloween": build_halloween_banner(trick_or_treat_entries, now),
         "holiday": build_holiday_banner(holidays_entries, now),
@@ -8614,6 +8621,7 @@ def main() -> None:
         # Prospect is central, else the first town that has one.
         "give": give_entries,  # item 441: "Drives closing this week"
         "on_sale": load_on_sale(now),  # item 474
+        "new_towns": new_towns,  # item 480
         "weather": email_weather_by_region.get("mount-prospect-60056")
         or next((w for w in email_weather_by_region.values() if w), None),
     }

@@ -206,6 +206,9 @@
   @media (min-width: 1200px) {
     main .region-grid { flex-wrap: nowrap; }
     main .region-grid .region-card { flex: 1 1 0; min-width: 0; padding: 20px; }
+    /* ROADMAP.md item 480: six towns read better as 3 + 3 than as six narrow columns. */
+    main .region-grid.two-rows { flex-wrap: wrap; }
+    main .region-grid.two-rows .region-card { flex: 1 1 calc(33% - 16px); }
   }
   .guide-rows { display: flex; flex-direction: column; gap: 8px; margin: 0 0 12px; }
   .guide-row { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 12px; border-left: 6px solid var(--town, var(--border)); padding: 6px 0 6px 12px; }
@@ -474,7 +477,7 @@
     <svg class="holiday-lights" viewBox="0 0 1200 22" preserveAspectRatio="xMidYMin slice" aria-hidden="true"><path d="M0 4 Q300 20 600 6 T1200 4" stroke="#0a2a1f" stroke-width="2" fill="none"/><circle cx="20" cy="11" r="5" fill="#ef4444"/><circle cx="60" cy="15" r="5" fill="#f5c542"/><circle cx="100" cy="11" r="5" fill="#34d399"/><circle cx="140" cy="15" r="5" fill="#60a5fa"/><circle cx="180" cy="11" r="5" fill="#ef4444"/><circle cx="220" cy="15" r="5" fill="#f5c542"/><circle cx="260" cy="11" r="5" fill="#34d399"/><circle cx="300" cy="15" r="5" fill="#60a5fa"/><circle cx="340" cy="11" r="5" fill="#ef4444"/><circle cx="380" cy="15" r="5" fill="#f5c542"/><circle cx="420" cy="11" r="5" fill="#34d399"/><circle cx="460" cy="15" r="5" fill="#60a5fa"/><circle cx="500" cy="11" r="5" fill="#ef4444"/><circle cx="540" cy="15" r="5" fill="#f5c542"/><circle cx="580" cy="11" r="5" fill="#34d399"/><circle cx="620" cy="15" r="5" fill="#60a5fa"/><circle cx="660" cy="11" r="5" fill="#ef4444"/><circle cx="700" cy="15" r="5" fill="#f5c542"/><circle cx="740" cy="11" r="5" fill="#34d399"/><circle cx="780" cy="15" r="5" fill="#60a5fa"/><circle cx="820" cy="11" r="5" fill="#ef4444"/><circle cx="860" cy="15" r="5" fill="#f5c542"/><circle cx="900" cy="11" r="5" fill="#34d399"/><circle cx="940" cy="15" r="5" fill="#60a5fa"/><circle cx="980" cy="11" r="5" fill="#ef4444"/><circle cx="1020" cy="15" r="5" fill="#f5c542"/><circle cx="1060" cy="11" r="5" fill="#34d399"/><circle cx="1100" cy="15" r="5" fill="#60a5fa"/><circle cx="1140" cy="11" r="5" fill="#ef4444"/><circle cx="1180" cy="15" r="5" fill="#f5c542"/></svg>
     <div class="holiday-inner">
       <div class="holiday-kicker">🎄 The holidays &middot; November &amp; December</div>
-      <h2 id="holiday-heading">Tree lightings &amp; holiday events in all five towns, <span class="gold">in one place</span></h2>
+      <h2 id="holiday-heading">Tree lightings &amp; holiday events in every town we cover, <span class="gold">in one place</span></h2>
       <ul class="holiday-dates">
         {% for t in holiday.towns %}<li>{{ t.name }} <strong>{{ t.date }}</strong></li>{% endfor %}
       </ul>
@@ -547,7 +550,7 @@
        change). Flexbox distributes flex-grow space per line
        independently, so a lone last-row card genuinely stretches to
        fill its row instead (ROADMAP.md Phase 11 #56). #}
-  <div class="region-grid" id="region-grid">
+  <div class="region-grid{% if region_summaries|length > 5 %} two-rows{% endif %}" id="region-grid">
     {% for r in region_summaries %}
     <a class="bento-tile region-card" href="{{ r.path }}" style="--town:{{ r.color or 'var(--border)' }}">
       <span class="zip">{{ r.zip }} · {{ r.state }}</span>

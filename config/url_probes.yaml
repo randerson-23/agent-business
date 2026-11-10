@@ -342,3 +342,11 @@ probes:
       - '(?i)franklin park[^<]{0,200}'
       - '(?i)holiday train[^<]{0,160}'
     follow: '(?i)holiday[- ]?train'
+  # Round 43 (item 482, 2026-11-10): the Village's own tree-lighting event page, re-probed daily; the entry is
+  # replaced by the probe's reading if the runner's 403 lifts.
+  - url: https://www.elkgrove.org/Home/Components/Calendar/Event/8782/17
+    item: 482
+    purpose: Village of Elk Grove Village - Holiday Tree Lighting Ceremony 2026 (date, time, place)
+    patterns:
+      - '(?i)(?:Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)[a-z]*\.? \d{1,2},? 20\d\d[^<]{0,80}'
+      - '(?i)\d{1,2}/\d{1,2}/20\d\d[^<]{0,60}'

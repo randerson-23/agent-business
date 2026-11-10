@@ -103,13 +103,14 @@ This weekend, across the northwest suburbs
 </tr>
 <tr><td style="padding:0 0 14px 0;"></td></tr>
 
-{% if weather_line or election_line or closures_line or days_off_line or give_line or on_sale %}
+{% if weather_line or election_line or closures_line or days_off_line or give_line or on_sale or new_towns %}
 {# ROADMAP.md items 291, 296, 307: the week's short notices, as plain lines in one card. #}
 <tr>
 <td bgcolor="#ffffff" class="wt-paper" style="background-color:#ffffff; border-radius:12px; padding:14px 22px; font-family:{{ sans }}; font-size:15px; line-height:1.5;">
 {% if weather_line %}<div class="wt-ink" style="color:{{ ink }}; padding:3px 0;">{{ weather_line }}</div>{% endif %}
 {% if election_line %}<div style="padding:3px 0;"><a href="{{ election_line.url }}" class="wt-brand" style="color:{{ accent }}; text-decoration:none;">{{ election_line.text }} &rarr;</a></div>{% endif %}
 {% if closures_line %}<div style="padding:3px 0;"><a href="{{ closures_line.url }}" class="wt-brand" style="color:{{ accent }}; text-decoration:none;">{{ closures_line.text }} &rarr;</a></div>{% endif %}
+{% for n in new_towns %}<div style="padding:3px 0;"><a href="{{ n.url }}" class="wt-brand" style="color:{{ accent }}; text-decoration:none;"><strong>New:</strong> {{ n.name }} &rarr;</a></div>{% endfor %}
 {% for o in on_sale %}<div class="wt-ink" style="padding:3px 0; color:{{ ink }};"><strong>⏰ On sale:</strong> {{ o.emoji }} {{ o.line }} <a href="{{ o.url }}" class="wt-brand" style="color:{{ accent }}; text-decoration:none;">Official page &rarr;</a>{% if o.remind_url %} &nbsp;·&nbsp; <a href="{{ o.remind_url }}" class="wt-brand" style="color:{{ accent }}; text-decoration:none;">⏰ Remind me</a>{% endif %}</div>{% endfor %}
 {% if give_line %}<div style="padding:3px 0;"><a href="{{ give_line.url }}" class="wt-brand" style="color:{{ accent }}; text-decoration:none;">{{ give_line.text }} &rarr;</a></div>{% endif %}
 {% if days_off_line %}<div style="padding:3px 0;"><a href="{{ days_off_line.url }}" class="wt-brand" style="color:{{ accent }}; text-decoration:none;">{{ days_off_line.text }} &rarr;</a></div>{% endif %}

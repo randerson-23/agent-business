@@ -20611,7 +20611,7 @@ sixth town can be added without making the email longer.
 
 #### P1 (new)
 
-480. **Launch Elk Grove Village as town six, on the site first.** Build
+480. ✅ DONE (config/regions/elk-grove-village-60007.yaml live: library feed, evergreen links, tree lighting, leaf pickup, short path /eg/, `email: false` so the combined email shows one "New: Elk Grove Village →" line instead of a town section; the homepage grid goes 3 + 3 at six towns; two "all five towns" headings generalised. Item 416 readout recorded in pass 134; 416 and 417 closed; Rolling Meadows stays a candidate) **Launch Elk Grove Village as town six, on the site first.** Build
      loop, from the shadow config that has been fetching since Oct 30:
 
      - Promote `config/regions/_candidate-elk-grove-village-60007.yaml`
@@ -20651,7 +20651,7 @@ sixth town can be added without making the email longer.
      Tests: the template has a block per town and a fallback, and the
      one-line summary is built from the first two titles and a count.
 
-482. **Elk Grove's blocked sources, covered for their big dated events.**
+482. ✅ DONE for the tree lighting (Village calendar event 8782: Fri Nov 27, 4-7 PM, Village Green, as tree_lighting and an annual event) and leaf pickup (Sep 28 - Nov 25), both from elkgrove.org as indexed by search, 2026-11-10; park-district winter events still to add as published) **Elk Grove's blocked sources, covered for their big dated events.**
      Build loop, using item 478's fallback. The Village (elkgrove.org)
      and the Elk Grove Park District answer the runner with 403, so
      record their **dated holiday and seasonal events** from their own
