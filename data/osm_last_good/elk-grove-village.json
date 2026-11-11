@@ -1,0 +1,170 @@
+{
+ "date": "2026-11-11",
+ "rows": [
+  {
+   "name": "Blooming Flowers",
+   "category": "florist",
+   "website": ""
+  },
+  {
+   "name": "Fannie May",
+   "category": "chocolate",
+   "website": ""
+  },
+  {
+   "name": "Jarosch Bakery",
+   "category": "bakery",
+   "website": ""
+  },
+  {
+   "name": "Mimosa Pastry Boutique",
+   "category": "bakery",
+   "website": ""
+  },
+  {
+   "name": "Baskin-Robbins",
+   "category": "ice_cream",
+   "website": "https://locations.baskinrobbins.com/il/elk-grove-village/50-biesterfield-rd-353202-br"
+  },
+  {
+   "name": "Starbucks",
+   "category": "cafe",
+   "website": "https://starbucks.com"
+  },
+  {
+   "name": "Betty's Bistro",
+   "category": "cafe",
+   "website": ""
+  },
+  {
+   "name": "Bobar",
+   "category": "cafe",
+   "website": ""
+  },
+  {
+   "name": "Brittany's Bistro",
+   "category": "cafe",
+   "website": ""
+  },
+  {
+   "name": "Hide-Away Cafe",
+   "category": "cafe",
+   "website": ""
+  },
+  {
+   "name": "Lulu's Gaming Cafe",
+   "category": "cafe",
+   "website": ""
+  },
+  {
+   "name": "Penny's",
+   "category": "cafe",
+   "website": ""
+  },
+  {
+   "name": "Coach's Corner Pizzeria & Sports Grill",
+   "category": "restaurant",
+   "website": "https://dacoachs.com/"
+  },
+  {
+   "name": "Rose Garden Cafe",
+   "category": "restaurant",
+   "website": "https://www.elkgrovecafe.com/"
+  },
+  {
+   "name": "Buffalo Wild Wings",
+   "category": "restaurant",
+   "website": ""
+  },
+  {
+   "name": "Cefalu",
+   "category": "restaurant",
+   "website": ""
+  },
+  {
+   "name": "Cubano Bros",
+   "category": "restaurant",
+   "website": ""
+  },
+  {
+   "name": "El Rey del Marisco Mexican Grill",
+   "category": "restaurant",
+   "website": ""
+  },
+  {
+   "name": "Elly's Pncake House",
+   "category": "restaurant",
+   "website": ""
+  },
+  {
+   "name": "Good Tequila",
+   "category": "restaurant",
+   "website": ""
+  },
+  {
+   "name": "Happy Elephant Thai Cuisine",
+   "category": "restaurant",
+   "website": ""
+  },
+  {
+   "name": "Lou Malnati's Pizzeria",
+   "category": "restaurant",
+   "website": ""
+  },
+  {
+   "name": "Ma's",
+   "category": "restaurant",
+   "website": ""
+  },
+  {
+   "name": "Marino's",
+   "category": "restaurant",
+   "website": ""
+  },
+  {
+   "name": "Maz Mez Middle Eastern Grill",
+   "category": "restaurant",
+   "website": ""
+  },
+  {
+   "name": "Pies of London",
+   "category": "restaurant",
+   "website": ""
+  },
+  {
+   "name": "Real Time Sports",
+   "category": "restaurant",
+   "website": ""
+  },
+  {
+   "name": "RoccoVino's",
+   "category": "restaurant",
+   "website": ""
+  },
+  {
+   "name": "Sāttvic",
+   "category": "restaurant",
+   "website": ""
+  },
+  {
+   "name": "Tapalpa",
+   "category": "restaurant",
+   "website": ""
+  },
+  {
+   "name": "Teddy's Diner",
+   "category": "restaurant",
+   "website": ""
+  },
+  {
+   "name": "Tekka Sushi",
+   "category": "restaurant",
+   "website": ""
+  },
+  {
+   "name": "Vini's Pizza",
+   "category": "restaurant",
+   "website": ""
+  }
+ ]
+}

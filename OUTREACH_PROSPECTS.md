@@ -1,6 +1,6 @@
 # Outreach prospects (OpenStreetMap)
 
-Generated 2026-10-31 by `scripts/osm_prospects.py` (ROADMAP.md item 306).
+Generated 2026-11-11 by `scripts/osm_prospects.py` (ROADMAP.md item 306).
 
 > Data (c) OpenStreetMap contributors, available under the Open Database Licence (ODbL). **For outreach use only; never share or republish this file.** Names and websites only: no emails or phone numbers are kept, even where OSM has them. Order is the likelihood of buying a holiday listing (gifts, toys and books first, restaurants last). OSM coverage is volunteer-made: treat a missing shop as unknown, not as closed, and check the business's own site or a visit before writing to it.
 
@@ -187,6 +187,44 @@ They may still buy a promo, but the pitch differs: they already reach their own 
 | Via Roma | Restaurant | visit in person |
 | Wonton Gourmet | Restaurant | visit in person |
 | Zaika Indian cuisine | Restaurant | visit in person |
+
+## Elk Grove Village
+
+| Name | Category | Website |
+|---|---|---|
+| Blooming Flowers | Florist | visit in person |
+| Fannie May | Chocolate | visit in person |
+| Jarosch Bakery | Bakery | visit in person |
+| Mimosa Pastry Boutique | Bakery | visit in person |
+| Baskin-Robbins | Ice cream | <https://locations.baskinrobbins.com/il/elk-grove-village/50-biesterfield-rd-353202-br> |
+| Starbucks | Cafe | <https://starbucks.com> |
+| Betty's Bistro | Cafe | visit in person |
+| Bobar | Cafe | visit in person |
+| Brittany's Bistro | Cafe | visit in person |
+| Hide-Away Cafe | Cafe | visit in person |
+| Lulu's Gaming Cafe | Cafe | visit in person |
+| Penny's | Cafe | visit in person |
+| Coach's Corner Pizzeria & Sports Grill | Restaurant | <https://dacoachs.com/> |
+| Rose Garden Cafe | Restaurant | <https://www.elkgrovecafe.com/> |
+| Buffalo Wild Wings | Restaurant | visit in person |
+| Cefalu | Restaurant | visit in person |
+| Cubano Bros | Restaurant | visit in person |
+| El Rey del Marisco Mexican Grill | Restaurant | visit in person |
+| Elly's Pncake House | Restaurant | visit in person |
+| Good Tequila | Restaurant | visit in person |
+| Happy Elephant Thai Cuisine | Restaurant | visit in person |
+| Lou Malnati's Pizzeria | Restaurant | visit in person |
+| Ma's | Restaurant | visit in person |
+| Marino's | Restaurant | visit in person |
+| Maz Mez Middle Eastern Grill | Restaurant | visit in person |
+| Pies of London | Restaurant | visit in person |
+| Real Time Sports | Restaurant | visit in person |
+| RoccoVino's | Restaurant | visit in person |
+| Sāttvic | Restaurant | visit in person |
+| Tapalpa | Restaurant | visit in person |
+| Teddy's Diner | Restaurant | visit in person |
+| Tekka Sushi | Restaurant | visit in person |
+| Vini's Pizza | Restaurant | visit in person |
 
 ## Mount Prospect
 
