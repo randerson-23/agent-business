@@ -7497,3 +7497,15 @@ def test_town_one_liner_lists_two_titles_and_count():
     assert bd.town_one_liner(block) == "Mount Prospect: Diwali Party, MPCB Fall Concert and 3 more"
     assert bd.town_one_liner({"region_name": "Wheeling", "weekend_count": 1, "attendable_events": [{"title": "Fair"}]}) == "Wheeling: Fair"
     assert "nothing dated" in bd.town_one_liner({"region_name": "Wheeling", "attendable_events": []})
+
+
+def test_on_sale_subject_counts_from_thursday_delivery_not_the_wednesday_build():
+    # ROADMAP.md item 486: built Wed Nov 11 20:46 CT, delivered Thu Nov 12 07:00.
+    build = datetime(2026, 11, 12, 2, 46, tzinfo=timezone.utc)
+    assert build_digest.email_delivery_time(build) == datetime(2026, 11, 12, 7, 0)
+    assert build_digest.on_sale_subject([_metra_item()], build, 38) == "🚂 Holiday Train tickets go on sale Monday · 38 things this weekend"
+    following_friday = dict(_metra_item(), opens=datetime(2026, 11, 20, 12, 0))
+    assert build_digest.on_sale_subject([following_friday], build, 38) is None
+    # A Thursday build after the send counts from now, not next week's Thursday.
+    thu = datetime(2026, 11, 12, 20, 0, tzinfo=timezone.utc)
+    assert build_digest.email_delivery_time(thu) == datetime(2026, 11, 12, 14, 0)
