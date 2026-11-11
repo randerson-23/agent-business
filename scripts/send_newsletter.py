@@ -84,7 +84,7 @@ import logging
 import os
 import re
 import sys
-from datetime import datetime, timedelta, timezone
+from datetime import date, datetime, timedelta, timezone
 from email.utils import parsedate_to_datetime
 from html import unescape
 from pathlib import Path
@@ -333,6 +333,47 @@ def next_thursday_morning(now: datetime) -> datetime:
     return candidate
 
 
+def load_delivery_overrides(path: Path = NEWSLETTER_CONFIG) -> dict[date, datetime]:
+    """ROADMAP.md item 491: one-off moves of a Thursday delivery, from
+    `delivery_overrides:` in config/newsletter.yaml ({Thursday: new local
+    time}). An entry whose time has passed simply stops applying."""
+    try:
+        cfg = yaml.safe_load(path.read_text(encoding="utf-8")) or {}
+    except OSError:
+        return {}
+    out = {}
+    for day, when in (cfg.get("delivery_overrides") or {}).items():
+        try:
+            thursday = day if isinstance(day, date) else date.fromisoformat(str(day))
+            moved = when if isinstance(when, datetime) else datetime.fromisoformat(str(when))
+        except ValueError:
+            continue
+        out[thursday] = moved.replace(tzinfo=SEND_TIMEZONE) if moved.tzinfo is None else moved
+    return out
+
+
+def next_delivery(now: datetime, overrides: dict[date, datetime] | None = None) -> datetime:
+    """The next delivery moment after `now`: next_thursday_morning(), unless an
+    override moves that Thursday (item 491); a moved issue that has already
+    gone out hands over to the Thursday after."""
+    overrides = overrides or {}
+    candidate = next_thursday_morning(now)
+    while candidate.date() in overrides:
+        moved = overrides[candidate.date()]
+        if moved > now:
+            return moved.astimezone(SEND_TIMEZONE)
+        candidate = next_thursday_morning(candidate + timedelta(minutes=1))
+    return candidate
+
+
+# Item 491: the Tuesday cron run proceeds only when a delivery is this close.
+DUE_WITHIN = timedelta(hours=24)
+
+
+def issue_is_due(now: datetime, overrides: dict[date, datetime] | None = None) -> bool:
+    return next_delivery(now, overrides) - now <= DUE_WITHIN
+
+
 def read_build_timestamp(docs_dir: Path = DOCS_DIR) -> datetime:
     """The last real build's completion time, from `docs/feed.xml`'s
     <lastBuildDate> (written fresh by build_digest.py's build_feed_xml()
@@ -473,7 +514,7 @@ def assert_has_confirmed_subscribers(regular_count: int) -> None:
 
 
 def post_to_buttondown(
-    subject: str, html: str, api_key: str, mode: str, *, now: datetime | None = None
+    subject: str, html: str, api_key: str, mode: str, *, now: datetime | None = None, overrides: dict | None = None
 ) -> dict:
     """Create the email in Buttondown. Raises SendError with the API's own
     message on any non-2xx, so a wrong endpoint or a plan that gates API
@@ -495,7 +536,7 @@ def post_to_buttondown(
         # failure this module's docstring is counting on. Converting to
         # UTC and matching their documented format exactly removes that
         # bet without changing the real moment being sent.
-        payload["publish_date"] = next_thursday_morning(now or datetime.now(timezone.utc)).astimezone(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
+        payload["publish_date"] = next_delivery(now or datetime.now(timezone.utc), overrides).astimezone(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
     else:
         status = STATUS_DRAFT
     payload["status"] = status
@@ -544,8 +585,23 @@ def main(argv: list[str] | None = None) -> int:
         "confirmed subscribers is deliberate, not to bypass a real "
         "double-opt-in problem.",
     )
+    parser.add_argument(
+        "--check-due",
+        action="store_true",
+        help="Print due=true/false (and append it to $GITHUB_OUTPUT) for the "
+        "scheduled runs, then exit (ROADMAP.md item 491).",
+    )
     args = parser.parse_args(argv)
     logging.basicConfig(level=logging.INFO, format="%(message)s")
+    overrides = load_delivery_overrides()
+    if args.check_due:
+        due = issue_is_due(datetime.now(timezone.utc), overrides)
+        line = f"due={'true' if due else 'false'}"
+        print(line)
+        if os.environ.get("GITHUB_OUTPUT"):
+            with open(os.environ["GITHUB_OUTPUT"], "a", encoding="utf-8") as fh:
+                fh.write(line + "\n")
+        return 0
 
     try:
         cfg = load_send_config()
@@ -600,7 +656,7 @@ def main(argv: list[str] | None = None) -> int:
     if cfg["mode"] == "send":
         banner_verb, plain_verb = "SEND to every subscriber", "send"
     elif cfg["mode"] == "schedule":
-        scheduled_for = next_thursday_morning(now).isoformat()
+        scheduled_for = next_delivery(now, overrides).isoformat()
         banner_verb, plain_verb = f"SCHEDULE for {scheduled_for}", f"schedule for {scheduled_for}"
     else:
         banner_verb, plain_verb = "create a DRAFT in Buttondown", "create the draft"
@@ -671,7 +727,7 @@ def main(argv: list[str] | None = None) -> int:
                 return 1
 
     try:
-        result = post_to_buttondown(subject, html, api_key, cfg["mode"], now=now)
+        result = post_to_buttondown(subject, html, api_key, cfg["mode"], now=now, overrides=overrides)
     except SendError as exc:
         logger.error("%s", exc)
         return 1
@@ -702,7 +758,7 @@ def main(argv: list[str] | None = None) -> int:
     # /issues/ archive. Drafts are never archived; only mail that went out or
     # is scheduled to. Written once and never overwritten.
     if cfg["mode"] in ("send", "schedule"):
-        issue_day = now.astimezone(SEND_TIMEZONE).date() if cfg["mode"] == "send" else next_thursday_morning(now).date()
+        issue_day = now.astimezone(SEND_TIMEZONE).date() if cfg["mode"] == "send" else next_delivery(now, overrides).date()
         issue_path = ISSUES_DIR / f"{issue_day.isoformat()}.html"
         if not issue_path.exists():
             ISSUES_DIR.mkdir(parents=True, exist_ok=True)
@@ -713,7 +769,7 @@ def main(argv: list[str] | None = None) -> int:
     elif cfg["mode"] == "schedule":
         logger.info(
             "Scheduled for %s. Buttondown id: %s",
-            next_thursday_morning(now).isoformat(),
+            next_delivery(now, overrides).isoformat(),
             result.get("id", "?"),
         )
     else:

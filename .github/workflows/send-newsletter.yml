@@ -21,6 +21,11 @@ on:
     # Buttondown ever sends it. The offset minute (":37") dodges the
     # documented delay spike clustered at ":00".
     - cron: "37 22 * * 3"
+    # ROADMAP.md item 491: a Tuesday run too, for a delivery moved to
+    # Wednesday (delivery_overrides in config/newsletter.yaml). The build
+    # and send steps are skipped unless an issue is due within 24 hours,
+    # so on a normal week the Tuesday run does nothing.
+    - cron: "37 22 * * 2"
   # Manual runs matter more than usual here: this is how the first send
   # gets tested without waiting a week.
   #
@@ -53,15 +58,26 @@ jobs:
       - name: Install dependencies
         run: pip install -r requirements.txt
 
+      - name: Is an issue due?
+        id: due
+        run: |
+          if [ "${{ github.event_name }}" = "schedule" ]; then
+            python scripts/send_newsletter.py --check-due
+          else
+            echo "due=true" >> "$GITHUB_OUTPUT"
+          fi
+
       # Built fresh rather than trusting whatever docs/ happens to hold:
       # the build commit lands via a separate workflow on its own
       # schedule, and mailing a stale digest is worse than not mailing.
       # send_newsletter.py deliberately does not build, so a failure here
       # stops the job before anything can be sent.
       - name: Build digest
+        if: steps.due.outputs.due == 'true'
         run: python scripts/build_digest.py
 
       - name: Send to Buttondown
+        if: steps.due.outputs.due == 'true'
         env:
           BUTTONDOWN_API_KEY: ${{ secrets.BUTTONDOWN_API_KEY }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

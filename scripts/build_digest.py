@@ -6424,13 +6424,29 @@ def _fit_subject(titles: list[str], total: int, lone_leads: list[str] | None = N
     return f"{total} thing{'s' if total != 1 else ''} to do this weekend{places}"
 
 
-def email_delivery_time(now: datetime) -> datetime:
+def load_delivery_overrides() -> dict[date, datetime]:
+    """ROADMAP.md item 491: config/newsletter.yaml's `delivery_overrides`
+    ({Thursday: naive local time}), the same entries the send job reads."""
+    cfg = load_yaml(CONFIG_DIR / "newsletter.yaml") if (CONFIG_DIR / "newsletter.yaml").exists() else {}
+    out = {}
+    for day, when in (cfg.get("delivery_overrides") or {}).items():
+        try:
+            out[date.fromisoformat(str(day))] = datetime.fromisoformat(str(when)).replace(tzinfo=None)
+        except ValueError:
+            continue
+    return out
+
+
+def email_delivery_time(now: datetime, overrides: dict[date, datetime] | None = None) -> datetime:
     """ROADMAP.md item 486: the Thursday 07:00 Central the scheduled send
     delivers at (send_newsletter.next_thursday_morning), as naive local time.
     The build on a Thursday itself counts from now (the issue is out or
     going out today), never from the next week's Thursday."""
     local_now = now.astimezone(LOCAL_TZ).replace(tzinfo=None)
     candidate = local_now.replace(hour=7, minute=0, second=0, microsecond=0) + timedelta(days=(3 - local_now.weekday()) % 7)
+    overrides = load_delivery_overrides() if overrides is None else overrides
+    if candidate.date() in overrides:  # item 491: a moved issue (Thanksgiving's Wednesday)
+        candidate = overrides[candidate.date()]
     return max(candidate, local_now)
 
 
@@ -7735,6 +7751,15 @@ def weekend_label(local_now: datetime) -> str:
     return "Next weekend" if rolls_to_next_weekend(local_now) or local_now.weekday() < 4 else "This weekend"
 
 
+def weekend_window(friday: date, saturday: date, sunday: date) -> list[date]:
+    """The days a weekend page and the email cover: Friday to Sunday, plus
+    Thanksgiving itself on the long weekend after it (ROADMAP.md item 491)."""
+    days = [friday, saturday, sunday]
+    if friday == _thanksgiving(friday.year) + timedelta(days=1):
+        days.insert(0, friday - timedelta(days=1))
+    return days
+
+
 def weekend_dates(local_date: date) -> tuple[date, date, date]:
     """The Friday/Saturday/Sunday of the calendar week (Mon-Sun) containing
     local_date - correct whether local_date is itself a weekday (the
@@ -8344,7 +8369,7 @@ def main() -> None:
         friday, saturday, sunday = weekend_dates(weekend_reference_date(local_now))
         # ROADMAP.md item 268: on Saturday the page is for Saturday and Sunday;
         # Friday's events have passed and leave it.
-        window_days = [d for d in (friday, saturday, sunday) if d >= local_today]
+        window_days = [d for d in weekend_window(friday, saturday, sunday) if d >= local_today]
         weekend_events = order_weekend_events(filter_events_by_dates(blocks, set(window_days)))
         weekend_event_counts[region_id] = len(weekend_events)
         update_weekend_history(weekend_history, region_id, len(weekend_events))

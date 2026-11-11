@@ -7555,3 +7555,15 @@ def test_town_intro_and_signup_describe_their_own_sources_and_coverage():
     new = build_digest.newsletter_for_region(nl, egv["region"], towns)
     assert new["detail"].startswith("Elk Grove Village is new here.") and "five nearby towns" in new["detail"]
     assert "Arlington Heights, Des Plaines, Mount Prospect, Palatine, and Wheeling" in build_digest.newsletter_for_region(nl, mp["region"], towns)["detail"]
+
+
+def test_thanksgiving_window_includes_thursday_and_the_issue_moves_to_wednesday():
+    # ROADMAP.md item 491.
+    fri, sat, sun = build_digest.weekend_dates(date(2026, 11, 24))
+    assert build_digest.weekend_window(fri, sat, sun)[0] == date(2026, 11, 26)
+    assert len(build_digest.weekend_window(*build_digest.weekend_dates(date(2026, 11, 17)))) == 3
+    ov = {date(2026, 11, 26): datetime(2026, 11, 25, 7, 0)}
+    tue_build = datetime(2026, 11, 24, 22, 37, tzinfo=timezone.utc)
+    assert build_digest.email_delivery_time(tue_build, ov) == datetime(2026, 11, 25, 7, 0)
+    assert build_digest.email_edition(tue_build) == "holiday"
+    assert build_digest.load_delivery_overrides() == ov
