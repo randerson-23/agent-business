@@ -37,6 +37,8 @@ They may still buy a promo, but the pitch differs: they already reach their own 
 
 ## Arlington Heights
 
+(from the Oct 31 run; today's refresh failed)
+
 | Name | Category | Website |
 |---|---|---|
 | Express Gifts | Gift shop | <http://expressgiftsil.com> |
