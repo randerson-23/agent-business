@@ -232,6 +232,7 @@ Pick from the top unless the owner has flagged something else:
 0. **468** (per-source horizon and route in source_health, watchdog on short horizons; AHPD is still flat at 11), then **470** (`/e/` pages show their own weekend, not this one).
 0. **447** (`/give/` probes at fire, police and Toys for Tots pages; drop-off businesses as warm leads).
 0. **459** (what remains: Mount Prospect and Palatine *Programs* and *Register* pages), then **356** (weekday and toddler page, toddler-first title) with **469** (reading-programme lines and prize sponsors as warm leads), then **461** and **460**.
+0. **492** with **494** (indoor-play winter guide per town with a "Presented by" slot and a thin-weekend pick; **by Dec 1**), then **493** (MLK Day of Service on `/give/`, late December).
 0. **446** (Noon Year's Eve block and `/new-years-eve/` hub, in the sitemap by **Dec 1**), then **457** (`/museum-passes/`, YAML filled before Dec 1).
 0. **416, 417** (candidate-town measurement until about Nov 13), **422**.
 0. **439** (River Trails: bot-walled, so close it with a catalogue link), **440** (kids'-activity prospects), **467**.
@@ -20923,6 +20924,90 @@ Competitors reviewed this pass: **holiday send-timing studies** (GoDaddy,
 Martech, MediaPost, Constant Contact, Inntopia, Yesmail; all retail or
 travel, mixed) as evidence for the Thanksgiving delivery. The design/UX
 angle is **the new Elk Grove Village page**.
+
+#### Research pass 2026-11-11, evening (hundred-and-thirty-eighth pass)
+
+Today the build loop shipped item 489 (town pages describe their own
+sources, and Elk Grove's signup tells the truth) and item 491 (the
+Thanksgiving issue is delivered Wed Nov 25, through `delivery_overrides`
+and a Tuesday-night cron that only runs when an issue is due). It also
+made the outreach batch warn rather than fail while the owner's details
+are unset. Tomorrow's issue (Nov 12) is the first with a sale-first
+subject. This pass looks past the holidays at **January**, the thinnest
+month for events, when a weekend guide most needs something to say.
+
+| Angle | What it is / what we found | Why it matters here |
+|---|---|---|
+| **Indoor play places, the winter question** (mykidlist's *Top 10 indoor playgrounds* and its *Funlandia Kid Cafe in Palatine* review; Macaroni KID Schaumburg's indoor-play guide; yopki's Arlington Heights *indoor-activities* page; venue pages: Kids Empire Palatine, Chuck E. Cheese Arlington Heights' Adventure Zone, a Randhurst play café) | **Palatine:** Funlandia Kid Cafe (ages 8 and under, 295 N Northwest Hwy) and Kids Empire Palatine Deer Grove (ages 1–12, all-day admission). **Arlington Heights:** the library's children's area (free), Hot Ground Gym (downtown), Chuck E. Cheese's Adventure Zone. **Mount Prospect:** a play café at Randhurst Village (for ages up to about 6; from an older guide, unverified) and Bowlero. **mykidlist, Macaroni KID and yopki all run an indoor-play page**, and **this site has none**. Its town guides are *birthday parties and kids' classes*, *fall family guide*, *new to town* and *seasonal circuit* | *"Indoor play near me"* is the question parents ask from December to March, and every competitor answers it. It's also a **sponsor list**: an indoor play business sells to exactly this audience, its season is winter, and a *"Presented by"* line on its own town's indoor-play guide is the most natural sponsorship the site could sell (item 492) |
+| **MLK Day of Service, Mon Jan 18, 2027** (Daily Herald on past Arlington Heights church drives; mykidlist's MLK Day category; Mount Prospect Public Library's past family service event for ages 11 and under) | Past local events: **Mount Prospect Public Library's family service event** (hands-on, kindness-themed, for children 11 and under with their families), Arlington Heights churches' food and essentials drives, and a Palatine community celebration. No 2027 listings yet. It's **also a no-school day** in every district | `/give/` and its *"Volunteer with your kids"* section (items 441, 442) end Dec 20 and Dec 31. MLK Day is the one January date when families look for a way to serve together, and the library feeds will carry it (item 493) |
+| **The guides list in winter (design/UX)** (`docs/<town>/guides/`) | The fourth guide is ***"Fall family guide"***, still linked in mid-November, and it will be stale by December. No guide covers **winter** or a **thin weekend** | In January a town's weekend may have five events, mostly storytimes. A guide that rotates with the season, and an email that fills a thin week with a dated-free indoor pick, keep each issue worth opening when the calendar is quiet (items 492, 494) |
+
+#### P1 (new)
+
+492. **A winter guide per town: indoor play and rainy-day places, with
+     one "Presented by" slot.** Build loop, by **Dec 1**:
+
+     - Add `/<town>/guides/indoor-play/` from a new
+       `config/indoor_play.yaml`. Each entry has a name, an age range,
+       an address, *free* or *paid*, and a **link to the venue's own
+       page**. Add only what the venue's own page states; for hours,
+       say *"Check hours before you go"*.
+     - Seed it from the places above, **each verified on its own
+       site** before it's added (the Randhurst play café is from an
+       older guide and may have closed). Add each town's library
+       children's area and item 457's museum passes.
+     - On **Dec 1, swap the "Fall family guide" link** in the guides
+       list for this one; the fall guide stays reachable but unlisted.
+     - Add one labelled ***"Presented by [business]"*** line per town
+       guide in `config/sponsors.yaml` (Weekly Spot pricing, item 487's
+       launch rate). Write each listed business into
+       `data/warm_hosts.json` with reason `"indoor_play_venue"`, so
+       outreach can offer it its own guide.
+
+     Title: *"Indoor Play Places for Kids in Palatine: Winter 2026–27"*.
+     Tests: entries without a source URL are refused, the guides list
+     switches on Dec 1, and the sponsor line renders only when it's set.
+
+#### P2 (new)
+
+493. **MLK Day of Service on `/give/`, Jan 4–18, 2027.** Build loop:
+
+     - Reopen `/give/` from **Jan 4 to Jan 18** with a ***"MLK Day of
+       Service · Mon Jan 18"*** section. It holds feed events dated Jan
+       16–18 whose titles or descriptions say *MLK*, *Martin Luther
+       King*, *day of service*, *service project* or *kindness*, plus
+       the volunteer-tagged events from item 442.
+     - Add one email line in the Jan 14 issue: *"🤝 MLK Day of Service:
+       N ways to help together on Monday"*.
+     - Show only listings from 2027 sources; if there are none,
+       the section says so honestly.
+
+     Tests: the date window, the keyword match, and the honest empty
+     line.
+
+#### P3 (new)
+
+494. **A thin-weekend fallback: one evergreen indoor pick per town.**
+     Build loop. When a town has **fewer than 3 one-off family events**
+     in the weekend (item 484's ranking), the email's town section and
+     town page add one ***"🏠 Rainy-day pick: Funlandia Kid Cafe,
+     Palatine →"*** from item 492's list. Rotate weekly so the same
+     place doesn't repeat within four weeks. Label it as evergreen, never
+     as an event. A sponsored entry may be the pick only in its
+     sponsored weeks, labelled as sponsored. Tests: the fallback
+     triggers below the threshold only, rotation avoids repeats, and the
+     label is present.
+
+Re-rank: **492 goes into the build queue after the Thanksgiving and
+Santa items**, with **Dec 1** as its date. Its sponsor slot is the first
+one built for the buyers most likely to say yes in winter. **493** waits
+until late December. **494** rides with 492.
+
+Competitors reviewed this pass: **mykidlist's, Macaroni KID
+Schaumburg's and yopki's indoor-play pages**, and **past MLK Day of
+Service listings** in these towns. The design/UX angle is **the guides
+list in winter**: a fall guide still linked, no winter guide, nothing for
+a thin week.
 
 
 ## Working agreements for autonomous iteration
