@@ -2,1179 +2,12 @@
   "@context": "https://schema.org",
   "@type": "ItemList",
   "name": "Upcoming events across every region — Within Ten",
-  "dateModified": "2026-11-10T22:07:47+00:00",
-  "numberOfItems": 341,
+  "dateModified": "2026-11-11T06:01:54+00:00",
+  "numberOfItems": 325,
   "itemListElement": [
     {
       "@type": "ListItem",
       "position": 1,
-      "item": {
-        "@type": "Event",
-        "name": "Social Worker in the Library",
-        "startDate": "2026-11-10",
-        "url": "https://withintenmiles.com/arlington-heights-60005/#ev-social-worker-in-the-library-2026-11-10",
-        "eventStatus": "https://schema.org/EventScheduled",
-        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "location": {
-          "@type": "Place",
-          "name": "Arlington Heights Memorial Library",
-          "address": {
-            "@type": "PostalAddress",
-            "addressCountry": "US",
-            "addressLocality": "Arlington Heights",
-            "addressRegion": "IL",
-            "streetAddress": "500 N. Dunton Ave."
-          }
-        },
-        "sameAs": "https://www.ahml.info/scheduling/reservation/218152",
-        "organizer": {
-          "@type": "Organization",
-          "name": "Arlington Heights Memorial Library",
-          "url": "https://www.ahml.info"
-        },
-        "image": "https://withintenmiles.com/og/arlington-heights-60005.png"
-      }
-    },
-    {
-      "@type": "ListItem",
-      "position": 2,
-      "item": {
-        "@type": "Event",
-        "name": "The Arlington Camera Club",
-        "startDate": "2026-11-10",
-        "url": "https://withintenmiles.com/elk-grove-village-60007/#ev-the-arlington-camera-club-2026-11-10",
-        "eventStatus": "https://schema.org/EventScheduled",
-        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "location": {
-          "@type": "Place",
-          "name": "Elk Grove Village Public Library",
-          "address": {
-            "@type": "PostalAddress",
-            "addressCountry": "US",
-            "addressLocality": "Elk Grove Village",
-            "addressRegion": "IL"
-          }
-        },
-        "sameAs": "https://egvpl.libnet.info/event/16362678",
-        "organizer": {
-          "@type": "Organization",
-          "name": "Elk Grove Village Public Library - Events",
-          "url": "https://egvpl.libnet.info"
-        },
-        "image": "https://withintenmiles.com/og/elk-grove-village-60007.png",
-        "description": "Tuesday, November 10 2026 12:00am - 11:59pm \n Arlington Camera Club photography exhibit."
-      }
-    },
-    {
-      "@type": "ListItem",
-      "position": 3,
-      "item": {
-        "@type": "Event",
-        "name": "Picture Book Month Challenge",
-        "startDate": "2026-11-10",
-        "url": "https://withintenmiles.com/elk-grove-village-60007/#ev-picture-book-month-challenge-2026-11-10",
-        "eventStatus": "https://schema.org/EventScheduled",
-        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "location": {
-          "@type": "Place",
-          "name": "Elk Grove Village Public Library",
-          "address": {
-            "@type": "PostalAddress",
-            "addressCountry": "US",
-            "addressLocality": "Elk Grove Village",
-            "addressRegion": "IL"
-          }
-        },
-        "sameAs": "https://egvpl.libnet.info/event/17074010",
-        "organizer": {
-          "@type": "Organization",
-          "name": "Elk Grove Village Public Library - Events",
-          "url": "https://egvpl.libnet.info"
-        },
-        "image": "https://withintenmiles.com/og/elk-grove-village-60007.png",
-        "description": "Tuesday, November 10 2026 12:00am - 11:59pm \n November is Picture Book Month! Put on your thinking cap and see if you can guess which picture book our clues…"
-      }
-    },
-    {
-      "@type": "ListItem",
-      "position": 4,
-      "item": {
-        "@type": "Event",
-        "name": "Word of the Week",
-        "startDate": "2026-11-10",
-        "url": "https://withintenmiles.com/elk-grove-village-60007/#ev-word-of-the-week-2026-11-10",
-        "eventStatus": "https://schema.org/EventScheduled",
-        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "location": {
-          "@type": "Place",
-          "name": "Elk Grove Village Public Library",
-          "address": {
-            "@type": "PostalAddress",
-            "addressCountry": "US",
-            "addressLocality": "Elk Grove Village",
-            "addressRegion": "IL"
-          }
-        },
-        "sameAs": "https://egvpl.libnet.info/event/17354422",
-        "organizer": {
-          "@type": "Organization",
-          "name": "Elk Grove Village Public Library - Events",
-          "url": "https://egvpl.libnet.info"
-        },
-        "image": "https://withintenmiles.com/og/elk-grove-village-60007.png",
-        "description": "Tuesday, November 10 2026 12:00am - 11:59pm \n Become a dictionary detective with our new Word of the Week challenge! Discover a new vocabulary word, look it…"
-      }
-    },
-    {
-      "@type": "ListItem",
-      "position": 5,
-      "item": {
-        "@type": "Event",
-        "name": "Puzzle Swap",
-        "startDate": "2026-11-10",
-        "url": "https://withintenmiles.com/mount-prospect-60056/#ev-puzzle-swap-2026-11-10",
-        "eventStatus": "https://schema.org/EventScheduled",
-        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "location": {
-          "@type": "Place",
-          "name": "Mount Prospect Public Library",
-          "address": {
-            "@type": "PostalAddress",
-            "addressCountry": "US",
-            "addressLocality": "Mount Prospect",
-            "addressRegion": "IL",
-            "streetAddress": "125 S Emerson St"
-          }
-        },
-        "sameAs": "https://mppl.libnet.info/event/16493074",
-        "organizer": {
-          "@type": "Organization",
-          "name": "Mount Prospect Public Library",
-          "url": "https://mppl.libnet.info"
-        },
-        "image": "https://withintenmiles.com/og/mount-prospect-60056.png",
-        "description": "Tuesday, November 10 2026 12:00am - 11:59pm \n Bring a puzzle, take a puzzle! Tables will be set up in the lobby for folks to stop by to swap puzzles."
-      }
-    },
-    {
-      "@type": "ListItem",
-      "position": 6,
-      "item": {
-        "@type": "Event",
-        "name": "Reading/Literacy Class",
-        "startDate": "2026-11-10T09:15:00-06:00",
-        "url": "https://withintenmiles.com/des-plaines-60016/#ev-reading-literacy-class-2026-11-10",
-        "eventStatus": "https://schema.org/EventScheduled",
-        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "location": {
-          "@type": "Place",
-          "name": "Des Plaines Public Library",
-          "address": {
-            "@type": "PostalAddress",
-            "addressCountry": "US",
-            "addressLocality": "Des Plaines",
-            "addressRegion": "IL",
-            "streetAddress": "1501 Ellinwood Street",
-            "postalCode": "60016"
-          }
-        },
-        "sameAs": "https://desplaines.libnet.info/event/15801730",
-        "organizer": {
-          "@type": "Organization",
-          "name": "Des Plaines Public Library",
-          "url": "https://desplaines.libnet.info"
-        },
-        "image": "https://withintenmiles.com/og/des-plaines-60016.png",
-        "description": "Tuesday, November 10 2026 9:15am - 12:15pm \n For more information, please contact Oakton College at 847-635-1426"
-      }
-    },
-    {
-      "@type": "ListItem",
-      "position": 7,
-      "item": {
-        "@type": "Event",
-        "name": "ESL (English as a Second Language) Class - Oakton College",
-        "startDate": "2026-11-10T09:15:00-06:00",
-        "url": "https://withintenmiles.com/des-plaines-60016/#ev-esl-english-as-a-second-language-class-oakton-college-2026-11-10",
-        "eventStatus": "https://schema.org/EventScheduled",
-        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "location": {
-          "@type": "Place",
-          "name": "Des Plaines Public Library",
-          "address": {
-            "@type": "PostalAddress",
-            "addressCountry": "US",
-            "addressLocality": "Des Plaines",
-            "addressRegion": "IL",
-            "streetAddress": "1501 Ellinwood Street",
-            "postalCode": "60016"
-          }
-        },
-        "sameAs": "https://desplaines.libnet.info/event/15803241",
-        "organizer": {
-          "@type": "Organization",
-          "name": "Des Plaines Public Library",
-          "url": "https://desplaines.libnet.info"
-        },
-        "image": "https://withintenmiles.com/og/des-plaines-60016.png",
-        "description": "Tuesday, November 10 2026 9:15am - 12:15pm \n ESL (English as a Second Language) Class - Oakton College\n\n Teaches listening, speaking, reading, writing, and…"
-      }
-    },
-    {
-      "@type": "ListItem",
-      "position": 8,
-      "item": {
-        "@type": "Event",
-        "name": "Baby Storytime",
-        "startDate": "2026-11-10T09:30:00-06:00",
-        "url": "https://withintenmiles.com/mount-prospect-60056/#ev-baby-storytime-2026-11-10",
-        "eventStatus": "https://schema.org/EventScheduled",
-        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "location": {
-          "@type": "Place",
-          "name": "Mount Prospect Public Library",
-          "address": {
-            "@type": "PostalAddress",
-            "addressCountry": "US",
-            "addressLocality": "Mount Prospect",
-            "addressRegion": "IL",
-            "streetAddress": "125 S Emerson St"
-          }
-        },
-        "sameAs": "https://mppl.libnet.info/event/16637816",
-        "organizer": {
-          "@type": "Organization",
-          "name": "Mount Prospect Public Library",
-          "url": "https://mppl.libnet.info"
-        },
-        "image": "https://withintenmiles.com/og/mount-prospect-60056.png",
-        "description": "Tuesday, November 10 2026 9:30am - 10:00am \n A lifelong love of reading starts at birth! Join us for songs, rhymes, stories, and playtime made specially for…"
-      }
-    },
-    {
-      "@type": "ListItem",
-      "position": 9,
-      "item": {
-        "@type": "Event",
-        "name": "Makerspace Orientations: On-Zoom 2026-2027",
-        "startDate": "2026-11-10T10:00:00-06:00",
-        "url": "https://withintenmiles.com/des-plaines-60016/#ev-makerspace-orientations-on-zoom-2026-2027-2026-11-10",
-        "eventStatus": "https://schema.org/EventScheduled",
-        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "location": {
-          "@type": "Place",
-          "name": "Des Plaines Public Library",
-          "address": {
-            "@type": "PostalAddress",
-            "addressCountry": "US",
-            "addressLocality": "Des Plaines",
-            "addressRegion": "IL",
-            "streetAddress": "1501 Ellinwood Street",
-            "postalCode": "60016"
-          }
-        },
-        "sameAs": "https://desplaines.libnet.info/event/15981572",
-        "organizer": {
-          "@type": "Organization",
-          "name": "Des Plaines Public Library",
-          "url": "https://desplaines.libnet.info"
-        },
-        "image": "https://withintenmiles.com/og/des-plaines-60016.png",
-        "description": "Tuesday, November 10 2026 10:00am - 11:30am \n Interested in using the machines in the brand new Canvas Makerspace? Des Plaines Public Library cardholders must…"
-      }
-    },
-    {
-      "@type": "ListItem",
-      "position": 10,
-      "item": {
-        "@type": "Event",
-        "name": "Toddler Time",
-        "startDate": "2026-11-10T10:00:00-06:00",
-        "url": "https://withintenmiles.com/des-plaines-60016/#ev-toddler-time-2026-11-10",
-        "eventStatus": "https://schema.org/EventScheduled",
-        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "location": {
-          "@type": "Place",
-          "name": "Des Plaines Public Library",
-          "address": {
-            "@type": "PostalAddress",
-            "addressCountry": "US",
-            "addressLocality": "Des Plaines",
-            "addressRegion": "IL",
-            "streetAddress": "1501 Ellinwood Street",
-            "postalCode": "60016"
-          }
-        },
-        "sameAs": "https://desplaines.libnet.info/event/17001901",
-        "organizer": {
-          "@type": "Organization",
-          "name": "Des Plaines Public Library",
-          "url": "https://desplaines.libnet.info"
-        },
-        "image": "https://withintenmiles.com/og/des-plaines-60016.png",
-        "description": "Tuesday, November 10 2026 10:00am - 10:30am \n Ages 18-36 months. Drop-in at the Poet Tree Corner! Enjoy stories, songs, rhymes, movement, and more at Toddler…"
-      }
-    },
-    {
-      "@type": "ListItem",
-      "position": 11,
-      "item": {
-        "@type": "Event",
-        "name": "Tuesday Morning Book Discussion: Theo of Golden",
-        "startDate": "2026-11-10T10:00:00-06:00",
-        "url": "https://withintenmiles.com/des-plaines-60016/#ev-tuesday-morning-book-discussion-theo-of-golden-2026-11-10",
-        "eventStatus": "https://schema.org/EventScheduled",
-        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "location": {
-          "@type": "Place",
-          "name": "Des Plaines Public Library",
-          "address": {
-            "@type": "PostalAddress",
-            "addressCountry": "US",
-            "addressLocality": "Des Plaines",
-            "addressRegion": "IL",
-            "streetAddress": "1501 Ellinwood Street",
-            "postalCode": "60016"
-          }
-        },
-        "sameAs": "https://desplaines.libnet.info/event/17350944",
-        "organizer": {
-          "@type": "Organization",
-          "name": "Des Plaines Public Library",
-          "url": "https://desplaines.libnet.info"
-        },
-        "image": "https://withintenmiles.com/og/des-plaines-60016.png",
-        "description": "Tuesday, November 10 2026 10:00am - 11:00am \n A staff member will lead a book discussion. Books are available at the 3rd floor info desk in the public library…"
-      }
-    },
-    {
-      "@type": "ListItem",
-      "position": 12,
-      "item": {
-        "@type": "Event",
-        "name": "Mini Mad Science Storytime",
-        "startDate": "2026-11-10T10:00:00-06:00",
-        "url": "https://withintenmiles.com/elk-grove-village-60007/#ev-mini-mad-science-storytime-2026-11-10",
-        "eventStatus": "https://schema.org/EventScheduled",
-        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "location": {
-          "@type": "Place",
-          "name": "Elk Grove Village Public Library",
-          "address": {
-            "@type": "PostalAddress",
-            "addressCountry": "US",
-            "addressLocality": "Elk Grove Village",
-            "addressRegion": "IL"
-          }
-        },
-        "sameAs": "https://egvpl.libnet.info/event/17061964",
-        "organizer": {
-          "@type": "Organization",
-          "name": "Elk Grove Village Public Library - Events",
-          "url": "https://egvpl.libnet.info"
-        },
-        "image": "https://withintenmiles.com/og/elk-grove-village-60007.png",
-        "description": "Tuesday, November 10 2026 10:00am - 10:45am \n Join us for a fun science class just for young children! We will explore science through stories, a hands-on…"
-      }
-    },
-    {
-      "@type": "ListItem",
-      "position": 13,
-      "item": {
-        "@type": "Event",
-        "name": "Noisy Time",
-        "startDate": "2026-11-10T10:00:00-06:00",
-        "url": "https://withintenmiles.com/wheeling-60090/#ev-noisy-time-2026-11-10",
-        "eventStatus": "https://schema.org/EventScheduled",
-        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "location": {
-          "@type": "Place",
-          "name": "Indian Trails Public Library",
-          "address": {
-            "@type": "PostalAddress",
-            "addressCountry": "US",
-            "addressLocality": "Wheeling",
-            "addressRegion": "IL",
-            "streetAddress": "355 Schoenbeck Rd."
-          }
-        },
-        "sameAs": "https://indiantrails.libnet.info/event/16927079",
-        "organizer": {
-          "@type": "Organization",
-          "name": "Indian Trails Public Library",
-          "url": "https://indiantrails.libnet.info"
-        },
-        "image": "https://withintenmiles.com/og/wheeling-60090.png",
-        "description": "Tuesday, November 10 2026 10:00am - 10:30am \n Explore the world around us with stories, rhymes and lots of music and movement. TR"
-      }
-    },
-    {
-      "@type": "ListItem",
-      "position": 14,
-      "item": {
-        "@type": "Event",
-        "name": "Family Storytime",
-        "startDate": "2026-11-10T10:30:00-06:00",
-        "url": "https://withintenmiles.com/mount-prospect-60056/#ev-family-storytime-2026-11-10",
-        "eventStatus": "https://schema.org/EventScheduled",
-        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "location": {
-          "@type": "Place",
-          "name": "Mount Prospect Public Library",
-          "address": {
-            "@type": "PostalAddress",
-            "addressCountry": "US",
-            "addressLocality": "Mount Prospect",
-            "addressRegion": "IL",
-            "streetAddress": "125 S Emerson St"
-          }
-        },
-        "sameAs": "https://mppl.libnet.info/event/16637828",
-        "organizer": {
-          "@type": "Organization",
-          "name": "Mount Prospect Public Library",
-          "url": "https://mppl.libnet.info"
-        },
-        "image": "https://withintenmiles.com/og/mount-prospect-60056.png",
-        "description": "Tuesday, November 10 2026 10:30am - 11:00am \n Bring the whole family and join us for an interactive storytime with high-energy stories, songs, and activities."
-      }
-    },
-    {
-      "@type": "ListItem",
-      "position": 15,
-      "item": {
-        "@type": "Event",
-        "name": "Rise & Read Morning Book Discussion",
-        "startDate": "2026-11-10T10:30:00-06:00",
-        "url": "https://withintenmiles.com/wheeling-60090/#ev-rise-read-morning-book-discussion-2026-11-10",
-        "eventStatus": "https://schema.org/EventScheduled",
-        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "location": {
-          "@type": "Place",
-          "name": "Indian Trails Public Library",
-          "address": {
-            "@type": "PostalAddress",
-            "addressCountry": "US",
-            "addressLocality": "Wheeling",
-            "addressRegion": "IL",
-            "streetAddress": "355 Schoenbeck Rd."
-          }
-        },
-        "sameAs": "https://indiantrails.libnet.info/event/14170861",
-        "organizer": {
-          "@type": "Organization",
-          "name": "Indian Trails Public Library",
-          "url": "https://indiantrails.libnet.info"
-        },
-        "image": "https://withintenmiles.com/og/wheeling-60090.png",
-        "description": "Tuesday, November 10 2026 10:30am - 11:30am \n Registration and book pickup begins October 13. A book about murder, deception, and the pursuit of the truth. R"
-      }
-    },
-    {
-      "@type": "ListItem",
-      "position": 16,
-      "item": {
-        "@type": "Event",
-        "name": "Tuesday Tech Help",
-        "startDate": "2026-11-10T11:00:00-06:00",
-        "url": "https://withintenmiles.com/elk-grove-village-60007/#ev-tuesday-tech-help-2026-11-10",
-        "eventStatus": "https://schema.org/EventScheduled",
-        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "location": {
-          "@type": "Place",
-          "name": "Elk Grove Village Public Library",
-          "address": {
-            "@type": "PostalAddress",
-            "addressCountry": "US",
-            "addressLocality": "Elk Grove Village",
-            "addressRegion": "IL"
-          }
-        },
-        "sameAs": "https://egvpl.libnet.info/event/17238825",
-        "organizer": {
-          "@type": "Organization",
-          "name": "Elk Grove Village Public Library - Events",
-          "url": "https://egvpl.libnet.info"
-        },
-        "image": "https://withintenmiles.com/og/elk-grove-village-60007.png",
-        "description": "Tuesday, November 10 2026 11:00am - 1:00pm \n Got a technology question? Were here to help! Bring your device and question."
-      }
-    },
-    {
-      "@type": "ListItem",
-      "position": 17,
-      "item": {
-        "@type": "Event",
-        "name": "iPhone and iPad Basics",
-        "startDate": "2026-11-10T11:00:00-06:00",
-        "url": "https://withintenmiles.com/mount-prospect-60056/#ev-iphone-and-ipad-basics-2026-11-10",
-        "eventStatus": "https://schema.org/EventScheduled",
-        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "location": {
-          "@type": "Place",
-          "name": "Mount Prospect Public Library",
-          "address": {
-            "@type": "PostalAddress",
-            "addressCountry": "US",
-            "addressLocality": "Mount Prospect",
-            "addressRegion": "IL",
-            "streetAddress": "125 S Emerson St"
-          }
-        },
-        "sameAs": "https://mppl.libnet.info/event/16746949",
-        "organizer": {
-          "@type": "Organization",
-          "name": "Mount Prospect Public Library",
-          "url": "https://mppl.libnet.info"
-        },
-        "image": "https://withintenmiles.com/og/mount-prospect-60056.png",
-        "description": "Tuesday, November 10 2026 11:00am - 12:30pm \n Join Mike Gershbein from Very Smart People for a demonstration on iPhone and iPad basics."
-      }
-    },
-    {
-      "@type": "ListItem",
-      "position": 18,
-      "item": {
-        "@type": "Event",
-        "name": "Quality Watercolor Techniques",
-        "startDate": "2026-11-10T11:00:00-06:00",
-        "url": "https://withintenmiles.com/wheeling-60090/#ev-quality-watercolor-techniques-2026-11-10",
-        "eventStatus": "https://schema.org/EventScheduled",
-        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "location": {
-          "@type": "Place",
-          "name": "Indian Trails Public Library",
-          "address": {
-            "@type": "PostalAddress",
-            "addressCountry": "US",
-            "addressLocality": "Wheeling",
-            "addressRegion": "IL",
-            "streetAddress": "355 Schoenbeck Rd."
-          }
-        },
-        "sameAs": "https://indiantrails.libnet.info/event/17096928",
-        "organizer": {
-          "@type": "Organization",
-          "name": "Indian Trails Public Library",
-          "url": "https://indiantrails.libnet.info"
-        },
-        "image": "https://withintenmiles.com/og/wheeling-60090.png",
-        "description": "Tuesday, November 10 2026 11:00am - 12:00pm \n Learn how different grade art supplies affect watercolors and practice your professional skills using layering…"
-      }
-    },
-    {
-      "@type": "ListItem",
-      "position": 19,
-      "item": {
-        "@type": "Event",
-        "name": "Play and Learn",
-        "startDate": "2026-11-10T11:30:00-06:00",
-        "url": "https://withintenmiles.com/mount-prospect-60056/#ev-play-and-learn-2026-11-10",
-        "eventStatus": "https://schema.org/EventScheduled",
-        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "location": {
-          "@type": "Place",
-          "name": "Mount Prospect Public Library",
-          "address": {
-            "@type": "PostalAddress",
-            "addressCountry": "US",
-            "addressLocality": "Mount Prospect",
-            "addressRegion": "IL",
-            "streetAddress": "125 S Emerson St"
-          }
-        },
-        "sameAs": "https://mppl.libnet.info/event/16882807",
-        "organizer": {
-          "@type": "Organization",
-          "name": "Mount Prospect Public Library",
-          "url": "https://mppl.libnet.info"
-        },
-        "image": "https://withintenmiles.com/og/mount-prospect-60056.png",
-        "description": "Tuesday, November 10 2026 11:30am - 12:15pm \n Join us each week for storytime, sing-alongs, and developmental play experiences that encourage learning through…"
-      }
-    },
-    {
-      "@type": "ListItem",
-      "position": 20,
-      "item": {
-        "@type": "Event",
-        "name": "Special Meeting-Board of Fire and Police Commissioners",
-        "startDate": "2026-11-10T13:00:00-06:00",
-        "url": "https://withintenmiles.com/wheeling-60090/#ev-special-meeting-board-of-fire-and-police-commissioners-2026-11-10",
-        "eventStatus": "https://schema.org/EventScheduled",
-        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "location": {
-          "@type": "Place",
-          "name": "Wheeling, IL",
-          "address": {
-            "@type": "PostalAddress",
-            "addressCountry": "US",
-            "addressLocality": "Wheeling",
-            "addressRegion": "IL"
-          }
-        },
-        "sameAs": "https://www.wheelingil.gov/common/modules/iCalendar/iCalendar.aspx?feed=calendar&catID=14",
-        "organizer": {
-          "@type": "Organization",
-          "name": "Village of Wheeling",
-          "url": "https://www.wheelingil.gov"
-        },
-        "image": "https://withintenmiles.com/og/wheeling-60090.png",
-        "description": "https://www.wheelingil.gov/calendar.aspx?EID=2236"
-      }
-    },
-    {
-      "@type": "ListItem",
-      "position": 21,
-      "item": {
-        "@type": "Event",
-        "name": "The History of Bagels",
-        "startDate": "2026-11-10T13:00:00-06:00",
-        "url": "https://withintenmiles.com/wheeling-60090/#ev-the-history-of-bagels-2026-11-10",
-        "eventStatus": "https://schema.org/EventScheduled",
-        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "location": {
-          "@type": "Place",
-          "name": "Indian Trails Public Library",
-          "address": {
-            "@type": "PostalAddress",
-            "addressCountry": "US",
-            "addressLocality": "Wheeling",
-            "addressRegion": "IL",
-            "streetAddress": "355 Schoenbeck Rd."
-          }
-        },
-        "sameAs": "https://indiantrails.libnet.info/event/16733965",
-        "organizer": {
-          "@type": "Organization",
-          "name": "Indian Trails Public Library",
-          "url": "https://indiantrails.libnet.info"
-        },
-        "image": "https://withintenmiles.com/og/wheeling-60090.png",
-        "description": "Tuesday, November 10 2026 1:00pm - 2:00pm \n Discover the history of bagels with Jewish food enthusiast Arianna Brooks. Learn how bagels were shaped by…"
-      }
-    },
-    {
-      "@type": "ListItem",
-      "position": 22,
-      "item": {
-        "@type": "Event",
-        "name": "Big Kids Storytime",
-        "startDate": "2026-11-10T13:30:00-06:00",
-        "url": "https://withintenmiles.com/mount-prospect-60056/#ev-big-kids-storytime-2026-11-10",
-        "eventStatus": "https://schema.org/EventScheduled",
-        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "location": {
-          "@type": "Place",
-          "name": "Mount Prospect Public Library",
-          "address": {
-            "@type": "PostalAddress",
-            "addressCountry": "US",
-            "addressLocality": "Mount Prospect",
-            "addressRegion": "IL",
-            "streetAddress": "125 S Emerson St"
-          }
-        },
-        "sameAs": "https://mppl.libnet.info/event/16637851",
-        "organizer": {
-          "@type": "Organization",
-          "name": "Mount Prospect Public Library",
-          "url": "https://mppl.libnet.info"
-        },
-        "image": "https://withintenmiles.com/og/mount-prospect-60056.png",
-        "description": "Tuesday, November 10 2026 1:30pm - 2:15pm \n Grow into a super reader through playful books and fun with friends! This storytime is the perfect fit for…"
-      }
-    },
-    {
-      "@type": "ListItem",
-      "position": 23,
-      "item": {
-        "@type": "Event",
-        "name": "Playground Community Event",
-        "startDate": "2026-11-10T15:30:00-06:00",
-        "url": "https://withintenmiles.com/mount-prospect-60056/#ev-playground-community-event-2026-11-10",
-        "eventStatus": "https://schema.org/EventScheduled",
-        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "location": {
-          "@type": "Place",
-          "name": "Mount Prospect, IL",
-          "address": {
-            "@type": "PostalAddress",
-            "addressCountry": "US",
-            "addressLocality": "Mount Prospect",
-            "addressRegion": "IL"
-          }
-        },
-        "image": "https://withintenmiles.com/og/mount-prospect-60056.png"
-      }
-    },
-    {
-      "@type": "ListItem",
-      "position": 24,
-      "item": {
-        "@type": "Event",
-        "name": "Dungeons & Dragons",
-        "startDate": "2026-11-10T16:00:00-06:00",
-        "url": "https://withintenmiles.com/mount-prospect-60056/#ev-dungeons-dragons-2026-11-10",
-        "eventStatus": "https://schema.org/EventScheduled",
-        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "location": {
-          "@type": "Place",
-          "name": "Mount Prospect Public Library",
-          "address": {
-            "@type": "PostalAddress",
-            "addressCountry": "US",
-            "addressLocality": "Mount Prospect",
-            "addressRegion": "IL",
-            "streetAddress": "125 S Emerson St"
-          }
-        },
-        "sameAs": "https://mppl.libnet.info/event/16537609",
-        "organizer": {
-          "@type": "Organization",
-          "name": "Mount Prospect Public Library",
-          "url": "https://mppl.libnet.info"
-        },
-        "image": "https://withintenmiles.com/og/mount-prospect-60056.png",
-        "description": "Tuesday, November 10 2026 4:00pm - 6:00pm \n Join us on an epic adventure and form a new heroic party to save the day!"
-      }
-    },
-    {
-      "@type": "ListItem",
-      "position": 25,
-      "item": {
-        "@type": "Event",
-        "name": "Paper Craft Happy Hour",
-        "startDate": "2026-11-10T16:00:00-06:00",
-        "url": "https://withintenmiles.com/wheeling-60090/#ev-paper-craft-happy-hour-2026-11-10",
-        "eventStatus": "https://schema.org/EventScheduled",
-        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "location": {
-          "@type": "Place",
-          "name": "Indian Trails Public Library",
-          "address": {
-            "@type": "PostalAddress",
-            "addressCountry": "US",
-            "addressLocality": "Wheeling",
-            "addressRegion": "IL",
-            "streetAddress": "355 Schoenbeck Rd."
-          }
-        },
-        "sameAs": "https://indiantrails.libnet.info/event/17044636",
-        "organizer": {
-          "@type": "Organization",
-          "name": "Indian Trails Public Library",
-          "url": "https://indiantrails.libnet.info"
-        },
-        "image": "https://withintenmiles.com/og/wheeling-60090.png",
-        "description": "Tuesday, November 10 2026 4:00pm - 6:00pm \n Chat with fellow creatives, get inspired or discover a new paper craft tool during this self-guided crafting…"
-      }
-    },
-    {
-      "@type": "ListItem",
-      "position": 26,
-      "item": {
-        "@type": "Event",
-        "name": "CSI Session 3",
-        "startDate": "2026-11-10T16:15:00-06:00",
-        "url": "https://withintenmiles.com/elk-grove-village-60007/#ev-csi-session-3-2026-11-10",
-        "eventStatus": "https://schema.org/EventScheduled",
-        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "location": {
-          "@type": "Place",
-          "name": "Elk Grove Village Public Library",
-          "address": {
-            "@type": "PostalAddress",
-            "addressCountry": "US",
-            "addressLocality": "Elk Grove Village",
-            "addressRegion": "IL"
-          }
-        },
-        "sameAs": "https://egvpl.libnet.info/event/17206268",
-        "organizer": {
-          "@type": "Organization",
-          "name": "Elk Grove Village Public Library - Events",
-          "url": "https://egvpl.libnet.info"
-        },
-        "image": "https://withintenmiles.com/og/elk-grove-village-60007.png",
-        "description": "Tuesday, November 10 2026 4:15pm - 4:45pm \n SESSION 3: Gravity, Force and Motion - Let's investigate with STEM! This class combines a little bit of Science,…"
-      }
-    },
-    {
-      "@type": "ListItem",
-      "position": 27,
-      "item": {
-        "@type": "Event",
-        "name": "3D Printing for Kids: Learn Tinkercad",
-        "startDate": "2026-11-10T16:30:00-06:00",
-        "url": "https://withintenmiles.com/mount-prospect-60056/#ev-3d-printing-for-kids-learn-tinkercad-2026-11-10",
-        "eventStatus": "https://schema.org/EventScheduled",
-        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "location": {
-          "@type": "Place",
-          "name": "Mount Prospect Public Library",
-          "address": {
-            "@type": "PostalAddress",
-            "addressCountry": "US",
-            "addressLocality": "Mount Prospect",
-            "addressRegion": "IL",
-            "streetAddress": "125 S Emerson St"
-          }
-        },
-        "sameAs": "https://mppl.libnet.info/event/16392044",
-        "organizer": {
-          "@type": "Organization",
-          "name": "Mount Prospect Public Library",
-          "url": "https://mppl.libnet.info"
-        },
-        "image": "https://withintenmiles.com/og/mount-prospect-60056.png",
-        "description": "Tuesday, November 10 2026 4:30pm - 5:30pm \n Learn how to create objects using Tinkercad, a digital-design computer software."
-      }
-    },
-    {
-      "@type": "ListItem",
-      "position": 28,
-      "item": {
-        "@type": "Event",
-        "name": "Basket Weaving",
-        "startDate": "2026-11-10T16:30:00-06:00",
-        "url": "https://withintenmiles.com/wheeling-60090/#ev-basket-weaving-2026-11-10",
-        "eventStatus": "https://schema.org/EventScheduled",
-        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "location": {
-          "@type": "Place",
-          "name": "Indian Trails Public Library",
-          "address": {
-            "@type": "PostalAddress",
-            "addressCountry": "US",
-            "addressLocality": "Wheeling",
-            "addressRegion": "IL",
-            "streetAddress": "355 Schoenbeck Rd."
-          }
-        },
-        "sameAs": "https://indiantrails.libnet.info/event/17103878",
-        "organizer": {
-          "@type": "Organization",
-          "name": "Indian Trails Public Library",
-          "url": "https://indiantrails.libnet.info"
-        },
-        "image": "https://withintenmiles.com/og/wheeling-60090.png",
-        "description": "Tuesday, November 10 2026 4:30pm - 5:30pm \n Enjoy a relaxing time with friends and create \"unbe-weave-able\" reed baskets you can use to decorate your room. R"
-      }
-    },
-    {
-      "@type": "ListItem",
-      "position": 29,
-      "item": {
-        "@type": "Event",
-        "name": "Book a Teen Librarian",
-        "startDate": "2026-11-10T17:00:00-06:00",
-        "url": "https://withintenmiles.com/des-plaines-60016/#ev-book-a-teen-librarian-2026-11-10",
-        "eventStatus": "https://schema.org/EventScheduled",
-        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "location": {
-          "@type": "Place",
-          "name": "Des Plaines Public Library",
-          "address": {
-            "@type": "PostalAddress",
-            "addressCountry": "US",
-            "addressLocality": "Des Plaines",
-            "addressRegion": "IL",
-            "streetAddress": "1501 Ellinwood Street",
-            "postalCode": "60016"
-          }
-        },
-        "sameAs": "https://desplaines.libnet.info/event/17867456",
-        "organizer": {
-          "@type": "Organization",
-          "name": "Des Plaines Public Library",
-          "url": "https://desplaines.libnet.info"
-        },
-        "image": "https://withintenmiles.com/og/des-plaines-60016.png",
-        "description": "Tuesday, November 10 2026 5:00pm - 6:00pm \n Come in and get to know your teen librarians!"
-      }
-    },
-    {
-      "@type": "ListItem",
-      "position": 30,
-      "item": {
-        "@type": "Event",
-        "name": "Tech in the Forum",
-        "startDate": "2026-11-10T17:30:00-06:00",
-        "url": "https://withintenmiles.com/des-plaines-60016/#ev-tech-in-the-forum-2026-11-10",
-        "eventStatus": "https://schema.org/EventScheduled",
-        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "location": {
-          "@type": "Place",
-          "name": "Des Plaines Public Library",
-          "address": {
-            "@type": "PostalAddress",
-            "addressCountry": "US",
-            "addressLocality": "Des Plaines",
-            "addressRegion": "IL",
-            "streetAddress": "1501 Ellinwood Street",
-            "postalCode": "60016"
-          }
-        },
-        "sameAs": "https://desplaines.libnet.info/event/17605861",
-        "organizer": {
-          "@type": "Organization",
-          "name": "Des Plaines Public Library",
-          "url": "https://desplaines.libnet.info"
-        },
-        "image": "https://withintenmiles.com/og/des-plaines-60016.png",
-        "description": "Tuesday, November 10 2026 5:30pm - 7:30pm \n Do you have a question about technology or how to use the library's services? Assistance is provided on a…"
-      }
-    },
-    {
-      "@type": "ListItem",
-      "position": 31,
-      "item": {
-        "@type": "Event",
-        "name": "Spanish Conversation Practice | At the Branch",
-        "startDate": "2026-11-10T17:30:00-06:00",
-        "url": "https://withintenmiles.com/wheeling-60090/#ev-spanish-conversation-practice-at-the-branch-2026-11-10",
-        "eventStatus": "https://schema.org/EventScheduled",
-        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "location": {
-          "@type": "Place",
-          "name": "Indian Trails Public Library",
-          "address": {
-            "@type": "PostalAddress",
-            "addressCountry": "US",
-            "addressLocality": "Wheeling",
-            "addressRegion": "IL",
-            "streetAddress": "355 Schoenbeck Rd."
-          }
-        },
-        "sameAs": "https://indiantrails.libnet.info/event/17092615",
-        "organizer": {
-          "@type": "Organization",
-          "name": "Indian Trails Public Library",
-          "url": "https://indiantrails.libnet.info"
-        },
-        "image": "https://withintenmiles.com/og/wheeling-60090.png",
-        "description": "Tuesday, November 10 2026 5:30pm - 6:30pm \n Informal Spanish conversation session to practice and improve your speaking skills by talking to native…"
-      }
-    },
-    {
-      "@type": "ListItem",
-      "position": 32,
-      "item": {
-        "@type": "Event",
-        "name": "Resume Review & Career Coaching Appointments",
-        "startDate": "2026-11-10T18:00:00-06:00",
-        "url": "https://withintenmiles.com/wheeling-60090/#ev-resume-review-career-coaching-appointments-2026-11-10",
-        "eventStatus": "https://schema.org/EventScheduled",
-        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "location": {
-          "@type": "Place",
-          "name": "Indian Trails Public Library",
-          "address": {
-            "@type": "PostalAddress",
-            "addressCountry": "US",
-            "addressLocality": "Wheeling",
-            "addressRegion": "IL",
-            "streetAddress": "355 Schoenbeck Rd."
-          }
-        },
-        "sameAs": "https://indiantrails.libnet.info/event/17101971",
-        "organizer": {
-          "@type": "Organization",
-          "name": "Indian Trails Public Library",
-          "url": "https://indiantrails.libnet.info"
-        },
-        "image": "https://withintenmiles.com/og/wheeling-60090.png",
-        "description": "Tuesday, November 10 2026 6:00pm - 7:00pm \n Kickstart your career with a one-hour resume review with a career specialist. Resume Review and Career Coaching…"
-      }
-    },
-    {
-      "@type": "ListItem",
-      "position": 33,
-      "item": {
-        "@type": "Event",
-        "name": "Friends of the Library Meeting",
-        "startDate": "2026-11-10T18:30:00-06:00",
-        "url": "https://withintenmiles.com/des-plaines-60016/#ev-friends-of-the-library-meeting-2026-11-10",
-        "eventStatus": "https://schema.org/EventScheduled",
-        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "location": {
-          "@type": "Place",
-          "name": "Des Plaines Public Library",
-          "address": {
-            "@type": "PostalAddress",
-            "addressCountry": "US",
-            "addressLocality": "Des Plaines",
-            "addressRegion": "IL",
-            "streetAddress": "1501 Ellinwood Street",
-            "postalCode": "60016"
-          }
-        },
-        "sameAs": "https://desplaines.libnet.info/event/15110108",
-        "organizer": {
-          "@type": "Organization",
-          "name": "Des Plaines Public Library",
-          "url": "https://desplaines.libnet.info"
-        },
-        "image": "https://withintenmiles.com/og/des-plaines-60016.png",
-        "description": "Tuesday, November 10 2026 6:30pm - 7:30pm \n Monthly Meeting of the Friends of the Library"
-      }
-    },
-    {
-      "@type": "ListItem",
-      "position": 34,
-      "item": {
-        "@type": "Event",
-        "name": "Uke Jam",
-        "startDate": "2026-11-10T18:30:00-06:00",
-        "url": "https://withintenmiles.com/elk-grove-village-60007/#ev-uke-jam-2026-11-10",
-        "eventStatus": "https://schema.org/EventScheduled",
-        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "location": {
-          "@type": "Place",
-          "name": "Elk Grove Village Public Library",
-          "address": {
-            "@type": "PostalAddress",
-            "addressCountry": "US",
-            "addressLocality": "Elk Grove Village",
-            "addressRegion": "IL"
-          }
-        },
-        "sameAs": "https://egvpl.libnet.info/event/16817642",
-        "organizer": {
-          "@type": "Organization",
-          "name": "Elk Grove Village Public Library - Events",
-          "url": "https://egvpl.libnet.info"
-        },
-        "image": "https://withintenmiles.com/og/elk-grove-village-60007.png",
-        "description": "Tuesday, November 10 2026 6:30pm - 7:00pm \n Hang out and learn a song on the ukulele. All experience levels are welcome! Ukuleles are provided by the library."
-      }
-    },
-    {
-      "@type": "ListItem",
-      "position": 35,
-      "item": {
-        "@type": "Event",
-        "name": "Jigsaw Puzzle Competition",
-        "startDate": "2026-11-10T18:30:00-06:00",
-        "url": "https://withintenmiles.com/mount-prospect-60056/#ev-jigsaw-puzzle-competition-2026-11-10",
-        "eventStatus": "https://schema.org/EventScheduled",
-        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "location": {
-          "@type": "Place",
-          "name": "Mount Prospect Public Library",
-          "address": {
-            "@type": "PostalAddress",
-            "addressCountry": "US",
-            "addressLocality": "Mount Prospect",
-            "addressRegion": "IL",
-            "streetAddress": "125 S Emerson St"
-          }
-        },
-        "sameAs": "https://mppl.libnet.info/event/16493052",
-        "organizer": {
-          "@type": "Organization",
-          "name": "Mount Prospect Public Library",
-          "url": "https://mppl.libnet.info"
-        },
-        "image": "https://withintenmiles.com/og/mount-prospect-60056.png",
-        "description": "Tuesday, November 10 2026 6:30pm - 8:00pm \n Puzzle solo or gather a team of up to four people and put your jigsaw puzzle skills to the test for a puzzling…"
-      }
-    },
-    {
-      "@type": "ListItem",
-      "position": 36,
-      "item": {
-        "@type": "Event",
-        "name": "EGVPL Board of Trustees Meeting",
-        "startDate": "2026-11-10T19:00:00-06:00",
-        "url": "https://withintenmiles.com/elk-grove-village-60007/#ev-egvpl-board-of-trustees-meeting-2026-11-10",
-        "eventStatus": "https://schema.org/EventScheduled",
-        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "location": {
-          "@type": "Place",
-          "name": "Elk Grove Village Public Library",
-          "address": {
-            "@type": "PostalAddress",
-            "addressCountry": "US",
-            "addressLocality": "Elk Grove Village",
-            "addressRegion": "IL"
-          }
-        },
-        "sameAs": "https://egvpl.libnet.info/event/15064010",
-        "organizer": {
-          "@type": "Organization",
-          "name": "Elk Grove Village Public Library - Events",
-          "url": "https://egvpl.libnet.info"
-        },
-        "image": "https://withintenmiles.com/og/elk-grove-village-60007.png",
-        "description": "Tuesday, November 10 2026 7:00pm - 9:00pm \n Regular Board Meeting"
-      }
-    },
-    {
-      "@type": "ListItem",
-      "position": 37,
-      "item": {
-        "@type": "Event",
-        "name": "Beaded Corn Keychain Craft",
-        "startDate": "2026-11-10T19:00:00-06:00",
-        "url": "https://withintenmiles.com/elk-grove-village-60007/#ev-beaded-corn-keychain-craft-2026-11-10",
-        "eventStatus": "https://schema.org/EventScheduled",
-        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "location": {
-          "@type": "Place",
-          "name": "Elk Grove Village Public Library",
-          "address": {
-            "@type": "PostalAddress",
-            "addressCountry": "US",
-            "addressLocality": "Elk Grove Village",
-            "addressRegion": "IL"
-          }
-        },
-        "sameAs": "https://egvpl.libnet.info/event/17255115",
-        "organizer": {
-          "@type": "Organization",
-          "name": "Elk Grove Village Public Library - Events",
-          "url": "https://egvpl.libnet.info"
-        },
-        "image": "https://withintenmiles.com/og/elk-grove-village-60007.png",
-        "description": "Tuesday, November 10 2026 7:00pm - 8:00pm \n Create the perfect keychain for fall! Learn how to craft a mini beaded corn, perfect to hang off a purse or…"
-      }
-    },
-    {
-      "@type": "ListItem",
-      "position": 38,
-      "item": {
-        "@type": "Event",
-        "name": "Job Jumpstart Lab",
-        "startDate": "2026-11-10T19:00:00-06:00",
-        "url": "https://withintenmiles.com/wheeling-60090/#ev-job-jumpstart-lab-2026-11-10",
-        "eventStatus": "https://schema.org/EventScheduled",
-        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "location": {
-          "@type": "Place",
-          "name": "Indian Trails Public Library",
-          "address": {
-            "@type": "PostalAddress",
-            "addressCountry": "US",
-            "addressLocality": "Wheeling",
-            "addressRegion": "IL",
-            "streetAddress": "355 Schoenbeck Rd."
-          }
-        },
-        "sameAs": "https://indiantrails.libnet.info/event/17101794",
-        "organizer": {
-          "@type": "Organization",
-          "name": "Indian Trails Public Library",
-          "url": "https://indiantrails.libnet.info"
-        },
-        "image": "https://withintenmiles.com/og/wheeling-60090.png",
-        "description": "Tuesday, November 10 2026 7:00pm - 8:30pm \n Learn from Wright to Learn presenters on how to find out who's hiring, understand what employers are looking for…"
-      }
-    },
-    {
-      "@type": "ListItem",
-      "position": 39,
       "item": {
         "@type": "Event",
         "name": "Baby Time",
@@ -1204,7 +37,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 40,
+      "position": 2,
       "item": {
         "@type": "Event",
         "name": "Foodies Unite!  Ingredient Pick Up",
@@ -1236,7 +69,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 41,
+      "position": 3,
       "item": {
         "@type": "Event",
         "name": "The Arlington Camera Club",
@@ -1266,7 +99,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 42,
+      "position": 4,
       "item": {
         "@type": "Event",
         "name": "Picture Book Month Challenge",
@@ -1296,7 +129,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 43,
+      "position": 5,
       "item": {
         "@type": "Event",
         "name": "Word of the Week",
@@ -1326,7 +159,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 44,
+      "position": 6,
       "item": {
         "@type": "Event",
         "name": "School Psychologist Day",
@@ -1349,7 +182,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 45,
+      "position": 7,
       "item": {
         "@type": "Event",
         "name": "Read to Learn",
@@ -1380,7 +213,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 46,
+      "position": 8,
       "item": {
         "@type": "Event",
         "name": "Alphabet Soup",
@@ -1410,7 +243,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 47,
+      "position": 9,
       "item": {
         "@type": "Event",
         "name": "Toddler Storytime",
@@ -1441,7 +274,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 48,
+      "position": 10,
       "item": {
         "@type": "Event",
         "name": "Veterans Day at the Museum",
@@ -1471,7 +304,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 49,
+      "position": 11,
       "item": {
         "@type": "Event",
         "name": "Baby Book Time",
@@ -1503,7 +336,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 50,
+      "position": 12,
       "item": {
         "@type": "Event",
         "name": "D15 Job Fair",
@@ -1527,7 +360,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 51,
+      "position": 13,
       "item": {
         "@type": "Event",
         "name": "Inglés para Hispanohablantes",
@@ -1558,7 +391,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 52,
+      "position": 14,
       "item": {
         "@type": "Event",
         "name": "OFFSITE: Veterans Day Celebration",
@@ -1589,7 +422,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 53,
+      "position": 15,
       "item": {
         "@type": "Event",
         "name": "How Money Became God",
@@ -1620,7 +453,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 54,
+      "position": 16,
       "item": {
         "@type": "Event",
         "name": "11/11/26 Special Meeting-BOFPC",
@@ -1650,7 +483,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 55,
+      "position": 17,
       "item": {
         "@type": "Event",
         "name": "Coloring Club",
@@ -1681,7 +514,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 56,
+      "position": 18,
       "item": {
         "@type": "Event",
         "name": "Preschool Storytime",
@@ -1714,7 +547,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 57,
+      "position": 19,
       "item": {
         "@type": "Event",
         "name": "Resume & Job Hunting Help",
@@ -1744,7 +577,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 58,
+      "position": 20,
       "item": {
         "@type": "Event",
         "name": "Cartooning with Mark Anderson - Thanksgiving Monsters?!",
@@ -1774,7 +607,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 59,
+      "position": 21,
       "item": {
         "@type": "Event",
         "name": "Paperback Pals Book Club | Grades 2-3",
@@ -1805,7 +638,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 60,
+      "position": 22,
       "item": {
         "@type": "Event",
         "name": "Potions Lab",
@@ -1836,7 +669,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 61,
+      "position": 23,
       "item": {
         "@type": "Event",
         "name": "The Queer Canvas: LGBTQIA+ Art Club",
@@ -1868,7 +701,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 62,
+      "position": 24,
       "item": {
         "@type": "Event",
         "name": "Pokémon Card Trading",
@@ -1898,7 +731,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 63,
+      "position": 25,
       "item": {
         "@type": "Event",
         "name": "iPhone Photography Basics",
@@ -1929,7 +762,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 64,
+      "position": 26,
       "item": {
         "@type": "Event",
         "name": "The Fifth Element",
@@ -1960,7 +793,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 65,
+      "position": 27,
       "item": {
         "@type": "Event",
         "name": "NSSEO: NWSRA Information Session",
@@ -1984,7 +817,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 66,
+      "position": 28,
       "item": {
         "@type": "Event",
         "name": "Pour Paint Snowflakes",
@@ -2015,7 +848,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 67,
+      "position": 29,
       "item": {
         "@type": "Event",
         "name": "The Book Nook",
@@ -2045,7 +878,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 68,
+      "position": 30,
       "item": {
         "@type": "Event",
         "name": "Family Storytime",
@@ -2078,7 +911,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 69,
+      "position": 31,
       "item": {
         "@type": "Event",
         "name": "Intermediate Excel",
@@ -2109,7 +942,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 70,
+      "position": 32,
       "item": {
         "@type": "Event",
         "name": "ENGELBERT HUMPERDINCK: THE CELEBRATION TOUR 2026",
@@ -2140,7 +973,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 71,
+      "position": 33,
       "item": {
         "@type": "Event",
         "name": "Toddler Time",
@@ -2170,7 +1003,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 72,
+      "position": 34,
       "item": {
         "@type": "Event",
         "name": "The Arlington Camera Club",
@@ -2200,7 +1033,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 73,
+      "position": 35,
       "item": {
         "@type": "Event",
         "name": "Picture Book Month Challenge",
@@ -2230,7 +1063,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 74,
+      "position": 36,
       "item": {
         "@type": "Event",
         "name": "Word of the Week",
@@ -2260,7 +1093,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 75,
+      "position": 37,
       "item": {
         "@type": "Event",
         "name": "Reading/Literacy Class",
@@ -2292,7 +1125,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 76,
+      "position": 38,
       "item": {
         "@type": "Event",
         "name": "ESL (English as a Second Language) Class - Oakton College",
@@ -2324,7 +1157,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 77,
+      "position": 39,
       "item": {
         "@type": "Event",
         "name": "Baby Storytime",
@@ -2355,7 +1188,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 78,
+      "position": 40,
       "item": {
         "@type": "Event",
         "name": "Chat & Play Cafe",
@@ -2386,7 +1219,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 79,
+      "position": 41,
       "item": {
         "@type": "Event",
         "name": "Toddler Time",
@@ -2418,7 +1251,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 80,
+      "position": 42,
       "item": {
         "@type": "Event",
         "name": "Polish Storytime",
@@ -2448,7 +1281,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 81,
+      "position": 43,
       "item": {
         "@type": "Event",
         "name": "Family Storytime",
@@ -2479,7 +1312,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 82,
+      "position": 44,
       "item": {
         "@type": "Event",
         "name": "Moments to Remember",
@@ -2509,7 +1342,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 83,
+      "position": 45,
       "item": {
         "@type": "Event",
         "name": "Native American and Mexican Cooking With Chef Pyet DeSpain",
@@ -2540,7 +1373,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 84,
+      "position": 46,
       "item": {
         "@type": "Event",
         "name": "Movies @ MPPL: Pressure",
@@ -2571,7 +1404,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 85,
+      "position": 47,
       "item": {
         "@type": "Event",
         "name": "Drop-In Tech Help",
@@ -2602,7 +1435,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 86,
+      "position": 48,
       "item": {
         "@type": "Event",
         "name": "SCORE Business Mentoring",
@@ -2633,7 +1466,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 87,
+      "position": 49,
       "item": {
         "@type": "Event",
         "name": "Sewcial Club - Learning Embroidery",
@@ -2665,7 +1498,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 88,
+      "position": 50,
       "item": {
         "@type": "Event",
         "name": "CSI Session 3",
@@ -2695,7 +1528,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 89,
+      "position": 51,
       "item": {
         "@type": "Event",
         "name": "Animal Investigators Junior: Puffins",
@@ -2726,7 +1559,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 90,
+      "position": 52,
       "item": {
         "@type": "Event",
         "name": "Book a Teen Librarian",
@@ -2758,7 +1591,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 91,
+      "position": 53,
       "item": {
         "@type": "Event",
         "name": "Des Plaines Lions Club Meeting",
@@ -2790,7 +1623,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 92,
+      "position": 54,
       "item": {
         "@type": "Event",
         "name": "CodeBuilders",
@@ -2821,7 +1654,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 93,
+      "position": 55,
       "item": {
         "@type": "Event",
         "name": "BPAC Workshop & Conference: Ferney Ramírez",
@@ -2845,7 +1678,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 94,
+      "position": 56,
       "item": {
         "@type": "Event",
         "name": "Google: Gmail Principiantes (Spanish)",
@@ -2877,7 +1710,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 95,
+      "position": 57,
       "item": {
         "@type": "Event",
         "name": "Japanese Storytime",
@@ -2907,7 +1740,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 96,
+      "position": 58,
       "item": {
         "@type": "Event",
         "name": "Ladies Night Out: Harvest & Holiday",
@@ -2937,7 +1770,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 97,
+      "position": 59,
       "item": {
         "@type": "Event",
         "name": "Words, Power, and Community: Dr. Eve L. Ewing",
@@ -2969,7 +1802,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 98,
+      "position": 60,
       "item": {
         "@type": "Event",
         "name": "Railroad Ties",
@@ -3001,7 +1834,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 99,
+      "position": 61,
       "item": {
         "@type": "Event",
         "name": "Completely Booked",
@@ -3032,7 +1865,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 100,
+      "position": 62,
       "item": {
         "@type": "Event",
         "name": "Harvest & Lather: Fall Soap Crafting",
@@ -3063,7 +1896,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 101,
+      "position": 63,
       "item": {
         "@type": "Event",
         "name": "Illinois Libraries Present: Dr. Eve L. Ewing",
@@ -3094,7 +1927,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 102,
+      "position": 64,
       "item": {
         "@type": "Event",
         "name": "JASON BONHAM'S LED ZEPPELIN EVENING",
@@ -3125,7 +1958,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 103,
+      "position": 65,
       "item": {
         "@type": "Event",
         "name": "BOURBON 'N BRASS SPEAKEASY: LIVE BLUES SHOW WITH SEAN McKEE BLUES BAND",
@@ -3156,12 +1989,12 @@
     },
     {
       "@type": "ListItem",
-      "position": 104,
+      "position": 66,
       "item": {
         "@type": "Event",
-        "name": "Senior Center: Travelogue",
+        "name": "ESL Social Hour",
         "startDate": "2026-11-13",
-        "url": "https://withintenmiles.com/arlington-heights-60005/#ev-senior-center-travelogue-2026-11-13",
+        "url": "https://withintenmiles.com/arlington-heights-60005/#ev-esl-social-hour-2026-11-13",
         "eventStatus": "https://schema.org/EventScheduled",
         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
         "location": {
@@ -3175,7 +2008,7 @@
             "streetAddress": "500 N. Dunton Ave."
           }
         },
-        "sameAs": "https://www.ahml.info/scheduling/reservation/233826",
+        "sameAs": "https://www.ahml.info/scheduling/reservation/198388",
         "organizer": {
           "@type": "Organization",
           "name": "Arlington Heights Memorial Library",
@@ -3186,7 +2019,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 105,
+      "position": 67,
       "item": {
         "@type": "Event",
         "name": "Teen Night - Bikini Bottom Bash",
@@ -3216,7 +2049,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 106,
+      "position": 68,
       "item": {
         "@type": "Event",
         "name": "The Arlington Camera Club",
@@ -3246,7 +2079,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 107,
+      "position": 69,
       "item": {
         "@type": "Event",
         "name": "Picture Book Month Challenge",
@@ -3276,7 +2109,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 108,
+      "position": 70,
       "item": {
         "@type": "Event",
         "name": "Word of the Week",
@@ -3306,7 +2139,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 109,
+      "position": 71,
       "item": {
         "@type": "Event",
         "name": "School Board Member Day",
@@ -3329,7 +2162,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 110,
+      "position": 72,
       "item": {
         "@type": "Event",
         "name": "Baby Book Time",
@@ -3361,7 +2194,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 111,
+      "position": 73,
       "item": {
         "@type": "Event",
         "name": "Ain't Wii Got Fun!",
@@ -3393,7 +2226,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 112,
+      "position": 74,
       "item": {
         "@type": "Event",
         "name": "Storytime Playdate: Tiny Town",
@@ -3424,7 +2257,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 113,
+      "position": 75,
       "item": {
         "@type": "Event",
         "name": "Toddler Storytime",
@@ -3455,7 +2288,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 114,
+      "position": 76,
       "item": {
         "@type": "Event",
         "name": "Preschool Storytime",
@@ -3486,7 +2319,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 115,
+      "position": 77,
       "item": {
         "@type": "Event",
         "name": "Quality Watercolor Techniques",
@@ -3517,7 +2350,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 116,
+      "position": 78,
       "item": {
         "@type": "Event",
         "name": "Fall for Fabric",
@@ -3549,7 +2382,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 117,
+      "position": 79,
       "item": {
         "@type": "Event",
         "name": "Movie Matinee: The Devil Wears Prada 2 (2026)",
@@ -3580,7 +2413,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 118,
+      "position": 80,
       "item": {
         "@type": "Event",
         "name": "Teen Book Café",
@@ -3611,7 +2444,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 119,
+      "position": 81,
       "item": {
         "@type": "Event",
         "name": "Build and Watch: Tarzan",
@@ -3642,7 +2475,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 120,
+      "position": 82,
       "item": {
         "@type": "Event",
         "name": "Chess Club (Advanced Players)",
@@ -3672,7 +2505,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 121,
+      "position": 83,
       "item": {
         "@type": "Event",
         "name": "Chess Club (Beginning Players)",
@@ -3702,7 +2535,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 122,
+      "position": 84,
       "item": {
         "@type": "Event",
         "name": "Family Craft Friday: Paint A Gzhel Plate | At The Branch",
@@ -3733,7 +2566,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 123,
+      "position": 85,
       "item": {
         "@type": "Event",
         "name": "Thanksgiving Coasters",
@@ -3764,7 +2597,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 124,
+      "position": 86,
       "item": {
         "@type": "Event",
         "name": "Cookbook & Recipe Swap",
@@ -3796,7 +2629,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 125,
+      "position": 87,
       "item": {
         "@type": "Event",
         "name": "\"Guys and Dolls SR\"",
@@ -3826,7 +2659,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 126,
+      "position": 88,
       "item": {
         "@type": "Event",
         "name": "A Doll's House by Henrik Ibsen Adapted by Amy Herzog",
@@ -3856,7 +2689,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 127,
+      "position": 89,
       "item": {
         "@type": "Event",
         "name": "GCS featuring ERIC GALES, DENNIS CHAMBERS and BILLY SHEEHAN",
@@ -3887,7 +2720,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 128,
+      "position": 90,
       "item": {
         "@type": "Event",
         "name": "BOURBON 'N BRASS: LIVE JAZZ WITH THE BOURBON 'N BRASS BRIAN PATTI PROHIBITION DANCE BAND",
@@ -3918,7 +2751,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 129,
+      "position": 91,
       "item": {
         "@type": "Event",
         "name": "Family Time",
@@ -3948,7 +2781,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 130,
+      "position": 92,
       "item": {
         "@type": "Event",
         "name": "Service Hour Drop In",
@@ -3980,7 +2813,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 131,
+      "position": 93,
       "item": {
         "@type": "Event",
         "name": "The Arlington Camera Club",
@@ -4010,7 +2843,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 132,
+      "position": 94,
       "item": {
         "@type": "Event",
         "name": "Picture Book Month Challenge",
@@ -4040,7 +2873,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 133,
+      "position": 95,
       "item": {
         "@type": "Event",
         "name": "Word of the Week",
@@ -4070,7 +2903,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 134,
+      "position": 96,
       "item": {
         "@type": "Event",
         "name": "Friends Holiday Book Sale",
@@ -4101,7 +2934,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 135,
+      "position": 97,
       "item": {
         "@type": "Event",
         "name": "Palatine Winter Farmers' Market",
@@ -4131,7 +2964,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 136,
+      "position": 98,
       "item": {
         "@type": "Event",
         "name": "Sewing Machine Basics- Learn to Sew Lanyards!",
@@ -4163,7 +2996,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 137,
+      "position": 99,
       "item": {
         "@type": "Event",
         "name": "Fun Factory Saturday",
@@ -4193,7 +3026,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 138,
+      "position": 100,
       "item": {
         "@type": "Event",
         "name": "\"Artsgiving\" Crafty Cornucopia",
@@ -4223,7 +3056,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 139,
+      "position": 101,
       "item": {
         "@type": "Event",
         "name": "Storytime Playdate: Tiny Town",
@@ -4254,7 +3087,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 140,
+      "position": 102,
       "item": {
         "@type": "Event",
         "name": "Sound Bath Meditation",
@@ -4286,7 +3119,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 141,
+      "position": 103,
       "item": {
         "@type": "Event",
         "name": "Spanish Storytime - Tiempo De Cuento",
@@ -4316,7 +3149,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 142,
+      "position": 104,
       "item": {
         "@type": "Event",
         "name": "FILM SCREENING: \"BOB DOLE - A WALK THROUGH HISTORY\"",
@@ -4347,7 +3180,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 143,
+      "position": 105,
       "item": {
         "@type": "Event",
         "name": "D&D: Open Play",
@@ -4377,7 +3210,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 144,
+      "position": 106,
       "item": {
         "@type": "Event",
         "name": "\"Guys and Dolls SR\"",
@@ -4407,7 +3240,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 145,
+      "position": 107,
       "item": {
         "@type": "Event",
         "name": "A Doll's House by Henrik Ibsen Adapted by Amy Herzog",
@@ -4437,7 +3270,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 146,
+      "position": 108,
       "item": {
         "@type": "Event",
         "name": "JOHN WAITE with SPECIAL GUEST JOHN CAFFERTY & THE BEAVER BROWN BAND",
@@ -4468,7 +3301,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 147,
+      "position": 109,
       "item": {
         "@type": "Event",
         "name": "BOURBON 'N BRASS SPEAKEASY: LIVE BLUES with SONICSOUL BAND",
@@ -4499,7 +3332,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 148,
+      "position": 110,
       "item": {
         "@type": "Event",
         "name": "3D Printing Essentials: Replicate a Piece",
@@ -4529,7 +3362,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 149,
+      "position": 111,
       "item": {
         "@type": "Event",
         "name": "The Arlington Camera Club",
@@ -4559,7 +3392,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 150,
+      "position": 112,
       "item": {
         "@type": "Event",
         "name": "Picture Book Month Challenge",
@@ -4589,7 +3422,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 151,
+      "position": 113,
       "item": {
         "@type": "Event",
         "name": "Word of the Week",
@@ -4619,7 +3452,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 152,
+      "position": 114,
       "item": {
         "@type": "Event",
         "name": "Seguridad de Internet 101 (Spanish)",
@@ -4651,7 +3484,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 153,
+      "position": 115,
       "item": {
         "@type": "Event",
         "name": "A Doll's House by Henrik Ibsen Adapted by Amy Herzog",
@@ -4681,7 +3514,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 154,
+      "position": 116,
       "item": {
         "@type": "Event",
         "name": "\"Guys and Dolls SR\"",
@@ -4711,7 +3544,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 155,
+      "position": 117,
       "item": {
         "@type": "Event",
         "name": "Box Car Drive-In",
@@ -4741,7 +3574,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 156,
+      "position": 118,
       "item": {
         "@type": "Event",
         "name": "Kids' Time",
@@ -4771,7 +3604,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 157,
+      "position": 119,
       "item": {
         "@type": "Event",
         "name": "Teen Take & Make",
@@ -4803,7 +3636,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 158,
+      "position": 120,
       "item": {
         "@type": "Event",
         "name": "The Arlington Camera Club",
@@ -4833,7 +3666,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 159,
+      "position": 121,
       "item": {
         "@type": "Event",
         "name": "Word of the Week",
@@ -4863,7 +3696,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 160,
+      "position": 122,
       "item": {
         "@type": "Event",
         "name": "Baby Tales",
@@ -4893,7 +3726,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 161,
+      "position": 123,
       "item": {
         "@type": "Event",
         "name": "Family Storytime",
@@ -4924,7 +3757,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 162,
+      "position": 124,
       "item": {
         "@type": "Event",
         "name": "Baby Book Time",
@@ -4956,7 +3789,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 163,
+      "position": 125,
       "item": {
         "@type": "Event",
         "name": "I-Cash -Do You Have Unclaimed Property?",
@@ -4988,7 +3821,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 164,
+      "position": 126,
       "item": {
         "@type": "Event",
         "name": "Drop-In Tech Help",
@@ -5019,7 +3852,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 165,
+      "position": 127,
       "item": {
         "@type": "Event",
         "name": "Toddler Storytime",
@@ -5050,7 +3883,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 166,
+      "position": 128,
       "item": {
         "@type": "Event",
         "name": "Makerspace Teen Takeover!",
@@ -5080,7 +3913,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 167,
+      "position": 129,
       "item": {
         "@type": "Event",
         "name": "Canvas Kids: Golden Gratitude",
@@ -5110,7 +3943,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 168,
+      "position": 130,
       "item": {
         "@type": "Event",
         "name": "Animal Investigators Junior: Puffins",
@@ -5141,7 +3974,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 169,
+      "position": 131,
       "item": {
         "@type": "Event",
         "name": "Book a Teen Librarian",
@@ -5173,7 +4006,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 170,
+      "position": 132,
       "item": {
         "@type": "Event",
         "name": "Elected Officials Office Hours",
@@ -5204,7 +4037,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 171,
+      "position": 133,
       "item": {
         "@type": "Event",
         "name": "Adult Board Game Night",
@@ -5236,7 +4069,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 172,
+      "position": 134,
       "item": {
         "@type": "Event",
         "name": "Winter Holiday Craft",
@@ -5266,7 +4099,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 173,
+      "position": 135,
       "item": {
         "@type": "Event",
         "name": "Pop-Up Movie: Power Ballad (2026)",
@@ -5297,7 +4130,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 174,
+      "position": 136,
       "item": {
         "@type": "Event",
         "name": "Storytime Amigos",
@@ -5328,7 +4161,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 175,
+      "position": 137,
       "item": {
         "@type": "Event",
         "name": "Des Plaines Toastmasters",
@@ -5360,7 +4193,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 176,
+      "position": 138,
       "item": {
         "@type": "Event",
         "name": "LEGO League",
@@ -5392,7 +4225,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 177,
+      "position": 139,
       "item": {
         "@type": "Event",
         "name": "Village Board Regular Meeting",
@@ -5422,7 +4255,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 178,
+      "position": 140,
       "item": {
         "@type": "Event",
         "name": "MPPL Writers Group",
@@ -5453,7 +4286,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 179,
+      "position": 141,
       "item": {
         "@type": "Event",
         "name": "Holiday Print Cards",
@@ -5484,7 +4317,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 180,
+      "position": 142,
       "item": {
         "@type": "Event",
         "name": "Read to Learn (District 214)",
@@ -5514,7 +4347,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 181,
+      "position": 143,
       "item": {
         "@type": "Event",
         "name": "The Arlington Camera Club",
@@ -5544,7 +4377,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 182,
+      "position": 144,
       "item": {
         "@type": "Event",
         "name": "Picture Book Month Challenge",
@@ -5574,7 +4407,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 183,
+      "position": 145,
       "item": {
         "@type": "Event",
         "name": "Word of the Week",
@@ -5604,7 +4437,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 184,
+      "position": 146,
       "item": {
         "@type": "Event",
         "name": "Reading/Literacy Class",
@@ -5636,7 +4469,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 185,
+      "position": 147,
       "item": {
         "@type": "Event",
         "name": "ESL (English as a Second Language) Class - Oakton College",
@@ -5668,7 +4501,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 186,
+      "position": 148,
       "item": {
         "@type": "Event",
         "name": "Baby Storytime",
@@ -5699,7 +4532,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 187,
+      "position": 149,
       "item": {
         "@type": "Event",
         "name": "Toddler Time",
@@ -5731,7 +4564,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 188,
+      "position": 150,
       "item": {
         "@type": "Event",
         "name": "Mini Mad Science Storytime",
@@ -5761,7 +4594,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 189,
+      "position": 151,
       "item": {
         "@type": "Event",
         "name": "Family Storytime",
@@ -5792,7 +4625,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 190,
+      "position": 152,
       "item": {
         "@type": "Event",
         "name": "Supported Chair Yoga",
@@ -5822,7 +4655,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 191,
+      "position": 153,
       "item": {
         "@type": "Event",
         "name": "Tuesday Tech Help",
@@ -5852,7 +4685,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 192,
+      "position": 154,
       "item": {
         "@type": "Event",
         "name": "Play and Learn",
@@ -5883,7 +4716,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 193,
+      "position": 155,
       "item": {
         "@type": "Event",
         "name": "Big Kids Storytime",
@@ -5914,7 +4747,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 194,
+      "position": 156,
       "item": {
         "@type": "Event",
         "name": "Elected Officials Office Hours",
@@ -5945,7 +4778,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 195,
+      "position": 157,
       "item": {
         "@type": "Event",
         "name": "Chicago: Aviation's Incubator",
@@ -5976,7 +4809,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 196,
+      "position": 158,
       "item": {
         "@type": "Event",
         "name": "Paint and Steep Tea",
@@ -6007,7 +4840,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 197,
+      "position": 159,
       "item": {
         "@type": "Event",
         "name": "Pop in and Create",
@@ -6037,7 +4870,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 198,
+      "position": 160,
       "item": {
         "@type": "Event",
         "name": "Maker's Place",
@@ -6069,7 +4902,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 199,
+      "position": 161,
       "item": {
         "@type": "Event",
         "name": "Teen Craft: Ping Pong Ball Snowmen",
@@ -6100,7 +4933,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 200,
+      "position": 162,
       "item": {
         "@type": "Event",
         "name": "Chapter One Book Club | Grades K-1",
@@ -6131,7 +4964,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 201,
+      "position": 163,
       "item": {
         "@type": "Event",
         "name": "CSI Session 3",
@@ -6161,7 +4994,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 202,
+      "position": 164,
       "item": {
         "@type": "Event",
         "name": "Book a Teen Librarian",
@@ -6193,7 +5026,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 203,
+      "position": 165,
       "item": {
         "@type": "Event",
         "name": "Gaming Group",
@@ -6223,7 +5056,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 204,
+      "position": 166,
       "item": {
         "@type": "Event",
         "name": "Stitches on Miner",
@@ -6255,7 +5088,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 205,
+      "position": 167,
       "item": {
         "@type": "Event",
         "name": "Resume Review & Career Coaching Appointments",
@@ -6286,7 +5119,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 206,
+      "position": 168,
       "item": {
         "@type": "Event",
         "name": "River Pointe Condo Assoc.",
@@ -6318,7 +5151,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 207,
+      "position": 169,
       "item": {
         "@type": "Event",
         "name": "Internet Security 101",
@@ -6350,7 +5183,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 208,
+      "position": 170,
       "item": {
         "@type": "Event",
         "name": "FilmTalkTuesdays: At Eternity's Gate (2018)",
@@ -6382,7 +5215,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 209,
+      "position": 171,
       "item": {
         "@type": "Event",
         "name": "Dealing with Grief and Other Emotional Challenges",
@@ -6412,7 +5245,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 210,
+      "position": 172,
       "item": {
         "@type": "Event",
         "name": "True Crime Book Discussion",
@@ -6443,7 +5276,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 211,
+      "position": 173,
       "item": {
         "@type": "Event",
         "name": "Evening Book Discussion",
@@ -6473,7 +5306,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 212,
+      "position": 174,
       "item": {
         "@type": "Event",
         "name": "Star Party",
@@ -6504,7 +5337,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 213,
+      "position": 175,
       "item": {
         "@type": "Event",
         "name": "Small Business Coffee & Connect",
@@ -6534,7 +5367,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 214,
+      "position": 176,
       "item": {
         "@type": "Event",
         "name": "The Arlington Camera Club",
@@ -6564,7 +5397,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 215,
+      "position": 177,
       "item": {
         "@type": "Event",
         "name": "Picture Book Month Challenge",
@@ -6594,7 +5427,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 216,
+      "position": 178,
       "item": {
         "@type": "Event",
         "name": "Word of the Week",
@@ -6624,7 +5457,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 217,
+      "position": 179,
       "item": {
         "@type": "Event",
         "name": "Alphabet Soup",
@@ -6654,7 +5487,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 218,
+      "position": 180,
       "item": {
         "@type": "Event",
         "name": "Toddler Storytime",
@@ -6685,7 +5518,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 219,
+      "position": 181,
       "item": {
         "@type": "Event",
         "name": "Baby Book Time",
@@ -6717,7 +5550,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 220,
+      "position": 182,
       "item": {
         "@type": "Event",
         "name": "Prevention and Long-Term Success with Diabetes",
@@ -6749,7 +5582,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 221,
+      "position": 183,
       "item": {
         "@type": "Event",
         "name": "$1 Bingo Bonanza",
@@ -6779,7 +5612,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 222,
+      "position": 184,
       "item": {
         "@type": "Event",
         "name": "Make and Take Craft: Maple Leaf Door Hanger",
@@ -6809,7 +5642,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 223,
+      "position": 185,
       "item": {
         "@type": "Event",
         "name": "The Legacy of Marshall Fields",
@@ -6841,7 +5674,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 224,
+      "position": 186,
       "item": {
         "@type": "Event",
         "name": "Preschool Storytime",
@@ -6874,7 +5707,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 225,
+      "position": 187,
       "item": {
         "@type": "Event",
         "name": "Book Bites",
@@ -6904,7 +5737,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 226,
+      "position": 188,
       "item": {
         "@type": "Event",
         "name": "Workshop Wednesdays",
@@ -6934,7 +5767,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 227,
+      "position": 189,
       "item": {
         "@type": "Event",
         "name": "Teen Crafternoons",
@@ -6966,7 +5799,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 228,
+      "position": 190,
       "item": {
         "@type": "Event",
         "name": "Drop-In Gift Wrap Supplies and Holiday Decor Swap",
@@ -6997,7 +5830,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 229,
+      "position": 191,
       "item": {
         "@type": "Event",
         "name": "Makerspace Orientations: In-Person",
@@ -7029,7 +5862,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 230,
+      "position": 192,
       "item": {
         "@type": "Event",
         "name": "Fall Bingo",
@@ -7060,7 +5893,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 231,
+      "position": 193,
       "item": {
         "@type": "Event",
         "name": "Chess Club",
@@ -7091,7 +5924,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 232,
+      "position": 194,
       "item": {
         "@type": "Event",
         "name": "Art Class: Floral Arranging with Garvin Gardens",
@@ -7121,7 +5954,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 233,
+      "position": 195,
       "item": {
         "@type": "Event",
         "name": "Minecraft Engineers",
@@ -7152,7 +5985,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 234,
+      "position": 196,
       "item": {
         "@type": "Event",
         "name": "Stitch Together Meet-Up",
@@ -7183,7 +6016,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 235,
+      "position": 197,
       "item": {
         "@type": "Event",
         "name": "Giggle and Gobble",
@@ -7213,7 +6046,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 236,
+      "position": 198,
       "item": {
         "@type": "Event",
         "name": "Plan Commission Meeting",
@@ -7243,7 +6076,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 237,
+      "position": 199,
       "item": {
         "@type": "Event",
         "name": "Family Storytime",
@@ -7276,7 +6109,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 238,
+      "position": 200,
       "item": {
         "@type": "Event",
         "name": "Advanced Excel",
@@ -7307,7 +6140,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 239,
+      "position": 201,
       "item": {
         "@type": "Event",
         "name": "20s & 30s Book Club: Invisible Life of Addie Larue",
@@ -7339,7 +6172,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 240,
+      "position": 202,
       "item": {
         "@type": "Event",
         "name": "Toddler Time",
@@ -7369,7 +6202,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 241,
+      "position": 203,
       "item": {
         "@type": "Event",
         "name": "Family Reading Night Kits",
@@ -7401,7 +6234,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 242,
+      "position": 204,
       "item": {
         "@type": "Event",
         "name": "The Arlington Camera Club",
@@ -7431,7 +6264,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 243,
+      "position": 205,
       "item": {
         "@type": "Event",
         "name": "Picture Book Month Challenge",
@@ -7461,7 +6294,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 244,
+      "position": 206,
       "item": {
         "@type": "Event",
         "name": "Word of the Week",
@@ -7491,7 +6324,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 245,
+      "position": 207,
       "item": {
         "@type": "Event",
         "name": "Family Reading Night",
@@ -7523,7 +6356,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 246,
+      "position": 208,
       "item": {
         "@type": "Event",
         "name": "Reading/Literacy Class",
@@ -7555,7 +6388,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 247,
+      "position": 209,
       "item": {
         "@type": "Event",
         "name": "ESL (English as a Second Language) Class - Oakton College",
@@ -7587,7 +6420,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 248,
+      "position": 210,
       "item": {
         "@type": "Event",
         "name": "Baby Storytime",
@@ -7618,7 +6451,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 249,
+      "position": 211,
       "item": {
         "@type": "Event",
         "name": "Office Hours with Congressman Brad Schneider's Office",
@@ -7649,7 +6482,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 250,
+      "position": 212,
       "item": {
         "@type": "Event",
         "name": "Office Hours IL State Treasurer Michael Frerich's Office",
@@ -7680,7 +6513,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 251,
+      "position": 213,
       "item": {
         "@type": "Event",
         "name": "Toddler Time",
@@ -7712,7 +6545,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 252,
+      "position": 214,
       "item": {
         "@type": "Event",
         "name": "Bus Trip - SOLD OUT!",
@@ -7742,7 +6575,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 253,
+      "position": 215,
       "item": {
         "@type": "Event",
         "name": "Polish Storytime",
@@ -7772,7 +6605,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 254,
+      "position": 216,
       "item": {
         "@type": "Event",
         "name": "Tech Assistance",
@@ -7803,7 +6636,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 255,
+      "position": 217,
       "item": {
         "@type": "Event",
         "name": "Family Storytime",
@@ -7834,7 +6667,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 256,
+      "position": 218,
       "item": {
         "@type": "Event",
         "name": "Get Started with Cloud Storage",
@@ -7864,7 +6697,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 257,
+      "position": 219,
       "item": {
         "@type": "Event",
         "name": "Social Security Planning",
@@ -7895,7 +6728,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 258,
+      "position": 220,
       "item": {
         "@type": "Event",
         "name": "Memory Cafe",
@@ -7926,7 +6759,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 259,
+      "position": 221,
       "item": {
         "@type": "Event",
         "name": "Oakton College Information Table",
@@ -7958,7 +6791,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 260,
+      "position": 222,
       "item": {
         "@type": "Event",
         "name": "Liberation Bookmarks",
@@ -7990,7 +6823,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 261,
+      "position": 223,
       "item": {
         "@type": "Event",
         "name": "CSI Session 3",
@@ -8020,7 +6853,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 262,
+      "position": 224,
       "item": {
         "@type": "Event",
         "name": "Education Foundation Meeting",
@@ -8043,7 +6876,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 263,
+      "position": 225,
       "item": {
         "@type": "Event",
         "name": "Book a Teen Librarian",
@@ -8075,7 +6908,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 264,
+      "position": 226,
       "item": {
         "@type": "Event",
         "name": "Linocut Block Printing Workshop",
@@ -8107,7 +6940,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 265,
+      "position": 227,
       "item": {
         "@type": "Event",
         "name": "Tech Playground",
@@ -8138,7 +6971,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 266,
+      "position": 228,
       "item": {
         "@type": "Event",
         "name": "Career Coaching Appointment",
@@ -8169,7 +7002,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 267,
+      "position": 229,
       "item": {
         "@type": "Event",
         "name": "Epic Worlds and Celestial Prophecies With Rebecca Roanhorse",
@@ -8200,7 +7033,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 268,
+      "position": 230,
       "item": {
         "@type": "Event",
         "name": "Knitting for Beginners",
@@ -8231,7 +7064,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 269,
+      "position": 231,
       "item": {
         "@type": "Event",
         "name": "Family Reading Night: Read to the Dog",
@@ -8261,7 +7094,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 270,
+      "position": 232,
       "item": {
         "@type": "Event",
         "name": "Library Board of Trustees Open Meeting",
@@ -8293,7 +7126,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 271,
+      "position": 233,
       "item": {
         "@type": "Event",
         "name": "River's Edge Condo Assoc.",
@@ -8325,7 +7158,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 272,
+      "position": 234,
       "item": {
         "@type": "Event",
         "name": "Gorgeous Georgia",
@@ -8355,7 +7188,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 273,
+      "position": 235,
       "item": {
         "@type": "Event",
         "name": "ART GARFUNKEL - WHAT A WONDERFUL WORLD CONCERT",
@@ -8386,7 +7219,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 274,
+      "position": 236,
       "item": {
         "@type": "Event",
         "name": "BOURBON 'N BRASS: LIVE BLUES SHOW WITH MILES MINOR \"ROCKIN THE BLUES\"",
@@ -8417,7 +7250,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 275,
+      "position": 237,
       "item": {
         "@type": "Event",
         "name": "Thursday Evening Book Discussion: Five Decembers",
@@ -8449,12 +7282,12 @@
     },
     {
       "@type": "ListItem",
-      "position": 276,
+      "position": 238,
       "item": {
         "@type": "Event",
-        "name": "Senior Center: Travelogue",
+        "name": "First-Time Parents' Meetup",
         "startDate": "2026-11-20",
-        "url": "https://withintenmiles.com/arlington-heights-60005/#ev-senior-center-travelogue-2026-11-20",
+        "url": "https://withintenmiles.com/arlington-heights-60005/#ev-first-time-parents-meetup-2026-11-20",
         "eventStatus": "https://schema.org/EventScheduled",
         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
         "location": {
@@ -8468,7 +7301,7 @@
             "streetAddress": "500 N. Dunton Ave."
           }
         },
-        "sameAs": "https://www.ahml.info/scheduling/reservation/233828",
+        "sameAs": "https://www.ahml.info/scheduling/reservation/230133",
         "organizer": {
           "@type": "Organization",
           "name": "Arlington Heights Memorial Library",
@@ -8479,7 +7312,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 277,
+      "position": 239,
       "item": {
         "@type": "Event",
         "name": "The Arlington Camera Club",
@@ -8509,7 +7342,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 278,
+      "position": 240,
       "item": {
         "@type": "Event",
         "name": "Picture Book Month Challenge",
@@ -8539,7 +7372,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 279,
+      "position": 241,
       "item": {
         "@type": "Event",
         "name": "Word of the Week",
@@ -8569,7 +7402,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 280,
+      "position": 242,
       "item": {
         "@type": "Event",
         "name": "Substitute Educator Day",
@@ -8592,7 +7425,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 281,
+      "position": 243,
       "item": {
         "@type": "Event",
         "name": "Youth Services Registration for December Programs",
@@ -8622,7 +7455,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 282,
+      "position": 244,
       "item": {
         "@type": "Event",
         "name": "Staff Institute Day",
@@ -8653,7 +7486,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 283,
+      "position": 245,
       "item": {
         "@type": "Event",
         "name": "Baby Book Time",
@@ -8685,7 +7518,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 284,
+      "position": 246,
       "item": {
         "@type": "Event",
         "name": "Storytime Playdate: Hello Helpers",
@@ -8716,7 +7549,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 285,
+      "position": 247,
       "item": {
         "@type": "Event",
         "name": "Messy Play",
@@ -8746,7 +7579,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 286,
+      "position": 248,
       "item": {
         "@type": "Event",
         "name": "Family Photos",
@@ -8777,7 +7610,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 287,
+      "position": 249,
       "item": {
         "@type": "Event",
         "name": "Q & A One on One Appointment",
@@ -8809,7 +7642,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 288,
+      "position": 250,
       "item": {
         "@type": "Event",
         "name": "Pokémon Club",
@@ -8840,7 +7673,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 289,
+      "position": 251,
       "item": {
         "@type": "Event",
         "name": "Teen Volunteering",
@@ -8871,7 +7704,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 290,
+      "position": 252,
       "item": {
         "@type": "Event",
         "name": "Chess Club (Advanced Players)",
@@ -8901,7 +7734,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 291,
+      "position": 253,
       "item": {
         "@type": "Event",
         "name": "Chess Club (Beginning Players)",
@@ -8931,7 +7764,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 292,
+      "position": 254,
       "item": {
         "@type": "Event",
         "name": "A Doll's House by Henrik Ibsen Adapted by Amy Herzog",
@@ -8961,7 +7794,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 293,
+      "position": 255,
       "item": {
         "@type": "Event",
         "name": "THE PHIL COLLINS EXPERIENCE with SPECIAL GUEST THE SATURDAY JUNE BAND",
@@ -8992,7 +7825,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 294,
+      "position": 256,
       "item": {
         "@type": "Event",
         "name": "BOURBON 'N BRASS SPEAKEASY: LIVE JAZZ with THE BOOTLEGGERS featuring LAURA LOPARDO on VOCALS",
@@ -9023,12 +7856,12 @@
     },
     {
       "@type": "ListItem",
-      "position": 295,
+      "position": 257,
       "item": {
         "@type": "Event",
-        "name": "Beginning ESL",
+        "name": "Family Time",
         "startDate": "2026-11-21",
-        "url": "https://withintenmiles.com/arlington-heights-60005/#ev-beginning-esl-2026-11-21",
+        "url": "https://withintenmiles.com/arlington-heights-60005/#ev-family-time-2026-11-21",
         "eventStatus": "https://schema.org/EventScheduled",
         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
         "location": {
@@ -9042,7 +7875,7 @@
             "streetAddress": "500 N. Dunton Ave."
           }
         },
-        "sameAs": "https://www.ahml.info/scheduling/reservation/236749",
+        "sameAs": "https://www.ahml.info/scheduling/reservation/224198",
         "organizer": {
           "@type": "Organization",
           "name": "Arlington Heights Memorial Library",
@@ -9053,7 +7886,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 296,
+      "position": 258,
       "item": {
         "@type": "Event",
         "name": "DIY with DPPL",
@@ -9085,7 +7918,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 297,
+      "position": 259,
       "item": {
         "@type": "Event",
         "name": "Play Packs",
@@ -9117,7 +7950,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 298,
+      "position": 260,
       "item": {
         "@type": "Event",
         "name": "The Arlington Camera Club",
@@ -9147,7 +7980,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 299,
+      "position": 261,
       "item": {
         "@type": "Event",
         "name": "Picture Book Month Challenge",
@@ -9177,7 +8010,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 300,
+      "position": 262,
       "item": {
         "@type": "Event",
         "name": "Word of the Week",
@@ -9207,7 +8040,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 301,
+      "position": 263,
       "item": {
         "@type": "Event",
         "name": "New & Used Clothing Sale",
@@ -9237,7 +8070,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 302,
+      "position": 264,
       "item": {
         "@type": "Event",
         "name": "Palatine Winter Farmers' Market",
@@ -9267,7 +8100,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 303,
+      "position": 265,
       "item": {
         "@type": "Event",
         "name": "Fun Factory Saturday",
@@ -9297,7 +8130,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 304,
+      "position": 266,
       "item": {
         "@type": "Event",
         "name": "Cafecito Y Libritos",
@@ -9329,7 +8162,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 305,
+      "position": 267,
       "item": {
         "@type": "Event",
         "name": "Super Saturday: Chicago Cossacks - Ukrainian Music and Dance",
@@ -9360,7 +8193,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 306,
+      "position": 268,
       "item": {
         "@type": "Event",
         "name": "Cat Toy Workshop",
@@ -9392,7 +8225,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 307,
+      "position": 269,
       "item": {
         "@type": "Event",
         "name": "Animal Zines",
@@ -9422,7 +8255,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 308,
+      "position": 270,
       "item": {
         "@type": "Event",
         "name": "CheckMates Meetup",
@@ -9453,7 +8286,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 309,
+      "position": 271,
       "item": {
         "@type": "Event",
         "name": "A Doll's House by Henrik Ibsen Adapted by Amy Herzog",
@@ -9483,7 +8316,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 310,
+      "position": 272,
       "item": {
         "@type": "Event",
         "name": "Holiday Tree Lighting Ceremony",
@@ -9513,7 +8346,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 311,
+      "position": 273,
       "item": {
         "@type": "Event",
         "name": "Helping Hands Pantry Food Drive at Holiday Tree Lighting",
@@ -9543,7 +8376,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 312,
+      "position": 274,
       "item": {
         "@type": "Event",
         "name": "SNAP SHOT CLASSIC ROCK EXPERIENCE with SPECIAL GUEST CLASS OF 68",
@@ -9574,7 +8407,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 313,
+      "position": 275,
       "item": {
         "@type": "Event",
         "name": "BOURBON 'N BRASS SPEAKEASY: LIVE BLUES with the DOWNTOWN CHARLIE BROWN BAND",
@@ -9605,12 +8438,12 @@
     },
     {
       "@type": "ListItem",
-      "position": 314,
+      "position": 276,
       "item": {
         "@type": "Event",
-        "name": "Makerplace Custom Cricut Tote Bag",
+        "name": "Сторітайм українською | Ukrainian Language Storytime",
         "startDate": "2026-11-22",
-        "url": "https://withintenmiles.com/arlington-heights-60005/#ev-makerplace-custom-cricut-tote-bag-2026-11-22",
+        "url": "https://withintenmiles.com/arlington-heights-60005/#ev-ukrainian-language-storytime-2026-11-22",
         "eventStatus": "https://schema.org/EventScheduled",
         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
         "location": {
@@ -9624,7 +8457,7 @@
             "streetAddress": "500 N. Dunton Ave."
           }
         },
-        "sameAs": "https://www.ahml.info/scheduling/reservation/233406",
+        "sameAs": "https://www.ahml.info/scheduling/reservation/226527",
         "organizer": {
           "@type": "Organization",
           "name": "Arlington Heights Memorial Library",
@@ -9635,7 +8468,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 315,
+      "position": 277,
       "item": {
         "@type": "Event",
         "name": "The Arlington Camera Club",
@@ -9665,7 +8498,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 316,
+      "position": 278,
       "item": {
         "@type": "Event",
         "name": "Picture Book Month Challenge",
@@ -9695,7 +8528,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 317,
+      "position": 279,
       "item": {
         "@type": "Event",
         "name": "Word of the Week",
@@ -9725,7 +8558,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 318,
+      "position": 280,
       "item": {
         "@type": "Event",
         "name": "Crochet Corner",
@@ -9755,7 +8588,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 319,
+      "position": 281,
       "item": {
         "@type": "Event",
         "name": "A Doll's House by Henrik Ibsen Adapted by Amy Herzog",
@@ -9785,38 +8618,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 320,
-      "item": {
-        "@type": "Event",
-        "name": "POOH: 60th ANNIVERSARY TOUR - FINALE",
-        "startDate": "2026-11-22T15:00:00-06:00",
-        "url": "https://withintenmiles.com/des-plaines-60016/#ev-pooh-60th-anniversary-tour-finale-2026-11-22",
-        "eventStatus": "https://schema.org/EventScheduled",
-        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "location": {
-          "@type": "Place",
-          "name": "Des Plaines Theatre",
-          "address": {
-            "@type": "PostalAddress",
-            "addressCountry": "US",
-            "addressLocality": "Des Plaines",
-            "addressRegion": "IL",
-            "streetAddress": "1476 Miner Street"
-          }
-        },
-        "sameAs": "https://desplainestheatre.com/event/pooh-60th-anniversary-tour-finale/",
-        "organizer": {
-          "@type": "Organization",
-          "name": "Des Plaines Theatre",
-          "url": "https://desplainestheatre.com"
-        },
-        "image": "https://withintenmiles.com/og/des-plaines-60016.png",
-        "description": "60 years of music, emotions and successes! In 2026, POOH are ready to return for what will be a highly anticipated year of celebrations and surprises for the…"
-      }
-    },
-    {
-      "@type": "ListItem",
-      "position": 321,
+      "position": 282,
       "item": {
         "@type": "Event",
         "name": "Lights Around Wheeling",
@@ -9846,7 +8648,38 @@
     },
     {
       "@type": "ListItem",
-      "position": 322,
+      "position": 283,
+      "item": {
+        "@type": "Event",
+        "name": "POOH: 60th ANNIVERSARY TOUR - FINALE",
+        "startDate": "2026-11-22T19:00:00-06:00",
+        "url": "https://withintenmiles.com/des-plaines-60016/#ev-pooh-60th-anniversary-tour-finale-2026-11-22",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Des Plaines Theatre",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Des Plaines",
+            "addressRegion": "IL",
+            "streetAddress": "1476 Miner Street"
+          }
+        },
+        "sameAs": "https://desplainestheatre.com/event/pooh-60th-anniversary-tour-finale/",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Des Plaines Theatre",
+          "url": "https://desplainestheatre.com"
+        },
+        "image": "https://withintenmiles.com/og/des-plaines-60016.png",
+        "description": "60 years of music, emotions and successes! In 2026, POOH are ready to return for what will be a highly anticipated year of celebrations and surprises for the…"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 284,
       "item": {
         "@type": "Event",
         "name": "Kids' Time",
@@ -9876,7 +8709,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 323,
+      "position": 285,
       "item": {
         "@type": "Event",
         "name": "Teen Take & Make",
@@ -9908,7 +8741,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 324,
+      "position": 286,
       "item": {
         "@type": "Event",
         "name": "The Arlington Camera Club",
@@ -9938,7 +8771,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 325,
+      "position": 287,
       "item": {
         "@type": "Event",
         "name": "Word of the Week",
@@ -9968,7 +8801,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 326,
+      "position": 288,
       "item": {
         "@type": "Event",
         "name": "Full Year Fitness Membership Sale",
@@ -9998,7 +8831,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 327,
+      "position": 289,
       "item": {
         "@type": "Event",
         "name": "Fall Break - No School",
@@ -10021,7 +8854,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 328,
+      "position": 290,
       "item": {
         "@type": "Event",
         "name": "No School | Parent/Teacher Conference Day",
@@ -10045,7 +8878,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 329,
+      "position": 291,
       "item": {
         "@type": "Event",
         "name": "Family Fun: Morris, the Magic Man",
@@ -10076,7 +8909,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 330,
+      "position": 292,
       "item": {
         "@type": "Event",
         "name": "Miss Jamie's Fall Sing-along",
@@ -10106,7 +8939,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 331,
+      "position": 293,
       "item": {
         "@type": "Event",
         "name": "Thanksgiving Showdown Indoor Soccer Tournament - Grades 3 & 4",
@@ -10136,7 +8969,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 332,
+      "position": 294,
       "item": {
         "@type": "Event",
         "name": "Monday Matinee Movie",
@@ -10166,7 +8999,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 333,
+      "position": 295,
       "item": {
         "@type": "Event",
         "name": "Got Science? Space Exploration",
@@ -10197,7 +9030,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 334,
+      "position": 296,
       "item": {
         "@type": "Event",
         "name": "Book a Teen Librarian",
@@ -10229,7 +9062,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 335,
+      "position": 297,
       "item": {
         "@type": "Event",
         "name": "Creation Station: Celebrate Autumn",
@@ -10260,7 +9093,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 336,
+      "position": 298,
       "item": {
         "@type": "Event",
         "name": "Introduction to Tinkercad",
@@ -10292,7 +9125,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 337,
+      "position": 299,
       "item": {
         "@type": "Event",
         "name": "Des Plaines Shambhala Meditation Group",
@@ -10324,7 +9157,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 338,
+      "position": 300,
       "item": {
         "@type": "Event",
         "name": "Fall Craft",
@@ -10354,7 +9187,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 339,
+      "position": 301,
       "item": {
         "@type": "Event",
         "name": "Happy Spinsters",
@@ -10386,7 +9219,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 340,
+      "position": 302,
       "item": {
         "@type": "Event",
         "name": "$10 SILENT FILM SERIES - \"The Passion of Joan of Arc\" (1928), Presented by The Silent Film Society of Chicago",
@@ -10417,7 +9250,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 341,
+      "position": 303,
       "item": {
         "@type": "Event",
         "name": "Middle School Book Club | Grades 6-8",
@@ -10444,6 +9277,682 @@
         },
         "image": "https://withintenmiles.com/og/wheeling-60090.png",
         "description": "Monday, November 23 2026 7:00pm - 8:00pm \n Book pickup September 28-November 16 at the Youth Services Desk. Mika knows she will struggle to survive the harsh…"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 304,
+      "item": {
+        "@type": "Event",
+        "name": "Social Worker in the Library",
+        "startDate": "2026-11-24",
+        "url": "https://withintenmiles.com/arlington-heights-60005/#ev-social-worker-in-the-library-2026-11-24",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Arlington Heights Memorial Library",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Arlington Heights",
+            "addressRegion": "IL",
+            "streetAddress": "500 N. Dunton Ave."
+          }
+        },
+        "sameAs": "https://www.ahml.info/scheduling/reservation/218153",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Arlington Heights Memorial Library",
+          "url": "https://www.ahml.info"
+        },
+        "image": "https://withintenmiles.com/og/arlington-heights-60005.png"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 305,
+      "item": {
+        "@type": "Event",
+        "name": "The Arlington Camera Club",
+        "startDate": "2026-11-24",
+        "url": "https://withintenmiles.com/elk-grove-village-60007/#ev-the-arlington-camera-club-2026-11-24",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Elk Grove Village Public Library",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Elk Grove Village",
+            "addressRegion": "IL"
+          }
+        },
+        "sameAs": "https://egvpl.libnet.info/event/16362692",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Elk Grove Village Public Library - Events",
+          "url": "https://egvpl.libnet.info"
+        },
+        "image": "https://withintenmiles.com/og/elk-grove-village-60007.png",
+        "description": "Tuesday, November 24 2026 12:00am - 11:59pm \n Arlington Camera Club photography exhibit."
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 306,
+      "item": {
+        "@type": "Event",
+        "name": "Word of the Week",
+        "startDate": "2026-11-24",
+        "url": "https://withintenmiles.com/elk-grove-village-60007/#ev-word-of-the-week-2026-11-24",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Elk Grove Village Public Library",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Elk Grove Village",
+            "addressRegion": "IL"
+          }
+        },
+        "sameAs": "https://egvpl.libnet.info/event/17354436",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Elk Grove Village Public Library - Events",
+          "url": "https://egvpl.libnet.info"
+        },
+        "image": "https://withintenmiles.com/og/elk-grove-village-60007.png",
+        "description": "Tuesday, November 24 2026 12:00am - 11:59pm \n Become a dictionary detective with our new Word of the Week challenge! Discover a new vocabulary word, look it…"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 307,
+      "item": {
+        "@type": "Event",
+        "name": "No School | Parent/Teacher Conference Day",
+        "startDate": "2026-11-24",
+        "url": "https://withintenmiles.com/palatine-60067/#ev-no-school-parent-teacher-conference-day-2026-11-24",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Palatine, IL",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Palatine",
+            "addressRegion": "IL"
+          }
+        },
+        "image": "https://withintenmiles.com/og/palatine-60067.png",
+        "description": "2026-27 Official School Calendar (English) | (Spanish)"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 308,
+      "item": {
+        "@type": "Event",
+        "name": "Reading/Literacy Class",
+        "startDate": "2026-11-24T09:15:00-06:00",
+        "url": "https://withintenmiles.com/des-plaines-60016/#ev-reading-literacy-class-2026-11-24",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Des Plaines Public Library",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Des Plaines",
+            "addressRegion": "IL",
+            "streetAddress": "1501 Ellinwood Street",
+            "postalCode": "60016"
+          }
+        },
+        "sameAs": "https://desplaines.libnet.info/event/15801734",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Des Plaines Public Library",
+          "url": "https://desplaines.libnet.info"
+        },
+        "image": "https://withintenmiles.com/og/des-plaines-60016.png",
+        "description": "Tuesday, November 24 2026 9:15am - 12:15pm \n For more information, please contact Oakton College at 847-635-1426"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 309,
+      "item": {
+        "@type": "Event",
+        "name": "ESL (English as a Second Language) Class - Oakton College",
+        "startDate": "2026-11-24T09:15:00-06:00",
+        "url": "https://withintenmiles.com/des-plaines-60016/#ev-esl-english-as-a-second-language-class-oakton-college-2026-11-24",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Des Plaines Public Library",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Des Plaines",
+            "addressRegion": "IL",
+            "streetAddress": "1501 Ellinwood Street",
+            "postalCode": "60016"
+          }
+        },
+        "sameAs": "https://desplaines.libnet.info/event/15803245",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Des Plaines Public Library",
+          "url": "https://desplaines.libnet.info"
+        },
+        "image": "https://withintenmiles.com/og/des-plaines-60016.png",
+        "description": "Tuesday, November 24 2026 9:15am - 12:15pm \n ESL (English as a Second Language) Class - Oakton College\n\n Teaches listening, speaking, reading, writing, and…"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 310,
+      "item": {
+        "@type": "Event",
+        "name": "Creation Station: Celebrate Autumn",
+        "startDate": "2026-11-24T10:00:00-06:00",
+        "url": "https://withintenmiles.com/mount-prospect-60056/#ev-creation-station-celebrate-autumn-2026-11-24",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Mount Prospect Public Library",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Mount Prospect",
+            "addressRegion": "IL",
+            "streetAddress": "125 S Emerson St"
+          }
+        },
+        "sameAs": "https://mppl.libnet.info/event/16873376",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Mount Prospect Public Library",
+          "url": "https://mppl.libnet.info"
+        },
+        "image": "https://withintenmiles.com/og/mount-prospect-60056.png",
+        "description": "Tuesday, November 24 2026 10:00am - 11:00am \n Craft and create with us! We'll provide an idea and supplies; you create your own masterpiece."
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 311,
+      "item": {
+        "@type": "Event",
+        "name": "School's Out Drop-in Craft",
+        "startDate": "2026-11-24T10:30:00-06:00",
+        "url": "https://withintenmiles.com/des-plaines-60016/#ev-school-s-out-drop-in-craft-2026-11-24",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Des Plaines Public Library",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Des Plaines",
+            "addressRegion": "IL",
+            "streetAddress": "1501 Ellinwood Street",
+            "postalCode": "60016"
+          }
+        },
+        "sameAs": "https://desplaines.libnet.info/event/17057208",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Des Plaines Public Library",
+          "url": "https://desplaines.libnet.info"
+        },
+        "image": "https://withintenmiles.com/og/des-plaines-60016.png",
+        "description": "Tuesday, November 24 2026 10:30am - 11:30am \n Need something to do on your day off from school? Stop by the Program Room for a fun craft! All ages. No…"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 312,
+      "item": {
+        "@type": "Event",
+        "name": "Coffee, Cake & Coloring",
+        "startDate": "2026-11-24T10:30:00-06:00",
+        "url": "https://withintenmiles.com/elk-grove-village-60007/#ev-coffee-cake-coloring-2026-11-24",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Elk Grove Village Public Library",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Elk Grove Village",
+            "addressRegion": "IL"
+          }
+        },
+        "sameAs": "https://egvpl.libnet.info/event/16167279",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Elk Grove Village Public Library - Events",
+          "url": "https://egvpl.libnet.info"
+        },
+        "image": "https://withintenmiles.com/og/elk-grove-village-60007.png",
+        "description": "Tuesday, November 24 2026 10:30am - 11:30am \n Join us for adult coloring while enjoying a cup of coffee or tea, and coffee cake!"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 313,
+      "item": {
+        "@type": "Event",
+        "name": "Movies @ MPPL: Misconduct",
+        "startDate": "2026-11-24T10:30:00-06:00",
+        "url": "https://withintenmiles.com/mount-prospect-60056/#ev-movies-mppl-misconduct-2026-11-24",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Mount Prospect Public Library",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Mount Prospect",
+            "addressRegion": "IL",
+            "streetAddress": "125 S Emerson St"
+          }
+        },
+        "sameAs": "https://mppl.libnet.info/event/14038416",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Mount Prospect Public Library",
+          "url": "https://mppl.libnet.info"
+        },
+        "image": "https://withintenmiles.com/og/mount-prospect-60056.png",
+        "description": "Tuesday, November 24 2026 10:30am - 12:30pm \n Join us for a screening of Misconduct."
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 314,
+      "item": {
+        "@type": "Event",
+        "name": "Rise & Read Morning Book Discussion",
+        "startDate": "2026-11-24T10:30:00-06:00",
+        "url": "https://withintenmiles.com/wheeling-60090/#ev-rise-read-morning-book-discussion-2026-11-24",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Indian Trails Public Library",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Wheeling",
+            "addressRegion": "IL",
+            "streetAddress": "355 Schoenbeck Rd."
+          }
+        },
+        "sameAs": "https://indiantrails.libnet.info/event/14170862",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Indian Trails Public Library",
+          "url": "https://indiantrails.libnet.info"
+        },
+        "image": "https://withintenmiles.com/og/wheeling-60090.png",
+        "description": "Tuesday, November 24 2026 10:30am - 11:30am \n Registration and book pickup begins October 13. A book about murder, deception, and the pursuit of the truth. R"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 315,
+      "item": {
+        "@type": "Event",
+        "name": "Tuesday Tech Help",
+        "startDate": "2026-11-24T11:00:00-06:00",
+        "url": "https://withintenmiles.com/elk-grove-village-60007/#ev-tuesday-tech-help-2026-11-24",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Elk Grove Village Public Library",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Elk Grove Village",
+            "addressRegion": "IL"
+          }
+        },
+        "sameAs": "https://egvpl.libnet.info/event/17238827",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Elk Grove Village Public Library - Events",
+          "url": "https://egvpl.libnet.info"
+        },
+        "image": "https://withintenmiles.com/og/elk-grove-village-60007.png",
+        "description": "Tuesday, November 24 2026 11:00am - 1:00pm \n Got a technology question? Were here to help! Bring your device and question."
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 316,
+      "item": {
+        "@type": "Event",
+        "name": "Play and Learn",
+        "startDate": "2026-11-24T11:30:00-06:00",
+        "url": "https://withintenmiles.com/mount-prospect-60056/#ev-play-and-learn-2026-11-24",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Mount Prospect Public Library",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Mount Prospect",
+            "addressRegion": "IL",
+            "streetAddress": "125 S Emerson St"
+          }
+        },
+        "sameAs": "https://mppl.libnet.info/event/16882809",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Mount Prospect Public Library",
+          "url": "https://mppl.libnet.info"
+        },
+        "image": "https://withintenmiles.com/og/mount-prospect-60056.png",
+        "description": "Tuesday, November 24 2026 11:30am - 12:15pm \n Join us each week for storytime, sing-alongs, and developmental play experiences that encourage learning through…"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 317,
+      "item": {
+        "@type": "Event",
+        "name": "Thanksgiving Showdown Indoor Soccer Tournament - Grades 5 & 6",
+        "startDate": "2026-11-24T12:00:00-06:00",
+        "url": "https://withintenmiles.com/mount-prospect-60056/#ev-thanksgiving-showdown-indoor-soccer-tournament-grades-5-6-2026-11-24",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Mount Prospect, IL",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Mount Prospect",
+            "addressRegion": "IL"
+          }
+        },
+        "sameAs": "https://www.mppd.org/event/thanksgiving-showdown-indoor-soccer-tournament-grades-5-6-2/",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Mount Prospect Park District",
+          "url": "https://www.mppd.org"
+        },
+        "image": "https://withintenmiles.com/og/mount-prospect-60056.png",
+        "description": "Thanksgiving Showdown Indoor Soccer Tournament – Grades 5 & 6 This fast paced indoor soccer tournament will take place on the CCC Turf. Teams can have a…"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 318,
+      "item": {
+        "@type": "Event",
+        "name": "Mark Hayward Yo-yo and Comedy Show",
+        "startDate": "2026-11-24T13:30:00-06:00",
+        "url": "https://withintenmiles.com/elk-grove-village-60007/#ev-mark-hayward-yo-yo-and-comedy-show-2026-11-24",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Elk Grove Village Public Library",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Elk Grove Village",
+            "addressRegion": "IL"
+          }
+        },
+        "sameAs": "https://egvpl.libnet.info/event/17066796",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Elk Grove Village Public Library - Events",
+          "url": "https://egvpl.libnet.info"
+        },
+        "image": "https://withintenmiles.com/og/elk-grove-village-60007.png",
+        "description": "Tuesday, November 24 2026 1:30pm - 2:30pm \n Get ready for a string-tastic show full of laughs, amazing yo-yo tricks, and family fun!"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 319,
+      "item": {
+        "@type": "Event",
+        "name": "Design a Stanley in the Canvas",
+        "startDate": "2026-11-24T16:00:00-06:00",
+        "url": "https://withintenmiles.com/des-plaines-60016/#ev-design-a-stanley-in-the-canvas-2026-11-24",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Des Plaines Public Library",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Des Plaines",
+            "addressRegion": "IL",
+            "streetAddress": "1501 Ellinwood Street",
+            "postalCode": "60016"
+          }
+        },
+        "sameAs": "https://desplaines.libnet.info/event/17690351",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Des Plaines Public Library",
+          "url": "https://desplaines.libnet.info"
+        },
+        "image": "https://withintenmiles.com/og/des-plaines-60016.png",
+        "description": "Tuesday, November 24 2026 4:00pm - 6:00pm \n Join us to design a Stanley tumbler in the Canvas! We will have Stanley cups to choose from!"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 320,
+      "item": {
+        "@type": "Event",
+        "name": "Book a Teen Librarian",
+        "startDate": "2026-11-24T17:00:00-06:00",
+        "url": "https://withintenmiles.com/des-plaines-60016/#ev-book-a-teen-librarian-2026-11-24",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Des Plaines Public Library",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Des Plaines",
+            "addressRegion": "IL",
+            "streetAddress": "1501 Ellinwood Street",
+            "postalCode": "60016"
+          }
+        },
+        "sameAs": "https://desplaines.libnet.info/event/17867458",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Des Plaines Public Library",
+          "url": "https://desplaines.libnet.info"
+        },
+        "image": "https://withintenmiles.com/og/des-plaines-60016.png",
+        "description": "Tuesday, November 24 2026 5:00pm - 6:00pm \n Come in and get to know your teen librarians!"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 321,
+      "item": {
+        "@type": "Event",
+        "name": "Tech in the Forum",
+        "startDate": "2026-11-24T17:30:00-06:00",
+        "url": "https://withintenmiles.com/des-plaines-60016/#ev-tech-in-the-forum-2026-11-24",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Des Plaines Public Library",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Des Plaines",
+            "addressRegion": "IL",
+            "streetAddress": "1501 Ellinwood Street",
+            "postalCode": "60016"
+          }
+        },
+        "sameAs": "https://desplaines.libnet.info/event/17623538",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Des Plaines Public Library",
+          "url": "https://desplaines.libnet.info"
+        },
+        "image": "https://withintenmiles.com/og/des-plaines-60016.png",
+        "description": "Tuesday, November 24 2026 5:30pm - 7:30pm \n Do you have a question about technology or how to use the library's services? Assistance is provided on a…"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 322,
+      "item": {
+        "@type": "Event",
+        "name": "Spanish Conversation Practice | At the Branch",
+        "startDate": "2026-11-24T17:30:00-06:00",
+        "url": "https://withintenmiles.com/wheeling-60090/#ev-spanish-conversation-practice-at-the-branch-2026-11-24",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Indian Trails Public Library",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Wheeling",
+            "addressRegion": "IL",
+            "streetAddress": "355 Schoenbeck Rd."
+          }
+        },
+        "sameAs": "https://indiantrails.libnet.info/event/17092616",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Indian Trails Public Library",
+          "url": "https://indiantrails.libnet.info"
+        },
+        "image": "https://withintenmiles.com/og/wheeling-60090.png",
+        "description": "Tuesday, November 24 2026 5:30pm - 6:30pm \n Informal Spanish conversation session to practice and improve your speaking skills by talking to native…"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 323,
+      "item": {
+        "@type": "Event",
+        "name": "Discovery Play with The Leaf Thief",
+        "startDate": "2026-11-24T18:00:00-06:00",
+        "url": "https://withintenmiles.com/wheeling-60090/#ev-discovery-play-with-the-leaf-thief-2026-11-24",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Indian Trails Public Library",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Wheeling",
+            "addressRegion": "IL",
+            "streetAddress": "355 Schoenbeck Rd."
+          }
+        },
+        "sameAs": "https://indiantrails.libnet.info/event/17104217",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Indian Trails Public Library",
+          "url": "https://indiantrails.libnet.info"
+        },
+        "image": "https://withintenmiles.com/og/wheeling-60090.png",
+        "description": "Tuesday, November 24 2026 6:00pm - 6:45pm \n Engage with early literacy activities designed to encourage pre-reading skills. Visit each station with your child…"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 324,
+      "item": {
+        "@type": "Event",
+        "name": "Career & Job Counseling @ the library",
+        "startDate": "2026-11-24T18:30:00-06:00",
+        "url": "https://withintenmiles.com/des-plaines-60016/#ev-career-job-counseling-the-library-2026-11-24",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Des Plaines Public Library",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Des Plaines",
+            "addressRegion": "IL",
+            "streetAddress": "1501 Ellinwood Street",
+            "postalCode": "60016"
+          }
+        },
+        "sameAs": "https://desplaines.libnet.info/event/16717145",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Des Plaines Public Library",
+          "url": "https://desplaines.libnet.info"
+        },
+        "image": "https://withintenmiles.com/og/des-plaines-60016.png",
+        "description": "Tuesday, November 24 2026 6:30pm - 8:30pm \n Career & Job Counseling @ the library - One-on-one appointment on Zoom\n\nMeet with a career expert for resume help,…"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 325,
+      "item": {
+        "@type": "Event",
+        "name": "Bridges of Meaning",
+        "startDate": "2026-11-24T19:00:00-06:00",
+        "url": "https://withintenmiles.com/des-plaines-60016/#ev-bridges-of-meaning-2026-11-24",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Des Plaines Public Library",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Des Plaines",
+            "addressRegion": "IL",
+            "streetAddress": "1501 Ellinwood Street",
+            "postalCode": "60016"
+          }
+        },
+        "sameAs": "https://desplaines.libnet.info/event/17190857",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Des Plaines Public Library",
+          "url": "https://desplaines.libnet.info"
+        },
+        "image": "https://withintenmiles.com/og/des-plaines-60016.png",
+        "description": "Tuesday, November 24 2026 7:00pm - 8:30pm \n Jeffrey 872-206-0333"
       }
     }
   ]

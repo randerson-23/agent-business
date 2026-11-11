@@ -2,8 +2,8 @@
   "@context": "https://schema.org",
   "@type": "ItemList",
   "name": "Upcoming events in Palatine — Within Ten",
-  "dateModified": "2026-11-10T22:07:47+00:00",
-  "numberOfItems": 19,
+  "dateModified": "2026-11-11T06:01:54+00:00",
+  "numberOfItems": 20,
   "itemListElement": [
     {
       "@type": "ListItem",
@@ -536,6 +536,30 @@
         "name": "No School | Parent/Teacher Conference Day",
         "startDate": "2026-11-23",
         "url": "https://withintenmiles.com/palatine-60067/#ev-no-school-parent-teacher-conference-day-2026-11-23",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Palatine, IL",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Palatine",
+            "addressRegion": "IL"
+          }
+        },
+        "image": "https://withintenmiles.com/og/palatine-60067.png",
+        "description": "2026-27 Official School Calendar (English) | (Spanish)"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 20,
+      "item": {
+        "@type": "Event",
+        "name": "No School | Parent/Teacher Conference Day",
+        "startDate": "2026-11-24",
+        "url": "https://withintenmiles.com/palatine-60067/#ev-no-school-parent-teacher-conference-day-2026-11-24",
         "eventStatus": "https://schema.org/EventScheduled",
         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
         "location": {
