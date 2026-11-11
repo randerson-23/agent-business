@@ -58,6 +58,15 @@ detail: "One email, Thursday mornings, covering Arlington Heights, Des Plaines, 
 # on 2026-09-17 once that template shipped (ROADMAP.md item 105):
 # docs/combined-email-send.html carries a short block per region, so
 # every subscriber finds their own town in the same issue.
+# ROADMAP.md item 491: one-off moves of a Thursday delivery (Thursday: new
+# local Central time). Read by send_newsletter.py (the Tuesday cron run sends
+# when one is due) and by build_digest.py (the on-sale subject window).
+# Thanksgiving: plan the long weekend the day before; evidence mixed
+# (GoDaddy, Martech vs Constant Contact). An entry stops applying once its
+# time has passed; delete it afterwards.
+delivery_overrides:
+  "2026-11-26": "2026-11-25T07:00"
+
 send:
   enabled: true
   region: "combined"

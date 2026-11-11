@@ -20892,7 +20892,7 @@ two days ago), and settles when the **Thanksgiving issue** should arrive.
      link, it's skipped for picks, and a two-day festival stays two
      sessions.
 
-491. **Deliver the Thanksgiving issue Wednesday Nov 25, 07:00 CT.** Build
+491. (✅ DONE 2026-11-11: `delivery_overrides` in config/newsletter.yaml; send_newsletter's `next_delivery` and `--check-due`; send-newsletter.yml adds a Tuesday 22:37 UTC cron whose build and send steps run only when an issue is due within 24 hours; `weekend_window` adds Thanksgiving Thursday; build_digest's `email_delivery_time` reads the same overrides. Delete the entry after Nov 25) **Deliver the Thanksgiving issue Wednesday Nov 25, 07:00 CT.** Build
      loop:
 
      - Add a one-off `delivery_overrides:` entry in

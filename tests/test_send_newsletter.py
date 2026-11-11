@@ -519,3 +519,23 @@ def test_save_send_history_creates_the_parent_directory(tmp_path):
     path = tmp_path / "nested" / "send_history.json"
     save_send_history([{"timestamp": "x"}], path)
     assert path.exists()
+
+
+def test_thanksgiving_override_moves_delivery_and_gates_the_tuesday_run(tmp_path):
+    # ROADMAP.md item 491.
+    import send_newsletter as sn
+    from datetime import date as _date
+    cfg = tmp_path / "newsletter.yaml"
+    cfg.write_text('delivery_overrides:\n  "2026-11-26": "2026-11-25T07:00"\n', encoding="utf-8")
+    ov = sn.load_delivery_overrides(cfg)
+    tue = datetime(2026, 11, 24, 22, 37, tzinfo=timezone.utc)
+    wed = datetime(2026, 11, 25, 22, 37, tzinfo=timezone.utc)
+    assert sn.next_delivery(tue, ov).isoformat() == "2026-11-25T07:00:00-06:00"
+    assert sn.issue_is_due(tue, ov)
+    assert not sn.issue_is_due(wed, ov)  # already went out; next is Dec 3
+    assert sn.next_delivery(wed, ov).date() == _date(2026, 12, 3)
+    # A normal week: Tuesday's run is not due, Wednesday's is.
+    assert not sn.issue_is_due(datetime(2026, 11, 17, 22, 37, tzinfo=timezone.utc), ov)
+    assert sn.issue_is_due(datetime(2026, 11, 18, 22, 37, tzinfo=timezone.utc), ov)
+    # Late cron on a normal Wednesday (7h late) is still due.
+    assert sn.issue_is_due(datetime(2026, 11, 19, 5, 37, tzinfo=timezone.utc), ov)
