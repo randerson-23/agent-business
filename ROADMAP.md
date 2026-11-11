@@ -20854,7 +20854,7 @@ two days ago), and settles when the **Thanksgiving issue** should arrive.
 
 #### P1 (new)
 
-489. (✅ DONE 2026-11-11: `region_source_phrase` names a town's enabled sources when it lacks the village/library/park-district trio, so Elk Grove's intro says "the Elk Grove Village Public Library and the Village's own big events"; `newsletter_for_region` builds the signup line from the email towns in config and gives `email: false` towns the "is new here" wording, tagged `town:<id>`. Also: `OUTREACH_PROSPECTS.md` was stuck at Oct 31 because osm-prospects.yml failed Nov 2 and Nov 9 on the owner-details warning in check_outreach_batch.py, which now warns instead of failing; Elk Grove Village added to its towns) **Make each town page describe its own sources and email coverage
+489. (✅ DONE 2026-11-11: `region_source_phrase` names a town's enabled sources when it lacks the village/library/park-district trio, so Elk Grove's intro says "the Elk Grove Village Public Library and the Village's own big events"; `newsletter_for_region` builds the signup line from the email towns in config and gives `email: false` towns the "is new here" wording, tagged `town:<id>`. Also: `OUTREACH_PROSPECTS.md` was stuck at Oct 31 because osm-prospects.yml failed Nov 2 and Nov 9 on the owner-details warning in check_outreach_batch.py and outreach_batch.py, which now warn instead of failing; Elk Grove Village added to its towns) **Make each town page describe its own sources and email coverage
      truthfully.** Build loop, `region.html.j2` and the signup partial:
 
      - **(a)** Build the intro's source sentence from the region's
