@@ -20810,7 +20810,7 @@ at what the nearest competitor charges local businesses.
      Tests: the launch price shows below the threshold and the regular
      price above it, and the badge is hidden below 100.
 
-488. **Polish the per-reader email before it goes live.** Build loop,
+488. (✅ DONE 2026-11-11: hero names the reader's town; their town shows six events; one-liners rank by the picks' family order; board-member and appreciation days leave the lists, staff/institute days move to the days-off box only) **Polish the per-reader email before it goes live.** Build loop,
      item 481's layout:
 
      - **(a)** For a tagged reader, the hero says ***"This weekend in

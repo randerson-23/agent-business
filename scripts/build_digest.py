@@ -6790,7 +6790,18 @@ def is_recurring_programme(event: dict, series: set[str] | None = None) -> bool:
 def town_one_liner(block: dict) -> str:
     """ROADMAP.md item 481: "Mount Prospect: Diwali Party, MPCB Fall Concert and 3 more"
     from the town's first two titles and a count of the rest."""
-    titles = [display_title(e["title"]) for e in block.get("attendable_events") or [] if e.get("title")][:2]
+    # Item 488: the two titles follow the picks' family ranking (item 484), so
+    # no senior or adult title leads when a family one exists.
+    pool = [e for e in (block.get("pick_pool") or block.get("attendable_events") or []) if e.get("title") and not e.get("merged_away")]
+    series = block.get("series") or set()
+    pool.sort(key=lambda e: (is_recurring_programme(e, series), -family_relevance(e), e.get("date_iso") or "9999"))
+    titles = []
+    for e in pool:
+        t = display_title(e["title"])
+        if t not in titles:
+            titles.append(t)
+        if len(titles) == 2:
+            break
     total = max(block.get("weekend_count") or 0, len(titles))
     if not titles:
         return f"{block['region_name']}: nothing dated this weekend yet"
@@ -7007,12 +7018,15 @@ def render_combined_email_digest(sections: list[dict], weekend_date_range: str, 
     # events), every other town as one line. Rendered here for previews; the
     # live send keeps the shared layout until a Buttondown test send proves
     # how per-reader content is delivered.
+    reader_town_name = None
     if reader_town:
         mine = [b for b in region_blocks if b["region_url"].rstrip("/").rsplit("/", 1)[-1] == reader_town]
         if mine:
             home = mine[0]
+            reader_town_name = home["region_name"]  # item 488: the hero names the reader's town
             src = next(sec for sec in sections if sec["region_url"] == home["region_url"])
             home["attendable_events"] = prepare_email_events([e for e in src["weekend_events"] if e.get("attendable", True)], limit=6)
+            home["show"] = 6
             for b in region_blocks:
                 if b is not home:
                     b["one_line"] = town_one_liner(b)
@@ -7047,6 +7061,7 @@ def render_combined_email_digest(sections: list[dict], weekend_date_range: str, 
     return template.render(
         signups=signups,
         region_blocks=region_blocks,
+        reader_town_name=reader_town_name,
         top_picks=top_picks,
         poll=poll_links(now.astimezone(LOCAL_TZ).date()),
         event_total=event_total,
@@ -7232,7 +7247,7 @@ def build_days_off(
     for block in blocks:
         if "school" not in (block.get("section") or "").lower():
             continue
-        for e in block.get("events", []):
+        for e in list(block.get("events", [])) + list(block.get("days_off_events") or []):  # item 488
             if not (e.get("title") and e.get("date_iso") and DAY_OFF_TITLE.search(e["title"])):
                 continue
             try:
@@ -7342,9 +7357,13 @@ def is_closure_title(title: str) -> bool:
 EVENING_TITLE = re.compile(r"\b(?:night|evening|bash|party|dance|concert|movie|prom|gala)\b", re.IGNORECASE)
 SCHOOL_ADMIN_TITLE = re.compile(
     r"\b(?:end of (?:the )?(?:first |second |third |fourth |1st |2nd |3rd |4th )?(?:trimester|quarter|semester|grading period)|"
-    r"grading period|report cards?|progress reports?|board (?:of education )?meeting|board of education)\b",
+    r"grading period|report cards?|progress reports?|board (?:of education )?meeting|board of education|"
+    r"board members? (?:appreciation )?day|(?:\w+ )?appreciation (?:day|week))\b",
     re.IGNORECASE,
 )
+# Item 488: a staff day is no school for children, so it stays in the days-off
+# box, but it is not a thing to do and leaves the event lists.
+SCHOOL_STAFF_DAY = re.compile(r"\b(?:institute day|staff development|teacher institute|professional development day)\b", re.IGNORECASE)
 NO_SCHOOL_TEXT = re.compile(r"\bno school\b|\bnon[- ]attendance\b|\bschool closed\b|\bno classes\b", re.IGNORECASE)
 
 
@@ -7383,14 +7402,20 @@ def drop_school_admin(blocks: list[dict]) -> list[dict]:
     say there is no school (then the days-off box still needs them)."""
     out = []
     for block in blocks:
-        keep = []
+        keep, staff = [], []
         for e in block.get("events", []):
             text = f"{e.get('title') or ''} {e.get('detail') or ''}"
+            if SCHOOL_STAFF_DAY.search(e.get("title") or ""):
+                staff.append(e)
+                continue
             if SCHOOL_ADMIN_TITLE.search(e.get("title") or "") and not NO_SCHOOL_TEXT.search(text):
                 logger.info("School-admin entry left out of the lists: %r (%s)", e.get("title"), block.get("section"))
                 continue
             keep.append(e)
-        out.append(dict(block, events=keep) if len(keep) != len(block.get("events", [])) else block)
+        if len(keep) == len(block.get("events", [])):
+            out.append(block)
+        else:
+            out.append(dict(block, events=keep, days_off_events=list(block.get("days_off_events") or []) + staff))
     return out
 
 

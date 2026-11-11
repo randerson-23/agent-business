@@ -85,7 +85,7 @@ PREVIEW ONLY, NOT PART OF THE EMAIL — SUBJECT LINE: {{ subject_line }}
 </tr>
 <tr>
 <td class="wt-ink" style="font-family:{{ serif }}; font-size:28px; font-weight:bold; line-height:1.2; color:{{ ink }}; padding-bottom:10px;">
-This weekend, across the northwest suburbs
+{% if reader_town_name %}This weekend in {{ reader_town_name }} &amp; nearby{% else %}This weekend, across the northwest suburbs{% endif %}
 </td>
 </tr>
 <tr>
@@ -257,7 +257,7 @@ DON'T MISS THIS WEEKEND
 </tr>
 
 {% if block.attendable_events %}
-{% for event in block.attendable_events[:4] %}
+{% for event in block.attendable_events[:(block.show or 4)] %}
 <tr>
 <td style="padding:14px 0;{% if not loop.first %} border-top:1px solid {{ rule }};{% endif %}">
 <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
