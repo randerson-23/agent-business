@@ -6380,14 +6380,26 @@ def _fit_subject(titles: list[str], total: int, lone_leads: list[str] | None = N
     return f"{total} thing{'s' if total != 1 else ''} to do this weekend{places}"
 
 
+def email_delivery_time(now: datetime) -> datetime:
+    """ROADMAP.md item 486: the Thursday 07:00 Central the scheduled send
+    delivers at (send_newsletter.next_thursday_morning), as naive local time.
+    The build on a Thursday itself counts from now (the issue is out or
+    going out today), never from the next week's Thursday."""
+    local_now = now.astimezone(LOCAL_TZ).replace(tzinfo=None)
+    candidate = local_now.replace(hour=7, minute=0, second=0, microsecond=0) + timedelta(days=(3 - local_now.weekday()) % 7)
+    return max(candidate, local_now)
+
+
 def on_sale_subject(on_sale: list[dict] | None, now: datetime | None, count: int) -> str | None:
     """ROADMAP.md item 483: the week's time-critical item leads the subject when
     a sale opens within 4 days of the send: "🚂 Holiday Train tickets go on sale
     Monday · 38 things this weekend"."""
     if not on_sale or now is None:
         return None
-    local_now = now.astimezone(LOCAL_TZ).replace(tzinfo=None)
-    soon = [o for o in on_sale if o.get("short") and o["opens"] > local_now and (o["opens"].date() - local_now.date()).days <= 4]  # calendar days: a Thursday send covers Monday
+    # Item 486: measured from the Thursday the issue is delivered, not the
+    # (often Wednesday-evening) build, so a Monday sale still leads.
+    ref = email_delivery_time(now)
+    soon = [o for o in on_sale if o.get("short") and o["opens"] > ref and (o["opens"].date() - ref.date()).days <= 4]  # calendar days: a Thursday send covers Monday
     if not soon:
         return None
     o = soon[0]

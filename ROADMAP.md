@@ -20778,7 +20778,7 @@ at what the nearest competitor charges local businesses.
 
 #### P1 (new)
 
-486. **Count the sale window from the scheduled delivery day, not the
+486. (✅ DONE 2026-11-11: `email_delivery_time` gives the Thursday 07:00 Central delivery, and `on_sale_subject` counts the 4 days from it; a Thursday build counts from now) **Count the sale window from the scheduled delivery day, not the
      build clock.** Build loop, **before Wednesday Nov 11, 22:37 UTC**:
 
      - `on_sale_subject` (and the card's *"On sale Monday"* wording)
