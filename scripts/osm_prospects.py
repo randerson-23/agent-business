@@ -28,7 +28,7 @@ RETRY_DELAYS = (30, 120)  # seconds before the 2nd and 3rd attempt
 TOWN_SPACING = 10  # seconds between town queries: Overpass rate-limits bursts
 OVERPASS_URL = "https://overpass-api.de/api/interpreter"
 USER_AGENT = "WithinTenBot/1.0 (+https://withintenmiles.com; outreach prospect list)"
-TOWNS = ["Arlington Heights", "Des Plaines", "Mount Prospect", "Palatine", "Wheeling"]
+TOWNS = ["Arlington Heights", "Des Plaines", "Elk Grove Village", "Mount Prospect", "Palatine", "Wheeling"]  # item 489 note: Elk Grove added with town six
 STATE = "Illinois"  # Wheeling, WV and Palatine, TX exist too
 MAX_ROWS_PER_TOWN = 80
 
