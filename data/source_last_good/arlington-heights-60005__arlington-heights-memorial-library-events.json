@@ -1,5 +1,5 @@
 {
- "fetched_at": "2026-11-11T14:07:47+00:00",
+ "fetched_at": "2026-11-11T14:33:22+00:00",
  "items": [
   {
    "date": "2026-11-11",
@@ -16,8 +16,8 @@
   {
    "date": "2026-11-13",
    "detail": "",
-   "title": "eBooks, eAudiobooks, Movies and More",
-   "url": "https://www.ahml.info/scheduling/reservation/234443"
+   "title": "Senior Center: Travelogue",
+   "url": "https://www.ahml.info/scheduling/reservation/233826"
   },
   {
    "date": "2026-11-14",
@@ -58,8 +58,8 @@
   {
    "date": "2026-11-20",
    "detail": "",
-   "title": "Senior Center: Travelogue",
-   "url": "https://www.ahml.info/scheduling/reservation/233828"
+   "title": "Backing Up Your Data with Google Drive and iCloud",
+   "url": "https://www.ahml.info/scheduling/reservation/234453"
   },
   {
    "date": "2026-11-21",
@@ -100,8 +100,8 @@
   {
    "date": "2026-11-28",
    "detail": "",
-   "title": "Family Time",
-   "url": "https://www.ahml.info/scheduling/reservation/224199"
+   "title": "Games & Gab",
+   "url": "https://www.ahml.info/scheduling/reservation/236748"
   },
   {
    "date": "2026-11-30",
@@ -130,6 +130,12 @@
   {
    "date": null,
    "detail": "",
+   "title": "Clases de Computación Básica",
+   "url": "https://www.ahml.info/scheduling/reservation/236331"
+  },
+  {
+   "date": null,
+   "detail": "",
    "title": "Hablemos Español (Let's Speak Spanish)",
    "url": "https://www.ahml.info/scheduling/reservation/234200"
   },
@@ -138,12 +144,6 @@
    "detail": "",
    "title": "Genealogy Gumshoes: Family History Discussion Group",
    "url": "https://www.ahml.info/scheduling/reservation/201133"
-  },
-  {
-   "date": null,
-   "detail": "",
-   "title": "Clases de Computación Básica",
-   "url": "https://www.ahml.info/scheduling/reservation/236331"
   },
   {
    "date": null,
@@ -220,14 +220,14 @@
   {
    "date": null,
    "detail": "",
-   "title": "Senior Center: Current Events",
-   "url": "https://www.ahml.info/scheduling/reservation/233856"
+   "title": "Play Time",
+   "url": "https://www.ahml.info/scheduling/reservation/224269"
   },
   {
    "date": null,
    "detail": "",
-   "title": "Play Time",
-   "url": "https://www.ahml.info/scheduling/reservation/224269"
+   "title": "Senior Center: Current Events",
+   "url": "https://www.ahml.info/scheduling/reservation/233856"
   },
   {
    "date": null,
@@ -286,14 +286,14 @@
   {
    "date": null,
    "detail": "",
-   "title": "Swedish Roots in Chicagoland",
-   "url": "https://www.ahml.info/scheduling/reservation/219657"
+   "title": "Culture & Conversation (intermediate +)",
+   "url": "https://www.ahml.info/scheduling/reservation/232404"
   },
   {
    "date": null,
    "detail": "",
-   "title": "Culture & Conversation (intermediate +)",
-   "url": "https://www.ahml.info/scheduling/reservation/232404"
+   "title": "Swedish Roots in Chicagoland",
+   "url": "https://www.ahml.info/scheduling/reservation/219657"
   },
   {
    "date": null,
@@ -322,14 +322,14 @@
   {
    "date": null,
    "detail": "",
-   "title": "How to Use Your iPad/iPhone",
-   "url": "https://www.ahml.info/scheduling/reservation/234438"
+   "title": "Senior Center: How to Use AI",
+   "url": "https://www.ahml.info/scheduling/reservation/225313"
   },
   {
    "date": null,
    "detail": "",
-   "title": "Senior Center: How to Use AI",
-   "url": "https://www.ahml.info/scheduling/reservation/225313"
+   "title": "How to Use Your iPad/iPhone",
+   "url": "https://www.ahml.info/scheduling/reservation/234438"
   },
   {
    "date": null,
@@ -346,14 +346,14 @@
   {
    "date": null,
    "detail": "",
-   "title": "Beginning ESL",
-   "url": "https://www.ahml.info/scheduling/reservation/221905"
+   "title": "Family Time",
+   "url": "https://www.ahml.info/scheduling/reservation/224196"
   },
   {
    "date": null,
    "detail": "",
-   "title": "Family Time",
-   "url": "https://www.ahml.info/scheduling/reservation/224196"
+   "title": "Beginning ESL",
+   "url": "https://www.ahml.info/scheduling/reservation/221905"
   },
   {
    "date": null,

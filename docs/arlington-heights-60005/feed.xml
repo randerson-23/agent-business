@@ -3,8 +3,8 @@
 <channel>
   <title>Within Ten — Upcoming events in Arlington Heights</title>
   <link>https://withintenmiles.com/</link>
-  <description>Upcoming events in Arlington Heights, soonest first - aggregated automatically from village, library, park district and school-district calendars. This build reached 2 of 5 configured sources. 1 source is shown from its last update, up to 8 hours ago.</description>
-  <lastBuildDate>Wed, 11 Nov 2026 14:07:47 +0000</lastBuildDate>
+  <description>Upcoming events in Arlington Heights, soonest first - aggregated automatically from village, library, park district and school-district calendars. This build reached 3 of 5 configured sources.</description>
+  <lastBuildDate>Wed, 11 Nov 2026 14:33:22 +0000</lastBuildDate>
   <item>
     <title>Arlington Heights: Baby Time</title>
     <link>https://withintenmiles.com/arlington-heights-60005/#ev-baby-time-2026-11-11</link>
@@ -30,12 +30,12 @@
     <source url="https://www.ahml.info/scheduling/reservation/224182">Arlington Heights Memorial Library — Events</source>
   </item>
   <item>
-    <title>Arlington Heights: eBooks, eAudiobooks, Movies and More</title>
-    <link>https://withintenmiles.com/arlington-heights-60005/#ev-ebooks-eaudiobooks-movies-and-more-2026-11-13</link>
-    <guid isPermaLink="true">https://withintenmiles.com/arlington-heights-60005/#ev-ebooks-eaudiobooks-movies-and-more-2026-11-13</guid>
-    <description>Official listing: https://www.ahml.info/scheduling/reservation/234443</description>
+    <title>Arlington Heights: Senior Center: Travelogue</title>
+    <link>https://withintenmiles.com/arlington-heights-60005/#ev-senior-center-travelogue-2026-11-13</link>
+    <guid isPermaLink="true">https://withintenmiles.com/arlington-heights-60005/#ev-senior-center-travelogue-2026-11-13</guid>
+    <description>Official listing: https://www.ahml.info/scheduling/reservation/233826</description>
     <pubDate>Fri, 13 Nov 2026 00:00:00 +0000</pubDate>
-    <source url="https://www.ahml.info/scheduling/reservation/234443">Arlington Heights Memorial Library — Events</source>
+    <source url="https://www.ahml.info/scheduling/reservation/233826">Arlington Heights Memorial Library — Events</source>
   </item>
   <item>
     <title>Arlington Heights: Teen Night - Bikini Bottom Bash</title>
@@ -94,12 +94,12 @@
     <source url="https://www.ahml.info/scheduling/reservation/224184">Arlington Heights Memorial Library — Events</source>
   </item>
   <item>
-    <title>Arlington Heights: Senior Center: Travelogue</title>
-    <link>https://withintenmiles.com/arlington-heights-60005/#ev-senior-center-travelogue-2026-11-20</link>
-    <guid isPermaLink="true">https://withintenmiles.com/arlington-heights-60005/#ev-senior-center-travelogue-2026-11-20</guid>
-    <description>Official listing: https://www.ahml.info/scheduling/reservation/233828</description>
+    <title>Arlington Heights: Backing Up Your Data with Google Drive and iCloud</title>
+    <link>https://withintenmiles.com/arlington-heights-60005/#ev-backing-up-your-data-with-google-drive-and-icloud-2026-11-20</link>
+    <guid isPermaLink="true">https://withintenmiles.com/arlington-heights-60005/#ev-backing-up-your-data-with-google-drive-and-icloud-2026-11-20</guid>
+    <description>Official listing: https://www.ahml.info/scheduling/reservation/234453</description>
     <pubDate>Fri, 20 Nov 2026 00:00:00 +0000</pubDate>
-    <source url="https://www.ahml.info/scheduling/reservation/233828">Arlington Heights Memorial Library — Events</source>
+    <source url="https://www.ahml.info/scheduling/reservation/234453">Arlington Heights Memorial Library — Events</source>
   </item>
   <item>
     <title>Arlington Heights: Beginning ESL</title>
@@ -158,12 +158,12 @@
     <source url="https://www.ahpd.org/event/holiday-tree-lighting-2026/">Arlington Heights Park District — Events</source>
   </item>
   <item>
-    <title>Arlington Heights: Family Time</title>
-    <link>https://withintenmiles.com/arlington-heights-60005/#ev-family-time-2026-11-28</link>
-    <guid isPermaLink="true">https://withintenmiles.com/arlington-heights-60005/#ev-family-time-2026-11-28</guid>
-    <description>Official listing: https://www.ahml.info/scheduling/reservation/224199</description>
+    <title>Arlington Heights: Games &amp; Gab</title>
+    <link>https://withintenmiles.com/arlington-heights-60005/#ev-games-gab-2026-11-28</link>
+    <guid isPermaLink="true">https://withintenmiles.com/arlington-heights-60005/#ev-games-gab-2026-11-28</guid>
+    <description>Official listing: https://www.ahml.info/scheduling/reservation/236748</description>
     <pubDate>Sat, 28 Nov 2026 00:00:00 +0000</pubDate>
-    <source url="https://www.ahml.info/scheduling/reservation/224199">Arlington Heights Memorial Library — Events</source>
+    <source url="https://www.ahml.info/scheduling/reservation/236748">Arlington Heights Memorial Library — Events</source>
   </item>
   <item>
     <title>Arlington Heights: Dino Party</title>
