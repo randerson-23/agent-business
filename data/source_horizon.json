@@ -30,8 +30,8 @@
   },
   {
    "count": 239,
-   "date": "2026-11-10",
-   "horizon_days": 20,
+   "date": "2026-11-11",
+   "horizon_days": 19,
    "route": "html_events",
    "type": "html_events"
   },
@@ -88,13 +88,6 @@
   },
   {
    "count": 9,
-   "date": "2026-11-09",
-   "horizon_days": 40,
-   "route": "month_ics",
-   "type": "tribe_events"
-  },
-  {
-   "count": 9,
    "date": "2026-11-10",
    "horizon_days": 39,
    "route": "month_ics",
@@ -118,6 +111,13 @@
    "count": 9,
    "date": "2026-11-10",
    "horizon_days": 39,
+   "route": "month_ics",
+   "type": "tribe_events"
+  },
+  {
+   "count": 9,
+   "date": "2026-11-11",
+   "horizon_days": 38,
    "route": "month_ics",
    "type": "tribe_events"
   },
@@ -174,7 +174,7 @@
   },
   {
    "count": 10,
-   "date": "2026-11-10",
+   "date": "2026-11-11",
    "horizon_days": null,
    "route": "html_events",
    "type": "html_events"
@@ -246,7 +246,7 @@
   },
   {
    "count": 10,
-   "date": "2026-11-10",
+   "date": "2026-11-11",
    "horizon_days": null,
    "route": "html_events",
    "type": "html_events"
@@ -318,7 +318,7 @@
   },
   {
    "count": 3,
-   "date": "2026-11-10",
+   "date": "2026-11-11",
    "horizon_days": null,
    "route": "html_events",
    "type": "html_events"
@@ -361,13 +361,6 @@
  ],
  "des-plaines-60016:Des Plaines Park District \u2014 Events": [
   {
-   "count": 20,
-   "date": "2026-11-09",
-   "horizon_days": null,
-   "route": "html_events",
-   "type": "html_events"
-  },
-  {
    "count": 21,
    "date": "2026-11-09",
    "horizon_days": null,
@@ -398,6 +391,13 @@
   {
    "count": 21,
    "date": "2026-11-10",
+   "horizon_days": null,
+   "route": "html_events",
+   "type": "html_events"
+  },
+  {
+   "count": 21,
+   "date": "2026-11-11",
    "horizon_days": null,
    "route": "html_events",
    "type": "html_events"
@@ -432,13 +432,6 @@
   }
  ],
  "des-plaines-60016:Des Plaines Public Library \u2014 Events": [
-  {
-   "count": 416,
-   "date": "2026-11-10",
-   "horizon_days": 417,
-   "route": "rss",
-   "type": "rss"
-  },
   {
    "count": 416,
    "date": "2026-11-10",
@@ -501,6 +494,13 @@
    "horizon_days": 416,
    "route": "rss",
    "type": "rss"
+  },
+  {
+   "count": 426,
+   "date": "2026-11-11",
+   "horizon_days": 416,
+   "route": "rss",
+   "type": "rss"
   }
  ],
  "des-plaines-60016:Des Plaines Theatre \u2014 Events": [
@@ -534,13 +534,6 @@
   },
   {
    "count": 61,
-   "date": "2026-11-10",
-   "horizon_days": 82,
-   "route": "month_ics",
-   "type": "tribe_events"
-  },
-  {
-   "count": 61,
    "date": "2026-11-11",
    "horizon_days": 81,
    "route": "month_ics",
@@ -569,6 +562,13 @@
   },
   {
    "count": 61,
+   "date": "2026-11-11",
+   "horizon_days": 81,
+   "route": "month_ics",
+   "type": "tribe_events"
+  },
+  {
+   "count": 62,
    "date": "2026-11-11",
    "horizon_days": 81,
    "route": "month_ics",
@@ -606,8 +606,8 @@
   },
   {
    "count": 500,
-   "date": "2026-11-10",
-   "horizon_days": 95,
+   "date": "2026-11-11",
+   "horizon_days": 96,
    "route": "rss",
    "type": "rss"
   },
@@ -673,13 +673,6 @@
   },
   {
    "count": 32,
-   "date": "2026-11-09",
-   "horizon_days": 82,
-   "route": "month_ics",
-   "type": "tribe_events"
-  },
-  {
-   "count": 32,
    "date": "2026-11-10",
    "horizon_days": 81,
    "route": "month_ics",
@@ -703,6 +696,13 @@
    "count": 32,
    "date": "2026-11-10",
    "horizon_days": 81,
+   "route": "month_ics",
+   "type": "tribe_events"
+  },
+  {
+   "count": 32,
+   "date": "2026-11-11",
+   "horizon_days": 80,
    "route": "month_ics",
    "type": "tribe_events"
   },
@@ -765,9 +765,9 @@
    "type": "rss"
   },
   {
-   "count": 243,
-   "date": "2026-11-10",
-   "horizon_days": 389,
+   "count": 233,
+   "date": "2026-11-11",
+   "horizon_days": 388,
    "route": "rss",
    "type": "rss"
   },
@@ -837,9 +837,9 @@
    "type": "ics"
   },
   {
-   "count": 57,
-   "date": "2026-11-10",
-   "horizon_days": 219,
+   "count": 56,
+   "date": "2026-11-11",
+   "horizon_days": 218,
    "route": "ics",
    "type": "ics"
   },
@@ -851,7 +851,7 @@
    "type": "ics"
   },
   {
-   "count": 56,
+   "count": 55,
    "date": "2026-11-11",
    "horizon_days": 218,
    "route": "ics",
@@ -910,7 +910,7 @@
   },
   {
    "count": 1,
-   "date": "2026-11-10",
+   "date": "2026-11-11",
    "horizon_days": null,
    "route": "html_events",
    "type": "html_events"
@@ -982,8 +982,8 @@
   },
   {
    "count": 35,
-   "date": "2026-11-10",
-   "horizon_days": -1,
+   "date": "2026-11-11",
+   "horizon_days": -2,
    "route": "revize_news_json",
    "type": "revize_news_json"
   },
@@ -1054,8 +1054,8 @@
   },
   {
    "count": 45,
-   "date": "2026-11-10",
-   "horizon_days": 211,
+   "date": "2026-11-11",
+   "horizon_days": 210,
    "route": "ics",
    "type": "ics"
   },
@@ -1126,8 +1126,8 @@
   },
   {
    "count": 10,
-   "date": "2026-11-10",
-   "horizon_days": 29,
+   "date": "2026-11-11",
+   "horizon_days": 28,
    "route": "localist",
    "type": "localist"
   },
@@ -1198,7 +1198,7 @@
   },
   {
    "count": 13,
-   "date": "2026-11-10",
+   "date": "2026-11-11",
    "horizon_days": null,
    "route": "html_events",
    "type": "html_events"
@@ -1321,13 +1321,6 @@
   },
   {
    "count": 1,
-   "date": "2026-11-09",
-   "horizon_days": 39,
-   "route": "month_ics",
-   "type": "tribe_events"
-  },
-  {
-   "count": 1,
    "date": "2026-11-10",
    "horizon_days": 38,
    "route": "month_ics",
@@ -1351,6 +1344,13 @@
    "count": 1,
    "date": "2026-11-10",
    "horizon_days": 38,
+   "route": "month_ics",
+   "type": "tribe_events"
+  },
+  {
+   "count": 1,
+   "date": "2026-11-11",
+   "horizon_days": 37,
    "route": "month_ics",
    "type": "tribe_events"
   },
@@ -1414,8 +1414,8 @@
   },
   {
    "count": 10,
-   "date": "2026-11-10",
-   "horizon_days": 315,
+   "date": "2026-11-11",
+   "horizon_days": 314,
    "route": "ics",
    "type": "ics"
   },
@@ -1486,8 +1486,8 @@
   },
   {
    "count": 24,
-   "date": "2026-11-10",
-   "horizon_days": 158,
+   "date": "2026-11-11",
+   "horizon_days": 157,
    "route": "ics",
    "type": "ics"
   },
@@ -1558,13 +1558,6 @@
   },
   {
    "count": 2,
-   "date": "2026-11-10",
-   "horizon_days": -6,
-   "route": "rss",
-   "type": "rss"
-  },
-  {
-   "count": 2,
    "date": "2026-11-11",
    "horizon_days": -7,
    "route": "rss",
@@ -1595,6 +1588,13 @@
    "count": 2,
    "date": "2026-11-11",
    "horizon_days": -7,
+   "route": "rss",
+   "type": "rss"
+  },
+  {
+   "count": 3,
+   "date": "2026-11-11",
+   "horizon_days": 0,
    "route": "rss",
    "type": "rss"
   }
@@ -1622,16 +1622,16 @@
    "type": "rss"
   },
   {
-   "count": 237,
+   "count": 234,
    "date": "2026-11-10",
    "horizon_days": 799,
    "route": "rss",
    "type": "rss"
   },
   {
-   "count": 234,
-   "date": "2026-11-10",
-   "horizon_days": 799,
+   "count": 223,
+   "date": "2026-11-11",
+   "horizon_days": 798,
    "route": "rss",
    "type": "rss"
   },
@@ -1701,9 +1701,9 @@
    "type": "ics"
   },
   {
-   "count": 143,
-   "date": "2026-11-10",
-   "horizon_days": 1154,
+   "count": 142,
+   "date": "2026-11-11",
+   "horizon_days": 1153,
    "route": "ics",
    "type": "ics"
   },
