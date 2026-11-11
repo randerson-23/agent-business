@@ -220,6 +220,7 @@ doesn't re-suggest something already shipped.
 
 **Build queue (by deadline; refreshed by the research loop, item 346).**
 Pick from the top unless the owner has flagged something else:
+0. **489** (town pages describe their own sources and email coverage; Elk Grove's signup box), **491** (Thanksgiving issue on Wed Nov 25; **before Nov 24**), then **490** (exhibits as one card with a date range); check why `OUTREACH_PROSPECTS.md` is still dated Oct 31.
 0. **486** (the on-sale subject counts from Thursday's delivery date, not the Wednesday build; **before Wed Nov 11, 22:37 UTC**), then **488** (per-reader email polish), then **487** (labelled $25/week launch rate within the plan's range).
 0. **483, 484, 485** (before **Thursday's send, Nov 12**: subject and a top card for the Metra on-sale; one-off events over weekly storytimes in Don't miss; the 7 AM teen-night time bug and school-admin entries), then **481** for Nov 19.
 0. **480** with **482** (Elk Grove Village as town six, site first: 48.5 events a week against Rolling Meadows' 14.5; its tree lighting Nov 27), then **481** (each reader's town first in the email; test-send before the Nov 19 issue).
@@ -20837,6 +20838,91 @@ Estates**, now with its audience (1,150+ parents, 55–70% opens) and
 entry price (from $75/month), which covers Arlington Heights and Elk
 Grove Village. The design/UX angle is **the Mount Prospect reader's
 per-town preview**.
+
+#### Research pass 2026-11-11 (hundred-and-thirty-seventh pass)
+
+Overnight the build loop shipped items 486 and 488. The combined preview's
+subject now reads ***"🚂 Holiday Train tickets go on sale Monday · 36 things
+this weekend"***, so tomorrow's issue leads with the Metra sale as intended.
+This pass reads the new **Elk Grove Village** page on a phone (it went live
+two days ago), and settles when the **Thanksgiving issue** should arrive.
+
+| Angle | What it is / what we found | Why it matters here |
+|---|---|---|
+| **The Elk Grove Village page at 390 px (design/UX)** (`docs/elk-grove-village-60007/index.html`) | The page works: tabs, a calendar-subscribe box, the **tree lighting (Fri Nov 27, 4 PM, with Santa photos)** under Annual Events, then library events. Four problems:<br>**(a)** The signup box says the email covers *"Arlington Heights, Des Plaines, Mount Prospect, Palatine, and Wheeling"*. **On Elk Grove's own page, Elk Grove isn't in the list.** That's true (`email: false`), but it tells an Elk Grove reader the email isn't for them.<br>**(b)** The intro says *"every listing links directly to the official village, library, **and park district** source"*. Elk Grove has **no park-district source** (bot-walled).<br>**(c)** The **Editor's Pick** is *"The Arlington Camera Club"*, a photography **exhibit** listed *"12:00am – 11:59pm"*.<br>**(d)** The same exhibit (and the *Picture Book Month Challenge*) appears as **seven daily rows**, each with its own pair of calendar links | A new town's page is its first impression in search, the only reason it was launched (item 480). It undersells the email to the very readers it's meant to win, and claims a source it doesn't have. A month-long exhibit with seven calendar rows reads as a bug. Exhibits and challenges are a library pattern in every town, so the fix applies everywhere (items 489, 490) |
+| **When the Thanksgiving issue should land** (Martech, *"Holiday email marketing insights: send emails early, avoid Thanksgiving Day"*; MediaPost, *"Don't send emails on Thanksgiving, says GoDaddy"* and *"Send campaigns on Wednesday, not Thursday or Friday"*; Constant Contact's opposite finding as reported; Inntopia's resort-sender analysis) | **The evidence is mixed and mostly retail.** GoDaddy found Thanksgiving Day had the **lowest opens of November**, and Martech's summary says **avoid Thanksgiving Day**. Constant Contact reported Thanksgiving Day opens **higher than Black Friday**. Inntopia found the **day before** weakest for resort senders. Yesmail found the day before **strongest** for retailers. Nothing measures a local weekend guide | The schedule delivers this site's issue on **Thursday Nov 26 at 07:00, Thanksgiving morning**. The issue's job is planning a four-day weekend (tree lightings, Small Business Saturday, Santa), and **Wednesday morning** is when families plan it. It's also when the evidence is least against it. A one-off delivery change, recorded and reversible, costs nothing (item 491) |
+
+#### P1 (new)
+
+489. **Make each town page describe its own sources and email coverage
+     truthfully.** Build loop, `region.html.j2` and the signup partial:
+
+     - **(a)** Build the intro's source sentence from the region's
+       **configured, enabled sources** (*"from the Elk Grove Village
+       Public Library and the Village's own big events"*), never a
+       fixed *"village, library and park district"*.
+     - **(b)** On a region with `email: false`, the signup box says:
+       ***"Elk Grove Village is new here. Sign up and you'll get the
+       weekend email for the five nearby towns now, with Elk Grove's own
+       section as soon as it joins."*** It tags the signup with the town
+       (item 252), so item 481's per-reader email can give them Elk
+       Grove first when it goes live.
+     - **(c)** Every other region's signup lists the towns from config,
+       not a fixed string.
+
+     Tests: Elk Grove's intro doesn't say *park district*, its signup
+     carries the new wording and the town tag, and a five-source town's
+     intro is unchanged.
+
+#### P2 (new)
+
+490. **Exhibits and month-long challenges become one card with a date
+     range.** Build loop:
+
+     - An event whose sessions run on **4 or more consecutive days at the
+       same venue**, or whose time reads all day (*12:00am – 11:59pm*,
+       an *all_day* flag), collapses to one card: ***"The Arlington
+       Camera Club · photography exhibit · through Sat Nov 28"***.
+     - It gets **one** all-day multi-day calendar link (item 463's
+       all-day form spanning the dates), not one per day.
+     - It is **never an Editor's Pick or a "Don't miss" pick** (item
+       484's ranking treats it like a recurring programme).
+
+     Tests: the seven-day exhibit becomes one card with one calendar
+     link, it's skipped for picks, and a two-day festival stays two
+     sessions.
+
+491. **Deliver the Thanksgiving issue Wednesday Nov 25, 07:00 CT.** Build
+     loop:
+
+     - Add a one-off `delivery_overrides:` entry in
+       `config/newsletter.yaml` (`2026-11-26 → 2026-11-25 07:00`) that
+       the send job and `email_delivery_time` (item 486) read. Item
+       393's fixed subject and lead block follow the override, and the
+       weekend window becomes **Thu Nov 26 – Sun Nov 29**.
+     - Record the reason in the config comment: *"Thanksgiving: plan the
+       long weekend the day before; evidence mixed (GoDaddy, Martech vs
+       Constant Contact)."* The entry expires after it's used.
+     - Measure it once the list allows (item 252's numbers). No owner
+       step.
+
+     Tests: the override moves the delivery, item 393's lead block
+     renders for a Nov 25 build, and the Thanksgiving weekend window
+     includes Thursday.
+
+Re-rank: **489 goes to the top of the build queue**. Elk Grove's page is
+in the sitemap now, and its signup box turns away the readers it was
+launched for. **491** must ship **before Nov 24** (the Wednesday send's
+build). **490** follows. Also noted for the build loop:
+`OUTREACH_PROSPECTS.md` still reads *"Generated 2026-10-31"*, though the
+prospects job runs every Monday. Check whether the Nov 2 and Nov 9 runs
+wrote nothing new or failed, and whether Elk Grove Village is in its
+region list.
+
+Competitors reviewed this pass: **holiday send-timing studies** (GoDaddy,
+Martech, MediaPost, Constant Contact, Inntopia, Yesmail; all retail or
+travel, mixed) as evidence for the Thanksgiving delivery. The design/UX
+angle is **the new Elk Grove Village page**.
 
 
 ## Working agreements for autonomous iteration
