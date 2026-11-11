@@ -7509,3 +7509,34 @@ def test_on_sale_subject_counts_from_thursday_delivery_not_the_wednesday_build()
     # A Thursday build after the send counts from now, not next week's Thursday.
     thu = datetime(2026, 11, 12, 20, 0, tzinfo=timezone.utc)
     assert build_digest.email_delivery_time(thu) == datetime(2026, 11, 12, 14, 0)
+
+
+def test_per_reader_email_names_the_town_caps_six_and_one_liners_rank_family_first():
+    # ROADMAP.md item 488.
+    def ev(title, iso, tags=("kid_friendly", "free")):
+        return {"title": title, "url": "https://x/" + title.replace(" ", "-"), "date": "Sat", "date_iso": iso, "tags": list(tags), "detail": "d", "attendable": True}
+    mp = [ev(f"MP Event {i}", f"2026-11-14T{10 + i}:00:00") for i in range(8)]
+    wh = [ev("Senior Center: Travelogue", "2026-11-13T09:00:00", ("seniors",)), ev("Family Craft Day", "2026-11-14T10:00:00"), ev("Kids Movie", "2026-11-15T13:00:00")]
+    sections = [{"region_name": "Mount Prospect", "region_url": "https://x/mount-prospect-60056/", "weekend_events": mp},
+                {"region_name": "Wheeling", "region_url": "https://x/wheeling-60090/", "weekend_events": wh}]
+    now = datetime(2026, 11, 12, 13, tzinfo=timezone.utc)
+    html = build_digest.render_combined_email_digest(sections, "Nov 13–15", now, reader_town="mount-prospect-60056")
+    assert "This weekend in Mount Prospect &amp; nearby" in html
+    assert "MP Event 5" in html and "MP Event 6" not in html
+    line = re.search(r"Wheeling: [^<]*", html).group(0)
+    assert not line.startswith("Wheeling: Senior Center") and "Family Craft Day" in line
+    assert "This weekend, across the northwest suburbs" in build_digest.render_combined_email_digest(sections, "Nov 13–15", now)
+
+
+def test_school_staff_and_appreciation_days_leave_the_lists_but_staff_days_reach_days_off():
+    # ROADMAP.md item 488 (d).
+    block = {"section": "School District 25", "events": [
+        {"title": "School Board Member Day", "date_iso": "2026-11-16T00:00:00"},
+        {"title": "Teacher Appreciation Day", "date_iso": "2026-11-17T00:00:00"},
+        {"title": "Institute Day", "date_iso": "2026-11-18T00:00:00", "source": "District 25"},
+        {"title": "Science Fair", "date_iso": "2026-11-19T18:00:00"},
+    ]}
+    out = build_digest.drop_school_admin([block])[0]
+    assert [e["title"] for e in out["events"]] == ["Science Fair"]
+    rows = build_digest.build_days_off([out], date(2026, 11, 12))
+    assert rows and "Institute Day" in str(rows)
