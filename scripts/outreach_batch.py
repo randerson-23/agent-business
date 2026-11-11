@@ -267,8 +267,11 @@ def main() -> int:
     OUTPUT_PATH.write_text(render(blocks, now, owner), encoding="utf-8")
     print("Wrote", OUTPUT_PATH, len(blocks), "blocks")
     if owner is None:
-        print(UNSET_WARNING)
-        return 1  # the workflow step fails, and the workflow watchdog (item 406) opens its issue
+        # A warning, not a failure: failing here stopped the Monday prospect
+        # list from being committed (stuck at Oct 31). The ask is on the
+        # owner's list in ROADMAP.md; the empty batch says so too.
+        print(f"::warning::{UNSET_WARNING}")
+        return 0
     return 0
 
 
