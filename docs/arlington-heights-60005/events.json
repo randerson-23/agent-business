@@ -2,7 +2,7 @@
   "@context": "https://schema.org",
   "@type": "ItemList",
   "name": "Upcoming events in Arlington Heights — Within Ten",
-  "dateModified": "2026-11-11T06:15:58+00:00",
+  "dateModified": "2026-11-11T14:07:47+00:00",
   "numberOfItems": 16,
   "itemListElement": [
     {
@@ -100,9 +100,9 @@
       "position": 4,
       "item": {
         "@type": "Event",
-        "name": "ESL Social Hour",
+        "name": "eBooks, eAudiobooks, Movies and More",
         "startDate": "2026-11-13",
-        "url": "https://withintenmiles.com/arlington-heights-60005/#ev-esl-social-hour-2026-11-13",
+        "url": "https://withintenmiles.com/arlington-heights-60005/#ev-ebooks-eaudiobooks-movies-and-more-2026-11-13",
         "eventStatus": "https://schema.org/EventScheduled",
         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
         "location": {
@@ -116,7 +116,7 @@
             "streetAddress": "500 N. Dunton Ave."
           }
         },
-        "sameAs": "https://www.ahml.info/scheduling/reservation/198388",
+        "sameAs": "https://www.ahml.info/scheduling/reservation/234443",
         "organizer": {
           "@type": "Organization",
           "name": "Arlington Heights Memorial Library",
@@ -160,9 +160,9 @@
       "position": 6,
       "item": {
         "@type": "Event",
-        "name": "Games & Gab",
+        "name": "Family Time",
         "startDate": "2026-11-14",
-        "url": "https://withintenmiles.com/arlington-heights-60005/#ev-games-gab-2026-11-14",
+        "url": "https://withintenmiles.com/e/2026-11-14-family-time/",
         "eventStatus": "https://schema.org/EventScheduled",
         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
         "location": {
@@ -176,13 +176,13 @@
             "streetAddress": "500 N. Dunton Ave."
           }
         },
-        "sameAs": "https://www.ahml.info/scheduling/reservation/221910",
+        "sameAs": "https://www.ahml.info/scheduling/reservation/224197",
         "organizer": {
           "@type": "Organization",
           "name": "Arlington Heights Memorial Library",
           "url": "https://www.ahml.info"
         },
-        "image": "https://withintenmiles.com/og/arlington-heights-60005.png"
+        "image": "https://withintenmiles.com/og/e/2026-11-14-family-time.png"
       }
     },
     {
@@ -340,9 +340,9 @@
       "position": 12,
       "item": {
         "@type": "Event",
-        "name": "First-Time Parents' Meetup",
+        "name": "Senior Center: Travelogue",
         "startDate": "2026-11-20",
-        "url": "https://withintenmiles.com/arlington-heights-60005/#ev-first-time-parents-meetup-2026-11-20",
+        "url": "https://withintenmiles.com/arlington-heights-60005/#ev-senior-center-travelogue-2026-11-20",
         "eventStatus": "https://schema.org/EventScheduled",
         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
         "location": {
@@ -356,7 +356,7 @@
             "streetAddress": "500 N. Dunton Ave."
           }
         },
-        "sameAs": "https://www.ahml.info/scheduling/reservation/230133",
+        "sameAs": "https://www.ahml.info/scheduling/reservation/233828",
         "organizer": {
           "@type": "Organization",
           "name": "Arlington Heights Memorial Library",
@@ -370,9 +370,9 @@
       "position": 13,
       "item": {
         "@type": "Event",
-        "name": "Family Time",
+        "name": "Beginning ESL",
         "startDate": "2026-11-21",
-        "url": "https://withintenmiles.com/arlington-heights-60005/#ev-family-time-2026-11-21",
+        "url": "https://withintenmiles.com/arlington-heights-60005/#ev-beginning-esl-2026-11-21",
         "eventStatus": "https://schema.org/EventScheduled",
         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
         "location": {
@@ -386,7 +386,7 @@
             "streetAddress": "500 N. Dunton Ave."
           }
         },
-        "sameAs": "https://www.ahml.info/scheduling/reservation/224198",
+        "sameAs": "https://www.ahml.info/scheduling/reservation/236749",
         "organizer": {
           "@type": "Organization",
           "name": "Arlington Heights Memorial Library",
@@ -400,9 +400,9 @@
       "position": 14,
       "item": {
         "@type": "Event",
-        "name": "Сторітайм українською | Ukrainian Language Storytime",
+        "name": "Makerplace Custom Cricut Tote Bag",
         "startDate": "2026-11-22",
-        "url": "https://withintenmiles.com/arlington-heights-60005/#ev-ukrainian-language-storytime-2026-11-22",
+        "url": "https://withintenmiles.com/arlington-heights-60005/#ev-makerplace-custom-cricut-tote-bag-2026-11-22",
         "eventStatus": "https://schema.org/EventScheduled",
         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
         "location": {
@@ -416,7 +416,7 @@
             "streetAddress": "500 N. Dunton Ave."
           }
         },
-        "sameAs": "https://www.ahml.info/scheduling/reservation/226527",
+        "sameAs": "https://www.ahml.info/scheduling/reservation/233406",
         "organizer": {
           "@type": "Organization",
           "name": "Arlington Heights Memorial Library",

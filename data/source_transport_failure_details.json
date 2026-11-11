@@ -1,6 +1,8 @@
 {
   "arlington-heights-60005:Arlington Heights Park District \u2014 Events": {
-    "route": "month_ics"
+    "exception_class": "HTTPError",
+    "route": "list_ics",
+    "status_code": 403
   },
   "arlington-heights-60005:Arlington Heights School District 25 \u2014 Calendar": {
     "exception_class": "HTTPError",
