@@ -2,8 +2,8 @@
   "@context": "https://schema.org",
   "@type": "ItemList",
   "name": "Upcoming events in Mount Prospect — Within Ten",
-  "dateModified": "2026-11-11T06:01:54+00:00",
-  "numberOfItems": 65,
+  "dateModified": "2026-11-11T06:15:58+00:00",
+  "numberOfItems": 64,
   "itemListElement": [
     {
       "@type": "ListItem",
@@ -497,29 +497,6 @@
       "position": 17,
       "item": {
         "@type": "Event",
-        "name": "School Board Member Day",
-        "startDate": "2026-11-13",
-        "url": "https://withintenmiles.com/mount-prospect-60056/#ev-school-board-member-day-2026-11-13",
-        "eventStatus": "https://schema.org/EventScheduled",
-        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "location": {
-          "@type": "Place",
-          "name": "Mount Prospect, IL",
-          "address": {
-            "@type": "PostalAddress",
-            "addressCountry": "US",
-            "addressLocality": "Mount Prospect",
-            "addressRegion": "IL"
-          }
-        },
-        "image": "https://withintenmiles.com/og/mount-prospect-60056.png"
-      }
-    },
-    {
-      "@type": "ListItem",
-      "position": 18,
-      "item": {
-        "@type": "Event",
         "name": "Storytime Playdate: Tiny Town",
         "startDate": "2026-11-13T10:00:00-06:00",
         "url": "https://withintenmiles.com/e/2026-11-13-storytime-playdate-tiny-town/",
@@ -548,7 +525,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 19,
+      "position": 18,
       "item": {
         "@type": "Event",
         "name": "Teen Book Café",
@@ -579,7 +556,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 20,
+      "position": 19,
       "item": {
         "@type": "Event",
         "name": "Build and Watch: Tarzan",
@@ -610,7 +587,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 21,
+      "position": 20,
       "item": {
         "@type": "Event",
         "name": "Friends Holiday Book Sale",
@@ -641,7 +618,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 22,
+      "position": 21,
       "item": {
         "@type": "Event",
         "name": "\"Artsgiving\" Crafty Cornucopia",
@@ -671,7 +648,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 23,
+      "position": 22,
       "item": {
         "@type": "Event",
         "name": "Storytime Playdate: Tiny Town",
@@ -702,7 +679,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 24,
+      "position": 23,
       "item": {
         "@type": "Event",
         "name": "Family Storytime",
@@ -733,7 +710,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 25,
+      "position": 24,
       "item": {
         "@type": "Event",
         "name": "Drop-In Tech Help",
@@ -764,7 +741,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 26,
+      "position": 25,
       "item": {
         "@type": "Event",
         "name": "Toddler Storytime",
@@ -795,7 +772,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 27,
+      "position": 26,
       "item": {
         "@type": "Event",
         "name": "Animal Investigators Junior: Puffins",
@@ -826,7 +803,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 28,
+      "position": 27,
       "item": {
         "@type": "Event",
         "name": "Elected Officials Office Hours",
@@ -857,7 +834,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 29,
+      "position": 28,
       "item": {
         "@type": "Event",
         "name": "MPPL Writers Group",
@@ -888,7 +865,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 30,
+      "position": 29,
       "item": {
         "@type": "Event",
         "name": "Baby Storytime",
@@ -919,7 +896,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 31,
+      "position": 30,
       "item": {
         "@type": "Event",
         "name": "Family Storytime",
@@ -950,7 +927,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 32,
+      "position": 31,
       "item": {
         "@type": "Event",
         "name": "Play and Learn",
@@ -981,7 +958,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 33,
+      "position": 32,
       "item": {
         "@type": "Event",
         "name": "Big Kids Storytime",
@@ -1012,7 +989,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 34,
+      "position": 33,
       "item": {
         "@type": "Event",
         "name": "Elected Officials Office Hours",
@@ -1043,7 +1020,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 35,
+      "position": 34,
       "item": {
         "@type": "Event",
         "name": "Chicago: Aviation's Incubator",
@@ -1074,7 +1051,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 36,
+      "position": 35,
       "item": {
         "@type": "Event",
         "name": "Teen Craft: Ping Pong Ball Snowmen",
@@ -1105,7 +1082,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 37,
+      "position": 36,
       "item": {
         "@type": "Event",
         "name": "True Crime Book Discussion",
@@ -1136,7 +1113,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 38,
+      "position": 37,
       "item": {
         "@type": "Event",
         "name": "Toddler Storytime",
@@ -1167,7 +1144,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 39,
+      "position": 38,
       "item": {
         "@type": "Event",
         "name": "$1 Bingo Bonanza",
@@ -1197,7 +1174,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 40,
+      "position": 39,
       "item": {
         "@type": "Event",
         "name": "Drop-In Gift Wrap Supplies and Holiday Decor Swap",
@@ -1228,7 +1205,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 41,
+      "position": 40,
       "item": {
         "@type": "Event",
         "name": "Fall Bingo",
@@ -1259,7 +1236,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 42,
+      "position": 41,
       "item": {
         "@type": "Event",
         "name": "Minecraft Engineers",
@@ -1290,7 +1267,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 43,
+      "position": 42,
       "item": {
         "@type": "Event",
         "name": "Family Reading Night",
@@ -1322,7 +1299,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 44,
+      "position": 43,
       "item": {
         "@type": "Event",
         "name": "Baby Storytime",
@@ -1353,7 +1330,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 45,
+      "position": 44,
       "item": {
         "@type": "Event",
         "name": "Family Storytime",
@@ -1384,7 +1361,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 46,
+      "position": 45,
       "item": {
         "@type": "Event",
         "name": "Social Security Planning",
@@ -1415,7 +1392,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 47,
+      "position": 46,
       "item": {
         "@type": "Event",
         "name": "Education Foundation Meeting",
@@ -1438,7 +1415,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 48,
+      "position": 47,
       "item": {
         "@type": "Event",
         "name": "Tech Playground",
@@ -1469,7 +1446,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 49,
+      "position": 48,
       "item": {
         "@type": "Event",
         "name": "Career Coaching Appointment",
@@ -1500,7 +1477,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 50,
+      "position": 49,
       "item": {
         "@type": "Event",
         "name": "Epic Worlds and Celestial Prophecies With Rebecca Roanhorse",
@@ -1531,7 +1508,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 51,
+      "position": 50,
       "item": {
         "@type": "Event",
         "name": "Substitute Educator Day",
@@ -1554,7 +1531,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 52,
+      "position": 51,
       "item": {
         "@type": "Event",
         "name": "Storytime Playdate: Hello Helpers",
@@ -1585,7 +1562,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 53,
+      "position": 52,
       "item": {
         "@type": "Event",
         "name": "Family Photos",
@@ -1616,7 +1593,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 54,
+      "position": 53,
       "item": {
         "@type": "Event",
         "name": "Pokémon Club",
@@ -1647,7 +1624,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 55,
+      "position": 54,
       "item": {
         "@type": "Event",
         "name": "Teen Volunteering",
@@ -1678,7 +1655,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 56,
+      "position": 55,
       "item": {
         "@type": "Event",
         "name": "CheckMates Meetup",
@@ -1709,7 +1686,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 57,
+      "position": 56,
       "item": {
         "@type": "Event",
         "name": "Full Year Fitness Membership Sale",
@@ -1739,7 +1716,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 58,
+      "position": 57,
       "item": {
         "@type": "Event",
         "name": "Fall Break - No School",
@@ -1762,7 +1739,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 59,
+      "position": 58,
       "item": {
         "@type": "Event",
         "name": "Family Fun: Morris, the Magic Man",
@@ -1793,7 +1770,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 60,
+      "position": 59,
       "item": {
         "@type": "Event",
         "name": "Thanksgiving Showdown Indoor Soccer Tournament - Grades 3 & 4",
@@ -1823,7 +1800,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 61,
+      "position": 60,
       "item": {
         "@type": "Event",
         "name": "Creation Station: Celebrate Autumn",
@@ -1854,7 +1831,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 62,
+      "position": 61,
       "item": {
         "@type": "Event",
         "name": "Creation Station: Celebrate Autumn",
@@ -1885,7 +1862,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 63,
+      "position": 62,
       "item": {
         "@type": "Event",
         "name": "Movies @ MPPL: Misconduct",
@@ -1916,7 +1893,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 64,
+      "position": 63,
       "item": {
         "@type": "Event",
         "name": "Play and Learn",
@@ -1947,7 +1924,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 65,
+      "position": 64,
       "item": {
         "@type": "Event",
         "name": "Thanksgiving Showdown Indoor Soccer Tournament - Grades 5 & 6",

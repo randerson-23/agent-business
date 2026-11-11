@@ -2,8 +2,8 @@
   "@context": "https://schema.org",
   "@type": "ItemList",
   "name": "Upcoming events across every region — Within Ten",
-  "dateModified": "2026-11-11T06:01:54+00:00",
-  "numberOfItems": 325,
+  "dateModified": "2026-11-11T06:15:58+00:00",
+  "numberOfItems": 323,
   "itemListElement": [
     {
       "@type": "ListItem",
@@ -2142,29 +2142,6 @@
       "position": 71,
       "item": {
         "@type": "Event",
-        "name": "School Board Member Day",
-        "startDate": "2026-11-13",
-        "url": "https://withintenmiles.com/mount-prospect-60056/#ev-school-board-member-day-2026-11-13",
-        "eventStatus": "https://schema.org/EventScheduled",
-        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "location": {
-          "@type": "Place",
-          "name": "Mount Prospect, IL",
-          "address": {
-            "@type": "PostalAddress",
-            "addressCountry": "US",
-            "addressLocality": "Mount Prospect",
-            "addressRegion": "IL"
-          }
-        },
-        "image": "https://withintenmiles.com/og/mount-prospect-60056.png"
-      }
-    },
-    {
-      "@type": "ListItem",
-      "position": 72,
-      "item": {
-        "@type": "Event",
         "name": "Baby Book Time",
         "startDate": "2026-11-13T10:00:00-06:00",
         "url": "https://withintenmiles.com/des-plaines-60016/#ev-baby-book-time-2026-11-13",
@@ -2194,7 +2171,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 73,
+      "position": 72,
       "item": {
         "@type": "Event",
         "name": "Ain't Wii Got Fun!",
@@ -2226,7 +2203,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 74,
+      "position": 73,
       "item": {
         "@type": "Event",
         "name": "Storytime Playdate: Tiny Town",
@@ -2257,7 +2234,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 75,
+      "position": 74,
       "item": {
         "@type": "Event",
         "name": "Toddler Storytime",
@@ -2288,7 +2265,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 76,
+      "position": 75,
       "item": {
         "@type": "Event",
         "name": "Preschool Storytime",
@@ -2319,7 +2296,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 77,
+      "position": 76,
       "item": {
         "@type": "Event",
         "name": "Quality Watercolor Techniques",
@@ -2350,7 +2327,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 78,
+      "position": 77,
       "item": {
         "@type": "Event",
         "name": "Fall for Fabric",
@@ -2382,7 +2359,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 79,
+      "position": 78,
       "item": {
         "@type": "Event",
         "name": "Movie Matinee: The Devil Wears Prada 2 (2026)",
@@ -2413,7 +2390,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 80,
+      "position": 79,
       "item": {
         "@type": "Event",
         "name": "Teen Book Café",
@@ -2444,7 +2421,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 81,
+      "position": 80,
       "item": {
         "@type": "Event",
         "name": "Build and Watch: Tarzan",
@@ -2475,7 +2452,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 82,
+      "position": 81,
       "item": {
         "@type": "Event",
         "name": "Chess Club (Advanced Players)",
@@ -2505,7 +2482,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 83,
+      "position": 82,
       "item": {
         "@type": "Event",
         "name": "Chess Club (Beginning Players)",
@@ -2535,7 +2512,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 84,
+      "position": 83,
       "item": {
         "@type": "Event",
         "name": "Family Craft Friday: Paint A Gzhel Plate | At The Branch",
@@ -2566,7 +2543,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 85,
+      "position": 84,
       "item": {
         "@type": "Event",
         "name": "Thanksgiving Coasters",
@@ -2597,7 +2574,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 86,
+      "position": 85,
       "item": {
         "@type": "Event",
         "name": "Cookbook & Recipe Swap",
@@ -2629,7 +2606,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 87,
+      "position": 86,
       "item": {
         "@type": "Event",
         "name": "\"Guys and Dolls SR\"",
@@ -2659,7 +2636,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 88,
+      "position": 87,
       "item": {
         "@type": "Event",
         "name": "A Doll's House by Henrik Ibsen Adapted by Amy Herzog",
@@ -2689,7 +2666,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 89,
+      "position": 88,
       "item": {
         "@type": "Event",
         "name": "GCS featuring ERIC GALES, DENNIS CHAMBERS and BILLY SHEEHAN",
@@ -2720,7 +2697,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 90,
+      "position": 89,
       "item": {
         "@type": "Event",
         "name": "BOURBON 'N BRASS: LIVE JAZZ WITH THE BOURBON 'N BRASS BRIAN PATTI PROHIBITION DANCE BAND",
@@ -2751,12 +2728,12 @@
     },
     {
       "@type": "ListItem",
-      "position": 91,
+      "position": 90,
       "item": {
         "@type": "Event",
-        "name": "Family Time",
+        "name": "Games & Gab",
         "startDate": "2026-11-14",
-        "url": "https://withintenmiles.com/e/2026-11-14-family-time/",
+        "url": "https://withintenmiles.com/arlington-heights-60005/#ev-games-gab-2026-11-14",
         "eventStatus": "https://schema.org/EventScheduled",
         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
         "location": {
@@ -2770,18 +2747,18 @@
             "streetAddress": "500 N. Dunton Ave."
           }
         },
-        "sameAs": "https://www.ahml.info/scheduling/reservation/224197",
+        "sameAs": "https://www.ahml.info/scheduling/reservation/221910",
         "organizer": {
           "@type": "Organization",
           "name": "Arlington Heights Memorial Library",
           "url": "https://www.ahml.info"
         },
-        "image": "https://withintenmiles.com/og/e/2026-11-14-family-time.png"
+        "image": "https://withintenmiles.com/og/arlington-heights-60005.png"
       }
     },
     {
       "@type": "ListItem",
-      "position": 92,
+      "position": 91,
       "item": {
         "@type": "Event",
         "name": "Service Hour Drop In",
@@ -2813,7 +2790,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 93,
+      "position": 92,
       "item": {
         "@type": "Event",
         "name": "The Arlington Camera Club",
@@ -2843,7 +2820,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 94,
+      "position": 93,
       "item": {
         "@type": "Event",
         "name": "Picture Book Month Challenge",
@@ -2873,7 +2850,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 95,
+      "position": 94,
       "item": {
         "@type": "Event",
         "name": "Word of the Week",
@@ -2903,7 +2880,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 96,
+      "position": 95,
       "item": {
         "@type": "Event",
         "name": "Friends Holiday Book Sale",
@@ -2934,7 +2911,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 97,
+      "position": 96,
       "item": {
         "@type": "Event",
         "name": "Palatine Winter Farmers' Market",
@@ -2964,7 +2941,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 98,
+      "position": 97,
       "item": {
         "@type": "Event",
         "name": "Sewing Machine Basics- Learn to Sew Lanyards!",
@@ -2996,7 +2973,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 99,
+      "position": 98,
       "item": {
         "@type": "Event",
         "name": "Fun Factory Saturday",
@@ -3026,7 +3003,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 100,
+      "position": 99,
       "item": {
         "@type": "Event",
         "name": "\"Artsgiving\" Crafty Cornucopia",
@@ -3056,7 +3033,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 101,
+      "position": 100,
       "item": {
         "@type": "Event",
         "name": "Storytime Playdate: Tiny Town",
@@ -3087,7 +3064,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 102,
+      "position": 101,
       "item": {
         "@type": "Event",
         "name": "Sound Bath Meditation",
@@ -3119,7 +3096,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 103,
+      "position": 102,
       "item": {
         "@type": "Event",
         "name": "Spanish Storytime - Tiempo De Cuento",
@@ -3149,7 +3126,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 104,
+      "position": 103,
       "item": {
         "@type": "Event",
         "name": "FILM SCREENING: \"BOB DOLE - A WALK THROUGH HISTORY\"",
@@ -3180,7 +3157,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 105,
+      "position": 104,
       "item": {
         "@type": "Event",
         "name": "D&D: Open Play",
@@ -3210,7 +3187,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 106,
+      "position": 105,
       "item": {
         "@type": "Event",
         "name": "\"Guys and Dolls SR\"",
@@ -3240,7 +3217,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 107,
+      "position": 106,
       "item": {
         "@type": "Event",
         "name": "A Doll's House by Henrik Ibsen Adapted by Amy Herzog",
@@ -3270,7 +3247,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 108,
+      "position": 107,
       "item": {
         "@type": "Event",
         "name": "JOHN WAITE with SPECIAL GUEST JOHN CAFFERTY & THE BEAVER BROWN BAND",
@@ -3301,7 +3278,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 109,
+      "position": 108,
       "item": {
         "@type": "Event",
         "name": "BOURBON 'N BRASS SPEAKEASY: LIVE BLUES with SONICSOUL BAND",
@@ -3332,7 +3309,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 110,
+      "position": 109,
       "item": {
         "@type": "Event",
         "name": "3D Printing Essentials: Replicate a Piece",
@@ -3362,7 +3339,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 111,
+      "position": 110,
       "item": {
         "@type": "Event",
         "name": "The Arlington Camera Club",
@@ -3392,7 +3369,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 112,
+      "position": 111,
       "item": {
         "@type": "Event",
         "name": "Picture Book Month Challenge",
@@ -3422,7 +3399,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 113,
+      "position": 112,
       "item": {
         "@type": "Event",
         "name": "Word of the Week",
@@ -3452,7 +3429,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 114,
+      "position": 113,
       "item": {
         "@type": "Event",
         "name": "Seguridad de Internet 101 (Spanish)",
@@ -3484,7 +3461,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 115,
+      "position": 114,
       "item": {
         "@type": "Event",
         "name": "A Doll's House by Henrik Ibsen Adapted by Amy Herzog",
@@ -3514,7 +3491,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 116,
+      "position": 115,
       "item": {
         "@type": "Event",
         "name": "\"Guys and Dolls SR\"",
@@ -3544,7 +3521,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 117,
+      "position": 116,
       "item": {
         "@type": "Event",
         "name": "Box Car Drive-In",
@@ -3574,7 +3551,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 118,
+      "position": 117,
       "item": {
         "@type": "Event",
         "name": "Kids' Time",
@@ -3604,7 +3581,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 119,
+      "position": 118,
       "item": {
         "@type": "Event",
         "name": "Teen Take & Make",
@@ -3636,7 +3613,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 120,
+      "position": 119,
       "item": {
         "@type": "Event",
         "name": "The Arlington Camera Club",
@@ -3666,7 +3643,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 121,
+      "position": 120,
       "item": {
         "@type": "Event",
         "name": "Word of the Week",
@@ -3696,7 +3673,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 122,
+      "position": 121,
       "item": {
         "@type": "Event",
         "name": "Baby Tales",
@@ -3726,7 +3703,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 123,
+      "position": 122,
       "item": {
         "@type": "Event",
         "name": "Family Storytime",
@@ -3757,7 +3734,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 124,
+      "position": 123,
       "item": {
         "@type": "Event",
         "name": "Baby Book Time",
@@ -3789,7 +3766,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 125,
+      "position": 124,
       "item": {
         "@type": "Event",
         "name": "I-Cash -Do You Have Unclaimed Property?",
@@ -3821,7 +3798,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 126,
+      "position": 125,
       "item": {
         "@type": "Event",
         "name": "Drop-In Tech Help",
@@ -3852,7 +3829,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 127,
+      "position": 126,
       "item": {
         "@type": "Event",
         "name": "Toddler Storytime",
@@ -3883,7 +3860,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 128,
+      "position": 127,
       "item": {
         "@type": "Event",
         "name": "Makerspace Teen Takeover!",
@@ -3913,7 +3890,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 129,
+      "position": 128,
       "item": {
         "@type": "Event",
         "name": "Canvas Kids: Golden Gratitude",
@@ -3943,7 +3920,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 130,
+      "position": 129,
       "item": {
         "@type": "Event",
         "name": "Animal Investigators Junior: Puffins",
@@ -3974,7 +3951,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 131,
+      "position": 130,
       "item": {
         "@type": "Event",
         "name": "Book a Teen Librarian",
@@ -4006,7 +3983,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 132,
+      "position": 131,
       "item": {
         "@type": "Event",
         "name": "Elected Officials Office Hours",
@@ -4037,7 +4014,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 133,
+      "position": 132,
       "item": {
         "@type": "Event",
         "name": "Adult Board Game Night",
@@ -4069,7 +4046,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 134,
+      "position": 133,
       "item": {
         "@type": "Event",
         "name": "Winter Holiday Craft",
@@ -4099,7 +4076,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 135,
+      "position": 134,
       "item": {
         "@type": "Event",
         "name": "Pop-Up Movie: Power Ballad (2026)",
@@ -4130,7 +4107,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 136,
+      "position": 135,
       "item": {
         "@type": "Event",
         "name": "Storytime Amigos",
@@ -4161,7 +4138,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 137,
+      "position": 136,
       "item": {
         "@type": "Event",
         "name": "Des Plaines Toastmasters",
@@ -4193,7 +4170,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 138,
+      "position": 137,
       "item": {
         "@type": "Event",
         "name": "LEGO League",
@@ -4225,7 +4202,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 139,
+      "position": 138,
       "item": {
         "@type": "Event",
         "name": "Village Board Regular Meeting",
@@ -4255,7 +4232,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 140,
+      "position": 139,
       "item": {
         "@type": "Event",
         "name": "MPPL Writers Group",
@@ -4286,7 +4263,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 141,
+      "position": 140,
       "item": {
         "@type": "Event",
         "name": "Holiday Print Cards",
@@ -4317,7 +4294,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 142,
+      "position": 141,
       "item": {
         "@type": "Event",
         "name": "Read to Learn (District 214)",
@@ -4347,7 +4324,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 143,
+      "position": 142,
       "item": {
         "@type": "Event",
         "name": "The Arlington Camera Club",
@@ -4377,7 +4354,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 144,
+      "position": 143,
       "item": {
         "@type": "Event",
         "name": "Picture Book Month Challenge",
@@ -4407,7 +4384,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 145,
+      "position": 144,
       "item": {
         "@type": "Event",
         "name": "Word of the Week",
@@ -4437,7 +4414,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 146,
+      "position": 145,
       "item": {
         "@type": "Event",
         "name": "Reading/Literacy Class",
@@ -4469,7 +4446,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 147,
+      "position": 146,
       "item": {
         "@type": "Event",
         "name": "ESL (English as a Second Language) Class - Oakton College",
@@ -4501,7 +4478,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 148,
+      "position": 147,
       "item": {
         "@type": "Event",
         "name": "Baby Storytime",
@@ -4532,7 +4509,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 149,
+      "position": 148,
       "item": {
         "@type": "Event",
         "name": "Toddler Time",
@@ -4564,7 +4541,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 150,
+      "position": 149,
       "item": {
         "@type": "Event",
         "name": "Mini Mad Science Storytime",
@@ -4594,7 +4571,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 151,
+      "position": 150,
       "item": {
         "@type": "Event",
         "name": "Family Storytime",
@@ -4625,7 +4602,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 152,
+      "position": 151,
       "item": {
         "@type": "Event",
         "name": "Supported Chair Yoga",
@@ -4655,7 +4632,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 153,
+      "position": 152,
       "item": {
         "@type": "Event",
         "name": "Tuesday Tech Help",
@@ -4685,7 +4662,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 154,
+      "position": 153,
       "item": {
         "@type": "Event",
         "name": "Play and Learn",
@@ -4716,7 +4693,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 155,
+      "position": 154,
       "item": {
         "@type": "Event",
         "name": "Big Kids Storytime",
@@ -4747,7 +4724,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 156,
+      "position": 155,
       "item": {
         "@type": "Event",
         "name": "Elected Officials Office Hours",
@@ -4778,7 +4755,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 157,
+      "position": 156,
       "item": {
         "@type": "Event",
         "name": "Chicago: Aviation's Incubator",
@@ -4809,7 +4786,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 158,
+      "position": 157,
       "item": {
         "@type": "Event",
         "name": "Paint and Steep Tea",
@@ -4840,7 +4817,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 159,
+      "position": 158,
       "item": {
         "@type": "Event",
         "name": "Pop in and Create",
@@ -4870,7 +4847,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 160,
+      "position": 159,
       "item": {
         "@type": "Event",
         "name": "Maker's Place",
@@ -4902,7 +4879,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 161,
+      "position": 160,
       "item": {
         "@type": "Event",
         "name": "Teen Craft: Ping Pong Ball Snowmen",
@@ -4933,7 +4910,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 162,
+      "position": 161,
       "item": {
         "@type": "Event",
         "name": "Chapter One Book Club | Grades K-1",
@@ -4964,7 +4941,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 163,
+      "position": 162,
       "item": {
         "@type": "Event",
         "name": "CSI Session 3",
@@ -4994,7 +4971,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 164,
+      "position": 163,
       "item": {
         "@type": "Event",
         "name": "Book a Teen Librarian",
@@ -5026,7 +5003,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 165,
+      "position": 164,
       "item": {
         "@type": "Event",
         "name": "Gaming Group",
@@ -5056,7 +5033,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 166,
+      "position": 165,
       "item": {
         "@type": "Event",
         "name": "Stitches on Miner",
@@ -5088,7 +5065,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 167,
+      "position": 166,
       "item": {
         "@type": "Event",
         "name": "Resume Review & Career Coaching Appointments",
@@ -5119,7 +5096,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 168,
+      "position": 167,
       "item": {
         "@type": "Event",
         "name": "River Pointe Condo Assoc.",
@@ -5151,7 +5128,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 169,
+      "position": 168,
       "item": {
         "@type": "Event",
         "name": "Internet Security 101",
@@ -5183,7 +5160,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 170,
+      "position": 169,
       "item": {
         "@type": "Event",
         "name": "FilmTalkTuesdays: At Eternity's Gate (2018)",
@@ -5215,7 +5192,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 171,
+      "position": 170,
       "item": {
         "@type": "Event",
         "name": "Dealing with Grief and Other Emotional Challenges",
@@ -5245,7 +5222,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 172,
+      "position": 171,
       "item": {
         "@type": "Event",
         "name": "True Crime Book Discussion",
@@ -5276,7 +5253,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 173,
+      "position": 172,
       "item": {
         "@type": "Event",
         "name": "Evening Book Discussion",
@@ -5306,7 +5283,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 174,
+      "position": 173,
       "item": {
         "@type": "Event",
         "name": "Star Party",
@@ -5337,7 +5314,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 175,
+      "position": 174,
       "item": {
         "@type": "Event",
         "name": "Small Business Coffee & Connect",
@@ -5367,7 +5344,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 176,
+      "position": 175,
       "item": {
         "@type": "Event",
         "name": "The Arlington Camera Club",
@@ -5397,7 +5374,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 177,
+      "position": 176,
       "item": {
         "@type": "Event",
         "name": "Picture Book Month Challenge",
@@ -5427,7 +5404,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 178,
+      "position": 177,
       "item": {
         "@type": "Event",
         "name": "Word of the Week",
@@ -5457,7 +5434,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 179,
+      "position": 178,
       "item": {
         "@type": "Event",
         "name": "Alphabet Soup",
@@ -5487,7 +5464,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 180,
+      "position": 179,
       "item": {
         "@type": "Event",
         "name": "Toddler Storytime",
@@ -5518,7 +5495,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 181,
+      "position": 180,
       "item": {
         "@type": "Event",
         "name": "Baby Book Time",
@@ -5550,7 +5527,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 182,
+      "position": 181,
       "item": {
         "@type": "Event",
         "name": "Prevention and Long-Term Success with Diabetes",
@@ -5582,7 +5559,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 183,
+      "position": 182,
       "item": {
         "@type": "Event",
         "name": "$1 Bingo Bonanza",
@@ -5612,7 +5589,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 184,
+      "position": 183,
       "item": {
         "@type": "Event",
         "name": "Make and Take Craft: Maple Leaf Door Hanger",
@@ -5642,7 +5619,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 185,
+      "position": 184,
       "item": {
         "@type": "Event",
         "name": "The Legacy of Marshall Fields",
@@ -5674,7 +5651,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 186,
+      "position": 185,
       "item": {
         "@type": "Event",
         "name": "Preschool Storytime",
@@ -5707,7 +5684,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 187,
+      "position": 186,
       "item": {
         "@type": "Event",
         "name": "Book Bites",
@@ -5737,7 +5714,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 188,
+      "position": 187,
       "item": {
         "@type": "Event",
         "name": "Workshop Wednesdays",
@@ -5767,7 +5744,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 189,
+      "position": 188,
       "item": {
         "@type": "Event",
         "name": "Teen Crafternoons",
@@ -5799,7 +5776,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 190,
+      "position": 189,
       "item": {
         "@type": "Event",
         "name": "Drop-In Gift Wrap Supplies and Holiday Decor Swap",
@@ -5830,7 +5807,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 191,
+      "position": 190,
       "item": {
         "@type": "Event",
         "name": "Makerspace Orientations: In-Person",
@@ -5862,7 +5839,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 192,
+      "position": 191,
       "item": {
         "@type": "Event",
         "name": "Fall Bingo",
@@ -5893,7 +5870,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 193,
+      "position": 192,
       "item": {
         "@type": "Event",
         "name": "Chess Club",
@@ -5924,7 +5901,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 194,
+      "position": 193,
       "item": {
         "@type": "Event",
         "name": "Art Class: Floral Arranging with Garvin Gardens",
@@ -5954,7 +5931,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 195,
+      "position": 194,
       "item": {
         "@type": "Event",
         "name": "Minecraft Engineers",
@@ -5985,7 +5962,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 196,
+      "position": 195,
       "item": {
         "@type": "Event",
         "name": "Stitch Together Meet-Up",
@@ -6016,7 +5993,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 197,
+      "position": 196,
       "item": {
         "@type": "Event",
         "name": "Giggle and Gobble",
@@ -6046,7 +6023,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 198,
+      "position": 197,
       "item": {
         "@type": "Event",
         "name": "Plan Commission Meeting",
@@ -6076,7 +6053,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 199,
+      "position": 198,
       "item": {
         "@type": "Event",
         "name": "Family Storytime",
@@ -6109,7 +6086,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 200,
+      "position": 199,
       "item": {
         "@type": "Event",
         "name": "Advanced Excel",
@@ -6140,7 +6117,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 201,
+      "position": 200,
       "item": {
         "@type": "Event",
         "name": "20s & 30s Book Club: Invisible Life of Addie Larue",
@@ -6172,7 +6149,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 202,
+      "position": 201,
       "item": {
         "@type": "Event",
         "name": "Toddler Time",
@@ -6202,7 +6179,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 203,
+      "position": 202,
       "item": {
         "@type": "Event",
         "name": "Family Reading Night Kits",
@@ -6234,7 +6211,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 204,
+      "position": 203,
       "item": {
         "@type": "Event",
         "name": "The Arlington Camera Club",
@@ -6264,7 +6241,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 205,
+      "position": 204,
       "item": {
         "@type": "Event",
         "name": "Picture Book Month Challenge",
@@ -6294,7 +6271,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 206,
+      "position": 205,
       "item": {
         "@type": "Event",
         "name": "Word of the Week",
@@ -6324,7 +6301,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 207,
+      "position": 206,
       "item": {
         "@type": "Event",
         "name": "Family Reading Night",
@@ -6356,7 +6333,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 208,
+      "position": 207,
       "item": {
         "@type": "Event",
         "name": "Reading/Literacy Class",
@@ -6388,7 +6365,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 209,
+      "position": 208,
       "item": {
         "@type": "Event",
         "name": "ESL (English as a Second Language) Class - Oakton College",
@@ -6420,7 +6397,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 210,
+      "position": 209,
       "item": {
         "@type": "Event",
         "name": "Baby Storytime",
@@ -6451,7 +6428,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 211,
+      "position": 210,
       "item": {
         "@type": "Event",
         "name": "Office Hours with Congressman Brad Schneider's Office",
@@ -6482,7 +6459,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 212,
+      "position": 211,
       "item": {
         "@type": "Event",
         "name": "Office Hours IL State Treasurer Michael Frerich's Office",
@@ -6513,7 +6490,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 213,
+      "position": 212,
       "item": {
         "@type": "Event",
         "name": "Toddler Time",
@@ -6545,7 +6522,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 214,
+      "position": 213,
       "item": {
         "@type": "Event",
         "name": "Bus Trip - SOLD OUT!",
@@ -6575,7 +6552,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 215,
+      "position": 214,
       "item": {
         "@type": "Event",
         "name": "Polish Storytime",
@@ -6605,7 +6582,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 216,
+      "position": 215,
       "item": {
         "@type": "Event",
         "name": "Tech Assistance",
@@ -6636,7 +6613,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 217,
+      "position": 216,
       "item": {
         "@type": "Event",
         "name": "Family Storytime",
@@ -6667,7 +6644,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 218,
+      "position": 217,
       "item": {
         "@type": "Event",
         "name": "Get Started with Cloud Storage",
@@ -6697,7 +6674,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 219,
+      "position": 218,
       "item": {
         "@type": "Event",
         "name": "Social Security Planning",
@@ -6728,7 +6705,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 220,
+      "position": 219,
       "item": {
         "@type": "Event",
         "name": "Memory Cafe",
@@ -6759,7 +6736,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 221,
+      "position": 220,
       "item": {
         "@type": "Event",
         "name": "Oakton College Information Table",
@@ -6791,7 +6768,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 222,
+      "position": 221,
       "item": {
         "@type": "Event",
         "name": "Liberation Bookmarks",
@@ -6823,7 +6800,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 223,
+      "position": 222,
       "item": {
         "@type": "Event",
         "name": "CSI Session 3",
@@ -6853,7 +6830,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 224,
+      "position": 223,
       "item": {
         "@type": "Event",
         "name": "Education Foundation Meeting",
@@ -6876,7 +6853,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 225,
+      "position": 224,
       "item": {
         "@type": "Event",
         "name": "Book a Teen Librarian",
@@ -6908,7 +6885,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 226,
+      "position": 225,
       "item": {
         "@type": "Event",
         "name": "Linocut Block Printing Workshop",
@@ -6940,7 +6917,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 227,
+      "position": 226,
       "item": {
         "@type": "Event",
         "name": "Tech Playground",
@@ -6971,7 +6948,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 228,
+      "position": 227,
       "item": {
         "@type": "Event",
         "name": "Career Coaching Appointment",
@@ -7002,7 +6979,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 229,
+      "position": 228,
       "item": {
         "@type": "Event",
         "name": "Epic Worlds and Celestial Prophecies With Rebecca Roanhorse",
@@ -7033,7 +7010,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 230,
+      "position": 229,
       "item": {
         "@type": "Event",
         "name": "Knitting for Beginners",
@@ -7064,7 +7041,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 231,
+      "position": 230,
       "item": {
         "@type": "Event",
         "name": "Family Reading Night: Read to the Dog",
@@ -7094,7 +7071,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 232,
+      "position": 231,
       "item": {
         "@type": "Event",
         "name": "Library Board of Trustees Open Meeting",
@@ -7126,7 +7103,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 233,
+      "position": 232,
       "item": {
         "@type": "Event",
         "name": "River's Edge Condo Assoc.",
@@ -7158,7 +7135,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 234,
+      "position": 233,
       "item": {
         "@type": "Event",
         "name": "Gorgeous Georgia",
@@ -7188,7 +7165,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 235,
+      "position": 234,
       "item": {
         "@type": "Event",
         "name": "ART GARFUNKEL - WHAT A WONDERFUL WORLD CONCERT",
@@ -7219,7 +7196,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 236,
+      "position": 235,
       "item": {
         "@type": "Event",
         "name": "BOURBON 'N BRASS: LIVE BLUES SHOW WITH MILES MINOR \"ROCKIN THE BLUES\"",
@@ -7250,7 +7227,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 237,
+      "position": 236,
       "item": {
         "@type": "Event",
         "name": "Thursday Evening Book Discussion: Five Decembers",
@@ -7282,7 +7259,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 238,
+      "position": 237,
       "item": {
         "@type": "Event",
         "name": "First-Time Parents' Meetup",
@@ -7312,7 +7289,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 239,
+      "position": 238,
       "item": {
         "@type": "Event",
         "name": "The Arlington Camera Club",
@@ -7342,7 +7319,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 240,
+      "position": 239,
       "item": {
         "@type": "Event",
         "name": "Picture Book Month Challenge",
@@ -7372,7 +7349,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 241,
+      "position": 240,
       "item": {
         "@type": "Event",
         "name": "Word of the Week",
@@ -7402,7 +7379,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 242,
+      "position": 241,
       "item": {
         "@type": "Event",
         "name": "Substitute Educator Day",
@@ -7425,7 +7402,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 243,
+      "position": 242,
       "item": {
         "@type": "Event",
         "name": "Youth Services Registration for December Programs",
@@ -7455,38 +7432,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 244,
-      "item": {
-        "@type": "Event",
-        "name": "Staff Institute Day",
-        "startDate": "2026-11-20T09:00:00-06:00",
-        "url": "https://withintenmiles.com/wheeling-60090/#ev-staff-institute-day-2026-11-20",
-        "eventStatus": "https://schema.org/EventScheduled",
-        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "location": {
-          "@type": "Place",
-          "name": "Indian Trails Public Library",
-          "address": {
-            "@type": "PostalAddress",
-            "addressCountry": "US",
-            "addressLocality": "Wheeling",
-            "addressRegion": "IL",
-            "streetAddress": "355 Schoenbeck Rd."
-          }
-        },
-        "sameAs": "https://indiantrails.libnet.info/event/11498854",
-        "organizer": {
-          "@type": "Organization",
-          "name": "Indian Trails Public Library",
-          "url": "https://indiantrails.libnet.info"
-        },
-        "image": "https://withintenmiles.com/og/wheeling-60090.png",
-        "description": "Friday, November 20 2026 9:00am - 9:00pm \n Staff Institute Day"
-      }
-    },
-    {
-      "@type": "ListItem",
-      "position": 245,
+      "position": 243,
       "item": {
         "@type": "Event",
         "name": "Baby Book Time",
@@ -7518,7 +7464,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 246,
+      "position": 244,
       "item": {
         "@type": "Event",
         "name": "Storytime Playdate: Hello Helpers",
@@ -7549,7 +7495,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 247,
+      "position": 245,
       "item": {
         "@type": "Event",
         "name": "Messy Play",
@@ -7579,7 +7525,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 248,
+      "position": 246,
       "item": {
         "@type": "Event",
         "name": "Family Photos",
@@ -7610,7 +7556,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 249,
+      "position": 247,
       "item": {
         "@type": "Event",
         "name": "Q & A One on One Appointment",
@@ -7642,7 +7588,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 250,
+      "position": 248,
       "item": {
         "@type": "Event",
         "name": "Pokémon Club",
@@ -7673,7 +7619,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 251,
+      "position": 249,
       "item": {
         "@type": "Event",
         "name": "Teen Volunteering",
@@ -7704,7 +7650,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 252,
+      "position": 250,
       "item": {
         "@type": "Event",
         "name": "Chess Club (Advanced Players)",
@@ -7734,7 +7680,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 253,
+      "position": 251,
       "item": {
         "@type": "Event",
         "name": "Chess Club (Beginning Players)",
@@ -7764,7 +7710,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 254,
+      "position": 252,
       "item": {
         "@type": "Event",
         "name": "A Doll's House by Henrik Ibsen Adapted by Amy Herzog",
@@ -7794,7 +7740,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 255,
+      "position": 253,
       "item": {
         "@type": "Event",
         "name": "THE PHIL COLLINS EXPERIENCE with SPECIAL GUEST THE SATURDAY JUNE BAND",
@@ -7825,7 +7771,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 256,
+      "position": 254,
       "item": {
         "@type": "Event",
         "name": "BOURBON 'N BRASS SPEAKEASY: LIVE JAZZ with THE BOOTLEGGERS featuring LAURA LOPARDO on VOCALS",
@@ -7856,7 +7802,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 257,
+      "position": 255,
       "item": {
         "@type": "Event",
         "name": "Family Time",
@@ -7886,7 +7832,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 258,
+      "position": 256,
       "item": {
         "@type": "Event",
         "name": "DIY with DPPL",
@@ -7918,7 +7864,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 259,
+      "position": 257,
       "item": {
         "@type": "Event",
         "name": "Play Packs",
@@ -7950,7 +7896,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 260,
+      "position": 258,
       "item": {
         "@type": "Event",
         "name": "The Arlington Camera Club",
@@ -7980,7 +7926,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 261,
+      "position": 259,
       "item": {
         "@type": "Event",
         "name": "Picture Book Month Challenge",
@@ -8010,7 +7956,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 262,
+      "position": 260,
       "item": {
         "@type": "Event",
         "name": "Word of the Week",
@@ -8040,7 +7986,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 263,
+      "position": 261,
       "item": {
         "@type": "Event",
         "name": "New & Used Clothing Sale",
@@ -8070,7 +8016,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 264,
+      "position": 262,
       "item": {
         "@type": "Event",
         "name": "Palatine Winter Farmers' Market",
@@ -8100,7 +8046,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 265,
+      "position": 263,
       "item": {
         "@type": "Event",
         "name": "Fun Factory Saturday",
@@ -8130,7 +8076,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 266,
+      "position": 264,
       "item": {
         "@type": "Event",
         "name": "Cafecito Y Libritos",
@@ -8162,7 +8108,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 267,
+      "position": 265,
       "item": {
         "@type": "Event",
         "name": "Super Saturday: Chicago Cossacks - Ukrainian Music and Dance",
@@ -8193,7 +8139,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 268,
+      "position": 266,
       "item": {
         "@type": "Event",
         "name": "Cat Toy Workshop",
@@ -8225,7 +8171,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 269,
+      "position": 267,
       "item": {
         "@type": "Event",
         "name": "Animal Zines",
@@ -8255,7 +8201,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 270,
+      "position": 268,
       "item": {
         "@type": "Event",
         "name": "CheckMates Meetup",
@@ -8286,7 +8232,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 271,
+      "position": 269,
       "item": {
         "@type": "Event",
         "name": "A Doll's House by Henrik Ibsen Adapted by Amy Herzog",
@@ -8316,7 +8262,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 272,
+      "position": 270,
       "item": {
         "@type": "Event",
         "name": "Holiday Tree Lighting Ceremony",
@@ -8346,7 +8292,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 273,
+      "position": 271,
       "item": {
         "@type": "Event",
         "name": "Helping Hands Pantry Food Drive at Holiday Tree Lighting",
@@ -8376,7 +8322,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 274,
+      "position": 272,
       "item": {
         "@type": "Event",
         "name": "SNAP SHOT CLASSIC ROCK EXPERIENCE with SPECIAL GUEST CLASS OF 68",
@@ -8407,7 +8353,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 275,
+      "position": 273,
       "item": {
         "@type": "Event",
         "name": "BOURBON 'N BRASS SPEAKEASY: LIVE BLUES with the DOWNTOWN CHARLIE BROWN BAND",
@@ -8438,7 +8384,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 276,
+      "position": 274,
       "item": {
         "@type": "Event",
         "name": "Сторітайм українською | Ukrainian Language Storytime",
@@ -8468,7 +8414,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 277,
+      "position": 275,
       "item": {
         "@type": "Event",
         "name": "The Arlington Camera Club",
@@ -8498,7 +8444,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 278,
+      "position": 276,
       "item": {
         "@type": "Event",
         "name": "Picture Book Month Challenge",
@@ -8528,7 +8474,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 279,
+      "position": 277,
       "item": {
         "@type": "Event",
         "name": "Word of the Week",
@@ -8558,7 +8504,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 280,
+      "position": 278,
       "item": {
         "@type": "Event",
         "name": "Crochet Corner",
@@ -8588,7 +8534,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 281,
+      "position": 279,
       "item": {
         "@type": "Event",
         "name": "A Doll's House by Henrik Ibsen Adapted by Amy Herzog",
@@ -8618,7 +8564,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 282,
+      "position": 280,
       "item": {
         "@type": "Event",
         "name": "Lights Around Wheeling",
@@ -8648,7 +8594,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 283,
+      "position": 281,
       "item": {
         "@type": "Event",
         "name": "POOH: 60th ANNIVERSARY TOUR - FINALE",
@@ -8679,7 +8625,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 284,
+      "position": 282,
       "item": {
         "@type": "Event",
         "name": "Kids' Time",
@@ -8709,7 +8655,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 285,
+      "position": 283,
       "item": {
         "@type": "Event",
         "name": "Teen Take & Make",
@@ -8741,7 +8687,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 286,
+      "position": 284,
       "item": {
         "@type": "Event",
         "name": "The Arlington Camera Club",
@@ -8771,7 +8717,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 287,
+      "position": 285,
       "item": {
         "@type": "Event",
         "name": "Word of the Week",
@@ -8801,7 +8747,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 288,
+      "position": 286,
       "item": {
         "@type": "Event",
         "name": "Full Year Fitness Membership Sale",
@@ -8831,7 +8777,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 289,
+      "position": 287,
       "item": {
         "@type": "Event",
         "name": "Fall Break - No School",
@@ -8854,7 +8800,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 290,
+      "position": 288,
       "item": {
         "@type": "Event",
         "name": "No School | Parent/Teacher Conference Day",
@@ -8878,7 +8824,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 291,
+      "position": 289,
       "item": {
         "@type": "Event",
         "name": "Family Fun: Morris, the Magic Man",
@@ -8909,7 +8855,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 292,
+      "position": 290,
       "item": {
         "@type": "Event",
         "name": "Miss Jamie's Fall Sing-along",
@@ -8939,7 +8885,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 293,
+      "position": 291,
       "item": {
         "@type": "Event",
         "name": "Thanksgiving Showdown Indoor Soccer Tournament - Grades 3 & 4",
@@ -8969,7 +8915,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 294,
+      "position": 292,
       "item": {
         "@type": "Event",
         "name": "Monday Matinee Movie",
@@ -8999,7 +8945,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 295,
+      "position": 293,
       "item": {
         "@type": "Event",
         "name": "Got Science? Space Exploration",
@@ -9030,7 +8976,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 296,
+      "position": 294,
       "item": {
         "@type": "Event",
         "name": "Book a Teen Librarian",
@@ -9062,7 +9008,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 297,
+      "position": 295,
       "item": {
         "@type": "Event",
         "name": "Creation Station: Celebrate Autumn",
@@ -9093,7 +9039,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 298,
+      "position": 296,
       "item": {
         "@type": "Event",
         "name": "Introduction to Tinkercad",
@@ -9125,7 +9071,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 299,
+      "position": 297,
       "item": {
         "@type": "Event",
         "name": "Des Plaines Shambhala Meditation Group",
@@ -9157,7 +9103,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 300,
+      "position": 298,
       "item": {
         "@type": "Event",
         "name": "Fall Craft",
@@ -9187,7 +9133,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 301,
+      "position": 299,
       "item": {
         "@type": "Event",
         "name": "Happy Spinsters",
@@ -9219,7 +9165,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 302,
+      "position": 300,
       "item": {
         "@type": "Event",
         "name": "$10 SILENT FILM SERIES - \"The Passion of Joan of Arc\" (1928), Presented by The Silent Film Society of Chicago",
@@ -9250,7 +9196,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 303,
+      "position": 301,
       "item": {
         "@type": "Event",
         "name": "Middle School Book Club | Grades 6-8",
@@ -9281,7 +9227,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 304,
+      "position": 302,
       "item": {
         "@type": "Event",
         "name": "Social Worker in the Library",
@@ -9311,7 +9257,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 305,
+      "position": 303,
       "item": {
         "@type": "Event",
         "name": "The Arlington Camera Club",
@@ -9341,7 +9287,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 306,
+      "position": 304,
       "item": {
         "@type": "Event",
         "name": "Word of the Week",
@@ -9371,7 +9317,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 307,
+      "position": 305,
       "item": {
         "@type": "Event",
         "name": "No School | Parent/Teacher Conference Day",
@@ -9395,7 +9341,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 308,
+      "position": 306,
       "item": {
         "@type": "Event",
         "name": "Reading/Literacy Class",
@@ -9427,7 +9373,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 309,
+      "position": 307,
       "item": {
         "@type": "Event",
         "name": "ESL (English as a Second Language) Class - Oakton College",
@@ -9459,7 +9405,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 310,
+      "position": 308,
       "item": {
         "@type": "Event",
         "name": "Creation Station: Celebrate Autumn",
@@ -9490,7 +9436,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 311,
+      "position": 309,
       "item": {
         "@type": "Event",
         "name": "School's Out Drop-in Craft",
@@ -9522,7 +9468,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 312,
+      "position": 310,
       "item": {
         "@type": "Event",
         "name": "Coffee, Cake & Coloring",
@@ -9552,7 +9498,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 313,
+      "position": 311,
       "item": {
         "@type": "Event",
         "name": "Movies @ MPPL: Misconduct",
@@ -9583,7 +9529,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 314,
+      "position": 312,
       "item": {
         "@type": "Event",
         "name": "Rise & Read Morning Book Discussion",
@@ -9614,7 +9560,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 315,
+      "position": 313,
       "item": {
         "@type": "Event",
         "name": "Tuesday Tech Help",
@@ -9644,7 +9590,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 316,
+      "position": 314,
       "item": {
         "@type": "Event",
         "name": "Play and Learn",
@@ -9675,7 +9621,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 317,
+      "position": 315,
       "item": {
         "@type": "Event",
         "name": "Thanksgiving Showdown Indoor Soccer Tournament - Grades 5 & 6",
@@ -9705,7 +9651,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 318,
+      "position": 316,
       "item": {
         "@type": "Event",
         "name": "Mark Hayward Yo-yo and Comedy Show",
@@ -9735,7 +9681,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 319,
+      "position": 317,
       "item": {
         "@type": "Event",
         "name": "Design a Stanley in the Canvas",
@@ -9767,7 +9713,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 320,
+      "position": 318,
       "item": {
         "@type": "Event",
         "name": "Book a Teen Librarian",
@@ -9799,7 +9745,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 321,
+      "position": 319,
       "item": {
         "@type": "Event",
         "name": "Tech in the Forum",
@@ -9831,7 +9777,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 322,
+      "position": 320,
       "item": {
         "@type": "Event",
         "name": "Spanish Conversation Practice | At the Branch",
@@ -9862,7 +9808,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 323,
+      "position": 321,
       "item": {
         "@type": "Event",
         "name": "Discovery Play with The Leaf Thief",
@@ -9893,7 +9839,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 324,
+      "position": 322,
       "item": {
         "@type": "Event",
         "name": "Career & Job Counseling @ the library",
@@ -9925,7 +9871,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 325,
+      "position": 323,
       "item": {
         "@type": "Event",
         "name": "Bridges of Meaning",

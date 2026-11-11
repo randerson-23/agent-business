@@ -515,6 +515,29 @@
   "url": "https://mppl.libnet.info/event/13845873",
   "venue": "Mount Prospect Public Library"
  },
+ "e/2026-11-14-fun-factory-saturday/": {
+  "date_iso": "2026-11-14T09:30:00",
+  "detail": "Saturday, November 14 2026 9:30am - 4:30pm \n Drop by the library to make a simple craft on your own or with the help of a parent/caregiver. The craft will be…",
+  "detail_long": "Drop by the library to make a simple craft on your own or with the help of a parent/caregiver. The craft will be available in Youth Services, while supplies last.",
+  "first_seen": "2026-11-11",
+  "ics_href": "data:text/calendar;charset=utf-8,BEGIN%3AVCALENDAR%0D%0AVERSION%3A2.0%0D%0APRODID%3A-//Within%20Ten//EN%0D%0ABEGIN%3AVEVENT%0D%0ADTSTART%3A20261114T093000%0D%0ADTEND%3A20261114T103000%0D%0ASUMMARY%3AFun%20Factory%20Saturday%0D%0ADESCRIPTION%3ASaturday%5C%2C%20November%2014%202026%209%3A30am%20-%204%3A30pm%20%5Cn%20Drop%20by%20the%20library%20to%20make%20a%20simple%20craft%20on%20your%20own%20or%20with%20the%20help%20of%20a%20parent/caregiver.%20The%20craft%20will%20be%E2%80%A6%0D%0AURL%3Ahttps%3A//egvpl.libnet.info/event/15584326%0D%0AEND%3AVEVENT%0D%0AEND%3AVCALENDAR%0D%0A",
+  "path": "e/2026-11-14-fun-factory-saturday/",
+  "postal_code": null,
+  "region_id": "elk-grove-village-60007",
+  "region_url": "https://withintenmiles.com/elk-grove-village-60007/",
+  "source": "Elk Grove Village Public Library - Events",
+  "sponsored_by": null,
+  "state": "IL",
+  "street_address": null,
+  "tags": [
+   "indoor",
+   "kid_friendly"
+  ],
+  "title": "Fun Factory Saturday",
+  "town": "Elk Grove Village",
+  "url": "https://egvpl.libnet.info/event/15584326",
+  "venue": "Elk Grove Village Public Library"
+ },
  "e/2026-11-27-holiday-tree-lighting-ceremony/": {
   "date_iso": "2026-11-27T16:00:00",
   "detail": "Storytime with the Village Board at 4 PM in Village Hall, the lighting of the Village Green at 5:30 PM, then fireworks and free photos with Santa. Free.",

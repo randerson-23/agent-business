@@ -3,8 +3,8 @@
 <channel>
   <title>Within Ten — Upcoming events in Wheeling</title>
   <link>https://withintenmiles.com/</link>
-  <description>Upcoming events in Wheeling, soonest first - aggregated automatically from village, library, park district and school-district calendars. This build reached 23 of 30 configured sources. 1 source is shown from its last update, up to 8 hours ago.</description>
-  <lastBuildDate>Wed, 11 Nov 2026 06:01:54 +0000</lastBuildDate>
+  <description>Upcoming events in Wheeling, soonest first - aggregated automatically from village, library, park district and school-district calendars. This build reached 24 of 30 configured sources.</description>
+  <lastBuildDate>Wed, 11 Nov 2026 06:15:58 +0000</lastBuildDate>
   <item>
     <title>Wheeling: Read to Learn</title>
     <link>https://withintenmiles.com/wheeling-60090/#ev-read-to-learn-2026-11-11</link>
@@ -302,15 +302,6 @@ Hoopla or another library app?… Official listing: https://indiantrails.libnet.
     <source url="https://indiantrails.libnet.info/event/17127802">Indian Trails Public Library — Events</source>
   </item>
   <item>
-    <title>Wheeling: Staff Institute Day</title>
-    <link>https://withintenmiles.com/wheeling-60090/#ev-staff-institute-day-2026-11-20</link>
-    <guid isPermaLink="true">https://withintenmiles.com/wheeling-60090/#ev-staff-institute-day-2026-11-20</guid>
-    <description>Friday, November 20 2026 9:00am - 9:00pm 
- Staff Institute Day Official listing: https://indiantrails.libnet.info/event/11498854</description>
-    <pubDate>Fri, 20 Nov 2026 09:00:00 +0000</pubDate>
-    <source url="https://indiantrails.libnet.info/event/11498854">Indian Trails Public Library — Events</source>
-  </item>
-  <item>
     <title>Wheeling: Super Saturday: Chicago Cossacks - Ukrainian Music and Dance</title>
     <link>https://withintenmiles.com/wheeling-60090/#ev-super-saturday-chicago-cossacks-ukrainian-music-and-dance-2026-11-21</link>
     <guid isPermaLink="true">https://withintenmiles.com/wheeling-60090/#ev-super-saturday-chicago-cossacks-ukrainian-music-and-dance-2026-11-21</guid>
@@ -454,6 +445,15 @@ Ages 14 and older.  A jaw-dropping exposé of how the… Official listing: https
  Reserved for Adult Indian Trails Library cardholders only. Join us for a monthly painting program with teaching… Official listing: https://indiantrails.libnet.info/event/17101420</description>
     <pubDate>Tue, 01 Dec 2026 14:00:00 +0000</pubDate>
     <source url="https://indiantrails.libnet.info/event/17101420">Indian Trails Public Library — Events</source>
+  </item>
+  <item>
+    <title>Wheeling: Alcohol Marker Basics for Coloring</title>
+    <link>https://withintenmiles.com/wheeling-60090/#ev-alcohol-marker-basics-for-coloring-2026-12-01</link>
+    <guid isPermaLink="true">https://withintenmiles.com/wheeling-60090/#ev-alcohol-marker-basics-for-coloring-2026-12-01</guid>
+    <description>Tuesday, December 01 2026 6:00pm - 7:30pm 
+ Learn about alcohol markers and how to use them in your own coloring. Bring your own markers or use ours. R Official listing: https://indiantrails.libnet.info/event/17045693</description>
+    <pubDate>Tue, 01 Dec 2026 18:00:00 +0000</pubDate>
+    <source url="https://indiantrails.libnet.info/event/17045693">Indian Trails Public Library — Events</source>
   </item>
 </channel>
 </rss>
