@@ -89,7 +89,7 @@ def test_a_failed_town_query_keeps_the_last_good_rows_with_a_dated_note(tmp_path
     good = {t: [{"name": f"{t} Gifts", "category": "gift", "website": None}] for t in op.TOWNS}
     sleeps = []
     towns, stale = op.gather_towns(now, fetch=lambda t: good[t], sleep=sleeps.append, directory=tmp_path)
-    assert stale == {} and towns == good and sleeps == [op.TOWN_SPACING] * 4  # spaced, nothing stale
+    assert stale == {} and towns == good and sleeps == [op.TOWN_SPACING] * (len(op.TOWNS) - 1)  # spaced, nothing stale
     later = datetime(2026, 11, 2, tzinfo=timezone.utc)
     towns2, stale2 = op.gather_towns(later, fetch=lambda t: None if t == "Des Plaines" else [{"name": "New", "category": "gift", "website": None}], sleep=lambda s: None, directory=tmp_path)
     assert towns2["Des Plaines"] == good["Des Plaines"] and stale2 == {"Des Plaines": "Oct 26"}
@@ -282,3 +282,14 @@ def test_outreach_is_can_spam_ready_footer_owner_name_do_not_contact_and_refusal
     assert cb.check(text, reg, date(2026, 11, 2)) and "Add your mailing address" in cb.check(text, reg, date(2026, 11, 2))[0]
     assert ob.load_owner() is None or isinstance(ob.load_owner(), dict)  # the shipped config is either unset or complete
     assert ob.load_do_not_contact() == set()  # nobody has opted out yet
+
+
+def test_check_main_warns_but_passes_while_owner_details_are_unset(tmp_path, monkeypatch, capsys):
+    # An empty batch waiting on owner_name/mailing_address must not fail the
+    # workflow, or the Monday prospect list never gets committed.
+    import check_outreach_batch as cb
+    import outreach_batch
+    (tmp_path / "OUTREACH_BATCH.md").write_text(f"# Outreach batch\n\n{outreach_batch.UNSET_WARNING}.\n", encoding="utf-8")
+    monkeypatch.setattr(cb, "ROOT", tmp_path)
+    assert cb.main() == 0
+    assert "::warning::" in capsys.readouterr().out

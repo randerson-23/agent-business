@@ -3522,7 +3522,32 @@ def all_tags_present(*blocks_and_evergreen: list[dict]) -> list[dict]:
     return [{"id": t, **tag_display(t)} for t in sorted(seen)]
 
 
-def build_answer_block(region: dict) -> str:
+def region_source_phrase(region_cfg: dict) -> str | None:
+    """ROADMAP.md item 489: what a town page is actually built from, named from
+    its configured, enabled sources. None when the village, library and park
+    district are all there (the long-standing wording is then true)."""
+    names = [str(src.get("name") or "") for src in region_cfg.get("sources") or [] if src.get("enabled", True)]
+    has = lambda pat: any(re.search(pat, n, re.IGNORECASE) for n in names)  # noqa: E731
+    village = has(r"\b(?:village|city|town) of\b|^village\b")
+    library = has(r"librar")
+    park = has(r"park district")
+    if village and library and park:
+        return None
+    region = region_cfg["region"]
+    parts = []
+    if library:
+        lib = next(n for n in names if re.search(r"librar", n, re.IGNORECASE))
+        parts.append("the " + re.split(r"\s+[-—–]\s+", lib)[0])
+    if park:
+        parts.append("the park district")
+    if village:
+        parts.append("the village")
+    elif region_cfg.get("annual_events") or region_cfg.get("tree_lighting"):
+        parts.append("the Village's own big events")
+    return _join_names(parts) if parts else None
+
+
+def build_answer_block(region: dict, region_cfg: dict | None = None) -> str:
     """A short, plain-language paragraph literally answering "what is
     this page" (ROADMAP.md Phase 11 #22 - GEO). AI answer engines cite
     pages that state their own purpose in ~40-60 words near the top,
@@ -3539,11 +3564,30 @@ def build_answer_block(region: dict) -> str:
     only what the tagline doesn't: that each listing links back to the
     official source itself.
     """
+    phrase = region_source_phrase(region_cfg) if region_cfg else None
+    if phrase:  # item 489: say what this town is really built from
+        return (
+            f"{region['name']} ({region['zip']}), {region['state']}: {region['tagline']} "
+            f"Every listing links directly to its official source, {phrase}, for full details."
+        )
     return (
         f"{region['name']} ({region['zip']}), {region['state']}: {region['tagline']} "
         f"Every listing links directly to the official village, library, "
         f"and park district source for full details."
     )
+
+
+def newsletter_for_region(newsletter: dict, region: dict, email_towns: list[str]) -> dict:
+    """ROADMAP.md item 489: the signup box names the towns the email really
+    covers, from config; a town not yet in the email says so plainly."""
+    towns = _join_names(email_towns)
+    if region.get("email") is False:
+        detail = (f"{region['name']} is new here. Sign up and you'll get the weekend email for the "
+                  f"{_COUNT_WORDS.get(len(email_towns), str(len(email_towns))).lower()} nearby towns now, "
+                  f"with {region['name']}'s own section as soon as it joins.")
+    else:
+        detail = f"One email, Thursday mornings, covering {towns}. No spam, unsubscribe anytime."
+    return dict(newsletter, detail=detail)
 
 
 def build_region_map_embed_url(region: dict, maps: dict) -> str | None:
@@ -8055,6 +8099,7 @@ def main() -> None:
     maps = load_maps_config(load_yaml(CONFIG_DIR / "maps.yaml"))
     regions = load_regions()
     now = datetime.now(timezone.utc)
+    email_town_names = [c["region"]["name"] for c in regions if c["region"].get("email") is not False]  # item 489
 
     OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
     prime_event_page_paths(now)
@@ -8224,10 +8269,10 @@ def main() -> None:
             guides_url=guides_url,
             directory_url=directory_url,
             things_to_do_url=things_to_do_url,
-            newsletter=newsletter,
+            newsletter=newsletter_for_region(newsletter, region, email_town_names),  # item 489
             analytics=analytics,
             editors_pick=editors_pick,
-            answer_block=build_answer_block(region),
+            answer_block=build_answer_block(region, region_cfg),
             map_link_url=build_region_map_link_url(region),
             map_embed_url=build_region_map_embed_url(region, maps),
             nearby_regions=build_nearby_regions(region, all_regions_meta),

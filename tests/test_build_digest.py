@@ -7540,3 +7540,18 @@ def test_school_staff_and_appreciation_days_leave_the_lists_but_staff_days_reach
     assert [e["title"] for e in out["events"]] == ["Science Fair"]
     rows = build_digest.build_days_off([out], date(2026, 11, 12))
     assert rows and "Institute Day" in str(rows)
+
+
+def test_town_intro_and_signup_describe_their_own_sources_and_coverage():
+    # ROADMAP.md item 489.
+    egv = build_digest.load_yaml(build_digest.CONFIG_DIR / "regions" / "elk-grove-village-60007.yaml")
+    text = build_digest.build_answer_block(egv["region"], egv)
+    assert "park district" not in text.lower()
+    assert "the Elk Grove Village Public Library and the Village's own big events" in text
+    mp = build_digest.load_yaml(build_digest.CONFIG_DIR / "regions" / "mount-prospect-60056.yaml")
+    assert build_digest.build_answer_block(mp["region"], mp) == build_digest.build_answer_block(mp["region"])
+    towns = ["Arlington Heights", "Des Plaines", "Mount Prospect", "Palatine", "Wheeling"]
+    nl = {"configured": True, "headline": "Get it in your inbox", "detail": "old", "buttondown_username": "x"}
+    new = build_digest.newsletter_for_region(nl, egv["region"], towns)
+    assert new["detail"].startswith("Elk Grove Village is new here.") and "five nearby towns" in new["detail"]
+    assert "Arlington Heights, Des Plaines, Mount Prospect, Palatine, and Wheeling" in build_digest.newsletter_for_region(nl, mp["region"], towns)["detail"]
