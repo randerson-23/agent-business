@@ -24,7 +24,8 @@ with ten others. The Annual Partner membership ($1,200/year) gets
 [Business Name] a permanent listing on the region's business directory, a
 spotlight inside a relevant seasonal guide, and a live link back to your
 site — set up once, working all year, instead of something we'd need to
-revisit every week. Not ready for a year? A single Weekly Spot is $50.
+revisit every week. Not ready for a year? A single Weekly Spot is $25 at
+our launch rate (ROADMAP.md item 487; $50 from 100 readers).
 
 Happy to send a sample issue first — and whichever you choose, I'll ask
 for one honest sentence on why we should recommend you (a detail that's
@@ -780,8 +781,8 @@ Two small ways to try it:
 - **$20 Event Promo:** one event of yours featured first on the [town]
   page and at the top of that weekend's email, labelled "Presented by
   [Business]". See https://withintenmiles.com/sponsor/.
-- **$50 Weekly Spot:** your business as the labelled recommendation for a
-  week.
+- **$25 Weekly Spot (launch rate):** your business as the labelled
+  recommendation for a week.
 
 It has to be a real, public event or offer with a date. If you'd like
 either, reply with the link and the one line you want under it.
@@ -796,7 +797,7 @@ Reply 'no thanks' and we won't email you again.
 Same note, for tutoring, swim, gym and coding franchises' local pages
 (public location pages and contact forms only). Replace the two options
 with: *"We list every district's days off with what's on that day, and one
-camp or class can be the featured option for that week ($50 Weekly Spot)."*
+camp or class can be the featured option for that week ($25 Weekly Spot at our launch rate)."*
 The slot is labelled as paid and sits below the free listings.
 
 ## 14a. Warm prospect — "Your [event] was on our [town] page" (ROADMAP.md item 387)

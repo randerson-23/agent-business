@@ -7637,3 +7637,21 @@ def test_tonight_block_only_when_the_issue_lands_before_its_weekend(monkeypatch)
     # ...even with a family event that Thursday evening.
     thu = [dict(sections[0], upcoming_events=[ev("Family Movie Night", "2026-11-19T18:00:00")])]
     assert build_digest.select_tonight(thu, datetime(2026, 11, 18, 22, 37, tzinfo=timezone.utc)) is None
+
+
+def test_launch_rate_below_100_readers_and_regular_price_above(tmp_path):
+    # ROADMAP.md item 487.
+    launch = build_digest.load_yaml(build_digest.CONFIG_DIR / "sponsors.yaml")["launch_rate"]
+    now = datetime(2026, 11, 20, tzinfo=timezone.utc)
+    low = build_digest.render_sponsor_page([], now, launch_rate=launch, list_size=1)
+    assert "$25/week or $75/month" in low and '<s class="regular-price">$50/week or $175/month</s>' in low
+    assert "$65 for 3 weeks" in low and "Launch rate: $25/week while we grow" in low
+    assert '<span class="tier-badge">Recommended</span>' not in low
+    high = build_digest.render_sponsor_page([], now, launch_rate=launch, list_size=150)
+    assert "$25/week" not in high and '<span class="tier-badge">Recommended</span>' in high
+    off = build_digest.render_sponsor_page([], now, launch_rate=None, list_size=1)
+    assert "$25/week" not in off
+    # The list size comes from Buttondown's count at the latest send when there is no snapshot.
+    hist = tmp_path / "h.json"
+    hist.write_text('[{"pre_send_subscriber_count": 1}, {"pre_send_subscriber_count": 3}]', encoding="utf-8")
+    assert build_digest.current_list_size(tmp_path / "missing.json", hist) == 3

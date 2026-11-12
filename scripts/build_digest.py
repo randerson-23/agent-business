@@ -3373,6 +3373,44 @@ def load_audience_line(path: Path = AUDIENCE_PATH) -> dict | None:
     }
 
 
+def current_list_size(audience_path: Path | None = None, history_path: Path | None = None) -> int | None:
+    """ROADMAP.md item 487: the subscriber count, from the audience snapshot
+    when there is one, else Buttondown's own count recorded with the latest
+    send. None when neither is known."""
+    try:
+        data = json.loads((audience_path or AUDIENCE_PATH).read_text(encoding="utf-8"))
+        if isinstance(data, dict) and isinstance(data.get("subscribers"), int):
+            return data["subscribers"]
+    except (OSError, ValueError):
+        pass
+    try:
+        history = json.loads((history_path or ROOT / "data" / "send_history.json").read_text(encoding="utf-8"))
+    except (OSError, ValueError):
+        return None
+    counts = [h.get("pre_send_subscriber_count") for h in history if isinstance(h, dict) and isinstance(h.get("pre_send_subscriber_count"), int)]
+    return counts[-1] if counts else None
+
+
+def apply_launch_rate(tiers: list[dict], launch: dict | None, list_size: int | None) -> dict | None:
+    """ROADMAP.md item 487: below `until_subscribers` (or with the size
+    unknown) the Weekly Spot and Starter show the launch price with the
+    regular one struck through, their buy links switch to the launch-price
+    links (none means email), and no tier carries the "Recommended" badge.
+    Returns the launch line to show, or None when it is off."""
+    if not launch or not launch.get("prices"):
+        return None
+    if list_size is not None and list_size >= int(launch.get("until_subscribers") or 100):
+        return None
+    links = launch.get("payment_links") or {}
+    for tier in tiers:
+        tier["recommended"] = False
+        price = launch["prices"].get(tier.get("payment_key") or "")
+        if price:
+            tier["regular_price"], tier["price"] = tier["price"], price
+            tier["buy_url"] = links.get(tier["payment_key"]) or None
+    return str(launch.get("line") or "")
+
+
 def render_sponsor_page(
     availability: list[dict],
     now: datetime,
@@ -3382,6 +3420,8 @@ def render_sponsor_page(
     payment_links: dict | None = None,
     audience: dict | None = None,
     founding_promos_used: int = 0,
+    launch_rate: dict | None = None,
+    list_size: int | None = None,
 ) -> str:
     env = get_template_env()
     template = env.get_template("sponsor.html.j2")
@@ -3396,7 +3436,9 @@ def render_sponsor_page(
         for t in SPONSOR_TIERS
         if holiday_tier_visible(t, today)
     ]
+    launch_line = apply_launch_rate(tiers, launch_rate, list_size)  # item 487
     return template.render(
+        launch_line=launch_line,
         sample_holiday=SAMPLE_HOLIDAY_LISTING,
         founding=(dict(offer, mailto_url=build_contact_mailto_url(contact_email, "Founding Event Promo", FOUNDING_PROMO_FIELDS)) if (offer := founding_offer(founding_promos_used, today)) else None),
         tiers=tiers,
@@ -3471,7 +3513,7 @@ def render_promo_receipt(receipt: dict) -> str:
     return get_template_env().get_template("sponsor_receipt.html.j2").render(r=receipt, hub_url=SITE_BASE_URL, canonical_url=SITE_BASE_URL + "sponsor/", og_image_url=SITE_BASE_URL + "og/default.png")
 
 
-def render_sponsor_preview(sections: list[dict], payment_links: dict | None, contact_email: str | None, today: date | None = None, founding_promos_used: int = 0) -> str:
+def render_sponsor_preview(sections: list[dict], payment_links: dict | None, contact_email: str | None, today: date | None = None, founding_promos_used: int = 0, launch_rate: dict | None = None, list_size: int | None = None) -> str:
     """ROADMAP.md items 313 and 419: the `/sponsor/preview/` page. The template
     fills in the business, town, event, venue and kind from the address in the
     visitor's browser (textContent only); the build supplies each town's colour,
@@ -3489,13 +3531,17 @@ def render_sponsor_preview(sections: list[dict], payment_links: dict | None, con
             "name": sec["region_name"], "color": EMAIL_TOWN_COLORS[i % len(EMAIL_TOWN_COLORS)][0],
             "events": [{"title": display_title(e["title"]), "when": event_date_label(e["date_iso"]) or "", "iso": e["date_iso"][:10]} for e in evs],
         })
-    links = payment_links or {}
+    links = dict(payment_links or {})
+    spot_price = "$50/week or $175/month"
+    spot_tier = [{"payment_key": "weekly_spot", "price": spot_price, "buy_url": links.get("weekly_spot")}]
+    if apply_launch_rate(spot_tier, launch_rate, list_size) is not None:  # item 487: the same price as /sponsor/
+        spot_price, links["weekly_spot"] = spot_tier[0]["price"], spot_tier[0]["buy_url"]
     offer = founding_offer(founding_promos_used, today)
     mailto = build_contact_mailto_url(contact_email, "Sponsor preview", SPONSOR_INQUIRY_FIELDS) if contact_email else SITE_BASE_URL + "sponsor/"
     return get_template_env().get_template("sponsor_preview.html.j2").render(
         data_json=json_for_script({"towns": towns, "founding": {"left": offer["left"], "total": offer["total"]} if offer else None}),
         canonical_url=SITE_BASE_URL + "sponsor/preview/", hub_url=SITE_BASE_URL,
-        featured_price="$20 one-time", spot_price="$50/week or $175/month",
+        featured_price="$20 one-time", spot_price=spot_price,
         event_buy_url=links.get("event_promo") or mailto, event_buy_label="Buy now" if links.get("event_promo") else "Email to claim this",
         spot_buy_url=links.get("weekly_spot") or mailto, spot_buy_label="Buy now" if links.get("weekly_spot") else "Email to claim this",
     )
@@ -9047,6 +9093,8 @@ def main() -> None:
         payment_links=sponsors_cfg.get("payment_links"),
         founding_promos_used=sponsors_cfg.get("founding_promos_used") or 0,
         audience=load_audience_line(),
+        launch_rate=sponsors_cfg.get("launch_rate"),
+        list_size=current_list_size(),
     )
     sponsor_dir = OUTPUT_DIR / "sponsor"
     sponsor_dir.mkdir(parents=True, exist_ok=True)
@@ -9065,7 +9113,7 @@ def main() -> None:
         (receipt_dir / "index.html").write_text(render_promo_receipt(receipt), encoding="utf-8")
     preview_dir = sponsor_dir / "preview"  # item 313: noindex, out of the sitemap, linked from nowhere
     preview_dir.mkdir(parents=True, exist_ok=True)
-    (preview_dir / "index.html").write_text(render_sponsor_preview(combined_email_sections, sponsors_cfg.get("payment_links"), contact_email, now.astimezone(LOCAL_TZ).date(), sponsors_cfg.get("founding_promos_used") or 0), encoding="utf-8")
+    (preview_dir / "index.html").write_text(render_sponsor_preview(combined_email_sections, sponsors_cfg.get("payment_links"), contact_email, now.astimezone(LOCAL_TZ).date(), sponsors_cfg.get("founding_promos_used") or 0, sponsors_cfg.get("launch_rate"), current_list_size()), encoding="utf-8")
     logger.info("Wrote %s", sponsor_dir / "index.html")
 
     about_html = render_about_page(now, analytics, contact_email=contact_email, source_completeness=source_completeness)
