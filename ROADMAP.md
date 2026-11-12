@@ -220,6 +220,7 @@ doesn't re-suggest something already shipped.
 
 **Build queue (by deadline; refreshed by the research loop, item 346).**
 Pick from the top unless the owner has flagged something else:
+0. **498** (tree lightings with Santa on `/santa/`: Palatine Sat Nov 21 is missing; **by Nov 15**), **499** (Holiday listing stays $20 while the list is under 100; **before Sun Nov 15**), then **500**.
 0. **495, 496** (Mount Prospect's tree lighting Wed Nov 25 5 PM and Christkindlmarket from the Village's pages; Wheeling's from its own feed, Sun Nov 22 4:30 PM; both pages still say TBA), with **497** ("Tonight" block for the Wednesday Thanksgiving issue; **before Nov 24**).
 0. **489** (town pages describe their own sources and email coverage; Elk Grove's signup box), **491** (Thanksgiving issue on Wed Nov 25; **before Nov 24**), then **490** (exhibits as one card with a date range); check why `OUTREACH_PROSPECTS.md` is still dated Oct 31.
 0. **486** (the on-sale subject counts from Thursday's delivery date, not the Wednesday build; **before Wed Nov 11, 22:37 UTC**), then **488** (per-reader email polish), then **487** (labelled $25/week launch rate within the plan's range).
@@ -21076,6 +21077,82 @@ Village of Wheeling's own holiday pages and calendars**, and the Daily
 Herald's 2025 tree-lighting roundup and mykidlist's listing, for
 comparison. The design/UX angle is **the Thanksgiving issue's missing
 Wednesday night**.
+
+#### Research pass 2026-11-12, evening (hundred-and-fortieth pass)
+
+Today the build loop shipped items 495–497. Mount Prospect's and
+Wheeling's tree lightings are filled, and the Thanksgiving issue gets a
+*Tonight* block. It also shipped item 487's **$25/week launch rate**. The
+Nov 12 issue went out with the Metra subject. `/santa/` now lists **seven
+events** across Arlington Heights, Des Plaines, Mount Prospect and Elk
+Grove Village, plus Skokie outside. **Palatine and Wheeling have none**,
+three days before item 428's Nov 15 target. This pass finds why Palatine
+is missing, and looks at the one price that changes on Sunday.
+
+| Angle | What it is / what we found | Why it matters here |
+|---|---|---|
+| **Palatine's Santa** (Palatine Park District's *"Village of Palatine's Annual Tree Lighting"* event page; the Village calendar and its News Flash; past Village flyers *"Join Mayor Schwantz, Santa and the Village of Palatine…"*) | **Sat Nov 21, Towne Square (150 W. Palatine Rd).** Activities start at **4 PM**, **Santa arrives at 5 PM** for the countdown with the Mayor, with **photos with Santa in the gazebo**, the Palatine Children's Chorus and hot chocolate. The Village's own calendar feed, already read, carries it as ***"Holiday Tree Lighting Ceremony"*** (4 PM), and a separate ***"Helping Hands Pantry Food Drive at Holiday Tree Lighting"*** (already on `/give/`). `santa_reason` doesn't select it: its title doesn't say Santa, and the description says *"Mayor Schwantz, Santa and the Village"*, which no phrase in `SANTA_DESCRIPTION` matches. Tree lightings aren't in `SANTA_BRANDS` | **Most of these towns' tree lightings bring Santa** (Elk Grove's lists *"free photos with Santa"*), and they're the biggest free Santa visits of the season. Palatine is missing from `/santa/` on a technicality, and Arlington Heights' and Mount Prospect's lightings may be too (item 498). Also seen: dead code after `return None` in `santa_reason` (a duplicated block) |
+| **Wheeling's Holiday Hoopla** (Daily Herald notices from past years; a community calendar listing with no year; a North Shore holiday listing naming *Holiday Hoopla, Dec 6, 2026*, Wheeling Park District) | Past years: **a Sunday in early December, 1–3 PM, free, at the Community Recreation Center (100 Community Blvd)**, with Santa. The 2026 date (Dec 6) appears only in a tourism listing. The park district's own page can't be read (bot wall) | **No new item.** It isn't confirmed from a first-party page, so under item 478's rule it waits. Recorded so the next pass searches the park district's page directly |
+| **The Holiday listing's price change on Sunday (design/UX, `/sponsor/`)** | `/sponsor/` shows **Holiday listing: $20 until Nov 15, then $50**, with an *"Early-bird price ends Sun Nov 15 (N days left)"* countdown (item 352). **None has sold.** Since item 487, the Weekly Spot shows a **launch rate of $25/week while the list is under 100**. On Monday the holiday listing would cost **twice** the weekly spot, for a smaller placement | A price that doubles mid-season for a list of one contradicts the launch rate shown beside it. The early-bird made sense as urgency for a list with readers. Today it's just a higher price on Monday, when Small Business Saturday (Nov 28) outreach still has two weeks to run (item 499) |
+
+#### P1 (new)
+
+498. **Tree lightings with Santa belong on `/santa/`.** Build loop,
+     `santa_reason`:
+
+     - Treat ***tree lighting*** (and item 496's brand matches such as
+       *Lights Around Wheeling*) like `SANTA_BRANDS`: the event is
+       selected when its description mentions **Santa anywhere**, shown
+       as ***"🎅 Santa at the tree lighting"***. This includes
+       `tree_lighting` config entries whose source says Santa.
+     - Add *"Santa and"*, *"with Santa"* and *"Santa's arrival"* forms
+       to `SANTA_DESCRIPTION`.
+     - Remove the unreachable duplicate block after `return None`.
+
+     First result: **Palatine, Sat Nov 21, Santa arrives 5 PM, photos in
+     the gazebo** (Village calendar feed). Re-check Arlington Heights'
+     and Mount Prospect's lightings for the same. Tests: Palatine's
+     description selects it, a tree lighting with no Santa mention
+     doesn't, and *Santa Fe* still doesn't.
+
+#### P2 (new)
+
+499. **Keep the Holiday listing at $20 while the list is under 100.** Build
+     loop, `config/sponsors.yaml`:
+
+     - Tie the Holiday listing's price to item 487's launch-rate switch.
+       Under 100 subscribers it stays **$20 through Dec 15**, labelled
+       ***"Launch price"***, and the early-bird countdown is removed. At
+       100 or more, the original *"$20 until Nov 15, then $50"* rule
+       applies in later seasons.
+     - The outreach template for Small Business Saturday (section 14
+       and the fair organisers) says *"$20 through Dec 15"*.
+
+     Within BUSINESS_PLAN.md's range, and the owner can switch it off
+     with the same one line as item 487. Tests: under 100 the price
+     reads $20 with no countdown after Nov 15, and at 100 or more the
+     old rule returns.
+
+#### P3 (new)
+
+500. **Sold-out events last on `/santa/`, and visibly so.** Build loop.
+     Events whose source says *sold out* (the *"Source says: sold out"*
+     flag already shown on Arlington Heights' *Holly Jolly Trolly*) sort
+     to the **end of their day**. Their card is muted with a ***"Sold
+     out"*** chip, and they keep no *Google Calendar* link (nothing to
+     attend). They're never a pick or in the email's Santa lines. Tests:
+     a sold-out event sorts last within its day and carries the chip but
+     no calendar link.
+
+Re-rank: **498 goes to the top of the build queue**. It's the last step
+to item 428's Nov 15 target for Palatine. **499** must ship **before Sun Nov
+15**, when the price would otherwise double. **500** follows.
+
+Competitors reviewed this pass: **the Village of Palatine's and the
+Palatine Park District's own tree-lighting pages**, and **past Wheeling
+Park District Holiday Hoopla notices** (a non-item until a 2026 page is
+readable). The design/UX angle is **the Holiday listing's Sunday price
+jump**, beside the launch rate.
 
 
 ## Working agreements for autonomous iteration
