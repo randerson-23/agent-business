@@ -3507,7 +3507,9 @@ def select_editors_pick(region_cfg: dict, blocks: list[dict], evergreen: list[di
         tag_bonus = -(("free" in tags) + ("kid_friendly" in tags))
         return (not has_date, date_key, tag_bonus)
 
-    heuristic_candidates = [c for c in candidates if not c.get("recurring")] or candidates
+    for b in blocks:  # item 490: an exhibit run is never the Editor's Pick
+        merge_repeated_sessions(b.get("events", []))
+    heuristic_candidates = [c for c in candidates if not c.get("recurring") and not c.get("run_through") and not c.get("merged_away")] or candidates
     return sorted(heuristic_candidates, key=sort_key)[0]
 
 
@@ -3912,6 +3914,40 @@ def _merge_consecutive_day_listings(events: list[dict]) -> None:
                 second["merged_away"] = True
 
 
+RUN_MIN_DAYS = 4  # ROADMAP.md item 490
+
+
+def _merge_as_run(group: list[dict]) -> bool:
+    """Item 490: the same title at the same venue on RUN_MIN_DAYS or more
+    consecutive days, or on consecutive days with no time at all (an all-day
+    listing), is one card "through Sat Nov 28" with one all-day calendar
+    entry spanning the dates. True when the group was merged this way."""
+    try:
+        days = sorted({date.fromisoformat(e["date_iso"][:10]) for e in group})
+    except ValueError:
+        return False
+    run = [days[0]]
+    for d in days[1:]:
+        if (d - run[-1]).days != 1:
+            break
+        run.append(d)
+    members = [e for e in group if date.fromisoformat(e["date_iso"][:10]) in run]
+    all_day = all(e["date_iso"][11:16] in ("", "00:00") for e in members)
+    if not (len(run) >= RUN_MIN_DAYS or (len(run) >= 2 and all_day)):
+        return False
+    primary = members[0]
+    last = run[-1]
+    span = dict(primary, date_iso=f"{run[0].isoformat()}T00:00:00", end_iso=f"{(last + timedelta(days=1)).isoformat()}T00:00:00")
+    primary["_own_cal"] = (primary.get("ics_href"), primary.get("google_calendar_url"))
+    primary["ics_href"] = build_ics_data_uri(span)
+    primary["google_calendar_url"] = build_google_calendar_url(span, event_location_text(primary))
+    primary["run_through"] = last.isoformat()
+    primary["run_label"] = f"through {last.strftime('%a %b %-d')}"
+    for e in members[1:]:
+        e["merged_away"] = True
+    return True
+
+
 def merge_repeated_sessions(events: list[dict]) -> None:
     """ROADMAP.md item 381: events with the same normalised title and venue
     inside one week render as ONE card listing every session. The first
@@ -3924,6 +3960,10 @@ def merge_repeated_sessions(events: list[dict]) -> None:
     for event in events:
         event.pop("merged_away", None)
         event.pop("sessions", None)
+        if "run_through" in event:  # item 490: restore the listing's own calendar links before re-merging
+            event.pop("run_through")
+            event.pop("run_label", None)
+            event["ics_href"], event["google_calendar_url"] = event.pop("_own_cal", (event.get("ics_href"), event.get("google_calendar_url")))
         if not event.get("date_iso") or event.get("attendable") is False or event.get("sponsored_by"):
             continue
         key = (" ".join(_title_words(event.get("title") or "", keep_order=True)), (event.get("venue") or event.get("source") or "").lower())
@@ -3936,6 +3976,8 @@ def merge_repeated_sessions(events: list[dict]) -> None:
             first_day = date.fromisoformat(group[0]["date_iso"][:10])
             members = [e for e in group if (date.fromisoformat(e["date_iso"][:10]) - first_day).days < SESSION_MERGE_DAYS]
         except ValueError:
+            continue
+        if _merge_as_run(group):  # item 490: an exhibit or month-long challenge
             continue
         if len(members) < 2:
             continue
@@ -6843,7 +6885,7 @@ def recurring_titles(upcoming: list[dict], days: int = 28) -> set[str]:
 
 def is_recurring_programme(event: dict, series: set[str] | None = None) -> bool:
     title = event.get("title") or ""
-    return bool(RECURRING_TITLE.search(title) or event.get("sessions") or event.get("recurrence_note")
+    return bool(RECURRING_TITLE.search(title) or event.get("sessions") or event.get("recurrence_note") or event.get("run_through")
                 or (series and " ".join(_title_words(title, keep_order=True)) in series))
 
 
@@ -6932,6 +6974,8 @@ def prepare_email_events(events: list[dict], limit: int | None = None) -> list[d
         clock = event_time_label(e.get("date_iso"))
         if when and clock:
             when = f"{when} · {clock}"
+        if e.get("run_label"):  # item 490
+            when = e["run_label"][0].upper() + e["run_label"][1:]
         if e.get("sessions"):
             parts = []
             for sess in e["sessions"][:3]:

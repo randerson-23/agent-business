@@ -20877,7 +20877,7 @@ two days ago), and settles when the **Thanksgiving issue** should arrive.
 
 #### P2 (new)
 
-490. **Exhibits and month-long challenges become one card with a date
+490. (✅ DONE 2026-11-12: `_merge_as_run` in merge_repeated_sessions: 4+ consecutive days at one venue, or 2+ consecutive all-day days, become one card "Through Sat Nov 28" with one all-day calendar entry spanning the dates; `run_through` counts as recurring for picks and is excluded from Editor's Pick. Live: The Arlington Camera Club, Picture Book Month Challenge, Word of the Week in Elk Grove) **Exhibits and month-long challenges become one card with a date
      range.** Build loop:
 
      - An event whose sessions run on **4 or more consecutive days at the

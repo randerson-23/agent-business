@@ -7567,3 +7567,35 @@ def test_thanksgiving_window_includes_thursday_and_the_issue_moves_to_wednesday(
     assert build_digest.email_delivery_time(tue_build, ov) == datetime(2026, 11, 25, 7, 0)
     assert build_digest.email_edition(tue_build) == "holiday"
     assert build_digest.load_delivery_overrides() == ov
+
+
+def test_exhibit_run_is_one_card_one_calendar_link_and_never_a_pick():
+    # ROADMAP.md item 490.
+    def ev(title, iso, venue="Arlington Heights Memorial Library"):
+        return {"title": title, "url": "https://x/" + title.replace(" ", "-") + iso[:10], "date_iso": iso, "venue": venue,
+                "tags": ["kid_friendly", "free"], "detail": "d", "attendable": True,
+                "ics_href": "own", "google_calendar_url": "own"}
+    exhibit = [ev("Camera Club Photography Exhibit", f"2026-11-{d}T10:00:00") for d in range(22, 29)]
+    fest = [ev("Winter Fest", "2026-11-14T10:00:00", "Village Green"), ev("Winter Fest", "2026-11-15T10:00:00", "Village Green")]
+    events = exhibit + fest
+    build_digest.merge_repeated_sessions(events)
+    shown = [e for e in events if not e.get("merged_away")]
+    card = next(e for e in shown if e["title"].startswith("Camera"))
+    assert sum(1 for e in shown if e["title"].startswith("Camera")) == 1
+    assert card["run_label"] == "through Sat Nov 28" and "sessions" not in card
+    assert "20261122" in card["google_calendar_url"] and "20261129" in card["google_calendar_url"]
+    assert build_digest.is_recurring_programme(card)
+    winter = next(e for e in shown if e["title"] == "Winter Fest")
+    assert len(winter["sessions"]) == 2 and "run_label" not in winter  # a two-day festival stays two sessions
+    # Re-merging (one event object rendered on several pages) is stable.
+    build_digest.merge_repeated_sessions(events)
+    assert card["run_label"] == "through Sat Nov 28"
+    pick = build_digest.select_editors_pick({"region": {"id": "x"}}, [{"events": events}], [])
+    assert not pick["title"].startswith("Camera")
+
+
+def test_all_day_listings_on_consecutive_days_become_one_run():
+    # ROADMAP.md item 490: a 12:00am-11:59pm challenge listed daily.
+    events = [{"title": "Reading Challenge", "url": f"https://x/{d}", "date_iso": f"2026-11-{d}T00:00:00", "venue": "Library", "attendable": True} for d in (13, 14)]
+    build_digest.merge_repeated_sessions(events)
+    assert events[0]["run_label"] == "through Sat Nov 14" and events[1]["merged_away"]
