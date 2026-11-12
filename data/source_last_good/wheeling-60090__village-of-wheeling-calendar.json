@@ -1,13 +1,6 @@
 {
- "fetched_at": "2026-11-11T22:02:55+00:00",
+ "fetched_at": "2026-11-12T06:02:10+00:00",
  "items": [
-  {
-   "date": "20261111T130000",
-   "detail": "https://www.wheelingil.gov/calendar.aspx?EID=2237",
-   "end_date": "20261111T235959",
-   "title": "11/11/26 Special Meeting-BOFPC",
-   "url": "https://www.wheelingil.gov/common/modules/iCalendar/iCalendar.aspx?feed=calendar&catID=14"
-  },
   {
    "date": "20261116T183000",
    "detail": "https://www.wheelingil.gov/calendar.aspx?EID=2160",
@@ -419,6 +412,13 @@
    "detail": "https://www.wheelingil.gov/calendar.aspx?EID=2062",
    "end_date": "20270902T235900",
    "title": "Peer Jury",
+   "url": "https://www.wheelingil.gov/common/modules/iCalendar/iCalendar.aspx?feed=calendar&catID=14"
+  },
+  {
+   "date": "20270906T183000",
+   "detail": "https://www.wheelingil.gov/calendar.aspx?EID=2015",
+   "end_date": "20270906T235900",
+   "title": "Village Board Regular Meeting",
    "url": "https://www.wheelingil.gov/common/modules/iCalendar/iCalendar.aspx?feed=calendar&catID=14"
   }
  ],
