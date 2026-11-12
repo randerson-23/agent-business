@@ -220,6 +220,7 @@ doesn't re-suggest something already shipped.
 
 **Build queue (by deadline; refreshed by the research loop, item 346).**
 Pick from the top unless the owner has flagged something else:
+0. **495, 496** (Mount Prospect's tree lighting Wed Nov 25 5 PM and Christkindlmarket from the Village's pages; Wheeling's from its own feed, Sun Nov 22 4:30 PM; both pages still say TBA), with **497** ("Tonight" block for the Wednesday Thanksgiving issue; **before Nov 24**).
 0. **489** (town pages describe their own sources and email coverage; Elk Grove's signup box), **491** (Thanksgiving issue on Wed Nov 25; **before Nov 24**), then **490** (exhibits as one card with a date range); check why `OUTREACH_PROSPECTS.md` is still dated Oct 31.
 0. **486** (the on-sale subject counts from Thursday's delivery date, not the Wednesday build; **before Wed Nov 11, 22:37 UTC**), then **488** (per-reader email polish), then **487** (labelled $25/week launch rate within the plan's range).
 0. **483, 484, 485** (before **Thursday's send, Nov 12**: subject and a top card for the Metra on-sale; one-off events over weekly storytimes in Don't miss; the 7 AM teen-night time bug and school-admin entries), then **481** for Nov 19.
@@ -21008,6 +21009,73 @@ Schaumburg's and yopki's indoor-play pages**, and **past MLK Day of
 Service listings** in these towns. The design/UX angle is **the guides
 list in winter**: a fall guide still linked, no winter guide, nothing for
 a thin week.
+
+#### Research pass 2026-11-12 (hundred-and-thirty-ninth pass)
+
+This morning's issue went out with the sale-first subject: ***"🚂 Holiday
+Train tickets go on sale Monday · 36 things this weekend"*** (the ninth
+send, built Nov 12 03:21 UTC, still one subscriber). Yesterday the build
+loop shipped item 490 (exhibits as one card with a date range). This pass
+fills the last two **"Tree lighting: date TBA"** lines on `/santa/` and
+`/holidays/`, and finds a timing gap between them and the Thanksgiving
+issue.
+
+| Angle | What it is / what we found | Why it matters here |
+|---|---|---|
+| **Mount Prospect's 2026 tree lighting** (mountprospect.org's *Winter events* page and its news post *"Village Tree Lighting Ceremony & Christkindlmarket"*; experiencemountprospect.org's calendar; mykidlist's listing; Daily Herald's 2025 roundup for comparison) | The Village's own page: **Wednesday, Nov 25, 5 p.m.**, in the **pocket park at Emerson Street and Busse Avenue** (Emerson closed from the garage to Busse). The **Christkindlmarket** is **4–7 p.m.** in the **Farley Community Room at Village Hall, 50 S. Emerson St.**, with the Prospect High School Madrigals and free hot chocolate and candy canes from the Lions Club. 2025's was Nov 26, so the date has moved; use 2026's | **The owner's own town still shows "date TBA"** on `/santa/`, `/holidays/` and its town page, nine days after Des Plaines and Palatine were filled. mountprospect.org blocks the runner's probes, so item 478's search fallback is the route (item 495) |
+| **Wheeling's tree lighting is already in the site's own data** (`docs/wheeling-60090/events.json`; wheelingil.gov's *Lights Around Wheeling* page) | The Village of Wheeling's **own calendar feed** (already read; 143 events, `ics`) carries ***"Lights Around Wheeling"*, Sun Nov 22, 2026, 4:30 PM**. The Village's page describes the lighting at **Friendship Park (Dundee Rd and Milwaukee Ave)**. Yet `config/regions/wheeling-60090.yaml` has `tree_lighting: date: null`, so every page still says *"date TBA"* | The fact was fetched and published as an event, but the holiday pages read only the config. Any town whose lighting arrives through its feed stays "TBA" until someone copies it by hand (item 496) |
+| **The Thanksgiving issue misses Wednesday night (design/UX)** (item 491's override; item 393's lead block) | The issue is now delivered **Wed Nov 25 at 07:00**, and its weekend window is **Thu Nov 26 – Sun Nov 29**. **Mount Prospect's tree lighting and Christkindlmarket are that same Wednesday evening**, inside no window. A reader of the Wednesday-morning email wouldn't be told about the biggest event in the owner's town that night | An earlier delivery opens a gap the old Thursday schedule never had: the delivery day itself. A short *"Tonight"* line is how every daily newsletter handles it (item 497) |
+
+#### P1 (new)
+
+495. **Fill Mount Prospect's tree lighting and Christkindlmarket from the
+     Village's own pages.** Build loop, under item 478's rule. In
+     `config/regions/mount-prospect-60056.yaml`:
+
+     - `tree_lighting: date 2026-11-25, time "5 PM"`, venue *"Pocket
+       park, Emerson St & Busse Ave"*.
+     - An `annual_events` entry, ***Christkindlmarket***, Nov 25, 4–7 PM,
+       Farley Community Room, Village Hall, 50 S. Emerson St.
+     - Both with `source_url: https://www.mountprospect.org/community/winter_events.php`
+       and `confirmed_via: search, 2026-11-12`, re-probed each build.
+     - Mention the Madrigals and the Lions Club hot chocolate only as the
+       page states them.
+
+     Tests: `/santa/` and `/holidays/` show the date instead of *TBA*,
+     and both entries carry their source.
+
+496. **Fill `tree_lighting` from the town's own feed when the config is
+     empty.** Build loop. When `tree_lighting.date` is null, use the
+     first feed event from that town's **village or park-district
+     source**, dated Nov 15 – Dec 15, whose title matches *tree lighting*
+     or the town's brand name (a `tree_lighting.match:` list, e.g.
+     *"Lights Around Wheeling"*). Take its date, time and link. The
+     config value always wins when set. First result: **Wheeling, Sun
+     Nov 22, 4:30 PM** (Lights Around Wheeling, Village calendar).
+
+     Tests: a feed match fills an empty config, a set config isn't
+     overridden, and a library *"tree lighting craft"* (wrong source)
+     doesn't match.
+
+497. **"Tonight" in an issue delivered before its weekend.** Build loop,
+     the combined and per-reader email. When the delivery day is before
+     the weekend window (item 491's Wednesday override), add a short
+     ***"Tonight (Wed Nov 25)"*** block above *Don't miss*. It holds up
+     to three family events that evening, tree lightings first, with
+     Google Calendar links. For Nov 25 that's *"🎄 Mount Prospect tree
+     lighting, 5 PM, Emerson & Busse · Christkindlmarket 4–7 PM, Village
+     Hall"*. Tests: a Wednesday delivery shows Wednesday-evening events,
+     and a normal Thursday delivery shows no block.
+
+Re-rank: **495, 496 and 497 go to the top of the build queue.** 495 and
+496 fix the holiday pages people are searching now. 497 must ship
+**before Nov 24**, the Thanksgiving issue's build.
+
+Competitors reviewed this pass: **the Village of Mount Prospect's and the
+Village of Wheeling's own holiday pages and calendars**, and the Daily
+Herald's 2025 tree-lighting roundup and mykidlist's listing, for
+comparison. The design/UX angle is **the Thanksgiving issue's missing
+Wednesday night**.
 
 
 ## Working agreements for autonomous iteration
