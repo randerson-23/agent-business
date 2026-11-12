@@ -37,13 +37,6 @@
   },
   {
    "count": 239,
-   "date": "2026-11-11",
-   "horizon_days": 19,
-   "route": "html_events",
-   "type": "html_events"
-  },
-  {
-   "count": 239,
    "date": "2026-11-12",
    "horizon_days": 18,
    "route": "html_events",
@@ -65,6 +58,13 @@
   },
   {
    "count": 239,
+   "date": "2026-11-12",
+   "horizon_days": 18,
+   "route": "html_events",
+   "type": "html_events"
+  },
+  {
+   "count": 240,
    "date": "2026-11-12",
    "horizon_days": 18,
    "route": "html_events",
@@ -181,7 +181,7 @@
   },
   {
    "count": 10,
-   "date": "2026-11-11",
+   "date": "2026-11-12",
    "horizon_days": null,
    "route": "html_events",
    "type": "html_events"
@@ -253,7 +253,7 @@
   },
   {
    "count": 10,
-   "date": "2026-11-11",
+   "date": "2026-11-12",
    "horizon_days": null,
    "route": "html_events",
    "type": "html_events"
@@ -325,7 +325,7 @@
   },
   {
    "count": 3,
-   "date": "2026-11-11",
+   "date": "2026-11-12",
    "horizon_days": null,
    "route": "html_events",
    "type": "html_events"
@@ -461,13 +461,6 @@
    "type": "rss"
   },
   {
-   "count": 416,
-   "date": "2026-11-11",
-   "horizon_days": 416,
-   "route": "rss",
-   "type": "rss"
-  },
-  {
    "count": 426,
    "date": "2026-11-11",
    "horizon_days": 416,
@@ -497,6 +490,13 @@
   },
   {
    "count": 422,
+   "date": "2026-11-12",
+   "horizon_days": 415,
+   "route": "rss",
+   "type": "rss"
+  },
+  {
+   "count": 441,
    "date": "2026-11-12",
    "horizon_days": 415,
    "route": "rss",
@@ -533,16 +533,16 @@
    "type": "tribe_events"
   },
   {
-   "count": 61,
+   "count": 62,
    "date": "2026-11-11",
    "horizon_days": 81,
    "route": "month_ics",
    "type": "tribe_events"
   },
   {
-   "count": 62,
-   "date": "2026-11-11",
-   "horizon_days": 81,
+   "count": 61,
+   "date": "2026-11-12",
+   "horizon_days": 80,
    "route": "month_ics",
    "type": "tribe_events"
   },
@@ -613,7 +613,7 @@
   },
   {
    "count": 500,
-   "date": "2026-11-11",
+   "date": "2026-11-12",
    "horizon_days": 96,
    "route": "rss",
    "type": "rss"
@@ -621,7 +621,7 @@
   {
    "count": 500,
    "date": "2026-11-12",
-   "horizon_days": 96,
+   "horizon_days": 95,
    "route": "rss",
    "type": "rss"
   },
@@ -772,13 +772,6 @@
    "type": "rss"
   },
   {
-   "count": 233,
-   "date": "2026-11-11",
-   "horizon_days": 388,
-   "route": "rss",
-   "type": "rss"
-  },
-  {
    "count": 226,
    "date": "2026-11-12",
    "horizon_days": 387,
@@ -801,6 +794,13 @@
   },
   {
    "count": 226,
+   "date": "2026-11-12",
+   "horizon_days": 387,
+   "route": "rss",
+   "type": "rss"
+  },
+  {
+   "count": 223,
    "date": "2026-11-12",
    "horizon_days": 387,
    "route": "rss",
@@ -816,13 +816,6 @@
    "type": "ics"
   },
   {
-   "count": 56,
-   "date": "2026-11-11",
-   "horizon_days": 218,
-   "route": "ics",
-   "type": "ics"
-  },
-  {
    "count": 55,
    "date": "2026-11-11",
    "horizon_days": 218,
@@ -847,6 +840,13 @@
    "count": 55,
    "date": "2026-11-11",
    "horizon_days": 218,
+   "route": "ics",
+   "type": "ics"
+  },
+  {
+   "count": 54,
+   "date": "2026-11-12",
+   "horizon_days": 217,
    "route": "ics",
    "type": "ics"
   },
@@ -917,7 +917,7 @@
   },
   {
    "count": 1,
-   "date": "2026-11-11",
+   "date": "2026-11-12",
    "horizon_days": null,
    "route": "html_events",
    "type": "html_events"
@@ -989,13 +989,6 @@
   },
   {
    "count": 35,
-   "date": "2026-11-11",
-   "horizon_days": -2,
-   "route": "revize_news_json",
-   "type": "revize_news_json"
-  },
-  {
-   "count": 35,
    "date": "2026-11-12",
    "horizon_days": -3,
    "route": "revize_news_json",
@@ -1012,6 +1005,13 @@
    "count": 35,
    "date": "2026-11-12",
    "horizon_days": -3,
+   "route": "revize_news_json",
+   "type": "revize_news_json"
+  },
+  {
+   "count": 36,
+   "date": "2026-11-12",
+   "horizon_days": 0,
    "route": "revize_news_json",
    "type": "revize_news_json"
   },
@@ -1060,9 +1060,9 @@
    "type": "ics"
   },
   {
-   "count": 45,
-   "date": "2026-11-11",
-   "horizon_days": 210,
+   "count": 42,
+   "date": "2026-11-12",
+   "horizon_days": 209,
    "route": "ics",
    "type": "ics"
   },
@@ -1132,9 +1132,9 @@
    "type": "localist"
   },
   {
-   "count": 10,
-   "date": "2026-11-11",
-   "horizon_days": 28,
+   "count": 9,
+   "date": "2026-11-12",
+   "horizon_days": 27,
    "route": "localist",
    "type": "localist"
   },
@@ -1205,7 +1205,7 @@
   },
   {
    "count": 13,
-   "date": "2026-11-11",
+   "date": "2026-11-12",
    "horizon_days": null,
    "route": "html_events",
    "type": "html_events"
@@ -1248,13 +1248,6 @@
    "type": "html_events"
   },
   {
-   "count": 29,
-   "date": "2026-11-10",
-   "horizon_days": null,
-   "route": "html_events",
-   "type": "html_events"
-  },
-  {
    "count": 27,
    "date": "2026-11-10",
    "horizon_days": null,
@@ -1285,6 +1278,13 @@
   {
    "count": 27,
    "date": "2026-11-11",
+   "horizon_days": null,
+   "route": "html_events",
+   "type": "html_events"
+  },
+  {
+   "count": 28,
+   "date": "2026-11-12",
    "horizon_days": null,
    "route": "html_events",
    "type": "html_events"
@@ -1421,8 +1421,8 @@
   },
   {
    "count": 10,
-   "date": "2026-11-11",
-   "horizon_days": 314,
+   "date": "2026-11-12",
+   "horizon_days": 313,
    "route": "ics",
    "type": "ics"
   },
@@ -1493,8 +1493,8 @@
   },
   {
    "count": 24,
-   "date": "2026-11-11",
-   "horizon_days": 157,
+   "date": "2026-11-12",
+   "horizon_days": 156,
    "route": "ics",
    "type": "ics"
   },
@@ -1557,16 +1557,16 @@
    "type": "rss"
   },
   {
-   "count": 2,
+   "count": 3,
    "date": "2026-11-11",
-   "horizon_days": -7,
+   "horizon_days": 0,
    "route": "rss",
    "type": "rss"
   },
   {
    "count": 3,
-   "date": "2026-11-11",
-   "horizon_days": 0,
+   "date": "2026-11-12",
+   "horizon_days": -1,
    "route": "rss",
    "type": "rss"
   },
@@ -1636,9 +1636,9 @@
    "type": "rss"
   },
   {
-   "count": 223,
-   "date": "2026-11-11",
-   "horizon_days": 798,
+   "count": 215,
+   "date": "2026-11-12",
+   "horizon_days": 797,
    "route": "rss",
    "type": "rss"
   },
@@ -1708,13 +1708,6 @@
    "type": "ics"
   },
   {
-   "count": 142,
-   "date": "2026-11-11",
-   "horizon_days": 1153,
-   "route": "ics",
-   "type": "ics"
-  },
-  {
    "count": 141,
    "date": "2026-11-12",
    "horizon_days": 1152,
@@ -1737,6 +1730,13 @@
   },
   {
    "count": 141,
+   "date": "2026-11-12",
+   "horizon_days": 1152,
+   "route": "ics",
+   "type": "ics"
+  },
+  {
+   "count": 140,
    "date": "2026-11-12",
    "horizon_days": 1152,
    "route": "ics",
