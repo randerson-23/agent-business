@@ -21057,7 +21057,7 @@ issue.
      overridden, and a library *"tree lighting craft"* (wrong source)
      doesn't match.
 
-497. **"Tonight" in an issue delivered before its weekend.** Build loop,
+497. (✅ DONE 2026-11-12: `select_tonight` adds a "TONIGHT (WED NOV 25)" block above Don't miss when the delivery day is before the weekend window: up to three family events from 3 PM that day, tree lightings first, each with its Google Calendar link. Checked against the real config: Village Tree Lighting Ceremony 5 PM and Christkindlmarket 4 PM) **"Tonight" in an issue delivered before its weekend.** Build loop,
      the combined and per-reader email. When the delivery day is before
      the weekend window (item 491's Wednesday override), add a short
      ***"Tonight (Wed Nov 25)"*** block above *Don't miss*. It holds up

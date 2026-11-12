@@ -6933,6 +6933,43 @@ def is_recurring_programme(event: dict, series: set[str] | None = None) -> bool:
                 or (series and " ".join(_title_words(title, keep_order=True)) in series))
 
 
+TONIGHT_FROM = time(15, 0)
+
+
+def select_tonight(sections: list[dict], now: datetime, limit: int = 3) -> dict | None:
+    """ROADMAP.md item 497: an issue delivered before its weekend window (the
+    Wednesday Thanksgiving issue, item 491) gets a short "Tonight" block: up to
+    `limit` family events that evening (from 3 PM) on the delivery day, tree
+    lightings first. None on a normal Thursday delivery."""
+    delivery = email_delivery_time(now)
+    day = delivery.date()
+    if day >= weekend_window(*weekend_dates(day))[0]:
+        return None
+    seen, found = set(), []
+    for sec in sections:
+        for e in sec.get("upcoming_events") or []:
+            try:
+                start = datetime.fromisoformat(e.get("date_iso") or "")
+            except ValueError:
+                continue
+            if start.tzinfo is not None:
+                start = start.astimezone(LOCAL_TZ).replace(tzinfo=None)
+            if start.date() != day or start.time() < TONIGHT_FROM or e.get("attendable") is False or e.get("sponsored_by"):
+                continue
+            tree = bool(TREE_LIGHTING_TITLE.search(e.get("title") or ""))
+            if not tree and family_relevance(e) < 0:
+                continue
+            key = (sec["region_name"], (e.get("title") or "").strip().lower())
+            if key in seen:
+                continue
+            seen.add(key)
+            found.append((not tree, -family_relevance(e), start, dict(e, town=sec["region_name"], tonight_when=event_time_label(start.isoformat()), email_emoji="🎄" if tree else email_event_emoji(e))))
+    if not found:
+        return None
+    found.sort(key=lambda f: f[:3])
+    return {"label": f"TONIGHT ({day.strftime('%a %b')} {day.day})".upper(), "events": [f[3] for f in found[:limit]]}
+
+
 def town_one_liner(block: dict) -> str:
     """ROADMAP.md item 481: "Mount Prospect: Diwali Party, MPCB Fall Concert and 3 more"
     from the town's first two titles and a count of the rest."""
@@ -7180,6 +7217,7 @@ def render_combined_email_digest(sections: list[dict], weekend_date_range: str, 
                     b["one_line"] = town_one_liner(b)
             region_blocks = [home] + [b for b in region_blocks if b is not home]
     top_picks = pick_email_top_picks(region_blocks)
+    tonight = select_tonight(sections, now)  # item 497
     event_total = sum(len([e for e in s["weekend_events"] if e.get("attendable", True)]) for s in sections)
     town_total = sum(1 for s in sections if any(e.get("attendable", True) for e in s["weekend_events"]))
     empty_regions_summary = None
@@ -7210,6 +7248,7 @@ def render_combined_email_digest(sections: list[dict], weekend_date_range: str, 
         signups=signups,
         region_blocks=region_blocks,
         reader_town_name=reader_town_name,
+        tonight=tonight,
         top_picks=top_picks,
         poll=poll_links(now.astimezone(LOCAL_TZ).date()),
         event_total=event_total,
