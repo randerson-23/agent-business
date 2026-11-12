@@ -1,8 +1,6 @@
 {
   "arlington-heights-60005:Arlington Heights Park District \u2014 Events": {
-    "exception_class": "ConnectTimeout",
-    "route": "list_ics",
-    "status_code": null
+    "route": "month_ics"
   },
   "arlington-heights-60005:Arlington Heights School District 25 \u2014 Calendar": {
     "exception_class": "HTTPError",
@@ -20,18 +18,18 @@
     "status_code": 403
   },
   "mount-prospect-60056:Mount Prospect Park District \u2014 Events": {
-    "exception_class": "ConnectTimeout",
-    "route": "list_ics",
-    "status_code": null
+    "route": "month_ics"
   },
   "mount-prospect-60056:Village of Mount Prospect \u2014 Calendar": {
     "exception_class": "HTTPError",
     "status_code": 404
   },
-  "palatine-60067:Salt Creek Rural Park District \u2014 Events": {
+  "palatine-60067:Palatine Public Library District \u2014 Events": {
     "exception_class": "HTTPError",
-    "route": "list_ics",
     "status_code": 403
+  },
+  "palatine-60067:Salt Creek Rural Park District \u2014 Events": {
+    "route": "month_ics"
   },
   "wheeling-60090:Wheeling CCSD 21 \u2014 Calendar": {
     "exception_class": "HTTPError",
