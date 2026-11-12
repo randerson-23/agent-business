@@ -7599,3 +7599,19 @@ def test_all_day_listings_on_consecutive_days_become_one_run():
     events = [{"title": "Reading Challenge", "url": f"https://x/{d}", "date_iso": f"2026-11-{d}T00:00:00", "venue": "Library", "attendable": True} for d in (13, 14)]
     build_digest.merge_repeated_sessions(events)
     assert events[0]["run_label"] == "through Sat Nov 14" and events[1]["merged_away"]
+
+
+def test_tree_lighting_from_feed_fills_only_an_empty_config_from_village_sources():
+    # ROADMAP.md item 496.
+    village = {"section": "Village Calendar", "events": [{"title": "Lights Around Wheeling", "date_iso": "2026-11-22T16:30:00",
+               "url": "https://www.wheelingil.gov/common/modules/iCalendar/iCalendar.aspx?feed=calendar", "detail": "https://www.wheelingil.gov/calendar.aspx?EID=2207",
+               "source": "Village of Wheeling — Calendar", "google_calendar_url": "https://calendar.google.com/x"}]}
+    library = {"section": "Library Events", "events": [{"title": "Tree Lighting Craft", "date_iso": "2026-11-18T16:00:00", "url": "https://lib/x", "source": "Indian Trails Public Library — Events"}]}
+    cfg = {"region": {"name": "Wheeling"}, "tree_lighting": {"url": "https://www.wheelingil.gov/", "date": None, "match": ["Lights Around Wheeling"]}}
+    got = build_digest.tree_lighting_from_feed(cfg, [library, village], 2026)
+    assert got["label"] == "Sunday, November 22, 4:30 PM" and got["url"].endswith("EID=2207")
+    assert build_digest.tree_lighting_from_feed(cfg, [library], 2026) is None  # a library craft is not the ceremony
+    mp = build_digest.load_yaml(build_digest.CONFIG_DIR / "regions" / "mount-prospect-60056.yaml")
+    tree = build_digest.prepare_tree_lighting(mp, 2026)
+    assert tree["label"] == "Wednesday, November 25, 5 PM, Pocket park, Emerson St & Busse Ave"
+    assert tree["url"].startswith("https://www.mountprospect.org/")

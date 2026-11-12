@@ -21028,7 +21028,7 @@ issue.
 
 #### P1 (new)
 
-495. **Fill Mount Prospect's tree lighting and Christkindlmarket from the
+495. (✅ DONE 2026-11-12: tree_lighting Wed Nov 25, 5 PM, pocket park at Emerson & Busse; annual events for the ceremony and the Christkindlmarket 4–7 PM in Village Hall; both from the Village's own pages via search. The Madrigals line was only on the 2025 news post, so it was left out) **Fill Mount Prospect's tree lighting and Christkindlmarket from the
      Village's own pages.** Build loop, under item 478's rule. In
      `config/regions/mount-prospect-60056.yaml`:
 
@@ -21044,7 +21044,7 @@ issue.
      Tests: `/santa/` and `/holidays/` show the date instead of *TBA*,
      and both entries carry their source.
 
-496. **Fill `tree_lighting` from the town's own feed when the config is
+496. (✅ DONE 2026-11-12: `tree_lighting_from_feed`; Wheeling's `match: ["Lights Around Wheeling"]` gives Sun Nov 22, 4:30 PM from the Village calendar, linked to its calendar.aspx page rather than the iCal feed. All six towns now show a date on /santa/ and /holidays/) **Fill `tree_lighting` from the town's own feed when the config is
      empty.** Build loop. When `tree_lighting.date` is null, use the
      first feed event from that town's **village or park-district
      source**, dated Nov 15 – Dec 15, whose title matches *tree lighting*
