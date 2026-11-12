@@ -70,6 +70,21 @@ payment_links:
   starter: null  # ROADMAP.md item 314: Starter, 3 weeks for $135
   holiday: null  # ROADMAP.md item 352: the Holiday listing ($20 until Nov 15, then $50)
 
+# ROADMAP.md item 487: a labelled launch rate inside BUSINESS_PLAN.md's "$25-$75/week
+# sponsor spot", shown on /sponsor/ until the list passes `until_subscribers`
+# (Buttondown's count from the latest send). Turn it off with one line:
+# `launch_rate: null`. Buy links here charge the launch price; the regular
+# payment_links above are not used for these tiers while it is on.
+launch_rate:
+  until_subscribers: 100
+  prices:
+    weekly_spot: "$25/week or $75/month"
+    starter: "$65 for 3 weeks"
+  line: "Launch rate: $25/week while we grow; $50/week from 100 readers"
+  payment_links:
+    weekly_spot: null
+    starter: null
+
 # ROADMAP.md item 388: the founding offer, "your first Event Promo is free" for
 # the first five local businesses, through Dec 31. Raise this number by one each
 # time a founding promo is set up; /sponsor/ shows "N of 5 left" and hides the

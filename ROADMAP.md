@@ -20796,7 +20796,7 @@ at what the nearest competitor charges local businesses.
 
 #### P2 (new)
 
-487. **A labelled launch rate within the plan's own range.** Build loop,
+487. (✅ DONE 2026-11-12: `launch_rate:` in config/sponsors.yaml; `apply_launch_rate` shows Weekly Spot $25/week or $75/month and Starter $65 with the regular price struck through, drops the Recommended badge, and uses launch-price buy links only (none set, so email) while the list (audience snapshot, else Buttondown's count at the latest send) is under 100. /sponsor/preview/ and OUTREACH_TEMPLATES.md quote the same price) **A labelled launch rate within the plan's own range.** Build loop,
      `config/sponsors.yaml` and `/sponsor/`:
 
      - Add `launch_rate:` with **Weekly Spot $25/week or $75/month**

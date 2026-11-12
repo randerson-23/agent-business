@@ -128,6 +128,8 @@
     transition: background .12s ease;
   }
   .tier:hover { background: color-mix(in srgb, var(--ink) 4%, var(--card)); }
+  .regular-price { color: var(--muted); font-weight: 400; font-size: 0.8em; }
+  .launch-line { font-size: 13px; font-weight: 600; color: var(--accent); margin: 4px 0 6px; }
   .tier.recommended { border: 2px solid var(--accent); position: relative; }
   .tier-badge {
     display: inline-block;
@@ -264,7 +266,8 @@
       <div class="tier{{ ' recommended' if tier.recommended else '' }}"{% if tier.anchor %} id="{{ tier.anchor }}"{% endif %}>
         {% if tier.recommended %}<span class="tier-badge">Recommended</span><br>{% endif %}
         <h3>{{ tier.name }}</h3>
-        <div class="price">{{ tier.price }}</div>
+        <div class="price">{{ tier.price }}{% if tier.regular_price %} <s class="regular-price">{{ tier.regular_price }}</s>{% endif %}</div>
+        {% if tier.regular_price and launch_line %}<div class="launch-line">{{ launch_line }}</div>{% endif %}
         {% if tier.gated_by %}<div class="gated-by">Value grows with: {{ tier.gated_by }}</div>{% endif %}
         <p class="detail">{{ tier.detail }}</p>
         {% if tier.payment_key == "event_promo" and sample_event %}
