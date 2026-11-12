@@ -2,8 +2,8 @@
   "@context": "https://schema.org",
   "@type": "ItemList",
   "name": "Upcoming events across every region — Within Ten",
-  "dateModified": "2026-11-12T06:02:10+00:00",
-  "numberOfItems": 305,
+  "dateModified": "2026-11-12T14:01:40+00:00",
+  "numberOfItems": 307,
   "itemListElement": [
     {
       "@type": "ListItem",
@@ -9260,6 +9260,67 @@
       "position": 303,
       "item": {
         "@type": "Event",
+        "name": "Christkindlmarket",
+        "startDate": "2026-11-25T16:00:00-06:00",
+        "url": "https://withintenmiles.com/mount-prospect-60056/#ev-christkindlmarket-2026-11-25",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Mount Prospect, IL",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Mount Prospect",
+            "addressRegion": "IL"
+          }
+        },
+        "sameAs": "https://www.mountprospect.org/boards-commissions/special-events-commission/christkindlmarket",
+        "organizer": {
+          "@type": "Organization",
+          "name": "the organiser",
+          "url": "https://www.mountprospect.org"
+        },
+        "image": "https://withintenmiles.com/og/mount-prospect-60056.png",
+        "description": "The Village's holiday market, 4–7 PM in Village Hall, 50 S. Emerson St., alongside the tree lighting at 5 PM."
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 304,
+      "item": {
+        "@type": "Event",
+        "name": "Village Tree Lighting Ceremony",
+        "startDate": "2026-11-25T17:00:00-06:00",
+        "url": "https://withintenmiles.com/mount-prospect-60056/#ev-village-tree-lighting-ceremony-2026-11-25",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Mount Prospect, IL",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Mount Prospect",
+            "addressRegion": "IL"
+          }
+        },
+        "sameAs": "https://www.mountprospect.org/community/winter_events.php",
+        "organizer": {
+          "@type": "Organization",
+          "name": "the organiser",
+          "url": "https://www.mountprospect.org"
+        },
+        "image": "https://withintenmiles.com/og/mount-prospect-60056.png",
+        "description": "The Village lights its tree at 5 PM in the pocket park at Emerson St & Busse Ave (Emerson closes from the garage to Busse). The Christkindlmarket runs 4–7 PM…",
+        "isAccessibleForFree": true
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 305,
+      "item": {
+        "@type": "Event",
         "name": "EARLY CLOSING - Thanksgiving Holiday",
         "startDate": "2026-11-25T17:00:00-06:00",
         "url": "https://withintenmiles.com/wheeling-60090/#ev-early-closing-thanksgiving-holiday-2026-11-25",
@@ -9288,7 +9349,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 304,
+      "position": 306,
       "item": {
         "@type": "Event",
         "name": "HAIRBANGERS BALL with SPECIAL GUEST MIKE & JOE - The Midwest's Most Renowed Cover Band",
@@ -9319,7 +9380,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 305,
+      "position": 307,
       "item": {
         "@type": "Event",
         "name": "BOURBON 'N BRASS SPEAKEASY: BLUES NIGHT EXTRAVAGANZA featuring DOWNTOWN CHARLIE BROWN, SEAN McKEE, MILES MINOR, JEFF BRINKMAN and JOE VALENTINO - THANKSGIVING EVE!",
