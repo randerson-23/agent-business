@@ -115,5 +115,13 @@
       "open_rate": 1.0,
       "click_rate": 0.0
     }
+  },
+  {
+    "timestamp": "2026-11-12T03:21:16.331243+00:00",
+    "subject": "\ud83d\ude82 Holiday Train tickets go on sale Monday \u00b7 36 things this weekend",
+    "buttondown_id": "em_42rwnh3zn58saa9hghj8bnn99z",
+    "region": "combined",
+    "mode": "schedule",
+    "pre_send_subscriber_count": 1
   }
 ]
