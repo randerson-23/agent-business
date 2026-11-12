@@ -169,6 +169,38 @@ PREVIEW ONLY, NOT PART OF THE EMAIL — SUBJECT LINE: {{ subject_line }}
 <tr><td style="padding:0 0 14px 0;"></td></tr>
 {% endif %}
 
+{% if tonight %}
+{# ROADMAP.md item 497: an issue delivered before its weekend says what's on that evening. #}
+<tr>
+<td bgcolor="#ffffff" class="wt-paper" style="background-color:#ffffff; border-radius:12px; padding:20px 22px 6px 22px;">
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+<tr>
+<td class="wt-accent" style="font-family:{{ sans }}; font-size:12px; font-weight:600; letter-spacing:1.5px; color:{{ accent }}; padding-bottom:12px;">
+{{ tonight.label }}
+</td>
+</tr>
+{% for ev in tonight.events %}
+<tr>
+<td style="padding:0 0 14px 0;">
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+<tr>
+<td width="40" valign="top" style="width:40px; font-size:24px; line-height:30px;">{{ ev.email_emoji }}</td>
+<td valign="top">
+<a href="{{ ev.url }}" class="wt-ink" style="font-family:{{ serif }}; font-size:18px; font-weight:bold; line-height:1.3; color:{{ ink }}; text-decoration:none;">{{ ev.title|display_title }}</a>
+<div class="wt-muted" style="font-family:{{ sans }}; font-size:13px; color:{{ muted }}; padding-top:3px;">{{ ev.town }}{% if ev.tonight_when %} &nbsp;·&nbsp; {{ ev.tonight_when }}{% endif %}</div>
+{% if ev.google_calendar_url %}<div style="font-family:{{ sans }}; font-size:12px; padding-top:4px;"><a href="{{ ev.google_calendar_url }}" class="wt-brand" style="color:{{ accent }}; text-decoration:none;">📅 Add to Google Calendar</a></div>{% endif %}
+</td>
+</tr>
+</table>
+</td>
+</tr>
+{% endfor %}
+</table>
+</td>
+</tr>
+<tr><td style="padding:0 0 14px 0;"></td></tr>
+{% endif %}
+
 {% if top_picks %}
 {# "Don't miss": one standout per town, chosen by pick_email_top_picks(). #}
 <tr>

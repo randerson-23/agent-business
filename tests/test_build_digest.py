@@ -7615,3 +7615,25 @@ def test_tree_lighting_from_feed_fills_only_an_empty_config_from_village_sources
     tree = build_digest.prepare_tree_lighting(mp, 2026)
     assert tree["label"] == "Wednesday, November 25, 5 PM, Pocket park, Emerson St & Busse Ave"
     assert tree["url"].startswith("https://www.mountprospect.org/")
+
+
+def test_tonight_block_only_when_the_issue_lands_before_its_weekend(monkeypatch):
+    # ROADMAP.md item 497.
+    def ev(title, iso, tags=("kid_friendly", "free")):
+        return {"title": title, "url": "https://x/" + title.replace(" ", "-"), "date_iso": iso, "tags": list(tags), "detail": "d", "attendable": True, "google_calendar_url": "https://calendar.google.com/x"}
+    sections = [{"region_name": "Mount Prospect", "region_url": "https://x/mp/", "weekend_events": [ev("Turkey Trot", "2026-11-26T08:00:00")],
+                 "upcoming_events": [ev("Christkindlmarket", "2026-11-25T16:00:00", ("indoor",)), ev("Village Tree Lighting Ceremony", "2026-11-25T17:00:00"),
+                                     ev("Morning Storytime", "2026-11-25T10:00:00"), ev("Turkey Trot", "2026-11-26T08:00:00")]}]
+    monkeypatch.setattr(build_digest, "load_delivery_overrides", lambda: {date(2026, 11, 26): datetime(2026, 11, 25, 7, 0)})
+    tue = datetime(2026, 11, 24, 22, 37, tzinfo=timezone.utc)
+    tonight = build_digest.select_tonight(sections, tue)
+    assert tonight["label"] == "TONIGHT (WED NOV 25)"
+    assert [e["title"] for e in tonight["events"]] == ["Village Tree Lighting Ceremony", "Christkindlmarket"]
+    html = build_digest.render_combined_email_digest(sections, "Nov 26–29", tue)
+    assert html.index("TONIGHT (WED NOV 25)") < html.index("Turkey Trot")
+    # A normal Thursday delivery has no Tonight block.
+    monkeypatch.setattr(build_digest, "load_delivery_overrides", lambda: {})
+    assert build_digest.select_tonight(sections, datetime(2026, 11, 18, 22, 37, tzinfo=timezone.utc)) is None
+    # ...even with a family event that Thursday evening.
+    thu = [dict(sections[0], upcoming_events=[ev("Family Movie Night", "2026-11-19T18:00:00")])]
+    assert build_digest.select_tonight(thu, datetime(2026, 11, 18, 22, 37, tzinfo=timezone.utc)) is None
