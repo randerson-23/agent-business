@@ -2216,6 +2216,50 @@ def prepare_tree_lighting(region_cfg: dict, year: int) -> dict | None:
     return {"url": block["url"], "label": label, "date_iso": day.isoformat() if label else None, "google_calendar_url": google}
 
 
+TREE_LIGHTING_TITLE = re.compile(r"\btree[- ]lighting\b|\blighting of the (?:village |holiday )?tree\b", re.IGNORECASE)
+TREE_LIGHTING_SOURCE = re.compile(r"\b(?:village|city|town) of\b|\bvillage\b|\bpark district\b", re.IGNORECASE)
+
+
+def tree_lighting_from_feed(region_cfg: dict, blocks: list[dict], year: int) -> dict | None:
+    """ROADMAP.md item 496: when `tree_lighting.date` is empty, the first event
+    from the town's own village or park-district feed, dated Nov 15 - Dec 15,
+    whose title says tree lighting or one of `tree_lighting.match` (the town's
+    brand name for it, e.g. "Lights Around Wheeling"). A library craft called
+    "tree lighting" is not the ceremony, so library sources never match."""
+    block_cfg = region_cfg.get("tree_lighting") or {}
+    names = [str(m).lower() for m in block_cfg.get("match") or []]
+    start, end = date(year, 11, 15), date(year, 12, 15)
+    found = []
+    for block in blocks:
+        for e in block.get("events", []):
+            source = f"{e.get('source') or ''} {block.get('section') or ''}"
+            if re.search(r"librar", source, re.IGNORECASE) or not TREE_LIGHTING_SOURCE.search(source):
+                continue
+            title = e.get("title") or ""
+            if not (TREE_LIGHTING_TITLE.search(title) or any(n in title.lower() for n in names)):
+                continue
+            try:
+                start_dt = datetime.fromisoformat(e.get("date_iso") or "")
+            except ValueError:
+                continue
+            if start_dt.tzinfo is not None:
+                start_dt = start_dt.astimezone(LOCAL_TZ).replace(tzinfo=None)
+            if start <= start_dt.date() <= end:
+                found.append((start_dt, e))
+    if not found:
+        return None
+    start_dt, e = min(found, key=lambda pair: pair[0])
+    label = start_dt.strftime("%A, %B ") + str(start_dt.day)
+    clock = event_time_label(start_dt.isoformat())
+    if clock:
+        label += ", " + clock
+    url = e.get("url") or block_cfg.get("url")
+    detail = (e.get("detail") or "").strip()
+    if url and "icalendar" in url.lower() and detail.startswith("http"):  # a feed URL is no page to send a reader to
+        url = detail.split()[0]
+    return {"url": url, "label": label, "date_iso": start_dt.date().isoformat(), "google_calendar_url": e.get("google_calendar_url"), "from_feed": e.get("source") or True}
+
+
 ISSUES_DIR = ROOT / "data" / "issues"
 _ISSUE_FILE = re.compile(r"^(\d{4}-\d{2}-\d{2})\.html$")
 _PREHEADER = re.compile(r'<div style="display:none;[^>]*mso-hide:all;">.*?</div>\s*', re.DOTALL)
@@ -8296,6 +8340,11 @@ def main() -> None:
         blocks, removed_closures = split_closures(blocks)  # item 444
         blocks = drop_school_admin(blocks)  # item 485
         clear_suspect_times(blocks)  # item 485
+        if tree_lighting and not tree_lighting.get("label"):  # item 496: the town's own feed fills an empty config
+            from_feed = tree_lighting_from_feed(region_cfg, blocks, now.year)
+            if from_feed:
+                logger.info("Tree lighting for %s from its feed: %s (%s)", region_id, from_feed["label"], from_feed["from_feed"])
+                tree_lighting.update(from_feed)
         annotate_registration(blocks, local_today)
         # ROADMAP.md item 173: same single-insertion-point reasoning as
         # item 171's filter above - collapsing duplicates here, before

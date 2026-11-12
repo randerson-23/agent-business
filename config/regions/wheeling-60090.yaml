@@ -183,9 +183,12 @@ leaf_pickup:
   note: "The Village's refuse, recycling and yard-waste page covers yard waste; it states no leaf-collection dates, so check it directly."
 
 # ROADMAP.md item 274: no 2026 date posted yet; set `date` once the Village does.
+# ROADMAP.md item 496: the date comes from the Village's own calendar feed while `date` is empty;
+# "Lights Around Wheeling" is what the Village calls its lighting at Friendship Park.
 tree_lighting:
   url: "https://www.wheelingil.gov/"
   date: null
+  match: ["Lights Around Wheeling"]
 
 # Seasonal/evergreen guides (ROADMAP.md Phase 11 #5) - same civic-
 # source-only approach as the other three regions' guides.

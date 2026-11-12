@@ -254,6 +254,17 @@ sources:
 # as the Editor's Pick label) so the grouping shows without repeating
 # into the title text itself.
 annual_events:
+  # ROADMAP.md item 495: same source as tree_lighting (confirmed_via: search, 2026-11-12).
+  - title: "Village Tree Lighting Ceremony"
+    date: "2026-11-25T17:00:00"
+    detail: "The Village lights its tree at 5 PM in the pocket park at Emerson St & Busse Ave (Emerson closes from the garage to Busse). The Christkindlmarket runs 4–7 PM inside Village Hall."
+    url: "https://www.mountprospect.org/community/winter_events.php"
+    tags: ["free", "kid_friendly", "outdoor"]
+  - title: "Christkindlmarket"
+    date: "2026-11-25T16:00:00"
+    detail: "The Village's holiday market, 4–7 PM in Village Hall, 50 S. Emerson St., alongside the tree lighting at 5 PM."
+    url: "https://www.mountprospect.org/boards-commissions/special-events-commission/christkindlmarket"
+    tags: ["indoor"]
   # ROADMAP.md item 477: Metra's own pages as indexed by search, 2026-11-09 (runner blocked by CloudFront).
   - title: "🚂 Metra Holiday Train (UP Northwest)"
     date: "2026-12-12"
@@ -369,9 +380,15 @@ leaf_pickup:
   note: "See the Village's Fall Leaf Collection page for this year's schedule and rules."
 
 # ROADMAP.md item 274: no 2026 date posted yet; set `date` once the Village does.
+# ROADMAP.md item 495: the Village's own winter-events and Christkindlmarket pages, as indexed by
+# search (item 478: mountprospect.org blocks the runner). Wed Nov 25, 2026: tree lighting at 5 PM in the
+# pocket park at Emerson St & Busse Ave; Christkindlmarket 4-7 PM in Village Hall, 50 S. Emerson St.
+# confirmed_via: search, 2026-11-12.
 tree_lighting:
-  url: "https://www.mountprospect.org/"
-  date: null
+  url: "https://www.mountprospect.org/community/winter_events.php"
+  date: "2026-11-25"
+  time: "5 PM"
+  place: "Pocket park, Emerson St & Busse Ave"
 
 # Seasonal/evergreen guides (ROADMAP.md Phase 11 #5) - grouped, linkable
 # pages that don't expire every Monday the way a dated event listing does.
