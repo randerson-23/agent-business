@@ -6943,7 +6943,9 @@ def select_tonight(sections: list[dict], now: datetime, limit: int = 3) -> dict 
     lightings first. None on a normal Thursday delivery."""
     delivery = email_delivery_time(now)
     day = delivery.date()
-    if day >= weekend_window(*weekend_dates(day))[0]:
+    # Only an issue moved off its regular Thursday slot (item 491): a Thursday
+    # delivery always precedes its Friday-to-Sunday window and needs no block.
+    if day.weekday() == 3 or day >= weekend_window(*weekend_dates(day))[0]:
         return None
     seen, found = set(), []
     for sec in sections:

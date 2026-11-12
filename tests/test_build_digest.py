@@ -7634,3 +7634,6 @@ def test_tonight_block_only_when_the_issue_lands_before_its_weekend(monkeypatch)
     # A normal Thursday delivery has no Tonight block.
     monkeypatch.setattr(build_digest, "load_delivery_overrides", lambda: {})
     assert build_digest.select_tonight(sections, datetime(2026, 11, 18, 22, 37, tzinfo=timezone.utc)) is None
+    # ...even with a family event that Thursday evening.
+    thu = [dict(sections[0], upcoming_events=[ev("Family Movie Night", "2026-11-19T18:00:00")])]
+    assert build_digest.select_tonight(thu, datetime(2026, 11, 18, 22, 37, tzinfo=timezone.utc)) is None
