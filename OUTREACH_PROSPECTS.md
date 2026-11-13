@@ -17,6 +17,15 @@ Businesses whose own events appeared on a town page in the last 60 days or the n
 | Napleton's Palatine Subaru | Palatine | FREE Trunk or Treat at Napleton's Palatine Subaru (2026-10-24) |
 | Palatine Train Station parking lot | Palatine | Palatine Winter Farmers' Market (2026-11-07); Palatine Winter Farmers' Market (2026-11-21); Palatine Winter Farmers' Market (2026-12-05) |
 
+### Hosted Santa in 2025
+
+Hosted Santa in 2025: offer the free founding Event Promo for 2026.
+
+| Host | Town | Last season |
+|---|---|---|
+| Berry Yo | Arlington Heights | Santa visit with a hot-cocoa bar |
+| Golden Brunch | Arlington Heights | Breakfast for Dinner with Santa |
+
 ### Fair organisers
 
 Booster clubs, PTOs and programmes running a craft fair or holiday market. Send OUTREACH_TEMPLATES.md section 14b two weeks before the fair.
