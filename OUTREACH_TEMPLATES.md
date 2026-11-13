@@ -694,21 +694,21 @@ Thanks,
 Within Ten · [Mailing address] · hello@withintenmiles.com
 Reply 'no thanks' and we won't email you again.
 
-## 13a. Holiday listing — "Your shop on the town's holiday page, $20 until Nov 15" (ROADMAP.md item 352)
+## 13a. Holiday listing — "Your shop on the town's holiday page, $20 through Dec 15" (ROADMAP.md items 352, 499)
 
 The one-time listing on `/<town>/holiday/` (live now on `/sponsor/#holiday`).
 Send with the outreach batch, to shops with a real sale or holiday hours.
 Quote no subscriber number (item 118). The listing is labelled "Local
 business listing"; a listing needs a real shop with a real address.
 
-Subject: Your shop on [Town]'s holiday page, $20 until Nov 15
+Subject: Your shop on [Town]'s holiday page, $20 through Dec 15
 
 Hi [Owner Name],
 
 I run **Within Ten**, a free local guide for [Town], and its holiday page
 (tree lightings, markets and shops) goes live for Small Business Saturday
 on Nov 28. A listing for [Business Name] with your sale or holiday hours
-is $20 until Nov 15, then $50, and runs through Dec 31. You can see exactly
+is $20 (our launch price, through Dec 15) and runs through Dec 31. You can see exactly
 what it looks like, and the price, at https://withintenmiles.com/sponsor/#holiday.
 
 If you want one, reply with your hours or sale in a line and your street

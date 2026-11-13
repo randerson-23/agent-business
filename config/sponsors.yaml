@@ -80,10 +80,12 @@ launch_rate:
   prices:
     weekly_spot: "$25/week or $75/month"
     starter: "$65 for 3 weeks"
+    holiday: "$20 through Dec 15"  # item 499: no Nov 15 price jump while the list is small
   line: "Launch rate: $25/week while we grow; $50/week from 100 readers"
   payment_links:
     weekly_spot: null
     starter: null
+    holiday: null
 
 # ROADMAP.md item 388: the founding offer, "your first Event Promo is free" for
 # the first five local businesses, through Dec 31. Raise this number by one each

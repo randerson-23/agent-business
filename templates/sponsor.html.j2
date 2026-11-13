@@ -268,6 +268,7 @@
         <h3>{{ tier.name }}</h3>
         <div class="price">{{ tier.price }}{% if tier.regular_price %} <s class="regular-price">{{ tier.regular_price }}</s>{% endif %}</div>
         {% if tier.regular_price and launch_line %}<div class="launch-line">{{ launch_line }}</div>{% endif %}
+        {% if tier.launch_note %}<div class="launch-line">{{ tier.launch_note }}</div>{% endif %}
         {% if tier.gated_by %}<div class="gated-by">Value grows with: {{ tier.gated_by }}</div>{% endif %}
         <p class="detail">{{ tier.detail }}</p>
         {% if tier.payment_key == "event_promo" and sample_event %}

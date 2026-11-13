@@ -21097,7 +21097,7 @@ is missing, and looks at the one price that changes on Sunday.
 
 #### P1 (new)
 
-498. **Tree lightings with Santa belong on `/santa/`.** Build loop,
+498. (✅ DONE 2026-11-13: `santa_reason` returns "Santa at the tree lighting" for a tree lighting, or a `tree_lighting.match` name, whose description names Santa; SANTA_DESCRIPTION gains "and Santa", "with Santa", "Santa and"; the unreachable duplicate block is gone. Palatine Sat Nov 21 is on /santa/; Des Plaines' and Elk Grove's lightings now carry the same label. Arlington Heights' and Mount Prospect's lightings are config-only and their pages name no Santa) **Tree lightings with Santa belong on `/santa/`.** Build loop,
      `santa_reason`:
 
      - Treat ***tree lighting*** (and item 496's brand matches such as
@@ -21117,7 +21117,7 @@ is missing, and looks at the one price that changes on Sunday.
 
 #### P2 (new)
 
-499. **Keep the Holiday listing at $20 while the list is under 100.** Build
+499. (✅ DONE 2026-11-13: `launch_rate.prices.holiday` "$20 through Dec 15" with a "Launch price" note and no early-bird countdown on /sponsor/; /holidays/ offer box says "$20 through Dec 15 (launch price)"; outreach template 13a updated; `launch_rate_on` is the one switch) **Keep the Holiday listing at $20 while the list is under 100.** Build
      loop, `config/sponsors.yaml`:
 
      - Tie the Holiday listing's price to item 487's launch-rate switch.

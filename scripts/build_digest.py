@@ -2463,7 +2463,7 @@ def render_join_page(
     )
 
 
-def build_holiday_listing_offer(now: datetime, contact_email: str | None) -> dict | None:
+def build_holiday_listing_offer(now: datetime, contact_email: str | None, launch: bool = False) -> dict | None:
     """The /holidays/ page's offer box (ROADMAP.md item 294): $20 through Nov
     15, $50 after, until the guide ends on Dec 31, linking to an email to the
     owner (no Payment Link exists yet). None when there is no contact address
@@ -2471,6 +2471,9 @@ def build_holiday_listing_offer(now: datetime, contact_email: str | None) -> dic
     today = now.astimezone(LOCAL_TZ).date()
     if not contact_email or today.month < 10:  # the offer runs October through December
         return None
+    if launch:  # ROADMAP.md item 499: $20 through Dec 15 while the list is under 100
+        return {"price": "$20", "early": False, "through": "through Dec 15 (launch price)",
+                "url": f"mailto:{contact_email}?subject=Holiday%20guide%20listing"}
     early = today <= date(today.year, 11, 15)
     return {
         "price": "$20" if early else "$50",
@@ -2481,7 +2484,7 @@ def build_holiday_listing_offer(now: datetime, contact_email: str | None) -> dic
 
 def render_holidays_page(
     entries: list[dict], now: datetime, analytics: dict | None = None, newsletter: dict | None = None,
-    contact_email: str | None = None, outside: list[dict] | None = None,
+    contact_email: str | None = None, outside: list[dict] | None = None, launch: bool = False,
 ) -> str:
     """The cross-town /holidays/ page (ROADMAP.md item 274): tree lightings
     town by town (a confirmed date with its source, or an honest "not posted
@@ -2496,7 +2499,7 @@ def render_holidays_page(
         on_sale=load_on_sale(now),  # item 474
         outside=outside or [],  # item 475
         year=now.year,
-        listing_offer=build_holiday_listing_offer(now, contact_email),
+        listing_offer=build_holiday_listing_offer(now, contact_email, launch),
         town_names=_join_names([e["region_name"] for e in entries]),
         any_events=any(e.get("events") for e in entries),
         newsletter=newsletter or {"configured": False},
@@ -2587,33 +2590,33 @@ SANTA_TITLE = re.compile(r"\b(santa(?:['\u2019]s)?|kris kringle)\b", re.IGNORECA
 # name Santa only in the description.
 SANTA_DESCRIPTION = re.compile(
     r"\b(?:visits?|photos?|pictures?|breakfast|lunch|brunch|cookies|story ?time|storytime) with (?:santa|mrs\.? claus)\b|"
-    r"\bmeet (?:santa|mrs\.? claus)\b|\bsanta(?:['\u2019]s)? (?:arrival|visit)\b|\bsanta (?:arrives|will be)\b|\bmrs\.? claus\b",
+    r"\bmeet (?:santa|mrs\.? claus)\b|\bsanta(?:['\u2019]s)? (?:arrival|visit)\b|\bsanta (?:arrives|will be)\b|\bmrs\.? claus\b|"
+    r"\b(?:and|with) santa\b|\bsanta and\b",  # item 498: "Join Mayor Schwantz and Santa"
     re.IGNORECASE,
 )
 SANTA_BRANDS = re.compile(r"\b(?:frostival|lollipop lane|winter wonderland|holly days|santa splash)\b", re.IGNORECASE)
 NOT_SANTA = re.compile(r"\bsanta (?:fe|paws|cruz|clara|barbara|monica|ana|rosa)\b", re.IGNORECASE)
 
 
-def santa_reason(event: dict) -> str | None:
+def santa_reason(event: dict, tree_names: list[str] | tuple = ()) -> str | None:
     """Why an event belongs on /santa/: None when it doesn't. A title naming
     Santa needs no extra line; a match from the description or a holiday brand
-    shows "Santa visits" on the card."""
+    shows "Santa visits" on the card. A tree lighting (or the town's own name
+    for it, `tree_lighting.match`) whose description names Santa anywhere is
+    "Santa at the tree lighting" (item 498)."""
     title, detail = event.get("title") or "", event.get("detail_long") or event.get("detail") or ""
     if NOT_SANTA.search(title):  # Santa Fe Trail, Santa Paws (dogs only), place names
         return None
     detail = NOT_SANTA.sub("", detail)
     if SANTA_TITLE.search(title):
         return "title"
+    names_santa = re.search(r"\bsanta\b", detail, re.IGNORECASE)
+    is_tree = TREE_LIGHTING_TITLE.search(title) or any(str(n).lower() in title.lower() for n in tree_names)
+    if is_tree and names_santa:
+        return "Santa at the tree lighting"
     if SANTA_DESCRIPTION.search(detail):
         return "Santa visits"
-    if SANTA_BRANDS.search(title) and re.search(r"\bsanta\b", detail, re.IGNORECASE):
-        return "Santa visits"
-    return None
-    if SANTA_TITLE.search(NOT_SANTA.sub("", title)):
-        return "title"
-    if SANTA_DESCRIPTION.search(detail):
-        return "Santa visits"
-    if SANTA_BRANDS.search(title) and re.search(r"\bsanta\b", detail, re.IGNORECASE):
+    if SANTA_BRANDS.search(title) and names_santa:
         return "Santa visits"
     return None
 _SOLD_OUT = re.compile(r"\bsold[- ]out\b", re.IGNORECASE)
@@ -2628,7 +2631,7 @@ def santa_in_season(today: date) -> bool:
     return date(today.year, 11, 1) <= today <= date(today.year, 12, 24)
 
 
-def select_santa_events(blocks: list[dict], today: date) -> list[dict]:
+def select_santa_events(blocks: list[dict], today: date, tree_names: list[str] | tuple = ()) -> list[dict]:
     """A town's dated Santa events from today through Dec 24 of the season's
     year (never before Nov 1), soonest first."""
     year = santa_season_year(today)
@@ -2643,7 +2646,7 @@ def select_santa_events(blocks: list[dict], today: date) -> list[dict]:
             except ValueError:
                 continue
             key = (event["title"].strip().lower(), event["date_iso"])
-            reason = santa_reason(event) if start <= day <= end and key not in seen else None
+            reason = santa_reason(event, tree_names) if start <= day <= end and key not in seen else None
             if reason:
                 seen.add(key)
                 picked.append(dict(event, santa_reason=None if reason == "title" else reason))
@@ -3391,23 +3394,31 @@ def current_list_size(audience_path: Path | None = None, history_path: Path | No
     return counts[-1] if counts else None
 
 
+def launch_rate_on(launch: dict | None, list_size: int | None) -> bool:
+    """Item 487: the launch rate applies while the list is under its threshold
+    (or its size is unknown) and `launch_rate` is set."""
+    return bool(launch and launch.get("prices")) and (list_size is None or list_size < int(launch.get("until_subscribers") or 100))
+
+
 def apply_launch_rate(tiers: list[dict], launch: dict | None, list_size: int | None) -> dict | None:
     """ROADMAP.md item 487: below `until_subscribers` (or with the size
     unknown) the Weekly Spot and Starter show the launch price with the
     regular one struck through, their buy links switch to the launch-price
     links (none means email), and no tier carries the "Recommended" badge.
     Returns the launch line to show, or None when it is off."""
-    if not launch or not launch.get("prices"):
-        return None
-    if list_size is not None and list_size >= int(launch.get("until_subscribers") or 100):
+    if not launch_rate_on(launch, list_size):
         return None
     links = launch.get("payment_links") or {}
     for tier in tiers:
         tier["recommended"] = False
         price = launch["prices"].get(tier.get("payment_key") or "")
-        if price:
+        if not price:
+            continue
+        tier["buy_url"] = links.get(tier["payment_key"]) or None
+        if tier.get("payment_key") == "holiday":  # item 499: one price through Dec 15, no countdown
+            tier["price"], tier["early_line"], tier["launch_note"] = price, None, "Launch price"
+        else:
             tier["regular_price"], tier["price"] = tier["price"], price
-            tier["buy_url"] = links.get(tier["payment_key"]) or None
     return str(launch.get("line") or "")
 
 
@@ -8817,7 +8828,7 @@ def main() -> None:
         give_entries.append({"name": region["name"], "region_url": SITE_BASE_URL + region_id + "/", "links": santa_look_links(region_cfg), "drives": prepare_give_drives(region_id, give_cfg, local_today), "events": give_events, "volunteer": give_volunteer})
         warm_found += warm_prospects.collect_hosts([e for b in blocks for e in b.get("events", [])], region["name"])
         nye_entries.append({"region_name": region["name"], "region_url": SITE_BASE_URL + region_id + "/", "events": select_nye_events(blocks, local_today)})
-        santa_entries.append({"region_name": region["name"], "region_url": SITE_BASE_URL + region_id + "/", "tree": tree_lighting, "links": santa_look_links(region_cfg), "events": [dict(e, town=e.get("town") or region["name"], state=e.get("state") or region.get("state")) for e in select_santa_events(blocks, local_today)]})
+        santa_entries.append({"region_name": region["name"], "region_url": SITE_BASE_URL + region_id + "/", "tree": tree_lighting, "links": santa_look_links(region_cfg), "events": [dict(e, town=e.get("town") or region["name"], state=e.get("state") or region.get("state")) for e in select_santa_events(blocks, local_today, (region_cfg.get("tree_lighting") or {}).get("match") or ())]})
         # ROADMAP.md item 258: the town's holiday page - free events from its
         # own feeds plus any paid, labelled listings.
         holiday_listings = build_holiday_listings(sponsors_cfg, region_id, local_today)
@@ -9156,7 +9167,7 @@ def main() -> None:
     holidays_dir = OUTPUT_DIR / "holidays"
     holidays_dir.mkdir(parents=True, exist_ok=True)
     outside_entries = load_just_outside(now.astimezone(LOCAL_TZ).date(), [{"name": c["region"]["name"], "lat": c["region"].get("lat"), "lon": c["region"].get("lon")} for c in regions])  # items 458/479
-    (holidays_dir / "index.html").write_text(render_holidays_page(holidays_entries, now, analytics, newsletter, contact_email, outside=outside_entries), encoding="utf-8")
+    (holidays_dir / "index.html").write_text(render_holidays_page(holidays_entries, now, analytics, newsletter, contact_email, outside=outside_entries, launch=launch_rate_on(sponsors_cfg.get("launch_rate"), current_list_size())), encoding="utf-8")
     logger.info("Wrote %s", holidays_dir / "index.html")
     for tot in trick_or_treat_entries:  # item 398: "Also at" dealers are hosts of the same event
         warm_found += warm_prospects.collect_hosts([e for e in tot.get("events") or [] if e.get("also_at")], tot["region_name"])
