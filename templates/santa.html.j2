@@ -167,6 +167,7 @@
   .cal-g { font-size: 12.5px; font-weight: 600; white-space: nowrap; }
   /* ROADMAP.md item 500: a sold-out event stays listed, muted, last in its day. */
   .events li.sold-out a { color: var(--muted); }
+  .chip-ticketed { display: inline-block; border: 1px solid var(--ink); color: var(--ink); font-size: 12px; font-weight: 600; padding: 0 6px; margin-left: 4px; }
   .chip-sold-out { display: inline-block; border: 1px solid var(--muted); color: var(--muted); font-size: 12px; font-weight: 600; padding: 0 6px; margin-left: 4px; }
 </style>
 {{ signup_css() }}
@@ -192,10 +193,11 @@
   <h2 class="events-heading">{{ day.label }}</h2>
   <ul class="events">
     {% for e in day.events %}
-    <li style="--town:{{ e.color }}"{% if e.sold_out %} class="sold-out"{% endif %}><span class="emoji" aria-hidden="true">🎅</span><strong style="color:{{ e.color }}">{{ e.town }}</strong>{% if e.time_label %} &middot; {{ e.time_label }}{% endif %} <a href="{{ e.page_url }}">{{ e.title }}</a>{% if e.santa_reason %} <span class="hours-note">🎅 {{ e.santa_reason }}</span>{% endif %}{% if e.google_calendar_url %} <a class="cal-g" href="{{ e.google_calendar_url }}" target="_blank" rel="noopener">📅 Google Calendar</a>{% endif %}{% if e.reg_badge %} <span class="hours-note">{{ e.reg_badge }}</span>{% endif %}{% if e.sold_out %} <span class="chip-sold-out">Sold out</span>{% endif %}</li>
+    <li style="--town:{{ e.color }}"{% if e.sold_out %} class="sold-out"{% endif %}><span class="emoji" aria-hidden="true">🎅</span><strong style="color:{{ e.color }}">{{ e.town }}</strong>{% if e.time_label %} &middot; {{ e.time_label }}{% endif %} <a href="{{ e.page_url }}">{{ e.title }}</a>{% if e.santa_reason %} <span class="hours-note">🎅 {{ e.santa_reason }}</span>{% endif %}{% if e.google_calendar_url %} <a class="cal-g" href="{{ e.google_calendar_url }}" target="_blank" rel="noopener">📅 Google Calendar</a>{% endif %}{% if e.ticketed %} <span class="chip-ticketed">🎟 Registration required, often sells out{% if e.reg_badge %} · {{ e.reg_badge }}{% endif %}</span>{% elif e.reg_badge %} <span class="hours-note">{{ e.reg_badge }}</span>{% endif %}{% if e.sold_out %} <span class="chip-sold-out">Sold out</span>{% endif %}</li>
     {% endfor %}
   </ul>
   {% endfor %}
+  {% if santa_listing %}<p class="note" id="santa-listing"><strong><a href="{{ santa_listing.url }}">{{ santa_listing.text }} &rarr;</a></strong> Email the date, time, address and cost, and it goes on this page and the town's page.</p>{% endif %}
   <p class="note">Every event above comes from that town's own library, park district or village calendar and links to its listing. Check the listing for cost, ages and whether registration is needed.</p>
   {{ look_meanwhile(places, hub_url) }}
   {% else %}

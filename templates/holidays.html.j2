@@ -203,6 +203,7 @@
   {% endfor %}
   <p class="note">Every event above comes from that town's library, park district, or village calendar, and links to its listing on the town's page.</p>
   {% endif %}
+  {% if santa_listing %}<p class="note" id="santa-listing"><strong><a href="{{ santa_listing.url }}">{{ santa_listing.text }} &rarr;</a></strong> Email the date, time, address and cost, and it goes on this page and the town's page.</p>{% endif %}
   {% if listing_offer %}
   <div class="offer" id="holiday-listing">
     <strong>Local shop? Get listed in the holiday guide, {{ listing_offer.price }}{% if listing_offer.early %} until Nov 15{% elif listing_offer.through %} {{ listing_offer.through }}{% endif %}.</strong>
